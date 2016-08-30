@@ -3,6 +3,7 @@ package Paws::ECS::LoadBalancer;
   has ContainerName => (is => 'ro', isa => 'Str', xmlname => 'containerName', request_name => 'containerName', traits => ['Unwrapped','NameInRequest']);
   has ContainerPort => (is => 'ro', isa => 'Int', xmlname => 'containerPort', request_name => 'containerPort', traits => ['Unwrapped','NameInRequest']);
   has LoadBalancerName => (is => 'ro', isa => 'Str', xmlname => 'loadBalancerName', request_name => 'loadBalancerName', traits => ['Unwrapped','NameInRequest']);
+  has TargetGroupArn => (is => 'ro', isa => 'Str', xmlname => 'targetGroupArn', request_name => 'targetGroupArn', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -22,7 +23,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::ECS::LoadBalancer object:
 
-  $service_obj->Method(Att1 => { ContainerName => $value, ..., LoadBalancerName => $value  });
+  $service_obj->Method(Att1 => { ContainerName => $value, ..., TargetGroupArn => $value  });
 
 =head3 Results returned from an API call
 
@@ -55,6 +56,12 @@ C<hostPort> of the port mapping.
 =head2 LoadBalancerName => Str
 
   The name of the load balancer.
+
+
+=head2 TargetGroupArn => Str
+
+  The full Amazon Resource Name (ARN) of the Elastic Load Balancing
+target group associated with a service.
 
 
 

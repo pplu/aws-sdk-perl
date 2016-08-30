@@ -46,9 +46,8 @@ Properties describing a player session.
 
 =head2 CreationTime => Str
 
-  Time stamp indicating when this object was created. Format is an
-integer representing the number of seconds since the Unix epoch (Unix
-time).
+  Time stamp indicating when this data object was created. Format is a
+number expressed in Unix time as milliseconds (ex: "1469498468.057".
 
 
 =head2 FleetId => Str
@@ -85,8 +84,9 @@ process, an app needs both the IP address and port number.
 
 =head2 Status => Str
 
-  Current status of the player session. Possible player session states
-include the following:
+  Current status of the player session.
+
+Possible player session statuses include the following:
 
 =over
 
@@ -109,9 +109,8 @@ limit (60 seconds).
 
 =head2 TerminationTime => Str
 
-  Time stamp indicating when this fleet was terminated. Format is an
-integer representing the number of seconds since the Unix epoch (Unix
-time).
+  Time stamp indicating when this data object was terminated. Format is a
+number expressed in Unix time as milliseconds (ex: "1469498468.057".
 
 
 

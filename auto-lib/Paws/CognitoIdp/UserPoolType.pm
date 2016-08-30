@@ -3,6 +3,9 @@ package Paws::CognitoIdp::UserPoolType;
   has AliasAttributes => (is => 'ro', isa => 'ArrayRef[Str]');
   has AutoVerifiedAttributes => (is => 'ro', isa => 'ArrayRef[Str]');
   has CreationDate => (is => 'ro', isa => 'Str');
+  has DeviceConfiguration => (is => 'ro', isa => 'Paws::CognitoIdp::DeviceConfigurationType');
+  has EmailConfiguration => (is => 'ro', isa => 'Paws::CognitoIdp::EmailConfigurationType');
+  has EmailConfigurationFailure => (is => 'ro', isa => 'Str');
   has EmailVerificationMessage => (is => 'ro', isa => 'Str');
   has EmailVerificationSubject => (is => 'ro', isa => 'Str');
   has EstimatedNumberOfUsers => (is => 'ro', isa => 'Int');
@@ -14,6 +17,8 @@ package Paws::CognitoIdp::UserPoolType;
   has Policies => (is => 'ro', isa => 'Paws::CognitoIdp::UserPoolPolicyType');
   has SchemaAttributes => (is => 'ro', isa => 'ArrayRef[Paws::CognitoIdp::SchemaAttributeType]');
   has SmsAuthenticationMessage => (is => 'ro', isa => 'Str');
+  has SmsConfiguration => (is => 'ro', isa => 'Paws::CognitoIdp::SmsConfigurationType');
+  has SmsConfigurationFailure => (is => 'ro', isa => 'Str');
   has SmsVerificationMessage => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
 1;
@@ -64,6 +69,22 @@ A container with information about the user pool type.
 =head2 CreationDate => Str
 
   The creation date of a user pool.
+
+
+=head2 DeviceConfiguration => L<Paws::CognitoIdp::DeviceConfigurationType>
+
+  The device configuration.
+
+
+=head2 EmailConfiguration => L<Paws::CognitoIdp::EmailConfigurationType>
+
+  The email configuration.
+
+
+=head2 EmailConfigurationFailure => Str
+
+  The reason why the email configuration cannot send the messages to your
+users.
 
 
 =head2 EmailVerificationMessage => Str
@@ -134,6 +155,17 @@ an MFA token.
 =head2 SmsAuthenticationMessage => Str
 
   The contents of the SMS authentication message.
+
+
+=head2 SmsConfiguration => L<Paws::CognitoIdp::SmsConfigurationType>
+
+  The SMS configuration.
+
+
+=head2 SmsConfigurationFailure => Str
+
+  The reason why the SMS configuration cannot send the message(s) to your
+users.
 
 
 =head2 SmsVerificationMessage => Str

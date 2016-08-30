@@ -13,10 +13,12 @@ package Paws::RDS::ModifyDBInstance;
   has DBParameterGroupName => (is => 'ro', isa => 'Str');
   has DBPortNumber => (is => 'ro', isa => 'Int');
   has DBSecurityGroups => (is => 'ro', isa => 'ArrayRef[Str]');
+  has DBSubnetGroupName => (is => 'ro', isa => 'Str');
   has Domain => (is => 'ro', isa => 'Str');
   has DomainIAMRoleName => (is => 'ro', isa => 'Str');
   has EngineVersion => (is => 'ro', isa => 'Str');
   has Iops => (is => 'ro', isa => 'Int');
+  has LicenseModel => (is => 'ro', isa => 'Str');
   has MasterUserPassword => (is => 'ro', isa => 'Str');
   has MonitoringInterval => (is => 'ro', isa => 'Int');
   has MonitoringRoleArn => (is => 'ro', isa => 'Str');
@@ -385,6 +387,25 @@ Cannot end with a hyphen or contain two consecutive hyphens
 
 
 
+=head2 DBSubnetGroupName => Str
+
+The new DB subnet group for the DB instance. You can use this parameter
+to move your DB instance to a different VPC, or to a different subnet
+group in the same VPC. If your DB instance is not in a VPC, you can
+also use this parameter to move your DB instance into a VPC. For more
+information, see Updating the VPC for a DB Instance.
+
+Changing the subnet group causes an outage during the change. The
+change is applied during the next maintenance window, unless you
+specify C<true> for the C<ApplyImmediately> parameter.
+
+Constraints: Must contain no more than 255 alphanumeric characters,
+periods, underscores, spaces, or hyphens.
+
+Example: C<mySubnetGroup>
+
+
+
 =head2 Domain => Str
 
 Specify the Active Directory Domain to move the instance to.
@@ -455,6 +476,15 @@ instance will be suspended. No other Amazon RDS operations can take
 place for the instance, including modifying the instance, rebooting the
 instance, deleting the instance, creating a Read Replica for the
 instance, and creating a DB snapshot of the instance.
+
+
+
+=head2 LicenseModel => Str
+
+The license model for the DB instance.
+
+Valid values: C<license-included> | C<bring-your-own-license> |
+C<general-public-license>
 
 
 

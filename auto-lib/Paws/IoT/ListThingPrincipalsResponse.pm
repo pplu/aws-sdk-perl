@@ -16,7 +16,7 @@ Paws::IoT::ListThingPrincipalsResponse
 
 =head2 Principals => ArrayRef[Str]
 
-The principals.
+The principals associated with the thing.
 
 
 

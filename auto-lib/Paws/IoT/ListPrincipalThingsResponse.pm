@@ -17,7 +17,8 @@ Paws::IoT::ListPrincipalThingsResponse
 
 =head2 NextToken => Str
 
-A token used to retrieve the next value.
+The token for the next set of results, or B<null> if there are no
+additional results.
 
 
 

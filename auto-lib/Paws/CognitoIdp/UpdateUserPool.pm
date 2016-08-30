@@ -2,12 +2,15 @@
 package Paws::CognitoIdp::UpdateUserPool;
   use Moose;
   has AutoVerifiedAttributes => (is => 'ro', isa => 'ArrayRef[Str]');
+  has DeviceConfiguration => (is => 'ro', isa => 'Paws::CognitoIdp::DeviceConfigurationType');
+  has EmailConfiguration => (is => 'ro', isa => 'Paws::CognitoIdp::EmailConfigurationType');
   has EmailVerificationMessage => (is => 'ro', isa => 'Str');
   has EmailVerificationSubject => (is => 'ro', isa => 'Str');
   has LambdaConfig => (is => 'ro', isa => 'Paws::CognitoIdp::LambdaConfigType');
   has MfaConfiguration => (is => 'ro', isa => 'Str');
   has Policies => (is => 'ro', isa => 'Paws::CognitoIdp::UserPoolPolicyType');
   has SmsAuthenticationMessage => (is => 'ro', isa => 'Str');
+  has SmsConfiguration => (is => 'ro', isa => 'Paws::CognitoIdp::SmsConfigurationType');
   has SmsVerificationMessage => (is => 'ro', isa => 'Str');
   has UserPoolId => (is => 'ro', isa => 'Str', required => 1);
 
@@ -45,6 +48,18 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 The attributes that are automatically verified when the Amazon Cognito
 service makes a request to update user pools.
+
+
+
+=head2 DeviceConfiguration => L<Paws::CognitoIdp::DeviceConfigurationType>
+
+Device configuration.
+
+
+
+=head2 EmailConfiguration => L<Paws::CognitoIdp::EmailConfigurationType>
+
+Email configuration.
 
 
 
@@ -96,6 +111,12 @@ A container with the policies you wish to update in a user pool.
 =head2 SmsAuthenticationMessage => Str
 
 The contents of the SMS authentication message.
+
+
+
+=head2 SmsConfiguration => L<Paws::CognitoIdp::SmsConfigurationType>
+
+SMS configuration.
 
 
 

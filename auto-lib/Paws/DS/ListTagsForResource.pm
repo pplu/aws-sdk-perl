@@ -49,7 +49,7 @@ Reserved for future use.
 
 =head2 B<REQUIRED> ResourceId => Str
 
-The ID of the directory for which you want to retrieve tags.
+Identifier (ID) of the directory for which you want to retrieve tags.
 
 
 

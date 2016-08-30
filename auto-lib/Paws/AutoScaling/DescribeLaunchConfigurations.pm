@@ -37,7 +37,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 LaunchConfigurationNames => ArrayRef[Str]
 
-The launch configuration names.
+The launch configuration names. If you omit this parameter, all launch
+configurations are described.
 
 
 

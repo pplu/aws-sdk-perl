@@ -1,6 +1,7 @@
 
 package Paws::ECR::ListImages;
   use Moose;
+  has Filter => (is => 'ro', isa => 'Paws::ECR::ListImagesFilter', traits => ['NameInRequest'], request_name => 'filter' );
   has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults' );
   has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
   has RegistryId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'registryId' );
@@ -36,6 +37,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
+=head2 Filter => L<Paws::ECR::ListImagesFilter>
+
+
+
+
+
 =head2 MaxResults => Int
 
 The maximum number of image results returned by C<ListImages> in
@@ -56,6 +63,10 @@ request where C<maxResults> was used and the results exceeded the value
 of that parameter. Pagination continues from the end of the previous
 results that returned the C<nextToken> value. This value is C<null>
 when there are no more results to return.
+
+This token should be treated as an opaque identifier that is only used
+to retrieve the next items in a list and not for other programmatic
+purposes.
 
 
 

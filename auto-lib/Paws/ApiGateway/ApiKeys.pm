@@ -3,6 +3,7 @@ package Paws::ApiGateway::ApiKeys;
   use Moose;
   has Items => (is => 'ro', isa => 'ArrayRef[Paws::ApiGateway::ApiKey]');
   has Position => (is => 'ro', isa => 'Str');
+  has Warnings => (is => 'ro', isa => 'ArrayRef[Str]');
 
 1;
 
@@ -25,6 +26,13 @@ resources.
 =head2 Position => Str
 
 
+
+
+
+=head2 Warnings => ArrayRef[Str]
+
+A list of warning messages logged during the import of API keys when
+the C<failOnWarnings> option is set to true.
 
 
 

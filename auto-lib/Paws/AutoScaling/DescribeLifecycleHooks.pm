@@ -42,7 +42,8 @@ The name of the group.
 
 =head2 LifecycleHookNames => ArrayRef[Str]
 
-The names of one or more lifecycle hooks.
+The names of one or more lifecycle hooks. If you omit this parameter,
+all lifecycle hooks are described.
 
 
 

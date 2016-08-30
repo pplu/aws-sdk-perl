@@ -42,7 +42,8 @@ The name or Amazon Resource Name (ARN) of the Auto Scaling group.
 
 =head2 ScalingProcesses => ArrayRef[Str]
 
-One or more of the following processes:
+One or more of the following processes. If you omit this parameter, all
+processes are specified.
 
 =over
 

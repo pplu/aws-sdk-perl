@@ -40,7 +40,7 @@ Represents the raw data of the message.
 
   The raw data of the message. The client must ensure that the message
 format complies with Internet email standards regarding email header
-fields, MIME types, MIME encoding, and base64 encoding (if necessary).
+fields, MIME types, MIME encoding, and base64 encoding.
 
 The To:, CC:, and BCC: headers in the raw message can contain a group
 list.

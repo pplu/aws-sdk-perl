@@ -19,10 +19,15 @@ package Paws::MarketplaceCommerceAnalytics;
     my $call_object = $self->new_with_coercions('Paws::MarketplaceCommerceAnalytics::GenerateDataSet', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub StartSupportDataExport {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MarketplaceCommerceAnalytics::StartSupportDataExport', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   
 
 
-  sub operations { qw/GenerateDataSet / }
+  sub operations { qw/GenerateDataSet StartSupportDataExport / }
 
 1;
 
@@ -70,6 +75,26 @@ comma-separated values (CSV) format with the file name
 exists (e.g. if the same data set is requested twice), the original
 file will be overwritten by the new file. Requires a Role with an
 attached permissions policy providing Allow permissions for the
+following actions: s3:PutObject, s3:GetBucketLocation,
+sns:GetTopicAttributes, sns:Publish, iam:GetRolePolicy.
+
+
+=head2 StartSupportDataExport(DataSetType => Str, DestinationS3BucketName => Str, FromDate => Str, RoleNameArn => Str, SnsTopicArn => Str, [CustomerDefinedValues => L<Paws::MarketplaceCommerceAnalytics::CustomerDefinedValues>, DestinationS3Prefix => Str])
+
+Each argument is described in detail in: L<Paws::MarketplaceCommerceAnalytics::StartSupportDataExport>
+
+Returns: a L<Paws::MarketplaceCommerceAnalytics::StartSupportDataExportResult> instance
+
+  Given a data set type and a from date, asynchronously publishes the
+requested customer support data to the specified S3 bucket and notifies
+the specified SNS topic once the data is available. Returns a unique
+request identifier that can be used to correlate requests with
+notifications from the SNS topic. Data sets will be published in
+comma-separated values (CSV) format with the file name
+{data_set_type}_YYYY-MM-DD'T'HH-mm-ss'Z'.csv. If a file with the same
+name already exists (e.g. if the same data set is requested twice), the
+original file will be overwritten by the new file. Requires a Role with
+an attached permissions policy providing Allow permissions for the
 following actions: s3:PutObject, s3:GetBucketLocation,
 sns:GetTopicAttributes, sns:Publish, iam:GetRolePolicy.
 

@@ -60,6 +60,24 @@ package Paws::ACM;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub ListAllCertificates {
+    my $self = shift;
+
+    my $result = $self->ListCertificates(@_);
+    my $params = {};
+    
+    $params->{ CertificateSummaryList } = $result->CertificateSummaryList;
+    
+
+    while ($result->) {
+      $result = $self->ListCertificates(@_, NextToken => $result->NextToken);
+      
+      push @{ $params->{ CertificateSummaryList } }, @{ $result->CertificateSummaryList };
+      
+    }
+
+    return $self->new_with_coercions(Paws::ACM::ListCertificates->_returns, %$params);
+  }
 
 
   sub operations { qw/AddTagsToCertificate DeleteCertificate DescribeCertificate GetCertificate ListCertificates ListTagsForCertificate RemoveTagsFromCertificate RequestCertificate ResendValidationEmail / }

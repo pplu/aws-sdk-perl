@@ -7,6 +7,7 @@ package Paws::WorkSpaces::WorkspaceRequest;
   has UserName => (is => 'ro', isa => 'Str', required => 1);
   has UserVolumeEncryptionEnabled => (is => 'ro', isa => 'Bool');
   has VolumeEncryptionKey => (is => 'ro', isa => 'Str');
+  has WorkspaceProperties => (is => 'ro', isa => 'Paws::WorkSpaces::WorkspaceProperties');
 1;
 
 ### main pod documentation begin ###
@@ -26,7 +27,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::WorkSpaces::WorkspaceRequest object:
 
-  $service_obj->Method(Att1 => { BundleId => $value, ..., VolumeEncryptionKey => $value  });
+  $service_obj->Method(Att1 => { BundleId => $value, ..., WorkspaceProperties => $value  });
 
 =head3 Results returned from an API call
 
@@ -83,6 +84,11 @@ encrypted.
 =head2 VolumeEncryptionKey => Str
 
   The KMS key used to encrypt data stored on your WorkSpace.
+
+
+=head2 WorkspaceProperties => L<Paws::WorkSpaces::WorkspaceProperties>
+
+  
 
 
 

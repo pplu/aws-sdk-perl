@@ -61,8 +61,9 @@ the parent volume.
 
 =head2 OwnerAlias => Str
 
-The AWS account alias (for example, C<amazon>, C<self>) or AWS account
-ID that owns the snapshot.
+Value from an Amazon-maintained list (C<amazon> | C<aws-marketplace> |
+C<microsoft>) of snapshot owners. Not to be confused with the
+user-configured AWS account alias, which is set from the IAM console.
 
 
 
@@ -115,7 +116,9 @@ Any tags assigned to the snapshot.
 
 =head2 VolumeId => Str
 
-The ID of the volume that was used to create the snapshot.
+The ID of the volume that was used to create the snapshot. Snapshots
+created by the CopySnapshot action have an arbitrary volume ID that
+should not be used for any purpose.
 
 
 

@@ -1,5 +1,6 @@
 package Paws::CloudWatchLogs::MetricTransformation;
   use Moose;
+  has DefaultValue => (is => 'ro', isa => 'Num', xmlname => 'defaultValue', request_name => 'defaultValue', traits => ['Unwrapped','NameInRequest']);
   has MetricName => (is => 'ro', isa => 'Str', xmlname => 'metricName', request_name => 'metricName', traits => ['Unwrapped','NameInRequest'], required => 1);
   has MetricNamespace => (is => 'ro', isa => 'Str', xmlname => 'metricNamespace', request_name => 'metricNamespace', traits => ['Unwrapped','NameInRequest'], required => 1);
   has MetricValue => (is => 'ro', isa => 'Str', xmlname => 'metricValue', request_name => 'metricValue', traits => ['Unwrapped','NameInRequest'], required => 1);
@@ -22,14 +23,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CloudWatchLogs::MetricTransformation object:
 
-  $service_obj->Method(Att1 => { MetricName => $value, ..., MetricValue => $value  });
+  $service_obj->Method(Att1 => { DefaultValue => $value, ..., MetricValue => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::CloudWatchLogs::MetricTransformation object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->MetricName
+  $result->Att1->DefaultValue
 
 =head1 DESCRIPTION
 
@@ -38,19 +39,26 @@ This class has no description
 =head1 ATTRIBUTES
 
 
+=head2 DefaultValue => Num
+
+  (Optional) A default value to emit when a filter pattern does not match
+a log event. Can be null.
+
+
 =head2 B<REQUIRED> MetricName => Str
 
-  
+  Name of the metric.
 
 
 =head2 B<REQUIRED> MetricNamespace => Str
 
-  
+  Namespace to which the metric belongs.
 
 
 =head2 B<REQUIRED> MetricValue => Str
 
-  
+  A string representing a value to publish to this metric when a filter
+pattern matches a log event.
 
 
 

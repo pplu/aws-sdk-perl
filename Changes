@@ -1,4 +1,29 @@
-0.27 
+0.28 30 Aug 2015 23:45:00
+ - On errors 503 XMLResponse would not process the error correctly (returning
+   a non-Paws exception, so the error couldn't be retried. (brianhartsock)
+ - New API: Snowball
+ - New API: KinesisAnalytics
+ - New API: ELBv2 (Application Load Balancer)
+ - Route53: API update: GetDomainSuggestions, RenewDomain, ViewBilling
+ - RDS: API update: RestoreDBClusterFromS3
+ - KMS: API update: DeleteImportedKeyMaterial, GetParametersForImport, ImportKeyMaterial
+ - WorkSpaces API update: DescribeWorkspacesConnectionStatus ModifyWorkspaceProperties StartWorkspaces StopWorkspaces
+ - IoT API update: ThingTypes operations, ListOutgoingCertificates
+ - MarketplaceCommerceAnalytics API update: StartSupportDataExport
+ - GameLift API update: SearchGameSessions
+ - EC2 API update: DescribeHostReservationOfferings DescribeHostReservations GetHostReservationPurchasePreview PurchaseHostReservation
+ - DS API update: AddIpRoutes ListIpRoutes
+ - CognitoIdp API update: AdminForgetDevice AdminGetDevice AdminInitiateAuth AdminListDevices AdminRespondToAuthChallenge AdminUpdateDeviceStatus AdminUserGlobalSignOut ConfirmDevice ForgetDevice ForgotPassword GetDevice GlobalSignOut InitiateAuth ListDevices RespondToAuthChallenge UpdateDeviceStatus
+ - CloudFront API update: CreateDistributionWithTags CreateStreamingDistributionWithTags ListTagsForResource TagResource UntagResource
+ - ApiGateway API update: CreateUsagePlan CreateUsagePlanKey DeleteUsagePlan DeleteUsagePlanKey GetUsage GetUsagePlan GetUsagePlanKey GetUsagePlanKeys GetUsagePlans ImportApiKeys UpdateUsage UpdateUsagePlan
+ - AutoScaling API update: AttachLoadBalancerTargetGroups DescribeLoadBalancerTargetGroups DetachLoadBalancerTargetGroups
+ - MachineLearning API update: extra informational attributes on returned objects
+ - EMR API update: FailureDetails on StepStatus object
+ - ECS API update: MemoryReservation and NetworkMode
+ - ECR API update: Filter on ListImages
+ - ES API update: ElasticsearchVersion support
+
+0.27 25 Jun 2016 
  - RestXml (S3, f.ex) services now complete responses from headers (shardiwal)
  - New API: ServiceCatalog
  - MachineLearning API update: Tagging API

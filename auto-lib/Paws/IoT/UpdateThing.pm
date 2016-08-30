@@ -1,8 +1,11 @@
 
 package Paws::IoT::UpdateThing;
   use Moose;
-  has AttributePayload => (is => 'ro', isa => 'Paws::IoT::AttributePayload', required => 1);
+  has AttributePayload => (is => 'ro', isa => 'Paws::IoT::AttributePayload');
+  has ExpectedVersion => (is => 'ro', isa => 'Int');
+  has RemoveThingType => (is => 'ro', isa => 'Bool');
   has ThingName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'thingName' , required => 1);
+  has ThingTypeName => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -36,16 +39,41 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> AttributePayload => L<Paws::IoT::AttributePayload>
+=head2 AttributePayload => L<Paws::IoT::AttributePayload>
 
-The attribute payload, a JSON string containing up to three key-value
-pairs (for example, {\"attributes\":{\"string1\":\"string2\"}}).
+A list of thing attributes, a JSON string containing name-value pairs.
+For example:
+
+C<{\"attributes\":{\"name1\":\"value2\"}})>
+
+This data is used to add new attributes or update existing attributes.
+
+
+
+=head2 ExpectedVersion => Int
+
+The expected version of the thing record in the registry. If the
+version of the record in the registry does not match the expected
+version specified in the request, the C<UpdateThing> request is
+rejected with a C<VersionConflictException>.
+
+
+
+=head2 RemoveThingType => Bool
+
+Remove a thing type association. If B<true>, the assocation is removed.
 
 
 
 =head2 B<REQUIRED> ThingName => Str
 
-The thing name.
+The name of the thing to update.
+
+
+
+=head2 ThingTypeName => Str
+
+The name of the thing type.
 
 
 

@@ -45,8 +45,13 @@ value is set to 3600 seconds. An expiration can also be specified in
 the SAML authentication response's C<SessionNotOnOrAfter> value. The
 actual expiration time is whichever value is shorter.
 
-The maximum duration for a session is 1 hour, and the minimum duration
-is 15 minutes, even if values outside this range are specified.
+This is separate from the duration of a console session that you might
+request using the returned credentials. The request to the federation
+endpoint for a console sign-in token takes a C<SessionDuration>
+parameter that specifies the maximum length of the console session,
+separately from the C<DurationSeconds> parameter on this API. For more
+information, see Enabling SAML 2.0 Federated Users to Access the AWS
+Management Console in the I<IAM User Guide>.
 
 
 

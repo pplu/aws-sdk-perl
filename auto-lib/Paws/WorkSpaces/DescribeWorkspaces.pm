@@ -71,7 +71,7 @@ null if this is the first call.
 =head2 UserName => Str
 
 Used with the C<DirectoryId> parameter to specify the directory user
-for which to obtain the WorkSpace.
+for whom to obtain the WorkSpace.
 
 
 
@@ -82,9 +82,8 @@ which to retrieve information. This parameter cannot be combined with
 any other filter parameter.
 
 Because the CreateWorkspaces operation is asynchronous, the identifier
-returned by CreateWorkspaces is not immediately available. If you
-immediately call DescribeWorkspaces with this identifier, no
-information will be returned.
+it returns is not immediately available. If you immediately call
+DescribeWorkspaces with this identifier, no information is returned.
 
 
 

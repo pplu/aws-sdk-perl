@@ -51,13 +51,13 @@ This class has no description
 
 =head2 AvailabilityZone => Str
 
-  The Availability Zone of the Dedicated host.
+  The Availability Zone of the Dedicated Host.
 
 
 =head2 AvailableCapacity => L<Paws::EC2::AvailableCapacity>
 
   The number of new instances that can be launched onto the Dedicated
-host.
+Host.
 
 
 =head2 ClientToken => Str
@@ -69,29 +69,29 @@ I<Amazon Elastic Compute Cloud User Guide>.
 
 =head2 HostId => Str
 
-  The ID of the Dedicated host.
+  The ID of the Dedicated Host.
 
 
 =head2 HostProperties => L<Paws::EC2::HostProperties>
 
-  The hardware specifications of the Dedicated host.
+  The hardware specifications of the Dedicated Host.
 
 
 =head2 HostReservationId => Str
 
-  The reservation ID of the Dedicated host. This returns a C<null>
-response if the Dedicated host doesn't have an associated reservation.
+  The reservation ID of the Dedicated Host. This returns a C<null>
+response if the Dedicated Host doesn't have an associated reservation.
 
 
 =head2 Instances => ArrayRef[L<Paws::EC2::HostInstance>]
 
   The IDs and instance type that are currently running on the Dedicated
-host.
+Host.
 
 
 =head2 State => Str
 
-  The Dedicated host's state.
+  The Dedicated Host's state.
 
 
 

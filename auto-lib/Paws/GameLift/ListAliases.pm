@@ -62,7 +62,9 @@ specify the start of the result set, do not specify a value.
 
 Type of routing to filter results on. Use this parameter to retrieve
 only aliases of a certain type. To retrieve all aliases, leave this
-parameter empty. Possible routing types include the following:
+parameter empty.
+
+Possible routing types include the following:
 
 =over
 

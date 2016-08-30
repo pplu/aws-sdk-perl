@@ -3,6 +3,7 @@ package Paws::IoT::CreateThing;
   use Moose;
   has AttributePayload => (is => 'ro', isa => 'Paws::IoT::AttributePayload');
   has ThingName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'thingName' , required => 1);
+  has ThingTypeName => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -38,15 +39,22 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AttributePayload => L<Paws::IoT::AttributePayload>
 
-The attribute payload, which consists of up to 3 name/value pairs in a
-JSON document (for example,
-{\"attributes\":{\"string1\":\"string2\"}}).
+The attribute payload, which consists of up to three name/value pairs
+in a JSON document. For example:
+
+C<{\"attributes\":{\"string1\":\"string2\"}})>
 
 
 
 =head2 B<REQUIRED> ThingName => Str
 
-The name of the thing.
+The name of the thing to create.
+
+
+
+=head2 ThingTypeName => Str
+
+The name of the thing type associated with the new thing.
 
 
 

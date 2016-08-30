@@ -44,6 +44,11 @@ package Paws::KMS;
     my $call_object = $self->new_with_coercions('Paws::KMS::DeleteAlias', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteImportedKeyMaterial {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::KMS::DeleteImportedKeyMaterial', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeKey {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::KMS::DescribeKey', @_);
@@ -97,6 +102,16 @@ package Paws::KMS;
   sub GetKeyRotationStatus {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::KMS::GetKeyRotationStatus', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetParametersForImport {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::KMS::GetParametersForImport', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ImportKeyMaterial {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::KMS::ImportKeyMaterial', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListAliases {
@@ -234,7 +249,7 @@ package Paws::KMS;
   }
 
 
-  sub operations { qw/CancelKeyDeletion CreateAlias CreateGrant CreateKey Decrypt DeleteAlias DescribeKey DisableKey DisableKeyRotation EnableKey EnableKeyRotation Encrypt GenerateDataKey GenerateDataKeyWithoutPlaintext GenerateRandom GetKeyPolicy GetKeyRotationStatus ListAliases ListGrants ListKeyPolicies ListKeys ListRetirableGrants PutKeyPolicy ReEncrypt RetireGrant RevokeGrant ScheduleKeyDeletion UpdateAlias UpdateKeyDescription / }
+  sub operations { qw/CancelKeyDeletion CreateAlias CreateGrant CreateKey Decrypt DeleteAlias DeleteImportedKeyMaterial DescribeKey DisableKey DisableKeyRotation EnableKey EnableKeyRotation Encrypt GenerateDataKey GenerateDataKeyWithoutPlaintext GenerateRandom GetKeyPolicy GetKeyRotationStatus GetParametersForImport ImportKeyMaterial ListAliases ListGrants ListKeyPolicies ListKeys ListRetirableGrants PutKeyPolicy ReEncrypt RetireGrant RevokeGrant ScheduleKeyDeletion UpdateAlias UpdateKeyDescription / }
 
 1;
 
@@ -411,7 +426,7 @@ For more information about grants, see Grants in the I<AWS Key
 Management Service Developer Guide>.
 
 
-=head2 CreateKey([BypassPolicyLockoutSafetyCheck => Bool, Description => Str, KeyUsage => Str, Policy => Str])
+=head2 CreateKey([BypassPolicyLockoutSafetyCheck => Bool, Description => Str, KeyUsage => Str, Origin => Str, Policy => Str])
 
 Each argument is described in detail in: L<Paws::KMS::CreateKey>
 
@@ -483,6 +498,25 @@ Returns: nothing
 
   Deletes the specified alias. To map an alias to a different key, call
 UpdateAlias.
+
+
+=head2 DeleteImportedKeyMaterial(KeyId => Str)
+
+Each argument is described in detail in: L<Paws::KMS::DeleteImportedKeyMaterial>
+
+Returns: nothing
+
+  Deletes key material that you previously imported and makes the
+specified customer master key (CMK) unusable. For more information
+about importing key material into AWS KMS, see Importing Key Material
+in the I<AWS Key Management Service Developer Guide>.
+
+When the specified CMK is in the C<PendingDeletion> state, this
+operation does not change the CMK's state. Otherwise, it changes the
+CMK's state to C<PendingImport>.
+
+After you delete key material, you can use ImportKeyMaterial to
+reimport the same key material into the CMK.
 
 
 =head2 DescribeKey(KeyId => Str, [GrantTokens => ArrayRef[Str]])
@@ -653,6 +687,61 @@ Returns: a L<Paws::KMS::GetKeyRotationStatusResponse> instance
 
   Retrieves a Boolean value that indicates whether key rotation is
 enabled for the specified key.
+
+
+=head2 GetParametersForImport(KeyId => Str, WrappingAlgorithm => Str, WrappingKeySpec => Str)
+
+Each argument is described in detail in: L<Paws::KMS::GetParametersForImport>
+
+Returns: a L<Paws::KMS::GetParametersForImportResponse> instance
+
+  Returns the items you need in order to import key material into AWS KMS
+from your existing key management infrastructure. For more information
+about importing key material into AWS KMS, see Importing Key Material
+in the I<AWS Key Management Service Developer Guide>.
+
+You must specify the key ID of the customer master key (CMK) into which
+you will import key material. This CMK's C<Origin> must be C<EXTERNAL>.
+You must also specify the wrapping algorithm and type of wrapping key
+(public key) that you will use to encrypt the key material.
+
+This operation returns a public key and an import token. Use the public
+key to encrypt the key material. Store the import token to send with a
+subsequent ImportKeyMaterial request. The public key and import token
+from the same response must be used together. These items are valid for
+24 hours, after which they cannot be used for a subsequent
+ImportKeyMaterial request. To retrieve new ones, send another
+C<GetParametersForImport> request.
+
+
+=head2 ImportKeyMaterial(EncryptedKeyMaterial => Str, ImportToken => Str, KeyId => Str, [ExpirationModel => Str, ValidTo => Str])
+
+Each argument is described in detail in: L<Paws::KMS::ImportKeyMaterial>
+
+Returns: a L<Paws::KMS::ImportKeyMaterialResponse> instance
+
+  Imports key material into an AWS KMS customer master key (CMK) from
+your existing key management infrastructure. For more information about
+importing key material into AWS KMS, see Importing Key Material in the
+I<AWS Key Management Service Developer Guide>.
+
+You must specify the key ID of the CMK to import the key material into.
+This CMK's C<Origin> must be C<EXTERNAL>. You must also send an import
+token and the encrypted key material. Send the import token that you
+received in the same GetParametersForImport response that contained the
+public key that you used to encrypt the key material. You must also
+specify whether the key material expires and if so, when. When the key
+material expires, AWS KMS deletes the key material and the CMK becomes
+unusable. To use the CMK again, you can reimport the same key material.
+If you set an expiration date, you can change it only by reimporting
+the same key material and specifying a new expiration date.
+
+When this operation is successful, the specified CMK's key state
+changes to C<Enabled>, and you can use the CMK.
+
+After you successfully import key material into a CMK, you can reimport
+the same key material into that CMK, but you cannot import different
+key material.
 
 
 =head2 ListAliases([Limit => Int, Marker => Str])

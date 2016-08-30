@@ -95,6 +95,24 @@ package Paws::ECR;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub ListAllImages {
+    my $self = shift;
+
+    my $result = $self->ListImages(@_);
+    my $params = {};
+    
+    $params->{ imageIds } = $result->imageIds;
+    
+
+    while ($result->) {
+      $result = $self->ListImages(@_, nextToken => $result->nextToken);
+      
+      push @{ $params->{ imageIds } }, @{ $result->imageIds };
+      
+    }
+
+    return $self->new_with_coercions(Paws::ECR::ListImages->_returns, %$params);
+  }
 
 
   sub operations { qw/BatchCheckLayerAvailability BatchDeleteImage BatchGetImage CompleteLayerUpload CreateRepository DeleteRepository DeleteRepositoryPolicy DescribeRepositories GetAuthorizationToken GetDownloadUrlForLayer GetRepositoryPolicy InitiateLayerUpload ListImages PutImage SetRepositoryPolicy UploadLayerPart / }
@@ -277,7 +295,7 @@ for general use by customers. Use the C<docker> CLI to pull, tag, and
 push images.
 
 
-=head2 ListImages(RepositoryName => Str, [MaxResults => Int, NextToken => Str, RegistryId => Str])
+=head2 ListImages(RepositoryName => Str, [Filter => L<Paws::ECR::ListImagesFilter>, MaxResults => Int, NextToken => Str, RegistryId => Str])
 
 Each argument is described in detail in: L<Paws::ECR::ListImages>
 

@@ -34,8 +34,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WorkSpaces:
 =head1 DESCRIPTION
 
 Contains information about a WorkSpace that could not be rebooted
-(RebootWorkspaces), rebuilt (RebuildWorkspaces), or terminated
-(TerminateWorkspaces).
+(RebootWorkspaces), rebuilt (RebuildWorkspaces), terminated
+(TerminateWorkspaces), started (StartWorkspaces), or stopped
+(StopWorkspaces).
 
 =head1 ATTRIBUTES
 

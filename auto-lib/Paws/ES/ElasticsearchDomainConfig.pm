@@ -4,6 +4,7 @@ package Paws::ES::ElasticsearchDomainConfig;
   has AdvancedOptions => (is => 'ro', isa => 'Paws::ES::AdvancedOptionsStatus');
   has EBSOptions => (is => 'ro', isa => 'Paws::ES::EBSOptionsStatus');
   has ElasticsearchClusterConfig => (is => 'ro', isa => 'Paws::ES::ElasticsearchClusterConfigStatus');
+  has ElasticsearchVersion => (is => 'ro', isa => 'Paws::ES::ElasticsearchVersionStatus');
   has SnapshotOptions => (is => 'ro', isa => 'Paws::ES::SnapshotOptionsStatus');
 1;
 
@@ -60,6 +61,11 @@ Advanced Options for more information.
 
   Specifies the C<ElasticsearchClusterConfig> for the Elasticsearch
 domain.
+
+
+=head2 ElasticsearchVersion => L<Paws::ES::ElasticsearchVersionStatus>
+
+  String of format X.Y to specify version for the Elasticsearch domain.
 
 
 =head2 SnapshotOptions => L<Paws::ES::SnapshotOptionsStatus>

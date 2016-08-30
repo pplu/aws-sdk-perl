@@ -5,6 +5,7 @@ package Paws::IoT::ListThings;
   has AttributeValue => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'attributeValue' );
   has MaxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'maxResults' );
   has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nextToken' );
+  has ThingTypeName => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'thingTypeName' );
 
   use MooseX::ClassAttribute;
 
@@ -40,25 +41,32 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AttributeName => Str
 
-The attribute name.
+The attribute name used to search for things.
 
 
 
 =head2 AttributeValue => Str
 
-The attribute value.
+The attribute value used to search for things.
 
 
 
 =head2 MaxResults => Int
 
-The maximum number of results.
+The maximum number of results to return in this operation.
 
 
 
 =head2 NextToken => Str
 
-The token for the next value.
+The token for the next set of results, or B<null> if there are no
+additional results.
+
+
+
+=head2 ThingTypeName => Str
+
+The name of the thing type used to search for things.
 
 
 

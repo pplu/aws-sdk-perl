@@ -19,6 +19,7 @@ package Paws::AutoScaling::AutoScalingGroup;
   has Status => (is => 'ro', isa => 'Str');
   has SuspendedProcesses => (is => 'ro', isa => 'ArrayRef[Paws::AutoScaling::SuspendedProcess]');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::AutoScaling::TagDescription]');
+  has TargetGroupARNs => (is => 'ro', isa => 'ArrayRef[Str]');
   has TerminationPolicies => (is => 'ro', isa => 'ArrayRef[Str]');
   has VPCZoneIdentifier => (is => 'ro', isa => 'Str');
 1;
@@ -156,6 +157,12 @@ progress.
 =head2 Tags => ArrayRef[L<Paws::AutoScaling::TagDescription>]
 
   The tags for the group.
+
+
+=head2 TargetGroupARNs => ArrayRef[Str]
+
+  The Amazon Resource Names (ARN) of the target groups for your load
+balancer.
 
 
 =head2 TerminationPolicies => ArrayRef[Str]

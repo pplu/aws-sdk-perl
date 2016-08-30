@@ -2,6 +2,7 @@
 package Paws::MachineLearning::GetDataSourceOutput;
   use Moose;
   has ComputeStatistics => (is => 'ro', isa => 'Bool');
+  has ComputeTime => (is => 'ro', isa => 'Int');
   has CreatedAt => (is => 'ro', isa => 'Str');
   has CreatedByIamUser => (is => 'ro', isa => 'Str');
   has DataLocationS3 => (is => 'ro', isa => 'Str');
@@ -9,6 +10,7 @@ package Paws::MachineLearning::GetDataSourceOutput;
   has DataSizeInBytes => (is => 'ro', isa => 'Int');
   has DataSourceId => (is => 'ro', isa => 'Str');
   has DataSourceSchema => (is => 'ro', isa => 'Str');
+  has FinishedAt => (is => 'ro', isa => 'Str');
   has LastUpdatedAt => (is => 'ro', isa => 'Str');
   has LogUri => (is => 'ro', isa => 'Str');
   has Message => (is => 'ro', isa => 'Str');
@@ -17,6 +19,7 @@ package Paws::MachineLearning::GetDataSourceOutput;
   has RDSMetadata => (is => 'ro', isa => 'Paws::MachineLearning::RDSMetadata');
   has RedshiftMetadata => (is => 'ro', isa => 'Paws::MachineLearning::RedshiftMetadata');
   has RoleARN => (is => 'ro', isa => 'Str');
+  has StartedAt => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
 
 
@@ -33,6 +36,16 @@ Paws::MachineLearning::GetDataSourceOutput
 
 The parameter is C<true> if statistics need to be generated from the
 observation data.
+
+
+
+=head2 ComputeTime => Int
+
+The approximate CPU time in milliseconds that Amazon Machine Learning
+spent processing the C<DataSource>, normalized and scaled on
+computation resources. C<ComputeTime> is only available if the
+C<DataSource> is in the C<COMPLETED> state and the C<ComputeStatistics>
+is set to true.
 
 
 
@@ -86,6 +99,14 @@ This parameter is provided as part of the verbose format.
 
 
 
+=head2 FinishedAt => Str
+
+The epoch time when Amazon Machine Learning marked the C<DataSource> as
+C<COMPLETED> or C<FAILED>. C<FinishedAt> is only available when the
+C<DataSource> is in the C<COMPLETED> or C<FAILED> state.
+
+
+
 =head2 LastUpdatedAt => Str
 
 The time of the most recent edit to the C<DataSource>. The time is
@@ -134,6 +155,14 @@ The number of data files referenced by the C<DataSource>.
 =head2 RoleARN => Str
 
 
+
+
+
+=head2 StartedAt => Str
+
+The epoch time when Amazon Machine Learning marked the C<DataSource> as
+C<INPROGRESS>. C<StartedAt> isn't available if the C<DataSource> is in
+the C<PENDING> state.
 
 
 

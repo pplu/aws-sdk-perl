@@ -3,8 +3,10 @@ package Paws::ApiGateway::CreateApiKey;
   use Moose;
   has Description => (is => 'ro', isa => 'Str');
   has Enabled => (is => 'ro', isa => 'Bool');
+  has GenerateDistinctId => (is => 'ro', isa => 'Bool');
   has Name => (is => 'ro', isa => 'Str');
   has StageKeys => (is => 'ro', isa => 'ArrayRef[Paws::ApiGateway::StageKey]');
+  has Value => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -50,6 +52,13 @@ Specifies whether the ApiKey can be used by callers.
 
 
 
+=head2 GenerateDistinctId => Bool
+
+Specifies whether (C<true>) or not (C<false>) the key identifier is
+distinct from the created API key value.
+
+
+
 =head2 Name => Str
 
 The name of the ApiKey.
@@ -58,7 +67,14 @@ The name of the ApiKey.
 
 =head2 StageKeys => ArrayRef[L<Paws::ApiGateway::StageKey>]
 
-Specifies whether the ApiKey can be used by callers.
+DEPRECATED FOR USAGE PLANS - Specifies stages associated with the API
+key.
+
+
+
+=head2 Value => Str
+
+Specifies a value of the API key.
 
 
 

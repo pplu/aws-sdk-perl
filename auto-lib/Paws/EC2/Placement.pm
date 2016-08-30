@@ -42,7 +42,7 @@ This class has no description
 
 =head2 Affinity => Str
 
-  The affinity setting for the instance on the Dedicated host. This
+  The affinity setting for the instance on the Dedicated Host. This
 parameter is not supported for the ImportInstance command.
 
 

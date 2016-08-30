@@ -50,7 +50,9 @@ Routing configuration for a fleet alias.
 
 =head2 Type => Str
 
-  Type of routing strategy. Possible routing types include the following:
+  Type of routing strategy.
+
+Possible routing types include the following:
 
 =over
 

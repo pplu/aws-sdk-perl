@@ -17,13 +17,13 @@ Paws::IoT::CreateThingResponse
 
 =head2 ThingArn => Str
 
-The thing ARN.
+The ARN of the new thing.
 
 
 
 =head2 ThingName => Str
 
-The name of the thing.
+The name of the new thing.
 
 
 

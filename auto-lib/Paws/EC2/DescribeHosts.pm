@@ -44,7 +44,7 @@ One or more filters.
 
 =item *
 
-C<instance-type> - The instance type size that the Dedicated host is
+C<instance-type> - The instance type size that the Dedicated Host is
 configured to support.
 
 =item *
@@ -54,7 +54,7 @@ C<auto-placement> - Whether auto-placement is enabled or disabled
 
 =item *
 
-C<host-reservation-id> - The ID of the reservation associated with this
+C<host-reservation-id> - The ID of the reservation assigned to this
 host.
 
 =item *
@@ -64,7 +64,7 @@ the instance
 
 =item *
 
-C<state>- The allocation state of the Dedicated host (C<available> |
+C<state>- The allocation state of the Dedicated Host (C<available> |
 C<under-assessment> | C<permanent-failure> | C<released> |
 C<released-permanent-failure>).
 
@@ -79,7 +79,7 @@ C<availability-zone> - The Availability Zone of the host.
 
 =head2 HostIds => ArrayRef[Str]
 
-The IDs of the Dedicated hosts. The IDs are used for targeted instance
+The IDs of the Dedicated Hosts. The IDs are used for targeted instance
 launches.
 
 

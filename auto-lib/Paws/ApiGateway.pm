@@ -59,6 +59,16 @@ package Paws::ApiGateway;
     my $call_object = $self->new_with_coercions('Paws::ApiGateway::CreateStage', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateUsagePlan {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ApiGateway::CreateUsagePlan', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateUsagePlanKey {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ApiGateway::CreateUsagePlanKey', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteApiKey {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ApiGateway::DeleteApiKey', @_);
@@ -127,6 +137,16 @@ package Paws::ApiGateway;
   sub DeleteStage {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ApiGateway::DeleteStage', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteUsagePlan {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ApiGateway::DeleteUsagePlan', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteUsagePlanKey {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ApiGateway::DeleteUsagePlanKey', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub FlushStageAuthorizersCache {
@@ -284,6 +304,36 @@ package Paws::ApiGateway;
     my $call_object = $self->new_with_coercions('Paws::ApiGateway::GetStages', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetUsage {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ApiGateway::GetUsage', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetUsagePlan {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ApiGateway::GetUsagePlan', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetUsagePlanKey {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ApiGateway::GetUsagePlanKey', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetUsagePlanKeys {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ApiGateway::GetUsagePlanKeys', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetUsagePlans {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ApiGateway::GetUsagePlans', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ImportApiKeys {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ApiGateway::ImportApiKeys', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ImportRestApi {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ApiGateway::ImportRestApi', @_);
@@ -397,6 +447,16 @@ package Paws::ApiGateway;
   sub UpdateStage {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ApiGateway::UpdateStage', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateUsage {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ApiGateway::UpdateUsage', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateUsagePlan {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ApiGateway::UpdateUsagePlan', @_);
     return $self->caller->do_call($self, $call_object);
   }
   
@@ -546,7 +606,7 @@ package Paws::ApiGateway;
   }
 
 
-  sub operations { qw/CreateApiKey CreateAuthorizer CreateBasePathMapping CreateDeployment CreateDomainName CreateModel CreateResource CreateRestApi CreateStage DeleteApiKey DeleteAuthorizer DeleteBasePathMapping DeleteClientCertificate DeleteDeployment DeleteDomainName DeleteIntegration DeleteIntegrationResponse DeleteMethod DeleteMethodResponse DeleteModel DeleteResource DeleteRestApi DeleteStage FlushStageAuthorizersCache FlushStageCache GenerateClientCertificate GetAccount GetApiKey GetApiKeys GetAuthorizer GetAuthorizers GetBasePathMapping GetBasePathMappings GetClientCertificate GetClientCertificates GetDeployment GetDeployments GetDomainName GetDomainNames GetExport GetIntegration GetIntegrationResponse GetMethod GetMethodResponse GetModel GetModels GetModelTemplate GetResource GetResources GetRestApi GetRestApis GetSdk GetStage GetStages ImportRestApi PutIntegration PutIntegrationResponse PutMethod PutMethodResponse PutRestApi TestInvokeAuthorizer TestInvokeMethod UpdateAccount UpdateApiKey UpdateAuthorizer UpdateBasePathMapping UpdateClientCertificate UpdateDeployment UpdateDomainName UpdateIntegration UpdateIntegrationResponse UpdateMethod UpdateMethodResponse UpdateModel UpdateResource UpdateRestApi UpdateStage / }
+  sub operations { qw/CreateApiKey CreateAuthorizer CreateBasePathMapping CreateDeployment CreateDomainName CreateModel CreateResource CreateRestApi CreateStage CreateUsagePlan CreateUsagePlanKey DeleteApiKey DeleteAuthorizer DeleteBasePathMapping DeleteClientCertificate DeleteDeployment DeleteDomainName DeleteIntegration DeleteIntegrationResponse DeleteMethod DeleteMethodResponse DeleteModel DeleteResource DeleteRestApi DeleteStage DeleteUsagePlan DeleteUsagePlanKey FlushStageAuthorizersCache FlushStageCache GenerateClientCertificate GetAccount GetApiKey GetApiKeys GetAuthorizer GetAuthorizers GetBasePathMapping GetBasePathMappings GetClientCertificate GetClientCertificates GetDeployment GetDeployments GetDomainName GetDomainNames GetExport GetIntegration GetIntegrationResponse GetMethod GetMethodResponse GetModel GetModels GetModelTemplate GetResource GetResources GetRestApi GetRestApis GetSdk GetStage GetStages GetUsage GetUsagePlan GetUsagePlanKey GetUsagePlanKeys GetUsagePlans ImportApiKeys ImportRestApi PutIntegration PutIntegrationResponse PutMethod PutMethodResponse PutRestApi TestInvokeAuthorizer TestInvokeMethod UpdateAccount UpdateApiKey UpdateAuthorizer UpdateBasePathMapping UpdateClientCertificate UpdateDeployment UpdateDomainName UpdateIntegration UpdateIntegrationResponse UpdateMethod UpdateMethodResponse UpdateModel UpdateResource UpdateRestApi UpdateStage UpdateUsage UpdateUsagePlan / }
 
 1;
 
@@ -576,15 +636,15 @@ Paws::ApiGateway - Perl Interface to AWS Amazon API Gateway
 
 Amazon API Gateway
 
-Amazon API Gateway helps developers deliver robust, secure and scalable
-mobile and web application backends. Amazon API Gateway allows
-developers to securely connect mobile and web applications to APIs that
-run on AWS Lambda, Amazon EC2, or other publicly addressable web
-services that are hosted outside of AWS.
+Amazon API Gateway helps developers deliver robust, secure, and
+scalable mobile and web application back ends. Amazon API Gateway
+allows developers to securely connect mobile and web applications to
+APIs that run on AWS Lambda, Amazon EC2, or other publicly addressable
+web services that are hosted outside of AWS.
 
 =head1 METHODS
 
-=head2 CreateApiKey([Description => Str, Enabled => Bool, Name => Str, StageKeys => ArrayRef[L<Paws::ApiGateway::StageKey>]])
+=head2 CreateApiKey([Description => Str, Enabled => Bool, GenerateDistinctId => Bool, Name => Str, StageKeys => ArrayRef[L<Paws::ApiGateway::StageKey>], Value => Str])
 
 Each argument is described in detail in: L<Paws::ApiGateway::CreateApiKey>
 
@@ -592,14 +652,18 @@ Returns: a L<Paws::ApiGateway::ApiKey> instance
 
   Create an ApiKey resource.
 
+AWS CLI
 
-=head2 CreateAuthorizer(AuthorizerUri => Str, IdentitySource => Str, Name => Str, RestApiId => Str, Type => Str, [AuthorizerCredentials => Str, AuthorizerResultTtlInSeconds => Int, AuthType => Str, IdentityValidationExpression => Str])
+
+=head2 CreateAuthorizer(IdentitySource => Str, Name => Str, RestApiId => Str, Type => Str, [AuthorizerCredentials => Str, AuthorizerResultTtlInSeconds => Int, AuthorizerUri => Str, AuthType => Str, IdentityValidationExpression => Str, ProviderARNs => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::ApiGateway::CreateAuthorizer>
 
 Returns: a L<Paws::ApiGateway::Authorizer> instance
 
   Adds a new Authorizer resource to an existing RestApi resource.
+
+AWS CLI
 
 
 =head2 CreateBasePathMapping(DomainName => Str, RestApiId => Str, [BasePath => Str, Stage => Str])
@@ -667,6 +731,26 @@ Returns: a L<Paws::ApiGateway::Stage> instance
 for the API.
 
 
+=head2 CreateUsagePlan(Name => Str, [ApiStages => ArrayRef[L<Paws::ApiGateway::ApiStage>], Description => Str, Quota => L<Paws::ApiGateway::QuotaSettings>, Throttle => L<Paws::ApiGateway::ThrottleSettings>])
+
+Each argument is described in detail in: L<Paws::ApiGateway::CreateUsagePlan>
+
+Returns: a L<Paws::ApiGateway::UsagePlan> instance
+
+  Creates a usage plan with the throttle and quota limits, as well as the
+associated API stages, specified in the payload.
+
+
+=head2 CreateUsagePlanKey(KeyId => Str, KeyType => Str, UsagePlanId => Str)
+
+Each argument is described in detail in: L<Paws::ApiGateway::CreateUsagePlanKey>
+
+Returns: a L<Paws::ApiGateway::UsagePlanKey> instance
+
+  Creates a usage plan key for adding an existing API key to a usage
+plan.
+
+
 =head2 DeleteApiKey(ApiKey => Str)
 
 Each argument is described in detail in: L<Paws::ApiGateway::DeleteApiKey>
@@ -683,6 +767,8 @@ Each argument is described in detail in: L<Paws::ApiGateway::DeleteAuthorizer>
 Returns: nothing
 
   Deletes an existing Authorizer resource.
+
+AWS CLI
 
 
 =head2 DeleteBasePathMapping(BasePath => Str, DomainName => Str)
@@ -794,6 +880,25 @@ Returns: nothing
   Deletes a Stage resource.
 
 
+=head2 DeleteUsagePlan(UsagePlanId => Str)
+
+Each argument is described in detail in: L<Paws::ApiGateway::DeleteUsagePlan>
+
+Returns: nothing
+
+  Deletes a usage plan of a given plan Id.
+
+
+=head2 DeleteUsagePlanKey(KeyId => Str, UsagePlanId => Str)
+
+Each argument is described in detail in: L<Paws::ApiGateway::DeleteUsagePlanKey>
+
+Returns: nothing
+
+  Deletes a usage plan key and remove the underlying API key from the
+associated usage plan.
+
+
 =head2 FlushStageAuthorizersCache(RestApiId => Str, StageName => Str)
 
 Each argument is described in detail in: L<Paws::ApiGateway::FlushStageAuthorizersCache>
@@ -830,7 +935,7 @@ Returns: a L<Paws::ApiGateway::Account> instance
   Gets information about the current Account resource.
 
 
-=head2 GetApiKey(ApiKey => Str)
+=head2 GetApiKey(ApiKey => Str, [IncludeValue => Bool])
 
 Each argument is described in detail in: L<Paws::ApiGateway::GetApiKey>
 
@@ -839,7 +944,7 @@ Returns: a L<Paws::ApiGateway::ApiKey> instance
   Gets information about the current ApiKey resource.
 
 
-=head2 GetApiKeys([Limit => Int, Position => Str])
+=head2 GetApiKeys([IncludeValues => Bool, Limit => Int, NameQuery => Str, Position => Str])
 
 Each argument is described in detail in: L<Paws::ApiGateway::GetApiKeys>
 
@@ -856,6 +961,8 @@ Returns: a L<Paws::ApiGateway::Authorizer> instance
 
   Describe an existing Authorizer resource.
 
+AWS CLI
+
 
 =head2 GetAuthorizers(RestApiId => Str, [Limit => Int, Position => Str])
 
@@ -864,6 +971,8 @@ Each argument is described in detail in: L<Paws::ApiGateway::GetAuthorizers>
 Returns: a L<Paws::ApiGateway::Authorizers> instance
 
   Describe an existing Authorizers resource.
+
+AWS CLI
 
 
 =head2 GetBasePathMapping(BasePath => Str, DomainName => Str)
@@ -1075,6 +1184,61 @@ Returns: a L<Paws::ApiGateway::Stages> instance
   Gets information about one or more Stage resources.
 
 
+=head2 GetUsage(EndDate => Str, StartDate => Str, UsagePlanId => Str, [KeyId => Str, Limit => Int, Position => Str])
+
+Each argument is described in detail in: L<Paws::ApiGateway::GetUsage>
+
+Returns: a L<Paws::ApiGateway::Usage> instance
+
+  Gets the usage data of a usage plan in a specified time interval.
+
+
+=head2 GetUsagePlan(UsagePlanId => Str)
+
+Each argument is described in detail in: L<Paws::ApiGateway::GetUsagePlan>
+
+Returns: a L<Paws::ApiGateway::UsagePlan> instance
+
+  Gets a usage plan of a given plan identifier.
+
+
+=head2 GetUsagePlanKey(KeyId => Str, UsagePlanId => Str)
+
+Each argument is described in detail in: L<Paws::ApiGateway::GetUsagePlanKey>
+
+Returns: a L<Paws::ApiGateway::UsagePlanKey> instance
+
+  Gets a usage plan key of a given key identifier.
+
+
+=head2 GetUsagePlanKeys(UsagePlanId => Str, [Limit => Int, NameQuery => Str, Position => Str])
+
+Each argument is described in detail in: L<Paws::ApiGateway::GetUsagePlanKeys>
+
+Returns: a L<Paws::ApiGateway::UsagePlanKeys> instance
+
+  Gets all the usage plan keys representing the API keys added to a
+specified usage plan.
+
+
+=head2 GetUsagePlans([KeyId => Str, Limit => Int, Position => Str])
+
+Each argument is described in detail in: L<Paws::ApiGateway::GetUsagePlans>
+
+Returns: a L<Paws::ApiGateway::UsagePlans> instance
+
+  Gets all the usage plans of the caller's account.
+
+
+=head2 ImportApiKeys(Body => Str, Format => Str, [FailOnWarnings => Bool])
+
+Each argument is described in detail in: L<Paws::ApiGateway::ImportApiKeys>
+
+Returns: a L<Paws::ApiGateway::ApiKeyIds> instance
+
+  Import API keys from an external source, such as a CSV-formatted file.
+
+
 =head2 ImportRestApi(Body => Str, [FailOnWarnings => Bool, Parameters => L<Paws::ApiGateway::MapOfStringToString>])
 
 Each argument is described in detail in: L<Paws::ApiGateway::ImportRestApi>
@@ -1142,6 +1306,8 @@ Returns: a L<Paws::ApiGateway::TestInvokeAuthorizerResponse> instance
   Simulate the execution of an Authorizer in your RestApi with headers,
 parameters, and an incoming request body.
 
+Enable custom authorizers
+
 
 =head2 TestInvokeMethod(HttpMethod => Str, ResourceId => Str, RestApiId => Str, [Body => Str, ClientCertificateId => Str, Headers => L<Paws::ApiGateway::MapOfHeaderValues>, PathWithQueryString => Str, StageVariables => L<Paws::ApiGateway::MapOfStringToString>])
 
@@ -1178,6 +1344,8 @@ Each argument is described in detail in: L<Paws::ApiGateway::UpdateAuthorizer>
 Returns: a L<Paws::ApiGateway::Authorizer> instance
 
   Updates an existing Authorizer resource.
+
+AWS CLI
 
 
 =head2 UpdateBasePathMapping(BasePath => Str, DomainName => Str, [PatchOperations => ArrayRef[L<Paws::ApiGateway::PatchOperation>]])
@@ -1286,6 +1454,25 @@ Each argument is described in detail in: L<Paws::ApiGateway::UpdateStage>
 Returns: a L<Paws::ApiGateway::Stage> instance
 
   Changes information about a Stage resource.
+
+
+=head2 UpdateUsage(KeyId => Str, UsagePlanId => Str, [PatchOperations => ArrayRef[L<Paws::ApiGateway::PatchOperation>]])
+
+Each argument is described in detail in: L<Paws::ApiGateway::UpdateUsage>
+
+Returns: a L<Paws::ApiGateway::Usage> instance
+
+  Grants a temporary extension to the reamining quota of a usage plan
+associated with a specified API key.
+
+
+=head2 UpdateUsagePlan(UsagePlanId => Str, [PatchOperations => ArrayRef[L<Paws::ApiGateway::PatchOperation>]])
+
+Each argument is described in detail in: L<Paws::ApiGateway::UpdateUsagePlan>
+
+Returns: a L<Paws::ApiGateway::UsagePlan> instance
+
+  Updates a usage plan of a given plan Id.
 
 
 =head1 SEE ALSO

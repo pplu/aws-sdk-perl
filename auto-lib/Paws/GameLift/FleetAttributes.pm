@@ -53,9 +53,8 @@ General properties describing a fleet.
 
 =head2 CreationTime => Str
 
-  Time stamp indicating when this object was created. Format is an
-integer representing the number of seconds since the Unix epoch (Unix
-time).
+  Time stamp indicating when this data object was created. Format is a
+number expressed in Unix time as milliseconds (ex: "1469498468.057".
 
 
 =head2 Description => Str
@@ -116,8 +115,9 @@ C<RuntimeConfiguration> object.
 
 =head2 Status => Str
 
-  Current status of the fleet. Possible fleet states include the
-following:
+  Current status of the fleet.
+
+Possible fleet statuses include the following:
 
 =over
 
@@ -144,9 +144,8 @@ request.
 
 =head2 TerminationTime => Str
 
-  Time stamp indicating when this fleet was terminated. Format is an
-integer representing the number of seconds since the Unix epoch (Unix
-time).
+  Time stamp indicating when this data object was terminated. Format is a
+number expressed in Unix time as milliseconds (ex: "1469498468.057".
 
 
 

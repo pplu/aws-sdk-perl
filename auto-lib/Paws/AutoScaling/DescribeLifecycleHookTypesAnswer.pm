@@ -16,20 +16,7 @@ Paws::AutoScaling::DescribeLifecycleHookTypesAnswer
 
 =head2 LifecycleHookTypes => ArrayRef[Str]
 
-One or more of the following notification types:
-
-=over
-
-=item *
-
-C<autoscaling:EC2_INSTANCE_LAUNCHING>
-
-=item *
-
-C<autoscaling:EC2_INSTANCE_TERMINATING>
-
-=back
-
+The lifecycle hook types.
 
 
 

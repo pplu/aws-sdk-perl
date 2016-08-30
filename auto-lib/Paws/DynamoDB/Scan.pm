@@ -397,6 +397,13 @@ C<ALL_ATTRIBUTES> - Returns all of the item attributes.
 
 =item *
 
+C<ALL_PROJECTED_ATTRIBUTES> - Allowed only when querying an index.
+Retrieves all attributes that have been projected into the index. If
+the index is configured to project all attributes, this return value is
+equivalent to specifying C<ALL_ATTRIBUTES>.
+
+=item *
+
 C<COUNT> - Returns the number of matching items, rather than the
 matching items themselves.
 

@@ -20,13 +20,13 @@ Paws::ApiGateway::TestInvokeMethodResponse
 
 =head2 Body => Str
 
-The body of HTTP response.
+The body of the HTTP response.
 
 
 
 =head2 Headers => L<Paws::ApiGateway::MapOfHeaderValues>
 
-The headers of HTTP response.
+The headers of the HTTP response.
 
 
 

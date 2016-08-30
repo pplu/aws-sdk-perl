@@ -39,8 +39,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Flatten => Bool
 
-Resolves all external model references and returns a flattened model
-schema.
+A query parameter of a Boolean value to resolve (C<true>) all external
+model references and returns a flattened model schema or not (C<false>)
+The default is C<false>.
 
 
 

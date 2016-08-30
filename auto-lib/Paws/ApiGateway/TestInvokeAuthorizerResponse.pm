@@ -2,6 +2,7 @@
 package Paws::ApiGateway::TestInvokeAuthorizerResponse;
   use Moose;
   has Authorization => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToList');
+  has Claims => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString');
   has ClientStatus => (is => 'ro', isa => 'Int');
   has Latency => (is => 'ro', isa => 'Int');
   has Log => (is => 'ro', isa => 'Str');
@@ -25,6 +26,13 @@ Paws::ApiGateway::TestInvokeAuthorizerResponse
 
 
 
+=head2 Claims => L<Paws::ApiGateway::MapOfStringToString>
+
+The open identity claims, with any supported custom attributes,
+returned from the Cognito Your User Pool configured for the API.
+
+
+
 =head2 ClientStatus => Int
 
 The HTTP status code that the client would have received. Value is 0 if
@@ -34,7 +42,7 @@ the authorizer succeeded.
 
 =head2 Latency => Int
 
-The execution latency of the test authorizer request
+The execution latency of the test authorizer request.
 
 
 
@@ -46,7 +54,7 @@ The Amazon API Gateway execution log for the test authorizer request.
 
 =head2 Policy => Str
 
-The policy JSON document returned by the Authorizer
+The JSON policy document returned by the Authorizer
 
 
 

@@ -57,7 +57,7 @@ __PACKAGE__->meta->make_immutable;
 
 package Paws;
 
-our $VERSION = '0.26';
+our $VERSION = '0.28';
 
 use Moose;
 use MooseX::ClassAttribute;
@@ -310,6 +310,8 @@ L<Paws::ELB>
 
 L<Paws::ELB>
 
+L<Paws::ELBv2>
+
 L<Paws::EMR>
 
 L<Paws::EMR>
@@ -333,6 +335,8 @@ L<Paws::IoT>
 L<Paws::IoTData>
 
 L<Paws::Kinesis>
+
+L<Paws::KinesisAnalytics>
 
 L<Paws::KMS>
 
@@ -367,6 +371,8 @@ L<Paws::Signin>
 L<Paws::SimpleDB>
 
 L<Paws::SimpleWorkflow>
+
+L<Paws::Snowball>
 
 L<Paws::SNS>
 
@@ -638,6 +644,8 @@ Ioan Rogers for contributing AssumeRoleWithSAML with ADFS auth example
 Miquel Soriano for reporting a bug with DescribeAutoScalingGroups
 
 Albert Bendicho (wiof) for contributing better retry logic
+
+Brian Hartsock for better handling of XMLResponse exceptions
 
 
 =cut

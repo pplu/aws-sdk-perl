@@ -449,6 +449,16 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::DescribeFlowLogs', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeHostReservationOfferings {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeHostReservationOfferings', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeHostReservations {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeHostReservations', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeHosts {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::DescribeHosts', @_);
@@ -789,6 +799,11 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::GetConsoleScreenshot', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetHostReservationPurchasePreview {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::GetHostReservationPurchasePreview', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetPasswordData {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::GetPasswordData', @_);
@@ -902,6 +917,11 @@ package Paws::EC2;
   sub MoveAddressToVpc {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::MoveAddressToVpc', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub PurchaseHostReservation {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::PurchaseHostReservation', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub PurchaseReservedInstancesOffering {
@@ -1226,7 +1246,7 @@ package Paws::EC2;
   }
 
 
-  sub operations { qw/AcceptVpcPeeringConnection AllocateAddress AllocateHosts AssignPrivateIpAddresses AssociateAddress AssociateDhcpOptions AssociateRouteTable AttachClassicLinkVpc AttachInternetGateway AttachNetworkInterface AttachVolume AttachVpnGateway AuthorizeSecurityGroupEgress AuthorizeSecurityGroupIngress BundleInstance CancelBundleTask CancelConversionTask CancelExportTask CancelImportTask CancelReservedInstancesListing CancelSpotFleetRequests CancelSpotInstanceRequests ConfirmProductInstance CopyImage CopySnapshot CreateCustomerGateway CreateDhcpOptions CreateFlowLogs CreateImage CreateInstanceExportTask CreateInternetGateway CreateKeyPair CreateNatGateway CreateNetworkAcl CreateNetworkAclEntry CreateNetworkInterface CreatePlacementGroup CreateReservedInstancesListing CreateRoute CreateRouteTable CreateSecurityGroup CreateSnapshot CreateSpotDatafeedSubscription CreateSubnet CreateTags CreateVolume CreateVpc CreateVpcEndpoint CreateVpcPeeringConnection CreateVpnConnection CreateVpnConnectionRoute CreateVpnGateway DeleteCustomerGateway DeleteDhcpOptions DeleteFlowLogs DeleteInternetGateway DeleteKeyPair DeleteNatGateway DeleteNetworkAcl DeleteNetworkAclEntry DeleteNetworkInterface DeletePlacementGroup DeleteRoute DeleteRouteTable DeleteSecurityGroup DeleteSnapshot DeleteSpotDatafeedSubscription DeleteSubnet DeleteTags DeleteVolume DeleteVpc DeleteVpcEndpoints DeleteVpcPeeringConnection DeleteVpnConnection DeleteVpnConnectionRoute DeleteVpnGateway DeregisterImage DescribeAccountAttributes DescribeAddresses DescribeAvailabilityZones DescribeBundleTasks DescribeClassicLinkInstances DescribeConversionTasks DescribeCustomerGateways DescribeDhcpOptions DescribeExportTasks DescribeFlowLogs DescribeHosts DescribeIdentityIdFormat DescribeIdFormat DescribeImageAttribute DescribeImages DescribeImportImageTasks DescribeImportSnapshotTasks DescribeInstanceAttribute DescribeInstances DescribeInstanceStatus DescribeInternetGateways DescribeKeyPairs DescribeMovingAddresses DescribeNatGateways DescribeNetworkAcls DescribeNetworkInterfaceAttribute DescribeNetworkInterfaces DescribePlacementGroups DescribePrefixLists DescribeRegions DescribeReservedInstances DescribeReservedInstancesListings DescribeReservedInstancesModifications DescribeReservedInstancesOfferings DescribeRouteTables DescribeScheduledInstanceAvailability DescribeScheduledInstances DescribeSecurityGroupReferences DescribeSecurityGroups DescribeSnapshotAttribute DescribeSnapshots DescribeSpotDatafeedSubscription DescribeSpotFleetInstances DescribeSpotFleetRequestHistory DescribeSpotFleetRequests DescribeSpotInstanceRequests DescribeSpotPriceHistory DescribeStaleSecurityGroups DescribeSubnets DescribeTags DescribeVolumeAttribute DescribeVolumes DescribeVolumeStatus DescribeVpcAttribute DescribeVpcClassicLink DescribeVpcClassicLinkDnsSupport DescribeVpcEndpoints DescribeVpcEndpointServices DescribeVpcPeeringConnections DescribeVpcs DescribeVpnConnections DescribeVpnGateways DetachClassicLinkVpc DetachInternetGateway DetachNetworkInterface DetachVolume DetachVpnGateway DisableVgwRoutePropagation DisableVpcClassicLink DisableVpcClassicLinkDnsSupport DisassociateAddress DisassociateRouteTable EnableVgwRoutePropagation EnableVolumeIO EnableVpcClassicLink EnableVpcClassicLinkDnsSupport GetConsoleOutput GetConsoleScreenshot GetPasswordData ImportImage ImportInstance ImportKeyPair ImportSnapshot ImportVolume ModifyHosts ModifyIdentityIdFormat ModifyIdFormat ModifyImageAttribute ModifyInstanceAttribute ModifyInstancePlacement ModifyNetworkInterfaceAttribute ModifyReservedInstances ModifySnapshotAttribute ModifySpotFleetRequest ModifySubnetAttribute ModifyVolumeAttribute ModifyVpcAttribute ModifyVpcEndpoint ModifyVpcPeeringConnectionOptions MonitorInstances MoveAddressToVpc PurchaseReservedInstancesOffering PurchaseScheduledInstances RebootInstances RegisterImage RejectVpcPeeringConnection ReleaseAddress ReleaseHosts ReplaceNetworkAclAssociation ReplaceNetworkAclEntry ReplaceRoute ReplaceRouteTableAssociation ReportInstanceStatus RequestSpotFleet RequestSpotInstances ResetImageAttribute ResetInstanceAttribute ResetNetworkInterfaceAttribute ResetSnapshotAttribute RestoreAddressToClassic RevokeSecurityGroupEgress RevokeSecurityGroupIngress RunInstances RunScheduledInstances StartInstances StopInstances TerminateInstances UnassignPrivateIpAddresses UnmonitorInstances / }
+  sub operations { qw/AcceptVpcPeeringConnection AllocateAddress AllocateHosts AssignPrivateIpAddresses AssociateAddress AssociateDhcpOptions AssociateRouteTable AttachClassicLinkVpc AttachInternetGateway AttachNetworkInterface AttachVolume AttachVpnGateway AuthorizeSecurityGroupEgress AuthorizeSecurityGroupIngress BundleInstance CancelBundleTask CancelConversionTask CancelExportTask CancelImportTask CancelReservedInstancesListing CancelSpotFleetRequests CancelSpotInstanceRequests ConfirmProductInstance CopyImage CopySnapshot CreateCustomerGateway CreateDhcpOptions CreateFlowLogs CreateImage CreateInstanceExportTask CreateInternetGateway CreateKeyPair CreateNatGateway CreateNetworkAcl CreateNetworkAclEntry CreateNetworkInterface CreatePlacementGroup CreateReservedInstancesListing CreateRoute CreateRouteTable CreateSecurityGroup CreateSnapshot CreateSpotDatafeedSubscription CreateSubnet CreateTags CreateVolume CreateVpc CreateVpcEndpoint CreateVpcPeeringConnection CreateVpnConnection CreateVpnConnectionRoute CreateVpnGateway DeleteCustomerGateway DeleteDhcpOptions DeleteFlowLogs DeleteInternetGateway DeleteKeyPair DeleteNatGateway DeleteNetworkAcl DeleteNetworkAclEntry DeleteNetworkInterface DeletePlacementGroup DeleteRoute DeleteRouteTable DeleteSecurityGroup DeleteSnapshot DeleteSpotDatafeedSubscription DeleteSubnet DeleteTags DeleteVolume DeleteVpc DeleteVpcEndpoints DeleteVpcPeeringConnection DeleteVpnConnection DeleteVpnConnectionRoute DeleteVpnGateway DeregisterImage DescribeAccountAttributes DescribeAddresses DescribeAvailabilityZones DescribeBundleTasks DescribeClassicLinkInstances DescribeConversionTasks DescribeCustomerGateways DescribeDhcpOptions DescribeExportTasks DescribeFlowLogs DescribeHostReservationOfferings DescribeHostReservations DescribeHosts DescribeIdentityIdFormat DescribeIdFormat DescribeImageAttribute DescribeImages DescribeImportImageTasks DescribeImportSnapshotTasks DescribeInstanceAttribute DescribeInstances DescribeInstanceStatus DescribeInternetGateways DescribeKeyPairs DescribeMovingAddresses DescribeNatGateways DescribeNetworkAcls DescribeNetworkInterfaceAttribute DescribeNetworkInterfaces DescribePlacementGroups DescribePrefixLists DescribeRegions DescribeReservedInstances DescribeReservedInstancesListings DescribeReservedInstancesModifications DescribeReservedInstancesOfferings DescribeRouteTables DescribeScheduledInstanceAvailability DescribeScheduledInstances DescribeSecurityGroupReferences DescribeSecurityGroups DescribeSnapshotAttribute DescribeSnapshots DescribeSpotDatafeedSubscription DescribeSpotFleetInstances DescribeSpotFleetRequestHistory DescribeSpotFleetRequests DescribeSpotInstanceRequests DescribeSpotPriceHistory DescribeStaleSecurityGroups DescribeSubnets DescribeTags DescribeVolumeAttribute DescribeVolumes DescribeVolumeStatus DescribeVpcAttribute DescribeVpcClassicLink DescribeVpcClassicLinkDnsSupport DescribeVpcEndpoints DescribeVpcEndpointServices DescribeVpcPeeringConnections DescribeVpcs DescribeVpnConnections DescribeVpnGateways DetachClassicLinkVpc DetachInternetGateway DetachNetworkInterface DetachVolume DetachVpnGateway DisableVgwRoutePropagation DisableVpcClassicLink DisableVpcClassicLinkDnsSupport DisassociateAddress DisassociateRouteTable EnableVgwRoutePropagation EnableVolumeIO EnableVpcClassicLink EnableVpcClassicLinkDnsSupport GetConsoleOutput GetConsoleScreenshot GetHostReservationPurchasePreview GetPasswordData ImportImage ImportInstance ImportKeyPair ImportSnapshot ImportVolume ModifyHosts ModifyIdentityIdFormat ModifyIdFormat ModifyImageAttribute ModifyInstanceAttribute ModifyInstancePlacement ModifyNetworkInterfaceAttribute ModifyReservedInstances ModifySnapshotAttribute ModifySpotFleetRequest ModifySubnetAttribute ModifyVolumeAttribute ModifyVpcAttribute ModifyVpcEndpoint ModifyVpcPeeringConnectionOptions MonitorInstances MoveAddressToVpc PurchaseHostReservation PurchaseReservedInstancesOffering PurchaseScheduledInstances RebootInstances RegisterImage RejectVpcPeeringConnection ReleaseAddress ReleaseHosts ReplaceNetworkAclAssociation ReplaceNetworkAclEntry ReplaceRoute ReplaceRouteTableAssociation ReportInstanceStatus RequestSpotFleet RequestSpotInstances ResetImageAttribute ResetInstanceAttribute ResetNetworkInterfaceAttribute ResetSnapshotAttribute RestoreAddressToClassic RevokeSecurityGroupEgress RevokeSecurityGroupIngress RunInstances RunScheduledInstances StartInstances StopInstances TerminateInstances UnassignPrivateIpAddresses UnmonitorInstances / }
 
 1;
 
@@ -1295,7 +1315,7 @@ Each argument is described in detail in: L<Paws::EC2::AllocateHosts>
 
 Returns: a L<Paws::EC2::AllocateHostsResult> instance
 
-  Allocates a Dedicated host to your account. At minimum you need to
+  Allocates a Dedicated Host to your account. At minimum you need to
 specify the instance size type, Availability Zone, and quantity of
 hosts you want to allocate.
 
@@ -1581,9 +1601,8 @@ including a partially uploaded volume or instance. If the conversion is
 complete or is in the process of transferring the final disk image, the
 command fails and returns an exception.
 
-For more information, see Using the Command Line Tools to Import Your
-Virtual Machine to Amazon EC2 in the I<Amazon Elastic Compute Cloud
-User Guide>.
+For more information, see Importing a Virtual Machine Using the Amazon
+EC2 CLI.
 
 
 =head2 CancelExportTask(ExportTaskId => Str)
@@ -1703,6 +1722,9 @@ To copy an encrypted snapshot that has been shared from another
 account, you must have permissions for the CMK used to encrypt the
 snapshot.
 
+Snapshots created by the CopySnapshot action have an arbitrary volume
+ID that should not be used for any purpose.
+
 For more information, see Copying an Amazon EBS Snapshot in the
 I<Amazon Elastic Compute Cloud User Guide>.
 
@@ -1761,7 +1783,10 @@ information about the options, see RFC 2132.
 C<domain-name-servers> - The IP addresses of up to four domain name
 servers, or AmazonProvidedDNS. The default DHCP option set specifies
 AmazonProvidedDNS. If specifying more than one domain name server,
-specify the IP addresses in a single parameter, separated by commas.
+specify the IP addresses in a single parameter, separated by commas. If
+you want your instance to receive a custom DNS hostname as specified in
+C<domain-name>, you must set C<domain-name-servers> to a custom DNS
+server.
 
 =item *
 
@@ -1769,12 +1794,13 @@ C<domain-name> - If you're using AmazonProvidedDNS in "us-east-1",
 specify "ec2.internal". If you're using AmazonProvidedDNS in another
 region, specify "region.compute.internal" (for example,
 "ap-northeast-1.compute.internal"). Otherwise, specify a domain name
-(for example, "MyCompany.com"). B<Important>: Some Linux operating
-systems accept multiple domain names separated by spaces. However,
-Windows and other Linux operating systems treat the value as a single
-domain, which results in unexpected behavior. If your DHCP options set
-is associated with a VPC that has instances with multiple operating
-systems, specify only one domain name.
+(for example, "MyCompany.com"). This value is used to complete
+unqualified DNS hostnames. B<Important>: Some Linux operating systems
+accept multiple domain names separated by spaces. However, Windows and
+other Linux operating systems treat the value as a single domain, which
+results in unexpected behavior. If your DHCP options set is associated
+with a VPC that has instances with multiple operating systems, specify
+only one domain name.
 
 =item *
 
@@ -1850,8 +1876,8 @@ Returns: a L<Paws::EC2::CreateInstanceExportTaskResult> instance
 
 For information about the supported operating systems, image formats,
 and known limitations for the types of instances you can export, see
-Exporting EC2 Instances in the I<Amazon Elastic Compute Cloud User
-Guide>.
+Exporting an Instance as a VM Using VM Import/Export in the I<VM
+Import/Export User Guide>.
 
 
 =head2 CreateInternetGateway([DryRun => Bool])
@@ -2737,8 +2763,7 @@ Each argument is described in detail in: L<Paws::EC2::DescribeConversionTasks>
 Returns: a L<Paws::EC2::DescribeConversionTasksResult> instance
 
   Describes one or more of your conversion tasks. For more information,
-see Using the Command Line Tools to Import Your Virtual Machine to
-Amazon EC2 in the I<Amazon Elastic Compute Cloud User Guide>.
+see the VM Import/Export User Guide.
 
 For information about the import manifest referenced by this API
 action, see VM Import Manifest.
@@ -2789,17 +2814,45 @@ logs (the log streams for the network interfaces), you must use the
 CloudWatch Logs console or the CloudWatch Logs API.
 
 
+=head2 DescribeHostReservationOfferings([Filter => ArrayRef[L<Paws::EC2::Filter>], MaxDuration => Int, MaxResults => Int, MinDuration => Int, NextToken => Str, OfferingId => Str])
+
+Each argument is described in detail in: L<Paws::EC2::DescribeHostReservationOfferings>
+
+Returns: a L<Paws::EC2::DescribeHostReservationOfferingsResult> instance
+
+  Describes the Dedicated Host Reservations that are available to
+purchase.
+
+The results describe all the Dedicated Host Reservation offerings,
+including offerings that may not match the instance family and region
+of your Dedicated Hosts. When purchasing an offering, ensure that the
+the instance family and region of the offering matches that of the
+Dedicated Host/s it will be associated with. For an overview of
+supported instance types, see Dedicated Hosts Overview in the I<Amazon
+Elastic Compute Cloud User Guide>.
+
+
+=head2 DescribeHostReservations([Filter => ArrayRef[L<Paws::EC2::Filter>], HostReservationIdSet => ArrayRef[Str], MaxResults => Int, NextToken => Str])
+
+Each argument is described in detail in: L<Paws::EC2::DescribeHostReservations>
+
+Returns: a L<Paws::EC2::DescribeHostReservationsResult> instance
+
+  Describes Dedicated Host Reservations which are associated with
+Dedicated Hosts in your account.
+
+
 =head2 DescribeHosts([Filter => ArrayRef[L<Paws::EC2::Filter>], HostIds => ArrayRef[Str], MaxResults => Int, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::EC2::DescribeHosts>
 
 Returns: a L<Paws::EC2::DescribeHostsResult> instance
 
-  Describes one or more of your Dedicated hosts.
+  Describes one or more of your Dedicated Hosts.
 
-The results describe only the Dedicated hosts in the region you're
+The results describe only the Dedicated Hosts in the region you're
 currently using. All listed instances consume capacity on your
-Dedicated host. Dedicated hosts that have recently been released will
+Dedicated Host. Dedicated Hosts that have recently been released will
 be listed with the state C<released>.
 
 
@@ -3645,12 +3698,12 @@ Returns: a L<Paws::EC2::VolumeAttachment> instance
 
   Detaches an EBS volume from an instance. Make sure to unmount any file
 systems on the device within your operating system before detaching the
-volume. Failure to do so results in the volume being stuck in a busy
-state while detaching.
-
-If an Amazon EBS volume is the root device of an instance, it can't be
-detached while the instance is running. To detach the root volume, stop
-the instance first.
+volume. Failure to do so can result in the volume becoming stuck in the
+C<busy> state while detaching. If this happens, detachment can be
+delayed indefinitely until you unmount the volume, force detachment,
+reboot the instance, or all three. If an EBS volume is the root device
+of an instance, it can't be detached while the instance is running. To
+detach the root volume, stop the instance first.
 
 When a volume with an AWS Marketplace product code is detached from an
 instance, the product code is no longer associated with the instance.
@@ -3831,6 +3884,20 @@ troubleshooting.
 The returned content is Base64-encoded.
 
 
+=head2 GetHostReservationPurchasePreview(HostIdSet => ArrayRef[Str], OfferingId => Str)
+
+Each argument is described in detail in: L<Paws::EC2::GetHostReservationPurchasePreview>
+
+Returns: a L<Paws::EC2::GetHostReservationPurchasePreviewResult> instance
+
+  Preview a reservation purchase with configurations that match those of
+your Dedicated Host. You must have active Dedicated Hosts in your
+account before you purchase a reservation.
+
+This is a preview of the PurchaseHostReservation action and does not
+result in the offering being purchased.
+
+
 =head2 GetPasswordData(InstanceId => Str, [DryRun => Bool])
 
 Each argument is described in detail in: L<Paws::EC2::GetPasswordData>
@@ -3862,7 +3929,8 @@ Each argument is described in detail in: L<Paws::EC2::ImportImage>
 Returns: a L<Paws::EC2::ImportImageResult> instance
 
   Import single or multi-volume disk images or EBS snapshots into an
-Amazon Machine Image (AMI).
+Amazon Machine Image (AMI). For more information, see Importing a VM as
+an Image Using VM Import/Export in the I<VM Import/Export User Guide>.
 
 
 =head2 ImportInstance(Platform => Str, [Description => Str, DiskImages => ArrayRef[L<Paws::EC2::DiskImage>], DryRun => Bool, LaunchSpecification => L<Paws::EC2::ImportInstanceLaunchSpecification>])
@@ -3873,11 +3941,8 @@ Returns: a L<Paws::EC2::ImportInstanceResult> instance
 
   Creates an import instance task using metadata from the specified disk
 image. C<ImportInstance> only supports single-volume VMs. To import
-multi-volume VMs, use ImportImage. After importing the image, you then
-upload it using the C<ec2-import-volume> command in the EC2 command
-line tools. For more information, see Using the Command Line Tools to
-Import Your Virtual Machine to Amazon EC2 in the I<Amazon Elastic
-Compute Cloud User Guide>.
+multi-volume VMs, use ImportImage. For more information, see Importing
+a Virtual Machine Using the Amazon EC2 CLI.
 
 For information about the import manifest referenced by this API
 action, see VM Import Manifest.
@@ -3915,11 +3980,7 @@ Each argument is described in detail in: L<Paws::EC2::ImportVolume>
 Returns: a L<Paws::EC2::ImportVolumeResult> instance
 
   Creates an import volume task using metadata from the specified disk
-image. After importing the image, you then upload it using the
-C<ec2-import-volume> command in the Amazon EC2 command-line interface
-(CLI) tools. For more information, see Using the Command Line Tools to
-Import Your Virtual Machine to Amazon EC2 in the I<Amazon Elastic
-Compute Cloud User Guide>.
+image.For more information, see Importing Disks to Amazon EBS.
 
 For information about the import manifest referenced by this API
 action, see VM Import Manifest.
@@ -3931,10 +3992,10 @@ Each argument is described in detail in: L<Paws::EC2::ModifyHosts>
 
 Returns: a L<Paws::EC2::ModifyHostsResult> instance
 
-  Modify the auto-placement setting of a Dedicated host. When
+  Modify the auto-placement setting of a Dedicated Host. When
 auto-placement is enabled, AWS will place instances that you launch
 with a tenancy of C<host>, but without targeting a specific host ID,
-onto any available Dedicated host in your account which has
+onto any available Dedicated Host in your account which has
 auto-placement enabled. When auto-placement is disabled, you need to
 provide a host ID if you want the instance to launch onto a specific
 host. If no host ID is provided, the instance will be launched onto a
@@ -4001,6 +4062,11 @@ only one attribute at a time.
 AWS Marketplace product codes cannot be modified. Images with an AWS
 Marketplace product code cannot be made public.
 
+The SriovNetSupport enhanced networking attribute cannot be changed
+using this command. Instead, enable SriovNetSupport on an instance and
+create an AMI from the instance. This will result in an image with
+SriovNetSupport enabled.
+
 
 =head2 ModifyInstanceAttribute(InstanceId => Str, [Attribute => Str, BlockDeviceMappings => ArrayRef[L<Paws::EC2::InstanceBlockDeviceMappingSpecification>], DisableApiTermination => L<Paws::EC2::AttributeBooleanValue>, DryRun => Bool, EbsOptimized => L<Paws::EC2::AttributeBooleanValue>, EnaSupport => L<Paws::EC2::AttributeBooleanValue>, Groups => ArrayRef[Str], InstanceInitiatedShutdownBehavior => L<Paws::EC2::AttributeValue>, InstanceType => L<Paws::EC2::AttributeValue>, Kernel => L<Paws::EC2::AttributeValue>, Ramdisk => L<Paws::EC2::AttributeValue>, SourceDestCheck => L<Paws::EC2::AttributeBooleanValue>, SriovNetSupport => L<Paws::EC2::AttributeValue>, UserData => L<Paws::EC2::BlobAttributeValue>, Value => Str])
 
@@ -4026,7 +4092,7 @@ Returns: a L<Paws::EC2::ModifyInstancePlacementResult> instance
 modify the instance tenancy setting.
 
 Instance affinity is disabled by default. When instance affinity is
-C<host> and it is not associated with a specific Dedicated host, the
+C<host> and it is not associated with a specific Dedicated Host, the
 next time it is launched it will automatically be associated with the
 host it lands on. This relationship will persist if the instance is
 stopped/started, or rebooted.
@@ -4191,15 +4257,20 @@ Enable/disable communication over the peering connection between
 instances in your VPC and an EC2-Classic instance that's linked to the
 peer VPC.
 
+=item *
+
+Enable/disable a local VPC to resolve public DNS hostnames to private
+IP addresses when queried from instances in the peer VPC.
+
 =back
 
 If the peered VPCs are in different accounts, each owner must initiate
-a separate request to enable or disable communication in either
-direction, depending on whether their VPC was the requester or accepter
-for the VPC peering connection. If the peered VPCs are in the same
-account, you can modify the requester and accepter options in the same
-request. To confirm which VPC is the accepter and requester for a VPC
-peering connection, use the DescribeVpcPeeringConnections command.
+a separate request to modify the peering connection options, depending
+on whether their VPC was the requester or accepter for the VPC peering
+connection. If the peered VPCs are in the same account, you can modify
+the requester and accepter options in the same request. To confirm
+which VPC is the accepter and requester for a VPC peering connection,
+use the DescribeVpcPeeringConnections command.
 
 
 =head2 MonitorInstances(InstanceIds => ArrayRef[Str], [DryRun => Bool])
@@ -4227,6 +4298,18 @@ available for use in the EC2-Classic platform, unless you move it back
 using the RestoreAddressToClassic request. You cannot move an Elastic
 IP address that was originally allocated for use in the EC2-VPC
 platform to the EC2-Classic platform.
+
+
+=head2 PurchaseHostReservation(HostIdSet => ArrayRef[Str], OfferingId => Str, [ClientToken => Str, CurrencyCode => Str, LimitPrice => Str])
+
+Each argument is described in detail in: L<Paws::EC2::PurchaseHostReservation>
+
+Returns: a L<Paws::EC2::PurchaseHostReservationResult> instance
+
+  Purchase a reservation with configurations that match those of your
+Dedicated Host. You must have active Dedicated Hosts in your account
+before you purchase a reservation. This action results in the specified
+reservation being purchased and charged to your account.
 
 
 =head2 PurchaseReservedInstancesOffering(InstanceCount => Int, ReservedInstancesOfferingId => Str, [DryRun => Bool, LimitPrice => L<Paws::EC2::ReservedInstanceLimitPrice>])
@@ -4374,13 +4457,14 @@ Each argument is described in detail in: L<Paws::EC2::ReleaseHosts>
 
 Returns: a L<Paws::EC2::ReleaseHostsResult> instance
 
-  When you no longer want to use a Dedicated host it can be released.
-On-Demand billing is stopped and the host goes into C<released> state.
-The host ID of Dedicated hosts that have been released can no longer be
-specified in another request, e.g., ModifyHosts. You must stop or
-terminate all instances on a host before it can be released.
+  When you no longer want to use an On-Demand Dedicated Host it can be
+released. On-Demand billing is stopped and the host goes into
+C<released> state. The host ID of Dedicated Hosts that have been
+released can no longer be specified in another request, e.g.,
+ModifyHosts. You must stop or terminate all instances on a host before
+it can be released.
 
-When Dedicated hosts are released, it make take some time for them to
+When Dedicated Hosts are released, it make take some time for them to
 stop counting toward your limit and you may receive capacity errors
 when trying to allocate new Dedicated hosts. Try waiting a few minutes,
 and then try again.

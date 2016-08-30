@@ -1,7 +1,7 @@
 
 package Paws::AutoScaling::DeleteScheduledAction;
   use Moose;
-  has AutoScalingGroupName => (is => 'ro', isa => 'Str');
+  has AutoScalingGroupName => (is => 'ro', isa => 'Str', required => 1);
   has ScheduledActionName => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -34,7 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 AutoScalingGroupName => Str
+=head2 B<REQUIRED> AutoScalingGroupName => Str
 
 The name of the Auto Scaling group.
 

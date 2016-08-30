@@ -32,19 +32,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ELB::Backen
 
 =head1 DESCRIPTION
 
-Information about the configuration of a back-end server.
+Information about the configuration of an EC2 instance.
 
 =head1 ATTRIBUTES
 
 
 =head2 InstancePort => Int
 
-  The port on which the back-end server is listening.
+  The port on which the EC2 instance is listening.
 
 
 =head2 PolicyNames => ArrayRef[Str]
 
-  The names of the policies enabled for the back-end server.
+  The names of the policies enabled for the EC2 instance.
 
 
 

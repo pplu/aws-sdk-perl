@@ -69,9 +69,10 @@ The namespace of the metric, with or without spaces.
 
 =head2 B<REQUIRED> Period => Int
 
-The granularity, in seconds, of the returned datapoints. C<Period> must
-be at least 60 seconds and must be a multiple of 60. The default value
-is 60.
+The granularity, in seconds, of the returned datapoints. A C<Period>
+can be as short as one minute (60 seconds) or as long as one day
+(86,400 seconds), and must be a multiple of 60. The default value is
+60.
 
 
 
@@ -103,7 +104,10 @@ I<Amazon CloudWatch Developer Guide>.
 
 =head2 Unit => Str
 
-The unit for the metric.
+The specific unit for a given metric. Metrics may be reported in
+multiple units. Not supplying a unit results in all units being
+returned. If the metric only ever reports one unit, specifying a unit
+will have no effect.
 
 Valid values are: C<"Seconds">, C<"Microseconds">, C<"Milliseconds">, C<"Bytes">, C<"Kilobytes">, C<"Megabytes">, C<"Gigabytes">, C<"Terabytes">, C<"Bits">, C<"Kilobits">, C<"Megabits">, C<"Gigabits">, C<"Terabits">, C<"Percent">, C<"Count">, C<"Bytes/Second">, C<"Kilobytes/Second">, C<"Megabytes/Second">, C<"Gigabytes/Second">, C<"Terabytes/Second">, C<"Bits/Second">, C<"Kilobits/Second">, C<"Megabits/Second">, C<"Gigabits/Second">, C<"Terabits/Second">, C<"Count/Second">, C<"None">
 

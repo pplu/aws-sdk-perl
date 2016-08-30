@@ -2,6 +2,7 @@ package Paws::ECS::TaskDefinition;
   use Moose;
   has ContainerDefinitions => (is => 'ro', isa => 'ArrayRef[Paws::ECS::ContainerDefinition]', xmlname => 'containerDefinitions', request_name => 'containerDefinitions', traits => ['Unwrapped','NameInRequest']);
   has Family => (is => 'ro', isa => 'Str', xmlname => 'family', request_name => 'family', traits => ['Unwrapped','NameInRequest']);
+  has NetworkMode => (is => 'ro', isa => 'Str', xmlname => 'networkMode', request_name => 'networkMode', traits => ['Unwrapped','NameInRequest']);
   has RequiresAttributes => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Attribute]', xmlname => 'requiresAttributes', request_name => 'requiresAttributes', traits => ['Unwrapped','NameInRequest']);
   has Revision => (is => 'ro', isa => 'Int', xmlname => 'revision', request_name => 'revision', traits => ['Unwrapped','NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', xmlname => 'status', request_name => 'status', traits => ['Unwrapped','NameInRequest']);
@@ -54,6 +55,21 @@ Definitions in the I<Amazon EC2 Container Service Developer Guide>.
 =head2 Family => Str
 
   The family of your task definition, used as the definition name.
+
+
+=head2 NetworkMode => Str
+
+  The Docker networking mode to use for the containers in the task. The
+valid values are C<none>, C<bridge>, and C<host>.
+
+If the network mode is C<none>, the containers do not have external
+connectivity. The default Docker network mode is C<bridge>. The C<host>
+network mode offers the highest networking performance for containers
+because it uses the host network stack instead of the virtualized
+network stack provided by the C<bridge> mode.
+
+For more information, see Network settings in the I<Docker run
+reference>.
 
 
 =head2 RequiresAttributes => ArrayRef[L<Paws::ECS::Attribute>]

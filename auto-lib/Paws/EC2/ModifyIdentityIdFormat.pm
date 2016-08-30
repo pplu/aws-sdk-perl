@@ -44,7 +44,8 @@ root user.
 
 =head2 B<REQUIRED> Resource => Str
 
-The type of resource.
+The type of resource: C<instance> | C<reservation> | C<snapshot> |
+C<volume>
 
 
 

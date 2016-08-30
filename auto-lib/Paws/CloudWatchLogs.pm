@@ -282,8 +282,6 @@ Paws::CloudWatchLogs - Perl Interface to AWS Amazon CloudWatch Logs
 
 =head1 DESCRIPTION
 
-Amazon CloudWatch Logs API Reference
-
 You can use Amazon CloudWatch Logs to monitor, store, and access your
 log files from Amazon Elastic Compute Cloud (Amazon EC2) instances,
 Amazon CloudTrail, or other sources. You can then retrieve the
@@ -375,10 +373,14 @@ You must use the following guidelines when naming a log group:
 
 =over
 
-=item * Log group names can be between 1 and 512 characters long.
+=item *
 
-=item * Allowed characters are a-z, A-Z, 0-9, '_' (underscore), '-'
-(hyphen), '/' (forward slash), and '.' (period).
+Log group names can be between 1 and 512 characters long.
+
+=item *
+
+Allowed characters are a-z, A-Z, 0-9, '_' (underscore), '-' (hyphen),
+'/' (forward slash), and '.' (period).
 
 =back
 
@@ -398,9 +400,13 @@ You must use the following guidelines when naming a log stream:
 
 =over
 
-=item * Log stream names can be between 1 and 512 characters long.
+=item *
 
-=item * The ':' colon character is not allowed.
+Log stream names can be between 1 and 512 characters long.
+
+=item *
+
+The ':' colon character is not allowed.
 
 =back
 
@@ -588,7 +594,7 @@ search can be resumed with a new request providing the nextToken. The
 response will contain a list of C<searchedLogStreams> that contains
 information about which streams were searched in the request and
 whether they have been searched completely or require further
-pagination. The C<limit> parameter in the request. can be used to
+pagination. The C<limit> parameter in the request can be used to
 specify the maximum number of events to return in a page.
 
 
@@ -654,30 +660,42 @@ Returns: a L<Paws::CloudWatchLogs::PutLogEventsResponse> instance
 
 Every PutLogEvents request must include the C<sequenceToken> obtained
 from the response of the previous request. An upload in a newly created
-log stream does not require a C<sequenceToken>.
+log stream does not require a C<sequenceToken>. You can also get the
+C<sequenceToken> using DescribeLogStreams.
 
 The batch of events must satisfy the following constraints:
 
 =over
 
-=item * The maximum batch size is 1,048,576 bytes, and this size is
-calculated as the sum of all event messages in UTF-8, plus 26 bytes for
-each log event.
+=item *
 
-=item * None of the log events in the batch can be more than 2 hours in
-the future.
+The maximum batch size is 1,048,576 bytes, and this size is calculated
+as the sum of all event messages in UTF-8, plus 26 bytes for each log
+event.
 
-=item * None of the log events in the batch can be older than 14 days
-or the retention period of the log group.
+=item *
 
-=item * The log events in the batch must be in chronological ordered by
-their C<timestamp>.
+None of the log events in the batch can be more than 2 hours in the
+future.
 
-=item * The maximum number of log events in a batch is 10,000.
+=item *
 
-=item * A batch of log events in a single PutLogEvents request cannot
-span more than 24 hours. Otherwise, the PutLogEvents operation will
-fail.
+None of the log events in the batch can be older than 14 days or the
+retention period of the log group.
+
+=item *
+
+The log events in the batch must be in chronological ordered by their
+C<timestamp>.
+
+=item *
+
+The maximum number of log events in a batch is 10,000.
+
+=item *
+
+A batch of log events in a single PutLogEvents request cannot span more
+than 24 hours. Otherwise, the PutLogEvents operation will fail.
 
 =back
 
@@ -722,16 +740,24 @@ the supported destinations are:
 
 =over
 
-=item * An Amazon Kinesis stream belonging to the same account as the
+=item *
+
+An Amazon Kinesis stream belonging to the same account as the
 subscription filter, for same-account delivery.
 
-=item * A logical destination (used via an ARN of C<Destination>)
-belonging to a different account, for cross-account delivery.
+=item *
 
-=item * An Amazon Kinesis Firehose stream belonging to the same account
-as the subscription filter, for same-account delivery.
+A logical destination (used via an ARN of C<Destination>) belonging to
+a different account, for cross-account delivery.
 
-=item * An AWS Lambda function belonging to the same account as the
+=item *
+
+An Amazon Kinesis Firehose stream belonging to the same account as the
+subscription filter, for same-account delivery.
+
+=item *
+
+An AWS Lambda function belonging to the same account as the
 subscription filter, for same-account delivery.
 
 =back

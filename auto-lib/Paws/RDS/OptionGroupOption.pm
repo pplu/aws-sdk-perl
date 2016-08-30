@@ -7,6 +7,7 @@ package Paws::RDS::OptionGroupOption;
   has MinimumRequiredMinorEngineVersion => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
   has OptionGroupOptionSettings => (is => 'ro', isa => 'ArrayRef[Paws::RDS::OptionGroupOptionSetting]');
+  has OptionGroupOptionVersions => (is => 'ro', isa => 'ArrayRef[Paws::RDS::OptionVersion]');
   has OptionsDependedOn => (is => 'ro', isa => 'ArrayRef[Str]');
   has Permanent => (is => 'ro', isa => 'Bool');
   has Persistent => (is => 'ro', isa => 'Bool');
@@ -83,24 +84,29 @@ option.
 value) for each option in an option group.
 
 
+=head2 OptionGroupOptionVersions => ArrayRef[L<Paws::RDS::OptionVersion>]
+
+  The versions that are available for the option.
+
+
 =head2 OptionsDependedOn => ArrayRef[Str]
 
-  List of all options that are prerequisites for this option.
+  The options that are prerequisites for this option.
 
 
 =head2 Permanent => Bool
 
-  A permanent option cannot be removed from the option group once the
-option group is used, and it cannot be removed from the db instance
-after assigning an option group with this permanent option.
+  Permanent options can never be removed from an option group. An option
+group containing a permanent option can't be removed from a DB
+instance.
 
 
 =head2 Persistent => Bool
 
-  A persistent option cannot be removed from the option group once the
-option group is used, but this option can be removed from the db
-instance while modifying the related data and assigning another option
-group without this option.
+  Persistent options can't be removed from an option group while DB
+instances are associated with the option group. If you disassociate all
+DB instances from the option group, your can remove the persistent
+option from the option group.
 
 
 =head2 PortRequired => Bool

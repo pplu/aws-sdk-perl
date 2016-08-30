@@ -43,7 +43,8 @@ root user.
 
 =head2 Resource => Str
 
-The type of resource.
+The type of resource: C<instance> | C<reservation> | C<snapshot> |
+C<volume>
 
 
 

@@ -131,7 +131,7 @@ Positive values scale up while negative values scale down.
 =head2 Status => Str
 
   Current status of the scaling policy. The scaling policy is only in
-force when in an Active state.
+force when in an C<ACTIVE> status.
 
 =over
 

@@ -49,9 +49,8 @@ Properties describing a game session.
 
 =head2 CreationTime => Str
 
-  Time stamp indicating when this object was created. Format is an
-integer representing the number of seconds since the Unix epoch (Unix
-time).
+  Time stamp indicating when this data object was created. Format is a
+number expressed in Unix time as milliseconds (ex: "1469498468.057".
 
 
 =head2 CurrentPlayerSessionCount => Int
@@ -105,14 +104,13 @@ process, an app needs both the IP address and port number.
 =head2 Status => Str
 
   Current status of the game session. A game session must be in an
-C<ACTIVE> state to have player sessions.
+C<ACTIVE> status to have player sessions.
 
 
 =head2 TerminationTime => Str
 
-  Time stamp indicating when this fleet was terminated. Format is an
-integer representing the number of seconds since the Unix epoch (Unix
-time).
+  Time stamp indicating when this data object was terminated. Format is a
+number expressed in Unix time as milliseconds (ex: "1469498468.057".
 
 
 

@@ -58,13 +58,21 @@ Valid values:
 
 =over
 
-=item * ONE(1) : Single value required
+=item *
 
-=item * ZERO_OR_ONE(0..1) : Up to one value can be supplied
+ONE(1) : Single value required
 
-=item * ZERO_OR_MORE(0..*) : Optional. Multiple values are allowed
+=item *
 
-=item * ONE_OR_MORE(1..*0) : Required. Multiple values are allowed
+ZERO_OR_ONE(0..1) : Up to one value is allowed
+
+=item *
+
+ZERO_OR_MORE(0..*) : Optional. Multiple values are allowed
+
+=item *
+
+ONE_OR_MORE(1..*0) : Required. Multiple values are allowed
 
 =back
 

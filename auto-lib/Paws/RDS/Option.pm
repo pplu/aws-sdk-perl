@@ -4,6 +4,7 @@ package Paws::RDS::Option;
   has OptionDescription => (is => 'ro', isa => 'Str');
   has OptionName => (is => 'ro', isa => 'Str');
   has OptionSettings => (is => 'ro', isa => 'ArrayRef[Paws::RDS::OptionSetting]');
+  has OptionVersion => (is => 'ro', isa => 'Str');
   has Permanent => (is => 'ro', isa => 'Bool');
   has Persistent => (is => 'ro', isa => 'Bool');
   has Port => (is => 'ro', isa => 'Int');
@@ -62,6 +63,11 @@ allows access to the port.
 =head2 OptionSettings => ArrayRef[L<Paws::RDS::OptionSetting>]
 
   The option settings for this option.
+
+
+=head2 OptionVersion => Str
+
+  The version of the option.
 
 
 =head2 Permanent => Bool

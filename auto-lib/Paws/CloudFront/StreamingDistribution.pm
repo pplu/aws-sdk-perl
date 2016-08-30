@@ -1,6 +1,7 @@
 package Paws::CloudFront::StreamingDistribution;
   use Moose;
   has ActiveTrustedSigners => (is => 'ro', isa => 'Paws::CloudFront::ActiveTrustedSigners', required => 1);
+  has ARN => (is => 'ro', isa => 'Str', required => 1);
   has DomainName => (is => 'ro', isa => 'Str', required => 1);
   has Id => (is => 'ro', isa => 'Str', required => 1);
   has LastModifiedTime => (is => 'ro', isa => 'Str');
@@ -52,6 +53,14 @@ you). The Signer element also includes the IDs of any active key pairs
 associated with the trusted signer's AWS account. If no KeyPairId
 element appears for a Signer, that signer can't create working signed
 URLs.
+
+
+=head2 B<REQUIRED> ARN => Str
+
+  The ARN (Amazon Resource Name) for the streaming distribution. For
+example:
+arn:aws:cloudfront::123456789012:streaming-distribution/EDFDVBD632BHDS5,
+where 123456789012 is your AWS account Id.
 
 
 =head2 B<REQUIRED> DomainName => Str

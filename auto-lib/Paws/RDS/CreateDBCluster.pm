@@ -125,8 +125,8 @@ Example: C<my-cluster1>
 =head2 DBClusterParameterGroupName => Str
 
 The name of the DB cluster parameter group to associate with this DB
-cluster. If this argument is omitted, C<default.aurora5.6> for the
-specified engine will be used.
+cluster. If this argument is omitted, C<default.aurora5.6> will be
+used.
 
 Constraints:
 
@@ -198,7 +198,7 @@ key for each AWS region.
 
 =head2 MasterUsername => Str
 
-The name of the master user for the client DB cluster.
+The name of the master user for the DB cluster.
 
 Constraints:
 

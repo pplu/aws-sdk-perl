@@ -362,11 +362,14 @@ following criteria are returned:
 
 =over
 
-=item * Job flows created and completed in the last two weeks
+=item *
 
-=item * Job flows created within the last two months that are in one of
-the following states: C<RUNNING>, C<WAITING>, C<SHUTTING_DOWN>,
-C<STARTING>
+Job flows created and completed in the last two weeks
+
+=item *
+
+Job flows created within the last two months that are in one of the
+following states: C<RUNNING>, C<WAITING>, C<SHUTTING_DOWN>, C<STARTING>
 
 =back
 

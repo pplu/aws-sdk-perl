@@ -63,7 +63,7 @@ The amount of time, in seconds, after a scaling activity completes
 before another scaling activity can start. The default is 300.
 
 For more information, see Auto Scaling Cooldowns in the I<Auto Scaling
-Developer Guide>.
+User Guide>.
 
 
 
@@ -79,9 +79,9 @@ the group and less than or equal to the maximum size of the group.
 
 The amount of time, in seconds, that Auto Scaling waits before checking
 the health status of an EC2 instance that has come into service. The
-default is 300.
+default is 0.
 
-For more information, see Health Checks in the I<Auto Scaling Developer
+For more information, see Health Checks in the I<Auto Scaling User
 Guide>.
 
 
@@ -133,7 +133,7 @@ to select the instance to terminate. The policies are executed in the
 order that they are listed.
 
 For more information, see Controlling Which Instances Auto Scaling
-Terminates During Scale In in the I<Auto Scaling Developer Guide>.
+Terminates During Scale In in the I<Auto Scaling User Guide>.
 
 
 
@@ -147,7 +147,7 @@ that the subnets' Availability Zones match the values you specify for
 C<AvailabilityZones>.
 
 For more information, see Launching Auto Scaling Instances in a VPC in
-the I<Auto Scaling Developer Guide>.
+the I<Auto Scaling User Guide>.
 
 
 

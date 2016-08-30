@@ -1,5 +1,6 @@
 package Paws::RDS::DBClusterParameterGroup;
   use Moose;
+  has DBClusterParameterGroupArn => (is => 'ro', isa => 'Str');
   has DBClusterParameterGroupName => (is => 'ro', isa => 'Str');
   has DBParameterGroupFamily => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
@@ -22,14 +23,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::RDS::DBClusterParameterGroup object:
 
-  $service_obj->Method(Att1 => { DBClusterParameterGroupName => $value, ..., Description => $value  });
+  $service_obj->Method(Att1 => { DBClusterParameterGroupArn => $value, ..., Description => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::DBClusterParameterGroup object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->DBClusterParameterGroupName
+  $result->Att1->DBClusterParameterGroupArn
 
 =head1 DESCRIPTION
 
@@ -41,6 +42,11 @@ DeleteDBClusterParameterGroup action, and as a response element in the
 DescribeDBClusterParameterGroups action.
 
 =head1 ATTRIBUTES
+
+
+=head2 DBClusterParameterGroupArn => Str
+
+  
 
 
 =head2 DBClusterParameterGroupName => Str

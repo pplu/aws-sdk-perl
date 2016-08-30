@@ -59,7 +59,7 @@ from a previous call.)
 =head2 PolicyNames => ArrayRef[Str]
 
 One or more policy names or policy ARNs to be described. If you omit
-this list, all policy names are described. If an group name is
+this parameter, all policy names are described. If an group name is
 provided, the results are limited to that group. This list is limited
 to 50 items. If you specify an unknown policy name, it is ignored with
 no error.

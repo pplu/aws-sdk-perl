@@ -37,7 +37,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> InstancePort => Int
 
-The port number associated with the back-end server.
+The port number associated with the EC2 instance.
 
 
 
@@ -50,7 +50,7 @@ The name of the load balancer.
 =head2 B<REQUIRED> PolicyNames => ArrayRef[Str]
 
 The names of the policies. If the list is empty, then all current
-polices are removed from the back-end server.
+polices are removed from the EC2 instance.
 
 
 

@@ -204,16 +204,31 @@ Paws::ELB - Perl Interface to AWS Elastic Load Balancing
 
 Elastic Load Balancing
 
-Elastic Load Balancing distributes incoming traffic across your EC2
-instances.
+A load balancer distributes incoming traffic across your EC2 instances.
+This enables you to increase the availability of your application. The
+load balancer also monitors the health of its registered instances and
+ensures that it routes traffic only to healthy instances. You configure
+your load balancer to accept incoming traffic by specifying one or more
+listeners, which are configured with a protocol and port number for
+connections from clients to the load balancer and a protocol and port
+number for connections from the load balancer to the instances.
 
-For information about the features of Elastic Load Balancing, see What
-Is Elastic Load Balancing? in the I<Elastic Load Balancing Developer
-Guide>.
+Elastic Load Balancing supports two types of load balancers: Classic
+load balancers and Application load balancers (new). A Classic load
+balancer makes routing and load balancing decisions either at the
+transport layer (TCP/SSL) or the application layer (HTTP/HTTPS), and
+supports either EC2-Classic or a VPC. An Application load balancer
+makes routing and load balancing decisions at the application layer
+(HTTP/HTTPS), supports path-based routing, and can route requests to
+one or more ports on each EC2 instance or container instance in your
+virtual private cloud (VPC). For more information, see the .
 
-For information about the AWS regions supported by Elastic Load
-Balancing, see Regions and Endpoints - Elastic Load Balancing in the
-I<Amazon Web Services General Reference>.
+This reference covers the 2012-06-01 API, which supports Classic load
+balancers. The 2015-12-01 API supports Application load balancers.
+
+To get started, create a load balancer with one or more listeners using
+CreateLoadBalancer. Register your instances with the load balancer
+using RegisterInstancesWithLoadBalancer.
 
 All Elastic Load Balancing operations are I<idempotent>, which means
 that they complete at most one time. If you repeat an operation, it
@@ -234,8 +249,8 @@ Each tag consists of a key and an optional value. If a tag with the
 same key is already associated with the load balancer, C<AddTags>
 updates its value.
 
-For more information, see Tag Your Load Balancer in the I<Elastic Load
-Balancing Developer Guide>.
+For more information, see Tag Your Classic Load Balancer in the
+I<Classic Load Balancers Guide>.
 
 
 =head2 ApplySecurityGroupsToLoadBalancer(LoadBalancerName => Str, SecurityGroups => ArrayRef[Str])
@@ -249,7 +264,7 @@ virtual private cloud (VPC). The specified security groups override the
 previously associated security groups.
 
 For more information, see Security Groups for Load Balancers in a VPC
-in the I<Elastic Load Balancing Developer Guide>.
+in the I<Classic Load Balancers Guide>.
 
 
 =head2 AttachLoadBalancerToSubnets(LoadBalancerName => Str, Subnets => ArrayRef[Str])
@@ -263,7 +278,7 @@ specified load balancer.
 
 The load balancer evenly distributes requests across all registered
 subnets. For more information, see Add or Remove Subnets for Your Load
-Balancer in a VPC in the I<Elastic Load Balancing Developer Guide>.
+Balancer in a VPC in the I<Classic Load Balancers Guide>.
 
 
 =head2 ConfigureHealthCheck(HealthCheck => L<Paws::ELB::HealthCheck>, LoadBalancerName => Str)
@@ -273,10 +288,10 @@ Each argument is described in detail in: L<Paws::ELB::ConfigureHealthCheck>
 Returns: a L<Paws::ELB::ConfigureHealthCheckOutput> instance
 
   Specifies the health check settings to use when evaluating the health
-state of your back-end instances.
+state of your EC2 instances.
 
-For more information, see Configure Health Checks in the I<Elastic Load
-Balancing Developer Guide>.
+For more information, see Configure Health Checks for Your Load
+Balancer in the I<Classic Load Balancers Guide>.
 
 
 =head2 CreateAppCookieStickinessPolicy(CookieName => Str, LoadBalancerName => Str, PolicyName => Str)
@@ -300,7 +315,7 @@ If the application cookie is explicitly removed or expires, the session
 stops being sticky until a new application cookie is issued.
 
 For more information, see Application-Controlled Session Stickiness in
-the I<Elastic Load Balancing Developer Guide>.
+the I<Classic Load Balancers Guide>.
 
 
 =head2 CreateLBCookieStickinessPolicy(LoadBalancerName => Str, PolicyName => Str, [CookieExpirationPeriod => Int])
@@ -314,12 +329,12 @@ by the lifetime of the browser (user-agent) or a specified expiration
 period. This policy can be associated only with HTTP/HTTPS listeners.
 
 When a load balancer implements this policy, the load balancer uses a
-special cookie to track the back-end server instance for each request.
-When the load balancer receives a request, it first checks to see if
-this cookie is present in the request. If so, the load balancer sends
-the request to the application server specified in the cookie. If not,
-the load balancer sends the request to a server that is chosen based on
-the existing load-balancing algorithm.
+special cookie to track the instance for each request. When the load
+balancer receives a request, it first checks to see if this cookie is
+present in the request. If so, the load balancer sends the request to
+the application server specified in the cookie. If not, the load
+balancer sends the request to a server that is chosen based on the
+existing load-balancing algorithm.
 
 A cookie is inserted into the response for binding subsequent requests
 from the same user to that server. The validity of the cookie is based
@@ -327,7 +342,7 @@ on the cookie expiration time, which is specified in the policy
 configuration.
 
 For more information, see Duration-Based Session Stickiness in the
-I<Elastic Load Balancing Developer Guide>.
+I<Classic Load Balancers Guide>.
 
 
 =head2 CreateLoadBalancer(Listeners => ArrayRef[L<Paws::ELB::Listener>], LoadBalancerName => Str, [AvailabilityZones => ArrayRef[Str], Scheme => Str, SecurityGroups => ArrayRef[Str], Subnets => ArrayRef[Str], Tags => ArrayRef[L<Paws::ELB::Tag>]])
@@ -336,18 +351,21 @@ Each argument is described in detail in: L<Paws::ELB::CreateLoadBalancer>
 
 Returns: a L<Paws::ELB::CreateAccessPointOutput> instance
 
-  Creates a load balancer.
+  Creates a Classic load balancer.
 
-If the call completes successfully, a new load balancer is created with
-a unique Domain Name Service (DNS) name. The load balancer receives
-incoming traffic and routes it to the registered instances. For more
-information, see How Elastic Load Balancing Works in the I<Elastic Load
-Balancing Developer Guide>.
+You can add listeners, security groups, subnets, and tags when you
+create your load balancer, or you can add them later using
+CreateLoadBalancerListeners, ApplySecurityGroupsToLoadBalancer,
+AttachLoadBalancerToSubnets, and AddTags.
+
+To describe your current load balancers, see DescribeLoadBalancers.
+When you are finished with a load balancer, you can delete it using
+DeleteLoadBalancer.
 
 You can create up to 20 load balancers per region per account. You can
 request an increase for the number of load balancers for your account.
-For more information, see Elastic Load Balancing Limits in the
-I<Elastic Load Balancing Developer Guide>.
+For more information, see Limits for Your Classic Load Balancer in the
+I<Classic Load Balancers Guide>.
 
 
 =head2 CreateLoadBalancerListeners(Listeners => ArrayRef[L<Paws::ELB::Listener>], LoadBalancerName => Str)
@@ -361,8 +379,8 @@ listener with the specified port does not already exist, it is created;
 otherwise, the properties of the new listener must match the properties
 of the existing listener.
 
-For more information, see Add a Listener to Your Load Balancer in the
-I<Elastic Load Balancing Developer Guide>.
+For more information, see Listeners for Your Classic Load Balancer in
+the I<Classic Load Balancers Guide>.
 
 
 =head2 CreateLoadBalancerPolicy(LoadBalancerName => Str, PolicyName => Str, PolicyTypeName => Str, [PolicyAttributes => ArrayRef[L<Paws::ELB::PolicyAttribute>]])
@@ -375,8 +393,8 @@ Returns: a L<Paws::ELB::CreateLoadBalancerPolicyOutput> instance
 balancer.
 
 Policies are settings that are saved for your load balancer and that
-can be applied to the front-end listener or the back-end application
-server, depending on the policy type.
+can be applied to the listener or the application server, depending on
+the policy type.
 
 
 =head2 DeleteLoadBalancer(LoadBalancerName => Str)
@@ -391,7 +409,7 @@ If you are attempting to recreate a load balancer, you must reconfigure
 all settings. The DNS name associated with a deleted load balancer are
 no longer usable. The name and associated DNS record of the deleted
 load balancer no longer exist and traffic sent to any of its IP
-addresses is no longer delivered to back-end instances.
+addresses is no longer delivered to your instances.
 
 If the load balancer does not exist or has already been deleted, the
 call to C<DeleteLoadBalancer> still succeeds.
@@ -429,8 +447,8 @@ the load balancer.
 You can use DescribeLoadBalancers to verify that the instance is
 deregistered from the load balancer.
 
-For more information, see Deregister and Register Amazon EC2 Instances
-in the I<Elastic Load Balancing Developer Guide>.
+For more information, see Register or De-Register EC2 Instances in the
+I<Classic Load Balancers Guide>.
 
 
 =head2 DescribeInstanceHealth(LoadBalancerName => Str, [Instances => ArrayRef[L<Paws::ELB::Instance>]])
@@ -479,10 +497,18 @@ Each argument is described in detail in: L<Paws::ELB::DescribeLoadBalancerPolicy
 
 Returns: a L<Paws::ELB::DescribeLoadBalancerPolicyTypesOutput> instance
 
-  Describes the specified load balancer policy types.
+  Describes the specified load balancer policy types or all load balancer
+policy types.
 
-You can use these policy types with CreateLoadBalancerPolicy to create
-policy configurations for a load balancer.
+The description of each type indicates how it can be used. For example,
+some policies can be used only with layer 7 listeners, some policies
+can be used only with layer 4 listeners, and some policies can be used
+only with your EC2 instances.
+
+You can use CreateLoadBalancerPolicy to create a policy configuration
+for any of these policy types. Then, depending on the policy type, use
+either SetLoadBalancerPoliciesOfListener or
+SetLoadBalancerPoliciesForBackendServer to set the policy.
 
 
 =head2 DescribeLoadBalancers([LoadBalancerNames => ArrayRef[Str], Marker => Str, PageSize => Int])
@@ -535,9 +561,8 @@ Availability Zone go into the C<OutOfService> state. Then, the load
 balancer attempts to equally balance the traffic among its remaining
 Availability Zones.
 
-For more information, see Disable an Availability Zone from a
-Load-Balanced Application in the I<Elastic Load Balancing Developer
-Guide>.
+For more information, see Add or Remove Availability Zones in the
+I<Classic Load Balancers Guide>.
 
 
 =head2 EnableAvailabilityZonesForLoadBalancer(AvailabilityZones => ArrayRef[Str], LoadBalancerName => Str)
@@ -552,8 +577,8 @@ for the specified load balancer.
 The load balancer evenly distributes requests across all its registered
 Availability Zones that contain instances.
 
-For more information, see Add Availability Zone in the I<Elastic Load
-Balancing Developer Guide>.
+For more information, see Add or Remove Availability Zones in the
+I<Classic Load Balancers Guide>.
 
 
 =head2 ModifyLoadBalancerAttributes(LoadBalancerAttributes => L<Paws::ELB::LoadBalancerAttributes>, LoadBalancerName => Str)
@@ -570,18 +595,26 @@ or disabling them. Or, you can modify the load balancer attribute
 C<ConnectionSettings> by specifying an idle connection timeout value
 for your load balancer.
 
-For more information, see the following in the I<Elastic Load Balancing
-Developer Guide>:
+For more information, see the following in the I<Classic Load Balancers
+Guide>:
 
 =over
 
-=item * Cross-Zone Load Balancing
+=item *
 
-=item * Connection Draining
+Cross-Zone Load Balancing
 
-=item * Access Logs
+=item *
 
-=item * Idle Connection Timeout
+Connection Draining
+
+=item *
+
+Access Logs
+
+=item *
+
+Idle Connection Timeout
 
 =back
 
@@ -613,16 +646,11 @@ C<OutOfService> state. If an Availability Zone is added to the load
 balancer later, any instances registered with the load balancer move to
 the C<InService> state.
 
-If you stop an instance registered with a load balancer and then start
-it, the IP addresses associated with the instance changes. Elastic Load
-Balancing cannot recognize the new IP address, which prevents it from
-routing traffic to the instances. We recommend that you use the
-following sequence: stop the instance, deregister the instance, start
-the instance, and then register the instance. To deregister instances
-from a load balancer, use DeregisterInstancesFromLoadBalancer.
+To deregister instances from a load balancer, use
+DeregisterInstancesFromLoadBalancer.
 
-For more information, see Deregister and Register EC2 Instances in the
-I<Elastic Load Balancing Developer Guide>.
+For more information, see Register or De-Register EC2 Instances in the
+I<Classic Load Balancers Guide>.
 
 
 =head2 RemoveTags(LoadBalancerNames => ArrayRef[Str], Tags => ArrayRef[L<Paws::ELB::TagKeyOnly>])
@@ -644,9 +672,9 @@ Returns: a L<Paws::ELB::SetLoadBalancerListenerSSLCertificateOutput> instance
 connections. The specified certificate replaces any prior certificate
 that was used on the same load balancer and port.
 
-For more information about updating your SSL certificate, see Updating
-an SSL Certificate for a Load Balancer in the I<Elastic Load Balancing
-Developer Guide>.
+For more information about updating your SSL certificate, see Replace
+the SSL Certificate for Your Load Balancer in the I<Classic Load
+Balancers Guide>.
 
 
 =head2 SetLoadBalancerPoliciesForBackendServer(InstancePort => Int, LoadBalancerName => Str, PolicyNames => ArrayRef[Str])
@@ -656,9 +684,9 @@ Each argument is described in detail in: L<Paws::ELB::SetLoadBalancerPoliciesFor
 Returns: a L<Paws::ELB::SetLoadBalancerPoliciesForBackendServerOutput> instance
 
   Replaces the set of policies associated with the specified port on
-which the back-end server is listening with a new set of policies. At
-this time, only the back-end server authentication policy type can be
-applied to the back-end ports; this policy type is composed of multiple
+which the EC2 instance is listening with a new set of policies. At this
+time, only the back-end server authentication policy type can be
+applied to the instance ports; this policy type is composed of multiple
 public key policies.
 
 Each time you use C<SetLoadBalancerPoliciesForBackendServer> to enable
@@ -666,7 +694,13 @@ the policies, use the C<PolicyNames> parameter to list the policies
 that you want to enable.
 
 You can use DescribeLoadBalancers or DescribeLoadBalancerPolicies to
-verify that the policy is associated with the back-end server.
+verify that the policy is associated with the EC2 instance.
+
+For more information about enabling back-end instance authentication,
+see Configure Back-end Instance Authentication in the I<Classic Load
+Balancers Guide>. For more information about Proxy Protocol, see
+Configure Proxy Protocol Support in the I<Classic Load Balancers
+Guide>.
 
 
 =head2 SetLoadBalancerPoliciesOfListener(LoadBalancerName => Str, LoadBalancerPort => Int, PolicyNames => ArrayRef[Str])
@@ -675,9 +709,16 @@ Each argument is described in detail in: L<Paws::ELB::SetLoadBalancerPoliciesOfL
 
 Returns: a L<Paws::ELB::SetLoadBalancerPoliciesOfListenerOutput> instance
 
-  Associates, updates, or disables a policy with a listener for the
-specified load balancer. You can associate multiple policies with a
-listener.
+  Replaces the current set of policies for the specified load balancer
+port with the specified set of policies.
+
+To enable back-end server authentication, use
+SetLoadBalancerPoliciesForBackendServer.
+
+For more information about setting policies, see Update the SSL
+Negotiation Configuration, Duration-Based Session Stickiness, and
+Application-Controlled Session Stickiness in the I<Classic Load
+Balancers Guide>.
 
 
 =head1 SEE ALSO

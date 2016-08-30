@@ -48,8 +48,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 The adjustment type. Valid values are C<ChangeInCapacity>,
 C<ExactCapacity>, and C<PercentChangeInCapacity>.
 
-For more information, see Dynamic Scaling in the I<Auto Scaling
-Developer Guide>.
+For more information, see Dynamic Scaling in the I<Auto Scaling User
+Guide>.
 
 
 
@@ -69,7 +69,7 @@ This parameter is not supported unless the policy type is
 C<SimpleScaling>.
 
 For more information, see Auto Scaling Cooldowns in the I<Auto Scaling
-Developer Guide>.
+User Guide>.
 
 
 

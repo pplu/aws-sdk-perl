@@ -31,14 +31,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ELB::Instan
 
 =head1 DESCRIPTION
 
-The ID of a back-end instance.
+The ID of an EC2 instance.
 
 =head1 ATTRIBUTES
 
 
 =head2 InstanceId => Str
 
-  The ID of the instance.
+  The instance ID.
 
 
 

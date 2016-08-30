@@ -1,6 +1,7 @@
 package Paws::CloudFront::StreamingDistributionSummary;
   use Moose;
   has Aliases => (is => 'ro', isa => 'Paws::CloudFront::Aliases', required => 1);
+  has ARN => (is => 'ro', isa => 'Str', required => 1);
   has Comment => (is => 'ro', isa => 'Str', required => 1);
   has DomainName => (is => 'ro', isa => 'Str', required => 1);
   has Enabled => (is => 'ro', isa => 'Bool', required => 1);
@@ -50,6 +51,14 @@ distribution.
 
   A complex type that contains information about CNAMEs (alternate domain
 names), if any, for this streaming distribution.
+
+
+=head2 B<REQUIRED> ARN => Str
+
+  The ARN (Amazon Resource Name) for the streaming distribution. For
+example:
+arn:aws:cloudfront::123456789012:streaming-distribution/EDFDVBD632BHDS5,
+where 123456789012 is your AWS account Id.
 
 
 =head2 B<REQUIRED> Comment => Str

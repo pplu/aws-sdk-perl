@@ -1,5 +1,6 @@
 package Paws::RDS::DBParameterGroup;
   use Moose;
+  has DBParameterGroupArn => (is => 'ro', isa => 'Str');
   has DBParameterGroupFamily => (is => 'ro', isa => 'Str');
   has DBParameterGroupName => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
@@ -22,14 +23,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::RDS::DBParameterGroup object:
 
-  $service_obj->Method(Att1 => { DBParameterGroupFamily => $value, ..., Description => $value  });
+  $service_obj->Method(Att1 => { DBParameterGroupArn => $value, ..., Description => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::DBParameterGroup object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->DBParameterGroupFamily
+  $result->Att1->DBParameterGroupArn
 
 =head1 DESCRIPTION
 
@@ -41,6 +42,11 @@ DeleteDBParameterGroup action, and as a response element in the
 DescribeDBParameterGroups action.
 
 =head1 ATTRIBUTES
+
+
+=head2 DBParameterGroupArn => Str
+
+  
 
 
 =head2 DBParameterGroupFamily => Str

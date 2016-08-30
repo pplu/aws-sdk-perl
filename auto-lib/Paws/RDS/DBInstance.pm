@@ -8,6 +8,7 @@ package Paws::RDS::DBInstance;
   has CharacterSetName => (is => 'ro', isa => 'Str');
   has CopyTagsToSnapshot => (is => 'ro', isa => 'Bool');
   has DBClusterIdentifier => (is => 'ro', isa => 'Str');
+  has DBInstanceArn => (is => 'ro', isa => 'Str');
   has DBInstanceClass => (is => 'ro', isa => 'Str');
   has DBInstanceIdentifier => (is => 'ro', isa => 'Str');
   has DbInstancePort => (is => 'ro', isa => 'Int');
@@ -143,6 +144,11 @@ the DB instance.
 
   If the DB instance is a member of a DB cluster, contains the name of
 the DB cluster that the DB instance is a member of.
+
+
+=head2 DBInstanceArn => Str
+
+  
 
 
 =head2 DBInstanceClass => Str

@@ -438,9 +438,9 @@ In order to minimize response latency, I<BatchGetItem> retrieves items
 in parallel.
 
 When designing your application, keep in mind that DynamoDB does not
-return attributes in any particular order. To help parse the response
-by item, include the primary key values for the items in your request
-in the I<AttributesToGet> parameter.
+return items in any particular order. To help parse the response by
+item, include the primary key values for the items in your request in
+the I<AttributesToGet> parameter.
 
 If a requested item does not exist, it is not returned in the result.
 Requests for nonexistent items consume the minimum read capacity units
@@ -653,33 +653,48 @@ For example, you could use one of the AWS SDKs to do the following:
 
 =over
 
-=item 1. Call I<DescribeLimits> for a particular region to obtain your
-current account limits on provisioned capacity there.
+=item 1.
 
-=item 2. Create a variable to hold the aggregate read capacity units
-provisioned for all your tables in that region, and one to hold the
-aggregate write capacity units. Zero them both.
+Call I<DescribeLimits> for a particular region to obtain your current
+account limits on provisioned capacity there.
 
-=item 3. Call I<ListTables> to obtain a list of all your DynamoDB
-tables.
+=item 2.
 
-=item 4. For each table name listed by I<ListTables>, do the following:
+Create a variable to hold the aggregate read capacity units provisioned
+for all your tables in that region, and one to hold the aggregate write
+capacity units. Zero them both.
+
+=item 3.
+
+Call I<ListTables> to obtain a list of all your DynamoDB tables.
+
+=item 4.
+
+For each table name listed by I<ListTables>, do the following:
 
 =over
 
-=item * Call I<DescribeTable> with the table name.
+=item *
 
-=item * Use the data returned by I<DescribeTable> to add the read
-capacity units and write capacity units provisioned for the table
-itself to your variables.
+Call I<DescribeTable> with the table name.
 
-=item * If the table has one or more global secondary indexes (GSIs),
-loop over these GSIs and add their provisioned capacity values to your
-variables as well.
+=item *
+
+Use the data returned by I<DescribeTable> to add the read capacity
+units and write capacity units provisioned for the table itself to your
+variables.
+
+=item *
+
+If the table has one or more global secondary indexes (GSIs), loop over
+these GSIs and add their provisioned capacity values to your variables
+as well.
 
 =back
 
-=item 5. Report the account limits for that region returned by
+=item 5.
+
+Report the account limits for that region returned by
 I<DescribeLimits>, along with the total current provisioned capacity
 levels you have calculated.
 
@@ -813,8 +828,9 @@ result set size limit of 1 MB, the query stops and results are returned
 to the user with the I<LastEvaluatedKey> element to continue the query
 in a subsequent operation. Unlike a I<Scan> operation, a I<Query>
 operation never returns both an empty result set and a
-I<LastEvaluatedKey> value. I<LastEvaluatedKey> is only provided if the
-results exceed 1 MB, or if you have used the I<Limit> parameter.
+I<LastEvaluatedKey> value. I<LastEvaluatedKey> is only provided if you
+have used the I<Limit> parameter, or if the result set exceeds 1 MB
+(prior to applying a filter).
 
 You can query a table, a local secondary index, or a global secondary
 index. For a query on a table or on a local secondary index, you can

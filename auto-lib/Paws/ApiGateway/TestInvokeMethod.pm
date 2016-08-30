@@ -51,8 +51,8 @@ The simulated request body of an incoming invocation request.
 =head2 ClientCertificateId => Str
 
 A ClientCertificate identifier to use in the test invocation. API
-Gateway will use use the certificate when making the HTTPS request to
-the defined backend endpoint.
+Gateway will use the certificate when making the HTTPS request to the
+defined back-end endpoint.
 
 
 

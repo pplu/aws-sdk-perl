@@ -52,15 +52,17 @@ specify the start of the result set, do not specify a value.
 
 =head2 Status => Str
 
-Build state to filter results by. To retrieve all builds, leave this
-parameter empty. Possible build states include the following:
+Build status to filter results by. To retrieve all builds, leave this
+parameter empty.
+
+Possible build statuses include the following:
 
 =over
 
 =item * B<INITIALIZED> E<ndash> A new build has been defined, but no
 files have been uploaded. You cannot create fleets for builds that are
-in this state. When a build is successfully created, the build state is
-set to this value.
+in this status. When a build is successfully created, the build status
+is set to this value.
 
 =item * B<READY> E<ndash> The game build has been successfully
 uploaded. You can now create new fleets for this build.

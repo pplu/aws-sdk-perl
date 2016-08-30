@@ -125,7 +125,10 @@ C<name> - The name of the AMI (provided during image creation).
 
 =item *
 
-C<owner-alias> - The AWS account alias (for example, C<amazon>).
+C<owner-alias> - String value from an Amazon-maintained list (C<amazon>
+| C<aws-marketplace> | C<microsoft>) of snapshot owners. Not to be
+confused with the user-configured AWS account alias, which is set from
+the IAM console.
 
 =item *
 
@@ -212,11 +215,11 @@ Default: Describes all images available to you.
 
 =head2 Owners => ArrayRef[Str]
 
-Filters the images by the owner. Specify an AWS account ID, C<amazon>
-(owner is Amazon), C<aws-marketplace> (owner is AWS Marketplace),
-C<self> (owner is the sender of the request). Omitting this option
-returns all images for which you have launch permissions, regardless of
-ownership.
+Filters the images by the owner. Specify an AWS account ID, C<self>
+(owner is the sender of the request), or an AWS owner alias (valid
+values are C<amazon> | C<aws-marketplace> | C<microsoft>). Omitting
+this option returns all images for which you have launch permissions,
+regardless of ownership.
 
 
 

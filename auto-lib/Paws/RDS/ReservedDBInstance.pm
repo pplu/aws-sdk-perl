@@ -9,6 +9,7 @@ package Paws::RDS::ReservedDBInstance;
   has OfferingType => (is => 'ro', isa => 'Str');
   has ProductDescription => (is => 'ro', isa => 'Str');
   has RecurringCharges => (is => 'ro', isa => 'ArrayRef[Paws::RDS::RecurringCharge]');
+  has ReservedDBInstanceArn => (is => 'ro', isa => 'Str');
   has ReservedDBInstanceId => (is => 'ro', isa => 'Str');
   has ReservedDBInstancesOfferingId => (is => 'ro', isa => 'Str');
   has StartTime => (is => 'ro', isa => 'Str');
@@ -94,6 +95,11 @@ actions.
 =head2 RecurringCharges => ArrayRef[L<Paws::RDS::RecurringCharge>]
 
   The recurring price charged to run this reserved DB instance.
+
+
+=head2 ReservedDBInstanceArn => Str
+
+  
 
 
 =head2 ReservedDBInstanceId => Str

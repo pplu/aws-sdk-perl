@@ -778,7 +778,7 @@ Each argument is described in detail in: L<Paws::S3::GetBucketReplication>
 
 Returns: a L<Paws::S3::GetBucketReplicationOutput> instance
 
-  Deprecated, see the GetBucketReplicationConfiguration operation.
+  Returns the replication configuration of a bucket.
 
 
 =head2 GetBucketRequestPayment(Bucket => Str)
