@@ -39,7 +39,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> HttpMethod => Str
 
-Specifies the put method request's HTTP method type.
+Specifies the method request's HTTP method type.
 
 
 

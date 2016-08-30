@@ -2,6 +2,7 @@
 package Paws::ApiGateway::GetApiKey;
   use Moose;
   has ApiKey => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'apiKey' , required => 1);
+  has IncludeValue => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'includeValue' );
 
   use MooseX::ClassAttribute;
 
@@ -38,6 +39,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 B<REQUIRED> ApiKey => Str
 
 The identifier of the ApiKey resource.
+
+
+
+=head2 IncludeValue => Bool
+
+A boolean flag to specify whether (C<true>) or not (C<false>) the
+result contains the key value.
 
 
 

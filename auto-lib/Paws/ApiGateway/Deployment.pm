@@ -19,7 +19,7 @@ Paws::ApiGateway::Deployment
 
 =head2 ApiSummary => L<Paws::ApiGateway::PathToMapOfMethodSnapshot>
 
-Gets a summary of the RestApi at the date and time that the deployment
+A summary of the RestApi at the date and time that the deployment
 resource was created.
 
 

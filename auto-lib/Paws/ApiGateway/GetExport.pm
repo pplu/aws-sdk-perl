@@ -41,10 +41,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Accepts => Str
 
-The content-type of the export, for example 'application/json'.
-Currently 'application/json' and 'application/yaml' are supported for
-exportType 'swagger'. Should be specifed in the 'Accept' header for
-direct API requests.
+The content-type of the export, for example C<application/json>.
+Currently C<application/json> and C<application/yaml> are supported for
+C<exportType> of C<swagger>. This should be specified in the C<Accept>
+header for direct API requests.
 
 
 
@@ -57,12 +57,13 @@ The type of export. Currently only 'swagger' is supported.
 =head2 Parameters => L<Paws::ApiGateway::MapOfStringToString>
 
 A key-value map of query string parameters that specify properties of
-the export, depending on the requested exportType. For exportType
-'swagger', any combination of the following parameters are supported:
-'integrations' will export x-amazon-apigateway-integration extensions
-'authorizers' will export x-amazon-apigateway-authorizer extensions
-'postman' will export with Postman extensions, allowing for import to
-the Postman tool
+the export, depending on the requested C<exportType>. For C<exportType>
+C<swagger>, any combination of the following parameters are supported:
+C<integrations> will export the API with
+x-amazon-apigateway-integration extensions. C<authorizers> will export
+the API with x-amazon-apigateway-authorizer extensions. C<postman> will
+export the API with Postman extensions, allowing for import to the
+Postman tool
 
 
 

@@ -32,19 +32,21 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ApiGateway:
 
 =head1 DESCRIPTION
 
-Returns the throttle settings.
+The API request rate limits.
 
 =head1 ATTRIBUTES
 
 
 =head2 BurstLimit => Int
 
-  Returns the burstLimit when B<ThrottleSettings> is called.
+  The API request burst limit, the maximum rate limit over a time ranging
+from one to a few seconds, depending upon whether the underlying token
+bucket is at its full capacity.
 
 
 =head2 RateLimit => Num
 
-  Returns the rateLimit when B<ThrottleSettings> is called.
+  The API request steady-state rate limit.
 
 
 

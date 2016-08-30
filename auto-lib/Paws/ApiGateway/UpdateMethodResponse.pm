@@ -41,14 +41,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> HttpMethod => Str
 
-The HTTP verb identifier for the parent Method resource.
+The HTTP verb of the Method resource.
 
 
 
 =head2 PatchOperations => ArrayRef[L<Paws::ApiGateway::PatchOperation>]
 
-A list of operations describing the updates to apply to the specified
-resource. The patches are applied in the order specified in the list.
+A list of update operations to be applied to the specified resource and
+in the order specified in this list.
 
 
 
@@ -66,7 +66,7 @@ The RestApi identifier for the MethodResponse resource.
 
 =head2 B<REQUIRED> StatusCode => Str
 
-The status code identifier for the MethodResponse resource.
+The status code for the MethodResponse resource.
 
 
 

@@ -46,7 +46,7 @@ Limit the number of Authorizer resources in the response.
 =head2 Position => Str
 
 If not all Authorizer resources in the response were present, the
-position will specificy where to start the next page of results.
+position will specify where to start the next page of results.
 
 
 

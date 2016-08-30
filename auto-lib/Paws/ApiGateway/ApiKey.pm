@@ -8,6 +8,7 @@ package Paws::ApiGateway::ApiKey;
   has LastUpdatedDate => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
   has StageKeys => (is => 'ro', isa => 'ArrayRef[Str]');
+  has Value => (is => 'ro', isa => 'Str');
 
 1;
 
@@ -59,6 +60,12 @@ The name of the API Key.
 =head2 StageKeys => ArrayRef[Str]
 
 A list of Stage resources that are associated with the ApiKey resource.
+
+
+
+=head2 Value => Str
+
+The value of the API Key.
 
 
 

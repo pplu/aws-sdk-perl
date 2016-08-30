@@ -56,39 +56,68 @@ Specifies the integration's HTTP method type.
 
 Specifies the integration's responses.
 
+=head1 Example: Get integration responses of a method
+
+=head2 Request
+
+ GET /restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200 HTTP/1.1 Content-Type: application/json Host: apigateway.us-east-1.amazonaws.com X-Amz-Date: 20160607T191449Z Authorization: AWS4-HMAC-SHA256 Credential={access_key_ID}/20160607/us-east-1/apigateway/aws4_request, SignedHeaders=content-type;host;x-amz-date, Signature={sig4_hash} 
+
+=head2 Response
+
+The successful response returns C<200 OK> status and a payload as
+follows:
+
+ { "_links": { "curies": { "href": "http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-integration-response-{rel}.html", "name": "integrationresponse", "templated": true }, "self": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200", "title": "200" }, "integrationresponse:delete": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200" }, "integrationresponse:update": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200" } }, "responseParameters": { "method.response.header.Content-Type": "'application/xml'" }, "responseTemplates": { "application/json": "$util.urlDecode(\"%3CkinesisStreams%3E
+
+Creating an API
+
 
 
 =head2 PassthroughBehavior => Str
 
-Specifies the pass-through behavior for incoming requests based on the
-Content-Type header in the request, and the available requestTemplates
-defined on the Integration. There are three valid values:
-C<WHEN_NO_MATCH>, C<WHEN_NO_TEMPLATES>, and C<NEVER>.
+Specifies how the method request body of an unmapped content type will
+be passed through the integration request to the back end without
+transformation. A content type is unmapped if no mapping template is
+defined in the integration or the content type does not match any of
+the mapped content types, as specified in C<requestTemplates>. There
+are three valid values: C<WHEN_NO_MATCH>, C<WHEN_NO_TEMPLATES>, and
+C<NEVER>.
 
-C<WHEN_NO_MATCH> passes the request body for unmapped content types
-through to the Integration backend without transformation.
+=over
 
-C<NEVER> rejects unmapped content types with an HTTP 415 'Unsupported
-Media Type' response.
+=item * C<WHEN_NO_MATCH> passes the method request body through the
+integration request to the back end without transformation when the
+method request content type does not match any content type associated
+with the mapping templates defined in the integration request.
 
-C<WHEN_NO_TEMPLATES> will allow pass-through when the Integration has
-NO content types mapped to templates. However if there is at least one
-content type defined, unmapped content types will be rejected with the
-same 415 response.
+=item * C<WHEN_NO_TEMPLATES> passes the method request body through the
+integration request to the back end without transformation when no
+mapping template is defined in the integration request. If a template
+is defined when this option is selected, the method request of an
+unmapped content-type will be rejected with an HTTP C<415 Unsupported
+Media Type> response.
+
+=item * C<NEVER> rejects the method request with an HTTP C<415
+Unsupported Media Type> response when either the method request content
+type does not match any content type associated with the mapping
+templates defined in the integration request or no mapping template is
+defined in the integration request.
+
+=back
+
 
 
 
 =head2 RequestParameters => L<Paws::ApiGateway::MapOfStringToString>
 
-Represents requests parameters that are sent with the backend request.
-Request parameters are represented as a key/value map, with a
-destination as the key and a source as the value. A source must match
-an existing method request parameter, or a static value. Static values
-must be enclosed with single quotes, and be pre-encoded based on their
-destination in the request. The destination must match the pattern
-C<integration.request.{location}.{name}>, where C<location> is either
-querystring, path, or header. C<name> must be a valid, unique parameter
-name.
+A key-value map specifying request parameters that are passed from the
+method request to the back end. The key is an integration request
+parameter name and the associated value is a method request parameter
+value or static value that must be enclosed within single quotes and
+pre-encoded as required by the back end. The method request parameter
+value must match the pattern of C<method.request.{location}.{name}>,
+where C<location> is C<querystring>, C<path>, or C<header> and C<name>
+must be a valid and unique method request parameter name.
 
 
 

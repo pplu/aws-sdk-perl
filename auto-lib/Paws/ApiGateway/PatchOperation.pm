@@ -43,29 +43,35 @@ explanation of how each operation is used.
 
 =head2 From => Str
 
-  The "move" and "copy" operation object MUST contain a "from" member,
-which is a string containing a C<JSON Pointer> value that references
-the location in the target document to move the value from.
+  Not supported.
 
 
 =head2 Op => Str
 
-  A patch operation whose value indicates the operation to perform. Its
-value MUST be one of "add", "remove", "replace", "move", "copy", or
-"test"; other values are errors.
+  An update operation to be performed with this PATCH request. The valid
+value can be "add", "remove", or "replace". Not all valid operations
+are supported for a given resource. Support of the operations depends
+on specific operational contexts. Attempts to apply an unsupported
+operation on a resource will return an error message.
 
 
 =head2 Path => Str
 
-  Operation objects MUST have exactly one "path" member. That member's
-value is a string containing a `JSON-Pointer` value that references a
-location within the target document (the "target location") where the
-operation is performed.
+  The C<op> operation's target, as identified by a JSON Pointer value
+that references a location within the targeted resource. For example,
+if the target resource has an updateable property of
+C<{"name":"value"}>, the path for this property is C</name>. If the
+C<name> property value is a JSON object (e.g., C<{"name":
+{"child/name": "child-value"}}>), the path for the C<child/name>
+property will be C</name/child~1name>. Any slash ("/") character
+appearing in path names must be escaped with "~1", as shown in the
+example above. Each C<op> operation can have only one C<path>
+associated with it.
 
 
 =head2 Value => Str
 
-  The actual value content.
+  The new target value of the update operation.
 
 
 

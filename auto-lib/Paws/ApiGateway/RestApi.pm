@@ -45,7 +45,8 @@ The API's name.
 
 =head2 Warnings => ArrayRef[Str]
 
-
+The warning messages reported when C<failonwarnings> is turned on
+during API import.
 
 
 

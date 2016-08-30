@@ -44,7 +44,7 @@ Valid values are: C<"CREATE_IN_PROGRESS">, C<"AVAILABLE">, C<"DELETE_IN_PROGRESS
 
 =head2 ClientCertificateId => Str
 
-
+The identifier of a client certificate for an API stage.
 
 
 
@@ -75,10 +75,12 @@ ISO 8601 format.
 
 =head2 MethodSettings => L<Paws::ApiGateway::MapOfMethodSettings>
 
-A map that defines the method settings for a Stage resource. Keys are
-defined as C<{resource_path}/{http_method}> for an individual method
-override, or C<\*/\*> for the settings applied to all methods in the
-stage.
+A map that defines the method settings for a Stage resource. Keys
+(designated as C</{method_setting_key> below) are method paths defined
+as C<{resource_path}/{http_method}> for an individual method override,
+or C</\*/\*> for overriding all methods in the stage. Any forward slash
+("/") characters in the C<resource_path> part must be encoded as "~1"
+as in, for example, C<~1resource~1sub-resource/GET>.
 
 
 
@@ -92,8 +94,8 @@ Identifier (URI) of a call to Amazon API Gateway.
 =head2 Variables => L<Paws::ApiGateway::MapOfStringToString>
 
 A map that defines the stage variables for a Stage resource. Variable
-names can have alphanumeric characters, and the values must match
-C<[A-Za-z0-9-._~:/?&num;&=,]+>.
+names can have alphanumeric and underscore characters, and the values
+must match C<[A-Za-z0-9-._~:/?
 
 
 
