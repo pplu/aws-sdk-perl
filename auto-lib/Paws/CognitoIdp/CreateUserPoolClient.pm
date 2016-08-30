@@ -2,8 +2,12 @@
 package Paws::CognitoIdp::CreateUserPoolClient;
   use Moose;
   has ClientName => (is => 'ro', isa => 'Str', required => 1);
+  has ExplicitAuthFlows => (is => 'ro', isa => 'ArrayRef[Str]');
   has GenerateSecret => (is => 'ro', isa => 'Bool');
+  has ReadAttributes => (is => 'ro', isa => 'ArrayRef[Str]');
+  has RefreshTokenValidity => (is => 'ro', isa => 'Int');
   has UserPoolId => (is => 'ro', isa => 'Str', required => 1);
+  has WriteAttributes => (is => 'ro', isa => 'ArrayRef[Str]');
 
   use MooseX::ClassAttribute;
 
@@ -41,6 +45,12 @@ The client name for the user pool client you would like to create.
 
 
 
+=head2 ExplicitAuthFlows => ArrayRef[Str]
+
+The explicit authentication flows.
+
+
+
 =head2 GenerateSecret => Bool
 
 Boolean to specify whether you want to generate a secret for the user
@@ -48,10 +58,28 @@ pool client being created.
 
 
 
+=head2 ReadAttributes => ArrayRef[Str]
+
+The read attributes.
+
+
+
+=head2 RefreshTokenValidity => Int
+
+Refreshes the token validity.
+
+
+
 =head2 B<REQUIRED> UserPoolId => Str
 
 The user pool ID for the user pool where you want to create a user pool
 client.
+
+
+
+=head2 WriteAttributes => ArrayRef[Str]
+
+The write attributes.
 
 
 

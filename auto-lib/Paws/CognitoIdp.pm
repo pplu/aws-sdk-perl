@@ -44,9 +44,29 @@ package Paws::CognitoIdp;
     my $call_object = $self->new_with_coercions('Paws::CognitoIdp::AdminEnableUser', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub AdminForgetDevice {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CognitoIdp::AdminForgetDevice', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub AdminGetDevice {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CognitoIdp::AdminGetDevice', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub AdminGetUser {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CognitoIdp::AdminGetUser', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub AdminInitiateAuth {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CognitoIdp::AdminInitiateAuth', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub AdminListDevices {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CognitoIdp::AdminListDevices', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub AdminResetUserPassword {
@@ -54,9 +74,19 @@ package Paws::CognitoIdp;
     my $call_object = $self->new_with_coercions('Paws::CognitoIdp::AdminResetUserPassword', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub AdminRespondToAuthChallenge {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CognitoIdp::AdminRespondToAuthChallenge', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub AdminSetUserSettings {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CognitoIdp::AdminSetUserSettings', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub AdminUpdateDeviceStatus {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CognitoIdp::AdminUpdateDeviceStatus', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub AdminUpdateUserAttributes {
@@ -64,9 +94,19 @@ package Paws::CognitoIdp;
     my $call_object = $self->new_with_coercions('Paws::CognitoIdp::AdminUpdateUserAttributes', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub AdminUserGlobalSignOut {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CognitoIdp::AdminUserGlobalSignOut', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ChangePassword {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CognitoIdp::ChangePassword', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ConfirmDevice {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CognitoIdp::ConfirmDevice', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ConfirmForgotPassword {
@@ -119,19 +159,19 @@ package Paws::CognitoIdp;
     my $call_object = $self->new_with_coercions('Paws::CognitoIdp::DescribeUserPoolClient', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ForgetDevice {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CognitoIdp::ForgetDevice', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ForgotPassword {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CognitoIdp::ForgotPassword', @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub GetJWKS {
+  sub GetDevice {
     my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CognitoIdp::GetJWKS', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub GetOpenIdConfiguration {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CognitoIdp::GetOpenIdConfiguration', @_);
+    my $call_object = $self->new_with_coercions('Paws::CognitoIdp::GetDevice', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetUser {
@@ -142,6 +182,21 @@ package Paws::CognitoIdp;
   sub GetUserAttributeVerificationCode {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CognitoIdp::GetUserAttributeVerificationCode', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GlobalSignOut {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CognitoIdp::GlobalSignOut', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub InitiateAuth {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CognitoIdp::InitiateAuth', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListDevices {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CognitoIdp::ListDevices', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListUserPoolClients {
@@ -164,6 +219,11 @@ package Paws::CognitoIdp;
     my $call_object = $self->new_with_coercions('Paws::CognitoIdp::ResendConfirmationCode', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub RespondToAuthChallenge {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CognitoIdp::RespondToAuthChallenge', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub SetUserSettings {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CognitoIdp::SetUserSettings', @_);
@@ -172,6 +232,11 @@ package Paws::CognitoIdp;
   sub SignUp {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CognitoIdp::SignUp', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateDeviceStatus {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CognitoIdp::UpdateDeviceStatus', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateUserAttributes {
@@ -195,7 +260,7 @@ package Paws::CognitoIdp;
     return $self->caller->do_call($self, $call_object);
   }
 
-  sub operations { qw/AddCustomAttributes AdminConfirmSignUp AdminDeleteUser AdminDeleteUserAttributes AdminDisableUser AdminEnableUser AdminGetUser AdminResetUserPassword AdminSetUserSettings AdminUpdateUserAttributes ChangePassword ConfirmForgotPassword ConfirmSignUp CreateUserPool CreateUserPoolClient DeleteUser DeleteUserAttributes DeleteUserPool DeleteUserPoolClient DescribeUserPool DescribeUserPoolClient ForgotPassword GetJWKS GetOpenIdConfiguration GetUser GetUserAttributeVerificationCode ListUserPoolClients ListUserPools ListUsers ResendConfirmationCode SetUserSettings SignUp UpdateUserAttributes UpdateUserPool UpdateUserPoolClient VerifyUserAttribute / }
+  sub operations { qw/AddCustomAttributes AdminConfirmSignUp AdminDeleteUser AdminDeleteUserAttributes AdminDisableUser AdminEnableUser AdminForgetDevice AdminGetDevice AdminGetUser AdminInitiateAuth AdminListDevices AdminResetUserPassword AdminRespondToAuthChallenge AdminSetUserSettings AdminUpdateDeviceStatus AdminUpdateUserAttributes AdminUserGlobalSignOut ChangePassword ConfirmDevice ConfirmForgotPassword ConfirmSignUp CreateUserPool CreateUserPoolClient DeleteUser DeleteUserAttributes DeleteUserPool DeleteUserPoolClient DescribeUserPool DescribeUserPoolClient ForgetDevice ForgotPassword GetDevice GetUser GetUserAttributeVerificationCode GlobalSignOut InitiateAuth ListDevices ListUserPoolClients ListUserPools ListUsers ResendConfirmationCode RespondToAuthChallenge SetUserSettings SignUp UpdateDeviceStatus UpdateUserAttributes UpdateUserPool UpdateUserPoolClient VerifyUserAttribute / }
 
 1;
 
@@ -228,8 +293,9 @@ directories and users. You can authenticate a user to obtain tokens
 related to user identity and access policies.
 
 This API reference provides information about user pools in Amazon
-Cognito Identity, which is a new capability that is available as a
-beta.
+Cognito Identity.
+
+For more information, see Amazon Cognito.
 
 =head1 METHODS
 
@@ -289,6 +355,24 @@ Returns: a L<Paws::CognitoIdp::AdminEnableUserResponse> instance
   Enables the specified user as an administrator. Works on any user.
 
 
+=head2 AdminForgetDevice(DeviceKey => Str, Username => Str, UserPoolId => Str)
+
+Each argument is described in detail in: L<Paws::CognitoIdp::AdminForgetDevice>
+
+Returns: nothing
+
+  Forgets the device, as an administrator.
+
+
+=head2 AdminGetDevice(DeviceKey => Str, Username => Str, UserPoolId => Str)
+
+Each argument is described in detail in: L<Paws::CognitoIdp::AdminGetDevice>
+
+Returns: a L<Paws::CognitoIdp::AdminGetDeviceResponse> instance
+
+  Gets the device, as an administrator.
+
+
 =head2 AdminGetUser(Username => Str, UserPoolId => Str)
 
 Each argument is described in detail in: L<Paws::CognitoIdp::AdminGetUser>
@@ -297,6 +381,24 @@ Returns: a L<Paws::CognitoIdp::AdminGetUserResponse> instance
 
   Gets the specified user by user name in a user pool as an
 administrator. Works on any user.
+
+
+=head2 AdminInitiateAuth(AuthFlow => Str, ClientId => Str, UserPoolId => Str, [AuthParameters => L<Paws::CognitoIdp::AuthParametersType>, ClientMetadata => L<Paws::CognitoIdp::ClientMetadataType>])
+
+Each argument is described in detail in: L<Paws::CognitoIdp::AdminInitiateAuth>
+
+Returns: a L<Paws::CognitoIdp::AdminInitiateAuthResponse> instance
+
+  Initiates the authentication flow, as an administrator.
+
+
+=head2 AdminListDevices(Username => Str, UserPoolId => Str, [Limit => Int, PaginationToken => Str])
+
+Each argument is described in detail in: L<Paws::CognitoIdp::AdminListDevices>
+
+Returns: a L<Paws::CognitoIdp::AdminListDevicesResponse> instance
+
+  Lists devices, as an administrator.
 
 
 =head2 AdminResetUserPassword(Username => Str, UserPoolId => Str)
@@ -309,6 +411,15 @@ Returns: a L<Paws::CognitoIdp::AdminResetUserPasswordResponse> instance
 administrator. Works on any user.
 
 
+=head2 AdminRespondToAuthChallenge(ChallengeName => Str, ClientId => Str, UserPoolId => Str, [ChallengeResponses => L<Paws::CognitoIdp::ChallengeResponsesType>, Session => Str])
+
+Each argument is described in detail in: L<Paws::CognitoIdp::AdminRespondToAuthChallenge>
+
+Returns: a L<Paws::CognitoIdp::AdminRespondToAuthChallengeResponse> instance
+
+  Responds to an authentication challenge, as an administrator.
+
+
 =head2 AdminSetUserSettings(MFAOptions => ArrayRef[L<Paws::CognitoIdp::MFAOptionType>], Username => Str, UserPoolId => Str)
 
 Each argument is described in detail in: L<Paws::CognitoIdp::AdminSetUserSettings>
@@ -317,6 +428,15 @@ Returns: a L<Paws::CognitoIdp::AdminSetUserSettingsResponse> instance
 
   Sets all the user settings for a specified user name. Works on any
 user.
+
+
+=head2 AdminUpdateDeviceStatus(DeviceKey => Str, Username => Str, UserPoolId => Str, [DeviceRememberedStatus => Str])
+
+Each argument is described in detail in: L<Paws::CognitoIdp::AdminUpdateDeviceStatus>
+
+Returns: a L<Paws::CognitoIdp::AdminUpdateDeviceStatusResponse> instance
+
+  Updates the device status as an administrator.
 
 
 =head2 AdminUpdateUserAttributes(UserAttributes => ArrayRef[L<Paws::CognitoIdp::AttributeType>], Username => Str, UserPoolId => Str)
@@ -329,6 +449,15 @@ Returns: a L<Paws::CognitoIdp::AdminUpdateUserAttributesResponse> instance
 attributes, as an administrator. Works on any user.
 
 
+=head2 AdminUserGlobalSignOut(Username => Str, UserPoolId => Str)
+
+Each argument is described in detail in: L<Paws::CognitoIdp::AdminUserGlobalSignOut>
+
+Returns: a L<Paws::CognitoIdp::AdminUserGlobalSignOutResponse> instance
+
+  Signs out users from all devices, as an administrator.
+
+
 =head2 ChangePassword(PreviousPassword => Str, ProposedPassword => Str, [AccessToken => Str])
 
 Each argument is described in detail in: L<Paws::CognitoIdp::ChangePassword>
@@ -336,6 +465,16 @@ Each argument is described in detail in: L<Paws::CognitoIdp::ChangePassword>
 Returns: a L<Paws::CognitoIdp::ChangePasswordResponse> instance
 
   Changes the password for a specified user in a user pool.
+
+
+=head2 ConfirmDevice(AccessToken => Str, DeviceKey => Str, [DeviceName => Str, DeviceSecretVerifierConfig => L<Paws::CognitoIdp::DeviceSecretVerifierConfigType>])
+
+Each argument is described in detail in: L<Paws::CognitoIdp::ConfirmDevice>
+
+Returns: a L<Paws::CognitoIdp::ConfirmDeviceResponse> instance
+
+  Confirms tracking of the device. This API call is the call that beings
+device tracking.
 
 
 =head2 ConfirmForgotPassword(ClientId => Str, ConfirmationCode => Str, Password => Str, Username => Str, [SecretHash => Str])
@@ -358,7 +497,7 @@ Returns: a L<Paws::CognitoIdp::ConfirmSignUpResponse> instance
 previous user.
 
 
-=head2 CreateUserPool(PoolName => Str, [AliasAttributes => ArrayRef[Str], AutoVerifiedAttributes => ArrayRef[Str], EmailVerificationMessage => Str, EmailVerificationSubject => Str, LambdaConfig => L<Paws::CognitoIdp::LambdaConfigType>, MfaConfiguration => Str, Policies => L<Paws::CognitoIdp::UserPoolPolicyType>, SmsAuthenticationMessage => Str, SmsVerificationMessage => Str])
+=head2 CreateUserPool(PoolName => Str, [AliasAttributes => ArrayRef[Str], AutoVerifiedAttributes => ArrayRef[Str], DeviceConfiguration => L<Paws::CognitoIdp::DeviceConfigurationType>, EmailConfiguration => L<Paws::CognitoIdp::EmailConfigurationType>, EmailVerificationMessage => Str, EmailVerificationSubject => Str, LambdaConfig => L<Paws::CognitoIdp::LambdaConfigType>, MfaConfiguration => Str, Policies => L<Paws::CognitoIdp::UserPoolPolicyType>, SmsAuthenticationMessage => Str, SmsConfiguration => L<Paws::CognitoIdp::SmsConfigurationType>, SmsVerificationMessage => Str])
 
 Each argument is described in detail in: L<Paws::CognitoIdp::CreateUserPool>
 
@@ -368,7 +507,7 @@ Returns: a L<Paws::CognitoIdp::CreateUserPoolResponse> instance
 the pool.
 
 
-=head2 CreateUserPoolClient(ClientName => Str, UserPoolId => Str, [GenerateSecret => Bool])
+=head2 CreateUserPoolClient(ClientName => Str, UserPoolId => Str, [ExplicitAuthFlows => ArrayRef[Str], GenerateSecret => Bool, ReadAttributes => ArrayRef[Str], RefreshTokenValidity => Int, WriteAttributes => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::CognitoIdp::CreateUserPoolClient>
 
@@ -433,6 +572,15 @@ Returns: a L<Paws::CognitoIdp::DescribeUserPoolClientResponse> instance
 of the specified user pool client.
 
 
+=head2 ForgetDevice(DeviceKey => Str, [AccessToken => Str])
+
+Each argument is described in detail in: L<Paws::CognitoIdp::ForgetDevice>
+
+Returns: nothing
+
+  Forgets the specified device.
+
+
 =head2 ForgotPassword(ClientId => Str, Username => Str, [SecretHash => Str])
 
 Each argument is described in detail in: L<Paws::CognitoIdp::ForgotPassword>
@@ -442,22 +590,13 @@ Returns: a L<Paws::CognitoIdp::ForgotPasswordResponse> instance
   Retrieves the password for the specified client ID or username.
 
 
-=head2 GetJWKS(UserPoolId => Str)
+=head2 GetDevice(DeviceKey => Str, [AccessToken => Str])
 
-Each argument is described in detail in: L<Paws::CognitoIdp::GetJWKS>
+Each argument is described in detail in: L<Paws::CognitoIdp::GetDevice>
 
-Returns: a L<Paws::CognitoIdp::GetJWKSResponse> instance
+Returns: a L<Paws::CognitoIdp::GetDeviceResponse> instance
 
-  Gets the JSON Web keys for the specified user pool.
-
-
-=head2 GetOpenIdConfiguration(UserPoolId => Str)
-
-Each argument is described in detail in: L<Paws::CognitoIdp::GetOpenIdConfiguration>
-
-Returns: a L<Paws::CognitoIdp::GetOpenIdConfigurationResponse> instance
-
-  Gets the OpenId configuration information for the specified user pool.
+  Gets the device.
 
 
 =head2 GetUser([AccessToken => Str])
@@ -479,6 +618,33 @@ Returns: a L<Paws::CognitoIdp::GetUserAttributeVerificationCodeResponse> instanc
 name.
 
 
+=head2 GlobalSignOut([AccessToken => Str])
+
+Each argument is described in detail in: L<Paws::CognitoIdp::GlobalSignOut>
+
+Returns: a L<Paws::CognitoIdp::GlobalSignOutResponse> instance
+
+  Signs out users from all devices.
+
+
+=head2 InitiateAuth(AuthFlow => Str, ClientId => Str, [AuthParameters => L<Paws::CognitoIdp::AuthParametersType>, ClientMetadata => L<Paws::CognitoIdp::ClientMetadataType>])
+
+Each argument is described in detail in: L<Paws::CognitoIdp::InitiateAuth>
+
+Returns: a L<Paws::CognitoIdp::InitiateAuthResponse> instance
+
+  Initiates the authentication flow.
+
+
+=head2 ListDevices(AccessToken => Str, [Limit => Int, PaginationToken => Str])
+
+Each argument is described in detail in: L<Paws::CognitoIdp::ListDevices>
+
+Returns: a L<Paws::CognitoIdp::ListDevicesResponse> instance
+
+  Lists the devices.
+
+
 =head2 ListUserPoolClients(UserPoolId => Str, [MaxResults => Int, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::CognitoIdp::ListUserPoolClients>
@@ -497,7 +663,7 @@ Returns: a L<Paws::CognitoIdp::ListUserPoolsResponse> instance
   Lists the user pools associated with an AWS account.
 
 
-=head2 ListUsers(UserPoolId => Str, [AttributesToGet => ArrayRef[Str], Limit => Int, PaginationToken => Str, UserStatus => Str])
+=head2 ListUsers(UserPoolId => Str, [AttributesToGet => ArrayRef[Str], Filter => Str, Limit => Int, PaginationToken => Str])
 
 Each argument is described in detail in: L<Paws::CognitoIdp::ListUsers>
 
@@ -514,6 +680,15 @@ Returns: a L<Paws::CognitoIdp::ResendConfirmationCodeResponse> instance
 
   Resends the confirmation (for confirmation of registration) to a
 specific user in the user pool.
+
+
+=head2 RespondToAuthChallenge(ChallengeName => Str, ClientId => Str, [ChallengeResponses => L<Paws::CognitoIdp::ChallengeResponsesType>, Session => Str])
+
+Each argument is described in detail in: L<Paws::CognitoIdp::RespondToAuthChallenge>
+
+Returns: a L<Paws::CognitoIdp::RespondToAuthChallengeResponse> instance
+
+  Responds to the authentication challenge.
 
 
 =head2 SetUserSettings(AccessToken => Str, MFAOptions => ArrayRef[L<Paws::CognitoIdp::MFAOptionType>])
@@ -538,6 +713,15 @@ Returns: a L<Paws::CognitoIdp::SignUpResponse> instance
 password, and user attributes.
 
 
+=head2 UpdateDeviceStatus(AccessToken => Str, DeviceKey => Str, [DeviceRememberedStatus => Str])
+
+Each argument is described in detail in: L<Paws::CognitoIdp::UpdateDeviceStatus>
+
+Returns: a L<Paws::CognitoIdp::UpdateDeviceStatusResponse> instance
+
+  Updates the device status.
+
+
 =head2 UpdateUserAttributes(UserAttributes => ArrayRef[L<Paws::CognitoIdp::AttributeType>], [AccessToken => Str])
 
 Each argument is described in detail in: L<Paws::CognitoIdp::UpdateUserAttributes>
@@ -547,7 +731,7 @@ Returns: a L<Paws::CognitoIdp::UpdateUserAttributesResponse> instance
   Allows a user to update a specific attribute (one at a time).
 
 
-=head2 UpdateUserPool(UserPoolId => Str, [AutoVerifiedAttributes => ArrayRef[Str], EmailVerificationMessage => Str, EmailVerificationSubject => Str, LambdaConfig => L<Paws::CognitoIdp::LambdaConfigType>, MfaConfiguration => Str, Policies => L<Paws::CognitoIdp::UserPoolPolicyType>, SmsAuthenticationMessage => Str, SmsVerificationMessage => Str])
+=head2 UpdateUserPool(UserPoolId => Str, [AutoVerifiedAttributes => ArrayRef[Str], DeviceConfiguration => L<Paws::CognitoIdp::DeviceConfigurationType>, EmailConfiguration => L<Paws::CognitoIdp::EmailConfigurationType>, EmailVerificationMessage => Str, EmailVerificationSubject => Str, LambdaConfig => L<Paws::CognitoIdp::LambdaConfigType>, MfaConfiguration => Str, Policies => L<Paws::CognitoIdp::UserPoolPolicyType>, SmsAuthenticationMessage => Str, SmsConfiguration => L<Paws::CognitoIdp::SmsConfigurationType>, SmsVerificationMessage => Str])
 
 Each argument is described in detail in: L<Paws::CognitoIdp::UpdateUserPool>
 
@@ -556,7 +740,7 @@ Returns: a L<Paws::CognitoIdp::UpdateUserPoolResponse> instance
   Updates the specified user pool with the specified attributes.
 
 
-=head2 UpdateUserPoolClient(ClientId => Str, UserPoolId => Str, [ClientName => Str])
+=head2 UpdateUserPoolClient(ClientId => Str, UserPoolId => Str, [ClientName => Str, ExplicitAuthFlows => ArrayRef[Str], ReadAttributes => ArrayRef[Str], RefreshTokenValidity => Int, WriteAttributes => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::CognitoIdp::UpdateUserPoolClient>
 

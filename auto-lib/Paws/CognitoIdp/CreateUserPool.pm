@@ -3,6 +3,8 @@ package Paws::CognitoIdp::CreateUserPool;
   use Moose;
   has AliasAttributes => (is => 'ro', isa => 'ArrayRef[Str]');
   has AutoVerifiedAttributes => (is => 'ro', isa => 'ArrayRef[Str]');
+  has DeviceConfiguration => (is => 'ro', isa => 'Paws::CognitoIdp::DeviceConfigurationType');
+  has EmailConfiguration => (is => 'ro', isa => 'Paws::CognitoIdp::EmailConfigurationType');
   has EmailVerificationMessage => (is => 'ro', isa => 'Str');
   has EmailVerificationSubject => (is => 'ro', isa => 'Str');
   has LambdaConfig => (is => 'ro', isa => 'Paws::CognitoIdp::LambdaConfigType');
@@ -10,6 +12,7 @@ package Paws::CognitoIdp::CreateUserPool;
   has Policies => (is => 'ro', isa => 'Paws::CognitoIdp::UserPoolPolicyType');
   has PoolName => (is => 'ro', isa => 'Str', required => 1);
   has SmsAuthenticationMessage => (is => 'ro', isa => 'Str');
+  has SmsConfiguration => (is => 'ro', isa => 'Paws::CognitoIdp::SmsConfigurationType');
   has SmsVerificationMessage => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
@@ -56,6 +59,18 @@ B<phone_number>.
 
 
 
+=head2 DeviceConfiguration => L<Paws::CognitoIdp::DeviceConfigurationType>
+
+The device configuration.
+
+
+
+=head2 EmailConfiguration => L<Paws::CognitoIdp::EmailConfigurationType>
+
+The email configuration.
+
+
+
 =head2 EmailVerificationMessage => Str
 
 A string representing the email verification message.
@@ -95,6 +110,12 @@ A string used to name the user pool.
 =head2 SmsAuthenticationMessage => Str
 
 A string representing the SMS authentication message.
+
+
+
+=head2 SmsConfiguration => L<Paws::CognitoIdp::SmsConfigurationType>
+
+The SMS configuration.
 
 
 
