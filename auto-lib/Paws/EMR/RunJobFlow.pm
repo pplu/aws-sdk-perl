@@ -64,7 +64,9 @@ Amazon EC2 instances in the job flow. The following values are valid:
 
 =over
 
-=item * The version number of the AMI to use, for example, "2.0."
+=item *
+
+The version number of the AMI to use, for example, "2.0."
 
 =back
 
@@ -146,25 +148,40 @@ MapR Distribution for Hadoop. Currently supported values are:
 
 =over
 
-=item * "mapr-m3" - launch the cluster using MapR M3 Edition.
+=item *
 
-=item * "mapr-m5" - launch the cluster using MapR M5 Edition.
+"mapr-m3" - launch the cluster using MapR M3 Edition.
 
-=item * "mapr" with the user arguments specifying "--edition,m3" or
+=item *
+
+"mapr-m5" - launch the cluster using MapR M5 Edition.
+
+=item *
+
+"mapr" with the user arguments specifying "--edition,m3" or
 "--edition,m5" - launch the job flow using MapR M3 or M5 Edition
 respectively.
 
-=item * "mapr-m7" - launch the cluster using MapR M7 Edition.
+=item *
 
-=item * "hunk" - launch the cluster with the Hunk Big Data Analtics
-Platform.
+"mapr-m7" - launch the cluster using MapR M7 Edition.
 
-=item * "hue"- launch the cluster with Hue installed.
+=item *
 
-=item * "spark" - launch the cluster with Apache Spark installed.
+"hunk" - launch the cluster with the Hunk Big Data Analtics Platform.
 
-=item * "ganglia" - launch the cluster with the Ganglia Monitoring
-System installed.
+=item *
+
+"hue"- launch the cluster with Hue installed.
+
+=item *
+
+"spark" - launch the cluster with Apache Spark installed.
+
+=item *
+
+"ganglia" - launch the cluster with the Ganglia Monitoring System
+installed.
 
 =back
 
@@ -204,9 +221,13 @@ Amazon EMR. Currently supported values are:
 
 =over
 
-=item * "mapr-m3" - launch the job flow using MapR M3 Edition.
+=item *
 
-=item * "mapr-m5" - launch the job flow using MapR M5 Edition.
+"mapr-m3" - launch the job flow using MapR M3 Edition.
+
+=item *
+
+"mapr-m5" - launch the job flow using MapR M5 Edition.
 
 =back
 
