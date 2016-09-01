@@ -146,15 +146,8 @@ Instance in the I<Auto Scaling User Guide>.
 
 =head2 InstanceMonitoring => L<Paws::AutoScaling::InstanceMonitoring>
 
-Enables detailed monitoring if it is disabled. Detailed monitoring is
-enabled by default.
-
-When detailed monitoring is enabled, Amazon CloudWatch generates
-metrics every minute and your account is charged a fee. When you
-disable detailed monitoring, by specifying C<False>, CloudWatch
-generates metrics every 5 minutes. For more information, see Monitoring
-Your Auto Scaling Instances and Groups in the I<Auto Scaling User
-Guide>.
+Enables detailed monitoring (C<true>) or basic monitoring (C<false>)
+for the Auto Scaling instances.
 
 
 

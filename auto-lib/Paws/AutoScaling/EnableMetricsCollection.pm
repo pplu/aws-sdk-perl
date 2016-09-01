@@ -89,8 +89,6 @@ C<GroupTotalInstances>
 
 =back
 
-Note that the C<GroupStandbyInstances> metric is not enabled by
-default. You must explicitly request this metric.
 
 
 
