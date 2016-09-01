@@ -25,23 +25,19 @@ Paws::Route53::CreateReusableDelegationSetResponse
 
 =head2 B<REQUIRED> CallerReference => Str
 
-A unique string that identifies the request and that allows failed
-C<CreateReusableDelegationSet> requests to be retried without the risk
+A unique string that identifies the request, and that allows you to
+retry failed C<CreateReusableDelegationSet> requests without the risk
 of executing the operation twice. You must use a unique
-C<CallerReference> string every time you create a reusable delegation
-set. C<CallerReference> can be any unique string; you might choose to
-use a string that identifies your project, such as C<DNSMigration_01>.
-
-Valid characters are any Unicode code points that are legal in an XML
-1.0 document. The UTF-8 encoding of the value must be less than 128
-bytes.
+C<CallerReference> string every time you submit a
+C<CreateReusableDelegationSet> request. C<CallerReference> can be any
+unique string, for example a date/time stamp.
 
 
 
 =head2 HostedZoneId => Str
 
-The ID of the hosted zone whose delegation set you want to mark as
-reusable. It is an optional parameter.
+If you want to mark the delegation set for an existing hosted zone as
+reusable, the ID for that hosted zone.
 
 
 

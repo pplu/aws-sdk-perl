@@ -26,8 +26,7 @@ Paws::Route53::AssociateVPCWithHostedZoneResponse
 
 =head2 Comment => Str
 
-I<Optional:> Any comments you want to include about a
-C<AssociateVPCWithHostedZoneRequest>.
+I<Optional:> A comment about the association request.
 
 
 
@@ -42,7 +41,8 @@ have an existing VPC association.
 
 =head2 B<REQUIRED> VPC => L<Paws::Route53::VPC>
 
-The VPC that you want your hosted zone to be associated with.
+A complex type containing information about the Amazon VPC that you're
+associating with the specified hosted zone.
 
 
 

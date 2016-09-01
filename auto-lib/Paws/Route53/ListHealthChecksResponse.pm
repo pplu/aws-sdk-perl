@@ -34,16 +34,18 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> HealthChecks => ArrayRef[L<Paws::Route53::HealthCheck>]
 
-A complex type that contains information about the health checks
-associated with the current AWS account.
+A complex type that contains one C<HealthCheck> element for each health
+check that is associated with the current AWS account.
 
 
 
 =head2 B<REQUIRED> IsTruncated => Bool
 
-A flag indicating whether there are more health checks to be listed. If
-your results were truncated, you can make a follow-up request for the
-next page of results by using the C<Marker> element.
+A flag that indicates whether there are more health checks to be
+listed. If the response was truncated, you can get the next group of
+C<maxitems> health checks by calling C<ListHealthChecks> again and
+specifying the value of the C<NextMarker> element in the marker
+parameter.
 
 Valid Values: C<true> | C<false>
 
@@ -51,29 +53,25 @@ Valid Values: C<true> | C<false>
 
 =head2 B<REQUIRED> Marker => Str
 
-If the request returned more than one page of results, submit another
-request and specify the value of C<NextMarker> from the last response
-in the C<marker> parameter to get the next page of results.
+For the second and subsequent calls to C<ListHealthChecks>, C<Marker>
+is the value that you specified for the marker parameter in the
+previous request.
 
 
 
 =head2 B<REQUIRED> MaxItems => Str
 
-The maximum number of health checks to be included in the response
-body. If the number of health checks associated with this AWS account
-exceeds C<MaxItems>, the value of C<IsTruncated> in the response is
-C<true>. Call C<ListHealthChecks> again and specify the value of
-C<NextMarker> from the last response in the C<Marker> element of the
-next request to get the next page of results.
+The value that you specified for the C<maxitems> parameter in the call
+to C<ListHealthChecks> that produced the current response.
 
 
 
 =head2 NextMarker => Str
 
-Indicates where to continue listing health checks. If C<IsTruncated> is
-C<true>, make another request to C<ListHealthChecks> and include the
-value of the C<NextMarker> element in the C<Marker> element to get the
-next page of results.
+If C<IsTruncated> is C<true>, the value of C<NextMarker> identifies the
+first health check in the next group of C<maxitems> health checks. Call
+C<ListHealthChecks> again and specify the value of C<NextMarker> in the
+marker parameter.
 
 
 

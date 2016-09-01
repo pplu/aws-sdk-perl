@@ -33,27 +33,20 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Route53::Ho
 =head1 DESCRIPTION
 
 A complex type that contains an optional comment about your hosted
-zone. If you don't want to specify a comment, you can omit the
-C<HostedZoneConfig> and C<Comment> elements from the XML document.
+zone. If you don't want to specify a comment, omit both the
+C<HostedZoneConfig> and C<Comment> elements.
 
 =head1 ATTRIBUTES
 
 
 =head2 Comment => Str
 
-  An optional comment about your hosted zone. If you don't want to
-specify a comment, you can omit the C<HostedZoneConfig> and C<Comment>
-elements from the XML document.
+  Any comments that you want to include about the hosted zone.
 
 
 =head2 PrivateZone => Bool
 
-  C<GetHostedZone> and C<ListHostedZone> responses: A Boolean value that
-indicates whether a hosted zone is private.
-
-C<CreateHostedZone> requests: When you're creating a private hosted
-zone (when you specify values for VPCId and VPCRegion), you can
-optionally specify true for PrivateZone.
+  A value that indicates whether this is a private hosted zone.
 
 
 

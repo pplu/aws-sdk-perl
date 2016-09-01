@@ -34,45 +34,42 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> HostedZones => ArrayRef[L<Paws::Route53::HostedZone>]
 
-A complex type that contains information about the hosted zones
-associated with the current AWS account.
+A complex type that contains general information about the hosted zone.
 
 
 
 =head2 B<REQUIRED> IsTruncated => Bool
 
 A flag indicating whether there are more hosted zones to be listed. If
-your results were truncated, you can make a follow-up request for the
-next page of results by using the C<Marker> element.
-
-Valid Values: C<true> | C<false>
+the response was truncated, you can get the next group of C<maxitems>
+hosted zones by calling C<ListHostedZones> again and specifying the
+value of the C<NextMarker> element in the marker parameter.
 
 
 
 =head2 Marker => Str
 
-If the request returned more than one page of results, submit another
-request and specify the value of C<NextMarker> from the last response
-in the C<marker> parameter to get the next page of results.
+For the second and subsequent calls to C<ListHostedZones>, C<Marker> is
+the value that you specified for the marker parameter in the request
+that produced the current response.
 
 
 
 =head2 B<REQUIRED> MaxItems => Str
 
-The maximum number of hosted zones to be included in the response body.
-If the number of hosted zones associated with this AWS account exceeds
-C<MaxItems>, the value of C<IsTruncated> in the response is C<true>.
-Call C<ListHostedZones> again and specify the value of C<NextMarker> in
-the C<Marker> parameter to get the next page of results.
+The value that you specified for the C<maxitems> parameter in the call
+to C<ListHostedZones> that produced the current response.
 
 
 
 =head2 NextMarker => Str
 
-Indicates where to continue listing hosted zones. If C<IsTruncated> is
-C<true>, make another request to C<ListHostedZones> and include the
-value of the C<NextMarker> element in the C<Marker> element to get the
-next page of results.
+If C<IsTruncated> is C<true>, the value of C<NextMarker> identifies the
+first hosted zone in the next group of C<maxitems> hosted zones. Call
+C<ListHostedZones> again and specify the value of C<NextMarker> in the
+C<marker> parameter.
+
+This element is present only if C<IsTruncated> is C<true>.
 
 
 

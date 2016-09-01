@@ -31,7 +31,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 B<REQUIRED> HealthCheckObservations => ArrayRef[L<Paws::Route53::HealthCheckObservation>]
 
 A list that contains one C<HealthCheckObservation> element for each
-Amazon Route 53 health checker.
+Amazon Route 53 health checker that is reporting a status about the
+health check endpoint.
 
 
 

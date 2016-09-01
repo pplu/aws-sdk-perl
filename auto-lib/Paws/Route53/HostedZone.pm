@@ -35,44 +35,44 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Route53::Ho
 
 =head1 DESCRIPTION
 
-A complex type that contain information about the specified hosted
-zone.
+A complex type that contains general information about the hosted zone.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> CallerReference => Str
 
-  A unique string that identifies the request to create the hosted zone.
+  The value that you specified for C<CallerReference> when you created
+the hosted zone.
 
 
 =head2 Config => L<Paws::Route53::HostedZoneConfig>
 
-  A complex type that contains the C<Comment> element.
+  A complex type that includes the C<Comment> and C<PrivateZone>
+elements. If you omitted the C<HostedZoneConfig> and C<Comment>
+elements from the request, the C<Config> and C<Comment> elements don't
+appear in the response.
 
 
 =head2 B<REQUIRED> Id => Str
 
-  The ID of the specified hosted zone.
+  The ID that Amazon Route 53 assigned to the hosted zone when you
+created it.
 
 
 =head2 B<REQUIRED> Name => Str
 
-  The name of the domain. This must be a fully-specified domain, for
-example, www.example.com. The trailing dot is optional; Amazon Route 53
-assumes that the domain name is fully qualified. This means that Amazon
-Route 53 treats www.example.com (without a trailing dot) and
-www.example.com. (with a trailing dot) as identical.
+  The name of the domain. For public hosted zones, this is the name that
+you have registered with your DNS registrar.
 
-This is the name you have registered with your DNS registrar. You
-should ask your registrar to change the authoritative name servers for
-your domain to the set of C<NameServers> elements returned in
-C<DelegationSet>.
+For information about how to specify characters other than C<a-z>,
+C<0-9>, and C<-> (hyphen) and how to specify internationalized domain
+names, see CreateHostedZone.
 
 
 =head2 ResourceRecordSetCount => Int
 
-  Total number of resource record sets in the hosted zone.
+  The number of resource record sets in the hosted zone.
 
 
 

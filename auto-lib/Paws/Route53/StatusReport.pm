@@ -32,23 +32,24 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Route53::St
 
 =head1 DESCRIPTION
 
-A complex type that contains information about the health check status
-for the current observation.
+A complex type that contains the status that one Amazon Route 53 health
+checker reports and the time of the health check.
 
 =head1 ATTRIBUTES
 
 
 =head2 CheckedTime => Str
 
-  The date and time the health check status was observed, in the format
-C<YYYY-MM-DDThh:mm:ssZ>, as specified in the ISO 8601 standard (for
-example, 2009-11-19T19:37:58Z). The C<Z> after the time indicates that
-the time is listed in Coordinated Universal Time (UTC).
+  The time at which the health checker performed the health check in ISO
+8601 format and Coordinated Universal Time (UTC). For example, the
+value C<2014-10-27T17:48:16.751Z> represents October 27, 2014 at
+17:48:16.751 UTC.
 
 
 =head2 Status => Str
 
-  The observed health check status.
+  A description of the status of the health check endpoint as reported by
+one of the Amazon Route 53 health checkers.
 
 
 

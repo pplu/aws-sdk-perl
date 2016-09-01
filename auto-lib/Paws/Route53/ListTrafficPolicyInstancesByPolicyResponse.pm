@@ -51,8 +51,6 @@ of the C<HostedZoneIdMarker>, C<TrafficPolicyInstanceNameMarker>, and
 C<TrafficPolicyInstanceTypeMarker> elements in the corresponding
 request parameters.
 
-Valid Values: C<true> | C<false>
-
 
 
 =head2 B<REQUIRED> MaxItems => Str
@@ -85,7 +83,7 @@ DNS type of the resource record sets that are associated with the first
 traffic policy instance in the next group of C<MaxItems> traffic policy
 instances.
 
-Valid values are: C<"SOA">, C<"A">, C<"TXT">, C<"NS">, C<"CNAME">, C<"MX">, C<"PTR">, C<"SRV">, C<"SPF">, C<"AAAA">
+Valid values are: C<"SOA">, C<"A">, C<"TXT">, C<"NS">, C<"CNAME">, C<"MX">, C<"NAPTR">, C<"PTR">, C<"SRV">, C<"SPF">, C<"AAAA">
 
 
 =head1 SEE ALSO

@@ -32,16 +32,24 @@ Paws::Route53::ListHostedZonesResponse
 
 =head2 Marker => Str
 
-If the request returned more than one page of results, submit another
-request and specify the value of C<NextMarker> from the last response
-in the C<marker> parameter to get the next page of results.
+(Optional) If you have more hosted zones than the value of C<maxitems>,
+C<ListHostedZones> returns only the first C<maxitems> hosted zones. To
+get the next group of C<maxitems> hosted zones, submit another request
+to C<ListHostedZones>. For the value of marker, specify the value of
+the C<NextMarker> element that was returned in the previous response.
+
+Hosted zones are listed in the order in which they were created.
 
 
 
 =head2 MaxItems => Str
 
-Specify the maximum number of hosted zones to return per page of
-results.
+(Optional) The maximum number of hosted zones to be included in the
+response body for this request. If you have more than C<maxitems>
+hosted zones, the value of the C<IsTruncated> element in the response
+is C<true>, and the value of the C<NextMarker> element is the hosted
+zone ID of the first hosted zone in the next group of C<maxitems>
+hosted zones.
 
 
 

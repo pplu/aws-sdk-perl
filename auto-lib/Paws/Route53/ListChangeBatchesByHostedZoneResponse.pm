@@ -46,13 +46,16 @@ A flag that indicates if there are more change batches to list.
 
 =head2 B<REQUIRED> Marker => Str
 
-The page marker.
+For the second and subsequent calls to ListHostedZones, Marker is the
+value that you specified for the marker parameter in the request that
+produced the current response.
 
 
 
 =head2 B<REQUIRED> MaxItems => Str
 
-The maximum number of items on a page.
+The value that you specified for the C<maxitems> parameter in the call
+to C<ListHostedZones> that produced the current response.
 
 
 

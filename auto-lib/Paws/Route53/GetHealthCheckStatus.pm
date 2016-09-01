@@ -45,12 +45,14 @@ the following configurations:
 
 =over
 
-=item * You're checking the health of the resource record sets in a
-weighted, latency, geolocation, or failover resource record set, and
-you specify health check IDs for all of the resource record sets. If
-the health check for one resource record set specifies an endpoint that
-is not healthy, Amazon Route 53 stops responding to queries using the
-value for that resource record set.
+=item *
+
+You're checking the health of the resource record sets in a weighted,
+latency, geolocation, or failover resource record set, and you specify
+health check IDs for all of the resource record sets. If the health
+check for one resource record set specifies an endpoint that is not
+healthy, Amazon Route 53 stops responding to queries using the value
+for that resource record set.
 
 =item *
 

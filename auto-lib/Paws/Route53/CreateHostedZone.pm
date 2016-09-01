@@ -32,41 +32,58 @@ A unique string that identifies the request and that allows failed
 C<CreateHostedZone> requests to be retried without the risk of
 executing the operation twice. You must use a unique C<CallerReference>
 string every time you create a hosted zone. C<CallerReference> can be
-any unique string; you might choose to use a string that identifies
-your project, such as C<DNSMigration_01>.
-
-Valid characters are any Unicode code points that are legal in an XML
-1.0 document. The UTF-8 encoding of the value must be less than 128
-bytes.
+any unique string, for example, a date/time stamp.
 
 
 
 =head2 DelegationSetId => Str
 
-The delegation set id of the reusable delgation set whose NS records
-you want to assign to the new hosted zone.
+If you want to associate a reusable delegation set with this hosted
+zone, the ID that Amazon Route 53 assigned to the reusable delegation
+set when you created it. For more information about reusable delegation
+sets, see CreateReusableDelegationSet.
+
+=over
+
+=item Type
+
+String
+
+=item Default
+
+None
+
+=item Parent
+
+C<CreatedHostedZoneRequest>
+
+=back
+
 
 
 
 =head2 HostedZoneConfig => L<Paws::Route53::HostedZoneConfig>
 
-A complex type that contains an optional comment about your hosted
-zone.
+(Optional) A complex type that contains an optional comment about your
+hosted zone. If you don't want to specify a comment, omit both the
+C<HostedZoneConfig> and C<Comment> elements.
 
 
 
 =head2 B<REQUIRED> Name => Str
 
-The name of the domain. This must be a fully-specified domain, for
-example, www.example.com. The trailing dot is optional; Amazon Route 53
+The name of the domain. For resource record types that include a domain
+name, specify a fully qualified domain name, for example,
+I<www.example.com>. The trailing dot is optional; Amazon Route 53
 assumes that the domain name is fully qualified. This means that Amazon
-Route 53 treats www.example.com (without a trailing dot) and
-www.example.com. (with a trailing dot) as identical.
+Route 53 treats I<www.example.com> (without a trailing dot) and
+I<www.example.com.> (with a trailing dot) as identical.
 
-This is the name you have registered with your DNS registrar. You
-should ask your registrar to change the authoritative name servers for
-your domain to the set of C<NameServers> elements returned in
-C<DelegationSet>.
+If you're creating a public hosted zone, this is the name you have
+registered with your DNS registrar. If your domain name is registered
+with a registrar other than Amazon Route 53, change the name servers
+for your domain to the set of C<NameServers> that C<CreateHostedZone>
+returns in the DelegationSet element.
 
 
 

@@ -25,13 +25,15 @@ Paws::Route53::UpdateHostedZoneCommentResponse
 
 =head2 Comment => Str
 
-A comment about your hosted zone.
+The new comment for the hosted zone. If you don't specify a value for
+C<Comment>, Amazon Route 53 deletes the existing value of the
+C<Comment> element, if any.
 
 
 
 =head2 B<REQUIRED> Id => Str
 
-The ID of the hosted zone you want to update.
+The ID for the hosted zone for which you want to update the comment.
 
 
 

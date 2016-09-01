@@ -34,22 +34,19 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ChangeInfo => L<Paws::Route53::ChangeInfo>
 
-A complex type that contains information about the request to create a
-hosted zone. This includes an ID that you use when you call the
-C<GetChange> action to get the current status of the change request.
+A complex type that describes the changes made to your hosted zone.
 
 
 
 =head2 B<REQUIRED> DelegationSet => L<Paws::Route53::DelegationSet>
 
-A complex type that contains name server information.
+A complex type that describes the name servers for this hosted zone.
 
 
 
 =head2 B<REQUIRED> HostedZone => L<Paws::Route53::HostedZone>
 
-A complex type that contains identifying information about the hosted
-zone.
+A complex type that contains general information about the hosted zone.
 
 
 

@@ -25,16 +25,16 @@ Paws::Route53::ListReusableDelegationSetsResponse
 
 =head2 Marker => Str
 
-If the request returned more than one page of results, submit another
-request and specify the value of C<NextMarker> from the last response
-in the C<marker> parameter to get the next page of results.
+If you're making the second or subsequent call to
+C<ListReusableDelegationSets>, the C<Marker> element matches the value
+that you specified in the C<marker> parameter in the previous request.
 
 
 
 =head2 MaxItems => Str
 
-Specify the maximum number of reusable delegation sets to return per
-page of results.
+The value that you specified for the C<maxitems> parameter in the
+request that produced the current response.
 
 
 

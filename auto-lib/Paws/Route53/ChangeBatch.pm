@@ -32,16 +32,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Route53::Ch
 
 =head1 DESCRIPTION
 
-A complex type that contains an optional comment and the changes that
-you want to make with a change batch request.
+The information for a change request.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> Changes => ArrayRef[L<Paws::Route53::Change>]
 
-  A complex type that contains one C<Change> element for each resource
-record set that you want to create or delete.
+  Information about the changes to make to the record sets.
 
 
 =head2 Comment => Str

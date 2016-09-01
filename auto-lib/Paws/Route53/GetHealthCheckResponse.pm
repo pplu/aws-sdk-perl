@@ -30,8 +30,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> HealthCheck => L<Paws::Route53::HealthCheck>
 
-A complex type that contains the information about the specified health
-check.
+A complex type that contains information about one health check that is
+associated with the current AWS account.
 
 
 
