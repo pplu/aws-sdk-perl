@@ -1,3 +1,8 @@
+0.29 
+ - CloudFront API update: QueryStringCacheKeys
+ - Route53 API update: TestDNSAnswer
+ - CodePipeline API update: GetPipelineExecution 
+
 0.28 30 Aug 2015 23:45:00
  - On errors 503 XMLResponse would not process the error correctly (returning
    a non-Paws exception, so the error couldn't be retried. (brianhartsock)
