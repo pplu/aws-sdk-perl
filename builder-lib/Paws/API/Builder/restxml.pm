@@ -35,14 +35,15 @@ package [% c.api %]::[% op_name %];
   class_has _result_key => (isa => 'Str', is => 'ro');
   [% IF (stream_param) %]class_has _stream_param => (is => 'ro', default => '[% stream_param %]');[% END %]
 1;
-[% c.class_documentation_template | eval %]
+[% c.callclass_documentation_template | eval %]
 #);
 
   has callresult_class_template => (is => 'ro', isa => 'Str', default => q#
 [%- operation = c.result_for_operation(op_name) %]
 [%- shape = c.result_for_operation(op_name) %]
+[%- op_name = c.shapename_for_operation_output(op_name) %]
 [%- IF (shape) %]
-package [% c.api %]::[% c.shapename_for_operation_output(op_name) %];
+package [% c.api %]::[% op_name %];
   use Moose;
 [% FOREACH param_name IN shape.members.keys.sort -%]
   [%- member = c.shape(shape.members.$param_name.shape) -%]
@@ -58,7 +59,7 @@ package [% c.api %]::[% c.shapename_for_operation_output(op_name) %];
   [%- END -%]
 [%- END %]
 1;
-[% c.callclass_documentation_template | eval %]
+[% c.class_documentation_template | eval %]
 #);
 
   has service_class_template => (is => 'ro', isa => 'Str', default => q#
