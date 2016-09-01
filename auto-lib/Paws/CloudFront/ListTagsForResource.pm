@@ -6,7 +6,7 @@ package Paws::CloudFront::ListTagsForResource;
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListTagsForResource');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2016-08-01/tagging');
+  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2016-08-20/tagging');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudFront::ListTagsForResourceResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
