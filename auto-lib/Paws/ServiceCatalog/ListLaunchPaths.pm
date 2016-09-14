@@ -38,7 +38,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AcceptLanguage => Str
 
-Optional language code. Supported language codes are as follows:
+The language code to use for this operation. Supported language codes
+are as follows:
 
 "en" (English)
 
@@ -60,7 +61,7 @@ C<NextPageToken> in the response is non-null.
 
 =head2 PageToken => Str
 
-The page token of the first page retrieve. If null, this retrieves the
+The page token of the first page retrieved. If null, this retrieves the
 first page of size C<PageSize>.
 
 
