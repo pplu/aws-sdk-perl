@@ -1,3 +1,13 @@
+0.29
+ - Fixed documentation issues with S3, CloudFront and Route53 (ilmari)
+ - RDS API update: DescribeSourceRegions
+ - ServiceCatalog API update: AccessLevelFilter support
+ - CloudFront API update: version 2016-09-07 support
+ - CodePipeline API update: GetPipelineExecution
+ - CognitoIdp API update: UserImportJob operations
+ - Gamelift API update: OperatingSystem for CreateBuild
+ - Route53 API update: TestDNSAnswer
+
 0.28 30 Aug 2015 23:45:00
  - On errors 503 XMLResponse would not process the error correctly (returning
    a non-Paws exception, so the error couldn't be retried. (brianhartsock)
