@@ -137,13 +137,13 @@ force when in an C<ACTIVE> status.
 
 =item * B<ACTIVE> E<ndash> The scaling policy is currently in force.
 
-=item * B<UPDATEREQUESTED> E<ndash> A request to update the scaling
+=item * B<UPDATE_REQUESTED> E<ndash> A request to update the scaling
 policy has been received.
 
 =item * B<UPDATING> E<ndash> A change is being made to the scaling
 policy.
 
-=item * B<DELETEREQUESTED> E<ndash> A request to delete the scaling
+=item * B<DELETE_REQUESTED> E<ndash> A request to delete the scaling
 policy has been received.
 
 =item * B<DELETING> E<ndash> The scaling policy is being deleted.

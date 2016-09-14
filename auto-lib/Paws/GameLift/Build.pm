@@ -3,6 +3,7 @@ package Paws::GameLift::Build;
   has BuildId => (is => 'ro', isa => 'Str');
   has CreationTime => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
+  has OperatingSystem => (is => 'ro', isa => 'Str');
   has SizeOnDisk => (is => 'ro', isa => 'Int');
   has Status => (is => 'ro', isa => 'Str');
   has Version => (is => 'ro', isa => 'Str');
@@ -56,6 +57,13 @@ number expressed in Unix time as milliseconds (ex: "1469498468.057".
 
   Descriptive label associated with a build. Build names do not need to
 be unique. It can be set using CreateBuild or UpdateBuild.
+
+
+=head2 OperatingSystem => Str
+
+  Operating system that the game server binaries are built to run on.
+This value determines the type of fleet resources that you can use for
+this build.
 
 
 =head2 SizeOnDisk => Int

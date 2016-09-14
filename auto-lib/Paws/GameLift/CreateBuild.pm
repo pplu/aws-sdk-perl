@@ -2,6 +2,7 @@
 package Paws::GameLift::CreateBuild;
   use Moose;
   has Name => (is => 'ro', isa => 'Str');
+  has OperatingSystem => (is => 'ro', isa => 'Str');
   has StorageLocation => (is => 'ro', isa => 'Paws::GameLift::S3Location');
   has Version => (is => 'ro', isa => 'Str');
 
@@ -41,6 +42,14 @@ Descriptive label associated with a build. Build names do not need to
 be unique. A build name can be changed later using C<UpdateBuild>.
 
 
+
+=head2 OperatingSystem => Str
+
+Operating system that the game server binaries are built to run on.
+This value determines the type of fleet resources that you can use for
+this build.
+
+Valid values are: C<"WINDOWS_2012">, C<"AMAZON_LINUX">
 
 =head2 StorageLocation => L<Paws::GameLift::S3Location>
 

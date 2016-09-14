@@ -7,6 +7,7 @@ package Paws::GameLift::FleetAttributes;
   has LogPaths => (is => 'ro', isa => 'ArrayRef[Str]');
   has Name => (is => 'ro', isa => 'Str');
   has NewGameSessionProtectionPolicy => (is => 'ro', isa => 'Str');
+  has OperatingSystem => (is => 'ro', isa => 'Str');
   has ServerLaunchParameters => (is => 'ro', isa => 'Str');
   has ServerLaunchPath => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
@@ -101,16 +102,27 @@ C<ACTIVE> status, it cannot be terminated during a scale-down event.
 
 
 
+=head2 OperatingSystem => Str
+
+  Operating system of the fleet's computing resources. A fleet's
+operating system depends on the OS specified for the build that is
+deployed on this fleet.
+
+
 =head2 ServerLaunchParameters => Str
 
-  Deprecated. Server launch parameters are now specified using a
-C<RuntimeConfiguration> object.
+  Game server launch parameters specified for fleets created prior to
+2016-08-04 (or AWS SDK v. 0.12.16). Server launch parameters for fleets
+created after this date are specified in the fleet's
+C<RuntimeConfiguration>.
 
 
 =head2 ServerLaunchPath => Str
 
-  Deprecated. Server launch parameters are now set using a
-C<RuntimeConfiguration> object.
+  Path to a game server executable in the fleet's build, specified for
+fleets created prior to 2016-08-04 (or AWS SDK v. 0.12.16). Server
+launch paths for fleets created after this date are specified in the
+fleet's C<RuntimeConfiguration>.
 
 
 =head2 Status => Str
