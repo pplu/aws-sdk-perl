@@ -1,0 +1,17 @@
+#!/usr/bin/env perl
+
+use v5.10;
+use strict;
+use warnings;
+use Paws;
+
+my $client = Paws->service('Support', region => 'us-east-1');
+
+my $checks => $client->DescribeTrustedAdvisorChecks(Language => 'en');
+
+foreach my $check (@{ $checks->Checks }) {
+  say $check->Category . ' ' . $check->Name;
+  my $res = $client->DescribeTrustedAdvisorCheckResult(CheckId => $check->Id);
+
+  say $res->Result->Status;
+}
