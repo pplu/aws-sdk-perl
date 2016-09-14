@@ -283,6 +283,13 @@ Returns: a L<Paws::ECR::ListImagesResponse> instance
 
   Lists all the image IDs for a given repository.
 
+You can filter images based on whether or not they are tagged by
+setting the C<tagStatus> parameter to C<TAGGED> or C<UNTAGGED>. For
+example, you can filter your results to return only C<UNTAGGED> images
+and then pipe that result to a BatchDeleteImage operation to delete
+them. Or, you can filter your results to return only C<TAGGED> images
+to list all of the tags in your repository.
+
 
 =head2 PutImage(ImageManifest => Str, RepositoryName => Str, [RegistryId => Str])
 
