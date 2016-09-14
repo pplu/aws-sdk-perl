@@ -370,4 +370,25 @@ $test_params = decode_json('{"RequestItems":{"table":{"Keys":[{"email":{"S":"e1@
 
 request_contentjson($test_params, $request);
 
+# Some APIs don't want numbers where they expect strings
+
+$request = $dynamo->GetItem(
+  TableName            => "test_config",
+  ProjectionExpression => 'name',
+  Key                  => {
+    'name' => { N => 33 }
+  }
+);
+
+like($request->content, qr/"N":"33"/, "Got N in a JSON string (quoted), and not a JSON number (unquoted)");
+
+my $efs = $aws->service('EFS');
+
+$request = $efs->CreateFileSystem(
+  CreationToken => 4,
+  PerformanceMode => 'generalPurpose'
+);
+
+like($request->content, qr/"CreationToken":"4"/, "Got N in a JSON string (quoted), and not a JSON number (unquoted)");
+
 done_testing;
