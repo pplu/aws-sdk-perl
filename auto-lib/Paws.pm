@@ -621,7 +621,8 @@ karenetheridge for bug reporting, pull requests and help
 ioanrogers for fixing unicode issues in tests
 
 ilmari for fixing issues with timestamps in Date and X-Amz-Date headers,
-test fixes and 5.10 support fixes
+test fixes and 5.10 support fixes, documentation issue fixes for S3, 
+CloudFront and Route53
 
 stevecaldwell77 for contributing support for temporary credentials in S3
 
