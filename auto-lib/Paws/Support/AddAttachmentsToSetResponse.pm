@@ -16,9 +16,9 @@ Paws::Support::AddAttachmentsToSetResponse
 
 =head2 AttachmentSetId => Str
 
-The ID of the attachment set. If an C<AttachmentSetId> was not
+The ID of the attachment set. If an C<attachmentSetId> was not
 specified, a new attachment set is created, and the ID of the set is
-returned in the response. If an C<AttachmentSetId> was specified, the
+returned in the response. If an C<attachmentSetId> was specified, the
 attachments are added to the specified set, if it exists.
 
 
