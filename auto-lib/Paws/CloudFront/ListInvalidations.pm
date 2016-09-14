@@ -19,7 +19,7 @@ package Paws::CloudFront::ListInvalidations;
 
 =head1 NAME
 
-Paws::CloudFront::ListInvalidationsResult
+Paws::CloudFront::ListInvalidations
 
 =head1 ATTRIBUTES
 

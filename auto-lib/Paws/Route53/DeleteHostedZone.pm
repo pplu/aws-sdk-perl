@@ -17,7 +17,7 @@ package Paws::Route53::DeleteHostedZone;
 
 =head1 NAME
 
-Paws::Route53::DeleteHostedZoneResponse
+Paws::Route53::DeleteHostedZone
 
 =head1 ATTRIBUTES
 

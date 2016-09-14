@@ -19,7 +19,7 @@ package Paws::CloudFront::UpdateStreamingDistribution;
 
 =head1 NAME
 
-Paws::CloudFront::UpdateStreamingDistributionResult
+Paws::CloudFront::UpdateStreamingDistribution
 
 =head1 ATTRIBUTES
 

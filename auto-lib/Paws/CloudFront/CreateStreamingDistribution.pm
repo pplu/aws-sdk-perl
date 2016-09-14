@@ -17,7 +17,7 @@ package Paws::CloudFront::CreateStreamingDistribution;
 
 =head1 NAME
 
-Paws::CloudFront::CreateStreamingDistributionResult
+Paws::CloudFront::CreateStreamingDistribution
 
 =head1 ATTRIBUTES
 

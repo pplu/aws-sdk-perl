@@ -19,7 +19,7 @@ package Paws::Route53::DisassociateVPCFromHostedZone;
 
 =head1 NAME
 
-Paws::Route53::DisassociateVPCFromHostedZoneResponse
+Paws::Route53::DisassociateVPCFromHostedZone
 
 =head1 ATTRIBUTES
 

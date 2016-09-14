@@ -17,7 +17,7 @@ package Paws::Route53::DeleteReusableDelegationSet;
 
 =head1 NAME
 
-Paws::Route53::DeleteReusableDelegationSetResponse
+Paws::Route53::DeleteReusableDelegationSet
 
 =head1 ATTRIBUTES
 

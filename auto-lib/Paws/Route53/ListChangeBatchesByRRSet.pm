@@ -24,7 +24,7 @@ package Paws::Route53::ListChangeBatchesByRRSet;
 
 =head1 NAME
 
-Paws::Route53::ListChangeBatchesByRRSetResponse
+Paws::Route53::ListChangeBatchesByRRSet
 
 =head1 ATTRIBUTES
 

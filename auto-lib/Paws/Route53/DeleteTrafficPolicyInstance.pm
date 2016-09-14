@@ -17,7 +17,7 @@ package Paws::Route53::DeleteTrafficPolicyInstance;
 
 =head1 NAME
 
-Paws::Route53::DeleteTrafficPolicyInstanceResponse
+Paws::Route53::DeleteTrafficPolicyInstance
 
 =head1 ATTRIBUTES
 

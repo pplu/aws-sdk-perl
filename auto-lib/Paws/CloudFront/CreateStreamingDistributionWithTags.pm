@@ -17,7 +17,7 @@ package Paws::CloudFront::CreateStreamingDistributionWithTags;
 
 =head1 NAME
 
-Paws::CloudFront::CreateStreamingDistributionWithTagsResult
+Paws::CloudFront::CreateStreamingDistributionWithTags
 
 =head1 ATTRIBUTES
 

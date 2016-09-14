@@ -18,7 +18,7 @@ package Paws::Route53::UpdateHostedZoneComment;
 
 =head1 NAME
 
-Paws::Route53::UpdateHostedZoneCommentResponse
+Paws::Route53::UpdateHostedZoneComment
 
 =head1 ATTRIBUTES
 

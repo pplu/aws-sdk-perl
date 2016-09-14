@@ -16,7 +16,7 @@ package Paws::Route53::GetHealthCheckCount;
 
 =head1 NAME
 
-Paws::Route53::GetHealthCheckCountResponse
+Paws::Route53::GetHealthCheckCount
 
 =head1 ATTRIBUTES
 

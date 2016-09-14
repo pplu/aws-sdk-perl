@@ -17,7 +17,7 @@ package Paws::Route53::GetChange;
 
 =head1 NAME
 
-Paws::Route53::GetChangeResponse
+Paws::Route53::GetChange
 
 =head1 ATTRIBUTES
 

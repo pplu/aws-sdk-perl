@@ -18,7 +18,7 @@ package Paws::CloudFront::CreateInvalidation;
 
 =head1 NAME
 
-Paws::CloudFront::CreateInvalidationResult
+Paws::CloudFront::CreateInvalidation
 
 =head1 ATTRIBUTES
 

@@ -18,7 +18,7 @@ package Paws::CloudFront::DeleteCloudFrontOriginAccessIdentity;
 
 =head1 NAME
 
-Paws::CloudFront::
+Paws::CloudFront::DeleteCloudFrontOriginAccessIdentity
 
 =head1 ATTRIBUTES
 

@@ -21,7 +21,7 @@ package Paws::Route53::ListResourceRecordSets;
 
 =head1 NAME
 
-Paws::Route53::ListResourceRecordSetsResponse
+Paws::Route53::ListResourceRecordSets
 
 =head1 ATTRIBUTES
 

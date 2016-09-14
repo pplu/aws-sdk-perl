@@ -19,7 +19,7 @@ package Paws::CloudFront::UpdateCloudFrontOriginAccessIdentity;
 
 =head1 NAME
 
-Paws::CloudFront::UpdateCloudFrontOriginAccessIdentityResult
+Paws::CloudFront::UpdateCloudFrontOriginAccessIdentity
 
 =head1 ATTRIBUTES
 

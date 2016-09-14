@@ -17,7 +17,7 @@ package Paws::Route53::GetTrafficPolicyInstance;
 
 =head1 NAME
 
-Paws::Route53::GetTrafficPolicyInstanceResponse
+Paws::Route53::GetTrafficPolicyInstance
 
 =head1 ATTRIBUTES
 

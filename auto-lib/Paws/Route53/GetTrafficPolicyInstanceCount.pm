@@ -16,7 +16,7 @@ package Paws::Route53::GetTrafficPolicyInstanceCount;
 
 =head1 NAME
 
-Paws::Route53::GetTrafficPolicyInstanceCountResponse
+Paws::Route53::GetTrafficPolicyInstanceCount
 
 =head1 ATTRIBUTES
 

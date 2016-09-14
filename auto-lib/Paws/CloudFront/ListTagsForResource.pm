@@ -17,7 +17,7 @@ package Paws::CloudFront::ListTagsForResource;
 
 =head1 NAME
 
-Paws::CloudFront::ListTagsForResourceResult
+Paws::CloudFront::ListTagsForResource
 
 =head1 ATTRIBUTES
 

@@ -18,7 +18,7 @@ package Paws::Route53::ChangeResourceRecordSets;
 
 =head1 NAME
 
-Paws::Route53::ChangeResourceRecordSetsResponse
+Paws::Route53::ChangeResourceRecordSets
 
 =head1 ATTRIBUTES
 

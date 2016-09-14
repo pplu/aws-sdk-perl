@@ -17,7 +17,7 @@ package Paws::Route53::GetHostedZone;
 
 =head1 NAME
 
-Paws::Route53::GetHostedZoneResponse
+Paws::Route53::GetHostedZone
 
 =head1 ATTRIBUTES
 

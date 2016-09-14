@@ -18,7 +18,7 @@ package Paws::CloudFront::GetInvalidation;
 
 =head1 NAME
 
-Paws::CloudFront::GetInvalidationResult
+Paws::CloudFront::GetInvalidation
 
 =head1 ATTRIBUTES
 

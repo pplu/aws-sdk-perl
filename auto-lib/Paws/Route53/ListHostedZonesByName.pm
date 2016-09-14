@@ -19,7 +19,7 @@ package Paws::Route53::ListHostedZonesByName;
 
 =head1 NAME
 
-Paws::Route53::ListHostedZonesByNameResponse
+Paws::Route53::ListHostedZonesByName
 
 =head1 ATTRIBUTES
 

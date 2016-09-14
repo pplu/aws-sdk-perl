@@ -18,7 +18,7 @@ package Paws::Route53::ListHealthChecks;
 
 =head1 NAME
 
-Paws::Route53::ListHealthChecksResponse
+Paws::Route53::ListHealthChecks
 
 =head1 ATTRIBUTES
 

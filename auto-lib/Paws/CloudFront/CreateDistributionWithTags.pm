@@ -17,7 +17,7 @@ package Paws::CloudFront::CreateDistributionWithTags;
 
 =head1 NAME
 
-Paws::CloudFront::CreateDistributionWithTagsResult
+Paws::CloudFront::CreateDistributionWithTags
 
 =head1 ATTRIBUTES
 

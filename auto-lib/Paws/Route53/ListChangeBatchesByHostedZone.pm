@@ -21,7 +21,7 @@ package Paws::Route53::ListChangeBatchesByHostedZone;
 
 =head1 NAME
 
-Paws::Route53::ListChangeBatchesByHostedZoneResponse
+Paws::Route53::ListChangeBatchesByHostedZone
 
 =head1 ATTRIBUTES
 

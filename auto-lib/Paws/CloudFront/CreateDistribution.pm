@@ -17,7 +17,7 @@ package Paws::CloudFront::CreateDistribution;
 
 =head1 NAME
 
-Paws::CloudFront::CreateDistributionResult
+Paws::CloudFront::CreateDistribution
 
 =head1 ATTRIBUTES
 

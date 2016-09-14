@@ -18,7 +18,7 @@ package Paws::Route53::ListReusableDelegationSets;
 
 =head1 NAME
 
-Paws::Route53::ListReusableDelegationSetsResponse
+Paws::Route53::ListReusableDelegationSets
 
 =head1 ATTRIBUTES
 

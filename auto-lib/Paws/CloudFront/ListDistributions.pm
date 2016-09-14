@@ -18,7 +18,7 @@ package Paws::CloudFront::ListDistributions;
 
 =head1 NAME
 
-Paws::CloudFront::ListDistributionsResult
+Paws::CloudFront::ListDistributions
 
 =head1 ATTRIBUTES
 

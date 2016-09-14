@@ -19,7 +19,7 @@ package Paws::CloudFront::ListDistributionsByWebACLId;
 
 =head1 NAME
 
-Paws::CloudFront::ListDistributionsByWebACLIdResult
+Paws::CloudFront::ListDistributionsByWebACLId
 
 =head1 ATTRIBUTES
 

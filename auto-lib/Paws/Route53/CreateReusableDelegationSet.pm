@@ -18,7 +18,7 @@ package Paws::Route53::CreateReusableDelegationSet;
 
 =head1 NAME
 
-Paws::Route53::CreateReusableDelegationSetResponse
+Paws::Route53::CreateReusableDelegationSet
 
 =head1 ATTRIBUTES
 

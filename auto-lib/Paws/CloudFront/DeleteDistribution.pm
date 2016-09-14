@@ -18,7 +18,7 @@ package Paws::CloudFront::DeleteDistribution;
 
 =head1 NAME
 
-Paws::CloudFront::
+Paws::CloudFront::DeleteDistribution
 
 =head1 ATTRIBUTES
 

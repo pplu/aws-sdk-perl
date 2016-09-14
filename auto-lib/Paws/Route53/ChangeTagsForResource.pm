@@ -20,7 +20,7 @@ package Paws::Route53::ChangeTagsForResource;
 
 =head1 NAME
 
-Paws::Route53::ChangeTagsForResourceResponse
+Paws::Route53::ChangeTagsForResource
 
 =head1 ATTRIBUTES
 

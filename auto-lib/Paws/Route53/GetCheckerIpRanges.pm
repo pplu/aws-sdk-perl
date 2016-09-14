@@ -16,7 +16,7 @@ package Paws::Route53::GetCheckerIpRanges;
 
 =head1 NAME
 
-Paws::Route53::GetCheckerIpRangesResponse
+Paws::Route53::GetCheckerIpRanges
 
 =head1 ATTRIBUTES
 

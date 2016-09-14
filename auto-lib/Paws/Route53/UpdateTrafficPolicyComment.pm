@@ -19,7 +19,7 @@ package Paws::Route53::UpdateTrafficPolicyComment;
 
 =head1 NAME
 
-Paws::Route53::UpdateTrafficPolicyCommentResponse
+Paws::Route53::UpdateTrafficPolicyComment
 
 =head1 ATTRIBUTES
 

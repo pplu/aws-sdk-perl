@@ -18,7 +18,7 @@ package Paws::CloudFront::ListStreamingDistributions;
 
 =head1 NAME
 
-Paws::CloudFront::ListStreamingDistributionsResult
+Paws::CloudFront::ListStreamingDistributions
 
 =head1 ATTRIBUTES
 

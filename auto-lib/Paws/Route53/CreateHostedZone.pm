@@ -21,7 +21,7 @@ package Paws::Route53::CreateHostedZone;
 
 =head1 NAME
 
-Paws::Route53::CreateHostedZoneResponse
+Paws::Route53::CreateHostedZone
 
 =head1 ATTRIBUTES
 

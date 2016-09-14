@@ -18,7 +18,7 @@ package Paws::Route53::ListTagsForResource;
 
 =head1 NAME
 
-Paws::Route53::ListTagsForResourceResponse
+Paws::Route53::ListTagsForResource
 
 =head1 ATTRIBUTES
 

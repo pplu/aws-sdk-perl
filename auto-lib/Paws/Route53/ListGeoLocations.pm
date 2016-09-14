@@ -20,7 +20,7 @@ package Paws::Route53::ListGeoLocations;
 
 =head1 NAME
 
-Paws::Route53::ListGeoLocationsResponse
+Paws::Route53::ListGeoLocations
 
 =head1 ATTRIBUTES
 

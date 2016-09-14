@@ -19,7 +19,7 @@ package Paws::Route53::CreateTrafficPolicyVersion;
 
 =head1 NAME
 
-Paws::Route53::CreateTrafficPolicyVersionResponse
+Paws::Route53::CreateTrafficPolicyVersion
 
 =head1 ATTRIBUTES
 

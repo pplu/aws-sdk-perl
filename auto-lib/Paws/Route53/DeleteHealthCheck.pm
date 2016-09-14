@@ -17,7 +17,7 @@ package Paws::Route53::DeleteHealthCheck;
 
 =head1 NAME
 
-Paws::Route53::DeleteHealthCheckResponse
+Paws::Route53::DeleteHealthCheck
 
 =head1 ATTRIBUTES
 

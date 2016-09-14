@@ -19,7 +19,7 @@ package Paws::Route53::GetGeoLocation;
 
 =head1 NAME
 
-Paws::Route53::GetGeoLocationResponse
+Paws::Route53::GetGeoLocation
 
 =head1 ATTRIBUTES
 

@@ -22,7 +22,7 @@ package Paws::Route53::TestDNSAnswer;
 
 =head1 NAME
 
-Paws::Route53::TestDNSAnswerResponse
+Paws::Route53::TestDNSAnswer
 
 =head1 ATTRIBUTES
 

@@ -17,7 +17,7 @@ package Paws::CloudFront::GetDistributionConfig;
 
 =head1 NAME
 
-Paws::CloudFront::GetDistributionConfigResult
+Paws::CloudFront::GetDistributionConfig
 
 =head1 ATTRIBUTES
 

@@ -18,7 +18,7 @@ package Paws::CloudFront::DeleteStreamingDistribution;
 
 =head1 NAME
 
-Paws::CloudFront::
+Paws::CloudFront::DeleteStreamingDistribution
 
 =head1 ATTRIBUTES
 

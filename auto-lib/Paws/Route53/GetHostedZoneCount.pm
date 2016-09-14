@@ -16,7 +16,7 @@ package Paws::Route53::GetHostedZoneCount;
 
 =head1 NAME
 
-Paws::Route53::GetHostedZoneCountResponse
+Paws::Route53::GetHostedZoneCount
 
 =head1 ATTRIBUTES
 

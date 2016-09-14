@@ -18,7 +18,7 @@ package Paws::CloudFront::UntagResource;
 
 =head1 NAME
 
-Paws::CloudFront::
+Paws::CloudFront::UntagResource
 
 =head1 ATTRIBUTES
 

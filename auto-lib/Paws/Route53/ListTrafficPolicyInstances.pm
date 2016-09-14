@@ -20,7 +20,7 @@ package Paws::Route53::ListTrafficPolicyInstances;
 
 =head1 NAME
 
-Paws::Route53::ListTrafficPolicyInstancesResponse
+Paws::Route53::ListTrafficPolicyInstances
 
 =head1 ATTRIBUTES
 

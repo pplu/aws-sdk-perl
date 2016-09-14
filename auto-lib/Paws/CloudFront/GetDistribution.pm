@@ -17,7 +17,7 @@ package Paws::CloudFront::GetDistribution;
 
 =head1 NAME
 
-Paws::CloudFront::GetDistributionResult
+Paws::CloudFront::GetDistribution
 
 =head1 ATTRIBUTES
 

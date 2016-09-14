@@ -18,7 +18,7 @@ package Paws::CloudFront::TagResource;
 
 =head1 NAME
 
-Paws::CloudFront::
+Paws::CloudFront::TagResource
 
 =head1 ATTRIBUTES
 

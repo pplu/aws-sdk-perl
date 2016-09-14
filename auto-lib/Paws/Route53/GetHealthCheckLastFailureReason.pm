@@ -17,7 +17,7 @@ package Paws::Route53::GetHealthCheckLastFailureReason;
 
 =head1 NAME
 
-Paws::Route53::GetHealthCheckLastFailureReasonResponse
+Paws::Route53::GetHealthCheckLastFailureReason
 
 =head1 ATTRIBUTES
 

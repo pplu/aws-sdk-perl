@@ -17,7 +17,7 @@ package Paws::CloudFront::CreateCloudFrontOriginAccessIdentity;
 
 =head1 NAME
 
-Paws::CloudFront::CreateCloudFrontOriginAccessIdentityResult
+Paws::CloudFront::CreateCloudFrontOriginAccessIdentity
 
 =head1 ATTRIBUTES
 

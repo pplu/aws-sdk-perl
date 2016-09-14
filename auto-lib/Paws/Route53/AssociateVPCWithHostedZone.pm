@@ -19,7 +19,7 @@ package Paws::Route53::AssociateVPCWithHostedZone;
 
 =head1 NAME
 
-Paws::Route53::AssociateVPCWithHostedZoneResponse
+Paws::Route53::AssociateVPCWithHostedZone
 
 =head1 ATTRIBUTES
 

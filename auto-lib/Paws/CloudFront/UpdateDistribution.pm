@@ -19,7 +19,7 @@ package Paws::CloudFront::UpdateDistribution;
 
 =head1 NAME
 
-Paws::CloudFront::UpdateDistributionResult
+Paws::CloudFront::UpdateDistribution
 
 =head1 ATTRIBUTES
 
