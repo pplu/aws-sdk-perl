@@ -56,8 +56,7 @@ sub process_api {
 
   # Map classes to be generated with special builders
   my $overrides = {
-    'Paws::EC2' => 'EC2',
-    'Paws::S3'  => 'S3',
+    'Paws::EC2'        => 'EC2',
   };
   $type = $overrides->{ $api } if (defined $overrides->{ $api });
   $type =~ s/\-//;
