@@ -1,5 +1,11 @@
 0.29
  - Fixed documentation issues with S3, CloudFront and Route53 (ilmari)
+ - Fixed bug (Issue #108): Services that expected strings as parameters would accept numbers,
+   Method(StringParameter => 33), and Paws would generate "StringParameter":33 in the request
+   to the service, but the AWS API would error out, forcing the programmer to stringify his input
+   Method(StringParameter => "33"). Paws will now auto-stringify the contents in these parameters
+   so AWS will accept them correctly, and the programmer doesn't have to worry about stringifying
+   his inputs. Thanks to ilmari and rpcme
  - RDS API update: DescribeSourceRegions
  - ServiceCatalog API update: AccessLevelFilter support
  - CloudFront API update: version 2016-09-07 support

@@ -622,7 +622,7 @@ ioanrogers for fixing unicode issues in tests
 
 ilmari for fixing issues with timestamps in Date and X-Amz-Date headers,
 test fixes and 5.10 support fixes, documentation issue fixes for S3, 
-CloudFront and Route53
+CloudFront and Route53, help with number stringification
 
 stevecaldwell77 for contributing support for temporary credentials in S3
 
@@ -647,6 +647,8 @@ Miquel Soriano for reporting a bug with DescribeAutoScalingGroups
 Albert Bendicho (wiof) for contributing better retry logic
 
 Brian Hartsock for better handling of XMLResponse exceptions
+
+rpcme for reporting various bugs in the SDK
 
 
 =cut
