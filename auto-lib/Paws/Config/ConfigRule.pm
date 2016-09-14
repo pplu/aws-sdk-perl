@@ -39,11 +39,13 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Config::Con
 
 =head1 DESCRIPTION
 
-An AWS Lambda function that evaluates configuration items to assess
-whether your AWS resources comply with your desired configurations.
-This function can run when AWS Config detects a configuration change to
-an AWS resource and at a periodic frequency that you choose (for
-example, every 24 hours).
+An AWS Config rule represents an AWS Lambda function that you create
+for a custom rule or a predefined function for an AWS managed rule. The
+function evaluates configuration items to assess whether your AWS
+resources comply with your desired configurations. This function can
+run when AWS Config detects a configuration change to an AWS resource
+and at a periodic frequency that you choose (for example, every 24
+hours).
 
 You can use the AWS CLI and AWS SDKs if you want to create a rule that
 triggers evaluations for your resources when AWS Config delivers the
@@ -106,20 +108,22 @@ function.
 
 =head2 MaximumExecutionFrequency => Str
 
-  If you want to create a rule that evaluates at a frequency that is
-independent of the configuration snapshot delivery, use the
-C<MaximumExecutionFrequency> parameter in the SourceDetail object.
+  The maximum frequency with which AWS Config runs evaluations for a
+rule. You can specify a value for C<MaximumExecutionFrequency> when:
 
-If you want to create a rule that triggers evaluations for your
-resources when AWS Config delivers the configuration snapshot, see the
-following:
+=over
 
-A rule that runs an evaluation when AWS Config delivers a configuration
-snapshot cannot run evaluations more frequently than AWS Config
-delivers the snapshots. Set the value of the
-C<MaximumExecutionFrequency> to be equal to or greater than the value
-of the C<deliveryFrequency> key, which is part of
-C<ConfigSnapshotDeliveryProperties>.
+=item *
+
+You are using an AWS managed rule that is triggered at a periodic
+frequency.
+
+=item *
+
+Your custom rule is triggered when AWS Config delivers the
+configuration snapshot.
+
+=back
 
 For more information, see ConfigSnapshotDeliveryProperties.
 
