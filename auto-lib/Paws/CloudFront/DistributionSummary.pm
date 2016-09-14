@@ -8,6 +8,7 @@ package Paws::CloudFront::DistributionSummary;
   has DefaultCacheBehavior => (is => 'ro', isa => 'Paws::CloudFront::DefaultCacheBehavior', required => 1);
   has DomainName => (is => 'ro', isa => 'Str', required => 1);
   has Enabled => (is => 'ro', isa => 'Bool', required => 1);
+  has HttpVersion => (is => 'ro', isa => 'Str', required => 1);
   has Id => (is => 'ro', isa => 'Str', required => 1);
   has LastModifiedTime => (is => 'ro', isa => 'Str', required => 1);
   has Origins => (is => 'ro', isa => 'Paws::CloudFront::Origins', required => 1);
@@ -98,6 +99,14 @@ d604721fxaaqy9.cloudfront.net.
 
   Whether the distribution is enabled to accept end user requests for
 content.
+
+
+=head2 B<REQUIRED> HttpVersion => Str
+
+  Specify the maximum HTTP version that you want viewers to use to
+communicate with CloudFront. The default value for new web
+distributions is http2. Viewers that don't support HTTP/2 will
+automatically use an earlier version.
 
 
 =head2 B<REQUIRED> Id => Str
