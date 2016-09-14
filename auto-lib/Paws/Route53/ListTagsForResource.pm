@@ -33,9 +33,18 @@ The ID of the resource for which you want to retrieve tags.
 
 The type of the resource.
 
-- The resource type for health checks is C<healthcheck>.
+=over
 
-- The resource type for hosted zones is C<hostedzone>.
+=item *
+
+The resource type for health checks is C<healthcheck>.
+
+=item *
+
+The resource type for hosted zones is C<hostedzone>.
+
+=back
+
 
 Valid values are: C<"healthcheck">, C<"hostedzone">
 

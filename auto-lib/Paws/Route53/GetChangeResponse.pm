@@ -31,8 +31,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 B<REQUIRED> ChangeInfo => L<Paws::Route53::ChangeInfo>
 
 A complex type that contains information about the specified change
-batch, including the change batch ID, the status of the change, and the
-date and time of the request.
+batch.
 
 
 

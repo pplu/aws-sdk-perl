@@ -26,29 +26,39 @@ Paws::Route53::ListHostedZonesByNameResponse
 
 =head2 DNSName => Str
 
-The first name in the lexicographic ordering of domain names that you
-want the C<ListHostedZonesByNameRequest> request to list.
-
-If the request returned more than one page of results, submit another
-request and specify the value of C<NextDNSName> and C<NextHostedZoneId>
-from the last response in the C<DNSName> and C<HostedZoneId> parameters
-to get the next page of results.
+(Optional) For your first request to C<ListHostedZonesByName>, include
+the C<dnsname> parameter only if you want to specify the name of the
+first hosted zone in the response. If you don't include the C<dnsname>
+parameter, Amazon Route 53 returns all of the hosted zones that were
+created by the current AWS account, in ASCII order. For subsequent
+requests, include both C<dnsname> and C<hostedzoneid> parameters. For
+C<dnsname>, specify the value of C<NextDNSName> from the previous
+response.
 
 
 
 =head2 HostedZoneId => Str
 
-If the request returned more than one page of results, submit another
-request and specify the value of C<NextDNSName> and C<NextHostedZoneId>
-from the last response in the C<DNSName> and C<HostedZoneId> parameters
-to get the next page of results.
+(Optional) For your first request to C<ListHostedZonesByName>, do not
+include the C<hostedzoneid> parameter.
+
+If you have more hosted zones than the value of C<maxitems>,
+C<ListHostedZonesByName> returns only the first C<maxitems> hosted
+zones. To get the next group of C<maxitems> hosted zones, submit
+another request to C<ListHostedZonesByName> and include both C<dnsname>
+and C<hostedzoneid> parameters. For the value of C<hostedzoneid>,
+specify the value of the C<NextHostedZoneId> element from the previous
+response.
 
 
 
 =head2 MaxItems => Str
 
-Specify the maximum number of hosted zones to return per page of
-results.
+The maximum number of hosted zones to be included in the response body
+for this request. If you have more than C<maxitems> hosted zones, then
+the value of the C<IsTruncated> element in the response is true, and
+the values of C<NextDNSName> and C<NextHostedZoneId> specify the first
+hosted zone in the next group of C<maxitems> hosted zones.
 
 
 

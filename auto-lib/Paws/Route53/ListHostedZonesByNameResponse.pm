@@ -36,65 +36,63 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 DNSName => Str
 
-The C<DNSName> value sent in the request.
+For the second and subsequent calls to C<ListHostedZonesByName>,
+C<DNSName> is the value that you specified for the C<dnsname> parameter
+in the request that produced the current response.
 
 
 
 =head2 HostedZoneId => Str
 
-The C<HostedZoneId> value sent in the request.
+The ID that Amazon Route 53 assigned to the hosted zone when you
+created it.
 
 
 
 =head2 B<REQUIRED> HostedZones => ArrayRef[L<Paws::Route53::HostedZone>]
 
-A complex type that contains information about the hosted zones
-associated with the current AWS account.
+A complex type that contains general information about the hosted zone.
 
 
 
 =head2 B<REQUIRED> IsTruncated => Bool
 
-A flag indicating whether there are more hosted zones to be listed. If
-your results were truncated, you can make a follow-up request for the
-next page of results by using the C<NextDNSName> and
-C<NextHostedZoneId> elements.
-
-Valid Values: C<true> | C<false>
+A flag that indicates whether there are more hosted zones to be listed.
+If the response was truncated, you can get the next group of
+C<maxitems> hosted zones by calling C<ListHostedZonesByName> again and
+specifying the values of C<NextDNSName> and C<NextHostedZoneId>
+elements in the C<dnsname> and C<hostedzoneid> parameters.
 
 
 
 =head2 B<REQUIRED> MaxItems => Str
 
-The maximum number of hosted zones to be included in the response body.
-If the number of hosted zones associated with this AWS account exceeds
-C<MaxItems>, the value of C<IsTruncated> in the
-C<ListHostedZonesByNameResponse> is C<true>. Call
-C<ListHostedZonesByName> again and specify the value of C<NextDNSName>
-and C<NextHostedZoneId> elements from the previous response to get the
-next page of results.
+The value that you specified for the C<maxitems> parameter in the call
+to C<ListHostedZonesByName> that produced the current response.
 
 
 
 =head2 NextDNSName => Str
 
-If the value of C<IsTruncated> in the C<ListHostedZonesByNameResponse>
-is C<true>, there are more hosted zones associated with the current AWS
-account. To get the next page of results, make another request to
-C<ListHostedZonesByName>. Specify the value of C<NextDNSName> in the
-C<DNSName> parameter. Specify C<NextHostedZoneId> in the
-C<HostedZoneId> parameter.
+If C<IsTruncated> is true, the value of C<NextDNSName> is the name of
+the first hosted zone in the next group of C<maxitems> hosted zones.
+Call C<ListHostedZonesByName> again and specify the value of
+C<NextDNSName> and C<NextHostedZoneId> in the C<dnsname> and
+C<hostedzoneid> parameters, respectively.
+
+This element is present only if C<IsTruncated> is C<true>.
 
 
 
 =head2 NextHostedZoneId => Str
 
-If the value of C<IsTruncated> in the C<ListHostedZonesByNameResponse>
-is C<true>, there are more hosted zones associated with the current AWS
-account. To get the next page of results, make another request to
-C<ListHostedZonesByName>. Specify the value of C<NextDNSName> in the
-C<DNSName> parameter. Specify C<NextHostedZoneId> in the
-C<HostedZoneId> parameter.
+If C<IsTruncated> is C<true>, the value of C<NextHostedZoneId>
+identifies the first hosted zone in the next group of C<maxitems>
+hosted zones. Call C<ListHostedZonesByName> again and specify the value
+of C<NextDNSName> and C<NextHostedZoneId> in the C<dnsname> and
+C<hostedzoneid> parameters, respectively.
+
+This element is present only if C<IsTruncated> is C<true>.
 
 
 

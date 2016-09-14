@@ -26,7 +26,8 @@ Paws::Route53::CreateTrafficPolicyResponse
 
 =head2 Comment => Str
 
-Any comments that you want to include about the traffic policy.
+(Optional) Any comments that you want to include about the traffic
+policy.
 
 
 

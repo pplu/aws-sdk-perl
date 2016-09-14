@@ -33,7 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Route53::De
 
 =head1 DESCRIPTION
 
-A complex type that contains name server information.
+A complex type that describes the name servers for this hosted zone.
 
 =head1 ATTRIBUTES
 
@@ -50,10 +50,8 @@ A complex type that contains name server information.
 
 =head2 B<REQUIRED> NameServers => ArrayRef[Str]
 
-  A complex type that contains the authoritative name servers for the
-hosted zone. Use the method provided by your domain registrar to add an
-NS record to your domain for each C<NameServer> that is assigned to
-your hosted zone.
+  A complex type that contains a list of the authoritative name servers
+for the hosted zone.
 
 
 

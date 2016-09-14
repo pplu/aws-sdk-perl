@@ -32,15 +32,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 DelegationSet => L<Paws::Route53::DelegationSet>
 
-A complex type that contains information about the name servers for the
-specified hosted zone.
+A complex type that describes the name servers for this hosted zone.
 
 
 
 =head2 B<REQUIRED> HostedZone => L<Paws::Route53::HostedZone>
 
-A complex type that contains the information about the specified hosted
-zone.
+A complex type that contains general information about the hosted zone.
 
 
 

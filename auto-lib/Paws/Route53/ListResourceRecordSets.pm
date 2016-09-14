@@ -35,7 +35,13 @@ you want to get.
 
 =head2 MaxItems => Str
 
-The maximum number of records you want in the response body.
+(Optional) The maximum number of resource records sets to include in
+the response body for this request. If the response includes more than
+C<maxitems> resource record sets, the value of the C<IsTruncated>
+element in the response is C<true>, and the values of the
+C<NextRecordName> and C<NextRecordType> elements in the response
+identify the first resource record set in the next group of C<maxitems>
+resource record sets.
 
 
 
@@ -57,23 +63,41 @@ want the C<ListResourceRecordSets> request to list.
 
 =head2 StartRecordType => Str
 
-The DNS type at which to begin the listing of resource record sets.
+The type of resource record set to begin the record listing from.
 
-Valid values: C<A> | C<AAAA> | C<CNAME> | C<MX> | C<NS> | C<PTR> |
-C<SOA> | C<SPF> | C<SRV> | C<TXT>
+Valid values for basic resource record sets: C<A> | C<AAAA> | C<CNAME>
+| C<MX> | C<NAPTR> | C<NS> | C<PTR> | C<SOA> | C<SPF> | C<SRV> | C<TXT>
 
-Values for Weighted Resource Record Sets: C<A> | C<AAAA> | C<CNAME> |
-C<TXT>
+Values for weighted, latency, geo, and failover resource record sets:
+C<A> | C<AAAA> | C<CNAME> | C<MX> | C<NAPTR> | C<PTR> | C<SPF> | C<SRV>
+| C<TXT>
 
-Values for Regional Resource Record Sets: C<A> | C<AAAA> | C<CNAME> |
-C<TXT>
+Values for alias resource record sets:
 
-Values for Alias Resource Record Sets: C<A> | C<AAAA>
+=over
+
+=item *
+
+B<CloudFront distribution>: A
+
+=item *
+
+B<Elastic Beanstalk environment that has a regionalized subdomain>: A
+
+=item *
+
+B<ELB load balancer>: A | AAAA
+
+=item *
+
+B<Amazon S3 bucket>: A
+
+=back
 
 Constraint: Specifying C<type> without specifying C<name> returns an
 C<InvalidInput> error.
 
-Valid values are: C<"SOA">, C<"A">, C<"TXT">, C<"NS">, C<"CNAME">, C<"MX">, C<"PTR">, C<"SRV">, C<"SPF">, C<"AAAA">
+Valid values are: C<"SOA">, C<"A">, C<"TXT">, C<"NS">, C<"CNAME">, C<"MX">, C<"NAPTR">, C<"PTR">, C<"SRV">, C<"SPF">, C<"AAAA">
 
 
 =cut

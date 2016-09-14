@@ -32,8 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Route53::Ch
 
 =head1 DESCRIPTION
 
-A complex type that contains the information for each change in a
-change batch request.
+The information for each resource record set that you want to change.
 
 =head1 ATTRIBUTES
 
@@ -44,18 +43,30 @@ change batch request.
 
 =over
 
-=item * C<CREATE>: Creates a resource record set that has the specified
-values.
+=item *
 
-=item * C<DELETE>: Deletes a existing resource record set that has the
+C<CREATE>: Creates a resource record set that has the specified values.
+
+=item *
+
+C<DELETE>: Deletes a existing resource record set that has the
 specified values for C<Name>, C<Type>, C<SetIdentifier> (for latency,
 weighted, geolocation, and failover resource record sets), and C<TTL>
 (except alias resource record sets, for which the TTL is determined by
 the AWS resource that you're routing DNS queries to).
 
-=item * C<UPSERT>: If a resource record set does not already exist,
-Amazon Route 53 creates it. If a resource record set does exist, Amazon
-Route 53 updates it with the values in the request. Amazon Route 53 can
+To delete the resource record set that is associated with a traffic
+policy instance, use C< DeleteTrafficPolicyInstance >. Amazon Route
+53will delete the resource record set automatically. If you delete the
+resource record set by using C<ChangeResourceRecordSets>, Amazon Route
+53 doesn't automatically delete the traffic policy instance, and you'll
+continue to be charged for it even though it's no longer in use.
+
+=item *
+
+C<UPSERT>: If a resource record set does not already exist, Amazon
+Route 53 creates it. If a resource record set does exist, Amazon Route
+53 updates it with the values in the request. Amazon Route 53 can
 update an existing resource record set only when all of the following
 values match: C<Name>, C<Type>, and C<SetIdentifier> (for weighted,
 latency, geolocation, and failover resource record sets).

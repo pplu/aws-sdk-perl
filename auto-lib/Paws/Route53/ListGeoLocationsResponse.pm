@@ -35,51 +35,52 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> GeoLocationDetailsList => ArrayRef[L<Paws::Route53::GeoLocationDetails>]
 
-A complex type that contains information about the geo locations that
-are returned by the request.
+A complex type that contains one C<GeoLocationDetails> element for each
+location that Amazon Route 53 supports for geolocation.
 
 
 
 =head2 B<REQUIRED> IsTruncated => Bool
 
-A flag that indicates whether there are more geo locations to be
-listed. If your results were truncated, you can make a follow-up
-request for the next page of results by using the values included in
-the C<NextContinentCode>, C<NextCountryCode>, and
-C<NextSubdivisionCode> elements.
-
-Valid Values: C<true> | C<false>
+A value that indicates whether more locations remain to be listed after
+the last location in this response. If so, the value of C<IsTruncated>
+is C<true>. To get more values, submit another request and include the
+values of C<NextContinentCode>, C<NextCountryCode>, and
+C<NextSubdivisionCode> in the C<StartContinentCode>,
+C<StartCountryCode>, and C<StartSubdivisionCode>, as applicable.
 
 
 
 =head2 B<REQUIRED> MaxItems => Str
 
-The maximum number of records you requested. The maximum value of
-C<MaxItems> is 100.
+The value that you specified for C<MaxItems> in the request.
 
 
 
 =head2 NextContinentCode => Str
 
-If the results were truncated, the continent code of the next geo
-location in the list. This element is present only if C<IsTruncated> is
-true and the next geo location to list is a continent location.
+If C<IsTruncated> is C<true>, you can make a follow-up request to
+display more locations. Enter the value of C<NextContinentCode> in the
+C<StartContinentCode> parameter in another C<GET> C<ListGeoLocations>
+request.
 
 
 
 =head2 NextCountryCode => Str
 
-If the results were truncated, the country code of the next geo
-location in the list. This element is present only if C<IsTruncated> is
-true and the next geo location to list is not a continent location.
+If C<IsTruncated> is C<true>, you can make a follow-up request to
+display more locations. Enter the value of C<NextCountryCode> in the
+C<StartCountryCode> parameter in another C<GET> C<ListGeoLocations>
+request.
 
 
 
 =head2 NextSubdivisionCode => Str
 
-If the results were truncated, the subdivision code of the next geo
-location in the list. This element is present only if C<IsTruncated> is
-true and the next geo location has a subdivision.
+If C<IsTruncated> is C<true>, you can make a follow-up request to
+display more locations. Enter the value of C<NextSubdivisionCode> in
+the C<StartSubdivisionCode> parameter in another C<GET>
+C<ListGeoLocations> request.
 
 
 

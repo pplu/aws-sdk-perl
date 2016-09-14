@@ -34,9 +34,18 @@ for which you want to get a list of tags.
 
 The type of the resources.
 
-- The resource type for health checks is C<healthcheck>.
+=over
 
-- The resource type for hosted zones is C<hostedzone>.
+=item *
+
+The resource type for health checks is C<healthcheck>.
+
+=item *
+
+The resource type for hosted zones is C<hostedzone>.
+
+=back
+
 
 Valid values are: C<"healthcheck">, C<"hostedzone">
 

@@ -35,27 +35,27 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Route53::He
 
 =head1 DESCRIPTION
 
-A complex type that contains identifying information about the health
-check.
+A complex type that contains information about one health check that is
+associated with the current AWS account.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> CallerReference => Str
 
-  A unique string that identifies the request to create the health check.
+  A unique string that you specified when you created the health check.
 
 
 =head2 CloudWatchAlarmConfiguration => L<Paws::Route53::CloudWatchAlarmConfiguration>
 
-  For CLOUDWATCH_METRIC health checks, a complex type that contains
-information about the CloudWatch alarm that you're associating with the
-health check.
+  A complex type that contains information about the CloudWatch alarm
+that Amazon Route 53 is monitoring for this health check.
 
 
 =head2 B<REQUIRED> HealthCheckConfig => L<Paws::Route53::HealthCheckConfig>
 
-  A complex type that contains the health check configuration.
+  A complex type that contains detailed information about one health
+check.
 
 
 =head2 B<REQUIRED> HealthCheckVersion => Int
@@ -67,7 +67,10 @@ the health check.
 
 =head2 B<REQUIRED> Id => Str
 
-  The ID of the specified health check.
+  The identifier that Amazon Route 53assigned to the health check when
+you created it. When you add or update a resource record set, you use
+this value to specify which health check to use. The value can be up to
+64 characters long.
 
 
 

@@ -26,18 +26,16 @@ Paws::Route53::CreateTrafficPolicyVersionResponse
 
 =head2 Comment => Str
 
-Any comments that you want to include about the new traffic policy
-version.
+The comment that you specified in the C<CreateTrafficPolicyVersion>
+request, if any.
 
 
 
 =head2 B<REQUIRED> Document => Str
 
-The definition of a new traffic policy version, in JSON format. You
-must specify the full definition of the new traffic policy. You cannot
-specify just the differences between the new version and a previous
-version. For more information, see Traffic Policy Document Format in
-the I<Amazon Route 53 API Reference>.
+The definition of this version of the traffic policy, in JSON format.
+You specified the JSON in the C<CreateTrafficPolicyVersion> request.
+For more information about the JSON format, see CreateTrafficPolicy.
 
 
 

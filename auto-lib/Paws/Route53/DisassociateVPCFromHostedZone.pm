@@ -26,22 +26,21 @@ Paws::Route53::DisassociateVPCFromHostedZoneResponse
 
 =head2 Comment => Str
 
-I<Optional:> Any comments you want to include about a
-C<DisassociateVPCFromHostedZoneRequest>.
+I<Optional:> A comment about the disassociation request.
 
 
 
 =head2 B<REQUIRED> HostedZoneId => Str
 
-The ID of the hosted zone you want to disassociate your VPC from.
-
-Note that you cannot disassociate the last VPC from a hosted zone.
+The ID of the VPC that you want to disassociate from an Amazon Route 53
+hosted zone.
 
 
 
 =head2 B<REQUIRED> VPC => L<Paws::Route53::VPC>
 
-The VPC that you want your hosted zone to be disassociated from.
+A complex type containing information about the Amazon VPC that you're
+disassociating from the specified hosted zone.
 
 
 

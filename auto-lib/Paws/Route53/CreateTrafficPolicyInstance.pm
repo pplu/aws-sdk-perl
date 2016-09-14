@@ -58,8 +58,8 @@ resource record sets in the specified hosted zone.
 
 =head2 B<REQUIRED> TTL => Int
 
-The TTL that you want Amazon Route 53 to assign to all of the resource
-record sets that it creates in the specified hosted zone.
+(Optional) The TTL that you want Amazon Route 53 to assign to all of
+the resource record sets that it creates in the specified hosted zone.
 
 
 

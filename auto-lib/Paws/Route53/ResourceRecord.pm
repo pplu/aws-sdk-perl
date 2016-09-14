@@ -31,8 +31,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Route53::Re
 
 =head1 DESCRIPTION
 
-A complex type that contains the value of the C<Value> element for the
-current resource record set.
+Information specific to the resource record.
+
+If you are creating an alias resource record set, omit
+C<ResourceRecord>.
 
 =head1 ATTRIBUTES
 
@@ -47,6 +49,8 @@ Record Types in the I<Amazon Route 53 Developer Guide>.
 
 You can specify more than one value for all record types except
 C<CNAME> and C<SOA>.
+
+If you are creating an alias resource record set, omit C<Value>.
 
 
 

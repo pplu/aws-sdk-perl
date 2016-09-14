@@ -34,48 +34,42 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DelegationSets => ArrayRef[L<Paws::Route53::DelegationSet>]
 
-A complex type that contains information about the reusable delegation
-sets associated with the current AWS account.
+A complex type that contains one C<DelegationSet> element for each
+reusable delegation set that was created by the current AWS account.
 
 
 
 =head2 B<REQUIRED> IsTruncated => Bool
 
-A flag indicating whether there are more reusable delegation sets to be
-listed. If your results were truncated, you can make a follow-up
-request for the next page of results by using the C<Marker> element.
-
-Valid Values: C<true> | C<false>
+A flag that indicates whether there are more reusable delegation sets
+to be listed. If the response is truncated, you can get the next group
+of C<maxitems> reusable delegation sets by calling
+C<ListReusableDelegationSets> again and specifying the value of the
+C<NextMarker> element in the C<marker> parameter.
 
 
 
 =head2 Marker => Str
 
-If the request returned more than one page of results, submit another
-request and specify the value of C<NextMarker> from the last response
-in the C<marker> parameter to get the next page of results.
+For the second and subsequent calls to C<ListReusableDelegationSets>,
+C<Marker> is the value that you specified for the marker parameter in
+the request that produced the current response.
 
 
 
 =head2 B<REQUIRED> MaxItems => Str
 
-The maximum number of reusable delegation sets to be included in the
-response body. If the number of reusable delegation sets associated
-with this AWS account exceeds C<MaxItems>, the value of C<IsTruncated>
-in the response is C<true>. To get the next page of results, call
-C<ListReusableDelegationSets> again and specify the value of
-C<NextMarker> from the previous response in the C<Marker> element of
-the request.
+The value that you specified for the C<maxitems> parameter in the call
+to C<ListReusableDelegationSets> that produced the current response.
 
 
 
 =head2 NextMarker => Str
 
-Indicates where to continue listing reusable delegation sets. If
-C<IsTruncated> is C<true>, make another request to
-C<ListReusableDelegationSets> and include the value of the
-C<NextMarker> element in the C<Marker> element of the previous response
-to get the next page of results.
+If C<IsTruncated> is C<true>, the value of C<NextMarker> identifies the
+first reusable delegation set in the next group of C<maxitems> reusable
+delegation sets. Call C<ListReusableDelegationSets> again and specify
+the value of C<NextMarker> in the C<marker> parameter.
 
 
 

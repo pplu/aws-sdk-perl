@@ -37,9 +37,7 @@ A flag that indicates whether there are more traffic policies to be
 listed. If the response was truncated, you can get the next group of
 C<maxitems> traffic policies by calling C<ListTrafficPolicyVersions>
 again and specifying the value of the C<NextMarker> element in the
-marker parameter.
-
-Valid Values: C<true> | C<false>
+C<marker> parameter.
 
 
 
