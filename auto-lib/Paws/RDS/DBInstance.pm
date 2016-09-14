@@ -148,7 +148,7 @@ the DB cluster that the DB instance is a member of.
 
 =head2 DBInstanceArn => Str
 
-  
+  The Amazon Resource Name (ARN) for the DB instance.
 
 
 =head2 DBInstanceClass => Str

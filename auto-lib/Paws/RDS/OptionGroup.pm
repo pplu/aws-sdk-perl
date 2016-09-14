@@ -63,7 +63,7 @@ to.
 
 =head2 OptionGroupArn => Str
 
-  
+  The Amazon Resource Name (ARN) for the option group.
 
 
 =head2 OptionGroupDescription => Str

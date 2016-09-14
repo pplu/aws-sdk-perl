@@ -68,7 +68,7 @@ DescribeDBSecurityGroups action.
 
 =head2 DBSecurityGroupArn => Str
 
-  
+  The Amazon Resource Name (ARN) for the DB security group.
 
 
 =head2 DBSecurityGroupDescription => Str

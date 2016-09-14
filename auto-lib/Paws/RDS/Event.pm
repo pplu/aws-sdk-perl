@@ -59,7 +59,7 @@ action.
 
 =head2 SourceArn => Str
 
-  
+  The Amazon Resource Name (ARN) for the event.
 
 
 =head2 SourceIdentifier => Str
