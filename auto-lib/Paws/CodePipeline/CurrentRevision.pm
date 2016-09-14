@@ -1,7 +1,9 @@
 package Paws::CodePipeline::CurrentRevision;
   use Moose;
   has ChangeIdentifier => (is => 'ro', isa => 'Str', xmlname => 'changeIdentifier', request_name => 'changeIdentifier', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has Created => (is => 'ro', isa => 'Str', xmlname => 'created', request_name => 'created', traits => ['Unwrapped','NameInRequest']);
   has Revision => (is => 'ro', isa => 'Str', xmlname => 'revision', request_name => 'revision', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has RevisionSummary => (is => 'ro', isa => 'Str', xmlname => 'revisionSummary', request_name => 'revisionSummary', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -21,7 +23,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CodePipeline::CurrentRevision object:
 
-  $service_obj->Method(Att1 => { ChangeIdentifier => $value, ..., Revision => $value  });
+  $service_obj->Method(Att1 => { ChangeIdentifier => $value, ..., RevisionSummary => $value  });
 
 =head3 Results returned from an API call
 
@@ -42,9 +44,20 @@ Represents information about a current revision.
   The change identifier for the current revision.
 
 
+=head2 Created => Str
+
+  The date and time when the most recent revision of the artifact was
+created, in timestamp format.
+
+
 =head2 B<REQUIRED> Revision => Str
 
   The revision ID of the current version of an artifact.
+
+
+=head2 RevisionSummary => Str
+
+  The summary of the most recent revision of the artifact.
 
 
 

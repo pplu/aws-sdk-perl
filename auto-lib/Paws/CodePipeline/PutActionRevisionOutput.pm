@@ -16,8 +16,8 @@ Paws::CodePipeline::PutActionRevisionOutput
 
 =head2 NewRevision => Bool
 
-The new revision number or ID for the revision after the action
-completes.
+Indicates whether the artifact revision was previously used in an
+execution of the specified pipeline.
 
 
 
