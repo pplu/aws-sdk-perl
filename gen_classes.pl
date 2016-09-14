@@ -54,7 +54,11 @@ sub process_api {
   my $struct = decode_json(read_binary($file));
   my $type = $struct->{metadata}->{protocol} or die "Type of API call not found";
 
-  my $overrides = { 'Paws::EC2' => 'EC2' };
+  # Map classes to be generated with special builders
+  my $overrides = {
+    'Paws::EC2' => 'EC2',
+    'Paws::S3'  => 'S3',
+  };
   $type = $overrides->{ $api } if (defined $overrides->{ $api });
   $type =~ s/\-//;
 

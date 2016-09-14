@@ -1,40 +1,9 @@
-package Paws::API::Builder::restxml {
-
-  use Data::Printer;
-  use Data::Dumper;
-
-  use autodie;
+package Paws::API::Builder::S3 {
 
   use Moose;
-  extends 'Paws::API::Builder';
+  extends 'Paws::API::Builder::restxml';
 
-  has wrapped_responses => (is => 'ro', lazy => 1, default => sub { $_[0]->api_struct->{ result_wrapped } });
-  has response_role  => (is => 'ro', lazy => 1, default => sub { 'Paws::Net::RestXMLResponse' });
-  has parameter_role => (is => 'ro', lazy => 1, default => sub { return "Paws::Net::RestXmlCaller" });
-
-  has '+class_documentation_template' => (default => q#
-\#\#\# main pod documentation begin \#\#\#
-
-=head1 NAME
-
-[% c.api %]::[% op_name %]
-
-=head1 ATTRIBUTES
-
-[% FOREACH param_name IN shape.members.keys.sort -%]
-  [%- member = c.shape(shape.members.$param_name.shape) %]
-=head2 [%- IF (c.required_in_shape(shape,param_name)) %]B<REQUIRED> [% END %][% param_name %] => [% c.perl_type_to_pod(member.perl_type) %]
-
-[% c.doc_for_param_name_in_shape(shape, param_name) %]
-
-[% IF member.enum %]Valid values are: [% FOR value=member.enum %]C<"[% value %]">[% IF NOT loop.last %], [% END %][% END %][% END -%]
-
-[% END %]
-
-=cut
-#);
-
-  has callargs_class_template => (is => 'ro', isa => 'Str', default => q#
+  has '+callargs_class_template' => (default => q#
 [%- operation = c.operation(op_name) %]
 [%- shape = c.input_for_operation(op_name) %]
 package [% c.api %]::[% op_name %];
@@ -57,14 +26,15 @@ package [% c.api %]::[% op_name %];
   class_has _result_key => (isa => 'Str', is => 'ro');
   [% IF (stream_param) %]class_has _stream_param => (is => 'ro', default => '[% stream_param %]');[% END %]
 1;
-[% c.class_documentation_template | eval %]
+[% c.callclass_documentation_template | eval %]
 #);
 
-  has callresult_class_template => (is => 'ro', isa => 'Str', default => q#
+  has '+callresult_class_template' => (default => q#
 [%- operation = c.result_for_operation(op_name) %]
 [%- shape = c.result_for_operation(op_name) %]
+[%- op_name = c.shapename_for_operation_output(op_name) %]
 [%- IF (shape) %]
-package [% c.api %]::[% c.shapename_for_operation_output(op_name) %];
+package [% c.api %]::[% op_name %];
   use Moose;
 [% FOREACH param_name IN shape.members.keys.sort -%]
   [%- member = c.shape(shape.members.$param_name.shape) -%]
@@ -80,10 +50,10 @@ package [% c.api %]::[% c.shapename_for_operation_output(op_name) %];
   [%- END -%]
 [%- END %]
 1;
-[% c.callclass_documentation_template | eval %]
+[% c.class_documentation_template | eval %]
 #);
 
-  has service_class_template => (is => 'ro', isa => 'Str', default => q#
+  has '+service_class_template' => (default => q#
 [%- IF (c.enums.size) -%]
 use Moose::Util::TypeConstraints;
 [%- FOR enum_name IN c.enums.keys.sort %]

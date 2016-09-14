@@ -307,7 +307,7 @@ package Paws::API::Builder {
 
 =head1 NAME
 
-[% c.api %]::[% op_name %]
+[% c.api %]::[% c.shapename_for_operation_output(op_name) %]
 
 =head1 ATTRIBUTES
 
