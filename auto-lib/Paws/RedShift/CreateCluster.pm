@@ -14,6 +14,7 @@ package Paws::RedShift::CreateCluster;
   has DBName => (is => 'ro', isa => 'Str');
   has ElasticIp => (is => 'ro', isa => 'Str');
   has Encrypted => (is => 'ro', isa => 'Bool');
+  has EnhancedVpcRouting => (is => 'ro', isa => 'Bool');
   has HsmClientCertificateIdentifier => (is => 'ro', isa => 'Str');
   has HsmConfigurationIdentifier => (is => 'ro', isa => 'Str');
   has IamRoles => (is => 'ro', isa => 'ArrayRef[Str]');
@@ -121,15 +122,25 @@ Constraints:
 
 =over
 
-=item * Must contain from 1 to 63 alphanumeric characters or hyphens.
+=item *
 
-=item * Alphabetic characters must be lowercase.
+Must contain from 1 to 63 alphanumeric characters or hyphens.
 
-=item * First character must be a letter.
+=item *
 
-=item * Cannot end with a hyphen or contain two consecutive hyphens.
+Alphabetic characters must be lowercase.
 
-=item * Must be unique for all clusters within an AWS account.
+=item *
+
+First character must be a letter.
+
+=item *
+
+Cannot end with a hyphen or contain two consecutive hyphens.
+
+=item *
+
+Must be unique for all clusters within an AWS account.
 
 =back
 
@@ -149,11 +160,17 @@ Constraints:
 
 =over
 
-=item * Must be 1 to 255 alphanumeric characters or hyphens.
+=item *
 
-=item * First character must be a letter.
+Must be 1 to 255 alphanumeric characters or hyphens.
 
-=item * Cannot end with a hyphen or contain two consecutive hyphens.
+=item *
+
+First character must be a letter.
+
+=item *
+
+Cannot end with a hyphen or contain two consecutive hyphens.
 
 =back
 
@@ -183,9 +200,13 @@ The type of the cluster. When cluster type is specified as
 
 =over
 
-=item * C<single-node>, the B<NumberOfNodes> parameter is not required.
+=item *
 
-=item * C<multi-node>, the B<NumberOfNodes> parameter is required.
+C<single-node>, the B<NumberOfNodes> parameter is not required.
+
+=item *
+
+C<multi-node>, the B<NumberOfNodes> parameter is required.
 
 =back
 
@@ -224,13 +245,19 @@ Constraints:
 
 =over
 
-=item * Must contain 1 to 64 alphanumeric characters.
+=item *
 
-=item * Must contain only lowercase letters.
+Must contain 1 to 64 alphanumeric characters.
 
-=item * Cannot be a word that is reserved by the service. A list of
-reserved words can be found in Reserved Words in the Amazon Redshift
-Database Developer Guide.
+=item *
+
+Must contain only lowercase letters.
+
+=item *
+
+Cannot be a word that is reserved by the service. A list of reserved
+words can be found in Reserved Words in the Amazon Redshift Database
+Developer Guide.
 
 =back
 
@@ -251,6 +278,19 @@ Launch Your Cluster in the Amazon Redshift Cluster Management Guide.
 =head2 Encrypted => Bool
 
 If C<true>, the data in the cluster is encrypted at rest.
+
+Default: false
+
+
+
+=head2 EnhancedVpcRouting => Bool
+
+An option that specifies whether to create the cluster with enhanced
+VPC routing enabled. To create a cluster that uses enhanced VPC
+routing, the cluster must be in a VPC. For more information, see
+Enhanced VPC Routing in the Amazon Redshift Cluster Management Guide.
+
+If this option is C<true>, enhanced VPC routing is enabled.
 
 Default: false
 
@@ -278,7 +318,7 @@ used by the cluster to access other AWS services. You must supply the
 IAM roles in their Amazon Resource Name (ARN) format. You can supply up
 to 10 IAM roles in a single request.
 
-A cluster can have up to 10 IAM roles associated at any time.
+A cluster can have up to 10 IAM roles associated with it at any time.
 
 
 
@@ -298,13 +338,18 @@ Constraints:
 
 =over
 
-=item * Must be 1 - 128 alphanumeric characters.
+=item *
 
-=item * First character must be a letter.
+Must be 1 - 128 alphanumeric characters.
 
-=item * Cannot be a reserved word. A list of reserved words can be
-found in Reserved Words in the Amazon Redshift Database Developer
-Guide.
+=item *
+
+First character must be a letter.
+
+=item *
+
+Cannot be a reserved word. A list of reserved words can be found in
+Reserved Words in the Amazon Redshift Database Developer Guide.
 
 =back
 
@@ -320,16 +365,26 @@ Constraints:
 
 =over
 
-=item * Must be between 8 and 64 characters in length.
+=item *
 
-=item * Must contain at least one uppercase letter.
+Must be between 8 and 64 characters in length.
 
-=item * Must contain at least one lowercase letter.
+=item *
 
-=item * Must contain one number.
+Must contain at least one uppercase letter.
 
-=item * Can be any printable ASCII character (ASCII code 33 to 126)
-except ' (single quote), " (double quote), \, /, @, or space.
+=item *
+
+Must contain at least one lowercase letter.
+
+=item *
+
+Must contain one number.
+
+=item *
+
+Can be any printable ASCII character (ASCII code 33 to 126) except '
+(single quote), " (double quote), \, /, @, or space.
 
 =back
 

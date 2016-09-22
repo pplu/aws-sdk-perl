@@ -46,7 +46,9 @@ Constraints:
 
 =over
 
-=item * Must be the identifier for a valid cluster.
+=item *
+
+Must be the identifier for a valid cluster.
 
 =back
 
@@ -61,8 +63,10 @@ Constraints:
 
 =over
 
-=item * Must be the identifier for a valid automated snapshot whose
-state is C<available>.
+=item *
+
+Must be the identifier for a valid automated snapshot whose state is
+C<available>.
 
 =back
 
@@ -77,15 +81,25 @@ Constraints:
 
 =over
 
-=item * Cannot be null, empty, or blank.
+=item *
 
-=item * Must contain from 1 to 255 alphanumeric characters or hyphens.
+Cannot be null, empty, or blank.
 
-=item * First character must be a letter.
+=item *
 
-=item * Cannot end with a hyphen or contain two consecutive hyphens.
+Must contain from 1 to 255 alphanumeric characters or hyphens.
 
-=item * Must be unique for the AWS account that is making the request.
+=item *
+
+First character must be a letter.
+
+=item *
+
+Cannot end with a hyphen or contain two consecutive hyphens.
+
+=item *
+
+Must be unique for the AWS account that is making the request.
 
 =back
 

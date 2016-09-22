@@ -105,11 +105,14 @@ Constraints:
 
 =over
 
-=item * Can be one of the following: active | no-permission |
-topic-not-exist
+=item *
 
-=item * The status "no-permission" indicates that Amazon Redshift no
-longer has permission to post to the Amazon SNS topic. The status
+Can be one of the following: active | no-permission | topic-not-exist
+
+=item *
+
+The status "no-permission" indicates that Amazon Redshift no longer has
+permission to post to the Amazon SNS topic. The status
 "topic-not-exist" indicates that the topic was deleted after the
 subscription was created.
 

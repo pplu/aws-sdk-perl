@@ -43,9 +43,13 @@ Constraints:
 
 =over
 
-=item * Must be in the same region as the cluster
+=item *
 
-=item * The cluster must have read bucket and put object permissions
+Must be in the same region as the cluster
+
+=item *
+
+The cluster must have read bucket and put object permissions
 
 =back
 
@@ -68,23 +72,37 @@ Constraints:
 
 =over
 
-=item * Cannot exceed 512 characters
+=item *
 
-=item * Cannot contain spaces( ), double quotes ("), single quotes ('),
-a backslash (\), or control characters. The hexadecimal codes for
-invalid characters are:
+Cannot exceed 512 characters
+
+=item *
+
+Cannot contain spaces( ), double quotes ("), single quotes ('), a
+backslash (\), or control characters. The hexadecimal codes for invalid
+characters are:
 
 =over
 
-=item * x00 to x20
+=item *
 
-=item * x22
+x00 to x20
 
-=item * x27
+=item *
 
-=item * x5c
+x22
 
-=item * x7f or larger
+=item *
+
+x27
+
+=item *
+
+x5c
+
+=item *
+
+x7f or larger
 
 =back
 

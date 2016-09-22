@@ -37,9 +37,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AddIamRoles => ArrayRef[Str]
 
-Zero or more IAM roles (in their ARN format) to associate with the
-cluster. You can associate up to 10 IAM roles with a single cluster in
-a single request.
+Zero or more IAM roles to associate with the cluster. The roles must be
+in their Amazon Resource Name (ARN) format. You can associate up to 10
+IAM roles with a single cluster in a single request.
 
 
 
@@ -52,9 +52,9 @@ disassociate IAM roles.
 
 =head2 RemoveIamRoles => ArrayRef[Str]
 
-Zero or more IAM roles (in their ARN format) to disassociate from the
-cluster. You can disassociate up to 10 IAM roles from a single cluster
-in a single request.
+Zero or more IAM roles in ARN format to disassociate from the cluster.
+You can disassociate up to 10 IAM roles from a single cluster in a
+single request.
 
 
 

@@ -45,13 +45,18 @@ Constraints:
 
 =over
 
-=item * Must contain no more than 255 alphanumeric characters or
-hyphens.
+=item *
 
-=item * Must not be "Default".
+Must contain no more than 255 alphanumeric characters or hyphens.
 
-=item * Must be unique for all subnet groups that are created by your
-AWS account.
+=item *
+
+Must not be "Default".
+
+=item *
+
+Must be unique for all subnet groups that are created by your AWS
+account.
 
 =back
 

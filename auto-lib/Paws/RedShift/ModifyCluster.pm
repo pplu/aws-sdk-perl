@@ -9,6 +9,7 @@ package Paws::RedShift::ModifyCluster;
   has ClusterType => (is => 'ro', isa => 'Str');
   has ClusterVersion => (is => 'ro', isa => 'Str');
   has ElasticIp => (is => 'ro', isa => 'Str');
+  has EnhancedVpcRouting => (is => 'ro', isa => 'Bool');
   has HsmClientCertificateIdentifier => (is => 'ro', isa => 'Str');
   has HsmConfigurationIdentifier => (is => 'ro', isa => 'Str');
   has MasterUserPassword => (is => 'ro', isa => 'Str');
@@ -108,11 +109,17 @@ Constraints:
 
 =over
 
-=item * Must be 1 to 255 alphanumeric characters or hyphens
+=item *
 
-=item * First character must be a letter
+Must be 1 to 255 alphanumeric characters or hyphens
 
-=item * Cannot end with a hyphen or contain two consecutive hyphens
+=item *
+
+First character must be a letter
+
+=item *
+
+Cannot end with a hyphen or contain two consecutive hyphens
 
 =back
 
@@ -161,6 +168,19 @@ Launch Your Cluster in the Amazon Redshift Cluster Management Guide.
 
 
 
+=head2 EnhancedVpcRouting => Bool
+
+An option that specifies whether to create the cluster with enhanced
+VPC routing enabled. To create a cluster that uses enhanced VPC
+routing, the cluster must be in a VPC. For more information, see
+Enhanced VPC Routing in the Amazon Redshift Cluster Management Guide.
+
+If this option is C<true>, enhanced VPC routing is enabled.
+
+Default: false
+
+
+
 =head2 HsmClientCertificateIdentifier => Str
 
 Specifies the name of the HSM client certificate the Amazon Redshift
@@ -182,9 +202,11 @@ The new password for the cluster master user. This change is
 asynchronously applied as soon as possible. Between the time of the
 request and the completion of the request, the C<MasterUserPassword>
 element exists in the C<PendingModifiedValues> element of the operation
-response. Operations never return the password, so this operation
-provides a way to regain access to the master user account for a
-cluster if the password is lost.
+response.
+
+Operations never return the password, so this operation provides a way
+to regain access to the master user account for a cluster if the
+password is lost.
 
 Default: Uses existing setting.
 
@@ -192,16 +214,26 @@ Constraints:
 
 =over
 
-=item * Must be between 8 and 64 characters in length.
+=item *
 
-=item * Must contain at least one uppercase letter.
+Must be between 8 and 64 characters in length.
 
-=item * Must contain at least one lowercase letter.
+=item *
 
-=item * Must contain one number.
+Must contain at least one uppercase letter.
 
-=item * Can be any printable ASCII character (ASCII code 33 to 126)
-except ' (single quote), " (double quote), \, /, @, or space.
+=item *
+
+Must contain at least one lowercase letter.
+
+=item *
+
+Must contain one number.
+
+=item *
+
+Can be any printable ASCII character (ASCII code 33 to 126) except '
+(single quote), " (double quote), \, /, @, or space.
 
 =back
 
@@ -216,15 +248,25 @@ Constraints:
 
 =over
 
-=item * Must contain from 1 to 63 alphanumeric characters or hyphens.
+=item *
 
-=item * Alphabetic characters must be lowercase.
+Must contain from 1 to 63 alphanumeric characters or hyphens.
 
-=item * First character must be a letter.
+=item *
 
-=item * Cannot end with a hyphen or contain two consecutive hyphens.
+Alphabetic characters must be lowercase.
 
-=item * Must be unique for all clusters within an AWS account.
+=item *
+
+First character must be a letter.
+
+=item *
+
+Cannot end with a hyphen or contain two consecutive hyphens.
+
+=item *
+
+Must be unique for all clusters within an AWS account.
 
 =back
 
