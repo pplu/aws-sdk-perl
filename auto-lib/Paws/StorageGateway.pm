@@ -298,122 +298,146 @@ package Paws::StorageGateway;
   sub DescribeAllTapeArchives {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeTapeArchives(@_);
-    my $params = {};
-    
-    $params->{ TapeArchives } = $result->TapeArchives;
-    
 
-    
-    while ($result->Marker) {
-      $result = $self->DescribeTapeArchives(@_, Marker => $result->Marker);
-      
-      push @{ $params->{ TapeArchives } }, @{ $result->TapeArchives };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ TapeArchives } = $result->TapeArchives;
+
+      while ($result->Marker) {
+        $result = $self->DescribeTapeArchives(@_, Marker => $result->Marker);
+        push @{ $result->TapeArchives }, @{ $result->TapeArchives };
+      }
+      $self->new_with_coercions(Paws::StorageGateway::DescribeTapeArchives->_returns, %$params);
+    } else {
+      while ($result->Marker) {
+        $result = $self->DescribeTapeArchives(@_, Marker => $result->Marker);
+        $callback->($_ => 'TapeArchives') foreach (@{ $result->TapeArchives });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::StorageGateway::DescribeTapeArchives->_returns, %$params);
+    return undef
   }
   sub DescribeAllTapeRecoveryPoints {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeTapeRecoveryPoints(@_);
-    my $params = {};
-    
-    $params->{ TapeRecoveryPointInfos } = $result->TapeRecoveryPointInfos;
-    
 
-    
-    while ($result->Marker) {
-      $result = $self->DescribeTapeRecoveryPoints(@_, Marker => $result->Marker);
-      
-      push @{ $params->{ TapeRecoveryPointInfos } }, @{ $result->TapeRecoveryPointInfos };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ TapeRecoveryPointInfos } = $result->TapeRecoveryPointInfos;
+
+      while ($result->Marker) {
+        $result = $self->DescribeTapeRecoveryPoints(@_, Marker => $result->Marker);
+        push @{ $result->TapeRecoveryPointInfos }, @{ $result->TapeRecoveryPointInfos };
+      }
+      $self->new_with_coercions(Paws::StorageGateway::DescribeTapeRecoveryPoints->_returns, %$params);
+    } else {
+      while ($result->Marker) {
+        $result = $self->DescribeTapeRecoveryPoints(@_, Marker => $result->Marker);
+        $callback->($_ => 'TapeRecoveryPointInfos') foreach (@{ $result->TapeRecoveryPointInfos });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::StorageGateway::DescribeTapeRecoveryPoints->_returns, %$params);
+    return undef
   }
   sub DescribeAllTapes {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeTapes(@_);
-    my $params = {};
-    
-    $params->{ Tapes } = $result->Tapes;
-    
 
-    
-    while ($result->Marker) {
-      $result = $self->DescribeTapes(@_, Marker => $result->Marker);
-      
-      push @{ $params->{ Tapes } }, @{ $result->Tapes };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ Tapes } = $result->Tapes;
+
+      while ($result->Marker) {
+        $result = $self->DescribeTapes(@_, Marker => $result->Marker);
+        push @{ $result->Tapes }, @{ $result->Tapes };
+      }
+      $self->new_with_coercions(Paws::StorageGateway::DescribeTapes->_returns, %$params);
+    } else {
+      while ($result->Marker) {
+        $result = $self->DescribeTapes(@_, Marker => $result->Marker);
+        $callback->($_ => 'Tapes') foreach (@{ $result->Tapes });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::StorageGateway::DescribeTapes->_returns, %$params);
+    return undef
   }
   sub DescribeAllVTLDevices {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeVTLDevices(@_);
-    my $params = {};
-    
-    $params->{ VTLDevices } = $result->VTLDevices;
-    
 
-    
-    while ($result->Marker) {
-      $result = $self->DescribeVTLDevices(@_, Marker => $result->Marker);
-      
-      push @{ $params->{ VTLDevices } }, @{ $result->VTLDevices };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ VTLDevices } = $result->VTLDevices;
+
+      while ($result->Marker) {
+        $result = $self->DescribeVTLDevices(@_, Marker => $result->Marker);
+        push @{ $result->VTLDevices }, @{ $result->VTLDevices };
+      }
+      $self->new_with_coercions(Paws::StorageGateway::DescribeVTLDevices->_returns, %$params);
+    } else {
+      while ($result->Marker) {
+        $result = $self->DescribeVTLDevices(@_, Marker => $result->Marker);
+        $callback->($_ => 'VTLDevices') foreach (@{ $result->VTLDevices });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::StorageGateway::DescribeVTLDevices->_returns, %$params);
+    return undef
   }
   sub ListAllGateways {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListGateways(@_);
-    my $params = {};
-    
-    $params->{ Gateways } = $result->Gateways;
-    
 
-    
-    while ($result->Marker) {
-      $result = $self->ListGateways(@_, Marker => $result->Marker);
-      
-      push @{ $params->{ Gateways } }, @{ $result->Gateways };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ Gateways } = $result->Gateways;
+
+      while ($result->Marker) {
+        $result = $self->ListGateways(@_, Marker => $result->Marker);
+        push @{ $result->Gateways }, @{ $result->Gateways };
+      }
+      $self->new_with_coercions(Paws::StorageGateway::ListGateways->_returns, %$params);
+    } else {
+      while ($result->Marker) {
+        $result = $self->ListGateways(@_, Marker => $result->Marker);
+        $callback->($_ => 'Gateways') foreach (@{ $result->Gateways });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::StorageGateway::ListGateways->_returns, %$params);
+    return undef
   }
   sub ListAllVolumes {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListVolumes(@_);
-    my $params = {};
-    
-    $params->{ VolumeInfos } = $result->VolumeInfos;
-    
 
-    
-    while ($result->Marker) {
-      $result = $self->ListVolumes(@_, Marker => $result->Marker);
-      
-      push @{ $params->{ VolumeInfos } }, @{ $result->VolumeInfos };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ VolumeInfos } = $result->VolumeInfos;
+
+      while ($result->Marker) {
+        $result = $self->ListVolumes(@_, Marker => $result->Marker);
+        push @{ $result->VolumeInfos }, @{ $result->VolumeInfos };
+      }
+      $self->new_with_coercions(Paws::StorageGateway::ListVolumes->_returns, %$params);
+    } else {
+      while ($result->Marker) {
+        $result = $self->ListVolumes(@_, Marker => $result->Marker);
+        $callback->($_ => 'VolumeInfos') foreach (@{ $result->VolumeInfos });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::StorageGateway::ListVolumes->_returns, %$params);
+    return undef
   }
 
 

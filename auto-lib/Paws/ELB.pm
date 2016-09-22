@@ -157,22 +157,26 @@ package Paws::ELB;
   sub DescribeAllLoadBalancers {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeLoadBalancers(@_);
-    my $params = {};
-    
-    $params->{ LoadBalancerDescriptions } = $result->LoadBalancerDescriptions;
-    
 
-    
-    while ($result->Marker) {
-      $result = $self->DescribeLoadBalancers(@_, Marker => $result->NextMarker);
-      
-      push @{ $params->{ LoadBalancerDescriptions } }, @{ $result->LoadBalancerDescriptions };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ LoadBalancerDescriptions } = $result->LoadBalancerDescriptions;
+
+      while ($result->Marker) {
+        $result = $self->DescribeLoadBalancers(@_, Marker => $result->NextMarker);
+        push @{ $result->LoadBalancerDescriptions }, @{ $result->LoadBalancerDescriptions };
+      }
+      $self->new_with_coercions(Paws::ELB::DescribeLoadBalancers->_returns, %$params);
+    } else {
+      while ($result->Marker) {
+        $result = $self->DescribeLoadBalancers(@_, Marker => $result->NextMarker);
+        $callback->($_ => 'LoadBalancerDescriptions') foreach (@{ $result->LoadBalancerDescriptions });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::ELB::DescribeLoadBalancers->_returns, %$params);
+    return undef
   }
 
 

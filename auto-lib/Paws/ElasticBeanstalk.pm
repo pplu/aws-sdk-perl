@@ -197,22 +197,26 @@ package Paws::ElasticBeanstalk;
   sub DescribeAllEvents {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeEvents(@_);
-    my $params = {};
-    
-    $params->{ Events } = $result->Events;
-    
 
-    
-    while ($result->NextToken) {
-      $result = $self->DescribeEvents(@_, NextToken => $result->NextToken);
-      
-      push @{ $params->{ Events } }, @{ $result->Events };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ Events } = $result->Events;
+
+      while ($result->NextToken) {
+        $result = $self->DescribeEvents(@_, NextToken => $result->NextToken);
+        push @{ $result->Events }, @{ $result->Events };
+      }
+      $self->new_with_coercions(Paws::ElasticBeanstalk::DescribeEvents->_returns, %$params);
+    } else {
+      while ($result->NextToken) {
+        $result = $self->DescribeEvents(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'Events') foreach (@{ $result->Events });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::ElasticBeanstalk::DescribeEvents->_returns, %$params);
+    return undef
   }
 
 

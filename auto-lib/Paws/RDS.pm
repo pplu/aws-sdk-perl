@@ -455,362 +455,434 @@ package Paws::RDS;
   sub DescribeAllDBClusterSnapshots {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeDBClusterSnapshots(@_);
-    my $params = {};
-    
-    $params->{ DBClusterSnapshots } = $result->DBClusterSnapshots;
-    
 
-    
-    while ($result->Marker) {
-      $result = $self->DescribeDBClusterSnapshots(@_, Marker => $result->Marker);
-      
-      push @{ $params->{ DBClusterSnapshots } }, @{ $result->DBClusterSnapshots };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ DBClusterSnapshots } = $result->DBClusterSnapshots;
+
+      while ($result->Marker) {
+        $result = $self->DescribeDBClusterSnapshots(@_, Marker => $result->Marker);
+        push @{ $result->DBClusterSnapshots }, @{ $result->DBClusterSnapshots };
+      }
+      $self->new_with_coercions(Paws::RDS::DescribeDBClusterSnapshots->_returns, %$params);
+    } else {
+      while ($result->Marker) {
+        $result = $self->DescribeDBClusterSnapshots(@_, Marker => $result->Marker);
+        $callback->($_ => 'DBClusterSnapshots') foreach (@{ $result->DBClusterSnapshots });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::RDS::DescribeDBClusterSnapshots->_returns, %$params);
+    return undef
   }
   sub DescribeAllDBEngineVersions {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeDBEngineVersions(@_);
-    my $params = {};
-    
-    $params->{ DBEngineVersions } = $result->DBEngineVersions;
-    
 
-    
-    while ($result->Marker) {
-      $result = $self->DescribeDBEngineVersions(@_, Marker => $result->Marker);
-      
-      push @{ $params->{ DBEngineVersions } }, @{ $result->DBEngineVersions };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ DBEngineVersions } = $result->DBEngineVersions;
+
+      while ($result->Marker) {
+        $result = $self->DescribeDBEngineVersions(@_, Marker => $result->Marker);
+        push @{ $result->DBEngineVersions }, @{ $result->DBEngineVersions };
+      }
+      $self->new_with_coercions(Paws::RDS::DescribeDBEngineVersions->_returns, %$params);
+    } else {
+      while ($result->Marker) {
+        $result = $self->DescribeDBEngineVersions(@_, Marker => $result->Marker);
+        $callback->($_ => 'DBEngineVersions') foreach (@{ $result->DBEngineVersions });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::RDS::DescribeDBEngineVersions->_returns, %$params);
+    return undef
   }
   sub DescribeAllDBInstances {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeDBInstances(@_);
-    my $params = {};
-    
-    $params->{ DBInstances } = $result->DBInstances;
-    
 
-    
-    while ($result->Marker) {
-      $result = $self->DescribeDBInstances(@_, Marker => $result->Marker);
-      
-      push @{ $params->{ DBInstances } }, @{ $result->DBInstances };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ DBInstances } = $result->DBInstances;
+
+      while ($result->Marker) {
+        $result = $self->DescribeDBInstances(@_, Marker => $result->Marker);
+        push @{ $result->DBInstances }, @{ $result->DBInstances };
+      }
+      $self->new_with_coercions(Paws::RDS::DescribeDBInstances->_returns, %$params);
+    } else {
+      while ($result->Marker) {
+        $result = $self->DescribeDBInstances(@_, Marker => $result->Marker);
+        $callback->($_ => 'DBInstances') foreach (@{ $result->DBInstances });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::RDS::DescribeDBInstances->_returns, %$params);
+    return undef
   }
   sub DescribeAllDBLogFiles {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeDBLogFiles(@_);
-    my $params = {};
-    
-    $params->{ DescribeDBLogFiles } = $result->DescribeDBLogFiles;
-    
 
-    
-    while ($result->Marker) {
-      $result = $self->DescribeDBLogFiles(@_, Marker => $result->Marker);
-      
-      push @{ $params->{ DescribeDBLogFiles } }, @{ $result->DescribeDBLogFiles };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ DescribeDBLogFiles } = $result->DescribeDBLogFiles;
+
+      while ($result->Marker) {
+        $result = $self->DescribeDBLogFiles(@_, Marker => $result->Marker);
+        push @{ $result->DescribeDBLogFiles }, @{ $result->DescribeDBLogFiles };
+      }
+      $self->new_with_coercions(Paws::RDS::DescribeDBLogFiles->_returns, %$params);
+    } else {
+      while ($result->Marker) {
+        $result = $self->DescribeDBLogFiles(@_, Marker => $result->Marker);
+        $callback->($_ => 'DescribeDBLogFiles') foreach (@{ $result->DescribeDBLogFiles });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::RDS::DescribeDBLogFiles->_returns, %$params);
+    return undef
   }
   sub DescribeAllDBParameterGroups {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeDBParameterGroups(@_);
-    my $params = {};
-    
-    $params->{ DBParameterGroups } = $result->DBParameterGroups;
-    
 
-    
-    while ($result->Marker) {
-      $result = $self->DescribeDBParameterGroups(@_, Marker => $result->Marker);
-      
-      push @{ $params->{ DBParameterGroups } }, @{ $result->DBParameterGroups };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ DBParameterGroups } = $result->DBParameterGroups;
+
+      while ($result->Marker) {
+        $result = $self->DescribeDBParameterGroups(@_, Marker => $result->Marker);
+        push @{ $result->DBParameterGroups }, @{ $result->DBParameterGroups };
+      }
+      $self->new_with_coercions(Paws::RDS::DescribeDBParameterGroups->_returns, %$params);
+    } else {
+      while ($result->Marker) {
+        $result = $self->DescribeDBParameterGroups(@_, Marker => $result->Marker);
+        $callback->($_ => 'DBParameterGroups') foreach (@{ $result->DBParameterGroups });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::RDS::DescribeDBParameterGroups->_returns, %$params);
+    return undef
   }
   sub DescribeAllDBParameters {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeDBParameters(@_);
-    my $params = {};
-    
-    $params->{ Parameters } = $result->Parameters;
-    
 
-    
-    while ($result->Marker) {
-      $result = $self->DescribeDBParameters(@_, Marker => $result->Marker);
-      
-      push @{ $params->{ Parameters } }, @{ $result->Parameters };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ Parameters } = $result->Parameters;
+
+      while ($result->Marker) {
+        $result = $self->DescribeDBParameters(@_, Marker => $result->Marker);
+        push @{ $result->Parameters }, @{ $result->Parameters };
+      }
+      $self->new_with_coercions(Paws::RDS::DescribeDBParameters->_returns, %$params);
+    } else {
+      while ($result->Marker) {
+        $result = $self->DescribeDBParameters(@_, Marker => $result->Marker);
+        $callback->($_ => 'Parameters') foreach (@{ $result->Parameters });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::RDS::DescribeDBParameters->_returns, %$params);
+    return undef
   }
   sub DescribeAllDBSecurityGroups {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeDBSecurityGroups(@_);
-    my $params = {};
-    
-    $params->{ DBSecurityGroups } = $result->DBSecurityGroups;
-    
 
-    
-    while ($result->Marker) {
-      $result = $self->DescribeDBSecurityGroups(@_, Marker => $result->Marker);
-      
-      push @{ $params->{ DBSecurityGroups } }, @{ $result->DBSecurityGroups };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ DBSecurityGroups } = $result->DBSecurityGroups;
+
+      while ($result->Marker) {
+        $result = $self->DescribeDBSecurityGroups(@_, Marker => $result->Marker);
+        push @{ $result->DBSecurityGroups }, @{ $result->DBSecurityGroups };
+      }
+      $self->new_with_coercions(Paws::RDS::DescribeDBSecurityGroups->_returns, %$params);
+    } else {
+      while ($result->Marker) {
+        $result = $self->DescribeDBSecurityGroups(@_, Marker => $result->Marker);
+        $callback->($_ => 'DBSecurityGroups') foreach (@{ $result->DBSecurityGroups });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::RDS::DescribeDBSecurityGroups->_returns, %$params);
+    return undef
   }
   sub DescribeAllDBSnapshots {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeDBSnapshots(@_);
-    my $params = {};
-    
-    $params->{ DBSnapshots } = $result->DBSnapshots;
-    
 
-    
-    while ($result->Marker) {
-      $result = $self->DescribeDBSnapshots(@_, Marker => $result->Marker);
-      
-      push @{ $params->{ DBSnapshots } }, @{ $result->DBSnapshots };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ DBSnapshots } = $result->DBSnapshots;
+
+      while ($result->Marker) {
+        $result = $self->DescribeDBSnapshots(@_, Marker => $result->Marker);
+        push @{ $result->DBSnapshots }, @{ $result->DBSnapshots };
+      }
+      $self->new_with_coercions(Paws::RDS::DescribeDBSnapshots->_returns, %$params);
+    } else {
+      while ($result->Marker) {
+        $result = $self->DescribeDBSnapshots(@_, Marker => $result->Marker);
+        $callback->($_ => 'DBSnapshots') foreach (@{ $result->DBSnapshots });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::RDS::DescribeDBSnapshots->_returns, %$params);
+    return undef
   }
   sub DescribeAllDBSubnetGroups {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeDBSubnetGroups(@_);
-    my $params = {};
-    
-    $params->{ DBSubnetGroups } = $result->DBSubnetGroups;
-    
 
-    
-    while ($result->Marker) {
-      $result = $self->DescribeDBSubnetGroups(@_, Marker => $result->Marker);
-      
-      push @{ $params->{ DBSubnetGroups } }, @{ $result->DBSubnetGroups };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ DBSubnetGroups } = $result->DBSubnetGroups;
+
+      while ($result->Marker) {
+        $result = $self->DescribeDBSubnetGroups(@_, Marker => $result->Marker);
+        push @{ $result->DBSubnetGroups }, @{ $result->DBSubnetGroups };
+      }
+      $self->new_with_coercions(Paws::RDS::DescribeDBSubnetGroups->_returns, %$params);
+    } else {
+      while ($result->Marker) {
+        $result = $self->DescribeDBSubnetGroups(@_, Marker => $result->Marker);
+        $callback->($_ => 'DBSubnetGroups') foreach (@{ $result->DBSubnetGroups });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::RDS::DescribeDBSubnetGroups->_returns, %$params);
+    return undef
   }
   sub DescribeAllEngineDefaultParameters {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeEngineDefaultParameters(@_);
-    my $params = {};
-    
-    $params->{ EngineDefaults.Parameters } = $result->EngineDefaults->Parameters;
-    
 
-    
-    while ($result->Marker) {
-      $result = $self->DescribeEngineDefaultParameters(@_, Marker => $result->EngineDefaults->Marker);
-      
-      push @{ $params->{ EngineDefaults.Parameters } }, @{ $result->EngineDefaults->Parameters };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ EngineDefaults.Parameters } = $result->EngineDefaults->Parameters;
+
+      while ($result->Marker) {
+        $result = $self->DescribeEngineDefaultParameters(@_, Marker => $result->EngineDefaults->Marker);
+        push @{ $result->EngineDefaults->Parameters }, @{ $result->EngineDefaults->Parameters };
+      }
+      $self->new_with_coercions(Paws::RDS::DescribeEngineDefaultParameters->_returns, %$params);
+    } else {
+      while ($result->Marker) {
+        $result = $self->DescribeEngineDefaultParameters(@_, Marker => $result->EngineDefaults->Marker);
+        $callback->($_ => 'EngineDefaults.Parameters') foreach (@{ $result->EngineDefaults->Parameters });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::RDS::DescribeEngineDefaultParameters->_returns, %$params);
+    return undef
   }
   sub DescribeAllEvents {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeEvents(@_);
-    my $params = {};
-    
-    $params->{ Events } = $result->Events;
-    
 
-    
-    while ($result->Marker) {
-      $result = $self->DescribeEvents(@_, Marker => $result->Marker);
-      
-      push @{ $params->{ Events } }, @{ $result->Events };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ Events } = $result->Events;
+
+      while ($result->Marker) {
+        $result = $self->DescribeEvents(@_, Marker => $result->Marker);
+        push @{ $result->Events }, @{ $result->Events };
+      }
+      $self->new_with_coercions(Paws::RDS::DescribeEvents->_returns, %$params);
+    } else {
+      while ($result->Marker) {
+        $result = $self->DescribeEvents(@_, Marker => $result->Marker);
+        $callback->($_ => 'Events') foreach (@{ $result->Events });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::RDS::DescribeEvents->_returns, %$params);
+    return undef
   }
   sub DescribeAllEventSubscriptions {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeEventSubscriptions(@_);
-    my $params = {};
-    
-    $params->{ EventSubscriptionsList } = $result->EventSubscriptionsList;
-    
 
-    
-    while ($result->Marker) {
-      $result = $self->DescribeEventSubscriptions(@_, Marker => $result->Marker);
-      
-      push @{ $params->{ EventSubscriptionsList } }, @{ $result->EventSubscriptionsList };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ EventSubscriptionsList } = $result->EventSubscriptionsList;
+
+      while ($result->Marker) {
+        $result = $self->DescribeEventSubscriptions(@_, Marker => $result->Marker);
+        push @{ $result->EventSubscriptionsList }, @{ $result->EventSubscriptionsList };
+      }
+      $self->new_with_coercions(Paws::RDS::DescribeEventSubscriptions->_returns, %$params);
+    } else {
+      while ($result->Marker) {
+        $result = $self->DescribeEventSubscriptions(@_, Marker => $result->Marker);
+        $callback->($_ => 'EventSubscriptionsList') foreach (@{ $result->EventSubscriptionsList });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::RDS::DescribeEventSubscriptions->_returns, %$params);
+    return undef
   }
   sub DescribeAllOptionGroupOptions {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeOptionGroupOptions(@_);
-    my $params = {};
-    
-    $params->{ OptionGroupOptions } = $result->OptionGroupOptions;
-    
 
-    
-    while ($result->Marker) {
-      $result = $self->DescribeOptionGroupOptions(@_, Marker => $result->Marker);
-      
-      push @{ $params->{ OptionGroupOptions } }, @{ $result->OptionGroupOptions };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ OptionGroupOptions } = $result->OptionGroupOptions;
+
+      while ($result->Marker) {
+        $result = $self->DescribeOptionGroupOptions(@_, Marker => $result->Marker);
+        push @{ $result->OptionGroupOptions }, @{ $result->OptionGroupOptions };
+      }
+      $self->new_with_coercions(Paws::RDS::DescribeOptionGroupOptions->_returns, %$params);
+    } else {
+      while ($result->Marker) {
+        $result = $self->DescribeOptionGroupOptions(@_, Marker => $result->Marker);
+        $callback->($_ => 'OptionGroupOptions') foreach (@{ $result->OptionGroupOptions });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::RDS::DescribeOptionGroupOptions->_returns, %$params);
+    return undef
   }
   sub DescribeAllOptionGroups {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeOptionGroups(@_);
-    my $params = {};
-    
-    $params->{ OptionGroupsList } = $result->OptionGroupsList;
-    
 
-    
-    while ($result->Marker) {
-      $result = $self->DescribeOptionGroups(@_, Marker => $result->Marker);
-      
-      push @{ $params->{ OptionGroupsList } }, @{ $result->OptionGroupsList };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ OptionGroupsList } = $result->OptionGroupsList;
+
+      while ($result->Marker) {
+        $result = $self->DescribeOptionGroups(@_, Marker => $result->Marker);
+        push @{ $result->OptionGroupsList }, @{ $result->OptionGroupsList };
+      }
+      $self->new_with_coercions(Paws::RDS::DescribeOptionGroups->_returns, %$params);
+    } else {
+      while ($result->Marker) {
+        $result = $self->DescribeOptionGroups(@_, Marker => $result->Marker);
+        $callback->($_ => 'OptionGroupsList') foreach (@{ $result->OptionGroupsList });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::RDS::DescribeOptionGroups->_returns, %$params);
+    return undef
   }
   sub DescribeAllOrderableDBInstanceOptions {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeOrderableDBInstanceOptions(@_);
-    my $params = {};
-    
-    $params->{ OrderableDBInstanceOptions } = $result->OrderableDBInstanceOptions;
-    
 
-    
-    while ($result->Marker) {
-      $result = $self->DescribeOrderableDBInstanceOptions(@_, Marker => $result->Marker);
-      
-      push @{ $params->{ OrderableDBInstanceOptions } }, @{ $result->OrderableDBInstanceOptions };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ OrderableDBInstanceOptions } = $result->OrderableDBInstanceOptions;
+
+      while ($result->Marker) {
+        $result = $self->DescribeOrderableDBInstanceOptions(@_, Marker => $result->Marker);
+        push @{ $result->OrderableDBInstanceOptions }, @{ $result->OrderableDBInstanceOptions };
+      }
+      $self->new_with_coercions(Paws::RDS::DescribeOrderableDBInstanceOptions->_returns, %$params);
+    } else {
+      while ($result->Marker) {
+        $result = $self->DescribeOrderableDBInstanceOptions(@_, Marker => $result->Marker);
+        $callback->($_ => 'OrderableDBInstanceOptions') foreach (@{ $result->OrderableDBInstanceOptions });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::RDS::DescribeOrderableDBInstanceOptions->_returns, %$params);
+    return undef
   }
   sub DescribeAllReservedDBInstances {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeReservedDBInstances(@_);
-    my $params = {};
-    
-    $params->{ ReservedDBInstances } = $result->ReservedDBInstances;
-    
 
-    
-    while ($result->Marker) {
-      $result = $self->DescribeReservedDBInstances(@_, Marker => $result->Marker);
-      
-      push @{ $params->{ ReservedDBInstances } }, @{ $result->ReservedDBInstances };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ ReservedDBInstances } = $result->ReservedDBInstances;
+
+      while ($result->Marker) {
+        $result = $self->DescribeReservedDBInstances(@_, Marker => $result->Marker);
+        push @{ $result->ReservedDBInstances }, @{ $result->ReservedDBInstances };
+      }
+      $self->new_with_coercions(Paws::RDS::DescribeReservedDBInstances->_returns, %$params);
+    } else {
+      while ($result->Marker) {
+        $result = $self->DescribeReservedDBInstances(@_, Marker => $result->Marker);
+        $callback->($_ => 'ReservedDBInstances') foreach (@{ $result->ReservedDBInstances });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::RDS::DescribeReservedDBInstances->_returns, %$params);
+    return undef
   }
   sub DescribeAllReservedDBInstancesOfferings {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeReservedDBInstancesOfferings(@_);
-    my $params = {};
-    
-    $params->{ ReservedDBInstancesOfferings } = $result->ReservedDBInstancesOfferings;
-    
 
-    
-    while ($result->Marker) {
-      $result = $self->DescribeReservedDBInstancesOfferings(@_, Marker => $result->Marker);
-      
-      push @{ $params->{ ReservedDBInstancesOfferings } }, @{ $result->ReservedDBInstancesOfferings };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ ReservedDBInstancesOfferings } = $result->ReservedDBInstancesOfferings;
+
+      while ($result->Marker) {
+        $result = $self->DescribeReservedDBInstancesOfferings(@_, Marker => $result->Marker);
+        push @{ $result->ReservedDBInstancesOfferings }, @{ $result->ReservedDBInstancesOfferings };
+      }
+      $self->new_with_coercions(Paws::RDS::DescribeReservedDBInstancesOfferings->_returns, %$params);
+    } else {
+      while ($result->Marker) {
+        $result = $self->DescribeReservedDBInstancesOfferings(@_, Marker => $result->Marker);
+        $callback->($_ => 'ReservedDBInstancesOfferings') foreach (@{ $result->ReservedDBInstancesOfferings });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::RDS::DescribeReservedDBInstancesOfferings->_returns, %$params);
+    return undef
   }
   sub DownloadAllDBLogFilePortions {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DownloadDBLogFilePortion(@_);
-    my $params = {};
-    
-    $params->{ LogFileData } = $result->LogFileData;
-    
 
-    
-    while ($result->AdditionalDataPending) {
-      $result = $self->DownloadDBLogFilePortion(@_, Marker => $result->Marker);
-      
-      push @{ $params->{ LogFileData } }, @{ $result->LogFileData };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ LogFileData } = $result->LogFileData;
+
+      while ($result->AdditionalDataPending) {
+        $result = $self->DownloadDBLogFilePortion(@_, Marker => $result->Marker);
+        push @{ $params->{ LogFileData } }, @{ $result->LogFileData };
+      }
+      $self->new_with_coercions(Paws::RDS::DownloadDBLogFilePortion->_returns, %$params);
+    } else {
+      while ($result->AdditionalDataPending) {
+        $result = $self->DownloadDBLogFilePortion(@_, Marker => $result->Marker);
+        $callback->($_ => 'LogFileData') foreach (@{ $result->LogFileData });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::RDS::DownloadDBLogFilePortion->_returns, %$params);
+    return undef
   }
 
 

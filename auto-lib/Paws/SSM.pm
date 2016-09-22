@@ -148,82 +148,98 @@ package Paws::SSM;
   sub ListAllAssociations {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListAssociations(@_);
-    my $params = {};
-    
-    $params->{ Associations } = $result->Associations;
-    
 
-    
-    while ($result->NextToken) {
-      $result = $self->ListAssociations(@_, NextToken => $result->NextToken);
-      
-      push @{ $params->{ Associations } }, @{ $result->Associations };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ Associations } = $result->Associations;
+
+      while ($result->NextToken) {
+        $result = $self->ListAssociations(@_, NextToken => $result->NextToken);
+        push @{ $result->Associations }, @{ $result->Associations };
+      }
+      $self->new_with_coercions(Paws::SSM::ListAssociations->_returns, %$params);
+    } else {
+      while ($result->NextToken) {
+        $result = $self->ListAssociations(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'Associations') foreach (@{ $result->Associations });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::SSM::ListAssociations->_returns, %$params);
+    return undef
   }
   sub ListAllCommandInvocations {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListCommandInvocations(@_);
-    my $params = {};
-    
-    $params->{ CommandInvocations } = $result->CommandInvocations;
-    
 
-    
-    while ($result->NextToken) {
-      $result = $self->ListCommandInvocations(@_, NextToken => $result->NextToken);
-      
-      push @{ $params->{ CommandInvocations } }, @{ $result->CommandInvocations };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ CommandInvocations } = $result->CommandInvocations;
+
+      while ($result->NextToken) {
+        $result = $self->ListCommandInvocations(@_, NextToken => $result->NextToken);
+        push @{ $result->CommandInvocations }, @{ $result->CommandInvocations };
+      }
+      $self->new_with_coercions(Paws::SSM::ListCommandInvocations->_returns, %$params);
+    } else {
+      while ($result->NextToken) {
+        $result = $self->ListCommandInvocations(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'CommandInvocations') foreach (@{ $result->CommandInvocations });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::SSM::ListCommandInvocations->_returns, %$params);
+    return undef
   }
   sub ListAllCommands {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListCommands(@_);
-    my $params = {};
-    
-    $params->{ Commands } = $result->Commands;
-    
 
-    
-    while ($result->NextToken) {
-      $result = $self->ListCommands(@_, NextToken => $result->NextToken);
-      
-      push @{ $params->{ Commands } }, @{ $result->Commands };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ Commands } = $result->Commands;
+
+      while ($result->NextToken) {
+        $result = $self->ListCommands(@_, NextToken => $result->NextToken);
+        push @{ $result->Commands }, @{ $result->Commands };
+      }
+      $self->new_with_coercions(Paws::SSM::ListCommands->_returns, %$params);
+    } else {
+      while ($result->NextToken) {
+        $result = $self->ListCommands(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'Commands') foreach (@{ $result->Commands });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::SSM::ListCommands->_returns, %$params);
+    return undef
   }
   sub ListAllDocuments {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListDocuments(@_);
-    my $params = {};
-    
-    $params->{ DocumentIdentifiers } = $result->DocumentIdentifiers;
-    
 
-    
-    while ($result->NextToken) {
-      $result = $self->ListDocuments(@_, NextToken => $result->NextToken);
-      
-      push @{ $params->{ DocumentIdentifiers } }, @{ $result->DocumentIdentifiers };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ DocumentIdentifiers } = $result->DocumentIdentifiers;
+
+      while ($result->NextToken) {
+        $result = $self->ListDocuments(@_, NextToken => $result->NextToken);
+        push @{ $result->DocumentIdentifiers }, @{ $result->DocumentIdentifiers };
+      }
+      $self->new_with_coercions(Paws::SSM::ListDocuments->_returns, %$params);
+    } else {
+      while ($result->NextToken) {
+        $result = $self->ListDocuments(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'DocumentIdentifiers') foreach (@{ $result->DocumentIdentifiers });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::SSM::ListDocuments->_returns, %$params);
+    return undef
   }
 
 

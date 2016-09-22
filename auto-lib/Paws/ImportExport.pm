@@ -65,22 +65,26 @@ package Paws::ImportExport;
   sub ListAllJobs {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListJobs(@_);
-    my $params = {};
-    
-    $params->{ Jobs } = $result->Jobs;
-    
 
-    
-    while ($result->IsTruncated) {
-      $result = $self->ListJobs(@_, Marker => $result->Jobs[-1]->JobId);
-      
-      push @{ $params->{ Jobs } }, @{ $result->Jobs };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ Jobs } = $result->Jobs;
+
+      while ($result->IsTruncated) {
+        $result = $self->ListJobs(@_, Marker => $result->Jobs[-1]->JobId);
+        push @{ $params->{ Jobs } }, @{ $result->Jobs };
+      }
+      $self->new_with_coercions(Paws::ImportExport::ListJobs->_returns, %$params);
+    } else {
+      while ($result->IsTruncated) {
+        $result = $self->ListJobs(@_, Marker => $result->Jobs[-1]->JobId);
+        $callback->($_ => 'Jobs') foreach (@{ $result->Jobs });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::ImportExport::ListJobs->_returns, %$params);
+    return undef
   }
 
 

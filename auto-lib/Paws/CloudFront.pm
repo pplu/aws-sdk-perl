@@ -176,82 +176,98 @@ package Paws::CloudFront;
   sub ListAllCloudFrontOriginAccessIdentities {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListCloudFrontOriginAccessIdentities(@_);
-    my $params = {};
-    
-    $params->{ CloudFrontOriginAccessIdentityList.Items } = $result->CloudFrontOriginAccessIdentityList->Items;
-    
 
-    
-    while ($result->CloudFrontOriginAccessIdentityList.IsTruncated) {
-      $result = $self->ListCloudFrontOriginAccessIdentities(@_, Marker => $result->CloudFrontOriginAccessIdentityList->NextMarker);
-      
-      push @{ $params->{ CloudFrontOriginAccessIdentityList.Items } }, @{ $result->CloudFrontOriginAccessIdentityList->Items };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ CloudFrontOriginAccessIdentityList.Items } = $result->CloudFrontOriginAccessIdentityList->Items;
+
+      while ($result->CloudFrontOriginAccessIdentityList.IsTruncated) {
+        $result = $self->ListCloudFrontOriginAccessIdentities(@_, Marker => $result->CloudFrontOriginAccessIdentityList->NextMarker);
+        push @{ $params->{ CloudFrontOriginAccessIdentityList.Items } }, @{ $result->CloudFrontOriginAccessIdentityList->Items };
+      }
+      $self->new_with_coercions(Paws::CloudFront::ListCloudFrontOriginAccessIdentities->_returns, %$params);
+    } else {
+      while ($result->CloudFrontOriginAccessIdentityList.IsTruncated) {
+        $result = $self->ListCloudFrontOriginAccessIdentities(@_, Marker => $result->CloudFrontOriginAccessIdentityList->NextMarker);
+        $callback->($_ => 'CloudFrontOriginAccessIdentityList.Items') foreach (@{ $result->CloudFrontOriginAccessIdentityList->Items });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::CloudFront::ListCloudFrontOriginAccessIdentities->_returns, %$params);
+    return undef
   }
   sub ListAllDistributions {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListDistributions(@_);
-    my $params = {};
-    
-    $params->{ DistributionList.Items } = $result->DistributionList->Items;
-    
 
-    
-    while ($result->DistributionList.IsTruncated) {
-      $result = $self->ListDistributions(@_, Marker => $result->DistributionList->NextMarker);
-      
-      push @{ $params->{ DistributionList.Items } }, @{ $result->DistributionList->Items };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ DistributionList.Items } = $result->DistributionList->Items;
+
+      while ($result->DistributionList.IsTruncated) {
+        $result = $self->ListDistributions(@_, Marker => $result->DistributionList->NextMarker);
+        push @{ $params->{ DistributionList.Items } }, @{ $result->DistributionList->Items };
+      }
+      $self->new_with_coercions(Paws::CloudFront::ListDistributions->_returns, %$params);
+    } else {
+      while ($result->DistributionList.IsTruncated) {
+        $result = $self->ListDistributions(@_, Marker => $result->DistributionList->NextMarker);
+        $callback->($_ => 'DistributionList.Items') foreach (@{ $result->DistributionList->Items });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::CloudFront::ListDistributions->_returns, %$params);
+    return undef
   }
   sub ListAllInvalidations {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListInvalidations(@_);
-    my $params = {};
-    
-    $params->{ InvalidationList.Items } = $result->InvalidationList->Items;
-    
 
-    
-    while ($result->InvalidationList.IsTruncated) {
-      $result = $self->ListInvalidations(@_, Marker => $result->InvalidationList->NextMarker);
-      
-      push @{ $params->{ InvalidationList.Items } }, @{ $result->InvalidationList->Items };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ InvalidationList.Items } = $result->InvalidationList->Items;
+
+      while ($result->InvalidationList.IsTruncated) {
+        $result = $self->ListInvalidations(@_, Marker => $result->InvalidationList->NextMarker);
+        push @{ $params->{ InvalidationList.Items } }, @{ $result->InvalidationList->Items };
+      }
+      $self->new_with_coercions(Paws::CloudFront::ListInvalidations->_returns, %$params);
+    } else {
+      while ($result->InvalidationList.IsTruncated) {
+        $result = $self->ListInvalidations(@_, Marker => $result->InvalidationList->NextMarker);
+        $callback->($_ => 'InvalidationList.Items') foreach (@{ $result->InvalidationList->Items });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::CloudFront::ListInvalidations->_returns, %$params);
+    return undef
   }
   sub ListAllStreamingDistributions {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListStreamingDistributions(@_);
-    my $params = {};
-    
-    $params->{ StreamingDistributionList.Items } = $result->StreamingDistributionList->Items;
-    
 
-    
-    while ($result->StreamingDistributionList.IsTruncated) {
-      $result = $self->ListStreamingDistributions(@_, Marker => $result->StreamingDistributionList->NextMarker);
-      
-      push @{ $params->{ StreamingDistributionList.Items } }, @{ $result->StreamingDistributionList->Items };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ StreamingDistributionList.Items } = $result->StreamingDistributionList->Items;
+
+      while ($result->StreamingDistributionList.IsTruncated) {
+        $result = $self->ListStreamingDistributions(@_, Marker => $result->StreamingDistributionList->NextMarker);
+        push @{ $params->{ StreamingDistributionList.Items } }, @{ $result->StreamingDistributionList->Items };
+      }
+      $self->new_with_coercions(Paws::CloudFront::ListStreamingDistributions->_returns, %$params);
+    } else {
+      while ($result->StreamingDistributionList.IsTruncated) {
+        $result = $self->ListStreamingDistributions(@_, Marker => $result->StreamingDistributionList->NextMarker);
+        $callback->($_ => 'StreamingDistributionList.Items') foreach (@{ $result->StreamingDistributionList->Items });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::CloudFront::ListStreamingDistributions->_returns, %$params);
+    return undef
   }
 
 

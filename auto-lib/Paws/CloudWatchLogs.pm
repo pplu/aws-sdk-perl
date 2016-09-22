@@ -143,126 +143,149 @@ package Paws::CloudWatchLogs;
   sub DescribeAllDestinations {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeDestinations(@_);
-    my $params = {};
-    
-    $params->{ destinations } = $result->destinations;
-    
 
-    
-    while ($result->nextToken) {
-      $result = $self->DescribeDestinations(@_, nextToken => $result->nextToken);
-      
-      push @{ $params->{ destinations } }, @{ $result->destinations };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ destinations } = $result->destinations;
+
+      while ($result->nextToken) {
+        $result = $self->DescribeDestinations(@_, nextToken => $result->nextToken);
+        push @{ $result->destinations }, @{ $result->destinations };
+      }
+      $self->new_with_coercions(Paws::CloudWatchLogs::DescribeDestinations->_returns, %$params);
+    } else {
+      while ($result->nextToken) {
+        $result = $self->DescribeDestinations(@_, nextToken => $result->nextToken);
+        $callback->($_ => 'destinations') foreach (@{ $result->destinations });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::CloudWatchLogs::DescribeDestinations->_returns, %$params);
+    return undef
   }
   sub DescribeAllLogGroups {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeLogGroups(@_);
-    my $params = {};
-    
-    $params->{ logGroups } = $result->logGroups;
-    
 
-    
-    while ($result->nextToken) {
-      $result = $self->DescribeLogGroups(@_, nextToken => $result->nextToken);
-      
-      push @{ $params->{ logGroups } }, @{ $result->logGroups };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ logGroups } = $result->logGroups;
+
+      while ($result->nextToken) {
+        $result = $self->DescribeLogGroups(@_, nextToken => $result->nextToken);
+        push @{ $result->logGroups }, @{ $result->logGroups };
+      }
+      $self->new_with_coercions(Paws::CloudWatchLogs::DescribeLogGroups->_returns, %$params);
+    } else {
+      while ($result->nextToken) {
+        $result = $self->DescribeLogGroups(@_, nextToken => $result->nextToken);
+        $callback->($_ => 'logGroups') foreach (@{ $result->logGroups });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::CloudWatchLogs::DescribeLogGroups->_returns, %$params);
+    return undef
   }
   sub DescribeAllLogStreams {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeLogStreams(@_);
-    my $params = {};
-    
-    $params->{ logStreams } = $result->logStreams;
-    
 
-    
-    while ($result->nextToken) {
-      $result = $self->DescribeLogStreams(@_, nextToken => $result->nextToken);
-      
-      push @{ $params->{ logStreams } }, @{ $result->logStreams };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ logStreams } = $result->logStreams;
+
+      while ($result->nextToken) {
+        $result = $self->DescribeLogStreams(@_, nextToken => $result->nextToken);
+        push @{ $result->logStreams }, @{ $result->logStreams };
+      }
+      $self->new_with_coercions(Paws::CloudWatchLogs::DescribeLogStreams->_returns, %$params);
+    } else {
+      while ($result->nextToken) {
+        $result = $self->DescribeLogStreams(@_, nextToken => $result->nextToken);
+        $callback->($_ => 'logStreams') foreach (@{ $result->logStreams });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::CloudWatchLogs::DescribeLogStreams->_returns, %$params);
+    return undef
   }
   sub DescribeAllMetricFilters {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeMetricFilters(@_);
-    my $params = {};
-    
-    $params->{ metricFilters } = $result->metricFilters;
-    
 
-    
-    while ($result->nextToken) {
-      $result = $self->DescribeMetricFilters(@_, nextToken => $result->nextToken);
-      
-      push @{ $params->{ metricFilters } }, @{ $result->metricFilters };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ metricFilters } = $result->metricFilters;
+
+      while ($result->nextToken) {
+        $result = $self->DescribeMetricFilters(@_, nextToken => $result->nextToken);
+        push @{ $result->metricFilters }, @{ $result->metricFilters };
+      }
+      $self->new_with_coercions(Paws::CloudWatchLogs::DescribeMetricFilters->_returns, %$params);
+    } else {
+      while ($result->nextToken) {
+        $result = $self->DescribeMetricFilters(@_, nextToken => $result->nextToken);
+        $callback->($_ => 'metricFilters') foreach (@{ $result->metricFilters });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::CloudWatchLogs::DescribeMetricFilters->_returns, %$params);
+    return undef
   }
   sub DescribeAllSubscriptionFilters {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeSubscriptionFilters(@_);
-    my $params = {};
-    
-    $params->{ subscriptionFilters } = $result->subscriptionFilters;
-    
 
-    
-    while ($result->nextToken) {
-      $result = $self->DescribeSubscriptionFilters(@_, nextToken => $result->nextToken);
-      
-      push @{ $params->{ subscriptionFilters } }, @{ $result->subscriptionFilters };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ subscriptionFilters } = $result->subscriptionFilters;
+
+      while ($result->nextToken) {
+        $result = $self->DescribeSubscriptionFilters(@_, nextToken => $result->nextToken);
+        push @{ $result->subscriptionFilters }, @{ $result->subscriptionFilters };
+      }
+      $self->new_with_coercions(Paws::CloudWatchLogs::DescribeSubscriptionFilters->_returns, %$params);
+    } else {
+      while ($result->nextToken) {
+        $result = $self->DescribeSubscriptionFilters(@_, nextToken => $result->nextToken);
+        $callback->($_ => 'subscriptionFilters') foreach (@{ $result->subscriptionFilters });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::CloudWatchLogs::DescribeSubscriptionFilters->_returns, %$params);
+    return undef
   }
   sub FilterAllLogEvents {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->FilterLogEvents(@_);
-    my $params = {};
-    
-    $params->{ events } = $result->events;
-    
-    $params->{ searchedLogStreams } = $result->searchedLogStreams;
-    
 
-    
-    while ($result->nextToken) {
-      $result = $self->FilterLogEvents(@_, nextToken => $result->nextToken);
-      
-      push @{ $params->{ events } }, @{ $result->events };
-      
-      push @{ $params->{ searchedLogStreams } }, @{ $result->searchedLogStreams };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ events } = $result->events;
+      $params->{ searchedLogStreams } = $result->searchedLogStreams;
+
+      while ($result->nextToken) {
+        $result = $self->FilterLogEvents(@_, nextToken => $result->nextToken);
+        push @{ $result->events }, @{ $result->events };
+        push @{ $result->searchedLogStreams }, @{ $result->searchedLogStreams };
+      }
+      $self->new_with_coercions(Paws::CloudWatchLogs::FilterLogEvents->_returns, %$params);
+    } else {
+      while ($result->nextToken) {
+        $result = $self->FilterLogEvents(@_, nextToken => $result->nextToken);
+        $callback->($_ => 'events') foreach (@{ $result->events });
+        $callback->($_ => 'searchedLogStreams') foreach (@{ $result->searchedLogStreams });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::CloudWatchLogs::FilterLogEvents->_returns, %$params);
+    return undef
   }
 
 

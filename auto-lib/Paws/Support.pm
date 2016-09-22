@@ -88,42 +88,50 @@ package Paws::Support;
   sub DescribeAllCases {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeCases(@_);
-    my $params = {};
-    
-    $params->{ cases } = $result->cases;
-    
 
-    
-    while ($result->nextToken) {
-      $result = $self->DescribeCases(@_, nextToken => $result->nextToken);
-      
-      push @{ $params->{ cases } }, @{ $result->cases };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ cases } = $result->cases;
+
+      while ($result->nextToken) {
+        $result = $self->DescribeCases(@_, nextToken => $result->nextToken);
+        push @{ $result->cases }, @{ $result->cases };
+      }
+      $self->new_with_coercions(Paws::Support::DescribeCases->_returns, %$params);
+    } else {
+      while ($result->nextToken) {
+        $result = $self->DescribeCases(@_, nextToken => $result->nextToken);
+        $callback->($_ => 'cases') foreach (@{ $result->cases });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::Support::DescribeCases->_returns, %$params);
+    return undef
   }
   sub DescribeAllCommunications {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeCommunications(@_);
-    my $params = {};
-    
-    $params->{ communications } = $result->communications;
-    
 
-    
-    while ($result->nextToken) {
-      $result = $self->DescribeCommunications(@_, nextToken => $result->nextToken);
-      
-      push @{ $params->{ communications } }, @{ $result->communications };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ communications } = $result->communications;
+
+      while ($result->nextToken) {
+        $result = $self->DescribeCommunications(@_, nextToken => $result->nextToken);
+        push @{ $result->communications }, @{ $result->communications };
+      }
+      $self->new_with_coercions(Paws::Support::DescribeCommunications->_returns, %$params);
+    } else {
+      while ($result->nextToken) {
+        $result = $self->DescribeCommunications(@_, nextToken => $result->nextToken);
+        $callback->($_ => 'communications') foreach (@{ $result->communications });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::Support::DescribeCommunications->_returns, %$params);
+    return undef
   }
 
 

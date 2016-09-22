@@ -85,42 +85,50 @@ package Paws::SDB;
   sub ListAllDomains {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListDomains(@_);
-    my $params = {};
-    
-    $params->{ DomainNames } = $result->DomainNames;
-    
 
-    
-    while ($result->NextToken) {
-      $result = $self->ListDomains(@_, NextToken => $result->NextToken);
-      
-      push @{ $params->{ DomainNames } }, @{ $result->DomainNames };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ DomainNames } = $result->DomainNames;
+
+      while ($result->NextToken) {
+        $result = $self->ListDomains(@_, NextToken => $result->NextToken);
+        push @{ $result->DomainNames }, @{ $result->DomainNames };
+      }
+      $self->new_with_coercions(Paws::SDB::ListDomains->_returns, %$params);
+    } else {
+      while ($result->NextToken) {
+        $result = $self->ListDomains(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'DomainNames') foreach (@{ $result->DomainNames });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::SDB::ListDomains->_returns, %$params);
+    return undef
   }
   sub SelectAll {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->Select(@_);
-    my $params = {};
-    
-    $params->{ Items } = $result->Items;
-    
 
-    
-    while ($result->NextToken) {
-      $result = $self->Select(@_, NextToken => $result->NextToken);
-      
-      push @{ $params->{ Items } }, @{ $result->Items };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ Items } = $result->Items;
+
+      while ($result->NextToken) {
+        $result = $self->Select(@_, NextToken => $result->NextToken);
+        push @{ $result->Items }, @{ $result->Items };
+      }
+      $self->new_with_coercions(Paws::SDB::Select->_returns, %$params);
+    } else {
+      while ($result->NextToken) {
+        $result = $self->Select(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'Items') foreach (@{ $result->Items });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::SDB::Select->_returns, %$params);
+    return undef
   }
 
 

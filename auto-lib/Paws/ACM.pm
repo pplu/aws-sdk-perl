@@ -63,22 +63,26 @@ package Paws::ACM;
   sub ListAllCertificates {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListCertificates(@_);
-    my $params = {};
-    
-    $params->{ CertificateSummaryList } = $result->CertificateSummaryList;
-    
 
-    
-    while ($result->NextToken) {
-      $result = $self->ListCertificates(@_, NextToken => $result->NextToken);
-      
-      push @{ $params->{ CertificateSummaryList } }, @{ $result->CertificateSummaryList };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ CertificateSummaryList } = $result->CertificateSummaryList;
+
+      while ($result->NextToken) {
+        $result = $self->ListCertificates(@_, NextToken => $result->NextToken);
+        push @{ $result->CertificateSummaryList }, @{ $result->CertificateSummaryList };
+      }
+      $self->new_with_coercions(Paws::ACM::ListCertificates->_returns, %$params);
+    } else {
+      while ($result->NextToken) {
+        $result = $self->ListCertificates(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'CertificateSummaryList') foreach (@{ $result->CertificateSummaryList });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::ACM::ListCertificates->_returns, %$params);
+    return undef
   }
 
 

@@ -50,6 +50,78 @@ package Paws::ApplicationAutoScaling;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub DescribeAllScalableTargets {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeScalableTargets(@_);
+
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ ScalableTargets } = $result->ScalableTargets;
+
+      while ($result->NextToken) {
+        $result = $self->DescribeScalableTargets(@_, NextToken => $result->NextToken);
+        push @{ $result->ScalableTargets }, @{ $result->ScalableTargets };
+      }
+      $self->new_with_coercions(Paws::ApplicationAutoScaling::DescribeScalableTargets->_returns, %$params);
+    } else {
+      while ($result->NextToken) {
+        $result = $self->DescribeScalableTargets(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'ScalableTargets') foreach (@{ $result->ScalableTargets });
+      }
+    }
+
+    return undef
+  }
+  sub DescribeAllScalingActivities {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeScalingActivities(@_);
+
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ ScalingActivities } = $result->ScalingActivities;
+
+      while ($result->NextToken) {
+        $result = $self->DescribeScalingActivities(@_, NextToken => $result->NextToken);
+        push @{ $result->ScalingActivities }, @{ $result->ScalingActivities };
+      }
+      $self->new_with_coercions(Paws::ApplicationAutoScaling::DescribeScalingActivities->_returns, %$params);
+    } else {
+      while ($result->NextToken) {
+        $result = $self->DescribeScalingActivities(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'ScalingActivities') foreach (@{ $result->ScalingActivities });
+      }
+    }
+
+    return undef
+  }
+  sub DescribeAllScalingPolicies {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeScalingPolicies(@_);
+
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ ScalingPolicies } = $result->ScalingPolicies;
+
+      while ($result->NextToken) {
+        $result = $self->DescribeScalingPolicies(@_, NextToken => $result->NextToken);
+        push @{ $result->ScalingPolicies }, @{ $result->ScalingPolicies };
+      }
+      $self->new_with_coercions(Paws::ApplicationAutoScaling::DescribeScalingPolicies->_returns, %$params);
+    } else {
+      while ($result->NextToken) {
+        $result = $self->DescribeScalingPolicies(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'ScalingPolicies') foreach (@{ $result->ScalingPolicies });
+      }
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/DeleteScalingPolicy DeregisterScalableTarget DescribeScalableTargets DescribeScalingActivities DescribeScalingPolicies PutScalingPolicy RegisterScalableTarget / }

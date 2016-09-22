@@ -233,222 +233,266 @@ package Paws::DeviceFarm;
   sub ListAllArtifacts {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListArtifacts(@_);
-    my $params = {};
-    
-    $params->{ artifacts } = $result->artifacts;
-    
 
-    
-    while ($result->nextToken) {
-      $result = $self->ListArtifacts(@_, nextToken => $result->nextToken);
-      
-      push @{ $params->{ artifacts } }, @{ $result->artifacts };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ artifacts } = $result->artifacts;
+
+      while ($result->nextToken) {
+        $result = $self->ListArtifacts(@_, nextToken => $result->nextToken);
+        push @{ $result->artifacts }, @{ $result->artifacts };
+      }
+      $self->new_with_coercions(Paws::DeviceFarm::ListArtifacts->_returns, %$params);
+    } else {
+      while ($result->nextToken) {
+        $result = $self->ListArtifacts(@_, nextToken => $result->nextToken);
+        $callback->($_ => 'artifacts') foreach (@{ $result->artifacts });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::DeviceFarm::ListArtifacts->_returns, %$params);
+    return undef
   }
   sub ListAllDevicePools {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListDevicePools(@_);
-    my $params = {};
-    
-    $params->{ devicePools } = $result->devicePools;
-    
 
-    
-    while ($result->nextToken) {
-      $result = $self->ListDevicePools(@_, nextToken => $result->nextToken);
-      
-      push @{ $params->{ devicePools } }, @{ $result->devicePools };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ devicePools } = $result->devicePools;
+
+      while ($result->nextToken) {
+        $result = $self->ListDevicePools(@_, nextToken => $result->nextToken);
+        push @{ $result->devicePools }, @{ $result->devicePools };
+      }
+      $self->new_with_coercions(Paws::DeviceFarm::ListDevicePools->_returns, %$params);
+    } else {
+      while ($result->nextToken) {
+        $result = $self->ListDevicePools(@_, nextToken => $result->nextToken);
+        $callback->($_ => 'devicePools') foreach (@{ $result->devicePools });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::DeviceFarm::ListDevicePools->_returns, %$params);
+    return undef
   }
   sub ListAllDevices {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListDevices(@_);
-    my $params = {};
-    
-    $params->{ devices } = $result->devices;
-    
 
-    
-    while ($result->nextToken) {
-      $result = $self->ListDevices(@_, nextToken => $result->nextToken);
-      
-      push @{ $params->{ devices } }, @{ $result->devices };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ devices } = $result->devices;
+
+      while ($result->nextToken) {
+        $result = $self->ListDevices(@_, nextToken => $result->nextToken);
+        push @{ $result->devices }, @{ $result->devices };
+      }
+      $self->new_with_coercions(Paws::DeviceFarm::ListDevices->_returns, %$params);
+    } else {
+      while ($result->nextToken) {
+        $result = $self->ListDevices(@_, nextToken => $result->nextToken);
+        $callback->($_ => 'devices') foreach (@{ $result->devices });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::DeviceFarm::ListDevices->_returns, %$params);
+    return undef
   }
   sub ListAllJobs {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListJobs(@_);
-    my $params = {};
-    
-    $params->{ jobs } = $result->jobs;
-    
 
-    
-    while ($result->nextToken) {
-      $result = $self->ListJobs(@_, nextToken => $result->nextToken);
-      
-      push @{ $params->{ jobs } }, @{ $result->jobs };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ jobs } = $result->jobs;
+
+      while ($result->nextToken) {
+        $result = $self->ListJobs(@_, nextToken => $result->nextToken);
+        push @{ $result->jobs }, @{ $result->jobs };
+      }
+      $self->new_with_coercions(Paws::DeviceFarm::ListJobs->_returns, %$params);
+    } else {
+      while ($result->nextToken) {
+        $result = $self->ListJobs(@_, nextToken => $result->nextToken);
+        $callback->($_ => 'jobs') foreach (@{ $result->jobs });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::DeviceFarm::ListJobs->_returns, %$params);
+    return undef
   }
   sub ListAllProjects {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListProjects(@_);
-    my $params = {};
-    
-    $params->{ projects } = $result->projects;
-    
 
-    
-    while ($result->nextToken) {
-      $result = $self->ListProjects(@_, nextToken => $result->nextToken);
-      
-      push @{ $params->{ projects } }, @{ $result->projects };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ projects } = $result->projects;
+
+      while ($result->nextToken) {
+        $result = $self->ListProjects(@_, nextToken => $result->nextToken);
+        push @{ $result->projects }, @{ $result->projects };
+      }
+      $self->new_with_coercions(Paws::DeviceFarm::ListProjects->_returns, %$params);
+    } else {
+      while ($result->nextToken) {
+        $result = $self->ListProjects(@_, nextToken => $result->nextToken);
+        $callback->($_ => 'projects') foreach (@{ $result->projects });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::DeviceFarm::ListProjects->_returns, %$params);
+    return undef
   }
   sub ListAllRuns {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListRuns(@_);
-    my $params = {};
-    
-    $params->{ runs } = $result->runs;
-    
 
-    
-    while ($result->nextToken) {
-      $result = $self->ListRuns(@_, nextToken => $result->nextToken);
-      
-      push @{ $params->{ runs } }, @{ $result->runs };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ runs } = $result->runs;
+
+      while ($result->nextToken) {
+        $result = $self->ListRuns(@_, nextToken => $result->nextToken);
+        push @{ $result->runs }, @{ $result->runs };
+      }
+      $self->new_with_coercions(Paws::DeviceFarm::ListRuns->_returns, %$params);
+    } else {
+      while ($result->nextToken) {
+        $result = $self->ListRuns(@_, nextToken => $result->nextToken);
+        $callback->($_ => 'runs') foreach (@{ $result->runs });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::DeviceFarm::ListRuns->_returns, %$params);
+    return undef
   }
   sub ListAllSamples {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListSamples(@_);
-    my $params = {};
-    
-    $params->{ samples } = $result->samples;
-    
 
-    
-    while ($result->nextToken) {
-      $result = $self->ListSamples(@_, nextToken => $result->nextToken);
-      
-      push @{ $params->{ samples } }, @{ $result->samples };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ samples } = $result->samples;
+
+      while ($result->nextToken) {
+        $result = $self->ListSamples(@_, nextToken => $result->nextToken);
+        push @{ $result->samples }, @{ $result->samples };
+      }
+      $self->new_with_coercions(Paws::DeviceFarm::ListSamples->_returns, %$params);
+    } else {
+      while ($result->nextToken) {
+        $result = $self->ListSamples(@_, nextToken => $result->nextToken);
+        $callback->($_ => 'samples') foreach (@{ $result->samples });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::DeviceFarm::ListSamples->_returns, %$params);
+    return undef
   }
   sub ListAllSuites {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListSuites(@_);
-    my $params = {};
-    
-    $params->{ suites } = $result->suites;
-    
 
-    
-    while ($result->nextToken) {
-      $result = $self->ListSuites(@_, nextToken => $result->nextToken);
-      
-      push @{ $params->{ suites } }, @{ $result->suites };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ suites } = $result->suites;
+
+      while ($result->nextToken) {
+        $result = $self->ListSuites(@_, nextToken => $result->nextToken);
+        push @{ $result->suites }, @{ $result->suites };
+      }
+      $self->new_with_coercions(Paws::DeviceFarm::ListSuites->_returns, %$params);
+    } else {
+      while ($result->nextToken) {
+        $result = $self->ListSuites(@_, nextToken => $result->nextToken);
+        $callback->($_ => 'suites') foreach (@{ $result->suites });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::DeviceFarm::ListSuites->_returns, %$params);
+    return undef
   }
   sub ListAllTests {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListTests(@_);
-    my $params = {};
-    
-    $params->{ tests } = $result->tests;
-    
 
-    
-    while ($result->nextToken) {
-      $result = $self->ListTests(@_, nextToken => $result->nextToken);
-      
-      push @{ $params->{ tests } }, @{ $result->tests };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ tests } = $result->tests;
+
+      while ($result->nextToken) {
+        $result = $self->ListTests(@_, nextToken => $result->nextToken);
+        push @{ $result->tests }, @{ $result->tests };
+      }
+      $self->new_with_coercions(Paws::DeviceFarm::ListTests->_returns, %$params);
+    } else {
+      while ($result->nextToken) {
+        $result = $self->ListTests(@_, nextToken => $result->nextToken);
+        $callback->($_ => 'tests') foreach (@{ $result->tests });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::DeviceFarm::ListTests->_returns, %$params);
+    return undef
   }
   sub ListAllUniqueProblems {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListUniqueProblems(@_);
-    my $params = {};
-    
-    $params->{ uniqueProblems } = $result->uniqueProblems;
-    
 
-    
-    while ($result->nextToken) {
-      $result = $self->ListUniqueProblems(@_, nextToken => $result->nextToken);
-      
-      push @{ $params->{ uniqueProblems } }, @{ $result->uniqueProblems };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ uniqueProblems } = $result->uniqueProblems;
+
+      while ($result->nextToken) {
+        $result = $self->ListUniqueProblems(@_, nextToken => $result->nextToken);
+        push @{ $result->uniqueProblems }, @{ $result->uniqueProblems };
+      }
+      $self->new_with_coercions(Paws::DeviceFarm::ListUniqueProblems->_returns, %$params);
+    } else {
+      while ($result->nextToken) {
+        $result = $self->ListUniqueProblems(@_, nextToken => $result->nextToken);
+        $callback->($_ => 'uniqueProblems') foreach (@{ $result->uniqueProblems });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::DeviceFarm::ListUniqueProblems->_returns, %$params);
+    return undef
   }
   sub ListAllUploads {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListUploads(@_);
-    my $params = {};
-    
-    $params->{ uploads } = $result->uploads;
-    
 
-    
-    while ($result->nextToken) {
-      $result = $self->ListUploads(@_, nextToken => $result->nextToken);
-      
-      push @{ $params->{ uploads } }, @{ $result->uploads };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ uploads } = $result->uploads;
+
+      while ($result->nextToken) {
+        $result = $self->ListUploads(@_, nextToken => $result->nextToken);
+        push @{ $result->uploads }, @{ $result->uploads };
+      }
+      $self->new_with_coercions(Paws::DeviceFarm::ListUploads->_returns, %$params);
+    } else {
+      while ($result->nextToken) {
+        $result = $self->ListUploads(@_, nextToken => $result->nextToken);
+        $callback->($_ => 'uploads') foreach (@{ $result->uploads });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::DeviceFarm::ListUploads->_returns, %$params);
+    return undef
   }
 
 

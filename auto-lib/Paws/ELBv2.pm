@@ -162,62 +162,74 @@ package Paws::ELBv2;
   sub DescribeAllListeners {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeListeners(@_);
-    my $params = {};
-    
-    $params->{ Listeners } = $result->Listeners;
-    
 
-    
-    while ($result->Marker) {
-      $result = $self->DescribeListeners(@_, Marker => $result->NextMarker);
-      
-      push @{ $params->{ Listeners } }, @{ $result->Listeners };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ Listeners } = $result->Listeners;
+
+      while ($result->Marker) {
+        $result = $self->DescribeListeners(@_, Marker => $result->NextMarker);
+        push @{ $result->Listeners }, @{ $result->Listeners };
+      }
+      $self->new_with_coercions(Paws::ELBv2::DescribeListeners->_returns, %$params);
+    } else {
+      while ($result->Marker) {
+        $result = $self->DescribeListeners(@_, Marker => $result->NextMarker);
+        $callback->($_ => 'Listeners') foreach (@{ $result->Listeners });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::ELBv2::DescribeListeners->_returns, %$params);
+    return undef
   }
   sub DescribeAllLoadBalancers {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeLoadBalancers(@_);
-    my $params = {};
-    
-    $params->{ LoadBalancers } = $result->LoadBalancers;
-    
 
-    
-    while ($result->Marker) {
-      $result = $self->DescribeLoadBalancers(@_, Marker => $result->NextMarker);
-      
-      push @{ $params->{ LoadBalancers } }, @{ $result->LoadBalancers };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ LoadBalancers } = $result->LoadBalancers;
+
+      while ($result->Marker) {
+        $result = $self->DescribeLoadBalancers(@_, Marker => $result->NextMarker);
+        push @{ $result->LoadBalancers }, @{ $result->LoadBalancers };
+      }
+      $self->new_with_coercions(Paws::ELBv2::DescribeLoadBalancers->_returns, %$params);
+    } else {
+      while ($result->Marker) {
+        $result = $self->DescribeLoadBalancers(@_, Marker => $result->NextMarker);
+        $callback->($_ => 'LoadBalancers') foreach (@{ $result->LoadBalancers });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::ELBv2::DescribeLoadBalancers->_returns, %$params);
+    return undef
   }
   sub DescribeAllTargetGroups {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeTargetGroups(@_);
-    my $params = {};
-    
-    $params->{ TargetGroups } = $result->TargetGroups;
-    
 
-    
-    while ($result->Marker) {
-      $result = $self->DescribeTargetGroups(@_, Marker => $result->NextMarker);
-      
-      push @{ $params->{ TargetGroups } }, @{ $result->TargetGroups };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ TargetGroups } = $result->TargetGroups;
+
+      while ($result->Marker) {
+        $result = $self->DescribeTargetGroups(@_, Marker => $result->NextMarker);
+        push @{ $result->TargetGroups }, @{ $result->TargetGroups };
+      }
+      $self->new_with_coercions(Paws::ELBv2::DescribeTargetGroups->_returns, %$params);
+    } else {
+      while ($result->Marker) {
+        $result = $self->DescribeTargetGroups(@_, Marker => $result->NextMarker);
+        $callback->($_ => 'TargetGroups') foreach (@{ $result->TargetGroups });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::ELBv2::DescribeTargetGroups->_returns, %$params);
+    return undef
   }
 
 

@@ -103,42 +103,50 @@ package Paws::Kinesis;
   sub DescribeAllStream {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeStream(@_);
-    my $params = {};
-    
-    $params->{ StreamDescription.Shards } = $result->StreamDescription->Shards;
-    
 
-    
-    while ($result->StreamDescription.HasMoreShards) {
-      $result = $self->DescribeStream(@_, ExclusiveStartShardId => $result->StreamDescription->Shards[-1]->ShardId);
-      
-      push @{ $params->{ StreamDescription.Shards } }, @{ $result->StreamDescription->Shards };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ StreamDescription.Shards } = $result->StreamDescription->Shards;
+
+      while ($result->StreamDescription.HasMoreShards) {
+        $result = $self->DescribeStream(@_, ExclusiveStartShardId => $result->StreamDescription->Shards[-1]->ShardId);
+        push @{ $params->{ StreamDescription.Shards } }, @{ $result->StreamDescription->Shards };
+      }
+      $self->new_with_coercions(Paws::Kinesis::DescribeStream->_returns, %$params);
+    } else {
+      while ($result->StreamDescription.HasMoreShards) {
+        $result = $self->DescribeStream(@_, ExclusiveStartShardId => $result->StreamDescription->Shards[-1]->ShardId);
+        $callback->($_ => 'StreamDescription.Shards') foreach (@{ $result->StreamDescription->Shards });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::Kinesis::DescribeStream->_returns, %$params);
+    return undef
   }
   sub ListAllStreams {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListStreams(@_);
-    my $params = {};
-    
-    $params->{ StreamNames } = $result->StreamNames;
-    
 
-    
-    while ($result->HasMoreStreams) {
-      $result = $self->ListStreams(@_, ExclusiveStartStreamName => $result->StreamNames[-1]);
-      
-      push @{ $params->{ StreamNames } }, @{ $result->StreamNames };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ StreamNames } = $result->StreamNames;
+
+      while ($result->HasMoreStreams) {
+        $result = $self->ListStreams(@_, ExclusiveStartStreamName => $result->StreamNames[-1]);
+        push @{ $params->{ StreamNames } }, @{ $result->StreamNames };
+      }
+      $self->new_with_coercions(Paws::Kinesis::ListStreams->_returns, %$params);
+    } else {
+      while ($result->HasMoreStreams) {
+        $result = $self->ListStreams(@_, ExclusiveStartStreamName => $result->StreamNames[-1]);
+        $callback->($_ => 'StreamNames') foreach (@{ $result->StreamNames });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::Kinesis::ListStreams->_returns, %$params);
+    return undef
   }
 
 

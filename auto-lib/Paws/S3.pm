@@ -388,122 +388,137 @@ package Paws::S3;
   sub ListAllMultipartUploads {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListMultipartUploads(@_);
-    my $params = {};
-    
-    $params->{ Uploads } = $result->Uploads;
-    
-    $params->{ CommonPrefixes } = $result->CommonPrefixes;
-    
 
-    
-    while ($result->IsTruncated) {
-      $result = $self->ListMultipartUploads(@_, KeyMarker => $result->NextKeyMarker, UploadIdMarker => $result->NextUploadIdMarker);
-      
-      push @{ $params->{ Uploads } }, @{ $result->Uploads };
-      
-      push @{ $params->{ CommonPrefixes } }, @{ $result->CommonPrefixes };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ Uploads } = $result->Uploads;
+      $params->{ CommonPrefixes } = $result->CommonPrefixes;
+
+      while ($result->IsTruncated) {
+        $result = $self->ListMultipartUploads(@_, KeyMarker => $result->NextKeyMarker, UploadIdMarker => $result->NextUploadIdMarker);
+        push @{ $params->{ Uploads } }, @{ $result->Uploads };
+        push @{ $params->{ CommonPrefixes } }, @{ $result->CommonPrefixes };
+      }
+      $self->new_with_coercions(Paws::S3::ListMultipartUploads->_returns, %$params);
+    } else {
+      while ($result->IsTruncated) {
+        $result = $self->ListMultipartUploads(@_, KeyMarker => $result->NextKeyMarker, UploadIdMarker => $result->NextUploadIdMarker);
+        $callback->($_ => 'Uploads') foreach (@{ $result->Uploads });
+        $callback->($_ => 'CommonPrefixes') foreach (@{ $result->CommonPrefixes });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::S3::ListMultipartUploads->_returns, %$params);
+    return undef
   }
   sub ListAllObjects {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListObjects(@_);
-    my $params = {};
-    
-    $params->{ Contents } = $result->Contents;
-    
-    $params->{ CommonPrefixes } = $result->CommonPrefixes;
-    
 
-    
-    while ($result->IsTruncated) {
-      $result = $self->ListObjects(@_, Marker => $result->NextMarker || ( (defined $result->Contents->[-1]) ? $result->Contents->[-1]->Key : undef ));
-      
-      push @{ $params->{ Contents } }, @{ $result->Contents };
-      
-      push @{ $params->{ CommonPrefixes } }, @{ $result->CommonPrefixes };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ Contents } = $result->Contents;
+      $params->{ CommonPrefixes } = $result->CommonPrefixes;
+
+      while ($result->IsTruncated) {
+        $result = $self->ListObjects(@_, Marker => $result->NextMarker || ( (defined $result->Contents->[-1]) ? $result->Contents->[-1]->Key : undef ));
+        push @{ $params->{ Contents } }, @{ $result->Contents };
+        push @{ $params->{ CommonPrefixes } }, @{ $result->CommonPrefixes };
+      }
+      $self->new_with_coercions(Paws::S3::ListObjects->_returns, %$params);
+    } else {
+      while ($result->IsTruncated) {
+        $result = $self->ListObjects(@_, Marker => $result->NextMarker || ( (defined $result->Contents->[-1]) ? $result->Contents->[-1]->Key : undef ));
+        $callback->($_ => 'Contents') foreach (@{ $result->Contents });
+        $callback->($_ => 'CommonPrefixes') foreach (@{ $result->CommonPrefixes });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::S3::ListObjects->_returns, %$params);
+    return undef
   }
   sub ListAllObjectsV2 {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListObjectsV2(@_);
-    my $params = {};
-    
-    $params->{ Contents } = $result->Contents;
-    
-    $params->{ CommonPrefixes } = $result->CommonPrefixes;
-    
 
-    
-    while ($result->IsTruncated) {
-      $result = $self->ListObjectsV2(@_, ContinuationToken => $result->NextContinuationToken);
-      
-      push @{ $params->{ Contents } }, @{ $result->Contents };
-      
-      push @{ $params->{ CommonPrefixes } }, @{ $result->CommonPrefixes };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ Contents } = $result->Contents;
+      $params->{ CommonPrefixes } = $result->CommonPrefixes;
+
+      while ($result->IsTruncated) {
+        $result = $self->ListObjectsV2(@_, ContinuationToken => $result->NextContinuationToken);
+        push @{ $params->{ Contents } }, @{ $result->Contents };
+        push @{ $params->{ CommonPrefixes } }, @{ $result->CommonPrefixes };
+      }
+      $self->new_with_coercions(Paws::S3::ListObjectsV2->_returns, %$params);
+    } else {
+      while ($result->IsTruncated) {
+        $result = $self->ListObjectsV2(@_, ContinuationToken => $result->NextContinuationToken);
+        $callback->($_ => 'Contents') foreach (@{ $result->Contents });
+        $callback->($_ => 'CommonPrefixes') foreach (@{ $result->CommonPrefixes });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::S3::ListObjectsV2->_returns, %$params);
+    return undef
   }
   sub ListAllObjectVersions {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListObjectVersions(@_);
-    my $params = {};
-    
-    $params->{ Versions } = $result->Versions;
-    
-    $params->{ DeleteMarkers } = $result->DeleteMarkers;
-    
-    $params->{ CommonPrefixes } = $result->CommonPrefixes;
-    
 
-    
-    while ($result->IsTruncated) {
-      $result = $self->ListObjectVersions(@_, KeyMarker => $result->NextKeyMarker, VersionIdMarker => $result->NextVersionIdMarker);
-      
-      push @{ $params->{ Versions } }, @{ $result->Versions };
-      
-      push @{ $params->{ DeleteMarkers } }, @{ $result->DeleteMarkers };
-      
-      push @{ $params->{ CommonPrefixes } }, @{ $result->CommonPrefixes };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ Versions } = $result->Versions;
+      $params->{ DeleteMarkers } = $result->DeleteMarkers;
+      $params->{ CommonPrefixes } = $result->CommonPrefixes;
+
+      while ($result->IsTruncated) {
+        $result = $self->ListObjectVersions(@_, KeyMarker => $result->NextKeyMarker, VersionIdMarker => $result->NextVersionIdMarker);
+        push @{ $params->{ Versions } }, @{ $result->Versions };
+        push @{ $params->{ DeleteMarkers } }, @{ $result->DeleteMarkers };
+        push @{ $params->{ CommonPrefixes } }, @{ $result->CommonPrefixes };
+      }
+      $self->new_with_coercions(Paws::S3::ListObjectVersions->_returns, %$params);
+    } else {
+      while ($result->IsTruncated) {
+        $result = $self->ListObjectVersions(@_, KeyMarker => $result->NextKeyMarker, VersionIdMarker => $result->NextVersionIdMarker);
+        $callback->($_ => 'Versions') foreach (@{ $result->Versions });
+        $callback->($_ => 'DeleteMarkers') foreach (@{ $result->DeleteMarkers });
+        $callback->($_ => 'CommonPrefixes') foreach (@{ $result->CommonPrefixes });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::S3::ListObjectVersions->_returns, %$params);
+    return undef
   }
   sub ListAllParts {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListParts(@_);
-    my $params = {};
-    
-    $params->{ Parts } = $result->Parts;
-    
 
-    
-    while ($result->IsTruncated) {
-      $result = $self->ListParts(@_, PartNumberMarker => $result->NextPartNumberMarker);
-      
-      push @{ $params->{ Parts } }, @{ $result->Parts };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ Parts } = $result->Parts;
+
+      while ($result->IsTruncated) {
+        $result = $self->ListParts(@_, PartNumberMarker => $result->NextPartNumberMarker);
+        push @{ $params->{ Parts } }, @{ $result->Parts };
+      }
+      $self->new_with_coercions(Paws::S3::ListParts->_returns, %$params);
+    } else {
+      while ($result->IsTruncated) {
+        $result = $self->ListParts(@_, PartNumberMarker => $result->NextPartNumberMarker);
+        $callback->($_ => 'Parts') foreach (@{ $result->Parts });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::S3::ListParts->_returns, %$params);
+    return undef
   }
 
 

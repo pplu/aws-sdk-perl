@@ -98,22 +98,26 @@ package Paws::ECR;
   sub ListAllImages {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListImages(@_);
-    my $params = {};
-    
-    $params->{ imageIds } = $result->imageIds;
-    
 
-    
-    while ($result->nextToken) {
-      $result = $self->ListImages(@_, nextToken => $result->nextToken);
-      
-      push @{ $params->{ imageIds } }, @{ $result->imageIds };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ imageIds } = $result->imageIds;
+
+      while ($result->nextToken) {
+        $result = $self->ListImages(@_, nextToken => $result->nextToken);
+        push @{ $result->imageIds }, @{ $result->imageIds };
+      }
+      $self->new_with_coercions(Paws::ECR::ListImages->_returns, %$params);
+    } else {
+      while ($result->nextToken) {
+        $result = $self->ListImages(@_, nextToken => $result->nextToken);
+        $callback->($_ => 'imageIds') foreach (@{ $result->imageIds });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::ECR::ListImages->_returns, %$params);
+    return undef
   }
 
 

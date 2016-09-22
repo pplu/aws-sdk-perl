@@ -1002,29 +1002,50 @@ package [% inner_class %];
     [%- paginator = c.paginators_struct.$op %]
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->[% op %](@_);
-    my $params = {};
-    [% FOREACH param = c.paginator_result_key(paginator) %]
-    $params->{ [% param %] } = [% c.paginator_accessor(param) %];
-    [% END %]
 
-    [% IF (paginator.more_results.defined) %]
-    while ($result->[% paginator.more_results %]) {
-      $result = $self->[% op %](@_, [% c.paginator_pass_params(paginator) %]);
-      [% FOREACH param = c.paginator_result_key(paginator) %]
-      push @{ $params->{ [% param %] } }, @{ [% c.paginator_accessor(param) %] };
-      [% END %]
-    }
-    [% ELSE %]
-    while ($result->[% paginator.input_token %]) {
-      $result = $self->[% op %](@_, [% c.paginator_pass_params(paginator) %]);
-      [% FOREACH param = c.paginator_result_key(paginator) %]
-      push @{ $params->{ [% param %] } }, @{ [% c.paginator_accessor(param) %] };
-      [% END %]
-    }
-    [% END %]
+    if (not defined $callback) {
+      my $params = {};
+      [%- FOREACH param = c.paginator_result_key(paginator) %]
+      $params->{ [% param %] } = [% c.paginator_accessor(param) %];
+      [%- END %]
 
-    return $self->new_with_coercions([% c.api %]::[% op %]->_returns, %$params);
+      [%- IF (paginator.more_results.defined) %]
+      while ($result->[% paginator.more_results %]) {
+        $result = $self->[% op %](@_, [% c.paginator_pass_params(paginator) %]);
+        [%- FOREACH param = c.paginator_result_key(paginator) %]
+        push @{ $params->{ [% param %] } }, @{ [% c.paginator_accessor(param) %] };
+        [%- END %]
+      }
+      [%- ELSE %]
+      while ($result->[% paginator.input_token %]) {
+        $result = $self->[% op %](@_, [% c.paginator_pass_params(paginator) %]);
+        [%- FOREACH param = c.paginator_result_key(paginator) %]
+        push @{ [% c.paginator_accessor(param) %] }, @{ [% c.paginator_accessor(param) %] };
+        [%- END %]
+      }
+      [%- END %]
+      $self->new_with_coercions([% c.api %]::[% op %]->_returns, %$params);
+    } else {
+      [%- IF (paginator.more_results.defined) %]
+      while ($result->[% paginator.more_results %]) {
+        $result = $self->[% op %](@_, [% c.paginator_pass_params(paginator) %]);
+        [%- FOREACH param = c.paginator_result_key(paginator) %]
+        $callback->($_ => '[% param %]') foreach (@{ [% c.paginator_accessor(param) %] });
+        [%- END %]
+      }
+      [%- ELSE %]
+      while ($result->[% paginator.input_token %]) {
+        $result = $self->[% op %](@_, [% c.paginator_pass_params(paginator) %]);
+        [%- FOREACH param = c.paginator_result_key(paginator) %]
+        $callback->($_ => '[% param %]') foreach (@{ [% c.paginator_accessor(param) %] });
+        [%- END %]
+      }
+      [%- END %]
+    }
+
+    return undef
   }
   [%- END %]
 #);

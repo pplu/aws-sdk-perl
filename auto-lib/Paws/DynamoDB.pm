@@ -114,78 +114,86 @@ package Paws::DynamoDB;
   sub ListAllTables {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListTables(@_);
-    my $params = {};
-    
-    $params->{ TableNames } = $result->TableNames;
-    
 
-    
-    while ($result->ExclusiveStartTableName) {
-      $result = $self->ListTables(@_, ExclusiveStartTableName => $result->LastEvaluatedTableName);
-      
-      push @{ $params->{ TableNames } }, @{ $result->TableNames };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ TableNames } = $result->TableNames;
+
+      while ($result->ExclusiveStartTableName) {
+        $result = $self->ListTables(@_, ExclusiveStartTableName => $result->LastEvaluatedTableName);
+        push @{ $result->TableNames }, @{ $result->TableNames };
+      }
+      $self->new_with_coercions(Paws::DynamoDB::ListTables->_returns, %$params);
+    } else {
+      while ($result->ExclusiveStartTableName) {
+        $result = $self->ListTables(@_, ExclusiveStartTableName => $result->LastEvaluatedTableName);
+        $callback->($_ => 'TableNames') foreach (@{ $result->TableNames });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::DynamoDB::ListTables->_returns, %$params);
+    return undef
   }
   sub QueryAll {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->Query(@_);
-    my $params = {};
-    
-    $params->{ Items } = $result->Items;
-    
-    $params->{ Count } = $result->Count;
-    
-    $params->{ ScannedCount } = $result->ScannedCount;
-    
 
-    
-    while ($result->ExclusiveStartKey) {
-      $result = $self->Query(@_, ExclusiveStartKey => $result->LastEvaluatedKey);
-      
-      push @{ $params->{ Items } }, @{ $result->Items };
-      
-      push @{ $params->{ Count } }, @{ $result->Count };
-      
-      push @{ $params->{ ScannedCount } }, @{ $result->ScannedCount };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ Items } = $result->Items;
+      $params->{ Count } = $result->Count;
+      $params->{ ScannedCount } = $result->ScannedCount;
+
+      while ($result->ExclusiveStartKey) {
+        $result = $self->Query(@_, ExclusiveStartKey => $result->LastEvaluatedKey);
+        push @{ $result->Items }, @{ $result->Items };
+        push @{ $result->Count }, @{ $result->Count };
+        push @{ $result->ScannedCount }, @{ $result->ScannedCount };
+      }
+      $self->new_with_coercions(Paws::DynamoDB::Query->_returns, %$params);
+    } else {
+      while ($result->ExclusiveStartKey) {
+        $result = $self->Query(@_, ExclusiveStartKey => $result->LastEvaluatedKey);
+        $callback->($_ => 'Items') foreach (@{ $result->Items });
+        $callback->($_ => 'Count') foreach (@{ $result->Count });
+        $callback->($_ => 'ScannedCount') foreach (@{ $result->ScannedCount });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::DynamoDB::Query->_returns, %$params);
+    return undef
   }
   sub ScanAll {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->Scan(@_);
-    my $params = {};
-    
-    $params->{ Items } = $result->Items;
-    
-    $params->{ Count } = $result->Count;
-    
-    $params->{ ScannedCount } = $result->ScannedCount;
-    
 
-    
-    while ($result->ExclusiveStartKey) {
-      $result = $self->Scan(@_, ExclusiveStartKey => $result->LastEvaluatedKey);
-      
-      push @{ $params->{ Items } }, @{ $result->Items };
-      
-      push @{ $params->{ Count } }, @{ $result->Count };
-      
-      push @{ $params->{ ScannedCount } }, @{ $result->ScannedCount };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ Items } = $result->Items;
+      $params->{ Count } = $result->Count;
+      $params->{ ScannedCount } = $result->ScannedCount;
+
+      while ($result->ExclusiveStartKey) {
+        $result = $self->Scan(@_, ExclusiveStartKey => $result->LastEvaluatedKey);
+        push @{ $result->Items }, @{ $result->Items };
+        push @{ $result->Count }, @{ $result->Count };
+        push @{ $result->ScannedCount }, @{ $result->ScannedCount };
+      }
+      $self->new_with_coercions(Paws::DynamoDB::Scan->_returns, %$params);
+    } else {
+      while ($result->ExclusiveStartKey) {
+        $result = $self->Scan(@_, ExclusiveStartKey => $result->LastEvaluatedKey);
+        $callback->($_ => 'Items') foreach (@{ $result->Items });
+        $callback->($_ => 'Count') foreach (@{ $result->Count });
+        $callback->($_ => 'ScannedCount') foreach (@{ $result->ScannedCount });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::DynamoDB::Scan->_returns, %$params);
+    return undef
   }
 
 

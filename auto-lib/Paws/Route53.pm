@@ -288,62 +288,74 @@ package Paws::Route53;
   sub ListAllHealthChecks {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListHealthChecks(@_);
-    my $params = {};
-    
-    $params->{ HealthChecks } = $result->HealthChecks;
-    
 
-    
-    while ($result->IsTruncated) {
-      $result = $self->ListHealthChecks(@_, Marker => $result->NextMarker);
-      
-      push @{ $params->{ HealthChecks } }, @{ $result->HealthChecks };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ HealthChecks } = $result->HealthChecks;
+
+      while ($result->IsTruncated) {
+        $result = $self->ListHealthChecks(@_, Marker => $result->NextMarker);
+        push @{ $params->{ HealthChecks } }, @{ $result->HealthChecks };
+      }
+      $self->new_with_coercions(Paws::Route53::ListHealthChecks->_returns, %$params);
+    } else {
+      while ($result->IsTruncated) {
+        $result = $self->ListHealthChecks(@_, Marker => $result->NextMarker);
+        $callback->($_ => 'HealthChecks') foreach (@{ $result->HealthChecks });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::Route53::ListHealthChecks->_returns, %$params);
+    return undef
   }
   sub ListAllHostedZones {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListHostedZones(@_);
-    my $params = {};
-    
-    $params->{ HostedZones } = $result->HostedZones;
-    
 
-    
-    while ($result->IsTruncated) {
-      $result = $self->ListHostedZones(@_, Marker => $result->NextMarker);
-      
-      push @{ $params->{ HostedZones } }, @{ $result->HostedZones };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ HostedZones } = $result->HostedZones;
+
+      while ($result->IsTruncated) {
+        $result = $self->ListHostedZones(@_, Marker => $result->NextMarker);
+        push @{ $params->{ HostedZones } }, @{ $result->HostedZones };
+      }
+      $self->new_with_coercions(Paws::Route53::ListHostedZones->_returns, %$params);
+    } else {
+      while ($result->IsTruncated) {
+        $result = $self->ListHostedZones(@_, Marker => $result->NextMarker);
+        $callback->($_ => 'HostedZones') foreach (@{ $result->HostedZones });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::Route53::ListHostedZones->_returns, %$params);
+    return undef
   }
   sub ListAllResourceRecordSets {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListResourceRecordSets(@_);
-    my $params = {};
-    
-    $params->{ ResourceRecordSets } = $result->ResourceRecordSets;
-    
 
-    
-    while ($result->IsTruncated) {
-      $result = $self->ListResourceRecordSets(@_, StartRecordName => $result->NextRecordName, StartRecordType => $result->NextRecordType, StartRecordIdentifier => $result->NextRecordIdentifier);
-      
-      push @{ $params->{ ResourceRecordSets } }, @{ $result->ResourceRecordSets };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ ResourceRecordSets } = $result->ResourceRecordSets;
+
+      while ($result->IsTruncated) {
+        $result = $self->ListResourceRecordSets(@_, StartRecordName => $result->NextRecordName, StartRecordType => $result->NextRecordType, StartRecordIdentifier => $result->NextRecordIdentifier);
+        push @{ $params->{ ResourceRecordSets } }, @{ $result->ResourceRecordSets };
+      }
+      $self->new_with_coercions(Paws::Route53::ListResourceRecordSets->_returns, %$params);
+    } else {
+      while ($result->IsTruncated) {
+        $result = $self->ListResourceRecordSets(@_, StartRecordName => $result->NextRecordName, StartRecordType => $result->NextRecordType, StartRecordIdentifier => $result->NextRecordIdentifier);
+        $callback->($_ => 'ResourceRecordSets') foreach (@{ $result->ResourceRecordSets });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::Route53::ListResourceRecordSets->_returns, %$params);
+    return undef
   }
 
 

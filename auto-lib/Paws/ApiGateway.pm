@@ -463,162 +463,194 @@ package Paws::ApiGateway;
   sub GetAllApiKeys {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->GetApiKeys(@_);
-    my $params = {};
-    
-    $params->{ items } = $result->items;
-    
 
-    
-    while ($result->position) {
-      $result = $self->GetApiKeys(@_, position => $result->position);
-      
-      push @{ $params->{ items } }, @{ $result->items };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ items } = $result->items;
+
+      while ($result->position) {
+        $result = $self->GetApiKeys(@_, position => $result->position);
+        push @{ $result->items }, @{ $result->items };
+      }
+      $self->new_with_coercions(Paws::ApiGateway::GetApiKeys->_returns, %$params);
+    } else {
+      while ($result->position) {
+        $result = $self->GetApiKeys(@_, position => $result->position);
+        $callback->($_ => 'items') foreach (@{ $result->items });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::ApiGateway::GetApiKeys->_returns, %$params);
+    return undef
   }
   sub GetAllBasePathMappings {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->GetBasePathMappings(@_);
-    my $params = {};
-    
-    $params->{ items } = $result->items;
-    
 
-    
-    while ($result->position) {
-      $result = $self->GetBasePathMappings(@_, position => $result->position);
-      
-      push @{ $params->{ items } }, @{ $result->items };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ items } = $result->items;
+
+      while ($result->position) {
+        $result = $self->GetBasePathMappings(@_, position => $result->position);
+        push @{ $result->items }, @{ $result->items };
+      }
+      $self->new_with_coercions(Paws::ApiGateway::GetBasePathMappings->_returns, %$params);
+    } else {
+      while ($result->position) {
+        $result = $self->GetBasePathMappings(@_, position => $result->position);
+        $callback->($_ => 'items') foreach (@{ $result->items });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::ApiGateway::GetBasePathMappings->_returns, %$params);
+    return undef
   }
   sub GetAllClientCertificates {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->GetClientCertificates(@_);
-    my $params = {};
-    
-    $params->{ items } = $result->items;
-    
 
-    
-    while ($result->position) {
-      $result = $self->GetClientCertificates(@_, position => $result->position);
-      
-      push @{ $params->{ items } }, @{ $result->items };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ items } = $result->items;
+
+      while ($result->position) {
+        $result = $self->GetClientCertificates(@_, position => $result->position);
+        push @{ $result->items }, @{ $result->items };
+      }
+      $self->new_with_coercions(Paws::ApiGateway::GetClientCertificates->_returns, %$params);
+    } else {
+      while ($result->position) {
+        $result = $self->GetClientCertificates(@_, position => $result->position);
+        $callback->($_ => 'items') foreach (@{ $result->items });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::ApiGateway::GetClientCertificates->_returns, %$params);
+    return undef
   }
   sub GetAllDeployments {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->GetDeployments(@_);
-    my $params = {};
-    
-    $params->{ items } = $result->items;
-    
 
-    
-    while ($result->position) {
-      $result = $self->GetDeployments(@_, position => $result->position);
-      
-      push @{ $params->{ items } }, @{ $result->items };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ items } = $result->items;
+
+      while ($result->position) {
+        $result = $self->GetDeployments(@_, position => $result->position);
+        push @{ $result->items }, @{ $result->items };
+      }
+      $self->new_with_coercions(Paws::ApiGateway::GetDeployments->_returns, %$params);
+    } else {
+      while ($result->position) {
+        $result = $self->GetDeployments(@_, position => $result->position);
+        $callback->($_ => 'items') foreach (@{ $result->items });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::ApiGateway::GetDeployments->_returns, %$params);
+    return undef
   }
   sub GetAllDomainNames {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->GetDomainNames(@_);
-    my $params = {};
-    
-    $params->{ items } = $result->items;
-    
 
-    
-    while ($result->position) {
-      $result = $self->GetDomainNames(@_, position => $result->position);
-      
-      push @{ $params->{ items } }, @{ $result->items };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ items } = $result->items;
+
+      while ($result->position) {
+        $result = $self->GetDomainNames(@_, position => $result->position);
+        push @{ $result->items }, @{ $result->items };
+      }
+      $self->new_with_coercions(Paws::ApiGateway::GetDomainNames->_returns, %$params);
+    } else {
+      while ($result->position) {
+        $result = $self->GetDomainNames(@_, position => $result->position);
+        $callback->($_ => 'items') foreach (@{ $result->items });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::ApiGateway::GetDomainNames->_returns, %$params);
+    return undef
   }
   sub GetAllModels {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->GetModels(@_);
-    my $params = {};
-    
-    $params->{ items } = $result->items;
-    
 
-    
-    while ($result->position) {
-      $result = $self->GetModels(@_, position => $result->position);
-      
-      push @{ $params->{ items } }, @{ $result->items };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ items } = $result->items;
+
+      while ($result->position) {
+        $result = $self->GetModels(@_, position => $result->position);
+        push @{ $result->items }, @{ $result->items };
+      }
+      $self->new_with_coercions(Paws::ApiGateway::GetModels->_returns, %$params);
+    } else {
+      while ($result->position) {
+        $result = $self->GetModels(@_, position => $result->position);
+        $callback->($_ => 'items') foreach (@{ $result->items });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::ApiGateway::GetModels->_returns, %$params);
+    return undef
   }
   sub GetAllResources {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->GetResources(@_);
-    my $params = {};
-    
-    $params->{ items } = $result->items;
-    
 
-    
-    while ($result->position) {
-      $result = $self->GetResources(@_, position => $result->position);
-      
-      push @{ $params->{ items } }, @{ $result->items };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ items } = $result->items;
+
+      while ($result->position) {
+        $result = $self->GetResources(@_, position => $result->position);
+        push @{ $result->items }, @{ $result->items };
+      }
+      $self->new_with_coercions(Paws::ApiGateway::GetResources->_returns, %$params);
+    } else {
+      while ($result->position) {
+        $result = $self->GetResources(@_, position => $result->position);
+        $callback->($_ => 'items') foreach (@{ $result->items });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::ApiGateway::GetResources->_returns, %$params);
+    return undef
   }
   sub GetAllRestApis {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->GetRestApis(@_);
-    my $params = {};
-    
-    $params->{ items } = $result->items;
-    
 
-    
-    while ($result->position) {
-      $result = $self->GetRestApis(@_, position => $result->position);
-      
-      push @{ $params->{ items } }, @{ $result->items };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ items } = $result->items;
+
+      while ($result->position) {
+        $result = $self->GetRestApis(@_, position => $result->position);
+        push @{ $result->items }, @{ $result->items };
+      }
+      $self->new_with_coercions(Paws::ApiGateway::GetRestApis->_returns, %$params);
+    } else {
+      while ($result->position) {
+        $result = $self->GetRestApis(@_, position => $result->position);
+        $callback->($_ => 'items') foreach (@{ $result->items });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::ApiGateway::GetRestApis->_returns, %$params);
+    return undef
   }
 
 

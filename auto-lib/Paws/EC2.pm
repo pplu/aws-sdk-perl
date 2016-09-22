@@ -1067,202 +1067,242 @@ package Paws::EC2;
   sub DescribeAllInstances {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeInstances(@_);
-    my $params = {};
-    
-    $params->{ Reservations } = $result->Reservations;
-    
 
-    
-    while ($result->NextToken) {
-      $result = $self->DescribeInstances(@_, NextToken => $result->NextToken);
-      
-      push @{ $params->{ Reservations } }, @{ $result->Reservations };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ Reservations } = $result->Reservations;
+
+      while ($result->NextToken) {
+        $result = $self->DescribeInstances(@_, NextToken => $result->NextToken);
+        push @{ $result->Reservations }, @{ $result->Reservations };
+      }
+      $self->new_with_coercions(Paws::EC2::DescribeInstances->_returns, %$params);
+    } else {
+      while ($result->NextToken) {
+        $result = $self->DescribeInstances(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'Reservations') foreach (@{ $result->Reservations });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::EC2::DescribeInstances->_returns, %$params);
+    return undef
   }
   sub DescribeAllInstanceStatus {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeInstanceStatus(@_);
-    my $params = {};
-    
-    $params->{ InstanceStatuses } = $result->InstanceStatuses;
-    
 
-    
-    while ($result->NextToken) {
-      $result = $self->DescribeInstanceStatus(@_, NextToken => $result->NextToken);
-      
-      push @{ $params->{ InstanceStatuses } }, @{ $result->InstanceStatuses };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ InstanceStatuses } = $result->InstanceStatuses;
+
+      while ($result->NextToken) {
+        $result = $self->DescribeInstanceStatus(@_, NextToken => $result->NextToken);
+        push @{ $result->InstanceStatuses }, @{ $result->InstanceStatuses };
+      }
+      $self->new_with_coercions(Paws::EC2::DescribeInstanceStatus->_returns, %$params);
+    } else {
+      while ($result->NextToken) {
+        $result = $self->DescribeInstanceStatus(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'InstanceStatuses') foreach (@{ $result->InstanceStatuses });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::EC2::DescribeInstanceStatus->_returns, %$params);
+    return undef
   }
   sub DescribeAllReservedInstancesModifications {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeReservedInstancesModifications(@_);
-    my $params = {};
-    
-    $params->{ ReservedInstancesModifications } = $result->ReservedInstancesModifications;
-    
 
-    
-    while ($result->NextToken) {
-      $result = $self->DescribeReservedInstancesModifications(@_, NextToken => $result->NextToken);
-      
-      push @{ $params->{ ReservedInstancesModifications } }, @{ $result->ReservedInstancesModifications };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ ReservedInstancesModifications } = $result->ReservedInstancesModifications;
+
+      while ($result->NextToken) {
+        $result = $self->DescribeReservedInstancesModifications(@_, NextToken => $result->NextToken);
+        push @{ $result->ReservedInstancesModifications }, @{ $result->ReservedInstancesModifications };
+      }
+      $self->new_with_coercions(Paws::EC2::DescribeReservedInstancesModifications->_returns, %$params);
+    } else {
+      while ($result->NextToken) {
+        $result = $self->DescribeReservedInstancesModifications(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'ReservedInstancesModifications') foreach (@{ $result->ReservedInstancesModifications });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::EC2::DescribeReservedInstancesModifications->_returns, %$params);
+    return undef
   }
   sub DescribeAllReservedInstancesOfferings {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeReservedInstancesOfferings(@_);
-    my $params = {};
-    
-    $params->{ ReservedInstancesOfferings } = $result->ReservedInstancesOfferings;
-    
 
-    
-    while ($result->NextToken) {
-      $result = $self->DescribeReservedInstancesOfferings(@_, NextToken => $result->NextToken);
-      
-      push @{ $params->{ ReservedInstancesOfferings } }, @{ $result->ReservedInstancesOfferings };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ ReservedInstancesOfferings } = $result->ReservedInstancesOfferings;
+
+      while ($result->NextToken) {
+        $result = $self->DescribeReservedInstancesOfferings(@_, NextToken => $result->NextToken);
+        push @{ $result->ReservedInstancesOfferings }, @{ $result->ReservedInstancesOfferings };
+      }
+      $self->new_with_coercions(Paws::EC2::DescribeReservedInstancesOfferings->_returns, %$params);
+    } else {
+      while ($result->NextToken) {
+        $result = $self->DescribeReservedInstancesOfferings(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'ReservedInstancesOfferings') foreach (@{ $result->ReservedInstancesOfferings });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::EC2::DescribeReservedInstancesOfferings->_returns, %$params);
+    return undef
   }
   sub DescribeAllSnapshots {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeSnapshots(@_);
-    my $params = {};
-    
-    $params->{ Snapshots } = $result->Snapshots;
-    
 
-    
-    while ($result->NextToken) {
-      $result = $self->DescribeSnapshots(@_, NextToken => $result->NextToken);
-      
-      push @{ $params->{ Snapshots } }, @{ $result->Snapshots };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ Snapshots } = $result->Snapshots;
+
+      while ($result->NextToken) {
+        $result = $self->DescribeSnapshots(@_, NextToken => $result->NextToken);
+        push @{ $result->Snapshots }, @{ $result->Snapshots };
+      }
+      $self->new_with_coercions(Paws::EC2::DescribeSnapshots->_returns, %$params);
+    } else {
+      while ($result->NextToken) {
+        $result = $self->DescribeSnapshots(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'Snapshots') foreach (@{ $result->Snapshots });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::EC2::DescribeSnapshots->_returns, %$params);
+    return undef
   }
   sub DescribeAllSpotFleetRequests {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeSpotFleetRequests(@_);
-    my $params = {};
-    
-    $params->{ SpotFleetRequestConfigs } = $result->SpotFleetRequestConfigs;
-    
 
-    
-    while ($result->NextToken) {
-      $result = $self->DescribeSpotFleetRequests(@_, NextToken => $result->NextToken);
-      
-      push @{ $params->{ SpotFleetRequestConfigs } }, @{ $result->SpotFleetRequestConfigs };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ SpotFleetRequestConfigs } = $result->SpotFleetRequestConfigs;
+
+      while ($result->NextToken) {
+        $result = $self->DescribeSpotFleetRequests(@_, NextToken => $result->NextToken);
+        push @{ $result->SpotFleetRequestConfigs }, @{ $result->SpotFleetRequestConfigs };
+      }
+      $self->new_with_coercions(Paws::EC2::DescribeSpotFleetRequests->_returns, %$params);
+    } else {
+      while ($result->NextToken) {
+        $result = $self->DescribeSpotFleetRequests(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'SpotFleetRequestConfigs') foreach (@{ $result->SpotFleetRequestConfigs });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::EC2::DescribeSpotFleetRequests->_returns, %$params);
+    return undef
   }
   sub DescribeAllSpotPriceHistory {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeSpotPriceHistory(@_);
-    my $params = {};
-    
-    $params->{ SpotPriceHistory } = $result->SpotPriceHistory;
-    
 
-    
-    while ($result->NextToken) {
-      $result = $self->DescribeSpotPriceHistory(@_, NextToken => $result->NextToken);
-      
-      push @{ $params->{ SpotPriceHistory } }, @{ $result->SpotPriceHistory };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ SpotPriceHistory } = $result->SpotPriceHistory;
+
+      while ($result->NextToken) {
+        $result = $self->DescribeSpotPriceHistory(@_, NextToken => $result->NextToken);
+        push @{ $result->SpotPriceHistory }, @{ $result->SpotPriceHistory };
+      }
+      $self->new_with_coercions(Paws::EC2::DescribeSpotPriceHistory->_returns, %$params);
+    } else {
+      while ($result->NextToken) {
+        $result = $self->DescribeSpotPriceHistory(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'SpotPriceHistory') foreach (@{ $result->SpotPriceHistory });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::EC2::DescribeSpotPriceHistory->_returns, %$params);
+    return undef
   }
   sub DescribeAllTags {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeTags(@_);
-    my $params = {};
-    
-    $params->{ Tags } = $result->Tags;
-    
 
-    
-    while ($result->NextToken) {
-      $result = $self->DescribeTags(@_, NextToken => $result->NextToken);
-      
-      push @{ $params->{ Tags } }, @{ $result->Tags };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ Tags } = $result->Tags;
+
+      while ($result->NextToken) {
+        $result = $self->DescribeTags(@_, NextToken => $result->NextToken);
+        push @{ $result->Tags }, @{ $result->Tags };
+      }
+      $self->new_with_coercions(Paws::EC2::DescribeTags->_returns, %$params);
+    } else {
+      while ($result->NextToken) {
+        $result = $self->DescribeTags(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'Tags') foreach (@{ $result->Tags });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::EC2::DescribeTags->_returns, %$params);
+    return undef
   }
   sub DescribeAllVolumes {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeVolumes(@_);
-    my $params = {};
-    
-    $params->{ Volumes } = $result->Volumes;
-    
 
-    
-    while ($result->NextToken) {
-      $result = $self->DescribeVolumes(@_, NextToken => $result->NextToken);
-      
-      push @{ $params->{ Volumes } }, @{ $result->Volumes };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ Volumes } = $result->Volumes;
+
+      while ($result->NextToken) {
+        $result = $self->DescribeVolumes(@_, NextToken => $result->NextToken);
+        push @{ $result->Volumes }, @{ $result->Volumes };
+      }
+      $self->new_with_coercions(Paws::EC2::DescribeVolumes->_returns, %$params);
+    } else {
+      while ($result->NextToken) {
+        $result = $self->DescribeVolumes(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'Volumes') foreach (@{ $result->Volumes });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::EC2::DescribeVolumes->_returns, %$params);
+    return undef
   }
   sub DescribeAllVolumeStatus {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeVolumeStatus(@_);
-    my $params = {};
-    
-    $params->{ VolumeStatuses } = $result->VolumeStatuses;
-    
 
-    
-    while ($result->NextToken) {
-      $result = $self->DescribeVolumeStatus(@_, NextToken => $result->NextToken);
-      
-      push @{ $params->{ VolumeStatuses } }, @{ $result->VolumeStatuses };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ VolumeStatuses } = $result->VolumeStatuses;
+
+      while ($result->NextToken) {
+        $result = $self->DescribeVolumeStatus(@_, NextToken => $result->NextToken);
+        push @{ $result->VolumeStatuses }, @{ $result->VolumeStatuses };
+      }
+      $self->new_with_coercions(Paws::EC2::DescribeVolumeStatus->_returns, %$params);
+    } else {
+      while ($result->NextToken) {
+        $result = $self->DescribeVolumeStatus(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'VolumeStatuses') foreach (@{ $result->VolumeStatuses });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::EC2::DescribeVolumeStatus->_returns, %$params);
+    return undef
   }
 
 

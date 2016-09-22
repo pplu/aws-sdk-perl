@@ -173,82 +173,98 @@ package Paws::Glacier;
   sub ListAllJobs {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListJobs(@_);
-    my $params = {};
-    
-    $params->{ JobList } = $result->JobList;
-    
 
-    
-    while ($result->marker) {
-      $result = $self->ListJobs(@_, marker => $result->Marker);
-      
-      push @{ $params->{ JobList } }, @{ $result->JobList };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ JobList } = $result->JobList;
+
+      while ($result->marker) {
+        $result = $self->ListJobs(@_, marker => $result->Marker);
+        push @{ $result->JobList }, @{ $result->JobList };
+      }
+      $self->new_with_coercions(Paws::Glacier::ListJobs->_returns, %$params);
+    } else {
+      while ($result->marker) {
+        $result = $self->ListJobs(@_, marker => $result->Marker);
+        $callback->($_ => 'JobList') foreach (@{ $result->JobList });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::Glacier::ListJobs->_returns, %$params);
+    return undef
   }
   sub ListAllMultipartUploads {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListMultipartUploads(@_);
-    my $params = {};
-    
-    $params->{ UploadsList } = $result->UploadsList;
-    
 
-    
-    while ($result->marker) {
-      $result = $self->ListMultipartUploads(@_, marker => $result->Marker);
-      
-      push @{ $params->{ UploadsList } }, @{ $result->UploadsList };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ UploadsList } = $result->UploadsList;
+
+      while ($result->marker) {
+        $result = $self->ListMultipartUploads(@_, marker => $result->Marker);
+        push @{ $result->UploadsList }, @{ $result->UploadsList };
+      }
+      $self->new_with_coercions(Paws::Glacier::ListMultipartUploads->_returns, %$params);
+    } else {
+      while ($result->marker) {
+        $result = $self->ListMultipartUploads(@_, marker => $result->Marker);
+        $callback->($_ => 'UploadsList') foreach (@{ $result->UploadsList });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::Glacier::ListMultipartUploads->_returns, %$params);
+    return undef
   }
   sub ListAllParts {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListParts(@_);
-    my $params = {};
-    
-    $params->{ Parts } = $result->Parts;
-    
 
-    
-    while ($result->marker) {
-      $result = $self->ListParts(@_, marker => $result->Marker);
-      
-      push @{ $params->{ Parts } }, @{ $result->Parts };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ Parts } = $result->Parts;
+
+      while ($result->marker) {
+        $result = $self->ListParts(@_, marker => $result->Marker);
+        push @{ $result->Parts }, @{ $result->Parts };
+      }
+      $self->new_with_coercions(Paws::Glacier::ListParts->_returns, %$params);
+    } else {
+      while ($result->marker) {
+        $result = $self->ListParts(@_, marker => $result->Marker);
+        $callback->($_ => 'Parts') foreach (@{ $result->Parts });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::Glacier::ListParts->_returns, %$params);
+    return undef
   }
   sub ListAllVaults {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListVaults(@_);
-    my $params = {};
-    
-    $params->{ VaultList } = $result->VaultList;
-    
 
-    
-    while ($result->marker) {
-      $result = $self->ListVaults(@_, marker => $result->Marker);
-      
-      push @{ $params->{ VaultList } }, @{ $result->VaultList };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ VaultList } = $result->VaultList;
+
+      while ($result->marker) {
+        $result = $self->ListVaults(@_, marker => $result->Marker);
+        push @{ $result->VaultList }, @{ $result->VaultList };
+      }
+      $self->new_with_coercions(Paws::Glacier::ListVaults->_returns, %$params);
+    } else {
+      while ($result->marker) {
+        $result = $self->ListVaults(@_, marker => $result->Marker);
+        $callback->($_ => 'VaultList') foreach (@{ $result->VaultList });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::Glacier::ListVaults->_returns, %$params);
+    return undef
   }
 
 

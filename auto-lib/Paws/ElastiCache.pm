@@ -207,242 +207,290 @@ package Paws::ElastiCache;
   sub DescribeAllCacheClusters {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeCacheClusters(@_);
-    my $params = {};
-    
-    $params->{ CacheClusters } = $result->CacheClusters;
-    
 
-    
-    while ($result->Marker) {
-      $result = $self->DescribeCacheClusters(@_, Marker => $result->Marker);
-      
-      push @{ $params->{ CacheClusters } }, @{ $result->CacheClusters };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ CacheClusters } = $result->CacheClusters;
+
+      while ($result->Marker) {
+        $result = $self->DescribeCacheClusters(@_, Marker => $result->Marker);
+        push @{ $result->CacheClusters }, @{ $result->CacheClusters };
+      }
+      $self->new_with_coercions(Paws::ElastiCache::DescribeCacheClusters->_returns, %$params);
+    } else {
+      while ($result->Marker) {
+        $result = $self->DescribeCacheClusters(@_, Marker => $result->Marker);
+        $callback->($_ => 'CacheClusters') foreach (@{ $result->CacheClusters });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::ElastiCache::DescribeCacheClusters->_returns, %$params);
+    return undef
   }
   sub DescribeAllCacheEngineVersions {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeCacheEngineVersions(@_);
-    my $params = {};
-    
-    $params->{ CacheEngineVersions } = $result->CacheEngineVersions;
-    
 
-    
-    while ($result->Marker) {
-      $result = $self->DescribeCacheEngineVersions(@_, Marker => $result->Marker);
-      
-      push @{ $params->{ CacheEngineVersions } }, @{ $result->CacheEngineVersions };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ CacheEngineVersions } = $result->CacheEngineVersions;
+
+      while ($result->Marker) {
+        $result = $self->DescribeCacheEngineVersions(@_, Marker => $result->Marker);
+        push @{ $result->CacheEngineVersions }, @{ $result->CacheEngineVersions };
+      }
+      $self->new_with_coercions(Paws::ElastiCache::DescribeCacheEngineVersions->_returns, %$params);
+    } else {
+      while ($result->Marker) {
+        $result = $self->DescribeCacheEngineVersions(@_, Marker => $result->Marker);
+        $callback->($_ => 'CacheEngineVersions') foreach (@{ $result->CacheEngineVersions });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::ElastiCache::DescribeCacheEngineVersions->_returns, %$params);
+    return undef
   }
   sub DescribeAllCacheParameterGroups {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeCacheParameterGroups(@_);
-    my $params = {};
-    
-    $params->{ CacheParameterGroups } = $result->CacheParameterGroups;
-    
 
-    
-    while ($result->Marker) {
-      $result = $self->DescribeCacheParameterGroups(@_, Marker => $result->Marker);
-      
-      push @{ $params->{ CacheParameterGroups } }, @{ $result->CacheParameterGroups };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ CacheParameterGroups } = $result->CacheParameterGroups;
+
+      while ($result->Marker) {
+        $result = $self->DescribeCacheParameterGroups(@_, Marker => $result->Marker);
+        push @{ $result->CacheParameterGroups }, @{ $result->CacheParameterGroups };
+      }
+      $self->new_with_coercions(Paws::ElastiCache::DescribeCacheParameterGroups->_returns, %$params);
+    } else {
+      while ($result->Marker) {
+        $result = $self->DescribeCacheParameterGroups(@_, Marker => $result->Marker);
+        $callback->($_ => 'CacheParameterGroups') foreach (@{ $result->CacheParameterGroups });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::ElastiCache::DescribeCacheParameterGroups->_returns, %$params);
+    return undef
   }
   sub DescribeAllCacheParameters {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeCacheParameters(@_);
-    my $params = {};
-    
-    $params->{ Parameters } = $result->Parameters;
-    
 
-    
-    while ($result->Marker) {
-      $result = $self->DescribeCacheParameters(@_, Marker => $result->Marker);
-      
-      push @{ $params->{ Parameters } }, @{ $result->Parameters };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ Parameters } = $result->Parameters;
+
+      while ($result->Marker) {
+        $result = $self->DescribeCacheParameters(@_, Marker => $result->Marker);
+        push @{ $result->Parameters }, @{ $result->Parameters };
+      }
+      $self->new_with_coercions(Paws::ElastiCache::DescribeCacheParameters->_returns, %$params);
+    } else {
+      while ($result->Marker) {
+        $result = $self->DescribeCacheParameters(@_, Marker => $result->Marker);
+        $callback->($_ => 'Parameters') foreach (@{ $result->Parameters });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::ElastiCache::DescribeCacheParameters->_returns, %$params);
+    return undef
   }
   sub DescribeAllCacheSecurityGroups {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeCacheSecurityGroups(@_);
-    my $params = {};
-    
-    $params->{ CacheSecurityGroups } = $result->CacheSecurityGroups;
-    
 
-    
-    while ($result->Marker) {
-      $result = $self->DescribeCacheSecurityGroups(@_, Marker => $result->Marker);
-      
-      push @{ $params->{ CacheSecurityGroups } }, @{ $result->CacheSecurityGroups };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ CacheSecurityGroups } = $result->CacheSecurityGroups;
+
+      while ($result->Marker) {
+        $result = $self->DescribeCacheSecurityGroups(@_, Marker => $result->Marker);
+        push @{ $result->CacheSecurityGroups }, @{ $result->CacheSecurityGroups };
+      }
+      $self->new_with_coercions(Paws::ElastiCache::DescribeCacheSecurityGroups->_returns, %$params);
+    } else {
+      while ($result->Marker) {
+        $result = $self->DescribeCacheSecurityGroups(@_, Marker => $result->Marker);
+        $callback->($_ => 'CacheSecurityGroups') foreach (@{ $result->CacheSecurityGroups });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::ElastiCache::DescribeCacheSecurityGroups->_returns, %$params);
+    return undef
   }
   sub DescribeAllCacheSubnetGroups {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeCacheSubnetGroups(@_);
-    my $params = {};
-    
-    $params->{ CacheSubnetGroups } = $result->CacheSubnetGroups;
-    
 
-    
-    while ($result->Marker) {
-      $result = $self->DescribeCacheSubnetGroups(@_, Marker => $result->Marker);
-      
-      push @{ $params->{ CacheSubnetGroups } }, @{ $result->CacheSubnetGroups };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ CacheSubnetGroups } = $result->CacheSubnetGroups;
+
+      while ($result->Marker) {
+        $result = $self->DescribeCacheSubnetGroups(@_, Marker => $result->Marker);
+        push @{ $result->CacheSubnetGroups }, @{ $result->CacheSubnetGroups };
+      }
+      $self->new_with_coercions(Paws::ElastiCache::DescribeCacheSubnetGroups->_returns, %$params);
+    } else {
+      while ($result->Marker) {
+        $result = $self->DescribeCacheSubnetGroups(@_, Marker => $result->Marker);
+        $callback->($_ => 'CacheSubnetGroups') foreach (@{ $result->CacheSubnetGroups });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::ElastiCache::DescribeCacheSubnetGroups->_returns, %$params);
+    return undef
   }
   sub DescribeAllEngineDefaultParameters {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeEngineDefaultParameters(@_);
-    my $params = {};
-    
-    $params->{ EngineDefaults.Parameters } = $result->EngineDefaults->Parameters;
-    
 
-    
-    while ($result->Marker) {
-      $result = $self->DescribeEngineDefaultParameters(@_, Marker => $result->EngineDefaults->Marker);
-      
-      push @{ $params->{ EngineDefaults.Parameters } }, @{ $result->EngineDefaults->Parameters };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ EngineDefaults.Parameters } = $result->EngineDefaults->Parameters;
+
+      while ($result->Marker) {
+        $result = $self->DescribeEngineDefaultParameters(@_, Marker => $result->EngineDefaults->Marker);
+        push @{ $result->EngineDefaults->Parameters }, @{ $result->EngineDefaults->Parameters };
+      }
+      $self->new_with_coercions(Paws::ElastiCache::DescribeEngineDefaultParameters->_returns, %$params);
+    } else {
+      while ($result->Marker) {
+        $result = $self->DescribeEngineDefaultParameters(@_, Marker => $result->EngineDefaults->Marker);
+        $callback->($_ => 'EngineDefaults.Parameters') foreach (@{ $result->EngineDefaults->Parameters });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::ElastiCache::DescribeEngineDefaultParameters->_returns, %$params);
+    return undef
   }
   sub DescribeAllEvents {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeEvents(@_);
-    my $params = {};
-    
-    $params->{ Events } = $result->Events;
-    
 
-    
-    while ($result->Marker) {
-      $result = $self->DescribeEvents(@_, Marker => $result->Marker);
-      
-      push @{ $params->{ Events } }, @{ $result->Events };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ Events } = $result->Events;
+
+      while ($result->Marker) {
+        $result = $self->DescribeEvents(@_, Marker => $result->Marker);
+        push @{ $result->Events }, @{ $result->Events };
+      }
+      $self->new_with_coercions(Paws::ElastiCache::DescribeEvents->_returns, %$params);
+    } else {
+      while ($result->Marker) {
+        $result = $self->DescribeEvents(@_, Marker => $result->Marker);
+        $callback->($_ => 'Events') foreach (@{ $result->Events });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::ElastiCache::DescribeEvents->_returns, %$params);
+    return undef
   }
   sub DescribeAllReplicationGroups {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeReplicationGroups(@_);
-    my $params = {};
-    
-    $params->{ ReplicationGroups } = $result->ReplicationGroups;
-    
 
-    
-    while ($result->Marker) {
-      $result = $self->DescribeReplicationGroups(@_, Marker => $result->Marker);
-      
-      push @{ $params->{ ReplicationGroups } }, @{ $result->ReplicationGroups };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ ReplicationGroups } = $result->ReplicationGroups;
+
+      while ($result->Marker) {
+        $result = $self->DescribeReplicationGroups(@_, Marker => $result->Marker);
+        push @{ $result->ReplicationGroups }, @{ $result->ReplicationGroups };
+      }
+      $self->new_with_coercions(Paws::ElastiCache::DescribeReplicationGroups->_returns, %$params);
+    } else {
+      while ($result->Marker) {
+        $result = $self->DescribeReplicationGroups(@_, Marker => $result->Marker);
+        $callback->($_ => 'ReplicationGroups') foreach (@{ $result->ReplicationGroups });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::ElastiCache::DescribeReplicationGroups->_returns, %$params);
+    return undef
   }
   sub DescribeAllReservedCacheNodes {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeReservedCacheNodes(@_);
-    my $params = {};
-    
-    $params->{ ReservedCacheNodes } = $result->ReservedCacheNodes;
-    
 
-    
-    while ($result->Marker) {
-      $result = $self->DescribeReservedCacheNodes(@_, Marker => $result->Marker);
-      
-      push @{ $params->{ ReservedCacheNodes } }, @{ $result->ReservedCacheNodes };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ ReservedCacheNodes } = $result->ReservedCacheNodes;
+
+      while ($result->Marker) {
+        $result = $self->DescribeReservedCacheNodes(@_, Marker => $result->Marker);
+        push @{ $result->ReservedCacheNodes }, @{ $result->ReservedCacheNodes };
+      }
+      $self->new_with_coercions(Paws::ElastiCache::DescribeReservedCacheNodes->_returns, %$params);
+    } else {
+      while ($result->Marker) {
+        $result = $self->DescribeReservedCacheNodes(@_, Marker => $result->Marker);
+        $callback->($_ => 'ReservedCacheNodes') foreach (@{ $result->ReservedCacheNodes });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::ElastiCache::DescribeReservedCacheNodes->_returns, %$params);
+    return undef
   }
   sub DescribeAllReservedCacheNodesOfferings {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeReservedCacheNodesOfferings(@_);
-    my $params = {};
-    
-    $params->{ ReservedCacheNodesOfferings } = $result->ReservedCacheNodesOfferings;
-    
 
-    
-    while ($result->Marker) {
-      $result = $self->DescribeReservedCacheNodesOfferings(@_, Marker => $result->Marker);
-      
-      push @{ $params->{ ReservedCacheNodesOfferings } }, @{ $result->ReservedCacheNodesOfferings };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ ReservedCacheNodesOfferings } = $result->ReservedCacheNodesOfferings;
+
+      while ($result->Marker) {
+        $result = $self->DescribeReservedCacheNodesOfferings(@_, Marker => $result->Marker);
+        push @{ $result->ReservedCacheNodesOfferings }, @{ $result->ReservedCacheNodesOfferings };
+      }
+      $self->new_with_coercions(Paws::ElastiCache::DescribeReservedCacheNodesOfferings->_returns, %$params);
+    } else {
+      while ($result->Marker) {
+        $result = $self->DescribeReservedCacheNodesOfferings(@_, Marker => $result->Marker);
+        $callback->($_ => 'ReservedCacheNodesOfferings') foreach (@{ $result->ReservedCacheNodesOfferings });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::ElastiCache::DescribeReservedCacheNodesOfferings->_returns, %$params);
+    return undef
   }
   sub DescribeAllSnapshots {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeSnapshots(@_);
-    my $params = {};
-    
-    $params->{ Snapshots } = $result->Snapshots;
-    
 
-    
-    while ($result->Marker) {
-      $result = $self->DescribeSnapshots(@_, Marker => $result->Marker);
-      
-      push @{ $params->{ Snapshots } }, @{ $result->Snapshots };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ Snapshots } = $result->Snapshots;
+
+      while ($result->Marker) {
+        $result = $self->DescribeSnapshots(@_, Marker => $result->Marker);
+        push @{ $result->Snapshots }, @{ $result->Snapshots };
+      }
+      $self->new_with_coercions(Paws::ElastiCache::DescribeSnapshots->_returns, %$params);
+    } else {
+      while ($result->Marker) {
+        $result = $self->DescribeSnapshots(@_, Marker => $result->Marker);
+        $callback->($_ => 'Snapshots') foreach (@{ $result->Snapshots });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::ElastiCache::DescribeSnapshots->_returns, %$params);
+    return undef
   }
 
 

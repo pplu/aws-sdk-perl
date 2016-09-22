@@ -153,122 +153,146 @@ package Paws::ECS;
   sub ListAllClusters {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListClusters(@_);
-    my $params = {};
-    
-    $params->{ clusterArns } = $result->clusterArns;
-    
 
-    
-    while ($result->nextToken) {
-      $result = $self->ListClusters(@_, nextToken => $result->nextToken);
-      
-      push @{ $params->{ clusterArns } }, @{ $result->clusterArns };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ clusterArns } = $result->clusterArns;
+
+      while ($result->nextToken) {
+        $result = $self->ListClusters(@_, nextToken => $result->nextToken);
+        push @{ $result->clusterArns }, @{ $result->clusterArns };
+      }
+      $self->new_with_coercions(Paws::ECS::ListClusters->_returns, %$params);
+    } else {
+      while ($result->nextToken) {
+        $result = $self->ListClusters(@_, nextToken => $result->nextToken);
+        $callback->($_ => 'clusterArns') foreach (@{ $result->clusterArns });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::ECS::ListClusters->_returns, %$params);
+    return undef
   }
   sub ListAllContainerInstances {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListContainerInstances(@_);
-    my $params = {};
-    
-    $params->{ containerInstanceArns } = $result->containerInstanceArns;
-    
 
-    
-    while ($result->nextToken) {
-      $result = $self->ListContainerInstances(@_, nextToken => $result->nextToken);
-      
-      push @{ $params->{ containerInstanceArns } }, @{ $result->containerInstanceArns };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ containerInstanceArns } = $result->containerInstanceArns;
+
+      while ($result->nextToken) {
+        $result = $self->ListContainerInstances(@_, nextToken => $result->nextToken);
+        push @{ $result->containerInstanceArns }, @{ $result->containerInstanceArns };
+      }
+      $self->new_with_coercions(Paws::ECS::ListContainerInstances->_returns, %$params);
+    } else {
+      while ($result->nextToken) {
+        $result = $self->ListContainerInstances(@_, nextToken => $result->nextToken);
+        $callback->($_ => 'containerInstanceArns') foreach (@{ $result->containerInstanceArns });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::ECS::ListContainerInstances->_returns, %$params);
+    return undef
   }
   sub ListAllServices {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListServices(@_);
-    my $params = {};
-    
-    $params->{ serviceArns } = $result->serviceArns;
-    
 
-    
-    while ($result->nextToken) {
-      $result = $self->ListServices(@_, nextToken => $result->nextToken);
-      
-      push @{ $params->{ serviceArns } }, @{ $result->serviceArns };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ serviceArns } = $result->serviceArns;
+
+      while ($result->nextToken) {
+        $result = $self->ListServices(@_, nextToken => $result->nextToken);
+        push @{ $result->serviceArns }, @{ $result->serviceArns };
+      }
+      $self->new_with_coercions(Paws::ECS::ListServices->_returns, %$params);
+    } else {
+      while ($result->nextToken) {
+        $result = $self->ListServices(@_, nextToken => $result->nextToken);
+        $callback->($_ => 'serviceArns') foreach (@{ $result->serviceArns });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::ECS::ListServices->_returns, %$params);
+    return undef
   }
   sub ListAllTaskDefinitionFamilies {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListTaskDefinitionFamilies(@_);
-    my $params = {};
-    
-    $params->{ families } = $result->families;
-    
 
-    
-    while ($result->nextToken) {
-      $result = $self->ListTaskDefinitionFamilies(@_, nextToken => $result->nextToken);
-      
-      push @{ $params->{ families } }, @{ $result->families };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ families } = $result->families;
+
+      while ($result->nextToken) {
+        $result = $self->ListTaskDefinitionFamilies(@_, nextToken => $result->nextToken);
+        push @{ $result->families }, @{ $result->families };
+      }
+      $self->new_with_coercions(Paws::ECS::ListTaskDefinitionFamilies->_returns, %$params);
+    } else {
+      while ($result->nextToken) {
+        $result = $self->ListTaskDefinitionFamilies(@_, nextToken => $result->nextToken);
+        $callback->($_ => 'families') foreach (@{ $result->families });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::ECS::ListTaskDefinitionFamilies->_returns, %$params);
+    return undef
   }
   sub ListAllTaskDefinitions {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListTaskDefinitions(@_);
-    my $params = {};
-    
-    $params->{ taskDefinitionArns } = $result->taskDefinitionArns;
-    
 
-    
-    while ($result->nextToken) {
-      $result = $self->ListTaskDefinitions(@_, nextToken => $result->nextToken);
-      
-      push @{ $params->{ taskDefinitionArns } }, @{ $result->taskDefinitionArns };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ taskDefinitionArns } = $result->taskDefinitionArns;
+
+      while ($result->nextToken) {
+        $result = $self->ListTaskDefinitions(@_, nextToken => $result->nextToken);
+        push @{ $result->taskDefinitionArns }, @{ $result->taskDefinitionArns };
+      }
+      $self->new_with_coercions(Paws::ECS::ListTaskDefinitions->_returns, %$params);
+    } else {
+      while ($result->nextToken) {
+        $result = $self->ListTaskDefinitions(@_, nextToken => $result->nextToken);
+        $callback->($_ => 'taskDefinitionArns') foreach (@{ $result->taskDefinitionArns });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::ECS::ListTaskDefinitions->_returns, %$params);
+    return undef
   }
   sub ListAllTasks {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListTasks(@_);
-    my $params = {};
-    
-    $params->{ taskArns } = $result->taskArns;
-    
 
-    
-    while ($result->nextToken) {
-      $result = $self->ListTasks(@_, nextToken => $result->nextToken);
-      
-      push @{ $params->{ taskArns } }, @{ $result->taskArns };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ taskArns } = $result->taskArns;
+
+      while ($result->nextToken) {
+        $result = $self->ListTasks(@_, nextToken => $result->nextToken);
+        push @{ $result->taskArns }, @{ $result->taskArns };
+      }
+      $self->new_with_coercions(Paws::ECS::ListTasks->_returns, %$params);
+    } else {
+      while ($result->nextToken) {
+        $result = $self->ListTasks(@_, nextToken => $result->nextToken);
+        $callback->($_ => 'taskArns') foreach (@{ $result->taskArns });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::ECS::ListTasks->_returns, %$params);
+    return undef
   }
 
 

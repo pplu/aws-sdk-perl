@@ -277,162 +277,194 @@ package Paws::AutoScaling;
   sub DescribeAllAutoScalingGroups {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeAutoScalingGroups(@_);
-    my $params = {};
-    
-    $params->{ AutoScalingGroups } = $result->AutoScalingGroups;
-    
 
-    
-    while ($result->NextToken) {
-      $result = $self->DescribeAutoScalingGroups(@_, NextToken => $result->NextToken);
-      
-      push @{ $params->{ AutoScalingGroups } }, @{ $result->AutoScalingGroups };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ AutoScalingGroups } = $result->AutoScalingGroups;
+
+      while ($result->NextToken) {
+        $result = $self->DescribeAutoScalingGroups(@_, NextToken => $result->NextToken);
+        push @{ $result->AutoScalingGroups }, @{ $result->AutoScalingGroups };
+      }
+      $self->new_with_coercions(Paws::AutoScaling::DescribeAutoScalingGroups->_returns, %$params);
+    } else {
+      while ($result->NextToken) {
+        $result = $self->DescribeAutoScalingGroups(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'AutoScalingGroups') foreach (@{ $result->AutoScalingGroups });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::AutoScaling::DescribeAutoScalingGroups->_returns, %$params);
+    return undef
   }
   sub DescribeAllAutoScalingInstances {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeAutoScalingInstances(@_);
-    my $params = {};
-    
-    $params->{ AutoScalingInstances } = $result->AutoScalingInstances;
-    
 
-    
-    while ($result->NextToken) {
-      $result = $self->DescribeAutoScalingInstances(@_, NextToken => $result->NextToken);
-      
-      push @{ $params->{ AutoScalingInstances } }, @{ $result->AutoScalingInstances };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ AutoScalingInstances } = $result->AutoScalingInstances;
+
+      while ($result->NextToken) {
+        $result = $self->DescribeAutoScalingInstances(@_, NextToken => $result->NextToken);
+        push @{ $result->AutoScalingInstances }, @{ $result->AutoScalingInstances };
+      }
+      $self->new_with_coercions(Paws::AutoScaling::DescribeAutoScalingInstances->_returns, %$params);
+    } else {
+      while ($result->NextToken) {
+        $result = $self->DescribeAutoScalingInstances(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'AutoScalingInstances') foreach (@{ $result->AutoScalingInstances });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::AutoScaling::DescribeAutoScalingInstances->_returns, %$params);
+    return undef
   }
   sub DescribeAllLaunchConfigurations {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeLaunchConfigurations(@_);
-    my $params = {};
-    
-    $params->{ LaunchConfigurations } = $result->LaunchConfigurations;
-    
 
-    
-    while ($result->NextToken) {
-      $result = $self->DescribeLaunchConfigurations(@_, NextToken => $result->NextToken);
-      
-      push @{ $params->{ LaunchConfigurations } }, @{ $result->LaunchConfigurations };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ LaunchConfigurations } = $result->LaunchConfigurations;
+
+      while ($result->NextToken) {
+        $result = $self->DescribeLaunchConfigurations(@_, NextToken => $result->NextToken);
+        push @{ $result->LaunchConfigurations }, @{ $result->LaunchConfigurations };
+      }
+      $self->new_with_coercions(Paws::AutoScaling::DescribeLaunchConfigurations->_returns, %$params);
+    } else {
+      while ($result->NextToken) {
+        $result = $self->DescribeLaunchConfigurations(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'LaunchConfigurations') foreach (@{ $result->LaunchConfigurations });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::AutoScaling::DescribeLaunchConfigurations->_returns, %$params);
+    return undef
   }
   sub DescribeAllNotificationConfigurations {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeNotificationConfigurations(@_);
-    my $params = {};
-    
-    $params->{ NotificationConfigurations } = $result->NotificationConfigurations;
-    
 
-    
-    while ($result->NextToken) {
-      $result = $self->DescribeNotificationConfigurations(@_, NextToken => $result->NextToken);
-      
-      push @{ $params->{ NotificationConfigurations } }, @{ $result->NotificationConfigurations };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ NotificationConfigurations } = $result->NotificationConfigurations;
+
+      while ($result->NextToken) {
+        $result = $self->DescribeNotificationConfigurations(@_, NextToken => $result->NextToken);
+        push @{ $result->NotificationConfigurations }, @{ $result->NotificationConfigurations };
+      }
+      $self->new_with_coercions(Paws::AutoScaling::DescribeNotificationConfigurations->_returns, %$params);
+    } else {
+      while ($result->NextToken) {
+        $result = $self->DescribeNotificationConfigurations(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'NotificationConfigurations') foreach (@{ $result->NotificationConfigurations });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::AutoScaling::DescribeNotificationConfigurations->_returns, %$params);
+    return undef
   }
   sub DescribeAllPolicies {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribePolicies(@_);
-    my $params = {};
-    
-    $params->{ ScalingPolicies } = $result->ScalingPolicies;
-    
 
-    
-    while ($result->NextToken) {
-      $result = $self->DescribePolicies(@_, NextToken => $result->NextToken);
-      
-      push @{ $params->{ ScalingPolicies } }, @{ $result->ScalingPolicies };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ ScalingPolicies } = $result->ScalingPolicies;
+
+      while ($result->NextToken) {
+        $result = $self->DescribePolicies(@_, NextToken => $result->NextToken);
+        push @{ $result->ScalingPolicies }, @{ $result->ScalingPolicies };
+      }
+      $self->new_with_coercions(Paws::AutoScaling::DescribePolicies->_returns, %$params);
+    } else {
+      while ($result->NextToken) {
+        $result = $self->DescribePolicies(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'ScalingPolicies') foreach (@{ $result->ScalingPolicies });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::AutoScaling::DescribePolicies->_returns, %$params);
+    return undef
   }
   sub DescribeAllScalingActivities {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeScalingActivities(@_);
-    my $params = {};
-    
-    $params->{ Activities } = $result->Activities;
-    
 
-    
-    while ($result->NextToken) {
-      $result = $self->DescribeScalingActivities(@_, NextToken => $result->NextToken);
-      
-      push @{ $params->{ Activities } }, @{ $result->Activities };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ Activities } = $result->Activities;
+
+      while ($result->NextToken) {
+        $result = $self->DescribeScalingActivities(@_, NextToken => $result->NextToken);
+        push @{ $result->Activities }, @{ $result->Activities };
+      }
+      $self->new_with_coercions(Paws::AutoScaling::DescribeScalingActivities->_returns, %$params);
+    } else {
+      while ($result->NextToken) {
+        $result = $self->DescribeScalingActivities(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'Activities') foreach (@{ $result->Activities });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::AutoScaling::DescribeScalingActivities->_returns, %$params);
+    return undef
   }
   sub DescribeAllScheduledActions {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeScheduledActions(@_);
-    my $params = {};
-    
-    $params->{ ScheduledUpdateGroupActions } = $result->ScheduledUpdateGroupActions;
-    
 
-    
-    while ($result->NextToken) {
-      $result = $self->DescribeScheduledActions(@_, NextToken => $result->NextToken);
-      
-      push @{ $params->{ ScheduledUpdateGroupActions } }, @{ $result->ScheduledUpdateGroupActions };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ ScheduledUpdateGroupActions } = $result->ScheduledUpdateGroupActions;
+
+      while ($result->NextToken) {
+        $result = $self->DescribeScheduledActions(@_, NextToken => $result->NextToken);
+        push @{ $result->ScheduledUpdateGroupActions }, @{ $result->ScheduledUpdateGroupActions };
+      }
+      $self->new_with_coercions(Paws::AutoScaling::DescribeScheduledActions->_returns, %$params);
+    } else {
+      while ($result->NextToken) {
+        $result = $self->DescribeScheduledActions(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'ScheduledUpdateGroupActions') foreach (@{ $result->ScheduledUpdateGroupActions });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::AutoScaling::DescribeScheduledActions->_returns, %$params);
+    return undef
   }
   sub DescribeAllTags {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeTags(@_);
-    my $params = {};
-    
-    $params->{ Tags } = $result->Tags;
-    
 
-    
-    while ($result->NextToken) {
-      $result = $self->DescribeTags(@_, NextToken => $result->NextToken);
-      
-      push @{ $params->{ Tags } }, @{ $result->Tags };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ Tags } = $result->Tags;
+
+      while ($result->NextToken) {
+        $result = $self->DescribeTags(@_, NextToken => $result->NextToken);
+        push @{ $result->Tags }, @{ $result->Tags };
+      }
+      $self->new_with_coercions(Paws::AutoScaling::DescribeTags->_returns, %$params);
+    } else {
+      while ($result->NextToken) {
+        $result = $self->DescribeTags(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'Tags') foreach (@{ $result->Tags });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::AutoScaling::DescribeTags->_returns, %$params);
+    return undef
   }
 
 

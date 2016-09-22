@@ -133,42 +133,50 @@ package Paws::Route53Domains;
   sub ListAllDomains {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListDomains(@_);
-    my $params = {};
-    
-    $params->{ Domains } = $result->Domains;
-    
 
-    
-    while ($result->Marker) {
-      $result = $self->ListDomains(@_, Marker => $result->NextPageMarker);
-      
-      push @{ $params->{ Domains } }, @{ $result->Domains };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ Domains } = $result->Domains;
+
+      while ($result->Marker) {
+        $result = $self->ListDomains(@_, Marker => $result->NextPageMarker);
+        push @{ $result->Domains }, @{ $result->Domains };
+      }
+      $self->new_with_coercions(Paws::Route53Domains::ListDomains->_returns, %$params);
+    } else {
+      while ($result->Marker) {
+        $result = $self->ListDomains(@_, Marker => $result->NextPageMarker);
+        $callback->($_ => 'Domains') foreach (@{ $result->Domains });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::Route53Domains::ListDomains->_returns, %$params);
+    return undef
   }
   sub ListAllOperations {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListOperations(@_);
-    my $params = {};
-    
-    $params->{ Operations } = $result->Operations;
-    
 
-    
-    while ($result->Marker) {
-      $result = $self->ListOperations(@_, Marker => $result->NextPageMarker);
-      
-      push @{ $params->{ Operations } }, @{ $result->Operations };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ Operations } = $result->Operations;
+
+      while ($result->Marker) {
+        $result = $self->ListOperations(@_, Marker => $result->NextPageMarker);
+        push @{ $result->Operations }, @{ $result->Operations };
+      }
+      $self->new_with_coercions(Paws::Route53Domains::ListOperations->_returns, %$params);
+    } else {
+      while ($result->Marker) {
+        $result = $self->ListOperations(@_, Marker => $result->NextPageMarker);
+        $callback->($_ => 'Operations') foreach (@{ $result->Operations });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::Route53Domains::ListOperations->_returns, %$params);
+    return undef
   }
 
 

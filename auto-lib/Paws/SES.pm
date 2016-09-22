@@ -227,22 +227,26 @@ package Paws::SES;
   sub ListAllIdentities {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListIdentities(@_);
-    my $params = {};
-    
-    $params->{ Identities } = $result->Identities;
-    
 
-    
-    while ($result->NextToken) {
-      $result = $self->ListIdentities(@_, NextToken => $result->NextToken);
-      
-      push @{ $params->{ Identities } }, @{ $result->Identities };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ Identities } = $result->Identities;
+
+      while ($result->NextToken) {
+        $result = $self->ListIdentities(@_, NextToken => $result->NextToken);
+        push @{ $result->Identities }, @{ $result->Identities };
+      }
+      $self->new_with_coercions(Paws::SES::ListIdentities->_returns, %$params);
+    } else {
+      while ($result->NextToken) {
+        $result = $self->ListIdentities(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'Identities') foreach (@{ $result->Identities });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::SES::ListIdentities->_returns, %$params);
+    return undef
   }
 
 

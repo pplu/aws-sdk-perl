@@ -171,102 +171,122 @@ package Paws::EMR;
   sub ListAllBootstrapActions {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListBootstrapActions(@_);
-    my $params = {};
-    
-    $params->{ BootstrapActions } = $result->BootstrapActions;
-    
 
-    
-    while ($result->Marker) {
-      $result = $self->ListBootstrapActions(@_, Marker => $result->Marker);
-      
-      push @{ $params->{ BootstrapActions } }, @{ $result->BootstrapActions };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ BootstrapActions } = $result->BootstrapActions;
+
+      while ($result->Marker) {
+        $result = $self->ListBootstrapActions(@_, Marker => $result->Marker);
+        push @{ $result->BootstrapActions }, @{ $result->BootstrapActions };
+      }
+      $self->new_with_coercions(Paws::EMR::ListBootstrapActions->_returns, %$params);
+    } else {
+      while ($result->Marker) {
+        $result = $self->ListBootstrapActions(@_, Marker => $result->Marker);
+        $callback->($_ => 'BootstrapActions') foreach (@{ $result->BootstrapActions });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::EMR::ListBootstrapActions->_returns, %$params);
+    return undef
   }
   sub ListAllClusters {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListClusters(@_);
-    my $params = {};
-    
-    $params->{ Clusters } = $result->Clusters;
-    
 
-    
-    while ($result->Marker) {
-      $result = $self->ListClusters(@_, Marker => $result->Marker);
-      
-      push @{ $params->{ Clusters } }, @{ $result->Clusters };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ Clusters } = $result->Clusters;
+
+      while ($result->Marker) {
+        $result = $self->ListClusters(@_, Marker => $result->Marker);
+        push @{ $result->Clusters }, @{ $result->Clusters };
+      }
+      $self->new_with_coercions(Paws::EMR::ListClusters->_returns, %$params);
+    } else {
+      while ($result->Marker) {
+        $result = $self->ListClusters(@_, Marker => $result->Marker);
+        $callback->($_ => 'Clusters') foreach (@{ $result->Clusters });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::EMR::ListClusters->_returns, %$params);
+    return undef
   }
   sub ListAllInstanceGroups {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListInstanceGroups(@_);
-    my $params = {};
-    
-    $params->{ InstanceGroups } = $result->InstanceGroups;
-    
 
-    
-    while ($result->Marker) {
-      $result = $self->ListInstanceGroups(@_, Marker => $result->Marker);
-      
-      push @{ $params->{ InstanceGroups } }, @{ $result->InstanceGroups };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ InstanceGroups } = $result->InstanceGroups;
+
+      while ($result->Marker) {
+        $result = $self->ListInstanceGroups(@_, Marker => $result->Marker);
+        push @{ $result->InstanceGroups }, @{ $result->InstanceGroups };
+      }
+      $self->new_with_coercions(Paws::EMR::ListInstanceGroups->_returns, %$params);
+    } else {
+      while ($result->Marker) {
+        $result = $self->ListInstanceGroups(@_, Marker => $result->Marker);
+        $callback->($_ => 'InstanceGroups') foreach (@{ $result->InstanceGroups });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::EMR::ListInstanceGroups->_returns, %$params);
+    return undef
   }
   sub ListAllInstances {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListInstances(@_);
-    my $params = {};
-    
-    $params->{ Instances } = $result->Instances;
-    
 
-    
-    while ($result->Marker) {
-      $result = $self->ListInstances(@_, Marker => $result->Marker);
-      
-      push @{ $params->{ Instances } }, @{ $result->Instances };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ Instances } = $result->Instances;
+
+      while ($result->Marker) {
+        $result = $self->ListInstances(@_, Marker => $result->Marker);
+        push @{ $result->Instances }, @{ $result->Instances };
+      }
+      $self->new_with_coercions(Paws::EMR::ListInstances->_returns, %$params);
+    } else {
+      while ($result->Marker) {
+        $result = $self->ListInstances(@_, Marker => $result->Marker);
+        $callback->($_ => 'Instances') foreach (@{ $result->Instances });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::EMR::ListInstances->_returns, %$params);
+    return undef
   }
   sub ListAllSteps {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListSteps(@_);
-    my $params = {};
-    
-    $params->{ Steps } = $result->Steps;
-    
 
-    
-    while ($result->Marker) {
-      $result = $self->ListSteps(@_, Marker => $result->Marker);
-      
-      push @{ $params->{ Steps } }, @{ $result->Steps };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ Steps } = $result->Steps;
+
+      while ($result->Marker) {
+        $result = $self->ListSteps(@_, Marker => $result->Marker);
+        push @{ $result->Steps }, @{ $result->Steps };
+      }
+      $self->new_with_coercions(Paws::EMR::ListSteps->_returns, %$params);
+    } else {
+      while ($result->Marker) {
+        $result = $self->ListSteps(@_, Marker => $result->Marker);
+        $callback->($_ => 'Steps') foreach (@{ $result->Steps });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::EMR::ListSteps->_returns, %$params);
+    return undef
   }
 
 

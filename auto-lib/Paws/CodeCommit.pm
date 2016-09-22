@@ -93,42 +93,50 @@ package Paws::CodeCommit;
   sub ListAllBranches {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListBranches(@_);
-    my $params = {};
-    
-    $params->{ branches } = $result->branches;
-    
 
-    
-    while ($result->nextToken) {
-      $result = $self->ListBranches(@_, nextToken => $result->nextToken);
-      
-      push @{ $params->{ branches } }, @{ $result->branches };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ branches } = $result->branches;
+
+      while ($result->nextToken) {
+        $result = $self->ListBranches(@_, nextToken => $result->nextToken);
+        push @{ $result->branches }, @{ $result->branches };
+      }
+      $self->new_with_coercions(Paws::CodeCommit::ListBranches->_returns, %$params);
+    } else {
+      while ($result->nextToken) {
+        $result = $self->ListBranches(@_, nextToken => $result->nextToken);
+        $callback->($_ => 'branches') foreach (@{ $result->branches });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::CodeCommit::ListBranches->_returns, %$params);
+    return undef
   }
   sub ListAllRepositories {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListRepositories(@_);
-    my $params = {};
-    
-    $params->{ repositories } = $result->repositories;
-    
 
-    
-    while ($result->nextToken) {
-      $result = $self->ListRepositories(@_, nextToken => $result->nextToken);
-      
-      push @{ $params->{ repositories } }, @{ $result->repositories };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ repositories } = $result->repositories;
+
+      while ($result->nextToken) {
+        $result = $self->ListRepositories(@_, nextToken => $result->nextToken);
+        push @{ $result->repositories }, @{ $result->repositories };
+      }
+      $self->new_with_coercions(Paws::CodeCommit::ListRepositories->_returns, %$params);
+    } else {
+      while ($result->nextToken) {
+        $result = $self->ListRepositories(@_, nextToken => $result->nextToken);
+        $callback->($_ => 'repositories') foreach (@{ $result->repositories });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::CodeCommit::ListRepositories->_returns, %$params);
+    return undef
   }
 
 

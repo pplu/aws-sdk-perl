@@ -138,42 +138,50 @@ package Paws::Lambda;
   sub ListAllEventSourceMappings {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListEventSourceMappings(@_);
-    my $params = {};
-    
-    $params->{ EventSourceMappings } = $result->EventSourceMappings;
-    
 
-    
-    while ($result->Marker) {
-      $result = $self->ListEventSourceMappings(@_, Marker => $result->NextMarker);
-      
-      push @{ $params->{ EventSourceMappings } }, @{ $result->EventSourceMappings };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ EventSourceMappings } = $result->EventSourceMappings;
+
+      while ($result->Marker) {
+        $result = $self->ListEventSourceMappings(@_, Marker => $result->NextMarker);
+        push @{ $result->EventSourceMappings }, @{ $result->EventSourceMappings };
+      }
+      $self->new_with_coercions(Paws::Lambda::ListEventSourceMappings->_returns, %$params);
+    } else {
+      while ($result->Marker) {
+        $result = $self->ListEventSourceMappings(@_, Marker => $result->NextMarker);
+        $callback->($_ => 'EventSourceMappings') foreach (@{ $result->EventSourceMappings });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::Lambda::ListEventSourceMappings->_returns, %$params);
+    return undef
   }
   sub ListAllFunctions {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListFunctions(@_);
-    my $params = {};
-    
-    $params->{ Functions } = $result->Functions;
-    
 
-    
-    while ($result->Marker) {
-      $result = $self->ListFunctions(@_, Marker => $result->NextMarker);
-      
-      push @{ $params->{ Functions } }, @{ $result->Functions };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ Functions } = $result->Functions;
+
+      while ($result->Marker) {
+        $result = $self->ListFunctions(@_, Marker => $result->NextMarker);
+        push @{ $result->Functions }, @{ $result->Functions };
+      }
+      $self->new_with_coercions(Paws::Lambda::ListFunctions->_returns, %$params);
+    } else {
+      while ($result->Marker) {
+        $result = $self->ListFunctions(@_, Marker => $result->NextMarker);
+        $callback->($_ => 'Functions') foreach (@{ $result->Functions });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::Lambda::ListFunctions->_returns, %$params);
+    return undef
   }
 
 

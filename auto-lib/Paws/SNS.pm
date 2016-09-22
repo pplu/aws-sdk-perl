@@ -167,102 +167,122 @@ package Paws::SNS;
   sub ListAllEndpointsByPlatformApplication {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListEndpointsByPlatformApplication(@_);
-    my $params = {};
-    
-    $params->{ Endpoints } = $result->Endpoints;
-    
 
-    
-    while ($result->NextToken) {
-      $result = $self->ListEndpointsByPlatformApplication(@_, NextToken => $result->NextToken);
-      
-      push @{ $params->{ Endpoints } }, @{ $result->Endpoints };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ Endpoints } = $result->Endpoints;
+
+      while ($result->NextToken) {
+        $result = $self->ListEndpointsByPlatformApplication(@_, NextToken => $result->NextToken);
+        push @{ $result->Endpoints }, @{ $result->Endpoints };
+      }
+      $self->new_with_coercions(Paws::SNS::ListEndpointsByPlatformApplication->_returns, %$params);
+    } else {
+      while ($result->NextToken) {
+        $result = $self->ListEndpointsByPlatformApplication(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'Endpoints') foreach (@{ $result->Endpoints });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::SNS::ListEndpointsByPlatformApplication->_returns, %$params);
+    return undef
   }
   sub ListAllPlatformApplications {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListPlatformApplications(@_);
-    my $params = {};
-    
-    $params->{ PlatformApplications } = $result->PlatformApplications;
-    
 
-    
-    while ($result->NextToken) {
-      $result = $self->ListPlatformApplications(@_, NextToken => $result->NextToken);
-      
-      push @{ $params->{ PlatformApplications } }, @{ $result->PlatformApplications };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ PlatformApplications } = $result->PlatformApplications;
+
+      while ($result->NextToken) {
+        $result = $self->ListPlatformApplications(@_, NextToken => $result->NextToken);
+        push @{ $result->PlatformApplications }, @{ $result->PlatformApplications };
+      }
+      $self->new_with_coercions(Paws::SNS::ListPlatformApplications->_returns, %$params);
+    } else {
+      while ($result->NextToken) {
+        $result = $self->ListPlatformApplications(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'PlatformApplications') foreach (@{ $result->PlatformApplications });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::SNS::ListPlatformApplications->_returns, %$params);
+    return undef
   }
   sub ListAllSubscriptions {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListSubscriptions(@_);
-    my $params = {};
-    
-    $params->{ Subscriptions } = $result->Subscriptions;
-    
 
-    
-    while ($result->NextToken) {
-      $result = $self->ListSubscriptions(@_, NextToken => $result->NextToken);
-      
-      push @{ $params->{ Subscriptions } }, @{ $result->Subscriptions };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ Subscriptions } = $result->Subscriptions;
+
+      while ($result->NextToken) {
+        $result = $self->ListSubscriptions(@_, NextToken => $result->NextToken);
+        push @{ $result->Subscriptions }, @{ $result->Subscriptions };
+      }
+      $self->new_with_coercions(Paws::SNS::ListSubscriptions->_returns, %$params);
+    } else {
+      while ($result->NextToken) {
+        $result = $self->ListSubscriptions(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'Subscriptions') foreach (@{ $result->Subscriptions });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::SNS::ListSubscriptions->_returns, %$params);
+    return undef
   }
   sub ListAllSubscriptionsByTopic {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListSubscriptionsByTopic(@_);
-    my $params = {};
-    
-    $params->{ Subscriptions } = $result->Subscriptions;
-    
 
-    
-    while ($result->NextToken) {
-      $result = $self->ListSubscriptionsByTopic(@_, NextToken => $result->NextToken);
-      
-      push @{ $params->{ Subscriptions } }, @{ $result->Subscriptions };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ Subscriptions } = $result->Subscriptions;
+
+      while ($result->NextToken) {
+        $result = $self->ListSubscriptionsByTopic(@_, NextToken => $result->NextToken);
+        push @{ $result->Subscriptions }, @{ $result->Subscriptions };
+      }
+      $self->new_with_coercions(Paws::SNS::ListSubscriptionsByTopic->_returns, %$params);
+    } else {
+      while ($result->NextToken) {
+        $result = $self->ListSubscriptionsByTopic(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'Subscriptions') foreach (@{ $result->Subscriptions });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::SNS::ListSubscriptionsByTopic->_returns, %$params);
+    return undef
   }
   sub ListAllTopics {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListTopics(@_);
-    my $params = {};
-    
-    $params->{ Topics } = $result->Topics;
-    
 
-    
-    while ($result->NextToken) {
-      $result = $self->ListTopics(@_, NextToken => $result->NextToken);
-      
-      push @{ $params->{ Topics } }, @{ $result->Topics };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ Topics } = $result->Topics;
+
+      while ($result->NextToken) {
+        $result = $self->ListTopics(@_, NextToken => $result->NextToken);
+        push @{ $result->Topics }, @{ $result->Topics };
+      }
+      $self->new_with_coercions(Paws::SNS::ListTopics->_returns, %$params);
+    } else {
+      while ($result->NextToken) {
+        $result = $self->ListTopics(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'Topics') foreach (@{ $result->Topics });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::SNS::ListTopics->_returns, %$params);
+    return undef
   }
 
 

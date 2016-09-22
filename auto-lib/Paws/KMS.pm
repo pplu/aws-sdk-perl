@@ -178,82 +178,98 @@ package Paws::KMS;
   sub ListAllAliases {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListAliases(@_);
-    my $params = {};
-    
-    $params->{ Aliases } = $result->Aliases;
-    
 
-    
-    while ($result->Truncated) {
-      $result = $self->ListAliases(@_, Marker => $result->NextMarker);
-      
-      push @{ $params->{ Aliases } }, @{ $result->Aliases };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ Aliases } = $result->Aliases;
+
+      while ($result->Truncated) {
+        $result = $self->ListAliases(@_, Marker => $result->NextMarker);
+        push @{ $params->{ Aliases } }, @{ $result->Aliases };
+      }
+      $self->new_with_coercions(Paws::KMS::ListAliases->_returns, %$params);
+    } else {
+      while ($result->Truncated) {
+        $result = $self->ListAliases(@_, Marker => $result->NextMarker);
+        $callback->($_ => 'Aliases') foreach (@{ $result->Aliases });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::KMS::ListAliases->_returns, %$params);
+    return undef
   }
   sub ListAllGrants {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListGrants(@_);
-    my $params = {};
-    
-    $params->{ Grants } = $result->Grants;
-    
 
-    
-    while ($result->Truncated) {
-      $result = $self->ListGrants(@_, Marker => $result->NextMarker);
-      
-      push @{ $params->{ Grants } }, @{ $result->Grants };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ Grants } = $result->Grants;
+
+      while ($result->Truncated) {
+        $result = $self->ListGrants(@_, Marker => $result->NextMarker);
+        push @{ $params->{ Grants } }, @{ $result->Grants };
+      }
+      $self->new_with_coercions(Paws::KMS::ListGrants->_returns, %$params);
+    } else {
+      while ($result->Truncated) {
+        $result = $self->ListGrants(@_, Marker => $result->NextMarker);
+        $callback->($_ => 'Grants') foreach (@{ $result->Grants });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::KMS::ListGrants->_returns, %$params);
+    return undef
   }
   sub ListAllKeyPolicies {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListKeyPolicies(@_);
-    my $params = {};
-    
-    $params->{ PolicyNames } = $result->PolicyNames;
-    
 
-    
-    while ($result->Truncated) {
-      $result = $self->ListKeyPolicies(@_, Marker => $result->NextMarker);
-      
-      push @{ $params->{ PolicyNames } }, @{ $result->PolicyNames };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ PolicyNames } = $result->PolicyNames;
+
+      while ($result->Truncated) {
+        $result = $self->ListKeyPolicies(@_, Marker => $result->NextMarker);
+        push @{ $params->{ PolicyNames } }, @{ $result->PolicyNames };
+      }
+      $self->new_with_coercions(Paws::KMS::ListKeyPolicies->_returns, %$params);
+    } else {
+      while ($result->Truncated) {
+        $result = $self->ListKeyPolicies(@_, Marker => $result->NextMarker);
+        $callback->($_ => 'PolicyNames') foreach (@{ $result->PolicyNames });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::KMS::ListKeyPolicies->_returns, %$params);
+    return undef
   }
   sub ListAllKeys {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListKeys(@_);
-    my $params = {};
-    
-    $params->{ Keys } = $result->Keys;
-    
 
-    
-    while ($result->Truncated) {
-      $result = $self->ListKeys(@_, Marker => $result->NextMarker);
-      
-      push @{ $params->{ Keys } }, @{ $result->Keys };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ Keys } = $result->Keys;
+
+      while ($result->Truncated) {
+        $result = $self->ListKeys(@_, Marker => $result->NextMarker);
+        push @{ $params->{ Keys } }, @{ $result->Keys };
+      }
+      $self->new_with_coercions(Paws::KMS::ListKeys->_returns, %$params);
+    } else {
+      while ($result->Truncated) {
+        $result = $self->ListKeys(@_, Marker => $result->NextMarker);
+        $callback->($_ => 'Keys') foreach (@{ $result->Keys });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::KMS::ListKeys->_returns, %$params);
+    return undef
   }
 
 

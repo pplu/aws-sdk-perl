@@ -113,62 +113,74 @@ package Paws::DataPipeline;
   sub DescribeAllObjects {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeObjects(@_);
-    my $params = {};
-    
-    $params->{ pipelineObjects } = $result->pipelineObjects;
-    
 
-    
-    while ($result->hasMoreResults) {
-      $result = $self->DescribeObjects(@_, marker => $result->marker);
-      
-      push @{ $params->{ pipelineObjects } }, @{ $result->pipelineObjects };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ pipelineObjects } = $result->pipelineObjects;
+
+      while ($result->hasMoreResults) {
+        $result = $self->DescribeObjects(@_, marker => $result->marker);
+        push @{ $params->{ pipelineObjects } }, @{ $result->pipelineObjects };
+      }
+      $self->new_with_coercions(Paws::DataPipeline::DescribeObjects->_returns, %$params);
+    } else {
+      while ($result->hasMoreResults) {
+        $result = $self->DescribeObjects(@_, marker => $result->marker);
+        $callback->($_ => 'pipelineObjects') foreach (@{ $result->pipelineObjects });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::DataPipeline::DescribeObjects->_returns, %$params);
+    return undef
   }
   sub ListAllPipelines {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListPipelines(@_);
-    my $params = {};
-    
-    $params->{ pipelineIdList } = $result->pipelineIdList;
-    
 
-    
-    while ($result->hasMoreResults) {
-      $result = $self->ListPipelines(@_, marker => $result->marker);
-      
-      push @{ $params->{ pipelineIdList } }, @{ $result->pipelineIdList };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ pipelineIdList } = $result->pipelineIdList;
+
+      while ($result->hasMoreResults) {
+        $result = $self->ListPipelines(@_, marker => $result->marker);
+        push @{ $params->{ pipelineIdList } }, @{ $result->pipelineIdList };
+      }
+      $self->new_with_coercions(Paws::DataPipeline::ListPipelines->_returns, %$params);
+    } else {
+      while ($result->hasMoreResults) {
+        $result = $self->ListPipelines(@_, marker => $result->marker);
+        $callback->($_ => 'pipelineIdList') foreach (@{ $result->pipelineIdList });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::DataPipeline::ListPipelines->_returns, %$params);
+    return undef
   }
   sub QueryAllObjects {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->QueryObjects(@_);
-    my $params = {};
-    
-    $params->{ ids } = $result->ids;
-    
 
-    
-    while ($result->hasMoreResults) {
-      $result = $self->QueryObjects(@_, marker => $result->marker);
-      
-      push @{ $params->{ ids } }, @{ $result->ids };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ ids } = $result->ids;
+
+      while ($result->hasMoreResults) {
+        $result = $self->QueryObjects(@_, marker => $result->marker);
+        push @{ $params->{ ids } }, @{ $result->ids };
+      }
+      $self->new_with_coercions(Paws::DataPipeline::QueryObjects->_returns, %$params);
+    } else {
+      while ($result->hasMoreResults) {
+        $result = $self->QueryObjects(@_, marker => $result->marker);
+        $callback->($_ => 'ids') foreach (@{ $result->ids });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::DataPipeline::QueryObjects->_returns, %$params);
+    return undef
   }
 
 

@@ -72,62 +72,74 @@ package Paws::CloudWatch;
   sub DescribeAllAlarmHistory {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeAlarmHistory(@_);
-    my $params = {};
-    
-    $params->{ AlarmHistoryItems } = $result->AlarmHistoryItems;
-    
 
-    
-    while ($result->NextToken) {
-      $result = $self->DescribeAlarmHistory(@_, NextToken => $result->NextToken);
-      
-      push @{ $params->{ AlarmHistoryItems } }, @{ $result->AlarmHistoryItems };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ AlarmHistoryItems } = $result->AlarmHistoryItems;
+
+      while ($result->NextToken) {
+        $result = $self->DescribeAlarmHistory(@_, NextToken => $result->NextToken);
+        push @{ $result->AlarmHistoryItems }, @{ $result->AlarmHistoryItems };
+      }
+      $self->new_with_coercions(Paws::CloudWatch::DescribeAlarmHistory->_returns, %$params);
+    } else {
+      while ($result->NextToken) {
+        $result = $self->DescribeAlarmHistory(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'AlarmHistoryItems') foreach (@{ $result->AlarmHistoryItems });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::CloudWatch::DescribeAlarmHistory->_returns, %$params);
+    return undef
   }
   sub DescribeAllAlarms {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeAlarms(@_);
-    my $params = {};
-    
-    $params->{ MetricAlarms } = $result->MetricAlarms;
-    
 
-    
-    while ($result->NextToken) {
-      $result = $self->DescribeAlarms(@_, NextToken => $result->NextToken);
-      
-      push @{ $params->{ MetricAlarms } }, @{ $result->MetricAlarms };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ MetricAlarms } = $result->MetricAlarms;
+
+      while ($result->NextToken) {
+        $result = $self->DescribeAlarms(@_, NextToken => $result->NextToken);
+        push @{ $result->MetricAlarms }, @{ $result->MetricAlarms };
+      }
+      $self->new_with_coercions(Paws::CloudWatch::DescribeAlarms->_returns, %$params);
+    } else {
+      while ($result->NextToken) {
+        $result = $self->DescribeAlarms(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'MetricAlarms') foreach (@{ $result->MetricAlarms });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::CloudWatch::DescribeAlarms->_returns, %$params);
+    return undef
   }
   sub ListAllMetrics {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListMetrics(@_);
-    my $params = {};
-    
-    $params->{ Metrics } = $result->Metrics;
-    
 
-    
-    while ($result->NextToken) {
-      $result = $self->ListMetrics(@_, NextToken => $result->NextToken);
-      
-      push @{ $params->{ Metrics } }, @{ $result->Metrics };
-      
+    if (not defined $callback) {
+      my $params = {};
+      $params->{ Metrics } = $result->Metrics;
+
+      while ($result->NextToken) {
+        $result = $self->ListMetrics(@_, NextToken => $result->NextToken);
+        push @{ $result->Metrics }, @{ $result->Metrics };
+      }
+      $self->new_with_coercions(Paws::CloudWatch::ListMetrics->_returns, %$params);
+    } else {
+      while ($result->NextToken) {
+        $result = $self->ListMetrics(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'Metrics') foreach (@{ $result->Metrics });
+      }
     }
-    
 
-    return $self->new_with_coercions(Paws::CloudWatch::ListMetrics->_returns, %$params);
+    return undef
   }
 
 
