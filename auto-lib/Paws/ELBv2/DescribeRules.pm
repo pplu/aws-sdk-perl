@@ -2,7 +2,7 @@
 package Paws::ELBv2::DescribeRules;
   use Moose;
   has ListenerArn => (is => 'ro', isa => 'Str');
-  has RuleArns => (is => 'ro', isa => 'ArrayRef[Str]');
+  has RuleArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
   use MooseX::ClassAttribute;
 
@@ -40,7 +40,7 @@ The Amazon Resource Name (ARN) of the listener.
 
 
 
-=head2 RuleArns => ArrayRef[Str]
+=head2 RuleArns => ArrayRef[Str|Undef]
 
 The Amazon Resource Names (ARN) of the rules.
 

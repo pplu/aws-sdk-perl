@@ -6,9 +6,9 @@ package Paws::ServiceCatalog::ProductViewFilters;
   class_has xml_keys =>(is => 'ro', default => 'key');
   class_has xml_values =>(is => 'ro', default => 'value');
 
-  has FullTextSearch => (is => 'ro', isa => 'ArrayRef[Str]');
-  has Owner => (is => 'ro', isa => 'ArrayRef[Str]');
-  has ProductType => (is => 'ro', isa => 'ArrayRef[Str]');
+  has FullTextSearch => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has Owner => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has ProductType => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 1;
 
 ### main pod documentation begin ###
@@ -44,13 +44,13 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 FullTextSearch => ArrayRef[Str]
+=head2 FullTextSearch => ArrayRef[Str|Undef]
 
 
-=head2 Owner => ArrayRef[Str]
+=head2 Owner => ArrayRef[Str|Undef]
 
 
-=head2 ProductType => ArrayRef[Str]
+=head2 ProductType => ArrayRef[Str|Undef]
 
 
 

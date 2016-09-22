@@ -1,6 +1,6 @@
 package Paws::DS::ConditionalForwarder;
   use Moose;
-  has DnsIpAddrs => (is => 'ro', isa => 'ArrayRef[Str]');
+  has DnsIpAddrs => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has RemoteDomainName => (is => 'ro', isa => 'Str');
   has ReplicationScope => (is => 'ro', isa => 'Str');
 1;
@@ -40,7 +40,7 @@ trust relationship with another domain.
 =head1 ATTRIBUTES
 
 
-=head2 DnsIpAddrs => ArrayRef[Str]
+=head2 DnsIpAddrs => ArrayRef[Str|Undef]
 
   The IP addresses of the remote DNS server associated with
 RemoteDomainName. This is the IP address of the DNS server that your

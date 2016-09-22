@@ -1494,7 +1494,7 @@ will be set to OPERATION_NOT_PERMITTED. For details and example IAM
 policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 
-=head2 StartWorkflowExecution(Domain => Str, WorkflowId => Str, WorkflowType => L<Paws::SimpleWorkflow::WorkflowType>, [ChildPolicy => Str, ExecutionStartToCloseTimeout => Str, Input => Str, LambdaRole => Str, TagList => ArrayRef[Str], TaskList => L<Paws::SimpleWorkflow::TaskList>, TaskPriority => Str, TaskStartToCloseTimeout => Str])
+=head2 StartWorkflowExecution(Domain => Str, WorkflowId => Str, WorkflowType => L<Paws::SimpleWorkflow::WorkflowType>, [ChildPolicy => Str, ExecutionStartToCloseTimeout => Str, Input => Str, LambdaRole => Str, TagList => ArrayRef[Str|Undef], TaskList => L<Paws::SimpleWorkflow::TaskList>, TaskPriority => Str, TaskStartToCloseTimeout => Str])
 
 Each argument is described in detail in: L<Paws::SimpleWorkflow::StartWorkflowExecution>
 

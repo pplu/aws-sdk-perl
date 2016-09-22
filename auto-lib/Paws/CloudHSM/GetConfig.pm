@@ -3,7 +3,7 @@ package Paws::CloudHSM::GetConfig;
   use Moose;
   has ClientArn => (is => 'ro', isa => 'Str', required => 1);
   has ClientVersion => (is => 'ro', isa => 'Str', required => 1);
-  has HapgList => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has HapgList => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -47,7 +47,7 @@ The client version.
 
 Valid values are: C<"5.1">, C<"5.3">
 
-=head2 B<REQUIRED> HapgList => ArrayRef[Str]
+=head2 B<REQUIRED> HapgList => ArrayRef[Str|Undef]
 
 A list of ARNs that identify the high-availability partition groups
 that are associated with the client.

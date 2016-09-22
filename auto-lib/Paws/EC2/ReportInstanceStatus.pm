@@ -4,8 +4,8 @@ package Paws::EC2::ReportInstanceStatus;
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description' );
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has EndTime => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'endTime' );
-  has Instances => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'instanceId' , required => 1);
-  has ReasonCodes => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'reasonCode' , required => 1);
+  has Instances => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'instanceId' , required => 1);
+  has ReasonCodes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'reasonCode' , required => 1);
   has StartTime => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'startTime' );
   has Status => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'status' , required => 1);
 
@@ -60,13 +60,13 @@ The time at which the reported instance health state ended.
 
 
 
-=head2 B<REQUIRED> Instances => ArrayRef[Str]
+=head2 B<REQUIRED> Instances => ArrayRef[Str|Undef]
 
 One or more instances.
 
 
 
-=head2 B<REQUIRED> ReasonCodes => ArrayRef[Str]
+=head2 B<REQUIRED> ReasonCodes => ArrayRef[Str|Undef]
 
 One or more reason codes that describes the health state of your
 instance.

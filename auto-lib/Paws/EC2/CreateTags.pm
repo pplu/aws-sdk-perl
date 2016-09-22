@@ -2,7 +2,7 @@
 package Paws::EC2::CreateTags;
   use Moose;
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
-  has Resources => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'ResourceId' , required => 1);
+  has Resources => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'ResourceId' , required => 1);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', traits => ['NameInRequest'], request_name => 'Tag' , required => 1);
 
   use MooseX::ClassAttribute;
@@ -44,7 +44,7 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 
 
-=head2 B<REQUIRED> Resources => ArrayRef[Str]
+=head2 B<REQUIRED> Resources => ArrayRef[Str|Undef]
 
 The IDs of one or more resources to tag. For example, ami-1a2b3c4d.
 

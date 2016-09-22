@@ -5,20 +5,20 @@ package Paws::ElastiCache::CreateReplicationGroup;
   has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Bool');
   has CacheNodeType => (is => 'ro', isa => 'Str');
   has CacheParameterGroupName => (is => 'ro', isa => 'Str');
-  has CacheSecurityGroupNames => (is => 'ro', isa => 'ArrayRef[Str]');
+  has CacheSecurityGroupNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has CacheSubnetGroupName => (is => 'ro', isa => 'Str');
   has Engine => (is => 'ro', isa => 'Str');
   has EngineVersion => (is => 'ro', isa => 'Str');
   has NotificationTopicArn => (is => 'ro', isa => 'Str');
   has NumCacheClusters => (is => 'ro', isa => 'Int');
   has Port => (is => 'ro', isa => 'Int');
-  has PreferredCacheClusterAZs => (is => 'ro', isa => 'ArrayRef[Str]');
+  has PreferredCacheClusterAZs => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
   has PrimaryClusterId => (is => 'ro', isa => 'Str');
   has ReplicationGroupDescription => (is => 'ro', isa => 'Str', required => 1);
   has ReplicationGroupId => (is => 'ro', isa => 'Str', required => 1);
-  has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str]');
-  has SnapshotArns => (is => 'ro', isa => 'ArrayRef[Str]');
+  has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has SnapshotArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has SnapshotName => (is => 'ro', isa => 'Str');
   has SnapshotRetentionLimit => (is => 'ro', isa => 'Int');
   has SnapshotWindow => (is => 'ro', isa => 'Str');
@@ -172,7 +172,7 @@ for the specified engine is used.
 
 
 
-=head2 CacheSecurityGroupNames => ArrayRef[Str]
+=head2 CacheSecurityGroupNames => ArrayRef[Str|Undef]
 
 A list of cache security group names to associate with this replication
 group.
@@ -240,7 +240,7 @@ accept connections.
 
 
 
-=head2 PreferredCacheClusterAZs => ArrayRef[Str]
+=head2 PreferredCacheClusterAZs => ArrayRef[Str|Undef]
 
 A list of EC2 availability zones in which the replication group's cache
 clusters will be created. The order of the availability zones in the
@@ -348,7 +348,7 @@ A name cannot end with a hyphen or contain two consecutive hyphens.
 
 
 
-=head2 SecurityGroupIds => ArrayRef[Str]
+=head2 SecurityGroupIds => ArrayRef[Str|Undef]
 
 One or more Amazon VPC security groups associated with this replication
 group.
@@ -358,7 +358,7 @@ Amazon Virtual Private Cloud (VPC).
 
 
 
-=head2 SnapshotArns => ArrayRef[Str]
+=head2 SnapshotArns => ArrayRef[Str|Undef]
 
 A single-element string list containing an Amazon Resource Name (ARN)
 that uniquely identifies a Redis RDB snapshot file stored in Amazon S3.

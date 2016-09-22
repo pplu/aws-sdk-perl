@@ -1,6 +1,6 @@
 package Paws::CloudFront::QueryStringCacheKeys;
   use Moose;
-  has Items => (is => 'ro', isa => 'ArrayRef[Str]');
+  has Items => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Quantity => (is => 'ro', isa => 'Int', required => 1);
 1;
 
@@ -37,7 +37,7 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 Items => ArrayRef[Str]
+=head2 Items => ArrayRef[Str|Undef]
 
   Optional: A list that contains the query string parameters that you
 want CloudFront to use as a basis for caching for this cache behavior.

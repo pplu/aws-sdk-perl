@@ -3,7 +3,7 @@ package Paws::DataPipeline::DescribeObjects;
   use Moose;
   has EvaluateExpressions => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'evaluateExpressions' );
   has Marker => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'marker' );
-  has ObjectIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'objectIds' , required => 1);
+  has ObjectIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'objectIds' , required => 1);
   has PipelineId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'pipelineId' , required => 1);
 
   use MooseX::ClassAttribute;
@@ -52,7 +52,7 @@ to retrieve the next set of results.
 
 
 
-=head2 B<REQUIRED> ObjectIds => ArrayRef[Str]
+=head2 B<REQUIRED> ObjectIds => ArrayRef[Str|Undef]
 
 The IDs of the pipeline objects that contain the definitions to be
 described. You can pass as many as 25 identifiers in a single call to

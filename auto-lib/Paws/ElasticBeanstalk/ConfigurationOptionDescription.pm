@@ -9,7 +9,7 @@ package Paws::ElasticBeanstalk::ConfigurationOptionDescription;
   has Namespace => (is => 'ro', isa => 'Str');
   has Regex => (is => 'ro', isa => 'Paws::ElasticBeanstalk::OptionRestrictionRegex');
   has UserDefined => (is => 'ro', isa => 'Bool');
-  has ValueOptions => (is => 'ro', isa => 'ArrayRef[Str]');
+  has ValueOptions => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has ValueType => (is => 'ro', isa => 'Str');
 1;
 
@@ -129,7 +129,7 @@ configuration.
 Valid Values: C<true> | C<false>
 
 
-=head2 ValueOptions => ArrayRef[Str]
+=head2 ValueOptions => ArrayRef[Str|Undef]
 
   If specified, values for the configuration option are selected from
 this list.

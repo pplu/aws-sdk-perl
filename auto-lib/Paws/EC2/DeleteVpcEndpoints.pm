@@ -2,7 +2,7 @@
 package Paws::EC2::DeleteVpcEndpoints;
   use Moose;
   has DryRun => (is => 'ro', isa => 'Bool');
-  has VpcEndpointIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'VpcEndpointId' , required => 1);
+  has VpcEndpointIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'VpcEndpointId' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -43,7 +43,7 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 
 
-=head2 B<REQUIRED> VpcEndpointIds => ArrayRef[Str]
+=head2 B<REQUIRED> VpcEndpointIds => ArrayRef[Str|Undef]
 
 One or more endpoint IDs.
 

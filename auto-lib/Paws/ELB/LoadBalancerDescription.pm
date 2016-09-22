@@ -1,6 +1,6 @@
 package Paws::ELB::LoadBalancerDescription;
   use Moose;
-  has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str]');
+  has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has BackendServerDescriptions => (is => 'ro', isa => 'ArrayRef[Paws::ELB::BackendServerDescription]');
   has CanonicalHostedZoneName => (is => 'ro', isa => 'Str');
   has CanonicalHostedZoneNameID => (is => 'ro', isa => 'Str');
@@ -12,9 +12,9 @@ package Paws::ELB::LoadBalancerDescription;
   has LoadBalancerName => (is => 'ro', isa => 'Str');
   has Policies => (is => 'ro', isa => 'Paws::ELB::Policies');
   has Scheme => (is => 'ro', isa => 'Str');
-  has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Str]');
+  has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has SourceSecurityGroup => (is => 'ro', isa => 'Paws::ELB::SourceSecurityGroup');
-  has Subnets => (is => 'ro', isa => 'ArrayRef[Str]');
+  has Subnets => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has VPCId => (is => 'ro', isa => 'Str');
 1;
 
@@ -51,7 +51,7 @@ Information about a load balancer.
 =head1 ATTRIBUTES
 
 
-=head2 AvailabilityZones => ArrayRef[Str]
+=head2 AvailabilityZones => ArrayRef[Str|Undef]
 
   The Availability Zones for the load balancer.
 
@@ -120,7 +120,7 @@ If C<Scheme> is C<internal>, the load balancer has a public DNS name
 that resolves to a private IP address.
 
 
-=head2 SecurityGroups => ArrayRef[Str]
+=head2 SecurityGroups => ArrayRef[Str|Undef]
 
   The security groups for the load balancer. Valid only for load
 balancers in a VPC.
@@ -134,7 +134,7 @@ from load balancers, add a security group rule that specifies this
 source security group as the inbound source.
 
 
-=head2 Subnets => ArrayRef[Str]
+=head2 Subnets => ArrayRef[Str|Undef]
 
   The IDs of the subnets for the load balancer.
 

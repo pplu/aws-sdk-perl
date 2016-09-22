@@ -7,7 +7,7 @@ package Paws::SSM::DocumentDescription;
   has Name => (is => 'ro', isa => 'Str');
   has Owner => (is => 'ro', isa => 'Str');
   has Parameters => (is => 'ro', isa => 'ArrayRef[Paws::SSM::DocumentParameter]');
-  has PlatformTypes => (is => 'ro', isa => 'ArrayRef[Str]');
+  has PlatformTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Sha1 => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
 1;
@@ -85,7 +85,7 @@ Sha1 hashes have been deprecated.
   A description of the parameters for a document.
 
 
-=head2 PlatformTypes => ArrayRef[Str]
+=head2 PlatformTypes => ArrayRef[Str|Undef]
 
   The list of OS platforms compatible with this SSM document.
 

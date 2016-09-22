@@ -91,7 +91,8 @@ These function names are case-sensitive.
 
 =item *
 
-Comparison operators: C< = | | | | = | = | BETWEEN | IN>
+Comparison operators: C< = | &
+&
 
 =item *
 
@@ -532,6 +533,9 @@ the content of the old item is returned.
 
 =back
 
+The I<ReturnValues> parameter is used by several DynamoDB operations;
+however, I<PutItem> does not recognize any values other than C<NONE> or
+C<ALL_OLD>.
 
 Valid values are: C<"NONE">, C<"ALL_OLD">, C<"UPDATED_OLD">, C<"ALL_NEW">, C<"UPDATED_NEW">
 

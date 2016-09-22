@@ -1,8 +1,8 @@
 
 package Paws::SNS::AddPermission;
   use Moose;
-  has ActionName => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
-  has AWSAccountId => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has ActionName => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
+  has AWSAccountId => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
   has Label => (is => 'ro', isa => 'Str', required => 1);
   has TopicArn => (is => 'ro', isa => 'Str', required => 1);
 
@@ -36,7 +36,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> ActionName => ArrayRef[Str]
+=head2 B<REQUIRED> ActionName => ArrayRef[Str|Undef]
 
 The action you want to allow for the specified principal(s).
 
@@ -44,7 +44,7 @@ Valid values: any Amazon SNS action name.
 
 
 
-=head2 B<REQUIRED> AWSAccountId => ArrayRef[Str]
+=head2 B<REQUIRED> AWSAccountId => ArrayRef[Str|Undef]
 
 The AWS account IDs of the users (principals) who will be given access
 to the specified actions. The users must have AWS accounts, but do not

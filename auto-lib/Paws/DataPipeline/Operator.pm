@@ -1,7 +1,7 @@
 package Paws::DataPipeline::Operator;
   use Moose;
   has Type => (is => 'ro', isa => 'Str', xmlname => 'type', request_name => 'type', traits => ['Unwrapped','NameInRequest']);
-  has Values => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'values', request_name => 'values', traits => ['Unwrapped','NameInRequest']);
+  has Values => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'values', request_name => 'values', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -95,7 +95,7 @@ Data Pipeline. User-defined fields that you add to a pipeline should
 prefix their name with the string "my".
 
 
-=head2 Values => ArrayRef[Str]
+=head2 Values => ArrayRef[Str|Undef]
 
   The value that the actual field value will be compared with.
 

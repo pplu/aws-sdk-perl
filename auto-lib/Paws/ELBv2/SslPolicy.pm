@@ -2,7 +2,7 @@ package Paws::ELBv2::SslPolicy;
   use Moose;
   has Ciphers => (is => 'ro', isa => 'ArrayRef[Paws::ELBv2::Cipher]');
   has Name => (is => 'ro', isa => 'Str');
-  has SslProtocols => (is => 'ro', isa => 'ArrayRef[Str]');
+  has SslProtocols => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 1;
 
 ### main pod documentation begin ###
@@ -48,7 +48,7 @@ Information about a policy used for SSL negotiation.
   The name of the policy.
 
 
-=head2 SslProtocols => ArrayRef[Str]
+=head2 SslProtocols => ArrayRef[Str|Undef]
 
   The protocols.
 

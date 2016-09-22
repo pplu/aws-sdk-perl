@@ -6,7 +6,7 @@ package Paws::ElastiCache::ModifyReplicationGroup;
   has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Bool');
   has CacheNodeType => (is => 'ro', isa => 'Str');
   has CacheParameterGroupName => (is => 'ro', isa => 'Str');
-  has CacheSecurityGroupNames => (is => 'ro', isa => 'ArrayRef[Str]');
+  has CacheSecurityGroupNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has EngineVersion => (is => 'ro', isa => 'Str');
   has NotificationTopicArn => (is => 'ro', isa => 'Str');
   has NotificationTopicStatus => (is => 'ro', isa => 'Str');
@@ -14,7 +14,7 @@ package Paws::ElastiCache::ModifyReplicationGroup;
   has PrimaryClusterId => (is => 'ro', isa => 'Str');
   has ReplicationGroupDescription => (is => 'ro', isa => 'Str');
   has ReplicationGroupId => (is => 'ro', isa => 'Str', required => 1);
-  has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has SnapshotRetentionLimit => (is => 'ro', isa => 'Int');
   has SnapshottingClusterId => (is => 'ro', isa => 'Str');
   has SnapshotWindow => (is => 'ro', isa => 'Str');
@@ -114,7 +114,7 @@ is specified as I<true> for this request.
 
 
 
-=head2 CacheSecurityGroupNames => ArrayRef[Str]
+=head2 CacheSecurityGroupNames => ArrayRef[Str|Undef]
 
 A list of cache security group names to authorize for the clusters in
 this replication group. This change is asynchronously applied as soon
@@ -224,7 +224,7 @@ The identifier of the replication group to modify.
 
 
 
-=head2 SecurityGroupIds => ArrayRef[Str]
+=head2 SecurityGroupIds => ArrayRef[Str|Undef]
 
 Specifies the VPC Security Groups associated with the cache clusters in
 the replication group.

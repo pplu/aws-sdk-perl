@@ -3,8 +3,8 @@ package Paws::EMR::ListSteps;
   use Moose;
   has ClusterId => (is => 'ro', isa => 'Str', required => 1);
   has Marker => (is => 'ro', isa => 'Str');
-  has StepIds => (is => 'ro', isa => 'ArrayRef[Str]');
-  has StepStates => (is => 'ro', isa => 'ArrayRef[Str]');
+  has StepIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has StepStates => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
   use MooseX::ClassAttribute;
 
@@ -49,13 +49,13 @@ retrieve.
 
 
 
-=head2 StepIds => ArrayRef[Str]
+=head2 StepIds => ArrayRef[Str|Undef]
 
 The filter to limit the step list based on the identifier of the steps.
 
 
 
-=head2 StepStates => ArrayRef[Str]
+=head2 StepStates => ArrayRef[Str|Undef]
 
 The filter to limit the step list based on certain states.
 

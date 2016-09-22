@@ -1,6 +1,6 @@
 package Paws::Glacier::VaultNotificationConfig;
   use Moose;
-  has Events => (is => 'ro', isa => 'ArrayRef[Str]');
+  has Events => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has SNSTopic => (is => 'ro', isa => 'Str');
 1;
 
@@ -37,7 +37,7 @@ Represents a vault's notification configuration.
 =head1 ATTRIBUTES
 
 
-=head2 Events => ArrayRef[Str]
+=head2 Events => ArrayRef[Str|Undef]
 
   A list of one or more events for which Amazon Glacier will send a
 notification to the specified Amazon SNS topic.

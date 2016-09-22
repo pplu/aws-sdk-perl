@@ -2,7 +2,7 @@
 package Paws::OpsWorks::DescribeElasticIps;
   use Moose;
   has InstanceId => (is => 'ro', isa => 'Str');
-  has Ips => (is => 'ro', isa => 'ArrayRef[Str]');
+  has Ips => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has StackId => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
@@ -43,7 +43,7 @@ specified instance.
 
 
 
-=head2 Ips => ArrayRef[Str]
+=head2 Ips => ArrayRef[Str|Undef]
 
 An array of Elastic IP addresses to be described. If you include this
 parameter, C<DescribeElasticIps> returns a description of the specified

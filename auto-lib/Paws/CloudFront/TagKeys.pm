@@ -1,6 +1,6 @@
 package Paws::CloudFront::TagKeys;
   use Moose;
-  has Items => (is => 'ro', isa => 'ArrayRef[Str]');
+  has Items => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +36,7 @@ A complex type that contains zero or more Tag elements.
 =head1 ATTRIBUTES
 
 
-=head2 Items => ArrayRef[Str]
+=head2 Items => ArrayRef[Str|Undef]
 
   A complex type that contains Tag key elements
 

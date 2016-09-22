@@ -4,12 +4,12 @@ package Paws::CognitoIdp::UserPoolClientType;
   has ClientName => (is => 'ro', isa => 'Str');
   has ClientSecret => (is => 'ro', isa => 'Str');
   has CreationDate => (is => 'ro', isa => 'Str');
-  has ExplicitAuthFlows => (is => 'ro', isa => 'ArrayRef[Str]');
+  has ExplicitAuthFlows => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has LastModifiedDate => (is => 'ro', isa => 'Str');
-  has ReadAttributes => (is => 'ro', isa => 'ArrayRef[Str]');
+  has ReadAttributes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has RefreshTokenValidity => (is => 'ro', isa => 'Int');
   has UserPoolId => (is => 'ro', isa => 'Str');
-  has WriteAttributes => (is => 'ro', isa => 'ArrayRef[Str]');
+  has WriteAttributes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 1;
 
 ### main pod documentation begin ###
@@ -65,7 +65,7 @@ A user pool of the client type.
   The creation date from the user pool request of the client type.
 
 
-=head2 ExplicitAuthFlows => ArrayRef[Str]
+=head2 ExplicitAuthFlows => ArrayRef[Str|Undef]
 
   The explicit authentication flows.
 
@@ -75,7 +75,7 @@ A user pool of the client type.
   The last modified date from the user pool request of the client type.
 
 
-=head2 ReadAttributes => ArrayRef[Str]
+=head2 ReadAttributes => ArrayRef[Str|Undef]
 
   The Read-only attributes.
 
@@ -90,7 +90,7 @@ A user pool of the client type.
   The user pool ID for the user pool client.
 
 
-=head2 WriteAttributes => ArrayRef[Str]
+=head2 WriteAttributes => ArrayRef[Str|Undef]
 
   The writeable attributes.
 

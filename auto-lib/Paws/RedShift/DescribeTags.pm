@@ -5,8 +5,8 @@ package Paws::RedShift::DescribeTags;
   has MaxRecords => (is => 'ro', isa => 'Int');
   has ResourceName => (is => 'ro', isa => 'Str');
   has ResourceType => (is => 'ro', isa => 'Str');
-  has TagKeys => (is => 'ro', isa => 'ArrayRef[Str]');
-  has TagValues => (is => 'ro', isa => 'ArrayRef[Str]');
+  has TagKeys => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has TagValues => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
   use MooseX::ClassAttribute;
 
@@ -122,7 +122,7 @@ Resource Name (ARN) in the Amazon Redshift Cluster Management Guide.
 
 
 
-=head2 TagKeys => ArrayRef[Str]
+=head2 TagKeys => ArrayRef[Str|Undef]
 
 A tag key or keys for which you want to return all matching resources
 that are associated with the specified key or keys. For example,
@@ -133,7 +133,7 @@ or both of these tag keys associated with them.
 
 
 
-=head2 TagValues => ArrayRef[Str]
+=head2 TagValues => ArrayRef[Str|Undef]
 
 A tag value or values for which you want to return all matching
 resources that are associated with the specified value or values. For

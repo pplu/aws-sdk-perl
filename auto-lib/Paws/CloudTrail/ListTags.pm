@@ -2,7 +2,7 @@
 package Paws::CloudTrail::ListTags;
   use Moose;
   has NextToken => (is => 'ro', isa => 'Str');
-  has ResourceIdList => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has ResourceIdList => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -40,7 +40,7 @@ Reserved for future use.
 
 
 
-=head2 B<REQUIRED> ResourceIdList => ArrayRef[Str]
+=head2 B<REQUIRED> ResourceIdList => ArrayRef[Str|Undef]
 
 Specifies a list of trail ARNs whose tags will be listed. The list has
 a limit of 20 ARNs. The format of a trail ARN is:

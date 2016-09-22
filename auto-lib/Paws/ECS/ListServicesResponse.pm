@@ -2,7 +2,7 @@
 package Paws::ECS::ListServicesResponse;
   use Moose;
   has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
-  has ServiceArns => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['Unwrapped'], xmlname => 'serviceArns' );
+  has ServiceArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['Unwrapped'], xmlname => 'serviceArns' );
 
 
 ### main pod documentation begin ###
@@ -23,7 +23,7 @@ is C<null> when there are no more results to return.
 
 
 
-=head2 ServiceArns => ArrayRef[Str]
+=head2 ServiceArns => ArrayRef[Str|Undef]
 
 The list of full Amazon Resource Name (ARN) entries for each service
 associated with the specified cluster.

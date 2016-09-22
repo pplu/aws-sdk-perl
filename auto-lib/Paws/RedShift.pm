@@ -446,7 +446,7 @@ For more information about working with snapshots, go to Amazon
 Redshift Snapshots in the I<Amazon Redshift Cluster Management Guide>.
 
 
-=head2 CreateCluster(ClusterIdentifier => Str, MasterUsername => Str, MasterUserPassword => Str, NodeType => Str, [AdditionalInfo => Str, AllowVersionUpgrade => Bool, AutomatedSnapshotRetentionPeriod => Int, AvailabilityZone => Str, ClusterParameterGroupName => Str, ClusterSecurityGroups => ArrayRef[Str], ClusterSubnetGroupName => Str, ClusterType => Str, ClusterVersion => Str, DBName => Str, ElasticIp => Str, Encrypted => Bool, EnhancedVpcRouting => Bool, HsmClientCertificateIdentifier => Str, HsmConfigurationIdentifier => Str, IamRoles => ArrayRef[Str], KmsKeyId => Str, NumberOfNodes => Int, Port => Int, PreferredMaintenanceWindow => Str, PubliclyAccessible => Bool, Tags => ArrayRef[L<Paws::RedShift::Tag>], VpcSecurityGroupIds => ArrayRef[Str]])
+=head2 CreateCluster(ClusterIdentifier => Str, MasterUsername => Str, MasterUserPassword => Str, NodeType => Str, [AdditionalInfo => Str, AllowVersionUpgrade => Bool, AutomatedSnapshotRetentionPeriod => Int, AvailabilityZone => Str, ClusterParameterGroupName => Str, ClusterSecurityGroups => ArrayRef[Str|Undef], ClusterSubnetGroupName => Str, ClusterType => Str, ClusterVersion => Str, DBName => Str, ElasticIp => Str, Encrypted => Bool, EnhancedVpcRouting => Bool, HsmClientCertificateIdentifier => Str, HsmConfigurationIdentifier => Str, IamRoles => ArrayRef[Str|Undef], KmsKeyId => Str, NumberOfNodes => Int, Port => Int, PreferredMaintenanceWindow => Str, PubliclyAccessible => Bool, Tags => ArrayRef[L<Paws::RedShift::Tag>], VpcSecurityGroupIds => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::RedShift::CreateCluster>
 
@@ -507,7 +507,7 @@ For more information about working with snapshots, go to Amazon
 Redshift Snapshots in the I<Amazon Redshift Cluster Management Guide>.
 
 
-=head2 CreateClusterSubnetGroup(ClusterSubnetGroupName => Str, Description => Str, SubnetIds => ArrayRef[Str], [Tags => ArrayRef[L<Paws::RedShift::Tag>]])
+=head2 CreateClusterSubnetGroup(ClusterSubnetGroupName => Str, Description => Str, SubnetIds => ArrayRef[Str|Undef], [Tags => ArrayRef[L<Paws::RedShift::Tag>]])
 
 Each argument is described in detail in: L<Paws::RedShift::CreateClusterSubnetGroup>
 
@@ -521,7 +521,7 @@ For information about subnet groups, go to Amazon Redshift Cluster
 Subnet Groups in the I<Amazon Redshift Cluster Management Guide>.
 
 
-=head2 CreateEventSubscription(SnsTopicArn => Str, SubscriptionName => Str, [Enabled => Bool, EventCategories => ArrayRef[Str], Severity => Str, SourceIds => ArrayRef[Str], SourceType => Str, Tags => ArrayRef[L<Paws::RedShift::Tag>]])
+=head2 CreateEventSubscription(SnsTopicArn => Str, SubscriptionName => Str, [Enabled => Bool, EventCategories => ArrayRef[Str|Undef], Severity => Str, SourceIds => ArrayRef[Str|Undef], SourceType => Str, Tags => ArrayRef[L<Paws::RedShift::Tag>]])
 
 Each argument is described in detail in: L<Paws::RedShift::CreateEventSubscription>
 
@@ -734,7 +734,7 @@ Returns: nothing
   Deletes the specified snapshot copy grant.
 
 
-=head2 DeleteTags(ResourceName => Str, TagKeys => ArrayRef[Str])
+=head2 DeleteTags(ResourceName => Str, TagKeys => ArrayRef[Str|Undef])
 
 Each argument is described in detail in: L<Paws::RedShift::DeleteTags>
 
@@ -744,7 +744,7 @@ Returns: nothing
 resource from which you want to delete the tag or tags.
 
 
-=head2 DescribeClusterParameterGroups([Marker => Str, MaxRecords => Int, ParameterGroupName => Str, TagKeys => ArrayRef[Str], TagValues => ArrayRef[Str]])
+=head2 DescribeClusterParameterGroups([Marker => Str, MaxRecords => Int, ParameterGroupName => Str, TagKeys => ArrayRef[Str|Undef], TagValues => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::RedShift::DescribeClusterParameterGroups>
 
@@ -793,7 +793,7 @@ Amazon Redshift Parameter Groups in the I<Amazon Redshift Cluster
 Management Guide>.
 
 
-=head2 DescribeClusters([ClusterIdentifier => Str, Marker => Str, MaxRecords => Int, TagKeys => ArrayRef[Str], TagValues => ArrayRef[Str]])
+=head2 DescribeClusters([ClusterIdentifier => Str, Marker => Str, MaxRecords => Int, TagKeys => ArrayRef[Str|Undef], TagValues => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::RedShift::DescribeClusters>
 
@@ -816,7 +816,7 @@ returned regardless of whether they have tag keys or values associated
 with them.
 
 
-=head2 DescribeClusterSecurityGroups([ClusterSecurityGroupName => Str, Marker => Str, MaxRecords => Int, TagKeys => ArrayRef[Str], TagValues => ArrayRef[Str]])
+=head2 DescribeClusterSecurityGroups([ClusterSecurityGroupName => Str, Marker => Str, MaxRecords => Int, TagKeys => ArrayRef[Str|Undef], TagValues => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::RedShift::DescribeClusterSecurityGroups>
 
@@ -842,7 +842,7 @@ groups are returned regardless of whether they have tag keys or values
 associated with them.
 
 
-=head2 DescribeClusterSnapshots([ClusterIdentifier => Str, EndTime => Str, Marker => Str, MaxRecords => Int, OwnerAccount => Str, SnapshotIdentifier => Str, SnapshotType => Str, StartTime => Str, TagKeys => ArrayRef[Str], TagValues => ArrayRef[Str]])
+=head2 DescribeClusterSnapshots([ClusterIdentifier => Str, EndTime => Str, Marker => Str, MaxRecords => Int, OwnerAccount => Str, SnapshotIdentifier => Str, SnapshotType => Str, StartTime => Str, TagKeys => ArrayRef[Str|Undef], TagValues => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::RedShift::DescribeClusterSnapshots>
 
@@ -868,7 +868,7 @@ returned regardless of whether they have tag keys or values associated
 with them.
 
 
-=head2 DescribeClusterSubnetGroups([ClusterSubnetGroupName => Str, Marker => Str, MaxRecords => Int, TagKeys => ArrayRef[Str], TagValues => ArrayRef[Str]])
+=head2 DescribeClusterSubnetGroups([ClusterSubnetGroupName => Str, Marker => Str, MaxRecords => Int, TagKeys => ArrayRef[Str|Undef], TagValues => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::RedShift::DescribeClusterSubnetGroups>
 
@@ -953,7 +953,7 @@ subscription for a customer account. If you specify a subscription
 name, lists the description for that subscription.
 
 
-=head2 DescribeHsmClientCertificates([HsmClientCertificateIdentifier => Str, Marker => Str, MaxRecords => Int, TagKeys => ArrayRef[Str], TagValues => ArrayRef[Str]])
+=head2 DescribeHsmClientCertificates([HsmClientCertificateIdentifier => Str, Marker => Str, MaxRecords => Int, TagKeys => ArrayRef[Str|Undef], TagValues => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::RedShift::DescribeHsmClientCertificates>
 
@@ -975,7 +975,7 @@ certificates are returned regardless of whether they have tag keys or
 values associated with them.
 
 
-=head2 DescribeHsmConfigurations([HsmConfigurationIdentifier => Str, Marker => Str, MaxRecords => Int, TagKeys => ArrayRef[Str], TagValues => ArrayRef[Str]])
+=head2 DescribeHsmConfigurations([HsmConfigurationIdentifier => Str, Marker => Str, MaxRecords => Int, TagKeys => ArrayRef[Str|Undef], TagValues => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::RedShift::DescribeHsmConfigurations>
 
@@ -1067,7 +1067,7 @@ A resize operation can be requested using ModifyCluster and specifying
 a different number or type of nodes for the cluster.
 
 
-=head2 DescribeSnapshotCopyGrants([Marker => Str, MaxRecords => Int, SnapshotCopyGrantName => Str, TagKeys => ArrayRef[Str], TagValues => ArrayRef[Str]])
+=head2 DescribeSnapshotCopyGrants([Marker => Str, MaxRecords => Int, SnapshotCopyGrantName => Str, TagKeys => ArrayRef[Str|Undef], TagValues => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::RedShift::DescribeSnapshotCopyGrants>
 
@@ -1096,7 +1096,7 @@ order. Otherwise C<DescribeTableRestoreStatus> returns the status of
 the table specified by C<TableRestoreRequestId>.
 
 
-=head2 DescribeTags([Marker => Str, MaxRecords => Int, ResourceName => Str, ResourceType => Str, TagKeys => ArrayRef[Str], TagValues => ArrayRef[Str]])
+=head2 DescribeTags([Marker => Str, MaxRecords => Int, ResourceName => Str, ResourceType => Str, TagKeys => ArrayRef[Str|Undef], TagValues => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::RedShift::DescribeTags>
 
@@ -1183,7 +1183,7 @@ Returns: a L<Paws::RedShift::EnableSnapshotCopyResult> instance
 region for a specified cluster.
 
 
-=head2 ModifyCluster(ClusterIdentifier => Str, [AllowVersionUpgrade => Bool, AutomatedSnapshotRetentionPeriod => Int, ClusterParameterGroupName => Str, ClusterSecurityGroups => ArrayRef[Str], ClusterType => Str, ClusterVersion => Str, ElasticIp => Str, EnhancedVpcRouting => Bool, HsmClientCertificateIdentifier => Str, HsmConfigurationIdentifier => Str, MasterUserPassword => Str, NewClusterIdentifier => Str, NodeType => Str, NumberOfNodes => Int, PreferredMaintenanceWindow => Str, PubliclyAccessible => Bool, VpcSecurityGroupIds => ArrayRef[Str]])
+=head2 ModifyCluster(ClusterIdentifier => Str, [AllowVersionUpgrade => Bool, AutomatedSnapshotRetentionPeriod => Int, ClusterParameterGroupName => Str, ClusterSecurityGroups => ArrayRef[Str|Undef], ClusterType => Str, ClusterVersion => Str, ElasticIp => Str, EnhancedVpcRouting => Bool, HsmClientCertificateIdentifier => Str, HsmConfigurationIdentifier => Str, MasterUserPassword => Str, NewClusterIdentifier => Str, NodeType => Str, NumberOfNodes => Int, PreferredMaintenanceWindow => Str, PubliclyAccessible => Bool, VpcSecurityGroupIds => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::RedShift::ModifyCluster>
 
@@ -1204,7 +1204,7 @@ number of nodes and the node type even if one of the parameters does
 not change.
 
 
-=head2 ModifyClusterIamRoles(ClusterIdentifier => Str, [AddIamRoles => ArrayRef[Str], RemoveIamRoles => ArrayRef[Str]])
+=head2 ModifyClusterIamRoles(ClusterIdentifier => Str, [AddIamRoles => ArrayRef[Str|Undef], RemoveIamRoles => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::RedShift::ModifyClusterIamRoles>
 
@@ -1229,7 +1229,7 @@ Amazon Redshift Parameter Groups in the I<Amazon Redshift Cluster
 Management Guide>.
 
 
-=head2 ModifyClusterSubnetGroup(ClusterSubnetGroupName => Str, SubnetIds => ArrayRef[Str], [Description => Str])
+=head2 ModifyClusterSubnetGroup(ClusterSubnetGroupName => Str, SubnetIds => ArrayRef[Str|Undef], [Description => Str])
 
 Each argument is described in detail in: L<Paws::RedShift::ModifyClusterSubnetGroup>
 
@@ -1240,7 +1240,7 @@ subnets. The operation replaces the existing list of subnets with the
 new list of subnets.
 
 
-=head2 ModifyEventSubscription(SubscriptionName => Str, [Enabled => Bool, EventCategories => ArrayRef[Str], Severity => Str, SnsTopicArn => Str, SourceIds => ArrayRef[Str], SourceType => Str])
+=head2 ModifyEventSubscription(SubscriptionName => Str, [Enabled => Bool, EventCategories => ArrayRef[Str|Undef], Severity => Str, SnsTopicArn => Str, SourceIds => ArrayRef[Str|Undef], SourceType => Str])
 
 Each argument is described in detail in: L<Paws::RedShift::ModifyEventSubscription>
 
@@ -1304,7 +1304,7 @@ I<ResetAllParameters> parameter. For parameter changes to take effect
 you must reboot any associated clusters.
 
 
-=head2 RestoreFromClusterSnapshot(ClusterIdentifier => Str, SnapshotIdentifier => Str, [AdditionalInfo => Str, AllowVersionUpgrade => Bool, AutomatedSnapshotRetentionPeriod => Int, AvailabilityZone => Str, ClusterParameterGroupName => Str, ClusterSecurityGroups => ArrayRef[Str], ClusterSubnetGroupName => Str, ElasticIp => Str, EnhancedVpcRouting => Bool, HsmClientCertificateIdentifier => Str, HsmConfigurationIdentifier => Str, IamRoles => ArrayRef[Str], KmsKeyId => Str, NodeType => Str, OwnerAccount => Str, Port => Int, PreferredMaintenanceWindow => Str, PubliclyAccessible => Bool, SnapshotClusterIdentifier => Str, VpcSecurityGroupIds => ArrayRef[Str]])
+=head2 RestoreFromClusterSnapshot(ClusterIdentifier => Str, SnapshotIdentifier => Str, [AdditionalInfo => Str, AllowVersionUpgrade => Bool, AutomatedSnapshotRetentionPeriod => Int, AvailabilityZone => Str, ClusterParameterGroupName => Str, ClusterSecurityGroups => ArrayRef[Str|Undef], ClusterSubnetGroupName => Str, ElasticIp => Str, EnhancedVpcRouting => Bool, HsmClientCertificateIdentifier => Str, HsmConfigurationIdentifier => Str, IamRoles => ArrayRef[Str|Undef], KmsKeyId => Str, NodeType => Str, OwnerAccount => Str, Port => Int, PreferredMaintenanceWindow => Str, PubliclyAccessible => Bool, SnapshotClusterIdentifier => Str, VpcSecurityGroupIds => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::RedShift::RestoreFromClusterSnapshot>
 

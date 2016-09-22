@@ -1,9 +1,9 @@
 
 package Paws::RedShift::ModifyClusterIamRoles;
   use Moose;
-  has AddIamRoles => (is => 'ro', isa => 'ArrayRef[Str]');
+  has AddIamRoles => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has ClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
-  has RemoveIamRoles => (is => 'ro', isa => 'ArrayRef[Str]');
+  has RemoveIamRoles => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
   use MooseX::ClassAttribute;
 
@@ -35,7 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 AddIamRoles => ArrayRef[Str]
+=head2 AddIamRoles => ArrayRef[Str|Undef]
 
 Zero or more IAM roles to associate with the cluster. The roles must be
 in their Amazon Resource Name (ARN) format. You can associate up to 10
@@ -50,7 +50,7 @@ disassociate IAM roles.
 
 
 
-=head2 RemoveIamRoles => ArrayRef[Str]
+=head2 RemoveIamRoles => ArrayRef[Str|Undef]
 
 Zero or more IAM roles in ARN format to disassociate from the cluster.
 You can disassociate up to 10 IAM roles from a single cluster in a

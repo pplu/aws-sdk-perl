@@ -287,7 +287,7 @@ complete.
 
 
 
-=head2 DescribeComplianceByConfigRule([ComplianceTypes => ArrayRef[Str], ConfigRuleNames => ArrayRef[Str], NextToken => Str])
+=head2 DescribeComplianceByConfigRule([ComplianceTypes => ArrayRef[Str|Undef], ConfigRuleNames => ArrayRef[Str|Undef], NextToken => Str])
 
 Each argument is described in detail in: L<Paws::Config::DescribeComplianceByConfigRule>
 
@@ -325,7 +325,7 @@ deleted or removed from the rule's scope.
 
 
 
-=head2 DescribeComplianceByResource([ComplianceTypes => ArrayRef[Str], Limit => Int, NextToken => Str, ResourceId => Str, ResourceType => Str])
+=head2 DescribeComplianceByResource([ComplianceTypes => ArrayRef[Str|Undef], Limit => Int, NextToken => Str, ResourceId => Str, ResourceType => Str])
 
 Each argument is described in detail in: L<Paws::Config::DescribeComplianceByResource>
 
@@ -364,7 +364,7 @@ deleted or removed from the rule's scope.
 
 
 
-=head2 DescribeConfigRuleEvaluationStatus([ConfigRuleNames => ArrayRef[Str]])
+=head2 DescribeConfigRuleEvaluationStatus([ConfigRuleNames => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::Config::DescribeConfigRuleEvaluationStatus>
 
@@ -376,7 +376,7 @@ invoked the rule, the last time AWS Config failed to invoke the rule,
 and the related error for the last failure.
 
 
-=head2 DescribeConfigRules([ConfigRuleNames => ArrayRef[Str], NextToken => Str])
+=head2 DescribeConfigRules([ConfigRuleNames => ArrayRef[Str|Undef], NextToken => Str])
 
 Each argument is described in detail in: L<Paws::Config::DescribeConfigRules>
 
@@ -385,7 +385,7 @@ Returns: a L<Paws::Config::DescribeConfigRulesResponse> instance
   Returns details about your AWS Config rules.
 
 
-=head2 DescribeConfigurationRecorders([ConfigurationRecorderNames => ArrayRef[Str]])
+=head2 DescribeConfigurationRecorders([ConfigurationRecorderNames => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::Config::DescribeConfigurationRecorders>
 
@@ -398,7 +398,7 @@ all the configuration recorders associated with the account.
 Currently, you can specify only one configuration recorder per account.
 
 
-=head2 DescribeConfigurationRecorderStatus([ConfigurationRecorderNames => ArrayRef[Str]])
+=head2 DescribeConfigurationRecorderStatus([ConfigurationRecorderNames => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::Config::DescribeConfigurationRecorderStatus>
 
@@ -411,7 +411,7 @@ status of all configuration recorder associated with the account.
 Currently, you can specify only one configuration recorder per account.
 
 
-=head2 DescribeDeliveryChannels([DeliveryChannelNames => ArrayRef[Str]])
+=head2 DescribeDeliveryChannels([DeliveryChannelNames => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::Config::DescribeDeliveryChannels>
 
@@ -424,7 +424,7 @@ delivery channels associated with the account.
 Currently, you can specify only one delivery channel per account.
 
 
-=head2 DescribeDeliveryChannelStatus([DeliveryChannelNames => ArrayRef[Str]])
+=head2 DescribeDeliveryChannelStatus([DeliveryChannelNames => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::Config::DescribeDeliveryChannelStatus>
 
@@ -437,7 +437,7 @@ status of all delivery channels associated with the account.
 Currently, you can specify only one delivery channel per account.
 
 
-=head2 GetComplianceDetailsByConfigRule(ConfigRuleName => Str, [ComplianceTypes => ArrayRef[Str], Limit => Int, NextToken => Str])
+=head2 GetComplianceDetailsByConfigRule(ConfigRuleName => Str, [ComplianceTypes => ArrayRef[Str|Undef], Limit => Int, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::Config::GetComplianceDetailsByConfigRule>
 
@@ -449,7 +449,7 @@ each resource was last evaluated, and whether each resource complies
 with the rule.
 
 
-=head2 GetComplianceDetailsByResource(ResourceId => Str, ResourceType => Str, [ComplianceTypes => ArrayRef[Str], NextToken => Str])
+=head2 GetComplianceDetailsByResource(ResourceId => Str, ResourceType => Str, [ComplianceTypes => ArrayRef[Str|Undef], NextToken => Str])
 
 Each argument is described in detail in: L<Paws::Config::GetComplianceDetailsByResource>
 
@@ -471,7 +471,7 @@ Returns: a L<Paws::Config::GetComplianceSummaryByConfigRuleResponse> instance
 noncompliant, up to a maximum of 25 for each.
 
 
-=head2 GetComplianceSummaryByResourceType([ResourceTypes => ArrayRef[Str]])
+=head2 GetComplianceSummaryByResourceType([ResourceTypes => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::Config::GetComplianceSummaryByResourceType>
 
@@ -505,7 +505,7 @@ specified C<limit>. In such cases, you can make another call, using the
 C<nextToken>.
 
 
-=head2 ListDiscoveredResources(ResourceType => Str, [IncludeDeletedResources => Bool, Limit => Int, NextToken => Str, ResourceIds => ArrayRef[Str], ResourceName => Str])
+=head2 ListDiscoveredResources(ResourceType => Str, [IncludeDeletedResources => Bool, Limit => Int, NextToken => Str, ResourceIds => ArrayRef[Str|Undef], ResourceName => Str])
 
 Each argument is described in detail in: L<Paws::Config::ListDiscoveredResources>
 
@@ -624,7 +624,7 @@ Config. This action is required in every AWS Lambda function that is
 invoked by an AWS Config rule.
 
 
-=head2 StartConfigRulesEvaluation([ConfigRuleNames => ArrayRef[Str]])
+=head2 StartConfigRulesEvaluation([ConfigRuleNames => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::Config::StartConfigRulesEvaluation>
 

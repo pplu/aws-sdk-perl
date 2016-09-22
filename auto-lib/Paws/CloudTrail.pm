@@ -166,7 +166,7 @@ trails (replicated trails in other regions) of a trail that is enabled
 in all regions.
 
 
-=head2 DescribeTrails([IncludeShadowTrails => Bool, TrailNameList => ArrayRef[Str]])
+=head2 DescribeTrails([IncludeShadowTrails => Bool, TrailNameList => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::CloudTrail::DescribeTrails>
 
@@ -206,7 +206,7 @@ Therefore, when you validate a digest file from a particular region,
 you must look in the same region for its corresponding public key.
 
 
-=head2 ListTags(ResourceIdList => ArrayRef[Str], [NextToken => Str])
+=head2 ListTags(ResourceIdList => ArrayRef[Str|Undef], [NextToken => Str])
 
 Each argument is described in detail in: L<Paws::CloudTrail::ListTags>
 

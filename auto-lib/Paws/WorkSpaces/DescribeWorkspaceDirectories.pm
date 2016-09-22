@@ -1,7 +1,7 @@
 
 package Paws::WorkSpaces::DescribeWorkspaceDirectories;
   use Moose;
-  has DirectoryIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has DirectoryIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has NextToken => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
@@ -34,7 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 DirectoryIds => ArrayRef[Str]
+=head2 DirectoryIds => ArrayRef[Str|Undef]
 
 An array of strings that contains the directory identifiers to retrieve
 information for. If this member is null, all directories are retrieved.

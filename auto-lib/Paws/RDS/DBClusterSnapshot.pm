@@ -1,7 +1,7 @@
 package Paws::RDS::DBClusterSnapshot;
   use Moose;
   has AllocatedStorage => (is => 'ro', isa => 'Int');
-  has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str]');
+  has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has ClusterCreateTime => (is => 'ro', isa => 'Str');
   has DBClusterIdentifier => (is => 'ro', isa => 'Str');
   has DBClusterSnapshotArn => (is => 'ro', isa => 'Str');
@@ -74,7 +74,7 @@ DescribeDBClusterSnapshots action.
   Specifies the allocated storage size in gigabytes (GB).
 
 
-=head2 AvailabilityZones => ArrayRef[Str]
+=head2 AvailabilityZones => ArrayRef[Str|Undef]
 
   Provides the list of EC2 Availability Zones that instances in the DB
 cluster snapshot can be restored in.

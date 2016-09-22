@@ -6,7 +6,7 @@ package Paws::CloudWatchLogs::FilterLogEvents;
   has Interleaved => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'interleaved' );
   has Limit => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'limit' );
   has LogGroupName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'logGroupName' , required => 1);
-  has LogStreamNames => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'logStreamNames' );
+  has LogStreamNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'logStreamNames' );
   has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
   has StartTime => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'startTime' );
 
@@ -78,7 +78,7 @@ The name of the log group to query.
 
 
 
-=head2 LogStreamNames => ArrayRef[Str]
+=head2 LogStreamNames => ArrayRef[Str|Undef]
 
 Optional list of log stream names within the specified log group to
 search. Defaults to all the log streams in the log group.

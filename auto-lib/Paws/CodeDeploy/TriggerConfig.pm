@@ -1,6 +1,6 @@
 package Paws::CodeDeploy::TriggerConfig;
   use Moose;
-  has TriggerEvents => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'triggerEvents', request_name => 'triggerEvents', traits => ['Unwrapped','NameInRequest']);
+  has TriggerEvents => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'triggerEvents', request_name => 'triggerEvents', traits => ['Unwrapped','NameInRequest']);
   has TriggerName => (is => 'ro', isa => 'Str', xmlname => 'triggerName', request_name => 'triggerName', traits => ['Unwrapped','NameInRequest']);
   has TriggerTargetArn => (is => 'ro', isa => 'Str', xmlname => 'triggerTargetArn', request_name => 'triggerTargetArn', traits => ['Unwrapped','NameInRequest']);
 1;
@@ -38,7 +38,7 @@ Information about notification triggers for the deployment group.
 =head1 ATTRIBUTES
 
 
-=head2 TriggerEvents => ArrayRef[Str]
+=head2 TriggerEvents => ArrayRef[Str|Undef]
 
   The event type or types for which notifications are triggered.
 

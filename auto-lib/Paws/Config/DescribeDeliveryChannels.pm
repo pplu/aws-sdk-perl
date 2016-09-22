@@ -1,7 +1,7 @@
 
 package Paws::Config::DescribeDeliveryChannels;
   use Moose;
-  has DeliveryChannelNames => (is => 'ro', isa => 'ArrayRef[Str]');
+  has DeliveryChannelNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
   use MooseX::ClassAttribute;
 
@@ -33,7 +33,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 DeliveryChannelNames => ArrayRef[Str]
+=head2 DeliveryChannelNames => ArrayRef[Str|Undef]
 
 A list of delivery channel names.
 

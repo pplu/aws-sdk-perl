@@ -2,7 +2,7 @@ package Paws::EC2::VpcEndpoint;
   use Moose;
   has CreationTimestamp => (is => 'ro', isa => 'Str', xmlname => 'creationTimestamp', traits => ['Unwrapped']);
   has PolicyDocument => (is => 'ro', isa => 'Str', xmlname => 'policyDocument', traits => ['Unwrapped']);
-  has RouteTableIds => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'routeTableIdSet', traits => ['Unwrapped']);
+  has RouteTableIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'routeTableIdSet', traits => ['Unwrapped']);
   has ServiceName => (is => 'ro', isa => 'Str', xmlname => 'serviceName', traits => ['Unwrapped']);
   has State => (is => 'ro', isa => 'Str', xmlname => 'state', traits => ['Unwrapped']);
   has VpcEndpointId => (is => 'ro', isa => 'Str', xmlname => 'vpcEndpointId', traits => ['Unwrapped']);
@@ -52,7 +52,7 @@ This class has no description
   The policy document associated with the endpoint.
 
 
-=head2 RouteTableIds => ArrayRef[Str]
+=head2 RouteTableIds => ArrayRef[Str|Undef]
 
   One or more route tables associated with the endpoint.
 

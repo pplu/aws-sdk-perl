@@ -1,7 +1,7 @@
 
 package Paws::ES::DescribeElasticsearchDomains;
   use Moose;
-  has DomainNames => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has DomainNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -35,7 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> DomainNames => ArrayRef[Str]
+=head2 B<REQUIRED> DomainNames => ArrayRef[Str|Undef]
 
 The Elasticsearch domains for which you want information.
 

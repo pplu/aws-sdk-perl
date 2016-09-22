@@ -1,7 +1,7 @@
 
 package Paws::CloudFormation::DeleteStack;
   use Moose;
-  has RetainResources => (is => 'ro', isa => 'ArrayRef[Str]');
+  has RetainResources => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has StackName => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -34,7 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 RetainResources => ArrayRef[Str]
+=head2 RetainResources => ArrayRef[Str|Undef]
 
 For stacks in the C<DELETE_FAILED> state, a list of resource logical
 IDs that are associated with the resources you want to retain. During

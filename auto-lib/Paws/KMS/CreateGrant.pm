@@ -3,10 +3,10 @@ package Paws::KMS::CreateGrant;
   use Moose;
   has Constraints => (is => 'ro', isa => 'Paws::KMS::GrantConstraints');
   has GranteePrincipal => (is => 'ro', isa => 'Str', required => 1);
-  has GrantTokens => (is => 'ro', isa => 'ArrayRef[Str]');
+  has GrantTokens => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has KeyId => (is => 'ro', isa => 'Str', required => 1);
   has Name => (is => 'ro', isa => 'Str');
-  has Operations => (is => 'ro', isa => 'ArrayRef[Str]');
+  has Operations => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has RetiringPrincipal => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
@@ -65,7 +65,7 @@ Reference>.
 
 
 
-=head2 GrantTokens => ArrayRef[Str]
+=head2 GrantTokens => ArrayRef[Str|Undef]
 
 A list of grant tokens.
 
@@ -117,7 +117,7 @@ this way can be used interchangeably.
 
 
 
-=head2 Operations => ArrayRef[Str]
+=head2 Operations => ArrayRef[Str|Undef]
 
 A list of operations that the grant permits. The list can contain any
 combination of one or more of the following values:

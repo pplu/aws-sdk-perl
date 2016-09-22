@@ -160,7 +160,7 @@ Elasticsearch domain, such as the state, creation date, update version,
 and update date for cluster options.
 
 
-=head2 DescribeElasticsearchDomains(DomainNames => ArrayRef[Str])
+=head2 DescribeElasticsearchDomains(DomainNames => ArrayRef[Str|Undef])
 
 Each argument is described in detail in: L<Paws::ES::DescribeElasticsearchDomains>
 
@@ -190,7 +190,7 @@ Returns: a L<Paws::ES::ListTagsResponse> instance
   Returns all tags for the given Elasticsearch domain.
 
 
-=head2 RemoveTags(ARN => Str, TagKeys => ArrayRef[Str])
+=head2 RemoveTags(ARN => Str, TagKeys => ArrayRef[Str|Undef])
 
 Each argument is described in detail in: L<Paws::ES::RemoveTags>
 

@@ -5,7 +5,7 @@ package Paws::EC2::DescribeVolumeStatus;
   has Filters => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
   has MaxResults => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
-  has VolumeIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'VolumeId' );
+  has VolumeIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'VolumeId' );
 
   use MooseX::ClassAttribute;
 
@@ -137,7 +137,7 @@ C<null> when there are no more results to return.
 
 
 
-=head2 VolumeIds => ArrayRef[Str]
+=head2 VolumeIds => ArrayRef[Str|Undef]
 
 One or more volume IDs.
 

@@ -1,6 +1,6 @@
 package Paws::EC2::PrefixList;
   use Moose;
-  has Cidrs => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'cidrSet', traits => ['Unwrapped']);
+  has Cidrs => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'cidrSet', traits => ['Unwrapped']);
   has PrefixListId => (is => 'ro', isa => 'Str', xmlname => 'prefixListId', traits => ['Unwrapped']);
   has PrefixListName => (is => 'ro', isa => 'Str', xmlname => 'prefixListName', traits => ['Unwrapped']);
 1;
@@ -38,7 +38,7 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 Cidrs => ArrayRef[Str]
+=head2 Cidrs => ArrayRef[Str|Undef]
 
   The IP address range of the AWS service.
 

@@ -1,6 +1,6 @@
 package Paws::DynamoDB::Projection;
   use Moose;
-  has NonKeyAttributes => (is => 'ro', isa => 'ArrayRef[Str]');
+  has NonKeyAttributes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has ProjectionType => (is => 'ro', isa => 'Str');
 1;
 
@@ -39,7 +39,7 @@ key attributes, which are automatically projected.
 =head1 ATTRIBUTES
 
 
-=head2 NonKeyAttributes => ArrayRef[Str]
+=head2 NonKeyAttributes => ArrayRef[Str|Undef]
 
   Represents the non-key attribute names which will be projected into the
 index.

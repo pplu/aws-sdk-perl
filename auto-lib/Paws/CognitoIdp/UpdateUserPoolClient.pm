@@ -3,11 +3,11 @@ package Paws::CognitoIdp::UpdateUserPoolClient;
   use Moose;
   has ClientId => (is => 'ro', isa => 'Str', required => 1);
   has ClientName => (is => 'ro', isa => 'Str');
-  has ExplicitAuthFlows => (is => 'ro', isa => 'ArrayRef[Str]');
-  has ReadAttributes => (is => 'ro', isa => 'ArrayRef[Str]');
+  has ExplicitAuthFlows => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has ReadAttributes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has RefreshTokenValidity => (is => 'ro', isa => 'Int');
   has UserPoolId => (is => 'ro', isa => 'Str', required => 1);
-  has WriteAttributes => (is => 'ro', isa => 'ArrayRef[Str]');
+  has WriteAttributes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
   use MooseX::ClassAttribute;
 
@@ -51,13 +51,13 @@ The client name from the update user pool client request.
 
 
 
-=head2 ExplicitAuthFlows => ArrayRef[Str]
+=head2 ExplicitAuthFlows => ArrayRef[Str|Undef]
 
 Explicit authentication flows.
 
 
 
-=head2 ReadAttributes => ArrayRef[Str]
+=head2 ReadAttributes => ArrayRef[Str|Undef]
 
 The read-only attributes of the user pool.
 
@@ -76,7 +76,7 @@ pool client.
 
 
 
-=head2 WriteAttributes => ArrayRef[Str]
+=head2 WriteAttributes => ArrayRef[Str|Undef]
 
 The writeable attributes of the user pool.
 

@@ -4,8 +4,8 @@ package Paws::RedShift::DescribeClusters;
   has ClusterIdentifier => (is => 'ro', isa => 'Str');
   has Marker => (is => 'ro', isa => 'Str');
   has MaxRecords => (is => 'ro', isa => 'Int');
-  has TagKeys => (is => 'ro', isa => 'ArrayRef[Str]');
-  has TagValues => (is => 'ro', isa => 'ArrayRef[Str]');
+  has TagKeys => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has TagValues => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
   use MooseX::ClassAttribute;
 
@@ -74,7 +74,7 @@ Constraints: minimum 20, maximum 100.
 
 
 
-=head2 TagKeys => ArrayRef[Str]
+=head2 TagKeys => ArrayRef[Str|Undef]
 
 A tag key or keys for which you want to return all matching clusters
 that are associated with the specified key or keys. For example,
@@ -85,7 +85,7 @@ have either or both of these tag keys associated with them.
 
 
 
-=head2 TagValues => ArrayRef[Str]
+=head2 TagValues => ArrayRef[Str|Undef]
 
 A tag value or values for which you want to return all matching
 clusters that are associated with the specified tag value or values.

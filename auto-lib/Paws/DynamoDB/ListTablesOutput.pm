@@ -2,7 +2,7 @@
 package Paws::DynamoDB::ListTablesOutput;
   use Moose;
   has LastEvaluatedTableName => (is => 'ro', isa => 'Str');
-  has TableNames => (is => 'ro', isa => 'ArrayRef[Str]');
+  has TableNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
 
 ### main pod documentation begin ###
@@ -26,7 +26,7 @@ retrieved.
 
 
 
-=head2 TableNames => ArrayRef[Str]
+=head2 TableNames => ArrayRef[Str|Undef]
 
 The names of the tables associated with the current account at the
 current endpoint. The maximum size of this array is 100.

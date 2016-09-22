@@ -4,7 +4,7 @@ package Paws::Config::ListDiscoveredResources;
   has IncludeDeletedResources => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'includeDeletedResources' );
   has Limit => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'limit' );
   has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
-  has ResourceIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'resourceIds' );
+  has ResourceIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'resourceIds' );
   has ResourceName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'resourceName' );
   has ResourceType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'resourceType' , required => 1);
 
@@ -60,7 +60,7 @@ the next page of results in a paginated response.
 
 
 
-=head2 ResourceIds => ArrayRef[Str]
+=head2 ResourceIds => ArrayRef[Str|Undef]
 
 The IDs of only those resources that you want AWS Config to list in the
 response. If you do not specify this parameter, AWS Config lists all

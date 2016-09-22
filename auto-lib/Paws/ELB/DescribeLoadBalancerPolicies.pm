@@ -2,7 +2,7 @@
 package Paws::ELB::DescribeLoadBalancerPolicies;
   use Moose;
   has LoadBalancerName => (is => 'ro', isa => 'Str');
-  has PolicyNames => (is => 'ro', isa => 'ArrayRef[Str]');
+  has PolicyNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
   use MooseX::ClassAttribute;
 
@@ -40,7 +40,7 @@ The name of the load balancer.
 
 
 
-=head2 PolicyNames => ArrayRef[Str]
+=head2 PolicyNames => ArrayRef[Str|Undef]
 
 The names of the policies.
 

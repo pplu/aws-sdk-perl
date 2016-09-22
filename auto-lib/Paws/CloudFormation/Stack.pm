@@ -1,11 +1,11 @@
 package Paws::CloudFormation::Stack;
   use Moose;
-  has Capabilities => (is => 'ro', isa => 'ArrayRef[Str]');
+  has Capabilities => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has CreationTime => (is => 'ro', isa => 'Str', required => 1);
   has Description => (is => 'ro', isa => 'Str');
   has DisableRollback => (is => 'ro', isa => 'Bool');
   has LastUpdatedTime => (is => 'ro', isa => 'Str');
-  has NotificationARNs => (is => 'ro', isa => 'ArrayRef[Str]');
+  has NotificationARNs => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Outputs => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::Output]');
   has Parameters => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::Parameter]');
   has StackId => (is => 'ro', isa => 'Str');
@@ -49,7 +49,7 @@ The Stack data type.
 =head1 ATTRIBUTES
 
 
-=head2 Capabilities => ArrayRef[Str]
+=head2 Capabilities => ArrayRef[Str|Undef]
 
   The capabilities allowed in the stack.
 
@@ -88,7 +88,7 @@ C<false>: enable rollback
 if the stack has been updated at least once.
 
 
-=head2 NotificationARNs => ArrayRef[Str]
+=head2 NotificationARNs => ArrayRef[Str|Undef]
 
   SNS topic ARNs to which stack related events are published.
 

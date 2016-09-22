@@ -3,7 +3,7 @@ package Paws::CloudWatch::DescribeAlarms;
   use Moose;
   has ActionPrefix => (is => 'ro', isa => 'Str');
   has AlarmNamePrefix => (is => 'ro', isa => 'Str');
-  has AlarmNames => (is => 'ro', isa => 'ArrayRef[Str]');
+  has AlarmNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has MaxRecords => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
   has StateValue => (is => 'ro', isa => 'Str');
@@ -51,7 +51,7 @@ parameter is specified.
 
 
 
-=head2 AlarmNames => ArrayRef[Str]
+=head2 AlarmNames => ArrayRef[Str|Undef]
 
 A list of alarm names to retrieve information for.
 

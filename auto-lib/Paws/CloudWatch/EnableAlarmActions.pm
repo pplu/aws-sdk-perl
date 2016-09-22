@@ -1,7 +1,7 @@
 
 package Paws::CloudWatch::EnableAlarmActions;
   use Moose;
-  has AlarmNames => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has AlarmNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -33,7 +33,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> AlarmNames => ArrayRef[Str]
+=head2 B<REQUIRED> AlarmNames => ArrayRef[Str|Undef]
 
 The names of the alarms to enable actions for.
 

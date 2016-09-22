@@ -5,7 +5,7 @@ package Paws::EC2::DescribeScheduledInstances;
   has Filters => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
   has MaxResults => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
-  has ScheduledInstanceIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'ScheduledInstanceId' );
+  has ScheduledInstanceIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'ScheduledInstanceId' );
   has SlotStartTimeRange => (is => 'ro', isa => 'Paws::EC2::SlotStartTimeRangeRequest');
 
   use MooseX::ClassAttribute;
@@ -91,7 +91,7 @@ The token for the next set of results.
 
 
 
-=head2 ScheduledInstanceIds => ArrayRef[Str]
+=head2 ScheduledInstanceIds => ArrayRef[Str|Undef]
 
 One or more Scheduled Instance IDs.
 

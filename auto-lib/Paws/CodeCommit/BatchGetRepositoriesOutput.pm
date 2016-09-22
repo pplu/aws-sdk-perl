@@ -2,7 +2,7 @@
 package Paws::CodeCommit::BatchGetRepositoriesOutput;
   use Moose;
   has Repositories => (is => 'ro', isa => 'ArrayRef[Paws::CodeCommit::RepositoryMetadata]', traits => ['Unwrapped'], xmlname => 'repositories' );
-  has RepositoriesNotFound => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['Unwrapped'], xmlname => 'repositoriesNotFound' );
+  has RepositoriesNotFound => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['Unwrapped'], xmlname => 'repositoriesNotFound' );
 
 
 ### main pod documentation begin ###
@@ -21,7 +21,7 @@ operation.
 
 
 
-=head2 RepositoriesNotFound => ArrayRef[Str]
+=head2 RepositoriesNotFound => ArrayRef[Str|Undef]
 
 Returns a list of repository names for which information could not be
 found.

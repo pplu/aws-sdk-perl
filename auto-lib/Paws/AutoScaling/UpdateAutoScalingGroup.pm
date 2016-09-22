@@ -2,7 +2,7 @@
 package Paws::AutoScaling::UpdateAutoScalingGroup;
   use Moose;
   has AutoScalingGroupName => (is => 'ro', isa => 'Str', required => 1);
-  has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str]');
+  has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has DefaultCooldown => (is => 'ro', isa => 'Int');
   has DesiredCapacity => (is => 'ro', isa => 'Int');
   has HealthCheckGracePeriod => (is => 'ro', isa => 'Int');
@@ -12,7 +12,7 @@ package Paws::AutoScaling::UpdateAutoScalingGroup;
   has MinSize => (is => 'ro', isa => 'Int');
   has NewInstancesProtectedFromScaleIn => (is => 'ro', isa => 'Bool');
   has PlacementGroup => (is => 'ro', isa => 'Str');
-  has TerminationPolicies => (is => 'ro', isa => 'ArrayRef[Str]');
+  has TerminationPolicies => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has VPCZoneIdentifier => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
@@ -51,7 +51,7 @@ The name of the Auto Scaling group.
 
 
 
-=head2 AvailabilityZones => ArrayRef[Str]
+=head2 AvailabilityZones => ArrayRef[Str|Undef]
 
 One or more Availability Zones for the group.
 
@@ -126,7 +126,7 @@ I<Amazon Elastic Compute Cloud User Guide>.
 
 
 
-=head2 TerminationPolicies => ArrayRef[Str]
+=head2 TerminationPolicies => ArrayRef[Str|Undef]
 
 A standalone termination policy or a list of termination policies used
 to select the instance to terminate. The policies are executed in the

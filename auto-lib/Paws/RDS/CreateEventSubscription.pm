@@ -2,9 +2,9 @@
 package Paws::RDS::CreateEventSubscription;
   use Moose;
   has Enabled => (is => 'ro', isa => 'Bool');
-  has EventCategories => (is => 'ro', isa => 'ArrayRef[Str]');
+  has EventCategories => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has SnsTopicArn => (is => 'ro', isa => 'Str', required => 1);
-  has SourceIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has SourceIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has SourceType => (is => 'ro', isa => 'Str');
   has SubscriptionName => (is => 'ro', isa => 'Str', required => 1);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Tag]');
@@ -46,7 +46,7 @@ B<false> to create the subscription but not active it.
 
 
 
-=head2 EventCategories => ArrayRef[Str]
+=head2 EventCategories => ArrayRef[Str|Undef]
 
 A list of event categories for a SourceType that you want to subscribe
 to. You can see a list of the categories for a given SourceType in the
@@ -63,7 +63,7 @@ and subscribe to it.
 
 
 
-=head2 SourceIds => ArrayRef[Str]
+=head2 SourceIds => ArrayRef[Str|Undef]
 
 The list of identifiers of the event sources for which events will be
 returned. If not specified, then all sources are included in the

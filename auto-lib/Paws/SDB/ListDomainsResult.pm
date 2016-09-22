@@ -1,7 +1,7 @@
 
 package Paws::SDB::ListDomainsResult;
   use Moose;
-  has DomainNames => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'DomainName', traits => ['Unwrapped',]);
+  has DomainNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'DomainName', traits => ['Unwrapped',]);
   has NextToken => (is => 'ro', isa => 'Str');
 
 1;
@@ -15,7 +15,7 @@ Paws::SDB::ListDomainsResult
 =head1 ATTRIBUTES
 
 
-=head2 DomainNames => ArrayRef[Str]
+=head2 DomainNames => ArrayRef[Str|Undef]
 
 A list of domain names that match the expression.
 

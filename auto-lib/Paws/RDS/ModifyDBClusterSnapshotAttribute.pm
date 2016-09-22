@@ -3,8 +3,8 @@ package Paws::RDS::ModifyDBClusterSnapshotAttribute;
   use Moose;
   has AttributeName => (is => 'ro', isa => 'Str', required => 1);
   has DBClusterSnapshotIdentifier => (is => 'ro', isa => 'Str', required => 1);
-  has ValuesToAdd => (is => 'ro', isa => 'ArrayRef[Str]');
-  has ValuesToRemove => (is => 'ro', isa => 'ArrayRef[Str]');
+  has ValuesToAdd => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has ValuesToRemove => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
   use MooseX::ClassAttribute;
 
@@ -52,7 +52,7 @@ for.
 
 
 
-=head2 ValuesToAdd => ArrayRef[Str]
+=head2 ValuesToAdd => ArrayRef[Str|Undef]
 
 A list of DB cluster snapshot attributes to add to the attribute
 specified by C<AttributeName>.
@@ -66,7 +66,7 @@ available to all AWS accounts.
 
 
 
-=head2 ValuesToRemove => ArrayRef[Str]
+=head2 ValuesToRemove => ArrayRef[Str|Undef]
 
 A list of DB cluster snapshot attributes to remove from the attribute
 specified by C<AttributeName>.

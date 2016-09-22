@@ -1,7 +1,7 @@
 
 package Paws::EMR::SetTerminationProtection;
   use Moose;
-  has JobFlowIds => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has JobFlowIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
   has TerminationProtected => (is => 'ro', isa => 'Bool', required => 1);
 
   use MooseX::ClassAttribute;
@@ -34,7 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> JobFlowIds => ArrayRef[Str]
+=head2 B<REQUIRED> JobFlowIds => ArrayRef[Str|Undef]
 
 A list of strings that uniquely identify the job flows to protect. This
 identifier is returned by RunJobFlow and can also be obtained from

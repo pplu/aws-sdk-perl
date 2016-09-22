@@ -1,7 +1,7 @@
 
 package Paws::CloudFormation::DescribeChangeSetOutput;
   use Moose;
-  has Capabilities => (is => 'ro', isa => 'ArrayRef[Str]');
+  has Capabilities => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Changes => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::Change]');
   has ChangeSetId => (is => 'ro', isa => 'Str');
   has ChangeSetName => (is => 'ro', isa => 'Str');
@@ -9,7 +9,7 @@ package Paws::CloudFormation::DescribeChangeSetOutput;
   has Description => (is => 'ro', isa => 'Str');
   has ExecutionStatus => (is => 'ro', isa => 'Str');
   has NextToken => (is => 'ro', isa => 'Str');
-  has NotificationARNs => (is => 'ro', isa => 'ArrayRef[Str]');
+  has NotificationARNs => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Parameters => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::Parameter]');
   has StackId => (is => 'ro', isa => 'Str');
   has StackName => (is => 'ro', isa => 'Str');
@@ -28,7 +28,7 @@ Paws::CloudFormation::DescribeChangeSetOutput
 =head1 ATTRIBUTES
 
 
-=head2 Capabilities => ArrayRef[Str]
+=head2 Capabilities => ArrayRef[Str|Undef]
 
 If you execute the change set, the list of capabilities that were
 explicitly acknowledged when the change set was created.
@@ -83,7 +83,7 @@ changes. If there is no additional page, this value is null.
 
 
 
-=head2 NotificationARNs => ArrayRef[Str]
+=head2 NotificationARNs => ArrayRef[Str|Undef]
 
 The ARNs of the Amazon Simple Notification Service (Amazon SNS) topics
 that will be associated with the stack if you execute the change set.

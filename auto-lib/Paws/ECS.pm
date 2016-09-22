@@ -363,7 +363,7 @@ reference an C<INACTIVE> task definition (although there may be up to a
 not yet taken effect).
 
 
-=head2 DescribeClusters([Clusters => ArrayRef[Str]])
+=head2 DescribeClusters([Clusters => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::ECS::DescribeClusters>
 
@@ -372,7 +372,7 @@ Returns: a L<Paws::ECS::DescribeClustersResponse> instance
   Describes one or more of your clusters.
 
 
-=head2 DescribeContainerInstances(ContainerInstances => ArrayRef[Str], [Cluster => Str])
+=head2 DescribeContainerInstances(ContainerInstances => ArrayRef[Str|Undef], [Cluster => Str])
 
 Each argument is described in detail in: L<Paws::ECS::DescribeContainerInstances>
 
@@ -383,7 +383,7 @@ metadata about registered and remaining resources on each container
 instance requested.
 
 
-=head2 DescribeServices(Services => ArrayRef[Str], [Cluster => Str])
+=head2 DescribeServices(Services => ArrayRef[Str|Undef], [Cluster => Str])
 
 Each argument is described in detail in: L<Paws::ECS::DescribeServices>
 
@@ -407,7 +407,7 @@ You can only describe C<INACTIVE> task definitions while an active task
 or service references them.
 
 
-=head2 DescribeTasks(Tasks => ArrayRef[Str], [Cluster => Str])
+=head2 DescribeTasks(Tasks => ArrayRef[Str|Undef], [Cluster => Str])
 
 Each argument is described in detail in: L<Paws::ECS::DescribeTasks>
 
@@ -549,7 +549,7 @@ container instance, use C<StartTask> instead.
 The C<count> parameter is limited to 10 tasks per call.
 
 
-=head2 StartTask(ContainerInstances => ArrayRef[Str], TaskDefinition => Str, [Cluster => Str, Overrides => L<Paws::ECS::TaskOverride>, StartedBy => Str])
+=head2 StartTask(ContainerInstances => ArrayRef[Str|Undef], TaskDefinition => Str, [Cluster => Str, Overrides => L<Paws::ECS::TaskOverride>, StartedBy => Str])
 
 Each argument is described in detail in: L<Paws::ECS::StartTask>
 

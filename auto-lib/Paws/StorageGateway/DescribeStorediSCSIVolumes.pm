@@ -1,7 +1,7 @@
 
 package Paws::StorageGateway::DescribeStorediSCSIVolumes;
   use Moose;
-  has VolumeARNs => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has VolumeARNs => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -33,7 +33,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> VolumeARNs => ArrayRef[Str]
+=head2 B<REQUIRED> VolumeARNs => ArrayRef[Str|Undef]
 
 An array of strings where each string represents the Amazon Resource
 Name (ARN) of a stored volume. All of the specified stored volumes must

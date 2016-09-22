@@ -3,8 +3,8 @@ package Paws::EMR::DescribeJobFlows;
   use Moose;
   has CreatedAfter => (is => 'ro', isa => 'Str');
   has CreatedBefore => (is => 'ro', isa => 'Str');
-  has JobFlowIds => (is => 'ro', isa => 'ArrayRef[Str]');
-  has JobFlowStates => (is => 'ro', isa => 'ArrayRef[Str]');
+  has JobFlowIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has JobFlowStates => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
   use MooseX::ClassAttribute;
 
@@ -48,13 +48,13 @@ Return only job flows created before this date and time.
 
 
 
-=head2 JobFlowIds => ArrayRef[Str]
+=head2 JobFlowIds => ArrayRef[Str|Undef]
 
 Return only job flows whose job flow ID is contained in this list.
 
 
 
-=head2 JobFlowStates => ArrayRef[Str]
+=head2 JobFlowStates => ArrayRef[Str|Undef]
 
 Return only job flows whose state is contained in this list.
 

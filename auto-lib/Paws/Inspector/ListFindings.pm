@@ -1,7 +1,7 @@
 
 package Paws::Inspector::ListFindings;
   use Moose;
-  has AssessmentRunArns => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'assessmentRunArns' );
+  has AssessmentRunArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'assessmentRunArns' );
   has Filter => (is => 'ro', isa => 'Paws::Inspector::FindingFilter', traits => ['NameInRequest'], request_name => 'filter' );
   has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults' );
   has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
@@ -36,7 +36,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 AssessmentRunArns => ArrayRef[Str]
+=head2 AssessmentRunArns => ArrayRef[Str|Undef]
 
 The ARNs of the assessment runs that generate the findings that you
 want to list.

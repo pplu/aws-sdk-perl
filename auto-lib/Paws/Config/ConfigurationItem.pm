@@ -9,7 +9,7 @@ package Paws::Config::ConfigurationItem;
   has ConfigurationItemMD5Hash => (is => 'ro', isa => 'Str', xmlname => 'configurationItemMD5Hash', request_name => 'configurationItemMD5Hash', traits => ['Unwrapped','NameInRequest']);
   has ConfigurationItemStatus => (is => 'ro', isa => 'Str', xmlname => 'configurationItemStatus', request_name => 'configurationItemStatus', traits => ['Unwrapped','NameInRequest']);
   has ConfigurationStateId => (is => 'ro', isa => 'Str', xmlname => 'configurationStateId', request_name => 'configurationStateId', traits => ['Unwrapped','NameInRequest']);
-  has RelatedEvents => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'relatedEvents', request_name => 'relatedEvents', traits => ['Unwrapped','NameInRequest']);
+  has RelatedEvents => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'relatedEvents', request_name => 'relatedEvents', traits => ['Unwrapped','NameInRequest']);
   has Relationships => (is => 'ro', isa => 'ArrayRef[Paws::Config::Relationship]', xmlname => 'relationships', request_name => 'relationships', traits => ['Unwrapped','NameInRequest']);
   has ResourceCreationTime => (is => 'ro', isa => 'Str', xmlname => 'resourceCreationTime', request_name => 'resourceCreationTime', traits => ['Unwrapped','NameInRequest']);
   has ResourceId => (is => 'ro', isa => 'Str', xmlname => 'resourceId', request_name => 'resourceId', traits => ['Unwrapped','NameInRequest']);
@@ -105,7 +105,7 @@ items that are associated with the same resource.
 a resource.
 
 
-=head2 RelatedEvents => ArrayRef[Str]
+=head2 RelatedEvents => ArrayRef[Str|Undef]
 
   A list of CloudTrail event IDs.
 

@@ -476,7 +476,7 @@ Returns: a L<Paws::MachineLearning::DeleteRealtimeEndpointOutput> instance
   Deletes a real time endpoint of an C<MLModel>.
 
 
-=head2 DeleteTags(ResourceId => Str, ResourceType => Str, TagKeys => ArrayRef[Str])
+=head2 DeleteTags(ResourceId => Str, ResourceType => Str, TagKeys => ArrayRef[Str|Undef])
 
 Each argument is described in detail in: L<Paws::MachineLearning::DeleteTags>
 

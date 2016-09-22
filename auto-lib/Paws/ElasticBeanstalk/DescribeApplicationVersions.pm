@@ -2,7 +2,7 @@
 package Paws::ElasticBeanstalk::DescribeApplicationVersions;
   use Moose;
   has ApplicationName => (is => 'ro', isa => 'Str');
-  has VersionLabels => (is => 'ro', isa => 'ArrayRef[Str]');
+  has VersionLabels => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
   use MooseX::ClassAttribute;
 
@@ -42,7 +42,7 @@ application.
 
 
 
-=head2 VersionLabels => ArrayRef[Str]
+=head2 VersionLabels => ArrayRef[Str|Undef]
 
 If specified, restricts the returned descriptions to only include ones
 that have the specified version labels.

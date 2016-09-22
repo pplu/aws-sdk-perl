@@ -1,7 +1,7 @@
 
 package Paws::ELB::ApplySecurityGroupsToLoadBalancerOutput;
   use Moose;
-  has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Str]');
+  has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
 1;
 
@@ -14,7 +14,7 @@ Paws::ELB::ApplySecurityGroupsToLoadBalancerOutput
 =head1 ATTRIBUTES
 
 
-=head2 SecurityGroups => ArrayRef[Str]
+=head2 SecurityGroups => ArrayRef[Str|Undef]
 
 The IDs of the security groups associated with the load balancer.
 

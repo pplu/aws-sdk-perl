@@ -1,7 +1,7 @@
 
 package Paws::ElasticBeanstalk::DescribeApplications;
   use Moose;
-  has ApplicationNames => (is => 'ro', isa => 'ArrayRef[Str]');
+  has ApplicationNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
   use MooseX::ClassAttribute;
 
@@ -33,7 +33,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 ApplicationNames => ArrayRef[Str]
+=head2 ApplicationNames => ArrayRef[Str|Undef]
 
 If specified, AWS Elastic Beanstalk restricts the returned descriptions
 to only include those with the specified names.

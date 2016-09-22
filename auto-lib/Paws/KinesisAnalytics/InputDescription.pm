@@ -1,6 +1,6 @@
 package Paws::KinesisAnalytics::InputDescription;
   use Moose;
-  has InAppStreamNames => (is => 'ro', isa => 'ArrayRef[Str]');
+  has InAppStreamNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has InputId => (is => 'ro', isa => 'Str');
   has InputParallelism => (is => 'ro', isa => 'Paws::KinesisAnalytics::InputParallelism');
   has InputSchema => (is => 'ro', isa => 'Paws::KinesisAnalytics::SourceSchema');
@@ -44,7 +44,7 @@ see Configuring Application Input.
 =head1 ATTRIBUTES
 
 
-=head2 InAppStreamNames => ArrayRef[Str]
+=head2 InAppStreamNames => ArrayRef[Str|Undef]
 
   Returns the in-application stream names that are mapped to the stream
 source.

@@ -2,7 +2,7 @@ package Paws::ElasticBeanstalk::SingleInstanceHealth;
   use Moose;
   has ApplicationMetrics => (is => 'ro', isa => 'Paws::ElasticBeanstalk::ApplicationMetrics');
   has AvailabilityZone => (is => 'ro', isa => 'Str');
-  has Causes => (is => 'ro', isa => 'ArrayRef[Str]');
+  has Causes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Color => (is => 'ro', isa => 'Str');
   has Deployment => (is => 'ro', isa => 'Paws::ElasticBeanstalk::Deployment');
   has HealthStatus => (is => 'ro', isa => 'Str');
@@ -58,7 +58,7 @@ return data.
   The availability zone in which the instance runs.
 
 
-=head2 Causes => ArrayRef[Str]
+=head2 Causes => ArrayRef[Str|Undef]
 
   Represents the causes, which provide more information about the current
 health status.

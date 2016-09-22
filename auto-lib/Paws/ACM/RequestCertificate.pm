@@ -4,7 +4,7 @@ package Paws::ACM::RequestCertificate;
   has DomainName => (is => 'ro', isa => 'Str', required => 1);
   has DomainValidationOptions => (is => 'ro', isa => 'ArrayRef[Paws::ACM::DomainValidationOption]');
   has IdempotencyToken => (is => 'ro', isa => 'Str');
-  has SubjectAlternativeNames => (is => 'ro', isa => 'ArrayRef[Str]');
+  has SubjectAlternativeNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
   use MooseX::ClassAttribute;
 
@@ -95,7 +95,7 @@ requesting multiple certificates.
 
 
 
-=head2 SubjectAlternativeNames => ArrayRef[Str]
+=head2 SubjectAlternativeNames => ArrayRef[Str|Undef]
 
 Additional FQDNs to be included in the Subject Alternative Name
 extension of the ACM Certificate. For example, add the name

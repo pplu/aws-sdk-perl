@@ -6,7 +6,7 @@ package Paws::OpsWorks::App;
   has CreatedAt => (is => 'ro', isa => 'Str');
   has DataSources => (is => 'ro', isa => 'ArrayRef[Paws::OpsWorks::DataSource]');
   has Description => (is => 'ro', isa => 'Str');
-  has Domains => (is => 'ro', isa => 'ArrayRef[Str]');
+  has Domains => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has EnableSsl => (is => 'ro', isa => 'Bool');
   has Environment => (is => 'ro', isa => 'ArrayRef[Paws::OpsWorks::EnvironmentVariable]');
   has Name => (is => 'ro', isa => 'Str');
@@ -79,7 +79,7 @@ A description of the app.
   A description of the app.
 
 
-=head2 Domains => ArrayRef[Str]
+=head2 Domains => ArrayRef[Str|Undef]
 
   The app vhost settings with multiple domains separated by commas. For
 example: C<'www.example.com, example.com'>

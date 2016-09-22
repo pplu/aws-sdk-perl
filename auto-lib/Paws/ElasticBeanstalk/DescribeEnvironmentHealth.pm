@@ -1,7 +1,7 @@
 
 package Paws::ElasticBeanstalk::DescribeEnvironmentHealth;
   use Moose;
-  has AttributeNames => (is => 'ro', isa => 'ArrayRef[Str]');
+  has AttributeNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has EnvironmentId => (is => 'ro', isa => 'Str');
   has EnvironmentName => (is => 'ro', isa => 'Str');
 
@@ -35,7 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 AttributeNames => ArrayRef[Str]
+=head2 AttributeNames => ArrayRef[Str|Undef]
 
 Specifies the response elements you wish to receive. If no attribute
 names are specified, AWS Elastic Beanstalk only returns the name of the

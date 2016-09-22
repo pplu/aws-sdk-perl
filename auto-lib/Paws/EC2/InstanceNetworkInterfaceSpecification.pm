@@ -4,7 +4,7 @@ package Paws::EC2::InstanceNetworkInterfaceSpecification;
   has DeleteOnTermination => (is => 'ro', isa => 'Bool', xmlname => 'deleteOnTermination', traits => ['Unwrapped']);
   has Description => (is => 'ro', isa => 'Str', xmlname => 'description', traits => ['Unwrapped']);
   has DeviceIndex => (is => 'ro', isa => 'Int', xmlname => 'deviceIndex', traits => ['Unwrapped']);
-  has Groups => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'SecurityGroupId', traits => ['Unwrapped']);
+  has Groups => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'SecurityGroupId', traits => ['Unwrapped']);
   has NetworkInterfaceId => (is => 'ro', isa => 'Str', xmlname => 'networkInterfaceId', traits => ['Unwrapped']);
   has PrivateIpAddress => (is => 'ro', isa => 'Str', xmlname => 'privateIpAddress', traits => ['Unwrapped']);
   has PrivateIpAddresses => (is => 'ro', isa => 'ArrayRef[Paws::EC2::PrivateIpAddressSpecification]', xmlname => 'privateIpAddressesSet', traits => ['Unwrapped']);
@@ -75,7 +75,7 @@ attachment. If you are specifying a network interface in a RunInstances
 request, you must provide the device index.
 
 
-=head2 Groups => ArrayRef[Str]
+=head2 Groups => ArrayRef[Str|Undef]
 
   The IDs of the security groups for the network interface. Applies only
 if creating a network interface when launching an instance.

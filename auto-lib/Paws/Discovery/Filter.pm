@@ -2,7 +2,7 @@ package Paws::Discovery::Filter;
   use Moose;
   has Condition => (is => 'ro', isa => 'Str', xmlname => 'condition', request_name => 'condition', traits => ['Unwrapped','NameInRequest'], required => 1);
   has Name => (is => 'ro', isa => 'Str', xmlname => 'name', request_name => 'name', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has Values => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'values', request_name => 'values', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has Values => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'values', request_name => 'values', traits => ['Unwrapped','NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -208,7 +208,7 @@ C<destinationServer.agentId>
 
 
 
-=head2 B<REQUIRED> Values => ArrayRef[Str]
+=head2 B<REQUIRED> Values => ArrayRef[Str|Undef]
 
   A string value that you want to filter on. For example, if you choose
 the C<destinationServer.osVersion> filter name, you could specify

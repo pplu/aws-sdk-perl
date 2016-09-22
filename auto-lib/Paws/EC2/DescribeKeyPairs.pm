@@ -3,7 +3,7 @@ package Paws::EC2::DescribeKeyPairs;
   use Moose;
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has Filters => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
-  has KeyNames => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'KeyName' );
+  has KeyNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'KeyName' );
 
   use MooseX::ClassAttribute;
 
@@ -63,7 +63,7 @@ C<key-name> - The name of the key pair.
 
 
 
-=head2 KeyNames => ArrayRef[Str]
+=head2 KeyNames => ArrayRef[Str|Undef]
 
 One or more key pair names.
 

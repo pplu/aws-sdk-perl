@@ -210,7 +210,7 @@ For a list of available SDKs, go to Tools for Amazon Web Services.
 
 =head1 METHODS
 
-=head2 AddPermission(ActionName => ArrayRef[Str], AWSAccountId => ArrayRef[Str], Label => Str, TopicArn => Str)
+=head2 AddPermission(ActionName => ArrayRef[Str|Undef], AWSAccountId => ArrayRef[Str|Undef], Label => Str, TopicArn => Str)
 
 Each argument is described in detail in: L<Paws::SNS::AddPermission>
 
@@ -377,7 +377,7 @@ supported push notification services, such as APNS and GCM. For more
 information, see Using Amazon SNS Mobile Push Notifications.
 
 
-=head2 GetSMSAttributes([Attributes => ArrayRef[Str]])
+=head2 GetSMSAttributes([Attributes => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::SNS::GetSMSAttributes>
 

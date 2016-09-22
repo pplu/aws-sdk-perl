@@ -2,7 +2,7 @@ package Paws::ELB::Policies;
   use Moose;
   has AppCookieStickinessPolicies => (is => 'ro', isa => 'ArrayRef[Paws::ELB::AppCookieStickinessPolicy]');
   has LBCookieStickinessPolicies => (is => 'ro', isa => 'ArrayRef[Paws::ELB::LBCookieStickinessPolicy]');
-  has OtherPolicies => (is => 'ro', isa => 'ArrayRef[Str]');
+  has OtherPolicies => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 1;
 
 ### main pod documentation begin ###
@@ -48,7 +48,7 @@ The policies for a load balancer.
   The stickiness policies created using CreateLBCookieStickinessPolicy.
 
 
-=head2 OtherPolicies => ArrayRef[Str]
+=head2 OtherPolicies => ArrayRef[Str|Undef]
 
   The policies other than the stickiness policies.
 

@@ -1,7 +1,7 @@
 
 package Paws::EC2::RunScheduledInstancesResult;
   use Moose;
-  has InstanceIdSet => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'instanceIdSet', traits => ['Unwrapped',]);
+  has InstanceIdSet => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'instanceIdSet', traits => ['Unwrapped',]);
 
 1;
 
@@ -14,7 +14,7 @@ Paws::EC2::RunScheduledInstancesResult
 =head1 ATTRIBUTES
 
 
-=head2 InstanceIdSet => ArrayRef[Str]
+=head2 InstanceIdSet => ArrayRef[Str|Undef]
 
 The IDs of the newly launched instances.
 

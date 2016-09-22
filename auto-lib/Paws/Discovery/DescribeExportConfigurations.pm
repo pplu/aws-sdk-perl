@@ -1,7 +1,7 @@
 
 package Paws::Discovery::DescribeExportConfigurations;
   use Moose;
-  has ExportIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'exportIds' );
+  has ExportIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'exportIds' );
   has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults' );
   has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
 
@@ -35,7 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 ExportIds => ArrayRef[Str]
+=head2 ExportIds => ArrayRef[Str|Undef]
 
 A unique identifier that you can use to query the export status.
 

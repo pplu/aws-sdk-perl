@@ -1,7 +1,7 @@
 
 package Paws::ECS::ListClustersResponse;
   use Moose;
-  has ClusterArns => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['Unwrapped'], xmlname => 'clusterArns' );
+  has ClusterArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['Unwrapped'], xmlname => 'clusterArns' );
   has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
 
 
@@ -14,7 +14,7 @@ Paws::ECS::ListClustersResponse
 =head1 ATTRIBUTES
 
 
-=head2 ClusterArns => ArrayRef[Str]
+=head2 ClusterArns => ArrayRef[Str|Undef]
 
 The list of full Amazon Resource Name (ARN) entries for each cluster
 associated with your account.

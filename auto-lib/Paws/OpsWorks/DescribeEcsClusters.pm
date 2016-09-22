@@ -1,7 +1,7 @@
 
 package Paws::OpsWorks::DescribeEcsClusters;
   use Moose;
-  has EcsClusterArns => (is => 'ro', isa => 'ArrayRef[Str]');
+  has EcsClusterArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has MaxResults => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
   has StackId => (is => 'ro', isa => 'Str');
@@ -36,7 +36,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 EcsClusterArns => ArrayRef[Str]
+=head2 EcsClusterArns => ArrayRef[Str|Undef]
 
 A list of ARNs, one for each cluster to be described.
 

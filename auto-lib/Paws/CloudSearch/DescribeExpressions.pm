@@ -3,7 +3,7 @@ package Paws::CloudSearch::DescribeExpressions;
   use Moose;
   has Deployed => (is => 'ro', isa => 'Bool');
   has DomainName => (is => 'ro', isa => 'Str', required => 1);
-  has ExpressionNames => (is => 'ro', isa => 'ArrayRef[Str]');
+  has ExpressionNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
   use MooseX::ClassAttribute;
 
@@ -48,7 +48,7 @@ The name of the domain you want to describe.
 
 
 
-=head2 ExpressionNames => ArrayRef[Str]
+=head2 ExpressionNames => ArrayRef[Str|Undef]
 
 Limits the C<DescribeExpressions> response to the specified
 expressions. If not specified, all expressions are shown.

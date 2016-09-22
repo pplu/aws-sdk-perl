@@ -3,12 +3,12 @@ package Paws::CloudHSM::DescribeHapgResponse;
   use Moose;
   has HapgArn => (is => 'ro', isa => 'Str');
   has HapgSerial => (is => 'ro', isa => 'Str');
-  has HsmsLastActionFailed => (is => 'ro', isa => 'ArrayRef[Str]');
-  has HsmsPendingDeletion => (is => 'ro', isa => 'ArrayRef[Str]');
-  has HsmsPendingRegistration => (is => 'ro', isa => 'ArrayRef[Str]');
+  has HsmsLastActionFailed => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has HsmsPendingDeletion => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has HsmsPendingRegistration => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Label => (is => 'ro', isa => 'Str');
   has LastModifiedTimestamp => (is => 'ro', isa => 'Str');
-  has PartitionSerialList => (is => 'ro', isa => 'ArrayRef[Str]');
+  has PartitionSerialList => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has State => (is => 'ro', isa => 'Str');
 
 
@@ -33,19 +33,19 @@ The serial number of the high-availability partition group.
 
 
 
-=head2 HsmsLastActionFailed => ArrayRef[Str]
+=head2 HsmsLastActionFailed => ArrayRef[Str|Undef]
 
 
 
 
 
-=head2 HsmsPendingDeletion => ArrayRef[Str]
+=head2 HsmsPendingDeletion => ArrayRef[Str|Undef]
 
 
 
 
 
-=head2 HsmsPendingRegistration => ArrayRef[Str]
+=head2 HsmsPendingRegistration => ArrayRef[Str|Undef]
 
 
 
@@ -64,7 +64,7 @@ modified.
 
 
 
-=head2 PartitionSerialList => ArrayRef[Str]
+=head2 PartitionSerialList => ArrayRef[Str|Undef]
 
 The list of partition serial numbers that belong to the
 high-availability partition group.

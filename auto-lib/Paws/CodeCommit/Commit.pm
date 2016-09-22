@@ -4,7 +4,7 @@ package Paws::CodeCommit::Commit;
   has Author => (is => 'ro', isa => 'Paws::CodeCommit::UserInfo', xmlname => 'author', request_name => 'author', traits => ['Unwrapped','NameInRequest']);
   has Committer => (is => 'ro', isa => 'Paws::CodeCommit::UserInfo', xmlname => 'committer', request_name => 'committer', traits => ['Unwrapped','NameInRequest']);
   has Message => (is => 'ro', isa => 'Str', xmlname => 'message', request_name => 'message', traits => ['Unwrapped','NameInRequest']);
-  has Parents => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'parents', request_name => 'parents', traits => ['Unwrapped','NameInRequest']);
+  has Parents => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'parents', request_name => 'parents', traits => ['Unwrapped','NameInRequest']);
   has TreeId => (is => 'ro', isa => 'Str', xmlname => 'treeId', request_name => 'treeId', traits => ['Unwrapped','NameInRequest']);
 1;
 
@@ -64,7 +64,7 @@ History in Pro Git by Scott Chacon and Ben Straub.
   The message associated with the specified commit.
 
 
-=head2 Parents => ArrayRef[Str]
+=head2 Parents => ArrayRef[Str|Undef]
 
   The parent list for the specified commit.
 

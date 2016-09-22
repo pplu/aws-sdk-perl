@@ -1,7 +1,7 @@
 
 package Paws::EMR::ListClusters;
   use Moose;
-  has ClusterStates => (is => 'ro', isa => 'ArrayRef[Str]');
+  has ClusterStates => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has CreatedAfter => (is => 'ro', isa => 'Str');
   has CreatedBefore => (is => 'ro', isa => 'Str');
   has Marker => (is => 'ro', isa => 'Str');
@@ -36,7 +36,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 ClusterStates => ArrayRef[Str]
+=head2 ClusterStates => ArrayRef[Str|Undef]
 
 The cluster state filters to apply when listing clusters.
 

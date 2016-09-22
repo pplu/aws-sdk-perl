@@ -6,7 +6,7 @@ package Paws::CognitoSync::ListRecordsResponse;
   has DatasetExists => (is => 'ro', isa => 'Bool');
   has DatasetSyncCount => (is => 'ro', isa => 'Int');
   has LastModifiedBy => (is => 'ro', isa => 'Str');
-  has MergedDatasetNames => (is => 'ro', isa => 'ArrayRef[Str]');
+  has MergedDatasetNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has NextToken => (is => 'ro', isa => 'Str');
   has Records => (is => 'ro', isa => 'ArrayRef[Paws::CognitoSync::Record]');
   has SyncSessionToken => (is => 'ro', isa => 'Str');
@@ -52,7 +52,7 @@ The user/device that made the last change to this record.
 
 
 
-=head2 MergedDatasetNames => ArrayRef[Str]
+=head2 MergedDatasetNames => ArrayRef[Str|Undef]
 
 Names of merged datasets.
 

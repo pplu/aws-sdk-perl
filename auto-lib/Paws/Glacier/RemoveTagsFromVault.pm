@@ -2,7 +2,7 @@
 package Paws::Glacier::RemoveTagsFromVault;
   use Moose;
   has AccountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'accountId' , required => 1);
-  has TagKeys => (is => 'ro', isa => 'ArrayRef[Str]');
+  has TagKeys => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has VaultName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'vaultName' , required => 1);
 
   use MooseX::ClassAttribute;
@@ -48,7 +48,7 @@ ID.
 
 
 
-=head2 TagKeys => ArrayRef[Str]
+=head2 TagKeys => ArrayRef[Str|Undef]
 
 A list of tag keys. Each corresponding tag is removed from the vault.
 

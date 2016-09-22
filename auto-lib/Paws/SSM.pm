@@ -362,7 +362,7 @@ For more information about tags, see Tagging Your Amazon EC2 Resources
 in the Amazon EC2 User Guide.
 
 
-=head2 CancelCommand(CommandId => Str, [InstanceIds => ArrayRef[Str]])
+=head2 CancelCommand(CommandId => Str, [InstanceIds => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::SSM::CancelCommand>
 
@@ -604,7 +604,7 @@ Returns: a L<Paws::SSM::ListTagsForResourceResult> instance
   Returns a list of the tags assigned to the specified resource.
 
 
-=head2 ModifyDocumentPermission(Name => Str, PermissionType => Str, [AccountIdsToAdd => ArrayRef[Str], AccountIdsToRemove => ArrayRef[Str]])
+=head2 ModifyDocumentPermission(Name => Str, PermissionType => Str, [AccountIdsToAdd => ArrayRef[Str|Undef], AccountIdsToRemove => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::SSM::ModifyDocumentPermission>
 
@@ -616,7 +616,7 @@ who can use the document. If you share a document publicly, you must
 specify I<All> as the account ID.
 
 
-=head2 RemoveTagsFromResource(ResourceId => Str, ResourceType => Str, TagKeys => ArrayRef[Str])
+=head2 RemoveTagsFromResource(ResourceId => Str, ResourceType => Str, TagKeys => ArrayRef[Str|Undef])
 
 Each argument is described in detail in: L<Paws::SSM::RemoveTagsFromResource>
 
@@ -625,7 +625,7 @@ Returns: a L<Paws::SSM::RemoveTagsFromResourceResult> instance
   Removes all tags from the specified resource.
 
 
-=head2 SendCommand(DocumentName => Str, InstanceIds => ArrayRef[Str], [Comment => Str, DocumentHash => Str, DocumentHashType => Str, NotificationConfig => L<Paws::SSM::NotificationConfig>, OutputS3BucketName => Str, OutputS3KeyPrefix => Str, Parameters => L<Paws::SSM::Parameters>, ServiceRoleArn => Str, TimeoutSeconds => Int])
+=head2 SendCommand(DocumentName => Str, InstanceIds => ArrayRef[Str|Undef], [Comment => Str, DocumentHash => Str, DocumentHashType => Str, NotificationConfig => L<Paws::SSM::NotificationConfig>, OutputS3BucketName => Str, OutputS3KeyPrefix => Str, Parameters => L<Paws::SSM::Parameters>, ServiceRoleArn => Str, TimeoutSeconds => Int])
 
 Each argument is described in detail in: L<Paws::SSM::SendCommand>
 

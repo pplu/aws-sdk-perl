@@ -1,7 +1,7 @@
 
 package Paws::Inspector::ListAssessmentTemplatesResponse;
   use Moose;
-  has AssessmentTemplateArns => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['Unwrapped'], xmlname => 'assessmentTemplateArns' , required => 1);
+  has AssessmentTemplateArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['Unwrapped'], xmlname => 'assessmentTemplateArns' , required => 1);
   has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
 
 
@@ -14,7 +14,7 @@ Paws::Inspector::ListAssessmentTemplatesResponse
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> AssessmentTemplateArns => ArrayRef[Str]
+=head2 B<REQUIRED> AssessmentTemplateArns => ArrayRef[Str|Undef]
 
 A list of ARNs that specifies the assessment templates returned by the
 action.

@@ -2,7 +2,7 @@
 package Paws::ECS::ListTasksResponse;
   use Moose;
   has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
-  has TaskArns => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['Unwrapped'], xmlname => 'taskArns' );
+  has TaskArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['Unwrapped'], xmlname => 'taskArns' );
 
 
 ### main pod documentation begin ###
@@ -23,7 +23,7 @@ C<null> when there are no more results to return.
 
 
 
-=head2 TaskArns => ArrayRef[Str]
+=head2 TaskArns => ArrayRef[Str|Undef]
 
 The list of task Amazon Resource Name (ARN) entries for the
 C<ListTasks> request.

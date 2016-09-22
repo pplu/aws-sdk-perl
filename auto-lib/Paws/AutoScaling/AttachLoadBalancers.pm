@@ -2,7 +2,7 @@
 package Paws::AutoScaling::AttachLoadBalancers;
   use Moose;
   has AutoScalingGroupName => (is => 'ro', isa => 'Str', required => 1);
-  has LoadBalancerNames => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has LoadBalancerNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -40,7 +40,7 @@ The name of the group.
 
 
 
-=head2 B<REQUIRED> LoadBalancerNames => ArrayRef[Str]
+=head2 B<REQUIRED> LoadBalancerNames => ArrayRef[Str|Undef]
 
 One or more load balancer names.
 

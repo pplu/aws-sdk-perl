@@ -7,9 +7,9 @@ package Paws::EC2::ModifyImageAttribute;
   has ImageId => (is => 'ro', isa => 'Str', required => 1);
   has LaunchPermission => (is => 'ro', isa => 'Paws::EC2::LaunchPermissionModifications');
   has OperationType => (is => 'ro', isa => 'Str');
-  has ProductCodes => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'ProductCode' );
-  has UserGroups => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'UserGroup' );
-  has UserIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'UserId' );
+  has ProductCodes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'ProductCode' );
+  has UserGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'UserGroup' );
+  has UserIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'UserId' );
   has Value => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
@@ -81,7 +81,7 @@ The operation type.
 
 Valid values are: C<"add">, C<"remove">
 
-=head2 ProductCodes => ArrayRef[Str]
+=head2 ProductCodes => ArrayRef[Str|Undef]
 
 One or more product codes. After you add a product code to an AMI, it
 can't be removed. This is only valid when modifying the C<productCodes>
@@ -89,14 +89,14 @@ attribute.
 
 
 
-=head2 UserGroups => ArrayRef[Str]
+=head2 UserGroups => ArrayRef[Str|Undef]
 
 One or more user groups. This is only valid when modifying the
 C<launchPermission> attribute.
 
 
 
-=head2 UserIds => ArrayRef[Str]
+=head2 UserIds => ArrayRef[Str|Undef]
 
 One or more AWS account IDs. This is only valid when modifying the
 C<launchPermission> attribute.

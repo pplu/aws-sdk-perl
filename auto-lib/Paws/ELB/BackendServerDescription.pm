@@ -1,7 +1,7 @@
 package Paws::ELB::BackendServerDescription;
   use Moose;
   has InstancePort => (is => 'ro', isa => 'Int');
-  has PolicyNames => (is => 'ro', isa => 'ArrayRef[Str]');
+  has PolicyNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +42,7 @@ Information about the configuration of an EC2 instance.
   The port on which the EC2 instance is listening.
 
 
-=head2 PolicyNames => ArrayRef[Str]
+=head2 PolicyNames => ArrayRef[Str|Undef]
 
   The names of the policies enabled for the EC2 instance.
 

@@ -3,7 +3,7 @@ package Paws::Support::DescribeCases;
   use Moose;
   has AfterTime => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'afterTime' );
   has BeforeTime => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'beforeTime' );
-  has CaseIdList => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'caseIdList' );
+  has CaseIdList => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'caseIdList' );
   has DisplayId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'displayId' );
   has IncludeCommunications => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'includeCommunications' );
   has IncludeResolvedCases => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'includeResolvedCases' );
@@ -56,7 +56,7 @@ Case communications are available for 12 months after creation.
 
 
 
-=head2 CaseIdList => ArrayRef[Str]
+=head2 CaseIdList => ArrayRef[Str|Undef]
 
 A list of ID numbers of the support cases you want returned. The
 maximum number of cases is 100.

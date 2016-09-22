@@ -5,8 +5,8 @@ package Paws::CognitoIdentity::CreateIdentityPool;
   has CognitoIdentityProviders => (is => 'ro', isa => 'ArrayRef[Paws::CognitoIdentity::CognitoIdentityProvider]');
   has DeveloperProviderName => (is => 'ro', isa => 'Str');
   has IdentityPoolName => (is => 'ro', isa => 'Str', required => 1);
-  has OpenIdConnectProviderARNs => (is => 'ro', isa => 'ArrayRef[Str]');
-  has SamlProviderARNs => (is => 'ro', isa => 'ArrayRef[Str]');
+  has OpenIdConnectProviderARNs => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has SamlProviderARNs => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has SupportedLoginProviders => (is => 'ro', isa => 'Paws::CognitoIdentity::IdentityProviders');
 
   use MooseX::ClassAttribute;
@@ -70,13 +70,13 @@ A string that you provide.
 
 
 
-=head2 OpenIdConnectProviderARNs => ArrayRef[Str]
+=head2 OpenIdConnectProviderARNs => ArrayRef[Str|Undef]
 
 A list of OpendID Connect provider ARNs.
 
 
 
-=head2 SamlProviderARNs => ArrayRef[Str]
+=head2 SamlProviderARNs => ArrayRef[Str|Undef]
 
 An array of Amazon Resource Names (ARNs) of the SAML provider for your
 identity pool.

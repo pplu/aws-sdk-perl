@@ -1,7 +1,7 @@
 
 package Paws::SES::ListIdentitiesResponse;
   use Moose;
-  has Identities => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has Identities => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
   has NextToken => (is => 'ro', isa => 'Str');
 
 1;
@@ -15,7 +15,7 @@ Paws::SES::ListIdentitiesResponse
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Identities => ArrayRef[Str]
+=head2 B<REQUIRED> Identities => ArrayRef[Str|Undef]
 
 A list of identities.
 

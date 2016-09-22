@@ -5,17 +5,17 @@ package Paws::ElastiCache::ModifyCacheCluster;
   has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Bool');
   has AZMode => (is => 'ro', isa => 'Str');
   has CacheClusterId => (is => 'ro', isa => 'Str', required => 1);
-  has CacheNodeIdsToRemove => (is => 'ro', isa => 'ArrayRef[Str]');
+  has CacheNodeIdsToRemove => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has CacheNodeType => (is => 'ro', isa => 'Str');
   has CacheParameterGroupName => (is => 'ro', isa => 'Str');
-  has CacheSecurityGroupNames => (is => 'ro', isa => 'ArrayRef[Str]');
+  has CacheSecurityGroupNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has EngineVersion => (is => 'ro', isa => 'Str');
-  has NewAvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str]');
+  has NewAvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has NotificationTopicArn => (is => 'ro', isa => 'Str');
   has NotificationTopicStatus => (is => 'ro', isa => 'Str');
   has NumCacheNodes => (is => 'ro', isa => 'Int');
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
-  has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has SnapshotRetentionLimit => (is => 'ro', isa => 'Int');
   has SnapshotWindow => (is => 'ro', isa => 'Str');
 
@@ -104,7 +104,7 @@ string.
 
 
 
-=head2 CacheNodeIdsToRemove => ArrayRef[Str]
+=head2 CacheNodeIdsToRemove => ArrayRef[Str|Undef]
 
 A list of cache node IDs to be removed. A node ID is a numeric
 identifier (0001, 0002, etc.). This parameter is only valid when
@@ -137,7 +137,7 @@ I<true> for this request.
 
 
 
-=head2 CacheSecurityGroupNames => ArrayRef[Str]
+=head2 CacheSecurityGroupNames => ArrayRef[Str|Undef]
 
 A list of cache security group names to authorize on this cache
 cluster. This change is asynchronously applied as soon as possible.
@@ -162,7 +162,7 @@ engine version.
 
 
 
-=head2 NewAvailabilityZones => ArrayRef[Str]
+=head2 NewAvailabilityZones => ArrayRef[Str|Undef]
 
 The list of Availability Zones where the new Memcached cache nodes will
 be created.
@@ -410,7 +410,7 @@ Example: C<sun:05:00-sun:09:00>
 
 
 
-=head2 SecurityGroupIds => ArrayRef[Str]
+=head2 SecurityGroupIds => ArrayRef[Str|Undef]
 
 Specifies the VPC Security Groups associated with the cache cluster.
 

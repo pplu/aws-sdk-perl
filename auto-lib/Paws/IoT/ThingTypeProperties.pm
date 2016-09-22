@@ -1,6 +1,6 @@
 package Paws::IoT::ThingTypeProperties;
   use Moose;
-  has SearchableAttributes => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'searchableAttributes', request_name => 'searchableAttributes', traits => ['Unwrapped','NameInRequest']);
+  has SearchableAttributes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'searchableAttributes', request_name => 'searchableAttributes', traits => ['Unwrapped','NameInRequest']);
   has ThingTypeDescription => (is => 'ro', isa => 'Str', xmlname => 'thingTypeDescription', request_name => 'thingTypeDescription', traits => ['Unwrapped','NameInRequest']);
 1;
 
@@ -39,7 +39,7 @@ attribute names.
 =head1 ATTRIBUTES
 
 
-=head2 SearchableAttributes => ArrayRef[Str]
+=head2 SearchableAttributes => ArrayRef[Str|Undef]
 
   A list of searchable thing attribute names.
 

@@ -1,6 +1,6 @@
 package Paws::EMR::ScriptBootstrapActionConfig;
   use Moose;
-  has Args => (is => 'ro', isa => 'ArrayRef[Str]');
+  has Args => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Path => (is => 'ro', isa => 'Str', required => 1);
 1;
 
@@ -37,7 +37,7 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 Args => ArrayRef[Str]
+=head2 Args => ArrayRef[Str|Undef]
 
   
 

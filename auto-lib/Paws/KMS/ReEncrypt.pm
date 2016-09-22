@@ -4,7 +4,7 @@ package Paws::KMS::ReEncrypt;
   has CiphertextBlob => (is => 'ro', isa => 'Str', required => 1);
   has DestinationEncryptionContext => (is => 'ro', isa => 'Paws::KMS::EncryptionContextType');
   has DestinationKeyId => (is => 'ro', isa => 'Str', required => 1);
-  has GrantTokens => (is => 'ro', isa => 'ArrayRef[Str]');
+  has GrantTokens => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has SourceEncryptionContext => (is => 'ro', isa => 'Paws::KMS::EncryptionContextType');
 
   use MooseX::ClassAttribute;
@@ -80,7 +80,7 @@ Alias Name Example - alias/MyAliasName
 
 
 
-=head2 GrantTokens => ArrayRef[Str]
+=head2 GrantTokens => ArrayRef[Str|Undef]
 
 A list of grant tokens.
 

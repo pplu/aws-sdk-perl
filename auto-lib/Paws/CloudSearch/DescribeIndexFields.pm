@@ -3,7 +3,7 @@ package Paws::CloudSearch::DescribeIndexFields;
   use Moose;
   has Deployed => (is => 'ro', isa => 'Bool');
   has DomainName => (is => 'ro', isa => 'Str', required => 1);
-  has FieldNames => (is => 'ro', isa => 'ArrayRef[Str]');
+  has FieldNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
   use MooseX::ClassAttribute;
 
@@ -48,7 +48,7 @@ The name of the domain you want to describe.
 
 
 
-=head2 FieldNames => ArrayRef[Str]
+=head2 FieldNames => ArrayRef[Str|Undef]
 
 A list of the index fields you want to describe. If not specified,
 information is returned for all configured index fields.

@@ -1,6 +1,6 @@
 package Paws::ElastiCache::PendingModifiedValues;
   use Moose;
-  has CacheNodeIdsToRemove => (is => 'ro', isa => 'ArrayRef[Str]');
+  has CacheNodeIdsToRemove => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has CacheNodeType => (is => 'ro', isa => 'Str');
   has EngineVersion => (is => 'ro', isa => 'Str');
   has NumCacheNodes => (is => 'ro', isa => 'Int');
@@ -40,7 +40,7 @@ future, or that are currently being applied.
 =head1 ATTRIBUTES
 
 
-=head2 CacheNodeIdsToRemove => ArrayRef[Str]
+=head2 CacheNodeIdsToRemove => ArrayRef[Str|Undef]
 
   A list of cache node IDs that are being removed (or will be removed)
 from the cache cluster. A node ID is a numeric identifier (0001, 0002,

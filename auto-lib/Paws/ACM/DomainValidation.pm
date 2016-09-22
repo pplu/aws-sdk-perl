@@ -2,7 +2,7 @@ package Paws::ACM::DomainValidation;
   use Moose;
   has DomainName => (is => 'ro', isa => 'Str', required => 1);
   has ValidationDomain => (is => 'ro', isa => 'Str');
-  has ValidationEmails => (is => 'ro', isa => 'ArrayRef[Str]');
+  has ValidationEmails => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 1;
 
 ### main pod documentation begin ###
@@ -52,7 +52,7 @@ C<example.com>.
 addresses that are used to send the emails.
 
 
-=head2 ValidationEmails => ArrayRef[Str]
+=head2 ValidationEmails => ArrayRef[Str|Undef]
 
   A list of contact address for the domain registrant.
 

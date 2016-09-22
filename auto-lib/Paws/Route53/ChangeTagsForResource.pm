@@ -2,7 +2,7 @@
 package Paws::Route53::ChangeTagsForResource;
   use Moose;
   has AddTags => (is => 'ro', isa => 'ArrayRef[Paws::Route53::Tag]');
-  has RemoveTagKeys => (is => 'ro', isa => 'ArrayRef[Str]');
+  has RemoveTagKeys => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has ResourceId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'ResourceId' , required => 1);
   has ResourceType => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'ResourceType' , required => 1);
 
@@ -49,7 +49,7 @@ You can add a maximum of 10 tags to a health check or a hosted zone.
 
 
 
-=head2 RemoveTagKeys => ArrayRef[Str]
+=head2 RemoveTagKeys => ArrayRef[Str|Undef]
 
 A complex type that contains a list of the tags that you want to delete
 from the specified health check or hosted zone. You can specify up to

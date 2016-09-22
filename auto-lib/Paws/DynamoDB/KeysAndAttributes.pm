@@ -1,6 +1,6 @@
 package Paws::DynamoDB::KeysAndAttributes;
   use Moose;
-  has AttributesToGet => (is => 'ro', isa => 'ArrayRef[Str]');
+  has AttributesToGet => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has ConsistentRead => (is => 'ro', isa => 'Bool');
   has ExpressionAttributeNames => (is => 'ro', isa => 'Paws::DynamoDB::ExpressionAttributeNameMap');
   has Keys => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::Key]', required => 1);
@@ -46,7 +46,7 @@ the partition key and the sort key.
 =head1 ATTRIBUTES
 
 
-=head2 AttributesToGet => ArrayRef[Str]
+=head2 AttributesToGet => ArrayRef[Str|Undef]
 
   One or more attributes to retrieve from the table or index. If no
 attribute names are specified then all attributes will be returned. If

@@ -294,7 +294,7 @@ application revisions.
 
 =head1 METHODS
 
-=head2 AddTagsToOnPremisesInstances(InstanceNames => ArrayRef[Str], Tags => ArrayRef[L<Paws::CodeDeploy::Tag>])
+=head2 AddTagsToOnPremisesInstances(InstanceNames => ArrayRef[Str|Undef], Tags => ArrayRef[L<Paws::CodeDeploy::Tag>])
 
 Each argument is described in detail in: L<Paws::CodeDeploy::AddTagsToOnPremisesInstances>
 
@@ -312,7 +312,7 @@ Returns: a L<Paws::CodeDeploy::BatchGetApplicationRevisionsOutput> instance
   Gets information about one or more application revisions.
 
 
-=head2 BatchGetApplications([ApplicationNames => ArrayRef[Str]])
+=head2 BatchGetApplications([ApplicationNames => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::CodeDeploy::BatchGetApplications>
 
@@ -321,7 +321,7 @@ Returns: a L<Paws::CodeDeploy::BatchGetApplicationsOutput> instance
   Gets information about one or more applications.
 
 
-=head2 BatchGetDeploymentGroups(ApplicationName => Str, DeploymentGroupNames => ArrayRef[Str])
+=head2 BatchGetDeploymentGroups(ApplicationName => Str, DeploymentGroupNames => ArrayRef[Str|Undef])
 
 Each argument is described in detail in: L<Paws::CodeDeploy::BatchGetDeploymentGroups>
 
@@ -330,7 +330,7 @@ Returns: a L<Paws::CodeDeploy::BatchGetDeploymentGroupsOutput> instance
   Get information about one or more deployment groups.
 
 
-=head2 BatchGetDeploymentInstances(DeploymentId => Str, InstanceIds => ArrayRef[Str])
+=head2 BatchGetDeploymentInstances(DeploymentId => Str, InstanceIds => ArrayRef[Str|Undef])
 
 Each argument is described in detail in: L<Paws::CodeDeploy::BatchGetDeploymentInstances>
 
@@ -340,7 +340,7 @@ Returns: a L<Paws::CodeDeploy::BatchGetDeploymentInstancesOutput> instance
 deployment group.
 
 
-=head2 BatchGetDeployments([DeploymentIds => ArrayRef[Str]])
+=head2 BatchGetDeployments([DeploymentIds => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::CodeDeploy::BatchGetDeployments>
 
@@ -349,7 +349,7 @@ Returns: a L<Paws::CodeDeploy::BatchGetDeploymentsOutput> instance
   Gets information about one or more deployments.
 
 
-=head2 BatchGetOnPremisesInstances([InstanceNames => ArrayRef[Str]])
+=head2 BatchGetOnPremisesInstances([InstanceNames => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::CodeDeploy::BatchGetOnPremisesInstances>
 
@@ -385,7 +385,7 @@ Returns: a L<Paws::CodeDeploy::CreateDeploymentConfigOutput> instance
   Creates a deployment configuration.
 
 
-=head2 CreateDeploymentGroup(ApplicationName => Str, DeploymentGroupName => Str, ServiceRoleArn => Str, [AlarmConfiguration => L<Paws::CodeDeploy::AlarmConfiguration>, AutoRollbackConfiguration => L<Paws::CodeDeploy::AutoRollbackConfiguration>, AutoScalingGroups => ArrayRef[Str], DeploymentConfigName => Str, Ec2TagFilters => ArrayRef[L<Paws::CodeDeploy::EC2TagFilter>], OnPremisesInstanceTagFilters => ArrayRef[L<Paws::CodeDeploy::TagFilter>], TriggerConfigurations => ArrayRef[L<Paws::CodeDeploy::TriggerConfig>]])
+=head2 CreateDeploymentGroup(ApplicationName => Str, DeploymentGroupName => Str, ServiceRoleArn => Str, [AlarmConfiguration => L<Paws::CodeDeploy::AlarmConfiguration>, AutoRollbackConfiguration => L<Paws::CodeDeploy::AutoRollbackConfiguration>, AutoScalingGroups => ArrayRef[Str|Undef], DeploymentConfigName => Str, Ec2TagFilters => ArrayRef[L<Paws::CodeDeploy::EC2TagFilter>], OnPremisesInstanceTagFilters => ArrayRef[L<Paws::CodeDeploy::TagFilter>], TriggerConfigurations => ArrayRef[L<Paws::CodeDeploy::TriggerConfig>]])
 
 Each argument is described in detail in: L<Paws::CodeDeploy::CreateDeploymentGroup>
 
@@ -536,7 +536,7 @@ Returns: a L<Paws::CodeDeploy::ListDeploymentGroupsOutput> instance
 applicable IAM user or AWS account.
 
 
-=head2 ListDeploymentInstances(DeploymentId => Str, [InstanceStatusFilter => ArrayRef[Str], NextToken => Str])
+=head2 ListDeploymentInstances(DeploymentId => Str, [InstanceStatusFilter => ArrayRef[Str|Undef], NextToken => Str])
 
 Each argument is described in detail in: L<Paws::CodeDeploy::ListDeploymentInstances>
 
@@ -546,7 +546,7 @@ Returns: a L<Paws::CodeDeploy::ListDeploymentInstancesOutput> instance
 user or AWS account.
 
 
-=head2 ListDeployments([ApplicationName => Str, CreateTimeRange => L<Paws::CodeDeploy::TimeRange>, DeploymentGroupName => Str, IncludeOnlyStatuses => ArrayRef[Str], NextToken => Str])
+=head2 ListDeployments([ApplicationName => Str, CreateTimeRange => L<Paws::CodeDeploy::TimeRange>, DeploymentGroupName => Str, IncludeOnlyStatuses => ArrayRef[Str|Undef], NextToken => Str])
 
 Each argument is described in detail in: L<Paws::CodeDeploy::ListDeployments>
 
@@ -588,7 +588,7 @@ Returns: nothing
   Registers an on-premises instance.
 
 
-=head2 RemoveTagsFromOnPremisesInstances(InstanceNames => ArrayRef[Str], Tags => ArrayRef[L<Paws::CodeDeploy::Tag>])
+=head2 RemoveTagsFromOnPremisesInstances(InstanceNames => ArrayRef[Str|Undef], Tags => ArrayRef[L<Paws::CodeDeploy::Tag>])
 
 Each argument is described in detail in: L<Paws::CodeDeploy::RemoveTagsFromOnPremisesInstances>
 
@@ -615,7 +615,7 @@ Returns: nothing
   Changes the name of an application.
 
 
-=head2 UpdateDeploymentGroup(ApplicationName => Str, CurrentDeploymentGroupName => Str, [AlarmConfiguration => L<Paws::CodeDeploy::AlarmConfiguration>, AutoRollbackConfiguration => L<Paws::CodeDeploy::AutoRollbackConfiguration>, AutoScalingGroups => ArrayRef[Str], DeploymentConfigName => Str, Ec2TagFilters => ArrayRef[L<Paws::CodeDeploy::EC2TagFilter>], NewDeploymentGroupName => Str, OnPremisesInstanceTagFilters => ArrayRef[L<Paws::CodeDeploy::TagFilter>], ServiceRoleArn => Str, TriggerConfigurations => ArrayRef[L<Paws::CodeDeploy::TriggerConfig>]])
+=head2 UpdateDeploymentGroup(ApplicationName => Str, CurrentDeploymentGroupName => Str, [AlarmConfiguration => L<Paws::CodeDeploy::AlarmConfiguration>, AutoRollbackConfiguration => L<Paws::CodeDeploy::AutoRollbackConfiguration>, AutoScalingGroups => ArrayRef[Str|Undef], DeploymentConfigName => Str, Ec2TagFilters => ArrayRef[L<Paws::CodeDeploy::EC2TagFilter>], NewDeploymentGroupName => Str, OnPremisesInstanceTagFilters => ArrayRef[L<Paws::CodeDeploy::TagFilter>], ServiceRoleArn => Str, TriggerConfigurations => ArrayRef[L<Paws::CodeDeploy::TriggerConfig>]])
 
 Each argument is described in detail in: L<Paws::CodeDeploy::UpdateDeploymentGroup>
 

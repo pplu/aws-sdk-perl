@@ -3,9 +3,9 @@ package Paws::ELBv2::DescribeTargetGroups;
   use Moose;
   has LoadBalancerArn => (is => 'ro', isa => 'Str');
   has Marker => (is => 'ro', isa => 'Str');
-  has Names => (is => 'ro', isa => 'ArrayRef[Str]');
+  has Names => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has PageSize => (is => 'ro', isa => 'Int');
-  has TargetGroupArns => (is => 'ro', isa => 'ArrayRef[Str]');
+  has TargetGroupArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
   use MooseX::ClassAttribute;
 
@@ -50,7 +50,7 @@ a previous call.)
 
 
 
-=head2 Names => ArrayRef[Str]
+=head2 Names => ArrayRef[Str|Undef]
 
 The names of the target groups.
 
@@ -62,7 +62,7 @@ The maximum number of results to return with this call.
 
 
 
-=head2 TargetGroupArns => ArrayRef[Str]
+=head2 TargetGroupArns => ArrayRef[Str|Undef]
 
 The Amazon Resource Names (ARN) of the target groups.
 

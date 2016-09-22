@@ -14,7 +14,7 @@ package Paws::EC2::DescribeReservedInstancesOfferings;
   has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
   has OfferingType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'offeringType' );
   has ProductDescription => (is => 'ro', isa => 'Str');
-  has ReservedInstancesOfferingIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'ReservedInstancesOfferingId' );
+  has ReservedInstancesOfferingIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'ReservedInstancesOfferingId' );
 
   use MooseX::ClassAttribute;
 
@@ -204,7 +204,7 @@ include C<(Amazon VPC)> in the description are for use with Amazon VPC.
 
 Valid values are: C<"Linux/UNIX">, C<"Linux/UNIX (Amazon VPC)">, C<"Windows">, C<"Windows (Amazon VPC)">
 
-=head2 ReservedInstancesOfferingIds => ArrayRef[Str]
+=head2 ReservedInstancesOfferingIds => ArrayRef[Str|Undef]
 
 One or more Reserved Instances offering IDs.
 

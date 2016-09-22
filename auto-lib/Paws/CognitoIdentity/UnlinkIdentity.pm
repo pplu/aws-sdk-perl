@@ -3,7 +3,7 @@ package Paws::CognitoIdentity::UnlinkIdentity;
   use Moose;
   has IdentityId => (is => 'ro', isa => 'Str', required => 1);
   has Logins => (is => 'ro', isa => 'Paws::CognitoIdentity::LoginsMap', required => 1);
-  has LoginsToRemove => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has LoginsToRemove => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -48,7 +48,7 @@ tokens.
 
 
 
-=head2 B<REQUIRED> LoginsToRemove => ArrayRef[Str]
+=head2 B<REQUIRED> LoginsToRemove => ArrayRef[Str|Undef]
 
 Provider names to unlink from this identity.
 

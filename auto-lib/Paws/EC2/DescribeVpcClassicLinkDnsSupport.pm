@@ -3,7 +3,7 @@ package Paws::EC2::DescribeVpcClassicLinkDnsSupport;
   use Moose;
   has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults' );
   has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
-  has VpcIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has VpcIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
   use MooseX::ClassAttribute;
 
@@ -50,7 +50,7 @@ from a prior call.)
 
 
 
-=head2 VpcIds => ArrayRef[Str]
+=head2 VpcIds => ArrayRef[Str|Undef]
 
 One or more VPC IDs.
 

@@ -442,7 +442,7 @@ you can download CSV files that include the data.
 
 =head1 METHODS
 
-=head2 CreateTags(ConfigurationIds => ArrayRef[Str], Tags => ArrayRef[L<Paws::Discovery::Tag>])
+=head2 CreateTags(ConfigurationIds => ArrayRef[Str|Undef], Tags => ArrayRef[L<Paws::Discovery::Tag>])
 
 Each argument is described in detail in: L<Paws::Discovery::CreateTags>
 
@@ -453,7 +453,7 @@ that help you categorize IT assets. This API accepts a list of multiple
 configuration items.
 
 
-=head2 DeleteTags(ConfigurationIds => ArrayRef[Str], [Tags => ArrayRef[L<Paws::Discovery::Tag>]])
+=head2 DeleteTags(ConfigurationIds => ArrayRef[Str|Undef], [Tags => ArrayRef[L<Paws::Discovery::Tag>]])
 
 Each argument is described in detail in: L<Paws::Discovery::DeleteTags>
 
@@ -463,7 +463,7 @@ Returns: a L<Paws::Discovery::DeleteTagsResponse> instance
 tags. This API accepts a list of multiple configuration items.
 
 
-=head2 DescribeAgents([AgentIds => ArrayRef[Str], MaxResults => Int, NextToken => Str])
+=head2 DescribeAgents([AgentIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::Discovery::DescribeAgents>
 
@@ -473,7 +473,7 @@ Returns: a L<Paws::Discovery::DescribeAgentsResponse> instance
 account if you did not specify an agent ID.
 
 
-=head2 DescribeConfigurations(ConfigurationIds => ArrayRef[Str])
+=head2 DescribeConfigurations(ConfigurationIds => ArrayRef[Str|Undef])
 
 Each argument is described in detail in: L<Paws::Discovery::DescribeConfigurations>
 
@@ -485,7 +485,7 @@ of attributes about the server, including host name, operating system,
 number of network cards, etc.
 
 
-=head2 DescribeExportConfigurations([ExportIds => ArrayRef[Str], MaxResults => Int, NextToken => Str])
+=head2 DescribeExportConfigurations([ExportIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::Discovery::DescribeExportConfigurations>
 
@@ -531,7 +531,7 @@ specify in a filter. The filter criteria identify relationship
 requirements.
 
 
-=head2 StartDataCollectionByAgentIds(AgentIds => ArrayRef[Str])
+=head2 StartDataCollectionByAgentIds(AgentIds => ArrayRef[Str|Undef])
 
 Each argument is described in detail in: L<Paws::Discovery::StartDataCollectionByAgentIds>
 
@@ -541,7 +541,7 @@ Returns: a L<Paws::Discovery::StartDataCollectionByAgentIdsResponse> instance
 reside on host servers or virtual machines in your data center.
 
 
-=head2 StopDataCollectionByAgentIds(AgentIds => ArrayRef[Str])
+=head2 StopDataCollectionByAgentIds(AgentIds => ArrayRef[Str|Undef])
 
 Each argument is described in detail in: L<Paws::Discovery::StopDataCollectionByAgentIds>
 

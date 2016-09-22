@@ -2,7 +2,7 @@
 package Paws::RedShift::DeleteTags;
   use Moose;
   has ResourceName => (is => 'ro', isa => 'Str', required => 1);
-  has TagKeys => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has TagKeys => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -41,7 +41,7 @@ tags. For example, C<arn:aws:redshift:us-east-1:123456789:cluster:t1>.
 
 
 
-=head2 B<REQUIRED> TagKeys => ArrayRef[Str]
+=head2 B<REQUIRED> TagKeys => ArrayRef[Str|Undef]
 
 The tag key that you want to delete.
 

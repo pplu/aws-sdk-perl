@@ -1,6 +1,6 @@
 package Paws::CloudFront::GeoRestriction;
   use Moose;
-  has Items => (is => 'ro', isa => 'ArrayRef[Str]');
+  has Items => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Quantity => (is => 'ro', isa => 'Int', required => 1);
   has RestrictionType => (is => 'ro', isa => 'Str', required => 1);
 1;
@@ -43,7 +43,7 @@ How accurate are your GeoIP databases? on the MaxMind website.
 =head1 ATTRIBUTES
 
 
-=head2 Items => ArrayRef[Str]
+=head2 Items => ArrayRef[Str|Undef]
 
   A complex type that contains a Location element for each country in
 which you want CloudFront either to distribute your content (whitelist)

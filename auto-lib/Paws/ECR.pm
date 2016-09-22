@@ -133,7 +133,7 @@ use the Docker CLI to author and manage images.
 
 =head1 METHODS
 
-=head2 BatchCheckLayerAvailability(LayerDigests => ArrayRef[Str], RepositoryName => Str, [RegistryId => Str])
+=head2 BatchCheckLayerAvailability(LayerDigests => ArrayRef[Str|Undef], RepositoryName => Str, [RegistryId => Str])
 
 Each argument is described in detail in: L<Paws::ECR::BatchCheckLayerAvailability>
 
@@ -168,7 +168,7 @@ repository. Images are specified with either C<imageTag> or
 C<imageDigest>.
 
 
-=head2 CompleteLayerUpload(LayerDigests => ArrayRef[Str], RepositoryName => Str, UploadId => Str, [RegistryId => Str])
+=head2 CompleteLayerUpload(LayerDigests => ArrayRef[Str|Undef], RepositoryName => Str, UploadId => Str, [RegistryId => Str])
 
 Each argument is described in detail in: L<Paws::ECR::CompleteLayerUpload>
 
@@ -212,7 +212,7 @@ Returns: a L<Paws::ECR::DeleteRepositoryPolicyResponse> instance
   Deletes the repository policy from a specified repository.
 
 
-=head2 DescribeRepositories([MaxResults => Int, NextToken => Str, RegistryId => Str, RepositoryNames => ArrayRef[Str]])
+=head2 DescribeRepositories([MaxResults => Int, NextToken => Str, RegistryId => Str, RepositoryNames => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::ECR::DescribeRepositories>
 
@@ -221,7 +221,7 @@ Returns: a L<Paws::ECR::DescribeRepositoriesResponse> instance
   Describes image repositories in a registry.
 
 
-=head2 GetAuthorizationToken([RegistryIds => ArrayRef[Str]])
+=head2 GetAuthorizationToken([RegistryIds => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::ECR::GetAuthorizationToken>
 

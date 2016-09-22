@@ -3,7 +3,7 @@ package Paws::RDS::DescribeEvents;
   use Moose;
   has Duration => (is => 'ro', isa => 'Int');
   has EndTime => (is => 'ro', isa => 'Str');
-  has EventCategories => (is => 'ro', isa => 'ArrayRef[Str]');
+  has EventCategories => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Filters => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Filter]');
   has Marker => (is => 'ro', isa => 'Str');
   has MaxRecords => (is => 'ro', isa => 'Int');
@@ -59,7 +59,7 @@ Example: 2009-07-08T18:00Z
 
 
 
-=head2 EventCategories => ArrayRef[Str]
+=head2 EventCategories => ArrayRef[Str|Undef]
 
 A list of event categories that trigger notifications for a event
 notification subscription.

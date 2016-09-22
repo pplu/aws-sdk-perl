@@ -2,7 +2,7 @@
 package Paws::ECS::ListTaskDefinitionsResponse;
   use Moose;
   has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
-  has TaskDefinitionArns => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['Unwrapped'], xmlname => 'taskDefinitionArns' );
+  has TaskDefinitionArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['Unwrapped'], xmlname => 'taskDefinitionArns' );
 
 
 ### main pod documentation begin ###
@@ -24,7 +24,7 @@ return.
 
 
 
-=head2 TaskDefinitionArns => ArrayRef[Str]
+=head2 TaskDefinitionArns => ArrayRef[Str|Undef]
 
 The list of task definition Amazon Resource Name (ARN) entries for the
 C<ListTaskDefinitions> request.

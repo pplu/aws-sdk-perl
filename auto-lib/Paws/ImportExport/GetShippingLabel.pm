@@ -5,7 +5,7 @@ package Paws::ImportExport::GetShippingLabel;
   has City => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'city' );
   has Company => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'company' );
   has Country => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'country' );
-  has JobIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'jobIds' , required => 1);
+  has JobIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'jobIds' , required => 1);
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name' );
   has PhoneNumber => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'phoneNumber' );
   has PostalCode => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'postalCode' );
@@ -68,7 +68,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 
 
-=head2 B<REQUIRED> JobIds => ArrayRef[Str]
+=head2 B<REQUIRED> JobIds => ArrayRef[Str|Undef]
 
 
 

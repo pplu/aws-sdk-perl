@@ -2,7 +2,7 @@
 package Paws::CloudWatchEvents::ListRuleNamesByTargetResponse;
   use Moose;
   has NextToken => (is => 'ro', isa => 'Str');
-  has RuleNames => (is => 'ro', isa => 'ArrayRef[Str]');
+  has RuleNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
 
 ### main pod documentation begin ###
@@ -20,7 +20,7 @@ Indicates that there are additional results to retrieve.
 
 
 
-=head2 RuleNames => ArrayRef[Str]
+=head2 RuleNames => ArrayRef[Str|Undef]
 
 List of rules names that can invoke the given target.
 

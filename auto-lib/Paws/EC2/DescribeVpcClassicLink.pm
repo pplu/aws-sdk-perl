@@ -3,7 +3,7 @@ package Paws::EC2::DescribeVpcClassicLink;
   use Moose;
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has Filters => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
-  has VpcIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'VpcId' );
+  has VpcIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'VpcId' );
 
   use MooseX::ClassAttribute;
 
@@ -80,7 +80,7 @@ is independent of the C<tag-key> filter.
 
 
 
-=head2 VpcIds => ArrayRef[Str]
+=head2 VpcIds => ArrayRef[Str|Undef]
 
 One or more VPCs for which you want to describe the ClassicLink status.
 

@@ -2,7 +2,7 @@
 package Paws::DMS::RemoveTagsFromResource;
   use Moose;
   has ResourceArn => (is => 'ro', isa => 'Str', required => 1);
-  has TagKeys => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has TagKeys => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -41,7 +41,7 @@ to be removed from.
 
 
 
-=head2 B<REQUIRED> TagKeys => ArrayRef[Str]
+=head2 B<REQUIRED> TagKeys => ArrayRef[Str|Undef]
 
 The tag key (name) of the tag to be removed.
 

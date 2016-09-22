@@ -1,7 +1,7 @@
 
 package Paws::OpsWorks::DescribeApps;
   use Moose;
-  has AppIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has AppIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has StackId => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
@@ -34,7 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 AppIds => ArrayRef[Str]
+=head2 AppIds => ArrayRef[Str|Undef]
 
 An array of app IDs for the apps to be described. If you use this
 parameter, C<DescribeApps> returns a description of the specified apps.

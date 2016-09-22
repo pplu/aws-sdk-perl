@@ -7,7 +7,7 @@ package Paws::ELBv2::LoadBalancer;
   has LoadBalancerArn => (is => 'ro', isa => 'Str');
   has LoadBalancerName => (is => 'ro', isa => 'Str');
   has Scheme => (is => 'ro', isa => 'Str');
-  has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Str]');
+  has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has State => (is => 'ro', isa => 'Paws::ELBv2::LoadBalancerState');
   has Type => (is => 'ro', isa => 'Str');
   has VpcId => (is => 'ro', isa => 'Str');
@@ -91,7 +91,7 @@ can only route requests from clients with access to the VPC for the
 load balancer.
 
 
-=head2 SecurityGroups => ArrayRef[Str]
+=head2 SecurityGroups => ArrayRef[Str|Undef]
 
   The IDs of the security groups for the load balancer.
 

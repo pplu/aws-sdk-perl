@@ -1,7 +1,7 @@
 
 package Paws::CloudFormation::ValidateTemplateOutput;
   use Moose;
-  has Capabilities => (is => 'ro', isa => 'ArrayRef[Str]');
+  has Capabilities => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has CapabilitiesReason => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has Parameters => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::TemplateParameter]');
@@ -17,7 +17,7 @@ Paws::CloudFormation::ValidateTemplateOutput
 =head1 ATTRIBUTES
 
 
-=head2 Capabilities => ArrayRef[Str]
+=head2 Capabilities => ArrayRef[Str|Undef]
 
 The capabilities found within the template. If your template contains
 IAM resources, you must specify the CAPABILITY_IAM or

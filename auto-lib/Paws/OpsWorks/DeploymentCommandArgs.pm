@@ -2,7 +2,7 @@ package Paws::OpsWorks::DeploymentCommandArgs;
   use Moose;
   with 'Paws::API::StrToNativeMapParser';
 
-  has Map => (is => 'ro', isa => 'HashRef[ArrayRef[Str]]');
+  has Map => (is => 'ro', isa => 'HashRef[ArrayRef[Str|Undef]]');
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +37,7 @@ This class has no description
 
 =head1 ATTRIBUTES
 
-=head2 Map => ArrayRef[Str]
+=head2 Map => ArrayRef[Str|Undef]
 
 Use the Map method to retrieve a HashRef to the map
 

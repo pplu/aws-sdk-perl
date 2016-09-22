@@ -2,7 +2,7 @@
 package Paws::ELBv2::DescribeSSLPolicies;
   use Moose;
   has Marker => (is => 'ro', isa => 'Str');
-  has Names => (is => 'ro', isa => 'ArrayRef[Str]');
+  has Names => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has PageSize => (is => 'ro', isa => 'Int');
 
   use MooseX::ClassAttribute;
@@ -42,7 +42,7 @@ a previous call.)
 
 
 
-=head2 Names => ArrayRef[Str]
+=head2 Names => ArrayRef[Str|Undef]
 
 The names of the policies.
 

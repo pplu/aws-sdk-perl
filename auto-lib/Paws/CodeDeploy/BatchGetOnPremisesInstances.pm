@@ -1,7 +1,7 @@
 
 package Paws::CodeDeploy::BatchGetOnPremisesInstances;
   use Moose;
-  has InstanceNames => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'instanceNames' );
+  has InstanceNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'instanceNames' );
 
   use MooseX::ClassAttribute;
 
@@ -33,7 +33,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 InstanceNames => ArrayRef[Str]
+=head2 InstanceNames => ArrayRef[Str|Undef]
 
 The names of the on-premises instances about which to get information.
 

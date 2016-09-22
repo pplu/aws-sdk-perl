@@ -2,10 +2,10 @@
 package Paws::RedShift::ModifyEventSubscription;
   use Moose;
   has Enabled => (is => 'ro', isa => 'Bool');
-  has EventCategories => (is => 'ro', isa => 'ArrayRef[Str]');
+  has EventCategories => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Severity => (is => 'ro', isa => 'Str');
   has SnsTopicArn => (is => 'ro', isa => 'Str');
-  has SourceIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has SourceIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has SourceType => (is => 'ro', isa => 'Str');
   has SubscriptionName => (is => 'ro', isa => 'Str', required => 1);
 
@@ -46,7 +46,7 @@ indicates the subscription is enabled
 
 
 
-=head2 EventCategories => ArrayRef[Str]
+=head2 EventCategories => ArrayRef[Str|Undef]
 
 Specifies the Amazon Redshift event categories to be published by the
 event notification subscription.
@@ -71,7 +71,7 @@ notification subscription.
 
 
 
-=head2 SourceIds => ArrayRef[Str]
+=head2 SourceIds => ArrayRef[Str|Undef]
 
 A list of one or more identifiers of Amazon Redshift source objects.
 All of the objects must be of the same type as was specified in the

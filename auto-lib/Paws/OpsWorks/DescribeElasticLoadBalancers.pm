@@ -1,7 +1,7 @@
 
 package Paws::OpsWorks::DescribeElasticLoadBalancers;
   use Moose;
-  has LayerIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has LayerIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has StackId => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
@@ -34,7 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 LayerIds => ArrayRef[Str]
+=head2 LayerIds => ArrayRef[Str|Undef]
 
 A list of layer IDs. The action describes the Elastic Load Balancing
 instances for the specified layers.

@@ -2,7 +2,7 @@
 package Paws::RDS::RemoveTagsFromResource;
   use Moose;
   has ResourceName => (is => 'ro', isa => 'Str', required => 1);
-  has TagKeys => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has TagKeys => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -42,7 +42,7 @@ Constructing an RDS Amazon Resource Name (ARN).
 
 
 
-=head2 B<REQUIRED> TagKeys => ArrayRef[Str]
+=head2 B<REQUIRED> TagKeys => ArrayRef[Str|Undef]
 
 The tag key (name) of the tag to be removed.
 

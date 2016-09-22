@@ -9,7 +9,7 @@ package Paws::ApiGateway::Authorizer;
   has IdentitySource => (is => 'ro', isa => 'Str');
   has IdentityValidationExpression => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
-  has ProviderARNs => (is => 'ro', isa => 'ArrayRef[Str]');
+  has ProviderARNs => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Type => (is => 'ro', isa => 'Str');
 
 1;
@@ -94,7 +94,7 @@ receives a 401 Unauthorized response.
 
 
 
-=head2 ProviderARNs => ArrayRef[Str]
+=head2 ProviderARNs => ArrayRef[Str|Undef]
 
 A list of the provider ARNs of the authorizer.
 

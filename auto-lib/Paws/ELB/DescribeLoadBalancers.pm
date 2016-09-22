@@ -1,7 +1,7 @@
 
 package Paws::ELB::DescribeLoadBalancers;
   use Moose;
-  has LoadBalancerNames => (is => 'ro', isa => 'ArrayRef[Str]');
+  has LoadBalancerNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Marker => (is => 'ro', isa => 'Str');
   has PageSize => (is => 'ro', isa => 'Int');
 
@@ -35,7 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 LoadBalancerNames => ArrayRef[Str]
+=head2 LoadBalancerNames => ArrayRef[Str|Undef]
 
 The names of the load balancers.
 

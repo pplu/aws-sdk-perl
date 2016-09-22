@@ -215,7 +215,7 @@ indicates when the set expires. The maximum number of attachments in a
 set is 3, and the maximum size of any attachment in the set is 5 MB.
 
 
-=head2 AddCommunicationToCase(CommunicationBody => Str, [AttachmentSetId => Str, CaseId => Str, CcEmailAddresses => ArrayRef[Str]])
+=head2 AddCommunicationToCase(CommunicationBody => Str, [AttachmentSetId => Str, CaseId => Str, CcEmailAddresses => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::Support::AddCommunicationToCase>
 
@@ -233,7 +233,7 @@ This operation implements a subset of the features of the AWS Support
 Center.
 
 
-=head2 CreateCase(CommunicationBody => Str, Subject => Str, [AttachmentSetId => Str, CategoryCode => Str, CcEmailAddresses => ArrayRef[Str], IssueType => Str, Language => Str, ServiceCode => Str, SeverityCode => Str])
+=head2 CreateCase(CommunicationBody => Str, Subject => Str, [AttachmentSetId => Str, CategoryCode => Str, CcEmailAddresses => ArrayRef[Str|Undef], IssueType => Str, Language => Str, ServiceCode => Str, SeverityCode => Str])
 
 Each argument is described in detail in: L<Paws::Support::CreateCase>
 
@@ -322,7 +322,7 @@ AttachmentDetails objects that are returned by the
 DescribeCommunications operation.
 
 
-=head2 DescribeCases([AfterTime => Str, BeforeTime => Str, CaseIdList => ArrayRef[Str], DisplayId => Str, IncludeCommunications => Bool, IncludeResolvedCases => Bool, Language => Str, MaxResults => Int, NextToken => Str])
+=head2 DescribeCases([AfterTime => Str, BeforeTime => Str, CaseIdList => ArrayRef[Str|Undef], DisplayId => Str, IncludeCommunications => Bool, IncludeResolvedCases => Bool, Language => Str, MaxResults => Int, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::Support::DescribeCases>
 
@@ -376,7 +376,7 @@ cases you want displayed on each page, and use C<nextToken> to specify
 the resumption of pagination.
 
 
-=head2 DescribeServices([Language => Str, ServiceCodeList => ArrayRef[Str]])
+=head2 DescribeServices([Language => Str, ServiceCodeList => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::Support::DescribeServices>
 
@@ -407,7 +407,7 @@ Support case. The severity level for a case is also a field in the
 CaseDetails data type included in any CreateCase request.
 
 
-=head2 DescribeTrustedAdvisorCheckRefreshStatuses(CheckIds => ArrayRef[Str])
+=head2 DescribeTrustedAdvisorCheckRefreshStatuses(CheckIds => ArrayRef[Str|Undef])
 
 Each argument is described in detail in: L<Paws::Support::DescribeTrustedAdvisorCheckRefreshStatuses>
 
@@ -486,7 +486,7 @@ currently supported. The response contains a
 TrustedAdvisorCheckDescription for each check.
 
 
-=head2 DescribeTrustedAdvisorCheckSummaries(CheckIds => ArrayRef[Str])
+=head2 DescribeTrustedAdvisorCheckSummaries(CheckIds => ArrayRef[Str|Undef])
 
 Each argument is described in detail in: L<Paws::Support::DescribeTrustedAdvisorCheckSummaries>
 

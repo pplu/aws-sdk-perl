@@ -1,10 +1,10 @@
 
 package Paws::EC2::ModifyVpcEndpoint;
   use Moose;
-  has AddRouteTableIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'AddRouteTableId' );
+  has AddRouteTableIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'AddRouteTableId' );
   has DryRun => (is => 'ro', isa => 'Bool');
   has PolicyDocument => (is => 'ro', isa => 'Str');
-  has RemoveRouteTableIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'RemoveRouteTableId' );
+  has RemoveRouteTableIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'RemoveRouteTableId' );
   has ResetPolicy => (is => 'ro', isa => 'Bool');
   has VpcEndpointId => (is => 'ro', isa => 'Str', required => 1);
 
@@ -38,7 +38,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 AddRouteTableIds => ArrayRef[Str]
+=head2 AddRouteTableIds => ArrayRef[Str|Undef]
 
 One or more route tables IDs to associate with the endpoint.
 
@@ -60,7 +60,7 @@ valid JSON format.
 
 
 
-=head2 RemoveRouteTableIds => ArrayRef[Str]
+=head2 RemoveRouteTableIds => ArrayRef[Str|Undef]
 
 One or more route table IDs to disassociate from the endpoint.
 

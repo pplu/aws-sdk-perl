@@ -355,7 +355,7 @@ Returns: a L<Paws::ElasticTranscoder::ReadPresetResponse> instance
   The ReadPreset operation gets detailed information about a preset.
 
 
-=head2 TestRole(InputBucket => Str, OutputBucket => Str, Role => Str, Topics => ArrayRef[Str])
+=head2 TestRole(InputBucket => Str, OutputBucket => Str, Role => Str, Topics => ArrayRef[Str|Undef])
 
 Each argument is described in detail in: L<Paws::ElasticTranscoder::TestRole>
 

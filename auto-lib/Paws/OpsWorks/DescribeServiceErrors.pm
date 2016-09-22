@@ -2,7 +2,7 @@
 package Paws::OpsWorks::DescribeServiceErrors;
   use Moose;
   has InstanceId => (is => 'ro', isa => 'Str');
-  has ServiceErrorIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has ServiceErrorIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has StackId => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
@@ -43,7 +43,7 @@ instance.
 
 
 
-=head2 ServiceErrorIds => ArrayRef[Str]
+=head2 ServiceErrorIds => ArrayRef[Str|Undef]
 
 An array of service error IDs. If you use this parameter,
 C<DescribeServiceErrors> returns descriptions of the specified errors.

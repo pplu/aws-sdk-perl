@@ -3,7 +3,7 @@ package Paws::IAM::ListRolePoliciesResponse;
   use Moose;
   has IsTruncated => (is => 'ro', isa => 'Bool');
   has Marker => (is => 'ro', isa => 'Str');
-  has PolicyNames => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has PolicyNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
 
 1;
 
@@ -36,7 +36,7 @@ request.
 
 
 
-=head2 B<REQUIRED> PolicyNames => ArrayRef[Str]
+=head2 B<REQUIRED> PolicyNames => ArrayRef[Str|Undef]
 
 A list of policy names.
 

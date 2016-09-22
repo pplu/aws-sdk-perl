@@ -1,7 +1,7 @@
 
 package Paws::Discovery::DescribeAgents;
   use Moose;
-  has AgentIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'agentIds' );
+  has AgentIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'agentIds' );
   has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults' );
   has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
 
@@ -35,7 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 AgentIds => ArrayRef[Str]
+=head2 AgentIds => ArrayRef[Str|Undef]
 
 The agent IDs for which you want information. If you specify no IDs,
 the system returns information about all agents associated with your

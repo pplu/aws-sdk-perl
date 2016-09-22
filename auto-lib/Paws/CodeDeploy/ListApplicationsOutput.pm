@@ -1,7 +1,7 @@
 
 package Paws::CodeDeploy::ListApplicationsOutput;
   use Moose;
-  has Applications => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['Unwrapped'], xmlname => 'applications' );
+  has Applications => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['Unwrapped'], xmlname => 'applications' );
   has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
 
 
@@ -14,7 +14,7 @@ Paws::CodeDeploy::ListApplicationsOutput
 =head1 ATTRIBUTES
 
 
-=head2 Applications => ArrayRef[Str]
+=head2 Applications => ArrayRef[Str|Undef]
 
 A list of application names.
 

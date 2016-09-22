@@ -3,7 +3,7 @@ package Paws::EC2::DescribeRegions;
   use Moose;
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has Filters => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
-  has RegionNames => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'RegionName' );
+  has RegionNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'RegionName' );
 
   use MooseX::ClassAttribute;
 
@@ -64,7 +64,7 @@ C<region-name> - The name of the region (for example, C<us-east-1>).
 
 
 
-=head2 RegionNames => ArrayRef[Str]
+=head2 RegionNames => ArrayRef[Str|Undef]
 
 The names of one or more regions.
 

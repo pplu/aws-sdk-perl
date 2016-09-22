@@ -1,7 +1,7 @@
 
 package Paws::SES::SendRawEmail;
   use Moose;
-  has Destinations => (is => 'ro', isa => 'ArrayRef[Str]');
+  has Destinations => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has FromArn => (is => 'ro', isa => 'Str');
   has RawMessage => (is => 'ro', isa => 'Paws::SES::RawMessage', required => 1);
   has ReturnPathArn => (is => 'ro', isa => 'Str');
@@ -38,7 +38,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 Destinations => ArrayRef[Str]
+=head2 Destinations => ArrayRef[Str|Undef]
 
 A list of destinations for the message, consisting of To:, CC:, and
 BCC: addresses.

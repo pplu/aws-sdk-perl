@@ -1,6 +1,6 @@
 package Paws::Kinesis::EnhancedMetrics;
   use Moose;
-  has ShardLevelMetrics => (is => 'ro', isa => 'ArrayRef[Str]');
+  has ShardLevelMetrics => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +36,7 @@ Represents enhanced metrics types.
 =head1 ATTRIBUTES
 
 
-=head2 ShardLevelMetrics => ArrayRef[Str]
+=head2 ShardLevelMetrics => ArrayRef[Str|Undef]
 
   List of shard-level metrics.
 

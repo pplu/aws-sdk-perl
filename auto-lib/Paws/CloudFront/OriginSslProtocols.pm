@@ -1,6 +1,6 @@
 package Paws::CloudFront::OriginSslProtocols;
   use Moose;
-  has Items => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has Items => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
   has Quantity => (is => 'ro', isa => 'Int', required => 1);
 1;
 
@@ -38,7 +38,7 @@ want CloudFront to use when communicating with your origin over HTTPS.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Items => ArrayRef[Str]
+=head2 B<REQUIRED> Items => ArrayRef[Str|Undef]
 
   A complex type that contains one SslProtocol element for each SSL/TLS
 protocol that you want to allow CloudFront to use when establishing an

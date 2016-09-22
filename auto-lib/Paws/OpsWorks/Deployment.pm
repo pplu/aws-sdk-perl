@@ -9,7 +9,7 @@ package Paws::OpsWorks::Deployment;
   has DeploymentId => (is => 'ro', isa => 'Str');
   has Duration => (is => 'ro', isa => 'Int');
   has IamUserArn => (is => 'ro', isa => 'Str');
-  has InstanceIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has InstanceIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has StackId => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
 1;
@@ -100,7 +100,7 @@ Stack Configuration Attributes.
   The user's IAM ARN.
 
 
-=head2 InstanceIds => ArrayRef[Str]
+=head2 InstanceIds => ArrayRef[Str|Undef]
 
   The IDs of the target instances.
 

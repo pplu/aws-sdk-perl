@@ -20,8 +20,8 @@ package Paws::EC2::RunInstances;
   has Placement => (is => 'ro', isa => 'Paws::EC2::Placement');
   has PrivateIpAddress => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'privateIpAddress' );
   has RamdiskId => (is => 'ro', isa => 'Str');
-  has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'SecurityGroupId' );
-  has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'SecurityGroup' );
+  has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'SecurityGroupId' );
+  has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'SecurityGroup' );
   has SubnetId => (is => 'ro', isa => 'Str');
   has UserData => (is => 'ro', isa => 'Str');
 
@@ -241,7 +241,7 @@ User Guide>.
 
 
 
-=head2 SecurityGroupIds => ArrayRef[Str]
+=head2 SecurityGroupIds => ArrayRef[Str|Undef]
 
 One or more security group IDs. You can create a security group using
 CreateSecurityGroup.
@@ -250,7 +250,7 @@ Default: Amazon EC2 uses the default security group.
 
 
 
-=head2 SecurityGroups => ArrayRef[Str]
+=head2 SecurityGroups => ArrayRef[Str|Undef]
 
 [EC2-Classic, default VPC] One or more security group names. For a
 nondefault VPC, you must use security group IDs instead.

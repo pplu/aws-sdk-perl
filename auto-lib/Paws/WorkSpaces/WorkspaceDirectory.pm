@@ -5,11 +5,11 @@ package Paws::WorkSpaces::WorkspaceDirectory;
   has DirectoryId => (is => 'ro', isa => 'Str');
   has DirectoryName => (is => 'ro', isa => 'Str');
   has DirectoryType => (is => 'ro', isa => 'Str');
-  has DnsIpAddresses => (is => 'ro', isa => 'ArrayRef[Str]');
+  has DnsIpAddresses => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has IamRoleId => (is => 'ro', isa => 'Str');
   has RegistrationCode => (is => 'ro', isa => 'Str');
   has State => (is => 'ro', isa => 'Str');
-  has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has WorkspaceCreationProperties => (is => 'ro', isa => 'Paws::WorkSpaces::DefaultWorkspaceCreationProperties');
   has WorkspaceSecurityGroupId => (is => 'ro', isa => 'Str');
 1;
@@ -73,7 +73,7 @@ with Amazon WorkSpaces.
   The directory type.
 
 
-=head2 DnsIpAddresses => ArrayRef[Str]
+=head2 DnsIpAddresses => ArrayRef[Str|Undef]
 
   An array of strings that contains the IP addresses of the DNS servers
 for the directory.
@@ -98,7 +98,7 @@ directory.
   The state of the directory's registration with Amazon WorkSpaces
 
 
-=head2 SubnetIds => ArrayRef[Str]
+=head2 SubnetIds => ArrayRef[Str|Undef]
 
   An array of strings that contains the identifiers of the subnets used
 with the directory.

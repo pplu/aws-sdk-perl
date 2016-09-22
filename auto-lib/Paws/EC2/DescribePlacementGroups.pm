@@ -3,7 +3,7 @@ package Paws::EC2::DescribePlacementGroups;
   use Moose;
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has Filters => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
-  has GroupNames => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'groupName' );
+  has GroupNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'groupName' );
 
   use MooseX::ClassAttribute;
 
@@ -68,7 +68,7 @@ C<strategy> - The strategy of the placement group (C<cluster>).
 
 
 
-=head2 GroupNames => ArrayRef[Str]
+=head2 GroupNames => ArrayRef[Str|Undef]
 
 One or more placement group names.
 

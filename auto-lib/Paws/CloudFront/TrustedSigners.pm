@@ -1,7 +1,7 @@
 package Paws::CloudFront::TrustedSigners;
   use Moose;
   has Enabled => (is => 'ro', isa => 'Bool', required => 1);
-  has Items => (is => 'ro', isa => 'ArrayRef[Str]');
+  has Items => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Quantity => (is => 'ro', isa => 'Int', required => 1);
 1;
 
@@ -55,7 +55,7 @@ trusted signers that you want to include in the updated distribution.
 access the files specified by PathPattern and TargetOriginId.
 
 
-=head2 Items => ArrayRef[Str]
+=head2 Items => ArrayRef[Str|Undef]
 
   Optional: A complex type that contains trusted signers for this cache
 behavior. If Quantity is 0, you can omit Items.

@@ -2,7 +2,7 @@
 package Paws::Route53::UpdateHealthCheck;
   use Moose;
   has AlarmIdentifier => (is => 'ro', isa => 'Paws::Route53::AlarmIdentifier');
-  has ChildHealthChecks => (is => 'ro', isa => 'ArrayRef[Str]');
+  has ChildHealthChecks => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has EnableSNI => (is => 'ro', isa => 'Bool');
   has FailureThreshold => (is => 'ro', isa => 'Int');
   has FullyQualifiedDomainName => (is => 'ro', isa => 'Str');
@@ -13,7 +13,7 @@ package Paws::Route53::UpdateHealthCheck;
   has Inverted => (is => 'ro', isa => 'Bool');
   has IPAddress => (is => 'ro', isa => 'Str');
   has Port => (is => 'ro', isa => 'Int');
-  has Regions => (is => 'ro', isa => 'ArrayRef[Str]');
+  has Regions => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has ResourcePath => (is => 'ro', isa => 'Str');
   has SearchString => (is => 'ro', isa => 'Str');
 
@@ -56,7 +56,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 
 
-=head2 ChildHealthChecks => ArrayRef[Str]
+=head2 ChildHealthChecks => ArrayRef[Str|Undef]
 
 A complex type that contains one C<ChildHealthCheck> element for each
 health check that you want to associate with a C<CALCULATED> health
@@ -290,7 +290,7 @@ health checks.
 
 
 
-=head2 Regions => ArrayRef[Str]
+=head2 Regions => ArrayRef[Str|Undef]
 
 A complex type that contains one Region element for each region from
 which you want Amazon Route 53 health checkers to check the specified

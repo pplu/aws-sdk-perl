@@ -5,8 +5,8 @@ package Paws::OpsWorks::CreateDeployment;
   has Command => (is => 'ro', isa => 'Paws::OpsWorks::DeploymentCommand', required => 1);
   has Comment => (is => 'ro', isa => 'Str');
   has CustomJson => (is => 'ro', isa => 'Str');
-  has InstanceIds => (is => 'ro', isa => 'ArrayRef[Str]');
-  has LayerIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has InstanceIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has LayerIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has StackId => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -73,13 +73,13 @@ Stack Configuration Attributes.
 
 
 
-=head2 InstanceIds => ArrayRef[Str]
+=head2 InstanceIds => ArrayRef[Str|Undef]
 
 The instance IDs for the deployment targets.
 
 
 
-=head2 LayerIds => ArrayRef[Str]
+=head2 LayerIds => ArrayRef[Str|Undef]
 
 The layer IDs for the deployment targets.
 

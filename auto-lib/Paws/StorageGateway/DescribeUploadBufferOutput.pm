@@ -1,7 +1,7 @@
 
 package Paws::StorageGateway::DescribeUploadBufferOutput;
   use Moose;
-  has DiskIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has DiskIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has GatewayARN => (is => 'ro', isa => 'Str');
   has UploadBufferAllocatedInBytes => (is => 'ro', isa => 'Int');
   has UploadBufferUsedInBytes => (is => 'ro', isa => 'Int');
@@ -16,7 +16,7 @@ Paws::StorageGateway::DescribeUploadBufferOutput
 =head1 ATTRIBUTES
 
 
-=head2 DiskIds => ArrayRef[Str]
+=head2 DiskIds => ArrayRef[Str|Undef]
 
 
 

@@ -2,7 +2,7 @@
 package Paws::ECS::DescribeContainerInstances;
   use Moose;
   has Cluster => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cluster' );
-  has ContainerInstances => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'containerInstances' , required => 1);
+  has ContainerInstances => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'containerInstances' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -42,7 +42,7 @@ cluster, the default cluster is assumed.
 
 
 
-=head2 B<REQUIRED> ContainerInstances => ArrayRef[Str]
+=head2 B<REQUIRED> ContainerInstances => ArrayRef[Str|Undef]
 
 A space-separated list of container instance IDs or full Amazon
 Resource Name (ARN) entries.

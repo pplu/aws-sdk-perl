@@ -2,7 +2,7 @@
 package Paws::ES::RemoveTags;
   use Moose;
   has ARN => (is => 'ro', isa => 'Str', required => 1);
-  has TagKeys => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has TagKeys => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -43,7 +43,7 @@ to delete the specified tags.
 
 
 
-=head2 B<REQUIRED> TagKeys => ArrayRef[Str]
+=head2 B<REQUIRED> TagKeys => ArrayRef[Str|Undef]
 
 Specifies the C<TagKey> list which you want to remove from the
 Elasticsearch domain.

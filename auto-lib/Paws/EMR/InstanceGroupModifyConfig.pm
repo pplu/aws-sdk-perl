@@ -1,6 +1,6 @@
 package Paws::EMR::InstanceGroupModifyConfig;
   use Moose;
-  has EC2InstanceIdsToTerminate => (is => 'ro', isa => 'ArrayRef[Str]');
+  has EC2InstanceIdsToTerminate => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has InstanceCount => (is => 'ro', isa => 'Int');
   has InstanceGroupId => (is => 'ro', isa => 'Str', required => 1);
   has ShrinkPolicy => (is => 'ro', isa => 'Paws::EMR::ShrinkPolicy');
@@ -39,7 +39,7 @@ Modify an instance group size.
 =head1 ATTRIBUTES
 
 
-=head2 EC2InstanceIdsToTerminate => ArrayRef[Str]
+=head2 EC2InstanceIdsToTerminate => ArrayRef[Str|Undef]
 
   The EC2 InstanceIds to terminate. Once you terminate the instances, the
 instance group will not return to its original requested size.

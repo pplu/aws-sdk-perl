@@ -4,7 +4,7 @@ package Paws::EC2::DescribeSpotFleetRequests;
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults' );
   has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
-  has SpotFleetRequestIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'spotFleetRequestId' );
+  has SpotFleetRequestIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'spotFleetRequestId' );
 
   use MooseX::ClassAttribute;
 
@@ -60,7 +60,7 @@ The token for the next set of results.
 
 
 
-=head2 SpotFleetRequestIds => ArrayRef[Str]
+=head2 SpotFleetRequestIds => ArrayRef[Str|Undef]
 
 The IDs of the Spot fleet requests.
 

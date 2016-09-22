@@ -2,7 +2,7 @@
 package Paws::CloudFormation::ListStacks;
   use Moose;
   has NextToken => (is => 'ro', isa => 'Str');
-  has StackStatusFilter => (is => 'ro', isa => 'ArrayRef[Str]');
+  has StackStatusFilter => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
   use MooseX::ClassAttribute;
 
@@ -41,7 +41,7 @@ retrieve.
 
 
 
-=head2 StackStatusFilter => ArrayRef[Str]
+=head2 StackStatusFilter => ArrayRef[Str|Undef]
 
 Stack status to use as a filter. Specify one or more stack status codes
 to list only stacks with the specified status codes. For a complete

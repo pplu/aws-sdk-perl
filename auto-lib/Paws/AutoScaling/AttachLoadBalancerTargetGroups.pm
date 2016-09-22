@@ -2,7 +2,7 @@
 package Paws::AutoScaling::AttachLoadBalancerTargetGroups;
   use Moose;
   has AutoScalingGroupName => (is => 'ro', isa => 'Str', required => 1);
-  has TargetGroupARNs => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has TargetGroupARNs => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -40,7 +40,7 @@ The name of the Auto Scaling group.
 
 
 
-=head2 B<REQUIRED> TargetGroupARNs => ArrayRef[Str]
+=head2 B<REQUIRED> TargetGroupARNs => ArrayRef[Str|Undef]
 
 The Amazon Resource Names (ARN) of the target groups.
 
