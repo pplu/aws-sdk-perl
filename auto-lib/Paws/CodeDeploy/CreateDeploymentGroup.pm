@@ -1,7 +1,9 @@
 
 package Paws::CodeDeploy::CreateDeploymentGroup;
   use Moose;
+  has AlarmConfiguration => (is => 'ro', isa => 'Paws::CodeDeploy::AlarmConfiguration', traits => ['NameInRequest'], request_name => 'alarmConfiguration' );
   has ApplicationName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'applicationName' , required => 1);
+  has AutoRollbackConfiguration => (is => 'ro', isa => 'Paws::CodeDeploy::AutoRollbackConfiguration', traits => ['NameInRequest'], request_name => 'autoRollbackConfiguration' );
   has AutoScalingGroups => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'autoScalingGroups' );
   has DeploymentConfigName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'deploymentConfigName' );
   has DeploymentGroupName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'deploymentGroupName' , required => 1);
@@ -40,10 +42,24 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
+=head2 AlarmConfiguration => L<Paws::CodeDeploy::AlarmConfiguration>
+
+Information to add about Amazon CloudWatch alarms when the deployment
+group is created.
+
+
+
 =head2 B<REQUIRED> ApplicationName => Str
 
 The name of an AWS CodeDeploy application associated with the
 applicable IAM user or AWS account.
+
+
+
+=head2 AutoRollbackConfiguration => L<Paws::CodeDeploy::AutoRollbackConfiguration>
+
+Configuration information for an automatic rollback that is added when
+a deployment group is created.
 
 
 
@@ -71,15 +87,15 @@ The predefined deployment configurations include the following:
 =item *
 
 B<CodeDeployDefault.AllAtOnce> attempts to deploy an application
-revision to as many instance as possible at once. The status of the
+revision to as many instances as possible at once. The status of the
 overall deployment will be displayed as B<Succeeded> if the application
 revision is deployed to one or more of the instances. The status of the
 overall deployment will be displayed as B<Failed> if the application
 revision is not deployed to any of the instances. Using an example of
-nine instance, CodeDeployDefault.AllAtOnce will attempt to deploy to
-all nine instance at once. The overall deployment will succeed if
+nine instances, CodeDeployDefault.AllAtOnce will attempt to deploy to
+all nine instances at once. The overall deployment will succeed if
 deployment to even a single instance is successful; it will fail only
-if deployments to all nine instance fail.
+if deployments to all nine instances fail.
 
 =item *
 
@@ -88,7 +104,7 @@ at a time (with fractions rounded down). The overall deployment
 succeeds if the application revision is deployed to at least half of
 the instances (with fractions rounded up); otherwise, the deployment
 fails. In the example of nine instances, it will deploy to up to four
-instance at a time. The overall deployment succeeds if deployment to
+instances at a time. The overall deployment succeeds if deployment to
 five or more instances succeed; otherwise, the deployment fails. The
 deployment may be successfully deployed to some instances even if the
 overall deployment fails.
@@ -119,10 +135,10 @@ fails.
 
 =item *
 
-In an example using nine instance, it will deploy to one instance at a
+In an example using nine instances, it will deploy to one instance at a
 time. The overall deployment succeeds if deployment to the first eight
-instance is successful; the overall deployment fails if deployment to
-any of the first eight instance fails.
+instances is successful; the overall deployment fails if deployment to
+any of the first eight instances fails.
 
 =back
 
@@ -163,7 +179,8 @@ behalf when interacting with AWS services.
 =head2 TriggerConfigurations => ArrayRef[L<Paws::CodeDeploy::TriggerConfig>]
 
 Information about triggers to create when the deployment group is
-created.
+created. For examples, see Create a Trigger for an AWS CodeDeploy Event
+in the AWS CodeDeploy User Guide.
 
 
 

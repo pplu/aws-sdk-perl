@@ -49,11 +49,15 @@ The registration status of the on-premises instances:
 
 =over
 
-=item * Deregistered: Include deregistered on-premises instances in the
+=item *
+
+Deregistered: Include deregistered on-premises instances in the
 resulting list.
 
-=item * Registered: Include registered on-premises instances in the
-resulting list.
+=item *
+
+Registered: Include registered on-premises instances in the resulting
+list.
 
 =back
 

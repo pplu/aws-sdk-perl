@@ -1,6 +1,7 @@
 
 package Paws::CodeDeploy::StopDeployment;
   use Moose;
+  has AutoRollbackEnabled => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'autoRollbackEnabled' );
   has DeploymentId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'deploymentId' , required => 1);
 
   use MooseX::ClassAttribute;
@@ -31,6 +32,14 @@ As an example:
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 
 =head1 ATTRIBUTES
+
+
+=head2 AutoRollbackEnabled => Bool
+
+Indicates, when a deployment is stopped, whether instances that have
+been updated should be rolled back to the previous version of the
+application revision.
+
 
 
 =head2 B<REQUIRED> DeploymentId => Str

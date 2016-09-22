@@ -66,17 +66,29 @@ Information about an instance in a deployment.
 
 =over
 
-=item * Pending: The deployment is pending for this instance.
+=item *
 
-=item * In Progress: The deployment is in progress for this instance.
+Pending: The deployment is pending for this instance.
 
-=item * Succeeded: The deployment has succeeded for this instance.
+=item *
 
-=item * Failed: The deployment has failed for this instance.
+In Progress: The deployment is in progress for this instance.
 
-=item * Skipped: The deployment has been skipped for this instance.
+=item *
 
-=item * Unknown: The deployment status is unknown for this instance.
+Succeeded: The deployment has succeeded for this instance.
+
+=item *
+
+Failed: The deployment has failed for this instance.
+
+=item *
+
+Skipped: The deployment has been skipped for this instance.
+
+=item *
+
+Unknown: The deployment status is unknown for this instance.
 
 =back
 

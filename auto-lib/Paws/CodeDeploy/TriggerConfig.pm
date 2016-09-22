@@ -42,27 +42,6 @@ Information about notification triggers for the deployment group.
 
   The event type or types for which notifications are triggered.
 
-The following event type values are supported:
-
-=over
-
-=item * DEPLOYMENT_START
-
-=item * DEPLOYMENT_SUCCESS
-
-=item * DEPLOYMENT_FAILURE
-
-=item * DEPLOYMENT_STOP
-
-=item * INSTANCE_START
-
-=item * INSTANCE_SUCCESS
-
-=item * INSTANCE_FAILURE
-
-=back
-
-
 
 =head2 TriggerName => Str
 

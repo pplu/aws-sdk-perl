@@ -1,6 +1,7 @@
 package Paws::CodeDeploy::DeploymentInfo;
   use Moose;
   has ApplicationName => (is => 'ro', isa => 'Str', xmlname => 'applicationName', request_name => 'applicationName', traits => ['Unwrapped','NameInRequest']);
+  has AutoRollbackConfiguration => (is => 'ro', isa => 'Paws::CodeDeploy::AutoRollbackConfiguration', xmlname => 'autoRollbackConfiguration', request_name => 'autoRollbackConfiguration', traits => ['Unwrapped','NameInRequest']);
   has CompleteTime => (is => 'ro', isa => 'Str', xmlname => 'completeTime', request_name => 'completeTime', traits => ['Unwrapped','NameInRequest']);
   has CreateTime => (is => 'ro', isa => 'Str', xmlname => 'createTime', request_name => 'createTime', traits => ['Unwrapped','NameInRequest']);
   has Creator => (is => 'ro', isa => 'Str', xmlname => 'creator', request_name => 'creator', traits => ['Unwrapped','NameInRequest']);
@@ -12,8 +13,10 @@ package Paws::CodeDeploy::DeploymentInfo;
   has ErrorInformation => (is => 'ro', isa => 'Paws::CodeDeploy::ErrorInformation', xmlname => 'errorInformation', request_name => 'errorInformation', traits => ['Unwrapped','NameInRequest']);
   has IgnoreApplicationStopFailures => (is => 'ro', isa => 'Bool', xmlname => 'ignoreApplicationStopFailures', request_name => 'ignoreApplicationStopFailures', traits => ['Unwrapped','NameInRequest']);
   has Revision => (is => 'ro', isa => 'Paws::CodeDeploy::RevisionLocation', xmlname => 'revision', request_name => 'revision', traits => ['Unwrapped','NameInRequest']);
+  has RollbackInfo => (is => 'ro', isa => 'Paws::CodeDeploy::RollbackInfo', xmlname => 'rollbackInfo', request_name => 'rollbackInfo', traits => ['Unwrapped','NameInRequest']);
   has StartTime => (is => 'ro', isa => 'Str', xmlname => 'startTime', request_name => 'startTime', traits => ['Unwrapped','NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', xmlname => 'status', request_name => 'status', traits => ['Unwrapped','NameInRequest']);
+  has UpdateOutdatedInstancesOnly => (is => 'ro', isa => 'Bool', xmlname => 'updateOutdatedInstancesOnly', request_name => 'updateOutdatedInstancesOnly', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -33,7 +36,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CodeDeploy::DeploymentInfo object:
 
-  $service_obj->Method(Att1 => { ApplicationName => $value, ..., Status => $value  });
+  $service_obj->Method(Att1 => { ApplicationName => $value, ..., UpdateOutdatedInstancesOnly => $value  });
 
 =head3 Results returned from an API call
 
@@ -54,6 +57,12 @@ Information about a deployment.
   The application name.
 
 
+=head2 AutoRollbackConfiguration => L<Paws::CodeDeploy::AutoRollbackConfiguration>
+
+  Information about the automatic rollback configuration associated with
+the deployment.
+
+
 =head2 CompleteTime => Str
 
   A timestamp indicating when the deployment was complete.
@@ -70,9 +79,17 @@ Information about a deployment.
 
 =over
 
-=item * user: A user created the deployment.
+=item *
 
-=item * autoscaling: Auto Scaling created the deployment.
+user: A user created the deployment.
+
+=item *
+
+autoscaling: Auto Scaling created the deployment.
+
+=item *
+
+codeDeployRollback: A rollback process created the deployment.
 
 =back
 
@@ -127,6 +144,11 @@ instance will be considered to have failed.
 service from which to retrieve them.
 
 
+=head2 RollbackInfo => L<Paws::CodeDeploy::RollbackInfo>
+
+  Information about a deployment rollback.
+
+
 =head2 StartTime => Str
 
   A timestamp indicating when the deployment was deployed to the
@@ -140,6 +162,12 @@ back-end servers that participate in the deployment process.
 =head2 Status => Str
 
   The current state of the deployment as a whole.
+
+
+=head2 UpdateOutdatedInstancesOnly => Bool
+
+  Indicates whether only instances that are not running the latest
+application revision are to be deployed to.
 
 
 

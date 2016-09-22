@@ -218,7 +218,9 @@ Paws::CodeDeploy - Perl Interface to AWS AWS CodeDeploy
 
 =head1 DESCRIPTION
 
-AWS CodeDeploy B<Overview>
+AWS CodeDeploy
+
+B<Overview>
 
 This reference guide provides descriptions of the AWS CodeDeploy APIs.
 For more information about AWS CodeDeploy, see the AWS CodeDeploy User
@@ -277,7 +279,7 @@ GitHub repositories. These revisions contain source content (such as
 source code, web pages, executable files, and deployment scripts) along
 with an application specification (AppSpec) file. (The AppSpec file is
 unique to AWS CodeDeploy; it defines the deployment actions you want
-AWS CodeDeploy to execute.) Ffor application revisions stored in Amazon
+AWS CodeDeploy to execute.) For application revisions stored in Amazon
 S3 buckets, an application revision is uniquely identified by its
 Amazon S3 object key and its ETag, version, or both. For application
 revisions stored in GitHub repositories, an application revision is
@@ -365,7 +367,7 @@ Returns: a L<Paws::CodeDeploy::CreateApplicationOutput> instance
   Creates an application.
 
 
-=head2 CreateDeployment(ApplicationName => Str, [DeploymentConfigName => Str, DeploymentGroupName => Str, Description => Str, IgnoreApplicationStopFailures => Bool, Revision => L<Paws::CodeDeploy::RevisionLocation>])
+=head2 CreateDeployment(ApplicationName => Str, [AutoRollbackConfiguration => L<Paws::CodeDeploy::AutoRollbackConfiguration>, DeploymentConfigName => Str, DeploymentGroupName => Str, Description => Str, IgnoreApplicationStopFailures => Bool, Revision => L<Paws::CodeDeploy::RevisionLocation>, UpdateOutdatedInstancesOnly => Bool])
 
 Each argument is described in detail in: L<Paws::CodeDeploy::CreateDeployment>
 
@@ -383,7 +385,7 @@ Returns: a L<Paws::CodeDeploy::CreateDeploymentConfigOutput> instance
   Creates a deployment configuration.
 
 
-=head2 CreateDeploymentGroup(ApplicationName => Str, DeploymentGroupName => Str, ServiceRoleArn => Str, [AutoScalingGroups => ArrayRef[Str], DeploymentConfigName => Str, Ec2TagFilters => ArrayRef[L<Paws::CodeDeploy::EC2TagFilter>], OnPremisesInstanceTagFilters => ArrayRef[L<Paws::CodeDeploy::TagFilter>], TriggerConfigurations => ArrayRef[L<Paws::CodeDeploy::TriggerConfig>]])
+=head2 CreateDeploymentGroup(ApplicationName => Str, DeploymentGroupName => Str, ServiceRoleArn => Str, [AlarmConfiguration => L<Paws::CodeDeploy::AlarmConfiguration>, AutoRollbackConfiguration => L<Paws::CodeDeploy::AutoRollbackConfiguration>, AutoScalingGroups => ArrayRef[Str], DeploymentConfigName => Str, Ec2TagFilters => ArrayRef[L<Paws::CodeDeploy::EC2TagFilter>], OnPremisesInstanceTagFilters => ArrayRef[L<Paws::CodeDeploy::TagFilter>], TriggerConfigurations => ArrayRef[L<Paws::CodeDeploy::TriggerConfig>]])
 
 Each argument is described in detail in: L<Paws::CodeDeploy::CreateDeploymentGroup>
 
@@ -595,7 +597,7 @@ Returns: nothing
   Removes one or more tags from one or more on-premises instances.
 
 
-=head2 StopDeployment(DeploymentId => Str)
+=head2 StopDeployment(DeploymentId => Str, [AutoRollbackEnabled => Bool])
 
 Each argument is described in detail in: L<Paws::CodeDeploy::StopDeployment>
 
@@ -613,7 +615,7 @@ Returns: nothing
   Changes the name of an application.
 
 
-=head2 UpdateDeploymentGroup(ApplicationName => Str, CurrentDeploymentGroupName => Str, [AutoScalingGroups => ArrayRef[Str], DeploymentConfigName => Str, Ec2TagFilters => ArrayRef[L<Paws::CodeDeploy::EC2TagFilter>], NewDeploymentGroupName => Str, OnPremisesInstanceTagFilters => ArrayRef[L<Paws::CodeDeploy::TagFilter>], ServiceRoleArn => Str, TriggerConfigurations => ArrayRef[L<Paws::CodeDeploy::TriggerConfig>]])
+=head2 UpdateDeploymentGroup(ApplicationName => Str, CurrentDeploymentGroupName => Str, [AlarmConfiguration => L<Paws::CodeDeploy::AlarmConfiguration>, AutoRollbackConfiguration => L<Paws::CodeDeploy::AutoRollbackConfiguration>, AutoScalingGroups => ArrayRef[Str], DeploymentConfigName => Str, Ec2TagFilters => ArrayRef[L<Paws::CodeDeploy::EC2TagFilter>], NewDeploymentGroupName => Str, OnPremisesInstanceTagFilters => ArrayRef[L<Paws::CodeDeploy::TagFilter>], ServiceRoleArn => Str, TriggerConfigurations => ArrayRef[L<Paws::CodeDeploy::TriggerConfig>]])
 
 Each argument is described in detail in: L<Paws::CodeDeploy::UpdateDeploymentGroup>
 

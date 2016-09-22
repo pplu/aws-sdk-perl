@@ -67,17 +67,29 @@ BeforeInstall, AfterInstall, ApplicationStart, or ValidateService.
 
 =over
 
-=item * Pending: The deployment lifecycle event is pending.
+=item *
 
-=item * InProgress: The deployment lifecycle event is in progress.
+Pending: The deployment lifecycle event is pending.
 
-=item * Succeeded: The deployment lifecycle event ran successfully.
+=item *
 
-=item * Failed: The deployment lifecycle event has failed.
+InProgress: The deployment lifecycle event is in progress.
 
-=item * Skipped: The deployment lifecycle event has been skipped.
+=item *
 
-=item * Unknown: The deployment lifecycle event is unknown.
+Succeeded: The deployment lifecycle event ran successfully.
+
+=item *
+
+Failed: The deployment lifecycle event has failed.
+
+=item *
+
+Skipped: The deployment lifecycle event has been skipped.
+
+=item *
+
+Unknown: The deployment lifecycle event is unknown.
 
 =back
 
