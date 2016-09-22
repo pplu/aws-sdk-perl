@@ -52,7 +52,7 @@ stream.
 =head2 Separator => Str
 
   A character separator that will be used to separate records written to
-the firehose stream. Valid values are: '\n' (newline), '\t' (tab),
+the Firehose stream. Valid values are: '\n' (newline), '\t' (tab),
 '\r\n' (Windows newline), ',' (comma).
 
 

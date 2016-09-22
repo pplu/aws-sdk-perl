@@ -35,8 +35,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IoT::Elasti
 
 =head1 DESCRIPTION
 
-Describes an action that writes data to an Amazon Elasticsearch
-Service; domain.
+Describes an action that writes data to an Amazon Elasticsearch Service
+domain.
 
 =head1 ATTRIBUTES
 
