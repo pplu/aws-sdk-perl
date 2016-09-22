@@ -2,7 +2,7 @@ package Paws::CloudFront;
   warn "Paws::CloudFront is not stable / supported / entirely developed";
   use Moose;
   sub service { 'cloudfront' }
-  sub version { '2016-08-20' }
+  sub version { '2016-09-07' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);
   has retry => (is => 'ro', isa => 'HashRef', default => sub {

@@ -38,7 +38,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AcceptLanguage => Str
 
-Optional language code. Supported language codes are as follows:
+The language code to use for this operation. Supported language codes
+are as follows:
 
 "en" (English)
 

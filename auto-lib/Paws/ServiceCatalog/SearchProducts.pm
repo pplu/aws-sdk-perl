@@ -40,7 +40,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AcceptLanguage => Str
 
-Optional language code. Supported language codes are as follows:
+The language code to use for this operation. Supported language codes
+are as follows:
 
 "en" (English)
 
@@ -54,9 +55,9 @@ If no code is specified, "en" is used as the default.
 
 =head2 Filters => L<Paws::ServiceCatalog::ProductViewFilters>
 
-(Optional) The list of filters with which to limit search results. If
-no search filters are specified, the output is all the products to
-which the calling user has access.
+The list of filters with which to limit search results. If no search
+filters are specified, the output is all the products to which the
+calling user has access.
 
 
 
@@ -70,22 +71,22 @@ C<NextPageToken> in the response is non-null.
 
 =head2 PageToken => Str
 
-The page token of the first page retrieve. If null, this retrieves the
+The page token of the first page retrieved. If null, this retrieves the
 first page of size C<PageSize>.
 
 
 
 =head2 SortBy => Str
 
-(Optional) The sort field specifier. If no value is specified, results
-are not sorted.
+The sort field specifier. If no value is specified, results are not
+sorted.
 
 Valid values are: C<"Title">, C<"VersionCount">, C<"CreationDate">
 
 =head2 SortOrder => Str
 
-(Optional) The sort order specifier. If no value is specified, results
-are not sorted.
+The sort order specifier. If no value is specified, results are not
+sorted.
 
 Valid values are: C<"ASCENDING">, C<"DESCENDING">
 

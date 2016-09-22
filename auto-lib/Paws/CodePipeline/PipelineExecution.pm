@@ -1,6 +1,6 @@
 package Paws::CodePipeline::PipelineExecution;
   use Moose;
-  has ArtifactRevisionInformations => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::ArtifactRevisionInformation]', xmlname => 'artifactRevisionInformations', request_name => 'artifactRevisionInformations', traits => ['Unwrapped','NameInRequest']);
+  has ArtifactRevisions => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::ArtifactRevision]', xmlname => 'artifactRevisions', request_name => 'artifactRevisions', traits => ['Unwrapped','NameInRequest']);
   has PipelineExecutionId => (is => 'ro', isa => 'Str', xmlname => 'pipelineExecutionId', request_name => 'pipelineExecutionId', traits => ['Unwrapped','NameInRequest']);
   has PipelineName => (is => 'ro', isa => 'Str', xmlname => 'pipelineName', request_name => 'pipelineName', traits => ['Unwrapped','NameInRequest']);
   has PipelineVersion => (is => 'ro', isa => 'Int', xmlname => 'pipelineVersion', request_name => 'pipelineVersion', traits => ['Unwrapped','NameInRequest']);
@@ -24,14 +24,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CodePipeline::PipelineExecution object:
 
-  $service_obj->Method(Att1 => { ArtifactRevisionInformations => $value, ..., Status => $value  });
+  $service_obj->Method(Att1 => { ArtifactRevisions => $value, ..., Status => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::CodePipeline::PipelineExecution object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->ArtifactRevisionInformations
+  $result->Att1->ArtifactRevisions
 
 =head1 DESCRIPTION
 
@@ -40,10 +40,9 @@ Represents information about an execution of a pipeline.
 =head1 ATTRIBUTES
 
 
-=head2 ArtifactRevisionInformations => ArrayRef[L<Paws::CodePipeline::ArtifactRevisionInformation>]
+=head2 ArtifactRevisions => ArrayRef[L<Paws::CodePipeline::ArtifactRevision>]
 
-  A list of ArtifactRevisionInformation objects included in a pipeline
-execution.
+  A list of ArtifactRevision objects included in a pipeline execution.
 
 
 =head2 PipelineExecutionId => Str

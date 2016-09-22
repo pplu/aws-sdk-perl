@@ -48,8 +48,7 @@ include the text of the message as a String value.
 
 If you want to send different messages for each transport protocol, set
 the value of the C<MessageStructure> parameter to C<json> and use a
-JSON object for the C<Message> parameter. See the Examples section for
-the format of the JSON object.
+JSON object for the C<Message> parameter.
 
 Constraints: Messages must be UTF-8 encoded strings at most 256 KB in
 size (262144 bytes, not 262144 characters).

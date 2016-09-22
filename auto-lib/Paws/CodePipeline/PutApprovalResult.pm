@@ -5,7 +5,7 @@ package Paws::CodePipeline::PutApprovalResult;
   has PipelineName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'pipelineName' , required => 1);
   has Result => (is => 'ro', isa => 'Paws::CodePipeline::ApprovalResult', traits => ['NameInRequest'], request_name => 'result' , required => 1);
   has StageName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'stageName' , required => 1);
-  has Token => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'token' );
+  has Token => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'token' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -61,7 +61,7 @@ The name of the stage that contains the action.
 
 
 
-=head2 Token => Str
+=head2 B<REQUIRED> Token => Str
 
 The system-generated token used to identify a unique approval request.
 The token for each open approval request can be obtained using the

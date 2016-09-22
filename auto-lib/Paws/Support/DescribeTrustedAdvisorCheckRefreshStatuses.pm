@@ -35,7 +35,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> CheckIds => ArrayRef[Str]
 
-The IDs of the Trusted Advisor checks.
+The IDs of the Trusted Advisor checks to get the status of. B<Note:>
+Specifying the check ID of a check that is automatically refreshed
+causes an C<InvalidParameterValue> error.
 
 
 

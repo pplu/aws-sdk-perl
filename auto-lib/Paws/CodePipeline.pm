@@ -550,7 +550,7 @@ Returns: a L<Paws::CodePipeline::PutActionRevisionOutput> instance
 source.
 
 
-=head2 PutApprovalResult(ActionName => Str, PipelineName => Str, Result => L<Paws::CodePipeline::ApprovalResult>, StageName => Str, [Token => Str])
+=head2 PutApprovalResult(ActionName => Str, PipelineName => Str, Result => L<Paws::CodePipeline::ApprovalResult>, StageName => Str, Token => Str)
 
 Each argument is described in detail in: L<Paws::CodePipeline::PutApprovalResult>
 

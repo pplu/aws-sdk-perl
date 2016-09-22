@@ -119,6 +119,11 @@ package Paws::CognitoIdp;
     my $call_object = $self->new_with_coercions('Paws::CognitoIdp::ConfirmSignUp', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateUserImportJob {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CognitoIdp::CreateUserImportJob', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateUserPool {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CognitoIdp::CreateUserPool', @_);
@@ -149,6 +154,11 @@ package Paws::CognitoIdp;
     my $call_object = $self->new_with_coercions('Paws::CognitoIdp::DeleteUserPoolClient', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeUserImportJob {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CognitoIdp::DescribeUserImportJob', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeUserPool {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CognitoIdp::DescribeUserPool', @_);
@@ -167,6 +177,11 @@ package Paws::CognitoIdp;
   sub ForgotPassword {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CognitoIdp::ForgotPassword', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetCSVHeader {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CognitoIdp::GetCSVHeader', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetDevice {
@@ -197,6 +212,11 @@ package Paws::CognitoIdp;
   sub ListDevices {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CognitoIdp::ListDevices', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListUserImportJobs {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CognitoIdp::ListUserImportJobs', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListUserPoolClients {
@@ -234,6 +254,16 @@ package Paws::CognitoIdp;
     my $call_object = $self->new_with_coercions('Paws::CognitoIdp::SignUp', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub StartUserImportJob {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CognitoIdp::StartUserImportJob', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub StopUserImportJob {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CognitoIdp::StopUserImportJob', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateDeviceStatus {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CognitoIdp::UpdateDeviceStatus', @_);
@@ -260,7 +290,7 @@ package Paws::CognitoIdp;
     return $self->caller->do_call($self, $call_object);
   }
 
-  sub operations { qw/AddCustomAttributes AdminConfirmSignUp AdminDeleteUser AdminDeleteUserAttributes AdminDisableUser AdminEnableUser AdminForgetDevice AdminGetDevice AdminGetUser AdminInitiateAuth AdminListDevices AdminResetUserPassword AdminRespondToAuthChallenge AdminSetUserSettings AdminUpdateDeviceStatus AdminUpdateUserAttributes AdminUserGlobalSignOut ChangePassword ConfirmDevice ConfirmForgotPassword ConfirmSignUp CreateUserPool CreateUserPoolClient DeleteUser DeleteUserAttributes DeleteUserPool DeleteUserPoolClient DescribeUserPool DescribeUserPoolClient ForgetDevice ForgotPassword GetDevice GetUser GetUserAttributeVerificationCode GlobalSignOut InitiateAuth ListDevices ListUserPoolClients ListUserPools ListUsers ResendConfirmationCode RespondToAuthChallenge SetUserSettings SignUp UpdateDeviceStatus UpdateUserAttributes UpdateUserPool UpdateUserPoolClient VerifyUserAttribute / }
+  sub operations { qw/AddCustomAttributes AdminConfirmSignUp AdminDeleteUser AdminDeleteUserAttributes AdminDisableUser AdminEnableUser AdminForgetDevice AdminGetDevice AdminGetUser AdminInitiateAuth AdminListDevices AdminResetUserPassword AdminRespondToAuthChallenge AdminSetUserSettings AdminUpdateDeviceStatus AdminUpdateUserAttributes AdminUserGlobalSignOut ChangePassword ConfirmDevice ConfirmForgotPassword ConfirmSignUp CreateUserImportJob CreateUserPool CreateUserPoolClient DeleteUser DeleteUserAttributes DeleteUserPool DeleteUserPoolClient DescribeUserImportJob DescribeUserPool DescribeUserPoolClient ForgetDevice ForgotPassword GetCSVHeader GetDevice GetUser GetUserAttributeVerificationCode GlobalSignOut InitiateAuth ListDevices ListUserImportJobs ListUserPoolClients ListUserPools ListUsers ResendConfirmationCode RespondToAuthChallenge SetUserSettings SignUp StartUserImportJob StopUserImportJob UpdateDeviceStatus UpdateUserAttributes UpdateUserPool UpdateUserPoolClient VerifyUserAttribute / }
 
 1;
 
@@ -410,6 +440,16 @@ Returns: a L<Paws::CognitoIdp::AdminResetUserPasswordResponse> instance
   Resets the specified user's password in a user pool as an
 administrator. Works on any user.
 
+When a developer calls this API, the current password is invalidated,
+so it must be changed. If a user tries to sign in after the API is
+called, the app will get a PasswordResetRequiredException exception
+back and should direct the user down the flow to reset the password,
+which is the same as the forgot password flow. In addition, if the user
+pool has phone verification selected and a verified phone number exists
+for the user, or if email verification is selected and a verified email
+exists for the user, calling this API will also result in sending a
+message to the end user with the code to change their password.
+
 
 =head2 AdminRespondToAuthChallenge(ChallengeName => Str, ClientId => Str, UserPoolId => Str, [ChallengeResponses => L<Paws::CognitoIdp::ChallengeResponsesType>, Session => Str])
 
@@ -497,6 +537,15 @@ Returns: a L<Paws::CognitoIdp::ConfirmSignUpResponse> instance
 previous user.
 
 
+=head2 CreateUserImportJob(CloudWatchLogsRoleArn => Str, JobName => Str, UserPoolId => Str)
+
+Each argument is described in detail in: L<Paws::CognitoIdp::CreateUserImportJob>
+
+Returns: a L<Paws::CognitoIdp::CreateUserImportJobResponse> instance
+
+  Creates the user import job.
+
+
 =head2 CreateUserPool(PoolName => Str, [AliasAttributes => ArrayRef[Str], AutoVerifiedAttributes => ArrayRef[Str], DeviceConfiguration => L<Paws::CognitoIdp::DeviceConfigurationType>, EmailConfiguration => L<Paws::CognitoIdp::EmailConfigurationType>, EmailVerificationMessage => Str, EmailVerificationSubject => Str, LambdaConfig => L<Paws::CognitoIdp::LambdaConfigType>, MfaConfiguration => Str, Policies => L<Paws::CognitoIdp::UserPoolPolicyType>, SmsAuthenticationMessage => Str, SmsConfiguration => L<Paws::CognitoIdp::SmsConfigurationType>, SmsVerificationMessage => Str])
 
 Each argument is described in detail in: L<Paws::CognitoIdp::CreateUserPool>
@@ -552,6 +601,15 @@ Returns: nothing
   Allows the developer to delete the user pool client.
 
 
+=head2 DescribeUserImportJob(JobId => Str, UserPoolId => Str)
+
+Each argument is described in detail in: L<Paws::CognitoIdp::DescribeUserImportJob>
+
+Returns: a L<Paws::CognitoIdp::DescribeUserImportJobResponse> instance
+
+  Describes the user import job.
+
+
 =head2 DescribeUserPool(UserPoolId => Str)
 
 Each argument is described in detail in: L<Paws::CognitoIdp::DescribeUserPool>
@@ -588,6 +646,16 @@ Each argument is described in detail in: L<Paws::CognitoIdp::ForgotPassword>
 Returns: a L<Paws::CognitoIdp::ForgotPasswordResponse> instance
 
   Retrieves the password for the specified client ID or username.
+
+
+=head2 GetCSVHeader(UserPoolId => Str)
+
+Each argument is described in detail in: L<Paws::CognitoIdp::GetCSVHeader>
+
+Returns: a L<Paws::CognitoIdp::GetCSVHeaderResponse> instance
+
+  Gets the header information for the .csv file to be used as input for
+the user import job.
 
 
 =head2 GetDevice(DeviceKey => Str, [AccessToken => Str])
@@ -643,6 +711,15 @@ Each argument is described in detail in: L<Paws::CognitoIdp::ListDevices>
 Returns: a L<Paws::CognitoIdp::ListDevicesResponse> instance
 
   Lists the devices.
+
+
+=head2 ListUserImportJobs(MaxResults => Int, UserPoolId => Str, [PaginationToken => Str])
+
+Each argument is described in detail in: L<Paws::CognitoIdp::ListUserImportJobs>
+
+Returns: a L<Paws::CognitoIdp::ListUserImportJobsResponse> instance
+
+  Lists the user import jobs.
 
 
 =head2 ListUserPoolClients(UserPoolId => Str, [MaxResults => Int, NextToken => Str])
@@ -711,6 +788,24 @@ Returns: a L<Paws::CognitoIdp::SignUpResponse> instance
 
   Registers the user in the specified user pool and creates a user name,
 password, and user attributes.
+
+
+=head2 StartUserImportJob(JobId => Str, UserPoolId => Str)
+
+Each argument is described in detail in: L<Paws::CognitoIdp::StartUserImportJob>
+
+Returns: a L<Paws::CognitoIdp::StartUserImportJobResponse> instance
+
+  Starts the user import.
+
+
+=head2 StopUserImportJob(JobId => Str, UserPoolId => Str)
+
+Each argument is described in detail in: L<Paws::CognitoIdp::StopUserImportJob>
+
+Returns: a L<Paws::CognitoIdp::StopUserImportJobResponse> instance
+
+  Stops the user import job.
 
 
 =head2 UpdateDeviceStatus(AccessToken => Str, DeviceKey => Str, [DeviceRememberedStatus => Str])

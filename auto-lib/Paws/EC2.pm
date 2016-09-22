@@ -1322,7 +1322,10 @@ different instance or a network interface, you get an error unless you
 allow reassociation.
 
 This is an idempotent operation. If you perform the operation more than
-once, Amazon EC2 doesn't return an error.
+once, Amazon EC2 doesn't return an error, and you may be charged for
+each time the Elastic IP address is remapped to the same instance. For
+more information, see the I<Elastic IP Addresses> section of Amazon EC2
+Pricing.
 
 
 =head2 AssociateDhcpOptions(DhcpOptionsId => Str, VpcId => Str, [DryRun => Bool])
@@ -2158,7 +2161,7 @@ Each argument is described in detail in: L<Paws::EC2::CreateTags>
 Returns: nothing
 
   Adds or overwrites one or more tags for the specified Amazon EC2
-resource or resources. Each resource can have a maximum of 10 tags.
+resource or resources. Each resource can have a maximum of 50 tags.
 Each tag consists of a key and optional value. Tag keys must be unique
 per resource.
 
@@ -3967,12 +3970,14 @@ Each argument is described in detail in: L<Paws::EC2::ModifyIdentityIdFormat>
 
 Returns: nothing
 
-  Modifies the ID format of a resource for the specified IAM user, IAM
-role, or root user. You can specify that resources should receive
-longer IDs (17-character IDs) when they are created. The following
-resource types support longer IDs: C<instance> | C<reservation> |
-C<snapshot> | C<volume>. For more information, see Resource IDs in the
-I<Amazon Elastic Compute Cloud User Guide>.
+  Modifies the ID format of a resource for a specified IAM user, IAM
+role, or the root user for an account; or all IAM users, IAM roles, and
+the root user for an account. You can specify that resources should
+receive longer IDs (17-character IDs) when they are created.
+
+The following resource types support longer IDs: C<instance> |
+C<reservation> | C<snapshot> | C<volume>. For more information, see
+Resource IDs in the I<Amazon Elastic Compute Cloud User Guide>.
 
 This setting applies to the principal specified in the request; it does
 not apply to the principal that makes the request.

@@ -35,7 +35,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> CheckId => Str
 
-The unique identifier for the Trusted Advisor check.
+The unique identifier for the Trusted Advisor check to refresh.
+B<Note:> Specifying the check ID of a check that is automatically
+refreshed causes an C<InvalidParameterValue> error.
 
 
 

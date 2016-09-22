@@ -42,7 +42,7 @@ applied to a support case.
 
   One of four values: "low," "medium," "high," and "urgent". These values
 correspond to response times returned to the caller in
-C<SeverityLevel.name>.
+C<severityLevel.name>.
 
 
 =head2 Name => Str

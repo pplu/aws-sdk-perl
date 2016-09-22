@@ -1,16 +1,33 @@
 package Paws::API::Builder::restxml {
 
-  use Data::Printer;
-  use Data::Dumper;
-
-  use autodie;
-
   use Moose;
   extends 'Paws::API::Builder';
 
   has wrapped_responses => (is => 'ro', lazy => 1, default => sub { $_[0]->api_struct->{ result_wrapped } });
   has response_role  => (is => 'ro', lazy => 1, default => sub { 'Paws::Net::RestXMLResponse' });
   has parameter_role => (is => 'ro', lazy => 1, default => sub { return "Paws::Net::RestXmlCaller" });
+
+  has '+class_documentation_template' => (default => q#
+\#\#\# main pod documentation begin \#\#\#
+
+=head1 NAME
+
+[% c.api %]::[% op_name %]
+
+=head1 ATTRIBUTES
+
+[% FOREACH param_name IN shape.members.keys.sort -%]
+  [%- member = c.shape(shape.members.$param_name.shape) %]
+=head2 [%- IF (c.required_in_shape(shape,param_name)) %]B<REQUIRED> [% END %][% param_name %] => [% c.perl_type_to_pod(member.perl_type) %]
+
+[% c.doc_for_param_name_in_shape(shape, param_name) %]
+
+[% IF member.enum %]Valid values are: [% FOR value=member.enum %]C<"[% value %]">[% IF NOT loop.last %], [% END %][% END %][% END -%]
+
+[% END %]
+
+=cut
+#);
 
   has callargs_class_template => (is => 'ro', isa => 'Str', default => q#
 [%- operation = c.operation(op_name) %]

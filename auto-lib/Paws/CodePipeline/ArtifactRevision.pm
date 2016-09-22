@@ -1,6 +1,7 @@
 package Paws::CodePipeline::ArtifactRevision;
   use Moose;
   has Created => (is => 'ro', isa => 'Str', xmlname => 'created', request_name => 'created', traits => ['Unwrapped','NameInRequest']);
+  has Name => (is => 'ro', isa => 'Str', xmlname => 'name', request_name => 'name', traits => ['Unwrapped','NameInRequest']);
   has RevisionChangeIdentifier => (is => 'ro', isa => 'Str', xmlname => 'revisionChangeIdentifier', request_name => 'revisionChangeIdentifier', traits => ['Unwrapped','NameInRequest']);
   has RevisionId => (is => 'ro', isa => 'Str', xmlname => 'revisionId', request_name => 'revisionId', traits => ['Unwrapped','NameInRequest']);
   has RevisionSummary => (is => 'ro', isa => 'Str', xmlname => 'revisionSummary', request_name => 'revisionSummary', traits => ['Unwrapped','NameInRequest']);
@@ -46,6 +47,12 @@ Represents revision details of an artifact.
 created, in timestamp format.
 
 
+=head2 Name => Str
+
+  The name of an artifact. This name might be system-generated, such as
+"MyApp", or might be defined by the user when an action is created.
+
+
 =head2 RevisionChangeIdentifier => Str
 
   An additional identifier for a revision, such as a commit date or, for
@@ -61,9 +68,9 @@ artifacts stored in Amazon S3 buckets, the ETag value.
 
   Summary information about the most recent revision of the artifact. For
 GitHub and AWS CodeCommit repositories, the commit message. For Amazon
-S3 buckets or actions, the user-provided value of an
-C<x-amz-meta-codepipeline-artifact-revision-summary> key specified in
-the object metadata.
+S3 buckets or actions, the user-provided content of a
+C<codepipeline-artifact-revision-summary> key specified in the object
+metadata.
 
 
 =head2 RevisionUrl => Str

@@ -41,7 +41,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 The authentication flow.
 
-Valid values are: C<"USER_SRP_AUTH">, C<"REFRESH_TOKEN_AUTH">, C<"CUSTOM_AUTH">, C<"ADMIN_NO_SRP_AUTH">
+Valid values are: C<"USER_SRP_AUTH">, C<"REFRESH_TOKEN_AUTH">, C<"REFRESH_TOKEN">, C<"CUSTOM_AUTH">, C<"ADMIN_NO_SRP_AUTH">
 
 =head2 AuthParameters => L<Paws::CognitoIdp::AuthParametersType>
 

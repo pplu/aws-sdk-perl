@@ -37,10 +37,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ResourceId => Str
 
-The unique identifier string for the resource associated with the
-scalable target. For Amazon ECS services, this value is the resource
-type, followed by the cluster name and service name, such as
-C<service/default/sample-webapp>.
+The resource type and unique identifier string for the resource
+associated with the scalable target. For Amazon ECS services, the
+resource type is C<services>, and the identifier is the cluster name
+and service name; for example, C<service/default/sample-webapp>. For
+Amazon EC2 Spot fleet requests, the resource type is
+C<spot-fleet-request>, and the identifier is the Spot fleet request ID;
+for example,
+C<spot-fleet-request/sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE>.
 
 
 
@@ -49,9 +53,11 @@ C<service/default/sample-webapp>.
 The scalable dimension associated with the scalable target. The
 scalable dimension contains the service namespace, resource type, and
 scaling property, such as C<ecs:service:DesiredCount> for the desired
-task count of an Amazon ECS service.
+task count of an Amazon ECS service, or
+C<ec2:spot-fleet-request:TargetCapacity> for the target capacity of an
+Amazon EC2 Spot fleet request.
 
-Valid values are: C<"ecs:service:DesiredCount">
+Valid values are: C<"ecs:service:DesiredCount">, C<"ec2:spot-fleet-request:TargetCapacity">
 
 =head2 B<REQUIRED> ServiceNamespace => Str
 
@@ -59,7 +65,7 @@ The namespace for the AWS service that the scalable target is
 associated with. For more information, see AWS Service Namespaces in
 the Amazon Web Services General Reference.
 
-Valid values are: C<"ecs">
+Valid values are: C<"ecs">, C<"ec2">
 
 
 =head1 SEE ALSO

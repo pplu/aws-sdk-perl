@@ -307,7 +307,7 @@ package Paws::API::Builder {
 
 =head1 NAME
 
-[% c.api %]::[% op_name %]
+[% c.api %]::[% c.shapename_for_operation_output(op_name) %]
 
 =head1 ATTRIBUTES
 
@@ -329,7 +329,7 @@ package Paws::API::Builder {
 
 =head1 NAME
 
-[% c.api %]::[% operation.name %] - Arguments for method [% operation.name %] on [% c.api %]
+[% c.api %]::[% op_name %] - Arguments for method [% op_name %] on [% c.api %]
 
 =head1 DESCRIPTION
 

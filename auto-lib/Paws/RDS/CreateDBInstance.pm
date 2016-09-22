@@ -552,12 +552,6 @@ B<Version 5.5 (available in all AWS regions except ap-south-1):> C<
 
 B<Version 5.5 (available in all AWS regions):> C< 5.5.46>
 
-=item *
-
-B<Version 5.1 (only available in AWS regions ap-northeast-1,
-ap-southeast-1, ap-southeast-2, eu-west-1, sa-east-1, us-east-1,
-us-gov-west-1, us-west-1, us-west-2):> C< 5.1.73a | 5.1.73b>
-
 =back
 
 B<Oracle Database Enterprise Edition (oracle-ee)>
@@ -584,24 +578,6 @@ B<Version 12.1 (available in all AWS regions):> C< 12.1.0.2.v1>
 
 B<Version 12.1 (available in all AWS regions except us-gov-west-1):> C<
 12.1.0.2.v2 | 12.1.0.2.v3 | 12.1.0.2.v4>
-
-=item *
-
-B<Version 11.2 (only available in AWS regions ap-northeast-1,
-ap-southeast-1, ap-southeast-2, eu-west-1, sa-east-1, us-east-1,
-us-gov-west-1, us-west-1, us-west-2):> C< 11.2.0.2.v3 | 11.2.0.2.v4 |
-11.2.0.2.v5 | 11.2.0.2.v6 | 11.2.0.2.v7>
-
-=item *
-
-B<Version 11.2 (available in all AWS regions except ap-south-1,
-ap-northeast-2):> C< 11.2.0.3.v1 | 11.2.0.3.v2 | 11.2.0.3.v3>
-
-=item *
-
-B<Version 11.2 (only available in AWS regions ap-northeast-1,
-ap-southeast-1, ap-southeast-2, eu-central-1, eu-west-1, sa-east-1,
-us-east-1, us-west-1, us-west-2):> C< 11.2.0.3.v4>
 
 =item *
 
@@ -633,24 +609,6 @@ us-east-1, us-west-1, us-west-2):> C< 12.1.0.1.v3 | 12.1.0.1.v4 |
 
 =item *
 
-B<Version 11.2 (only available in AWS regions ap-northeast-1,
-ap-southeast-1, ap-southeast-2, eu-west-1, sa-east-1, us-east-1,
-us-gov-west-1, us-west-1, us-west-2):> C< 11.2.0.2.v3 | 11.2.0.2.v4 |
-11.2.0.2.v5 | 11.2.0.2.v6 | 11.2.0.2.v7>
-
-=item *
-
-B<Version 11.2 (available in all AWS regions except ap-south-1,
-ap-northeast-2):> C< 11.2.0.3.v1 | 11.2.0.3.v2 | 11.2.0.3.v3>
-
-=item *
-
-B<Version 11.2 (only available in AWS regions ap-northeast-1,
-ap-southeast-1, ap-southeast-2, eu-central-1, eu-west-1, sa-east-1,
-us-east-1, us-west-1, us-west-2):> C< 11.2.0.3.v4>
-
-=item *
-
 B<Version 11.2 (available in all AWS regions):> C< 11.2.0.4.v1 |
 11.2.0.4.v3 | 11.2.0.4.v4>
 
@@ -676,24 +634,6 @@ B<Version 12.1 (only available in AWS regions ap-northeast-1,
 ap-southeast-1, ap-southeast-2, eu-central-1, eu-west-1, sa-east-1,
 us-east-1, us-west-1, us-west-2):> C< 12.1.0.1.v3 | 12.1.0.1.v4 |
 12.1.0.1.v5>
-
-=item *
-
-B<Version 11.2 (only available in AWS regions ap-northeast-1,
-ap-southeast-1, ap-southeast-2, eu-west-1, sa-east-1, us-east-1,
-us-gov-west-1, us-west-1, us-west-2):> C< 11.2.0.2.v3 | 11.2.0.2.v4 |
-11.2.0.2.v5 | 11.2.0.2.v6 | 11.2.0.2.v7>
-
-=item *
-
-B<Version 11.2 (available in all AWS regions except ap-south-1,
-ap-northeast-2):> C< 11.2.0.3.v1 | 11.2.0.3.v2 | 11.2.0.3.v3>
-
-=item *
-
-B<Version 11.2 (only available in AWS regions ap-northeast-1,
-ap-southeast-1, ap-southeast-2, eu-central-1, eu-west-1, sa-east-1,
-us-east-1, us-west-1, us-west-2):> C< 11.2.0.3.v4>
 
 =item *
 

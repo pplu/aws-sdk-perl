@@ -2,7 +2,7 @@ package Paws::Support::TrustedAdvisorResourceDetail;
   use Moose;
   has IsSuppressed => (is => 'ro', isa => 'Bool', xmlname => 'isSuppressed', request_name => 'isSuppressed', traits => ['Unwrapped','NameInRequest']);
   has Metadata => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'metadata', request_name => 'metadata', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has Region => (is => 'ro', isa => 'Str', xmlname => 'region', request_name => 'region', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has Region => (is => 'ro', isa => 'Str', xmlname => 'region', request_name => 'region', traits => ['Unwrapped','NameInRequest']);
   has ResourceId => (is => 'ro', isa => 'Str', xmlname => 'resourceId', request_name => 'resourceId', traits => ['Unwrapped','NameInRequest'], required => 1);
   has Status => (is => 'ro', isa => 'Str', xmlname => 'status', request_name => 'status', traits => ['Unwrapped','NameInRequest'], required => 1);
 1;
@@ -57,7 +57,7 @@ shown in the Excel download, even in those cases where the UI shows
 just summary data.
 
 
-=head2 B<REQUIRED> Region => Str
+=head2 Region => Str
 
   The AWS region in which the identified resource is located.
 

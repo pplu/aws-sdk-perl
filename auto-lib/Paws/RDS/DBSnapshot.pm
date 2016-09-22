@@ -94,7 +94,7 @@ snapshot was created from.
 
 =head2 DBSnapshotArn => Str
 
-  
+  The Amazon Resource Name (ARN) for the DB snapshot.
 
 
 =head2 DBSnapshotIdentifier => Str

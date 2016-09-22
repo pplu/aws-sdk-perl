@@ -31,7 +31,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Config::Con
 
 =head1 DESCRIPTION
 
-Shows the options for how often AWS Config delivers configuration
+Provides options for how often AWS Config delivers configuration
 snapshots to the Amazon S3 bucket in your delivery channel.
 
 If you want to create a rule that triggers evaluations for your
@@ -67,15 +67,19 @@ rule only as often as the C<deliveryFrequency> value.
 
 =item 1.
 
-For example, you have a rule and you specify the
-C<MaximumExecutionFrequency> value to be C<Six_Hours>.
+For example, you want your rule to run evaluations when AWS Config
+delivers the configuration snapshot.
 
 =item 2.
 
-You then specify the delivery channel C<deliveryFrequency> value to
-C<TwentyFour_Hours>.
+You specify the C<MaximumExecutionFrequency> value for C<Six_Hours>.
 
 =item 3.
+
+You then specify the delivery channel C<deliveryFrequency> value for
+C<TwentyFour_Hours>.
+
+=item 4.
 
 Because the value for C<deliveryFrequency> is less frequent than
 C<MaximumExecutionFrequency>, AWS Config invokes evaluations for the
@@ -88,7 +92,7 @@ frequent as the C<deliveryFrequency> value. You can view the
 C<deliveryFrequency> value by using the C<DescribeDeliveryChannnels>
 action.
 
-To update the frequency with which AWS Config delivers your
+To update the C<deliveryFrequency> with which AWS Config delivers your
 configuration snapshots, use the C<PutDeliveryChannel> action.
 
 =head1 ATTRIBUTES

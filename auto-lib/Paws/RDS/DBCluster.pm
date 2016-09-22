@@ -128,7 +128,7 @@ created. This same name is returned for the life of the DB cluster.
 
 =head2 DBClusterArn => Str
 
-  
+  The Amazon Resource Name (ARN) for the DB cluster.
 
 
 =head2 DBClusterIdentifier => Str

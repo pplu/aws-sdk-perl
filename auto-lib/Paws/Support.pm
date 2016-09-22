@@ -131,18 +131,22 @@ operations:
 
 =over
 
-=item * B<Service names, issue categories, and available severity
-levels. >The DescribeServices and DescribeSeverityLevels operations
-return AWS service names, service codes, service categories, and
-problem severity levels. You use these values when you call the
-CreateCase operation.
+=item *
 
-=item * B<Case creation, case details, and case resolution.> The
-CreateCase, DescribeCases, DescribeAttachment, and ResolveCase
-operations create AWS Support cases, retrieve information about cases,
-and resolve cases.
+B<Service names, issue categories, and available severity levels. >The
+DescribeServices and DescribeSeverityLevels operations return AWS
+service names, service codes, service categories, and problem severity
+levels. You use these values when you call the CreateCase operation.
 
-=item * B<Case communication.> The DescribeCommunications,
+=item *
+
+B<Case creation, case details, and case resolution.> The CreateCase,
+DescribeCases, DescribeAttachment, and ResolveCase operations create
+AWS Support cases, retrieve information about cases, and resolve cases.
+
+=item *
+
+B<Case communication.> The DescribeCommunications,
 AddCommunicationToCase, and AddAttachmentsToSet operations retrieve and
 add communications and attachments to AWS Support cases.
 
@@ -153,22 +157,32 @@ Support service for Trusted Advisor:
 
 =over
 
-=item * DescribeTrustedAdvisorChecks returns the list of checks that
-run against your AWS resources.
+=item *
 
-=item * Using the C<CheckId> for a specific check returned by
+DescribeTrustedAdvisorChecks returns the list of checks that run
+against your AWS resources.
+
+=item *
+
+Using the C<checkId> for a specific check returned by
 DescribeTrustedAdvisorChecks, you can call
 DescribeTrustedAdvisorCheckResult to obtain the results for the check
 you specified.
 
-=item * DescribeTrustedAdvisorCheckSummaries returns summarized results
-for one or more Trusted Advisor checks.
+=item *
 
-=item * RefreshTrustedAdvisorCheck requests that Trusted Advisor rerun
-a specified check.
+DescribeTrustedAdvisorCheckSummaries returns summarized results for one
+or more Trusted Advisor checks.
 
-=item * DescribeTrustedAdvisorCheckRefreshStatuses reports the refresh
-status of one or more checks.
+=item *
+
+RefreshTrustedAdvisorCheck requests that Trusted Advisor rerun a
+specified check.
+
+=item *
+
+DescribeTrustedAdvisorCheckRefreshStatuses reports the refresh status
+of one or more checks.
 
 =back
 
@@ -189,14 +203,14 @@ Each argument is described in detail in: L<Paws::Support::AddAttachmentsToSet>
 Returns: a L<Paws::Support::AddAttachmentsToSetResponse> instance
 
   Adds one or more attachments to an attachment set. If an
-C<AttachmentSetId> is not specified, a new attachment set is created,
+C<attachmentSetId> is not specified, a new attachment set is created,
 and the ID of the set is returned in the response. If an
-C<AttachmentSetId> is specified, the attachments are added to the
+C<attachmentSetId> is specified, the attachments are added to the
 specified set, if it exists.
 
 An attachment set is a temporary container for attachments that are to
 be added to a case or case communication. The set is available for one
-hour after it is created; the C<ExpiryTime> returned in the response
+hour after it is created; the C<expiryTime> returned in the response
 indicates when the set expires. The maximum number of attachments in a
 set is 3, and the maximum size of any attachment in the set is 5 MB.
 
@@ -208,9 +222,9 @@ Each argument is described in detail in: L<Paws::Support::AddCommunicationToCase
 Returns: a L<Paws::Support::AddCommunicationToCaseResponse> instance
 
   Adds additional customer communication to an AWS Support case. You use
-the C<CaseId> value to identify the case to add communication to. You
+the C<caseId> value to identify the case to add communication to. You
 can list a set of email addresses to copy on the communication using
-the C<CcEmailAddresses> value. The C<CommunicationBody> value contains
+the C<ccEmailAddresses> value. The C<communicationBody> value contains
 the text of the communication.
 
 The response indicates the success or failure of the request.
@@ -231,37 +245,55 @@ parameters require you to specify the following information:
 
 =over
 
-=item 1. B<IssueType.> The type of issue for the case. You can specify
-either "customer-service" or "technical." If you do not indicate a
-value, the default is "technical."
+=item *
 
-=item 2. B<ServiceCode.> The code for an AWS service. You obtain the
-C<ServiceCode> by calling DescribeServices.
+B<issueType.> The type of issue for the case. You can specify either
+"customer-service" or "technical." If you do not indicate a value, the
+default is "technical."
 
-=item 3. B<CategoryCode.> The category for the service defined for the
-C<ServiceCode> value. You also obtain the category code for a service
+=item *
+
+B<serviceCode.> The code for an AWS service. You obtain the
+C<serviceCode> by calling DescribeServices.
+
+=item *
+
+B<categoryCode.> The category for the service defined for the
+C<serviceCode> value. You also obtain the category code for a service
 by calling DescribeServices. Each AWS service defines its own set of
 category codes.
 
-=item 4. B<SeverityCode.> A value that indicates the urgency of the
-case, which in turn determines the response time according to your
-service level agreement with AWS Support. You obtain the SeverityCode
-by calling DescribeSeverityLevels.
+=item *
 
-=item 5. B<Subject.> The B<Subject> field on the AWS Support Center
-Create Case page.
+B<severityCode.> A value that indicates the urgency of the case, which
+in turn determines the response time according to your service level
+agreement with AWS Support. You obtain the SeverityCode by calling
+DescribeSeverityLevels.
 
-=item 6. B<CommunicationBody.> The B<Description> field on the AWS
-Support Center Create Case page.
+=item *
 
-=item 7. B<AttachmentSetId.> The ID of a set of attachments that has
-been created by using AddAttachmentsToSet.
+B<subject.> The B<Subject> field on the AWS Support Center Create Case
+page.
 
-=item 8. B<Language.> The human language in which AWS Support handles
-the case. English and Japanese are currently supported.
+=item *
 
-=item 9. B<CcEmailAddresses.> The AWS Support Center B<CC> field on the
-Create Case page. You can list email addresses to be copied on any
+B<communicationBody.> The B<Description> field on the AWS Support
+Center Create Case page.
+
+=item *
+
+B<attachmentSetId.> The ID of a set of attachments that has been
+created by using AddAttachmentsToSet.
+
+=item *
+
+B<language.> The human language in which AWS Support handles the case.
+English and Japanese are currently supported.
+
+=item *
+
+B<ccEmailAddresses.> The AWS Support Center B<CC> field on the Create
+Case page. You can list email addresses to be copied on any
 correspondence about the case. The account that opens the case is
 already identified by passing the AWS Credentials in the HTTP POST
 method or in a method or function call from one of the programming
@@ -298,8 +330,8 @@ Returns: a L<Paws::Support::DescribeCasesResponse> instance
 
   Returns a list of cases that you specify by passing one or more case
 IDs. In addition, you can filter the cases by date by setting values
-for the C<AfterTime> and C<BeforeTime> request parameters. You can set
-values for the C<IncludeResolvedCases> and C<IncludeCommunications>
+for the C<afterTime> and C<beforeTime> request parameters. You can set
+values for the C<includeResolvedCases> and C<includeCommunications>
 request parameters to control how much information is returned.
 
 Case data is available for 12 months after creation. If a case was
@@ -310,11 +342,14 @@ The response returns the following in JSON format:
 
 =over
 
-=item 1. One or more CaseDetails data types.
+=item *
 
-=item 2. One or more C<NextToken> values, which specify where to
-paginate the returned records represented by the C<CaseDetails>
-objects.
+One or more CaseDetails data types.
+
+=item *
+
+One or more C<nextToken> values, which specify where to paginate the
+returned records represented by the C<CaseDetails> objects.
 
 =back
 
@@ -327,17 +362,17 @@ Each argument is described in detail in: L<Paws::Support::DescribeCommunications
 Returns: a L<Paws::Support::DescribeCommunicationsResponse> instance
 
   Returns communications (and attachments) for one or more support cases.
-You can use the C<AfterTime> and C<BeforeTime> parameters to filter by
-date. You can use the C<CaseId> parameter to restrict the results to a
+You can use the C<afterTime> and C<beforeTime> parameters to filter by
+date. You can use the C<caseId> parameter to restrict the results to a
 particular case.
 
 Case data is available for 12 months after creation. If a case was
 created more than 12 months ago, a request for data might cause an
 error.
 
-You can use the C<MaxResults> and C<NextToken> parameters to control
-the pagination of the result set. Set C<MaxResults> to the number of
-cases you want displayed on each page, and use C<NextToken> to specify
+You can use the C<maxResults> and C<nextToken> parameters to control
+the pagination of the result set. Set C<maxResults> to the number of
+cases you want displayed on each page, and use C<nextToken> to specify
 the resumption of pagination.
 
 
@@ -382,6 +417,11 @@ Returns: a L<Paws::Support::DescribeTrustedAdvisorCheckRefreshStatusesResponse> 
 specified check IDs. Check IDs can be obtained by calling
 DescribeTrustedAdvisorChecks.
 
+Some checks are refreshed automatically, and their refresh statuses
+cannot be retrieved by using this operation. Use of the
+C<DescribeTrustedAdvisorCheckRefreshStatuses> operation for these
+checks causes an C<InvalidParameterValue> error.
+
 
 =head2 DescribeTrustedAdvisorCheckResult(CheckId => Str, [Language => Str])
 
@@ -398,11 +438,17 @@ contains these three objects:
 
 =over
 
-=item * TrustedAdvisorCategorySpecificSummary
+=item *
 
-=item * TrustedAdvisorResourceDetail
+TrustedAdvisorCategorySpecificSummary
 
-=item * TrustedAdvisorResourcesSummary
+=item *
+
+TrustedAdvisorResourceDetail
+
+=item *
+
+TrustedAdvisorResourcesSummary
 
 =back
 
@@ -410,12 +456,18 @@ In addition, the response contains these fields:
 
 =over
 
-=item * B<Status.> The alert status of the check: "ok" (green),
-"warning" (yellow), "error" (red), or "not_available".
+=item *
 
-=item * B<Timestamp.> The time of the last refresh of the check.
+B<status.> The alert status of the check: "ok" (green), "warning"
+(yellow), "error" (red), or "not_available".
 
-=item * B<CheckId.> The unique identifier for the check.
+=item *
+
+B<timestamp.> The time of the last refresh of the check.
+
+=item *
+
+B<checkId.> The unique identifier for the check.
 
 =back
 
@@ -457,18 +509,28 @@ Returns: a L<Paws::Support::RefreshTrustedAdvisorCheckResponse> instance
 check ID. Check IDs can be obtained by calling
 DescribeTrustedAdvisorChecks.
 
+Some checks are refreshed automatically, and they cannot be refreshed
+by using this operation. Use of the C<RefreshTrustedAdvisorCheck>
+operation for these checks causes an C<InvalidParameterValue> error.
+
 The response contains a TrustedAdvisorCheckRefreshStatus object, which
 contains these fields:
 
 =over
 
-=item * B<Status.> The refresh status of the check: "none", "enqueued",
+=item *
+
+B<status.> The refresh status of the check: "none", "enqueued",
 "processing", "success", or "abandoned".
 
-=item * B<MillisUntilNextRefreshable.> The amount of time, in
-milliseconds, until the check is eligible for refresh.
+=item *
 
-=item * B<CheckId.> The unique identifier for the check.
+B<millisUntilNextRefreshable.> The amount of time, in milliseconds,
+until the check is eligible for refresh.
+
+=item *
+
+B<checkId.> The unique identifier for the check.
 
 =back
 
@@ -480,7 +542,7 @@ Each argument is described in detail in: L<Paws::Support::ResolveCase>
 
 Returns: a L<Paws::Support::ResolveCaseResponse> instance
 
-  Takes a C<CaseId> and returns the initial state of the case along with
+  Takes a C<caseId> and returns the initial state of the case along with
 the state of the case after the call to ResolveCase completed.
 
 

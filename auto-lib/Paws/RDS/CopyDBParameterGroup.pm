@@ -52,15 +52,8 @@ Must specify a valid DB parameter group.
 
 =item *
 
-If the source DB parameter group is in the same region as the copy,
-specify a valid DB parameter group identifier, for example
+Must specify a valid DB parameter group identifier, for example
 C<my-db-param-group>, or a valid ARN.
-
-=item *
-
-If the source DB parameter group is in a different region than the
-copy, specify a valid DB parameter group ARN, for example
-C<arn:aws:rds:us-west-2:123456789012:pg:special-parameters>.
 
 =back
 

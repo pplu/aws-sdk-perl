@@ -43,9 +43,9 @@ per set, and the size limit is 5 MB per attachment.
 
 =head2 AttachmentSetId => Str
 
-The ID of the attachment set. If an C<AttachmentSetId> is not
+The ID of the attachment set. If an C<attachmentSetId> is not
 specified, a new attachment set is created, and the ID of the set is
-returned in the response. If an C<AttachmentSetId> is specified, the
+returned in the response. If an C<attachmentSetId> is specified, the
 attachments are added to the specified set, if it exists.
 
 

@@ -70,7 +70,7 @@ indicates the subscription is enabled.
 
 =head2 EventSubscriptionArn => Str
 
-  
+  The Amazon Resource Name (ARN) for the event subscription.
 
 
 =head2 SnsTopicArn => Str

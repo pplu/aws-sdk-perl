@@ -99,7 +99,7 @@ actions.
 
 =head2 ReservedDBInstanceArn => Str
 
-  
+  The Amazon Resource Name (ARN) for the reserved DB instance.
 
 
 =head2 ReservedDBInstanceId => Str
