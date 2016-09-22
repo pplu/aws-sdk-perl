@@ -4,6 +4,7 @@ package Paws::RedShift::PendingModifiedValues;
   has ClusterIdentifier => (is => 'ro', isa => 'Str');
   has ClusterType => (is => 'ro', isa => 'Str');
   has ClusterVersion => (is => 'ro', isa => 'Str');
+  has EnhancedVpcRouting => (is => 'ro', isa => 'Bool');
   has MasterUserPassword => (is => 'ro', isa => 'Str');
   has NodeType => (is => 'ro', isa => 'Str');
   has NumberOfNodes => (is => 'ro', isa => 'Int');
@@ -65,6 +66,18 @@ cluster.
 =head2 ClusterVersion => Str
 
   The pending or in-progress change of the service version.
+
+
+=head2 EnhancedVpcRouting => Bool
+
+  An option that specifies whether to create the cluster with enhanced
+VPC routing enabled. To create a cluster that uses enhanced VPC
+routing, the cluster must be in a VPC. For more information, see
+Enhanced VPC Routing in the Amazon Redshift Cluster Management Guide.
+
+If this option is C<true>, enhanced VPC routing is enabled.
+
+Default: false
 
 
 =head2 MasterUserPassword => Str

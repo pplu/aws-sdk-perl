@@ -67,7 +67,7 @@ DescribeDBSubnetGroups action.
 
 =head2 DBSubnetGroupArn => Str
 
-  
+  The Amazon Resource Name (ARN) for the DB subnet group.
 
 
 =head2 DBSubnetGroupDescription => Str

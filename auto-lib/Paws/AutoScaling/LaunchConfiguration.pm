@@ -108,7 +108,7 @@ associated with the IAM role for the instance.
 =head2 InstanceMonitoring => L<Paws::AutoScaling::InstanceMonitoring>
 
   Controls whether instances in this group are launched with detailed
-monitoring.
+(C<true>) or basic (C<false>) monitoring.
 
 
 =head2 B<REQUIRED> InstanceType => Str

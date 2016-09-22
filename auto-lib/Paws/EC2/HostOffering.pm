@@ -59,7 +59,7 @@ This class has no description
 
 =head2 InstanceFamily => Str
 
-  The instance family that the offering covers.
+  The instance family of the offering.
 
 
 =head2 OfferingId => Str

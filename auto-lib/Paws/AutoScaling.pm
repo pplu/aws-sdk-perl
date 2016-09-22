@@ -962,8 +962,7 @@ Each argument is described in detail in: L<Paws::AutoScaling::DisableMetricsColl
 
 Returns: nothing
 
-  Disables monitoring of the specified metrics for the specified Auto
-Scaling group.
+  Disables group metrics for the specified Auto Scaling group.
 
 
 =head2 EnableMetricsCollection(AutoScalingGroupName => Str, Granularity => Str, [Metrics => ArrayRef[Str]])
@@ -972,11 +971,9 @@ Each argument is described in detail in: L<Paws::AutoScaling::EnableMetricsColle
 
 Returns: nothing
 
-  Enables monitoring of the specified metrics for the specified Auto
-Scaling group.
-
-You can only enable metrics collection if C<InstanceMonitoring> in the
-launch configuration for the group is set to C<True>.
+  Enables group metrics for the specified Auto Scaling group. For more
+information, see Monitoring Your Auto Scaling Groups and Instances in
+the I<Auto Scaling User Guide>.
 
 
 =head2 EnterStandby(AutoScalingGroupName => Str, ShouldDecrementDesiredCapacity => Bool, [InstanceIds => ArrayRef[Str]])

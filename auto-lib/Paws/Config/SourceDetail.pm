@@ -33,10 +33,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Config::Sou
 
 =head1 DESCRIPTION
 
-Provides the source and the message type that trigger AWS Config to
+Provides the source and the message types that trigger AWS Config to
 evaluate your AWS resources against a rule. It also provides the
 frequency with which you want AWS Config to run evaluations for the
-rule if the trigger type is periodic.
+rule if the trigger type is periodic. You can specify the parameter
+values for C<SourceDetail> only for custom rules.
 
 =head1 ATTRIBUTES
 
@@ -49,26 +50,25 @@ Config to evaluate your AWS resources.
 
 =head2 MaximumExecutionFrequency => Str
 
-  If the trigger type for your rule includes periodic, AWS Config runs
-evaluations for the rule at a frequency that you choose. If you specify
-a value for C<MaximumExecutionFrequency>, then C<MessageType> must use
-the C<ScheduledNotification> value.
+  The frequency that you want AWS Config to run evaluations for a rule
+that is triggered periodically. If you specify a value for
+C<MaximumExecutionFrequency>, then C<MessageType> must use the
+C<ScheduledNotification> value.
 
 
 =head2 MessageType => Str
 
-  The type of SNS message that triggers AWS Config to run an evaluation.
+  The type of notification that triggers AWS Config to run an evaluation.
+You can specify the following notification types:
 
-For evaluations that are initiated when AWS Config delivers a
-configuration item change notification, you must use
-C<ConfigurationItemChangeNotification>.
+C<ConfigurationItemChangeNotification> - Triggers an evaluation when
+AWS Config delivers a configuration item change notification.
 
-For evaluations that are initiated at a frequency that you choose (for
-example, every 24 hours), you must use C<ScheduledNotification>.
+C<ScheduledNotification> - Triggers a periodic evaluation at the
+frequency specified for C<MaximumExecutionFrequency>.
 
-For evaluations that are initiated when AWS Config delivers a
-configuration snapshot, you must use
-C<ConfigurationSnapshotDeliveryCompleted>.
+C<ConfigurationSnapshotDeliveryCompleted> - Triggers a periodic
+evaluation when AWS Config delivers a configuration snapshot.
 
 
 

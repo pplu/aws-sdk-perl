@@ -635,10 +635,46 @@ Returns: a L<Paws::Config::StartConfigRulesEvaluationResponse> instance
   Evaluates your resources against the specified Config rules. You can
 specify up to 25 Config rules per request.
 
-An existing StartConfigRulesEvaluation call must complete for the rules
-that you specified before you can call the API again. If you chose to
-have AWS Config stream to an Amazon SNS topic, you will receive a
-notification when the evaluation starts.
+An existing StartConfigRulesEvaluation call must complete for the
+specified rules before you can call the API again. If you chose to have
+AWS Config stream to an Amazon SNS topic, you will receive a
+C<ConfigRuleEvaluationStarted> notification when the evaluation starts.
+
+You don't need to call the C<StartConfigRulesEvaluation> API to run an
+evaluation for a new rule. When you create a new rule, AWS Config
+automatically evaluates your resources against the rule.
+
+The C<StartConfigRulesEvaluation> API is useful if you want to run
+on-demand evaluations, such as the following example:
+
+=over
+
+=item 1.
+
+You have a custom rule that evaluates your IAM resources every 24
+hours.
+
+=item 2.
+
+You update your Lambda function to add additional conditions to your
+rule.
+
+=item 3.
+
+Instead of waiting for the next periodic evaluation, you call the
+C<StartConfigRulesEvaluation> API.
+
+=item 4.
+
+AWS Config invokes your Lambda function and evaluates your IAM
+resources.
+
+=item 5.
+
+Your custom rule will still run periodic evaluations every 24 hours.
+
+=back
+
 
 
 =head2 StartConfigurationRecorder(ConfigurationRecorderName => Str)

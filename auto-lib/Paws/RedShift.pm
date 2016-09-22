@@ -654,7 +654,9 @@ Paws::RedShift - Perl Interface to AWS Amazon Redshift
 
 =head1 DESCRIPTION
 
-Amazon Redshift B<Overview>
+Amazon Redshift
+
+B<Overview>
 
 This is an interface reference for Amazon Redshift. It contains
 documentation for one of the programming or command line interfaces you
@@ -666,7 +668,7 @@ parameter descriptions indicate whether a change is applied
 immediately, on the next instance reboot, or during the next
 maintenance window. For a summary of the Amazon Redshift cluster
 management interfaces, go to Using the Amazon Redshift Management
-Interfaces .
+Interfaces.
 
 Amazon Redshift manages all the work of setting up, operating, and
 scaling a data warehouse: provisioning capacity, monitoring and backing
@@ -675,7 +677,7 @@ Redshift engine. You can focus on using your data to acquire new
 insights for your business and customers.
 
 If you are a first-time user of Amazon Redshift, we recommend that you
-begin by reading the The Amazon Redshift Getting Started Guide
+begin by reading the Amazon Redshift Getting Started Guide.
 
 If you are a database developer, the Amazon Redshift Database Developer
 Guide explains how to design, build, query, and maintain the databases
@@ -746,19 +748,19 @@ For more information about working with snapshots, go to Amazon
 Redshift Snapshots in the I<Amazon Redshift Cluster Management Guide>.
 
 
-=head2 CreateCluster(ClusterIdentifier => Str, MasterUsername => Str, MasterUserPassword => Str, NodeType => Str, [AdditionalInfo => Str, AllowVersionUpgrade => Bool, AutomatedSnapshotRetentionPeriod => Int, AvailabilityZone => Str, ClusterParameterGroupName => Str, ClusterSecurityGroups => ArrayRef[Str], ClusterSubnetGroupName => Str, ClusterType => Str, ClusterVersion => Str, DBName => Str, ElasticIp => Str, Encrypted => Bool, HsmClientCertificateIdentifier => Str, HsmConfigurationIdentifier => Str, IamRoles => ArrayRef[Str], KmsKeyId => Str, NumberOfNodes => Int, Port => Int, PreferredMaintenanceWindow => Str, PubliclyAccessible => Bool, Tags => ArrayRef[L<Paws::RedShift::Tag>], VpcSecurityGroupIds => ArrayRef[Str]])
+=head2 CreateCluster(ClusterIdentifier => Str, MasterUsername => Str, MasterUserPassword => Str, NodeType => Str, [AdditionalInfo => Str, AllowVersionUpgrade => Bool, AutomatedSnapshotRetentionPeriod => Int, AvailabilityZone => Str, ClusterParameterGroupName => Str, ClusterSecurityGroups => ArrayRef[Str], ClusterSubnetGroupName => Str, ClusterType => Str, ClusterVersion => Str, DBName => Str, ElasticIp => Str, Encrypted => Bool, EnhancedVpcRouting => Bool, HsmClientCertificateIdentifier => Str, HsmConfigurationIdentifier => Str, IamRoles => ArrayRef[Str], KmsKeyId => Str, NumberOfNodes => Int, Port => Int, PreferredMaintenanceWindow => Str, PubliclyAccessible => Bool, Tags => ArrayRef[L<Paws::RedShift::Tag>], VpcSecurityGroupIds => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::RedShift::CreateCluster>
 
 Returns: a L<Paws::RedShift::CreateClusterResult> instance
 
-  Creates a new cluster. To create the cluster in virtual private cloud
-(VPC), you must provide cluster subnet group name. If you don't provide
-a cluster subnet group name or the cluster security group parameter,
-Amazon Redshift creates a non-VPC cluster, it associates the default
-cluster security group with the cluster. For more information about
-managing clusters, go to Amazon Redshift Clusters in the I<Amazon
-Redshift Cluster Management Guide> .
+  Creates a new cluster.
+
+To create the cluster in Virtual Private Cloud (VPC), you must provide
+a cluster subnet group name. The cluster subnet group identifies the
+subnets of your VPC that Amazon Redshift uses when creating the
+cluster. For more information about managing clusters, go to Amazon
+Redshift Clusters in the I<Amazon Redshift Cluster Management Guide>.
 
 
 =head2 CreateClusterParameterGroup(Description => Str, ParameterGroupFamily => Str, ParameterGroupName => Str, [Tags => ArrayRef[L<Paws::RedShift::Tag>]])
@@ -930,7 +932,7 @@ the web service indicates that the request was received correctly. Use
 DescribeClusters to monitor the status of the deletion. The delete
 operation cannot be canceled or reverted once submitted. For more
 information about managing clusters, go to Amazon Redshift Clusters in
-the I<Amazon Redshift Cluster Management Guide> .
+the I<Amazon Redshift Cluster Management Guide>.
 
 If you want to shut down the cluster and retain it for future use, set
 I<SkipFinalClusterSnapshot> to C<false> and specify a name for
@@ -941,7 +943,7 @@ is being taken, then it's "deleting" once Amazon Redshift begins
 deleting the cluster.
 
 For more information about managing clusters, go to Amazon Redshift
-Clusters in the I<Amazon Redshift Cluster Management Guide> .
+Clusters in the I<Amazon Redshift Cluster Management Guide>.
 
 
 =head2 DeleteClusterParameterGroup(ParameterGroupName => Str)
@@ -950,8 +952,9 @@ Each argument is described in detail in: L<Paws::RedShift::DeleteClusterParamete
 
 Returns: nothing
 
-  Deletes a specified Amazon Redshift parameter group. You cannot delete
-a parameter group if it is associated with a cluster.
+  Deletes a specified Amazon Redshift parameter group.
+
+You cannot delete a parameter group if it is associated with a cluster.
 
 
 =head2 DeleteClusterSecurityGroup(ClusterSecurityGroupName => Str)
@@ -1102,7 +1105,7 @@ Returns: a L<Paws::RedShift::ClustersMessage> instance
 properties, cluster database properties, maintenance and backup
 properties, and security and access properties. This operation supports
 pagination. For more information about managing clusters, go to Amazon
-Redshift Clusters in the I<Amazon Redshift Cluster Management Guide> .
+Redshift Clusters in the I<Amazon Redshift Cluster Management Guide>.
 
 If you specify both tag keys and tag values in the same request, Amazon
 Redshift returns all clusters that match any combination of the
@@ -1200,7 +1203,7 @@ Returns: a L<Paws::RedShift::ClusterVersionsMessage> instance
 You can call this operation even before creating any clusters to learn
 more about the Amazon Redshift versions. For more information about
 managing clusters, go to Amazon Redshift Clusters in the I<Amazon
-Redshift Cluster Management Guide>
+Redshift Cluster Management Guide>.
 
 
 =head2 DescribeDefaultClusterParameters(ParameterGroupFamily => Str, [Marker => Str, MaxRecords => Int])
@@ -1320,7 +1323,7 @@ differ by available storage, memory, CPU and price. With the cost
 involved you might want to obtain a list of cluster options in the
 specific region and specify values when creating a cluster. For more
 information about managing clusters, go to Amazon Redshift Clusters in
-the I<Amazon Redshift Cluster Management Guide>
+the I<Amazon Redshift Cluster Management Guide>.
 
 
 =head2 DescribeReservedNodeOfferings([Marker => Str, MaxRecords => Int, ReservedNodeOfferingId => Str])
@@ -1409,14 +1412,20 @@ The following are limitations for C<DescribeTags>:
 
 =over
 
-=item * You cannot specify an ARN and a resource-type value together in
-the same request.
+=item *
 
-=item * You cannot use the C<MaxRecords> and C<Marker> parameters
-together with the ARN parameter.
+You cannot specify an ARN and a resource-type value together in the
+same request.
 
-=item * The C<MaxRecords> parameter can be a range from 10 to 50
-results to return in a request.
+=item *
+
+You cannot use the C<MaxRecords> and C<Marker> parameters together with
+the ARN parameter.
+
+=item *
+
+The C<MaxRecords> parameter can be a range from 10 to 50 results to
+return in a request.
 
 =back
 
@@ -1476,7 +1485,7 @@ Returns: a L<Paws::RedShift::EnableSnapshotCopyResult> instance
 region for a specified cluster.
 
 
-=head2 ModifyCluster(ClusterIdentifier => Str, [AllowVersionUpgrade => Bool, AutomatedSnapshotRetentionPeriod => Int, ClusterParameterGroupName => Str, ClusterSecurityGroups => ArrayRef[Str], ClusterType => Str, ClusterVersion => Str, ElasticIp => Str, HsmClientCertificateIdentifier => Str, HsmConfigurationIdentifier => Str, MasterUserPassword => Str, NewClusterIdentifier => Str, NodeType => Str, NumberOfNodes => Int, PreferredMaintenanceWindow => Str, PubliclyAccessible => Bool, VpcSecurityGroupIds => ArrayRef[Str]])
+=head2 ModifyCluster(ClusterIdentifier => Str, [AllowVersionUpgrade => Bool, AutomatedSnapshotRetentionPeriod => Int, ClusterParameterGroupName => Str, ClusterSecurityGroups => ArrayRef[Str], ClusterType => Str, ClusterVersion => Str, ElasticIp => Str, EnhancedVpcRouting => Bool, HsmClientCertificateIdentifier => Str, HsmConfigurationIdentifier => Str, MasterUserPassword => Str, NewClusterIdentifier => Str, NodeType => Str, NumberOfNodes => Int, PreferredMaintenanceWindow => Str, PubliclyAccessible => Bool, VpcSecurityGroupIds => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::RedShift::ModifyCluster>
 
@@ -1489,7 +1498,7 @@ modifying the security groups associated with a cluster do not need a
 reboot. However, modifying a parameter group requires a reboot for
 parameters to take effect. For more information about managing
 clusters, go to Amazon Redshift Clusters in the I<Amazon Redshift
-Cluster Management Guide> .
+Cluster Management Guide>.
 
 You can also change node type and the number of nodes to scale up or
 down the cluster. When resizing a cluster, you must specify both the
@@ -1581,7 +1590,7 @@ is set to C<rebooting>. A cluster event is created when the reboot is
 completed. Any pending cluster modifications (see ModifyCluster) are
 applied at this reboot. For more information about managing clusters,
 go to Amazon Redshift Clusters in the I<Amazon Redshift Cluster
-Management Guide>
+Management Guide>.
 
 
 =head2 ResetClusterParameterGroup(ParameterGroupName => Str, [Parameters => ArrayRef[L<Paws::RedShift::Parameter>], ResetAllParameters => Bool])
@@ -1597,7 +1606,7 @@ I<ResetAllParameters> parameter. For parameter changes to take effect
 you must reboot any associated clusters.
 
 
-=head2 RestoreFromClusterSnapshot(ClusterIdentifier => Str, SnapshotIdentifier => Str, [AdditionalInfo => Str, AllowVersionUpgrade => Bool, AutomatedSnapshotRetentionPeriod => Int, AvailabilityZone => Str, ClusterParameterGroupName => Str, ClusterSecurityGroups => ArrayRef[Str], ClusterSubnetGroupName => Str, ElasticIp => Str, HsmClientCertificateIdentifier => Str, HsmConfigurationIdentifier => Str, IamRoles => ArrayRef[Str], KmsKeyId => Str, NodeType => Str, OwnerAccount => Str, Port => Int, PreferredMaintenanceWindow => Str, PubliclyAccessible => Bool, SnapshotClusterIdentifier => Str, VpcSecurityGroupIds => ArrayRef[Str]])
+=head2 RestoreFromClusterSnapshot(ClusterIdentifier => Str, SnapshotIdentifier => Str, [AdditionalInfo => Str, AllowVersionUpgrade => Bool, AutomatedSnapshotRetentionPeriod => Int, AvailabilityZone => Str, ClusterParameterGroupName => Str, ClusterSecurityGroups => ArrayRef[Str], ClusterSubnetGroupName => Str, ElasticIp => Str, EnhancedVpcRouting => Bool, HsmClientCertificateIdentifier => Str, HsmConfigurationIdentifier => Str, IamRoles => ArrayRef[Str], KmsKeyId => Str, NodeType => Str, OwnerAccount => Str, Port => Int, PreferredMaintenanceWindow => Str, PubliclyAccessible => Bool, SnapshotClusterIdentifier => Str, VpcSecurityGroupIds => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::RedShift::RestoreFromClusterSnapshot>
 

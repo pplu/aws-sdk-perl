@@ -31,14 +31,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ECR::ListIm
 
 =head1 DESCRIPTION
 
-This class has no description
+An object representing a filter on a ListImages operation.
 
 =head1 ATTRIBUTES
 
 
 =head2 TagStatus => Str
 
-  
+  The tag status with which to filter your ListImages results. You can
+filter results based on whether they are C<TAGGED> or C<UNTAGGED>.
 
 
 

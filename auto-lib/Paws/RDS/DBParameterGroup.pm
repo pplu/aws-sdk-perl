@@ -46,7 +46,7 @@ DescribeDBParameterGroups action.
 
 =head2 DBParameterGroupArn => Str
 
-  
+  The Amazon Resource Name (ARN) for the DB parameter group.
 
 
 =head2 DBParameterGroupFamily => Str

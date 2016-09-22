@@ -54,11 +54,17 @@ following:
 
 =over
 
-=item * tar: A tar archive file.
+=item *
 
-=item * tgz: A compressed tar archive file.
+tar: A tar archive file.
 
-=item * zip: A zip archive file.
+=item *
+
+tgz: A compressed tar archive file.
+
+=item *
+
+zip: A zip archive file.
 
 =back
 

@@ -32,8 +32,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ServiceCata
 
 =head1 DESCRIPTION
 
-Optional key/value pairs to associate with this provisioning. These
-tags are propagated to the resources created in the provisioning.
+Key/value pairs to associate with this provisioning. These tags are
+entirely discretionary and are propagated to the resources created in
+the provisioning.
 
 =head1 ATTRIBUTES
 

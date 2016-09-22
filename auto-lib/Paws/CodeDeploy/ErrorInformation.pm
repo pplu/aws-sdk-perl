@@ -43,45 +43,68 @@ Information about a deployment error.
 
 =over
 
-=item * APPLICATION_MISSING: The application was missing. This error
-code will most likely be raised if the application is deleted after the
+=item *
+
+APPLICATION_MISSING: The application was missing. This error code will
+most likely be raised if the application is deleted after the
 deployment is created but before it is started.
 
-=item * DEPLOYMENT_GROUP_MISSING: The deployment group was missing.
-This error code will most likely be raised if the deployment group is
-deleted after the deployment is created but before it is started.
+=item *
 
-=item * HEALTH_CONSTRAINTS: The deployment failed on too many instances
-to be successfully deployed within the instance health constraints
-specified.
+DEPLOYMENT_GROUP_MISSING: The deployment group was missing. This error
+code will most likely be raised if the deployment group is deleted
+after the deployment is created but before it is started.
 
-=item * HEALTH_CONSTRAINTS_INVALID: The revision cannot be successfully
+=item *
+
+HEALTH_CONSTRAINTS: The deployment failed on too many instances to be
+successfully deployed within the instance health constraints specified.
+
+=item *
+
+HEALTH_CONSTRAINTS_INVALID: The revision cannot be successfully
 deployed within the instance health constraints specified.
 
-=item * IAM_ROLE_MISSING: The service role cannot be accessed.
+=item *
 
-=item * IAM_ROLE_PERMISSIONS: The service role does not have the
-correct permissions.
+IAM_ROLE_MISSING: The service role cannot be accessed.
 
-=item * INTERNAL_ERROR: There was an internal error.
+=item *
 
-=item * NO_EC2_SUBSCRIPTION: The calling account is not subscribed to
-the Amazon EC2 service.
+IAM_ROLE_PERMISSIONS: The service role does not have the correct
+permissions.
 
-=item * NO_INSTANCES: No instance were specified, or no instance can be
-found.
+=item *
 
-=item * OVER_MAX_INSTANCES: The maximum number of instance was
-exceeded.
+INTERNAL_ERROR: There was an internal error.
 
-=item * THROTTLED: The operation was throttled because the calling
-account exceeded the throttling limits of one or more AWS services.
+=item *
 
-=item * TIMEOUT: The deployment has timed out.
+NO_EC2_SUBSCRIPTION: The calling account is not subscribed to the
+Amazon EC2 service.
 
-=item * REVISION_MISSING: The revision ID was missing. This error code
-will most likely be raised if the revision is deleted after the
-deployment is created but before it is started.
+=item *
+
+NO_INSTANCES: No instance were specified, or no instance can be found.
+
+=item *
+
+OVER_MAX_INSTANCES: The maximum number of instance was exceeded.
+
+=item *
+
+THROTTLED: The operation was throttled because the calling account
+exceeded the throttling limits of one or more AWS services.
+
+=item *
+
+TIMEOUT: The deployment has timed out.
+
+=item *
+
+REVISION_MISSING: The revision ID was missing. This error code will
+most likely be raised if the revision is deleted after the deployment
+is created but before it is started.
 
 =back
 

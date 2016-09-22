@@ -50,12 +50,12 @@ CreateCase.
 =head2 Code => Str
 
   The code for an AWS service returned by the DescribeServices response.
-The C<Name> element contains the corresponding friendly name.
+The C<name> element contains the corresponding friendly name.
 
 
 =head2 Name => Str
 
-  The friendly name for an AWS service. The C<Code> element contains the
+  The friendly name for an AWS service. The C<code> element contains the
 corresponding code.
 
 

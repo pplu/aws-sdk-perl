@@ -63,7 +63,7 @@ Describes the actions associated with a rule.
 
 =head2 Elasticsearch => L<Paws::IoT::ElasticsearchAction>
 
-  Write data to an Amazon Elasticsearch Service; domain.
+  Write data to an Amazon Elasticsearch Service domain.
 
 
 =head2 Firehose => L<Paws::IoT::FirehoseAction>

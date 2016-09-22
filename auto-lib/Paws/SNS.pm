@@ -627,8 +627,6 @@ To use the C<Publish> action for sending a message to a mobile
 endpoint, such as an app on a Kindle device or mobile phone, you must
 specify the EndpointArn for the TargetArn parameter. The EndpointArn is
 returned when making a call with the C<CreatePlatformEndpoint> action.
-The second example below shows a request and response for publishing to
-a mobile endpoint.
 
 For more information about formatting messages, see Send Custom
 Platform-Specific Payloads in Messages to Mobile Devices.

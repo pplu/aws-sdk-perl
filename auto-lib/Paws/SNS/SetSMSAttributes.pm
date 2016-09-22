@@ -47,6 +47,10 @@ Amazon SNS stops sending SMS messages within minutes of the limit being
 crossed. During that interval, if you continue to send SMS messages,
 you will incur costs that exceed your limit.
 
+By default, the spend limit is set to the maximum allowed by Amazon
+SNS. If you want to exceed the maximum, contact AWS Support or your AWS
+sales representative for a service limit increase.
+
 C<DeliveryStatusIAMRole> E<ndash> The ARN of the IAM role that allows
 Amazon SNS to write logs about SMS deliveries in CloudWatch Logs. For
 each SMS message that you send, Amazon SNS writes a log that includes
@@ -72,14 +76,14 @@ by default. You can assign the following values:
 
 =item *
 
-C<Promotional> E<ndash> Noncritical messages, such as marketing
-messages. Amazon SNS optimizes the message delivery to incur the lowest
-cost.
+C<Promotional> E<ndash> (Default) Noncritical messages, such as
+marketing messages. Amazon SNS optimizes the message delivery to incur
+the lowest cost.
 
 =item *
 
-C<Transactional> E<ndash> (Default) Critical messages that support
-customer transactions, such as one-time passcodes for multi-factor
+C<Transactional> E<ndash> Critical messages that support customer
+transactions, such as one-time passcodes for multi-factor
 authentication. Amazon SNS optimizes the message delivery to achieve
 the highest reliability.
 
@@ -132,8 +136,8 @@ To receive the report, the bucket must have a policy that allows the
 Amazon SNS service principle to perform the C<s3:PutObject> and
 C<s3:GetBucketLocation> actions.
 
-For an example bucket policy and usage report, see Viewing Statistics
-About SMS Message Delivery in the I<Amazon SNS Developer Guide>.
+For an example bucket policy and usage report, see Monitoring SMS
+Activity in the I<Amazon SNS Developer Guide>.
 
 
 

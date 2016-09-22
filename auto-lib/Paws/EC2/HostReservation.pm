@@ -62,7 +62,7 @@ are specified. At this time, the only supported currency is C<USD>.
 =head2 Duration => Int
 
   The length of the reservation's term, specified in seconds. Can be
-C<31536000 (1 year)> | C<94608000 (3 years)> | C<157680000 (5 years)>.
+C<31536000 (1 year)> | C<94608000 (3 years)>.
 
 
 =head2 End => Str

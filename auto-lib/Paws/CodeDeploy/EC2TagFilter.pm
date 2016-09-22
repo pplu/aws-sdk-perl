@@ -49,11 +49,17 @@ Information about a tag filter.
 
 =over
 
-=item * KEY_ONLY: Key only.
+=item *
 
-=item * VALUE_ONLY: Value only.
+KEY_ONLY: Key only.
 
-=item * KEY_AND_VALUE: Key and value.
+=item *
+
+VALUE_ONLY: Value only.
+
+=item *
+
+KEY_AND_VALUE: Key and value.
 
 =back
 

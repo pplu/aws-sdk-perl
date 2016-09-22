@@ -46,7 +46,7 @@ DescribeDBClusterParameterGroups action.
 
 =head2 DBClusterParameterGroupArn => Str
 
-  
+  The Amazon Resource Name (ARN) for the DB cluster parameter group.
 
 
 =head2 DBClusterParameterGroupName => Str

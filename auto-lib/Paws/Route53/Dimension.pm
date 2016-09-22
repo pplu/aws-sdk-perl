@@ -32,19 +32,22 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Route53::Di
 
 =head1 DESCRIPTION
 
-The name and value of a dimension for a CloudWatch metric.
+For the metric that the CloudWatch alarm is associated with, a complex
+type that contains information about one dimension.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> Name => Str
 
-  The name of the dimension.
+  For the metric that the CloudWatch alarm is associated with, the name
+of one dimension.
 
 
 =head2 B<REQUIRED> Value => Str
 
-  The value of the dimension.
+  For the metric that the CloudWatch alarm is associated with, the value
+of one dimension.
 
 
 

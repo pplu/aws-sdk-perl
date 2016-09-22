@@ -444,7 +444,7 @@ including an alias ID, which you can reference when creating a game
 session. To reassign the alias to another fleet ID, call UpdateAlias.
 
 
-=head2 CreateBuild([Name => Str, StorageLocation => L<Paws::GameLift::S3Location>, Version => Str])
+=head2 CreateBuild([Name => Str, OperatingSystem => Str, StorageLocation => L<Paws::GameLift::S3Location>, Version => Str])
 
 Each argument is described in detail in: L<Paws::GameLift::CreateBuild>
 
@@ -459,15 +459,17 @@ Do not use this API action unless you are using your own Amazon Simple
 Storage Service (Amazon S3) client and need to manually upload your
 build files. Instead, to create a build, use the CLI command
 C<upload-build>, which creates a new build record and uploads the build
-files in one step. (See the Amazon GameLift Developer Guide for more
-details on the CLI and the upload process.)
+files in one step. (See the Amazon GameLift Developer Guide help on
+packaging and uploading your build.)
 
-To create a new build, optionally specify a build name and version.
-This metadata is stored with other properties in the build record and
-is displayed in the GameLift console (it is not visible to players). If
-successful, this action returns the newly created build record along
-with the Amazon S3 storage location and AWS account credentials. Use
-the location and credentials to upload your game build.
+To create a new build, identify the operating system of the game server
+binaries. All game servers in a build must use the same operating
+system. Optionally, specify a build name and version; this metadata is
+stored with other properties in the build record and is displayed in
+the GameLift console (it is not visible to players). If successful,
+this action returns the newly created build record along with the
+Amazon S3 storage location and AWS account credentials. Use the
+location and credentials to upload your game build.
 
 
 =head2 CreateFleet(BuildId => Str, EC2InstanceType => Str, Name => Str, [Description => Str, EC2InboundPermissions => ArrayRef[L<Paws::GameLift::IpPermission>], LogPaths => ArrayRef[Str], NewGameSessionProtectionPolicy => Str, RuntimeConfiguration => L<Paws::GameLift::RuntimeConfiguration>, ServerLaunchParameters => Str, ServerLaunchPath => Str])

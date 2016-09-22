@@ -39,7 +39,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AcceptLanguage => Str
 
-Optional language code. Supported language codes are as follows:
+The language code to use for this operation. Supported language codes
+are as follows:
 
 "en" (English)
 
@@ -53,9 +54,9 @@ If no code is specified, "en" is used as the default.
 
 =head2 IgnoreErrors => Bool
 
-Optional Boolean parameter. If set to true, AWS Service Catalog stops
-managing the specified ProvisionedProduct object even if it cannot
-delete the underlying resources.
+If set to true, AWS Service Catalog stops managing the specified
+ProvisionedProduct object even if it cannot delete the underlying
+resources.
 
 
 

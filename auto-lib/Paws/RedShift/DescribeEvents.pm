@@ -98,15 +98,23 @@ provided.
 
 =over
 
-=item * Specify a cluster identifier when I<SourceType> is C<cluster>.
+=item *
 
-=item * Specify a cluster security group name when I<SourceType> is
+Specify a cluster identifier when I<SourceType> is C<cluster>.
+
+=item *
+
+Specify a cluster security group name when I<SourceType> is
 C<cluster-security-group>.
 
-=item * Specify a cluster parameter group name when I<SourceType> is
+=item *
+
+Specify a cluster parameter group name when I<SourceType> is
 C<cluster-parameter-group>.
 
-=item * Specify a cluster snapshot identifier when I<SourceType> is
+=item *
+
+Specify a cluster snapshot identifier when I<SourceType> is
 C<cluster-snapshot>.
 
 =back
@@ -126,17 +134,24 @@ provided.
 
 =over
 
-=item * Specify C<cluster> when I<SourceIdentifier> is a cluster
-identifier.
+=item *
 
-=item * Specify C<cluster-security-group> when I<SourceIdentifier> is a
-cluster security group name.
+Specify C<cluster> when I<SourceIdentifier> is a cluster identifier.
 
-=item * Specify C<cluster-parameter-group> when I<SourceIdentifier> is
-a cluster parameter group name.
+=item *
 
-=item * Specify C<cluster-snapshot> when I<SourceIdentifier> is a
-cluster snapshot identifier.
+Specify C<cluster-security-group> when I<SourceIdentifier> is a cluster
+security group name.
+
+=item *
+
+Specify C<cluster-parameter-group> when I<SourceIdentifier> is a
+cluster parameter group name.
+
+=item *
+
+Specify C<cluster-snapshot> when I<SourceIdentifier> is a cluster
+snapshot identifier.
 
 =back
 

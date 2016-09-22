@@ -32,6 +32,9 @@ package Paws::Net::JsonCaller;
             $p{ $key } = ($params->$att)?\1:\0;
           } elsif ($att_type eq 'Int') {
             $p{ $key } = int($params->$att);
+          } elsif ($att_type eq 'Str') {
+            # concatenate an empty string so numbers get transmitted as strings
+            $p{ $key } = "" . $params->$att;
           } elsif ($self->_is_internal_type($att_type)) {
             $p{ $key } = $params->$att;
           } elsif ($att_type =~ m/^ArrayRef\[(.*)\]/) {

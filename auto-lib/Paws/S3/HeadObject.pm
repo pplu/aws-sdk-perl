@@ -28,7 +28,21 @@ package Paws::S3::HeadObject;
 
 =head1 NAME
 
-Paws::S3::HeadObjectOutput
+Paws::S3::HeadObject - Arguments for method HeadObject on Paws::S3
+
+=head1 DESCRIPTION
+
+This class represents the parameters used for calling the method HeadObject on the 
+Amazon Simple Storage Service service. Use the attributes of this class
+as arguments to method HeadObject.
+
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to HeadObject.
+
+As an example:
+
+  $service_obj->HeadObject(Att1 => $value1, Att2 => $value2, ...);
+
+Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 
 =head1 ATTRIBUTES
 
@@ -118,6 +132,16 @@ VersionId used to reference a specific version of the object.
 
 
 
+
+=head1 SEE ALSO
+
+This class forms part of L<Paws>, documenting arguments for method HeadObject in L<Paws::S3>
+
+=head1 BUGS and CONTRIBUTIONS
+
+The source code is located here: https://github.com/pplu/aws-sdk-perl
+
+Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
 
 =cut
 

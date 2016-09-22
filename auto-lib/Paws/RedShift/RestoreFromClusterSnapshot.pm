@@ -10,6 +10,7 @@ package Paws::RedShift::RestoreFromClusterSnapshot;
   has ClusterSecurityGroups => (is => 'ro', isa => 'ArrayRef[Str]');
   has ClusterSubnetGroupName => (is => 'ro', isa => 'Str');
   has ElasticIp => (is => 'ro', isa => 'Str');
+  has EnhancedVpcRouting => (is => 'ro', isa => 'Bool');
   has HsmClientCertificateIdentifier => (is => 'ro', isa => 'Str');
   has HsmConfigurationIdentifier => (is => 'ro', isa => 'Str');
   has IamRoles => (is => 'ro', isa => 'ArrayRef[Str]');
@@ -102,15 +103,25 @@ Constraints:
 
 =over
 
-=item * Must contain from 1 to 63 alphanumeric characters or hyphens.
+=item *
 
-=item * Alphabetic characters must be lowercase.
+Must contain from 1 to 63 alphanumeric characters or hyphens.
 
-=item * First character must be a letter.
+=item *
 
-=item * Cannot end with a hyphen or contain two consecutive hyphens.
+Alphabetic characters must be lowercase.
 
-=item * Must be unique for all clusters within an AWS account.
+=item *
+
+First character must be a letter.
+
+=item *
+
+Cannot end with a hyphen or contain two consecutive hyphens.
+
+=item *
+
+Must be unique for all clusters within an AWS account.
 
 =back
 
@@ -129,11 +140,17 @@ Constraints:
 
 =over
 
-=item * Must be 1 to 255 alphanumeric characters or hyphens.
+=item *
 
-=item * First character must be a letter.
+Must be 1 to 255 alphanumeric characters or hyphens.
 
-=item * Cannot end with a hyphen or contain two consecutive hyphens.
+=item *
+
+First character must be a letter.
+
+=item *
+
+Cannot end with a hyphen or contain two consecutive hyphens.
 
 =back
 
@@ -162,6 +179,19 @@ you must provide subnet group name where you want the cluster restored.
 =head2 ElasticIp => Str
 
 The elastic IP (EIP) address for the cluster.
+
+
+
+=head2 EnhancedVpcRouting => Bool
+
+An option that specifies whether to create the cluster with enhanced
+VPC routing enabled. To create a cluster that uses enhanced VPC
+routing, the cluster must be in a VPC. For more information, see
+Enhanced VPC Routing in the Amazon Redshift Cluster Management Guide.
+
+If this option is C<true>, enhanced VPC routing is enabled.
+
+Default: false
 
 
 

@@ -408,18 +408,17 @@ Example: C<mySubnetGroup>
 
 =head2 Domain => Str
 
-Specify the Active Directory Domain to move the instance to.
-
-The specified Active Directory Domain must be created prior to this
-operation. Currently only a SQL Server instance can be created in a
-Active Directory Domain.
+The Active Directory Domain to move the instance to. Specify C<none> to
+remove the instance from its current domain. The domain must be created
+prior to this operation. Currently only a Microsoft SQL Server instance
+can be created in a Active Directory Domain.
 
 
 
 =head2 DomainIAMRoleName => Str
 
-Specify the name of the IAM role to be used when making API calls to
-the Directory Service.
+The name of the IAM role to use when making API calls to the Directory
+Service.
 
 
 

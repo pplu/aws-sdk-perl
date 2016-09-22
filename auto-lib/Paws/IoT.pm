@@ -897,7 +897,7 @@ certificate when you register your device certificates with the
 RegisterCertificate API.
 
 
-=head2 RegisterCertificate(CertificatePem => Str, [CaCertificatePem => Str, SetAsActive => Bool])
+=head2 RegisterCertificate(CertificatePem => Str, [CaCertificatePem => Str, SetAsActive => Bool, Status => Str])
 
 Each argument is described in detail in: L<Paws::IoT::RegisterCertificate>
 

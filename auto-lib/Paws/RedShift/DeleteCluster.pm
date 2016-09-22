@@ -43,13 +43,21 @@ Constraints:
 
 =over
 
-=item * Must contain lowercase characters.
+=item *
 
-=item * Must contain from 1 to 63 alphanumeric characters or hyphens.
+Must contain lowercase characters.
 
-=item * First character must be a letter.
+=item *
 
-=item * Cannot end with a hyphen or contain two consecutive hyphens.
+Must contain from 1 to 63 alphanumeric characters or hyphens.
+
+=item *
+
+First character must be a letter.
+
+=item *
+
+Cannot end with a hyphen or contain two consecutive hyphens.
 
 =back
 
@@ -66,11 +74,17 @@ Constraints:
 
 =over
 
-=item * Must be 1 to 255 alphanumeric characters.
+=item *
 
-=item * First character must be a letter.
+Must be 1 to 255 alphanumeric characters.
 
-=item * Cannot end with a hyphen or contain two consecutive hyphens.
+=item *
+
+First character must be a letter.
+
+=item *
+
+Cannot end with a hyphen or contain two consecutive hyphens.
 
 =back
 

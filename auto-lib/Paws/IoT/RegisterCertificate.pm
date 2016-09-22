@@ -4,6 +4,7 @@ package Paws::IoT::RegisterCertificate;
   has CaCertificatePem => (is => 'ro', isa => 'Str');
   has CertificatePem => (is => 'ro', isa => 'Str', required => 1);
   has SetAsActive => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'setAsActive' );
+  has Status => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -55,6 +56,12 @@ The certificate data, in PEM format.
 A boolean value that specifies if the CA certificate is set to active.
 
 
+
+=head2 Status => Str
+
+
+
+Valid values are: C<"ACTIVE">, C<"INACTIVE">, C<"REVOKED">, C<"PENDING_TRANSFER">, C<"REGISTER_INACTIVE">, C<"PENDING_ACTIVATION">
 
 
 =head1 SEE ALSO

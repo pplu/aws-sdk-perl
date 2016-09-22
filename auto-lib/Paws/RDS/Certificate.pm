@@ -43,7 +43,7 @@ A CA certificate for an AWS account.
 
 =head2 CertificateArn => Str
 
-  
+  The Amazon Resource Name (ARN) for the certificate.
 
 
 =head2 CertificateIdentifier => Str

@@ -64,6 +64,11 @@ package Paws::CodePipeline;
     my $call_object = $self->new_with_coercions('Paws::CodePipeline::GetPipeline', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetPipelineExecution {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodePipeline::GetPipelineExecution', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetPipelineState {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CodePipeline::GetPipelineState', @_);
@@ -142,7 +147,7 @@ package Paws::CodePipeline;
   
 
 
-  sub operations { qw/AcknowledgeJob AcknowledgeThirdPartyJob CreateCustomActionType CreatePipeline DeleteCustomActionType DeletePipeline DisableStageTransition EnableStageTransition GetJobDetails GetPipeline GetPipelineState GetThirdPartyJobDetails ListActionTypes ListPipelines PollForJobs PollForThirdPartyJobs PutActionRevision PutApprovalResult PutJobFailureResult PutJobSuccessResult PutThirdPartyJobFailureResult PutThirdPartyJobSuccessResult RetryStageExecution StartPipelineExecution UpdatePipeline / }
+  sub operations { qw/AcknowledgeJob AcknowledgeThirdPartyJob CreateCustomActionType CreatePipeline DeleteCustomActionType DeletePipeline DisableStageTransition EnableStageTransition GetJobDetails GetPipeline GetPipelineExecution GetPipelineState GetThirdPartyJobDetails ListActionTypes ListPipelines PollForJobs PollForThirdPartyJobs PutActionRevision PutApprovalResult PutJobFailureResult PutJobSuccessResult PutThirdPartyJobFailureResult PutThirdPartyJobSuccessResult RetryStageExecution StartPipelineExecution UpdatePipeline / }
 
 1;
 
@@ -200,6 +205,11 @@ DeletePipeline, which deletes the specified pipeline.
 =item *
 
 GetPipeline, which returns information about a pipeline structure.
+
+=item *
+
+GetPipelineExecution, which returns information about a specific
+execution of a pipeline.
 
 =item *
 
@@ -446,6 +456,17 @@ which can then be modified and used to update the pipeline structure
 with UpdatePipeline.
 
 
+=head2 GetPipelineExecution(PipelineExecutionId => Str, PipelineName => Str)
+
+Each argument is described in detail in: L<Paws::CodePipeline::GetPipelineExecution>
+
+Returns: a L<Paws::CodePipeline::GetPipelineExecutionOutput> instance
+
+  Returns information about an execution of a pipeline, including details
+about artifacts, the pipeline execution ID, and the name, version, and
+status of the pipeline.
+
+
 =head2 GetPipelineState(Name => Str)
 
 Each argument is described in detail in: L<Paws::CodePipeline::GetPipelineState>
@@ -531,7 +552,7 @@ Returns: a L<Paws::CodePipeline::PutActionRevisionOutput> instance
 source.
 
 
-=head2 PutApprovalResult(ActionName => Str, PipelineName => Str, Result => L<Paws::CodePipeline::ApprovalResult>, StageName => Str, [Token => Str])
+=head2 PutApprovalResult(ActionName => Str, PipelineName => Str, Result => L<Paws::CodePipeline::ApprovalResult>, StageName => Str, Token => Str)
 
 Each argument is described in detail in: L<Paws::CodePipeline::PutApprovalResult>
 

@@ -316,6 +316,11 @@ package Paws::RDS;
     my $call_object = $self->new_with_coercions('Paws::RDS::DescribeReservedDBInstancesOfferings', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeSourceRegions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::DescribeSourceRegions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DownloadDBLogFilePortion {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RDS::DownloadDBLogFilePortion', @_);
@@ -809,7 +814,7 @@ package Paws::RDS;
   }
 
 
-  sub operations { qw/AddSourceIdentifierToSubscription AddTagsToResource ApplyPendingMaintenanceAction AuthorizeDBSecurityGroupIngress CopyDBClusterParameterGroup CopyDBClusterSnapshot CopyDBParameterGroup CopyDBSnapshot CopyOptionGroup CreateDBCluster CreateDBClusterParameterGroup CreateDBClusterSnapshot CreateDBInstance CreateDBInstanceReadReplica CreateDBParameterGroup CreateDBSecurityGroup CreateDBSnapshot CreateDBSubnetGroup CreateEventSubscription CreateOptionGroup DeleteDBCluster DeleteDBClusterParameterGroup DeleteDBClusterSnapshot DeleteDBInstance DeleteDBParameterGroup DeleteDBSecurityGroup DeleteDBSnapshot DeleteDBSubnetGroup DeleteEventSubscription DeleteOptionGroup DescribeAccountAttributes DescribeCertificates DescribeDBClusterParameterGroups DescribeDBClusterParameters DescribeDBClusters DescribeDBClusterSnapshotAttributes DescribeDBClusterSnapshots DescribeDBEngineVersions DescribeDBInstances DescribeDBLogFiles DescribeDBParameterGroups DescribeDBParameters DescribeDBSecurityGroups DescribeDBSnapshotAttributes DescribeDBSnapshots DescribeDBSubnetGroups DescribeEngineDefaultClusterParameters DescribeEngineDefaultParameters DescribeEventCategories DescribeEvents DescribeEventSubscriptions DescribeOptionGroupOptions DescribeOptionGroups DescribeOrderableDBInstanceOptions DescribePendingMaintenanceActions DescribeReservedDBInstances DescribeReservedDBInstancesOfferings DownloadDBLogFilePortion FailoverDBCluster ListTagsForResource ModifyDBCluster ModifyDBClusterParameterGroup ModifyDBClusterSnapshotAttribute ModifyDBInstance ModifyDBParameterGroup ModifyDBSnapshotAttribute ModifyDBSubnetGroup ModifyEventSubscription ModifyOptionGroup PromoteReadReplica PromoteReadReplicaDBCluster PurchaseReservedDBInstancesOffering RebootDBInstance RemoveSourceIdentifierFromSubscription RemoveTagsFromResource ResetDBClusterParameterGroup ResetDBParameterGroup RestoreDBClusterFromS3 RestoreDBClusterFromSnapshot RestoreDBClusterToPointInTime RestoreDBInstanceFromDBSnapshot RestoreDBInstanceToPointInTime RevokeDBSecurityGroupIngress / }
+  sub operations { qw/AddSourceIdentifierToSubscription AddTagsToResource ApplyPendingMaintenanceAction AuthorizeDBSecurityGroupIngress CopyDBClusterParameterGroup CopyDBClusterSnapshot CopyDBParameterGroup CopyDBSnapshot CopyOptionGroup CreateDBCluster CreateDBClusterParameterGroup CreateDBClusterSnapshot CreateDBInstance CreateDBInstanceReadReplica CreateDBParameterGroup CreateDBSecurityGroup CreateDBSnapshot CreateDBSubnetGroup CreateEventSubscription CreateOptionGroup DeleteDBCluster DeleteDBClusterParameterGroup DeleteDBClusterSnapshot DeleteDBInstance DeleteDBParameterGroup DeleteDBSecurityGroup DeleteDBSnapshot DeleteDBSubnetGroup DeleteEventSubscription DeleteOptionGroup DescribeAccountAttributes DescribeCertificates DescribeDBClusterParameterGroups DescribeDBClusterParameters DescribeDBClusters DescribeDBClusterSnapshotAttributes DescribeDBClusterSnapshots DescribeDBEngineVersions DescribeDBInstances DescribeDBLogFiles DescribeDBParameterGroups DescribeDBParameters DescribeDBSecurityGroups DescribeDBSnapshotAttributes DescribeDBSnapshots DescribeDBSubnetGroups DescribeEngineDefaultClusterParameters DescribeEngineDefaultParameters DescribeEventCategories DescribeEvents DescribeEventSubscriptions DescribeOptionGroupOptions DescribeOptionGroups DescribeOrderableDBInstanceOptions DescribePendingMaintenanceActions DescribeReservedDBInstances DescribeReservedDBInstancesOfferings DescribeSourceRegions DownloadDBLogFilePortion FailoverDBCluster ListTagsForResource ModifyDBCluster ModifyDBClusterParameterGroup ModifyDBClusterSnapshotAttribute ModifyDBInstance ModifyDBParameterGroup ModifyDBSnapshotAttribute ModifyDBSubnetGroup ModifyEventSubscription ModifyOptionGroup PromoteReadReplica PromoteReadReplicaDBCluster PurchaseReservedDBInstancesOffering RebootDBInstance RemoveSourceIdentifierFromSubscription RemoveTagsFromResource ResetDBClusterParameterGroup ResetDBParameterGroup RestoreDBClusterFromS3 RestoreDBClusterFromSnapshot RestoreDBClusterToPointInTime RestoreDBInstanceFromDBSnapshot RestoreDBInstanceToPointInTime RevokeDBSecurityGroupIngress / }
 
 1;
 
@@ -1079,7 +1084,7 @@ Returns: a L<Paws::RDS::CreateDBClusterSnapshotResult> instance
 Aurora, see Aurora on Amazon RDS in the I<Amazon RDS User Guide.>
 
 
-=head2 CreateDBInstance(DBInstanceClass => Str, DBInstanceIdentifier => Str, Engine => Str, [AllocatedStorage => Int, AutoMinorVersionUpgrade => Bool, AvailabilityZone => Str, BackupRetentionPeriod => Int, CharacterSetName => Str, CopyTagsToSnapshot => Bool, DBClusterIdentifier => Str, DBName => Str, DBParameterGroupName => Str, DBSecurityGroups => ArrayRef[Str], DBSubnetGroupName => Str, Domain => Str, DomainIAMRoleName => Str, EngineVersion => Str, Iops => Int, KmsKeyId => Str, LicenseModel => Str, MasterUsername => Str, MasterUserPassword => Str, MonitoringInterval => Int, MonitoringRoleArn => Str, MultiAZ => Bool, OptionGroupName => Str, Port => Int, PreferredBackupWindow => Str, PreferredMaintenanceWindow => Str, PromotionTier => Int, PubliclyAccessible => Bool, StorageEncrypted => Bool, StorageType => Str, Tags => ArrayRef[L<Paws::RDS::Tag>], TdeCredentialArn => Str, TdeCredentialPassword => Str, VpcSecurityGroupIds => ArrayRef[Str]])
+=head2 CreateDBInstance(DBInstanceClass => Str, DBInstanceIdentifier => Str, Engine => Str, [AllocatedStorage => Int, AutoMinorVersionUpgrade => Bool, AvailabilityZone => Str, BackupRetentionPeriod => Int, CharacterSetName => Str, CopyTagsToSnapshot => Bool, DBClusterIdentifier => Str, DBName => Str, DBParameterGroupName => Str, DBSecurityGroups => ArrayRef[Str], DBSubnetGroupName => Str, Domain => Str, DomainIAMRoleName => Str, EngineVersion => Str, Iops => Int, KmsKeyId => Str, LicenseModel => Str, MasterUsername => Str, MasterUserPassword => Str, MonitoringInterval => Int, MonitoringRoleArn => Str, MultiAZ => Bool, OptionGroupName => Str, Port => Int, PreferredBackupWindow => Str, PreferredMaintenanceWindow => Str, PromotionTier => Int, PubliclyAccessible => Bool, StorageEncrypted => Bool, StorageType => Str, Tags => ArrayRef[L<Paws::RDS::Tag>], TdeCredentialArn => Str, TdeCredentialPassword => Str, Timezone => Str, VpcSecurityGroupIds => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::RDS::CreateDBInstance>
 
@@ -1455,7 +1460,7 @@ For more information on Amazon Aurora, see Aurora on Amazon RDS in the
 I<Amazon RDS User Guide.>
 
 
-=head2 DescribeDBEngineVersions([DBParameterGroupFamily => Str, DefaultOnly => Bool, Engine => Str, EngineVersion => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], ListSupportedCharacterSets => Bool, Marker => Str, MaxRecords => Int])
+=head2 DescribeDBEngineVersions([DBParameterGroupFamily => Str, DefaultOnly => Bool, Engine => Str, EngineVersion => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], ListSupportedCharacterSets => Bool, ListSupportedTimezones => Bool, Marker => Str, MaxRecords => Int])
 
 Each argument is described in detail in: L<Paws::RDS::DescribeDBEngineVersions>
 
@@ -1676,6 +1681,17 @@ Each argument is described in detail in: L<Paws::RDS::DescribeReservedDBInstance
 Returns: a L<Paws::RDS::ReservedDBInstancesOfferingMessage> instance
 
   Lists available reserved DB instance offerings.
+
+
+=head2 DescribeSourceRegions([Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int, RegionName => Str])
+
+Each argument is described in detail in: L<Paws::RDS::DescribeSourceRegions>
+
+Returns: a L<Paws::RDS::SourceRegionMessage> instance
+
+  Returns a list of the source AWS regions where the current AWS region
+can create a Read Replica or copy a DB snapshot from. This API action
+supports pagination.
 
 
 =head2 DownloadDBLogFilePortion(DBInstanceIdentifier => Str, LogFileName => Str, [Marker => Str, NumberOfLines => Int])
@@ -2019,8 +2035,7 @@ Returns: a L<Paws::RDS::RestoreDBClusterFromS3Result> instance
   Creates an Amazon Aurora DB cluster from data stored in an Amazon S3
 bucket. Amazon RDS must be authorized to access the Amazon S3 bucket
 and the data must be created using the Percona XtraBackup utility as
-described in Migrating Data from an External MySQL Database to an
-Amazon Aurora DB Cluster.
+described in Migrating Data from MySQL by Using an Amazon S3 Bucket.
 
 
 =head2 RestoreDBClusterFromSnapshot(DBClusterIdentifier => Str, Engine => Str, SnapshotIdentifier => Str, [AvailabilityZones => ArrayRef[Str], DatabaseName => Str, DBSubnetGroupName => Str, EngineVersion => Str, KmsKeyId => Str, OptionGroupName => Str, Port => Int, Tags => ArrayRef[L<Paws::RDS::Tag>], VpcSecurityGroupIds => ArrayRef[Str]])

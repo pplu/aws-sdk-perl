@@ -18,6 +18,7 @@ package Paws::RedShift::Cluster;
   has ElasticIpStatus => (is => 'ro', isa => 'Paws::RedShift::ElasticIpStatus');
   has Encrypted => (is => 'ro', isa => 'Bool');
   has Endpoint => (is => 'ro', isa => 'Paws::RedShift::Endpoint');
+  has EnhancedVpcRouting => (is => 'ro', isa => 'Bool');
   has HsmStatus => (is => 'ro', isa => 'Paws::RedShift::HsmStatus');
   has IamRoles => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::ClusterIamRole]');
   has KmsKeyId => (is => 'ro', isa => 'Str');
@@ -69,8 +70,9 @@ Describes a cluster.
 
 =head2 AllowVersionUpgrade => Bool
 
-  If C<true>, major version upgrades will be applied automatically to the
-cluster during the maintenance window.
+  A Boolean value that, if C<true>, indicates that major version upgrades
+will be applied automatically to the cluster during the maintenance
+window.
 
 
 =head2 AutomatedSnapshotRetentionPeriod => Int
@@ -95,7 +97,7 @@ cluster during the maintenance window.
 
 =head2 ClusterNodes => ArrayRef[L<Paws::RedShift::ClusterNode>]
 
-  The nodes in a cluster.
+  The nodes in the cluster.
 
 
 =head2 ClusterParameterGroups => ArrayRef[L<Paws::RedShift::ClusterParameterGroupStatus>]
@@ -121,54 +123,87 @@ Each security group is represented by an element that contains
 C<ClusterSecurityGroup.Name> and C<ClusterSecurityGroup.Status>
 subelements.
 
-Cluster security groups are used when the cluster is not created in a
-VPC. Clusters that are created in a VPC use VPC security groups, which
-are listed by the B<VpcSecurityGroups> parameter.
+Cluster security groups are used when the cluster is not created in an
+Amazon Virtual Private Cloud (VPC). Clusters that are created in a VPC
+use VPC security groups, which are listed by the B<VpcSecurityGroups>
+parameter.
 
 
 =head2 ClusterSnapshotCopyStatus => L<Paws::RedShift::ClusterSnapshotCopyStatus>
 
-  Returns the destination region and retention period that are configured
-for cross-region snapshot copy.
+  A value that returns the destination region and retention period that
+are configured for cross-region snapshot copy.
 
 
 =head2 ClusterStatus => Str
 
-  The current state of the cluster. Possible values are:
+  The current state of the cluster. Possible values are the following:
 
 =over
 
-=item * C<available>
+=item *
 
-=item * C<creating>
+C<available>
 
-=item * C<deleting>
+=item *
 
-=item * C<final-snapshot>
+C<creating>
 
-=item * C<hardware-failure>
+=item *
 
-=item * C<incompatible-hsm>
+C<deleting>
 
-=item * C<incompatible-network>
+=item *
 
-=item * C<incompatible-parameters>
+C<final-snapshot>
 
-=item * C<incompatible-restore>
+=item *
 
-=item * C<modifying>
+C<hardware-failure>
 
-=item * C<rebooting>
+=item *
 
-=item * C<renaming>
+C<incompatible-hsm>
 
-=item * C<resizing>
+=item *
 
-=item * C<rotating-keys>
+C<incompatible-network>
 
-=item * C<storage-full>
+=item *
 
-=item * C<updating-hsm>
+C<incompatible-parameters>
+
+=item *
+
+C<incompatible-restore>
+
+=item *
+
+C<modifying>
+
+=item *
+
+C<rebooting>
+
+=item *
+
+C<renaming>
+
+=item *
+
+C<resizing>
+
+=item *
+
+C<rotating-keys>
+
+=item *
+
+C<storage-full>
+
+=item *
+
+C<updating-hsm>
 
 =back
 
@@ -190,8 +225,8 @@ cluster.
 
   The name of the initial database that was created when the cluster was
 created. This same name is returned for the life of the cluster. If an
-initial database was not specified, a database named "dev" was created
-by default.
+initial database was not specified, a database named C<dev>dev was
+created by default.
 
 
 =head2 ElasticIpStatus => L<Paws::RedShift::ElasticIpStatus>
@@ -201,7 +236,8 @@ by default.
 
 =head2 Encrypted => Bool
 
-  If C<true>, data in the cluster is encrypted at rest.
+  A Boolean value that, if C<true>, indicates that data in the cluster is
+encrypted at rest.
 
 
 =head2 Endpoint => L<Paws::RedShift::Endpoint>
@@ -209,10 +245,23 @@ by default.
   The connection endpoint.
 
 
+=head2 EnhancedVpcRouting => Bool
+
+  An option that specifies whether to create the cluster with enhanced
+VPC routing enabled. To create a cluster that uses enhanced VPC
+routing, the cluster must be in a VPC. For more information, see
+Enhanced VPC Routing in the Amazon Redshift Cluster Management Guide.
+
+If this option is C<true>, enhanced VPC routing is enabled.
+
+Default: false
+
+
 =head2 HsmStatus => L<Paws::RedShift::HsmStatus>
 
-  Reports whether the Amazon Redshift cluster has finished applying any
-HSM settings changes specified in a modify cluster command.
+  A value that reports whether the Amazon Redshift cluster has finished
+applying any hardware security module (HSM) settings changes specified
+in a modify cluster command.
 
 Values: active, applying
 
@@ -225,14 +274,14 @@ used by the cluster to access other AWS services.
 
 =head2 KmsKeyId => Str
 
-  The AWS Key Management Service (KMS) key ID of the encryption key used
-to encrypt data in the cluster.
+  The AWS Key Management Service (AWS KMS) key ID of the encryption key
+used to encrypt data in the cluster.
 
 
 =head2 MasterUsername => Str
 
   The master user name for the cluster. This name is used to connect to
-the database that is specified in B<DBName>.
+the database that is specified in the B<DBName> parameter.
 
 
 =head2 ModifyStatus => Str
@@ -252,25 +301,27 @@ the database that is specified in B<DBName>.
 
 =head2 PendingModifiedValues => L<Paws::RedShift::PendingModifiedValues>
 
-  If present, changes to the cluster are pending. Specific pending
-changes are identified by subelements.
+  A value that, if present, indicates that changes to the cluster are
+pending. Specific pending changes are identified by subelements.
 
 
 =head2 PreferredMaintenanceWindow => Str
 
-  The weekly time range (in UTC) during which system maintenance can
-occur.
+  The weekly time range, in Universal Coordinated Time (UTC), during
+which system maintenance can occur.
 
 
 =head2 PubliclyAccessible => Bool
 
-  If C<true>, the cluster can be accessed from a public network.
+  A Boolean value that, if C<true>, indicates that the cluster can be
+accessed from a public network.
 
 
 =head2 RestoreStatus => L<Paws::RedShift::RestoreStatus>
 
-  Describes the status of a cluster restore action. Returns null if the
-cluster was not created by restoring a snapshot.
+  A value that describes the status of a cluster restore action. This
+parameter returns null if the cluster was not created by restoring a
+snapshot.
 
 
 =head2 Tags => ArrayRef[L<Paws::RedShift::Tag>]
@@ -286,9 +337,9 @@ VPC.
 
 =head2 VpcSecurityGroups => ArrayRef[L<Paws::RedShift::VpcSecurityGroupMembership>]
 
-  A list of Virtual Private Cloud (VPC) security groups that are
-associated with the cluster. This parameter is returned only if the
-cluster is in a VPC.
+  A list of Amazon Virtual Private Cloud (Amazon VPC) security groups
+that are associated with the cluster. This parameter is returned only
+if the cluster is in a VPC.
 
 
 

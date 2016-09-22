@@ -45,6 +45,7 @@ package Paws::RDS::DBInstance;
   has StorageEncrypted => (is => 'ro', isa => 'Bool');
   has StorageType => (is => 'ro', isa => 'Str');
   has TdeCredentialArn => (is => 'ro', isa => 'Str');
+  has Timezone => (is => 'ro', isa => 'Str');
   has VpcSecurityGroups => (is => 'ro', isa => 'ArrayRef[Paws::RDS::VpcSecurityGroupMembership]');
 1;
 
@@ -148,7 +149,7 @@ the DB cluster that the DB instance is a member of.
 
 =head2 DBInstanceArn => Str
 
-  
+  The Amazon Resource Name (ARN) for the DB instance.
 
 
 =head2 DBInstanceClass => Str
@@ -399,13 +400,20 @@ this will be blank.
 
 =head2 TdeCredentialArn => Str
 
-  The ARN from the Key Store with which the instance is associated for
+  The ARN from the key store with which the instance is associated for
 TDE encryption.
+
+
+=head2 Timezone => Str
+
+  The time zone of the DB instance. In most cases, the C<Timezone>
+element is empty. C<Timezone> content appears only for Microsoft SQL
+Server DB instances that were created with a time zone specified.
 
 
 =head2 VpcSecurityGroups => ArrayRef[L<Paws::RDS::VpcSecurityGroupMembership>]
 
-  Provides List of VPC security group elements that the DB instance
+  Provides a list of VPC security group elements that the DB instance
 belongs to.
 
 

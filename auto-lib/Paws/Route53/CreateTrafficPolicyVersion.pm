@@ -19,25 +19,37 @@ package Paws::Route53::CreateTrafficPolicyVersion;
 
 =head1 NAME
 
-Paws::Route53::CreateTrafficPolicyVersionResponse
+Paws::Route53::CreateTrafficPolicyVersion - Arguments for method CreateTrafficPolicyVersion on Paws::Route53
+
+=head1 DESCRIPTION
+
+This class represents the parameters used for calling the method CreateTrafficPolicyVersion on the 
+Amazon Route 53 service. Use the attributes of this class
+as arguments to method CreateTrafficPolicyVersion.
+
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateTrafficPolicyVersion.
+
+As an example:
+
+  $service_obj->CreateTrafficPolicyVersion(Att1 => $value1, Att2 => $value2, ...);
+
+Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 
 =head1 ATTRIBUTES
 
 
 =head2 Comment => Str
 
-Any comments that you want to include about the new traffic policy
-version.
+The comment that you specified in the C<CreateTrafficPolicyVersion>
+request, if any.
 
 
 
 =head2 B<REQUIRED> Document => Str
 
-The definition of a new traffic policy version, in JSON format. You
-must specify the full definition of the new traffic policy. You cannot
-specify just the differences between the new version and a previous
-version. For more information, see Traffic Policy Document Format in
-the I<Amazon Route 53 API Reference>.
+The definition of this version of the traffic policy, in JSON format.
+You specified the JSON in the C<CreateTrafficPolicyVersion> request.
+For more information about the JSON format, see CreateTrafficPolicy.
 
 
 
@@ -48,6 +60,16 @@ version.
 
 
 
+
+=head1 SEE ALSO
+
+This class forms part of L<Paws>, documenting arguments for method CreateTrafficPolicyVersion in L<Paws::Route53>
+
+=head1 BUGS and CONTRIBUTIONS
+
+The source code is located here: https://github.com/pplu/aws-sdk-perl
+
+Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
 
 =cut
 

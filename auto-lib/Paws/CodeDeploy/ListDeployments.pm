@@ -63,19 +63,29 @@ A subset of deployments to list by status:
 
 =over
 
-=item * Created: Include created deployments in the resulting list.
+=item *
 
-=item * Queued: Include queued deployments in the resulting list.
+Created: Include created deployments in the resulting list.
 
-=item * In Progress: Include in-progress deployments in the resulting
-list.
+=item *
 
-=item * Succeeded: Include successful deployments in the resulting
-list.
+Queued: Include queued deployments in the resulting list.
 
-=item * Failed: Include failed deployments in the resulting list.
+=item *
 
-=item * Stopped: Include stopped deployments in the resulting list.
+In Progress: Include in-progress deployments in the resulting list.
+
+=item *
+
+Succeeded: Include successful deployments in the resulting list.
+
+=item *
+
+Failed: Include failed deployments in the resulting list.
+
+=item *
+
+Stopped: Include stopped deployments in the resulting list.
 
 =back
 

@@ -50,14 +50,18 @@ The type parameter takes either of the following values:
 
 =over
 
-=item * HOST_COUNT: The value parameter represents the minimum number
-of healthy instances as an absolute value.
+=item *
 
-=item * FLEET_PERCENT: The value parameter represents the minimum
-number of healthy instances as a percentage of the total number of
-instances in the deployment. If you specify FLEET_PERCENT, at the start
-of the deployment, AWS CodeDeploy converts the percentage to the
-equivalent number of instance and rounds up fractional instances.
+HOST_COUNT: The value parameter represents the minimum number of
+healthy instances as an absolute value.
+
+=item *
+
+FLEET_PERCENT: The value parameter represents the minimum number of
+healthy instances as a percentage of the total number of instances in
+the deployment. If you specify FLEET_PERCENT, at the start of the
+deployment, AWS CodeDeploy converts the percentage to the equivalent
+number of instance and rounds up fractional instances.
 
 =back
 

@@ -54,25 +54,38 @@ The following are possible statuses and descriptions.
 
 =over
 
-=item * C<in-sync>: The parameter value is in sync with the database.
+=item *
 
-=item * C<pending-reboot>: The parameter value will be applied after
-the cluster reboots.
+C<in-sync>: The parameter value is in sync with the database.
 
-=item * C<applying>: The parameter value is being applied to the
-database.
+=item *
 
-=item * C<invalid-parameter>: Cannot apply the parameter value because
-it has an invalid value or syntax.
+C<pending-reboot>: The parameter value will be applied after the
+cluster reboots.
 
-=item * C<apply-deferred>: The parameter contains static property
-changes. The changes are deferred until the cluster reboots.
+=item *
 
-=item * C<apply-error>: Cannot connect to the cluster. The parameter
+C<applying>: The parameter value is being applied to the database.
+
+=item *
+
+C<invalid-parameter>: Cannot apply the parameter value because it has
+an invalid value or syntax.
+
+=item *
+
+C<apply-deferred>: The parameter contains static property changes. The
+changes are deferred until the cluster reboots.
+
+=item *
+
+C<apply-error>: Cannot connect to the cluster. The parameter change
+will be applied after the cluster reboots.
+
+=item *
+
+C<unknown-error>: Cannot apply the parameter change right now. The
 change will be applied after the cluster reboots.
-
-=item * C<unknown-error>: Cannot apply the parameter change right now.
-The change will be applied after the cluster reboots.
 
 =back
 

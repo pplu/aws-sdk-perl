@@ -94,7 +94,7 @@ cluster snapshot was created from.
 
 =head2 DBClusterSnapshotArn => Str
 
-  
+  The Amazon Resource Name (ARN) for the DB cluster snapshot.
 
 
 =head2 DBClusterSnapshotIdentifier => Str

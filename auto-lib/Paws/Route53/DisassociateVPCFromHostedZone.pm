@@ -19,32 +19,55 @@ package Paws::Route53::DisassociateVPCFromHostedZone;
 
 =head1 NAME
 
-Paws::Route53::DisassociateVPCFromHostedZoneResponse
+Paws::Route53::DisassociateVPCFromHostedZone - Arguments for method DisassociateVPCFromHostedZone on Paws::Route53
+
+=head1 DESCRIPTION
+
+This class represents the parameters used for calling the method DisassociateVPCFromHostedZone on the 
+Amazon Route 53 service. Use the attributes of this class
+as arguments to method DisassociateVPCFromHostedZone.
+
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DisassociateVPCFromHostedZone.
+
+As an example:
+
+  $service_obj->DisassociateVPCFromHostedZone(Att1 => $value1, Att2 => $value2, ...);
+
+Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 
 =head1 ATTRIBUTES
 
 
 =head2 Comment => Str
 
-I<Optional:> Any comments you want to include about a
-C<DisassociateVPCFromHostedZoneRequest>.
+I<Optional:> A comment about the disassociation request.
 
 
 
 =head2 B<REQUIRED> HostedZoneId => Str
 
-The ID of the hosted zone you want to disassociate your VPC from.
-
-Note that you cannot disassociate the last VPC from a hosted zone.
+The ID of the VPC that you want to disassociate from an Amazon Route 53
+hosted zone.
 
 
 
 =head2 B<REQUIRED> VPC => L<Paws::Route53::VPC>
 
-The VPC that you want your hosted zone to be disassociated from.
+A complex type containing information about the Amazon VPC that you're
+disassociating from the specified hosted zone.
 
 
 
+
+=head1 SEE ALSO
+
+This class forms part of L<Paws>, documenting arguments for method DisassociateVPCFromHostedZone in L<Paws::Route53>
+
+=head1 BUGS and CONTRIBUTIONS
+
+The source code is located here: https://github.com/pplu/aws-sdk-perl
+
+Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
 
 =cut
 

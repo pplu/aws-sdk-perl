@@ -32,20 +32,28 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Route53::Al
 
 =head1 DESCRIPTION
 
-A complex type that contains information to uniquely identify the
-CloudWatch alarm that you're associating with a Route 53 health check.
+A complex type that identifies the CloudWatch alarm that you want
+Amazon Route 53 health checkers to use to determine whether this health
+check is healthy.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> Name => Str
 
-  The name of the CloudWatch alarm.
+  The name of the CloudWatch alarm that you want Amazon Route 53 health
+checkers to use to determine whether this health check is healthy.
 
 
 =head2 B<REQUIRED> Region => Str
 
-  The C<CloudWatchRegion> that the CloudWatch alarm was created in.
+  A complex type that identifies the CloudWatch alarm that you want
+Amazon Route 53 health checkers to use to determine whether this health
+check is healthy.
+
+For the current list of CloudWatch regions, see Amazon CloudWatch in
+I<AWS Regions and Endpoints> in the I<Amazon Web Services General
+Reference>.
 
 
 

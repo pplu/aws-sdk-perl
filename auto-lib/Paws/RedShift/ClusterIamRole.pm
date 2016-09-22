@@ -40,20 +40,26 @@ the associated Amazon Redshift cluster to access other AWS services.
 
 =head2 ApplyStatus => Str
 
-  Describes the status of the IAM role's association with an Amazon
-Redshift cluster.
+  A value that describes the status of the IAM role's association with an
+Amazon Redshift cluster.
 
 The following are possible statuses and descriptions.
 
 =over
 
-=item * C<in-sync>: The role is available for use by the cluster.
+=item *
 
-=item * C<adding>: The role is in the process of being associated with
-the cluster.
+C<in-sync>: The role is available for use by the cluster.
 
-=item * C<removing>: The role is in the process of being disassociated
-with the cluster.
+=item *
+
+C<adding>: The role is in the process of being associated with the
+cluster.
+
+=item *
+
+C<removing>: The role is in the process of being disassociated with the
+cluster.
 
 =back
 
@@ -61,7 +67,7 @@ with the cluster.
 
 =head2 IamRoleArn => Str
 
-  The Amazon Resource Name (ARN) of the IAM role. For example,
+  The Amazon Resource Name (ARN) of the IAM role, for example,
 C<arn:aws:iam::123456789012:role/RedshiftCopyUnload>.
 
 

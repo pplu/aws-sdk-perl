@@ -74,25 +74,45 @@ types are:
 
 =over
 
-=item * Cluster
+=item *
 
-=item * CIDR/IP
+Cluster
 
-=item * EC2 security group
+=item *
 
-=item * Snapshot
+CIDR/IP
 
-=item * Cluster security group
+=item *
 
-=item * Subnet group
+EC2 security group
 
-=item * HSM connection
+=item *
 
-=item * HSM certificate
+Snapshot
 
-=item * Parameter group
+=item *
 
-=item * Snapshot copy grant
+Cluster security group
+
+=item *
+
+Subnet group
+
+=item *
+
+HSM connection
+
+=item *
+
+HSM certificate
+
+=item *
+
+Parameter group
+
+=item *
+
+Snapshot copy grant
 
 =back
 
