@@ -37,6 +37,7 @@ package Paws::RDS::CreateDBInstance;
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Tag]');
   has TdeCredentialArn => (is => 'ro', isa => 'Str');
   has TdeCredentialPassword => (is => 'ro', isa => 'Str');
+  has Timezone => (is => 'ro', isa => 'Str');
   has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str]');
 
   use MooseX::ClassAttribute;
@@ -391,9 +392,9 @@ the Directory Service.
 
 The name of the database engine to be used for this instance.
 
-Valid Values: C<MySQL> | C<mariadb> | C<oracle-se1> | C<oracle-se> |
-C<oracle-ee> | C<sqlserver-ee> | C<sqlserver-se> | C<sqlserver-ex> |
-C<sqlserver-web> | C<postgres> | C<aurora>
+Valid Values: C<mysql> | C<mariadb> | C<oracle-se1> | C<oracle-se2> |
+C<oracle-se> | C<oracle-ee> | C<sqlserver-ee> | C<sqlserver-se> |
+C<sqlserver-ex> | C<sqlserver-web> | C<postgres> | C<aurora>
 
 Not every database engine is available for every AWS region.
 
@@ -1114,6 +1115,13 @@ encryption.
 
 The password for the given ARN from the Key Store in order to access
 the device.
+
+
+
+=head2 Timezone => Str
+
+The time zone of the DB instance. The time zone parameter is currently
+supported only by Microsoft SQL Server.
 
 
 

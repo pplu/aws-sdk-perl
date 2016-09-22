@@ -24,6 +24,7 @@ package Paws::RDS::DBCluster;
   has Port => (is => 'ro', isa => 'Int');
   has PreferredBackupWindow => (is => 'ro', isa => 'Str');
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
+  has ReaderEndpoint => (is => 'ro', isa => 'Str');
   has ReadReplicaIdentifiers => (is => 'ro', isa => 'ArrayRef[Str]');
   has ReplicationSourceIdentifier => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
@@ -234,6 +235,21 @@ C<BackupRetentionPeriod>.
 
   Specifies the weekly time range during which system maintenance can
 occur, in Universal Coordinated Time (UTC).
+
+
+=head2 ReaderEndpoint => Str
+
+  The reader endpoint for the DB cluster. The reader endpoint for a DB
+cluster load-balances connections across the Aurora Replicas that are
+available in a DB cluster. As clients request new connections to the
+reader endpoint, Aurora distributes the connection requests among the
+Aurora Replicas in the DB cluster. This functionality can help balance
+your read workload across multiple Aurora Replicas in your DB cluster.
+
+If a failover occurs, and the Aurora Replica that you are connected to
+is promoted to be the primary instance, your connection will be
+dropped. To continue sending your read workload to other Aurora
+Replicas in the cluster, you can then recoonect to the reader endpoint.
 
 
 =head2 ReadReplicaIdentifiers => ArrayRef[Str]

@@ -66,7 +66,7 @@ Constraints: Minimum 20, maximum 100.
 
 =head2 RegionName => Str
 
-The source region name, for example US West (Oregon).
+The source region name. For example, C<us-east-1>.
 
 Constraints:
 
@@ -74,7 +74,7 @@ Constraints:
 
 =item *
 
-Must specify a valid AWS Region name, for example US West (Oregon).
+Must specify a valid AWS Region name.
 
 =back
 

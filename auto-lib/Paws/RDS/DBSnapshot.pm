@@ -23,6 +23,7 @@ package Paws::RDS::DBSnapshot;
   has Status => (is => 'ro', isa => 'Str');
   has StorageType => (is => 'ro', isa => 'Str');
   has TdeCredentialArn => (is => 'ro', isa => 'Str');
+  has Timezone => (is => 'ro', isa => 'Str');
   has VpcId => (is => 'ro', isa => 'Str');
 1;
 
@@ -190,13 +191,21 @@ value in case of cross customer or cross region copy.
 
 =head2 StorageType => Str
 
-  Specifies the storage type associated with DB Snapshot.
+  Specifies the storage type associated with DB snapshot.
 
 
 =head2 TdeCredentialArn => Str
 
-  The ARN from the Key Store with which to associate the instance for TDE
+  The ARN from the key store with which to associate the instance for TDE
 encryption.
+
+
+=head2 Timezone => Str
+
+  The time zone of the DB snapshot. In most cases, the C<Timezone>
+element is empty. C<Timezone> content appears only for snapshots taken
+from Microsoft SQL Server DB instances that were created with a time
+zone specified.
 
 
 =head2 VpcId => Str
