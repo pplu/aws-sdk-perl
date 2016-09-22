@@ -12,6 +12,7 @@ package Paws::EMR::RunJobFlow;
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has NewSupportedProducts => (is => 'ro', isa => 'ArrayRef[Paws::EMR::SupportedProductConfig]');
   has ReleaseLabel => (is => 'ro', isa => 'Str');
+  has SecurityConfiguration => (is => 'ro', isa => 'Str');
   has ServiceRole => (is => 'ro', isa => 'Str');
   has Steps => (is => 'ro', isa => 'ArrayRef[Paws::EMR::StepConfig]');
   has SupportedProducts => (is => 'ro', isa => 'ArrayRef[Str]');
@@ -194,6 +195,12 @@ Amazon EMR releases 4.x or later.
 
 The release label for the Amazon EMR release. For Amazon EMR 3.x and
 2.x AMIs, use amiVersion instead instead of ReleaseLabel.
+
+
+
+=head2 SecurityConfiguration => Str
+
+The name of a security configuration to apply to the cluster.
 
 
 

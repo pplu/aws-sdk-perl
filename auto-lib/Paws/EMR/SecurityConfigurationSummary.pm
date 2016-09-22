@@ -1,14 +1,14 @@
-package Paws::EMR::ScriptBootstrapActionConfig;
+package Paws::EMR::SecurityConfigurationSummary;
   use Moose;
-  has Args => (is => 'ro', isa => 'ArrayRef[Str]');
-  has Path => (is => 'ro', isa => 'Str', required => 1);
+  has CreationDateTime => (is => 'ro', isa => 'Str');
+  has Name => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::EMR::ScriptBootstrapActionConfig
+Paws::EMR::SecurityConfigurationSummary
 
 =head1 USAGE
 
@@ -19,32 +19,32 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::EMR::ScriptBootstrapActionConfig object:
+As an example, if Att1 is expected to be a Paws::EMR::SecurityConfigurationSummary object:
 
-  $service_obj->Method(Att1 => { Args => $value, ..., Path => $value  });
+  $service_obj->Method(Att1 => { CreationDateTime => $value, ..., Name => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::EMR::ScriptBootstrapActionConfig object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::EMR::SecurityConfigurationSummary object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Args
+  $result->Att1->CreationDateTime
 
 =head1 DESCRIPTION
 
-This class has no description
+The creation date and time, and name, of a security configuration.
 
 =head1 ATTRIBUTES
 
 
-=head2 Args => ArrayRef[Str]
+=head2 CreationDateTime => Str
 
-  
+  The date and time the security configuration was created.
 
 
-=head2 B<REQUIRED> Path => Str
+=head2 Name => Str
 
-  
+  The name of the security configuration.
 
 
 
