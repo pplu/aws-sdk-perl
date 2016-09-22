@@ -13,6 +13,11 @@
  - CognitoIdp API update: UserImportJob operations
  - Gamelift API update: OperatingSystem for CreateBuild
  - Route53 API update: TestDNSAnswer
+ - CodeDeploy API update
+ - RedShift API update: Enhanced VPC Routing
+ - RDS API update: Timezones and ReadEnpoints
+ - EMR API update: SecurityConfigurations
+ - IoT API update
 
 0.28 30 Aug 2015 23:45:00
  - On errors 503 XMLResponse would not process the error correctly (returning
