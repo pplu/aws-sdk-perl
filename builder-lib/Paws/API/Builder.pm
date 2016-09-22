@@ -1007,14 +1007,14 @@ package [% inner_class %];
 
     if (not defined $callback) {
       [%- IF (paginator.more_results.defined) %]
-      while ($result->[% paginator.more_results %]) {
+      while ([% c.paginator_accessor(paginator.more_results) %]) {
         $result = $self->[% op %](@_, [% c.paginator_pass_params(paginator) %]);
         [%- FOREACH param = c.paginator_result_key(paginator) %]
         push @{ [% c.paginator_accessor(param) %] }, @{ [% c.paginator_accessor(param) %] };
         [%- END %]
       }
       [%- ELSE %]
-      while ($result->[% paginator.input_token %]) {
+      while ([% c.paginator_accessor(paginator.input_token) %]) {
         $result = $self->[% op %](@_, [% c.paginator_pass_params(paginator) %]);
         [%- FOREACH param = c.paginator_result_key(paginator) %]
         push @{ [% c.paginator_accessor(param) %] }, @{ [% c.paginator_accessor(param) %] };
@@ -1024,14 +1024,14 @@ package [% inner_class %];
       return $result;
     } else {
       [%- IF (paginator.more_results.defined) %]
-      while ($result->[% paginator.more_results %]) {
+      while ([% c.paginator_accessor(paginator.more_results) %]) {
         $result = $self->[% op %](@_, [% c.paginator_pass_params(paginator) %]);
         [%- FOREACH param = c.paginator_result_key(paginator) %]
         $callback->($_ => '[% param %]') foreach (@{ [% c.paginator_accessor(param) %] });
         [%- END %]
       }
       [%- ELSE %]
-      while ($result->[% paginator.input_token %]) {
+      while ([% c.paginator_accessor(paginator.input_token) %]) {
         $result = $self->[% op %](@_, [% c.paginator_pass_params(paginator) %]);
         [%- FOREACH param = c.paginator_result_key(paginator) %]
         $callback->($_ => '[% param %]') foreach (@{ [% c.paginator_accessor(param) %] });

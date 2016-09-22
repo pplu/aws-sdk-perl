@@ -107,13 +107,13 @@ package Paws::Kinesis;
     my $result = $self->DescribeStream(@_);
 
     if (not defined $callback) {
-      while ($result->StreamDescription.HasMoreShards) {
+      while ($result->StreamDescription->HasMoreShards) {
         $result = $self->DescribeStream(@_, ExclusiveStartShardId => $result->StreamDescription->Shards[-1]->ShardId);
         push @{ $result->StreamDescription->Shards }, @{ $result->StreamDescription->Shards };
       }
       return $result;
     } else {
-      while ($result->StreamDescription.HasMoreShards) {
+      while ($result->StreamDescription->HasMoreShards) {
         $result = $self->DescribeStream(@_, ExclusiveStartShardId => $result->StreamDescription->Shards[-1]->ShardId);
         $callback->($_ => 'StreamDescription.Shards') foreach (@{ $result->StreamDescription->Shards });
       }

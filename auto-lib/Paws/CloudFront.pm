@@ -180,13 +180,13 @@ package Paws::CloudFront;
     my $result = $self->ListCloudFrontOriginAccessIdentities(@_);
 
     if (not defined $callback) {
-      while ($result->CloudFrontOriginAccessIdentityList.IsTruncated) {
+      while ($result->CloudFrontOriginAccessIdentityList->IsTruncated) {
         $result = $self->ListCloudFrontOriginAccessIdentities(@_, Marker => $result->CloudFrontOriginAccessIdentityList->NextMarker);
         push @{ $result->CloudFrontOriginAccessIdentityList->Items }, @{ $result->CloudFrontOriginAccessIdentityList->Items };
       }
       return $result;
     } else {
-      while ($result->CloudFrontOriginAccessIdentityList.IsTruncated) {
+      while ($result->CloudFrontOriginAccessIdentityList->IsTruncated) {
         $result = $self->ListCloudFrontOriginAccessIdentities(@_, Marker => $result->CloudFrontOriginAccessIdentityList->NextMarker);
         $callback->($_ => 'CloudFrontOriginAccessIdentityList.Items') foreach (@{ $result->CloudFrontOriginAccessIdentityList->Items });
       }
@@ -201,13 +201,13 @@ package Paws::CloudFront;
     my $result = $self->ListDistributions(@_);
 
     if (not defined $callback) {
-      while ($result->DistributionList.IsTruncated) {
+      while ($result->DistributionList->IsTruncated) {
         $result = $self->ListDistributions(@_, Marker => $result->DistributionList->NextMarker);
         push @{ $result->DistributionList->Items }, @{ $result->DistributionList->Items };
       }
       return $result;
     } else {
-      while ($result->DistributionList.IsTruncated) {
+      while ($result->DistributionList->IsTruncated) {
         $result = $self->ListDistributions(@_, Marker => $result->DistributionList->NextMarker);
         $callback->($_ => 'DistributionList.Items') foreach (@{ $result->DistributionList->Items });
       }
@@ -222,13 +222,13 @@ package Paws::CloudFront;
     my $result = $self->ListInvalidations(@_);
 
     if (not defined $callback) {
-      while ($result->InvalidationList.IsTruncated) {
+      while ($result->InvalidationList->IsTruncated) {
         $result = $self->ListInvalidations(@_, Marker => $result->InvalidationList->NextMarker);
         push @{ $result->InvalidationList->Items }, @{ $result->InvalidationList->Items };
       }
       return $result;
     } else {
-      while ($result->InvalidationList.IsTruncated) {
+      while ($result->InvalidationList->IsTruncated) {
         $result = $self->ListInvalidations(@_, Marker => $result->InvalidationList->NextMarker);
         $callback->($_ => 'InvalidationList.Items') foreach (@{ $result->InvalidationList->Items });
       }
@@ -243,13 +243,13 @@ package Paws::CloudFront;
     my $result = $self->ListStreamingDistributions(@_);
 
     if (not defined $callback) {
-      while ($result->StreamingDistributionList.IsTruncated) {
+      while ($result->StreamingDistributionList->IsTruncated) {
         $result = $self->ListStreamingDistributions(@_, Marker => $result->StreamingDistributionList->NextMarker);
         push @{ $result->StreamingDistributionList->Items }, @{ $result->StreamingDistributionList->Items };
       }
       return $result;
     } else {
-      while ($result->StreamingDistributionList.IsTruncated) {
+      while ($result->StreamingDistributionList->IsTruncated) {
         $result = $self->ListStreamingDistributions(@_, Marker => $result->StreamingDistributionList->NextMarker);
         $callback->($_ => 'StreamingDistributionList.Items') foreach (@{ $result->StreamingDistributionList->Items });
       }
