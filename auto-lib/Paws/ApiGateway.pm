@@ -467,14 +467,11 @@ package Paws::ApiGateway;
     my $result = $self->GetApiKeys(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ items } = $result->items;
-
       while ($result->position) {
         $result = $self->GetApiKeys(@_, position => $result->position);
         push @{ $result->items }, @{ $result->items };
       }
-      $self->new_with_coercions(Paws::ApiGateway::GetApiKeys->_returns, %$params);
+      return $result;
     } else {
       while ($result->position) {
         $result = $self->GetApiKeys(@_, position => $result->position);
@@ -491,14 +488,11 @@ package Paws::ApiGateway;
     my $result = $self->GetBasePathMappings(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ items } = $result->items;
-
       while ($result->position) {
         $result = $self->GetBasePathMappings(@_, position => $result->position);
         push @{ $result->items }, @{ $result->items };
       }
-      $self->new_with_coercions(Paws::ApiGateway::GetBasePathMappings->_returns, %$params);
+      return $result;
     } else {
       while ($result->position) {
         $result = $self->GetBasePathMappings(@_, position => $result->position);
@@ -515,14 +509,11 @@ package Paws::ApiGateway;
     my $result = $self->GetClientCertificates(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ items } = $result->items;
-
       while ($result->position) {
         $result = $self->GetClientCertificates(@_, position => $result->position);
         push @{ $result->items }, @{ $result->items };
       }
-      $self->new_with_coercions(Paws::ApiGateway::GetClientCertificates->_returns, %$params);
+      return $result;
     } else {
       while ($result->position) {
         $result = $self->GetClientCertificates(@_, position => $result->position);
@@ -539,14 +530,11 @@ package Paws::ApiGateway;
     my $result = $self->GetDeployments(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ items } = $result->items;
-
       while ($result->position) {
         $result = $self->GetDeployments(@_, position => $result->position);
         push @{ $result->items }, @{ $result->items };
       }
-      $self->new_with_coercions(Paws::ApiGateway::GetDeployments->_returns, %$params);
+      return $result;
     } else {
       while ($result->position) {
         $result = $self->GetDeployments(@_, position => $result->position);
@@ -563,14 +551,11 @@ package Paws::ApiGateway;
     my $result = $self->GetDomainNames(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ items } = $result->items;
-
       while ($result->position) {
         $result = $self->GetDomainNames(@_, position => $result->position);
         push @{ $result->items }, @{ $result->items };
       }
-      $self->new_with_coercions(Paws::ApiGateway::GetDomainNames->_returns, %$params);
+      return $result;
     } else {
       while ($result->position) {
         $result = $self->GetDomainNames(@_, position => $result->position);
@@ -587,14 +572,11 @@ package Paws::ApiGateway;
     my $result = $self->GetModels(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ items } = $result->items;
-
       while ($result->position) {
         $result = $self->GetModels(@_, position => $result->position);
         push @{ $result->items }, @{ $result->items };
       }
-      $self->new_with_coercions(Paws::ApiGateway::GetModels->_returns, %$params);
+      return $result;
     } else {
       while ($result->position) {
         $result = $self->GetModels(@_, position => $result->position);
@@ -611,14 +593,11 @@ package Paws::ApiGateway;
     my $result = $self->GetResources(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ items } = $result->items;
-
       while ($result->position) {
         $result = $self->GetResources(@_, position => $result->position);
         push @{ $result->items }, @{ $result->items };
       }
-      $self->new_with_coercions(Paws::ApiGateway::GetResources->_returns, %$params);
+      return $result;
     } else {
       while ($result->position) {
         $result = $self->GetResources(@_, position => $result->position);
@@ -635,14 +614,11 @@ package Paws::ApiGateway;
     my $result = $self->GetRestApis(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ items } = $result->items;
-
       while ($result->position) {
         $result = $self->GetRestApis(@_, position => $result->position);
         push @{ $result->items }, @{ $result->items };
       }
-      $self->new_with_coercions(Paws::ApiGateway::GetRestApis->_returns, %$params);
+      return $result;
     } else {
       while ($result->position) {
         $result = $self->GetRestApis(@_, position => $result->position);

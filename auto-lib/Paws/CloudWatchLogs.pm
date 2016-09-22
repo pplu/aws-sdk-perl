@@ -147,14 +147,11 @@ package Paws::CloudWatchLogs;
     my $result = $self->DescribeDestinations(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ destinations } = $result->destinations;
-
       while ($result->nextToken) {
         $result = $self->DescribeDestinations(@_, nextToken => $result->nextToken);
         push @{ $result->destinations }, @{ $result->destinations };
       }
-      $self->new_with_coercions(Paws::CloudWatchLogs::DescribeDestinations->_returns, %$params);
+      return $result;
     } else {
       while ($result->nextToken) {
         $result = $self->DescribeDestinations(@_, nextToken => $result->nextToken);
@@ -171,14 +168,11 @@ package Paws::CloudWatchLogs;
     my $result = $self->DescribeLogGroups(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ logGroups } = $result->logGroups;
-
       while ($result->nextToken) {
         $result = $self->DescribeLogGroups(@_, nextToken => $result->nextToken);
         push @{ $result->logGroups }, @{ $result->logGroups };
       }
-      $self->new_with_coercions(Paws::CloudWatchLogs::DescribeLogGroups->_returns, %$params);
+      return $result;
     } else {
       while ($result->nextToken) {
         $result = $self->DescribeLogGroups(@_, nextToken => $result->nextToken);
@@ -195,14 +189,11 @@ package Paws::CloudWatchLogs;
     my $result = $self->DescribeLogStreams(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ logStreams } = $result->logStreams;
-
       while ($result->nextToken) {
         $result = $self->DescribeLogStreams(@_, nextToken => $result->nextToken);
         push @{ $result->logStreams }, @{ $result->logStreams };
       }
-      $self->new_with_coercions(Paws::CloudWatchLogs::DescribeLogStreams->_returns, %$params);
+      return $result;
     } else {
       while ($result->nextToken) {
         $result = $self->DescribeLogStreams(@_, nextToken => $result->nextToken);
@@ -219,14 +210,11 @@ package Paws::CloudWatchLogs;
     my $result = $self->DescribeMetricFilters(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ metricFilters } = $result->metricFilters;
-
       while ($result->nextToken) {
         $result = $self->DescribeMetricFilters(@_, nextToken => $result->nextToken);
         push @{ $result->metricFilters }, @{ $result->metricFilters };
       }
-      $self->new_with_coercions(Paws::CloudWatchLogs::DescribeMetricFilters->_returns, %$params);
+      return $result;
     } else {
       while ($result->nextToken) {
         $result = $self->DescribeMetricFilters(@_, nextToken => $result->nextToken);
@@ -243,14 +231,11 @@ package Paws::CloudWatchLogs;
     my $result = $self->DescribeSubscriptionFilters(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ subscriptionFilters } = $result->subscriptionFilters;
-
       while ($result->nextToken) {
         $result = $self->DescribeSubscriptionFilters(@_, nextToken => $result->nextToken);
         push @{ $result->subscriptionFilters }, @{ $result->subscriptionFilters };
       }
-      $self->new_with_coercions(Paws::CloudWatchLogs::DescribeSubscriptionFilters->_returns, %$params);
+      return $result;
     } else {
       while ($result->nextToken) {
         $result = $self->DescribeSubscriptionFilters(@_, nextToken => $result->nextToken);
@@ -267,16 +252,12 @@ package Paws::CloudWatchLogs;
     my $result = $self->FilterLogEvents(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ events } = $result->events;
-      $params->{ searchedLogStreams } = $result->searchedLogStreams;
-
       while ($result->nextToken) {
         $result = $self->FilterLogEvents(@_, nextToken => $result->nextToken);
         push @{ $result->events }, @{ $result->events };
         push @{ $result->searchedLogStreams }, @{ $result->searchedLogStreams };
       }
-      $self->new_with_coercions(Paws::CloudWatchLogs::FilterLogEvents->_returns, %$params);
+      return $result;
     } else {
       while ($result->nextToken) {
         $result = $self->FilterLogEvents(@_, nextToken => $result->nextToken);

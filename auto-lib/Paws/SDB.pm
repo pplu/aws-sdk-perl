@@ -89,14 +89,11 @@ package Paws::SDB;
     my $result = $self->ListDomains(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ DomainNames } = $result->DomainNames;
-
       while ($result->NextToken) {
         $result = $self->ListDomains(@_, NextToken => $result->NextToken);
         push @{ $result->DomainNames }, @{ $result->DomainNames };
       }
-      $self->new_with_coercions(Paws::SDB::ListDomains->_returns, %$params);
+      return $result;
     } else {
       while ($result->NextToken) {
         $result = $self->ListDomains(@_, NextToken => $result->NextToken);
@@ -113,14 +110,11 @@ package Paws::SDB;
     my $result = $self->Select(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ Items } = $result->Items;
-
       while ($result->NextToken) {
         $result = $self->Select(@_, NextToken => $result->NextToken);
         push @{ $result->Items }, @{ $result->Items };
       }
-      $self->new_with_coercions(Paws::SDB::Select->_returns, %$params);
+      return $result;
     } else {
       while ($result->NextToken) {
         $result = $self->Select(@_, NextToken => $result->NextToken);

@@ -161,14 +161,11 @@ package Paws::ELB;
     my $result = $self->DescribeLoadBalancers(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ LoadBalancerDescriptions } = $result->LoadBalancerDescriptions;
-
       while ($result->Marker) {
         $result = $self->DescribeLoadBalancers(@_, Marker => $result->NextMarker);
         push @{ $result->LoadBalancerDescriptions }, @{ $result->LoadBalancerDescriptions };
       }
-      $self->new_with_coercions(Paws::ELB::DescribeLoadBalancers->_returns, %$params);
+      return $result;
     } else {
       while ($result->Marker) {
         $result = $self->DescribeLoadBalancers(@_, Marker => $result->NextMarker);

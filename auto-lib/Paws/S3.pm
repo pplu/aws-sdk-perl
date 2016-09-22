@@ -392,16 +392,12 @@ package Paws::S3;
     my $result = $self->ListMultipartUploads(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ Uploads } = $result->Uploads;
-      $params->{ CommonPrefixes } = $result->CommonPrefixes;
-
       while ($result->IsTruncated) {
         $result = $self->ListMultipartUploads(@_, KeyMarker => $result->NextKeyMarker, UploadIdMarker => $result->NextUploadIdMarker);
-        push @{ $params->{ Uploads } }, @{ $result->Uploads };
-        push @{ $params->{ CommonPrefixes } }, @{ $result->CommonPrefixes };
+        push @{ $result->Uploads }, @{ $result->Uploads };
+        push @{ $result->CommonPrefixes }, @{ $result->CommonPrefixes };
       }
-      $self->new_with_coercions(Paws::S3::ListMultipartUploads->_returns, %$params);
+      return $result;
     } else {
       while ($result->IsTruncated) {
         $result = $self->ListMultipartUploads(@_, KeyMarker => $result->NextKeyMarker, UploadIdMarker => $result->NextUploadIdMarker);
@@ -419,16 +415,12 @@ package Paws::S3;
     my $result = $self->ListObjects(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ Contents } = $result->Contents;
-      $params->{ CommonPrefixes } = $result->CommonPrefixes;
-
       while ($result->IsTruncated) {
         $result = $self->ListObjects(@_, Marker => $result->NextMarker || ( (defined $result->Contents->[-1]) ? $result->Contents->[-1]->Key : undef ));
-        push @{ $params->{ Contents } }, @{ $result->Contents };
-        push @{ $params->{ CommonPrefixes } }, @{ $result->CommonPrefixes };
+        push @{ $result->Contents }, @{ $result->Contents };
+        push @{ $result->CommonPrefixes }, @{ $result->CommonPrefixes };
       }
-      $self->new_with_coercions(Paws::S3::ListObjects->_returns, %$params);
+      return $result;
     } else {
       while ($result->IsTruncated) {
         $result = $self->ListObjects(@_, Marker => $result->NextMarker || ( (defined $result->Contents->[-1]) ? $result->Contents->[-1]->Key : undef ));
@@ -446,16 +438,12 @@ package Paws::S3;
     my $result = $self->ListObjectsV2(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ Contents } = $result->Contents;
-      $params->{ CommonPrefixes } = $result->CommonPrefixes;
-
       while ($result->IsTruncated) {
         $result = $self->ListObjectsV2(@_, ContinuationToken => $result->NextContinuationToken);
-        push @{ $params->{ Contents } }, @{ $result->Contents };
-        push @{ $params->{ CommonPrefixes } }, @{ $result->CommonPrefixes };
+        push @{ $result->Contents }, @{ $result->Contents };
+        push @{ $result->CommonPrefixes }, @{ $result->CommonPrefixes };
       }
-      $self->new_with_coercions(Paws::S3::ListObjectsV2->_returns, %$params);
+      return $result;
     } else {
       while ($result->IsTruncated) {
         $result = $self->ListObjectsV2(@_, ContinuationToken => $result->NextContinuationToken);
@@ -473,18 +461,13 @@ package Paws::S3;
     my $result = $self->ListObjectVersions(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ Versions } = $result->Versions;
-      $params->{ DeleteMarkers } = $result->DeleteMarkers;
-      $params->{ CommonPrefixes } = $result->CommonPrefixes;
-
       while ($result->IsTruncated) {
         $result = $self->ListObjectVersions(@_, KeyMarker => $result->NextKeyMarker, VersionIdMarker => $result->NextVersionIdMarker);
-        push @{ $params->{ Versions } }, @{ $result->Versions };
-        push @{ $params->{ DeleteMarkers } }, @{ $result->DeleteMarkers };
-        push @{ $params->{ CommonPrefixes } }, @{ $result->CommonPrefixes };
+        push @{ $result->Versions }, @{ $result->Versions };
+        push @{ $result->DeleteMarkers }, @{ $result->DeleteMarkers };
+        push @{ $result->CommonPrefixes }, @{ $result->CommonPrefixes };
       }
-      $self->new_with_coercions(Paws::S3::ListObjectVersions->_returns, %$params);
+      return $result;
     } else {
       while ($result->IsTruncated) {
         $result = $self->ListObjectVersions(@_, KeyMarker => $result->NextKeyMarker, VersionIdMarker => $result->NextVersionIdMarker);
@@ -503,14 +486,11 @@ package Paws::S3;
     my $result = $self->ListParts(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ Parts } = $result->Parts;
-
       while ($result->IsTruncated) {
         $result = $self->ListParts(@_, PartNumberMarker => $result->NextPartNumberMarker);
-        push @{ $params->{ Parts } }, @{ $result->Parts };
+        push @{ $result->Parts }, @{ $result->Parts };
       }
-      $self->new_with_coercions(Paws::S3::ListParts->_returns, %$params);
+      return $result;
     } else {
       while ($result->IsTruncated) {
         $result = $self->ListParts(@_, PartNumberMarker => $result->NextPartNumberMarker);

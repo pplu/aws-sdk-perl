@@ -69,14 +69,11 @@ package Paws::ImportExport;
     my $result = $self->ListJobs(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ Jobs } = $result->Jobs;
-
       while ($result->IsTruncated) {
         $result = $self->ListJobs(@_, Marker => $result->Jobs[-1]->JobId);
-        push @{ $params->{ Jobs } }, @{ $result->Jobs };
+        push @{ $result->Jobs }, @{ $result->Jobs };
       }
-      $self->new_with_coercions(Paws::ImportExport::ListJobs->_returns, %$params);
+      return $result;
     } else {
       while ($result->IsTruncated) {
         $result = $self->ListJobs(@_, Marker => $result->Jobs[-1]->JobId);

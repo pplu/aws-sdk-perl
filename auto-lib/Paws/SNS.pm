@@ -171,14 +171,11 @@ package Paws::SNS;
     my $result = $self->ListEndpointsByPlatformApplication(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ Endpoints } = $result->Endpoints;
-
       while ($result->NextToken) {
         $result = $self->ListEndpointsByPlatformApplication(@_, NextToken => $result->NextToken);
         push @{ $result->Endpoints }, @{ $result->Endpoints };
       }
-      $self->new_with_coercions(Paws::SNS::ListEndpointsByPlatformApplication->_returns, %$params);
+      return $result;
     } else {
       while ($result->NextToken) {
         $result = $self->ListEndpointsByPlatformApplication(@_, NextToken => $result->NextToken);
@@ -195,14 +192,11 @@ package Paws::SNS;
     my $result = $self->ListPlatformApplications(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ PlatformApplications } = $result->PlatformApplications;
-
       while ($result->NextToken) {
         $result = $self->ListPlatformApplications(@_, NextToken => $result->NextToken);
         push @{ $result->PlatformApplications }, @{ $result->PlatformApplications };
       }
-      $self->new_with_coercions(Paws::SNS::ListPlatformApplications->_returns, %$params);
+      return $result;
     } else {
       while ($result->NextToken) {
         $result = $self->ListPlatformApplications(@_, NextToken => $result->NextToken);
@@ -219,14 +213,11 @@ package Paws::SNS;
     my $result = $self->ListSubscriptions(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ Subscriptions } = $result->Subscriptions;
-
       while ($result->NextToken) {
         $result = $self->ListSubscriptions(@_, NextToken => $result->NextToken);
         push @{ $result->Subscriptions }, @{ $result->Subscriptions };
       }
-      $self->new_with_coercions(Paws::SNS::ListSubscriptions->_returns, %$params);
+      return $result;
     } else {
       while ($result->NextToken) {
         $result = $self->ListSubscriptions(@_, NextToken => $result->NextToken);
@@ -243,14 +234,11 @@ package Paws::SNS;
     my $result = $self->ListSubscriptionsByTopic(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ Subscriptions } = $result->Subscriptions;
-
       while ($result->NextToken) {
         $result = $self->ListSubscriptionsByTopic(@_, NextToken => $result->NextToken);
         push @{ $result->Subscriptions }, @{ $result->Subscriptions };
       }
-      $self->new_with_coercions(Paws::SNS::ListSubscriptionsByTopic->_returns, %$params);
+      return $result;
     } else {
       while ($result->NextToken) {
         $result = $self->ListSubscriptionsByTopic(@_, NextToken => $result->NextToken);
@@ -267,14 +255,11 @@ package Paws::SNS;
     my $result = $self->ListTopics(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ Topics } = $result->Topics;
-
       while ($result->NextToken) {
         $result = $self->ListTopics(@_, NextToken => $result->NextToken);
         push @{ $result->Topics }, @{ $result->Topics };
       }
-      $self->new_with_coercions(Paws::SNS::ListTopics->_returns, %$params);
+      return $result;
     } else {
       while ($result->NextToken) {
         $result = $self->ListTopics(@_, NextToken => $result->NextToken);

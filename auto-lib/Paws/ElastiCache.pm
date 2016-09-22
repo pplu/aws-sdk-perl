@@ -211,14 +211,11 @@ package Paws::ElastiCache;
     my $result = $self->DescribeCacheClusters(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ CacheClusters } = $result->CacheClusters;
-
       while ($result->Marker) {
         $result = $self->DescribeCacheClusters(@_, Marker => $result->Marker);
         push @{ $result->CacheClusters }, @{ $result->CacheClusters };
       }
-      $self->new_with_coercions(Paws::ElastiCache::DescribeCacheClusters->_returns, %$params);
+      return $result;
     } else {
       while ($result->Marker) {
         $result = $self->DescribeCacheClusters(@_, Marker => $result->Marker);
@@ -235,14 +232,11 @@ package Paws::ElastiCache;
     my $result = $self->DescribeCacheEngineVersions(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ CacheEngineVersions } = $result->CacheEngineVersions;
-
       while ($result->Marker) {
         $result = $self->DescribeCacheEngineVersions(@_, Marker => $result->Marker);
         push @{ $result->CacheEngineVersions }, @{ $result->CacheEngineVersions };
       }
-      $self->new_with_coercions(Paws::ElastiCache::DescribeCacheEngineVersions->_returns, %$params);
+      return $result;
     } else {
       while ($result->Marker) {
         $result = $self->DescribeCacheEngineVersions(@_, Marker => $result->Marker);
@@ -259,14 +253,11 @@ package Paws::ElastiCache;
     my $result = $self->DescribeCacheParameterGroups(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ CacheParameterGroups } = $result->CacheParameterGroups;
-
       while ($result->Marker) {
         $result = $self->DescribeCacheParameterGroups(@_, Marker => $result->Marker);
         push @{ $result->CacheParameterGroups }, @{ $result->CacheParameterGroups };
       }
-      $self->new_with_coercions(Paws::ElastiCache::DescribeCacheParameterGroups->_returns, %$params);
+      return $result;
     } else {
       while ($result->Marker) {
         $result = $self->DescribeCacheParameterGroups(@_, Marker => $result->Marker);
@@ -283,14 +274,11 @@ package Paws::ElastiCache;
     my $result = $self->DescribeCacheParameters(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ Parameters } = $result->Parameters;
-
       while ($result->Marker) {
         $result = $self->DescribeCacheParameters(@_, Marker => $result->Marker);
         push @{ $result->Parameters }, @{ $result->Parameters };
       }
-      $self->new_with_coercions(Paws::ElastiCache::DescribeCacheParameters->_returns, %$params);
+      return $result;
     } else {
       while ($result->Marker) {
         $result = $self->DescribeCacheParameters(@_, Marker => $result->Marker);
@@ -307,14 +295,11 @@ package Paws::ElastiCache;
     my $result = $self->DescribeCacheSecurityGroups(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ CacheSecurityGroups } = $result->CacheSecurityGroups;
-
       while ($result->Marker) {
         $result = $self->DescribeCacheSecurityGroups(@_, Marker => $result->Marker);
         push @{ $result->CacheSecurityGroups }, @{ $result->CacheSecurityGroups };
       }
-      $self->new_with_coercions(Paws::ElastiCache::DescribeCacheSecurityGroups->_returns, %$params);
+      return $result;
     } else {
       while ($result->Marker) {
         $result = $self->DescribeCacheSecurityGroups(@_, Marker => $result->Marker);
@@ -331,14 +316,11 @@ package Paws::ElastiCache;
     my $result = $self->DescribeCacheSubnetGroups(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ CacheSubnetGroups } = $result->CacheSubnetGroups;
-
       while ($result->Marker) {
         $result = $self->DescribeCacheSubnetGroups(@_, Marker => $result->Marker);
         push @{ $result->CacheSubnetGroups }, @{ $result->CacheSubnetGroups };
       }
-      $self->new_with_coercions(Paws::ElastiCache::DescribeCacheSubnetGroups->_returns, %$params);
+      return $result;
     } else {
       while ($result->Marker) {
         $result = $self->DescribeCacheSubnetGroups(@_, Marker => $result->Marker);
@@ -355,14 +337,11 @@ package Paws::ElastiCache;
     my $result = $self->DescribeEngineDefaultParameters(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ EngineDefaults.Parameters } = $result->EngineDefaults->Parameters;
-
       while ($result->Marker) {
         $result = $self->DescribeEngineDefaultParameters(@_, Marker => $result->EngineDefaults->Marker);
         push @{ $result->EngineDefaults->Parameters }, @{ $result->EngineDefaults->Parameters };
       }
-      $self->new_with_coercions(Paws::ElastiCache::DescribeEngineDefaultParameters->_returns, %$params);
+      return $result;
     } else {
       while ($result->Marker) {
         $result = $self->DescribeEngineDefaultParameters(@_, Marker => $result->EngineDefaults->Marker);
@@ -379,14 +358,11 @@ package Paws::ElastiCache;
     my $result = $self->DescribeEvents(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ Events } = $result->Events;
-
       while ($result->Marker) {
         $result = $self->DescribeEvents(@_, Marker => $result->Marker);
         push @{ $result->Events }, @{ $result->Events };
       }
-      $self->new_with_coercions(Paws::ElastiCache::DescribeEvents->_returns, %$params);
+      return $result;
     } else {
       while ($result->Marker) {
         $result = $self->DescribeEvents(@_, Marker => $result->Marker);
@@ -403,14 +379,11 @@ package Paws::ElastiCache;
     my $result = $self->DescribeReplicationGroups(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ ReplicationGroups } = $result->ReplicationGroups;
-
       while ($result->Marker) {
         $result = $self->DescribeReplicationGroups(@_, Marker => $result->Marker);
         push @{ $result->ReplicationGroups }, @{ $result->ReplicationGroups };
       }
-      $self->new_with_coercions(Paws::ElastiCache::DescribeReplicationGroups->_returns, %$params);
+      return $result;
     } else {
       while ($result->Marker) {
         $result = $self->DescribeReplicationGroups(@_, Marker => $result->Marker);
@@ -427,14 +400,11 @@ package Paws::ElastiCache;
     my $result = $self->DescribeReservedCacheNodes(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ ReservedCacheNodes } = $result->ReservedCacheNodes;
-
       while ($result->Marker) {
         $result = $self->DescribeReservedCacheNodes(@_, Marker => $result->Marker);
         push @{ $result->ReservedCacheNodes }, @{ $result->ReservedCacheNodes };
       }
-      $self->new_with_coercions(Paws::ElastiCache::DescribeReservedCacheNodes->_returns, %$params);
+      return $result;
     } else {
       while ($result->Marker) {
         $result = $self->DescribeReservedCacheNodes(@_, Marker => $result->Marker);
@@ -451,14 +421,11 @@ package Paws::ElastiCache;
     my $result = $self->DescribeReservedCacheNodesOfferings(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ ReservedCacheNodesOfferings } = $result->ReservedCacheNodesOfferings;
-
       while ($result->Marker) {
         $result = $self->DescribeReservedCacheNodesOfferings(@_, Marker => $result->Marker);
         push @{ $result->ReservedCacheNodesOfferings }, @{ $result->ReservedCacheNodesOfferings };
       }
-      $self->new_with_coercions(Paws::ElastiCache::DescribeReservedCacheNodesOfferings->_returns, %$params);
+      return $result;
     } else {
       while ($result->Marker) {
         $result = $self->DescribeReservedCacheNodesOfferings(@_, Marker => $result->Marker);
@@ -475,14 +442,11 @@ package Paws::ElastiCache;
     my $result = $self->DescribeSnapshots(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ Snapshots } = $result->Snapshots;
-
       while ($result->Marker) {
         $result = $self->DescribeSnapshots(@_, Marker => $result->Marker);
         push @{ $result->Snapshots }, @{ $result->Snapshots };
       }
-      $self->new_with_coercions(Paws::ElastiCache::DescribeSnapshots->_returns, %$params);
+      return $result;
     } else {
       while ($result->Marker) {
         $result = $self->DescribeSnapshots(@_, Marker => $result->Marker);

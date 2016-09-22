@@ -157,14 +157,11 @@ package Paws::ECS;
     my $result = $self->ListClusters(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ clusterArns } = $result->clusterArns;
-
       while ($result->nextToken) {
         $result = $self->ListClusters(@_, nextToken => $result->nextToken);
         push @{ $result->clusterArns }, @{ $result->clusterArns };
       }
-      $self->new_with_coercions(Paws::ECS::ListClusters->_returns, %$params);
+      return $result;
     } else {
       while ($result->nextToken) {
         $result = $self->ListClusters(@_, nextToken => $result->nextToken);
@@ -181,14 +178,11 @@ package Paws::ECS;
     my $result = $self->ListContainerInstances(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ containerInstanceArns } = $result->containerInstanceArns;
-
       while ($result->nextToken) {
         $result = $self->ListContainerInstances(@_, nextToken => $result->nextToken);
         push @{ $result->containerInstanceArns }, @{ $result->containerInstanceArns };
       }
-      $self->new_with_coercions(Paws::ECS::ListContainerInstances->_returns, %$params);
+      return $result;
     } else {
       while ($result->nextToken) {
         $result = $self->ListContainerInstances(@_, nextToken => $result->nextToken);
@@ -205,14 +199,11 @@ package Paws::ECS;
     my $result = $self->ListServices(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ serviceArns } = $result->serviceArns;
-
       while ($result->nextToken) {
         $result = $self->ListServices(@_, nextToken => $result->nextToken);
         push @{ $result->serviceArns }, @{ $result->serviceArns };
       }
-      $self->new_with_coercions(Paws::ECS::ListServices->_returns, %$params);
+      return $result;
     } else {
       while ($result->nextToken) {
         $result = $self->ListServices(@_, nextToken => $result->nextToken);
@@ -229,14 +220,11 @@ package Paws::ECS;
     my $result = $self->ListTaskDefinitionFamilies(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ families } = $result->families;
-
       while ($result->nextToken) {
         $result = $self->ListTaskDefinitionFamilies(@_, nextToken => $result->nextToken);
         push @{ $result->families }, @{ $result->families };
       }
-      $self->new_with_coercions(Paws::ECS::ListTaskDefinitionFamilies->_returns, %$params);
+      return $result;
     } else {
       while ($result->nextToken) {
         $result = $self->ListTaskDefinitionFamilies(@_, nextToken => $result->nextToken);
@@ -253,14 +241,11 @@ package Paws::ECS;
     my $result = $self->ListTaskDefinitions(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ taskDefinitionArns } = $result->taskDefinitionArns;
-
       while ($result->nextToken) {
         $result = $self->ListTaskDefinitions(@_, nextToken => $result->nextToken);
         push @{ $result->taskDefinitionArns }, @{ $result->taskDefinitionArns };
       }
-      $self->new_with_coercions(Paws::ECS::ListTaskDefinitions->_returns, %$params);
+      return $result;
     } else {
       while ($result->nextToken) {
         $result = $self->ListTaskDefinitions(@_, nextToken => $result->nextToken);
@@ -277,14 +262,11 @@ package Paws::ECS;
     my $result = $self->ListTasks(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ taskArns } = $result->taskArns;
-
       while ($result->nextToken) {
         $result = $self->ListTasks(@_, nextToken => $result->nextToken);
         push @{ $result->taskArns }, @{ $result->taskArns };
       }
-      $self->new_with_coercions(Paws::ECS::ListTasks->_returns, %$params);
+      return $result;
     } else {
       while ($result->nextToken) {
         $result = $self->ListTasks(@_, nextToken => $result->nextToken);

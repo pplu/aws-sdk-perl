@@ -9,8 +9,8 @@ package Paws::DynamoDB;
     { base => '0.05', type => 'exponential', growth_factor => 2 }
   });
   has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
-       sub { $_[0]->code eq 'Crc32Error' },
        sub { defined $_[0]->http_status and $_[0]->http_status == 400 and $_[0]->code eq 'ProvisionedThroughputExceededException' },
+       sub { $_[0]->code eq 'Crc32Error' },
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
@@ -118,14 +118,11 @@ package Paws::DynamoDB;
     my $result = $self->ListTables(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ TableNames } = $result->TableNames;
-
       while ($result->ExclusiveStartTableName) {
         $result = $self->ListTables(@_, ExclusiveStartTableName => $result->LastEvaluatedTableName);
         push @{ $result->TableNames }, @{ $result->TableNames };
       }
-      $self->new_with_coercions(Paws::DynamoDB::ListTables->_returns, %$params);
+      return $result;
     } else {
       while ($result->ExclusiveStartTableName) {
         $result = $self->ListTables(@_, ExclusiveStartTableName => $result->LastEvaluatedTableName);
@@ -142,18 +139,13 @@ package Paws::DynamoDB;
     my $result = $self->Query(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ Items } = $result->Items;
-      $params->{ Count } = $result->Count;
-      $params->{ ScannedCount } = $result->ScannedCount;
-
       while ($result->ExclusiveStartKey) {
         $result = $self->Query(@_, ExclusiveStartKey => $result->LastEvaluatedKey);
         push @{ $result->Items }, @{ $result->Items };
         push @{ $result->Count }, @{ $result->Count };
         push @{ $result->ScannedCount }, @{ $result->ScannedCount };
       }
-      $self->new_with_coercions(Paws::DynamoDB::Query->_returns, %$params);
+      return $result;
     } else {
       while ($result->ExclusiveStartKey) {
         $result = $self->Query(@_, ExclusiveStartKey => $result->LastEvaluatedKey);
@@ -172,18 +164,13 @@ package Paws::DynamoDB;
     my $result = $self->Scan(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ Items } = $result->Items;
-      $params->{ Count } = $result->Count;
-      $params->{ ScannedCount } = $result->ScannedCount;
-
       while ($result->ExclusiveStartKey) {
         $result = $self->Scan(@_, ExclusiveStartKey => $result->LastEvaluatedKey);
         push @{ $result->Items }, @{ $result->Items };
         push @{ $result->Count }, @{ $result->Count };
         push @{ $result->ScannedCount }, @{ $result->ScannedCount };
       }
-      $self->new_with_coercions(Paws::DynamoDB::Scan->_returns, %$params);
+      return $result;
     } else {
       while ($result->ExclusiveStartKey) {
         $result = $self->Scan(@_, ExclusiveStartKey => $result->LastEvaluatedKey);

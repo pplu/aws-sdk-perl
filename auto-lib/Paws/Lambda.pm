@@ -142,14 +142,11 @@ package Paws::Lambda;
     my $result = $self->ListEventSourceMappings(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ EventSourceMappings } = $result->EventSourceMappings;
-
       while ($result->Marker) {
         $result = $self->ListEventSourceMappings(@_, Marker => $result->NextMarker);
         push @{ $result->EventSourceMappings }, @{ $result->EventSourceMappings };
       }
-      $self->new_with_coercions(Paws::Lambda::ListEventSourceMappings->_returns, %$params);
+      return $result;
     } else {
       while ($result->Marker) {
         $result = $self->ListEventSourceMappings(@_, Marker => $result->NextMarker);
@@ -166,14 +163,11 @@ package Paws::Lambda;
     my $result = $self->ListFunctions(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ Functions } = $result->Functions;
-
       while ($result->Marker) {
         $result = $self->ListFunctions(@_, Marker => $result->NextMarker);
         push @{ $result->Functions }, @{ $result->Functions };
       }
-      $self->new_with_coercions(Paws::Lambda::ListFunctions->_returns, %$params);
+      return $result;
     } else {
       while ($result->Marker) {
         $result = $self->ListFunctions(@_, Marker => $result->NextMarker);

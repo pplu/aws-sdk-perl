@@ -281,14 +281,11 @@ package Paws::AutoScaling;
     my $result = $self->DescribeAutoScalingGroups(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ AutoScalingGroups } = $result->AutoScalingGroups;
-
       while ($result->NextToken) {
         $result = $self->DescribeAutoScalingGroups(@_, NextToken => $result->NextToken);
         push @{ $result->AutoScalingGroups }, @{ $result->AutoScalingGroups };
       }
-      $self->new_with_coercions(Paws::AutoScaling::DescribeAutoScalingGroups->_returns, %$params);
+      return $result;
     } else {
       while ($result->NextToken) {
         $result = $self->DescribeAutoScalingGroups(@_, NextToken => $result->NextToken);
@@ -305,14 +302,11 @@ package Paws::AutoScaling;
     my $result = $self->DescribeAutoScalingInstances(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ AutoScalingInstances } = $result->AutoScalingInstances;
-
       while ($result->NextToken) {
         $result = $self->DescribeAutoScalingInstances(@_, NextToken => $result->NextToken);
         push @{ $result->AutoScalingInstances }, @{ $result->AutoScalingInstances };
       }
-      $self->new_with_coercions(Paws::AutoScaling::DescribeAutoScalingInstances->_returns, %$params);
+      return $result;
     } else {
       while ($result->NextToken) {
         $result = $self->DescribeAutoScalingInstances(@_, NextToken => $result->NextToken);
@@ -329,14 +323,11 @@ package Paws::AutoScaling;
     my $result = $self->DescribeLaunchConfigurations(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ LaunchConfigurations } = $result->LaunchConfigurations;
-
       while ($result->NextToken) {
         $result = $self->DescribeLaunchConfigurations(@_, NextToken => $result->NextToken);
         push @{ $result->LaunchConfigurations }, @{ $result->LaunchConfigurations };
       }
-      $self->new_with_coercions(Paws::AutoScaling::DescribeLaunchConfigurations->_returns, %$params);
+      return $result;
     } else {
       while ($result->NextToken) {
         $result = $self->DescribeLaunchConfigurations(@_, NextToken => $result->NextToken);
@@ -353,14 +344,11 @@ package Paws::AutoScaling;
     my $result = $self->DescribeNotificationConfigurations(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ NotificationConfigurations } = $result->NotificationConfigurations;
-
       while ($result->NextToken) {
         $result = $self->DescribeNotificationConfigurations(@_, NextToken => $result->NextToken);
         push @{ $result->NotificationConfigurations }, @{ $result->NotificationConfigurations };
       }
-      $self->new_with_coercions(Paws::AutoScaling::DescribeNotificationConfigurations->_returns, %$params);
+      return $result;
     } else {
       while ($result->NextToken) {
         $result = $self->DescribeNotificationConfigurations(@_, NextToken => $result->NextToken);
@@ -377,14 +365,11 @@ package Paws::AutoScaling;
     my $result = $self->DescribePolicies(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ ScalingPolicies } = $result->ScalingPolicies;
-
       while ($result->NextToken) {
         $result = $self->DescribePolicies(@_, NextToken => $result->NextToken);
         push @{ $result->ScalingPolicies }, @{ $result->ScalingPolicies };
       }
-      $self->new_with_coercions(Paws::AutoScaling::DescribePolicies->_returns, %$params);
+      return $result;
     } else {
       while ($result->NextToken) {
         $result = $self->DescribePolicies(@_, NextToken => $result->NextToken);
@@ -401,14 +386,11 @@ package Paws::AutoScaling;
     my $result = $self->DescribeScalingActivities(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ Activities } = $result->Activities;
-
       while ($result->NextToken) {
         $result = $self->DescribeScalingActivities(@_, NextToken => $result->NextToken);
         push @{ $result->Activities }, @{ $result->Activities };
       }
-      $self->new_with_coercions(Paws::AutoScaling::DescribeScalingActivities->_returns, %$params);
+      return $result;
     } else {
       while ($result->NextToken) {
         $result = $self->DescribeScalingActivities(@_, NextToken => $result->NextToken);
@@ -425,14 +407,11 @@ package Paws::AutoScaling;
     my $result = $self->DescribeScheduledActions(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ ScheduledUpdateGroupActions } = $result->ScheduledUpdateGroupActions;
-
       while ($result->NextToken) {
         $result = $self->DescribeScheduledActions(@_, NextToken => $result->NextToken);
         push @{ $result->ScheduledUpdateGroupActions }, @{ $result->ScheduledUpdateGroupActions };
       }
-      $self->new_with_coercions(Paws::AutoScaling::DescribeScheduledActions->_returns, %$params);
+      return $result;
     } else {
       while ($result->NextToken) {
         $result = $self->DescribeScheduledActions(@_, NextToken => $result->NextToken);
@@ -449,14 +428,11 @@ package Paws::AutoScaling;
     my $result = $self->DescribeTags(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ Tags } = $result->Tags;
-
       while ($result->NextToken) {
         $result = $self->DescribeTags(@_, NextToken => $result->NextToken);
         push @{ $result->Tags }, @{ $result->Tags };
       }
-      $self->new_with_coercions(Paws::AutoScaling::DescribeTags->_returns, %$params);
+      return $result;
     } else {
       while ($result->NextToken) {
         $result = $self->DescribeTags(@_, NextToken => $result->NextToken);

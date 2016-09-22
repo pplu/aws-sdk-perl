@@ -107,14 +107,11 @@ package Paws::ElasticTranscoder;
     my $result = $self->ListJobsByPipeline(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ Jobs } = $result->Jobs;
-
       while ($result->PageToken) {
         $result = $self->ListJobsByPipeline(@_, PageToken => $result->NextPageToken);
         push @{ $result->Jobs }, @{ $result->Jobs };
       }
-      $self->new_with_coercions(Paws::ElasticTranscoder::ListJobsByPipeline->_returns, %$params);
+      return $result;
     } else {
       while ($result->PageToken) {
         $result = $self->ListJobsByPipeline(@_, PageToken => $result->NextPageToken);
@@ -131,14 +128,11 @@ package Paws::ElasticTranscoder;
     my $result = $self->ListJobsByStatus(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ Jobs } = $result->Jobs;
-
       while ($result->PageToken) {
         $result = $self->ListJobsByStatus(@_, PageToken => $result->NextPageToken);
         push @{ $result->Jobs }, @{ $result->Jobs };
       }
-      $self->new_with_coercions(Paws::ElasticTranscoder::ListJobsByStatus->_returns, %$params);
+      return $result;
     } else {
       while ($result->PageToken) {
         $result = $self->ListJobsByStatus(@_, PageToken => $result->NextPageToken);
@@ -155,14 +149,11 @@ package Paws::ElasticTranscoder;
     my $result = $self->ListPipelines(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ Pipelines } = $result->Pipelines;
-
       while ($result->PageToken) {
         $result = $self->ListPipelines(@_, PageToken => $result->NextPageToken);
         push @{ $result->Pipelines }, @{ $result->Pipelines };
       }
-      $self->new_with_coercions(Paws::ElasticTranscoder::ListPipelines->_returns, %$params);
+      return $result;
     } else {
       while ($result->PageToken) {
         $result = $self->ListPipelines(@_, PageToken => $result->NextPageToken);
@@ -179,14 +170,11 @@ package Paws::ElasticTranscoder;
     my $result = $self->ListPresets(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ Presets } = $result->Presets;
-
       while ($result->PageToken) {
         $result = $self->ListPresets(@_, PageToken => $result->NextPageToken);
         push @{ $result->Presets }, @{ $result->Presets };
       }
-      $self->new_with_coercions(Paws::ElasticTranscoder::ListPresets->_returns, %$params);
+      return $result;
     } else {
       while ($result->PageToken) {
         $result = $self->ListPresets(@_, PageToken => $result->NextPageToken);

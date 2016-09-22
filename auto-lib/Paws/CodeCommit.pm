@@ -97,14 +97,11 @@ package Paws::CodeCommit;
     my $result = $self->ListBranches(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ branches } = $result->branches;
-
       while ($result->nextToken) {
         $result = $self->ListBranches(@_, nextToken => $result->nextToken);
         push @{ $result->branches }, @{ $result->branches };
       }
-      $self->new_with_coercions(Paws::CodeCommit::ListBranches->_returns, %$params);
+      return $result;
     } else {
       while ($result->nextToken) {
         $result = $self->ListBranches(@_, nextToken => $result->nextToken);
@@ -121,14 +118,11 @@ package Paws::CodeCommit;
     my $result = $self->ListRepositories(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ repositories } = $result->repositories;
-
       while ($result->nextToken) {
         $result = $self->ListRepositories(@_, nextToken => $result->nextToken);
         push @{ $result->repositories }, @{ $result->repositories };
       }
-      $self->new_with_coercions(Paws::CodeCommit::ListRepositories->_returns, %$params);
+      return $result;
     } else {
       while ($result->nextToken) {
         $result = $self->ListRepositories(@_, nextToken => $result->nextToken);

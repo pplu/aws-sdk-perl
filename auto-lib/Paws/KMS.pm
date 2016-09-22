@@ -182,14 +182,11 @@ package Paws::KMS;
     my $result = $self->ListAliases(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ Aliases } = $result->Aliases;
-
       while ($result->Truncated) {
         $result = $self->ListAliases(@_, Marker => $result->NextMarker);
-        push @{ $params->{ Aliases } }, @{ $result->Aliases };
+        push @{ $result->Aliases }, @{ $result->Aliases };
       }
-      $self->new_with_coercions(Paws::KMS::ListAliases->_returns, %$params);
+      return $result;
     } else {
       while ($result->Truncated) {
         $result = $self->ListAliases(@_, Marker => $result->NextMarker);
@@ -206,14 +203,11 @@ package Paws::KMS;
     my $result = $self->ListGrants(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ Grants } = $result->Grants;
-
       while ($result->Truncated) {
         $result = $self->ListGrants(@_, Marker => $result->NextMarker);
-        push @{ $params->{ Grants } }, @{ $result->Grants };
+        push @{ $result->Grants }, @{ $result->Grants };
       }
-      $self->new_with_coercions(Paws::KMS::ListGrants->_returns, %$params);
+      return $result;
     } else {
       while ($result->Truncated) {
         $result = $self->ListGrants(@_, Marker => $result->NextMarker);
@@ -230,14 +224,11 @@ package Paws::KMS;
     my $result = $self->ListKeyPolicies(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ PolicyNames } = $result->PolicyNames;
-
       while ($result->Truncated) {
         $result = $self->ListKeyPolicies(@_, Marker => $result->NextMarker);
-        push @{ $params->{ PolicyNames } }, @{ $result->PolicyNames };
+        push @{ $result->PolicyNames }, @{ $result->PolicyNames };
       }
-      $self->new_with_coercions(Paws::KMS::ListKeyPolicies->_returns, %$params);
+      return $result;
     } else {
       while ($result->Truncated) {
         $result = $self->ListKeyPolicies(@_, Marker => $result->NextMarker);
@@ -254,14 +245,11 @@ package Paws::KMS;
     my $result = $self->ListKeys(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ Keys } = $result->Keys;
-
       while ($result->Truncated) {
         $result = $self->ListKeys(@_, Marker => $result->NextMarker);
-        push @{ $params->{ Keys } }, @{ $result->Keys };
+        push @{ $result->Keys }, @{ $result->Keys };
       }
-      $self->new_with_coercions(Paws::KMS::ListKeys->_returns, %$params);
+      return $result;
     } else {
       while ($result->Truncated) {
         $result = $self->ListKeys(@_, Marker => $result->NextMarker);

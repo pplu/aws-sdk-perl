@@ -162,14 +162,11 @@ package Paws::MachineLearning;
     my $result = $self->DescribeBatchPredictions(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ Results } = $result->Results;
-
       while ($result->NextToken) {
         $result = $self->DescribeBatchPredictions(@_, NextToken => $result->NextToken);
         push @{ $result->Results }, @{ $result->Results };
       }
-      $self->new_with_coercions(Paws::MachineLearning::DescribeBatchPredictions->_returns, %$params);
+      return $result;
     } else {
       while ($result->NextToken) {
         $result = $self->DescribeBatchPredictions(@_, NextToken => $result->NextToken);
@@ -186,14 +183,11 @@ package Paws::MachineLearning;
     my $result = $self->DescribeDataSources(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ Results } = $result->Results;
-
       while ($result->NextToken) {
         $result = $self->DescribeDataSources(@_, NextToken => $result->NextToken);
         push @{ $result->Results }, @{ $result->Results };
       }
-      $self->new_with_coercions(Paws::MachineLearning::DescribeDataSources->_returns, %$params);
+      return $result;
     } else {
       while ($result->NextToken) {
         $result = $self->DescribeDataSources(@_, NextToken => $result->NextToken);
@@ -210,14 +204,11 @@ package Paws::MachineLearning;
     my $result = $self->DescribeEvaluations(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ Results } = $result->Results;
-
       while ($result->NextToken) {
         $result = $self->DescribeEvaluations(@_, NextToken => $result->NextToken);
         push @{ $result->Results }, @{ $result->Results };
       }
-      $self->new_with_coercions(Paws::MachineLearning::DescribeEvaluations->_returns, %$params);
+      return $result;
     } else {
       while ($result->NextToken) {
         $result = $self->DescribeEvaluations(@_, NextToken => $result->NextToken);
@@ -234,14 +225,11 @@ package Paws::MachineLearning;
     my $result = $self->DescribeMLModels(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ Results } = $result->Results;
-
       while ($result->NextToken) {
         $result = $self->DescribeMLModels(@_, NextToken => $result->NextToken);
         push @{ $result->Results }, @{ $result->Results };
       }
-      $self->new_with_coercions(Paws::MachineLearning::DescribeMLModels->_returns, %$params);
+      return $result;
     } else {
       while ($result->NextToken) {
         $result = $self->DescribeMLModels(@_, NextToken => $result->NextToken);

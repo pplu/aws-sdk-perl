@@ -102,14 +102,11 @@ package Paws::ECR;
     my $result = $self->ListImages(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ imageIds } = $result->imageIds;
-
       while ($result->nextToken) {
         $result = $self->ListImages(@_, nextToken => $result->nextToken);
         push @{ $result->imageIds }, @{ $result->imageIds };
       }
-      $self->new_with_coercions(Paws::ECR::ListImages->_returns, %$params);
+      return $result;
     } else {
       while ($result->nextToken) {
         $result = $self->ListImages(@_, nextToken => $result->nextToken);

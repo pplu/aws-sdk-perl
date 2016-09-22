@@ -177,14 +177,11 @@ package Paws::Glacier;
     my $result = $self->ListJobs(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ JobList } = $result->JobList;
-
       while ($result->marker) {
         $result = $self->ListJobs(@_, marker => $result->Marker);
         push @{ $result->JobList }, @{ $result->JobList };
       }
-      $self->new_with_coercions(Paws::Glacier::ListJobs->_returns, %$params);
+      return $result;
     } else {
       while ($result->marker) {
         $result = $self->ListJobs(@_, marker => $result->Marker);
@@ -201,14 +198,11 @@ package Paws::Glacier;
     my $result = $self->ListMultipartUploads(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ UploadsList } = $result->UploadsList;
-
       while ($result->marker) {
         $result = $self->ListMultipartUploads(@_, marker => $result->Marker);
         push @{ $result->UploadsList }, @{ $result->UploadsList };
       }
-      $self->new_with_coercions(Paws::Glacier::ListMultipartUploads->_returns, %$params);
+      return $result;
     } else {
       while ($result->marker) {
         $result = $self->ListMultipartUploads(@_, marker => $result->Marker);
@@ -225,14 +219,11 @@ package Paws::Glacier;
     my $result = $self->ListParts(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ Parts } = $result->Parts;
-
       while ($result->marker) {
         $result = $self->ListParts(@_, marker => $result->Marker);
         push @{ $result->Parts }, @{ $result->Parts };
       }
-      $self->new_with_coercions(Paws::Glacier::ListParts->_returns, %$params);
+      return $result;
     } else {
       while ($result->marker) {
         $result = $self->ListParts(@_, marker => $result->Marker);
@@ -249,14 +240,11 @@ package Paws::Glacier;
     my $result = $self->ListVaults(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ VaultList } = $result->VaultList;
-
       while ($result->marker) {
         $result = $self->ListVaults(@_, marker => $result->Marker);
         push @{ $result->VaultList }, @{ $result->VaultList };
       }
-      $self->new_with_coercions(Paws::Glacier::ListVaults->_returns, %$params);
+      return $result;
     } else {
       while ($result->marker) {
         $result = $self->ListVaults(@_, marker => $result->Marker);

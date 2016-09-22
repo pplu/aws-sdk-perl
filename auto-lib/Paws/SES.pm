@@ -231,14 +231,11 @@ package Paws::SES;
     my $result = $self->ListIdentities(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ Identities } = $result->Identities;
-
       while ($result->NextToken) {
         $result = $self->ListIdentities(@_, NextToken => $result->NextToken);
         push @{ $result->Identities }, @{ $result->Identities };
       }
-      $self->new_with_coercions(Paws::SES::ListIdentities->_returns, %$params);
+      return $result;
     } else {
       while ($result->NextToken) {
         $result = $self->ListIdentities(@_, NextToken => $result->NextToken);

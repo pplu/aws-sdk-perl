@@ -177,14 +177,11 @@ package Paws::SimpleWorkflow;
     my $result = $self->GetWorkflowExecutionHistory(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ events } = $result->events;
-
       while ($result->nextPageToken) {
         $result = $self->GetWorkflowExecutionHistory(@_, nextPageToken => $result->nextPageToken);
         push @{ $result->events }, @{ $result->events };
       }
-      $self->new_with_coercions(Paws::SimpleWorkflow::GetWorkflowExecutionHistory->_returns, %$params);
+      return $result;
     } else {
       while ($result->nextPageToken) {
         $result = $self->GetWorkflowExecutionHistory(@_, nextPageToken => $result->nextPageToken);
@@ -201,14 +198,11 @@ package Paws::SimpleWorkflow;
     my $result = $self->ListActivityTypes(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ typeInfos } = $result->typeInfos;
-
       while ($result->nextPageToken) {
         $result = $self->ListActivityTypes(@_, nextPageToken => $result->nextPageToken);
         push @{ $result->typeInfos }, @{ $result->typeInfos };
       }
-      $self->new_with_coercions(Paws::SimpleWorkflow::ListActivityTypes->_returns, %$params);
+      return $result;
     } else {
       while ($result->nextPageToken) {
         $result = $self->ListActivityTypes(@_, nextPageToken => $result->nextPageToken);
@@ -225,14 +219,11 @@ package Paws::SimpleWorkflow;
     my $result = $self->ListClosedWorkflowExecutions(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ executionInfos } = $result->executionInfos;
-
       while ($result->nextPageToken) {
         $result = $self->ListClosedWorkflowExecutions(@_, nextPageToken => $result->nextPageToken);
         push @{ $result->executionInfos }, @{ $result->executionInfos };
       }
-      $self->new_with_coercions(Paws::SimpleWorkflow::ListClosedWorkflowExecutions->_returns, %$params);
+      return $result;
     } else {
       while ($result->nextPageToken) {
         $result = $self->ListClosedWorkflowExecutions(@_, nextPageToken => $result->nextPageToken);
@@ -249,14 +240,11 @@ package Paws::SimpleWorkflow;
     my $result = $self->ListDomains(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ domainInfos } = $result->domainInfos;
-
       while ($result->nextPageToken) {
         $result = $self->ListDomains(@_, nextPageToken => $result->nextPageToken);
         push @{ $result->domainInfos }, @{ $result->domainInfos };
       }
-      $self->new_with_coercions(Paws::SimpleWorkflow::ListDomains->_returns, %$params);
+      return $result;
     } else {
       while ($result->nextPageToken) {
         $result = $self->ListDomains(@_, nextPageToken => $result->nextPageToken);
@@ -273,14 +261,11 @@ package Paws::SimpleWorkflow;
     my $result = $self->ListOpenWorkflowExecutions(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ executionInfos } = $result->executionInfos;
-
       while ($result->nextPageToken) {
         $result = $self->ListOpenWorkflowExecutions(@_, nextPageToken => $result->nextPageToken);
         push @{ $result->executionInfos }, @{ $result->executionInfos };
       }
-      $self->new_with_coercions(Paws::SimpleWorkflow::ListOpenWorkflowExecutions->_returns, %$params);
+      return $result;
     } else {
       while ($result->nextPageToken) {
         $result = $self->ListOpenWorkflowExecutions(@_, nextPageToken => $result->nextPageToken);
@@ -297,14 +282,11 @@ package Paws::SimpleWorkflow;
     my $result = $self->ListWorkflowTypes(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ typeInfos } = $result->typeInfos;
-
       while ($result->nextPageToken) {
         $result = $self->ListWorkflowTypes(@_, nextPageToken => $result->nextPageToken);
         push @{ $result->typeInfos }, @{ $result->typeInfos };
       }
-      $self->new_with_coercions(Paws::SimpleWorkflow::ListWorkflowTypes->_returns, %$params);
+      return $result;
     } else {
       while ($result->nextPageToken) {
         $result = $self->ListWorkflowTypes(@_, nextPageToken => $result->nextPageToken);
@@ -321,14 +303,11 @@ package Paws::SimpleWorkflow;
     my $result = $self->PollForDecisionTask(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ events } = $result->events;
-
       while ($result->nextPageToken) {
         $result = $self->PollForDecisionTask(@_, nextPageToken => $result->nextPageToken);
         push @{ $result->events }, @{ $result->events };
       }
-      $self->new_with_coercions(Paws::SimpleWorkflow::PollForDecisionTask->_returns, %$params);
+      return $result;
     } else {
       while ($result->nextPageToken) {
         $result = $self->PollForDecisionTask(@_, nextPageToken => $result->nextPageToken);

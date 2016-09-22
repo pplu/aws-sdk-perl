@@ -201,14 +201,11 @@ package Paws::ElasticBeanstalk;
     my $result = $self->DescribeEvents(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ Events } = $result->Events;
-
       while ($result->NextToken) {
         $result = $self->DescribeEvents(@_, NextToken => $result->NextToken);
         push @{ $result->Events }, @{ $result->Events };
       }
-      $self->new_with_coercions(Paws::ElasticBeanstalk::DescribeEvents->_returns, %$params);
+      return $result;
     } else {
       while ($result->NextToken) {
         $result = $self->DescribeEvents(@_, NextToken => $result->NextToken);

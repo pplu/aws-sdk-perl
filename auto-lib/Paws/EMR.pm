@@ -175,14 +175,11 @@ package Paws::EMR;
     my $result = $self->ListBootstrapActions(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ BootstrapActions } = $result->BootstrapActions;
-
       while ($result->Marker) {
         $result = $self->ListBootstrapActions(@_, Marker => $result->Marker);
         push @{ $result->BootstrapActions }, @{ $result->BootstrapActions };
       }
-      $self->new_with_coercions(Paws::EMR::ListBootstrapActions->_returns, %$params);
+      return $result;
     } else {
       while ($result->Marker) {
         $result = $self->ListBootstrapActions(@_, Marker => $result->Marker);
@@ -199,14 +196,11 @@ package Paws::EMR;
     my $result = $self->ListClusters(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ Clusters } = $result->Clusters;
-
       while ($result->Marker) {
         $result = $self->ListClusters(@_, Marker => $result->Marker);
         push @{ $result->Clusters }, @{ $result->Clusters };
       }
-      $self->new_with_coercions(Paws::EMR::ListClusters->_returns, %$params);
+      return $result;
     } else {
       while ($result->Marker) {
         $result = $self->ListClusters(@_, Marker => $result->Marker);
@@ -223,14 +217,11 @@ package Paws::EMR;
     my $result = $self->ListInstanceGroups(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ InstanceGroups } = $result->InstanceGroups;
-
       while ($result->Marker) {
         $result = $self->ListInstanceGroups(@_, Marker => $result->Marker);
         push @{ $result->InstanceGroups }, @{ $result->InstanceGroups };
       }
-      $self->new_with_coercions(Paws::EMR::ListInstanceGroups->_returns, %$params);
+      return $result;
     } else {
       while ($result->Marker) {
         $result = $self->ListInstanceGroups(@_, Marker => $result->Marker);
@@ -247,14 +238,11 @@ package Paws::EMR;
     my $result = $self->ListInstances(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ Instances } = $result->Instances;
-
       while ($result->Marker) {
         $result = $self->ListInstances(@_, Marker => $result->Marker);
         push @{ $result->Instances }, @{ $result->Instances };
       }
-      $self->new_with_coercions(Paws::EMR::ListInstances->_returns, %$params);
+      return $result;
     } else {
       while ($result->Marker) {
         $result = $self->ListInstances(@_, Marker => $result->Marker);
@@ -271,14 +259,11 @@ package Paws::EMR;
     my $result = $self->ListSteps(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ Steps } = $result->Steps;
-
       while ($result->Marker) {
         $result = $self->ListSteps(@_, Marker => $result->Marker);
         push @{ $result->Steps }, @{ $result->Steps };
       }
-      $self->new_with_coercions(Paws::EMR::ListSteps->_returns, %$params);
+      return $result;
     } else {
       while ($result->Marker) {
         $result = $self->ListSteps(@_, Marker => $result->Marker);

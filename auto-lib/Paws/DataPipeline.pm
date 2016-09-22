@@ -117,14 +117,11 @@ package Paws::DataPipeline;
     my $result = $self->DescribeObjects(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ pipelineObjects } = $result->pipelineObjects;
-
       while ($result->hasMoreResults) {
         $result = $self->DescribeObjects(@_, marker => $result->marker);
-        push @{ $params->{ pipelineObjects } }, @{ $result->pipelineObjects };
+        push @{ $result->pipelineObjects }, @{ $result->pipelineObjects };
       }
-      $self->new_with_coercions(Paws::DataPipeline::DescribeObjects->_returns, %$params);
+      return $result;
     } else {
       while ($result->hasMoreResults) {
         $result = $self->DescribeObjects(@_, marker => $result->marker);
@@ -141,14 +138,11 @@ package Paws::DataPipeline;
     my $result = $self->ListPipelines(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ pipelineIdList } = $result->pipelineIdList;
-
       while ($result->hasMoreResults) {
         $result = $self->ListPipelines(@_, marker => $result->marker);
-        push @{ $params->{ pipelineIdList } }, @{ $result->pipelineIdList };
+        push @{ $result->pipelineIdList }, @{ $result->pipelineIdList };
       }
-      $self->new_with_coercions(Paws::DataPipeline::ListPipelines->_returns, %$params);
+      return $result;
     } else {
       while ($result->hasMoreResults) {
         $result = $self->ListPipelines(@_, marker => $result->marker);
@@ -165,14 +159,11 @@ package Paws::DataPipeline;
     my $result = $self->QueryObjects(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ ids } = $result->ids;
-
       while ($result->hasMoreResults) {
         $result = $self->QueryObjects(@_, marker => $result->marker);
-        push @{ $params->{ ids } }, @{ $result->ids };
+        push @{ $result->ids }, @{ $result->ids };
       }
-      $self->new_with_coercions(Paws::DataPipeline::QueryObjects->_returns, %$params);
+      return $result;
     } else {
       while ($result->hasMoreResults) {
         $result = $self->QueryObjects(@_, marker => $result->marker);

@@ -1071,14 +1071,11 @@ package Paws::EC2;
     my $result = $self->DescribeInstances(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ Reservations } = $result->Reservations;
-
       while ($result->NextToken) {
         $result = $self->DescribeInstances(@_, NextToken => $result->NextToken);
         push @{ $result->Reservations }, @{ $result->Reservations };
       }
-      $self->new_with_coercions(Paws::EC2::DescribeInstances->_returns, %$params);
+      return $result;
     } else {
       while ($result->NextToken) {
         $result = $self->DescribeInstances(@_, NextToken => $result->NextToken);
@@ -1095,14 +1092,11 @@ package Paws::EC2;
     my $result = $self->DescribeInstanceStatus(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ InstanceStatuses } = $result->InstanceStatuses;
-
       while ($result->NextToken) {
         $result = $self->DescribeInstanceStatus(@_, NextToken => $result->NextToken);
         push @{ $result->InstanceStatuses }, @{ $result->InstanceStatuses };
       }
-      $self->new_with_coercions(Paws::EC2::DescribeInstanceStatus->_returns, %$params);
+      return $result;
     } else {
       while ($result->NextToken) {
         $result = $self->DescribeInstanceStatus(@_, NextToken => $result->NextToken);
@@ -1119,14 +1113,11 @@ package Paws::EC2;
     my $result = $self->DescribeReservedInstancesModifications(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ ReservedInstancesModifications } = $result->ReservedInstancesModifications;
-
       while ($result->NextToken) {
         $result = $self->DescribeReservedInstancesModifications(@_, NextToken => $result->NextToken);
         push @{ $result->ReservedInstancesModifications }, @{ $result->ReservedInstancesModifications };
       }
-      $self->new_with_coercions(Paws::EC2::DescribeReservedInstancesModifications->_returns, %$params);
+      return $result;
     } else {
       while ($result->NextToken) {
         $result = $self->DescribeReservedInstancesModifications(@_, NextToken => $result->NextToken);
@@ -1143,14 +1134,11 @@ package Paws::EC2;
     my $result = $self->DescribeReservedInstancesOfferings(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ ReservedInstancesOfferings } = $result->ReservedInstancesOfferings;
-
       while ($result->NextToken) {
         $result = $self->DescribeReservedInstancesOfferings(@_, NextToken => $result->NextToken);
         push @{ $result->ReservedInstancesOfferings }, @{ $result->ReservedInstancesOfferings };
       }
-      $self->new_with_coercions(Paws::EC2::DescribeReservedInstancesOfferings->_returns, %$params);
+      return $result;
     } else {
       while ($result->NextToken) {
         $result = $self->DescribeReservedInstancesOfferings(@_, NextToken => $result->NextToken);
@@ -1167,14 +1155,11 @@ package Paws::EC2;
     my $result = $self->DescribeSnapshots(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ Snapshots } = $result->Snapshots;
-
       while ($result->NextToken) {
         $result = $self->DescribeSnapshots(@_, NextToken => $result->NextToken);
         push @{ $result->Snapshots }, @{ $result->Snapshots };
       }
-      $self->new_with_coercions(Paws::EC2::DescribeSnapshots->_returns, %$params);
+      return $result;
     } else {
       while ($result->NextToken) {
         $result = $self->DescribeSnapshots(@_, NextToken => $result->NextToken);
@@ -1191,14 +1176,11 @@ package Paws::EC2;
     my $result = $self->DescribeSpotFleetRequests(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ SpotFleetRequestConfigs } = $result->SpotFleetRequestConfigs;
-
       while ($result->NextToken) {
         $result = $self->DescribeSpotFleetRequests(@_, NextToken => $result->NextToken);
         push @{ $result->SpotFleetRequestConfigs }, @{ $result->SpotFleetRequestConfigs };
       }
-      $self->new_with_coercions(Paws::EC2::DescribeSpotFleetRequests->_returns, %$params);
+      return $result;
     } else {
       while ($result->NextToken) {
         $result = $self->DescribeSpotFleetRequests(@_, NextToken => $result->NextToken);
@@ -1215,14 +1197,11 @@ package Paws::EC2;
     my $result = $self->DescribeSpotPriceHistory(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ SpotPriceHistory } = $result->SpotPriceHistory;
-
       while ($result->NextToken) {
         $result = $self->DescribeSpotPriceHistory(@_, NextToken => $result->NextToken);
         push @{ $result->SpotPriceHistory }, @{ $result->SpotPriceHistory };
       }
-      $self->new_with_coercions(Paws::EC2::DescribeSpotPriceHistory->_returns, %$params);
+      return $result;
     } else {
       while ($result->NextToken) {
         $result = $self->DescribeSpotPriceHistory(@_, NextToken => $result->NextToken);
@@ -1239,14 +1218,11 @@ package Paws::EC2;
     my $result = $self->DescribeTags(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ Tags } = $result->Tags;
-
       while ($result->NextToken) {
         $result = $self->DescribeTags(@_, NextToken => $result->NextToken);
         push @{ $result->Tags }, @{ $result->Tags };
       }
-      $self->new_with_coercions(Paws::EC2::DescribeTags->_returns, %$params);
+      return $result;
     } else {
       while ($result->NextToken) {
         $result = $self->DescribeTags(@_, NextToken => $result->NextToken);
@@ -1263,14 +1239,11 @@ package Paws::EC2;
     my $result = $self->DescribeVolumes(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ Volumes } = $result->Volumes;
-
       while ($result->NextToken) {
         $result = $self->DescribeVolumes(@_, NextToken => $result->NextToken);
         push @{ $result->Volumes }, @{ $result->Volumes };
       }
-      $self->new_with_coercions(Paws::EC2::DescribeVolumes->_returns, %$params);
+      return $result;
     } else {
       while ($result->NextToken) {
         $result = $self->DescribeVolumes(@_, NextToken => $result->NextToken);
@@ -1287,14 +1260,11 @@ package Paws::EC2;
     my $result = $self->DescribeVolumeStatus(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ VolumeStatuses } = $result->VolumeStatuses;
-
       while ($result->NextToken) {
         $result = $self->DescribeVolumeStatus(@_, NextToken => $result->NextToken);
         push @{ $result->VolumeStatuses }, @{ $result->VolumeStatuses };
       }
-      $self->new_with_coercions(Paws::EC2::DescribeVolumeStatus->_returns, %$params);
+      return $result;
     } else {
       while ($result->NextToken) {
         $result = $self->DescribeVolumeStatus(@_, NextToken => $result->NextToken);

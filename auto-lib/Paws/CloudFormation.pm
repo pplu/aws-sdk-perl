@@ -141,14 +141,11 @@ package Paws::CloudFormation;
     my $result = $self->DescribeStackEvents(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ StackEvents } = $result->StackEvents;
-
       while ($result->NextToken) {
         $result = $self->DescribeStackEvents(@_, NextToken => $result->NextToken);
         push @{ $result->StackEvents }, @{ $result->StackEvents };
       }
-      $self->new_with_coercions(Paws::CloudFormation::DescribeStackEvents->_returns, %$params);
+      return $result;
     } else {
       while ($result->NextToken) {
         $result = $self->DescribeStackEvents(@_, NextToken => $result->NextToken);
@@ -165,14 +162,11 @@ package Paws::CloudFormation;
     my $result = $self->DescribeStacks(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ Stacks } = $result->Stacks;
-
       while ($result->NextToken) {
         $result = $self->DescribeStacks(@_, NextToken => $result->NextToken);
         push @{ $result->Stacks }, @{ $result->Stacks };
       }
-      $self->new_with_coercions(Paws::CloudFormation::DescribeStacks->_returns, %$params);
+      return $result;
     } else {
       while ($result->NextToken) {
         $result = $self->DescribeStacks(@_, NextToken => $result->NextToken);
@@ -189,14 +183,11 @@ package Paws::CloudFormation;
     my $result = $self->ListStackResources(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ StackResourceSummaries } = $result->StackResourceSummaries;
-
       while ($result->NextToken) {
         $result = $self->ListStackResources(@_, NextToken => $result->NextToken);
         push @{ $result->StackResourceSummaries }, @{ $result->StackResourceSummaries };
       }
-      $self->new_with_coercions(Paws::CloudFormation::ListStackResources->_returns, %$params);
+      return $result;
     } else {
       while ($result->NextToken) {
         $result = $self->ListStackResources(@_, NextToken => $result->NextToken);
@@ -213,14 +204,11 @@ package Paws::CloudFormation;
     my $result = $self->ListStacks(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ StackSummaries } = $result->StackSummaries;
-
       while ($result->NextToken) {
         $result = $self->ListStacks(@_, NextToken => $result->NextToken);
         push @{ $result->StackSummaries }, @{ $result->StackSummaries };
       }
-      $self->new_with_coercions(Paws::CloudFormation::ListStacks->_returns, %$params);
+      return $result;
     } else {
       while ($result->NextToken) {
         $result = $self->ListStacks(@_, NextToken => $result->NextToken);

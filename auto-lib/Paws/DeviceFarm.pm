@@ -237,14 +237,11 @@ package Paws::DeviceFarm;
     my $result = $self->ListArtifacts(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ artifacts } = $result->artifacts;
-
       while ($result->nextToken) {
         $result = $self->ListArtifacts(@_, nextToken => $result->nextToken);
         push @{ $result->artifacts }, @{ $result->artifacts };
       }
-      $self->new_with_coercions(Paws::DeviceFarm::ListArtifacts->_returns, %$params);
+      return $result;
     } else {
       while ($result->nextToken) {
         $result = $self->ListArtifacts(@_, nextToken => $result->nextToken);
@@ -261,14 +258,11 @@ package Paws::DeviceFarm;
     my $result = $self->ListDevicePools(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ devicePools } = $result->devicePools;
-
       while ($result->nextToken) {
         $result = $self->ListDevicePools(@_, nextToken => $result->nextToken);
         push @{ $result->devicePools }, @{ $result->devicePools };
       }
-      $self->new_with_coercions(Paws::DeviceFarm::ListDevicePools->_returns, %$params);
+      return $result;
     } else {
       while ($result->nextToken) {
         $result = $self->ListDevicePools(@_, nextToken => $result->nextToken);
@@ -285,14 +279,11 @@ package Paws::DeviceFarm;
     my $result = $self->ListDevices(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ devices } = $result->devices;
-
       while ($result->nextToken) {
         $result = $self->ListDevices(@_, nextToken => $result->nextToken);
         push @{ $result->devices }, @{ $result->devices };
       }
-      $self->new_with_coercions(Paws::DeviceFarm::ListDevices->_returns, %$params);
+      return $result;
     } else {
       while ($result->nextToken) {
         $result = $self->ListDevices(@_, nextToken => $result->nextToken);
@@ -309,14 +300,11 @@ package Paws::DeviceFarm;
     my $result = $self->ListJobs(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ jobs } = $result->jobs;
-
       while ($result->nextToken) {
         $result = $self->ListJobs(@_, nextToken => $result->nextToken);
         push @{ $result->jobs }, @{ $result->jobs };
       }
-      $self->new_with_coercions(Paws::DeviceFarm::ListJobs->_returns, %$params);
+      return $result;
     } else {
       while ($result->nextToken) {
         $result = $self->ListJobs(@_, nextToken => $result->nextToken);
@@ -333,14 +321,11 @@ package Paws::DeviceFarm;
     my $result = $self->ListProjects(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ projects } = $result->projects;
-
       while ($result->nextToken) {
         $result = $self->ListProjects(@_, nextToken => $result->nextToken);
         push @{ $result->projects }, @{ $result->projects };
       }
-      $self->new_with_coercions(Paws::DeviceFarm::ListProjects->_returns, %$params);
+      return $result;
     } else {
       while ($result->nextToken) {
         $result = $self->ListProjects(@_, nextToken => $result->nextToken);
@@ -357,14 +342,11 @@ package Paws::DeviceFarm;
     my $result = $self->ListRuns(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ runs } = $result->runs;
-
       while ($result->nextToken) {
         $result = $self->ListRuns(@_, nextToken => $result->nextToken);
         push @{ $result->runs }, @{ $result->runs };
       }
-      $self->new_with_coercions(Paws::DeviceFarm::ListRuns->_returns, %$params);
+      return $result;
     } else {
       while ($result->nextToken) {
         $result = $self->ListRuns(@_, nextToken => $result->nextToken);
@@ -381,14 +363,11 @@ package Paws::DeviceFarm;
     my $result = $self->ListSamples(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ samples } = $result->samples;
-
       while ($result->nextToken) {
         $result = $self->ListSamples(@_, nextToken => $result->nextToken);
         push @{ $result->samples }, @{ $result->samples };
       }
-      $self->new_with_coercions(Paws::DeviceFarm::ListSamples->_returns, %$params);
+      return $result;
     } else {
       while ($result->nextToken) {
         $result = $self->ListSamples(@_, nextToken => $result->nextToken);
@@ -405,14 +384,11 @@ package Paws::DeviceFarm;
     my $result = $self->ListSuites(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ suites } = $result->suites;
-
       while ($result->nextToken) {
         $result = $self->ListSuites(@_, nextToken => $result->nextToken);
         push @{ $result->suites }, @{ $result->suites };
       }
-      $self->new_with_coercions(Paws::DeviceFarm::ListSuites->_returns, %$params);
+      return $result;
     } else {
       while ($result->nextToken) {
         $result = $self->ListSuites(@_, nextToken => $result->nextToken);
@@ -429,14 +405,11 @@ package Paws::DeviceFarm;
     my $result = $self->ListTests(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ tests } = $result->tests;
-
       while ($result->nextToken) {
         $result = $self->ListTests(@_, nextToken => $result->nextToken);
         push @{ $result->tests }, @{ $result->tests };
       }
-      $self->new_with_coercions(Paws::DeviceFarm::ListTests->_returns, %$params);
+      return $result;
     } else {
       while ($result->nextToken) {
         $result = $self->ListTests(@_, nextToken => $result->nextToken);
@@ -453,14 +426,11 @@ package Paws::DeviceFarm;
     my $result = $self->ListUniqueProblems(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ uniqueProblems } = $result->uniqueProblems;
-
       while ($result->nextToken) {
         $result = $self->ListUniqueProblems(@_, nextToken => $result->nextToken);
         push @{ $result->uniqueProblems }, @{ $result->uniqueProblems };
       }
-      $self->new_with_coercions(Paws::DeviceFarm::ListUniqueProblems->_returns, %$params);
+      return $result;
     } else {
       while ($result->nextToken) {
         $result = $self->ListUniqueProblems(@_, nextToken => $result->nextToken);
@@ -477,14 +447,11 @@ package Paws::DeviceFarm;
     my $result = $self->ListUploads(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ uploads } = $result->uploads;
-
       while ($result->nextToken) {
         $result = $self->ListUploads(@_, nextToken => $result->nextToken);
         push @{ $result->uploads }, @{ $result->uploads };
       }
-      $self->new_with_coercions(Paws::DeviceFarm::ListUploads->_returns, %$params);
+      return $result;
     } else {
       while ($result->nextToken) {
         $result = $self->ListUploads(@_, nextToken => $result->nextToken);

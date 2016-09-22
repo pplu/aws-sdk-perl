@@ -92,14 +92,11 @@ package Paws::Support;
     my $result = $self->DescribeCases(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ cases } = $result->cases;
-
       while ($result->nextToken) {
         $result = $self->DescribeCases(@_, nextToken => $result->nextToken);
         push @{ $result->cases }, @{ $result->cases };
       }
-      $self->new_with_coercions(Paws::Support::DescribeCases->_returns, %$params);
+      return $result;
     } else {
       while ($result->nextToken) {
         $result = $self->DescribeCases(@_, nextToken => $result->nextToken);
@@ -116,14 +113,11 @@ package Paws::Support;
     my $result = $self->DescribeCommunications(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ communications } = $result->communications;
-
       while ($result->nextToken) {
         $result = $self->DescribeCommunications(@_, nextToken => $result->nextToken);
         push @{ $result->communications }, @{ $result->communications };
       }
-      $self->new_with_coercions(Paws::Support::DescribeCommunications->_returns, %$params);
+      return $result;
     } else {
       while ($result->nextToken) {
         $result = $self->DescribeCommunications(@_, nextToken => $result->nextToken);

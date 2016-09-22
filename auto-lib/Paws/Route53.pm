@@ -292,14 +292,11 @@ package Paws::Route53;
     my $result = $self->ListHealthChecks(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ HealthChecks } = $result->HealthChecks;
-
       while ($result->IsTruncated) {
         $result = $self->ListHealthChecks(@_, Marker => $result->NextMarker);
-        push @{ $params->{ HealthChecks } }, @{ $result->HealthChecks };
+        push @{ $result->HealthChecks }, @{ $result->HealthChecks };
       }
-      $self->new_with_coercions(Paws::Route53::ListHealthChecks->_returns, %$params);
+      return $result;
     } else {
       while ($result->IsTruncated) {
         $result = $self->ListHealthChecks(@_, Marker => $result->NextMarker);
@@ -316,14 +313,11 @@ package Paws::Route53;
     my $result = $self->ListHostedZones(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ HostedZones } = $result->HostedZones;
-
       while ($result->IsTruncated) {
         $result = $self->ListHostedZones(@_, Marker => $result->NextMarker);
-        push @{ $params->{ HostedZones } }, @{ $result->HostedZones };
+        push @{ $result->HostedZones }, @{ $result->HostedZones };
       }
-      $self->new_with_coercions(Paws::Route53::ListHostedZones->_returns, %$params);
+      return $result;
     } else {
       while ($result->IsTruncated) {
         $result = $self->ListHostedZones(@_, Marker => $result->NextMarker);
@@ -340,14 +334,11 @@ package Paws::Route53;
     my $result = $self->ListResourceRecordSets(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ ResourceRecordSets } = $result->ResourceRecordSets;
-
       while ($result->IsTruncated) {
         $result = $self->ListResourceRecordSets(@_, StartRecordName => $result->NextRecordName, StartRecordType => $result->NextRecordType, StartRecordIdentifier => $result->NextRecordIdentifier);
-        push @{ $params->{ ResourceRecordSets } }, @{ $result->ResourceRecordSets };
+        push @{ $result->ResourceRecordSets }, @{ $result->ResourceRecordSets };
       }
-      $self->new_with_coercions(Paws::Route53::ListResourceRecordSets->_returns, %$params);
+      return $result;
     } else {
       while ($result->IsTruncated) {
         $result = $self->ListResourceRecordSets(@_, StartRecordName => $result->NextRecordName, StartRecordType => $result->NextRecordType, StartRecordIdentifier => $result->NextRecordIdentifier);

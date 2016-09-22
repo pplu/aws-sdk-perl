@@ -1006,16 +1006,11 @@ package [% inner_class %];
     my $result = $self->[% op %](@_);
 
     if (not defined $callback) {
-      my $params = {};
-      [%- FOREACH param = c.paginator_result_key(paginator) %]
-      $params->{ [% param %] } = [% c.paginator_accessor(param) %];
-      [%- END %]
-
       [%- IF (paginator.more_results.defined) %]
       while ($result->[% paginator.more_results %]) {
         $result = $self->[% op %](@_, [% c.paginator_pass_params(paginator) %]);
         [%- FOREACH param = c.paginator_result_key(paginator) %]
-        push @{ $params->{ [% param %] } }, @{ [% c.paginator_accessor(param) %] };
+        push @{ [% c.paginator_accessor(param) %] }, @{ [% c.paginator_accessor(param) %] };
         [%- END %]
       }
       [%- ELSE %]
@@ -1026,7 +1021,7 @@ package [% inner_class %];
         [%- END %]
       }
       [%- END %]
-      $self->new_with_coercions([% c.api %]::[% op %]->_returns, %$params);
+      return $result;
     } else {
       [%- IF (paginator.more_results.defined) %]
       while ($result->[% paginator.more_results %]) {

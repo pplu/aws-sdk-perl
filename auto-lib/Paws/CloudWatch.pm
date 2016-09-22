@@ -76,14 +76,11 @@ package Paws::CloudWatch;
     my $result = $self->DescribeAlarmHistory(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ AlarmHistoryItems } = $result->AlarmHistoryItems;
-
       while ($result->NextToken) {
         $result = $self->DescribeAlarmHistory(@_, NextToken => $result->NextToken);
         push @{ $result->AlarmHistoryItems }, @{ $result->AlarmHistoryItems };
       }
-      $self->new_with_coercions(Paws::CloudWatch::DescribeAlarmHistory->_returns, %$params);
+      return $result;
     } else {
       while ($result->NextToken) {
         $result = $self->DescribeAlarmHistory(@_, NextToken => $result->NextToken);
@@ -100,14 +97,11 @@ package Paws::CloudWatch;
     my $result = $self->DescribeAlarms(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ MetricAlarms } = $result->MetricAlarms;
-
       while ($result->NextToken) {
         $result = $self->DescribeAlarms(@_, NextToken => $result->NextToken);
         push @{ $result->MetricAlarms }, @{ $result->MetricAlarms };
       }
-      $self->new_with_coercions(Paws::CloudWatch::DescribeAlarms->_returns, %$params);
+      return $result;
     } else {
       while ($result->NextToken) {
         $result = $self->DescribeAlarms(@_, NextToken => $result->NextToken);
@@ -124,14 +118,11 @@ package Paws::CloudWatch;
     my $result = $self->ListMetrics(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ Metrics } = $result->Metrics;
-
       while ($result->NextToken) {
         $result = $self->ListMetrics(@_, NextToken => $result->NextToken);
         push @{ $result->Metrics }, @{ $result->Metrics };
       }
-      $self->new_with_coercions(Paws::CloudWatch::ListMetrics->_returns, %$params);
+      return $result;
     } else {
       while ($result->NextToken) {
         $result = $self->ListMetrics(@_, NextToken => $result->NextToken);

@@ -331,14 +331,11 @@ package Paws::RedShift;
     my $result = $self->DescribeClusterParameterGroups(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ ParameterGroups } = $result->ParameterGroups;
-
       while ($result->Marker) {
         $result = $self->DescribeClusterParameterGroups(@_, Marker => $result->Marker);
         push @{ $result->ParameterGroups }, @{ $result->ParameterGroups };
       }
-      $self->new_with_coercions(Paws::RedShift::DescribeClusterParameterGroups->_returns, %$params);
+      return $result;
     } else {
       while ($result->Marker) {
         $result = $self->DescribeClusterParameterGroups(@_, Marker => $result->Marker);
@@ -355,14 +352,11 @@ package Paws::RedShift;
     my $result = $self->DescribeClusterParameters(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ Parameters } = $result->Parameters;
-
       while ($result->Marker) {
         $result = $self->DescribeClusterParameters(@_, Marker => $result->Marker);
         push @{ $result->Parameters }, @{ $result->Parameters };
       }
-      $self->new_with_coercions(Paws::RedShift::DescribeClusterParameters->_returns, %$params);
+      return $result;
     } else {
       while ($result->Marker) {
         $result = $self->DescribeClusterParameters(@_, Marker => $result->Marker);
@@ -379,14 +373,11 @@ package Paws::RedShift;
     my $result = $self->DescribeClusters(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ Clusters } = $result->Clusters;
-
       while ($result->Marker) {
         $result = $self->DescribeClusters(@_, Marker => $result->Marker);
         push @{ $result->Clusters }, @{ $result->Clusters };
       }
-      $self->new_with_coercions(Paws::RedShift::DescribeClusters->_returns, %$params);
+      return $result;
     } else {
       while ($result->Marker) {
         $result = $self->DescribeClusters(@_, Marker => $result->Marker);
@@ -403,14 +394,11 @@ package Paws::RedShift;
     my $result = $self->DescribeClusterSecurityGroups(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ ClusterSecurityGroups } = $result->ClusterSecurityGroups;
-
       while ($result->Marker) {
         $result = $self->DescribeClusterSecurityGroups(@_, Marker => $result->Marker);
         push @{ $result->ClusterSecurityGroups }, @{ $result->ClusterSecurityGroups };
       }
-      $self->new_with_coercions(Paws::RedShift::DescribeClusterSecurityGroups->_returns, %$params);
+      return $result;
     } else {
       while ($result->Marker) {
         $result = $self->DescribeClusterSecurityGroups(@_, Marker => $result->Marker);
@@ -427,14 +415,11 @@ package Paws::RedShift;
     my $result = $self->DescribeClusterSnapshots(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ Snapshots } = $result->Snapshots;
-
       while ($result->Marker) {
         $result = $self->DescribeClusterSnapshots(@_, Marker => $result->Marker);
         push @{ $result->Snapshots }, @{ $result->Snapshots };
       }
-      $self->new_with_coercions(Paws::RedShift::DescribeClusterSnapshots->_returns, %$params);
+      return $result;
     } else {
       while ($result->Marker) {
         $result = $self->DescribeClusterSnapshots(@_, Marker => $result->Marker);
@@ -451,14 +436,11 @@ package Paws::RedShift;
     my $result = $self->DescribeClusterSubnetGroups(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ ClusterSubnetGroups } = $result->ClusterSubnetGroups;
-
       while ($result->Marker) {
         $result = $self->DescribeClusterSubnetGroups(@_, Marker => $result->Marker);
         push @{ $result->ClusterSubnetGroups }, @{ $result->ClusterSubnetGroups };
       }
-      $self->new_with_coercions(Paws::RedShift::DescribeClusterSubnetGroups->_returns, %$params);
+      return $result;
     } else {
       while ($result->Marker) {
         $result = $self->DescribeClusterSubnetGroups(@_, Marker => $result->Marker);
@@ -475,14 +457,11 @@ package Paws::RedShift;
     my $result = $self->DescribeClusterVersions(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ ClusterVersions } = $result->ClusterVersions;
-
       while ($result->Marker) {
         $result = $self->DescribeClusterVersions(@_, Marker => $result->Marker);
         push @{ $result->ClusterVersions }, @{ $result->ClusterVersions };
       }
-      $self->new_with_coercions(Paws::RedShift::DescribeClusterVersions->_returns, %$params);
+      return $result;
     } else {
       while ($result->Marker) {
         $result = $self->DescribeClusterVersions(@_, Marker => $result->Marker);
@@ -499,14 +478,11 @@ package Paws::RedShift;
     my $result = $self->DescribeDefaultClusterParameters(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ DefaultClusterParameters.Parameters } = $result->DefaultClusterParameters->Parameters;
-
       while ($result->Marker) {
         $result = $self->DescribeDefaultClusterParameters(@_, Marker => $result->DefaultClusterParameters->Marker);
         push @{ $result->DefaultClusterParameters->Parameters }, @{ $result->DefaultClusterParameters->Parameters };
       }
-      $self->new_with_coercions(Paws::RedShift::DescribeDefaultClusterParameters->_returns, %$params);
+      return $result;
     } else {
       while ($result->Marker) {
         $result = $self->DescribeDefaultClusterParameters(@_, Marker => $result->DefaultClusterParameters->Marker);
@@ -523,14 +499,11 @@ package Paws::RedShift;
     my $result = $self->DescribeEvents(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ Events } = $result->Events;
-
       while ($result->Marker) {
         $result = $self->DescribeEvents(@_, Marker => $result->Marker);
         push @{ $result->Events }, @{ $result->Events };
       }
-      $self->new_with_coercions(Paws::RedShift::DescribeEvents->_returns, %$params);
+      return $result;
     } else {
       while ($result->Marker) {
         $result = $self->DescribeEvents(@_, Marker => $result->Marker);
@@ -547,14 +520,11 @@ package Paws::RedShift;
     my $result = $self->DescribeEventSubscriptions(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ EventSubscriptionsList } = $result->EventSubscriptionsList;
-
       while ($result->Marker) {
         $result = $self->DescribeEventSubscriptions(@_, Marker => $result->Marker);
         push @{ $result->EventSubscriptionsList }, @{ $result->EventSubscriptionsList };
       }
-      $self->new_with_coercions(Paws::RedShift::DescribeEventSubscriptions->_returns, %$params);
+      return $result;
     } else {
       while ($result->Marker) {
         $result = $self->DescribeEventSubscriptions(@_, Marker => $result->Marker);
@@ -571,14 +541,11 @@ package Paws::RedShift;
     my $result = $self->DescribeHsmClientCertificates(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ HsmClientCertificates } = $result->HsmClientCertificates;
-
       while ($result->Marker) {
         $result = $self->DescribeHsmClientCertificates(@_, Marker => $result->Marker);
         push @{ $result->HsmClientCertificates }, @{ $result->HsmClientCertificates };
       }
-      $self->new_with_coercions(Paws::RedShift::DescribeHsmClientCertificates->_returns, %$params);
+      return $result;
     } else {
       while ($result->Marker) {
         $result = $self->DescribeHsmClientCertificates(@_, Marker => $result->Marker);
@@ -595,14 +562,11 @@ package Paws::RedShift;
     my $result = $self->DescribeHsmConfigurations(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ HsmConfigurations } = $result->HsmConfigurations;
-
       while ($result->Marker) {
         $result = $self->DescribeHsmConfigurations(@_, Marker => $result->Marker);
         push @{ $result->HsmConfigurations }, @{ $result->HsmConfigurations };
       }
-      $self->new_with_coercions(Paws::RedShift::DescribeHsmConfigurations->_returns, %$params);
+      return $result;
     } else {
       while ($result->Marker) {
         $result = $self->DescribeHsmConfigurations(@_, Marker => $result->Marker);
@@ -619,14 +583,11 @@ package Paws::RedShift;
     my $result = $self->DescribeOrderableClusterOptions(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ OrderableClusterOptions } = $result->OrderableClusterOptions;
-
       while ($result->Marker) {
         $result = $self->DescribeOrderableClusterOptions(@_, Marker => $result->Marker);
         push @{ $result->OrderableClusterOptions }, @{ $result->OrderableClusterOptions };
       }
-      $self->new_with_coercions(Paws::RedShift::DescribeOrderableClusterOptions->_returns, %$params);
+      return $result;
     } else {
       while ($result->Marker) {
         $result = $self->DescribeOrderableClusterOptions(@_, Marker => $result->Marker);
@@ -643,14 +604,11 @@ package Paws::RedShift;
     my $result = $self->DescribeReservedNodeOfferings(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ ReservedNodeOfferings } = $result->ReservedNodeOfferings;
-
       while ($result->Marker) {
         $result = $self->DescribeReservedNodeOfferings(@_, Marker => $result->Marker);
         push @{ $result->ReservedNodeOfferings }, @{ $result->ReservedNodeOfferings };
       }
-      $self->new_with_coercions(Paws::RedShift::DescribeReservedNodeOfferings->_returns, %$params);
+      return $result;
     } else {
       while ($result->Marker) {
         $result = $self->DescribeReservedNodeOfferings(@_, Marker => $result->Marker);
@@ -667,14 +625,11 @@ package Paws::RedShift;
     my $result = $self->DescribeReservedNodes(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ ReservedNodes } = $result->ReservedNodes;
-
       while ($result->Marker) {
         $result = $self->DescribeReservedNodes(@_, Marker => $result->Marker);
         push @{ $result->ReservedNodes }, @{ $result->ReservedNodes };
       }
-      $self->new_with_coercions(Paws::RedShift::DescribeReservedNodes->_returns, %$params);
+      return $result;
     } else {
       while ($result->Marker) {
         $result = $self->DescribeReservedNodes(@_, Marker => $result->Marker);

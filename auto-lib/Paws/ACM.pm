@@ -67,14 +67,11 @@ package Paws::ACM;
     my $result = $self->ListCertificates(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ CertificateSummaryList } = $result->CertificateSummaryList;
-
       while ($result->NextToken) {
         $result = $self->ListCertificates(@_, NextToken => $result->NextToken);
         push @{ $result->CertificateSummaryList }, @{ $result->CertificateSummaryList };
       }
-      $self->new_with_coercions(Paws::ACM::ListCertificates->_returns, %$params);
+      return $result;
     } else {
       while ($result->NextToken) {
         $result = $self->ListCertificates(@_, NextToken => $result->NextToken);

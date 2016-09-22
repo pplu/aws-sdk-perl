@@ -57,14 +57,11 @@ package Paws::ApplicationAutoScaling;
     my $result = $self->DescribeScalableTargets(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ ScalableTargets } = $result->ScalableTargets;
-
       while ($result->NextToken) {
         $result = $self->DescribeScalableTargets(@_, NextToken => $result->NextToken);
         push @{ $result->ScalableTargets }, @{ $result->ScalableTargets };
       }
-      $self->new_with_coercions(Paws::ApplicationAutoScaling::DescribeScalableTargets->_returns, %$params);
+      return $result;
     } else {
       while ($result->NextToken) {
         $result = $self->DescribeScalableTargets(@_, NextToken => $result->NextToken);
@@ -81,14 +78,11 @@ package Paws::ApplicationAutoScaling;
     my $result = $self->DescribeScalingActivities(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ ScalingActivities } = $result->ScalingActivities;
-
       while ($result->NextToken) {
         $result = $self->DescribeScalingActivities(@_, NextToken => $result->NextToken);
         push @{ $result->ScalingActivities }, @{ $result->ScalingActivities };
       }
-      $self->new_with_coercions(Paws::ApplicationAutoScaling::DescribeScalingActivities->_returns, %$params);
+      return $result;
     } else {
       while ($result->NextToken) {
         $result = $self->DescribeScalingActivities(@_, NextToken => $result->NextToken);
@@ -105,14 +99,11 @@ package Paws::ApplicationAutoScaling;
     my $result = $self->DescribeScalingPolicies(@_);
 
     if (not defined $callback) {
-      my $params = {};
-      $params->{ ScalingPolicies } = $result->ScalingPolicies;
-
       while ($result->NextToken) {
         $result = $self->DescribeScalingPolicies(@_, NextToken => $result->NextToken);
         push @{ $result->ScalingPolicies }, @{ $result->ScalingPolicies };
       }
-      $self->new_with_coercions(Paws::ApplicationAutoScaling::DescribeScalingPolicies->_returns, %$params);
+      return $result;
     } else {
       while ($result->NextToken) {
         $result = $self->DescribeScalingPolicies(@_, NextToken => $result->NextToken);
