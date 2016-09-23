@@ -573,6 +573,15 @@ network interface.
 
 
 
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+
+
+
 =head1 SEE ALSO
 
 This service class forms part of L<Paws>

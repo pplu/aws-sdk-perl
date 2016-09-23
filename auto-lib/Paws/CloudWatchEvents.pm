@@ -329,6 +329,15 @@ characters when creating event patterns so that they match the ARN
 syntax in the event you want to match.
 
 
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+
+
+
 =head1 SEE ALSO
 
 This service class forms part of L<Paws>

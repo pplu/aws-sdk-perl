@@ -170,6 +170,15 @@ will return only the streams ARNs for that table.
 You can call I<ListStreams> at a maximum rate of 5 times per second.
 
 
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+
+
+
 =head1 SEE ALSO
 
 This service class forms part of L<Paws>

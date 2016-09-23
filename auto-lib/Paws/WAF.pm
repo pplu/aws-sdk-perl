@@ -1339,6 +1339,15 @@ For more information about how to use the AWS WAF API to allow or block
 HTTP requests, see the AWS WAF Developer Guide.
 
 
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+
+
+
 =head1 SEE ALSO
 
 This service class forms part of L<Paws>

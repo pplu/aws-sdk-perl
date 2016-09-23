@@ -500,6 +500,51 @@ Returns: a L<Paws::DataPipeline::ValidatePipelineDefinitionOutput> instance
 formed and can be run without error.
 
 
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 DescribeAllObjects(sub { },ObjectIds => ArrayRef[Str], PipelineId => Str, [EvaluateExpressions => Bool, Marker => Str])
+
+=head2 DescribeAllObjects(ObjectIds => ArrayRef[Str], PipelineId => Str, [EvaluateExpressions => Bool, Marker => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - pipelineObjects, passing the object as the first parameter, and the string 'pipelineObjects' as the second parameter 
+
+If not, it will return a a L<Paws::DataPipeline::DescribeObjectsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllPipelines(sub { },[Marker => Str])
+
+=head2 ListAllPipelines([Marker => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - pipelineIdList, passing the object as the first parameter, and the string 'pipelineIdList' as the second parameter 
+
+If not, it will return a a L<Paws::DataPipeline::ListPipelinesOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 QueryAllObjects(sub { },PipelineId => Str, Sphere => Str, [Limit => Int, Marker => Str, Query => L<Paws::DataPipeline::Query>])
+
+=head2 QueryAllObjects(PipelineId => Str, Sphere => Str, [Limit => Int, Marker => Str, Query => L<Paws::DataPipeline::Query>])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ids, passing the object as the first parameter, and the string 'ids' as the second parameter 
+
+If not, it will return a a L<Paws::DataPipeline::QueryObjectsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+
+
+
 =head1 SEE ALSO
 
 This service class forms part of L<Paws>

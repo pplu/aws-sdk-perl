@@ -428,6 +428,9 @@ Returns: [% out_shape = c.shapename_for_operation_output(op_name); IF (out_shape
   [% c.doc_for_method(op_name) %]
 
 [% END %]
+
+[% c.paginator_documentation_template | eval %]
+
 =head1 SEE ALSO
 
 This service class forms part of L<Paws>
@@ -996,6 +999,63 @@ package [% inner_class %];
       return "$paginator->{ input_token } => " . $self->paginator_accessor($paginator->{ output_token });
     }
   }
+
+  has paginator_documentation_template => (is => 'ro', isa => 'Str', default => q#
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+[%- FOR op IN c.paginators_struct.keys.sort %]
+[%- op_name = op %]
+=head2 [% c.get_paginator_name(op) %](sub { },
+[%- out_shape = c.input_for_operation(op_name) %]
+[%- req_list = out_shape.required.sort %]
+[%- FOREACH out_name IN req_list.sort -%]
+  [%- member = c.shape(out_shape.members.$out_name.shape) -%]
+  [%- out_name %] => [% c.perl_type_to_pod(member.perl_type) %]
+  [%- IF (NOT loop.last) %], [% END %]
+[%- END %]
+[%- opt_list = c.optional_params_in_shape(out_shape) %]
+[%- IF (opt_list.size > 0) %]
+[%- IF (req_list.size > 0) %], [% END %][
+[%- FOREACH out_name IN opt_list.sort %]
+  [%- member = c.shape(out_shape.members.$out_name.shape) -%]
+  [%- out_name %] => [% c.perl_type_to_pod(member.perl_type) %]
+  [%- IF (NOT loop.last) %], [% END %]
+[%- END %]]
+[%- END %])
+
+=head2 [% c.get_paginator_name(op) %](
+[%- out_shape = c.input_for_operation(op_name) %]
+[%- req_list = out_shape.required.sort %]
+[%- FOREACH out_name IN req_list.sort -%]
+  [%- member = c.shape(out_shape.members.$out_name.shape) -%]
+  [%- out_name %] => [% c.perl_type_to_pod(member.perl_type) %]
+  [%- IF (NOT loop.last) %], [% END %]
+[%- END %]
+[%- opt_list = c.optional_params_in_shape(out_shape) %]
+[%- IF (opt_list.size > 0) %]
+[%- IF (req_list.size > 0) %], [% END %][
+[%- FOREACH out_name IN opt_list.sort %]
+  [%- member = c.shape(out_shape.members.$out_name.shape) -%]
+  [%- out_name %] => [% c.perl_type_to_pod(member.perl_type) %]
+  [%- IF (NOT loop.last) %], [% END %]
+[%- END %]]
+[%- END %])
+
+[%- paginator = c.paginators_struct.$op %]
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+[%- FOREACH param = c.paginator_result_key(paginator) %]
+ - [% param %], passing the object as the first parameter, and the string '[% param %]' as the second parameter 
+[% END -%]
+
+If not, it will return a [% out_shape = c.shapename_for_operation_output(op_name); IF (out_shape) %]a L<[% c.api %]::[% out_shape %]> instance[% ELSE %]nothing[% END %] with all the [%- FOREACH param = c.paginator_result_key(paginator) %]C<param>s; [% 'and' IF (not loop.last)%][% END %] from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+[% END %]
+
+#);
 
   has paginator_template => (is => 'ro', isa => 'Str', default => q#
   [%- FOR op IN c.paginators_struct.keys.sort %]

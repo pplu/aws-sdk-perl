@@ -376,6 +376,15 @@ To remove a tag, specify only the tag key to remove (not the value). To
 overwrite the value for an existing tag, use AddTagsToResource.
 
 
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+
+
+
 =head1 SEE ALSO
 
 This service class forms part of L<Paws>

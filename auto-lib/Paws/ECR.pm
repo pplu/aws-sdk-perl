@@ -350,6 +350,27 @@ for general use by customers. Use the C<docker> CLI to pull, tag, and
 push images.
 
 
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllImages(sub { },RepositoryName => Str, [Filter => L<Paws::ECR::ListImagesFilter>, MaxResults => Int, NextToken => Str, RegistryId => Str])
+
+=head2 ListAllImages(RepositoryName => Str, [Filter => L<Paws::ECR::ListImagesFilter>, MaxResults => Int, NextToken => Str, RegistryId => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - imageIds, passing the object as the first parameter, and the string 'imageIds' as the second parameter 
+
+If not, it will return a a L<Paws::ECR::ListImagesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+
+
+
 =head1 SEE ALSO
 
 This service class forms part of L<Paws>

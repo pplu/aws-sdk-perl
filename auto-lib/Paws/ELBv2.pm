@@ -711,6 +711,51 @@ specified load balancer. The specified subnets replace the previously
 enabled subnets.
 
 
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 DescribeAllListeners(sub { },[ListenerArns => ArrayRef[Str], LoadBalancerArn => Str, Marker => Str, PageSize => Int])
+
+=head2 DescribeAllListeners([ListenerArns => ArrayRef[Str], LoadBalancerArn => Str, Marker => Str, PageSize => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Listeners, passing the object as the first parameter, and the string 'Listeners' as the second parameter 
+
+If not, it will return a a L<Paws::ELBv2::DescribeListenersOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllLoadBalancers(sub { },[LoadBalancerArns => ArrayRef[Str], Marker => Str, Names => ArrayRef[Str], PageSize => Int])
+
+=head2 DescribeAllLoadBalancers([LoadBalancerArns => ArrayRef[Str], Marker => Str, Names => ArrayRef[Str], PageSize => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - LoadBalancers, passing the object as the first parameter, and the string 'LoadBalancers' as the second parameter 
+
+If not, it will return a a L<Paws::ELBv2::DescribeLoadBalancersOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllTargetGroups(sub { },[LoadBalancerArn => Str, Marker => Str, Names => ArrayRef[Str], PageSize => Int, TargetGroupArns => ArrayRef[Str]])
+
+=head2 DescribeAllTargetGroups([LoadBalancerArn => Str, Marker => Str, Names => ArrayRef[Str], PageSize => Int, TargetGroupArns => ArrayRef[Str]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - TargetGroups, passing the object as the first parameter, and the string 'TargetGroups' as the second parameter 
+
+If not, it will return a a L<Paws::ELBv2::DescribeTargetGroupsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+
+
+
 =head1 SEE ALSO
 
 This service class forms part of L<Paws>

@@ -1702,6 +1702,195 @@ Returns: a L<Paws::RedShift::RotateEncryptionKeyResult> instance
   Rotates the encryption keys for a cluster.
 
 
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 DescribeAllClusterParameterGroups(sub { },[Marker => Str, MaxRecords => Int, ParameterGroupName => Str, TagKeys => ArrayRef[Str], TagValues => ArrayRef[Str]])
+
+=head2 DescribeAllClusterParameterGroups([Marker => Str, MaxRecords => Int, ParameterGroupName => Str, TagKeys => ArrayRef[Str], TagValues => ArrayRef[Str]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ParameterGroups, passing the object as the first parameter, and the string 'ParameterGroups' as the second parameter 
+
+If not, it will return a a L<Paws::RedShift::ClusterParameterGroupsMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllClusterParameters(sub { },ParameterGroupName => Str, [Marker => Str, MaxRecords => Int, Source => Str])
+
+=head2 DescribeAllClusterParameters(ParameterGroupName => Str, [Marker => Str, MaxRecords => Int, Source => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Parameters, passing the object as the first parameter, and the string 'Parameters' as the second parameter 
+
+If not, it will return a a L<Paws::RedShift::ClusterParameterGroupDetails> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllClusters(sub { },[ClusterIdentifier => Str, Marker => Str, MaxRecords => Int, TagKeys => ArrayRef[Str], TagValues => ArrayRef[Str]])
+
+=head2 DescribeAllClusters([ClusterIdentifier => Str, Marker => Str, MaxRecords => Int, TagKeys => ArrayRef[Str], TagValues => ArrayRef[Str]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Clusters, passing the object as the first parameter, and the string 'Clusters' as the second parameter 
+
+If not, it will return a a L<Paws::RedShift::ClustersMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllClusterSecurityGroups(sub { },[ClusterSecurityGroupName => Str, Marker => Str, MaxRecords => Int, TagKeys => ArrayRef[Str], TagValues => ArrayRef[Str]])
+
+=head2 DescribeAllClusterSecurityGroups([ClusterSecurityGroupName => Str, Marker => Str, MaxRecords => Int, TagKeys => ArrayRef[Str], TagValues => ArrayRef[Str]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ClusterSecurityGroups, passing the object as the first parameter, and the string 'ClusterSecurityGroups' as the second parameter 
+
+If not, it will return a a L<Paws::RedShift::ClusterSecurityGroupMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllClusterSnapshots(sub { },[ClusterIdentifier => Str, EndTime => Str, Marker => Str, MaxRecords => Int, OwnerAccount => Str, SnapshotIdentifier => Str, SnapshotType => Str, StartTime => Str, TagKeys => ArrayRef[Str], TagValues => ArrayRef[Str]])
+
+=head2 DescribeAllClusterSnapshots([ClusterIdentifier => Str, EndTime => Str, Marker => Str, MaxRecords => Int, OwnerAccount => Str, SnapshotIdentifier => Str, SnapshotType => Str, StartTime => Str, TagKeys => ArrayRef[Str], TagValues => ArrayRef[Str]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Snapshots, passing the object as the first parameter, and the string 'Snapshots' as the second parameter 
+
+If not, it will return a a L<Paws::RedShift::SnapshotMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllClusterSubnetGroups(sub { },[ClusterSubnetGroupName => Str, Marker => Str, MaxRecords => Int, TagKeys => ArrayRef[Str], TagValues => ArrayRef[Str]])
+
+=head2 DescribeAllClusterSubnetGroups([ClusterSubnetGroupName => Str, Marker => Str, MaxRecords => Int, TagKeys => ArrayRef[Str], TagValues => ArrayRef[Str]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ClusterSubnetGroups, passing the object as the first parameter, and the string 'ClusterSubnetGroups' as the second parameter 
+
+If not, it will return a a L<Paws::RedShift::ClusterSubnetGroupMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllClusterVersions(sub { },[ClusterParameterGroupFamily => Str, ClusterVersion => Str, Marker => Str, MaxRecords => Int])
+
+=head2 DescribeAllClusterVersions([ClusterParameterGroupFamily => Str, ClusterVersion => Str, Marker => Str, MaxRecords => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ClusterVersions, passing the object as the first parameter, and the string 'ClusterVersions' as the second parameter 
+
+If not, it will return a a L<Paws::RedShift::ClusterVersionsMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllDefaultClusterParameters(sub { },ParameterGroupFamily => Str, [Marker => Str, MaxRecords => Int])
+
+=head2 DescribeAllDefaultClusterParameters(ParameterGroupFamily => Str, [Marker => Str, MaxRecords => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - DefaultClusterParameters.Parameters, passing the object as the first parameter, and the string 'DefaultClusterParameters.Parameters' as the second parameter 
+
+If not, it will return a a L<Paws::RedShift::DescribeDefaultClusterParametersResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllEvents(sub { },[Duration => Int, EndTime => Str, Marker => Str, MaxRecords => Int, SourceIdentifier => Str, SourceType => Str, StartTime => Str])
+
+=head2 DescribeAllEvents([Duration => Int, EndTime => Str, Marker => Str, MaxRecords => Int, SourceIdentifier => Str, SourceType => Str, StartTime => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Events, passing the object as the first parameter, and the string 'Events' as the second parameter 
+
+If not, it will return a a L<Paws::RedShift::EventsMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllEventSubscriptions(sub { },[Marker => Str, MaxRecords => Int, SubscriptionName => Str])
+
+=head2 DescribeAllEventSubscriptions([Marker => Str, MaxRecords => Int, SubscriptionName => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - EventSubscriptionsList, passing the object as the first parameter, and the string 'EventSubscriptionsList' as the second parameter 
+
+If not, it will return a a L<Paws::RedShift::EventSubscriptionsMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllHsmClientCertificates(sub { },[HsmClientCertificateIdentifier => Str, Marker => Str, MaxRecords => Int, TagKeys => ArrayRef[Str], TagValues => ArrayRef[Str]])
+
+=head2 DescribeAllHsmClientCertificates([HsmClientCertificateIdentifier => Str, Marker => Str, MaxRecords => Int, TagKeys => ArrayRef[Str], TagValues => ArrayRef[Str]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - HsmClientCertificates, passing the object as the first parameter, and the string 'HsmClientCertificates' as the second parameter 
+
+If not, it will return a a L<Paws::RedShift::HsmClientCertificateMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllHsmConfigurations(sub { },[HsmConfigurationIdentifier => Str, Marker => Str, MaxRecords => Int, TagKeys => ArrayRef[Str], TagValues => ArrayRef[Str]])
+
+=head2 DescribeAllHsmConfigurations([HsmConfigurationIdentifier => Str, Marker => Str, MaxRecords => Int, TagKeys => ArrayRef[Str], TagValues => ArrayRef[Str]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - HsmConfigurations, passing the object as the first parameter, and the string 'HsmConfigurations' as the second parameter 
+
+If not, it will return a a L<Paws::RedShift::HsmConfigurationMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllOrderableClusterOptions(sub { },[ClusterVersion => Str, Marker => Str, MaxRecords => Int, NodeType => Str])
+
+=head2 DescribeAllOrderableClusterOptions([ClusterVersion => Str, Marker => Str, MaxRecords => Int, NodeType => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - OrderableClusterOptions, passing the object as the first parameter, and the string 'OrderableClusterOptions' as the second parameter 
+
+If not, it will return a a L<Paws::RedShift::OrderableClusterOptionsMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllReservedNodeOfferings(sub { },[Marker => Str, MaxRecords => Int, ReservedNodeOfferingId => Str])
+
+=head2 DescribeAllReservedNodeOfferings([Marker => Str, MaxRecords => Int, ReservedNodeOfferingId => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ReservedNodeOfferings, passing the object as the first parameter, and the string 'ReservedNodeOfferings' as the second parameter 
+
+If not, it will return a a L<Paws::RedShift::ReservedNodeOfferingsMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllReservedNodes(sub { },[Marker => Str, MaxRecords => Int, ReservedNodeId => Str])
+
+=head2 DescribeAllReservedNodes([Marker => Str, MaxRecords => Int, ReservedNodeId => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ReservedNodes, passing the object as the first parameter, and the string 'ReservedNodes' as the second parameter 
+
+If not, it will return a a L<Paws::RedShift::ReservedNodesMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+
+
+
 =head1 SEE ALSO
 
 This service class forms part of L<Paws>

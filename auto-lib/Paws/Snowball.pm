@@ -260,6 +260,15 @@ job state, usually within 60 minutes of the job being created, this
 action is no longer available.
 
 
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+
+
+
 =head1 SEE ALSO
 
 This service class forms part of L<Paws>

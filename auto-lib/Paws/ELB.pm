@@ -724,6 +724,27 @@ Application-Controlled Session Stickiness in the I<Classic Load
 Balancers Guide>.
 
 
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 DescribeAllLoadBalancers(sub { },[LoadBalancerNames => ArrayRef[Str], Marker => Str, PageSize => Int])
+
+=head2 DescribeAllLoadBalancers([LoadBalancerNames => ArrayRef[Str], Marker => Str, PageSize => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - LoadBalancerDescriptions, passing the object as the first parameter, and the string 'LoadBalancerDescriptions' as the second parameter 
+
+If not, it will return a a L<Paws::ELB::DescribeAccessPointsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+
+
+
 =head1 SEE ALSO
 
 This service class forms part of L<Paws>

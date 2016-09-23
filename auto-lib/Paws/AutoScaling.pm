@@ -1294,6 +1294,111 @@ All other optional parameters are left unchanged if not specified.
 
 
 
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 DescribeAllAutoScalingGroups(sub { },[AutoScalingGroupNames => ArrayRef[Str], MaxRecords => Int, NextToken => Str])
+
+=head2 DescribeAllAutoScalingGroups([AutoScalingGroupNames => ArrayRef[Str], MaxRecords => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - AutoScalingGroups, passing the object as the first parameter, and the string 'AutoScalingGroups' as the second parameter 
+
+If not, it will return a a L<Paws::AutoScaling::AutoScalingGroupsType> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllAutoScalingInstances(sub { },[InstanceIds => ArrayRef[Str], MaxRecords => Int, NextToken => Str])
+
+=head2 DescribeAllAutoScalingInstances([InstanceIds => ArrayRef[Str], MaxRecords => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - AutoScalingInstances, passing the object as the first parameter, and the string 'AutoScalingInstances' as the second parameter 
+
+If not, it will return a a L<Paws::AutoScaling::AutoScalingInstancesType> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllLaunchConfigurations(sub { },[LaunchConfigurationNames => ArrayRef[Str], MaxRecords => Int, NextToken => Str])
+
+=head2 DescribeAllLaunchConfigurations([LaunchConfigurationNames => ArrayRef[Str], MaxRecords => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - LaunchConfigurations, passing the object as the first parameter, and the string 'LaunchConfigurations' as the second parameter 
+
+If not, it will return a a L<Paws::AutoScaling::LaunchConfigurationsType> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllNotificationConfigurations(sub { },[AutoScalingGroupNames => ArrayRef[Str], MaxRecords => Int, NextToken => Str])
+
+=head2 DescribeAllNotificationConfigurations([AutoScalingGroupNames => ArrayRef[Str], MaxRecords => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - NotificationConfigurations, passing the object as the first parameter, and the string 'NotificationConfigurations' as the second parameter 
+
+If not, it will return a a L<Paws::AutoScaling::DescribeNotificationConfigurationsAnswer> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllPolicies(sub { },[AutoScalingGroupName => Str, MaxRecords => Int, NextToken => Str, PolicyNames => ArrayRef[Str], PolicyTypes => ArrayRef[Str]])
+
+=head2 DescribeAllPolicies([AutoScalingGroupName => Str, MaxRecords => Int, NextToken => Str, PolicyNames => ArrayRef[Str], PolicyTypes => ArrayRef[Str]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ScalingPolicies, passing the object as the first parameter, and the string 'ScalingPolicies' as the second parameter 
+
+If not, it will return a a L<Paws::AutoScaling::PoliciesType> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllScalingActivities(sub { },[ActivityIds => ArrayRef[Str], AutoScalingGroupName => Str, MaxRecords => Int, NextToken => Str])
+
+=head2 DescribeAllScalingActivities([ActivityIds => ArrayRef[Str], AutoScalingGroupName => Str, MaxRecords => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Activities, passing the object as the first parameter, and the string 'Activities' as the second parameter 
+
+If not, it will return a a L<Paws::AutoScaling::ActivitiesType> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllScheduledActions(sub { },[AutoScalingGroupName => Str, EndTime => Str, MaxRecords => Int, NextToken => Str, ScheduledActionNames => ArrayRef[Str], StartTime => Str])
+
+=head2 DescribeAllScheduledActions([AutoScalingGroupName => Str, EndTime => Str, MaxRecords => Int, NextToken => Str, ScheduledActionNames => ArrayRef[Str], StartTime => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ScheduledUpdateGroupActions, passing the object as the first parameter, and the string 'ScheduledUpdateGroupActions' as the second parameter 
+
+If not, it will return a a L<Paws::AutoScaling::ScheduledActionsType> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllTags(sub { },[Filters => ArrayRef[L<Paws::AutoScaling::Filter>], MaxRecords => Int, NextToken => Str])
+
+=head2 DescribeAllTags([Filters => ArrayRef[L<Paws::AutoScaling::Filter>], MaxRecords => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Tags, passing the object as the first parameter, and the string 'Tags' as the second parameter 
+
+If not, it will return a a L<Paws::AutoScaling::TagsType> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+
+
+
 =head1 SEE ALSO
 
 This service class forms part of L<Paws>

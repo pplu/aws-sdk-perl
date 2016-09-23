@@ -1023,6 +1023,159 @@ cache security group. Use this action to disallow access from an Amazon
 EC2 security group that had been previously authorized.
 
 
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 DescribeAllCacheClusters(sub { },[CacheClusterId => Str, Marker => Str, MaxRecords => Int, ShowCacheNodeInfo => Bool])
+
+=head2 DescribeAllCacheClusters([CacheClusterId => Str, Marker => Str, MaxRecords => Int, ShowCacheNodeInfo => Bool])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - CacheClusters, passing the object as the first parameter, and the string 'CacheClusters' as the second parameter 
+
+If not, it will return a a L<Paws::ElastiCache::CacheClusterMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllCacheEngineVersions(sub { },[CacheParameterGroupFamily => Str, DefaultOnly => Bool, Engine => Str, EngineVersion => Str, Marker => Str, MaxRecords => Int])
+
+=head2 DescribeAllCacheEngineVersions([CacheParameterGroupFamily => Str, DefaultOnly => Bool, Engine => Str, EngineVersion => Str, Marker => Str, MaxRecords => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - CacheEngineVersions, passing the object as the first parameter, and the string 'CacheEngineVersions' as the second parameter 
+
+If not, it will return a a L<Paws::ElastiCache::CacheEngineVersionMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllCacheParameterGroups(sub { },[CacheParameterGroupName => Str, Marker => Str, MaxRecords => Int])
+
+=head2 DescribeAllCacheParameterGroups([CacheParameterGroupName => Str, Marker => Str, MaxRecords => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - CacheParameterGroups, passing the object as the first parameter, and the string 'CacheParameterGroups' as the second parameter 
+
+If not, it will return a a L<Paws::ElastiCache::CacheParameterGroupsMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllCacheParameters(sub { },CacheParameterGroupName => Str, [Marker => Str, MaxRecords => Int, Source => Str])
+
+=head2 DescribeAllCacheParameters(CacheParameterGroupName => Str, [Marker => Str, MaxRecords => Int, Source => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Parameters, passing the object as the first parameter, and the string 'Parameters' as the second parameter 
+
+If not, it will return a a L<Paws::ElastiCache::CacheParameterGroupDetails> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllCacheSecurityGroups(sub { },[CacheSecurityGroupName => Str, Marker => Str, MaxRecords => Int])
+
+=head2 DescribeAllCacheSecurityGroups([CacheSecurityGroupName => Str, Marker => Str, MaxRecords => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - CacheSecurityGroups, passing the object as the first parameter, and the string 'CacheSecurityGroups' as the second parameter 
+
+If not, it will return a a L<Paws::ElastiCache::CacheSecurityGroupMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllCacheSubnetGroups(sub { },[CacheSubnetGroupName => Str, Marker => Str, MaxRecords => Int])
+
+=head2 DescribeAllCacheSubnetGroups([CacheSubnetGroupName => Str, Marker => Str, MaxRecords => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - CacheSubnetGroups, passing the object as the first parameter, and the string 'CacheSubnetGroups' as the second parameter 
+
+If not, it will return a a L<Paws::ElastiCache::CacheSubnetGroupMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllEngineDefaultParameters(sub { },CacheParameterGroupFamily => Str, [Marker => Str, MaxRecords => Int])
+
+=head2 DescribeAllEngineDefaultParameters(CacheParameterGroupFamily => Str, [Marker => Str, MaxRecords => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - EngineDefaults.Parameters, passing the object as the first parameter, and the string 'EngineDefaults.Parameters' as the second parameter 
+
+If not, it will return a a L<Paws::ElastiCache::DescribeEngineDefaultParametersResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllEvents(sub { },[Duration => Int, EndTime => Str, Marker => Str, MaxRecords => Int, SourceIdentifier => Str, SourceType => Str, StartTime => Str])
+
+=head2 DescribeAllEvents([Duration => Int, EndTime => Str, Marker => Str, MaxRecords => Int, SourceIdentifier => Str, SourceType => Str, StartTime => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Events, passing the object as the first parameter, and the string 'Events' as the second parameter 
+
+If not, it will return a a L<Paws::ElastiCache::EventsMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllReplicationGroups(sub { },[Marker => Str, MaxRecords => Int, ReplicationGroupId => Str])
+
+=head2 DescribeAllReplicationGroups([Marker => Str, MaxRecords => Int, ReplicationGroupId => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ReplicationGroups, passing the object as the first parameter, and the string 'ReplicationGroups' as the second parameter 
+
+If not, it will return a a L<Paws::ElastiCache::ReplicationGroupMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllReservedCacheNodes(sub { },[CacheNodeType => Str, Duration => Str, Marker => Str, MaxRecords => Int, OfferingType => Str, ProductDescription => Str, ReservedCacheNodeId => Str, ReservedCacheNodesOfferingId => Str])
+
+=head2 DescribeAllReservedCacheNodes([CacheNodeType => Str, Duration => Str, Marker => Str, MaxRecords => Int, OfferingType => Str, ProductDescription => Str, ReservedCacheNodeId => Str, ReservedCacheNodesOfferingId => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ReservedCacheNodes, passing the object as the first parameter, and the string 'ReservedCacheNodes' as the second parameter 
+
+If not, it will return a a L<Paws::ElastiCache::ReservedCacheNodeMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllReservedCacheNodesOfferings(sub { },[CacheNodeType => Str, Duration => Str, Marker => Str, MaxRecords => Int, OfferingType => Str, ProductDescription => Str, ReservedCacheNodesOfferingId => Str])
+
+=head2 DescribeAllReservedCacheNodesOfferings([CacheNodeType => Str, Duration => Str, Marker => Str, MaxRecords => Int, OfferingType => Str, ProductDescription => Str, ReservedCacheNodesOfferingId => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ReservedCacheNodesOfferings, passing the object as the first parameter, and the string 'ReservedCacheNodesOfferings' as the second parameter 
+
+If not, it will return a a L<Paws::ElastiCache::ReservedCacheNodesOfferingMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllSnapshots(sub { },[CacheClusterId => Str, Marker => Str, MaxRecords => Int, SnapshotName => Str, SnapshotSource => Str])
+
+=head2 DescribeAllSnapshots([CacheClusterId => Str, Marker => Str, MaxRecords => Int, SnapshotName => Str, SnapshotSource => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Snapshots, passing the object as the first parameter, and the string 'Snapshots' as the second parameter 
+
+If not, it will return a a L<Paws::ElastiCache::DescribeSnapshotsListMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+
+
+
 =head1 SEE ALSO
 
 This service class forms part of L<Paws>

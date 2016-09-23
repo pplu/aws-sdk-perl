@@ -473,6 +473,15 @@ the specified connection will be returned. If a virtual interface ID is
 provided, only this particular virtual interface will be returned.
 
 
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+
+
+
 =head1 SEE ALSO
 
 This service class forms part of L<Paws>

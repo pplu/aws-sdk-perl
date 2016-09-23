@@ -1437,6 +1437,63 @@ Large Archives in Parts (Multipart Upload) and Upload Part in the
 I<Amazon Glacier Developer Guide>.
 
 
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllJobs(sub { },AccountId => Str, VaultName => Str, [Completed => Str, Limit => Str, Marker => Str, Statuscode => Str])
+
+=head2 ListAllJobs(AccountId => Str, VaultName => Str, [Completed => Str, Limit => Str, Marker => Str, Statuscode => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - JobList, passing the object as the first parameter, and the string 'JobList' as the second parameter 
+
+If not, it will return a a L<Paws::Glacier::ListJobsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllMultipartUploads(sub { },AccountId => Str, VaultName => Str, [Limit => Str, Marker => Str])
+
+=head2 ListAllMultipartUploads(AccountId => Str, VaultName => Str, [Limit => Str, Marker => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - UploadsList, passing the object as the first parameter, and the string 'UploadsList' as the second parameter 
+
+If not, it will return a a L<Paws::Glacier::ListMultipartUploadsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllParts(sub { },AccountId => Str, UploadId => Str, VaultName => Str, [Limit => Str, Marker => Str])
+
+=head2 ListAllParts(AccountId => Str, UploadId => Str, VaultName => Str, [Limit => Str, Marker => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Parts, passing the object as the first parameter, and the string 'Parts' as the second parameter 
+
+If not, it will return a a L<Paws::Glacier::ListPartsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllVaults(sub { },AccountId => Str, [Limit => Str, Marker => Str])
+
+=head2 ListAllVaults(AccountId => Str, [Limit => Str, Marker => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - VaultList, passing the object as the first parameter, and the string 'VaultList' as the second parameter 
+
+If not, it will return a a L<Paws::Glacier::ListVaultsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+
+
+
 =head1 SEE ALSO
 
 This service class forms part of L<Paws>

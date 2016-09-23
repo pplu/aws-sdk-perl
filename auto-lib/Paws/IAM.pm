@@ -3207,6 +3207,337 @@ CodeCommit repository, see Set up AWS CodeCommit for SSH Connections in
 the I<AWS CodeCommit User Guide>.
 
 
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 GetAllAccountAuthorizationDetails(sub { },[Filter => ArrayRef[Str], Marker => Str, MaxItems => Int])
+
+=head2 GetAllAccountAuthorizationDetails([Filter => ArrayRef[Str], Marker => Str, MaxItems => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - UserDetailList, passing the object as the first parameter, and the string 'UserDetailList' as the second parameter 
+
+ - GroupDetailList, passing the object as the first parameter, and the string 'GroupDetailList' as the second parameter 
+
+ - RoleDetailList, passing the object as the first parameter, and the string 'RoleDetailList' as the second parameter 
+
+ - Policies, passing the object as the first parameter, and the string 'Policies' as the second parameter 
+
+If not, it will return a a L<Paws::IAM::GetAccountAuthorizationDetailsResponse> instance with all the C<param>s; andC<param>s; andC<param>s; andC<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllGroup(sub { },GroupName => Str, [Marker => Str, MaxItems => Int])
+
+=head2 GetAllGroup(GroupName => Str, [Marker => Str, MaxItems => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Users, passing the object as the first parameter, and the string 'Users' as the second parameter 
+
+If not, it will return a a L<Paws::IAM::GetGroupResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllAccessKeys(sub { },[Marker => Str, MaxItems => Int, UserName => Str])
+
+=head2 ListAllAccessKeys([Marker => Str, MaxItems => Int, UserName => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - AccessKeyMetadata, passing the object as the first parameter, and the string 'AccessKeyMetadata' as the second parameter 
+
+If not, it will return a a L<Paws::IAM::ListAccessKeysResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllAccountAliases(sub { },[Marker => Str, MaxItems => Int])
+
+=head2 ListAllAccountAliases([Marker => Str, MaxItems => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - AccountAliases, passing the object as the first parameter, and the string 'AccountAliases' as the second parameter 
+
+If not, it will return a a L<Paws::IAM::ListAccountAliasesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllAttachedGroupPolicies(sub { },GroupName => Str, [Marker => Str, MaxItems => Int, PathPrefix => Str])
+
+=head2 ListAllAttachedGroupPolicies(GroupName => Str, [Marker => Str, MaxItems => Int, PathPrefix => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - AttachedPolicies, passing the object as the first parameter, and the string 'AttachedPolicies' as the second parameter 
+
+If not, it will return a a L<Paws::IAM::ListAttachedGroupPoliciesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllAttachedRolePolicies(sub { },RoleName => Str, [Marker => Str, MaxItems => Int, PathPrefix => Str])
+
+=head2 ListAllAttachedRolePolicies(RoleName => Str, [Marker => Str, MaxItems => Int, PathPrefix => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - AttachedPolicies, passing the object as the first parameter, and the string 'AttachedPolicies' as the second parameter 
+
+If not, it will return a a L<Paws::IAM::ListAttachedRolePoliciesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllAttachedUserPolicies(sub { },UserName => Str, [Marker => Str, MaxItems => Int, PathPrefix => Str])
+
+=head2 ListAllAttachedUserPolicies(UserName => Str, [Marker => Str, MaxItems => Int, PathPrefix => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - AttachedPolicies, passing the object as the first parameter, and the string 'AttachedPolicies' as the second parameter 
+
+If not, it will return a a L<Paws::IAM::ListAttachedUserPoliciesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllEntitiesForPolicy(sub { },PolicyArn => Str, [EntityFilter => Str, Marker => Str, MaxItems => Int, PathPrefix => Str])
+
+=head2 ListAllEntitiesForPolicy(PolicyArn => Str, [EntityFilter => Str, Marker => Str, MaxItems => Int, PathPrefix => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - PolicyGroups, passing the object as the first parameter, and the string 'PolicyGroups' as the second parameter 
+
+ - PolicyUsers, passing the object as the first parameter, and the string 'PolicyUsers' as the second parameter 
+
+ - PolicyRoles, passing the object as the first parameter, and the string 'PolicyRoles' as the second parameter 
+
+If not, it will return a a L<Paws::IAM::ListEntitiesForPolicyResponse> instance with all the C<param>s; andC<param>s; andC<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllGroupPolicies(sub { },GroupName => Str, [Marker => Str, MaxItems => Int])
+
+=head2 ListAllGroupPolicies(GroupName => Str, [Marker => Str, MaxItems => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - PolicyNames, passing the object as the first parameter, and the string 'PolicyNames' as the second parameter 
+
+If not, it will return a a L<Paws::IAM::ListGroupPoliciesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllGroups(sub { },[Marker => Str, MaxItems => Int, PathPrefix => Str])
+
+=head2 ListAllGroups([Marker => Str, MaxItems => Int, PathPrefix => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Groups, passing the object as the first parameter, and the string 'Groups' as the second parameter 
+
+If not, it will return a a L<Paws::IAM::ListGroupsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllGroupsForUser(sub { },UserName => Str, [Marker => Str, MaxItems => Int])
+
+=head2 ListAllGroupsForUser(UserName => Str, [Marker => Str, MaxItems => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Groups, passing the object as the first parameter, and the string 'Groups' as the second parameter 
+
+If not, it will return a a L<Paws::IAM::ListGroupsForUserResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllInstanceProfiles(sub { },[Marker => Str, MaxItems => Int, PathPrefix => Str])
+
+=head2 ListAllInstanceProfiles([Marker => Str, MaxItems => Int, PathPrefix => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - InstanceProfiles, passing the object as the first parameter, and the string 'InstanceProfiles' as the second parameter 
+
+If not, it will return a a L<Paws::IAM::ListInstanceProfilesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllInstanceProfilesForRole(sub { },RoleName => Str, [Marker => Str, MaxItems => Int])
+
+=head2 ListAllInstanceProfilesForRole(RoleName => Str, [Marker => Str, MaxItems => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - InstanceProfiles, passing the object as the first parameter, and the string 'InstanceProfiles' as the second parameter 
+
+If not, it will return a a L<Paws::IAM::ListInstanceProfilesForRoleResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllMFADevices(sub { },[Marker => Str, MaxItems => Int, UserName => Str])
+
+=head2 ListAllMFADevices([Marker => Str, MaxItems => Int, UserName => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - MFADevices, passing the object as the first parameter, and the string 'MFADevices' as the second parameter 
+
+If not, it will return a a L<Paws::IAM::ListMFADevicesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllPolicies(sub { },[Marker => Str, MaxItems => Int, OnlyAttached => Bool, PathPrefix => Str, Scope => Str])
+
+=head2 ListAllPolicies([Marker => Str, MaxItems => Int, OnlyAttached => Bool, PathPrefix => Str, Scope => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Policies, passing the object as the first parameter, and the string 'Policies' as the second parameter 
+
+If not, it will return a a L<Paws::IAM::ListPoliciesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllPolicyVersions(sub { },PolicyArn => Str, [Marker => Str, MaxItems => Int])
+
+=head2 ListAllPolicyVersions(PolicyArn => Str, [Marker => Str, MaxItems => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Versions, passing the object as the first parameter, and the string 'Versions' as the second parameter 
+
+If not, it will return a a L<Paws::IAM::ListPolicyVersionsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllRolePolicies(sub { },RoleName => Str, [Marker => Str, MaxItems => Int])
+
+=head2 ListAllRolePolicies(RoleName => Str, [Marker => Str, MaxItems => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - PolicyNames, passing the object as the first parameter, and the string 'PolicyNames' as the second parameter 
+
+If not, it will return a a L<Paws::IAM::ListRolePoliciesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllRoles(sub { },[Marker => Str, MaxItems => Int, PathPrefix => Str])
+
+=head2 ListAllRoles([Marker => Str, MaxItems => Int, PathPrefix => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Roles, passing the object as the first parameter, and the string 'Roles' as the second parameter 
+
+If not, it will return a a L<Paws::IAM::ListRolesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllServerCertificates(sub { },[Marker => Str, MaxItems => Int, PathPrefix => Str])
+
+=head2 ListAllServerCertificates([Marker => Str, MaxItems => Int, PathPrefix => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ServerCertificateMetadataList, passing the object as the first parameter, and the string 'ServerCertificateMetadataList' as the second parameter 
+
+If not, it will return a a L<Paws::IAM::ListServerCertificatesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllSigningCertificates(sub { },[Marker => Str, MaxItems => Int, UserName => Str])
+
+=head2 ListAllSigningCertificates([Marker => Str, MaxItems => Int, UserName => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Certificates, passing the object as the first parameter, and the string 'Certificates' as the second parameter 
+
+If not, it will return a a L<Paws::IAM::ListSigningCertificatesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllSSHPublicKeys(sub { },[Marker => Str, MaxItems => Int, UserName => Str])
+
+=head2 ListAllSSHPublicKeys([Marker => Str, MaxItems => Int, UserName => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - SSHPublicKeys, passing the object as the first parameter, and the string 'SSHPublicKeys' as the second parameter 
+
+If not, it will return a a L<Paws::IAM::ListSSHPublicKeysResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllUserPolicies(sub { },UserName => Str, [Marker => Str, MaxItems => Int])
+
+=head2 ListAllUserPolicies(UserName => Str, [Marker => Str, MaxItems => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - PolicyNames, passing the object as the first parameter, and the string 'PolicyNames' as the second parameter 
+
+If not, it will return a a L<Paws::IAM::ListUserPoliciesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllUsers(sub { },[Marker => Str, MaxItems => Int, PathPrefix => Str])
+
+=head2 ListAllUsers([Marker => Str, MaxItems => Int, PathPrefix => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Users, passing the object as the first parameter, and the string 'Users' as the second parameter 
+
+If not, it will return a a L<Paws::IAM::ListUsersResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllVirtualMFADevices(sub { },[AssignmentStatus => Str, Marker => Str, MaxItems => Int])
+
+=head2 ListAllVirtualMFADevices([AssignmentStatus => Str, Marker => Str, MaxItems => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - VirtualMFADevices, passing the object as the first parameter, and the string 'VirtualMFADevices' as the second parameter 
+
+If not, it will return a a L<Paws::IAM::ListVirtualMFADevicesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 SimulateAllCustomPolicies(sub { },ActionNames => ArrayRef[Str], PolicyInputList => ArrayRef[Str], [CallerArn => Str, ContextEntries => ArrayRef[L<Paws::IAM::ContextEntry>], Marker => Str, MaxItems => Int, ResourceArns => ArrayRef[Str], ResourceHandlingOption => Str, ResourceOwner => Str, ResourcePolicy => Str])
+
+=head2 SimulateAllCustomPolicies(ActionNames => ArrayRef[Str], PolicyInputList => ArrayRef[Str], [CallerArn => Str, ContextEntries => ArrayRef[L<Paws::IAM::ContextEntry>], Marker => Str, MaxItems => Int, ResourceArns => ArrayRef[Str], ResourceHandlingOption => Str, ResourceOwner => Str, ResourcePolicy => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - EvaluationResults, passing the object as the first parameter, and the string 'EvaluationResults' as the second parameter 
+
+If not, it will return a a L<Paws::IAM::SimulatePolicyResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 SimulateAllPrincipalPolicies(sub { },ActionNames => ArrayRef[Str], PolicySourceArn => Str, [CallerArn => Str, ContextEntries => ArrayRef[L<Paws::IAM::ContextEntry>], Marker => Str, MaxItems => Int, PolicyInputList => ArrayRef[Str], ResourceArns => ArrayRef[Str], ResourceHandlingOption => Str, ResourceOwner => Str, ResourcePolicy => Str])
+
+=head2 SimulateAllPrincipalPolicies(ActionNames => ArrayRef[Str], PolicySourceArn => Str, [CallerArn => Str, ContextEntries => ArrayRef[L<Paws::IAM::ContextEntry>], Marker => Str, MaxItems => Int, PolicyInputList => ArrayRef[Str], ResourceArns => ArrayRef[Str], ResourceHandlingOption => Str, ResourceOwner => Str, ResourcePolicy => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - EvaluationResults, passing the object as the first parameter, and the string 'EvaluationResults' as the second parameter 
+
+If not, it will return a a L<Paws::IAM::SimulatePolicyResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+
+
+
 =head1 SEE ALSO
 
 This service class forms part of L<Paws>

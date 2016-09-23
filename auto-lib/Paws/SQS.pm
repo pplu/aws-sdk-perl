@@ -678,6 +678,15 @@ that calls this action, we recommend that you structure your code so
 that it can handle new attributes gracefully.
 
 
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+
+
+
 =head1 SEE ALSO
 
 This service class forms part of L<Paws>

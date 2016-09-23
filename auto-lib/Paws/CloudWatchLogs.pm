@@ -793,6 +793,89 @@ event messages. You can use this operation to validate the correctness
 of a metric filter pattern.
 
 
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 DescribeAllDestinations(sub { },[DestinationNamePrefix => Str, Limit => Int, NextToken => Str])
+
+=head2 DescribeAllDestinations([DestinationNamePrefix => Str, Limit => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - destinations, passing the object as the first parameter, and the string 'destinations' as the second parameter 
+
+If not, it will return a a L<Paws::CloudWatchLogs::DescribeDestinationsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllLogGroups(sub { },[Limit => Int, LogGroupNamePrefix => Str, NextToken => Str])
+
+=head2 DescribeAllLogGroups([Limit => Int, LogGroupNamePrefix => Str, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - logGroups, passing the object as the first parameter, and the string 'logGroups' as the second parameter 
+
+If not, it will return a a L<Paws::CloudWatchLogs::DescribeLogGroupsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllLogStreams(sub { },LogGroupName => Str, [Descending => Bool, Limit => Int, LogStreamNamePrefix => Str, NextToken => Str, OrderBy => Str])
+
+=head2 DescribeAllLogStreams(LogGroupName => Str, [Descending => Bool, Limit => Int, LogStreamNamePrefix => Str, NextToken => Str, OrderBy => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - logStreams, passing the object as the first parameter, and the string 'logStreams' as the second parameter 
+
+If not, it will return a a L<Paws::CloudWatchLogs::DescribeLogStreamsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllMetricFilters(sub { },LogGroupName => Str, [FilterNamePrefix => Str, Limit => Int, NextToken => Str])
+
+=head2 DescribeAllMetricFilters(LogGroupName => Str, [FilterNamePrefix => Str, Limit => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - metricFilters, passing the object as the first parameter, and the string 'metricFilters' as the second parameter 
+
+If not, it will return a a L<Paws::CloudWatchLogs::DescribeMetricFiltersResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllSubscriptionFilters(sub { },LogGroupName => Str, [FilterNamePrefix => Str, Limit => Int, NextToken => Str])
+
+=head2 DescribeAllSubscriptionFilters(LogGroupName => Str, [FilterNamePrefix => Str, Limit => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - subscriptionFilters, passing the object as the first parameter, and the string 'subscriptionFilters' as the second parameter 
+
+If not, it will return a a L<Paws::CloudWatchLogs::DescribeSubscriptionFiltersResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 FilterAllLogEvents(sub { },LogGroupName => Str, [EndTime => Int, FilterPattern => Str, Interleaved => Bool, Limit => Int, LogStreamNames => ArrayRef[Str], NextToken => Str, StartTime => Int])
+
+=head2 FilterAllLogEvents(LogGroupName => Str, [EndTime => Int, FilterPattern => Str, Interleaved => Bool, Limit => Int, LogStreamNames => ArrayRef[Str], NextToken => Str, StartTime => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - events, passing the object as the first parameter, and the string 'events' as the second parameter 
+
+ - searchedLogStreams, passing the object as the first parameter, and the string 'searchedLogStreams' as the second parameter 
+
+If not, it will return a a L<Paws::CloudWatchLogs::FilterLogEventsResponse> instance with all the C<param>s; andC<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+
+
+
 =head1 SEE ALSO
 
 This service class forms part of L<Paws>

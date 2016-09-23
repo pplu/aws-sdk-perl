@@ -1,4 +1,6 @@
 0.29 
+ - New functionality: Enabled and documented paginators (methods that repeatedly call methods that 
+   return partial responses)
  - Fixed documentation issues with S3, CloudFront and Route53 (ilmari)
  - Fixed bug (Issue #108): Services that expected strings as parameters would accept numbers,
    Method(StringParameter => 33), and Paws would generate "StringParameter":33 in the request

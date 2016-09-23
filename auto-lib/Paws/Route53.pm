@@ -1671,6 +1671,51 @@ associated with the root resource record set name.
 
 
 
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllHealthChecks(sub { },[Marker => Str, MaxItems => Str])
+
+=head2 ListAllHealthChecks([Marker => Str, MaxItems => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - HealthChecks, passing the object as the first parameter, and the string 'HealthChecks' as the second parameter 
+
+If not, it will return a a L<Paws::Route53::ListHealthChecksResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllHostedZones(sub { },[DelegationSetId => Str, Marker => Str, MaxItems => Str])
+
+=head2 ListAllHostedZones([DelegationSetId => Str, Marker => Str, MaxItems => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - HostedZones, passing the object as the first parameter, and the string 'HostedZones' as the second parameter 
+
+If not, it will return a a L<Paws::Route53::ListHostedZonesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllResourceRecordSets(sub { },HostedZoneId => Str, [MaxItems => Str, StartRecordIdentifier => Str, StartRecordName => Str, StartRecordType => Str])
+
+=head2 ListAllResourceRecordSets(HostedZoneId => Str, [MaxItems => Str, StartRecordIdentifier => Str, StartRecordName => Str, StartRecordType => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ResourceRecordSets, passing the object as the first parameter, and the string 'ResourceRecordSets' as the second parameter 
+
+If not, it will return a a L<Paws::Route53::ListResourceRecordSetsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+
+
+
 =head1 SEE ALSO
 
 This service class forms part of L<Paws>

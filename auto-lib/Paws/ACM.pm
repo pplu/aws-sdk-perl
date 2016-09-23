@@ -273,6 +273,27 @@ since your original request or since your last attempt to resend
 validation mail, you must request a new certificate.
 
 
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllCertificates(sub { },[CertificateStatuses => ArrayRef[Str], MaxItems => Int, NextToken => Str])
+
+=head2 ListAllCertificates([CertificateStatuses => ArrayRef[Str], MaxItems => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - CertificateSummaryList, passing the object as the first parameter, and the string 'CertificateSummaryList' as the second parameter 
+
+If not, it will return a a L<Paws::ACM::ListCertificatesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+
+
+
 =head1 SEE ALSO
 
 This service class forms part of L<Paws>

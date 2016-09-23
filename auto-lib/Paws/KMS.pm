@@ -938,6 +938,63 @@ Returns: nothing
   Updates the description of a key.
 
 
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllAliases(sub { },[Limit => Int, Marker => Str])
+
+=head2 ListAllAliases([Limit => Int, Marker => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Aliases, passing the object as the first parameter, and the string 'Aliases' as the second parameter 
+
+If not, it will return a a L<Paws::KMS::ListAliasesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllGrants(sub { },KeyId => Str, [Limit => Int, Marker => Str])
+
+=head2 ListAllGrants(KeyId => Str, [Limit => Int, Marker => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Grants, passing the object as the first parameter, and the string 'Grants' as the second parameter 
+
+If not, it will return a a L<Paws::KMS::ListGrantsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllKeyPolicies(sub { },KeyId => Str, [Limit => Int, Marker => Str])
+
+=head2 ListAllKeyPolicies(KeyId => Str, [Limit => Int, Marker => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - PolicyNames, passing the object as the first parameter, and the string 'PolicyNames' as the second parameter 
+
+If not, it will return a a L<Paws::KMS::ListKeyPoliciesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllKeys(sub { },[Limit => Int, Marker => Str])
+
+=head2 ListAllKeys([Limit => Int, Marker => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Keys, passing the object as the first parameter, and the string 'Keys' as the second parameter 
+
+If not, it will return a a L<Paws::KMS::ListKeysResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+
+
+
 =head1 SEE ALSO
 
 This service class forms part of L<Paws>

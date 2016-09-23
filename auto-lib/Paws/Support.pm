@@ -590,6 +590,39 @@ Returns: a L<Paws::Support::ResolveCaseResponse> instance
 the state of the case after the call to ResolveCase completed.
 
 
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 DescribeAllCases(sub { },[AfterTime => Str, BeforeTime => Str, CaseIdList => ArrayRef[Str], DisplayId => Str, IncludeCommunications => Bool, IncludeResolvedCases => Bool, Language => Str, MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllCases([AfterTime => Str, BeforeTime => Str, CaseIdList => ArrayRef[Str], DisplayId => Str, IncludeCommunications => Bool, IncludeResolvedCases => Bool, Language => Str, MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - cases, passing the object as the first parameter, and the string 'cases' as the second parameter 
+
+If not, it will return a a L<Paws::Support::DescribeCasesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllCommunications(sub { },CaseId => Str, [AfterTime => Str, BeforeTime => Str, MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllCommunications(CaseId => Str, [AfterTime => Str, BeforeTime => Str, MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - communications, passing the object as the first parameter, and the string 'communications' as the second parameter 
+
+If not, it will return a a L<Paws::Support::DescribeCommunicationsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+
+
+
 =head1 SEE ALSO
 
 This service class forms part of L<Paws>

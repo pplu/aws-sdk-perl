@@ -426,6 +426,39 @@ description of the limits on repository names, see Limits in the AWS
 CodeCommit User Guide.
 
 
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllBranches(sub { },RepositoryName => Str, [NextToken => Str])
+
+=head2 ListAllBranches(RepositoryName => Str, [NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - branches, passing the object as the first parameter, and the string 'branches' as the second parameter 
+
+If not, it will return a a L<Paws::CodeCommit::ListBranchesOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllRepositories(sub { },[NextToken => Str, Order => Str, SortBy => Str])
+
+=head2 ListAllRepositories([NextToken => Str, Order => Str, SortBy => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - repositories, passing the object as the first parameter, and the string 'repositories' as the second parameter 
+
+If not, it will return a a L<Paws::CodeCommit::ListRepositoriesOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+
+
+
 =head1 SEE ALSO
 
 This service class forms part of L<Paws>

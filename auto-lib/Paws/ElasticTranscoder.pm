@@ -443,6 +443,63 @@ jobs, you have more time to get the job IDs for the jobs that you want
 to cancel, and to send a CancelJob request.
 
 
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllJobsByPipeline(sub { },PipelineId => Str, [Ascending => Str, PageToken => Str])
+
+=head2 ListAllJobsByPipeline(PipelineId => Str, [Ascending => Str, PageToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Jobs, passing the object as the first parameter, and the string 'Jobs' as the second parameter 
+
+If not, it will return a a L<Paws::ElasticTranscoder::ListJobsByPipelineResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllJobsByStatus(sub { },Status => Str, [Ascending => Str, PageToken => Str])
+
+=head2 ListAllJobsByStatus(Status => Str, [Ascending => Str, PageToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Jobs, passing the object as the first parameter, and the string 'Jobs' as the second parameter 
+
+If not, it will return a a L<Paws::ElasticTranscoder::ListJobsByStatusResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllPipelines(sub { },[Ascending => Str, PageToken => Str])
+
+=head2 ListAllPipelines([Ascending => Str, PageToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Pipelines, passing the object as the first parameter, and the string 'Pipelines' as the second parameter 
+
+If not, it will return a a L<Paws::ElasticTranscoder::ListPipelinesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllPresets(sub { },[Ascending => Str, PageToken => Str])
+
+=head2 ListAllPresets([Ascending => Str, PageToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Presets, passing the object as the first parameter, and the string 'Presets' as the second parameter 
+
+If not, it will return a a L<Paws::ElasticTranscoder::ListPresetsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+
+
+
 =head1 SEE ALSO
 
 This service class forms part of L<Paws>

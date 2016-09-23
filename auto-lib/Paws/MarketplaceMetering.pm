@@ -81,6 +81,15 @@ Returns: a L<Paws::MarketplaceMetering::MeterUsageResult> instance
 idempotent. It simply returns the metering record ID.
 
 
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+
+
+
 =head1 SEE ALSO
 
 This service class forms part of L<Paws>

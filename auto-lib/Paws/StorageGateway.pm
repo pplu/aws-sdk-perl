@@ -1444,6 +1444,87 @@ This operation enables you to select a different type of medium changer
 after a gateway-VTL is activated.
 
 
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 DescribeAllTapeArchives(sub { },[Limit => Int, Marker => Str, TapeARNs => ArrayRef[Str]])
+
+=head2 DescribeAllTapeArchives([Limit => Int, Marker => Str, TapeARNs => ArrayRef[Str]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - TapeArchives, passing the object as the first parameter, and the string 'TapeArchives' as the second parameter 
+
+If not, it will return a a L<Paws::StorageGateway::DescribeTapeArchivesOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllTapeRecoveryPoints(sub { },GatewayARN => Str, [Limit => Int, Marker => Str])
+
+=head2 DescribeAllTapeRecoveryPoints(GatewayARN => Str, [Limit => Int, Marker => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - TapeRecoveryPointInfos, passing the object as the first parameter, and the string 'TapeRecoveryPointInfos' as the second parameter 
+
+If not, it will return a a L<Paws::StorageGateway::DescribeTapeRecoveryPointsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllTapes(sub { },GatewayARN => Str, [Limit => Int, Marker => Str, TapeARNs => ArrayRef[Str]])
+
+=head2 DescribeAllTapes(GatewayARN => Str, [Limit => Int, Marker => Str, TapeARNs => ArrayRef[Str]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Tapes, passing the object as the first parameter, and the string 'Tapes' as the second parameter 
+
+If not, it will return a a L<Paws::StorageGateway::DescribeTapesOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllVTLDevices(sub { },GatewayARN => Str, [Limit => Int, Marker => Str, VTLDeviceARNs => ArrayRef[Str]])
+
+=head2 DescribeAllVTLDevices(GatewayARN => Str, [Limit => Int, Marker => Str, VTLDeviceARNs => ArrayRef[Str]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - VTLDevices, passing the object as the first parameter, and the string 'VTLDevices' as the second parameter 
+
+If not, it will return a a L<Paws::StorageGateway::DescribeVTLDevicesOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllGateways(sub { },[Limit => Int, Marker => Str])
+
+=head2 ListAllGateways([Limit => Int, Marker => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Gateways, passing the object as the first parameter, and the string 'Gateways' as the second parameter 
+
+If not, it will return a a L<Paws::StorageGateway::ListGatewaysOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllVolumes(sub { },[GatewayARN => Str, Limit => Int, Marker => Str])
+
+=head2 ListAllVolumes([GatewayARN => Str, Limit => Int, Marker => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - VolumeInfos, passing the object as the first parameter, and the string 'VolumeInfos' as the second parameter 
+
+If not, it will return a a L<Paws::StorageGateway::ListVolumesOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+
+
+
 =head1 SEE ALSO
 
 This service class forms part of L<Paws>

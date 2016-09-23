@@ -613,6 +613,63 @@ Returns: a L<Paws::CloudFormation::ValidateTemplateOutput> instance
   Validates a specified template.
 
 
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 DescribeAllStackEvents(sub { },[NextToken => Str, StackName => Str])
+
+=head2 DescribeAllStackEvents([NextToken => Str, StackName => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - StackEvents, passing the object as the first parameter, and the string 'StackEvents' as the second parameter 
+
+If not, it will return a a L<Paws::CloudFormation::DescribeStackEventsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllStacks(sub { },[NextToken => Str, StackName => Str])
+
+=head2 DescribeAllStacks([NextToken => Str, StackName => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Stacks, passing the object as the first parameter, and the string 'Stacks' as the second parameter 
+
+If not, it will return a a L<Paws::CloudFormation::DescribeStacksOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllStackResources(sub { },StackName => Str, [NextToken => Str])
+
+=head2 ListAllStackResources(StackName => Str, [NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - StackResourceSummaries, passing the object as the first parameter, and the string 'StackResourceSummaries' as the second parameter 
+
+If not, it will return a a L<Paws::CloudFormation::ListStackResourcesOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllStacks(sub { },[NextToken => Str, StackStatusFilter => ArrayRef[Str]])
+
+=head2 ListAllStacks([NextToken => Str, StackStatusFilter => ArrayRef[Str]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - StackSummaries, passing the object as the first parameter, and the string 'StackSummaries' as the second parameter 
+
+If not, it will return a a L<Paws::CloudFormation::ListStacksOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+
+
+
 =head1 SEE ALSO
 
 This service class forms part of L<Paws>

@@ -573,6 +573,39 @@ Returns: a L<Paws::Route53Domains::ViewBillingResponse> instance
 current AWS account for a specified period
 
 
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllDomains(sub { },[Marker => Str, MaxItems => Int])
+
+=head2 ListAllDomains([Marker => Str, MaxItems => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Domains, passing the object as the first parameter, and the string 'Domains' as the second parameter 
+
+If not, it will return a a L<Paws::Route53Domains::ListDomainsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllOperations(sub { },[Marker => Str, MaxItems => Int])
+
+=head2 ListAllOperations([Marker => Str, MaxItems => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Operations, passing the object as the first parameter, and the string 'Operations' as the second parameter 
+
+If not, it will return a a L<Paws::Route53Domains::ListOperationsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+
+
+
 =head1 SEE ALSO
 
 This service class forms part of L<Paws>

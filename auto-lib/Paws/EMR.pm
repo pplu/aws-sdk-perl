@@ -640,6 +640,75 @@ completely terminate and release allocated resources, such as Amazon
 EC2 instances.
 
 
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllBootstrapActions(sub { },ClusterId => Str, [Marker => Str])
+
+=head2 ListAllBootstrapActions(ClusterId => Str, [Marker => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - BootstrapActions, passing the object as the first parameter, and the string 'BootstrapActions' as the second parameter 
+
+If not, it will return a a L<Paws::EMR::ListBootstrapActionsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllClusters(sub { },[ClusterStates => ArrayRef[Str], CreatedAfter => Str, CreatedBefore => Str, Marker => Str])
+
+=head2 ListAllClusters([ClusterStates => ArrayRef[Str], CreatedAfter => Str, CreatedBefore => Str, Marker => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Clusters, passing the object as the first parameter, and the string 'Clusters' as the second parameter 
+
+If not, it will return a a L<Paws::EMR::ListClustersOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllInstanceGroups(sub { },ClusterId => Str, [Marker => Str])
+
+=head2 ListAllInstanceGroups(ClusterId => Str, [Marker => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - InstanceGroups, passing the object as the first parameter, and the string 'InstanceGroups' as the second parameter 
+
+If not, it will return a a L<Paws::EMR::ListInstanceGroupsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllInstances(sub { },ClusterId => Str, [InstanceGroupId => Str, InstanceGroupTypes => ArrayRef[Str], InstanceStates => ArrayRef[Str], Marker => Str])
+
+=head2 ListAllInstances(ClusterId => Str, [InstanceGroupId => Str, InstanceGroupTypes => ArrayRef[Str], InstanceStates => ArrayRef[Str], Marker => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Instances, passing the object as the first parameter, and the string 'Instances' as the second parameter 
+
+If not, it will return a a L<Paws::EMR::ListInstancesOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllSteps(sub { },ClusterId => Str, [Marker => Str, StepIds => ArrayRef[Str], StepStates => ArrayRef[Str]])
+
+=head2 ListAllSteps(ClusterId => Str, [Marker => Str, StepIds => ArrayRef[Str], StepStates => ArrayRef[Str]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Steps, passing the object as the first parameter, and the string 'Steps' as the second parameter 
+
+If not, it will return a a L<Paws::EMR::ListStepsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+
+
+
 =head1 SEE ALSO
 
 This service class forms part of L<Paws>

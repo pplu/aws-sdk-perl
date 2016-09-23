@@ -1105,6 +1105,27 @@ message to be sent to the specified address.
 This action is throttled at one request per second.
 
 
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllIdentities(sub { },[IdentityType => Str, MaxItems => Int, NextToken => Str])
+
+=head2 ListAllIdentities([IdentityType => Str, MaxItems => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Identities, passing the object as the first parameter, and the string 'Identities' as the second parameter 
+
+If not, it will return a a L<Paws::SES::ListIdentitiesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+
+
+
 =head1 SEE ALSO
 
 This service class forms part of L<Paws>

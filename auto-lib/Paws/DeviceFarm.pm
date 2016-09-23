@@ -925,6 +925,147 @@ Returns: a L<Paws::DeviceFarm::UpdateProjectResult> instance
 name.
 
 
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllArtifacts(sub { },Arn => Str, Type => Str, [NextToken => Str])
+
+=head2 ListAllArtifacts(Arn => Str, Type => Str, [NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - artifacts, passing the object as the first parameter, and the string 'artifacts' as the second parameter 
+
+If not, it will return a a L<Paws::DeviceFarm::ListArtifactsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllDevicePools(sub { },Arn => Str, [NextToken => Str, Type => Str])
+
+=head2 ListAllDevicePools(Arn => Str, [NextToken => Str, Type => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - devicePools, passing the object as the first parameter, and the string 'devicePools' as the second parameter 
+
+If not, it will return a a L<Paws::DeviceFarm::ListDevicePoolsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllDevices(sub { },[Arn => Str, NextToken => Str])
+
+=head2 ListAllDevices([Arn => Str, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - devices, passing the object as the first parameter, and the string 'devices' as the second parameter 
+
+If not, it will return a a L<Paws::DeviceFarm::ListDevicesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllJobs(sub { },Arn => Str, [NextToken => Str])
+
+=head2 ListAllJobs(Arn => Str, [NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - jobs, passing the object as the first parameter, and the string 'jobs' as the second parameter 
+
+If not, it will return a a L<Paws::DeviceFarm::ListJobsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllProjects(sub { },[Arn => Str, NextToken => Str])
+
+=head2 ListAllProjects([Arn => Str, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - projects, passing the object as the first parameter, and the string 'projects' as the second parameter 
+
+If not, it will return a a L<Paws::DeviceFarm::ListProjectsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllRuns(sub { },Arn => Str, [NextToken => Str])
+
+=head2 ListAllRuns(Arn => Str, [NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - runs, passing the object as the first parameter, and the string 'runs' as the second parameter 
+
+If not, it will return a a L<Paws::DeviceFarm::ListRunsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllSamples(sub { },Arn => Str, [NextToken => Str])
+
+=head2 ListAllSamples(Arn => Str, [NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - samples, passing the object as the first parameter, and the string 'samples' as the second parameter 
+
+If not, it will return a a L<Paws::DeviceFarm::ListSamplesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllSuites(sub { },Arn => Str, [NextToken => Str])
+
+=head2 ListAllSuites(Arn => Str, [NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - suites, passing the object as the first parameter, and the string 'suites' as the second parameter 
+
+If not, it will return a a L<Paws::DeviceFarm::ListSuitesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllTests(sub { },Arn => Str, [NextToken => Str])
+
+=head2 ListAllTests(Arn => Str, [NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - tests, passing the object as the first parameter, and the string 'tests' as the second parameter 
+
+If not, it will return a a L<Paws::DeviceFarm::ListTestsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllUniqueProblems(sub { },Arn => Str, [NextToken => Str])
+
+=head2 ListAllUniqueProblems(Arn => Str, [NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - uniqueProblems, passing the object as the first parameter, and the string 'uniqueProblems' as the second parameter 
+
+If not, it will return a a L<Paws::DeviceFarm::ListUniqueProblemsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllUploads(sub { },Arn => Str, [NextToken => Str])
+
+=head2 ListAllUploads(Arn => Str, [NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - uploads, passing the object as the first parameter, and the string 'uploads' as the second parameter 
+
+If not, it will return a a L<Paws::DeviceFarm::ListUploadsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+
+
+
 =head1 SEE ALSO
 
 This service class forms part of L<Paws>

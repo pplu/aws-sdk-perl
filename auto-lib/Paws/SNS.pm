@@ -731,6 +731,75 @@ endpoint, so that the endpoint owner can easily resubscribe to the
 topic if the C<Unsubscribe> request was unintended.
 
 
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllEndpointsByPlatformApplication(sub { },PlatformApplicationArn => Str, [NextToken => Str])
+
+=head2 ListAllEndpointsByPlatformApplication(PlatformApplicationArn => Str, [NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Endpoints, passing the object as the first parameter, and the string 'Endpoints' as the second parameter 
+
+If not, it will return a a L<Paws::SNS::ListEndpointsByPlatformApplicationResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllPlatformApplications(sub { },[NextToken => Str])
+
+=head2 ListAllPlatformApplications([NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - PlatformApplications, passing the object as the first parameter, and the string 'PlatformApplications' as the second parameter 
+
+If not, it will return a a L<Paws::SNS::ListPlatformApplicationsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllSubscriptions(sub { },[NextToken => Str])
+
+=head2 ListAllSubscriptions([NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Subscriptions, passing the object as the first parameter, and the string 'Subscriptions' as the second parameter 
+
+If not, it will return a a L<Paws::SNS::ListSubscriptionsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllSubscriptionsByTopic(sub { },TopicArn => Str, [NextToken => Str])
+
+=head2 ListAllSubscriptionsByTopic(TopicArn => Str, [NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Subscriptions, passing the object as the first parameter, and the string 'Subscriptions' as the second parameter 
+
+If not, it will return a a L<Paws::SNS::ListSubscriptionsByTopicResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllTopics(sub { },[NextToken => Str])
+
+=head2 ListAllTopics([NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Topics, passing the object as the first parameter, and the string 'Topics' as the second parameter 
+
+If not, it will return a a L<Paws::SNS::ListTopicsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+
+
+
 =head1 SEE ALSO
 
 This service class forms part of L<Paws>
