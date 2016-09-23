@@ -1,5 +1,4 @@
 package Paws::IoT;
-  warn "Paws::IoT is not stable / supported / entirely developed";
   use Moose;
   sub service { 'iot' }
   sub version { '2015-05-28' }

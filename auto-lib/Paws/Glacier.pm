@@ -1,5 +1,4 @@
 package Paws::Glacier;
-  warn "Paws::Glacier is not stable / supported / entirely developed";
   use Moose;
   sub service { 'glacier' }
   sub version { '2012-06-01' }

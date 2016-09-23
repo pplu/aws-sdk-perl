@@ -1,5 +1,4 @@
 package Paws::ES;
-  warn "Paws::ES is not stable / supported / entirely developed";
   use Moose;
   sub service { 'es' }
   sub version { '2015-01-01' }

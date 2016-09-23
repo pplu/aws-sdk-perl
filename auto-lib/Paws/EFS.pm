@@ -1,5 +1,4 @@
 package Paws::EFS;
-  warn "Paws::EFS is not stable / supported / entirely developed";
   use Moose;
   sub service { 'elasticfilesystem' }
   sub version { '2015-02-01' }

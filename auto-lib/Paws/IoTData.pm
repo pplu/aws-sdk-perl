@@ -1,5 +1,4 @@
 package Paws::IoTData;
-  warn "Paws::IoTData is not stable / supported / entirely developed";
   use Moose;
   sub service { 'data.iot' }
   sub version { '2015-05-28' }

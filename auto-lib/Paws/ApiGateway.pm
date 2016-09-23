@@ -1,5 +1,4 @@
 package Paws::ApiGateway;
-  warn "Paws::ApiGateway is not stable / supported / entirely developed";
   use Moose;
   sub service { 'apigateway' }
   sub version { '2015-07-09' }

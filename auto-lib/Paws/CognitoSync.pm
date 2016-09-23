@@ -1,5 +1,4 @@
 package Paws::CognitoSync;
-  warn "Paws::CognitoSync is not stable / supported / entirely developed";
   use Moose;
   sub service { 'cognito-sync' }
   sub version { '2014-06-30' }

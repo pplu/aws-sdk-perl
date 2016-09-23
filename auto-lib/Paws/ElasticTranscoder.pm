@@ -1,5 +1,4 @@
 package Paws::ElasticTranscoder;
-  warn "Paws::ElasticTranscoder is not stable / supported / entirely developed";
   use Moose;
   sub service { 'elastictranscoder' }
   sub version { '2012-09-25' }

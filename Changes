@@ -1,4 +1,8 @@
 0.29 
+ - Remove under work warning from JSON-REST services: ApiGateway,CloudSearchDomain,CognitoSync,
+   EFS, ES, ElasticTranscoder, Glacier, IoT, IoTData, Lambda
+   This means that Bugs and error reports for these APIs will be handled with priority, as they
+   would are considered to be functional
  - Fixed documentation issues with S3, CloudFront and Route53 (ilmari)
  - Fixed bug (Issue #108): Services that expected strings as parameters would accept numbers,
    Method(StringParameter => 33), and Paws would generate "StringParameter":33 in the request
