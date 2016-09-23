@@ -974,6 +974,7 @@ package [% inner_class %];
 
     $accessor =~ s|\.|->|g;
     $accessor =~ s|(\w+)([.*?])|$1->$2|g;
+    $accessor =~ s|(\w+)\[|$1\-\>\[|g;
 
     $accessor = "\$result->$accessor";
     return $accessor;

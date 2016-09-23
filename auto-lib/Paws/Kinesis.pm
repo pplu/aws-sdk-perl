@@ -108,13 +108,13 @@ package Paws::Kinesis;
 
     if (not defined $callback) {
       while ($result->StreamDescription->HasMoreShards) {
-        $result = $self->DescribeStream(@_, ExclusiveStartShardId => $result->StreamDescription->Shards[-1]->ShardId);
+        $result = $self->DescribeStream(@_, ExclusiveStartShardId => $result->StreamDescription->Shards->[-1]->ShardId);
         push @{ $result->StreamDescription->Shards }, @{ $result->StreamDescription->Shards };
       }
       return $result;
     } else {
       while ($result->StreamDescription->HasMoreShards) {
-        $result = $self->DescribeStream(@_, ExclusiveStartShardId => $result->StreamDescription->Shards[-1]->ShardId);
+        $result = $self->DescribeStream(@_, ExclusiveStartShardId => $result->StreamDescription->Shards->[-1]->ShardId);
         $callback->($_ => 'StreamDescription.Shards') foreach (@{ $result->StreamDescription->Shards });
       }
     }
@@ -129,13 +129,13 @@ package Paws::Kinesis;
 
     if (not defined $callback) {
       while ($result->HasMoreStreams) {
-        $result = $self->ListStreams(@_, ExclusiveStartStreamName => $result->StreamNames[-1]);
+        $result = $self->ListStreams(@_, ExclusiveStartStreamName => $result->StreamNames->[-1]);
         push @{ $result->StreamNames }, @{ $result->StreamNames };
       }
       return $result;
     } else {
       while ($result->HasMoreStreams) {
-        $result = $self->ListStreams(@_, ExclusiveStartStreamName => $result->StreamNames[-1]);
+        $result = $self->ListStreams(@_, ExclusiveStartStreamName => $result->StreamNames->[-1]);
         $callback->($_ => 'StreamNames') foreach (@{ $result->StreamNames });
       }
     }
