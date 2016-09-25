@@ -3,7 +3,7 @@ package Paws::ApplicationAutoScaling::DescribeScalingPolicies;
   use Moose;
   has MaxResults => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
-  has PolicyNames => (is => 'ro', isa => 'ArrayRef[Str]');
+  has PolicyNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has ResourceId => (is => 'ro', isa => 'Str');
   has ScalableDimension => (is => 'ro', isa => 'Str');
   has ServiceNamespace => (is => 'ro', isa => 'Str', required => 1);
@@ -61,7 +61,7 @@ value is C<null> when there are no more results to return.
 
 
 
-=head2 PolicyNames => ArrayRef[Str]
+=head2 PolicyNames => ArrayRef[Str|Undef]
 
 The names of the scaling policies to describe.
 

@@ -289,7 +289,7 @@ configuration, VPC settings, and so on. For information about the
 cluster steps, see ListSteps.
 
 
-=head2 DescribeJobFlows([CreatedAfter => Str, CreatedBefore => Str, JobFlowIds => ArrayRef[Str], JobFlowStates => ArrayRef[Str]])
+=head2 DescribeJobFlows([CreatedAfter => Str, CreatedBefore => Str, JobFlowIds => ArrayRef[Str|Undef], JobFlowStates => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::EMR::DescribeJobFlows>
 
@@ -355,7 +355,7 @@ Returns: a L<Paws::EMR::ListBootstrapActionsOutput> instance
 cluster.
 
 
-=head2 ListClusters([ClusterStates => ArrayRef[Str], CreatedAfter => Str, CreatedBefore => Str, Marker => Str])
+=head2 ListClusters([ClusterStates => ArrayRef[Str|Undef], CreatedAfter => Str, CreatedBefore => Str, Marker => Str])
 
 Each argument is described in detail in: L<Paws::EMR::ListClusters>
 
@@ -378,7 +378,7 @@ Returns: a L<Paws::EMR::ListInstanceGroupsOutput> instance
   Provides all available details about the instance groups in a cluster.
 
 
-=head2 ListInstances(ClusterId => Str, [InstanceGroupId => Str, InstanceGroupTypes => ArrayRef[Str], InstanceStates => ArrayRef[Str], Marker => Str])
+=head2 ListInstances(ClusterId => Str, [InstanceGroupId => Str, InstanceGroupTypes => ArrayRef[Str|Undef], InstanceStates => ArrayRef[Str|Undef], Marker => Str])
 
 Each argument is described in detail in: L<Paws::EMR::ListInstances>
 
@@ -404,7 +404,7 @@ track the paging of the cluster list across multiple
 ListSecurityConfigurations calls.
 
 
-=head2 ListSteps(ClusterId => Str, [Marker => Str, StepIds => ArrayRef[Str], StepStates => ArrayRef[Str]])
+=head2 ListSteps(ClusterId => Str, [Marker => Str, StepIds => ArrayRef[Str|Undef], StepStates => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::EMR::ListSteps>
 
@@ -425,7 +425,7 @@ target instance count for the group and the instance group ID. The call
 will either succeed or fail atomically.
 
 
-=head2 RemoveTags(ResourceId => Str, TagKeys => ArrayRef[Str])
+=head2 RemoveTags(ResourceId => Str, TagKeys => ArrayRef[Str|Undef])
 
 Each argument is described in detail in: L<Paws::EMR::RemoveTags>
 
@@ -440,7 +440,7 @@ The following example removes the stack tag with value Prod from a
 cluster:
 
 
-=head2 RunJobFlow(Instances => L<Paws::EMR::JobFlowInstancesConfig>, Name => Str, [AdditionalInfo => Str, AmiVersion => Str, Applications => ArrayRef[L<Paws::EMR::Application>], BootstrapActions => ArrayRef[L<Paws::EMR::BootstrapActionConfig>], Configurations => ArrayRef[L<Paws::EMR::Configuration>], JobFlowRole => Str, LogUri => Str, NewSupportedProducts => ArrayRef[L<Paws::EMR::SupportedProductConfig>], ReleaseLabel => Str, SecurityConfiguration => Str, ServiceRole => Str, Steps => ArrayRef[L<Paws::EMR::StepConfig>], SupportedProducts => ArrayRef[Str], Tags => ArrayRef[L<Paws::EMR::Tag>], VisibleToAllUsers => Bool])
+=head2 RunJobFlow(Instances => L<Paws::EMR::JobFlowInstancesConfig>, Name => Str, [AdditionalInfo => Str, AmiVersion => Str, Applications => ArrayRef[L<Paws::EMR::Application>], BootstrapActions => ArrayRef[L<Paws::EMR::BootstrapActionConfig>], Configurations => ArrayRef[L<Paws::EMR::Configuration>], JobFlowRole => Str, LogUri => Str, NewSupportedProducts => ArrayRef[L<Paws::EMR::SupportedProductConfig>], ReleaseLabel => Str, SecurityConfiguration => Str, ServiceRole => Str, Steps => ArrayRef[L<Paws::EMR::StepConfig>], SupportedProducts => ArrayRef[Str|Undef], Tags => ArrayRef[L<Paws::EMR::Tag>], VisibleToAllUsers => Bool])
 
 Each argument is described in detail in: L<Paws::EMR::RunJobFlow>
 
@@ -473,7 +473,7 @@ For long running job flows, we recommend that you periodically store
 your results.
 
 
-=head2 SetTerminationProtection(JobFlowIds => ArrayRef[Str], TerminationProtected => Bool)
+=head2 SetTerminationProtection(JobFlowIds => ArrayRef[Str|Undef], TerminationProtected => Bool)
 
 Each argument is described in detail in: L<Paws::EMR::SetTerminationProtection>
 
@@ -500,7 +500,7 @@ For more information, go to Protecting a Job Flow from Termination in
 the I<Amazon Elastic MapReduce Developer's Guide.>
 
 
-=head2 SetVisibleToAllUsers(JobFlowIds => ArrayRef[Str], VisibleToAllUsers => Bool)
+=head2 SetVisibleToAllUsers(JobFlowIds => ArrayRef[Str|Undef], VisibleToAllUsers => Bool)
 
 Each argument is described in detail in: L<Paws::EMR::SetVisibleToAllUsers>
 
@@ -514,7 +514,7 @@ The SetVisibleToAllUsers action can be called only by an IAM user who
 created the job flow or the AWS account that owns the job flow.
 
 
-=head2 TerminateJobFlows(JobFlowIds => ArrayRef[Str])
+=head2 TerminateJobFlows(JobFlowIds => ArrayRef[Str|Undef])
 
 Each argument is described in detail in: L<Paws::EMR::TerminateJobFlows>
 

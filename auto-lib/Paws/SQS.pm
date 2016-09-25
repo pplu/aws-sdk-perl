@@ -231,7 +231,7 @@ For a list of available SDKs, go to Tools for Amazon Web Services.
 
 =head1 METHODS
 
-=head2 AddPermission(Actions => ArrayRef[Str], AWSAccountIds => ArrayRef[Str], Label => Str, QueueUrl => Str)
+=head2 AddPermission(Actions => ArrayRef[Str|Undef], AWSAccountIds => ArrayRef[Str|Undef], Label => Str, QueueUrl => Str)
 
 Each argument is described in detail in: L<Paws::SQS::AddPermission>
 
@@ -446,7 +446,7 @@ more than 30 days. For more information, see How Amazon SQS Queues Work
 in the I<Amazon SQS Developer Guide>.
 
 
-=head2 GetQueueAttributes(QueueUrl => Str, [AttributeNames => ArrayRef[Str]])
+=head2 GetQueueAttributes(QueueUrl => Str, [AttributeNames => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::SQS::GetQueueAttributes>
 
@@ -525,7 +525,7 @@ queue before C<PurgeQueue> was called may be received, but will be
 deleted within the next minute.
 
 
-=head2 ReceiveMessage(QueueUrl => Str, [AttributeNames => ArrayRef[Str], MaxNumberOfMessages => Int, MessageAttributeNames => ArrayRef[Str], VisibilityTimeout => Int, WaitTimeSeconds => Int])
+=head2 ReceiveMessage(QueueUrl => Str, [AttributeNames => ArrayRef[Str|Undef], MaxNumberOfMessages => Int, MessageAttributeNames => ArrayRef[Str|Undef], VisibilityTimeout => Int, WaitTimeSeconds => Int])
 
 Each argument is described in detail in: L<Paws::SQS::ReceiveMessage>
 

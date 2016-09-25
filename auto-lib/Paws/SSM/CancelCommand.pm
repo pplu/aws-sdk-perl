@@ -2,7 +2,7 @@
 package Paws::SSM::CancelCommand;
   use Moose;
   has CommandId => (is => 'ro', isa => 'Str', required => 1);
-  has InstanceIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has InstanceIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
   use MooseX::ClassAttribute;
 
@@ -40,7 +40,7 @@ The ID of the command you want to cancel.
 
 
 
-=head2 InstanceIds => ArrayRef[Str]
+=head2 InstanceIds => ArrayRef[Str|Undef]
 
 (Optional) A list of instance IDs on which you want to cancel the
 command. If not provided, the command is canceled on every instance on

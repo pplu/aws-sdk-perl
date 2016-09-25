@@ -2,7 +2,7 @@
 package Paws::ELB::AttachLoadBalancerToSubnets;
   use Moose;
   has LoadBalancerName => (is => 'ro', isa => 'Str', required => 1);
-  has Subnets => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has Subnets => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -40,7 +40,7 @@ The name of the load balancer.
 
 
 
-=head2 B<REQUIRED> Subnets => ArrayRef[Str]
+=head2 B<REQUIRED> Subnets => ArrayRef[Str|Undef]
 
 The IDs of the subnets to add. You can add only one subnet per
 Availability Zone.

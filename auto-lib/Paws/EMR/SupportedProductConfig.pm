@@ -1,6 +1,6 @@
 package Paws::EMR::SupportedProductConfig;
   use Moose;
-  has Args => (is => 'ro', isa => 'ArrayRef[Str]');
+  has Args => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Name => (is => 'ro', isa => 'Str');
 1;
 
@@ -39,7 +39,7 @@ corresponding installation script as bootstrap action arguments.
 =head1 ATTRIBUTES
 
 
-=head2 Args => ArrayRef[Str]
+=head2 Args => ArrayRef[Str|Undef]
 
   The list of user-supplied arguments.
 

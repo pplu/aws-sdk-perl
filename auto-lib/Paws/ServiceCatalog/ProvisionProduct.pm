@@ -2,7 +2,7 @@
 package Paws::ServiceCatalog::ProvisionProduct;
   use Moose;
   has AcceptLanguage => (is => 'ro', isa => 'Str');
-  has NotificationArns => (is => 'ro', isa => 'ArrayRef[Str]');
+  has NotificationArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has PathId => (is => 'ro', isa => 'Str');
   has ProductId => (is => 'ro', isa => 'Str', required => 1);
   has ProvisionedProductName => (is => 'ro', isa => 'Str', required => 1);
@@ -56,7 +56,7 @@ If no code is specified, "en" is used as the default.
 
 
 
-=head2 NotificationArns => ArrayRef[Str]
+=head2 NotificationArns => ArrayRef[Str|Undef]
 
 Passed to CloudFormation. The SNS topic ARNs to which to publish
 stack-related events.

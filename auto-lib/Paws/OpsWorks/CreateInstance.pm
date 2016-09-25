@@ -11,7 +11,7 @@ package Paws::OpsWorks::CreateInstance;
   has Hostname => (is => 'ro', isa => 'Str');
   has InstallUpdatesOnBoot => (is => 'ro', isa => 'Bool');
   has InstanceType => (is => 'ro', isa => 'Str', required => 1);
-  has LayerIds => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has LayerIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
   has Os => (is => 'ro', isa => 'Str');
   has RootDeviceType => (is => 'ro', isa => 'Str');
   has SshKeyName => (is => 'ro', isa => 'Str');
@@ -154,7 +154,7 @@ B<API Name> column of the B<Available Instance Types> table.
 
 
 
-=head2 B<REQUIRED> LayerIds => ArrayRef[Str]
+=head2 B<REQUIRED> LayerIds => ArrayRef[Str|Undef]
 
 An array that contains the instance's layer IDs.
 

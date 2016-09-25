@@ -1,6 +1,6 @@
 package Paws::RDS::EventCategoriesMap;
   use Moose;
-  has EventCategories => (is => 'ro', isa => 'ArrayRef[Str]');
+  has EventCategories => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has SourceType => (is => 'ro', isa => 'Str');
 1;
 
@@ -38,7 +38,7 @@ DescribeEventCategories action.
 =head1 ATTRIBUTES
 
 
-=head2 EventCategories => ArrayRef[Str]
+=head2 EventCategories => ArrayRef[Str|Undef]
 
   The event categories for the specified source type
 

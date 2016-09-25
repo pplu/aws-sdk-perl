@@ -7,7 +7,7 @@ package Paws::SimpleWorkflow::WorkflowExecutionInfo;
   has ExecutionStatus => (is => 'ro', isa => 'Str', xmlname => 'executionStatus', request_name => 'executionStatus', traits => ['Unwrapped','NameInRequest'], required => 1);
   has Parent => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowExecution', xmlname => 'parent', request_name => 'parent', traits => ['Unwrapped','NameInRequest']);
   has StartTimestamp => (is => 'ro', isa => 'Str', xmlname => 'startTimestamp', request_name => 'startTimestamp', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has TagList => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'tagList', request_name => 'tagList', traits => ['Unwrapped','NameInRequest']);
+  has TagList => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'tagList', request_name => 'tagList', traits => ['Unwrapped','NameInRequest']);
   has WorkflowType => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowType', xmlname => 'workflowType', request_name => 'workflowType', traits => ['Unwrapped','NameInRequest'], required => 1);
 1;
 
@@ -103,7 +103,7 @@ contains the workflow execution that started this execution.
   The time when the execution was started.
 
 
-=head2 TagList => ArrayRef[Str]
+=head2 TagList => ArrayRef[Str|Undef]
 
   The list of tags associated with the workflow execution. Tags can be
 used to identify and list workflow executions of interest through the

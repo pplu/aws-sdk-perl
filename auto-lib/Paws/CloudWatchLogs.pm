@@ -461,7 +461,7 @@ number of subscription filters returned in the response by specifying
 the C<limit> parameter in the request.
 
 
-=head2 FilterLogEvents(LogGroupName => Str, [EndTime => Int, FilterPattern => Str, Interleaved => Bool, Limit => Int, LogStreamNames => ArrayRef[Str], NextToken => Str, StartTime => Int])
+=head2 FilterLogEvents(LogGroupName => Str, [EndTime => Int, FilterPattern => Str, Interleaved => Bool, Limit => Int, LogStreamNames => ArrayRef[Str|Undef], NextToken => Str, StartTime => Int])
 
 Each argument is described in detail in: L<Paws::CloudWatchLogs::FilterLogEvents>
 
@@ -652,7 +652,7 @@ Currently there can only be one subscription filter associated with a
 log group.
 
 
-=head2 TestMetricFilter(FilterPattern => Str, LogEventMessages => ArrayRef[Str])
+=head2 TestMetricFilter(FilterPattern => Str, LogEventMessages => ArrayRef[Str|Undef])
 
 Each argument is described in detail in: L<Paws::CloudWatchLogs::TestMetricFilter>
 

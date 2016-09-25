@@ -470,7 +470,7 @@ Amazon S3 storage location and AWS account credentials. Use the
 location and credentials to upload your game build.
 
 
-=head2 CreateFleet(BuildId => Str, EC2InstanceType => Str, Name => Str, [Description => Str, EC2InboundPermissions => ArrayRef[L<Paws::GameLift::IpPermission>], LogPaths => ArrayRef[Str], NewGameSessionProtectionPolicy => Str, RuntimeConfiguration => L<Paws::GameLift::RuntimeConfiguration>, ServerLaunchParameters => Str, ServerLaunchPath => Str])
+=head2 CreateFleet(BuildId => Str, EC2InstanceType => Str, Name => Str, [Description => Str, EC2InboundPermissions => ArrayRef[L<Paws::GameLift::IpPermission>], LogPaths => ArrayRef[Str|Undef], NewGameSessionProtectionPolicy => Str, RuntimeConfiguration => L<Paws::GameLift::RuntimeConfiguration>, ServerLaunchParameters => Str, ServerLaunchPath => Str])
 
 Each argument is described in detail in: L<Paws::GameLift::CreateFleet>
 
@@ -575,7 +575,7 @@ successful, the player is added to the game session and a new
 PlayerSession object is returned.
 
 
-=head2 CreatePlayerSessions(GameSessionId => Str, PlayerIds => ArrayRef[Str])
+=head2 CreatePlayerSessions(GameSessionId => Str, PlayerIds => ArrayRef[Str|Undef])
 
 Each argument is described in detail in: L<Paws::GameLift::CreatePlayerSessions>
 
@@ -688,7 +688,7 @@ can be found in the AWS Management Console for GameLift (see the
 drop-down list in the upper right corner).
 
 
-=head2 DescribeFleetAttributes([FleetIds => ArrayRef[Str], Limit => Int, NextToken => Str])
+=head2 DescribeFleetAttributes([FleetIds => ArrayRef[Str|Undef], Limit => Int, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::GameLift::DescribeFleetAttributes>
 
@@ -708,7 +708,7 @@ request. If a request exceeds this limit, the request fails and the
 error message includes the maximum allowed.
 
 
-=head2 DescribeFleetCapacity([FleetIds => ArrayRef[Str], Limit => Int, NextToken => Str])
+=head2 DescribeFleetCapacity([FleetIds => ArrayRef[Str|Undef], Limit => Int, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::GameLift::DescribeFleetCapacity>
 
@@ -756,7 +756,7 @@ requested fleet ID. If the requested fleet has been deleted, the result
 set is empty.
 
 
-=head2 DescribeFleetUtilization([FleetIds => ArrayRef[Str], Limit => Int, NextToken => Str])
+=head2 DescribeFleetUtilization([FleetIds => ArrayRef[Str|Undef], Limit => Int, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::GameLift::DescribeFleetUtilization>
 

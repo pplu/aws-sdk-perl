@@ -3,7 +3,7 @@ package Paws::AutoScaling::EnableMetricsCollection;
   use Moose;
   has AutoScalingGroupName => (is => 'ro', isa => 'Str', required => 1);
   has Granularity => (is => 'ro', isa => 'Str', required => 1);
-  has Metrics => (is => 'ro', isa => 'ArrayRef[Str]');
+  has Metrics => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
   use MooseX::ClassAttribute;
 
@@ -48,7 +48,7 @@ valid value is C<1Minute>.
 
 
 
-=head2 Metrics => ArrayRef[Str]
+=head2 Metrics => ArrayRef[Str|Undef]
 
 One or more of the following metrics. If you omit this parameter, all
 metrics are enabled.

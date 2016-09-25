@@ -1,13 +1,13 @@
 
 package Paws::IAM::SimulateCustomPolicy;
   use Moose;
-  has ActionNames => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has ActionNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
   has CallerArn => (is => 'ro', isa => 'Str');
   has ContextEntries => (is => 'ro', isa => 'ArrayRef[Paws::IAM::ContextEntry]');
   has Marker => (is => 'ro', isa => 'Str');
   has MaxItems => (is => 'ro', isa => 'Int');
-  has PolicyInputList => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
-  has ResourceArns => (is => 'ro', isa => 'ArrayRef[Str]');
+  has PolicyInputList => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
+  has ResourceArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has ResourceHandlingOption => (is => 'ro', isa => 'Str');
   has ResourceOwner => (is => 'ro', isa => 'Str');
   has ResourcePolicy => (is => 'ro', isa => 'Str');
@@ -42,7 +42,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> ActionNames => ArrayRef[Str]
+=head2 B<REQUIRED> ActionNames => ArrayRef[Str|Undef]
 
 A list of names of API actions to evaluate in the simulation. Each
 action is evaluated against each resource. Each action must include the
@@ -93,7 +93,7 @@ subsequent call that tells the service where to continue from.
 
 
 
-=head2 B<REQUIRED> PolicyInputList => ArrayRef[Str]
+=head2 B<REQUIRED> PolicyInputList => ArrayRef[Str|Undef]
 
 A list of policy documents to include in the simulation. Each document
 is specified as a string containing the complete, valid JSON text of an
@@ -112,7 +112,7 @@ It also includes the special characters tab (\u0009), line feed
 
 
 
-=head2 ResourceArns => ArrayRef[Str]
+=head2 ResourceArns => ArrayRef[Str|Undef]
 
 A list of ARNs of AWS resources to include in the simulation. If this
 parameter is not provided then the value defaults to C<*> (all

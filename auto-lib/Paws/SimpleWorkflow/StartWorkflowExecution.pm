@@ -6,7 +6,7 @@ package Paws::SimpleWorkflow::StartWorkflowExecution;
   has ExecutionStartToCloseTimeout => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'executionStartToCloseTimeout' );
   has Input => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'input' );
   has LambdaRole => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'lambdaRole' );
-  has TagList => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'tagList' );
+  has TagList => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'tagList' );
   has TaskList => (is => 'ro', isa => 'Paws::SimpleWorkflow::TaskList', traits => ['NameInRequest'], request_name => 'taskList' );
   has TaskPriority => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'taskPriority' );
   has TaskStartToCloseTimeout => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'taskStartToCloseTimeout' );
@@ -119,7 +119,7 @@ workflow type or through this field.
 
 
 
-=head2 TagList => ArrayRef[Str]
+=head2 TagList => ArrayRef[Str|Undef]
 
 The list of tags to associate with the workflow execution. You can
 specify a maximum of 5 tags. You can list workflow executions with a

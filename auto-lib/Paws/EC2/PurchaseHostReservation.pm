@@ -3,7 +3,7 @@ package Paws::EC2::PurchaseHostReservation;
   use Moose;
   has ClientToken => (is => 'ro', isa => 'Str');
   has CurrencyCode => (is => 'ro', isa => 'Str');
-  has HostIdSet => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has HostIdSet => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
   has LimitPrice => (is => 'ro', isa => 'Str');
   has OfferingId => (is => 'ro', isa => 'Str', required => 1);
 
@@ -53,7 +53,7 @@ supported currency is C<USD>.
 
 Valid values are: C<"USD">
 
-=head2 B<REQUIRED> HostIdSet => ArrayRef[Str]
+=head2 B<REQUIRED> HostIdSet => ArrayRef[Str|Undef]
 
 The ID/s of the Dedicated Host/s that the reservation will be
 associated with.

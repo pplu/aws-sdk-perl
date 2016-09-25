@@ -7,7 +7,7 @@ package Paws::CloudWatch::GetMetricStatistics;
   has Namespace => (is => 'ro', isa => 'Str', required => 1);
   has Period => (is => 'ro', isa => 'Int', required => 1);
   has StartTime => (is => 'ro', isa => 'Str', required => 1);
-  has Statistics => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has Statistics => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
   has Unit => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
@@ -94,7 +94,7 @@ C<GetMetricStatistics>.
 
 
 
-=head2 B<REQUIRED> Statistics => ArrayRef[Str]
+=head2 B<REQUIRED> Statistics => ArrayRef[Str|Undef]
 
 The metric statistics to return. For information about specific
 statistics returned by GetMetricStatistics, see Statistics in the

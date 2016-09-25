@@ -20,7 +20,7 @@ package Paws::RedShift::Snapshot;
   has NumberOfNodes => (is => 'ro', isa => 'Int');
   has OwnerAccount => (is => 'ro', isa => 'Str');
   has Port => (is => 'ro', isa => 'Int');
-  has RestorableNodeTypes => (is => 'ro', isa => 'ArrayRef[Str]');
+  has RestorableNodeTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has SnapshotCreateTime => (is => 'ro', isa => 'Str');
   has SnapshotIdentifier => (is => 'ro', isa => 'Str');
   has SnapshotType => (is => 'ro', isa => 'Str');
@@ -185,7 +185,7 @@ snapshot.
   The port that the cluster is listening on.
 
 
-=head2 RestorableNodeTypes => ArrayRef[Str]
+=head2 RestorableNodeTypes => ArrayRef[Str|Undef]
 
   The list of node types that this cluster snapshot is able to restore
 into.

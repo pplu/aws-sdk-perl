@@ -2,7 +2,7 @@
 package Paws::CodeCommit::TestRepositoryTriggersOutput;
   use Moose;
   has FailedExecutions => (is => 'ro', isa => 'ArrayRef[Paws::CodeCommit::RepositoryTriggerExecutionFailure]', traits => ['Unwrapped'], xmlname => 'failedExecutions' );
-  has SuccessfulExecutions => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['Unwrapped'], xmlname => 'successfulExecutions' );
+  has SuccessfulExecutions => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['Unwrapped'], xmlname => 'successfulExecutions' );
 
 
 ### main pod documentation begin ###
@@ -22,7 +22,7 @@ by commas.
 
 
 
-=head2 SuccessfulExecutions => ArrayRef[Str]
+=head2 SuccessfulExecutions => ArrayRef[Str|Undef]
 
 The list of triggers that were successfully tested. This list provides
 the names of the triggers that were successfully tested, separated by

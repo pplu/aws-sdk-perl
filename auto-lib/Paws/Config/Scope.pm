@@ -1,7 +1,7 @@
 package Paws::Config::Scope;
   use Moose;
   has ComplianceResourceId => (is => 'ro', isa => 'Str');
-  has ComplianceResourceTypes => (is => 'ro', isa => 'ArrayRef[Str]');
+  has ComplianceResourceTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has TagKey => (is => 'ro', isa => 'Str');
   has TagValue => (is => 'ro', isa => 'Str');
 1;
@@ -52,7 +52,7 @@ for the rule. If you specify a resource ID, you must specify one
 resource type for C<ComplianceResourceTypes>.
 
 
-=head2 ComplianceResourceTypes => ArrayRef[Str]
+=head2 ComplianceResourceTypes => ArrayRef[Str|Undef]
 
   The resource types of only those AWS resources that you want to trigger
 an evaluation for the rule. You can only specify one type if you also

@@ -4,7 +4,7 @@ package Paws::OpsWorks::CloneStack;
   has AgentVersion => (is => 'ro', isa => 'Str');
   has Attributes => (is => 'ro', isa => 'Paws::OpsWorks::StackAttributes');
   has ChefConfiguration => (is => 'ro', isa => 'Paws::OpsWorks::ChefConfiguration');
-  has CloneAppIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has CloneAppIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has ClonePermissions => (is => 'ro', isa => 'Bool');
   has ConfigurationManager => (is => 'ro', isa => 'Paws::OpsWorks::StackConfigurationManager');
   has CustomCookbooksSource => (is => 'ro', isa => 'Paws::OpsWorks::Source');
@@ -100,7 +100,7 @@ information, see Create a New Stack.
 
 
 
-=head2 CloneAppIds => ArrayRef[Str]
+=head2 CloneAppIds => ArrayRef[Str|Undef]
 
 A list of source stack app IDs to be included in the cloned stack.
 

@@ -5,7 +5,7 @@ package Paws::ACM::CertificateDetail;
   has DomainName => (is => 'ro', isa => 'Str');
   has DomainValidationOptions => (is => 'ro', isa => 'ArrayRef[Paws::ACM::DomainValidation]');
   has FailureReason => (is => 'ro', isa => 'Str');
-  has InUseBy => (is => 'ro', isa => 'ArrayRef[Str]');
+  has InUseBy => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has IssuedAt => (is => 'ro', isa => 'Str');
   has Issuer => (is => 'ro', isa => 'Str');
   has KeyAlgorithm => (is => 'ro', isa => 'Str');
@@ -17,7 +17,7 @@ package Paws::ACM::CertificateDetail;
   has SignatureAlgorithm => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
   has Subject => (is => 'ro', isa => 'Str');
-  has SubjectAlternativeNames => (is => 'ro', isa => 'ArrayRef[Str]');
+  has SubjectAlternativeNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 1;
 
 ### main pod documentation begin ###
@@ -86,7 +86,7 @@ Certificate Request Failed in the I<AWS Certificate Manager User
 Guide>.
 
 
-=head2 InUseBy => ArrayRef[Str]
+=head2 InUseBy => ArrayRef[Str|Undef]
 
   A list of ARNs for the resources that are using the certificate. An ACM
 Certificate can be used by multiple AWS resources.
@@ -153,7 +153,7 @@ supported value is C<SHA256WITHRSA>.
 key contained in the certificate.
 
 
-=head2 SubjectAlternativeNames => ArrayRef[Str]
+=head2 SubjectAlternativeNames => ArrayRef[Str|Undef]
 
   One or more domain names (subject alternative names) included in the
 certificate request. After the certificate is issued, this list

@@ -2,7 +2,7 @@
 package Paws::ECS::StartTask;
   use Moose;
   has Cluster => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cluster' );
-  has ContainerInstances => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'containerInstances' , required => 1);
+  has ContainerInstances => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'containerInstances' , required => 1);
   has Overrides => (is => 'ro', isa => 'Paws::ECS::TaskOverride', traits => ['NameInRequest'], request_name => 'overrides' );
   has StartedBy => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'startedBy' );
   has TaskDefinition => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'taskDefinition' , required => 1);
@@ -45,7 +45,7 @@ cluster is assumed..
 
 
 
-=head2 B<REQUIRED> ContainerInstances => ArrayRef[Str]
+=head2 B<REQUIRED> ContainerInstances => ArrayRef[Str|Undef]
 
 The container instance IDs or full Amazon Resource Name (ARN) entries
 for the container instances on which you would like to place your task.

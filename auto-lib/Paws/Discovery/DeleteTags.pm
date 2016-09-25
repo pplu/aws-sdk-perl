@@ -1,7 +1,7 @@
 
 package Paws::Discovery::DeleteTags;
   use Moose;
-  has ConfigurationIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'configurationIds' , required => 1);
+  has ConfigurationIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'configurationIds' , required => 1);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Discovery::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
 
   use MooseX::ClassAttribute;
@@ -34,7 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> ConfigurationIds => ArrayRef[Str]
+=head2 B<REQUIRED> ConfigurationIds => ArrayRef[Str|Undef]
 
 A list of configuration items with tags that you want to delete.
 

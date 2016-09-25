@@ -1,9 +1,9 @@
 package Paws::CodeCommit::RepositoryTrigger;
   use Moose;
-  has Branches => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'branches', request_name => 'branches', traits => ['Unwrapped','NameInRequest']);
+  has Branches => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'branches', request_name => 'branches', traits => ['Unwrapped','NameInRequest']);
   has CustomData => (is => 'ro', isa => 'Str', xmlname => 'customData', request_name => 'customData', traits => ['Unwrapped','NameInRequest']);
   has DestinationArn => (is => 'ro', isa => 'Str', xmlname => 'destinationArn', request_name => 'destinationArn', traits => ['Unwrapped','NameInRequest']);
-  has Events => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'events', request_name => 'events', traits => ['Unwrapped','NameInRequest']);
+  has Events => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'events', request_name => 'events', traits => ['Unwrapped','NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', xmlname => 'name', request_name => 'name', traits => ['Unwrapped','NameInRequest']);
 1;
 
@@ -40,7 +40,7 @@ Information about a trigger for a repository.
 =head1 ATTRIBUTES
 
 
-=head2 Branches => ArrayRef[Str]
+=head2 Branches => ArrayRef[Str|Undef]
 
   The branches that will be included in the trigger configuration. If no
 branches are specified, the trigger will apply to all branches.
@@ -58,7 +58,7 @@ the information sent to the target of the trigger.
 the ARN of a topic in Amazon Simple Notification Service (SNS).
 
 
-=head2 Events => ArrayRef[Str]
+=head2 Events => ArrayRef[Str|Undef]
 
   The repository events that will cause the trigger to run actions in
 another service, such as sending a notification through Amazon Simple

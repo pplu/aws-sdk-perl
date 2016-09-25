@@ -2,7 +2,7 @@ package Paws::ElastiCache::ReplicationGroup;
   use Moose;
   has AutomaticFailover => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
-  has MemberClusters => (is => 'ro', isa => 'ArrayRef[Str]');
+  has MemberClusters => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has NodeGroups => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::NodeGroup]');
   has PendingModifiedValues => (is => 'ro', isa => 'Paws::ElastiCache::ReplicationGroupPendingModifiedValues');
   has ReplicationGroupId => (is => 'ro', isa => 'Str');
@@ -68,7 +68,7 @@ T1 and T2 cache node types.
   The description of the replication group.
 
 
-=head2 MemberClusters => ArrayRef[Str]
+=head2 MemberClusters => ArrayRef[Str|Undef]
 
   The names of all the cache clusters that are part of this replication
 group.

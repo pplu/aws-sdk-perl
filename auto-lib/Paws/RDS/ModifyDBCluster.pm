@@ -11,7 +11,7 @@ package Paws::RDS::ModifyDBCluster;
   has Port => (is => 'ro', isa => 'Int');
   has PreferredBackupWindow => (is => 'ro', isa => 'Str');
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
-  has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
   use MooseX::ClassAttribute;
 
@@ -235,7 +235,7 @@ Constraints: Minimum 30-minute window.
 
 
 
-=head2 VpcSecurityGroupIds => ArrayRef[Str]
+=head2 VpcSecurityGroupIds => ArrayRef[Str|Undef]
 
 A lst of VPC security groups that the DB cluster will belong to.
 

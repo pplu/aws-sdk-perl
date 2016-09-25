@@ -1,7 +1,7 @@
 
 package Paws::CloudHSM::ListHsmsResponse;
   use Moose;
-  has HsmList => (is => 'ro', isa => 'ArrayRef[Str]');
+  has HsmList => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has NextToken => (is => 'ro', isa => 'Str');
 
 
@@ -14,7 +14,7 @@ Paws::CloudHSM::ListHsmsResponse
 =head1 ATTRIBUTES
 
 
-=head2 HsmList => ArrayRef[Str]
+=head2 HsmList => ArrayRef[Str|Undef]
 
 The list of ARNs that identify the HSMs.
 

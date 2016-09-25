@@ -1,7 +1,7 @@
 
 package Paws::OpsWorks::DescribeLoadBasedAutoScaling;
   use Moose;
-  has LayerIds => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has LayerIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -33,7 +33,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> LayerIds => ArrayRef[Str]
+=head2 B<REQUIRED> LayerIds => ArrayRef[Str|Undef]
 
 An array of layer IDs.
 

@@ -4,7 +4,7 @@ package Paws::EC2::CreateVpcEndpoint;
   has ClientToken => (is => 'ro', isa => 'Str');
   has DryRun => (is => 'ro', isa => 'Bool');
   has PolicyDocument => (is => 'ro', isa => 'Str');
-  has RouteTableIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'RouteTableId' );
+  has RouteTableIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'RouteTableId' );
   has ServiceName => (is => 'ro', isa => 'Str', required => 1);
   has VpcId => (is => 'ro', isa => 'Str', required => 1);
 
@@ -63,7 +63,7 @@ service.
 
 
 
-=head2 RouteTableIds => ArrayRef[Str]
+=head2 RouteTableIds => ArrayRef[Str|Undef]
 
 One or more route table IDs.
 

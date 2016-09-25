@@ -1,6 +1,6 @@
 package Paws::Route53Domains::Nameserver;
   use Moose;
-  has GlueIps => (is => 'ro', isa => 'ArrayRef[Str]');
+  has GlueIps => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Name => (is => 'ro', isa => 'Str', required => 1);
 1;
 
@@ -37,7 +37,7 @@ Nameserver includes the following elements.
 =head1 ATTRIBUTES
 
 
-=head2 GlueIps => ArrayRef[Str]
+=head2 GlueIps => ArrayRef[Str|Undef]
 
   Glue IP address of a name server entry. Glue IP addresses are required
 only when the name of the name server is a subdomain of the domain. For

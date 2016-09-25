@@ -2,7 +2,7 @@
 package Paws::ECS::DescribeTasks;
   use Moose;
   has Cluster => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cluster' );
-  has Tasks => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'tasks' , required => 1);
+  has Tasks => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'tasks' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -42,7 +42,7 @@ default cluster is assumed.
 
 
 
-=head2 B<REQUIRED> Tasks => ArrayRef[Str]
+=head2 B<REQUIRED> Tasks => ArrayRef[Str|Undef]
 
 A space-separated list of task IDs or full Amazon Resource Name (ARN)
 entries.

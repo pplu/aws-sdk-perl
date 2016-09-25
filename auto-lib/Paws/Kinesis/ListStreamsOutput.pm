@@ -2,7 +2,7 @@
 package Paws::Kinesis::ListStreamsOutput;
   use Moose;
   has HasMoreStreams => (is => 'ro', isa => 'Bool', required => 1);
-  has StreamNames => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has StreamNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
 
 
 ### main pod documentation begin ###
@@ -20,7 +20,7 @@ If set to C<true>, there are more streams available to list.
 
 
 
-=head2 B<REQUIRED> StreamNames => ArrayRef[Str]
+=head2 B<REQUIRED> StreamNames => ArrayRef[Str|Undef]
 
 The names of the streams that are associated with the AWS account
 making the C<ListStreams> request.

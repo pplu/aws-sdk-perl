@@ -1,7 +1,7 @@
 package Paws::AutoScaling::Filter;
   use Moose;
   has Name => (is => 'ro', isa => 'Str');
-  has Values => (is => 'ro', isa => 'ArrayRef[Str]');
+  has Values => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 1;
 
 ### main pod documentation begin ###
@@ -43,7 +43,7 @@ Describes a filter.
 C<"key">, C<"value">, and C<"propagate-at-launch">.
 
 
-=head2 Values => ArrayRef[Str]
+=head2 Values => ArrayRef[Str|Undef]
 
   The value of the filter.
 

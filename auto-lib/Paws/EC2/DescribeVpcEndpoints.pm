@@ -5,7 +5,7 @@ package Paws::EC2::DescribeVpcEndpoints;
   has Filters => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
   has MaxResults => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
-  has VpcEndpointIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'VpcEndpointId' );
+  has VpcEndpointIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'VpcEndpointId' );
 
   use MooseX::ClassAttribute;
 
@@ -92,7 +92,7 @@ from a prior call.)
 
 
 
-=head2 VpcEndpointIds => ArrayRef[Str]
+=head2 VpcEndpointIds => ArrayRef[Str|Undef]
 
 One or more endpoint IDs.
 

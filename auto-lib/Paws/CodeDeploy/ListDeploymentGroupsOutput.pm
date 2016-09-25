@@ -2,7 +2,7 @@
 package Paws::CodeDeploy::ListDeploymentGroupsOutput;
   use Moose;
   has ApplicationName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'applicationName' );
-  has DeploymentGroups => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['Unwrapped'], xmlname => 'deploymentGroups' );
+  has DeploymentGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['Unwrapped'], xmlname => 'deploymentGroups' );
   has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
 
 
@@ -21,7 +21,7 @@ The application name.
 
 
 
-=head2 DeploymentGroups => ArrayRef[Str]
+=head2 DeploymentGroups => ArrayRef[Str|Undef]
 
 A list of corresponding deployment group names.
 

@@ -1,7 +1,7 @@
 
 package Paws::RDS::CreateDBCluster;
   use Moose;
-  has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str]');
+  has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has BackupRetentionPeriod => (is => 'ro', isa => 'Int');
   has CharacterSetName => (is => 'ro', isa => 'Str');
   has DatabaseName => (is => 'ro', isa => 'Str');
@@ -20,7 +20,7 @@ package Paws::RDS::CreateDBCluster;
   has ReplicationSourceIdentifier => (is => 'ro', isa => 'Str');
   has StorageEncrypted => (is => 'ro', isa => 'Bool');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Tag]');
-  has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
   use MooseX::ClassAttribute;
 
@@ -52,7 +52,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 AvailabilityZones => ArrayRef[Str]
+=head2 AvailabilityZones => ArrayRef[Str|Undef]
 
 A list of EC2 Availability Zones that instances in the DB cluster can
 be created in. For information on regions and Availability Zones, see
@@ -322,7 +322,7 @@ Specifies whether the DB cluster is encrypted.
 
 
 
-=head2 VpcSecurityGroupIds => ArrayRef[Str]
+=head2 VpcSecurityGroupIds => ArrayRef[Str|Undef]
 
 A list of EC2 VPC security groups to associate with this DB cluster.
 

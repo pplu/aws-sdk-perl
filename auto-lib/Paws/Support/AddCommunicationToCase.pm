@@ -3,7 +3,7 @@ package Paws::Support::AddCommunicationToCase;
   use Moose;
   has AttachmentSetId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'attachmentSetId' );
   has CaseId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'caseId' );
-  has CcEmailAddresses => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'ccEmailAddresses' );
+  has CcEmailAddresses => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'ccEmailAddresses' );
   has CommunicationBody => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'communicationBody' , required => 1);
 
   use MooseX::ClassAttribute;
@@ -51,7 +51,7 @@ case-I<12345678910-2013-c4c1d2bf33c5cf47>
 
 
 
-=head2 CcEmailAddresses => ArrayRef[Str]
+=head2 CcEmailAddresses => ArrayRef[Str|Undef]
 
 The email addresses in the CC line of an email to be added to the
 support case.

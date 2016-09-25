@@ -1,7 +1,7 @@
 
 package Paws::SNS::GetSMSAttributes;
   use Moose;
-  has Attributes => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'attributes' );
+  has Attributes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'attributes' );
 
   use MooseX::ClassAttribute;
 
@@ -33,7 +33,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 Attributes => ArrayRef[Str]
+=head2 Attributes => ArrayRef[Str|Undef]
 
 A list of the individual attribute names, such as C<MonthlySpendLimit>,
 for which you want values.

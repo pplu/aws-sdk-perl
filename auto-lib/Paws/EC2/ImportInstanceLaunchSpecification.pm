@@ -2,8 +2,8 @@ package Paws::EC2::ImportInstanceLaunchSpecification;
   use Moose;
   has AdditionalInfo => (is => 'ro', isa => 'Str', xmlname => 'additionalInfo', traits => ['Unwrapped']);
   has Architecture => (is => 'ro', isa => 'Str', xmlname => 'architecture', traits => ['Unwrapped']);
-  has GroupIds => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'GroupId', traits => ['Unwrapped']);
-  has GroupNames => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'GroupName', traits => ['Unwrapped']);
+  has GroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'GroupId', traits => ['Unwrapped']);
+  has GroupNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'GroupName', traits => ['Unwrapped']);
   has InstanceInitiatedShutdownBehavior => (is => 'ro', isa => 'Str', xmlname => 'instanceInitiatedShutdownBehavior', traits => ['Unwrapped']);
   has InstanceType => (is => 'ro', isa => 'Str', xmlname => 'instanceType', traits => ['Unwrapped']);
   has Monitoring => (is => 'ro', isa => 'Bool', xmlname => 'monitoring', traits => ['Unwrapped']);
@@ -56,12 +56,12 @@ This class has no description
   The architecture of the instance.
 
 
-=head2 GroupIds => ArrayRef[Str]
+=head2 GroupIds => ArrayRef[Str|Undef]
 
   One or more security group IDs.
 
 
-=head2 GroupNames => ArrayRef[Str]
+=head2 GroupNames => ArrayRef[Str|Undef]
 
   One or more security group names.
 

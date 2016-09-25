@@ -1,7 +1,7 @@
 
 package Paws::EMR::AddInstanceGroupsOutput;
   use Moose;
-  has InstanceGroupIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has InstanceGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has JobFlowId => (is => 'ro', isa => 'Str');
 
 
@@ -14,7 +14,7 @@ Paws::EMR::AddInstanceGroupsOutput
 =head1 ATTRIBUTES
 
 
-=head2 InstanceGroupIds => ArrayRef[Str]
+=head2 InstanceGroupIds => ArrayRef[Str|Undef]
 
 Instance group IDs of the newly created instance groups.
 

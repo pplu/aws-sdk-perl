@@ -1,7 +1,7 @@
 
 package Paws::OpsWorks::DescribeStacks;
   use Moose;
-  has StackIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has StackIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
   use MooseX::ClassAttribute;
 
@@ -33,7 +33,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 StackIds => ArrayRef[Str]
+=head2 StackIds => ArrayRef[Str|Undef]
 
 An array of stack IDs that specify the stacks to be described. If you
 omit this parameter, C<DescribeStacks> returns a description of every

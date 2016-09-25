@@ -1,7 +1,7 @@
 
 package Paws::CognitoIdentity::LookupDeveloperIdentityResponse;
   use Moose;
-  has DeveloperUserIdentifierList => (is => 'ro', isa => 'ArrayRef[Str]');
+  has DeveloperUserIdentifierList => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has IdentityId => (is => 'ro', isa => 'Str');
   has NextToken => (is => 'ro', isa => 'Str');
 
@@ -15,7 +15,7 @@ Paws::CognitoIdentity::LookupDeveloperIdentityResponse
 =head1 ATTRIBUTES
 
 
-=head2 DeveloperUserIdentifierList => ArrayRef[Str]
+=head2 DeveloperUserIdentifierList => ArrayRef[Str|Undef]
 
 This is the list of developer user identifiers associated with an
 identity ID. Cognito supports the association of multiple developer

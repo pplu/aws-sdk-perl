@@ -1,7 +1,7 @@
 
 package Paws::WorkSpaces::DescribeWorkspaceBundles;
   use Moose;
-  has BundleIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has BundleIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has NextToken => (is => 'ro', isa => 'Str');
   has Owner => (is => 'ro', isa => 'Str');
 
@@ -35,7 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 BundleIds => ArrayRef[Str]
+=head2 BundleIds => ArrayRef[Str|Undef]
 
 An array of strings that contains the identifiers of the bundles to
 retrieve. This parameter cannot be combined with any other filter

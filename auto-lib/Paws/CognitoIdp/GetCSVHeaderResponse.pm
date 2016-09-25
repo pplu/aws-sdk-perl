@@ -1,7 +1,7 @@
 
 package Paws::CognitoIdp::GetCSVHeaderResponse;
   use Moose;
-  has CSVHeader => (is => 'ro', isa => 'ArrayRef[Str]');
+  has CSVHeader => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has UserPoolId => (is => 'ro', isa => 'Str');
 
 
@@ -14,7 +14,7 @@ Paws::CognitoIdp::GetCSVHeaderResponse
 =head1 ATTRIBUTES
 
 
-=head2 CSVHeader => ArrayRef[Str]
+=head2 CSVHeader => ArrayRef[Str|Undef]
 
 The header information for the .csv file for the user import job.
 

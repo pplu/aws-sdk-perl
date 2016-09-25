@@ -2,7 +2,7 @@
 package Paws::ElastiCache::RemoveTagsFromResource;
   use Moose;
   has ResourceName => (is => 'ro', isa => 'Str', required => 1);
-  has TagKeys => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has TagKeys => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -46,7 +46,7 @@ AWS Service Namespaces.
 
 
 
-=head2 B<REQUIRED> TagKeys => ArrayRef[Str]
+=head2 B<REQUIRED> TagKeys => ArrayRef[Str|Undef]
 
 A list of C<TagKeys> identifying the tags you want removed from the
 named resource. For example, C<TagKeys.member.1=Region> removes the

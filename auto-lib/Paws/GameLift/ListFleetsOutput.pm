@@ -1,7 +1,7 @@
 
 package Paws::GameLift::ListFleetsOutput;
   use Moose;
-  has FleetIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has FleetIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has NextToken => (is => 'ro', isa => 'Str');
 
 
@@ -14,7 +14,7 @@ Paws::GameLift::ListFleetsOutput
 =head1 ATTRIBUTES
 
 
-=head2 FleetIds => ArrayRef[Str]
+=head2 FleetIds => ArrayRef[Str|Undef]
 
 Set of fleet IDs matching the list request. You can retrieve additional
 information about all returned fleets by passing this result set to a

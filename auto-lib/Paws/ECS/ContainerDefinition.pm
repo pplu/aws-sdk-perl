@@ -1,19 +1,19 @@
 package Paws::ECS::ContainerDefinition;
   use Moose;
-  has Command => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'command', request_name => 'command', traits => ['Unwrapped','NameInRequest']);
+  has Command => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'command', request_name => 'command', traits => ['Unwrapped','NameInRequest']);
   has Cpu => (is => 'ro', isa => 'Int', xmlname => 'cpu', request_name => 'cpu', traits => ['Unwrapped','NameInRequest']);
   has DisableNetworking => (is => 'ro', isa => 'Bool', xmlname => 'disableNetworking', request_name => 'disableNetworking', traits => ['Unwrapped','NameInRequest']);
-  has DnsSearchDomains => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'dnsSearchDomains', request_name => 'dnsSearchDomains', traits => ['Unwrapped','NameInRequest']);
-  has DnsServers => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'dnsServers', request_name => 'dnsServers', traits => ['Unwrapped','NameInRequest']);
+  has DnsSearchDomains => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'dnsSearchDomains', request_name => 'dnsSearchDomains', traits => ['Unwrapped','NameInRequest']);
+  has DnsServers => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'dnsServers', request_name => 'dnsServers', traits => ['Unwrapped','NameInRequest']);
   has DockerLabels => (is => 'ro', isa => 'Paws::ECS::DockerLabelsMap', xmlname => 'dockerLabels', request_name => 'dockerLabels', traits => ['Unwrapped','NameInRequest']);
-  has DockerSecurityOptions => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'dockerSecurityOptions', request_name => 'dockerSecurityOptions', traits => ['Unwrapped','NameInRequest']);
-  has EntryPoint => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'entryPoint', request_name => 'entryPoint', traits => ['Unwrapped','NameInRequest']);
+  has DockerSecurityOptions => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'dockerSecurityOptions', request_name => 'dockerSecurityOptions', traits => ['Unwrapped','NameInRequest']);
+  has EntryPoint => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'entryPoint', request_name => 'entryPoint', traits => ['Unwrapped','NameInRequest']);
   has Environment => (is => 'ro', isa => 'ArrayRef[Paws::ECS::KeyValuePair]', xmlname => 'environment', request_name => 'environment', traits => ['Unwrapped','NameInRequest']);
   has Essential => (is => 'ro', isa => 'Bool', xmlname => 'essential', request_name => 'essential', traits => ['Unwrapped','NameInRequest']);
   has ExtraHosts => (is => 'ro', isa => 'ArrayRef[Paws::ECS::HostEntry]', xmlname => 'extraHosts', request_name => 'extraHosts', traits => ['Unwrapped','NameInRequest']);
   has Hostname => (is => 'ro', isa => 'Str', xmlname => 'hostname', request_name => 'hostname', traits => ['Unwrapped','NameInRequest']);
   has Image => (is => 'ro', isa => 'Str', xmlname => 'image', request_name => 'image', traits => ['Unwrapped','NameInRequest']);
-  has Links => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'links', request_name => 'links', traits => ['Unwrapped','NameInRequest']);
+  has Links => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'links', request_name => 'links', traits => ['Unwrapped','NameInRequest']);
   has LogConfiguration => (is => 'ro', isa => 'Paws::ECS::LogConfiguration', xmlname => 'logConfiguration', request_name => 'logConfiguration', traits => ['Unwrapped','NameInRequest']);
   has Memory => (is => 'ro', isa => 'Int', xmlname => 'memory', request_name => 'memory', traits => ['Unwrapped','NameInRequest']);
   has MemoryReservation => (is => 'ro', isa => 'Int', xmlname => 'memoryReservation', request_name => 'memoryReservation', traits => ['Unwrapped','NameInRequest']);
@@ -62,7 +62,7 @@ different containers that are launched as part of a task.
 =head1 ATTRIBUTES
 
 
-=head2 Command => ArrayRef[Str]
+=head2 Command => ArrayRef[Str|Undef]
 
   The command that is passed to the container. This parameter maps to
 C<Cmd> in the Create a container section of the Docker Remote API and
@@ -128,14 +128,14 @@ container. This parameter maps to C<NetworkDisabled> in the Create a
 container section of the Docker Remote API.
 
 
-=head2 DnsSearchDomains => ArrayRef[Str]
+=head2 DnsSearchDomains => ArrayRef[Str|Undef]
 
   A list of DNS search domains that are presented to the container. This
 parameter maps to C<DnsSearch> in the Create a container section of the
 Docker Remote API and the C<--dns-search> option to docker run.
 
 
-=head2 DnsServers => ArrayRef[Str]
+=head2 DnsServers => ArrayRef[Str|Undef]
 
   A list of DNS servers that are presented to the container. This
 parameter maps to C<Dns> in the Create a container section of the
@@ -153,7 +153,7 @@ instance, log into your container instance and run the following
 command: C<sudo docker version | grep "Server API version">
 
 
-=head2 DockerSecurityOptions => ArrayRef[Str]
+=head2 DockerSecurityOptions => ArrayRef[Str|Undef]
 
   A list of strings to provide custom labels for SELinux and AppArmor
 multi-level security systems. This parameter maps to C<SecurityOpt> in
@@ -168,7 +168,7 @@ information, see Amazon ECS Container Agent Configuration in the
 I<Amazon EC2 Container Service Developer Guide>.
 
 
-=head2 EntryPoint => ArrayRef[Str]
+=head2 EntryPoint => ArrayRef[Str|Undef]
 
   Early versions of the Amazon ECS container agent do not properly handle
 C<entryPoint> parameters. If you have problems using C<entryPoint>,
@@ -255,7 +255,7 @@ name (for example, C<quay.io/assemblyline/ubuntu>).
 
 
 
-=head2 Links => ArrayRef[Str]
+=head2 Links => ArrayRef[Str|Undef]
 
   The C<link> parameter allows containers to communicate with each other
 without the need for port mappings, using the C<name> parameter and

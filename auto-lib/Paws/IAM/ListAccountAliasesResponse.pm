@@ -1,7 +1,7 @@
 
 package Paws::IAM::ListAccountAliasesResponse;
   use Moose;
-  has AccountAliases => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has AccountAliases => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
   has IsTruncated => (is => 'ro', isa => 'Bool');
   has Marker => (is => 'ro', isa => 'Str');
 
@@ -16,7 +16,7 @@ Paws::IAM::ListAccountAliasesResponse
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> AccountAliases => ArrayRef[Str]
+=head2 B<REQUIRED> AccountAliases => ArrayRef[Str|Undef]
 
 A list of aliases associated with the account. AWS supports only one
 alias per account.

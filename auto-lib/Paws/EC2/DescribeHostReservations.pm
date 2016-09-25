@@ -2,7 +2,7 @@
 package Paws::EC2::DescribeHostReservations;
   use Moose;
   has Filter => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Filter]');
-  has HostReservationIdSet => (is => 'ro', isa => 'ArrayRef[Str]');
+  has HostReservationIdSet => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has MaxResults => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
 
@@ -61,7 +61,7 @@ C<payment-failed> | C<active> | C<retired>).
 
 
 
-=head2 HostReservationIdSet => ArrayRef[Str]
+=head2 HostReservationIdSet => ArrayRef[Str|Undef]
 
 One or more host reservation IDs.
 

@@ -1,7 +1,7 @@
 
 package Paws::ELB::RemoveTags;
   use Moose;
-  has LoadBalancerNames => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has LoadBalancerNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ELB::TagKeyOnly]', required => 1);
 
   use MooseX::ClassAttribute;
@@ -34,7 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> LoadBalancerNames => ArrayRef[Str]
+=head2 B<REQUIRED> LoadBalancerNames => ArrayRef[Str|Undef]
 
 The name of the load balancer. You can specify a maximum of one load
 balancer name.

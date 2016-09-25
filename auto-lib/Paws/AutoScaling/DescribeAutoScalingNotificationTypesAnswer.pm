@@ -1,7 +1,7 @@
 
 package Paws::AutoScaling::DescribeAutoScalingNotificationTypesAnswer;
   use Moose;
-  has AutoScalingNotificationTypes => (is => 'ro', isa => 'ArrayRef[Str]');
+  has AutoScalingNotificationTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
 1;
 
@@ -14,7 +14,7 @@ Paws::AutoScaling::DescribeAutoScalingNotificationTypesAnswer
 =head1 ATTRIBUTES
 
 
-=head2 AutoScalingNotificationTypes => ArrayRef[Str]
+=head2 AutoScalingNotificationTypes => ArrayRef[Str|Undef]
 
 The notification types.
 

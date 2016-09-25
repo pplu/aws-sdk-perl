@@ -4,7 +4,7 @@ package Paws::DS::DescribeSnapshots;
   has DirectoryId => (is => 'ro', isa => 'Str');
   has Limit => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
-  has SnapshotIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has SnapshotIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
   use MooseX::ClassAttribute;
 
@@ -56,7 +56,7 @@ DescribeSnapshots. Pass null if this is the first call.
 
 
 
-=head2 SnapshotIds => ArrayRef[Str]
+=head2 SnapshotIds => ArrayRef[Str|Undef]
 
 A list of identifiers of the snapshots to obtain the information for.
 If this member is null or empty, all snapshots are returned using the

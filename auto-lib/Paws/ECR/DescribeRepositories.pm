@@ -4,7 +4,7 @@ package Paws::ECR::DescribeRepositories;
   has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults' );
   has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
   has RegistryId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'registryId' );
-  has RepositoryNames => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'repositoryNames' );
+  has RepositoryNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'repositoryNames' );
 
   use MooseX::ClassAttribute;
 
@@ -72,7 +72,7 @@ default registry is assumed.
 
 
 
-=head2 RepositoryNames => ArrayRef[Str]
+=head2 RepositoryNames => ArrayRef[Str|Undef]
 
 A list of repositories to describe. If this parameter is omitted, then
 all repositories in a registry are described.

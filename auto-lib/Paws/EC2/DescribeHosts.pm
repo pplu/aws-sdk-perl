@@ -2,7 +2,7 @@
 package Paws::EC2::DescribeHosts;
   use Moose;
   has Filter => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'filter' );
-  has HostIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'hostId' );
+  has HostIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'hostId' );
   has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults' );
   has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
 
@@ -77,7 +77,7 @@ C<availability-zone> - The Availability Zone of the host.
 
 
 
-=head2 HostIds => ArrayRef[Str]
+=head2 HostIds => ArrayRef[Str|Undef]
 
 The IDs of the Dedicated Hosts. The IDs are used for targeted instance
 launches.

@@ -1,7 +1,7 @@
 
 package Paws::IAM::GetContextKeysForCustomPolicy;
   use Moose;
-  has PolicyInputList => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has PolicyInputList => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -33,7 +33,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> PolicyInputList => ArrayRef[Str]
+=head2 B<REQUIRED> PolicyInputList => ArrayRef[Str|Undef]
 
 A list of policies for which you want the list of context keys
 referenced in those policies. Each document is specified as a string

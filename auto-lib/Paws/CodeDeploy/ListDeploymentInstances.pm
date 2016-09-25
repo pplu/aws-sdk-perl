@@ -2,7 +2,7 @@
 package Paws::CodeDeploy::ListDeploymentInstances;
   use Moose;
   has DeploymentId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'deploymentId' , required => 1);
-  has InstanceStatusFilter => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'instanceStatusFilter' );
+  has InstanceStatusFilter => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'instanceStatusFilter' );
   has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
 
   use MooseX::ClassAttribute;
@@ -41,7 +41,7 @@ The unique ID of a deployment.
 
 
 
-=head2 InstanceStatusFilter => ArrayRef[Str]
+=head2 InstanceStatusFilter => ArrayRef[Str|Undef]
 
 A subset of instances to list by status:
 

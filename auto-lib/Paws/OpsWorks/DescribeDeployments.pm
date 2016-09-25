@@ -2,7 +2,7 @@
 package Paws::OpsWorks::DescribeDeployments;
   use Moose;
   has AppId => (is => 'ro', isa => 'Str');
-  has DeploymentIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has DeploymentIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has StackId => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
@@ -43,7 +43,7 @@ app.
 
 
 
-=head2 DeploymentIds => ArrayRef[Str]
+=head2 DeploymentIds => ArrayRef[Str|Undef]
 
 An array of deployment IDs to be described. If you include this
 parameter, C<DescribeDeployments> returns a description of the

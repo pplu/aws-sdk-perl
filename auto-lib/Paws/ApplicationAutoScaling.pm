@@ -189,7 +189,7 @@ To create a new scalable target or update an existing one, see
 RegisterScalableTarget.
 
 
-=head2 DescribeScalableTargets(ServiceNamespace => Str, [MaxResults => Int, NextToken => Str, ResourceIds => ArrayRef[Str], ScalableDimension => Str])
+=head2 DescribeScalableTargets(ServiceNamespace => Str, [MaxResults => Int, NextToken => Str, ResourceIds => ArrayRef[Str|Undef], ScalableDimension => Str])
 
 Each argument is described in detail in: L<Paws::ApplicationAutoScaling::DescribeScalableTargets>
 
@@ -224,7 +224,7 @@ for a service namespace, see DescribeScalingPolicies. To create a new
 scaling policy or update an existing one, see PutScalingPolicy.
 
 
-=head2 DescribeScalingPolicies(ServiceNamespace => Str, [MaxResults => Int, NextToken => Str, PolicyNames => ArrayRef[Str], ResourceId => Str, ScalableDimension => Str])
+=head2 DescribeScalingPolicies(ServiceNamespace => Str, [MaxResults => Int, NextToken => Str, PolicyNames => ArrayRef[Str|Undef], ResourceId => Str, ScalableDimension => Str])
 
 Each argument is described in detail in: L<Paws::ApplicationAutoScaling::DescribeScalingPolicies>
 

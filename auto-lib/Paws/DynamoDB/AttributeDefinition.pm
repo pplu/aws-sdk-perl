@@ -49,11 +49,17 @@ indexes.
 
 =over
 
-=item * C<S> - the attribute is of type String
+=item *
 
-=item * C<N> - the attribute is of type Number
+C<S> - the attribute is of type String
 
-=item * C<B> - the attribute is of type Binary
+=item *
+
+C<N> - the attribute is of type Number
+
+=item *
+
+C<B> - the attribute is of type Binary
 
 =back
 

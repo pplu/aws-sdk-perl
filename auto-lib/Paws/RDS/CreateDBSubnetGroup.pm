@@ -3,7 +3,7 @@ package Paws::RDS::CreateDBSubnetGroup;
   use Moose;
   has DBSubnetGroupDescription => (is => 'ro', isa => 'Str', required => 1);
   has DBSubnetGroupName => (is => 'ro', isa => 'Str', required => 1);
-  has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Tag]');
 
   use MooseX::ClassAttribute;
@@ -54,7 +54,7 @@ Example: C<mySubnetgroup>
 
 
 
-=head2 B<REQUIRED> SubnetIds => ArrayRef[Str]
+=head2 B<REQUIRED> SubnetIds => ArrayRef[Str|Undef]
 
 The EC2 Subnet IDs for the DB subnet group.
 

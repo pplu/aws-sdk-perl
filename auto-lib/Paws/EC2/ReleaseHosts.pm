@@ -1,7 +1,7 @@
 
 package Paws::EC2::ReleaseHosts;
   use Moose;
-  has HostIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'hostId' , required => 1);
+  has HostIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'hostId' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -33,7 +33,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> HostIds => ArrayRef[Str]
+=head2 B<REQUIRED> HostIds => ArrayRef[Str|Undef]
 
 The IDs of the Dedicated Hosts you want to release.
 

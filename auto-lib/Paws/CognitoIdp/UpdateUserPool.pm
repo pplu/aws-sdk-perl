@@ -1,7 +1,7 @@
 
 package Paws::CognitoIdp::UpdateUserPool;
   use Moose;
-  has AutoVerifiedAttributes => (is => 'ro', isa => 'ArrayRef[Str]');
+  has AutoVerifiedAttributes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has DeviceConfiguration => (is => 'ro', isa => 'Paws::CognitoIdp::DeviceConfigurationType');
   has EmailConfiguration => (is => 'ro', isa => 'Paws::CognitoIdp::EmailConfigurationType');
   has EmailVerificationMessage => (is => 'ro', isa => 'Str');
@@ -44,7 +44,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 AutoVerifiedAttributes => ArrayRef[Str]
+=head2 AutoVerifiedAttributes => ArrayRef[Str|Undef]
 
 The attributes that are automatically verified when the Amazon Cognito
 service makes a request to update user pools.

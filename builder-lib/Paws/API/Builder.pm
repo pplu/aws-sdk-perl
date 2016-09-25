@@ -618,6 +618,7 @@ Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
       $self->flattened_arrays(1) if ($param_props->{ flattened });
       die "Invalid list type: " . Dumper($param_props) if (not defined $param_props->{member}->{shape});
       my $inner_type = $self->get_caller_class_type($param_props->{member}->{shape});
+      $inner_type = 'Str|Undef' if ($inner_type eq 'Str');
       $type = "ArrayRef[$inner_type]";
     } elsif (exists $param_props->{ type } and $param_props->{ type } eq 'timestamp') {
       # TODO: Paws::API::TimeStamp

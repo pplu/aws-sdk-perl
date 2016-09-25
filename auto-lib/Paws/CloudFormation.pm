@@ -222,7 +222,7 @@ assumes that the database instance still exists and attempts to roll
 back to it, causing the update rollback to fail.
 
 
-=head2 CreateChangeSet(ChangeSetName => Str, StackName => Str, [Capabilities => ArrayRef[Str], ClientToken => Str, Description => Str, NotificationARNs => ArrayRef[Str], Parameters => ArrayRef[L<Paws::CloudFormation::Parameter>], ResourceTypes => ArrayRef[Str], Tags => ArrayRef[L<Paws::CloudFormation::Tag>], TemplateBody => Str, TemplateURL => Str, UsePreviousTemplate => Bool])
+=head2 CreateChangeSet(ChangeSetName => Str, StackName => Str, [Capabilities => ArrayRef[Str|Undef], ClientToken => Str, Description => Str, NotificationARNs => ArrayRef[Str|Undef], Parameters => ArrayRef[L<Paws::CloudFormation::Parameter>], ResourceTypes => ArrayRef[Str|Undef], Tags => ArrayRef[L<Paws::CloudFormation::Tag>], TemplateBody => Str, TemplateURL => Str, UsePreviousTemplate => Bool])
 
 Each argument is described in detail in: L<Paws::CloudFormation::CreateChangeSet>
 
@@ -244,7 +244,7 @@ creating the change set. To check the status of the change set, use the
 DescribeChangeSet action.
 
 
-=head2 CreateStack(StackName => Str, [Capabilities => ArrayRef[Str], DisableRollback => Bool, NotificationARNs => ArrayRef[Str], OnFailure => Str, Parameters => ArrayRef[L<Paws::CloudFormation::Parameter>], ResourceTypes => ArrayRef[Str], StackPolicyBody => Str, StackPolicyURL => Str, Tags => ArrayRef[L<Paws::CloudFormation::Tag>], TemplateBody => Str, TemplateURL => Str, TimeoutInMinutes => Int])
+=head2 CreateStack(StackName => Str, [Capabilities => ArrayRef[Str|Undef], DisableRollback => Bool, NotificationARNs => ArrayRef[Str|Undef], OnFailure => Str, Parameters => ArrayRef[L<Paws::CloudFormation::Parameter>], ResourceTypes => ArrayRef[Str|Undef], StackPolicyBody => Str, StackPolicyURL => Str, Tags => ArrayRef[L<Paws::CloudFormation::Tag>], TemplateBody => Str, TemplateURL => Str, TimeoutInMinutes => Int])
 
 Each argument is described in detail in: L<Paws::CloudFormation::CreateStack>
 
@@ -268,7 +268,7 @@ If the call successfully completes, AWS CloudFormation successfully
 deleted the change set.
 
 
-=head2 DeleteStack(StackName => Str, [RetainResources => ArrayRef[Str]])
+=head2 DeleteStack(StackName => Str, [RetainResources => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::CloudFormation::DeleteStack>
 
@@ -464,7 +464,7 @@ For deleted stacks, ListStackResources returns resource information for
 up to 90 days after the stack has been deleted.
 
 
-=head2 ListStacks([NextToken => Str, StackStatusFilter => ArrayRef[Str]])
+=head2 ListStacks([NextToken => Str, StackStatusFilter => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::CloudFormation::ListStacks>
 
@@ -501,7 +501,7 @@ API is useful in cases where you want to send signals from anywhere
 other than an Amazon EC2 instance.
 
 
-=head2 UpdateStack(StackName => Str, [Capabilities => ArrayRef[Str], NotificationARNs => ArrayRef[Str], Parameters => ArrayRef[L<Paws::CloudFormation::Parameter>], ResourceTypes => ArrayRef[Str], StackPolicyBody => Str, StackPolicyDuringUpdateBody => Str, StackPolicyDuringUpdateURL => Str, StackPolicyURL => Str, Tags => ArrayRef[L<Paws::CloudFormation::Tag>], TemplateBody => Str, TemplateURL => Str, UsePreviousTemplate => Bool])
+=head2 UpdateStack(StackName => Str, [Capabilities => ArrayRef[Str|Undef], NotificationARNs => ArrayRef[Str|Undef], Parameters => ArrayRef[L<Paws::CloudFormation::Parameter>], ResourceTypes => ArrayRef[Str|Undef], StackPolicyBody => Str, StackPolicyDuringUpdateBody => Str, StackPolicyDuringUpdateURL => Str, StackPolicyURL => Str, Tags => ArrayRef[L<Paws::CloudFormation::Tag>], TemplateBody => Str, TemplateURL => Str, UsePreviousTemplate => Bool])
 
 Each argument is described in detail in: L<Paws::CloudFormation::UpdateStack>
 

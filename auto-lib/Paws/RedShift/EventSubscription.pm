@@ -3,10 +3,10 @@ package Paws::RedShift::EventSubscription;
   has CustomerAwsId => (is => 'ro', isa => 'Str');
   has CustSubscriptionId => (is => 'ro', isa => 'Str');
   has Enabled => (is => 'ro', isa => 'Bool');
-  has EventCategoriesList => (is => 'ro', isa => 'ArrayRef[Str]');
+  has EventCategoriesList => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Severity => (is => 'ro', isa => 'Str');
   has SnsTopicArn => (is => 'ro', isa => 'Str');
-  has SourceIdsList => (is => 'ro', isa => 'ArrayRef[Str]');
+  has SourceIdsList => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has SourceType => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
   has SubscriptionCreationTime => (is => 'ro', isa => 'Str');
@@ -63,7 +63,7 @@ notification subscription.
 indicates the subscription is enabled.
 
 
-=head2 EventCategoriesList => ArrayRef[Str]
+=head2 EventCategoriesList => ArrayRef[Str|Undef]
 
   The list of Amazon Redshift event categories specified in the event
 notification subscription.
@@ -85,7 +85,7 @@ Values: ERROR, INFO
 event notification subscription.
 
 
-=head2 SourceIdsList => ArrayRef[Str]
+=head2 SourceIdsList => ArrayRef[Str|Undef]
 
   A list of the sources that publish events to the Amazon Redshift event
 notification subscription.

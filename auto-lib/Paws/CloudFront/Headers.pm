@@ -1,6 +1,6 @@
 package Paws::CloudFront::Headers;
   use Moose;
-  has Items => (is => 'ro', isa => 'ArrayRef[Str]');
+  has Items => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Quantity => (is => 'ro', isa => 'Int', required => 1);
 1;
 
@@ -45,7 +45,7 @@ origin once for each header value.
 =head1 ATTRIBUTES
 
 
-=head2 Items => ArrayRef[Str]
+=head2 Items => ArrayRef[Str|Undef]
 
   Optional: A complex type that contains a Name element for each header
 that you want CloudFront to forward to the origin and to vary on for

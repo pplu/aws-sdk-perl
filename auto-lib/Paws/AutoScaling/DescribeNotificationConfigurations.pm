@@ -1,7 +1,7 @@
 
 package Paws::AutoScaling::DescribeNotificationConfigurations;
   use Moose;
-  has AutoScalingGroupNames => (is => 'ro', isa => 'ArrayRef[Str]');
+  has AutoScalingGroupNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has MaxRecords => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
 
@@ -35,7 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 AutoScalingGroupNames => ArrayRef[Str]
+=head2 AutoScalingGroupNames => ArrayRef[Str|Undef]
 
 The name of the group.
 

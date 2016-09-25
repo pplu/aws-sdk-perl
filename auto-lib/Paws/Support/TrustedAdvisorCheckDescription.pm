@@ -3,7 +3,7 @@ package Paws::Support::TrustedAdvisorCheckDescription;
   has Category => (is => 'ro', isa => 'Str', xmlname => 'category', request_name => 'category', traits => ['Unwrapped','NameInRequest'], required => 1);
   has Description => (is => 'ro', isa => 'Str', xmlname => 'description', request_name => 'description', traits => ['Unwrapped','NameInRequest'], required => 1);
   has Id => (is => 'ro', isa => 'Str', xmlname => 'id', request_name => 'id', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has Metadata => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'metadata', request_name => 'metadata', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has Metadata => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'metadata', request_name => 'metadata', traits => ['Unwrapped','NameInRequest'], required => 1);
   has Name => (is => 'ro', isa => 'Str', xmlname => 'name', request_name => 'name', traits => ['Unwrapped','NameInRequest'], required => 1);
 1;
 
@@ -56,7 +56,7 @@ criteria and recommended actions (contains HTML markup).
   The unique identifier for the Trusted Advisor check.
 
 
-=head2 B<REQUIRED> Metadata => ArrayRef[Str]
+=head2 B<REQUIRED> Metadata => ArrayRef[Str|Undef]
 
   The column headings for the data returned by the Trusted Advisor check.
 The order of the headings corresponds to the order of the data in the

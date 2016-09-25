@@ -4,7 +4,7 @@ package Paws::OpsWorks::DescribeVolumes;
   has InstanceId => (is => 'ro', isa => 'Str');
   has RaidArrayId => (is => 'ro', isa => 'Str');
   has StackId => (is => 'ro', isa => 'Str');
-  has VolumeIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has VolumeIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
   use MooseX::ClassAttribute;
 
@@ -58,7 +58,7 @@ volumes.
 
 
 
-=head2 VolumeIds => ArrayRef[Str]
+=head2 VolumeIds => ArrayRef[Str|Undef]
 
 Am array of volume IDs. If you use this parameter, C<DescribeVolumes>
 returns descriptions of the specified volumes. Otherwise, it returns a

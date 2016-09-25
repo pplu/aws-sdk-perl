@@ -3,7 +3,7 @@ package Paws::EC2::DescribeRouteTables;
   use Moose;
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has Filters => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
-  has RouteTableIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'RouteTableId' );
+  has RouteTableIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'RouteTableId' );
 
   use MooseX::ClassAttribute;
 
@@ -148,7 +148,7 @@ C<vpc-id> - The ID of the VPC for the route table.
 
 
 
-=head2 RouteTableIds => ArrayRef[Str]
+=head2 RouteTableIds => ArrayRef[Str|Undef]
 
 One or more route table IDs.
 

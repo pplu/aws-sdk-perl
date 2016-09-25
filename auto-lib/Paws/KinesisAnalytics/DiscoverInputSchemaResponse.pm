@@ -2,8 +2,8 @@
 package Paws::KinesisAnalytics::DiscoverInputSchemaResponse;
   use Moose;
   has InputSchema => (is => 'ro', isa => 'Paws::KinesisAnalytics::SourceSchema');
-  has ParsedInputRecords => (is => 'ro', isa => 'ArrayRef[ArrayRef[Str]]');
-  has RawInputRecords => (is => 'ro', isa => 'ArrayRef[Str]');
+  has ParsedInputRecords => (is => 'ro', isa => 'ArrayRef[ArrayRef[Str|Undef]]');
+  has RawInputRecords => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
 
 ### main pod documentation begin ###
@@ -23,14 +23,14 @@ corresponding columns in the in-application stream that you can create.
 
 
 
-=head2 ParsedInputRecords => ArrayRef[ArrayRef[Str]]
+=head2 ParsedInputRecords => ArrayRef[ArrayRef[Str|Undef]]
 
 An array of elements, where each element corresponds to a row in a
 stream record (a stream record can have more than one row).
 
 
 
-=head2 RawInputRecords => ArrayRef[Str]
+=head2 RawInputRecords => ArrayRef[Str|Undef]
 
 Raw stream data that was sampled to infer the schema.
 

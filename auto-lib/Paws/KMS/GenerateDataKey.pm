@@ -2,7 +2,7 @@
 package Paws::KMS::GenerateDataKey;
   use Moose;
   has EncryptionContext => (is => 'ro', isa => 'Paws::KMS::EncryptionContextType');
-  has GrantTokens => (is => 'ro', isa => 'ArrayRef[Str]');
+  has GrantTokens => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has KeyId => (is => 'ro', isa => 'Str', required => 1);
   has KeySpec => (is => 'ro', isa => 'Str');
   has NumberOfBytes => (is => 'ro', isa => 'Int');
@@ -46,7 +46,7 @@ encrypted by the key.
 
 
 
-=head2 GrantTokens => ArrayRef[Str]
+=head2 GrantTokens => ArrayRef[Str|Undef]
 
 A list of grant tokens.
 

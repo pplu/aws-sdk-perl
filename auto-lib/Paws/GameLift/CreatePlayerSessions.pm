@@ -2,7 +2,7 @@
 package Paws::GameLift::CreatePlayerSessions;
   use Moose;
   has GameSessionId => (is => 'ro', isa => 'Str', required => 1);
-  has PlayerIds => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has PlayerIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -40,7 +40,7 @@ Unique identifier for a game session.
 
 
 
-=head2 B<REQUIRED> PlayerIds => ArrayRef[Str]
+=head2 B<REQUIRED> PlayerIds => ArrayRef[Str|Undef]
 
 List of unique identifiers for the players to be added.
 

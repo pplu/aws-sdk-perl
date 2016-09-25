@@ -2,7 +2,7 @@ package Paws::Route53::DelegationSet;
   use Moose;
   has CallerReference => (is => 'ro', isa => 'Str');
   has Id => (is => 'ro', isa => 'Str');
-  has NameServers => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has NameServers => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -48,7 +48,7 @@ A complex type that describes the name servers for this hosted zone.
   
 
 
-=head2 B<REQUIRED> NameServers => ArrayRef[Str]
+=head2 B<REQUIRED> NameServers => ArrayRef[Str|Undef]
 
   A complex type that contains a list of the authoritative name servers
 for the hosted zone.

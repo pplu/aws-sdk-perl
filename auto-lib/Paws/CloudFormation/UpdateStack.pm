@@ -1,10 +1,10 @@
 
 package Paws::CloudFormation::UpdateStack;
   use Moose;
-  has Capabilities => (is => 'ro', isa => 'ArrayRef[Str]');
-  has NotificationARNs => (is => 'ro', isa => 'ArrayRef[Str]');
+  has Capabilities => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has NotificationARNs => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Parameters => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::Parameter]');
-  has ResourceTypes => (is => 'ro', isa => 'ArrayRef[Str]');
+  has ResourceTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has StackName => (is => 'ro', isa => 'Str', required => 1);
   has StackPolicyBody => (is => 'ro', isa => 'Str');
   has StackPolicyDuringUpdateBody => (is => 'ro', isa => 'Str');
@@ -45,7 +45,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 Capabilities => ArrayRef[Str]
+=head2 Capabilities => ArrayRef[Str|Undef]
 
 A list of values that you must specify before AWS CloudFormation can
 update certain stacks. Some stack templates might include resources
@@ -73,7 +73,7 @@ CloudFormation Templates.
 
 
 
-=head2 NotificationARNs => ArrayRef[Str]
+=head2 NotificationARNs => ArrayRef[Str|Undef]
 
 Amazon Simple Notification Service topic Amazon Resource Names (ARNs)
 that AWS CloudFormation associates with the stack. Specify an empty
@@ -88,7 +88,7 @@ stack. For more information, see the Parameter data type.
 
 
 
-=head2 ResourceTypes => ArrayRef[Str]
+=head2 ResourceTypes => ArrayRef[Str|Undef]
 
 The template resource types that you have permissions to work with for
 this update stack action, such as C<AWS::EC2::Instance>,

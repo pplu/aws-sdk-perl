@@ -1,7 +1,7 @@
 
 package Paws::SES::VerifyDomainDkimResponse;
   use Moose;
-  has DkimTokens => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has DkimTokens => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
 
 1;
 
@@ -14,7 +14,7 @@ Paws::SES::VerifyDomainDkimResponse
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> DkimTokens => ArrayRef[Str]
+=head2 B<REQUIRED> DkimTokens => ArrayRef[Str|Undef]
 
 A set of character strings that represent the domain's identity. If the
 identity is an email address, the tokens represent the domain of that

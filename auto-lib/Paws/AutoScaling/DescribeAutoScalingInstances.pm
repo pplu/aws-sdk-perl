@@ -1,7 +1,7 @@
 
 package Paws::AutoScaling::DescribeAutoScalingInstances;
   use Moose;
-  has InstanceIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has InstanceIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has MaxRecords => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
 
@@ -35,7 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 InstanceIds => ArrayRef[Str]
+=head2 InstanceIds => ArrayRef[Str|Undef]
 
 The instances to describe; up to 50 instance IDs. If you omit this
 parameter, all Auto Scaling instances are described. If you specify an

@@ -1,10 +1,10 @@
 
 package Paws::EC2::DescribeAddresses;
   use Moose;
-  has AllocationIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'AllocationId' );
+  has AllocationIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'AllocationId' );
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has Filters => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
-  has PublicIps => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'PublicIp' );
+  has PublicIps => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'PublicIp' );
 
   use MooseX::ClassAttribute;
 
@@ -36,7 +36,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 AllocationIds => ArrayRef[Str]
+=head2 AllocationIds => ArrayRef[Str|Undef]
 
 [EC2-VPC] One or more allocation IDs.
 
@@ -100,7 +100,7 @@ C<public-ip> - The Elastic IP address.
 
 
 
-=head2 PublicIps => ArrayRef[Str]
+=head2 PublicIps => ArrayRef[Str|Undef]
 
 [EC2-Classic] One or more Elastic IP addresses.
 

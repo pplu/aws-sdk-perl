@@ -1,7 +1,7 @@
 
 package Paws::Config::StartConfigRulesEvaluation;
   use Moose;
-  has ConfigRuleNames => (is => 'ro', isa => 'ArrayRef[Str]');
+  has ConfigRuleNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
   use MooseX::ClassAttribute;
 
@@ -33,7 +33,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 ConfigRuleNames => ArrayRef[Str]
+=head2 ConfigRuleNames => ArrayRef[Str|Undef]
 
 The list of names of Config rules that you want to run evaluations for.
 

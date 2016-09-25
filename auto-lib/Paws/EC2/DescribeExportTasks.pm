@@ -1,7 +1,7 @@
 
 package Paws::EC2::DescribeExportTasks;
   use Moose;
-  has ExportTaskIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'exportTaskId' );
+  has ExportTaskIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'exportTaskId' );
 
   use MooseX::ClassAttribute;
 
@@ -33,7 +33,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 ExportTaskIds => ArrayRef[Str]
+=head2 ExportTaskIds => ArrayRef[Str|Undef]
 
 One or more export task IDs.
 

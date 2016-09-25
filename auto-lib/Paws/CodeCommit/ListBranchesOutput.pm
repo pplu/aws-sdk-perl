@@ -1,7 +1,7 @@
 
 package Paws::CodeCommit::ListBranchesOutput;
   use Moose;
-  has Branches => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['Unwrapped'], xmlname => 'branches' );
+  has Branches => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['Unwrapped'], xmlname => 'branches' );
   has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
 
 
@@ -14,7 +14,7 @@ Paws::CodeCommit::ListBranchesOutput
 =head1 ATTRIBUTES
 
 
-=head2 Branches => ArrayRef[Str]
+=head2 Branches => ArrayRef[Str|Undef]
 
 The list of branch names.
 

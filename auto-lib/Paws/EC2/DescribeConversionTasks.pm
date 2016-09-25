@@ -1,7 +1,7 @@
 
 package Paws::EC2::DescribeConversionTasks;
   use Moose;
-  has ConversionTaskIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'conversionTaskId' );
+  has ConversionTaskIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'conversionTaskId' );
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has Filters => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'filter' );
 
@@ -35,7 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 ConversionTaskIds => ArrayRef[Str]
+=head2 ConversionTaskIds => ArrayRef[Str|Undef]
 
 One or more conversion task IDs.
 

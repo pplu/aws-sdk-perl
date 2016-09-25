@@ -4,7 +4,7 @@ package Paws::GameLift::FleetAttributes;
   has CreationTime => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has FleetId => (is => 'ro', isa => 'Str');
-  has LogPaths => (is => 'ro', isa => 'ArrayRef[Str]');
+  has LogPaths => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Name => (is => 'ro', isa => 'Str');
   has NewGameSessionProtectionPolicy => (is => 'ro', isa => 'Str');
   has OperatingSystem => (is => 'ro', isa => 'Str');
@@ -68,7 +68,7 @@ number expressed in Unix time as milliseconds (ex: "1469498468.057".
   Unique identifier for a fleet.
 
 
-=head2 LogPaths => ArrayRef[Str]
+=head2 LogPaths => ArrayRef[Str|Undef]
 
   Location of default log files. When a server process is shut down,
 Amazon GameLift captures and stores any log files in this location.

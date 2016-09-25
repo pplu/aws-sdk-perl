@@ -1,7 +1,7 @@
 
 package Paws::ElastiCache::AllowedNodeTypeModificationsMessage;
   use Moose;
-  has ScaleUpModifications => (is => 'ro', isa => 'ArrayRef[Str]');
+  has ScaleUpModifications => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
 1;
 
@@ -14,7 +14,7 @@ Paws::ElastiCache::AllowedNodeTypeModificationsMessage
 =head1 ATTRIBUTES
 
 
-=head2 ScaleUpModifications => ArrayRef[Str]
+=head2 ScaleUpModifications => ArrayRef[Str|Undef]
 
 A string list, each element of which specifies a cache node type which
 you can use to scale your cache cluster or replication group.

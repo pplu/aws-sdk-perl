@@ -6,7 +6,7 @@ package Paws::ElastiCache::CreateCacheCluster;
   has CacheClusterId => (is => 'ro', isa => 'Str', required => 1);
   has CacheNodeType => (is => 'ro', isa => 'Str');
   has CacheParameterGroupName => (is => 'ro', isa => 'Str');
-  has CacheSecurityGroupNames => (is => 'ro', isa => 'ArrayRef[Str]');
+  has CacheSecurityGroupNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has CacheSubnetGroupName => (is => 'ro', isa => 'Str');
   has Engine => (is => 'ro', isa => 'Str');
   has EngineVersion => (is => 'ro', isa => 'Str');
@@ -14,11 +14,11 @@ package Paws::ElastiCache::CreateCacheCluster;
   has NumCacheNodes => (is => 'ro', isa => 'Int');
   has Port => (is => 'ro', isa => 'Int');
   has PreferredAvailabilityZone => (is => 'ro', isa => 'Str');
-  has PreferredAvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str]');
+  has PreferredAvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
   has ReplicationGroupId => (is => 'ro', isa => 'Str');
-  has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str]');
-  has SnapshotArns => (is => 'ro', isa => 'ArrayRef[Str]');
+  has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has SnapshotArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has SnapshotName => (is => 'ro', isa => 'Str');
   has SnapshotRetentionLimit => (is => 'ro', isa => 'Int');
   has SnapshotWindow => (is => 'ro', isa => 'Str');
@@ -184,7 +184,7 @@ specified engine is used.
 
 
 
-=head2 CacheSecurityGroupNames => ArrayRef[Str]
+=head2 CacheSecurityGroupNames => ArrayRef[Str|Undef]
 
 A list of security group names to associate with this cache cluster.
 
@@ -267,7 +267,7 @@ Default: System chosen Availability Zone.
 
 
 
-=head2 PreferredAvailabilityZones => ArrayRef[Str]
+=head2 PreferredAvailabilityZones => ArrayRef[Str|Undef]
 
 A list of the Availability Zones in which cache nodes will be created.
 The order of the zones in the list is not important.
@@ -356,7 +356,7 @@ This parameter is only valid if the C<Engine> parameter is C<redis>.
 
 
 
-=head2 SecurityGroupIds => ArrayRef[Str]
+=head2 SecurityGroupIds => ArrayRef[Str|Undef]
 
 One or more VPC security groups associated with the cache cluster.
 
@@ -365,7 +365,7 @@ Amazon Virtual Private Cloud (VPC).
 
 
 
-=head2 SnapshotArns => ArrayRef[Str]
+=head2 SnapshotArns => ArrayRef[Str|Undef]
 
 A single-element string list containing an Amazon Resource Name (ARN)
 that uniquely identifies a Redis RDB snapshot file stored in Amazon S3.

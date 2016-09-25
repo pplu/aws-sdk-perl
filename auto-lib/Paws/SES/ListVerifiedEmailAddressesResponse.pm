@@ -1,7 +1,7 @@
 
 package Paws::SES::ListVerifiedEmailAddressesResponse;
   use Moose;
-  has VerifiedEmailAddresses => (is => 'ro', isa => 'ArrayRef[Str]');
+  has VerifiedEmailAddresses => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
 1;
 
@@ -14,7 +14,7 @@ Paws::SES::ListVerifiedEmailAddressesResponse
 =head1 ATTRIBUTES
 
 
-=head2 VerifiedEmailAddresses => ArrayRef[Str]
+=head2 VerifiedEmailAddresses => ArrayRef[Str|Undef]
 
 A list of email addresses that have been verified.
 

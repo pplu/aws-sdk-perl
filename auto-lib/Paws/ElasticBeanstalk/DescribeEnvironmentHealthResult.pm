@@ -2,7 +2,7 @@
 package Paws::ElasticBeanstalk::DescribeEnvironmentHealthResult;
   use Moose;
   has ApplicationMetrics => (is => 'ro', isa => 'Paws::ElasticBeanstalk::ApplicationMetrics');
-  has Causes => (is => 'ro', isa => 'ArrayRef[Str]');
+  has Causes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Color => (is => 'ro', isa => 'Str');
   has EnvironmentName => (is => 'ro', isa => 'Str');
   has HealthStatus => (is => 'ro', isa => 'Str');
@@ -27,7 +27,7 @@ Paws::ElasticBeanstalk::DescribeEnvironmentHealthResult
 
 
 
-=head2 Causes => ArrayRef[Str]
+=head2 Causes => ArrayRef[Str|Undef]
 
 Returns potential causes for the reported status.
 

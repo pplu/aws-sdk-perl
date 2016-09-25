@@ -1,7 +1,7 @@
 
 package Paws::Config::DescribeConfigurationRecorders;
   use Moose;
-  has ConfigurationRecorderNames => (is => 'ro', isa => 'ArrayRef[Str]');
+  has ConfigurationRecorderNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
   use MooseX::ClassAttribute;
 
@@ -33,7 +33,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 ConfigurationRecorderNames => ArrayRef[Str]
+=head2 ConfigurationRecorderNames => ArrayRef[Str|Undef]
 
 A list of configuration recorder names.
 

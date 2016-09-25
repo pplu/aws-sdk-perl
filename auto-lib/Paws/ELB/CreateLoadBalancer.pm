@@ -1,12 +1,12 @@
 
 package Paws::ELB::CreateLoadBalancer;
   use Moose;
-  has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str]');
+  has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Listeners => (is => 'ro', isa => 'ArrayRef[Paws::ELB::Listener]', required => 1);
   has LoadBalancerName => (is => 'ro', isa => 'Str', required => 1);
   has Scheme => (is => 'ro', isa => 'Str');
-  has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Str]');
-  has Subnets => (is => 'ro', isa => 'ArrayRef[Str]');
+  has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has Subnets => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ELB::Tag]');
 
   use MooseX::ClassAttribute;
@@ -39,7 +39,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 AvailabilityZones => ArrayRef[Str]
+=head2 AvailabilityZones => ArrayRef[Str|Undef]
 
 One or more Availability Zones from the same region as the load
 balancer.
@@ -85,13 +85,13 @@ resolves to private IP addresses.
 
 
 
-=head2 SecurityGroups => ArrayRef[Str]
+=head2 SecurityGroups => ArrayRef[Str|Undef]
 
 The IDs of the security groups to assign to the load balancer.
 
 
 
-=head2 Subnets => ArrayRef[Str]
+=head2 Subnets => ArrayRef[Str|Undef]
 
 The IDs of the subnets in your VPC to attach to the load balancer.
 Specify one subnet per Availability Zone specified in

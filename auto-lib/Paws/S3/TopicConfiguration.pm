@@ -1,6 +1,6 @@
 package Paws::S3::TopicConfiguration;
   use Moose;
-  has Events => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'Event', request_name => 'Event', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has Events => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'Event', request_name => 'Event', traits => ['Unwrapped','NameInRequest'], required => 1);
   has Filter => (is => 'ro', isa => 'Paws::S3::NotificationConfigurationFilter');
   has Id => (is => 'ro', isa => 'Str');
   has TopicArn => (is => 'ro', isa => 'Str', xmlname => 'Topic', request_name => 'Topic', traits => ['Unwrapped','NameInRequest'], required => 1);
@@ -41,7 +41,7 @@ topic.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Events => ArrayRef[Str]
+=head2 B<REQUIRED> Events => ArrayRef[Str|Undef]
 
   
 

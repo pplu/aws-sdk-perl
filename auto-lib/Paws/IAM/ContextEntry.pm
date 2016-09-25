@@ -2,7 +2,7 @@ package Paws::IAM::ContextEntry;
   use Moose;
   has ContextKeyName => (is => 'ro', isa => 'Str');
   has ContextKeyType => (is => 'ro', isa => 'Str');
-  has ContextKeyValues => (is => 'ro', isa => 'ArrayRef[Str]');
+  has ContextKeyValues => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 1;
 
 ### main pod documentation begin ###
@@ -56,7 +56,7 @@ For example, C<aws:SourceIp> or C<s3:VersionId>.
 C<ContextKeyValues> parameter.
 
 
-=head2 ContextKeyValues => ArrayRef[Str]
+=head2 ContextKeyValues => ArrayRef[Str|Undef]
 
   The value (or values, if the condition context key supports multiple
 values) to provide to the simulation for use when the key is referenced

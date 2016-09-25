@@ -1,6 +1,6 @@
 package Paws::ECS::ContainerOverride;
   use Moose;
-  has Command => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'command', request_name => 'command', traits => ['Unwrapped','NameInRequest']);
+  has Command => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'command', request_name => 'command', traits => ['Unwrapped','NameInRequest']);
   has Environment => (is => 'ro', isa => 'ArrayRef[Paws::ECS::KeyValuePair]', xmlname => 'environment', request_name => 'environment', traits => ['Unwrapped','NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', xmlname => 'name', request_name => 'name', traits => ['Unwrapped','NameInRequest']);
 1;
@@ -38,7 +38,7 @@ The overrides that should be sent to a container.
 =head1 ATTRIBUTES
 
 
-=head2 Command => ArrayRef[Str]
+=head2 Command => ArrayRef[Str|Undef]
 
   The command to send to the container that overrides the default command
 from the Docker image or the task definition.

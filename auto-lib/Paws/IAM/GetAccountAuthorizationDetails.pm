@@ -1,7 +1,7 @@
 
 package Paws::IAM::GetAccountAuthorizationDetails;
   use Moose;
-  has Filter => (is => 'ro', isa => 'ArrayRef[Str]');
+  has Filter => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Marker => (is => 'ro', isa => 'Str');
   has MaxItems => (is => 'ro', isa => 'Int');
 
@@ -35,7 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 Filter => ArrayRef[Str]
+=head2 Filter => ArrayRef[Str|Undef]
 
 A list of entity types used to filter the results. Only the entities
 that match the types you specify are included in the output. Use the

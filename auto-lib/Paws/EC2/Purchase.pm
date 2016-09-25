@@ -2,7 +2,7 @@ package Paws::EC2::Purchase;
   use Moose;
   has CurrencyCode => (is => 'ro', isa => 'Str', xmlname => 'currencyCode', traits => ['Unwrapped']);
   has Duration => (is => 'ro', isa => 'Int', xmlname => 'duration', traits => ['Unwrapped']);
-  has HostIdSet => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'hostIdSet', traits => ['Unwrapped']);
+  has HostIdSet => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'hostIdSet', traits => ['Unwrapped']);
   has HostReservationId => (is => 'ro', isa => 'Str', xmlname => 'hostReservationId', traits => ['Unwrapped']);
   has HourlyPrice => (is => 'ro', isa => 'Str', xmlname => 'hourlyPrice', traits => ['Unwrapped']);
   has InstanceFamily => (is => 'ro', isa => 'Str', xmlname => 'instanceFamily', traits => ['Unwrapped']);
@@ -54,7 +54,7 @@ are specified. At this time, the only supported currency is C<USD>.
   The duration of the reservation's term in seconds.
 
 
-=head2 HostIdSet => ArrayRef[Str]
+=head2 HostIdSet => ArrayRef[Str|Undef]
 
   The IDs of the Dedicated Hosts associated with the reservation.
 

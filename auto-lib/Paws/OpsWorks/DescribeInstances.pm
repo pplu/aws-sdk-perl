@@ -1,7 +1,7 @@
 
 package Paws::OpsWorks::DescribeInstances;
   use Moose;
-  has InstanceIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has InstanceIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has LayerId => (is => 'ro', isa => 'Str');
   has StackId => (is => 'ro', isa => 'Str');
 
@@ -35,7 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 InstanceIds => ArrayRef[Str]
+=head2 InstanceIds => ArrayRef[Str|Undef]
 
 An array of instance IDs to be described. If you use this parameter,
 C<DescribeInstances> returns a description of the specified instances.

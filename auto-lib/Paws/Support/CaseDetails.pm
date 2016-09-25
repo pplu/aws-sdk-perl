@@ -2,7 +2,7 @@ package Paws::Support::CaseDetails;
   use Moose;
   has CaseId => (is => 'ro', isa => 'Str', xmlname => 'caseId', request_name => 'caseId', traits => ['Unwrapped','NameInRequest']);
   has CategoryCode => (is => 'ro', isa => 'Str', xmlname => 'categoryCode', request_name => 'categoryCode', traits => ['Unwrapped','NameInRequest']);
-  has CcEmailAddresses => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'ccEmailAddresses', request_name => 'ccEmailAddresses', traits => ['Unwrapped','NameInRequest']);
+  has CcEmailAddresses => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'ccEmailAddresses', request_name => 'ccEmailAddresses', traits => ['Unwrapped','NameInRequest']);
   has DisplayId => (is => 'ro', isa => 'Str', xmlname => 'displayId', request_name => 'displayId', traits => ['Unwrapped','NameInRequest']);
   has Language => (is => 'ro', isa => 'Str', xmlname => 'language', request_name => 'language', traits => ['Unwrapped','NameInRequest']);
   has RecentCommunications => (is => 'ro', isa => 'Paws::Support::RecentCaseCommunications', xmlname => 'recentCommunications', request_name => 'recentCommunications', traits => ['Unwrapped','NameInRequest']);
@@ -127,7 +127,7 @@ case-I<12345678910-2013-c4c1d2bf33c5cf47>
   The category of problem for the AWS Support case.
 
 
-=head2 CcEmailAddresses => ArrayRef[Str]
+=head2 CcEmailAddresses => ArrayRef[Str|Undef]
 
   The email addresses that receive copies of communication about the
 case.

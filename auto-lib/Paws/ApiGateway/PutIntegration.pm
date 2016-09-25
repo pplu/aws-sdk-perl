@@ -1,7 +1,7 @@
 
 package Paws::ApiGateway::PutIntegration;
   use Moose;
-  has CacheKeyParameters => (is => 'ro', isa => 'ArrayRef[Str]');
+  has CacheKeyParameters => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has CacheNamespace => (is => 'ro', isa => 'Str');
   has Credentials => (is => 'ro', isa => 'Str');
   has HttpMethod => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'httpMethod' , required => 1);
@@ -46,7 +46,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 CacheKeyParameters => ArrayRef[Str]
+=head2 CacheKeyParameters => ArrayRef[Str|Undef]
 
 Specifies a put integration input's cache key parameters.
 

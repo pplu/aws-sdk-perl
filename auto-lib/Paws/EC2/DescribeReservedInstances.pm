@@ -4,7 +4,7 @@ package Paws::EC2::DescribeReservedInstances;
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has Filters => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
   has OfferingType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'offeringType' );
-  has ReservedInstancesIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'ReservedInstancesId' );
+  has ReservedInstancesIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'ReservedInstancesId' );
 
   use MooseX::ClassAttribute;
 
@@ -142,7 +142,7 @@ C<Medium Utilization> Reserved Instance offering type.
 
 Valid values are: C<"Heavy Utilization">, C<"Medium Utilization">, C<"Light Utilization">, C<"No Upfront">, C<"Partial Upfront">, C<"All Upfront">
 
-=head2 ReservedInstancesIds => ArrayRef[Str]
+=head2 ReservedInstancesIds => ArrayRef[Str|Undef]
 
 One or more Reserved Instance IDs.
 

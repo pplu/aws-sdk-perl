@@ -1,7 +1,7 @@
 
 package Paws::ECR::GetAuthorizationToken;
   use Moose;
-  has RegistryIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'registryIds' );
+  has RegistryIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'registryIds' );
 
   use MooseX::ClassAttribute;
 
@@ -33,7 +33,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 RegistryIds => ArrayRef[Str]
+=head2 RegistryIds => ArrayRef[Str|Undef]
 
 A list of AWS account IDs that are associated with the registries for
 which to get authorization tokens. If you do not specify a registry,

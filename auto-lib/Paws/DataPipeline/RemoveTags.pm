@@ -2,7 +2,7 @@
 package Paws::DataPipeline::RemoveTags;
   use Moose;
   has PipelineId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'pipelineId' , required => 1);
-  has TagKeys => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'tagKeys' , required => 1);
+  has TagKeys => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'tagKeys' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -40,7 +40,7 @@ The ID of the pipeline.
 
 
 
-=head2 B<REQUIRED> TagKeys => ArrayRef[Str]
+=head2 B<REQUIRED> TagKeys => ArrayRef[Str|Undef]
 
 The keys of the tags to remove.
 

@@ -3,7 +3,7 @@ package Paws::Route53::TestDNSAnswerResponse;
   use Moose;
   has Nameserver => (is => 'ro', isa => 'Str', required => 1);
   has Protocol => (is => 'ro', isa => 'Str', required => 1);
-  has RecordData => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['Unwrapped'], xmlname => 'RecordDataEntry', required => 1);
+  has RecordData => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['Unwrapped'], xmlname => 'RecordDataEntry', required => 1);
   has RecordName => (is => 'ro', isa => 'Str', required => 1);
   has RecordType => (is => 'ro', isa => 'Str', required => 1);
   has ResponseCode => (is => 'ro', isa => 'Str', required => 1);
@@ -32,7 +32,7 @@ either C<UDP> or C<TCP>.
 
 
 
-=head2 B<REQUIRED> RecordData => ArrayRef[Str]
+=head2 B<REQUIRED> RecordData => ArrayRef[Str|Undef]
 
 A list that contains values that Amazon Route 53 returned for this
 resource record set.

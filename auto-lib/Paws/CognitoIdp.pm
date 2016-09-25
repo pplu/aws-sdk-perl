@@ -357,7 +357,7 @@ Returns: nothing
   Deletes a user as an administrator. Works on any user.
 
 
-=head2 AdminDeleteUserAttributes(UserAttributeNames => ArrayRef[Str], Username => Str, UserPoolId => Str)
+=head2 AdminDeleteUserAttributes(UserAttributeNames => ArrayRef[Str|Undef], Username => Str, UserPoolId => Str)
 
 Each argument is described in detail in: L<Paws::CognitoIdp::AdminDeleteUserAttributes>
 
@@ -546,7 +546,7 @@ Returns: a L<Paws::CognitoIdp::CreateUserImportJobResponse> instance
   Creates the user import job.
 
 
-=head2 CreateUserPool(PoolName => Str, [AliasAttributes => ArrayRef[Str], AutoVerifiedAttributes => ArrayRef[Str], DeviceConfiguration => L<Paws::CognitoIdp::DeviceConfigurationType>, EmailConfiguration => L<Paws::CognitoIdp::EmailConfigurationType>, EmailVerificationMessage => Str, EmailVerificationSubject => Str, LambdaConfig => L<Paws::CognitoIdp::LambdaConfigType>, MfaConfiguration => Str, Policies => L<Paws::CognitoIdp::UserPoolPolicyType>, SmsAuthenticationMessage => Str, SmsConfiguration => L<Paws::CognitoIdp::SmsConfigurationType>, SmsVerificationMessage => Str])
+=head2 CreateUserPool(PoolName => Str, [AliasAttributes => ArrayRef[Str|Undef], AutoVerifiedAttributes => ArrayRef[Str|Undef], DeviceConfiguration => L<Paws::CognitoIdp::DeviceConfigurationType>, EmailConfiguration => L<Paws::CognitoIdp::EmailConfigurationType>, EmailVerificationMessage => Str, EmailVerificationSubject => Str, LambdaConfig => L<Paws::CognitoIdp::LambdaConfigType>, MfaConfiguration => Str, Policies => L<Paws::CognitoIdp::UserPoolPolicyType>, SmsAuthenticationMessage => Str, SmsConfiguration => L<Paws::CognitoIdp::SmsConfigurationType>, SmsVerificationMessage => Str])
 
 Each argument is described in detail in: L<Paws::CognitoIdp::CreateUserPool>
 
@@ -556,7 +556,7 @@ Returns: a L<Paws::CognitoIdp::CreateUserPoolResponse> instance
 the pool.
 
 
-=head2 CreateUserPoolClient(ClientName => Str, UserPoolId => Str, [ExplicitAuthFlows => ArrayRef[Str], GenerateSecret => Bool, ReadAttributes => ArrayRef[Str], RefreshTokenValidity => Int, WriteAttributes => ArrayRef[Str]])
+=head2 CreateUserPoolClient(ClientName => Str, UserPoolId => Str, [ExplicitAuthFlows => ArrayRef[Str|Undef], GenerateSecret => Bool, ReadAttributes => ArrayRef[Str|Undef], RefreshTokenValidity => Int, WriteAttributes => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::CognitoIdp::CreateUserPoolClient>
 
@@ -574,7 +574,7 @@ Returns: nothing
   Allows a user to delete one's self.
 
 
-=head2 DeleteUserAttributes(UserAttributeNames => ArrayRef[Str], [AccessToken => Str])
+=head2 DeleteUserAttributes(UserAttributeNames => ArrayRef[Str|Undef], [AccessToken => Str])
 
 Each argument is described in detail in: L<Paws::CognitoIdp::DeleteUserAttributes>
 
@@ -740,7 +740,7 @@ Returns: a L<Paws::CognitoIdp::ListUserPoolsResponse> instance
   Lists the user pools associated with an AWS account.
 
 
-=head2 ListUsers(UserPoolId => Str, [AttributesToGet => ArrayRef[Str], Filter => Str, Limit => Int, PaginationToken => Str])
+=head2 ListUsers(UserPoolId => Str, [AttributesToGet => ArrayRef[Str|Undef], Filter => Str, Limit => Int, PaginationToken => Str])
 
 Each argument is described in detail in: L<Paws::CognitoIdp::ListUsers>
 
@@ -826,7 +826,7 @@ Returns: a L<Paws::CognitoIdp::UpdateUserAttributesResponse> instance
   Allows a user to update a specific attribute (one at a time).
 
 
-=head2 UpdateUserPool(UserPoolId => Str, [AutoVerifiedAttributes => ArrayRef[Str], DeviceConfiguration => L<Paws::CognitoIdp::DeviceConfigurationType>, EmailConfiguration => L<Paws::CognitoIdp::EmailConfigurationType>, EmailVerificationMessage => Str, EmailVerificationSubject => Str, LambdaConfig => L<Paws::CognitoIdp::LambdaConfigType>, MfaConfiguration => Str, Policies => L<Paws::CognitoIdp::UserPoolPolicyType>, SmsAuthenticationMessage => Str, SmsConfiguration => L<Paws::CognitoIdp::SmsConfigurationType>, SmsVerificationMessage => Str])
+=head2 UpdateUserPool(UserPoolId => Str, [AutoVerifiedAttributes => ArrayRef[Str|Undef], DeviceConfiguration => L<Paws::CognitoIdp::DeviceConfigurationType>, EmailConfiguration => L<Paws::CognitoIdp::EmailConfigurationType>, EmailVerificationMessage => Str, EmailVerificationSubject => Str, LambdaConfig => L<Paws::CognitoIdp::LambdaConfigType>, MfaConfiguration => Str, Policies => L<Paws::CognitoIdp::UserPoolPolicyType>, SmsAuthenticationMessage => Str, SmsConfiguration => L<Paws::CognitoIdp::SmsConfigurationType>, SmsVerificationMessage => Str])
 
 Each argument is described in detail in: L<Paws::CognitoIdp::UpdateUserPool>
 
@@ -835,7 +835,7 @@ Returns: a L<Paws::CognitoIdp::UpdateUserPoolResponse> instance
   Updates the specified user pool with the specified attributes.
 
 
-=head2 UpdateUserPoolClient(ClientId => Str, UserPoolId => Str, [ClientName => Str, ExplicitAuthFlows => ArrayRef[Str], ReadAttributes => ArrayRef[Str], RefreshTokenValidity => Int, WriteAttributes => ArrayRef[Str]])
+=head2 UpdateUserPoolClient(ClientId => Str, UserPoolId => Str, [ClientName => Str, ExplicitAuthFlows => ArrayRef[Str|Undef], ReadAttributes => ArrayRef[Str|Undef], RefreshTokenValidity => Int, WriteAttributes => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::CognitoIdp::UpdateUserPoolClient>
 

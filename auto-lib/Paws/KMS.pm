@@ -339,7 +339,7 @@ and the same region.
 To map an alias to a different key, call UpdateAlias.
 
 
-=head2 CreateGrant(GranteePrincipal => Str, KeyId => Str, [Constraints => L<Paws::KMS::GrantConstraints>, GrantTokens => ArrayRef[Str], Name => Str, Operations => ArrayRef[Str], RetiringPrincipal => Str])
+=head2 CreateGrant(GranteePrincipal => Str, KeyId => Str, [Constraints => L<Paws::KMS::GrantConstraints>, GrantTokens => ArrayRef[Str|Undef], Name => Str, Operations => ArrayRef[Str|Undef], RetiringPrincipal => Str])
 
 Each argument is described in detail in: L<Paws::KMS::CreateGrant>
 
@@ -380,7 +380,7 @@ Developer Guide>
 
 
 
-=head2 Decrypt(CiphertextBlob => Str, [EncryptionContext => L<Paws::KMS::EncryptionContextType>, GrantTokens => ArrayRef[Str]])
+=head2 Decrypt(CiphertextBlob => Str, [EncryptionContext => L<Paws::KMS::EncryptionContextType>, GrantTokens => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::KMS::Decrypt>
 
@@ -445,7 +445,7 @@ After you delete key material, you can use ImportKeyMaterial to
 reimport the same key material into the CMK.
 
 
-=head2 DescribeKey(KeyId => Str, [GrantTokens => ArrayRef[Str]])
+=head2 DescribeKey(KeyId => Str, [GrantTokens => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::KMS::DescribeKey>
 
@@ -494,7 +494,7 @@ Returns: nothing
   Enables rotation of the specified customer master key.
 
 
-=head2 Encrypt(KeyId => Str, Plaintext => Str, [EncryptionContext => L<Paws::KMS::EncryptionContextType>, GrantTokens => ArrayRef[Str]])
+=head2 Encrypt(KeyId => Str, Plaintext => Str, [EncryptionContext => L<Paws::KMS::EncryptionContextType>, GrantTokens => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::KMS::Encrypt>
 
@@ -532,7 +532,7 @@ key and a copy of the key encrypted under the customer master key (CMK)
 of your choosing.
 
 
-=head2 GenerateDataKey(KeyId => Str, [EncryptionContext => L<Paws::KMS::EncryptionContextType>, GrantTokens => ArrayRef[Str], KeySpec => Str, NumberOfBytes => Int])
+=head2 GenerateDataKey(KeyId => Str, [EncryptionContext => L<Paws::KMS::EncryptionContextType>, GrantTokens => ArrayRef[Str|Undef], KeySpec => Str, NumberOfBytes => Int])
 
 Each argument is described in detail in: L<Paws::KMS::GenerateDataKey>
 
@@ -574,7 +574,7 @@ the key. The encryption context is logged by CloudTrail, and you can
 use this log to help track the use of particular data.
 
 
-=head2 GenerateDataKeyWithoutPlaintext(KeyId => Str, [EncryptionContext => L<Paws::KMS::EncryptionContextType>, GrantTokens => ArrayRef[Str], KeySpec => Str, NumberOfBytes => Int])
+=head2 GenerateDataKeyWithoutPlaintext(KeyId => Str, [EncryptionContext => L<Paws::KMS::EncryptionContextType>, GrantTokens => ArrayRef[Str|Undef], KeySpec => Str, NumberOfBytes => Int])
 
 Each argument is described in detail in: L<Paws::KMS::GenerateDataKeyWithoutPlaintext>
 
@@ -731,7 +731,7 @@ For more information about key policies, see Key Policies in the I<AWS
 Key Management Service Developer Guide>.
 
 
-=head2 ReEncrypt(CiphertextBlob => Str, DestinationKeyId => Str, [DestinationEncryptionContext => L<Paws::KMS::EncryptionContextType>, GrantTokens => ArrayRef[Str], SourceEncryptionContext => L<Paws::KMS::EncryptionContextType>])
+=head2 ReEncrypt(CiphertextBlob => Str, DestinationKeyId => Str, [DestinationEncryptionContext => L<Paws::KMS::EncryptionContextType>, GrantTokens => ArrayRef[Str|Undef], SourceEncryptionContext => L<Paws::KMS::EncryptionContextType>])
 
 Each argument is described in detail in: L<Paws::KMS::ReEncrypt>
 

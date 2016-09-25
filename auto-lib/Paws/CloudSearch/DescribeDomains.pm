@@ -1,7 +1,7 @@
 
 package Paws::CloudSearch::DescribeDomains;
   use Moose;
-  has DomainNames => (is => 'ro', isa => 'ArrayRef[Str]');
+  has DomainNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
   use MooseX::ClassAttribute;
 
@@ -33,7 +33,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 DomainNames => ArrayRef[Str]
+=head2 DomainNames => ArrayRef[Str|Undef]
 
 The names of the domains you want to include in the response.
 

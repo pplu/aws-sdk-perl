@@ -4,7 +4,7 @@ package Paws::StorageGateway::DescribeVTLDevices;
   has GatewayARN => (is => 'ro', isa => 'Str', required => 1);
   has Limit => (is => 'ro', isa => 'Int');
   has Marker => (is => 'ro', isa => 'Str');
-  has VTLDeviceARNs => (is => 'ro', isa => 'ArrayRef[Str]');
+  has VTLDeviceARNs => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
   use MooseX::ClassAttribute;
 
@@ -56,7 +56,7 @@ describing the VTL devices.
 
 
 
-=head2 VTLDeviceARNs => ArrayRef[Str]
+=head2 VTLDeviceARNs => ArrayRef[Str|Undef]
 
 An array of strings, where each string represents the Amazon Resource
 Name (ARN) of a VTL device.

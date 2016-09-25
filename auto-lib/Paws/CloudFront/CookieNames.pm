@@ -1,6 +1,6 @@
 package Paws::CloudFront::CookieNames;
   use Moose;
-  has Items => (is => 'ro', isa => 'ArrayRef[Str]');
+  has Items => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Quantity => (is => 'ro', isa => 'Int', required => 1);
 1;
 
@@ -39,7 +39,7 @@ cache behavior.
 =head1 ATTRIBUTES
 
 
-=head2 Items => ArrayRef[Str]
+=head2 Items => ArrayRef[Str|Undef]
 
   Optional: A complex type that contains whitelisted cookies for this
 cache behavior. If Quantity is 0, you can omit Items.

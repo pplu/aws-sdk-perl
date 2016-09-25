@@ -1,9 +1,9 @@
 package Paws::SQS::MessageAttributeValue;
   use Moose;
-  has BinaryListValues => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'BinaryListValue', request_name => 'BinaryListValue', traits => ['Unwrapped','NameInRequest']);
+  has BinaryListValues => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'BinaryListValue', request_name => 'BinaryListValue', traits => ['Unwrapped','NameInRequest']);
   has BinaryValue => (is => 'ro', isa => 'Str');
   has DataType => (is => 'ro', isa => 'Str', required => 1);
-  has StringListValues => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'StringListValue', request_name => 'StringListValue', traits => ['Unwrapped','NameInRequest']);
+  has StringListValues => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'StringListValue', request_name => 'StringListValue', traits => ['Unwrapped','NameInRequest']);
   has StringValue => (is => 'ro', isa => 'Str');
 1;
 
@@ -47,7 +47,7 @@ size restriction, which is currently 256 KB (262,144 bytes).
 =head1 ATTRIBUTES
 
 
-=head2 BinaryListValues => ArrayRef[Str]
+=head2 BinaryListValues => ArrayRef[Str|Undef]
 
   Not implemented. Reserved for future use.
 
@@ -67,7 +67,7 @@ You can also append custom labels. For more information, see Message
 Attribute Data Types.
 
 
-=head2 StringListValues => ArrayRef[Str]
+=head2 StringListValues => ArrayRef[Str|Undef]
 
   Not implemented. Reserved for future use.
 

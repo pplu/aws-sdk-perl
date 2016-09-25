@@ -1,7 +1,7 @@
 package Paws::RDS::DBClusterSnapshotAttribute;
   use Moose;
   has AttributeName => (is => 'ro', isa => 'Str');
-  has AttributeValues => (is => 'ro', isa => 'ArrayRef[Str]');
+  has AttributeValues => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 1;
 
 ### main pod documentation begin ###
@@ -50,7 +50,7 @@ have permission to copy or restore the manual DB cluster snapshot. For
 more information, see the ModifyDBClusterSnapshotAttribute API action.
 
 
-=head2 AttributeValues => ArrayRef[Str]
+=head2 AttributeValues => ArrayRef[Str|Undef]
 
   The value(s) for the manual DB cluster snapshot attribute.
 

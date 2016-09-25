@@ -1,7 +1,7 @@
 
 package Paws::ELBv2::DescribeListeners;
   use Moose;
-  has ListenerArns => (is => 'ro', isa => 'ArrayRef[Str]');
+  has ListenerArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has LoadBalancerArn => (is => 'ro', isa => 'Str');
   has Marker => (is => 'ro', isa => 'Str');
   has PageSize => (is => 'ro', isa => 'Int');
@@ -36,7 +36,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 ListenerArns => ArrayRef[Str]
+=head2 ListenerArns => ArrayRef[Str|Undef]
 
 The Amazon Resource Names (ARN) of the listeners.
 

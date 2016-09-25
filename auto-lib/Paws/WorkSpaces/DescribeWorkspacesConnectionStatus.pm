@@ -2,7 +2,7 @@
 package Paws::WorkSpaces::DescribeWorkspacesConnectionStatus;
   use Moose;
   has NextToken => (is => 'ro', isa => 'Str');
-  has WorkspaceIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has WorkspaceIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
   use MooseX::ClassAttribute;
 
@@ -40,7 +40,7 @@ The next token of the request.
 
 
 
-=head2 WorkspaceIds => ArrayRef[Str]
+=head2 WorkspaceIds => ArrayRef[Str|Undef]
 
 An array of strings that contain the identifiers of the WorkSpaces.
 

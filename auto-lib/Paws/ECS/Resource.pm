@@ -4,7 +4,7 @@ package Paws::ECS::Resource;
   has IntegerValue => (is => 'ro', isa => 'Int', xmlname => 'integerValue', request_name => 'integerValue', traits => ['Unwrapped','NameInRequest']);
   has LongValue => (is => 'ro', isa => 'Int', xmlname => 'longValue', request_name => 'longValue', traits => ['Unwrapped','NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', xmlname => 'name', request_name => 'name', traits => ['Unwrapped','NameInRequest']);
-  has StringSetValue => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'stringSetValue', request_name => 'stringSetValue', traits => ['Unwrapped','NameInRequest']);
+  has StringSetValue => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'stringSetValue', request_name => 'stringSetValue', traits => ['Unwrapped','NameInRequest']);
   has Type => (is => 'ro', isa => 'Str', xmlname => 'type', request_name => 'type', traits => ['Unwrapped','NameInRequest']);
 1;
 
@@ -65,7 +65,7 @@ extended precision floating-point type.
 user-defined resource.
 
 
-=head2 StringSetValue => ArrayRef[Str]
+=head2 StringSetValue => ArrayRef[Str|Undef]
 
   When the C<stringSetValue> type is set, the value of the resource must
 be a string type.

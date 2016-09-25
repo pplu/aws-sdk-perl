@@ -12,7 +12,7 @@ package Paws::RDS::CreateDBInstance;
   has DBInstanceIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has DBName => (is => 'ro', isa => 'Str');
   has DBParameterGroupName => (is => 'ro', isa => 'Str');
-  has DBSecurityGroups => (is => 'ro', isa => 'ArrayRef[Str]');
+  has DBSecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has DBSubnetGroupName => (is => 'ro', isa => 'Str');
   has Domain => (is => 'ro', isa => 'Str');
   has DomainIAMRoleName => (is => 'ro', isa => 'Str');
@@ -38,7 +38,7 @@ package Paws::RDS::CreateDBInstance;
   has TdeCredentialArn => (is => 'ro', isa => 'Str');
   has TdeCredentialPassword => (is => 'ro', isa => 'Str');
   has Timezone => (is => 'ro', isa => 'Str');
-  has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
   use MooseX::ClassAttribute;
 
@@ -359,7 +359,7 @@ Cannot end with a hyphen or contain two consecutive hyphens
 
 
 
-=head2 DBSecurityGroups => ArrayRef[Str]
+=head2 DBSecurityGroups => ArrayRef[Str|Undef]
 
 A list of DB security groups to associate with this DB instance.
 
@@ -1125,7 +1125,7 @@ supported only by Microsoft SQL Server.
 
 
 
-=head2 VpcSecurityGroupIds => ArrayRef[Str]
+=head2 VpcSecurityGroupIds => ArrayRef[Str|Undef]
 
 A list of EC2 VPC security groups to associate with this DB instance.
 

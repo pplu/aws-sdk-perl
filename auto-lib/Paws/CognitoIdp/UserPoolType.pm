@@ -1,7 +1,7 @@
 package Paws::CognitoIdp::UserPoolType;
   use Moose;
-  has AliasAttributes => (is => 'ro', isa => 'ArrayRef[Str]');
-  has AutoVerifiedAttributes => (is => 'ro', isa => 'ArrayRef[Str]');
+  has AliasAttributes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has AutoVerifiedAttributes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has CreationDate => (is => 'ro', isa => 'Str');
   has DeviceConfiguration => (is => 'ro', isa => 'Paws::CognitoIdp::DeviceConfigurationType');
   has EmailConfiguration => (is => 'ro', isa => 'Paws::CognitoIdp::EmailConfigurationType');
@@ -56,12 +56,12 @@ A container with information about the user pool type.
 =head1 ATTRIBUTES
 
 
-=head2 AliasAttributes => ArrayRef[Str]
+=head2 AliasAttributes => ArrayRef[Str|Undef]
 
   Specifies the attributes that are aliased in a user pool.
 
 
-=head2 AutoVerifiedAttributes => ArrayRef[Str]
+=head2 AutoVerifiedAttributes => ArrayRef[Str|Undef]
 
   Specifies the attributes that are auto-verified in a user pool.
 

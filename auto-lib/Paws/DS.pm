@@ -285,7 +285,7 @@ Returns: a L<Paws::DS::CreateComputerResult> instance
 computer to the directory.
 
 
-=head2 CreateConditionalForwarder(DirectoryId => Str, DnsIpAddrs => ArrayRef[Str], RemoteDomainName => Str)
+=head2 CreateConditionalForwarder(DirectoryId => Str, DnsIpAddrs => ArrayRef[Str|Undef], RemoteDomainName => Str)
 
 Each argument is described in detail in: L<Paws::DS::CreateConditionalForwarder>
 
@@ -327,7 +327,7 @@ cloud.
 You cannot take snapshots of AD Connector directories.
 
 
-=head2 CreateTrust(DirectoryId => Str, RemoteDomainName => Str, TrustDirection => Str, TrustPassword => Str, [ConditionalForwarderIpAddrs => ArrayRef[Str], TrustType => Str])
+=head2 CreateTrust(DirectoryId => Str, RemoteDomainName => Str, TrustDirection => Str, TrustPassword => Str, [ConditionalForwarderIpAddrs => ArrayRef[Str|Undef], TrustType => Str])
 
 Each argument is described in detail in: L<Paws::DS::CreateTrust>
 
@@ -393,7 +393,7 @@ Returns: a L<Paws::DS::DeregisterEventTopicResult> instance
 topic.
 
 
-=head2 DescribeConditionalForwarders(DirectoryId => Str, [RemoteDomainNames => ArrayRef[Str]])
+=head2 DescribeConditionalForwarders(DirectoryId => Str, [RemoteDomainNames => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::DS::DescribeConditionalForwarders>
 
@@ -405,7 +405,7 @@ If no input parameters are provided for RemoteDomainNames, this request
 describes all conditional forwarders for the specified directory ID.
 
 
-=head2 DescribeDirectories([DirectoryIds => ArrayRef[Str], Limit => Int, NextToken => Str])
+=head2 DescribeDirectories([DirectoryIds => ArrayRef[Str|Undef], Limit => Int, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::DS::DescribeDirectories>
 
@@ -427,7 +427,7 @@ You can also specify a maximum number of return results with the
 I<Limit> parameter.
 
 
-=head2 DescribeEventTopics([DirectoryId => Str, TopicNames => ArrayRef[Str]])
+=head2 DescribeEventTopics([DirectoryId => Str, TopicNames => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::DS::DescribeEventTopics>
 
@@ -440,7 +440,7 @@ If no input parameters are provided, such as DirectoryId or TopicName,
 this request describes all of the associations in the account.
 
 
-=head2 DescribeSnapshots([DirectoryId => Str, Limit => Int, NextToken => Str, SnapshotIds => ArrayRef[Str]])
+=head2 DescribeSnapshots([DirectoryId => Str, Limit => Int, NextToken => Str, SnapshotIds => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::DS::DescribeSnapshots>
 
@@ -458,7 +458,7 @@ You can also specify a maximum number of return results with the
 I<Limit> parameter.
 
 
-=head2 DescribeTrusts([DirectoryId => Str, Limit => Int, NextToken => Str, TrustIds => ArrayRef[Str]])
+=head2 DescribeTrusts([DirectoryId => Str, Limit => Int, NextToken => Str, TrustIds => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::DS::DescribeTrusts>
 
@@ -561,7 +561,7 @@ to an Impaired or Inoperable status. You also receive a notification
 when the directory returns to an Active status.
 
 
-=head2 RemoveIpRoutes(CidrIps => ArrayRef[Str], DirectoryId => Str)
+=head2 RemoveIpRoutes(CidrIps => ArrayRef[Str|Undef], DirectoryId => Str)
 
 Each argument is described in detail in: L<Paws::DS::RemoveIpRoutes>
 
@@ -570,7 +570,7 @@ Returns: a L<Paws::DS::RemoveIpRoutesResult> instance
   Removes IP address blocks from a directory.
 
 
-=head2 RemoveTagsFromResource(ResourceId => Str, TagKeys => ArrayRef[Str])
+=head2 RemoveTagsFromResource(ResourceId => Str, TagKeys => ArrayRef[Str|Undef])
 
 Each argument is described in detail in: L<Paws::DS::RemoveTagsFromResource>
 
@@ -597,7 +597,7 @@ B<DirectoryDescription.Stage> value changes to C<Active>, the restore
 operation is complete.
 
 
-=head2 UpdateConditionalForwarder(DirectoryId => Str, DnsIpAddrs => ArrayRef[Str], RemoteDomainName => Str)
+=head2 UpdateConditionalForwarder(DirectoryId => Str, DnsIpAddrs => ArrayRef[Str|Undef], RemoteDomainName => Str)
 
 Each argument is described in detail in: L<Paws::DS::UpdateConditionalForwarder>
 

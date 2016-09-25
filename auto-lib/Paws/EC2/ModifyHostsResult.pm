@@ -1,7 +1,7 @@
 
 package Paws::EC2::ModifyHostsResult;
   use Moose;
-  has Successful => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'successful', traits => ['Unwrapped',]);
+  has Successful => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'successful', traits => ['Unwrapped',]);
   has Unsuccessful => (is => 'ro', isa => 'ArrayRef[Paws::EC2::UnsuccessfulItem]', xmlname => 'unsuccessful', traits => ['Unwrapped',]);
 
 1;
@@ -15,7 +15,7 @@ Paws::EC2::ModifyHostsResult
 =head1 ATTRIBUTES
 
 
-=head2 Successful => ArrayRef[Str]
+=head2 Successful => ArrayRef[Str|Undef]
 
 The IDs of the Dedicated Hosts that were successfully modified.
 

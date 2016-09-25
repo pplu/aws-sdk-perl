@@ -10,7 +10,7 @@ package Paws::OpsWorks::UpdateInstance;
   has InstallUpdatesOnBoot => (is => 'ro', isa => 'Bool');
   has InstanceId => (is => 'ro', isa => 'Str', required => 1);
   has InstanceType => (is => 'ro', isa => 'Str');
-  has LayerIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has LayerIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Os => (is => 'ro', isa => 'Str');
   has SshKeyName => (is => 'ro', isa => 'Str');
 
@@ -138,7 +138,7 @@ B<API Name> column of the B<Available Instance Types> table.
 
 
 
-=head2 LayerIds => ArrayRef[Str]
+=head2 LayerIds => ArrayRef[Str|Undef]
 
 The instance's layer IDs.
 

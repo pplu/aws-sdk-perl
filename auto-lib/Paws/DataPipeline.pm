@@ -230,7 +230,7 @@ it, call SetStatus with the status set to C<PAUSE> on individual
 components. Components that are paused by SetStatus can be resumed.
 
 
-=head2 DescribeObjects(ObjectIds => ArrayRef[Str], PipelineId => Str, [EvaluateExpressions => Bool, Marker => Str])
+=head2 DescribeObjects(ObjectIds => ArrayRef[Str|Undef], PipelineId => Str, [EvaluateExpressions => Bool, Marker => Str])
 
 Each argument is described in detail in: L<Paws::DataPipeline::DescribeObjects>
 
@@ -241,7 +241,7 @@ pipeline. Object definitions are composed of a set of fields that
 define the properties of the object.
 
 
-=head2 DescribePipelines(PipelineIds => ArrayRef[Str])
+=head2 DescribePipelines(PipelineIds => ArrayRef[Str|Undef])
 
 Each argument is described in detail in: L<Paws::DataPipeline::DescribePipelines>
 
@@ -354,7 +354,7 @@ Returns: a L<Paws::DataPipeline::QueryObjectsOutput> instance
 specified set of conditions.
 
 
-=head2 RemoveTags(PipelineId => Str, TagKeys => ArrayRef[Str])
+=head2 RemoveTags(PipelineId => Str, TagKeys => ArrayRef[Str|Undef])
 
 Each argument is described in detail in: L<Paws::DataPipeline::RemoveTags>
 
@@ -397,7 +397,7 @@ service can use this call to detect when the task runner application
 has failed and restart a new instance.
 
 
-=head2 SetStatus(ObjectIds => ArrayRef[Str], PipelineId => Str, Status => Str)
+=head2 SetStatus(ObjectIds => ArrayRef[Str|Undef], PipelineId => Str, Status => Str)
 
 Each argument is described in detail in: L<Paws::DataPipeline::SetStatus>
 

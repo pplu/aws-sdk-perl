@@ -1,11 +1,11 @@
 package Paws::RDS::OptionConfiguration;
   use Moose;
-  has DBSecurityGroupMemberships => (is => 'ro', isa => 'ArrayRef[Str]');
+  has DBSecurityGroupMemberships => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has OptionName => (is => 'ro', isa => 'Str', required => 1);
   has OptionSettings => (is => 'ro', isa => 'ArrayRef[Paws::RDS::OptionSetting]');
   has OptionVersion => (is => 'ro', isa => 'Str');
   has Port => (is => 'ro', isa => 'Int');
-  has VpcSecurityGroupMemberships => (is => 'ro', isa => 'ArrayRef[Str]');
+  has VpcSecurityGroupMemberships => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 1;
 
 ### main pod documentation begin ###
@@ -41,7 +41,7 @@ A list of all available options
 =head1 ATTRIBUTES
 
 
-=head2 DBSecurityGroupMemberships => ArrayRef[Str]
+=head2 DBSecurityGroupMemberships => ArrayRef[Str|Undef]
 
   A list of DBSecurityGroupMemebrship name strings used for this option.
 
@@ -66,7 +66,7 @@ A list of all available options
   The optional port for the option.
 
 
-=head2 VpcSecurityGroupMemberships => ArrayRef[Str]
+=head2 VpcSecurityGroupMemberships => ArrayRef[Str|Undef]
 
   A list of VpcSecurityGroupMemebrship name strings used for this option.
 

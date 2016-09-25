@@ -3,7 +3,7 @@ package Paws::EC2::DescribeSpotInstanceRequests;
   use Moose;
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has Filters => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
-  has SpotInstanceRequestIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'SpotInstanceRequestId' );
+  has SpotInstanceRequestIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'SpotInstanceRequestId' );
 
   use MooseX::ClassAttribute;
 
@@ -252,7 +252,7 @@ C<valid-until> - The end date of the request.
 
 
 
-=head2 SpotInstanceRequestIds => ArrayRef[Str]
+=head2 SpotInstanceRequestIds => ArrayRef[Str|Undef]
 
 One or more Spot instance request IDs.
 

@@ -167,7 +167,7 @@ This operation requires permissions for the
 C<elasticfilesystem:CreateFileSystem> action.
 
 
-=head2 CreateMountTarget(FileSystemId => Str, SubnetId => Str, [IpAddress => Str, SecurityGroups => ArrayRef[Str]])
+=head2 CreateMountTarget(FileSystemId => Str, SubnetId => Str, [IpAddress => Str, SecurityGroups => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::EFS::CreateMountTarget>
 
@@ -423,7 +423,7 @@ C<ec2:DeleteNetworkInterface>
 
 
 
-=head2 DeleteTags(FileSystemId => Str, TagKeys => ArrayRef[Str])
+=head2 DeleteTags(FileSystemId => Str, TagKeys => ArrayRef[Str|Undef])
 
 Each argument is described in detail in: L<Paws::EFS::DeleteTags>
 
@@ -536,7 +536,7 @@ This operation requires permissions for the
 C<elasticfilesystem:DescribeTags> action.
 
 
-=head2 ModifyMountTargetSecurityGroups(MountTargetId => Str, [SecurityGroups => ArrayRef[Str]])
+=head2 ModifyMountTargetSecurityGroups(MountTargetId => Str, [SecurityGroups => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::EFS::ModifyMountTargetSecurityGroups>
 

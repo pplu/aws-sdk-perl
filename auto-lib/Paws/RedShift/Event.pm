@@ -1,7 +1,7 @@
 package Paws::RedShift::Event;
   use Moose;
   has Date => (is => 'ro', isa => 'Str');
-  has EventCategories => (is => 'ro', isa => 'ArrayRef[Str]');
+  has EventCategories => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has EventId => (is => 'ro', isa => 'Str');
   has Message => (is => 'ro', isa => 'Str');
   has Severity => (is => 'ro', isa => 'Str');
@@ -47,7 +47,7 @@ Describes an event.
   The date and time of the event.
 
 
-=head2 EventCategories => ArrayRef[Str]
+=head2 EventCategories => ArrayRef[Str|Undef]
 
   A list of the event categories.
 

@@ -6,7 +6,7 @@ package Paws::WorkSpaces::DescribeWorkspaces;
   has Limit => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
   has UserName => (is => 'ro', isa => 'Str');
-  has WorkspaceIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has WorkspaceIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
   use MooseX::ClassAttribute;
 
@@ -75,7 +75,7 @@ for whom to obtain the WorkSpace.
 
 
 
-=head2 WorkspaceIds => ArrayRef[Str]
+=head2 WorkspaceIds => ArrayRef[Str|Undef]
 
 An array of strings that contain the identifiers of the WorkSpaces for
 which to retrieve information. This parameter cannot be combined with

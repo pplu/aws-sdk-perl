@@ -6,7 +6,7 @@ package Paws::ELBv2::TargetGroup;
   has HealthCheckProtocol => (is => 'ro', isa => 'Str');
   has HealthCheckTimeoutSeconds => (is => 'ro', isa => 'Int');
   has HealthyThresholdCount => (is => 'ro', isa => 'Int');
-  has LoadBalancerArns => (is => 'ro', isa => 'ArrayRef[Str]');
+  has LoadBalancerArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Matcher => (is => 'ro', isa => 'Paws::ELBv2::Matcher');
   has Port => (is => 'ro', isa => 'Int');
   has Protocol => (is => 'ro', isa => 'Str');
@@ -82,7 +82,7 @@ health check.
 considering an unhealthy target healthy.
 
 
-=head2 LoadBalancerArns => ArrayRef[Str]
+=head2 LoadBalancerArns => ArrayRef[Str|Undef]
 
   The Amazon Resource Names (ARN) of the load balancers that route
 traffic to this target group.

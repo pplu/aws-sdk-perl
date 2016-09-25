@@ -3,7 +3,7 @@ package Paws::ElastiCache::ModifyCacheSubnetGroup;
   use Moose;
   has CacheSubnetGroupDescription => (is => 'ro', isa => 'Str');
   has CacheSubnetGroupName => (is => 'ro', isa => 'Str', required => 1);
-  has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
   use MooseX::ClassAttribute;
 
@@ -53,7 +53,7 @@ Example: C<mysubnetgroup>
 
 
 
-=head2 SubnetIds => ArrayRef[Str]
+=head2 SubnetIds => ArrayRef[Str|Undef]
 
 The EC2 subnet IDs for the cache subnet group.
 

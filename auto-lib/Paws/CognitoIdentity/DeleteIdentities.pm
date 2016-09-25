@@ -1,7 +1,7 @@
 
 package Paws::CognitoIdentity::DeleteIdentities;
   use Moose;
-  has IdentityIdsToDelete => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has IdentityIdsToDelete => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -33,7 +33,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> IdentityIdsToDelete => ArrayRef[Str]
+=head2 B<REQUIRED> IdentityIdsToDelete => ArrayRef[Str|Undef]
 
 A list of 1-60 identities that you want to delete.
 

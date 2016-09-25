@@ -5,7 +5,7 @@ package Paws::RedShift::ModifyCluster;
   has AutomatedSnapshotRetentionPeriod => (is => 'ro', isa => 'Int');
   has ClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has ClusterParameterGroupName => (is => 'ro', isa => 'Str');
-  has ClusterSecurityGroups => (is => 'ro', isa => 'ArrayRef[Str]');
+  has ClusterSecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has ClusterType => (is => 'ro', isa => 'Str');
   has ClusterVersion => (is => 'ro', isa => 'Str');
   has ElasticIp => (is => 'ro', isa => 'Str');
@@ -18,7 +18,7 @@ package Paws::RedShift::ModifyCluster;
   has NumberOfNodes => (is => 'ro', isa => 'Int');
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
   has PubliclyAccessible => (is => 'ro', isa => 'Bool');
-  has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
   use MooseX::ClassAttribute;
 
@@ -97,7 +97,7 @@ group family that matches the cluster version.
 
 
 
-=head2 ClusterSecurityGroups => ArrayRef[Str]
+=head2 ClusterSecurityGroups => ArrayRef[Str|Undef]
 
 A list of cluster security groups to be authorized on this cluster.
 This change is asynchronously applied as soon as possible.
@@ -337,7 +337,7 @@ clusters in VPCs can be set to be publicly available.
 
 
 
-=head2 VpcSecurityGroupIds => ArrayRef[Str]
+=head2 VpcSecurityGroupIds => ArrayRef[Str|Undef]
 
 A list of virtual private cloud (VPC) security groups to be associated
 with the cluster.

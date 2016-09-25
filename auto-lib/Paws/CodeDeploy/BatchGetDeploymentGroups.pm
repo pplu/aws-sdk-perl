@@ -2,7 +2,7 @@
 package Paws::CodeDeploy::BatchGetDeploymentGroups;
   use Moose;
   has ApplicationName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'applicationName' , required => 1);
-  has DeploymentGroupNames => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'deploymentGroupNames' , required => 1);
+  has DeploymentGroupNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'deploymentGroupNames' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -41,7 +41,7 @@ applicable IAM user or AWS account.
 
 
 
-=head2 B<REQUIRED> DeploymentGroupNames => ArrayRef[Str]
+=head2 B<REQUIRED> DeploymentGroupNames => ArrayRef[Str|Undef]
 
 The deployment groups' names.
 

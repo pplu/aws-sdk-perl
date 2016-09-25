@@ -176,7 +176,7 @@ Currently, ACM Certificates can be used only with Elastic Load
 Balancing and Amazon CloudFront.
 
 
-=head2 ListCertificates([CertificateStatuses => ArrayRef[Str], MaxItems => Int, NextToken => Str])
+=head2 ListCertificates([CertificateStatuses => ArrayRef[Str|Undef], MaxItems => Int, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::ACM::ListCertificates>
 
@@ -216,7 +216,7 @@ view all of the tags that have been applied to a specific ACM
 Certificate, use the ListTagsForCertificate action.
 
 
-=head2 RequestCertificate(DomainName => Str, [DomainValidationOptions => ArrayRef[L<Paws::ACM::DomainValidationOption>], IdempotencyToken => Str, SubjectAlternativeNames => ArrayRef[Str]])
+=head2 RequestCertificate(DomainName => Str, [DomainValidationOptions => ArrayRef[L<Paws::ACM::DomainValidationOption>], IdempotencyToken => Str, SubjectAlternativeNames => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::ACM::RequestCertificate>
 

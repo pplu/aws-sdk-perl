@@ -2,7 +2,7 @@
 package Paws::IAM::UpdateOpenIDConnectProviderThumbprint;
   use Moose;
   has OpenIDConnectProviderArn => (is => 'ro', isa => 'Str', required => 1);
-  has ThumbprintList => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has ThumbprintList => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -45,7 +45,7 @@ AWS Service Namespaces in the I<AWS General Reference>.
 
 
 
-=head2 B<REQUIRED> ThumbprintList => ArrayRef[Str]
+=head2 B<REQUIRED> ThumbprintList => ArrayRef[Str|Undef]
 
 A list of certificate thumbprints that are associated with the
 specified IAM OpenID Connect provider. For more information, see

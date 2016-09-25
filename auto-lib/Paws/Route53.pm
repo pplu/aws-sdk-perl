@@ -489,7 +489,7 @@ For more information on transactional changes, see
 ChangeResourceRecordSets.
 
 
-=head2 ChangeTagsForResource(ResourceId => Str, ResourceType => Str, [AddTags => ArrayRef[L<Paws::Route53::Tag>], RemoveTagKeys => ArrayRef[Str]])
+=head2 ChangeTagsForResource(ResourceId => Str, ResourceType => Str, [AddTags => ArrayRef[L<Paws::Route53::Tag>], RemoveTagKeys => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::Route53::ChangeTagsForResource>
 
@@ -1205,7 +1205,7 @@ Returns: a L<Paws::Route53::ListTagsForResourceResponse> instance
   
 
 
-=head2 ListTagsForResources(ResourceIds => ArrayRef[Str], ResourceType => Str)
+=head2 ListTagsForResources(ResourceIds => ArrayRef[Str|Undef], ResourceType => Str)
 
 Each argument is described in detail in: L<Paws::Route53::ListTagsForResources>
 
@@ -1522,7 +1522,7 @@ Returns: a L<Paws::Route53::TestDNSAnswerResponse> instance
   
 
 
-=head2 UpdateHealthCheck(HealthCheckId => Str, [AlarmIdentifier => L<Paws::Route53::AlarmIdentifier>, ChildHealthChecks => ArrayRef[Str], EnableSNI => Bool, FailureThreshold => Int, FullyQualifiedDomainName => Str, HealthCheckVersion => Int, HealthThreshold => Int, InsufficientDataHealthStatus => Str, Inverted => Bool, IPAddress => Str, Port => Int, Regions => ArrayRef[Str], ResourcePath => Str, SearchString => Str])
+=head2 UpdateHealthCheck(HealthCheckId => Str, [AlarmIdentifier => L<Paws::Route53::AlarmIdentifier>, ChildHealthChecks => ArrayRef[Str|Undef], EnableSNI => Bool, FailureThreshold => Int, FullyQualifiedDomainName => Str, HealthCheckVersion => Int, HealthThreshold => Int, InsufficientDataHealthStatus => Str, Inverted => Bool, IPAddress => Str, Port => Int, Regions => ArrayRef[Str|Undef], ResourcePath => Str, SearchString => Str])
 
 Each argument is described in detail in: L<Paws::Route53::UpdateHealthCheck>
 

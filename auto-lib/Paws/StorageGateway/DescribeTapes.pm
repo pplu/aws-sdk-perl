@@ -4,7 +4,7 @@ package Paws::StorageGateway::DescribeTapes;
   has GatewayARN => (is => 'ro', isa => 'Str', required => 1);
   has Limit => (is => 'ro', isa => 'Int');
   has Marker => (is => 'ro', isa => 'Str');
-  has TapeARNs => (is => 'ro', isa => 'ArrayRef[Str]');
+  has TapeARNs => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
   use MooseX::ClassAttribute;
 
@@ -60,7 +60,7 @@ If not specified, the first page of results is retrieved.
 
 
 
-=head2 TapeARNs => ArrayRef[Str]
+=head2 TapeARNs => ArrayRef[Str|Undef]
 
 Specifies one or more unique Amazon Resource Names (ARNs) that
 represent the virtual tapes you want to describe. If this parameter is

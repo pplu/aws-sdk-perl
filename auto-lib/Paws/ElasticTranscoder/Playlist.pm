@@ -3,7 +3,7 @@ package Paws::ElasticTranscoder::Playlist;
   has Format => (is => 'ro', isa => 'Str');
   has HlsContentProtection => (is => 'ro', isa => 'Paws::ElasticTranscoder::HlsContentProtection');
   has Name => (is => 'ro', isa => 'Str');
-  has OutputKeys => (is => 'ro', isa => 'ArrayRef[Str]');
+  has OutputKeys => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has PlayReadyDrm => (is => 'ro', isa => 'Paws::ElasticTranscoder::PlayReadyDrm');
   has Status => (is => 'ro', isa => 'Str');
   has StatusDetail => (is => 'ro', isa => 'Str');
@@ -74,7 +74,7 @@ include a file extension in C<Name>, the file name will have two
 extensions.
 
 
-=head2 OutputKeys => ArrayRef[Str]
+=head2 OutputKeys => ArrayRef[Str|Undef]
 
   For each output in this job that you want to include in a master
 playlist, the value of the Outputs:Key object.

@@ -4,7 +4,7 @@ package Paws::AutoScaling::CreateLaunchConfiguration;
   has AssociatePublicIpAddress => (is => 'ro', isa => 'Bool');
   has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[Paws::AutoScaling::BlockDeviceMapping]');
   has ClassicLinkVPCId => (is => 'ro', isa => 'Str');
-  has ClassicLinkVPCSecurityGroups => (is => 'ro', isa => 'ArrayRef[Str]');
+  has ClassicLinkVPCSecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has EbsOptimized => (is => 'ro', isa => 'Bool');
   has IamInstanceProfile => (is => 'ro', isa => 'Str');
   has ImageId => (is => 'ro', isa => 'Str');
@@ -16,7 +16,7 @@ package Paws::AutoScaling::CreateLaunchConfiguration;
   has LaunchConfigurationName => (is => 'ro', isa => 'Str', required => 1);
   has PlacementTenancy => (is => 'ro', isa => 'Str');
   has RamdiskId => (is => 'ro', isa => 'Str');
-  has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Str]');
+  has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has SpotPrice => (is => 'ro', isa => 'Str');
   has UserData => (is => 'ro', isa => 'Str');
 
@@ -84,7 +84,7 @@ Elastic Compute Cloud User Guide>.
 
 
 
-=head2 ClassicLinkVPCSecurityGroups => ArrayRef[Str]
+=head2 ClassicLinkVPCSecurityGroups => ArrayRef[Str|Undef]
 
 The IDs of one or more security groups for the specified
 ClassicLink-enabled VPC. This parameter is required if you specify a
@@ -204,7 +204,7 @@ The ID of the RAM disk associated with the AMI.
 
 
 
-=head2 SecurityGroups => ArrayRef[Str]
+=head2 SecurityGroups => ArrayRef[Str|Undef]
 
 One or more security groups with which to associate the instances.
 

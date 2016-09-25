@@ -1,7 +1,7 @@
 
 package Paws::CloudWatchEvents::RemoveTargets;
   use Moose;
-  has Ids => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has Ids => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
   has Rule => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -34,7 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Ids => ArrayRef[Str]
+=head2 B<REQUIRED> Ids => ArrayRef[Str|Undef]
 
 The list of target IDs to remove from the rule.
 

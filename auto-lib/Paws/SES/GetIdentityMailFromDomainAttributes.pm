@@ -1,7 +1,7 @@
 
 package Paws::SES::GetIdentityMailFromDomainAttributes;
   use Moose;
-  has Identities => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has Identities => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -33,7 +33,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Identities => ArrayRef[Str]
+=head2 B<REQUIRED> Identities => ArrayRef[Str|Undef]
 
 A list of one or more identities.
 

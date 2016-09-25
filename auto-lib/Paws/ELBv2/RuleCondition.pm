@@ -1,7 +1,7 @@
 package Paws::ELBv2::RuleCondition;
   use Moose;
   has Field => (is => 'ro', isa => 'Str');
-  has Values => (is => 'ro', isa => 'ArrayRef[Str]');
+  has Values => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +42,7 @@ Information about a condition for a rule.
   The name of the field. The possible value is C<path-pattern>.
 
 
-=head2 Values => ArrayRef[Str]
+=head2 Values => ArrayRef[Str|Undef]
 
   The values for the field.
 

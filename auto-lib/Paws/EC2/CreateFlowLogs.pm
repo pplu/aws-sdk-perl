@@ -4,7 +4,7 @@ package Paws::EC2::CreateFlowLogs;
   has ClientToken => (is => 'ro', isa => 'Str');
   has DeliverLogsPermissionArn => (is => 'ro', isa => 'Str', required => 1);
   has LogGroupName => (is => 'ro', isa => 'Str', required => 1);
-  has ResourceIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'ResourceId' , required => 1);
+  has ResourceIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'ResourceId' , required => 1);
   has ResourceType => (is => 'ro', isa => 'Str', required => 1);
   has TrafficType => (is => 'ro', isa => 'Str', required => 1);
 
@@ -58,7 +58,7 @@ The name of the CloudWatch log group.
 
 
 
-=head2 B<REQUIRED> ResourceIds => ArrayRef[Str]
+=head2 B<REQUIRED> ResourceIds => ArrayRef[Str|Undef]
 
 One or more subnet, network interface, or VPC IDs.
 

@@ -1,6 +1,6 @@
 package Paws::Snowball::Notification;
   use Moose;
-  has JobStatesToNotify => (is => 'ro', isa => 'ArrayRef[Str]');
+  has JobStatesToNotify => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has NotifyAll => (is => 'ro', isa => 'Bool');
   has SnsTopicARN => (is => 'ro', isa => 'Str');
 1;
@@ -47,7 +47,7 @@ C<NotifyAll> set to true.
 =head1 ATTRIBUTES
 
 
-=head2 JobStatesToNotify => ArrayRef[Str]
+=head2 JobStatesToNotify => ArrayRef[Str|Undef]
 
   The list of job states that will trigger a notification for this job.
 

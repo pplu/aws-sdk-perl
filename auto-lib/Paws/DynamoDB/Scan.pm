@@ -1,7 +1,7 @@
 
 package Paws::DynamoDB::Scan;
   use Moose;
-  has AttributesToGet => (is => 'ro', isa => 'ArrayRef[Str]');
+  has AttributesToGet => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has ConditionalOperator => (is => 'ro', isa => 'Str');
   has ConsistentRead => (is => 'ro', isa => 'Bool');
   has ExclusiveStartKey => (is => 'ro', isa => 'Paws::DynamoDB::Key');
@@ -48,7 +48,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 AttributesToGet => ArrayRef[Str]
+=head2 AttributesToGet => ArrayRef[Str|Undef]
 
 This is a legacy parameter, for backward compatibility. New
 applications should use I<ProjectionExpression> instead. Do not combine
@@ -394,6 +394,13 @@ attributes, specific item attributes, or the count of matching items.
 =item *
 
 C<ALL_ATTRIBUTES> - Returns all of the item attributes.
+
+=item *
+
+C<ALL_PROJECTED_ATTRIBUTES> - Allowed only when querying an index.
+Retrieves all attributes that have been projected into the index. If
+the index is configured to project all attributes, this return value is
+equivalent to specifying C<ALL_ATTRIBUTES>.
 
 =item *
 

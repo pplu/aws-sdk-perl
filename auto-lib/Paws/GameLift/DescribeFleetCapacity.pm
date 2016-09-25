@@ -1,7 +1,7 @@
 
 package Paws::GameLift::DescribeFleetCapacity;
   use Moose;
-  has FleetIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has FleetIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Limit => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
 
@@ -35,7 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 FleetIds => ArrayRef[Str]
+=head2 FleetIds => ArrayRef[Str|Undef]
 
 Unique identifier for the fleet(s) you want to retrieve capacity
 information for. To request capacity information for all fleets, leave

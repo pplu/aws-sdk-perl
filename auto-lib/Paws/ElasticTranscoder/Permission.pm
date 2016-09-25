@@ -1,6 +1,6 @@
 package Paws::ElasticTranscoder::Permission;
   use Moose;
-  has Access => (is => 'ro', isa => 'ArrayRef[Str]');
+  has Access => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Grantee => (is => 'ro', isa => 'Str');
   has GranteeType => (is => 'ro', isa => 'Str');
 1;
@@ -38,7 +38,7 @@ The C<Permission> structure.
 =head1 ATTRIBUTES
 
 
-=head2 Access => ArrayRef[Str]
+=head2 Access => ArrayRef[Str|Undef]
 
   The permission that you want to give to the AWS user that is listed in
 Grantee. Valid values include:
