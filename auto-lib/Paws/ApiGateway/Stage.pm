@@ -78,9 +78,7 @@ ISO 8601 format.
 A map that defines the method settings for a Stage resource. Keys
 (designated as C</{method_setting_key> below) are method paths defined
 as C<{resource_path}/{http_method}> for an individual method override,
-or C</\*/\*> for overriding all methods in the stage. Any forward slash
-("/") characters in the C<resource_path> part must be encoded as "~1"
-as in, for example, C<~1resource~1sub-resource/GET>.
+or C</\*/\*> for overriding all methods in the stage.
 
 
 
