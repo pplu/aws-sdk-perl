@@ -36,13 +36,13 @@ foreach my $file (@files) {
 done_testing;
 
 sub is_native {
-  my $native = { Bool => 1, Str => 1, Num => 1, Int => 1 }->{ $_[0] };
+  my $native = { 'Str|Undef' => 1, Bool => 1, Str => 1, Num => 1, Int => 1 }->{ $_[0] };
   return defined $native;
 }
 
 sub get_value_for_type {
   my $type = shift;
-  return { Bool => 0, Str => 'Str', Num => 0.01, Int => 1 }->{ $type };
+  return { 'Str|Undef' => 'StrOrUndef', Bool => 0, Str => 'Str', Num => 0.01, Int => 1 }->{ $type };
 }
 
 # Just make a valid structure of arguments with values for the required fields
