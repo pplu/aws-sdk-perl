@@ -7,7 +7,7 @@ package Paws::Net::RestJsonCaller;
 
   sub _is_internal_type {
     my ($self, $att_type) = @_;
-    return ($att_type eq 'Str' or $att_type eq 'Int' or $att_type eq 'Bool' or $att_type eq 'Num');
+    return ($att_type eq 'Str' or $att_type eq 'Str|Undef' or $att_type eq 'Int' or $att_type eq 'Bool' or $att_type eq 'Num');
   }
 
   # converts the objects that represent the call into parameters that the API can understand
