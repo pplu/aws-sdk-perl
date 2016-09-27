@@ -132,10 +132,13 @@ client. The content type value is the key in this map, and the template
 
 =head2 Type => Str
 
-Specifies the integration's type. The valid value is C<HTTP>, C<AWS>,
-or C<MOCK>.
+Specifies the integration's type. The valid value is C<HTTP> for
+integrating with an HTTP back end, C<AWS> for any AWS service
+endpoints, C<MOCK> for testing without actually invoking the back end,
+C<HTTP_PROXY> for integrating with the HTTP proxy integration, or
+C<AWS_PROXY> for integrating with the Lambda proxy integration type.
 
-Valid values are: C<"HTTP">, C<"AWS">, C<"MOCK">
+Valid values are: C<"HTTP">, C<"AWS">, C<"MOCK">, C<"HTTP_PROXY">, C<"AWS_PROXY">
 
 =head2 Uri => Str
 

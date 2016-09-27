@@ -147,7 +147,7 @@ Specifies a put integration request's API identifier.
 
 Specifies a put integration input's type.
 
-Valid values are: C<"HTTP">, C<"AWS">, C<"MOCK">
+Valid values are: C<"HTTP">, C<"AWS">, C<"MOCK">, C<"HTTP_PROXY">, C<"AWS_PROXY">
 
 =head2 Uri => Str
 
