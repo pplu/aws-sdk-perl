@@ -19,6 +19,9 @@ Paws::CloudFormation::GetTemplateOutput
 Structure containing the template body. (For more information, go to
 Template Anatomy in the AWS CloudFormation User Guide.)
 
+AWS CloudFormation returns the same template that was used when the
+stack was created.
+
 
 
 

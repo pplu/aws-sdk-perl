@@ -2,6 +2,7 @@
 package Paws::CloudFormation::DeleteStack;
   use Moose;
   has RetainResources => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has RoleARN => (is => 'ro', isa => 'Str');
   has StackName => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -43,6 +44,20 @@ retained resources.
 
 Retaining resources is useful when you cannot delete a resource, such
 as a non-empty S3 bucket, but you want to delete the stack.
+
+
+
+=head2 RoleARN => Str
+
+The Amazon Resource Name (ARN) of an AWS Identity and Access Management
+(IAM) role that AWS CloudFormation assumes to delete the stack. AWS
+CloudFormation uses the role's credentials to make calls on your
+behalf.
+
+If you don't specify a value, AWS CloudFormation uses the role that was
+previously associated with the stack. If no role is available, AWS
+CloudFormation uses a temporary session that is generated from your
+user credentials.
 
 
 
