@@ -7,6 +7,7 @@ package Paws::S3::GetObject;
   has IfNoneMatch => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'If-None-Match' );
   has IfUnmodifiedSince => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'If-Unmodified-Since' );
   has Key => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'Key' , required => 1);
+  has PartNumber => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'partNumber' );
   has Range => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Range' );
   has RequestPayer => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-request-payer' );
   has ResponseCacheControl => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'response-cache-control' );
@@ -90,6 +91,14 @@ time, otherwise return a 412 (precondition failed).
 =head2 B<REQUIRED> Key => Str
 
 
+
+
+
+=head2 PartNumber => Int
+
+Part number of the object being read. This is a positive integer
+between 1 and 10,000. Effectively performs a 'ranged' GET request for
+the part specified. Useful for downloading just a part of an object.
 
 
 
