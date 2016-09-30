@@ -1,7 +1,7 @@
 package Paws::EC2;
   use Moose;
   sub service { 'ec2' }
-  sub version { '2016-04-01' }
+  sub version { '2016-09-15' }
   sub flattened_arrays { 1 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);
   has retry => (is => 'ro', isa => 'HashRef', default => sub {
@@ -14,6 +14,11 @@ package Paws::EC2;
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::EC2Caller', 'Paws::Net::XMLResponse';
 
   
+  sub AcceptReservedInstancesExchangeQuote {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::AcceptReservedInstancesExchangeQuote', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub AcceptVpcPeeringConnection {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::AcceptVpcPeeringConnection', @_);
@@ -809,6 +814,11 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::GetPasswordData', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetReservedInstancesExchangeQuote {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::GetReservedInstancesExchangeQuote', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ImportImage {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::ImportImage', @_);
@@ -1205,7 +1215,7 @@ package Paws::EC2;
     return 'Paws::EC2::DescribeVolumeStatus'->_returns->new(VolumeStatuses => $array);
   }
 
-  sub operations { qw/AcceptVpcPeeringConnection AllocateAddress AllocateHosts AssignPrivateIpAddresses AssociateAddress AssociateDhcpOptions AssociateRouteTable AttachClassicLinkVpc AttachInternetGateway AttachNetworkInterface AttachVolume AttachVpnGateway AuthorizeSecurityGroupEgress AuthorizeSecurityGroupIngress BundleInstance CancelBundleTask CancelConversionTask CancelExportTask CancelImportTask CancelReservedInstancesListing CancelSpotFleetRequests CancelSpotInstanceRequests ConfirmProductInstance CopyImage CopySnapshot CreateCustomerGateway CreateDhcpOptions CreateFlowLogs CreateImage CreateInstanceExportTask CreateInternetGateway CreateKeyPair CreateNatGateway CreateNetworkAcl CreateNetworkAclEntry CreateNetworkInterface CreatePlacementGroup CreateReservedInstancesListing CreateRoute CreateRouteTable CreateSecurityGroup CreateSnapshot CreateSpotDatafeedSubscription CreateSubnet CreateTags CreateVolume CreateVpc CreateVpcEndpoint CreateVpcPeeringConnection CreateVpnConnection CreateVpnConnectionRoute CreateVpnGateway DeleteCustomerGateway DeleteDhcpOptions DeleteFlowLogs DeleteInternetGateway DeleteKeyPair DeleteNatGateway DeleteNetworkAcl DeleteNetworkAclEntry DeleteNetworkInterface DeletePlacementGroup DeleteRoute DeleteRouteTable DeleteSecurityGroup DeleteSnapshot DeleteSpotDatafeedSubscription DeleteSubnet DeleteTags DeleteVolume DeleteVpc DeleteVpcEndpoints DeleteVpcPeeringConnection DeleteVpnConnection DeleteVpnConnectionRoute DeleteVpnGateway DeregisterImage DescribeAccountAttributes DescribeAddresses DescribeAvailabilityZones DescribeBundleTasks DescribeClassicLinkInstances DescribeConversionTasks DescribeCustomerGateways DescribeDhcpOptions DescribeExportTasks DescribeFlowLogs DescribeHostReservationOfferings DescribeHostReservations DescribeHosts DescribeIdentityIdFormat DescribeIdFormat DescribeImageAttribute DescribeImages DescribeImportImageTasks DescribeImportSnapshotTasks DescribeInstanceAttribute DescribeInstances DescribeInstanceStatus DescribeInternetGateways DescribeKeyPairs DescribeMovingAddresses DescribeNatGateways DescribeNetworkAcls DescribeNetworkInterfaceAttribute DescribeNetworkInterfaces DescribePlacementGroups DescribePrefixLists DescribeRegions DescribeReservedInstances DescribeReservedInstancesListings DescribeReservedInstancesModifications DescribeReservedInstancesOfferings DescribeRouteTables DescribeScheduledInstanceAvailability DescribeScheduledInstances DescribeSecurityGroupReferences DescribeSecurityGroups DescribeSnapshotAttribute DescribeSnapshots DescribeSpotDatafeedSubscription DescribeSpotFleetInstances DescribeSpotFleetRequestHistory DescribeSpotFleetRequests DescribeSpotInstanceRequests DescribeSpotPriceHistory DescribeStaleSecurityGroups DescribeSubnets DescribeTags DescribeVolumeAttribute DescribeVolumes DescribeVolumeStatus DescribeVpcAttribute DescribeVpcClassicLink DescribeVpcClassicLinkDnsSupport DescribeVpcEndpoints DescribeVpcEndpointServices DescribeVpcPeeringConnections DescribeVpcs DescribeVpnConnections DescribeVpnGateways DetachClassicLinkVpc DetachInternetGateway DetachNetworkInterface DetachVolume DetachVpnGateway DisableVgwRoutePropagation DisableVpcClassicLink DisableVpcClassicLinkDnsSupport DisassociateAddress DisassociateRouteTable EnableVgwRoutePropagation EnableVolumeIO EnableVpcClassicLink EnableVpcClassicLinkDnsSupport GetConsoleOutput GetConsoleScreenshot GetHostReservationPurchasePreview GetPasswordData ImportImage ImportInstance ImportKeyPair ImportSnapshot ImportVolume ModifyHosts ModifyIdentityIdFormat ModifyIdFormat ModifyImageAttribute ModifyInstanceAttribute ModifyInstancePlacement ModifyNetworkInterfaceAttribute ModifyReservedInstances ModifySnapshotAttribute ModifySpotFleetRequest ModifySubnetAttribute ModifyVolumeAttribute ModifyVpcAttribute ModifyVpcEndpoint ModifyVpcPeeringConnectionOptions MonitorInstances MoveAddressToVpc PurchaseHostReservation PurchaseReservedInstancesOffering PurchaseScheduledInstances RebootInstances RegisterImage RejectVpcPeeringConnection ReleaseAddress ReleaseHosts ReplaceNetworkAclAssociation ReplaceNetworkAclEntry ReplaceRoute ReplaceRouteTableAssociation ReportInstanceStatus RequestSpotFleet RequestSpotInstances ResetImageAttribute ResetInstanceAttribute ResetNetworkInterfaceAttribute ResetSnapshotAttribute RestoreAddressToClassic RevokeSecurityGroupEgress RevokeSecurityGroupIngress RunInstances RunScheduledInstances StartInstances StopInstances TerminateInstances UnassignPrivateIpAddresses UnmonitorInstances / }
+  sub operations { qw/AcceptReservedInstancesExchangeQuote AcceptVpcPeeringConnection AllocateAddress AllocateHosts AssignPrivateIpAddresses AssociateAddress AssociateDhcpOptions AssociateRouteTable AttachClassicLinkVpc AttachInternetGateway AttachNetworkInterface AttachVolume AttachVpnGateway AuthorizeSecurityGroupEgress AuthorizeSecurityGroupIngress BundleInstance CancelBundleTask CancelConversionTask CancelExportTask CancelImportTask CancelReservedInstancesListing CancelSpotFleetRequests CancelSpotInstanceRequests ConfirmProductInstance CopyImage CopySnapshot CreateCustomerGateway CreateDhcpOptions CreateFlowLogs CreateImage CreateInstanceExportTask CreateInternetGateway CreateKeyPair CreateNatGateway CreateNetworkAcl CreateNetworkAclEntry CreateNetworkInterface CreatePlacementGroup CreateReservedInstancesListing CreateRoute CreateRouteTable CreateSecurityGroup CreateSnapshot CreateSpotDatafeedSubscription CreateSubnet CreateTags CreateVolume CreateVpc CreateVpcEndpoint CreateVpcPeeringConnection CreateVpnConnection CreateVpnConnectionRoute CreateVpnGateway DeleteCustomerGateway DeleteDhcpOptions DeleteFlowLogs DeleteInternetGateway DeleteKeyPair DeleteNatGateway DeleteNetworkAcl DeleteNetworkAclEntry DeleteNetworkInterface DeletePlacementGroup DeleteRoute DeleteRouteTable DeleteSecurityGroup DeleteSnapshot DeleteSpotDatafeedSubscription DeleteSubnet DeleteTags DeleteVolume DeleteVpc DeleteVpcEndpoints DeleteVpcPeeringConnection DeleteVpnConnection DeleteVpnConnectionRoute DeleteVpnGateway DeregisterImage DescribeAccountAttributes DescribeAddresses DescribeAvailabilityZones DescribeBundleTasks DescribeClassicLinkInstances DescribeConversionTasks DescribeCustomerGateways DescribeDhcpOptions DescribeExportTasks DescribeFlowLogs DescribeHostReservationOfferings DescribeHostReservations DescribeHosts DescribeIdentityIdFormat DescribeIdFormat DescribeImageAttribute DescribeImages DescribeImportImageTasks DescribeImportSnapshotTasks DescribeInstanceAttribute DescribeInstances DescribeInstanceStatus DescribeInternetGateways DescribeKeyPairs DescribeMovingAddresses DescribeNatGateways DescribeNetworkAcls DescribeNetworkInterfaceAttribute DescribeNetworkInterfaces DescribePlacementGroups DescribePrefixLists DescribeRegions DescribeReservedInstances DescribeReservedInstancesListings DescribeReservedInstancesModifications DescribeReservedInstancesOfferings DescribeRouteTables DescribeScheduledInstanceAvailability DescribeScheduledInstances DescribeSecurityGroupReferences DescribeSecurityGroups DescribeSnapshotAttribute DescribeSnapshots DescribeSpotDatafeedSubscription DescribeSpotFleetInstances DescribeSpotFleetRequestHistory DescribeSpotFleetRequests DescribeSpotInstanceRequests DescribeSpotPriceHistory DescribeStaleSecurityGroups DescribeSubnets DescribeTags DescribeVolumeAttribute DescribeVolumes DescribeVolumeStatus DescribeVpcAttribute DescribeVpcClassicLink DescribeVpcClassicLinkDnsSupport DescribeVpcEndpoints DescribeVpcEndpointServices DescribeVpcPeeringConnections DescribeVpcs DescribeVpnConnections DescribeVpnGateways DetachClassicLinkVpc DetachInternetGateway DetachNetworkInterface DetachVolume DetachVpnGateway DisableVgwRoutePropagation DisableVpcClassicLink DisableVpcClassicLinkDnsSupport DisassociateAddress DisassociateRouteTable EnableVgwRoutePropagation EnableVolumeIO EnableVpcClassicLink EnableVpcClassicLinkDnsSupport GetConsoleOutput GetConsoleScreenshot GetHostReservationPurchasePreview GetPasswordData GetReservedInstancesExchangeQuote ImportImage ImportInstance ImportKeyPair ImportSnapshot ImportVolume ModifyHosts ModifyIdentityIdFormat ModifyIdFormat ModifyImageAttribute ModifyInstanceAttribute ModifyInstancePlacement ModifyNetworkInterfaceAttribute ModifyReservedInstances ModifySnapshotAttribute ModifySpotFleetRequest ModifySubnetAttribute ModifyVolumeAttribute ModifyVpcAttribute ModifyVpcEndpoint ModifyVpcPeeringConnectionOptions MonitorInstances MoveAddressToVpc PurchaseHostReservation PurchaseReservedInstancesOffering PurchaseScheduledInstances RebootInstances RegisterImage RejectVpcPeeringConnection ReleaseAddress ReleaseHosts ReplaceNetworkAclAssociation ReplaceNetworkAclEntry ReplaceRoute ReplaceRouteTableAssociation ReportInstanceStatus RequestSpotFleet RequestSpotInstances ResetImageAttribute ResetInstanceAttribute ResetNetworkInterfaceAttribute ResetSnapshotAttribute RestoreAddressToClassic RevokeSecurityGroupEgress RevokeSecurityGroupIngress RunInstances RunScheduledInstances StartInstances StopInstances TerminateInstances UnassignPrivateIpAddresses UnmonitorInstances / }
 
 1;
 
@@ -1241,6 +1251,16 @@ eliminates your need to invest in hardware up front, so you can develop
 and deploy applications faster.
 
 =head1 METHODS
+
+=head2 AcceptReservedInstancesExchangeQuote(ReservedInstanceIds => ArrayRef[Str|Undef], [DryRun => Bool, TargetConfigurations => ArrayRef[L<Paws::EC2::TargetConfigurationRequest>]])
+
+Each argument is described in detail in: L<Paws::EC2::AcceptReservedInstancesExchangeQuote>
+
+Returns: a L<Paws::EC2::AcceptReservedInstancesExchangeQuoteResult> instance
+
+  Purchases Convertible Reserved Instance offerings described in the
+GetReservedInstancesExchangeQuote call.
+
 
 =head2 AcceptVpcPeeringConnection([DryRun => Bool, VpcPeeringConnectionId => Str])
 
@@ -1963,24 +1983,26 @@ Each argument is described in detail in: L<Paws::EC2::CreateReservedInstancesLis
 
 Returns: a L<Paws::EC2::CreateReservedInstancesListingResult> instance
 
-  Creates a listing for Amazon EC2 Reserved Instances to be sold in the
-Reserved Instance Marketplace. You can submit one Reserved Instance
-listing at a time. To get a list of your Reserved Instances, you can
-use the DescribeReservedInstances operation.
+  Creates a listing for Amazon EC2 Standard Reserved Instances to be sold
+in the Reserved Instance Marketplace. You can submit one Standard
+Reserved Instance listing at a time. To get a list of your Standard
+Reserved Instances, you can use the DescribeReservedInstances
+operation.
 
 The Reserved Instance Marketplace matches sellers who want to resell
-Reserved Instance capacity that they no longer need with buyers who
-want to purchase additional capacity. Reserved Instances bought and
-sold through the Reserved Instance Marketplace work like any other
-Reserved Instances.
+Standard Reserved Instance capacity that they no longer need with
+buyers who want to purchase additional capacity. Reserved Instances
+bought and sold through the Reserved Instance Marketplace work like any
+other Reserved Instances.
 
-To sell your Reserved Instances, you must first register as a seller in
-the Reserved Instance Marketplace. After completing the registration
-process, you can create a Reserved Instance Marketplace listing of some
-or all of your Reserved Instances, and specify the upfront price to
-receive for them. Your Reserved Instance listings then become available
-for purchase. To view the details of your Reserved Instance listing,
-you can use the DescribeReservedInstancesListings operation.
+To sell your Standard Reserved Instances, you must first register as a
+seller in the Reserved Instance Marketplace. After completing the
+registration process, you can create a Reserved Instance Marketplace
+listing of some or all of your Standard Reserved Instances, and specify
+the upfront price to receive for them. Your Standard Reserved Instance
+listings then become available for purchase. To view the details of
+your Standard Reserved Instance listing, you can use the
+DescribeReservedInstancesListings operation.
 
 For more information, see Reserved Instance Marketplace in the I<Amazon
 Elastic Compute Cloud User Guide>.
@@ -2718,7 +2740,7 @@ a VPC through ClassicLink; you cannot use this request to return
 information about other instances.
 
 
-=head2 DescribeConversionTasks([ConversionTaskIds => ArrayRef[Str|Undef], DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>]])
+=head2 DescribeConversionTasks([ConversionTaskIds => ArrayRef[Str|Undef], DryRun => Bool])
 
 Each argument is described in detail in: L<Paws::EC2::DescribeConversionTasks>
 
@@ -3094,7 +3116,7 @@ For a list of the regions supported by Amazon EC2, see Regions and
 Endpoints.
 
 
-=head2 DescribeReservedInstances([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], OfferingType => Str, ReservedInstancesIds => ArrayRef[Str|Undef]])
+=head2 DescribeReservedInstances([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], OfferingClass => Str, OfferingType => Str, ReservedInstancesIds => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::EC2::DescribeReservedInstances>
 
@@ -3152,7 +3174,7 @@ For more information, see Modifying Reserved Instances in the Amazon
 Elastic Compute Cloud User Guide.
 
 
-=head2 DescribeReservedInstancesOfferings([AvailabilityZone => Str, DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], IncludeMarketplace => Bool, InstanceTenancy => Str, InstanceType => Str, MaxDuration => Int, MaxInstanceCount => Int, MaxResults => Int, MinDuration => Int, NextToken => Str, OfferingType => Str, ProductDescription => Str, ReservedInstancesOfferingIds => ArrayRef[Str|Undef]])
+=head2 DescribeReservedInstancesOfferings([AvailabilityZone => Str, DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], IncludeMarketplace => Bool, InstanceTenancy => Str, InstanceType => Str, MaxDuration => Int, MaxInstanceCount => Int, MaxResults => Int, MinDuration => Int, NextToken => Str, OfferingClass => Str, OfferingType => Str, ProductDescription => Str, ReservedInstancesOfferingIds => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::EC2::DescribeReservedInstancesOfferings>
 
@@ -3365,6 +3387,9 @@ Returns: a L<Paws::EC2::DescribeSpotFleetRequestsResponse> instance
 
   Describes your Spot fleet requests.
 
+Spot fleet requests are deleted 48 hours after they are canceled and
+their instances are terminated.
+
 
 =head2 DescribeSpotInstanceRequests([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], SpotInstanceRequestIds => ArrayRef[Str|Undef]])
 
@@ -3386,6 +3411,9 @@ is C<fulfilled>, the instance ID appears in the response and contains
 the identifier of the instance. Alternatively, you can use
 DescribeInstances with a filter to look for instances where the
 instance lifecycle is C<spot>.
+
+Spot instance requests are deleted 4 hours after they are canceled and
+their instances are terminated.
 
 
 =head2 DescribeSpotPriceHistory([AvailabilityZone => Str, DryRun => Bool, EndTime => Str, Filters => ArrayRef[L<Paws::EC2::Filter>], InstanceTypes => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str, ProductDescriptions => ArrayRef[Str|Undef], StartTime => Str])
@@ -3884,6 +3912,17 @@ that you wait up to 15 minutes after launching an instance before
 trying to retrieve the generated password.
 
 
+=head2 GetReservedInstancesExchangeQuote(ReservedInstanceIds => ArrayRef[Str|Undef], [DryRun => Bool, TargetConfigurations => ArrayRef[L<Paws::EC2::TargetConfigurationRequest>]])
+
+Each argument is described in detail in: L<Paws::EC2::GetReservedInstancesExchangeQuote>
+
+Returns: a L<Paws::EC2::GetReservedInstancesExchangeQuoteResult> instance
+
+  Returns details about the values and term of your specified Convertible
+Reserved Instances. When an offering ID is specified it returns
+information about whether the exchange is valid and can be performed.
+
+
 =head2 ImportImage([Architecture => Str, ClientData => L<Paws::EC2::ClientData>, ClientToken => Str, Description => Str, DiskContainers => ArrayRef[L<Paws::EC2::ImageDiskContainer>], DryRun => Bool, Hypervisor => Str, LicenseType => Str, Platform => Str, RoleName => Str])
 
 Each argument is described in detail in: L<Paws::EC2::ImportImage>
@@ -4091,9 +4130,9 @@ Each argument is described in detail in: L<Paws::EC2::ModifyReservedInstances>
 Returns: a L<Paws::EC2::ModifyReservedInstancesResult> instance
 
   Modifies the Availability Zone, instance count, instance type, or
-network platform (EC2-Classic or EC2-VPC) of your Reserved Instances.
-The Reserved Instances to be modified must be identical, except for
-Availability Zone, network platform, and instance type.
+network platform (EC2-Classic or EC2-VPC) of your Standard Reserved
+Instances. The Reserved Instances to be modified must be identical,
+except for Availability Zone, network platform, and instance type.
 
 For more information, see Modifying Reserved Instances in the Amazon
 Elastic Compute Cloud User Guide.
@@ -4283,9 +4322,8 @@ Each argument is described in detail in: L<Paws::EC2::PurchaseReservedInstancesO
 Returns: a L<Paws::EC2::PurchaseReservedInstancesOfferingResult> instance
 
   Purchases a Reserved Instance for use with your account. With Reserved
-Instances, you obtain a capacity reservation for a certain instance
-configuration over a specified period of time and pay a lower hourly
-rate compared to On-Demand instance pricing.
+Instances, you pay a lower hourly rate compared to On-Demand instance
+pricing.
 
 Use DescribeReservedInstancesOfferings to get a list of Reserved
 Instance offerings that match your specifications. After you've
@@ -4802,6 +4840,10 @@ Returns: a L<Paws::EC2::TerminateInstancesResult> instance
 
   Shuts down one or more instances. This operation is idempotent; if you
 terminate an instance more than once, each call succeeds.
+
+If you specify multiple instances and the request fails (for example,
+because of a single incorrect instance ID), none of the instances are
+terminated.
 
 Terminated instances remain visible after termination (for
 approximately one hour).

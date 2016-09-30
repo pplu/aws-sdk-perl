@@ -89,20 +89,25 @@ if creating a network interface when launching an instance.
 =head2 PrivateIpAddress => Str
 
   The private IP address of the network interface. Applies only if
-creating a network interface when launching an instance.
+creating a network interface when launching an instance. You cannot
+specify this option if you're launching more than one instance in a
+RunInstances request.
 
 
 =head2 PrivateIpAddresses => ArrayRef[L<Paws::EC2::PrivateIpAddressSpecification>]
 
   One or more private IP addresses to assign to the network interface.
-Only one private IP address can be designated as primary.
+Only one private IP address can be designated as primary. You cannot
+specify this option if you're launching more than one instance in a
+RunInstances request.
 
 
 =head2 SecondaryPrivateIpAddressCount => Int
 
   The number of secondary private IP addresses. You can't specify this
 option and specify more than one private IP address using the private
-IP addresses option.
+IP addresses option. You cannot specify this option if you're launching
+more than one instance in a RunInstances request.
 
 
 =head2 SubnetId => Str

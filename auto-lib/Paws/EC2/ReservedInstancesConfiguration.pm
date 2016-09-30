@@ -4,6 +4,7 @@ package Paws::EC2::ReservedInstancesConfiguration;
   has InstanceCount => (is => 'ro', isa => 'Int', xmlname => 'instanceCount', traits => ['Unwrapped']);
   has InstanceType => (is => 'ro', isa => 'Str', xmlname => 'instanceType', traits => ['Unwrapped']);
   has Platform => (is => 'ro', isa => 'Str', xmlname => 'platform', traits => ['Unwrapped']);
+  has Scope => (is => 'ro', isa => 'Str', xmlname => 'scope', traits => ['Unwrapped']);
 1;
 
 ### main pod documentation begin ###
@@ -23,7 +24,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::EC2::ReservedInstancesConfiguration object:
 
-  $service_obj->Method(Att1 => { AvailabilityZone => $value, ..., Platform => $value  });
+  $service_obj->Method(Att1 => { AvailabilityZone => $value, ..., Scope => $value  });
 
 =head3 Results returned from an API call
 
@@ -58,6 +59,11 @@ This class has no description
 
   The network platform of the modified Reserved Instances, which is
 either EC2-Classic or EC2-VPC.
+
+
+=head2 Scope => Str
+
+  Whether the Reserved Instance is C<standard> or C<convertible>.
 
 
 

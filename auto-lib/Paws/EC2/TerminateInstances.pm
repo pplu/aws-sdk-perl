@@ -47,6 +47,9 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 One or more instance IDs.
 
+Constraints: Up to 1000 instance IDs. We recommend breaking up this
+request into smaller batches.
+
 
 
 

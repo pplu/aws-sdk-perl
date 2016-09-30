@@ -3,6 +3,7 @@ package Paws::EC2::DescribeReservedInstances;
   use Moose;
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has Filters => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
+  has OfferingClass => (is => 'ro', isa => 'Str');
   has OfferingType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'offeringType' );
   has ReservedInstancesIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'ReservedInstancesId' );
 
@@ -78,6 +79,11 @@ reservation.
 
 =item *
 
+C<scope> - The scope of the Reserved Instance (C<Region> or
+C<Availability Zone>).
+
+=item *
+
 C<product-description> - The Reserved Instance product platform
 description. Instances that include C<(Amazon VPC)> in the product
 platform description will only be displayed to EC2-Classic account
@@ -133,6 +139,12 @@ C<usage-price> - The usage price of the Reserved Instance, per hour
 
 
 
+
+=head2 OfferingClass => Str
+
+Describes whether the Reserved Instance is Standard or Convertible.
+
+Valid values are: C<"standard">, C<"convertible">
 
 =head2 OfferingType => Str
 
