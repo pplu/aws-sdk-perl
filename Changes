@@ -22,6 +22,9 @@
  - RDS API update: Timezones and ReadEnpoints
  - EMR API update: SecurityConfigurations
  - IoT API update
+ - CloudFormation API update: RoleArn
+ - EC2 API update: ReservedInstancesExchangeQuote
+ - S3 API update
 
 0.28 30 Aug 2015 23:45:00
  - On errors 503 XMLResponse would not process the error correctly (returning
