@@ -38,7 +38,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 EncryptionContext => L<Paws::KMS::EncryptionContextType>
 
-Name/value pair that specifies the encryption context to be used for
+Name-value pair that specifies the encryption context to be used for
 authenticated encryption. If used here, the same value must be supplied
 to the C<Decrypt> API or decryption will fail. For more information,
 see Encryption Context.
