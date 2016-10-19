@@ -33,7 +33,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 =head1 DESCRIPTION
 
 A complex type that lists the active CloudFront key pairs, if any, that
-are associated with AwsAccountNumber.
+are associated with C<AwsAccountNumber>.
+
+For more information, see ActiveTrustedSigners.
 
 =head1 ATTRIBUTES
 
@@ -41,12 +43,16 @@ are associated with AwsAccountNumber.
 =head2 Items => ArrayRef[Str|Undef]
 
   A complex type that lists the active CloudFront key pairs, if any, that
-are associated with AwsAccountNumber.
+are associated with C<AwsAccountNumber>.
+
+For more information, see ActiveTrustedSigners.
 
 
 =head2 B<REQUIRED> Quantity => Int
 
-  The number of active CloudFront key pairs for AwsAccountNumber.
+  The number of active CloudFront key pairs for C<AwsAccountNumber>.
+
+For more information, see ActiveTrustedSigners.
 
 
 

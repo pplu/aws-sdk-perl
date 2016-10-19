@@ -32,25 +32,31 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 
 =head1 DESCRIPTION
 
-Origin access identity configuration.
+Origin access identity configuration. Send a C<GET> request to the
+C</I<CloudFront API version>/CloudFront/identity ID/config> resource.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> CallerReference => Str
 
-  A unique number that ensures the request can't be replayed. If the
-CallerReference is new (no matter the content of the
-CloudFrontOriginAccessIdentityConfig object), a new origin access
-identity is created. If the CallerReference is a value you already sent
-in a previous request to create an identity, and the content of the
-CloudFrontOriginAccessIdentityConfig is identical to the original
+  A unique number that ensures the request can't be replayed.
+
+If the C<CallerReference> is new (no matter the content of the
+C<CloudFrontOriginAccessIdentityConfig> object), a new origin access
+identity is created.
+
+If the C<CallerReference> is a value already sent in a previous
+identity request, and the content of the
+C<CloudFrontOriginAccessIdentityConfig> is identical to the original
 request (ignoring white space), the response includes the same
-information returned to the original request. If the CallerReference is
-a value you already sent in a previous request to create an identity
-but the content of the CloudFrontOriginAccessIdentityConfig is
-different from the original request, CloudFront returns a
-CloudFrontOriginAccessIdentityAlreadyExists error.
+information returned to the original request.
+
+If the C<CallerReference> is a value you already sent in a previous
+request to create an identity, but the content of the
+C<CloudFrontOriginAccessIdentityConfig> is different from the original
+request, CloudFront returns a
+C<CloudFrontOriginAccessIdentityAlreadyExists> error.
 
 
 =head2 B<REQUIRED> Comment => Str

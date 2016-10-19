@@ -16,7 +16,7 @@ Paws::CloudFront::ListTagsForResourceResult
 
 =head2 B<REQUIRED> Tags => L<Paws::CloudFront::Tags>
 
-A complex type that contains zero or more Tag elements.
+A complex type that contains zero or more C<Tag> elements.
 
 
 

@@ -34,20 +34,23 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 
 =head1 DESCRIPTION
 
-A complex type that specifies how CloudFront handles query strings,
-cookies and headers.
+A complex type that specifies how CloudFront handles query strings and
+cookies.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> Cookies => L<Paws::CloudFront::CookiePreference>
 
-  A complex type that specifies how CloudFront handles cookies.
+  A complex type that specifies whether you want CloudFront to forward
+cookies to the origin and, if so, which ones. For more information
+about forwarding cookies to the origin, see How CloudFront Forwards,
+Caches, and Logs Cookies in the I<Amazon CloudFront Developer Guide>.
 
 
 =head2 Headers => L<Paws::CloudFront::Headers>
 
-  A complex type that specifies the Headers, if any, that you want
+  A complex type that specifies the C<Headers>, if any, that you want
 CloudFront to vary upon for this cache behavior.
 
 
@@ -56,29 +59,27 @@ CloudFront to vary upon for this cache behavior.
   Indicates whether you want CloudFront to forward query strings to the
 origin that is associated with this cache behavior and cache based on
 the query string parameters. CloudFront behavior depends on the value
-of QueryString and on the values that you specify for
-QueryStringCacheKeys, if any:
+of C<QueryString> and on the values that you specify for
+C<QueryStringCacheKeys>, if any:
 
-=over
-
-=item * If you specify true for QueryString and you don't specify any
-values for QueryStringCacheKeys, CloudFront forwards all query string
+If you specify true for C<QueryString> and you don't specify any values
+for C<QueryStringCacheKeys>, CloudFront forwards all query string
 parameters to the origin and caches based on all query string
 parameters. Depending on how many query string parameters and values
 you have, this can adversely affect performance because CloudFront must
 forward more requests to the origin.
 
-=item * If you specify true for QueryString and you specify one or more
-values for QueryStringCacheKeys, CloudFront forwards all query string
-parameters to the origin, but it only caches based on the query string
-parameters that you specify.
+If you specify true for C<QueryString> and you specify one or more
+values for C<QueryStringCacheKeys>, CloudFront forwards all query
+string parameters to the origin, but it only caches based on the query
+string parameters that you specify.
 
-=item * If you specify false for QueryString, CloudFront doesn't
-forward any query string parameters to the origin, and doesn't cache
-based on query string parameters.
+If you specify false for C<QueryString>, CloudFront doesn't forward any
+query string parameters to the origin, and doesn't cache based on query
+string parameters.
 
-=back
-
+For more information, see Configuring CloudFront to Cache Based on
+Query String Parameters in the I<Amazon CloudFront Developer Guide>.
 
 
 =head2 QueryStringCacheKeys => L<Paws::CloudFront::QueryStringCacheKeys>

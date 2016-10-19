@@ -16,7 +16,7 @@ Paws::CloudFront::ListStreamingDistributionsResult
 
 =head2 StreamingDistributionList => L<Paws::CloudFront::StreamingDistributionList>
 
-The StreamingDistributionList type.
+The C<StreamingDistributionList> type.
 
 
 

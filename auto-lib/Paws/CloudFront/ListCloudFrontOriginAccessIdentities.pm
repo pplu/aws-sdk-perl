@@ -7,7 +7,7 @@ package Paws::CloudFront::ListCloudFrontOriginAccessIdentities;
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListCloudFrontOriginAccessIdentities');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2016-09-07/origin-access-identity/cloudfront');
+  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2016-09-29/origin-access-identity/cloudfront');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudFront::ListCloudFrontOriginAccessIdentitiesResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
@@ -22,15 +22,15 @@ Paws::CloudFront::ListCloudFrontOriginAccessIdentities - Arguments for method Li
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method ListCloudFrontOriginAccessIdentities2016_09_07 on the 
+This class represents the parameters used for calling the method ListCloudFrontOriginAccessIdentities2016_09_29 on the 
 Amazon CloudFront service. Use the attributes of this class
-as arguments to method ListCloudFrontOriginAccessIdentities2016_09_07.
+as arguments to method ListCloudFrontOriginAccessIdentities2016_09_29.
 
-You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListCloudFrontOriginAccessIdentities2016_09_07.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListCloudFrontOriginAccessIdentities2016_09_29.
 
 As an example:
 
-  $service_obj->ListCloudFrontOriginAccessIdentities2016_09_07(Att1 => $value1, Att2 => $value2, ...);
+  $service_obj->ListCloudFrontOriginAccessIdentities2016_09_29(Att1 => $value1, Att2 => $value2, ...);
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 
@@ -42,7 +42,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 Use this when paginating results to indicate where to begin in your
 list of origin access identities. The results include identities in the
 list that occur after the marker. To get the next page of results, set
-the Marker to the value of the NextMarker from the current page's
+the C<Marker> to the value of the C<NextMarker> from the current page's
 response (which is also the ID of the last identity on that page).
 
 
@@ -57,7 +57,7 @@ body.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, documenting arguments for method ListCloudFrontOriginAccessIdentities2016_09_07 in L<Paws::CloudFront>
+This class forms part of L<Paws>, documenting arguments for method ListCloudFrontOriginAccessIdentities2016_09_29 in L<Paws::CloudFront>
 
 =head1 BUGS and CONTRIBUTIONS
 

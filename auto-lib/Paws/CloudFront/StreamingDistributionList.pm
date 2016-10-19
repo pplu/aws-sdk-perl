@@ -45,31 +45,32 @@ A streaming distribution list.
 
   A flag that indicates whether more streaming distributions remain to be
 listed. If your results were truncated, you can make a follow-up
-pagination request using the Marker request parameter to retrieve more
-distributions in the list.
+pagination request using the C<Marker> request parameter to retrieve
+more distributions in the list.
 
 
 =head2 Items => ArrayRef[L<Paws::CloudFront::StreamingDistributionSummary>]
 
-  A complex type that contains one StreamingDistributionSummary element
-for each distribution that was created by the current AWS account.
+  A complex type that contains one C<StreamingDistributionSummary>
+element for each distribution that was created by the current AWS
+account.
 
 
 =head2 B<REQUIRED> Marker => Str
 
-  The value you provided for the Marker request parameter.
+  The value you provided for the C<Marker> request parameter.
 
 
 =head2 B<REQUIRED> MaxItems => Int
 
-  The value you provided for the MaxItems request parameter.
+  The value you provided for the C<MaxItems> request parameter.
 
 
 =head2 NextMarker => Str
 
-  If IsTruncated is true, this element is present and contains the value
-you can use for the Marker request parameter to continue listing your
-streaming distributions where they left off.
+  If C<IsTruncated> is C<true>, this element is present and contains the
+value you can use for the C<Marker> request parameter to continue
+listing your RTMP distributions where they left off.
 
 
 =head2 B<REQUIRED> Quantity => Int

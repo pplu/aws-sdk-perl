@@ -32,23 +32,27 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 
 =head1 DESCRIPTION
 
-A complex type that contains Tag key and Tag value.
+A complex type that contains C<Tag> key and C<Tag> value.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> Key => Str
 
-  A string that contains Tag key. The string length should be between 1
-and 128 characters. Valid characters include a-z, A-Z, 0-9, space, and
-the special characters _ - . : / = + @.
+  A string that contains C<Tag> key.
+
+The string length should be between 1 and 128 characters. Valid
+characters include C<a-z>, C<A-Z>, C<0-9>, space, and the special
+characters C<_ - . : / = + @>.
 
 
 =head2 Value => Str
 
-  A string that contains an optional Tag value. The string length should
-be between 0 and 256 characters. Valid characters include a-z, A-Z,
-0-9, space, and the special characters _ - . : / = + @.
+  A string that contains an optional C<Tag> value.
+
+The string length should be between 0 and 256 characters. Valid
+characters include C<a-z>, C<A-Z>, C<0-9>, space, and the special
+characters C<_ - . : / = + @>.
 
 
 

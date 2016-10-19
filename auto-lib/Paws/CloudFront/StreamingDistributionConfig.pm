@@ -38,7 +38,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 
 =head1 DESCRIPTION
 
-The configuration for the streaming distribution.
+The RTMP distribution's configuration information.
 
 =head1 ATTRIBUTES
 
@@ -51,18 +51,18 @@ names), if any, for this streaming distribution.
 
 =head2 B<REQUIRED> CallerReference => Str
 
-  A unique number that ensures the request can't be replayed. If the
-CallerReference is new (no matter the content of the
-StreamingDistributionConfig object), a new streaming distribution is
-created. If the CallerReference is a value you already sent in a
-previous request to create a streaming distribution, and the content of
-the StreamingDistributionConfig is identical to the original request
-(ignoring white space), the response includes the same information
-returned to the original request. If the CallerReference is a value you
-already sent in a previous request to create a streaming distribution
-but the content of the StreamingDistributionConfig is different from
-the original request, CloudFront returns a DistributionAlreadyExists
-error.
+  A unique number that ensures that the request can't be replayed. If the
+C<CallerReference> is new (no matter the content of the
+C<StreamingDistributionConfig> object), a new streaming distribution is
+created. If the C<CallerReference> is a value that you already sent in
+a previous request to create a streaming distribution, and the content
+of the C<StreamingDistributionConfig> is identical to the original
+request (ignoring white space), the response includes the same
+information returned to the original request. If the C<CallerReference>
+is a value that you already sent in a previous request to create a
+streaming distribution but the content of the
+C<StreamingDistributionConfig> is different from the original request,
+CloudFront returns a C<DistributionAlreadyExists> error.
 
 
 =head2 B<REQUIRED> Comment => Str
@@ -72,8 +72,8 @@ error.
 
 =head2 B<REQUIRED> Enabled => Bool
 
-  Whether the streaming distribution is enabled to accept end user
-requests for content.
+  Whether the streaming distribution is enabled to accept user requests
+for content.
 
 
 =head2 Logging => L<Paws::CloudFront::StreamingLoggingConfig>
@@ -97,18 +97,12 @@ distribution.
 
 =head2 B<REQUIRED> TrustedSigners => L<Paws::CloudFront::TrustedSigners>
 
-  A complex type that specifies the AWS accounts, if any, that you want
-to allow to create signed URLs for private content. If you want to
-require signed URLs in requests for objects in the target origin that
-match the PathPattern for this cache behavior, specify true for
-Enabled, and specify the applicable values for Quantity and Items. For
-more information, go to Using a Signed URL to Serve Private Content in
-the Amazon CloudFront Developer Guide. If you don't want to require
-signed URLs in requests for objects that match PathPattern, specify
-false for Enabled and 0 for Quantity. Omit Items. To add, change, or
-remove one or more trusted signers, change Enabled to true (if it's
-currently false), change Quantity as applicable, and specify all of the
-trusted signers that you want to include in the updated distribution.
+  A complex type that specifies any AWS accounts that you want to permit
+to create signed URLs for private content. If you want the distribution
+to use signed URLs, include this element; if you want the distribution
+to use public URLs, remove this element. For more information, see
+Serving Private Content through CloudFront in the I<Amazon CloudFront
+Developer Guide>.
 
 
 

@@ -39,14 +39,14 @@ This class has no description
 
 =head2 Items => ArrayRef[Str|Undef]
 
-  Optional: A list that contains the query string parameters that you
+  (Optional) A list that contains the query string parameters that you
 want CloudFront to use as a basis for caching for this cache behavior.
-If Quantity is 0, you can omit Items.
+If C<Quantity> is 0, you can omit C<Items>.
 
 
 =head2 B<REQUIRED> Quantity => Int
 
-  The number of whitelisted query string parameters for this cache
+  The number of C<whitelisted> query string parameters for this cache
 behavior.
 
 

@@ -45,14 +45,14 @@ CloudFront origin access identity.
 
 =head2 B<REQUIRED> Id => Str
 
-  The ID for the origin access identity. For example: E74FTE3AJFJ256A.
+  The ID for the origin access identity. For example: C<E74FTE3AJFJ256A>.
 
 
 =head2 B<REQUIRED> S3CanonicalUserId => Str
 
-  The Amazon S3 canonical user ID for the origin access identity, which
-you use when giving the origin access identity read permission to an
-object in Amazon S3.
+  The Amazon S3 canonical user ID for the origin access identity, used
+when giving the origin access identity read permission to an object in
+Amazon S3.
 
 
 

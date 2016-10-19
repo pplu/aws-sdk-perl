@@ -57,8 +57,8 @@ names), if any, for this streaming distribution.
 
   The ARN (Amazon Resource Name) for the streaming distribution. For
 example:
-arn:aws:cloudfront::123456789012:streaming-distribution/EDFDVBD632BHDS5,
-where 123456789012 is your AWS account Id.
+C<arn:aws:cloudfront::123456789012:streaming-distribution/EDFDVBD632BHDS5>,
+where C<123456789012> is your AWS account ID.
 
 
 =head2 B<REQUIRED> Comment => Str
@@ -69,7 +69,7 @@ where 123456789012 is your AWS account Id.
 =head2 B<REQUIRED> DomainName => Str
 
   The domain name corresponding to the distribution. For example:
-d604721fxaaqy9.cloudfront.net.
+C<d604721fxaaqy9.cloudfront.net>.
 
 
 =head2 B<REQUIRED> Enabled => Bool
@@ -80,7 +80,7 @@ content.
 
 =head2 B<REQUIRED> Id => Str
 
-  The identifier for the distribution. For example: EDFDVBD632BHDS5.
+  The identifier for the distribution. For example: C<EDFDVBD632BHDS5>.
 
 
 =head2 B<REQUIRED> LastModifiedTime => Str
@@ -103,8 +103,8 @@ distribution.
 =head2 B<REQUIRED> Status => Str
 
   Indicates the current status of the distribution. When the status is
-Deployed, the distribution's information is fully propagated throughout
-the Amazon CloudFront system.
+C<Deployed>, the distribution's information is fully propagated
+throughout the Amazon CloudFront system.
 
 
 =head2 B<REQUIRED> TrustedSigners => L<Paws::CloudFront::TrustedSigners>
@@ -112,14 +112,13 @@ the Amazon CloudFront system.
   A complex type that specifies the AWS accounts, if any, that you want
 to allow to create signed URLs for private content. If you want to
 require signed URLs in requests for objects in the target origin that
-match the PathPattern for this cache behavior, specify true for
-Enabled, and specify the applicable values for Quantity and Items. For
-more information, go to Using a Signed URL to Serve Private Content in
-the Amazon CloudFront Developer Guide. If you don't want to require
-signed URLs in requests for objects that match PathPattern, specify
-false for Enabled and 0 for Quantity. Omit Items. To add, change, or
-remove one or more trusted signers, change Enabled to true (if it's
-currently false), change Quantity as applicable, and specify all of the
+match the C<PathPattern> for this cache behavior, specify C<true> for
+C<Enabled>, and specify the applicable values for C<Quantity> and
+C<Items>.If you don't want to require signed URLs in requests for
+objects that match C<PathPattern>, specify C<false> for C<Enabled> and
+C<0> for C<Quantity>. Omit C<Items>. To add, change, or remove one or
+more trusted signers, change C<Enabled> to C<true> (if it's currently
+C<false>), change C<Quantity> as applicable, and specify all of the
 trusted signers that you want to include in the updated distribution.
 
 

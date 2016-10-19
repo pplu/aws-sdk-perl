@@ -42,7 +42,7 @@ streaming distribution.
 =head2 B<REQUIRED> Bucket => Str
 
   The Amazon S3 bucket to store the access logs in, for example,
-myawslogbucket.s3.amazonaws.com.
+C<myawslogbucket.s3.amazonaws.com>.
 
 
 =head2 B<REQUIRED> Enabled => Bool
@@ -50,18 +50,19 @@ myawslogbucket.s3.amazonaws.com.
   Specifies whether you want CloudFront to save access logs to an Amazon
 S3 bucket. If you do not want to enable logging when you create a
 streaming distribution or if you want to disable logging for an
-existing streaming distribution, specify false for Enabled, and specify
-empty Bucket and Prefix elements. If you specify false for Enabled but
-you specify values for Bucket and Prefix, the values are automatically
-deleted.
+existing streaming distribution, specify C<false> for C<Enabled>, and
+specify C<empty Bucket> and C<Prefix> elements. If you specify C<false>
+for C<Enabled> but you specify values for C<Bucket> and C<Prefix>, the
+values are automatically deleted.
 
 
 =head2 B<REQUIRED> Prefix => Str
 
   An optional string that you want CloudFront to prefix to the access log
-filenames for this streaming distribution, for example, myprefix/. If
-you want to enable logging, but you do not want to specify a prefix,
-you still must include an empty Prefix element in the Logging element.
+C<filenames> for this streaming distribution, for example,
+C<myprefix/>. If you want to enable logging, but you do not want to
+specify a prefix, you still must include an empty C<Prefix> element in
+the C<Logging> element.
 
 
 
