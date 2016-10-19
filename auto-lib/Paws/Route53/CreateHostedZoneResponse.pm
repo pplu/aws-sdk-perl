@@ -44,7 +44,8 @@ The unique URL representing the new hosted zone.
 
 =head2 VPC => L<Paws::Route53::VPC>
 
-
+A complex type that contains information about an Amazon VPC that you
+associated with this hosted zone.
 
 
 
