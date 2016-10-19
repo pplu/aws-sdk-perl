@@ -56,11 +56,17 @@ types:
 
 =over
 
-=item * RuleUpdate: Contains C<Action> and C<Predicate>
+=item *
 
-=item * Predicate: Contains C<DataId>, C<Negated>, and C<Type>
+RuleUpdate: Contains C<Action> and C<Predicate>
 
-=item * FieldToMatch: Contains C<Data> and C<Type>
+=item *
+
+Predicate: Contains C<DataId>, C<Negated>, and C<Type>
+
+=item *
+
+FieldToMatch: Contains C<Data> and C<Type>
 
 =back
 

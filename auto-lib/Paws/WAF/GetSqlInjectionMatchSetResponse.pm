@@ -21,14 +21,19 @@ following topics:
 
 =over
 
-=item * SqlInjectionMatchSet: Contains C<Name>,
-C<SqlInjectionMatchSetId>, and an array of C<SqlInjectionMatchTuple>
-objects
+=item *
 
-=item * SqlInjectionMatchTuple: Each C<SqlInjectionMatchTuple> object
-contains C<FieldToMatch> and C<TextTransformation>
+SqlInjectionMatchSet: Contains C<Name>, C<SqlInjectionMatchSetId>, and
+an array of C<SqlInjectionMatchTuple> objects
 
-=item * FieldToMatch: Contains C<Data> and C<Type>
+=item *
+
+SqlInjectionMatchTuple: Each C<SqlInjectionMatchTuple> object contains
+C<FieldToMatch> and C<TextTransformation>
+
+=item *
+
+FieldToMatch: Contains C<Data> and C<Type>
 
 =back
 

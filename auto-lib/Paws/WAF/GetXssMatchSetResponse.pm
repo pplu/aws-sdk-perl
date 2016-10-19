@@ -21,13 +21,19 @@ topics:
 
 =over
 
-=item * XssMatchSet: Contains C<Name>, C<XssMatchSetId>, and an array
-of C<XssMatchTuple> objects
+=item *
 
-=item * XssMatchTuple: Each C<XssMatchTuple> object contains
-C<FieldToMatch> and C<TextTransformation>
+XssMatchSet: Contains C<Name>, C<XssMatchSetId>, and an array of
+C<XssMatchTuple> objects
 
-=item * FieldToMatch: Contains C<Data> and C<Type>
+=item *
+
+XssMatchTuple: Each C<XssMatchTuple> object contains C<FieldToMatch>
+and C<TextTransformation>
+
+=item *
+
+FieldToMatch: Contains C<Data> and C<Type>
 
 =back
 

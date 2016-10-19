@@ -1,7 +1,7 @@
 
 package Paws::WAF::ListSizeConstraintSets;
   use Moose;
-  has Limit => (is => 'ro', isa => 'Int', required => 1);
+  has Limit => (is => 'ro', isa => 'Int');
   has NextMarker => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
@@ -34,7 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Limit => Int
+=head2 Limit => Int
 
 Specifies the number of C<SizeConstraintSet> objects that you want AWS
 WAF to return for this request. If you have more C<SizeConstraintSets>

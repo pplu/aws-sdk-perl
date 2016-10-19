@@ -57,13 +57,18 @@ applicable data types:
 
 =over
 
-=item * SizeConstraintSetUpdate: Contains C<Action> and
-C<SizeConstraint>
+=item *
 
-=item * SizeConstraint: Contains C<FieldToMatch>,
-C<TextTransformation>, C<ComparisonOperator>, and C<Size>
+SizeConstraintSetUpdate: Contains C<Action> and C<SizeConstraint>
 
-=item * FieldToMatch: Contains C<Data> and C<Type>
+=item *
+
+SizeConstraint: Contains C<FieldToMatch>, C<TextTransformation>,
+C<ComparisonOperator>, and C<Size>
+
+=item *
+
+FieldToMatch: Contains C<Data> and C<Type>
 
 =back
 
