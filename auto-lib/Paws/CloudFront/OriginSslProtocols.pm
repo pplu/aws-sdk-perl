@@ -1,6 +1,6 @@
 package Paws::CloudFront::OriginSslProtocols;
   use Moose;
-  has Items => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
+  has Items => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'SslProtocol', traits => ['NameInRequest'], required => 1);
   has Quantity => (is => 'ro', isa => 'Int', required => 1);
 1;
 

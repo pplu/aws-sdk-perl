@@ -1,7 +1,7 @@
 package Paws::CloudFront::DistributionList;
   use Moose;
   has IsTruncated => (is => 'ro', isa => 'Bool', required => 1);
-  has Items => (is => 'ro', isa => 'ArrayRef[Paws::CloudFront::DistributionSummary]');
+  has Items => (is => 'ro', isa => 'ArrayRef[Paws::CloudFront::DistributionSummary]', request_name => 'DistributionSummary', traits => ['NameInRequest']);
   has Marker => (is => 'ro', isa => 'Str', required => 1);
   has MaxItems => (is => 'ro', isa => 'Int', required => 1);
   has NextMarker => (is => 'ro', isa => 'Str');

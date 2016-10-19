@@ -1,6 +1,6 @@
 package Paws::CloudFront::CustomHeaders;
   use Moose;
-  has Items => (is => 'ro', isa => 'ArrayRef[Paws::CloudFront::OriginCustomHeader]');
+  has Items => (is => 'ro', isa => 'ArrayRef[Paws::CloudFront::OriginCustomHeader]', request_name => 'OriginCustomHeader', traits => ['NameInRequest']);
   has Quantity => (is => 'ro', isa => 'Int', required => 1);
 1;
 
