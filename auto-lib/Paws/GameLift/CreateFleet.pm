@@ -8,6 +8,7 @@ package Paws::GameLift::CreateFleet;
   has LogPaths => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has NewGameSessionProtectionPolicy => (is => 'ro', isa => 'Str');
+  has ResourceCreationLimitPolicy => (is => 'ro', isa => 'Paws::GameLift::ResourceCreationLimitPolicy');
   has RuntimeConfiguration => (is => 'ro', isa => 'Paws::GameLift::RuntimeConfiguration');
   has ServerLaunchParameters => (is => 'ro', isa => 'Str');
   has ServerLaunchPath => (is => 'ro', isa => 'Str');
@@ -107,16 +108,27 @@ individual instances using UpdateGameSession.
 
 =over
 
-=item * B<NoProtection> E<ndash> The game session can be terminated
-during a scale-down event.
+=item *
 
-=item * B<FullProtection> E<ndash> If the game session is in an
-C<ACTIVE> status, it cannot be terminated during a scale-down event.
+B<NoProtection> E<ndash> The game session can be terminated during a
+scale-down event.
+
+=item *
+
+B<FullProtection> E<ndash> If the game session is in an C<ACTIVE>
+status, it cannot be terminated during a scale-down event.
 
 =back
 
 
 Valid values are: C<"NoProtection">, C<"FullProtection">
+
+=head2 ResourceCreationLimitPolicy => L<Paws::GameLift::ResourceCreationLimitPolicy>
+
+Policy that limits the number of game sessions an individual player can
+create over a span of time for this fleet.
+
+
 
 =head2 RuntimeConfiguration => L<Paws::GameLift::RuntimeConfiguration>
 

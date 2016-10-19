@@ -10,6 +10,7 @@
    Method(StringParameter => "33"). Paws will now auto-stringify the contents in these parameters
    so AWS will accept them correctly, and the programmer doesn't have to worry about stringifying
    his inputs. Thanks to ilmari and rpcme
+ - Gamelift API update: DescribeInstances
  - ECR API update: DescribeImages
  - ACM API update: ImportCertificate
  - RDS API update: DescribeSourceRegions

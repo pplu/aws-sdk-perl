@@ -1,7 +1,7 @@
 
-package Paws::GameLift::ListAliasesOutput;
+package Paws::GameLift::DescribeInstancesOutput;
   use Moose;
-  has Aliases => (is => 'ro', isa => 'ArrayRef[Paws::GameLift::Alias]');
+  has Instances => (is => 'ro', isa => 'ArrayRef[Paws::GameLift::Instance]');
   has NextToken => (is => 'ro', isa => 'Str');
 
 
@@ -9,14 +9,14 @@ package Paws::GameLift::ListAliasesOutput;
 
 =head1 NAME
 
-Paws::GameLift::ListAliasesOutput
+Paws::GameLift::DescribeInstancesOutput
 
 =head1 ATTRIBUTES
 
 
-=head2 Aliases => ArrayRef[L<Paws::GameLift::Alias>]
+=head2 Instances => ArrayRef[L<Paws::GameLift::Instance>]
 
-Collection of alias records that match the list request.
+Collection of objects containing properties for each instance returned.
 
 
 

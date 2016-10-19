@@ -40,7 +40,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 GameSessionId => Str
 
-Unique identifier for a game session.
+Unique identifier for the game session to get player sessions for.Game
+session ID format is as follows:
+"arn:aws:gamelift:E<lt>regionE<gt>::gamesession/fleet-E<lt>fleet
+IDE<gt>/E<lt>ID stringE<gt>". The value of E<lt>ID stringE<gt> is
+either a custom ID string (if one was specified when the game session
+was created) an auto-generated string.
 
 
 
@@ -81,17 +86,25 @@ Possible player session statuses include the following:
 
 =over
 
-=item * B<RESERVED> E<ndash> The player session request has been
-received, but the player has not yet connected to the server process
-and/or been validated.
+=item *
 
-=item * B<ACTIVE> E<ndash> The player has been validated by the server
-process and is currently connected.
+B<RESERVED> E<ndash> The player session request has been received, but
+the player has not yet connected to the server process and/or been
+validated.
 
-=item * B<COMPLETED> E<ndash> The player connection has been dropped.
+=item *
 
-=item * B<TIMEDOUT> E<ndash> A player session request was received, but
-the player did not connect and/or was not validated within the time-out
+B<ACTIVE> E<ndash> The player has been validated by the server process
+and is currently connected.
+
+=item *
+
+B<COMPLETED> E<ndash> The player connection has been dropped.
+
+=item *
+
+B<TIMEDOUT> E<ndash> A player session request was received, but the
+player did not connect and/or was not validated within the time-out
 limit (60 seconds).
 
 =back
