@@ -46,7 +46,7 @@ SSH Key.
 
 =head2 B<REQUIRED> IamUserArn => Str
 
-The user's IAM ARN.
+The user's IAM ARN; this can also be a federated user's ARN.
 
 
 
