@@ -111,26 +111,42 @@ in the Amazon Cognito Developer Guide.
 
 =over
 
-=item * Created - The job was created but not started.
+=item *
 
-=item * Pending - A transition state. You have started the job, but it
-has not begun importing users yet.
+Created - The job was created but not started.
 
-=item * InProgress - The job has started, and users are being imported.
+=item *
 
-=item * Stopping - You have stopped the job, but the job has not
-stopped importing users yet.
+Pending - A transition state. You have started the job, but it has not
+begun importing users yet.
 
-=item * Stopped - You have stopped the job, and the job has stopped
-importing users.
+=item *
 
-=item * Succeeded - The job has completed successfully.
+InProgress - The job has started, and users are being imported.
 
-=item * Failed - The job has stopped due to an error.
+=item *
 
-=item * Expired - You created a job, but did not start the job within
-24-48 hours. All data associated with the job was deleted, and the job
-cannot be started.
+Stopping - You have stopped the job, but the job has not stopped
+importing users yet.
+
+=item *
+
+Stopped - You have stopped the job, and the job has stopped importing
+users.
+
+=item *
+
+Succeeded - The job has completed successfully.
+
+=item *
+
+Failed - The job has stopped due to an error.
+
+=item *
+
+Expired - You created a job, but did not start the job within 24-48
+hours. All data associated with the job was deleted, and the job cannot
+be started.
 
 =back
 

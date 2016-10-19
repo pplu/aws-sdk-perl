@@ -1,6 +1,7 @@
 
 package Paws::CognitoIdp::CreateUserPool;
   use Moose;
+  has AdminCreateUserConfig => (is => 'ro', isa => 'Paws::CognitoIdp::AdminCreateUserConfigType');
   has AliasAttributes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has AutoVerifiedAttributes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has DeviceConfiguration => (is => 'ro', isa => 'Paws::CognitoIdp::DeviceConfigurationType');
@@ -43,6 +44,12 @@ As an example:
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 
 =head1 ATTRIBUTES
+
+
+=head2 AdminCreateUserConfig => L<Paws::CognitoIdp::AdminCreateUserConfigType>
+
+The configuration for AdminCreateUser requests.
+
 
 
 =head2 AliasAttributes => ArrayRef[Str|Undef]
