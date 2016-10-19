@@ -945,6 +945,7 @@ package [% inner_class %];
   [%- member_shape_name = shape.members.$param_name.shape %]
   [%- member = c.shape(member_shape_name) -%]
   has [% param_name %] => (is => 'ro', isa => '[% member.perl_type %]'
+  [%- IF (member.type == 'list' and member.member.locationName.defined) %][% traits.push('NameInRequest') %], request_name => '[% member.member.locationName %]'[% END %]
   [%- IF (shape.members.${param_name}.locationName); traits.push('Unwrapped','NameInRequest') %], xmlname => '[% shape.members.${param_name}.locationName %]', request_name => '[% shape.members.${param_name}.locationName %]'[% END %]
   [%- IF (shape.members.$param_name.streaming == 1); traits.push('ParamInBody'); END %]
   [%- encoder = c.encoders_struct.$member_shape_name; IF (encoder); traits.push('JSONAttribute') %], decode_as => '[% encoder.encoding %]', method => '[% encoder.alias %]'[% END %]
