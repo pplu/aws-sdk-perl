@@ -21,9 +21,13 @@ Indicates if the specified CNAME is available:
 
 =over
 
-=item * C<true> : The CNAME is available.
+=item *
 
-=item * C<false> : The CNAME is not available.
+C<true> : The CNAME is available.
+
+=item *
+
+C<false> : The CNAME is not available.
 
 =back
 

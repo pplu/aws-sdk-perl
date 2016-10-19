@@ -60,11 +60,15 @@ An error or warning for a desired configuration option value.
 
 =over
 
-=item * C<error>: This message indicates that this is not a valid
-setting for an option.
+=item *
 
-=item * C<warning>: This message is providing information you should
-take into account.
+C<error>: This message indicates that this is not a valid setting for
+an option.
+
+=item *
+
+C<warning>: This message is providing information you should take into
+account.
 
 =back
 

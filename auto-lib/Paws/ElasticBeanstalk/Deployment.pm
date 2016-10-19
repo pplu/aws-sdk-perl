@@ -58,11 +58,17 @@ For completed deployments, the time that the deployment ended.
 
 =over
 
-=item * C<In Progress> : The deployment is in progress.
+=item *
 
-=item * C<Deployed> : The deployment succeeded.
+C<In Progress> : The deployment is in progress.
 
-=item * C<Failed> : The deployment failed.
+=item *
+
+C<Deployed> : The deployment succeeded.
+
+=item *
+
+C<Failed> : The deployment failed.
 
 =back
 

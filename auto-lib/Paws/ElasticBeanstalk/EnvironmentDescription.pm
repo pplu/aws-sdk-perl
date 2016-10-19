@@ -105,19 +105,26 @@ indicates the failure levels for a running environment:
 
 =over
 
-=item * C<Red>: Indicates the environment is not responsive. Occurs
-when three or more consecutive failures occur for an environment.
+=item *
 
-=item * C<Yellow>: Indicates that something is wrong. Occurs when two
+C<Red>: Indicates the environment is not responsive. Occurs when three
+or more consecutive failures occur for an environment.
+
+=item *
+
+C<Yellow>: Indicates that something is wrong. Occurs when two
 consecutive failures occur for an environment.
 
-=item * C<Green>: Indicates the environment is healthy and fully
-functional.
+=item *
 
-=item * C<Grey>: Default health for a new environment. The environment
-is not fully launched and health checks have not started or health
-checks are suspended during an C<UpdateEnvironment> or
-C<RestartEnvironement> request.
+C<Green>: Indicates the environment is healthy and fully functional.
+
+=item *
+
+C<Grey>: Default health for a new environment. The environment is not
+fully launched and health checks have not started or health checks are
+suspended during an C<UpdateEnvironment> or C<RestartEnvironement>
+request.
 
 =back
 
@@ -150,18 +157,27 @@ The current operational status of the environment:
 
 =over
 
-=item * C<Launching>: Environment is in the process of initial
-deployment.
+=item *
 
-=item * C<Updating>: Environment is in the process of updating its
+C<Launching>: Environment is in the process of initial deployment.
+
+=item *
+
+C<Updating>: Environment is in the process of updating its
 configuration settings or application version.
 
-=item * C<Ready>: Environment is available to have an action performed
-on it, such as update or terminate.
+=item *
 
-=item * C<Terminating>: Environment is in the shut-down process.
+C<Ready>: Environment is available to have an action performed on it,
+such as update or terminate.
 
-=item * C<Terminated>: Environment is not running.
+=item *
+
+C<Terminating>: Environment is in the shut-down process.
+
+=item *
+
+C<Terminated>: Environment is not running.
 
 =back
 
