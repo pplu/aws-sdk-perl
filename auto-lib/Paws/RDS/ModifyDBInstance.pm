@@ -390,10 +390,9 @@ Cannot end with a hyphen or contain two consecutive hyphens
 =head2 DBSubnetGroupName => Str
 
 The new DB subnet group for the DB instance. You can use this parameter
-to move your DB instance to a different VPC, or to a different subnet
-group in the same VPC. If your DB instance is not in a VPC, you can
-also use this parameter to move your DB instance into a VPC. For more
-information, see Updating the VPC for a DB Instance.
+to move your DB instance to a different VPC. If your DB instance is not
+in a VPC, you can also use this parameter to move your DB instance into
+a VPC. For more information, see Updating the VPC for a DB Instance.
 
 Changing the subnet group causes an outage during the change. The
 change is applied during the next maintenance window, unless you
