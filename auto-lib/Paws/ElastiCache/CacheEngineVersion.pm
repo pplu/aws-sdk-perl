@@ -55,6 +55,9 @@ Provides all of the details about a particular cache engine version.
   The name of the cache parameter group family associated with this cache
 engine.
 
+Valid values are: C<memcached1.4> | C<redis2.6> | C<redis2.8> |
+C<redis3.2>
+
 
 =head2 Engine => Str
 

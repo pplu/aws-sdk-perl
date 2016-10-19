@@ -34,21 +34,21 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElastiCache
 
 =head1 DESCRIPTION
 
-Represents the output of one of the following actions:
+Represents the output of one of the following operations:
 
 =over
 
 =item *
 
-I<AuthorizeCacheSecurityGroupIngress>
+C<AuthorizeCacheSecurityGroupIngress>
 
 =item *
 
-I<CreateCacheSecurityGroup>
+C<CreateCacheSecurityGroup>
 
 =item *
 
-I<RevokeCacheSecurityGroupIngress>
+C<RevokeCacheSecurityGroupIngress>
 
 =back
 

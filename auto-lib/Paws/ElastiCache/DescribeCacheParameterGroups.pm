@@ -44,9 +44,9 @@ The name of a specific cache parameter group to return details for.
 =head2 Marker => Str
 
 An optional marker returned from a prior request. Use this marker for
-pagination of results from this action. If this parameter is specified,
-the response includes only records beyond the marker, up to the value
-specified by I<MaxRecords>.
+pagination of results from this operation. If this parameter is
+specified, the response includes only records beyond the marker, up to
+the value specified by C<MaxRecords>.
 
 
 
