@@ -93,7 +93,9 @@ Limits the response to keys that begin with the specified prefix.
 
 =head2 RequestPayer => Str
 
-
+Confirms that the requester knows that she or he will be charged for
+the list objects request in V2 style. Bucket owners need not specify
+this parameter in their requests.
 
 Valid values are: C<"requester">
 
