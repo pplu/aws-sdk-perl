@@ -275,13 +275,18 @@ have specified.
 
 =over
 
-=item * Notification of starting the delivery.
+=item *
 
-=item * Notification of delivery completed, if the delivery was
-successfully completed.
+Notification of starting the delivery.
 
-=item * Notification of delivery failure, if the delivery failed to
-complete.
+=item *
+
+Notification of delivery completed, if the delivery was successfully
+completed.
+
+=item *
+
+Notification of delivery failure, if the delivery failed to complete.
 
 =back
 
@@ -306,20 +311,26 @@ following conditions:
 
 =over
 
-=item * AWS Config has never invoked an evaluation for the rule. To
-check whether it has, use the C<DescribeConfigRuleEvaluationStatus>
-action to get the C<LastSuccessfulInvocationTime> and
+=item *
+
+AWS Config has never invoked an evaluation for the rule. To check
+whether it has, use the C<DescribeConfigRuleEvaluationStatus> action to
+get the C<LastSuccessfulInvocationTime> and
 C<LastFailedInvocationTime>.
 
-=item * The rule's AWS Lambda function is failing to send evaluation
-results to AWS Config. Verify that the role that you assigned to your
+=item *
+
+The rule's AWS Lambda function is failing to send evaluation results to
+AWS Config. Verify that the role that you assigned to your
 configuration recorder includes the C<config:PutEvaluations>
 permission. If the rule is a custom rule, verify that the AWS Lambda
 execution role includes the C<config:PutEvaluations> permission.
 
-=item * The rule's AWS Lambda function has returned C<NOT_APPLICABLE>
-for all evaluation results. This can occur if the resources were
-deleted or removed from the rule's scope.
+=item *
+
+The rule's AWS Lambda function has returned C<NOT_APPLICABLE> for all
+evaluation results. This can occur if the resources were deleted or
+removed from the rule's scope.
 
 =back
 
@@ -345,20 +356,26 @@ following conditions about the rules that evaluate the resource:
 
 =over
 
-=item * AWS Config has never invoked an evaluation for the rule. To
-check whether it has, use the C<DescribeConfigRuleEvaluationStatus>
-action to get the C<LastSuccessfulInvocationTime> and
+=item *
+
+AWS Config has never invoked an evaluation for the rule. To check
+whether it has, use the C<DescribeConfigRuleEvaluationStatus> action to
+get the C<LastSuccessfulInvocationTime> and
 C<LastFailedInvocationTime>.
 
-=item * The rule's AWS Lambda function is failing to send evaluation
-results to AWS Config. Verify that the role that you assigned to your
+=item *
+
+The rule's AWS Lambda function is failing to send evaluation results to
+AWS Config. Verify that the role that you assigned to your
 configuration recorder includes the C<config:PutEvaluations>
 permission. If the rule is a custom rule, verify that the AWS Lambda
 execution role includes the C<config:PutEvaluations> permission.
 
-=item * The rule's AWS Lambda function has returned C<NOT_APPLICABLE>
-for all evaluation results. This can occur if the resources were
-deleted or removed from the rule's scope.
+=item *
+
+The rule's AWS Lambda function has returned C<NOT_APPLICABLE> for all
+evaluation results. This can occur if the resources were deleted or
+removed from the rule's scope.
 
 =back
 
@@ -391,11 +408,12 @@ Each argument is described in detail in: L<Paws::Config::DescribeConfigurationRe
 
 Returns: a L<Paws::Config::DescribeConfigurationRecordersResponse> instance
 
-  Returns the name of one or more specified configuration recorders. If
-the recorder name is not specified, this action returns the names of
-all the configuration recorders associated with the account.
+  Returns the details for the specified configuration recorders. If the
+configuration recorder is not specified, this action returns the
+details for all configuration recorders associated with the account.
 
-Currently, you can specify only one configuration recorder per account.
+Currently, you can specify only one configuration recorder per region
+in your account.
 
 
 =head2 DescribeConfigurationRecorderStatus([ConfigurationRecorderNames => ArrayRef[Str|Undef]])
@@ -408,7 +426,8 @@ Returns: a L<Paws::Config::DescribeConfigurationRecorderStatusResponse> instance
 a configuration recorder is not specified, this action returns the
 status of all configuration recorder associated with the account.
 
-Currently, you can specify only one configuration recorder per account.
+Currently, you can specify only one configuration recorder per region
+in your account.
 
 
 =head2 DescribeDeliveryChannels([DeliveryChannelNames => ArrayRef[Str|Undef]])
@@ -421,7 +440,8 @@ Returns: a L<Paws::Config::DescribeDeliveryChannelsResponse> instance
 channel is not specified, this action returns the details of all
 delivery channels associated with the account.
 
-Currently, you can specify only one delivery channel per account.
+Currently, you can specify only one delivery channel per region in your
+account.
 
 
 =head2 DescribeDeliveryChannelStatus([DeliveryChannelNames => ArrayRef[Str|Undef]])
@@ -434,7 +454,8 @@ Returns: a L<Paws::Config::DescribeDeliveryChannelStatusResponse> instance
 delivery channel is not specified, this action returns the current
 status of all delivery channels associated with the account.
 
-Currently, you can specify only one delivery channel per account.
+Currently, you can specify only one delivery channel per region in your
+account.
 
 
 =head2 GetComplianceDetailsByConfigRule(ConfigRuleName => Str, [ComplianceTypes => ArrayRef[Str|Undef], Limit => Int, NextToken => Str])
@@ -560,9 +581,9 @@ C<ConfigRule> object. Do not specify the C<ConfigRuleArn> or the
 C<ConfigRuleId>. These values are generated by AWS Config for new
 rules.
 
-If you are updating a rule that you have added previously, specify the
-rule's C<ConfigRuleName>, C<ConfigRuleId>, or C<ConfigRuleArn> in the
-C<ConfigRule> data type that you use in this request.
+If you are updating a rule that you added previously, you can specify
+the rule by C<ConfigRuleName>, C<ConfigRuleId>, or C<ConfigRuleArn> in
+the C<ConfigRule> data type that you use in this request.
 
 The maximum number of rules that AWS Config supports is 25.
 
@@ -584,7 +605,8 @@ You can use this action to change the role C<roleARN> and/or the
 C<recordingGroup> of an existing recorder. To change the role, call the
 action on the existing configuration recorder and specify a role.
 
-Currently, you can specify only one configuration recorder per account.
+Currently, you can specify only one configuration recorder per region
+in your account.
 
 If C<ConfigurationRecorder> does not have the B<recordingGroup>
 parameter specified, the default is to record all supported resource
@@ -610,7 +632,7 @@ for the S3 bucket and the SNS topic. If you specify a different value
 for either the S3 bucket or the SNS topic, this action will keep the
 existing value for the parameter that is not changed.
 
-You can have only one delivery channel per AWS account.
+You can have only one delivery channel per region in your account.
 
 
 =head2 PutEvaluations(ResultToken => Str, [Evaluations => ArrayRef[L<Paws::Config::Evaluation>]])
