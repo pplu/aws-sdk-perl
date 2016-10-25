@@ -32,15 +32,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WAF::IPSetD
 
 =head1 DESCRIPTION
 
-Specifies the IP address type (C<IPV4> or C<IPV6>) and the IP address
-range (in CIDR format) that web requests originate from.
+Specifies the IP address type (C<IPV4>) and the IP address range (in
+CIDR format) that web requests originate from.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> Type => Str
 
-  Specify C<IPV4> or C<IPV6>.
+  Specify C<IPV4>.
 
 
 =head2 B<REQUIRED> Value => Str
@@ -62,28 +62,10 @@ C<192.0.2.0/24>.
 
 =back
 
+AWS WAF supports only /8, /16, /24, and /32 IP addresses.
+
 For more information about CIDR notation, see the Wikipedia entry
 Classless Inter-Domain Routing.
-
-Specify an IPv6 address by using CIDR notation. For example:
-
-=over
-
-=item *
-
-To configure AWS WAF to allow, block, or count requests that originated
-from the IP address 1111:0000:0000:0000:0000:0000:0000:0111, specify
-C<1111:0000:0000:0000:0000:0000:0000:0111/128>.
-
-=item *
-
-To configure AWS WAF to allow, block, or count requests that originated
-from IP addresses 1111:0000:0000:0000:0000:0000:0000:0000 to
-1111:0000:0000:0000:ffff:ffff:ffff:ffff, specify
-C<1111:0000:0000:0000:0000:0000:0000:0000/64>.
-
-=back
-
 
 
 
