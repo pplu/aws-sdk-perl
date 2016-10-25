@@ -31,7 +31,7 @@ package Paws::Net::FurlCaller;
       (defined $requestObj->content)?(content => $requestObj->content):(),
     );
 
-    $self->caller_to_response($service, $call_object, $response->code, $response->content, { $response->headers->flatten });
+    return ($response->code, $response->content, { $response->headers->flatten });
   }
 
   sub caller_to_response {

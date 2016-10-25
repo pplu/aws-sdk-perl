@@ -1,11 +1,30 @@
 package TestResponseRecorder;
-  use Moose::Role;
+  use Moose;
+  with 'Paws::Net::RetryCallerRole', 'Paws::Net::CallerRole';
 
   use File::Slurper qw(read_text write_text);
   use JSON::MaybeXS;
+  use Moose::Util::TypeConstraints;
 
-  has record_mode => (is => 'ro', isa => 'Str', required => 1, default => sub { $ENV{PAWS_RECORDER_MODE} });
-  has recorder_dir => (is => 'ro', isa => 'Str', required => 1, default => sub { $ENV{PAWS_RECORDER_DIR} });
+  has real_caller => (
+    is => 'ro', 
+    does => 'Paws::Net::CallerRole', 
+    default => sub { Paws::Net::Caller->new; }
+  );
+
+  has record_mode => (
+    is => 'ro',
+    isa => enum([ 'REPLAY', 'RECORD' ]),
+    required => 1,
+    default => sub { $ENV{PAWS_RECORDER_MODE} }
+  );
+
+  has recorder_dir => (
+    is => 'ro',
+    isa => 'Str',
+    required => 1,
+    default => sub { $ENV{PAWS_RECORDER_DIR} }
+  );
 
   has _request_num => (
     is => 'ro',
@@ -19,8 +38,8 @@ package TestResponseRecorder;
 
   has _test_file => (is => 'rw', isa => 'Str');
 
-  around send_request => sub {
-    my ($orig, $self, $service, $call_object) = @_;
+  sub send_request {
+    my ($self, $service, $call_object) = @_;
 
     $self->_test_file(sprintf("%s/%04d.test", $self->recorder_dir, $self->_request_num));
     $self->_next_request;
@@ -42,19 +61,19 @@ package TestResponseRecorder;
         )
       }
  
-      return $self->caller_to_response($service, $call_object, $response->{response}{status}, $response->{response}{content}, $response->{response}{headers});
+      return ($response->{response}{status}, $response->{response}{content}, $response->{response}{headers});
     } elsif ($self->record_mode eq 'RECORD') {
-      return $self->$orig($service, $call_object);
+      return $self->real_caller->send_request($service, $call_object);
     } else {
       die "Unsupported record mode " . $self->record_mode;
     }
   };
 
-  around caller_to_response => sub {
-    my ($orig, $self, $service, $call_object, $status, $content, $headers) = @_;
+  sub caller_to_response {
+    my ($self, $service, $call_object, $status, $content, $headers) = @_;
  
-    $content =~ s/<(RequestId)>.*<\/(RequestId)>/<$1>000000000000000000000000000000000000<\/$2>/;
-    $content =~ s/<(RequestID)>.*<\/(RequestID)>/<$1>000000000000000000000000000000000000<\/$2>/;
+    $content =~ s/<(RequestId)>.*<\/(RequestId)>/<$1>000000000000000000000000000000000000<\/$2>/ if (defined $content);
+    $content =~ s/<(RequestID)>.*<\/(RequestID)>/<$1>000000000000000000000000000000000000<\/$2>/ if (defined $content);
 
     if ($headers->{ "x-amzn-requestid" }) {
       $headers->{ "x-amzn-requestid" }  = '000000000000000000000000000000000000' 
@@ -79,7 +98,7 @@ package TestResponseRecorder;
       }));
     }
 
-    return $self->$orig($service, $call_object, $status, $content, $headers);   
+    return $self->real_caller->caller_to_response($service, $call_object, $status, $content, $headers);   
   };
 
 1;
