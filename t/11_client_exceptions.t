@@ -4,6 +4,7 @@ use strict;
 use warnings;
 
 use Paws;
+use Paws::Net::MockCaller;
 use Test::Exception;
 use Test::More;
 use Data::Dumper;
@@ -11,8 +12,6 @@ use Data::Dumper;
 use lib 't/lib';
 use Test::CustomCredentials;
 use Module::Runtime qw/require_module/;
-
-use TestResponseRecorder;
 
 my $do_real_calls = $ENV{'PAWS_RUN_REAL_CALLS'} || 0;
 
@@ -27,7 +26,7 @@ foreach my $caller_name ('Paws::Net::FurlCaller', 'Paws::Net::Caller', 'Paws::Ne
 
   my $caller_dir = $caller_dirs->{ $caller_name } . '/';
   diag "Testing with caller $caller_name";
-  my $caller = TestResponseRecorder->new(
+  my $caller = Paws::Net::MockCaller->new(
     real_caller => $caller_name->new,
     recorder_dir => $caller_dir,
     record_mode => $do_real_calls ? 'RECORD' : 'REPLAY',

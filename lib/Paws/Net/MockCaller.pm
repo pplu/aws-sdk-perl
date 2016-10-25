@@ -1,4 +1,4 @@
-package TestResponseRecorder;
+package Paws::Net::MockCaller;
   use Moose;
   with 'Paws::Net::RetryCallerRole', 'Paws::Net::CallerRole';
 
