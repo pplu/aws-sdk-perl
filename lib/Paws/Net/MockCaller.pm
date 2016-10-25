@@ -9,7 +9,10 @@ package Paws::Net::MockCaller;
   has real_caller => (
     is => 'ro', 
     does => 'Paws::Net::CallerRole', 
-    default => sub { Paws::Net::Caller->new; }
+    default => sub {
+      require Paws::Net::Caller;
+      Paws::Net::Caller->new;
+    }
   );
 
   has record_mode => (
