@@ -2,7 +2,7 @@
 package Paws::ELBv2::SetSubnets;
   use Moose;
   has LoadBalancerArn => (is => 'ro', isa => 'Str', required => 1);
-  has Subnets => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has Subnets => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -40,7 +40,7 @@ The Amazon Resource Name (ARN) of the load balancer.
 
 
 
-=head2 B<REQUIRED> Subnets => ArrayRef[Str]
+=head2 B<REQUIRED> Subnets => ArrayRef[Str|Undef]
 
 The IDs of the subnets. You must specify at least two subnets. You can
 add only one subnet per Availability Zone.

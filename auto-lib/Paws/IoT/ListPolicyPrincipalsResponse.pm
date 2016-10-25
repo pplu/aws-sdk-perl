@@ -2,7 +2,7 @@
 package Paws::IoT::ListPolicyPrincipalsResponse;
   use Moose;
   has NextMarker => (is => 'ro', isa => 'Str');
-  has Principals => (is => 'ro', isa => 'ArrayRef[Str]');
+  has Principals => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
 1;
 
@@ -22,7 +22,7 @@ additional results.
 
 
 
-=head2 Principals => ArrayRef[Str]
+=head2 Principals => ArrayRef[Str|Undef]
 
 The descriptions of the principals.
 

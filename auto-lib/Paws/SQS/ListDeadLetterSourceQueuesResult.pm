@@ -1,7 +1,7 @@
 
 package Paws::SQS::ListDeadLetterSourceQueuesResult;
   use Moose;
-  has QueueUrls => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'QueueUrl', traits => ['Unwrapped',], required => 1);
+  has QueueUrls => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'QueueUrl', traits => ['Unwrapped',], required => 1);
 
 1;
 
@@ -14,7 +14,7 @@ Paws::SQS::ListDeadLetterSourceQueuesResult
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> QueueUrls => ArrayRef[Str]
+=head2 B<REQUIRED> QueueUrls => ArrayRef[Str|Undef]
 
 A list of source queue URLs that have the RedrivePolicy queue attribute
 configured with a dead letter queue.

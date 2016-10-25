@@ -19,7 +19,7 @@ package Paws::OpsWorks::Instance;
   has InstanceProfileArn => (is => 'ro', isa => 'Str');
   has InstanceType => (is => 'ro', isa => 'Str');
   has LastServiceErrorId => (is => 'ro', isa => 'Str');
-  has LayerIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has LayerIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Os => (is => 'ro', isa => 'Str');
   has Platform => (is => 'ro', isa => 'Str');
   has PrivateDns => (is => 'ro', isa => 'Str');
@@ -31,7 +31,7 @@ package Paws::OpsWorks::Instance;
   has ReportedOs => (is => 'ro', isa => 'Paws::OpsWorks::ReportedOs');
   has RootDeviceType => (is => 'ro', isa => 'Str');
   has RootDeviceVolumeId => (is => 'ro', isa => 'Str');
-  has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has SshHostDsaKeyFingerprint => (is => 'ro', isa => 'Str');
   has SshHostRsaKeyFingerprint => (is => 'ro', isa => 'Str');
   has SshKeyName => (is => 'ro', isa => 'Str');
@@ -186,7 +186,7 @@ ARNs, see Using Identifiers.
 DescribeServiceErrors.
 
 
-=head2 LayerIds => ArrayRef[Str]
+=head2 LayerIds => ArrayRef[Str|Undef]
 
   An array containing the instance layer IDs.
 
@@ -247,7 +247,7 @@ the Root Device.
   The root device volume ID.
 
 
-=head2 SecurityGroupIds => ArrayRef[Str]
+=head2 SecurityGroupIds => ArrayRef[Str|Undef]
 
   An array containing the instance security group IDs.
 

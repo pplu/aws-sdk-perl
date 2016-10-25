@@ -1,7 +1,7 @@
 
 package Paws::KMS::DescribeKey;
   use Moose;
-  has GrantTokens => (is => 'ro', isa => 'ArrayRef[Str]');
+  has GrantTokens => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has KeyId => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -34,7 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 GrantTokens => ArrayRef[Str]
+=head2 GrantTokens => ArrayRef[Str|Undef]
 
 A list of grant tokens.
 

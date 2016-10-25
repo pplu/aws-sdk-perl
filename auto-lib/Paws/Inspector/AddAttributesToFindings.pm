@@ -2,7 +2,7 @@
 package Paws::Inspector::AddAttributesToFindings;
   use Moose;
   has Attributes => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::Attribute]', traits => ['NameInRequest'], request_name => 'attributes' , required => 1);
-  has FindingArns => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'findingArns' , required => 1);
+  has FindingArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'findingArns' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -40,7 +40,7 @@ The array of attributes that you want to assign to specified findings.
 
 
 
-=head2 B<REQUIRED> FindingArns => ArrayRef[Str]
+=head2 B<REQUIRED> FindingArns => ArrayRef[Str|Undef]
 
 The ARNs that specify the findings that you want to assign attributes
 to.

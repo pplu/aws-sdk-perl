@@ -2,7 +2,7 @@
 package Paws::AutoScaling::DescribeLifecycleHooks;
   use Moose;
   has AutoScalingGroupName => (is => 'ro', isa => 'Str', required => 1);
-  has LifecycleHookNames => (is => 'ro', isa => 'ArrayRef[Str]');
+  has LifecycleHookNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
   use MooseX::ClassAttribute;
 
@@ -40,7 +40,7 @@ The name of the group.
 
 
 
-=head2 LifecycleHookNames => ArrayRef[Str]
+=head2 LifecycleHookNames => ArrayRef[Str|Undef]
 
 The names of one or more lifecycle hooks. If you omit this parameter,
 all lifecycle hooks are described.

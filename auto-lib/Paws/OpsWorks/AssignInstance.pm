@@ -2,7 +2,7 @@
 package Paws::OpsWorks::AssignInstance;
   use Moose;
   has InstanceId => (is => 'ro', isa => 'Str', required => 1);
-  has LayerIds => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has LayerIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -40,7 +40,7 @@ The instance ID.
 
 
 
-=head2 B<REQUIRED> LayerIds => ArrayRef[Str]
+=head2 B<REQUIRED> LayerIds => ArrayRef[Str|Undef]
 
 The layer ID, which must correspond to a custom layer. You cannot
 assign a registered instance to a built-in layer.

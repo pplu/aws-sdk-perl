@@ -1,7 +1,7 @@
 
 package Paws::CodeDeploy::ListDeploymentConfigsOutput;
   use Moose;
-  has DeploymentConfigsList => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['Unwrapped'], xmlname => 'deploymentConfigsList' );
+  has DeploymentConfigsList => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['Unwrapped'], xmlname => 'deploymentConfigsList' );
   has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
 
 
@@ -14,7 +14,7 @@ Paws::CodeDeploy::ListDeploymentConfigsOutput
 =head1 ATTRIBUTES
 
 
-=head2 DeploymentConfigsList => ArrayRef[Str]
+=head2 DeploymentConfigsList => ArrayRef[Str|Undef]
 
 A list of deployment configurations, including built-in configurations
 such as CodeDeployDefault.OneAtATime.

@@ -591,7 +591,7 @@ number of subscription filters returned in the response by specifying
 the C<limit> parameter in the request.
 
 
-=head2 FilterLogEvents(LogGroupName => Str, [EndTime => Int, FilterPattern => Str, Interleaved => Bool, Limit => Int, LogStreamNames => ArrayRef[Str], NextToken => Str, StartTime => Int])
+=head2 FilterLogEvents(LogGroupName => Str, [EndTime => Int, FilterPattern => Str, Interleaved => Bool, Limit => Int, LogStreamNames => ArrayRef[Str|Undef], NextToken => Str, StartTime => Int])
 
 Each argument is described in detail in: L<Paws::CloudWatchLogs::FilterLogEvents>
 
@@ -782,7 +782,7 @@ Currently there can only be one subscription filter associated with a
 log group.
 
 
-=head2 TestMetricFilter(FilterPattern => Str, LogEventMessages => ArrayRef[Str])
+=head2 TestMetricFilter(FilterPattern => Str, LogEventMessages => ArrayRef[Str|Undef])
 
 Each argument is described in detail in: L<Paws::CloudWatchLogs::TestMetricFilter>
 
@@ -859,9 +859,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::CloudWatchLogs::DescribeSubscriptionFiltersResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 FilterAllLogEvents(sub { },LogGroupName => Str, [EndTime => Int, FilterPattern => Str, Interleaved => Bool, Limit => Int, LogStreamNames => ArrayRef[Str], NextToken => Str, StartTime => Int])
+=head2 FilterAllLogEvents(sub { },LogGroupName => Str, [EndTime => Int, FilterPattern => Str, Interleaved => Bool, Limit => Int, LogStreamNames => ArrayRef[Str|Undef], NextToken => Str, StartTime => Int])
 
-=head2 FilterAllLogEvents(LogGroupName => Str, [EndTime => Int, FilterPattern => Str, Interleaved => Bool, Limit => Int, LogStreamNames => ArrayRef[Str], NextToken => Str, StartTime => Int])
+=head2 FilterAllLogEvents(LogGroupName => Str, [EndTime => Int, FilterPattern => Str, Interleaved => Bool, Limit => Int, LogStreamNames => ArrayRef[Str|Undef], NextToken => Str, StartTime => Int])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

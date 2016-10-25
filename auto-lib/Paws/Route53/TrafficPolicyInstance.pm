@@ -39,54 +39,86 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Route53::Tr
 
 =head1 DESCRIPTION
 
-This class has no description
+A complex type that contains settings for the new traffic policy
+instance.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> HostedZoneId => Str
 
-  
+  The ID of the hosted zone that Amazon Route 53 created resource record
+sets in.
 
 
 =head2 B<REQUIRED> Id => Str
 
-  
+  The ID that Amazon Route 53 assigned to the new traffic policy
+instance.
 
 
 =head2 B<REQUIRED> Message => Str
 
-  
+  If C<State> is C<Failed>, an explanation of the reason for the failure.
+If C<State> is another value, C<Message> is empty.
 
 
 =head2 B<REQUIRED> Name => Str
 
-  
+  The DNS name, such as www.example.com, for which Amazon Route 53
+responds to queries by using the resource record sets that are
+associated with this traffic policy instance.
 
 
 =head2 B<REQUIRED> State => Str
 
-  
+  The value of C<State> is one of the following values:
+
+=over
+
+=item Applied
+
+Amazon Route 53 has finished creating resource record sets, and changes
+have propagated to all Amazon Route 53 edge locations.
+
+=item Creating
+
+Amazon Route 53 is creating the resource record sets. Use
+C<GetTrafficPolicyInstance> to confirm that the
+C<CreateTrafficPolicyInstance> request completed successfully.
+
+=item Failed
+
+Amazon Route 53 wasn't able to create or update the resource record
+sets. When the value of C<State> is C<Failed>, see C<Message> for an
+explanation of what caused the request to fail.
+
+=back
+
 
 
 =head2 B<REQUIRED> TrafficPolicyId => Str
 
-  
+  The ID of the traffic policy that Amazon Route 53 used to create
+resource record sets in the specified hosted zone.
 
 
 =head2 B<REQUIRED> TrafficPolicyType => Str
 
-  
+  The DNS type that Amazon Route 53 assigned to all of the resource
+record sets that it created for this traffic policy instance.
 
 
 =head2 B<REQUIRED> TrafficPolicyVersion => Int
 
-  
+  The version of the traffic policy that Amazon Route 53 used to create
+resource record sets in the specified hosted zone.
 
 
 =head2 B<REQUIRED> TTL => Int
 
-  
+  The TTL that Amazon Route 53 assigned to all of the resource record
+sets that it created in the specified hosted zone.
 
 
 

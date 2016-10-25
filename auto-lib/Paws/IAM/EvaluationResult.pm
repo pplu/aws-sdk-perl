@@ -5,7 +5,7 @@ package Paws::IAM::EvaluationResult;
   has EvalDecisionDetails => (is => 'ro', isa => 'Paws::IAM::EvalDecisionDetailsType');
   has EvalResourceName => (is => 'ro', isa => 'Str');
   has MatchedStatements => (is => 'ro', isa => 'ArrayRef[Paws::IAM::Statement]');
-  has MissingContextValues => (is => 'ro', isa => 'ArrayRef[Str]');
+  has MissingContextValues => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has ResourceSpecificResults => (is => 'ro', isa => 'ArrayRef[Paws::IAM::ResourceSpecificResult]');
 1;
 
@@ -79,7 +79,7 @@ action, then the explicit deny overrides any allow, and the deny
 statement is the only entry included in the result.
 
 
-=head2 MissingContextValues => ArrayRef[Str]
+=head2 MissingContextValues => ArrayRef[Str|Undef]
 
   A list of context keys that are required by the included input policies
 but that were not provided by one of the input parameters. This list is

@@ -43,37 +43,48 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 EDNS0ClientSubnetIP => Str
 
-
+If the resolver that you specified for resolverip supports EDNS0,
+specify the IP address of a client in the applicable location.
 
 
 
 =head2 EDNS0ClientSubnetMask => Str
 
-
+If you specify an IP address for C<edns0clientsubnetip>, you can
+optionally specify the number of bits of the IP address that you want
+the checking tool to include in the DNS query. For example, if you
+specify C<192.0.2.44> for C<edns0clientsubnetip> and C<24> for
+C<edns0clientsubnetmask>, the checking tool will simulate a request
+from 192.0.2.0/24. The default value is 24 bits.
 
 
 
 =head2 B<REQUIRED> HostedZoneId => Str
 
-
+The ID of the hosted zone that you want Amazon Route 53 to simulate a
+query for.
 
 
 
 =head2 B<REQUIRED> RecordName => Str
 
-
+The name of the resource record set that you want Amazon Route 53 to
+simulate a query for.
 
 
 
 =head2 B<REQUIRED> RecordType => Str
 
-
+The type of the resource record set.
 
 Valid values are: C<"SOA">, C<"A">, C<"TXT">, C<"NS">, C<"CNAME">, C<"MX">, C<"NAPTR">, C<"PTR">, C<"SRV">, C<"SPF">, C<"AAAA">
 
 =head2 ResolverIP => Str
 
-
+If you want to simulate a request from a specific DNS resolver, specify
+the IP address for that resolver. If you omit this value,
+C<TestDnsAnswer> uses the IP address of a DNS resolver in the AWS US
+East region.
 
 
 

@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 =head1 DESCRIPTION
 
 A complex type that contains information about the Amazon S3 origin. If
-the origin is a custom origin, use the CustomOriginConfig element
+the origin is a custom origin, use the C<CustomOriginConfig> element
 instead.
 
 =head1 ATTRIBUTES
@@ -41,18 +41,30 @@ instead.
 =head2 B<REQUIRED> OriginAccessIdentity => Str
 
   The CloudFront origin access identity to associate with the origin. Use
-an origin access identity to configure the origin so that end users can
-only access objects in an Amazon S3 bucket through CloudFront. If you
-want end users to be able to access objects using either the CloudFront
-URL or the Amazon S3 URL, specify an empty OriginAccessIdentity
-element. To delete the origin access identity from an existing
-distribution, update the distribution configuration and include an
-empty OriginAccessIdentity element. To replace the origin access
-identity, update the distribution configuration and specify the new
-origin access identity. Use the format
-origin-access-identity/cloudfront/Id where Id is the value that
-CloudFront returned in the Id element when you created the origin
-access identity.
+an origin access identity to configure the origin so that viewers can
+I<only> access objects in an Amazon S3 bucket through CloudFront. The
+format of the value is:
+
+origin-access-identity/CloudFront/I<ID-of-origin-access-identity>
+
+where C< I<ID-of-origin-access-identity> > is the value that CloudFront
+returned in the C<ID> element when you created the origin access
+identity.
+
+If you want viewers to be able to access objects using either the
+CloudFront URL or the Amazon S3 URL, specify an empty
+C<OriginAccessIdentity> element.
+
+To delete the origin access identity from an existing distribution,
+update the distribution configuration and include an empty
+C<OriginAccessIdentity> element.
+
+To replace the origin access identity, update the distribution
+configuration and specify the new origin access identity.
+
+For more information about the origin access identity, see Serving
+Private Content through CloudFront in the I<Amazon CloudFront Developer
+Guide>.
 
 
 

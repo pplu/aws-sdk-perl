@@ -1,5 +1,4 @@
 package Paws::Lambda;
-  warn "Paws::Lambda is not stable / supported / entirely developed";
   use Moose;
   sub service { 'lambda' }
   sub version { '2015-03-31' }

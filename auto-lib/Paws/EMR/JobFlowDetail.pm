@@ -10,7 +10,7 @@ package Paws::EMR::JobFlowDetail;
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has ServiceRole => (is => 'ro', isa => 'Str');
   has Steps => (is => 'ro', isa => 'ArrayRef[Paws::EMR::StepDetail]');
-  has SupportedProducts => (is => 'ro', isa => 'ArrayRef[Str]');
+  has SupportedProducts => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has VisibleToAllUsers => (is => 'ro', isa => 'Bool');
 1;
 
@@ -102,7 +102,7 @@ AWS resources on your behalf.
   A list of steps run by the job flow.
 
 
-=head2 SupportedProducts => ArrayRef[Str]
+=head2 SupportedProducts => ArrayRef[Str|Undef]
 
   A list of strings set by third party software when the job flow is
 launched. If you are not using third party software to manage the job

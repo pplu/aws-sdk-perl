@@ -2,7 +2,7 @@
 package Paws::EMR::RemoveTags;
   use Moose;
   has ResourceId => (is => 'ro', isa => 'Str', required => 1);
-  has TagKeys => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has TagKeys => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -41,7 +41,7 @@ This value must be a cluster identifier.
 
 
 
-=head2 B<REQUIRED> TagKeys => ArrayRef[Str]
+=head2 B<REQUIRED> TagKeys => ArrayRef[Str|Undef]
 
 A list of tag keys to remove from a resource.
 

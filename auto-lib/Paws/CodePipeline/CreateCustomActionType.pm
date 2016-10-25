@@ -41,11 +41,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Category => Str
 
-The category of the custom action, such as a source action or a build
+The category of the custom action, such as a build action or a test
 action.
 
-Although Source is listed as a valid value, it is not currently
-functional. This value is reserved for future use.
+Although Source and Approval are listed as valid values, they are not
+currently functional. These values are reserved for future use.
 
 Valid values are: C<"Source">, C<"Build">, C<"Deploy">, C<"Test">, C<"Invoke">, C<"Approval">
 
@@ -88,7 +88,7 @@ CodeDeploy.
 
 =head2 B<REQUIRED> Version => Str
 
-The version number of the custom action.
+The version identifier of the custom action.
 
 
 

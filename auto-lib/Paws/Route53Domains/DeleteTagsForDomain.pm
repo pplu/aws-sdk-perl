@@ -2,7 +2,7 @@
 package Paws::Route53Domains::DeleteTagsForDomain;
   use Moose;
   has DomainName => (is => 'ro', isa => 'Str', required => 1);
-  has TagsToDelete => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has TagsToDelete => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -54,7 +54,7 @@ Required: Yes
 
 
 
-=head2 B<REQUIRED> TagsToDelete => ArrayRef[Str]
+=head2 B<REQUIRED> TagsToDelete => ArrayRef[Str|Undef]
 
 A list of tag keys to delete.
 

@@ -1,7 +1,7 @@
 
 package Paws::SES::ReorderReceiptRuleSet;
   use Moose;
-  has RuleNames => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has RuleNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
   has RuleSetName => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -34,7 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> RuleNames => ArrayRef[Str]
+=head2 B<REQUIRED> RuleNames => ArrayRef[Str|Undef]
 
 A list of the specified receipt rule set's receipt rules in the order
 that you want to put them.

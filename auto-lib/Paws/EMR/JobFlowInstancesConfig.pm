@@ -1,7 +1,7 @@
 package Paws::EMR::JobFlowInstancesConfig;
   use Moose;
-  has AdditionalMasterSecurityGroups => (is => 'ro', isa => 'ArrayRef[Str]');
-  has AdditionalSlaveSecurityGroups => (is => 'ro', isa => 'ArrayRef[Str]');
+  has AdditionalMasterSecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has AdditionalSlaveSecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Ec2KeyName => (is => 'ro', isa => 'Str');
   has Ec2SubnetId => (is => 'ro', isa => 'Str');
   has EmrManagedMasterSecurityGroup => (is => 'ro', isa => 'Str');
@@ -54,12 +54,12 @@ must be present).
 =head1 ATTRIBUTES
 
 
-=head2 AdditionalMasterSecurityGroups => ArrayRef[Str]
+=head2 AdditionalMasterSecurityGroups => ArrayRef[Str|Undef]
 
   A list of additional Amazon EC2 security group IDs for the master node.
 
 
-=head2 AdditionalSlaveSecurityGroups => ArrayRef[Str]
+=head2 AdditionalSlaveSecurityGroups => ArrayRef[Str|Undef]
 
   A list of additional Amazon EC2 security group IDs for the slave nodes.
 

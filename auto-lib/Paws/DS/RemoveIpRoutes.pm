@@ -1,7 +1,7 @@
 
 package Paws::DS::RemoveIpRoutes;
   use Moose;
-  has CidrIps => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has CidrIps => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
   has DirectoryId => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -34,7 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> CidrIps => ArrayRef[Str]
+=head2 B<REQUIRED> CidrIps => ArrayRef[Str|Undef]
 
 IP address blocks that you want to remove.
 

@@ -6,7 +6,7 @@ package Paws::CloudFormation::ResourceChange;
   has PhysicalResourceId => (is => 'ro', isa => 'Str');
   has Replacement => (is => 'ro', isa => 'Str');
   has ResourceType => (is => 'ro', isa => 'Str');
-  has Scope => (is => 'ro', isa => 'ArrayRef[Str]');
+  has Scope => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 1;
 
 ### main pod documentation begin ###
@@ -91,7 +91,7 @@ followed by C<Conditionally>, and then C<Never>.
   The type of AWS CloudFormation resource, such as C<AWS::S3::Bucket>.
 
 
-=head2 Scope => ArrayRef[Str]
+=head2 Scope => ArrayRef[Str|Undef]
 
   For the C<Modify> action, indicates which resource attribute is
 triggering this update, such as a change in the resource attribute's

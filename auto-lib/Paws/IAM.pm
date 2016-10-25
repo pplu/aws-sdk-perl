@@ -1444,7 +1444,7 @@ information about managing passwords, see Managing Passwords in the
 I<IAM User Guide>.
 
 
-=head2 CreateOpenIDConnectProvider(ThumbprintList => ArrayRef[Str], Url => Str, [ClientIDList => ArrayRef[Str]])
+=head2 CreateOpenIDConnectProvider(ThumbprintList => ArrayRef[Str|Undef], Url => Str, [ClientIDList => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::IAM::CreateOpenIDConnectProvider>
 
@@ -1980,7 +1980,7 @@ with the AWS service and region that were specified in the last request
 made with that key.
 
 
-=head2 GetAccountAuthorizationDetails([Filter => ArrayRef[Str], Marker => Str, MaxItems => Int])
+=head2 GetAccountAuthorizationDetails([Filter => ArrayRef[Str|Undef], Marker => Str, MaxItems => Int])
 
 Each argument is described in detail in: L<Paws::IAM::GetAccountAuthorizationDetails>
 
@@ -2019,7 +2019,7 @@ For information about limitations on IAM entities, see Limitations on
 IAM Entities in the I<IAM User Guide>.
 
 
-=head2 GetContextKeysForCustomPolicy(PolicyInputList => ArrayRef[Str])
+=head2 GetContextKeysForCustomPolicy(PolicyInputList => ArrayRef[Str|Undef])
 
 Each argument is described in detail in: L<Paws::IAM::GetContextKeysForCustomPolicy>
 
@@ -2039,7 +2039,7 @@ parameters are shown in unencoded form here for clarity, but must be
 URL encoded to be included as a part of a real HTML request.
 
 
-=head2 GetContextKeysForPrincipalPolicy(PolicySourceArn => Str, [PolicyInputList => ArrayRef[Str]])
+=head2 GetContextKeysForPrincipalPolicy(PolicySourceArn => Str, [PolicyInputList => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::IAM::GetContextKeysForPrincipalPolicy>
 
@@ -2871,7 +2871,7 @@ For information about managed policies, see Managed Policies and Inline
 Policies in the I<IAM User Guide>.
 
 
-=head2 SimulateCustomPolicy(ActionNames => ArrayRef[Str], PolicyInputList => ArrayRef[Str], [CallerArn => Str, ContextEntries => ArrayRef[L<Paws::IAM::ContextEntry>], Marker => Str, MaxItems => Int, ResourceArns => ArrayRef[Str], ResourceHandlingOption => Str, ResourceOwner => Str, ResourcePolicy => Str])
+=head2 SimulateCustomPolicy(ActionNames => ArrayRef[Str|Undef], PolicyInputList => ArrayRef[Str|Undef], [CallerArn => Str, ContextEntries => ArrayRef[L<Paws::IAM::ContextEntry>], Marker => Str, MaxItems => Int, ResourceArns => ArrayRef[Str|Undef], ResourceHandlingOption => Str, ResourceOwner => Str, ResourcePolicy => Str])
 
 Each argument is described in detail in: L<Paws::IAM::SimulateCustomPolicy>
 
@@ -2899,7 +2899,7 @@ If the output is long, you can use C<MaxItems> and C<Marker> parameters
 to paginate the results.
 
 
-=head2 SimulatePrincipalPolicy(ActionNames => ArrayRef[Str], PolicySourceArn => Str, [CallerArn => Str, ContextEntries => ArrayRef[L<Paws::IAM::ContextEntry>], Marker => Str, MaxItems => Int, PolicyInputList => ArrayRef[Str], ResourceArns => ArrayRef[Str], ResourceHandlingOption => Str, ResourceOwner => Str, ResourcePolicy => Str])
+=head2 SimulatePrincipalPolicy(ActionNames => ArrayRef[Str|Undef], PolicySourceArn => Str, [CallerArn => Str, ContextEntries => ArrayRef[L<Paws::IAM::ContextEntry>], Marker => Str, MaxItems => Int, PolicyInputList => ArrayRef[Str|Undef], ResourceArns => ArrayRef[Str|Undef], ResourceHandlingOption => Str, ResourceOwner => Str, ResourcePolicy => Str])
 
 Each argument is described in detail in: L<Paws::IAM::SimulatePrincipalPolicy>
 
@@ -3020,7 +3020,7 @@ more information about modifying passwords, see Managing Passwords in
 the I<IAM User Guide>.
 
 
-=head2 UpdateOpenIDConnectProviderThumbprint(OpenIDConnectProviderArn => Str, ThumbprintList => ArrayRef[Str])
+=head2 UpdateOpenIDConnectProviderThumbprint(OpenIDConnectProviderArn => Str, ThumbprintList => ArrayRef[Str|Undef])
 
 Each argument is described in detail in: L<Paws::IAM::UpdateOpenIDConnectProviderThumbprint>
 
@@ -3213,9 +3213,9 @@ the I<AWS CodeCommit User Guide>.
 
 Paginator methods are helpers that repetively call methods that return partial results
 
-=head2 GetAllAccountAuthorizationDetails(sub { },[Filter => ArrayRef[Str], Marker => Str, MaxItems => Int])
+=head2 GetAllAccountAuthorizationDetails(sub { },[Filter => ArrayRef[Str|Undef], Marker => Str, MaxItems => Int])
 
-=head2 GetAllAccountAuthorizationDetails([Filter => ArrayRef[Str], Marker => Str, MaxItems => Int])
+=head2 GetAllAccountAuthorizationDetails([Filter => ArrayRef[Str|Undef], Marker => Str, MaxItems => Int])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -3511,9 +3511,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::IAM::ListVirtualMFADevicesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 SimulateAllCustomPolicies(sub { },ActionNames => ArrayRef[Str], PolicyInputList => ArrayRef[Str], [CallerArn => Str, ContextEntries => ArrayRef[L<Paws::IAM::ContextEntry>], Marker => Str, MaxItems => Int, ResourceArns => ArrayRef[Str], ResourceHandlingOption => Str, ResourceOwner => Str, ResourcePolicy => Str])
+=head2 SimulateAllCustomPolicies(sub { },ActionNames => ArrayRef[Str|Undef], PolicyInputList => ArrayRef[Str|Undef], [CallerArn => Str, ContextEntries => ArrayRef[L<Paws::IAM::ContextEntry>], Marker => Str, MaxItems => Int, ResourceArns => ArrayRef[Str|Undef], ResourceHandlingOption => Str, ResourceOwner => Str, ResourcePolicy => Str])
 
-=head2 SimulateAllCustomPolicies(ActionNames => ArrayRef[Str], PolicyInputList => ArrayRef[Str], [CallerArn => Str, ContextEntries => ArrayRef[L<Paws::IAM::ContextEntry>], Marker => Str, MaxItems => Int, ResourceArns => ArrayRef[Str], ResourceHandlingOption => Str, ResourceOwner => Str, ResourcePolicy => Str])
+=head2 SimulateAllCustomPolicies(ActionNames => ArrayRef[Str|Undef], PolicyInputList => ArrayRef[Str|Undef], [CallerArn => Str, ContextEntries => ArrayRef[L<Paws::IAM::ContextEntry>], Marker => Str, MaxItems => Int, ResourceArns => ArrayRef[Str|Undef], ResourceHandlingOption => Str, ResourceOwner => Str, ResourcePolicy => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -3523,9 +3523,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::IAM::SimulatePolicyResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 SimulateAllPrincipalPolicies(sub { },ActionNames => ArrayRef[Str], PolicySourceArn => Str, [CallerArn => Str, ContextEntries => ArrayRef[L<Paws::IAM::ContextEntry>], Marker => Str, MaxItems => Int, PolicyInputList => ArrayRef[Str], ResourceArns => ArrayRef[Str], ResourceHandlingOption => Str, ResourceOwner => Str, ResourcePolicy => Str])
+=head2 SimulateAllPrincipalPolicies(sub { },ActionNames => ArrayRef[Str|Undef], PolicySourceArn => Str, [CallerArn => Str, ContextEntries => ArrayRef[L<Paws::IAM::ContextEntry>], Marker => Str, MaxItems => Int, PolicyInputList => ArrayRef[Str|Undef], ResourceArns => ArrayRef[Str|Undef], ResourceHandlingOption => Str, ResourceOwner => Str, ResourcePolicy => Str])
 
-=head2 SimulateAllPrincipalPolicies(ActionNames => ArrayRef[Str], PolicySourceArn => Str, [CallerArn => Str, ContextEntries => ArrayRef[L<Paws::IAM::ContextEntry>], Marker => Str, MaxItems => Int, PolicyInputList => ArrayRef[Str], ResourceArns => ArrayRef[Str], ResourceHandlingOption => Str, ResourceOwner => Str, ResourcePolicy => Str])
+=head2 SimulateAllPrincipalPolicies(ActionNames => ArrayRef[Str|Undef], PolicySourceArn => Str, [CallerArn => Str, ContextEntries => ArrayRef[L<Paws::IAM::ContextEntry>], Marker => Str, MaxItems => Int, PolicyInputList => ArrayRef[Str|Undef], ResourceArns => ArrayRef[Str|Undef], ResourceHandlingOption => Str, ResourceOwner => Str, ResourcePolicy => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

@@ -5,6 +5,7 @@ package Paws::ElasticBeanstalk::CreateApplicationVersion;
   has AutoCreateApplication => (is => 'ro', isa => 'Bool');
   has Description => (is => 'ro', isa => 'Str');
   has Process => (is => 'ro', isa => 'Bool');
+  has SourceBuildInformation => (is => 'ro', isa => 'Paws::ElasticBeanstalk::SourceBuildInformation');
   has SourceBundle => (is => 'ro', isa => 'Paws::ElasticBeanstalk::S3Location');
   has VersionLabel => (is => 'ro', isa => 'Str', required => 1);
 
@@ -53,10 +54,14 @@ version does not already exist:
 
 =over
 
-=item * C<true> : Automatically creates the specified application for
-this release if it does not already exist.
+=item *
 
-=item * C<false> : Throws an C<InvalidParameterValue> if the specified
+C<true> : Automatically creates the specified application for this
+release if it does not already exist.
+
+=item *
+
+C<false> : Throws an C<InvalidParameterValue> if the specified
 application for this release does not already exist.
 
 =back
@@ -78,6 +83,12 @@ Describes this version.
 Preprocesses and validates the environment manifest and configuration
 files in the source bundle. Validating configuration files can identify
 issues prior to deploying the application version to an environment.
+
+
+
+=head2 SourceBuildInformation => L<Paws::ElasticBeanstalk::SourceBuildInformation>
+
+
 
 
 

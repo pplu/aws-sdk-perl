@@ -1,7 +1,7 @@
 
 package Paws::CodeDeploy::ListDeploymentsOutput;
   use Moose;
-  has Deployments => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['Unwrapped'], xmlname => 'deployments' );
+  has Deployments => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['Unwrapped'], xmlname => 'deployments' );
   has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
 
 
@@ -14,7 +14,7 @@ Paws::CodeDeploy::ListDeploymentsOutput
 =head1 ATTRIBUTES
 
 
-=head2 Deployments => ArrayRef[Str]
+=head2 Deployments => ArrayRef[Str|Undef]
 
 A list of deployment IDs.
 

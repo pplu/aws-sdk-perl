@@ -24,6 +24,11 @@ package Paws::CognitoIdp;
     my $call_object = $self->new_with_coercions('Paws::CognitoIdp::AdminConfirmSignUp', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub AdminCreateUser {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CognitoIdp::AdminCreateUser', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub AdminDeleteUser {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CognitoIdp::AdminDeleteUser', @_);
@@ -292,7 +297,7 @@ package Paws::CognitoIdp;
   
 
 
-  sub operations { qw/AddCustomAttributes AdminConfirmSignUp AdminDeleteUser AdminDeleteUserAttributes AdminDisableUser AdminEnableUser AdminForgetDevice AdminGetDevice AdminGetUser AdminInitiateAuth AdminListDevices AdminResetUserPassword AdminRespondToAuthChallenge AdminSetUserSettings AdminUpdateDeviceStatus AdminUpdateUserAttributes AdminUserGlobalSignOut ChangePassword ConfirmDevice ConfirmForgotPassword ConfirmSignUp CreateUserImportJob CreateUserPool CreateUserPoolClient DeleteUser DeleteUserAttributes DeleteUserPool DeleteUserPoolClient DescribeUserImportJob DescribeUserPool DescribeUserPoolClient ForgetDevice ForgotPassword GetCSVHeader GetDevice GetUser GetUserAttributeVerificationCode GlobalSignOut InitiateAuth ListDevices ListUserImportJobs ListUserPoolClients ListUserPools ListUsers ResendConfirmationCode RespondToAuthChallenge SetUserSettings SignUp StartUserImportJob StopUserImportJob UpdateDeviceStatus UpdateUserAttributes UpdateUserPool UpdateUserPoolClient VerifyUserAttribute / }
+  sub operations { qw/AddCustomAttributes AdminConfirmSignUp AdminCreateUser AdminDeleteUser AdminDeleteUserAttributes AdminDisableUser AdminEnableUser AdminForgetDevice AdminGetDevice AdminGetUser AdminInitiateAuth AdminListDevices AdminResetUserPassword AdminRespondToAuthChallenge AdminSetUserSettings AdminUpdateDeviceStatus AdminUpdateUserAttributes AdminUserGlobalSignOut ChangePassword ConfirmDevice ConfirmForgotPassword ConfirmSignUp CreateUserImportJob CreateUserPool CreateUserPoolClient DeleteUser DeleteUserAttributes DeleteUserPool DeleteUserPoolClient DescribeUserImportJob DescribeUserPool DescribeUserPoolClient ForgetDevice ForgotPassword GetCSVHeader GetDevice GetUser GetUserAttributeVerificationCode GlobalSignOut InitiateAuth ListDevices ListUserImportJobs ListUserPoolClients ListUserPools ListUsers ResendConfirmationCode RespondToAuthChallenge SetUserSettings SignUp StartUserImportJob StopUserImportJob UpdateDeviceStatus UpdateUserAttributes UpdateUserPool UpdateUserPoolClient VerifyUserAttribute / }
 
 1;
 
@@ -320,14 +325,14 @@ Paws::CognitoIdp - Perl Interface to AWS Amazon Cognito Identity Provider
 
 =head1 DESCRIPTION
 
-You can create a user pool in Amazon Cognito Identity to manage
-directories and users. You can authenticate a user to obtain tokens
-related to user identity and access policies.
+Using the Amazon Cognito Your User Pools API, you can create a user
+pool to manage directories and users. You can authenticate a user to
+obtain tokens related to user identity and access policies.
 
 This API reference provides information about user pools in Amazon
-Cognito Identity.
+Cognito Your User Pools.
 
-For more information, see Amazon Cognito.
+For more information, see the Amazon Cognito Documentation.
 
 =head1 METHODS
 
@@ -350,6 +355,21 @@ Returns: a L<Paws::CognitoIdp::AdminConfirmSignUpResponse> instance
 code. Works on any user.
 
 
+=head2 AdminCreateUser(Username => Str, UserPoolId => Str, [DesiredDeliveryMediums => ArrayRef[Str|Undef], ForceAliasCreation => Bool, MessageAction => Str, TemporaryPassword => Str, UserAttributes => ArrayRef[L<Paws::CognitoIdp::AttributeType>], ValidationData => ArrayRef[L<Paws::CognitoIdp::AttributeType>]])
+
+Each argument is described in detail in: L<Paws::CognitoIdp::AdminCreateUser>
+
+Returns: a L<Paws::CognitoIdp::AdminCreateUserResponse> instance
+
+  Creates a new user in the specified user pool and sends a welcome
+message via email or phone (SMS). This message is based on a template
+that you configured in your call to CreateUserPool or UpdateUserPool.
+This template includes your custom sign-up instructions and
+placeholders for user name and temporary password.
+
+Requires developer credentials.
+
+
 =head2 AdminDeleteUser(Username => Str, UserPoolId => Str)
 
 Each argument is described in detail in: L<Paws::CognitoIdp::AdminDeleteUser>
@@ -359,7 +379,7 @@ Returns: nothing
   Deletes a user as an administrator. Works on any user.
 
 
-=head2 AdminDeleteUserAttributes(UserAttributeNames => ArrayRef[Str], Username => Str, UserPoolId => Str)
+=head2 AdminDeleteUserAttributes(UserAttributeNames => ArrayRef[Str|Undef], Username => Str, UserPoolId => Str)
 
 Each argument is described in detail in: L<Paws::CognitoIdp::AdminDeleteUserAttributes>
 
@@ -548,7 +568,7 @@ Returns: a L<Paws::CognitoIdp::CreateUserImportJobResponse> instance
   Creates the user import job.
 
 
-=head2 CreateUserPool(PoolName => Str, [AliasAttributes => ArrayRef[Str], AutoVerifiedAttributes => ArrayRef[Str], DeviceConfiguration => L<Paws::CognitoIdp::DeviceConfigurationType>, EmailConfiguration => L<Paws::CognitoIdp::EmailConfigurationType>, EmailVerificationMessage => Str, EmailVerificationSubject => Str, LambdaConfig => L<Paws::CognitoIdp::LambdaConfigType>, MfaConfiguration => Str, Policies => L<Paws::CognitoIdp::UserPoolPolicyType>, SmsAuthenticationMessage => Str, SmsConfiguration => L<Paws::CognitoIdp::SmsConfigurationType>, SmsVerificationMessage => Str])
+=head2 CreateUserPool(PoolName => Str, [AdminCreateUserConfig => L<Paws::CognitoIdp::AdminCreateUserConfigType>, AliasAttributes => ArrayRef[Str|Undef], AutoVerifiedAttributes => ArrayRef[Str|Undef], DeviceConfiguration => L<Paws::CognitoIdp::DeviceConfigurationType>, EmailConfiguration => L<Paws::CognitoIdp::EmailConfigurationType>, EmailVerificationMessage => Str, EmailVerificationSubject => Str, LambdaConfig => L<Paws::CognitoIdp::LambdaConfigType>, MfaConfiguration => Str, Policies => L<Paws::CognitoIdp::UserPoolPolicyType>, SmsAuthenticationMessage => Str, SmsConfiguration => L<Paws::CognitoIdp::SmsConfigurationType>, SmsVerificationMessage => Str])
 
 Each argument is described in detail in: L<Paws::CognitoIdp::CreateUserPool>
 
@@ -558,7 +578,7 @@ Returns: a L<Paws::CognitoIdp::CreateUserPoolResponse> instance
 the pool.
 
 
-=head2 CreateUserPoolClient(ClientName => Str, UserPoolId => Str, [ExplicitAuthFlows => ArrayRef[Str], GenerateSecret => Bool, ReadAttributes => ArrayRef[Str], RefreshTokenValidity => Int, WriteAttributes => ArrayRef[Str]])
+=head2 CreateUserPoolClient(ClientName => Str, UserPoolId => Str, [ExplicitAuthFlows => ArrayRef[Str|Undef], GenerateSecret => Bool, ReadAttributes => ArrayRef[Str|Undef], RefreshTokenValidity => Int, WriteAttributes => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::CognitoIdp::CreateUserPoolClient>
 
@@ -576,7 +596,7 @@ Returns: nothing
   Allows a user to delete one's self.
 
 
-=head2 DeleteUserAttributes(UserAttributeNames => ArrayRef[Str], [AccessToken => Str])
+=head2 DeleteUserAttributes(UserAttributeNames => ArrayRef[Str|Undef], [AccessToken => Str])
 
 Each argument is described in detail in: L<Paws::CognitoIdp::DeleteUserAttributes>
 
@@ -742,7 +762,7 @@ Returns: a L<Paws::CognitoIdp::ListUserPoolsResponse> instance
   Lists the user pools associated with an AWS account.
 
 
-=head2 ListUsers(UserPoolId => Str, [AttributesToGet => ArrayRef[Str], Filter => Str, Limit => Int, PaginationToken => Str])
+=head2 ListUsers(UserPoolId => Str, [AttributesToGet => ArrayRef[Str|Undef], Filter => Str, Limit => Int, PaginationToken => Str])
 
 Each argument is described in detail in: L<Paws::CognitoIdp::ListUsers>
 
@@ -828,7 +848,7 @@ Returns: a L<Paws::CognitoIdp::UpdateUserAttributesResponse> instance
   Allows a user to update a specific attribute (one at a time).
 
 
-=head2 UpdateUserPool(UserPoolId => Str, [AutoVerifiedAttributes => ArrayRef[Str], DeviceConfiguration => L<Paws::CognitoIdp::DeviceConfigurationType>, EmailConfiguration => L<Paws::CognitoIdp::EmailConfigurationType>, EmailVerificationMessage => Str, EmailVerificationSubject => Str, LambdaConfig => L<Paws::CognitoIdp::LambdaConfigType>, MfaConfiguration => Str, Policies => L<Paws::CognitoIdp::UserPoolPolicyType>, SmsAuthenticationMessage => Str, SmsConfiguration => L<Paws::CognitoIdp::SmsConfigurationType>, SmsVerificationMessage => Str])
+=head2 UpdateUserPool(UserPoolId => Str, [AdminCreateUserConfig => L<Paws::CognitoIdp::AdminCreateUserConfigType>, AutoVerifiedAttributes => ArrayRef[Str|Undef], DeviceConfiguration => L<Paws::CognitoIdp::DeviceConfigurationType>, EmailConfiguration => L<Paws::CognitoIdp::EmailConfigurationType>, EmailVerificationMessage => Str, EmailVerificationSubject => Str, LambdaConfig => L<Paws::CognitoIdp::LambdaConfigType>, MfaConfiguration => Str, Policies => L<Paws::CognitoIdp::UserPoolPolicyType>, SmsAuthenticationMessage => Str, SmsConfiguration => L<Paws::CognitoIdp::SmsConfigurationType>, SmsVerificationMessage => Str])
 
 Each argument is described in detail in: L<Paws::CognitoIdp::UpdateUserPool>
 
@@ -837,7 +857,7 @@ Returns: a L<Paws::CognitoIdp::UpdateUserPoolResponse> instance
   Updates the specified user pool with the specified attributes.
 
 
-=head2 UpdateUserPoolClient(ClientId => Str, UserPoolId => Str, [ClientName => Str, ExplicitAuthFlows => ArrayRef[Str], ReadAttributes => ArrayRef[Str], RefreshTokenValidity => Int, WriteAttributes => ArrayRef[Str]])
+=head2 UpdateUserPoolClient(ClientId => Str, UserPoolId => Str, [ClientName => Str, ExplicitAuthFlows => ArrayRef[Str|Undef], ReadAttributes => ArrayRef[Str|Undef], RefreshTokenValidity => Int, WriteAttributes => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::CognitoIdp::UpdateUserPoolClient>
 

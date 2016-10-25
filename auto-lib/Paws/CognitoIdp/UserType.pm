@@ -2,6 +2,7 @@ package Paws::CognitoIdp::UserType;
   use Moose;
   has Attributes => (is => 'ro', isa => 'ArrayRef[Paws::CognitoIdp::AttributeType]');
   has Enabled => (is => 'ro', isa => 'Bool');
+  has MFAOptions => (is => 'ro', isa => 'ArrayRef[Paws::CognitoIdp::MFAOptionType]');
   has UserCreateDate => (is => 'ro', isa => 'Str');
   has UserLastModifiedDate => (is => 'ro', isa => 'Str');
   has Username => (is => 'ro', isa => 'Str');
@@ -51,6 +52,11 @@ The user type.
   Specifies whether the user is enabled.
 
 
+=head2 MFAOptions => ArrayRef[L<Paws::CognitoIdp::MFAOptionType>]
+
+  The MFA options for the user.
+
+
 =head2 UserCreateDate => Str
 
   The creation date of the user.
@@ -72,16 +78,25 @@ The user type.
 
 =over
 
-=item * UNCONFIRMED - User has been created but not confirmed.
+=item *
 
-=item * CONFIRMED - User has been confirmed.
+UNCONFIRMED - User has been created but not confirmed.
 
-=item * ARCHIVED - User is no longer active.
+=item *
 
-=item * COMPROMISED - User is disabled due to a potential security
-threat.
+CONFIRMED - User has been confirmed.
 
-=item * UNKNOWN - User status is not known.
+=item *
+
+ARCHIVED - User is no longer active.
+
+=item *
+
+COMPROMISED - User is disabled due to a potential security threat.
+
+=item *
+
+UNKNOWN - User status is not known.
 
 =back
 

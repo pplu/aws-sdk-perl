@@ -2,7 +2,7 @@
 package Paws::DS::CreateConditionalForwarder;
   use Moose;
   has DirectoryId => (is => 'ro', isa => 'Str', required => 1);
-  has DnsIpAddrs => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has DnsIpAddrs => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
   has RemoteDomainName => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -42,7 +42,7 @@ conditional forwarder.
 
 
 
-=head2 B<REQUIRED> DnsIpAddrs => ArrayRef[Str]
+=head2 B<REQUIRED> DnsIpAddrs => ArrayRef[Str|Undef]
 
 The IP addresses of the remote DNS server associated with
 RemoteDomainName.

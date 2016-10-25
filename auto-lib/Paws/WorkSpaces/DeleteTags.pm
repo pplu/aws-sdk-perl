@@ -2,7 +2,7 @@
 package Paws::WorkSpaces::DeleteTags;
   use Moose;
   has ResourceId => (is => 'ro', isa => 'Str', required => 1);
-  has TagKeys => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has TagKeys => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -40,7 +40,7 @@ The resource ID of the request.
 
 
 
-=head2 B<REQUIRED> TagKeys => ArrayRef[Str]
+=head2 B<REQUIRED> TagKeys => ArrayRef[Str|Undef]
 
 The tag keys of the request.
 

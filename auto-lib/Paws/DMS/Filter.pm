@@ -1,7 +1,7 @@
 package Paws::DMS::Filter;
   use Moose;
   has Name => (is => 'ro', isa => 'Str', required => 1);
-  has Values => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has Values => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +42,7 @@ This class has no description
   The name of the filter.
 
 
-=head2 B<REQUIRED> Values => ArrayRef[Str]
+=head2 B<REQUIRED> Values => ArrayRef[Str|Undef]
 
   The filter value.
 

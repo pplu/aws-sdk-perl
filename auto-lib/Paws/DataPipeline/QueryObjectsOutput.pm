@@ -2,7 +2,7 @@
 package Paws::DataPipeline::QueryObjectsOutput;
   use Moose;
   has HasMoreResults => (is => 'ro', isa => 'Bool', traits => ['Unwrapped'], xmlname => 'hasMoreResults' );
-  has Ids => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['Unwrapped'], xmlname => 'ids' );
+  has Ids => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['Unwrapped'], xmlname => 'ids' );
   has Marker => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'marker' );
 
 
@@ -22,7 +22,7 @@ subsequent call.
 
 
 
-=head2 Ids => ArrayRef[Str]
+=head2 Ids => ArrayRef[Str|Undef]
 
 The identifiers that match the query selectors.
 

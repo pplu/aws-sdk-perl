@@ -2,7 +2,7 @@
 package Paws::EC2::DescribeSecurityGroupReferences;
   use Moose;
   has DryRun => (is => 'ro', isa => 'Bool');
-  has GroupId => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has GroupId => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -43,7 +43,7 @@ DryRunOperation. Otherwise, it is UnauthorizedOperation.
 
 
 
-=head2 B<REQUIRED> GroupId => ArrayRef[Str]
+=head2 B<REQUIRED> GroupId => ArrayRef[Str|Undef]
 
 One or more security group IDs in your account.
 

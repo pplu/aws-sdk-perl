@@ -5,7 +5,7 @@ package Paws::EC2::DescribePrefixLists;
   has Filters => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
   has MaxResults => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
-  has PrefixListIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'PrefixListId' );
+  has PrefixListIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'PrefixListId' );
 
   use MooseX::ClassAttribute;
 
@@ -83,7 +83,7 @@ from a prior call.)
 
 
 
-=head2 PrefixListIds => ArrayRef[Str]
+=head2 PrefixListIds => ArrayRef[Str|Undef]
 
 One or more prefix list IDs.
 

@@ -7,7 +7,7 @@ package Paws::RedShift::CreateCluster;
   has AvailabilityZone => (is => 'ro', isa => 'Str');
   has ClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has ClusterParameterGroupName => (is => 'ro', isa => 'Str');
-  has ClusterSecurityGroups => (is => 'ro', isa => 'ArrayRef[Str]');
+  has ClusterSecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has ClusterSubnetGroupName => (is => 'ro', isa => 'Str');
   has ClusterType => (is => 'ro', isa => 'Str');
   has ClusterVersion => (is => 'ro', isa => 'Str');
@@ -17,7 +17,7 @@ package Paws::RedShift::CreateCluster;
   has EnhancedVpcRouting => (is => 'ro', isa => 'Bool');
   has HsmClientCertificateIdentifier => (is => 'ro', isa => 'Str');
   has HsmConfigurationIdentifier => (is => 'ro', isa => 'Str');
-  has IamRoles => (is => 'ro', isa => 'ArrayRef[Str]');
+  has IamRoles => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has KmsKeyId => (is => 'ro', isa => 'Str');
   has MasterUsername => (is => 'ro', isa => 'Str', required => 1);
   has MasterUserPassword => (is => 'ro', isa => 'Str', required => 1);
@@ -27,7 +27,7 @@ package Paws::RedShift::CreateCluster;
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
   has PubliclyAccessible => (is => 'ro', isa => 'Bool');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::Tag]');
-  has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
   use MooseX::ClassAttribute;
 
@@ -177,7 +177,7 @@ Cannot end with a hyphen or contain two consecutive hyphens.
 
 
 
-=head2 ClusterSecurityGroups => ArrayRef[Str]
+=head2 ClusterSecurityGroups => ArrayRef[Str|Undef]
 
 A list of security groups to be associated with this cluster.
 
@@ -311,7 +311,7 @@ keys in an HSM.
 
 
 
-=head2 IamRoles => ArrayRef[Str]
+=head2 IamRoles => ArrayRef[Str|Undef]
 
 A list of AWS Identity and Access Management (IAM) roles that can be
 used by the cluster to access other AWS services. You must supply the
@@ -465,7 +465,7 @@ A list of tag instances.
 
 
 
-=head2 VpcSecurityGroupIds => ArrayRef[Str]
+=head2 VpcSecurityGroupIds => ArrayRef[Str|Undef]
 
 A list of Virtual Private Cloud (VPC) security groups to be associated
 with the cluster.

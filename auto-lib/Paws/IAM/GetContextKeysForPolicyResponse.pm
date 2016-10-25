@@ -1,7 +1,7 @@
 
 package Paws::IAM::GetContextKeysForPolicyResponse;
   use Moose;
-  has ContextKeyNames => (is => 'ro', isa => 'ArrayRef[Str]');
+  has ContextKeyNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
 1;
 
@@ -14,7 +14,7 @@ Paws::IAM::GetContextKeysForPolicyResponse
 =head1 ATTRIBUTES
 
 
-=head2 ContextKeyNames => ArrayRef[Str]
+=head2 ContextKeyNames => ArrayRef[Str|Undef]
 
 The list of context keys that are referenced in the input policies.
 

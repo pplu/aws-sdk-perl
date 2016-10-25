@@ -300,7 +300,7 @@ triggers, new or updated targets might not be immediately invoked.
 Please allow a short period of time for changes to take effect.
 
 
-=head2 RemoveTargets(Ids => ArrayRef[Str], Rule => Str)
+=head2 RemoveTargets(Ids => ArrayRef[Str|Undef], Rule => Str)
 
 Each argument is described in detail in: L<Paws::CloudWatchEvents::RemoveTargets>
 

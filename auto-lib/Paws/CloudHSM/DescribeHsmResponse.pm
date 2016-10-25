@@ -7,7 +7,7 @@ package Paws::CloudHSM::DescribeHsmResponse;
   has HsmArn => (is => 'ro', isa => 'Str');
   has HsmType => (is => 'ro', isa => 'Str');
   has IamRoleArn => (is => 'ro', isa => 'Str');
-  has Partitions => (is => 'ro', isa => 'ArrayRef[Str]');
+  has Partitions => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has SerialNumber => (is => 'ro', isa => 'Str');
   has ServerCertLastUpdated => (is => 'ro', isa => 'Str');
   has ServerCertUri => (is => 'ro', isa => 'Str');
@@ -70,7 +70,7 @@ The ARN of the IAM role assigned to the HSM.
 
 
 
-=head2 Partitions => ArrayRef[Str]
+=head2 Partitions => ArrayRef[Str|Undef]
 
 The list of partitions on the HSM.
 

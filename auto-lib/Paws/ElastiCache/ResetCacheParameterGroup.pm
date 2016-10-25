@@ -44,16 +44,17 @@ The name of the cache parameter group to reset.
 =head2 ParameterNameValues => ArrayRef[L<Paws::ElastiCache::ParameterNameValue>]
 
 An array of parameter names to reset to their default values. If
-I<ResetAllParameters> is I<false>, you must specify the name of at
+C<ResetAllParameters> is C<true>, do not use C<ParameterNameValues>. If
+C<ResetAllParameters> is C<false>, you must specify the name of at
 least one parameter to reset.
 
 
 
 =head2 ResetAllParameters => Bool
 
-If I<true>, all parameters in the cache parameter group will be reset
-to their default values. If I<false>, only the parameters listed by
-I<ParameterNameValues> are reset to their default values.
+If C<true>, all parameters in the cache parameter group are reset to
+their default values. If C<false>, only the parameters listed by
+C<ParameterNameValues> are reset to their default values.
 
 Valid values: C<true> | C<false>
 

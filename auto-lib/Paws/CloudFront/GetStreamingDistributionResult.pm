@@ -18,7 +18,7 @@ Paws::CloudFront::GetStreamingDistributionResult
 =head2 ETag => Str
 
 The current version of the streaming distribution's information. For
-example: E2QWRUHAPOMQZL.
+example: C<E2QWRUHAPOMQZL>.
 
 
 

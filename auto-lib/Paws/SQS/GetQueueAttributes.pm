@@ -1,7 +1,7 @@
 
 package Paws::SQS::GetQueueAttributes;
   use Moose;
-  has AttributeNames => (is => 'ro', isa => 'ArrayRef[Str]');
+  has AttributeNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has QueueUrl => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -34,7 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 AttributeNames => ArrayRef[Str]
+=head2 AttributeNames => ArrayRef[Str|Undef]
 
 A list of attributes to retrieve information for. The following
 attributes are supported:

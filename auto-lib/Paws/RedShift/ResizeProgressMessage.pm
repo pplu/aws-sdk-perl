@@ -4,9 +4,9 @@ package Paws::RedShift::ResizeProgressMessage;
   has AvgResizeRateInMegaBytesPerSecond => (is => 'ro', isa => 'Num');
   has ElapsedTimeInSeconds => (is => 'ro', isa => 'Int');
   has EstimatedTimeToCompletionInSeconds => (is => 'ro', isa => 'Int');
-  has ImportTablesCompleted => (is => 'ro', isa => 'ArrayRef[Str]');
-  has ImportTablesInProgress => (is => 'ro', isa => 'ArrayRef[Str]');
-  has ImportTablesNotStarted => (is => 'ro', isa => 'ArrayRef[Str]');
+  has ImportTablesCompleted => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has ImportTablesInProgress => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has ImportTablesNotStarted => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has ProgressInMegaBytes => (is => 'ro', isa => 'Int');
   has Status => (is => 'ro', isa => 'Str');
   has TargetClusterType => (is => 'ro', isa => 'Str');
@@ -50,7 +50,7 @@ operation is complete, this value will be 0.
 
 
 
-=head2 ImportTablesCompleted => ArrayRef[Str]
+=head2 ImportTablesCompleted => ArrayRef[Str|Undef]
 
 The names of tables that have been completely imported .
 
@@ -58,7 +58,7 @@ Valid Values: List of table names.
 
 
 
-=head2 ImportTablesInProgress => ArrayRef[Str]
+=head2 ImportTablesInProgress => ArrayRef[Str|Undef]
 
 The names of tables that are being currently imported.
 
@@ -66,7 +66,7 @@ Valid Values: List of table names.
 
 
 
-=head2 ImportTablesNotStarted => ArrayRef[Str]
+=head2 ImportTablesNotStarted => ArrayRef[Str|Undef]
 
 The names of tables that have not been yet imported.
 

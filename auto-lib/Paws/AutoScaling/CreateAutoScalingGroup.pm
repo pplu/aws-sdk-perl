@@ -2,21 +2,21 @@
 package Paws::AutoScaling::CreateAutoScalingGroup;
   use Moose;
   has AutoScalingGroupName => (is => 'ro', isa => 'Str', required => 1);
-  has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str]');
+  has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has DefaultCooldown => (is => 'ro', isa => 'Int');
   has DesiredCapacity => (is => 'ro', isa => 'Int');
   has HealthCheckGracePeriod => (is => 'ro', isa => 'Int');
   has HealthCheckType => (is => 'ro', isa => 'Str');
   has InstanceId => (is => 'ro', isa => 'Str');
   has LaunchConfigurationName => (is => 'ro', isa => 'Str');
-  has LoadBalancerNames => (is => 'ro', isa => 'ArrayRef[Str]');
+  has LoadBalancerNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has MaxSize => (is => 'ro', isa => 'Int', required => 1);
   has MinSize => (is => 'ro', isa => 'Int', required => 1);
   has NewInstancesProtectedFromScaleIn => (is => 'ro', isa => 'Bool');
   has PlacementGroup => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::AutoScaling::Tag]');
-  has TargetGroupARNs => (is => 'ro', isa => 'ArrayRef[Str]');
-  has TerminationPolicies => (is => 'ro', isa => 'ArrayRef[Str]');
+  has TargetGroupARNs => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has TerminationPolicies => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has VPCZoneIdentifier => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
@@ -56,7 +56,7 @@ your AWS account.
 
 
 
-=head2 AvailabilityZones => ArrayRef[Str]
+=head2 AvailabilityZones => ArrayRef[Str|Undef]
 
 One or more Availability Zones for the group. This parameter is
 optional if you specify one or more subnets.
@@ -129,7 +129,7 @@ instance instead of a launch configuration.
 
 
 
-=head2 LoadBalancerNames => ArrayRef[Str]
+=head2 LoadBalancerNames => ArrayRef[Str|Undef]
 
 One or more Classic load balancers. To specify an Application load
 balancer, use C<TargetGroupARNs> instead.
@@ -175,13 +175,13 @@ the I<Auto Scaling User Guide>.
 
 
 
-=head2 TargetGroupARNs => ArrayRef[Str]
+=head2 TargetGroupARNs => ArrayRef[Str|Undef]
 
 The Amazon Resource Names (ARN) of the target groups.
 
 
 
-=head2 TerminationPolicies => ArrayRef[Str]
+=head2 TerminationPolicies => ArrayRef[Str|Undef]
 
 One or more termination policies used to select the instance to
 terminate. These policies are executed in the order that they are

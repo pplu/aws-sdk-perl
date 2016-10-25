@@ -49,12 +49,17 @@ data types:
 
 =over
 
-=item * XssMatchSetUpdate: Contains C<Action> and C<XssMatchTuple>
+=item *
 
-=item * XssMatchTuple: Contains C<FieldToMatch> and
-C<TextTransformation>
+XssMatchSetUpdate: Contains C<Action> and C<XssMatchTuple>
 
-=item * FieldToMatch: Contains C<Data> and C<Type>
+=item *
+
+XssMatchTuple: Contains C<FieldToMatch> and C<TextTransformation>
+
+=item *
+
+FieldToMatch: Contains C<Data> and C<Type>
 
 =back
 

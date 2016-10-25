@@ -24,7 +24,7 @@ The distribution's information.
 =head2 ETag => Str
 
 The current version of the distribution's information. For example:
-E2QWRUHAPOMQZL.
+C<E2QWRUHAPOMQZL>.
 
 
 

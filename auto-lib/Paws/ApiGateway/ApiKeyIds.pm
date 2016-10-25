@@ -1,8 +1,8 @@
 
 package Paws::ApiGateway::ApiKeyIds;
   use Moose;
-  has Ids => (is => 'ro', isa => 'ArrayRef[Str]');
-  has Warnings => (is => 'ro', isa => 'ArrayRef[Str]');
+  has Ids => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has Warnings => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
 1;
 
@@ -15,13 +15,13 @@ Paws::ApiGateway::ApiKeyIds
 =head1 ATTRIBUTES
 
 
-=head2 Ids => ArrayRef[Str]
+=head2 Ids => ArrayRef[Str|Undef]
 
 A list of all the ApiKey identifiers.
 
 
 
-=head2 Warnings => ArrayRef[Str]
+=head2 Warnings => ArrayRef[Str|Undef]
 
 A list of warning messages.
 

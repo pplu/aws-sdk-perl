@@ -3,7 +3,7 @@ package Paws::SES::ReceiptRule;
   has Actions => (is => 'ro', isa => 'ArrayRef[Paws::SES::ReceiptAction]');
   has Enabled => (is => 'ro', isa => 'Bool');
   has Name => (is => 'ro', isa => 'Str', required => 1);
-  has Recipients => (is => 'ro', isa => 'ArrayRef[Str]');
+  has Recipients => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has ScanEnabled => (is => 'ro', isa => 'Bool');
   has TlsPolicy => (is => 'ro', isa => 'Str');
 1;
@@ -86,7 +86,7 @@ Contain less than 64 characters.
 
 
 
-=head2 Recipients => ArrayRef[Str]
+=head2 Recipients => ArrayRef[Str|Undef]
 
   The recipient domains and email addresses to which the receipt rule
 applies. If this field is not specified, this rule will match all

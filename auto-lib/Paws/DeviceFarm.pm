@@ -796,7 +796,7 @@ Each argument is described in detail in: L<Paws::DeviceFarm::ListRuns>
 
 Returns: a L<Paws::DeviceFarm::ListRunsResult> instance
 
-  Gets information about runs.
+  Gets information about runs, given an AWS Device Farm project ARN.
 
 
 =head2 ListSamples(Arn => Str, [NextToken => Str])
@@ -805,7 +805,7 @@ Each argument is described in detail in: L<Paws::DeviceFarm::ListSamples>
 
 Returns: a L<Paws::DeviceFarm::ListSamplesResult> instance
 
-  Gets information about samples.
+  Gets information about samples, given an AWS Device Farm project ARN
 
 
 =head2 ListSuites(Arn => Str, [NextToken => Str])
@@ -841,7 +841,7 @@ Each argument is described in detail in: L<Paws::DeviceFarm::ListUploads>
 
 Returns: a L<Paws::DeviceFarm::ListUploadsResult> instance
 
-  Gets information about uploads.
+  Gets information about uploads, given an AWS Device Farm project ARN.
 
 
 =head2 PurchaseOffering([OfferingId => Str, Quantity => Int])

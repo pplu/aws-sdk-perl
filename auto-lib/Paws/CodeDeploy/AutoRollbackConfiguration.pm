@@ -1,7 +1,7 @@
 package Paws::CodeDeploy::AutoRollbackConfiguration;
   use Moose;
   has Enabled => (is => 'ro', isa => 'Bool', xmlname => 'enabled', request_name => 'enabled', traits => ['Unwrapped','NameInRequest']);
-  has Events => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'events', request_name => 'events', traits => ['Unwrapped','NameInRequest']);
+  has Events => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'events', request_name => 'events', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -45,7 +45,7 @@ complete successfully.
 currently enabled.
 
 
-=head2 Events => ArrayRef[Str]
+=head2 Events => ArrayRef[Str|Undef]
 
   The event type or types that trigger a rollback.
 

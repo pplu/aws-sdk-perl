@@ -37,7 +37,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> CacheSecurityGroupName => Str
 
-The cache security group which will allow network ingress.
+The cache security group that allows network ingress.
 
 
 

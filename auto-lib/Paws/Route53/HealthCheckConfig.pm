@@ -1,7 +1,7 @@
 package Paws::Route53::HealthCheckConfig;
   use Moose;
   has AlarmIdentifier => (is => 'ro', isa => 'Paws::Route53::AlarmIdentifier');
-  has ChildHealthChecks => (is => 'ro', isa => 'ArrayRef[Str]');
+  has ChildHealthChecks => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has EnableSNI => (is => 'ro', isa => 'Bool');
   has FailureThreshold => (is => 'ro', isa => 'Int');
   has FullyQualifiedDomainName => (is => 'ro', isa => 'Str');
@@ -11,7 +11,7 @@ package Paws::Route53::HealthCheckConfig;
   has IPAddress => (is => 'ro', isa => 'Str');
   has MeasureLatency => (is => 'ro', isa => 'Bool');
   has Port => (is => 'ro', isa => 'Int');
-  has Regions => (is => 'ro', isa => 'ArrayRef[Str]');
+  has Regions => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has RequestInterval => (is => 'ro', isa => 'Int');
   has ResourcePath => (is => 'ro', isa => 'Str');
   has SearchString => (is => 'ro', isa => 'Str');
@@ -58,7 +58,7 @@ Amazon Route 53 health checkers to use to determine whether this health
 check is healthy.
 
 
-=head2 ChildHealthChecks => ArrayRef[Str]
+=head2 ChildHealthChecks => ArrayRef[Str|Undef]
 
   (CALCULATED Health Checks Only) A complex type that contains one
 C<ChildHealthCheck> element for each health check that you want to
@@ -274,7 +274,7 @@ health checks. Specify a value for Port only when you specify a value
 for C<IPAddress>.
 
 
-=head2 Regions => ArrayRef[Str]
+=head2 Regions => ArrayRef[Str|Undef]
 
   A complex type that contains one Region element for each region from
 which you want Amazon Route 53 health checkers to check the specified

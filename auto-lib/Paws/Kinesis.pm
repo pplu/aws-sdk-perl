@@ -324,7 +324,7 @@ oldest shard.
 DescribeStream has a limit of 10 transactions per second per account.
 
 
-=head2 DisableEnhancedMonitoring(ShardLevelMetrics => ArrayRef[Str], StreamName => Str)
+=head2 DisableEnhancedMonitoring(ShardLevelMetrics => ArrayRef[Str|Undef], StreamName => Str)
 
 Each argument is described in detail in: L<Paws::Kinesis::DisableEnhancedMonitoring>
 
@@ -333,7 +333,7 @@ Returns: a L<Paws::Kinesis::EnhancedMonitoringOutput> instance
   Disables enhanced monitoring.
 
 
-=head2 EnableEnhancedMonitoring(ShardLevelMetrics => ArrayRef[Str], StreamName => Str)
+=head2 EnableEnhancedMonitoring(ShardLevelMetrics => ArrayRef[Str|Undef], StreamName => Str)
 
 Each argument is described in detail in: L<Paws::Kinesis::EnableEnhancedMonitoring>
 
@@ -689,7 +689,7 @@ can be modified using the DecreaseStreamRetentionPeriod and
 IncreaseStreamRetentionPeriod operations.
 
 
-=head2 RemoveTagsFromStream(StreamName => Str, TagKeys => ArrayRef[Str])
+=head2 RemoveTagsFromStream(StreamName => Str, TagKeys => ArrayRef[Str|Undef])
 
 Each argument is described in detail in: L<Paws::Kinesis::RemoveTagsFromStream>
 

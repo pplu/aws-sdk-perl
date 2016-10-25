@@ -1,7 +1,7 @@
 package Paws::ELB::ListenerDescription;
   use Moose;
   has Listener => (is => 'ro', isa => 'Paws::ELB::Listener');
-  has PolicyNames => (is => 'ro', isa => 'ArrayRef[Str]');
+  has PolicyNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +42,7 @@ The policies enabled for a listener.
   
 
 
-=head2 PolicyNames => ArrayRef[Str]
+=head2 PolicyNames => ArrayRef[Str|Undef]
 
   The policies. If there are no policies enabled, the list is empty.
 

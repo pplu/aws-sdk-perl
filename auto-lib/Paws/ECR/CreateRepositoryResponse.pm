@@ -15,7 +15,7 @@ Paws::ECR::CreateRepositoryResponse
 
 =head2 Repository => L<Paws::ECR::Repository>
 
-
+The repository that was created.
 
 
 

@@ -1,7 +1,7 @@
 
 package Paws::OpsWorks::DescribeRdsDbInstances;
   use Moose;
-  has RdsDbInstanceArns => (is => 'ro', isa => 'ArrayRef[Str]');
+  has RdsDbInstanceArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has StackId => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -34,7 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 RdsDbInstanceArns => ArrayRef[Str]
+=head2 RdsDbInstanceArns => ArrayRef[Str|Undef]
 
 An array containing the ARNs of the instances to be described.
 

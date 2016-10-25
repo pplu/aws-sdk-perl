@@ -2,7 +2,7 @@ package Paws::CloudFront;
   warn "Paws::CloudFront is not stable / supported / entirely developed";
   use Moose;
   sub service { 'cloudfront' }
-  sub version { '2016-09-07' }
+  sub version { '2016-09-29' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);
   has retry => (is => 'ro', isa => 'HashRef', default => sub {
@@ -289,11 +289,11 @@ Paws::CloudFront - Perl Interface to AWS Amazon CloudFront
 
 Amazon CloudFront
 
-Amazon CloudFront is a global content delivery network (CDN) service
-that accelerates delivery of your websites, APIs, video content or
-other web assets. It integrates with other Amazon Web Services products
-to give developers and businesses an easy way to accelerate content to
-end users with no minimum usage commitments.
+This is the I<Amazon CloudFront API Reference>. This guide is for
+developers who need detailed information about the CloudFront API
+actions, data types, and errors. For detailed information about
+CloudFront features and their associated API calls, see the I<Amazon
+CloudFront Developer Guide>.
 
 =head1 METHODS
 
@@ -303,7 +303,12 @@ Each argument is described in detail in: L<Paws::CloudFront::CreateCloudFrontOri
 
 Returns: a L<Paws::CloudFront::CreateCloudFrontOriginAccessIdentityResult> instance
 
-  Create a new origin access identity.
+  Creates a new origin access identity. If you're using Amazon S3 for
+your origin, you can use an origin access identity to require users to
+access your content using a CloudFront URL instead of the Amazon S3
+URL. For more information about how to use origin access identities,
+see Serving Private Content through CloudFront in the I<Amazon
+CloudFront Developer Guide>.
 
 
 =head2 CreateDistribution(DistributionConfig => L<Paws::CloudFront::DistributionConfig>)
@@ -312,7 +317,8 @@ Each argument is described in detail in: L<Paws::CloudFront::CreateDistribution>
 
 Returns: a L<Paws::CloudFront::CreateDistributionResult> instance
 
-  Create a new distribution.
+  Creates a new web distribution. Send a C<GET> request to the
+C</I<CloudFront API version>/distribution>/C<distribution ID> resource.
 
 
 =head2 CreateDistributionWithTags(DistributionConfigWithTags => L<Paws::CloudFront::DistributionConfigWithTags>)
@@ -339,7 +345,36 @@ Each argument is described in detail in: L<Paws::CloudFront::CreateStreamingDist
 
 Returns: a L<Paws::CloudFront::CreateStreamingDistributionResult> instance
 
-  Create a new streaming distribution.
+  Creates a new RMTP distribution. An RTMP distribution is similar to a
+web distribution, but an RTMP distribution streams media files using
+the Adobe Real-Time Messaging Protocol (RTMP) instead of serving files
+using HTTP.
+
+To create a new web distribution, submit a C<POST> request to the
+I<CloudFront API version>/distribution resource. The request body must
+include a document with a I<StreamingDistributionConfig> element. The
+response echoes the C<StreamingDistributionConfig> element and returns
+other information about the RTMP distribution.
+
+To get the status of your request, use the I<GET StreamingDistribution>
+API action. When the value of C<Enabled> is C<true> and the value of
+C<Status> is C<Deployed>, your distribution is ready. A distribution
+usually deploys in less than 15 minutes.
+
+For more information about web distributions, see Working with RTMP
+Distributions in the I<Amazon CloudFront Developer Guide>.
+
+Beginning with the 2012-05-05 version of the CloudFront API, we made
+substantial changes to the format of the XML document that you include
+in the request body when you create or update a web distribution or an
+RTMP distribution, and when you invalidate objects. With previous
+versions of the API, we discovered that it was too easy to accidentally
+delete one or more values for an element that accepts multiple values,
+for example, CNAMEs and trusted signers. Our changes for the 2012-05-05
+release are intended to prevent these accidental deletions and to
+notify you when there's a mismatch between the number of values you say
+you're specifying in the C<Quantity> element and the number of values
+specified.
 
 
 =head2 CreateStreamingDistributionWithTags(StreamingDistributionConfigWithTags => L<Paws::CloudFront::StreamingDistributionConfigWithTags>)
@@ -375,7 +410,65 @@ Each argument is described in detail in: L<Paws::CloudFront::DeleteStreamingDist
 
 Returns: nothing
 
-  Delete a streaming distribution.
+  Delete a streaming distribution. To delete an RTMP distribution using
+the CloudFront API, perform the following steps.
+
+B<To delete an RTMP distribution using the CloudFront API>:
+
+=over
+
+=item 1.
+
+Disable the RTMP distribution.
+
+=item 2.
+
+Submit a C<GET Streaming Distribution Config> request to get the
+current configuration and the C<Etag> header for the distribution.
+
+=item 3.
+
+Update the XML document that was returned in the response to your C<GET
+Streaming Distribution Config> request to change the value of
+C<Enabled> to C<false>.
+
+=item 4.
+
+Submit a C<PUT Streaming Distribution Config> request to update the
+configuration for your distribution. In the request body, include the
+XML document that you updated in Step 3. Then set the value of the HTTP
+C<If-Match> header to the value of the C<ETag> header that CloudFront
+returned when you submitted the C<GET Streaming Distribution Config>
+request in Step 2.
+
+=item 5.
+
+Review the response to the C<PUT Streaming Distribution Config> request
+to confirm that the distribution was successfully disabled.
+
+=item 6.
+
+Submit a C<GET Streaming Distribution Config> request to confirm that
+your changes have propagated. When propagation is complete, the value
+of C<Status> is C<Deployed>.
+
+=item 7.
+
+Submit a C<DELETE Streaming Distribution> request. Set the value of the
+HTTP C<If-Match> header to the value of the C<ETag> header that
+CloudFront returned when you submitted the C<GET Streaming Distribution
+Config> request in Step 2.
+
+=item 8.
+
+Review the response to your C<DELETE Streaming Distribution> request to
+confirm that the distribution was successfully deleted.
+
+=back
+
+For information about deleting a distribution using the CloudFront
+console, see Deleting a Distribution in the I<Amazon CloudFront
+Developer Guide>.
 
 
 =head2 GetCloudFrontOriginAccessIdentity(Id => Str)
@@ -429,7 +522,8 @@ Each argument is described in detail in: L<Paws::CloudFront::GetStreamingDistrib
 
 Returns: a L<Paws::CloudFront::GetStreamingDistributionResult> instance
 
-  Get the information about a streaming distribution.
+  Gets information about a specified RTMP distribution, including the
+distribution configuration.
 
 
 =head2 GetStreamingDistributionConfig(Id => Str)
@@ -447,7 +541,7 @@ Each argument is described in detail in: L<Paws::CloudFront::ListCloudFrontOrigi
 
 Returns: a L<Paws::CloudFront::ListCloudFrontOriginAccessIdentitiesResult> instance
 
-  List origin access identities.
+  Lists origin access identities.
 
 
 =head2 ListDistributions([Marker => Str, MaxItems => Str])
@@ -475,7 +569,7 @@ Each argument is described in detail in: L<Paws::CloudFront::ListInvalidations>
 
 Returns: a L<Paws::CloudFront::ListInvalidationsResult> instance
 
-  List invalidation batches.
+  Lists invalidation batches.
 
 
 =head2 ListStreamingDistributions([Marker => Str, MaxItems => Str])

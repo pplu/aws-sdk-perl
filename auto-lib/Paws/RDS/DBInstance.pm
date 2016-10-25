@@ -38,7 +38,7 @@ package Paws::RDS::DBInstance;
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
   has PromotionTier => (is => 'ro', isa => 'Int');
   has PubliclyAccessible => (is => 'ro', isa => 'Bool');
-  has ReadReplicaDBInstanceIdentifiers => (is => 'ro', isa => 'ArrayRef[Str]');
+  has ReadReplicaDBInstanceIdentifiers => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has ReadReplicaSourceDBInstanceIdentifier => (is => 'ro', isa => 'Str');
   has SecondaryAvailabilityZone => (is => 'ro', isa => 'Str');
   has StatusInfos => (is => 'ro', isa => 'ArrayRef[Paws::RDS::DBInstanceStatusInfo]');
@@ -364,7 +364,7 @@ as part of the request and the PubliclyAccessible value has not been
 set, the DB instance will be private.
 
 
-=head2 ReadReplicaDBInstanceIdentifiers => ArrayRef[Str]
+=head2 ReadReplicaDBInstanceIdentifiers => ArrayRef[Str|Undef]
 
   Contains one or more identifiers of the Read Replicas associated with
 this DB instance.

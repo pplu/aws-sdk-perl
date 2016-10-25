@@ -1,7 +1,7 @@
 
 package Paws::OpsWorks::DescribeUserProfiles;
   use Moose;
-  has IamUserArns => (is => 'ro', isa => 'ArrayRef[Str]');
+  has IamUserArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
   use MooseX::ClassAttribute;
 
@@ -33,9 +33,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 IamUserArns => ArrayRef[Str]
+=head2 IamUserArns => ArrayRef[Str|Undef]
 
-An array of IAM user ARNs that identify the users to be described.
+An array of IAM or federated user ARNs that identify the users to be
+described.
 
 
 

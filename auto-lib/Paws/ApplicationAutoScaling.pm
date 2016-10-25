@@ -254,7 +254,7 @@ To create a new scalable target or update an existing one, see
 RegisterScalableTarget.
 
 
-=head2 DescribeScalableTargets(ServiceNamespace => Str, [MaxResults => Int, NextToken => Str, ResourceIds => ArrayRef[Str], ScalableDimension => Str])
+=head2 DescribeScalableTargets(ServiceNamespace => Str, [MaxResults => Int, NextToken => Str, ResourceIds => ArrayRef[Str|Undef], ScalableDimension => Str])
 
 Each argument is described in detail in: L<Paws::ApplicationAutoScaling::DescribeScalableTargets>
 
@@ -289,7 +289,7 @@ for a service namespace, see DescribeScalingPolicies. To create a new
 scaling policy or update an existing one, see PutScalingPolicy.
 
 
-=head2 DescribeScalingPolicies(ServiceNamespace => Str, [MaxResults => Int, NextToken => Str, PolicyNames => ArrayRef[Str], ResourceId => Str, ScalableDimension => Str])
+=head2 DescribeScalingPolicies(ServiceNamespace => Str, [MaxResults => Int, NextToken => Str, PolicyNames => ArrayRef[Str|Undef], ResourceId => Str, ScalableDimension => Str])
 
 Each argument is described in detail in: L<Paws::ApplicationAutoScaling::DescribeScalingPolicies>
 
@@ -352,9 +352,9 @@ you can deregister it with DeregisterScalableTarget.
 
 Paginator methods are helpers that repetively call methods that return partial results
 
-=head2 DescribeAllScalableTargets(sub { },ServiceNamespace => Str, [MaxResults => Int, NextToken => Str, ResourceIds => ArrayRef[Str], ScalableDimension => Str])
+=head2 DescribeAllScalableTargets(sub { },ServiceNamespace => Str, [MaxResults => Int, NextToken => Str, ResourceIds => ArrayRef[Str|Undef], ScalableDimension => Str])
 
-=head2 DescribeAllScalableTargets(ServiceNamespace => Str, [MaxResults => Int, NextToken => Str, ResourceIds => ArrayRef[Str], ScalableDimension => Str])
+=head2 DescribeAllScalableTargets(ServiceNamespace => Str, [MaxResults => Int, NextToken => Str, ResourceIds => ArrayRef[Str|Undef], ScalableDimension => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -376,9 +376,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::ApplicationAutoScaling::DescribeScalingActivitiesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllScalingPolicies(sub { },ServiceNamespace => Str, [MaxResults => Int, NextToken => Str, PolicyNames => ArrayRef[Str], ResourceId => Str, ScalableDimension => Str])
+=head2 DescribeAllScalingPolicies(sub { },ServiceNamespace => Str, [MaxResults => Int, NextToken => Str, PolicyNames => ArrayRef[Str|Undef], ResourceId => Str, ScalableDimension => Str])
 
-=head2 DescribeAllScalingPolicies(ServiceNamespace => Str, [MaxResults => Int, NextToken => Str, PolicyNames => ArrayRef[Str], ResourceId => Str, ScalableDimension => Str])
+=head2 DescribeAllScalingPolicies(ServiceNamespace => Str, [MaxResults => Int, NextToken => Str, PolicyNames => ArrayRef[Str|Undef], ResourceId => Str, ScalableDimension => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

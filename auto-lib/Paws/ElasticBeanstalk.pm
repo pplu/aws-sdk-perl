@@ -297,7 +297,7 @@ Returns: a L<Paws::ElasticBeanstalk::CheckDNSAvailabilityResultMessage> instance
   Checks if the specified CNAME is available.
 
 
-=head2 ComposeEnvironments([ApplicationName => Str, GroupName => Str, VersionLabels => ArrayRef[Str]])
+=head2 ComposeEnvironments([ApplicationName => Str, GroupName => Str, VersionLabels => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::ElasticBeanstalk::ComposeEnvironments>
 
@@ -321,7 +321,7 @@ Returns: a L<Paws::ElasticBeanstalk::ApplicationDescriptionMessage> instance
 C<default> and no application versions.
 
 
-=head2 CreateApplicationVersion(ApplicationName => Str, VersionLabel => Str, [AutoCreateApplication => Bool, Description => Str, Process => Bool, SourceBundle => L<Paws::ElasticBeanstalk::S3Location>])
+=head2 CreateApplicationVersion(ApplicationName => Str, VersionLabel => Str, [AutoCreateApplication => Bool, Description => Str, Process => Bool, SourceBuildInformation => L<Paws::ElasticBeanstalk::SourceBuildInformation>, SourceBundle => L<Paws::ElasticBeanstalk::S3Location>])
 
 Each argument is described in detail in: L<Paws::ElasticBeanstalk::CreateApplicationVersion>
 
@@ -349,11 +349,17 @@ Related Topics
 
 =over
 
-=item * DescribeConfigurationOptions
+=item *
 
-=item * DescribeConfigurationSettings
+DescribeConfigurationOptions
 
-=item * ListAvailableSolutionStacks
+=item *
+
+DescribeConfigurationSettings
+
+=item *
+
+ListAvailableSolutionStacks
 
 =back
 
@@ -437,7 +443,7 @@ configuration remains in existence until it is deleted with this
 action.
 
 
-=head2 DescribeApplications([ApplicationNames => ArrayRef[Str]])
+=head2 DescribeApplications([ApplicationNames => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::ElasticBeanstalk::DescribeApplications>
 
@@ -446,7 +452,7 @@ Returns: a L<Paws::ElasticBeanstalk::ApplicationDescriptionsMessage> instance
   Returns the descriptions of existing applications.
 
 
-=head2 DescribeApplicationVersions([ApplicationName => Str, VersionLabels => ArrayRef[Str]])
+=head2 DescribeApplicationVersions([ApplicationName => Str, MaxRecords => Int, NextToken => Str, VersionLabels => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::ElasticBeanstalk::DescribeApplicationVersions>
 
@@ -489,13 +495,15 @@ Related Topics
 
 =over
 
-=item * DeleteEnvironmentConfiguration
+=item *
+
+DeleteEnvironmentConfiguration
 
 =back
 
 
 
-=head2 DescribeEnvironmentHealth([AttributeNames => ArrayRef[Str], EnvironmentId => Str, EnvironmentName => Str])
+=head2 DescribeEnvironmentHealth([AttributeNames => ArrayRef[Str|Undef], EnvironmentId => Str, EnvironmentName => Str])
 
 Each argument is described in detail in: L<Paws::ElasticBeanstalk::DescribeEnvironmentHealth>
 
@@ -533,7 +541,7 @@ Returns: a L<Paws::ElasticBeanstalk::EnvironmentResourceDescriptionsMessage> ins
   Returns AWS resources for this environment.
 
 
-=head2 DescribeEnvironments([ApplicationName => Str, EnvironmentIds => ArrayRef[Str], EnvironmentNames => ArrayRef[Str], IncludedDeletedBackTo => Str, IncludeDeleted => Bool, VersionLabel => Str])
+=head2 DescribeEnvironments([ApplicationName => Str, EnvironmentIds => ArrayRef[Str|Undef], EnvironmentNames => ArrayRef[Str|Undef], IncludedDeletedBackTo => Str, IncludeDeleted => Bool, VersionLabel => Str])
 
 Each argument is described in detail in: L<Paws::ElasticBeanstalk::DescribeEnvironments>
 
@@ -555,7 +563,7 @@ This action returns the most recent 1,000 events from the specified
 C<NextToken>.
 
 
-=head2 DescribeInstancesHealth([AttributeNames => ArrayRef[Str], EnvironmentId => Str, EnvironmentName => Str, NextToken => Str])
+=head2 DescribeInstancesHealth([AttributeNames => ArrayRef[Str|Undef], EnvironmentId => Str, EnvironmentName => Str, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::ElasticBeanstalk::DescribeInstancesHealth>
 
@@ -610,7 +618,9 @@ Related Topics
 
 =over
 
-=item * RetrieveEnvironmentInfo
+=item *
+
+RetrieveEnvironmentInfo
 
 =back
 
@@ -639,7 +649,9 @@ Related Topics
 
 =over
 
-=item * RequestEnvironmentInfo
+=item *
+
+RequestEnvironmentInfo
 
 =back
 
@@ -705,7 +717,9 @@ Related Topics
 
 =over
 
-=item * DescribeConfigurationOptions
+=item *
+
+DescribeConfigurationOptions
 
 =back
 

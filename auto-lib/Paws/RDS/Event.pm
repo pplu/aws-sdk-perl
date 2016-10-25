@@ -1,7 +1,7 @@
 package Paws::RDS::Event;
   use Moose;
   has Date => (is => 'ro', isa => 'Str');
-  has EventCategories => (is => 'ro', isa => 'ArrayRef[Str]');
+  has EventCategories => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Message => (is => 'ro', isa => 'Str');
   has SourceArn => (is => 'ro', isa => 'Str');
   has SourceIdentifier => (is => 'ro', isa => 'Str');
@@ -47,7 +47,7 @@ action.
   Specifies the date and time of the event.
 
 
-=head2 EventCategories => ArrayRef[Str]
+=head2 EventCategories => ArrayRef[Str|Undef]
 
   Specifies the category for the event.
 

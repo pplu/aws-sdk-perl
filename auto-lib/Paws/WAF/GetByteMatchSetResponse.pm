@@ -21,14 +21,20 @@ topics:
 
 =over
 
-=item * ByteMatchSet: Contains C<ByteMatchSetId>, C<ByteMatchTuples>,
-and C<Name>
+=item *
 
-=item * C<ByteMatchTuples>: Contains an array of ByteMatchTuple
-objects. Each C<ByteMatchTuple> object contains FieldToMatch,
+ByteMatchSet: Contains C<ByteMatchSetId>, C<ByteMatchTuples>, and
+C<Name>
+
+=item *
+
+C<ByteMatchTuples>: Contains an array of ByteMatchTuple objects. Each
+C<ByteMatchTuple> object contains FieldToMatch,
 C<PositionalConstraint>, C<TargetString>, and C<TextTransformation>
 
-=item * FieldToMatch: Contains C<Data> and C<Type>
+=item *
+
+FieldToMatch: Contains C<Data> and C<Type>
 
 =back
 

@@ -56,21 +56,27 @@ condition consists of the following:
 
 =over
 
-=item * B<Operand> -- Name of a game session attribute. Valid values
-are C<gameSessionName>, C<gameSessionId>, C<creationTimeMillis>,
+=item *
+
+B<Operand> -- Name of a game session attribute. Valid values are
+C<gameSessionName>, C<gameSessionId>, C<creationTimeMillis>,
 C<playerSessionCount>, C<maximumSessions>,
 C<hasAvailablePlayerSessions>.
 
-=item * B<Comparator> -- Valid comparators are: C<=>, C<&lt;&gt;>,
-C<&lt;>, C<&gt;>, C<&lt;=>, C<&gt;=>.
+=item *
 
-=item * B<Value> -- Value to be searched for. Values can be numbers,
-boolean values (true/false) or strings. String values are case
-sensitive, enclosed in single quotes. Special characters must be
-escaped. Boolean and string values can only be used with the
-comparators C<=> and C<&lt;&gt;>. For example, the following filter
-expression searches on C<gameSessionName>: "C<FilterExpression":
-"gameSessionName = 'Matt\\'s Awesome Game 1'">.
+B<Comparator> -- Valid comparators are: C<=>, C<E<lt>E<gt>>, C<E<lt>>,
+C<E<gt>>, C<E<lt>=>, C<E<gt>=>.
+
+=item *
+
+B<Value> -- Value to be searched for. Values can be numbers, boolean
+values (true/false) or strings. String values are case sensitive,
+enclosed in single quotes. Special characters must be escaped. Boolean
+and string values can only be used with the comparators C<=> and
+C<E<lt>E<gt>>. For example, the following filter expression searches on
+C<gameSessionName>: "C<FilterExpression": "gameSessionName = 'Matt\\'s
+Awesome Game 1'">.
 
 =back
 
@@ -83,21 +89,31 @@ following precedence rules:
 
 =over
 
-=item 1. C<=>, C<&lt;&gt;>, C<&lt;>, C<&gt;>, C<&lt;=>, C<&gt;=>
+=item 1.
 
-=item 2. Parentheses
+C<=>, C<E<lt>E<gt>>, C<E<lt>>, C<E<gt>>, C<E<lt>=>, C<E<gt>=>
 
-=item 3. NOT
+=item 2.
 
-=item 4. AND
+Parentheses
 
-=item 5. OR
+=item 3.
+
+NOT
+
+=item 4.
+
+AND
+
+=item 5.
+
+OR
 
 =back
 
 For example, this filter expression retrieves game sessions hosting at
 least ten players that have an open player slot:
-C<"maximumSessions&gt;=10 AND hasAvailablePlayerSessions=true">.
+C<"maximumSessionsE<gt>=10 AND hasAvailablePlayerSessions=true">.
 
 
 
@@ -133,13 +149,17 @@ expression consists of the following elements:
 
 =over
 
-=item * B<Operand> -- Name of a game session attribute. Valid values
-are C<gameSessionName>, C<gameSessionId>, C<creationTimeMillis>,
+=item *
+
+B<Operand> -- Name of a game session attribute. Valid values are
+C<gameSessionName>, C<gameSessionId>, C<creationTimeMillis>,
 C<playerSessionCount>, C<maximumSessions>,
 C<hasAvailablePlayerSessions>.
 
-=item * B<Order> -- Valid sort orders are C<ASC> (ascending) and
-C<DESC> (descending).
+=item *
+
+B<Order> -- Valid sort orders are C<ASC> (ascending) and C<DESC>
+(descending).
 
 =back
 

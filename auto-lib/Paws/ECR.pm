@@ -49,6 +49,11 @@ package Paws::ECR;
     my $call_object = $self->new_with_coercions('Paws::ECR::DeleteRepositoryPolicy', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeImages {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ECR::DescribeImages', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeRepositories {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ECR::DescribeRepositories', @_);
@@ -118,7 +123,7 @@ package Paws::ECR;
   }
 
 
-  sub operations { qw/BatchCheckLayerAvailability BatchDeleteImage BatchGetImage CompleteLayerUpload CreateRepository DeleteRepository DeleteRepositoryPolicy DescribeRepositories GetAuthorizationToken GetDownloadUrlForLayer GetRepositoryPolicy InitiateLayerUpload ListImages PutImage SetRepositoryPolicy UploadLayerPart / }
+  sub operations { qw/BatchCheckLayerAvailability BatchDeleteImage BatchGetImage CompleteLayerUpload CreateRepository DeleteRepository DeleteRepositoryPolicy DescribeImages DescribeRepositories GetAuthorizationToken GetDownloadUrlForLayer GetRepositoryPolicy InitiateLayerUpload ListImages PutImage SetRepositoryPolicy UploadLayerPart / }
 
 1;
 
@@ -156,7 +161,7 @@ use the Docker CLI to author and manage images.
 
 =head1 METHODS
 
-=head2 BatchCheckLayerAvailability(LayerDigests => ArrayRef[Str], RepositoryName => Str, [RegistryId => Str])
+=head2 BatchCheckLayerAvailability(LayerDigests => ArrayRef[Str|Undef], RepositoryName => Str, [RegistryId => Str])
 
 Each argument is described in detail in: L<Paws::ECR::BatchCheckLayerAvailability>
 
@@ -191,7 +196,7 @@ repository. Images are specified with either C<imageTag> or
 C<imageDigest>.
 
 
-=head2 CompleteLayerUpload(LayerDigests => ArrayRef[Str], RepositoryName => Str, UploadId => Str, [RegistryId => Str])
+=head2 CompleteLayerUpload(LayerDigests => ArrayRef[Str|Undef], RepositoryName => Str, UploadId => Str, [RegistryId => Str])
 
 Each argument is described in detail in: L<Paws::ECR::CompleteLayerUpload>
 
@@ -235,7 +240,23 @@ Returns: a L<Paws::ECR::DeleteRepositoryPolicyResponse> instance
   Deletes the repository policy from a specified repository.
 
 
-=head2 DescribeRepositories([MaxResults => Int, NextToken => Str, RegistryId => Str, RepositoryNames => ArrayRef[Str]])
+=head2 DescribeImages(RepositoryName => Str, [Filter => L<Paws::ECR::DescribeImagesFilter>, ImageIds => ArrayRef[L<Paws::ECR::ImageIdentifier>], MaxResults => Int, NextToken => Str, RegistryId => Str])
+
+Each argument is described in detail in: L<Paws::ECR::DescribeImages>
+
+Returns: a L<Paws::ECR::DescribeImagesResponse> instance
+
+  Returns metadata about the images in a repository, including image size
+and creation date.
+
+Beginning with Docker version 1.9, the Docker client compresses image
+layers before pushing them to a V2 Docker registry. The output of the
+C<docker images> command shows the uncompressed image size, so it may
+return a larger image size than the image sizes returned by
+DescribeImages.
+
+
+=head2 DescribeRepositories([MaxResults => Int, NextToken => Str, RegistryId => Str, RepositoryNames => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::ECR::DescribeRepositories>
 
@@ -244,7 +265,7 @@ Returns: a L<Paws::ECR::DescribeRepositoriesResponse> instance
   Describes image repositories in a registry.
 
 
-=head2 GetAuthorizationToken([RegistryIds => ArrayRef[Str]])
+=head2 GetAuthorizationToken([RegistryIds => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::ECR::GetAuthorizationToken>
 

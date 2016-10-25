@@ -1,6 +1,6 @@
 package Paws::ServiceCatalog::ParameterConstraints;
   use Moose;
-  has AllowedValues => (is => 'ro', isa => 'ArrayRef[Str]');
+  has AllowedValues => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +36,7 @@ The constraints that the administrator has put on the parameter.
 =head1 ATTRIBUTES
 
 
-=head2 AllowedValues => ArrayRef[Str]
+=head2 AllowedValues => ArrayRef[Str|Undef]
 
   The values that the administrator has allowed for the parameter.
 

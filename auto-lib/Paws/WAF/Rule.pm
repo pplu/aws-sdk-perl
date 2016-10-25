@@ -41,11 +41,15 @@ following predicates:
 
 =over
 
-=item * An C<IPSet> that causes AWS WAF to search for web requests that
+=item *
+
+An C<IPSet> that causes AWS WAF to search for web requests that
 originate from the IP address C<192.0.2.44>
 
-=item * A C<ByteMatchSet> that causes AWS WAF to search for web
-requests for which the value of the C<User-Agent> header is C<BadBot>.
+=item *
+
+A C<ByteMatchSet> that causes AWS WAF to search for web requests for
+which the value of the C<User-Agent> header is C<BadBot>.
 
 =back
 

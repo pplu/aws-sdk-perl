@@ -61,21 +61,30 @@ The user status. Can be one of the following:
 
 =over
 
-=item * UNCONFIRMED - User has been created but not confirmed.
+=item *
 
-=item * CONFIRMED - User has been confirmed.
+UNCONFIRMED - User has been created but not confirmed.
 
-=item * ARCHIVED - User is no longer active.
+=item *
 
-=item * COMPROMISED - User is disabled due to a potential security
-threat.
+CONFIRMED - User has been confirmed.
 
-=item * UNKNOWN - User status is not known.
+=item *
+
+ARCHIVED - User is no longer active.
+
+=item *
+
+COMPROMISED - User is disabled due to a potential security threat.
+
+=item *
+
+UNKNOWN - User status is not known.
 
 =back
 
 
-Valid values are: C<"UNCONFIRMED">, C<"CONFIRMED">, C<"ARCHIVED">, C<"COMPROMISED">, C<"UNKNOWN">, C<"RESET_REQUIRED">
+Valid values are: C<"UNCONFIRMED">, C<"CONFIRMED">, C<"ARCHIVED">, C<"COMPROMISED">, C<"UNKNOWN">, C<"RESET_REQUIRED">, C<"FORCE_CHANGE_PASSWORD">
 
 
 =cut

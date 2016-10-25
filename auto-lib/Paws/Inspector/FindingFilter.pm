@@ -1,12 +1,12 @@
 package Paws::Inspector::FindingFilter;
   use Moose;
-  has AgentIds => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'agentIds', request_name => 'agentIds', traits => ['Unwrapped','NameInRequest']);
+  has AgentIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'agentIds', request_name => 'agentIds', traits => ['Unwrapped','NameInRequest']);
   has Attributes => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::Attribute]', xmlname => 'attributes', request_name => 'attributes', traits => ['Unwrapped','NameInRequest']);
-  has AutoScalingGroups => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'autoScalingGroups', request_name => 'autoScalingGroups', traits => ['Unwrapped','NameInRequest']);
+  has AutoScalingGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'autoScalingGroups', request_name => 'autoScalingGroups', traits => ['Unwrapped','NameInRequest']);
   has CreationTimeRange => (is => 'ro', isa => 'Paws::Inspector::TimestampRange', xmlname => 'creationTimeRange', request_name => 'creationTimeRange', traits => ['Unwrapped','NameInRequest']);
-  has RuleNames => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'ruleNames', request_name => 'ruleNames', traits => ['Unwrapped','NameInRequest']);
-  has RulesPackageArns => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'rulesPackageArns', request_name => 'rulesPackageArns', traits => ['Unwrapped','NameInRequest']);
-  has Severities => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'severities', request_name => 'severities', traits => ['Unwrapped','NameInRequest']);
+  has RuleNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'ruleNames', request_name => 'ruleNames', traits => ['Unwrapped','NameInRequest']);
+  has RulesPackageArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'rulesPackageArns', request_name => 'rulesPackageArns', traits => ['Unwrapped','NameInRequest']);
+  has Severities => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'severities', request_name => 'severities', traits => ['Unwrapped','NameInRequest']);
   has UserAttributes => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::Attribute]', xmlname => 'userAttributes', request_name => 'userAttributes', traits => ['Unwrapped','NameInRequest']);
 1;
 
@@ -44,7 +44,7 @@ action.
 =head1 ATTRIBUTES
 
 
-=head2 AgentIds => ArrayRef[Str]
+=head2 AgentIds => ArrayRef[Str|Undef]
 
   For a record to match a filter, one of the values that is specified for
 this data type property must be the exact match of the value of the
@@ -58,7 +58,7 @@ for this data type property must be contained in the list of values of
 the B<attributes> property of the Finding data type.
 
 
-=head2 AutoScalingGroups => ArrayRef[Str]
+=head2 AutoScalingGroups => ArrayRef[Str|Undef]
 
   For a record to match a filter, one of the values that is specified for
 this data type property must be the exact match of the value of the
@@ -70,21 +70,21 @@ B<autoScalingGroup> property of the Finding data type.
   The time range during which the finding is generated.
 
 
-=head2 RuleNames => ArrayRef[Str]
+=head2 RuleNames => ArrayRef[Str|Undef]
 
   For a record to match a filter, one of the values that is specified for
 this data type property must be the exact match of the value of the
 B<ruleName> property of the Finding data type.
 
 
-=head2 RulesPackageArns => ArrayRef[Str]
+=head2 RulesPackageArns => ArrayRef[Str|Undef]
 
   For a record to match a filter, one of the values that is specified for
 this data type property must be the exact match of the value of the
 B<rulesPackageArn> property of the Finding data type.
 
 
-=head2 Severities => ArrayRef[Str]
+=head2 Severities => ArrayRef[Str|Undef]
 
   For a record to match a filter, one of the values that is specified for
 this data type property must be the exact match of the value of the

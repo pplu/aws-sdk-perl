@@ -247,7 +247,7 @@ User Guide.
 
 =head1 METHODS
 
-=head2 BatchGetRepositories(RepositoryNames => ArrayRef[Str])
+=head2 BatchGetRepositories(RepositoryNames => ArrayRef[Str|Undef])
 
 Each argument is described in detail in: L<Paws::CodeCommit::BatchGetRepositories>
 

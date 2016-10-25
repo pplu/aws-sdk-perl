@@ -1,9 +1,9 @@
 
 package Paws::SQS::ReceiveMessage;
   use Moose;
-  has AttributeNames => (is => 'ro', isa => 'ArrayRef[Str]');
+  has AttributeNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has MaxNumberOfMessages => (is => 'ro', isa => 'Int');
-  has MessageAttributeNames => (is => 'ro', isa => 'ArrayRef[Str]');
+  has MessageAttributeNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has QueueUrl => (is => 'ro', isa => 'Str', required => 1);
   has VisibilityTimeout => (is => 'ro', isa => 'Int');
   has WaitTimeSeconds => (is => 'ro', isa => 'Int');
@@ -38,7 +38,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 AttributeNames => ArrayRef[Str]
+=head2 AttributeNames => ArrayRef[Str|Undef]
 
 A list of attributes that need to be returned along with each message.
 These attributes include:
@@ -91,7 +91,7 @@ All of the messages are not necessarily returned.
 
 
 
-=head2 MessageAttributeNames => ArrayRef[Str]
+=head2 MessageAttributeNames => ArrayRef[Str|Undef]
 
 The name of the message attribute, where I<N> is the index. The message
 attribute name can contain the following characters: A-Z, a-z, 0-9,

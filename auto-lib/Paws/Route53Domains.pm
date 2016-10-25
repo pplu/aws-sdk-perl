@@ -220,7 +220,7 @@ the availability status of a domain is pending, you must submit another
 request to determine the availability of the domain name.
 
 
-=head2 DeleteTagsForDomain(DomainName => Str, TagsToDelete => ArrayRef[Str])
+=head2 DeleteTagsForDomain(DomainName => Str, TagsToDelete => ArrayRef[Str|Undef])
 
 Each argument is described in detail in: L<Paws::Route53Domains::DeleteTagsForDomain>
 

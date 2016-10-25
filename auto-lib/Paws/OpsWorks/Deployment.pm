@@ -9,7 +9,7 @@ package Paws::OpsWorks::Deployment;
   has DeploymentId => (is => 'ro', isa => 'Str');
   has Duration => (is => 'ro', isa => 'Int');
   has IamUserArn => (is => 'ro', isa => 'Str');
-  has InstanceIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has InstanceIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has StackId => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
 1;
@@ -77,7 +77,7 @@ Describes a deployment of a stack or app.
   A string that contains user-defined custom JSON. It can be used to
 override the corresponding default stack configuration attribute values
 for stack or to pass data to recipes. The string should be in the
-following format and must escape characters such as '"':
+following format:
 
 C<"{\"key1\": \"value1\", \"key2\": \"value2\",...}">
 
@@ -100,7 +100,7 @@ Stack Configuration Attributes.
   The user's IAM ARN.
 
 
-=head2 InstanceIds => ArrayRef[Str]
+=head2 InstanceIds => ArrayRef[Str|Undef]
 
   The IDs of the target instances.
 

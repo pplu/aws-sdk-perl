@@ -3,7 +3,7 @@ package Paws::Support::CreateCase;
   use Moose;
   has AttachmentSetId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'attachmentSetId' );
   has CategoryCode => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'categoryCode' );
-  has CcEmailAddresses => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'ccEmailAddresses' );
+  has CcEmailAddresses => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'ccEmailAddresses' );
   has CommunicationBody => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'communicationBody' , required => 1);
   has IssueType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'issueType' );
   has Language => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'language' );
@@ -54,7 +54,7 @@ The category of problem for the AWS Support case.
 
 
 
-=head2 CcEmailAddresses => ArrayRef[Str]
+=head2 CcEmailAddresses => ArrayRef[Str|Undef]
 
 A list of email addresses that AWS Support copies on case
 correspondence.

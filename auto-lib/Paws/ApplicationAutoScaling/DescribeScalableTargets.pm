@@ -3,7 +3,7 @@ package Paws::ApplicationAutoScaling::DescribeScalableTargets;
   use Moose;
   has MaxResults => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
-  has ResourceIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has ResourceIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has ScalableDimension => (is => 'ro', isa => 'Str');
   has ServiceNamespace => (is => 'ro', isa => 'Str', required => 1);
 
@@ -60,7 +60,7 @@ value is C<null> when there are no more results to return.
 
 
 
-=head2 ResourceIds => ArrayRef[Str]
+=head2 ResourceIds => ArrayRef[Str|Undef]
 
 The resource type and unique identifier string for the resource
 associated with the scalable target. For Amazon ECS services, the

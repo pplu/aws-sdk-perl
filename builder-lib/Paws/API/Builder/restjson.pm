@@ -101,7 +101,6 @@ enum '[% enum_name %]', [[% FOR val IN c.enums.$enum_name %]'[% val %]',[% END %
 [%- END %]
 [%- END -%]
 package [% c.api %];
-  warn "[% c.api %] is not stable / supported / entirely developed";
   use Moose;
   sub service { '[% c.service %]' }
   sub version { '[% c.version %]' }

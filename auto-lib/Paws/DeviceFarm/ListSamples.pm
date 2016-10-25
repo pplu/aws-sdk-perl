@@ -36,7 +36,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Arn => Str
 
-The samples' ARNs.
+The Amazon Resource Name (ARN) of the project for which you want to
+list samples.
 
 
 

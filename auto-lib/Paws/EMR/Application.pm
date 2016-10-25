@@ -1,7 +1,7 @@
 package Paws::EMR::Application;
   use Moose;
   has AdditionalInfo => (is => 'ro', isa => 'Paws::EMR::StringMap');
-  has Args => (is => 'ro', isa => 'ArrayRef[Str]');
+  has Args => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Name => (is => 'ro', isa => 'Str');
   has Version => (is => 'ro', isa => 'Str');
 1;
@@ -74,7 +74,7 @@ third-party applications that third-party vendors use for testing
 purposes.
 
 
-=head2 Args => ArrayRef[Str]
+=head2 Args => ArrayRef[Str|Undef]
 
   Arguments for Amazon EMR to pass to the application.
 

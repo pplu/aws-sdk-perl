@@ -2,7 +2,7 @@
 package Paws::AutoScaling::EnterStandby;
   use Moose;
   has AutoScalingGroupName => (is => 'ro', isa => 'Str', required => 1);
-  has InstanceIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has InstanceIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has ShouldDecrementDesiredCapacity => (is => 'ro', isa => 'Bool', required => 1);
 
   use MooseX::ClassAttribute;
@@ -41,7 +41,7 @@ The name of the Auto Scaling group.
 
 
 
-=head2 InstanceIds => ArrayRef[Str]
+=head2 InstanceIds => ArrayRef[Str|Undef]
 
 One or more instances to move into C<Standby> mode. You must specify at
 least one instance ID.

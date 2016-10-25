@@ -1,7 +1,7 @@
 package Paws::SSM::NotificationConfig;
   use Moose;
   has NotificationArn => (is => 'ro', isa => 'Str');
-  has NotificationEvents => (is => 'ro', isa => 'ArrayRef[Str]');
+  has NotificationEvents => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has NotificationType => (is => 'ro', isa => 'Str');
 1;
 
@@ -45,7 +45,7 @@ topic. SSM pushes notifications about command status changes to this
 topic.
 
 
-=head2 NotificationEvents => ArrayRef[Str]
+=head2 NotificationEvents => ArrayRef[Str|Undef]
 
   The different events for which you can receive notifications. These
 events include the following: All (events), InProgress, Success,

@@ -1,10 +1,10 @@
 package Paws::OpsWorks::Recipes;
   use Moose;
-  has Configure => (is => 'ro', isa => 'ArrayRef[Str]');
-  has Deploy => (is => 'ro', isa => 'ArrayRef[Str]');
-  has Setup => (is => 'ro', isa => 'ArrayRef[Str]');
-  has Shutdown => (is => 'ro', isa => 'ArrayRef[Str]');
-  has Undeploy => (is => 'ro', isa => 'ArrayRef[Str]');
+  has Configure => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has Deploy => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has Setup => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has Shutdown => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has Undeploy => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 1;
 
 ### main pod documentation begin ###
@@ -52,29 +52,29 @@ phpapp2 folder.
 =head1 ATTRIBUTES
 
 
-=head2 Configure => ArrayRef[Str]
+=head2 Configure => ArrayRef[Str|Undef]
 
   An array of custom recipe names to be run following a C<configure>
 event.
 
 
-=head2 Deploy => ArrayRef[Str]
+=head2 Deploy => ArrayRef[Str|Undef]
 
   An array of custom recipe names to be run following a C<deploy> event.
 
 
-=head2 Setup => ArrayRef[Str]
+=head2 Setup => ArrayRef[Str|Undef]
 
   An array of custom recipe names to be run following a C<setup> event.
 
 
-=head2 Shutdown => ArrayRef[Str]
+=head2 Shutdown => ArrayRef[Str|Undef]
 
   An array of custom recipe names to be run following a C<shutdown>
 event.
 
 
-=head2 Undeploy => ArrayRef[Str]
+=head2 Undeploy => ArrayRef[Str|Undef]
 
   An array of custom recipe names to be run following a C<undeploy>
 event.

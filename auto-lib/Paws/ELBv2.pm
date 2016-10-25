@@ -330,7 +330,7 @@ succeeds.
 
 =head1 METHODS
 
-=head2 AddTags(ResourceArns => ArrayRef[Str], Tags => ArrayRef[L<Paws::ELBv2::Tag>])
+=head2 AddTags(ResourceArns => ArrayRef[Str|Undef], Tags => ArrayRef[L<Paws::ELBv2::Tag>])
 
 Each argument is described in detail in: L<Paws::ELBv2::AddTags>
 
@@ -363,7 +363,7 @@ For more information, see Listeners for Your Application Load Balancers
 in the I<Application Load Balancers Guide>.
 
 
-=head2 CreateLoadBalancer(Name => Str, Subnets => ArrayRef[Str], [Scheme => Str, SecurityGroups => ArrayRef[Str], Tags => ArrayRef[L<Paws::ELBv2::Tag>]])
+=head2 CreateLoadBalancer(Name => Str, Subnets => ArrayRef[Str|Undef], [Scheme => Str, SecurityGroups => ArrayRef[Str|Undef], Tags => ArrayRef[L<Paws::ELBv2::Tag>]])
 
 Each argument is described in detail in: L<Paws::ELBv2::CreateLoadBalancer>
 
@@ -488,7 +488,7 @@ After the targets are deregistered, they no longer receive traffic from
 the load balancer.
 
 
-=head2 DescribeListeners([ListenerArns => ArrayRef[Str], LoadBalancerArn => Str, Marker => Str, PageSize => Int])
+=head2 DescribeListeners([ListenerArns => ArrayRef[Str|Undef], LoadBalancerArn => Str, Marker => Str, PageSize => Int])
 
 Each argument is described in detail in: L<Paws::ELBv2::DescribeListeners>
 
@@ -508,7 +508,7 @@ Returns: a L<Paws::ELBv2::DescribeLoadBalancerAttributesOutput> instance
   Describes the attributes for the specified load balancer.
 
 
-=head2 DescribeLoadBalancers([LoadBalancerArns => ArrayRef[Str], Marker => Str, Names => ArrayRef[Str], PageSize => Int])
+=head2 DescribeLoadBalancers([LoadBalancerArns => ArrayRef[Str|Undef], Marker => Str, Names => ArrayRef[Str|Undef], PageSize => Int])
 
 Each argument is described in detail in: L<Paws::ELBv2::DescribeLoadBalancers>
 
@@ -522,7 +522,7 @@ To describe the attributes for a load balancer, use
 DescribeLoadBalancerAttributes.
 
 
-=head2 DescribeRules([ListenerArn => Str, RuleArns => ArrayRef[Str]])
+=head2 DescribeRules([ListenerArn => Str, RuleArns => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::ELBv2::DescribeRules>
 
@@ -532,7 +532,7 @@ Returns: a L<Paws::ELBv2::DescribeRulesOutput> instance
 You must specify either a listener or one or more rules.
 
 
-=head2 DescribeSSLPolicies([Marker => Str, Names => ArrayRef[Str], PageSize => Int])
+=head2 DescribeSSLPolicies([Marker => Str, Names => ArrayRef[Str|Undef], PageSize => Int])
 
 Each argument is described in detail in: L<Paws::ELBv2::DescribeSSLPolicies>
 
@@ -545,7 +545,7 @@ Note that the only supported policy at this time is
 ELBSecurityPolicy-2015-05.
 
 
-=head2 DescribeTags(ResourceArns => ArrayRef[Str])
+=head2 DescribeTags(ResourceArns => ArrayRef[Str|Undef])
 
 Each argument is described in detail in: L<Paws::ELBv2::DescribeTags>
 
@@ -563,7 +563,7 @@ Returns: a L<Paws::ELBv2::DescribeTargetGroupAttributesOutput> instance
   Describes the attributes for the specified target group.
 
 
-=head2 DescribeTargetGroups([LoadBalancerArn => Str, Marker => Str, Names => ArrayRef[Str], PageSize => Int, TargetGroupArns => ArrayRef[Str]])
+=head2 DescribeTargetGroups([LoadBalancerArn => Str, Marker => Str, Names => ArrayRef[Str|Undef], PageSize => Int, TargetGroupArns => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::ELBv2::DescribeTargetGroups>
 
@@ -665,7 +665,7 @@ specified for the target group.
 To remove a target from a target group, use DeregisterTargets.
 
 
-=head2 RemoveTags(ResourceArns => ArrayRef[Str], TagKeys => ArrayRef[Str])
+=head2 RemoveTags(ResourceArns => ArrayRef[Str|Undef], TagKeys => ArrayRef[Str|Undef])
 
 Each argument is described in detail in: L<Paws::ELBv2::RemoveTags>
 
@@ -689,7 +689,7 @@ the new order. Any existing rules that you do not specify retain their
 current priority.
 
 
-=head2 SetSecurityGroups(LoadBalancerArn => Str, SecurityGroups => ArrayRef[Str])
+=head2 SetSecurityGroups(LoadBalancerArn => Str, SecurityGroups => ArrayRef[Str|Undef])
 
 Each argument is described in detail in: L<Paws::ELBv2::SetSecurityGroups>
 
@@ -700,7 +700,7 @@ balancer. The specified security groups override the previously
 associated security groups.
 
 
-=head2 SetSubnets(LoadBalancerArn => Str, Subnets => ArrayRef[Str])
+=head2 SetSubnets(LoadBalancerArn => Str, Subnets => ArrayRef[Str|Undef])
 
 Each argument is described in detail in: L<Paws::ELBv2::SetSubnets>
 
@@ -717,9 +717,9 @@ enabled subnets.
 
 Paginator methods are helpers that repetively call methods that return partial results
 
-=head2 DescribeAllListeners(sub { },[ListenerArns => ArrayRef[Str], LoadBalancerArn => Str, Marker => Str, PageSize => Int])
+=head2 DescribeAllListeners(sub { },[ListenerArns => ArrayRef[Str|Undef], LoadBalancerArn => Str, Marker => Str, PageSize => Int])
 
-=head2 DescribeAllListeners([ListenerArns => ArrayRef[Str], LoadBalancerArn => Str, Marker => Str, PageSize => Int])
+=head2 DescribeAllListeners([ListenerArns => ArrayRef[Str|Undef], LoadBalancerArn => Str, Marker => Str, PageSize => Int])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -729,9 +729,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::ELBv2::DescribeListenersOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllLoadBalancers(sub { },[LoadBalancerArns => ArrayRef[Str], Marker => Str, Names => ArrayRef[Str], PageSize => Int])
+=head2 DescribeAllLoadBalancers(sub { },[LoadBalancerArns => ArrayRef[Str|Undef], Marker => Str, Names => ArrayRef[Str|Undef], PageSize => Int])
 
-=head2 DescribeAllLoadBalancers([LoadBalancerArns => ArrayRef[Str], Marker => Str, Names => ArrayRef[Str], PageSize => Int])
+=head2 DescribeAllLoadBalancers([LoadBalancerArns => ArrayRef[Str|Undef], Marker => Str, Names => ArrayRef[Str|Undef], PageSize => Int])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -741,9 +741,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::ELBv2::DescribeLoadBalancersOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllTargetGroups(sub { },[LoadBalancerArn => Str, Marker => Str, Names => ArrayRef[Str], PageSize => Int, TargetGroupArns => ArrayRef[Str]])
+=head2 DescribeAllTargetGroups(sub { },[LoadBalancerArn => Str, Marker => Str, Names => ArrayRef[Str|Undef], PageSize => Int, TargetGroupArns => ArrayRef[Str|Undef]])
 
-=head2 DescribeAllTargetGroups([LoadBalancerArn => Str, Marker => Str, Names => ArrayRef[Str], PageSize => Int, TargetGroupArns => ArrayRef[Str]])
+=head2 DescribeAllTargetGroups([LoadBalancerArn => Str, Marker => Str, Names => ArrayRef[Str|Undef], PageSize => Int, TargetGroupArns => ArrayRef[Str|Undef]])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

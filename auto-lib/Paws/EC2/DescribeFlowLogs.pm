@@ -2,7 +2,7 @@
 package Paws::EC2::DescribeFlowLogs;
   use Moose;
   has Filter => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Filter]');
-  has FlowLogIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'FlowLogId' );
+  has FlowLogIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'FlowLogId' );
   has MaxResults => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
 
@@ -68,7 +68,7 @@ C<traffic-type> - The type of traffic (C<ACCEPT> | C<REJECT> | C<ALL>)
 
 
 
-=head2 FlowLogIds => ArrayRef[Str]
+=head2 FlowLogIds => ArrayRef[Str|Undef]
 
 One or more flow log IDs.
 

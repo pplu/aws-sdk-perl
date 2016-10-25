@@ -1,7 +1,7 @@
 
 package Paws::CloudSearch::IndexDocumentsResponse;
   use Moose;
-  has FieldNames => (is => 'ro', isa => 'ArrayRef[Str]');
+  has FieldNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
 1;
 
@@ -14,7 +14,7 @@ Paws::CloudSearch::IndexDocumentsResponse
 =head1 ATTRIBUTES
 
 
-=head2 FieldNames => ArrayRef[Str]
+=head2 FieldNames => ArrayRef[Str|Undef]
 
 The names of the fields that are currently being indexed.
 

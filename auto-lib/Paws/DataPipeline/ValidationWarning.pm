@@ -1,7 +1,7 @@
 package Paws::DataPipeline::ValidationWarning;
   use Moose;
   has Id => (is => 'ro', isa => 'Str', xmlname => 'id', request_name => 'id', traits => ['Unwrapped','NameInRequest']);
-  has Warnings => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'warnings', request_name => 'warnings', traits => ['Unwrapped','NameInRequest']);
+  has Warnings => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'warnings', request_name => 'warnings', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -44,7 +44,7 @@ returned are defined by AWS Data Pipeline.
   The identifier of the object that contains the validation warning.
 
 
-=head2 Warnings => ArrayRef[Str]
+=head2 Warnings => ArrayRef[Str|Undef]
 
   A description of the validation warning.
 

@@ -8,7 +8,7 @@ package Paws::ApiGateway::CreateAuthorizer;
   has IdentitySource => (is => 'ro', isa => 'Str', required => 1);
   has IdentityValidationExpression => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str', required => 1);
-  has ProviderARNs => (is => 'ro', isa => 'ArrayRef[Str]');
+  has ProviderARNs => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restApiId' , required => 1);
   has Type => (is => 'ro', isa => 'Str', required => 1);
 
@@ -88,7 +88,7 @@ A validation expression for the incoming identity.
 
 
 
-=head2 ProviderARNs => ArrayRef[Str]
+=head2 ProviderARNs => ArrayRef[Str|Undef]
 
 A list of the Cognito Your User Pool authorizer's provider ARNs.
 

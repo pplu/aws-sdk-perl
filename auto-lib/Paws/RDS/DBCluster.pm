@@ -1,7 +1,8 @@
 package Paws::RDS::DBCluster;
   use Moose;
   has AllocatedStorage => (is => 'ro', isa => 'Int');
-  has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str]');
+  has AssociatedRoles => (is => 'ro', isa => 'ArrayRef[Paws::RDS::DBClusterRole]');
+  has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has BackupRetentionPeriod => (is => 'ro', isa => 'Int');
   has CharacterSetName => (is => 'ro', isa => 'Str');
   has DatabaseName => (is => 'ro', isa => 'Str');
@@ -25,7 +26,7 @@ package Paws::RDS::DBCluster;
   has PreferredBackupWindow => (is => 'ro', isa => 'Str');
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
   has ReaderEndpoint => (is => 'ro', isa => 'Str');
-  has ReadReplicaIdentifiers => (is => 'ro', isa => 'ArrayRef[Str]');
+  has ReadReplicaIdentifiers => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has ReplicationSourceIdentifier => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
   has StorageEncrypted => (is => 'ro', isa => 'Bool');
@@ -102,7 +103,15 @@ action.
   Specifies the allocated storage size in gigabytes (GB).
 
 
-=head2 AvailabilityZones => ArrayRef[Str]
+=head2 AssociatedRoles => ArrayRef[L<Paws::RDS::DBClusterRole>]
+
+  Provides a list of the AWS Identity and Access Management (IAM) roles
+that are associated with the DB cluster. IAM roles that are associated
+with a DB cluster grant permission for the DB cluster to access other
+AWS services on your behalf.
+
+
+=head2 AvailabilityZones => ArrayRef[Str|Undef]
 
   Provides the list of EC2 Availability Zones that instances in the DB
 cluster can be created in.
@@ -252,7 +261,7 @@ dropped. To continue sending your read workload to other Aurora
 Replicas in the cluster, you can then recoonect to the reader endpoint.
 
 
-=head2 ReadReplicaIdentifiers => ArrayRef[Str]
+=head2 ReadReplicaIdentifiers => ArrayRef[Str|Undef]
 
   Contains one or more identifiers of the Read Replicas associated with
 this DB cluster.

@@ -6,7 +6,7 @@ package Paws::ElastiCache::CreateCacheCluster;
   has CacheClusterId => (is => 'ro', isa => 'Str', required => 1);
   has CacheNodeType => (is => 'ro', isa => 'Str');
   has CacheParameterGroupName => (is => 'ro', isa => 'Str');
-  has CacheSecurityGroupNames => (is => 'ro', isa => 'ArrayRef[Str]');
+  has CacheSecurityGroupNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has CacheSubnetGroupName => (is => 'ro', isa => 'Str');
   has Engine => (is => 'ro', isa => 'Str');
   has EngineVersion => (is => 'ro', isa => 'Str');
@@ -14,11 +14,11 @@ package Paws::ElastiCache::CreateCacheCluster;
   has NumCacheNodes => (is => 'ro', isa => 'Int');
   has Port => (is => 'ro', isa => 'Int');
   has PreferredAvailabilityZone => (is => 'ro', isa => 'Str');
-  has PreferredAvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str]');
+  has PreferredAvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
   has ReplicationGroupId => (is => 'ro', isa => 'Str');
-  has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str]');
-  has SnapshotArns => (is => 'ro', isa => 'ArrayRef[Str]');
+  has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has SnapshotArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has SnapshotName => (is => 'ro', isa => 'Str');
   has SnapshotRetentionLimit => (is => 'ro', isa => 'Int');
   has SnapshotWindow => (is => 'ro', isa => 'Str');
@@ -62,9 +62,9 @@ This parameter is currently disabled.
 
 =head2 AZMode => Str
 
-Specifies whether the nodes in this Memcached node group are created in
-a single Availability Zone or created across multiple Availability
-Zones in the cluster's region.
+Specifies whether the nodes in this Memcached cluster are created in a
+single Availability Zone or created across multiple Availability Zones
+in the cluster's region.
 
 This parameter is only supported for Memcached cache clusters.
 
@@ -75,8 +75,8 @@ Valid values are: C<"single-az">, C<"cross-az">
 
 =head2 B<REQUIRED> CacheClusterId => Str
 
-The node group identifier. This parameter is stored as a lowercase
-string.
+The node group (shard) identifier. This parameter is stored as a
+lowercase string.
 
 B<Constraints:>
 
@@ -101,7 +101,7 @@ A name cannot end with a hyphen or contain two consecutive hyphens.
 
 =head2 CacheNodeType => Str
 
-The compute and memory capacity of the nodes in the node group.
+The compute and memory capacity of the nodes in the node group (shard).
 
 Valid node types are as follows:
 
@@ -117,7 +117,9 @@ General purpose:
 
 Current generation: C<cache.t2.micro>, C<cache.t2.small>,
 C<cache.t2.medium>, C<cache.m3.medium>, C<cache.m3.large>,
-C<cache.m3.xlarge>, C<cache.m3.2xlarge>
+C<cache.m3.xlarge>, C<cache.m3.2xlarge>, C<cache.m4.large>,
+C<cache.m4.xlarge>, C<cache.m4.2xlarge>, C<cache.m4.4xlarge>,
+C<cache.m4.10xlarge>
 
 =item *
 
@@ -156,21 +158,24 @@ B<Notes:>
 
 =item *
 
-All t2 instances are created in an Amazon Virtual Private Cloud (VPC).
+All T2 instances are created in an Amazon Virtual Private Cloud (Amazon
+VPC).
 
 =item *
 
-Redis backup/restore is not supported for t2 instances.
+Redis backup/restore is not supported for Redis (cluster mode disabled)
+T1 and T2 instances. Backup/restore is supported on Redis (cluster mode
+enabled) T2 instances.
 
 =item *
 
-Redis Append-only files (AOF) functionality is not supported for t1 or
-t2 instances.
+Redis Append-only files (AOF) functionality is not supported for T1 or
+T2 instances.
 
 =back
 
-For a complete listing of cache node types and specifications, see
-Amazon ElastiCache Product Features and Details and Cache Node
+For a complete listing of node types and specifications, see Amazon
+ElastiCache Product Features and Details and either Cache Node
 Type-Specific Parameters for Memcached or Cache Node Type-Specific
 Parameters for Redis.
 
@@ -180,16 +185,17 @@ Parameters for Redis.
 
 The name of the parameter group to associate with this cache cluster.
 If this argument is omitted, the default parameter group for the
-specified engine is used.
+specified engine is used. You cannot use any parameter group which has
+C<cluster-enabled='yes'> when creating a cluster.
 
 
 
-=head2 CacheSecurityGroupNames => ArrayRef[Str]
+=head2 CacheSecurityGroupNames => ArrayRef[Str|Undef]
 
 A list of security group names to associate with this cache cluster.
 
 Use this parameter only when you are creating a cache cluster outside
-of an Amazon Virtual Private Cloud (VPC).
+of an Amazon Virtual Private Cloud (Amazon VPC).
 
 
 
@@ -198,7 +204,11 @@ of an Amazon Virtual Private Cloud (VPC).
 The name of the subnet group to be used for the cache cluster.
 
 Use this parameter only when you are creating a cache cluster in an
-Amazon Virtual Private Cloud (VPC).
+Amazon Virtual Private Cloud (Amazon VPC).
+
+If you're going to launch your cluster in an Amazon VPC, you need to
+create a subnet group before you start creating a cluster. For more
+information, see Subnets and Subnet Groups.
 
 
 
@@ -206,9 +216,7 @@ Amazon Virtual Private Cloud (VPC).
 
 The name of the cache engine to be used for this cache cluster.
 
-Valid values for this parameter are:
-
-C<memcached> | C<redis>
+Valid values for this parameter are: C<memcached> | C<redis>
 
 
 
@@ -216,7 +224,7 @@ C<memcached> | C<redis>
 
 The version number of the cache engine to be used for this cache
 cluster. To view the supported cache engine versions, use the
-I<DescribeCacheEngineVersions> action.
+DescribeCacheEngineVersions operation.
 
 B<Important:> You can upgrade to a newer engine version (see Selecting
 a Cache Engine and Version), but you cannot downgrade to an earlier
@@ -229,7 +237,7 @@ anew with the earlier engine version.
 =head2 NotificationTopicArn => Str
 
 The Amazon Resource Name (ARN) of the Amazon Simple Notification
-Service (SNS) topic to which notifications will be sent.
+Service (SNS) topic to which notifications are sent.
 
 The Amazon SNS topic owner must be the same as the cache cluster owner.
 
@@ -237,7 +245,7 @@ The Amazon SNS topic owner must be the same as the cache cluster owner.
 
 =head2 NumCacheNodes => Int
 
-The initial number of cache nodes that the cache cluster will have.
+The initial number of cache nodes that the cache cluster has.
 
 For clusters running Redis, this value must be 1. For clusters running
 Memcached, this value must be between 1 and 20.
@@ -250,14 +258,13 @@ http://aws.amazon.com/contact-us/elasticache-node-limit-request/.
 
 =head2 Port => Int
 
-The port number on which each of the cache nodes will accept
-connections.
+The port number on which each of the cache nodes accepts connections.
 
 
 
 =head2 PreferredAvailabilityZone => Str
 
-The EC2 Availability Zone in which the cache cluster will be created.
+The EC2 Availability Zone in which the cache cluster is created.
 
 All nodes belonging to this Memcached cache cluster are placed in the
 preferred Availability Zone. If you want to create your nodes across
@@ -267,10 +274,10 @@ Default: System chosen Availability Zone.
 
 
 
-=head2 PreferredAvailabilityZones => ArrayRef[Str]
+=head2 PreferredAvailabilityZones => ArrayRef[Str|Undef]
 
-A list of the Availability Zones in which cache nodes will be created.
-The order of the zones in the list is not important.
+A list of the Availability Zones in which cache nodes are created. The
+order of the zones in the list is not important.
 
 This option is only supported on Memcached.
 
@@ -287,13 +294,6 @@ multiple times in the list.
 
 Default: System chosen Availability Zones.
 
-Example: One Memcached node in each of three different Availability
-Zones:
-C<PreferredAvailabilityZones.member.1=us-west-2a&amp;PreferredAvailabilityZones.member.2=us-west-2b&amp;PreferredAvailabilityZones.member.3=us-west-2c>
-
-Example: All three Memcached nodes in one Availability Zone:
-C<PreferredAvailabilityZones.member.1=us-west-2a&amp;PreferredAvailabilityZones.member.2=us-west-2a&amp;PreferredAvailabilityZones.member.3=us-west-2a>
-
 
 
 =head2 PreferredMaintenanceWindow => Str
@@ -302,6 +302,13 @@ Specifies the weekly time range during which maintenance on the cache
 cluster is performed. It is specified as a range in the format
 ddd:hh24:mi-ddd:hh24:mi (24H Clock UTC). The minimum maintenance window
 is a 60 minute period. Valid values for C<ddd> are:
+
+Specifies the weekly time range during which maintenance on the cluster
+is performed. It is specified as a range in the format
+ddd:hh24:mi-ddd:hh24:mi (24H Clock UTC). The minimum maintenance window
+is a 60 minute period.
+
+Valid values for C<ddd> are:
 
 =over
 
@@ -335,42 +342,46 @@ C<sat>
 
 =back
 
-Example: C<sun:05:00-sun:09:00>
+Example: C<sun:23:00-mon:01:30>
 
 
 
 =head2 ReplicationGroupId => Str
 
+Due to current limitations on Redis (cluster mode disabled), this
+operation or parameter is not supported on Redis (cluster mode enabled)
+replication groups.
+
 The ID of the replication group to which this cache cluster should
-belong. If this parameter is specified, the cache cluster will be added
-to the specified replication group as a read replica; otherwise, the
-cache cluster will be a standalone primary that is not part of any
-replication group.
+belong. If this parameter is specified, the cache cluster is added to
+the specified replication group as a read replica; otherwise, the cache
+cluster is a standalone primary that is not part of any replication
+group.
 
 If the specified replication group is Multi-AZ enabled and the
-availability zone is not specified, the cache cluster will be created
-in availability zones that provide the best spread of read replicas
-across availability zones.
+Availability Zone is not specified, the cache cluster is created in
+Availability Zones that provide the best spread of read replicas across
+Availability Zones.
 
 This parameter is only valid if the C<Engine> parameter is C<redis>.
 
 
 
-=head2 SecurityGroupIds => ArrayRef[Str]
+=head2 SecurityGroupIds => ArrayRef[Str|Undef]
 
 One or more VPC security groups associated with the cache cluster.
 
 Use this parameter only when you are creating a cache cluster in an
-Amazon Virtual Private Cloud (VPC).
+Amazon Virtual Private Cloud (Amazon VPC).
 
 
 
-=head2 SnapshotArns => ArrayRef[Str]
+=head2 SnapshotArns => ArrayRef[Str|Undef]
 
 A single-element string list containing an Amazon Resource Name (ARN)
 that uniquely identifies a Redis RDB snapshot file stored in Amazon S3.
-The snapshot file will be used to populate the node group. The Amazon
-S3 object name in the ARN cannot contain any commas.
+The snapshot file is used to populate the node group (shard). The
+Amazon S3 object name in the ARN cannot contain any commas.
 
 This parameter is only valid if the C<Engine> parameter is C<redis>.
 
@@ -380,9 +391,9 @@ Example of an Amazon S3 ARN: C<arn:aws:s3:::my_bucket/snapshot1.rdb>
 
 =head2 SnapshotName => Str
 
-The name of a snapshot from which to restore data into the new node
-group. The snapshot status changes to C<restoring> while the new node
-group is being created.
+The name of a Redis snapshot from which to restore data into the new
+node group (shard). The snapshot status changes to C<restoring> while
+the new node group (shard) is being created.
 
 This parameter is only valid if the C<Engine> parameter is C<redis>.
 
@@ -390,10 +401,10 @@ This parameter is only valid if the C<Engine> parameter is C<redis>.
 
 =head2 SnapshotRetentionLimit => Int
 
-The number of days for which ElastiCache will retain automatic
-snapshots before deleting them. For example, if you set
-C<SnapshotRetentionLimit> to 5, then a snapshot that was taken today
-will be retained for 5 days before being deleted.
+The number of days for which ElastiCache retains automatic snapshots
+before deleting them. For example, if you set C<SnapshotRetentionLimit>
+to 5, a snapshot taken today is retained for 5 days before being
+deleted.
 
 This parameter is only valid if the C<Engine> parameter is C<redis>.
 
@@ -404,13 +415,13 @@ cluster).
 
 =head2 SnapshotWindow => Str
 
-The daily time range (in UTC) during which ElastiCache will begin
-taking a daily snapshot of your node group.
+The daily time range (in UTC) during which ElastiCache begins taking a
+daily snapshot of your node group (shard).
 
 Example: C<05:00-09:00>
 
-If you do not specify this parameter, then ElastiCache will
-automatically choose an appropriate time range.
+If you do not specify this parameter, ElastiCache automatically chooses
+an appropriate time range.
 
 B<Note:> This parameter is only valid if the C<Engine> parameter is
 C<redis>.

@@ -16,7 +16,7 @@ Paws::CloudFront::ListDistributionsByWebACLIdResult
 
 =head2 DistributionList => L<Paws::CloudFront::DistributionList>
 
-The DistributionList type.
+The C<DistributionList> type.
 
 
 

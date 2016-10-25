@@ -2,7 +2,7 @@
 package Paws::EC2::CancelSpotFleetRequests;
   use Moose;
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
-  has SpotFleetRequestIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'spotFleetRequestId' , required => 1);
+  has SpotFleetRequestIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'spotFleetRequestId' , required => 1);
   has TerminateInstances => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'terminateInstances' , required => 1);
 
   use MooseX::ClassAttribute;
@@ -44,7 +44,7 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 
 
-=head2 B<REQUIRED> SpotFleetRequestIds => ArrayRef[Str]
+=head2 B<REQUIRED> SpotFleetRequestIds => ArrayRef[Str|Undef]
 
 The IDs of the Spot fleet requests.
 

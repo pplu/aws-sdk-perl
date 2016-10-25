@@ -1,7 +1,7 @@
 
 package Paws::ECR::BatchCheckLayerAvailability;
   use Moose;
-  has LayerDigests => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'layerDigests' , required => 1);
+  has LayerDigests => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'layerDigests' , required => 1);
   has RegistryId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'registryId' );
   has RepositoryName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'repositoryName' , required => 1);
 
@@ -35,7 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> LayerDigests => ArrayRef[Str]
+=head2 B<REQUIRED> LayerDigests => ArrayRef[Str|Undef]
 
 The digests of the image layers to check.
 

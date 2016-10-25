@@ -3,7 +3,7 @@ package Paws::KMS::Decrypt;
   use Moose;
   has CiphertextBlob => (is => 'ro', isa => 'Str', required => 1);
   has EncryptionContext => (is => 'ro', isa => 'Paws::KMS::EncryptionContextType');
-  has GrantTokens => (is => 'ro', isa => 'ArrayRef[Str]');
+  has GrantTokens => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
   use MooseX::ClassAttribute;
 
@@ -49,7 +49,7 @@ more information, see Encryption Context.
 
 
 
-=head2 GrantTokens => ArrayRef[Str]
+=head2 GrantTokens => ArrayRef[Str|Undef]
 
 A list of grant tokens.
 

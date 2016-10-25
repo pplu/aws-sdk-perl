@@ -42,12 +42,12 @@ GameLift Developer Guide.
 
 =head2 B<REQUIRED> Key => Str
 
-  
+  TBD
 
 
 =head2 B<REQUIRED> Value => Str
 
-  
+  TBD
 
 
 

@@ -3,7 +3,7 @@ package Paws::EC2::DescribeVpnGateways;
   use Moose;
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has Filters => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
-  has VpnGatewayIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'VpnGatewayId' );
+  has VpnGatewayIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'VpnGatewayId' );
 
   use MooseX::ClassAttribute;
 
@@ -104,7 +104,7 @@ C<vpn-gateway-id> - The ID of the virtual private gateway.
 
 
 
-=head2 VpnGatewayIds => ArrayRef[Str]
+=head2 VpnGatewayIds => ArrayRef[Str|Undef]
 
 One or more virtual private gateway IDs.
 

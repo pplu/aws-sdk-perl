@@ -257,7 +257,7 @@ Returns: a L<Paws::CloudHSM::DescribeLunaClientResponse> instance
   Retrieves information about an HSM client.
 
 
-=head2 GetConfig(ClientArn => Str, ClientVersion => Str, HapgList => ArrayRef[Str])
+=head2 GetConfig(ClientArn => Str, ClientVersion => Str, HapgList => ArrayRef[Str|Undef])
 
 Each argument is described in detail in: L<Paws::CloudHSM::GetConfig>
 
@@ -328,7 +328,7 @@ Returns: a L<Paws::CloudHSM::ListTagsForResourceResponse> instance
   Returns a list of all tags for the specified AWS CloudHSM resource.
 
 
-=head2 ModifyHapg(HapgArn => Str, [Label => Str, PartitionSerialList => ArrayRef[Str]])
+=head2 ModifyHapg(HapgArn => Str, [Label => Str, PartitionSerialList => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::CloudHSM::ModifyHapg>
 
@@ -364,7 +364,7 @@ This action can potentially start a workflow to install the new
 certificate on the client's HSMs.
 
 
-=head2 RemoveTagsFromResource(ResourceArn => Str, TagKeyList => ArrayRef[Str])
+=head2 RemoveTagsFromResource(ResourceArn => Str, TagKeyList => ArrayRef[Str|Undef])
 
 Each argument is described in detail in: L<Paws::CloudHSM::RemoveTagsFromResource>
 

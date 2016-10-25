@@ -7,6 +7,7 @@ package Paws::S3::ListObjects;
   has Marker => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'marker' );
   has MaxKeys => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'max-keys' );
   has Prefix => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'prefix' );
+  has RequestPayer => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-request-payer' );
 
   use MooseX::ClassAttribute;
 
@@ -77,6 +78,14 @@ might contain fewer keys but will never contain more.
 Limits the response to keys that begin with the specified prefix.
 
 
+
+=head2 RequestPayer => Str
+
+Confirms that the requester knows that she or he will be charged for
+the list objects request. Bucket owners need not specify this parameter
+in their requests.
+
+Valid values are: C<"requester">
 
 
 =head1 SEE ALSO

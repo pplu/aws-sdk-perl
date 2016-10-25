@@ -2,7 +2,7 @@
 package Paws::AutoScaling::SetInstanceProtection;
   use Moose;
   has AutoScalingGroupName => (is => 'ro', isa => 'Str', required => 1);
-  has InstanceIds => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has InstanceIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
   has ProtectedFromScaleIn => (is => 'ro', isa => 'Bool', required => 1);
 
   use MooseX::ClassAttribute;
@@ -41,7 +41,7 @@ The name of the group.
 
 
 
-=head2 B<REQUIRED> InstanceIds => ArrayRef[Str]
+=head2 B<REQUIRED> InstanceIds => ArrayRef[Str|Undef]
 
 One or more instance IDs.
 

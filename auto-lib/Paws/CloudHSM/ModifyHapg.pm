@@ -3,7 +3,7 @@ package Paws::CloudHSM::ModifyHapg;
   use Moose;
   has HapgArn => (is => 'ro', isa => 'Str', required => 1);
   has Label => (is => 'ro', isa => 'Str');
-  has PartitionSerialList => (is => 'ro', isa => 'ArrayRef[Str]');
+  has PartitionSerialList => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
   use MooseX::ClassAttribute;
 
@@ -47,7 +47,7 @@ The new label for the high-availability partition group.
 
 
 
-=head2 PartitionSerialList => ArrayRef[Str]
+=head2 PartitionSerialList => ArrayRef[Str|Undef]
 
 The list of partition serial numbers to make members of the
 high-availability partition group.

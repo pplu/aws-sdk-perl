@@ -297,8 +297,8 @@ private zone.
 Specify the hosted zone ID for the region in which you created the
 environment. The environment must have a regionalized subdomain. For a
 list of regions and the corresponding hosted zone IDs, see AWS Elastic
-Beanstalk in the I<Regions and Endpoints> chapter of the AWSk General
-Reference.
+Beanstalk in the Regions and Endpoints chapter of the I<AWS General
+Reference>.
 
 =item ELB load balancer
 

@@ -4,7 +4,7 @@ package Paws::EC2::HostReservation;
   has CurrencyCode => (is => 'ro', isa => 'Str', xmlname => 'currencyCode', traits => ['Unwrapped']);
   has Duration => (is => 'ro', isa => 'Int', xmlname => 'duration', traits => ['Unwrapped']);
   has End => (is => 'ro', isa => 'Str', xmlname => 'end', traits => ['Unwrapped']);
-  has HostIdSet => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'hostIdSet', traits => ['Unwrapped']);
+  has HostIdSet => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'hostIdSet', traits => ['Unwrapped']);
   has HostReservationId => (is => 'ro', isa => 'Str', xmlname => 'hostReservationId', traits => ['Unwrapped']);
   has HourlyPrice => (is => 'ro', isa => 'Str', xmlname => 'hourlyPrice', traits => ['Unwrapped']);
   has InstanceFamily => (is => 'ro', isa => 'Str', xmlname => 'instanceFamily', traits => ['Unwrapped']);
@@ -70,7 +70,7 @@ C<31536000 (1 year)> | C<94608000 (3 years)>.
   The date and time that the reservation ends.
 
 
-=head2 HostIdSet => ArrayRef[Str]
+=head2 HostIdSet => ArrayRef[Str|Undef]
 
   The IDs of the Dedicated Hosts associated with the reservation.
 

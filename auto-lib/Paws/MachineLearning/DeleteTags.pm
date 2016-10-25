@@ -3,7 +3,7 @@ package Paws::MachineLearning::DeleteTags;
   use Moose;
   has ResourceId => (is => 'ro', isa => 'Str', required => 1);
   has ResourceType => (is => 'ro', isa => 'Str', required => 1);
-  has TagKeys => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has TagKeys => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -47,7 +47,7 @@ The type of the tagged ML object.
 
 Valid values are: C<"BatchPrediction">, C<"DataSource">, C<"Evaluation">, C<"MLModel">
 
-=head2 B<REQUIRED> TagKeys => ArrayRef[Str]
+=head2 B<REQUIRED> TagKeys => ArrayRef[Str|Undef]
 
 One or more tags to delete.
 

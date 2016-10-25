@@ -3,7 +3,7 @@ package Paws::EC2::DescribeNetworkInterfaces;
   use Moose;
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has Filters => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'filter' );
-  has NetworkInterfaceIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'NetworkInterfaceId' );
+  has NetworkInterfaceIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'NetworkInterfaceId' );
 
   use MooseX::ClassAttribute;
 
@@ -233,7 +233,7 @@ C<vpc-id> - The ID of the VPC for the network interface.
 
 
 
-=head2 NetworkInterfaceIds => ArrayRef[Str]
+=head2 NetworkInterfaceIds => ArrayRef[Str|Undef]
 
 One or more network interface IDs.
 

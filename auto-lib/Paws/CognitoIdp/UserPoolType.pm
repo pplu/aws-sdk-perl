@@ -1,7 +1,8 @@
 package Paws::CognitoIdp::UserPoolType;
   use Moose;
-  has AliasAttributes => (is => 'ro', isa => 'ArrayRef[Str]');
-  has AutoVerifiedAttributes => (is => 'ro', isa => 'ArrayRef[Str]');
+  has AdminCreateUserConfig => (is => 'ro', isa => 'Paws::CognitoIdp::AdminCreateUserConfigType');
+  has AliasAttributes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has AutoVerifiedAttributes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has CreationDate => (is => 'ro', isa => 'Str');
   has DeviceConfiguration => (is => 'ro', isa => 'Paws::CognitoIdp::DeviceConfigurationType');
   has EmailConfiguration => (is => 'ro', isa => 'Paws::CognitoIdp::EmailConfigurationType');
@@ -40,14 +41,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CognitoIdp::UserPoolType object:
 
-  $service_obj->Method(Att1 => { AliasAttributes => $value, ..., Status => $value  });
+  $service_obj->Method(Att1 => { AdminCreateUserConfig => $value, ..., Status => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::CognitoIdp::UserPoolType object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->AliasAttributes
+  $result->Att1->AdminCreateUserConfig
 
 =head1 DESCRIPTION
 
@@ -56,12 +57,17 @@ A container with information about the user pool type.
 =head1 ATTRIBUTES
 
 
-=head2 AliasAttributes => ArrayRef[Str]
+=head2 AdminCreateUserConfig => L<Paws::CognitoIdp::AdminCreateUserConfigType>
+
+  The configuration for AdminCreateUser requests.
+
+
+=head2 AliasAttributes => ArrayRef[Str|Undef]
 
   Specifies the attributes that are aliased in a user pool.
 
 
-=head2 AutoVerifiedAttributes => ArrayRef[Str]
+=head2 AutoVerifiedAttributes => ArrayRef[Str|Undef]
 
   Specifies the attributes that are auto-verified in a user pool.
 
@@ -124,14 +130,20 @@ pool.
 
 =over
 
-=item * C<OFF> - MFA tokens are not required and cannot be specified
-during user registration.
+=item *
 
-=item * C<ON> - MFA tokens are required for all user registrations. You
-can only specify required when you are initially creating a user pool.
+C<OFF> - MFA tokens are not required and cannot be specified during
+user registration.
 
-=item * C<OPTIONAL> - Users have the option when registering to create
-an MFA token.
+=item *
+
+C<ON> - MFA tokens are required for all user registrations. You can
+only specify required when you are initially creating a user pool.
+
+=item *
+
+C<OPTIONAL> - Users have the option when registering to create an MFA
+token.
 
 =back
 

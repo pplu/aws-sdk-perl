@@ -2,7 +2,7 @@
 package Paws::EC2::CreateFlowLogsResult;
   use Moose;
   has ClientToken => (is => 'ro', isa => 'Str', xmlname => 'clientToken', traits => ['Unwrapped',]);
-  has FlowLogIds => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'flowLogIdSet', traits => ['Unwrapped',]);
+  has FlowLogIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'flowLogIdSet', traits => ['Unwrapped',]);
   has Unsuccessful => (is => 'ro', isa => 'ArrayRef[Paws::EC2::UnsuccessfulItem]', xmlname => 'unsuccessful', traits => ['Unwrapped',]);
 
 1;
@@ -23,7 +23,7 @@ of the request.
 
 
 
-=head2 FlowLogIds => ArrayRef[Str]
+=head2 FlowLogIds => ArrayRef[Str|Undef]
 
 The IDs of the flow logs.
 

@@ -1,5 +1,4 @@
 package Paws::EFS;
-  warn "Paws::EFS is not stable / supported / entirely developed";
   use Moose;
   sub service { 'elasticfilesystem' }
   sub version { '2015-02-01' }
@@ -102,6 +101,12 @@ Paws::EFS - Perl Interface to AWS Amazon Elastic File System
 
 Amazon Elastic File System
 
+Amazon Elastic File System (Amazon EFS) provides simple, scalable file
+storage for use with Amazon EC2 instances in the AWS Cloud. With Amazon
+EFS, storage capacity is elastic, growing and shrinking automatically
+as you add and remove files, so your applications have the storage they
+need, when they need it. For more information, see the User Guide.
+
 =head1 METHODS
 
 =head2 CreateFileSystem(CreationToken => Str, [PerformanceMode => Str])
@@ -170,7 +175,7 @@ This operation requires permissions for the
 C<elasticfilesystem:CreateFileSystem> action.
 
 
-=head2 CreateMountTarget(FileSystemId => Str, SubnetId => Str, [IpAddress => Str, SecurityGroups => ArrayRef[Str]])
+=head2 CreateMountTarget(FileSystemId => Str, SubnetId => Str, [IpAddress => Str, SecurityGroups => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::EFS::CreateMountTarget>
 
@@ -426,7 +431,7 @@ C<ec2:DeleteNetworkInterface>
 
 
 
-=head2 DeleteTags(FileSystemId => Str, TagKeys => ArrayRef[Str])
+=head2 DeleteTags(FileSystemId => Str, TagKeys => ArrayRef[Str|Undef])
 
 Each argument is described in detail in: L<Paws::EFS::DeleteTags>
 
@@ -539,7 +544,7 @@ This operation requires permissions for the
 C<elasticfilesystem:DescribeTags> action.
 
 
-=head2 ModifyMountTargetSecurityGroups(MountTargetId => Str, [SecurityGroups => ArrayRef[Str]])
+=head2 ModifyMountTargetSecurityGroups(MountTargetId => Str, [SecurityGroups => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::EFS::ModifyMountTargetSecurityGroups>
 

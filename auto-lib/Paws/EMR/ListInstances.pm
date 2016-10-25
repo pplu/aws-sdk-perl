@@ -3,8 +3,8 @@ package Paws::EMR::ListInstances;
   use Moose;
   has ClusterId => (is => 'ro', isa => 'Str', required => 1);
   has InstanceGroupId => (is => 'ro', isa => 'Str');
-  has InstanceGroupTypes => (is => 'ro', isa => 'ArrayRef[Str]');
-  has InstanceStates => (is => 'ro', isa => 'ArrayRef[Str]');
+  has InstanceGroupTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has InstanceStates => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Marker => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
@@ -49,13 +49,13 @@ The identifier of the instance group for which to list the instances.
 
 
 
-=head2 InstanceGroupTypes => ArrayRef[Str]
+=head2 InstanceGroupTypes => ArrayRef[Str|Undef]
 
 The type of instance group for which to list the instances.
 
 
 
-=head2 InstanceStates => ArrayRef[Str]
+=head2 InstanceStates => ArrayRef[Str|Undef]
 
 A list of instance states that will filter the instances returned with
 this request.

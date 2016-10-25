@@ -343,9 +343,8 @@ Returns: a L<Paws::ECS::CreateServiceResponse> instance
 
   Runs and maintains a desired number of tasks from a specified task
 definition. If the number of tasks running in a service drops below
-C<desiredCount>, Amazon ECS spawns another instantiation of the task in
-the specified cluster. To update an existing service, see
-UpdateService.
+C<desiredCount>, Amazon ECS spawns another copy of the task in the
+specified cluster. To update an existing service, see UpdateService.
 
 In addition to maintaining the desired count of tasks in your service,
 you can optionally run your service behind a load balancer. The load
@@ -355,29 +354,35 @@ I<Amazon EC2 Container Service Developer Guide>.
 
 You can optionally specify a deployment configuration for your service.
 During a deployment (which is triggered by changing the task definition
-of a service with an UpdateService operation), the service scheduler
-uses the C<minimumHealthyPercent> and C<maximumPercent> parameters to
-determine the deployment strategy.
+or the desired count of a service with an UpdateService operation), the
+service scheduler uses the C<minimumHealthyPercent> and
+C<maximumPercent> parameters to determine the deployment strategy.
 
-If the C<minimumHealthyPercent> is below 100%, the scheduler can ignore
-the C<desiredCount> temporarily during a deployment. For example, if
-your service has a C<desiredCount> of four tasks, a
-C<minimumHealthyPercent> of 50% allows the scheduler to stop two
-existing tasks before starting two new tasks. Tasks for services that
-I<do not> use a load balancer are considered healthy if they are in the
-C<RUNNING> state; tasks for services that I<do> use a load balancer are
-considered healthy if they are in the C<RUNNING> state and the
-container instance it is hosted on is reported as healthy by the load
-balancer. The default value for C<minimumHealthyPercent> is 50% in the
-console and 100% for the AWS CLI, the AWS SDKs, and the APIs.
+The C<minimumHealthyPercent> represents a lower limit on the number of
+your service's tasks that must remain in the C<RUNNING> state during a
+deployment, as a percentage of the C<desiredCount> (rounded up to the
+nearest integer). This parameter enables you to deploy without using
+additional cluster capacity. For example, if your service has a
+C<desiredCount> of four tasks and a C<minimumHealthyPercent> of 50%,
+the scheduler may stop two existing tasks to free up cluster capacity
+before starting two new tasks. Tasks for services that I<do not> use a
+load balancer are considered healthy if they are in the C<RUNNING>
+state; tasks for services that I<do> use a load balancer are considered
+healthy if they are in the C<RUNNING> state and the container instance
+it is hosted on is reported as healthy by the load balancer. The
+default value for C<minimumHealthyPercent> is 50% in the console and
+100% for the AWS CLI, the AWS SDKs, and the APIs.
 
 The C<maximumPercent> parameter represents an upper limit on the number
-of running tasks during a deployment, which enables you to define the
-deployment batch size. For example, if your service has a
-C<desiredCount> of four tasks, a C<maximumPercent> value of 200% starts
-four new tasks before stopping the four older tasks (provided that the
-cluster resources required to do this are available). The default value
-for C<maximumPercent> is 200%.
+of your service's tasks that are allowed in the C<RUNNING> or
+C<PENDING> state during a deployment, as a percentage of the
+C<desiredCount> (rounded down to the nearest integer). This parameter
+enables you to define the deployment batch size. For example, if your
+service has a C<desiredCount> of four tasks and a C<maximumPercent>
+value of 200%, the scheduler may start four new tasks before stopping
+the four older tasks (provided that the cluster resources required to
+do this are available). The default value for C<maximumPercent> is
+200%.
 
 When the service scheduler launches new tasks, it attempts to balance
 them across the Availability Zones in your cluster with the following
@@ -464,11 +469,10 @@ but it does not terminate the EC2 instance; if you are finished using
 the instance, be sure to terminate it in the Amazon EC2 console to stop
 billing.
 
-If you terminate a running container instance with a connected Amazon
-ECS container agent, the agent automatically deregisters the instance
-from your cluster (stopped container instances or instances with
-disconnected agents are not automatically deregistered when
-terminated).
+If you terminate a running container instance, Amazon ECS automatically
+deregisters the instance from your cluster (stopped container instances
+or instances with disconnected agents are not automatically
+deregistered when terminated).
 
 
 =head2 DeregisterTaskDefinition(TaskDefinition => Str)
@@ -491,7 +495,7 @@ reference an C<INACTIVE> task definition (although there may be up to a
 not yet taken effect).
 
 
-=head2 DescribeClusters([Clusters => ArrayRef[Str]])
+=head2 DescribeClusters([Clusters => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::ECS::DescribeClusters>
 
@@ -500,7 +504,7 @@ Returns: a L<Paws::ECS::DescribeClustersResponse> instance
   Describes one or more of your clusters.
 
 
-=head2 DescribeContainerInstances(ContainerInstances => ArrayRef[Str], [Cluster => Str])
+=head2 DescribeContainerInstances(ContainerInstances => ArrayRef[Str|Undef], [Cluster => Str])
 
 Each argument is described in detail in: L<Paws::ECS::DescribeContainerInstances>
 
@@ -511,7 +515,7 @@ metadata about registered and remaining resources on each container
 instance requested.
 
 
-=head2 DescribeServices(Services => ArrayRef[Str], [Cluster => Str])
+=head2 DescribeServices(Services => ArrayRef[Str|Undef], [Cluster => Str])
 
 Each argument is described in detail in: L<Paws::ECS::DescribeServices>
 
@@ -535,7 +539,7 @@ You can only describe C<INACTIVE> task definitions while an active task
 or service references them.
 
 
-=head2 DescribeTasks(Tasks => ArrayRef[Str], [Cluster => Str])
+=head2 DescribeTasks(Tasks => ArrayRef[Str|Undef], [Cluster => Str])
 
 Each argument is described in detail in: L<Paws::ECS::DescribeTasks>
 
@@ -677,7 +681,7 @@ container instance, use C<StartTask> instead.
 The C<count> parameter is limited to 10 tasks per call.
 
 
-=head2 StartTask(ContainerInstances => ArrayRef[Str], TaskDefinition => Str, [Cluster => Str, Overrides => L<Paws::ECS::TaskOverride>, StartedBy => Str])
+=head2 StartTask(ContainerInstances => ArrayRef[Str|Undef], TaskDefinition => Str, [Cluster => Str, Overrides => L<Paws::ECS::TaskOverride>, StartedBy => Str])
 
 Each argument is described in detail in: L<Paws::ECS::StartTask>
 

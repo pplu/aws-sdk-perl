@@ -3,7 +3,7 @@ package Paws::EC2::DescribeImportImageTasks;
   use Moose;
   has DryRun => (is => 'ro', isa => 'Bool');
   has Filters => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Filter]');
-  has ImportTaskIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'ImportTaskId' );
+  has ImportTaskIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'ImportTaskId' );
   has MaxResults => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
 
@@ -53,7 +53,7 @@ values: active, completed, deleting, deleted.
 
 
 
-=head2 ImportTaskIds => ArrayRef[Str]
+=head2 ImportTaskIds => ArrayRef[Str|Undef]
 
 A list of import image task IDs.
 

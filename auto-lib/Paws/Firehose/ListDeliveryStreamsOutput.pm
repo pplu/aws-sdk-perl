@@ -1,7 +1,7 @@
 
 package Paws::Firehose::ListDeliveryStreamsOutput;
   use Moose;
-  has DeliveryStreamNames => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has DeliveryStreamNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
   has HasMoreDeliveryStreams => (is => 'ro', isa => 'Bool', required => 1);
 
 
@@ -14,7 +14,7 @@ Paws::Firehose::ListDeliveryStreamsOutput
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> DeliveryStreamNames => ArrayRef[Str]
+=head2 B<REQUIRED> DeliveryStreamNames => ArrayRef[Str|Undef]
 
 The names of the delivery streams.
 

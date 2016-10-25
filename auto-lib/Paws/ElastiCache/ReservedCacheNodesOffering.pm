@@ -61,7 +61,9 @@ General purpose:
 
 Current generation: C<cache.t2.micro>, C<cache.t2.small>,
 C<cache.t2.medium>, C<cache.m3.medium>, C<cache.m3.large>,
-C<cache.m3.xlarge>, C<cache.m3.2xlarge>
+C<cache.m3.xlarge>, C<cache.m3.2xlarge>, C<cache.m4.large>,
+C<cache.m4.xlarge>, C<cache.m4.2xlarge>, C<cache.m4.4xlarge>,
+C<cache.m4.10xlarge>
 
 =item *
 
@@ -100,21 +102,24 @@ B<Notes:>
 
 =item *
 
-All t2 instances are created in an Amazon Virtual Private Cloud (VPC).
+All T2 instances are created in an Amazon Virtual Private Cloud (Amazon
+VPC).
 
 =item *
 
-Redis backup/restore is not supported for t2 instances.
+Redis backup/restore is not supported for Redis (cluster mode disabled)
+T1 and T2 instances. Backup/restore is supported on Redis (cluster mode
+enabled) T2 instances.
 
 =item *
 
-Redis Append-only files (AOF) functionality is not supported for t1 or
-t2 instances.
+Redis Append-only files (AOF) functionality is not supported for T1 or
+T2 instances.
 
 =back
 
-For a complete listing of cache node types and specifications, see
-Amazon ElastiCache Product Features and Details and Cache Node
+For a complete listing of node types and specifications, see Amazon
+ElastiCache Product Features and Details and either Cache Node
 Type-Specific Parameters for Memcached or Cache Node Type-Specific
 Parameters for Redis.
 

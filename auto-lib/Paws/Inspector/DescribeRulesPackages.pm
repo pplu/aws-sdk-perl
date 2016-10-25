@@ -2,7 +2,7 @@
 package Paws::Inspector::DescribeRulesPackages;
   use Moose;
   has Locale => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'locale' );
-  has RulesPackageArns => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'rulesPackageArns' , required => 1);
+  has RulesPackageArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'rulesPackageArns' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -40,7 +40,7 @@ The locale that you want to translate a rules package description into.
 
 Valid values are: C<"EN_US">
 
-=head2 B<REQUIRED> RulesPackageArns => ArrayRef[Str]
+=head2 B<REQUIRED> RulesPackageArns => ArrayRef[Str|Undef]
 
 The ARN that specifies the rules package that you want to describe.
 

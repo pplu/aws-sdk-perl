@@ -143,7 +143,7 @@ This operation is asynchronous and returns before the WorkSpaces are
 created.
 
 
-=head2 DeleteTags(ResourceId => Str, TagKeys => ArrayRef[Str])
+=head2 DeleteTags(ResourceId => Str, TagKeys => ArrayRef[Str|Undef])
 
 Each argument is described in detail in: L<Paws::WorkSpaces::DeleteTags>
 
@@ -161,7 +161,7 @@ Returns: a L<Paws::WorkSpaces::DescribeTagsResult> instance
   Describes tags for a WorkSpace.
 
 
-=head2 DescribeWorkspaceBundles([BundleIds => ArrayRef[Str], NextToken => Str, Owner => Str])
+=head2 DescribeWorkspaceBundles([BundleIds => ArrayRef[Str|Undef], NextToken => Str, Owner => Str])
 
 Each argument is described in detail in: L<Paws::WorkSpaces::DescribeWorkspaceBundles>
 
@@ -179,7 +179,7 @@ C<NextToken> response member contains a token that you pass in the next
 call to this operation to retrieve the next set of items.
 
 
-=head2 DescribeWorkspaceDirectories([DirectoryIds => ArrayRef[Str], NextToken => Str])
+=head2 DescribeWorkspaceDirectories([DirectoryIds => ArrayRef[Str|Undef], NextToken => Str])
 
 Each argument is described in detail in: L<Paws::WorkSpaces::DescribeWorkspaceDirectories>
 
@@ -195,7 +195,7 @@ C<NextToken> response member contains a token that you pass in the next
 call to this operation to retrieve the next set of items.
 
 
-=head2 DescribeWorkspaces([BundleId => Str, DirectoryId => Str, Limit => Int, NextToken => Str, UserName => Str, WorkspaceIds => ArrayRef[Str]])
+=head2 DescribeWorkspaces([BundleId => Str, DirectoryId => Str, Limit => Int, NextToken => Str, UserName => Str, WorkspaceIds => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::WorkSpaces::DescribeWorkspaces>
 
@@ -212,7 +212,7 @@ C<NextToken> response member contains a token that you pass in the next
 call to this operation to retrieve the next set of items.
 
 
-=head2 DescribeWorkspacesConnectionStatus([NextToken => Str, WorkspaceIds => ArrayRef[Str]])
+=head2 DescribeWorkspacesConnectionStatus([NextToken => Str, WorkspaceIds => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::WorkSpaces::DescribeWorkspacesConnectionStatus>
 

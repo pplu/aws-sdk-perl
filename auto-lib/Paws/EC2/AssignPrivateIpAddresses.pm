@@ -3,7 +3,7 @@ package Paws::EC2::AssignPrivateIpAddresses;
   use Moose;
   has AllowReassignment => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'allowReassignment' );
   has NetworkInterfaceId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'networkInterfaceId' , required => 1);
-  has PrivateIpAddresses => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'privateIpAddress' );
+  has PrivateIpAddresses => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'privateIpAddress' );
   has SecondaryPrivateIpAddressCount => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'secondaryPrivateIpAddressCount' );
 
   use MooseX::ClassAttribute;
@@ -50,7 +50,7 @@ The ID of the network interface.
 
 
 
-=head2 PrivateIpAddresses => ArrayRef[Str]
+=head2 PrivateIpAddresses => ArrayRef[Str|Undef]
 
 One or more IP addresses to be assigned as a secondary private IP
 address to the network interface. You can't specify this parameter when

@@ -39,27 +39,31 @@ An invalidation batch.
 
 =head2 B<REQUIRED> CallerReference => Str
 
-  A unique name that ensures the request can't be replayed. If the
-CallerReference is new (no matter the content of the Path object), a
-new distribution is created. If the CallerReference is a value you
-already sent in a previous request to create an invalidation batch, and
-the content of each Path element is identical to the original request,
-the response includes the same information returned to the original
-request. If the CallerReference is a value you already sent in a
-previous request to create a distribution but the content of any Path
-is different from the original request, CloudFront returns an
-InvalidationBatchAlreadyExists error.
+  A value that you specify to uniquely identify an invalidation request.
+CloudFront uses the value to prevent you from accidentally resubmitting
+an identical request. Whenever you create a new invalidation request,
+you must specify a new value for C<CallerReference> and change other
+values in the request as applicable. One way to ensure that the value
+of C<CallerReference> is unique is to use a C<timestamp>, for example,
+C<20120301090000>.
+
+If you make a second invalidation request with the same value for
+C<CallerReference>, and if the rest of the request is the same,
+CloudFront doesn't create a new invalidation request. Instead,
+CloudFront returns information about the invalidation request that you
+previously created with the same C<CallerReference>.
+
+If C<CallerReference> is a value you already sent in a previous
+invalidation batch request but the content of any C<Path> is different
+from the original request, CloudFront returns an
+C<InvalidationBatchAlreadyExists> error.
 
 
 =head2 B<REQUIRED> Paths => L<Paws::CloudFront::Paths>
 
-  The path of the object to invalidate. The path is relative to the
-distribution and must begin with a slash (/). You must enclose each
-invalidation object with the Path element tags. If the path includes
-non-ASCII characters or unsafe characters as defined in RFC 1783
-(http://www.ietf.org/rfc/rfc1738.txt), URL encode those characters. Do
-not URL encode any other characters in the path, or CloudFront will not
-invalidate the old version of the updated object.
+  A complex type that contains information about the objects that you
+want to invalidate. For more information, see Specifying the Objects to
+Invalidate in the I<Amazon CloudFront Developer Guide>.
 
 
 

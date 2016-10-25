@@ -7,7 +7,7 @@ package Paws::SimpleWorkflow::WorkflowExecutionStartedEventAttributes;
   has LambdaRole => (is => 'ro', isa => 'Str', xmlname => 'lambdaRole', request_name => 'lambdaRole', traits => ['Unwrapped','NameInRequest']);
   has ParentInitiatedEventId => (is => 'ro', isa => 'Int', xmlname => 'parentInitiatedEventId', request_name => 'parentInitiatedEventId', traits => ['Unwrapped','NameInRequest']);
   has ParentWorkflowExecution => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowExecution', xmlname => 'parentWorkflowExecution', request_name => 'parentWorkflowExecution', traits => ['Unwrapped','NameInRequest']);
-  has TagList => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'tagList', request_name => 'tagList', traits => ['Unwrapped','NameInRequest']);
+  has TagList => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'tagList', request_name => 'tagList', traits => ['Unwrapped','NameInRequest']);
   has TaskList => (is => 'ro', isa => 'Paws::SimpleWorkflow::TaskList', xmlname => 'taskList', request_name => 'taskList', traits => ['Unwrapped','NameInRequest'], required => 1);
   has TaskPriority => (is => 'ro', isa => 'Str', xmlname => 'taskPriority', request_name => 'taskPriority', traits => ['Unwrapped','NameInRequest']);
   has TaskStartToCloseTimeout => (is => 'ro', isa => 'Str', xmlname => 'taskStartToCloseTimeout', request_name => 'taskStartToCloseTimeout', traits => ['Unwrapped','NameInRequest']);
@@ -115,7 +115,7 @@ member is not set if the workflow execution was not started by a
 workflow.
 
 
-=head2 TagList => ArrayRef[Str]
+=head2 TagList => ArrayRef[Str|Undef]
 
   The list of tags associated with this workflow execution. An execution
 can have up to 5 tags.

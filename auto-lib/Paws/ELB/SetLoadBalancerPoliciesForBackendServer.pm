@@ -3,7 +3,7 @@ package Paws::ELB::SetLoadBalancerPoliciesForBackendServer;
   use Moose;
   has InstancePort => (is => 'ro', isa => 'Int', required => 1);
   has LoadBalancerName => (is => 'ro', isa => 'Str', required => 1);
-  has PolicyNames => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has PolicyNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -47,7 +47,7 @@ The name of the load balancer.
 
 
 
-=head2 B<REQUIRED> PolicyNames => ArrayRef[Str]
+=head2 B<REQUIRED> PolicyNames => ArrayRef[Str|Undef]
 
 The names of the policies. If the list is empty, then all current
 polices are removed from the EC2 instance.

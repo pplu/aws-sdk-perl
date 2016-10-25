@@ -1,6 +1,6 @@
 package Paws::CognitoSync::PushSync;
   use Moose;
-  has ApplicationArns => (is => 'ro', isa => 'ArrayRef[Str]');
+  has ApplicationArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has RoleArn => (is => 'ro', isa => 'Str');
 1;
 
@@ -37,7 +37,7 @@ Configuration options to be applied to the identity pool.
 =head1 ATTRIBUTES
 
 
-=head2 ApplicationArns => ArrayRef[Str]
+=head2 ApplicationArns => ArrayRef[Str|Undef]
 
   List of SNS platform application ARNs that could be used by clients.
 

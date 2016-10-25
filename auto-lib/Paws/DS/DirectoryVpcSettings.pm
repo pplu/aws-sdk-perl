@@ -1,6 +1,6 @@
 package Paws::DS::DirectoryVpcSettings;
   use Moose;
-  has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
   has VpcId => (is => 'ro', isa => 'Str', required => 1);
 1;
 
@@ -38,7 +38,7 @@ operation.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> SubnetIds => ArrayRef[Str]
+=head2 B<REQUIRED> SubnetIds => ArrayRef[Str|Undef]
 
   The identifiers of the subnets for the directory servers. The two
 subnets must be in different Availability Zones. AWS Directory Service

@@ -1,7 +1,7 @@
 
 package Paws::Kinesis::DisableEnhancedMonitoring;
   use Moose;
-  has ShardLevelMetrics => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has ShardLevelMetrics => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
   has StreamName => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -34,7 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> ShardLevelMetrics => ArrayRef[Str]
+=head2 B<REQUIRED> ShardLevelMetrics => ArrayRef[Str|Undef]
 
 List of shard-level metrics to disable.
 

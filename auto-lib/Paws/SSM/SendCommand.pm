@@ -5,7 +5,7 @@ package Paws::SSM::SendCommand;
   has DocumentHash => (is => 'ro', isa => 'Str');
   has DocumentHashType => (is => 'ro', isa => 'Str');
   has DocumentName => (is => 'ro', isa => 'Str', required => 1);
-  has InstanceIds => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has InstanceIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
   has NotificationConfig => (is => 'ro', isa => 'Paws::SSM::NotificationConfig');
   has OutputS3BucketName => (is => 'ro', isa => 'Str');
   has OutputS3KeyPrefix => (is => 'ro', isa => 'Str');
@@ -74,7 +74,7 @@ public document or a custom document.
 
 
 
-=head2 B<REQUIRED> InstanceIds => ArrayRef[Str]
+=head2 B<REQUIRED> InstanceIds => ArrayRef[Str|Undef]
 
 Required. The instance IDs where the command should execute. You can
 specify a maximum of 50 IDs.

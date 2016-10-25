@@ -2,7 +2,7 @@
 package Paws::DS::DescribeConditionalForwarders;
   use Moose;
   has DirectoryId => (is => 'ro', isa => 'Str', required => 1);
-  has RemoteDomainNames => (is => 'ro', isa => 'ArrayRef[Str]');
+  has RemoteDomainNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
   use MooseX::ClassAttribute;
 
@@ -41,7 +41,7 @@ forwarders.
 
 
 
-=head2 RemoteDomainNames => ArrayRef[Str]
+=head2 RemoteDomainNames => ArrayRef[Str|Undef]
 
 The fully qualified domain names (FQDN) of the remote domains for which
 to get the list of associated conditional forwarders. If this member is

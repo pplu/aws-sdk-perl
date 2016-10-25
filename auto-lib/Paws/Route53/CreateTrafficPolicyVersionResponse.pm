@@ -17,7 +17,7 @@ Paws::Route53::CreateTrafficPolicyVersionResponse
 
 =head2 B<REQUIRED> Location => Str
 
-
+A unique URL that represents a new traffic policy version.
 
 
 

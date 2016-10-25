@@ -49,11 +49,15 @@ CIDR format) that web requests originate from.
 
 =over
 
-=item * To configure AWS WAF to allow, block, or count requests that
-originated from the IP address 192.0.2.44, specify C<192.0.2.44/32>.
+=item *
 
-=item * To configure AWS WAF to allow, block, or count requests that
-originated from IP addresses from 192.0.2.0 to 192.0.2.255, specify
+To configure AWS WAF to allow, block, or count requests that originated
+from the IP address 192.0.2.44, specify C<192.0.2.44/32>.
+
+=item *
+
+To configure AWS WAF to allow, block, or count requests that originated
+from IP addresses from 192.0.2.0 to 192.0.2.255, specify
 C<192.0.2.0/24>.
 
 =back

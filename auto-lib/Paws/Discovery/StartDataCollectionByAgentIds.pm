@@ -1,7 +1,7 @@
 
 package Paws::Discovery::StartDataCollectionByAgentIds;
   use Moose;
-  has AgentIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'agentIds' , required => 1);
+  has AgentIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'agentIds' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -33,7 +33,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> AgentIds => ArrayRef[Str]
+=head2 B<REQUIRED> AgentIds => ArrayRef[Str|Undef]
 
 The IDs of the agents that you want to start collecting data. If you
 send a request to an AWS agent ID that you do not have permission to

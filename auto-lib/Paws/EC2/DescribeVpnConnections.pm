@@ -3,7 +3,7 @@ package Paws::EC2::DescribeVpnConnections;
   use Moose;
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has Filters => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
-  has VpnConnectionIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'VpnConnectionId' );
+  has VpnConnectionIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'VpnConnectionId' );
 
   use MooseX::ClassAttribute;
 
@@ -120,7 +120,7 @@ the VPN connection.
 
 
 
-=head2 VpnConnectionIds => ArrayRef[Str]
+=head2 VpnConnectionIds => ArrayRef[Str|Undef]
 
 One or more VPN connection IDs.
 

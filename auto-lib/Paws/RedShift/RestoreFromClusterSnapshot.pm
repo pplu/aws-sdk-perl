@@ -7,13 +7,13 @@ package Paws::RedShift::RestoreFromClusterSnapshot;
   has AvailabilityZone => (is => 'ro', isa => 'Str');
   has ClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has ClusterParameterGroupName => (is => 'ro', isa => 'Str');
-  has ClusterSecurityGroups => (is => 'ro', isa => 'ArrayRef[Str]');
+  has ClusterSecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has ClusterSubnetGroupName => (is => 'ro', isa => 'Str');
   has ElasticIp => (is => 'ro', isa => 'Str');
   has EnhancedVpcRouting => (is => 'ro', isa => 'Bool');
   has HsmClientCertificateIdentifier => (is => 'ro', isa => 'Str');
   has HsmConfigurationIdentifier => (is => 'ro', isa => 'Str');
-  has IamRoles => (is => 'ro', isa => 'ArrayRef[Str]');
+  has IamRoles => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has KmsKeyId => (is => 'ro', isa => 'Str');
   has NodeType => (is => 'ro', isa => 'Str');
   has OwnerAccount => (is => 'ro', isa => 'Str');
@@ -22,7 +22,7 @@ package Paws::RedShift::RestoreFromClusterSnapshot;
   has PubliclyAccessible => (is => 'ro', isa => 'Bool');
   has SnapshotClusterIdentifier => (is => 'ro', isa => 'Str');
   has SnapshotIdentifier => (is => 'ro', isa => 'Str', required => 1);
-  has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
   use MooseX::ClassAttribute;
 
@@ -157,7 +157,7 @@ Cannot end with a hyphen or contain two consecutive hyphens.
 
 
 
-=head2 ClusterSecurityGroups => ArrayRef[Str]
+=head2 ClusterSecurityGroups => ArrayRef[Str|Undef]
 
 A list of security groups to be associated with this cluster.
 
@@ -210,7 +210,7 @@ keys in an HSM.
 
 
 
-=head2 IamRoles => ArrayRef[Str]
+=head2 IamRoles => ArrayRef[Str|Undef]
 
 A list of AWS Identity and Access Management (IAM) roles that can be
 used by the cluster to access other AWS services. You must supply the
@@ -304,7 +304,7 @@ Example: C<my-snapshot-id>
 
 
 
-=head2 VpcSecurityGroupIds => ArrayRef[Str]
+=head2 VpcSecurityGroupIds => ArrayRef[Str|Undef]
 
 A list of Virtual Private Cloud (VPC) security groups to be associated
 with the cluster.

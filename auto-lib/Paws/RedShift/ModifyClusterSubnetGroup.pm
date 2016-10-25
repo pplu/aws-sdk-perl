@@ -3,7 +3,7 @@ package Paws::RedShift::ModifyClusterSubnetGroup;
   use Moose;
   has ClusterSubnetGroupName => (is => 'ro', isa => 'Str', required => 1);
   has Description => (is => 'ro', isa => 'Str');
-  has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -47,7 +47,7 @@ A text description of the subnet group to be modified.
 
 
 
-=head2 B<REQUIRED> SubnetIds => ArrayRef[Str]
+=head2 B<REQUIRED> SubnetIds => ArrayRef[Str|Undef]
 
 An array of VPC subnet IDs. A maximum of 20 subnets can be modified in
 a single request.

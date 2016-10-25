@@ -17,7 +17,7 @@ package Paws::Route53Domains::GetDomainDetailResponse;
   has RegistrarUrl => (is => 'ro', isa => 'Str');
   has RegistryDomainId => (is => 'ro', isa => 'Str');
   has Reseller => (is => 'ro', isa => 'Str');
-  has StatusList => (is => 'ro', isa => 'ArrayRef[Str]');
+  has StatusList => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has TechContact => (is => 'ro', isa => 'Paws::Route53Domains::ContactDetail', required => 1);
   has TechPrivacy => (is => 'ro', isa => 'Bool');
   has UpdatedDate => (is => 'ro', isa => 'Str');
@@ -178,7 +178,7 @@ Type: String
 
 
 
-=head2 StatusList => ArrayRef[Str]
+=head2 StatusList => ArrayRef[Str|Undef]
 
 An array of domain name status codes, also known as Extensible
 Provisioning Protocol (EPP) status codes.

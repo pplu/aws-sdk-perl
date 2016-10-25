@@ -7,15 +7,15 @@ package Paws::OpsWorks::Layer;
   has CustomInstanceProfileArn => (is => 'ro', isa => 'Str');
   has CustomJson => (is => 'ro', isa => 'Str');
   has CustomRecipes => (is => 'ro', isa => 'Paws::OpsWorks::Recipes');
-  has CustomSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has CustomSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has DefaultRecipes => (is => 'ro', isa => 'Paws::OpsWorks::Recipes');
-  has DefaultSecurityGroupNames => (is => 'ro', isa => 'ArrayRef[Str]');
+  has DefaultSecurityGroupNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has EnableAutoHealing => (is => 'ro', isa => 'Bool');
   has InstallUpdatesOnBoot => (is => 'ro', isa => 'Bool');
   has LayerId => (is => 'ro', isa => 'Str');
   has LifecycleEventConfiguration => (is => 'ro', isa => 'Paws::OpsWorks::LifecycleEventConfiguration');
   has Name => (is => 'ro', isa => 'Str');
-  has Packages => (is => 'ro', isa => 'ArrayRef[Str]');
+  has Packages => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Shortname => (is => 'ro', isa => 'Str');
   has StackId => (is => 'ro', isa => 'Str');
   has Type => (is => 'ro', isa => 'Str');
@@ -104,7 +104,7 @@ configuration and deployment attributes.
 recipes.
 
 
-=head2 CustomSecurityGroupIds => ArrayRef[Str]
+=head2 CustomSecurityGroupIds => ArrayRef[Str|Undef]
 
   An array containing the layer's custom security group IDs.
 
@@ -114,7 +114,7 @@ recipes.
   
 
 
-=head2 DefaultSecurityGroupNames => ArrayRef[Str]
+=head2 DefaultSecurityGroupNames => ArrayRef[Str|Undef]
 
   An array containing the layer's security group names.
 
@@ -153,7 +153,7 @@ event configuration.
   The layer name.
 
 
-=head2 Packages => ArrayRef[Str]
+=head2 Packages => ArrayRef[Str|Undef]
 
   An array of C<Package> objects that describe the layer's packages.
 

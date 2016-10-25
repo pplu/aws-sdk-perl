@@ -1,10 +1,11 @@
 
 package Paws::CloudFormation::UpdateStack;
   use Moose;
-  has Capabilities => (is => 'ro', isa => 'ArrayRef[Str]');
-  has NotificationARNs => (is => 'ro', isa => 'ArrayRef[Str]');
+  has Capabilities => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has NotificationARNs => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Parameters => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::Parameter]');
-  has ResourceTypes => (is => 'ro', isa => 'ArrayRef[Str]');
+  has ResourceTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has RoleARN => (is => 'ro', isa => 'Str');
   has StackName => (is => 'ro', isa => 'Str', required => 1);
   has StackPolicyBody => (is => 'ro', isa => 'Str');
   has StackPolicyDuringUpdateBody => (is => 'ro', isa => 'Str');
@@ -45,7 +46,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 Capabilities => ArrayRef[Str]
+=head2 Capabilities => ArrayRef[Str|Undef]
 
 A list of values that you must specify before AWS CloudFormation can
 update certain stacks. Some stack templates might include resources
@@ -73,7 +74,7 @@ CloudFormation Templates.
 
 
 
-=head2 NotificationARNs => ArrayRef[Str]
+=head2 NotificationARNs => ArrayRef[Str|Undef]
 
 Amazon Simple Notification Service topic Amazon Resource Names (ARNs)
 that AWS CloudFormation associates with the stack. Specify an empty
@@ -88,7 +89,7 @@ stack. For more information, see the Parameter data type.
 
 
 
-=head2 ResourceTypes => ArrayRef[Str]
+=head2 ResourceTypes => ArrayRef[Str|Undef]
 
 The template resource types that you have permissions to work with for
 this update stack action, such as C<AWS::EC2::Instance>,
@@ -100,6 +101,24 @@ permissions to all resource types. AWS Identity and Access Management
 (IAM) uses this parameter for AWS CloudFormation-specific condition
 keys in IAM policies. For more information, see Controlling Access with
 AWS Identity and Access Management.
+
+
+
+=head2 RoleARN => Str
+
+The Amazon Resource Name (ARN) of an AWS Identity and Access Management
+(IAM) role that AWS CloudFormation assumes to update the stack. AWS
+CloudFormation uses the role's credentials to make calls on your
+behalf. AWS CloudFormation always uses this role for all future
+operations on the stack. As long as users have permission to operate on
+the stack, AWS CloudFormation uses this role even if the users don't
+have permission to pass it. Ensure that the role grants least
+privilege.
+
+If you don't specify a value, AWS CloudFormation uses the role that was
+previously associated with the stack. If no role is available, AWS
+CloudFormation uses a temporary session that is generated from your
+user credentials.
 
 
 

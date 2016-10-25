@@ -239,7 +239,7 @@ succeeds with a 200 OK response code.
 
 =head1 METHODS
 
-=head2 AddTags(LoadBalancerNames => ArrayRef[Str], Tags => ArrayRef[L<Paws::ELB::Tag>])
+=head2 AddTags(LoadBalancerNames => ArrayRef[Str|Undef], Tags => ArrayRef[L<Paws::ELB::Tag>])
 
 Each argument is described in detail in: L<Paws::ELB::AddTags>
 
@@ -256,7 +256,7 @@ For more information, see Tag Your Classic Load Balancer in the
 I<Classic Load Balancers Guide>.
 
 
-=head2 ApplySecurityGroupsToLoadBalancer(LoadBalancerName => Str, SecurityGroups => ArrayRef[Str])
+=head2 ApplySecurityGroupsToLoadBalancer(LoadBalancerName => Str, SecurityGroups => ArrayRef[Str|Undef])
 
 Each argument is described in detail in: L<Paws::ELB::ApplySecurityGroupsToLoadBalancer>
 
@@ -270,7 +270,7 @@ For more information, see Security Groups for Load Balancers in a VPC
 in the I<Classic Load Balancers Guide>.
 
 
-=head2 AttachLoadBalancerToSubnets(LoadBalancerName => Str, Subnets => ArrayRef[Str])
+=head2 AttachLoadBalancerToSubnets(LoadBalancerName => Str, Subnets => ArrayRef[Str|Undef])
 
 Each argument is described in detail in: L<Paws::ELB::AttachLoadBalancerToSubnets>
 
@@ -348,7 +348,7 @@ For more information, see Duration-Based Session Stickiness in the
 I<Classic Load Balancers Guide>.
 
 
-=head2 CreateLoadBalancer(Listeners => ArrayRef[L<Paws::ELB::Listener>], LoadBalancerName => Str, [AvailabilityZones => ArrayRef[Str], Scheme => Str, SecurityGroups => ArrayRef[Str], Subnets => ArrayRef[Str], Tags => ArrayRef[L<Paws::ELB::Tag>]])
+=head2 CreateLoadBalancer(Listeners => ArrayRef[L<Paws::ELB::Listener>], LoadBalancerName => Str, [AvailabilityZones => ArrayRef[Str|Undef], Scheme => Str, SecurityGroups => ArrayRef[Str|Undef], Subnets => ArrayRef[Str|Undef], Tags => ArrayRef[L<Paws::ELB::Tag>]])
 
 Each argument is described in detail in: L<Paws::ELB::CreateLoadBalancer>
 
@@ -477,7 +477,7 @@ Returns: a L<Paws::ELB::DescribeLoadBalancerAttributesOutput> instance
   Describes the attributes for the specified load balancer.
 
 
-=head2 DescribeLoadBalancerPolicies([LoadBalancerName => Str, PolicyNames => ArrayRef[Str]])
+=head2 DescribeLoadBalancerPolicies([LoadBalancerName => Str, PolicyNames => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::ELB::DescribeLoadBalancerPolicies>
 
@@ -494,7 +494,7 @@ policies, or descriptions of all sample policies. The names of the
 sample policies have the C<ELBSample-> prefix.
 
 
-=head2 DescribeLoadBalancerPolicyTypes([PolicyTypeNames => ArrayRef[Str]])
+=head2 DescribeLoadBalancerPolicyTypes([PolicyTypeNames => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::ELB::DescribeLoadBalancerPolicyTypes>
 
@@ -514,7 +514,7 @@ either SetLoadBalancerPoliciesOfListener or
 SetLoadBalancerPoliciesForBackendServer to set the policy.
 
 
-=head2 DescribeLoadBalancers([LoadBalancerNames => ArrayRef[Str], Marker => Str, PageSize => Int])
+=head2 DescribeLoadBalancers([LoadBalancerNames => ArrayRef[Str|Undef], Marker => Str, PageSize => Int])
 
 Each argument is described in detail in: L<Paws::ELB::DescribeLoadBalancers>
 
@@ -524,7 +524,7 @@ Returns: a L<Paws::ELB::DescribeAccessPointsOutput> instance
 specified, the call describes all of your load balancers.
 
 
-=head2 DescribeTags(LoadBalancerNames => ArrayRef[Str])
+=head2 DescribeTags(LoadBalancerNames => ArrayRef[Str|Undef])
 
 Each argument is described in detail in: L<Paws::ELB::DescribeTags>
 
@@ -533,7 +533,7 @@ Returns: a L<Paws::ELB::DescribeTagsOutput> instance
   Describes the tags associated with the specified load balancers.
 
 
-=head2 DetachLoadBalancerFromSubnets(LoadBalancerName => Str, Subnets => ArrayRef[Str])
+=head2 DetachLoadBalancerFromSubnets(LoadBalancerName => Str, Subnets => ArrayRef[Str|Undef])
 
 Each argument is described in detail in: L<Paws::ELB::DetachLoadBalancerFromSubnets>
 
@@ -548,7 +548,7 @@ the load balancer balances the traffic among the remaining routable
 subnets.
 
 
-=head2 DisableAvailabilityZonesForLoadBalancer(AvailabilityZones => ArrayRef[Str], LoadBalancerName => Str)
+=head2 DisableAvailabilityZonesForLoadBalancer(AvailabilityZones => ArrayRef[Str|Undef], LoadBalancerName => Str)
 
 Each argument is described in detail in: L<Paws::ELB::DisableAvailabilityZonesForLoadBalancer>
 
@@ -568,7 +568,7 @@ For more information, see Add or Remove Availability Zones in the
 I<Classic Load Balancers Guide>.
 
 
-=head2 EnableAvailabilityZonesForLoadBalancer(AvailabilityZones => ArrayRef[Str], LoadBalancerName => Str)
+=head2 EnableAvailabilityZonesForLoadBalancer(AvailabilityZones => ArrayRef[Str|Undef], LoadBalancerName => Str)
 
 Each argument is described in detail in: L<Paws::ELB::EnableAvailabilityZonesForLoadBalancer>
 
@@ -656,7 +656,7 @@ For more information, see Register or De-Register EC2 Instances in the
 I<Classic Load Balancers Guide>.
 
 
-=head2 RemoveTags(LoadBalancerNames => ArrayRef[Str], Tags => ArrayRef[L<Paws::ELB::TagKeyOnly>])
+=head2 RemoveTags(LoadBalancerNames => ArrayRef[Str|Undef], Tags => ArrayRef[L<Paws::ELB::TagKeyOnly>])
 
 Each argument is described in detail in: L<Paws::ELB::RemoveTags>
 
@@ -680,7 +680,7 @@ the SSL Certificate for Your Load Balancer in the I<Classic Load
 Balancers Guide>.
 
 
-=head2 SetLoadBalancerPoliciesForBackendServer(InstancePort => Int, LoadBalancerName => Str, PolicyNames => ArrayRef[Str])
+=head2 SetLoadBalancerPoliciesForBackendServer(InstancePort => Int, LoadBalancerName => Str, PolicyNames => ArrayRef[Str|Undef])
 
 Each argument is described in detail in: L<Paws::ELB::SetLoadBalancerPoliciesForBackendServer>
 
@@ -706,7 +706,7 @@ Configure Proxy Protocol Support in the I<Classic Load Balancers
 Guide>.
 
 
-=head2 SetLoadBalancerPoliciesOfListener(LoadBalancerName => Str, LoadBalancerPort => Int, PolicyNames => ArrayRef[Str])
+=head2 SetLoadBalancerPoliciesOfListener(LoadBalancerName => Str, LoadBalancerPort => Int, PolicyNames => ArrayRef[Str|Undef])
 
 Each argument is described in detail in: L<Paws::ELB::SetLoadBalancerPoliciesOfListener>
 
@@ -730,9 +730,9 @@ Balancers Guide>.
 
 Paginator methods are helpers that repetively call methods that return partial results
 
-=head2 DescribeAllLoadBalancers(sub { },[LoadBalancerNames => ArrayRef[Str], Marker => Str, PageSize => Int])
+=head2 DescribeAllLoadBalancers(sub { },[LoadBalancerNames => ArrayRef[Str|Undef], Marker => Str, PageSize => Int])
 
-=head2 DescribeAllLoadBalancers([LoadBalancerNames => ArrayRef[Str], Marker => Str, PageSize => Int])
+=head2 DescribeAllLoadBalancers([LoadBalancerNames => ArrayRef[Str|Undef], Marker => Str, PageSize => Int])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

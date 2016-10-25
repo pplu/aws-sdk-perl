@@ -3,8 +3,8 @@ package Paws::ELBv2::CreateLoadBalancer;
   use Moose;
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has Scheme => (is => 'ro', isa => 'Str');
-  has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Str]');
-  has Subnets => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has Subnets => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ELBv2::Tag]');
 
   use MooseX::ClassAttribute;
@@ -64,13 +64,13 @@ The default is an Internet-facing load balancer.
 
 Valid values are: C<"internet-facing">, C<"internal">
 
-=head2 SecurityGroups => ArrayRef[Str]
+=head2 SecurityGroups => ArrayRef[Str|Undef]
 
 The IDs of the security groups to assign to the load balancer.
 
 
 
-=head2 B<REQUIRED> Subnets => ArrayRef[Str]
+=head2 B<REQUIRED> Subnets => ArrayRef[Str|Undef]
 
 The IDs of the subnets to attach to the load balancer. You can specify
 only one subnet per Availability Zone. You must specify subnets from at

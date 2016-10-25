@@ -1,6 +1,6 @@
 package Paws::DataPipeline::ValidationError;
   use Moose;
-  has Errors => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'errors', request_name => 'errors', traits => ['Unwrapped','NameInRequest']);
+  has Errors => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'errors', request_name => 'errors', traits => ['Unwrapped','NameInRequest']);
   has Id => (is => 'ro', isa => 'Str', xmlname => 'id', request_name => 'id', traits => ['Unwrapped','NameInRequest']);
 1;
 
@@ -39,7 +39,7 @@ defined by AWS Data Pipeline.
 =head1 ATTRIBUTES
 
 
-=head2 Errors => ArrayRef[Str]
+=head2 Errors => ArrayRef[Str|Undef]
 
   A description of the validation error.
 

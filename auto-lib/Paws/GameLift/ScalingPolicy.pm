@@ -69,27 +69,39 @@ adjustment.
 
 =over
 
-=item * B<ActivatingGameSessions> E<ndash> number of game sessions in
-the process of being created (game session status = C<ACTIVATING>).
+=item *
 
-=item * B<ActiveGameSessions> E<ndash> number of game sessions
-currently running (game session status = C<ACTIVE>).
+B<ActivatingGameSessions> E<ndash> number of game sessions in the
+process of being created (game session status = C<ACTIVATING>).
 
-=item * B<CurrentPlayerSessions> E<ndash> number of active or reserved
-player sessions (player session status = C<ACTIVE> or C<RESERVED>).
+=item *
 
-=item * B<AvailablePlayerSessions> E<ndash> number of player session
-slots currently available in active game sessions across the fleet,
+B<ActiveGameSessions> E<ndash> number of game sessions currently
+running (game session status = C<ACTIVE>).
+
+=item *
+
+B<CurrentPlayerSessions> E<ndash> number of active or reserved player
+sessions (player session status = C<ACTIVE> or C<RESERVED>).
+
+=item *
+
+B<AvailablePlayerSessions> E<ndash> number of player session slots
+currently available in active game sessions across the fleet,
 calculated by subtracting a game session's current player session count
 from its maximum player session count. This number does include game
 sessions that are not currently accepting players (game session
 C<PlayerSessionCreationPolicy> = C<DENY_ALL>).
 
-=item * B<ActiveInstances> E<ndash> number of instances currently
-running a game session.
+=item *
 
-=item * B<IdleInstances> E<ndash> number of instances not currently
-running a game session.
+B<ActiveInstances> E<ndash> number of instances currently running a
+game session.
+
+=item *
+
+B<IdleInstances> E<ndash> number of instances not currently running a
+game session.
 
 =back
 
@@ -113,15 +125,21 @@ FleetCapacity):
 
 =over
 
-=item * B<ChangeInCapacity> E<ndash> add (or subtract) the scaling
-adjustment value from the current instance count. Positive values scale
-up while negative values scale down.
+=item *
 
-=item * B<ExactCapacity> E<ndash> set the instance count to the scaling
+B<ChangeInCapacity> E<ndash> add (or subtract) the scaling adjustment
+value from the current instance count. Positive values scale up while
+negative values scale down.
+
+=item *
+
+B<ExactCapacity> E<ndash> set the instance count to the scaling
 adjustment value.
 
-=item * B<PercentChangeInCapacity> E<ndash> increase or reduce the
-current instance count by the scaling adjustment, read as a percentage.
+=item *
+
+B<PercentChangeInCapacity> E<ndash> increase or reduce the current
+instance count by the scaling adjustment, read as a percentage.
 Positive values scale up while negative values scale down.
 
 =back
@@ -135,23 +153,36 @@ force when in an C<ACTIVE> status.
 
 =over
 
-=item * B<ACTIVE> E<ndash> The scaling policy is currently in force.
+=item *
 
-=item * B<UPDATE_REQUESTED> E<ndash> A request to update the scaling
-policy has been received.
+B<ACTIVE> E<ndash> The scaling policy is currently in force.
 
-=item * B<UPDATING> E<ndash> A change is being made to the scaling
-policy.
+=item *
 
-=item * B<DELETE_REQUESTED> E<ndash> A request to delete the scaling
-policy has been received.
+B<UPDATE_REQUESTED> E<ndash> A request to update the scaling policy has
+been received.
 
-=item * B<DELETING> E<ndash> The scaling policy is being deleted.
+=item *
 
-=item * B<DELETED> E<ndash> The scaling policy has been deleted.
+B<UPDATING> E<ndash> A change is being made to the scaling policy.
 
-=item * B<ERROR> E<ndash> An error occurred in creating the policy. It
-should be removed and recreated.
+=item *
+
+B<DELETE_REQUESTED> E<ndash> A request to delete the scaling policy has
+been received.
+
+=item *
+
+B<DELETING> E<ndash> The scaling policy is being deleted.
+
+=item *
+
+B<DELETED> E<ndash> The scaling policy has been deleted.
+
+=item *
+
+B<ERROR> E<ndash> An error occurred in creating the policy. It should
+be removed and recreated.
 
 =back
 

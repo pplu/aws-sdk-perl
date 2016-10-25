@@ -1,7 +1,7 @@
 
 package Paws::AutoScaling::DescribeScalingActivities;
   use Moose;
-  has ActivityIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has ActivityIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has AutoScalingGroupName => (is => 'ro', isa => 'Str');
   has MaxRecords => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
@@ -36,7 +36,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 ActivityIds => ArrayRef[Str]
+=head2 ActivityIds => ArrayRef[Str|Undef]
 
 The activity IDs of the desired scaling activities. If you omit this
 parameter, all activities for the past six weeks are described. If you

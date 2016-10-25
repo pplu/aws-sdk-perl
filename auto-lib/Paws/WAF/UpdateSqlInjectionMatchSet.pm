@@ -57,13 +57,19 @@ information, see the applicable data types:
 
 =over
 
-=item * SqlInjectionMatchSetUpdate: Contains C<Action> and
+=item *
+
+SqlInjectionMatchSetUpdate: Contains C<Action> and
 C<SqlInjectionMatchTuple>
 
-=item * SqlInjectionMatchTuple: Contains C<FieldToMatch> and
+=item *
+
+SqlInjectionMatchTuple: Contains C<FieldToMatch> and
 C<TextTransformation>
 
-=item * FieldToMatch: Contains C<Data> and C<Type>
+=item *
+
+FieldToMatch: Contains C<Data> and C<Type>
 
 =back
 

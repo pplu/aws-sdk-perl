@@ -1,9 +1,9 @@
 
 package Paws::ELBv2::DescribeLoadBalancers;
   use Moose;
-  has LoadBalancerArns => (is => 'ro', isa => 'ArrayRef[Str]');
+  has LoadBalancerArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Marker => (is => 'ro', isa => 'Str');
-  has Names => (is => 'ro', isa => 'ArrayRef[Str]');
+  has Names => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has PageSize => (is => 'ro', isa => 'Int');
 
   use MooseX::ClassAttribute;
@@ -36,7 +36,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 LoadBalancerArns => ArrayRef[Str]
+=head2 LoadBalancerArns => ArrayRef[Str|Undef]
 
 The Amazon Resource Names (ARN) of the load balancers.
 
@@ -49,7 +49,7 @@ a previous call.)
 
 
 
-=head2 Names => ArrayRef[Str]
+=head2 Names => ArrayRef[Str|Undef]
 
 The names of the load balancers.
 

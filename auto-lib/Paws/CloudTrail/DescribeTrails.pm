@@ -2,7 +2,7 @@
 package Paws::CloudTrail::DescribeTrails;
   use Moose;
   has IncludeShadowTrails => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'includeShadowTrails' );
-  has TrailNameList => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'trailNameList' );
+  has TrailNameList => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'trailNameList' );
 
   use MooseX::ClassAttribute;
 
@@ -42,7 +42,7 @@ different region. The default is true.
 
 
 
-=head2 TrailNameList => ArrayRef[Str]
+=head2 TrailNameList => ArrayRef[Str|Undef]
 
 Specifies a list of trail names, trail ARNs, or both, of the trails to
 describe. The format of a trail ARN is:

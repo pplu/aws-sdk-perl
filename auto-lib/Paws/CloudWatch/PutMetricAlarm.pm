@@ -2,16 +2,16 @@
 package Paws::CloudWatch::PutMetricAlarm;
   use Moose;
   has ActionsEnabled => (is => 'ro', isa => 'Bool');
-  has AlarmActions => (is => 'ro', isa => 'ArrayRef[Str]');
+  has AlarmActions => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has AlarmDescription => (is => 'ro', isa => 'Str');
   has AlarmName => (is => 'ro', isa => 'Str', required => 1);
   has ComparisonOperator => (is => 'ro', isa => 'Str', required => 1);
   has Dimensions => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatch::Dimension]');
   has EvaluationPeriods => (is => 'ro', isa => 'Int', required => 1);
-  has InsufficientDataActions => (is => 'ro', isa => 'ArrayRef[Str]');
+  has InsufficientDataActions => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has MetricName => (is => 'ro', isa => 'Str', required => 1);
   has Namespace => (is => 'ro', isa => 'Str', required => 1);
-  has OKActions => (is => 'ro', isa => 'ArrayRef[Str]');
+  has OKActions => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Period => (is => 'ro', isa => 'Int', required => 1);
   has Statistic => (is => 'ro', isa => 'Str', required => 1);
   has Threshold => (is => 'ro', isa => 'Num', required => 1);
@@ -54,7 +54,7 @@ to the alarm's state.
 
 
 
-=head2 AlarmActions => ArrayRef[Str]
+=head2 AlarmActions => ArrayRef[Str|Undef]
 
 The list of actions to execute when this alarm transitions into an
 C<ALARM> state from any other state. Each action is specified as an
@@ -113,7 +113,7 @@ threshold.
 
 
 
-=head2 InsufficientDataActions => ArrayRef[Str]
+=head2 InsufficientDataActions => ArrayRef[Str|Undef]
 
 The list of actions to execute when this alarm transitions into an
 C<INSUFFICIENT_DATA> state from any other state. Each action is
@@ -150,7 +150,7 @@ The namespace for the alarm's associated metric.
 
 
 
-=head2 OKActions => ArrayRef[Str]
+=head2 OKActions => ArrayRef[Str|Undef]
 
 The list of actions to execute when this alarm transitions into an
 C<OK> state from any other state. Each action is specified as an Amazon

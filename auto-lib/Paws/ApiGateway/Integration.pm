@@ -1,7 +1,7 @@
 
 package Paws::ApiGateway::Integration;
   use Moose;
-  has CacheKeyParameters => (is => 'ro', isa => 'ArrayRef[Str]');
+  has CacheKeyParameters => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has CacheNamespace => (is => 'ro', isa => 'Str');
   has Credentials => (is => 'ro', isa => 'Str');
   has HttpMethod => (is => 'ro', isa => 'Str');
@@ -23,7 +23,7 @@ Paws::ApiGateway::Integration
 =head1 ATTRIBUTES
 
 
-=head2 CacheKeyParameters => ArrayRef[Str]
+=head2 CacheKeyParameters => ArrayRef[Str|Undef]
 
 Specifies the integration's cache key parameters.
 
@@ -132,10 +132,13 @@ client. The content type value is the key in this map, and the template
 
 =head2 Type => Str
 
-Specifies the integration's type. The valid value is C<HTTP>, C<AWS>,
-or C<MOCK>.
+Specifies the integration's type. The valid value is C<HTTP> for
+integrating with an HTTP back end, C<AWS> for any AWS service
+endpoints, C<MOCK> for testing without actually invoking the back end,
+C<HTTP_PROXY> for integrating with the HTTP proxy integration, or
+C<AWS_PROXY> for integrating with the Lambda proxy integration type.
 
-Valid values are: C<"HTTP">, C<"AWS">, C<"MOCK">
+Valid values are: C<"HTTP">, C<"AWS">, C<"MOCK">, C<"HTTP_PROXY">, C<"AWS_PROXY">
 
 =head2 Uri => Str
 

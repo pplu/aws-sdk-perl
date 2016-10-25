@@ -1,7 +1,7 @@
 
 package Paws::EC2::GetHostReservationPurchasePreview;
   use Moose;
-  has HostIdSet => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has HostIdSet => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
   has OfferingId => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -34,7 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> HostIdSet => ArrayRef[Str]
+=head2 B<REQUIRED> HostIdSet => ArrayRef[Str|Undef]
 
 The ID/s of the Dedicated Host/s that the reservation will be
 associated with.

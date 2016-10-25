@@ -3,7 +3,7 @@ package Paws::IAM::UserDetail;
   has Arn => (is => 'ro', isa => 'Str');
   has AttachedManagedPolicies => (is => 'ro', isa => 'ArrayRef[Paws::IAM::AttachedPolicy]');
   has CreateDate => (is => 'ro', isa => 'Str');
-  has GroupList => (is => 'ro', isa => 'ArrayRef[Str]');
+  has GroupList => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Path => (is => 'ro', isa => 'Str');
   has UserId => (is => 'ro', isa => 'Str');
   has UserName => (is => 'ro', isa => 'Str');
@@ -63,7 +63,7 @@ GetAccountAuthorizationDetails action.
 created.
 
 
-=head2 GroupList => ArrayRef[Str]
+=head2 GroupList => ArrayRef[Str|Undef]
 
   A list of IAM groups that the user is in.
 

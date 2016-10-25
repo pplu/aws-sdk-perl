@@ -2,7 +2,7 @@
 package Paws::EC2::UnassignPrivateIpAddresses;
   use Moose;
   has NetworkInterfaceId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'networkInterfaceId' , required => 1);
-  has PrivateIpAddresses => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'privateIpAddress' , required => 1);
+  has PrivateIpAddresses => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'privateIpAddress' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -40,7 +40,7 @@ The ID of the network interface.
 
 
 
-=head2 B<REQUIRED> PrivateIpAddresses => ArrayRef[Str]
+=head2 B<REQUIRED> PrivateIpAddresses => ArrayRef[Str|Undef]
 
 The secondary private IP addresses to unassign from the network
 interface. You can specify this option multiple times to unassign more

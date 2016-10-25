@@ -539,7 +539,7 @@ account; for more information, see UpdateGatewayInformation.
 You must turn on the gateway VM before you can activate your gateway.
 
 
-=head2 AddCache(DiskIds => ArrayRef[Str], GatewayARN => Str)
+=head2 AddCache(DiskIds => ArrayRef[Str|Undef], GatewayARN => Str)
 
 Each argument is described in detail in: L<Paws::StorageGateway::AddCache>
 
@@ -596,7 +596,7 @@ and storage volumes that are recovered to a new gateway maintain their
 tags.
 
 
-=head2 AddUploadBuffer(DiskIds => ArrayRef[Str], GatewayARN => Str)
+=head2 AddUploadBuffer(DiskIds => ArrayRef[Str|Undef], GatewayARN => Str)
 
 Each argument is described in detail in: L<Paws::StorageGateway::AddUploadBuffer>
 
@@ -611,7 +611,7 @@ which you want to add upload buffer, and one or more disk IDs that you
 want to configure as upload buffer.
 
 
-=head2 AddWorkingStorage(DiskIds => ArrayRef[Str], GatewayARN => Str)
+=head2 AddWorkingStorage(DiskIds => ArrayRef[Str|Undef], GatewayARN => Str)
 
 Each argument is described in detail in: L<Paws::StorageGateway::AddWorkingStorage>
 
@@ -918,7 +918,7 @@ The response includes disk IDs that are configured as cache, and it
 includes the amount of cache allocated and used.
 
 
-=head2 DescribeCachediSCSIVolumes(VolumeARNs => ArrayRef[Str])
+=head2 DescribeCachediSCSIVolumes(VolumeARNs => ArrayRef[Str|Undef])
 
 Each argument is described in detail in: L<Paws::StorageGateway::DescribeCachediSCSIVolumes>
 
@@ -978,7 +978,7 @@ snapshot schedule information includes intervals at which snapshots are
 automatically initiated on the volume.
 
 
-=head2 DescribeStorediSCSIVolumes(VolumeARNs => ArrayRef[Str])
+=head2 DescribeStorediSCSIVolumes(VolumeARNs => ArrayRef[Str|Undef])
 
 Each argument is described in detail in: L<Paws::StorageGateway::DescribeStorediSCSIVolumes>
 
@@ -990,7 +990,7 @@ gateway. In the response Amazon Storage Gateway returns volume
 information sorted by volume ARNs.
 
 
-=head2 DescribeTapeArchives([Limit => Int, Marker => Str, TapeARNs => ArrayRef[Str]])
+=head2 DescribeTapeArchives([Limit => Int, Marker => Str, TapeARNs => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::StorageGateway::DescribeTapeArchives>
 
@@ -1019,7 +1019,7 @@ virtual tapes that have recovery points can be recovered to a new
 gateway.
 
 
-=head2 DescribeTapes(GatewayARN => Str, [Limit => Int, Marker => Str, TapeARNs => ArrayRef[Str]])
+=head2 DescribeTapes(GatewayARN => Str, [Limit => Int, Marker => Str, TapeARNs => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::StorageGateway::DescribeTapes>
 
@@ -1045,7 +1045,7 @@ space, and it includes the amount of upload buffer space allocated and
 used.
 
 
-=head2 DescribeVTLDevices(GatewayARN => Str, [Limit => Int, Marker => Str, VTLDeviceARNs => ArrayRef[Str]])
+=head2 DescribeVTLDevices(GatewayARN => Str, [Limit => Int, Marker => Str, VTLDeviceARNs => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::StorageGateway::DescribeVTLDevices>
 
@@ -1141,7 +1141,7 @@ Returns: a L<Paws::StorageGateway::ListTagsForResourceOutput> instance
   Lists the tags that have been added to the specified resource.
 
 
-=head2 ListTapes([Limit => Int, Marker => Str, TapeARNs => ArrayRef[Str]])
+=head2 ListTapes([Limit => Int, Marker => Str, TapeARNs => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::StorageGateway::ListTapes>
 
@@ -1204,7 +1204,7 @@ response includes a Marker field. You can use this Marker value in your
 subsequent request to retrieve the next set of volumes.
 
 
-=head2 RemoveTagsFromResource(ResourceARN => Str, TagKeys => ArrayRef[Str])
+=head2 RemoveTagsFromResource(ResourceARN => Str, TagKeys => ArrayRef[Str|Undef])
 
 Each argument is described in detail in: L<Paws::StorageGateway::RemoveTagsFromResource>
 
@@ -1450,9 +1450,9 @@ after a gateway-VTL is activated.
 
 Paginator methods are helpers that repetively call methods that return partial results
 
-=head2 DescribeAllTapeArchives(sub { },[Limit => Int, Marker => Str, TapeARNs => ArrayRef[Str]])
+=head2 DescribeAllTapeArchives(sub { },[Limit => Int, Marker => Str, TapeARNs => ArrayRef[Str|Undef]])
 
-=head2 DescribeAllTapeArchives([Limit => Int, Marker => Str, TapeARNs => ArrayRef[Str]])
+=head2 DescribeAllTapeArchives([Limit => Int, Marker => Str, TapeARNs => ArrayRef[Str|Undef]])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -1474,9 +1474,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::StorageGateway::DescribeTapeRecoveryPointsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllTapes(sub { },GatewayARN => Str, [Limit => Int, Marker => Str, TapeARNs => ArrayRef[Str]])
+=head2 DescribeAllTapes(sub { },GatewayARN => Str, [Limit => Int, Marker => Str, TapeARNs => ArrayRef[Str|Undef]])
 
-=head2 DescribeAllTapes(GatewayARN => Str, [Limit => Int, Marker => Str, TapeARNs => ArrayRef[Str]])
+=head2 DescribeAllTapes(GatewayARN => Str, [Limit => Int, Marker => Str, TapeARNs => ArrayRef[Str|Undef]])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -1486,9 +1486,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::StorageGateway::DescribeTapesOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllVTLDevices(sub { },GatewayARN => Str, [Limit => Int, Marker => Str, VTLDeviceARNs => ArrayRef[Str]])
+=head2 DescribeAllVTLDevices(sub { },GatewayARN => Str, [Limit => Int, Marker => Str, VTLDeviceARNs => ArrayRef[Str|Undef]])
 
-=head2 DescribeAllVTLDevices(GatewayARN => Str, [Limit => Int, Marker => Str, VTLDeviceARNs => ArrayRef[Str]])
+=head2 DescribeAllVTLDevices(GatewayARN => Str, [Limit => Int, Marker => Str, VTLDeviceARNs => ArrayRef[Str|Undef]])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

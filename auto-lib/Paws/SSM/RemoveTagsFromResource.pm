@@ -3,7 +3,7 @@ package Paws::SSM::RemoveTagsFromResource;
   use Moose;
   has ResourceId => (is => 'ro', isa => 'Str', required => 1);
   has ResourceType => (is => 'ro', isa => 'Str', required => 1);
-  has TagKeys => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has TagKeys => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -47,7 +47,7 @@ The type of resource of which you want to remove a tag.
 
 Valid values are: C<"ManagedInstance">
 
-=head2 B<REQUIRED> TagKeys => ArrayRef[Str]
+=head2 B<REQUIRED> TagKeys => ArrayRef[Str|Undef]
 
 Tag keys that you want to remove from the specified resource.
 

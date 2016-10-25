@@ -1,11 +1,11 @@
 package Paws::ElasticBeanstalk::ApplicationDescription;
   use Moose;
   has ApplicationName => (is => 'ro', isa => 'Str');
-  has ConfigurationTemplates => (is => 'ro', isa => 'ArrayRef[Str]');
+  has ConfigurationTemplates => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has DateCreated => (is => 'ro', isa => 'Str');
   has DateUpdated => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
-  has Versions => (is => 'ro', isa => 'ArrayRef[Str]');
+  has Versions => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 1;
 
 ### main pod documentation begin ###
@@ -46,7 +46,7 @@ Describes the properties of an application.
   The name of the application.
 
 
-=head2 ConfigurationTemplates => ArrayRef[Str]
+=head2 ConfigurationTemplates => ArrayRef[Str|Undef]
 
   The names of the configuration templates associated with this
 application.
@@ -67,7 +67,7 @@ application.
   User-defined description of the application.
 
 
-=head2 Versions => ArrayRef[Str]
+=head2 Versions => ArrayRef[Str|Undef]
 
   The names of the versions for this application.
 

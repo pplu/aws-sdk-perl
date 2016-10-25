@@ -11,7 +11,7 @@ package Paws::DMS::ModifyReplicationInstance;
   has ReplicationInstanceArn => (is => 'ro', isa => 'Str', required => 1);
   has ReplicationInstanceClass => (is => 'ro', isa => 'Str');
   has ReplicationInstanceIdentifier => (is => 'ro', isa => 'Str');
-  has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
   use MooseX::ClassAttribute;
 
@@ -138,7 +138,7 @@ lowercase string.
 
 
 
-=head2 VpcSecurityGroupIds => ArrayRef[Str]
+=head2 VpcSecurityGroupIds => ArrayRef[Str|Undef]
 
 Specifies the VPC security group to be used with the replication
 instance. The VPC security group must work with the VPC containing the

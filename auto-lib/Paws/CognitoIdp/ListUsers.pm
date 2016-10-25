@@ -1,7 +1,7 @@
 
 package Paws::CognitoIdp::ListUsers;
   use Moose;
-  has AttributesToGet => (is => 'ro', isa => 'ArrayRef[Str]');
+  has AttributesToGet => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Filter => (is => 'ro', isa => 'Str');
   has Limit => (is => 'ro', isa => 'Int');
   has PaginationToken => (is => 'ro', isa => 'Str');
@@ -37,7 +37,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 AttributesToGet => ArrayRef[Str]
+=head2 AttributesToGet => ArrayRef[Str|Undef]
 
 The attributes to get from the request to list users.
 

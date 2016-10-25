@@ -2,7 +2,7 @@
 package Paws::KMS::Encrypt;
   use Moose;
   has EncryptionContext => (is => 'ro', isa => 'Paws::KMS::EncryptionContextType');
-  has GrantTokens => (is => 'ro', isa => 'ArrayRef[Str]');
+  has GrantTokens => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has KeyId => (is => 'ro', isa => 'Str', required => 1);
   has Plaintext => (is => 'ro', isa => 'Str', required => 1);
 
@@ -38,14 +38,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 EncryptionContext => L<Paws::KMS::EncryptionContextType>
 
-Name/value pair that specifies the encryption context to be used for
+Name-value pair that specifies the encryption context to be used for
 authenticated encryption. If used here, the same value must be supplied
 to the C<Decrypt> API or decryption will fail. For more information,
 see Encryption Context.
 
 
 
-=head2 GrantTokens => ArrayRef[Str]
+=head2 GrantTokens => ArrayRef[Str|Undef]
 
 A list of grant tokens.
 

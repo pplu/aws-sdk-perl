@@ -2,7 +2,7 @@
 package Paws::ELB::ApplySecurityGroupsToLoadBalancer;
   use Moose;
   has LoadBalancerName => (is => 'ro', isa => 'Str', required => 1);
-  has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -40,7 +40,7 @@ The name of the load balancer.
 
 
 
-=head2 B<REQUIRED> SecurityGroups => ArrayRef[Str]
+=head2 B<REQUIRED> SecurityGroups => ArrayRef[Str|Undef]
 
 The IDs of the security groups to associate with the load balancer.
 Note that you cannot specify the name of the security group.

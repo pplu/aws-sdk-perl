@@ -5,7 +5,8 @@ package Paws::ACM::CertificateDetail;
   has DomainName => (is => 'ro', isa => 'Str');
   has DomainValidationOptions => (is => 'ro', isa => 'ArrayRef[Paws::ACM::DomainValidation]');
   has FailureReason => (is => 'ro', isa => 'Str');
-  has InUseBy => (is => 'ro', isa => 'ArrayRef[Str]');
+  has ImportedAt => (is => 'ro', isa => 'Str');
+  has InUseBy => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has IssuedAt => (is => 'ro', isa => 'Str');
   has Issuer => (is => 'ro', isa => 'Str');
   has KeyAlgorithm => (is => 'ro', isa => 'Str');
@@ -17,7 +18,8 @@ package Paws::ACM::CertificateDetail;
   has SignatureAlgorithm => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
   has Subject => (is => 'ro', isa => 'Str');
-  has SubjectAlternativeNames => (is => 'ro', isa => 'ArrayRef[Str]');
+  has SubjectAlternativeNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has Type => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +39,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::ACM::CertificateDetail object:
 
-  $service_obj->Method(Att1 => { CertificateArn => $value, ..., SubjectAlternativeNames => $value  });
+  $service_obj->Method(Att1 => { CertificateArn => $value, ..., Type => $value  });
 
 =head3 Results returned from an API call
 
@@ -57,56 +59,65 @@ returned in the response to a DescribeCertificate request.
 =head2 CertificateArn => Str
 
   The Amazon Resource Name (ARN) of the certificate. For more information
-about ARNs, see Amazon Resource Names (ARNs) and AWS Service
-Namespaces.
+about ARNs, see Amazon Resource Names (ARNs) and AWS Service Namespaces
+in the I<AWS General Reference>.
 
 
 =head2 CreatedAt => Str
 
-  The time at which the certificate was requested.
+  The time at which the certificate was requested. This value exists only
+when the certificate type is C<AMAZON_ISSUED>.
 
 
 =head2 DomainName => Str
 
-  The fully qualified domain name (FQDN) for the certificate, such as
+  The fully qualified domain name for the certificate, such as
 www.example.com or example.com.
 
 
 =head2 DomainValidationOptions => ArrayRef[L<Paws::ACM::DomainValidation>]
 
   Contains information about the email address or addresses used for
-domain validation.
+domain validation. This field exists only when the certificate type is
+C<AMAZON_ISSUED>.
 
 
 =head2 FailureReason => Str
 
   The reason the certificate request failed. This value exists only when
-the structure's C<Status> is C<FAILED>. For more information, see
+the certificate status is C<FAILED>. For more information, see
 Certificate Request Failed in the I<AWS Certificate Manager User
 Guide>.
 
 
-=head2 InUseBy => ArrayRef[Str]
+=head2 ImportedAt => Str
 
-  A list of ARNs for the resources that are using the certificate. An ACM
-Certificate can be used by multiple AWS resources.
+  The date and time at which the certificate was imported. This value
+exists only when the certificate type is C<IMPORTED>.
+
+
+=head2 InUseBy => ArrayRef[Str|Undef]
+
+  A list of ARNs for the AWS resources that are using the certificate. A
+certificate can be used by multiple AWS resources.
 
 
 =head2 IssuedAt => Str
 
-  The time at which the certificate was issued.
+  The time at which the certificate was issued. This value exists only
+when the certificate type is C<AMAZON_ISSUED>.
 
 
 =head2 Issuer => Str
 
-  The X.500 distinguished name of the CA that issued and signed the
+  The name of the certificate authority that issued and signed the
 certificate.
 
 
 =head2 KeyAlgorithm => Str
 
-  The algorithm used to generate the key pair (the public and private
-key). Currently the only supported value is C<RSA_2048>.
+  The algorithm that was used to generate the key pair (the public and
+private key).
 
 
 =head2 NotAfter => Str
@@ -138,8 +149,7 @@ when the certificate status is C<REVOKED>.
 
 =head2 SignatureAlgorithm => Str
 
-  The algorithm used to generate a signature. Currently the only
-supported value is C<SHA256WITHRSA>.
+  The algorithm that was used to sign the certificate.
 
 
 =head2 Status => Str
@@ -149,18 +159,29 @@ supported value is C<SHA256WITHRSA>.
 
 =head2 Subject => Str
 
-  The X.500 distinguished name of the entity associated with the public
-key contained in the certificate.
+  The name of the entity that is associated with the public key contained
+in the certificate.
 
 
-=head2 SubjectAlternativeNames => ArrayRef[Str]
+=head2 SubjectAlternativeNames => ArrayRef[Str|Undef]
 
   One or more domain names (subject alternative names) included in the
-certificate request. After the certificate is issued, this list
-includes the domain names bound to the public key contained in the
-certificate. The subject alternative names include the canonical domain
-name (CN) of the certificate and additional domain names that can be
-used to connect to the website.
+certificate. This list contains the domain names that are bound to the
+public key that is contained in the certificate. The subject
+alternative names include the canonical domain name (CN) of the
+certificate and additional domain names that can be used to connect to
+the website.
+
+
+=head2 Type => Str
+
+  The source of the certificate. For certificates provided by ACM, this
+value is C<AMAZON_ISSUED>. For certificates that you imported with
+ImportCertificate, this value is C<IMPORTED>. ACM does not provide
+managed renewal for imported certificates. For more information about
+the differences between certificates that you import and those that ACM
+provides, see Importing Certificates in the I<AWS Certificate Manager
+User Guide>.
 
 
 

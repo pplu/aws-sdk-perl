@@ -238,7 +238,7 @@ Returns: a L<Paws::DMS::CreateEndpointResponse> instance
   Creates an endpoint using the provided settings.
 
 
-=head2 CreateReplicationInstance(ReplicationInstanceClass => Str, ReplicationInstanceIdentifier => Str, [AllocatedStorage => Int, AutoMinorVersionUpgrade => Bool, AvailabilityZone => Str, EngineVersion => Str, KmsKeyId => Str, MultiAZ => Bool, PreferredMaintenanceWindow => Str, PubliclyAccessible => Bool, ReplicationSubnetGroupIdentifier => Str, Tags => ArrayRef[L<Paws::DMS::Tag>], VpcSecurityGroupIds => ArrayRef[Str]])
+=head2 CreateReplicationInstance(ReplicationInstanceClass => Str, ReplicationInstanceIdentifier => Str, [AllocatedStorage => Int, AutoMinorVersionUpgrade => Bool, AvailabilityZone => Str, EngineVersion => Str, KmsKeyId => Str, MultiAZ => Bool, PreferredMaintenanceWindow => Str, PubliclyAccessible => Bool, ReplicationSubnetGroupIdentifier => Str, Tags => ArrayRef[L<Paws::DMS::Tag>], VpcSecurityGroupIds => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::DMS::CreateReplicationInstance>
 
@@ -247,7 +247,7 @@ Returns: a L<Paws::DMS::CreateReplicationInstanceResponse> instance
   Creates the replication instance using the specified parameters.
 
 
-=head2 CreateReplicationSubnetGroup(ReplicationSubnetGroupDescription => Str, ReplicationSubnetGroupIdentifier => Str, SubnetIds => ArrayRef[Str], [Tags => ArrayRef[L<Paws::DMS::Tag>]])
+=head2 CreateReplicationSubnetGroup(ReplicationSubnetGroupDescription => Str, ReplicationSubnetGroupIdentifier => Str, SubnetIds => ArrayRef[Str|Undef], [Tags => ArrayRef[L<Paws::DMS::Tag>]])
 
 Each argument is described in detail in: L<Paws::DMS::CreateReplicationSubnetGroup>
 
@@ -465,7 +465,7 @@ Returns: a L<Paws::DMS::ModifyEndpointResponse> instance
   Modifies the specified endpoint.
 
 
-=head2 ModifyReplicationInstance(ReplicationInstanceArn => Str, [AllocatedStorage => Int, AllowMajorVersionUpgrade => Bool, ApplyImmediately => Bool, AutoMinorVersionUpgrade => Bool, EngineVersion => Str, MultiAZ => Bool, PreferredMaintenanceWindow => Str, ReplicationInstanceClass => Str, ReplicationInstanceIdentifier => Str, VpcSecurityGroupIds => ArrayRef[Str]])
+=head2 ModifyReplicationInstance(ReplicationInstanceArn => Str, [AllocatedStorage => Int, AllowMajorVersionUpgrade => Bool, ApplyImmediately => Bool, AutoMinorVersionUpgrade => Bool, EngineVersion => Str, MultiAZ => Bool, PreferredMaintenanceWindow => Str, ReplicationInstanceClass => Str, ReplicationInstanceIdentifier => Str, VpcSecurityGroupIds => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::DMS::ModifyReplicationInstance>
 
@@ -478,7 +478,7 @@ values in the request.
 Some settings are applied during the maintenance window.
 
 
-=head2 ModifyReplicationSubnetGroup(ReplicationSubnetGroupIdentifier => Str, SubnetIds => ArrayRef[Str], [ReplicationSubnetGroupDescription => Str])
+=head2 ModifyReplicationSubnetGroup(ReplicationSubnetGroupIdentifier => Str, SubnetIds => ArrayRef[Str|Undef], [ReplicationSubnetGroupDescription => Str])
 
 Each argument is described in detail in: L<Paws::DMS::ModifyReplicationSubnetGroup>
 
@@ -499,7 +499,7 @@ status of this operation by calling the DescribeRefreshSchemasStatus
 operation.
 
 
-=head2 RemoveTagsFromResource(ResourceArn => Str, TagKeys => ArrayRef[Str])
+=head2 RemoveTagsFromResource(ResourceArn => Str, TagKeys => ArrayRef[Str|Undef])
 
 Each argument is described in detail in: L<Paws::DMS::RemoveTagsFromResource>
 

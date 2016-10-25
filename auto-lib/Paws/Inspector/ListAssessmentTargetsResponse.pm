@@ -1,7 +1,7 @@
 
 package Paws::Inspector::ListAssessmentTargetsResponse;
   use Moose;
-  has AssessmentTargetArns => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['Unwrapped'], xmlname => 'assessmentTargetArns' , required => 1);
+  has AssessmentTargetArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['Unwrapped'], xmlname => 'assessmentTargetArns' , required => 1);
   has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
 
 
@@ -14,7 +14,7 @@ Paws::Inspector::ListAssessmentTargetsResponse
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> AssessmentTargetArns => ArrayRef[Str]
+=head2 B<REQUIRED> AssessmentTargetArns => ArrayRef[Str|Undef]
 
 A list of ARNs that specifies the assessment targets that are returned
 by the action.

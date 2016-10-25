@@ -3,8 +3,8 @@ package Paws::RDS::ModifyDBSnapshotAttribute;
   use Moose;
   has AttributeName => (is => 'ro', isa => 'Str', required => 1);
   has DBSnapshotIdentifier => (is => 'ro', isa => 'Str', required => 1);
-  has ValuesToAdd => (is => 'ro', isa => 'ArrayRef[Str]');
-  has ValuesToRemove => (is => 'ro', isa => 'ArrayRef[Str]');
+  has ValuesToAdd => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has ValuesToRemove => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
   use MooseX::ClassAttribute;
 
@@ -51,7 +51,7 @@ The identifier for the DB snapshot to modify the attributes for.
 
 
 
-=head2 ValuesToAdd => ArrayRef[Str]
+=head2 ValuesToAdd => ArrayRef[Str|Undef]
 
 A list of DB snapshot attributes to add to the attribute specified by
 C<AttributeName>.
@@ -64,7 +64,7 @@ information that you don't want available to all AWS accounts.
 
 
 
-=head2 ValuesToRemove => ArrayRef[Str]
+=head2 ValuesToRemove => ArrayRef[Str|Undef]
 
 A list of DB snapshot attributes to remove from the attribute specified
 by C<AttributeName>.

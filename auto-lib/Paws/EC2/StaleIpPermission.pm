@@ -2,8 +2,8 @@ package Paws::EC2::StaleIpPermission;
   use Moose;
   has FromPort => (is => 'ro', isa => 'Int', xmlname => 'fromPort', traits => ['Unwrapped']);
   has IpProtocol => (is => 'ro', isa => 'Str', xmlname => 'ipProtocol', traits => ['Unwrapped']);
-  has IpRanges => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'ipRanges', traits => ['Unwrapped']);
-  has PrefixListIds => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'prefixListIds', traits => ['Unwrapped']);
+  has IpRanges => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'ipRanges', traits => ['Unwrapped']);
+  has PrefixListIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'prefixListIds', traits => ['Unwrapped']);
   has ToPort => (is => 'ro', isa => 'Int', xmlname => 'toPort', traits => ['Unwrapped']);
   has UserIdGroupPairs => (is => 'ro', isa => 'ArrayRef[Paws::EC2::UserIdGroupPair]', xmlname => 'groups', traits => ['Unwrapped']);
 1;
@@ -53,12 +53,12 @@ type number. A value of C<-1> indicates all ICMP types.
 Protocol Numbers).
 
 
-=head2 IpRanges => ArrayRef[Str]
+=head2 IpRanges => ArrayRef[Str|Undef]
 
   One or more IP ranges. Not applicable for stale security group rules.
 
 
-=head2 PrefixListIds => ArrayRef[Str]
+=head2 PrefixListIds => ArrayRef[Str|Undef]
 
   One or more prefix list IDs for an AWS service. Not applicable for
 stale security group rules.

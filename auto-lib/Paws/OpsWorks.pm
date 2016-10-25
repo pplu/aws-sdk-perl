@@ -512,7 +512,7 @@ possible.
 
 =head1 METHODS
 
-=head2 AssignInstance(InstanceId => Str, LayerIds => ArrayRef[Str])
+=head2 AssignInstance(InstanceId => Str, LayerIds => ArrayRef[Str|Undef])
 
 Each argument is described in detail in: L<Paws::OpsWorks::AssignInstance>
 
@@ -597,7 +597,7 @@ explicitly grants permissions. For more information on user
 permissions, see Managing User Permissions.
 
 
-=head2 CloneStack(ServiceRoleArn => Str, SourceStackId => Str, [AgentVersion => Str, Attributes => L<Paws::OpsWorks::StackAttributes>, ChefConfiguration => L<Paws::OpsWorks::ChefConfiguration>, CloneAppIds => ArrayRef[Str], ClonePermissions => Bool, ConfigurationManager => L<Paws::OpsWorks::StackConfigurationManager>, CustomCookbooksSource => L<Paws::OpsWorks::Source>, CustomJson => Str, DefaultAvailabilityZone => Str, DefaultInstanceProfileArn => Str, DefaultOs => Str, DefaultRootDeviceType => Str, DefaultSshKeyName => Str, DefaultSubnetId => Str, HostnameTheme => Str, Name => Str, Region => Str, UseCustomCookbooks => Bool, UseOpsworksSecurityGroups => Bool, VpcId => Str])
+=head2 CloneStack(ServiceRoleArn => Str, SourceStackId => Str, [AgentVersion => Str, Attributes => L<Paws::OpsWorks::StackAttributes>, ChefConfiguration => L<Paws::OpsWorks::ChefConfiguration>, CloneAppIds => ArrayRef[Str|Undef], ClonePermissions => Bool, ConfigurationManager => L<Paws::OpsWorks::StackConfigurationManager>, CustomCookbooksSource => L<Paws::OpsWorks::Source>, CustomJson => Str, DefaultAvailabilityZone => Str, DefaultInstanceProfileArn => Str, DefaultOs => Str, DefaultRootDeviceType => Str, DefaultSshKeyName => Str, DefaultSubnetId => Str, HostnameTheme => Str, Name => Str, Region => Str, UseCustomCookbooks => Bool, UseOpsworksSecurityGroups => Bool, VpcId => Str])
 
 Each argument is described in detail in: L<Paws::OpsWorks::CloneStack>
 
@@ -612,7 +612,7 @@ attached policy that explicitly grants permissions. For more
 information on user permissions, see Managing User Permissions.
 
 
-=head2 CreateApp(Name => Str, StackId => Str, Type => Str, [AppSource => L<Paws::OpsWorks::Source>, Attributes => L<Paws::OpsWorks::AppAttributes>, DataSources => ArrayRef[L<Paws::OpsWorks::DataSource>], Description => Str, Domains => ArrayRef[Str], EnableSsl => Bool, Environment => ArrayRef[L<Paws::OpsWorks::EnvironmentVariable>], Shortname => Str, SslConfiguration => L<Paws::OpsWorks::SslConfiguration>])
+=head2 CreateApp(Name => Str, StackId => Str, Type => Str, [AppSource => L<Paws::OpsWorks::Source>, Attributes => L<Paws::OpsWorks::AppAttributes>, DataSources => ArrayRef[L<Paws::OpsWorks::DataSource>], Description => Str, Domains => ArrayRef[Str|Undef], EnableSsl => Bool, Environment => ArrayRef[L<Paws::OpsWorks::EnvironmentVariable>], Shortname => Str, SslConfiguration => L<Paws::OpsWorks::SslConfiguration>])
 
 Each argument is described in detail in: L<Paws::OpsWorks::CreateApp>
 
@@ -627,7 +627,7 @@ explicitly grants permissions. For more information on user
 permissions, see Managing User Permissions.
 
 
-=head2 CreateDeployment(Command => L<Paws::OpsWorks::DeploymentCommand>, StackId => Str, [AppId => Str, Comment => Str, CustomJson => Str, InstanceIds => ArrayRef[Str], LayerIds => ArrayRef[Str]])
+=head2 CreateDeployment(Command => L<Paws::OpsWorks::DeploymentCommand>, StackId => Str, [AppId => Str, Comment => Str, CustomJson => Str, InstanceIds => ArrayRef[Str|Undef], LayerIds => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::OpsWorks::CreateDeployment>
 
@@ -642,7 +642,7 @@ that explicitly grants permissions. For more information on user
 permissions, see Managing User Permissions.
 
 
-=head2 CreateInstance(InstanceType => Str, LayerIds => ArrayRef[Str], StackId => Str, [AgentVersion => Str, AmiId => Str, Architecture => Str, AutoScalingType => Str, AvailabilityZone => Str, BlockDeviceMappings => ArrayRef[L<Paws::OpsWorks::BlockDeviceMapping>], EbsOptimized => Bool, Hostname => Str, InstallUpdatesOnBoot => Bool, Os => Str, RootDeviceType => Str, SshKeyName => Str, SubnetId => Str, Tenancy => Str, VirtualizationType => Str])
+=head2 CreateInstance(InstanceType => Str, LayerIds => ArrayRef[Str|Undef], StackId => Str, [AgentVersion => Str, AmiId => Str, Architecture => Str, AutoScalingType => Str, AvailabilityZone => Str, BlockDeviceMappings => ArrayRef[L<Paws::OpsWorks::BlockDeviceMapping>], EbsOptimized => Bool, Hostname => Str, InstallUpdatesOnBoot => Bool, Os => Str, RootDeviceType => Str, SshKeyName => Str, SubnetId => Str, Tenancy => Str, VirtualizationType => Str])
 
 Each argument is described in detail in: L<Paws::OpsWorks::CreateInstance>
 
@@ -657,7 +657,7 @@ explicitly grants permissions. For more information on user
 permissions, see Managing User Permissions.
 
 
-=head2 CreateLayer(Name => Str, Shortname => Str, StackId => Str, Type => Str, [Attributes => L<Paws::OpsWorks::LayerAttributes>, AutoAssignElasticIps => Bool, AutoAssignPublicIps => Bool, CustomInstanceProfileArn => Str, CustomJson => Str, CustomRecipes => L<Paws::OpsWorks::Recipes>, CustomSecurityGroupIds => ArrayRef[Str], EnableAutoHealing => Bool, InstallUpdatesOnBoot => Bool, LifecycleEventConfiguration => L<Paws::OpsWorks::LifecycleEventConfiguration>, Packages => ArrayRef[Str], UseEbsOptimizedInstances => Bool, VolumeConfigurations => ArrayRef[L<Paws::OpsWorks::VolumeConfiguration>]])
+=head2 CreateLayer(Name => Str, Shortname => Str, StackId => Str, Type => Str, [Attributes => L<Paws::OpsWorks::LayerAttributes>, AutoAssignElasticIps => Bool, AutoAssignPublicIps => Bool, CustomInstanceProfileArn => Str, CustomJson => Str, CustomRecipes => L<Paws::OpsWorks::Recipes>, CustomSecurityGroupIds => ArrayRef[Str|Undef], EnableAutoHealing => Bool, InstallUpdatesOnBoot => Bool, LifecycleEventConfiguration => L<Paws::OpsWorks::LifecycleEventConfiguration>, Packages => ArrayRef[Str|Undef], UseEbsOptimizedInstances => Bool, VolumeConfigurations => ArrayRef[L<Paws::OpsWorks::VolumeConfiguration>]])
 
 Each argument is described in detail in: L<Paws::OpsWorks::CreateLayer>
 
@@ -870,7 +870,7 @@ list of available agent versions for the specified stack or
 configuration manager.
 
 
-=head2 DescribeApps([AppIds => ArrayRef[Str], StackId => Str])
+=head2 DescribeApps([AppIds => ArrayRef[Str|Undef], StackId => Str])
 
 Each argument is described in detail in: L<Paws::OpsWorks::DescribeApps>
 
@@ -886,7 +886,7 @@ policy that explicitly grants permissions. For more information on user
 permissions, see Managing User Permissions.
 
 
-=head2 DescribeCommands([CommandIds => ArrayRef[Str], DeploymentId => Str, InstanceId => Str])
+=head2 DescribeCommands([CommandIds => ArrayRef[Str|Undef], DeploymentId => Str, InstanceId => Str])
 
 Each argument is described in detail in: L<Paws::OpsWorks::DescribeCommands>
 
@@ -902,7 +902,7 @@ policy that explicitly grants permissions. For more information on user
 permissions, see Managing User Permissions.
 
 
-=head2 DescribeDeployments([AppId => Str, DeploymentIds => ArrayRef[Str], StackId => Str])
+=head2 DescribeDeployments([AppId => Str, DeploymentIds => ArrayRef[Str|Undef], StackId => Str])
 
 Each argument is described in detail in: L<Paws::OpsWorks::DescribeDeployments>
 
@@ -918,7 +918,7 @@ policy that explicitly grants permissions. For more information on user
 permissions, see Managing User Permissions.
 
 
-=head2 DescribeEcsClusters([EcsClusterArns => ArrayRef[Str], MaxResults => Int, NextToken => Str, StackId => Str])
+=head2 DescribeEcsClusters([EcsClusterArns => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str, StackId => Str])
 
 Each argument is described in detail in: L<Paws::OpsWorks::DescribeEcsClusters>
 
@@ -936,7 +936,7 @@ policy that explicitly grants permission. For more information on user
 permissions, see Managing User Permissions.
 
 
-=head2 DescribeElasticIps([InstanceId => Str, Ips => ArrayRef[Str], StackId => Str])
+=head2 DescribeElasticIps([InstanceId => Str, Ips => ArrayRef[Str|Undef], StackId => Str])
 
 Each argument is described in detail in: L<Paws::OpsWorks::DescribeElasticIps>
 
@@ -952,7 +952,7 @@ policy that explicitly grants permissions. For more information on user
 permissions, see Managing User Permissions.
 
 
-=head2 DescribeElasticLoadBalancers([LayerIds => ArrayRef[Str], StackId => Str])
+=head2 DescribeElasticLoadBalancers([LayerIds => ArrayRef[Str|Undef], StackId => Str])
 
 Each argument is described in detail in: L<Paws::OpsWorks::DescribeElasticLoadBalancers>
 
@@ -968,7 +968,7 @@ policy that explicitly grants permissions. For more information on user
 permissions, see Managing User Permissions.
 
 
-=head2 DescribeInstances([InstanceIds => ArrayRef[Str], LayerId => Str, StackId => Str])
+=head2 DescribeInstances([InstanceIds => ArrayRef[Str|Undef], LayerId => Str, StackId => Str])
 
 Each argument is described in detail in: L<Paws::OpsWorks::DescribeInstances>
 
@@ -984,7 +984,7 @@ policy that explicitly grants permissions. For more information on user
 permissions, see Managing User Permissions.
 
 
-=head2 DescribeLayers([LayerIds => ArrayRef[Str], StackId => Str])
+=head2 DescribeLayers([LayerIds => ArrayRef[Str|Undef], StackId => Str])
 
 Each argument is described in detail in: L<Paws::OpsWorks::DescribeLayers>
 
@@ -1000,7 +1000,7 @@ policy that explicitly grants permissions. For more information on user
 permissions, see Managing User Permissions.
 
 
-=head2 DescribeLoadBasedAutoScaling(LayerIds => ArrayRef[Str])
+=head2 DescribeLoadBasedAutoScaling(LayerIds => ArrayRef[Str|Undef])
 
 Each argument is described in detail in: L<Paws::OpsWorks::DescribeLoadBasedAutoScaling>
 
@@ -1044,7 +1044,7 @@ explicitly grants permissions. For more information on user
 permissions, see Managing User Permissions.
 
 
-=head2 DescribeRaidArrays([InstanceId => Str, RaidArrayIds => ArrayRef[Str], StackId => Str])
+=head2 DescribeRaidArrays([InstanceId => Str, RaidArrayIds => ArrayRef[Str|Undef], StackId => Str])
 
 Each argument is described in detail in: L<Paws::OpsWorks::DescribeRaidArrays>
 
@@ -1060,7 +1060,7 @@ policy that explicitly grants permissions. For more information on user
 permissions, see Managing User Permissions.
 
 
-=head2 DescribeRdsDbInstances(StackId => Str, [RdsDbInstanceArns => ArrayRef[Str]])
+=head2 DescribeRdsDbInstances(StackId => Str, [RdsDbInstanceArns => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::OpsWorks::DescribeRdsDbInstances>
 
@@ -1074,7 +1074,7 @@ policy that explicitly grants permissions. For more information on user
 permissions, see Managing User Permissions.
 
 
-=head2 DescribeServiceErrors([InstanceId => Str, ServiceErrorIds => ArrayRef[Str], StackId => Str])
+=head2 DescribeServiceErrors([InstanceId => Str, ServiceErrorIds => ArrayRef[Str|Undef], StackId => Str])
 
 Each argument is described in detail in: L<Paws::OpsWorks::DescribeServiceErrors>
 
@@ -1102,7 +1102,7 @@ policy that explicitly grants permissions. For more information on user
 permissions, see Managing User Permissions.
 
 
-=head2 DescribeStacks([StackIds => ArrayRef[Str]])
+=head2 DescribeStacks([StackIds => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::OpsWorks::DescribeStacks>
 
@@ -1132,7 +1132,7 @@ policy that explicitly grants permissions. For more information on user
 permissions, see Managing User Permissions.
 
 
-=head2 DescribeTimeBasedAutoScaling(InstanceIds => ArrayRef[Str])
+=head2 DescribeTimeBasedAutoScaling(InstanceIds => ArrayRef[Str|Undef])
 
 Each argument is described in detail in: L<Paws::OpsWorks::DescribeTimeBasedAutoScaling>
 
@@ -1149,7 +1149,7 @@ policy that explicitly grants permissions. For more information on user
 permissions, see Managing User Permissions.
 
 
-=head2 DescribeUserProfiles([IamUserArns => ArrayRef[Str]])
+=head2 DescribeUserProfiles([IamUserArns => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::OpsWorks::DescribeUserProfiles>
 
@@ -1162,7 +1162,7 @@ attached policy that explicitly grants permissions. For more
 information on user permissions, see Managing User Permissions.
 
 
-=head2 DescribeVolumes([InstanceId => Str, RaidArrayId => Str, StackId => Str, VolumeIds => ArrayRef[Str]])
+=head2 DescribeVolumes([InstanceId => Str, RaidArrayId => Str, StackId => Str, VolumeIds => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::OpsWorks::DescribeVolumes>
 
@@ -1480,7 +1480,7 @@ explicitly grants permissions. For more information on user
 permissions, see Managing User Permissions.
 
 
-=head2 UpdateApp(AppId => Str, [AppSource => L<Paws::OpsWorks::Source>, Attributes => L<Paws::OpsWorks::AppAttributes>, DataSources => ArrayRef[L<Paws::OpsWorks::DataSource>], Description => Str, Domains => ArrayRef[Str], EnableSsl => Bool, Environment => ArrayRef[L<Paws::OpsWorks::EnvironmentVariable>], Name => Str, SslConfiguration => L<Paws::OpsWorks::SslConfiguration>, Type => Str])
+=head2 UpdateApp(AppId => Str, [AppSource => L<Paws::OpsWorks::Source>, Attributes => L<Paws::OpsWorks::AppAttributes>, DataSources => ArrayRef[L<Paws::OpsWorks::DataSource>], Description => Str, Domains => ArrayRef[Str|Undef], EnableSsl => Bool, Environment => ArrayRef[L<Paws::OpsWorks::EnvironmentVariable>], Name => Str, SslConfiguration => L<Paws::OpsWorks::SslConfiguration>, Type => Str])
 
 Each argument is described in detail in: L<Paws::OpsWorks::UpdateApp>
 
@@ -1509,7 +1509,7 @@ explicitly grants permissions. For more information on user
 permissions, see Managing User Permissions.
 
 
-=head2 UpdateInstance(InstanceId => Str, [AgentVersion => Str, AmiId => Str, Architecture => Str, AutoScalingType => Str, EbsOptimized => Bool, Hostname => Str, InstallUpdatesOnBoot => Bool, InstanceType => Str, LayerIds => ArrayRef[Str], Os => Str, SshKeyName => Str])
+=head2 UpdateInstance(InstanceId => Str, [AgentVersion => Str, AmiId => Str, Architecture => Str, AutoScalingType => Str, EbsOptimized => Bool, Hostname => Str, InstallUpdatesOnBoot => Bool, InstanceType => Str, LayerIds => ArrayRef[Str|Undef], Os => Str, SshKeyName => Str])
 
 Each argument is described in detail in: L<Paws::OpsWorks::UpdateInstance>
 
@@ -1523,7 +1523,7 @@ explicitly grants permissions. For more information on user
 permissions, see Managing User Permissions.
 
 
-=head2 UpdateLayer(LayerId => Str, [Attributes => L<Paws::OpsWorks::LayerAttributes>, AutoAssignElasticIps => Bool, AutoAssignPublicIps => Bool, CustomInstanceProfileArn => Str, CustomJson => Str, CustomRecipes => L<Paws::OpsWorks::Recipes>, CustomSecurityGroupIds => ArrayRef[Str], EnableAutoHealing => Bool, InstallUpdatesOnBoot => Bool, LifecycleEventConfiguration => L<Paws::OpsWorks::LifecycleEventConfiguration>, Name => Str, Packages => ArrayRef[Str], Shortname => Str, UseEbsOptimizedInstances => Bool, VolumeConfigurations => ArrayRef[L<Paws::OpsWorks::VolumeConfiguration>]])
+=head2 UpdateLayer(LayerId => Str, [Attributes => L<Paws::OpsWorks::LayerAttributes>, AutoAssignElasticIps => Bool, AutoAssignPublicIps => Bool, CustomInstanceProfileArn => Str, CustomJson => Str, CustomRecipes => L<Paws::OpsWorks::Recipes>, CustomSecurityGroupIds => ArrayRef[Str|Undef], EnableAutoHealing => Bool, InstallUpdatesOnBoot => Bool, LifecycleEventConfiguration => L<Paws::OpsWorks::LifecycleEventConfiguration>, Name => Str, Packages => ArrayRef[Str|Undef], Shortname => Str, UseEbsOptimizedInstances => Bool, VolumeConfigurations => ArrayRef[L<Paws::OpsWorks::VolumeConfiguration>]])
 
 Each argument is described in detail in: L<Paws::OpsWorks::UpdateLayer>
 

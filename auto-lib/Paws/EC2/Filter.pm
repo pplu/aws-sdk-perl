@@ -1,7 +1,7 @@
 package Paws::EC2::Filter;
   use Moose;
   has Name => (is => 'ro', isa => 'Str');
-  has Values => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'Value', traits => ['Unwrapped']);
+  has Values => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'Value', traits => ['Unwrapped']);
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +42,7 @@ This class has no description
   The name of the filter. Filter names are case-sensitive.
 
 
-=head2 Values => ArrayRef[Str]
+=head2 Values => ArrayRef[Str|Undef]
 
   One or more filter values. Filter values are case-sensitive.
 

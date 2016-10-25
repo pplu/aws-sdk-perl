@@ -4,7 +4,7 @@ package Paws::Inspector::CreateAssessmentTemplate;
   has AssessmentTargetArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'assessmentTargetArn' , required => 1);
   has AssessmentTemplateName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'assessmentTemplateName' , required => 1);
   has DurationInSeconds => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'durationInSeconds' , required => 1);
-  has RulesPackageArns => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'rulesPackageArns' , required => 1);
+  has RulesPackageArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'rulesPackageArns' , required => 1);
   has UserAttributesForFindings => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::Attribute]', traits => ['NameInRequest'], request_name => 'userAttributesForFindings' );
 
   use MooseX::ClassAttribute;
@@ -60,7 +60,7 @@ The duration of the assessment run in seconds. The default value is
 
 
 
-=head2 B<REQUIRED> RulesPackageArns => ArrayRef[Str]
+=head2 B<REQUIRED> RulesPackageArns => ArrayRef[Str|Undef]
 
 The ARNs that specify the rules packages that you want to attach to the
 assessment template.

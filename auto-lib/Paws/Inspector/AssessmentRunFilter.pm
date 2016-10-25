@@ -3,10 +3,10 @@ package Paws::Inspector::AssessmentRunFilter;
   has CompletionTimeRange => (is => 'ro', isa => 'Paws::Inspector::TimestampRange', xmlname => 'completionTimeRange', request_name => 'completionTimeRange', traits => ['Unwrapped','NameInRequest']);
   has DurationRange => (is => 'ro', isa => 'Paws::Inspector::DurationRange', xmlname => 'durationRange', request_name => 'durationRange', traits => ['Unwrapped','NameInRequest']);
   has NamePattern => (is => 'ro', isa => 'Str', xmlname => 'namePattern', request_name => 'namePattern', traits => ['Unwrapped','NameInRequest']);
-  has RulesPackageArns => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'rulesPackageArns', request_name => 'rulesPackageArns', traits => ['Unwrapped','NameInRequest']);
+  has RulesPackageArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'rulesPackageArns', request_name => 'rulesPackageArns', traits => ['Unwrapped','NameInRequest']);
   has StartTimeRange => (is => 'ro', isa => 'Paws::Inspector::TimestampRange', xmlname => 'startTimeRange', request_name => 'startTimeRange', traits => ['Unwrapped','NameInRequest']);
   has StateChangeTimeRange => (is => 'ro', isa => 'Paws::Inspector::TimestampRange', xmlname => 'stateChangeTimeRange', request_name => 'stateChangeTimeRange', traits => ['Unwrapped','NameInRequest']);
-  has States => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'states', request_name => 'states', traits => ['Unwrapped','NameInRequest']);
+  has States => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'states', request_name => 'states', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -66,7 +66,7 @@ must match the value of the B<assessmentRunName> property of the
 AssessmentRun data type.
 
 
-=head2 RulesPackageArns => ArrayRef[Str]
+=head2 RulesPackageArns => ArrayRef[Str|Undef]
 
   For a record to match a filter, the value that is specified for this
 data type property must be contained in the list of values of the
@@ -88,7 +88,7 @@ data type property must match the B<stateChangedAt> property of the
 AssessmentRun data type.
 
 
-=head2 States => ArrayRef[Str]
+=head2 States => ArrayRef[Str|Undef]
 
   For a record to match a filter, one of the values specified for this
 data type property must be the exact match of the value of the

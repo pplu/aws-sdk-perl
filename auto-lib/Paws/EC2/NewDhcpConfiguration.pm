@@ -1,7 +1,7 @@
 package Paws::EC2::NewDhcpConfiguration;
   use Moose;
   has Key => (is => 'ro', isa => 'Str', xmlname => 'key', traits => ['Unwrapped']);
-  has Values => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'Value', traits => ['Unwrapped']);
+  has Values => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'Value', traits => ['Unwrapped']);
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +42,7 @@ This class has no description
   
 
 
-=head2 Values => ArrayRef[Str]
+=head2 Values => ArrayRef[Str|Undef]
 
   
 

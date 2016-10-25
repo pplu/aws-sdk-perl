@@ -1,7 +1,8 @@
 
 package Paws::ElastiCache::CreateSnapshot;
   use Moose;
-  has CacheClusterId => (is => 'ro', isa => 'Str', required => 1);
+  has CacheClusterId => (is => 'ro', isa => 'Str');
+  has ReplicationGroupId => (is => 'ro', isa => 'Str');
   has SnapshotName => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -34,10 +35,17 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> CacheClusterId => Str
+=head2 CacheClusterId => Str
 
-The identifier of an existing cache cluster. The snapshot will be
-created from this cache cluster.
+The identifier of an existing cache cluster. The snapshot is created
+from this cache cluster.
+
+
+
+=head2 ReplicationGroupId => Str
+
+The identifier of an existing replication group. The snapshot is
+created from this replication group.
 
 
 

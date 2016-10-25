@@ -3,7 +3,7 @@ package Paws::ElasticBeanstalk::ComposeEnvironments;
   use Moose;
   has ApplicationName => (is => 'ro', isa => 'Str');
   has GroupName => (is => 'ro', isa => 'Str');
-  has VersionLabels => (is => 'ro', isa => 'ArrayRef[Str]');
+  has VersionLabels => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
   use MooseX::ClassAttribute;
 
@@ -51,7 +51,7 @@ Manifest (env.yaml) for details.
 
 
 
-=head2 VersionLabels => ArrayRef[Str]
+=head2 VersionLabels => ArrayRef[Str|Undef]
 
 A list of version labels, specifying one or more application source
 bundles that belong to the target application. Each source bundle must

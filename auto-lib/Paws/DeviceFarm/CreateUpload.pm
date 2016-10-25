@@ -45,6 +45,10 @@ The upload's content type (for example, "application/octet-stream").
 =head2 B<REQUIRED> Name => Str
 
 The upload's file name. The name should not contain the '/' character.
+If uploading an iOS app, the file name needs to end with the C<.ipa>
+extension. If uploading an Android app, the file name needs to end with
+the C<.apk> extension. For all others, the file name must end with the
+C<.zip> file extension.
 
 
 

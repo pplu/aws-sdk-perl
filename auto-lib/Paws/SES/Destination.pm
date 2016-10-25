@@ -1,8 +1,8 @@
 package Paws::SES::Destination;
   use Moose;
-  has BccAddresses => (is => 'ro', isa => 'ArrayRef[Str]');
-  has CcAddresses => (is => 'ro', isa => 'ArrayRef[Str]');
-  has ToAddresses => (is => 'ro', isa => 'ArrayRef[Str]');
+  has BccAddresses => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has CcAddresses => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has ToAddresses => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 1;
 
 ### main pod documentation begin ###
@@ -45,17 +45,17 @@ information, see RFC 2047.
 =head1 ATTRIBUTES
 
 
-=head2 BccAddresses => ArrayRef[Str]
+=head2 BccAddresses => ArrayRef[Str|Undef]
 
   The BCC: field(s) of the message.
 
 
-=head2 CcAddresses => ArrayRef[Str]
+=head2 CcAddresses => ArrayRef[Str|Undef]
 
   The CC: field(s) of the message.
 
 
-=head2 ToAddresses => ArrayRef[Str]
+=head2 ToAddresses => ArrayRef[Str|Undef]
 
   The To: field(s) of the message.
 

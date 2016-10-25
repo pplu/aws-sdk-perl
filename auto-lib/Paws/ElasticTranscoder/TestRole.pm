@@ -4,7 +4,7 @@ package Paws::ElasticTranscoder::TestRole;
   has InputBucket => (is => 'ro', isa => 'Str', required => 1);
   has OutputBucket => (is => 'ro', isa => 'Str', required => 1);
   has Role => (is => 'ro', isa => 'Str', required => 1);
-  has Topics => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has Topics => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -59,7 +59,7 @@ Transcoder to test.
 
 
 
-=head2 B<REQUIRED> Topics => ArrayRef[Str]
+=head2 B<REQUIRED> Topics => ArrayRef[Str|Undef]
 
 The ARNs of one or more Amazon Simple Notification Service (Amazon SNS)
 topics that you want the action to send a test notification to.

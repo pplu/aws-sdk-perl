@@ -33,7 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 
 =head1 DESCRIPTION
 
-Summary of an invalidation request.
+A summary of an invalidation request.
 
 =head1 ATTRIBUTES
 

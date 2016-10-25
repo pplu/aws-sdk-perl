@@ -1,7 +1,7 @@
 
 package Paws::OpsWorks::DescribeCommands;
   use Moose;
-  has CommandIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has CommandIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has DeploymentId => (is => 'ro', isa => 'Str');
   has InstanceId => (is => 'ro', isa => 'Str');
 
@@ -35,7 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 CommandIds => ArrayRef[Str]
+=head2 CommandIds => ArrayRef[Str|Undef]
 
 An array of command IDs. If you include this parameter,
 C<DescribeCommands> returns a description of the specified commands.

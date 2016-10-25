@@ -15,7 +15,7 @@ package Paws::EMR::RunJobFlow;
   has SecurityConfiguration => (is => 'ro', isa => 'Str');
   has ServiceRole => (is => 'ro', isa => 'Str');
   has Steps => (is => 'ro', isa => 'ArrayRef[Paws::EMR::StepConfig]');
-  has SupportedProducts => (is => 'ro', isa => 'ArrayRef[Str]');
+  has SupportedProducts => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EMR::Tag]');
   has VisibleToAllUsers => (is => 'ro', isa => 'Bool');
 
@@ -217,7 +217,7 @@ A list of steps to be executed by the job flow.
 
 
 
-=head2 SupportedProducts => ArrayRef[Str]
+=head2 SupportedProducts => ArrayRef[Str|Undef]
 
 For Amazon EMR releases 3.x and 2.x. For Amazon EMR releases 4.x and
 greater, use Applications.

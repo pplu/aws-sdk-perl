@@ -1,7 +1,7 @@
 
 package Paws::CodeDeploy::ListDeploymentInstancesOutput;
   use Moose;
-  has InstancesList => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['Unwrapped'], xmlname => 'instancesList' );
+  has InstancesList => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['Unwrapped'], xmlname => 'instancesList' );
   has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
 
 
@@ -14,7 +14,7 @@ Paws::CodeDeploy::ListDeploymentInstancesOutput
 =head1 ATTRIBUTES
 
 
-=head2 InstancesList => ArrayRef[Str]
+=head2 InstancesList => ArrayRef[Str|Undef]
 
 A list of instance IDs.
 

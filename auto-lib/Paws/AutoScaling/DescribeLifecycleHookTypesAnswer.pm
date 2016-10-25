@@ -1,7 +1,7 @@
 
 package Paws::AutoScaling::DescribeLifecycleHookTypesAnswer;
   use Moose;
-  has LifecycleHookTypes => (is => 'ro', isa => 'ArrayRef[Str]');
+  has LifecycleHookTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
 1;
 
@@ -14,7 +14,7 @@ Paws::AutoScaling::DescribeLifecycleHookTypesAnswer
 =head1 ATTRIBUTES
 
 
-=head2 LifecycleHookTypes => ArrayRef[Str]
+=head2 LifecycleHookTypes => ArrayRef[Str|Undef]
 
 The lifecycle hook types.
 

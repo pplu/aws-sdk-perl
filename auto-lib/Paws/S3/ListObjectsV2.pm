@@ -8,6 +8,7 @@ package Paws::S3::ListObjectsV2;
   has FetchOwner => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'fetch-owner' );
   has MaxKeys => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'max-keys' );
   has Prefix => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'prefix' );
+  has RequestPayer => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-request-payer' );
   has StartAfter => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'start-after' );
 
   use MooseX::ClassAttribute;
@@ -89,6 +90,14 @@ might contain fewer keys but will never contain more.
 Limits the response to keys that begin with the specified prefix.
 
 
+
+=head2 RequestPayer => Str
+
+Confirms that the requester knows that she or he will be charged for
+the list objects request in V2 style. Bucket owners need not specify
+this parameter in their requests.
+
+Valid values are: C<"requester">
 
 =head2 StartAfter => Str
 

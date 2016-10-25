@@ -4,7 +4,7 @@ package Paws::EC2::ScheduledInstancesNetworkInterface;
   has DeleteOnTermination => (is => 'ro', isa => 'Bool');
   has Description => (is => 'ro', isa => 'Str');
   has DeviceIndex => (is => 'ro', isa => 'Int');
-  has Groups => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'Group', traits => ['Unwrapped']);
+  has Groups => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'Group', traits => ['Unwrapped']);
   has NetworkInterfaceId => (is => 'ro', isa => 'Str');
   has PrivateIpAddress => (is => 'ro', isa => 'Str');
   has PrivateIpAddressConfigs => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ScheduledInstancesPrivateIpAddressConfig]', xmlname => 'PrivateIpAddressConfig', traits => ['Unwrapped']);
@@ -71,7 +71,7 @@ terminated.
   The index of the device for the network interface attachment.
 
 
-=head2 Groups => ArrayRef[Str]
+=head2 Groups => ArrayRef[Str|Undef]
 
   The IDs of one or more security groups.
 

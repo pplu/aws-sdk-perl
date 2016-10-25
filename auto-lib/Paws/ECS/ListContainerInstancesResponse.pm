@@ -1,7 +1,7 @@
 
 package Paws::ECS::ListContainerInstancesResponse;
   use Moose;
-  has ContainerInstanceArns => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['Unwrapped'], xmlname => 'containerInstanceArns' );
+  has ContainerInstanceArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['Unwrapped'], xmlname => 'containerInstanceArns' );
   has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
 
 
@@ -14,7 +14,7 @@ Paws::ECS::ListContainerInstancesResponse
 =head1 ATTRIBUTES
 
 
-=head2 ContainerInstanceArns => ArrayRef[Str]
+=head2 ContainerInstanceArns => ArrayRef[Str|Undef]
 
 The list of container instances with full Amazon Resource Name (ARN)
 entries for each container instance associated with the specified

@@ -1,7 +1,7 @@
 
 package Paws::CodeDeploy::RemoveTagsFromOnPremisesInstances;
   use Moose;
-  has InstanceNames => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'instanceNames' , required => 1);
+  has InstanceNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'instanceNames' , required => 1);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::Tag]', traits => ['NameInRequest'], request_name => 'tags' , required => 1);
 
   use MooseX::ClassAttribute;
@@ -34,7 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> InstanceNames => ArrayRef[Str]
+=head2 B<REQUIRED> InstanceNames => ArrayRef[Str|Undef]
 
 The names of the on-premises instances from which to remove tags.
 

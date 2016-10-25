@@ -1,8 +1,8 @@
 
 package Paws::ELBv2::RemoveTags;
   use Moose;
-  has ResourceArns => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
-  has TagKeys => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has ResourceArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
+  has TagKeys => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -34,13 +34,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> ResourceArns => ArrayRef[Str]
+=head2 B<REQUIRED> ResourceArns => ArrayRef[Str|Undef]
 
 The Amazon Resource Name (ARN) of the resource.
 
 
 
-=head2 B<REQUIRED> TagKeys => ArrayRef[Str]
+=head2 B<REQUIRED> TagKeys => ArrayRef[Str|Undef]
 
 The tag keys for the tags to remove.
 

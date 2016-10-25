@@ -2,7 +2,7 @@
 package Paws::ElasticBeanstalk::ListAvailableSolutionStacksResultMessage;
   use Moose;
   has SolutionStackDetails => (is => 'ro', isa => 'ArrayRef[Paws::ElasticBeanstalk::SolutionStackDescription]');
-  has SolutionStacks => (is => 'ro', isa => 'ArrayRef[Str]');
+  has SolutionStacks => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
 1;
 
@@ -21,7 +21,7 @@ A list of available solution stacks and their SolutionStackDescription.
 
 
 
-=head2 SolutionStacks => ArrayRef[Str]
+=head2 SolutionStacks => ArrayRef[Str|Undef]
 
 A list of available solution stacks.
 

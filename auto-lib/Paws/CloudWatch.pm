@@ -182,7 +182,7 @@ performance, and operational health.
 
 =head1 METHODS
 
-=head2 DeleteAlarms(AlarmNames => ArrayRef[Str])
+=head2 DeleteAlarms(AlarmNames => ArrayRef[Str|Undef])
 
 Each argument is described in detail in: L<Paws::CloudWatch::DeleteAlarms>
 
@@ -206,7 +206,7 @@ Amazon CloudWatch retains the history of an alarm for two weeks,
 whether or not you delete the alarm.
 
 
-=head2 DescribeAlarms([ActionPrefix => Str, AlarmNamePrefix => Str, AlarmNames => ArrayRef[Str], MaxRecords => Int, NextToken => Str, StateValue => Str])
+=head2 DescribeAlarms([ActionPrefix => Str, AlarmNamePrefix => Str, AlarmNames => ArrayRef[Str|Undef], MaxRecords => Int, NextToken => Str, StateValue => Str])
 
 Each argument is described in detail in: L<Paws::CloudWatch::DescribeAlarms>
 
@@ -228,7 +228,7 @@ Returns: a L<Paws::CloudWatch::DescribeAlarmsForMetricOutput> instance
 or unit to filter the set of alarms further.
 
 
-=head2 DisableAlarmActions(AlarmNames => ArrayRef[Str])
+=head2 DisableAlarmActions(AlarmNames => ArrayRef[Str|Undef])
 
 Each argument is described in detail in: L<Paws::CloudWatch::DisableAlarmActions>
 
@@ -239,7 +239,7 @@ disabled the alarm's state may change, but none of the alarm's actions
 will execute.
 
 
-=head2 EnableAlarmActions(AlarmNames => ArrayRef[Str])
+=head2 EnableAlarmActions(AlarmNames => ArrayRef[Str|Undef])
 
 Each argument is described in detail in: L<Paws::CloudWatch::EnableAlarmActions>
 
@@ -248,7 +248,7 @@ Returns: nothing
   Enables actions for the specified alarms.
 
 
-=head2 GetMetricStatistics(EndTime => Str, MetricName => Str, Namespace => Str, Period => Int, StartTime => Str, Statistics => ArrayRef[Str], [Dimensions => ArrayRef[L<Paws::CloudWatch::Dimension>], Unit => Str])
+=head2 GetMetricStatistics(EndTime => Str, MetricName => Str, Namespace => Str, Period => Int, StartTime => Str, Statistics => ArrayRef[Str|Undef], [Dimensions => ArrayRef[L<Paws::CloudWatch::Dimension>], Unit => Str])
 
 Each argument is described in detail in: L<Paws::CloudWatch::GetMetricStatistics>
 
@@ -319,7 +319,7 @@ for the metric to appear in calls to C<ListMetrics>. Statistics about
 the metric, however, are available sooner using GetMetricStatistics.
 
 
-=head2 PutMetricAlarm(AlarmName => Str, ComparisonOperator => Str, EvaluationPeriods => Int, MetricName => Str, Namespace => Str, Period => Int, Statistic => Str, Threshold => Num, [ActionsEnabled => Bool, AlarmActions => ArrayRef[Str], AlarmDescription => Str, Dimensions => ArrayRef[L<Paws::CloudWatch::Dimension>], InsufficientDataActions => ArrayRef[Str], OKActions => ArrayRef[Str], Unit => Str])
+=head2 PutMetricAlarm(AlarmName => Str, ComparisonOperator => Str, EvaluationPeriods => Int, MetricName => Str, Namespace => Str, Period => Int, Statistic => Str, Threshold => Num, [ActionsEnabled => Bool, AlarmActions => ArrayRef[Str|Undef], AlarmDescription => Str, Dimensions => ArrayRef[L<Paws::CloudWatch::Dimension>], InsufficientDataActions => ArrayRef[Str|Undef], OKActions => ArrayRef[Str|Undef], Unit => Str])
 
 Each argument is described in detail in: L<Paws::CloudWatch::PutMetricAlarm>
 
@@ -442,9 +442,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::CloudWatch::DescribeAlarmHistoryOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllAlarms(sub { },[ActionPrefix => Str, AlarmNamePrefix => Str, AlarmNames => ArrayRef[Str], MaxRecords => Int, NextToken => Str, StateValue => Str])
+=head2 DescribeAllAlarms(sub { },[ActionPrefix => Str, AlarmNamePrefix => Str, AlarmNames => ArrayRef[Str|Undef], MaxRecords => Int, NextToken => Str, StateValue => Str])
 
-=head2 DescribeAllAlarms([ActionPrefix => Str, AlarmNamePrefix => Str, AlarmNames => ArrayRef[Str], MaxRecords => Int, NextToken => Str, StateValue => Str])
+=head2 DescribeAllAlarms([ActionPrefix => Str, AlarmNamePrefix => Str, AlarmNames => ArrayRef[Str|Undef], MaxRecords => Int, NextToken => Str, StateValue => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

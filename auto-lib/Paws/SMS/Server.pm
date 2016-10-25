@@ -1,0 +1,80 @@
+package Paws::SMS::Server;
+  use Moose;
+  has ReplicationJobId => (is => 'ro', isa => 'Str', xmlname => 'replicationJobId', request_name => 'replicationJobId', traits => ['Unwrapped','NameInRequest']);
+  has ReplicationJobTerminated => (is => 'ro', isa => 'Bool', xmlname => 'replicationJobTerminated', request_name => 'replicationJobTerminated', traits => ['Unwrapped','NameInRequest']);
+  has ServerId => (is => 'ro', isa => 'Str', xmlname => 'serverId', request_name => 'serverId', traits => ['Unwrapped','NameInRequest']);
+  has ServerType => (is => 'ro', isa => 'Str', xmlname => 'serverType', request_name => 'serverType', traits => ['Unwrapped','NameInRequest']);
+  has VmServer => (is => 'ro', isa => 'Paws::SMS::VmServer', xmlname => 'vmServer', request_name => 'vmServer', traits => ['Unwrapped','NameInRequest']);
+1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::SMS::Server
+
+=head1 USAGE
+
+This class represents one of two things:
+
+=head3 Arguments in a call to a service
+
+Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
+Each attribute should be used as a named argument in the calls that expect this type of object.
+
+As an example, if Att1 is expected to be a Paws::SMS::Server object:
+
+  $service_obj->Method(Att1 => { ReplicationJobId => $value, ..., VmServer => $value  });
+
+=head3 Results returned from an API call
+
+Use accessors for each attribute. If Att1 is expected to be an Paws::SMS::Server object:
+
+  $result = $service_obj->Method(...);
+  $result->Att1->ReplicationJobId
+
+=head1 DESCRIPTION
+
+Object representing a server
+
+=head1 ATTRIBUTES
+
+
+=head2 ReplicationJobId => Str
+
+  
+
+
+=head2 ReplicationJobTerminated => Bool
+
+  
+
+
+=head2 ServerId => Str
+
+  
+
+
+=head2 ServerType => Str
+
+  
+
+
+=head2 VmServer => L<Paws::SMS::VmServer>
+
+  
+
+
+
+=head1 SEE ALSO
+
+This class forms part of L<Paws>, describing an object used in L<Paws::SMS>
+
+=head1 BUGS and CONTRIBUTIONS
+
+The source code is located here: https://github.com/pplu/aws-sdk-perl
+
+Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+
+=cut
+

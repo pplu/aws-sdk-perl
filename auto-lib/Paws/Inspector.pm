@@ -213,7 +213,7 @@ information, see Amazon Inspector User Guide.
 
 =head1 METHODS
 
-=head2 AddAttributesToFindings(Attributes => ArrayRef[L<Paws::Inspector::Attribute>], FindingArns => ArrayRef[Str])
+=head2 AddAttributesToFindings(Attributes => ArrayRef[L<Paws::Inspector::Attribute>], FindingArns => ArrayRef[Str|Undef])
 
 Each argument is described in detail in: L<Paws::Inspector::AddAttributesToFindings>
 
@@ -236,7 +236,7 @@ agents per AWS account. For more information, see Amazon Inspector
 Assessment Targets.
 
 
-=head2 CreateAssessmentTemplate(AssessmentTargetArn => Str, AssessmentTemplateName => Str, DurationInSeconds => Int, RulesPackageArns => ArrayRef[Str], [UserAttributesForFindings => ArrayRef[L<Paws::Inspector::Attribute>]])
+=head2 CreateAssessmentTemplate(AssessmentTargetArn => Str, AssessmentTemplateName => Str, DurationInSeconds => Int, RulesPackageArns => ArrayRef[Str|Undef], [UserAttributesForFindings => ArrayRef[L<Paws::Inspector::Attribute>]])
 
 Each argument is described in detail in: L<Paws::Inspector::CreateAssessmentTemplate>
 
@@ -289,7 +289,7 @@ Returns: nothing
 assessment template.
 
 
-=head2 DescribeAssessmentRuns(AssessmentRunArns => ArrayRef[Str])
+=head2 DescribeAssessmentRuns(AssessmentRunArns => ArrayRef[Str|Undef])
 
 Each argument is described in detail in: L<Paws::Inspector::DescribeAssessmentRuns>
 
@@ -299,7 +299,7 @@ Returns: a L<Paws::Inspector::DescribeAssessmentRunsResponse> instance
 assessment runs.
 
 
-=head2 DescribeAssessmentTargets(AssessmentTargetArns => ArrayRef[Str])
+=head2 DescribeAssessmentTargets(AssessmentTargetArns => ArrayRef[Str|Undef])
 
 Each argument is described in detail in: L<Paws::Inspector::DescribeAssessmentTargets>
 
@@ -309,7 +309,7 @@ Returns: a L<Paws::Inspector::DescribeAssessmentTargetsResponse> instance
 assessment targets.
 
 
-=head2 DescribeAssessmentTemplates(AssessmentTemplateArns => ArrayRef[Str])
+=head2 DescribeAssessmentTemplates(AssessmentTemplateArns => ArrayRef[Str|Undef])
 
 Each argument is described in detail in: L<Paws::Inspector::DescribeAssessmentTemplates>
 
@@ -329,7 +329,7 @@ Returns: a L<Paws::Inspector::DescribeCrossAccountAccessRoleResponse> instance
 account.
 
 
-=head2 DescribeFindings(FindingArns => ArrayRef[Str], [Locale => Str])
+=head2 DescribeFindings(FindingArns => ArrayRef[Str|Undef], [Locale => Str])
 
 Each argument is described in detail in: L<Paws::Inspector::DescribeFindings>
 
@@ -338,7 +338,7 @@ Returns: a L<Paws::Inspector::DescribeFindingsResponse> instance
   Describes the findings that are specified by the ARNs of the findings.
 
 
-=head2 DescribeResourceGroups(ResourceGroupArns => ArrayRef[Str])
+=head2 DescribeResourceGroups(ResourceGroupArns => ArrayRef[Str|Undef])
 
 Each argument is described in detail in: L<Paws::Inspector::DescribeResourceGroups>
 
@@ -348,7 +348,7 @@ Returns: a L<Paws::Inspector::DescribeResourceGroupsResponse> instance
 resource groups.
 
 
-=head2 DescribeRulesPackages(RulesPackageArns => ArrayRef[Str], [Locale => Str])
+=head2 DescribeRulesPackages(RulesPackageArns => ArrayRef[Str|Undef], [Locale => Str])
 
 Each argument is described in detail in: L<Paws::Inspector::DescribeRulesPackages>
 
@@ -378,7 +378,7 @@ Returns: a L<Paws::Inspector::ListAssessmentRunAgentsResponse> instance
 of the assessment runs.
 
 
-=head2 ListAssessmentRuns([AssessmentTemplateArns => ArrayRef[Str], Filter => L<Paws::Inspector::AssessmentRunFilter>, MaxResults => Int, NextToken => Str])
+=head2 ListAssessmentRuns([AssessmentTemplateArns => ArrayRef[Str|Undef], Filter => L<Paws::Inspector::AssessmentRunFilter>, MaxResults => Int, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::Inspector::ListAssessmentRuns>
 
@@ -399,7 +399,7 @@ more information about assessment targets, see Amazon Inspector
 Assessment Targets.
 
 
-=head2 ListAssessmentTemplates([AssessmentTargetArns => ArrayRef[Str], Filter => L<Paws::Inspector::AssessmentTemplateFilter>, MaxResults => Int, NextToken => Str])
+=head2 ListAssessmentTemplates([AssessmentTargetArns => ArrayRef[Str|Undef], Filter => L<Paws::Inspector::AssessmentTemplateFilter>, MaxResults => Int, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::Inspector::ListAssessmentTemplates>
 
@@ -420,7 +420,7 @@ specified by the ARN of the assessment template. For more information,
 see SubscribeToEvent and UnsubscribeFromEvent.
 
 
-=head2 ListFindings([AssessmentRunArns => ArrayRef[Str], Filter => L<Paws::Inspector::FindingFilter>, MaxResults => Int, NextToken => Str])
+=head2 ListFindings([AssessmentRunArns => ArrayRef[Str|Undef], Filter => L<Paws::Inspector::FindingFilter>, MaxResults => Int, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::Inspector::ListFindings>
 
@@ -469,7 +469,7 @@ instances at the start of the assessment run or when you call the
 PreviewAgents action.
 
 
-=head2 RemoveAttributesFromFindings(AttributeKeys => ArrayRef[Str], FindingArns => ArrayRef[Str])
+=head2 RemoveAttributesFromFindings(AttributeKeys => ArrayRef[Str|Undef], FindingArns => ArrayRef[Str|Undef])
 
 Each argument is described in detail in: L<Paws::Inspector::RemoveAttributesFromFindings>
 

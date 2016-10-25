@@ -1,7 +1,7 @@
 
 package Paws::StorageGateway::AddWorkingStorage;
   use Moose;
-  has DiskIds => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has DiskIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
   has GatewayARN => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -34,7 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> DiskIds => ArrayRef[Str]
+=head2 B<REQUIRED> DiskIds => ArrayRef[Str|Undef]
 
 An array of strings that identify disks that are to be configured as
 working storage. Each string have a minimum length of 1 and maximum

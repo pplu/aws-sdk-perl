@@ -1,7 +1,7 @@
 
 package Paws::CloudHSM::ListHapgsResponse;
   use Moose;
-  has HapgList => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has HapgList => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
   has NextToken => (is => 'ro', isa => 'Str');
 
 
@@ -14,7 +14,7 @@ Paws::CloudHSM::ListHapgsResponse
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> HapgList => ArrayRef[Str]
+=head2 B<REQUIRED> HapgList => ArrayRef[Str|Undef]
 
 The list of high-availability partition groups.
 

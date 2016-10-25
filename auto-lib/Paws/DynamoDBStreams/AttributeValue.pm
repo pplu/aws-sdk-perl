@@ -2,14 +2,14 @@ package Paws::DynamoDBStreams::AttributeValue;
   use Moose;
   has B => (is => 'ro', isa => 'Str');
   has BOOL => (is => 'ro', isa => 'Bool');
-  has BS => (is => 'ro', isa => 'ArrayRef[Str]');
+  has BS => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has L => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDBStreams::AttributeValue]');
   has M => (is => 'ro', isa => 'Paws::DynamoDBStreams::MapAttributeValue');
   has N => (is => 'ro', isa => 'Str');
-  has NS => (is => 'ro', isa => 'ArrayRef[Str]');
+  has NS => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has NULL => (is => 'ro', isa => 'Bool');
   has S => (is => 'ro', isa => 'Str');
-  has SS => (is => 'ro', isa => 'ArrayRef[Str]');
+  has SS => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 1;
 
 ### main pod documentation begin ###
@@ -62,7 +62,7 @@ allowed.
   A Boolean data type.
 
 
-=head2 BS => ArrayRef[Str]
+=head2 BS => ArrayRef[Str|Undef]
 
   A Binary Set data type.
 
@@ -82,7 +82,7 @@ allowed.
   A Number data type.
 
 
-=head2 NS => ArrayRef[Str]
+=head2 NS => ArrayRef[Str|Undef]
 
   A Number Set data type.
 
@@ -97,7 +97,7 @@ allowed.
   A String data type.
 
 
-=head2 SS => ArrayRef[Str]
+=head2 SS => ArrayRef[Str|Undef]
 
   A String Set data type.
 

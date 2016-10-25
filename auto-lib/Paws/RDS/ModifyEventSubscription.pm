@@ -2,7 +2,7 @@
 package Paws::RDS::ModifyEventSubscription;
   use Moose;
   has Enabled => (is => 'ro', isa => 'Bool');
-  has EventCategories => (is => 'ro', isa => 'ArrayRef[Str]');
+  has EventCategories => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has SnsTopicArn => (is => 'ro', isa => 'Str');
   has SourceType => (is => 'ro', isa => 'Str');
   has SubscriptionName => (is => 'ro', isa => 'Str', required => 1);
@@ -43,7 +43,7 @@ A Boolean value; set to B<true> to activate the subscription.
 
 
 
-=head2 EventCategories => ArrayRef[Str]
+=head2 EventCategories => ArrayRef[Str|Undef]
 
 A list of event categories for a SourceType that you want to subscribe
 to. You can see a list of the categories for a given SourceType in the

@@ -8,8 +8,8 @@ package Paws::RDS::OptionGroupOption;
   has Name => (is => 'ro', isa => 'Str');
   has OptionGroupOptionSettings => (is => 'ro', isa => 'ArrayRef[Paws::RDS::OptionGroupOptionSetting]');
   has OptionGroupOptionVersions => (is => 'ro', isa => 'ArrayRef[Paws::RDS::OptionVersion]');
-  has OptionsConflictsWith => (is => 'ro', isa => 'ArrayRef[Str]');
-  has OptionsDependedOn => (is => 'ro', isa => 'ArrayRef[Str]');
+  has OptionsConflictsWith => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has OptionsDependedOn => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Permanent => (is => 'ro', isa => 'Bool');
   has Persistent => (is => 'ro', isa => 'Bool');
   has PortRequired => (is => 'ro', isa => 'Bool');
@@ -90,12 +90,12 @@ option in an option group.
   The versions that are available for the option.
 
 
-=head2 OptionsConflictsWith => ArrayRef[Str]
+=head2 OptionsConflictsWith => ArrayRef[Str|Undef]
 
   The options that conflict with this option.
 
 
-=head2 OptionsDependedOn => ArrayRef[Str]
+=head2 OptionsDependedOn => ArrayRef[Str|Undef]
 
   The options that are prerequisites for this option.
 

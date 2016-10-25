@@ -24,7 +24,7 @@ The invalidation's information.
 =head2 Location => Str
 
 The fully qualified URI of the distribution and invalidation batch
-request, including the Invalidation ID.
+request, including the C<Invalidation ID>.
 
 
 

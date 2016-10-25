@@ -12,7 +12,7 @@ package Paws::RDS::ModifyDBInstance;
   has DBInstanceIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has DBParameterGroupName => (is => 'ro', isa => 'Str');
   has DBPortNumber => (is => 'ro', isa => 'Int');
-  has DBSecurityGroups => (is => 'ro', isa => 'ArrayRef[Str]');
+  has DBSecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has DBSubnetGroupName => (is => 'ro', isa => 'Str');
   has Domain => (is => 'ro', isa => 'Str');
   has DomainIAMRoleName => (is => 'ro', isa => 'Str');
@@ -32,7 +32,7 @@ package Paws::RDS::ModifyDBInstance;
   has StorageType => (is => 'ro', isa => 'Str');
   has TdeCredentialArn => (is => 'ro', isa => 'Str');
   has TdeCredentialPassword => (is => 'ro', isa => 'Str');
-  has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
   use MooseX::ClassAttribute;
 
@@ -360,7 +360,7 @@ Valid Values: C<1150-65535>
 
 
 
-=head2 DBSecurityGroups => ArrayRef[Str]
+=head2 DBSecurityGroups => ArrayRef[Str|Undef]
 
 A list of DB security groups to authorize on this DB instance. Changing
 this setting does not result in an outage and the change is
@@ -390,10 +390,9 @@ Cannot end with a hyphen or contain two consecutive hyphens
 =head2 DBSubnetGroupName => Str
 
 The new DB subnet group for the DB instance. You can use this parameter
-to move your DB instance to a different VPC, or to a different subnet
-group in the same VPC. If your DB instance is not in a VPC, you can
-also use this parameter to move your DB instance into a VPC. For more
-information, see Updating the VPC for a DB Instance.
+to move your DB instance to a different VPC. If your DB instance is not
+in a VPC, you can also use this parameter to move your DB instance into
+a VPC. For more information, see Updating the VPC for a DB Instance.
 
 Changing the subnet group causes an outage during the change. The
 change is applied during the next maintenance window, unless you
@@ -710,7 +709,7 @@ the device.
 
 
 
-=head2 VpcSecurityGroupIds => ArrayRef[Str]
+=head2 VpcSecurityGroupIds => ArrayRef[Str|Undef]
 
 A list of EC2 VPC security groups to authorize on this DB instance.
 This change is asynchronously applied as soon as possible.
