@@ -76,9 +76,11 @@ Valid values are: C<"bridge">, C<"host">, C<"none">
 
 =head2 TaskRoleArn => Str
 
-The Amazon Resource Name (ARN) of the IAM role that containers in this
-task can assume. All containers in this task are granted the
-permissions that are specified in this role.
+The short name or full Amazon Resource Name (ARN) of the IAM role that
+containers in this task can assume. All containers in this task are
+granted the permissions that are specified in this role. For more
+information, see IAM Roles for Tasks in the I<Amazon EC2 Container
+Service Developer Guide>.
 
 
 
