@@ -2,6 +2,7 @@
 package Paws::ElasticBeanstalk::ApplicationVersionDescriptionsMessage;
   use Moose;
   has ApplicationVersions => (is => 'ro', isa => 'ArrayRef[Paws::ElasticBeanstalk::ApplicationVersionDescription]');
+  has NextToken => (is => 'ro', isa => 'Str');
 
 1;
 
@@ -18,6 +19,13 @@ Paws::ElasticBeanstalk::ApplicationVersionDescriptionsMessage
 
 List of C<ApplicationVersionDescription> objects sorted by order of
 creation.
+
+
+
+=head2 NextToken => Str
+
+For a paginated request, the token that you can pass in a subsequent
+request to get the next page.
 
 
 

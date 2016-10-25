@@ -3,6 +3,7 @@ package Paws::RDS::DBSnapshot;
   has AllocatedStorage => (is => 'ro', isa => 'Int');
   has AvailabilityZone => (is => 'ro', isa => 'Str');
   has DBInstanceIdentifier => (is => 'ro', isa => 'Str');
+  has DBSnapshotArn => (is => 'ro', isa => 'Str');
   has DBSnapshotIdentifier => (is => 'ro', isa => 'Str');
   has Encrypted => (is => 'ro', isa => 'Bool');
   has Engine => (is => 'ro', isa => 'Str');
@@ -22,6 +23,7 @@ package Paws::RDS::DBSnapshot;
   has Status => (is => 'ro', isa => 'Str');
   has StorageType => (is => 'ro', isa => 'Str');
   has TdeCredentialArn => (is => 'ro', isa => 'Str');
+  has Timezone => (is => 'ro', isa => 'Str');
   has VpcId => (is => 'ro', isa => 'Str');
 1;
 
@@ -89,6 +91,11 @@ in at the time of the DB snapshot.
 
   Specifies the DB instance identifier of the DB instance this DB
 snapshot was created from.
+
+
+=head2 DBSnapshotArn => Str
+
+  The Amazon Resource Name (ARN) for the DB snapshot.
 
 
 =head2 DBSnapshotIdentifier => Str
@@ -184,13 +191,21 @@ value in case of cross customer or cross region copy.
 
 =head2 StorageType => Str
 
-  Specifies the storage type associated with DB Snapshot.
+  Specifies the storage type associated with DB snapshot.
 
 
 =head2 TdeCredentialArn => Str
 
-  The ARN from the Key Store with which to associate the instance for TDE
+  The ARN from the key store with which to associate the instance for TDE
 encryption.
+
+
+=head2 Timezone => Str
+
+  The time zone of the DB snapshot. In most cases, the C<Timezone>
+element is empty. C<Timezone> content appears only for snapshots taken
+from Microsoft SQL Server DB instances that were created with a time
+zone specified.
 
 
 =head2 VpcId => Str

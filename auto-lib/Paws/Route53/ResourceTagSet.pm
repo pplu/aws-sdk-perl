@@ -47,9 +47,18 @@ A complex type containing a resource and its associated tags.
 
   The type of the resource.
 
-- The resource type for health checks is C<healthcheck>.
+=over
 
-- The resource type for hosted zones is C<hostedzone>.
+=item *
+
+The resource type for health checks is C<healthcheck>.
+
+=item *
+
+The resource type for hosted zones is C<hostedzone>.
+
+=back
+
 
 
 =head2 Tags => ArrayRef[L<Paws::Route53::Tag>]

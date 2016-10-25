@@ -6,7 +6,7 @@ package Paws::StorageGateway::DescribeCacheOutput;
   has CacheHitPercentage => (is => 'ro', isa => 'Num');
   has CacheMissPercentage => (is => 'ro', isa => 'Num');
   has CacheUsedPercentage => (is => 'ro', isa => 'Num');
-  has DiskIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has DiskIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has GatewayARN => (is => 'ro', isa => 'Str');
 
 
@@ -49,7 +49,7 @@ Paws::StorageGateway::DescribeCacheOutput
 
 
 
-=head2 DiskIds => ArrayRef[Str]
+=head2 DiskIds => ArrayRef[Str|Undef]
 
 
 

@@ -6,7 +6,7 @@ package Paws::WorkSpaces::DescribeWorkspaces;
   has Limit => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
   has UserName => (is => 'ro', isa => 'Str');
-  has WorkspaceIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has WorkspaceIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
   use MooseX::ClassAttribute;
 
@@ -71,20 +71,19 @@ null if this is the first call.
 =head2 UserName => Str
 
 Used with the C<DirectoryId> parameter to specify the directory user
-for which to obtain the WorkSpace.
+for whom to obtain the WorkSpace.
 
 
 
-=head2 WorkspaceIds => ArrayRef[Str]
+=head2 WorkspaceIds => ArrayRef[Str|Undef]
 
 An array of strings that contain the identifiers of the WorkSpaces for
 which to retrieve information. This parameter cannot be combined with
 any other filter parameter.
 
 Because the CreateWorkspaces operation is asynchronous, the identifier
-returned by CreateWorkspaces is not immediately available. If you
-immediately call DescribeWorkspaces with this identifier, no
-information will be returned.
+it returns is not immediately available. If you immediately call
+DescribeWorkspaces with this identifier, no information is returned.
 
 
 

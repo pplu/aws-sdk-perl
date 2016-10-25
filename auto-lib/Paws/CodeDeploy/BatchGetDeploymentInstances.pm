@@ -2,7 +2,7 @@
 package Paws::CodeDeploy::BatchGetDeploymentInstances;
   use Moose;
   has DeploymentId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'deploymentId' , required => 1);
-  has InstanceIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'instanceIds' , required => 1);
+  has InstanceIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'instanceIds' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -40,7 +40,7 @@ The unique ID of a deployment.
 
 
 
-=head2 B<REQUIRED> InstanceIds => ArrayRef[Str]
+=head2 B<REQUIRED> InstanceIds => ArrayRef[Str|Undef]
 
 The unique IDs of instances in the deployment group.
 

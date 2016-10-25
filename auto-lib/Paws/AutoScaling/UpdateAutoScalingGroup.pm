@@ -2,7 +2,7 @@
 package Paws::AutoScaling::UpdateAutoScalingGroup;
   use Moose;
   has AutoScalingGroupName => (is => 'ro', isa => 'Str', required => 1);
-  has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str]');
+  has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has DefaultCooldown => (is => 'ro', isa => 'Int');
   has DesiredCapacity => (is => 'ro', isa => 'Int');
   has HealthCheckGracePeriod => (is => 'ro', isa => 'Int');
@@ -12,7 +12,7 @@ package Paws::AutoScaling::UpdateAutoScalingGroup;
   has MinSize => (is => 'ro', isa => 'Int');
   has NewInstancesProtectedFromScaleIn => (is => 'ro', isa => 'Bool');
   has PlacementGroup => (is => 'ro', isa => 'Str');
-  has TerminationPolicies => (is => 'ro', isa => 'ArrayRef[Str]');
+  has TerminationPolicies => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has VPCZoneIdentifier => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
@@ -51,7 +51,7 @@ The name of the Auto Scaling group.
 
 
 
-=head2 AvailabilityZones => ArrayRef[Str]
+=head2 AvailabilityZones => ArrayRef[Str|Undef]
 
 One or more Availability Zones for the group.
 
@@ -63,7 +63,7 @@ The amount of time, in seconds, after a scaling activity completes
 before another scaling activity can start. The default is 300.
 
 For more information, see Auto Scaling Cooldowns in the I<Auto Scaling
-Developer Guide>.
+User Guide>.
 
 
 
@@ -79,9 +79,9 @@ the group and less than or equal to the maximum size of the group.
 
 The amount of time, in seconds, that Auto Scaling waits before checking
 the health status of an EC2 instance that has come into service. The
-default is 300.
+default is 0.
 
-For more information, see Health Checks in the I<Auto Scaling Developer
+For more information, see Health Checks in the I<Auto Scaling User
 Guide>.
 
 
@@ -126,14 +126,14 @@ I<Amazon Elastic Compute Cloud User Guide>.
 
 
 
-=head2 TerminationPolicies => ArrayRef[Str]
+=head2 TerminationPolicies => ArrayRef[Str|Undef]
 
 A standalone termination policy or a list of termination policies used
 to select the instance to terminate. The policies are executed in the
 order that they are listed.
 
 For more information, see Controlling Which Instances Auto Scaling
-Terminates During Scale In in the I<Auto Scaling Developer Guide>.
+Terminates During Scale In in the I<Auto Scaling User Guide>.
 
 
 
@@ -147,7 +147,7 @@ that the subnets' Availability Zones match the values you specify for
 C<AvailabilityZones>.
 
 For more information, see Launching Auto Scaling Instances in a VPC in
-the I<Auto Scaling Developer Guide>.
+the I<Auto Scaling User Guide>.
 
 
 

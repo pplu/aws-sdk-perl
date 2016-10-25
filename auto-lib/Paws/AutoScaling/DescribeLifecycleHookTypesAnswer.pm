@@ -1,7 +1,7 @@
 
 package Paws::AutoScaling::DescribeLifecycleHookTypesAnswer;
   use Moose;
-  has LifecycleHookTypes => (is => 'ro', isa => 'ArrayRef[Str]');
+  has LifecycleHookTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
 1;
 
@@ -14,22 +14,9 @@ Paws::AutoScaling::DescribeLifecycleHookTypesAnswer
 =head1 ATTRIBUTES
 
 
-=head2 LifecycleHookTypes => ArrayRef[Str]
+=head2 LifecycleHookTypes => ArrayRef[Str|Undef]
 
-One or more of the following notification types:
-
-=over
-
-=item *
-
-C<autoscaling:EC2_INSTANCE_LAUNCHING>
-
-=item *
-
-C<autoscaling:EC2_INSTANCE_TERMINATING>
-
-=back
-
+The lifecycle hook types.
 
 
 

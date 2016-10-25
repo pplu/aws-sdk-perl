@@ -1,8 +1,9 @@
 package Paws::RDS::Event;
   use Moose;
   has Date => (is => 'ro', isa => 'Str');
-  has EventCategories => (is => 'ro', isa => 'ArrayRef[Str]');
+  has EventCategories => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Message => (is => 'ro', isa => 'Str');
+  has SourceArn => (is => 'ro', isa => 'Str');
   has SourceIdentifier => (is => 'ro', isa => 'Str');
   has SourceType => (is => 'ro', isa => 'Str');
 1;
@@ -46,7 +47,7 @@ action.
   Specifies the date and time of the event.
 
 
-=head2 EventCategories => ArrayRef[Str]
+=head2 EventCategories => ArrayRef[Str|Undef]
 
   Specifies the category for the event.
 
@@ -54,6 +55,11 @@ action.
 =head2 Message => Str
 
   Provides the text of this event.
+
+
+=head2 SourceArn => Str
+
+  The Amazon Resource Name (ARN) for the event.
 
 
 =head2 SourceIdentifier => Str

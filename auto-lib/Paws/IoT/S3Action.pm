@@ -1,6 +1,7 @@
 package Paws::IoT::S3Action;
   use Moose;
   has BucketName => (is => 'ro', isa => 'Str', xmlname => 'bucketName', request_name => 'bucketName', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has CannedAcl => (is => 'ro', isa => 'Str', xmlname => 'cannedAcl', request_name => 'cannedAcl', traits => ['Unwrapped','NameInRequest']);
   has Key => (is => 'ro', isa => 'Str', xmlname => 'key', request_name => 'key', traits => ['Unwrapped','NameInRequest'], required => 1);
   has RoleArn => (is => 'ro', isa => 'Str', xmlname => 'roleArn', request_name => 'roleArn', traits => ['Unwrapped','NameInRequest'], required => 1);
 1;
@@ -41,6 +42,12 @@ Describes an action to write data to an Amazon S3 bucket.
 =head2 B<REQUIRED> BucketName => Str
 
   The Amazon S3 bucket.
+
+
+=head2 CannedAcl => Str
+
+  The Amazon S3 canned ACL that controls access to the object identified
+by the object key. For more information, see S3 canned ACLs.
 
 
 =head2 B<REQUIRED> Key => Str

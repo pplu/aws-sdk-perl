@@ -12,6 +12,7 @@ package Paws::RedShift::Snapshot;
   has ElapsedTimeInSeconds => (is => 'ro', isa => 'Int');
   has Encrypted => (is => 'ro', isa => 'Bool');
   has EncryptedWithHSM => (is => 'ro', isa => 'Bool');
+  has EnhancedVpcRouting => (is => 'ro', isa => 'Bool');
   has EstimatedSecondsToCompletion => (is => 'ro', isa => 'Int');
   has KmsKeyId => (is => 'ro', isa => 'Str');
   has MasterUsername => (is => 'ro', isa => 'Str');
@@ -19,7 +20,7 @@ package Paws::RedShift::Snapshot;
   has NumberOfNodes => (is => 'ro', isa => 'Int');
   has OwnerAccount => (is => 'ro', isa => 'Str');
   has Port => (is => 'ro', isa => 'Int');
-  has RestorableNodeTypes => (is => 'ro', isa => 'ArrayRef[Str]');
+  has RestorableNodeTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has SnapshotCreateTime => (is => 'ro', isa => 'Str');
   has SnapshotIdentifier => (is => 'ro', isa => 'Str');
   has SnapshotType => (is => 'ro', isa => 'Str');
@@ -131,6 +132,18 @@ the HSM keys of the source cluster. C<true> indicates that the data is
 encrypted using HSM keys.
 
 
+=head2 EnhancedVpcRouting => Bool
+
+  An option that specifies whether to create the cluster with enhanced
+VPC routing enabled. To create a cluster that uses enhanced VPC
+routing, the cluster must be in a VPC. For more information, see
+Enhanced VPC Routing in the Amazon Redshift Cluster Management Guide.
+
+If this option is C<true>, enhanced VPC routing is enabled.
+
+Default: false
+
+
 =head2 EstimatedSecondsToCompletion => Int
 
   The estimate of the time remaining before the snapshot backup will
@@ -172,7 +185,7 @@ snapshot.
   The port that the cluster is listening on.
 
 
-=head2 RestorableNodeTypes => ArrayRef[Str]
+=head2 RestorableNodeTypes => ArrayRef[Str|Undef]
 
   The list of node types that this cluster snapshot is able to restore
 into.
@@ -207,13 +220,19 @@ operation used.
 
 =over
 
-=item * CreateClusterSnapshot and CopyClusterSnapshot returns status as
+=item *
+
+CreateClusterSnapshot and CopyClusterSnapshot returns status as
 "creating".
 
-=item * DescribeClusterSnapshots returns status as "creating",
-"available", "final snapshot", or "failed".
+=item *
 
-=item * DeleteClusterSnapshot returns status as "deleted".
+DescribeClusterSnapshots returns status as "creating", "available",
+"final snapshot", or "failed".
+
+=item *
+
+DeleteClusterSnapshot returns status as "deleted".
 
 =back
 

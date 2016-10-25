@@ -1,8 +1,12 @@
 package Paws::CognitoIdp::UserPoolType;
   use Moose;
-  has AliasAttributes => (is => 'ro', isa => 'ArrayRef[Str]');
-  has AutoVerifiedAttributes => (is => 'ro', isa => 'ArrayRef[Str]');
+  has AdminCreateUserConfig => (is => 'ro', isa => 'Paws::CognitoIdp::AdminCreateUserConfigType');
+  has AliasAttributes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has AutoVerifiedAttributes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has CreationDate => (is => 'ro', isa => 'Str');
+  has DeviceConfiguration => (is => 'ro', isa => 'Paws::CognitoIdp::DeviceConfigurationType');
+  has EmailConfiguration => (is => 'ro', isa => 'Paws::CognitoIdp::EmailConfigurationType');
+  has EmailConfigurationFailure => (is => 'ro', isa => 'Str');
   has EmailVerificationMessage => (is => 'ro', isa => 'Str');
   has EmailVerificationSubject => (is => 'ro', isa => 'Str');
   has EstimatedNumberOfUsers => (is => 'ro', isa => 'Int');
@@ -14,6 +18,8 @@ package Paws::CognitoIdp::UserPoolType;
   has Policies => (is => 'ro', isa => 'Paws::CognitoIdp::UserPoolPolicyType');
   has SchemaAttributes => (is => 'ro', isa => 'ArrayRef[Paws::CognitoIdp::SchemaAttributeType]');
   has SmsAuthenticationMessage => (is => 'ro', isa => 'Str');
+  has SmsConfiguration => (is => 'ro', isa => 'Paws::CognitoIdp::SmsConfigurationType');
+  has SmsConfigurationFailure => (is => 'ro', isa => 'Str');
   has SmsVerificationMessage => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
 1;
@@ -35,14 +41,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CognitoIdp::UserPoolType object:
 
-  $service_obj->Method(Att1 => { AliasAttributes => $value, ..., Status => $value  });
+  $service_obj->Method(Att1 => { AdminCreateUserConfig => $value, ..., Status => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::CognitoIdp::UserPoolType object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->AliasAttributes
+  $result->Att1->AdminCreateUserConfig
 
 =head1 DESCRIPTION
 
@@ -51,12 +57,17 @@ A container with information about the user pool type.
 =head1 ATTRIBUTES
 
 
-=head2 AliasAttributes => ArrayRef[Str]
+=head2 AdminCreateUserConfig => L<Paws::CognitoIdp::AdminCreateUserConfigType>
+
+  The configuration for AdminCreateUser requests.
+
+
+=head2 AliasAttributes => ArrayRef[Str|Undef]
 
   Specifies the attributes that are aliased in a user pool.
 
 
-=head2 AutoVerifiedAttributes => ArrayRef[Str]
+=head2 AutoVerifiedAttributes => ArrayRef[Str|Undef]
 
   Specifies the attributes that are auto-verified in a user pool.
 
@@ -64,6 +75,22 @@ A container with information about the user pool type.
 =head2 CreationDate => Str
 
   The creation date of a user pool.
+
+
+=head2 DeviceConfiguration => L<Paws::CognitoIdp::DeviceConfigurationType>
+
+  The device configuration.
+
+
+=head2 EmailConfiguration => L<Paws::CognitoIdp::EmailConfigurationType>
+
+  The email configuration.
+
+
+=head2 EmailConfigurationFailure => Str
+
+  The reason why the email configuration cannot send the messages to your
+users.
 
 
 =head2 EmailVerificationMessage => Str
@@ -103,14 +130,20 @@ pool.
 
 =over
 
-=item * C<OFF> - MFA tokens are not required and cannot be specified
-during user registration.
+=item *
 
-=item * C<ON> - MFA tokens are required for all user registrations. You
-can only specify required when you are initially creating a user pool.
+C<OFF> - MFA tokens are not required and cannot be specified during
+user registration.
 
-=item * C<OPTIONAL> - Users have the option when registering to create
-an MFA token.
+=item *
+
+C<ON> - MFA tokens are required for all user registrations. You can
+only specify required when you are initially creating a user pool.
+
+=item *
+
+C<OPTIONAL> - Users have the option when registering to create an MFA
+token.
 
 =back
 
@@ -134,6 +167,17 @@ an MFA token.
 =head2 SmsAuthenticationMessage => Str
 
   The contents of the SMS authentication message.
+
+
+=head2 SmsConfiguration => L<Paws::CognitoIdp::SmsConfigurationType>
+
+  The SMS configuration.
+
+
+=head2 SmsConfigurationFailure => Str
+
+  The reason why the SMS configuration cannot send the message(s) to your
+users.
 
 
 =head2 SmsVerificationMessage => Str

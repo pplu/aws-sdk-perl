@@ -2,7 +2,7 @@
 package Paws::CodeDeploy::ListDeploymentInstances;
   use Moose;
   has DeploymentId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'deploymentId' , required => 1);
-  has InstanceStatusFilter => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'instanceStatusFilter' );
+  has InstanceStatusFilter => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'instanceStatusFilter' );
   has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
 
   use MooseX::ClassAttribute;
@@ -41,25 +41,36 @@ The unique ID of a deployment.
 
 
 
-=head2 InstanceStatusFilter => ArrayRef[Str]
+=head2 InstanceStatusFilter => ArrayRef[Str|Undef]
 
 A subset of instances to list by status:
 
 =over
 
-=item * Pending: Include those instance with pending deployments.
+=item *
 
-=item * InProgress: Include those instance where deployments are still
-in progress.
+Pending: Include those instance with pending deployments.
 
-=item * Succeeded: Include those instances with successful deployments.
+=item *
 
-=item * Failed: Include those instance with failed deployments.
+InProgress: Include those instance where deployments are still in
+progress.
 
-=item * Skipped: Include those instance with skipped deployments.
+=item *
 
-=item * Unknown: Include those instance with deployments in an unknown
-state.
+Succeeded: Include those instances with successful deployments.
+
+=item *
+
+Failed: Include those instance with failed deployments.
+
+=item *
+
+Skipped: Include those instance with skipped deployments.
+
+=item *
+
+Unknown: Include those instance with deployments in an unknown state.
 
 =back
 

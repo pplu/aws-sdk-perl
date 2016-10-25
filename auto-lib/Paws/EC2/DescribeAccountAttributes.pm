@@ -1,7 +1,7 @@
 
 package Paws::EC2::DescribeAccountAttributes;
   use Moose;
-  has AttributeNames => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'attributeName' );
+  has AttributeNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'attributeName' );
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
 
   use MooseX::ClassAttribute;
@@ -34,7 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 AttributeNames => ArrayRef[Str]
+=head2 AttributeNames => ArrayRef[Str|Undef]
 
 One or more account attribute names.
 

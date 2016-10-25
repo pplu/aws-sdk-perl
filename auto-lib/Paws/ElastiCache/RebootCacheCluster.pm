@@ -2,7 +2,7 @@
 package Paws::ElastiCache::RebootCacheCluster;
   use Moose;
   has CacheClusterId => (is => 'ro', isa => 'Str', required => 1);
-  has CacheNodeIdsToReboot => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has CacheNodeIdsToReboot => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -41,7 +41,7 @@ string.
 
 
 
-=head2 B<REQUIRED> CacheNodeIdsToReboot => ArrayRef[Str]
+=head2 B<REQUIRED> CacheNodeIdsToReboot => ArrayRef[Str|Undef]
 
 A list of cache node IDs to reboot. A node ID is a numeric identifier
 (0001, 0002, etc.). To reboot an entire cache cluster, specify all of

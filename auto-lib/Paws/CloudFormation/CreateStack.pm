@@ -1,12 +1,13 @@
 
 package Paws::CloudFormation::CreateStack;
   use Moose;
-  has Capabilities => (is => 'ro', isa => 'ArrayRef[Str]');
+  has Capabilities => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has DisableRollback => (is => 'ro', isa => 'Bool');
-  has NotificationARNs => (is => 'ro', isa => 'ArrayRef[Str]');
+  has NotificationARNs => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has OnFailure => (is => 'ro', isa => 'Str');
   has Parameters => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::Parameter]');
-  has ResourceTypes => (is => 'ro', isa => 'ArrayRef[Str]');
+  has ResourceTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has RoleARN => (is => 'ro', isa => 'Str');
   has StackName => (is => 'ro', isa => 'Str', required => 1);
   has StackPolicyBody => (is => 'ro', isa => 'Str');
   has StackPolicyURL => (is => 'ro', isa => 'Str');
@@ -45,7 +46,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 Capabilities => ArrayRef[Str]
+=head2 Capabilities => ArrayRef[Str|Undef]
 
 A list of values that you must specify before AWS CloudFormation can
 create certain stacks. Some stack templates might include resources
@@ -83,7 +84,7 @@ Default: C<false>
 
 
 
-=head2 NotificationARNs => ArrayRef[Str]
+=head2 NotificationARNs => ArrayRef[Str|Undef]
 
 The Simple Notification Service (SNS) topic ARNs to publish stack
 related events. You can find your SNS topic ARNs using the SNS console
@@ -108,7 +109,7 @@ stack. For more information, see the Parameter data type.
 
 
 
-=head2 ResourceTypes => ArrayRef[Str]
+=head2 ResourceTypes => ArrayRef[Str|Undef]
 
 The template resource types that you have permissions to work with for
 this create stack action, such as C<AWS::EC2::Instance>,
@@ -129,6 +130,24 @@ Access with AWS Identity and Access Management.
 
 
 
+=head2 RoleARN => Str
+
+The Amazon Resource Name (ARN) of an AWS Identity and Access Management
+(IAM) role that AWS CloudFormation assumes to create the stack. AWS
+CloudFormation uses the role's credentials to make calls on your
+behalf. AWS CloudFormation always uses this role for all future
+operations on the stack. As long as users have permission to operate on
+the stack, AWS CloudFormation uses this role even if the users don't
+have permission to pass it. Ensure that the role grants least
+privilege.
+
+If you don't specify a value, AWS CloudFormation uses the role that was
+previously associated with the stack. If no role is available, AWS
+CloudFormation uses a temporary session that is generated from your
+user credentials.
+
+
+
 =head2 B<REQUIRED> StackName => Str
 
 The name that is associated with the stack. The name must be unique in
@@ -143,8 +162,8 @@ longer than 128 characters.
 =head2 StackPolicyBody => Str
 
 Structure containing the stack policy body. For more information, go to
-Prevent Updates to Stack Resources in the AWS CloudFormation User
-Guide. You can specify either the C<StackPolicyBody> or the
+Prevent Updates to Stack Resources in the I<AWS CloudFormation User
+Guide>. You can specify either the C<StackPolicyBody> or the
 C<StackPolicyURL> parameter, but not both.
 
 
@@ -152,8 +171,8 @@ C<StackPolicyURL> parameter, but not both.
 =head2 StackPolicyURL => Str
 
 Location of a file containing the stack policy. The URL must point to a
-policy (max size: 16KB) located in an S3 bucket in the same region as
-the stack. You can specify either the C<StackPolicyBody> or the
+policy (maximum size: 16 KB) located in an S3 bucket in the same region
+as the stack. You can specify either the C<StackPolicyBody> or the
 C<StackPolicyURL> parameter, but not both.
 
 

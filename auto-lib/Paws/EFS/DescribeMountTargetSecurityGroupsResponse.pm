@@ -1,7 +1,7 @@
 
 package Paws::EFS::DescribeMountTargetSecurityGroupsResponse;
   use Moose;
-  has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
 
 1;
 
@@ -14,7 +14,7 @@ Paws::EFS::DescribeMountTargetSecurityGroupsResponse
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> SecurityGroups => ArrayRef[Str]
+=head2 B<REQUIRED> SecurityGroups => ArrayRef[Str|Undef]
 
 Array of security groups.
 

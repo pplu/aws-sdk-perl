@@ -1,6 +1,6 @@
 package Paws::CloudFront::Paths;
   use Moose;
-  has Items => (is => 'ro', isa => 'ArrayRef[Str]');
+  has Items => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Quantity => (is => 'ro', isa => 'Int', required => 1);
 1;
 
@@ -33,14 +33,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 =head1 DESCRIPTION
 
 A complex type that contains information about the objects that you
-want to invalidate.
+want to invalidate. For more information, see Specifying the Objects to
+Invalidate in the I<Amazon CloudFront Developer Guide>.
 
 =head1 ATTRIBUTES
 
 
-=head2 Items => ArrayRef[Str]
+=head2 Items => ArrayRef[Str|Undef]
 
-  A complex type that contains a list of the objects that you want to
+  A complex type that contains a list of the paths that you want to
 invalidate.
 
 

@@ -1,7 +1,7 @@
 
 package Paws::Config::GetComplianceSummaryByResourceType;
   use Moose;
-  has ResourceTypes => (is => 'ro', isa => 'ArrayRef[Str]');
+  has ResourceTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
   use MooseX::ClassAttribute;
 
@@ -33,7 +33,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 ResourceTypes => ArrayRef[Str]
+=head2 ResourceTypes => ArrayRef[Str|Undef]
 
 Specify one or more resource types to get the number of resources that
 are compliant and the number that are noncompliant for each resource

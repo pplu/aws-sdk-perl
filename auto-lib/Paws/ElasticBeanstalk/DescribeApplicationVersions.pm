@@ -2,7 +2,9 @@
 package Paws::ElasticBeanstalk::DescribeApplicationVersions;
   use Moose;
   has ApplicationName => (is => 'ro', isa => 'Str');
-  has VersionLabels => (is => 'ro', isa => 'ArrayRef[Str]');
+  has MaxRecords => (is => 'ro', isa => 'Int');
+  has NextToken => (is => 'ro', isa => 'Str');
+  has VersionLabels => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
   use MooseX::ClassAttribute;
 
@@ -42,7 +44,20 @@ application.
 
 
 
-=head2 VersionLabels => ArrayRef[Str]
+=head2 MaxRecords => Int
+
+Specify a maximum number of application versions to paginate in the
+request.
+
+
+
+=head2 NextToken => Str
+
+Specify a next token to retrieve the next page in a paginated request.
+
+
+
+=head2 VersionLabels => ArrayRef[Str|Undef]
 
 If specified, restricts the returned descriptions to only include ones
 that have the specified version labels.

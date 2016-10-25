@@ -4,7 +4,7 @@ package Paws::DS::DescribeTrusts;
   has DirectoryId => (is => 'ro', isa => 'Str');
   has Limit => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
-  has TrustIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has TrustIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
   use MooseX::ClassAttribute;
 
@@ -56,7 +56,7 @@ DescribeTrusts. Pass null if this is the first call.
 
 
 
-=head2 TrustIds => ArrayRef[Str]
+=head2 TrustIds => ArrayRef[Str|Undef]
 
 A list of identifiers of the trust relationships for which to obtain
 the information. If this member is null, all trust relationships that

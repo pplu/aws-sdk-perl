@@ -2,7 +2,7 @@
 package Paws::SES::GetIdentityPolicies;
   use Moose;
   has Identity => (is => 'ro', isa => 'Str', required => 1);
-  has PolicyNames => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has PolicyNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -45,7 +45,7 @@ To successfully call this API, you must own the identity.
 
 
 
-=head2 B<REQUIRED> PolicyNames => ArrayRef[Str]
+=head2 B<REQUIRED> PolicyNames => ArrayRef[Str|Undef]
 
 A list of the names of policies to be retrieved. You can retrieve a
 maximum of 20 policies at a time. If you do not know the names of the

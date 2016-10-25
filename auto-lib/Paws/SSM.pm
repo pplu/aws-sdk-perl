@@ -173,13 +173,13 @@ Paws::SSM - Perl Interface to AWS Amazon Simple Systems Management Service
 
 =head1 DESCRIPTION
 
-This is the Amazon EC2 Simple Systems Manager (SSM) API Reference. SSM
-enables you to remotely manage the configuration of your Amazon EC2
-instances, virtual machines (VMs), or servers in your on-premises
-environment or in an environment provided by other cloud providers
-using scripts, commands, or the Amazon EC2 console. SSM includes an
-on-demand solution called I<Amazon EC2 Run Command> and a lightweight
-instance configuration solution called I<SSM Config>.
+Amazon EC2 Simple Systems Manager (SSM) enables you to remotely manage
+the configuration of your Amazon EC2 instances, virtual machines (VMs),
+or servers in your on-premises environment or in an environment
+provided by other cloud providers using scripts, commands, or the
+Amazon EC2 console. SSM includes an on-demand solution called I<Amazon
+EC2 Run Command> and a lightweight instance configuration solution
+called I<SSM Config>.
 
 This references is intended to be used with the EC2 Run Command User
 Guide for Linux or Windows.
@@ -362,7 +362,7 @@ For more information about tags, see Tagging Your Amazon EC2 Resources
 in the Amazon EC2 User Guide.
 
 
-=head2 CancelCommand(CommandId => Str, [InstanceIds => ArrayRef[Str]])
+=head2 CancelCommand(CommandId => Str, [InstanceIds => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::SSM::CancelCommand>
 
@@ -396,8 +396,9 @@ Returns: a L<Paws::SSM::CreateAssociationResult> instance
   Associates the specified SSM document with the specified instance.
 
 When you associate an SSM document with an instance, the configuration
-agent on the instance processes the document and configures the
-instance as specified.
+agent on the instance (SSM agent for Linux and EC2Config service for
+Windows) processes the document and configures the instance as
+specified.
 
 If you associate a document with an instance that already has an
 associated document, the system throws the AssociationAlreadyExists
@@ -413,8 +414,9 @@ Returns: a L<Paws::SSM::CreateAssociationBatchResult> instance
   Associates the specified SSM document with the specified instances.
 
 When you associate an SSM document with an instance, the configuration
-agent on the instance processes the document and configures the
-instance as specified.
+agent on the instance (SSM agent for Linux and EC2Config service for
+Windows) processes the document and configures the instance as
+specified.
 
 If you associate a document with an instance that already has an
 associated document, the system throws the AssociationAlreadyExists
@@ -536,11 +538,11 @@ Returns: a L<Paws::SSM::DescribeInstanceInformationResult> instance
 
   Describes one or more of your instances. You can use this to get
 information about instances like the operating system platform, the SSM
-agent version, status etc. If you specify one or more instance IDs, it
-returns information for those instances. If you do not specify instance
-IDs, it returns information for all your instances. If you specify an
-instance ID that is not valid or an instance that you do not own, you
-receive an error.
+agent version (Linux), status etc. If you specify one or more instance
+IDs, it returns information for those instances. If you do not specify
+instance IDs, it returns information for all your instances. If you
+specify an instance ID that is not valid or an instance that you do not
+own, you receive an error.
 
 
 =head2 GetDocument(Name => Str)
@@ -602,7 +604,7 @@ Returns: a L<Paws::SSM::ListTagsForResourceResult> instance
   Returns a list of the tags assigned to the specified resource.
 
 
-=head2 ModifyDocumentPermission(Name => Str, PermissionType => Str, [AccountIdsToAdd => ArrayRef[Str], AccountIdsToRemove => ArrayRef[Str]])
+=head2 ModifyDocumentPermission(Name => Str, PermissionType => Str, [AccountIdsToAdd => ArrayRef[Str|Undef], AccountIdsToRemove => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::SSM::ModifyDocumentPermission>
 
@@ -614,7 +616,7 @@ who can use the document. If you share a document publicly, you must
 specify I<All> as the account ID.
 
 
-=head2 RemoveTagsFromResource(ResourceId => Str, ResourceType => Str, TagKeys => ArrayRef[Str])
+=head2 RemoveTagsFromResource(ResourceId => Str, ResourceType => Str, TagKeys => ArrayRef[Str|Undef])
 
 Each argument is described in detail in: L<Paws::SSM::RemoveTagsFromResource>
 
@@ -623,7 +625,7 @@ Returns: a L<Paws::SSM::RemoveTagsFromResourceResult> instance
   Removes all tags from the specified resource.
 
 
-=head2 SendCommand(DocumentName => Str, InstanceIds => ArrayRef[Str], [Comment => Str, DocumentHash => Str, DocumentHashType => Str, NotificationConfig => L<Paws::SSM::NotificationConfig>, OutputS3BucketName => Str, OutputS3KeyPrefix => Str, Parameters => L<Paws::SSM::Parameters>, ServiceRoleArn => Str, TimeoutSeconds => Int])
+=head2 SendCommand(DocumentName => Str, InstanceIds => ArrayRef[Str|Undef], [Comment => Str, DocumentHash => Str, DocumentHashType => Str, NotificationConfig => L<Paws::SSM::NotificationConfig>, OutputS3BucketName => Str, OutputS3KeyPrefix => Str, Parameters => L<Paws::SSM::Parameters>, ServiceRoleArn => Str, TimeoutSeconds => Int])
 
 Each argument is described in detail in: L<Paws::SSM::SendCommand>
 

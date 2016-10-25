@@ -1,7 +1,7 @@
 package Paws::EMR::Application;
   use Moose;
   has AdditionalInfo => (is => 'ro', isa => 'Paws::EMR::StringMap');
-  has Args => (is => 'ro', isa => 'ArrayRef[Str]');
+  has Args => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Name => (is => 'ro', isa => 'Str');
   has Version => (is => 'ro', isa => 'Str');
 1;
@@ -44,11 +44,17 @@ Hadoop. Currently supported values are:
 
 =over
 
-=item * "mapr-m3" - launch the job flow using MapR M3 Edition.
+=item *
 
-=item * "mapr-m5" - launch the job flow using MapR M5 Edition.
+"mapr-m3" - launch the job flow using MapR M3 Edition.
 
-=item * "mapr" with the user arguments specifying "--edition,m3" or
+=item *
+
+"mapr-m5" - launch the job flow using MapR M5 Edition.
+
+=item *
+
+"mapr" with the user arguments specifying "--edition,m3" or
 "--edition,m5" - launch the job flow using MapR M3 or M5 Edition,
 respectively.
 
@@ -68,7 +74,7 @@ third-party applications that third-party vendors use for testing
 purposes.
 
 
-=head2 Args => ArrayRef[Str]
+=head2 Args => ArrayRef[Str|Undef]
 
   Arguments for Amazon EMR to pass to the application.
 

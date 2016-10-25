@@ -7,7 +7,7 @@ package Paws::EC2::ModifyInstanceAttribute;
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has EbsOptimized => (is => 'ro', isa => 'Paws::EC2::AttributeBooleanValue', traits => ['NameInRequest'], request_name => 'ebsOptimized' );
   has EnaSupport => (is => 'ro', isa => 'Paws::EC2::AttributeBooleanValue', traits => ['NameInRequest'], request_name => 'enaSupport' );
-  has Groups => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'GroupId' );
+  has Groups => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'GroupId' );
   has InstanceId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'instanceId' , required => 1);
   has InstanceInitiatedShutdownBehavior => (is => 'ro', isa => 'Paws::EC2::AttributeValue', traits => ['NameInRequest'], request_name => 'instanceInitiatedShutdownBehavior' );
   has InstanceType => (is => 'ro', isa => 'Paws::EC2::AttributeValue', traits => ['NameInRequest'], request_name => 'instanceType' );
@@ -104,7 +104,7 @@ with a PV instance can make it unreachable.
 
 
 
-=head2 Groups => ArrayRef[Str]
+=head2 Groups => ArrayRef[Str|Undef]
 
 [EC2-VPC] Changes the security groups of the instance. You must specify
 at least one security group, even if it's just the default security

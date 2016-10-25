@@ -1,7 +1,7 @@
 
 package Paws::ApiGateway::PutIntegration;
   use Moose;
-  has CacheKeyParameters => (is => 'ro', isa => 'ArrayRef[Str]');
+  has CacheKeyParameters => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has CacheNamespace => (is => 'ro', isa => 'Str');
   has Credentials => (is => 'ro', isa => 'Str');
   has HttpMethod => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'httpMethod' , required => 1);
@@ -46,7 +46,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 CacheKeyParameters => ArrayRef[Str]
+=head2 CacheKeyParameters => ArrayRef[Str|Undef]
 
 Specifies a put integration input's cache key parameters.
 
@@ -80,34 +80,45 @@ HTTP or AWS, this field is required.
 =head2 PassthroughBehavior => Str
 
 Specifies the pass-through behavior for incoming requests based on the
-Content-Type header in the request, and the available requestTemplates
-defined on the Integration. There are three valid values:
-C<WHEN_NO_MATCH>, C<WHEN_NO_TEMPLATES>, and C<NEVER>.
+Content-Type header in the request, and the available mapping templates
+specified as the C<requestTemplates> property on the Integration
+resource. There are three valid values: C<WHEN_NO_MATCH>,
+C<WHEN_NO_TEMPLATES>, and C<NEVER>.
+
+=over
+
+=item *
 
 C<WHEN_NO_MATCH> passes the request body for unmapped content types
-through to the Integration backend without transformation.
+through to the integration back end without transformation.
+
+=item *
 
 C<NEVER> rejects unmapped content types with an HTTP 415 'Unsupported
 Media Type' response.
 
-C<WHEN_NO_TEMPLATES> will allow pass-through when the Integration has
-NO content types mapped to templates. However if there is at least one
+=item *
+
+C<WHEN_NO_TEMPLATES> allows pass-through when the integration has NO
+content types mapped to templates. However if there is at least one
 content type defined, unmapped content types will be rejected with the
 same 415 response.
+
+=back
+
 
 
 
 =head2 RequestParameters => L<Paws::ApiGateway::MapOfStringToString>
 
-Represents request parameters that are sent with the backend request.
-Request parameters are represented as a key/value map, with a
-destination as the key and a source as the value. A source must match
-an existing method request parameter, or a static value. Static values
-must be enclosed with single quotes, and be pre-encoded based on their
-destination in the request. The destination must match the pattern
-C<integration.request.{location}.{name}>, where C<location> is either
-querystring, path, or header. C<name> must be a valid, unique parameter
-name.
+A key-value map specifying request parameters that are passed from the
+method request to the back end. The key is an integration request
+parameter name and the associated value is a method request parameter
+value or static value that must be enclosed within single quotes and
+pre-encoded as required by the back end. The method request parameter
+value must match the pattern of C<method.request.{location}.{name}>,
+where C<location> is C<querystring>, C<path>, or C<header> and C<name>
+must be a valid and unique method request parameter name.
 
 
 
@@ -136,7 +147,7 @@ Specifies a put integration request's API identifier.
 
 Specifies a put integration input's type.
 
-Valid values are: C<"HTTP">, C<"AWS">, C<"MOCK">
+Valid values are: C<"HTTP">, C<"AWS">, C<"MOCK">, C<"HTTP_PROXY">, C<"AWS_PROXY">
 
 =head2 Uri => Str
 

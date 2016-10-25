@@ -3,6 +3,7 @@ package Paws::GameLift::Build;
   has BuildId => (is => 'ro', isa => 'Str');
   has CreationTime => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
+  has OperatingSystem => (is => 'ro', isa => 'Str');
   has SizeOnDisk => (is => 'ro', isa => 'Int');
   has Status => (is => 'ro', isa => 'Str');
   has Version => (is => 'ro', isa => 'Str');
@@ -48,9 +49,8 @@ Properties describing a game build.
 
 =head2 CreationTime => Str
 
-  Time stamp indicating when this object was created. Format is an
-integer representing the number of seconds since the Unix epoch (Unix
-time).
+  Time stamp indicating when this data object was created. Format is a
+number expressed in Unix time as milliseconds (ex: "1469498468.057".
 
 
 =head2 Name => Str
@@ -59,29 +59,43 @@ time).
 be unique. It can be set using CreateBuild or UpdateBuild.
 
 
+=head2 OperatingSystem => Str
+
+  Operating system that the game server binaries are built to run on.
+This value determines the type of fleet resources that you can use for
+this build.
+
+
 =head2 SizeOnDisk => Int
 
   File size of the uploaded game build, expressed in bytes. When the
-build state is C<INITIALIZED>, this value is 0.
+build status is C<INITIALIZED>, this value is 0.
 
 
 =head2 Status => Str
 
-  Current status of the build. Possible build states include the
-following:
+  Current status of the build.
+
+Possible build statuses include the following:
 
 =over
 
-=item * B<INITIALIZED> E<ndash> A new build has been defined, but no
-files have been uploaded. You cannot create fleets for builds that are
-in this state. When a build is successfully created, the build state is
-set to this value.
+=item *
 
-=item * B<READY> E<ndash> The game build has been successfully
-uploaded. You can now create new fleets for this build.
+B<INITIALIZED> E<ndash> A new build has been defined, but no files have
+been uploaded. You cannot create fleets for builds that are in this
+status. When a build is successfully created, the build status is set
+to this value.
 
-=item * B<FAILED> E<ndash> The game build upload failed. You cannot
-create new fleets for this build.
+=item *
+
+B<READY> E<ndash> The game build has been successfully uploaded. You
+can now create new fleets for this build.
+
+=item *
+
+B<FAILED> E<ndash> The game build upload failed. You cannot create new
+fleets for this build.
 
 =back
 

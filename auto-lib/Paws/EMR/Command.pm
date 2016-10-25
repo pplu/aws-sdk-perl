@@ -1,6 +1,6 @@
 package Paws::EMR::Command;
   use Moose;
-  has Args => (is => 'ro', isa => 'ArrayRef[Str]');
+  has Args => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Name => (is => 'ro', isa => 'Str');
   has ScriptPath => (is => 'ro', isa => 'Str');
 1;
@@ -38,7 +38,7 @@ An entity describing an executable that runs on a cluster.
 =head1 ATTRIBUTES
 
 
-=head2 Args => ArrayRef[Str]
+=head2 Args => ArrayRef[Str|Undef]
 
   Arguments for Amazon EMR to pass to the command for execution.
 

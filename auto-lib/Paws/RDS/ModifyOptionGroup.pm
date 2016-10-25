@@ -4,7 +4,7 @@ package Paws::RDS::ModifyOptionGroup;
   has ApplyImmediately => (is => 'ro', isa => 'Bool');
   has OptionGroupName => (is => 'ro', isa => 'Str', required => 1);
   has OptionsToInclude => (is => 'ro', isa => 'ArrayRef[Paws::RDS::OptionConfiguration]');
-  has OptionsToRemove => (is => 'ro', isa => 'ArrayRef[Str]');
+  has OptionsToRemove => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
   use MooseX::ClassAttribute;
 
@@ -63,7 +63,7 @@ configuration.
 
 
 
-=head2 OptionsToRemove => ArrayRef[Str]
+=head2 OptionsToRemove => ArrayRef[Str|Undef]
 
 Options in this list are removed from the option group.
 

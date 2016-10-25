@@ -44,6 +44,11 @@ package Paws::KMS;
     my $call_object = $self->new_with_coercions('Paws::KMS::DeleteAlias', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteImportedKeyMaterial {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::KMS::DeleteImportedKeyMaterial', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeKey {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::KMS::DescribeKey', @_);
@@ -97,6 +102,16 @@ package Paws::KMS;
   sub GetKeyRotationStatus {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::KMS::GetKeyRotationStatus', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetParametersForImport {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::KMS::GetParametersForImport', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ImportKeyMaterial {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::KMS::ImportKeyMaterial', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListAliases {
@@ -160,7 +175,7 @@ package Paws::KMS;
     return $self->caller->do_call($self, $call_object);
   }
 
-  sub operations { qw/CancelKeyDeletion CreateAlias CreateGrant CreateKey Decrypt DeleteAlias DescribeKey DisableKey DisableKeyRotation EnableKey EnableKeyRotation Encrypt GenerateDataKey GenerateDataKeyWithoutPlaintext GenerateRandom GetKeyPolicy GetKeyRotationStatus ListAliases ListGrants ListKeyPolicies ListKeys ListRetirableGrants PutKeyPolicy ReEncrypt RetireGrant RevokeGrant ScheduleKeyDeletion UpdateAlias UpdateKeyDescription / }
+  sub operations { qw/CancelKeyDeletion CreateAlias CreateGrant CreateKey Decrypt DeleteAlias DeleteImportedKeyMaterial DescribeKey DisableKey DisableKeyRotation EnableKey EnableKeyRotation Encrypt GenerateDataKey GenerateDataKeyWithoutPlaintext GenerateRandom GetKeyPolicy GetKeyRotationStatus GetParametersForImport ImportKeyMaterial ListAliases ListGrants ListKeyPolicies ListKeys ListRetirableGrants PutKeyPolicy ReEncrypt RetireGrant RevokeGrant ScheduleKeyDeletion UpdateAlias UpdateKeyDescription / }
 
 1;
 
@@ -324,7 +339,7 @@ and the same region.
 To map an alias to a different key, call UpdateAlias.
 
 
-=head2 CreateGrant(GranteePrincipal => Str, KeyId => Str, [Constraints => L<Paws::KMS::GrantConstraints>, GrantTokens => ArrayRef[Str], Name => Str, Operations => ArrayRef[Str], RetiringPrincipal => Str])
+=head2 CreateGrant(GranteePrincipal => Str, KeyId => Str, [Constraints => L<Paws::KMS::GrantConstraints>, GrantTokens => ArrayRef[Str|Undef], Name => Str, Operations => ArrayRef[Str|Undef], RetiringPrincipal => Str])
 
 Each argument is described in detail in: L<Paws::KMS::CreateGrant>
 
@@ -337,7 +352,7 @@ For more information about grants, see Grants in the I<AWS Key
 Management Service Developer Guide>.
 
 
-=head2 CreateKey([BypassPolicyLockoutSafetyCheck => Bool, Description => Str, KeyUsage => Str, Policy => Str])
+=head2 CreateKey([BypassPolicyLockoutSafetyCheck => Bool, Description => Str, KeyUsage => Str, Origin => Str, Policy => Str])
 
 Each argument is described in detail in: L<Paws::KMS::CreateKey>
 
@@ -365,7 +380,7 @@ Developer Guide>
 
 
 
-=head2 Decrypt(CiphertextBlob => Str, [EncryptionContext => L<Paws::KMS::EncryptionContextType>, GrantTokens => ArrayRef[Str]])
+=head2 Decrypt(CiphertextBlob => Str, [EncryptionContext => L<Paws::KMS::EncryptionContextType>, GrantTokens => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::KMS::Decrypt>
 
@@ -411,7 +426,26 @@ Returns: nothing
 UpdateAlias.
 
 
-=head2 DescribeKey(KeyId => Str, [GrantTokens => ArrayRef[Str]])
+=head2 DeleteImportedKeyMaterial(KeyId => Str)
+
+Each argument is described in detail in: L<Paws::KMS::DeleteImportedKeyMaterial>
+
+Returns: nothing
+
+  Deletes key material that you previously imported and makes the
+specified customer master key (CMK) unusable. For more information
+about importing key material into AWS KMS, see Importing Key Material
+in the I<AWS Key Management Service Developer Guide>.
+
+When the specified CMK is in the C<PendingDeletion> state, this
+operation does not change the CMK's state. Otherwise, it changes the
+CMK's state to C<PendingImport>.
+
+After you delete key material, you can use ImportKeyMaterial to
+reimport the same key material into the CMK.
+
+
+=head2 DescribeKey(KeyId => Str, [GrantTokens => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::KMS::DescribeKey>
 
@@ -460,7 +494,7 @@ Returns: nothing
   Enables rotation of the specified customer master key.
 
 
-=head2 Encrypt(KeyId => Str, Plaintext => Str, [EncryptionContext => L<Paws::KMS::EncryptionContextType>, GrantTokens => ArrayRef[Str]])
+=head2 Encrypt(KeyId => Str, Plaintext => Str, [EncryptionContext => L<Paws::KMS::EncryptionContextType>, GrantTokens => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::KMS::Encrypt>
 
@@ -498,59 +532,101 @@ key and a copy of the key encrypted under the customer master key (CMK)
 of your choosing.
 
 
-=head2 GenerateDataKey(KeyId => Str, [EncryptionContext => L<Paws::KMS::EncryptionContextType>, GrantTokens => ArrayRef[Str], KeySpec => Str, NumberOfBytes => Int])
+=head2 GenerateDataKey(KeyId => Str, [EncryptionContext => L<Paws::KMS::EncryptionContextType>, GrantTokens => ArrayRef[Str|Undef], KeySpec => Str, NumberOfBytes => Int])
 
 Each argument is described in detail in: L<Paws::KMS::GenerateDataKey>
 
 Returns: a L<Paws::KMS::GenerateDataKeyResponse> instance
 
-  Generates a data key that you can use in your application to locally
-encrypt data. This call returns a plaintext version of the key in the
-C<Plaintext> field of the response object and an encrypted copy of the
-key in the C<CiphertextBlob> field. The key is encrypted by using the
-master key specified by the C<KeyId> field. To decrypt the encrypted
-key, pass it to the C<Decrypt> API.
+  Returns a data encryption key that you can use in your application to
+encrypt data locally.
 
-We recommend that you use the following pattern to locally encrypt
-data: call the C<GenerateDataKey> API, use the key returned in the
-C<Plaintext> response field to locally encrypt data, and then erase the
-plaintext data key from memory. Store the encrypted data key (contained
-in the C<CiphertextBlob> field) alongside of the locally encrypted
-data.
+You must specify the customer master key (CMK) under which to generate
+the data key. You must also specify the length of the data key using
+either the C<KeySpec> or C<NumberOfBytes> field. You must specify one
+field or the other, but not both. For common key lengths (128-bit and
+256-bit symmetric keys), we recommend that you use C<KeySpec>.
 
-You should not call the C<Encrypt> function to re-encrypt your data
-keys within a region. C<GenerateDataKey> always returns the data key
-encrypted and tied to the customer master key that will be used to
-decrypt it. There is no need to decrypt it twice.
+This operation returns a plaintext copy of the data key in the
+C<Plaintext> field of the response, and an encrypted copy of the data
+key in the C<CiphertextBlob> field. The data key is encrypted under the
+CMK specified in the C<KeyId> field of the request.
 
-If you decide to use the optional C<EncryptionContext> parameter, you
-must also store the context in full or at least store enough
-information along with the encrypted data to be able to reconstruct the
-context when submitting the ciphertext to the C<Decrypt> API. It is a
-good practice to choose a context that you can reconstruct on the fly
-to better secure the ciphertext. For more information about how this
-parameter is used, see Encryption Context.
+We recommend that you use the following pattern to encrypt data locally
+in your application:
 
-To decrypt data, pass the encrypted data key to the C<Decrypt> API.
-C<Decrypt> uses the associated master key to decrypt the encrypted data
-key and returns it as plaintext. Use the plaintext data key to locally
-decrypt your data and then erase the key from memory. You must specify
-the encryption context, if any, that you specified when you generated
-the key. The encryption context is logged by CloudTrail, and you can
-use this log to help track the use of particular data.
+=over
+
+=item 1.
+
+Use this operation (C<GenerateDataKey>) to retrieve a data encryption
+key.
+
+=item 2.
+
+Use the plaintext data encryption key (returned in the C<Plaintext>
+field of the response) to encrypt data locally, then erase the
+plaintext data key from memory.
+
+=item 3.
+
+Store the encrypted data key (returned in the C<CiphertextBlob> field
+of the response) alongside the locally encrypted data.
+
+=back
+
+To decrypt data locally:
+
+=over
+
+=item 1.
+
+Use the Decrypt operation to decrypt the encrypted data key into a
+plaintext copy of the data key.
+
+=item 2.
+
+Use the plaintext data key to decrypt data locally, then erase the
+plaintext data key from memory.
+
+=back
+
+To return only an encrypted copy of the data key, use
+GenerateDataKeyWithoutPlaintext. To return an arbitrary unpredictable
+byte string, use GenerateRandom.
+
+If you use the optional C<EncryptionContext> field, you must store at
+least enough information to be able to reconstruct the full encryption
+context when you later send the ciphertext to the Decrypt operation. It
+is a good practice to choose an encryption context that you can
+reconstruct on the fly to better secure the ciphertext. For more
+information, see Encryption Context in the I<AWS Key Management Service
+Developer Guide>.
 
 
-=head2 GenerateDataKeyWithoutPlaintext(KeyId => Str, [EncryptionContext => L<Paws::KMS::EncryptionContextType>, GrantTokens => ArrayRef[Str], KeySpec => Str, NumberOfBytes => Int])
+=head2 GenerateDataKeyWithoutPlaintext(KeyId => Str, [EncryptionContext => L<Paws::KMS::EncryptionContextType>, GrantTokens => ArrayRef[Str|Undef], KeySpec => Str, NumberOfBytes => Int])
 
 Each argument is described in detail in: L<Paws::KMS::GenerateDataKeyWithoutPlaintext>
 
 Returns: a L<Paws::KMS::GenerateDataKeyWithoutPlaintextResponse> instance
 
-  Returns a data key encrypted by a customer master key without the
-plaintext copy of that key. Otherwise, this API functions exactly like
-GenerateDataKey. You can use this API to, for example, satisfy an audit
-requirement that an encrypted key be made available without exposing
-the plaintext copy of that key.
+  Returns a data encryption key encrypted under a customer master key
+(CMK). This operation is identical to GenerateDataKey but returns only
+the encrypted copy of the data key.
+
+This operation is useful in a system that has multiple components with
+different degrees of trust. For example, consider a system that stores
+encrypted data in containers. Each container stores the encrypted data
+and an encrypted copy of the data key. One component of the system,
+called the I<control plane>, creates new containers. When it creates a
+new container, it uses this operation
+(C<GenerateDataKeyWithoutPlaintext>) to get an encrypted data key and
+then stores it in the container. Later, a different component of the
+system, called the I<data plane>, puts encrypted data into the
+containers. To do this, it passes the encrypted data key to the Decrypt
+operation, then uses the returned plaintext data key to encrypt data,
+and finally stores the encrypted data in the container. In this system,
+the control plane never sees the plaintext data key.
 
 
 =head2 GenerateRandom([NumberOfBytes => Int])
@@ -579,6 +655,61 @@ Returns: a L<Paws::KMS::GetKeyRotationStatusResponse> instance
 
   Retrieves a Boolean value that indicates whether key rotation is
 enabled for the specified key.
+
+
+=head2 GetParametersForImport(KeyId => Str, WrappingAlgorithm => Str, WrappingKeySpec => Str)
+
+Each argument is described in detail in: L<Paws::KMS::GetParametersForImport>
+
+Returns: a L<Paws::KMS::GetParametersForImportResponse> instance
+
+  Returns the items you need in order to import key material into AWS KMS
+from your existing key management infrastructure. For more information
+about importing key material into AWS KMS, see Importing Key Material
+in the I<AWS Key Management Service Developer Guide>.
+
+You must specify the key ID of the customer master key (CMK) into which
+you will import key material. This CMK's C<Origin> must be C<EXTERNAL>.
+You must also specify the wrapping algorithm and type of wrapping key
+(public key) that you will use to encrypt the key material.
+
+This operation returns a public key and an import token. Use the public
+key to encrypt the key material. Store the import token to send with a
+subsequent ImportKeyMaterial request. The public key and import token
+from the same response must be used together. These items are valid for
+24 hours, after which they cannot be used for a subsequent
+ImportKeyMaterial request. To retrieve new ones, send another
+C<GetParametersForImport> request.
+
+
+=head2 ImportKeyMaterial(EncryptedKeyMaterial => Str, ImportToken => Str, KeyId => Str, [ExpirationModel => Str, ValidTo => Str])
+
+Each argument is described in detail in: L<Paws::KMS::ImportKeyMaterial>
+
+Returns: a L<Paws::KMS::ImportKeyMaterialResponse> instance
+
+  Imports key material into an AWS KMS customer master key (CMK) from
+your existing key management infrastructure. For more information about
+importing key material into AWS KMS, see Importing Key Material in the
+I<AWS Key Management Service Developer Guide>.
+
+You must specify the key ID of the CMK to import the key material into.
+This CMK's C<Origin> must be C<EXTERNAL>. You must also send an import
+token and the encrypted key material. Send the import token that you
+received in the same GetParametersForImport response that contained the
+public key that you used to encrypt the key material. You must also
+specify whether the key material expires and if so, when. When the key
+material expires, AWS KMS deletes the key material and the CMK becomes
+unusable. To use the CMK again, you can reimport the same key material.
+If you set an expiration date, you can change it only by reimporting
+the same key material and specifying a new expiration date.
+
+When this operation is successful, the specified CMK's key state
+changes to C<Enabled>, and you can use the CMK.
+
+After you successfully import key material into a CMK, you can reimport
+the same key material into that CMK, but you cannot import different
+key material.
 
 
 =head2 ListAliases([Limit => Int, Marker => Str])
@@ -642,7 +773,7 @@ For more information about key policies, see Key Policies in the I<AWS
 Key Management Service Developer Guide>.
 
 
-=head2 ReEncrypt(CiphertextBlob => Str, DestinationKeyId => Str, [DestinationEncryptionContext => L<Paws::KMS::EncryptionContextType>, GrantTokens => ArrayRef[Str], SourceEncryptionContext => L<Paws::KMS::EncryptionContextType>])
+=head2 ReEncrypt(CiphertextBlob => Str, DestinationKeyId => Str, [DestinationEncryptionContext => L<Paws::KMS::EncryptionContextType>, GrantTokens => ArrayRef[Str|Undef], SourceEncryptionContext => L<Paws::KMS::EncryptionContextType>])
 
 Each argument is described in detail in: L<Paws::KMS::ReEncrypt>
 

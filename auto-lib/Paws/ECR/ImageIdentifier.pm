@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ECR::ImageI
 
 =head1 DESCRIPTION
 
-This class has no description
+An object with identifying information for an Amazon ECR image.
 
 =head1 ATTRIBUTES
 

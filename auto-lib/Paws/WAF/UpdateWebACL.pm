@@ -58,11 +58,17 @@ types:
 
 =over
 
-=item * WebACLUpdate: Contains C<Action> and C<ActivatedRule>
+=item *
 
-=item * ActivatedRule: Contains C<Action>, C<Priority>, and C<RuleId>
+WebACLUpdate: Contains C<Action> and C<ActivatedRule>
 
-=item * WafAction: Contains C<Type>
+=item *
+
+ActivatedRule: Contains C<Action>, C<Priority>, and C<RuleId>
+
+=item *
+
+WafAction: Contains C<Type>
 
 =back
 

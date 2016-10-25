@@ -2,6 +2,7 @@ package Paws::IoT::FirehoseAction;
   use Moose;
   has DeliveryStreamName => (is => 'ro', isa => 'Str', xmlname => 'deliveryStreamName', request_name => 'deliveryStreamName', traits => ['Unwrapped','NameInRequest'], required => 1);
   has RoleArn => (is => 'ro', isa => 'Str', xmlname => 'roleArn', request_name => 'roleArn', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has Separator => (is => 'ro', isa => 'Str', xmlname => 'separator', request_name => 'separator', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -21,7 +22,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::IoT::FirehoseAction object:
 
-  $service_obj->Method(Att1 => { DeliveryStreamName => $value, ..., RoleArn => $value  });
+  $service_obj->Method(Att1 => { DeliveryStreamName => $value, ..., Separator => $value  });
 
 =head3 Results returned from an API call
 
@@ -46,6 +47,13 @@ stream.
 =head2 B<REQUIRED> RoleArn => Str
 
   The IAM role that grants access to the Amazon Kinesis Firehost stream.
+
+
+=head2 Separator => Str
+
+  A character separator that will be used to separate records written to
+the Firehose stream. Valid values are: '\n' (newline), '\t' (tab),
+'\r\n' (Windows newline), ',' (comma).
 
 
 

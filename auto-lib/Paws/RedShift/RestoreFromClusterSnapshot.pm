@@ -7,12 +7,13 @@ package Paws::RedShift::RestoreFromClusterSnapshot;
   has AvailabilityZone => (is => 'ro', isa => 'Str');
   has ClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has ClusterParameterGroupName => (is => 'ro', isa => 'Str');
-  has ClusterSecurityGroups => (is => 'ro', isa => 'ArrayRef[Str]');
+  has ClusterSecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has ClusterSubnetGroupName => (is => 'ro', isa => 'Str');
   has ElasticIp => (is => 'ro', isa => 'Str');
+  has EnhancedVpcRouting => (is => 'ro', isa => 'Bool');
   has HsmClientCertificateIdentifier => (is => 'ro', isa => 'Str');
   has HsmConfigurationIdentifier => (is => 'ro', isa => 'Str');
-  has IamRoles => (is => 'ro', isa => 'ArrayRef[Str]');
+  has IamRoles => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has KmsKeyId => (is => 'ro', isa => 'Str');
   has NodeType => (is => 'ro', isa => 'Str');
   has OwnerAccount => (is => 'ro', isa => 'Str');
@@ -21,7 +22,7 @@ package Paws::RedShift::RestoreFromClusterSnapshot;
   has PubliclyAccessible => (is => 'ro', isa => 'Bool');
   has SnapshotClusterIdentifier => (is => 'ro', isa => 'Str');
   has SnapshotIdentifier => (is => 'ro', isa => 'Str', required => 1);
-  has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
   use MooseX::ClassAttribute;
 
@@ -102,15 +103,25 @@ Constraints:
 
 =over
 
-=item * Must contain from 1 to 63 alphanumeric characters or hyphens.
+=item *
 
-=item * Alphabetic characters must be lowercase.
+Must contain from 1 to 63 alphanumeric characters or hyphens.
 
-=item * First character must be a letter.
+=item *
 
-=item * Cannot end with a hyphen or contain two consecutive hyphens.
+Alphabetic characters must be lowercase.
 
-=item * Must be unique for all clusters within an AWS account.
+=item *
+
+First character must be a letter.
+
+=item *
+
+Cannot end with a hyphen or contain two consecutive hyphens.
+
+=item *
+
+Must be unique for all clusters within an AWS account.
 
 =back
 
@@ -129,18 +140,24 @@ Constraints:
 
 =over
 
-=item * Must be 1 to 255 alphanumeric characters or hyphens.
+=item *
 
-=item * First character must be a letter.
+Must be 1 to 255 alphanumeric characters or hyphens.
 
-=item * Cannot end with a hyphen or contain two consecutive hyphens.
+=item *
+
+First character must be a letter.
+
+=item *
+
+Cannot end with a hyphen or contain two consecutive hyphens.
 
 =back
 
 
 
 
-=head2 ClusterSecurityGroups => ArrayRef[Str]
+=head2 ClusterSecurityGroups => ArrayRef[Str|Undef]
 
 A list of security groups to be associated with this cluster.
 
@@ -165,6 +182,19 @@ The elastic IP (EIP) address for the cluster.
 
 
 
+=head2 EnhancedVpcRouting => Bool
+
+An option that specifies whether to create the cluster with enhanced
+VPC routing enabled. To create a cluster that uses enhanced VPC
+routing, the cluster must be in a VPC. For more information, see
+Enhanced VPC Routing in the Amazon Redshift Cluster Management Guide.
+
+If this option is C<true>, enhanced VPC routing is enabled.
+
+Default: false
+
+
+
 =head2 HsmClientCertificateIdentifier => Str
 
 Specifies the name of the HSM client certificate the Amazon Redshift
@@ -180,7 +210,7 @@ keys in an HSM.
 
 
 
-=head2 IamRoles => ArrayRef[Str]
+=head2 IamRoles => ArrayRef[Str|Undef]
 
 A list of AWS Identity and Access Management (IAM) roles that can be
 used by the cluster to access other AWS services. You must supply the
@@ -274,7 +304,7 @@ Example: C<my-snapshot-id>
 
 
 
-=head2 VpcSecurityGroupIds => ArrayRef[Str]
+=head2 VpcSecurityGroupIds => ArrayRef[Str|Undef]
 
 A list of Virtual Private Cloud (VPC) security groups to be associated
 with the cluster.

@@ -18,7 +18,21 @@ package Paws::Route53::CreateHealthCheck;
 
 =head1 NAME
 
-Paws::Route53::CreateHealthCheckResponse
+Paws::Route53::CreateHealthCheck - Arguments for method CreateHealthCheck on Paws::Route53
+
+=head1 DESCRIPTION
+
+This class represents the parameters used for calling the method CreateHealthCheck on the 
+Amazon Route 53 service. Use the attributes of this class
+as arguments to method CreateHealthCheck.
+
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateHealthCheck.
+
+As an example:
+
+  $service_obj->CreateHealthCheck(Att1 => $value1, Att2 => $value2, ...);
+
+Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 
 =head1 ATTRIBUTES
 
@@ -28,22 +42,27 @@ Paws::Route53::CreateHealthCheckResponse
 A unique string that identifies the request and that allows failed
 C<CreateHealthCheck> requests to be retried without the risk of
 executing the operation twice. You must use a unique C<CallerReference>
-string every time you create a health check. C<CallerReference> can be
-any unique string; you might choose to use a string that identifies
-your project.
-
-Valid characters are any Unicode code points that are legal in an XML
-1.0 document. The UTF-8 encoding of the value must be less than 128
-bytes.
+string every time you create a health check.
 
 
 
 =head2 B<REQUIRED> HealthCheckConfig => L<Paws::Route53::HealthCheckConfig>
 
-A complex type that contains health check configuration.
+A complex type that contains the response to a C<CreateHealthCheck>
+request.
 
 
 
+
+=head1 SEE ALSO
+
+This class forms part of L<Paws>, documenting arguments for method CreateHealthCheck in L<Paws::Route53>
+
+=head1 BUGS and CONTRIBUTIONS
+
+The source code is located here: https://github.com/pplu/aws-sdk-perl
+
+Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
 
 =cut
 

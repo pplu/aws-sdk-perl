@@ -38,8 +38,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 CookieExpirationPeriod => Int
 
 The time period, in seconds, after which the cookie should be
-considered stale. If you do not specify this parameter, the sticky
-session lasts for the duration of the browser session.
+considered stale. If you do not specify this parameter, the default
+value is 0, which indicates that the sticky session should last for the
+duration of the browser session.
 
 
 

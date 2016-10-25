@@ -184,7 +184,7 @@ provisioning a product. A path also determines the constraints put on
 the product.
 
 
-=head2 ListRecordHistory([AcceptLanguage => Str, PageSize => Int, PageToken => Str, SearchFilter => L<Paws::ServiceCatalog::ListRecordHistorySearchFilter>])
+=head2 ListRecordHistory([AcceptLanguage => Str, AccessLevelFilter => L<Paws::ServiceCatalog::AccessLevelFilter>, PageSize => Int, PageToken => Str, SearchFilter => L<Paws::ServiceCatalog::ListRecordHistorySearchFilter>])
 
 Each argument is described in detail in: L<Paws::ServiceCatalog::ListRecordHistory>
 
@@ -194,7 +194,7 @@ Returns: a L<Paws::ServiceCatalog::ListRecordHistoryOutput> instance
 RecordDetails objects that are filtered as specified.
 
 
-=head2 ProvisionProduct(ProductId => Str, ProvisionedProductName => Str, ProvisioningArtifactId => Str, ProvisionToken => Str, [AcceptLanguage => Str, NotificationArns => ArrayRef[Str], PathId => Str, ProvisioningParameters => ArrayRef[L<Paws::ServiceCatalog::ProvisioningParameter>], Tags => ArrayRef[L<Paws::ServiceCatalog::Tag>]])
+=head2 ProvisionProduct(ProductId => Str, ProvisionedProductName => Str, ProvisioningArtifactId => Str, ProvisionToken => Str, [AcceptLanguage => Str, NotificationArns => ArrayRef[Str|Undef], PathId => Str, ProvisioningParameters => ArrayRef[L<Paws::ServiceCatalog::ProvisioningParameter>], Tags => ArrayRef[L<Paws::ServiceCatalog::Tag>]])
 
 Each argument is described in detail in: L<Paws::ServiceCatalog::ProvisionProduct>
 
@@ -210,7 +210,7 @@ You can check the status of this request using the DescribeRecord
 operation.
 
 
-=head2 ScanProvisionedProducts([AcceptLanguage => Str, PageSize => Int, PageToken => Str])
+=head2 ScanProvisionedProducts([AcceptLanguage => Str, AccessLevelFilter => L<Paws::ServiceCatalog::AccessLevelFilter>, PageSize => Int, PageToken => Str])
 
 Each argument is described in detail in: L<Paws::ServiceCatalog::ScanProvisionedProducts>
 

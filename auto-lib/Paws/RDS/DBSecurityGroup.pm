@@ -1,5 +1,6 @@
 package Paws::RDS::DBSecurityGroup;
   use Moose;
+  has DBSecurityGroupArn => (is => 'ro', isa => 'Str');
   has DBSecurityGroupDescription => (is => 'ro', isa => 'Str');
   has DBSecurityGroupName => (is => 'ro', isa => 'Str');
   has EC2SecurityGroups => (is => 'ro', isa => 'ArrayRef[Paws::RDS::EC2SecurityGroup]');
@@ -25,14 +26,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::RDS::DBSecurityGroup object:
 
-  $service_obj->Method(Att1 => { DBSecurityGroupDescription => $value, ..., VpcId => $value  });
+  $service_obj->Method(Att1 => { DBSecurityGroupArn => $value, ..., VpcId => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::DBSecurityGroup object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->DBSecurityGroupDescription
+  $result->Att1->DBSecurityGroupArn
 
 =head1 DESCRIPTION
 
@@ -63,6 +64,11 @@ This data type is used as a response element in the
 DescribeDBSecurityGroups action.
 
 =head1 ATTRIBUTES
+
+
+=head2 DBSecurityGroupArn => Str
+
+  The Amazon Resource Name (ARN) for the DB security group.
 
 
 =head2 DBSecurityGroupDescription => Str

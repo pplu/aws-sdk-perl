@@ -1,7 +1,7 @@
 
 package Paws::AutoScaling::DescribeLaunchConfigurations;
   use Moose;
-  has LaunchConfigurationNames => (is => 'ro', isa => 'ArrayRef[Str]');
+  has LaunchConfigurationNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has MaxRecords => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
 
@@ -35,9 +35,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 LaunchConfigurationNames => ArrayRef[Str]
+=head2 LaunchConfigurationNames => ArrayRef[Str|Undef]
 
-The launch configuration names.
+The launch configuration names. If you omit this parameter, all launch
+configurations are described.
 
 
 

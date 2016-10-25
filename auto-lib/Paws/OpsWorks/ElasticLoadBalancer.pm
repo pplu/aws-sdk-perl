@@ -1,13 +1,13 @@
 package Paws::OpsWorks::ElasticLoadBalancer;
   use Moose;
-  has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str]');
+  has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has DnsName => (is => 'ro', isa => 'Str');
-  has Ec2InstanceIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has Ec2InstanceIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has ElasticLoadBalancerName => (is => 'ro', isa => 'Str');
   has LayerId => (is => 'ro', isa => 'Str');
   has Region => (is => 'ro', isa => 'Str');
   has StackId => (is => 'ro', isa => 'Str');
-  has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has VpcId => (is => 'ro', isa => 'Str');
 1;
 
@@ -44,7 +44,7 @@ Describes an Elastic Load Balancing instance.
 =head1 ATTRIBUTES
 
 
-=head2 AvailabilityZones => ArrayRef[Str]
+=head2 AvailabilityZones => ArrayRef[Str|Undef]
 
   A list of Availability Zones.
 
@@ -54,7 +54,7 @@ Describes an Elastic Load Balancing instance.
   The instance's public DNS name.
 
 
-=head2 Ec2InstanceIds => ArrayRef[Str]
+=head2 Ec2InstanceIds => ArrayRef[Str|Undef]
 
   A list of the EC2 instances that the Elastic Load Balancing instance is
 managing traffic for.
@@ -80,7 +80,7 @@ managing traffic for.
   The ID of the stack that the instance is associated with.
 
 
-=head2 SubnetIds => ArrayRef[Str]
+=head2 SubnetIds => ArrayRef[Str|Undef]
 
   A list of subnet IDs, if the stack is running in a VPC.
 

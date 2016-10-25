@@ -7,6 +7,7 @@ package Paws::RDS::DBEngineVersion;
   has Engine => (is => 'ro', isa => 'Str');
   has EngineVersion => (is => 'ro', isa => 'Str');
   has SupportedCharacterSets => (is => 'ro', isa => 'ArrayRef[Paws::RDS::CharacterSet]');
+  has SupportedTimezones => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Timezone]');
   has ValidUpgradeTarget => (is => 'ro', isa => 'ArrayRef[Paws::RDS::UpgradeTarget]');
 1;
 
@@ -79,7 +80,13 @@ specified.
 =head2 SupportedCharacterSets => ArrayRef[L<Paws::RDS::CharacterSet>]
 
   A list of the character sets supported by this engine for the
-C<CharacterSetName> parameter of the CreateDBInstance API.
+C<CharacterSetName> parameter of the C<CreateDBInstance> action.
+
+
+=head2 SupportedTimezones => ArrayRef[L<Paws::RDS::Timezone>]
+
+  A list of the time zones supported by this engine for the C<Timezone>
+parameter of the C<CreateDBInstance> action.
 
 
 =head2 ValidUpgradeTarget => ArrayRef[L<Paws::RDS::UpgradeTarget>]

@@ -4,6 +4,8 @@ package Paws::ElastiCache::DescribeSnapshots;
   has CacheClusterId => (is => 'ro', isa => 'Str');
   has Marker => (is => 'ro', isa => 'Str');
   has MaxRecords => (is => 'ro', isa => 'Int');
+  has ReplicationGroupId => (is => 'ro', isa => 'Str');
+  has ShowNodeGroupConfig => (is => 'ro', isa => 'Bool');
   has SnapshotName => (is => 'ro', isa => 'Str');
   has SnapshotSource => (is => 'ro', isa => 'Str');
 
@@ -40,7 +42,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 CacheClusterId => Str
 
 A user-supplied cluster identifier. If this parameter is specified,
-only snapshots associated with that specific cache cluster will be
+only snapshots associated with that specific cache cluster are
 described.
 
 
@@ -48,9 +50,9 @@ described.
 =head2 Marker => Str
 
 An optional marker returned from a prior request. Use this marker for
-pagination of results from this action. If this parameter is specified,
-the response includes only records beyond the marker, up to the value
-specified by I<MaxRecords>.
+pagination of results from this operation. If this parameter is
+specified, the response includes only records beyond the marker, up to
+the value specified by C<MaxRecords>.
 
 
 
@@ -67,10 +69,25 @@ Constraints: minimum 20; maximum 50.
 
 
 
+=head2 ReplicationGroupId => Str
+
+A user-supplied replication group identifier. If this parameter is
+specified, only snapshots associated with that specific replication
+group are described.
+
+
+
+=head2 ShowNodeGroupConfig => Bool
+
+A boolean value which if true, the node group (shard) configuration is
+included in the snapshot description.
+
+
+
 =head2 SnapshotName => Str
 
 A user-supplied name of the snapshot. If this parameter is specified,
-only this snapshot will be described.
+only this snapshot are described.
 
 
 

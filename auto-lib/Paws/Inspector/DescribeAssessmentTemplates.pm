@@ -1,7 +1,7 @@
 
 package Paws::Inspector::DescribeAssessmentTemplates;
   use Moose;
-  has AssessmentTemplateArns => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'assessmentTemplateArns' , required => 1);
+  has AssessmentTemplateArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'assessmentTemplateArns' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -33,7 +33,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> AssessmentTemplateArns => ArrayRef[Str]
+=head2 B<REQUIRED> AssessmentTemplateArns => ArrayRef[Str|Undef]
 
 The ARN that specifiesthe assessment templates that you want to
 describe.

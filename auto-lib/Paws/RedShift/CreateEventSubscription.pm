@@ -2,10 +2,10 @@
 package Paws::RedShift::CreateEventSubscription;
   use Moose;
   has Enabled => (is => 'ro', isa => 'Bool');
-  has EventCategories => (is => 'ro', isa => 'ArrayRef[Str]');
+  has EventCategories => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Severity => (is => 'ro', isa => 'Str');
   has SnsTopicArn => (is => 'ro', isa => 'Str', required => 1);
-  has SourceIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has SourceIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has SourceType => (is => 'ro', isa => 'Str');
   has SubscriptionName => (is => 'ro', isa => 'Str', required => 1);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::Tag]');
@@ -47,7 +47,7 @@ C<false> to create the subscription but not active it.
 
 
 
-=head2 EventCategories => ArrayRef[Str]
+=head2 EventCategories => ArrayRef[Str|Undef]
 
 Specifies the Amazon Redshift event categories to be published by the
 event notification subscription.
@@ -73,7 +73,7 @@ create a topic and subscribe to it.
 
 
 
-=head2 SourceIds => ArrayRef[Str]
+=head2 SourceIds => ArrayRef[Str|Undef]
 
 A list of one or more identifiers of Amazon Redshift source objects.
 All of the objects must be of the same type as was specified in the
@@ -108,13 +108,21 @@ Constraints:
 
 =over
 
-=item * Cannot be null, empty, or blank.
+=item *
 
-=item * Must contain from 1 to 255 alphanumeric characters or hyphens.
+Cannot be null, empty, or blank.
 
-=item * First character must be a letter.
+=item *
 
-=item * Cannot end with a hyphen or contain two consecutive hyphens.
+Must contain from 1 to 255 alphanumeric characters or hyphens.
+
+=item *
+
+First character must be a letter.
+
+=item *
+
+Cannot end with a hyphen or contain two consecutive hyphens.
 
 =back
 

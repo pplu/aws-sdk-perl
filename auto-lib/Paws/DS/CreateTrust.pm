@@ -1,7 +1,7 @@
 
 package Paws::DS::CreateTrust;
   use Moose;
-  has ConditionalForwarderIpAddrs => (is => 'ro', isa => 'ArrayRef[Str]');
+  has ConditionalForwarderIpAddrs => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has DirectoryId => (is => 'ro', isa => 'Str', required => 1);
   has RemoteDomainName => (is => 'ro', isa => 'Str', required => 1);
   has TrustDirection => (is => 'ro', isa => 'Str', required => 1);
@@ -38,7 +38,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 ConditionalForwarderIpAddrs => ArrayRef[Str]
+=head2 ConditionalForwarderIpAddrs => ArrayRef[Str|Undef]
 
 The IP addresses of the remote DNS server associated with
 RemoteDomainName.

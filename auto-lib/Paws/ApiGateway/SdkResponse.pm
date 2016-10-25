@@ -24,7 +24,7 @@ The binary blob response to GetSdk, which contains the generated SDK.
 
 =head2 ContentDisposition => Str
 
-The content-disposition header value in the HTTP reseponse.
+The content-disposition header value in the HTTP response.
 
 
 

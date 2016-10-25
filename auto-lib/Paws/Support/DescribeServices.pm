@@ -2,7 +2,7 @@
 package Paws::Support::DescribeServices;
   use Moose;
   has Language => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'language' );
-  has ServiceCodeList => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'serviceCodeList' );
+  has ServiceCodeList => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'serviceCodeList' );
 
   use MooseX::ClassAttribute;
 
@@ -42,7 +42,7 @@ parameters must be passed explicitly for operations that take them.
 
 
 
-=head2 ServiceCodeList => ArrayRef[Str]
+=head2 ServiceCodeList => ArrayRef[Str|Undef]
 
 A JSON-formatted list of service codes available for AWS services.
 

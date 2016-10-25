@@ -37,8 +37,8 @@ A set of instructions for launching server processes on each instance
 in a fleet. Each instruction set identifies the location of the server
 executable, optional launch parameters, and the number of server
 processes with this configuration to maintain concurrently on the
-instance. Server process configurations make up a fleet's
-C<RuntimeConfiguration>.
+instance. Server process configurations make up a fleet's C<
+RuntimeConfiguration >.
 
 =head1 ATTRIBUTES
 

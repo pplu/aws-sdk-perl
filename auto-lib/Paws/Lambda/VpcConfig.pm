@@ -1,7 +1,7 @@
 package Paws::Lambda::VpcConfig;
   use Moose;
-  has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str]');
-  has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 1;
 
 ### main pod documentation begin ###
@@ -40,12 +40,12 @@ security group and one subnet ID.
 =head1 ATTRIBUTES
 
 
-=head2 SecurityGroupIds => ArrayRef[Str]
+=head2 SecurityGroupIds => ArrayRef[Str|Undef]
 
   A list of one or more security groups IDs in your VPC.
 
 
-=head2 SubnetIds => ArrayRef[Str]
+=head2 SubnetIds => ArrayRef[Str|Undef]
 
   A list of one or more subnet IDs in your VPC.
 

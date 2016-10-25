@@ -5,7 +5,7 @@ package Paws::AutoScaling::DescribeScheduledActions;
   has EndTime => (is => 'ro', isa => 'Str');
   has MaxRecords => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
-  has ScheduledActionNames => (is => 'ro', isa => 'ArrayRef[Str]');
+  has ScheduledActionNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has StartTime => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
@@ -64,11 +64,11 @@ from a previous call.)
 
 
 
-=head2 ScheduledActionNames => ArrayRef[Str]
+=head2 ScheduledActionNames => ArrayRef[Str|Undef]
 
-Describes one or more scheduled actions. If you omit this list, the
-call describes all scheduled actions. If you specify an unknown
-scheduled action it is ignored with no error.
+Describes one or more scheduled actions. If you omit this parameter,
+all scheduled actions are described. If you specify an unknown
+scheduled action, it is ignored with no error.
 
 You can describe up to a maximum of 50 instances with a single call. If
 there are more items to return, the call returns a token. To get the

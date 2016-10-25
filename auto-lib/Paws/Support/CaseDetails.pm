@@ -2,7 +2,7 @@ package Paws::Support::CaseDetails;
   use Moose;
   has CaseId => (is => 'ro', isa => 'Str', xmlname => 'caseId', request_name => 'caseId', traits => ['Unwrapped','NameInRequest']);
   has CategoryCode => (is => 'ro', isa => 'Str', xmlname => 'categoryCode', request_name => 'categoryCode', traits => ['Unwrapped','NameInRequest']);
-  has CcEmailAddresses => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'ccEmailAddresses', request_name => 'ccEmailAddresses', traits => ['Unwrapped','NameInRequest']);
+  has CcEmailAddresses => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'ccEmailAddresses', request_name => 'ccEmailAddresses', traits => ['Unwrapped','NameInRequest']);
   has DisplayId => (is => 'ro', isa => 'Str', xmlname => 'displayId', request_name => 'displayId', traits => ['Unwrapped','NameInRequest']);
   has Language => (is => 'ro', isa => 'Str', xmlname => 'language', request_name => 'language', traits => ['Unwrapped','NameInRequest']);
   has RecentCommunications => (is => 'ro', isa => 'Paws::Support::RecentCaseCommunications', xmlname => 'recentCommunications', request_name => 'recentCommunications', traits => ['Unwrapped','NameInRequest']);
@@ -48,45 +48,66 @@ B<CaseDetails> contains the following fields:
 
 =over
 
-=item 1. B<CaseID.> The AWS Support case ID requested or returned in
-the call. The case ID is an alphanumeric string formatted as shown in
-this example: case-I<12345678910-2013-c4c1d2bf33c5cf47>.
+=item *
 
-=item 2. B<CategoryCode.> The category of problem for the AWS Support
-case. Corresponds to the CategoryCode values returned by a call to
+B<caseId.> The AWS Support case ID requested or returned in the call.
+The case ID is an alphanumeric string formatted as shown in this
+example: case-I<12345678910-2013-c4c1d2bf33c5cf47>.
+
+=item *
+
+B<categoryCode.> The category of problem for the AWS Support case.
+Corresponds to the CategoryCode values returned by a call to
 DescribeServices.
 
-=item 3. B<DisplayId.> The identifier for the case on pages in the AWS
-Support Center.
+=item *
 
-=item 4. B<Language.> The ISO 639-1 code for the language in which AWS
-provides support. AWS Support currently supports English ("en") and
-Japanese ("ja"). Language parameters must be passed explicitly for
-operations that take them.
+B<displayId.> The identifier for the case on pages in the AWS Support
+Center.
 
-=item 5. B<RecentCommunications.> One or more Communication objects.
-Fields of these objects are C<Attachments>, C<Body>, C<CaseId>,
-C<SubmittedBy>, and C<TimeCreated>.
+=item *
 
-=item 6. B<NextToken.> A resumption point for pagination.
+B<language.> The ISO 639-1 code for the language in which AWS provides
+support. AWS Support currently supports English ("en") and Japanese
+("ja"). Language parameters must be passed explicitly for operations
+that take them.
 
-=item 7. B<ServiceCode.> The identifier for the AWS service that
-corresponds to the service code defined in the call to
-DescribeServices.
+=item *
 
-=item 8. B<SeverityCode. >The severity code assigned to the case.
-Contains one of the values returned by the call to
-DescribeSeverityLevels.
+B<recentCommunications.> One or more Communication objects. Fields of
+these objects are C<attachments>, C<body>, C<caseId>, C<submittedBy>,
+and C<timeCreated>.
 
-=item 9. B<Status.> The status of the case in the AWS Support Center.
+=item *
 
-=item 10. B<Subject.> The subject line of the case.
+B<nextToken.> A resumption point for pagination.
 
-=item 11. B<SubmittedBy.> The email address of the account that
-submitted the case.
+=item *
 
-=item 12. B<TimeCreated.> The time the case was created, in ISO-8601
-format.
+B<serviceCode.> The identifier for the AWS service that corresponds to
+the service code defined in the call to DescribeServices.
+
+=item *
+
+B<severityCode. >The severity code assigned to the case. Contains one
+of the values returned by the call to DescribeSeverityLevels.
+
+=item *
+
+B<status.> The status of the case in the AWS Support Center.
+
+=item *
+
+B<subject.> The subject line of the case.
+
+=item *
+
+B<submittedBy.> The email address of the account that submitted the
+case.
+
+=item *
+
+B<timeCreated.> The time the case was created, in ISO-8601 format.
 
 =back
 
@@ -106,7 +127,7 @@ case-I<12345678910-2013-c4c1d2bf33c5cf47>
   The category of problem for the AWS Support case.
 
 
-=head2 CcEmailAddresses => ArrayRef[Str]
+=head2 CcEmailAddresses => ArrayRef[Str|Undef]
 
   The email addresses that receive copies of communication about the
 case.

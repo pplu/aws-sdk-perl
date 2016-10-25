@@ -1,8 +1,8 @@
 package Paws::DS::DirectoryVpcSettingsDescription;
   use Moose;
-  has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str]');
+  has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has SecurityGroupId => (is => 'ro', isa => 'Str');
-  has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has VpcId => (is => 'ro', isa => 'Str');
 1;
 
@@ -39,7 +39,7 @@ Contains information about the directory.
 =head1 ATTRIBUTES
 
 
-=head2 AvailabilityZones => ArrayRef[Str]
+=head2 AvailabilityZones => ArrayRef[Str|Undef]
 
   The list of Availability Zones that the directory is in.
 
@@ -52,7 +52,7 @@ members security group that was created when the directory was created.
 If the directory was created after this date, this value is null.
 
 
-=head2 SubnetIds => ArrayRef[Str]
+=head2 SubnetIds => ArrayRef[Str|Undef]
 
   The identifiers of the subnets for the directory servers.
 

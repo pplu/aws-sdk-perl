@@ -2,15 +2,20 @@ package Paws::MachineLearning::BatchPrediction;
   use Moose;
   has BatchPredictionDataSourceId => (is => 'ro', isa => 'Str');
   has BatchPredictionId => (is => 'ro', isa => 'Str');
+  has ComputeTime => (is => 'ro', isa => 'Int');
   has CreatedAt => (is => 'ro', isa => 'Str');
   has CreatedByIamUser => (is => 'ro', isa => 'Str');
+  has FinishedAt => (is => 'ro', isa => 'Str');
   has InputDataLocationS3 => (is => 'ro', isa => 'Str');
+  has InvalidRecordCount => (is => 'ro', isa => 'Int');
   has LastUpdatedAt => (is => 'ro', isa => 'Str');
   has Message => (is => 'ro', isa => 'Str');
   has MLModelId => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
   has OutputUri => (is => 'ro', isa => 'Str');
+  has StartedAt => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
+  has TotalRecordCount => (is => 'ro', isa => 'Int');
 1;
 
 ### main pod documentation begin ###
@@ -30,7 +35,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::MachineLearning::BatchPrediction object:
 
-  $service_obj->Method(Att1 => { BatchPredictionDataSourceId => $value, ..., Status => $value  });
+  $service_obj->Method(Att1 => { BatchPredictionDataSourceId => $value, ..., TotalRecordCount => $value  });
 
 =head3 Results returned from an API call
 
@@ -62,6 +67,11 @@ should be identical to the value of the C<BatchPredictionID> in the
 request.
 
 
+=head2 ComputeTime => Int
+
+  
+
+
 =head2 CreatedAt => Str
 
   The time that the C<BatchPrediction> was created. The time is expressed
@@ -75,10 +85,20 @@ type can be either an AWS root account or an AWS Identity and Access
 Management (IAM) user account.
 
 
+=head2 FinishedAt => Str
+
+  
+
+
 =head2 InputDataLocationS3 => Str
 
   The location of the data file or directory in Amazon Simple Storage
 Service (Amazon S3).
+
+
+=head2 InvalidRecordCount => Int
+
+  
 
 
 =head2 LastUpdatedAt => Str
@@ -111,6 +131,11 @@ operation results. The following substrings are not allowed in the C<s3
 key> portion of the C<outputURI> field: ':', '//', '/./', '/../'.
 
 
+=head2 StartedAt => Str
+
+  
+
+
 =head2 Status => Str
 
   The status of the C<BatchPrediction>. This element can have one of the
@@ -134,6 +159,11 @@ not usable.
 
 =back
 
+
+
+=head2 TotalRecordCount => Int
+
+  
 
 
 

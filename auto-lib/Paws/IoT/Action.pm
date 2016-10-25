@@ -3,6 +3,7 @@ package Paws::IoT::Action;
   has CloudwatchAlarm => (is => 'ro', isa => 'Paws::IoT::CloudwatchAlarmAction', xmlname => 'cloudwatchAlarm', request_name => 'cloudwatchAlarm', traits => ['Unwrapped','NameInRequest']);
   has CloudwatchMetric => (is => 'ro', isa => 'Paws::IoT::CloudwatchMetricAction', xmlname => 'cloudwatchMetric', request_name => 'cloudwatchMetric', traits => ['Unwrapped','NameInRequest']);
   has DynamoDB => (is => 'ro', isa => 'Paws::IoT::DynamoDBAction', xmlname => 'dynamoDB', request_name => 'dynamoDB', traits => ['Unwrapped','NameInRequest']);
+  has DynamoDBv2 => (is => 'ro', isa => 'Paws::IoT::DynamoDBv2Action', xmlname => 'dynamoDBv2', request_name => 'dynamoDBv2', traits => ['Unwrapped','NameInRequest']);
   has Elasticsearch => (is => 'ro', isa => 'Paws::IoT::ElasticsearchAction', xmlname => 'elasticsearch', request_name => 'elasticsearch', traits => ['Unwrapped','NameInRequest']);
   has Firehose => (is => 'ro', isa => 'Paws::IoT::FirehoseAction', xmlname => 'firehose', request_name => 'firehose', traits => ['Unwrapped','NameInRequest']);
   has Kinesis => (is => 'ro', isa => 'Paws::IoT::KinesisAction', xmlname => 'kinesis', request_name => 'kinesis', traits => ['Unwrapped','NameInRequest']);
@@ -61,9 +62,16 @@ Describes the actions associated with a rule.
   Write to a DynamoDB table.
 
 
+=head2 DynamoDBv2 => L<Paws::IoT::DynamoDBv2Action>
+
+  Write to a DynamoDB table. This is a new version of the DynamoDB
+action. It allows you to write each attribute in an MQTT message
+payload into a separate DynamoDB column.
+
+
 =head2 Elasticsearch => L<Paws::IoT::ElasticsearchAction>
 
-  Write data to an Amazon Elasticsearch Service; domain.
+  Write data to an Amazon Elasticsearch Service domain.
 
 
 =head2 Firehose => L<Paws::IoT::FirehoseAction>

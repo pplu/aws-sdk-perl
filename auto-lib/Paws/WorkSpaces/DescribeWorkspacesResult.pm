@@ -19,7 +19,7 @@ Paws::WorkSpaces::DescribeWorkspacesResult
 If not null, more results are available. Pass this value for the
 C<NextToken> parameter in a subsequent call to this operation to
 retrieve the next set of items. This token is valid for one day and
-must be used within that timeframe.
+must be used within that time frame.
 
 
 

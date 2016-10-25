@@ -457,7 +457,7 @@ Developer Guide.
 This action is throttled at one request per second.
 
 
-=head2 GetIdentityDkimAttributes(Identities => ArrayRef[Str])
+=head2 GetIdentityDkimAttributes(Identities => ArrayRef[Str|Undef])
 
 Each argument is described in detail in: L<Paws::SES::GetIdentityDkimAttributes>
 
@@ -497,7 +497,7 @@ For more information about creating DNS records using DKIM tokens, go
 to the Amazon SES Developer Guide.
 
 
-=head2 GetIdentityMailFromDomainAttributes(Identities => ArrayRef[Str])
+=head2 GetIdentityMailFromDomainAttributes(Identities => ArrayRef[Str|Undef])
 
 Each argument is described in detail in: L<Paws::SES::GetIdentityMailFromDomainAttributes>
 
@@ -510,7 +510,7 @@ This action is throttled at one request per second and can only get
 custom MAIL FROM attributes for up to 100 identities at a time.
 
 
-=head2 GetIdentityNotificationAttributes(Identities => ArrayRef[Str])
+=head2 GetIdentityNotificationAttributes(Identities => ArrayRef[Str|Undef])
 
 Each argument is described in detail in: L<Paws::SES::GetIdentityNotificationAttributes>
 
@@ -526,7 +526,7 @@ For more information about using notifications with Amazon SES, see the
 Amazon SES Developer Guide.
 
 
-=head2 GetIdentityPolicies(Identity => Str, PolicyNames => ArrayRef[Str])
+=head2 GetIdentityPolicies(Identity => Str, PolicyNames => ArrayRef[Str|Undef])
 
 Each argument is described in detail in: L<Paws::SES::GetIdentityPolicies>
 
@@ -547,7 +547,7 @@ using sending authorization, see the Amazon SES Developer Guide.
 This action is throttled at one request per second.
 
 
-=head2 GetIdentityVerificationAttributes(Identities => ArrayRef[Str])
+=head2 GetIdentityVerificationAttributes(Identities => ArrayRef[Str|Undef])
 
 Each argument is described in detail in: L<Paws::SES::GetIdentityVerificationAttributes>
 
@@ -686,7 +686,7 @@ using sending authorization, see the Amazon SES Developer Guide.
 This action is throttled at one request per second.
 
 
-=head2 ReorderReceiptRuleSet(RuleNames => ArrayRef[Str], RuleSetName => Str)
+=head2 ReorderReceiptRuleSet(RuleNames => ArrayRef[Str|Undef], RuleSetName => Str)
 
 Each argument is described in detail in: L<Paws::SES::ReorderReceiptRuleSet>
 
@@ -723,7 +723,7 @@ Amazon SES Developer Guide.
 This action is throttled at one request per second.
 
 
-=head2 SendEmail(Destination => L<Paws::SES::Destination>, Message => L<Paws::SES::Message>, Source => Str, [ReplyToAddresses => ArrayRef[Str], ReturnPath => Str, ReturnPathArn => Str, SourceArn => Str])
+=head2 SendEmail(Destination => L<Paws::SES::Destination>, Message => L<Paws::SES::Message>, Source => Str, [ReplyToAddresses => ArrayRef[Str|Undef], ReturnPath => Str, ReturnPathArn => Str, SourceArn => Str])
 
 Each argument is described in detail in: L<Paws::SES::SendEmail>
 
@@ -769,7 +769,7 @@ about your sending quota, go to the Amazon SES Developer Guide.
 
 
 
-=head2 SendRawEmail(RawMessage => L<Paws::SES::RawMessage>, [Destinations => ArrayRef[Str], FromArn => Str, ReturnPathArn => Str, Source => Str, SourceArn => Str])
+=head2 SendRawEmail(RawMessage => L<Paws::SES::RawMessage>, [Destinations => ArrayRef[Str|Undef], FromArn => Str, ReturnPathArn => Str, Source => Str, SourceArn => Str])
 
 Each argument is described in detail in: L<Paws::SES::SendRawEmail>
 
@@ -811,6 +811,10 @@ Amazon SES repeatedly to send the message to each group.
 The To:, CC:, and BCC: headers in the raw message can contain a group
 list. Note that each recipient in a group list counts towards the
 50-recipient limit.
+
+=item *
+
+Amazon SES overrides any Message-ID and Date headers you provide.
 
 =item *
 

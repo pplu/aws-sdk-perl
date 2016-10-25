@@ -54,10 +54,10 @@ the value is a Boolean.
 
 =head2 CacheTtlInSeconds => Int
 
-  Specifies the time to live (TTL) in seconds, for cached responses. The
-higher a the TTL, the longer the response will be cached. The PATCH
-path for this setting is C</{method_setting_key}/caching/ttlInSeconds>,
-and the value is an integer.
+  Specifies the time to live (TTL), in seconds, for cached responses. The
+higher the TTL, the longer the response will be cached. The PATCH path
+for this setting is C</{method_setting_key}/caching/ttlInSeconds>, and
+the value is an integer.
 
 
 =head2 CachingEnabled => Bool
@@ -70,10 +70,10 @@ C</{method_setting_key}/caching/enabled>, and the value is a Boolean.
 
 =head2 DataTraceEnabled => Bool
 
-  Specifies the whether data trace logging is enabled for this method,
-which effects the log entries pushed to Amazon CloudWatch Logs. The
-PATCH path for this setting is
-C</{method_setting_key}/logging/dataTrace>, and the value is a Boolean.
+  Specifies whether data trace logging is enabled for this method, which
+effects the log entries pushed to Amazon CloudWatch Logs. The PATCH
+path for this setting is C</{method_setting_key}/logging/dataTrace>,
+and the value is a Boolean.
 
 
 =head2 LoggingLevel => Str
@@ -115,8 +115,8 @@ double.
 
 =head2 UnauthorizedCacheControlHeaderStrategy => Str
 
-  Specifies the strategy on how to handle the unauthorized requests for
-cache invalidation. The PATCH path for this setting is
+  Specifies how to handle unauthorized requests for cache invalidation.
+The PATCH path for this setting is
 C</{method_setting_key}/caching/unauthorizedCacheControlHeaderStrategy>,
 and the available values are C<FAIL_WITH_403>,
 C<SUCCEED_WITH_RESPONSE_HEADER>, C<SUCCEED_WITHOUT_RESPONSE_HEADER>.

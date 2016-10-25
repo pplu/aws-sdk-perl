@@ -1,7 +1,7 @@
 package Paws::CloudWatch::MetricAlarm;
   use Moose;
   has ActionsEnabled => (is => 'ro', isa => 'Bool');
-  has AlarmActions => (is => 'ro', isa => 'ArrayRef[Str]');
+  has AlarmActions => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has AlarmArn => (is => 'ro', isa => 'Str');
   has AlarmConfigurationUpdatedTimestamp => (is => 'ro', isa => 'Str');
   has AlarmDescription => (is => 'ro', isa => 'Str');
@@ -9,10 +9,10 @@ package Paws::CloudWatch::MetricAlarm;
   has ComparisonOperator => (is => 'ro', isa => 'Str');
   has Dimensions => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatch::Dimension]');
   has EvaluationPeriods => (is => 'ro', isa => 'Int');
-  has InsufficientDataActions => (is => 'ro', isa => 'ArrayRef[Str]');
+  has InsufficientDataActions => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has MetricName => (is => 'ro', isa => 'Str');
   has Namespace => (is => 'ro', isa => 'Str');
-  has OKActions => (is => 'ro', isa => 'ArrayRef[Str]');
+  has OKActions => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Period => (is => 'ro', isa => 'Int');
   has StateReason => (is => 'ro', isa => 'Str');
   has StateReasonData => (is => 'ro', isa => 'Str');
@@ -63,7 +63,7 @@ PutMetricAlarm to create or update an alarm.
 alarm's state.
 
 
-=head2 AlarmActions => ArrayRef[Str]
+=head2 AlarmActions => ArrayRef[Str|Undef]
 
   The list of actions to execute when this alarm transitions into an
 C<ALARM> state from any other state. Each action is specified as an
@@ -108,7 +108,7 @@ as the first operand.
 threshold.
 
 
-=head2 InsufficientDataActions => ArrayRef[Str]
+=head2 InsufficientDataActions => ArrayRef[Str|Undef]
 
   The list of actions to execute when this alarm transitions into an
 C<INSUFFICIENT_DATA> state from any other state. Each action is
@@ -127,7 +127,7 @@ The current WSDL lists this attribute as C<UnknownActions>.
   The namespace of alarm's associated metric.
 
 
-=head2 OKActions => ArrayRef[Str]
+=head2 OKActions => ArrayRef[Str|Undef]
 
   The list of actions to execute when this alarm transitions into an
 C<OK> state from any other state. Each action is specified as an Amazon

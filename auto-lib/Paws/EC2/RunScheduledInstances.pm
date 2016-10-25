@@ -63,7 +63,9 @@ Default: 1
 
 =head2 B<REQUIRED> LaunchSpecification => L<Paws::EC2::ScheduledInstancesLaunchSpecification>
 
-The launch specification.
+The launch specification. You must match the instance type,
+Availability Zone, network, and platform of the schedule that you
+purchased.
 
 
 

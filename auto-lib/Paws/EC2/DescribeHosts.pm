@@ -2,7 +2,7 @@
 package Paws::EC2::DescribeHosts;
   use Moose;
   has Filter => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'filter' );
-  has HostIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'hostId' );
+  has HostIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'hostId' );
   has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults' );
   has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
 
@@ -44,7 +44,7 @@ One or more filters.
 
 =item *
 
-C<instance-type> - The instance type size that the Dedicated host is
+C<instance-type> - The instance type size that the Dedicated Host is
 configured to support.
 
 =item *
@@ -54,7 +54,7 @@ C<auto-placement> - Whether auto-placement is enabled or disabled
 
 =item *
 
-C<host-reservation-id> - The ID of the reservation associated with this
+C<host-reservation-id> - The ID of the reservation assigned to this
 host.
 
 =item *
@@ -64,7 +64,7 @@ the instance
 
 =item *
 
-C<state>- The allocation state of the Dedicated host (C<available> |
+C<state>- The allocation state of the Dedicated Host (C<available> |
 C<under-assessment> | C<permanent-failure> | C<released> |
 C<released-permanent-failure>).
 
@@ -77,9 +77,9 @@ C<availability-zone> - The Availability Zone of the host.
 
 
 
-=head2 HostIds => ArrayRef[Str]
+=head2 HostIds => ArrayRef[Str|Undef]
 
-The IDs of the Dedicated hosts. The IDs are used for targeted instance
+The IDs of the Dedicated Hosts. The IDs are used for targeted instance
 launches.
 
 

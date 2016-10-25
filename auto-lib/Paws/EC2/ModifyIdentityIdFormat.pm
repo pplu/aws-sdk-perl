@@ -38,13 +38,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 B<REQUIRED> PrincipalArn => Str
 
 The ARN of the principal, which can be an IAM user, IAM role, or the
-root user.
+root user. Specify C<all> to modify the ID format for all IAM users,
+IAM roles, and the root user of the account.
 
 
 
 =head2 B<REQUIRED> Resource => Str
 
-The type of resource.
+The type of resource: C<instance> | C<reservation> | C<snapshot> |
+C<volume>
 
 
 

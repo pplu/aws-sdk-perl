@@ -281,17 +281,25 @@ To create and configure a C<ByteMatchSet>, perform the following steps:
 
 =over
 
-=item 1. Use GetChangeToken to get the change token that you provide in
-the C<ChangeToken> parameter of a C<CreateByteMatchSet> request.
+=item 1.
 
-=item 2. Submit a C<CreateByteMatchSet> request.
+Use GetChangeToken to get the change token that you provide in the
+C<ChangeToken> parameter of a C<CreateByteMatchSet> request.
 
-=item 3. Use C<GetChangeToken> to get the change token that you provide
-in the C<ChangeToken> parameter of an C<UpdateByteMatchSet> request.
+=item 2.
 
-=item 4. Submit an UpdateByteMatchSet request to specify the part of
-the request that you want AWS WAF to inspect (for example, the header
-or the URI) and the value that you want AWS WAF to watch for.
+Submit a C<CreateByteMatchSet> request.
+
+=item 3.
+
+Use C<GetChangeToken> to get the change token that you provide in the
+C<ChangeToken> parameter of an C<UpdateByteMatchSet> request.
+
+=item 4.
+
+Submit an UpdateByteMatchSet request to specify the part of the request
+that you want AWS WAF to inspect (for example, the header or the URI)
+and the value that you want AWS WAF to watch for.
 
 =back
 
@@ -317,16 +325,24 @@ To create and configure an C<IPSet>, perform the following steps:
 
 =over
 
-=item 1. Use GetChangeToken to get the change token that you provide in
-the C<ChangeToken> parameter of a C<CreateIPSet> request.
+=item 1.
 
-=item 2. Submit a C<CreateIPSet> request.
+Use GetChangeToken to get the change token that you provide in the
+C<ChangeToken> parameter of a C<CreateIPSet> request.
 
-=item 3. Use C<GetChangeToken> to get the change token that you provide
-in the C<ChangeToken> parameter of an UpdateIPSet request.
+=item 2.
 
-=item 4. Submit an C<UpdateIPSet> request to specify the IP addresses
-that you want AWS WAF to watch for.
+Submit a C<CreateIPSet> request.
+
+=item 3.
+
+Use C<GetChangeToken> to get the change token that you provide in the
+C<ChangeToken> parameter of an UpdateIPSet request.
+
+=item 4.
+
+Submit an C<UpdateIPSet> request to specify the IP addresses that you
+want AWS WAF to watch for.
 
 =back
 
@@ -348,10 +364,13 @@ example, suppose you add the following to a C<Rule>:
 
 =over
 
-=item * An C<IPSet> that matches the IP address C<192.0.2.44/32>
+=item *
 
-=item * A C<ByteMatchSet> that matches C<BadBot> in the C<User-Agent>
-header
+An C<IPSet> that matches the IP address C<192.0.2.44/32>
+
+=item *
+
+A C<ByteMatchSet> that matches C<BadBot> in the C<User-Agent> header
 
 =back
 
@@ -364,23 +383,35 @@ To create and configure a C<Rule>, perform the following steps:
 
 =over
 
-=item 1. Create and update the predicates that you want to include in
-the C<Rule>. For more information, see CreateByteMatchSet, CreateIPSet,
-and CreateSqlInjectionMatchSet.
+=item 1.
 
-=item 2. Use GetChangeToken to get the change token that you provide in
-the C<ChangeToken> parameter of a C<CreateRule> request.
+Create and update the predicates that you want to include in the
+C<Rule>. For more information, see CreateByteMatchSet, CreateIPSet, and
+CreateSqlInjectionMatchSet.
 
-=item 3. Submit a C<CreateRule> request.
+=item 2.
 
-=item 4. Use C<GetChangeToken> to get the change token that you provide
-in the C<ChangeToken> parameter of an UpdateRule request.
+Use GetChangeToken to get the change token that you provide in the
+C<ChangeToken> parameter of a C<CreateRule> request.
 
-=item 5. Submit an C<UpdateRule> request to specify the predicates that
-you want to include in the C<Rule>.
+=item 3.
 
-=item 6. Create and update a C<WebACL> that contains the C<Rule>. For
-more information, see CreateWebACL.
+Submit a C<CreateRule> request.
+
+=item 4.
+
+Use C<GetChangeToken> to get the change token that you provide in the
+C<ChangeToken> parameter of an UpdateRule request.
+
+=item 5.
+
+Submit an C<UpdateRule> request to specify the predicates that you want
+to include in the C<Rule>.
+
+=item 6.
+
+Create and update a C<WebACL> that contains the C<Rule>. For more
+information, see CreateWebACL.
 
 =back
 
@@ -406,18 +437,25 @@ steps:
 
 =over
 
-=item 1. Use GetChangeToken to get the change token that you provide in
-the C<ChangeToken> parameter of a C<CreateSizeConstraintSet> request.
+=item 1.
 
-=item 2. Submit a C<CreateSizeConstraintSet> request.
+Use GetChangeToken to get the change token that you provide in the
+C<ChangeToken> parameter of a C<CreateSizeConstraintSet> request.
 
-=item 3. Use C<GetChangeToken> to get the change token that you provide
-in the C<ChangeToken> parameter of an C<UpdateSizeConstraintSet>
-request.
+=item 2.
 
-=item 4. Submit an UpdateSizeConstraintSet request to specify the part
-of the request that you want AWS WAF to inspect (for example, the
-header or the URI) and the value that you want AWS WAF to watch for.
+Submit a C<CreateSizeConstraintSet> request.
+
+=item 3.
+
+Use C<GetChangeToken> to get the change token that you provide in the
+C<ChangeToken> parameter of an C<UpdateSizeConstraintSet> request.
+
+=item 4.
+
+Submit an UpdateSizeConstraintSet request to specify the part of the
+request that you want AWS WAF to inspect (for example, the header or
+the URI) and the value that you want AWS WAF to watch for.
 
 =back
 
@@ -441,19 +479,25 @@ following steps:
 
 =over
 
-=item 1. Use GetChangeToken to get the change token that you provide in
-the C<ChangeToken> parameter of a C<CreateSqlInjectionMatchSet>
-request.
+=item 1.
 
-=item 2. Submit a C<CreateSqlInjectionMatchSet> request.
+Use GetChangeToken to get the change token that you provide in the
+C<ChangeToken> parameter of a C<CreateSqlInjectionMatchSet> request.
 
-=item 3. Use C<GetChangeToken> to get the change token that you provide
-in the C<ChangeToken> parameter of an UpdateSqlInjectionMatchSet
-request.
+=item 2.
 
-=item 4. Submit an UpdateSqlInjectionMatchSet request to specify the
-parts of web requests in which you want to allow, block, or count
-malicious SQL code.
+Submit a C<CreateSqlInjectionMatchSet> request.
+
+=item 3.
+
+Use C<GetChangeToken> to get the change token that you provide in the
+C<ChangeToken> parameter of an UpdateSqlInjectionMatchSet request.
+
+=item 4.
+
+Submit an UpdateSqlInjectionMatchSet request to specify the parts of
+web requests in which you want to allow, block, or count malicious SQL
+code.
 
 =back
 
@@ -480,25 +524,37 @@ To create and configure a C<WebACL>, perform the following steps:
 
 =over
 
-=item 1. Create and update the C<ByteMatchSet> objects and other
-predicates that you want to include in C<Rules>. For more information,
-see CreateByteMatchSet, UpdateByteMatchSet, CreateIPSet, UpdateIPSet,
+=item 1.
+
+Create and update the C<ByteMatchSet> objects and other predicates that
+you want to include in C<Rules>. For more information, see
+CreateByteMatchSet, UpdateByteMatchSet, CreateIPSet, UpdateIPSet,
 CreateSqlInjectionMatchSet, and UpdateSqlInjectionMatchSet.
 
-=item 2. Create and update the C<Rules> that you want to include in the
+=item 2.
+
+Create and update the C<Rules> that you want to include in the
 C<WebACL>. For more information, see CreateRule and UpdateRule.
 
-=item 3. Use GetChangeToken to get the change token that you provide in
-the C<ChangeToken> parameter of a C<CreateWebACL> request.
+=item 3.
 
-=item 4. Submit a C<CreateWebACL> request.
+Use GetChangeToken to get the change token that you provide in the
+C<ChangeToken> parameter of a C<CreateWebACL> request.
 
-=item 5. Use C<GetChangeToken> to get the change token that you provide
-in the C<ChangeToken> parameter of an UpdateWebACL request.
+=item 4.
 
-=item 6. Submit an UpdateWebACL request to specify the C<Rules> that
-you want to include in the C<WebACL>, to specify the default action,
-and to associate the C<WebACL> with a CloudFront distribution.
+Submit a C<CreateWebACL> request.
+
+=item 5.
+
+Use C<GetChangeToken> to get the change token that you provide in the
+C<ChangeToken> parameter of an UpdateWebACL request.
+
+=item 6.
+
+Submit an UpdateWebACL request to specify the C<Rules> that you want to
+include in the C<WebACL>, to specify the default action, and to
+associate the C<WebACL> with a CloudFront distribution.
 
 =back
 
@@ -521,16 +577,24 @@ To create and configure an C<XssMatchSet>, perform the following steps:
 
 =over
 
-=item 1. Use GetChangeToken to get the change token that you provide in
-the C<ChangeToken> parameter of a C<CreateXssMatchSet> request.
+=item 1.
 
-=item 2. Submit a C<CreateXssMatchSet> request.
+Use GetChangeToken to get the change token that you provide in the
+C<ChangeToken> parameter of a C<CreateXssMatchSet> request.
 
-=item 3. Use C<GetChangeToken> to get the change token that you provide
-in the C<ChangeToken> parameter of an UpdateXssMatchSet request.
+=item 2.
 
-=item 4. Submit an UpdateXssMatchSet request to specify the parts of
-web requests in which you want to allow, block, or count cross-site
+Submit a C<CreateXssMatchSet> request.
+
+=item 3.
+
+Use C<GetChangeToken> to get the change token that you provide in the
+C<ChangeToken> parameter of an UpdateXssMatchSet request.
+
+=item 4.
+
+Submit an UpdateXssMatchSet request to specify the parts of web
+requests in which you want to allow, block, or count cross-site
 scripting attacks.
 
 =back
@@ -556,13 +620,19 @@ To permanently delete a C<ByteMatchSet>, perform the following steps:
 
 =over
 
-=item 1. Update the C<ByteMatchSet> to remove filters, if any. For more
+=item 1.
+
+Update the C<ByteMatchSet> to remove filters, if any. For more
 information, see UpdateByteMatchSet.
 
-=item 2. Use GetChangeToken to get the change token that you provide in
-the C<ChangeToken> parameter of a C<DeleteByteMatchSet> request.
+=item 2.
 
-=item 3. Submit a C<DeleteByteMatchSet> request.
+Use GetChangeToken to get the change token that you provide in the
+C<ChangeToken> parameter of a C<DeleteByteMatchSet> request.
+
+=item 3.
+
+Submit a C<DeleteByteMatchSet> request.
 
 =back
 
@@ -584,13 +654,19 @@ steps:
 
 =over
 
-=item 1. Update the C<IPSet> to remove IP address ranges, if any. For
-more information, see UpdateIPSet.
+=item 1.
 
-=item 2. Use GetChangeToken to get the change token that you provide in
-the C<ChangeToken> parameter of a C<DeleteIPSet> request.
+Update the C<IPSet> to remove IP address ranges, if any. For more
+information, see UpdateIPSet.
 
-=item 3. Submit a C<DeleteIPSet> request.
+=item 2.
+
+Use GetChangeToken to get the change token that you provide in the
+C<ChangeToken> parameter of a C<DeleteIPSet> request.
+
+=item 3.
+
+Submit a C<DeleteIPSet> request.
 
 =back
 
@@ -614,13 +690,19 @@ steps:
 
 =over
 
-=item 1. Update the C<Rule> to remove predicates, if any. For more
-information, see UpdateRule.
+=item 1.
 
-=item 2. Use GetChangeToken to get the change token that you provide in
-the C<ChangeToken> parameter of a C<DeleteRule> request.
+Update the C<Rule> to remove predicates, if any. For more information,
+see UpdateRule.
 
-=item 3. Submit a C<DeleteRule> request.
+=item 2.
+
+Use GetChangeToken to get the change token that you provide in the
+C<ChangeToken> parameter of a C<DeleteRule> request.
+
+=item 3.
+
+Submit a C<DeleteRule> request.
 
 =back
 
@@ -644,13 +726,19 @@ steps:
 
 =over
 
-=item 1. Update the C<SizeConstraintSet> to remove filters, if any. For
-more information, see UpdateSizeConstraintSet.
+=item 1.
 
-=item 2. Use GetChangeToken to get the change token that you provide in
-the C<ChangeToken> parameter of a C<DeleteSizeConstraintSet> request.
+Update the C<SizeConstraintSet> to remove filters, if any. For more
+information, see UpdateSizeConstraintSet.
 
-=item 3. Submit a C<DeleteSizeConstraintSet> request.
+=item 2.
+
+Use GetChangeToken to get the change token that you provide in the
+C<ChangeToken> parameter of a C<DeleteSizeConstraintSet> request.
+
+=item 3.
+
+Submit a C<DeleteSizeConstraintSet> request.
 
 =back
 
@@ -674,14 +762,19 @@ the following steps:
 
 =over
 
-=item 1. Update the C<SqlInjectionMatchSet> to remove filters, if any.
-For more information, see UpdateSqlInjectionMatchSet.
+=item 1.
 
-=item 2. Use GetChangeToken to get the change token that you provide in
-the C<ChangeToken> parameter of a C<DeleteSqlInjectionMatchSet>
-request.
+Update the C<SqlInjectionMatchSet> to remove filters, if any. For more
+information, see UpdateSqlInjectionMatchSet.
 
-=item 3. Submit a C<DeleteSqlInjectionMatchSet> request.
+=item 2.
+
+Use GetChangeToken to get the change token that you provide in the
+C<ChangeToken> parameter of a C<DeleteSqlInjectionMatchSet> request.
+
+=item 3.
+
+Submit a C<DeleteSqlInjectionMatchSet> request.
 
 =back
 
@@ -700,13 +793,19 @@ To delete a C<WebACL>, perform the following steps:
 
 =over
 
-=item 1. Update the C<WebACL> to remove C<Rules>, if any. For more
-information, see UpdateWebACL.
+=item 1.
 
-=item 2. Use GetChangeToken to get the change token that you provide in
-the C<ChangeToken> parameter of a C<DeleteWebACL> request.
+Update the C<WebACL> to remove C<Rules>, if any. For more information,
+see UpdateWebACL.
 
-=item 3. Submit a C<DeleteWebACL> request.
+=item 2.
+
+Use GetChangeToken to get the change token that you provide in the
+C<ChangeToken> parameter of a C<DeleteWebACL> request.
+
+=item 3.
+
+Submit a C<DeleteWebACL> request.
 
 =back
 
@@ -730,13 +829,19 @@ following steps:
 
 =over
 
-=item 1. Update the C<XssMatchSet> to remove filters, if any. For more
+=item 1.
+
+Update the C<XssMatchSet> to remove filters, if any. For more
 information, see UpdateXssMatchSet.
 
-=item 2. Use GetChangeToken to get the change token that you provide in
-the C<ChangeToken> parameter of a C<DeleteXssMatchSet> request.
+=item 2.
 
-=item 3. Submit a C<DeleteXssMatchSet> request.
+Use GetChangeToken to get the change token that you provide in the
+C<ChangeToken> parameter of a C<DeleteXssMatchSet> request.
+
+=item 3.
+
+Submit a C<DeleteXssMatchSet> request.
 
 =back
 
@@ -785,14 +890,20 @@ GetChangeToken. C<ChangeTokenStatus> is one of the following values:
 
 =over
 
-=item * C<PROVISIONED>: You requested the change token by calling
+=item *
+
+C<PROVISIONED>: You requested the change token by calling
 C<GetChangeToken>, but you haven't used it yet in a call to create,
 update, or delete an AWS WAF object.
 
-=item * C<PENDING>: AWS WAF is propagating the create, update, or
-delete request to all AWS WAF servers.
+=item *
 
-=item * C<IN_SYNC>: Propagation is complete.
+C<PENDING>: AWS WAF is propagating the create, update, or delete
+request to all AWS WAF servers.
+
+=item *
+
+C<IN_SYNC>: Propagation is complete.
 
 =back
 
@@ -874,7 +985,7 @@ Returns: a L<Paws::WAF::GetXssMatchSetResponse> instance
   Returns the XssMatchSet that is specified by C<XssMatchSetId>.
 
 
-=head2 ListByteMatchSets(Limit => Int, [NextMarker => Str])
+=head2 ListByteMatchSets([Limit => Int, NextMarker => Str])
 
 Each argument is described in detail in: L<Paws::WAF::ListByteMatchSets>
 
@@ -883,7 +994,7 @@ Returns: a L<Paws::WAF::ListByteMatchSetsResponse> instance
   Returns an array of ByteMatchSetSummary objects.
 
 
-=head2 ListIPSets(Limit => Int, [NextMarker => Str])
+=head2 ListIPSets([Limit => Int, NextMarker => Str])
 
 Each argument is described in detail in: L<Paws::WAF::ListIPSets>
 
@@ -892,7 +1003,7 @@ Returns: a L<Paws::WAF::ListIPSetsResponse> instance
   Returns an array of IPSetSummary objects in the response.
 
 
-=head2 ListRules(Limit => Int, [NextMarker => Str])
+=head2 ListRules([Limit => Int, NextMarker => Str])
 
 Each argument is described in detail in: L<Paws::WAF::ListRules>
 
@@ -901,7 +1012,7 @@ Returns: a L<Paws::WAF::ListRulesResponse> instance
   Returns an array of RuleSummary objects.
 
 
-=head2 ListSizeConstraintSets(Limit => Int, [NextMarker => Str])
+=head2 ListSizeConstraintSets([Limit => Int, NextMarker => Str])
 
 Each argument is described in detail in: L<Paws::WAF::ListSizeConstraintSets>
 
@@ -910,7 +1021,7 @@ Returns: a L<Paws::WAF::ListSizeConstraintSetsResponse> instance
   Returns an array of SizeConstraintSetSummary objects.
 
 
-=head2 ListSqlInjectionMatchSets(Limit => Int, [NextMarker => Str])
+=head2 ListSqlInjectionMatchSets([Limit => Int, NextMarker => Str])
 
 Each argument is described in detail in: L<Paws::WAF::ListSqlInjectionMatchSets>
 
@@ -919,7 +1030,7 @@ Returns: a L<Paws::WAF::ListSqlInjectionMatchSetsResponse> instance
   Returns an array of SqlInjectionMatchSet objects.
 
 
-=head2 ListWebACLs(Limit => Int, [NextMarker => Str])
+=head2 ListWebACLs([Limit => Int, NextMarker => Str])
 
 Each argument is described in detail in: L<Paws::WAF::ListWebACLs>
 
@@ -928,7 +1039,7 @@ Returns: a L<Paws::WAF::ListWebACLsResponse> instance
   Returns an array of WebACLSummary objects in the response.
 
 
-=head2 ListXssMatchSets(Limit => Int, [NextMarker => Str])
+=head2 ListXssMatchSets([Limit => Int, NextMarker => Str])
 
 Each argument is described in detail in: L<Paws::WAF::ListXssMatchSets>
 
@@ -948,24 +1059,32 @@ For each C<ByteMatchTuple> object, you specify the following values:
 
 =over
 
-=item * Whether to insert or delete the object from the array. If you
-want to change a C<ByteMatchSetUpdate> object, you delete the existing
-object and add a new one.
+=item *
 
-=item * The part of a web request that you want AWS WAF to inspect,
-such as a query string or the value of the C<User-Agent> header.
+Whether to insert or delete the object from the array. If you want to
+change a C<ByteMatchSetUpdate> object, you delete the existing object
+and add a new one.
 
-=item * The bytes (typically a string that corresponds with ASCII
-characters) that you want AWS WAF to look for. For more information,
-including how you specify the values for the AWS WAF API and the AWS
-CLI or SDKs, see C<TargetString> in the ByteMatchTuple data type.
+=item *
 
-=item * Where to look, such as at the beginning or the end of a query
-string.
+The part of a web request that you want AWS WAF to inspect, such as a
+query string or the value of the C<User-Agent> header.
 
-=item * Whether to perform any conversions on the request, such as
-converting it to lowercase, before inspecting it for the specified
-string.
+=item *
+
+The bytes (typically a string that corresponds with ASCII characters)
+that you want AWS WAF to look for. For more information, including how
+you specify the values for the AWS WAF API and the AWS CLI or SDKs, see
+C<TargetString> in the ByteMatchTuple data type.
+
+=item *
+
+Where to look, such as at the beginning or the end of a query string.
+
+=item *
+
+Whether to perform any conversions on the request, such as converting
+it to lowercase, before inspecting it for the specified string.
 
 =back
 
@@ -977,15 +1096,20 @@ To create and configure a C<ByteMatchSet>, perform the following steps:
 
 =over
 
-=item 1. Create a C<ByteMatchSet.> For more information, see
-CreateByteMatchSet.
+=item 1.
 
-=item 2. Use GetChangeToken to get the change token that you provide in
-the C<ChangeToken> parameter of an C<UpdateByteMatchSet> request.
+Create a C<ByteMatchSet.> For more information, see CreateByteMatchSet.
 
-=item 3. Submit an C<UpdateByteMatchSet> request to specify the part of
-the request that you want AWS WAF to inspect (for example, the header
-or the URI) and the value that you want AWS WAF to watch for.
+=item 2.
+
+Use GetChangeToken to get the change token that you provide in the
+C<ChangeToken> parameter of an C<UpdateByteMatchSet> request.
+
+=item 3.
+
+Submit an C<UpdateByteMatchSet> request to specify the part of the
+request that you want AWS WAF to inspect (for example, the header or
+the URI) and the value that you want AWS WAF to watch for.
 
 =back
 
@@ -1004,14 +1128,20 @@ C<IPSetDescriptor> object, you specify the following values:
 
 =over
 
-=item * Whether to insert or delete the object from the array. If you
-want to change an C<IPSetDescriptor> object, you delete the existing
-object and add a new one.
+=item *
 
-=item * The IP address version, C<IPv4>.
+Whether to insert or delete the object from the array. If you want to
+change an C<IPSetDescriptor> object, you delete the existing object and
+add a new one.
 
-=item * The IP address in CIDR notation, for example, C<192.0.2.0/24>
-(for the range of IP addresses from C<192.0.2.0> to C<192.0.2.255>) or
+=item *
+
+The IP address version, C<IPv4>.
+
+=item *
+
+The IP address in CIDR notation, for example, C<192.0.2.0/24> (for the
+range of IP addresses from C<192.0.2.0> to C<192.0.2.255>) or
 C<192.0.2.44/32> (for the individual IP address C<192.0.2.44>).
 
 =back
@@ -1031,13 +1161,19 @@ To create and configure an C<IPSet>, perform the following steps:
 
 =over
 
-=item 1. Submit a CreateIPSet request.
+=item 1.
 
-=item 2. Use GetChangeToken to get the change token that you provide in
-the C<ChangeToken> parameter of an UpdateIPSet request.
+Submit a CreateIPSet request.
 
-=item 3. Submit an C<UpdateIPSet> request to specify the IP addresses
-that you want AWS WAF to watch for.
+=item 2.
+
+Use GetChangeToken to get the change token that you provide in the
+C<ChangeToken> parameter of an UpdateIPSet request.
+
+=item 3.
+
+Submit an C<UpdateIPSet> request to specify the IP addresses that you
+want AWS WAF to watch for.
 
 =back
 
@@ -1065,10 +1201,14 @@ suppose you add the following to a C<Rule>:
 
 =over
 
-=item * A C<ByteMatchSet> that matches the value C<BadBot> in the
-C<User-Agent> header
+=item *
 
-=item * An C<IPSet> that matches the IP address C<192.0.2.44>
+A C<ByteMatchSet> that matches the value C<BadBot> in the C<User-Agent>
+header
+
+=item *
+
+An C<IPSet> that matches the IP address C<192.0.2.44>
 
 =back
 
@@ -1082,18 +1222,27 @@ To create and configure a C<Rule>, perform the following steps:
 
 =over
 
-=item 1. Create and update the predicates that you want to include in
-the C<Rule>.
+=item 1.
 
-=item 2. Create the C<Rule>. See CreateRule.
-
-=item 3. Use C<GetChangeToken> to get the change token that you provide
-in the C<ChangeToken> parameter of an UpdateRule request.
-
-=item 4. Submit an C<UpdateRule> request to add predicates to the
+Create and update the predicates that you want to include in the
 C<Rule>.
 
-=item 5. Create and update a C<WebACL> that contains the C<Rule>. See
+=item 2.
+
+Create the C<Rule>. See CreateRule.
+
+=item 3.
+
+Use C<GetChangeToken> to get the change token that you provide in the
+C<ChangeToken> parameter of an UpdateRule request.
+
+=item 4.
+
+Submit an C<UpdateRule> request to add predicates to the C<Rule>.
+
+=item 5.
+
+Create and update a C<WebACL> that contains the C<Rule>. See
 CreateWebACL.
 
 =back
@@ -1117,26 +1266,35 @@ following values:
 
 =over
 
-=item * Whether to insert or delete the object from the array. If you
-want to change a C<SizeConstraintSetUpdate> object, you delete the
-existing object and add a new one.
+=item *
 
-=item * The part of a web request that you want AWS WAF to evaluate,
-such as the length of a query string or the length of the C<User-Agent>
-header.
+Whether to insert or delete the object from the array. If you want to
+change a C<SizeConstraintSetUpdate> object, you delete the existing
+object and add a new one.
 
-=item * Whether to perform any transformations on the request, such as
+=item *
+
+The part of a web request that you want AWS WAF to evaluate, such as
+the length of a query string or the length of the C<User-Agent> header.
+
+=item *
+
+Whether to perform any transformations on the request, such as
 converting it to lowercase, before checking its length. Note that
 transformations of the request body are not supported because the AWS
 resource forwards only the first C<8192> bytes of your request to AWS
 WAF.
 
-=item * A C<ComparisonOperator> used for evaluating the selected part
-of the request against the specified C<Size>, such as equals, greater
-than, less than, and so on.
+=item *
 
-=item * The length, in bytes, that you want AWS WAF to watch for in
-selected part of the request. The length is computed after applying the
+A C<ComparisonOperator> used for evaluating the selected part of the
+request against the specified C<Size>, such as equals, greater than,
+less than, and so on.
+
+=item *
+
+The length, in bytes, that you want AWS WAF to watch for in selected
+part of the request. The length is computed after applying the
 transformation.
 
 =back
@@ -1151,15 +1309,21 @@ steps:
 
 =over
 
-=item 1. Create a C<SizeConstraintSet.> For more information, see
+=item 1.
+
+Create a C<SizeConstraintSet.> For more information, see
 CreateSizeConstraintSet.
 
-=item 2. Use GetChangeToken to get the change token that you provide in
-the C<ChangeToken> parameter of an C<UpdateSizeConstraintSet> request.
+=item 2.
 
-=item 3. Submit an C<UpdateSizeConstraintSet> request to specify the
-part of the request that you want AWS WAF to inspect (for example, the
-header or the URI) and the value that you want AWS WAF to watch for.
+Use GetChangeToken to get the change token that you provide in the
+C<ChangeToken> parameter of an C<UpdateSizeConstraintSet> request.
+
+=item 3.
+
+Submit an C<UpdateSizeConstraintSet> request to specify the part of the
+request that you want AWS WAF to inspect (for example, the header or
+the URI) and the value that you want AWS WAF to watch for.
 
 =back
 
@@ -1179,17 +1343,23 @@ specify the following values:
 
 =over
 
-=item * C<Action>: Whether to insert the object into or delete the
-object from the array. To change a C<SqlInjectionMatchTuple>, you
-delete the existing object and add a new one.
+=item *
 
-=item * C<FieldToMatch>: The part of web requests that you want AWS WAF
-to inspect and, if you want AWS WAF to inspect a header, the name of
-the header.
+C<Action>: Whether to insert the object into or delete the object from
+the array. To change a C<SqlInjectionMatchTuple>, you delete the
+existing object and add a new one.
 
-=item * C<TextTransformation>: Which text transformation, if any, to
-perform on the web request before inspecting the request for snippets
-of malicious SQL code.
+=item *
+
+C<FieldToMatch>: The part of web requests that you want AWS WAF to
+inspect and, if you want AWS WAF to inspect a header, the name of the
+header.
+
+=item *
+
+C<TextTransformation>: Which text transformation, if any, to perform on
+the web request before inspecting the request for snippets of malicious
+SQL code.
 
 =back
 
@@ -1205,14 +1375,19 @@ following steps:
 
 =over
 
-=item 1. Submit a CreateSqlInjectionMatchSet request.
+=item 1.
 
-=item 2. Use GetChangeToken to get the change token that you provide in
-the C<ChangeToken> parameter of an UpdateIPSet request.
+Submit a CreateSqlInjectionMatchSet request.
 
-=item 3. Submit an C<UpdateSqlInjectionMatchSet> request to specify the
-parts of web requests that you want AWS WAF to inspect for snippets of
-SQL code.
+=item 2.
+
+Use GetChangeToken to get the change token that you provide in the
+C<ChangeToken> parameter of an UpdateIPSet request.
+
+=item 3.
+
+Submit an C<UpdateSqlInjectionMatchSet> request to specify the parts of
+web requests that you want AWS WAF to inspect for snippets of SQL code.
 
 =back
 
@@ -1232,20 +1407,27 @@ you update a C<WebACL>, you specify the following values:
 
 =over
 
-=item * A default action for the C<WebACL>, either C<ALLOW> or
-C<BLOCK>. AWS WAF performs the default action if a request doesn't
-match the criteria in any of the C<Rules> in a C<WebACL>.
+=item *
 
-=item * The C<Rules> that you want to add and/or delete. If you want to
-replace one C<Rule> with another, you delete the existing C<Rule> and
-add the new one.
+A default action for the C<WebACL>, either C<ALLOW> or C<BLOCK>. AWS
+WAF performs the default action if a request doesn't match the criteria
+in any of the C<Rules> in a C<WebACL>.
 
-=item * For each C<Rule>, whether you want AWS WAF to allow requests,
-block requests, or count requests that match the conditions in the
-C<Rule>.
+=item *
 
-=item * The order in which you want AWS WAF to evaluate the C<Rules> in
-a C<WebACL>. If you add more than one C<Rule> to a C<WebACL>, AWS WAF
+The C<Rules> that you want to add and/or delete. If you want to replace
+one C<Rule> with another, you delete the existing C<Rule> and add the
+new one.
+
+=item *
+
+For each C<Rule>, whether you want AWS WAF to allow requests, block
+requests, or count requests that match the conditions in the C<Rule>.
+
+=item *
+
+The order in which you want AWS WAF to evaluate the C<Rules> in a
+C<WebACL>. If you add more than one C<Rule> to a C<WebACL>, AWS WAF
 evaluates each request against the C<Rules> in order based on the value
 of C<Priority>. (The C<Rule> that has the lowest value for C<Priority>
 is evaluated first.) When a web request matches all of the predicates
@@ -1254,7 +1436,9 @@ immediately takes the corresponding action, allow or block, and doesn't
 evaluate the request against the remaining C<Rules> in the C<WebACL>,
 if any.
 
-=item * The CloudFront distribution that you want to associate with the
+=item *
+
+The CloudFront distribution that you want to associate with the
 C<WebACL>.
 
 =back
@@ -1263,22 +1447,32 @@ To create and configure a C<WebACL>, perform the following steps:
 
 =over
 
-=item 1. Create and update the predicates that you want to include in
-C<Rules>. For more information, see CreateByteMatchSet,
-UpdateByteMatchSet, CreateIPSet, UpdateIPSet,
-CreateSqlInjectionMatchSet, and UpdateSqlInjectionMatchSet.
+=item 1.
 
-=item 2. Create and update the C<Rules> that you want to include in the
+Create and update the predicates that you want to include in C<Rules>.
+For more information, see CreateByteMatchSet, UpdateByteMatchSet,
+CreateIPSet, UpdateIPSet, CreateSqlInjectionMatchSet, and
+UpdateSqlInjectionMatchSet.
+
+=item 2.
+
+Create and update the C<Rules> that you want to include in the
 C<WebACL>. For more information, see CreateRule and UpdateRule.
 
-=item 3. Create a C<WebACL>. See CreateWebACL.
+=item 3.
 
-=item 4. Use C<GetChangeToken> to get the change token that you provide
-in the C<ChangeToken> parameter of an UpdateWebACL request.
+Create a C<WebACL>. See CreateWebACL.
 
-=item 5. Submit an C<UpdateWebACL> request to specify the C<Rules> that
-you want to include in the C<WebACL>, to specify the default action,
-and to associate the C<WebACL> with a CloudFront distribution.
+=item 4.
+
+Use C<GetChangeToken> to get the change token that you provide in the
+C<ChangeToken> parameter of an UpdateWebACL request.
+
+=item 5.
+
+Submit an C<UpdateWebACL> request to specify the C<Rules> that you want
+to include in the C<WebACL>, to specify the default action, and to
+associate the C<WebACL> with a CloudFront distribution.
 
 =back
 
@@ -1297,17 +1491,23 @@ For each C<XssMatchTuple> object, you specify the following values:
 
 =over
 
-=item * C<Action>: Whether to insert the object into or delete the
-object from the array. To change a C<XssMatchTuple>, you delete the
-existing object and add a new one.
+=item *
 
-=item * C<FieldToMatch>: The part of web requests that you want AWS WAF
-to inspect and, if you want AWS WAF to inspect a header, the name of
-the header.
+C<Action>: Whether to insert the object into or delete the object from
+the array. To change a C<XssMatchTuple>, you delete the existing object
+and add a new one.
 
-=item * C<TextTransformation>: Which text transformation, if any, to
-perform on the web request before inspecting the request for cross-site
-scripting attacks.
+=item *
+
+C<FieldToMatch>: The part of web requests that you want AWS WAF to
+inspect and, if you want AWS WAF to inspect a header, the name of the
+header.
+
+=item *
+
+C<TextTransformation>: Which text transformation, if any, to perform on
+the web request before inspecting the request for cross-site scripting
+attacks.
 
 =back
 
@@ -1322,13 +1522,19 @@ To create and configure an C<XssMatchSet>, perform the following steps:
 
 =over
 
-=item 1. Submit a CreateXssMatchSet request.
+=item 1.
 
-=item 2. Use GetChangeToken to get the change token that you provide in
-the C<ChangeToken> parameter of an UpdateIPSet request.
+Submit a CreateXssMatchSet request.
 
-=item 3. Submit an C<UpdateXssMatchSet> request to specify the parts of
-web requests that you want AWS WAF to inspect for cross-site scripting
+=item 2.
+
+Use GetChangeToken to get the change token that you provide in the
+C<ChangeToken> parameter of an UpdateIPSet request.
+
+=item 3.
+
+Submit an C<UpdateXssMatchSet> request to specify the parts of web
+requests that you want AWS WAF to inspect for cross-site scripting
 attacks.
 
 =back

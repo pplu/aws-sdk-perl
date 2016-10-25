@@ -86,7 +86,7 @@ You can set this optional parameter to C<Tail> in the request only if
 you specify the C<InvocationType> parameter with value
 C<RequestResponse>. In this case, AWS Lambda returns the base64-encoded
 last 4 KB of log data produced by your Lambda function in the
-C<x-amz-log-results> header.
+C<x-amz-log-result> header.
 
 Valid values are: C<"None">, C<"Tail">
 

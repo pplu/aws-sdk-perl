@@ -4,7 +4,7 @@ package Paws::SSM::Command;
   has Comment => (is => 'ro', isa => 'Str');
   has DocumentName => (is => 'ro', isa => 'Str');
   has ExpiresAfter => (is => 'ro', isa => 'Str');
-  has InstanceIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has InstanceIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has NotificationConfig => (is => 'ro', isa => 'Paws::SSM::NotificationConfig');
   has OutputS3BucketName => (is => 'ro', isa => 'Str');
   has OutputS3KeyPrefix => (is => 'ro', isa => 'Str');
@@ -70,7 +70,7 @@ executing, it will not execute. Calculated based on the ExpiresAfter
 user input provided as part of the SendCommand API.
 
 
-=head2 InstanceIds => ArrayRef[Str]
+=head2 InstanceIds => ArrayRef[Str|Undef]
 
   The instance IDs against which this command was requested.
 

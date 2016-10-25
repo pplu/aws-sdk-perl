@@ -14,6 +14,11 @@ package Paws::DS;
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
 
   
+  sub AddIpRoutes {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DS::AddIpRoutes', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub AddTagsToResource {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DS::AddTagsToResource', @_);
@@ -139,6 +144,11 @@ package Paws::DS;
     my $call_object = $self->new_with_coercions('Paws::DS::GetSnapshotLimits', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListIpRoutes {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DS::ListIpRoutes', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListTagsForResource {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DS::ListTagsForResource', @_);
@@ -147,6 +157,11 @@ package Paws::DS;
   sub RegisterEventTopic {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DS::RegisterEventTopic', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub RemoveIpRoutes {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DS::RemoveIpRoutes', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub RemoveTagsFromResource {
@@ -175,7 +190,7 @@ package Paws::DS;
     return $self->caller->do_call($self, $call_object);
   }
 
-  sub operations { qw/AddTagsToResource ConnectDirectory CreateAlias CreateComputer CreateConditionalForwarder CreateDirectory CreateMicrosoftAD CreateSnapshot CreateTrust DeleteConditionalForwarder DeleteDirectory DeleteSnapshot DeleteTrust DeregisterEventTopic DescribeConditionalForwarders DescribeDirectories DescribeEventTopics DescribeSnapshots DescribeTrusts DisableRadius DisableSso EnableRadius EnableSso GetDirectoryLimits GetSnapshotLimits ListTagsForResource RegisterEventTopic RemoveTagsFromResource RestoreFromSnapshot UpdateConditionalForwarder UpdateRadius VerifyTrust / }
+  sub operations { qw/AddIpRoutes AddTagsToResource ConnectDirectory CreateAlias CreateComputer CreateConditionalForwarder CreateDirectory CreateMicrosoftAD CreateSnapshot CreateTrust DeleteConditionalForwarder DeleteDirectory DeleteSnapshot DeleteTrust DeregisterEventTopic DescribeConditionalForwarders DescribeDirectories DescribeEventTopics DescribeSnapshots DescribeTrusts DisableRadius DisableSso EnableRadius EnableSso GetDirectoryLimits GetSnapshotLimits ListIpRoutes ListTagsForResource RegisterEventTopic RemoveIpRoutes RemoveTagsFromResource RestoreFromSnapshot UpdateConditionalForwarder UpdateRadius VerifyTrust / }
 
 1;
 
@@ -211,6 +226,20 @@ types, parameters, and errors.
 
 =head1 METHODS
 
+=head2 AddIpRoutes(DirectoryId => Str, IpRoutes => ArrayRef[L<Paws::DS::IpRoute>], [UpdateSecurityGroupForDirectoryControllers => Bool])
+
+Each argument is described in detail in: L<Paws::DS::AddIpRoutes>
+
+Returns: a L<Paws::DS::AddIpRoutesResult> instance
+
+  If the DNS server for your on-premises domain uses a publicly
+addressable IP address, you must add a CIDR address block to correctly
+route traffic to and from your Microsoft AD on Amazon Web Services.
+I<AddIpRoutes> adds this address block. You can also use I<AddIpRoutes>
+to facilitate routing traffic that uses public IP ranges from your
+Microsoft AD on AWS to a peer VPC.
+
+
 =head2 AddTagsToResource(ResourceId => Str, Tags => ArrayRef[L<Paws::DS::Tag>])
 
 Each argument is described in detail in: L<Paws::DS::AddTagsToResource>
@@ -219,8 +248,8 @@ Returns: a L<Paws::DS::AddTagsToResourceResult> instance
 
   Adds or overwrites one or more tags for the specified Amazon Directory
 Services directory. Each directory can have a maximum of 10 tags. Each
-tag consists of a key and optional value. Tag keys must be unique per
-resource.
+tag consists of a key and optional value. Tag keys must be unique to
+each resource.
 
 
 =head2 ConnectDirectory(ConnectSettings => L<Paws::DS::DirectoryConnectSettings>, Name => Str, Password => Str, Size => Str, [Description => Str, ShortName => Str])
@@ -256,7 +285,7 @@ Returns: a L<Paws::DS::CreateComputerResult> instance
 computer to the directory.
 
 
-=head2 CreateConditionalForwarder(DirectoryId => Str, DnsIpAddrs => ArrayRef[Str], RemoteDomainName => Str)
+=head2 CreateConditionalForwarder(DirectoryId => Str, DnsIpAddrs => ArrayRef[Str|Undef], RemoteDomainName => Str)
 
 Each argument is described in detail in: L<Paws::DS::CreateConditionalForwarder>
 
@@ -298,7 +327,7 @@ cloud.
 You cannot take snapshots of AD Connector directories.
 
 
-=head2 CreateTrust(DirectoryId => Str, RemoteDomainName => Str, TrustDirection => Str, TrustPassword => Str, [ConditionalForwarderIpAddrs => ArrayRef[Str], TrustType => Str])
+=head2 CreateTrust(DirectoryId => Str, RemoteDomainName => Str, TrustDirection => Str, TrustPassword => Str, [ConditionalForwarderIpAddrs => ArrayRef[Str|Undef], TrustType => Str])
 
 Each argument is described in detail in: L<Paws::DS::CreateTrust>
 
@@ -364,7 +393,7 @@ Returns: a L<Paws::DS::DeregisterEventTopicResult> instance
 topic.
 
 
-=head2 DescribeConditionalForwarders(DirectoryId => Str, [RemoteDomainNames => ArrayRef[Str]])
+=head2 DescribeConditionalForwarders(DirectoryId => Str, [RemoteDomainNames => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::DS::DescribeConditionalForwarders>
 
@@ -376,7 +405,7 @@ If no input parameters are provided for RemoteDomainNames, this request
 describes all conditional forwarders for the specified directory ID.
 
 
-=head2 DescribeDirectories([DirectoryIds => ArrayRef[Str], Limit => Int, NextToken => Str])
+=head2 DescribeDirectories([DirectoryIds => ArrayRef[Str|Undef], Limit => Int, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::DS::DescribeDirectories>
 
@@ -398,7 +427,7 @@ You can also specify a maximum number of return results with the
 I<Limit> parameter.
 
 
-=head2 DescribeEventTopics([DirectoryId => Str, TopicNames => ArrayRef[Str]])
+=head2 DescribeEventTopics([DirectoryId => Str, TopicNames => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::DS::DescribeEventTopics>
 
@@ -411,7 +440,7 @@ If no input parameters are provided, such as DirectoryId or TopicName,
 this request describes all of the associations in the account.
 
 
-=head2 DescribeSnapshots([DirectoryId => Str, Limit => Int, NextToken => Str, SnapshotIds => ArrayRef[Str]])
+=head2 DescribeSnapshots([DirectoryId => Str, Limit => Int, NextToken => Str, SnapshotIds => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::DS::DescribeSnapshots>
 
@@ -429,7 +458,7 @@ You can also specify a maximum number of return results with the
 I<Limit> parameter.
 
 
-=head2 DescribeTrusts([DirectoryId => Str, Limit => Int, NextToken => Str, TrustIds => ArrayRef[Str]])
+=head2 DescribeTrusts([DirectoryId => Str, Limit => Int, NextToken => Str, TrustIds => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::DS::DescribeTrusts>
 
@@ -500,6 +529,15 @@ Returns: a L<Paws::DS::GetSnapshotLimitsResult> instance
   Obtains the manual snapshot limits for a directory.
 
 
+=head2 ListIpRoutes(DirectoryId => Str, [Limit => Int, NextToken => Str])
+
+Each argument is described in detail in: L<Paws::DS::ListIpRoutes>
+
+Returns: a L<Paws::DS::ListIpRoutesResult> instance
+
+  Lists the address blocks that you have added to a directory.
+
+
 =head2 ListTagsForResource(ResourceId => Str, [Limit => Int, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::DS::ListTagsForResource>
@@ -523,7 +561,16 @@ to an Impaired or Inoperable status. You also receive a notification
 when the directory returns to an Active status.
 
 
-=head2 RemoveTagsFromResource(ResourceId => Str, TagKeys => ArrayRef[Str])
+=head2 RemoveIpRoutes(CidrIps => ArrayRef[Str|Undef], DirectoryId => Str)
+
+Each argument is described in detail in: L<Paws::DS::RemoveIpRoutes>
+
+Returns: a L<Paws::DS::RemoveIpRoutesResult> instance
+
+  Removes IP address blocks from a directory.
+
+
+=head2 RemoveTagsFromResource(ResourceId => Str, TagKeys => ArrayRef[Str|Undef])
 
 Each argument is described in detail in: L<Paws::DS::RemoveTagsFromResource>
 
@@ -550,7 +597,7 @@ B<DirectoryDescription.Stage> value changes to C<Active>, the restore
 operation is complete.
 
 
-=head2 UpdateConditionalForwarder(DirectoryId => Str, DnsIpAddrs => ArrayRef[Str], RemoteDomainName => Str)
+=head2 UpdateConditionalForwarder(DirectoryId => Str, DnsIpAddrs => ArrayRef[Str|Undef], RemoteDomainName => Str)
 
 Each argument is described in detail in: L<Paws::DS::UpdateConditionalForwarder>
 

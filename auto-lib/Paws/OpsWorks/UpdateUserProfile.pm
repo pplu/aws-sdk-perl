@@ -45,7 +45,7 @@ Settings page. For more information, see Managing User Permissions.
 
 =head2 B<REQUIRED> IamUserArn => Str
 
-The user IAM ARN.
+The user IAM ARN. This can also be a federated user's ARN.
 
 
 

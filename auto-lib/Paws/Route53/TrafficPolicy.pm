@@ -36,39 +36,46 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Route53::Tr
 
 =head1 DESCRIPTION
 
-This class has no description
+A complex type that contains settings for a traffic policy.
 
 =head1 ATTRIBUTES
 
 
 =head2 Comment => Str
 
-  
+  The comment that you specify in the C<CreateTrafficPolicy> request, if
+any.
 
 
 =head2 B<REQUIRED> Document => Str
 
-  
+  The definition of a traffic policy in JSON format. You specify the JSON
+document to use for a new traffic policy in the C<CreateTrafficPolicy>
+request. For more information about the JSON format, see Traffic Policy
+Document Format.
 
 
 =head2 B<REQUIRED> Id => Str
 
-  
+  The ID that Amazon Route 53 assigned to a traffic policy when you
+created it.
 
 
 =head2 B<REQUIRED> Name => Str
 
-  
+  The name that you specified when you created the traffic policy.
 
 
 =head2 B<REQUIRED> Type => Str
 
-  
+  The DNS type of the resource record sets that Amazon Route 53 creates
+when you use a traffic policy to create a traffic policy instance.
 
 
 =head2 B<REQUIRED> Version => Int
 
-  
+  The version number that Amazon Route 53 assigns to a traffic policy.
+For a new traffic policy, the value of C<Version> is always 1.
 
 
 

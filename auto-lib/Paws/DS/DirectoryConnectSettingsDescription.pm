@@ -1,10 +1,10 @@
 package Paws::DS::DirectoryConnectSettingsDescription;
   use Moose;
-  has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str]');
-  has ConnectIps => (is => 'ro', isa => 'ArrayRef[Str]');
+  has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has ConnectIps => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has CustomerUserName => (is => 'ro', isa => 'Str');
   has SecurityGroupId => (is => 'ro', isa => 'Str');
-  has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has VpcId => (is => 'ro', isa => 'Str');
 1;
 
@@ -41,12 +41,12 @@ Contains information about an AD Connector directory.
 =head1 ATTRIBUTES
 
 
-=head2 AvailabilityZones => ArrayRef[Str]
+=head2 AvailabilityZones => ArrayRef[Str|Undef]
 
   A list of the Availability Zones that the directory is in.
 
 
-=head2 ConnectIps => ArrayRef[Str]
+=head2 ConnectIps => ArrayRef[Str|Undef]
 
   The IP addresses of the AD Connector servers.
 
@@ -61,7 +61,7 @@ Contains information about an AD Connector directory.
   The security group identifier for the AD Connector directory.
 
 
-=head2 SubnetIds => ArrayRef[Str]
+=head2 SubnetIds => ArrayRef[Str|Undef]
 
   A list of subnet identifiers in the VPC that the AD connector is in.
 

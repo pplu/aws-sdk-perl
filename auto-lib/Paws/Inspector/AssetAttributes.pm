@@ -4,7 +4,7 @@ package Paws::Inspector::AssetAttributes;
   has AmiId => (is => 'ro', isa => 'Str', xmlname => 'amiId', request_name => 'amiId', traits => ['Unwrapped','NameInRequest']);
   has AutoScalingGroup => (is => 'ro', isa => 'Str', xmlname => 'autoScalingGroup', request_name => 'autoScalingGroup', traits => ['Unwrapped','NameInRequest']);
   has Hostname => (is => 'ro', isa => 'Str', xmlname => 'hostname', request_name => 'hostname', traits => ['Unwrapped','NameInRequest']);
-  has Ipv4Addresses => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'ipv4Addresses', request_name => 'ipv4Addresses', traits => ['Unwrapped','NameInRequest']);
+  has Ipv4Addresses => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'ipv4Addresses', request_name => 'ipv4Addresses', traits => ['Unwrapped','NameInRequest']);
   has SchemaVersion => (is => 'ro', isa => 'Int', xmlname => 'schemaVersion', request_name => 'schemaVersion', traits => ['Unwrapped','NameInRequest'], required => 1);
 1;
 
@@ -65,7 +65,7 @@ generated.
   The hostname of the EC2 instance where the finding is generated.
 
 
-=head2 Ipv4Addresses => ArrayRef[Str]
+=head2 Ipv4Addresses => ArrayRef[Str|Undef]
 
   The list of IP v4 addresses of the EC2 instance where the finding is
 generated.

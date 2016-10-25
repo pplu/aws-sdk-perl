@@ -2,7 +2,7 @@ package Paws::SSM::DocumentIdentifier;
   use Moose;
   has Name => (is => 'ro', isa => 'Str');
   has Owner => (is => 'ro', isa => 'Str');
-  has PlatformTypes => (is => 'ro', isa => 'ArrayRef[Str]');
+  has PlatformTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 1;
 
 ### main pod documentation begin ###
@@ -48,7 +48,7 @@ Describes the name of an SSM document.
   The AWS user account of the person who created the document.
 
 
-=head2 PlatformTypes => ArrayRef[Str]
+=head2 PlatformTypes => ArrayRef[Str|Undef]
 
   The operating system platform.
 

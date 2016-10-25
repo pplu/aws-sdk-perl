@@ -1,5 +1,4 @@
 package Paws::IoT;
-  warn "Paws::IoT is not stable / supported / entirely developed";
   use Moose;
   sub service { 'iot' }
   sub version { '2015-05-28' }
@@ -59,6 +58,11 @@ package Paws::IoT;
     my $call_object = $self->new_with_coercions('Paws::IoT::CreateThing', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateThingType {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::CreateThingType', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateTopicRule {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::CreateTopicRule', @_);
@@ -94,9 +98,19 @@ package Paws::IoT;
     my $call_object = $self->new_with_coercions('Paws::IoT::DeleteThing', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteThingType {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::DeleteThingType', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteTopicRule {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::DeleteTopicRule', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeprecateThingType {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::DeprecateThingType', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeCACertificate {
@@ -117,6 +131,11 @@ package Paws::IoT;
   sub DescribeThing {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::DescribeThing', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeThingType {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::DescribeThingType', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DetachPrincipalPolicy {
@@ -179,6 +198,11 @@ package Paws::IoT;
     my $call_object = $self->new_with_coercions('Paws::IoT::ListCertificatesByCA', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListOutgoingCertificates {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::ListOutgoingCertificates', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListPolicies {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::ListPolicies', @_);
@@ -212,6 +236,11 @@ package Paws::IoT;
   sub ListThings {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::ListThings', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListThingTypes {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::ListThingTypes', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListTopicRules {
@@ -270,7 +299,7 @@ package Paws::IoT;
     return $self->caller->do_call($self, $call_object);
   }
 
-  sub operations { qw/AcceptCertificateTransfer AttachPrincipalPolicy AttachThingPrincipal CancelCertificateTransfer CreateCertificateFromCsr CreateKeysAndCertificate CreatePolicy CreatePolicyVersion CreateThing CreateTopicRule DeleteCACertificate DeleteCertificate DeletePolicy DeletePolicyVersion DeleteRegistrationCode DeleteThing DeleteTopicRule DescribeCACertificate DescribeCertificate DescribeEndpoint DescribeThing DetachPrincipalPolicy DetachThingPrincipal DisableTopicRule EnableTopicRule GetLoggingOptions GetPolicy GetPolicyVersion GetRegistrationCode GetTopicRule ListCACertificates ListCertificates ListCertificatesByCA ListPolicies ListPolicyPrincipals ListPolicyVersions ListPrincipalPolicies ListPrincipalThings ListThingPrincipals ListThings ListTopicRules RegisterCACertificate RegisterCertificate RejectCertificateTransfer ReplaceTopicRule SetDefaultPolicyVersion SetLoggingOptions TransferCertificate UpdateCACertificate UpdateCertificate UpdateThing / }
+  sub operations { qw/AcceptCertificateTransfer AttachPrincipalPolicy AttachThingPrincipal CancelCertificateTransfer CreateCertificateFromCsr CreateKeysAndCertificate CreatePolicy CreatePolicyVersion CreateThing CreateThingType CreateTopicRule DeleteCACertificate DeleteCertificate DeletePolicy DeletePolicyVersion DeleteRegistrationCode DeleteThing DeleteThingType DeleteTopicRule DeprecateThingType DescribeCACertificate DescribeCertificate DescribeEndpoint DescribeThing DescribeThingType DetachPrincipalPolicy DetachThingPrincipal DisableTopicRule EnableTopicRule GetLoggingOptions GetPolicy GetPolicyVersion GetRegistrationCode GetTopicRule ListCACertificates ListCertificates ListCertificatesByCA ListOutgoingCertificates ListPolicies ListPolicyPrincipals ListPolicyVersions ListPrincipalPolicies ListPrincipalThings ListThingPrincipals ListThings ListThingTypes ListTopicRules RegisterCACertificate RegisterCertificate RejectCertificateTransfer ReplaceTopicRule SetDefaultPolicyVersion SetLoggingOptions TransferCertificate UpdateCACertificate UpdateCertificate UpdateThing / }
 
 1;
 
@@ -457,13 +486,22 @@ version that is in effect for the certificates to which the policy is
 attached).
 
 
-=head2 CreateThing(ThingName => Str, [AttributePayload => L<Paws::IoT::AttributePayload>])
+=head2 CreateThing(ThingName => Str, [AttributePayload => L<Paws::IoT::AttributePayload>, ThingTypeName => Str])
 
 Each argument is described in detail in: L<Paws::IoT::CreateThing>
 
 Returns: a L<Paws::IoT::CreateThingResponse> instance
 
-  Creates a thing in the Thing Registry.
+  Creates a thing record in the thing registry.
+
+
+=head2 CreateThingType(ThingTypeName => Str, [ThingTypeProperties => L<Paws::IoT::ThingTypeProperties>])
+
+Each argument is described in detail in: L<Paws::IoT::CreateThingType>
+
+Returns: a L<Paws::IoT::CreateThingTypeResponse> instance
+
+  Creates a new thing type.
 
 
 =head2 CreateTopicRule(RuleName => Str, TopicRulePayload => L<Paws::IoT::TopicRulePayload>)
@@ -542,13 +580,27 @@ Returns: a L<Paws::IoT::DeleteRegistrationCodeResponse> instance
   Deletes a CA certificate registration code.
 
 
-=head2 DeleteThing(ThingName => Str)
+=head2 DeleteThing(ThingName => Str, [ExpectedVersion => Int])
 
 Each argument is described in detail in: L<Paws::IoT::DeleteThing>
 
 Returns: a L<Paws::IoT::DeleteThingResponse> instance
 
-  Deletes the specified thing from the Thing Registry.
+  Deletes the specified thing.
+
+
+=head2 DeleteThingType(ThingTypeName => Str)
+
+Each argument is described in detail in: L<Paws::IoT::DeleteThingType>
+
+Returns: a L<Paws::IoT::DeleteThingTypeResponse> instance
+
+  Deletes the specified thing type . You cannot delete a thing type if it
+has things associated with it. To delete a thing type, first mark it as
+deprecated by calling DeprecateThingType, then remove any associated
+things by calling UpdateThing to change the thing type on any
+associated thing, and finally use DeleteThingType to delete the thing
+type.
 
 
 =head2 DeleteTopicRule(RuleName => Str)
@@ -558,6 +610,16 @@ Each argument is described in detail in: L<Paws::IoT::DeleteTopicRule>
 Returns: nothing
 
   Deletes the specified rule.
+
+
+=head2 DeprecateThingType(ThingTypeName => Str, [UndoDeprecate => Bool])
+
+Each argument is described in detail in: L<Paws::IoT::DeprecateThingType>
+
+Returns: a L<Paws::IoT::DeprecateThingTypeResponse> instance
+
+  Deprecates a thing type. You can not associate new things with
+deprecated thing type.
 
 
 =head2 DescribeCACertificate(CertificateId => Str)
@@ -594,6 +656,15 @@ Each argument is described in detail in: L<Paws::IoT::DescribeThing>
 Returns: a L<Paws::IoT::DescribeThingResponse> instance
 
   Gets information about the specified thing.
+
+
+=head2 DescribeThingType(ThingTypeName => Str)
+
+Each argument is described in detail in: L<Paws::IoT::DescribeThingType>
+
+Returns: a L<Paws::IoT::DescribeThingTypeResponse> instance
+
+  Gets information about the specified thing type.
 
 
 =head2 DetachPrincipalPolicy(PolicyName => Str, Principal => Str)
@@ -712,6 +783,15 @@ Returns: a L<Paws::IoT::ListCertificatesByCAResponse> instance
   List the device certificates signed by the specified CA certificate.
 
 
+=head2 ListOutgoingCertificates([AscendingOrder => Bool, Marker => Str, PageSize => Int])
+
+Each argument is described in detail in: L<Paws::IoT::ListOutgoingCertificates>
+
+Returns: a L<Paws::IoT::ListOutgoingCertificatesResponse> instance
+
+  Lists certificates that are being transfered but not yet accepted.
+
+
 =head2 ListPolicies([AscendingOrder => Bool, Marker => Str, PageSize => Int])
 
 Each argument is described in detail in: L<Paws::IoT::ListPolicies>
@@ -768,15 +848,25 @@ Returns: a L<Paws::IoT::ListThingPrincipalsResponse> instance
   Lists the principals associated with the specified thing.
 
 
-=head2 ListThings([AttributeName => Str, AttributeValue => Str, MaxResults => Int, NextToken => Str])
+=head2 ListThings([AttributeName => Str, AttributeValue => Str, MaxResults => Int, NextToken => Str, ThingTypeName => Str])
 
 Each argument is described in detail in: L<Paws::IoT::ListThings>
 
 Returns: a L<Paws::IoT::ListThingsResponse> instance
 
-  Lists your things. You can pass an AttributeName or AttributeValue to
-filter your things (for example, "ListThings where AttributeName=Color
-and AttributeValue=Red").
+  Lists your things. Use the B<attributeName> and B<attributeValue>
+parameters to filter your things. For example, calling C<ListThings>
+with attributeName=Color and attributeValue=Red retrieves all things in
+the registry that contain an attribute B<Color> with the value B<Red>.
+
+
+=head2 ListThingTypes([MaxResults => Int, NextToken => Str, ThingTypeName => Str])
+
+Each argument is described in detail in: L<Paws::IoT::ListThingTypes>
+
+Returns: a L<Paws::IoT::ListThingTypesResponse> instance
+
+  Lists the existing thing types.
 
 
 =head2 ListTopicRules([MaxResults => Int, NextToken => Str, RuleDisabled => Bool, Topic => Str])
@@ -788,7 +878,7 @@ Returns: a L<Paws::IoT::ListTopicRulesResponse> instance
   Lists the rules for the specific topic.
 
 
-=head2 RegisterCACertificate(CaCertificate => Str, VerificationCertificate => Str, [SetAsActive => Bool])
+=head2 RegisterCACertificate(CaCertificate => Str, VerificationCertificate => Str, [AllowAutoRegistration => Bool, SetAsActive => Bool])
 
 Each argument is described in detail in: L<Paws::IoT::RegisterCACertificate>
 
@@ -804,7 +894,7 @@ certificate when you register your device certificates with the
 RegisterCertificate API.
 
 
-=head2 RegisterCertificate(CertificatePem => Str, [CaCertificatePem => Str, SetAsActive => Bool])
+=head2 RegisterCertificate(CertificatePem => Str, [CaCertificatePem => Str, SetAsActive => Bool, Status => Str])
 
 Each argument is described in detail in: L<Paws::IoT::RegisterCertificate>
 
@@ -887,7 +977,7 @@ The certificate must not have any policies attached to it. You can use
 the DetachPrincipalPolicy API to detach them.
 
 
-=head2 UpdateCACertificate(CertificateId => Str, NewStatus => Str)
+=head2 UpdateCACertificate(CertificateId => Str, [NewAutoRegistrationStatus => Str, NewStatus => Str])
 
 Each argument is described in detail in: L<Paws::IoT::UpdateCACertificate>
 
@@ -913,7 +1003,7 @@ The ACTIVE state is required to authenticate devices connecting to AWS
 IoT using a certificate.
 
 
-=head2 UpdateThing(AttributePayload => L<Paws::IoT::AttributePayload>, ThingName => Str)
+=head2 UpdateThing(ThingName => Str, [AttributePayload => L<Paws::IoT::AttributePayload>, ExpectedVersion => Int, RemoveThingType => Bool, ThingTypeName => Str])
 
 Each argument is described in detail in: L<Paws::IoT::UpdateThing>
 

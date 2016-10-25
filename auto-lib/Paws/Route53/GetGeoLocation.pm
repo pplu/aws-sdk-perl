@@ -19,44 +19,90 @@ package Paws::Route53::GetGeoLocation;
 
 =head1 NAME
 
-Paws::Route53::GetGeoLocationResponse
+Paws::Route53::GetGeoLocation - Arguments for method GetGeoLocation on Paws::Route53
+
+=head1 DESCRIPTION
+
+This class represents the parameters used for calling the method GetGeoLocation on the 
+Amazon Route 53 service. Use the attributes of this class
+as arguments to method GetGeoLocation.
+
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetGeoLocation.
+
+As an example:
+
+  $service_obj->GetGeoLocation(Att1 => $value1, Att2 => $value2, ...);
+
+Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 
 =head1 ATTRIBUTES
 
 
 =head2 ContinentCode => Str
 
-The code for a continent geo location. Note: only continent locations
-have a continent code.
+Amazon Route 53 supports the following continent codes:
 
-Valid values: C<AF> | C<AN> | C<AS> | C<EU> | C<OC> | C<NA> | C<SA>
+=over
 
-Constraint: Specifying C<ContinentCode> with either C<CountryCode> or
-C<SubdivisionCode> returns an C<InvalidInput> error.
+=item *
+
+B<AF>: Africa
+
+=item *
+
+B<AN>: Antarctica
+
+=item *
+
+B<AS>: Asia
+
+=item *
+
+B<EU>: Europe
+
+=item *
+
+B<OC>: Oceania
+
+=item *
+
+B<NA>: North America
+
+=item *
+
+B<SA>: South America
+
+=back
+
 
 
 
 =head2 CountryCode => Str
 
-The code for a country geo location. The default location uses '*' for
-the country code and will match all locations that are not matched by a
-geo location.
-
-The default geo location uses a C<*> for the country code. All other
-country codes follow the ISO 3166 two-character code.
+Amazon Route 53 uses the two-letter country codes that are specified in
+ISO standard 3166-1 alpha-2.
 
 
 
 =head2 SubdivisionCode => Str
 
-The code for a country's subdivision (e.g., a province of Canada). A
-subdivision code is only valid with the appropriate country code.
-
-Constraint: Specifying C<SubdivisionCode> without C<CountryCode>
-returns an C<InvalidInput> error.
-
+Amazon Route 53 uses the one- to three-letter subdivision codes that
+are specified in ISO standard 3166-1 alpha-2. Amazon Route 53 doesn't
+support subdivision codes for all countries. If you specify
+C<SubdivisionCode>, you must also specify C<CountryCode>.
 
 
+
+
+=head1 SEE ALSO
+
+This class forms part of L<Paws>, documenting arguments for method GetGeoLocation in L<Paws::Route53>
+
+=head1 BUGS and CONTRIBUTIONS
+
+The source code is located here: https://github.com/pplu/aws-sdk-perl
+
+Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
 
 =cut
 

@@ -1,6 +1,7 @@
 package Paws::GameLift::GameSession;
   use Moose;
   has CreationTime => (is => 'ro', isa => 'Str');
+  has CreatorId => (is => 'ro', isa => 'Str');
   has CurrentPlayerSessionCount => (is => 'ro', isa => 'Int');
   has FleetId => (is => 'ro', isa => 'Str');
   has GameProperties => (is => 'ro', isa => 'ArrayRef[Paws::GameLift::GameProperty]');
@@ -49,9 +50,16 @@ Properties describing a game session.
 
 =head2 CreationTime => Str
 
-  Time stamp indicating when this object was created. Format is an
-integer representing the number of seconds since the Unix epoch (Unix
-time).
+  Time stamp indicating when this data object was created. Format is a
+number expressed in Unix time as milliseconds (ex: "1469498468.057".
+
+
+=head2 CreatorId => Str
+
+  Player ID of the person or entity that created the game session. This
+ID is used to enforce a resource protection policy (if one exists) that
+limits the number of concurrent active game sessions one player can
+have.
 
 
 =head2 CurrentPlayerSessionCount => Int
@@ -71,7 +79,12 @@ time).
 
 =head2 GameSessionId => Str
 
-  Unique identifier for a game session.
+  Unique identifier for a game session. Game session ID format is as
+follows:
+"arn:aws:gamelift:E<lt>regionE<gt>::gamesession/fleet-E<lt>fleet
+IDE<gt>/E<lt>ID stringE<gt>". The value of E<lt>ID stringE<gt> is
+either a custom ID string (if one was specified when the game session
+was created) an auto-generated string.
 
 
 =head2 IpAddress => Str
@@ -105,14 +118,13 @@ process, an app needs both the IP address and port number.
 =head2 Status => Str
 
   Current status of the game session. A game session must be in an
-C<ACTIVE> state to have player sessions.
+C<ACTIVE> status to have player sessions.
 
 
 =head2 TerminationTime => Str
 
-  Time stamp indicating when this fleet was terminated. Format is an
-integer representing the number of seconds since the Unix epoch (Unix
-time).
+  Time stamp indicating when this data object was terminated. Format is a
+number expressed in Unix time as milliseconds (ex: "1469498468.057".
 
 
 

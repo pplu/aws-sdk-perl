@@ -8,6 +8,7 @@ package Paws::RDS::DBInstance;
   has CharacterSetName => (is => 'ro', isa => 'Str');
   has CopyTagsToSnapshot => (is => 'ro', isa => 'Bool');
   has DBClusterIdentifier => (is => 'ro', isa => 'Str');
+  has DBInstanceArn => (is => 'ro', isa => 'Str');
   has DBInstanceClass => (is => 'ro', isa => 'Str');
   has DBInstanceIdentifier => (is => 'ro', isa => 'Str');
   has DbInstancePort => (is => 'ro', isa => 'Int');
@@ -37,13 +38,14 @@ package Paws::RDS::DBInstance;
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
   has PromotionTier => (is => 'ro', isa => 'Int');
   has PubliclyAccessible => (is => 'ro', isa => 'Bool');
-  has ReadReplicaDBInstanceIdentifiers => (is => 'ro', isa => 'ArrayRef[Str]');
+  has ReadReplicaDBInstanceIdentifiers => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has ReadReplicaSourceDBInstanceIdentifier => (is => 'ro', isa => 'Str');
   has SecondaryAvailabilityZone => (is => 'ro', isa => 'Str');
   has StatusInfos => (is => 'ro', isa => 'ArrayRef[Paws::RDS::DBInstanceStatusInfo]');
   has StorageEncrypted => (is => 'ro', isa => 'Bool');
   has StorageType => (is => 'ro', isa => 'Str');
   has TdeCredentialArn => (is => 'ro', isa => 'Str');
+  has Timezone => (is => 'ro', isa => 'Str');
   has VpcSecurityGroups => (is => 'ro', isa => 'ArrayRef[Paws::RDS::VpcSecurityGroupMembership]');
 1;
 
@@ -143,6 +145,11 @@ the DB instance.
 
   If the DB instance is a member of a DB cluster, contains the name of
 the DB cluster that the DB instance is a member of.
+
+
+=head2 DBInstanceArn => Str
+
+  The Amazon Resource Name (ARN) for the DB instance.
 
 
 =head2 DBInstanceClass => Str
@@ -357,7 +364,7 @@ as part of the request and the PubliclyAccessible value has not been
 set, the DB instance will be private.
 
 
-=head2 ReadReplicaDBInstanceIdentifiers => ArrayRef[Str]
+=head2 ReadReplicaDBInstanceIdentifiers => ArrayRef[Str|Undef]
 
   Contains one or more identifiers of the Read Replicas associated with
 this DB instance.
@@ -393,13 +400,20 @@ this will be blank.
 
 =head2 TdeCredentialArn => Str
 
-  The ARN from the Key Store with which the instance is associated for
+  The ARN from the key store with which the instance is associated for
 TDE encryption.
+
+
+=head2 Timezone => Str
+
+  The time zone of the DB instance. In most cases, the C<Timezone>
+element is empty. C<Timezone> content appears only for Microsoft SQL
+Server DB instances that were created with a time zone specified.
 
 
 =head2 VpcSecurityGroups => ArrayRef[L<Paws::RDS::VpcSecurityGroupMembership>]
 
-  Provides List of VPC security group elements that the DB instance
+  Provides a list of VPC security group elements that the DB instance
 belongs to.
 
 

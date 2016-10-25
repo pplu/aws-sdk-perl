@@ -1,7 +1,7 @@
 
 package Paws::EC2::DescribeDhcpOptions;
   use Moose;
-  has DhcpOptionsIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'DhcpOptionsId' );
+  has DhcpOptionsIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'DhcpOptionsId' );
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has Filters => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
 
@@ -35,7 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 DhcpOptionsIds => ArrayRef[Str]
+=head2 DhcpOptionsIds => ArrayRef[Str|Undef]
 
 The IDs of one or more DHCP options sets.
 

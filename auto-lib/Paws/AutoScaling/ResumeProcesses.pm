@@ -2,7 +2,7 @@
 package Paws::AutoScaling::ResumeProcesses;
   use Moose;
   has AutoScalingGroupName => (is => 'ro', isa => 'Str', required => 1);
-  has ScalingProcesses => (is => 'ro', isa => 'ArrayRef[Str]');
+  has ScalingProcesses => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
   use MooseX::ClassAttribute;
 
@@ -40,9 +40,10 @@ The name or Amazon Resource Name (ARN) of the Auto Scaling group.
 
 
 
-=head2 ScalingProcesses => ArrayRef[Str]
+=head2 ScalingProcesses => ArrayRef[Str|Undef]
 
-One or more of the following processes:
+One or more of the following processes. If you omit this parameter, all
+processes are specified.
 
 =over
 

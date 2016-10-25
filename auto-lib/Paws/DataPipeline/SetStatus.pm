@@ -1,7 +1,7 @@
 
 package Paws::DataPipeline::SetStatus;
   use Moose;
-  has ObjectIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'objectIds' , required => 1);
+  has ObjectIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'objectIds' , required => 1);
   has PipelineId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'pipelineId' , required => 1);
   has Status => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'status' , required => 1);
 
@@ -35,7 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> ObjectIds => ArrayRef[Str]
+=head2 B<REQUIRED> ObjectIds => ArrayRef[Str|Undef]
 
 The IDs of the objects. The corresponding objects can be either
 physical or components, but not a mix of both types.

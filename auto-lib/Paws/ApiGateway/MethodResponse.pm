@@ -26,14 +26,21 @@ as the key and a Model name as the value.
 
 =head2 ResponseParameters => L<Paws::ApiGateway::MapOfStringToBoolean>
 
-Represents response parameters that can be sent back to the caller by
-Amazon API Gateway. Response parameters are represented as a key/value
-map, with a destination as the key and a boolean flag as the value,
-which is used to specify whether the parameter is required. A
-destination must match the pattern C<method.response.header.{name}>,
-where C<name> is a valid, unique header name. Destinations specified
-here are available to the integration for mapping from integration
-response parameters.
+A key-value map specifying required or optional response parameters
+that Amazon API Gateway can send back to the caller. A key defines a
+method response header and the value specifies whether the associated
+method response header is required or not. The expression of the key
+must match the pattern C<method.response.header.{name}>, where C<name>
+is a valid and unique header name. Amazon API Gateway passes certain
+integration response data to the method response headers specified here
+according to the mapping you prescribe in the API's
+IntegrationResponse. The integration response data that can be mapped
+include an integration response header expressed in
+C<integration.response.header.{name}>, a static value enclosed within a
+pair of single quotes (e.g., C<'application/json'>), or a JSON
+expression from the back-end response payload in the form of
+C<integration.response.body.{JSON-expression}>, where
+C<JSON-expression> is a valid JSON expression without the C<$> prefix.)
 
 
 

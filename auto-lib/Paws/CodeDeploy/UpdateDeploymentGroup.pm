@@ -1,8 +1,10 @@
 
 package Paws::CodeDeploy::UpdateDeploymentGroup;
   use Moose;
+  has AlarmConfiguration => (is => 'ro', isa => 'Paws::CodeDeploy::AlarmConfiguration', traits => ['NameInRequest'], request_name => 'alarmConfiguration' );
   has ApplicationName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'applicationName' , required => 1);
-  has AutoScalingGroups => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'autoScalingGroups' );
+  has AutoRollbackConfiguration => (is => 'ro', isa => 'Paws::CodeDeploy::AutoRollbackConfiguration', traits => ['NameInRequest'], request_name => 'autoRollbackConfiguration' );
+  has AutoScalingGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'autoScalingGroups' );
   has CurrentDeploymentGroupName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'currentDeploymentGroupName' , required => 1);
   has DeploymentConfigName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'deploymentConfigName' );
   has Ec2TagFilters => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::EC2TagFilter]', traits => ['NameInRequest'], request_name => 'ec2TagFilters' );
@@ -41,13 +43,27 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
+=head2 AlarmConfiguration => L<Paws::CodeDeploy::AlarmConfiguration>
+
+Information to add or change about Amazon CloudWatch alarms when the
+deployment group is updated.
+
+
+
 =head2 B<REQUIRED> ApplicationName => Str
 
 The application name corresponding to the deployment group to update.
 
 
 
-=head2 AutoScalingGroups => ArrayRef[Str]
+=head2 AutoRollbackConfiguration => L<Paws::CodeDeploy::AutoRollbackConfiguration>
+
+Information for an automatic rollback configuration that is added or
+changed when a deployment group is updated.
+
+
+
+=head2 AutoScalingGroups => ArrayRef[Str|Undef]
 
 The replacement list of Auto Scaling groups to be included in the
 deployment group, if you want to change them. To keep the Auto Scaling
@@ -100,7 +116,8 @@ A replacement ARN for the service role, if you want to change it.
 =head2 TriggerConfigurations => ArrayRef[L<Paws::CodeDeploy::TriggerConfig>]
 
 Information about triggers to change when the deployment group is
-updated.
+updated. For examples, see Modify Triggers in an AWS CodeDeploy
+Deployment Group in the AWS CodeDeploy User Guide.
 
 
 

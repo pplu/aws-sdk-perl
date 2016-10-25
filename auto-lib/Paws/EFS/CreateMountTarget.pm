@@ -3,7 +3,7 @@ package Paws::EFS::CreateMountTarget;
   use Moose;
   has FileSystemId => (is => 'ro', isa => 'Str', required => 1);
   has IpAddress => (is => 'ro', isa => 'Str');
-  has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Str]');
+  has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has SubnetId => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -50,7 +50,7 @@ Valid IPv4 address within the address range of the specified subnet.
 
 
 
-=head2 SecurityGroups => ArrayRef[Str]
+=head2 SecurityGroups => ArrayRef[Str|Undef]
 
 Up to five VPC security group IDs, of the form C<sg-xxxxxxxx>. These
 must be for the same VPC as subnet specified.

@@ -53,11 +53,15 @@ the following fields in CloudFront access logs:
 
 =over
 
-=item * C<c-ip>, if the viewer did not use an HTTP proxy or a load
-balancer to send the request
+=item *
 
-=item * C<x-forwarded-for>, if the viewer did use an HTTP proxy or a
-load balancer to send the request
+C<c-ip>, if the viewer did not use an HTTP proxy or a load balancer to
+send the request
+
+=item *
+
+C<x-forwarded-for>, if the viewer did use an HTTP proxy or a load
+balancer to send the request
 
 =back
 

@@ -53,13 +53,19 @@ revision of an deployment group:
 
 =over
 
-=item * include: List revisions that are target revisions of a
+=item *
+
+include: List revisions that are target revisions of a deployment
+group.
+
+=item *
+
+exclude: Do not list revisions that are target revisions of a
 deployment group.
 
-=item * exclude: Do not list revisions that are target revisions of a
-deployment group.
+=item *
 
-=item * ignore: List all revisions.
+ignore: List all revisions.
 
 =back
 
@@ -95,14 +101,20 @@ The column name to use to sort the list results:
 
 =over
 
-=item * registerTime: Sort by the time the revisions were registered
-with AWS CodeDeploy.
+=item *
 
-=item * firstUsedTime: Sort by the time the revisions were first used
-in a deployment.
+registerTime: Sort by the time the revisions were registered with AWS
+CodeDeploy.
 
-=item * lastUsedTime: Sort by the time the revisions were last used in
-a deployment.
+=item *
+
+firstUsedTime: Sort by the time the revisions were first used in a
+deployment.
+
+=item *
+
+lastUsedTime: Sort by the time the revisions were last used in a
+deployment.
 
 =back
 
@@ -117,9 +129,13 @@ The order in which to sort the list results:
 
 =over
 
-=item * ascending: ascending order.
+=item *
 
-=item * descending: descending order.
+ascending: ascending order.
+
+=item *
+
+descending: descending order.
 
 =back
 

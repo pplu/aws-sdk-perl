@@ -17,7 +17,7 @@ Paws::EC2::DescribeHostsResult
 
 =head2 Hosts => ArrayRef[L<Paws::EC2::Host>]
 
-Information about the Dedicated hosts.
+Information about the Dedicated Hosts.
 
 
 

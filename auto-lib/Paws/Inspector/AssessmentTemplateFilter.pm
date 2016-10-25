@@ -2,7 +2,7 @@ package Paws::Inspector::AssessmentTemplateFilter;
   use Moose;
   has DurationRange => (is => 'ro', isa => 'Paws::Inspector::DurationRange', xmlname => 'durationRange', request_name => 'durationRange', traits => ['Unwrapped','NameInRequest']);
   has NamePattern => (is => 'ro', isa => 'Str', xmlname => 'namePattern', request_name => 'namePattern', traits => ['Unwrapped','NameInRequest']);
-  has RulesPackageArns => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'rulesPackageArns', request_name => 'rulesPackageArns', traits => ['Unwrapped','NameInRequest']);
+  has RulesPackageArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'rulesPackageArns', request_name => 'rulesPackageArns', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -54,7 +54,7 @@ match the value of the B<assessmentTemplateName> property of the
 AssessmentTemplate data type.
 
 
-=head2 RulesPackageArns => ArrayRef[Str]
+=head2 RulesPackageArns => ArrayRef[Str|Undef]
 
   For a record to match a filter, the values that are specified for this
 data type property must be contained in the list of values of the

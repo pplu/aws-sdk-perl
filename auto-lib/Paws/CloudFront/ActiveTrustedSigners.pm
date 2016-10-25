@@ -34,32 +34,46 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 =head1 DESCRIPTION
 
 A complex type that lists the AWS accounts, if any, that you included
-in the TrustedSigners complex type for the default cache behavior or
-for any of the other cache behaviors for this distribution. These are
-accounts that you want to allow to create signed URLs for private
+in the C<TrustedSigners> complex type for this distribution. These are
+the accounts that you want to allow to create signed URLs for private
 content.
+
+The C<Signer> complex type lists the AWS account number of the trusted
+signer or C<self> if the signer is the AWS account that created the
+distribution. The C<Signer> element also includes the IDs of any active
+CloudFront key pairs that are associated with the trusted signer's AWS
+account. If no C<KeyPairId> element appears for a C<Signer>, that
+signer can't create signed URLs.
+
+For more information, see Serving Private Content through CloudFront in
+the I<Amazon CloudFront Developer Guide>.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> Enabled => Bool
 
-  Each active trusted signer.
+  Enabled is C<true> if any of the AWS accounts listed in the
+C<TrustedSigners> complex type for this RTMP distribution have active
+CloudFront key pairs. If not, C<Enabled> is C<false>.
+
+For more information, see ActiveTrustedSigners.
 
 
 =head2 Items => ArrayRef[L<Paws::CloudFront::Signer>]
 
-  A complex type that contains one Signer complex type for each unique
-trusted signer that is specified in the TrustedSigners complex type,
-including trusted signers in the default cache behavior and in all of
-the other cache behaviors.
+  A complex type that contains one C<Signer> complex type for each
+trusted signer that is specified in the C<TrustedSigners> complex type.
+
+For more information, see ActiveTrustedSigners.
 
 
 =head2 B<REQUIRED> Quantity => Int
 
-  The number of unique trusted signers included in all cache behaviors.
-For example, if three cache behaviors all list the same three AWS
-accounts, the value of Quantity for ActiveTrustedSigners will be 3.
+  A complex type that contains one C<Signer> complex type for each
+trusted signer specified in the C<TrustedSigners> complex type.
+
+For more information, see ActiveTrustedSigners.
 
 
 

@@ -4,8 +4,12 @@ package Paws::CognitoIdp::UserPoolClientType;
   has ClientName => (is => 'ro', isa => 'Str');
   has ClientSecret => (is => 'ro', isa => 'Str');
   has CreationDate => (is => 'ro', isa => 'Str');
+  has ExplicitAuthFlows => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has LastModifiedDate => (is => 'ro', isa => 'Str');
+  has ReadAttributes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has RefreshTokenValidity => (is => 'ro', isa => 'Int');
   has UserPoolId => (is => 'ro', isa => 'Str');
+  has WriteAttributes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 1;
 
 ### main pod documentation begin ###
@@ -25,7 +29,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CognitoIdp::UserPoolClientType object:
 
-  $service_obj->Method(Att1 => { ClientId => $value, ..., UserPoolId => $value  });
+  $service_obj->Method(Att1 => { ClientId => $value, ..., WriteAttributes => $value  });
 
 =head3 Results returned from an API call
 
@@ -61,14 +65,34 @@ A user pool of the client type.
   The creation date from the user pool request of the client type.
 
 
+=head2 ExplicitAuthFlows => ArrayRef[Str|Undef]
+
+  The explicit authentication flows.
+
+
 =head2 LastModifiedDate => Str
 
   The last modified date from the user pool request of the client type.
 
 
+=head2 ReadAttributes => ArrayRef[Str|Undef]
+
+  The Read-only attributes.
+
+
+=head2 RefreshTokenValidity => Int
+
+  The validity of the refresh token.
+
+
 =head2 UserPoolId => Str
 
   The user pool ID for the user pool client.
+
+
+=head2 WriteAttributes => ArrayRef[Str|Undef]
+
+  The writeable attributes.
 
 
 

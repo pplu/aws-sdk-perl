@@ -1,8 +1,8 @@
 
 package Paws::SSM::ModifyDocumentPermission;
   use Moose;
-  has AccountIdsToAdd => (is => 'ro', isa => 'ArrayRef[Str]');
-  has AccountIdsToRemove => (is => 'ro', isa => 'ArrayRef[Str]');
+  has AccountIdsToAdd => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has AccountIdsToRemove => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has PermissionType => (is => 'ro', isa => 'Str', required => 1);
 
@@ -36,14 +36,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 AccountIdsToAdd => ArrayRef[Str]
+=head2 AccountIdsToAdd => ArrayRef[Str|Undef]
 
 The AWS user accounts that should have access to the document. The
 account IDs can either be a group of account IDs or I<All>.
 
 
 
-=head2 AccountIdsToRemove => ArrayRef[Str]
+=head2 AccountIdsToRemove => ArrayRef[Str|Undef]
 
 The AWS user accounts that should no longer have access to the
 document. The AWS user account can either be a group of account IDs or

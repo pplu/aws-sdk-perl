@@ -48,9 +48,10 @@ Describes an EC2 instance.
 
 =head2 B<REQUIRED> HealthStatus => Str
 
-  The health status of the instance. "Healthy" means that the instance is
-healthy and should remain in service. "Unhealthy" means that the
-instance is unhealthy and Auto Scaling should terminate and replace it.
+  The last reported health status of the instance. "Healthy" means that
+the instance is healthy and should remain in service. "Unhealthy" means
+that the instance is unhealthy and Auto Scaling should terminate and
+replace it.
 
 
 =head2 B<REQUIRED> InstanceId => Str

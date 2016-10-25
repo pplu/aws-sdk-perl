@@ -109,13 +109,19 @@ Possible Values:
 
 =over
 
-=item * pending-payment-This reserved node has recently been purchased,
-and the sale has been approved, but payment has not yet been confirmed.
+=item *
 
-=item * active-This reserved node is owned by the caller and is
-available for use.
+pending-payment-This reserved node has recently been purchased, and the
+sale has been approved, but payment has not yet been confirmed.
 
-=item * payment-failed-Payment failed for the purchase attempt.
+=item *
+
+active-This reserved node is owned by the caller and is available for
+use.
+
+=item *
+
+payment-failed-Payment failed for the purchase attempt.
 
 =back
 

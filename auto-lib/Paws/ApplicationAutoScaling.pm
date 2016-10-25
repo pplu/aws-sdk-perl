@@ -83,18 +83,27 @@ supported elastic AWS resources. With Application Auto Scaling, you can
 automatically scale your AWS resources, with an experience similar to
 that of Auto Scaling.
 
-At this time, Application Auto Scaling only supports scaling Amazon ECS
-services.
-
-For example, you can use Application Auto Scaling to accomplish the
-following tasks:
+Application Auto Scaling supports scaling the following AWS resources:
 
 =over
 
 =item *
 
-Define scaling policies for automatically adjusting your
-applicationE<rsquo>s resources
+Amazon ECS services
+
+=item *
+
+Amazon EC2 Spot fleet instances
+
+=back
+
+You can use Application Auto Scaling to accomplish the following tasks:
+
+=over
+
+=item *
+
+Define scaling policies for automatically adjusting your AWS resources
 
 =item *
 
@@ -158,8 +167,8 @@ created. If you are no longer using a scaling policy, you can delete it
 with this operation.
 
 Deleting a policy deletes the underlying alarm action, but does not
-delete the CloudWatch alarm, even if it no longer has an associated
-action.
+delete the CloudWatch alarm associated with the scaling policy, even if
+it no longer has an associated action.
 
 To create a new scaling policy or update an existing one, see
 PutScalingPolicy.
@@ -180,7 +189,7 @@ To create a new scalable target or update an existing one, see
 RegisterScalableTarget.
 
 
-=head2 DescribeScalableTargets(ServiceNamespace => Str, [MaxResults => Int, NextToken => Str, ResourceIds => ArrayRef[Str], ScalableDimension => Str])
+=head2 DescribeScalableTargets(ServiceNamespace => Str, [MaxResults => Int, NextToken => Str, ResourceIds => ArrayRef[Str|Undef], ScalableDimension => Str])
 
 Each argument is described in detail in: L<Paws::ApplicationAutoScaling::DescribeScalableTargets>
 
@@ -215,7 +224,7 @@ for a service namespace, see DescribeScalingPolicies. To create a new
 scaling policy or update an existing one, see PutScalingPolicy.
 
 
-=head2 DescribeScalingPolicies(ServiceNamespace => Str, [MaxResults => Int, NextToken => Str, PolicyNames => ArrayRef[Str], ResourceId => Str, ScalableDimension => Str])
+=head2 DescribeScalingPolicies(ServiceNamespace => Str, [MaxResults => Int, NextToken => Str, PolicyNames => ArrayRef[Str|Undef], ResourceId => Str, ScalableDimension => Str])
 
 Each argument is described in detail in: L<Paws::ApplicationAutoScaling::DescribeScalingPolicies>
 
@@ -261,12 +270,9 @@ Each argument is described in detail in: L<Paws::ApplicationAutoScaling::Registe
 Returns: a L<Paws::ApplicationAutoScaling::RegisterScalableTargetResponse> instance
 
   Registers or updates a scalable target. A scalable target is a resource
-that can be scaled up or down with Application Auto Scaling. After you
-have registered a scalable target, you can use this command to update
+that can be scaled out or in with Application Auto Scaling. After you
+have registered a scalable target, you can use this operation to update
 the minimum and maximum values for your scalable dimension.
-
-At this time, Application Auto Scaling only supports scaling Amazon ECS
-services.
 
 After you register a scalable target with Application Auto Scaling, you
 can create and apply scaling policies to it with PutScalingPolicy. You

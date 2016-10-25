@@ -1,8 +1,8 @@
 
 package Paws::SQS::AddPermission;
   use Moose;
-  has Actions => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
-  has AWSAccountIds => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has Actions => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
+  has AWSAccountIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
   has Label => (is => 'ro', isa => 'Str', required => 1);
   has QueueUrl => (is => 'ro', isa => 'Str', required => 1);
 
@@ -36,7 +36,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Actions => ArrayRef[Str]
+=head2 B<REQUIRED> Actions => ArrayRef[Str|Undef]
 
 The action the client wants to allow for the specified principal. The
 following are valid values: C<* | SendMessage | ReceiveMessage |
@@ -52,7 +52,7 @@ C<ChangeMessageVisibilityBatch>.
 
 
 
-=head2 B<REQUIRED> AWSAccountIds => ArrayRef[Str]
+=head2 B<REQUIRED> AWSAccountIds => ArrayRef[Str|Undef]
 
 The AWS account number of the principal who will be given permission.
 The principal must have an AWS account, but does not need to be signed

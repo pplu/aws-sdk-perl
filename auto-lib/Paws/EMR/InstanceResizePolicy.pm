@@ -1,7 +1,7 @@
 package Paws::EMR::InstanceResizePolicy;
   use Moose;
-  has InstancesToProtect => (is => 'ro', isa => 'ArrayRef[Str]');
-  has InstancesToTerminate => (is => 'ro', isa => 'ArrayRef[Str]');
+  has InstancesToProtect => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has InstancesToTerminate => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has InstanceTerminationTimeout => (is => 'ro', isa => 'Int');
 1;
 
@@ -39,13 +39,13 @@ specific instances when shrinking an instance group.
 =head1 ATTRIBUTES
 
 
-=head2 InstancesToProtect => ArrayRef[Str]
+=head2 InstancesToProtect => ArrayRef[Str|Undef]
 
   Specific list of instances to be protected when shrinking an instance
 group.
 
 
-=head2 InstancesToTerminate => ArrayRef[Str]
+=head2 InstancesToTerminate => ArrayRef[Str|Undef]
 
   Specific list of instances to be terminated when shrinking an instance
 group.

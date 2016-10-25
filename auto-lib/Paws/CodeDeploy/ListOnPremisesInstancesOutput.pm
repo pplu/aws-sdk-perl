@@ -1,7 +1,7 @@
 
 package Paws::CodeDeploy::ListOnPremisesInstancesOutput;
   use Moose;
-  has InstanceNames => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['Unwrapped'], xmlname => 'instanceNames' );
+  has InstanceNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['Unwrapped'], xmlname => 'instanceNames' );
   has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
 
 
@@ -14,7 +14,7 @@ Paws::CodeDeploy::ListOnPremisesInstancesOutput
 =head1 ATTRIBUTES
 
 
-=head2 InstanceNames => ArrayRef[Str]
+=head2 InstanceNames => ArrayRef[Str|Undef]
 
 The list of matching on-premises instance names.
 

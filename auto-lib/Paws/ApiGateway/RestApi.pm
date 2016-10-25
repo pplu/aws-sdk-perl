@@ -5,7 +5,7 @@ package Paws::ApiGateway::RestApi;
   has Description => (is => 'ro', isa => 'Str');
   has Id => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
-  has Warnings => (is => 'ro', isa => 'ArrayRef[Str]');
+  has Warnings => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
 1;
 
@@ -43,9 +43,10 @@ The API's name.
 
 
 
-=head2 Warnings => ArrayRef[Str]
+=head2 Warnings => ArrayRef[Str|Undef]
 
-
+The warning messages reported when C<failonwarnings> is turned on
+during API import.
 
 
 

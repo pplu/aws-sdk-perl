@@ -44,7 +44,7 @@ Valid values are: C<"default">, C<"host">
 
 =head2 HostId => Str
 
-The ID of the Dedicated host that the instance will have affinity with.
+The ID of the Dedicated Host that the instance will have affinity with.
 
 
 

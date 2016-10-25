@@ -3,7 +3,7 @@ package Paws::EC2::DescribeReservedInstancesModifications;
   use Moose;
   has Filters => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
   has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
-  has ReservedInstancesModificationIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'ReservedInstancesModificationId' );
+  has ReservedInstancesModificationIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'ReservedInstancesModificationId' );
 
   use MooseX::ClassAttribute;
 
@@ -113,7 +113,7 @@ The token to retrieve the next page of results.
 
 
 
-=head2 ReservedInstancesModificationIds => ArrayRef[Str]
+=head2 ReservedInstancesModificationIds => ArrayRef[Str|Undef]
 
 IDs for the submitted modification request.
 

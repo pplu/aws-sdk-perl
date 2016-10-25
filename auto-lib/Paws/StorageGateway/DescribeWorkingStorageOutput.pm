@@ -1,7 +1,7 @@
 
 package Paws::StorageGateway::DescribeWorkingStorageOutput;
   use Moose;
-  has DiskIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has DiskIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has GatewayARN => (is => 'ro', isa => 'Str');
   has WorkingStorageAllocatedInBytes => (is => 'ro', isa => 'Int');
   has WorkingStorageUsedInBytes => (is => 'ro', isa => 'Int');
@@ -16,7 +16,7 @@ Paws::StorageGateway::DescribeWorkingStorageOutput
 =head1 ATTRIBUTES
 
 
-=head2 DiskIds => ArrayRef[Str]
+=head2 DiskIds => ArrayRef[Str|Undef]
 
 An array of the gateway's local disk IDs that are configured as working
 storage. Each local disk ID is specified as a string (minimum length of

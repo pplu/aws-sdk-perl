@@ -666,7 +666,7 @@ Each argument is described in detail in: L<Paws::S3::GetBucketReplication>
 
 Returns: a L<Paws::S3::GetBucketReplicationOutput> instance
 
-  Deprecated, see the GetBucketReplicationConfiguration operation.
+  Returns the replication configuration of a bucket.
 
 
 =head2 GetBucketRequestPayment(Bucket => Str)
@@ -705,7 +705,7 @@ Returns: a L<Paws::S3::GetBucketWebsiteOutput> instance
   Returns the website configuration for a bucket.
 
 
-=head2 GetObject(Bucket => Str, Key => Str, [IfMatch => Str, IfModifiedSince => Str, IfNoneMatch => Str, IfUnmodifiedSince => Str, Range => Str, RequestPayer => Str, ResponseCacheControl => Str, ResponseContentDisposition => Str, ResponseContentEncoding => Str, ResponseContentLanguage => Str, ResponseContentType => Str, ResponseExpires => Str, SSECustomerAlgorithm => Str, SSECustomerKey => Str, SSECustomerKeyMD5 => Str, VersionId => Str])
+=head2 GetObject(Bucket => Str, Key => Str, [IfMatch => Str, IfModifiedSince => Str, IfNoneMatch => Str, IfUnmodifiedSince => Str, PartNumber => Int, Range => Str, RequestPayer => Str, ResponseCacheControl => Str, ResponseContentDisposition => Str, ResponseContentEncoding => Str, ResponseContentLanguage => Str, ResponseContentType => Str, ResponseExpires => Str, SSECustomerAlgorithm => Str, SSECustomerKey => Str, SSECustomerKeyMD5 => Str, VersionId => Str])
 
 Each argument is described in detail in: L<Paws::S3::GetObject>
 
@@ -742,7 +742,7 @@ Returns: nothing
 permission to access it.
 
 
-=head2 HeadObject(Bucket => Str, Key => Str, [IfMatch => Str, IfModifiedSince => Str, IfNoneMatch => Str, IfUnmodifiedSince => Str, Range => Str, RequestPayer => Str, SSECustomerAlgorithm => Str, SSECustomerKey => Str, SSECustomerKeyMD5 => Str, VersionId => Str])
+=head2 HeadObject(Bucket => Str, Key => Str, [IfMatch => Str, IfModifiedSince => Str, IfNoneMatch => Str, IfUnmodifiedSince => Str, PartNumber => Int, Range => Str, RequestPayer => Str, SSECustomerAlgorithm => Str, SSECustomerKey => Str, SSECustomerKeyMD5 => Str, VersionId => Str])
 
 Each argument is described in detail in: L<Paws::S3::HeadObject>
 
@@ -773,7 +773,7 @@ Returns: a L<Paws::S3::ListMultipartUploadsOutput> instance
   This operation lists in-progress multipart uploads.
 
 
-=head2 ListObjects(Bucket => Str, [Delimiter => Str, EncodingType => Str, Marker => Str, MaxKeys => Int, Prefix => Str])
+=head2 ListObjects(Bucket => Str, [Delimiter => Str, EncodingType => Str, Marker => Str, MaxKeys => Int, Prefix => Str, RequestPayer => Str])
 
 Each argument is described in detail in: L<Paws::S3::ListObjects>
 
@@ -784,7 +784,7 @@ use the request parameters as selection criteria to return a subset of
 the objects in a bucket.
 
 
-=head2 ListObjectsV2(Bucket => Str, [ContinuationToken => Str, Delimiter => Str, EncodingType => Str, FetchOwner => Bool, MaxKeys => Int, Prefix => Str, StartAfter => Str])
+=head2 ListObjectsV2(Bucket => Str, [ContinuationToken => Str, Delimiter => Str, EncodingType => Str, FetchOwner => Bool, MaxKeys => Int, Prefix => Str, RequestPayer => Str, StartAfter => Str])
 
 Each argument is described in detail in: L<Paws::S3::ListObjectsV2>
 

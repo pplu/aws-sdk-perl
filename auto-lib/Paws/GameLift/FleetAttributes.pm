@@ -4,9 +4,11 @@ package Paws::GameLift::FleetAttributes;
   has CreationTime => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has FleetId => (is => 'ro', isa => 'Str');
-  has LogPaths => (is => 'ro', isa => 'ArrayRef[Str]');
+  has LogPaths => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Name => (is => 'ro', isa => 'Str');
   has NewGameSessionProtectionPolicy => (is => 'ro', isa => 'Str');
+  has OperatingSystem => (is => 'ro', isa => 'Str');
+  has ResourceCreationLimitPolicy => (is => 'ro', isa => 'Paws::GameLift::ResourceCreationLimitPolicy');
   has ServerLaunchParameters => (is => 'ro', isa => 'Str');
   has ServerLaunchPath => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
@@ -53,9 +55,8 @@ General properties describing a fleet.
 
 =head2 CreationTime => Str
 
-  Time stamp indicating when this object was created. Format is an
-integer representing the number of seconds since the Unix epoch (Unix
-time).
+  Time stamp indicating when this data object was created. Format is a
+number expressed in Unix time as milliseconds (ex: "1469498468.057".
 
 
 =head2 Description => Str
@@ -68,7 +69,7 @@ time).
   Unique identifier for a fleet.
 
 
-=head2 LogPaths => ArrayRef[Str]
+=head2 LogPaths => ArrayRef[Str|Undef]
 
   Location of default log files. When a server process is shut down,
 Amazon GameLift captures and stores any log files in this location.
@@ -92,51 +93,84 @@ the fleet.
 
 =over
 
-=item * B<NoProtection> E<ndash> The game session can be terminated
-during a scale-down event.
+=item *
 
-=item * B<FullProtection> E<ndash> If the game session is in an
-C<ACTIVE> status, it cannot be terminated during a scale-down event.
+B<NoProtection> E<ndash> The game session can be terminated during a
+scale-down event.
+
+=item *
+
+B<FullProtection> E<ndash> If the game session is in an C<ACTIVE>
+status, it cannot be terminated during a scale-down event.
 
 =back
 
 
 
+=head2 OperatingSystem => Str
+
+  Operating system of the fleet's computing resources. A fleet's
+operating system depends on the OS specified for the build that is
+deployed on this fleet.
+
+
+=head2 ResourceCreationLimitPolicy => L<Paws::GameLift::ResourceCreationLimitPolicy>
+
+  Fleet policy to limit the number of game sessions an individual player
+can create over a span of time.
+
+
 =head2 ServerLaunchParameters => Str
 
-  Deprecated. Server launch parameters are now specified using a
-C<RuntimeConfiguration> object.
+  Game server launch parameters specified for fleets created prior to
+2016-08-04 (or AWS SDK v. 0.12.16). Server launch parameters for fleets
+created after this date are specified in the fleet's C<
+RuntimeConfiguration >.
 
 
 =head2 ServerLaunchPath => Str
 
-  Deprecated. Server launch parameters are now set using a
-C<RuntimeConfiguration> object.
+  Path to a game server executable in the fleet's build, specified for
+fleets created prior to 2016-08-04 (or AWS SDK v. 0.12.16). Server
+launch paths for fleets created after this date are specified in the
+fleet's C< RuntimeConfiguration >.
 
 
 =head2 Status => Str
 
-  Current status of the fleet. Possible fleet states include the
-following:
+  Current status of the fleet.
+
+Possible fleet statuses include the following:
 
 =over
 
-=item * B<NEW> E<ndash> A new fleet has been defined and desired
-instances is set to 1.
+=item *
 
-=item * B<DOWNLOADING/VALIDATING/BUILDING/ACTIVATING> E<ndash> GameLift
-is setting up the new fleet, creating new instances with the game build
+B<NEW> E<ndash> A new fleet has been defined and desired instances is
+set to 1.
+
+=item *
+
+B<DOWNLOADING/VALIDATING/BUILDING/ACTIVATING> E<ndash> GameLift is
+setting up the new fleet, creating new instances with the game build
 and starting server processes.
 
-=item * B<ACTIVE> E<ndash> Hosts can now accept game sessions.
+=item *
 
-=item * B<ERROR> E<ndash> An error occurred when downloading,
-validating, building, or activating the fleet.
+B<ACTIVE> E<ndash> Hosts can now accept game sessions.
 
-=item * B<DELETING> E<ndash> Hosts are responding to a delete fleet
-request.
+=item *
 
-=item * B<TERMINATED> E<ndash> The fleet no longer exists.
+B<ERROR> E<ndash> An error occurred when downloading, validating,
+building, or activating the fleet.
+
+=item *
+
+B<DELETING> E<ndash> Hosts are responding to a delete fleet request.
+
+=item *
+
+B<TERMINATED> E<ndash> The fleet no longer exists.
 
 =back
 
@@ -144,9 +178,8 @@ request.
 
 =head2 TerminationTime => Str
 
-  Time stamp indicating when this fleet was terminated. Format is an
-integer representing the number of seconds since the Unix epoch (Unix
-time).
+  Time stamp indicating when this data object was terminated. Format is a
+number expressed in Unix time as milliseconds (ex: "1469498468.057".
 
 
 

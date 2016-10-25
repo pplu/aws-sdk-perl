@@ -40,7 +40,10 @@ The name of the group to create. Do not include the path in this value.
 
 The regex pattern for this parameter is a string of characters
 consisting of upper and lowercase alphanumeric characters with no
-spaces. You can also include any of the following characters: =,.@-
+spaces. You can also include any of the following characters: =,.@-.
+The group name must be unique within the account. Group names are not
+distinguished by case. For example, you cannot create groups named both
+"ADMINS" and "admins".
 
 
 

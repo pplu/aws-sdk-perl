@@ -2,7 +2,7 @@ package Paws::CloudWatchEvents::PutEventsRequestEntry;
   use Moose;
   has Detail => (is => 'ro', isa => 'Str');
   has DetailType => (is => 'ro', isa => 'Str');
-  has Resources => (is => 'ro', isa => 'ArrayRef[Str]');
+  has Resources => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Source => (is => 'ro', isa => 'Str');
   has Time => (is => 'ro', isa => 'Str');
 1;
@@ -52,7 +52,7 @@ nested sub-objects. No constraints are imposed on its contents.
 detail.
 
 
-=head2 Resources => ArrayRef[Str]
+=head2 Resources => ArrayRef[Str|Undef]
 
   AWS resources, identified by Amazon Resource Name (ARN), which the
 event primarily concerns. Any number, including zero, may be present.

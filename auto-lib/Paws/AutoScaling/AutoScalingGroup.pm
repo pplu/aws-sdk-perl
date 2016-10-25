@@ -2,7 +2,7 @@ package Paws::AutoScaling::AutoScalingGroup;
   use Moose;
   has AutoScalingGroupARN => (is => 'ro', isa => 'Str');
   has AutoScalingGroupName => (is => 'ro', isa => 'Str', required => 1);
-  has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
   has CreatedTime => (is => 'ro', isa => 'Str', required => 1);
   has DefaultCooldown => (is => 'ro', isa => 'Int', required => 1);
   has DesiredCapacity => (is => 'ro', isa => 'Int', required => 1);
@@ -11,7 +11,7 @@ package Paws::AutoScaling::AutoScalingGroup;
   has HealthCheckType => (is => 'ro', isa => 'Str', required => 1);
   has Instances => (is => 'ro', isa => 'ArrayRef[Paws::AutoScaling::Instance]');
   has LaunchConfigurationName => (is => 'ro', isa => 'Str');
-  has LoadBalancerNames => (is => 'ro', isa => 'ArrayRef[Str]');
+  has LoadBalancerNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has MaxSize => (is => 'ro', isa => 'Int', required => 1);
   has MinSize => (is => 'ro', isa => 'Int', required => 1);
   has NewInstancesProtectedFromScaleIn => (is => 'ro', isa => 'Bool');
@@ -19,7 +19,8 @@ package Paws::AutoScaling::AutoScalingGroup;
   has Status => (is => 'ro', isa => 'Str');
   has SuspendedProcesses => (is => 'ro', isa => 'ArrayRef[Paws::AutoScaling::SuspendedProcess]');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::AutoScaling::TagDescription]');
-  has TerminationPolicies => (is => 'ro', isa => 'ArrayRef[Str]');
+  has TargetGroupARNs => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has TerminationPolicies => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has VPCZoneIdentifier => (is => 'ro', isa => 'Str');
 1;
 
@@ -66,7 +67,7 @@ Describes an Auto Scaling group.
   The name of the group.
 
 
-=head2 B<REQUIRED> AvailabilityZones => ArrayRef[Str]
+=head2 B<REQUIRED> AvailabilityZones => ArrayRef[Str|Undef]
 
   One or more Availability Zones for the group.
 
@@ -114,7 +115,7 @@ and C<ELB>.
   The name of the associated launch configuration.
 
 
-=head2 LoadBalancerNames => ArrayRef[Str]
+=head2 LoadBalancerNames => ArrayRef[Str|Undef]
 
   One or more load balancers associated with the group.
 
@@ -158,7 +159,13 @@ progress.
   The tags for the group.
 
 
-=head2 TerminationPolicies => ArrayRef[Str]
+=head2 TargetGroupARNs => ArrayRef[Str|Undef]
+
+  The Amazon Resource Names (ARN) of the target groups for your load
+balancer.
+
+
+=head2 TerminationPolicies => ArrayRef[Str|Undef]
 
   The termination policies for the group.
 

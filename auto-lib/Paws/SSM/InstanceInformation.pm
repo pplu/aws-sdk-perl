@@ -57,7 +57,7 @@ Describes a filter for a specific list of instances.
 
 =head2 AgentVersion => Str
 
-  The version of the SSM agent running on your instance.
+  The version of the SSM agent running on your Linux instance.
 
 
 =head2 ComputerName => Str

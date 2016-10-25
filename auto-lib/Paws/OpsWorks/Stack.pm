@@ -101,7 +101,7 @@ New Stack.
 stack configuration and deployment attributes. You can use custom JSON
 to override the corresponding default stack configuration attribute
 values or to pass data to recipes. The string should be in the
-following format and must escape characters such as '"':
+following format:
 
 C<"{\"key1\": \"value1\", \"key2\": \"value2\",...}">
 
@@ -158,8 +158,8 @@ VPC.
 
 =head2 Region => Str
 
-  The stack AWS region, such as "us-east-1". For more information about
-AWS regions, see Regions and Endpoints.
+  The stack AWS region, such as "ap-northeast-2". For more information
+about AWS regions, see Regions and Endpoints.
 
 
 =head2 ServiceRoleArn => Str

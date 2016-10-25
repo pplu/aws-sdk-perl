@@ -63,7 +63,7 @@ type is CUSTOM.
 
 =head2 B<REQUIRED> HttpMethod => Str
 
-Specifies the put method request's HTTP method type.
+Specifies the method request's HTTP method type.
 
 
 
@@ -77,15 +77,16 @@ as the key and a Model name as the value.
 
 =head2 RequestParameters => L<Paws::ApiGateway::MapOfStringToBoolean>
 
-Represents requests parameters that are sent with the backend request.
-Request parameters are represented as a key/value map, with a
-destination as the key and a source as the value. A source must match
-an existing method request parameter, or a static value. Static values
-must be enclosed with single quotes, and be pre-encoded based on their
-destination in the request. The destination must match the pattern
-C<integration.request.{location}.{name}>, where C<location> is either
-querystring, path, or header. C<name> must be a valid, unique parameter
-name.
+A key-value map defining required or optional method request parameters
+that can be accepted by Amazon API Gateway. A key defines a method
+request parameter name matching the pattern of
+C<method.request.{location}.{name}>, where C<location> is
+C<querystring>, C<path>, or C<header> and C<name> is a valid and unique
+parameter name. The value associated with the key is a Boolean flag
+indicating whether the parameter is required (C<true>) or optional
+(C<false>). The method request parameter names defined here are
+available in Integration to be mapped to integration request parameters
+or body-mapping templates.
 
 
 

@@ -7,11 +7,13 @@ package Paws::EC2::ReservedInstancesOffering;
   has InstanceTenancy => (is => 'ro', isa => 'Str', xmlname => 'instanceTenancy', traits => ['Unwrapped']);
   has InstanceType => (is => 'ro', isa => 'Str', xmlname => 'instanceType', traits => ['Unwrapped']);
   has Marketplace => (is => 'ro', isa => 'Bool', xmlname => 'marketplace', traits => ['Unwrapped']);
+  has OfferingClass => (is => 'ro', isa => 'Str', xmlname => 'offeringClass', traits => ['Unwrapped']);
   has OfferingType => (is => 'ro', isa => 'Str', xmlname => 'offeringType', traits => ['Unwrapped']);
   has PricingDetails => (is => 'ro', isa => 'ArrayRef[Paws::EC2::PricingDetail]', xmlname => 'pricingDetailsSet', traits => ['Unwrapped']);
   has ProductDescription => (is => 'ro', isa => 'Str', xmlname => 'productDescription', traits => ['Unwrapped']);
   has RecurringCharges => (is => 'ro', isa => 'ArrayRef[Paws::EC2::RecurringCharge]', xmlname => 'recurringCharges', traits => ['Unwrapped']);
   has ReservedInstancesOfferingId => (is => 'ro', isa => 'Str', xmlname => 'reservedInstancesOfferingId', traits => ['Unwrapped']);
+  has Scope => (is => 'ro', isa => 'Str', xmlname => 'scope', traits => ['Unwrapped']);
   has UsagePrice => (is => 'ro', isa => 'Num', xmlname => 'usagePrice', traits => ['Unwrapped']);
 1;
 
@@ -87,6 +89,13 @@ Instance Marketplace (resale) or AWS. If it's a Reserved Instance
 Marketplace offering, this is C<true>.
 
 
+=head2 OfferingClass => Str
+
+  If C<convertible> it can be exchanged for Reserved Instances of the
+same or higher monetary value, with different configurations. If
+C<standard>, it is not possible to perform an exchange.
+
+
 =head2 OfferingType => Str
 
   The Reserved Instance offering type.
@@ -109,7 +118,15 @@ Marketplace offering, this is C<true>.
 
 =head2 ReservedInstancesOfferingId => Str
 
-  The ID of the Reserved Instance offering.
+  The ID of the Reserved Instance offering. This is the offering ID used
+in GetReservedInstancesExchangeQuote to confirm that an exchange can be
+made.
+
+
+=head2 Scope => Str
+
+  Whether the Reserved Instance is applied to instances in a region or an
+Availability Zone.
 
 
 =head2 UsagePrice => Num

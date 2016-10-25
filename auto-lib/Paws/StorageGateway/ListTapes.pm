@@ -3,7 +3,7 @@ package Paws::StorageGateway::ListTapes;
   use Moose;
   has Limit => (is => 'ro', isa => 'Int');
   has Marker => (is => 'ro', isa => 'Str');
-  has TapeARNs => (is => 'ro', isa => 'ArrayRef[Str]');
+  has TapeARNs => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
   use MooseX::ClassAttribute;
 
@@ -49,7 +49,7 @@ list of tapes.
 
 
 
-=head2 TapeARNs => ArrayRef[Str]
+=head2 TapeARNs => ArrayRef[Str|Undef]
 
 
 

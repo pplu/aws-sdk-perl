@@ -1,7 +1,7 @@
 
 package Paws::SES::ListIdentityPoliciesResponse;
   use Moose;
-  has PolicyNames => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has PolicyNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
 
 1;
 
@@ -14,7 +14,7 @@ Paws::SES::ListIdentityPoliciesResponse
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> PolicyNames => ArrayRef[Str]
+=head2 B<REQUIRED> PolicyNames => ArrayRef[Str|Undef]
 
 A list of names of policies that apply to the specified identity.
 

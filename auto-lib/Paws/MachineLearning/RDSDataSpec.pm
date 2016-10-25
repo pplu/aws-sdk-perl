@@ -7,7 +7,7 @@ package Paws::MachineLearning::RDSDataSpec;
   has DataSchemaUri => (is => 'ro', isa => 'Str');
   has ResourceRole => (is => 'ro', isa => 'Str', required => 1);
   has S3StagingLocation => (is => 'ro', isa => 'Str', required => 1);
-  has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
   has SelectSqlQuery => (is => 'ro', isa => 'Str', required => 1);
   has ServiceRole => (is => 'ro', isa => 'Str', required => 1);
   has SubnetId => (is => 'ro', isa => 'Str', required => 1);
@@ -55,7 +55,7 @@ connect to the Amazon RDS database.
 
 =head2 B<REQUIRED> DatabaseInformation => L<Paws::MachineLearning::RDSDatabase>
 
-  Describes the C<DatabaseName> and C<InstanceIdentifier> of an an Amazon
+  Describes the C<DatabaseName> and C<InstanceIdentifier> of an Amazon
 RDS database.
 
 
@@ -218,7 +218,7 @@ templates for data pipelines.
 from Amazon RDS using C<SelectSqlQuery> is stored in this location.
 
 
-=head2 B<REQUIRED> SecurityGroupIds => ArrayRef[Str]
+=head2 B<REQUIRED> SecurityGroupIds => ArrayRef[Str|Undef]
 
   The security group IDs to be used to access a VPC-based RDS DB
 instance. Ensure that there are appropriate ingress rules set up to

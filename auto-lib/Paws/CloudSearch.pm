@@ -305,7 +305,7 @@ Returns: a L<Paws::CloudSearch::DeleteSuggesterResponse> instance
 Suggestions in the I<Amazon CloudSearch Developer Guide>.
 
 
-=head2 DescribeAnalysisSchemes(DomainName => Str, [AnalysisSchemeNames => ArrayRef[Str], Deployed => Bool])
+=head2 DescribeAnalysisSchemes(DomainName => Str, [AnalysisSchemeNames => ArrayRef[Str|Undef], Deployed => Bool])
 
 Each argument is described in detail in: L<Paws::CloudSearch::DescribeAnalysisSchemes>
 
@@ -334,7 +334,7 @@ changes. For more information, see Configuring Availability Options in
 the I<Amazon CloudSearch Developer Guide>.
 
 
-=head2 DescribeDomains([DomainNames => ArrayRef[Str]])
+=head2 DescribeDomains([DomainNames => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::CloudSearch::DescribeDomains>
 
@@ -349,7 +349,7 @@ see Getting Information about a Search Domain in the I<Amazon
 CloudSearch Developer Guide>.
 
 
-=head2 DescribeExpressions(DomainName => Str, [Deployed => Bool, ExpressionNames => ArrayRef[Str]])
+=head2 DescribeExpressions(DomainName => Str, [Deployed => Bool, ExpressionNames => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::CloudSearch::DescribeExpressions>
 
@@ -363,7 +363,7 @@ changes. For more information, see Configuring Expressions in the
 I<Amazon CloudSearch Developer Guide>.
 
 
-=head2 DescribeIndexFields(DomainName => Str, [Deployed => Bool, FieldNames => ArrayRef[Str]])
+=head2 DescribeIndexFields(DomainName => Str, [Deployed => Bool, FieldNames => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::CloudSearch::DescribeIndexFields>
 
@@ -403,7 +403,7 @@ For more information, see Configuring Access for a Search Domain in the
 I<Amazon CloudSearch Developer Guide>.
 
 
-=head2 DescribeSuggesters(DomainName => Str, [Deployed => Bool, SuggesterNames => ArrayRef[Str]])
+=head2 DescribeSuggesters(DomainName => Str, [Deployed => Bool, SuggesterNames => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::CloudSearch::DescribeSuggesters>
 

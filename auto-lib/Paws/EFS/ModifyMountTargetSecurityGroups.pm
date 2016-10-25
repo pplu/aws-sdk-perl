@@ -2,7 +2,7 @@
 package Paws::EFS::ModifyMountTargetSecurityGroups;
   use Moose;
   has MountTargetId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'MountTargetId' , required => 1);
-  has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Str]');
+  has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
   use MooseX::ClassAttribute;
 
@@ -42,7 +42,7 @@ ID of the mount target whose security groups you want to modify.
 
 
 
-=head2 SecurityGroups => ArrayRef[Str]
+=head2 SecurityGroups => ArrayRef[Str|Undef]
 
 Array of up to five VPC security group IDs.
 

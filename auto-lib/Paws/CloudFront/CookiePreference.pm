@@ -32,25 +32,41 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 
 =head1 DESCRIPTION
 
-A complex type that specifies the cookie preferences associated with
-this cache behavior.
+A complex type that specifies whether you want CloudFront to forward
+cookies to the origin and, if so, which ones. For more information
+about forwarding cookies to the origin, see How CloudFront Forwards,
+Caches, and Logs Cookies in the I<Amazon CloudFront Developer Guide>.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> Forward => Str
 
-  Use this element to specify whether you want CloudFront to forward
-cookies to the origin that is associated with this cache behavior. You
-can specify all, none or whitelist. If you choose All, CloudFront
-forwards all cookies regardless of how many your application uses.
+  Specifies which cookies to forward to the origin for this cache
+behavior: all, none, or the list of cookies specified in the
+C<WhitelistedNames> complex type.
+
+Amazon S3 doesn't process cookies. When the cache behavior is
+forwarding requests to an Amazon S3 origin, specify none for the
+C<Forward> element.
 
 
 =head2 WhitelistedNames => L<Paws::CloudFront::CookieNames>
 
-  A complex type that specifies the whitelisted cookies, if any, that you
-want CloudFront to forward to your origin that is associated with this
-cache behavior.
+  Required if you specify C<whitelist> for the value of C<Forward:>. A
+complex type that specifies how many different cookies you want
+CloudFront to forward to the origin for this cache behavior and, if you
+want to forward selected cookies, the names of those cookies.
+
+If you specify C<all> or none for the value of C<Forward>, omit
+C<WhitelistedNames>. If you change the value of C<Forward> from
+C<whitelist> to all or none and you don't delete the
+C<WhitelistedNames> element and its child elements, CloudFront deletes
+them automatically.
+
+For the current limit on the number of cookie names that you can
+whitelist for each cache behavior, see Amazon CloudFront Limits in the
+I<AWS General Reference>.
 
 
 

@@ -1,3 +1,65 @@
+0.29 
+ - Remove under work warning from JSON-REST services: ApiGateway,CloudSearchDomain,CognitoSync,
+   EFS, ES, ElasticTranscoder, Glacier, IoT, IoTData, Lambda
+   This means that Bugs and error reports for these APIs will be handled with priority, as they
+   would are considered to be functional
+ - Fixed documentation issues with S3, CloudFront and Route53 (ilmari)
+ - Fixed bug (Issue #108): Services that expected strings as parameters would accept numbers,
+   Method(StringParameter => 33), and Paws would generate "StringParameter":33 in the request
+   to the service, but the AWS API would error out, forcing the programmer to stringify his input
+   Method(StringParameter => "33"). Paws will now auto-stringify the contents in these parameters
+   so AWS will accept them correctly, and the programmer doesn't have to worry about stringifying
+   his inputs. Thanks to ilmari and rpcme
+ - New API: Budgets
+ - New API: SMS (Server Migration Service)
+ - ElasticBeanstalk API update
+ - Gamelift API update: DescribeInstances
+ - ECR API update: DescribeImages
+ - ACM API update: ImportCertificate
+ - RDS API update: DescribeSourceRegions, Add and Remove RoleToDBCluster
+ - ServiceCatalog API update: AccessLevelFilter support
+ - CloudFront API update: version 2016-09-07 support
+ - CodePipeline API update: GetPipelineExecution
+ - CognitoIdp API update: UserImportJob operations
+ - Gamelift API update: OperatingSystem for CreateBuild
+ - Route53 API update: TestDNSAnswer
+ - CodeDeploy API update
+ - RedShift API update: Enhanced VPC Routing
+ - RDS API update: Timezones and ReadEnpoints
+ - EMR API update: SecurityConfigurations
+ - IoT API update
+ - CloudFormation API update: RoleArn
+ - EC2 API update: ReservedInstancesExchangeQuote
+ - S3 API update
+ - ElastiCache API update
+ - IoT API update: DynamoV2 behaviour
+ - CognitoIdp API update: AdminCreateUser
+
+0.28 30 Aug 2015 23:45:00
+ - On errors 503 XMLResponse would not process the error correctly (returning
+   a non-Paws exception, so the error couldn't be retried. (brianhartsock)
+ - New API: Snowball
+ - New API: KinesisAnalytics
+ - New API: ELBv2 (Application Load Balancer)
+ - Route53: API update: GetDomainSuggestions, RenewDomain, ViewBilling
+ - RDS: API update: RestoreDBClusterFromS3
+ - KMS: API update: DeleteImportedKeyMaterial, GetParametersForImport, ImportKeyMaterial
+ - WorkSpaces API update: DescribeWorkspacesConnectionStatus ModifyWorkspaceProperties StartWorkspaces StopWorkspaces
+ - IoT API update: ThingTypes operations, ListOutgoingCertificates
+ - MarketplaceCommerceAnalytics API update: StartSupportDataExport
+ - GameLift API update: SearchGameSessions
+ - EC2 API update: DescribeHostReservationOfferings DescribeHostReservations GetHostReservationPurchasePreview PurchaseHostReservation
+ - DS API update: AddIpRoutes ListIpRoutes
+ - CognitoIdp API update: AdminForgetDevice AdminGetDevice AdminInitiateAuth AdminListDevices AdminRespondToAuthChallenge AdminUpdateDeviceStatus AdminUserGlobalSignOut ConfirmDevice ForgetDevice ForgotPassword GetDevice GlobalSignOut InitiateAuth ListDevices RespondToAuthChallenge UpdateDeviceStatus
+ - CloudFront API update: CreateDistributionWithTags CreateStreamingDistributionWithTags ListTagsForResource TagResource UntagResource
+ - ApiGateway API update: CreateUsagePlan CreateUsagePlanKey DeleteUsagePlan DeleteUsagePlanKey GetUsage GetUsagePlan GetUsagePlanKey GetUsagePlanKeys GetUsagePlans ImportApiKeys UpdateUsage UpdateUsagePlan
+ - AutoScaling API update: AttachLoadBalancerTargetGroups DescribeLoadBalancerTargetGroups DetachLoadBalancerTargetGroups
+ - MachineLearning API update: extra informational attributes on returned objects
+ - EMR API update: FailureDetails on StepStatus object
+ - ECS API update: MemoryReservation and NetworkMode
+ - ECR API update: Filter on ListImages
+ - ES API update: ElasticsearchVersion support
+
 0.27 25 Jun 2016 
  - RestXml (S3, f.ex) services now complete responses from headers (shardiwal)
  - New API: ServiceCatalog

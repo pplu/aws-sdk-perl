@@ -5,7 +5,7 @@ package Paws::DS::DirectoryDescription;
   has ConnectSettings => (is => 'ro', isa => 'Paws::DS::DirectoryConnectSettingsDescription');
   has Description => (is => 'ro', isa => 'Str');
   has DirectoryId => (is => 'ro', isa => 'Str');
-  has DnsIpAddrs => (is => 'ro', isa => 'ArrayRef[Str]');
+  has DnsIpAddrs => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has LaunchTime => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
   has RadiusSettings => (is => 'ro', isa => 'Paws::DS::RadiusSettings');
@@ -85,7 +85,7 @@ present if the directory is an AD Connector directory.
   The directory identifier.
 
 
-=head2 DnsIpAddrs => ArrayRef[Str]
+=head2 DnsIpAddrs => ArrayRef[Str|Undef]
 
   The IP addresses of the DNS servers for the directory. For a Simple AD
 or Microsoft AD directory, these are the IP addresses of the Simple AD

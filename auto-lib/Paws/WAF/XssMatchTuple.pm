@@ -60,15 +60,25 @@ transformations:
 
 =over
 
-=item * Delete the following characters: \ " ' ^
+=item *
 
-=item * Delete spaces before the following characters: / (
+Delete the following characters: \ " ' ^
 
-=item * Replace the following characters with a space: , ;
+=item *
 
-=item * Replace multiple spaces with one space
+Delete spaces before the following characters: / (
 
-=item * Convert uppercase letters (A-Z) to lowercase (a-z)
+=item *
+
+Replace the following characters with a space: , ;
+
+=item *
+
+Replace multiple spaces with one space
+
+=item *
+
+Convert uppercase letters (A-Z) to lowercase (a-z)
 
 =back
 
@@ -79,17 +89,29 @@ character (decimal 32):
 
 =over
 
-=item * \f, formfeed, decimal 12
+=item *
 
-=item * \t, tab, decimal 9
+\f, formfeed, decimal 12
 
-=item * \n, newline, decimal 10
+=item *
 
-=item * \r, carriage return, decimal 13
+\t, tab, decimal 9
 
-=item * \v, vertical tab, decimal 11
+=item *
 
-=item * non-breaking space, decimal 160
+\n, newline, decimal 10
+
+=item *
+
+\r, carriage return, decimal 13
+
+=item *
+
+\v, vertical tab, decimal 11
+
+=item *
+
+non-breaking space, decimal 160
 
 =back
 
@@ -102,19 +124,30 @@ characters. C<HTML_ENTITY_DECODE> performs the following operations:
 
 =over
 
-=item * Replaces C<(ampersand)quot;> with C<">
+=item *
 
-=item * Replaces C<(ampersand)nbsp;> with a non-breaking space, decimal
-160
+Replaces C<(ampersand)quot;> with C<">
 
-=item * Replaces C<(ampersand)lt;> with a "less than" symbol
+=item *
 
-=item * Replaces C<(ampersand)gt;> with C<E<gt>>
+Replaces C<(ampersand)nbsp;> with a non-breaking space, decimal 160
 
-=item * Replaces characters that are represented in hexadecimal format,
+=item *
+
+Replaces C<(ampersand)lt;> with a "less than" symbol
+
+=item *
+
+Replaces C<(ampersand)gt;> with C<E<gt>>
+
+=item *
+
+Replaces characters that are represented in hexadecimal format,
 C<(ampersand)(hash)xhhhh;>, with the corresponding characters
 
-=item * Replaces characters that are represented in decimal format,
+=item *
+
+Replaces characters that are represented in decimal format,
 C<(ampersand)(hash)nnnn;>, with the corresponding characters
 
 =back

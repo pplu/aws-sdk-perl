@@ -2,7 +2,7 @@
 package Paws::DS::RemoveTagsFromResource;
   use Moose;
   has ResourceId => (is => 'ro', isa => 'Str', required => 1);
-  has TagKeys => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has TagKeys => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -36,11 +36,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ResourceId => Str
 
-The ID of the directory from which to remove the tag.
+Identifier (ID) of the directory from which to remove the tag.
 
 
 
-=head2 B<REQUIRED> TagKeys => ArrayRef[Str]
+=head2 B<REQUIRED> TagKeys => ArrayRef[Str|Undef]
 
 The tag key (name) of the tag to be removed.
 

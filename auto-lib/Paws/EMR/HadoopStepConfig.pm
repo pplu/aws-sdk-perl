@@ -1,6 +1,6 @@
 package Paws::EMR::HadoopStepConfig;
   use Moose;
-  has Args => (is => 'ro', isa => 'ArrayRef[Str]');
+  has Args => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Jar => (is => 'ro', isa => 'Str');
   has MainClass => (is => 'ro', isa => 'Str');
   has Properties => (is => 'ro', isa => 'Paws::EMR::StringMap');
@@ -41,7 +41,7 @@ waits for the job to finish or fail.
 =head1 ATTRIBUTES
 
 
-=head2 Args => ArrayRef[Str]
+=head2 Args => ArrayRef[Str|Undef]
 
   The list of command line arguments to pass to the JAR file's main
 function for execution.

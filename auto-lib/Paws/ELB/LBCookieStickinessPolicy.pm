@@ -46,8 +46,8 @@ session lasts for the duration of the browser session.
 
 =head2 PolicyName => Str
 
-  The name for the policy being created. The name must be unique within
-the set of policies for this load balancer.
+  The name of the policy. This name must be unique within the set of
+policies for this load balancer.
 
 
 

@@ -35,7 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElastiCache
 
 =head1 DESCRIPTION
 
-Represents a single node within a node group.
+Represents a single node within a node group (shard).
 
 =head1 ATTRIBUTES
 
@@ -53,8 +53,8 @@ identifier (0001, 0002, etc.).
 
 =head2 CurrentRole => Str
 
-  The role that is currently assigned to the node - I<primary> or
-I<replica>.
+  The role that is currently assigned to the node - C<primary> or
+C<replica>.
 
 
 =head2 PreferredAvailabilityZone => Str

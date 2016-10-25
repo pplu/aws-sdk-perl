@@ -45,7 +45,7 @@ The details of an Amazon ECS service deployment.
 
 =head2 CreatedAt => Str
 
-  The Unix time in seconds and milliseconds when the service was created.
+  The Unix timestamp for when the service was created.
 
 
 =head2 DesiredCount => Int
@@ -87,8 +87,7 @@ use.
 
 =head2 UpdatedAt => Str
 
-  The Unix time in seconds and milliseconds when the service was last
-updated.
+  The Unix timestamp for when the service was last updated.
 
 
 

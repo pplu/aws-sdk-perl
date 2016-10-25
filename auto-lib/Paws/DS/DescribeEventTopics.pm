@@ -2,7 +2,7 @@
 package Paws::DS::DescribeEventTopics;
   use Moose;
   has DirectoryId => (is => 'ro', isa => 'Str');
-  has TopicNames => (is => 'ro', isa => 'ArrayRef[Str]');
+  has TopicNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
   use MooseX::ClassAttribute;
 
@@ -41,7 +41,7 @@ this member is null, associations for all Directory IDs are returned.
 
 
 
-=head2 TopicNames => ArrayRef[Str]
+=head2 TopicNames => ArrayRef[Str|Undef]
 
 A list of SNS topic names for which to obtain the information. If this
 member is null, all associations for the specified Directory ID are

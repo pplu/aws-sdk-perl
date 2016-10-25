@@ -1,7 +1,7 @@
 
 package Paws::EC2::AllocateHostsResult;
   use Moose;
-  has HostIds => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'hostIdSet', traits => ['Unwrapped',]);
+  has HostIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'hostIdSet', traits => ['Unwrapped',]);
 
 1;
 
@@ -14,9 +14,9 @@ Paws::EC2::AllocateHostsResult
 =head1 ATTRIBUTES
 
 
-=head2 HostIds => ArrayRef[Str]
+=head2 HostIds => ArrayRef[Str|Undef]
 
-The ID of the allocated Dedicated host. This is used when you want to
+The ID of the allocated Dedicated Host. This is used when you want to
 launch an instance onto a specific host.
 
 

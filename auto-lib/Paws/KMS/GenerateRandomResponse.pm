@@ -15,7 +15,7 @@ Paws::KMS::GenerateRandomResponse
 
 =head2 Plaintext => Str
 
-Plaintext that contains the unpredictable byte string.
+The unpredictable byte string.
 
 
 

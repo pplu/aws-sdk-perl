@@ -2,7 +2,7 @@
 package Paws::ServiceCatalog::ProvisionProduct;
   use Moose;
   has AcceptLanguage => (is => 'ro', isa => 'Str');
-  has NotificationArns => (is => 'ro', isa => 'ArrayRef[Str]');
+  has NotificationArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has PathId => (is => 'ro', isa => 'Str');
   has ProductId => (is => 'ro', isa => 'Str', required => 1);
   has ProvisionedProductName => (is => 'ro', isa => 'Str', required => 1);
@@ -43,7 +43,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AcceptLanguage => Str
 
-Optional language code. Supported language codes are as follows:
+The language code to use for this operation. Supported language codes
+are as follows:
 
 "en" (English)
 
@@ -55,7 +56,7 @@ If no code is specified, "en" is used as the default.
 
 
 
-=head2 NotificationArns => ArrayRef[Str]
+=head2 NotificationArns => ArrayRef[Str|Undef]
 
 Passed to CloudFormation. The SNS topic ARNs to which to publish
 stack-related events.
@@ -105,7 +106,7 @@ An idempotency token that uniquely identifies the provisioning request.
 
 =head2 Tags => ArrayRef[L<Paws::ServiceCatalog::Tag>]
 
-(Optional) A list of tags to use as provisioning options.
+A list of tags to use as provisioning options.
 
 
 

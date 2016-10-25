@@ -1,7 +1,7 @@
 
 package Paws::CloudSearch::DescribeAnalysisSchemes;
   use Moose;
-  has AnalysisSchemeNames => (is => 'ro', isa => 'ArrayRef[Str]');
+  has AnalysisSchemeNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Deployed => (is => 'ro', isa => 'Bool');
   has DomainName => (is => 'ro', isa => 'Str', required => 1);
 
@@ -35,7 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 AnalysisSchemeNames => ArrayRef[Str]
+=head2 AnalysisSchemeNames => ArrayRef[Str|Undef]
 
 The analysis schemes you want to describe.
 

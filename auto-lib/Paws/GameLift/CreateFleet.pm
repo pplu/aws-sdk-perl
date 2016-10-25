@@ -5,9 +5,10 @@ package Paws::GameLift::CreateFleet;
   has Description => (is => 'ro', isa => 'Str');
   has EC2InboundPermissions => (is => 'ro', isa => 'ArrayRef[Paws::GameLift::IpPermission]');
   has EC2InstanceType => (is => 'ro', isa => 'Str', required => 1);
-  has LogPaths => (is => 'ro', isa => 'ArrayRef[Str]');
+  has LogPaths => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has NewGameSessionProtectionPolicy => (is => 'ro', isa => 'Str');
+  has ResourceCreationLimitPolicy => (is => 'ro', isa => 'Paws::GameLift::ResourceCreationLimitPolicy');
   has RuntimeConfiguration => (is => 'ro', isa => 'Paws::GameLift::RuntimeConfiguration');
   has ServerLaunchParameters => (is => 'ro', isa => 'Str');
   has ServerLaunchPath => (is => 'ro', isa => 'Str');
@@ -46,7 +47,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 Unique identifier of the build to be deployed on the new fleet. The
 build must have been successfully uploaded to GameLift and be in a
-C<READY> state. This fleet setting cannot be changed once the fleet is
+C<READY> status. This fleet setting cannot be changed once the fleet is
 created.
 
 
@@ -77,7 +78,7 @@ Instance Types for detailed descriptions.
 
 Valid values are: C<"t2.micro">, C<"t2.small">, C<"t2.medium">, C<"t2.large">, C<"c3.large">, C<"c3.xlarge">, C<"c3.2xlarge">, C<"c3.4xlarge">, C<"c3.8xlarge">, C<"c4.large">, C<"c4.xlarge">, C<"c4.2xlarge">, C<"c4.4xlarge">, C<"c4.8xlarge">, C<"r3.large">, C<"r3.xlarge">, C<"r3.2xlarge">, C<"r3.4xlarge">, C<"r3.8xlarge">, C<"m3.medium">, C<"m3.large">, C<"m3.xlarge">, C<"m3.2xlarge">, C<"m4.large">, C<"m4.xlarge">, C<"m4.2xlarge">, C<"m4.4xlarge">, C<"m4.10xlarge">
 
-=head2 LogPaths => ArrayRef[Str]
+=head2 LogPaths => ArrayRef[Str|Undef]
 
 Location of default log files. When a server process is shut down,
 Amazon GameLift captures and stores any log files in this location.
@@ -107,16 +108,27 @@ individual instances using UpdateGameSession.
 
 =over
 
-=item * B<NoProtection> E<ndash> The game session can be terminated
-during a scale-down event.
+=item *
 
-=item * B<FullProtection> E<ndash> If the game session is in an
-C<ACTIVE> status, it cannot be terminated during a scale-down event.
+B<NoProtection> E<ndash> The game session can be terminated during a
+scale-down event.
+
+=item *
+
+B<FullProtection> E<ndash> If the game session is in an C<ACTIVE>
+status, it cannot be terminated during a scale-down event.
 
 =back
 
 
 Valid values are: C<"NoProtection">, C<"FullProtection">
+
+=head2 ResourceCreationLimitPolicy => L<Paws::GameLift::ResourceCreationLimitPolicy>
+
+Policy that limits the number of game sessions an individual player can
+create over a span of time for this fleet.
+
+
 
 =head2 RuntimeConfiguration => L<Paws::GameLift::RuntimeConfiguration>
 

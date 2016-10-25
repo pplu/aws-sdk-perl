@@ -87,7 +87,9 @@ single command.
 =head2 IpProtocol => Str
 
 The IP protocol name (C<tcp>, C<udp>, C<icmp>) or number (see Protocol
-Numbers). (VPC only) Use C<-1> to specify all.
+Numbers). (VPC only) Use C<-1> to specify all traffic. If you specify
+C<-1>, traffic on all ports is allowed, regardless of any ports you
+specify.
 
 
 

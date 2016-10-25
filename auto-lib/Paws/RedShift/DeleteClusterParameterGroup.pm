@@ -41,9 +41,13 @@ Constraints:
 
 =over
 
-=item * Must be the name of an existing cluster parameter group.
+=item *
 
-=item * Cannot delete a default cluster parameter group.
+Must be the name of an existing cluster parameter group.
+
+=item *
+
+Cannot delete a default cluster parameter group.
 
 =back
 

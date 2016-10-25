@@ -72,7 +72,7 @@ You can specify a separate configuration for each instance group
 
 =head2 EbsOptimized => Bool
 
-  If the instance group is EBS-optimized. An Amazon EBSE<ndash>optimized
+  If the instance group is EBS-optimized. An Amazon EBS-optimized
 instance uses an optimized configuration stack and provides additional,
 dedicated capacity for Amazon EBS I/O.
 

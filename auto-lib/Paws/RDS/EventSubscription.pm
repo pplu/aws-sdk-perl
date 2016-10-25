@@ -3,9 +3,10 @@ package Paws::RDS::EventSubscription;
   has CustomerAwsId => (is => 'ro', isa => 'Str');
   has CustSubscriptionId => (is => 'ro', isa => 'Str');
   has Enabled => (is => 'ro', isa => 'Bool');
-  has EventCategoriesList => (is => 'ro', isa => 'ArrayRef[Str]');
+  has EventCategoriesList => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has EventSubscriptionArn => (is => 'ro', isa => 'Str');
   has SnsTopicArn => (is => 'ro', isa => 'Str');
-  has SourceIdsList => (is => 'ro', isa => 'ArrayRef[Str]');
+  has SourceIdsList => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has SourceType => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
   has SubscriptionCreationTime => (is => 'ro', isa => 'Str');
@@ -62,9 +63,14 @@ subscription.
 indicates the subscription is enabled.
 
 
-=head2 EventCategoriesList => ArrayRef[Str]
+=head2 EventCategoriesList => ArrayRef[Str|Undef]
 
   A list of event categories for the RDS event notification subscription.
+
+
+=head2 EventSubscriptionArn => Str
+
+  The Amazon Resource Name (ARN) for the event subscription.
 
 
 =head2 SnsTopicArn => Str
@@ -72,7 +78,7 @@ indicates the subscription is enabled.
   The topic ARN of the RDS event notification subscription.
 
 
-=head2 SourceIdsList => ArrayRef[Str]
+=head2 SourceIdsList => ArrayRef[Str|Undef]
 
   A list of source IDs for the RDS event notification subscription.
 

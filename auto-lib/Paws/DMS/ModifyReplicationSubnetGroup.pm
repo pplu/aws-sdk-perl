@@ -3,7 +3,7 @@ package Paws::DMS::ModifyReplicationSubnetGroup;
   use Moose;
   has ReplicationSubnetGroupDescription => (is => 'ro', isa => 'Str');
   has ReplicationSubnetGroupIdentifier => (is => 'ro', isa => 'Str', required => 1);
-  has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -47,7 +47,7 @@ The name of the replication instance subnet group.
 
 
 
-=head2 B<REQUIRED> SubnetIds => ArrayRef[Str]
+=head2 B<REQUIRED> SubnetIds => ArrayRef[Str|Undef]
 
 A list of subnet IDs.
 

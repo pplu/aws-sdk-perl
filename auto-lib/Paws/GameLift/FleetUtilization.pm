@@ -49,7 +49,7 @@ in the fleet.
 
 =head2 ActiveServerProcessCount => Int
 
-  Number of server processes in an C<ACTIVE> state currently running
+  Number of server processes in an C<ACTIVE> status currently running
 across all instances in the fleet
 
 

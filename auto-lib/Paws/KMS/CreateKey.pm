@@ -4,6 +4,7 @@ package Paws::KMS::CreateKey;
   has BypassPolicyLockoutSafetyCheck => (is => 'ro', isa => 'Bool');
   has Description => (is => 'ro', isa => 'Str');
   has KeyUsage => (is => 'ro', isa => 'Str');
+  has Origin => (is => 'ro', isa => 'Str');
   has Policy => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
@@ -72,11 +73,28 @@ You can use CMKs only for symmetric encryption and decryption.
 
 Valid values are: C<"ENCRYPT_DECRYPT">
 
+=head2 Origin => Str
+
+The source of the CMK's key material.
+
+The default is C<AWS_KMS>, which means AWS KMS creates the key
+material. When this parameter is set to C<EXTERNAL>, the request
+creates a CMK without key material so that you can import key material
+from your existing key management infrastructure. For more information
+about importing key material into AWS KMS, see Importing Key Material
+in the I<AWS Key Management Service Developer Guide>.
+
+The CMK's C<Origin> is immutable and is set when the CMK is created.
+
+Valid values are: C<"AWS_KMS">, C<"EXTERNAL">
+
 =head2 Policy => Str
 
 The key policy to attach to the CMK.
 
-If you specify a key policy, it must meet the following criteria:
+If you specify a policy and do not set
+C<BypassPolicyLockoutSafetyCheck> to true, the policy must meet the
+following criteria:
 
 =over
 

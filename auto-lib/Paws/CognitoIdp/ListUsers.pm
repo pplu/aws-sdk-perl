@@ -1,11 +1,11 @@
 
 package Paws::CognitoIdp::ListUsers;
   use Moose;
-  has AttributesToGet => (is => 'ro', isa => 'ArrayRef[Str]');
+  has AttributesToGet => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has Filter => (is => 'ro', isa => 'Str');
   has Limit => (is => 'ro', isa => 'Int');
   has PaginationToken => (is => 'ro', isa => 'Str');
   has UserPoolId => (is => 'ro', isa => 'Str', required => 1);
-  has UserStatus => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -37,9 +37,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 AttributesToGet => ArrayRef[Str]
+=head2 AttributesToGet => ArrayRef[Str|Undef]
 
 The attributes to get from the request to list users.
+
+
+
+=head2 Filter => Str
+
+The filter for the list users request.
 
 
 
@@ -62,28 +68,6 @@ list.
 The user pool ID for which you want to list users.
 
 
-
-=head2 UserStatus => Str
-
-The user status. Can be one of the following:
-
-=over
-
-=item * UNCONFIRMED - User has been created but not confirmed.
-
-=item * CONFIRMED - User has been confirmed.
-
-=item * ARCHIVED - User is no longer active.
-
-=item * COMPROMISED - User is disabled due to a potential security
-threat.
-
-=item * UNKNOWN - User status is not known.
-
-=back
-
-
-Valid values are: C<"UNCONFIRMED">, C<"CONFIRMED">, C<"ARCHIVED">, C<"COMPROMISED">, C<"UNKNOWN">
 
 
 =head1 SEE ALSO

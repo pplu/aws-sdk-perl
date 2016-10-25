@@ -4,7 +4,7 @@ package Paws::AutoScaling::CreateLaunchConfiguration;
   has AssociatePublicIpAddress => (is => 'ro', isa => 'Bool');
   has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[Paws::AutoScaling::BlockDeviceMapping]');
   has ClassicLinkVPCId => (is => 'ro', isa => 'Str');
-  has ClassicLinkVPCSecurityGroups => (is => 'ro', isa => 'ArrayRef[Str]');
+  has ClassicLinkVPCSecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has EbsOptimized => (is => 'ro', isa => 'Bool');
   has IamInstanceProfile => (is => 'ro', isa => 'Str');
   has ImageId => (is => 'ro', isa => 'Str');
@@ -16,7 +16,7 @@ package Paws::AutoScaling::CreateLaunchConfiguration;
   has LaunchConfigurationName => (is => 'ro', isa => 'Str', required => 1);
   has PlacementTenancy => (is => 'ro', isa => 'Str');
   has RamdiskId => (is => 'ro', isa => 'Str');
-  has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Str]');
+  has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has SpotPrice => (is => 'ro', isa => 'Str');
   has UserData => (is => 'ro', isa => 'Str');
 
@@ -55,7 +55,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 Used for groups that launch instances into a virtual private cloud
 (VPC). Specifies whether to assign a public IP address to each
 instance. For more information, see Launching Auto Scaling Instances in
-a VPC in the I<Auto Scaling Developer Guide>.
+a VPC in the I<Auto Scaling User Guide>.
 
 If you specify this parameter, be sure to specify at least one subnet
 when you create your group.
@@ -84,7 +84,7 @@ Elastic Compute Cloud User Guide>.
 
 
 
-=head2 ClassicLinkVPCSecurityGroups => ArrayRef[Str]
+=head2 ClassicLinkVPCSecurityGroups => ArrayRef[Str|Undef]
 
 The IDs of one or more security groups for the specified
 ClassicLink-enabled VPC. This parameter is required if you specify a
@@ -115,7 +115,7 @@ EC2 instances launched with an IAM role will automatically have AWS
 security credentials available. You can use IAM roles with Auto Scaling
 to automatically enable applications running on your EC2 instances to
 securely access other AWS resources. For more information, see Launch
-Auto Scaling Instances with an IAM Role in the I<Auto Scaling Developer
+Auto Scaling Instances with an IAM Role in the I<Auto Scaling User
 Guide>.
 
 
@@ -140,21 +140,14 @@ override any other instance attributes, specify them as part of the
 same request.
 
 For more information, see Create a Launch Configuration Using an EC2
-Instance in the I<Auto Scaling Developer Guide>.
+Instance in the I<Auto Scaling User Guide>.
 
 
 
 =head2 InstanceMonitoring => L<Paws::AutoScaling::InstanceMonitoring>
 
-Enables detailed monitoring if it is disabled. Detailed monitoring is
-enabled by default.
-
-When detailed monitoring is enabled, Amazon CloudWatch generates
-metrics every minute and your account is charged a fee. When you
-disable detailed monitoring, by specifying C<False>, CloudWatch
-generates metrics every 5 minutes. For more information, see Monitoring
-Your Auto Scaling Instances and Groups in the I<Auto Scaling Developer
-Guide>.
+Enables detailed monitoring (C<true>) or basic monitoring (C<false>)
+for the Auto Scaling instances.
 
 
 
@@ -199,7 +192,7 @@ If you specify this parameter, be sure to specify at least one subnet
 when you create your group.
 
 For more information, see Launching Auto Scaling Instances in a VPC in
-the I<Auto Scaling Developer Guide>.
+the I<Auto Scaling User Guide>.
 
 Valid values: C<default> | C<dedicated>
 
@@ -211,7 +204,7 @@ The ID of the RAM disk associated with the AMI.
 
 
 
-=head2 SecurityGroups => ArrayRef[Str]
+=head2 SecurityGroups => ArrayRef[Str|Undef]
 
 One or more security groups with which to associate the instances.
 
@@ -232,7 +225,7 @@ The maximum hourly price to be paid for any Spot Instance launched to
 fulfill the request. Spot Instances are launched when the price you
 specify exceeds the current Spot market price. For more information,
 see Launching Spot Instances in Your Auto Scaling Group in the I<Auto
-Scaling Developer Guide>.
+Scaling User Guide>.
 
 
 

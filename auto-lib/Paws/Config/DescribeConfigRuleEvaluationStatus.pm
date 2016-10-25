@@ -1,7 +1,7 @@
 
 package Paws::Config::DescribeConfigRuleEvaluationStatus;
   use Moose;
-  has ConfigRuleNames => (is => 'ro', isa => 'ArrayRef[Str]');
+  has ConfigRuleNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
   use MooseX::ClassAttribute;
 
@@ -33,7 +33,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 ConfigRuleNames => ArrayRef[Str]
+=head2 ConfigRuleNames => ArrayRef[Str|Undef]
 
 The name of the AWS managed Config rules for which you want status
 information. If you do not specify any names, AWS Config returns status

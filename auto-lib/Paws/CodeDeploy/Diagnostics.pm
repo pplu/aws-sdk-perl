@@ -46,21 +46,32 @@ deployment.
 
 =over
 
-=item * Success: The specified script ran.
+=item *
 
-=item * ScriptMissing: The specified script was not found in the
-specified location.
+Success: The specified script ran.
 
-=item * ScriptNotExecutable: The specified script is not a recognized
+=item *
+
+ScriptMissing: The specified script was not found in the specified
+location.
+
+=item *
+
+ScriptNotExecutable: The specified script is not a recognized
 executable file type.
 
-=item * ScriptTimedOut: The specified script did not finish running in
-the specified time period.
+=item *
 
-=item * ScriptFailed: The specified script failed to run as expected.
+ScriptTimedOut: The specified script did not finish running in the
+specified time period.
 
-=item * UnknownError: The specified script did not run for an unknown
-reason.
+=item *
+
+ScriptFailed: The specified script failed to run as expected.
+
+=item *
+
+UnknownError: The specified script did not run for an unknown reason.
 
 =back
 

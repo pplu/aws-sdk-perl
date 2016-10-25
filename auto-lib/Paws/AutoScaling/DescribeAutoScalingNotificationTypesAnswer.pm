@@ -1,7 +1,7 @@
 
 package Paws::AutoScaling::DescribeAutoScalingNotificationTypesAnswer;
   use Moose;
-  has AutoScalingNotificationTypes => (is => 'ro', isa => 'ArrayRef[Str]');
+  has AutoScalingNotificationTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
 1;
 
@@ -14,34 +14,9 @@ Paws::AutoScaling::DescribeAutoScalingNotificationTypesAnswer
 =head1 ATTRIBUTES
 
 
-=head2 AutoScalingNotificationTypes => ArrayRef[Str]
+=head2 AutoScalingNotificationTypes => ArrayRef[Str|Undef]
 
-One or more of the following notification types:
-
-=over
-
-=item *
-
-C<autoscaling:EC2_INSTANCE_LAUNCH>
-
-=item *
-
-C<autoscaling:EC2_INSTANCE_LAUNCH_ERROR>
-
-=item *
-
-C<autoscaling:EC2_INSTANCE_TERMINATE>
-
-=item *
-
-C<autoscaling:EC2_INSTANCE_TERMINATE_ERROR>
-
-=item *
-
-C<autoscaling:TEST_NOTIFICATION>
-
-=back
-
+The notification types.
 
 
 

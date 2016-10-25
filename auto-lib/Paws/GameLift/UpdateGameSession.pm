@@ -39,8 +39,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> GameSessionId => Str
 
-Unique identifier for a game session. Specify the game session you want
-to update.
+Unique identifier for the game session to update. Game session ID
+format is as follows:
+"arn:aws:gamelift:E<lt>regionE<gt>::gamesession/fleet-E<lt>fleet
+IDE<gt>/E<lt>ID stringE<gt>". The value of E<lt>ID stringE<gt> is
+either a custom ID string (if one was specified when the game session
+was created) an auto-generated string.
 
 
 
@@ -70,11 +74,15 @@ Game session protection policy to apply to this game session only.
 
 =over
 
-=item * B<NoProtection> E<ndash> The game session can be terminated
-during a scale-down event.
+=item *
 
-=item * B<FullProtection> E<ndash> If the game session is in an
-C<ACTIVE> status, it cannot be terminated during a scale-down event.
+B<NoProtection> E<ndash> The game session can be terminated during a
+scale-down event.
+
+=item *
+
+B<FullProtection> E<ndash> If the game session is in an C<ACTIVE>
+status, it cannot be terminated during a scale-down event.
 
 =back
 

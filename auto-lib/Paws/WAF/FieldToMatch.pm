@@ -54,28 +54,38 @@ following:
 
 =over
 
-=item * C<HEADER>: A specified request header, for example, the value
-of the C<User-Agent> or C<Referer> header. If you choose C<HEADER> for
-the type, specify the name of the header in C<Data>.
+=item *
 
-=item * C<METHOD>: The HTTP method, which indicated the type of
-operation that the request is asking the origin to perform. Amazon
-CloudFront supports the following methods: C<DELETE>, C<GET>, C<HEAD>,
-C<OPTIONS>, C<PATCH>, C<POST>, and C<PUT>.
+C<HEADER>: A specified request header, for example, the value of the
+C<User-Agent> or C<Referer> header. If you choose C<HEADER> for the
+type, specify the name of the header in C<Data>.
 
-=item * C<QUERY_STRING>: A query string, which is the part of a URL
-that appears after a C<?> character, if any.
+=item *
 
-=item * C<URI>: The part of a web request that identifies a resource,
-for example, C</images/daily-ad.jpg>.
+C<METHOD>: The HTTP method, which indicated the type of operation that
+the request is asking the origin to perform. Amazon CloudFront supports
+the following methods: C<DELETE>, C<GET>, C<HEAD>, C<OPTIONS>,
+C<PATCH>, C<POST>, and C<PUT>.
 
-=item * C<BODY>: The part of a request that contains any additional
-data that you want to send to your web server as the HTTP request body,
-such as data from a form. The request body immediately follows the
-request headers. Note that only the first C<8192> bytes of the request
-body are forwarded to AWS WAF for inspection. To allow or block
-requests based on the length of the body, you can create a size
-constraint set. For more information, see CreateSizeConstraintSet.
+=item *
+
+C<QUERY_STRING>: A query string, which is the part of a URL that
+appears after a C<?> character, if any.
+
+=item *
+
+C<URI>: The part of a web request that identifies a resource, for
+example, C</images/daily-ad.jpg>.
+
+=item *
+
+C<BODY>: The part of a request that contains any additional data that
+you want to send to your web server as the HTTP request body, such as
+data from a form. The request body immediately follows the request
+headers. Note that only the first C<8192> bytes of the request body are
+forwarded to AWS WAF for inspection. To allow or block requests based
+on the length of the body, you can create a size constraint set. For
+more information, see CreateSizeConstraintSet.
 
 =back
 

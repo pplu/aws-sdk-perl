@@ -38,70 +38,60 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Route53::Cl
 
 =head1 DESCRIPTION
 
-For CLOUDWATCH_METRIC health checks, a complex type that contains
-information about the CloudWatch alarm that you're associating with the
-health check.
+A complex type that contains information about the CloudWatch alarm
+that Amazon Route 53 is monitoring for this health check.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> ComparisonOperator => Str
 
-  The arithmetic operation to use when comparing the specified Statistic
-and Threshold.
-
-Valid Values are C<GreaterThanOrEqualToThreshold>,
-C<GreaterThanThreshold>, C<LessThanThreshold> and
-C<LessThanOrEqualToThreshold>
+  For the metric that the CloudWatch alarm is associated with, the
+arithmetic operation that is used for the comparison.
 
 
 =head2 Dimensions => ArrayRef[L<Paws::Route53::Dimension>]
 
-  A list of C<Dimension> elements for the CloudWatch metric that is
-associated with the CloudWatch alarm. For information about the metrics
-and dimensions that CloudWatch supports, see Amazon CloudWatch
-Namespaces, Dimensions, and Metrics Reference.
+  For the metric that the CloudWatch alarm is associated with, a complex
+type that contains information about the dimensions for the metric.For
+information, see Amazon CloudWatch Namespaces, Dimensions, and Metrics
+Reference in the I<Amazon CloudWatch Developer Guide>.
 
 
 =head2 B<REQUIRED> EvaluationPeriods => Int
 
-  The number of periods over which data is compared to the specified
-threshold.
+  For the metric that the CloudWatch alarm is associated with, the number
+of periods that the metric is compared to the threshold.
 
 
 =head2 B<REQUIRED> MetricName => Str
 
-  The name of the CloudWatch metric that is associated with the
-CloudWatch alarm.
+  The name of the CloudWatch metric that the alarm is associated with.
 
 
 =head2 B<REQUIRED> Namespace => Str
 
-  The namespace of the CloudWatch metric that is associated with the
-CloudWatch alarm.
+  The namespace of the metric that the alarm is associated with. For more
+information, see Amazon CloudWatch Namespaces, Dimensions, and Metrics
+Reference in the I<Amazon CloudWatch Developer Guide>.
 
 
 =head2 B<REQUIRED> Period => Int
 
-  An integer that represents the period in seconds over which the
-statistic is applied.
+  For the metric that the CloudWatch alarm is associated with, the
+duration of one evaluation period in seconds.
 
 
 =head2 B<REQUIRED> Statistic => Str
 
-  The statistic to apply to the CloudWatch metric that is associated with
-the CloudWatch alarm.
-
-Valid Values are C<SampleCount>, C<Average>, C<Sum>, C<Minimum> and
-C<Maximum>
+  For the metric that the CloudWatch alarm is associated with, the
+statistic that is applied to the metric.
 
 
 =head2 B<REQUIRED> Threshold => Num
 
-  The value that the metric is compared with to determine the state of
-the alarm. For example, if you want the health check to fail if the
-average TCP connection time is greater than 500 milliseconds for more
-than 60 seconds, the threshold is 500.
+  For the metric that the CloudWatch alarm is associated with, the value
+the metric is compared with.
 
 
 

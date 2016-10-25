@@ -3,7 +3,7 @@ package Paws::ElastiCache::CreateCacheSubnetGroup;
   use Moose;
   has CacheSubnetGroupDescription => (is => 'ro', isa => 'Str', required => 1);
   has CacheSubnetGroupName => (is => 'ro', isa => 'Str', required => 1);
-  has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -53,7 +53,7 @@ Example: C<mysubnetgroup>
 
 
 
-=head2 B<REQUIRED> SubnetIds => ArrayRef[Str]
+=head2 B<REQUIRED> SubnetIds => ArrayRef[Str|Undef]
 
 A list of VPC subnet IDs for the cache subnet group.
 

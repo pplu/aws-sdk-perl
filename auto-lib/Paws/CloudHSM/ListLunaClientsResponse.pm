@@ -1,7 +1,7 @@
 
 package Paws::CloudHSM::ListLunaClientsResponse;
   use Moose;
-  has ClientList => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has ClientList => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
   has NextToken => (is => 'ro', isa => 'Str');
 
 
@@ -14,7 +14,7 @@ Paws::CloudHSM::ListLunaClientsResponse
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> ClientList => ArrayRef[Str]
+=head2 B<REQUIRED> ClientList => ArrayRef[Str|Undef]
 
 The list of clients.
 

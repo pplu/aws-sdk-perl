@@ -5,7 +5,7 @@ package Paws::EC2::DescribeMovingAddresses;
   has Filters => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'filter' );
   has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults' );
   has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
-  has PublicIps => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'publicIp' );
+  has PublicIps => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'publicIp' );
 
   use MooseX::ClassAttribute;
 
@@ -80,7 +80,7 @@ The token to use to retrieve the next page of results.
 
 
 
-=head2 PublicIps => ArrayRef[Str]
+=head2 PublicIps => ArrayRef[Str|Undef]
 
 One or more Elastic IP addresses.
 

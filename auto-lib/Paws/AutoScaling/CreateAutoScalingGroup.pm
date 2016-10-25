@@ -2,20 +2,21 @@
 package Paws::AutoScaling::CreateAutoScalingGroup;
   use Moose;
   has AutoScalingGroupName => (is => 'ro', isa => 'Str', required => 1);
-  has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str]');
+  has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has DefaultCooldown => (is => 'ro', isa => 'Int');
   has DesiredCapacity => (is => 'ro', isa => 'Int');
   has HealthCheckGracePeriod => (is => 'ro', isa => 'Int');
   has HealthCheckType => (is => 'ro', isa => 'Str');
   has InstanceId => (is => 'ro', isa => 'Str');
   has LaunchConfigurationName => (is => 'ro', isa => 'Str');
-  has LoadBalancerNames => (is => 'ro', isa => 'ArrayRef[Str]');
+  has LoadBalancerNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has MaxSize => (is => 'ro', isa => 'Int', required => 1);
   has MinSize => (is => 'ro', isa => 'Int', required => 1);
   has NewInstancesProtectedFromScaleIn => (is => 'ro', isa => 'Bool');
   has PlacementGroup => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::AutoScaling::Tag]');
-  has TerminationPolicies => (is => 'ro', isa => 'ArrayRef[Str]');
+  has TargetGroupARNs => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has TerminationPolicies => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has VPCZoneIdentifier => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
@@ -55,7 +56,7 @@ your AWS account.
 
 
 
-=head2 AvailabilityZones => ArrayRef[Str]
+=head2 AvailabilityZones => ArrayRef[Str|Undef]
 
 One or more Availability Zones for the group. This parameter is
 optional if you specify one or more subnets.
@@ -68,7 +69,7 @@ The amount of time, in seconds, after a scaling activity completes
 before another scaling activity can start. The default is 300.
 
 For more information, see Auto Scaling Cooldowns in the I<Auto Scaling
-Developer Guide>.
+User Guide>.
 
 
 
@@ -85,11 +86,11 @@ and less than or equal to the maximum size of the group.
 The amount of time, in seconds, that Auto Scaling waits before checking
 the health status of an EC2 instance that has come into service. During
 this time, any health check failures for the instance are ignored. The
-default is 300.
+default is 0.
 
 This parameter is required if you are adding an C<ELB> health check.
 
-For more information, see Health Checks in the I<Auto Scaling Developer
+For more information, see Health Checks in the I<Auto Scaling User
 Guide>.
 
 
@@ -101,7 +102,7 @@ and C<ELB>.
 
 By default, health checks use Amazon EC2 instance status checks to
 determine the health of an instance. For more information, see Health
-Checks in the I<Auto Scaling Developer Guide>.
+Checks in the I<Auto Scaling User Guide>.
 
 
 
@@ -117,7 +118,7 @@ configuration derives its attributes from the specified instance, with
 the exception of the block device mapping.
 
 For more information, see Create an Auto Scaling Group Using an EC2
-Instance in the I<Auto Scaling Developer Guide>.
+Instance in the I<Auto Scaling User Guide>.
 
 
 
@@ -128,12 +129,13 @@ instance instead of a launch configuration.
 
 
 
-=head2 LoadBalancerNames => ArrayRef[Str]
+=head2 LoadBalancerNames => ArrayRef[Str|Undef]
 
-One or more load balancers.
+One or more Classic load balancers. To specify an Application load
+balancer, use C<TargetGroupARNs> instead.
 
 For more information, see Using a Load Balancer With an Auto Scaling
-Group in the I<Auto Scaling Developer Guide>.
+Group in the I<Auto Scaling User Guide>.
 
 
 
@@ -169,18 +171,24 @@ I<Amazon Elastic Compute Cloud User Guide>.
 One or more tags.
 
 For more information, see Tagging Auto Scaling Groups and Instances in
-the I<Auto Scaling Developer Guide>.
+the I<Auto Scaling User Guide>.
 
 
 
-=head2 TerminationPolicies => ArrayRef[Str]
+=head2 TargetGroupARNs => ArrayRef[Str|Undef]
+
+The Amazon Resource Names (ARN) of the target groups.
+
+
+
+=head2 TerminationPolicies => ArrayRef[Str|Undef]
 
 One or more termination policies used to select the instance to
 terminate. These policies are executed in the order that they are
 listed.
 
 For more information, see Controlling Which Instances Auto Scaling
-Terminates During Scale In in the I<Auto Scaling Developer Guide>.
+Terminates During Scale In in the I<Auto Scaling User Guide>.
 
 
 
@@ -194,7 +202,7 @@ that the subnets' Availability Zones match the Availability Zones
 specified.
 
 For more information, see Launching Auto Scaling Instances in a VPC in
-the I<Auto Scaling Developer Guide>.
+the I<Auto Scaling User Guide>.
 
 
 

@@ -2,8 +2,8 @@
 package Paws::ElasticBeanstalk::DescribeEnvironments;
   use Moose;
   has ApplicationName => (is => 'ro', isa => 'Str');
-  has EnvironmentIds => (is => 'ro', isa => 'ArrayRef[Str]');
-  has EnvironmentNames => (is => 'ro', isa => 'ArrayRef[Str]');
+  has EnvironmentIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has EnvironmentNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has IncludedDeletedBackTo => (is => 'ro', isa => 'Str');
   has IncludeDeleted => (is => 'ro', isa => 'Bool');
   has VersionLabel => (is => 'ro', isa => 'Str');
@@ -45,14 +45,14 @@ to include only those that are associated with this application.
 
 
 
-=head2 EnvironmentIds => ArrayRef[Str]
+=head2 EnvironmentIds => ArrayRef[Str|Undef]
 
 If specified, AWS Elastic Beanstalk restricts the returned descriptions
 to include only those that have the specified IDs.
 
 
 
-=head2 EnvironmentNames => ArrayRef[Str]
+=head2 EnvironmentNames => ArrayRef[Str|Undef]
 
 If specified, AWS Elastic Beanstalk restricts the returned descriptions
 to include only those that have the specified names.

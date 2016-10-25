@@ -41,18 +41,18 @@ This class has no description
 =head2 AvailableCapacity => Int
 
   The number of instances that can still be launched onto the Dedicated
-host.
+Host.
 
 
 =head2 InstanceType => Str
 
-  The instance type size supported by the Dedicated host.
+  The instance type size supported by the Dedicated Host.
 
 
 =head2 TotalCapacity => Int
 
   The total number of instances that can be launched onto the Dedicated
-host.
+Host.
 
 
 

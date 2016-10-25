@@ -1,7 +1,7 @@
 
 package Paws::Config::GetComplianceDetailsByConfigRule;
   use Moose;
-  has ComplianceTypes => (is => 'ro', isa => 'ArrayRef[Str]');
+  has ComplianceTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has ConfigRuleName => (is => 'ro', isa => 'Str', required => 1);
   has Limit => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
@@ -36,7 +36,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 ComplianceTypes => ArrayRef[Str]
+=head2 ComplianceTypes => ArrayRef[Str|Undef]
 
 Filters the results by compliance.
 

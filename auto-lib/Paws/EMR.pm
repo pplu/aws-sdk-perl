@@ -77,6 +77,16 @@ package Paws::EMR;
     my $call_object = $self->new_with_coercions('Paws::EMR::AddTags', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateSecurityConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EMR::CreateSecurityConfiguration', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteSecurityConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EMR::DeleteSecurityConfiguration', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeCluster {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EMR::DescribeCluster', @_);
@@ -85,6 +95,11 @@ package Paws::EMR;
   sub DescribeJobFlows {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EMR::DescribeJobFlows', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeSecurityConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EMR::DescribeSecurityConfiguration', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeStep {
@@ -110,6 +125,11 @@ package Paws::EMR;
   sub ListInstances {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EMR::ListInstances', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListSecurityConfigurations {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EMR::ListSecurityConfigurations', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListSteps {
@@ -148,7 +168,7 @@ package Paws::EMR;
     return $self->caller->do_call($self, $call_object);
   }
 
-  sub operations { qw/AddInstanceGroups AddJobFlowSteps AddTags DescribeCluster DescribeJobFlows DescribeStep ListBootstrapActions ListClusters ListInstanceGroups ListInstances ListSteps ModifyInstanceGroups RemoveTags RunJobFlow SetTerminationProtection SetVisibleToAllUsers TerminateJobFlows / }
+  sub operations { qw/AddInstanceGroups AddJobFlowSteps AddTags CreateSecurityConfiguration DeleteSecurityConfiguration DescribeCluster DescribeJobFlows DescribeSecurityConfiguration DescribeStep ListBootstrapActions ListClusters ListInstanceGroups ListInstances ListSecurityConfigurations ListSteps ModifyInstanceGroups RemoveTags RunJobFlow SetTerminationProtection SetVisibleToAllUsers TerminateJobFlows / }
 
 1;
 
@@ -237,6 +257,27 @@ Amazon EMR resource allocation costs. For more information, see Tagging
 Amazon EMR Resources.
 
 
+=head2 CreateSecurityConfiguration(Name => Str, SecurityConfiguration => Str)
+
+Each argument is described in detail in: L<Paws::EMR::CreateSecurityConfiguration>
+
+Returns: a L<Paws::EMR::CreateSecurityConfigurationOutput> instance
+
+  Creates a security configuration using EMR Security Configurations,
+which are stored in the service. Security Configurations enable you to
+more easily create a configuration, reuse it, and apply it whenever a
+cluster is created.
+
+
+=head2 DeleteSecurityConfiguration(Name => Str)
+
+Each argument is described in detail in: L<Paws::EMR::DeleteSecurityConfiguration>
+
+Returns: a L<Paws::EMR::DeleteSecurityConfigurationOutput> instance
+
+  Deletes a security configuration.
+
+
 =head2 DescribeCluster(ClusterId => Str)
 
 Each argument is described in detail in: L<Paws::EMR::DescribeCluster>
@@ -248,7 +289,7 @@ configuration, VPC settings, and so on. For information about the
 cluster steps, see ListSteps.
 
 
-=head2 DescribeJobFlows([CreatedAfter => Str, CreatedBefore => Str, JobFlowIds => ArrayRef[Str], JobFlowStates => ArrayRef[Str]])
+=head2 DescribeJobFlows([CreatedAfter => Str, CreatedBefore => Str, JobFlowIds => ArrayRef[Str|Undef], JobFlowStates => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::EMR::DescribeJobFlows>
 
@@ -270,16 +311,29 @@ following criteria are returned:
 
 =over
 
-=item * Job flows created and completed in the last two weeks
+=item *
 
-=item * Job flows created within the last two months that are in one of
-the following states: C<RUNNING>, C<WAITING>, C<SHUTTING_DOWN>,
-C<STARTING>
+Job flows created and completed in the last two weeks
+
+=item *
+
+Job flows created within the last two months that are in one of the
+following states: C<RUNNING>, C<WAITING>, C<SHUTTING_DOWN>, C<STARTING>
 
 =back
 
 Amazon Elastic MapReduce can return a maximum of 512 job flow
 descriptions.
+
+
+=head2 DescribeSecurityConfiguration(Name => Str)
+
+Each argument is described in detail in: L<Paws::EMR::DescribeSecurityConfiguration>
+
+Returns: a L<Paws::EMR::DescribeSecurityConfigurationOutput> instance
+
+  Provides the details of a security configuration by returning the
+configuration JSON.
 
 
 =head2 DescribeStep(ClusterId => Str, StepId => Str)
@@ -301,7 +355,7 @@ Returns: a L<Paws::EMR::ListBootstrapActionsOutput> instance
 cluster.
 
 
-=head2 ListClusters([ClusterStates => ArrayRef[Str], CreatedAfter => Str, CreatedBefore => Str, Marker => Str])
+=head2 ListClusters([ClusterStates => ArrayRef[Str|Undef], CreatedAfter => Str, CreatedBefore => Str, Marker => Str])
 
 Each argument is described in detail in: L<Paws::EMR::ListClusters>
 
@@ -324,7 +378,7 @@ Returns: a L<Paws::EMR::ListInstanceGroupsOutput> instance
   Provides all available details about the instance groups in a cluster.
 
 
-=head2 ListInstances(ClusterId => Str, [InstanceGroupId => Str, InstanceGroupTypes => ArrayRef[Str], InstanceStates => ArrayRef[Str], Marker => Str])
+=head2 ListInstances(ClusterId => Str, [InstanceGroupId => Str, InstanceGroupTypes => ArrayRef[Str|Undef], InstanceStates => ArrayRef[Str|Undef], Marker => Str])
 
 Each argument is described in detail in: L<Paws::EMR::ListInstances>
 
@@ -337,7 +391,20 @@ Ready state, when instances become available to Amazon EMR to use for
 jobs, and the IP addresses for cluster instances, etc.
 
 
-=head2 ListSteps(ClusterId => Str, [Marker => Str, StepIds => ArrayRef[Str], StepStates => ArrayRef[Str]])
+=head2 ListSecurityConfigurations([Marker => Str])
+
+Each argument is described in detail in: L<Paws::EMR::ListSecurityConfigurations>
+
+Returns: a L<Paws::EMR::ListSecurityConfigurationsOutput> instance
+
+  Lists all the security configurations visible to this account,
+providing their creation dates and times, and their names. This call
+returns a maximum of 50 clusters per call, but returns a marker to
+track the paging of the cluster list across multiple
+ListSecurityConfigurations calls.
+
+
+=head2 ListSteps(ClusterId => Str, [Marker => Str, StepIds => ArrayRef[Str|Undef], StepStates => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::EMR::ListSteps>
 
@@ -358,7 +425,7 @@ target instance count for the group and the instance group ID. The call
 will either succeed or fail atomically.
 
 
-=head2 RemoveTags(ResourceId => Str, TagKeys => ArrayRef[Str])
+=head2 RemoveTags(ResourceId => Str, TagKeys => ArrayRef[Str|Undef])
 
 Each argument is described in detail in: L<Paws::EMR::RemoveTags>
 
@@ -373,7 +440,7 @@ The following example removes the stack tag with value Prod from a
 cluster:
 
 
-=head2 RunJobFlow(Instances => L<Paws::EMR::JobFlowInstancesConfig>, Name => Str, [AdditionalInfo => Str, AmiVersion => Str, Applications => ArrayRef[L<Paws::EMR::Application>], BootstrapActions => ArrayRef[L<Paws::EMR::BootstrapActionConfig>], Configurations => ArrayRef[L<Paws::EMR::Configuration>], JobFlowRole => Str, LogUri => Str, NewSupportedProducts => ArrayRef[L<Paws::EMR::SupportedProductConfig>], ReleaseLabel => Str, ServiceRole => Str, Steps => ArrayRef[L<Paws::EMR::StepConfig>], SupportedProducts => ArrayRef[Str], Tags => ArrayRef[L<Paws::EMR::Tag>], VisibleToAllUsers => Bool])
+=head2 RunJobFlow(Instances => L<Paws::EMR::JobFlowInstancesConfig>, Name => Str, [AdditionalInfo => Str, AmiVersion => Str, Applications => ArrayRef[L<Paws::EMR::Application>], BootstrapActions => ArrayRef[L<Paws::EMR::BootstrapActionConfig>], Configurations => ArrayRef[L<Paws::EMR::Configuration>], JobFlowRole => Str, LogUri => Str, NewSupportedProducts => ArrayRef[L<Paws::EMR::SupportedProductConfig>], ReleaseLabel => Str, SecurityConfiguration => Str, ServiceRole => Str, Steps => ArrayRef[L<Paws::EMR::StepConfig>], SupportedProducts => ArrayRef[Str|Undef], Tags => ArrayRef[L<Paws::EMR::Tag>], VisibleToAllUsers => Bool])
 
 Each argument is described in detail in: L<Paws::EMR::RunJobFlow>
 
@@ -406,7 +473,7 @@ For long running job flows, we recommend that you periodically store
 your results.
 
 
-=head2 SetTerminationProtection(JobFlowIds => ArrayRef[Str], TerminationProtected => Bool)
+=head2 SetTerminationProtection(JobFlowIds => ArrayRef[Str|Undef], TerminationProtected => Bool)
 
 Each argument is described in detail in: L<Paws::EMR::SetTerminationProtection>
 
@@ -433,7 +500,7 @@ For more information, go to Protecting a Job Flow from Termination in
 the I<Amazon Elastic MapReduce Developer's Guide.>
 
 
-=head2 SetVisibleToAllUsers(JobFlowIds => ArrayRef[Str], VisibleToAllUsers => Bool)
+=head2 SetVisibleToAllUsers(JobFlowIds => ArrayRef[Str|Undef], VisibleToAllUsers => Bool)
 
 Each argument is described in detail in: L<Paws::EMR::SetVisibleToAllUsers>
 
@@ -447,7 +514,7 @@ The SetVisibleToAllUsers action can be called only by an IAM user who
 created the job flow or the AWS account that owns the job flow.
 
 
-=head2 TerminateJobFlows(JobFlowIds => ArrayRef[Str])
+=head2 TerminateJobFlows(JobFlowIds => ArrayRef[Str|Undef])
 
 Each argument is described in detail in: L<Paws::EMR::TerminateJobFlows>
 

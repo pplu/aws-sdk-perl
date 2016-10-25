@@ -1,6 +1,8 @@
 package Paws::CodeDeploy::DeploymentGroupInfo;
   use Moose;
+  has AlarmConfiguration => (is => 'ro', isa => 'Paws::CodeDeploy::AlarmConfiguration', xmlname => 'alarmConfiguration', request_name => 'alarmConfiguration', traits => ['Unwrapped','NameInRequest']);
   has ApplicationName => (is => 'ro', isa => 'Str', xmlname => 'applicationName', request_name => 'applicationName', traits => ['Unwrapped','NameInRequest']);
+  has AutoRollbackConfiguration => (is => 'ro', isa => 'Paws::CodeDeploy::AutoRollbackConfiguration', xmlname => 'autoRollbackConfiguration', request_name => 'autoRollbackConfiguration', traits => ['Unwrapped','NameInRequest']);
   has AutoScalingGroups => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::AutoScalingGroup]', xmlname => 'autoScalingGroups', request_name => 'autoScalingGroups', traits => ['Unwrapped','NameInRequest']);
   has DeploymentConfigName => (is => 'ro', isa => 'Str', xmlname => 'deploymentConfigName', request_name => 'deploymentConfigName', traits => ['Unwrapped','NameInRequest']);
   has DeploymentGroupId => (is => 'ro', isa => 'Str', xmlname => 'deploymentGroupId', request_name => 'deploymentGroupId', traits => ['Unwrapped','NameInRequest']);
@@ -29,14 +31,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CodeDeploy::DeploymentGroupInfo object:
 
-  $service_obj->Method(Att1 => { ApplicationName => $value, ..., TriggerConfigurations => $value  });
+  $service_obj->Method(Att1 => { AlarmConfiguration => $value, ..., TriggerConfigurations => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::CodeDeploy::DeploymentGroupInfo object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->ApplicationName
+  $result->Att1->AlarmConfiguration
 
 =head1 DESCRIPTION
 
@@ -45,9 +47,20 @@ Information about a deployment group.
 =head1 ATTRIBUTES
 
 
+=head2 AlarmConfiguration => L<Paws::CodeDeploy::AlarmConfiguration>
+
+  A list of alarms associated with the deployment group.
+
+
 =head2 ApplicationName => Str
 
   The application name.
+
+
+=head2 AutoRollbackConfiguration => L<Paws::CodeDeploy::AutoRollbackConfiguration>
+
+  Information about the automatic rollback configuration associated with
+the deployment group.
 
 
 =head2 AutoScalingGroups => ArrayRef[L<Paws::CodeDeploy::AutoScalingGroup>]
@@ -93,7 +106,7 @@ type and location.
 
 =head2 TriggerConfigurations => ArrayRef[L<Paws::CodeDeploy::TriggerConfig>]
 
-  A list of associated triggers.
+  Information about triggers associated with the deployment group.
 
 
 

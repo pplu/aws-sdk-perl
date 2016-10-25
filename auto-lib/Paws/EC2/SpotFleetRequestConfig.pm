@@ -1,5 +1,6 @@
 package Paws::EC2::SpotFleetRequestConfig;
   use Moose;
+  has ActivityStatus => (is => 'ro', isa => 'Str', xmlname => 'activityStatus', traits => ['Unwrapped']);
   has CreateTime => (is => 'ro', isa => 'Str', xmlname => 'createTime', traits => ['Unwrapped'], required => 1);
   has SpotFleetRequestConfig => (is => 'ro', isa => 'Paws::EC2::SpotFleetRequestConfigData', xmlname => 'spotFleetRequestConfig', traits => ['Unwrapped'], required => 1);
   has SpotFleetRequestId => (is => 'ro', isa => 'Str', xmlname => 'spotFleetRequestId', traits => ['Unwrapped'], required => 1);
@@ -23,20 +24,30 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::EC2::SpotFleetRequestConfig object:
 
-  $service_obj->Method(Att1 => { CreateTime => $value, ..., SpotFleetRequestState => $value  });
+  $service_obj->Method(Att1 => { ActivityStatus => $value, ..., SpotFleetRequestState => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::SpotFleetRequestConfig object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->CreateTime
+  $result->Att1->ActivityStatus
 
 =head1 DESCRIPTION
 
 This class has no description
 
 =head1 ATTRIBUTES
+
+
+=head2 ActivityStatus => Str
+
+  The progress of the Spot fleet request. If there is an error, the
+status is C<error>. After all bids are placed, the status is
+C<pending_fulfillment>. If the size of the fleet is equal to or greater
+than its target capacity, the status is C<fulfilled>. If the size of
+the fleet is decreased, the status is C<pending_termination> while Spot
+instances are terminating.
 
 
 =head2 B<REQUIRED> CreateTime => Str

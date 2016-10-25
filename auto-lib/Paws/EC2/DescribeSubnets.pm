@@ -3,7 +3,7 @@ package Paws::EC2::DescribeSubnets;
   use Moose;
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has Filters => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
-  has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'SubnetId' );
+  has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'SubnetId' );
 
   use MooseX::ClassAttribute;
 
@@ -110,7 +110,7 @@ C<vpc-id> - The ID of the VPC for the subnet.
 
 
 
-=head2 SubnetIds => ArrayRef[Str]
+=head2 SubnetIds => ArrayRef[Str|Undef]
 
 One or more subnet IDs.
 

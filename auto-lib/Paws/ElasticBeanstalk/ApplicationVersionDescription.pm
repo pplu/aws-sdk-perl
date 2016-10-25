@@ -4,6 +4,7 @@ package Paws::ElasticBeanstalk::ApplicationVersionDescription;
   has DateCreated => (is => 'ro', isa => 'Str');
   has DateUpdated => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
+  has SourceBuildInformation => (is => 'ro', isa => 'Paws::ElasticBeanstalk::SourceBuildInformation');
   has SourceBundle => (is => 'ro', isa => 'Paws::ElasticBeanstalk::S3Location');
   has Status => (is => 'ro', isa => 'Str');
   has VersionLabel => (is => 'ro', isa => 'Str');
@@ -60,6 +61,11 @@ Describes the properties of an application version.
 =head2 Description => Str
 
   The description of this application version.
+
+
+=head2 SourceBuildInformation => L<Paws::ElasticBeanstalk::SourceBuildInformation>
+
+  
 
 
 =head2 SourceBundle => L<Paws::ElasticBeanstalk::S3Location>

@@ -3,6 +3,7 @@ package Paws::RDS::OptionGroup;
   has AllowsVpcAndNonVpcInstanceMemberships => (is => 'ro', isa => 'Bool');
   has EngineName => (is => 'ro', isa => 'Str');
   has MajorEngineVersion => (is => 'ro', isa => 'Str');
+  has OptionGroupArn => (is => 'ro', isa => 'Str');
   has OptionGroupDescription => (is => 'ro', isa => 'Str');
   has OptionGroupName => (is => 'ro', isa => 'Str');
   has Options => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Option]');
@@ -58,6 +59,11 @@ to.
 =head2 MajorEngineVersion => Str
 
   Indicates the major engine version associated with this option group.
+
+
+=head2 OptionGroupArn => Str
+
+  The Amazon Resource Name (ARN) for the option group.
 
 
 =head2 OptionGroupDescription => Str

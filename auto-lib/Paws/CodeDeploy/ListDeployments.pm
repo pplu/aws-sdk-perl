@@ -4,7 +4,7 @@ package Paws::CodeDeploy::ListDeployments;
   has ApplicationName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'applicationName' );
   has CreateTimeRange => (is => 'ro', isa => 'Paws::CodeDeploy::TimeRange', traits => ['NameInRequest'], request_name => 'createTimeRange' );
   has DeploymentGroupName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'deploymentGroupName' );
-  has IncludeOnlyStatuses => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'includeOnlyStatuses' );
+  has IncludeOnlyStatuses => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'includeOnlyStatuses' );
   has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
 
   use MooseX::ClassAttribute;
@@ -57,25 +57,35 @@ The name of an existing deployment group for the specified application.
 
 
 
-=head2 IncludeOnlyStatuses => ArrayRef[Str]
+=head2 IncludeOnlyStatuses => ArrayRef[Str|Undef]
 
 A subset of deployments to list by status:
 
 =over
 
-=item * Created: Include created deployments in the resulting list.
+=item *
 
-=item * Queued: Include queued deployments in the resulting list.
+Created: Include created deployments in the resulting list.
 
-=item * In Progress: Include in-progress deployments in the resulting
-list.
+=item *
 
-=item * Succeeded: Include successful deployments in the resulting
-list.
+Queued: Include queued deployments in the resulting list.
 
-=item * Failed: Include failed deployments in the resulting list.
+=item *
 
-=item * Stopped: Include stopped deployments in the resulting list.
+In Progress: Include in-progress deployments in the resulting list.
+
+=item *
+
+Succeeded: Include successful deployments in the resulting list.
+
+=item *
+
+Failed: Include failed deployments in the resulting list.
+
+=item *
+
+Stopped: Include stopped deployments in the resulting list.
 
 =back
 

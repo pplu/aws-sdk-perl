@@ -1,7 +1,7 @@
 package Paws::SSM::InstanceInformationFilter;
   use Moose;
   has Key => (is => 'ro', isa => 'Str', xmlname => 'key', request_name => 'key', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has ValueSet => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'valueSet', request_name => 'valueSet', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has ValueSet => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'valueSet', request_name => 'valueSet', traits => ['Unwrapped','NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +42,7 @@ Describes a filter for a specific list of instances.
   The name of the filter.
 
 
-=head2 B<REQUIRED> ValueSet => ArrayRef[Str]
+=head2 B<REQUIRED> ValueSet => ArrayRef[Str|Undef]
 
   The filter values.
 

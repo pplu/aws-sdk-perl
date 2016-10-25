@@ -1,6 +1,6 @@
 package Paws::RedShift::EventInfoMap;
   use Moose;
-  has EventCategories => (is => 'ro', isa => 'ArrayRef[Str]');
+  has EventCategories => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has EventDescription => (is => 'ro', isa => 'Str');
   has EventId => (is => 'ro', isa => 'Str');
   has Severity => (is => 'ro', isa => 'Str');
@@ -39,7 +39,7 @@ Describes event information.
 =head1 ATTRIBUTES
 
 
-=head2 EventCategories => ArrayRef[Str]
+=head2 EventCategories => ArrayRef[Str|Undef]
 
   The category of an Amazon Redshift event.
 

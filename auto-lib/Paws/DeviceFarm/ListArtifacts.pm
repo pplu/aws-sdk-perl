@@ -57,11 +57,17 @@ Allowed values include:
 
 =over
 
-=item * FILE: The artifacts are files.
+=item *
 
-=item * LOG: The artifacts are logs.
+FILE: The artifacts are files.
 
-=item * SCREENSHOT: The artifacts are screenshots.
+=item *
+
+LOG: The artifacts are logs.
+
+=item *
+
+SCREENSHOT: The artifacts are screenshots.
 
 =back
 

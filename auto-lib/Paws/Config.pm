@@ -275,19 +275,24 @@ have specified.
 
 =over
 
-=item * Notification of starting the delivery.
+=item *
 
-=item * Notification of delivery completed, if the delivery was
-successfully completed.
+Notification of starting the delivery.
 
-=item * Notification of delivery failure, if the delivery failed to
-complete.
+=item *
+
+Notification of delivery completed, if the delivery was successfully
+completed.
+
+=item *
+
+Notification of delivery failure, if the delivery failed to complete.
 
 =back
 
 
 
-=head2 DescribeComplianceByConfigRule([ComplianceTypes => ArrayRef[Str], ConfigRuleNames => ArrayRef[Str], NextToken => Str])
+=head2 DescribeComplianceByConfigRule([ComplianceTypes => ArrayRef[Str|Undef], ConfigRuleNames => ArrayRef[Str|Undef], NextToken => Str])
 
 Each argument is described in detail in: L<Paws::Config::DescribeComplianceByConfigRule>
 
@@ -306,26 +311,32 @@ following conditions:
 
 =over
 
-=item * AWS Config has never invoked an evaluation for the rule. To
-check whether it has, use the C<DescribeConfigRuleEvaluationStatus>
-action to get the C<LastSuccessfulInvocationTime> and
+=item *
+
+AWS Config has never invoked an evaluation for the rule. To check
+whether it has, use the C<DescribeConfigRuleEvaluationStatus> action to
+get the C<LastSuccessfulInvocationTime> and
 C<LastFailedInvocationTime>.
 
-=item * The rule's AWS Lambda function is failing to send evaluation
-results to AWS Config. Verify that the role that you assigned to your
+=item *
+
+The rule's AWS Lambda function is failing to send evaluation results to
+AWS Config. Verify that the role that you assigned to your
 configuration recorder includes the C<config:PutEvaluations>
 permission. If the rule is a custom rule, verify that the AWS Lambda
 execution role includes the C<config:PutEvaluations> permission.
 
-=item * The rule's AWS Lambda function has returned C<NOT_APPLICABLE>
-for all evaluation results. This can occur if the resources were
-deleted or removed from the rule's scope.
+=item *
+
+The rule's AWS Lambda function has returned C<NOT_APPLICABLE> for all
+evaluation results. This can occur if the resources were deleted or
+removed from the rule's scope.
 
 =back
 
 
 
-=head2 DescribeComplianceByResource([ComplianceTypes => ArrayRef[Str], Limit => Int, NextToken => Str, ResourceId => Str, ResourceType => Str])
+=head2 DescribeComplianceByResource([ComplianceTypes => ArrayRef[Str|Undef], Limit => Int, NextToken => Str, ResourceId => Str, ResourceType => Str])
 
 Each argument is described in detail in: L<Paws::Config::DescribeComplianceByResource>
 
@@ -345,26 +356,32 @@ following conditions about the rules that evaluate the resource:
 
 =over
 
-=item * AWS Config has never invoked an evaluation for the rule. To
-check whether it has, use the C<DescribeConfigRuleEvaluationStatus>
-action to get the C<LastSuccessfulInvocationTime> and
+=item *
+
+AWS Config has never invoked an evaluation for the rule. To check
+whether it has, use the C<DescribeConfigRuleEvaluationStatus> action to
+get the C<LastSuccessfulInvocationTime> and
 C<LastFailedInvocationTime>.
 
-=item * The rule's AWS Lambda function is failing to send evaluation
-results to AWS Config. Verify that the role that you assigned to your
+=item *
+
+The rule's AWS Lambda function is failing to send evaluation results to
+AWS Config. Verify that the role that you assigned to your
 configuration recorder includes the C<config:PutEvaluations>
 permission. If the rule is a custom rule, verify that the AWS Lambda
 execution role includes the C<config:PutEvaluations> permission.
 
-=item * The rule's AWS Lambda function has returned C<NOT_APPLICABLE>
-for all evaluation results. This can occur if the resources were
-deleted or removed from the rule's scope.
+=item *
+
+The rule's AWS Lambda function has returned C<NOT_APPLICABLE> for all
+evaluation results. This can occur if the resources were deleted or
+removed from the rule's scope.
 
 =back
 
 
 
-=head2 DescribeConfigRuleEvaluationStatus([ConfigRuleNames => ArrayRef[Str]])
+=head2 DescribeConfigRuleEvaluationStatus([ConfigRuleNames => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::Config::DescribeConfigRuleEvaluationStatus>
 
@@ -376,7 +393,7 @@ invoked the rule, the last time AWS Config failed to invoke the rule,
 and the related error for the last failure.
 
 
-=head2 DescribeConfigRules([ConfigRuleNames => ArrayRef[Str], NextToken => Str])
+=head2 DescribeConfigRules([ConfigRuleNames => ArrayRef[Str|Undef], NextToken => Str])
 
 Each argument is described in detail in: L<Paws::Config::DescribeConfigRules>
 
@@ -385,20 +402,21 @@ Returns: a L<Paws::Config::DescribeConfigRulesResponse> instance
   Returns details about your AWS Config rules.
 
 
-=head2 DescribeConfigurationRecorders([ConfigurationRecorderNames => ArrayRef[Str]])
+=head2 DescribeConfigurationRecorders([ConfigurationRecorderNames => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::Config::DescribeConfigurationRecorders>
 
 Returns: a L<Paws::Config::DescribeConfigurationRecordersResponse> instance
 
-  Returns the name of one or more specified configuration recorders. If
-the recorder name is not specified, this action returns the names of
-all the configuration recorders associated with the account.
+  Returns the details for the specified configuration recorders. If the
+configuration recorder is not specified, this action returns the
+details for all configuration recorders associated with the account.
 
-Currently, you can specify only one configuration recorder per account.
+Currently, you can specify only one configuration recorder per region
+in your account.
 
 
-=head2 DescribeConfigurationRecorderStatus([ConfigurationRecorderNames => ArrayRef[Str]])
+=head2 DescribeConfigurationRecorderStatus([ConfigurationRecorderNames => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::Config::DescribeConfigurationRecorderStatus>
 
@@ -408,10 +426,11 @@ Returns: a L<Paws::Config::DescribeConfigurationRecorderStatusResponse> instance
 a configuration recorder is not specified, this action returns the
 status of all configuration recorder associated with the account.
 
-Currently, you can specify only one configuration recorder per account.
+Currently, you can specify only one configuration recorder per region
+in your account.
 
 
-=head2 DescribeDeliveryChannels([DeliveryChannelNames => ArrayRef[Str]])
+=head2 DescribeDeliveryChannels([DeliveryChannelNames => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::Config::DescribeDeliveryChannels>
 
@@ -421,10 +440,11 @@ Returns: a L<Paws::Config::DescribeDeliveryChannelsResponse> instance
 channel is not specified, this action returns the details of all
 delivery channels associated with the account.
 
-Currently, you can specify only one delivery channel per account.
+Currently, you can specify only one delivery channel per region in your
+account.
 
 
-=head2 DescribeDeliveryChannelStatus([DeliveryChannelNames => ArrayRef[Str]])
+=head2 DescribeDeliveryChannelStatus([DeliveryChannelNames => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::Config::DescribeDeliveryChannelStatus>
 
@@ -434,10 +454,11 @@ Returns: a L<Paws::Config::DescribeDeliveryChannelStatusResponse> instance
 delivery channel is not specified, this action returns the current
 status of all delivery channels associated with the account.
 
-Currently, you can specify only one delivery channel per account.
+Currently, you can specify only one delivery channel per region in your
+account.
 
 
-=head2 GetComplianceDetailsByConfigRule(ConfigRuleName => Str, [ComplianceTypes => ArrayRef[Str], Limit => Int, NextToken => Str])
+=head2 GetComplianceDetailsByConfigRule(ConfigRuleName => Str, [ComplianceTypes => ArrayRef[Str|Undef], Limit => Int, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::Config::GetComplianceDetailsByConfigRule>
 
@@ -449,7 +470,7 @@ each resource was last evaluated, and whether each resource complies
 with the rule.
 
 
-=head2 GetComplianceDetailsByResource(ResourceId => Str, ResourceType => Str, [ComplianceTypes => ArrayRef[Str], NextToken => Str])
+=head2 GetComplianceDetailsByResource(ResourceId => Str, ResourceType => Str, [ComplianceTypes => ArrayRef[Str|Undef], NextToken => Str])
 
 Each argument is described in detail in: L<Paws::Config::GetComplianceDetailsByResource>
 
@@ -471,7 +492,7 @@ Returns: a L<Paws::Config::GetComplianceSummaryByConfigRuleResponse> instance
 noncompliant, up to a maximum of 25 for each.
 
 
-=head2 GetComplianceSummaryByResourceType([ResourceTypes => ArrayRef[Str]])
+=head2 GetComplianceSummaryByResourceType([ResourceTypes => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::Config::GetComplianceSummaryByResourceType>
 
@@ -505,7 +526,7 @@ specified C<limit>. In such cases, you can make another call, using the
 C<nextToken>.
 
 
-=head2 ListDiscoveredResources(ResourceType => Str, [IncludeDeletedResources => Bool, Limit => Int, NextToken => Str, ResourceIds => ArrayRef[Str], ResourceName => Str])
+=head2 ListDiscoveredResources(ResourceType => Str, [IncludeDeletedResources => Bool, Limit => Int, NextToken => Str, ResourceIds => ArrayRef[Str|Undef], ResourceName => Str])
 
 Each argument is described in detail in: L<Paws::Config::ListDiscoveredResources>
 
@@ -560,9 +581,9 @@ C<ConfigRule> object. Do not specify the C<ConfigRuleArn> or the
 C<ConfigRuleId>. These values are generated by AWS Config for new
 rules.
 
-If you are updating a rule that you have added previously, specify the
-rule's C<ConfigRuleName>, C<ConfigRuleId>, or C<ConfigRuleArn> in the
-C<ConfigRule> data type that you use in this request.
+If you are updating a rule that you added previously, you can specify
+the rule by C<ConfigRuleName>, C<ConfigRuleId>, or C<ConfigRuleArn> in
+the C<ConfigRule> data type that you use in this request.
 
 The maximum number of rules that AWS Config supports is 25.
 
@@ -584,7 +605,8 @@ You can use this action to change the role C<roleARN> and/or the
 C<recordingGroup> of an existing recorder. To change the role, call the
 action on the existing configuration recorder and specify a role.
 
-Currently, you can specify only one configuration recorder per account.
+Currently, you can specify only one configuration recorder per region
+in your account.
 
 If C<ConfigurationRecorder> does not have the B<recordingGroup>
 parameter specified, the default is to record all supported resource
@@ -610,7 +632,7 @@ for the S3 bucket and the SNS topic. If you specify a different value
 for either the S3 bucket or the SNS topic, this action will keep the
 existing value for the parameter that is not changed.
 
-You can have only one delivery channel per AWS account.
+You can have only one delivery channel per region in your account.
 
 
 =head2 PutEvaluations(ResultToken => Str, [Evaluations => ArrayRef[L<Paws::Config::Evaluation>]])
@@ -624,7 +646,7 @@ Config. This action is required in every AWS Lambda function that is
 invoked by an AWS Config rule.
 
 
-=head2 StartConfigRulesEvaluation([ConfigRuleNames => ArrayRef[Str]])
+=head2 StartConfigRulesEvaluation([ConfigRuleNames => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::Config::StartConfigRulesEvaluation>
 
@@ -633,10 +655,46 @@ Returns: a L<Paws::Config::StartConfigRulesEvaluationResponse> instance
   Evaluates your resources against the specified Config rules. You can
 specify up to 25 Config rules per request.
 
-An existing StartConfigRulesEvaluation call must complete for the rules
-that you specified before you can call the API again. If you chose to
-have AWS Config stream to an Amazon SNS topic, you will receive a
-notification when the evaluation starts.
+An existing StartConfigRulesEvaluation call must complete for the
+specified rules before you can call the API again. If you chose to have
+AWS Config stream to an Amazon SNS topic, you will receive a
+C<ConfigRuleEvaluationStarted> notification when the evaluation starts.
+
+You don't need to call the C<StartConfigRulesEvaluation> API to run an
+evaluation for a new rule. When you create a new rule, AWS Config
+automatically evaluates your resources against the rule.
+
+The C<StartConfigRulesEvaluation> API is useful if you want to run
+on-demand evaluations, such as the following example:
+
+=over
+
+=item 1.
+
+You have a custom rule that evaluates your IAM resources every 24
+hours.
+
+=item 2.
+
+You update your Lambda function to add additional conditions to your
+rule.
+
+=item 3.
+
+Instead of waiting for the next periodic evaluation, you call the
+C<StartConfigRulesEvaluation> API.
+
+=item 4.
+
+AWS Config invokes your Lambda function and evaluates your IAM
+resources.
+
+=item 5.
+
+Your custom rule will still run periodic evaluations every 24 hours.
+
+=back
+
 
 
 =head2 StartConfigurationRecorder(ConfigurationRecorderName => Str)

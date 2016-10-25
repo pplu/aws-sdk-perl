@@ -1,6 +1,6 @@
 package Paws::CodeDeploy::GenericRevisionInfo;
   use Moose;
-  has DeploymentGroups => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'deploymentGroups', request_name => 'deploymentGroups', traits => ['Unwrapped','NameInRequest']);
+  has DeploymentGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'deploymentGroups', request_name => 'deploymentGroups', traits => ['Unwrapped','NameInRequest']);
   has Description => (is => 'ro', isa => 'Str', xmlname => 'description', request_name => 'description', traits => ['Unwrapped','NameInRequest']);
   has FirstUsedTime => (is => 'ro', isa => 'Str', xmlname => 'firstUsedTime', request_name => 'firstUsedTime', traits => ['Unwrapped','NameInRequest']);
   has LastUsedTime => (is => 'ro', isa => 'Str', xmlname => 'lastUsedTime', request_name => 'lastUsedTime', traits => ['Unwrapped','NameInRequest']);
@@ -40,7 +40,7 @@ Information about an application revision.
 =head1 ATTRIBUTES
 
 
-=head2 DeploymentGroups => ArrayRef[Str]
+=head2 DeploymentGroups => ArrayRef[Str|Undef]
 
   The deployment groups for which this is the current target revision.
 

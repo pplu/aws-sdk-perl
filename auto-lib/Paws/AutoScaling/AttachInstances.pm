@@ -2,7 +2,7 @@
 package Paws::AutoScaling::AttachInstances;
   use Moose;
   has AutoScalingGroupName => (is => 'ro', isa => 'Str', required => 1);
-  has InstanceIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has InstanceIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
   use MooseX::ClassAttribute;
 
@@ -40,7 +40,7 @@ The name of the group.
 
 
 
-=head2 InstanceIds => ArrayRef[Str]
+=head2 InstanceIds => ArrayRef[Str|Undef]
 
 One or more instance IDs.
 

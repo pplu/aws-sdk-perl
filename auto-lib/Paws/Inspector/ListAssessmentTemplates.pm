@@ -1,7 +1,7 @@
 
 package Paws::Inspector::ListAssessmentTemplates;
   use Moose;
-  has AssessmentTargetArns => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'assessmentTargetArns' );
+  has AssessmentTargetArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'assessmentTargetArns' );
   has Filter => (is => 'ro', isa => 'Paws::Inspector::AssessmentTemplateFilter', traits => ['NameInRequest'], request_name => 'filter' );
   has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults' );
   has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
@@ -36,7 +36,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 AssessmentTargetArns => ArrayRef[Str]
+=head2 AssessmentTargetArns => ArrayRef[Str|Undef]
 
 A list of ARNs that specifies the assessment targets whose assessment
 templates you want to list.

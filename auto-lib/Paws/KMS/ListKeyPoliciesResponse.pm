@@ -2,7 +2,7 @@
 package Paws::KMS::ListKeyPoliciesResponse;
   use Moose;
   has NextMarker => (is => 'ro', isa => 'Str');
-  has PolicyNames => (is => 'ro', isa => 'ArrayRef[Str]');
+  has PolicyNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Truncated => (is => 'ro', isa => 'Bool');
 
 
@@ -22,7 +22,7 @@ to use for the C<Marker> parameter in a subsequent pagination request.
 
 
 
-=head2 PolicyNames => ArrayRef[Str]
+=head2 PolicyNames => ArrayRef[Str|Undef]
 
 A list of policy names. Currently, there is only one policy and it is
 named "Default".

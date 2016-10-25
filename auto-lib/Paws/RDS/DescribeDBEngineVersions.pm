@@ -7,6 +7,7 @@ package Paws::RDS::DescribeDBEngineVersions;
   has EngineVersion => (is => 'ro', isa => 'Str');
   has Filters => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Filter]');
   has ListSupportedCharacterSets => (is => 'ro', isa => 'Bool');
+  has ListSupportedTimezones => (is => 'ro', isa => 'Bool');
   has Marker => (is => 'ro', isa => 'Str');
   has MaxRecords => (is => 'ro', isa => 'Int');
 
@@ -94,9 +95,17 @@ Not currently supported.
 
 =head2 ListSupportedCharacterSets => Bool
 
-If this parameter is specified, and if the requested engine supports
-the CharacterSetName parameter for CreateDBInstance, the response
+If this parameter is specified and the requested engine supports the
+C<CharacterSetName> parameter for C<CreateDBInstance>, the response
 includes a list of supported character sets for each engine version.
+
+
+
+=head2 ListSupportedTimezones => Bool
+
+If this parameter is specified and the requested engine supports the
+C<TimeZone> parameter for C<CreateDBInstance>, the response includes a
+list of supported time zones for each engine version.
 
 
 

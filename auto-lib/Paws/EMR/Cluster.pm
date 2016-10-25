@@ -12,6 +12,7 @@ package Paws::EMR::Cluster;
   has ReleaseLabel => (is => 'ro', isa => 'Str');
   has RequestedAmiVersion => (is => 'ro', isa => 'Str');
   has RunningAmiVersion => (is => 'ro', isa => 'Str');
+  has SecurityConfiguration => (is => 'ro', isa => 'Str');
   has ServiceRole => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Paws::EMR::ClusterStatus');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EMR::Tag]');
@@ -120,6 +121,11 @@ only an approximation and does not reflect the actual billing rate.
 =head2 RunningAmiVersion => Str
 
   The AMI version running on this cluster.
+
+
+=head2 SecurityConfiguration => Str
+
+  The name of the security configuration applied to the cluster.
 
 
 =head2 ServiceRole => Str

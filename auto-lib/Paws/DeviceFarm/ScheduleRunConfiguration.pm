@@ -1,6 +1,6 @@
 package Paws::DeviceFarm::ScheduleRunConfiguration;
   use Moose;
-  has AuxiliaryApps => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'auxiliaryApps', request_name => 'auxiliaryApps', traits => ['Unwrapped','NameInRequest']);
+  has AuxiliaryApps => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'auxiliaryApps', request_name => 'auxiliaryApps', traits => ['Unwrapped','NameInRequest']);
   has BillingMethod => (is => 'ro', isa => 'Str', xmlname => 'billingMethod', request_name => 'billingMethod', traits => ['Unwrapped','NameInRequest']);
   has ExtraDataPackageArn => (is => 'ro', isa => 'Str', xmlname => 'extraDataPackageArn', request_name => 'extraDataPackageArn', traits => ['Unwrapped','NameInRequest']);
   has Locale => (is => 'ro', isa => 'Str', xmlname => 'locale', request_name => 'locale', traits => ['Unwrapped','NameInRequest']);
@@ -43,7 +43,7 @@ states, auxiliary apps, and network profiles.
 =head1 ATTRIBUTES
 
 
-=head2 AuxiliaryApps => ArrayRef[Str]
+=head2 AuxiliaryApps => ArrayRef[Str|Undef]
 
   A list of auxiliary apps for the run.
 
@@ -52,7 +52,7 @@ states, auxiliary apps, and network profiles.
 
   Specifies the billing method for a test run: C<metered> or
 C<unmetered>. If the parameter is not specified, the default value is
-C<unmetered>.
+C<metered>.
 
 
 =head2 ExtraDataPackageArn => Str

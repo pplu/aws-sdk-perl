@@ -1,7 +1,7 @@
 package Paws::SES::IdentityDkimAttributes;
   use Moose;
   has DkimEnabled => (is => 'ro', isa => 'Bool', required => 1);
-  has DkimTokens => (is => 'ro', isa => 'ArrayRef[Str]');
+  has DkimTokens => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has DkimVerificationStatus => (is => 'ro', isa => 'Str', required => 1);
 1;
 
@@ -44,7 +44,7 @@ Represents the DKIM attributes of a verified email address or a domain.
 otherwise.
 
 
-=head2 DkimTokens => ArrayRef[Str]
+=head2 DkimTokens => ArrayRef[Str|Undef]
 
   A set of character strings that represent the domain's identity. Using
 these tokens, you will need to create DNS CNAME records that point to

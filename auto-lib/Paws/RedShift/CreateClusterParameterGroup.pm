@@ -65,13 +65,21 @@ Constraints:
 
 =over
 
-=item * Must be 1 to 255 alphanumeric characters or hyphens
+=item *
 
-=item * First character must be a letter.
+Must be 1 to 255 alphanumeric characters or hyphens
 
-=item * Cannot end with a hyphen or contain two consecutive hyphens.
+=item *
 
-=item * Must be unique withing your AWS account.
+First character must be a letter.
+
+=item *
+
+Cannot end with a hyphen or contain two consecutive hyphens.
+
+=item *
+
+Must be unique withing your AWS account.
 
 =back
 

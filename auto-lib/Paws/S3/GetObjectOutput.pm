@@ -17,6 +17,7 @@ package Paws::S3::GetObjectOutput;
   has LastModified => (is => 'ro', isa => 'Str');
   has Metadata => (is => 'ro', isa => 'Paws::S3::Metadata');
   has MissingMeta => (is => 'ro', isa => 'Int');
+  has PartsCount => (is => 'ro', isa => 'Int');
   has ReplicationStatus => (is => 'ro', isa => 'Str');
   has RequestCharged => (is => 'ro', isa => 'Str');
   has Restore => (is => 'ro', isa => 'Str');
@@ -35,21 +36,7 @@ package Paws::S3::GetObjectOutput;
 
 =head1 NAME
 
-Paws::S3:: - Arguments for method  on Paws::S3
-
-=head1 DESCRIPTION
-
-This class represents the parameters used for calling the method  on the 
-Amazon Simple Storage Service service. Use the attributes of this class
-as arguments to method .
-
-You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to .
-
-As an example:
-
-  $service_obj->(Att1 => $value1, Att2 => $value2, ...);
-
-Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+Paws::S3::GetObjectOutput
 
 =head1 ATTRIBUTES
 
@@ -162,6 +149,12 @@ HTTP headers.
 
 
 
+=head2 PartsCount => Int
+
+The count of parts this object has.
+
+
+
 =head2 ReplicationStatus => Str
 
 
@@ -231,16 +224,6 @@ Amazon S3 stores the value of this header in the object metadata.
 
 
 
-
-=head1 SEE ALSO
-
-This class forms part of L<Paws>, documenting arguments for method  in L<Paws::S3>
-
-=head1 BUGS and CONTRIBUTIONS
-
-The source code is located here: https://github.com/pplu/aws-sdk-perl
-
-Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
 
 =cut
 

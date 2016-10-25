@@ -6,7 +6,7 @@ package Paws::SimpleWorkflow::WorkflowExecutionContinuedAsNewEventAttributes;
   has Input => (is => 'ro', isa => 'Str', xmlname => 'input', request_name => 'input', traits => ['Unwrapped','NameInRequest']);
   has LambdaRole => (is => 'ro', isa => 'Str', xmlname => 'lambdaRole', request_name => 'lambdaRole', traits => ['Unwrapped','NameInRequest']);
   has NewExecutionRunId => (is => 'ro', isa => 'Str', xmlname => 'newExecutionRunId', request_name => 'newExecutionRunId', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has TagList => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'tagList', request_name => 'tagList', traits => ['Unwrapped','NameInRequest']);
+  has TagList => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'tagList', request_name => 'tagList', traits => ['Unwrapped','NameInRequest']);
   has TaskList => (is => 'ro', isa => 'Paws::SimpleWorkflow::TaskList', xmlname => 'taskList', request_name => 'taskList', traits => ['Unwrapped','NameInRequest'], required => 1);
   has TaskPriority => (is => 'ro', isa => 'Str', xmlname => 'taskPriority', request_name => 'taskPriority', traits => ['Unwrapped','NameInRequest']);
   has TaskStartToCloseTimeout => (is => 'ro', isa => 'Str', xmlname => 'taskStartToCloseTimeout', request_name => 'taskStartToCloseTimeout', traits => ['Unwrapped','NameInRequest']);
@@ -103,7 +103,7 @@ AWS Lambda functions.
   The C<runId> of the new workflow execution.
 
 
-=head2 TagList => ArrayRef[Str]
+=head2 TagList => ArrayRef[Str|Undef]
 
   The list of tags associated with the new workflow execution.
 

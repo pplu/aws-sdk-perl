@@ -9,8 +9,8 @@ package Paws::RedShift::DescribeClusterSnapshots;
   has SnapshotIdentifier => (is => 'ro', isa => 'Str');
   has SnapshotType => (is => 'ro', isa => 'Str');
   has StartTime => (is => 'ro', isa => 'Str');
-  has TagKeys => (is => 'ro', isa => 'ArrayRef[Str]');
-  has TagValues => (is => 'ro', isa => 'ArrayRef[Str]');
+  has TagKeys => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has TagValues => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
   use MooseX::ClassAttribute;
 
@@ -119,7 +119,7 @@ Example: C<2012-07-16T18:00:00Z>
 
 
 
-=head2 TagKeys => ArrayRef[Str]
+=head2 TagKeys => ArrayRef[Str|Undef]
 
 A tag key or keys for which you want to return all matching cluster
 snapshots that are associated with the specified key or keys. For
@@ -131,7 +131,7 @@ them.
 
 
 
-=head2 TagValues => ArrayRef[Str]
+=head2 TagValues => ArrayRef[Str|Undef]
 
 A tag value or values for which you want to return all matching cluster
 snapshots that are associated with the specified tag value or values.

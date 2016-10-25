@@ -1,6 +1,6 @@
 package Paws::OpsWorks::AutoScalingThresholds;
   use Moose;
-  has Alarms => (is => 'ro', isa => 'ArrayRef[Str]');
+  has Alarms => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has CpuThreshold => (is => 'ro', isa => 'Num');
   has IgnoreMetricsTime => (is => 'ro', isa => 'Int');
   has InstanceCount => (is => 'ro', isa => 'Int');
@@ -44,7 +44,7 @@ load-based instances.
 =head1 ATTRIBUTES
 
 
-=head2 Alarms => ArrayRef[Str]
+=head2 Alarms => ArrayRef[Str|Undef]
 
   Custom Cloudwatch auto scaling alarms, to be used as thresholds. This
 parameter takes a list of up to five alarm names, which are case

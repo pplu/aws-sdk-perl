@@ -1,21 +1,22 @@
 package Paws::ECS::ContainerDefinition;
   use Moose;
-  has Command => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'command', request_name => 'command', traits => ['Unwrapped','NameInRequest']);
+  has Command => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'command', request_name => 'command', traits => ['Unwrapped','NameInRequest']);
   has Cpu => (is => 'ro', isa => 'Int', xmlname => 'cpu', request_name => 'cpu', traits => ['Unwrapped','NameInRequest']);
   has DisableNetworking => (is => 'ro', isa => 'Bool', xmlname => 'disableNetworking', request_name => 'disableNetworking', traits => ['Unwrapped','NameInRequest']);
-  has DnsSearchDomains => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'dnsSearchDomains', request_name => 'dnsSearchDomains', traits => ['Unwrapped','NameInRequest']);
-  has DnsServers => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'dnsServers', request_name => 'dnsServers', traits => ['Unwrapped','NameInRequest']);
+  has DnsSearchDomains => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'dnsSearchDomains', request_name => 'dnsSearchDomains', traits => ['Unwrapped','NameInRequest']);
+  has DnsServers => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'dnsServers', request_name => 'dnsServers', traits => ['Unwrapped','NameInRequest']);
   has DockerLabels => (is => 'ro', isa => 'Paws::ECS::DockerLabelsMap', xmlname => 'dockerLabels', request_name => 'dockerLabels', traits => ['Unwrapped','NameInRequest']);
-  has DockerSecurityOptions => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'dockerSecurityOptions', request_name => 'dockerSecurityOptions', traits => ['Unwrapped','NameInRequest']);
-  has EntryPoint => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'entryPoint', request_name => 'entryPoint', traits => ['Unwrapped','NameInRequest']);
+  has DockerSecurityOptions => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'dockerSecurityOptions', request_name => 'dockerSecurityOptions', traits => ['Unwrapped','NameInRequest']);
+  has EntryPoint => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'entryPoint', request_name => 'entryPoint', traits => ['Unwrapped','NameInRequest']);
   has Environment => (is => 'ro', isa => 'ArrayRef[Paws::ECS::KeyValuePair]', xmlname => 'environment', request_name => 'environment', traits => ['Unwrapped','NameInRequest']);
   has Essential => (is => 'ro', isa => 'Bool', xmlname => 'essential', request_name => 'essential', traits => ['Unwrapped','NameInRequest']);
   has ExtraHosts => (is => 'ro', isa => 'ArrayRef[Paws::ECS::HostEntry]', xmlname => 'extraHosts', request_name => 'extraHosts', traits => ['Unwrapped','NameInRequest']);
   has Hostname => (is => 'ro', isa => 'Str', xmlname => 'hostname', request_name => 'hostname', traits => ['Unwrapped','NameInRequest']);
   has Image => (is => 'ro', isa => 'Str', xmlname => 'image', request_name => 'image', traits => ['Unwrapped','NameInRequest']);
-  has Links => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'links', request_name => 'links', traits => ['Unwrapped','NameInRequest']);
+  has Links => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'links', request_name => 'links', traits => ['Unwrapped','NameInRequest']);
   has LogConfiguration => (is => 'ro', isa => 'Paws::ECS::LogConfiguration', xmlname => 'logConfiguration', request_name => 'logConfiguration', traits => ['Unwrapped','NameInRequest']);
   has Memory => (is => 'ro', isa => 'Int', xmlname => 'memory', request_name => 'memory', traits => ['Unwrapped','NameInRequest']);
+  has MemoryReservation => (is => 'ro', isa => 'Int', xmlname => 'memoryReservation', request_name => 'memoryReservation', traits => ['Unwrapped','NameInRequest']);
   has MountPoints => (is => 'ro', isa => 'ArrayRef[Paws::ECS::MountPoint]', xmlname => 'mountPoints', request_name => 'mountPoints', traits => ['Unwrapped','NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', xmlname => 'name', request_name => 'name', traits => ['Unwrapped','NameInRequest']);
   has PortMappings => (is => 'ro', isa => 'ArrayRef[Paws::ECS::PortMapping]', xmlname => 'portMappings', request_name => 'portMappings', traits => ['Unwrapped','NameInRequest']);
@@ -61,12 +62,12 @@ different containers that are launched as part of a task.
 =head1 ATTRIBUTES
 
 
-=head2 Command => ArrayRef[Str]
+=head2 Command => ArrayRef[Str|Undef]
 
   The command that is passed to the container. This parameter maps to
 C<Cmd> in the Create a container section of the Docker Remote API and
 the C<COMMAND> parameter to docker run. For more information, see
-https://docs.docker.com/reference/builder/
+https://docs.docker.com/engine/reference/builder/
 
 
 =head2 Cpu => Int
@@ -127,14 +128,14 @@ container. This parameter maps to C<NetworkDisabled> in the Create a
 container section of the Docker Remote API.
 
 
-=head2 DnsSearchDomains => ArrayRef[Str]
+=head2 DnsSearchDomains => ArrayRef[Str|Undef]
 
   A list of DNS search domains that are presented to the container. This
 parameter maps to C<DnsSearch> in the Create a container section of the
 Docker Remote API and the C<--dns-search> option to docker run.
 
 
-=head2 DnsServers => ArrayRef[Str]
+=head2 DnsServers => ArrayRef[Str|Undef]
 
   A list of DNS servers that are presented to the container. This
 parameter maps to C<Dns> in the Create a container section of the
@@ -152,7 +153,7 @@ instance, log into your container instance and run the following
 command: C<sudo docker version | grep "Server API version">
 
 
-=head2 DockerSecurityOptions => ArrayRef[Str]
+=head2 DockerSecurityOptions => ArrayRef[Str|Undef]
 
   A list of strings to provide custom labels for SELinux and AppArmor
 multi-level security systems. This parameter maps to C<SecurityOpt> in
@@ -167,7 +168,7 @@ information, see Amazon ECS Container Agent Configuration in the
 I<Amazon EC2 Container Service Developer Guide>.
 
 
-=head2 EntryPoint => ArrayRef[Str]
+=head2 EntryPoint => ArrayRef[Str|Undef]
 
   Early versions of the Amazon ECS container agent do not properly handle
 C<entryPoint> parameters. If you have problems using C<entryPoint>,
@@ -177,7 +178,7 @@ C<command> array items instead.
 The entry point that is passed to the container. This parameter maps to
 C<Entrypoint> in the Create a container section of the Docker Remote
 API and the C<--entrypoint> option to docker run. For more information,
-see https://docs.docker.com/reference/builder/
+see https://docs.docker.com/engine/reference/builder/
 
 
 =head2 Environment => ArrayRef[L<Paws::ECS::KeyValuePair>]
@@ -254,7 +255,7 @@ name (for example, C<quay.io/assemblyline/ubuntu>).
 
 
 
-=head2 Links => ArrayRef[Str]
+=head2 Links => ArrayRef[Str|Undef]
 
   The C<link> parameter allows containers to communicate with each other
 without the need for port mappings, using the C<name> parameter and
@@ -262,9 +263,10 @@ optionally, an C<alias> for the link. This construct is analogous to
 C<name:alias> in Docker links. Up to 255 letters (uppercase and
 lowercase), numbers, hyphens, and underscores are allowed for each
 C<name> and C<alias>. For more information on linking Docker
-containers, see https://docs.docker.com/userguide/dockerlinks/. This
-parameter maps to C<Links> in the Create a container section of the
-Docker Remote API and the C<--link> option to docker run .
+containers, see
+https://docs.docker.com/engine/userguide/networking/default_network/dockerlinks/.
+This parameter maps to C<Links> in the Create a container section of
+the Docker Remote API and the C<--link> option to docker run.
 
 Containers that are collocated on a single container instance may be
 able to communicate with each other without requiring links or host
@@ -307,14 +309,50 @@ I<Amazon EC2 Container Service Developer Guide>.
 
 =head2 Memory => Int
 
-  The number of MiB of memory to reserve for the container. You must
-specify a non-zero integer for this parameter; the Docker daemon
-reserves a minimum of 4 MiB of memory for a container, so you should
-not specify fewer than 4 MiB of memory for your containers. If your
-container attempts to exceed the memory allocated here, the container
+  The hard limit (in MiB) of memory to present to the container. If your
+container attempts to exceed the memory specified here, the container
 is killed. This parameter maps to C<Memory> in the Create a container
 section of the Docker Remote API and the C<--memory> option to docker
 run.
+
+You must specify a non-zero integer for one or both of C<memory> or
+C<memoryReservation> in container definitions. If you specify both,
+C<memory> must be greater than C<memoryReservation>. If you specify
+C<memoryReservation>, then that value is subtracted from the available
+memory resources for the container instance on which the container is
+placed; otherwise, the value of C<memory> is used.
+
+The Docker daemon reserves a minimum of 4 MiB of memory for a
+container, so you should not specify fewer than 4 MiB of memory for
+your containers.
+
+
+=head2 MemoryReservation => Int
+
+  The soft limit (in MiB) of memory to reserve for the container. When
+system memory is under heavy contention, Docker attempts to keep the
+container memory to this soft limit; however, your container can
+consume more memory when it needs to, up to either the hard limit
+specified with the C<memory> parameter (if applicable), or all of the
+available memory on the container instance, whichever comes first. This
+parameter maps to C<MemoryReservation> in the Create a container
+section of the Docker Remote API and the C<--memory-reservation> option
+to docker run.
+
+You must specify a non-zero integer for one or both of C<memory> or
+C<memoryReservation> in container definitions. If you specify both,
+C<memory> must be greater than C<memoryReservation>. If you specify
+C<memoryReservation>, then that value is subtracted from the available
+memory resources for the container instance on which the container is
+placed; otherwise, the value of C<memory> is used.
+
+For example, if your container normally uses 128 MiB of memory, but
+occasionally bursts to 256 MiB of memory for short periods of time, you
+can set a C<memoryReservation> of 128 MiB, and a C<memory> hard limit
+of 300 MiB. This configuration would allow the container to only
+reserve 128 MiB of memory from the remaining resources on the container
+instance, but also allow the container to consume more memory resources
+when needed.
 
 
 =head2 MountPoints => ArrayRef[L<Paws::ECS::MountPoint>]
@@ -341,7 +379,10 @@ docker run.
 containers to access ports on the host container instance to send or
 receive traffic. This parameter maps to C<PortBindings> in the Create a
 container section of the Docker Remote API and the C<--publish> option
-to docker run.
+to docker run. If the network mode of a task definition is set to
+C<none>, then you cannot specify port mappings. If the network mode of
+a task definition is set to C<host>, then host ports must either be
+undefined or they must match the container port in the port mapping.
 
 After a task reaches the C<RUNNING> status, manual and automatic host
 and container port assignments are visible in the B<Network Bindings>

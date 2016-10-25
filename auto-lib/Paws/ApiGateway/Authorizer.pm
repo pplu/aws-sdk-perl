@@ -9,6 +9,7 @@ package Paws::ApiGateway::Authorizer;
   has IdentitySource => (is => 'ro', isa => 'Str');
   has IdentityValidationExpression => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
+  has ProviderARNs => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Type => (is => 'ro', isa => 'Str');
 
 1;
@@ -25,7 +26,7 @@ Paws::ApiGateway::Authorizer
 =head2 AuthorizerCredentials => Str
 
 Specifies the credentials required for the authorizer, if any. Two
-options are available. To specify an IAM Role for Amazon API Gateway to
+options are available. To specify an IAM role for Amazon API Gateway to
 assume, use the role's Amazon Resource Name (ARN). To use
 resource-based permissions on the Lambda function, specify null.
 
@@ -93,12 +94,18 @@ receives a 401 Unauthorized response.
 
 
 
+=head2 ProviderARNs => ArrayRef[Str|Undef]
+
+A list of the provider ARNs of the authorizer.
+
+
+
 =head2 Type => Str
 
 [Required] The type of the authorizer. Currently, the only valid type
 is TOKEN.
 
-Valid values are: C<"TOKEN">
+Valid values are: C<"TOKEN">, C<"COGNITO_USER_POOLS">
 
 
 =cut

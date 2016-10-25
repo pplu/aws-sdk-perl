@@ -2,7 +2,7 @@
 package Paws::EC2::MonitorInstances;
   use Moose;
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
-  has InstanceIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'InstanceId' , required => 1);
+  has InstanceIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'InstanceId' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -43,7 +43,7 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 
 
-=head2 B<REQUIRED> InstanceIds => ArrayRef[Str]
+=head2 B<REQUIRED> InstanceIds => ArrayRef[Str|Undef]
 
 One or more instance IDs.
 

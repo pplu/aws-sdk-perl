@@ -6,9 +6,12 @@ package Paws::KMS::KeyMetadata;
   has DeletionDate => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has Enabled => (is => 'ro', isa => 'Bool');
+  has ExpirationModel => (is => 'ro', isa => 'Str');
   has KeyId => (is => 'ro', isa => 'Str', required => 1);
   has KeyState => (is => 'ro', isa => 'Str');
   has KeyUsage => (is => 'ro', isa => 'Str');
+  has Origin => (is => 'ro', isa => 'Str');
+  has ValidTo => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -28,7 +31,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::KMS::KeyMetadata object:
 
-  $service_obj->Method(Att1 => { Arn => $value, ..., KeyUsage => $value  });
+  $service_obj->Method(Att1 => { Arn => $value, ..., ValidTo => $value  });
 
 =head3 Results returned from an API call
 
@@ -49,47 +52,53 @@ DescribeKey operations.
 
 =head2 Arn => Str
 
-  The Amazon Resource Name (ARN) of the key. For examples, see AWS Key
+  The Amazon Resource Name (ARN) of the CMK. For examples, see AWS Key
 Management Service (AWS KMS) in the Example ARNs section of the I<AWS
 General Reference>.
 
 
 =head2 AWSAccountId => Str
 
-  The twelve-digit account ID of the AWS account that owns the key.
+  The twelve-digit account ID of the AWS account that owns the CMK.
 
 
 =head2 CreationDate => Str
 
-  The date and time when the key was created.
+  The date and time when the CMK was created.
 
 
 =head2 DeletionDate => Str
 
-  The date and time after which AWS KMS deletes the customer master key
-(CMK). This value is present only when C<KeyState> is
-C<PendingDeletion>, otherwise this value is null.
+  The date and time after which AWS KMS deletes the CMK. This value is
+present only when C<KeyState> is C<PendingDeletion>, otherwise this
+value is omitted.
 
 
 =head2 Description => Str
 
-  The friendly description of the key.
+  The description of the CMK.
 
 
 =head2 Enabled => Bool
 
-  Specifies whether the key is enabled. When C<KeyState> is C<Enabled>
+  Specifies whether the CMK is enabled. When C<KeyState> is C<Enabled>
 this value is true, otherwise it is false.
+
+
+=head2 ExpirationModel => Str
+
+  Specifies whether the CMK's key material expires. This value is present
+only when C<Origin> is C<EXTERNAL>, otherwise this value is omitted.
 
 
 =head2 B<REQUIRED> KeyId => Str
 
-  The globally unique identifier for the key.
+  The globally unique identifier for the CMK.
 
 
 =head2 KeyState => Str
 
-  The state of the customer master key (CMK).
+  The state of the CMK.
 
 For more information about how key state affects the use of a CMK, see
 How Key State Affects the Use of a Customer Master Key in the I<AWS Key
@@ -98,9 +107,26 @@ Management Service Developer Guide>.
 
 =head2 KeyUsage => Str
 
-  The cryptographic operations for which you can use the key. Currently
+  The cryptographic operations for which you can use the CMK. Currently
 the only allowed value is C<ENCRYPT_DECRYPT>, which means you can use
-the key for the Encrypt and Decrypt operations.
+the CMK for the Encrypt and Decrypt operations.
+
+
+=head2 Origin => Str
+
+  The source of the CMK's key material. When this value is C<AWS_KMS>,
+AWS KMS created the key material. When this value is C<EXTERNAL>, the
+key material was imported from your existing key management
+infrastructure or the CMK lacks key material.
+
+
+=head2 ValidTo => Str
+
+  The time at which the imported key material expires. When the key
+material expires, AWS KMS deletes the key material and the CMK becomes
+unusable. This value is present only for CMKs whose C<Origin> is
+C<EXTERNAL> and whose C<ExpirationModel> is C<KEY_MATERIAL_EXPIRES>,
+otherwise this value is omitted.
 
 
 

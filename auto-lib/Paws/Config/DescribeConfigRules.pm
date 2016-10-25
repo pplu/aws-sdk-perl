@@ -1,7 +1,7 @@
 
 package Paws::Config::DescribeConfigRules;
   use Moose;
-  has ConfigRuleNames => (is => 'ro', isa => 'ArrayRef[Str]');
+  has ConfigRuleNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has NextToken => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
@@ -34,7 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 ConfigRuleNames => ArrayRef[Str]
+=head2 ConfigRuleNames => ArrayRef[Str|Undef]
 
 The names of the AWS Config rules for which you want details. If you do
 not specify any names, AWS Config returns details for all your rules.

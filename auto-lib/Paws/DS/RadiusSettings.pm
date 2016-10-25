@@ -4,7 +4,7 @@ package Paws::DS::RadiusSettings;
   has DisplayLabel => (is => 'ro', isa => 'Str');
   has RadiusPort => (is => 'ro', isa => 'Int');
   has RadiusRetries => (is => 'ro', isa => 'Int');
-  has RadiusServers => (is => 'ro', isa => 'ArrayRef[Str]');
+  has RadiusServers => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has RadiusTimeout => (is => 'ro', isa => 'Int');
   has SharedSecret => (is => 'ro', isa => 'Str');
   has UseSameUsername => (is => 'ro', isa => 'Bool');
@@ -67,7 +67,7 @@ AWS Directory Service servers.
 is attempted.
 
 
-=head2 RadiusServers => ArrayRef[Str]
+=head2 RadiusServers => ArrayRef[Str|Undef]
 
   An array of strings that contains the IP addresses of the RADIUS server
 endpoints, or the IP addresses of your RADIUS server load balancer.
@@ -81,8 +81,7 @@ respond.
 
 =head2 SharedSecret => Str
 
-  The shared secret code that was specified when your RADIUS endpoints
-were created.
+  Not currently used.
 
 
 =head2 UseSameUsername => Bool

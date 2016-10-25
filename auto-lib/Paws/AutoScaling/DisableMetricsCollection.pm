@@ -2,7 +2,7 @@
 package Paws::AutoScaling::DisableMetricsCollection;
   use Moose;
   has AutoScalingGroupName => (is => 'ro', isa => 'Str', required => 1);
-  has Metrics => (is => 'ro', isa => 'ArrayRef[Str]');
+  has Metrics => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
   use MooseX::ClassAttribute;
 
@@ -40,7 +40,7 @@ The name or Amazon Resource Name (ARN) of the group.
 
 
 
-=head2 Metrics => ArrayRef[Str]
+=head2 Metrics => ArrayRef[Str|Undef]
 
 One or more of the following metrics. If you omit this parameter, all
 metrics are disabled.

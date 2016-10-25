@@ -1,6 +1,6 @@
 package Paws::ElasticBeanstalk::SolutionStackDescription;
   use Moose;
-  has PermittedFileTypes => (is => 'ro', isa => 'ArrayRef[Str]');
+  has PermittedFileTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has SolutionStackName => (is => 'ro', isa => 'Str');
 1;
 
@@ -37,7 +37,7 @@ Describes the solution stack.
 =head1 ATTRIBUTES
 
 
-=head2 PermittedFileTypes => ArrayRef[Str]
+=head2 PermittedFileTypes => ArrayRef[Str|Undef]
 
   The permitted file types allowed for a solution stack.
 

@@ -6,7 +6,7 @@ package Paws::OpsWorks::UpdateApp;
   has Attributes => (is => 'ro', isa => 'Paws::OpsWorks::AppAttributes');
   has DataSources => (is => 'ro', isa => 'ArrayRef[Paws::OpsWorks::DataSource]');
   has Description => (is => 'ro', isa => 'Str');
-  has Domains => (is => 'ro', isa => 'ArrayRef[Str]');
+  has Domains => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has EnableSsl => (is => 'ro', isa => 'Bool');
   has Environment => (is => 'ro', isa => 'ArrayRef[Paws::OpsWorks::EnvironmentVariable]');
   has Name => (is => 'ro', isa => 'Str');
@@ -74,7 +74,7 @@ A description of the app.
 
 
 
-=head2 Domains => ArrayRef[Str]
+=head2 Domains => ArrayRef[Str|Undef]
 
 The app's virtual host settings, with multiple domains separated by
 commas. For example: C<'www.example.com, example.com'>

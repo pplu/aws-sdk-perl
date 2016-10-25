@@ -1,15 +1,18 @@
 package Paws::MachineLearning::Evaluation;
   use Moose;
+  has ComputeTime => (is => 'ro', isa => 'Int');
   has CreatedAt => (is => 'ro', isa => 'Str');
   has CreatedByIamUser => (is => 'ro', isa => 'Str');
   has EvaluationDataSourceId => (is => 'ro', isa => 'Str');
   has EvaluationId => (is => 'ro', isa => 'Str');
+  has FinishedAt => (is => 'ro', isa => 'Str');
   has InputDataLocationS3 => (is => 'ro', isa => 'Str');
   has LastUpdatedAt => (is => 'ro', isa => 'Str');
   has Message => (is => 'ro', isa => 'Str');
   has MLModelId => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
   has PerformanceMetrics => (is => 'ro', isa => 'Paws::MachineLearning::PerformanceMetrics');
+  has StartedAt => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
 1;
 
@@ -30,14 +33,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::MachineLearning::Evaluation object:
 
-  $service_obj->Method(Att1 => { CreatedAt => $value, ..., Status => $value  });
+  $service_obj->Method(Att1 => { ComputeTime => $value, ..., Status => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::MachineLearning::Evaluation object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->CreatedAt
+  $result->Att1->ComputeTime
 
 =head1 DESCRIPTION
 
@@ -47,6 +50,11 @@ The content consists of the detailed metadata and data file information
 and the current status of the C<Evaluation>.
 
 =head1 ATTRIBUTES
+
+
+=head2 ComputeTime => Int
+
+  
 
 
 =head2 CreatedAt => Str
@@ -70,6 +78,11 @@ be either an AWS root account or an AWS Identity and Access Management
 =head2 EvaluationId => Str
 
   The ID that is assigned to the C<Evaluation> at creation.
+
+
+=head2 FinishedAt => Str
+
+  
 
 
 =head2 InputDataLocationS3 => Str
@@ -128,6 +141,11 @@ technique to measure performance.
 
 For more information about performance metrics, please see the Amazon
 Machine Learning Developer Guide.
+
+
+=head2 StartedAt => Str
+
+  
 
 
 =head2 Status => Str

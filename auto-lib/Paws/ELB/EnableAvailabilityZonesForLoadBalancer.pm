@@ -1,7 +1,7 @@
 
 package Paws::ELB::EnableAvailabilityZonesForLoadBalancer;
   use Moose;
-  has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
   has LoadBalancerName => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -34,7 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> AvailabilityZones => ArrayRef[Str]
+=head2 B<REQUIRED> AvailabilityZones => ArrayRef[Str|Undef]
 
 The Availability Zones. These must be in the same region as the load
 balancer.

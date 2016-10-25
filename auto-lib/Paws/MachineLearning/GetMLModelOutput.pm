@@ -1,9 +1,11 @@
 
 package Paws::MachineLearning::GetMLModelOutput;
   use Moose;
+  has ComputeTime => (is => 'ro', isa => 'Int');
   has CreatedAt => (is => 'ro', isa => 'Str');
   has CreatedByIamUser => (is => 'ro', isa => 'Str');
   has EndpointInfo => (is => 'ro', isa => 'Paws::MachineLearning::RealtimeEndpointInfo');
+  has FinishedAt => (is => 'ro', isa => 'Str');
   has InputDataLocationS3 => (is => 'ro', isa => 'Str');
   has LastUpdatedAt => (is => 'ro', isa => 'Str');
   has LogUri => (is => 'ro', isa => 'Str');
@@ -16,6 +18,7 @@ package Paws::MachineLearning::GetMLModelOutput;
   has ScoreThreshold => (is => 'ro', isa => 'Num');
   has ScoreThresholdLastUpdatedAt => (is => 'ro', isa => 'Str');
   has SizeInBytes => (is => 'ro', isa => 'Int');
+  has StartedAt => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
   has TrainingDataSourceId => (is => 'ro', isa => 'Str');
   has TrainingParameters => (is => 'ro', isa => 'Paws::MachineLearning::TrainingParameters');
@@ -28,6 +31,15 @@ package Paws::MachineLearning::GetMLModelOutput;
 Paws::MachineLearning::GetMLModelOutput
 
 =head1 ATTRIBUTES
+
+
+=head2 ComputeTime => Int
+
+The approximate CPU time in milliseconds that Amazon Machine Learning
+spent processing the C<MLModel>, normalized and scaled on computation
+resources. C<ComputeTime> is only available if the C<MLModel> is in the
+C<COMPLETED> state.
+
 
 
 =head2 CreatedAt => Str
@@ -48,6 +60,14 @@ Management (IAM) user account.
 =head2 EndpointInfo => L<Paws::MachineLearning::RealtimeEndpointInfo>
 
 The current endpoint of the C<MLModel>
+
+
+
+=head2 FinishedAt => Str
+
+The epoch time when Amazon Machine Learning marked the C<MLModel> as
+C<COMPLETED> or C<FAILED>. C<FinishedAt> is only available when the
+C<MLModel> is in the C<COMPLETED> or C<FAILED> state.
 
 
 
@@ -154,6 +174,14 @@ expressed in epoch time.
 =head2 SizeInBytes => Int
 
 
+
+
+
+=head2 StartedAt => Str
+
+The epoch time when Amazon Machine Learning marked the C<MLModel> as
+C<INPROGRESS>. C<StartedAt> isn't available if the C<MLModel> is in the
+C<PENDING> state.
 
 
 

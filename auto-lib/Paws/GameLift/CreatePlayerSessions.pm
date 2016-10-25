@@ -2,7 +2,7 @@
 package Paws::GameLift::CreatePlayerSessions;
   use Moose;
   has GameSessionId => (is => 'ro', isa => 'Str', required => 1);
-  has PlayerIds => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has PlayerIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -36,11 +36,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> GameSessionId => Str
 
-Unique identifier for a game session.
+Unique identifier for the game session to add players to. Game session
+ID format is as follows:
+"arn:aws:gamelift:E<lt>regionE<gt>::gamesession/fleet-E<lt>fleet
+IDE<gt>/E<lt>ID stringE<gt>". The value of E<lt>ID stringE<gt> is
+either a custom ID string (if one was specified when the game session
+was created) an auto-generated string.
 
 
 
-=head2 B<REQUIRED> PlayerIds => ArrayRef[Str]
+=head2 B<REQUIRED> PlayerIds => ArrayRef[Str|Undef]
 
 List of unique identifiers for the players to be added.
 

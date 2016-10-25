@@ -50,8 +50,8 @@ Contains information about a WorkSpace that could not be created.
 
 =head2 WorkspaceRequest => L<Paws::WorkSpaces::WorkspaceRequest>
 
-  A WorkspaceRequest object that contains the information about the
-WorkSpace that could not be created.
+  A FailedCreateWorkspaceRequest$WorkspaceRequest object that contains
+the information about the WorkSpace that could not be created.
 
 
 

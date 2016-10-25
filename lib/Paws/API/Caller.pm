@@ -42,7 +42,7 @@ package Paws::API::Caller;
           $p{ $att } = $params{ $att };
         } elsif ($type =~ m/^ArrayRef\[(.*?)\]$/){
           my $subtype = "$1";
-          if ($subtype eq 'Str' or $subtype eq 'Num' or $subtype eq 'Int' or $subtype eq 'Bool') {
+          if ($subtype eq 'Str' or $subtype eq 'Str|Undef' or $subtype eq 'Num' or $subtype eq 'Int' or $subtype eq 'Bool') {
             $p{ $att } = $params{ $att };
           } else {
             $p{ $att } = [ map { $self->new_with_coercions("$subtype", %{ $_ }) } @{ $params{ $att } } ];

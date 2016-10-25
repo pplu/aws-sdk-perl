@@ -36,49 +36,42 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Route53::Ge
 
 =head1 DESCRIPTION
 
-A complex type that contains information about a C<GeoLocation>.
+A complex type that contains the codes and full continent, country, and
+subdivision names for the specified C<geolocation> code.
 
 =head1 ATTRIBUTES
 
 
 =head2 ContinentCode => Str
 
-  The code for a continent geo location. Note: only continent locations
-have a continent code.
+  The two-letter code for the continent.
 
 
 =head2 ContinentName => Str
 
-  The name of the continent. This element is only present if
-C<ContinentCode> is also present.
+  The full name of the continent.
 
 
 =head2 CountryCode => Str
 
-  The code for a country geo location. The default location uses '*' for
-the country code and will match all locations that are not matched by a
-geo location.
-
-The default geo location uses a C<*> for the country code. All other
-country codes follow the ISO 3166 two-character code.
+  The two-letter code for the country.
 
 
 =head2 CountryName => Str
 
-  The name of the country. This element is only present if C<CountryCode>
-is also present.
+  The name of the country.
 
 
 =head2 SubdivisionCode => Str
 
-  The code for a country's subdivision (e.g., a province of Canada). A
-subdivision code is only valid with the appropriate country code.
+  The code for the subdivision, for example, a state in the United States
+or a province in Canada.
 
 
 =head2 SubdivisionName => Str
 
-  The name of the subdivision. This element is only present if
-C<SubdivisionCode> is also present.
+  The full name of the subdivision, for example, a state in the United
+States or a province in Canada.
 
 
 

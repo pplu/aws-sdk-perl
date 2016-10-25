@@ -7,16 +7,17 @@ package Paws::RedShift::CreateCluster;
   has AvailabilityZone => (is => 'ro', isa => 'Str');
   has ClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has ClusterParameterGroupName => (is => 'ro', isa => 'Str');
-  has ClusterSecurityGroups => (is => 'ro', isa => 'ArrayRef[Str]');
+  has ClusterSecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has ClusterSubnetGroupName => (is => 'ro', isa => 'Str');
   has ClusterType => (is => 'ro', isa => 'Str');
   has ClusterVersion => (is => 'ro', isa => 'Str');
   has DBName => (is => 'ro', isa => 'Str');
   has ElasticIp => (is => 'ro', isa => 'Str');
   has Encrypted => (is => 'ro', isa => 'Bool');
+  has EnhancedVpcRouting => (is => 'ro', isa => 'Bool');
   has HsmClientCertificateIdentifier => (is => 'ro', isa => 'Str');
   has HsmConfigurationIdentifier => (is => 'ro', isa => 'Str');
-  has IamRoles => (is => 'ro', isa => 'ArrayRef[Str]');
+  has IamRoles => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has KmsKeyId => (is => 'ro', isa => 'Str');
   has MasterUsername => (is => 'ro', isa => 'Str', required => 1);
   has MasterUserPassword => (is => 'ro', isa => 'Str', required => 1);
@@ -26,7 +27,7 @@ package Paws::RedShift::CreateCluster;
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
   has PubliclyAccessible => (is => 'ro', isa => 'Bool');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::Tag]');
-  has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
   use MooseX::ClassAttribute;
 
@@ -121,15 +122,25 @@ Constraints:
 
 =over
 
-=item * Must contain from 1 to 63 alphanumeric characters or hyphens.
+=item *
 
-=item * Alphabetic characters must be lowercase.
+Must contain from 1 to 63 alphanumeric characters or hyphens.
 
-=item * First character must be a letter.
+=item *
 
-=item * Cannot end with a hyphen or contain two consecutive hyphens.
+Alphabetic characters must be lowercase.
 
-=item * Must be unique for all clusters within an AWS account.
+=item *
+
+First character must be a letter.
+
+=item *
+
+Cannot end with a hyphen or contain two consecutive hyphens.
+
+=item *
+
+Must be unique for all clusters within an AWS account.
 
 =back
 
@@ -149,18 +160,24 @@ Constraints:
 
 =over
 
-=item * Must be 1 to 255 alphanumeric characters or hyphens.
+=item *
 
-=item * First character must be a letter.
+Must be 1 to 255 alphanumeric characters or hyphens.
 
-=item * Cannot end with a hyphen or contain two consecutive hyphens.
+=item *
+
+First character must be a letter.
+
+=item *
+
+Cannot end with a hyphen or contain two consecutive hyphens.
 
 =back
 
 
 
 
-=head2 ClusterSecurityGroups => ArrayRef[Str]
+=head2 ClusterSecurityGroups => ArrayRef[Str|Undef]
 
 A list of security groups to be associated with this cluster.
 
@@ -183,9 +200,13 @@ The type of the cluster. When cluster type is specified as
 
 =over
 
-=item * C<single-node>, the B<NumberOfNodes> parameter is not required.
+=item *
 
-=item * C<multi-node>, the B<NumberOfNodes> parameter is required.
+C<single-node>, the B<NumberOfNodes> parameter is not required.
+
+=item *
+
+C<multi-node>, the B<NumberOfNodes> parameter is required.
 
 =back
 
@@ -224,13 +245,19 @@ Constraints:
 
 =over
 
-=item * Must contain 1 to 64 alphanumeric characters.
+=item *
 
-=item * Must contain only lowercase letters.
+Must contain 1 to 64 alphanumeric characters.
 
-=item * Cannot be a word that is reserved by the service. A list of
-reserved words can be found in Reserved Words in the Amazon Redshift
-Database Developer Guide.
+=item *
+
+Must contain only lowercase letters.
+
+=item *
+
+Cannot be a word that is reserved by the service. A list of reserved
+words can be found in Reserved Words in the Amazon Redshift Database
+Developer Guide.
 
 =back
 
@@ -256,6 +283,19 @@ Default: false
 
 
 
+=head2 EnhancedVpcRouting => Bool
+
+An option that specifies whether to create the cluster with enhanced
+VPC routing enabled. To create a cluster that uses enhanced VPC
+routing, the cluster must be in a VPC. For more information, see
+Enhanced VPC Routing in the Amazon Redshift Cluster Management Guide.
+
+If this option is C<true>, enhanced VPC routing is enabled.
+
+Default: false
+
+
+
 =head2 HsmClientCertificateIdentifier => Str
 
 Specifies the name of the HSM client certificate the Amazon Redshift
@@ -271,14 +311,14 @@ keys in an HSM.
 
 
 
-=head2 IamRoles => ArrayRef[Str]
+=head2 IamRoles => ArrayRef[Str|Undef]
 
 A list of AWS Identity and Access Management (IAM) roles that can be
 used by the cluster to access other AWS services. You must supply the
 IAM roles in their Amazon Resource Name (ARN) format. You can supply up
 to 10 IAM roles in a single request.
 
-A cluster can have up to 10 IAM roles associated at any time.
+A cluster can have up to 10 IAM roles associated with it at any time.
 
 
 
@@ -298,13 +338,18 @@ Constraints:
 
 =over
 
-=item * Must be 1 - 128 alphanumeric characters.
+=item *
 
-=item * First character must be a letter.
+Must be 1 - 128 alphanumeric characters.
 
-=item * Cannot be a reserved word. A list of reserved words can be
-found in Reserved Words in the Amazon Redshift Database Developer
-Guide.
+=item *
+
+First character must be a letter.
+
+=item *
+
+Cannot be a reserved word. A list of reserved words can be found in
+Reserved Words in the Amazon Redshift Database Developer Guide.
 
 =back
 
@@ -320,16 +365,26 @@ Constraints:
 
 =over
 
-=item * Must be between 8 and 64 characters in length.
+=item *
 
-=item * Must contain at least one uppercase letter.
+Must be between 8 and 64 characters in length.
 
-=item * Must contain at least one lowercase letter.
+=item *
 
-=item * Must contain one number.
+Must contain at least one uppercase letter.
 
-=item * Can be any printable ASCII character (ASCII code 33 to 126)
-except ' (single quote), " (double quote), \, /, @, or space.
+=item *
+
+Must contain at least one lowercase letter.
+
+=item *
+
+Must contain one number.
+
+=item *
+
+Can be any printable ASCII character (ASCII code 33 to 126) except '
+(single quote), " (double quote), \, /, @, or space.
 
 =back
 
@@ -410,7 +465,7 @@ A list of tag instances.
 
 
 
-=head2 VpcSecurityGroupIds => ArrayRef[Str]
+=head2 VpcSecurityGroupIds => ArrayRef[Str|Undef]
 
 A list of Virtual Private Cloud (VPC) security groups to be associated
 with the cluster.

@@ -36,7 +36,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Arn => Str
 
-The device types' ARNs.
+The Amazon Resource Name (ARN) of the project.
 
 
 

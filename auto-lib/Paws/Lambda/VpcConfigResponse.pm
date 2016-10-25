@@ -1,7 +1,7 @@
 package Paws::Lambda::VpcConfigResponse;
   use Moose;
-  has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str]');
-  has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has VpcId => (is => 'ro', isa => 'Str');
 1;
 
@@ -38,12 +38,12 @@ VPC configuration associated with your Lambda function.
 =head1 ATTRIBUTES
 
 
-=head2 SecurityGroupIds => ArrayRef[Str]
+=head2 SecurityGroupIds => ArrayRef[Str|Undef]
 
   A list of security group IDs associated with the Lambda function.
 
 
-=head2 SubnetIds => ArrayRef[Str]
+=head2 SubnetIds => ArrayRef[Str|Undef]
 
   A list of subnet IDs associated with the Lambda function.
 

@@ -1,7 +1,7 @@
 package Paws::CloudFront::TrustedSigners;
   use Moose;
   has Enabled => (is => 'ro', isa => 'Bool', required => 1);
-  has Items => (is => 'ro', isa => 'ArrayRef[Str]');
+  has Items => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Quantity => (is => 'ro', isa => 'Int', required => 1);
 1;
 
@@ -34,31 +34,40 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 =head1 DESCRIPTION
 
 A complex type that specifies the AWS accounts, if any, that you want
-to allow to create signed URLs for private content. If you want to
-require signed URLs in requests for objects in the target origin that
-match the PathPattern for this cache behavior, specify true for
-Enabled, and specify the applicable values for Quantity and Items. For
-more information, go to Using a Signed URL to Serve Private Content in
-the Amazon CloudFront Developer Guide. If you don't want to require
-signed URLs in requests for objects that match PathPattern, specify
-false for Enabled and 0 for Quantity. Omit Items. To add, change, or
-remove one or more trusted signers, change Enabled to true (if it's
-currently false), change Quantity as applicable, and specify all of the
-trusted signers that you want to include in the updated distribution.
+to allow to create signed URLs for private content.
+
+If you want to require signed URLs in requests for objects in the
+target origin that match the C<PathPattern> for this cache behavior,
+specify C<true> for C<Enabled>, and specify the applicable values for
+C<Quantity> and C<Items>. For more information, see Serving Private
+Content through CloudFront in the I<Amazon Amazon CloudFront Developer
+Guide>.
+
+If you don't want to require signed URLs in requests for objects that
+match C<PathPattern>, specify C<false> for C<Enabled> and C<0> for
+C<Quantity>. Omit C<Items>.
+
+To add, change, or remove one or more trusted signers, change
+C<Enabled> to C<true> (if it's currently C<false>), change C<Quantity>
+as applicable, and specify all of the trusted signers that you want to
+include in the updated distribution.
+
+For more information about updating the distribution configuration, see
+DistributionConfig .
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> Enabled => Bool
 
-  Specifies whether you want to require end users to use signed URLs to
-access the files specified by PathPattern and TargetOriginId.
+  Specifies whether you want to require viewers to use signed URLs to
+access the files specified by C<PathPattern> and C<TargetOriginId>.
 
 
-=head2 Items => ArrayRef[Str]
+=head2 Items => ArrayRef[Str|Undef]
 
-  Optional: A complex type that contains trusted signers for this cache
-behavior. If Quantity is 0, you can omit Items.
+  B<Optional>: A complex type that contains trusted signers for this
+cache behavior. If C<Quantity> is C<0>, you can omit C<Items>.
 
 
 =head2 B<REQUIRED> Quantity => Int

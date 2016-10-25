@@ -1,13 +1,17 @@
 
 package Paws::CognitoIdp::UpdateUserPool;
   use Moose;
-  has AutoVerifiedAttributes => (is => 'ro', isa => 'ArrayRef[Str]');
+  has AdminCreateUserConfig => (is => 'ro', isa => 'Paws::CognitoIdp::AdminCreateUserConfigType');
+  has AutoVerifiedAttributes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has DeviceConfiguration => (is => 'ro', isa => 'Paws::CognitoIdp::DeviceConfigurationType');
+  has EmailConfiguration => (is => 'ro', isa => 'Paws::CognitoIdp::EmailConfigurationType');
   has EmailVerificationMessage => (is => 'ro', isa => 'Str');
   has EmailVerificationSubject => (is => 'ro', isa => 'Str');
   has LambdaConfig => (is => 'ro', isa => 'Paws::CognitoIdp::LambdaConfigType');
   has MfaConfiguration => (is => 'ro', isa => 'Str');
   has Policies => (is => 'ro', isa => 'Paws::CognitoIdp::UserPoolPolicyType');
   has SmsAuthenticationMessage => (is => 'ro', isa => 'Str');
+  has SmsConfiguration => (is => 'ro', isa => 'Paws::CognitoIdp::SmsConfigurationType');
   has SmsVerificationMessage => (is => 'ro', isa => 'Str');
   has UserPoolId => (is => 'ro', isa => 'Str', required => 1);
 
@@ -41,10 +45,28 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 AutoVerifiedAttributes => ArrayRef[Str]
+=head2 AdminCreateUserConfig => L<Paws::CognitoIdp::AdminCreateUserConfigType>
+
+The configuration for AdminCreateUser requests.
+
+
+
+=head2 AutoVerifiedAttributes => ArrayRef[Str|Undef]
 
 The attributes that are automatically verified when the Amazon Cognito
 service makes a request to update user pools.
+
+
+
+=head2 DeviceConfiguration => L<Paws::CognitoIdp::DeviceConfigurationType>
+
+Device configuration.
+
+
+
+=head2 EmailConfiguration => L<Paws::CognitoIdp::EmailConfigurationType>
+
+Email configuration.
 
 
 
@@ -56,7 +78,7 @@ The contents of the email verification message.
 
 =head2 EmailVerificationSubject => Str
 
-The subject of the email verfication message
+The subject of the email verfication message.
 
 
 
@@ -73,14 +95,20 @@ Can be one of the following values:
 
 =over
 
-=item * C<OFF> - MFA tokens are not required and cannot be specified
-during user registration.
+=item *
 
-=item * C<ON> - MFA tokens are required for all user registrations. You
-can only specify required when you are initially creating a user pool.
+C<OFF> - MFA tokens are not required and cannot be specified during
+user registration.
 
-=item * C<OPTIONAL> - Users have the option when registering to create
-an MFA token.
+=item *
+
+C<ON> - MFA tokens are required for all user registrations. You can
+only specify required when you are initially creating a user pool.
+
+=item *
+
+C<OPTIONAL> - Users have the option when registering to create an MFA
+token.
 
 =back
 
@@ -96,6 +124,12 @@ A container with the policies you wish to update in a user pool.
 =head2 SmsAuthenticationMessage => Str
 
 The contents of the SMS authentication message.
+
+
+
+=head2 SmsConfiguration => L<Paws::CognitoIdp::SmsConfigurationType>
+
+SMS configuration.
 
 
 

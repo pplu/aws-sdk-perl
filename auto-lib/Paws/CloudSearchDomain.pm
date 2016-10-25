@@ -1,5 +1,4 @@
 package Paws::CloudSearchDomain;
-  warn "Paws::CloudSearchDomain is not stable / supported / entirely developed";
   use Moose;
   sub service { 'cloudsearchdomain' }
   sub version { '2013-01-01' }

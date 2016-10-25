@@ -42,8 +42,8 @@ The cluster identifier for the bootstrap actions to list .
 
 =head2 Marker => Str
 
-The pagination token that indicates the next set of results to retrieve
-.
+The pagination token that indicates the next set of results to
+retrieve.
 
 
 

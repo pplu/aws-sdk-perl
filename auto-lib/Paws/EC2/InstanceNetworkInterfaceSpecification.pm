@@ -4,7 +4,7 @@ package Paws::EC2::InstanceNetworkInterfaceSpecification;
   has DeleteOnTermination => (is => 'ro', isa => 'Bool', xmlname => 'deleteOnTermination', traits => ['Unwrapped']);
   has Description => (is => 'ro', isa => 'Str', xmlname => 'description', traits => ['Unwrapped']);
   has DeviceIndex => (is => 'ro', isa => 'Int', xmlname => 'deviceIndex', traits => ['Unwrapped']);
-  has Groups => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'SecurityGroupId', traits => ['Unwrapped']);
+  has Groups => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'SecurityGroupId', traits => ['Unwrapped']);
   has NetworkInterfaceId => (is => 'ro', isa => 'Str', xmlname => 'networkInterfaceId', traits => ['Unwrapped']);
   has PrivateIpAddress => (is => 'ro', isa => 'Str', xmlname => 'privateIpAddress', traits => ['Unwrapped']);
   has PrivateIpAddresses => (is => 'ro', isa => 'ArrayRef[Paws::EC2::PrivateIpAddressSpecification]', xmlname => 'privateIpAddressesSet', traits => ['Unwrapped']);
@@ -75,7 +75,7 @@ attachment. If you are specifying a network interface in a RunInstances
 request, you must provide the device index.
 
 
-=head2 Groups => ArrayRef[Str]
+=head2 Groups => ArrayRef[Str|Undef]
 
   The IDs of the security groups for the network interface. Applies only
 if creating a network interface when launching an instance.
@@ -89,20 +89,25 @@ if creating a network interface when launching an instance.
 =head2 PrivateIpAddress => Str
 
   The private IP address of the network interface. Applies only if
-creating a network interface when launching an instance.
+creating a network interface when launching an instance. You cannot
+specify this option if you're launching more than one instance in a
+RunInstances request.
 
 
 =head2 PrivateIpAddresses => ArrayRef[L<Paws::EC2::PrivateIpAddressSpecification>]
 
   One or more private IP addresses to assign to the network interface.
-Only one private IP address can be designated as primary.
+Only one private IP address can be designated as primary. You cannot
+specify this option if you're launching more than one instance in a
+RunInstances request.
 
 
 =head2 SecondaryPrivateIpAddressCount => Int
 
   The number of secondary private IP addresses. You can't specify this
 option and specify more than one private IP address using the private
-IP addresses option.
+IP addresses option. You cannot specify this option if you're launching
+more than one instance in a RunInstances request.
 
 
 =head2 SubnetId => Str

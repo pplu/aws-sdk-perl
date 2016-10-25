@@ -3,7 +3,7 @@ package Paws::EC2::DescribeNatGateways;
   use Moose;
   has Filter => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Filter]');
   has MaxResults => (is => 'ro', isa => 'Int');
-  has NatGatewayIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'NatGatewayId' );
+  has NatGatewayIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'NatGatewayId' );
   has NextToken => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
@@ -75,7 +75,7 @@ Constraint: If the value specified is greater than 1000, we return only
 
 
 
-=head2 NatGatewayIds => ArrayRef[Str]
+=head2 NatGatewayIds => ArrayRef[Str|Undef]
 
 One or more NAT gateway IDs.
 

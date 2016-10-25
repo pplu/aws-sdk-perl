@@ -1,7 +1,7 @@
 
 package Paws::DynamoDB::Query;
   use Moose;
-  has AttributesToGet => (is => 'ro', isa => 'ArrayRef[Str]');
+  has AttributesToGet => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has ConditionalOperator => (is => 'ro', isa => 'Str');
   has ConsistentRead => (is => 'ro', isa => 'Bool');
   has ExclusiveStartKey => (is => 'ro', isa => 'Paws::DynamoDB::Key');
@@ -49,7 +49,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 AttributesToGet => ArrayRef[Str]
+=head2 AttributesToGet => ArrayRef[Str|Undef]
 
 This is a legacy parameter, for backward compatibility. New
 applications should use I<ProjectionExpression> instead. Do not combine

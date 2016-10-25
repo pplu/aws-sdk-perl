@@ -5,10 +5,10 @@ package Paws::EC2::DescribeSpotPriceHistory;
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has EndTime => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'endTime' );
   has Filters => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
-  has InstanceTypes => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'InstanceType' );
+  has InstanceTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'InstanceType' );
   has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults' );
   has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
-  has ProductDescriptions => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'ProductDescription' );
+  has ProductDescriptions => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'ProductDescription' );
   has StartTime => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'startTime' );
 
   use MooseX::ClassAttribute;
@@ -102,7 +102,7 @@ supported.
 
 
 
-=head2 InstanceTypes => ArrayRef[Str]
+=head2 InstanceTypes => ArrayRef[Str|Undef]
 
 Filters the results by the specified instance types.
 
@@ -123,7 +123,7 @@ The token for the next set of results.
 
 
 
-=head2 ProductDescriptions => ArrayRef[Str]
+=head2 ProductDescriptions => ArrayRef[Str|Undef]
 
 Filters the results by the specified basic product descriptions.
 

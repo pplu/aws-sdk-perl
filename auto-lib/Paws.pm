@@ -57,7 +57,7 @@ __PACKAGE__->meta->make_immutable;
 
 package Paws;
 
-our $VERSION = '0.27';
+our $VERSION = '0.28';
 
 use Moose;
 use MooseX::ClassAttribute;
@@ -242,6 +242,8 @@ L<Paws::ApplicationAutoScaling>
 
 L<Paws::AutoScaling>
 
+L<Paws::Budgets>
+
 L<Paws::CloudFormation>
 
 L<Paws::CloudFront>
@@ -310,6 +312,8 @@ L<Paws::ELB>
 
 L<Paws::ELB>
 
+L<Paws::ELBv2>
+
 L<Paws::EMR>
 
 L<Paws::EMR>
@@ -333,6 +337,8 @@ L<Paws::IoT>
 L<Paws::IoTData>
 
 L<Paws::Kinesis>
+
+L<Paws::KinesisAnalytics>
 
 L<Paws::KMS>
 
@@ -367,6 +373,10 @@ L<Paws::Signin>
 L<Paws::SimpleDB>
 
 L<Paws::SimpleWorkflow>
+
+L<Paws::SMS>
+
+L<Paws::Snowball>
 
 L<Paws::SNS>
 
@@ -615,7 +625,8 @@ karenetheridge for bug reporting, pull requests and help
 ioanrogers for fixing unicode issues in tests
 
 ilmari for fixing issues with timestamps in Date and X-Amz-Date headers,
-test fixes and 5.10 support fixes
+test fixes and 5.10 support fixes, documentation issue fixes for S3, 
+CloudFront and Route53, help with number stringification
 
 stevecaldwell77 for contributing support for temporary credentials in S3
 
@@ -638,6 +649,10 @@ Ioan Rogers for contributing AssumeRoleWithSAML with ADFS auth example
 Miquel Soriano for reporting a bug with DescribeAutoScalingGroups
 
 Albert Bendicho (wiof) for contributing better retry logic
+
+Brian Hartsock for better handling of XMLResponse exceptions
+
+rpcme for reporting various bugs in the SDK
 
 
 =cut

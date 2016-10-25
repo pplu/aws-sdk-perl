@@ -1,7 +1,7 @@
 
 package Paws::ECS::ListTaskDefinitionFamiliesResponse;
   use Moose;
-  has Families => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['Unwrapped'], xmlname => 'families' );
+  has Families => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['Unwrapped'], xmlname => 'families' );
   has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
 
 
@@ -14,7 +14,7 @@ Paws::ECS::ListTaskDefinitionFamiliesResponse
 =head1 ATTRIBUTES
 
 
-=head2 Families => ArrayRef[Str]
+=head2 Families => ArrayRef[Str|Undef]
 
 The list of task definition family names that match the
 C<ListTaskDefinitionFamilies> request.

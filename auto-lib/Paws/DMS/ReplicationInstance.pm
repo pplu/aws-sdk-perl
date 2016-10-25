@@ -14,9 +14,9 @@ package Paws::DMS::ReplicationInstance;
   has ReplicationInstanceClass => (is => 'ro', isa => 'Str');
   has ReplicationInstanceIdentifier => (is => 'ro', isa => 'Str');
   has ReplicationInstancePrivateIpAddress => (is => 'ro', isa => 'Str');
-  has ReplicationInstancePrivateIpAddresses => (is => 'ro', isa => 'ArrayRef[Str]');
+  has ReplicationInstancePrivateIpAddresses => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has ReplicationInstancePublicIpAddress => (is => 'ro', isa => 'Str');
-  has ReplicationInstancePublicIpAddresses => (is => 'ro', isa => 'ArrayRef[Str]');
+  has ReplicationInstancePublicIpAddresses => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has ReplicationInstanceStatus => (is => 'ro', isa => 'Str');
   has ReplicationSubnetGroup => (is => 'ro', isa => 'Paws::DMS::ReplicationSubnetGroup');
   has VpcSecurityGroups => (is => 'ro', isa => 'ArrayRef[Paws::DMS::VpcSecurityGroupMembership]');
@@ -161,7 +161,7 @@ Example: C<myrepinstance>
   The private IP address of the replication instance.
 
 
-=head2 ReplicationInstancePrivateIpAddresses => ArrayRef[Str]
+=head2 ReplicationInstancePrivateIpAddresses => ArrayRef[Str|Undef]
 
   The private IP address of the replication instance.
 
@@ -171,7 +171,7 @@ Example: C<myrepinstance>
   The public IP address of the replication instance.
 
 
-=head2 ReplicationInstancePublicIpAddresses => ArrayRef[Str]
+=head2 ReplicationInstancePublicIpAddresses => ArrayRef[Str|Undef]
 
   The public IP address of the replication instance.
 

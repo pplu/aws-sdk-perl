@@ -51,7 +51,7 @@ The user is allowed to use B<sudo> to elevate privileges.
 
 =head2 B<REQUIRED> IamUserArn => Str
 
-The user's IAM ARN.
+The user's IAM ARN. This can also be a federated user's ARN.
 
 
 

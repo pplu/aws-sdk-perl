@@ -1,7 +1,7 @@
 
 package Paws::ELB::DescribeLoadBalancerPolicyTypes;
   use Moose;
-  has PolicyTypeNames => (is => 'ro', isa => 'ArrayRef[Str]');
+  has PolicyTypeNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
   use MooseX::ClassAttribute;
 
@@ -33,7 +33,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 PolicyTypeNames => ArrayRef[Str]
+=head2 PolicyTypeNames => ArrayRef[Str|Undef]
 
 The names of the policy types. If no names are specified, describes all
 policy types defined by Elastic Load Balancing.

@@ -210,7 +210,7 @@ For a list of available SDKs, go to Tools for Amazon Web Services.
 
 =head1 METHODS
 
-=head2 AddPermission(ActionName => ArrayRef[Str], AWSAccountId => ArrayRef[Str], Label => Str, TopicArn => Str)
+=head2 AddPermission(ActionName => ArrayRef[Str|Undef], AWSAccountId => ArrayRef[Str|Undef], Label => Str, TopicArn => Str)
 
 Each argument is described in detail in: L<Paws::SNS::AddPermission>
 
@@ -377,7 +377,7 @@ supported push notification services, such as APNS and GCM. For more
 information, see Using Amazon SNS Mobile Push Notifications.
 
 
-=head2 GetSMSAttributes([Attributes => ArrayRef[Str]])
+=head2 GetSMSAttributes([Attributes => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::SNS::GetSMSAttributes>
 
@@ -525,8 +525,6 @@ To use the C<Publish> action for sending a message to a mobile
 endpoint, such as an app on a Kindle device or mobile phone, you must
 specify the EndpointArn for the TargetArn parameter. The EndpointArn is
 returned when making a call with the C<CreatePlatformEndpoint> action.
-The second example below shows a request and response for publishing to
-a mobile endpoint.
 
 For more information about formatting messages, see Send Custom
 Platform-Specific Payloads in Messages to Mobile Devices.

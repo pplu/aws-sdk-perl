@@ -1,7 +1,7 @@
 
 package Paws::Inspector::ListAssessmentRunsResponse;
   use Moose;
-  has AssessmentRunArns => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['Unwrapped'], xmlname => 'assessmentRunArns' , required => 1);
+  has AssessmentRunArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['Unwrapped'], xmlname => 'assessmentRunArns' , required => 1);
   has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
 
 
@@ -14,7 +14,7 @@ Paws::Inspector::ListAssessmentRunsResponse
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> AssessmentRunArns => ArrayRef[Str]
+=head2 B<REQUIRED> AssessmentRunArns => ArrayRef[Str|Undef]
 
 A list of ARNs that specifies the assessment runs that are returned by
 the action.

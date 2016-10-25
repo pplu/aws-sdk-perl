@@ -1,7 +1,7 @@
 
 package Paws::Inspector::ListAssessmentRuns;
   use Moose;
-  has AssessmentTemplateArns => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'assessmentTemplateArns' );
+  has AssessmentTemplateArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'assessmentTemplateArns' );
   has Filter => (is => 'ro', isa => 'Paws::Inspector::AssessmentRunFilter', traits => ['NameInRequest'], request_name => 'filter' );
   has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults' );
   has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
@@ -36,7 +36,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 AssessmentTemplateArns => ArrayRef[Str]
+=head2 AssessmentTemplateArns => ArrayRef[Str|Undef]
 
 The ARNs that specify the assessment templates whose assessment runs
 you want to list.

@@ -1,8 +1,11 @@
 
 package Paws::CognitoIdp::CreateUserPool;
   use Moose;
-  has AliasAttributes => (is => 'ro', isa => 'ArrayRef[Str]');
-  has AutoVerifiedAttributes => (is => 'ro', isa => 'ArrayRef[Str]');
+  has AdminCreateUserConfig => (is => 'ro', isa => 'Paws::CognitoIdp::AdminCreateUserConfigType');
+  has AliasAttributes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has AutoVerifiedAttributes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has DeviceConfiguration => (is => 'ro', isa => 'Paws::CognitoIdp::DeviceConfigurationType');
+  has EmailConfiguration => (is => 'ro', isa => 'Paws::CognitoIdp::EmailConfigurationType');
   has EmailVerificationMessage => (is => 'ro', isa => 'Str');
   has EmailVerificationSubject => (is => 'ro', isa => 'Str');
   has LambdaConfig => (is => 'ro', isa => 'Paws::CognitoIdp::LambdaConfigType');
@@ -10,6 +13,7 @@ package Paws::CognitoIdp::CreateUserPool;
   has Policies => (is => 'ro', isa => 'Paws::CognitoIdp::UserPoolPolicyType');
   has PoolName => (is => 'ro', isa => 'Str', required => 1);
   has SmsAuthenticationMessage => (is => 'ro', isa => 'Str');
+  has SmsConfiguration => (is => 'ro', isa => 'Paws::CognitoIdp::SmsConfigurationType');
   has SmsVerificationMessage => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
@@ -42,17 +46,35 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 AliasAttributes => ArrayRef[Str]
+=head2 AdminCreateUserConfig => L<Paws::CognitoIdp::AdminCreateUserConfigType>
+
+The configuration for AdminCreateUser requests.
+
+
+
+=head2 AliasAttributes => ArrayRef[Str|Undef]
 
 Attributes supported as an alias for this user pool. Possible values:
 B<phone_number>, B<email>, or B<preferred_username>.
 
 
 
-=head2 AutoVerifiedAttributes => ArrayRef[Str]
+=head2 AutoVerifiedAttributes => ArrayRef[Str|Undef]
 
 The attributes to be auto-verified. Possible values: B<email>,
 B<phone_number>.
+
+
+
+=head2 DeviceConfiguration => L<Paws::CognitoIdp::DeviceConfigurationType>
+
+The device configuration.
+
+
+
+=head2 EmailConfiguration => L<Paws::CognitoIdp::EmailConfigurationType>
+
+The email configuration.
 
 
 
@@ -95,6 +117,12 @@ A string used to name the user pool.
 =head2 SmsAuthenticationMessage => Str
 
 A string representing the SMS authentication message.
+
+
+
+=head2 SmsConfiguration => L<Paws::CognitoIdp::SmsConfigurationType>
+
+The SMS configuration.
 
 
 

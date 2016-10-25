@@ -1,8 +1,8 @@
 
 package Paws::Config::DescribeComplianceByConfigRule;
   use Moose;
-  has ComplianceTypes => (is => 'ro', isa => 'ArrayRef[Str]');
-  has ConfigRuleNames => (is => 'ro', isa => 'ArrayRef[Str]');
+  has ComplianceTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has ConfigRuleNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has NextToken => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
@@ -35,7 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 ComplianceTypes => ArrayRef[Str]
+=head2 ComplianceTypes => ArrayRef[Str|Undef]
 
 Filters the results by compliance.
 
@@ -44,7 +44,7 @@ C<INSUFFICIENT_DATA>.
 
 
 
-=head2 ConfigRuleNames => ArrayRef[Str]
+=head2 ConfigRuleNames => ArrayRef[Str|Undef]
 
 Specify one or more AWS Config rule names to filter the results by
 rule.

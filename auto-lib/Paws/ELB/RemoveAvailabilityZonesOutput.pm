@@ -1,7 +1,7 @@
 
 package Paws::ELB::RemoveAvailabilityZonesOutput;
   use Moose;
-  has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str]');
+  has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
 1;
 
@@ -14,7 +14,7 @@ Paws::ELB::RemoveAvailabilityZonesOutput
 =head1 ATTRIBUTES
 
 
-=head2 AvailabilityZones => ArrayRef[Str]
+=head2 AvailabilityZones => ArrayRef[Str|Undef]
 
 The remaining Availability Zones for the load balancer.
 

@@ -1,7 +1,7 @@
 package Paws::RDS::Filter;
   use Moose;
   has Name => (is => 'ro', isa => 'Str', required => 1);
-  has Values => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has Values => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +42,7 @@ This type is not currently supported.
   This parameter is not currently supported.
 
 
-=head2 B<REQUIRED> Values => ArrayRef[Str]
+=head2 B<REQUIRED> Values => ArrayRef[Str|Undef]
 
   This parameter is not currently supported.
 

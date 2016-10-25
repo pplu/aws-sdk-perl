@@ -1,7 +1,7 @@
 
 package Paws::EC2::ReleaseHostsResult;
   use Moose;
-  has Successful => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'successful', traits => ['Unwrapped',]);
+  has Successful => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'successful', traits => ['Unwrapped',]);
   has Unsuccessful => (is => 'ro', isa => 'ArrayRef[Paws::EC2::UnsuccessfulItem]', xmlname => 'unsuccessful', traits => ['Unwrapped',]);
 
 1;
@@ -15,15 +15,15 @@ Paws::EC2::ReleaseHostsResult
 =head1 ATTRIBUTES
 
 
-=head2 Successful => ArrayRef[Str]
+=head2 Successful => ArrayRef[Str|Undef]
 
-The IDs of the Dedicated hosts that were successfully released.
+The IDs of the Dedicated Hosts that were successfully released.
 
 
 
 =head2 Unsuccessful => ArrayRef[L<Paws::EC2::UnsuccessfulItem>]
 
-The IDs of the Dedicated hosts that could not be released, including an
+The IDs of the Dedicated Hosts that could not be released, including an
 error message.
 
 

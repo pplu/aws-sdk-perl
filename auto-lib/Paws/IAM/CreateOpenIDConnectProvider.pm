@@ -1,8 +1,8 @@
 
 package Paws::IAM::CreateOpenIDConnectProvider;
   use Moose;
-  has ClientIDList => (is => 'ro', isa => 'ArrayRef[Str]');
-  has ThumbprintList => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has ClientIDList => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has ThumbprintList => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
   has Url => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -35,7 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 ClientIDList => ArrayRef[Str]
+=head2 ClientIDList => ArrayRef[Str|Undef]
 
 A list of client IDs (also known as audiences). When a mobile or web
 app registers with an OpenID Connect provider, they establish a value
@@ -53,7 +53,7 @@ C<CreateOpenIDConnectProviderRequest> action accepts client IDs up to
 
 
 
-=head2 B<REQUIRED> ThumbprintList => ArrayRef[Str]
+=head2 B<REQUIRED> ThumbprintList => ArrayRef[Str|Undef]
 
 A list of server certificate thumbprints for the OpenID Connect (OIDC)
 identity provider's server certificate(s). Typically this list includes

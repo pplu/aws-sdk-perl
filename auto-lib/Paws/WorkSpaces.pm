@@ -49,6 +49,16 @@ package Paws::WorkSpaces;
     my $call_object = $self->new_with_coercions('Paws::WorkSpaces::DescribeWorkspaces', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeWorkspacesConnectionStatus {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WorkSpaces::DescribeWorkspacesConnectionStatus', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ModifyWorkspaceProperties {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WorkSpaces::ModifyWorkspaceProperties', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub RebootWorkspaces {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::WorkSpaces::RebootWorkspaces', @_);
@@ -59,13 +69,23 @@ package Paws::WorkSpaces;
     my $call_object = $self->new_with_coercions('Paws::WorkSpaces::RebuildWorkspaces', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub StartWorkspaces {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WorkSpaces::StartWorkspaces', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub StopWorkspaces {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WorkSpaces::StopWorkspaces', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub TerminateWorkspaces {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::WorkSpaces::TerminateWorkspaces', @_);
     return $self->caller->do_call($self, $call_object);
   }
 
-  sub operations { qw/CreateTags CreateWorkspaces DeleteTags DescribeTags DescribeWorkspaceBundles DescribeWorkspaceDirectories DescribeWorkspaces RebootWorkspaces RebuildWorkspaces TerminateWorkspaces / }
+  sub operations { qw/CreateTags CreateWorkspaces DeleteTags DescribeTags DescribeWorkspaceBundles DescribeWorkspaceDirectories DescribeWorkspaces DescribeWorkspacesConnectionStatus ModifyWorkspaceProperties RebootWorkspaces RebuildWorkspaces StartWorkspaces StopWorkspaces TerminateWorkspaces / }
 
 1;
 
@@ -95,9 +115,8 @@ Paws::WorkSpaces - Perl Interface to AWS Amazon WorkSpaces
 
 Amazon WorkSpaces Service
 
-This is the I<Amazon WorkSpaces API Reference>. This guide provides
-detailed information about Amazon WorkSpaces operations, data types,
-parameters, and errors.
+This reference provides detailed information about the Amazon
+WorkSpaces operations.
 
 =head1 METHODS
 
@@ -122,7 +141,7 @@ This operation is asynchronous and returns before the WorkSpaces are
 created.
 
 
-=head2 DeleteTags(ResourceId => Str, TagKeys => ArrayRef[Str])
+=head2 DeleteTags(ResourceId => Str, TagKeys => ArrayRef[Str|Undef])
 
 Each argument is described in detail in: L<Paws::WorkSpaces::DeleteTags>
 
@@ -140,7 +159,7 @@ Returns: a L<Paws::WorkSpaces::DescribeTagsResult> instance
   Describes tags for a WorkSpace.
 
 
-=head2 DescribeWorkspaceBundles([BundleIds => ArrayRef[Str], NextToken => Str, Owner => Str])
+=head2 DescribeWorkspaceBundles([BundleIds => ArrayRef[Str|Undef], NextToken => Str, Owner => Str])
 
 Each argument is described in detail in: L<Paws::WorkSpaces::DescribeWorkspaceBundles>
 
@@ -158,7 +177,7 @@ C<NextToken> response member contains a token that you pass in the next
 call to this operation to retrieve the next set of items.
 
 
-=head2 DescribeWorkspaceDirectories([DirectoryIds => ArrayRef[Str], NextToken => Str])
+=head2 DescribeWorkspaceDirectories([DirectoryIds => ArrayRef[Str|Undef], NextToken => Str])
 
 Each argument is described in detail in: L<Paws::WorkSpaces::DescribeWorkspaceDirectories>
 
@@ -174,7 +193,7 @@ C<NextToken> response member contains a token that you pass in the next
 call to this operation to retrieve the next set of items.
 
 
-=head2 DescribeWorkspaces([BundleId => Str, DirectoryId => Str, Limit => Int, NextToken => Str, UserName => Str, WorkspaceIds => ArrayRef[Str]])
+=head2 DescribeWorkspaces([BundleId => Str, DirectoryId => Str, Limit => Int, NextToken => Str, UserName => Str, WorkspaceIds => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::WorkSpaces::DescribeWorkspaces>
 
@@ -191,6 +210,25 @@ C<NextToken> response member contains a token that you pass in the next
 call to this operation to retrieve the next set of items.
 
 
+=head2 DescribeWorkspacesConnectionStatus([NextToken => Str, WorkspaceIds => ArrayRef[Str|Undef]])
+
+Each argument is described in detail in: L<Paws::WorkSpaces::DescribeWorkspacesConnectionStatus>
+
+Returns: a L<Paws::WorkSpaces::DescribeWorkspacesConnectionStatusResult> instance
+
+  Describes the connection status of a specified WorkSpace.
+
+
+=head2 ModifyWorkspaceProperties(WorkspaceId => Str, WorkspaceProperties => L<Paws::WorkSpaces::WorkspaceProperties>)
+
+Each argument is described in detail in: L<Paws::WorkSpaces::ModifyWorkspaceProperties>
+
+Returns: a L<Paws::WorkSpaces::ModifyWorkspacePropertiesResult> instance
+
+  Modifies the WorkSpace properties, including the RunningMode and
+AutoStop time.
+
+
 =head2 RebootWorkspaces(RebootWorkspaceRequests => ArrayRef[L<Paws::WorkSpaces::RebootRequest>])
 
 Each argument is described in detail in: L<Paws::WorkSpaces::RebootWorkspaces>
@@ -202,8 +240,8 @@ Returns: a L<Paws::WorkSpaces::RebootWorkspacesResult> instance
 To be able to reboot a WorkSpace, the WorkSpace must have a B<State> of
 C<AVAILABLE>, C<IMPAIRED>, or C<INOPERABLE>.
 
-This operation is asynchronous and will return before the WorkSpaces
-have rebooted.
+This operation is asynchronous and returns before the WorkSpaces have
+rebooted.
 
 
 =head2 RebuildWorkspaces(RebuildWorkspaceRequests => ArrayRef[L<Paws::WorkSpaces::RebuildRequest>])
@@ -220,23 +258,49 @@ to occur:
 
 =over
 
-=item * The system is restored to the image of the bundle that the
-WorkSpace is created from. Any applications that have been installed,
-or system settings that have been made since the WorkSpace was created
-will be lost.
+=item *
 
-=item * The data drive (D drive) is re-created from the last automatic
-snapshot taken of the data drive. The current contents of the data
-drive are overwritten. Automatic snapshots of the data drive are taken
-every 12 hours, so the snapshot can be as much as 12 hours old.
+The system is restored to the image of the bundle that the WorkSpace is
+created from. Any applications that have been installed, or system
+settings that have been made since the WorkSpace was created will be
+lost.
+
+=item *
+
+The data drive (D drive) is re-created from the last automatic snapshot
+taken of the data drive. The current contents of the data drive are
+overwritten. Automatic snapshots of the data drive are taken every 12
+hours, so the snapshot can be as much as 12 hours old.
 
 =back
 
 To be able to rebuild a WorkSpace, the WorkSpace must have a B<State>
 of C<AVAILABLE> or C<ERROR>.
 
-This operation is asynchronous and will return before the WorkSpaces
-have been completely rebuilt.
+This operation is asynchronous and returns before the WorkSpaces have
+been completely rebuilt.
+
+
+=head2 StartWorkspaces(StartWorkspaceRequests => ArrayRef[L<Paws::WorkSpaces::StartRequest>])
+
+Each argument is described in detail in: L<Paws::WorkSpaces::StartWorkspaces>
+
+Returns: a L<Paws::WorkSpaces::StartWorkspacesResult> instance
+
+  Starts the specified WorkSpaces. The API only works with WorkSpaces
+that have RunningMode configured as AutoStop and the State set to
+E<ldquo>STOPPED.E<rdquo>
+
+
+=head2 StopWorkspaces(StopWorkspaceRequests => ArrayRef[L<Paws::WorkSpaces::StopRequest>])
+
+Each argument is described in detail in: L<Paws::WorkSpaces::StopWorkspaces>
+
+Returns: a L<Paws::WorkSpaces::StopWorkspacesResult> instance
+
+  Stops the specified WorkSpaces. The API only works with WorkSpaces that
+have RunningMode configured as AutoStop and the State set to AVAILABLE,
+IMPAIRED, UNHEALTHY, or ERROR.
 
 
 =head2 TerminateWorkspaces(TerminateWorkspaceRequests => ArrayRef[L<Paws::WorkSpaces::TerminateRequest>])
@@ -254,8 +318,8 @@ the WorkSpace.
 
 You can terminate a WorkSpace that is in any state except C<SUSPENDED>.
 
-This operation is asynchronous and will return before the WorkSpaces
-have been completely terminated.
+This operation is asynchronous and returns before the WorkSpaces have
+been completely terminated.
 
 
 =head1 SEE ALSO

@@ -1,5 +1,4 @@
 package Paws::Glacier;
-  warn "Paws::Glacier is not stable / supported / entirely developed";
   use Moose;
   sub service { 'glacier' }
   sub version { '2012-06-01' }
@@ -1210,7 +1209,7 @@ Vault Metadata in Amazon Glacier and List Vaults in the I<Amazon
 Glacier Developer Guide>.
 
 
-=head2 RemoveTagsFromVault(AccountId => Str, VaultName => Str, [TagKeys => ArrayRef[Str]])
+=head2 RemoveTagsFromVault(AccountId => Str, VaultName => Str, [TagKeys => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::Glacier::RemoveTagsFromVault>
 

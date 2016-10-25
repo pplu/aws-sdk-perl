@@ -4,7 +4,7 @@ package Paws::Config::ListDiscoveredResources;
   has IncludeDeletedResources => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'includeDeletedResources' );
   has Limit => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'limit' );
   has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
-  has ResourceIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'resourceIds' );
+  has ResourceIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'resourceIds' );
   has ResourceName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'resourceName' );
   has ResourceType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'resourceType' , required => 1);
 
@@ -60,7 +60,7 @@ the next page of results in a paginated response.
 
 
 
-=head2 ResourceIds => ArrayRef[Str]
+=head2 ResourceIds => ArrayRef[Str|Undef]
 
 The IDs of only those resources that you want AWS Config to list in the
 response. If you do not specify this parameter, AWS Config lists all
@@ -80,7 +80,7 @@ lists all resources of the specified type that it has discovered.
 
 The type of resources that you want AWS Config to list in the response.
 
-Valid values are: C<"AWS::EC2::CustomerGateway">, C<"AWS::EC2::EIP">, C<"AWS::EC2::Host">, C<"AWS::EC2::Instance">, C<"AWS::EC2::InternetGateway">, C<"AWS::EC2::NetworkAcl">, C<"AWS::EC2::NetworkInterface">, C<"AWS::EC2::RouteTable">, C<"AWS::EC2::SecurityGroup">, C<"AWS::EC2::Subnet">, C<"AWS::CloudTrail::Trail">, C<"AWS::EC2::Volume">, C<"AWS::EC2::VPC">, C<"AWS::EC2::VPNConnection">, C<"AWS::EC2::VPNGateway">, C<"AWS::IAM::Group">, C<"AWS::IAM::Policy">, C<"AWS::IAM::Role">, C<"AWS::IAM::User">, C<"AWS::ACM::Certificate">, C<"AWS::RDS::DBInstance">, C<"AWS::RDS::DBSubnetGroup">, C<"AWS::RDS::DBSecurityGroup">, C<"AWS::RDS::DBSnapshot">, C<"AWS::RDS::EventSubscription">
+Valid values are: C<"AWS::EC2::CustomerGateway">, C<"AWS::EC2::EIP">, C<"AWS::EC2::Host">, C<"AWS::EC2::Instance">, C<"AWS::EC2::InternetGateway">, C<"AWS::EC2::NetworkAcl">, C<"AWS::EC2::NetworkInterface">, C<"AWS::EC2::RouteTable">, C<"AWS::EC2::SecurityGroup">, C<"AWS::EC2::Subnet">, C<"AWS::CloudTrail::Trail">, C<"AWS::EC2::Volume">, C<"AWS::EC2::VPC">, C<"AWS::EC2::VPNConnection">, C<"AWS::EC2::VPNGateway">, C<"AWS::IAM::Group">, C<"AWS::IAM::Policy">, C<"AWS::IAM::Role">, C<"AWS::IAM::User">, C<"AWS::ACM::Certificate">, C<"AWS::RDS::DBInstance">, C<"AWS::RDS::DBSubnetGroup">, C<"AWS::RDS::DBSecurityGroup">, C<"AWS::RDS::DBSnapshot">, C<"AWS::RDS::EventSubscription">, C<"AWS::ElasticLoadBalancingV2::LoadBalancer">, C<"AWS::S3::Bucket">
 
 
 =head1 SEE ALSO

@@ -1,7 +1,7 @@
 
 package Paws::AutoScaling::DescribeTerminationPolicyTypesAnswer;
   use Moose;
-  has TerminationPolicyTypes => (is => 'ro', isa => 'ArrayRef[Str]');
+  has TerminationPolicyTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
 1;
 
@@ -14,7 +14,7 @@ Paws::AutoScaling::DescribeTerminationPolicyTypesAnswer
 =head1 ATTRIBUTES
 
 
-=head2 TerminationPolicyTypes => ArrayRef[Str]
+=head2 TerminationPolicyTypes => ArrayRef[Str|Undef]
 
 The termination policies supported by Auto Scaling (C<OldestInstance>,
 C<OldestLaunchConfiguration>, C<NewestInstance>,

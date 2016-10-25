@@ -4,7 +4,7 @@ package Paws::ECR::DescribeRepositories;
   has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults' );
   has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
   has RegistryId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'registryId' );
-  has RepositoryNames => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'repositoryNames' );
+  has RepositoryNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'repositoryNames' );
 
   use MooseX::ClassAttribute;
 
@@ -58,6 +58,10 @@ results exceeded the value of that parameter. Pagination continues from
 the end of the previous results that returned the C<nextToken> value.
 This value is C<null> when there are no more results to return.
 
+This token should be treated as an opaque identifier that is only used
+to retrieve the next items in a list and not for other programmatic
+purposes.
+
 
 
 =head2 RegistryId => Str
@@ -68,7 +72,7 @@ default registry is assumed.
 
 
 
-=head2 RepositoryNames => ArrayRef[Str]
+=head2 RepositoryNames => ArrayRef[Str|Undef]
 
 A list of repositories to describe. If this parameter is omitted, then
 all repositories in a registry are described.

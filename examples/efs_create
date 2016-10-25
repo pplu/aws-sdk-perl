@@ -1,0 +1,16 @@
+#!/usr/bin/env perl
+
+use strict;
+use warnings;
+
+use Paws;
+use Data::Dumper;
+
+my $efs = Paws->service('EFS', region => 'eu-west-1');
+
+my $res = $efs->CreateFileSystem(
+  CreationToken => 4,
+  PerformanceMode => 'generalPurpose'
+);
+
+print Dumper($res);

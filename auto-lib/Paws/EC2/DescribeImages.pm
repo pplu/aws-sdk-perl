@@ -2,10 +2,10 @@
 package Paws::EC2::DescribeImages;
   use Moose;
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
-  has ExecutableUsers => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'ExecutableBy' );
+  has ExecutableUsers => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'ExecutableBy' );
   has Filters => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
-  has ImageIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'ImageId' );
-  has Owners => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'Owner' );
+  has ImageIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'ImageId' );
+  has Owners => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'Owner' );
 
   use MooseX::ClassAttribute;
 
@@ -46,7 +46,7 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 
 
-=head2 ExecutableUsers => ArrayRef[Str]
+=head2 ExecutableUsers => ArrayRef[Str|Undef]
 
 Scopes the images by users with explicit launch permissions. Specify an
 AWS account ID, C<self> (the sender of the request), or C<all> (public
@@ -125,7 +125,10 @@ C<name> - The name of the AMI (provided during image creation).
 
 =item *
 
-C<owner-alias> - The AWS account alias (for example, C<amazon>).
+C<owner-alias> - String value from an Amazon-maintained list (C<amazon>
+| C<aws-marketplace> | C<microsoft>) of snapshot owners. Not to be
+confused with the user-configured AWS account alias, which is set from
+the IAM console.
 
 =item *
 
@@ -202,7 +205,7 @@ C<hvm>).
 
 
 
-=head2 ImageIds => ArrayRef[Str]
+=head2 ImageIds => ArrayRef[Str|Undef]
 
 One or more image IDs.
 
@@ -210,13 +213,13 @@ Default: Describes all images available to you.
 
 
 
-=head2 Owners => ArrayRef[Str]
+=head2 Owners => ArrayRef[Str|Undef]
 
-Filters the images by the owner. Specify an AWS account ID, C<amazon>
-(owner is Amazon), C<aws-marketplace> (owner is AWS Marketplace),
-C<self> (owner is the sender of the request). Omitting this option
-returns all images for which you have launch permissions, regardless of
-ownership.
+Filters the images by the owner. Specify an AWS account ID, C<self>
+(owner is the sender of the request), or an AWS owner alias (valid
+values are C<amazon> | C<aws-marketplace> | C<microsoft>). Omitting
+this option returns all images for which you have launch permissions,
+regardless of ownership.
 
 
 

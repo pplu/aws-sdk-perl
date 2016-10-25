@@ -52,12 +52,12 @@ package Paws::Net::XMLResponse;
     } elsif (exists $headers->{ 'x-amzn-requestid' }) {
       $request_id = $headers->{ 'x-amzn-requestid' };
     } else {
-      die "Cannot find RequestId in error message"
+      $request_id = '';
     }
 
     Paws::Exception->new(
-      message => $error->{Message}, 
-      code => $code, 
+      message => $error->{Message} // $content,
+      code => $code,
       request_id => $request_id,
       http_status => $http_status,
     );

@@ -22,8 +22,8 @@ The bootstrap actions associated with the cluster .
 
 =head2 Marker => Str
 
-The pagination token that indicates the next set of results to retrieve
-.
+The pagination token that indicates the next set of results to
+retrieve.
 
 
 

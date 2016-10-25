@@ -1,6 +1,6 @@
 package Paws::CloudFront::Aliases;
   use Moose;
-  has Items => (is => 'ro', isa => 'ArrayRef[Str]');
+  has Items => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Quantity => (is => 'ro', isa => 'Int', required => 1);
 1;
 
@@ -38,15 +38,16 @@ names), if any, for this distribution.
 =head1 ATTRIBUTES
 
 
-=head2 Items => ArrayRef[Str]
+=head2 Items => ArrayRef[Str|Undef]
 
-  Optional: A complex type that contains CNAME elements, if any, for this
-distribution. If Quantity is 0, you can omit Items.
+  A complex type that contains the CNAME aliases, if any, that you want
+to associate with this distribution.
 
 
 =head2 B<REQUIRED> Quantity => Int
 
-  The number of CNAMEs, if any, for this distribution.
+  The number of CNAME aliases, if any, that you want to associate with
+this distribution.
 
 
 

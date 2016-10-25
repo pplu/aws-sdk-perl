@@ -40,7 +40,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> HttpMethod => Str
 
-The HTTP verb identifier for the parent Method resource.
+The HTTP verb of the Method resource.
 
 
 

@@ -12,9 +12,10 @@ package Paws::EMR::RunJobFlow;
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has NewSupportedProducts => (is => 'ro', isa => 'ArrayRef[Paws::EMR::SupportedProductConfig]');
   has ReleaseLabel => (is => 'ro', isa => 'Str');
+  has SecurityConfiguration => (is => 'ro', isa => 'Str');
   has ServiceRole => (is => 'ro', isa => 'Str');
   has Steps => (is => 'ro', isa => 'ArrayRef[Paws::EMR::StepConfig]');
-  has SupportedProducts => (is => 'ro', isa => 'ArrayRef[Str]');
+  has SupportedProducts => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EMR::Tag]');
   has VisibleToAllUsers => (is => 'ro', isa => 'Bool');
 
@@ -64,7 +65,9 @@ Amazon EC2 instances in the job flow. The following values are valid:
 
 =over
 
-=item * The version number of the AMI to use, for example, "2.0."
+=item *
+
+The version number of the AMI to use, for example, "2.0."
 
 =back
 
@@ -146,25 +149,40 @@ MapR Distribution for Hadoop. Currently supported values are:
 
 =over
 
-=item * "mapr-m3" - launch the cluster using MapR M3 Edition.
+=item *
 
-=item * "mapr-m5" - launch the cluster using MapR M5 Edition.
+"mapr-m3" - launch the cluster using MapR M3 Edition.
 
-=item * "mapr" with the user arguments specifying "--edition,m3" or
+=item *
+
+"mapr-m5" - launch the cluster using MapR M5 Edition.
+
+=item *
+
+"mapr" with the user arguments specifying "--edition,m3" or
 "--edition,m5" - launch the job flow using MapR M3 or M5 Edition
 respectively.
 
-=item * "mapr-m7" - launch the cluster using MapR M7 Edition.
+=item *
 
-=item * "hunk" - launch the cluster with the Hunk Big Data Analtics
-Platform.
+"mapr-m7" - launch the cluster using MapR M7 Edition.
 
-=item * "hue"- launch the cluster with Hue installed.
+=item *
 
-=item * "spark" - launch the cluster with Apache Spark installed.
+"hunk" - launch the cluster with the Hunk Big Data Analtics Platform.
 
-=item * "ganglia" - launch the cluster with the Ganglia Monitoring
-System installed.
+=item *
+
+"hue"- launch the cluster with Hue installed.
+
+=item *
+
+"spark" - launch the cluster with Apache Spark installed.
+
+=item *
+
+"ganglia" - launch the cluster with the Ganglia Monitoring System
+installed.
 
 =back
 
@@ -177,6 +195,12 @@ Amazon EMR releases 4.x or later.
 
 The release label for the Amazon EMR release. For Amazon EMR 3.x and
 2.x AMIs, use amiVersion instead instead of ReleaseLabel.
+
+
+
+=head2 SecurityConfiguration => Str
+
+The name of a security configuration to apply to the cluster.
 
 
 
@@ -193,7 +217,7 @@ A list of steps to be executed by the job flow.
 
 
 
-=head2 SupportedProducts => ArrayRef[Str]
+=head2 SupportedProducts => ArrayRef[Str|Undef]
 
 For Amazon EMR releases 3.x and 2.x. For Amazon EMR releases 4.x and
 greater, use Applications.
@@ -204,9 +228,13 @@ Amazon EMR. Currently supported values are:
 
 =over
 
-=item * "mapr-m3" - launch the job flow using MapR M3 Edition.
+=item *
 
-=item * "mapr-m5" - launch the job flow using MapR M5 Edition.
+"mapr-m3" - launch the job flow using MapR M3 Edition.
+
+=item *
+
+"mapr-m5" - launch the job flow using MapR M5 Edition.
 
 =back
 

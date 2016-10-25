@@ -3,7 +3,7 @@ package Paws::DMS::CreateReplicationSubnetGroup;
   use Moose;
   has ReplicationSubnetGroupDescription => (is => 'ro', isa => 'Str', required => 1);
   has ReplicationSubnetGroupIdentifier => (is => 'ro', isa => 'Str', required => 1);
-  has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::DMS::Tag]');
 
   use MooseX::ClassAttribute;
@@ -54,7 +54,7 @@ Example: C<mySubnetgroup>
 
 
 
-=head2 B<REQUIRED> SubnetIds => ArrayRef[Str]
+=head2 B<REQUIRED> SubnetIds => ArrayRef[Str|Undef]
 
 The EC2 subnet IDs for the subnet group.
 

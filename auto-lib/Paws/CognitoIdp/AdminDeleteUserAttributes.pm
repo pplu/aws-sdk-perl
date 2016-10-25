@@ -1,7 +1,7 @@
 
 package Paws::CognitoIdp::AdminDeleteUserAttributes;
   use Moose;
-  has UserAttributeNames => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has UserAttributeNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
   has Username => (is => 'ro', isa => 'Str', required => 1);
   has UserPoolId => (is => 'ro', isa => 'Str', required => 1);
 
@@ -35,7 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> UserAttributeNames => ArrayRef[Str]
+=head2 B<REQUIRED> UserAttributeNames => ArrayRef[Str|Undef]
 
 An array of strings representing the user attribute names you wish to
 delete.

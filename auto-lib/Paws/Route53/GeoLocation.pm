@@ -40,8 +40,7 @@ A complex type that contains information about a geo location.
 
 =head2 ContinentCode => Str
 
-  The code for a continent geo location. Note: only continent locations
-have a continent code.
+  The two-letter code for the continent.
 
 Valid values: C<AF> | C<AN> | C<AS> | C<EU> | C<OC> | C<NA> | C<SA>
 
@@ -51,21 +50,13 @@ C<SubdivisionCode> returns an C<InvalidInput> error.
 
 =head2 CountryCode => Str
 
-  The code for a country geo location. The default location uses '*' for
-the country code and will match all locations that are not matched by a
-geo location.
-
-The default geo location uses a C<*> for the country code. All other
-country codes follow the ISO 3166 two-character code.
+  The two-letter code for the country.
 
 
 =head2 SubdivisionCode => Str
 
-  The code for a country's subdivision (e.g., a province of Canada). A
-subdivision code is only valid with the appropriate country code.
-
-Constraint: Specifying C<SubdivisionCode> without C<CountryCode>
-returns an C<InvalidInput> error.
+  The code for the subdivision, for example, a state in the United States
+or a province in Canada.
 
 
 

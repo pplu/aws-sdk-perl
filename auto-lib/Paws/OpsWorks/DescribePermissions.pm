@@ -36,8 +36,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 IamUserArn => Str
 
-The user's IAM ARN. For more information about IAM ARNs, see Using
-Identifiers.
+The user's IAM ARN. This can also be a federated user's ARN. For more
+information about IAM ARNs, see Using Identifiers.
 
 
 

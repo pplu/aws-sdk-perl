@@ -114,6 +114,11 @@ package Paws::GameLift;
     my $call_object = $self->new_with_coercions('Paws::GameLift::DescribeGameSessions', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeInstances {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::GameLift::DescribeInstances', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribePlayerSessions {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::GameLift::DescribePlayerSessions', @_);
@@ -164,6 +169,11 @@ package Paws::GameLift;
     my $call_object = $self->new_with_coercions('Paws::GameLift::ResolveAlias', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub SearchGameSessions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::GameLift::SearchGameSessions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateAlias {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::GameLift::UpdateAlias', @_);
@@ -200,7 +210,7 @@ package Paws::GameLift;
     return $self->caller->do_call($self, $call_object);
   }
 
-  sub operations { qw/CreateAlias CreateBuild CreateFleet CreateGameSession CreatePlayerSession CreatePlayerSessions DeleteAlias DeleteBuild DeleteFleet DeleteScalingPolicy DescribeAlias DescribeBuild DescribeEC2InstanceLimits DescribeFleetAttributes DescribeFleetCapacity DescribeFleetEvents DescribeFleetPortSettings DescribeFleetUtilization DescribeGameSessionDetails DescribeGameSessions DescribePlayerSessions DescribeRuntimeConfiguration DescribeScalingPolicies GetGameSessionLogUrl ListAliases ListBuilds ListFleets PutScalingPolicy RequestUploadCredentials ResolveAlias UpdateAlias UpdateBuild UpdateFleetAttributes UpdateFleetCapacity UpdateFleetPortSettings UpdateGameSession UpdateRuntimeConfiguration / }
+  sub operations { qw/CreateAlias CreateBuild CreateFleet CreateGameSession CreatePlayerSession CreatePlayerSessions DeleteAlias DeleteBuild DeleteFleet DeleteScalingPolicy DescribeAlias DescribeBuild DescribeEC2InstanceLimits DescribeFleetAttributes DescribeFleetCapacity DescribeFleetEvents DescribeFleetPortSettings DescribeFleetUtilization DescribeGameSessionDetails DescribeGameSessions DescribeInstances DescribePlayerSessions DescribeRuntimeConfiguration DescribeScalingPolicies GetGameSessionLogUrl ListAliases ListBuilds ListFleets PutScalingPolicy RequestUploadCredentials ResolveAlias SearchGameSessions UpdateAlias UpdateBuild UpdateFleetAttributes UpdateFleetCapacity UpdateFleetPortSettings UpdateGameSession UpdateRuntimeConfiguration / }
 
 1;
 
@@ -248,15 +258,23 @@ B<More Resources>
 
 =over
 
-=item * Amazon GameLift Developer Guide: Learn more about GameLift
-features and how to use them
+=item *
 
-=item * Lumberyard and GameLift Tutorials: Get started fast with
-walkthroughs and sample projects
+Amazon GameLift Developer Guide: Learn more about GameLift features and
+how to use them
 
-=item * GameDev Blog: Stay up to date with new features and techniques
+=item *
 
-=item * GameDev Forums: Connect with the GameDev community
+Lumberyard and GameLift Tutorials: Get started fast with walkthroughs
+and sample projects
+
+=item *
+
+GameDev Blog: Stay up to date with new features and techniques
+
+=item *
+
+GameDev Forums: Connect with the GameDev community
 
 =back
 
@@ -267,37 +285,63 @@ manage multiplayer game sessions and player sessions.
 
 =over
 
-=item * B<Game sessions>
+=item *
+
+B<Game sessions:>
 
 =over
 
-=item * CreateGameSession
+=item *
 
-=item * DescribeGameSessions
+CreateGameSession
 
-=item * DescribeGameSessionDetails
+=item *
 
-=item * UpdateGameSession
+DescribeGameSessions
+
+=item *
+
+DescribeGameSessionDetails
+
+=item *
+
+UpdateGameSession
+
+=item *
+
+SearchGameSessions
 
 =back
 
-=item * B<Player sessions>
+=item *
+
+B<Player sessions:>
 
 =over
 
-=item * CreatePlayerSession
+=item *
 
-=item * CreatePlayerSessions
+CreatePlayerSession
 
-=item * DescribePlayerSessions
+=item *
+
+CreatePlayerSessions
+
+=item *
+
+DescribePlayerSessions
 
 =back
 
-=item * B<Other actions:>
+=item *
+
+B<Other actions:>
 
 =over
 
-=item * GetGameSessionLogUrl
+=item *
+
+GetGameSessionLogUrl
 
 =back
 
@@ -306,105 +350,175 @@ manage multiplayer game sessions and player sessions.
 B<Set Up and Manage Game Servers>
 
 Use these administrative actions to configure GameLift to host your
-game servers. When setting up GameLift, you'll need to (1) configure a
-build for your game and upload build files, and (2) set up one or more
-fleets to host game sessions. Once you've created and activated a
+game servers. When setting up GameLift, you will need to (1) configure
+a build for your game and upload build files, and (2) set up one or
+more fleets to host game sessions. Once you've created and activated a
 fleet, you can assign aliases to it, scale capacity, track performance
 and utilization, etc.
 
 =over
 
-=item * B<Manage your builds:>
+=item *
+
+B<Game builds:>
 
 =over
 
-=item * ListBuilds
+=item *
 
-=item * CreateBuild
+ListBuilds
 
-=item * DescribeBuild
+=item *
 
-=item * UpdateBuild
+CreateBuild
 
-=item * DeleteBuild
+=item *
 
-=item * RequestUploadCredentials
+DescribeBuild
+
+=item *
+
+UpdateBuild
+
+=item *
+
+DeleteBuild
+
+=item *
+
+RequestUploadCredentials
 
 =back
 
-=item * B<Manage your fleets:>
+=item *
+
+B<Fleets:>
 
 =over
 
-=item * ListFleets
+=item *
 
-=item * CreateFleet
+ListFleets
 
-=item * Describe fleets:
+=item *
+
+CreateFleet
+
+=item *
+
+Describe fleets:
 
 =over
 
-=item * DescribeFleetAttributes
+=item *
 
-=item * DescribeFleetCapacity
+DescribeFleetAttributes
 
-=item * DescribeFleetPortSettings
+=item *
 
-=item * DescribeFleetUtilization
+DescribeFleetCapacity
 
-=item * DescribeEC2InstanceLimits
+=item *
 
-=item * DescribeFleetEvents
+DescribeFleetPortSettings
 
-=item * DescribeRuntimeConfiguration
+=item *
+
+DescribeFleetUtilization
+
+=item *
+
+DescribeEC2InstanceLimits
+
+=item *
+
+DescribeFleetEvents
+
+=item *
+
+DescribeRuntimeConfiguration
 
 =back
 
-=item * Update fleets:
+=item *
+
+Update fleets:
 
 =over
 
-=item * UpdateFleetAttributes
+=item *
 
-=item * UpdateFleetCapacity
+UpdateFleetAttributes
 
-=item * UpdateFleetPortSettings
+=item *
 
-=item * UpdateRuntimeConfiguration
+UpdateFleetCapacity
+
+=item *
+
+UpdateFleetPortSettings
+
+=item *
+
+UpdateRuntimeConfiguration
 
 =back
 
-=item * DeleteFleet
+=item *
+
+DeleteFleet
 
 =back
 
-=item * B<Manage fleet aliases:>
+=item *
+
+B<Manage fleet aliases:>
 
 =over
 
-=item * ListAliases
+=item *
 
-=item * CreateAlias
+ListAliases
 
-=item * DescribeAlias
+=item *
 
-=item * UpdateAlias
+CreateAlias
 
-=item * DeleteAlias
+=item *
 
-=item * ResolveAlias
+DescribeAlias
+
+=item *
+
+UpdateAlias
+
+=item *
+
+DeleteAlias
+
+=item *
+
+ResolveAlias
 
 =back
 
-=item * B<Manage autoscaling:>
+=item *
+
+B<Manage autoscaling:>
 
 =over
 
-=item * PutScalingPolicy
+=item *
 
-=item * DescribeScalingPolicies
+PutScalingPolicy
 
-=item * DeleteScalingPolicy
+=item *
+
+DescribeScalingPolicies
+
+=item *
+
+DeleteScalingPolicy
 
 =back
 
@@ -435,7 +549,7 @@ including an alias ID, which you can reference when creating a game
 session. To reassign the alias to another fleet ID, call UpdateAlias.
 
 
-=head2 CreateBuild([Name => Str, StorageLocation => L<Paws::GameLift::S3Location>, Version => Str])
+=head2 CreateBuild([Name => Str, OperatingSystem => Str, StorageLocation => L<Paws::GameLift::S3Location>, Version => Str])
 
 Each argument is described in detail in: L<Paws::GameLift::CreateBuild>
 
@@ -443,25 +557,27 @@ Returns: a L<Paws::GameLift::CreateBuildOutput> instance
 
   Initializes a new build record and generates information required to
 upload a game build to Amazon GameLift. Once the build record has been
-created and is in an C<INITIALIZED> state, you can upload your game
+created and its status is C<INITIALIZED>, you can upload your game
 build.
 
 Do not use this API action unless you are using your own Amazon Simple
 Storage Service (Amazon S3) client and need to manually upload your
 build files. Instead, to create a build, use the CLI command
 C<upload-build>, which creates a new build record and uploads the build
-files in one step. (See the Amazon GameLift Developer Guide for more
-details on the CLI and the upload process.)
+files in one step. (See the Amazon GameLift Developer Guide help on
+packaging and uploading your build.)
 
-To create a new build, optionally specify a build name and version.
-This metadata is stored with other properties in the build record and
-is displayed in the GameLift console (it is not visible to players). If
-successful, this action returns the newly created build record along
-with the Amazon S3 storage location and AWS account credentials. Use
-the location and credentials to upload your game build.
+To create a new build, identify the operating system of the game server
+binaries. All game servers in a build must use the same operating
+system. Optionally, specify a build name and version; this metadata is
+stored with other properties in the build record and is displayed in
+the GameLift console (it is not visible to players). If successful,
+this action returns the newly created build record along with the
+Amazon S3 storage location and AWS account credentials. Use the
+location and credentials to upload your game build.
 
 
-=head2 CreateFleet(BuildId => Str, EC2InstanceType => Str, Name => Str, [Description => Str, EC2InboundPermissions => ArrayRef[L<Paws::GameLift::IpPermission>], LogPaths => ArrayRef[Str], NewGameSessionProtectionPolicy => Str, RuntimeConfiguration => L<Paws::GameLift::RuntimeConfiguration>, ServerLaunchParameters => Str, ServerLaunchPath => Str])
+=head2 CreateFleet(BuildId => Str, EC2InstanceType => Str, Name => Str, [Description => Str, EC2InboundPermissions => ArrayRef[L<Paws::GameLift::IpPermission>], LogPaths => ArrayRef[Str|Undef], NewGameSessionProtectionPolicy => Str, ResourceCreationLimitPolicy => L<Paws::GameLift::ResourceCreationLimitPolicy>, RuntimeConfiguration => L<Paws::GameLift::RuntimeConfiguration>, ServerLaunchParameters => Str, ServerLaunchPath => Str])
 
 Each argument is described in detail in: L<Paws::GameLift::CreateFleet>
 
@@ -473,7 +589,7 @@ run multiple server processes to host game sessions. You configure a
 fleet to create instances with certain hardware specifications (see
 Amazon EC2 Instance Types for more information), and deploy a specified
 game build to each instance. A newly created fleet passes through
-several states; once it reaches the C<ACTIVE> state, it can begin
+several statuses; once it reaches the C<ACTIVE> status, it can begin
 hosting game sessions.
 
 To create a new fleet, provide a fleet name, an EC2 instance type, and
@@ -489,21 +605,31 @@ following tasks:
 
 =over
 
-=item * Creates a fleet record and sets the state to C<NEW> (followed
-by other states as the fleet is activated).
+=item *
 
-=item * Sets the fleet's capacity to 1 "desired", which causes GameLift
-to start one new EC2 instance.
+Creates a fleet record and sets the status to C<NEW> (followed by other
+statuses as the fleet is activated).
 
-=item * Starts launching server processes on the instance. If the fleet
-is configured to run multiple server processes per instance, GameLift
+=item *
+
+Sets the fleet's capacity to 1 "desired", which causes GameLift to
+start one new EC2 instance.
+
+=item *
+
+Starts launching server processes on the instance. If the fleet is
+configured to run multiple server processes per instance, GameLift
 staggers each launch by a few seconds.
 
-=item * Begins writing events to the fleet event log, which can be
-accessed in the GameLift console.
+=item *
 
-=item * Sets the fleet's status to C<ACTIVE> once one server process in
-the fleet is ready to host a game session.
+Begins writing events to the fleet event log, which can be accessed in
+the GameLift console.
+
+=item *
+
+Sets the fleet's status to C<ACTIVE> once one server process in the
+fleet is ready to host a game session.
 
 =back
 
@@ -512,24 +638,32 @@ properties and configuration:
 
 =over
 
-=item * UpdateFleetAttributes -- Update fleet metadata, including name
-and description.
+=item *
 
-=item * UpdateFleetCapacity -- Increase or decrease the number of
-instances you want the fleet to maintain.
+UpdateFleetAttributes -- Update fleet metadata, including name and
+description.
 
-=item * UpdateFleetPortSettings -- Change the IP address and port
-ranges that allow access to incoming traffic.
+=item *
 
-=item * UpdateRuntimeConfiguration -- Change how server processes are
-launched in the fleet, including launch path, launch parameters, and
-the number of concurrent processes.
+UpdateFleetCapacity -- Increase or decrease the number of instances you
+want the fleet to maintain.
+
+=item *
+
+UpdateFleetPortSettings -- Change the IP address and port ranges that
+allow access to incoming traffic.
+
+=item *
+
+UpdateRuntimeConfiguration -- Change how server processes are launched
+in the fleet, including launch path, launch parameters, and the number
+of concurrent processes.
 
 =back
 
 
 
-=head2 CreateGameSession(MaximumPlayerSessionCount => Int, [AliasId => Str, FleetId => Str, GameProperties => ArrayRef[L<Paws::GameLift::GameProperty>], Name => Str])
+=head2 CreateGameSession(MaximumPlayerSessionCount => Int, [AliasId => Str, CreatorId => Str, FleetId => Str, GameProperties => ArrayRef[L<Paws::GameLift::GameProperty>], GameSessionId => Str, Name => Str])
 
 Each argument is described in detail in: L<Paws::GameLift::CreateGameSession>
 
@@ -538,7 +672,7 @@ Returns: a L<Paws::GameLift::CreateGameSessionOutput> instance
   Creates a multiplayer game session for players. This action creates a
 game session record and assigns the new session to an instance in the
 specified fleet, which initializes a new server process to host the
-game session. A fleet must be in an C<ACTIVE> state before a game
+game session. A fleet must be in an C<ACTIVE> status before a game
 session can be created in it.
 
 To create a game session, specify either a fleet ID or an alias ID and
@@ -557,7 +691,7 @@ Each argument is described in detail in: L<Paws::GameLift::CreatePlayerSession>
 Returns: a L<Paws::GameLift::CreatePlayerSessionOutput> instance
 
   Adds a player to a game session and creates a player session record. A
-game session must be in an C<ACTIVE> state, have a creation policy of
+game session must be in an C<ACTIVE> status, have a creation policy of
 C<ALLOW_ALL>, and have an open player slot before players can be added
 to the session.
 
@@ -566,7 +700,7 @@ successful, the player is added to the game session and a new
 PlayerSession object is returned.
 
 
-=head2 CreatePlayerSessions(GameSessionId => Str, PlayerIds => ArrayRef[Str])
+=head2 CreatePlayerSessions(GameSessionId => Str, PlayerIds => ArrayRef[Str|Undef])
 
 Each argument is described in detail in: L<Paws::GameLift::CreatePlayerSessions>
 
@@ -575,7 +709,7 @@ Returns: a L<Paws::GameLift::CreatePlayerSessionsOutput> instance
   Adds a group of players to a game session. Similar to
 CreatePlayerSession, this action allows you to add multiple players in
 a single call, which is useful for games that provide party and/or
-matchmaking features. A game session must be in an C<ACTIVE> state,
+matchmaking features. A game session must be in an C<ACTIVE> status,
 have a creation policy of C<ALLOW_ALL>, and have an open player slot
 before players can be added to the session.
 
@@ -667,10 +801,13 @@ type:
 
 =over
 
-=item * maximum number of instances allowed per AWS account (service
-limit)
+=item *
 
-=item * current usage level for the AWS account
+maximum number of instances allowed per AWS account (service limit)
+
+=item *
+
+current usage level for the AWS account
 
 =back
 
@@ -679,7 +816,7 @@ can be found in the AWS Management Console for GameLift (see the
 drop-down list in the upper right corner).
 
 
-=head2 DescribeFleetAttributes([FleetIds => ArrayRef[Str], Limit => Int, NextToken => Str])
+=head2 DescribeFleetAttributes([FleetIds => ArrayRef[Str|Undef], Limit => Int, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::GameLift::DescribeFleetAttributes>
 
@@ -699,7 +836,7 @@ request. If a request exceeds this limit, the request fails and the
 error message includes the maximum allowed.
 
 
-=head2 DescribeFleetCapacity([FleetIds => ArrayRef[Str], Limit => Int, NextToken => Str])
+=head2 DescribeFleetCapacity([FleetIds => ArrayRef[Str|Undef], Limit => Int, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::GameLift::DescribeFleetCapacity>
 
@@ -747,7 +884,7 @@ requested fleet ID. If the requested fleet has been deleted, the result
 set is empty.
 
 
-=head2 DescribeFleetUtilization([FleetIds => ArrayRef[Str], Limit => Int, NextToken => Str])
+=head2 DescribeFleetUtilization([FleetIds => ArrayRef[Str|Undef], Limit => Int, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::GameLift::DescribeFleetUtilization>
 
@@ -791,17 +928,36 @@ Each argument is described in detail in: L<Paws::GameLift::DescribeGameSessions>
 
 Returns: a L<Paws::GameLift::DescribeGameSessionsOutput> instance
 
-  Retrieves properties for one or more game sessions. This action can be
-used in several ways: (1) provide a C<GameSessionId> to request
-properties for a specific game session; (2) provide a C<FleetId> or an
-C<AliasId> to request properties for all game sessions running on a
-fleet.
+  Retrieves a set of one or more game sessions and properties. This
+action can be used in several ways: (1) provide a C<GameSessionId> to
+request properties for a specific game session; (2) provide a
+C<FleetId> or an C<AliasId> to request properties for all game sessions
+running on a fleet. You can also use SearchGameSessions, which allows
+you to retrieve all game sessions or filter on certain criteria, but
+only returns game sessions with a status of ACTIVE. If you need to
+retrieve the protection policy for each game session, use
+DescribeGameSessionDetails.
 
 To get game session record(s), specify just one of the following: game
 session ID, fleet ID, or alias ID. You can filter this request by game
 session status. Use the pagination parameters to retrieve results as a
 set of sequential pages. If successful, a GameSession object is
 returned for each session matching the request.
+
+
+=head2 DescribeInstances(FleetId => Str, [InstanceId => Str, Limit => Int, NextToken => Str])
+
+Each argument is described in detail in: L<Paws::GameLift::DescribeInstances>
+
+Returns: a L<Paws::GameLift::DescribeInstancesOutput> instance
+
+  Retrieves information about instances in a fleet.
+
+To get information on a specific instance, specify both a fleet ID and
+instance ID. To get information for all instances in a fleet, specify a
+fleet ID only. Use the pagination parameters to retrieve results as a
+set of sequential pages. If successful, an Instance object is returned
+for each result.
 
 
 =head2 DescribePlayerSessions([GameSessionId => Str, Limit => Int, NextToken => Str, PlayerId => Str, PlayerSessionId => Str, PlayerSessionStatusFilter => Str])
@@ -886,9 +1042,9 @@ Each argument is described in detail in: L<Paws::GameLift::ListBuilds>
 Returns: a L<Paws::GameLift::ListBuildsOutput> instance
 
   Retrieves build records for all builds associated with the AWS account
-in use. You can limit results to builds in a specific state using the
-C<Status> parameter. Use the pagination parameters to retrieve results
-in a set of sequential pages.
+in use. You can limit results to builds that are in a specific status
+by using the C<Status> parameter. Use the pagination parameters to
+retrieve results in a set of sequential pages.
 
 Build records are not listed in any particular order.
 
@@ -949,14 +1105,14 @@ storage location for a specific build. Valid credentials are required
 to upload your game build files to Amazon S3.
 
 Call this action only if you need credentials for a build created with
-C<CreateBuild>. This is a rare situation; in most cases, builds are
+C< CreateBuild >. This is a rare situation; in most cases, builds are
 created using the CLI command C<upload-build>, which creates a build
 record and also uploads build files.
 
 Upload credentials are returned when you create the build, but they
 have a limited lifespan. You can get fresh credentials and use them to
-re-upload game files until the state of that build changes to C<READY>.
-Once this happens, you must create a brand new build.
+re-upload game files until the status of that build changes to
+C<READY>. Once this happens, you must create a brand new build.
 
 
 =head2 ResolveAlias(AliasId => Str)
@@ -966,6 +1122,78 @@ Each argument is described in detail in: L<Paws::GameLift::ResolveAlias>
 Returns: a L<Paws::GameLift::ResolveAliasOutput> instance
 
   Retrieves the fleet ID that a specified alias is currently pointing to.
+
+
+=head2 SearchGameSessions([AliasId => Str, FilterExpression => Str, FleetId => Str, Limit => Int, NextToken => Str, SortExpression => Str])
+
+Each argument is described in detail in: L<Paws::GameLift::SearchGameSessions>
+
+Returns: a L<Paws::GameLift::SearchGameSessionsOutput> instance
+
+  Retrieves a set of game sessions that match a set of search criteria
+and sorts them in a specified order. Currently a game session search is
+limited to a single fleet. Search results include only game sessions
+that are in ACTIVE status. If you need to retrieve game sessions with a
+status other than active, use DescribeGameSessions. If you need to
+retrieve the protection policy for each game session, use
+DescribeGameSessionDetails.
+
+You can search or sort by the following game session attributes:
+
+=over
+
+=item *
+
+B<gameSessionId> -- ID value assigned to a game session. This unique
+value is returned in a GameSession object when a new game session is
+created.
+
+=item *
+
+B<gameSessionName> -- Name assigned to a game session. This value is
+set when requesting a new game session with CreateGameSession or
+updating with UpdateGameSession. Game session names do not need to be
+unique to a game session.
+
+=item *
+
+B<creationTimeMillis> -- Value indicating when a game session was
+created. It is expressed in Unix time as milliseconds.
+
+=item *
+
+B<playerSessionCount> -- Number of players currently connected to a
+game session. This value changes rapidly as players join the session or
+drop out.
+
+=item *
+
+B<maximumSessions> -- Maximum number of player sessions allowed for a
+game session. This value is set when requesting a new game session with
+CreateGameSession or updating with UpdateGameSession.
+
+=item *
+
+B<hasAvailablePlayerSessions> -- Boolean value indicating whether or
+not a game session has reached its maximum number of players. When
+searching with this attribute, the search value must be C<true> or
+C<false>. It is highly recommended that all search requests include
+this filter attribute to optimize search performance and return only
+sessions that players can join.
+
+=back
+
+To search or sort, specify either a fleet ID or an alias ID, and
+provide a search filter expression, a sort expression, or both. Use the
+pagination parameters to retrieve results as a set of sequential pages.
+If successful, a collection of GameSession objects matching the request
+is returned.
+
+Returned values for C<playerSessionCount> and
+C<hasAvailablePlayerSessions> change quickly as players join sessions
+and others drop out. Results should be considered a snapshot in time.
+Be sure to refresh search results often, and handle sessions that fill
+up before a player can join.
 
 
 =head2 UpdateAlias(AliasId => Str, [Description => Str, Name => Str, RoutingStrategy => L<Paws::GameLift::RoutingStrategy>])
@@ -992,7 +1220,7 @@ provide the new values. If successful, a build object containing the
 updated metadata is returned.
 
 
-=head2 UpdateFleetAttributes(FleetId => Str, [Description => Str, Name => Str, NewGameSessionProtectionPolicy => Str])
+=head2 UpdateFleetAttributes(FleetId => Str, [Description => Str, Name => Str, NewGameSessionProtectionPolicy => Str, ResourceCreationLimitPolicy => L<Paws::GameLift::ResourceCreationLimitPolicy>])
 
 Each argument is described in detail in: L<Paws::GameLift::UpdateFleetAttributes>
 
@@ -1069,7 +1297,7 @@ Returns: a L<Paws::GameLift::UpdateRuntimeConfigurationOutput> instance
   Updates the current runtime configuration for the specified fleet,
 which tells GameLift how to launch server processes on instances in the
 fleet. You can update a fleet's runtime configuration at any time after
-the fleet is created; it does not need to be in an C<ACTIVE> state.
+the fleet is created; it does not need to be in an C<ACTIVE> status.
 
 To update runtime configuration, specify the fleet ID and provide a
 C<RuntimeConfiguration> object with the updated collection of server

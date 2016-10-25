@@ -1,12 +1,14 @@
 package Paws::MachineLearning::DataSource;
   use Moose;
   has ComputeStatistics => (is => 'ro', isa => 'Bool');
+  has ComputeTime => (is => 'ro', isa => 'Int');
   has CreatedAt => (is => 'ro', isa => 'Str');
   has CreatedByIamUser => (is => 'ro', isa => 'Str');
   has DataLocationS3 => (is => 'ro', isa => 'Str');
   has DataRearrangement => (is => 'ro', isa => 'Str');
   has DataSizeInBytes => (is => 'ro', isa => 'Int');
   has DataSourceId => (is => 'ro', isa => 'Str');
+  has FinishedAt => (is => 'ro', isa => 'Str');
   has LastUpdatedAt => (is => 'ro', isa => 'Str');
   has Message => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
@@ -14,6 +16,7 @@ package Paws::MachineLearning::DataSource;
   has RDSMetadata => (is => 'ro', isa => 'Paws::MachineLearning::RDSMetadata');
   has RedshiftMetadata => (is => 'ro', isa => 'Paws::MachineLearning::RedshiftMetadata');
   has RoleARN => (is => 'ro', isa => 'Str');
+  has StartedAt => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
 1;
 
@@ -59,6 +62,11 @@ and the current status of the C<DataSource>.
 observation data.
 
 
+=head2 ComputeTime => Int
+
+  
+
+
 =head2 CreatedAt => Str
 
   The time that the C<DataSource> was created. The time is expressed in
@@ -95,6 +103,11 @@ C<DataSource> references.
   The ID that is assigned to the C<DataSource> during creation.
 
 
+=head2 FinishedAt => Str
+
+  
+
+
 =head2 LastUpdatedAt => Str
 
   The time of the most recent edit to the C<BatchPrediction>. The time is
@@ -128,6 +141,11 @@ C<DataSource>.
 
 
 =head2 RoleARN => Str
+
+  
+
+
+=head2 StartedAt => Str
 
   
 

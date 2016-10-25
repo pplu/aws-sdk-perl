@@ -44,7 +44,7 @@ The name of the load balancer.
 
 =head2 PolicyAttributes => ArrayRef[L<Paws::ELB::PolicyAttribute>]
 
-The attributes for the policy.
+The policy attributes.
 
 
 

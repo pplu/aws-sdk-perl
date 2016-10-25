@@ -1,5 +1,6 @@
 package Paws::RDS::DBSubnetGroup;
   use Moose;
+  has DBSubnetGroupArn => (is => 'ro', isa => 'Str');
   has DBSubnetGroupDescription => (is => 'ro', isa => 'Str');
   has DBSubnetGroupName => (is => 'ro', isa => 'Str');
   has SubnetGroupStatus => (is => 'ro', isa => 'Str');
@@ -24,14 +25,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::RDS::DBSubnetGroup object:
 
-  $service_obj->Method(Att1 => { DBSubnetGroupDescription => $value, ..., VpcId => $value  });
+  $service_obj->Method(Att1 => { DBSubnetGroupArn => $value, ..., VpcId => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::DBSubnetGroup object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->DBSubnetGroupDescription
+  $result->Att1->DBSubnetGroupArn
 
 =head1 DESCRIPTION
 
@@ -62,6 +63,11 @@ This data type is used as a response element in the
 DescribeDBSubnetGroups action.
 
 =head1 ATTRIBUTES
+
+
+=head2 DBSubnetGroupArn => Str
+
+  The Amazon Resource Name (ARN) for the DB subnet group.
 
 
 =head2 DBSubnetGroupDescription => Str

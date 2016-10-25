@@ -48,9 +48,8 @@ supports.
 
 =head2 B<REQUIRED> SizeInGB => Int
 
-  The volume size, in gibibytes (GiB). This can be a number from 1
-E<ndash> 1024. If the volume type is EBS-optimized, the minimum value
-is 10.
+  The volume size, in gibibytes (GiB). This can be a number from 1 -
+1024. If the volume type is EBS-optimized, the minimum value is 10.
 
 
 =head2 B<REQUIRED> VolumeType => Str

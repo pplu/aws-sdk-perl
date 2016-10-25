@@ -62,9 +62,9 @@ Contains detailed information about the specified stack resource.
 
 =head2 Metadata => Str
 
-  The JSON format content of the C<Metadata> attribute declared for the
-resource. For more information, see Metadata Attribute in the AWS
-CloudFormation User Guide.
+  The content of the C<Metadata> attribute declared for the resource. For
+more information, see Metadata Attribute in the AWS CloudFormation User
+Guide.
 
 
 =head2 PhysicalResourceId => Str

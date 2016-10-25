@@ -62,17 +62,23 @@ specify the start of the result set, do not specify a value.
 
 Type of routing to filter results on. Use this parameter to retrieve
 only aliases of a certain type. To retrieve all aliases, leave this
-parameter empty. Possible routing types include the following:
+parameter empty.
+
+Possible routing types include the following:
 
 =over
 
-=item * B<SIMPLE> E<ndash> The alias resolves to one specific fleet.
-Use this type when routing to active fleets.
+=item *
 
-=item * B<TERMINAL> E<ndash> The alias does not resolve to a fleet but
-instead can be used to display a message to the user. A terminal alias
-throws a TerminalRoutingStrategyException with the RoutingStrategy
-message embedded.
+B<SIMPLE> E<ndash> The alias resolves to one specific fleet. Use this
+type when routing to active fleets.
+
+=item *
+
+B<TERMINAL> E<ndash> The alias does not resolve to a fleet but instead
+can be used to display a message to the user. A terminal alias throws a
+TerminalRoutingStrategyException with the RoutingStrategy message
+embedded.
 
 =back
 

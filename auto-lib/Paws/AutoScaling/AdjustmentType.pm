@@ -33,8 +33,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AutoScaling
 
 Describes a policy adjustment type.
 
-For more information, see Dynamic Scaling in the I<Auto Scaling
-Developer Guide>.
+For more information, see Dynamic Scaling in the I<Auto Scaling User
+Guide>.
 
 =head1 ATTRIBUTES
 

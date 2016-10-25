@@ -2,7 +2,7 @@
 package Paws::DMS::DescribeSchemasResponse;
   use Moose;
   has Marker => (is => 'ro', isa => 'Str');
-  has Schemas => (is => 'ro', isa => 'ArrayRef[Str]');
+  has Schemas => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
 
 ### main pod documentation begin ###
@@ -22,7 +22,7 @@ marker, up to the value specified by C<MaxRecords>.
 
 
 
-=head2 Schemas => ArrayRef[Str]
+=head2 Schemas => ArrayRef[Str|Undef]
 
 The described schema.
 

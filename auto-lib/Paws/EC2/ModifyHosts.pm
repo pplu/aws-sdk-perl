@@ -2,7 +2,7 @@
 package Paws::EC2::ModifyHosts;
   use Moose;
   has AutoPlacement => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'autoPlacement' , required => 1);
-  has HostIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'hostId' , required => 1);
+  has HostIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'hostId' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -40,9 +40,9 @@ Specify whether to enable or disable auto-placement.
 
 Valid values are: C<"on">, C<"off">
 
-=head2 B<REQUIRED> HostIds => ArrayRef[Str]
+=head2 B<REQUIRED> HostIds => ArrayRef[Str|Undef]
 
-The host IDs of the Dedicated hosts you want to modify.
+The host IDs of the Dedicated Hosts you want to modify.
 
 
 

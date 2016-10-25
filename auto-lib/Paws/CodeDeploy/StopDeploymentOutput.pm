@@ -20,9 +20,13 @@ The status of the stop deployment operation:
 
 =over
 
-=item * Pending: The stop operation is pending.
+=item *
 
-=item * Succeeded: The stop operation was successful.
+Pending: The stop operation is pending.
+
+=item *
+
+Succeeded: The stop operation was successful.
 
 =back
 

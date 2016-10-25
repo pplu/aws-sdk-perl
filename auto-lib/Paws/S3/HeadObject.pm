@@ -7,6 +7,7 @@ package Paws::S3::HeadObject;
   has IfNoneMatch => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'If-None-Match' );
   has IfUnmodifiedSince => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'If-Unmodified-Since' );
   has Key => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'Key' , required => 1);
+  has PartNumber => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'partNumber' );
   has Range => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Range' );
   has RequestPayer => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-request-payer' );
   has SSECustomerAlgorithm => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-server-side-encryption-customer-algorithm' );
@@ -28,7 +29,21 @@ package Paws::S3::HeadObject;
 
 =head1 NAME
 
-Paws::S3::HeadObjectOutput
+Paws::S3::HeadObject - Arguments for method HeadObject on Paws::S3
+
+=head1 DESCRIPTION
+
+This class represents the parameters used for calling the method HeadObject on the 
+Amazon Simple Storage Service service. Use the attributes of this class
+as arguments to method HeadObject.
+
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to HeadObject.
+
+As an example:
+
+  $service_obj->HeadObject(Att1 => $value1, Att2 => $value2, ...);
+
+Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 
 =head1 ATTRIBUTES
 
@@ -70,6 +85,15 @@ time, otherwise return a 412 (precondition failed).
 =head2 B<REQUIRED> Key => Str
 
 
+
+
+
+=head2 PartNumber => Int
+
+Part number of the object being read. This is a positive integer
+between 1 and 10,000. Effectively performs a 'ranged' HEAD request for
+the part specified. Useful querying about the size of the part and the
+number of parts in this object.
 
 
 
@@ -118,6 +142,16 @@ VersionId used to reference a specific version of the object.
 
 
 
+
+=head1 SEE ALSO
+
+This class forms part of L<Paws>, documenting arguments for method HeadObject in L<Paws::S3>
+
+=head1 BUGS and CONTRIBUTIONS
+
+The source code is located here: https://github.com/pplu/aws-sdk-perl
+
+Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
 
 =cut
 

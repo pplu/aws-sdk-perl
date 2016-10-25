@@ -53,7 +53,7 @@ AWS IoT. It is not intended for developer use.
 B<Note:> The status value REGISTER_INACTIVE is deprecated and should
 not be used.
 
-Valid values are: C<"ACTIVE">, C<"INACTIVE">, C<"REVOKED">, C<"PENDING_TRANSFER">, C<"REGISTER_INACTIVE">
+Valid values are: C<"ACTIVE">, C<"INACTIVE">, C<"REVOKED">, C<"PENDING_TRANSFER">, C<"REGISTER_INACTIVE">, C<"PENDING_ACTIVATION">
 
 
 =head1 SEE ALSO

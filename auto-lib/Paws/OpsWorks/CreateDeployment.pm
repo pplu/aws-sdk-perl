@@ -5,8 +5,8 @@ package Paws::OpsWorks::CreateDeployment;
   has Command => (is => 'ro', isa => 'Paws::OpsWorks::DeploymentCommand', required => 1);
   has Comment => (is => 'ro', isa => 'Str');
   has CustomJson => (is => 'ro', isa => 'Str');
-  has InstanceIds => (is => 'ro', isa => 'ArrayRef[Str]');
-  has LayerIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has InstanceIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has LayerIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has StackId => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -63,8 +63,7 @@ A user-defined comment.
 
 A string that contains user-defined, custom JSON. It is used to
 override the corresponding default stack configuration JSON values. The
-string should be in the following format and must escape characters
-such as '"':
+string should be in the following format:
 
 C<"{\"key1\": \"value1\", \"key2\": \"value2\",...}">
 
@@ -73,13 +72,13 @@ Stack Configuration Attributes.
 
 
 
-=head2 InstanceIds => ArrayRef[Str]
+=head2 InstanceIds => ArrayRef[Str|Undef]
 
 The instance IDs for the deployment targets.
 
 
 
-=head2 LayerIds => ArrayRef[Str]
+=head2 LayerIds => ArrayRef[Str|Undef]
 
 The layer IDs for the deployment targets.
 

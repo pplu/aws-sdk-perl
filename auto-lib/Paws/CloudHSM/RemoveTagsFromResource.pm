@@ -2,7 +2,7 @@
 package Paws::CloudHSM::RemoveTagsFromResource;
   use Moose;
   has ResourceArn => (is => 'ro', isa => 'Str', required => 1);
-  has TagKeyList => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has TagKeyList => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -40,7 +40,7 @@ The Amazon Resource Name (ARN) of the AWS CloudHSM resource.
 
 
 
-=head2 B<REQUIRED> TagKeyList => ArrayRef[Str]
+=head2 B<REQUIRED> TagKeyList => ArrayRef[Str|Undef]
 
 The tag key or keys to remove.
 

@@ -8,7 +8,7 @@ package Paws::CloudFront::ListInvalidations;
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListInvalidations');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2016-01-28/distribution/{DistributionId}/invalidation');
+  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2016-09-29/distribution/{DistributionId}/invalidation');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudFront::ListInvalidationsResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
@@ -19,14 +19,28 @@ package Paws::CloudFront::ListInvalidations;
 
 =head1 NAME
 
-Paws::CloudFront::ListInvalidationsResult
+Paws::CloudFront::ListInvalidations - Arguments for method ListInvalidations on Paws::CloudFront
+
+=head1 DESCRIPTION
+
+This class represents the parameters used for calling the method ListInvalidations2016_09_29 on the 
+Amazon CloudFront service. Use the attributes of this class
+as arguments to method ListInvalidations2016_09_29.
+
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListInvalidations2016_09_29.
+
+As an example:
+
+  $service_obj->ListInvalidations2016_09_29(Att1 => $value1, Att2 => $value2, ...);
+
+Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> DistributionId => Str
 
-The distribution's id.
+The distribution's ID.
 
 
 
@@ -36,19 +50,29 @@ Use this parameter when paginating results to indicate where to begin
 in your list of invalidation batches. Because the results are returned
 in decreasing order from most recent to oldest, the most recent results
 are on the first page, the second page will contain earlier results,
-and so on. To get the next page of results, set the Marker to the value
-of the NextMarker from the current page's response. This value is the
-same as the ID of the last invalidation batch on that page.
+and so on. To get the next page of results, set C<Marker> to the value
+of the C<NextMarker> from the current page's response. This value is
+the same as the ID of the last invalidation batch on that page.
 
 
 
 =head2 MaxItems => Str
 
-The maximum number of invalidation batches you want in the response
-body.
+The maximum number of invalidation batches that you want in the
+response body.
 
 
 
+
+=head1 SEE ALSO
+
+This class forms part of L<Paws>, documenting arguments for method ListInvalidations2016_09_29 in L<Paws::CloudFront>
+
+=head1 BUGS and CONTRIBUTIONS
+
+The source code is located here: https://github.com/pplu/aws-sdk-perl
+
+Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
 
 =cut
 

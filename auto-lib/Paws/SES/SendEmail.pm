@@ -3,7 +3,7 @@ package Paws::SES::SendEmail;
   use Moose;
   has Destination => (is => 'ro', isa => 'Paws::SES::Destination', required => 1);
   has Message => (is => 'ro', isa => 'Paws::SES::Message', required => 1);
-  has ReplyToAddresses => (is => 'ro', isa => 'ArrayRef[Str]');
+  has ReplyToAddresses => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has ReturnPath => (is => 'ro', isa => 'Str');
   has ReturnPathArn => (is => 'ro', isa => 'Str');
   has Source => (is => 'ro', isa => 'Str', required => 1);
@@ -51,7 +51,7 @@ The message to be sent.
 
 
 
-=head2 ReplyToAddresses => ArrayRef[Str]
+=head2 ReplyToAddresses => ArrayRef[Str|Undef]
 
 The reply-to email address(es) for the message. If the recipient
 replies to the message, each reply-to address will receive the reply.

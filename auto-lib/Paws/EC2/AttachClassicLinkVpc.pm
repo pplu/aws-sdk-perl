@@ -2,7 +2,7 @@
 package Paws::EC2::AttachClassicLinkVpc;
   use Moose;
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
-  has Groups => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'SecurityGroupId' , required => 1);
+  has Groups => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'SecurityGroupId' , required => 1);
   has InstanceId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'instanceId' , required => 1);
   has VpcId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'vpcId' , required => 1);
 
@@ -45,7 +45,7 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 
 
-=head2 B<REQUIRED> Groups => ArrayRef[Str]
+=head2 B<REQUIRED> Groups => ArrayRef[Str|Undef]
 
 The ID of one or more of the VPC's security groups. You cannot specify
 security groups from a different VPC.

@@ -49,9 +49,13 @@ Information about the location of an application revision.
 
 =over
 
-=item * S3: An application revision stored in Amazon S3.
+=item *
 
-=item * GitHub: An application revision stored in GitHub.
+S3: An application revision stored in Amazon S3.
+
+=item *
+
+GitHub: An application revision stored in GitHub.
 
 =back
 

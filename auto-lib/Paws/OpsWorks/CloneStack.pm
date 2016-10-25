@@ -4,7 +4,7 @@ package Paws::OpsWorks::CloneStack;
   has AgentVersion => (is => 'ro', isa => 'Str');
   has Attributes => (is => 'ro', isa => 'Paws::OpsWorks::StackAttributes');
   has ChefConfiguration => (is => 'ro', isa => 'Paws::OpsWorks::ChefConfiguration');
-  has CloneAppIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has CloneAppIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has ClonePermissions => (is => 'ro', isa => 'Bool');
   has ConfigurationManager => (is => 'ro', isa => 'Paws::OpsWorks::StackConfigurationManager');
   has CustomCookbooksSource => (is => 'ro', isa => 'Paws::OpsWorks::Source');
@@ -100,7 +100,7 @@ information, see Create a New Stack.
 
 
 
-=head2 CloneAppIds => ArrayRef[Str]
+=head2 CloneAppIds => ArrayRef[Str|Undef]
 
 A list of source stack app IDs to be included in the cloned stack.
 
@@ -131,8 +131,7 @@ for Linux stacks is currently 12.
 
 A string that contains user-defined, custom JSON. It is used to
 override the corresponding default stack configuration JSON values. The
-string should be in the following format and must escape characters
-such as '"':
+string should be in the following format:
 
 C<"{\"key1\": \"value1\", \"key2\": \"value2\",...}">
 
@@ -310,8 +309,8 @@ The cloned stack name.
 
 =head2 Region => Str
 
-The cloned stack AWS region, such as "us-east-1". For more information
-about AWS regions, see Regions and Endpoints.
+The cloned stack AWS region, such as "ap-northeast-2". For more
+information about AWS regions, see Regions and Endpoints.
 
 
 

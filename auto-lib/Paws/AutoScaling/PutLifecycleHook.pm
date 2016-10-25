@@ -101,19 +101,33 @@ information:
 
 =over
 
-=item * B<AutoScalingGroupName>. The name of the Auto Scaling group.
+=item *
 
-=item * B<AccountId>. The AWS account ID.
+B<AutoScalingGroupName>. The name of the Auto Scaling group.
 
-=item * B<LifecycleTransition>. The lifecycle hook type.
+=item *
 
-=item * B<LifecycleActionToken>. The lifecycle action token.
+B<AccountId>. The AWS account ID.
 
-=item * B<EC2InstanceId>. The EC2 instance ID.
+=item *
 
-=item * B<LifecycleHookName>. The name of the lifecycle hook.
+B<LifecycleTransition>. The lifecycle hook type.
 
-=item * B<NotificationMetadata>. User-defined information.
+=item *
+
+B<LifecycleActionToken>. The lifecycle action token.
+
+=item *
+
+B<EC2InstanceId>. The EC2 instance ID.
+
+=item *
+
+B<LifecycleHookName>. The name of the lifecycle hook.
+
+=item *
+
+B<NotificationMetadata>. User-defined information.
 
 =back
 

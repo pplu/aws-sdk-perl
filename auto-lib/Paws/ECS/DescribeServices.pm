@@ -2,7 +2,7 @@
 package Paws::ECS::DescribeServices;
   use Moose;
   has Cluster => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cluster' );
-  has Services => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'services' , required => 1);
+  has Services => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'services' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -41,9 +41,10 @@ not specify a cluster, the default cluster is assumed.
 
 
 
-=head2 B<REQUIRED> Services => ArrayRef[Str]
+=head2 B<REQUIRED> Services => ArrayRef[Str|Undef]
 
-A list of services to describe.
+A list of services to describe. You may specify up to 10 services to
+describe in a single operation.
 
 
 

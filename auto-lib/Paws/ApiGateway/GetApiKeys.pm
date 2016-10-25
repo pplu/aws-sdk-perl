@@ -1,7 +1,9 @@
 
 package Paws::ApiGateway::GetApiKeys;
   use Moose;
+  has IncludeValues => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'includeValues' );
   has Limit => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'limit' );
+  has NameQuery => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nameQuery' );
   has Position => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'position' );
 
   use MooseX::ClassAttribute;
@@ -36,9 +38,22 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
+=head2 IncludeValues => Bool
+
+A boolean flag to specify whether (C<true>) or not (C<false>) the
+result contains key values.
+
+
+
 =head2 Limit => Int
 
 The maximum number of ApiKeys to get information about.
+
+
+
+=head2 NameQuery => Str
+
+The name of queried API keys.
 
 
 

@@ -1,5 +1,6 @@
 package Paws::ECR::Repository;
   use Moose;
+  has CreatedAt => (is => 'ro', isa => 'Str', xmlname => 'createdAt', request_name => 'createdAt', traits => ['Unwrapped','NameInRequest']);
   has RegistryId => (is => 'ro', isa => 'Str', xmlname => 'registryId', request_name => 'registryId', traits => ['Unwrapped','NameInRequest']);
   has RepositoryArn => (is => 'ro', isa => 'Str', xmlname => 'repositoryArn', request_name => 'repositoryArn', traits => ['Unwrapped','NameInRequest']);
   has RepositoryName => (is => 'ro', isa => 'Str', xmlname => 'repositoryName', request_name => 'repositoryName', traits => ['Unwrapped','NameInRequest']);
@@ -23,20 +24,26 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::ECR::Repository object:
 
-  $service_obj->Method(Att1 => { RegistryId => $value, ..., RepositoryUri => $value  });
+  $service_obj->Method(Att1 => { CreatedAt => $value, ..., RepositoryUri => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::ECR::Repository object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->RegistryId
+  $result->Att1->CreatedAt
 
 =head1 DESCRIPTION
 
-Object representing a repository.
+An object representing a repository.
 
 =head1 ATTRIBUTES
+
+
+=head2 CreatedAt => Str
+
+  The date and time, in JavaScript date/time format, when the repository
+was created.
 
 
 =head2 RegistryId => Str

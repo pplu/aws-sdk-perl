@@ -2,7 +2,7 @@
 package Paws::EC2::ModifyReservedInstances;
   use Moose;
   has ClientToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientToken' );
-  has ReservedInstancesIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'ReservedInstancesId' , required => 1);
+  has ReservedInstancesIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'ReservedInstancesId' , required => 1);
   has TargetConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ReservedInstancesConfiguration]', traits => ['NameInRequest'], request_name => 'ReservedInstancesConfigurationSetItemType' , required => 1);
 
   use MooseX::ClassAttribute;
@@ -43,7 +43,7 @@ Idempotency.
 
 
 
-=head2 B<REQUIRED> ReservedInstancesIds => ArrayRef[Str]
+=head2 B<REQUIRED> ReservedInstancesIds => ArrayRef[Str|Undef]
 
 The IDs of the Reserved Instances to modify.
 

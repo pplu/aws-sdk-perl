@@ -41,23 +41,23 @@ This class has no description
 
 =head2 Cores => Int
 
-  The number of cores on the Dedicated host.
+  The number of cores on the Dedicated Host.
 
 
 =head2 InstanceType => Str
 
-  The instance type size that the Dedicated host supports (for example,
-m3.medium).
+  The instance type size that the Dedicated Host supports (for example,
+C<m3.medium>).
 
 
 =head2 Sockets => Int
 
-  The number of sockets on the Dedicated host.
+  The number of sockets on the Dedicated Host.
 
 
 =head2 TotalVCpus => Int
 
-  The number of vCPUs on the Dedicated host.
+  The number of vCPUs on the Dedicated Host.
 
 
 

@@ -2,11 +2,13 @@
 package Paws::CodeDeploy::CreateDeployment;
   use Moose;
   has ApplicationName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'applicationName' , required => 1);
+  has AutoRollbackConfiguration => (is => 'ro', isa => 'Paws::CodeDeploy::AutoRollbackConfiguration', traits => ['NameInRequest'], request_name => 'autoRollbackConfiguration' );
   has DeploymentConfigName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'deploymentConfigName' );
   has DeploymentGroupName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'deploymentGroupName' );
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description' );
   has IgnoreApplicationStopFailures => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'ignoreApplicationStopFailures' );
   has Revision => (is => 'ro', isa => 'Paws::CodeDeploy::RevisionLocation', traits => ['NameInRequest'], request_name => 'revision' );
+  has UpdateOutdatedInstancesOnly => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'updateOutdatedInstancesOnly' );
 
   use MooseX::ClassAttribute;
 
@@ -42,6 +44,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 The name of an AWS CodeDeploy application associated with the
 applicable IAM user or AWS account.
+
+
+
+=head2 AutoRollbackConfiguration => L<Paws::CodeDeploy::AutoRollbackConfiguration>
+
+Configuration information for an automatic rollback that is added when
+a deployment is created.
 
 
 
@@ -86,6 +95,13 @@ instance will be considered to have failed.
 =head2 Revision => L<Paws::CodeDeploy::RevisionLocation>
 
 The type and location of the revision to deploy.
+
+
+
+=head2 UpdateOutdatedInstancesOnly => Bool
+
+Indicates whether to deploy to all instances or only to instances that
+are not running the latest application revision.
 
 
 

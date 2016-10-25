@@ -3,7 +3,7 @@ package Paws::EC2::DescribeInstances;
   use Moose;
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has Filters => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
-  has InstanceIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'InstanceId' );
+  has InstanceIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'InstanceId' );
   has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults' );
   has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
 
@@ -55,7 +55,7 @@ One or more filters.
 =item *
 
 C<affinity> - The affinity setting for an instance running on a
-Dedicated host (C<default> | C<host>).
+Dedicated Host (C<default> | C<host>).
 
 =item *
 
@@ -110,7 +110,7 @@ EC2-Classic only.
 
 =item *
 
-C<host-Id> - The ID of the Dedicated host on which the instance is
+C<host-id> - The ID of the Dedicated Host on which the instance is
 running, if applicable.
 
 =item *
@@ -468,7 +468,7 @@ network interface was associated with an IP address.
 
 
 
-=head2 InstanceIds => ArrayRef[Str]
+=head2 InstanceIds => ArrayRef[Str|Undef]
 
 One or more instance IDs.
 

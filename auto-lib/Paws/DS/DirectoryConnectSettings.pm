@@ -1,8 +1,8 @@
 package Paws::DS::DirectoryConnectSettings;
   use Moose;
-  has CustomerDnsIps => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has CustomerDnsIps => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
   has CustomerUserName => (is => 'ro', isa => 'Str', required => 1);
-  has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
   has VpcId => (is => 'ro', isa => 'Str', required => 1);
 1;
 
@@ -40,7 +40,7 @@ Connector directory is being created.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> CustomerDnsIps => ArrayRef[Str]
+=head2 B<REQUIRED> CustomerDnsIps => ArrayRef[Str|Undef]
 
   A list of one or more IP addresses of DNS servers or domain controllers
 in the on-premises directory.
@@ -70,7 +70,7 @@ Join computers to the domain
 
 
 
-=head2 B<REQUIRED> SubnetIds => ArrayRef[Str]
+=head2 B<REQUIRED> SubnetIds => ArrayRef[Str|Undef]
 
   A list of subnet identifiers in the VPC in which the AD Connector is
 created.

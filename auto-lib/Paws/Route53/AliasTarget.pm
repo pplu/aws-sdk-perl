@@ -34,21 +34,30 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Route53::Al
 =head1 DESCRIPTION
 
 I<Alias resource record sets only:> Information about the CloudFront
-distribution, ELB load balancer, Amazon S3 bucket, or Amazon Route 53
-resource record set to which you are routing traffic.
+distribution, Elastic Beanstalk environment, ELB load balancer, Amazon
+S3 bucket, or Amazon Route 53 resource record set to which you are
+redirecting queries. The Elastic Beanstalk environment must have a
+regionalized subdomain.
 
-If you're creating resource record sets for a private hosted zone, note
-the following:
+When creating resource record sets for a private hosted zone, note the
+following:
 
 =over
 
-=item * You can create alias resource record sets only for Amazon Route
-53 resource record sets in the same private hosted zone. Creating alias
-resource record sets for CloudFront distributions, ELB load balancers,
-and Amazon S3 buckets is not supported.
+=item *
 
-=item * You can't create alias resource record sets for failover,
-geolocation, or latency resource record sets in a private hosted zone.
+Resource record sets cannot be created for CloudFront distributions in
+a private hosted zone.
+
+=item *
+
+Creating geolocation alias resource record sets or latency alias
+resource record sets in a private hosted zone is unsupported.
+
+=item *
+
+For information about creating failover resource record sets in a
+private hosted zone, see Configuring Failover in a Private Hosted Zone.
 
 =back
 
@@ -58,44 +67,101 @@ geolocation, or latency resource record sets in a private hosted zone.
 
 =head2 B<REQUIRED> DNSName => Str
 
-  I<Alias resource record sets only:> The external DNS name associated
-with the AWS Resource. The value that you specify depends on where you
-want to route queries:
+  I<Alias resource record sets only:> The value that you specify depends
+on where you want to route queries:
 
 =over
 
-=item * B<A CloudFront distribution:> Specify the domain name that
-CloudFront assigned when you created your distribution. Your CloudFront
-distribution must include an alternate domain name that matches the
-name of the resource record set. For example, if the name of the
-resource record set is C<acme.example.com>, your CloudFront
-distribution must include C<acme.example.com> as one of the alternate
+=item *
+
+B<A CloudFront distribution:> Specify the domain name that CloudFront
+assigned when you created your distribution.
+
+Your CloudFront distribution must include an alternate domain name that
+matches the name of the resource record set. For example, if the name
+of the resource record set is I<acme.example.com>, your CloudFront
+distribution must include I<acme.example.com> as one of the alternate
 domain names. For more information, see Using Alternate Domain Names
 (CNAMEs) in the I<Amazon CloudFront Developer Guide>.
 
-=item * B<An ELB load balancer:> Specify the DNS name associated with
-the load balancer. You can get the DNS name by using the AWS Management
-Console, the ELB API, or the AWS CLI. Use the same method to get values
-for C<HostedZoneId> and C<DNSName>. If you get one value from the
-console and the other value from the API or the CLI, creating the
-resource record set will fail.
+=item *
 
-=item * B<An Elastic Beanstalk environment:> Specify the CNAME
-attribute for the environment. (The environment must have a
-regionalized domain name.)
+B<Elastic Beanstalk environment>: Specify the C<CNAME> attribute for
+the environment. (The environment must have a regionalized domain
+name.) You can use the following methods to get the value of the CNAME
+attribute:
 
-=item * B<An Amazon S3 bucket that is configured as a static website:>
-Specify the domain name of the Amazon S3 website endpoint in which you
-created the bucket; for example, C<s3-website-us-east-1.amazonaws.com>.
-For more information about valid values, see the table Amazon Simple
+=over
+
+=item *
+
+I<AWS Managment Console>: For information about how to get the value by
+using the console, see Using Custom Domains with Elastic Beanstalk in
+the I<AWS Elastic Beanstalk Developer Guide>.
+
+=item *
+
+I<Elastic Load Balancing API>: Use the C<DescribeEnvironments> action
+to get the value of the C<CNAME> attribute. For more information, see
+DescribeEnvironments in the I<AWS Elastic Beanstalk API Reference>.
+
+=item *
+
+I<AWS CLI>: Use the describe-environments command to get the value of
+the C<CNAME> attribute. For more information, see describe-environments
+in the I<AWS Command Line Interface Reference>.
+
+=back
+
+=item *
+
+B<An ELB load balancer:> Specify the DNS name associated with the load
+balancer. Get the DNS name by using the AWS Management Console, the ELB
+API, or the AWS CLI. Use the same method to get values for
+C<HostedZoneId> and C<DNSName>. If you get one value from the console
+and the other value from the API or the CLI, creating the resource
+record set will fail.
+
+=over
+
+=item *
+
+I<AWS Management Console>: Go to the Amazon EC2 page, click Load
+Balancers in the navigation pane, choose the load balancer, choose the
+Description tab, and get the value of the DNS Name field that begins
+with dualstack. Use the same process to get the Hosted Zone ID. See
+HostedZone$Id.
+
+=item *
+
+I<Elastic Load Balancing API>: Use C< DescribeLoadBalancers > to get
+the value of C<CanonicalHostedZoneName>. Use the same process to get
+the C<CanonicalHostedZoneNameId>. See HostedZone$Id.
+
+=item *
+
+I<AWS CLI>: Use C< describe-load-balancers > to get the value of
+C<CanonicalHostedZoneName>. Use the same process to get the
+C<CanonicalHostedZoneNameId>. See HostedZoneId.
+
+=back
+
+=item *
+
+B<An Amazon S3 bucket that is configured as a static website:> Specify
+the domain name of the Amazon S3 website endpoint in which you created
+the bucket; for example, C<s3-website-us-east-1.amazonaws.com>. For
+more information about valid values, see the table Amazon Simple
 Storage Service (S3) Website Endpoints in the I<Amazon Web Services
 General Reference>. For more information about using Amazon S3 buckets
 for websites, see Hosting a Static Website on Amazon S3 in the I<Amazon
-Simple Storage Service Developer Guide>.
+Simple Storage Service Developer Guide.>
 
-=item * B<Another Amazon Route 53 resource record set:> Specify the
-value of the C<Name> element for a resource record set in the current
-hosted zone.
+=item *
+
+B<Another Amazon Route 53 resource record set>: Specify the value of
+the C<Name> element for a resource record set in the current hosted
+zone.
 
 =back
 
@@ -103,38 +169,47 @@ hosted zone.
 
 =head2 B<REQUIRED> EvaluateTargetHealth => Bool
 
-  I<Alias resource record sets only:> If you set the value of
-C<EvaluateTargetHealth> to C<true> for the resource record set or sets
-in an alias, weighted alias, latency alias, or failover alias resource
-record set, and if you specify a value for C<HealthCheckId> for every
-resource record set that is referenced by these alias resource record
-sets, the alias resource record sets inherit the health of the
-referenced resource record sets.
+  I<Applies only to alias, weighted alias, latency alias, and failover
+alias record sets:> If you set the value of C<EvaluateTargetHealth> to
+C<true> for the resource record set or sets in an alias, weighted
+alias, latency alias, or failover alias resource record set, and if you
+specify a value for C< HealthCheck$Id > for every resource record set
+that is referenced by these alias resource record sets, the alias
+resource record sets inherit the health of the referenced resource
+record sets.
 
 In this configuration, when Amazon Route 53 receives a DNS query for an
 alias resource record set:
 
 =over
 
-=item 1. Amazon Route 53 looks at the resource record sets that are
-referenced by the alias resource record sets to determine which health
-checks they're using.
+=item *
 
-=item 2. Amazon Route 53 checks the current status of each health
-check. (Amazon Route 53 periodically checks the health of the endpoint
-that is specified in a health check; it doesn't perform the health
-check when the DNS query arrives.)
+Amazon Route 53 looks at the resource record sets that are referenced
+by the alias resource record sets to determine which health checks
+they're using.
 
-=item 3. Based on the status of the health checks, Amazon Route 53
-determines which resource record sets are healthy. Unhealthy resource
-record sets are immediately removed from consideration. In addition, if
-all of the resource record sets that are referenced by an alias
-resource record set are unhealthy, that alias resource record set also
-is immediately removed from consideration.
+=item *
 
-=item 4. Based on the configuration of the alias resource record sets
-(weighted alias or latency alias, for example) and the configuration of
-the resource record sets that they reference, Amazon Route 53 chooses a
+Amazon Route 53 checks the current status of each health check. (Amazon
+Route 53 periodically checks the health of the endpoint that is
+specified in a health check; it doesn't perform the health check when
+the DNS query arrives.)
+
+=item *
+
+Based on the status of the health checks, Amazon Route 53 determines
+which resource record sets are healthy. Unhealthy resource record sets
+are immediately removed from consideration. In addition, if all of the
+resource record sets that are referenced by an alias resource record
+set are unhealthy, that alias resource record set also is immediately
+removed from consideration.
+
+=item *
+
+Based on the configuration of the alias resource record sets (weighted
+alias or latency alias, for example) and the configuration of the
+resource record sets that they reference, Amazon Route 53 chooses a
 resource record set from the healthy resource record sets, and responds
 to the query.
 
@@ -144,35 +219,60 @@ Note the following:
 
 =over
 
-=item * You cannot set C<EvaluateTargetHealth> to true when the alias
-target is a CloudFront distribution.
+=item *
 
-=item * If the AWS resource that you specify in C<AliasTarget> is a
-resource record set or a group of resource record sets (for example, a
-group of weighted resource record sets), but it is not another alias
-resource record set, we recommend that you associate a health check
-with all of the resource record sets in the alias target.
+You cannot set C<EvaluateTargetHealth> to C<true> when the alias target
+is a CloudFront distribution.
 
-=item * If you specify an ELB load balancer in C<AliasTarget>, Elastic
-Load Balancing routes queries only to the healthy Amazon EC2 instances
-that are registered with the load balancer. If no Amazon EC2 instances
-are healthy or if the load balancer itself is unhealthy, and if
-C<EvaluateTargetHealth> is C<true> for the corresponding alias resource
-record set, Amazon Route 53 routes queries to other resources.
+=item *
 
-=item * When you create a load balancer, you configure settings for
-Elastic Load Balancing health checks; they're not Amazon Route 53
-health checks, but they perform a similar function. Do not create
-Amazon Route 53 health checks for the Amazon EC2 instances that you
-register with an ELB load balancer. For more information, see How
-Health Checks Work in More Complex Amazon Route 53 Configurations in
-the I<Amazon Route 53 Developer Guide>.
+If the AWS resource that you specify in C<AliasTarget> is a resource
+record set or a group of resource record sets (for example, a group of
+weighted resource record sets), but it is not another alias resource
+record set, we recommend that you associate a health check with all of
+the resource record sets in the alias target.For more information, see
+What Happens When You Omit Health Checks? in the I<Amazon Route 53
+Developer Guide>.
+
+=item *
+
+If you specify an Elastic Beanstalk environment in C<HostedZoneId> and
+C<DNSName>, and if the environment contains an ELB load balancer,
+Elastic Load Balancing routes queries only to the healthy Amazon EC2
+instances that are registered with the load balancer. (An environment
+automatically contains an ELB load balancer if it includes more than
+one Amazon EC2 instance.) If you set C<EvaluateTargetHealth> to C<true>
+and either no Amazon EC2 instances are healthy or the load balancer
+itself is unhealthy, Amazon Route 53 routes queries to other available
+resources that are healthy, if any.
+
+If the environment contains a single Amazon EC2 instance, there are no
+special requirements.
+
+=item *
+
+If you specify an ELB load balancer in C< AliasTarget >, Elastic Load
+Balancing routes queries only to the healthy Amazon EC2 instances that
+are registered with the load balancer. If no Amazon EC2 instances are
+healthy or if the load balancer itself is unhealthy, and if
+C<EvaluateTargetHealth> is true for the corresponding alias resource
+record set, Amazon Route 53 routes queries to other resources. When you
+create a load balancer, you configure settings for Elastic Load
+Balancing health checks; they're not Amazon Route 53 health checks, but
+they perform a similar function. Do not create Amazon Route 53 health
+checks for the Amazon EC2 instances that you register with an ELB load
+balancer.
+
+For more information, see How Health Checks Work in More Complex Amazon
+Route 53 Configurations in the I<Amazon Route 53 Developers Guide>.
+
+=item *
+
+We recommend that you set C<EvaluateTargetHealth> to true only when you
+have enough idle capacity to handle the failure of one or more
+endpoints.
 
 =back
-
-We recommend that you set C<EvaluateTargetHealth> to C<true> only when
-you have enough idle capacity to handle the failure of one or more
-endpoints.
 
 For more information and examples, see Amazon Route 53 Health Checks
 and DNS Failover in the I<Amazon Route 53 Developer Guide>.
@@ -180,30 +280,66 @@ and DNS Failover in the I<Amazon Route 53 Developer Guide>.
 
 =head2 B<REQUIRED> HostedZoneId => Str
 
-  I<Alias resource record sets only:> The value you use depends on where
-you want to route queries:
+  I<Alias resource records sets only>: The value used depends on where
+the queries are routed:
 
 =over
 
-=item * B<A CloudFront distribution:> Specify C<Z2FDTNDATAQYW2>.
+=item A CloudFront distribution
 
-=item * An ELB load balancer: Specify the value of the hosted zone ID
-for the load balancer. You can get the hosted zone ID by using the AWS
-Management Console, the ELB API, or the AWS CLI. Use the same method to
-get values for C<HostedZoneId> and C<DNSName>. If you get one value
-from the console and the other value from the API or the CLI, creating
-the resource record set will fail.
+Specify C<Z2FDTNDATAQYW2>.
 
-=item * B<An Amazon S3 bucket that is configured as a static website:>
+Alias resource record sets for CloudFront cannot be created in a
+private zone.
+
+=item Elastic Beanstalk environment
+
+Specify the hosted zone ID for the region in which you created the
+environment. The environment must have a regionalized subdomain. For a
+list of regions and the corresponding hosted zone IDs, see AWS Elastic
+Beanstalk in the Regions and Endpoints chapter of the I<AWS General
+Reference>.
+
+=item ELB load balancer
+
+Specify the value of the hosted zone ID for the load balancer. Use the
+following methods to get the hosted zone ID:
+
+=over
+
+=item *
+
+AWS Management Console: Go to the Amazon EC2; page, click Load
+Balancers in the navigation pane, select the load balancer, and get the
+value of the Hosted Zone ID field on the Description tab. Use the same
+process to get the DNS Name. See HostedZone$Name.
+
+=item *
+
+Elastic Load Balancing API: Use C<DescribeLoadBalancers> to get the
+value of C<CanonicalHostedZoneNameID>. Use the same process to get the
+C<CanonicalHostedZoneName>. See HostedZone$Name.
+
+=item *
+
+AWS CLI: Use C< describe-load-balancers > to get the value of
+C<CanonicalHostedZoneNameID>. Use the same process to get the
+C<CanonicalHostedZoneName>. See HostedZone$Name.
+
+=back
+
+=item An Amazon S3 bucket configured as a static website
+
 Specify the hosted zone ID for the Amazon S3 website endpoint in which
 you created the bucket. For more information about valid values, see
-the table Amazon Simple Storage Service (S3) Website Endpoints in the
-I<Amazon Web Services General Reference>.
+the table Amazon S3 (S3) Website Endpoints in the I<Amazon Web Services
+General Reference>.
 
-=item * B<Another Amazon Route 53 resource record set in your hosted
-zone:> Specify the hosted zone ID of your hosted zone. (An alias
-resource record set cannot reference a resource record set in a
-different hosted zone.)
+=item Another Amazon Route 53 resource record set in your hosted zone
+
+Specify the hosted zone ID of your hosted zone. (An alias resource
+record set cannot reference a resource record set in a different hosted
+zone.)
 
 =back
 

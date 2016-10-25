@@ -82,7 +82,8 @@ arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab
 
 The key policy to attach to the CMK.
 
-The key policy must meet the following criteria:
+If you do not set C<BypassPolicyLockoutSafetyCheck> to true, the policy
+must meet the following criteria:
 
 =over
 

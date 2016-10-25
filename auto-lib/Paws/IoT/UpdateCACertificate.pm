@@ -2,7 +2,8 @@
 package Paws::IoT::UpdateCACertificate;
   use Moose;
   has CertificateId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'certificateId' , required => 1);
-  has NewStatus => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'newStatus' , required => 1);
+  has NewAutoRegistrationStatus => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'newAutoRegistrationStatus' );
+  has NewStatus => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'newStatus' );
 
   use MooseX::ClassAttribute;
 
@@ -42,7 +43,14 @@ The CA certificate identifier.
 
 
 
-=head2 B<REQUIRED> NewStatus => Str
+=head2 NewAutoRegistrationStatus => Str
+
+The new value for the auto registration status. Valid values are:
+"ENABLE" or "DISABLE".
+
+Valid values are: C<"ENABLE">, C<"DISABLE">
+
+=head2 NewStatus => Str
 
 The updated status of the CA certificate.
 

@@ -66,10 +66,6 @@ Cannot end with a hyphen or contain two consecutive hyphens
 
 Must not be "Default"
 
-=item *
-
-Cannot contain spaces
-
 =back
 
 Example: C<mysecuritygroup>

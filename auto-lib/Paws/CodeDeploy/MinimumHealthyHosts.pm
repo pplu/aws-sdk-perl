@@ -43,11 +43,15 @@ Information about minimum healthy instance.
 
 =over
 
-=item * HOST_COUNT: The minimum number of healthy instance as an
-absolute value.
+=item *
 
-=item * FLEET_PERCENT: The minimum number of healthy instance as a
-percentage of the total number of instance in the deployment.
+HOST_COUNT: The minimum number of healthy instance as an absolute
+value.
+
+=item *
+
+FLEET_PERCENT: The minimum number of healthy instance as a percentage
+of the total number of instance in the deployment.
 
 =back
 

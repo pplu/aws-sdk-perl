@@ -2,7 +2,7 @@
 package Paws::SNS::ListPhoneNumbersOptedOutResponse;
   use Moose;
   has NextToken => (is => 'ro', isa => 'Str');
-  has PhoneNumbers => (is => 'ro', isa => 'ArrayRef[Str]');
+  has PhoneNumbers => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
 1;
 
@@ -23,7 +23,7 @@ after the first page of results.
 
 
 
-=head2 PhoneNumbers => ArrayRef[Str]
+=head2 PhoneNumbers => ArrayRef[Str|Undef]
 
 A list of phone numbers that are opted out of receiving SMS messages.
 The list is paginated, and each page can contain up to 100 phone

@@ -49,7 +49,7 @@ Default: 60 minutes
 
 =head2 B<REQUIRED> Enabled => Bool
 
-  Specifies whether access log is enabled for the load balancer.
+  Specifies whether access logs are enabled for the load balancer.
 
 
 =head2 S3BucketName => Str

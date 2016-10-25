@@ -32,19 +32,62 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Route53::Ta
 
 =head1 DESCRIPTION
 
-A single tag containing a key and value.
+A complex type that contains information about a tag that you want to
+add or edit for the specified health check or hosted zone.
 
 =head1 ATTRIBUTES
 
 
 =head2 Key => Str
 
-  The key for a C<Tag>.
+  The value of C<Key> depends on the operation that you want to perform:
+
+=over
+
+=item *
+
+B<Add a tag to a health check or hosted zone>: C<Key> is the name that
+you want to give the new tag.
+
+=item *
+
+B<Edit a tag>: C<Key> is the name of the tag whose C<Value> element you
+want to remove.
+
+=item *
+
+B<Delete a key>: C<Key> is the name of the tag you want to remove.
+
+=item *
+
+B<Give a name to a health check>: Edit the default C<Name> tag. In the
+Amazon Route 53 console, the list of your health checks includes a
+B<Name> column that lets you see the name that you've given to each
+health check.
+
+=back
+
 
 
 =head2 Value => Str
 
-  The value for a C<Tag>.
+  The value of C<Value> depends on the operation that you want to
+perform:
+
+=over
+
+=item *
+
+B<Add a tag to a health check or hosted zone>: C<Value> is the value
+that you want to give the new tag.
+
+=item *
+
+B<Edit a tag>: C<Value> is the new value that you want to assign the
+tag.
+
+=back
+
 
 
 

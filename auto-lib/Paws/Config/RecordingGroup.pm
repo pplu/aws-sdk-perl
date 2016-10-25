@@ -2,7 +2,7 @@ package Paws::Config::RecordingGroup;
   use Moose;
   has AllSupported => (is => 'ro', isa => 'Bool', xmlname => 'allSupported', request_name => 'allSupported', traits => ['Unwrapped','NameInRequest']);
   has IncludeGlobalResourceTypes => (is => 'ro', isa => 'Bool', xmlname => 'includeGlobalResourceTypes', request_name => 'includeGlobalResourceTypes', traits => ['Unwrapped','NameInRequest']);
-  has ResourceTypes => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'resourceTypes', request_name => 'resourceTypes', traits => ['Unwrapped','NameInRequest']);
+  has ResourceTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'resourceTypes', request_name => 'resourceTypes', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -101,7 +101,7 @@ regions. To prevent duplicate configuration items, you should consider
 customizing AWS Config in only one region to record global resources.
 
 
-=head2 ResourceTypes => ArrayRef[Str]
+=head2 ResourceTypes => ArrayRef[Str|Undef]
 
   A comma-separated list that specifies the types of AWS resources for
 which AWS Config records configuration changes (for example,

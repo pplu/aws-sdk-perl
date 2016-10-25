@@ -50,17 +50,23 @@ Routing configuration for a fleet alias.
 
 =head2 Type => Str
 
-  Type of routing strategy. Possible routing types include the following:
+  Type of routing strategy.
+
+Possible routing types include the following:
 
 =over
 
-=item * B<SIMPLE> E<ndash> The alias resolves to one specific fleet.
-Use this type when routing to active fleets.
+=item *
 
-=item * B<TERMINAL> E<ndash> The alias does not resolve to a fleet but
-instead can be used to display a message to the user. A terminal alias
-throws a TerminalRoutingStrategyException with the RoutingStrategy
-message embedded.
+B<SIMPLE> E<ndash> The alias resolves to one specific fleet. Use this
+type when routing to active fleets.
+
+=item *
+
+B<TERMINAL> E<ndash> The alias does not resolve to a fleet but instead
+can be used to display a message to the user. A terminal alias throws a
+TerminalRoutingStrategyException with the RoutingStrategy message
+embedded.
 
 =back
 

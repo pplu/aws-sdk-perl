@@ -2,7 +2,7 @@
 package Paws::IoT::ListPrincipalThingsResponse;
   use Moose;
   has NextToken => (is => 'ro', isa => 'Str');
-  has Things => (is => 'ro', isa => 'ArrayRef[Str]');
+  has Things => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
 1;
 
@@ -17,11 +17,12 @@ Paws::IoT::ListPrincipalThingsResponse
 
 =head2 NextToken => Str
 
-A token used to retrieve the next value.
+The token for the next set of results, or B<null> if there are no
+additional results.
 
 
 
-=head2 Things => ArrayRef[Str]
+=head2 Things => ArrayRef[Str|Undef]
 
 The things.
 

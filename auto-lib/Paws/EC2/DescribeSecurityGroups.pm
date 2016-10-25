@@ -3,8 +3,8 @@ package Paws::EC2::DescribeSecurityGroups;
   use Moose;
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has Filters => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
-  has GroupIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'GroupId' );
-  has GroupNames => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'GroupName' );
+  has GroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'GroupId' );
+  has GroupNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'GroupName' );
 
   use MooseX::ClassAttribute;
 
@@ -126,7 +126,7 @@ created.
 
 
 
-=head2 GroupIds => ArrayRef[Str]
+=head2 GroupIds => ArrayRef[Str|Undef]
 
 One or more security group IDs. Required for security groups in a
 nondefault VPC.
@@ -135,7 +135,7 @@ Default: Describes all your security groups.
 
 
 
-=head2 GroupNames => ArrayRef[Str]
+=head2 GroupNames => ArrayRef[Str|Undef]
 
 [EC2-Classic and default VPC only] One or more security group names.
 You can specify either the security group name or the security group

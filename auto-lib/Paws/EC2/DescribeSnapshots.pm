@@ -5,9 +5,9 @@ package Paws::EC2::DescribeSnapshots;
   has Filters => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
   has MaxResults => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
-  has OwnerIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'Owner' );
-  has RestorableByUserIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'RestorableBy' );
-  has SnapshotIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'SnapshotId' );
+  has OwnerIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'Owner' );
+  has RestorableByUserIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'RestorableBy' );
+  has SnapshotIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'SnapshotId' );
 
   use MooseX::ClassAttribute;
 
@@ -60,8 +60,10 @@ C<description> - A description of the snapshot.
 
 =item *
 
-C<owner-alias> - The AWS account alias (for example, C<amazon>) that
-owns the snapshot.
+C<owner-alias> - Value from an Amazon-maintained list (C<amazon> |
+C<aws-marketplace> | C<microsoft>) of snapshot owners. Not to be
+confused with the user-configured AWS account alias, which is set from
+the IAM consolew.
 
 =item *
 
@@ -143,20 +145,20 @@ This value is C<null> when there are no more results to return.
 
 
 
-=head2 OwnerIds => ArrayRef[Str]
+=head2 OwnerIds => ArrayRef[Str|Undef]
 
 Returns the snapshots owned by the specified owner. Multiple owners can
 be specified.
 
 
 
-=head2 RestorableByUserIds => ArrayRef[Str]
+=head2 RestorableByUserIds => ArrayRef[Str|Undef]
 
 One or more AWS accounts IDs that can create volumes from the snapshot.
 
 
 
-=head2 SnapshotIds => ArrayRef[Str]
+=head2 SnapshotIds => ArrayRef[Str|Undef]
 
 One or more snapshot IDs.
 

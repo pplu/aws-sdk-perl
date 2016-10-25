@@ -1,7 +1,7 @@
 
 package Paws::DS::DescribeDirectories;
   use Moose;
-  has DirectoryIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has DirectoryIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Limit => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
 
@@ -35,7 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 DirectoryIds => ArrayRef[Str]
+=head2 DirectoryIds => ArrayRef[Str|Undef]
 
 A list of identifiers of the directories for which to obtain the
 information. If this member is null, all directories that belong to the

@@ -1,7 +1,7 @@
 
 package Paws::Discovery::DescribeConfigurations;
   use Moose;
-  has ConfigurationIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'configurationIds' , required => 1);
+  has ConfigurationIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'configurationIds' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -33,7 +33,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> ConfigurationIds => ArrayRef[Str]
+=head2 B<REQUIRED> ConfigurationIds => ArrayRef[Str|Undef]
 
 One or more configuration IDs.
 

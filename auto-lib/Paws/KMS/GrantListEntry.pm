@@ -7,7 +7,7 @@ package Paws::KMS::GrantListEntry;
   has IssuingAccount => (is => 'ro', isa => 'Str');
   has KeyId => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
-  has Operations => (is => 'ro', isa => 'ArrayRef[Str]');
+  has Operations => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has RetiringPrincipal => (is => 'ro', isa => 'Str');
 1;
 
@@ -82,7 +82,7 @@ the CreateGrant request, that name is returned. Otherwise this value is
 null.
 
 
-=head2 Operations => ArrayRef[Str]
+=head2 Operations => ArrayRef[Str|Undef]
 
   The list of operations permitted by the grant.
 

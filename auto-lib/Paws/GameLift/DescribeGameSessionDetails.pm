@@ -54,8 +54,12 @@ on all game sessions active on the fleet.
 
 =head2 GameSessionId => Str
 
-Unique identifier for a game session. Specify the game session to
-retrieve information on.
+Unique identifier for the game session to retrieve information on. Game
+session ID format is as follows:
+"arn:aws:gamelift:E<lt>regionE<gt>::gamesession/fleet-E<lt>fleet
+IDE<gt>/E<lt>ID stringE<gt>". The value of E<lt>ID stringE<gt> is
+either a custom ID string (if one was specified when the game session
+was created) an auto-generated string.
 
 
 
@@ -76,9 +80,9 @@ specify the start of the result set, do not specify a value.
 
 =head2 StatusFilter => Str
 
-Game session status to filter results on. Possible game session states
-include ACTIVE, C<TERMINATED>, C<ACTIVATING> and C<TERMINATING> (the
-last two are transitory).
+Game session status to filter results on. Possible game session
+statuses include ACTIVE, C<TERMINATED>, C<ACTIVATING> and
+C<TERMINATING> (the last two are transitory).
 
 
 

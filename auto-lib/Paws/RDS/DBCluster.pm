@@ -1,10 +1,12 @@
 package Paws::RDS::DBCluster;
   use Moose;
   has AllocatedStorage => (is => 'ro', isa => 'Int');
-  has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str]');
+  has AssociatedRoles => (is => 'ro', isa => 'ArrayRef[Paws::RDS::DBClusterRole]');
+  has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has BackupRetentionPeriod => (is => 'ro', isa => 'Int');
   has CharacterSetName => (is => 'ro', isa => 'Str');
   has DatabaseName => (is => 'ro', isa => 'Str');
+  has DBClusterArn => (is => 'ro', isa => 'Str');
   has DBClusterIdentifier => (is => 'ro', isa => 'Str');
   has DBClusterMembers => (is => 'ro', isa => 'ArrayRef[Paws::RDS::DBClusterMember]');
   has DBClusterOptionGroupMemberships => (is => 'ro', isa => 'ArrayRef[Paws::RDS::DBClusterOptionGroupStatus]');
@@ -23,7 +25,8 @@ package Paws::RDS::DBCluster;
   has Port => (is => 'ro', isa => 'Int');
   has PreferredBackupWindow => (is => 'ro', isa => 'Str');
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
-  has ReadReplicaIdentifiers => (is => 'ro', isa => 'ArrayRef[Str]');
+  has ReaderEndpoint => (is => 'ro', isa => 'Str');
+  has ReadReplicaIdentifiers => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has ReplicationSourceIdentifier => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
   has StorageEncrypted => (is => 'ro', isa => 'Bool');
@@ -100,7 +103,15 @@ action.
   Specifies the allocated storage size in gigabytes (GB).
 
 
-=head2 AvailabilityZones => ArrayRef[Str]
+=head2 AssociatedRoles => ArrayRef[L<Paws::RDS::DBClusterRole>]
+
+  Provides a list of the AWS Identity and Access Management (IAM) roles
+that are associated with the DB cluster. IAM roles that are associated
+with a DB cluster grant permission for the DB cluster to access other
+AWS services on your behalf.
+
+
+=head2 AvailabilityZones => ArrayRef[Str|Undef]
 
   Provides the list of EC2 Availability Zones that instances in the DB
 cluster can be created in.
@@ -123,6 +134,11 @@ is associated with.
   Contains the name of the initial database of this DB cluster that was
 provided at create time, if one was specified when the DB cluster was
 created. This same name is returned for the life of the DB cluster.
+
+
+=head2 DBClusterArn => Str
+
+  The Amazon Resource Name (ARN) for the DB cluster.
 
 
 =head2 DBClusterIdentifier => Str
@@ -230,7 +246,22 @@ C<BackupRetentionPeriod>.
 occur, in Universal Coordinated Time (UTC).
 
 
-=head2 ReadReplicaIdentifiers => ArrayRef[Str]
+=head2 ReaderEndpoint => Str
+
+  The reader endpoint for the DB cluster. The reader endpoint for a DB
+cluster load-balances connections across the Aurora Replicas that are
+available in a DB cluster. As clients request new connections to the
+reader endpoint, Aurora distributes the connection requests among the
+Aurora Replicas in the DB cluster. This functionality can help balance
+your read workload across multiple Aurora Replicas in your DB cluster.
+
+If a failover occurs, and the Aurora Replica that you are connected to
+is promoted to be the primary instance, your connection will be
+dropped. To continue sending your read workload to other Aurora
+Replicas in the cluster, you can then recoonect to the reader endpoint.
+
+
+=head2 ReadReplicaIdentifiers => ArrayRef[Str|Undef]
 
   Contains one or more identifiers of the Read Replicas associated with
 this DB cluster.
