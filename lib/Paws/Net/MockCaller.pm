@@ -15,18 +15,18 @@ package Paws::Net::MockCaller;
     }
   );
 
-  has record_mode => (
+  has mock_mode => (
     is => 'ro',
     isa => enum([ 'REPLAY', 'RECORD' ]),
     required => 1,
-    default => sub { $ENV{PAWS_RECORDER_MODE} }
+    default => sub { $ENV{PAWS_MOCK_MODE} }
   );
 
-  has recorder_dir => (
+  has mock_dir => (
     is => 'ro',
     isa => 'Str',
     required => 1,
-    default => sub { $ENV{PAWS_RECORDER_DIR} }
+    default => sub { $ENV{PAWS_MOCK_DIR} }
   );
 
   has _request_num => (
@@ -44,10 +44,10 @@ package Paws::Net::MockCaller;
   sub send_request {
     my ($self, $service, $call_object) = @_;
 
-    $self->_test_file(sprintf("%s/%04d.test", $self->recorder_dir, $self->_request_num));
+    $self->_test_file(sprintf("%s/%04d.test", $self->mock_dir, $self->_request_num));
     $self->_next_request;
 
-    if ($self->record_mode eq 'REPLAY') {
+    if ($self->mock_mode eq 'REPLAY') {
       #LOAD HTTP request from file
       my $response = decode_json(read_text($self->_test_file));
 
@@ -65,10 +65,10 @@ package Paws::Net::MockCaller;
       }
  
       return ($response->{response}{status}, $response->{response}{content}, $response->{response}{headers});
-    } elsif ($self->record_mode eq 'RECORD') {
+    } elsif ($self->mock_mode eq 'RECORD') {
       return $self->real_caller->send_request($service, $call_object);
     } else {
-      die "Unsupported record mode " . $self->record_mode;
+      die "Unsupported record mode " . $self->mock_mode;
     }
   };
 
@@ -86,7 +86,7 @@ package Paws::Net::MockCaller;
       $headers->{ "x-amz-request-id" }  = '000000000000000000000000000000000000' 
     }
 
-    if ($self->record_mode eq 'RECORD') {
+    if ($self->mock_mode eq 'RECORD') {
       write_text($self->_test_file, encode_json({
         request => {
           params => $service->to_hash($call_object),

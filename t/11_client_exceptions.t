@@ -28,8 +28,8 @@ foreach my $caller_name ('Paws::Net::FurlCaller', 'Paws::Net::Caller', 'Paws::Ne
   diag "Testing with caller $caller_name";
   my $caller = Paws::Net::MockCaller->new(
     real_caller => $caller_name->new,
-    recorder_dir => $caller_dir,
-    record_mode => $do_real_calls ? 'RECORD' : 'REPLAY',
+    mock_dir => $caller_dir,
+    mock_mode => $do_real_calls ? 'RECORD' : 'REPLAY',
   );
   
   # CustomCredentials has some invented AK and SK. Since
