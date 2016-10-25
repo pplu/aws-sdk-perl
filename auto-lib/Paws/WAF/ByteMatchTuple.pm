@@ -274,12 +274,12 @@ Replaces C<(ampersand)gt;> with C<E<gt>>
 =item *
 
 Replaces characters that are represented in hexadecimal format,
-C<(ampersand)
+C<(ampersand)(hash)xhhhh;>, with the corresponding characters
 
 =item *
 
 Replaces characters that are represented in decimal format,
-C<(ampersand)
+C<(ampersand)(hash)nnnn;>, with the corresponding characters
 
 =back
 
