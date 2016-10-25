@@ -1,6 +1,10 @@
 #!/usr/bin/env perl
 
+use strict;
+use warnings;
+
 use Paws;
+use Paws::Net::MockCaller;
 use Test::Exception;
 use Test::More;
 use Data::Dumper;
@@ -11,22 +15,21 @@ use Module::Runtime qw/require_module/;
 
 my $do_real_calls = $ENV{'PAWS_RUN_REAL_CALLS'} || 0;
 
-foreach $caller_code ('Furl', 'HTTPTiny', 'LWP') {
-  my $caller_name = "${caller_code}ResponseRecorder";
+my $caller_dirs = {
+  'Paws::Net::FurlCaller' => 't/11_client_exceptions_furl',
+  'Paws::Net::Caller'     => 't/11_client_exceptions_httptiny',
+  'Paws::Net::LWPCaller'  => 't/11_client_exceptions_lwp',
+};
 
-  eval {
-    require_module $caller_name;
-  };
-  if ($@){
-    diag "Skipping $caller_name due to probem loading: $@";
-    next;
-  }
+foreach my $caller_name ('Paws::Net::FurlCaller', 'Paws::Net::Caller', 'Paws::Net::LWPCaller') {
+  require_module($caller_name);
 
-  my $caller_dir = 't/11_client_exceptions_' . lc($caller_code) . '/';
+  my $caller_dir = $caller_dirs->{ $caller_name } . '/';
   diag "Testing with caller $caller_name";
-  my $caller = $caller_name->new(
-    conversation_dir => $caller_dir,
-    replay_calls => (not $do_real_calls),
+  my $caller = Paws::Net::MockCaller->new(
+    real_caller => $caller_name->new,
+    recorder_dir => $caller_dir,
+    record_mode => $do_real_calls ? 'RECORD' : 'REPLAY',
   );
   
   # CustomCredentials has some invented AK and SK. Since
@@ -145,6 +148,13 @@ foreach $caller_code ('Furl', 'HTTPTiny', 'LWP') {
   cmp_ok($@->code, 'eq', 'InternalError', 'Correct code');
   cmp_ok($@->request_id, 'eq', '000000000000000000000000000000000000', 'Correct Request ID');
 
+  throws_ok {
+    $p->service('Kinesis', region => 'eu-west-1')->ListStreams;
+  } 'Paws::Exception', 'got exception';
+
+  cmp_ok($@->message, 'eq', 'The security token included in the request is invalid.', 'Kinesis exception');
+  cmp_ok($@->code, 'eq', 'UnrecognizedClientException', 'Correct code');
+  cmp_ok($@->request_id, 'eq', '000000000000000000000000000000000000', 'Correct Request ID');
 }
   
 done_testing;

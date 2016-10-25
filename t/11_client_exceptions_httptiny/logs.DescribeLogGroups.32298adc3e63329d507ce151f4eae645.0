@@ -1,1 +1,0 @@
-{"headers":{"cneonction":"close","content-length":"107","content-type":"application/x-amz-json-1.1","date":"Thu, 28 Jan 2016 20:47:26 GMT","x-amzn-requestid":"000000000000000000000000000000000000"},"status":"400","content":"{\"__type\":\"UnrecognizedClientException\",\"message\":\"The security token included in the request is invalid.\"}"}
