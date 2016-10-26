@@ -121,12 +121,17 @@ package Paws::API::Caller;
     foreach my $att ($class->meta->get_attribute_list) {
       next if (not my $meta = $class->meta->get_attribute($att));
 
-      my $key = $meta->does('Paws::API::Attribute::Trait::Unwrapped') ? $meta->xmlname : $att;
+      my $key = $meta->does('Paws::API::Attribute::Trait::Unwrapped') ? $meta->xmlname :
+                $meta->does('Paws::API::Attribute::Trait::ParamInHeader') ? lc($meta->header_name) : $att;
+
       my $att_type = $meta->type_constraint;
 
-#      use Data::Dumper;
-#      print STDERR "GOING TO DO AN $att_type\n";
-#      print STDERR "VALUE: " . Dumper($result);
+    #  use Data::Dumper;
+    #  print STDERR "USING KEY:  $key\n";
+    #  print STDERR "$att IS A '$att_type' TYPE\n";
+    #  print STDERR "VALUE: " . Dumper($result);
+    #  my $extracted_val = $result->{ $key };
+    #  print STDERR "RESULT >>> $extracted_val\n";
 
       # We'll consider that an attribute without brackets [] isn't an array type
       if ($att_type !~ m/\[.*\]$/) {
