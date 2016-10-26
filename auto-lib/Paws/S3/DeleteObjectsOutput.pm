@@ -2,8 +2,8 @@
 package Paws::S3::DeleteObjectsOutput;
   use Moose;
   has Deleted => (is => 'ro', isa => 'ArrayRef[Paws::S3::DeletedObject]');
-  has Errors => (is => 'ro', isa => 'ArrayRef[Paws::S3::Error]');
-  has RequestCharged => (is => 'ro', isa => 'Str');
+  has Errors => (is => 'ro', isa => 'ArrayRef[Paws::S3::Error]', traits => ['Unwrapped'], xmlname => 'Error');
+  has RequestCharged => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-request-charged');
 
 1;
 

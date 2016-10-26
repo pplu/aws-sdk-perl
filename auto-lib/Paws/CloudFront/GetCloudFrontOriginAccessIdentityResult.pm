@@ -2,7 +2,7 @@
 package Paws::CloudFront::GetCloudFrontOriginAccessIdentityResult;
   use Moose;
   has CloudFrontOriginAccessIdentity => (is => 'ro', isa => 'Paws::CloudFront::CloudFrontOriginAccessIdentity');
-  has ETag => (is => 'ro', isa => 'Str');
+  has ETag => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'ETag');
 
 1;
 

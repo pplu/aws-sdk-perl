@@ -1,15 +1,15 @@
 
 package Paws::S3::CreateMultipartUploadOutput;
   use Moose;
-  has AbortDate => (is => 'ro', isa => 'Str');
-  has AbortRuleId => (is => 'ro', isa => 'Str');
-  has Bucket => (is => 'ro', isa => 'Str');
+  has AbortDate => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-abort-date');
+  has AbortRuleId => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-abort-rule-id');
+  has Bucket => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'Bucket');
   has Key => (is => 'ro', isa => 'Str');
-  has RequestCharged => (is => 'ro', isa => 'Str');
-  has ServerSideEncryption => (is => 'ro', isa => 'Str');
-  has SSECustomerAlgorithm => (is => 'ro', isa => 'Str');
-  has SSECustomerKeyMD5 => (is => 'ro', isa => 'Str');
-  has SSEKMSKeyId => (is => 'ro', isa => 'Str');
+  has RequestCharged => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-request-charged');
+  has ServerSideEncryption => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-server-side-encryption');
+  has SSECustomerAlgorithm => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-server-side-encryption-customer-algorithm');
+  has SSECustomerKeyMD5 => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-server-side-encryption-customer-key-MD5');
+  has SSEKMSKeyId => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-server-side-encryption-aws-kms-key-id');
   has UploadId => (is => 'ro', isa => 'Str');
 
 1;

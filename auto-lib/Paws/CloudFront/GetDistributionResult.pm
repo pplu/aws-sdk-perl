@@ -2,7 +2,7 @@
 package Paws::CloudFront::GetDistributionResult;
   use Moose;
   has Distribution => (is => 'ro', isa => 'Paws::CloudFront::Distribution');
-  has ETag => (is => 'ro', isa => 'Str');
+  has ETag => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'ETag');
 
 1;
 

@@ -1,7 +1,7 @@
 
 package Paws::Route53::CreateTrafficPolicyInstanceResponse;
   use Moose;
-  has Location => (is => 'ro', isa => 'Str', required => 1);
+  has Location => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Location', required => 1);
   has TrafficPolicyInstance => (is => 'ro', isa => 'Paws::Route53::TrafficPolicyInstance', required => 1);
 
 1;

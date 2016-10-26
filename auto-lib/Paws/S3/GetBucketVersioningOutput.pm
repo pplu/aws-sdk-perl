@@ -1,7 +1,7 @@
 
 package Paws::S3::GetBucketVersioningOutput;
   use Moose;
-  has MFADelete => (is => 'ro', isa => 'Str');
+  has MFADelete => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'MfaDelete');
   has Status => (is => 'ro', isa => 'Str');
 
 1;

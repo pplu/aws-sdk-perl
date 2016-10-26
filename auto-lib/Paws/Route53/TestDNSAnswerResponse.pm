@@ -3,7 +3,7 @@ package Paws::Route53::TestDNSAnswerResponse;
   use Moose;
   has Nameserver => (is => 'ro', isa => 'Str', required => 1);
   has Protocol => (is => 'ro', isa => 'Str', required => 1);
-  has RecordData => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['Unwrapped'], xmlname => 'RecordDataEntry', required => 1);
+  has RecordData => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
   has RecordName => (is => 'ro', isa => 'Str', required => 1);
   has RecordType => (is => 'ro', isa => 'Str', required => 1);
   has ResponseCode => (is => 'ro', isa => 'Str', required => 1);

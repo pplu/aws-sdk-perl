@@ -1,9 +1,9 @@
 
 package Paws::S3::GetObjectAclOutput;
   use Moose;
-  has Grants => (is => 'ro', isa => 'ArrayRef[Paws::S3::Grant]', traits => ['Unwrapped'], xmlname => 'Grant');
+  has Grants => (is => 'ro', isa => 'ArrayRef[Paws::S3::Grant]', traits => ['Unwrapped'], xmlname => 'AccessControlList');
   has Owner => (is => 'ro', isa => 'Paws::S3::Owner');
-  has RequestCharged => (is => 'ro', isa => 'Str');
+  has RequestCharged => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-request-charged');
 
 1;
 

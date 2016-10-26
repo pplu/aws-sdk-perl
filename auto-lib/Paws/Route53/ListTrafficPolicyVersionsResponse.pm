@@ -3,7 +3,7 @@ package Paws::Route53::ListTrafficPolicyVersionsResponse;
   use Moose;
   has IsTruncated => (is => 'ro', isa => 'Bool', required => 1);
   has MaxItems => (is => 'ro', isa => 'Str', required => 1);
-  has TrafficPolicies => (is => 'ro', isa => 'ArrayRef[Paws::Route53::TrafficPolicy]', traits => ['Unwrapped'], xmlname => 'TrafficPolicy', required => 1);
+  has TrafficPolicies => (is => 'ro', isa => 'ArrayRef[Paws::Route53::TrafficPolicy]', required => 1);
   has TrafficPolicyVersionMarker => (is => 'ro', isa => 'Str', required => 1);
 
 1;

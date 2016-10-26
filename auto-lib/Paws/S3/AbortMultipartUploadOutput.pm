@@ -1,7 +1,7 @@
 
 package Paws::S3::AbortMultipartUploadOutput;
   use Moose;
-  has RequestCharged => (is => 'ro', isa => 'Str');
+  has RequestCharged => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-request-charged');
 
 1;
 

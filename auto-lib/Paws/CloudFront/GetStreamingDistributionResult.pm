@@ -1,7 +1,7 @@
 
 package Paws::CloudFront::GetStreamingDistributionResult;
   use Moose;
-  has ETag => (is => 'ro', isa => 'Str');
+  has ETag => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'ETag');
   has StreamingDistribution => (is => 'ro', isa => 'Paws::CloudFront::StreamingDistribution');
 
 1;

@@ -1,7 +1,7 @@
 
 package Paws::Route53::ListChangeBatchesByRRSetResponse;
   use Moose;
-  has ChangeBatchRecords => (is => 'ro', isa => 'ArrayRef[Paws::Route53::ChangeBatchRecord]', traits => ['Unwrapped'], xmlname => 'ChangeBatchRecord', required => 1);
+  has ChangeBatchRecords => (is => 'ro', isa => 'ArrayRef[Paws::Route53::ChangeBatchRecord]', required => 1);
   has IsTruncated => (is => 'ro', isa => 'Bool');
   has Marker => (is => 'ro', isa => 'Str', required => 1);
   has MaxItems => (is => 'ro', isa => 'Str', required => 1);

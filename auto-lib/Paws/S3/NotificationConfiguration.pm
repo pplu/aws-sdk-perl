@@ -1,9 +1,9 @@
 
 package Paws::S3::NotificationConfiguration;
   use Moose;
-  has LambdaFunctionConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::S3::LambdaFunctionConfiguration]');
-  has QueueConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::S3::QueueConfiguration]');
-  has TopicConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::S3::TopicConfiguration]');
+  has LambdaFunctionConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::S3::LambdaFunctionConfiguration]', traits => ['Unwrapped'], xmlname => 'CloudFunctionConfiguration');
+  has QueueConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::S3::QueueConfiguration]', traits => ['Unwrapped'], xmlname => 'QueueConfiguration');
+  has TopicConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::S3::TopicConfiguration]', traits => ['Unwrapped'], xmlname => 'TopicConfiguration');
 
 1;
 

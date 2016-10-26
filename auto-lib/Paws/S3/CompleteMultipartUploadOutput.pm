@@ -3,13 +3,13 @@ package Paws::S3::CompleteMultipartUploadOutput;
   use Moose;
   has Bucket => (is => 'ro', isa => 'Str');
   has ETag => (is => 'ro', isa => 'Str');
-  has Expiration => (is => 'ro', isa => 'Str');
+  has Expiration => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-expiration');
   has Key => (is => 'ro', isa => 'Str');
   has Location => (is => 'ro', isa => 'Str');
-  has RequestCharged => (is => 'ro', isa => 'Str');
-  has ServerSideEncryption => (is => 'ro', isa => 'Str');
-  has SSEKMSKeyId => (is => 'ro', isa => 'Str');
-  has VersionId => (is => 'ro', isa => 'Str');
+  has RequestCharged => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-request-charged');
+  has ServerSideEncryption => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-server-side-encryption');
+  has SSEKMSKeyId => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-server-side-encryption-aws-kms-key-id');
+  has VersionId => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-version-id');
 
 1;
 

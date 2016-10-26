@@ -1,9 +1,9 @@
 
 package Paws::S3::DeleteObjectOutput;
   use Moose;
-  has DeleteMarker => (is => 'ro', isa => 'Bool');
-  has RequestCharged => (is => 'ro', isa => 'Str');
-  has VersionId => (is => 'ro', isa => 'Str');
+  has DeleteMarker => (is => 'ro', isa => 'Bool', traits => ['ParamInHeader'], header_name => 'x-amz-delete-marker');
+  has RequestCharged => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-request-charged');
+  has VersionId => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-version-id');
 
 1;
 
