@@ -72,11 +72,11 @@ DescribeAgentVersions.
 
 =head2 AmiId => Str
 
-A custom AMI ID to be used to create the instance. The AMI must be
-based on one of the supported operating systems. For more information,
-see Instances
-
-If you specify a custom AMI, you must set C<Os> to C<Custom>.
+The ID of the AMI that was used to create the instance. The value of
+this parameter must be the same AMI ID that the instance is already
+using. You cannot apply a new AMI to an instance by running
+UpdateInstance. UpdateInstance does not work on instances that are
+using custom AMIs.
 
 
 
@@ -147,7 +147,7 @@ The instance's layer IDs.
 =head2 Os => Str
 
 The instance's operating system, which must be set to one of the
-following.
+following. You cannot update an instance that is using a custom AMI.
 
 =over
 
@@ -176,10 +176,6 @@ A supported Windows operating system, such as C<Microsoft Windows
 Server 2012 R2 Base>, C<Microsoft Windows Server 2012 R2 with SQL
 Server Express>, C<Microsoft Windows Server 2012 R2 with SQL Server
 Standard>, or C<Microsoft Windows Server 2012 R2 with SQL Server Web>.
-
-=item *
-
-A custom AMI: C<Custom>.
 
 =back
 

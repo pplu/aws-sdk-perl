@@ -10,6 +10,7 @@ package Paws::CloudFront::DistributionSummary;
   has Enabled => (is => 'ro', isa => 'Bool', required => 1);
   has HttpVersion => (is => 'ro', isa => 'Str', required => 1);
   has Id => (is => 'ro', isa => 'Str', required => 1);
+  has IsIPV6Enabled => (is => 'ro', isa => 'Bool', required => 1);
   has LastModifiedTime => (is => 'ro', isa => 'Str', required => 1);
   has Origins => (is => 'ro', isa => 'Paws::CloudFront::Origins', required => 1);
   has PriceClass => (is => 'ro', isa => 'Str', required => 1);
@@ -47,7 +48,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 
 =head1 DESCRIPTION
 
-A summary of the information for an Amazon CloudFront distribution.
+A summary of the information about a CloudFront distribution.
 
 =head1 ATTRIBUTES
 
@@ -61,13 +62,13 @@ names), if any, for this distribution.
 =head2 B<REQUIRED> ARN => Str
 
   The ARN (Amazon Resource Name) for the distribution. For example:
-arn:aws:cloudfront::123456789012:distribution/EDFDVBD632BHDS5, where
-123456789012 is your AWS account Id.
+C<arn:aws:cloudfront::123456789012:distribution/EDFDVBD632BHDS5>, where
+C<123456789012> is your AWS account ID.
 
 
 =head2 B<REQUIRED> CacheBehaviors => L<Paws::CloudFront::CacheBehaviors>
 
-  A complex type that contains zero or more CacheBehavior elements.
+  A complex type that contains zero or more C<CacheBehavior> elements.
 
 
 =head2 B<REQUIRED> Comment => Str
@@ -77,27 +78,27 @@ arn:aws:cloudfront::123456789012:distribution/EDFDVBD632BHDS5, where
 
 =head2 B<REQUIRED> CustomErrorResponses => L<Paws::CloudFront::CustomErrorResponses>
 
-  A complex type that contains zero or more CustomErrorResponses
+  A complex type that contains zero or more C<CustomErrorResponses>
 elements.
 
 
 =head2 B<REQUIRED> DefaultCacheBehavior => L<Paws::CloudFront::DefaultCacheBehavior>
 
   A complex type that describes the default cache behavior if you do not
-specify a CacheBehavior element or if files don't match any of the
-values of PathPattern in CacheBehavior elements.You must create exactly
-one default cache behavior.
+specify a C<CacheBehavior> element or if files don't match any of the
+values of C<PathPattern> in C<CacheBehavior> elements. You must create
+exactly one default cache behavior.
 
 
 =head2 B<REQUIRED> DomainName => Str
 
-  The domain name corresponding to the distribution. For example:
-d604721fxaaqy9.cloudfront.net.
+  The domain name that corresponds to the distribution. For example:
+C<d604721fxaaqy9.cloudfront.net>.
 
 
 =head2 B<REQUIRED> Enabled => Bool
 
-  Whether the distribution is enabled to accept end user requests for
+  Whether the distribution is enabled to accept user requests for
 content.
 
 
@@ -105,13 +106,19 @@ content.
 
   Specify the maximum HTTP version that you want viewers to use to
 communicate with CloudFront. The default value for new web
-distributions is http2. Viewers that don't support HTTP/2 will
+distributions is C<http2>. Viewers that don't support C<HTTP/2> will
 automatically use an earlier version.
 
 
 =head2 B<REQUIRED> Id => Str
 
-  The identifier for the distribution. For example: EDFDVBD632BHDS5.
+  The identifier for the distribution. For example: C<EDFDVBD632BHDS5>.
+
+
+=head2 B<REQUIRED> IsIPV6Enabled => Bool
+
+  Whether CloudFront responds to IPv6 DNS requests with an IPv6 address
+for your distribution.
 
 
 =head2 B<REQUIRED> LastModifiedTime => Str
@@ -137,9 +144,9 @@ distribution.
 
 =head2 B<REQUIRED> Status => Str
 
-  This response element indicates the current status of the distribution.
-When the status is Deployed, the distribution's information is fully
-propagated throughout the Amazon CloudFront system.
+  The current status of the distribution. When the status is C<Deployed>,
+the distribution's information is propagated to all CloudFront edge
+locations.
 
 
 =head2 B<REQUIRED> ViewerCertificate => L<Paws::CloudFront::ViewerCertificate>

@@ -298,7 +298,7 @@ Returns: a L<Paws::ElasticBeanstalk::ApplicationDescriptionMessage> instance
 C<default> and no application versions.
 
 
-=head2 CreateApplicationVersion(ApplicationName => Str, VersionLabel => Str, [AutoCreateApplication => Bool, Description => Str, Process => Bool, SourceBundle => L<Paws::ElasticBeanstalk::S3Location>])
+=head2 CreateApplicationVersion(ApplicationName => Str, VersionLabel => Str, [AutoCreateApplication => Bool, Description => Str, Process => Bool, SourceBuildInformation => L<Paws::ElasticBeanstalk::SourceBuildInformation>, SourceBundle => L<Paws::ElasticBeanstalk::S3Location>])
 
 Each argument is described in detail in: L<Paws::ElasticBeanstalk::CreateApplicationVersion>
 
@@ -326,11 +326,17 @@ Related Topics
 
 =over
 
-=item * DescribeConfigurationOptions
+=item *
 
-=item * DescribeConfigurationSettings
+DescribeConfigurationOptions
 
-=item * ListAvailableSolutionStacks
+=item *
+
+DescribeConfigurationSettings
+
+=item *
+
+ListAvailableSolutionStacks
 
 =back
 
@@ -423,7 +429,7 @@ Returns: a L<Paws::ElasticBeanstalk::ApplicationDescriptionsMessage> instance
   Returns the descriptions of existing applications.
 
 
-=head2 DescribeApplicationVersions([ApplicationName => Str, VersionLabels => ArrayRef[Str|Undef]])
+=head2 DescribeApplicationVersions([ApplicationName => Str, MaxRecords => Int, NextToken => Str, VersionLabels => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::ElasticBeanstalk::DescribeApplicationVersions>
 
@@ -466,7 +472,9 @@ Related Topics
 
 =over
 
-=item * DeleteEnvironmentConfiguration
+=item *
+
+DeleteEnvironmentConfiguration
 
 =back
 
@@ -587,7 +595,9 @@ Related Topics
 
 =over
 
-=item * RetrieveEnvironmentInfo
+=item *
+
+RetrieveEnvironmentInfo
 
 =back
 
@@ -616,7 +626,9 @@ Related Topics
 
 =over
 
-=item * RequestEnvironmentInfo
+=item *
+
+RequestEnvironmentInfo
 
 =back
 
@@ -682,7 +694,9 @@ Related Topics
 
 =over
 
-=item * DescribeConfigurationOptions
+=item *
+
+DescribeConfigurationOptions
 
 =back
 

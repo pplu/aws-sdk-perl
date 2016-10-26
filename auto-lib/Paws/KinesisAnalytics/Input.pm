@@ -1,7 +1,7 @@
 package Paws::KinesisAnalytics::Input;
   use Moose;
   has InputParallelism => (is => 'ro', isa => 'Paws::KinesisAnalytics::InputParallelism');
-  has InputSchema => (is => 'ro', isa => 'Paws::KinesisAnalytics::SourceSchema');
+  has InputSchema => (is => 'ro', isa => 'Paws::KinesisAnalytics::SourceSchema', required => 1);
   has KinesisFirehoseInput => (is => 'ro', isa => 'Paws::KinesisAnalytics::KinesisFirehoseInput');
   has KinesisStreamsInput => (is => 'ro', isa => 'Paws::KinesisAnalytics::KinesisStreamsInput');
   has NamePrefix => (is => 'ro', isa => 'Str', required => 1);
@@ -53,7 +53,7 @@ streams.
 (see Configuring Application Input.
 
 
-=head2 InputSchema => L<Paws::KinesisAnalytics::SourceSchema>
+=head2 B<REQUIRED> InputSchema => L<Paws::KinesisAnalytics::SourceSchema>
 
   Describes the format of the data in the streaming source, and how each
 data element maps to corresponding columns in the in-application stream

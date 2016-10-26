@@ -55,9 +55,9 @@ ISO 8601 format.
 =head2 Marker => Str
 
 An optional marker returned from a prior request. Use this marker for
-pagination of results from this action. If this parameter is specified,
-the response includes only records beyond the marker, up to the value
-specified by I<MaxRecords>.
+pagination of results from this operation. If this parameter is
+specified, the response includes only records beyond the marker, up to
+the value specified by C<MaxRecords>.
 
 
 
@@ -76,8 +76,8 @@ Constraints: minimum 20; maximum 100.
 
 =head2 SourceIdentifier => Str
 
-The identifier of the event source for which events will be returned.
-If not specified, then all sources are included in the response.
+The identifier of the event source for which events are returned. If
+not specified, all sources are included in the response.
 
 
 
@@ -86,10 +86,7 @@ If not specified, then all sources are included in the response.
 The event source to retrieve events for. If no value is specified, all
 events are returned.
 
-Valid values are: C<cache-cluster> | C<cache-parameter-group> |
-C<cache-security-group> | C<cache-subnet-group>
-
-Valid values are: C<"cache-cluster">, C<"cache-parameter-group">, C<"cache-security-group">, C<"cache-subnet-group">
+Valid values are: C<"cache-cluster">, C<"cache-parameter-group">, C<"cache-security-group">, C<"cache-subnet-group">, C<"replication-group">
 
 =head2 StartTime => Str
 

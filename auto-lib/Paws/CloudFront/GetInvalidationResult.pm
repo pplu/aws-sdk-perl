@@ -16,7 +16,8 @@ Paws::CloudFront::GetInvalidationResult
 
 =head2 Invalidation => L<Paws::CloudFront::Invalidation>
 
-The invalidation's information.
+The invalidation's information. For more information, see Invalidation
+Complex Type.
 
 
 

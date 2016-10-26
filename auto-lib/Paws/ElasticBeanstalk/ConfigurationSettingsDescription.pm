@@ -48,17 +48,25 @@ configuration set:
 
 =over
 
-=item * C<null>: This configuration is not associated with a running
+=item *
+
+C<null>: This configuration is not associated with a running
 environment.
 
-=item * C<pending>: This is a draft configuration that is not deployed
-to the associated environment but is in the process of deploying.
+=item *
 
-=item * C<deployed>: This is the configuration that is currently
-deployed to the associated running environment.
+C<pending>: This is a draft configuration that is not deployed to the
+associated environment but is in the process of deploying.
 
-=item * C<failed>: This is a draft configuration that failed to
-successfully deploy.
+=item *
+
+C<deployed>: This is the configuration that is currently deployed to
+the associated running environment.
+
+=item *
+
+C<failed>: This is a draft configuration that failed to successfully
+deploy.
 
 =back
 

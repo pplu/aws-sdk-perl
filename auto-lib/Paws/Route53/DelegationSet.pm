@@ -40,12 +40,17 @@ A complex type that describes the name servers for this hosted zone.
 
 =head2 CallerReference => Str
 
-  
+  A unique string that identifies the request, and that allows you to
+retry failed C<CreateReusableDelegationSet> requests without the risk
+of executing the operation twice. You must use a unique
+C<CallerReference> string every time you submit a
+C<CreateReusableDelegationSet> request. C<CallerReference> can be any
+unique string, for example, a date/time stamp.
 
 
 =head2 Id => Str
 
-  
+  The ID that Amazon Route 53 assigns to a reusable delegation set.
 
 
 =head2 B<REQUIRED> NameServers => ArrayRef[Str|Undef]

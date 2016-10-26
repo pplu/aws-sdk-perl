@@ -32,20 +32,39 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 
 =head1 DESCRIPTION
 
-A complex type that contains zero or more CustomErrorResponse elements.
+A complex type that controls:
+
+=over
+
+=item *
+
+Whether CloudFront replaces HTTP status codes in the 4xx and 5xx range
+with custom error messages before returning the response to the viewer.
+
+=item *
+
+How long CloudFront caches HTTP status codes in the 4xx and 5xx range.
+
+=back
+
+For more information about custom error pages, see Customizing Error
+Responses in the I<Amazon CloudFront Developer Guide>.
 
 =head1 ATTRIBUTES
 
 
 =head2 Items => ArrayRef[L<Paws::CloudFront::CustomErrorResponse>]
 
-  Optional: A complex type that contains custom error responses for this
-distribution. If Quantity is 0, you can omit Items.
+  A complex type that contains a C<CustomErrorResponse> element for each
+HTTP status code for which you want to specify a custom error page
+and/or a caching duration.
 
 
 =head2 B<REQUIRED> Quantity => Int
 
-  The number of custom error responses for this distribution.
+  The number of HTTP status codes for which you want to specify a custom
+error page and/or a caching duration. If C<Quantity> is C<0>, you can
+omit C<Items>.
 
 
 

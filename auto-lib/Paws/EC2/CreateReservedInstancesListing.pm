@@ -55,14 +55,14 @@ Reserved Instance ID specified in this call.
 
 =head2 B<REQUIRED> PriceSchedules => ArrayRef[L<Paws::EC2::PriceScheduleSpecification>]
 
-A list specifying the price of the Reserved Instance for each month
-remaining in the Reserved Instance term.
+A list specifying the price of the Standard Reserved Instance for each
+month remaining in the Reserved Instance term.
 
 
 
 =head2 B<REQUIRED> ReservedInstancesId => Str
 
-The ID of the active Reserved Instance.
+The ID of the active Standard Reserved Instance.
 
 
 

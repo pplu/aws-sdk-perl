@@ -8,10 +8,12 @@ package Paws::EC2::ReservedInstances;
   has InstanceCount => (is => 'ro', isa => 'Int', xmlname => 'instanceCount', traits => ['Unwrapped']);
   has InstanceTenancy => (is => 'ro', isa => 'Str', xmlname => 'instanceTenancy', traits => ['Unwrapped']);
   has InstanceType => (is => 'ro', isa => 'Str', xmlname => 'instanceType', traits => ['Unwrapped']);
+  has OfferingClass => (is => 'ro', isa => 'Str', xmlname => 'offeringClass', traits => ['Unwrapped']);
   has OfferingType => (is => 'ro', isa => 'Str', xmlname => 'offeringType', traits => ['Unwrapped']);
   has ProductDescription => (is => 'ro', isa => 'Str', xmlname => 'productDescription', traits => ['Unwrapped']);
   has RecurringCharges => (is => 'ro', isa => 'ArrayRef[Paws::EC2::RecurringCharge]', xmlname => 'recurringCharges', traits => ['Unwrapped']);
   has ReservedInstancesId => (is => 'ro', isa => 'Str', xmlname => 'reservedInstancesId', traits => ['Unwrapped']);
+  has Scope => (is => 'ro', isa => 'Str', xmlname => 'scope', traits => ['Unwrapped']);
   has Start => (is => 'ro', isa => 'Str', xmlname => 'start', traits => ['Unwrapped']);
   has State => (is => 'ro', isa => 'Str', xmlname => 'state', traits => ['Unwrapped']);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', xmlname => 'tagSet', traits => ['Unwrapped']);
@@ -93,6 +95,11 @@ C<USD>.
   The instance type on which the Reserved Instance can be used.
 
 
+=head2 OfferingClass => Str
+
+  The offering class of the Reserved Instance.
+
+
 =head2 OfferingType => Str
 
   The Reserved Instance offering type.
@@ -111,6 +118,11 @@ C<USD>.
 =head2 ReservedInstancesId => Str
 
   The ID of the Reserved Instance.
+
+
+=head2 Scope => Str
+
+  The scope of the Reserved Instance.
 
 
 =head2 Start => Str

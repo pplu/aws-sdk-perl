@@ -23,7 +23,7 @@ A complex type that contains name server information.
 
 =head2 B<REQUIRED> Location => Str
 
-The unique URL representing the new reusbale delegation set.
+The unique URL representing the new reusable delegation set.
 
 
 

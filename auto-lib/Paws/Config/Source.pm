@@ -54,11 +54,13 @@ evaluate your AWS resources.
 
 =head2 SourceIdentifier => Str
 
-  For AWS managed Config rules, a pre-defined identifier from a list. To
-reference the list, see Using AWS Managed Config Rules.
+  For AWS Config managed rules, a predefined identifier from a list. For
+example, C<IAM_PASSWORD_POLICY> is a managed rule. To reference a
+managed rule, see Using AWS Managed Config Rules.
 
-For custom Config rules, the identifier is the Amazon Resource Name
-(ARN) of the rule's AWS Lambda function.
+For custom rules, the identifier is the Amazon Resource Name (ARN) of
+the rule's AWS Lambda function, such as
+C<arn:aws:lambda:us-east-1:123456789012:function:custom_rule_name>.
 
 
 

@@ -282,8 +282,8 @@ of C<FullyQualifiedDomainName> matches the name of the resource record
 sets and then associate the health check with those resource record
 sets, health check results will be unpredictable.
 
-For more informaiton, see the following topics in the Amazon Route 53
-Developer Guide:
+For more information, see the following topics in the I<Amazon Route 53
+Developer Guide>:
 
 =over
 
@@ -417,7 +417,17 @@ any other types of record sets.
 
 =head2 TrafficPolicyInstanceId => Str
 
-  
+  When you create a traffic policy instance, Amazon Route 53
+automatically creates a resource record set. C<TrafficPolicyInstanceId>
+is the ID of the traffic policy instance that Amazon Route 53 created
+this resource record set for.
+
+To delete the resource record set that is associated with a traffic
+policy instance, use C<DeleteTrafficPolicyInstance>. Amazon Route 53
+will delete the resource record set automatically. If you delete the
+resource record set by using C<ChangeResourceRecordSets>, Amazon Route
+53 doesn't automatically delete the traffic policy instance, and you'll
+continue to be charged for it even though it's no longer in use.
 
 
 =head2 TTL => Int

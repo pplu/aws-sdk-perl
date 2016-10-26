@@ -52,11 +52,15 @@ C<RuleId> is one of two values:
 
 =over
 
-=item * The C<RuleId> of the C<Rule> for which you want
-C<GetSampledRequests> to return a sample of requests.
+=item *
 
-=item * C<Default_Action>, which causes C<GetSampledRequests> to return
-a sample of the requests that didn't match any of the rules in the
+The C<RuleId> of the C<Rule> for which you want C<GetSampledRequests>
+to return a sample of requests.
+
+=item *
+
+C<Default_Action>, which causes C<GetSampledRequests> to return a
+sample of the requests that didn't match any of the rules in the
 specified C<WebACL>.
 
 =back

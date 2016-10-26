@@ -40,7 +40,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 DelegationSetId => Str
 
-
+If you're using reusable delegation sets and you want to list all of
+the hosted zones that are associated with a reusable delegation set,
+specify the ID of that reusable delegation set.
 
 
 

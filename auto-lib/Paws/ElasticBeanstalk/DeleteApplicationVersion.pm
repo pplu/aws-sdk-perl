@@ -48,11 +48,15 @@ S3:
 
 =over
 
-=item * C<true>: An attempt is made to delete the associated Amazon S3
-source bundle specified at time of creation.
+=item *
 
-=item * C<false>: No action is taken on the Amazon S3 source bundle
-specified at time of creation.
+C<true>: An attempt is made to delete the associated Amazon S3 source
+bundle specified at time of creation.
+
+=item *
+
+C<false>: No action is taken on the Amazon S3 source bundle specified
+at time of creation.
 
 =back
 

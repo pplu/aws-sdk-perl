@@ -246,6 +246,29 @@ to be healthy.
 
 =head2 InsufficientDataHealthStatus => Str
 
+When CloudWatch has insufficient data about the metric to determine the
+alarm state, the status that you want Amazon Route 53 to assign to the
+health check:
+
+=over
+
+=item *
+
+C<Healthy>: Amazon Route 53 considers the health check to be healthy.
+
+=item *
+
+C<Unhealthy>: Amazon Route 53 considers the health check to be
+unhealthy.
+
+=item *
+
+C<LastKnownStatus>: Amazon Route 53 uses the status of the health check
+from the last time CloudWatch had sufficient data to determine the
+alarm state. For new health checks that have no last known status, the
+default status for the health check is healthy.
+
+=back
 
 
 Valid values are: C<"Healthy">, C<"Unhealthy">, C<"LastKnownStatus">

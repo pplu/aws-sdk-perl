@@ -33,7 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElastiCache
 
 =head1 DESCRIPTION
 
-The status of the cache parameter group.
+Status of the cache parameter group.
 
 =head1 ATTRIBUTES
 

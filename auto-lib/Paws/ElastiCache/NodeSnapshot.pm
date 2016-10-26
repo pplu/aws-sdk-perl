@@ -1,8 +1,11 @@
 package Paws::ElastiCache::NodeSnapshot;
   use Moose;
+  has CacheClusterId => (is => 'ro', isa => 'Str');
   has CacheNodeCreateTime => (is => 'ro', isa => 'Str');
   has CacheNodeId => (is => 'ro', isa => 'Str');
   has CacheSize => (is => 'ro', isa => 'Str');
+  has NodeGroupConfiguration => (is => 'ro', isa => 'Paws::ElastiCache::NodeGroupConfiguration');
+  has NodeGroupId => (is => 'ro', isa => 'Str');
   has SnapshotCreateTime => (is => 'ro', isa => 'Str');
 1;
 
@@ -23,20 +26,25 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::ElastiCache::NodeSnapshot object:
 
-  $service_obj->Method(Att1 => { CacheNodeCreateTime => $value, ..., SnapshotCreateTime => $value  });
+  $service_obj->Method(Att1 => { CacheClusterId => $value, ..., SnapshotCreateTime => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::ElastiCache::NodeSnapshot object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->CacheNodeCreateTime
+  $result->Att1->CacheClusterId
 
 =head1 DESCRIPTION
 
 Represents an individual cache node in a snapshot of a cache cluster.
 
 =head1 ATTRIBUTES
+
+
+=head2 CacheClusterId => Str
+
+  A unique identifier for the source cache cluster.
 
 
 =head2 CacheNodeCreateTime => Str
@@ -53,6 +61,16 @@ cluster.
 =head2 CacheSize => Str
 
   The size of the cache on the source cache node.
+
+
+=head2 NodeGroupConfiguration => L<Paws::ElastiCache::NodeGroupConfiguration>
+
+  The configuration for the source node group (shard).
+
+
+=head2 NodeGroupId => Str
+
+  A unique identifier for the source node group (shard).
 
 
 =head2 SnapshotCreateTime => Str

@@ -80,16 +80,22 @@ Possible build statuses include the following:
 
 =over
 
-=item * B<INITIALIZED> E<ndash> A new build has been defined, but no
-files have been uploaded. You cannot create fleets for builds that are
-in this status. When a build is successfully created, the build status
-is set to this value.
+=item *
 
-=item * B<READY> E<ndash> The game build has been successfully
-uploaded. You can now create new fleets for this build.
+B<INITIALIZED> E<ndash> A new build has been defined, but no files have
+been uploaded. You cannot create fleets for builds that are in this
+status. When a build is successfully created, the build status is set
+to this value.
 
-=item * B<FAILED> E<ndash> The game build upload failed. You cannot
-create new fleets for this build.
+=item *
+
+B<READY> E<ndash> The game build has been successfully uploaded. You
+can now create new fleets for this build.
+
+=item *
+
+B<FAILED> E<ndash> The game build upload failed. You cannot create new
+fleets for this build.
 
 =back
 

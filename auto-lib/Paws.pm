@@ -242,6 +242,8 @@ L<Paws::ApplicationAutoScaling>
 
 L<Paws::AutoScaling>
 
+L<Paws::Budgets>
+
 L<Paws::CloudFormation>
 
 L<Paws::CloudFront>
@@ -371,6 +373,8 @@ L<Paws::Signin>
 L<Paws::SimpleDB>
 
 L<Paws::SimpleWorkflow>
+
+L<Paws::SMS>
 
 L<Paws::Snowball>
 

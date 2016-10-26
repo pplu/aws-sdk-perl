@@ -47,7 +47,7 @@ An invalidation.
 =head2 B<REQUIRED> Id => Str
 
   The identifier for the invalidation request. For example:
-IDFDVBD632BHDS5.
+C<IDFDVBD632BHDS5>.
 
 
 =head2 B<REQUIRED> InvalidationBatch => L<Paws::CloudFront::InvalidationBatch>
@@ -58,7 +58,7 @@ IDFDVBD632BHDS5.
 =head2 B<REQUIRED> Status => Str
 
   The status of the invalidation request. When the invalidation batch is
-finished, the status is Completed.
+finished, the status is C<Completed>.
 
 
 

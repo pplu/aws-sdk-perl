@@ -8,6 +8,7 @@ package Paws::CloudFormation::Stack;
   has NotificationARNs => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Outputs => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::Output]');
   has Parameters => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::Parameter]');
+  has RoleARN => (is => 'ro', isa => 'Str');
   has StackId => (is => 'ro', isa => 'Str');
   has StackName => (is => 'ro', isa => 'Str', required => 1);
   has StackStatus => (is => 'ro', isa => 'Str', required => 1);
@@ -101,6 +102,14 @@ if the stack has been updated at least once.
 =head2 Parameters => ArrayRef[L<Paws::CloudFormation::Parameter>]
 
   A list of C<Parameter> structures.
+
+
+=head2 RoleARN => Str
+
+  The Amazon Resource Name (ARN) of an AWS Identity and Access Management
+(IAM) role that is associated with the stack. During a stack operation,
+AWS CloudFormation uses this role's credentials to make calls on your
+behalf.
 
 
 =head2 StackId => Str

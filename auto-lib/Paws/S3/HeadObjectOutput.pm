@@ -15,6 +15,7 @@ package Paws::S3::HeadObjectOutput;
   has LastModified => (is => 'ro', isa => 'Str');
   has Metadata => (is => 'ro', isa => 'Paws::S3::Metadata');
   has MissingMeta => (is => 'ro', isa => 'Int');
+  has PartsCount => (is => 'ro', isa => 'Int');
   has ReplicationStatus => (is => 'ro', isa => 'Str');
   has RequestCharged => (is => 'ro', isa => 'Str');
   has Restore => (is => 'ro', isa => 'Str');
@@ -130,6 +131,12 @@ x-amz-meta headers. This can happen if you create metadata using an API
 like SOAP that supports more flexible metadata than the REST API. For
 example, using SOAP, you can create metadata whose values are not legal
 HTTP headers.
+
+
+
+=head2 PartsCount => Int
+
+The count of parts this object has.
 
 
 

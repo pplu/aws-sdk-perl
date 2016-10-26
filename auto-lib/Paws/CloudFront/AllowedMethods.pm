@@ -35,13 +35,29 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 
 A complex type that controls which HTTP methods CloudFront processes
 and forwards to your Amazon S3 bucket or your custom origin. There are
-three choices: - CloudFront forwards only GET and HEAD requests. -
-CloudFront forwards only GET, HEAD and OPTIONS requests. - CloudFront
-forwards GET, HEAD, OPTIONS, PUT, PATCH, POST, and DELETE requests. If
-you pick the third choice, you may need to restrict access to your
+three choices:
+
+=over
+
+=item *
+
+CloudFront forwards only C<GET> and C<HEAD> requests.
+
+=item *
+
+CloudFront forwards only C<GET>, C<HEAD>, and C<OPTIONS> requests.
+
+=item *
+
+CloudFront forwards C<GET, HEAD, OPTIONS, PUT, PATCH, POST>, and
+C<DELETE> requests.
+
+=back
+
+If you pick the third choice, you may need to restrict access to your
 Amazon S3 bucket or to your custom origin so users can't perform
-operations that you don't want them to. For example, you may not want
-users to have permission to delete objects from your origin.
+operations that you don't want them to. For example, you might not want
+users to have permissions to delete objects from your origin.
 
 =head1 ATTRIBUTES
 
@@ -60,9 +76,9 @@ to process and forward to your origin.
 =head2 B<REQUIRED> Quantity => Int
 
   The number of HTTP methods that you want CloudFront to forward to your
-origin. Valid values are 2 (for GET and HEAD requests), 3 (for GET,
-HEAD and OPTIONS requests) and 7 (for GET, HEAD, OPTIONS, PUT, PATCH,
-POST, and DELETE requests).
+origin. Valid values are 2 (for C<GET> and C<HEAD> requests), 3 (for
+C<GET>, C<HEAD>, and C<OPTIONS> requests) and 7 (for C<GET, HEAD,
+OPTIONS, PUT, PATCH, POST>, and C<DELETE> requests).
 
 
 

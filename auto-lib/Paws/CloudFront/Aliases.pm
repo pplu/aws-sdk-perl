@@ -40,13 +40,14 @@ names), if any, for this distribution.
 
 =head2 Items => ArrayRef[Str|Undef]
 
-  Optional: A complex type that contains CNAME elements, if any, for this
-distribution. If Quantity is 0, you can omit Items.
+  A complex type that contains the CNAME aliases, if any, that you want
+to associate with this distribution.
 
 
 =head2 B<REQUIRED> Quantity => Int
 
-  The number of CNAMEs, if any, for this distribution.
+  The number of CNAME aliases, if any, that you want to associate with
+this distribution.
 
 
 

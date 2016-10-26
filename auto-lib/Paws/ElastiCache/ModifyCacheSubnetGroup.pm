@@ -37,7 +37,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 CacheSubnetGroupDescription => Str
 
-A description for the cache subnet group.
+A description of the cache subnet group.
 
 
 

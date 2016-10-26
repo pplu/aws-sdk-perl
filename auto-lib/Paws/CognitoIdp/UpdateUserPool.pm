@@ -1,6 +1,7 @@
 
 package Paws::CognitoIdp::UpdateUserPool;
   use Moose;
+  has AdminCreateUserConfig => (is => 'ro', isa => 'Paws::CognitoIdp::AdminCreateUserConfigType');
   has AutoVerifiedAttributes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has DeviceConfiguration => (is => 'ro', isa => 'Paws::CognitoIdp::DeviceConfigurationType');
   has EmailConfiguration => (is => 'ro', isa => 'Paws::CognitoIdp::EmailConfigurationType');
@@ -44,6 +45,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
+=head2 AdminCreateUserConfig => L<Paws::CognitoIdp::AdminCreateUserConfigType>
+
+The configuration for AdminCreateUser requests.
+
+
+
 =head2 AutoVerifiedAttributes => ArrayRef[Str|Undef]
 
 The attributes that are automatically verified when the Amazon Cognito
@@ -71,7 +78,7 @@ The contents of the email verification message.
 
 =head2 EmailVerificationSubject => Str
 
-The subject of the email verfication message
+The subject of the email verfication message.
 
 
 
@@ -88,14 +95,20 @@ Can be one of the following values:
 
 =over
 
-=item * C<OFF> - MFA tokens are not required and cannot be specified
-during user registration.
+=item *
 
-=item * C<ON> - MFA tokens are required for all user registrations. You
-can only specify required when you are initially creating a user pool.
+C<OFF> - MFA tokens are not required and cannot be specified during
+user registration.
 
-=item * C<OPTIONAL> - Users have the option when registering to create
-an MFA token.
+=item *
+
+C<ON> - MFA tokens are required for all user registrations. You can
+only specify required when you are initially creating a user pool.
+
+=item *
+
+C<OPTIONAL> - Users have the option when registering to create an MFA
+token.
 
 =back
 

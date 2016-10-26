@@ -20,15 +20,23 @@ request. For more information, see the following topics:
 
 =over
 
-=item * WebACL: Contains C<DefaultAction>, C<MetricName>, C<Name>, an
-array of C<Rule> objects, and C<WebACLId>
+=item *
 
-=item * C<DefaultAction> (Data type is WafAction): Contains C<Type>
+WebACL: Contains C<DefaultAction>, C<MetricName>, C<Name>, an array of
+C<Rule> objects, and C<WebACLId>
 
-=item * C<Rules>: Contains an array of C<ActivatedRule> objects, which
-contain C<Action>, C<Priority>, and C<RuleId>
+=item *
 
-=item * C<Action>: Contains C<Type>
+C<DefaultAction> (Data type is WafAction): Contains C<Type>
+
+=item *
+
+C<Rules>: Contains an array of C<ActivatedRule> objects, which contain
+C<Action>, C<Priority>, and C<RuleId>
+
+=item *
+
+C<Action>: Contains C<Type>
 
 =back
 

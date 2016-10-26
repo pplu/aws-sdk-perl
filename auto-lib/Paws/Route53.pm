@@ -343,11 +343,10 @@ The VPC and the hosted zone must already exist, and you must have
 created a private hosted zone. You cannot convert a public hosted zone
 into a private hosted zone.
 
-Send a C<POST> request to the C</I<Amazon Route 53 API
-version>/hostedzone/I<hosted zone ID>/associatevpc> resource. The
-request body must include an XML document with a
-C<AssociateVPCWithHostedZoneRequest> element. The response returns the
-C<AssociateVPCWithHostedZoneResponse> element.
+Send a C<POST> request to the C</2013-04-01/hostedzone/I<hosted zone
+ID>/associatevpc> resource. The request body must include an XML
+document with a C<AssociateVPCWithHostedZoneRequest> element. The
+response returns the C<AssociateVPCWithHostedZoneResponse> element.
 
 If you used different accounts to create the hosted zone and to create
 the Amazon VPCs that you want to associate with the hosted zone, we
@@ -377,8 +376,8 @@ of the changes in a change batch request. This ensures that Amazon
 Route 53 never partially implements the intended changes to the
 resource record sets in a hosted zone.
 
-For example, a change batch request that deletes the C<CNAME>record for
-www.example.com and creates an alias resource record set for
+For example, a change batch request that deletes the C<CNAME> record
+for www.example.com and creates an alias resource record set for
 www.example.com. Amazon Route 53 deletes the first resource record set
 and creates the second resource record set in a single operation. If
 either the C<DELETE> or the C<CREATE> action fails, then both changes
@@ -398,8 +397,7 @@ policy with one or more domain names (such as example.com) or subdomain
 names (such as www.example.com), in the same hosted zone or in multiple
 hosted zones. You can roll back the updates if the new configuration
 isn't performing as expected. For more information, see Using Traffic
-Flow to Route DNS Traffic in the Amazon Route 53 API Reference or
-Actions on Traffic Policies and Traffic Policy Instances in this guide.
+Flow to Route DNS Traffic in the I<Amazon Route 53 Developer Guide>.
 
 Use C<ChangeResourceRecordsSetsRequest> to perform the following
 actions:
@@ -408,7 +406,7 @@ actions:
 
 =item *
 
-C<CREATE>:Creates a resource record set that has the specified values.
+C<CREATE>: Creates a resource record set that has the specified values.
 
 =item *
 
@@ -441,52 +439,8 @@ Amazon Route 53 name servers in a few minutes. In rare circumstances,
 propagation can take up to 30 minutes. For more information, see
 GetChange.
 
-Note the following limitations on a C<ChangeResourceRecordSets>
-request:
-
-=over
-
-=item *
-
-A request cannot contain more than 100 Change elements.
-
-=item *
-
-A request cannot contain more than 1000 ResourceRecord elements.
-
-=item *
-
-The sum of the number of characters (including spaces) in all C<Value>
-elements in a request cannot exceed 32,000 characters.
-
-=item *
-
-If the value of the Action element in a ChangeResourceRecordSets
-request is C<UPSERT> and the resource record set already exists, Amazon
-Route 53 automatically performs a C<DELETE> request and a C<CREATE>
-request. When Amazon Route 53 calculates the number of characters in
-the Value elements of a change batch request, it adds the number of
-characters in the Value element of the resource record set being
-deleted and the number of characters in the Value element of the
-resource record set being created.
-
-=item *
-
-The same resource cannot be deleted more than once in a single batch.
-
-=back
-
-If the value of the Action element in a ChangeResourceRecordSets
-request is C<UPSERT> and the resource record set already exists, Amazon
-Route 53 automatically performs a C<DELETE> request and a C<CREATE>
-request. When Amazon Route 53 calculates the number of characters in
-the Value elements of a change batch request, it adds the number of
-characters in the Value element of the resource record set being
-deleted and the number of characters in the Value element of the
-resource record set being created.
-
-For more information on transactional changes, see
-ChangeResourceRecordSets.
+For information about the limits on a C<ChangeResourceRecordSets>
+request, see Limits in the I<Amazon Route 53 Developer Guide>.
 
 
 =head2 ChangeTagsForResource(ResourceId => Str, ResourceType => Str, [AddTags => ArrayRef[L<Paws::Route53::Tag>], RemoveTagKeys => ArrayRef[Str|Undef]])
@@ -495,7 +449,10 @@ Each argument is described in detail in: L<Paws::Route53::ChangeTagsForResource>
 
 Returns: a L<Paws::Route53::ChangeTagsForResourceResponse> instance
 
-  
+  Adds, edits, or deletes tags for a health check or a hosted zone.
+
+For information about using tags for cost allocation, see Using Cost
+Allocation Tags in the I<AWS Billing and Cost Management User Guide>.
 
 
 =head2 CreateHealthCheck(CallerReference => Str, HealthCheckConfig => L<Paws::Route53::HealthCheckConfig>)
@@ -566,14 +523,14 @@ Public hosted zones cannot be converted to a private hosted zone or
 vice versa. Instead, create a new hosted zone with the same name and
 create new resource record sets.
 
-Send a C<POST> request to the C</I<Amazon Route 53 API
-version>/hostedzone> resource. The request body must include an XML
-document with a C<CreateHostedZoneRequest> element. The response
-returns the C<CreateHostedZoneResponse> element containing metadata
-about the hosted zone.
+Send a C<POST> request to the C</2013-04-01/hostedzone> resource. The
+request body must include an XML document with a
+C<CreateHostedZoneRequest> element. The response returns the
+C<CreateHostedZoneResponse> element containing metadata about the
+hosted zone.
 
-Fore more information about charges for hosted zones, see AmazonAmazon
-Route 53 Pricing.
+Fore more information about charges for hosted zones, see Amazon Route
+53 Pricing.
 
 Note the following:
 
@@ -607,7 +564,7 @@ Amazon Route 53 DNS servers.
 
 When trying to create a hosted zone using a reusable delegation set,
 specify an optional DelegationSetId, and Amazon Route 53 would assign
-those 4 NS records for the zone, instead of alloting a new one.
+those 4 NS records for the zone, instead of allotting a new one.
 
 
 =head2 CreateReusableDelegationSet(CallerReference => Str, [HostedZoneId => Str])
@@ -616,14 +573,14 @@ Each argument is described in detail in: L<Paws::Route53::CreateReusableDelegati
 
 Returns: a L<Paws::Route53::CreateReusableDelegationSetResponse> instance
 
-  Creates a delegation set (a group of four anem servers) that can be
+  Creates a delegation set (a group of four name servers) that can be
 reused by multiple hosted zones. If a hosted zoned ID is specified,
 C<CreateReusableDelegationSet> marks the delegation set associated with
 that zone as reusable
 
-Send a C<POST> request to the C</I<Amazon Route 53 API
-version>/delegationset> resource. The request body must include an XML
-document with a C<CreateReusableDelegationSetRequest> element.
+Send a C<POST> request to the C</2013-04-01/delegationset> resource.
+The request body must include an XML document with a
+C<CreateReusableDelegationSetRequest> element.
 
 A reusable delegation set cannot be associated with a private hosted
 zone/
@@ -643,11 +600,11 @@ Returns: a L<Paws::Route53::CreateTrafficPolicyResponse> instance
 record sets for one domain name (such as example.com) or one subdomain
 name (such as www.example.com).
 
-Send a C<POST> request to the C</I<Amazon Route 53 API
-version>/trafficpolicy> resource. The request body must include a
-document with a C<CreateTrafficPolicyRequest> element. The response
-includes the C<CreateTrafficPolicyResponse> element, which contains
-information about the new traffic policy.
+Send a C<POST> request to the C</2013-04-01/trafficpolicy> resource.
+The request body must include a document with a
+C<CreateTrafficPolicyRequest> element. The response includes the
+C<CreateTrafficPolicyResponse> element, which contains information
+about the new traffic policy.
 
 
 =head2 CreateTrafficPolicyInstance(HostedZoneId => Str, Name => Str, TrafficPolicyId => Str, TrafficPolicyVersion => Int, TTL => Int)
@@ -664,11 +621,11 @@ as www.example.com). Amazon Route 53 responds to DNS queries for the
 domain or subdomain name by using the resource record sets that
 C<CreateTrafficPolicyInstance> created.
 
-Send a C<POST> request to the C</I<Amazon Route 53 API
-version>/trafficpolicyinstance> resource. The request body must include
-a document with a C<CreateTrafficPolicyRequest> element. The response
-returns the C<CreateTrafficPolicyInstanceResponse> element, which
-contains information about the traffic policy instance.
+Send a C<POST> request to the C</2013-04-01/trafficpolicyinstance>
+resource. The request body must include a document with a
+C<CreateTrafficPolicyRequest> element. The response returns the
+C<CreateTrafficPolicyInstanceResponse> element, which contains
+information about the traffic policy instance.
 
 
 =head2 CreateTrafficPolicyVersion(Document => Str, Id => Str, [Comment => Str])
@@ -686,11 +643,11 @@ one subdomain name (such as www.example.com). You can create a maximum
 of 1000 versions of a traffic policy. If you reach the limit and need
 to create another version, you'll need to start a new traffic policy.
 
-Send a C<POST> request to the C</I<Amazon Route 53
-version>/trafficpolicy/> resource. The request body includes a document
-with a C<CreateTrafficPolicyVersionRequest> element. The response
-returns the C<CreateTrafficPolicyVersionResponse> element, which
-contains information about the new version of the traffic policy.
+Send a C<POST> request to the C</2013-04-01/trafficpolicy/> resource.
+The request body includes a document with a
+C<CreateTrafficPolicyVersionRequest> element. The response returns the
+C<CreateTrafficPolicyVersionResponse> element, which contains
+information about the new version of the traffic policy.
 
 
 =head2 DeleteHealthCheck(HealthCheckId => Str)
@@ -783,11 +740,10 @@ Returns: a L<Paws::Route53::DisassociateVPCFromHostedZoneResponse> instance
 
   Disassociates a VPC from a Amazon Route 53 private hosted zone.
 
-Send a C<POST> request to the C</I<Amazon Route 53 API
-version>/hostedzone/I<hosted zone ID>/disassociatevpc> resource. The
-request body must include an XML document with a
-C<DisassociateVPCFromHostedZoneRequest> element. The response returns
-the C<DisassociateVPCFromHostedZoneResponse> element.
+Send a C<POST> request to the C</2013-04-01/hostedzone/I<hosted zone
+ID>/disassociatevpc> resource. The request body must include an XML
+document with a C<DisassociateVPCFromHostedZoneRequest> element. The
+response returns the C<DisassociateVPCFromHostedZoneResponse> element.
 
 You can only disassociate a VPC from a private hosted zone when two or
 more VPCs are associated with that hosted zone. You cannot convert a
@@ -1054,7 +1010,7 @@ next:
 
 =item *
 
-C<MaxItems>is the value specified for the C<maxitems> parameter in the
+C<MaxItems> is the value specified for the C<maxitems> parameter in the
 request that produced the current response.
 
 =item *
@@ -1064,7 +1020,7 @@ hosted zones associated with the current AWS account.
 
 =item *
 
-C<NextMarker>is the hosted zone ID of the next hosted zone that is
+C<NextMarker> is the hosted zone ID of the next hosted zone that is
 associated with the current AWS account. If you want to list more
 hosted zones, make another call to C<ListHostedZones>, and specify the
 value of the C<NextMarker> element in the marker parameter.
@@ -1174,7 +1130,58 @@ Each argument is described in detail in: L<Paws::Route53::ListResourceRecordSets
 
 Returns: a L<Paws::Route53::ListResourceRecordSetsResponse> instance
 
-  
+  Lists the resource record sets in a specified hosted zone.
+
+C<ListResourceRecordSets> returns up to 100 resource record sets at a
+time in ASCII order, beginning at a position specified by the C<name>
+and C<type> elements. The action sorts results first by DNS name with
+the labels reversed, for example:
+
+C<com.example.www.>
+
+Note the trailing dot, which can change the sort order in some
+circumstances.
+
+When multiple records have the same DNS name, the action sorts results
+by the record type.
+
+You can use the name and type elements to adjust the beginning position
+of the list of resource record sets returned:
+
+=over
+
+=item If you do not specify Name or Type
+
+The results begin with the first resource record set that the hosted
+zone contains.
+
+=item If you specify Name but not Type
+
+The results begin with the first resource record set in the list whose
+name is greater than or equal to C<Name>.
+
+=item If you specify Type but not Name
+
+Amazon Route 53 returns the C<InvalidInput> error.
+
+=item If you specify both Name and Type
+
+The results begin with the first resource record set in the list whose
+name is greater than or equal to C<Name>, and whose type is greater
+than or equal to C<Type>.
+
+=back
+
+This action returns the most current version of the records. This
+includes records that are C<PENDING>, and that are not yet available on
+all Amazon Route 53 DNS servers.
+
+To ensure that you get an accurate listing of the resource record sets
+for a hosted zone at a point in time, do not submit a
+C<ChangeResourceRecordSets> request while you're paging through the
+results of a C<ListResourceRecordSets> request. If you do, some pages
+may display results without the latest changes while other pages
+display results with the latest changes.
 
 
 =head2 ListReusableDelegationSets([Marker => Str, MaxItems => Str])
@@ -1202,7 +1209,10 @@ Each argument is described in detail in: L<Paws::Route53::ListTagsForResource>
 
 Returns: a L<Paws::Route53::ListTagsForResourceResponse> instance
 
-  
+  Lists tags for one health check or hosted zone.
+
+For information about using tags for cost allocation, see Using Cost
+Allocation Tags in the I<AWS Billing and Cost Management User Guide>.
 
 
 =head2 ListTagsForResources(ResourceIds => ArrayRef[Str|Undef], ResourceType => Str)
@@ -1211,7 +1221,10 @@ Each argument is described in detail in: L<Paws::Route53::ListTagsForResources>
 
 Returns: a L<Paws::Route53::ListTagsForResourcesResponse> instance
 
-  
+  Lists tags for up to 10 health checks or hosted zones.
+
+For information about using tags for cost allocation, see Using Cost
+Allocation Tags in the I<AWS Billing and Cost Management User Guide>.
 
 
 =head2 ListTrafficPolicies([MaxItems => Str, TrafficPolicyIdMarker => Str])
@@ -1474,7 +1487,7 @@ have a lot of traffic policies, you can use the C<maxitems> parameter
 to list them in groups of up to 100.
 
 The response includes three values that help you navigate from one
-group of C<maxitems>maxitems traffic policies to the next:
+group of C<maxitems> traffic policies to the next:
 
 =over
 
@@ -1519,7 +1532,10 @@ Each argument is described in detail in: L<Paws::Route53::TestDNSAnswer>
 
 Returns: a L<Paws::Route53::TestDNSAnswerResponse> instance
 
-  
+  Gets the value that Amazon Route 53 returns in response to a DNS
+request for a specified record name and type. You can optionally
+specify the IP address of a DNS resolver, an EDNS0 client subnet IP
+address, and a subnet mask.
 
 
 =head2 UpdateHealthCheck(HealthCheckId => Str, [AlarmIdentifier => L<Paws::Route53::AlarmIdentifier>, ChildHealthChecks => ArrayRef[Str|Undef], EnableSNI => Bool, FailureThreshold => Int, FullyQualifiedDomainName => Str, HealthCheckVersion => Int, HealthThreshold => Int, InsufficientDataHealthStatus => Str, Inverted => Bool, IPAddress => Str, Port => Int, Regions => ArrayRef[Str|Undef], ResourcePath => Str, SearchString => Str])
@@ -1530,12 +1546,11 @@ Returns: a L<Paws::Route53::UpdateHealthCheckResponse> instance
 
   Updates an existing health check.
 
-Send a C<POST> request to the C</I<Amazon Route 53 API
-version>/healthcheck/I<health check ID> > resource. The request body
-must include an XML document with an C<UpdateHealthCheckRequest>
-element. For more information about updating health checks, see
-Creating, Updating, and Deleting Health Checks in the Amazon Route 53
-Developer Guide.
+Send a C<POST> request to the C</2013-04-01/healthcheck/I<health check
+ID> > resource. The request body must include an XML document with an
+C<UpdateHealthCheckRequest> element. For more information about
+updating health checks, see Creating, Updating, and Deleting Health
+Checks in the Amazon Route 53 Developer Guide.
 
 
 =head2 UpdateHostedZoneComment(Id => Str, [Comment => Str])
@@ -1556,8 +1571,7 @@ Returns: a L<Paws::Route53::UpdateTrafficPolicyCommentResponse> instance
 
   Updates the comment for a specified traffic policy version.
 
-Send a C<POST> request to the C</I<Amazon Route 53 API
-version>/trafficpolicy/> resource.
+Send a C<POST> request to the C</2013-04-01/trafficpolicy/> resource.
 
 The request body must include a document with an
 C<UpdateTrafficPolicyCommentRequest> element.
@@ -1572,9 +1586,9 @@ Returns: a L<Paws::Route53::UpdateTrafficPolicyInstanceResponse> instance
   Updates the resource record sets in a specified hosted zone that were
 created based on the settings in a specified traffic policy version.
 
-Send a C<POST> request to the C</I<Amazon Route 53 API
-version>/trafficpolicyinstance/I<traffic policy ID> > resource. The
-request body must include a document with an
+Send a C<POST> request to the
+C</2013-04-01/trafficpolicyinstance/I<traffic policy ID> > resource.
+The request body must include a document with an
 C<UpdateTrafficPolicyInstanceRequest> element.
 
 When you update a traffic policy instance, Amazon Route 53 continues to

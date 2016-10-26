@@ -23,7 +23,8 @@ The origin access identity's configuration information.
 
 =head2 ETag => Str
 
-The current version of the configuration. For example: E2QWRUHAPOMQZL.
+The current version of the configuration. For example:
+C<E2QWRUHAPOMQZL>.
 
 
 

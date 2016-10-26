@@ -34,7 +34,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElastiCache
 
 =head1 DESCRIPTION
 
-Represents the output of a I<DescribeEngineDefaultParameters> action.
+Represents the output of a C<DescribeEngineDefaultParameters>
+operation.
 
 =head1 ATTRIBUTES
 
@@ -49,6 +50,9 @@ element in the list contains detailed information about one parameter.
 
   Specifies the name of the cache parameter group family to which the
 engine default parameters apply.
+
+Valid values are: C<memcached1.4> | C<redis2.6> | C<redis2.8> |
+C<redis3.2>
 
 
 =head2 Marker => Str

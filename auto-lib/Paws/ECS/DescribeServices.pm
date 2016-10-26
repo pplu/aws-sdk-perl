@@ -43,7 +43,8 @@ not specify a cluster, the default cluster is assumed.
 
 =head2 B<REQUIRED> Services => ArrayRef[Str|Undef]
 
-A list of services to describe.
+A list of services to describe. You may specify up to 10 services to
+describe in a single operation.
 
 
 

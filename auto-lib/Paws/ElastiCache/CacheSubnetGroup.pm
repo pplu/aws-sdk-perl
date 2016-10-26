@@ -34,17 +34,17 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElastiCache
 
 =head1 DESCRIPTION
 
-Represents the output of one of the following actions:
+Represents the output of one of the following operations:
 
 =over
 
 =item *
 
-I<CreateCacheSubnetGroup>
+C<CreateCacheSubnetGroup>
 
 =item *
 
-I<ModifyCacheSubnetGroup>
+C<ModifyCacheSubnetGroup>
 
 =back
 

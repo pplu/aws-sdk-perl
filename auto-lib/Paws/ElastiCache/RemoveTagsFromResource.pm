@@ -41,7 +41,7 @@ tags removed, for example
 C<arn:aws:elasticache:us-west-2:0123456789:cluster:myCluster> or
 C<arn:aws:elasticache:us-west-2:0123456789:snapshot:mySnapshot>.
 
-For more information on ARNs, go to Amazon Resource Names (ARNs) and
+For more information about ARNs, see Amazon Resource Names (ARNs) and
 AWS Service Namespaces.
 
 
@@ -49,9 +49,7 @@ AWS Service Namespaces.
 =head2 B<REQUIRED> TagKeys => ArrayRef[Str|Undef]
 
 A list of C<TagKeys> identifying the tags you want removed from the
-named resource. For example, C<TagKeys.member.1=Region> removes the
-cost allocation tag with the key name C<Region> from the resource named
-by the I<ResourceName> parameter.
+named resource.
 
 
 

@@ -24,7 +24,7 @@ The origin access identity's information.
 =head2 ETag => Str
 
 The current version of the origin access identity's information. For
-example: E2QWRUHAPOMQZL.
+example: C<E2QWRUHAPOMQZL>.
 
 
 

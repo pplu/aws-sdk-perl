@@ -68,19 +68,27 @@ C<TargetString> must be a word, which means one of the following:
 
 =over
 
-=item * C<TargetString> exactly matches the value of the specified part
-of the web request, such as the value of a header.
+=item *
 
-=item * C<TargetString> is at the beginning of the specified part of
-the web request and is followed by a character other than an
-alphanumeric character or underscore (_), for example, C<BadBot;>.
+C<TargetString> exactly matches the value of the specified part of the
+web request, such as the value of a header.
 
-=item * C<TargetString> is at the end of the specified part of the web
-request and is preceded by a character other than an alphanumeric
-character or underscore (_), for example, C<;BadBot>.
+=item *
 
-=item * C<TargetString> is in the middle of the specified part of the
-web request and is preceded and followed by characters other than
+C<TargetString> is at the beginning of the specified part of the web
+request and is followed by a character other than an alphanumeric
+character or underscore (_), for example, C<BadBot;>.
+
+=item *
+
+C<TargetString> is at the end of the specified part of the web request
+and is preceded by a character other than an alphanumeric character or
+underscore (_), for example, C<;BadBot>.
+
+=item *
+
+C<TargetString> is in the middle of the specified part of the web
+request and is preceded and followed by characters other than
 alphanumeric characters or underscore (_), for example, C<-BadBot;>.
 
 =back
@@ -112,30 +120,38 @@ C<FieldToMatch>:
 
 =over
 
-=item * C<HEADER>: The value that you want AWS WAF to search for in the
-request header that you specified in FieldToMatch, for example, the
-value of the C<User-Agent> or C<Referer> header.
+=item *
 
-=item * C<METHOD>: The HTTP method, which indicates the type of
-operation specified in the request. CloudFront supports the following
-methods: C<DELETE>, C<GET>, C<HEAD>, C<OPTIONS>, C<PATCH>, C<POST>, and
-C<PUT>.
+C<HEADER>: The value that you want AWS WAF to search for in the request
+header that you specified in FieldToMatch, for example, the value of
+the C<User-Agent> or C<Referer> header.
 
-=item * C<QUERY_STRING>: The value that you want AWS WAF to search for
-in the query string, which is the part of a URL that appears after a
-C<?> character.
+=item *
 
-=item * C<URI>: The value that you want AWS WAF to search for in the
-part of a URL that identifies a resource, for example,
-C</images/daily-ad.jpg>.
+C<METHOD>: The HTTP method, which indicates the type of operation
+specified in the request. CloudFront supports the following methods:
+C<DELETE>, C<GET>, C<HEAD>, C<OPTIONS>, C<PATCH>, C<POST>, and C<PUT>.
 
-=item * C<BODY>: The part of a request that contains any additional
-data that you want to send to your web server as the HTTP request body,
-such as data from a form. The request body immediately follows the
-request headers. Note that only the first C<8192> bytes of the request
-body are forwarded to AWS WAF for inspection. To allow or block
-requests based on the length of the body, you can create a size
-constraint set. For more information, see CreateSizeConstraintSet.
+=item *
+
+C<QUERY_STRING>: The value that you want AWS WAF to search for in the
+query string, which is the part of a URL that appears after a C<?>
+character.
+
+=item *
+
+C<URI>: The value that you want AWS WAF to search for in the part of a
+URL that identifies a resource, for example, C</images/daily-ad.jpg>.
+
+=item *
+
+C<BODY>: The part of a request that contains any additional data that
+you want to send to your web server as the HTTP request body, such as
+data from a form. The request body immediately follows the request
+headers. Note that only the first C<8192> bytes of the request body are
+forwarded to AWS WAF for inspection. To allow or block requests based
+on the length of the body, you can create a size constraint set. For
+more information, see CreateSizeConstraintSet.
 
 =back
 
@@ -175,15 +191,25 @@ transformations:
 
 =over
 
-=item * Delete the following characters: \ " ' ^
+=item *
 
-=item * Delete spaces before the following characters: / (
+Delete the following characters: \ " ' ^
 
-=item * Replace the following characters with a space: , ;
+=item *
 
-=item * Replace multiple spaces with one space
+Delete spaces before the following characters: / (
 
-=item * Convert uppercase letters (A-Z) to lowercase (a-z)
+=item *
+
+Replace the following characters with a space: , ;
+
+=item *
+
+Replace multiple spaces with one space
+
+=item *
+
+Convert uppercase letters (A-Z) to lowercase (a-z)
 
 =back
 
@@ -194,17 +220,29 @@ character (decimal 32):
 
 =over
 
-=item * \f, formfeed, decimal 12
+=item *
 
-=item * \t, tab, decimal 9
+\f, formfeed, decimal 12
 
-=item * \n, newline, decimal 10
+=item *
 
-=item * \r, carriage return, decimal 13
+\t, tab, decimal 9
 
-=item * \v, vertical tab, decimal 11
+=item *
 
-=item * non-breaking space, decimal 160
+\n, newline, decimal 10
+
+=item *
+
+\r, carriage return, decimal 13
+
+=item *
+
+\v, vertical tab, decimal 11
+
+=item *
+
+non-breaking space, decimal 160
 
 =back
 
@@ -217,19 +255,30 @@ characters. C<HTML_ENTITY_DECODE> performs the following operations:
 
 =over
 
-=item * Replaces C<(ampersand)quot;> with C<">
+=item *
 
-=item * Replaces C<(ampersand)nbsp;> with a non-breaking space, decimal
-160
+Replaces C<(ampersand)quot;> with C<">
 
-=item * Replaces C<(ampersand)lt;> with a "less than" symbol
+=item *
 
-=item * Replaces C<(ampersand)gt;> with C<E<gt>>
+Replaces C<(ampersand)nbsp;> with a non-breaking space, decimal 160
 
-=item * Replaces characters that are represented in hexadecimal format,
+=item *
+
+Replaces C<(ampersand)lt;> with a "less than" symbol
+
+=item *
+
+Replaces C<(ampersand)gt;> with C<E<gt>>
+
+=item *
+
+Replaces characters that are represented in hexadecimal format,
 C<(ampersand)(hash)xhhhh;>, with the corresponding characters
 
-=item * Replaces characters that are represented in decimal format,
+=item *
+
+Replaces characters that are represented in decimal format,
 C<(ampersand)(hash)nnnn;>, with the corresponding characters
 
 =back

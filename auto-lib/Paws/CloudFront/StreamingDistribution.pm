@@ -44,52 +44,54 @@ A streaming distribution.
 
 =head2 B<REQUIRED> ActiveTrustedSigners => L<Paws::CloudFront::ActiveTrustedSigners>
 
-  CloudFront automatically adds this element to the response only if
-you've set up the distribution to serve private content with signed
-URLs. The element lists the key pair IDs that CloudFront is aware of
-for each trusted signer. The Signer child element lists the AWS account
-number of the trusted signer (or an empty Self element if the signer is
-you). The Signer element also includes the IDs of any active key pairs
-associated with the trusted signer's AWS account. If no KeyPairId
-element appears for a Signer, that signer can't create working signed
-URLs.
+  A complex type that lists the AWS accounts, if any, that you included
+in the C<TrustedSigners> complex type for this distribution. These are
+the accounts that you want to allow to create signed URLs for private
+content.
+
+The C<Signer> complex type lists the AWS account number of the trusted
+signer or C<self> if the signer is the AWS account that created the
+distribution. The C<Signer> element also includes the IDs of any active
+CloudFront key pairs that are associated with the trusted signer's AWS
+account. If no C<KeyPairId> element appears for a C<Signer>, that
+signer can't create signed URLs.
+
+For more information, see Serving Private Content through CloudFront in
+the I<Amazon CloudFront Developer Guide>.
 
 
 =head2 B<REQUIRED> ARN => Str
 
-  The ARN (Amazon Resource Name) for the streaming distribution. For
-example:
-arn:aws:cloudfront::123456789012:streaming-distribution/EDFDVBD632BHDS5,
-where 123456789012 is your AWS account Id.
+  
 
 
 =head2 B<REQUIRED> DomainName => Str
 
-  The domain name corresponding to the streaming distribution. For
-example: s5c39gqb8ow64r.cloudfront.net.
+  The domain name that corresponds to the streaming distribution. For
+example: C<s5c39gqb8ow64r.cloudfront.net>.
 
 
 =head2 B<REQUIRED> Id => Str
 
-  The identifier for the streaming distribution. For example:
-EGTXBD79H29TRA8.
+  The identifier for the RTMP distribution. For example:
+C<EGTXBD79EXAMPLE>.
 
 
 =head2 LastModifiedTime => Str
 
-  The date and time the distribution was last modified.
+  The date and time that the distribution was last modified.
 
 
 =head2 B<REQUIRED> Status => Str
 
-  The current status of the streaming distribution. When the status is
-Deployed, the distribution's information is fully propagated throughout
-the Amazon CloudFront system.
+  The current status of the RTMP distribution. When the status is
+C<Deployed>, the distribution's information is propagated to all
+CloudFront edge locations.
 
 
 =head2 B<REQUIRED> StreamingDistributionConfig => L<Paws::CloudFront::StreamingDistributionConfig>
 
-  The current configuration information for the streaming distribution.
+  The current configuration information for the RTMP distribution.
 
 
 

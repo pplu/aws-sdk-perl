@@ -49,7 +49,7 @@ with different launch parameters.
 A GameLift instance is limited to 50 processes running simultaneously.
 To calculate the total number of processes specified in a runtime
 configuration, add the values of the C<ConcurrentExecutions> parameter
-for each C<ServerProcess> object in the runtime configuration.
+for each C< ServerProcess > object in the runtime configuration.
 
 =head1 ATTRIBUTES
 

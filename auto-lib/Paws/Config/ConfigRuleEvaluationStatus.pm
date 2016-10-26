@@ -78,10 +78,14 @@ rule at least once.
 
 =over
 
-=item * C<true> - AWS Config has evaluated your AWS resources against
-the rule at least once.
+=item *
 
-=item * C<false> - AWS Config has not once finished evaluating your AWS
+C<true> - AWS Config has evaluated your AWS resources against the rule
+at least once.
+
+=item *
+
+C<false> - AWS Config has not once finished evaluating your AWS
 resources against the rule.
 
 =back

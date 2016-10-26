@@ -40,7 +40,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 ContinentCode => Str
 
-Amazon Route 53 supports the following contintent codes:
+Amazon Route 53 supports the following continent codes:
 
 =over
 

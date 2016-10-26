@@ -43,6 +43,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 The name of a specific cache parameter group family to return details
 for.
 
+Valid values are: C<memcached1.4> | C<redis2.6> | C<redis2.8> |
+C<redis3.2>
+
 Constraints:
 
 =over
@@ -66,7 +69,7 @@ Cannot end with a hyphen or contain two consecutive hyphens
 
 =head2 DefaultOnly => Bool
 
-If I<true>, specifies that only the default version of the specified
+If C<true>, specifies that only the default version of the specified
 engine or engine and major version combination is to be returned.
 
 
@@ -88,9 +91,9 @@ Example: C<1.4.14>
 =head2 Marker => Str
 
 An optional marker returned from a prior request. Use this marker for
-pagination of results from this action. If this parameter is specified,
-the response includes only records beyond the marker, up to the value
-specified by I<MaxRecords>.
+pagination of results from this operation. If this parameter is
+specified, the response includes only records beyond the marker, up to
+the value specified by C<MaxRecords>.
 
 
 

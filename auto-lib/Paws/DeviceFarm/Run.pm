@@ -60,7 +60,7 @@ configuration.
 
   Specifies the billing method for a test run: C<metered> or
 C<unmetered>. If the parameter is not specified, the default value is
-C<unmetered>.
+C<metered>.
 
 
 =head2 CompletedJobs => Int

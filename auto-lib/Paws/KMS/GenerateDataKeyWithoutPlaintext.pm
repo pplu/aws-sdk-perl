@@ -39,8 +39,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 EncryptionContext => L<Paws::KMS::EncryptionContextType>
 
-Name:value pair that contains additional data to be authenticated
-during the encryption and decryption processes.
+A set of key-value pairs that represents additional authenticated data.
+
+For more information, see Encryption Context in the I<AWS Key
+Management Service Developer Guide>.
 
 
 
@@ -55,29 +57,31 @@ Service Developer Guide>.
 
 =head2 B<REQUIRED> KeyId => Str
 
-A unique identifier for the customer master key. This value can be a
-globally unique identifier, a fully specified ARN to either an alias or
-a key, or an alias name prefixed by "alias/".
+The identifier of the CMK under which to generate and encrypt the data
+encryption key.
+
+A valid identifier is the unique key ID or the Amazon Resource Name
+(ARN) of the CMK, or the alias name or ARN of an alias that points to
+the CMK. Examples:
 
 =over
 
 =item *
 
-Key ARN Example -
-arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012
+Unique key ID: C<1234abcd-12ab-34cd-56ef-1234567890ab>
 
 =item *
 
-Alias ARN Example -
-arn:aws:kms:us-east-1:123456789012:alias/MyAliasName
+CMK ARN:
+C<arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab>
 
 =item *
 
-Globally Unique Key ID Example - 12345678-1234-1234-1234-123456789012
+Alias name: C<alias/ExampleAlias>
 
 =item *
 
-Alias Name Example - alias/MyAliasName
+Alias ARN: C<arn:aws:kms:us-west-2:111122223333:alias/ExampleAlias>
 
 =back
 
@@ -86,16 +90,18 @@ Alias Name Example - alias/MyAliasName
 
 =head2 KeySpec => Str
 
-Value that identifies the encryption algorithm and key size. Currently
-this can be AES_128 or AES_256.
+The length of the data encryption key. Use C<AES_128> to generate a
+128-bit symmetric key, or C<AES_256> to generate a 256-bit symmetric
+key.
 
 Valid values are: C<"AES_256">, C<"AES_128">
 
 =head2 NumberOfBytes => Int
 
-Integer that contains the number of bytes to generate. Common values
-are 128, 256, 512, 1024 and so on. We recommend that you use the
-C<KeySpec> parameter instead.
+The length of the data encryption key in bytes. For example, use the
+value 64 to generate a 512-bit data key (64 bytes is 512 bits). For
+common key lengths (128-bit and 256-bit symmetric keys), we recommend
+that you use the C<KeySpec> field instead of this one.
 
 
 

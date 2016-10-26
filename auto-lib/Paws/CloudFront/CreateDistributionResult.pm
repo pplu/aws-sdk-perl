@@ -32,7 +32,7 @@ The current version of the distribution created.
 
 The fully qualified URI of the new distribution resource just created.
 For example:
-https://cloudfront.amazonaws.com/2010-11-01/distribution/EDFDVBD632BHDS5.
+C<https://cloudfront.amazonaws.com/2010-11-01/distribution/EDFDVBD632BHDS5>.
 
 
 

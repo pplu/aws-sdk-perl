@@ -32,7 +32,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Route53::VP
 
 =head1 DESCRIPTION
 
-This class has no description
+A complex type that contains information about the Amazon VPC that
+you're associating with the specified hosted zone.
 
 =head1 ATTRIBUTES
 
@@ -44,7 +45,8 @@ This class has no description
 
 =head2 VPCRegion => Str
 
-  
+  The region in which you created the VPC that you want to associate with
+the specified Amazon Route 53 hosted zone.
 
 
 

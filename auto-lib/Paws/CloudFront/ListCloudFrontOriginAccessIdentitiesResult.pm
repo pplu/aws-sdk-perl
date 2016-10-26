@@ -16,7 +16,7 @@ Paws::CloudFront::ListCloudFrontOriginAccessIdentitiesResult
 
 =head2 CloudFrontOriginAccessIdentityList => L<Paws::CloudFront::CloudFrontOriginAccessIdentityList>
 
-The CloudFrontOriginAccessIdentityList type.
+The C<CloudFrontOriginAccessIdentityList> type.
 
 
 

@@ -7,7 +7,7 @@ package Paws::CloudFront::ListStreamingDistributions;
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListStreamingDistributions');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2016-09-07/streaming-distribution');
+  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2016-09-29/streaming-distribution');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudFront::ListStreamingDistributionsResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
@@ -22,15 +22,15 @@ Paws::CloudFront::ListStreamingDistributions - Arguments for method ListStreamin
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method ListStreamingDistributions2016_09_07 on the 
+This class represents the parameters used for calling the method ListStreamingDistributions2016_09_29 on the 
 Amazon CloudFront service. Use the attributes of this class
-as arguments to method ListStreamingDistributions2016_09_07.
+as arguments to method ListStreamingDistributions2016_09_29.
 
-You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListStreamingDistributions2016_09_07.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListStreamingDistributions2016_09_29.
 
 As an example:
 
-  $service_obj->ListStreamingDistributions2016_09_07(Att1 => $value1, Att2 => $value2, ...);
+  $service_obj->ListStreamingDistributions2016_09_29(Att1 => $value1, Att2 => $value2, ...);
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 
@@ -39,25 +39,20 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Marker => Str
 
-Use this when paginating results to indicate where to begin in your
-list of streaming distributions. The results include distributions in
-the list that occur after the marker. To get the next page of results,
-set the Marker to the value of the NextMarker from the current page's
-response (which is also the ID of the last distribution on that page).
+The value that you provided for the C<Marker> request parameter.
 
 
 
 =head2 MaxItems => Str
 
-The maximum number of streaming distributions you want in the response
-body.
+The value that you provided for the C<MaxItems> request parameter.
 
 
 
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, documenting arguments for method ListStreamingDistributions2016_09_07 in L<Paws::CloudFront>
+This class forms part of L<Paws>, documenting arguments for method ListStreamingDistributions2016_09_29 in L<Paws::CloudFront>
 
 =head1 BUGS and CONTRIBUTIONS
 

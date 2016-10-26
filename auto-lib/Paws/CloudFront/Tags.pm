@@ -31,14 +31,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 
 =head1 DESCRIPTION
 
-A complex type that contains zero or more Tag elements.
+A complex type that contains zero or more C<Tag> elements.
 
 =head1 ATTRIBUTES
 
 
 =head2 Items => ArrayRef[L<Paws::CloudFront::Tag>]
 
-  A complex type that contains Tag elements
+  A complex type that contains C<Tag> elements.
 
 
 

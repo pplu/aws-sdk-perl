@@ -5,6 +5,7 @@ package Paws::CloudFormation::UpdateStack;
   has NotificationARNs => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Parameters => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::Parameter]');
   has ResourceTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has RoleARN => (is => 'ro', isa => 'Str');
   has StackName => (is => 'ro', isa => 'Str', required => 1);
   has StackPolicyBody => (is => 'ro', isa => 'Str');
   has StackPolicyDuringUpdateBody => (is => 'ro', isa => 'Str');
@@ -100,6 +101,24 @@ permissions to all resource types. AWS Identity and Access Management
 (IAM) uses this parameter for AWS CloudFormation-specific condition
 keys in IAM policies. For more information, see Controlling Access with
 AWS Identity and Access Management.
+
+
+
+=head2 RoleARN => Str
+
+The Amazon Resource Name (ARN) of an AWS Identity and Access Management
+(IAM) role that AWS CloudFormation assumes to update the stack. AWS
+CloudFormation uses the role's credentials to make calls on your
+behalf. AWS CloudFormation always uses this role for all future
+operations on the stack. As long as users have permission to operate on
+the stack, AWS CloudFormation uses this role even if the users don't
+have permission to pass it. Ensure that the role grants least
+privilege.
+
+If you don't specify a value, AWS CloudFormation uses the role that was
+previously associated with the stack. If no role is available, AWS
+CloudFormation uses a temporary session that is generated from your
+user credentials.
 
 
 

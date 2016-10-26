@@ -10,7 +10,13 @@
    Method(StringParameter => "33"). Paws will now auto-stringify the contents in these parameters
    so AWS will accept them correctly, and the programmer doesn't have to worry about stringifying
    his inputs. Thanks to ilmari and rpcme
- - RDS API update: DescribeSourceRegions
+ - New API: Budgets
+ - New API: SMS (Server Migration Service)
+ - ElasticBeanstalk API update
+ - Gamelift API update: DescribeInstances
+ - ECR API update: DescribeImages
+ - ACM API update: ImportCertificate
+ - RDS API update: DescribeSourceRegions, Add and Remove RoleToDBCluster
  - ServiceCatalog API update: AccessLevelFilter support
  - CloudFront API update: version 2016-09-07 support
  - CodePipeline API update: GetPipelineExecution
@@ -22,6 +28,12 @@
  - RDS API update: Timezones and ReadEnpoints
  - EMR API update: SecurityConfigurations
  - IoT API update
+ - CloudFormation API update: RoleArn
+ - EC2 API update: ReservedInstancesExchangeQuote
+ - S3 API update
+ - ElastiCache API update
+ - IoT API update: DynamoV2 behaviour
+ - CognitoIdp API update: AdminCreateUser
 
 0.28 30 Aug 2015 23:45:00
  - On errors 503 XMLResponse would not process the error correctly (returning
