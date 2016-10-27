@@ -2,6 +2,9 @@
 call: DescribeReservedNodeOfferings
 service: RedShift
 tests:
+  - expected: '665aecb7-9167-11e2-a970-49138ad38474'
+    op: eq
+    path: _request_id
   - expected: 94608000
     op: eq
     path: ReservedNodeOfferings.0.Duration
