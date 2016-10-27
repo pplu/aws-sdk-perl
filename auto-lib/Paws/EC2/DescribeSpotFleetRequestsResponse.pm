@@ -4,6 +4,7 @@ package Paws::EC2::DescribeSpotFleetRequestsResponse;
   has NextToken => (is => 'ro', isa => 'Str', xmlname => 'nextToken', traits => ['Unwrapped',]);
   has SpotFleetRequestConfigs => (is => 'ro', isa => 'ArrayRef[Paws::EC2::SpotFleetRequestConfig]', xmlname => 'spotFleetRequestConfigSet', traits => ['Unwrapped',], required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

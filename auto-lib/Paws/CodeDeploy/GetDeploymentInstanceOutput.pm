@@ -3,6 +3,7 @@ package Paws::CodeDeploy::GetDeploymentInstanceOutput;
   use Moose;
   has InstanceSummary => (is => 'ro', isa => 'Paws::CodeDeploy::InstanceSummary', traits => ['Unwrapped'], xmlname => 'instanceSummary' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

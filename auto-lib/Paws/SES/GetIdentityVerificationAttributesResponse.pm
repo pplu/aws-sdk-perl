@@ -3,6 +3,7 @@ package Paws::SES::GetIdentityVerificationAttributesResponse;
   use Moose;
   has VerificationAttributes => (is => 'ro', isa => 'Paws::SES::VerificationAttributes', required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

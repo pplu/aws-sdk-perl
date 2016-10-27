@@ -4,6 +4,7 @@ package Paws::CodePipeline::PutActionRevisionOutput;
   has NewRevision => (is => 'ro', isa => 'Bool', traits => ['Unwrapped'], xmlname => 'newRevision' );
   has PipelineExecutionId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'pipelineExecutionId' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

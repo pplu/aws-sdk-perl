@@ -5,6 +5,7 @@ package Paws::DataPipeline::ListPipelinesOutput;
   has Marker => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'marker' );
   has PipelineIdList => (is => 'ro', isa => 'ArrayRef[Paws::DataPipeline::PipelineIdName]', traits => ['Unwrapped'], xmlname => 'pipelineIdList' , required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

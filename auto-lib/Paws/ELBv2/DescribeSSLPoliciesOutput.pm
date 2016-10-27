@@ -4,6 +4,7 @@ package Paws::ELBv2::DescribeSSLPoliciesOutput;
   has NextMarker => (is => 'ro', isa => 'Str');
   has SslPolicies => (is => 'ro', isa => 'ArrayRef[Paws::ELBv2::SslPolicy]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

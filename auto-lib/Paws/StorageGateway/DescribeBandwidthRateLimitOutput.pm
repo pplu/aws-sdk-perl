@@ -5,6 +5,7 @@ package Paws::StorageGateway::DescribeBandwidthRateLimitOutput;
   has AverageUploadRateLimitInBitsPerSec => (is => 'ro', isa => 'Int');
   has GatewayARN => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

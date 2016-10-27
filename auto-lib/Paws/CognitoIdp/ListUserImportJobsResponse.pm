@@ -4,6 +4,7 @@ package Paws::CognitoIdp::ListUserImportJobsResponse;
   has PaginationToken => (is => 'ro', isa => 'Str');
   has UserImportJobs => (is => 'ro', isa => 'ArrayRef[Paws::CognitoIdp::UserImportJobType]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

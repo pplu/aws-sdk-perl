@@ -4,6 +4,7 @@ package Paws::ElasticTranscoder::ListPipelinesResponse;
   has NextPageToken => (is => 'ro', isa => 'Str');
   has Pipelines => (is => 'ro', isa => 'ArrayRef[Paws::ElasticTranscoder::Pipeline]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

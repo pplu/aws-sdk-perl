@@ -3,6 +3,7 @@ package Paws::Config::DescribeConfigRuleEvaluationStatusResponse;
   use Moose;
   has ConfigRulesEvaluationStatus => (is => 'ro', isa => 'ArrayRef[Paws::Config::ConfigRuleEvaluationStatus]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

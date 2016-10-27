@@ -4,6 +4,7 @@ package Paws::DeviceFarm::ListProjectsResult;
   has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
   has Projects => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::Project]', traits => ['Unwrapped'], xmlname => 'projects' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

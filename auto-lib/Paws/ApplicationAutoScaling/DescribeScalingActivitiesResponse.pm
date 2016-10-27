@@ -4,6 +4,7 @@ package Paws::ApplicationAutoScaling::DescribeScalingActivitiesResponse;
   has NextToken => (is => 'ro', isa => 'Str');
   has ScalingActivities => (is => 'ro', isa => 'ArrayRef[Paws::ApplicationAutoScaling::ScalingActivity]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

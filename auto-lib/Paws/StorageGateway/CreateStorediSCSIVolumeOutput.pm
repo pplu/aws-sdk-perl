@@ -5,6 +5,7 @@ package Paws::StorageGateway::CreateStorediSCSIVolumeOutput;
   has VolumeARN => (is => 'ro', isa => 'Str');
   has VolumeSizeInBytes => (is => 'ro', isa => 'Int');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

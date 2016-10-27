@@ -3,6 +3,7 @@ package Paws::ACM::ListTagsForCertificateResponse;
   use Moose;
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ACM::Tag]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

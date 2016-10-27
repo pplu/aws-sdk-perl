@@ -5,6 +5,7 @@ package Paws::ServiceCatalog::DescribeRecordOutput;
   has RecordDetail => (is => 'ro', isa => 'Paws::ServiceCatalog::RecordDetail');
   has RecordOutputs => (is => 'ro', isa => 'ArrayRef[Paws::ServiceCatalog::RecordOutput]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

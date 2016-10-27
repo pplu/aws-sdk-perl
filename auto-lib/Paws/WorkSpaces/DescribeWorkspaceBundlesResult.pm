@@ -4,6 +4,7 @@ package Paws::WorkSpaces::DescribeWorkspaceBundlesResult;
   has Bundles => (is => 'ro', isa => 'ArrayRef[Paws::WorkSpaces::WorkspaceBundle]');
   has NextToken => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

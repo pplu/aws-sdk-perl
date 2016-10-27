@@ -4,6 +4,7 @@ package Paws::S3::ListBucketsOutput;
   has Buckets => (is => 'ro', isa => 'ArrayRef[Paws::S3::Bucket]', traits => ['Unwrapped'], xmlname => 'Bucket');
   has Owner => (is => 'ro', isa => 'Paws::S3::Owner');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

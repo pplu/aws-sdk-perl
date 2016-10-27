@@ -4,6 +4,7 @@ package Paws::SES::ListReceiptRuleSetsResponse;
   has NextToken => (is => 'ro', isa => 'Str');
   has RuleSets => (is => 'ro', isa => 'ArrayRef[Paws::SES::ReceiptRuleSetMetadata]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

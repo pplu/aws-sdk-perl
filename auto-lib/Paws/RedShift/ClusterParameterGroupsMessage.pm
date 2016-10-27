@@ -4,6 +4,7 @@ package Paws::RedShift::ClusterParameterGroupsMessage;
   has Marker => (is => 'ro', isa => 'Str');
   has ParameterGroups => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::ClusterParameterGroup]', xmlname => 'ClusterParameterGroup', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

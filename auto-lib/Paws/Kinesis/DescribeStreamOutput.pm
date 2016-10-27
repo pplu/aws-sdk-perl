@@ -3,6 +3,7 @@ package Paws::Kinesis::DescribeStreamOutput;
   use Moose;
   has StreamDescription => (is => 'ro', isa => 'Paws::Kinesis::StreamDescription', required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

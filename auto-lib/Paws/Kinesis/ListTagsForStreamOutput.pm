@@ -4,6 +4,7 @@ package Paws::Kinesis::ListTagsForStreamOutput;
   has HasMoreTags => (is => 'ro', isa => 'Bool', required => 1);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Kinesis::Tag]', required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

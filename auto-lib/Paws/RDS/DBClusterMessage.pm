@@ -4,6 +4,7 @@ package Paws::RDS::DBClusterMessage;
   has DBClusters => (is => 'ro', isa => 'ArrayRef[Paws::RDS::DBCluster]', xmlname => 'DBCluster', traits => ['Unwrapped',]);
   has Marker => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

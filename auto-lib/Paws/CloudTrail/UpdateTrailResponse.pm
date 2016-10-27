@@ -14,6 +14,7 @@ package Paws::CloudTrail::UpdateTrailResponse;
   has SnsTopicName => (is => 'ro', isa => 'Str');
   has TrailARN => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

@@ -4,6 +4,7 @@ package Paws::WorkSpaces::DescribeWorkspacesConnectionStatusResult;
   has NextToken => (is => 'ro', isa => 'Str');
   has WorkspacesConnectionStatus => (is => 'ro', isa => 'ArrayRef[Paws::WorkSpaces::WorkspaceConnectionStatus]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

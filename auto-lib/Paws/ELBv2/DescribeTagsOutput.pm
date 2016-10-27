@@ -3,6 +3,7 @@ package Paws::ELBv2::DescribeTagsOutput;
   use Moose;
   has TagDescriptions => (is => 'ro', isa => 'ArrayRef[Paws::ELBv2::TagDescription]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

@@ -73,7 +73,8 @@ package [% c.api %]::[% op_name %];
   [%- IF (stream_param) -%]
   use MooseX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => '[% stream_param %]');
-  [%- END -%]
+  [%- END %]
+  has _request_id => (is => 'ro', isa => 'Str');
 [%- END %]
 1;
 [% c.class_documentation_template | eval %]

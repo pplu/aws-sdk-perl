@@ -3,6 +3,7 @@ package Paws::RedShift::CreateSnapshotCopyGrantResult;
   use Moose;
   has SnapshotCopyGrant => (is => 'ro', isa => 'Paws::RedShift::SnapshotCopyGrant');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

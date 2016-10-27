@@ -4,6 +4,7 @@ package Paws::SSM::DescribeActivationsResult;
   has ActivationList => (is => 'ro', isa => 'ArrayRef[Paws::SSM::Activation]');
   has NextToken => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

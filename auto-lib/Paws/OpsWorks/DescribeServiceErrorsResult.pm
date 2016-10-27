@@ -3,6 +3,7 @@ package Paws::OpsWorks::DescribeServiceErrorsResult;
   use Moose;
   has ServiceErrors => (is => 'ro', isa => 'ArrayRef[Paws::OpsWorks::ServiceError]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

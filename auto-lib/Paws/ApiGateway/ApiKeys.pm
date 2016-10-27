@@ -5,6 +5,7 @@ package Paws::ApiGateway::ApiKeys;
   has Position => (is => 'ro', isa => 'Str');
   has Warnings => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

@@ -4,6 +4,7 @@ package Paws::CloudFront::GetStreamingDistributionConfigResult;
   has ETag => (is => 'ro', isa => 'Str');
   has StreamingDistributionConfig => (is => 'ro', isa => 'Paws::CloudFront::StreamingDistributionConfig');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

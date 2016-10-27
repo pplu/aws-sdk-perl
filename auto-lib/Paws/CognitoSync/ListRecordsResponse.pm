@@ -11,6 +11,7 @@ package Paws::CognitoSync::ListRecordsResponse;
   has Records => (is => 'ro', isa => 'ArrayRef[Paws::CognitoSync::Record]');
   has SyncSessionToken => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

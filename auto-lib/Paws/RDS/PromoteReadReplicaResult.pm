@@ -3,6 +3,7 @@ package Paws::RDS::PromoteReadReplicaResult;
   use Moose;
   has DBInstance => (is => 'ro', isa => 'Paws::RDS::DBInstance');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

@@ -6,6 +6,7 @@ package Paws::CloudSearchDomain::UploadDocumentsResponse;
   has Status => (is => 'ro', isa => 'Str');
   has Warnings => (is => 'ro', isa => 'ArrayRef[Paws::CloudSearchDomain::DocumentServiceWarning]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

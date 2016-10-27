@@ -3,6 +3,7 @@ package Paws::AutoScaling::DescribeAutoScalingNotificationTypesAnswer;
   use Moose;
   has AutoScalingNotificationTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

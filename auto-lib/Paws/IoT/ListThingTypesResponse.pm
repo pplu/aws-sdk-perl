@@ -4,6 +4,7 @@ package Paws::IoT::ListThingTypesResponse;
   has NextToken => (is => 'ro', isa => 'Str');
   has ThingTypes => (is => 'ro', isa => 'ArrayRef[Paws::IoT::ThingTypeDefinition]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

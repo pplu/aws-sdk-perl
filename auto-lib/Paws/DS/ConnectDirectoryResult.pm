@@ -3,6 +3,7 @@ package Paws::DS::ConnectDirectoryResult;
   use Moose;
   has DirectoryId => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

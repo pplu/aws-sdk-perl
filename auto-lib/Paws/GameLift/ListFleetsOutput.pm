@@ -4,6 +4,7 @@ package Paws::GameLift::ListFleetsOutput;
   has FleetIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has NextToken => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

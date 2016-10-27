@@ -3,6 +3,7 @@ package Paws::EC2::CopySnapshotResult;
   use Moose;
   has SnapshotId => (is => 'ro', isa => 'Str', xmlname => 'snapshotId', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

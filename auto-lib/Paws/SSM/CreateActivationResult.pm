@@ -4,6 +4,7 @@ package Paws::SSM::CreateActivationResult;
   has ActivationCode => (is => 'ro', isa => 'Str');
   has ActivationId => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

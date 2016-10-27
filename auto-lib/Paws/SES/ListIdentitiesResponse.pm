@@ -4,6 +4,7 @@ package Paws::SES::ListIdentitiesResponse;
   has Identities => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
   has NextToken => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

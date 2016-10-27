@@ -3,6 +3,7 @@ package Paws::DeviceFarm::CreateRemoteAccessSessionResult;
   use Moose;
   has RemoteAccessSession => (is => 'ro', isa => 'Paws::DeviceFarm::RemoteAccessSession', traits => ['Unwrapped'], xmlname => 'remoteAccessSession' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

@@ -3,6 +3,7 @@ package Paws::ECR::PutImageResponse;
   use Moose;
   has Image => (is => 'ro', isa => 'Paws::ECR::Image', traits => ['Unwrapped'], xmlname => 'image' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

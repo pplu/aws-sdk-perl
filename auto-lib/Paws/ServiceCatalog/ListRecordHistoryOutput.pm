@@ -4,6 +4,7 @@ package Paws::ServiceCatalog::ListRecordHistoryOutput;
   has NextPageToken => (is => 'ro', isa => 'Str');
   has RecordDetails => (is => 'ro', isa => 'ArrayRef[Paws::ServiceCatalog::RecordDetail]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

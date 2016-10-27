@@ -6,6 +6,7 @@ package Paws::IAM::GetOpenIDConnectProviderResponse;
   has ThumbprintList => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Url => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

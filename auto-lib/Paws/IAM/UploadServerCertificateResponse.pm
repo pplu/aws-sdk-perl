@@ -3,6 +3,7 @@ package Paws::IAM::UploadServerCertificateResponse;
   use Moose;
   has ServerCertificateMetadata => (is => 'ro', isa => 'Paws::IAM::ServerCertificateMetadata');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

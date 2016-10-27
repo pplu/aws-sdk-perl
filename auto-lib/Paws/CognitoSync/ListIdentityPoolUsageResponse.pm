@@ -6,6 +6,7 @@ package Paws::CognitoSync::ListIdentityPoolUsageResponse;
   has MaxResults => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

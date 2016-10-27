@@ -3,6 +3,7 @@ package Paws::SES::GetIdentityNotificationAttributesResponse;
   use Moose;
   has NotificationAttributes => (is => 'ro', isa => 'Paws::SES::NotificationAttributes', required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

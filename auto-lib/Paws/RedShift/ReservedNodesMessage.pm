@@ -4,6 +4,7 @@ package Paws::RedShift::ReservedNodesMessage;
   has Marker => (is => 'ro', isa => 'Str');
   has ReservedNodes => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::ReservedNode]', xmlname => 'ReservedNode', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

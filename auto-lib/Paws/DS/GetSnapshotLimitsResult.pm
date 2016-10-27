@@ -3,6 +3,7 @@ package Paws::DS::GetSnapshotLimitsResult;
   use Moose;
   has SnapshotLimits => (is => 'ro', isa => 'Paws::DS::SnapshotLimits');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

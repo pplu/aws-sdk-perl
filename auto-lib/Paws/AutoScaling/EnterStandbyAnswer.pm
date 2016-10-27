@@ -3,6 +3,7 @@ package Paws::AutoScaling::EnterStandbyAnswer;
   use Moose;
   has Activities => (is => 'ro', isa => 'ArrayRef[Paws::AutoScaling::Activity]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

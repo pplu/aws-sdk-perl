@@ -8,6 +8,7 @@ package Paws::Route53Domains::GetOperationDetailResponse;
   has SubmittedDate => (is => 'ro', isa => 'Str');
   has Type => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

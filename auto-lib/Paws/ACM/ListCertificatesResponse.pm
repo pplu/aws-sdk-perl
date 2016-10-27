@@ -4,6 +4,7 @@ package Paws::ACM::ListCertificatesResponse;
   has CertificateSummaryList => (is => 'ro', isa => 'ArrayRef[Paws::ACM::CertificateSummary]');
   has NextToken => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

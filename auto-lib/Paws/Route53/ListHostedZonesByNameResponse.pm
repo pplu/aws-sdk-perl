@@ -9,6 +9,7 @@ package Paws::Route53::ListHostedZonesByNameResponse;
   has NextDNSName => (is => 'ro', isa => 'Str');
   has NextHostedZoneId => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

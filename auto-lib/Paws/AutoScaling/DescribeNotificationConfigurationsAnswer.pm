@@ -4,6 +4,7 @@ package Paws::AutoScaling::DescribeNotificationConfigurationsAnswer;
   has NextToken => (is => 'ro', isa => 'Str');
   has NotificationConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::AutoScaling::NotificationConfiguration]', required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

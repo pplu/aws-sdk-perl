@@ -4,6 +4,7 @@ package Paws::Inspector::DescribeRulesPackagesResponse;
   has FailedItems => (is => 'ro', isa => 'Paws::Inspector::FailedItems', traits => ['Unwrapped'], xmlname => 'failedItems' , required => 1);
   has RulesPackages => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::RulesPackage]', traits => ['Unwrapped'], xmlname => 'rulesPackages' , required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

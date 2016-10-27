@@ -3,6 +3,7 @@ package Paws::StorageGateway::DescribeStorediSCSIVolumesOutput;
   use Moose;
   has StorediSCSIVolumes => (is => 'ro', isa => 'ArrayRef[Paws::StorageGateway::StorediSCSIVolume]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

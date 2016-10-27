@@ -10,6 +10,7 @@ package Paws::ApiGateway::ApiKey;
   has StageKeys => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Value => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

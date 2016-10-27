@@ -6,6 +6,7 @@ package Paws::CloudSearchDomain::SearchResponse;
   has Stats => (is => 'ro', isa => 'Paws::CloudSearchDomain::Stats');
   has Status => (is => 'ro', isa => 'Paws::CloudSearchDomain::SearchStatus');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

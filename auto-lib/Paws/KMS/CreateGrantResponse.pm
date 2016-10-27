@@ -4,6 +4,7 @@ package Paws::KMS::CreateGrantResponse;
   has GrantId => (is => 'ro', isa => 'Str');
   has GrantToken => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

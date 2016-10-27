@@ -5,6 +5,7 @@ package Paws::StorageGateway::ListTagsForResourceOutput;
   has ResourceARN => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::StorageGateway::Tag]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

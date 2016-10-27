@@ -4,6 +4,7 @@ package Paws::CloudTrail::ListPublicKeysResponse;
   has NextToken => (is => 'ro', isa => 'Str');
   has PublicKeyList => (is => 'ro', isa => 'ArrayRef[Paws::CloudTrail::PublicKey]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

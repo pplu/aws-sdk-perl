@@ -4,6 +4,7 @@ package Paws::SSM::CreateAssociationBatchResult;
   has Failed => (is => 'ro', isa => 'ArrayRef[Paws::SSM::FailedCreateAssociation]');
   has Successful => (is => 'ro', isa => 'ArrayRef[Paws::SSM::AssociationDescription]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

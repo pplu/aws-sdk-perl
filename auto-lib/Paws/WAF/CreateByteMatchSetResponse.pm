@@ -4,6 +4,7 @@ package Paws::WAF::CreateByteMatchSetResponse;
   has ByteMatchSet => (is => 'ro', isa => 'Paws::WAF::ByteMatchSet');
   has ChangeToken => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

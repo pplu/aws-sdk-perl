@@ -4,6 +4,7 @@ package Paws::ElastiCache::CacheClusterMessage;
   has CacheClusters => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::CacheCluster]', xmlname => 'CacheCluster', traits => ['Unwrapped',]);
   has Marker => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

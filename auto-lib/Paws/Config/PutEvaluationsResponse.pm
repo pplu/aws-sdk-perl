@@ -3,6 +3,7 @@ package Paws::Config::PutEvaluationsResponse;
   use Moose;
   has FailedEvaluations => (is => 'ro', isa => 'ArrayRef[Paws::Config::Evaluation]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

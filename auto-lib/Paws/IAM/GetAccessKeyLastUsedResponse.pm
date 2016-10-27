@@ -4,6 +4,7 @@ package Paws::IAM::GetAccessKeyLastUsedResponse;
   has AccessKeyLastUsed => (is => 'ro', isa => 'Paws::IAM::AccessKeyLastUsed');
   has UserName => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

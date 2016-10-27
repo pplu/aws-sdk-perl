@@ -19,6 +19,7 @@ package Paws::Glacier::GlacierJobDescription;
   has StatusMessage => (is => 'ro', isa => 'Str');
   has VaultARN => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

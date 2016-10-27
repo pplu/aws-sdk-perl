@@ -4,6 +4,7 @@ package Paws::DS::DescribeDirectoriesResult;
   has DirectoryDescriptions => (is => 'ro', isa => 'ArrayRef[Paws::DS::DirectoryDescription]');
   has NextToken => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

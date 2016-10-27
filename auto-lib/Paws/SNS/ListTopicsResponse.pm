@@ -4,6 +4,7 @@ package Paws::SNS::ListTopicsResponse;
   has NextToken => (is => 'ro', isa => 'Str');
   has Topics => (is => 'ro', isa => 'ArrayRef[Paws::SNS::Topic]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

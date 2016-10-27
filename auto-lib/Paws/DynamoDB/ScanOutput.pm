@@ -7,6 +7,7 @@ package Paws::DynamoDB::ScanOutput;
   has LastEvaluatedKey => (is => 'ro', isa => 'Paws::DynamoDB::Key');
   has ScannedCount => (is => 'ro', isa => 'Int');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

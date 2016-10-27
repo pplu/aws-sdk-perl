@@ -10,6 +10,7 @@ package Paws::EC2::ImageAttribute;
   has RamdiskId => (is => 'ro', isa => 'Paws::EC2::AttributeValue', xmlname => 'ramdisk', traits => ['Unwrapped',]);
   has SriovNetSupport => (is => 'ro', isa => 'Paws::EC2::AttributeValue', xmlname => 'sriovNetSupport', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

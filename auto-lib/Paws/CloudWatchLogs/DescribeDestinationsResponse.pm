@@ -4,6 +4,7 @@ package Paws::CloudWatchLogs::DescribeDestinationsResponse;
   has Destinations => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatchLogs::Destination]', traits => ['Unwrapped'], xmlname => 'destinations' );
   has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

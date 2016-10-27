@@ -4,6 +4,7 @@ package Paws::AutoScaling::AutoScalingInstancesType;
   has AutoScalingInstances => (is => 'ro', isa => 'ArrayRef[Paws::AutoScaling::AutoScalingInstanceDetails]');
   has NextToken => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

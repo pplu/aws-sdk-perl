@@ -12,6 +12,7 @@ package Paws::ApiGateway::Authorizer;
   has ProviderARNs => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Type => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

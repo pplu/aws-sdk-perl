@@ -4,6 +4,7 @@ package Paws::ElasticTranscoder::CreatePresetResponse;
   has Preset => (is => 'ro', isa => 'Paws::ElasticTranscoder::Preset');
   has Warning => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

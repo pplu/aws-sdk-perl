@@ -3,6 +3,7 @@ package Paws::IAM::GetUserResponse;
   use Moose;
   has User => (is => 'ro', isa => 'Paws::IAM::User', required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

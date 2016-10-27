@@ -7,6 +7,7 @@ package Paws::Route53::CreateHostedZoneResponse;
   has Location => (is => 'ro', isa => 'Str', required => 1);
   has VPC => (is => 'ro', isa => 'Paws::Route53::VPC');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

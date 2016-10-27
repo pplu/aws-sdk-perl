@@ -3,6 +3,7 @@ package Paws::CodePipeline::UpdatePipelineOutput;
   use Moose;
   has Pipeline => (is => 'ro', isa => 'Paws::CodePipeline::PipelineDeclaration', traits => ['Unwrapped'], xmlname => 'pipeline' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

@@ -4,6 +4,7 @@ package Paws::Route53Domains::ListOperationsResponse;
   has NextPageMarker => (is => 'ro', isa => 'Str');
   has Operations => (is => 'ro', isa => 'ArrayRef[Paws::Route53Domains::OperationSummary]', required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

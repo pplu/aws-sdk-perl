@@ -4,6 +4,7 @@ package Paws::SimpleWorkflow::ActivityTypeDetail;
   has Configuration => (is => 'ro', isa => 'Paws::SimpleWorkflow::ActivityTypeConfiguration', traits => ['Unwrapped'], xmlname => 'configuration' , required => 1);
   has TypeInfo => (is => 'ro', isa => 'Paws::SimpleWorkflow::ActivityTypeInfo', traits => ['Unwrapped'], xmlname => 'typeInfo' , required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

@@ -4,6 +4,7 @@ package Paws::Inspector::ListAssessmentRunAgentsResponse;
   has AssessmentRunAgents => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::AssessmentRunAgent]', traits => ['Unwrapped'], xmlname => 'assessmentRunAgents' , required => 1);
   has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

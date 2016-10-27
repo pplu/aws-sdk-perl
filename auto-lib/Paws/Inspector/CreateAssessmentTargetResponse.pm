@@ -3,6 +3,7 @@ package Paws::Inspector::CreateAssessmentTargetResponse;
   use Moose;
   has AssessmentTargetArn => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'assessmentTargetArn' , required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

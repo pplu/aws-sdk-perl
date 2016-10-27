@@ -4,6 +4,7 @@ package Paws::DMS::DescribeReplicationTasksResponse;
   has Marker => (is => 'ro', isa => 'Str');
   has ReplicationTasks => (is => 'ro', isa => 'ArrayRef[Paws::DMS::ReplicationTask]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

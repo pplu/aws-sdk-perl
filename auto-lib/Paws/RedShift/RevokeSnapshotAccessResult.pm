@@ -3,6 +3,7 @@ package Paws::RedShift::RevokeSnapshotAccessResult;
   use Moose;
   has Snapshot => (is => 'ro', isa => 'Paws::RedShift::Snapshot');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

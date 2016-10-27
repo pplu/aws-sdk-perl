@@ -5,6 +5,7 @@ package Paws::CloudWatchLogs::FilterLogEventsResponse;
   has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
   has SearchedLogStreams => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatchLogs::SearchedLogStream]', traits => ['Unwrapped'], xmlname => 'searchedLogStreams' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

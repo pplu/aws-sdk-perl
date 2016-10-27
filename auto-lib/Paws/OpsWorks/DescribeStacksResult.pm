@@ -3,6 +3,7 @@ package Paws::OpsWorks::DescribeStacksResult;
   use Moose;
   has Stacks => (is => 'ro', isa => 'ArrayRef[Paws::OpsWorks::Stack]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

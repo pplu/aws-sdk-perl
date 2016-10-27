@@ -5,6 +5,7 @@ package Paws::IAM::ListUsersResponse;
   has Marker => (is => 'ro', isa => 'Str');
   has Users => (is => 'ro', isa => 'ArrayRef[Paws::IAM::User]', required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

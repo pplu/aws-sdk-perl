@@ -4,6 +4,7 @@ package Paws::S3::GetBucketVersioningOutput;
   has MFADelete => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

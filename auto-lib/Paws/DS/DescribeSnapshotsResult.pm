@@ -4,6 +4,7 @@ package Paws::DS::DescribeSnapshotsResult;
   has NextToken => (is => 'ro', isa => 'Str');
   has Snapshots => (is => 'ro', isa => 'ArrayRef[Paws::DS::Snapshot]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

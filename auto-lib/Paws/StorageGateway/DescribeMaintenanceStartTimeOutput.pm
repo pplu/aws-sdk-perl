@@ -7,6 +7,7 @@ package Paws::StorageGateway::DescribeMaintenanceStartTimeOutput;
   has MinuteOfHour => (is => 'ro', isa => 'Int');
   has Timezone => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

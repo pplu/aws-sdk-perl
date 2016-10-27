@@ -95,6 +95,7 @@ package [% c.api %]::[% c.shapename_for_operation_output(op_name) %];
   [%- IF (shape.members.$param_name.streaming == 1) %], traits => ['ParamInBody'][% END %]
   [%- IF (c.required_in_shape(shape,param_name)) %], required => 1[% END %]);
 [% END %]
+  has _request_id => (is => 'ro', isa => 'Str');
 [%- END %]
 [% c.class_documentation_template | eval %]
 1;#);

@@ -4,6 +4,7 @@ package Paws::OpsWorks::DescribeEcsClustersResult;
   has EcsClusters => (is => 'ro', isa => 'ArrayRef[Paws::OpsWorks::EcsCluster]');
   has NextToken => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

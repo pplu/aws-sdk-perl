@@ -3,6 +3,7 @@ package Paws::ES::ListTagsResponse;
   use Moose;
   has TagList => (is => 'ro', isa => 'ArrayRef[Paws::ES::Tag]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

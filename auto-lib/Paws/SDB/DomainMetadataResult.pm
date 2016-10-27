@@ -9,6 +9,7 @@ package Paws::SDB::DomainMetadataResult;
   has ItemNamesSizeBytes => (is => 'ro', isa => 'Int');
   has Timestamp => (is => 'ro', isa => 'Int');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

@@ -8,6 +8,7 @@ package Paws::S3::UploadPartOutput;
   has SSECustomerKeyMD5 => (is => 'ro', isa => 'Str');
   has SSEKMSKeyId => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

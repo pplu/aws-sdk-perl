@@ -4,6 +4,7 @@ package Paws::DeviceFarm::ListSamplesResult;
   has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
   has Samples => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::Sample]', traits => ['Unwrapped'], xmlname => 'samples' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

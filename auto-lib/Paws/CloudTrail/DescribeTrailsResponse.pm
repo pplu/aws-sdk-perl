@@ -3,6 +3,7 @@ package Paws::CloudTrail::DescribeTrailsResponse;
   use Moose;
   has TrailList => (is => 'ro', isa => 'ArrayRef[Paws::CloudTrail::Trail]', traits => ['Unwrapped'], xmlname => 'trailList' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

@@ -4,6 +4,7 @@ package Paws::RedShift::EventsMessage;
   has Events => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::Event]', xmlname => 'Event', traits => ['Unwrapped',]);
   has Marker => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

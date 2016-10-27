@@ -3,6 +3,7 @@ package Paws::EC2::AllocateHostsResult;
   use Moose;
   has HostIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'hostIdSet', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

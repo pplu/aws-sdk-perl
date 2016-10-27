@@ -4,6 +4,7 @@ package Paws::RDS::DBClusterParameterGroupDetails;
   has Marker => (is => 'ro', isa => 'Str');
   has Parameters => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Parameter]', xmlname => 'Parameter', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

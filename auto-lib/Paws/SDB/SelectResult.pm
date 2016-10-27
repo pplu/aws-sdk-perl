@@ -4,6 +4,7 @@ package Paws::SDB::SelectResult;
   has Items => (is => 'ro', isa => 'ArrayRef[Paws::SDB::Item]', xmlname => 'Item', traits => ['Unwrapped',]);
   has NextToken => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

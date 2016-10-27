@@ -4,6 +4,7 @@ package Paws::StorageGateway::CreateSnapshotOutput;
   has SnapshotId => (is => 'ro', isa => 'Str');
   has VolumeARN => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

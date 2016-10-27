@@ -5,6 +5,7 @@ package Paws::ServiceCatalog::DescribeProvisioningParametersOutput;
   has ProvisioningArtifactParameters => (is => 'ro', isa => 'ArrayRef[Paws::ServiceCatalog::ProvisioningArtifactParameter]');
   has UsageInstructions => (is => 'ro', isa => 'ArrayRef[Paws::ServiceCatalog::UsageInstruction]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

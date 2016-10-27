@@ -4,6 +4,7 @@ package Paws::Discovery::ListConfigurationsResponse;
   has Configurations => (is => 'ro', isa => 'ArrayRef[Paws::Discovery::Configuration]', traits => ['Unwrapped'], xmlname => 'configurations' );
   has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

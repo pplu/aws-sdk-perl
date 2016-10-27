@@ -3,6 +3,7 @@ package Paws::OpsWorks::DescribeAgentVersionsResult;
   use Moose;
   has AgentVersions => (is => 'ro', isa => 'ArrayRef[Paws::OpsWorks::AgentVersion]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

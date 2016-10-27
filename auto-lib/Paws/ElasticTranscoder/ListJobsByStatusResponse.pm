@@ -4,6 +4,7 @@ package Paws::ElasticTranscoder::ListJobsByStatusResponse;
   has Jobs => (is => 'ro', isa => 'ArrayRef[Paws::ElasticTranscoder::Job]');
   has NextPageToken => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

@@ -4,6 +4,7 @@ package Paws::RDS::DBSnapshotMessage;
   has DBSnapshots => (is => 'ro', isa => 'ArrayRef[Paws::RDS::DBSnapshot]', xmlname => 'DBSnapshot', traits => ['Unwrapped',]);
   has Marker => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

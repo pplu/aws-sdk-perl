@@ -4,6 +4,7 @@ package Paws::EC2::MoveAddressToVpcResult;
   has AllocationId => (is => 'ro', isa => 'Str', xmlname => 'allocationId', traits => ['Unwrapped',]);
   has Status => (is => 'ro', isa => 'Str', xmlname => 'status', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

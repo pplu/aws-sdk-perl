@@ -5,6 +5,7 @@ package Paws::StorageGateway::CreateSnapshotFromVolumeRecoveryPointOutput;
   has VolumeARN => (is => 'ro', isa => 'Str');
   has VolumeRecoveryPointTime => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

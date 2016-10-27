@@ -5,6 +5,7 @@ package Paws::CognitoIdentity::LookupDeveloperIdentityResponse;
   has IdentityId => (is => 'ro', isa => 'Str');
   has NextToken => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

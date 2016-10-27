@@ -4,6 +4,7 @@ package Paws::WAF::ListXssMatchSetsResponse;
   has NextMarker => (is => 'ro', isa => 'Str');
   has XssMatchSets => (is => 'ro', isa => 'ArrayRef[Paws::WAF::XssMatchSetSummary]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

@@ -4,6 +4,7 @@ package Paws::WAF::CreateSqlInjectionMatchSetResponse;
   has ChangeToken => (is => 'ro', isa => 'Str');
   has SqlInjectionMatchSet => (is => 'ro', isa => 'Paws::WAF::SqlInjectionMatchSet');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

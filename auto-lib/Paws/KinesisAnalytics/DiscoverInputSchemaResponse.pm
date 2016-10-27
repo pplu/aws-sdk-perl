@@ -5,6 +5,7 @@ package Paws::KinesisAnalytics::DiscoverInputSchemaResponse;
   has ParsedInputRecords => (is => 'ro', isa => 'ArrayRef[ArrayRef[Str|Undef]]');
   has RawInputRecords => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

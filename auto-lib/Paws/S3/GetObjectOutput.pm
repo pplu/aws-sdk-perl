@@ -30,6 +30,7 @@ package Paws::S3::GetObjectOutput;
   has WebsiteRedirectLocation => (is => 'ro', isa => 'Str');
   use MooseX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => 'Body');
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

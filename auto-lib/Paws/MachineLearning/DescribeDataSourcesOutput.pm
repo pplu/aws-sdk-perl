@@ -4,6 +4,7 @@ package Paws::MachineLearning::DescribeDataSourcesOutput;
   has NextToken => (is => 'ro', isa => 'Str');
   has Results => (is => 'ro', isa => 'ArrayRef[Paws::MachineLearning::DataSource]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

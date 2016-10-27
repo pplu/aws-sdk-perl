@@ -4,6 +4,7 @@ package Paws::CloudWatch::ListMetricsOutput;
   has Metrics => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatch::Metric]');
   has NextToken => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

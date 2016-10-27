@@ -3,6 +3,7 @@ package Paws::ELBv2::SetSubnetsOutput;
   use Moose;
   has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Paws::ELBv2::AvailabilityZone]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

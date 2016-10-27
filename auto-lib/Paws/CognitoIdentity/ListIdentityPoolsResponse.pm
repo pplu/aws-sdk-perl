@@ -4,6 +4,7 @@ package Paws::CognitoIdentity::ListIdentityPoolsResponse;
   has IdentityPools => (is => 'ro', isa => 'ArrayRef[Paws::CognitoIdentity::IdentityPoolShortDescription]');
   has NextToken => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

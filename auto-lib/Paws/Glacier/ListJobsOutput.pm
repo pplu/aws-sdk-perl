@@ -4,6 +4,7 @@ package Paws::Glacier::ListJobsOutput;
   has JobList => (is => 'ro', isa => 'ArrayRef[Paws::Glacier::GlacierJobDescription]');
   has Marker => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

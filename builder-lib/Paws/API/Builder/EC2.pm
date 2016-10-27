@@ -58,6 +58,7 @@ package [% c.api %]::[% c.shapename_for_operation_output(op_name) %];
   [%- IF (traits.size) %], traits => [[% FOREACH trait=traits %]'[% trait %]',[% END %]][% END -%]
   [%- IF (c.required_in_shape(shape,param_name)) %], required => 1[% END %]);
 [% END %]
+  has _request_id => (is => 'ro', isa => 'Str');
 [%- END %]
 1;
 [% c.class_documentation_template | eval %]

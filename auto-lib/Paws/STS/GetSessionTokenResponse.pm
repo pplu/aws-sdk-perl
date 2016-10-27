@@ -3,6 +3,7 @@ package Paws::STS::GetSessionTokenResponse;
   use Moose;
   has Credentials => (is => 'ro', isa => 'Paws::STS::Credentials');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

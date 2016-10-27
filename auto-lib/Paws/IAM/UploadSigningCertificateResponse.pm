@@ -3,6 +3,7 @@ package Paws::IAM::UploadSigningCertificateResponse;
   use Moose;
   has Certificate => (is => 'ro', isa => 'Paws::IAM::SigningCertificate', required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

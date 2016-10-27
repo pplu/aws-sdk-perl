@@ -4,6 +4,7 @@ package Paws::EC2::DescribeHostReservationsResult;
   has HostReservationSet => (is => 'ro', isa => 'ArrayRef[Paws::EC2::HostReservation]', xmlname => 'hostReservationSet', traits => ['Unwrapped',]);
   has NextToken => (is => 'ro', isa => 'Str', xmlname => 'nextToken', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

@@ -3,6 +3,7 @@ package Paws::RDS::CopyDBParameterGroupResult;
   use Moose;
   has DBParameterGroup => (is => 'ro', isa => 'Paws::RDS::DBParameterGroup');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

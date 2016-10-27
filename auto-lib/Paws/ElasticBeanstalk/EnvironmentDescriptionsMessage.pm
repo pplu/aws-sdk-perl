@@ -3,6 +3,7 @@ package Paws::ElasticBeanstalk::EnvironmentDescriptionsMessage;
   use Moose;
   has Environments => (is => 'ro', isa => 'ArrayRef[Paws::ElasticBeanstalk::EnvironmentDescription]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

@@ -7,6 +7,7 @@ package Paws::ApiGateway::Resource;
   has PathPart => (is => 'ro', isa => 'Str');
   has ResourceMethods => (is => 'ro', isa => 'Paws::ApiGateway::MapOfMethod');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

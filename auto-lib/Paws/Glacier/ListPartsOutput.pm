@@ -9,6 +9,7 @@ package Paws::Glacier::ListPartsOutput;
   has PartSizeInBytes => (is => 'ro', isa => 'Int');
   has VaultARN => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

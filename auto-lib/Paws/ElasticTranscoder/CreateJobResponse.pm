@@ -3,6 +3,7 @@ package Paws::ElasticTranscoder::CreateJobResponse;
   use Moose;
   has Job => (is => 'ro', isa => 'Paws::ElasticTranscoder::Job');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

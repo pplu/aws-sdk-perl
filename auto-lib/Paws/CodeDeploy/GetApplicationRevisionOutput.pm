@@ -5,6 +5,7 @@ package Paws::CodeDeploy::GetApplicationRevisionOutput;
   has Revision => (is => 'ro', isa => 'Paws::CodeDeploy::RevisionLocation', traits => ['Unwrapped'], xmlname => 'revision' );
   has RevisionInfo => (is => 'ro', isa => 'Paws::CodeDeploy::GenericRevisionInfo', traits => ['Unwrapped'], xmlname => 'revisionInfo' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

@@ -2,6 +2,7 @@
 package Paws::SES::SetIdentityFeedbackForwardingEnabledResponse;
   use Moose;
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

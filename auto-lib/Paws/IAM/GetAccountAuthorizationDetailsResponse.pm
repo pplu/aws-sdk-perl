@@ -8,6 +8,7 @@ package Paws::IAM::GetAccountAuthorizationDetailsResponse;
   has RoleDetailList => (is => 'ro', isa => 'ArrayRef[Paws::IAM::RoleDetail]');
   has UserDetailList => (is => 'ro', isa => 'ArrayRef[Paws::IAM::UserDetail]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

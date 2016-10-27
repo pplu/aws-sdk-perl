@@ -7,6 +7,7 @@ package Paws::CloudHSM::DescribeLunaClientResponse;
   has Label => (is => 'ro', isa => 'Str');
   has LastModifiedTimestamp => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

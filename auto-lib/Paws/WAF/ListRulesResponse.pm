@@ -4,6 +4,7 @@ package Paws::WAF::ListRulesResponse;
   has NextMarker => (is => 'ro', isa => 'Str');
   has Rules => (is => 'ro', isa => 'ArrayRef[Paws::WAF::RuleSummary]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

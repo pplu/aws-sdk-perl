@@ -4,6 +4,7 @@ package Paws::Discovery::DescribeTagsResponse;
   has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Discovery::ConfigurationTag]', traits => ['Unwrapped'], xmlname => 'tags' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

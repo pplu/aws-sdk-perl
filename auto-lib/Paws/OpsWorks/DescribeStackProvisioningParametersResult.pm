@@ -4,6 +4,7 @@ package Paws::OpsWorks::DescribeStackProvisioningParametersResult;
   has AgentInstallerUrl => (is => 'ro', isa => 'Str');
   has Parameters => (is => 'ro', isa => 'Paws::OpsWorks::Parameters');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

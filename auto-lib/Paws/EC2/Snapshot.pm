@@ -16,6 +16,7 @@ package Paws::EC2::Snapshot;
   has VolumeId => (is => 'ro', isa => 'Str', xmlname => 'volumeId', traits => ['Unwrapped',]);
   has VolumeSize => (is => 'ro', isa => 'Int', xmlname => 'volumeSize', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

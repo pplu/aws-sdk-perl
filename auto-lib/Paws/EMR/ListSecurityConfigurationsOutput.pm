@@ -4,6 +4,7 @@ package Paws::EMR::ListSecurityConfigurationsOutput;
   has Marker => (is => 'ro', isa => 'Str');
   has SecurityConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::EMR::SecurityConfigurationSummary]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

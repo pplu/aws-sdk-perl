@@ -6,6 +6,7 @@ package Paws::KMS::GetParametersForImportResponse;
   has ParametersValidTo => (is => 'ro', isa => 'Str');
   has PublicKey => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

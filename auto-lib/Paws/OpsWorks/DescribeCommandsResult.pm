@@ -3,6 +3,7 @@ package Paws::OpsWorks::DescribeCommandsResult;
   use Moose;
   has Commands => (is => 'ro', isa => 'ArrayRef[Paws::OpsWorks::Command]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

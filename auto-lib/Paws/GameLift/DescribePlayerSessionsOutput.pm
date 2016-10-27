@@ -4,6 +4,7 @@ package Paws::GameLift::DescribePlayerSessionsOutput;
   has NextToken => (is => 'ro', isa => 'Str');
   has PlayerSessions => (is => 'ro', isa => 'ArrayRef[Paws::GameLift::PlayerSession]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

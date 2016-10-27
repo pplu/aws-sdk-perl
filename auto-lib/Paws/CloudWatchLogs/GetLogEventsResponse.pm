@@ -5,6 +5,7 @@ package Paws::CloudWatchLogs::GetLogEventsResponse;
   has NextBackwardToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextBackwardToken' );
   has NextForwardToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextForwardToken' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

@@ -4,6 +4,7 @@ package Paws::SSM::GetDocumentResult;
   has Content => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

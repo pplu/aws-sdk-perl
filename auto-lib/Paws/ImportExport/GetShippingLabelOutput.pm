@@ -4,6 +4,7 @@ package Paws::ImportExport::GetShippingLabelOutput;
   has ShippingLabelURL => (is => 'ro', isa => 'Str');
   has Warning => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

@@ -4,6 +4,7 @@ package Paws::GameLift::DescribeFleetEventsOutput;
   has Events => (is => 'ro', isa => 'ArrayRef[Paws::GameLift::Event]');
   has NextToken => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

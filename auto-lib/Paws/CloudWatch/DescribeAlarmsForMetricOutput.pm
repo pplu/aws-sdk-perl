@@ -3,6 +3,7 @@ package Paws::CloudWatch::DescribeAlarmsForMetricOutput;
   use Moose;
   has MetricAlarms => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatch::MetricAlarm]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

@@ -3,6 +3,7 @@ package Paws::CognitoSync::GetCognitoEventsResponse;
   use Moose;
   has Events => (is => 'ro', isa => 'Paws::CognitoSync::Events');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

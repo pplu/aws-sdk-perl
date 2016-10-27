@@ -4,6 +4,7 @@ package Paws::Support::DescribeCommunicationsResponse;
   has Communications => (is => 'ro', isa => 'ArrayRef[Paws::Support::Communication]', traits => ['Unwrapped'], xmlname => 'communications' );
   has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

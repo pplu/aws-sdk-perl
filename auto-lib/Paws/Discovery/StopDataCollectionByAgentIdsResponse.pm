@@ -3,6 +3,7 @@ package Paws::Discovery::StopDataCollectionByAgentIdsResponse;
   use Moose;
   has AgentsConfigurationStatus => (is => 'ro', isa => 'ArrayRef[Paws::Discovery::AgentConfigurationStatus]', traits => ['Unwrapped'], xmlname => 'agentsConfigurationStatus' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

@@ -3,6 +3,7 @@ package Paws::CognitoIdp::UpdateUserAttributesResponse;
   use Moose;
   has CodeDeliveryDetailsList => (is => 'ro', isa => 'ArrayRef[Paws::CognitoIdp::CodeDeliveryDetailsType]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

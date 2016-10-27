@@ -5,6 +5,7 @@ package Paws::IAM::GetSAMLProviderResponse;
   has SAMLMetadataDocument => (is => 'ro', isa => 'Str');
   has ValidUntil => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

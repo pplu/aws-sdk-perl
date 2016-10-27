@@ -5,6 +5,7 @@ package Paws::DMS::DescribeTableStatisticsResponse;
   has ReplicationTaskArn => (is => 'ro', isa => 'Str');
   has TableStatistics => (is => 'ro', isa => 'ArrayRef[Paws::DMS::TableStatistics]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

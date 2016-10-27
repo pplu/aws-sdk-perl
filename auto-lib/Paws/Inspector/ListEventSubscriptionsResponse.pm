@@ -4,6 +4,7 @@ package Paws::Inspector::ListEventSubscriptionsResponse;
   has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
   has Subscriptions => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::Subscription]', traits => ['Unwrapped'], xmlname => 'subscriptions' , required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

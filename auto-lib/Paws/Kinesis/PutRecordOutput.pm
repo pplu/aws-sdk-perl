@@ -4,6 +4,7 @@ package Paws::Kinesis::PutRecordOutput;
   has SequenceNumber => (is => 'ro', isa => 'Str', required => 1);
   has ShardId => (is => 'ro', isa => 'Str', required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

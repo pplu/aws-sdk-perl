@@ -3,6 +3,7 @@ package Paws::DataPipeline::ReportTaskProgressOutput;
   use Moose;
   has Canceled => (is => 'ro', isa => 'Bool', traits => ['Unwrapped'], xmlname => 'canceled' , required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

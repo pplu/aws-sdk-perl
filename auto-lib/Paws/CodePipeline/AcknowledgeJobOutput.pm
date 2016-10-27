@@ -3,6 +3,7 @@ package Paws::CodePipeline::AcknowledgeJobOutput;
   use Moose;
   has Status => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'status' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

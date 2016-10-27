@@ -5,6 +5,7 @@ package Paws::CodeDeploy::BatchGetApplicationRevisionsOutput;
   has ErrorMessage => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'errorMessage' );
   has Revisions => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::RevisionInfo]', traits => ['Unwrapped'], xmlname => 'revisions' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

@@ -4,6 +4,7 @@ package Paws::ECR::InitiateLayerUploadResponse;
   has PartSize => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => 'partSize' );
   has UploadId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'uploadId' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

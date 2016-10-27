@@ -4,6 +4,7 @@ package Paws::AutoScaling::DescribeLoadBalancersResponse;
   has LoadBalancers => (is => 'ro', isa => 'ArrayRef[Paws::AutoScaling::LoadBalancerState]');
   has NextToken => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

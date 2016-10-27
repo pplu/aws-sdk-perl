@@ -3,6 +3,7 @@ package Paws::KMS::DescribeKeyResponse;
   use Moose;
   has KeyMetadata => (is => 'ro', isa => 'Paws::KMS::KeyMetadata');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

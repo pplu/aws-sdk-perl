@@ -4,6 +4,7 @@ package Paws::WorkSpaces::CreateWorkspacesResult;
   has FailedRequests => (is => 'ro', isa => 'ArrayRef[Paws::WorkSpaces::FailedCreateWorkspaceRequest]');
   has PendingRequests => (is => 'ro', isa => 'ArrayRef[Paws::WorkSpaces::Workspace]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

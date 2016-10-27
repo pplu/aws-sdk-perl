@@ -6,6 +6,7 @@ package Paws::AutoScaling::DescribeAccountLimitsAnswer;
   has NumberOfAutoScalingGroups => (is => 'ro', isa => 'Int');
   has NumberOfLaunchConfigurations => (is => 'ro', isa => 'Int');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

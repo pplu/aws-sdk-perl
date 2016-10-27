@@ -10,6 +10,7 @@ package Paws::CognitoIdentity::IdentityPool;
   has SamlProviderARNs => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has SupportedLoginProviders => (is => 'ro', isa => 'Paws::CognitoIdentity::IdentityProviders');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

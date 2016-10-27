@@ -3,6 +3,7 @@ package Paws::Config::GetComplianceSummaryByConfigRuleResponse;
   use Moose;
   has ComplianceSummary => (is => 'ro', isa => 'Paws::Config::ComplianceSummary');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

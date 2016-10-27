@@ -4,6 +4,7 @@ package Paws::CodePipeline::ListActionTypesOutput;
   has ActionTypes => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::ActionType]', traits => ['Unwrapped'], xmlname => 'actionTypes' , required => 1);
   has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

@@ -4,6 +4,7 @@ package Paws::ElastiCache::ReservedCacheNodesOfferingMessage;
   has Marker => (is => 'ro', isa => 'Str');
   has ReservedCacheNodesOfferings => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::ReservedCacheNodesOffering]', xmlname => 'ReservedCacheNodesOffering', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

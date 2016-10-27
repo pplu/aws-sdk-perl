@@ -3,6 +3,7 @@ package Paws::Snowball::CreateAddressResult;
   use Moose;
   has AddressId => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

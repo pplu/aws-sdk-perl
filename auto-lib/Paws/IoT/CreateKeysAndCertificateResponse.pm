@@ -6,6 +6,7 @@ package Paws::IoT::CreateKeysAndCertificateResponse;
   has CertificatePem => (is => 'ro', isa => 'Str');
   has KeyPair => (is => 'ro', isa => 'Paws::IoT::KeyPair');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

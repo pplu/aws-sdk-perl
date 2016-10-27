@@ -3,6 +3,7 @@ package Paws::ES::ListDomainNamesResponse;
   use Moose;
   has DomainNames => (is => 'ro', isa => 'ArrayRef[Paws::ES::DomainInfo]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

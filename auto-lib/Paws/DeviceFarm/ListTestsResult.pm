@@ -4,6 +4,7 @@ package Paws::DeviceFarm::ListTestsResult;
   has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
   has Tests => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::Test]', traits => ['Unwrapped'], xmlname => 'tests' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

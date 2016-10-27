@@ -4,6 +4,7 @@ package Paws::CloudHSM::ListHapgsResponse;
   has HapgList => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
   has NextToken => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

@@ -4,6 +4,7 @@ package Paws::DeviceFarm::ListDevicesResult;
   has Devices => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::Device]', traits => ['Unwrapped'], xmlname => 'devices' );
   has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

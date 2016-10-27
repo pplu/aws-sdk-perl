@@ -3,6 +3,7 @@ package Paws::Config::DescribeDeliveryChannelsResponse;
   use Moose;
   has DeliveryChannels => (is => 'ro', isa => 'ArrayRef[Paws::Config::DeliveryChannel]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

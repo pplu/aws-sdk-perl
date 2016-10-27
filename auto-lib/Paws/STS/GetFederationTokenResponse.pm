@@ -5,6 +5,7 @@ package Paws::STS::GetFederationTokenResponse;
   has FederatedUser => (is => 'ro', isa => 'Paws::STS::FederatedUser');
   has PackedPolicySize => (is => 'ro', isa => 'Int');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

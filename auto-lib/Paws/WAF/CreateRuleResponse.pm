@@ -4,6 +4,7 @@ package Paws::WAF::CreateRuleResponse;
   has ChangeToken => (is => 'ro', isa => 'Str');
   has Rule => (is => 'ro', isa => 'Paws::WAF::Rule');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

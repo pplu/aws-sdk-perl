@@ -4,6 +4,7 @@ package Paws::IoT::RegisterCACertificateResponse;
   has CertificateArn => (is => 'ro', isa => 'Str');
   has CertificateId => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

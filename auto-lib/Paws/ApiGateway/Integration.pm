@@ -12,6 +12,7 @@ package Paws::ApiGateway::Integration;
   has Type => (is => 'ro', isa => 'Str');
   has Uri => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

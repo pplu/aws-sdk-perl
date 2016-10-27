@@ -4,6 +4,7 @@ package Paws::ElasticBeanstalk::CheckDNSAvailabilityResultMessage;
   has Available => (is => 'ro', isa => 'Bool');
   has FullyQualifiedCNAME => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

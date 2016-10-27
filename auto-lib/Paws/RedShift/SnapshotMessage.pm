@@ -4,6 +4,7 @@ package Paws::RedShift::SnapshotMessage;
   has Marker => (is => 'ro', isa => 'Str');
   has Snapshots => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::Snapshot]', xmlname => 'Snapshot', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

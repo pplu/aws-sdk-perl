@@ -4,6 +4,7 @@ package Paws::SNS::ListSubscriptionsByTopicResponse;
   has NextToken => (is => 'ro', isa => 'Str');
   has Subscriptions => (is => 'ro', isa => 'ArrayRef[Paws::SNS::Subscription]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

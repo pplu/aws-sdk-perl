@@ -3,6 +3,7 @@ package Paws::SimpleWorkflow::Run;
   use Moose;
   has RunId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'runId' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

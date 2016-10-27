@@ -8,6 +8,7 @@ package Paws::EC2::VolumeAttachment;
   has State => (is => 'ro', isa => 'Str', xmlname => 'status', traits => ['Unwrapped',]);
   has VolumeId => (is => 'ro', isa => 'Str', xmlname => 'volumeId', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

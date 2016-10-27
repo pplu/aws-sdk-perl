@@ -3,6 +3,7 @@ package Paws::EC2::DeleteNatGatewayResult;
   use Moose;
   has NatGatewayId => (is => 'ro', isa => 'Str', xmlname => 'natGatewayId', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

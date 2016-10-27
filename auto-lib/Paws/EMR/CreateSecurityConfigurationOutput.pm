@@ -4,6 +4,7 @@ package Paws::EMR::CreateSecurityConfigurationOutput;
   has CreationDateTime => (is => 'ro', isa => 'Str', required => 1);
   has Name => (is => 'ro', isa => 'Str', required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

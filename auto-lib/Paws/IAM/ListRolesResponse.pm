@@ -5,6 +5,7 @@ package Paws::IAM::ListRolesResponse;
   has Marker => (is => 'ro', isa => 'Str');
   has Roles => (is => 'ro', isa => 'ArrayRef[Paws::IAM::Role]', required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

@@ -5,6 +5,7 @@ package Paws::IAM::ListAccessKeysResponse;
   has IsTruncated => (is => 'ro', isa => 'Bool');
   has Marker => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

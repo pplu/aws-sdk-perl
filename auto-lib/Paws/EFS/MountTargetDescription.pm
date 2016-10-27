@@ -9,6 +9,7 @@ package Paws::EFS::MountTargetDescription;
   has OwnerId => (is => 'ro', isa => 'Str');
   has SubnetId => (is => 'ro', isa => 'Str', required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

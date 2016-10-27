@@ -4,6 +4,7 @@ package Paws::CognitoIdp::ListUsersResponse;
   has PaginationToken => (is => 'ro', isa => 'Str');
   has Users => (is => 'ro', isa => 'ArrayRef[Paws::CognitoIdp::UserType]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

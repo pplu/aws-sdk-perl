@@ -6,6 +6,7 @@ package Paws::ElasticBeanstalk::ApplyEnvironmentManagedActionResult;
   has ActionType => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

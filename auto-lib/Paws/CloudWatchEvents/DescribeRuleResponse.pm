@@ -9,6 +9,7 @@ package Paws::CloudWatchEvents::DescribeRuleResponse;
   has ScheduleExpression => (is => 'ro', isa => 'Str');
   has State => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

@@ -4,6 +4,7 @@ package Paws::ElastiCache::CacheSecurityGroupMessage;
   has CacheSecurityGroups => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::CacheSecurityGroup]', xmlname => 'CacheSecurityGroup', traits => ['Unwrapped',]);
   has Marker => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

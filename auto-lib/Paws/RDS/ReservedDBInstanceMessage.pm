@@ -4,6 +4,7 @@ package Paws::RDS::ReservedDBInstanceMessage;
   has Marker => (is => 'ro', isa => 'Str');
   has ReservedDBInstances => (is => 'ro', isa => 'ArrayRef[Paws::RDS::ReservedDBInstance]', xmlname => 'ReservedDBInstance', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

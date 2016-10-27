@@ -4,6 +4,7 @@ package Paws::SNS::ListEndpointsByPlatformApplicationResponse;
   has Endpoints => (is => 'ro', isa => 'ArrayRef[Paws::SNS::Endpoint]');
   has NextToken => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

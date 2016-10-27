@@ -3,6 +3,7 @@ package Paws::CloudSearch::DescribeAvailabilityOptionsResponse;
   use Moose;
   has AvailabilityOptions => (is => 'ro', isa => 'Paws::CloudSearch::AvailabilityOptionsStatus');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

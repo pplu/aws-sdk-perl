@@ -3,6 +3,7 @@ package Paws::CognitoSync::DescribeIdentityPoolUsageResponse;
   use Moose;
   has IdentityPoolUsage => (is => 'ro', isa => 'Paws::CognitoSync::IdentityPoolUsage');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

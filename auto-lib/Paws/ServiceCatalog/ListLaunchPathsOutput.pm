@@ -4,6 +4,7 @@ package Paws::ServiceCatalog::ListLaunchPathsOutput;
   has LaunchPathSummaries => (is => 'ro', isa => 'ArrayRef[Paws::ServiceCatalog::LaunchPathSummary]');
   has NextPageToken => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

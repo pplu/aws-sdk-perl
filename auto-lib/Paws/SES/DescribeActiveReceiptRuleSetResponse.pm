@@ -4,6 +4,7 @@ package Paws::SES::DescribeActiveReceiptRuleSetResponse;
   has Metadata => (is => 'ro', isa => 'Paws::SES::ReceiptRuleSetMetadata');
   has Rules => (is => 'ro', isa => 'ArrayRef[Paws::SES::ReceiptRule]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

@@ -4,6 +4,7 @@ package Paws::WAF::ListIPSetsResponse;
   has IPSets => (is => 'ro', isa => 'ArrayRef[Paws::WAF::IPSetSummary]');
   has NextMarker => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

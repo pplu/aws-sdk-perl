@@ -9,6 +9,7 @@ package Paws::ApiGateway::TestInvokeAuthorizerResponse;
   has Policy => (is => 'ro', isa => 'Str');
   has PrincipalId => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

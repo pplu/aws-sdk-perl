@@ -4,6 +4,7 @@ package Paws::Budgets::DescribeNotificationsForBudgetResponse;
   has NextToken => (is => 'ro', isa => 'Str');
   has Notifications => (is => 'ro', isa => 'ArrayRef[Paws::Budgets::Notification]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

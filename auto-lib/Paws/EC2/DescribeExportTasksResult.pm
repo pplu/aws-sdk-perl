@@ -3,6 +3,7 @@ package Paws::EC2::DescribeExportTasksResult;
   use Moose;
   has ExportTasks => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ExportTask]', xmlname => 'exportTaskSet', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

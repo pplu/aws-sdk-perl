@@ -5,6 +5,7 @@ package Paws::DataPipeline::DescribeObjectsOutput;
   has Marker => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'marker' );
   has PipelineObjects => (is => 'ro', isa => 'ArrayRef[Paws::DataPipeline::PipelineObject]', traits => ['Unwrapped'], xmlname => 'pipelineObjects' , required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

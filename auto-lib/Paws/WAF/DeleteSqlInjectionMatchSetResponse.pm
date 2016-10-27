@@ -3,6 +3,7 @@ package Paws::WAF::DeleteSqlInjectionMatchSetResponse;
   use Moose;
   has ChangeToken => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

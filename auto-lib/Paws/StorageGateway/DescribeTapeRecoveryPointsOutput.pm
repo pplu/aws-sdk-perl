@@ -5,6 +5,7 @@ package Paws::StorageGateway::DescribeTapeRecoveryPointsOutput;
   has Marker => (is => 'ro', isa => 'Str');
   has TapeRecoveryPointInfos => (is => 'ro', isa => 'ArrayRef[Paws::StorageGateway::TapeRecoveryPointInfo]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

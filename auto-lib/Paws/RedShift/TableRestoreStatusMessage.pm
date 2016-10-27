@@ -4,6 +4,7 @@ package Paws::RedShift::TableRestoreStatusMessage;
   has Marker => (is => 'ro', isa => 'Str');
   has TableRestoreStatusDetails => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::TableRestoreStatus]', xmlname => 'TableRestoreStatus', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

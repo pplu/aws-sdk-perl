@@ -4,6 +4,7 @@ package Paws::Kinesis::PutRecordsOutput;
   has FailedRecordCount => (is => 'ro', isa => 'Int');
   has Records => (is => 'ro', isa => 'ArrayRef[Paws::Kinesis::PutRecordsResultEntry]', required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

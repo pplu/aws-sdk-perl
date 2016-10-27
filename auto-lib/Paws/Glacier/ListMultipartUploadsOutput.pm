@@ -4,6 +4,7 @@ package Paws::Glacier::ListMultipartUploadsOutput;
   has Marker => (is => 'ro', isa => 'Str');
   has UploadsList => (is => 'ro', isa => 'ArrayRef[Paws::Glacier::UploadListElement]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

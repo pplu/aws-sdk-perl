@@ -4,6 +4,7 @@ package Paws::WorkSpaces::DescribeWorkspacesResult;
   has NextToken => (is => 'ro', isa => 'Str');
   has Workspaces => (is => 'ro', isa => 'ArrayRef[Paws::WorkSpaces::Workspace]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

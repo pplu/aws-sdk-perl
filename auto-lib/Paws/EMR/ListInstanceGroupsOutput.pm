@@ -4,6 +4,7 @@ package Paws::EMR::ListInstanceGroupsOutput;
   has InstanceGroups => (is => 'ro', isa => 'ArrayRef[Paws::EMR::InstanceGroup]');
   has Marker => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

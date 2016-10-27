@@ -3,6 +3,7 @@ package Paws::S3::GetBucketLifecycleConfigurationOutput;
   use Moose;
   has Rules => (is => 'ro', isa => 'ArrayRef[Paws::S3::LifecycleRule]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

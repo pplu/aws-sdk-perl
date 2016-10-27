@@ -3,6 +3,7 @@ package Paws::KMS::GetKeyPolicyResponse;
   use Moose;
   has Policy => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

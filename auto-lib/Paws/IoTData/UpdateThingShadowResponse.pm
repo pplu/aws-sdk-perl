@@ -3,6 +3,7 @@ package Paws::IoTData::UpdateThingShadowResponse;
   use Moose;
   has Payload => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

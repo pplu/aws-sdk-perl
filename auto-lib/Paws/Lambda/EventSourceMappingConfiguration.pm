@@ -10,6 +10,7 @@ package Paws::Lambda::EventSourceMappingConfiguration;
   has StateTransitionReason => (is => 'ro', isa => 'Str');
   has UUID => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

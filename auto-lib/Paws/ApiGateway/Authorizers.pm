@@ -4,6 +4,7 @@ package Paws::ApiGateway::Authorizers;
   has Items => (is => 'ro', isa => 'ArrayRef[Paws::ApiGateway::Authorizer]');
   has Position => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

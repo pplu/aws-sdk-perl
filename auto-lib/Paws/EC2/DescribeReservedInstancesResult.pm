@@ -3,6 +3,7 @@ package Paws::EC2::DescribeReservedInstancesResult;
   use Moose;
   has ReservedInstances => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ReservedInstances]', xmlname => 'reservedInstancesSet', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

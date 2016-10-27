@@ -4,6 +4,7 @@ package Paws::Kinesis::ListStreamsOutput;
   has HasMoreStreams => (is => 'ro', isa => 'Bool', required => 1);
   has StreamNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

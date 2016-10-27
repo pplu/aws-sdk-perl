@@ -4,6 +4,7 @@ package Paws::ELBv2::DescribeLoadBalancersOutput;
   has LoadBalancers => (is => 'ro', isa => 'ArrayRef[Paws::ELBv2::LoadBalancer]');
   has NextMarker => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

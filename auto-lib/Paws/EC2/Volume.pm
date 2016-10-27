@@ -14,6 +14,7 @@ package Paws::EC2::Volume;
   has VolumeId => (is => 'ro', isa => 'Str', xmlname => 'volumeId', traits => ['Unwrapped',]);
   has VolumeType => (is => 'ro', isa => 'Str', xmlname => 'volumeType', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

@@ -5,6 +5,7 @@ package Paws::WAF::GetSampledRequestsResponse;
   has SampledRequests => (is => 'ro', isa => 'ArrayRef[Paws::WAF::SampledHTTPRequest]');
   has TimeWindow => (is => 'ro', isa => 'Paws::WAF::TimeWindow');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

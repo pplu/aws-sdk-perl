@@ -4,6 +4,7 @@ package Paws::CloudSearchDomain::SuggestResponse;
   has Status => (is => 'ro', isa => 'Paws::CloudSearchDomain::SuggestStatus');
   has Suggest => (is => 'ro', isa => 'Paws::CloudSearchDomain::SuggestModel');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

@@ -4,6 +4,7 @@ package Paws::AutoScaling::TagsType;
   has NextToken => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::AutoScaling::TagDescription]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

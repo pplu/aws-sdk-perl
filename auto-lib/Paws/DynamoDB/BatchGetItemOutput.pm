@@ -5,6 +5,7 @@ package Paws::DynamoDB::BatchGetItemOutput;
   has Responses => (is => 'ro', isa => 'Paws::DynamoDB::BatchGetResponseMap');
   has UnprocessedKeys => (is => 'ro', isa => 'Paws::DynamoDB::BatchGetRequestMap');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

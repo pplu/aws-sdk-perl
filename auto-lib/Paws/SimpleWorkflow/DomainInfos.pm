@@ -4,6 +4,7 @@ package Paws::SimpleWorkflow::DomainInfos;
   has DomainInfos => (is => 'ro', isa => 'ArrayRef[Paws::SimpleWorkflow::DomainInfo]', traits => ['Unwrapped'], xmlname => 'domainInfos' , required => 1);
   has NextPageToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextPageToken' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

@@ -5,6 +5,7 @@ package Paws::EC2::KeyPair;
   has KeyMaterial => (is => 'ro', isa => 'Str', xmlname => 'keyMaterial', traits => ['Unwrapped',]);
   has KeyName => (is => 'ro', isa => 'Str', xmlname => 'keyName', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

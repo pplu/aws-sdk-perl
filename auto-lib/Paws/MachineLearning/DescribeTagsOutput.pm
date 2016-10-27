@@ -5,6 +5,7 @@ package Paws::MachineLearning::DescribeTagsOutput;
   has ResourceType => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::MachineLearning::Tag]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

@@ -22,6 +22,7 @@ package Paws::MachineLearning::GetDataSourceOutput;
   has StartedAt => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

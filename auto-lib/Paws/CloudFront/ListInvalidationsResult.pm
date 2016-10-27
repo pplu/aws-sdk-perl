@@ -3,6 +3,7 @@ package Paws::CloudFront::ListInvalidationsResult;
   use Moose;
   has InvalidationList => (is => 'ro', isa => 'Paws::CloudFront::InvalidationList');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

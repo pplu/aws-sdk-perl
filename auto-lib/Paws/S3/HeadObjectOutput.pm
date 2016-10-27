@@ -27,6 +27,7 @@ package Paws::S3::HeadObjectOutput;
   has VersionId => (is => 'ro', isa => 'Str');
   has WebsiteRedirectLocation => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

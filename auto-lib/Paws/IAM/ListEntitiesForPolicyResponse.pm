@@ -7,6 +7,7 @@ package Paws::IAM::ListEntitiesForPolicyResponse;
   has PolicyRoles => (is => 'ro', isa => 'ArrayRef[Paws::IAM::PolicyRole]');
   has PolicyUsers => (is => 'ro', isa => 'ArrayRef[Paws::IAM::PolicyUser]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

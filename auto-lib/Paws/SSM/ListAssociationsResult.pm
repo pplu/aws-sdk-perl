@@ -4,6 +4,7 @@ package Paws::SSM::ListAssociationsResult;
   has Associations => (is => 'ro', isa => 'ArrayRef[Paws::SSM::Association]');
   has NextToken => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

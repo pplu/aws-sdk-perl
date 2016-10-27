@@ -3,6 +3,7 @@ package Paws::OpsWorks::DescribeRaidArraysResult;
   use Moose;
   has RaidArrays => (is => 'ro', isa => 'ArrayRef[Paws::OpsWorks::RaidArray]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

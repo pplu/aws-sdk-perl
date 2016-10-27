@@ -3,6 +3,7 @@ package Paws::OpsWorks::RegisterInstanceResult;
   use Moose;
   has InstanceId => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

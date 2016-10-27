@@ -3,6 +3,7 @@ package Paws::DeviceFarm::UpdateDevicePoolResult;
   use Moose;
   has DevicePool => (is => 'ro', isa => 'Paws::DeviceFarm::DevicePool', traits => ['Unwrapped'], xmlname => 'devicePool' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

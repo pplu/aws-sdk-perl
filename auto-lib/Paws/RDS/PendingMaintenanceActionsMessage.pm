@@ -4,6 +4,7 @@ package Paws::RDS::PendingMaintenanceActionsMessage;
   has Marker => (is => 'ro', isa => 'Str');
   has PendingMaintenanceActions => (is => 'ro', isa => 'ArrayRef[Paws::RDS::ResourcePendingMaintenanceActions]', xmlname => 'ResourcePendingMaintenanceActions', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

@@ -4,6 +4,7 @@ package Paws::DMS::DescribeOrderableReplicationInstancesResponse;
   has Marker => (is => 'ro', isa => 'Str');
   has OrderableReplicationInstances => (is => 'ro', isa => 'ArrayRef[Paws::DMS::OrderableReplicationInstance]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

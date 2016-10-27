@@ -4,6 +4,7 @@ package Paws::DMS::DescribeConnectionsResponse;
   has Connections => (is => 'ro', isa => 'ArrayRef[Paws::DMS::Connection]');
   has Marker => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

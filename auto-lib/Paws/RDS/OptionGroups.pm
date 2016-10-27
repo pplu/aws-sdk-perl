@@ -4,6 +4,7 @@ package Paws::RDS::OptionGroups;
   has Marker => (is => 'ro', isa => 'Str');
   has OptionGroupsList => (is => 'ro', isa => 'ArrayRef[Paws::RDS::OptionGroup]', xmlname => 'OptionGroup', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

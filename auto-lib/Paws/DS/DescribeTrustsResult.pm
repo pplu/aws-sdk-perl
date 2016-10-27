@@ -4,6 +4,7 @@ package Paws::DS::DescribeTrustsResult;
   has NextToken => (is => 'ro', isa => 'Str');
   has Trusts => (is => 'ro', isa => 'ArrayRef[Paws::DS::Trust]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

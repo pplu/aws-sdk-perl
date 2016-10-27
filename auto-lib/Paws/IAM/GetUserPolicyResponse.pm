@@ -5,6 +5,7 @@ package Paws::IAM::GetUserPolicyResponse;
   has PolicyName => (is => 'ro', isa => 'Str', required => 1);
   has UserName => (is => 'ro', isa => 'Str', required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

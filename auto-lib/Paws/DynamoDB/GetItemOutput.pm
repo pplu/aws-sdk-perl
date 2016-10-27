@@ -4,6 +4,7 @@ package Paws::DynamoDB::GetItemOutput;
   has ConsumedCapacity => (is => 'ro', isa => 'Paws::DynamoDB::ConsumedCapacity');
   has Item => (is => 'ro', isa => 'Paws::DynamoDB::AttributeMap');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

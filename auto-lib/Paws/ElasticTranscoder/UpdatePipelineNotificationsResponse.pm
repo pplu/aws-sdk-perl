@@ -3,6 +3,7 @@ package Paws::ElasticTranscoder::UpdatePipelineNotificationsResponse;
   use Moose;
   has Pipeline => (is => 'ro', isa => 'Paws::ElasticTranscoder::Pipeline');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

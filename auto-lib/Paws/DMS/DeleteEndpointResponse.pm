@@ -3,6 +3,7 @@ package Paws::DMS::DeleteEndpointResponse;
   use Moose;
   has Endpoint => (is => 'ro', isa => 'Paws::DMS::Endpoint');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

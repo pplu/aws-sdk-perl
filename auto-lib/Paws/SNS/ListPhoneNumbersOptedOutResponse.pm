@@ -4,6 +4,7 @@ package Paws::SNS::ListPhoneNumbersOptedOutResponse;
   has NextToken => (is => 'ro', isa => 'Str');
   has PhoneNumbers => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

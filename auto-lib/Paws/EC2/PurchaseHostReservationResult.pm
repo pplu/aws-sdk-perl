@@ -7,6 +7,7 @@ package Paws::EC2::PurchaseHostReservationResult;
   has TotalHourlyPrice => (is => 'ro', isa => 'Str', xmlname => 'totalHourlyPrice', traits => ['Unwrapped',]);
   has TotalUpfrontPrice => (is => 'ro', isa => 'Str', xmlname => 'totalUpfrontPrice', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

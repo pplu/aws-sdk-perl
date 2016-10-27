@@ -3,6 +3,7 @@ package Paws::DS::DeleteSnapshotResult;
   use Moose;
   has SnapshotId => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

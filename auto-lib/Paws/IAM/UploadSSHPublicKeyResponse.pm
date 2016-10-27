@@ -3,6 +3,7 @@ package Paws::IAM::UploadSSHPublicKeyResponse;
   use Moose;
   has SSHPublicKey => (is => 'ro', isa => 'Paws::IAM::SSHPublicKey');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

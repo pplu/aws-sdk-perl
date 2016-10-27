@@ -2,6 +2,7 @@
 package Paws::CognitoIdp::AdminUpdateUserAttributesResponse;
   use Moose;
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

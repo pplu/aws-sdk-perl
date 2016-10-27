@@ -4,6 +4,7 @@ package Paws::Config::ListDiscoveredResourcesResponse;
   has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
   has ResourceIdentifiers => (is => 'ro', isa => 'ArrayRef[Paws::Config::ResourceIdentifier]', traits => ['Unwrapped'], xmlname => 'resourceIdentifiers' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

@@ -11,6 +11,7 @@ package Paws::CloudHSM::DescribeHapgResponse;
   has PartitionSerialList => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has State => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

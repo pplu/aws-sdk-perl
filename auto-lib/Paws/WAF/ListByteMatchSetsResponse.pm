@@ -4,6 +4,7 @@ package Paws::WAF::ListByteMatchSetsResponse;
   has ByteMatchSets => (is => 'ro', isa => 'ArrayRef[Paws::WAF::ByteMatchSetSummary]');
   has NextMarker => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

@@ -4,6 +4,7 @@ package Paws::Config::DescribeComplianceByConfigRuleResponse;
   has ComplianceByConfigRules => (is => 'ro', isa => 'ArrayRef[Paws::Config::ComplianceByConfigRule]');
   has NextToken => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

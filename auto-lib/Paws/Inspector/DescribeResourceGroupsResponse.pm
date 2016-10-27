@@ -4,6 +4,7 @@ package Paws::Inspector::DescribeResourceGroupsResponse;
   has FailedItems => (is => 'ro', isa => 'Paws::Inspector::FailedItems', traits => ['Unwrapped'], xmlname => 'failedItems' , required => 1);
   has ResourceGroups => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::ResourceGroup]', traits => ['Unwrapped'], xmlname => 'resourceGroups' , required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

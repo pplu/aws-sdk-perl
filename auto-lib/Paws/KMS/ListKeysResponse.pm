@@ -5,6 +5,7 @@ package Paws::KMS::ListKeysResponse;
   has NextMarker => (is => 'ro', isa => 'Str');
   has Truncated => (is => 'ro', isa => 'Bool');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

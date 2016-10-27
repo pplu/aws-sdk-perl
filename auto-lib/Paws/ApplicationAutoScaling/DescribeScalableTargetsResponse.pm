@@ -4,6 +4,7 @@ package Paws::ApplicationAutoScaling::DescribeScalableTargetsResponse;
   has NextToken => (is => 'ro', isa => 'Str');
   has ScalableTargets => (is => 'ro', isa => 'ArrayRef[Paws::ApplicationAutoScaling::ScalableTarget]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

@@ -3,6 +3,7 @@ package Paws::CloudSearch::UpdateScalingParametersResponse;
   use Moose;
   has ScalingParameters => (is => 'ro', isa => 'Paws::CloudSearch::ScalingParametersStatus', required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

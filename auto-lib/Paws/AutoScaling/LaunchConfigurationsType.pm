@@ -4,6 +4,7 @@ package Paws::AutoScaling::LaunchConfigurationsType;
   has LaunchConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::AutoScaling::LaunchConfiguration]', required => 1);
   has NextToken => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

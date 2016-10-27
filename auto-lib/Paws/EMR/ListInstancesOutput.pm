@@ -4,6 +4,7 @@ package Paws::EMR::ListInstancesOutput;
   has Instances => (is => 'ro', isa => 'ArrayRef[Paws::EMR::Instance]');
   has Marker => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

@@ -3,6 +3,7 @@ package Paws::AutoScaling::ActivityType;
   use Moose;
   has Activity => (is => 'ro', isa => 'Paws::AutoScaling::Activity');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

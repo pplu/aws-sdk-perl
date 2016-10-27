@@ -4,6 +4,7 @@ package Paws::StorageGateway::UpdateChapCredentialsOutput;
   has InitiatorName => (is => 'ro', isa => 'Str');
   has TargetARN => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

@@ -4,6 +4,7 @@ package Paws::SimpleWorkflow::History;
   has Events => (is => 'ro', isa => 'ArrayRef[Paws::SimpleWorkflow::HistoryEvent]', traits => ['Unwrapped'], xmlname => 'events' , required => 1);
   has NextPageToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextPageToken' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

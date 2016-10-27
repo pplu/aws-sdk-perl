@@ -7,6 +7,7 @@ package Paws::SimpleWorkflow::WorkflowExecutionDetail;
   has LatestExecutionContext => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'latestExecutionContext' );
   has OpenCounts => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowExecutionOpenCounts', traits => ['Unwrapped'], xmlname => 'openCounts' , required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

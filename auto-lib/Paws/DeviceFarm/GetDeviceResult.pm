@@ -3,6 +3,7 @@ package Paws::DeviceFarm::GetDeviceResult;
   use Moose;
   has Device => (is => 'ro', isa => 'Paws::DeviceFarm::Device', traits => ['Unwrapped'], xmlname => 'device' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

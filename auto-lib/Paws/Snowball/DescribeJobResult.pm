@@ -4,6 +4,7 @@ package Paws::Snowball::DescribeJobResult;
   has JobMetadata => (is => 'ro', isa => 'Paws::Snowball::JobMetadata');
   has SubJobMetadata => (is => 'ro', isa => 'ArrayRef[Paws::Snowball::JobMetadata]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

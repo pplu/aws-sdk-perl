@@ -7,6 +7,7 @@ package Paws::CodePipeline::GetPipelineStateOutput;
   has StageStates => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::StageState]', traits => ['Unwrapped'], xmlname => 'stageStates' );
   has Updated => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'updated' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

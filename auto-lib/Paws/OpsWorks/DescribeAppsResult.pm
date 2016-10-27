@@ -3,6 +3,7 @@ package Paws::OpsWorks::DescribeAppsResult;
   use Moose;
   has Apps => (is => 'ro', isa => 'ArrayRef[Paws::OpsWorks::App]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

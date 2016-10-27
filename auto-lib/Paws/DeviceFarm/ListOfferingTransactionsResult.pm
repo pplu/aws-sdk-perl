@@ -4,6 +4,7 @@ package Paws::DeviceFarm::ListOfferingTransactionsResult;
   has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
   has OfferingTransactions => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::OfferingTransaction]', traits => ['Unwrapped'], xmlname => 'offeringTransactions' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

@@ -4,6 +4,7 @@ package Paws::CloudFront::GetDistributionResult;
   has Distribution => (is => 'ro', isa => 'Paws::CloudFront::Distribution');
   has ETag => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

@@ -5,6 +5,7 @@ package Paws::IoT::CreateCertificateFromCsrResponse;
   has CertificateId => (is => 'ro', isa => 'Str');
   has CertificatePem => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

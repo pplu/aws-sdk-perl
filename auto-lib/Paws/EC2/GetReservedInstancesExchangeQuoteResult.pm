@@ -11,6 +11,7 @@ package Paws::EC2::GetReservedInstancesExchangeQuoteResult;
   has TargetConfigurationValueSet => (is => 'ro', isa => 'ArrayRef[Paws::EC2::TargetReservationValue]', xmlname => 'targetConfigurationValueSet', traits => ['Unwrapped',]);
   has ValidationFailureReason => (is => 'ro', isa => 'Str', xmlname => 'validationFailureReason', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

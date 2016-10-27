@@ -7,6 +7,7 @@ package Paws::CognitoSync::GetBulkPublishDetailsResponse;
   has FailureMessage => (is => 'ro', isa => 'Str');
   has IdentityPoolId => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

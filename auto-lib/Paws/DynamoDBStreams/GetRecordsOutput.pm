@@ -4,6 +4,7 @@ package Paws::DynamoDBStreams::GetRecordsOutput;
   has NextShardIterator => (is => 'ro', isa => 'Str');
   has Records => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDBStreams::Record]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

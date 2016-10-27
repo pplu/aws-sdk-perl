@@ -3,6 +3,7 @@ package Paws::EC2::DescribeIdFormatResult;
   use Moose;
   has Statuses => (is => 'ro', isa => 'ArrayRef[Paws::EC2::IdFormat]', xmlname => 'statusSet', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

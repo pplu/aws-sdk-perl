@@ -20,6 +20,7 @@ package Paws::ElasticBeanstalk::EnvironmentDescription;
   has Tier => (is => 'ro', isa => 'Paws::ElasticBeanstalk::EnvironmentTier');
   has VersionLabel => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

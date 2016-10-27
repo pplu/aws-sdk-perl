@@ -4,6 +4,7 @@ package Paws::GameLift::ListBuildsOutput;
   has Builds => (is => 'ro', isa => 'ArrayRef[Paws::GameLift::Build]');
   has NextToken => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

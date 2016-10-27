@@ -4,6 +4,7 @@ package Paws::DMS::DescribeEndpointTypesResponse;
   has Marker => (is => 'ro', isa => 'Str');
   has SupportedEndpointTypes => (is => 'ro', isa => 'ArrayRef[Paws::DMS::SupportedEndpointType]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

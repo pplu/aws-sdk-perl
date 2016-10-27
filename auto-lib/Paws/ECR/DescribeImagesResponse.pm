@@ -4,6 +4,7 @@ package Paws::ECR::DescribeImagesResponse;
   has ImageDetails => (is => 'ro', isa => 'ArrayRef[Paws::ECR::ImageDetail]', traits => ['Unwrapped'], xmlname => 'imageDetails' );
   has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

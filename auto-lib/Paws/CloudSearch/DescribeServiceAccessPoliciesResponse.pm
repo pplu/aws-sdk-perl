@@ -3,6 +3,7 @@ package Paws::CloudSearch::DescribeServiceAccessPoliciesResponse;
   use Moose;
   has AccessPolicies => (is => 'ro', isa => 'Paws::CloudSearch::AccessPoliciesStatus', required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

@@ -5,6 +5,7 @@ package Paws::IAM::ListSSHPublicKeysResponse;
   has Marker => (is => 'ro', isa => 'Str');
   has SSHPublicKeys => (is => 'ro', isa => 'ArrayRef[Paws::IAM::SSHPublicKeyMetadata]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

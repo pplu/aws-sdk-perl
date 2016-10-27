@@ -3,6 +3,7 @@ package Paws::EC2::CancelSpotInstanceRequestsResult;
   use Moose;
   has CancelledSpotInstanceRequests => (is => 'ro', isa => 'ArrayRef[Paws::EC2::CancelledSpotInstanceRequest]', xmlname => 'spotInstanceRequestSet', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

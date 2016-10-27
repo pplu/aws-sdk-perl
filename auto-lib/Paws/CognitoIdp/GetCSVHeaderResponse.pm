@@ -4,6 +4,7 @@ package Paws::CognitoIdp::GetCSVHeaderResponse;
   has CSVHeader => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has UserPoolId => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

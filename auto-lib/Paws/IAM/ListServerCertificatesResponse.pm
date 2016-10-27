@@ -5,6 +5,7 @@ package Paws::IAM::ListServerCertificatesResponse;
   has Marker => (is => 'ro', isa => 'Str');
   has ServerCertificateMetadataList => (is => 'ro', isa => 'ArrayRef[Paws::IAM::ServerCertificateMetadata]', required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

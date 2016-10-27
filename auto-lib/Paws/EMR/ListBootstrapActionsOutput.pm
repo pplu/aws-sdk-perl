@@ -4,6 +4,7 @@ package Paws::EMR::ListBootstrapActionsOutput;
   has BootstrapActions => (is => 'ro', isa => 'ArrayRef[Paws::EMR::Command]');
   has Marker => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

@@ -3,6 +3,7 @@ package Paws::OpsWorks::DescribeElasticLoadBalancersResult;
   use Moose;
   has ElasticLoadBalancers => (is => 'ro', isa => 'ArrayRef[Paws::OpsWorks::ElasticLoadBalancer]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

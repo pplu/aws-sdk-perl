@@ -3,6 +3,7 @@ package Paws::RedShift::CreateHsmClientCertificateResult;
   use Moose;
   has HsmClientCertificate => (is => 'ro', isa => 'Paws::RedShift::HsmClientCertificate');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

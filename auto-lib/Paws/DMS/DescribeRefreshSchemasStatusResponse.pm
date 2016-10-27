@@ -3,6 +3,7 @@ package Paws::DMS::DescribeRefreshSchemasStatusResponse;
   use Moose;
   has RefreshSchemasStatus => (is => 'ro', isa => 'Paws::DMS::RefreshSchemasStatus');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

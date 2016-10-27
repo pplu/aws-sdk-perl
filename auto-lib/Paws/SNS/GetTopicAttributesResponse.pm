@@ -3,6 +3,7 @@ package Paws::SNS::GetTopicAttributesResponse;
   use Moose;
   has Attributes => (is => 'ro', isa => 'Paws::SNS::TopicAttributesMap');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

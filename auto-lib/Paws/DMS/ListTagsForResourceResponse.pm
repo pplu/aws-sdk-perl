@@ -3,6 +3,7 @@ package Paws::DMS::ListTagsForResourceResponse;
   use Moose;
   has TagList => (is => 'ro', isa => 'ArrayRef[Paws::DMS::Tag]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

@@ -4,6 +4,7 @@ package Paws::CodeDeploy::BatchGetDeploymentGroupsOutput;
   has DeploymentGroupsInfo => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::DeploymentGroupInfo]', traits => ['Unwrapped'], xmlname => 'deploymentGroupsInfo' );
   has ErrorMessage => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'errorMessage' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

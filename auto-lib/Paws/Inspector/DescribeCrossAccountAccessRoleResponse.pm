@@ -5,6 +5,7 @@ package Paws::Inspector::DescribeCrossAccountAccessRoleResponse;
   has RoleArn => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'roleArn' , required => 1);
   has Valid => (is => 'ro', isa => 'Bool', traits => ['Unwrapped'], xmlname => 'valid' , required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

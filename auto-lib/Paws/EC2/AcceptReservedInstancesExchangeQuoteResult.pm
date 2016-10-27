@@ -3,6 +3,7 @@ package Paws::EC2::AcceptReservedInstancesExchangeQuoteResult;
   use Moose;
   has ExchangeId => (is => 'ro', isa => 'Str', xmlname => 'exchangeId', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

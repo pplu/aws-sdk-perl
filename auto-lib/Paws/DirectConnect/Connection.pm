@@ -12,6 +12,7 @@ package Paws::DirectConnect::Connection;
   has Region => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'region' );
   has Vlan => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => 'vlan' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

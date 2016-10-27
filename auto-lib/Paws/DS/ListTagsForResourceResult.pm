@@ -4,6 +4,7 @@ package Paws::DS::ListTagsForResourceResult;
   has NextToken => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::DS::Tag]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

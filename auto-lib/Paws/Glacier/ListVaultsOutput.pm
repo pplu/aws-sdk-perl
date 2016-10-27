@@ -4,6 +4,7 @@ package Paws::Glacier::ListVaultsOutput;
   has Marker => (is => 'ro', isa => 'Str');
   has VaultList => (is => 'ro', isa => 'ArrayRef[Paws::Glacier::DescribeVaultOutput]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

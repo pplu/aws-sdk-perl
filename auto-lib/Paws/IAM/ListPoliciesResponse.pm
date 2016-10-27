@@ -5,6 +5,7 @@ package Paws::IAM::ListPoliciesResponse;
   has Marker => (is => 'ro', isa => 'Str');
   has Policies => (is => 'ro', isa => 'ArrayRef[Paws::IAM::Policy]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

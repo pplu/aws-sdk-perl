@@ -3,6 +3,7 @@ package Paws::ElastiCache::DeleteReplicationGroupResult;
   use Moose;
   has ReplicationGroup => (is => 'ro', isa => 'Paws::ElastiCache::ReplicationGroup');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

@@ -4,6 +4,7 @@ package Paws::CloudFormation::DescribeStacksOutput;
   has NextToken => (is => 'ro', isa => 'Str');
   has Stacks => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::Stack]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

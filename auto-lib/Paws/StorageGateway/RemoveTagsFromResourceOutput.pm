@@ -3,6 +3,7 @@ package Paws::StorageGateway::RemoveTagsFromResourceOutput;
   use Moose;
   has ResourceARN => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

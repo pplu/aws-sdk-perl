@@ -4,6 +4,7 @@ package Paws::CognitoIdp::SignUpResponse;
   has CodeDeliveryDetails => (is => 'ro', isa => 'Paws::CognitoIdp::CodeDeliveryDetailsType');
   has UserConfirmed => (is => 'ro', isa => 'Bool');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

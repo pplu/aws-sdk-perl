@@ -3,6 +3,7 @@ package Paws::ECS::RegisterTaskDefinitionResponse;
   use Moose;
   has TaskDefinition => (is => 'ro', isa => 'Paws::ECS::TaskDefinition', traits => ['Unwrapped'], xmlname => 'taskDefinition' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

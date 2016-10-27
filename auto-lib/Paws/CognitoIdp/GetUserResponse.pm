@@ -5,6 +5,7 @@ package Paws::CognitoIdp::GetUserResponse;
   has UserAttributes => (is => 'ro', isa => 'ArrayRef[Paws::CognitoIdp::AttributeType]', required => 1);
   has Username => (is => 'ro', isa => 'Str', required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

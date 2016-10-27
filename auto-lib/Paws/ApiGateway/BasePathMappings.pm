@@ -4,6 +4,7 @@ package Paws::ApiGateway::BasePathMappings;
   has Items => (is => 'ro', isa => 'ArrayRef[Paws::ApiGateway::BasePathMapping]');
   has Position => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

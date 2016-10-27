@@ -4,6 +4,7 @@ package Paws::Config::DescribeComplianceByResourceResponse;
   has ComplianceByResources => (is => 'ro', isa => 'ArrayRef[Paws::Config::ComplianceByResource]');
   has NextToken => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

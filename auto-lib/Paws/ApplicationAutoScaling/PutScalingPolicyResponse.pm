@@ -3,6 +3,7 @@ package Paws::ApplicationAutoScaling::PutScalingPolicyResponse;
   use Moose;
   has PolicyARN => (is => 'ro', isa => 'Str', required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
