@@ -757,6 +757,7 @@ Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
     if (not $doc) {
       return '';
     }
+    $doc =~ s/&amp;/\&/gsmix;
     return $self->html_to_pod($doc);
   }
 

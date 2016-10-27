@@ -29,7 +29,7 @@ package Paws::Net::Caller;
         (defined $requestObj->content)?(content => $requestObj->content):(),
       }
     );
-    return $self->caller_to_response($service, $call_object, $response->{status}, $response->{content}, $response->{headers});
+    return ($response->{status}, $response->{content}, $response->{headers});
   }
 
   sub caller_to_response {
