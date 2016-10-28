@@ -95,15 +95,15 @@ package Paws::API::Caller;
     my ($self, $unserialized_struct, $call_object, $http_status, $content, $headers) = @_;
 
     $call_object = $call_object->meta->name;
+    my $request_id = $headers->{'x-amz-request-id'} 
+                      || $headers->{'x-amzn-requestid'}
+                      || $unserialized_struct->{'requestId'} 
+                      || $unserialized_struct->{'RequestId'} 
+                      || $unserialized_struct->{'RequestID'}
+                      || $unserialized_struct->{ ResponseMetadata }->{ RequestId };
+
 
     if ($call_object->_returns){
-      my $request_id = $headers->{'x-amz-request-id'} 
-                       || $headers->{'x-amzn-requestid'}
-                       || $unserialized_struct->{'requestId'} 
-                       || $unserialized_struct->{'RequestId'} 
-                       || $unserialized_struct->{'RequestID'}
-                       || $unserialized_struct->{ ResponseMetadata }->{ RequestId };
-
       if ($call_object->_result_key){
         $unserialized_struct = $unserialized_struct->{ $call_object->_result_key };
       }
