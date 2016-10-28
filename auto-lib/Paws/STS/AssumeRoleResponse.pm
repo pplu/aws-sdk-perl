@@ -5,6 +5,7 @@ package Paws::STS::AssumeRoleResponse;
   has Credentials => (is => 'ro', isa => 'Paws::STS::Credentials');
   has PackedPolicySize => (is => 'ro', isa => 'Int');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

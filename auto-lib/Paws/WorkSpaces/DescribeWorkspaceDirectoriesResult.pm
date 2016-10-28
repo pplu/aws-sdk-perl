@@ -4,6 +4,7 @@ package Paws::WorkSpaces::DescribeWorkspaceDirectoriesResult;
   has Directories => (is => 'ro', isa => 'ArrayRef[Paws::WorkSpaces::WorkspaceDirectory]');
   has NextToken => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

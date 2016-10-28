@@ -3,6 +3,7 @@ package Paws::WorkSpaces::DescribeTagsResult;
   use Moose;
   has TagList => (is => 'ro', isa => 'ArrayRef[Paws::WorkSpaces::Tag]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

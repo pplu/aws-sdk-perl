@@ -3,6 +3,7 @@ package Paws::Route53Domains::RegisterDomainResponse;
   use Moose;
   has OperationId => (is => 'ro', isa => 'Str', required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

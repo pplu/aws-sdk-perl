@@ -5,6 +5,7 @@ package Paws::CognitoSync::SetIdentityPoolConfigurationResponse;
   has IdentityPoolId => (is => 'ro', isa => 'Str');
   has PushSync => (is => 'ro', isa => 'Paws::CognitoSync::PushSync');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

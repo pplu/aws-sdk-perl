@@ -4,6 +4,7 @@ package Paws::WAF::CreateIPSetResponse;
   has ChangeToken => (is => 'ro', isa => 'Str');
   has IPSet => (is => 'ro', isa => 'Paws::WAF::IPSet');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

@@ -3,6 +3,7 @@ package Paws::Config::GetComplianceSummaryByResourceTypeResponse;
   use Moose;
   has ComplianceSummariesByResourceType => (is => 'ro', isa => 'ArrayRef[Paws::Config::ComplianceSummaryByResourceType]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

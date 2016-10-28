@@ -3,6 +3,7 @@ package Paws::RedShift::CreateClusterSubnetGroupResult;
   use Moose;
   has ClusterSubnetGroup => (is => 'ro', isa => 'Paws::RedShift::ClusterSubnetGroup');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

@@ -3,6 +3,7 @@ package Paws::SES::ListReceiptFiltersResponse;
   use Moose;
   has Filters => (is => 'ro', isa => 'ArrayRef[Paws::SES::ReceiptFilter]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

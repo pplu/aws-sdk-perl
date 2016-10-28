@@ -3,6 +3,7 @@ package Paws::OpsWorks::DescribeMyUserProfileResult;
   use Moose;
   has UserProfile => (is => 'ro', isa => 'Paws::OpsWorks::SelfUserProfile');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

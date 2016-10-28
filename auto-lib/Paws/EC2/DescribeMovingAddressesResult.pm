@@ -4,6 +4,7 @@ package Paws::EC2::DescribeMovingAddressesResult;
   has MovingAddressStatuses => (is => 'ro', isa => 'ArrayRef[Paws::EC2::MovingAddressStatus]', xmlname => 'movingAddressStatusSet', traits => ['Unwrapped',]);
   has NextToken => (is => 'ro', isa => 'Str', xmlname => 'nextToken', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

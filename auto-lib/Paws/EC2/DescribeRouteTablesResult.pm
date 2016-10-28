@@ -3,6 +3,7 @@ package Paws::EC2::DescribeRouteTablesResult;
   use Moose;
   has RouteTables => (is => 'ro', isa => 'ArrayRef[Paws::EC2::RouteTable]', xmlname => 'routeTableSet', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

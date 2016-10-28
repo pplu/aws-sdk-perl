@@ -3,6 +3,7 @@ package Paws::IAM::GetRoleResponse;
   use Moose;
   has Role => (is => 'ro', isa => 'Paws::IAM::Role', required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

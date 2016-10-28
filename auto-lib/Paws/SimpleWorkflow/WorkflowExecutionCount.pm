@@ -4,6 +4,7 @@ package Paws::SimpleWorkflow::WorkflowExecutionCount;
   has Count => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => 'count' , required => 1);
   has Truncated => (is => 'ro', isa => 'Bool', traits => ['Unwrapped'], xmlname => 'truncated' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

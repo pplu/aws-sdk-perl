@@ -3,6 +3,7 @@ package Paws::DS::GetDirectoryLimitsResult;
   use Moose;
   has DirectoryLimits => (is => 'ro', isa => 'Paws::DS::DirectoryLimits');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

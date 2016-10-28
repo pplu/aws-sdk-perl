@@ -4,6 +4,7 @@ package Paws::CloudWatchEvents::ListTargetsByRuleResponse;
   has NextToken => (is => 'ro', isa => 'Str');
   has Targets => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatchEvents::Target]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

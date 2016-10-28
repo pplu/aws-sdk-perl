@@ -3,6 +3,7 @@ package Paws::ELBv2::ModifyLoadBalancerAttributesOutput;
   use Moose;
   has Attributes => (is => 'ro', isa => 'ArrayRef[Paws::ELBv2::LoadBalancerAttribute]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

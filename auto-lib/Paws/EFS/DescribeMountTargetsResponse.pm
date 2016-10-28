@@ -5,6 +5,7 @@ package Paws::EFS::DescribeMountTargetsResponse;
   has MountTargets => (is => 'ro', isa => 'ArrayRef[Paws::EFS::MountTargetDescription]');
   has NextMarker => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

@@ -5,6 +5,7 @@ package Paws::IAM::ListMFADevicesResponse;
   has Marker => (is => 'ro', isa => 'Str');
   has MFADevices => (is => 'ro', isa => 'ArrayRef[Paws::IAM::MFADevice]', required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

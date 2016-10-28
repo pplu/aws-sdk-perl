@@ -9,6 +9,7 @@ package Paws::CognitoIdp::AdminGetUserResponse;
   has Username => (is => 'ro', isa => 'Str', required => 1);
   has UserStatus => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

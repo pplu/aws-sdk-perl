@@ -11,6 +11,7 @@ package Paws::StorageGateway::DescribeGatewayInformationOutput;
   has LastSoftwareUpdate => (is => 'ro', isa => 'Str');
   has NextUpdateAvailabilityDate => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

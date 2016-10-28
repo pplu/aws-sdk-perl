@@ -4,6 +4,7 @@ package Paws::ECR::BatchGetImageResponse;
   has Failures => (is => 'ro', isa => 'ArrayRef[Paws::ECR::ImageFailure]', traits => ['Unwrapped'], xmlname => 'failures' );
   has Images => (is => 'ro', isa => 'ArrayRef[Paws::ECR::Image]', traits => ['Unwrapped'], xmlname => 'images' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

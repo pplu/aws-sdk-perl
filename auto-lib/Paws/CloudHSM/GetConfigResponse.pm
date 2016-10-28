@@ -5,6 +5,7 @@ package Paws::CloudHSM::GetConfigResponse;
   has ConfigFile => (is => 'ro', isa => 'Str');
   has ConfigType => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

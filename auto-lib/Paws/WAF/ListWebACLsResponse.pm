@@ -4,6 +4,7 @@ package Paws::WAF::ListWebACLsResponse;
   has NextMarker => (is => 'ro', isa => 'Str');
   has WebACLs => (is => 'ro', isa => 'ArrayRef[Paws::WAF::WebACLSummary]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

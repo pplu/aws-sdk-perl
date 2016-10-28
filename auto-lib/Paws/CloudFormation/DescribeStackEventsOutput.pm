@@ -4,6 +4,7 @@ package Paws::CloudFormation::DescribeStackEventsOutput;
   has NextToken => (is => 'ro', isa => 'Str');
   has StackEvents => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::StackEvent]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

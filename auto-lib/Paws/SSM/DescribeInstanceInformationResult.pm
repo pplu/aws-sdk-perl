@@ -4,6 +4,7 @@ package Paws::SSM::DescribeInstanceInformationResult;
   has InstanceInformationList => (is => 'ro', isa => 'ArrayRef[Paws::SSM::InstanceInformation]');
   has NextToken => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

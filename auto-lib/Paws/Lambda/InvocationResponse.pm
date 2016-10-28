@@ -6,6 +6,7 @@ package Paws::Lambda::InvocationResponse;
   has Payload => (is => 'ro', isa => 'Str');
   has StatusCode => (is => 'ro', isa => 'Int');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

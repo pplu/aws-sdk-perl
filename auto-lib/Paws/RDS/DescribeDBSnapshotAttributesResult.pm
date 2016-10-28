@@ -3,6 +3,7 @@ package Paws::RDS::DescribeDBSnapshotAttributesResult;
   use Moose;
   has DBSnapshotAttributesResult => (is => 'ro', isa => 'Paws::RDS::DBSnapshotAttributesResult');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

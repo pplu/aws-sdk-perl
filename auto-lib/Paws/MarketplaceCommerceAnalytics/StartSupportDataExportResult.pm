@@ -3,6 +3,7 @@ package Paws::MarketplaceCommerceAnalytics::StartSupportDataExportResult;
   use Moose;
   has DataSetRequestId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'dataSetRequestId' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

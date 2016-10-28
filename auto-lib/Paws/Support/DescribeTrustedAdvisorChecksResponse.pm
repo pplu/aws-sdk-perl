@@ -3,6 +3,7 @@ package Paws::Support::DescribeTrustedAdvisorChecksResponse;
   use Moose;
   has Checks => (is => 'ro', isa => 'ArrayRef[Paws::Support::TrustedAdvisorCheckDescription]', traits => ['Unwrapped'], xmlname => 'checks' , required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

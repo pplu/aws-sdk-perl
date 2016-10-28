@@ -3,6 +3,7 @@ package Paws::IAM::ListSAMLProvidersResponse;
   use Moose;
   has SAMLProviderList => (is => 'ro', isa => 'ArrayRef[Paws::IAM::SAMLProviderListEntry]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

@@ -4,6 +4,7 @@ package Paws::EC2::CreateNatGatewayResult;
   has ClientToken => (is => 'ro', isa => 'Str', xmlname => 'clientToken', traits => ['Unwrapped',]);
   has NatGateway => (is => 'ro', isa => 'Paws::EC2::NatGateway', xmlname => 'natGateway', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

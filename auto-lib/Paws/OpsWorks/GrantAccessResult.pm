@@ -3,6 +3,7 @@ package Paws::OpsWorks::GrantAccessResult;
   use Moose;
   has TemporaryCredential => (is => 'ro', isa => 'Paws::OpsWorks::TemporaryCredential');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

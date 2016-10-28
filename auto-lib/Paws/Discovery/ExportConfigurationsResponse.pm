@@ -3,6 +3,7 @@ package Paws::Discovery::ExportConfigurationsResponse;
   use Moose;
   has ExportId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'exportId' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

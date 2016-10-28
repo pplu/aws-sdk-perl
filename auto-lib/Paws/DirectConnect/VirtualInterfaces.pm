@@ -3,6 +3,7 @@ package Paws::DirectConnect::VirtualInterfaces;
   use Moose;
   has VirtualInterfaces => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::VirtualInterface]', traits => ['Unwrapped'], xmlname => 'virtualInterfaces' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

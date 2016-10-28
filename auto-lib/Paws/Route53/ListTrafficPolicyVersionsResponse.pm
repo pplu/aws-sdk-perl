@@ -6,6 +6,7 @@ package Paws::Route53::ListTrafficPolicyVersionsResponse;
   has TrafficPolicies => (is => 'ro', isa => 'ArrayRef[Paws::Route53::TrafficPolicy]', required => 1);
   has TrafficPolicyVersionMarker => (is => 'ro', isa => 'Str', required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

@@ -23,6 +23,7 @@ package Paws::CloudHSM::DescribeHsmResponse;
   has VendorName => (is => 'ro', isa => 'Str');
   has VpcId => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

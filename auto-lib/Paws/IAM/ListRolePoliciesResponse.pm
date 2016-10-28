@@ -5,6 +5,7 @@ package Paws::IAM::ListRolePoliciesResponse;
   has Marker => (is => 'ro', isa => 'Str');
   has PolicyNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

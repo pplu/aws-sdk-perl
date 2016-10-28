@@ -4,6 +4,7 @@ package Paws::Firehose::ListDeliveryStreamsOutput;
   has DeliveryStreamNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
   has HasMoreDeliveryStreams => (is => 'ro', isa => 'Bool', required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

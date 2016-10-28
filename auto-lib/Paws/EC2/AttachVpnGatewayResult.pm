@@ -3,6 +3,7 @@ package Paws::EC2::AttachVpnGatewayResult;
   use Moose;
   has VpcAttachment => (is => 'ro', isa => 'Paws::EC2::VpcAttachment', xmlname => 'attachment', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

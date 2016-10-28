@@ -3,6 +3,7 @@ package Paws::EC2::CreateNetworkInterfaceResult;
   use Moose;
   has NetworkInterface => (is => 'ro', isa => 'Paws::EC2::NetworkInterface', xmlname => 'networkInterface', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

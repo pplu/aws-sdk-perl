@@ -3,6 +3,7 @@ package Paws::DMS::DeleteReplicationTaskResponse;
   use Moose;
   has ReplicationTask => (is => 'ro', isa => 'Paws::DMS::ReplicationTask');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

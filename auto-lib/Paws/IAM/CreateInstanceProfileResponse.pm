@@ -3,6 +3,7 @@ package Paws::IAM::CreateInstanceProfileResponse;
   use Moose;
   has InstanceProfile => (is => 'ro', isa => 'Paws::IAM::InstanceProfile', required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

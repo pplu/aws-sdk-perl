@@ -3,6 +3,7 @@ package Paws::RDS::RestoreDBClusterFromSnapshotResult;
   use Moose;
   has DBCluster => (is => 'ro', isa => 'Paws::RDS::DBCluster');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

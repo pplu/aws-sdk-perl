@@ -3,6 +3,7 @@ package Paws::SES::GetIdentityMailFromDomainAttributesResponse;
   use Moose;
   has MailFromDomainAttributes => (is => 'ro', isa => 'Paws::SES::MailFromDomainAttributes', required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

@@ -3,6 +3,7 @@ package Paws::RDS::DeleteDBSnapshotResult;
   use Moose;
   has DBSnapshot => (is => 'ro', isa => 'Paws::RDS::DBSnapshot');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

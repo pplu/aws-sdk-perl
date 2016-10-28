@@ -3,6 +3,7 @@ package Paws::Kinesis::GetShardIteratorOutput;
   use Moose;
   has ShardIterator => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

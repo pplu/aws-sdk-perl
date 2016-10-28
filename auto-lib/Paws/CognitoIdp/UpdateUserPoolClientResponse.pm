@@ -3,6 +3,7 @@ package Paws::CognitoIdp::UpdateUserPoolClientResponse;
   use Moose;
   has UserPoolClient => (is => 'ro', isa => 'Paws::CognitoIdp::UserPoolClientType');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

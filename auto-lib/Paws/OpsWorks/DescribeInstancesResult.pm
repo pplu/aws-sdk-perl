@@ -3,6 +3,7 @@ package Paws::OpsWorks::DescribeInstancesResult;
   use Moose;
   has Instances => (is => 'ro', isa => 'ArrayRef[Paws::OpsWorks::Instance]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

@@ -5,6 +5,7 @@ package Paws::IoT::DescribeThingTypeResponse;
   has ThingTypeName => (is => 'ro', isa => 'Str');
   has ThingTypeProperties => (is => 'ro', isa => 'Paws::IoT::ThingTypeProperties');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

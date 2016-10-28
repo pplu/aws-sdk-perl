@@ -2,6 +2,7 @@
 package Paws::Route53Domains::DeleteTagsForDomainResponse;
   use Moose;
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

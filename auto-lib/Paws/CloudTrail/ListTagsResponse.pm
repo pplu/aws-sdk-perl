@@ -4,6 +4,7 @@ package Paws::CloudTrail::ListTagsResponse;
   has NextToken => (is => 'ro', isa => 'Str');
   has ResourceTagList => (is => 'ro', isa => 'ArrayRef[Paws::CloudTrail::ResourceTag]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

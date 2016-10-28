@@ -5,6 +5,7 @@ package Paws::EC2::DescribeVpcAttributeResult;
   has EnableDnsSupport => (is => 'ro', isa => 'Paws::EC2::AttributeBooleanValue', xmlname => 'enableDnsSupport', traits => ['Unwrapped',]);
   has VpcId => (is => 'ro', isa => 'Str', xmlname => 'vpcId', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

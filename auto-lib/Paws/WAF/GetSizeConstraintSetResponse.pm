@@ -3,6 +3,7 @@ package Paws::WAF::GetSizeConstraintSetResponse;
   use Moose;
   has SizeConstraintSet => (is => 'ro', isa => 'Paws::WAF::SizeConstraintSet');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

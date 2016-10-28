@@ -4,6 +4,7 @@ package Paws::RedShift::TaggedResourceListMessage;
   has Marker => (is => 'ro', isa => 'Str');
   has TaggedResources => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::TaggedResource]', xmlname => 'TaggedResource', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

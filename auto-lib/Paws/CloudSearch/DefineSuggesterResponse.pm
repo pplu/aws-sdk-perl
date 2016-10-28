@@ -3,6 +3,7 @@ package Paws::CloudSearch::DefineSuggesterResponse;
   use Moose;
   has Suggester => (is => 'ro', isa => 'Paws::CloudSearch::SuggesterStatus', required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

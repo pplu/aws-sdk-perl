@@ -4,6 +4,7 @@ package Paws::RedShift::HsmClientCertificateMessage;
   has HsmClientCertificates => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::HsmClientCertificate]', xmlname => 'HsmClientCertificate', traits => ['Unwrapped',]);
   has Marker => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

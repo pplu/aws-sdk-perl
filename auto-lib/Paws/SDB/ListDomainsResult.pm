@@ -4,6 +4,7 @@ package Paws::SDB::ListDomainsResult;
   has DomainNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'DomainName', traits => ['Unwrapped',]);
   has NextToken => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

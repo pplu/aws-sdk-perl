@@ -4,6 +4,7 @@ package Paws::EC2::DescribePrefixListsResult;
   has NextToken => (is => 'ro', isa => 'Str', xmlname => 'nextToken', traits => ['Unwrapped',]);
   has PrefixLists => (is => 'ro', isa => 'ArrayRef[Paws::EC2::PrefixList]', xmlname => 'prefixListSet', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

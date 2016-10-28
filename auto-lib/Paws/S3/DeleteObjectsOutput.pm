@@ -5,6 +5,7 @@ package Paws::S3::DeleteObjectsOutput;
   has Errors => (is => 'ro', isa => 'ArrayRef[Paws::S3::Error]', traits => ['Unwrapped'], xmlname => 'Error');
   has RequestCharged => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-request-charged');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

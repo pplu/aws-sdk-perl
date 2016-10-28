@@ -4,6 +4,7 @@ package Paws::WAF::ListSqlInjectionMatchSetsResponse;
   has NextMarker => (is => 'ro', isa => 'Str');
   has SqlInjectionMatchSets => (is => 'ro', isa => 'ArrayRef[Paws::WAF::SqlInjectionMatchSetSummary]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

@@ -6,6 +6,7 @@ package Paws::DynamoDB::DescribeLimitsOutput;
   has TableMaxReadCapacityUnits => (is => 'ro', isa => 'Int');
   has TableMaxWriteCapacityUnits => (is => 'ro', isa => 'Int');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

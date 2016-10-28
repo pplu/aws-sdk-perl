@@ -3,6 +3,7 @@ package Paws::ES::CreateElasticsearchDomainResponse;
   use Moose;
   has DomainStatus => (is => 'ro', isa => 'Paws::ES::ElasticsearchDomainStatus');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

@@ -4,6 +4,7 @@ package Paws::Inspector::DescribeFindingsResponse;
   has FailedItems => (is => 'ro', isa => 'Paws::Inspector::FailedItems', traits => ['Unwrapped'], xmlname => 'failedItems' , required => 1);
   has Findings => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::Finding]', traits => ['Unwrapped'], xmlname => 'findings' , required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

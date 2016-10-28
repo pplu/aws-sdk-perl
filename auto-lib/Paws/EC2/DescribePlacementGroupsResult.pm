@@ -3,6 +3,7 @@ package Paws::EC2::DescribePlacementGroupsResult;
   use Moose;
   has PlacementGroups => (is => 'ro', isa => 'ArrayRef[Paws::EC2::PlacementGroup]', xmlname => 'placementGroupSet', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

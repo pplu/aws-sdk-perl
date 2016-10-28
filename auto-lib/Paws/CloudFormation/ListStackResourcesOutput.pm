@@ -4,6 +4,7 @@ package Paws::CloudFormation::ListStackResourcesOutput;
   has NextToken => (is => 'ro', isa => 'Str');
   has StackResourceSummaries => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::StackResourceSummary]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

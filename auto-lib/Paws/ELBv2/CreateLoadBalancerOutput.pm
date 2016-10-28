@@ -3,6 +3,7 @@ package Paws::ELBv2::CreateLoadBalancerOutput;
   use Moose;
   has LoadBalancers => (is => 'ro', isa => 'ArrayRef[Paws::ELBv2::LoadBalancer]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

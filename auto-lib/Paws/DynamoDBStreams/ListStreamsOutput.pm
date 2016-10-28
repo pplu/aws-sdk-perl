@@ -4,6 +4,7 @@ package Paws::DynamoDBStreams::ListStreamsOutput;
   has LastEvaluatedStreamArn => (is => 'ro', isa => 'Str');
   has Streams => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDBStreams::Stream]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

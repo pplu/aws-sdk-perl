@@ -4,6 +4,7 @@ package Paws::CognitoIdp::ListUserPoolsResponse;
   has NextToken => (is => 'ro', isa => 'Str');
   has UserPools => (is => 'ro', isa => 'ArrayRef[Paws::CognitoIdp::UserPoolDescriptionType]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

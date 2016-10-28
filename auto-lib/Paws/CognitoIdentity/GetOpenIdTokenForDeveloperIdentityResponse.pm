@@ -4,6 +4,7 @@ package Paws::CognitoIdentity::GetOpenIdTokenForDeveloperIdentityResponse;
   has IdentityId => (is => 'ro', isa => 'Str');
   has Token => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

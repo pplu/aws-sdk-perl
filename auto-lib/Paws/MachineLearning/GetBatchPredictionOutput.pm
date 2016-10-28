@@ -19,6 +19,7 @@ package Paws::MachineLearning::GetBatchPredictionOutput;
   has Status => (is => 'ro', isa => 'Str');
   has TotalRecordCount => (is => 'ro', isa => 'Int');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

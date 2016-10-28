@@ -3,6 +3,7 @@ package Paws::GameLift::DescribeRuntimeConfigurationOutput;
   use Moose;
   has RuntimeConfiguration => (is => 'ro', isa => 'Paws::GameLift::RuntimeConfiguration');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

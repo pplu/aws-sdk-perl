@@ -5,6 +5,7 @@ package Paws::SQS::SendMessageResult;
   has MD5OfMessageBody => (is => 'ro', isa => 'Str');
   has MessageId => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

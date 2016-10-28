@@ -4,6 +4,7 @@ package Paws::RedShift::ClusterParameterGroupNameMessage;
   has ParameterGroupName => (is => 'ro', isa => 'Str');
   has ParameterGroupStatus => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

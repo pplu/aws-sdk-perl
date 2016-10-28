@@ -6,6 +6,7 @@ package Paws::ApiGateway::DomainName;
   has DistributionDomainName => (is => 'ro', isa => 'Str');
   has DomainName => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

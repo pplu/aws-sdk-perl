@@ -4,6 +4,7 @@ package Paws::EC2::DescribeVpcEndpointServicesResult;
   has NextToken => (is => 'ro', isa => 'Str', xmlname => 'nextToken', traits => ['Unwrapped',]);
   has ServiceNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'serviceNameSet', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

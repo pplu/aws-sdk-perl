@@ -4,6 +4,7 @@ package Paws::DMS::DescribeReplicationSubnetGroupsResponse;
   has Marker => (is => 'ro', isa => 'Str');
   has ReplicationSubnetGroups => (is => 'ro', isa => 'ArrayRef[Paws::DMS::ReplicationSubnetGroup]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

@@ -3,6 +3,7 @@ package Paws::EC2::AssociateAddressResult;
   use Moose;
   has AssociationId => (is => 'ro', isa => 'Str', xmlname => 'associationId', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

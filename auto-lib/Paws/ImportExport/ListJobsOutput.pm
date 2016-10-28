@@ -4,6 +4,7 @@ package Paws::ImportExport::ListJobsOutput;
   has IsTruncated => (is => 'ro', isa => 'Bool');
   has Jobs => (is => 'ro', isa => 'ArrayRef[Paws::ImportExport::Job]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

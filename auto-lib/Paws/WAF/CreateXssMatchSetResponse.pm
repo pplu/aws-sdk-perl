@@ -4,6 +4,7 @@ package Paws::WAF::CreateXssMatchSetResponse;
   has ChangeToken => (is => 'ro', isa => 'Str');
   has XssMatchSet => (is => 'ro', isa => 'Paws::WAF::XssMatchSet');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

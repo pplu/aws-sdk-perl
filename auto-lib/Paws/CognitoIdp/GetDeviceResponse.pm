@@ -3,6 +3,7 @@ package Paws::CognitoIdp::GetDeviceResponse;
   use Moose;
   has Device => (is => 'ro', isa => 'Paws::CognitoIdp::DeviceType', required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

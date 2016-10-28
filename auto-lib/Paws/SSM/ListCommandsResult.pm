@@ -4,6 +4,7 @@ package Paws::SSM::ListCommandsResult;
   has Commands => (is => 'ro', isa => 'ArrayRef[Paws::SSM::Command]');
   has NextToken => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

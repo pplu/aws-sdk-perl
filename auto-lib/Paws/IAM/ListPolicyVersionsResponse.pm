@@ -5,6 +5,7 @@ package Paws::IAM::ListPolicyVersionsResponse;
   has Marker => (is => 'ro', isa => 'Str');
   has Versions => (is => 'ro', isa => 'ArrayRef[Paws::IAM::PolicyVersion]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

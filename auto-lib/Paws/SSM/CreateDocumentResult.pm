@@ -3,6 +3,7 @@ package Paws::SSM::CreateDocumentResult;
   use Moose;
   has DocumentDescription => (is => 'ro', isa => 'Paws::SSM::DocumentDescription');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

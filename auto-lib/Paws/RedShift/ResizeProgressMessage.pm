@@ -14,6 +14,7 @@ package Paws::RedShift::ResizeProgressMessage;
   has TargetNumberOfNodes => (is => 'ro', isa => 'Int');
   has TotalResizeDataInMegaBytes => (is => 'ro', isa => 'Int');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

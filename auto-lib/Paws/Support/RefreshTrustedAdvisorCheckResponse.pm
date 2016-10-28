@@ -3,6 +3,7 @@ package Paws::Support::RefreshTrustedAdvisorCheckResponse;
   use Moose;
   has Status => (is => 'ro', isa => 'Paws::Support::TrustedAdvisorCheckRefreshStatus', traits => ['Unwrapped'], xmlname => 'status' , required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

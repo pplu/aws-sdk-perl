@@ -3,6 +3,7 @@ package Paws::Config::DescribeConfigurationRecordersResponse;
   use Moose;
   has ConfigurationRecorders => (is => 'ro', isa => 'ArrayRef[Paws::Config::ConfigurationRecorder]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

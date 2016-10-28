@@ -4,6 +4,7 @@ package Paws::MachineLearning::DeleteRealtimeEndpointOutput;
   has MLModelId => (is => 'ro', isa => 'Str');
   has RealtimeEndpointInfo => (is => 'ro', isa => 'Paws::MachineLearning::RealtimeEndpointInfo');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

@@ -3,6 +3,7 @@ package Paws::EMR::DescribeStepOutput;
   use Moose;
   has Step => (is => 'ro', isa => 'Paws::EMR::Step');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

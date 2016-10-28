@@ -3,6 +3,7 @@ package Paws::RedShift::ModifySnapshotCopyRetentionPeriodResult;
   use Moose;
   has Cluster => (is => 'ro', isa => 'Paws::RedShift::Cluster');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

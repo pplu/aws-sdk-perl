@@ -3,6 +3,7 @@ package Paws::CloudSearch::DescribeExpressionsResponse;
   use Moose;
   has Expressions => (is => 'ro', isa => 'ArrayRef[Paws::CloudSearch::ExpressionStatus]', required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

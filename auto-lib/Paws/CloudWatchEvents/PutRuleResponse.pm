@@ -3,6 +3,7 @@ package Paws::CloudWatchEvents::PutRuleResponse;
   use Moose;
   has RuleArn => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

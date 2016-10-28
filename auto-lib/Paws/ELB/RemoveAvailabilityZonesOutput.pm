@@ -3,6 +3,7 @@ package Paws::ELB::RemoveAvailabilityZonesOutput;
   use Moose;
   has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

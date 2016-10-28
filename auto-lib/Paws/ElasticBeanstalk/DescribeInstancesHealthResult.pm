@@ -5,6 +5,7 @@ package Paws::ElasticBeanstalk::DescribeInstancesHealthResult;
   has NextToken => (is => 'ro', isa => 'Str');
   has RefreshedAt => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

@@ -320,9 +320,10 @@ package Paws::API::Builder {
 
 [% c.doc_for_param_name_in_shape(shape, param_name) %]
 
-[% IF member.enum %]Valid values are: [% FOR value=member.enum %]C<"[% value %]">[% IF NOT loop.last %], [% END %][% END %][% END -%]
+[% IF member.enum %]Valid values are: [% FOR value=member.enum %]C<"[% value %]">[% IF NOT loop.last %], [% END %][% END %][% END -%][% END -%]
 
-[% END %]
+=head2 _request_id => Str
+
 
 =cut
 #);

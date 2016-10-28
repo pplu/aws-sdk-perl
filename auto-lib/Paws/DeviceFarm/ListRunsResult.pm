@@ -4,6 +4,7 @@ package Paws::DeviceFarm::ListRunsResult;
   has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
   has Runs => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::Run]', traits => ['Unwrapped'], xmlname => 'runs' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

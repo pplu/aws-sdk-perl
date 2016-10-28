@@ -3,6 +3,7 @@ package Paws::CognitoSync::RegisterDeviceResponse;
   use Moose;
   has DeviceId => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

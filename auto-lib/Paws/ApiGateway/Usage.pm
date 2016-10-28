@@ -7,6 +7,7 @@ package Paws::ApiGateway::Usage;
   has StartDate => (is => 'ro', isa => 'Str');
   has UsagePlanId => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

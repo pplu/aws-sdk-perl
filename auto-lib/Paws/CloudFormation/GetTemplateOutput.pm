@@ -3,6 +3,7 @@ package Paws::CloudFormation::GetTemplateOutput;
   use Moose;
   has TemplateBody => (is => 'ro', isa => 'Str', decode_as => 'JSON', method => 'Template', traits => ['JSONAttribute',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

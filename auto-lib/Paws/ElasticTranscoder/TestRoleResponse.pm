@@ -4,6 +4,7 @@ package Paws::ElasticTranscoder::TestRoleResponse;
   has Messages => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Success => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

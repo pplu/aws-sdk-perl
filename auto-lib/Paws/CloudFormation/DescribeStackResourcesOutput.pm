@@ -3,6 +3,7 @@ package Paws::CloudFormation::DescribeStackResourcesOutput;
   use Moose;
   has StackResources => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::StackResource]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

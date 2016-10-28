@@ -5,6 +5,7 @@ package Paws::EC2::AllocateAddressResult;
   has Domain => (is => 'ro', isa => 'Str', xmlname => 'domain', traits => ['Unwrapped',]);
   has PublicIp => (is => 'ro', isa => 'Str', xmlname => 'publicIp', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

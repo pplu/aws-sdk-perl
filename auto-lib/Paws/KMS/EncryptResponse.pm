@@ -4,6 +4,7 @@ package Paws::KMS::EncryptResponse;
   has CiphertextBlob => (is => 'ro', isa => 'Str');
   has KeyId => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

@@ -4,6 +4,7 @@ package Paws::ECS::DescribeClustersResponse;
   has Clusters => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Cluster]', traits => ['Unwrapped'], xmlname => 'clusters' );
   has Failures => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Failure]', traits => ['Unwrapped'], xmlname => 'failures' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

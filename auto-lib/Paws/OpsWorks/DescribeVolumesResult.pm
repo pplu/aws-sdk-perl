@@ -3,6 +3,7 @@ package Paws::OpsWorks::DescribeVolumesResult;
   use Moose;
   has Volumes => (is => 'ro', isa => 'ArrayRef[Paws::OpsWorks::Volume]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

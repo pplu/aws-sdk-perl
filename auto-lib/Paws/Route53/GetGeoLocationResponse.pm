@@ -3,6 +3,7 @@ package Paws::Route53::GetGeoLocationResponse;
   use Moose;
   has GeoLocationDetails => (is => 'ro', isa => 'Paws::Route53::GeoLocationDetails', required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

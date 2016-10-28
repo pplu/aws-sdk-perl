@@ -4,6 +4,7 @@ package Paws::Support::ResolveCaseResponse;
   has FinalCaseStatus => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'finalCaseStatus' );
   has InitialCaseStatus => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'initialCaseStatus' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

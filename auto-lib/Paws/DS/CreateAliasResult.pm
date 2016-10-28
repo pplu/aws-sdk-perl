@@ -4,6 +4,7 @@ package Paws::DS::CreateAliasResult;
   has Alias => (is => 'ro', isa => 'Str');
   has DirectoryId => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

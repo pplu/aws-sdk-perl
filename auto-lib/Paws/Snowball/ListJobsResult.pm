@@ -4,6 +4,7 @@ package Paws::Snowball::ListJobsResult;
   has JobListEntries => (is => 'ro', isa => 'ArrayRef[Paws::Snowball::JobListEntry]');
   has NextToken => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

@@ -4,6 +4,7 @@ package Paws::StorageGateway::ListVolumeRecoveryPointsOutput;
   has GatewayARN => (is => 'ro', isa => 'Str');
   has VolumeRecoveryPointInfos => (is => 'ro', isa => 'ArrayRef[Paws::StorageGateway::VolumeRecoveryPointInfo]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

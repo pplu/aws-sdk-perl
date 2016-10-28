@@ -5,6 +5,7 @@ package Paws::KMS::ReEncryptResponse;
   has KeyId => (is => 'ro', isa => 'Str');
   has SourceKeyId => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

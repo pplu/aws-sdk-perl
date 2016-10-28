@@ -7,6 +7,7 @@ package Paws::EC2::Reservation;
   has RequesterId => (is => 'ro', isa => 'Str', xmlname => 'requesterId', traits => ['Unwrapped',]);
   has ReservationId => (is => 'ro', isa => 'Str', xmlname => 'reservationId', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

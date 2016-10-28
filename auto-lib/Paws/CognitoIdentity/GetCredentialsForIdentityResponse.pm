@@ -4,6 +4,7 @@ package Paws::CognitoIdentity::GetCredentialsForIdentityResponse;
   has Credentials => (is => 'ro', isa => 'Paws::CognitoIdentity::Credentials');
   has IdentityId => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

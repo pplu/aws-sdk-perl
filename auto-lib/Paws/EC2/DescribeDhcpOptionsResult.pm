@@ -3,6 +3,7 @@ package Paws::EC2::DescribeDhcpOptionsResult;
   use Moose;
   has DhcpOptions => (is => 'ro', isa => 'ArrayRef[Paws::EC2::DhcpOptions]', xmlname => 'dhcpOptionsSet', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

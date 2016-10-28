@@ -4,6 +4,7 @@ package Paws::ECS::DescribeContainerInstancesResponse;
   has ContainerInstances => (is => 'ro', isa => 'ArrayRef[Paws::ECS::ContainerInstance]', traits => ['Unwrapped'], xmlname => 'containerInstances' );
   has Failures => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Failure]', traits => ['Unwrapped'], xmlname => 'failures' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

@@ -3,6 +3,7 @@ package Paws::CloudSearch::DeleteExpressionResponse;
   use Moose;
   has Expression => (is => 'ro', isa => 'Paws::CloudSearch::ExpressionStatus', required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

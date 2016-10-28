@@ -4,6 +4,7 @@ package Paws::RDS::SourceRegionMessage;
   has Marker => (is => 'ro', isa => 'Str');
   has SourceRegions => (is => 'ro', isa => 'ArrayRef[Paws::RDS::SourceRegion]', xmlname => 'SourceRegion', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

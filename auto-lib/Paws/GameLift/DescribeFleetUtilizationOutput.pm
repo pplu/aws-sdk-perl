@@ -4,6 +4,7 @@ package Paws::GameLift::DescribeFleetUtilizationOutput;
   has FleetUtilization => (is => 'ro', isa => 'ArrayRef[Paws::GameLift::FleetUtilization]');
   has NextToken => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

@@ -9,6 +9,7 @@ package Paws::CloudFormation::GetTemplateSummaryOutput;
   has ResourceTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Version => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

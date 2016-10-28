@@ -3,6 +3,7 @@ package Paws::EC2::DetachClassicLinkVpcResult;
   use Moose;
   has Return => (is => 'ro', isa => 'Bool', xmlname => 'return', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

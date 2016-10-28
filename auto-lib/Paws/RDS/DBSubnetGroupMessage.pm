@@ -4,6 +4,7 @@ package Paws::RDS::DBSubnetGroupMessage;
   has DBSubnetGroups => (is => 'ro', isa => 'ArrayRef[Paws::RDS::DBSubnetGroup]', xmlname => 'DBSubnetGroup', traits => ['Unwrapped',]);
   has Marker => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

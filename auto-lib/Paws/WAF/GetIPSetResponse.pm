@@ -3,6 +3,7 @@ package Paws::WAF::GetIPSetResponse;
   use Moose;
   has IPSet => (is => 'ro', isa => 'Paws::WAF::IPSet');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

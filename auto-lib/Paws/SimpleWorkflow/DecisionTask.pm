@@ -9,6 +9,7 @@ package Paws::SimpleWorkflow::DecisionTask;
   has WorkflowExecution => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowExecution', traits => ['Unwrapped'], xmlname => 'workflowExecution' , required => 1);
   has WorkflowType => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowType', traits => ['Unwrapped'], xmlname => 'workflowType' , required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

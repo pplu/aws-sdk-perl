@@ -3,6 +3,7 @@ package Paws::Route53Domains::ListTagsForDomainResponse;
   use Moose;
   has TagList => (is => 'ro', isa => 'ArrayRef[Paws::Route53Domains::Tag]', required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

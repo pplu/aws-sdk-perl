@@ -8,6 +8,7 @@ package Paws::ApiGateway::UsagePlan;
   has Quota => (is => 'ro', isa => 'Paws::ApiGateway::QuotaSettings');
   has Throttle => (is => 'ro', isa => 'Paws::ApiGateway::ThrottleSettings');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

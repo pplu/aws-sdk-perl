@@ -3,6 +3,7 @@ package Paws::ELB::DeregisterEndPointsOutput;
   use Moose;
   has Instances => (is => 'ro', isa => 'ArrayRef[Paws::ELB::Instance]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

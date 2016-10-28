@@ -4,6 +4,7 @@ package Paws::Snowball::GetSnowballUsageResult;
   has SnowballLimit => (is => 'ro', isa => 'Int');
   has SnowballsInUse => (is => 'ro', isa => 'Int');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

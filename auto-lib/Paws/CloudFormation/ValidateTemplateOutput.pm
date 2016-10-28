@@ -6,6 +6,7 @@ package Paws::CloudFormation::ValidateTemplateOutput;
   has Description => (is => 'ro', isa => 'Str');
   has Parameters => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::TemplateParameter]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

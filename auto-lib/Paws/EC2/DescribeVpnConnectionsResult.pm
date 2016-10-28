@@ -3,6 +3,7 @@ package Paws::EC2::DescribeVpnConnectionsResult;
   use Moose;
   has VpnConnections => (is => 'ro', isa => 'ArrayRef[Paws::EC2::VpnConnection]', xmlname => 'vpnConnectionSet', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

@@ -8,6 +8,7 @@ package Paws::RedShift::LoggingStatus;
   has LoggingEnabled => (is => 'ro', isa => 'Bool');
   has S3KeyPrefix => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

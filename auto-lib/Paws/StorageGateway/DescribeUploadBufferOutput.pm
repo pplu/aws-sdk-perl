@@ -6,6 +6,7 @@ package Paws::StorageGateway::DescribeUploadBufferOutput;
   has UploadBufferAllocatedInBytes => (is => 'ro', isa => 'Int');
   has UploadBufferUsedInBytes => (is => 'ro', isa => 'Int');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

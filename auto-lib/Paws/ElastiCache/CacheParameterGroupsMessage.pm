@@ -4,6 +4,7 @@ package Paws::ElastiCache::CacheParameterGroupsMessage;
   has CacheParameterGroups => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::CacheParameterGroup]', xmlname => 'CacheParameterGroup', traits => ['Unwrapped',]);
   has Marker => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

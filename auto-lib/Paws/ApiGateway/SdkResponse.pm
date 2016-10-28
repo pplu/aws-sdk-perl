@@ -5,6 +5,7 @@ package Paws::ApiGateway::SdkResponse;
   has ContentDisposition => (is => 'ro', isa => 'Str');
   has ContentType => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

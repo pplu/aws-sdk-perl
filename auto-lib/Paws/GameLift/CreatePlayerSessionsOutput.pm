@@ -3,6 +3,7 @@ package Paws::GameLift::CreatePlayerSessionsOutput;
   use Moose;
   has PlayerSessions => (is => 'ro', isa => 'ArrayRef[Paws::GameLift::PlayerSession]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

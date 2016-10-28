@@ -14,6 +14,7 @@ package Paws::S3::ListMultipartUploadsOutput;
   has UploadIdMarker => (is => 'ro', isa => 'Str');
   has Uploads => (is => 'ro', isa => 'ArrayRef[Paws::S3::MultipartUpload]', traits => ['Unwrapped'], xmlname => 'Upload');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

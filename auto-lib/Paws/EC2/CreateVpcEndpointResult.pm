@@ -4,6 +4,7 @@ package Paws::EC2::CreateVpcEndpointResult;
   has ClientToken => (is => 'ro', isa => 'Str', xmlname => 'clientToken', traits => ['Unwrapped',]);
   has VpcEndpoint => (is => 'ro', isa => 'Paws::EC2::VpcEndpoint', xmlname => 'vpcEndpoint', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

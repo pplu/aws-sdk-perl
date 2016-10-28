@@ -4,6 +4,7 @@ package Paws::Config::GetResourceConfigHistoryResponse;
   has ConfigurationItems => (is => 'ro', isa => 'ArrayRef[Paws::Config::ConfigurationItem]', traits => ['Unwrapped'], xmlname => 'configurationItems' );
   has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

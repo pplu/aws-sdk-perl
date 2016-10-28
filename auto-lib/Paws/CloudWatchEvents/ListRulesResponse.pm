@@ -4,6 +4,7 @@ package Paws::CloudWatchEvents::ListRulesResponse;
   has NextToken => (is => 'ro', isa => 'Str');
   has Rules => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatchEvents::Rule]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

@@ -3,6 +3,7 @@ package Paws::Support::DescribeTrustedAdvisorCheckSummariesResponse;
   use Moose;
   has Summaries => (is => 'ro', isa => 'ArrayRef[Paws::Support::TrustedAdvisorCheckSummary]', traits => ['Unwrapped'], xmlname => 'summaries' , required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

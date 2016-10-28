@@ -3,6 +3,7 @@ package Paws::DS::CreateComputerResult;
   use Moose;
   has Computer => (is => 'ro', isa => 'Paws::DS::Computer');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

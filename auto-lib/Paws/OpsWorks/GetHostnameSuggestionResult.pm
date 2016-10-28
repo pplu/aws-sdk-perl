@@ -4,6 +4,7 @@ package Paws::OpsWorks::GetHostnameSuggestionResult;
   has Hostname => (is => 'ro', isa => 'Str');
   has LayerId => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

@@ -3,6 +3,7 @@ package Paws::ELBv2::ModifyTargetGroupOutput;
   use Moose;
   has TargetGroups => (is => 'ro', isa => 'ArrayRef[Paws::ELBv2::TargetGroup]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

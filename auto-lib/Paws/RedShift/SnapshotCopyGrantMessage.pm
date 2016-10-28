@@ -4,6 +4,7 @@ package Paws::RedShift::SnapshotCopyGrantMessage;
   has Marker => (is => 'ro', isa => 'Str');
   has SnapshotCopyGrants => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::SnapshotCopyGrant]', xmlname => 'SnapshotCopyGrant', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

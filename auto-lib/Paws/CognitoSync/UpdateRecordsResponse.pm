@@ -3,6 +3,7 @@ package Paws::CognitoSync::UpdateRecordsResponse;
   use Moose;
   has Records => (is => 'ro', isa => 'ArrayRef[Paws::CognitoSync::Record]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

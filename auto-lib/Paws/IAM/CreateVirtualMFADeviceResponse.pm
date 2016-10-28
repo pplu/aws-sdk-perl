@@ -3,6 +3,7 @@ package Paws::IAM::CreateVirtualMFADeviceResponse;
   use Moose;
   has VirtualMFADevice => (is => 'ro', isa => 'Paws::IAM::VirtualMFADevice', required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

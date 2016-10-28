@@ -4,6 +4,7 @@ package Paws::CodeDeploy::StopDeploymentOutput;
   has Status => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'status' );
   has StatusMessage => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'statusMessage' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

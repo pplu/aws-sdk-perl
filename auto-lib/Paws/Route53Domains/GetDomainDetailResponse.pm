@@ -23,6 +23,7 @@ package Paws::Route53Domains::GetDomainDetailResponse;
   has UpdatedDate => (is => 'ro', isa => 'Str');
   has WhoIsServer => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

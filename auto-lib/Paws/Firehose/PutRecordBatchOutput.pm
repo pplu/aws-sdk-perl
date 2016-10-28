@@ -4,6 +4,7 @@ package Paws::Firehose::PutRecordBatchOutput;
   has FailedPutCount => (is => 'ro', isa => 'Int', required => 1);
   has RequestResponses => (is => 'ro', isa => 'ArrayRef[Paws::Firehose::PutRecordBatchResponseEntry]', required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

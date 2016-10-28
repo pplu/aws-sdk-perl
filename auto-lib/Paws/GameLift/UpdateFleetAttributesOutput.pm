@@ -3,6 +3,7 @@ package Paws::GameLift::UpdateFleetAttributesOutput;
   use Moose;
   has FleetId => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

@@ -5,6 +5,7 @@ package Paws::DeviceFarm::GetOfferingStatusResult;
   has NextPeriod => (is => 'ro', isa => 'Paws::DeviceFarm::OfferingStatusMap', traits => ['Unwrapped'], xmlname => 'nextPeriod' );
   has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

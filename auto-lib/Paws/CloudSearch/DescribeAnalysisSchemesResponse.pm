@@ -3,6 +3,7 @@ package Paws::CloudSearch::DescribeAnalysisSchemesResponse;
   use Moose;
   has AnalysisSchemes => (is => 'ro', isa => 'ArrayRef[Paws::CloudSearch::AnalysisSchemeStatus]', required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

@@ -4,6 +4,7 @@ package Paws::ElasticBeanstalk::ConfigurationOptionsDescription;
   has Options => (is => 'ro', isa => 'ArrayRef[Paws::ElasticBeanstalk::ConfigurationOptionDescription]');
   has SolutionStackName => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

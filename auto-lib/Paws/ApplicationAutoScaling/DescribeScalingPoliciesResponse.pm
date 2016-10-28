@@ -4,6 +4,7 @@ package Paws::ApplicationAutoScaling::DescribeScalingPoliciesResponse;
   has NextToken => (is => 'ro', isa => 'Str');
   has ScalingPolicies => (is => 'ro', isa => 'ArrayRef[Paws::ApplicationAutoScaling::ScalingPolicy]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

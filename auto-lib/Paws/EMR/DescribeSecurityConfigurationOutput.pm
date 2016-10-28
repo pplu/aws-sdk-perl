@@ -5,6 +5,7 @@ package Paws::EMR::DescribeSecurityConfigurationOutput;
   has Name => (is => 'ro', isa => 'Str');
   has SecurityConfiguration => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

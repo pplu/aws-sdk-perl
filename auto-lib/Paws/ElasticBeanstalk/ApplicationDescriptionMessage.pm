@@ -3,6 +3,7 @@ package Paws::ElasticBeanstalk::ApplicationDescriptionMessage;
   use Moose;
   has Application => (is => 'ro', isa => 'Paws::ElasticBeanstalk::ApplicationDescription');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

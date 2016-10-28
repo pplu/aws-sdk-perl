@@ -6,6 +6,7 @@ package Paws::CognitoIdp::InitiateAuthResponse;
   has ChallengeParameters => (is => 'ro', isa => 'Paws::CognitoIdp::ChallengeParametersType');
   has Session => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

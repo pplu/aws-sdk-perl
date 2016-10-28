@@ -70,7 +70,10 @@ package [% c.api %]::[% operation.name %];
   class_has _api_call => (isa => 'Str', is => 'ro', default => '[% op_name %]');
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '[% operation.http.requestUri %]');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => '[% operation.http.method %]');
-  class_has _returns => (isa => 'Str', is => 'ro'[% IF (operation.output.keys.size) %], default => '[% c.api %]::[% c.shapename_for_operation_output(op_name) %]'[% END %]);
+  class_has _returns => (isa => 'Str', is => 'ro', default => '
+    [%- IF (operation.output.keys.size) -%]
+      [%- c.api %]::[% c.shapename_for_operation_output(op_name) -%]
+    [%- ELSE -%]Paws::API::Response[% END -%]');
   class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 [% c.callclass_documentation_template | eval %]
@@ -88,6 +91,7 @@ package [% c.api %]::[% c.shapename_for_operation_output(op_name) %];
   [%- IF (shape.members.$param_name.streaming == 1) %], traits => ['ParamInBody'][% END %]
   [%- IF (c.required_in_shape(shape,param_name)) %], required => 1[% END %]);
 [% END %]
+  has _request_id => (is => 'ro', isa => 'Str');
 [%- END %]
 1;
 [% c.class_documentation_template | eval %]

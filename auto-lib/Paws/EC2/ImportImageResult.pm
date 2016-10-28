@@ -13,6 +13,7 @@ package Paws::EC2::ImportImageResult;
   has Status => (is => 'ro', isa => 'Str', xmlname => 'status', traits => ['Unwrapped',]);
   has StatusMessage => (is => 'ro', isa => 'Str', xmlname => 'statusMessage', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

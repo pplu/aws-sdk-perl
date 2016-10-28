@@ -3,6 +3,7 @@ package Paws::SSM::DescribeDocumentPermissionResponse;
   use Moose;
   has AccountIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

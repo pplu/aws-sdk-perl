@@ -3,6 +3,7 @@ package Paws::ELB::DescribeEndPointStateOutput;
   use Moose;
   has InstanceStates => (is => 'ro', isa => 'ArrayRef[Paws::ELB::InstanceState]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

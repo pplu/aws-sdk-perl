@@ -6,6 +6,7 @@ package Paws::IoT::CreatePolicyVersionResponse;
   has PolicyDocument => (is => 'ro', isa => 'Str');
   has PolicyVersionId => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

@@ -3,6 +3,7 @@ package Paws::CognitoIdp::CreateUserPoolResponse;
   use Moose;
   has UserPool => (is => 'ro', isa => 'Paws::CognitoIdp::UserPoolType');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

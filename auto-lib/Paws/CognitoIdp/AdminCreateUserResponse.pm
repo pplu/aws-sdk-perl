@@ -3,6 +3,7 @@ package Paws::CognitoIdp::AdminCreateUserResponse;
   use Moose;
   has User => (is => 'ro', isa => 'Paws::CognitoIdp::UserType');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

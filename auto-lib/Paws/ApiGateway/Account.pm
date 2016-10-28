@@ -6,6 +6,7 @@ package Paws::ApiGateway::Account;
   has Features => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has ThrottleSettings => (is => 'ro', isa => 'Paws::ApiGateway::ThrottleSettings');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

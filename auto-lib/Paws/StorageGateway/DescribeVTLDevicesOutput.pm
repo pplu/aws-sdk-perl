@@ -5,6 +5,7 @@ package Paws::StorageGateway::DescribeVTLDevicesOutput;
   has Marker => (is => 'ro', isa => 'Str');
   has VTLDevices => (is => 'ro', isa => 'ArrayRef[Paws::StorageGateway::VTLDevice]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

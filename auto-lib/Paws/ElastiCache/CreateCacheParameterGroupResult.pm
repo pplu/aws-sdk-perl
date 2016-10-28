@@ -3,6 +3,7 @@ package Paws::ElastiCache::CreateCacheParameterGroupResult;
   use Moose;
   has CacheParameterGroup => (is => 'ro', isa => 'Paws::ElastiCache::CacheParameterGroup');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

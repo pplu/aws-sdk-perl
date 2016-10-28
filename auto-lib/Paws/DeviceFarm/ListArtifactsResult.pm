@@ -4,6 +4,7 @@ package Paws::DeviceFarm::ListArtifactsResult;
   has Artifacts => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::Artifact]', traits => ['Unwrapped'], xmlname => 'artifacts' );
   has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

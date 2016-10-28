@@ -15,6 +15,7 @@ package Paws::Lambda::FunctionConfiguration;
   has Version => (is => 'ro', isa => 'Str');
   has VpcConfig => (is => 'ro', isa => 'Paws::Lambda::VpcConfigResponse');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

@@ -5,6 +5,7 @@ package Paws::ServiceCatalog::SearchProductsOutput;
   has ProductViewAggregations => (is => 'ro', isa => 'Paws::ServiceCatalog::ProductViewAggregations');
   has ProductViewSummaries => (is => 'ro', isa => 'ArrayRef[Paws::ServiceCatalog::ProductViewSummary]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

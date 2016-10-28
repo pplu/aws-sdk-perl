@@ -3,6 +3,7 @@ package Paws::Budgets::DescribeBudgetResponse;
   use Moose;
   has Budget => (is => 'ro', isa => 'Paws::Budgets::Budget');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

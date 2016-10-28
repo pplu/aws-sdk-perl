@@ -4,6 +4,7 @@ package Paws::SimpleWorkflow::DomainDetail;
   has Configuration => (is => 'ro', isa => 'Paws::SimpleWorkflow::DomainConfiguration', traits => ['Unwrapped'], xmlname => 'configuration' , required => 1);
   has DomainInfo => (is => 'ro', isa => 'Paws::SimpleWorkflow::DomainInfo', traits => ['Unwrapped'], xmlname => 'domainInfo' , required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

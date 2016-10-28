@@ -6,6 +6,7 @@ package Paws::Lambda::AliasConfiguration;
   has FunctionVersion => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

@@ -3,6 +3,7 @@ package Paws::ImportExport::CancelJobOutput;
   use Moose;
   has Success => (is => 'ro', isa => 'Bool');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

@@ -4,6 +4,7 @@ package Paws::GameLift::ListAliasesOutput;
   has Aliases => (is => 'ro', isa => 'ArrayRef[Paws::GameLift::Alias]');
   has NextToken => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

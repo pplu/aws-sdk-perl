@@ -4,6 +4,7 @@ package Paws::EC2::DescribeTagsResult;
   has NextToken => (is => 'ro', isa => 'Str', xmlname => 'nextToken', traits => ['Unwrapped',]);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::TagDescription]', xmlname => 'tagSet', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

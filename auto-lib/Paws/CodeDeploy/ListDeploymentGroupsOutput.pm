@@ -5,6 +5,7 @@ package Paws::CodeDeploy::ListDeploymentGroupsOutput;
   has DeploymentGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['Unwrapped'], xmlname => 'deploymentGroups' );
   has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

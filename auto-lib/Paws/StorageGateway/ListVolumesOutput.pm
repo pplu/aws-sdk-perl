@@ -5,6 +5,7 @@ package Paws::StorageGateway::ListVolumesOutput;
   has Marker => (is => 'ro', isa => 'Str');
   has VolumeInfos => (is => 'ro', isa => 'ArrayRef[Paws::StorageGateway::VolumeInfo]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

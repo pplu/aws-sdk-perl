@@ -4,6 +4,7 @@ package Paws::SimpleWorkflow::WorkflowTypeInfos;
   has NextPageToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextPageToken' );
   has TypeInfos => (is => 'ro', isa => 'ArrayRef[Paws::SimpleWorkflow::WorkflowTypeInfo]', traits => ['Unwrapped'], xmlname => 'typeInfos' , required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

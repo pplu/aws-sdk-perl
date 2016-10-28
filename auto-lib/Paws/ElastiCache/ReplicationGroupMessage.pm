@@ -4,6 +4,7 @@ package Paws::ElastiCache::ReplicationGroupMessage;
   has Marker => (is => 'ro', isa => 'Str');
   has ReplicationGroups => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::ReplicationGroup]', xmlname => 'ReplicationGroup', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

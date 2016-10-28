@@ -8,6 +8,7 @@ package Paws::ImportExport::CreateJobOutput;
   has SignatureFileContents => (is => 'ro', isa => 'Str');
   has WarningMessage => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

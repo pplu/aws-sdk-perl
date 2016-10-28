@@ -3,6 +3,7 @@ package Paws::OpsWorks::CreateStackResult;
   use Moose;
   has StackId => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

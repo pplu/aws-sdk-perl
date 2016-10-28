@@ -5,6 +5,7 @@ package Paws::EFS::DescribeTagsResponse;
   has NextMarker => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EFS::Tag]', required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

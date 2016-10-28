@@ -3,6 +3,7 @@ package Paws::WAF::GetByteMatchSetResponse;
   use Moose;
   has ByteMatchSet => (is => 'ro', isa => 'Paws::WAF::ByteMatchSet');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

@@ -3,6 +3,7 @@ package Paws::SES::DescribeReceiptRuleResponse;
   use Moose;
   has Rule => (is => 'ro', isa => 'Paws::SES::ReceiptRule');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

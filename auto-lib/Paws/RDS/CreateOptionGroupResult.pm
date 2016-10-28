@@ -3,6 +3,7 @@ package Paws::RDS::CreateOptionGroupResult;
   use Moose;
   has OptionGroup => (is => 'ro', isa => 'Paws::RDS::OptionGroup');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

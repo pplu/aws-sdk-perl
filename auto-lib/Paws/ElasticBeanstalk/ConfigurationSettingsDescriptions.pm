@@ -3,6 +3,7 @@ package Paws::ElasticBeanstalk::ConfigurationSettingsDescriptions;
   use Moose;
   has ConfigurationSettings => (is => 'ro', isa => 'ArrayRef[Paws::ElasticBeanstalk::ConfigurationSettingsDescription]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

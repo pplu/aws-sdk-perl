@@ -3,6 +3,7 @@ package Paws::SES::GetSendStatisticsResponse;
   use Moose;
   has SendDataPoints => (is => 'ro', isa => 'ArrayRef[Paws::SES::SendDataPoint]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

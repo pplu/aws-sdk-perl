@@ -4,6 +4,7 @@ package Paws::EC2::ModifyVpcPeeringConnectionOptionsResult;
   has AccepterPeeringConnectionOptions => (is => 'ro', isa => 'Paws::EC2::PeeringConnectionOptions', xmlname => 'accepterPeeringConnectionOptions', traits => ['Unwrapped',]);
   has RequesterPeeringConnectionOptions => (is => 'ro', isa => 'Paws::EC2::PeeringConnectionOptions', xmlname => 'requesterPeeringConnectionOptions', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

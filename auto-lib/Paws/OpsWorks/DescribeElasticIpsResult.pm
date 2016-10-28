@@ -3,6 +3,7 @@ package Paws::OpsWorks::DescribeElasticIpsResult;
   use Moose;
   has ElasticIps => (is => 'ro', isa => 'ArrayRef[Paws::OpsWorks::ElasticIp]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

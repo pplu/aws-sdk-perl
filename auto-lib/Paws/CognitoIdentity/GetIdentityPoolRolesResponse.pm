@@ -4,6 +4,7 @@ package Paws::CognitoIdentity::GetIdentityPoolRolesResponse;
   has IdentityPoolId => (is => 'ro', isa => 'Str');
   has Roles => (is => 'ro', isa => 'Paws::CognitoIdentity::RolesMap');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

@@ -3,6 +3,7 @@ package Paws::EC2::DescribeVpcClassicLinkResult;
   use Moose;
   has Vpcs => (is => 'ro', isa => 'ArrayRef[Paws::EC2::VpcClassicLink]', xmlname => 'vpcSet', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

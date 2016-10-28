@@ -3,6 +3,7 @@ package Paws::AutoScaling::ProcessesType;
   use Moose;
   has Processes => (is => 'ro', isa => 'ArrayRef[Paws::AutoScaling::ProcessType]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

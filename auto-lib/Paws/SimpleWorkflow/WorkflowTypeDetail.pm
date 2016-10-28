@@ -4,6 +4,7 @@ package Paws::SimpleWorkflow::WorkflowTypeDetail;
   has Configuration => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowTypeConfiguration', traits => ['Unwrapped'], xmlname => 'configuration' , required => 1);
   has TypeInfo => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowTypeInfo', traits => ['Unwrapped'], xmlname => 'typeInfo' , required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

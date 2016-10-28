@@ -4,6 +4,7 @@ package Paws::DeviceFarm::ListUploadsResult;
   has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
   has Uploads => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::Upload]', traits => ['Unwrapped'], xmlname => 'uploads' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

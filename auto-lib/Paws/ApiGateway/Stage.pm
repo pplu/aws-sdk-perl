@@ -13,6 +13,7 @@ package Paws::ApiGateway::Stage;
   has StageName => (is => 'ro', isa => 'Str');
   has Variables => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

@@ -4,6 +4,7 @@ package Paws::CodePipeline::ListPipelinesOutput;
   has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
   has Pipelines => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::PipelineSummary]', traits => ['Unwrapped'], xmlname => 'pipelines' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

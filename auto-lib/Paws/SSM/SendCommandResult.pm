@@ -3,6 +3,7 @@ package Paws::SSM::SendCommandResult;
   use Moose;
   has Command => (is => 'ro', isa => 'Paws::SSM::Command');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

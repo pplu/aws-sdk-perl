@@ -4,6 +4,7 @@ package Paws::GameLift::DescribeFleetCapacityOutput;
   has FleetCapacity => (is => 'ro', isa => 'ArrayRef[Paws::GameLift::FleetCapacity]');
   has NextToken => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

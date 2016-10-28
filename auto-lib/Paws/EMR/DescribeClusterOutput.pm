@@ -3,6 +3,7 @@ package Paws::EMR::DescribeClusterOutput;
   use Moose;
   has Cluster => (is => 'ro', isa => 'Paws::EMR::Cluster');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

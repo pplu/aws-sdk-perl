@@ -4,6 +4,7 @@ package Paws::ECR::GetDownloadUrlForLayerResponse;
   has DownloadUrl => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'downloadUrl' );
   has LayerDigest => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'layerDigest' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

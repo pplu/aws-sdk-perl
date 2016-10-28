@@ -5,6 +5,7 @@ package Paws::IAM::GetCredentialReportResponse;
   has GeneratedTime => (is => 'ro', isa => 'Str');
   has ReportFormat => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

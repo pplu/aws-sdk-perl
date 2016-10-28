@@ -4,6 +4,7 @@ package Paws::ElasticBeanstalk::EventDescriptionsMessage;
   has Events => (is => 'ro', isa => 'ArrayRef[Paws::ElasticBeanstalk::EventDescription]');
   has NextToken => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

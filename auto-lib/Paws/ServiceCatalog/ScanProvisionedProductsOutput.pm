@@ -4,6 +4,7 @@ package Paws::ServiceCatalog::ScanProvisionedProductsOutput;
   has NextPageToken => (is => 'ro', isa => 'Str');
   has ProvisionedProducts => (is => 'ro', isa => 'ArrayRef[Paws::ServiceCatalog::ProvisionedProductDetail]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

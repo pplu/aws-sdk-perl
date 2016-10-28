@@ -4,6 +4,7 @@ package Paws::EC2::CancelSpotFleetRequestsResponse;
   has SuccessfulFleetRequests => (is => 'ro', isa => 'ArrayRef[Paws::EC2::CancelSpotFleetRequestsSuccessItem]', xmlname => 'successfulFleetRequestSet', traits => ['Unwrapped',]);
   has UnsuccessfulFleetRequests => (is => 'ro', isa => 'ArrayRef[Paws::EC2::CancelSpotFleetRequestsErrorItem]', xmlname => 'unsuccessfulFleetRequestSet', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

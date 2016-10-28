@@ -4,6 +4,7 @@ package Paws::GameLift::DescribeScalingPoliciesOutput;
   has NextToken => (is => 'ro', isa => 'Str');
   has ScalingPolicies => (is => 'ro', isa => 'ArrayRef[Paws::GameLift::ScalingPolicy]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

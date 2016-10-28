@@ -2,6 +2,7 @@
 package Paws::ApplicationAutoScaling::DeleteScalingPolicyResponse;
   use Moose;
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

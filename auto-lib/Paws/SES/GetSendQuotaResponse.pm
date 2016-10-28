@@ -5,6 +5,7 @@ package Paws::SES::GetSendQuotaResponse;
   has MaxSendRate => (is => 'ro', isa => 'Num');
   has SentLast24Hours => (is => 'ro', isa => 'Num');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

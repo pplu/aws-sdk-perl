@@ -3,6 +3,7 @@ package Paws::Glacier::GetVaultAccessPolicyOutput;
   use Moose;
   has Policy => (is => 'ro', isa => 'Paws::Glacier::VaultAccessPolicy');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

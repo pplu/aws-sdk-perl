@@ -5,6 +5,7 @@ package Paws::Route53Domains::ResendContactReachabilityEmailResponse;
   has EmailAddress => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'emailAddress' );
   has IsAlreadyVerified => (is => 'ro', isa => 'Bool', traits => ['Unwrapped'], xmlname => 'isAlreadyVerified' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

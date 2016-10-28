@@ -4,6 +4,7 @@ package Paws::ElasticTranscoder::UpdatePipelineResponse;
   has Pipeline => (is => 'ro', isa => 'Paws::ElasticTranscoder::Pipeline');
   has Warnings => (is => 'ro', isa => 'ArrayRef[Paws::ElasticTranscoder::Warning]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

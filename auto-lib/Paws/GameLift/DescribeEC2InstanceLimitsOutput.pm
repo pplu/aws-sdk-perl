@@ -3,6 +3,7 @@ package Paws::GameLift::DescribeEC2InstanceLimitsOutput;
   use Moose;
   has EC2InstanceLimits => (is => 'ro', isa => 'ArrayRef[Paws::GameLift::EC2InstanceLimit]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

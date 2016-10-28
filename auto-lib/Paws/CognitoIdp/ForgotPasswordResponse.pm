@@ -3,6 +3,7 @@ package Paws::CognitoIdp::ForgotPasswordResponse;
   use Moose;
   has CodeDeliveryDetails => (is => 'ro', isa => 'Paws::CognitoIdp::CodeDeliveryDetailsType');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

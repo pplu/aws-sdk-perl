@@ -3,6 +3,7 @@ package Paws::OpsWorks::CreateDeploymentResult;
   use Moose;
   has DeploymentId => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

@@ -4,6 +4,7 @@ package Paws::GameLift::RequestUploadCredentialsOutput;
   has StorageLocation => (is => 'ro', isa => 'Paws::GameLift::S3Location');
   has UploadCredentials => (is => 'ro', isa => 'Paws::GameLift::AwsCredentials');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

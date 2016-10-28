@@ -4,6 +4,7 @@ package Paws::CloudWatch::GetMetricStatisticsOutput;
   has Datapoints => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatch::Datapoint]');
   has Label => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

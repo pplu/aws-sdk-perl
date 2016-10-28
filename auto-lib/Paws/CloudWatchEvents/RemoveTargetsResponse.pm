@@ -4,6 +4,7 @@ package Paws::CloudWatchEvents::RemoveTargetsResponse;
   has FailedEntries => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatchEvents::RemoveTargetsResultEntry]');
   has FailedEntryCount => (is => 'ro', isa => 'Int');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

@@ -4,6 +4,7 @@ package Paws::Snowball::DescribeAddressesResult;
   has Addresses => (is => 'ro', isa => 'ArrayRef[Paws::Snowball::Address]');
   has NextToken => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

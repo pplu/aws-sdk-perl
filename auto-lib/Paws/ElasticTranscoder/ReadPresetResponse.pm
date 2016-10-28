@@ -3,6 +3,7 @@ package Paws::ElasticTranscoder::ReadPresetResponse;
   use Moose;
   has Preset => (is => 'ro', isa => 'Paws::ElasticTranscoder::Preset');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

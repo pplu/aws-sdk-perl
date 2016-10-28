@@ -4,6 +4,7 @@ package Paws::StorageGateway::DescribeTapesOutput;
   has Marker => (is => 'ro', isa => 'Str');
   has Tapes => (is => 'ro', isa => 'ArrayRef[Paws::StorageGateway::Tape]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

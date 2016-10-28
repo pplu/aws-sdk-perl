@@ -23,6 +23,7 @@ package Paws::MachineLearning::GetMLModelOutput;
   has TrainingDataSourceId => (is => 'ro', isa => 'Str');
   has TrainingParameters => (is => 'ro', isa => 'Paws::MachineLearning::TrainingParameters');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

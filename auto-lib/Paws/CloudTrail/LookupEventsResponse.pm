@@ -4,6 +4,7 @@ package Paws::CloudTrail::LookupEventsResponse;
   has Events => (is => 'ro', isa => 'ArrayRef[Paws::CloudTrail::Event]');
   has NextToken => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

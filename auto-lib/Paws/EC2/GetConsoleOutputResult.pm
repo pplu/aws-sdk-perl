@@ -5,6 +5,7 @@ package Paws::EC2::GetConsoleOutputResult;
   has Output => (is => 'ro', isa => 'Str', xmlname => 'output', traits => ['Unwrapped',]);
   has Timestamp => (is => 'ro', isa => 'Str', xmlname => 'timestamp', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

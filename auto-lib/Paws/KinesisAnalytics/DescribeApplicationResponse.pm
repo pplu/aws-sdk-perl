@@ -3,6 +3,7 @@ package Paws::KinesisAnalytics::DescribeApplicationResponse;
   use Moose;
   has ApplicationDetail => (is => 'ro', isa => 'Paws::KinesisAnalytics::ApplicationDetail', required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

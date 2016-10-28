@@ -3,6 +3,7 @@ package Paws::CloudHSM::ListTagsForResourceResponse;
   use Moose;
   has TagList => (is => 'ro', isa => 'ArrayRef[Paws::CloudHSM::Tag]', required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

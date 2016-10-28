@@ -3,6 +3,7 @@ package Paws::WAF::GetSqlInjectionMatchSetResponse;
   use Moose;
   has SqlInjectionMatchSet => (is => 'ro', isa => 'Paws::WAF::SqlInjectionMatchSet');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

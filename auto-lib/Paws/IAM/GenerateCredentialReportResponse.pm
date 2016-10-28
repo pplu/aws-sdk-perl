@@ -4,6 +4,7 @@ package Paws::IAM::GenerateCredentialReportResponse;
   has Description => (is => 'ro', isa => 'Str');
   has State => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

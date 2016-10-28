@@ -7,6 +7,7 @@ package Paws::ApiGateway::TestInvokeMethodResponse;
   has Log => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Int');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

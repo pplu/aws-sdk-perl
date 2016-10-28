@@ -9,6 +9,7 @@ package Paws::DirectConnect::Interconnect;
   has Location => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'location' );
   has Region => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'region' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

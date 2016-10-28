@@ -3,6 +3,7 @@ package Paws::GameLift::UpdateBuildOutput;
   use Moose;
   has Build => (is => 'ro', isa => 'Paws::GameLift::Build');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

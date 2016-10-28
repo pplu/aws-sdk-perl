@@ -3,6 +3,7 @@ package Paws::EC2::CreateNetworkAclResult;
   use Moose;
   has NetworkAcl => (is => 'ro', isa => 'Paws::EC2::NetworkAcl', xmlname => 'networkAcl', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

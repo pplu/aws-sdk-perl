@@ -4,6 +4,7 @@ package Paws::ElasticTranscoder::ListPresetsResponse;
   has NextPageToken => (is => 'ro', isa => 'Str');
   has Presets => (is => 'ro', isa => 'ArrayRef[Paws::ElasticTranscoder::Preset]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

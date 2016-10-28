@@ -4,6 +4,7 @@ package Paws::ServiceCatalog::DescribeProductOutput;
   has ProductViewSummary => (is => 'ro', isa => 'Paws::ServiceCatalog::ProductViewSummary');
   has ProvisioningArtifacts => (is => 'ro', isa => 'ArrayRef[Paws::ServiceCatalog::ProvisioningArtifact]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

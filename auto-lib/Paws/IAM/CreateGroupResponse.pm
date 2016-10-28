@@ -3,6 +3,7 @@ package Paws::IAM::CreateGroupResponse;
   use Moose;
   has Group => (is => 'ro', isa => 'Paws::IAM::Group', required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

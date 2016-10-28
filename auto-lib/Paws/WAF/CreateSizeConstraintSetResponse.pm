@@ -4,6 +4,7 @@ package Paws::WAF::CreateSizeConstraintSetResponse;
   has ChangeToken => (is => 'ro', isa => 'Str');
   has SizeConstraintSet => (is => 'ro', isa => 'Paws::WAF::SizeConstraintSet');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

@@ -3,6 +3,7 @@ package Paws::EMR::DescribeJobFlowsOutput;
   use Moose;
   has JobFlows => (is => 'ro', isa => 'ArrayRef[Paws::EMR::JobFlowDetail]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

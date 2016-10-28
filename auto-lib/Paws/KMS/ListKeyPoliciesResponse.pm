@@ -5,6 +5,7 @@ package Paws::KMS::ListKeyPoliciesResponse;
   has PolicyNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Truncated => (is => 'ro', isa => 'Bool');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

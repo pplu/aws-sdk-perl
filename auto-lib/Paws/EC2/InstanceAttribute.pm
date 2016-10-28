@@ -17,6 +17,7 @@ package Paws::EC2::InstanceAttribute;
   has SriovNetSupport => (is => 'ro', isa => 'Paws::EC2::AttributeValue', xmlname => 'sriovNetSupport', traits => ['Unwrapped',]);
   has UserData => (is => 'ro', isa => 'Paws::EC2::AttributeValue', xmlname => 'userData', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

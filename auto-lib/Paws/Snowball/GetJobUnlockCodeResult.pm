@@ -3,6 +3,7 @@ package Paws::Snowball::GetJobUnlockCodeResult;
   use Moose;
   has UnlockCode => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

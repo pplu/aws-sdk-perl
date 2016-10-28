@@ -10,6 +10,7 @@ package Paws::ApiGateway::Method;
   has RequestModels => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString');
   has RequestParameters => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToBoolean');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

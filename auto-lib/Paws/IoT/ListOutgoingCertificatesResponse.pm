@@ -4,6 +4,7 @@ package Paws::IoT::ListOutgoingCertificatesResponse;
   has NextMarker => (is => 'ro', isa => 'Str');
   has OutgoingCertificates => (is => 'ro', isa => 'ArrayRef[Paws::IoT::OutgoingCertificate]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

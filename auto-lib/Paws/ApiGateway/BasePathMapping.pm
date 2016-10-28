@@ -5,6 +5,7 @@ package Paws::ApiGateway::BasePathMapping;
   has RestApiId => (is => 'ro', isa => 'Str');
   has Stage => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

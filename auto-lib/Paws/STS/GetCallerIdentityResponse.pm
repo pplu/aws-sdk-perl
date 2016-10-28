@@ -5,6 +5,7 @@ package Paws::STS::GetCallerIdentityResponse;
   has Arn => (is => 'ro', isa => 'Str');
   has UserId => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

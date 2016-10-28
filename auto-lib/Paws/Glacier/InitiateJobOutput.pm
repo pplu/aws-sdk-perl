@@ -4,6 +4,7 @@ package Paws::Glacier::InitiateJobOutput;
   has JobId => (is => 'ro', isa => 'Str');
   has Location => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

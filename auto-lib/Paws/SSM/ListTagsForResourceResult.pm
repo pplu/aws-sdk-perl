@@ -3,6 +3,7 @@ package Paws::SSM::ListTagsForResourceResult;
   use Moose;
   has TagList => (is => 'ro', isa => 'ArrayRef[Paws::SSM::Tag]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 

@@ -8,6 +8,7 @@ package Paws::SimpleWorkflow::ActivityTask;
   has TaskToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'taskToken' , required => 1);
   has WorkflowExecution => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowExecution', traits => ['Unwrapped'], xmlname => 'workflowExecution' , required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
