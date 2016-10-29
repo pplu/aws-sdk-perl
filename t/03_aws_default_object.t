@@ -24,7 +24,7 @@ use Test::More;
 
 Paws->default_config->credentials('Test::CustomCredentials');
 
-# Get an Paws object, with defaults and then a service
+# Get a Paws object, with defaults, and then get a service
 my $aws = Paws->new;
 ok($aws->config->caller->isa('Paws::Net::Caller'), 'Got default caller');
 my $svc = $aws->service('SQS');
