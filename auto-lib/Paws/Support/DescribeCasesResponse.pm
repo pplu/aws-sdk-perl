@@ -16,7 +16,7 @@ Paws::Support::DescribeCasesResponse
 
 =head2 Cases => ArrayRef[L<Paws::Support::CaseDetails>]
 
-The details for the cases that match the request.
+The details for each case that match the request.
 
 
 
