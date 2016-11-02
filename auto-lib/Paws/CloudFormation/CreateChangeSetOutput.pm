@@ -2,6 +2,7 @@
 package Paws::CloudFormation::CreateChangeSetOutput;
   use Moose;
   has Id => (is => 'ro', isa => 'Str');
+  has StackId => (is => 'ro', isa => 'Str');
 
 1;
 
@@ -17,6 +18,12 @@ Paws::CloudFormation::CreateChangeSetOutput
 =head2 Id => Str
 
 The Amazon Resource Name (ARN) of the change set.
+
+
+
+=head2 StackId => Str
+
+The unique ID of the stack.
 
 
 

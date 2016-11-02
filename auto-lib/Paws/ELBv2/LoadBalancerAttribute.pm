@@ -46,7 +46,7 @@ Information about a load balancer attribute.
 =item *
 
 C<access_logs.s3.enabled> - Indicates whether access logs stored in
-Amazon S3 are enabled.
+Amazon S3 are enabled. The value is C<true> or C<false>.
 
 =item *
 
@@ -65,7 +65,7 @@ the root of the bucket.
 =item *
 
 C<deletion_protection.enabled> - Indicates whether deletion protection
-is enabled.
+is enabled. The value is C<true> or C<false>.
 
 =item *
 

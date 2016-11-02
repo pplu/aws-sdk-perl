@@ -42,7 +42,9 @@ The Amazon Resource Name (ARN) of the target group.
 
 =head2 B<REQUIRED> Targets => ArrayRef[L<Paws::ELBv2::TargetDescription>]
 
-The targets.
+The targets. If you specified a port override when you registered a
+target, you must specify both the target ID and the port when you
+deregister it.
 
 
 

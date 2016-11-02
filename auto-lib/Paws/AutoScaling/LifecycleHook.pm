@@ -77,8 +77,9 @@ C<CONTINUE>.
 =head2 GlobalTimeout => Int
 
   The maximum time, in seconds, that an instance can remain in a
-C<Pending:Wait> or C<Terminating:Wait> state. The default is 172800
-seconds (48 hours).
+C<Pending:Wait> or C<Terminating:Wait> state. The maximum is 172800
+seconds (48 hours) or 100 times C<HeartbeatTimeout>, whichever is
+smaller.
 
 
 =head2 HeartbeatTimeout => Int

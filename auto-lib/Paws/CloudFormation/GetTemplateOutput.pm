@@ -1,6 +1,7 @@
 
 package Paws::CloudFormation::GetTemplateOutput;
   use Moose;
+  has StagesAvailable => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has TemplateBody => (is => 'ro', isa => 'Str', decode_as => 'JSON', method => 'Template', traits => ['JSONAttribute',]);
 
 1;
@@ -12,6 +13,15 @@ package Paws::CloudFormation::GetTemplateOutput;
 Paws::CloudFormation::GetTemplateOutput
 
 =head1 ATTRIBUTES
+
+
+=head2 StagesAvailable => ArrayRef[Str|Undef]
+
+The available template type. For stacks, both the C<Original> and
+C<Processed> template types are always available. For change sets, the
+C<Original> template is always available. After the transforms are
+processed, the C<Processed> template becomes available.
+
 
 
 =head2 TemplateBody => Str

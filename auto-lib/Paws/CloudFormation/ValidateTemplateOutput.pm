@@ -3,6 +3,7 @@ package Paws::CloudFormation::ValidateTemplateOutput;
   use Moose;
   has Capabilities => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has CapabilitiesReason => (is => 'ro', isa => 'Str');
+  has DeclaredTransforms => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Description => (is => 'ro', isa => 'Str');
   has Parameters => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::TemplateParameter]');
 
@@ -34,6 +35,12 @@ CloudFormation Templates.
 
 The list of resources that generated the values in the C<Capabilities>
 response element.
+
+
+
+=head2 DeclaredTransforms => ArrayRef[Str|Undef]
+
+A list of the transforms that have been declared in the template.
 
 
 
