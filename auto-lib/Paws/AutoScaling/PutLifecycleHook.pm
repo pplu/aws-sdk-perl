@@ -96,41 +96,6 @@ you when an instance is in the transition state for the lifecycle hook.
 This target can be either an SQS queue or an SNS topic. If you specify
 an empty string, this overrides the current ARN.
 
-The notification messages sent to the target include the following
-information:
-
-=over
-
-=item *
-
-B<AutoScalingGroupName>. The name of the Auto Scaling group.
-
-=item *
-
-B<AccountId>. The AWS account ID.
-
-=item *
-
-B<LifecycleTransition>. The lifecycle hook type.
-
-=item *
-
-B<LifecycleActionToken>. The lifecycle action token.
-
-=item *
-
-B<EC2InstanceId>. The EC2 instance ID.
-
-=item *
-
-B<LifecycleHookName>. The name of the lifecycle hook.
-
-=item *
-
-B<NotificationMetadata>. User-defined information.
-
-=back
-
 This operation uses the JSON format when sending notifications to an
 Amazon SQS queue, and an email key/value pair format when sending
 notifications to an Amazon SNS topic.
