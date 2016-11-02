@@ -38,13 +38,41 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Actions => ArrayRef[L<Paws::ELBv2::Action>]
 
-The actions for the rule.
+An action. Each action has the type C<forward> and specifies a target
+group.
 
 
 
 =head2 B<REQUIRED> Conditions => ArrayRef[L<Paws::ELBv2::RuleCondition>]
 
-The conditions.
+A condition. Each condition has the field C<path-pattern> and specifies
+one path pattern. A path pattern is case sensitive, can be up to 255
+characters in length, and can contain any of the following characters:
+
+=over
+
+=item *
+
+A-Z, a-z, 0-9
+
+=item *
+
+_ - . $ / ~ " ' @ : +
+
+=item *
+
+& (using &amp;)
+
+=item *
+
+* (matches 0 or more characters)
+
+=item *
+
+? (matches exactly 1 character)
+
+=back
+
 
 
 

@@ -47,7 +47,7 @@ the protocol is HTTPS.
 
 =head2 B<REQUIRED> DefaultActions => ArrayRef[L<Paws::ELBv2::Action>]
 
-The default actions for the listener.
+The default action for the listener.
 
 
 
