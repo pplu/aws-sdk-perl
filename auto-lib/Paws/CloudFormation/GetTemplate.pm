@@ -1,7 +1,9 @@
 
 package Paws::CloudFormation::GetTemplate;
   use Moose;
-  has StackName => (is => 'ro', isa => 'Str', required => 1);
+  has ChangeSetName => (is => 'ro', isa => 'Str');
+  has StackName => (is => 'ro', isa => 'Str');
+  has TemplateStage => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -33,7 +35,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> StackName => Str
+=head2 ChangeSetName => Str
+
+Returns the template for a change set using the Amazon Resource Name
+(ARN) or name of the change set. If you specify a name, you must also
+specify the C<StackName>.
+
+
+
+=head2 StackName => Str
 
 The name or the unique stack ID that is associated with the stack,
 which are not always interchangeable:
@@ -54,6 +64,27 @@ Deleted stacks: You must specify the unique stack ID.
 Default: There is no default value.
 
 
+
+=head2 TemplateStage => Str
+
+The stage of the template that is returned. Valid values are
+C<Original> and C<Processed>:
+
+=over
+
+=item *
+
+C<Original> - Use to return the specified pre-transform template.
+
+=item *
+
+C<Processed> - Use to return the template after all transforms have
+been processed.
+
+=back
+
+
+Valid values are: C<"Original">, C<"Processed">
 
 
 =head1 SEE ALSO

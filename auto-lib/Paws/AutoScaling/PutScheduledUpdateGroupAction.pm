@@ -55,7 +55,8 @@ The number of EC2 instances that should be running in the group.
 
 =head2 EndTime => Str
 
-The time for this action to end.
+The time for the recurring schedule to end. Auto Scaling does not
+perform the action after this time.
 
 
 
@@ -73,12 +74,8 @@ The minimum size for the Auto Scaling group.
 
 =head2 Recurrence => Str
 
-The time when recurring future actions will start. Start time is
-specified by the user following the Unix cron syntax format. For more
-information, see Cron in Wikipedia.
-
-When C<StartTime> and C<EndTime> are specified with C<Recurrence>, they
-form the boundaries of when the recurring action will start and stop.
+The recurring schedule for this action, in Unix cron syntax format. For
+more information, see Cron in Wikipedia.
 
 
 
@@ -93,11 +90,12 @@ The name of this scaling action.
 The time for this action to start, in "YYYY-MM-DDThh:mm:ssZ" format in
 UTC/GMT only (for example, C<2014-06-01T00:00:00Z>).
 
+If you specify C<Recurrence> and C<StartTime>, Auto Scaling performs
+the action at this time, and then performs the action based on the
+specified recurrence.
+
 If you try to schedule your action in the past, Auto Scaling returns an
 error message.
-
-When C<StartTime> and C<EndTime> are specified with C<Recurrence>, they
-form the boundaries of when the recurring action starts and stops.
 
 
 

@@ -894,8 +894,8 @@ action.
 
 =back
 
-For more information, see Auto Scaling Lifecycle in the I<Auto Scaling
-User Guide>.
+For more information, see Auto Scaling Lifecycle Hooks in the I<Auto
+Scaling User Guide>.
 
 If you exceed your maximum limit of lifecycle hooks, which by default
 is 50 per Auto Scaling group, the call fails. For information about
@@ -944,8 +944,7 @@ Returns: nothing
 
   Creates or updates a scheduled scaling action for an Auto Scaling
 group. When updating a scheduled scaling action, if you leave a
-parameter unspecified, the corresponding value remains unchanged in the
-affected Auto Scaling group.
+parameter unspecified, the corresponding value remains unchanged.
 
 For more information, see Scheduled Scaling in the I<Auto Scaling User
 Guide>.

@@ -39,12 +39,12 @@ Information about a condition for a rule.
 
 =head2 Field => Str
 
-  The name of the field. The possible value is C<path-pattern>.
+  The only possible value is C<path-pattern>.
 
 
 =head2 Values => ArrayRef[Str|Undef]
 
-  The values for the field.
+  The path pattern. You can specify a single path pattern.
 
 A path pattern is case sensitive, can be up to 255 characters in
 length, and can contain any of the following characters:
@@ -61,7 +61,7 @@ _ - . $ / ~ " ' @ : +
 
 =item *
 
-&amp; (using &amp;amp;)
+& (using &amp;)
 
 =item *
 
