@@ -29,12 +29,10 @@ event source at the time of invoking your function. Your function
 receives an event with all the retrieved records.
 
 
-
 =head2 EventSourceArn => Str
 
 The Amazon Resource Name (ARN) of the Amazon Kinesis stream that is the
 source of events.
-
 
 
 =head2 FunctionArn => Str
@@ -43,18 +41,15 @@ The Lambda function to invoke when AWS Lambda detects an event on the
 stream.
 
 
-
 =head2 LastModified => Str
 
 The UTC time string indicating the last time the event mapping was
 updated.
 
 
-
 =head2 LastProcessingResult => Str
 
 The result of the last AWS Lambda invocation of your Lambda function.
-
 
 
 =head2 State => Str
@@ -64,12 +59,10 @@ C<Enabled>, C<Disabled>, C<Enabling>, C<Disabling>, C<Updating>, or
 C<Deleting>.
 
 
-
 =head2 StateTransitionReason => Str
 
 The reason the event source mapping is in its current state. It is
 either user-requested or an AWS Lambda-initiated state transition.
-
 
 
 =head2 UUID => Str
@@ -77,6 +70,7 @@ either user-requested or an AWS Lambda-initiated state transition.
 The AWS Lambda assigned opaque identifier for the mapping.
 
 
+=head2 _request_id => Str
 
 
 =cut

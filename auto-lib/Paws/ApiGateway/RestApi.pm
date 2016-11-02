@@ -24,11 +24,9 @@ Paws::ApiGateway::RestApi
 The date when the API was created, in ISO 8601 format.
 
 
-
 =head2 Description => Str
 
 The API's description.
-
 
 
 =head2 Id => Str
@@ -37,11 +35,9 @@ The API's identifier. This identifier is unique across all of your APIs
 in Amazon API Gateway.
 
 
-
 =head2 Name => Str
 
 The API's name.
-
 
 
 =head2 Warnings => ArrayRef[Str|Undef]
@@ -50,6 +46,7 @@ The warning messages reported when C<failonwarnings> is turned on
 during API import.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -26,7 +26,6 @@ response, this means that there are no more table names to be
 retrieved.
 
 
-
 =head2 TableNames => ArrayRef[Str|Undef]
 
 The names of the tables associated with the current account at the
@@ -37,6 +36,7 @@ this value as the I<ExclusiveStartTableName> parameter in a subsequent
 I<ListTables> request and obtain the next page of results.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -19,6 +19,7 @@ Paws::DirectConnect::VirtualInterfaces
 A list of virtual interfaces.
 
 
+=head2 _request_id => Str
 
 
 =cut

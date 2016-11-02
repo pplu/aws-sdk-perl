@@ -19,6 +19,7 @@ Paws::GameLift::DescribeAliasOutput
 Object containing the requested alias.
 
 
+=head2 _request_id => Str
 
 
 =cut

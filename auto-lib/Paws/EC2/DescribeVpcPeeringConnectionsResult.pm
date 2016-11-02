@@ -20,6 +20,7 @@ Paws::EC2::DescribeVpcPeeringConnectionsResult
 Information about the VPC peering connections.
 
 
+=head2 _request_id => Str
 
 
 =cut

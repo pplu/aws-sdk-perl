@@ -19,6 +19,7 @@ Paws::OpsWorks::DescribeAppsResult
 An array of C<App> objects that describe the specified apps.
 
 
+=head2 _request_id => Str
 
 
 =cut

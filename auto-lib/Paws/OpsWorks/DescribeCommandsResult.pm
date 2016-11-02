@@ -20,6 +20,7 @@ An array of C<Command> objects that describe each of the specified
 commands.
 
 
+=head2 _request_id => Str
 
 
 =cut

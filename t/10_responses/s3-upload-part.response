@@ -1,0 +1,11 @@
+---
+content: ''
+headers:
+  connection: close
+  content-length: 0
+  date: 'Wed, 02 Nov 2016 09:28:15 GMT'
+  etag: '"db7e0a889cbffee28e35df8eea0532c6"'
+  server: AmazonS3
+  x-amz-id-2: 51OPN1pao6TYj1Ba8JEdeQfzINs0NATBcEoUUi+oqTsua0g1TbAtTDobm+g/C+APjsS5HoH/vWo=
+  x-amz-request-id: FCDDED669653E749
+status: 200

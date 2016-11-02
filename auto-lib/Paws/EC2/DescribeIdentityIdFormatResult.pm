@@ -20,6 +20,7 @@ Paws::EC2::DescribeIdentityIdFormatResult
 Information about the ID format for the resources.
 
 
+=head2 _request_id => Str
 
 
 =cut

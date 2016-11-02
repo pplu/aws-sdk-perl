@@ -20,6 +20,7 @@ Paws::EC2::DescribePlacementGroupsResult
 One or more placement groups.
 
 
+=head2 _request_id => Str
 
 
 =cut

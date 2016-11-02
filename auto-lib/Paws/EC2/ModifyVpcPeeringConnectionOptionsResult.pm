@@ -22,13 +22,13 @@ Information about the VPC peering connection options for the accepter
 VPC.
 
 
-
 =head2 RequesterPeeringConnectionOptions => L<Paws::EC2::PeeringConnectionOptions>
 
 Information about the VPC peering connection options for the requester
 VPC.
 
 
+=head2 _request_id => Str
 
 
 =cut

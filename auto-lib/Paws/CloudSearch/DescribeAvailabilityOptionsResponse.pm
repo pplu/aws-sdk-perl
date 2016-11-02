@@ -21,6 +21,7 @@ The availability options configured for the domain. Indicates whether
 Multi-AZ is enabled for the domain.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -13,6 +13,8 @@ Paws::Firehose::DeleteDeliveryStreamOutput
 =head1 ATTRIBUTES
 
 
+=head2 _request_id => Str
+
 
 =cut
 

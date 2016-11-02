@@ -20,6 +20,7 @@ Paws::EC2::BundleInstanceResult
 Information about the bundle task.
 
 
+=head2 _request_id => Str
 
 
 =cut

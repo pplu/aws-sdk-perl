@@ -21,12 +21,12 @@ Paws::IoT::ListTopicRulesResponse
 A token used to retrieve the next value.
 
 
-
 =head2 Rules => ArrayRef[L<Paws::IoT::TopicRuleListItem>]
 
 The rules.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -21,6 +21,7 @@ A set of key value pairs containing information about IAM entity usage
 and IAM quotas.
 
 
+=head2 _request_id => Str
 
 
 =cut

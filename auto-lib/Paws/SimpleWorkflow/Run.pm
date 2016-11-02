@@ -21,6 +21,7 @@ service and can be used to uniquely identify the workflow execution
 within a domain.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -21,6 +21,7 @@ The configuration information of the domain requested in the
 C<DescribeElasticsearchDomainConfig> request.
 
 
+=head2 _request_id => Str
 
 
 =cut

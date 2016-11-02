@@ -20,6 +20,7 @@ Paws::SES::SendRawEmailResponse
 The unique message identifier returned from the C<SendRawEmail> action.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -19,6 +19,7 @@ Paws::DeviceFarm::RenewOfferingResult
 Represents the status of the offering transaction for the renewal.
 
 
+=head2 _request_id => Str
 
 
 =cut

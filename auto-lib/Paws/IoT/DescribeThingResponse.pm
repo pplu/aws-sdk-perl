@@ -24,11 +24,9 @@ Paws::IoT::DescribeThingResponse
 The thing attributes.
 
 
-
 =head2 DefaultClientId => Str
 
 The default client ID.
-
 
 
 =head2 ThingName => Str
@@ -36,11 +34,9 @@ The default client ID.
 The name of the thing.
 
 
-
 =head2 ThingTypeName => Str
 
 The thing type name.
-
 
 
 =head2 Version => Int
@@ -52,6 +48,7 @@ can pass the version information in the C<expectedVersion> parameter of
 the C<UpdateThing> and C<DeleteThing> calls.
 
 
+=head2 _request_id => Str
 
 
 =cut

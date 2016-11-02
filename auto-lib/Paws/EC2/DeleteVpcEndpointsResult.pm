@@ -20,6 +20,7 @@ Paws::EC2::DeleteVpcEndpointsResult
 Information about the endpoints that were not successfully deleted.
 
 
+=head2 _request_id => Str
 
 
 =cut

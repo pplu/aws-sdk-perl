@@ -20,6 +20,7 @@ Paws::SDB::GetAttributesResult
 The list of attributes returned by the operation.
 
 
+=head2 _request_id => Str
 
 
 =cut

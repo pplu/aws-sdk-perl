@@ -20,6 +20,7 @@ Paws::SES::GetIdentityVerificationAttributesResponse
 A map of Identities to IdentityVerificationAttributes objects.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -26,7 +26,6 @@ Type: String
 Parent: C<Operations>
 
 
-
 =head2 B<REQUIRED> Operations => ArrayRef[L<Paws::Route53Domains::OperationSummary>]
 
 Lists summaries of the operations.
@@ -36,6 +35,7 @@ Type: Complex type containing a list of operation summaries
 Children: C<OperationId>, C<Status>, C<SubmittedDate>, C<Type>
 
 
+=head2 _request_id => Str
 
 
 =cut

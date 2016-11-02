@@ -20,6 +20,7 @@ Indicates whether the user confirmation is necessary to confirm the
 device response.
 
 
+=head2 _request_id => Str
 
 
 =cut

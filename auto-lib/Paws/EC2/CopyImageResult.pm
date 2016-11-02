@@ -20,6 +20,7 @@ Paws::EC2::CopyImageResult
 The ID of the new AMI.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -19,6 +19,7 @@ Paws::CognitoIdp::ResendConfirmationCodeResponse
 
 
 
+=head2 _request_id => Str
 
 
 =cut

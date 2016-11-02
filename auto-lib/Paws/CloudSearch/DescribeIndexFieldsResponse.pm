@@ -20,6 +20,7 @@ Paws::CloudSearch::DescribeIndexFieldsResponse
 The index fields configured for the domain.
 
 
+=head2 _request_id => Str
 
 
 =cut

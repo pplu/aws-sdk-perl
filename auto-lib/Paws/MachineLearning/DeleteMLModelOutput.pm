@@ -20,6 +20,7 @@ A user-supplied ID that uniquely identifies the C<MLModel>. This value
 should be identical to the value of the C<MLModelID> in the request.
 
 
+=head2 _request_id => Str
 
 
 =cut

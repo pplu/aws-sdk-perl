@@ -21,7 +21,6 @@ Paws::StorageGateway::DescribeTapeRecoveryPointsOutput
 
 
 
-
 =head2 Marker => Str
 
 An opaque string that indicates the position at which the virtual tape
@@ -32,13 +31,13 @@ tape recovery points in the list. If there are no more recovery points
 to describe, this field does not appear in the response.
 
 
-
 =head2 TapeRecoveryPointInfos => ArrayRef[L<Paws::StorageGateway::TapeRecoveryPointInfo>]
 
 An array of TapeRecoveryPointInfos that are available for the specified
 gateway.
 
 
+=head2 _request_id => Str
 
 
 =cut

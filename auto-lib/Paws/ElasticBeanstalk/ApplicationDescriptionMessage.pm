@@ -20,6 +20,7 @@ Paws::ElasticBeanstalk::ApplicationDescriptionMessage
 The ApplicationDescription of the application.
 
 
+=head2 _request_id => Str
 
 
 =cut

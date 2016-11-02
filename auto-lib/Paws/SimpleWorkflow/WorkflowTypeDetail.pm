@@ -21,7 +21,6 @@ Configuration settings of the workflow type registered through
 RegisterWorkflowType
 
 
-
 =head2 B<REQUIRED> TypeInfo => L<Paws::SimpleWorkflow::WorkflowTypeInfo>
 
 General information about the workflow type.
@@ -43,6 +42,7 @@ of this type.
 
 
 
+=head2 _request_id => Str
 
 
 =cut

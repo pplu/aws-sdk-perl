@@ -19,6 +19,7 @@ Paws::ACM::ImportCertificateResponse
 The Amazon Resource Name (ARN) of the imported certificate.
 
 
+=head2 _request_id => Str
 
 
 =cut

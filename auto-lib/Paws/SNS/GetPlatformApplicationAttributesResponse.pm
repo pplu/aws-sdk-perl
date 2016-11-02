@@ -46,6 +46,7 @@ notifications should be sent upon Direct Publish delivery failure
 
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -25,11 +25,9 @@ Paws::RedShift::LoggingStatus
 The name of the S3 bucket where the log files are stored.
 
 
-
 =head2 LastFailureMessage => Str
 
 The message indicating that logs failed to be delivered.
-
 
 
 =head2 LastFailureTime => Str
@@ -37,11 +35,9 @@ The message indicating that logs failed to be delivered.
 The last time when logs failed to be delivered.
 
 
-
 =head2 LastSuccessfulDeliveryTime => Str
 
 The last time that logs were delivered.
-
 
 
 =head2 LoggingEnabled => Bool
@@ -49,12 +45,12 @@ The last time that logs were delivered.
 C<true> if logging is on, C<false> if logging is off.
 
 
-
 =head2 S3KeyPrefix => Str
 
 The prefix applied to the log file names.
 
 
+=head2 _request_id => Str
 
 
 =cut

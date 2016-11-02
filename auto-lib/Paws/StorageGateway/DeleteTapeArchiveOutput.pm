@@ -20,6 +20,7 @@ The Amazon Resource Name (ARN) of the virtual tape that was deleted
 from the virtual tape shelf (VTS).
 
 
+=head2 _request_id => Str
 
 
 =cut

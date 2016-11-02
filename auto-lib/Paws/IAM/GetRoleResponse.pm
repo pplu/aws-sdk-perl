@@ -20,6 +20,7 @@ Paws::IAM::GetRoleResponse
 A structure containing details about the IAM role.
 
 
+=head2 _request_id => Str
 
 
 =cut

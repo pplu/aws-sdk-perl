@@ -20,6 +20,7 @@ Paws::EC2::CreateSpotDatafeedSubscriptionResult
 The Spot instance data feed subscription.
 
 
+=head2 _request_id => Str
 
 
 =cut

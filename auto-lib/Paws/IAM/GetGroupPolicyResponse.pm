@@ -22,11 +22,9 @@ Paws::IAM::GetGroupPolicyResponse
 The group the policy is associated with.
 
 
-
 =head2 B<REQUIRED> PolicyDocument => Str
 
 The policy document.
-
 
 
 =head2 B<REQUIRED> PolicyName => Str
@@ -34,6 +32,7 @@ The policy document.
 The name of the policy.
 
 
+=head2 _request_id => Str
 
 
 =cut

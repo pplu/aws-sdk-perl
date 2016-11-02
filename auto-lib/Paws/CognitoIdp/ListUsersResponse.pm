@@ -22,12 +22,12 @@ operation, which can be used to return the next set of items in the
 list.
 
 
-
 =head2 Users => ArrayRef[L<Paws::CognitoIdp::UserType>]
 
 The users returned in the request to list users.
 
 
+=head2 _request_id => Str
 
 
 =cut

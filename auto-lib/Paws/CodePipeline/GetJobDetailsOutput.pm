@@ -22,6 +22,7 @@ If AWSSessionCredentials is used, a long-running job can call
 GetJobDetails again to obtain new credentials.
 
 
+=head2 _request_id => Str
 
 
 =cut

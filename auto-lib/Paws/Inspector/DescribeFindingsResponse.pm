@@ -21,12 +21,12 @@ Finding details that cannot be described. An error code is provided for
 each failed item.
 
 
-
 =head2 B<REQUIRED> Findings => ArrayRef[L<Paws::Inspector::Finding>]
 
 Information about the finding.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -19,6 +19,7 @@ Paws::DirectConnect::Connections
 A list of connections.
 
 
+=head2 _request_id => Str
 
 
 =cut

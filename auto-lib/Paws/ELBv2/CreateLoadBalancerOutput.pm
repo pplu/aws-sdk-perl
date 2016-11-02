@@ -20,6 +20,7 @@ Paws::ELBv2::CreateLoadBalancerOutput
 Information about the load balancer.
 
 
+=head2 _request_id => Str
 
 
 =cut

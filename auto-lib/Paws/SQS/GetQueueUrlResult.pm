@@ -20,6 +20,7 @@ Paws::SQS::GetQueueUrlResult
 The URL for the queue.
 
 
+=head2 _request_id => Str
 
 
 =cut

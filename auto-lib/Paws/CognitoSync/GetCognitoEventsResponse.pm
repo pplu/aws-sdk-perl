@@ -20,6 +20,7 @@ Paws::CognitoSync::GetCognitoEventsResponse
 The Cognito Events returned from the GetCognitoEvents request
 
 
+=head2 _request_id => Str
 
 
 =cut

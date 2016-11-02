@@ -21,6 +21,7 @@ The activities related to detaching the instances from the Auto Scaling
 group.
 
 
+=head2 _request_id => Str
 
 
 =cut

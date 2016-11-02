@@ -20,6 +20,7 @@ Paws::ELBv2::SetSubnetsOutput
 Information about the subnet and Availability Zone.
 
 
+=head2 _request_id => Str
 
 
 =cut

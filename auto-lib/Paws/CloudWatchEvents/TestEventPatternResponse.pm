@@ -19,6 +19,7 @@ Paws::CloudWatchEvents::TestEventPatternResponse
 Indicates whether the event matches the event pattern.
 
 
+=head2 _request_id => Str
 
 
 =cut

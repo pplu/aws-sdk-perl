@@ -33,13 +33,11 @@ valid and unique response header name and C<JSON-expression> is a valid
 JSON expression without the C<$> prefix.
 
 
-
 =head2 ResponseTemplates => L<Paws::ApiGateway::MapOfStringToString>
 
 Specifies the templates used to transform the integration response
 body. Response templates are represented as a key/value map, with a
 content-type as the key and a template as the value.
-
 
 
 =head2 SelectionPattern => Str
@@ -54,13 +52,13 @@ Lambda function, the AWS Lambda function error header is matched. For
 all other HTTP and AWS back ends, the HTTP status code is matched.
 
 
-
 =head2 StatusCode => Str
 
 Specifies the status code that is used to map the integration response
 to an existing MethodResponse.
 
 
+=head2 _request_id => Str
 
 
 =cut

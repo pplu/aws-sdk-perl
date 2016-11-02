@@ -23,11 +23,9 @@ Unique, case-sensitive identifier you provide to ensure the idempotency
 of the request.
 
 
-
 =head2 FlowLogIds => ArrayRef[Str|Undef]
 
 The IDs of the flow logs.
-
 
 
 =head2 Unsuccessful => ArrayRef[L<Paws::EC2::UnsuccessfulItem>]
@@ -35,6 +33,7 @@ The IDs of the flow logs.
 Information about the flow logs that could not be created successfully.
 
 
+=head2 _request_id => Str
 
 
 =cut

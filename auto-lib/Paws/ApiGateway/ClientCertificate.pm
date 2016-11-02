@@ -24,11 +24,9 @@ Paws::ApiGateway::ClientCertificate
 The identifier of the client certificate.
 
 
-
 =head2 CreatedDate => Str
 
 The date when the client certificate was created, in ISO 8601 format.
-
 
 
 =head2 Description => Str
@@ -36,11 +34,9 @@ The date when the client certificate was created, in ISO 8601 format.
 The description of the client certificate.
 
 
-
 =head2 ExpirationDate => Str
 
 The date when the client certificate will expire, in ISO 8601 format.
-
 
 
 =head2 PemEncodedCertificate => Str
@@ -49,6 +45,7 @@ The PEM-encoded public key of the client certificate, which can be used
 to configure certificate authentication in the integration endpoint .
 
 
+=head2 _request_id => Str
 
 
 =cut

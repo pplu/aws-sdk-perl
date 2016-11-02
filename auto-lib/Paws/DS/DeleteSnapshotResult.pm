@@ -19,6 +19,7 @@ Paws::DS::DeleteSnapshotResult
 The identifier of the directory snapshot that was deleted.
 
 
+=head2 _request_id => Str
 
 
 =cut

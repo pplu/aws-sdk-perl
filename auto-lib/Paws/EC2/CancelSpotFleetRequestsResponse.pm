@@ -22,13 +22,13 @@ Information about the Spot fleet requests that are successfully
 canceled.
 
 
-
 =head2 UnsuccessfulFleetRequests => ArrayRef[L<Paws::EC2::CancelSpotFleetRequestsErrorItem>]
 
 Information about the Spot fleet requests that are not successfully
 canceled.
 
 
+=head2 _request_id => Str
 
 
 =cut

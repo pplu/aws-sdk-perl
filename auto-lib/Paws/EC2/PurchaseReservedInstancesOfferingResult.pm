@@ -20,6 +20,7 @@ Paws::EC2::PurchaseReservedInstancesOfferingResult
 The IDs of the purchased Reserved Instances.
 
 
+=head2 _request_id => Str
 
 
 =cut

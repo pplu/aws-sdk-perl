@@ -20,6 +20,7 @@ Paws::CloudSearch::DeleteAnalysisSchemeResponse
 The status of the analysis scheme being deleted.
 
 
+=head2 _request_id => Str
 
 
 =cut

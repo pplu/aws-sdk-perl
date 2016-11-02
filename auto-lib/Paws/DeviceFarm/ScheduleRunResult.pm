@@ -19,6 +19,7 @@ Paws::DeviceFarm::ScheduleRunResult
 Information about the scheduled run.
 
 
+=head2 _request_id => Str
 
 
 =cut

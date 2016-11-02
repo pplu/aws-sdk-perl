@@ -20,6 +20,7 @@ Paws::CloudFormation::DescribeStackResourcesOutput
 A list of C<StackResource> structures.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -19,6 +19,7 @@ Paws::ECS::SubmitContainerStateChangeResponse
 Acknowledgement of the state change.
 
 
+=head2 _request_id => Str
 
 
 =cut

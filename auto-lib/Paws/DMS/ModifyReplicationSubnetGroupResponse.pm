@@ -19,6 +19,7 @@ Paws::DMS::ModifyReplicationSubnetGroupResponse
 The modified replication subnet group.
 
 
+=head2 _request_id => Str
 
 
 =cut

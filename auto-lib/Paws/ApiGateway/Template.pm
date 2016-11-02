@@ -21,6 +21,7 @@ The Apache Velocity Template Language (VTL) template content used for
 the template resource.
 
 
+=head2 _request_id => Str
 
 
 =cut

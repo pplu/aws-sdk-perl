@@ -22,11 +22,9 @@ Paws::IAM::GetUserPolicyResponse
 The policy document.
 
 
-
 =head2 B<REQUIRED> PolicyName => Str
 
 The name of the policy.
-
 
 
 =head2 B<REQUIRED> UserName => Str
@@ -34,6 +32,7 @@ The name of the policy.
 The user the policy is associated with.
 
 
+=head2 _request_id => Str
 
 
 =cut

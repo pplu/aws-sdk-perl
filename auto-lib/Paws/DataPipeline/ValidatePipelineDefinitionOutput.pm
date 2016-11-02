@@ -21,11 +21,9 @@ Paws::DataPipeline::ValidatePipelineDefinitionOutput
 Indicates whether there were validation errors.
 
 
-
 =head2 ValidationErrors => ArrayRef[L<Paws::DataPipeline::ValidationError>]
 
 Any validation errors that were found.
-
 
 
 =head2 ValidationWarnings => ArrayRef[L<Paws::DataPipeline::ValidationWarning>]
@@ -33,6 +31,7 @@ Any validation errors that were found.
 Any validation warnings that were found.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -19,6 +19,7 @@ Paws::CognitoIdp::CreateUserPoolClientResponse
 The user pool client that was just created.
 
 
+=head2 _request_id => Str
 
 
 =cut

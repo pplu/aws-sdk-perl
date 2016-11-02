@@ -22,12 +22,12 @@ Unique, case-sensitive identifier you provide to ensure the idempotency
 of the request.
 
 
-
 =head2 VpcEndpoint => L<Paws::EC2::VpcEndpoint>
 
 Information about the endpoint.
 
 
+=head2 _request_id => Str
 
 
 =cut

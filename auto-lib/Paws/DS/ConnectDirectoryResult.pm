@@ -19,6 +19,7 @@ Paws::DS::ConnectDirectoryResult
 The identifier of the new directory.
 
 
+=head2 _request_id => Str
 
 
 =cut

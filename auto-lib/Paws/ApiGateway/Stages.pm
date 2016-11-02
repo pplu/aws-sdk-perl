@@ -20,6 +20,7 @@ Paws::ApiGateway::Stages
 An individual Stage resource.
 
 
+=head2 _request_id => Str
 
 
 =cut

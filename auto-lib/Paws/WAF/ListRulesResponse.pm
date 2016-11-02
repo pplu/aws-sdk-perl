@@ -24,12 +24,12 @@ the C<NextMarker> value from the response in the C<NextMarker> value in
 the next request.
 
 
-
 =head2 Rules => ArrayRef[L<Paws::WAF::RuleSummary>]
 
 An array of RuleSummary objects.
 
 
+=head2 _request_id => Str
 
 
 =cut

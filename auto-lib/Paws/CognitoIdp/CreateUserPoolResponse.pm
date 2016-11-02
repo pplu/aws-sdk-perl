@@ -19,6 +19,7 @@ Paws::CognitoIdp::CreateUserPoolResponse
 A container for the user pool details.
 
 
+=head2 _request_id => Str
 
 
 =cut

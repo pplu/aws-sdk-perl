@@ -19,6 +19,7 @@ Paws::Config::DescribeConfigRuleEvaluationStatusResponse
 Status information about your AWS managed Config rules.
 
 
+=head2 _request_id => Str
 
 
 =cut

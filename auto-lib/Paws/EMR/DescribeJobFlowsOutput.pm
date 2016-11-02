@@ -19,6 +19,7 @@ Paws::EMR::DescribeJobFlowsOutput
 A list of job flows matching the parameters supplied.
 
 
+=head2 _request_id => Str
 
 
 =cut

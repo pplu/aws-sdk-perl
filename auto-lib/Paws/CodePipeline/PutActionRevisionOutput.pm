@@ -21,12 +21,12 @@ Indicates whether the artifact revision was previously used in an
 execution of the specified pipeline.
 
 
-
 =head2 PipelineExecutionId => Str
 
 The ID of the current workflow state of the pipeline.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -20,6 +20,7 @@ Paws::SES::SendEmailResponse
 The unique message identifier returned from the C<SendEmail> action.
 
 
+=head2 _request_id => Str
 
 
 =cut

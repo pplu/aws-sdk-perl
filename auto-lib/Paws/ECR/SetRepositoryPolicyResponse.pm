@@ -21,11 +21,9 @@ Paws::ECR::SetRepositoryPolicyResponse
 The JSON repository policy text applied to the repository.
 
 
-
 =head2 RegistryId => Str
 
 The registry ID associated with the request.
-
 
 
 =head2 RepositoryName => Str
@@ -33,6 +31,7 @@ The registry ID associated with the request.
 The repository name associated with the request.
 
 
+=head2 _request_id => Str
 
 
 =cut

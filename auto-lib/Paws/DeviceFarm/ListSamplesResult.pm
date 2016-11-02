@@ -23,12 +23,12 @@ subsequent call to this operation to return the next set of items in
 the list.
 
 
-
 =head2 Samples => ArrayRef[L<Paws::DeviceFarm::Sample>]
 
 Information about the samples.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -20,6 +20,7 @@ Paws::EC2::DescribeCustomerGatewaysResult
 Information about one or more customer gateways.
 
 
+=head2 _request_id => Str
 
 
 =cut

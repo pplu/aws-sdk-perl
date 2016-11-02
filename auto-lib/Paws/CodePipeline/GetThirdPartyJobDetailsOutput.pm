@@ -20,6 +20,7 @@ The details of the job, including any protected values defined for the
 job.
 
 
+=head2 _request_id => Str
 
 
 =cut

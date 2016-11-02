@@ -25,7 +25,6 @@ Children: C<DomainName>, C<Operation>, C<InvoiceId>, C<BillDate> and
 C<Price>
 
 
-
 =head2 NextPageMarker => Str
 
 If there are more billing records than you specified for C<MaxItems> in
@@ -37,6 +36,7 @@ Type: String
 Parent: C<BillingRecords>
 
 
+=head2 _request_id => Str
 
 
 =cut

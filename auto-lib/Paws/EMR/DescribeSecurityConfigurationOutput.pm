@@ -21,11 +21,9 @@ Paws::EMR::DescribeSecurityConfigurationOutput
 The date and time the security configuration was created
 
 
-
 =head2 Name => Str
 
 The name of the security configuration.
-
 
 
 =head2 SecurityConfiguration => Str
@@ -33,6 +31,7 @@ The name of the security configuration.
 The security configuration details in JSON format.
 
 
+=head2 _request_id => Str
 
 
 =cut

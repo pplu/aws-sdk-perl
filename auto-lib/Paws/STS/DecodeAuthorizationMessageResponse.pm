@@ -20,6 +20,7 @@ Paws::STS::DecodeAuthorizationMessageResponse
 An XML document that contains the decoded message.
 
 
+=head2 _request_id => Str
 
 
 =cut

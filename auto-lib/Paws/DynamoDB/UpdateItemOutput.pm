@@ -24,9 +24,7 @@ something other than C<NONE> in the request. Each element represents
 one attribute.
 
 
-
 =head2 ConsumedCapacity => L<Paws::DynamoDB::ConsumedCapacity>
-
 
 
 
@@ -36,6 +34,7 @@ one attribute.
 
 
 
+=head2 _request_id => Str
 
 
 =cut

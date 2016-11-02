@@ -22,12 +22,12 @@ operation, which can be used to return the next set of items in the
 list.
 
 
-
 =head2 Offerings => ArrayRef[L<Paws::DeviceFarm::Offering>]
 
 A value representing the list offering results.
 
 
+=head2 _request_id => Str
 
 
 =cut

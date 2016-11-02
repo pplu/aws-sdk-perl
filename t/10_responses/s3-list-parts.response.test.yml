@@ -1,0 +1,52 @@
+---
+call: ListParts
+service: S3
+tests:
+  - expected: '"db7e0a889cbffee28e35df8eea0532c6"'
+    op: eq
+    path: Parts.0.ETag
+  - expected: uSTxL8ynJYgTL0m0aVWytLy_qibNPga1e.kJnU3SJ1DyDqKX7rFoEOtUMi.eG10Dao.zehdNDdkqt2YiEQ97Ps9OguNxszrJzXbQMwKL2UI1.fgHPOwCI6j0I6cYjgS.
+    op: eq
+    path: UploadId
+  - expected: arn:aws:iam::123456789101:user/paws-test-user
+    op: eq
+    path: Initiator.ID
+  - expected: paws-test-bucket
+    op: eq
+    path: Bucket
+  - expected: 1
+    op: eq
+    path: Parts.0.PartNumber
+  - expected: 2016-11-02T09:28:15.000Z
+    op: eq
+    path: Parts.0.LastModified
+  - expected: 0
+    op: eq
+    path: IsTruncated
+  - expected: 1000
+    op: eq
+    path: MaxParts
+  - expected: STANDARD
+    op: eq
+    path: StorageClass
+  - expected: aws
+    op: eq
+    path: Owner.DisplayName
+  - expected: 0
+    op: eq
+    path: PartNumberMarker
+  - expected: uploads/multipart_test.txt
+    op: eq
+    path: Key
+  - expected: 11
+    op: eq
+    path: Parts.0.Size
+  - expected: 1
+    op: eq
+    path: NextPartNumberMarker
+  - expected: WRTYWEVVWERBWBWTBWBWERBYWB
+    op: eq
+    path: Owner.ID
+  - expected: paws.test.user
+    op: eq
+    path: Initiator.DisplayName

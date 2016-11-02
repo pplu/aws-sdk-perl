@@ -20,6 +20,7 @@ Paws::SQS::CreateQueueResult
 The URL for the created Amazon SQS queue.
 
 
+=head2 _request_id => Str
 
 
 =cut

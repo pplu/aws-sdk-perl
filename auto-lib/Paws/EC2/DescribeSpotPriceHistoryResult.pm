@@ -22,12 +22,12 @@ The token required to retrieve the next set of results. This value is
 C<null> when there are no more results to return.
 
 
-
 =head2 SpotPriceHistory => ArrayRef[L<Paws::EC2::SpotPrice>]
 
 The historical Spot prices.
 
 
+=head2 _request_id => Str
 
 
 =cut

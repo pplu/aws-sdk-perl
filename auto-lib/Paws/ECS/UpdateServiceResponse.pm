@@ -19,6 +19,7 @@ Paws::ECS::UpdateServiceResponse
 The full description of your service following the update call.
 
 
+=head2 _request_id => Str
 
 
 =cut

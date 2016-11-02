@@ -20,6 +20,7 @@ Paws::CloudSearch::IndexDocumentsResponse
 The names of the fields that are currently being indexed.
 
 
+=head2 _request_id => Str
 
 
 =cut

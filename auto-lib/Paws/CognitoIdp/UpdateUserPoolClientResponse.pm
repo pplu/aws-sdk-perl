@@ -20,6 +20,7 @@ The user pool client value from the response from the server when an
 update user pool client request is made.
 
 
+=head2 _request_id => Str
 
 
 =cut

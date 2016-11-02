@@ -19,6 +19,7 @@ Paws::CognitoIdp::AdminCreateUserResponse
 The user returned in the request to create a new user.
 
 
+=head2 _request_id => Str
 
 
 =cut

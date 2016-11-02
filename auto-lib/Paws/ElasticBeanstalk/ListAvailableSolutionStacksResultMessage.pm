@@ -21,12 +21,12 @@ Paws::ElasticBeanstalk::ListAvailableSolutionStacksResultMessage
 A list of available solution stacks and their SolutionStackDescription.
 
 
-
 =head2 SolutionStacks => ArrayRef[Str|Undef]
 
 A list of available solution stacks.
 
 
+=head2 _request_id => Str
 
 
 =cut

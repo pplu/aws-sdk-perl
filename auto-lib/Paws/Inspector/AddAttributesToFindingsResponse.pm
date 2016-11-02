@@ -20,6 +20,7 @@ Attribute details that cannot be described. An error code is provided
 for each failed item.
 
 
+=head2 _request_id => Str
 
 
 =cut

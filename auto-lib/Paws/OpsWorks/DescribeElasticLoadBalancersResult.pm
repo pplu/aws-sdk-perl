@@ -20,6 +20,7 @@ A list of C<ElasticLoadBalancer> objects that describe the specified
 Elastic Load Balancing instances.
 
 
+=head2 _request_id => Str
 
 
 =cut

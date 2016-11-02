@@ -20,6 +20,7 @@ Paws::AutoScaling::DescribeAutoScalingNotificationTypesAnswer
 The notification types.
 
 
+=head2 _request_id => Str
 
 
 =cut

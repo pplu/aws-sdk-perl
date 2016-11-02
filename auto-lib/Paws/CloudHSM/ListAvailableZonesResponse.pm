@@ -20,6 +20,7 @@ The list of Availability Zones that have available AWS CloudHSM
 capacity.
 
 
+=head2 _request_id => Str
 
 
 =cut

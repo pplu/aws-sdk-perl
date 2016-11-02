@@ -20,6 +20,7 @@ Paws::CloudSearch::DeleteIndexFieldResponse
 The status of the index field being deleted.
 
 
+=head2 _request_id => Str
 
 
 =cut

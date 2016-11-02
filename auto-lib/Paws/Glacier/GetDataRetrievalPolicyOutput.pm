@@ -20,6 +20,7 @@ Paws::Glacier::GetDataRetrievalPolicyOutput
 Contains the returned data retrieval policy in JSON format.
 
 
+=head2 _request_id => Str
 
 
 =cut

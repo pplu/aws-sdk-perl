@@ -19,6 +19,7 @@ Paws::DS::DeleteTrustResult
 The Trust ID of the trust relationship that was deleted.
 
 
+=head2 _request_id => Str
 
 
 =cut

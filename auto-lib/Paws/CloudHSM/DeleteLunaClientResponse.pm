@@ -19,6 +19,7 @@ Paws::CloudHSM::DeleteLunaClientResponse
 The status of the action.
 
 
+=head2 _request_id => Str
 
 
 =cut

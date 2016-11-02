@@ -20,6 +20,7 @@ Paws::AutoScaling::EnterStandbyAnswer
 The activities related to moving instances into C<Standby> mode.
 
 
+=head2 _request_id => Str
 
 
 =cut

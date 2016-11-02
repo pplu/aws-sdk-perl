@@ -23,12 +23,10 @@ The Amazon Resource Name (ARN) of the certificate. You can use the ARN
 as a principal for policy operations.
 
 
-
 =head2 CertificateId => Str
 
 The ID of the certificate. Certificate management operations only take
 a certificateId.
-
 
 
 =head2 CertificatePem => Str
@@ -36,6 +34,7 @@ a certificateId.
 The certificate data, in PEM format.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -20,6 +20,7 @@ Paws::ES::DescribeElasticsearchDomainResponse
 The current status of the Elasticsearch domain.
 
 
+=head2 _request_id => Str
 
 
 =cut

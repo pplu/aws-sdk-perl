@@ -19,6 +19,7 @@ Paws::CodeDeploy::BatchGetApplicationsOutput
 Information about the applications.
 
 
+=head2 _request_id => Str
 
 
 =cut

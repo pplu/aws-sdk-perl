@@ -20,13 +20,13 @@ Paws::CognitoIdp::SignUpResponse
 
 
 
-
 =head2 UserConfirmed => Bool
 
 A response from the server indicating that a user registration has been
 confirmed.
 
 
+=head2 _request_id => Str
 
 
 =cut

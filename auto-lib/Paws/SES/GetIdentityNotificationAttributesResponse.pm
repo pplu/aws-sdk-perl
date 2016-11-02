@@ -20,6 +20,7 @@ Paws::SES::GetIdentityNotificationAttributesResponse
 A map of Identity to IdentityNotificationAttributes.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -21,6 +21,7 @@ This value is identical to the value of the C<BatchPredictionId> in the
 request.
 
 
+=head2 _request_id => Str
 
 
 =cut

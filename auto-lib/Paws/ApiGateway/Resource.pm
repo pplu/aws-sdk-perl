@@ -24,11 +24,9 @@ Paws::ApiGateway::Resource
 The resource's identifier.
 
 
-
 =head2 ParentId => Str
 
 The parent resource's identifier.
-
 
 
 =head2 Path => Str
@@ -36,11 +34,9 @@ The parent resource's identifier.
 The full path for this resource.
 
 
-
 =head2 PathPart => Str
 
 The last path segment for this resource.
-
 
 
 =head2 ResourceMethods => L<Paws::ApiGateway::MapOfMethod>
@@ -68,6 +64,7 @@ example here to get that method. Just replace the C<GET> of the last
 path segment in the request URL with C<OPTIONS>.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -20,6 +20,7 @@ Paws::EC2::DescribeSpotInstanceRequestsResult
 One or more Spot instance requests.
 
 
+=head2 _request_id => Str
 
 
 =cut

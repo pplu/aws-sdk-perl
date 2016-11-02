@@ -19,6 +19,7 @@ Paws::DynamoDB::DeleteTableOutput
 
 
 
+=head2 _request_id => Str
 
 
 =cut

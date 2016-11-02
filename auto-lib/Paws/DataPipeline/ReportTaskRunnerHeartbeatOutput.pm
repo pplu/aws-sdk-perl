@@ -19,6 +19,7 @@ Paws::DataPipeline::ReportTaskRunnerHeartbeatOutput
 Indicates whether the calling task runner should terminate.
 
 
+=head2 _request_id => Str
 
 
 =cut

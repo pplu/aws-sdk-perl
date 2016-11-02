@@ -19,6 +19,7 @@ Paws::DynamoDB::UpdateTableOutput
 
 
 
+=head2 _request_id => Str
 
 
 =cut

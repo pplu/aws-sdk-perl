@@ -20,6 +20,7 @@ Paws::EC2::CreateVpnConnectionResult
 Information about the VPN connection.
 
 
+=head2 _request_id => Str
 
 
 =cut

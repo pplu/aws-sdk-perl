@@ -23,12 +23,12 @@ the marker in another List Vaults request to obtain more vaults in the
 list.
 
 
-
 =head2 VaultList => ArrayRef[L<Paws::Glacier::DescribeVaultOutput>]
 
 List of vaults.
 
 
+=head2 _request_id => Str
 
 
 =cut

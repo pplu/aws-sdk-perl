@@ -21,12 +21,12 @@ Resource group details that cannot be described. An error code is
 provided for each failed item.
 
 
-
 =head2 B<REQUIRED> ResourceGroups => ArrayRef[L<Paws::Inspector::ResourceGroup>]
 
 Information about a resource group.
 
 
+=head2 _request_id => Str
 
 
 =cut

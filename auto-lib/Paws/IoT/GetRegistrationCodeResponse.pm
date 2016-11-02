@@ -20,6 +20,7 @@ Paws::IoT::GetRegistrationCodeResponse
 The CA certificate registration code.
 
 
+=head2 _request_id => Str
 
 
 =cut

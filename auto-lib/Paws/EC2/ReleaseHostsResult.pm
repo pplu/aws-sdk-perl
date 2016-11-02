@@ -21,13 +21,13 @@ Paws::EC2::ReleaseHostsResult
 The IDs of the Dedicated Hosts that were successfully released.
 
 
-
 =head2 Unsuccessful => ArrayRef[L<Paws::EC2::UnsuccessfulItem>]
 
 The IDs of the Dedicated Hosts that could not be released, including an
 error message.
 
 
+=head2 _request_id => Str
 
 
 =cut

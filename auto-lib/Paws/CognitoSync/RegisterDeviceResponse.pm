@@ -20,6 +20,7 @@ Paws::CognitoSync::RegisterDeviceResponse
 The unique ID generated for this device by Cognito.
 
 
+=head2 _request_id => Str
 
 
 =cut

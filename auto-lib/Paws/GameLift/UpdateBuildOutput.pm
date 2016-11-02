@@ -19,6 +19,7 @@ Paws::GameLift::UpdateBuildOutput
 Object containing the updated build record.
 
 
+=head2 _request_id => Str
 
 
 =cut

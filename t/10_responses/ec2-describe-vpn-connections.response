@@ -7,9 +7,7 @@ content: |
       <item>
         <vpnConnectionId>vpn-44a8938f</vpnConnectionId>
         <state>available</state>
-        <customerGatewayConfiguration>
-  	Gateway Info
-        </customerGatewayConfiguration>
+        <customerGatewayConfiguration>Gateway Info</customerGatewayConfiguration>
         <type>ipsec.1</type>
         <customerGatewayId>cgw-b4dc3961</customerGatewayId>
         <vpnGatewayId>vgw-8db04f81</vpnGatewayId>

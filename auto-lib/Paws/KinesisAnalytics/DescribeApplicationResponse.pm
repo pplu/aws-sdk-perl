@@ -21,6 +21,7 @@ Amazon Resource Name (ARN), status, latest version, and input and
 output configuration details.
 
 
+=head2 _request_id => Str
 
 
 =cut

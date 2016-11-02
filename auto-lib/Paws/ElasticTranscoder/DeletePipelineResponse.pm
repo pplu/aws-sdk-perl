@@ -14,6 +14,8 @@ Paws::ElasticTranscoder::DeletePipelineResponse
 =head1 ATTRIBUTES
 
 
+=head2 _request_id => Str
+
 
 =cut
 

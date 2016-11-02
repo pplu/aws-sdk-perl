@@ -20,12 +20,12 @@ Paws::MachineLearning::DeleteTagsOutput
 The ID of the ML object from which tags were deleted.
 
 
-
 =head2 ResourceType => Str
 
 The type of the ML object from which tags were deleted.
 
 Valid values are: C<"BatchPrediction">, C<"DataSource">, C<"Evaluation">, C<"MLModel">
+=head2 _request_id => Str
 
 
 =cut

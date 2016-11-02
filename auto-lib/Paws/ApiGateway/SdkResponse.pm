@@ -22,11 +22,9 @@ Paws::ApiGateway::SdkResponse
 The binary blob response to GetSdk, which contains the generated SDK.
 
 
-
 =head2 ContentDisposition => Str
 
 The content-disposition header value in the HTTP response.
-
 
 
 =head2 ContentType => Str
@@ -34,6 +32,7 @@ The content-disposition header value in the HTTP response.
 The content-type header value in the HTTP response.
 
 
+=head2 _request_id => Str
 
 
 =cut

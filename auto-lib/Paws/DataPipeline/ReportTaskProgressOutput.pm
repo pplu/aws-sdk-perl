@@ -20,6 +20,7 @@ If true, the calling task runner should cancel processing of the task.
 The task runner does not need to call SetTaskStatus for canceled tasks.
 
 
+=head2 _request_id => Str
 
 
 =cut

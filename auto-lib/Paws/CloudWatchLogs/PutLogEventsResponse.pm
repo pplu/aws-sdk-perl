@@ -20,12 +20,12 @@ Paws::CloudWatchLogs::PutLogEventsResponse
 
 
 
-
 =head2 RejectedLogEventsInfo => L<Paws::CloudWatchLogs::RejectedLogEventsInfo>
 
 
 
 
+=head2 _request_id => Str
 
 
 =cut

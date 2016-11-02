@@ -25,12 +25,12 @@ results. This value is C<null> when there are no more results to
 return.
 
 
-
 =head2 Snapshots => ArrayRef[L<Paws::EC2::Snapshot>]
 
 Information about the snapshots.
 
 
+=head2 _request_id => Str
 
 
 =cut

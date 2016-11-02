@@ -21,13 +21,13 @@ Indicates whether the AWS resource complies with the specified AWS
 Config rule.
 
 
-
 =head2 NextToken => Str
 
 The string that you use in a subsequent request to get the next page of
 results in a paginated response.
 
 
+=head2 _request_id => Str
 
 
 =cut

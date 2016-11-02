@@ -21,12 +21,12 @@ Paws::ApiGateway::Resources
 Gets the current Resource resource in the collection.
 
 
-
 =head2 Position => Str
 
 
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -26,7 +26,6 @@ the request. For more information, see How to Ensure Idempotency in the
 I<Amazon Elastic Compute Cloud User Guide>
 
 
-
 =head2 CurrencyCode => Str
 
 The currency in which the C<totalUpfrontPrice> and C<totalHourlyPrice>
@@ -34,17 +33,14 @@ amounts are specified. At this time, the only supported currency is
 C<USD>.
 
 Valid values are: C<"USD">
-
 =head2 Purchase => ArrayRef[L<Paws::EC2::Purchase>]
 
 Describes the details of the purchase.
 
 
-
 =head2 TotalHourlyPrice => Str
 
 The total hourly price of the reservation calculated per hour.
-
 
 
 =head2 TotalUpfrontPrice => Str
@@ -53,6 +49,7 @@ The total amount that will be charged to your account when you purchase
 the reservation.
 
 
+=head2 _request_id => Str
 
 
 =cut

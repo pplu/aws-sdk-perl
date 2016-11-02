@@ -19,6 +19,7 @@ Paws::Config::DescribeConfigurationRecorderStatusResponse
 A list that contains status of the specified recorders.
 
 
+=head2 _request_id => Str
 
 
 =cut

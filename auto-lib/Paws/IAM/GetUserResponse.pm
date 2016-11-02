@@ -20,6 +20,7 @@ Paws::IAM::GetUserResponse
 A structure containing details about the IAM user.
 
 
+=head2 _request_id => Str
 
 
 =cut

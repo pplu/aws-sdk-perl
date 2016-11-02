@@ -20,6 +20,7 @@ Paws::ELB::AddAvailabilityZonesOutput
 The updated list of Availability Zones for the load balancer.
 
 
+=head2 _request_id => Str
 
 
 =cut

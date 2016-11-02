@@ -19,6 +19,7 @@ Paws::ECS::DeleteServiceResponse
 The full description of the deleted service.
 
 
+=head2 _request_id => Str
 
 
 =cut

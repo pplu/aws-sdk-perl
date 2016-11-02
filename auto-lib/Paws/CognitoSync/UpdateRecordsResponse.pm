@@ -20,6 +20,7 @@ Paws::CognitoSync::UpdateRecordsResponse
 A list of records that have been updated.
 
 
+=head2 _request_id => Str
 
 
 =cut

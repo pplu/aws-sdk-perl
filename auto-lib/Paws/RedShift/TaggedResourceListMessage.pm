@@ -26,12 +26,12 @@ the C<Marker> field is empty, all response records have been retrieved
 for the request.
 
 
-
 =head2 TaggedResources => ArrayRef[L<Paws::RedShift::TaggedResource>]
 
 A list of tags with their associated resources.
 
 
+=head2 _request_id => Str
 
 
 =cut

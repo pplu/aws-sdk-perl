@@ -20,6 +20,7 @@ Paws::EC2::DescribeNetworkInterfacesResult
 Information about one or more network interfaces.
 
 
+=head2 _request_id => Str
 
 
 =cut

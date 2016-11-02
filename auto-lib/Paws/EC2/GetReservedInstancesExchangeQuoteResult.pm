@@ -28,12 +28,10 @@ Paws::EC2::GetReservedInstancesExchangeQuoteResult
 The currency of the transaction.
 
 
-
 =head2 IsValidExchange => Bool
 
 If C<true>, the exchange is valid. If C<false>, the exchange cannot be
 performed.
-
 
 
 =head2 OutputReservedInstancesWillExpireAt => Str
@@ -41,15 +39,12 @@ performed.
 The new end date of the reservation term.
 
 
-
 =head2 PaymentDue => Str
 
 The total true upfront charge for the exchange.
 
 
-
 =head2 ReservedInstanceValueRollup => L<Paws::EC2::ReservationValue>
-
 
 
 
@@ -59,9 +54,7 @@ The total true upfront charge for the exchange.
 The configuration of your Convertible Reserved Instances.
 
 
-
 =head2 TargetConfigurationValueRollup => L<Paws::EC2::ReservationValue>
-
 
 
 
@@ -71,12 +64,12 @@ The configuration of your Convertible Reserved Instances.
 The values of the target Convertible Reserved Instances.
 
 
-
 =head2 ValidationFailureReason => Str
 
 Describes the reason why the exchange can not be completed.
 
 
+=head2 _request_id => Str
 
 
 =cut

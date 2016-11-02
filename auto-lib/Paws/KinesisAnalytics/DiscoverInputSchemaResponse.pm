@@ -23,12 +23,10 @@ the data in the streaming source and how each data element maps to
 corresponding columns in the in-application stream that you can create.
 
 
-
 =head2 ParsedInputRecords => ArrayRef[ArrayRef[Str|Undef]]
 
 An array of elements, where each element corresponds to a row in a
 stream record (a stream record can have more than one row).
-
 
 
 =head2 RawInputRecords => ArrayRef[Str|Undef]
@@ -36,6 +34,7 @@ stream record (a stream record can have more than one row).
 Raw stream data that was sampled to infer the schema.
 
 
+=head2 _request_id => Str
 
 
 =cut

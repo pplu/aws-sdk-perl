@@ -21,12 +21,12 @@ Paws::AutoScaling::DescribeMetricCollectionTypesAnswer
 The granularities for the metrics.
 
 
-
 =head2 Metrics => ArrayRef[L<Paws::AutoScaling::MetricCollectionType>]
 
 One or more metrics.
 
 
+=head2 _request_id => Str
 
 
 =cut

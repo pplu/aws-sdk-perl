@@ -20,12 +20,12 @@ Paws::DS::CreateAliasResult
 The alias for the directory.
 
 
-
 =head2 DirectoryId => Str
 
 The identifier of the directory.
 
 
+=head2 _request_id => Str
 
 
 =cut

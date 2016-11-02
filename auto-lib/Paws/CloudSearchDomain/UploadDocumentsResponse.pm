@@ -23,17 +23,14 @@ Paws::CloudSearchDomain::UploadDocumentsResponse
 The number of documents that were added to the search domain.
 
 
-
 =head2 Deletes => Int
 
 The number of documents that were deleted from the search domain.
 
 
-
 =head2 Status => Str
 
 The status of an C<UploadDocumentsRequest>.
-
 
 
 =head2 Warnings => ArrayRef[L<Paws::CloudSearchDomain::DocumentServiceWarning>]
@@ -42,6 +39,7 @@ Any warnings returned by the document service about the documents being
 uploaded.
 
 
+=head2 _request_id => Str
 
 
 =cut

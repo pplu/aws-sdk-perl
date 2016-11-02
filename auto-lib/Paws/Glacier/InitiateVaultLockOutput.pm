@@ -20,6 +20,7 @@ Paws::Glacier::InitiateVaultLockOutput
 The lock ID, which is used to complete the vault locking process.
 
 
+=head2 _request_id => Str
 
 
 =cut

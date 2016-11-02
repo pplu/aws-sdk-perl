@@ -21,6 +21,7 @@ A C<StackResourceDetail> structure containing the description of the
 specified resource in the specified stack.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -20,6 +20,7 @@ Paws::EC2::AcceptReservedInstancesExchangeQuoteResult
 The ID of the successful exchange.
 
 
+=head2 _request_id => Str
 
 
 =cut

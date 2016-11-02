@@ -19,6 +19,7 @@ Paws::Support::AddCommunicationToCaseResponse
 True if AddCommunicationToCase succeeds. Otherwise, returns an error.
 
 
+=head2 _request_id => Str
 
 
 =cut

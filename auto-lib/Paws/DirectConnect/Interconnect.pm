@@ -25,9 +25,7 @@ Paws::DirectConnect::Interconnect
 
 
 
-
 =head2 InterconnectId => Str
-
 
 
 
@@ -37,22 +35,18 @@ Paws::DirectConnect::Interconnect
 
 
 
-
 =head2 InterconnectState => Str
 
 
 
 Valid values are: C<"requested">, C<"pending">, C<"available">, C<"down">, C<"deleting">, C<"deleted">
-
 =head2 LoaIssueTime => Str
 
 The time of the most recent call to DescribeInterconnectLoa for this
 Interconnect.
 
 
-
 =head2 Location => Str
-
 
 
 
@@ -62,6 +56,7 @@ Interconnect.
 
 
 
+=head2 _request_id => Str
 
 
 =cut

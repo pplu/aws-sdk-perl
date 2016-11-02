@@ -19,6 +19,7 @@ Paws::OpsWorks::CloneStackResult
 The cloned stack ID.
 
 
+=head2 _request_id => Str
 
 
 =cut

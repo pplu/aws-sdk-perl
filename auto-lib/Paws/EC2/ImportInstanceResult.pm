@@ -20,6 +20,7 @@ Paws::EC2::ImportInstanceResult
 Information about the conversion task.
 
 
+=head2 _request_id => Str
 
 
 =cut

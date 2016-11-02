@@ -21,13 +21,13 @@ Paws::ElastiCache::ReservedCacheNodesOfferingMessage
 Provides an identifier to allow retrieval of paginated results.
 
 
-
 =head2 ReservedCacheNodesOfferings => ArrayRef[L<Paws::ElastiCache::ReservedCacheNodesOffering>]
 
 A list of reserved cache node offerings. Each element in the list
 contains detailed information about one offering.
 
 
+=head2 _request_id => Str
 
 
 =cut

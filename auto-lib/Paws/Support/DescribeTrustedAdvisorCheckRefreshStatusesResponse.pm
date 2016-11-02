@@ -19,6 +19,7 @@ Paws::Support::DescribeTrustedAdvisorCheckRefreshStatusesResponse
 The refresh status of the specified Trusted Advisor checks.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -21,6 +21,7 @@ to the instance by RDP clients, such as the Microsoft Remote Desktop
 Connection.
 
 
+=head2 _request_id => Str
 
 
 =cut

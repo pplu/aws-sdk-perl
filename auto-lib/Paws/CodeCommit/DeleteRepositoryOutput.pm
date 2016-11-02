@@ -19,6 +19,7 @@ Paws::CodeCommit::DeleteRepositoryOutput
 The ID of the repository that was deleted.
 
 
+=head2 _request_id => Str
 
 
 =cut

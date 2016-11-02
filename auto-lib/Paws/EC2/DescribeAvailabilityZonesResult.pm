@@ -20,6 +20,7 @@ Paws::EC2::DescribeAvailabilityZonesResult
 Information about one or more Availability Zones.
 
 
+=head2 _request_id => Str
 
 
 =cut

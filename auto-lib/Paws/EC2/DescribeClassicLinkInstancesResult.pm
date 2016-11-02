@@ -21,13 +21,13 @@ Paws::EC2::DescribeClassicLinkInstancesResult
 Information about one or more linked EC2-Classic instances.
 
 
-
 =head2 NextToken => Str
 
 The token to use to retrieve the next page of results. This value is
 C<null> when there are no more results to return.
 
 
+=head2 _request_id => Str
 
 
 =cut

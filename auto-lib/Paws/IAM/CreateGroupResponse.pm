@@ -20,6 +20,7 @@ Paws::IAM::CreateGroupResponse
 A structure containing details about the new group.
 
 
+=head2 _request_id => Str
 
 
 =cut

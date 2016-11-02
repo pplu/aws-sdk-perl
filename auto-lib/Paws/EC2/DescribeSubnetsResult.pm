@@ -20,6 +20,7 @@ Paws::EC2::DescribeSubnetsResult
 Information about one or more subnets.
 
 
+=head2 _request_id => Str
 
 
 =cut

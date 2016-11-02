@@ -23,12 +23,12 @@ subsequent call to this operation to return the next set of items in
 the list.
 
 
-
 =head2 Suites => ArrayRef[L<Paws::DeviceFarm::Suite>]
 
 Information about the suites.
 
 
+=head2 _request_id => Str
 
 
 =cut

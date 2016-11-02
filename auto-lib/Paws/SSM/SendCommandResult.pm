@@ -20,6 +20,7 @@ The request as it was received by SSM. Also provides the command ID
 which can be used future references to this request.
 
 
+=head2 _request_id => Str
 
 
 =cut

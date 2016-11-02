@@ -101,7 +101,7 @@ package Paws::API::Caller;
                       || $unserialized_struct->{'RequestId'} 
                       || $unserialized_struct->{'RequestID'}
                       || $unserialized_struct->{ ResponseMetadata }->{ RequestId };
-
+    
 
     if ($call_object->_returns){
       if ($call_object->_result_key){
@@ -109,7 +109,7 @@ package Paws::API::Caller;
       }
 
       $unserialized_struct->{ _request_id } = $request_id;
-
+      
       Paws->load_class($call_object->_returns);
       my $o_result = $self->new_from_struct($call_object->_returns, $unserialized_struct);
       return $o_result;
@@ -121,7 +121,7 @@ package Paws::API::Caller;
   sub new_from_struct {
     my ($self, $class, $result) = @_;
     my %args;
- 
+    
     if ($class->does('Paws::API::StrToObjMapParser')) {
       return $self->handle_response_strtoobjmap($class, $result);
     } elsif ($class->does('Paws::API::StrToNativeMapParser')) {
@@ -184,6 +184,17 @@ package Paws::API::Caller;
                 $args{ $att } = $self->new_from_struct($att_class, $value);
               }
             }
+          } else {
+              ##########
+              # This loop is required to guard against cases (such as Paws::S3::CopyObject) where
+              # the root node is removed from the response when unserialising (see KeepRoot => 1 for 
+              # XML::Simple) but is required to create the Paws object. This is mostly due to the 
+              # implementation of the new_from_struct sub 
+              my $att_class = $att_type->class;
+              eval {
+                $args{ $att } = $self->new_from_struct($att_class, $result);
+                1;
+              } or do {}
           }
         } else {
           if (defined $value) {

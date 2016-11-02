@@ -21,6 +21,7 @@ A structure containing the user name and password create date for the
 user.
 
 
+=head2 _request_id => Str
 
 
 =cut

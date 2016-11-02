@@ -22,6 +22,7 @@ C<OldestLaunchConfiguration>, C<NewestInstance>,
 C<ClosestToNextInstanceHour>, and C<Default>).
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -22,12 +22,12 @@ The token to use to retrieve the next page of results. This value is
 C<null> when there are no more results to return.
 
 
-
 =head2 ReservedInstancesOfferings => ArrayRef[L<Paws::EC2::ReservedInstancesOffering>]
 
 A list of Reserved Instances offerings.
 
 
+=head2 _request_id => Str
 
 
 =cut

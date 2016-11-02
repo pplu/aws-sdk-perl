@@ -23,9 +23,7 @@ but only if I<ReturnValues> is specified as C<ALL_OLD> in the request.
 Each element consists of an attribute name and an attribute value.
 
 
-
 =head2 ConsumedCapacity => L<Paws::DynamoDB::ConsumedCapacity>
-
 
 
 
@@ -63,6 +61,7 @@ the precision or accuracy of the estimate.
 
 
 
+=head2 _request_id => Str
 
 
 =cut

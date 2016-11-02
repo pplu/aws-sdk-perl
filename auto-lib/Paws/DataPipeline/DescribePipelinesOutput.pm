@@ -19,6 +19,7 @@ Paws::DataPipeline::DescribePipelinesOutput
 An array of descriptions for the specified pipelines.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -20,6 +20,7 @@ Paws::SES::SendBounceResponse
 The message ID of the bounce message.
 
 
+=head2 _request_id => Str
 
 
 =cut

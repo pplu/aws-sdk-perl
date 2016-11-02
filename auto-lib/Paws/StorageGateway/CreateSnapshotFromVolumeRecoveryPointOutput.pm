@@ -21,9 +21,7 @@ Paws::StorageGateway::CreateSnapshotFromVolumeRecoveryPointOutput
 
 
 
-
 =head2 VolumeARN => Str
-
 
 
 
@@ -33,6 +31,7 @@ Paws::StorageGateway::CreateSnapshotFromVolumeRecoveryPointOutput
 
 
 
+=head2 _request_id => Str
 
 
 =cut

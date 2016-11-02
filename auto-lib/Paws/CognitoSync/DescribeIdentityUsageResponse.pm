@@ -20,6 +20,7 @@ Paws::CognitoSync::DescribeIdentityUsageResponse
 Usage information for the identity.
 
 
+=head2 _request_id => Str
 
 
 =cut

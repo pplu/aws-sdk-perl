@@ -24,11 +24,9 @@ Paws::ApiGateway::TestInvokeMethodResponse
 The body of the HTTP response.
 
 
-
 =head2 Headers => L<Paws::ApiGateway::MapOfHeaderValues>
 
 The headers of the HTTP response.
-
 
 
 =head2 Latency => Int
@@ -36,11 +34,9 @@ The headers of the HTTP response.
 The execution latency of the test invoke request.
 
 
-
 =head2 Log => Str
 
 The Amazon API Gateway execution log for the test invoke request.
-
 
 
 =head2 Status => Int
@@ -48,6 +44,7 @@ The Amazon API Gateway execution log for the test invoke request.
 The HTTP status code.
 
 
+=head2 _request_id => Str
 
 
 =cut

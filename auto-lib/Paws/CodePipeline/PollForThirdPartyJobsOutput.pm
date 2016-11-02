@@ -19,6 +19,7 @@ Paws::CodePipeline::PollForThirdPartyJobsOutput
 Information about the jobs to take action on.
 
 
+=head2 _request_id => Str
 
 
 =cut

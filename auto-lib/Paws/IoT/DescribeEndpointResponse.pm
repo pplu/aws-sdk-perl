@@ -21,6 +21,7 @@ The endpoint. The format of the endpoint is as follows:
 I<identifier>.iot.I<region>.amazonaws.com.
 
 
+=head2 _request_id => Str
 
 
 =cut

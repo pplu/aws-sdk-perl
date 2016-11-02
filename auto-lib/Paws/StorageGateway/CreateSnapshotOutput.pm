@@ -23,13 +23,13 @@ API C<DescribeSnapshots>) or creating a volume from a snapshot
 (CreateStorediSCSIVolume).
 
 
-
 =head2 VolumeARN => Str
 
 The Amazon Resource Name (ARN) of the volume of which the snapshot was
 taken.
 
 
+=head2 _request_id => Str
 
 
 =cut

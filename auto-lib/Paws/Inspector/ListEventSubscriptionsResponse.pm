@@ -23,12 +23,12 @@ the B<nextToken> parameter in a subsequent pagination request. If there
 is no more data to be listed, this parameter is set to null.
 
 
-
 =head2 B<REQUIRED> Subscriptions => ArrayRef[L<Paws::Inspector::Subscription>]
 
 Details of the returned event subscriptions.
 
 
+=head2 _request_id => Str
 
 
 =cut

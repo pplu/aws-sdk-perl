@@ -21,12 +21,12 @@ Paws::IoT::RegisterCACertificateResponse
 The CA certificate ARN.
 
 
-
 =head2 CertificateId => Str
 
 The CA certificate identifier.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -24,7 +24,6 @@ C<ListReceiptRuleSets> to retrieve up to 100 receipt rule sets at a
 time.
 
 
-
 =head2 RuleSets => ArrayRef[L<Paws::SES::ReceiptRuleSetMetadata>]
 
 The metadata for the currently active receipt rule set. The metadata
@@ -32,6 +31,7 @@ consists of the rule set name and the timestamp of when the rule set
 was created.
 
 
+=head2 _request_id => Str
 
 
 =cut

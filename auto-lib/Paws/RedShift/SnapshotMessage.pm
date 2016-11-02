@@ -26,12 +26,12 @@ the C<Marker> field is empty, all response records have been retrieved
 for the request.
 
 
-
 =head2 Snapshots => ArrayRef[L<Paws::RedShift::Snapshot>]
 
 A list of Snapshot instances.
 
 
+=head2 _request_id => Str
 
 
 =cut

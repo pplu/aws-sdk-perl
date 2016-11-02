@@ -20,6 +20,7 @@ Paws::ELB::DescribeLoadBalancerPolicyTypesOutput
 Information about the policy types.
 
 
+=head2 _request_id => Str
 
 
 =cut

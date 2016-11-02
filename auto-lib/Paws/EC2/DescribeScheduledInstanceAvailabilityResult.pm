@@ -22,12 +22,12 @@ The token required to retrieve the next set of results. This value is
 C<null> when there are no more results to return.
 
 
-
 =head2 ScheduledInstanceAvailabilitySet => ArrayRef[L<Paws::EC2::ScheduledInstanceAvailability>]
 
 Information about the available Scheduled Instances.
 
 
+=head2 _request_id => Str
 
 
 =cut

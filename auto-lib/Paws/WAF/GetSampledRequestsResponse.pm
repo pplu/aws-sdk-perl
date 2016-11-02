@@ -24,12 +24,10 @@ C<MaxItems>, the sample includes every request that your AWS resource
 received during the specified time range.
 
 
-
 =head2 SampledRequests => ArrayRef[L<Paws::WAF::SampledHTTPRequest>]
 
 A complex type that contains detailed information about each of the
 requests in the sample.
-
 
 
 =head2 TimeWindow => L<Paws::WAF::TimeWindow>
@@ -41,6 +39,7 @@ the request, C<GetSampledRequests> returns the time range for the first
 5,000 requests.
 
 
+=head2 _request_id => Str
 
 
 =cut

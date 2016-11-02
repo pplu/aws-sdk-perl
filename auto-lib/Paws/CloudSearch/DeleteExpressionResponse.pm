@@ -20,6 +20,7 @@ Paws::CloudSearch::DeleteExpressionResponse
 The status of the expression being deleted.
 
 
+=head2 _request_id => Str
 
 
 =cut

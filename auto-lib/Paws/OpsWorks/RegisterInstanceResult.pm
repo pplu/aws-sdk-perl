@@ -19,6 +19,7 @@ Paws::OpsWorks::RegisterInstanceResult
 The registered instance's AWS OpsWorks ID.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -19,6 +19,7 @@ Paws::WorkSpaces::DescribeTagsResult
 The list of tags.
 
 
+=head2 _request_id => Str
 
 
 =cut

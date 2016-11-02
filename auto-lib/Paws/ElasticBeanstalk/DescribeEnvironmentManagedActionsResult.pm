@@ -20,6 +20,7 @@ Paws::ElasticBeanstalk::DescribeEnvironmentManagedActionsResult
 A list of upcoming and in-progress managed actions.
 
 
+=head2 _request_id => Str
 
 
 =cut

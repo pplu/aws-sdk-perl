@@ -21,12 +21,12 @@ Paws::SQS::ChangeMessageVisibilityBatchResult
 A list of BatchResultErrorEntry items.
 
 
-
 =head2 B<REQUIRED> Successful => ArrayRef[L<Paws::SQS::ChangeMessageVisibilityBatchResultEntry>]
 
 A list of ChangeMessageVisibilityBatchResultEntry items.
 
 
+=head2 _request_id => Str
 
 
 =cut

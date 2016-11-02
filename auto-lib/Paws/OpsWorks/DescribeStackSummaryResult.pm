@@ -19,6 +19,7 @@ Paws::OpsWorks::DescribeStackSummaryResult
 A C<StackSummary> object that contains the results.
 
 
+=head2 _request_id => Str
 
 
 =cut

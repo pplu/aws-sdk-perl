@@ -20,6 +20,7 @@ Paws::EC2::CreateInternetGatewayResult
 Information about the Internet gateway.
 
 
+=head2 _request_id => Str
 
 
 =cut

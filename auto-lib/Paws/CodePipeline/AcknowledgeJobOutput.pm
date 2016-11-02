@@ -19,6 +19,7 @@ Paws::CodePipeline::AcknowledgeJobOutput
 Whether the job worker has received the specified job.
 
 Valid values are: C<"Created">, C<"Queued">, C<"Dispatched">, C<"InProgress">, C<"TimedOut">, C<"Succeeded">, C<"Failed">
+=head2 _request_id => Str
 
 
 =cut

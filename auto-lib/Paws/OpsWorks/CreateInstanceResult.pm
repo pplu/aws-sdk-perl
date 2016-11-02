@@ -19,6 +19,7 @@ Paws::OpsWorks::CreateInstanceResult
 The instance ID.
 
 
+=head2 _request_id => Str
 
 
 =cut

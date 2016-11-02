@@ -21,12 +21,12 @@ Paws::IoT::CreateThingTypeResponse
 The Amazon Resource Name (ARN) of the thing type.
 
 
-
 =head2 ThingTypeName => Str
 
 The name of the thing type.
 
 
+=head2 _request_id => Str
 
 
 =cut

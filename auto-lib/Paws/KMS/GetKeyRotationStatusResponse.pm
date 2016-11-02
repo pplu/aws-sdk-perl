@@ -19,6 +19,7 @@ Paws::KMS::GetKeyRotationStatusResponse
 A Boolean value that specifies whether key rotation is enabled.
 
 
+=head2 _request_id => Str
 
 
 =cut

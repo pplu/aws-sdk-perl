@@ -20,6 +20,7 @@ Paws::EC2::DescribeAddressesResult
 Information about one or more Elastic IP addresses.
 
 
+=head2 _request_id => Str
 
 
 =cut

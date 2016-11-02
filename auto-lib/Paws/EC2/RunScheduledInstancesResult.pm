@@ -20,6 +20,7 @@ Paws::EC2::RunScheduledInstancesResult
 The IDs of the newly launched instances.
 
 
+=head2 _request_id => Str
 
 
 =cut

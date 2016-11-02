@@ -33,12 +33,12 @@ Succeeded: The stop operation was successful.
 
 
 Valid values are: C<"Pending">, C<"Succeeded">
-
 =head2 StatusMessage => Str
 
 An accompanying status message.
 
 
+=head2 _request_id => Str
 
 
 =cut

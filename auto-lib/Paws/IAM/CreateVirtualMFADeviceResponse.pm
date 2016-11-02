@@ -20,6 +20,7 @@ Paws::IAM::CreateVirtualMFADeviceResponse
 A structure containing details about the new virtual MFA device.
 
 
+=head2 _request_id => Str
 
 
 =cut

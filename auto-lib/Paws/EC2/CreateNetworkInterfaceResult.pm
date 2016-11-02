@@ -20,6 +20,7 @@ Paws::EC2::CreateNetworkInterfaceResult
 Information about the network interface.
 
 
+=head2 _request_id => Str
 
 
 =cut

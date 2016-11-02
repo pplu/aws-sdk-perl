@@ -25,12 +25,10 @@ amounts are specified. At this time, the only supported currency is
 C<USD>.
 
 Valid values are: C<"USD">
-
 =head2 Purchase => ArrayRef[L<Paws::EC2::Purchase>]
 
 The purchase information of the Dedicated Host Reservation and the
 Dedicated Hosts associated with it.
-
 
 
 =head2 TotalHourlyPrice => Str
@@ -38,12 +36,12 @@ Dedicated Hosts associated with it.
 The potential total hourly price of the reservation per hour.
 
 
-
 =head2 TotalUpfrontPrice => Str
 
 The potential total upfront price. This is billed immediately.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -20,6 +20,7 @@ Paws::ELB::DeregisterEndPointsOutput
 The remaining instances registered with the load balancer.
 
 
+=head2 _request_id => Str
 
 
 =cut

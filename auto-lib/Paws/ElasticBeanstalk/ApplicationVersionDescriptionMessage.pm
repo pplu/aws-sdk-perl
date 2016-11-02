@@ -20,6 +20,7 @@ Paws::ElasticBeanstalk::ApplicationVersionDescriptionMessage
 The ApplicationVersionDescription of the application version.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -20,6 +20,7 @@ Paws::IAM::GetPolicyVersionResponse
 A structure containing details about the policy version.
 
 
+=head2 _request_id => Str
 
 
 =cut

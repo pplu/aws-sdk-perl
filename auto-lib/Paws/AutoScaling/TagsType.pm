@@ -22,12 +22,12 @@ The token to use when requesting the next set of items. If there are no
 additional items to return, the string is empty.
 
 
-
 =head2 Tags => ArrayRef[L<Paws::AutoScaling::TagDescription>]
 
 One or more tags.
 
 
+=head2 _request_id => Str
 
 
 =cut

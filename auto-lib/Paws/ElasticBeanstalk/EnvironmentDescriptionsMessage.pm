@@ -20,6 +20,7 @@ Paws::ElasticBeanstalk::EnvironmentDescriptionsMessage
 Returns an EnvironmentDescription list.
 
 
+=head2 _request_id => Str
 
 
 =cut

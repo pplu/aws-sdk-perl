@@ -21,12 +21,12 @@ Rules package details that cannot be described. An error code is
 provided for each failed item.
 
 
-
 =head2 B<REQUIRED> RulesPackages => ArrayRef[L<Paws::Inspector::RulesPackage>]
 
 Information about the rules package.
 
 
+=head2 _request_id => Str
 
 
 =cut

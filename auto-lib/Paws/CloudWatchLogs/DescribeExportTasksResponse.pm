@@ -20,12 +20,12 @@ Paws::CloudWatchLogs::DescribeExportTasksResponse
 
 
 
-
 =head2 NextToken => Str
 
 
 
 
+=head2 _request_id => Str
 
 
 =cut

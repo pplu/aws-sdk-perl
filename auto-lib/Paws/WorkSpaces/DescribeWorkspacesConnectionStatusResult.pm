@@ -20,12 +20,12 @@ Paws::WorkSpaces::DescribeWorkspacesConnectionStatusResult
 The next token of the result.
 
 
-
 =head2 WorkspacesConnectionStatus => ArrayRef[L<Paws::WorkSpaces::WorkspaceConnectionStatus>]
 
 The connection status of the WorkSpace.
 
 
+=head2 _request_id => Str
 
 
 =cut

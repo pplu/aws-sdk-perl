@@ -24,11 +24,9 @@ Paws::SimpleWorkflow::ActivityTask
 The unique ID of the task.
 
 
-
 =head2 B<REQUIRED> ActivityType => L<Paws::SimpleWorkflow::ActivityType>
 
 The type of this activity task.
-
 
 
 =head2 Input => Str
@@ -38,11 +36,9 @@ the input is user defined and should be meaningful to the activity
 implementation.
 
 
-
 =head2 B<REQUIRED> StartedEventId => Int
 
 The ID of the C<ActivityTaskStarted> event recorded in the history.
-
 
 
 =head2 B<REQUIRED> TaskToken => Str
@@ -52,12 +48,12 @@ workers to communicate progress and response information back to the
 system about the task.
 
 
-
 =head2 B<REQUIRED> WorkflowExecution => L<Paws::SimpleWorkflow::WorkflowExecution>
 
 The workflow execution that started this activity task.
 
 
+=head2 _request_id => Str
 
 
 =cut

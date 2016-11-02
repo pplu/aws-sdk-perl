@@ -20,6 +20,7 @@ Paws::EC2::ModifyInstancePlacementResult
 Is C<true> if the request succeeds, and an error otherwise.
 
 
+=head2 _request_id => Str
 
 
 =cut

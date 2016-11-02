@@ -20,6 +20,7 @@ An array of C<ServiceError> objects that describe the specified service
 errors.
 
 
+=head2 _request_id => Str
 
 
 =cut

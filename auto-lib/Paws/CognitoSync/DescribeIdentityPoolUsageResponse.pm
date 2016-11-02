@@ -20,6 +20,7 @@ Paws::CognitoSync::DescribeIdentityPoolUsageResponse
 Information about the usage of the identity pool.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -20,6 +20,7 @@ Paws::SQS::ListQueuesResult
 A list of queue URLs, up to 1000 entries.
 
 
+=head2 _request_id => Str
 
 
 =cut

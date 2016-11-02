@@ -20,12 +20,12 @@ Paws::KinesisAnalytics::ListApplicationsResponse
 List of C<ApplicationSummary> objects.
 
 
-
 =head2 B<REQUIRED> HasMoreApplications => Bool
 
 Returns true if there are more applications to retrieve.
 
 
+=head2 _request_id => Str
 
 
 =cut

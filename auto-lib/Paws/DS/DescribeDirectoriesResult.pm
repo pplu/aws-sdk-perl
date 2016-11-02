@@ -25,7 +25,6 @@ are less than the requested number of items left to retrieve, or if the
 limitations of the operation have been exceeded.
 
 
-
 =head2 NextToken => Str
 
 If not null, more results are available. Pass this value for the
@@ -33,6 +32,7 @@ I<NextToken> parameter in a subsequent call to DescribeDirectories to
 retrieve the next set of items.
 
 
+=head2 _request_id => Str
 
 
 =cut

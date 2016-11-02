@@ -20,6 +20,7 @@ Paws::ElasticBeanstalk::ConfigurationSettingsDescriptions
 A list of ConfigurationSettingsDescription.
 
 
+=head2 _request_id => Str
 
 
 =cut

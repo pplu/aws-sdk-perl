@@ -19,6 +19,7 @@ Paws::Support::DescribeTrustedAdvisorCheckResultResponse
 The detailed results of the Trusted Advisor check.
 
 
+=head2 _request_id => Str
 
 
 =cut

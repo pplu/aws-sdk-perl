@@ -19,6 +19,7 @@ Paws::Inspector::CreateAssessmentTemplateResponse
 The ARN that specifies the assessment template that is created.
 
 
+=head2 _request_id => Str
 
 
 =cut

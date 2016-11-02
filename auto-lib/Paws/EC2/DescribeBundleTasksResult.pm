@@ -20,6 +20,7 @@ Paws::EC2::DescribeBundleTasksResult
 Information about one or more bundle tasks.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -19,6 +19,7 @@ Paws::CodePipeline::UpdatePipelineOutput
 The structure of the updated pipeline.
 
 
+=head2 _request_id => Str
 
 
 =cut

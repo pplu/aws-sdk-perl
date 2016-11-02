@@ -19,6 +19,7 @@ Paws::StorageGateway::UpdateVTLDeviceTypeOutput
 The Amazon Resource Name (ARN) of the medium changer you have selected.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -19,6 +19,7 @@ Paws::SimpleWorkflow::ActivityTaskStatus
 Set to C<true> if cancellation of the task is requested.
 
 
+=head2 _request_id => Str
 
 
 =cut

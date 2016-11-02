@@ -20,6 +20,7 @@ Paws::IAM::GetPolicyResponse
 A structure containing details about the policy.
 
 
+=head2 _request_id => Str
 
 
 =cut

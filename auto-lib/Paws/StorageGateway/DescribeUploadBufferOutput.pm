@@ -22,9 +22,7 @@ Paws::StorageGateway::DescribeUploadBufferOutput
 
 
 
-
 =head2 GatewayARN => Str
-
 
 
 
@@ -34,12 +32,12 @@ Paws::StorageGateway::DescribeUploadBufferOutput
 
 
 
-
 =head2 UploadBufferUsedInBytes => Int
 
 
 
 
+=head2 _request_id => Str
 
 
 =cut

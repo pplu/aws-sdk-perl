@@ -19,6 +19,7 @@ Paws::DirectConnect::VirtualGateways
 A list of virtual private gateways.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -19,6 +19,7 @@ Paws::DMS::DeleteEndpointResponse
 The endpoint that was deleted.
 
 
+=head2 _request_id => Str
 
 
 =cut

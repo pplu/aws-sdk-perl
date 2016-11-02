@@ -21,11 +21,9 @@ Paws::CodeDeploy::GetApplicationRevisionOutput
 The name of the application that corresponds to the revision.
 
 
-
 =head2 Revision => L<Paws::CodeDeploy::RevisionLocation>
 
 Additional information about the revision, including type and location.
-
 
 
 =head2 RevisionInfo => L<Paws::CodeDeploy::GenericRevisionInfo>
@@ -33,6 +31,7 @@ Additional information about the revision, including type and location.
 General information about the revision.
 
 
+=head2 _request_id => Str
 
 
 =cut

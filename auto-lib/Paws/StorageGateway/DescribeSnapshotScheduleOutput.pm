@@ -23,9 +23,7 @@ Paws::StorageGateway::DescribeSnapshotScheduleOutput
 
 
 
-
 =head2 RecurrenceInHours => Int
-
 
 
 
@@ -35,9 +33,7 @@ Paws::StorageGateway::DescribeSnapshotScheduleOutput
 
 
 
-
 =head2 Timezone => Str
-
 
 
 
@@ -47,6 +43,7 @@ Paws::StorageGateway::DescribeSnapshotScheduleOutput
 
 
 
+=head2 _request_id => Str
 
 
 =cut

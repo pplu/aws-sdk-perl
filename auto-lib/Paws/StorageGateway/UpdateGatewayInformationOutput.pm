@@ -20,12 +20,12 @@ Paws::StorageGateway::UpdateGatewayInformationOutput
 
 
 
-
 =head2 GatewayName => Str
 
 
 
 
+=head2 _request_id => Str
 
 
 =cut

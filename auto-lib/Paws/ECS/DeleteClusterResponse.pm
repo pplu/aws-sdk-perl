@@ -19,6 +19,7 @@ Paws::ECS::DeleteClusterResponse
 The full description of the deleted cluster.
 
 
+=head2 _request_id => Str
 
 
 =cut

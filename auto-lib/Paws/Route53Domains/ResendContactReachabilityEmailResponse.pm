@@ -21,12 +21,10 @@ Paws::Route53Domains::ResendContactReachabilityEmailResponse
 The domain name for which you requested a confirmation email.
 
 
-
 =head2 EmailAddress => Str
 
 The email address for the registrant contact at the time that we sent
 the verification email.
-
 
 
 =head2 IsAlreadyVerified => Bool
@@ -36,6 +34,7 @@ verified, and false otherwise. If the email address has already been
 verified, we don't send another confirmation email.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -20,13 +20,13 @@ Paws::DynamoDB::GetItemOutput
 
 
 
-
 =head2 Item => L<Paws::DynamoDB::AttributeMap>
 
 A map of attribute names to I<AttributeValue> objects, as specified by
 I<AttributesToGet>.
 
 
+=head2 _request_id => Str
 
 
 =cut

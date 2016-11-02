@@ -20,6 +20,7 @@ Paws::RedShift::DeleteClusterResult
 
 
 
+=head2 _request_id => Str
 
 
 =cut

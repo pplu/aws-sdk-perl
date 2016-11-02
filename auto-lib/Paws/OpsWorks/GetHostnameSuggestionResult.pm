@@ -20,12 +20,12 @@ Paws::OpsWorks::GetHostnameSuggestionResult
 The generated host name.
 
 
-
 =head2 LayerId => Str
 
 The layer ID.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -19,6 +19,7 @@ Paws::EMR::RunJobFlowOutput
 An unique identifier for the job flow.
 
 
+=head2 _request_id => Str
 
 
 =cut

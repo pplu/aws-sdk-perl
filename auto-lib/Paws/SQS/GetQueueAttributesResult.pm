@@ -20,6 +20,7 @@ Paws::SQS::GetQueueAttributesResult
 A map of attributes to the respective values.
 
 
+=head2 _request_id => Str
 
 
 =cut

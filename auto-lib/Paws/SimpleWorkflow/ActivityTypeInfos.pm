@@ -26,12 +26,12 @@ The configured C<maximumPageSize> determines how many results can be
 returned in a single call.
 
 
-
 =head2 B<REQUIRED> TypeInfos => ArrayRef[L<Paws::SimpleWorkflow::ActivityTypeInfo>]
 
 List of activity type information.
 
 
+=head2 _request_id => Str
 
 
 =cut

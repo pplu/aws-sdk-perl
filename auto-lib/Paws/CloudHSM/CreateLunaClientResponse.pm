@@ -19,6 +19,7 @@ Paws::CloudHSM::CreateLunaClientResponse
 The ARN of the client.
 
 
+=head2 _request_id => Str
 
 
 =cut

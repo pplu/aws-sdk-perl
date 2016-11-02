@@ -20,7 +20,6 @@ Paws::SimpleWorkflow::ActivityTypeDetail
 The configuration settings registered with the activity type.
 
 
-
 =head2 B<REQUIRED> TypeInfo => L<Paws::SimpleWorkflow::ActivityTypeInfo>
 
 General information about the activity type.
@@ -41,6 +40,7 @@ supporting this type running. You cannot create new tasks of this type.
 
 
 
+=head2 _request_id => Str
 
 
 =cut

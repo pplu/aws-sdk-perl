@@ -21,6 +21,7 @@ The status of the domains requested in the
 C<DescribeElasticsearchDomains> request.
 
 
+=head2 _request_id => Str
 
 
 =cut

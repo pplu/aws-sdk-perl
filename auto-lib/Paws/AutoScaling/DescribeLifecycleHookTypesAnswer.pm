@@ -20,6 +20,7 @@ Paws::AutoScaling::DescribeLifecycleHookTypesAnswer
 The lifecycle hook types.
 
 
+=head2 _request_id => Str
 
 
 =cut

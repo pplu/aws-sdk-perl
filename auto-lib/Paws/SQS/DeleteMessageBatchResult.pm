@@ -21,12 +21,12 @@ Paws::SQS::DeleteMessageBatchResult
 A list of BatchResultErrorEntry items.
 
 
-
 =head2 B<REQUIRED> Successful => ArrayRef[L<Paws::SQS::DeleteMessageBatchResultEntry>]
 
 A list of DeleteMessageBatchResultEntry items.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -20,6 +20,7 @@ The user pool client from a server response to describe the user pool
 client.
 
 
+=head2 _request_id => Str
 
 
 =cut

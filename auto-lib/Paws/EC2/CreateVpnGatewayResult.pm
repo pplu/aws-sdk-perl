@@ -20,6 +20,7 @@ Paws::EC2::CreateVpnGatewayResult
 Information about the virtual private gateway.
 
 
+=head2 _request_id => Str
 
 
 =cut

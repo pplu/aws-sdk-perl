@@ -20,6 +20,7 @@ Paws::EC2::AttachVpnGatewayResult
 Information about the attachment.
 
 
+=head2 _request_id => Str
 
 
 =cut

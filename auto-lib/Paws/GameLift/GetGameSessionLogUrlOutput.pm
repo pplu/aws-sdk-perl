@@ -19,6 +19,7 @@ Paws::GameLift::GetGameSessionLogUrlOutput
 Location of the requested game session logs, available for download.
 
 
+=head2 _request_id => Str
 
 
 =cut

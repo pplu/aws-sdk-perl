@@ -20,6 +20,7 @@ Paws::IAM::CreateRoleResponse
 A structure containing details about the new role.
 
 
+=head2 _request_id => Str
 
 
 =cut

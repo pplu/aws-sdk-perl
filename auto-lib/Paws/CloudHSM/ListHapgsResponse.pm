@@ -20,13 +20,13 @@ Paws::CloudHSM::ListHapgsResponse
 The list of high-availability partition groups.
 
 
-
 =head2 NextToken => Str
 
 If not null, more results are available. Pass this value to ListHapgs
 to retrieve the next set of items.
 
 
+=head2 _request_id => Str
 
 
 =cut

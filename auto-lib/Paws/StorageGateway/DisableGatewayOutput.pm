@@ -19,6 +19,7 @@ Paws::StorageGateway::DisableGatewayOutput
 The unique Amazon Resource Name of the disabled gateway.
 
 
+=head2 _request_id => Str
 
 
 =cut

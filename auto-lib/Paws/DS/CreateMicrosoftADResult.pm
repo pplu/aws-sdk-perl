@@ -19,6 +19,7 @@ Paws::DS::CreateMicrosoftADResult
 The identifier of the directory that was created.
 
 
+=head2 _request_id => Str
 
 
 =cut

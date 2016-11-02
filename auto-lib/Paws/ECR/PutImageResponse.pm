@@ -19,6 +19,7 @@ Paws::ECR::PutImageResponse
 Details of the image uploaded.
 
 
+=head2 _request_id => Str
 
 
 =cut

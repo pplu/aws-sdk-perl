@@ -20,6 +20,7 @@ Paws::SNS::ConfirmSubscriptionResponse
 The ARN of the created subscription.
 
 
+=head2 _request_id => Str
 
 
 =cut

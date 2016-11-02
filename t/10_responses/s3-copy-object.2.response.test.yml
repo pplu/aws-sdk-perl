@@ -1,0 +1,14 @@
+---
+call: CopyObject
+service: S3
+tests:
+  - path: request_id
+    op: eq
+    expected: C535DE4BB867ECF3
+  - path: message
+    op: eq
+    expected: Not Found
+  - path: code
+    op: eq
+    expected: 404
+

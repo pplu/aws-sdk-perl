@@ -22,11 +22,9 @@ he Amazon Resource Name (ARN) of the volume target that includes the
 iSCSI name that initiators can use to connect to the target.
 
 
-
 =head2 VolumeARN => Str
 
 The Amazon Resource Name (ARN) of the configured volume.
-
 
 
 =head2 VolumeSizeInBytes => Int
@@ -34,6 +32,7 @@ The Amazon Resource Name (ARN) of the configured volume.
 The size of the volume in bytes.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -20,6 +20,7 @@ Paws::Glacier::GetVaultNotificationsOutput
 Returns the notification configuration set on the vault.
 
 
+=head2 _request_id => Str
 
 
 =cut

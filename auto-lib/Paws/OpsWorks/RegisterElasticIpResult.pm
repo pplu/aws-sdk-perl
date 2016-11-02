@@ -19,6 +19,7 @@ Paws::OpsWorks::RegisterElasticIpResult
 The Elastic IP address.
 
 
+=head2 _request_id => Str
 
 
 =cut

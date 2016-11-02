@@ -20,6 +20,7 @@ Paws::IoT::TransferCertificateResponse
 The ARN of the certificate.
 
 
+=head2 _request_id => Str
 
 
 =cut

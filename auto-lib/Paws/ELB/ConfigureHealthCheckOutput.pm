@@ -20,6 +20,7 @@ Paws::ELB::ConfigureHealthCheckOutput
 The updated health check.
 
 
+=head2 _request_id => Str
 
 
 =cut

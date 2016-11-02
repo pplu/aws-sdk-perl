@@ -22,12 +22,12 @@ The token for the next set of results, or B<null> if there are no
 additional results.
 
 
-
 =head2 Things => ArrayRef[L<Paws::IoT::ThingAttribute>]
 
 The things.
 
 
+=head2 _request_id => Str
 
 
 =cut

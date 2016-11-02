@@ -20,12 +20,12 @@ Paws::DS::ListTagsForResourceResult
 Reserved for future use.
 
 
-
 =head2 Tags => ArrayRef[L<Paws::DS::Tag>]
 
 List of tags returned by the ListTagsForResource operation.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -20,6 +20,7 @@ Paws::IoTData::DeleteThingShadowResponse
 The state information, in JSON format.
 
 
+=head2 _request_id => Str
 
 
 =cut

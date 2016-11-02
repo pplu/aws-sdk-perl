@@ -20,6 +20,7 @@ Paws::AutoScaling::PolicyARNType
 The Amazon Resource Name (ARN) of the policy.
 
 
+=head2 _request_id => Str
 
 
 =cut

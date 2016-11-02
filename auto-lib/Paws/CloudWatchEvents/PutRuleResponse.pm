@@ -19,6 +19,7 @@ Paws::CloudWatchEvents::PutRuleResponse
 The Amazon Resource Name (ARN) that identifies the rule.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -19,6 +19,7 @@ Paws::Support::DescribeTrustedAdvisorChecksResponse
 Information about all available Trusted Advisor checks.
 
 
+=head2 _request_id => Str
 
 
 =cut

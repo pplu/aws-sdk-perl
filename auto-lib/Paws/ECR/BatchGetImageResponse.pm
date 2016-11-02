@@ -20,13 +20,13 @@ Paws::ECR::BatchGetImageResponse
 Any failures associated with the call.
 
 
-
 =head2 Images => ArrayRef[L<Paws::ECR::Image>]
 
 A list of image objects corresponding to the image references in the
 request.
 
 
+=head2 _request_id => Str
 
 
 =cut

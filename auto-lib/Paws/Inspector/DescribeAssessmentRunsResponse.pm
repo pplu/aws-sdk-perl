@@ -20,13 +20,13 @@ Paws::Inspector::DescribeAssessmentRunsResponse
 Information about the assessment run.
 
 
-
 =head2 B<REQUIRED> FailedItems => L<Paws::Inspector::FailedItems>
 
 Assessment run details that cannot be described. An error code is
 provided for each failed item.
 
 
+=head2 _request_id => Str
 
 
 =cut

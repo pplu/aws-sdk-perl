@@ -20,6 +20,7 @@ The code delivery details returned by the server response to get the
 user attribute verification code.
 
 
+=head2 _request_id => Str
 
 
 =cut

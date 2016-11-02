@@ -20,6 +20,7 @@ Paws::EC2::StopInstancesResult
 Information about one or more stopped instances.
 
 
+=head2 _request_id => Str
 
 
 =cut

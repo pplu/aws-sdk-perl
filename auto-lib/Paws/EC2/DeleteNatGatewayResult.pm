@@ -20,6 +20,7 @@ Paws::EC2::DeleteNatGatewayResult
 The ID of the NAT gateway.
 
 
+=head2 _request_id => Str
 
 
 =cut

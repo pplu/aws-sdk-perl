@@ -36,7 +36,6 @@ I<CapacityUnits> - The total number of capacity units consumed.
 
 
 
-
 =head2 ItemCollectionMetrics => L<Paws::DynamoDB::ItemCollectionMetricsPerTable>
 
 A list of tables that were processed by I<BatchWriteItem> and, for each
@@ -65,7 +64,6 @@ The estimate is subject to change over time; therefore, do not rely on
 the precision or accuracy of the estimate.
 
 =back
-
 
 
 
@@ -126,6 +124,7 @@ If there are no unprocessed items remaining, the response contains an
 empty I<UnprocessedItems> map.
 
 
+=head2 _request_id => Str
 
 
 =cut

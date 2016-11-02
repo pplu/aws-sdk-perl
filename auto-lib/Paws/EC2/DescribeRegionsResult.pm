@@ -20,6 +20,7 @@ Paws::EC2::DescribeRegionsResult
 Information about one or more regions.
 
 
+=head2 _request_id => Str
 
 
 =cut

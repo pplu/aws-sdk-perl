@@ -22,7 +22,6 @@ provides the names of the triggers that could not be tested, separated
 by commas.
 
 
-
 =head2 SuccessfulExecutions => ArrayRef[Str|Undef]
 
 The list of triggers that were successfully tested. This list provides
@@ -30,6 +29,7 @@ the names of the triggers that were successfully tested, separated by
 commas.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -23,12 +23,12 @@ If not, then the ErrorCode and ErrorMessage can be used to identify the
 problem with the entry.
 
 
-
 =head2 FailedEntryCount => Int
 
 The number of failed entries.
 
 
+=head2 _request_id => Str
 
 
 =cut

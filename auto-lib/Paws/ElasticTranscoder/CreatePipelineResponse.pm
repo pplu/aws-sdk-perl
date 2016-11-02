@@ -22,7 +22,6 @@ A section of the response body that provides information about the
 pipeline that is created.
 
 
-
 =head2 Warnings => ArrayRef[L<Paws::ElasticTranscoder::Warning>]
 
 Elastic Transcoder returns a warning if the resources used by your
@@ -33,6 +32,7 @@ Amazon SNS notification topics, and AWS KMS key, reduces processing
 time and prevents cross-regional charges.
 
 
+=head2 _request_id => Str
 
 
 =cut

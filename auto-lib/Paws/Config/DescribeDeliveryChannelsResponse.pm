@@ -20,6 +20,7 @@ A list that contains the descriptions of the specified delivery
 channel.
 
 
+=head2 _request_id => Str
 
 
 =cut

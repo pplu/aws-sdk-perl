@@ -20,6 +20,7 @@ A unique Amazon Resource Name (ARN) that represents the virtual tape
 that was created.
 
 
+=head2 _request_id => Str
 
 
 =cut

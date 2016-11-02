@@ -20,12 +20,12 @@ Paws::ECS::DescribeContainerInstancesResponse
 The list of container instances.
 
 
-
 =head2 Failures => ArrayRef[L<Paws::ECS::Failure>]
 
 Any failures associated with the call.
 
 
+=head2 _request_id => Str
 
 
 =cut

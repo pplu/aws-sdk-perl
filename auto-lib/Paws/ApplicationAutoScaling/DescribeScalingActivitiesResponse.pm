@@ -24,12 +24,12 @@ can be used to retrieve the next page of results. This value is C<null>
 when there are no more results to return.
 
 
-
 =head2 ScalingActivities => ArrayRef[L<Paws::ApplicationAutoScaling::ScalingActivity>]
 
 A list of scaling activity objects.
 
 
+=head2 _request_id => Str
 
 
 =cut

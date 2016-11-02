@@ -19,6 +19,7 @@ Paws::ECS::DeregisterTaskDefinitionResponse
 The full description of the deregistered task.
 
 
+=head2 _request_id => Str
 
 
 =cut

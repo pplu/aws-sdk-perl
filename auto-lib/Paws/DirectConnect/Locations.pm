@@ -20,6 +20,7 @@ A list of colocation hubs where network providers have equipment. Most
 regions have multiple locations available.
 
 
+=head2 _request_id => Str
 
 
 =cut

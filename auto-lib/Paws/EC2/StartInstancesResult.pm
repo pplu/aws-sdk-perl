@@ -20,6 +20,7 @@ Paws::EC2::StartInstancesResult
 Information about one or more started instances.
 
 
+=head2 _request_id => Str
 
 
 =cut

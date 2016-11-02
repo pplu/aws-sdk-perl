@@ -21,6 +21,7 @@ The authorization code for the domain.
 Type: String
 
 
+=head2 _request_id => Str
 
 
 =cut

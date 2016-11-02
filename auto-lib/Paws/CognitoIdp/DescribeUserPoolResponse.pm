@@ -19,6 +19,7 @@ Paws::CognitoIdp::DescribeUserPoolResponse
 The container of metadata returned by the server to describe the pool.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -20,6 +20,7 @@ Paws::IAM::GetSSHPublicKeyResponse
 A structure containing details about the SSH public key.
 
 
+=head2 _request_id => Str
 
 
 =cut

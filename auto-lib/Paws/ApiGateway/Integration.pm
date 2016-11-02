@@ -29,11 +29,9 @@ Paws::ApiGateway::Integration
 Specifies the integration's cache key parameters.
 
 
-
 =head2 CacheNamespace => Str
 
 Specifies the integration's cache namespace.
-
 
 
 =head2 Credentials => Str
@@ -46,11 +44,9 @@ request, specify the string C<arn:aws:iam::\*:user/\*>. To use
 resource-based permissions on supported AWS services, specify null.
 
 
-
 =head2 HttpMethod => Str
 
 Specifies the integration's HTTP method type.
-
 
 
 =head2 IntegrationResponses => L<Paws::ApiGateway::MapOfIntegrationResponse>
@@ -71,7 +67,6 @@ follows:
  { "_links": { "curies": { "href": "http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-integration-response-{rel}.html", "name": "integrationresponse", "templated": true }, "self": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200", "title": "200" }, "integrationresponse:delete": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200" }, "integrationresponse:update": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200" } }, "responseParameters": { "method.response.header.Content-Type": "'application/xml'" }, "responseTemplates": { "application/json": "$util.urlDecode(\"%3CkinesisStreams%3E
 
 Creating an API
-
 
 
 =head2 PassthroughBehavior => Str
@@ -108,7 +103,6 @@ defined in the integration request.
 
 
 
-
 =head2 RequestParameters => L<Paws::ApiGateway::MapOfStringToString>
 
 A key-value map specifying request parameters that are passed from the
@@ -121,14 +115,12 @@ where C<location> is C<querystring>, C<path>, or C<header> and C<name>
 must be a valid and unique method request parameter name.
 
 
-
 =head2 RequestTemplates => L<Paws::ApiGateway::MapOfStringToString>
 
 Represents a map of Velocity templates that are applied on the request
 payload based on the value of the Content-Type header sent by the
 client. The content type value is the key in this map, and the template
 (as a String) is the value.
-
 
 
 =head2 Type => Str
@@ -140,7 +132,6 @@ C<HTTP_PROXY> for integrating with the HTTP proxy integration, or
 C<AWS_PROXY> for integrating with the Lambda proxy integration type.
 
 Valid values are: C<"HTTP">, C<"AWS">, C<"MOCK">, C<"HTTP_PROXY">, C<"AWS_PROXY">
-
 =head2 Uri => Str
 
 Specifies the integration's Uniform Resource Identifier (URI). For HTTP
@@ -156,6 +147,7 @@ the remaining substring in the URI should be treated as the path to the
 resource, including the initial C</>.
 
 
+=head2 _request_id => Str
 
 
 =cut

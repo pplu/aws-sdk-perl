@@ -21,7 +21,6 @@ Paws::SNS::ListEndpointsByPlatformApplicationResponse
 Endpoints returned for ListEndpointsByPlatformApplication action.
 
 
-
 =head2 NextToken => Str
 
 NextToken string is returned when calling
@@ -29,6 +28,7 @@ ListEndpointsByPlatformApplication action if additional records are
 available after the first page results.
 
 
+=head2 _request_id => Str
 
 
 =cut

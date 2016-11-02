@@ -19,6 +19,7 @@ Paws::GameLift::CreateFleetOutput
 Properties for the newly created fleet.
 
 
+=head2 _request_id => Str
 
 
 =cut

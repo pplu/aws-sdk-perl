@@ -19,6 +19,7 @@ Paws::DS::CreateSnapshotResult
 The identifier of the snapshot that was created.
 
 
+=head2 _request_id => Str
 
 
 =cut

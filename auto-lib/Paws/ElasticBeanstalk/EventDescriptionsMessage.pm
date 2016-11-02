@@ -21,7 +21,6 @@ Paws::ElasticBeanstalk::EventDescriptionsMessage
 A list of EventDescription.
 
 
-
 =head2 NextToken => Str
 
 If returned, this indicates that there are more results to obtain. Use
@@ -29,6 +28,7 @@ this token in the next DescribeEvents call to get the next batch of
 events.
 
 
+=head2 _request_id => Str
 
 
 =cut

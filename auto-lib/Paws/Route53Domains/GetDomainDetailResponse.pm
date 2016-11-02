@@ -44,13 +44,11 @@ type of abuse.
 Type: String
 
 
-
 =head2 AbuseContactPhone => Str
 
 Phone number for reporting abuse.
 
 Type: String
-
 
 
 =head2 B<REQUIRED> AdminContact => L<Paws::Route53Domains::ContactDetail>
@@ -65,7 +63,6 @@ C<State>, C<CountryCode>, C<ZipCode>, C<PhoneNumber>, C<Email>, C<Fax>,
 C<ExtraParams>
 
 
-
 =head2 AdminPrivacy => Bool
 
 Specifies whether contact information for the admin contact is
@@ -76,7 +73,6 @@ Gandi, instead of the contact information that you enter.
 Type: Boolean
 
 
-
 =head2 AutoRenew => Bool
 
 Specifies whether the domain registration is set to renew
@@ -85,18 +81,15 @@ automatically.
 Type: Boolean
 
 
-
 =head2 CreationDate => Str
 
 The date when the domain was created as found in the response to a
 WHOIS query. The date format is Unix time.
 
 
-
 =head2 DnsSec => Str
 
 Reserved for future use.
-
 
 
 =head2 B<REQUIRED> DomainName => Str
@@ -106,12 +99,10 @@ The name of a domain.
 Type: String
 
 
-
 =head2 ExpirationDate => Str
 
 The date when the registration for the domain is set to expire. The
 date format is Unix time.
-
 
 
 =head2 B<REQUIRED> Nameservers => ArrayRef[L<Paws::Route53Domains::Nameserver>]
@@ -119,7 +110,6 @@ date format is Unix time.
 The name of the domain.
 
 Type: String
-
 
 
 =head2 B<REQUIRED> RegistrantContact => L<Paws::Route53Domains::ContactDetail>
@@ -134,7 +124,6 @@ C<State>, C<CountryCode>, C<ZipCode>, C<PhoneNumber>, C<Email>, C<Fax>,
 C<ExtraParams>
 
 
-
 =head2 RegistrantPrivacy => Bool
 
 Specifies whether contact information for the registrant contact is
@@ -143,7 +132,6 @@ queries will return contact information for our registrar partner,
 Gandi, instead of the contact information that you enter.
 
 Type: Boolean
-
 
 
 =head2 RegistrarName => Str
@@ -155,7 +143,6 @@ C<"GANDI SAS">.
 Type: String
 
 
-
 =head2 RegistrarUrl => Str
 
 Web address of the registrar.
@@ -163,11 +150,9 @@ Web address of the registrar.
 Type: String
 
 
-
 =head2 RegistryDomainId => Str
 
 Reserved for future use.
-
 
 
 =head2 Reseller => Str
@@ -176,7 +161,6 @@ Reseller of the domain. Domains registered or transferred using Amazon
 Route 53 domains will have C<"Amazon"> as the reseller.
 
 Type: String
-
 
 
 =head2 StatusList => ArrayRef[Str|Undef]
@@ -199,7 +183,6 @@ return an old version of the document.)
 Type: Array of String
 
 
-
 =head2 B<REQUIRED> TechContact => L<Paws::Route53Domains::ContactDetail>
 
 Provides details about the domain technical contact.
@@ -212,7 +195,6 @@ C<State>, C<CountryCode>, C<ZipCode>, C<PhoneNumber>, C<Email>, C<Fax>,
 C<ExtraParams>
 
 
-
 =head2 TechPrivacy => Bool
 
 Specifies whether contact information for the tech contact is concealed
@@ -223,12 +205,10 @@ instead of the contact information that you enter.
 Type: Boolean
 
 
-
 =head2 UpdatedDate => Str
 
 The last updated date of the domain as found in the response to a WHOIS
 query. The date format is Unix time.
-
 
 
 =head2 WhoIsServer => Str
@@ -239,6 +219,7 @@ query for the domain.
 Type: String
 
 
+=head2 _request_id => Str
 
 
 =cut

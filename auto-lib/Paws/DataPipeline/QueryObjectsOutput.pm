@@ -22,11 +22,9 @@ Indicates whether there are more results that can be obtained by a
 subsequent call.
 
 
-
 =head2 Ids => ArrayRef[Str|Undef]
 
 The identifiers that match the query selectors.
-
 
 
 =head2 Marker => Str
@@ -36,6 +34,7 @@ of results, call C<QueryObjects> again with this marker value. If the
 value is null, there are no more results.
 
 
+=head2 _request_id => Str
 
 
 =cut

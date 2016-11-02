@@ -20,6 +20,7 @@ Paws::EC2::DescribeKeyPairsResult
 Information about one or more key pairs.
 
 
+=head2 _request_id => Str
 
 
 =cut

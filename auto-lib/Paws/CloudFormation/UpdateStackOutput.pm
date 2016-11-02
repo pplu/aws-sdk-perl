@@ -20,6 +20,7 @@ Paws::CloudFormation::UpdateStackOutput
 Unique identifier of the stack.
 
 
+=head2 _request_id => Str
 
 
 =cut

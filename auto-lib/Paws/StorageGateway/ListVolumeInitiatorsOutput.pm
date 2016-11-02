@@ -20,6 +20,7 @@ The host names and port numbers of all iSCSI initiators that are
 connected to the gateway.
 
 
+=head2 _request_id => Str
 
 
 =cut

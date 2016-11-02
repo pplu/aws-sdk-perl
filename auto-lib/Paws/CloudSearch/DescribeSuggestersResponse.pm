@@ -20,6 +20,7 @@ Paws::CloudSearch::DescribeSuggestersResponse
 The suggesters configured for the domain specified in the request.
 
 
+=head2 _request_id => Str
 
 
 =cut

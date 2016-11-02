@@ -19,6 +19,7 @@ Paws::CodeCommit::GetBranchOutput
 The name of the branch.
 
 
+=head2 _request_id => Str
 
 
 =cut

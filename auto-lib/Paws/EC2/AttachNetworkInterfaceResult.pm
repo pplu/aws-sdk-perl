@@ -20,6 +20,7 @@ Paws::EC2::AttachNetworkInterfaceResult
 The ID of the network interface attachment.
 
 
+=head2 _request_id => Str
 
 
 =cut

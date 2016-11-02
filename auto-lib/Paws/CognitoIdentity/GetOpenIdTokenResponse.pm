@@ -21,12 +21,12 @@ A unique identifier in the format REGION:GUID. Note that the IdentityId
 returned may not match the one passed on input.
 
 
-
 =head2 Token => Str
 
 An OpenID token, valid for 15 minutes.
 
 
+=head2 _request_id => Str
 
 
 =cut

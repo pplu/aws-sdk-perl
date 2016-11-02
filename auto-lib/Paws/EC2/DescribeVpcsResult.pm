@@ -20,6 +20,7 @@ Paws::EC2::DescribeVpcsResult
 Information about one or more VPCs.
 
 
+=head2 _request_id => Str
 
 
 =cut

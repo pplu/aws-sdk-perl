@@ -20,6 +20,7 @@ Paws::IAM::GetServerCertificateResponse
 A structure containing details about the server certificate.
 
 
+=head2 _request_id => Str
 
 
 =cut

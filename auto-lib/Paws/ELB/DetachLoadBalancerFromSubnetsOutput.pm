@@ -20,6 +20,7 @@ Paws::ELB::DetachLoadBalancerFromSubnetsOutput
 The IDs of the remaining subnets for the load balancer.
 
 
+=head2 _request_id => Str
 
 
 =cut

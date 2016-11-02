@@ -21,9 +21,7 @@ Paws::CloudWatchLogs::GetLogEventsResponse
 
 
 
-
 =head2 NextBackwardToken => Str
-
 
 
 
@@ -33,6 +31,7 @@ Paws::CloudWatchLogs::GetLogEventsResponse
 
 
 
+=head2 _request_id => Str
 
 
 =cut

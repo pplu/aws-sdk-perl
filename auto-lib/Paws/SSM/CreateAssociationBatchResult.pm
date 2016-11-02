@@ -20,12 +20,12 @@ Paws::SSM::CreateAssociationBatchResult
 Information about the associations that failed.
 
 
-
 =head2 Successful => ArrayRef[L<Paws::SSM::AssociationDescription>]
 
 Information about the associations that succeeded.
 
 
+=head2 _request_id => Str
 
 
 =cut

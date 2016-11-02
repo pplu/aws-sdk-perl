@@ -20,6 +20,7 @@ Paws::ELB::DescribeTagsOutput
 Information about the tags.
 
 
+=head2 _request_id => Str
 
 
 =cut

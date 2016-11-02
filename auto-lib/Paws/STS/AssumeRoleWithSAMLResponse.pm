@@ -28,12 +28,10 @@ The identifiers for the temporary security credentials that the
 operation returns.
 
 
-
 =head2 Audience => Str
 
 The value of the C<Recipient> attribute of the
 C<SubjectConfirmationData> element of the SAML assertion.
-
 
 
 =head2 Credentials => L<Paws::STS::Credentials>
@@ -48,11 +46,9 @@ bytes, but that can vary. Also, future updates to AWS might require
 larger sizes.
 
 
-
 =head2 Issuer => Str
 
 The value of the C<Issuer> element of the SAML assertion.
-
 
 
 =head2 NameQualifier => Str
@@ -68,7 +64,6 @@ C<BASE64 ( SHA1 ( "https://example.com/saml" + "123456789012" +
 "/MySAMLIdP" ) )>
 
 
-
 =head2 PackedPolicySize => Int
 
 A percentage value that indicates the size of the policy in packed
@@ -76,12 +71,10 @@ form. The service rejects any policy with a packed size greater than
 100 percent, which means the policy exceeded the allowed space.
 
 
-
 =head2 Subject => Str
 
 The value of the C<NameID> element in the C<Subject> element of the
 SAML assertion.
-
 
 
 =head2 SubjectType => Str
@@ -97,6 +90,7 @@ returned as C<transient>. If the format includes any other prefix, the
 format is returned with no modifications.
 
 
+=head2 _request_id => Str
 
 
 =cut

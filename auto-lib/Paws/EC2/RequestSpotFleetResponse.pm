@@ -20,6 +20,7 @@ Paws::EC2::RequestSpotFleetResponse
 The ID of the Spot fleet request.
 
 
+=head2 _request_id => Str
 
 
 =cut

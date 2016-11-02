@@ -25,9 +25,7 @@ Paws::ImportExport::CreateJobOutput
 
 
 
-
 =head2 JobId => Str
-
 
 
 
@@ -37,9 +35,7 @@ Paws::ImportExport::CreateJobOutput
 
 
 Valid values are: C<"Import">, C<"Export">
-
 =head2 Signature => Str
-
 
 
 
@@ -49,12 +45,12 @@ Valid values are: C<"Import">, C<"Export">
 
 
 
-
 =head2 WarningMessage => Str
 
 
 
 
+=head2 _request_id => Str
 
 
 =cut

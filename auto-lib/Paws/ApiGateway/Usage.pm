@@ -24,7 +24,6 @@ Paws::ApiGateway::Usage
 The ending date of the usage data.
 
 
-
 =head2 Items => L<Paws::ApiGateway::MapOfKeyUsages>
 
 The usage data, as daily logs of used and remaining quotas, over the
@@ -34,9 +33,7 @@ example, C<{..., "values" : { "{api_key}" : [ [0, 100], [10, 90], [100,
 log entry is of the format C<[used quota, remaining quota]>.
 
 
-
 =head2 Position => Str
-
 
 
 
@@ -46,12 +43,12 @@ log entry is of the format C<[used quota, remaining quota]>.
 The starting date of the usage data.
 
 
-
 =head2 UsagePlanId => Str
 
 The plan Id associated with this usage data.
 
 
+=head2 _request_id => Str
 
 
 =cut

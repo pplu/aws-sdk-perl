@@ -20,6 +20,7 @@ Paws::EC2::DescribeExportTasksResult
 Information about the export tasks.
 
 
+=head2 _request_id => Str
 
 
 =cut

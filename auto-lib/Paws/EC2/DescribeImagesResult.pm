@@ -20,6 +20,7 @@ Paws::EC2::DescribeImagesResult
 Information about one or more images.
 
 
+=head2 _request_id => Str
 
 
 =cut

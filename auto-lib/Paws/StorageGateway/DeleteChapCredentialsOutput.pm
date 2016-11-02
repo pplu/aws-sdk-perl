@@ -20,12 +20,12 @@ Paws::StorageGateway::DeleteChapCredentialsOutput
 The iSCSI initiator that connects to the target.
 
 
-
 =head2 TargetARN => Str
 
 The Amazon Resource Name (ARN) of the target.
 
 
+=head2 _request_id => Str
 
 
 =cut

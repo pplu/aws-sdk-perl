@@ -20,6 +20,7 @@ Paws::AutoScaling::DescribeLifecycleHooksAnswer
 The lifecycle hooks for the specified group.
 
 
+=head2 _request_id => Str
 
 
 =cut

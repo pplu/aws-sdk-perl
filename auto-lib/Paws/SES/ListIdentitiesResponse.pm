@@ -21,12 +21,12 @@ Paws::SES::ListIdentitiesResponse
 A list of identities.
 
 
-
 =head2 NextToken => Str
 
 The token used for pagination.
 
 
+=head2 _request_id => Str
 
 
 =cut

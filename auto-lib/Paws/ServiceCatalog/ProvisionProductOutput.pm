@@ -22,6 +22,7 @@ pointer to the ProvisionedProduct object of the request, and a list of
 any errors that the request encountered.
 
 
+=head2 _request_id => Str
 
 
 =cut

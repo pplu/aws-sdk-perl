@@ -19,6 +19,7 @@ Paws::DMS::CreateReplicationSubnetGroupResponse
 The replication subnet group that was created.
 
 
+=head2 _request_id => Str
 
 
 =cut

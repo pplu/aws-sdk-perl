@@ -20,6 +20,7 @@ Paws::SES::GetSendStatisticsResponse
 A list of data points, each of which represents 15 minutes of activity.
 
 
+=head2 _request_id => Str
 
 
 =cut

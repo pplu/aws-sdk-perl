@@ -23,6 +23,7 @@ The calling task runner uses C<taskId> in subsequent calls to
 ReportTaskProgress and SetTaskStatus.
 
 
+=head2 _request_id => Str
 
 
 =cut

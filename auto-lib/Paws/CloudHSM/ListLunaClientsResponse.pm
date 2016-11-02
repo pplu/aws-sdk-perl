@@ -20,13 +20,13 @@ Paws::CloudHSM::ListLunaClientsResponse
 The list of clients.
 
 
-
 =head2 NextToken => Str
 
 If not null, more results are available. Pass this to ListLunaClients
 to retrieve the next set of items.
 
 
+=head2 _request_id => Str
 
 
 =cut

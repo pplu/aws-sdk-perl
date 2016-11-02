@@ -21,6 +21,7 @@ Returns C<true> if the request succeeds; otherwise, it returns an
 error.
 
 
+=head2 _request_id => Str
 
 
 =cut

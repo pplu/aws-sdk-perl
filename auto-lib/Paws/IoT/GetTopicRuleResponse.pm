@@ -21,12 +21,12 @@ Paws::IoT::GetTopicRuleResponse
 The rule.
 
 
-
 =head2 RuleArn => Str
 
 The rule ARN.
 
 
+=head2 _request_id => Str
 
 
 =cut

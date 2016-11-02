@@ -21,6 +21,7 @@ The Amazon Resource Name (ARN) of the new SAML provider resource in
 IAM.
 
 
+=head2 _request_id => Str
 
 
 =cut

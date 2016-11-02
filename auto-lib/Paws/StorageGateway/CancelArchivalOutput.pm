@@ -20,6 +20,7 @@ The Amazon Resource Name (ARN) of the virtual tape for which archiving
 was canceled.
 
 
+=head2 _request_id => Str
 
 
 =cut

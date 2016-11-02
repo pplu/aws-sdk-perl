@@ -20,6 +20,7 @@ A list of authorization token data objects that correspond to the
 C<registryIds> values in the request.
 
 
+=head2 _request_id => Str
 
 
 =cut

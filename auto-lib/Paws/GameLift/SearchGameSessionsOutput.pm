@@ -21,7 +21,6 @@ Collection of objects containing game session properties for each
 session matching the request.
 
 
-
 =head2 NextToken => Str
 
 Token indicating where to resume retrieving results on the next call to
@@ -29,6 +28,7 @@ this action. If no token is returned, these results represent the end
 of the list.
 
 
+=head2 _request_id => Str
 
 
 =cut

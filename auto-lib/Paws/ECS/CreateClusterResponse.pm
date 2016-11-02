@@ -19,6 +19,7 @@ Paws::ECS::CreateClusterResponse
 The full description of your new cluster.
 
 
+=head2 _request_id => Str
 
 
 =cut

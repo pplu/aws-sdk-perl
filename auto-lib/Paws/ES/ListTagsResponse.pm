@@ -20,6 +20,7 @@ Paws::ES::ListTagsResponse
 List of C<Tag> for the requested Elasticsearch domain.
 
 
+=head2 _request_id => Str
 
 
 =cut

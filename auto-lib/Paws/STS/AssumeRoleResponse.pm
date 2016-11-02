@@ -27,7 +27,6 @@ role ID. The ARN and ID include the C<RoleSessionName> that you
 specified when you called C<AssumeRole>.
 
 
-
 =head2 Credentials => L<Paws::STS::Credentials>
 
 The temporary security credentials, which include an access key ID, a
@@ -40,7 +39,6 @@ bytes, but that can vary. Also, future updates to AWS might require
 larger sizes.
 
 
-
 =head2 PackedPolicySize => Int
 
 A percentage value that indicates the size of the policy in packed
@@ -48,6 +46,7 @@ form. The service rejects any policy with a packed size greater than
 100 percent, which means the policy exceeded the allowed space.
 
 
+=head2 _request_id => Str
 
 
 =cut

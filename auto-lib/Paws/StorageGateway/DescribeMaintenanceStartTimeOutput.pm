@@ -23,9 +23,7 @@ Paws::StorageGateway::DescribeMaintenanceStartTimeOutput
 
 
 
-
 =head2 GatewayARN => Str
-
 
 
 
@@ -35,9 +33,7 @@ Paws::StorageGateway::DescribeMaintenanceStartTimeOutput
 
 
 
-
 =head2 MinuteOfHour => Int
-
 
 
 
@@ -47,6 +43,7 @@ Paws::StorageGateway::DescribeMaintenanceStartTimeOutput
 
 
 
+=head2 _request_id => Str
 
 
 =cut

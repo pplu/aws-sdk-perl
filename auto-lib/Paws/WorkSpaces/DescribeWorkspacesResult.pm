@@ -23,7 +23,6 @@ retrieve the next set of items. This token is valid for one day and
 must be used within that time frame.
 
 
-
 =head2 Workspaces => ArrayRef[L<Paws::WorkSpaces::Workspace>]
 
 An array of structures that contain the information about the
@@ -33,6 +32,7 @@ Because the CreateWorkspaces operation is asynchronous, some of this
 information may be incomplete for a newly-created WorkSpace.
 
 
+=head2 _request_id => Str
 
 
 =cut

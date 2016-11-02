@@ -20,6 +20,7 @@ Paws::ES::DeleteElasticsearchDomainResponse
 The status of the Elasticsearch domain being deleted.
 
 
+=head2 _request_id => Str
 
 
 =cut

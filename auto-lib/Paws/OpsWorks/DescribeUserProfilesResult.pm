@@ -19,6 +19,7 @@ Paws::OpsWorks::DescribeUserProfilesResult
 A C<Users> object that describes the specified users.
 
 
+=head2 _request_id => Str
 
 
 =cut

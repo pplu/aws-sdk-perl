@@ -24,7 +24,6 @@ Response models are represented as a key/value map, with a content-type
 as the key and a Model name as the value.
 
 
-
 =head2 ResponseParameters => L<Paws::ApiGateway::MapOfStringToBoolean>
 
 A key-value map specifying required or optional response parameters
@@ -44,12 +43,12 @@ C<integration.response.body.{JSON-expression}>, where
 C<JSON-expression> is a valid JSON expression without the C<$> prefix.)
 
 
-
 =head2 StatusCode => Str
 
 The method response's status code.
 
 
+=head2 _request_id => Str
 
 
 =cut

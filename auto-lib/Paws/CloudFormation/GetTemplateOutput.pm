@@ -24,6 +24,7 @@ AWS CloudFormation returns the same template that was used when the
 stack was created.
 
 
+=head2 _request_id => Str
 
 
 =cut

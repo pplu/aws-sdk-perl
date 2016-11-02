@@ -19,6 +19,7 @@ Paws::GameLift::CreatePlayerSessionsOutput
 Collection of player session objects created for the added players.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -19,6 +19,7 @@ Paws::OpsWorks::DescribeMyUserProfileResult
 A C<UserProfile> object that describes the user's SSH information.
 
 
+=head2 _request_id => Str
 
 
 =cut

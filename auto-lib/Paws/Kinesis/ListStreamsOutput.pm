@@ -20,13 +20,13 @@ Paws::Kinesis::ListStreamsOutput
 If set to C<true>, there are more streams available to list.
 
 
-
 =head2 B<REQUIRED> StreamNames => ArrayRef[Str|Undef]
 
 The names of the streams that are associated with the AWS account
 making the C<ListStreams> request.
 
 
+=head2 _request_id => Str
 
 
 =cut

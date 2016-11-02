@@ -25,9 +25,7 @@ Paws::StorageGateway::DescribeCacheOutput
 
 
 
-
 =head2 CacheDirtyPercentage => Num
-
 
 
 
@@ -37,9 +35,7 @@ Paws::StorageGateway::DescribeCacheOutput
 
 
 
-
 =head2 CacheMissPercentage => Num
-
 
 
 
@@ -49,9 +45,7 @@ Paws::StorageGateway::DescribeCacheOutput
 
 
 
-
 =head2 DiskIds => ArrayRef[Str|Undef]
-
 
 
 
@@ -61,6 +55,7 @@ Paws::StorageGateway::DescribeCacheOutput
 
 
 
+=head2 _request_id => Str
 
 
 =cut

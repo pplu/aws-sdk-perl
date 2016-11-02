@@ -21,7 +21,6 @@ An array of structures that represent the WorkSpaces that could not be
 created.
 
 
-
 =head2 PendingRequests => ArrayRef[L<Paws::WorkSpaces::Workspace>]
 
 An array of structures that represent the WorkSpaces that were created.
@@ -32,6 +31,7 @@ DescribeWorkspaces with this identifier, no information will be
 returned.
 
 
+=head2 _request_id => Str
 
 
 =cut

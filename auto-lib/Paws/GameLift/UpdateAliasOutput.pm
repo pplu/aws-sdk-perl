@@ -19,6 +19,7 @@ Paws::GameLift::UpdateAliasOutput
 Object containing the updated alias configuration.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -22,12 +22,12 @@ A list of BatchResultErrorEntry items with the error detail about each
 message that could not be enqueued.
 
 
-
 =head2 B<REQUIRED> Successful => ArrayRef[L<Paws::SQS::SendMessageBatchResultEntry>]
 
 A list of SendMessageBatchResultEntry items.
 
 
+=head2 _request_id => Str
 
 
 =cut

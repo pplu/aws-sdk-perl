@@ -20,12 +20,12 @@ Paws::DeviceFarm::GetDevicePoolCompatibilityResult
 Information about compatible devices.
 
 
-
 =head2 IncompatibleDevices => ArrayRef[L<Paws::DeviceFarm::DevicePoolCompatibilityResult>]
 
 Information about incompatible devices.
 
 
+=head2 _request_id => Str
 
 
 =cut

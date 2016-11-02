@@ -21,12 +21,12 @@ Paws::IoT::CreateThingResponse
 The ARN of the new thing.
 
 
-
 =head2 ThingName => Str
 
 The name of the new thing.
 
 
+=head2 _request_id => Str
 
 
 =cut

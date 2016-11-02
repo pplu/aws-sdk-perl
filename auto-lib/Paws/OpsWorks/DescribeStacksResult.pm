@@ -19,6 +19,7 @@ Paws::OpsWorks::DescribeStacksResult
 An array of C<Stack> objects that describe the stacks.
 
 
+=head2 _request_id => Str
 
 
 =cut

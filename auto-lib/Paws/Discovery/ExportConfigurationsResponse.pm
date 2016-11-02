@@ -19,6 +19,7 @@ Paws::Discovery::ExportConfigurationsResponse
 A unique identifier that you can use to query the export status.
 
 
+=head2 _request_id => Str
 
 
 =cut

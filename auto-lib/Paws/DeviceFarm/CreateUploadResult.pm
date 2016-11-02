@@ -19,6 +19,7 @@ Paws::DeviceFarm::CreateUploadResult
 The newly created upload.
 
 
+=head2 _request_id => Str
 
 
 =cut

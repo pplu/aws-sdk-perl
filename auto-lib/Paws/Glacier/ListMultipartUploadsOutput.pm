@@ -24,12 +24,12 @@ obtain more uploads in the list. If there are no more uploads, this
 value is C<null>.
 
 
-
 =head2 UploadsList => ArrayRef[L<Paws::Glacier::UploadListElement>]
 
 A list of in-progress multipart uploads.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -19,6 +19,7 @@ Paws::GameLift::UpdateGameSessionOutput
 Object containing the updated game session metadata.
 
 
+=head2 _request_id => Str
 
 
 =cut

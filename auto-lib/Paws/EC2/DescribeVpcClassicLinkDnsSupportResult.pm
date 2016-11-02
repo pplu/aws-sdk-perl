@@ -21,12 +21,12 @@ Paws::EC2::DescribeVpcClassicLinkDnsSupportResult
 The token to use when requesting the next set of items.
 
 
-
 =head2 Vpcs => ArrayRef[L<Paws::EC2::ClassicLinkDnsSupport>]
 
 Information about the ClassicLink DNS support status of the VPCs.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -21,12 +21,12 @@ Paws::IAM::GenerateCredentialReportResponse
 Information about the credential report.
 
 
-
 =head2 State => Str
 
 Information about the state of the credential report.
 
 Valid values are: C<"STARTED">, C<"INPROGRESS">, C<"COMPLETE">
+=head2 _request_id => Str
 
 
 =cut

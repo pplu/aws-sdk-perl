@@ -20,6 +20,7 @@ Paws::RedShift::EventCategoriesMessage
 A list of event categories descriptions.
 
 
+=head2 _request_id => Str
 
 
 =cut

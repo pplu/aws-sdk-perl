@@ -21,13 +21,13 @@ A list of repositories returned by the batch get repositories
 operation.
 
 
-
 =head2 RepositoriesNotFound => ArrayRef[Str|Undef]
 
 Returns a list of repository names for which information could not be
 found.
 
 
+=head2 _request_id => Str
 
 
 =cut

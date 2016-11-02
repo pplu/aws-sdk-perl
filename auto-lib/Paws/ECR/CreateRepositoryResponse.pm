@@ -19,6 +19,7 @@ Paws::ECR::CreateRepositoryResponse
 The repository that was created.
 
 
+=head2 _request_id => Str
 
 
 =cut

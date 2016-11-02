@@ -20,6 +20,7 @@ Paws::IAM::CreateUserResponse
 A structure with details about the new IAM user.
 
 
+=head2 _request_id => Str
 
 
 =cut

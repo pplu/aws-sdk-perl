@@ -19,6 +19,7 @@ Paws::KMS::DescribeKeyResponse
 Metadata associated with the key.
 
 
+=head2 _request_id => Str
 
 
 =cut

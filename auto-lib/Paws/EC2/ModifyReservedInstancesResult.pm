@@ -20,6 +20,7 @@ Paws::EC2::ModifyReservedInstancesResult
 The ID for the modification.
 
 
+=head2 _request_id => Str
 
 
 =cut

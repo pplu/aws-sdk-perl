@@ -19,6 +19,7 @@ Paws::OpsWorks::DescribeRdsDbInstancesResult
 An a array of C<RdsDbInstance> objects that describe the instances.
 
 
+=head2 _request_id => Str
 
 
 =cut

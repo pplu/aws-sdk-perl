@@ -19,6 +19,7 @@ Paws::CodeCommit::GetRepositoryOutput
 Information about the repository.
 
 
+=head2 _request_id => Str
 
 
 =cut

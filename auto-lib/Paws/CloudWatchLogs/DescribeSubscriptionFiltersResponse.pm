@@ -20,12 +20,12 @@ Paws::CloudWatchLogs::DescribeSubscriptionFiltersResponse
 
 
 
-
 =head2 SubscriptionFilters => ArrayRef[L<Paws::CloudWatchLogs::SubscriptionFilter>]
 
 
 
 
+=head2 _request_id => Str
 
 
 =cut

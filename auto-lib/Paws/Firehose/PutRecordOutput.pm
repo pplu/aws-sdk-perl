@@ -19,6 +19,7 @@ Paws::Firehose::PutRecordOutput
 The ID of the record.
 
 
+=head2 _request_id => Str
 
 
 =cut

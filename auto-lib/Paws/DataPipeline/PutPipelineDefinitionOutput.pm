@@ -24,12 +24,10 @@ pipeline and call C<PutPipelineDefinition> to commit the corrected
 pipeline.
 
 
-
 =head2 ValidationErrors => ArrayRef[L<Paws::DataPipeline::ValidationError>]
 
 The validation errors that are associated with the objects defined in
 C<pipelineObjects>.
-
 
 
 =head2 ValidationWarnings => ArrayRef[L<Paws::DataPipeline::ValidationWarning>]
@@ -38,6 +36,7 @@ The validation warnings that are associated with the objects defined in
 C<pipelineObjects>.
 
 
+=head2 _request_id => Str
 
 
 =cut

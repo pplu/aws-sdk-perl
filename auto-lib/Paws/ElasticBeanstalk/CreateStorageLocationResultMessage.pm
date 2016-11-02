@@ -20,6 +20,7 @@ Paws::ElasticBeanstalk::CreateStorageLocationResultMessage
 The name of the Amazon S3 bucket created.
 
 
+=head2 _request_id => Str
 
 
 =cut

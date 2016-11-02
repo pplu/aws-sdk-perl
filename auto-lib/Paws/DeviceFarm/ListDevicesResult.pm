@@ -20,7 +20,6 @@ Paws::DeviceFarm::ListDevicesResult
 Information about the devices.
 
 
-
 =head2 NextToken => Str
 
 If the number of items that are returned is significantly large, this
@@ -29,6 +28,7 @@ subsequent call to this operation to return the next set of items in
 the list.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -22,12 +22,12 @@ Token to pass along to the next C<ListSubscriptions> request. This
 element is returned if there are more subscriptions to retrieve.
 
 
-
 =head2 Subscriptions => ArrayRef[L<Paws::SNS::Subscription>]
 
 A list of subscriptions.
 
 
+=head2 _request_id => Str
 
 
 =cut

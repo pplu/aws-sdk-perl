@@ -23,7 +23,6 @@ Paws::DynamoDB::ScanOutput
 
 
 
-
 =head2 Count => Int
 
 The number of items in the response.
@@ -36,13 +35,11 @@ If you did not use a filter in the request, then I<Count> is the same
 as I<ScannedCount>.
 
 
-
 =head2 Items => ArrayRef[L<Paws::DynamoDB::AttributeMap>]
 
 An array of item attributes that match the scan criteria. Each element
 in this array consists of an attribute name and the value for that
 attribute.
-
 
 
 =head2 LastEvaluatedKey => L<Paws::DynamoDB::Key>
@@ -60,7 +57,6 @@ have reached the end of the result set is when I<LastEvaluatedKey> is
 empty.
 
 
-
 =head2 ScannedCount => Int
 
 The number of items evaluated, before any I<ScanFilter> is applied. A
@@ -72,6 +68,7 @@ If you did not use a filter in the request, then I<ScannedCount> is the
 same as I<Count>.
 
 
+=head2 _request_id => Str
 
 
 =cut

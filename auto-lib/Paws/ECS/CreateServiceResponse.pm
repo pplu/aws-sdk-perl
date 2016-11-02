@@ -19,6 +19,7 @@ Paws::ECS::CreateServiceResponse
 The full description of your service following the create call.
 
 
+=head2 _request_id => Str
 
 
 =cut

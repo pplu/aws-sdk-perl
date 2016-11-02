@@ -20,6 +20,7 @@ Paws::EC2::DescribeReservedInstancesResult
 A list of Reserved Instances.
 
 
+=head2 _request_id => Str
 
 
 =cut

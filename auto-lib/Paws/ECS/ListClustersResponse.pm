@@ -21,7 +21,6 @@ The list of full Amazon Resource Name (ARN) entries for each cluster
 associated with your account.
 
 
-
 =head2 NextToken => Str
 
 The C<nextToken> value to include in a future C<ListClusters> request.
@@ -30,6 +29,7 @@ this value can be used to retrieve the next page of results. This value
 is C<null> when there are no more results to return.
 
 
+=head2 _request_id => Str
 
 
 =cut

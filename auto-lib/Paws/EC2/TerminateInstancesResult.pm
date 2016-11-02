@@ -20,6 +20,7 @@ Paws::EC2::TerminateInstancesResult
 Information about one or more terminated instances.
 
 
+=head2 _request_id => Str
 
 
 =cut

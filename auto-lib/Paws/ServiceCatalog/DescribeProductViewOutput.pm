@@ -20,7 +20,6 @@ Paws::ServiceCatalog::DescribeProductViewOutput
 The summary metadata about the specified product.
 
 
-
 =head2 ProvisioningArtifacts => ArrayRef[L<Paws::ServiceCatalog::ProvisioningArtifact>]
 
 A list of provisioning artifact objects for the specified product. The
@@ -28,6 +27,7 @@ C<ProvisioningArtifacts> represent the ways in which the specified
 product can be provisioned.
 
 
+=head2 _request_id => Str
 
 
 =cut

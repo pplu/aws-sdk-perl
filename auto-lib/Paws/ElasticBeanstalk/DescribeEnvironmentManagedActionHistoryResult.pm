@@ -21,7 +21,6 @@ Paws::ElasticBeanstalk::DescribeEnvironmentManagedActionHistoryResult
 A list of completed and failed managed actions.
 
 
-
 =head2 NextToken => Str
 
 A pagination token that you pass to
@@ -29,6 +28,7 @@ DescribeEnvironmentManagedActionHistory to get the next page of
 results.
 
 
+=head2 _request_id => Str
 
 
 =cut

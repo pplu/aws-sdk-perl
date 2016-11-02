@@ -24,11 +24,9 @@ Paws::IoT::GetPolicyVersionResponse
 Specifies whether the policy version is the default.
 
 
-
 =head2 PolicyArn => Str
 
 The policy ARN.
-
 
 
 =head2 PolicyDocument => Str
@@ -36,11 +34,9 @@ The policy ARN.
 The JSON document that describes the policy.
 
 
-
 =head2 PolicyName => Str
 
 The policy name.
-
 
 
 =head2 PolicyVersionId => Str
@@ -48,6 +44,7 @@ The policy name.
 The policy version ID.
 
 
+=head2 _request_id => Str
 
 
 =cut

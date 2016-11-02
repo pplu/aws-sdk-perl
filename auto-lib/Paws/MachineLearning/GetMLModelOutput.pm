@@ -42,12 +42,10 @@ resources. C<ComputeTime> is only available if the C<MLModel> is in the
 C<COMPLETED> state.
 
 
-
 =head2 CreatedAt => Str
 
 The time that the C<MLModel> was created. The time is expressed in
 epoch time.
-
 
 
 =head2 CreatedByIamUser => Str
@@ -57,11 +55,9 @@ type can be either an AWS root account or an AWS Identity and Access
 Management (IAM) user account.
 
 
-
 =head2 EndpointInfo => L<Paws::MachineLearning::RealtimeEndpointInfo>
 
 The current endpoint of the C<MLModel>
-
 
 
 =head2 FinishedAt => Str
@@ -71,12 +67,10 @@ C<COMPLETED> or C<FAILED>. C<FinishedAt> is only available when the
 C<MLModel> is in the C<COMPLETED> or C<FAILED> state.
 
 
-
 =head2 InputDataLocationS3 => Str
 
 The location of the data file or directory in Amazon Simple Storage
 Service (Amazon S3).
-
 
 
 =head2 LastUpdatedAt => Str
@@ -85,12 +79,10 @@ The time of the most recent edit to the C<MLModel>. The time is
 expressed in epoch time.
 
 
-
 =head2 LogUri => Str
 
 A link to the file that contains logs of the C<CreateMLModel>
 operation.
-
 
 
 =head2 Message => Str
@@ -99,11 +91,9 @@ A description of the most recent details about accessing the
 C<MLModel>.
 
 
-
 =head2 MLModelId => Str
 
 The MLModel ID, which is same as the C<MLModelId> in the request.
-
 
 
 =head2 MLModelType => Str
@@ -126,11 +116,9 @@ example, "Is this a HIGH, LOW or MEDIUM risk trade?"
 
 
 Valid values are: C<"REGRESSION">, C<"BINARY">, C<"MULTICLASS">
-
 =head2 Name => Str
 
 A user-supplied name or description of the C<MLModel>.
-
 
 
 =head2 Recipe => Str
@@ -142,14 +130,12 @@ and manipulations to perform on the observation data during training.
 This parameter is provided as part of the verbose format.
 
 
-
 =head2 Schema => Str
 
 The schema used by all of the data files referenced by the
 C<DataSource>.
 
 This parameter is provided as part of the verbose format.
-
 
 
 =head2 ScoreThreshold => Num
@@ -164,16 +150,13 @@ threshold receive a negative response from the MLModel, such as
 C<false>.
 
 
-
 =head2 ScoreThresholdLastUpdatedAt => Str
 
 The time of the most recent edit to the C<ScoreThreshold>. The time is
 expressed in epoch time.
 
 
-
 =head2 SizeInBytes => Int
-
 
 
 
@@ -183,7 +166,6 @@ expressed in epoch time.
 The epoch time when Amazon Machine Learning marked the C<MLModel> as
 C<INPROGRESS>. C<StartedAt> isn't available if the C<MLModel> is in the
 C<PENDING> state.
-
 
 
 =head2 Status => Str
@@ -210,11 +192,9 @@ usable.
 
 
 Valid values are: C<"PENDING">, C<"INPROGRESS">, C<"FAILED">, C<"COMPLETED">, C<"DELETED">
-
 =head2 TrainingDataSourceId => Str
 
 The ID of the training C<DataSource>.
-
 
 
 =head2 TrainingParameters => L<Paws::MachineLearning::TrainingParameters>
@@ -276,6 +256,7 @@ when C<L1> is specified. Use this parameter sparingly.
 
 
 
+=head2 _request_id => Str
 
 
 =cut

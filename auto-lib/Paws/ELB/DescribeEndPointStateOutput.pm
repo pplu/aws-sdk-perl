@@ -20,6 +20,7 @@ Paws::ELB::DescribeEndPointStateOutput
 Information about the health of the instances.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -20,6 +20,7 @@ Paws::RedShift::RestoreTableFromClusterSnapshotResult
 
 
 
+=head2 _request_id => Str
 
 
 =cut

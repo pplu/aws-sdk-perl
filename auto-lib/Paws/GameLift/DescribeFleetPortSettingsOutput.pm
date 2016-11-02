@@ -19,6 +19,7 @@ Paws::GameLift::DescribeFleetPortSettingsOutput
 Object containing port settings for the requested fleet ID.
 
 
+=head2 _request_id => Str
 
 
 =cut

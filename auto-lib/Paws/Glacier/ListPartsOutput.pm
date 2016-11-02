@@ -27,11 +27,9 @@ The description of the archive that was specified in the Initiate
 Multipart Upload request.
 
 
-
 =head2 CreationDate => Str
 
 The UTC time at which the multipart upload was initiated.
-
 
 
 =head2 Marker => Str
@@ -41,11 +39,9 @@ results. You use the marker in a new List Parts request to obtain more
 jobs in the list. If there are no more parts, this value is C<null>.
 
 
-
 =head2 MultipartUploadId => Str
 
 The ID of the upload to which the parts are associated.
-
 
 
 =head2 Parts => ArrayRef[L<Paws::Glacier::PartListElement>]
@@ -53,11 +49,9 @@ The ID of the upload to which the parts are associated.
 A list of the part sizes of the multipart upload.
 
 
-
 =head2 PartSizeInBytes => Int
 
 The part size in bytes.
-
 
 
 =head2 VaultARN => Str
@@ -66,6 +60,7 @@ The Amazon Resource Name (ARN) of the vault to which the multipart
 upload was initiated.
 
 
+=head2 _request_id => Str
 
 
 =cut

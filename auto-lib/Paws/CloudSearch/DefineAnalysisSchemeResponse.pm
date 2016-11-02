@@ -20,6 +20,7 @@ Paws::CloudSearch::DefineAnalysisSchemeResponse
 
 
 
+=head2 _request_id => Str
 
 
 =cut

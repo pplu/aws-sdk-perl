@@ -13,6 +13,8 @@ Paws::DS::RemoveTagsFromResourceResult
 =head1 ATTRIBUTES
 
 
+=head2 _request_id => Str
+
 
 =cut
 

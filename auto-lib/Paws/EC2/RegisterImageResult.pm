@@ -20,6 +20,7 @@ Paws::EC2::RegisterImageResult
 The ID of the newly registered AMI.
 
 
+=head2 _request_id => Str
 
 
 =cut

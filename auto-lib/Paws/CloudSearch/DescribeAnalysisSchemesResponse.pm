@@ -20,6 +20,7 @@ Paws::CloudSearch::DescribeAnalysisSchemesResponse
 The analysis scheme descriptions.
 
 
+=head2 _request_id => Str
 
 
 =cut

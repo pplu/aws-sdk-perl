@@ -20,6 +20,7 @@ Paws::Lambda::InvokeAsyncResponse
 It will be 202 upon success.
 
 
+=head2 _request_id => Str
 
 
 =cut

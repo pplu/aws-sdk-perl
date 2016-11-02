@@ -20,6 +20,7 @@ An array of C<LoadBasedAutoScalingConfiguration> objects that describe
 each layer's configuration.
 
 
+=head2 _request_id => Str
 
 
 =cut

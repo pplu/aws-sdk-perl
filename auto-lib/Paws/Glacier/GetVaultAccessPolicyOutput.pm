@@ -20,6 +20,7 @@ Paws::Glacier::GetVaultAccessPolicyOutput
 Contains the returned vault access policy as a JSON string.
 
 
+=head2 _request_id => Str
 
 
 =cut

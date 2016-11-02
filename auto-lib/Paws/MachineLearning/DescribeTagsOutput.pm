@@ -21,18 +21,17 @@ Paws::MachineLearning::DescribeTagsOutput
 The ID of the tagged ML object.
 
 
-
 =head2 ResourceType => Str
 
 The type of the tagged ML object.
 
 Valid values are: C<"BatchPrediction">, C<"DataSource">, C<"Evaluation">, C<"MLModel">
-
 =head2 Tags => ArrayRef[L<Paws::MachineLearning::Tag>]
 
 A list of tags associated with the ML object.
 
 
+=head2 _request_id => Str
 
 
 =cut

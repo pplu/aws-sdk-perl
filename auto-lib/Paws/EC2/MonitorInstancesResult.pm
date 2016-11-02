@@ -20,6 +20,7 @@ Paws::EC2::MonitorInstancesResult
 Monitoring information for one or more instances.
 
 
+=head2 _request_id => Str
 
 
 =cut

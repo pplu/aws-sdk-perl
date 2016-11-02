@@ -20,6 +20,7 @@ Paws::AutoScaling::DescribeAdjustmentTypesAnswer
 The policy adjustment types.
 
 
+=head2 _request_id => Str
 
 
 =cut

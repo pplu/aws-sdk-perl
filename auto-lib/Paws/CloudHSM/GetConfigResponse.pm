@@ -21,11 +21,9 @@ Paws::CloudHSM::GetConfigResponse
 The certificate file containing the server.pem files of the HSMs.
 
 
-
 =head2 ConfigFile => Str
 
 The chrystoki.conf configuration file.
-
 
 
 =head2 ConfigType => Str
@@ -33,6 +31,7 @@ The chrystoki.conf configuration file.
 The type of credentials.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -23,11 +23,9 @@ The ID of the archive. This value is also included as part of the
 location.
 
 
-
 =head2 Checksum => Str
 
 The checksum of the archive computed by Amazon Glacier.
-
 
 
 =head2 Location => Str
@@ -35,6 +33,7 @@ The checksum of the archive computed by Amazon Glacier.
 The relative URI path of the newly added archive resource.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -19,6 +19,7 @@ Paws::WAF::GetChangeTokenStatusResponse
 The status of the change token.
 
 Valid values are: C<"PROVISIONED">, C<"PENDING">, C<"INSYNC">
+=head2 _request_id => Str
 
 
 =cut

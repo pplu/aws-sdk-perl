@@ -19,6 +19,7 @@ Paws::Inspector::CreateResourceGroupResponse
 The ARN that specifies the resource group that is created.
 
 
+=head2 _request_id => Str
 
 
 =cut

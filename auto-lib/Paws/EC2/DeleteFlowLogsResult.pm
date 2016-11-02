@@ -20,6 +20,7 @@ Paws::EC2::DeleteFlowLogsResult
 Information about the flow logs that could not be deleted successfully.
 
 
+=head2 _request_id => Str
 
 
 =cut

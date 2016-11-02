@@ -20,6 +20,7 @@ Paws::RedShift::DisableSnapshotCopyResult
 
 
 
+=head2 _request_id => Str
 
 
 =cut

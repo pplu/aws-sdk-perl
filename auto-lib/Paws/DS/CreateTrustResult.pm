@@ -19,6 +19,7 @@ Paws::DS::CreateTrustResult
 A unique identifier for the trust relationship that was created.
 
 
+=head2 _request_id => Str
 
 
 =cut

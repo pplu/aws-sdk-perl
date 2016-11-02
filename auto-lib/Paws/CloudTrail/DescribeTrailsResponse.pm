@@ -19,6 +19,7 @@ Paws::CloudTrail::DescribeTrailsResponse
 The list of trail objects.
 
 
+=head2 _request_id => Str
 
 
 =cut

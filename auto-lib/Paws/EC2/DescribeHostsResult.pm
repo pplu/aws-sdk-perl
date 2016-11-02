@@ -21,13 +21,13 @@ Paws::EC2::DescribeHostsResult
 Information about the Dedicated Hosts.
 
 
-
 =head2 NextToken => Str
 
 The token to use to retrieve the next page of results. This value is
 C<null> when there are no more results to return.
 
 
+=head2 _request_id => Str
 
 
 =cut

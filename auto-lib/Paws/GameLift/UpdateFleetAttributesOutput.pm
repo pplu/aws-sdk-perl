@@ -19,6 +19,7 @@ Paws::GameLift::UpdateFleetAttributesOutput
 Unique identifier for the updated fleet.
 
 
+=head2 _request_id => Str
 
 
 =cut

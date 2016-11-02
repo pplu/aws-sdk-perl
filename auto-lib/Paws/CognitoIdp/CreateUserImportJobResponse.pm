@@ -19,6 +19,7 @@ Paws::CognitoIdp::CreateUserImportJobResponse
 The job object that represents the user import job.
 
 
+=head2 _request_id => Str
 
 
 =cut

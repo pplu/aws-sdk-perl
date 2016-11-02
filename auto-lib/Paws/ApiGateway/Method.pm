@@ -28,11 +28,9 @@ A boolean flag specifying whether a valid ApiKey is required to invoke
 this method.
 
 
-
 =head2 AuthorizationType => Str
 
 The method's authorization type.
-
 
 
 =head2 AuthorizerId => Str
@@ -41,11 +39,9 @@ The identifier of an Authorizer to use on this method. The
 C<authorizationType> must be C<CUSTOM>.
 
 
-
 =head2 HttpMethod => Str
 
 The method's HTTP verb.
-
 
 
 =head2 MethodIntegration => L<Paws::ApiGateway::Integration>
@@ -68,7 +64,6 @@ similar to the following:
  { "_links": { "curies": [ { "href": "http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-integration-{rel}.html", "name": "integration", "templated": true }, { "href": "http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-integration-response-{rel}.html", "name": "integrationresponse", "templated": true } ], "self": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/integration" }, "integration:delete": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/integration" }, "integration:responses": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/integration/responses/200", "name": "200", "title": "200" }, "integration:update": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/integration" }, "integrationresponse:put": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/integration/responses/{status_code}", "templated": true } }, "cacheKeyParameters": [], "cacheNamespace": "0cjtch", "credentials": "arn:aws:iam::123456789012:role/apigAwsProxyRole", "httpMethod": "POST", "passthroughBehavior": "WHEN_NO_MATCH", "requestTemplates": { "application/json": "{\n \"a\": \"$input.params('operand1')\",\n \"b\": \"$input.params('operand2')\", \n \"op\": \"$input.params('operator')\" \n}" }, "type": "AWS", "uri": "arn:aws:apigateway:us-west-2:lambda:path//2015-03-31/functions/arn:aws:lambda:us-west-2:123456789012:function:Calc/invocations", "_embedded": { "integration:responses": { "_links": { "self": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/integration/responses/200", "name": "200", "title": "200" }, "integrationresponse:delete": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/integration/responses/200" }, "integrationresponse:update": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/integration/responses/200" } }, "responseParameters": { "method.response.header.operator": "integration.response.body.op", "method.response.header.operand_2": "integration.response.body.b", "method.response.header.operand_1": "integration.response.body.a" }, "responseTemplates": { "application/json": "
 
 AWS CLI
-
 
 
 =head2 MethodResponses => L<Paws::ApiGateway::MapOfMethodResponse>
@@ -96,13 +91,11 @@ similar to the following:
 AWS CLI
 
 
-
 =head2 RequestModels => L<Paws::ApiGateway::MapOfStringToString>
 
 A key-value map specifying data schemas, represented by Model
 resources, (as the mapped value) of the request payloads of given
 content types (as the mapping key).
-
 
 
 =head2 RequestParameters => L<Paws::ApiGateway::MapOfStringToBoolean>
@@ -119,6 +112,7 @@ available in Integration to be mapped to integration request parameters
 or templates.
 
 
+=head2 _request_id => Str
 
 
 =cut

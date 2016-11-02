@@ -19,6 +19,7 @@ Paws::DirectConnect::DeleteVirtualInterfaceResponse
 
 
 Valid values are: C<"confirming">, C<"verifying">, C<"pending">, C<"available">, C<"down">, C<"deleting">, C<"deleted">, C<"rejected">
+=head2 _request_id => Str
 
 
 =cut

@@ -19,6 +19,7 @@ Paws::GameLift::CreateAliasOutput
 Object containing the newly created alias record.
 
 
+=head2 _request_id => Str
 
 
 =cut

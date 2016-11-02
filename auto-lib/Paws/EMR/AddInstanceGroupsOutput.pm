@@ -20,12 +20,12 @@ Paws::EMR::AddInstanceGroupsOutput
 Instance group IDs of the newly created instance groups.
 
 
-
 =head2 JobFlowId => Str
 
 The job flow ID in which the instance groups are added.
 
 
+=head2 _request_id => Str
 
 
 =cut

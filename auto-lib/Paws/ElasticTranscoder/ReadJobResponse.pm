@@ -20,6 +20,7 @@ Paws::ElasticTranscoder::ReadJobResponse
 A section of the response body that provides information about the job.
 
 
+=head2 _request_id => Str
 
 
 =cut

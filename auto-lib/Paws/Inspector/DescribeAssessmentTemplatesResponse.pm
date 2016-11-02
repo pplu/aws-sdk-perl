@@ -20,13 +20,13 @@ Paws::Inspector::DescribeAssessmentTemplatesResponse
 Information about the assessment templates.
 
 
-
 =head2 B<REQUIRED> FailedItems => L<Paws::Inspector::FailedItems>
 
 Assessment template details that cannot be described. An error code is
 provided for each failed item.
 
 
+=head2 _request_id => Str
 
 
 =cut

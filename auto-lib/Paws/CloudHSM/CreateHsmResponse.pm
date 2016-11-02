@@ -19,6 +19,7 @@ Paws::CloudHSM::CreateHsmResponse
 The ARN of the HSM.
 
 
+=head2 _request_id => Str
 
 
 =cut

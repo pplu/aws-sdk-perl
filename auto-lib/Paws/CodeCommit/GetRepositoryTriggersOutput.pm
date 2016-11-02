@@ -20,12 +20,12 @@ Paws::CodeCommit::GetRepositoryTriggersOutput
 The system-generated unique ID for the trigger.
 
 
-
 =head2 Triggers => ArrayRef[L<Paws::CodeCommit::RepositoryTrigger>]
 
 The JSON block of configuration information for each trigger.
 
 
+=head2 _request_id => Str
 
 
 =cut

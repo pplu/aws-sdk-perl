@@ -21,6 +21,7 @@ The ID of the allocated Dedicated Host. This is used when you want to
 launch an instance onto a specific host.
 
 
+=head2 _request_id => Str
 
 
 =cut

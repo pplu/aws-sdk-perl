@@ -20,6 +20,7 @@ Paws::SES::GetIdentityMailFromDomainAttributesResponse
 A map of identities to custom MAIL FROM attributes.
 
 
+=head2 _request_id => Str
 
 
 =cut

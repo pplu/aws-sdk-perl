@@ -22,12 +22,12 @@ A pagination token that can be used in a subsequent
 DescribeTableRestoreStatus request.
 
 
-
 =head2 TableRestoreStatusDetails => ArrayRef[L<Paws::RedShift::TableRestoreStatus>]
 
 A list of status details for one or more table restore requests.
 
 
+=head2 _request_id => Str
 
 
 =cut

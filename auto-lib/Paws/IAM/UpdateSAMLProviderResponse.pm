@@ -20,6 +20,7 @@ Paws::IAM::UpdateSAMLProviderResponse
 The Amazon Resource Name (ARN) of the SAML provider that was updated.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -22,11 +22,9 @@ Paws::EC2::GetPasswordDataResult
 The ID of the Windows instance.
 
 
-
 =head2 PasswordData => Str
 
 The password of the instance.
-
 
 
 =head2 Timestamp => Str
@@ -34,6 +32,7 @@ The password of the instance.
 The time the data was last updated.
 
 
+=head2 _request_id => Str
 
 
 =cut

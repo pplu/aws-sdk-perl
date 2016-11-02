@@ -20,6 +20,7 @@ Paws::CloudSearch::CreateDomainResponse
 
 
 
+=head2 _request_id => Str
 
 
 =cut

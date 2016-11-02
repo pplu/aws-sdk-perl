@@ -21,12 +21,12 @@ Paws::IoT::ListOutgoingCertificatesResponse
 The marker for the next set of results.
 
 
-
 =head2 OutgoingCertificates => ArrayRef[L<Paws::IoT::OutgoingCertificate>]
 
 The certificates that are being transfered but not yet accepted.
 
 
+=head2 _request_id => Str
 
 
 =cut

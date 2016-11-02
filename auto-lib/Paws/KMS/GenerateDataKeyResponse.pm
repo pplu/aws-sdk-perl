@@ -21,12 +21,10 @@ Paws::KMS::GenerateDataKeyResponse
 The encrypted data encryption key.
 
 
-
 =head2 KeyId => Str
 
 The identifier of the CMK under which the data encryption key was
 generated and encrypted.
-
 
 
 =head2 Plaintext => Str
@@ -35,6 +33,7 @@ The data encryption key. Use this data key for local encryption and
 decryption, then remove it from memory as soon as possible.
 
 
+=head2 _request_id => Str
 
 
 =cut

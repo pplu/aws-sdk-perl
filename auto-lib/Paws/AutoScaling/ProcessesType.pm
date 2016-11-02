@@ -20,6 +20,7 @@ Paws::AutoScaling::ProcessesType
 The names of the process types.
 
 
+=head2 _request_id => Str
 
 
 =cut

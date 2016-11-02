@@ -20,12 +20,12 @@ Paws::SimpleWorkflow::DomainDetail
 
 
 
-
 =head2 B<REQUIRED> DomainInfo => L<Paws::SimpleWorkflow::DomainInfo>
 
 
 
 
+=head2 _request_id => Str
 
 
 =cut

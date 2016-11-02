@@ -40,6 +40,7 @@ Cannot end with a hyphen or contain two consecutive hyphens
 This value is stored as a lowercase string.
 
 
+=head2 _request_id => Str
 
 
 =cut

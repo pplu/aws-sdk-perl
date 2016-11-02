@@ -26,12 +26,12 @@ the C<Marker> field is empty, all response records have been retrieved
 for the request.
 
 
-
 =head2 ReservedNodeOfferings => ArrayRef[L<Paws::RedShift::ReservedNodeOffering>]
 
 A list of C<ReservedNodeOffering> objects.
 
 
+=head2 _request_id => Str
 
 
 =cut

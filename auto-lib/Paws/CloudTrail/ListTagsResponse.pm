@@ -20,12 +20,12 @@ Paws::CloudTrail::ListTagsResponse
 Reserved for future use.
 
 
-
 =head2 ResourceTagList => ArrayRef[L<Paws::CloudTrail::ResourceTag>]
 
 
 
 
+=head2 _request_id => Str
 
 
 =cut

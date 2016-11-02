@@ -27,15 +27,12 @@ Paws::CloudHSM::DescribeHapgResponse
 The ARN of the high-availability partition group.
 
 
-
 =head2 HapgSerial => Str
 
 The serial number of the high-availability partition group.
 
 
-
 =head2 HsmsLastActionFailed => ArrayRef[Str|Undef]
-
 
 
 
@@ -45,9 +42,7 @@ The serial number of the high-availability partition group.
 
 
 
-
 =head2 HsmsPendingRegistration => ArrayRef[Str|Undef]
-
 
 
 
@@ -57,12 +52,10 @@ The serial number of the high-availability partition group.
 The label for the high-availability partition group.
 
 
-
 =head2 LastModifiedTimestamp => Str
 
 The date and time the high-availability partition group was last
 modified.
-
 
 
 =head2 PartitionSerialList => ArrayRef[Str|Undef]
@@ -71,12 +64,12 @@ The list of partition serial numbers that belong to the
 high-availability partition group.
 
 
-
 =head2 State => Str
 
 The state of the high-availability partition group.
 
 Valid values are: C<"READY">, C<"UPDATING">, C<"DEGRADED">
+=head2 _request_id => Str
 
 
 =cut

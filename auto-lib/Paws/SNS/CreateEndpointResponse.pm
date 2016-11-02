@@ -20,6 +20,7 @@ Paws::SNS::CreateEndpointResponse
 EndpointArn returned from CreateEndpoint action.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -20,12 +20,12 @@ Paws::Firehose::ListDeliveryStreamsOutput
 The names of the delivery streams.
 
 
-
 =head2 B<REQUIRED> HasMoreDeliveryStreams => Bool
 
 Indicates whether there are more delivery streams available to list.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -20,12 +20,12 @@ Paws::CloudWatchEvents::RemoveTargetsResponse
 An array of failed target entries.
 
 
-
 =head2 FailedEntryCount => Int
 
 The number of failed entries.
 
 
+=head2 _request_id => Str
 
 
 =cut

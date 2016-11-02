@@ -20,6 +20,7 @@ Paws::AutoScaling::ExitStandbyAnswer
 The activities related to moving instances out of C<Standby> mode.
 
 
+=head2 _request_id => Str
 
 
 =cut

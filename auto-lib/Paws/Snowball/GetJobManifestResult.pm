@@ -20,6 +20,7 @@ The Amazon S3 presigned URL for the manifest file associated with the
 specified C<JobId> value.
 
 
+=head2 _request_id => Str
 
 
 =cut

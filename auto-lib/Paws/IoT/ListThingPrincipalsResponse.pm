@@ -20,6 +20,7 @@ Paws::IoT::ListThingPrincipalsResponse
 The principals associated with the thing.
 
 
+=head2 _request_id => Str
 
 
 =cut

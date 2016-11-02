@@ -20,6 +20,7 @@ Paws::CloudSearch::DescribeExpressionsResponse
 The expressions configured for the domain.
 
 
+=head2 _request_id => Str
 
 
 =cut

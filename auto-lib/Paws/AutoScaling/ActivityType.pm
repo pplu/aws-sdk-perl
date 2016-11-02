@@ -20,6 +20,7 @@ Paws::AutoScaling::ActivityType
 A scaling activity.
 
 
+=head2 _request_id => Str
 
 
 =cut

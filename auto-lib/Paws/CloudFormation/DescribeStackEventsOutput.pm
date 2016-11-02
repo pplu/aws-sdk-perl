@@ -22,12 +22,12 @@ If the output exceeds 1 MB in size, a string that identifies the next
 page of events. If no additional page exists, this value is null.
 
 
-
 =head2 StackEvents => ArrayRef[L<Paws::CloudFormation::StackEvent>]
 
 A list of C<StackEvents> structures.
 
 
+=head2 _request_id => Str
 
 
 =cut

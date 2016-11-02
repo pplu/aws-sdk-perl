@@ -54,6 +54,7 @@ example, the registry is performing maintenance. Try again later.
 
 
 Valid values are: C<"AVAILABLE">, C<"AVAILABLE_RESERVED">, C<"AVAILABLE_PREORDER">, C<"UNAVAILABLE">, C<"UNAVAILABLE_PREMIUM">, C<"UNAVAILABLE_RESTRICTED">, C<"RESERVED">, C<"DONT_KNOW">
+=head2 _request_id => Str
 
 
 =cut

@@ -20,6 +20,7 @@ An array of structures representing any WorkSpaces that could not be
 rebuilt.
 
 
+=head2 _request_id => Str
 
 
 =cut

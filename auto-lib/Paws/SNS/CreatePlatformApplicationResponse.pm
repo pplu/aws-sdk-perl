@@ -20,6 +20,7 @@ Paws::SNS::CreatePlatformApplicationResponse
 PlatformApplicationArn is returned.
 
 
+=head2 _request_id => Str
 
 
 =cut

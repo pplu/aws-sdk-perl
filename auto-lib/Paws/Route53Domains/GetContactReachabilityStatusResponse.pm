@@ -20,7 +20,6 @@ Paws::Route53Domains::GetContactReachabilityStatusResponse
 The domain name for which you requested the reachability status.
 
 
-
 =head2 Status => Str
 
 Whether the registrant contact has responded. C<PENDING> indicates that
@@ -34,6 +33,7 @@ Type: String
 Valid values: C<PENDING>, C<DONE>, C<EXPIRED>
 
 Valid values are: C<"PENDING">, C<"DONE">, C<"EXPIRED">
+=head2 _request_id => Str
 
 
 =cut

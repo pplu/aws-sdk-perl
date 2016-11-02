@@ -22,12 +22,12 @@ Unique, case-sensitive identifier to ensure the idempotency of the
 request. Only returned if a client token was provided in the request.
 
 
-
 =head2 NatGateway => L<Paws::EC2::NatGateway>
 
 Information about the NAT gateway.
 
 
+=head2 _request_id => Str
 
 
 =cut

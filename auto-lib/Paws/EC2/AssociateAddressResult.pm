@@ -21,6 +21,7 @@ Paws::EC2::AssociateAddressResult
 address with an instance.
 
 
+=head2 _request_id => Str
 
 
 =cut

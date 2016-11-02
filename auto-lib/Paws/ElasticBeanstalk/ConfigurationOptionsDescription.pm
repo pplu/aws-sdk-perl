@@ -21,12 +21,12 @@ Paws::ElasticBeanstalk::ConfigurationOptionsDescription
 A list of ConfigurationOptionDescription.
 
 
-
 =head2 SolutionStackName => Str
 
 The name of the solution stack these configuration options belong to.
 
 
+=head2 _request_id => Str
 
 
 =cut

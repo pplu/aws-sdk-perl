@@ -20,6 +20,7 @@ Paws::EC2::PurchaseScheduledInstancesResult
 Information about the Scheduled Instances.
 
 
+=head2 _request_id => Str
 
 
 =cut

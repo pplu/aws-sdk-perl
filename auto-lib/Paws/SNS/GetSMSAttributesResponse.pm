@@ -20,6 +20,7 @@ Paws::SNS::GetSMSAttributesResponse
 The SMS attribute names and their values.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -20,13 +20,13 @@ Paws::SSM::DescribeActivationsResult
 A list of activations for your AWS account.
 
 
-
 =head2 NextToken => Str
 
 The token for the next set of items to return. Use this token to get
 the next set of results.
 
 
+=head2 _request_id => Str
 
 
 =cut

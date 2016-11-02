@@ -19,6 +19,7 @@ Paws::DS::CreateComputerResult
 A Computer object that represents the computer account.
 
 
+=head2 _request_id => Str
 
 
 =cut

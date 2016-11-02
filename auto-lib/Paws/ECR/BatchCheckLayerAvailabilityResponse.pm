@@ -20,13 +20,13 @@ Paws::ECR::BatchCheckLayerAvailabilityResponse
 Any failures associated with the call.
 
 
-
 =head2 Layers => ArrayRef[L<Paws::ECR::Layer>]
 
 A list of image layer objects corresponding to the image layer
 references in the request.
 
 
+=head2 _request_id => Str
 
 
 =cut

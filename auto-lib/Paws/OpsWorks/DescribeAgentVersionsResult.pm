@@ -21,6 +21,7 @@ Note that this value is the complete version number, not the
 abbreviated number used by the console.
 
 
+=head2 _request_id => Str
 
 
 =cut

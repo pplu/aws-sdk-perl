@@ -21,6 +21,7 @@ A section of the response body that provides information about the
 pipeline.
 
 
+=head2 _request_id => Str
 
 
 =cut

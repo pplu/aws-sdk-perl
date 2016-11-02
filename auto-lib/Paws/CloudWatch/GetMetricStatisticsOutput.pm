@@ -21,12 +21,12 @@ Paws::CloudWatch::GetMetricStatisticsOutput
 The datapoints for the specified metric.
 
 
-
 =head2 Label => Str
 
 A label describing the specified metric.
 
 
+=head2 _request_id => Str
 
 
 =cut

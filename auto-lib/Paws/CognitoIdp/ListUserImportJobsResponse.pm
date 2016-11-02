@@ -21,12 +21,12 @@ An identifier that can be used to return the next set of user import
 jobs in the list.
 
 
-
 =head2 UserImportJobs => ArrayRef[L<Paws::CognitoIdp::UserImportJobType>]
 
 The user import jobs.
 
 
+=head2 _request_id => Str
 
 
 =cut

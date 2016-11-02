@@ -21,12 +21,10 @@ Paws::Inspector::DescribeCrossAccountAccessRoleResponse
 The date when the cross-account access role was registered.
 
 
-
 =head2 B<REQUIRED> RoleArn => Str
 
 The ARN that specifies the IAM role that Amazon Inspector uses to
 access your AWS account.
-
 
 
 =head2 B<REQUIRED> Valid => Bool
@@ -36,6 +34,7 @@ policies attached to enable Amazon Inspector to access your AWS
 account.
 
 
+=head2 _request_id => Str
 
 
 =cut

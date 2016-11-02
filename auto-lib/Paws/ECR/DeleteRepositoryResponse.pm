@@ -19,6 +19,7 @@ Paws::ECR::DeleteRepositoryResponse
 The repository that was deleted.
 
 
+=head2 _request_id => Str
 
 
 =cut

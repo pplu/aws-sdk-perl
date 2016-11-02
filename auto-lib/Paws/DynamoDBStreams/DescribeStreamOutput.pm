@@ -22,6 +22,7 @@ within the stream, and the beginning and ending sequence numbers of
 stream records within the shards.
 
 
+=head2 _request_id => Str
 
 
 =cut

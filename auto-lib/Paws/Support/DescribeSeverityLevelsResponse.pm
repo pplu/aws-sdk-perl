@@ -20,6 +20,7 @@ The available severity levels for the support case. Available severity
 levels are defined by your service level agreement with AWS.
 
 
+=head2 _request_id => Str
 
 
 =cut

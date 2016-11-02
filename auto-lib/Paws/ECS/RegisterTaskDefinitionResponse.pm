@@ -19,6 +19,7 @@ Paws::ECS::RegisterTaskDefinitionResponse
 The full description of the registered task definition.
 
 
+=head2 _request_id => Str
 
 
 =cut

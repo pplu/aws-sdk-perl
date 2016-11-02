@@ -20,12 +20,12 @@ Paws::StorageGateway::ListVolumeRecoveryPointsOutput
 
 
 
-
 =head2 VolumeRecoveryPointInfos => ArrayRef[L<Paws::StorageGateway::VolumeRecoveryPointInfo>]
 
 
 
 
+=head2 _request_id => Str
 
 
 =cut

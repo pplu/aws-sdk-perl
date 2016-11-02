@@ -19,6 +19,7 @@ Paws::CognitoIdp::GetDeviceResponse
 The device.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -20,6 +20,7 @@ Paws::EC2::DescribeVpnConnectionsResult
 Information about one or more VPN connections.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -759,6 +759,7 @@ Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
       return '';
     }
     $doc =~ s/&amp;/\&/gsmix;
+    $doc =~ s|(\(ampersand\))(\#)(\w+?;)|$1(hash)$3|gsmix;
     return $self->html_to_pod($doc);
   }
 

@@ -20,6 +20,7 @@ Paws::CloudSearch::DeleteSuggesterResponse
 The status of the suggester being deleted.
 
 
+=head2 _request_id => Str
 
 
 =cut

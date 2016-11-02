@@ -19,6 +19,7 @@ Paws::DeviceFarm::CreateDevicePoolResult
 The newly created device pool.
 
 
+=head2 _request_id => Str
 
 
 =cut

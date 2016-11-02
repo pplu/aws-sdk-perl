@@ -19,6 +19,7 @@ Paws::Config::DescribeDeliveryChannelStatusResponse
 A list that contains the status of a specified delivery channel.
 
 
+=head2 _request_id => Str
 
 
 =cut

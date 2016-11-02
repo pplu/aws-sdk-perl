@@ -19,6 +19,7 @@ Paws::WorkSpaces::StartWorkspacesResult
 The failed requests.
 
 
+=head2 _request_id => Str
 
 
 =cut

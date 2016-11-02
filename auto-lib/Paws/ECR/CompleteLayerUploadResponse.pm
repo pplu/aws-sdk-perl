@@ -22,11 +22,9 @@ Paws::ECR::CompleteLayerUploadResponse
 The C<sha256> digest of the image layer.
 
 
-
 =head2 RegistryId => Str
 
 The registry ID associated with the request.
-
 
 
 =head2 RepositoryName => Str
@@ -34,12 +32,12 @@ The registry ID associated with the request.
 The repository name associated with the request.
 
 
-
 =head2 UploadId => Str
 
 The upload ID associated with the layer.
 
 
+=head2 _request_id => Str
 
 
 =cut

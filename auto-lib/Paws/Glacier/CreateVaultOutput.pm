@@ -20,6 +20,7 @@ Paws::Glacier::CreateVaultOutput
 The URI of the vault that was created.
 
 
+=head2 _request_id => Str
 
 
 =cut

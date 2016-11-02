@@ -19,6 +19,7 @@ Paws::StorageGateway::RetrieveTapeArchiveOutput
 The Amazon Resource Name (ARN) of the retrieved virtual tape.
 
 
+=head2 _request_id => Str
 
 
 =cut

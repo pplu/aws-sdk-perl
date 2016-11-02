@@ -22,13 +22,13 @@ operation, which can be used to return the next set of items in the
 list.
 
 
-
 =head2 OfferingTransactions => ArrayRef[L<Paws::DeviceFarm::OfferingTransaction>]
 
 The audit log of subscriptions you have purchased and modified through
 AWS Device Farm.
 
 
+=head2 _request_id => Str
 
 
 =cut

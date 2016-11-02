@@ -24,11 +24,9 @@ The configuration settings for this workflow execution including
 timeout values, tasklist etc.
 
 
-
 =head2 B<REQUIRED> ExecutionInfo => L<Paws::SimpleWorkflow::WorkflowExecutionInfo>
 
 Information about the workflow execution.
-
 
 
 =head2 LatestActivityTaskTimestamp => Str
@@ -39,7 +37,6 @@ has not made progress for an unusually long period of time and might
 require a corrective action.
 
 
-
 =head2 LatestExecutionContext => Str
 
 The latest executionContext provided by the decider for this workflow
@@ -48,13 +45,13 @@ string) when closing a decision task using
 RespondDecisionTaskCompleted.
 
 
-
 =head2 B<REQUIRED> OpenCounts => L<Paws::SimpleWorkflow::WorkflowExecutionOpenCounts>
 
 The number of tasks for this workflow execution. This includes open and
 closed tasks of all types.
 
 
+=head2 _request_id => Str
 
 
 =cut

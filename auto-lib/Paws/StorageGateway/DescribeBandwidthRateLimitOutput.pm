@@ -23,12 +23,10 @@ field does not appear in the response if the download rate limit is not
 set.
 
 
-
 =head2 AverageUploadRateLimitInBitsPerSec => Int
 
 The average upload bandwidth rate limit in bits per second. This field
 does not appear in the response if the upload rate limit is not set.
-
 
 
 =head2 GatewayARN => Str
@@ -36,6 +34,7 @@ does not appear in the response if the upload rate limit is not set.
 
 
 
+=head2 _request_id => Str
 
 
 =cut

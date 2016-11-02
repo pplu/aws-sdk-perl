@@ -27,6 +27,7 @@ bytes, but that can vary. Also, future updates to AWS might require
 larger sizes.
 
 
+=head2 _request_id => Str
 
 
 =cut

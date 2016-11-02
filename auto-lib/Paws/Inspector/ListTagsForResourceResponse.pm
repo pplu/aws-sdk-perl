@@ -19,6 +19,7 @@ Paws::Inspector::ListTagsForResourceResponse
 A collection of key and value pairs.
 
 
+=head2 _request_id => Str
 
 
 =cut

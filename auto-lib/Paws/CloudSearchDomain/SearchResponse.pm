@@ -23,11 +23,9 @@ Paws::CloudSearchDomain::SearchResponse
 The requested facet information.
 
 
-
 =head2 Hits => L<Paws::CloudSearchDomain::Hits>
 
 The documents that match the search criteria.
-
 
 
 =head2 Stats => L<Paws::CloudSearchDomain::Stats>
@@ -35,12 +33,12 @@ The documents that match the search criteria.
 The requested field statistics information.
 
 
-
 =head2 Status => L<Paws::CloudSearchDomain::SearchStatus>
 
 The status information returned for the search request.
 
 
+=head2 _request_id => Str
 
 
 =cut

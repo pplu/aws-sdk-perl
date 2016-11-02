@@ -19,6 +19,7 @@ Paws::Support::DescribeAttachmentResponse
 The attachment content and file name.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -21,13 +21,13 @@ String that contains the ACM Certificate represented by the ARN
 specified at input.
 
 
-
 =head2 CertificateChain => Str
 
 The certificate chain that contains the root certificate issued by the
 certificate authority (CA).
 
 
+=head2 _request_id => Str
 
 
 =cut

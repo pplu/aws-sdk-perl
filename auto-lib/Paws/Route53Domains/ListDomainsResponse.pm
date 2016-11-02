@@ -24,7 +24,6 @@ Type: Complex type containing a list of domain summaries.
 Children: C<AutoRenew>, C<DomainName>, C<Expiry>, C<TransferLock>
 
 
-
 =head2 NextPageMarker => Str
 
 If there are more domains than you specified for C<MaxItems> in the
@@ -36,6 +35,7 @@ Type: String
 Parent: C<Operations>
 
 
+=head2 _request_id => Str
 
 
 =cut

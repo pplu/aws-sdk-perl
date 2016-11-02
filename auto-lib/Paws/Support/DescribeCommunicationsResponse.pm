@@ -20,12 +20,12 @@ Paws::Support::DescribeCommunicationsResponse
 The communications for the case.
 
 
-
 =head2 NextToken => Str
 
 A resumption point for pagination.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -22,11 +22,9 @@ The re-encrypted data. If you are using the CLI, the value is Base64
 encoded. Otherwise, it is not encoded.
 
 
-
 =head2 KeyId => Str
 
 Unique identifier of the key used to re-encrypt the data.
-
 
 
 =head2 SourceKeyId => Str
@@ -34,6 +32,7 @@ Unique identifier of the key used to re-encrypt the data.
 Unique identifier of the key used to originally encrypt the data.
 
 
+=head2 _request_id => Str
 
 
 =cut

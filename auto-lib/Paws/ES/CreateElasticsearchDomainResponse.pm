@@ -20,6 +20,7 @@ Paws::ES::CreateElasticsearchDomainResponse
 The status of the newly created Elasticsearch domain.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -19,6 +19,7 @@ Paws::DMS::DescribeRefreshSchemasStatusResponse
 The status of the schema.
 
 
+=head2 _request_id => Str
 
 
 =cut

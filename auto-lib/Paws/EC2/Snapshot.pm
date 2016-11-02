@@ -39,17 +39,14 @@ then they belong to the same volume/snapshot lineage. This parameter is
 only returned by the DescribeSnapshots API operation.
 
 
-
 =head2 Description => Str
 
 The description for the snapshot.
 
 
-
 =head2 Encrypted => Bool
 
 Indicates whether the snapshot is encrypted.
-
 
 
 =head2 KmsKeyId => Str
@@ -59,7 +56,6 @@ master key (CMK) that was used to protect the volume encryption key for
 the parent volume.
 
 
-
 =head2 OwnerAlias => Str
 
 Value from an Amazon-maintained list (C<amazon> | C<aws-marketplace> |
@@ -67,17 +63,14 @@ C<microsoft>) of snapshot owners. Not to be confused with the
 user-configured AWS account alias, which is set from the IAM console.
 
 
-
 =head2 OwnerId => Str
 
 The AWS account ID of the EBS snapshot owner.
 
 
-
 =head2 Progress => Str
 
 The progress of the snapshot, as a percentage.
-
 
 
 =head2 SnapshotId => Str
@@ -86,11 +79,9 @@ The ID of the snapshot. Each snapshot receives a unique identifier when
 it is created.
 
 
-
 =head2 StartTime => Str
 
 The time stamp when the snapshot was initiated.
-
 
 
 =head2 State => Str
@@ -98,7 +89,6 @@ The time stamp when the snapshot was initiated.
 The snapshot state.
 
 Valid values are: C<"pending">, C<"completed">, C<"error">
-
 =head2 StateMessage => Str
 
 Encrypted Amazon EBS snapshots are copied asynchronously. If a snapshot
@@ -108,11 +98,9 @@ error state details to help you diagnose why the error occurred. This
 parameter is only returned by the DescribeSnapshots API operation.
 
 
-
 =head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
 
 Any tags assigned to the snapshot.
-
 
 
 =head2 VolumeId => Str
@@ -122,12 +110,12 @@ created by the CopySnapshot action have an arbitrary volume ID that
 should not be used for any purpose.
 
 
-
 =head2 VolumeSize => Int
 
 The size of the volume, in GiB.
 
 
+=head2 _request_id => Str
 
 
 =cut

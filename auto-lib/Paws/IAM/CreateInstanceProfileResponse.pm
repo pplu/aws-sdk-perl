@@ -20,6 +20,7 @@ Paws::IAM::CreateInstanceProfileResponse
 A structure containing details about the new instance profile.
 
 
+=head2 _request_id => Str
 
 
 =cut

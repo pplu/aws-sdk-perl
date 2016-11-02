@@ -23,11 +23,9 @@ The AWS account ID number of the account that owns or contains the
 calling entity.
 
 
-
 =head2 Arn => Str
 
 The AWS ARN associated with the calling entity.
-
 
 
 =head2 UserId => Str
@@ -38,6 +36,7 @@ listed in the B<aws:userid> column in the Principal table found on the
 B<Policy Variables> reference page in the I<IAM User Guide>.
 
 
+=head2 _request_id => Str
 
 
 =cut

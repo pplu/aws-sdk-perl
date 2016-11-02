@@ -20,6 +20,7 @@ Paws::SNS::CreateTopicResponse
 The Amazon Resource Name (ARN) assigned to the created topic.
 
 
+=head2 _request_id => Str
 
 
 =cut

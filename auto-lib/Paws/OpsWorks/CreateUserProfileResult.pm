@@ -19,6 +19,7 @@ Paws::OpsWorks::CreateUserProfileResult
 The user's IAM ARN.
 
 
+=head2 _request_id => Str
 
 
 =cut

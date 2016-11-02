@@ -24,9 +24,7 @@ appears in the response only if I<ReturnValues> was specified as
 C<ALL_OLD> in the request.
 
 
-
 =head2 ConsumedCapacity => L<Paws::DynamoDB::ConsumedCapacity>
-
 
 
 
@@ -64,6 +62,7 @@ the precision or accuracy of the estimate.
 
 
 
+=head2 _request_id => Str
 
 
 =cut

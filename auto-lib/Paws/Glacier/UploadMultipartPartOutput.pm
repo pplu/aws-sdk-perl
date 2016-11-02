@@ -21,6 +21,7 @@ The SHA256 tree hash that Amazon Glacier computed for the uploaded
 part.
 
 
+=head2 _request_id => Str
 
 
 =cut

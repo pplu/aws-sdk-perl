@@ -19,6 +19,7 @@ Paws::Inspector::GetTelemetryMetadataResponse
 Telemetry details.
 
 
+=head2 _request_id => Str
 
 
 =cut

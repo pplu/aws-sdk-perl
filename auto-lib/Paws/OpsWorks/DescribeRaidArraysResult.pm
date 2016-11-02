@@ -19,6 +19,7 @@ Paws::OpsWorks::DescribeRaidArraysResult
 A C<RaidArrays> object that describes the specified RAID arrays.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -20,6 +20,7 @@ Paws::EC2::CopySnapshotResult
 The ID of the new snapshot.
 
 
+=head2 _request_id => Str
 
 
 =cut

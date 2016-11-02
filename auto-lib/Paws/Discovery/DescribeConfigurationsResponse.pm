@@ -19,6 +19,7 @@ Paws::Discovery::DescribeConfigurationsResponse
 A key in the response map. The value is an array of data.
 
 
+=head2 _request_id => Str
 
 
 =cut

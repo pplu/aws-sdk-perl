@@ -19,6 +19,7 @@ Paws::Firehose::DescribeDeliveryStreamOutput
 Information about the delivery stream.
 
 
+=head2 _request_id => Str
 
 
 =cut

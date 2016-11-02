@@ -32,6 +32,7 @@ For more information about creating DNS records using DKIM tokens, go
 to the Amazon SES Developer Guide.
 
 
+=head2 _request_id => Str
 
 
 =cut

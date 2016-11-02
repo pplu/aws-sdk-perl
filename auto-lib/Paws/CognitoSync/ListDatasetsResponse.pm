@@ -22,11 +22,9 @@ Paws::CognitoSync::ListDatasetsResponse
 Number of datasets returned.
 
 
-
 =head2 Datasets => ArrayRef[L<Paws::CognitoSync::Dataset>]
 
 A set of datasets.
-
 
 
 =head2 NextToken => Str
@@ -34,6 +32,7 @@ A set of datasets.
 A pagination token for obtaining the next page of results.
 
 
+=head2 _request_id => Str
 
 
 =cut

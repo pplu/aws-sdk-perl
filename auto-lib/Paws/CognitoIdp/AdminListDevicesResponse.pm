@@ -20,12 +20,12 @@ Paws::CognitoIdp::AdminListDevicesResponse
 The devices in the list of devices response.
 
 
-
 =head2 PaginationToken => Str
 
 The pagination token.
 
 
+=head2 _request_id => Str
 
 
 =cut

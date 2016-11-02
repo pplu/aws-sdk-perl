@@ -19,6 +19,7 @@ Paws::OpsWorks::RegisterEcsClusterResult
 The cluster's ARN.
 
 
+=head2 _request_id => Str
 
 
 =cut

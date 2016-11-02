@@ -19,6 +19,7 @@ Paws::EMR::DescribeStepOutput
 The step details for the requested step identifier.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -21,13 +21,13 @@ Paws::SDB::ListDomainsResult
 A list of domain names that match the expression.
 
 
-
 =head2 NextToken => Str
 
 An opaque token indicating that there are more domains than the
 specified C<MaxNumberOfDomains> still available.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -21,7 +21,6 @@ Information about a specific job, including shipping information, job
 status, and other important metadata.
 
 
-
 =head2 SubJobMetadata => ArrayRef[L<Paws::Snowball::JobMetadata>]
 
 Information about a specific job part (in the case of an export job),
@@ -29,6 +28,7 @@ including shipping information, job status, and other important
 metadata.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -23,11 +23,9 @@ Paws::IoT::CreatePolicyResponse
 The policy ARN.
 
 
-
 =head2 PolicyDocument => Str
 
 The JSON document that describes the policy.
-
 
 
 =head2 PolicyName => Str
@@ -35,12 +33,12 @@ The JSON document that describes the policy.
 The policy name.
 
 
-
 =head2 PolicyVersionId => Str
 
 The policy version ID.
 
 
+=head2 _request_id => Str
 
 
 =cut

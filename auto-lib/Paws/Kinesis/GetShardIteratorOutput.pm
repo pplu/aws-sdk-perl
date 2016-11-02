@@ -21,6 +21,7 @@ sequentially. A shard iterator specifies this position using the
 sequence number of a data record in a shard.
 
 
+=head2 _request_id => Str
 
 
 =cut

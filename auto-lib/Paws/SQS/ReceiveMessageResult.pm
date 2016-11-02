@@ -20,6 +20,7 @@ Paws::SQS::ReceiveMessageResult
 A list of messages.
 
 
+=head2 _request_id => Str
 
 
 =cut

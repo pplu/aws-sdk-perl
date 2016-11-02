@@ -20,6 +20,7 @@ The Amazon Resource Name (ARN) of the resource that the tags were
 removed from.
 
 
+=head2 _request_id => Str
 
 
 =cut

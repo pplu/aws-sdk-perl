@@ -19,6 +19,7 @@ Paws::DMS::DeleteReplicationTaskResponse
 The deleted replication task.
 
 
+=head2 _request_id => Str
 
 
 =cut

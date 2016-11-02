@@ -19,6 +19,7 @@ Paws::DeviceFarm::PurchaseOfferingResult
 Represents the offering transaction for the purchase result.
 
 
+=head2 _request_id => Str
 
 
 =cut

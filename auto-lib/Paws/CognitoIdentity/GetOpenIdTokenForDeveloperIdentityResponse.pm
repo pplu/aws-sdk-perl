@@ -20,12 +20,12 @@ Paws::CognitoIdentity::GetOpenIdTokenForDeveloperIdentityResponse
 A unique identifier in the format REGION:GUID.
 
 
-
 =head2 Token => Str
 
 An OpenID token.
 
 
+=head2 _request_id => Str
 
 
 =cut

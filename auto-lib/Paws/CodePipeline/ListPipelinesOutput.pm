@@ -22,12 +22,12 @@ identifier is also returned which can be used in a subsequent list
 pipelines call to return the next set of pipelines in the list.
 
 
-
 =head2 Pipelines => ArrayRef[L<Paws::CodePipeline::PipelineSummary>]
 
 The list of pipelines.
 
 
+=head2 _request_id => Str
 
 
 =cut

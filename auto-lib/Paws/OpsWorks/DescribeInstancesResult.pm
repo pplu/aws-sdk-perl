@@ -19,6 +19,7 @@ Paws::OpsWorks::DescribeInstancesResult
 An array of C<Instance> objects that describe the instances.
 
 
+=head2 _request_id => Str
 
 
 =cut

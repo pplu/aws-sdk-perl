@@ -25,12 +25,10 @@ the specified IAM OIDC provider resource object. For more information,
 see CreateOpenIDConnectProvider.
 
 
-
 =head2 CreateDate => Str
 
 The date and time when the IAM OIDC provider resource object was
 created in the AWS account.
-
 
 
 =head2 ThumbprintList => ArrayRef[Str|Undef]
@@ -40,13 +38,13 @@ specified IAM OIDC provider resource object. For more information, see
 CreateOpenIDConnectProvider.
 
 
-
 =head2 Url => Str
 
 The URL that the IAM OIDC provider resource object is associated with.
 For more information, see CreateOpenIDConnectProvider.
 
 
+=head2 _request_id => Str
 
 
 =cut

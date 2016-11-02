@@ -21,6 +21,7 @@ objects that comprise the stream, and states whether there are more
 shards available.
 
 
+=head2 _request_id => Str
 
 
 =cut

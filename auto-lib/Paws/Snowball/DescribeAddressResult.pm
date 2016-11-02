@@ -20,6 +20,7 @@ The address that you want the Snowball or Snowballs associated with a
 specific job to be shipped to.
 
 
+=head2 _request_id => Str
 
 
 =cut

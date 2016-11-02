@@ -33,12 +33,10 @@ For more information, see Acknowledging IAM Resources in AWS
 CloudFormation Templates.
 
 
-
 =head2 CapabilitiesReason => Str
 
 The list of resources that generated the values in the C<Capabilities>
 response element.
-
 
 
 =head2 Description => Str
@@ -47,18 +45,15 @@ The value that is defined in the C<Description> property of the
 template.
 
 
-
 =head2 Metadata => Str
 
 The value that is defined for the C<Metadata> property of the template.
-
 
 
 =head2 Parameters => ArrayRef[L<Paws::CloudFormation::ParameterDeclaration>]
 
 A list of parameter declarations that describe various properties for
 each parameter.
-
 
 
 =head2 ResourceTypes => ArrayRef[Str|Undef]
@@ -68,13 +63,13 @@ template, such as C<AWS::EC2::Instance>, C<AWS::Dynamo::Table>, and
 C<Custom::MyCustomInstance>.
 
 
-
 =head2 Version => Str
 
 The AWS template format version, which identifies the capabilities of
 the template.
 
 
+=head2 _request_id => Str
 
 
 =cut

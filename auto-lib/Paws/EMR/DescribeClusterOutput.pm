@@ -19,6 +19,7 @@ Paws::EMR::DescribeClusterOutput
 This output contains the details for the requested cluster.
 
 
+=head2 _request_id => Str
 
 
 =cut

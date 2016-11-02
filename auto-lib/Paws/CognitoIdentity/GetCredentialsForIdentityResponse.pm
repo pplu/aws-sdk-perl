@@ -20,12 +20,12 @@ Paws::CognitoIdentity::GetCredentialsForIdentityResponse
 Credentials for the provided identity ID.
 
 
-
 =head2 IdentityId => Str
 
 A unique identifier in the format REGION:GUID.
 
 
+=head2 _request_id => Str
 
 
 =cut

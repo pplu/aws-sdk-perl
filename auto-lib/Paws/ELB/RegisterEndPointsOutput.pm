@@ -20,6 +20,7 @@ Paws::ELB::RegisterEndPointsOutput
 The updated list of instances for the load balancer.
 
 
+=head2 _request_id => Str
 
 
 =cut

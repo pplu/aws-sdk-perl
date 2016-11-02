@@ -19,6 +19,7 @@ Paws::CodePipeline::PutApprovalResultOutput
 The timestamp showing when the approval or rejection was submitted.
 
 
+=head2 _request_id => Str
 
 
 =cut

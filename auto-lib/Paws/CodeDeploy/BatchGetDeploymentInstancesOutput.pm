@@ -20,12 +20,12 @@ Paws::CodeDeploy::BatchGetDeploymentInstancesOutput
 Information about errors that may have occurred during the API call.
 
 
-
 =head2 InstancesSummary => ArrayRef[L<Paws::CodeDeploy::InstanceSummary>]
 
 Information about the instance.
 
 
+=head2 _request_id => Str
 
 
 =cut

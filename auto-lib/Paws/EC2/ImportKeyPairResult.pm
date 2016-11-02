@@ -21,12 +21,12 @@ Paws::EC2::ImportKeyPairResult
 The MD5 public key fingerprint as specified in section 4 of RFC 4716.
 
 
-
 =head2 KeyName => Str
 
 The key pair name you provided.
 
 
+=head2 _request_id => Str
 
 
 =cut

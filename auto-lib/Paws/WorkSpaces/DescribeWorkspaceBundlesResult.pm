@@ -20,7 +20,6 @@ Paws::WorkSpaces::DescribeWorkspaceBundlesResult
 An array of structures that contain information about the bundles.
 
 
-
 =head2 NextToken => Str
 
 If not null, more results are available. Pass this value for the
@@ -29,6 +28,7 @@ retrieve the next set of items. This token is valid for one day and
 must be used within that time frame.
 
 
+=head2 _request_id => Str
 
 
 =cut
