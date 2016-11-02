@@ -12,6 +12,7 @@ package Paws::DirectConnect::Connection;
   has Region => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'region' );
   has Vlan => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => 'vlan' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -32,9 +33,7 @@ connections)
 Default: None
 
 
-
 =head2 ConnectionId => Str
-
 
 
 
@@ -44,22 +43,18 @@ Default: None
 
 
 
-
 =head2 ConnectionState => Str
 
 
 
 Valid values are: C<"ordering">, C<"requested">, C<"pending">, C<"available">, C<"down">, C<"deleting">, C<"deleted">, C<"rejected">
-
 =head2 LoaIssueTime => Str
 
 The time of the most recent call to DescribeConnectionLoa for this
 Connection.
 
 
-
 =head2 Location => Str
-
 
 
 
@@ -69,16 +64,13 @@ Connection.
 The AWS account that will own the new connection.
 
 
-
 =head2 PartnerName => Str
 
 The name of the AWS Direct Connect service provider associated with the
 connection.
 
 
-
 =head2 Region => Str
-
 
 
 
@@ -88,6 +80,7 @@ connection.
 
 
 
+=head2 _request_id => Str
 
 
 =cut

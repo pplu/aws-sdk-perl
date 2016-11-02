@@ -4,6 +4,7 @@ package Paws::ECR::DescribeRepositoriesResponse;
   has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
   has Repositories => (is => 'ro', isa => 'ArrayRef[Paws::ECR::Repository]', traits => ['Unwrapped'], xmlname => 'repositories' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -23,12 +24,12 @@ results. This value is C<null> when there are no more results to
 return.
 
 
-
 =head2 Repositories => ArrayRef[L<Paws::ECR::Repository>]
 
 A list of repository objects corresponding to valid repositories.
 
 
+=head2 _request_id => Str
 
 
 =cut

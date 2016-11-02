@@ -2,6 +2,9 @@
 call: DescribeAddresses
 service: EC2
 tests:
+  - expected: 'b4cfd51c-a092-494f-8ee0-59912bef0ccc'
+    op: eq
+    path: _request_id
   - expected: standard
     op: eq
     path: Addresses.0.Domain

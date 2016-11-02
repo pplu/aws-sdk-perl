@@ -4,6 +4,7 @@ package Paws::StorageGateway::DescribeTapeArchivesOutput;
   has Marker => (is => 'ro', isa => 'Str');
   has TapeArchives => (is => 'ro', isa => 'ArrayRef[Paws::StorageGateway::TapeArchive]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -23,7 +24,6 @@ shelf (VTS). If there are no more virtual tapes to describe, this field
 does not appear in the response.
 
 
-
 =head2 TapeArchives => ArrayRef[L<Paws::StorageGateway::TapeArchive>]
 
 An array of virtual tape objects in the virtual tape shelf (VTS). The
@@ -33,6 +33,7 @@ tapes. The information returned includes the Amazon Resource Names
 of the description and tape barcode.
 
 
+=head2 _request_id => Str
 
 
 =cut

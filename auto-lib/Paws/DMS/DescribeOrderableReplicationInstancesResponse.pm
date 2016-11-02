@@ -4,6 +4,7 @@ package Paws::DMS::DescribeOrderableReplicationInstancesResponse;
   has Marker => (is => 'ro', isa => 'Str');
   has OrderableReplicationInstances => (is => 'ro', isa => 'ArrayRef[Paws::DMS::OrderableReplicationInstance]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -21,12 +22,12 @@ parameter is specified, the response includes only records beyond the
 marker, up to the value specified by C<MaxRecords>.
 
 
-
 =head2 OrderableReplicationInstances => ArrayRef[L<Paws::DMS::OrderableReplicationInstance>]
 
 The order-able replication instances available.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -185,18 +185,18 @@ the search term(s) you want to highlight. By default, the first
 occurrence is highlighted.
 
 =item * C<pre_tag>: specifies the string to prepend to an occurrence of
-a search term. The default for HTML highlights is C<&lt;em&gt;>. The
+a search term. The default for HTML highlights is C<E<lt>emE<gt>>. The
 default for text highlights is C<*>.
 
 =item * C<post_tag>: specifies the string to append to an occurrence of
-a search term. The default for HTML highlights is C<&lt;/em&gt;>. The
+a search term. The default for HTML highlights is C<E<lt>/emE<gt>>. The
 default for text highlights is C<*>.
 
 =back
 
 If no highlight options are specified for a field, the returned field
 text is treated as HTML and the first match is highlighted with
-emphasis tags: C<&lt;emE<gt>search-term&lt;/em&gt;>.
+emphasis tags: C<E<lt>emE<gt>search-termE<lt>/emE<gt>>.
 
 For example, the following request retrieves highlights for the
 C<actors> and C<title> fields.

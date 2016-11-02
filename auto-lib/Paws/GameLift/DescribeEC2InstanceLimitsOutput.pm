@@ -3,6 +3,7 @@ package Paws::GameLift::DescribeEC2InstanceLimitsOutput;
   use Moose;
   has EC2InstanceLimits => (is => 'ro', isa => 'ArrayRef[Paws::GameLift::EC2InstanceLimit]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -19,6 +20,7 @@ Object containing the maximum number of instances for the specified
 instance type.
 
 
+=head2 _request_id => Str
 
 
 =cut

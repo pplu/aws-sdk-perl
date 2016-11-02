@@ -3,6 +3,7 @@ package Paws::DMS::RefreshSchemasResponse;
   use Moose;
   has RefreshSchemasStatus => (is => 'ro', isa => 'Paws::DMS::RefreshSchemasStatus');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -18,6 +19,7 @@ Paws::DMS::RefreshSchemasResponse
 The status of the refreshed schema.
 
 
+=head2 _request_id => Str
 
 
 =cut

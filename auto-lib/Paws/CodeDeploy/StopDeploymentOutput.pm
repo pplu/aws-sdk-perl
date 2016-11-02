@@ -4,6 +4,7 @@ package Paws::CodeDeploy::StopDeploymentOutput;
   has Status => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'status' );
   has StatusMessage => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'statusMessage' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -32,12 +33,12 @@ Succeeded: The stop operation was successful.
 
 
 Valid values are: C<"Pending">, C<"Succeeded">
-
 =head2 StatusMessage => Str
 
 An accompanying status message.
 
 
+=head2 _request_id => Str
 
 
 =cut

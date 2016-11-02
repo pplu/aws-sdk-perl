@@ -3,6 +3,7 @@ package Paws::Lambda::GetPolicyResponse;
   use Moose;
   has Policy => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -21,6 +22,7 @@ response returns the same as a string using a backslash ("\") as an
 escape character in the JSON.
 
 
+=head2 _request_id => Str
 
 
 =cut

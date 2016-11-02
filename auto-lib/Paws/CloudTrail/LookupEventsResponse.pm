@@ -4,6 +4,7 @@ package Paws::CloudTrail::LookupEventsResponse;
   has Events => (is => 'ro', isa => 'ArrayRef[Paws::CloudTrail::Event]');
   has NextToken => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -21,7 +22,6 @@ the CloudTrail event. The events list is sorted by time. The most
 recent event is listed first.
 
 
-
 =head2 NextToken => Str
 
 The token to use to get the next page of results after a previous API
@@ -32,6 +32,7 @@ AttributeKey of 'Username' with a value of 'root', the call with
 NextToken should include those same parameters.
 
 
+=head2 _request_id => Str
 
 
 =cut

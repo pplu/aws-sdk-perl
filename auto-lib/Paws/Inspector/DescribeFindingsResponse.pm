@@ -4,6 +4,7 @@ package Paws::Inspector::DescribeFindingsResponse;
   has FailedItems => (is => 'ro', isa => 'Paws::Inspector::FailedItems', traits => ['Unwrapped'], xmlname => 'failedItems' , required => 1);
   has Findings => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::Finding]', traits => ['Unwrapped'], xmlname => 'findings' , required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -20,12 +21,12 @@ Finding details that cannot be described. An error code is provided for
 each failed item.
 
 
-
 =head2 B<REQUIRED> Findings => ArrayRef[L<Paws::Inspector::Finding>]
 
 Information about the finding.
 
 
+=head2 _request_id => Str
 
 
 =cut

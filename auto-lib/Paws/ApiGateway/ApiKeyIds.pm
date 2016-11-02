@@ -4,6 +4,7 @@ package Paws::ApiGateway::ApiKeyIds;
   has Ids => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Warnings => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -20,12 +21,12 @@ Paws::ApiGateway::ApiKeyIds
 A list of all the ApiKey identifiers.
 
 
-
 =head2 Warnings => ArrayRef[Str|Undef]
 
 A list of warning messages.
 
 
+=head2 _request_id => Str
 
 
 =cut

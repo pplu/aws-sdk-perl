@@ -4,6 +4,7 @@ package Paws::EC2::DescribeVpcClassicLinkDnsSupportResult;
   has NextToken => (is => 'ro', isa => 'Str', xmlname => 'nextToken', traits => ['Unwrapped',]);
   has Vpcs => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ClassicLinkDnsSupport]', xmlname => 'vpcs', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -20,12 +21,12 @@ Paws::EC2::DescribeVpcClassicLinkDnsSupportResult
 The token to use when requesting the next set of items.
 
 
-
 =head2 Vpcs => ArrayRef[L<Paws::EC2::ClassicLinkDnsSupport>]
 
 Information about the ClassicLink DNS support status of the VPCs.
 
 
+=head2 _request_id => Str
 
 
 =cut

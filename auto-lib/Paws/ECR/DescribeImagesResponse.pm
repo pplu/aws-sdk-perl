@@ -4,6 +4,7 @@ package Paws::ECR::DescribeImagesResponse;
   has ImageDetails => (is => 'ro', isa => 'ArrayRef[Paws::ECR::ImageDetail]', traits => ['Unwrapped'], xmlname => 'imageDetails' );
   has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -19,7 +20,6 @@ Paws::ECR::DescribeImagesResponse
 A list of ImageDetail objects that contain data about the image.
 
 
-
 =head2 NextToken => Str
 
 The C<nextToken> value to include in a future C<DescribeImages>
@@ -29,6 +29,7 @@ results. This value is C<null> when there are no more results to
 return.
 
 
+=head2 _request_id => Str
 
 
 =cut

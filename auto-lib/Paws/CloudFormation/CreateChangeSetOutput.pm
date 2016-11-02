@@ -3,6 +3,7 @@ package Paws::CloudFormation::CreateChangeSetOutput;
   use Moose;
   has Id => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -19,6 +20,7 @@ Paws::CloudFormation::CreateChangeSetOutput
 The Amazon Resource Name (ARN) of the change set.
 
 
+=head2 _request_id => Str
 
 
 =cut

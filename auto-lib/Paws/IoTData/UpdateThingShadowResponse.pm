@@ -3,6 +3,7 @@ package Paws::IoTData::UpdateThingShadowResponse;
   use Moose;
   has Payload => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -19,6 +20,7 @@ Paws::IoTData::UpdateThingShadowResponse
 The state information, in JSON format.
 
 
+=head2 _request_id => Str
 
 
 =cut

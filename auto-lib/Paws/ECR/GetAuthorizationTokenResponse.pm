@@ -3,6 +3,7 @@ package Paws::ECR::GetAuthorizationTokenResponse;
   use Moose;
   has AuthorizationData => (is => 'ro', isa => 'ArrayRef[Paws::ECR::AuthorizationData]', traits => ['Unwrapped'], xmlname => 'authorizationData' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -19,6 +20,7 @@ A list of authorization token data objects that correspond to the
 C<registryIds> values in the request.
 
 
+=head2 _request_id => Str
 
 
 =cut

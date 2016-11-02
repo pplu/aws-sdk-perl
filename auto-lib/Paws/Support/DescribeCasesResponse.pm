@@ -4,6 +4,7 @@ package Paws::Support::DescribeCasesResponse;
   has Cases => (is => 'ro', isa => 'ArrayRef[Paws::Support::CaseDetails]', traits => ['Unwrapped'], xmlname => 'cases' );
   has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -19,12 +20,12 @@ Paws::Support::DescribeCasesResponse
 The details for the cases that match the request.
 
 
-
 =head2 NextToken => Str
 
 A resumption point for pagination.
 
 
+=head2 _request_id => Str
 
 
 =cut

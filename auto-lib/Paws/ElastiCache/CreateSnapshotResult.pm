@@ -3,6 +3,7 @@ package Paws::ElastiCache::CreateSnapshotResult;
   use Moose;
   has Snapshot => (is => 'ro', isa => 'Paws::ElastiCache::Snapshot');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -19,6 +20,7 @@ Paws::ElastiCache::CreateSnapshotResult
 
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -3,6 +3,7 @@ package Paws::OpsWorks::DescribeLoadBasedAutoScalingResult;
   use Moose;
   has LoadBasedAutoScalingConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::OpsWorks::LoadBasedAutoScalingConfiguration]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -19,6 +20,7 @@ An array of C<LoadBasedAutoScalingConfiguration> objects that describe
 each layer's configuration.
 
 
+=head2 _request_id => Str
 
 
 =cut

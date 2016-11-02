@@ -3,6 +3,7 @@ package Paws::SSM::DescribeDocumentResult;
   use Moose;
   has Document => (is => 'ro', isa => 'Paws::SSM::DocumentDescription');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -18,6 +19,7 @@ Paws::SSM::DescribeDocumentResult
 Information about the SSM document.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -4,6 +4,7 @@ package Paws::Firehose::PutRecordBatchOutput;
   has FailedPutCount => (is => 'ro', isa => 'Int', required => 1);
   has RequestResponses => (is => 'ro', isa => 'ArrayRef[Paws::Firehose::PutRecordBatchResponseEntry]', required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -19,13 +20,13 @@ Paws::Firehose::PutRecordBatchOutput
 The number of unsuccessfully written records.
 
 
-
 =head2 B<REQUIRED> RequestResponses => ArrayRef[L<Paws::Firehose::PutRecordBatchResponseEntry>]
 
 The results for the individual records. The index of each element
 matches the same index in which records were sent.
 
 
+=head2 _request_id => Str
 
 
 =cut

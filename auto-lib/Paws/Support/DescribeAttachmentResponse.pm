@@ -3,6 +3,7 @@ package Paws::Support::DescribeAttachmentResponse;
   use Moose;
   has Attachment => (is => 'ro', isa => 'Paws::Support::Attachment', traits => ['Unwrapped'], xmlname => 'attachment' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -18,6 +19,7 @@ Paws::Support::DescribeAttachmentResponse
 The attachment content and file name.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -3,6 +3,7 @@ package Paws::RDS::DBParameterGroupNameMessage;
   use Moose;
   has DBParameterGroupName => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -19,6 +20,7 @@ Paws::RDS::DBParameterGroupNameMessage
 Provides the name of the DB parameter group.
 
 
+=head2 _request_id => Str
 
 
 =cut

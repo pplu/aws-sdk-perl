@@ -4,6 +4,7 @@ package Paws::Inspector::ListAssessmentTargetsResponse;
   has AssessmentTargetArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['Unwrapped'], xmlname => 'assessmentTargetArns' , required => 1);
   has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -20,7 +21,6 @@ A list of ARNs that specifies the assessment targets that are returned
 by the action.
 
 
-
 =head2 NextToken => Str
 
 When a response is generated, if there is more data to be listed, this
@@ -29,6 +29,7 @@ the B<nextToken> parameter in a subsequent pagination request. If there
 is no more data to be listed, this parameter is set to null.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -4,6 +4,7 @@ package Paws::Support::DescribeCommunicationsResponse;
   has Communications => (is => 'ro', isa => 'ArrayRef[Paws::Support::Communication]', traits => ['Unwrapped'], xmlname => 'communications' );
   has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -19,12 +20,12 @@ Paws::Support::DescribeCommunicationsResponse
 The communications for the case.
 
 
-
 =head2 NextToken => Str
 
 A resumption point for pagination.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -18,6 +18,7 @@ package Paws::ImportExport::GetStatusOutput;
   has SignatureFileContents => (is => 'ro', isa => 'Str');
   has TrackingNumber => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -34,9 +35,7 @@ Paws::ImportExport::GetStatusOutput
 
 
 
-
 =head2 Carrier => Str
-
 
 
 
@@ -46,9 +45,7 @@ Paws::ImportExport::GetStatusOutput
 
 
 
-
 =head2 CurrentManifest => Str
-
 
 
 
@@ -58,9 +55,7 @@ Paws::ImportExport::GetStatusOutput
 
 
 
-
 =head2 JobId => Str
-
 
 
 
@@ -70,9 +65,7 @@ Paws::ImportExport::GetStatusOutput
 
 
 Valid values are: C<"Import">, C<"Export">
-
 =head2 LocationCode => Str
-
 
 
 
@@ -82,9 +75,7 @@ Valid values are: C<"Import">, C<"Export">
 
 
 
-
 =head2 LogBucket => Str
-
 
 
 
@@ -94,9 +85,7 @@ Valid values are: C<"Import">, C<"Export">
 
 
 
-
 =head2 ProgressCode => Str
-
 
 
 
@@ -106,9 +95,7 @@ Valid values are: C<"Import">, C<"Export">
 
 
 
-
 =head2 Signature => Str
-
 
 
 
@@ -118,12 +105,12 @@ Valid values are: C<"Import">, C<"Export">
 
 
 
-
 =head2 TrackingNumber => Str
 
 
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -5,6 +5,7 @@ package Paws::EC2::GetPasswordDataResult;
   has PasswordData => (is => 'ro', isa => 'Str', xmlname => 'passwordData', traits => ['Unwrapped',]);
   has Timestamp => (is => 'ro', isa => 'Str', xmlname => 'timestamp', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -21,11 +22,9 @@ Paws::EC2::GetPasswordDataResult
 The ID of the Windows instance.
 
 
-
 =head2 PasswordData => Str
 
 The password of the instance.
-
 
 
 =head2 Timestamp => Str
@@ -33,6 +32,7 @@ The password of the instance.
 The time the data was last updated.
 
 
+=head2 _request_id => Str
 
 
 =cut

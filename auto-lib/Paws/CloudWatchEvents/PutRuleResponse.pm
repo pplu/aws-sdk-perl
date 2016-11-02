@@ -3,6 +3,7 @@ package Paws::CloudWatchEvents::PutRuleResponse;
   use Moose;
   has RuleArn => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -18,6 +19,7 @@ Paws::CloudWatchEvents::PutRuleResponse
 The Amazon Resource Name (ARN) that identifies the rule.
 
 
+=head2 _request_id => Str
 
 
 =cut

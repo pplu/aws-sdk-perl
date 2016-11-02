@@ -5,6 +5,7 @@ package Paws::IAM::ListServerCertificatesResponse;
   has Marker => (is => 'ro', isa => 'Str');
   has ServerCertificateMetadataList => (is => 'ro', isa => 'ArrayRef[Paws::IAM::ServerCertificateMetadata]', required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -27,7 +28,6 @@ C<IsTruncated> after every call to ensure that you receive all of your
 results.
 
 
-
 =head2 Marker => Str
 
 When C<IsTruncated> is C<true>, this element is present and contains
@@ -35,12 +35,12 @@ the value to use for the C<Marker> parameter in a subsequent pagination
 request.
 
 
-
 =head2 B<REQUIRED> ServerCertificateMetadataList => ArrayRef[L<Paws::IAM::ServerCertificateMetadata>]
 
 A list of server certificates.
 
 
+=head2 _request_id => Str
 
 
 =cut

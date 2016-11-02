@@ -7,6 +7,7 @@ package Paws::Route53::ListTrafficPolicyInstancesByHostedZoneResponse;
   has TrafficPolicyInstances => (is => 'ro', isa => 'ArrayRef[Paws::Route53::TrafficPolicyInstance]', required => 1);
   has TrafficPolicyInstanceTypeMarker => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

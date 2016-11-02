@@ -3,6 +3,7 @@ package Paws::StorageGateway::DeleteVolumeOutput;
   use Moose;
   has VolumeARN => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -19,6 +20,7 @@ The Amazon Resource Name (ARN) of the storage volume that was deleted.
 It is the same ARN you provided in the request.
 
 
+=head2 _request_id => Str
 
 
 =cut

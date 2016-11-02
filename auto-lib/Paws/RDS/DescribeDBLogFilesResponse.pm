@@ -4,6 +4,7 @@ package Paws::RDS::DescribeDBLogFilesResponse;
   has DescribeDBLogFiles => (is => 'ro', isa => 'ArrayRef[Paws::RDS::DescribeDBLogFilesDetails]', xmlname => 'DescribeDBLogFilesDetails', traits => ['Unwrapped',]);
   has Marker => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -20,13 +21,13 @@ Paws::RDS::DescribeDBLogFilesResponse
 The DB log files returned.
 
 
-
 =head2 Marker => Str
 
 A pagination token that can be used in a subsequent DescribeDBLogFiles
 request.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -14,6 +14,7 @@ package Paws::CloudTrail::CreateTrailResponse;
   has SnsTopicName => (is => 'ro', isa => 'Str');
   has TrailARN => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -30,12 +31,10 @@ Specifies the Amazon Resource Name (ARN) of the log group to which
 CloudTrail logs will be delivered.
 
 
-
 =head2 CloudWatchLogsRoleArn => Str
 
 Specifies the role for the CloudWatch Logs endpoint to assume to write
 to a user's log group.
-
 
 
 =head2 IncludeGlobalServiceEvents => Bool
@@ -44,11 +43,9 @@ Specifies whether the trail is publishing events from global services
 such as IAM to the log files.
 
 
-
 =head2 IsMultiRegionTrail => Bool
 
 Specifies whether the trail exists in one region or in all regions.
-
 
 
 =head2 KmsKeyId => Str
@@ -60,17 +57,14 @@ format:
 C<arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012>
 
 
-
 =head2 LogFileValidationEnabled => Bool
 
 Specifies whether log file integrity validation is enabled.
 
 
-
 =head2 Name => Str
 
 Specifies the name of the trail.
-
 
 
 =head2 S3BucketName => Str
@@ -79,13 +73,11 @@ Specifies the name of the Amazon S3 bucket designated for publishing
 log files.
 
 
-
 =head2 S3KeyPrefix => Str
 
 Specifies the Amazon S3 key prefix that comes after the name of the
 bucket you have designated for log file delivery. For more information,
 see Finding Your CloudTrail Log Files.
-
 
 
 =head2 SnsTopicARN => Str
@@ -97,11 +89,9 @@ is:
 C<arn:aws:sns:us-east-1:123456789012:MyTopic>
 
 
-
 =head2 SnsTopicName => Str
 
 This field is deprecated. Use SnsTopicARN.
-
 
 
 =head2 TrailARN => Str
@@ -112,6 +102,7 @@ ARN is:
 C<arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail>
 
 
+=head2 _request_id => Str
 
 
 =cut

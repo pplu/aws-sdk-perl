@@ -3,6 +3,7 @@ package Paws::EC2::DescribeKeyPairsResult;
   use Moose;
   has KeyPairs => (is => 'ro', isa => 'ArrayRef[Paws::EC2::KeyPairInfo]', xmlname => 'keySet', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -19,6 +20,7 @@ Paws::EC2::DescribeKeyPairsResult
 Information about one or more key pairs.
 
 
+=head2 _request_id => Str
 
 
 =cut

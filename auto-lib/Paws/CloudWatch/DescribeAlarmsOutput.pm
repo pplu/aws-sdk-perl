@@ -4,6 +4,7 @@ package Paws::CloudWatch::DescribeAlarmsOutput;
   has MetricAlarms => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatch::MetricAlarm]');
   has NextToken => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -20,12 +21,12 @@ Paws::CloudWatch::DescribeAlarmsOutput
 A list of information for the specified alarms.
 
 
-
 =head2 NextToken => Str
 
 A string that marks the start of the next batch of returned results.
 
 
+=head2 _request_id => Str
 
 
 =cut

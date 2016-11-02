@@ -3,6 +3,7 @@ package Paws::EC2::DeleteVpcPeeringConnectionResult;
   use Moose;
   has Return => (is => 'ro', isa => 'Bool', xmlname => 'return', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -20,6 +21,7 @@ Returns C<true> if the request succeeds; otherwise, it returns an
 error.
 
 
+=head2 _request_id => Str
 
 
 =cut

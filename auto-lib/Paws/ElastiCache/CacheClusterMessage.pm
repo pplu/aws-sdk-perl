@@ -4,6 +4,7 @@ package Paws::ElastiCache::CacheClusterMessage;
   has CacheClusters => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::CacheCluster]', xmlname => 'CacheCluster', traits => ['Unwrapped',]);
   has Marker => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -21,12 +22,12 @@ A list of cache clusters. Each item in the list contains detailed
 information about one cache cluster.
 
 
-
 =head2 Marker => Str
 
 Provides an identifier to allow retrieval of paginated results.
 
 
+=head2 _request_id => Str
 
 
 =cut

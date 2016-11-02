@@ -9,6 +9,7 @@ package Paws::Glacier::GetJobOutputOutput;
   has ContentType => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Int');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -26,17 +27,14 @@ Indicates the range units accepted. For more information, go to
 RFC2616.
 
 
-
 =head2 ArchiveDescription => Str
 
 The description of an archive.
 
 
-
 =head2 Body => Str
 
 The job data, either archive data or inventory data.
-
 
 
 =head2 Checksum => Str
@@ -64,14 +62,12 @@ x-amz-sha256-tree-hash is returned as a response header.
 
 
 
-
 =head2 ContentRange => Str
 
 The range of bytes returned by Amazon Glacier. If only partial output
 is downloaded, the response provides the range of bytes Amazon Glacier
 returned. For example, bytes 0-1048575/8388608 returns the first 1 MB
 from 8 MB.
-
 
 
 =head2 ContentType => Str
@@ -84,13 +80,13 @@ Otherwise, by default, vault inventory is returned as JSON, and the
 Content-Type is application/json.
 
 
-
 =head2 Status => Int
 
 The HTTP response code for a job output request. The value depends on
 whether a range was specified in the request.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -2,6 +2,9 @@
 call: DeleteElasticsearchDomain
 service: ES
 tests:
+  - expected: '12d89879-c60c-11e5-b478-816cb1a389a7'
+    op: eq
+    path: _request_id
   - expected: 384647462792/esdomain1
     op: eq
     path: DomainStatus.DomainId

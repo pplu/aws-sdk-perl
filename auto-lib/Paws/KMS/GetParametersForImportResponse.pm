@@ -6,6 +6,7 @@ package Paws::KMS::GetParametersForImportResponse;
   has ParametersValidTo => (is => 'ro', isa => 'Str');
   has PublicKey => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -21,13 +22,11 @@ Paws::KMS::GetParametersForImportResponse
 The import token to send in a subsequent ImportKeyMaterial request.
 
 
-
 =head2 KeyId => Str
 
 The identifier of the CMK to use in a subsequent ImportKeyMaterial
 request. This is the same CMK specified in the
 C<GetParametersForImport> request.
-
 
 
 =head2 ParametersValidTo => Str
@@ -38,13 +37,13 @@ request and you must send another C<GetParametersForImport> request to
 retrieve new ones.
 
 
-
 =head2 PublicKey => Str
 
 The public key to use to encrypt the key material before importing it
 with ImportKeyMaterial.
 
 
+=head2 _request_id => Str
 
 
 =cut

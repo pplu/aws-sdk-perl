@@ -4,6 +4,7 @@ package Paws::CloudFront::CreateInvalidationResult;
   has Invalidation => (is => 'ro', isa => 'Paws::CloudFront::Invalidation');
   has Location => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Location');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

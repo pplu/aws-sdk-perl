@@ -5,6 +5,7 @@ package Paws::DynamoDB::BatchWriteItemOutput;
   has ItemCollectionMetrics => (is => 'ro', isa => 'Paws::DynamoDB::ItemCollectionMetricsPerTable');
   has UnprocessedItems => (is => 'ro', isa => 'Paws::DynamoDB::BatchWriteItemRequestMap');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -32,7 +33,6 @@ I<TableName> - The table that consumed the provisioned throughput.
 I<CapacityUnits> - The total number of capacity units consumed.
 
 =back
-
 
 
 
@@ -64,7 +64,6 @@ The estimate is subject to change over time; therefore, do not rely on
 the precision or accuracy of the estimate.
 
 =back
-
 
 
 
@@ -125,6 +124,7 @@ If there are no unprocessed items remaining, the response contains an
 empty I<UnprocessedItems> map.
 
 
+=head2 _request_id => Str
 
 
 =cut

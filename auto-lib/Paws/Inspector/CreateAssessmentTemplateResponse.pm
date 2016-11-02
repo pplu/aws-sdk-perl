@@ -3,6 +3,7 @@ package Paws::Inspector::CreateAssessmentTemplateResponse;
   use Moose;
   has AssessmentTemplateArn => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'assessmentTemplateArn' , required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -18,6 +19,7 @@ Paws::Inspector::CreateAssessmentTemplateResponse
 The ARN that specifies the assessment template that is created.
 
 
+=head2 _request_id => Str
 
 
 =cut

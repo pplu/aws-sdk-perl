@@ -3,6 +3,7 @@ package Paws::ElastiCache::CacheParameterGroupNameMessage;
   use Moose;
   has CacheParameterGroupName => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -19,6 +20,7 @@ Paws::ElastiCache::CacheParameterGroupNameMessage
 The name of the cache parameter group.
 
 
+=head2 _request_id => Str
 
 
 =cut

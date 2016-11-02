@@ -8,6 +8,7 @@ package Paws::Route53::TestDNSAnswerResponse;
   has RecordType => (is => 'ro', isa => 'Str', required => 1);
   has ResponseCode => (is => 'ro', isa => 'Str', required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

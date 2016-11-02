@@ -3,6 +3,7 @@ package Paws::OpsWorks::DescribeAppsResult;
   use Moose;
   has Apps => (is => 'ro', isa => 'ArrayRef[Paws::OpsWorks::App]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -18,6 +19,7 @@ Paws::OpsWorks::DescribeAppsResult
 An array of C<App> objects that describe the specified apps.
 
 
+=head2 _request_id => Str
 
 
 =cut

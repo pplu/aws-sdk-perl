@@ -3,6 +3,7 @@ package Paws::CodeDeploy::BatchGetApplicationsOutput;
   use Moose;
   has ApplicationsInfo => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::ApplicationInfo]', traits => ['Unwrapped'], xmlname => 'applicationsInfo' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -18,6 +19,7 @@ Paws::CodeDeploy::BatchGetApplicationsOutput
 Information about the applications.
 
 
+=head2 _request_id => Str
 
 
 =cut

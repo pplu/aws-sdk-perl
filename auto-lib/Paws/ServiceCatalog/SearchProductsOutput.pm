@@ -5,6 +5,7 @@ package Paws::ServiceCatalog::SearchProductsOutput;
   has ProductViewAggregations => (is => 'ro', isa => 'Paws::ServiceCatalog::ProductViewAggregations');
   has ProductViewSummaries => (is => 'ro', isa => 'ArrayRef[Paws::ServiceCatalog::ProductViewSummary]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -21,11 +22,9 @@ The page token to use to retrieve the next page of results for this
 operation. If there are no more pages, this value is null.
 
 
-
 =head2 ProductViewAggregations => L<Paws::ServiceCatalog::ProductViewAggregations>
 
 A list of the product view aggregation value objects.
-
 
 
 =head2 ProductViewSummaries => ArrayRef[L<Paws::ServiceCatalog::ProductViewSummary>]
@@ -33,6 +32,7 @@ A list of the product view aggregation value objects.
 A list of the product view summary objects.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -19,6 +19,7 @@ package Paws::MachineLearning::GetBatchPredictionOutput;
   has Status => (is => 'ro', isa => 'Str');
   has TotalRecordCount => (is => 'ro', isa => 'Int');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -35,12 +36,10 @@ The ID of the C<DataSource> that was used to create the
 C<BatchPrediction>.
 
 
-
 =head2 BatchPredictionId => Str
 
 An ID assigned to the C<BatchPrediction> at creation. This value should
 be identical to the value of the C<BatchPredictionID> in the request.
-
 
 
 =head2 ComputeTime => Int
@@ -51,12 +50,10 @@ computation resources. C<ComputeTime> is only available if the
 C<BatchPrediction> is in the C<COMPLETED> state.
 
 
-
 =head2 CreatedAt => Str
 
 The time when the C<BatchPrediction> was created. The time is expressed
 in epoch time.
-
 
 
 =head2 CreatedByIamUser => Str
@@ -64,7 +61,6 @@ in epoch time.
 The AWS user account that invoked the C<BatchPrediction>. The account
 type can be either an AWS root account or an AWS Identity and Access
 Management (IAM) user account.
-
 
 
 =head2 FinishedAt => Str
@@ -75,12 +71,10 @@ available when the C<BatchPrediction> is in the C<COMPLETED> or
 C<FAILED> state.
 
 
-
 =head2 InputDataLocationS3 => Str
 
 The location of the data file or directory in Amazon Simple Storage
 Service (Amazon S3).
-
 
 
 =head2 InvalidRecordCount => Int
@@ -89,12 +83,10 @@ The number of invalid records that Amazon Machine Learning saw while
 processing the C<BatchPrediction>.
 
 
-
 =head2 LastUpdatedAt => Str
 
 The time of the most recent edit to C<BatchPrediction>. The time is
 expressed in epoch time.
-
 
 
 =head2 LogUri => Str
@@ -103,12 +95,10 @@ A link to the file that contains logs of the C<CreateBatchPrediction>
 operation.
 
 
-
 =head2 Message => Str
 
 A description of the most recent details about processing the batch
 prediction request.
-
 
 
 =head2 MLModelId => Str
@@ -117,11 +107,9 @@ The ID of the C<MLModel> that generated predictions for the
 C<BatchPrediction> request.
 
 
-
 =head2 Name => Str
 
 A user-supplied name or description of the C<BatchPrediction>.
-
 
 
 =head2 OutputUri => Str
@@ -130,13 +118,11 @@ The location of an Amazon S3 bucket or directory to receive the
 operation results.
 
 
-
 =head2 StartedAt => Str
 
 The epoch time when Amazon Machine Learning marked the
 C<BatchPrediction> as C<INPROGRESS>. C<StartedAt> isn't available if
 the C<BatchPrediction> is in the C<PENDING> state.
-
 
 
 =head2 Status => Str
@@ -164,13 +150,13 @@ not usable.
 
 
 Valid values are: C<"PENDING">, C<"INPROGRESS">, C<"FAILED">, C<"COMPLETED">, C<"DELETED">
-
 =head2 TotalRecordCount => Int
 
 The number of total records that Amazon Machine Learning saw while
 processing the C<BatchPrediction>.
 
 
+=head2 _request_id => Str
 
 
 =cut

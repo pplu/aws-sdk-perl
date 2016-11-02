@@ -3,6 +3,7 @@ package Paws::EC2::DescribeCustomerGatewaysResult;
   use Moose;
   has CustomerGateways => (is => 'ro', isa => 'ArrayRef[Paws::EC2::CustomerGateway]', xmlname => 'customerGatewaySet', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -19,6 +20,7 @@ Paws::EC2::DescribeCustomerGatewaysResult
 Information about one or more customer gateways.
 
 
+=head2 _request_id => Str
 
 
 =cut

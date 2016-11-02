@@ -3,6 +3,7 @@ package Paws::Inspector::AddAttributesToFindingsResponse;
   use Moose;
   has FailedItems => (is => 'ro', isa => 'Paws::Inspector::FailedItems', traits => ['Unwrapped'], xmlname => 'failedItems' , required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -19,6 +20,7 @@ Attribute details that cannot be described. An error code is provided
 for each failed item.
 
 
+=head2 _request_id => Str
 
 
 =cut

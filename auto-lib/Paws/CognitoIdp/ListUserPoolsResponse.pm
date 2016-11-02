@@ -4,6 +4,7 @@ package Paws::CognitoIdp::ListUserPoolsResponse;
   has NextToken => (is => 'ro', isa => 'Str');
   has UserPools => (is => 'ro', isa => 'ArrayRef[Paws::CognitoIdp::UserPoolDescriptionType]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -21,12 +22,12 @@ operation, which can be used to return the next set of items in the
 list.
 
 
-
 =head2 UserPools => ArrayRef[L<Paws::CognitoIdp::UserPoolDescriptionType>]
 
 The user pools from the response to list users.
 
 
+=head2 _request_id => Str
 
 
 =cut

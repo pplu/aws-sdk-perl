@@ -3,6 +3,7 @@ package Paws::ElasticBeanstalk::RetrieveEnvironmentInfoResultMessage;
   use Moose;
   has EnvironmentInfo => (is => 'ro', isa => 'ArrayRef[Paws::ElasticBeanstalk::EnvironmentInfoDescription]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -19,6 +20,7 @@ Paws::ElasticBeanstalk::RetrieveEnvironmentInfoResultMessage
 The EnvironmentInfoDescription of the environment.
 
 
+=head2 _request_id => Str
 
 
 =cut

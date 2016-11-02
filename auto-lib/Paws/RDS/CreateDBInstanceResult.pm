@@ -3,6 +3,7 @@ package Paws::RDS::CreateDBInstanceResult;
   use Moose;
   has DBInstance => (is => 'ro', isa => 'Paws::RDS::DBInstance');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -19,6 +20,7 @@ Paws::RDS::CreateDBInstanceResult
 
 
 
+=head2 _request_id => Str
 
 
 =cut

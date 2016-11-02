@@ -5,6 +5,7 @@ package Paws::Kinesis::GetRecordsOutput;
   has NextShardIterator => (is => 'ro', isa => 'Str');
   has Records => (is => 'ro', isa => 'ArrayRef[Paws::Kinesis::Record]', required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -23,7 +24,6 @@ value of zero indicates record processing is caught up, and there are
 no new records to process at this moment.
 
 
-
 =head2 NextShardIterator => Str
 
 The next position in the shard from which to start sequentially reading
@@ -31,12 +31,12 @@ data records. If set to C<null>, the shard has been closed and the
 requested iterator will not return any more data.
 
 
-
 =head2 B<REQUIRED> Records => ArrayRef[L<Paws::Kinesis::Record>]
 
 The data records retrieved from the shard.
 
 
+=head2 _request_id => Str
 
 
 =cut

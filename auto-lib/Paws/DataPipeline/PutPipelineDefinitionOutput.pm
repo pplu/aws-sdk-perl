@@ -5,6 +5,7 @@ package Paws::DataPipeline::PutPipelineDefinitionOutput;
   has ValidationErrors => (is => 'ro', isa => 'ArrayRef[Paws::DataPipeline::ValidationError]', traits => ['Unwrapped'], xmlname => 'validationErrors' );
   has ValidationWarnings => (is => 'ro', isa => 'ArrayRef[Paws::DataPipeline::ValidationWarning]', traits => ['Unwrapped'], xmlname => 'validationWarnings' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -23,12 +24,10 @@ pipeline and call C<PutPipelineDefinition> to commit the corrected
 pipeline.
 
 
-
 =head2 ValidationErrors => ArrayRef[L<Paws::DataPipeline::ValidationError>]
 
 The validation errors that are associated with the objects defined in
 C<pipelineObjects>.
-
 
 
 =head2 ValidationWarnings => ArrayRef[L<Paws::DataPipeline::ValidationWarning>]
@@ -37,6 +36,7 @@ The validation warnings that are associated with the objects defined in
 C<pipelineObjects>.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -3,6 +3,7 @@ package Paws::CodeDeploy::UpdateDeploymentGroupOutput;
   use Moose;
   has HooksNotCleanedUp => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::AutoScalingGroup]', traits => ['Unwrapped'], xmlname => 'hooksNotCleanedUp' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -22,6 +23,7 @@ AWS account. If the output contains data, AWS CodeDeploy could not
 remove some Auto Scaling lifecycle event hooks from the AWS account.
 
 
+=head2 _request_id => Str
 
 
 =cut

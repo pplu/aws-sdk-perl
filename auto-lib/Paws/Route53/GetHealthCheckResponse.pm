@@ -3,6 +3,7 @@ package Paws::Route53::GetHealthCheckResponse;
   use Moose;
   has HealthCheck => (is => 'ro', isa => 'Paws::Route53::HealthCheck', required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

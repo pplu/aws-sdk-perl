@@ -3,6 +3,7 @@ package Paws::ECR::CreateRepositoryResponse;
   use Moose;
   has Repository => (is => 'ro', isa => 'Paws::ECR::Repository', traits => ['Unwrapped'], xmlname => 'repository' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -18,6 +19,7 @@ Paws::ECR::CreateRepositoryResponse
 The repository that was created.
 
 
+=head2 _request_id => Str
 
 
 =cut

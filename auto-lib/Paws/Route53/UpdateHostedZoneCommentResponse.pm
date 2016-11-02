@@ -3,6 +3,7 @@ package Paws::Route53::UpdateHostedZoneCommentResponse;
   use Moose;
   has HostedZone => (is => 'ro', isa => 'Paws::Route53::HostedZone', required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

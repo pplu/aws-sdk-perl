@@ -4,6 +4,7 @@ package Paws::CodeCommit::BatchGetRepositoriesOutput;
   has Repositories => (is => 'ro', isa => 'ArrayRef[Paws::CodeCommit::RepositoryMetadata]', traits => ['Unwrapped'], xmlname => 'repositories' );
   has RepositoriesNotFound => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['Unwrapped'], xmlname => 'repositoriesNotFound' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -20,13 +21,13 @@ A list of repositories returned by the batch get repositories
 operation.
 
 
-
 =head2 RepositoriesNotFound => ArrayRef[Str|Undef]
 
 Returns a list of repository names for which information could not be
 found.
 
 
+=head2 _request_id => Str
 
 
 =cut

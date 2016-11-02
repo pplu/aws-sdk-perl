@@ -4,6 +4,7 @@ package Paws::CloudWatchLogs::DescribeLogGroupsResponse;
   has LogGroups => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatchLogs::LogGroup]', traits => ['Unwrapped'], xmlname => 'logGroups' );
   has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -19,12 +20,12 @@ Paws::CloudWatchLogs::DescribeLogGroupsResponse
 
 
 
-
 =head2 NextToken => Str
 
 
 
 
+=head2 _request_id => Str
 
 
 =cut

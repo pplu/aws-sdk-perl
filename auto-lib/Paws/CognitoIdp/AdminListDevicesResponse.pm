@@ -4,6 +4,7 @@ package Paws::CognitoIdp::AdminListDevicesResponse;
   has Devices => (is => 'ro', isa => 'ArrayRef[Paws::CognitoIdp::DeviceType]');
   has PaginationToken => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -19,12 +20,12 @@ Paws::CognitoIdp::AdminListDevicesResponse
 The devices in the list of devices response.
 
 
-
 =head2 PaginationToken => Str
 
 The pagination token.
 
 
+=head2 _request_id => Str
 
 
 =cut

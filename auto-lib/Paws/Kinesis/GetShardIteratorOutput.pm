@@ -3,6 +3,7 @@ package Paws::Kinesis::GetShardIteratorOutput;
   use Moose;
   has ShardIterator => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -20,6 +21,7 @@ sequentially. A shard iterator specifies this position using the
 sequence number of a data record in a shard.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -1,0 +1,7 @@
+---
+call: CreateBucket
+service: S3
+tests:
+  - path: _request_id
+    op: eq
+    expected: A80163BBC62F8C1B

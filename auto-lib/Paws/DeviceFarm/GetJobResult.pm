@@ -3,6 +3,7 @@ package Paws::DeviceFarm::GetJobResult;
   use Moose;
   has Job => (is => 'ro', isa => 'Paws::DeviceFarm::Job', traits => ['Unwrapped'], xmlname => 'job' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -18,6 +19,7 @@ Paws::DeviceFarm::GetJobResult
 
 
 
+=head2 _request_id => Str
 
 
 =cut

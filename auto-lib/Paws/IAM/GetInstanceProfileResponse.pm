@@ -3,6 +3,7 @@ package Paws::IAM::GetInstanceProfileResponse;
   use Moose;
   has InstanceProfile => (is => 'ro', isa => 'Paws::IAM::InstanceProfile', required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -19,6 +20,7 @@ Paws::IAM::GetInstanceProfileResponse
 A structure containing details about the instance profile.
 
 
+=head2 _request_id => Str
 
 
 =cut

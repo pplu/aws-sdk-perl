@@ -4,6 +4,7 @@ package Paws::RedShift::TaggedResourceListMessage;
   has Marker => (is => 'ro', isa => 'Str');
   has TaggedResources => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::TaggedResource]', xmlname => 'TaggedResource', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -25,12 +26,12 @@ the C<Marker> field is empty, all response records have been retrieved
 for the request.
 
 
-
 =head2 TaggedResources => ArrayRef[L<Paws::RedShift::TaggedResource>]
 
 A list of tags with their associated resources.
 
 
+=head2 _request_id => Str
 
 
 =cut

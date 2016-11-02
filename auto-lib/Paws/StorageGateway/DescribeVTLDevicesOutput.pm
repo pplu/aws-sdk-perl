@@ -5,6 +5,7 @@ package Paws::StorageGateway::DescribeVTLDevicesOutput;
   has Marker => (is => 'ro', isa => 'Str');
   has VTLDevices => (is => 'ro', isa => 'ArrayRef[Paws::StorageGateway::VTLDevice]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -20,7 +21,6 @@ Paws::StorageGateway::DescribeVTLDevicesOutput
 
 
 
-
 =head2 Marker => Str
 
 An opaque string that indicates the position at which the VTL devices
@@ -30,13 +30,13 @@ no more VTL devices to describe, this field does not appear in the
 response.
 
 
-
 =head2 VTLDevices => ArrayRef[L<Paws::StorageGateway::VTLDevice>]
 
 An array of VTL device objects composed of the Amazon Resource
 Name(ARN) of the VTL devices.
 
 
+=head2 _request_id => Str
 
 
 =cut

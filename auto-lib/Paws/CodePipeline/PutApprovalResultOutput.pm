@@ -3,6 +3,7 @@ package Paws::CodePipeline::PutApprovalResultOutput;
   use Moose;
   has ApprovedAt => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'approvedAt' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -18,6 +19,7 @@ Paws::CodePipeline::PutApprovalResultOutput
 The timestamp showing when the approval or rejection was submitted.
 
 
+=head2 _request_id => Str
 
 
 =cut

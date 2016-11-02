@@ -4,6 +4,7 @@ package Paws::CognitoIdentity::GetIdentityPoolRolesResponse;
   has IdentityPoolId => (is => 'ro', isa => 'Str');
   has Roles => (is => 'ro', isa => 'Paws::CognitoIdentity::RolesMap');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -19,13 +20,13 @@ Paws::CognitoIdentity::GetIdentityPoolRolesResponse
 An identity pool ID in the format REGION:GUID.
 
 
-
 =head2 Roles => L<Paws::CognitoIdentity::RolesMap>
 
 The map of roles associated with this pool. Currently only
 authenticated and unauthenticated roles are supported.
 
 
+=head2 _request_id => Str
 
 
 =cut

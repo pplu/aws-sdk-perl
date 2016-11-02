@@ -4,6 +4,7 @@ package Paws::ECR::BatchCheckLayerAvailabilityResponse;
   has Failures => (is => 'ro', isa => 'ArrayRef[Paws::ECR::LayerFailure]', traits => ['Unwrapped'], xmlname => 'failures' );
   has Layers => (is => 'ro', isa => 'ArrayRef[Paws::ECR::Layer]', traits => ['Unwrapped'], xmlname => 'layers' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -19,13 +20,13 @@ Paws::ECR::BatchCheckLayerAvailabilityResponse
 Any failures associated with the call.
 
 
-
 =head2 Layers => ArrayRef[L<Paws::ECR::Layer>]
 
 A list of image layer objects corresponding to the image layer
 references in the request.
 
 
+=head2 _request_id => Str
 
 
 =cut

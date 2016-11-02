@@ -1,0 +1,91 @@
+---
+call: ListMultipartUploads
+service: S3
+tests:
+  - path: Bucket
+    op: eq
+    expected: bucket
+  - path: MaxUploads
+    op: eq
+    expected: 3
+  - path: IsTruncated
+    op: eq
+    expected: 1
+  - path: NextUploadIdMarker
+    op: eq
+    expected: YW55IGlkZWEgd2h5IGVsdmluZydzIHVwbG9hZCBmYWlsZWQ
+  - path: NextKeyMarker
+    op: eq
+    expected: my-movie.m2ts
+  - path: Uploads.0.Key
+    op: eq
+    expected: my-divisor
+  - path: Uploads.0.UploadId
+    op: eq
+    expected: XMgbGlrZSBlbHZpbmcncyBub3QgaGF2aW5nIG11Y2ggbHVjaw
+  - path: Uploads.0.Initiator.ID
+    op: eq
+    expected: arn:aws:iam::111122223333:user/user1-11111a31-17b5-4fb7-9df5-b111111f13de
+  - path: Uploads.0.Initiator.DisplayName
+    op: eq
+    expected: user1-11111a31-17b5-4fb7-9df5-b111111f13de
+  - path: Uploads.0.Owner.ID
+    op: eq
+    expected: 75aa57f09aa0c8caeab4f8c24e99d10f8e7faeebf76c078efc7c6caea54ba06a
+  - path: Uploads.0.Owner.DisplayName
+    op: eq
+    expected: OwnerDisplayName
+  - path: Uploads.0.StorageClass
+    op: eq
+    expected: STANDARD
+  - path: Uploads.0.Initiated
+    op: eq
+    expected: 2010-11-10T20:48:33.000Z
+  - path: Uploads.1.Key
+    op: eq
+    expected: my-movie.m2ts
+  - path: Uploads.1.UploadId
+    op: eq
+    expected: VXBsb2FkIElEIGZvciBlbHZpbmcncyBteS1tb3ZpZS5tMnRzIHVwbG9hZA
+  - path: Uploads.1.Initiator.ID
+    op: eq
+    expected: b1d16700c70b0b05597d7acd6a3f92be
+  - path: Uploads.1.Initiator.DisplayName
+    op: eq
+    expected: InitiatorDisplayName
+  - path: Uploads.1.Owner.ID
+    op: eq
+    expected: b1d16700c70b0b05597d7acd6a3f92be
+  - path: Uploads.1.Owner.DisplayName
+    op: eq
+    expected: OwnerDisplayName
+  - path: Uploads.1.StorageClass
+    op: eq
+    expected: STANDARD
+  - path: Uploads.1.Initiated
+    op: eq
+    expected: 2010-11-10T20:48:33.000Z
+  - path: Uploads.2.Key
+    op: eq
+    expected: my-movie.m2ts
+  - path: Uploads.2.UploadId
+    op: eq
+    expected: YW55IGlkZWEgd2h5IGVsdmluZydzIHVwbG9hZCBmYWlsZWQ
+  - path: Uploads.2.Initiator.ID
+    op: eq
+    expected: arn:aws:iam::444455556666:user/user1-22222a31-17b5-4fb7-9df5-b222222f13de
+  - path: Uploads.2.Initiator.DisplayName
+    op: eq
+    expected: user1-22222a31-17b5-4fb7-9df5-b222222f13de
+  - path: Uploads.2.Owner.ID
+    op: eq
+    expected: b1d16700c70b0b05597d7acd6a3f92be
+  - path: Uploads.2.Owner.DisplayName
+    op: eq
+    expected: OwnerDisplayName
+  - path: Uploads.2.StorageClass
+    op: eq
+    expected: STANDARD
+  - path: Uploads.2.Initiated
+    op: eq
+    expected: 2010-11-10T20:49:33.000Z

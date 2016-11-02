@@ -3,6 +3,7 @@ package Paws::EC2::DescribeAddressesResult;
   use Moose;
   has Addresses => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Address]', xmlname => 'addressesSet', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -19,6 +20,7 @@ Paws::EC2::DescribeAddressesResult
 Information about one or more Elastic IP addresses.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -3,6 +3,7 @@ package Paws::STS::DecodeAuthorizationMessageResponse;
   use Moose;
   has DecodedMessage => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -19,6 +20,7 @@ Paws::STS::DecodeAuthorizationMessageResponse
 An XML document that contains the decoded message.
 
 
+=head2 _request_id => Str
 
 
 =cut

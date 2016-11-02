@@ -3,6 +3,7 @@ package Paws::EC2::DescribeNetworkInterfacesResult;
   use Moose;
   has NetworkInterfaces => (is => 'ro', isa => 'ArrayRef[Paws::EC2::NetworkInterface]', xmlname => 'networkInterfaceSet', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -19,6 +20,7 @@ Paws::EC2::DescribeNetworkInterfacesResult
 Information about one or more network interfaces.
 
 
+=head2 _request_id => Str
 
 
 =cut

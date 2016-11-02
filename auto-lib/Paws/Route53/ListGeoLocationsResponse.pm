@@ -8,6 +8,7 @@ package Paws::Route53::ListGeoLocationsResponse;
   has NextCountryCode => (is => 'ro', isa => 'Str');
   has NextSubdivisionCode => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

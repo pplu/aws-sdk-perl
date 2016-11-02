@@ -3,6 +3,7 @@ package Paws::RDS::EventCategoriesMessage;
   use Moose;
   has EventCategoriesMapList => (is => 'ro', isa => 'ArrayRef[Paws::RDS::EventCategoriesMap]', xmlname => 'EventCategoriesMap', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -19,6 +20,7 @@ Paws::RDS::EventCategoriesMessage
 A list of EventCategoriesMap data types.
 
 
+=head2 _request_id => Str
 
 
 =cut

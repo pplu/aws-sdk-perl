@@ -4,6 +4,7 @@ package Paws::DMS::DescribeReplicationInstancesResponse;
   has Marker => (is => 'ro', isa => 'Str');
   has ReplicationInstances => (is => 'ro', isa => 'ArrayRef[Paws::DMS::ReplicationInstance]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -21,12 +22,12 @@ parameter is specified, the response includes only records beyond the
 marker, up to the value specified by C<MaxRecords>.
 
 
-
 =head2 ReplicationInstances => ArrayRef[L<Paws::DMS::ReplicationInstance>]
 
 The replication instances described.
 
 
+=head2 _request_id => Str
 
 
 =cut

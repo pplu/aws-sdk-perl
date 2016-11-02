@@ -5,6 +5,7 @@ package Paws::ApiGateway::ExportResponse;
   has ContentDisposition => (is => 'ro', isa => 'Str');
   has ContentType => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -21,11 +22,9 @@ Paws::ApiGateway::ExportResponse
 The binary blob response to GetExport, which contains the export.
 
 
-
 =head2 ContentDisposition => Str
 
 The content-disposition header value in the HTTP response.
-
 
 
 =head2 ContentType => Str
@@ -34,6 +33,7 @@ The content-type header value in the HTTP response. This will
 correspond to a valid 'accept' type in the request.
 
 
+=head2 _request_id => Str
 
 
 =cut

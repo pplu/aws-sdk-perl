@@ -4,6 +4,7 @@ package Paws::RDS::PendingMaintenanceActionsMessage;
   has Marker => (is => 'ro', isa => 'Str');
   has PendingMaintenanceActions => (is => 'ro', isa => 'ArrayRef[Paws::RDS::ResourcePendingMaintenanceActions]', xmlname => 'ResourcePendingMaintenanceActions', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -23,12 +24,12 @@ specified, the response includes only records beyond the marker, up to
 a number of records specified by C<MaxRecords>.
 
 
-
 =head2 PendingMaintenanceActions => ArrayRef[L<Paws::RDS::ResourcePendingMaintenanceActions>]
 
 A list of the pending maintenance actions for the resource.
 
 
+=head2 _request_id => Str
 
 
 =cut

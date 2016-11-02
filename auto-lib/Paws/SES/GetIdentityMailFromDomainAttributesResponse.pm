@@ -3,6 +3,7 @@ package Paws::SES::GetIdentityMailFromDomainAttributesResponse;
   use Moose;
   has MailFromDomainAttributes => (is => 'ro', isa => 'Paws::SES::MailFromDomainAttributes', required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -19,6 +20,7 @@ Paws::SES::GetIdentityMailFromDomainAttributesResponse
 A map of identities to custom MAIL FROM attributes.
 
 
+=head2 _request_id => Str
 
 
 =cut

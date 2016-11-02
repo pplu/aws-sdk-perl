@@ -1,0 +1,13 @@
+---
+call: CreateBucket
+service: S3
+tests:
+  - path: request_id
+    op: eq
+    expected: 195AF4042CD6DF80
+  - path: message
+    op: eq
+    expected: Bad Request
+  - path: code
+    op: eq
+    expected: 400

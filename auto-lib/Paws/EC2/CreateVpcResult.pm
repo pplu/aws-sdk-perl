@@ -3,6 +3,7 @@ package Paws::EC2::CreateVpcResult;
   use Moose;
   has Vpc => (is => 'ro', isa => 'Paws::EC2::Vpc', xmlname => 'vpc', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -19,6 +20,7 @@ Paws::EC2::CreateVpcResult
 Information about the VPC.
 
 
+=head2 _request_id => Str
 
 
 =cut

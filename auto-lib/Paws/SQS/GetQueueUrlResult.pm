@@ -3,6 +3,7 @@ package Paws::SQS::GetQueueUrlResult;
   use Moose;
   has QueueUrl => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -19,6 +20,7 @@ Paws::SQS::GetQueueUrlResult
 The URL for the queue.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -4,6 +4,7 @@ package Paws::WAF::CreateXssMatchSetResponse;
   has ChangeToken => (is => 'ro', isa => 'Str');
   has XssMatchSet => (is => 'ro', isa => 'Paws::WAF::XssMatchSet');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -21,12 +22,12 @@ request. You can also use this value to query the status of the
 request. For more information, see GetChangeTokenStatus.
 
 
-
 =head2 XssMatchSet => L<Paws::WAF::XssMatchSet>
 
 An XssMatchSet.
 
 
+=head2 _request_id => Str
 
 
 =cut

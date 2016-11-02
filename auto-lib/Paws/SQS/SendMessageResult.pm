@@ -5,6 +5,7 @@ package Paws::SQS::SendMessageResult;
   has MD5OfMessageBody => (is => 'ro', isa => 'Str');
   has MessageId => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -25,14 +26,12 @@ digest. For information about MD5, go to
 http://www.faqs.org/rfcs/rfc1321.html.
 
 
-
 =head2 MD5OfMessageBody => Str
 
 An MD5 digest of the non-URL-encoded message body string. This can be
 used to verify that Amazon SQS received the message correctly. Amazon
 SQS first URL decodes the message before creating the MD5 digest. For
 information about MD5, go to http://www.faqs.org/rfcs/rfc1321.html.
-
 
 
 =head2 MessageId => Str
@@ -42,6 +41,7 @@ For more information, see Queue and Message Identifiers in the I<Amazon
 SQS Developer Guide>.
 
 
+=head2 _request_id => Str
 
 
 =cut

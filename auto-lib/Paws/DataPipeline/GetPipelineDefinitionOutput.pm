@@ -5,6 +5,7 @@ package Paws::DataPipeline::GetPipelineDefinitionOutput;
   has ParameterValues => (is => 'ro', isa => 'ArrayRef[Paws::DataPipeline::ParameterValue]', traits => ['Unwrapped'], xmlname => 'parameterValues' );
   has PipelineObjects => (is => 'ro', isa => 'ArrayRef[Paws::DataPipeline::PipelineObject]', traits => ['Unwrapped'], xmlname => 'pipelineObjects' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -20,11 +21,9 @@ Paws::DataPipeline::GetPipelineDefinitionOutput
 The parameter objects used in the pipeline definition.
 
 
-
 =head2 ParameterValues => ArrayRef[L<Paws::DataPipeline::ParameterValue>]
 
 The parameter values used in the pipeline definition.
-
 
 
 =head2 PipelineObjects => ArrayRef[L<Paws::DataPipeline::PipelineObject>]
@@ -32,6 +31,7 @@ The parameter values used in the pipeline definition.
 The objects defined in the pipeline.
 
 
+=head2 _request_id => Str
 
 
 =cut

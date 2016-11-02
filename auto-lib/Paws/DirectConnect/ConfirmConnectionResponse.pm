@@ -3,6 +3,7 @@ package Paws::DirectConnect::ConfirmConnectionResponse;
   use Moose;
   has ConnectionState => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'connectionState' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -18,6 +19,7 @@ Paws::DirectConnect::ConfirmConnectionResponse
 
 
 Valid values are: C<"ordering">, C<"requested">, C<"pending">, C<"available">, C<"down">, C<"deleting">, C<"deleted">, C<"rejected">
+=head2 _request_id => Str
 
 
 =cut

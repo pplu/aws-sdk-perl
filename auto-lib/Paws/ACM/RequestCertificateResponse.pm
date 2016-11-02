@@ -3,6 +3,7 @@ package Paws::ACM::RequestCertificateResponse;
   use Moose;
   has CertificateArn => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -21,6 +22,7 @@ the form:
 C<arn:aws:acm:us-east-1:123456789012:certificate/12345678-1234-1234-1234-123456789012>
 
 
+=head2 _request_id => Str
 
 
 =cut

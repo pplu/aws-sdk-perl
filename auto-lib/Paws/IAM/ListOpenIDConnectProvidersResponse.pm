@@ -3,6 +3,7 @@ package Paws::IAM::ListOpenIDConnectProvidersResponse;
   use Moose;
   has OpenIDConnectProviderList => (is => 'ro', isa => 'ArrayRef[Paws::IAM::OpenIDConnectProviderListEntry]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -20,6 +21,7 @@ The list of IAM OIDC provider resource objects defined in the AWS
 account.
 
 
+=head2 _request_id => Str
 
 
 =cut

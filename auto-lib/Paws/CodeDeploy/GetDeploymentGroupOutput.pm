@@ -3,6 +3,7 @@ package Paws::CodeDeploy::GetDeploymentGroupOutput;
   use Moose;
   has DeploymentGroupInfo => (is => 'ro', isa => 'Paws::CodeDeploy::DeploymentGroupInfo', traits => ['Unwrapped'], xmlname => 'deploymentGroupInfo' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -18,6 +19,7 @@ Paws::CodeDeploy::GetDeploymentGroupOutput
 Information about the deployment group.
 
 
+=head2 _request_id => Str
 
 
 =cut

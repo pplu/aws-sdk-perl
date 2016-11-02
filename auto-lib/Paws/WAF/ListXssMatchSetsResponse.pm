@@ -4,6 +4,7 @@ package Paws::WAF::ListXssMatchSetsResponse;
   has NextMarker => (is => 'ro', isa => 'Str');
   has XssMatchSets => (is => 'ro', isa => 'ArrayRef[Paws::WAF::XssMatchSetSummary]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -23,12 +24,12 @@ C<ListXssMatchSets> request, and specify the C<NextMarker> value from
 the response in the C<NextMarker> value in the next request.
 
 
-
 =head2 XssMatchSets => ArrayRef[L<Paws::WAF::XssMatchSetSummary>]
 
 An array of XssMatchSetSummary objects.
 
 
+=head2 _request_id => Str
 
 
 =cut

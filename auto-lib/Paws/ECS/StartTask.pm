@@ -41,7 +41,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 The short name or full Amazon Resource Name (ARN) of the cluster on
 which to start your task. If you do not specify a cluster, the default
-cluster is assumed.
+cluster is assumed..
 
 
 

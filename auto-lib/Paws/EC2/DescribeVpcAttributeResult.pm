@@ -5,6 +5,7 @@ package Paws::EC2::DescribeVpcAttributeResult;
   has EnableDnsSupport => (is => 'ro', isa => 'Paws::EC2::AttributeBooleanValue', xmlname => 'enableDnsSupport', traits => ['Unwrapped',]);
   has VpcId => (is => 'ro', isa => 'Str', xmlname => 'vpcId', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -23,7 +24,6 @@ If this attribute is C<true>, instances in the VPC get DNS hostnames;
 otherwise, they do not.
 
 
-
 =head2 EnableDnsSupport => L<Paws::EC2::AttributeBooleanValue>
 
 Indicates whether DNS resolution is enabled for the VPC. If this
@@ -32,12 +32,12 @@ your instances to their corresponding IP addresses; otherwise, it does
 not.
 
 
-
 =head2 VpcId => Str
 
 The ID of the VPC.
 
 
+=head2 _request_id => Str
 
 
 =cut

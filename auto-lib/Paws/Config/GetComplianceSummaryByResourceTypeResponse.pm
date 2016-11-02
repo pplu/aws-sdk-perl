@@ -3,6 +3,7 @@ package Paws::Config::GetComplianceSummaryByResourceTypeResponse;
   use Moose;
   has ComplianceSummariesByResourceType => (is => 'ro', isa => 'ArrayRef[Paws::Config::ComplianceSummaryByResourceType]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -21,6 +22,7 @@ request, the numbers are returned for each resource type. The maximum
 number returned is 100.
 
 
+=head2 _request_id => Str
 
 
 =cut

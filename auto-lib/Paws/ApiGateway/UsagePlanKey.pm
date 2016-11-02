@@ -6,6 +6,7 @@ package Paws::ApiGateway::UsagePlanKey;
   has Type => (is => 'ro', isa => 'Str');
   has Value => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -22,11 +23,9 @@ Paws::ApiGateway::UsagePlanKey
 The Id of a usage plan key.
 
 
-
 =head2 Name => Str
 
 The name of a usage plan key.
-
 
 
 =head2 Type => Str
@@ -35,12 +34,12 @@ The type of a usage plan key. Currently, the valid key type is
 C<API_KEY>.
 
 
-
 =head2 Value => Str
 
 The value of a usage plan key.
 
 
+=head2 _request_id => Str
 
 
 =cut

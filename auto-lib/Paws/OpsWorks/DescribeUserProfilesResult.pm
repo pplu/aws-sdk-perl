@@ -3,6 +3,7 @@ package Paws::OpsWorks::DescribeUserProfilesResult;
   use Moose;
   has UserProfiles => (is => 'ro', isa => 'ArrayRef[Paws::OpsWorks::UserProfile]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -18,6 +19,7 @@ Paws::OpsWorks::DescribeUserProfilesResult
 A C<Users> object that describes the specified users.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -3,6 +3,7 @@ package Paws::RedShift::RevokeClusterSecurityGroupIngressResult;
   use Moose;
   has ClusterSecurityGroup => (is => 'ro', isa => 'Paws::RedShift::ClusterSecurityGroup');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -19,6 +20,7 @@ Paws::RedShift::RevokeClusterSecurityGroupIngressResult
 
 
 
+=head2 _request_id => Str
 
 
 =cut

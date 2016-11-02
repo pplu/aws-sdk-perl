@@ -5,6 +5,7 @@ package Paws::Route53::GetHostedZoneResponse;
   has HostedZone => (is => 'ro', isa => 'Paws::Route53::HostedZone', required => 1);
   has VPCs => (is => 'ro', isa => 'ArrayRef[Paws::Route53::VPC]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

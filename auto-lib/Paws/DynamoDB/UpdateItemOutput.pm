@@ -5,6 +5,7 @@ package Paws::DynamoDB::UpdateItemOutput;
   has ConsumedCapacity => (is => 'ro', isa => 'Paws::DynamoDB::ConsumedCapacity');
   has ItemCollectionMetrics => (is => 'ro', isa => 'Paws::DynamoDB::ItemCollectionMetrics');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -23,9 +24,7 @@ something other than C<NONE> in the request. Each element represents
 one attribute.
 
 
-
 =head2 ConsumedCapacity => L<Paws::DynamoDB::ConsumedCapacity>
-
 
 
 
@@ -35,6 +34,7 @@ one attribute.
 
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -4,6 +4,7 @@ package Paws::Support::AddAttachmentsToSetResponse;
   has AttachmentSetId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'attachmentSetId' );
   has ExpiryTime => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'expiryTime' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -22,12 +23,12 @@ returned in the response. If an C<attachmentSetId> was specified, the
 attachments are added to the specified set, if it exists.
 
 
-
 =head2 ExpiryTime => Str
 
 The time and date when the attachment set expires.
 
 
+=head2 _request_id => Str
 
 
 =cut

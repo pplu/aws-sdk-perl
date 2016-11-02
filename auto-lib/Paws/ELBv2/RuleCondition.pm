@@ -61,7 +61,7 @@ _ - . $ / ~ " ' @ : +
 
 =item *
 
-&amp; (using &amp;amp;)
+& (using &amp;)
 
 =item *
 

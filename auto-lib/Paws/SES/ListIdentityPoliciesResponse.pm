@@ -3,6 +3,7 @@ package Paws::SES::ListIdentityPoliciesResponse;
   use Moose;
   has PolicyNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -19,6 +20,7 @@ Paws::SES::ListIdentityPoliciesResponse
 A list of names of policies that apply to the specified identity.
 
 
+=head2 _request_id => Str
 
 
 =cut

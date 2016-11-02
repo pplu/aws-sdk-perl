@@ -3,6 +3,7 @@ package Paws::DMS::CreateEndpointResponse;
   use Moose;
   has Endpoint => (is => 'ro', isa => 'Paws::DMS::Endpoint');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -18,6 +19,7 @@ Paws::DMS::CreateEndpointResponse
 The endpoint that was created.
 
 
+=head2 _request_id => Str
 
 
 =cut

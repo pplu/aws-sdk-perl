@@ -4,6 +4,7 @@ package Paws::RedShift::ClusterParameterGroupDetails;
   has Marker => (is => 'ro', isa => 'Str');
   has Parameters => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::Parameter]', xmlname => 'Parameter', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -25,13 +26,13 @@ the C<Marker> field is empty, all response records have been retrieved
 for the request.
 
 
-
 =head2 Parameters => ArrayRef[L<Paws::RedShift::Parameter>]
 
 A list of Parameter instances. Each instance lists the parameters of
 one cluster parameter group.
 
 
+=head2 _request_id => Str
 
 
 =cut

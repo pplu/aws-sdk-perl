@@ -3,6 +3,7 @@ package Paws::Firehose::CreateDeliveryStreamOutput;
   use Moose;
   has DeliveryStreamARN => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -18,6 +19,7 @@ Paws::Firehose::CreateDeliveryStreamOutput
 The ARN of the delivery stream.
 
 
+=head2 _request_id => Str
 
 
 =cut

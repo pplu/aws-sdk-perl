@@ -4,6 +4,7 @@ package Paws::ApiGateway::Deployments;
   has Items => (is => 'ro', isa => 'ArrayRef[Paws::ApiGateway::Deployment]');
   has Position => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -21,12 +22,12 @@ The current page of any Deployment resources in the collection of
 deployment resources.
 
 
-
 =head2 Position => Str
 
 
 
 
+=head2 _request_id => Str
 
 
 =cut

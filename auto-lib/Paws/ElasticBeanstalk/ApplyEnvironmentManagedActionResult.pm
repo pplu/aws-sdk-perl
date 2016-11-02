@@ -6,6 +6,7 @@ package Paws::ElasticBeanstalk::ApplyEnvironmentManagedActionResult;
   has ActionType => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -22,11 +23,9 @@ Paws::ElasticBeanstalk::ApplyEnvironmentManagedActionResult
 A description of the managed action.
 
 
-
 =head2 ActionId => Str
 
 The action ID of the managed action.
-
 
 
 =head2 ActionType => Str
@@ -34,12 +33,12 @@ The action ID of the managed action.
 The type of managed action.
 
 Valid values are: C<"InstanceRefresh">, C<"PlatformUpdate">, C<"Unknown">
-
 =head2 Status => Str
 
 The status of the managed action.
 
 
+=head2 _request_id => Str
 
 
 =cut

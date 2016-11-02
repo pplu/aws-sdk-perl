@@ -3,6 +3,7 @@ package Paws::StorageGateway::DeleteGatewayOutput;
   use Moose;
   has GatewayARN => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -18,6 +19,7 @@ Paws::StorageGateway::DeleteGatewayOutput
 
 
 
+=head2 _request_id => Str
 
 
 =cut

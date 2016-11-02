@@ -3,6 +3,7 @@ package Paws::RDS::AuthorizeDBSecurityGroupIngressResult;
   use Moose;
   has DBSecurityGroup => (is => 'ro', isa => 'Paws::RDS::DBSecurityGroup');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -19,6 +20,7 @@ Paws::RDS::AuthorizeDBSecurityGroupIngressResult
 
 
 
+=head2 _request_id => Str
 
 
 =cut

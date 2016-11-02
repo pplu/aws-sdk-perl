@@ -3,6 +3,7 @@ package Paws::EC2::CreateImageResult;
   use Moose;
   has ImageId => (is => 'ro', isa => 'Str', xmlname => 'imageId', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -19,6 +20,7 @@ Paws::EC2::CreateImageResult
 The ID of the new AMI.
 
 
+=head2 _request_id => Str
 
 
 =cut
