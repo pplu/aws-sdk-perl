@@ -3,6 +3,7 @@ package Paws::CloudFormation::CreateChangeSet;
   use Moose;
   has Capabilities => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has ChangeSetName => (is => 'ro', isa => 'Str', required => 1);
+  has ChangeSetType => (is => 'ro', isa => 'Str');
   has ClientToken => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has NotificationARNs => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
@@ -83,6 +84,28 @@ characters and hyphens. It must start with an alphabetic character and
 cannot exceed 128 characters.
 
 
+
+=head2 ChangeSetType => Str
+
+The type of change set operation. Valid values are C<CREATE> and
+C<UPDATE>:
+
+=over
+
+=item *
+
+C<CREATE> - Specify for a change set for a stack that does not yet
+exist. The stack has an expected unique ID, but no template or
+resources. It can include multiple change sets.
+
+=item *
+
+C<UPDATE> - Specify for a change set for an existing stack.
+
+=back
+
+
+Valid values are: C<"CREATE">, C<"UPDATE">
 
 =head2 ClientToken => Str
 
