@@ -3,6 +3,7 @@ package Paws::ApplicationAutoScaling::PutScalingPolicyResponse;
   use Moose;
   has PolicyARN => (is => 'ro', isa => 'Str', required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -18,6 +19,7 @@ Paws::ApplicationAutoScaling::PutScalingPolicyResponse
 The Amazon Resource Name (ARN) of the resulting scaling policy.
 
 
+=head2 _request_id => Str
 
 
 =cut

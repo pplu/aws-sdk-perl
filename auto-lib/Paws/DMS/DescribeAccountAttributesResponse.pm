@@ -3,6 +3,7 @@ package Paws::DMS::DescribeAccountAttributesResponse;
   use Moose;
   has AccountQuotas => (is => 'ro', isa => 'ArrayRef[Paws::DMS::AccountQuota]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -18,6 +19,7 @@ Paws::DMS::DescribeAccountAttributesResponse
 Account quota information.
 
 
+=head2 _request_id => Str
 
 
 =cut

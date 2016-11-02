@@ -4,6 +4,7 @@ package Paws::ElasticTranscoder::UpdatePipelineResponse;
   has Pipeline => (is => 'ro', isa => 'Paws::ElasticTranscoder::Pipeline');
   has Warnings => (is => 'ro', isa => 'ArrayRef[Paws::ElasticTranscoder::Warning]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -20,7 +21,6 @@ Paws::ElasticTranscoder::UpdatePipelineResponse
 
 
 
-
 =head2 Warnings => ArrayRef[L<Paws::ElasticTranscoder::Warning>]
 
 Elastic Transcoder returns a warning if the resources used by your
@@ -31,6 +31,7 @@ Amazon SNS notification topics, and AWS KMS key, reduces processing
 time and prevents cross-regional charges.
 
 
+=head2 _request_id => Str
 
 
 =cut

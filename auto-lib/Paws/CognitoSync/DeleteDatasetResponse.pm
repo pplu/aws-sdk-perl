@@ -3,6 +3,7 @@ package Paws::CognitoSync::DeleteDatasetResponse;
   use Moose;
   has Dataset => (is => 'ro', isa => 'Paws::CognitoSync::Dataset');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -23,6 +24,7 @@ game). Datasets are automatically created if they don't exist. Data is
 synced by dataset, and a dataset can hold up to 1MB of key-value pairs.
 
 
+=head2 _request_id => Str
 
 
 =cut

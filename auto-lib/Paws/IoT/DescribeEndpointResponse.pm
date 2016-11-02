@@ -3,6 +3,7 @@ package Paws::IoT::DescribeEndpointResponse;
   use Moose;
   has EndpointAddress => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -20,6 +21,7 @@ The endpoint. The format of the endpoint is as follows:
 I<identifier>.iot.I<region>.amazonaws.com.
 
 
+=head2 _request_id => Str
 
 
 =cut

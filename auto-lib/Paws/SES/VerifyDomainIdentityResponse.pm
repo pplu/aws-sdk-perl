@@ -3,6 +3,7 @@ package Paws::SES::VerifyDomainIdentityResponse;
   use Moose;
   has VerificationToken => (is => 'ro', isa => 'Str', required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -20,6 +21,7 @@ A TXT record that must be placed in the DNS settings for the domain, in
 order to complete domain verification.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -4,6 +4,7 @@ package Paws::RDS::DBParameterGroupDetails;
   has Marker => (is => 'ro', isa => 'Str');
   has Parameters => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Parameter]', xmlname => 'Parameter', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -22,12 +23,12 @@ parameter is specified, the response includes only records beyond the
 marker, up to the value specified by C<MaxRecords>.
 
 
-
 =head2 Parameters => ArrayRef[L<Paws::RDS::Parameter>]
 
 A list of Parameter values.
 
 
+=head2 _request_id => Str
 
 
 =cut

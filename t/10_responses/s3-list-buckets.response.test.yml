@@ -1,0 +1,113 @@
+---
+call: ListBuckets
+service: S3
+tests:
+  - expected: botostats
+    op: eq
+    path: Buckets.0.Name
+  - expected: bucket-1355863083
+    op: eq
+    path: Buckets.1.Name
+  - expected: elasticbeanstalk-us-east-1-419278470775
+    op: eq
+    path: Buckets.2.Name
+  - expected: elasticbeanstalk-us-west-2-419278470775
+    op: eq
+    path: Buckets.3.Name
+  - expected: encryption-1332788550
+    op: eq
+    path: Buckets.4.Name
+  - expected: encryption-1346779637
+    op: eq
+    path: Buckets.5.Name
+  - expected: garnaat-amazon
+    op: eq
+    path: Buckets.6.Name
+  - expected: garnaat_test_lifecycle
+    op: eq
+    path: Buckets.7.Name
+  - expected: keytest-1355862601
+    op: eq
+    path: Buckets.8.Name
+  - expected: keytest-1355863376
+    op: eq
+    path: Buckets.9.Name
+  - expected: mgtest2cloudformation
+    op: eq
+    path: Buckets.10.Name
+  - expected: mgtestcloudformation
+    op: eq
+    path: Buckets.11.Name
+  - expected: mitchtestcloudformation
+    op: eq
+    path: Buckets.12.Name
+  - expected: multidelete-1355862684
+    op: eq
+    path: Buckets.13.Name
+  - expected: multidelete-1355862730
+    op: eq
+    path: Buckets.14.Name
+  - expected: multidelete-1355863407
+    op: eq
+    path: Buckets.15.Name
+  - expected: multidelete-1355863439
+    op: eq
+    path: Buckets.16.Name
+  - expected: multidelete-1355863446
+    op: eq
+    path: Buckets.17.Name
+  - expected: multidelete-1355863455
+    op: eq
+    path: Buckets.18.Name
+  - expected: multidelete-1355863464
+    op: eq
+    path: Buckets.19.Name
+  - expected: multidelete-1355863470
+    op: eq
+    path: Buckets.20.Name
+  - expected: multipart-1355862845
+    op: eq
+    path: Buckets.21.Name
+  - expected: multipart-1355862901
+    op: eq
+    path: Buckets.22.Name
+  - expected: multipart-1355863550
+    op: eq
+    path: Buckets.23.Name
+  - expected: multipart-1355863593
+    op: eq
+    path: Buckets.24.Name
+  - expected: pyconprod
+    op: eq
+    path: Buckets.25.Name
+  - expected: src-bucket-1332098908
+    op: eq
+    path: Buckets.26.Name
+  - expected: src-bucket-1332788526
+    op: eq
+    path: Buckets.27.Name
+  - expected: src-bucket-1332789019
+    op: eq
+    path: Buckets.28.Name
+  - expected: src-bucket-1332868116
+    op: eq
+    path: Buckets.29.Name
+  - expected: src-bucket-1339608971
+    op: eq
+    path: Buckets.30.Name
+  - expected: src-bucket-1357699848
+    op: eq
+    path: Buckets.31.Name
+  - expected: stats.pythonboto.org
+    op: eq
+    path: Buckets.32.Name
+  - expected: test-1357854245
+    op: eq
+    path: Buckets.33.Name
+  - expected: test-1357854246
+    op: eq
+    path: Buckets.34.Name
+  - expected: version-1328224364
+    op: eq
+    path: Buckets.35.Name
+    

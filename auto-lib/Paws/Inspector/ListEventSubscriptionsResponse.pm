@@ -4,6 +4,7 @@ package Paws::Inspector::ListEventSubscriptionsResponse;
   has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
   has Subscriptions => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::Subscription]', traits => ['Unwrapped'], xmlname => 'subscriptions' , required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -22,12 +23,12 @@ the B<nextToken> parameter in a subsequent pagination request. If there
 is no more data to be listed, this parameter is set to null.
 
 
-
 =head2 B<REQUIRED> Subscriptions => ArrayRef[L<Paws::Inspector::Subscription>]
 
 Details of the returned event subscriptions.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -4,6 +4,7 @@ package Paws::ApiGateway::UsagePlans;
   has Items => (is => 'ro', isa => 'ArrayRef[Paws::ApiGateway::UsagePlan]');
   has Position => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -20,12 +21,12 @@ Paws::ApiGateway::UsagePlans
 Gets the current item when enumerating the collection of UsagePlan.
 
 
-
 =head2 Position => Str
 
 
 
 
+=head2 _request_id => Str
 
 
 =cut

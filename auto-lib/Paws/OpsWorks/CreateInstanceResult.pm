@@ -3,6 +3,7 @@ package Paws::OpsWorks::CreateInstanceResult;
   use Moose;
   has InstanceId => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -18,6 +19,7 @@ Paws::OpsWorks::CreateInstanceResult
 The instance ID.
 
 
+=head2 _request_id => Str
 
 
 =cut

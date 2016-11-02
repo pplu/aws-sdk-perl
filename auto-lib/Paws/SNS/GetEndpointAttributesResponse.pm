@@ -3,6 +3,7 @@ package Paws::SNS::GetEndpointAttributesResponse;
   use Moose;
   has Attributes => (is => 'ro', isa => 'Paws::SNS::MapStringToString');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -44,6 +45,7 @@ service.
 
 
 
+=head2 _request_id => Str
 
 
 =cut

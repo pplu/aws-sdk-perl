@@ -3,6 +3,7 @@ package Paws::ServiceCatalog::TerminateProvisionedProductOutput;
   use Moose;
   has RecordDetail => (is => 'ro', isa => 'Paws::ServiceCatalog::RecordDetail');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -21,6 +22,7 @@ request, a pointer to the ProvisionedProduct object that the request is
 modifying, and a list of any errors that the request encountered.
 
 
+=head2 _request_id => Str
 
 
 =cut

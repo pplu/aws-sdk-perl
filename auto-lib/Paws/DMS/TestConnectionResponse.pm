@@ -3,6 +3,7 @@ package Paws::DMS::TestConnectionResponse;
   use Moose;
   has Connection => (is => 'ro', isa => 'Paws::DMS::Connection');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -18,6 +19,7 @@ Paws::DMS::TestConnectionResponse
 The connection tested.
 
 
+=head2 _request_id => Str
 
 
 =cut

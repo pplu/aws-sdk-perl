@@ -4,6 +4,7 @@ package Paws::DeviceFarm::ListUniqueProblemsResult;
   has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
   has UniqueProblems => (is => 'ro', isa => 'Paws::DeviceFarm::UniqueProblemsByExecutionResultMap', traits => ['Unwrapped'], xmlname => 'uniqueProblems' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -20,7 +21,6 @@ If the number of items that are returned is significantly large, this
 is an identifier that is also returned, which can be used in a
 subsequent call to this operation to return the next set of items in
 the list.
-
 
 
 =head2 UniqueProblems => L<Paws::DeviceFarm::UniqueProblemsByExecutionResultMap>
@@ -63,6 +63,7 @@ STOPPED: A stopped condition.
 
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -1,0 +1,36 @@
+---
+content: |-
+  <?xml version="1.0" encoding="UTF-8"?>
+  <ListPartsResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/">
+    <Bucket>paws-test-bucket</Bucket>
+    <Key>uploads/multipart_test.txt</Key>
+    <UploadId>uSTxL8ynJYgTL0m0aVWytLy_qibNPga1e.kJnU3SJ1DyDqKX7rFoEOtUMi.eG10Dao.zehdNDdkqt2YiEQ97Ps9OguNxszrJzXbQMwKL2UI1.fgHPOwCI6j0I6cYjgS.</UploadId>
+    <Initiator>
+      <ID>arn:aws:iam::123456789101:user/paws-test-user</ID>
+      <DisplayName>paws.test.user</DisplayName>
+    </Initiator>
+    <Owner>
+      <ID>WRTYWEVVWERBWBWTBWBWERBYWB</ID>
+      <DisplayName>aws</DisplayName>
+    </Owner>
+    <StorageClass>STANDARD</StorageClass>
+    <PartNumberMarker>0</PartNumberMarker>
+    <NextPartNumberMarker>1</NextPartNumberMarker>
+    <MaxParts>1000</MaxParts>
+    <IsTruncated>false</IsTruncated>
+    <Part>
+      <PartNumber>1</PartNumber>
+      <LastModified>2016-11-02T09:28:15.000Z</LastModified>
+      <ETag>&quot;db7e0a889cbffee28e35df8eea0532c6&quot;</ETag>
+      <Size>11</Size>
+    </Part>
+  </ListPartsResult>
+headers:
+  connection: close
+  content-type: application/xml
+  date: 'Wed, 02 Nov 2016 09:50:46 GMT'
+  server: AmazonS3
+  transfer-encoding: chunked
+  x-amz-id-2: rNDpdre6JZUhPtJz+wuBxHDiP/WLuBp0ZrvHD2hWDic5Y9I79scwoidyrveXLgWqVYLppLHBvvg=
+  x-amz-request-id: 9E8FD47B278F60CB
+status: 200

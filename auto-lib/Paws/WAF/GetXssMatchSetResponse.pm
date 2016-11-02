@@ -3,6 +3,7 @@ package Paws::WAF::GetXssMatchSetResponse;
   use Moose;
   has XssMatchSet => (is => 'ro', isa => 'Paws::WAF::XssMatchSet');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -39,6 +40,7 @@ FieldToMatch: Contains C<Data> and C<Type>
 
 
 
+=head2 _request_id => Str
 
 
 =cut

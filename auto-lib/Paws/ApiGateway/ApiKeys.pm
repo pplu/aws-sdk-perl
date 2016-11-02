@@ -5,6 +5,7 @@ package Paws::ApiGateway::ApiKeys;
   has Position => (is => 'ro', isa => 'Str');
   has Warnings => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -22,9 +23,7 @@ The current page of any ApiKey resources in the collection of ApiKey
 resources.
 
 
-
 =head2 Position => Str
-
 
 
 
@@ -35,6 +34,7 @@ A list of warning messages logged during the import of API keys when
 the C<failOnWarnings> option is set to true.
 
 
+=head2 _request_id => Str
 
 
 =cut

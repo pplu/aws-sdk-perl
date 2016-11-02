@@ -44,8 +44,8 @@ Specifies the type of update to perform to an IPSet with UpdateIPSet.
 
 =head2 B<REQUIRED> IPSetDescriptor => L<Paws::WAF::IPSetDescriptor>
 
-  The IP address type (C<IPV4>) and the IP address range (in CIDR
-notation) that web requests originate from.
+  The IP address type (C<IPV4> or C<IPV6>) and the IP address range (in
+CIDR notation) that web requests originate from.
 
 
 

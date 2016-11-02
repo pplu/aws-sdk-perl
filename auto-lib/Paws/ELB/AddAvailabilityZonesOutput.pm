@@ -3,6 +3,7 @@ package Paws::ELB::AddAvailabilityZonesOutput;
   use Moose;
   has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -19,6 +20,7 @@ Paws::ELB::AddAvailabilityZonesOutput
 The updated list of Availability Zones for the load balancer.
 
 
+=head2 _request_id => Str
 
 
 =cut

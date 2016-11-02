@@ -3,6 +3,7 @@ package Paws::IAM::GetAccountPasswordPolicyResponse;
   use Moose;
   has PasswordPolicy => (is => 'ro', isa => 'Paws::IAM::PasswordPolicy', required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -19,6 +20,7 @@ Paws::IAM::GetAccountPasswordPolicyResponse
 
 
 
+=head2 _request_id => Str
 
 
 =cut

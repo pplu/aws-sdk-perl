@@ -4,6 +4,7 @@ package Paws::CloudTrail::ListTagsResponse;
   has NextToken => (is => 'ro', isa => 'Str');
   has ResourceTagList => (is => 'ro', isa => 'ArrayRef[Paws::CloudTrail::ResourceTag]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -19,12 +20,12 @@ Paws::CloudTrail::ListTagsResponse
 Reserved for future use.
 
 
-
 =head2 ResourceTagList => ArrayRef[L<Paws::CloudTrail::ResourceTag>]
 
 
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -4,6 +4,7 @@ package Paws::OpsWorks::DescribeStackProvisioningParametersResult;
   has AgentInstallerUrl => (is => 'ro', isa => 'Str');
   has Parameters => (is => 'ro', isa => 'Paws::OpsWorks::Parameters');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -19,12 +20,12 @@ Paws::OpsWorks::DescribeStackProvisioningParametersResult
 The AWS OpsWorks agent installer's URL.
 
 
-
 =head2 Parameters => L<Paws::OpsWorks::Parameters>
 
 An embedded object that contains the provisioning parameters.
 
 
+=head2 _request_id => Str
 
 
 =cut

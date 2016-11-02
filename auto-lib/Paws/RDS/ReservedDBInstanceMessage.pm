@@ -4,6 +4,7 @@ package Paws::RDS::ReservedDBInstanceMessage;
   has Marker => (is => 'ro', isa => 'Str');
   has ReservedDBInstances => (is => 'ro', isa => 'ArrayRef[Paws::RDS::ReservedDBInstance]', xmlname => 'ReservedDBInstance', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -22,12 +23,12 @@ parameter is specified, the response includes only records beyond the
 marker, up to the value specified by C<MaxRecords>.
 
 
-
 =head2 ReservedDBInstances => ArrayRef[L<Paws::RDS::ReservedDBInstance>]
 
 A list of reserved DB instances.
 
 
+=head2 _request_id => Str
 
 
 =cut

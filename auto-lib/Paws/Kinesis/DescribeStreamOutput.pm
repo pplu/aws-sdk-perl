@@ -3,6 +3,7 @@ package Paws::Kinesis::DescribeStreamOutput;
   use Moose;
   has StreamDescription => (is => 'ro', isa => 'Paws::Kinesis::StreamDescription', required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -20,6 +21,7 @@ objects that comprise the stream, and states whether there are more
 shards available.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -3,6 +3,7 @@ package Paws::RedShift::PurchaseReservedNodeOfferingResult;
   use Moose;
   has ReservedNode => (is => 'ro', isa => 'Paws::RedShift::ReservedNode');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -19,6 +20,7 @@ Paws::RedShift::PurchaseReservedNodeOfferingResult
 
 
 
+=head2 _request_id => Str
 
 
 =cut

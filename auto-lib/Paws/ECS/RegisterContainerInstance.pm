@@ -50,7 +50,7 @@ supports.
 
 The short name or full Amazon Resource Name (ARN) of the cluster with
 which to register your container instance. If you do not specify a
-cluster, the default cluster is assumed.
+cluster, the default cluster is assumed..
 
 
 

@@ -4,6 +4,7 @@ package Paws::DeviceFarm::ListOfferingTransactionsResult;
   has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
   has OfferingTransactions => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::OfferingTransaction]', traits => ['Unwrapped'], xmlname => 'offeringTransactions' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -21,13 +22,13 @@ operation, which can be used to return the next set of items in the
 list.
 
 
-
 =head2 OfferingTransactions => ArrayRef[L<Paws::DeviceFarm::OfferingTransaction>]
 
 The audit log of subscriptions you have purchased and modified through
 AWS Device Farm.
 
 
+=head2 _request_id => Str
 
 
 =cut

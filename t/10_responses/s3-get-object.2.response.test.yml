@@ -1,0 +1,13 @@
+---
+call: GetObject
+service: S3
+tests:
+  - path: request_id
+    op: eq
+    expected: E4845140F3F4C4AB
+  - path: message
+    op: eq
+    expected: Not Found
+  - path: code
+    op: eq
+    expected: 404

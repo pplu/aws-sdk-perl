@@ -3,6 +3,7 @@ package Paws::Support::AddCommunicationToCaseResponse;
   use Moose;
   has Result => (is => 'ro', isa => 'Bool', traits => ['Unwrapped'], xmlname => 'result' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -18,6 +19,7 @@ Paws::Support::AddCommunicationToCaseResponse
 True if AddCommunicationToCase succeeds. Otherwise, returns an error.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -4,6 +4,7 @@ package Paws::DeviceFarm::ListArtifactsResult;
   has Artifacts => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::Artifact]', traits => ['Unwrapped'], xmlname => 'artifacts' );
   has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -19,7 +20,6 @@ Paws::DeviceFarm::ListArtifactsResult
 Information about the artifacts.
 
 
-
 =head2 NextToken => Str
 
 If the number of items that are returned is significantly large, this
@@ -28,6 +28,7 @@ subsequent call to this operation to return the next set of items in
 the list.
 
 
+=head2 _request_id => Str
 
 
 =cut

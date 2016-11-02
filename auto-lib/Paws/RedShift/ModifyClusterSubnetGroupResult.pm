@@ -3,6 +3,7 @@ package Paws::RedShift::ModifyClusterSubnetGroupResult;
   use Moose;
   has ClusterSubnetGroup => (is => 'ro', isa => 'Paws::RedShift::ClusterSubnetGroup');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -19,6 +20,7 @@ Paws::RedShift::ModifyClusterSubnetGroupResult
 
 
 
+=head2 _request_id => Str
 
 
 =cut

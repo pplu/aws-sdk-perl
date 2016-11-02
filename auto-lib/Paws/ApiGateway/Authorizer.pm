@@ -12,6 +12,7 @@ package Paws::ApiGateway::Authorizer;
   has ProviderARNs => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Type => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -31,13 +32,11 @@ assume, use the role's Amazon Resource Name (ARN). To use
 resource-based permissions on the Lambda function, specify null.
 
 
-
 =head2 AuthorizerResultTtlInSeconds => Int
 
 The TTL in seconds of cached authorizer results. If greater than 0, API
 Gateway will cache authorizer responses. If this field is not set, the
 default value is 300. The maximum value is 3600, or 1 hour.
-
 
 
 =head2 AuthorizerUri => Str
@@ -53,18 +52,15 @@ functions, this is usually of the form
 /2015-03-31/functions/[FunctionARN]/invocations
 
 
-
 =head2 AuthType => Str
 
 Optional customer-defined field, used in Swagger imports/exports. Has
 no functional impact.
 
 
-
 =head2 Id => Str
 
 The identifier for the authorizer resource.
-
 
 
 =head2 IdentitySource => Str
@@ -77,7 +73,6 @@ integration parameter mappings. The only valid source for tokens is
 '[headerName]' will be interpreted as the incoming token.
 
 
-
 =head2 IdentityValidationExpression => Str
 
 A validation expression for the incoming identity. For TOKEN
@@ -87,17 +82,14 @@ proceed if the token matches. If the token doesn't match, the client
 receives a 401 Unauthorized response.
 
 
-
 =head2 Name => Str
 
 [Required] The name of the authorizer.
 
 
-
 =head2 ProviderARNs => ArrayRef[Str|Undef]
 
 A list of the provider ARNs of the authorizer.
-
 
 
 =head2 Type => Str
@@ -106,6 +98,7 @@ A list of the provider ARNs of the authorizer.
 is TOKEN.
 
 Valid values are: C<"TOKEN">, C<"COGNITO_USER_POOLS">
+=head2 _request_id => Str
 
 
 =cut

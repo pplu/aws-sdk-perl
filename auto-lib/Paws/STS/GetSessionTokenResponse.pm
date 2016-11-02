@@ -3,6 +3,7 @@ package Paws::STS::GetSessionTokenResponse;
   use Moose;
   has Credentials => (is => 'ro', isa => 'Paws::STS::Credentials');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -26,6 +27,7 @@ bytes, but that can vary. Also, future updates to AWS might require
 larger sizes.
 
 
+=head2 _request_id => Str
 
 
 =cut

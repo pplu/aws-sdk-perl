@@ -4,6 +4,7 @@ package Paws::SSM::ListAssociationsResult;
   has Associations => (is => 'ro', isa => 'ArrayRef[Paws::SSM::Association]');
   has NextToken => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -19,13 +20,13 @@ Paws::SSM::ListAssociationsResult
 The associations.
 
 
-
 =head2 NextToken => Str
 
 The token to use when requesting the next set of items. If there are no
 additional items to return, the string is empty.
 
 
+=head2 _request_id => Str
 
 
 =cut

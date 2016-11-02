@@ -4,6 +4,7 @@ package Paws::Lambda::ListFunctionsResponse;
   has Functions => (is => 'ro', isa => 'ArrayRef[Paws::Lambda::FunctionConfiguration]');
   has NextMarker => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -20,12 +21,12 @@ Paws::Lambda::ListFunctionsResponse
 A list of Lambda functions.
 
 
-
 =head2 NextMarker => Str
 
 A string, present if there are more functions.
 
 
+=head2 _request_id => Str
 
 
 =cut

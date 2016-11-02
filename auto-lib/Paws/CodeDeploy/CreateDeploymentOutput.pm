@@ -3,6 +3,7 @@ package Paws::CodeDeploy::CreateDeploymentOutput;
   use Moose;
   has DeploymentId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'deploymentId' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -18,6 +19,7 @@ Paws::CodeDeploy::CreateDeploymentOutput
 A unique deployment ID.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -4,6 +4,7 @@ package Paws::DeviceFarm::ListProjectsResult;
   has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
   has Projects => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::Project]', traits => ['Unwrapped'], xmlname => 'projects' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -22,12 +23,12 @@ subsequent call to this operation to return the next set of items in
 the list.
 
 
-
 =head2 Projects => ArrayRef[L<Paws::DeviceFarm::Project>]
 
 Information about the projects.
 
 
+=head2 _request_id => Str
 
 
 =cut

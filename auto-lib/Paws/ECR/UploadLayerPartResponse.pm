@@ -6,6 +6,7 @@ package Paws::ECR::UploadLayerPartResponse;
   has RepositoryName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'repositoryName' );
   has UploadId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'uploadId' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -21,11 +22,9 @@ Paws::ECR::UploadLayerPartResponse
 The integer value of the last byte received in the request.
 
 
-
 =head2 RegistryId => Str
 
 The registry ID associated with the request.
-
 
 
 =head2 RepositoryName => Str
@@ -33,12 +32,12 @@ The registry ID associated with the request.
 The repository name associated with the request.
 
 
-
 =head2 UploadId => Str
 
 The upload ID associated with the request.
 
 
+=head2 _request_id => Str
 
 
 =cut

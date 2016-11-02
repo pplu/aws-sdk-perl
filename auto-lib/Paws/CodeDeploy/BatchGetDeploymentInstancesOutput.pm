@@ -4,6 +4,7 @@ package Paws::CodeDeploy::BatchGetDeploymentInstancesOutput;
   has ErrorMessage => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'errorMessage' );
   has InstancesSummary => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::InstanceSummary]', traits => ['Unwrapped'], xmlname => 'instancesSummary' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -19,12 +20,12 @@ Paws::CodeDeploy::BatchGetDeploymentInstancesOutput
 Information about errors that may have occurred during the API call.
 
 
-
 =head2 InstancesSummary => ArrayRef[L<Paws::CodeDeploy::InstanceSummary>]
 
 Information about the instance.
 
 
+=head2 _request_id => Str
 
 
 =cut

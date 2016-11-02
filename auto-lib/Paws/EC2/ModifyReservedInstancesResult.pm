@@ -3,6 +3,7 @@ package Paws::EC2::ModifyReservedInstancesResult;
   use Moose;
   has ReservedInstancesModificationId => (is => 'ro', isa => 'Str', xmlname => 'reservedInstancesModificationId', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -19,6 +20,7 @@ Paws::EC2::ModifyReservedInstancesResult
 The ID for the modification.
 
 
+=head2 _request_id => Str
 
 
 =cut

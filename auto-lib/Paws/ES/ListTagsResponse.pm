@@ -3,6 +3,7 @@ package Paws::ES::ListTagsResponse;
   use Moose;
   has TagList => (is => 'ro', isa => 'ArrayRef[Paws::ES::Tag]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -19,6 +20,7 @@ Paws::ES::ListTagsResponse
 List of C<Tag> for the requested Elasticsearch domain.
 
 
+=head2 _request_id => Str
 
 
 =cut

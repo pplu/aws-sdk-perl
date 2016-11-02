@@ -320,9 +320,10 @@ package Paws::API::Builder {
 
 [% c.doc_for_param_name_in_shape(shape, param_name) %]
 
-[% IF member.enum %]Valid values are: [% FOR value=member.enum %]C<"[% value %]">[% IF NOT loop.last %], [% END %][% END %][% END -%]
+[% IF member.enum %]Valid values are: [% FOR value=member.enum %]C<"[% value %]">[% IF NOT loop.last %], [% END %][% END %][% END -%][% END -%]
 
-[% END %]
+=head2 _request_id => Str
+
 
 =cut
 #);
@@ -757,6 +758,8 @@ Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
     if (not $doc) {
       return '';
     }
+    $doc =~ s/&amp;/\&/gsmix;
+    $doc =~ s|(\(ampersand\))(\#)(\w+?;)|$1(hash)$3|gsmix;
     return $self->html_to_pod($doc);
   }
 

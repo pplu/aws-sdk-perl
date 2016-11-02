@@ -1,0 +1,13 @@
+---
+call: CreateMultipartUpload
+service: S3
+tests:
+  - expected: uSTxL8ynJYgTL0m0aVWytLy_qibNPga1e.kJnU3SJ1DyDqKX7rFoEOtUMi.eG10Dao.zehdNDdkqt2YiEQ97Ps9OguNxszrJzXbQMwKL2UI1.fgHPOwCI6j0I6cYjgS.
+    op: eq
+    path: UploadId
+  - expected: uploads/multipart_test.txt
+    op: eq
+    path: Key
+  - expected: paws-test-bucket
+    op: eq
+    path: Bucket

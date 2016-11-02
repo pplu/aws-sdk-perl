@@ -3,6 +3,7 @@ package Paws::Route53::GetChangeDetailsResponse;
   use Moose;
   has ChangeBatchRecord => (is => 'ro', isa => 'Paws::Route53::ChangeBatchRecord', required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

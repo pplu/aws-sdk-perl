@@ -3,6 +3,7 @@ package Paws::CodeCommit::GetBranchOutput;
   use Moose;
   has Branch => (is => 'ro', isa => 'Paws::CodeCommit::BranchInfo', traits => ['Unwrapped'], xmlname => 'branch' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -18,6 +19,7 @@ Paws::CodeCommit::GetBranchOutput
 The name of the branch.
 
 
+=head2 _request_id => Str
 
 
 =cut

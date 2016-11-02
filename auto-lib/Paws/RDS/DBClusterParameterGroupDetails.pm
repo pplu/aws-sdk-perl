@@ -4,6 +4,7 @@ package Paws::RDS::DBClusterParameterGroupDetails;
   has Marker => (is => 'ro', isa => 'Str');
   has Parameters => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Parameter]', xmlname => 'Parameter', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -23,12 +24,12 @@ the response includes only records beyond the marker, up to the value
 specified by C<MaxRecords> .
 
 
-
 =head2 Parameters => ArrayRef[L<Paws::RDS::Parameter>]
 
 Provides a list of parameters for the DB cluster parameter group.
 
 
+=head2 _request_id => Str
 
 
 =cut

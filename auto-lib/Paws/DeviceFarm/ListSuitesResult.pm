@@ -4,6 +4,7 @@ package Paws::DeviceFarm::ListSuitesResult;
   has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
   has Suites => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::Suite]', traits => ['Unwrapped'], xmlname => 'suites' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -22,12 +23,12 @@ subsequent call to this operation to return the next set of items in
 the list.
 
 
-
 =head2 Suites => ArrayRef[L<Paws::DeviceFarm::Suite>]
 
 Information about the suites.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -3,6 +3,7 @@ package Paws::CodeCommit::GetRepositoryOutput;
   use Moose;
   has RepositoryMetadata => (is => 'ro', isa => 'Paws::CodeCommit::RepositoryMetadata', traits => ['Unwrapped'], xmlname => 'repositoryMetadata' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -18,6 +19,7 @@ Paws::CodeCommit::GetRepositoryOutput
 Information about the repository.
 
 
+=head2 _request_id => Str
 
 
 =cut

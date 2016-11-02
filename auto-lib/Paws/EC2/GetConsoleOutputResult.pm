@@ -5,6 +5,7 @@ package Paws::EC2::GetConsoleOutputResult;
   has Output => (is => 'ro', isa => 'Str', xmlname => 'output', traits => ['Unwrapped',]);
   has Timestamp => (is => 'ro', isa => 'Str', xmlname => 'timestamp', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -21,12 +22,10 @@ Paws::EC2::GetConsoleOutputResult
 The ID of the instance.
 
 
-
 =head2 Output => Str
 
 The console output, Base64-encoded. If using a command line tool, the
 tool decodes the output for you.
-
 
 
 =head2 Timestamp => Str
@@ -34,6 +33,7 @@ tool decodes the output for you.
 The time the output was last updated.
 
 
+=head2 _request_id => Str
 
 
 =cut

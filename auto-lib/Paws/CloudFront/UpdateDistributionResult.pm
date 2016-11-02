@@ -4,6 +4,7 @@ package Paws::CloudFront::UpdateDistributionResult;
   has Distribution => (is => 'ro', isa => 'Paws::CloudFront::Distribution');
   has ETag => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'ETag');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

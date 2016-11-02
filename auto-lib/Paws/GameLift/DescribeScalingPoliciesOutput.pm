@@ -4,6 +4,7 @@ package Paws::GameLift::DescribeScalingPoliciesOutput;
   has NextToken => (is => 'ro', isa => 'Str');
   has ScalingPolicies => (is => 'ro', isa => 'ArrayRef[Paws::GameLift::ScalingPolicy]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -21,13 +22,13 @@ this action. If no token is returned, these results represent the end
 of the list.
 
 
-
 =head2 ScalingPolicies => ArrayRef[L<Paws::GameLift::ScalingPolicy>]
 
 Collection of objects containing the scaling policies matching the
 request.
 
 
+=head2 _request_id => Str
 
 
 =cut

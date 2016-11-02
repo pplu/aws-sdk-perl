@@ -4,6 +4,7 @@ package Paws::Discovery::DescribeAgentsResponse;
   has AgentsInfo => (is => 'ro', isa => 'ArrayRef[Paws::Discovery::AgentInfo]', traits => ['Unwrapped'], xmlname => 'agentsInfo' );
   has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -23,13 +24,13 @@ host name where the agent resides, and the version number of each
 agent.
 
 
-
 =head2 NextToken => Str
 
 The call returns a token. Use this token to get the next set of
 results.
 
 
+=head2 _request_id => Str
 
 
 =cut

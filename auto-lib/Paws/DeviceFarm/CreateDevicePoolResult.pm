@@ -3,6 +3,7 @@ package Paws::DeviceFarm::CreateDevicePoolResult;
   use Moose;
   has DevicePool => (is => 'ro', isa => 'Paws::DeviceFarm::DevicePool', traits => ['Unwrapped'], xmlname => 'devicePool' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -18,6 +19,7 @@ Paws::DeviceFarm::CreateDevicePoolResult
 The newly created device pool.
 
 
+=head2 _request_id => Str
 
 
 =cut

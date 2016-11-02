@@ -3,6 +3,7 @@ package Paws::Route53::ListTagsForResourceResponse;
   use Moose;
   has ResourceTagSet => (is => 'ro', isa => 'Paws::Route53::ResourceTagSet', required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

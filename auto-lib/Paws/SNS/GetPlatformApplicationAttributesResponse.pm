@@ -3,6 +3,7 @@ package Paws::SNS::GetPlatformApplicationAttributesResponse;
   use Moose;
   has Attributes => (is => 'ro', isa => 'Paws::SNS::MapStringToString');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -45,6 +46,7 @@ notifications should be sent upon Direct Publish delivery failure
 
 
 
+=head2 _request_id => Str
 
 
 =cut

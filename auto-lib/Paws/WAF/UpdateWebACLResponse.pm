@@ -3,6 +3,7 @@ package Paws::WAF::UpdateWebACLResponse;
   use Moose;
   has ChangeToken => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -20,6 +21,7 @@ You can also use this value to query the status of the request. For
 more information, see GetChangeTokenStatus.
 
 
+=head2 _request_id => Str
 
 
 =cut

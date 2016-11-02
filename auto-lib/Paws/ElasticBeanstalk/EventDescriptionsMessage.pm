@@ -4,6 +4,7 @@ package Paws::ElasticBeanstalk::EventDescriptionsMessage;
   has Events => (is => 'ro', isa => 'ArrayRef[Paws::ElasticBeanstalk::EventDescription]');
   has NextToken => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -20,7 +21,6 @@ Paws::ElasticBeanstalk::EventDescriptionsMessage
 A list of EventDescription.
 
 
-
 =head2 NextToken => Str
 
 If returned, this indicates that there are more results to obtain. Use
@@ -28,6 +28,7 @@ this token in the next DescribeEvents call to get the next batch of
 events.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -3,6 +3,7 @@ package Paws::CodePipeline::GetJobDetailsOutput;
   use Moose;
   has JobDetails => (is => 'ro', isa => 'Paws::CodePipeline::JobDetails', traits => ['Unwrapped'], xmlname => 'jobDetails' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -21,6 +22,7 @@ If AWSSessionCredentials is used, a long-running job can call
 GetJobDetails again to obtain new credentials.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -5,6 +5,7 @@ package Paws::ServiceCatalog::DescribeProvisioningParametersOutput;
   has ProvisioningArtifactParameters => (is => 'ro', isa => 'ArrayRef[Paws::ServiceCatalog::ProvisioningArtifactParameter]');
   has UsageInstructions => (is => 'ro', isa => 'ArrayRef[Paws::ServiceCatalog::UsageInstruction]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -21,13 +22,11 @@ The list of constraint summaries that apply to provisioning this
 product.
 
 
-
 =head2 ProvisioningArtifactParameters => ArrayRef[L<Paws::ServiceCatalog::ProvisioningArtifactParameter>]
 
 The list of parameters used to successfully provision the product. Each
 parameter includes a list of allowable values and additional metadata
 about each parameter.
-
 
 
 =head2 UsageInstructions => ArrayRef[L<Paws::ServiceCatalog::UsageInstruction>]
@@ -37,6 +36,7 @@ product. For example, see the C<Version> field of the CloudFormation
 template.
 
 
+=head2 _request_id => Str
 
 
 =cut

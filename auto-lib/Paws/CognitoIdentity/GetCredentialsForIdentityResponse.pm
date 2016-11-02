@@ -4,6 +4,7 @@ package Paws::CognitoIdentity::GetCredentialsForIdentityResponse;
   has Credentials => (is => 'ro', isa => 'Paws::CognitoIdentity::Credentials');
   has IdentityId => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -19,12 +20,12 @@ Paws::CognitoIdentity::GetCredentialsForIdentityResponse
 Credentials for the provided identity ID.
 
 
-
 =head2 IdentityId => Str
 
 A unique identifier in the format REGION:GUID.
 
 
+=head2 _request_id => Str
 
 
 =cut

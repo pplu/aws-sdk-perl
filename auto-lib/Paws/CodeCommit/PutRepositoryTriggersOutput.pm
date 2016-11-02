@@ -3,6 +3,7 @@ package Paws::CodeCommit::PutRepositoryTriggersOutput;
   use Moose;
   has ConfigurationId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'configurationId' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -18,6 +19,7 @@ Paws::CodeCommit::PutRepositoryTriggersOutput
 The system-generated unique ID for the create or update operation.
 
 
+=head2 _request_id => Str
 
 
 =cut

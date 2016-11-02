@@ -3,6 +3,7 @@ package Paws::CloudSearch::IndexDocumentsResponse;
   use Moose;
   has FieldNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -19,6 +20,7 @@ Paws::CloudSearch::IndexDocumentsResponse
 The names of the fields that are currently being indexed.
 
 
+=head2 _request_id => Str
 
 
 =cut

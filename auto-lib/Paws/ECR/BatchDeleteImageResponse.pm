@@ -4,6 +4,7 @@ package Paws::ECR::BatchDeleteImageResponse;
   has Failures => (is => 'ro', isa => 'ArrayRef[Paws::ECR::ImageFailure]', traits => ['Unwrapped'], xmlname => 'failures' );
   has ImageIds => (is => 'ro', isa => 'ArrayRef[Paws::ECR::ImageIdentifier]', traits => ['Unwrapped'], xmlname => 'imageIds' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -19,12 +20,12 @@ Paws::ECR::BatchDeleteImageResponse
 Any failures associated with the call.
 
 
-
 =head2 ImageIds => ArrayRef[L<Paws::ECR::ImageIdentifier>]
 
 The image IDs of the deleted images.
 
 
+=head2 _request_id => Str
 
 
 =cut

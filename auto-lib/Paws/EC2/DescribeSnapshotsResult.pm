@@ -4,6 +4,7 @@ package Paws::EC2::DescribeSnapshotsResult;
   has NextToken => (is => 'ro', isa => 'Str', xmlname => 'nextToken', traits => ['Unwrapped',]);
   has Snapshots => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Snapshot]', xmlname => 'snapshotSet', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -24,12 +25,12 @@ results. This value is C<null> when there are no more results to
 return.
 
 
-
 =head2 Snapshots => ArrayRef[L<Paws::EC2::Snapshot>]
 
 Information about the snapshots.
 
 
+=head2 _request_id => Str
 
 
 =cut

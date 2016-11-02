@@ -4,6 +4,7 @@ package Paws::ApiGateway::Resources;
   has Items => (is => 'ro', isa => 'ArrayRef[Paws::ApiGateway::Resource]');
   has Position => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -20,12 +21,12 @@ Paws::ApiGateway::Resources
 Gets the current Resource resource in the collection.
 
 
-
 =head2 Position => Str
 
 
 
 
+=head2 _request_id => Str
 
 
 =cut

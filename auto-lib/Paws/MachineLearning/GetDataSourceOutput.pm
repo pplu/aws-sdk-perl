@@ -22,6 +22,7 @@ package Paws::MachineLearning::GetDataSourceOutput;
   has StartedAt => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -38,7 +39,6 @@ The parameter is C<true> if statistics need to be generated from the
 observation data.
 
 
-
 =head2 ComputeTime => Int
 
 The approximate CPU time in milliseconds that Amazon Machine Learning
@@ -48,12 +48,10 @@ C<DataSource> is in the C<COMPLETED> state and the C<ComputeStatistics>
 is set to true.
 
 
-
 =head2 CreatedAt => Str
 
 The time that the C<DataSource> was created. The time is expressed in
 epoch time.
-
 
 
 =head2 CreatedByIamUser => Str
@@ -63,12 +61,10 @@ account type can be either an AWS root account or an AWS Identity and
 Access Management (IAM) user account.
 
 
-
 =head2 DataLocationS3 => Str
 
 The location of the data file or directory in Amazon Simple Storage
 Service (Amazon S3).
-
 
 
 =head2 DataRearrangement => Str
@@ -77,18 +73,15 @@ A JSON string that represents the splitting and rearrangement
 requirement used when this C<DataSource> was created.
 
 
-
 =head2 DataSizeInBytes => Int
 
 The total size of observations in the data files.
-
 
 
 =head2 DataSourceId => Str
 
 The ID assigned to the C<DataSource> at creation. This value should be
 identical to the value of the C<DataSourceId> in the request.
-
 
 
 =head2 DataSourceSchema => Str
@@ -98,13 +91,11 @@ The schema used by all of the data files of this C<DataSource>.
 This parameter is provided as part of the verbose format.
 
 
-
 =head2 FinishedAt => Str
 
 The epoch time when Amazon Machine Learning marked the C<DataSource> as
 C<COMPLETED> or C<FAILED>. C<FinishedAt> is only available when the
 C<DataSource> is in the C<COMPLETED> or C<FAILED> state.
-
 
 
 =head2 LastUpdatedAt => Str
@@ -113,12 +104,10 @@ The time of the most recent edit to the C<DataSource>. The time is
 expressed in epoch time.
 
 
-
 =head2 LogUri => Str
 
 A link to the file containing logs of C<CreateDataSourceFrom*>
 operations.
-
 
 
 =head2 Message => Str
@@ -127,11 +116,9 @@ The user-supplied description of the most recent details about creating
 the C<DataSource>.
 
 
-
 =head2 Name => Str
 
 A user-supplied name or description of the C<DataSource>.
-
 
 
 =head2 NumberOfFiles => Int
@@ -139,9 +126,7 @@ A user-supplied name or description of the C<DataSource>.
 The number of data files referenced by the C<DataSource>.
 
 
-
 =head2 RDSMetadata => L<Paws::MachineLearning::RDSMetadata>
-
 
 
 
@@ -151,9 +136,7 @@ The number of data files referenced by the C<DataSource>.
 
 
 
-
 =head2 RoleARN => Str
-
 
 
 
@@ -163,7 +146,6 @@ The number of data files referenced by the C<DataSource>.
 The epoch time when Amazon Machine Learning marked the C<DataSource> as
 C<INPROGRESS>. C<StartedAt> isn't available if the C<DataSource> is in
 the C<PENDING> state.
-
 
 
 =head2 Status => Str
@@ -190,6 +172,7 @@ usable.
 
 
 Valid values are: C<"PENDING">, C<"INPROGRESS">, C<"FAILED">, C<"COMPLETED">, C<"DELETED">
+=head2 _request_id => Str
 
 
 =cut

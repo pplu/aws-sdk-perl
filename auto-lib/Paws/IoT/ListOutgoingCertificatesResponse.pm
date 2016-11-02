@@ -4,6 +4,7 @@ package Paws::IoT::ListOutgoingCertificatesResponse;
   has NextMarker => (is => 'ro', isa => 'Str');
   has OutgoingCertificates => (is => 'ro', isa => 'ArrayRef[Paws::IoT::OutgoingCertificate]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -20,12 +21,12 @@ Paws::IoT::ListOutgoingCertificatesResponse
 The marker for the next set of results.
 
 
-
 =head2 OutgoingCertificates => ArrayRef[L<Paws::IoT::OutgoingCertificate>]
 
 The certificates that are being transfered but not yet accepted.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -3,6 +3,7 @@ package Paws::ECS::DeregisterContainerInstanceResponse;
   use Moose;
   has ContainerInstance => (is => 'ro', isa => 'Paws::ECS::ContainerInstance', traits => ['Unwrapped'], xmlname => 'containerInstance' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -18,6 +19,7 @@ Paws::ECS::DeregisterContainerInstanceResponse
 
 
 
+=head2 _request_id => Str
 
 
 =cut

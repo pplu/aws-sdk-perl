@@ -3,6 +3,7 @@ package Paws::DeviceFarm::GetUploadResult;
   use Moose;
   has Upload => (is => 'ro', isa => 'Paws::DeviceFarm::Upload', traits => ['Unwrapped'], xmlname => 'upload' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -18,6 +19,7 @@ Paws::DeviceFarm::GetUploadResult
 
 
 
+=head2 _request_id => Str
 
 
 =cut

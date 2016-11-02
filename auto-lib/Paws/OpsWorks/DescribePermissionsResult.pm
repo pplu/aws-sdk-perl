@@ -3,6 +3,7 @@ package Paws::OpsWorks::DescribePermissionsResult;
   use Moose;
   has Permissions => (is => 'ro', isa => 'ArrayRef[Paws::OpsWorks::Permission]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -39,6 +40,7 @@ and IAM ARN.
 
 
 
+=head2 _request_id => Str
 
 
 =cut

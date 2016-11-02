@@ -5,6 +5,7 @@ package Paws::ImportExport::UpdateJobOutput;
   has Success => (is => 'ro', isa => 'Bool');
   has WarningMessage => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -21,9 +22,7 @@ Paws::ImportExport::UpdateJobOutput
 
 
 
-
 =head2 Success => Bool
-
 
 
 
@@ -33,6 +32,7 @@ Paws::ImportExport::UpdateJobOutput
 
 
 
+=head2 _request_id => Str
 
 
 =cut

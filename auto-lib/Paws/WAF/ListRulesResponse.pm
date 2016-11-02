@@ -4,6 +4,7 @@ package Paws::WAF::ListRulesResponse;
   has NextMarker => (is => 'ro', isa => 'Str');
   has Rules => (is => 'ro', isa => 'ArrayRef[Paws::WAF::RuleSummary]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -23,12 +24,12 @@ the C<NextMarker> value from the response in the C<NextMarker> value in
 the next request.
 
 
-
 =head2 Rules => ArrayRef[L<Paws::WAF::RuleSummary>]
 
 An array of RuleSummary objects.
 
 
+=head2 _request_id => Str
 
 
 =cut

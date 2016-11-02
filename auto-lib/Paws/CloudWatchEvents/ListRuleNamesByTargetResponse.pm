@@ -4,6 +4,7 @@ package Paws::CloudWatchEvents::ListRuleNamesByTargetResponse;
   has NextToken => (is => 'ro', isa => 'Str');
   has RuleNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -19,12 +20,12 @@ Paws::CloudWatchEvents::ListRuleNamesByTargetResponse
 Indicates that there are additional results to retrieve.
 
 
-
 =head2 RuleNames => ArrayRef[Str|Undef]
 
 List of rules names that can invoke the given target.
 
 
+=head2 _request_id => Str
 
 
 =cut

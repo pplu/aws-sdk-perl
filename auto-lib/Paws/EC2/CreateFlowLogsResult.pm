@@ -5,6 +5,7 @@ package Paws::EC2::CreateFlowLogsResult;
   has FlowLogIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'flowLogIdSet', traits => ['Unwrapped',]);
   has Unsuccessful => (is => 'ro', isa => 'ArrayRef[Paws::EC2::UnsuccessfulItem]', xmlname => 'unsuccessful', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -22,11 +23,9 @@ Unique, case-sensitive identifier you provide to ensure the idempotency
 of the request.
 
 
-
 =head2 FlowLogIds => ArrayRef[Str|Undef]
 
 The IDs of the flow logs.
-
 
 
 =head2 Unsuccessful => ArrayRef[L<Paws::EC2::UnsuccessfulItem>]
@@ -34,6 +33,7 @@ The IDs of the flow logs.
 Information about the flow logs that could not be created successfully.
 
 
+=head2 _request_id => Str
 
 
 =cut

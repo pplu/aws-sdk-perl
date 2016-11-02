@@ -3,6 +3,7 @@ package Paws::StorageGateway::DeleteTapeOutput;
   use Moose;
   has TapeARN => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -18,6 +19,7 @@ Paws::StorageGateway::DeleteTapeOutput
 The Amazon Resource Name (ARN) of the deleted virtual tape.
 
 
+=head2 _request_id => Str
 
 
 =cut

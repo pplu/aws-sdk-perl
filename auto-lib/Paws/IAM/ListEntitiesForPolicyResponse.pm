@@ -7,6 +7,7 @@ package Paws::IAM::ListEntitiesForPolicyResponse;
   has PolicyRoles => (is => 'ro', isa => 'ArrayRef[Paws::IAM::PolicyRole]');
   has PolicyUsers => (is => 'ro', isa => 'ArrayRef[Paws::IAM::PolicyUser]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -29,7 +30,6 @@ C<IsTruncated> after every call to ensure that you receive all of your
 results.
 
 
-
 =head2 Marker => Str
 
 When C<IsTruncated> is C<true>, this element is present and contains
@@ -37,11 +37,9 @@ the value to use for the C<Marker> parameter in a subsequent pagination
 request.
 
 
-
 =head2 PolicyGroups => ArrayRef[L<Paws::IAM::PolicyGroup>]
 
 A list of IAM groups that the policy is attached to.
-
 
 
 =head2 PolicyRoles => ArrayRef[L<Paws::IAM::PolicyRole>]
@@ -49,12 +47,12 @@ A list of IAM groups that the policy is attached to.
 A list of IAM roles that the policy is attached to.
 
 
-
 =head2 PolicyUsers => ArrayRef[L<Paws::IAM::PolicyUser>]
 
 A list of IAM users that the policy is attached to.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -3,6 +3,7 @@ package Paws::EC2::RequestSpotFleetResponse;
   use Moose;
   has SpotFleetRequestId => (is => 'ro', isa => 'Str', xmlname => 'spotFleetRequestId', traits => ['Unwrapped',], required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -19,6 +20,7 @@ Paws::EC2::RequestSpotFleetResponse
 The ID of the Spot fleet request.
 
 
+=head2 _request_id => Str
 
 
 =cut

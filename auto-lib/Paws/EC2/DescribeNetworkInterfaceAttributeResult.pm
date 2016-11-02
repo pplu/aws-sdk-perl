@@ -7,6 +7,7 @@ package Paws::EC2::DescribeNetworkInterfaceAttributeResult;
   has NetworkInterfaceId => (is => 'ro', isa => 'Str', xmlname => 'networkInterfaceId', traits => ['Unwrapped',]);
   has SourceDestCheck => (is => 'ro', isa => 'Paws::EC2::AttributeBooleanValue', xmlname => 'sourceDestCheck', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -23,11 +24,9 @@ Paws::EC2::DescribeNetworkInterfaceAttributeResult
 The attachment (if any) of the network interface.
 
 
-
 =head2 Description => L<Paws::EC2::AttributeValue>
 
 The description of the network interface.
-
 
 
 =head2 Groups => ArrayRef[L<Paws::EC2::GroupIdentifier>]
@@ -35,11 +34,9 @@ The description of the network interface.
 The security groups associated with the network interface.
 
 
-
 =head2 NetworkInterfaceId => Str
 
 The ID of the network interface.
-
 
 
 =head2 SourceDestCheck => L<Paws::EC2::AttributeBooleanValue>
@@ -47,6 +44,7 @@ The ID of the network interface.
 Indicates whether source/destination checking is enabled.
 
 
+=head2 _request_id => Str
 
 
 =cut

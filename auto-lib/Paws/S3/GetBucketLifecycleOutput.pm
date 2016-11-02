@@ -3,6 +3,7 @@ package Paws::S3::GetBucketLifecycleOutput;
   use Moose;
   has Rules => (is => 'ro', isa => 'ArrayRef[Paws::S3::Rule]', traits => ['Unwrapped'], xmlname => 'Rule');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

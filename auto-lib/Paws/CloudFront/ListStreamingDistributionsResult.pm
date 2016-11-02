@@ -3,6 +3,7 @@ package Paws::CloudFront::ListStreamingDistributionsResult;
   use Moose;
   has StreamingDistributionList => (is => 'ro', isa => 'Paws::CloudFront::StreamingDistributionList');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

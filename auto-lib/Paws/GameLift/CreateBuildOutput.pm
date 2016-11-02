@@ -5,6 +5,7 @@ package Paws::GameLift::CreateBuildOutput;
   has StorageLocation => (is => 'ro', isa => 'Paws::GameLift::S3Location');
   has UploadCredentials => (is => 'ro', isa => 'Paws::GameLift::AwsCredentials');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -20,12 +21,10 @@ Paws::GameLift::CreateBuildOutput
 Set of properties for the newly created build.
 
 
-
 =head2 StorageLocation => L<Paws::GameLift::S3Location>
 
 Amazon S3 path and key, identifying where the game build files are
 stored.
-
 
 
 =head2 UploadCredentials => L<Paws::GameLift::AwsCredentials>
@@ -36,6 +35,7 @@ for the build they were issued for. If you need to get fresh
 credentials, call C< RequestUploadCredentials >.
 
 
+=head2 _request_id => Str
 
 
 =cut

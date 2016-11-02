@@ -4,6 +4,7 @@ package Paws::CloudWatchLogs::PutLogEventsResponse;
   has NextSequenceToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextSequenceToken' );
   has RejectedLogEventsInfo => (is => 'ro', isa => 'Paws::CloudWatchLogs::RejectedLogEventsInfo', traits => ['Unwrapped'], xmlname => 'rejectedLogEventsInfo' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -19,12 +20,12 @@ Paws::CloudWatchLogs::PutLogEventsResponse
 
 
 
-
 =head2 RejectedLogEventsInfo => L<Paws::CloudWatchLogs::RejectedLogEventsInfo>
 
 
 
 
+=head2 _request_id => Str
 
 
 =cut

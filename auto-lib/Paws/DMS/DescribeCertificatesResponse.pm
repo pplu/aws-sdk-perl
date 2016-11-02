@@ -4,6 +4,7 @@ package Paws::DMS::DescribeCertificatesResponse;
   has Certificates => (is => 'ro', isa => 'ArrayRef[Paws::DMS::Certificate]');
   has Marker => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -19,12 +20,12 @@ Paws::DMS::DescribeCertificatesResponse
 The SSL certificates associated with the replication instance.
 
 
-
 =head2 Marker => Str
 
 The pagination token.
 
 
+=head2 _request_id => Str
 
 
 =cut

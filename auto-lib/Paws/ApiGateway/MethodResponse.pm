@@ -5,6 +5,7 @@ package Paws::ApiGateway::MethodResponse;
   has ResponseParameters => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToBoolean');
   has StatusCode => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -21,7 +22,6 @@ Paws::ApiGateway::MethodResponse
 Specifies the Model resources used for the response's content-type.
 Response models are represented as a key/value map, with a content-type
 as the key and a Model name as the value.
-
 
 
 =head2 ResponseParameters => L<Paws::ApiGateway::MapOfStringToBoolean>
@@ -43,12 +43,12 @@ C<integration.response.body.{JSON-expression}>, where
 C<JSON-expression> is a valid JSON expression without the C<$> prefix.)
 
 
-
 =head2 StatusCode => Str
 
 The method response's status code.
 
 
+=head2 _request_id => Str
 
 
 =cut

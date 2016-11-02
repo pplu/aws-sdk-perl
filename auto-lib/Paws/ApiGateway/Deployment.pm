@@ -6,6 +6,7 @@ package Paws::ApiGateway::Deployment;
   has Description => (is => 'ro', isa => 'Str');
   has Id => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -23,11 +24,9 @@ A summary of the RestApi at the date and time that the deployment
 resource was created.
 
 
-
 =head2 CreatedDate => Str
 
 The date and time that the deployment resource was created.
-
 
 
 =head2 Description => Str
@@ -35,12 +34,12 @@ The date and time that the deployment resource was created.
 The description for the deployment resource.
 
 
-
 =head2 Id => Str
 
 The identifier for the deployment resource.
 
 
+=head2 _request_id => Str
 
 
 =cut

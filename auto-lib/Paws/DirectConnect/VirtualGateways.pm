@@ -3,6 +3,7 @@ package Paws::DirectConnect::VirtualGateways;
   use Moose;
   has VirtualGateways => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::VirtualGateway]', traits => ['Unwrapped'], xmlname => 'virtualGateways' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -18,6 +19,7 @@ Paws::DirectConnect::VirtualGateways
 A list of virtual private gateways.
 
 
+=head2 _request_id => Str
 
 
 =cut

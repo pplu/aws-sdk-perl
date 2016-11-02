@@ -1,0 +1,13 @@
+---
+call: GetObject
+service: S3
+tests:
+  - path: _request_id
+    op: eq
+    expected: 4FE2ED40553211FD
+  - path: ETag
+    op: eq
+    expected: '"3858f62230ac3c915f300c664312c63f"'
+  - path: Body
+    op: eq
+    expected: foobar

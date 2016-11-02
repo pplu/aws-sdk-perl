@@ -5,6 +5,7 @@ package Paws::EC2::DescribeVolumeAttributeResult;
   has ProductCodes => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ProductCode]', xmlname => 'productCodes', traits => ['Unwrapped',]);
   has VolumeId => (is => 'ro', isa => 'Str', xmlname => 'volumeId', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -21,11 +22,9 @@ Paws::EC2::DescribeVolumeAttributeResult
 The state of C<autoEnableIO> attribute.
 
 
-
 =head2 ProductCodes => ArrayRef[L<Paws::EC2::ProductCode>]
 
 A list of product codes.
-
 
 
 =head2 VolumeId => Str
@@ -33,6 +32,7 @@ A list of product codes.
 The ID of the volume.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -3,6 +3,7 @@ package Paws::EC2::DescribeNetworkAclsResult;
   use Moose;
   has NetworkAcls => (is => 'ro', isa => 'ArrayRef[Paws::EC2::NetworkAcl]', xmlname => 'networkAclSet', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -19,6 +20,7 @@ Paws::EC2::DescribeNetworkAclsResult
 Information about one or more network ACLs.
 
 
+=head2 _request_id => Str
 
 
 =cut

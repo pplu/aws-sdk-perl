@@ -1,0 +1,11 @@
+---
+content: ''
+headers:
+  connection: close
+  content-length: 0
+  date: 'Tue, 01 Nov 2016 21:52:56 GMT'
+  location: http://paws-test-bucket.s3.amazonaws.com/
+  server: AmazonS3
+  x-amz-id-2: 352qwmUO8+0ViKbIQflpINsJswmyigWN5tmvaoUR7IUVYMPPm2dn/kRV7s9OJFnChPVUBSXiotY=
+  x-amz-request-id: A80163BBC62F8C1B
+status: 200

@@ -2,6 +2,7 @@
 package Paws::CognitoIdp::AdminEnableUserResponse;
   use Moose;
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -11,6 +12,8 @@ Paws::CognitoIdp::AdminEnableUserResponse
 
 =head1 ATTRIBUTES
 
+
+=head2 _request_id => Str
 
 
 =cut

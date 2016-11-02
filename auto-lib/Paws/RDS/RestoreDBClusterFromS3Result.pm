@@ -3,6 +3,7 @@ package Paws::RDS::RestoreDBClusterFromS3Result;
   use Moose;
   has DBCluster => (is => 'ro', isa => 'Paws::RDS::DBCluster');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -19,6 +20,7 @@ Paws::RDS::RestoreDBClusterFromS3Result
 
 
 
+=head2 _request_id => Str
 
 
 =cut

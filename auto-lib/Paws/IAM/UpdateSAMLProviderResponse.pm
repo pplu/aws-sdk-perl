@@ -3,6 +3,7 @@ package Paws::IAM::UpdateSAMLProviderResponse;
   use Moose;
   has SAMLProviderArn => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -19,6 +20,7 @@ Paws::IAM::UpdateSAMLProviderResponse
 The Amazon Resource Name (ARN) of the SAML provider that was updated.
 
 
+=head2 _request_id => Str
 
 
 =cut

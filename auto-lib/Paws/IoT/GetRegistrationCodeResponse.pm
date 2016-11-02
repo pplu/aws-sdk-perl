@@ -3,6 +3,7 @@ package Paws::IoT::GetRegistrationCodeResponse;
   use Moose;
   has RegistrationCode => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -19,6 +20,7 @@ Paws::IoT::GetRegistrationCodeResponse
 The CA certificate registration code.
 
 
+=head2 _request_id => Str
 
 
 =cut

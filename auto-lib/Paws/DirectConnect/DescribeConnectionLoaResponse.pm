@@ -3,6 +3,7 @@ package Paws::DirectConnect::DescribeConnectionLoaResponse;
   use Moose;
   has Loa => (is => 'ro', isa => 'Paws::DirectConnect::Loa', traits => ['Unwrapped'], xmlname => 'loa' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -18,6 +19,7 @@ Paws::DirectConnect::DescribeConnectionLoaResponse
 
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -4,6 +4,7 @@ package Paws::SimpleWorkflow::ActivityTypeDetail;
   has Configuration => (is => 'ro', isa => 'Paws::SimpleWorkflow::ActivityTypeConfiguration', traits => ['Unwrapped'], xmlname => 'configuration' , required => 1);
   has TypeInfo => (is => 'ro', isa => 'Paws::SimpleWorkflow::ActivityTypeInfo', traits => ['Unwrapped'], xmlname => 'typeInfo' , required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -17,7 +18,6 @@ Paws::SimpleWorkflow::ActivityTypeDetail
 =head2 B<REQUIRED> Configuration => L<Paws::SimpleWorkflow::ActivityTypeConfiguration>
 
 The configuration settings registered with the activity type.
-
 
 
 =head2 B<REQUIRED> TypeInfo => L<Paws::SimpleWorkflow::ActivityTypeInfo>
@@ -40,6 +40,7 @@ supporting this type running. You cannot create new tasks of this type.
 
 
 
+=head2 _request_id => Str
 
 
 =cut

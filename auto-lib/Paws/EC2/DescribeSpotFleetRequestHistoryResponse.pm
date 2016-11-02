@@ -7,6 +7,7 @@ package Paws::EC2::DescribeSpotFleetRequestHistoryResponse;
   has SpotFleetRequestId => (is => 'ro', isa => 'Str', xmlname => 'spotFleetRequestId', traits => ['Unwrapped',], required => 1);
   has StartTime => (is => 'ro', isa => 'Str', xmlname => 'startTime', traits => ['Unwrapped',], required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -23,7 +24,6 @@ Paws::EC2::DescribeSpotFleetRequestHistoryResponse
 Information about the events in the history of the Spot fleet request.
 
 
-
 =head2 B<REQUIRED> LastEvaluatedTime => Str
 
 The last date and time for the events, in UTC format (for example,
@@ -34,18 +34,15 @@ If C<nextToken> indicates that there are more results, this value is
 not present.
 
 
-
 =head2 NextToken => Str
 
 The token required to retrieve the next set of results. This value is
 C<null> when there are no more results to return.
 
 
-
 =head2 B<REQUIRED> SpotFleetRequestId => Str
 
 The ID of the Spot fleet request.
-
 
 
 =head2 B<REQUIRED> StartTime => Str
@@ -54,6 +51,7 @@ The starting date and time for the events, in UTC format (for example,
 I<YYYY>-I<MM>-I<DD>TI<HH>:I<MM>:I<SS>Z).
 
 
+=head2 _request_id => Str
 
 
 =cut

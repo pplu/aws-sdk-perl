@@ -5,6 +5,7 @@ package Paws::DynamoDB::BatchGetItemOutput;
   has Responses => (is => 'ro', isa => 'Paws::DynamoDB::BatchGetResponseMap');
   has UnprocessedKeys => (is => 'ro', isa => 'Paws::DynamoDB::BatchGetRequestMap');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -35,13 +36,11 @@ I<CapacityUnits> - The total number of capacity units consumed.
 
 
 
-
 =head2 Responses => L<Paws::DynamoDB::BatchGetResponseMap>
 
 A map of table name to a list of items. Each object in I<Responses>
 consists of a table name, along with a map of attribute data consisting
 of the data type and attribute value.
-
 
 
 =head2 UnprocessedKeys => L<Paws::DynamoDB::BatchGetRequestMap>
@@ -79,6 +78,7 @@ If there are no unprocessed keys remaining, the response contains an
 empty I<UnprocessedKeys> map.
 
 
+=head2 _request_id => Str
 
 
 =cut

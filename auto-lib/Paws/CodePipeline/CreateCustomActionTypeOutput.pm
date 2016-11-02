@@ -3,6 +3,7 @@ package Paws::CodePipeline::CreateCustomActionTypeOutput;
   use Moose;
   has ActionType => (is => 'ro', isa => 'Paws::CodePipeline::ActionType', traits => ['Unwrapped'], xmlname => 'actionType' , required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -18,6 +19,7 @@ Paws::CodePipeline::CreateCustomActionTypeOutput
 
 
 
+=head2 _request_id => Str
 
 
 =cut

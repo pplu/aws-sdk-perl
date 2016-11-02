@@ -3,6 +3,7 @@ package Paws::DMS::CreateReplicationSubnetGroupResponse;
   use Moose;
   has ReplicationSubnetGroup => (is => 'ro', isa => 'Paws::DMS::ReplicationSubnetGroup');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -18,6 +19,7 @@ Paws::DMS::CreateReplicationSubnetGroupResponse
 The replication subnet group that was created.
 
 
+=head2 _request_id => Str
 
 
 =cut

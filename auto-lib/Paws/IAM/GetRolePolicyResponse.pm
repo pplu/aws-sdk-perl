@@ -5,6 +5,7 @@ package Paws::IAM::GetRolePolicyResponse;
   has PolicyName => (is => 'ro', isa => 'Str', required => 1);
   has RoleName => (is => 'ro', isa => 'Str', required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -21,11 +22,9 @@ Paws::IAM::GetRolePolicyResponse
 The policy document.
 
 
-
 =head2 B<REQUIRED> PolicyName => Str
 
 The name of the policy.
-
 
 
 =head2 B<REQUIRED> RoleName => Str
@@ -33,6 +32,7 @@ The name of the policy.
 The role the policy is associated with.
 
 
+=head2 _request_id => Str
 
 
 =cut

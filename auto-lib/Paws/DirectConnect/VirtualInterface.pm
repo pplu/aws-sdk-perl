@@ -17,6 +17,7 @@ package Paws::DirectConnect::VirtualInterface;
   has VirtualInterfaceType => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'virtualInterfaceType' );
   has Vlan => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => 'vlan' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -32,9 +33,7 @@ Paws::DirectConnect::VirtualInterface
 
 
 
-
 =head2 Asn => Int
-
 
 
 
@@ -44,9 +43,7 @@ Paws::DirectConnect::VirtualInterface
 
 
 
-
 =head2 ConnectionId => Str
-
 
 
 
@@ -56,15 +53,12 @@ Paws::DirectConnect::VirtualInterface
 
 
 
-
 =head2 CustomerRouterConfig => Str
 
 Information for generating the customer router configuration.
 
 
-
 =head2 Location => Str
-
 
 
 
@@ -74,9 +68,7 @@ Information for generating the customer router configuration.
 The AWS account that will own the new virtual interface.
 
 
-
 =head2 RouteFilterPrefixes => ArrayRef[L<Paws::DirectConnect::RouteFilterPrefix>]
-
 
 
 
@@ -86,9 +78,7 @@ The AWS account that will own the new virtual interface.
 
 
 
-
 =head2 VirtualInterfaceId => Str
-
 
 
 
@@ -98,15 +88,12 @@ The AWS account that will own the new virtual interface.
 
 
 
-
 =head2 VirtualInterfaceState => Str
 
 
 
 Valid values are: C<"confirming">, C<"verifying">, C<"pending">, C<"available">, C<"down">, C<"deleting">, C<"deleted">, C<"rejected">
-
 =head2 VirtualInterfaceType => Str
-
 
 
 
@@ -116,6 +103,7 @@ Valid values are: C<"confirming">, C<"verifying">, C<"pending">, C<"available">,
 
 
 
+=head2 _request_id => Str
 
 
 =cut

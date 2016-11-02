@@ -4,6 +4,7 @@ package Paws::WorkSpaces::DescribeWorkspaceDirectoriesResult;
   has Directories => (is => 'ro', isa => 'ArrayRef[Paws::WorkSpaces::WorkspaceDirectory]');
   has NextToken => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -19,7 +20,6 @@ Paws::WorkSpaces::DescribeWorkspaceDirectoriesResult
 An array of structures that contain information about the directories.
 
 
-
 =head2 NextToken => Str
 
 If not null, more results are available. Pass this value for the
@@ -28,6 +28,7 @@ retrieve the next set of items. This token is valid for one day and
 must be used within that time frame.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -3,6 +3,7 @@ package Paws::SQS::ReceiveMessageResult;
   use Moose;
   has Messages => (is => 'ro', isa => 'ArrayRef[Paws::SQS::Message]', xmlname => 'Message', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -19,6 +20,7 @@ Paws::SQS::ReceiveMessageResult
 A list of messages.
 
 
+=head2 _request_id => Str
 
 
 =cut

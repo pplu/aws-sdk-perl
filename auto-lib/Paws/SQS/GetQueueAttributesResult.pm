@@ -3,6 +3,7 @@ package Paws::SQS::GetQueueAttributesResult;
   use Moose;
   has Attributes => (is => 'ro', isa => 'Paws::SQS::QueueAttributeMap', xmlname => 'Attribute', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -19,6 +20,7 @@ Paws::SQS::GetQueueAttributesResult
 A map of attributes to the respective values.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -6,6 +6,7 @@ package Paws::EC2::GetHostReservationPurchasePreviewResult;
   has TotalHourlyPrice => (is => 'ro', isa => 'Str', xmlname => 'totalHourlyPrice', traits => ['Unwrapped',]);
   has TotalUpfrontPrice => (is => 'ro', isa => 'Str', xmlname => 'totalUpfrontPrice', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -24,12 +25,10 @@ amounts are specified. At this time, the only supported currency is
 C<USD>.
 
 Valid values are: C<"USD">
-
 =head2 Purchase => ArrayRef[L<Paws::EC2::Purchase>]
 
 The purchase information of the Dedicated Host Reservation and the
 Dedicated Hosts associated with it.
-
 
 
 =head2 TotalHourlyPrice => Str
@@ -37,12 +36,12 @@ Dedicated Hosts associated with it.
 The potential total hourly price of the reservation per hour.
 
 
-
 =head2 TotalUpfrontPrice => Str
 
 The potential total upfront price. This is billed immediately.
 
 
+=head2 _request_id => Str
 
 
 =cut

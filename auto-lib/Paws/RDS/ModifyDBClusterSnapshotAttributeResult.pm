@@ -3,6 +3,7 @@ package Paws::RDS::ModifyDBClusterSnapshotAttributeResult;
   use Moose;
   has DBClusterSnapshotAttributesResult => (is => 'ro', isa => 'Paws::RDS::DBClusterSnapshotAttributesResult');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -19,6 +20,7 @@ Paws::RDS::ModifyDBClusterSnapshotAttributeResult
 
 
 
+=head2 _request_id => Str
 
 
 =cut

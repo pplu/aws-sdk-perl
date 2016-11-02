@@ -4,6 +4,7 @@ package Paws::RedShift::EventsMessage;
   has Events => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::Event]', xmlname => 'Event', traits => ['Unwrapped',]);
   has Marker => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -20,7 +21,6 @@ Paws::RedShift::EventsMessage
 A list of C<Event> instances.
 
 
-
 =head2 Marker => Str
 
 A value that indicates the starting point for the next set of response
@@ -31,6 +31,7 @@ the C<Marker> field is empty, all response records have been retrieved
 for the request.
 
 
+=head2 _request_id => Str
 
 
 =cut

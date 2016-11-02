@@ -3,6 +3,7 @@ package Paws::RDS::CopyDBClusterSnapshotResult;
   use Moose;
   has DBClusterSnapshot => (is => 'ro', isa => 'Paws::RDS::DBClusterSnapshot');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -19,6 +20,7 @@ Paws::RDS::CopyDBClusterSnapshotResult
 
 
 
+=head2 _request_id => Str
 
 
 =cut

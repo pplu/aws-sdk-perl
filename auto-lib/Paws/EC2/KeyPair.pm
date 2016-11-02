@@ -5,6 +5,7 @@ package Paws::EC2::KeyPair;
   has KeyMaterial => (is => 'ro', isa => 'Str', xmlname => 'keyMaterial', traits => ['Unwrapped',]);
   has KeyName => (is => 'ro', isa => 'Str', xmlname => 'keyName', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -21,11 +22,9 @@ Paws::EC2::KeyPair
 The SHA-1 digest of the DER encoded private key.
 
 
-
 =head2 KeyMaterial => Str
 
 An unencrypted PEM encoded RSA private key.
-
 
 
 =head2 KeyName => Str
@@ -33,6 +32,7 @@ An unencrypted PEM encoded RSA private key.
 The name of the key pair.
 
 
+=head2 _request_id => Str
 
 
 =cut

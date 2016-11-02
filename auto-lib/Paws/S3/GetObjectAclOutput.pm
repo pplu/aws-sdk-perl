@@ -5,6 +5,7 @@ package Paws::S3::GetObjectAclOutput;
   has Owner => (is => 'ro', isa => 'Paws::S3::Owner');
   has RequestCharged => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-request-charged');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

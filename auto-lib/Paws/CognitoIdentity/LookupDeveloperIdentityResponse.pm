@@ -5,6 +5,7 @@ package Paws::CognitoIdentity::LookupDeveloperIdentityResponse;
   has IdentityId => (is => 'ro', isa => 'Str');
   has NextToken => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -22,11 +23,9 @@ identity ID. Cognito supports the association of multiple developer
 user identifiers with an identity ID.
 
 
-
 =head2 IdentityId => Str
 
 A unique identifier in the format REGION:GUID.
-
 
 
 =head2 NextToken => Str
@@ -40,6 +39,7 @@ used to call the API again and get results starting from the 11th
 match.
 
 
+=head2 _request_id => Str
 
 
 =cut

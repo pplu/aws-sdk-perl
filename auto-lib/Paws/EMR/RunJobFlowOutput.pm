@@ -3,6 +3,7 @@ package Paws::EMR::RunJobFlowOutput;
   use Moose;
   has JobFlowId => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -18,6 +19,7 @@ Paws::EMR::RunJobFlowOutput
 An unique identifier for the job flow.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -3,6 +3,7 @@ package Paws::IAM::GetServerCertificateResponse;
   use Moose;
   has ServerCertificate => (is => 'ro', isa => 'Paws::IAM::ServerCertificate', required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -19,6 +20,7 @@ Paws::IAM::GetServerCertificateResponse
 A structure containing details about the server certificate.
 
 
+=head2 _request_id => Str
 
 
 =cut

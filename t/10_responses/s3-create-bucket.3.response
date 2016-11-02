@@ -1,0 +1,19 @@
+---
+content: |-
+  <?xml version="1.0" encoding="UTF-8"?>
+  <Error>
+    <Code>BucketAlreadyOwnedByYou</Code>
+    <Message>Your previous request to create the named bucket succeeded and you already own it.</Message>
+    <BucketName>paws-test-bucket</BucketName>
+    <RequestId>EF9D1C89539E2208</RequestId>
+    <HostId>aN+VhesjO+Xsa4lVFAwWbVonCOY8b9X7dJrj1TUiQ/fMOSOupx+98kvGViqpXjCqEwQXeX9Mij4=</HostId>
+  </Error>
+headers:
+  connection: close
+  content-type: application/xml
+  date: 'Tue, 01 Nov 2016 21:55:02 GMT'
+  server: AmazonS3
+  transfer-encoding: chunked
+  x-amz-id-2: aN+VhesjO+Xsa4lVFAwWbVonCOY8b9X7dJrj1TUiQ/fMOSOupx+98kvGViqpXjCqEwQXeX9Mij4=
+  x-amz-request-id: EF9D1C89539E2208
+status: 409

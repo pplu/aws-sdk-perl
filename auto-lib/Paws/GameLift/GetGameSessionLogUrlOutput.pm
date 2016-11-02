@@ -3,6 +3,7 @@ package Paws::GameLift::GetGameSessionLogUrlOutput;
   use Moose;
   has PreSignedUrl => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -18,6 +19,7 @@ Paws::GameLift::GetGameSessionLogUrlOutput
 Location of the requested game session logs, available for download.
 
 
+=head2 _request_id => Str
 
 
 =cut

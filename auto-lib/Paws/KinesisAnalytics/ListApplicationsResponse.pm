@@ -4,6 +4,7 @@ package Paws::KinesisAnalytics::ListApplicationsResponse;
   has ApplicationSummaries => (is => 'ro', isa => 'ArrayRef[Paws::KinesisAnalytics::ApplicationSummary]', required => 1);
   has HasMoreApplications => (is => 'ro', isa => 'Bool', required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -19,12 +20,12 @@ Paws::KinesisAnalytics::ListApplicationsResponse
 List of C<ApplicationSummary> objects.
 
 
-
 =head2 B<REQUIRED> HasMoreApplications => Bool
 
 Returns true if there are more applications to retrieve.
 
 
+=head2 _request_id => Str
 
 
 =cut

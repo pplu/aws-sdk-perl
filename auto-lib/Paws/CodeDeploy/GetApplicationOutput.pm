@@ -3,6 +3,7 @@ package Paws::CodeDeploy::GetApplicationOutput;
   use Moose;
   has Application => (is => 'ro', isa => 'Paws::CodeDeploy::ApplicationInfo', traits => ['Unwrapped'], xmlname => 'application' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -18,6 +19,7 @@ Paws::CodeDeploy::GetApplicationOutput
 Information about the application.
 
 
+=head2 _request_id => Str
 
 
 =cut

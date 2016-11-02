@@ -8,6 +8,7 @@ package Paws::Route53::ListResourceRecordSetsResponse;
   has NextRecordType => (is => 'ro', isa => 'Str');
   has ResourceRecordSets => (is => 'ro', isa => 'ArrayRef[Paws::Route53::ResourceRecordSet]', required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

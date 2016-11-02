@@ -4,6 +4,7 @@ package Paws::DeviceFarm::ListUploadsResult;
   has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
   has Uploads => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::Upload]', traits => ['Unwrapped'], xmlname => 'uploads' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -22,12 +23,12 @@ subsequent call to this operation to return the next set of items in
 the list.
 
 
-
 =head2 Uploads => ArrayRef[L<Paws::DeviceFarm::Upload>]
 
 Information about the uploads.
 
 
+=head2 _request_id => Str
 
 
 =cut

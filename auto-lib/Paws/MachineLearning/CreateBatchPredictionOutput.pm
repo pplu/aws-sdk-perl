@@ -3,6 +3,7 @@ package Paws::MachineLearning::CreateBatchPredictionOutput;
   use Moose;
   has BatchPredictionId => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -20,6 +21,7 @@ This value is identical to the value of the C<BatchPredictionId> in the
 request.
 
 
+=head2 _request_id => Str
 
 
 =cut
