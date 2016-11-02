@@ -34,7 +34,7 @@ package Paws::Net::LWPCaller;
    my $lcheaders = {};
    $response->headers->scan(sub { $lcheaders->{ lc$_[0] } = $_[1] });
 
-    $self->caller_to_response($service, $call_object, $response->code, $response->content, $lcheaders);
+   return($response->code, $response->content, $lcheaders);
   }
 
   sub caller_to_response {
