@@ -1,7 +1,7 @@
 
 package Paws::CodeDeploy::GetOnPremisesInstanceOutput;
   use Moose;
-  has InstanceInfo => (is => 'ro', isa => 'Paws::CodeDeploy::InstanceInfo', traits => ['Unwrapped'], xmlname => 'instanceInfo' );
+  has InstanceInfo => (is => 'ro', isa => 'Paws::CodeDeploy::InstanceInfo', traits => ['NameInRequest'], request_name => 'instanceInfo' );
 
 
 ### main pod documentation begin ###

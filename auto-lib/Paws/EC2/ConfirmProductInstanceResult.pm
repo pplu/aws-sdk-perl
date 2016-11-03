@@ -1,8 +1,8 @@
 
 package Paws::EC2::ConfirmProductInstanceResult;
   use Moose;
-  has OwnerId => (is => 'ro', isa => 'Str', xmlname => 'ownerId', traits => ['Unwrapped',]);
-  has Return => (is => 'ro', isa => 'Bool', xmlname => 'return', traits => ['Unwrapped',]);
+  has OwnerId => (is => 'ro', isa => 'Str', request_name => 'ownerId', traits => ['NameInRequest',]);
+  has Return => (is => 'ro', isa => 'Bool', request_name => 'return', traits => ['NameInRequest',]);
 
 1;
 

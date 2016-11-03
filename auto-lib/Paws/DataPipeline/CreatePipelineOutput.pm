@@ -1,7 +1,7 @@
 
 package Paws::DataPipeline::CreatePipelineOutput;
   use Moose;
-  has PipelineId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'pipelineId' , required => 1);
+  has PipelineId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'pipelineId' , required => 1);
 
 
 ### main pod documentation begin ###

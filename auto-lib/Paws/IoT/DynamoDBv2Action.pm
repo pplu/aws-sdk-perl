@@ -1,7 +1,7 @@
 package Paws::IoT::DynamoDBv2Action;
   use Moose;
-  has PutItem => (is => 'ro', isa => 'Paws::IoT::PutItemInput', xmlname => 'putItem', request_name => 'putItem', traits => ['Unwrapped','NameInRequest']);
-  has RoleArn => (is => 'ro', isa => 'Str', xmlname => 'roleArn', request_name => 'roleArn', traits => ['Unwrapped','NameInRequest']);
+  has PutItem => (is => 'ro', isa => 'Paws::IoT::PutItemInput', request_name => 'putItem', traits => ['NameInRequest']);
+  has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

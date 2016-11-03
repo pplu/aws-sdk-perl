@@ -1,11 +1,11 @@
 package Paws::CodeCommit::Commit;
   use Moose;
-  has AdditionalData => (is => 'ro', isa => 'Str', xmlname => 'additionalData', request_name => 'additionalData', traits => ['Unwrapped','NameInRequest']);
-  has Author => (is => 'ro', isa => 'Paws::CodeCommit::UserInfo', xmlname => 'author', request_name => 'author', traits => ['Unwrapped','NameInRequest']);
-  has Committer => (is => 'ro', isa => 'Paws::CodeCommit::UserInfo', xmlname => 'committer', request_name => 'committer', traits => ['Unwrapped','NameInRequest']);
-  has Message => (is => 'ro', isa => 'Str', xmlname => 'message', request_name => 'message', traits => ['Unwrapped','NameInRequest']);
-  has Parents => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'parents', request_name => 'parents', traits => ['Unwrapped','NameInRequest']);
-  has TreeId => (is => 'ro', isa => 'Str', xmlname => 'treeId', request_name => 'treeId', traits => ['Unwrapped','NameInRequest']);
+  has AdditionalData => (is => 'ro', isa => 'Str', request_name => 'additionalData', traits => ['NameInRequest']);
+  has Author => (is => 'ro', isa => 'Paws::CodeCommit::UserInfo', request_name => 'author', traits => ['NameInRequest']);
+  has Committer => (is => 'ro', isa => 'Paws::CodeCommit::UserInfo', request_name => 'committer', traits => ['NameInRequest']);
+  has Message => (is => 'ro', isa => 'Str', request_name => 'message', traits => ['NameInRequest']);
+  has Parents => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'parents', traits => ['NameInRequest']);
+  has TreeId => (is => 'ro', isa => 'Str', request_name => 'treeId', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

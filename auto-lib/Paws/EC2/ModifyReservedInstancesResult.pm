@@ -1,7 +1,7 @@
 
 package Paws::EC2::ModifyReservedInstancesResult;
   use Moose;
-  has ReservedInstancesModificationId => (is => 'ro', isa => 'Str', xmlname => 'reservedInstancesModificationId', traits => ['Unwrapped',]);
+  has ReservedInstancesModificationId => (is => 'ro', isa => 'Str', request_name => 'reservedInstancesModificationId', traits => ['NameInRequest',]);
 
 1;
 

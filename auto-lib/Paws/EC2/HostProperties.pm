@@ -1,9 +1,9 @@
 package Paws::EC2::HostProperties;
   use Moose;
-  has Cores => (is => 'ro', isa => 'Int', xmlname => 'cores', traits => ['Unwrapped']);
-  has InstanceType => (is => 'ro', isa => 'Str', xmlname => 'instanceType', traits => ['Unwrapped']);
-  has Sockets => (is => 'ro', isa => 'Int', xmlname => 'sockets', traits => ['Unwrapped']);
-  has TotalVCpus => (is => 'ro', isa => 'Int', xmlname => 'totalVCpus', traits => ['Unwrapped']);
+  has Cores => (is => 'ro', isa => 'Int', request_name => 'cores', traits => ['NameInRequest']);
+  has InstanceType => (is => 'ro', isa => 'Str', request_name => 'instanceType', traits => ['NameInRequest']);
+  has Sockets => (is => 'ro', isa => 'Int', request_name => 'sockets', traits => ['NameInRequest']);
+  has TotalVCpus => (is => 'ro', isa => 'Int', request_name => 'totalVCpus', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

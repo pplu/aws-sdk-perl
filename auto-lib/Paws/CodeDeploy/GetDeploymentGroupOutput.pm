@@ -1,7 +1,7 @@
 
 package Paws::CodeDeploy::GetDeploymentGroupOutput;
   use Moose;
-  has DeploymentGroupInfo => (is => 'ro', isa => 'Paws::CodeDeploy::DeploymentGroupInfo', traits => ['Unwrapped'], xmlname => 'deploymentGroupInfo' );
+  has DeploymentGroupInfo => (is => 'ro', isa => 'Paws::CodeDeploy::DeploymentGroupInfo', traits => ['NameInRequest'], request_name => 'deploymentGroupInfo' );
 
 
 ### main pod documentation begin ###

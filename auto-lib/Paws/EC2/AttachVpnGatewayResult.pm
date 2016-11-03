@@ -1,7 +1,7 @@
 
 package Paws::EC2::AttachVpnGatewayResult;
   use Moose;
-  has VpcAttachment => (is => 'ro', isa => 'Paws::EC2::VpcAttachment', xmlname => 'attachment', traits => ['Unwrapped',]);
+  has VpcAttachment => (is => 'ro', isa => 'Paws::EC2::VpcAttachment', request_name => 'attachment', traits => ['NameInRequest',]);
 
 1;
 

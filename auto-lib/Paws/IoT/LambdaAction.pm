@@ -1,6 +1,6 @@
 package Paws::IoT::LambdaAction;
   use Moose;
-  has FunctionArn => (is => 'ro', isa => 'Str', xmlname => 'functionArn', request_name => 'functionArn', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has FunctionArn => (is => 'ro', isa => 'Str', request_name => 'functionArn', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###

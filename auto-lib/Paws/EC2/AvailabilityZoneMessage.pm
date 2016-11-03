@@ -1,6 +1,6 @@
 package Paws::EC2::AvailabilityZoneMessage;
   use Moose;
-  has Message => (is => 'ro', isa => 'Str', xmlname => 'message', traits => ['Unwrapped']);
+  has Message => (is => 'ro', isa => 'Str', request_name => 'message', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

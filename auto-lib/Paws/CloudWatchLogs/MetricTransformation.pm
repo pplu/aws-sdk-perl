@@ -1,9 +1,9 @@
 package Paws::CloudWatchLogs::MetricTransformation;
   use Moose;
-  has DefaultValue => (is => 'ro', isa => 'Num', xmlname => 'defaultValue', request_name => 'defaultValue', traits => ['Unwrapped','NameInRequest']);
-  has MetricName => (is => 'ro', isa => 'Str', xmlname => 'metricName', request_name => 'metricName', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has MetricNamespace => (is => 'ro', isa => 'Str', xmlname => 'metricNamespace', request_name => 'metricNamespace', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has MetricValue => (is => 'ro', isa => 'Str', xmlname => 'metricValue', request_name => 'metricValue', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has DefaultValue => (is => 'ro', isa => 'Num', request_name => 'defaultValue', traits => ['NameInRequest']);
+  has MetricName => (is => 'ro', isa => 'Str', request_name => 'metricName', traits => ['NameInRequest'], required => 1);
+  has MetricNamespace => (is => 'ro', isa => 'Str', request_name => 'metricNamespace', traits => ['NameInRequest'], required => 1);
+  has MetricValue => (is => 'ro', isa => 'Str', request_name => 'metricValue', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###

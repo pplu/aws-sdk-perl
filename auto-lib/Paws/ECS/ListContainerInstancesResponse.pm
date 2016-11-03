@@ -1,8 +1,8 @@
 
 package Paws::ECS::ListContainerInstancesResponse;
   use Moose;
-  has ContainerInstanceArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['Unwrapped'], xmlname => 'containerInstanceArns' );
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
+  has ContainerInstanceArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'containerInstanceArns' );
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
 
 
 ### main pod documentation begin ###

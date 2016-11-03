@@ -1,7 +1,7 @@
 
 package Paws::CloudWatchLogs::CreateExportTaskResponse;
   use Moose;
-  has TaskId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'taskId' );
+  has TaskId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'taskId' );
 
 
 ### main pod documentation begin ###

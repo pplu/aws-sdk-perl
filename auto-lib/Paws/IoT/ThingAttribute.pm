@@ -1,9 +1,9 @@
 package Paws::IoT::ThingAttribute;
   use Moose;
-  has Attributes => (is => 'ro', isa => 'Paws::IoT::Attributes', xmlname => 'attributes', request_name => 'attributes', traits => ['Unwrapped','NameInRequest']);
-  has ThingName => (is => 'ro', isa => 'Str', xmlname => 'thingName', request_name => 'thingName', traits => ['Unwrapped','NameInRequest']);
-  has ThingTypeName => (is => 'ro', isa => 'Str', xmlname => 'thingTypeName', request_name => 'thingTypeName', traits => ['Unwrapped','NameInRequest']);
-  has Version => (is => 'ro', isa => 'Int', xmlname => 'version', request_name => 'version', traits => ['Unwrapped','NameInRequest']);
+  has Attributes => (is => 'ro', isa => 'Paws::IoT::Attributes', request_name => 'attributes', traits => ['NameInRequest']);
+  has ThingName => (is => 'ro', isa => 'Str', request_name => 'thingName', traits => ['NameInRequest']);
+  has ThingTypeName => (is => 'ro', isa => 'Str', request_name => 'thingTypeName', traits => ['NameInRequest']);
+  has Version => (is => 'ro', isa => 'Int', request_name => 'version', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

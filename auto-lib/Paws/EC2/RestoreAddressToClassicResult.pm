@@ -1,8 +1,8 @@
 
 package Paws::EC2::RestoreAddressToClassicResult;
   use Moose;
-  has PublicIp => (is => 'ro', isa => 'Str', xmlname => 'publicIp', traits => ['Unwrapped',]);
-  has Status => (is => 'ro', isa => 'Str', xmlname => 'status', traits => ['Unwrapped',]);
+  has PublicIp => (is => 'ro', isa => 'Str', request_name => 'publicIp', traits => ['NameInRequest',]);
+  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest',]);
 
 1;
 

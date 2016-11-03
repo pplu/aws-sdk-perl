@@ -1,7 +1,7 @@
 
 package Paws::CodePipeline::RetryStageExecutionOutput;
   use Moose;
-  has PipelineExecutionId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'pipelineExecutionId' );
+  has PipelineExecutionId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'pipelineExecutionId' );
 
 
 ### main pod documentation begin ###

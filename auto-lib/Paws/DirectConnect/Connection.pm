@@ -1,16 +1,16 @@
 
 package Paws::DirectConnect::Connection;
   use Moose;
-  has Bandwidth => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'bandwidth' );
-  has ConnectionId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'connectionId' );
-  has ConnectionName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'connectionName' );
-  has ConnectionState => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'connectionState' );
-  has LoaIssueTime => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'loaIssueTime' );
-  has Location => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'location' );
-  has OwnerAccount => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'ownerAccount' );
-  has PartnerName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'partnerName' );
-  has Region => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'region' );
-  has Vlan => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => 'vlan' );
+  has Bandwidth => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'bandwidth' );
+  has ConnectionId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'connectionId' );
+  has ConnectionName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'connectionName' );
+  has ConnectionState => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'connectionState' );
+  has LoaIssueTime => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'loaIssueTime' );
+  has Location => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'location' );
+  has OwnerAccount => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'ownerAccount' );
+  has PartnerName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'partnerName' );
+  has Region => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'region' );
+  has Vlan => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'vlan' );
 
 
 ### main pod documentation begin ###

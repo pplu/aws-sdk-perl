@@ -1,12 +1,12 @@
 package Paws::DirectConnect::NewPublicVirtualInterface;
   use Moose;
-  has AmazonAddress => (is => 'ro', isa => 'Str', xmlname => 'amazonAddress', request_name => 'amazonAddress', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has Asn => (is => 'ro', isa => 'Int', xmlname => 'asn', request_name => 'asn', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has AuthKey => (is => 'ro', isa => 'Str', xmlname => 'authKey', request_name => 'authKey', traits => ['Unwrapped','NameInRequest']);
-  has CustomerAddress => (is => 'ro', isa => 'Str', xmlname => 'customerAddress', request_name => 'customerAddress', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has RouteFilterPrefixes => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::RouteFilterPrefix]', xmlname => 'routeFilterPrefixes', request_name => 'routeFilterPrefixes', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has VirtualInterfaceName => (is => 'ro', isa => 'Str', xmlname => 'virtualInterfaceName', request_name => 'virtualInterfaceName', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has Vlan => (is => 'ro', isa => 'Int', xmlname => 'vlan', request_name => 'vlan', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has AmazonAddress => (is => 'ro', isa => 'Str', request_name => 'amazonAddress', traits => ['NameInRequest'], required => 1);
+  has Asn => (is => 'ro', isa => 'Int', request_name => 'asn', traits => ['NameInRequest'], required => 1);
+  has AuthKey => (is => 'ro', isa => 'Str', request_name => 'authKey', traits => ['NameInRequest']);
+  has CustomerAddress => (is => 'ro', isa => 'Str', request_name => 'customerAddress', traits => ['NameInRequest'], required => 1);
+  has RouteFilterPrefixes => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::RouteFilterPrefix]', request_name => 'routeFilterPrefixes', traits => ['NameInRequest'], required => 1);
+  has VirtualInterfaceName => (is => 'ro', isa => 'Str', request_name => 'virtualInterfaceName', traits => ['NameInRequest'], required => 1);
+  has Vlan => (is => 'ro', isa => 'Int', request_name => 'vlan', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###

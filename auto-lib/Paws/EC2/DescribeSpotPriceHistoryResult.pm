@@ -1,8 +1,8 @@
 
 package Paws::EC2::DescribeSpotPriceHistoryResult;
   use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', xmlname => 'nextToken', traits => ['Unwrapped',]);
-  has SpotPriceHistory => (is => 'ro', isa => 'ArrayRef[Paws::EC2::SpotPrice]', xmlname => 'spotPriceHistorySet', traits => ['Unwrapped',]);
+  has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest',]);
+  has SpotPriceHistory => (is => 'ro', isa => 'ArrayRef[Paws::EC2::SpotPrice]', request_name => 'spotPriceHistorySet', traits => ['NameInRequest',]);
 
 1;
 

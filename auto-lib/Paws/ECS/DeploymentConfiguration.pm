@@ -1,7 +1,7 @@
 package Paws::ECS::DeploymentConfiguration;
   use Moose;
-  has MaximumPercent => (is => 'ro', isa => 'Int', xmlname => 'maximumPercent', request_name => 'maximumPercent', traits => ['Unwrapped','NameInRequest']);
-  has MinimumHealthyPercent => (is => 'ro', isa => 'Int', xmlname => 'minimumHealthyPercent', request_name => 'minimumHealthyPercent', traits => ['Unwrapped','NameInRequest']);
+  has MaximumPercent => (is => 'ro', isa => 'Int', request_name => 'maximumPercent', traits => ['NameInRequest']);
+  has MinimumHealthyPercent => (is => 'ro', isa => 'Int', request_name => 'minimumHealthyPercent', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

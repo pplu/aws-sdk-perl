@@ -1,9 +1,9 @@
 package Paws::SQS::MessageAttributeValue;
   use Moose;
-  has BinaryListValues => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'BinaryListValue', request_name => 'BinaryListValue', traits => ['Unwrapped','NameInRequest']);
+  has BinaryListValues => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'BinaryListValue', traits => ['NameInRequest']);
   has BinaryValue => (is => 'ro', isa => 'Str');
   has DataType => (is => 'ro', isa => 'Str', required => 1);
-  has StringListValues => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'StringListValue', request_name => 'StringListValue', traits => ['Unwrapped','NameInRequest']);
+  has StringListValues => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'StringListValue', traits => ['NameInRequest']);
   has StringValue => (is => 'ro', isa => 'Str');
 1;
 

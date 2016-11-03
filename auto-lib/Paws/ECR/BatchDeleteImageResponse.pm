@@ -1,8 +1,8 @@
 
 package Paws::ECR::BatchDeleteImageResponse;
   use Moose;
-  has Failures => (is => 'ro', isa => 'ArrayRef[Paws::ECR::ImageFailure]', traits => ['Unwrapped'], xmlname => 'failures' );
-  has ImageIds => (is => 'ro', isa => 'ArrayRef[Paws::ECR::ImageIdentifier]', traits => ['Unwrapped'], xmlname => 'imageIds' );
+  has Failures => (is => 'ro', isa => 'ArrayRef[Paws::ECR::ImageFailure]', traits => ['NameInRequest'], request_name => 'failures' );
+  has ImageIds => (is => 'ro', isa => 'ArrayRef[Paws::ECR::ImageIdentifier]', traits => ['NameInRequest'], request_name => 'imageIds' );
 
 
 ### main pod documentation begin ###

@@ -1,8 +1,8 @@
 
 package Paws::SimpleWorkflow::DomainInfos;
   use Moose;
-  has DomainInfos => (is => 'ro', isa => 'ArrayRef[Paws::SimpleWorkflow::DomainInfo]', traits => ['Unwrapped'], xmlname => 'domainInfos' , required => 1);
-  has NextPageToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextPageToken' );
+  has DomainInfos => (is => 'ro', isa => 'ArrayRef[Paws::SimpleWorkflow::DomainInfo]', traits => ['NameInRequest'], request_name => 'domainInfos' , required => 1);
+  has NextPageToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextPageToken' );
 
 
 ### main pod documentation begin ###

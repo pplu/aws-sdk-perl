@@ -1,9 +1,9 @@
 
 package Paws::DataPipeline::QueryObjectsOutput;
   use Moose;
-  has HasMoreResults => (is => 'ro', isa => 'Bool', traits => ['Unwrapped'], xmlname => 'hasMoreResults' );
-  has Ids => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['Unwrapped'], xmlname => 'ids' );
-  has Marker => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'marker' );
+  has HasMoreResults => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'hasMoreResults' );
+  has Ids => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'ids' );
+  has Marker => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'marker' );
 
 
 ### main pod documentation begin ###

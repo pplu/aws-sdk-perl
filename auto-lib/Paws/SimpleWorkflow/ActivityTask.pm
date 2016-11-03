@@ -1,12 +1,12 @@
 
 package Paws::SimpleWorkflow::ActivityTask;
   use Moose;
-  has ActivityId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'activityId' , required => 1);
-  has ActivityType => (is => 'ro', isa => 'Paws::SimpleWorkflow::ActivityType', traits => ['Unwrapped'], xmlname => 'activityType' , required => 1);
-  has Input => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'input' );
-  has StartedEventId => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => 'startedEventId' , required => 1);
-  has TaskToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'taskToken' , required => 1);
-  has WorkflowExecution => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowExecution', traits => ['Unwrapped'], xmlname => 'workflowExecution' , required => 1);
+  has ActivityId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'activityId' , required => 1);
+  has ActivityType => (is => 'ro', isa => 'Paws::SimpleWorkflow::ActivityType', traits => ['NameInRequest'], request_name => 'activityType' , required => 1);
+  has Input => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'input' );
+  has StartedEventId => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'startedEventId' , required => 1);
+  has TaskToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'taskToken' , required => 1);
+  has WorkflowExecution => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowExecution', traits => ['NameInRequest'], request_name => 'workflowExecution' , required => 1);
 
 
 ### main pod documentation begin ###

@@ -1,8 +1,8 @@
 
 package Paws::DeviceFarm::ListDevicePoolsResult;
   use Moose;
-  has DevicePools => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::DevicePool]', traits => ['Unwrapped'], xmlname => 'devicePools' );
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
+  has DevicePools => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::DevicePool]', traits => ['NameInRequest'], request_name => 'devicePools' );
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
 
 
 ### main pod documentation begin ###

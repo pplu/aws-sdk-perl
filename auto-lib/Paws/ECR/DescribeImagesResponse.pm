@@ -1,8 +1,8 @@
 
 package Paws::ECR::DescribeImagesResponse;
   use Moose;
-  has ImageDetails => (is => 'ro', isa => 'ArrayRef[Paws::ECR::ImageDetail]', traits => ['Unwrapped'], xmlname => 'imageDetails' );
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
+  has ImageDetails => (is => 'ro', isa => 'ArrayRef[Paws::ECR::ImageDetail]', traits => ['NameInRequest'], request_name => 'imageDetails' );
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
 
 
 ### main pod documentation begin ###

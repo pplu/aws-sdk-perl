@@ -1,11 +1,11 @@
 
 package Paws::EC2::Reservation;
   use Moose;
-  has Groups => (is => 'ro', isa => 'ArrayRef[Paws::EC2::GroupIdentifier]', xmlname => 'groupSet', traits => ['Unwrapped',]);
-  has Instances => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Instance]', xmlname => 'instancesSet', traits => ['Unwrapped',]);
-  has OwnerId => (is => 'ro', isa => 'Str', xmlname => 'ownerId', traits => ['Unwrapped',]);
-  has RequesterId => (is => 'ro', isa => 'Str', xmlname => 'requesterId', traits => ['Unwrapped',]);
-  has ReservationId => (is => 'ro', isa => 'Str', xmlname => 'reservationId', traits => ['Unwrapped',]);
+  has Groups => (is => 'ro', isa => 'ArrayRef[Paws::EC2::GroupIdentifier]', request_name => 'groupSet', traits => ['NameInRequest',]);
+  has Instances => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Instance]', request_name => 'instancesSet', traits => ['NameInRequest',]);
+  has OwnerId => (is => 'ro', isa => 'Str', request_name => 'ownerId', traits => ['NameInRequest',]);
+  has RequesterId => (is => 'ro', isa => 'Str', request_name => 'requesterId', traits => ['NameInRequest',]);
+  has ReservationId => (is => 'ro', isa => 'Str', request_name => 'reservationId', traits => ['NameInRequest',]);
 
 1;
 

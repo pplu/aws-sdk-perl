@@ -1,7 +1,7 @@
 
 package Paws::EC2::DescribeKeyPairsResult;
   use Moose;
-  has KeyPairs => (is => 'ro', isa => 'ArrayRef[Paws::EC2::KeyPairInfo]', xmlname => 'keySet', traits => ['Unwrapped',]);
+  has KeyPairs => (is => 'ro', isa => 'ArrayRef[Paws::EC2::KeyPairInfo]', request_name => 'keySet', traits => ['NameInRequest',]);
 
 1;
 

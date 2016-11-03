@@ -1,9 +1,9 @@
 
 package Paws::EC2::AllocateAddressResult;
   use Moose;
-  has AllocationId => (is => 'ro', isa => 'Str', xmlname => 'allocationId', traits => ['Unwrapped',]);
-  has Domain => (is => 'ro', isa => 'Str', xmlname => 'domain', traits => ['Unwrapped',]);
-  has PublicIp => (is => 'ro', isa => 'Str', xmlname => 'publicIp', traits => ['Unwrapped',]);
+  has AllocationId => (is => 'ro', isa => 'Str', request_name => 'allocationId', traits => ['NameInRequest',]);
+  has Domain => (is => 'ro', isa => 'Str', request_name => 'domain', traits => ['NameInRequest',]);
+  has PublicIp => (is => 'ro', isa => 'Str', request_name => 'publicIp', traits => ['NameInRequest',]);
 
 1;
 

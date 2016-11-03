@@ -1,7 +1,7 @@
 
 package Paws::Support::AddCommunicationToCaseResponse;
   use Moose;
-  has Result => (is => 'ro', isa => 'Bool', traits => ['Unwrapped'], xmlname => 'result' );
+  has Result => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'result' );
 
 
 ### main pod documentation begin ###

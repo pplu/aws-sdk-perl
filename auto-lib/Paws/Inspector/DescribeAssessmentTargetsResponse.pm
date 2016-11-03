@@ -1,8 +1,8 @@
 
 package Paws::Inspector::DescribeAssessmentTargetsResponse;
   use Moose;
-  has AssessmentTargets => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::AssessmentTarget]', traits => ['Unwrapped'], xmlname => 'assessmentTargets' , required => 1);
-  has FailedItems => (is => 'ro', isa => 'Paws::Inspector::FailedItems', traits => ['Unwrapped'], xmlname => 'failedItems' , required => 1);
+  has AssessmentTargets => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::AssessmentTarget]', traits => ['NameInRequest'], request_name => 'assessmentTargets' , required => 1);
+  has FailedItems => (is => 'ro', isa => 'Paws::Inspector::FailedItems', traits => ['NameInRequest'], request_name => 'failedItems' , required => 1);
 
 
 ### main pod documentation begin ###

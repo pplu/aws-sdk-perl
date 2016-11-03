@@ -1,8 +1,8 @@
 
 package Paws::EC2::DescribeTagsResult;
   use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', xmlname => 'nextToken', traits => ['Unwrapped',]);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::TagDescription]', xmlname => 'tagSet', traits => ['Unwrapped',]);
+  has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest',]);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::TagDescription]', request_name => 'tagSet', traits => ['NameInRequest',]);
 
 1;
 

@@ -1,9 +1,9 @@
 
 package Paws::EC2::DescribeVolumeAttributeResult;
   use Moose;
-  has AutoEnableIO => (is => 'ro', isa => 'Paws::EC2::AttributeBooleanValue', xmlname => 'autoEnableIO', traits => ['Unwrapped',]);
-  has ProductCodes => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ProductCode]', xmlname => 'productCodes', traits => ['Unwrapped',]);
-  has VolumeId => (is => 'ro', isa => 'Str', xmlname => 'volumeId', traits => ['Unwrapped',]);
+  has AutoEnableIO => (is => 'ro', isa => 'Paws::EC2::AttributeBooleanValue', request_name => 'autoEnableIO', traits => ['NameInRequest',]);
+  has ProductCodes => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ProductCode]', request_name => 'productCodes', traits => ['NameInRequest',]);
+  has VolumeId => (is => 'ro', isa => 'Str', request_name => 'volumeId', traits => ['NameInRequest',]);
 
 1;
 

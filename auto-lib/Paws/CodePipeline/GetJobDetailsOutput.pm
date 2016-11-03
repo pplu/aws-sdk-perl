@@ -1,7 +1,7 @@
 
 package Paws::CodePipeline::GetJobDetailsOutput;
   use Moose;
-  has JobDetails => (is => 'ro', isa => 'Paws::CodePipeline::JobDetails', traits => ['Unwrapped'], xmlname => 'jobDetails' );
+  has JobDetails => (is => 'ro', isa => 'Paws::CodePipeline::JobDetails', traits => ['NameInRequest'], request_name => 'jobDetails' );
 
 
 ### main pod documentation begin ###

@@ -1,7 +1,7 @@
 
 package Paws::Discovery::DescribeConfigurationsResponse;
   use Moose;
-  has Configurations => (is => 'ro', isa => 'ArrayRef[Paws::Discovery::DescribeConfigurationsAttribute]', traits => ['Unwrapped'], xmlname => 'configurations' );
+  has Configurations => (is => 'ro', isa => 'ArrayRef[Paws::Discovery::DescribeConfigurationsAttribute]', traits => ['NameInRequest'], request_name => 'configurations' );
 
 
 ### main pod documentation begin ###

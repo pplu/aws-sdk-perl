@@ -1,8 +1,8 @@
 
 package Paws::EC2::DescribeHostsResult;
   use Moose;
-  has Hosts => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Host]', xmlname => 'hostSet', traits => ['Unwrapped',]);
-  has NextToken => (is => 'ro', isa => 'Str', xmlname => 'nextToken', traits => ['Unwrapped',]);
+  has Hosts => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Host]', request_name => 'hostSet', traits => ['NameInRequest',]);
+  has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest',]);
 
 1;
 

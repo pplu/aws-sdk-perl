@@ -1,7 +1,7 @@
 package Paws::Inspector::DurationRange;
   use Moose;
-  has MaxSeconds => (is => 'ro', isa => 'Int', xmlname => 'maxSeconds', request_name => 'maxSeconds', traits => ['Unwrapped','NameInRequest']);
-  has MinSeconds => (is => 'ro', isa => 'Int', xmlname => 'minSeconds', request_name => 'minSeconds', traits => ['Unwrapped','NameInRequest']);
+  has MaxSeconds => (is => 'ro', isa => 'Int', request_name => 'maxSeconds', traits => ['NameInRequest']);
+  has MinSeconds => (is => 'ro', isa => 'Int', request_name => 'minSeconds', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

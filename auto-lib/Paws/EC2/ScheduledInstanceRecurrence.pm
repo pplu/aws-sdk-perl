@@ -1,10 +1,10 @@
 package Paws::EC2::ScheduledInstanceRecurrence;
   use Moose;
-  has Frequency => (is => 'ro', isa => 'Str', xmlname => 'frequency', traits => ['Unwrapped']);
-  has Interval => (is => 'ro', isa => 'Int', xmlname => 'interval', traits => ['Unwrapped']);
-  has OccurrenceDaySet => (is => 'ro', isa => 'ArrayRef[Int]', xmlname => 'occurrenceDaySet', traits => ['Unwrapped']);
-  has OccurrenceRelativeToEnd => (is => 'ro', isa => 'Bool', xmlname => 'occurrenceRelativeToEnd', traits => ['Unwrapped']);
-  has OccurrenceUnit => (is => 'ro', isa => 'Str', xmlname => 'occurrenceUnit', traits => ['Unwrapped']);
+  has Frequency => (is => 'ro', isa => 'Str', request_name => 'frequency', traits => ['NameInRequest']);
+  has Interval => (is => 'ro', isa => 'Int', request_name => 'interval', traits => ['NameInRequest']);
+  has OccurrenceDaySet => (is => 'ro', isa => 'ArrayRef[Int]', request_name => 'occurrenceDaySet', traits => ['NameInRequest']);
+  has OccurrenceRelativeToEnd => (is => 'ro', isa => 'Bool', request_name => 'occurrenceRelativeToEnd', traits => ['NameInRequest']);
+  has OccurrenceUnit => (is => 'ro', isa => 'Str', request_name => 'occurrenceUnit', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

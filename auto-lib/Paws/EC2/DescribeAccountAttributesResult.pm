@@ -1,7 +1,7 @@
 
 package Paws::EC2::DescribeAccountAttributesResult;
   use Moose;
-  has AccountAttributes => (is => 'ro', isa => 'ArrayRef[Paws::EC2::AccountAttribute]', xmlname => 'accountAttributeSet', traits => ['Unwrapped',]);
+  has AccountAttributes => (is => 'ro', isa => 'ArrayRef[Paws::EC2::AccountAttribute]', request_name => 'accountAttributeSet', traits => ['NameInRequest',]);
 
 1;
 

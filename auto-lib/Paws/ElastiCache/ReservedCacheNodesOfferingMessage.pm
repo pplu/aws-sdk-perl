@@ -2,7 +2,7 @@
 package Paws::ElastiCache::ReservedCacheNodesOfferingMessage;
   use Moose;
   has Marker => (is => 'ro', isa => 'Str');
-  has ReservedCacheNodesOfferings => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::ReservedCacheNodesOffering]', xmlname => 'ReservedCacheNodesOffering', traits => ['Unwrapped',]);
+  has ReservedCacheNodesOfferings => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::ReservedCacheNodesOffering]', request_name => 'ReservedCacheNodesOffering', traits => ['NameInRequest',]);
 
 1;
 

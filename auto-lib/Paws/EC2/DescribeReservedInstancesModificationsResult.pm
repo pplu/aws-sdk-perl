@@ -1,8 +1,8 @@
 
 package Paws::EC2::DescribeReservedInstancesModificationsResult;
   use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', xmlname => 'nextToken', traits => ['Unwrapped',]);
-  has ReservedInstancesModifications => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ReservedInstancesModification]', xmlname => 'reservedInstancesModificationsSet', traits => ['Unwrapped',]);
+  has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest',]);
+  has ReservedInstancesModifications => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ReservedInstancesModification]', request_name => 'reservedInstancesModificationsSet', traits => ['NameInRequest',]);
 
 1;
 

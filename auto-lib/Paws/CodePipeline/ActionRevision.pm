@@ -1,8 +1,8 @@
 package Paws::CodePipeline::ActionRevision;
   use Moose;
-  has Created => (is => 'ro', isa => 'Str', xmlname => 'created', request_name => 'created', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has RevisionChangeId => (is => 'ro', isa => 'Str', xmlname => 'revisionChangeId', request_name => 'revisionChangeId', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has RevisionId => (is => 'ro', isa => 'Str', xmlname => 'revisionId', request_name => 'revisionId', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has Created => (is => 'ro', isa => 'Str', request_name => 'created', traits => ['NameInRequest'], required => 1);
+  has RevisionChangeId => (is => 'ro', isa => 'Str', request_name => 'revisionChangeId', traits => ['NameInRequest'], required => 1);
+  has RevisionId => (is => 'ro', isa => 'Str', request_name => 'revisionId', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###

@@ -1,9 +1,9 @@
 
 package Paws::EC2::DescribeVpcAttributeResult;
   use Moose;
-  has EnableDnsHostnames => (is => 'ro', isa => 'Paws::EC2::AttributeBooleanValue', xmlname => 'enableDnsHostnames', traits => ['Unwrapped',]);
-  has EnableDnsSupport => (is => 'ro', isa => 'Paws::EC2::AttributeBooleanValue', xmlname => 'enableDnsSupport', traits => ['Unwrapped',]);
-  has VpcId => (is => 'ro', isa => 'Str', xmlname => 'vpcId', traits => ['Unwrapped',]);
+  has EnableDnsHostnames => (is => 'ro', isa => 'Paws::EC2::AttributeBooleanValue', request_name => 'enableDnsHostnames', traits => ['NameInRequest',]);
+  has EnableDnsSupport => (is => 'ro', isa => 'Paws::EC2::AttributeBooleanValue', request_name => 'enableDnsSupport', traits => ['NameInRequest',]);
+  has VpcId => (is => 'ro', isa => 'Str', request_name => 'vpcId', traits => ['NameInRequest',]);
 
 1;
 

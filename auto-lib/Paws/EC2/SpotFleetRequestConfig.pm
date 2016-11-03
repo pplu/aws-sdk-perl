@@ -1,10 +1,10 @@
 package Paws::EC2::SpotFleetRequestConfig;
   use Moose;
-  has ActivityStatus => (is => 'ro', isa => 'Str', xmlname => 'activityStatus', traits => ['Unwrapped']);
-  has CreateTime => (is => 'ro', isa => 'Str', xmlname => 'createTime', traits => ['Unwrapped'], required => 1);
-  has SpotFleetRequestConfig => (is => 'ro', isa => 'Paws::EC2::SpotFleetRequestConfigData', xmlname => 'spotFleetRequestConfig', traits => ['Unwrapped'], required => 1);
-  has SpotFleetRequestId => (is => 'ro', isa => 'Str', xmlname => 'spotFleetRequestId', traits => ['Unwrapped'], required => 1);
-  has SpotFleetRequestState => (is => 'ro', isa => 'Str', xmlname => 'spotFleetRequestState', traits => ['Unwrapped'], required => 1);
+  has ActivityStatus => (is => 'ro', isa => 'Str', request_name => 'activityStatus', traits => ['NameInRequest']);
+  has CreateTime => (is => 'ro', isa => 'Str', request_name => 'createTime', traits => ['NameInRequest'], required => 1);
+  has SpotFleetRequestConfig => (is => 'ro', isa => 'Paws::EC2::SpotFleetRequestConfigData', request_name => 'spotFleetRequestConfig', traits => ['NameInRequest'], required => 1);
+  has SpotFleetRequestId => (is => 'ro', isa => 'Str', request_name => 'spotFleetRequestId', traits => ['NameInRequest'], required => 1);
+  has SpotFleetRequestState => (is => 'ro', isa => 'Str', request_name => 'spotFleetRequestState', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###

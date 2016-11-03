@@ -1,10 +1,10 @@
 package Paws::EC2::Placement;
   use Moose;
-  has Affinity => (is => 'ro', isa => 'Str', xmlname => 'affinity', traits => ['Unwrapped']);
-  has AvailabilityZone => (is => 'ro', isa => 'Str', xmlname => 'availabilityZone', traits => ['Unwrapped']);
-  has GroupName => (is => 'ro', isa => 'Str', xmlname => 'groupName', traits => ['Unwrapped']);
-  has HostId => (is => 'ro', isa => 'Str', xmlname => 'hostId', traits => ['Unwrapped']);
-  has Tenancy => (is => 'ro', isa => 'Str', xmlname => 'tenancy', traits => ['Unwrapped']);
+  has Affinity => (is => 'ro', isa => 'Str', request_name => 'affinity', traits => ['NameInRequest']);
+  has AvailabilityZone => (is => 'ro', isa => 'Str', request_name => 'availabilityZone', traits => ['NameInRequest']);
+  has GroupName => (is => 'ro', isa => 'Str', request_name => 'groupName', traits => ['NameInRequest']);
+  has HostId => (is => 'ro', isa => 'Str', request_name => 'hostId', traits => ['NameInRequest']);
+  has Tenancy => (is => 'ro', isa => 'Str', request_name => 'tenancy', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

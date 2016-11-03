@@ -1,9 +1,9 @@
 
 package Paws::EC2::ImportSnapshotResult;
   use Moose;
-  has Description => (is => 'ro', isa => 'Str', xmlname => 'description', traits => ['Unwrapped',]);
-  has ImportTaskId => (is => 'ro', isa => 'Str', xmlname => 'importTaskId', traits => ['Unwrapped',]);
-  has SnapshotTaskDetail => (is => 'ro', isa => 'Paws::EC2::SnapshotTaskDetail', xmlname => 'snapshotTaskDetail', traits => ['Unwrapped',]);
+  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest',]);
+  has ImportTaskId => (is => 'ro', isa => 'Str', request_name => 'importTaskId', traits => ['NameInRequest',]);
+  has SnapshotTaskDetail => (is => 'ro', isa => 'Paws::EC2::SnapshotTaskDetail', request_name => 'snapshotTaskDetail', traits => ['NameInRequest',]);
 
 1;
 

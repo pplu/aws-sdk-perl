@@ -1,19 +1,19 @@
 package Paws::ECS::Service;
   use Moose;
-  has ClusterArn => (is => 'ro', isa => 'Str', xmlname => 'clusterArn', request_name => 'clusterArn', traits => ['Unwrapped','NameInRequest']);
-  has CreatedAt => (is => 'ro', isa => 'Str', xmlname => 'createdAt', request_name => 'createdAt', traits => ['Unwrapped','NameInRequest']);
-  has DeploymentConfiguration => (is => 'ro', isa => 'Paws::ECS::DeploymentConfiguration', xmlname => 'deploymentConfiguration', request_name => 'deploymentConfiguration', traits => ['Unwrapped','NameInRequest']);
-  has Deployments => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Deployment]', xmlname => 'deployments', request_name => 'deployments', traits => ['Unwrapped','NameInRequest']);
-  has DesiredCount => (is => 'ro', isa => 'Int', xmlname => 'desiredCount', request_name => 'desiredCount', traits => ['Unwrapped','NameInRequest']);
-  has Events => (is => 'ro', isa => 'ArrayRef[Paws::ECS::ServiceEvent]', xmlname => 'events', request_name => 'events', traits => ['Unwrapped','NameInRequest']);
-  has LoadBalancers => (is => 'ro', isa => 'ArrayRef[Paws::ECS::LoadBalancer]', xmlname => 'loadBalancers', request_name => 'loadBalancers', traits => ['Unwrapped','NameInRequest']);
-  has PendingCount => (is => 'ro', isa => 'Int', xmlname => 'pendingCount', request_name => 'pendingCount', traits => ['Unwrapped','NameInRequest']);
-  has RoleArn => (is => 'ro', isa => 'Str', xmlname => 'roleArn', request_name => 'roleArn', traits => ['Unwrapped','NameInRequest']);
-  has RunningCount => (is => 'ro', isa => 'Int', xmlname => 'runningCount', request_name => 'runningCount', traits => ['Unwrapped','NameInRequest']);
-  has ServiceArn => (is => 'ro', isa => 'Str', xmlname => 'serviceArn', request_name => 'serviceArn', traits => ['Unwrapped','NameInRequest']);
-  has ServiceName => (is => 'ro', isa => 'Str', xmlname => 'serviceName', request_name => 'serviceName', traits => ['Unwrapped','NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', xmlname => 'status', request_name => 'status', traits => ['Unwrapped','NameInRequest']);
-  has TaskDefinition => (is => 'ro', isa => 'Str', xmlname => 'taskDefinition', request_name => 'taskDefinition', traits => ['Unwrapped','NameInRequest']);
+  has ClusterArn => (is => 'ro', isa => 'Str', request_name => 'clusterArn', traits => ['NameInRequest']);
+  has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest']);
+  has DeploymentConfiguration => (is => 'ro', isa => 'Paws::ECS::DeploymentConfiguration', request_name => 'deploymentConfiguration', traits => ['NameInRequest']);
+  has Deployments => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Deployment]', request_name => 'deployments', traits => ['NameInRequest']);
+  has DesiredCount => (is => 'ro', isa => 'Int', request_name => 'desiredCount', traits => ['NameInRequest']);
+  has Events => (is => 'ro', isa => 'ArrayRef[Paws::ECS::ServiceEvent]', request_name => 'events', traits => ['NameInRequest']);
+  has LoadBalancers => (is => 'ro', isa => 'ArrayRef[Paws::ECS::LoadBalancer]', request_name => 'loadBalancers', traits => ['NameInRequest']);
+  has PendingCount => (is => 'ro', isa => 'Int', request_name => 'pendingCount', traits => ['NameInRequest']);
+  has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest']);
+  has RunningCount => (is => 'ro', isa => 'Int', request_name => 'runningCount', traits => ['NameInRequest']);
+  has ServiceArn => (is => 'ro', isa => 'Str', request_name => 'serviceArn', traits => ['NameInRequest']);
+  has ServiceName => (is => 'ro', isa => 'Str', request_name => 'serviceName', traits => ['NameInRequest']);
+  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+  has TaskDefinition => (is => 'ro', isa => 'Str', request_name => 'taskDefinition', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

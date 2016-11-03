@@ -1,7 +1,7 @@
 
 package Paws::ECS::SubmitTaskStateChangeResponse;
   use Moose;
-  has Acknowledgment => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'acknowledgment' );
+  has Acknowledgment => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'acknowledgment' );
 
 
 ### main pod documentation begin ###

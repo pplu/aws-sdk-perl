@@ -1,9 +1,9 @@
 
 package Paws::DataPipeline::DescribeObjectsOutput;
   use Moose;
-  has HasMoreResults => (is => 'ro', isa => 'Bool', traits => ['Unwrapped'], xmlname => 'hasMoreResults' );
-  has Marker => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'marker' );
-  has PipelineObjects => (is => 'ro', isa => 'ArrayRef[Paws::DataPipeline::PipelineObject]', traits => ['Unwrapped'], xmlname => 'pipelineObjects' , required => 1);
+  has HasMoreResults => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'hasMoreResults' );
+  has Marker => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'marker' );
+  has PipelineObjects => (is => 'ro', isa => 'ArrayRef[Paws::DataPipeline::PipelineObject]', traits => ['NameInRequest'], request_name => 'pipelineObjects' , required => 1);
 
 
 ### main pod documentation begin ###

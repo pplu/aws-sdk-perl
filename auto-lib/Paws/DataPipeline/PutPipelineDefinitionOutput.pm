@@ -1,9 +1,9 @@
 
 package Paws::DataPipeline::PutPipelineDefinitionOutput;
   use Moose;
-  has Errored => (is => 'ro', isa => 'Bool', traits => ['Unwrapped'], xmlname => 'errored' , required => 1);
-  has ValidationErrors => (is => 'ro', isa => 'ArrayRef[Paws::DataPipeline::ValidationError]', traits => ['Unwrapped'], xmlname => 'validationErrors' );
-  has ValidationWarnings => (is => 'ro', isa => 'ArrayRef[Paws::DataPipeline::ValidationWarning]', traits => ['Unwrapped'], xmlname => 'validationWarnings' );
+  has Errored => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'errored' , required => 1);
+  has ValidationErrors => (is => 'ro', isa => 'ArrayRef[Paws::DataPipeline::ValidationError]', traits => ['NameInRequest'], request_name => 'validationErrors' );
+  has ValidationWarnings => (is => 'ro', isa => 'ArrayRef[Paws::DataPipeline::ValidationWarning]', traits => ['NameInRequest'], request_name => 'validationWarnings' );
 
 
 ### main pod documentation begin ###

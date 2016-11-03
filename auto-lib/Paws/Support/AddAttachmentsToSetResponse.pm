@@ -1,8 +1,8 @@
 
 package Paws::Support::AddAttachmentsToSetResponse;
   use Moose;
-  has AttachmentSetId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'attachmentSetId' );
-  has ExpiryTime => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'expiryTime' );
+  has AttachmentSetId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'attachmentSetId' );
+  has ExpiryTime => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'expiryTime' );
 
 
 ### main pod documentation begin ###

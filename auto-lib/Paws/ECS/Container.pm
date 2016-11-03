@@ -1,12 +1,12 @@
 package Paws::ECS::Container;
   use Moose;
-  has ContainerArn => (is => 'ro', isa => 'Str', xmlname => 'containerArn', request_name => 'containerArn', traits => ['Unwrapped','NameInRequest']);
-  has ExitCode => (is => 'ro', isa => 'Int', xmlname => 'exitCode', request_name => 'exitCode', traits => ['Unwrapped','NameInRequest']);
-  has LastStatus => (is => 'ro', isa => 'Str', xmlname => 'lastStatus', request_name => 'lastStatus', traits => ['Unwrapped','NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', xmlname => 'name', request_name => 'name', traits => ['Unwrapped','NameInRequest']);
-  has NetworkBindings => (is => 'ro', isa => 'ArrayRef[Paws::ECS::NetworkBinding]', xmlname => 'networkBindings', request_name => 'networkBindings', traits => ['Unwrapped','NameInRequest']);
-  has Reason => (is => 'ro', isa => 'Str', xmlname => 'reason', request_name => 'reason', traits => ['Unwrapped','NameInRequest']);
-  has TaskArn => (is => 'ro', isa => 'Str', xmlname => 'taskArn', request_name => 'taskArn', traits => ['Unwrapped','NameInRequest']);
+  has ContainerArn => (is => 'ro', isa => 'Str', request_name => 'containerArn', traits => ['NameInRequest']);
+  has ExitCode => (is => 'ro', isa => 'Int', request_name => 'exitCode', traits => ['NameInRequest']);
+  has LastStatus => (is => 'ro', isa => 'Str', request_name => 'lastStatus', traits => ['NameInRequest']);
+  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
+  has NetworkBindings => (is => 'ro', isa => 'ArrayRef[Paws::ECS::NetworkBinding]', request_name => 'networkBindings', traits => ['NameInRequest']);
+  has Reason => (is => 'ro', isa => 'Str', request_name => 'reason', traits => ['NameInRequest']);
+  has TaskArn => (is => 'ro', isa => 'Str', request_name => 'taskArn', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

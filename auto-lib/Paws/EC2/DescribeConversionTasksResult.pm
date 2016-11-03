@@ -1,7 +1,7 @@
 
 package Paws::EC2::DescribeConversionTasksResult;
   use Moose;
-  has ConversionTasks => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ConversionTask]', xmlname => 'conversionTasks', traits => ['Unwrapped',]);
+  has ConversionTasks => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ConversionTask]', request_name => 'conversionTasks', traits => ['NameInRequest',]);
 
 1;
 

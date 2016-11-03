@@ -1,7 +1,7 @@
 
 package Paws::EC2::ReplaceRouteTableAssociationResult;
   use Moose;
-  has NewAssociationId => (is => 'ro', isa => 'Str', xmlname => 'newAssociationId', traits => ['Unwrapped',]);
+  has NewAssociationId => (is => 'ro', isa => 'Str', request_name => 'newAssociationId', traits => ['NameInRequest',]);
 
 1;
 

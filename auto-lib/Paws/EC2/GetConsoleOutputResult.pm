@@ -1,9 +1,9 @@
 
 package Paws::EC2::GetConsoleOutputResult;
   use Moose;
-  has InstanceId => (is => 'ro', isa => 'Str', xmlname => 'instanceId', traits => ['Unwrapped',]);
-  has Output => (is => 'ro', isa => 'Str', xmlname => 'output', traits => ['Unwrapped',]);
-  has Timestamp => (is => 'ro', isa => 'Str', xmlname => 'timestamp', traits => ['Unwrapped',]);
+  has InstanceId => (is => 'ro', isa => 'Str', request_name => 'instanceId', traits => ['NameInRequest',]);
+  has Output => (is => 'ro', isa => 'Str', request_name => 'output', traits => ['NameInRequest',]);
+  has Timestamp => (is => 'ro', isa => 'Str', request_name => 'timestamp', traits => ['NameInRequest',]);
 
 1;
 

@@ -1,8 +1,8 @@
 package Paws::Support::TrustedAdvisorCheckRefreshStatus;
   use Moose;
-  has CheckId => (is => 'ro', isa => 'Str', xmlname => 'checkId', request_name => 'checkId', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has MillisUntilNextRefreshable => (is => 'ro', isa => 'Int', xmlname => 'millisUntilNextRefreshable', request_name => 'millisUntilNextRefreshable', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has Status => (is => 'ro', isa => 'Str', xmlname => 'status', request_name => 'status', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has CheckId => (is => 'ro', isa => 'Str', request_name => 'checkId', traits => ['NameInRequest'], required => 1);
+  has MillisUntilNextRefreshable => (is => 'ro', isa => 'Int', request_name => 'millisUntilNextRefreshable', traits => ['NameInRequest'], required => 1);
+  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###

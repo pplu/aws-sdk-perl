@@ -1,7 +1,7 @@
 
 package Paws::RDS::DBSecurityGroupMessage;
   use Moose;
-  has DBSecurityGroups => (is => 'ro', isa => 'ArrayRef[Paws::RDS::DBSecurityGroup]', xmlname => 'DBSecurityGroup', traits => ['Unwrapped',]);
+  has DBSecurityGroups => (is => 'ro', isa => 'ArrayRef[Paws::RDS::DBSecurityGroup]', request_name => 'DBSecurityGroup', traits => ['NameInRequest',]);
   has Marker => (is => 'ro', isa => 'Str');
 
 1;

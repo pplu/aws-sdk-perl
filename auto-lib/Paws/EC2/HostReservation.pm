@@ -1,18 +1,18 @@
 package Paws::EC2::HostReservation;
   use Moose;
-  has Count => (is => 'ro', isa => 'Int', xmlname => 'count', traits => ['Unwrapped']);
-  has CurrencyCode => (is => 'ro', isa => 'Str', xmlname => 'currencyCode', traits => ['Unwrapped']);
-  has Duration => (is => 'ro', isa => 'Int', xmlname => 'duration', traits => ['Unwrapped']);
-  has End => (is => 'ro', isa => 'Str', xmlname => 'end', traits => ['Unwrapped']);
-  has HostIdSet => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'hostIdSet', traits => ['Unwrapped']);
-  has HostReservationId => (is => 'ro', isa => 'Str', xmlname => 'hostReservationId', traits => ['Unwrapped']);
-  has HourlyPrice => (is => 'ro', isa => 'Str', xmlname => 'hourlyPrice', traits => ['Unwrapped']);
-  has InstanceFamily => (is => 'ro', isa => 'Str', xmlname => 'instanceFamily', traits => ['Unwrapped']);
-  has OfferingId => (is => 'ro', isa => 'Str', xmlname => 'offeringId', traits => ['Unwrapped']);
-  has PaymentOption => (is => 'ro', isa => 'Str', xmlname => 'paymentOption', traits => ['Unwrapped']);
-  has Start => (is => 'ro', isa => 'Str', xmlname => 'start', traits => ['Unwrapped']);
-  has State => (is => 'ro', isa => 'Str', xmlname => 'state', traits => ['Unwrapped']);
-  has UpfrontPrice => (is => 'ro', isa => 'Str', xmlname => 'upfrontPrice', traits => ['Unwrapped']);
+  has Count => (is => 'ro', isa => 'Int', request_name => 'count', traits => ['NameInRequest']);
+  has CurrencyCode => (is => 'ro', isa => 'Str', request_name => 'currencyCode', traits => ['NameInRequest']);
+  has Duration => (is => 'ro', isa => 'Int', request_name => 'duration', traits => ['NameInRequest']);
+  has End => (is => 'ro', isa => 'Str', request_name => 'end', traits => ['NameInRequest']);
+  has HostIdSet => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'hostIdSet', traits => ['NameInRequest']);
+  has HostReservationId => (is => 'ro', isa => 'Str', request_name => 'hostReservationId', traits => ['NameInRequest']);
+  has HourlyPrice => (is => 'ro', isa => 'Str', request_name => 'hourlyPrice', traits => ['NameInRequest']);
+  has InstanceFamily => (is => 'ro', isa => 'Str', request_name => 'instanceFamily', traits => ['NameInRequest']);
+  has OfferingId => (is => 'ro', isa => 'Str', request_name => 'offeringId', traits => ['NameInRequest']);
+  has PaymentOption => (is => 'ro', isa => 'Str', request_name => 'paymentOption', traits => ['NameInRequest']);
+  has Start => (is => 'ro', isa => 'Str', request_name => 'start', traits => ['NameInRequest']);
+  has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
+  has UpfrontPrice => (is => 'ro', isa => 'Str', request_name => 'upfrontPrice', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

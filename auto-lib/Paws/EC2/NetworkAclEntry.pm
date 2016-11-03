@@ -1,12 +1,12 @@
 package Paws::EC2::NetworkAclEntry;
   use Moose;
-  has CidrBlock => (is => 'ro', isa => 'Str', xmlname => 'cidrBlock', traits => ['Unwrapped']);
-  has Egress => (is => 'ro', isa => 'Bool', xmlname => 'egress', traits => ['Unwrapped']);
-  has IcmpTypeCode => (is => 'ro', isa => 'Paws::EC2::IcmpTypeCode', xmlname => 'icmpTypeCode', traits => ['Unwrapped']);
-  has PortRange => (is => 'ro', isa => 'Paws::EC2::PortRange', xmlname => 'portRange', traits => ['Unwrapped']);
-  has Protocol => (is => 'ro', isa => 'Str', xmlname => 'protocol', traits => ['Unwrapped']);
-  has RuleAction => (is => 'ro', isa => 'Str', xmlname => 'ruleAction', traits => ['Unwrapped']);
-  has RuleNumber => (is => 'ro', isa => 'Int', xmlname => 'ruleNumber', traits => ['Unwrapped']);
+  has CidrBlock => (is => 'ro', isa => 'Str', request_name => 'cidrBlock', traits => ['NameInRequest']);
+  has Egress => (is => 'ro', isa => 'Bool', request_name => 'egress', traits => ['NameInRequest']);
+  has IcmpTypeCode => (is => 'ro', isa => 'Paws::EC2::IcmpTypeCode', request_name => 'icmpTypeCode', traits => ['NameInRequest']);
+  has PortRange => (is => 'ro', isa => 'Paws::EC2::PortRange', request_name => 'portRange', traits => ['NameInRequest']);
+  has Protocol => (is => 'ro', isa => 'Str', request_name => 'protocol', traits => ['NameInRequest']);
+  has RuleAction => (is => 'ro', isa => 'Str', request_name => 'ruleAction', traits => ['NameInRequest']);
+  has RuleNumber => (is => 'ro', isa => 'Int', request_name => 'ruleNumber', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

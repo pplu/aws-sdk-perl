@@ -1,8 +1,8 @@
 
 package Paws::SQS::SendMessageBatchResult;
   use Moose;
-  has Failed => (is => 'ro', isa => 'ArrayRef[Paws::SQS::BatchResultErrorEntry]', xmlname => 'BatchResultErrorEntry', traits => ['Unwrapped',], required => 1);
-  has Successful => (is => 'ro', isa => 'ArrayRef[Paws::SQS::SendMessageBatchResultEntry]', xmlname => 'SendMessageBatchResultEntry', traits => ['Unwrapped',], required => 1);
+  has Failed => (is => 'ro', isa => 'ArrayRef[Paws::SQS::BatchResultErrorEntry]', request_name => 'BatchResultErrorEntry', traits => ['NameInRequest',], required => 1);
+  has Successful => (is => 'ro', isa => 'ArrayRef[Paws::SQS::SendMessageBatchResultEntry]', request_name => 'SendMessageBatchResultEntry', traits => ['NameInRequest',], required => 1);
 
 1;
 

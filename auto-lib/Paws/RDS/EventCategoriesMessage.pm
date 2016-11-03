@@ -1,7 +1,7 @@
 
 package Paws::RDS::EventCategoriesMessage;
   use Moose;
-  has EventCategoriesMapList => (is => 'ro', isa => 'ArrayRef[Paws::RDS::EventCategoriesMap]', xmlname => 'EventCategoriesMap', traits => ['Unwrapped',]);
+  has EventCategoriesMapList => (is => 'ro', isa => 'ArrayRef[Paws::RDS::EventCategoriesMap]', request_name => 'EventCategoriesMap', traits => ['NameInRequest',]);
 
 1;
 

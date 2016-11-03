@@ -1,8 +1,8 @@
 package Paws::ECR::AuthorizationData;
   use Moose;
-  has AuthorizationToken => (is => 'ro', isa => 'Str', xmlname => 'authorizationToken', request_name => 'authorizationToken', traits => ['Unwrapped','NameInRequest']);
-  has ExpiresAt => (is => 'ro', isa => 'Str', xmlname => 'expiresAt', request_name => 'expiresAt', traits => ['Unwrapped','NameInRequest']);
-  has ProxyEndpoint => (is => 'ro', isa => 'Str', xmlname => 'proxyEndpoint', request_name => 'proxyEndpoint', traits => ['Unwrapped','NameInRequest']);
+  has AuthorizationToken => (is => 'ro', isa => 'Str', request_name => 'authorizationToken', traits => ['NameInRequest']);
+  has ExpiresAt => (is => 'ro', isa => 'Str', request_name => 'expiresAt', traits => ['NameInRequest']);
+  has ProxyEndpoint => (is => 'ro', isa => 'Str', request_name => 'proxyEndpoint', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

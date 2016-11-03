@@ -1,8 +1,8 @@
 
 package Paws::DeviceFarm::ListTestsResult;
   use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
-  has Tests => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::Test]', traits => ['Unwrapped'], xmlname => 'tests' );
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  has Tests => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::Test]', traits => ['NameInRequest'], request_name => 'tests' );
 
 
 ### main pod documentation begin ###

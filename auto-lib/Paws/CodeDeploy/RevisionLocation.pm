@@ -1,8 +1,8 @@
 package Paws::CodeDeploy::RevisionLocation;
   use Moose;
-  has GitHubLocation => (is => 'ro', isa => 'Paws::CodeDeploy::GitHubLocation', xmlname => 'gitHubLocation', request_name => 'gitHubLocation', traits => ['Unwrapped','NameInRequest']);
-  has RevisionType => (is => 'ro', isa => 'Str', xmlname => 'revisionType', request_name => 'revisionType', traits => ['Unwrapped','NameInRequest']);
-  has S3Location => (is => 'ro', isa => 'Paws::CodeDeploy::S3Location', xmlname => 's3Location', request_name => 's3Location', traits => ['Unwrapped','NameInRequest']);
+  has GitHubLocation => (is => 'ro', isa => 'Paws::CodeDeploy::GitHubLocation', request_name => 'gitHubLocation', traits => ['NameInRequest']);
+  has RevisionType => (is => 'ro', isa => 'Str', request_name => 'revisionType', traits => ['NameInRequest']);
+  has S3Location => (is => 'ro', isa => 'Paws::CodeDeploy::S3Location', request_name => 's3Location', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

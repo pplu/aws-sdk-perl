@@ -1,10 +1,10 @@
 
 package Paws::EC2::GetHostReservationPurchasePreviewResult;
   use Moose;
-  has CurrencyCode => (is => 'ro', isa => 'Str', xmlname => 'currencyCode', traits => ['Unwrapped',]);
-  has Purchase => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Purchase]', xmlname => 'purchase', traits => ['Unwrapped',]);
-  has TotalHourlyPrice => (is => 'ro', isa => 'Str', xmlname => 'totalHourlyPrice', traits => ['Unwrapped',]);
-  has TotalUpfrontPrice => (is => 'ro', isa => 'Str', xmlname => 'totalUpfrontPrice', traits => ['Unwrapped',]);
+  has CurrencyCode => (is => 'ro', isa => 'Str', request_name => 'currencyCode', traits => ['NameInRequest',]);
+  has Purchase => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Purchase]', request_name => 'purchase', traits => ['NameInRequest',]);
+  has TotalHourlyPrice => (is => 'ro', isa => 'Str', request_name => 'totalHourlyPrice', traits => ['NameInRequest',]);
+  has TotalUpfrontPrice => (is => 'ro', isa => 'Str', request_name => 'totalUpfrontPrice', traits => ['NameInRequest',]);
 
 1;
 

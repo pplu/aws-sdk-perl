@@ -1,8 +1,8 @@
 
 package Paws::SimpleWorkflow::WorkflowExecutionInfos;
   use Moose;
-  has ExecutionInfos => (is => 'ro', isa => 'ArrayRef[Paws::SimpleWorkflow::WorkflowExecutionInfo]', traits => ['Unwrapped'], xmlname => 'executionInfos' , required => 1);
-  has NextPageToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextPageToken' );
+  has ExecutionInfos => (is => 'ro', isa => 'ArrayRef[Paws::SimpleWorkflow::WorkflowExecutionInfo]', traits => ['NameInRequest'], request_name => 'executionInfos' , required => 1);
+  has NextPageToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextPageToken' );
 
 
 ### main pod documentation begin ###

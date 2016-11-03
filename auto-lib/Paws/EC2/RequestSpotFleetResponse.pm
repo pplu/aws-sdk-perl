@@ -1,7 +1,7 @@
 
 package Paws::EC2::RequestSpotFleetResponse;
   use Moose;
-  has SpotFleetRequestId => (is => 'ro', isa => 'Str', xmlname => 'spotFleetRequestId', traits => ['Unwrapped',], required => 1);
+  has SpotFleetRequestId => (is => 'ro', isa => 'Str', request_name => 'spotFleetRequestId', traits => ['NameInRequest',], required => 1);
 
 1;
 

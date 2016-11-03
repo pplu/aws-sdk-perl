@@ -1,7 +1,7 @@
 
 package Paws::EC2::PurchaseScheduledInstancesResult;
   use Moose;
-  has ScheduledInstanceSet => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ScheduledInstance]', xmlname => 'scheduledInstanceSet', traits => ['Unwrapped',]);
+  has ScheduledInstanceSet => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ScheduledInstance]', request_name => 'scheduledInstanceSet', traits => ['NameInRequest',]);
 
 1;
 

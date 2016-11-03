@@ -1,7 +1,7 @@
 
 package Paws::ECR::GetAuthorizationTokenResponse;
   use Moose;
-  has AuthorizationData => (is => 'ro', isa => 'ArrayRef[Paws::ECR::AuthorizationData]', traits => ['Unwrapped'], xmlname => 'authorizationData' );
+  has AuthorizationData => (is => 'ro', isa => 'ArrayRef[Paws::ECR::AuthorizationData]', traits => ['NameInRequest'], request_name => 'authorizationData' );
 
 
 ### main pod documentation begin ###

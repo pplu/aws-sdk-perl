@@ -1,7 +1,7 @@
 
 package Paws::DeviceFarm::StopRemoteAccessSessionResult;
   use Moose;
-  has RemoteAccessSession => (is => 'ro', isa => 'Paws::DeviceFarm::RemoteAccessSession', traits => ['Unwrapped'], xmlname => 'remoteAccessSession' );
+  has RemoteAccessSession => (is => 'ro', isa => 'Paws::DeviceFarm::RemoteAccessSession', traits => ['NameInRequest'], request_name => 'remoteAccessSession' );
 
 
 ### main pod documentation begin ###

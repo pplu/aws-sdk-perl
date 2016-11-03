@@ -1,7 +1,7 @@
 
 package Paws::Config::DeliverConfigSnapshotResponse;
   use Moose;
-  has ConfigSnapshotId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'configSnapshotId' );
+  has ConfigSnapshotId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'configSnapshotId' );
 
 
 ### main pod documentation begin ###

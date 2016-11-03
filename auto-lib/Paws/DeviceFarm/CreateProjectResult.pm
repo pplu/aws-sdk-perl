@@ -1,7 +1,7 @@
 
 package Paws::DeviceFarm::CreateProjectResult;
   use Moose;
-  has Project => (is => 'ro', isa => 'Paws::DeviceFarm::Project', traits => ['Unwrapped'], xmlname => 'project' );
+  has Project => (is => 'ro', isa => 'Paws::DeviceFarm::Project', traits => ['NameInRequest'], request_name => 'project' );
 
 
 ### main pod documentation begin ###

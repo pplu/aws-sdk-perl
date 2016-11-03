@@ -1,11 +1,11 @@
 
 package Paws::EC2::DescribeNetworkInterfaceAttributeResult;
   use Moose;
-  has Attachment => (is => 'ro', isa => 'Paws::EC2::NetworkInterfaceAttachment', xmlname => 'attachment', traits => ['Unwrapped',]);
-  has Description => (is => 'ro', isa => 'Paws::EC2::AttributeValue', xmlname => 'description', traits => ['Unwrapped',]);
-  has Groups => (is => 'ro', isa => 'ArrayRef[Paws::EC2::GroupIdentifier]', xmlname => 'groupSet', traits => ['Unwrapped',]);
-  has NetworkInterfaceId => (is => 'ro', isa => 'Str', xmlname => 'networkInterfaceId', traits => ['Unwrapped',]);
-  has SourceDestCheck => (is => 'ro', isa => 'Paws::EC2::AttributeBooleanValue', xmlname => 'sourceDestCheck', traits => ['Unwrapped',]);
+  has Attachment => (is => 'ro', isa => 'Paws::EC2::NetworkInterfaceAttachment', request_name => 'attachment', traits => ['NameInRequest',]);
+  has Description => (is => 'ro', isa => 'Paws::EC2::AttributeValue', request_name => 'description', traits => ['NameInRequest',]);
+  has Groups => (is => 'ro', isa => 'ArrayRef[Paws::EC2::GroupIdentifier]', request_name => 'groupSet', traits => ['NameInRequest',]);
+  has NetworkInterfaceId => (is => 'ro', isa => 'Str', request_name => 'networkInterfaceId', traits => ['NameInRequest',]);
+  has SourceDestCheck => (is => 'ro', isa => 'Paws::EC2::AttributeBooleanValue', request_name => 'sourceDestCheck', traits => ['NameInRequest',]);
 
 1;
 

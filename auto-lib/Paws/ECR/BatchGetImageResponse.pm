@@ -1,8 +1,8 @@
 
 package Paws::ECR::BatchGetImageResponse;
   use Moose;
-  has Failures => (is => 'ro', isa => 'ArrayRef[Paws::ECR::ImageFailure]', traits => ['Unwrapped'], xmlname => 'failures' );
-  has Images => (is => 'ro', isa => 'ArrayRef[Paws::ECR::Image]', traits => ['Unwrapped'], xmlname => 'images' );
+  has Failures => (is => 'ro', isa => 'ArrayRef[Paws::ECR::ImageFailure]', traits => ['NameInRequest'], request_name => 'failures' );
+  has Images => (is => 'ro', isa => 'ArrayRef[Paws::ECR::Image]', traits => ['NameInRequest'], request_name => 'images' );
 
 
 ### main pod documentation begin ###

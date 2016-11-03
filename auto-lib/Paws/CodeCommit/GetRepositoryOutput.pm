@@ -1,7 +1,7 @@
 
 package Paws::CodeCommit::GetRepositoryOutput;
   use Moose;
-  has RepositoryMetadata => (is => 'ro', isa => 'Paws::CodeCommit::RepositoryMetadata', traits => ['Unwrapped'], xmlname => 'repositoryMetadata' );
+  has RepositoryMetadata => (is => 'ro', isa => 'Paws::CodeCommit::RepositoryMetadata', traits => ['NameInRequest'], request_name => 'repositoryMetadata' );
 
 
 ### main pod documentation begin ###

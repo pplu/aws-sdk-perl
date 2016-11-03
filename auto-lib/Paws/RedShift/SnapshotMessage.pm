@@ -2,7 +2,7 @@
 package Paws::RedShift::SnapshotMessage;
   use Moose;
   has Marker => (is => 'ro', isa => 'Str');
-  has Snapshots => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::Snapshot]', xmlname => 'Snapshot', traits => ['Unwrapped',]);
+  has Snapshots => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::Snapshot]', request_name => 'Snapshot', traits => ['NameInRequest',]);
 
 1;
 

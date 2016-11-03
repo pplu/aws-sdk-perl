@@ -1,7 +1,7 @@
 
 package Paws::CodeCommit::DeleteRepositoryOutput;
   use Moose;
-  has RepositoryId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'repositoryId' );
+  has RepositoryId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'repositoryId' );
 
 
 ### main pod documentation begin ###

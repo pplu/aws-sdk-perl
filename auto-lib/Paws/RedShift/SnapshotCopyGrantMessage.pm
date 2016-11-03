@@ -2,7 +2,7 @@
 package Paws::RedShift::SnapshotCopyGrantMessage;
   use Moose;
   has Marker => (is => 'ro', isa => 'Str');
-  has SnapshotCopyGrants => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::SnapshotCopyGrant]', xmlname => 'SnapshotCopyGrant', traits => ['Unwrapped',]);
+  has SnapshotCopyGrants => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::SnapshotCopyGrant]', request_name => 'SnapshotCopyGrant', traits => ['NameInRequest',]);
 
 1;
 

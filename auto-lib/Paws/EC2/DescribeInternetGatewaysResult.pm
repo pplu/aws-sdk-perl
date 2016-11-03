@@ -1,7 +1,7 @@
 
 package Paws::EC2::DescribeInternetGatewaysResult;
   use Moose;
-  has InternetGateways => (is => 'ro', isa => 'ArrayRef[Paws::EC2::InternetGateway]', xmlname => 'internetGatewaySet', traits => ['Unwrapped',]);
+  has InternetGateways => (is => 'ro', isa => 'ArrayRef[Paws::EC2::InternetGateway]', request_name => 'internetGatewaySet', traits => ['NameInRequest',]);
 
 1;
 

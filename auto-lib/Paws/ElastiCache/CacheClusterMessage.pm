@@ -1,7 +1,7 @@
 
 package Paws::ElastiCache::CacheClusterMessage;
   use Moose;
-  has CacheClusters => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::CacheCluster]', xmlname => 'CacheCluster', traits => ['Unwrapped',]);
+  has CacheClusters => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::CacheCluster]', request_name => 'CacheCluster', traits => ['NameInRequest',]);
   has Marker => (is => 'ro', isa => 'Str');
 
 1;

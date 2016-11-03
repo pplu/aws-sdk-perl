@@ -1,8 +1,8 @@
 package Paws::EC2::NetworkAclAssociation;
   use Moose;
-  has NetworkAclAssociationId => (is => 'ro', isa => 'Str', xmlname => 'networkAclAssociationId', traits => ['Unwrapped']);
-  has NetworkAclId => (is => 'ro', isa => 'Str', xmlname => 'networkAclId', traits => ['Unwrapped']);
-  has SubnetId => (is => 'ro', isa => 'Str', xmlname => 'subnetId', traits => ['Unwrapped']);
+  has NetworkAclAssociationId => (is => 'ro', isa => 'Str', request_name => 'networkAclAssociationId', traits => ['NameInRequest']);
+  has NetworkAclId => (is => 'ro', isa => 'Str', request_name => 'networkAclId', traits => ['NameInRequest']);
+  has SubnetId => (is => 'ro', isa => 'Str', request_name => 'subnetId', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

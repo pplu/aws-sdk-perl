@@ -1,7 +1,7 @@
 
 package Paws::EC2::DescribeSecurityGroupReferencesResult;
   use Moose;
-  has SecurityGroupReferenceSet => (is => 'ro', isa => 'ArrayRef[Paws::EC2::SecurityGroupReference]', xmlname => 'securityGroupReferenceSet', traits => ['Unwrapped',]);
+  has SecurityGroupReferenceSet => (is => 'ro', isa => 'ArrayRef[Paws::EC2::SecurityGroupReference]', request_name => 'securityGroupReferenceSet', traits => ['NameInRequest',]);
 
 1;
 

@@ -1,17 +1,17 @@
 package Paws::EC2::SpotFleetRequestConfigData;
   use Moose;
-  has AllocationStrategy => (is => 'ro', isa => 'Str', xmlname => 'allocationStrategy', traits => ['Unwrapped']);
-  has ClientToken => (is => 'ro', isa => 'Str', xmlname => 'clientToken', traits => ['Unwrapped']);
-  has ExcessCapacityTerminationPolicy => (is => 'ro', isa => 'Str', xmlname => 'excessCapacityTerminationPolicy', traits => ['Unwrapped']);
-  has FulfilledCapacity => (is => 'ro', isa => 'Num', xmlname => 'fulfilledCapacity', traits => ['Unwrapped']);
-  has IamFleetRole => (is => 'ro', isa => 'Str', xmlname => 'iamFleetRole', traits => ['Unwrapped'], required => 1);
-  has LaunchSpecifications => (is => 'ro', isa => 'ArrayRef[Paws::EC2::SpotFleetLaunchSpecification]', xmlname => 'launchSpecifications', traits => ['Unwrapped'], required => 1);
-  has SpotPrice => (is => 'ro', isa => 'Str', xmlname => 'spotPrice', traits => ['Unwrapped'], required => 1);
-  has TargetCapacity => (is => 'ro', isa => 'Int', xmlname => 'targetCapacity', traits => ['Unwrapped'], required => 1);
-  has TerminateInstancesWithExpiration => (is => 'ro', isa => 'Bool', xmlname => 'terminateInstancesWithExpiration', traits => ['Unwrapped']);
-  has Type => (is => 'ro', isa => 'Str', xmlname => 'type', traits => ['Unwrapped']);
-  has ValidFrom => (is => 'ro', isa => 'Str', xmlname => 'validFrom', traits => ['Unwrapped']);
-  has ValidUntil => (is => 'ro', isa => 'Str', xmlname => 'validUntil', traits => ['Unwrapped']);
+  has AllocationStrategy => (is => 'ro', isa => 'Str', request_name => 'allocationStrategy', traits => ['NameInRequest']);
+  has ClientToken => (is => 'ro', isa => 'Str', request_name => 'clientToken', traits => ['NameInRequest']);
+  has ExcessCapacityTerminationPolicy => (is => 'ro', isa => 'Str', request_name => 'excessCapacityTerminationPolicy', traits => ['NameInRequest']);
+  has FulfilledCapacity => (is => 'ro', isa => 'Num', request_name => 'fulfilledCapacity', traits => ['NameInRequest']);
+  has IamFleetRole => (is => 'ro', isa => 'Str', request_name => 'iamFleetRole', traits => ['NameInRequest'], required => 1);
+  has LaunchSpecifications => (is => 'ro', isa => 'ArrayRef[Paws::EC2::SpotFleetLaunchSpecification]', request_name => 'launchSpecifications', traits => ['NameInRequest'], required => 1);
+  has SpotPrice => (is => 'ro', isa => 'Str', request_name => 'spotPrice', traits => ['NameInRequest'], required => 1);
+  has TargetCapacity => (is => 'ro', isa => 'Int', request_name => 'targetCapacity', traits => ['NameInRequest'], required => 1);
+  has TerminateInstancesWithExpiration => (is => 'ro', isa => 'Bool', request_name => 'terminateInstancesWithExpiration', traits => ['NameInRequest']);
+  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
+  has ValidFrom => (is => 'ro', isa => 'Str', request_name => 'validFrom', traits => ['NameInRequest']);
+  has ValidUntil => (is => 'ro', isa => 'Str', request_name => 'validUntil', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

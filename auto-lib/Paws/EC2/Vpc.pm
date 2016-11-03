@@ -1,12 +1,12 @@
 package Paws::EC2::Vpc;
   use Moose;
-  has CidrBlock => (is => 'ro', isa => 'Str', xmlname => 'cidrBlock', traits => ['Unwrapped']);
-  has DhcpOptionsId => (is => 'ro', isa => 'Str', xmlname => 'dhcpOptionsId', traits => ['Unwrapped']);
-  has InstanceTenancy => (is => 'ro', isa => 'Str', xmlname => 'instanceTenancy', traits => ['Unwrapped']);
-  has IsDefault => (is => 'ro', isa => 'Bool', xmlname => 'isDefault', traits => ['Unwrapped']);
-  has State => (is => 'ro', isa => 'Str', xmlname => 'state', traits => ['Unwrapped']);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', xmlname => 'tagSet', traits => ['Unwrapped']);
-  has VpcId => (is => 'ro', isa => 'Str', xmlname => 'vpcId', traits => ['Unwrapped']);
+  has CidrBlock => (is => 'ro', isa => 'Str', request_name => 'cidrBlock', traits => ['NameInRequest']);
+  has DhcpOptionsId => (is => 'ro', isa => 'Str', request_name => 'dhcpOptionsId', traits => ['NameInRequest']);
+  has InstanceTenancy => (is => 'ro', isa => 'Str', request_name => 'instanceTenancy', traits => ['NameInRequest']);
+  has IsDefault => (is => 'ro', isa => 'Bool', request_name => 'isDefault', traits => ['NameInRequest']);
+  has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest']);
+  has VpcId => (is => 'ro', isa => 'Str', request_name => 'vpcId', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

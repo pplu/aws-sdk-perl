@@ -1,13 +1,13 @@
 
 package Paws::DirectConnect::Interconnect;
   use Moose;
-  has Bandwidth => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'bandwidth' );
-  has InterconnectId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'interconnectId' );
-  has InterconnectName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'interconnectName' );
-  has InterconnectState => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'interconnectState' );
-  has LoaIssueTime => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'loaIssueTime' );
-  has Location => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'location' );
-  has Region => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'region' );
+  has Bandwidth => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'bandwidth' );
+  has InterconnectId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'interconnectId' );
+  has InterconnectName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'interconnectName' );
+  has InterconnectState => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'interconnectState' );
+  has LoaIssueTime => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'loaIssueTime' );
+  has Location => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'location' );
+  has Region => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'region' );
 
 
 ### main pod documentation begin ###

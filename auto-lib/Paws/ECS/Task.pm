@@ -1,18 +1,18 @@
 package Paws::ECS::Task;
   use Moose;
-  has ClusterArn => (is => 'ro', isa => 'Str', xmlname => 'clusterArn', request_name => 'clusterArn', traits => ['Unwrapped','NameInRequest']);
-  has ContainerInstanceArn => (is => 'ro', isa => 'Str', xmlname => 'containerInstanceArn', request_name => 'containerInstanceArn', traits => ['Unwrapped','NameInRequest']);
-  has Containers => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Container]', xmlname => 'containers', request_name => 'containers', traits => ['Unwrapped','NameInRequest']);
-  has CreatedAt => (is => 'ro', isa => 'Str', xmlname => 'createdAt', request_name => 'createdAt', traits => ['Unwrapped','NameInRequest']);
-  has DesiredStatus => (is => 'ro', isa => 'Str', xmlname => 'desiredStatus', request_name => 'desiredStatus', traits => ['Unwrapped','NameInRequest']);
-  has LastStatus => (is => 'ro', isa => 'Str', xmlname => 'lastStatus', request_name => 'lastStatus', traits => ['Unwrapped','NameInRequest']);
-  has Overrides => (is => 'ro', isa => 'Paws::ECS::TaskOverride', xmlname => 'overrides', request_name => 'overrides', traits => ['Unwrapped','NameInRequest']);
-  has StartedAt => (is => 'ro', isa => 'Str', xmlname => 'startedAt', request_name => 'startedAt', traits => ['Unwrapped','NameInRequest']);
-  has StartedBy => (is => 'ro', isa => 'Str', xmlname => 'startedBy', request_name => 'startedBy', traits => ['Unwrapped','NameInRequest']);
-  has StoppedAt => (is => 'ro', isa => 'Str', xmlname => 'stoppedAt', request_name => 'stoppedAt', traits => ['Unwrapped','NameInRequest']);
-  has StoppedReason => (is => 'ro', isa => 'Str', xmlname => 'stoppedReason', request_name => 'stoppedReason', traits => ['Unwrapped','NameInRequest']);
-  has TaskArn => (is => 'ro', isa => 'Str', xmlname => 'taskArn', request_name => 'taskArn', traits => ['Unwrapped','NameInRequest']);
-  has TaskDefinitionArn => (is => 'ro', isa => 'Str', xmlname => 'taskDefinitionArn', request_name => 'taskDefinitionArn', traits => ['Unwrapped','NameInRequest']);
+  has ClusterArn => (is => 'ro', isa => 'Str', request_name => 'clusterArn', traits => ['NameInRequest']);
+  has ContainerInstanceArn => (is => 'ro', isa => 'Str', request_name => 'containerInstanceArn', traits => ['NameInRequest']);
+  has Containers => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Container]', request_name => 'containers', traits => ['NameInRequest']);
+  has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest']);
+  has DesiredStatus => (is => 'ro', isa => 'Str', request_name => 'desiredStatus', traits => ['NameInRequest']);
+  has LastStatus => (is => 'ro', isa => 'Str', request_name => 'lastStatus', traits => ['NameInRequest']);
+  has Overrides => (is => 'ro', isa => 'Paws::ECS::TaskOverride', request_name => 'overrides', traits => ['NameInRequest']);
+  has StartedAt => (is => 'ro', isa => 'Str', request_name => 'startedAt', traits => ['NameInRequest']);
+  has StartedBy => (is => 'ro', isa => 'Str', request_name => 'startedBy', traits => ['NameInRequest']);
+  has StoppedAt => (is => 'ro', isa => 'Str', request_name => 'stoppedAt', traits => ['NameInRequest']);
+  has StoppedReason => (is => 'ro', isa => 'Str', request_name => 'stoppedReason', traits => ['NameInRequest']);
+  has TaskArn => (is => 'ro', isa => 'Str', request_name => 'taskArn', traits => ['NameInRequest']);
+  has TaskDefinitionArn => (is => 'ro', isa => 'Str', request_name => 'taskDefinitionArn', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

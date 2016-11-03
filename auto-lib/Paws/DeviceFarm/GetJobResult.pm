@@ -1,7 +1,7 @@
 
 package Paws::DeviceFarm::GetJobResult;
   use Moose;
-  has Job => (is => 'ro', isa => 'Paws::DeviceFarm::Job', traits => ['Unwrapped'], xmlname => 'job' );
+  has Job => (is => 'ro', isa => 'Paws::DeviceFarm::Job', traits => ['NameInRequest'], request_name => 'job' );
 
 
 ### main pod documentation begin ###

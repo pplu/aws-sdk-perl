@@ -1,8 +1,8 @@
 package Paws::Inspector::Subscription;
   use Moose;
-  has EventSubscriptions => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::EventSubscription]', xmlname => 'eventSubscriptions', request_name => 'eventSubscriptions', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has ResourceArn => (is => 'ro', isa => 'Str', xmlname => 'resourceArn', request_name => 'resourceArn', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has TopicArn => (is => 'ro', isa => 'Str', xmlname => 'topicArn', request_name => 'topicArn', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has EventSubscriptions => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::EventSubscription]', request_name => 'eventSubscriptions', traits => ['NameInRequest'], required => 1);
+  has ResourceArn => (is => 'ro', isa => 'Str', request_name => 'resourceArn', traits => ['NameInRequest'], required => 1);
+  has TopicArn => (is => 'ro', isa => 'Str', request_name => 'topicArn', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###

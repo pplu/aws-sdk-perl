@@ -1,7 +1,7 @@
 package Paws::EC2::PrivateIpAddressSpecification;
   use Moose;
-  has Primary => (is => 'ro', isa => 'Bool', xmlname => 'primary', traits => ['Unwrapped']);
-  has PrivateIpAddress => (is => 'ro', isa => 'Str', xmlname => 'privateIpAddress', traits => ['Unwrapped'], required => 1);
+  has Primary => (is => 'ro', isa => 'Bool', request_name => 'primary', traits => ['NameInRequest']);
+  has PrivateIpAddress => (is => 'ro', isa => 'Str', request_name => 'privateIpAddress', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###

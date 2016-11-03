@@ -1,13 +1,13 @@
 package Paws::EC2::SecurityGroup;
   use Moose;
-  has Description => (is => 'ro', isa => 'Str', xmlname => 'groupDescription', traits => ['Unwrapped']);
-  has GroupId => (is => 'ro', isa => 'Str', xmlname => 'groupId', traits => ['Unwrapped']);
-  has GroupName => (is => 'ro', isa => 'Str', xmlname => 'groupName', traits => ['Unwrapped']);
-  has IpPermissions => (is => 'ro', isa => 'ArrayRef[Paws::EC2::IpPermission]', xmlname => 'ipPermissions', traits => ['Unwrapped']);
-  has IpPermissionsEgress => (is => 'ro', isa => 'ArrayRef[Paws::EC2::IpPermission]', xmlname => 'ipPermissionsEgress', traits => ['Unwrapped']);
-  has OwnerId => (is => 'ro', isa => 'Str', xmlname => 'ownerId', traits => ['Unwrapped']);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', xmlname => 'tagSet', traits => ['Unwrapped']);
-  has VpcId => (is => 'ro', isa => 'Str', xmlname => 'vpcId', traits => ['Unwrapped']);
+  has Description => (is => 'ro', isa => 'Str', request_name => 'groupDescription', traits => ['NameInRequest']);
+  has GroupId => (is => 'ro', isa => 'Str', request_name => 'groupId', traits => ['NameInRequest']);
+  has GroupName => (is => 'ro', isa => 'Str', request_name => 'groupName', traits => ['NameInRequest']);
+  has IpPermissions => (is => 'ro', isa => 'ArrayRef[Paws::EC2::IpPermission]', request_name => 'ipPermissions', traits => ['NameInRequest']);
+  has IpPermissionsEgress => (is => 'ro', isa => 'ArrayRef[Paws::EC2::IpPermission]', request_name => 'ipPermissionsEgress', traits => ['NameInRequest']);
+  has OwnerId => (is => 'ro', isa => 'Str', request_name => 'ownerId', traits => ['NameInRequest']);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest']);
+  has VpcId => (is => 'ro', isa => 'Str', request_name => 'vpcId', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

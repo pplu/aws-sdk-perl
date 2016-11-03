@@ -1,8 +1,8 @@
 
 package Paws::EC2::DescribeScheduledInstancesResult;
   use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', xmlname => 'nextToken', traits => ['Unwrapped',]);
-  has ScheduledInstanceSet => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ScheduledInstance]', xmlname => 'scheduledInstanceSet', traits => ['Unwrapped',]);
+  has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest',]);
+  has ScheduledInstanceSet => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ScheduledInstance]', request_name => 'scheduledInstanceSet', traits => ['NameInRequest',]);
 
 1;
 

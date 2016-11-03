@@ -1,7 +1,7 @@
 package Paws::CodeDeploy::GitHubLocation;
   use Moose;
-  has CommitId => (is => 'ro', isa => 'Str', xmlname => 'commitId', request_name => 'commitId', traits => ['Unwrapped','NameInRequest']);
-  has Repository => (is => 'ro', isa => 'Str', xmlname => 'repository', request_name => 'repository', traits => ['Unwrapped','NameInRequest']);
+  has CommitId => (is => 'ro', isa => 'Str', request_name => 'commitId', traits => ['NameInRequest']);
+  has Repository => (is => 'ro', isa => 'Str', request_name => 'repository', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

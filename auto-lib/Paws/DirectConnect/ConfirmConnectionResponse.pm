@@ -1,7 +1,7 @@
 
 package Paws::DirectConnect::ConfirmConnectionResponse;
   use Moose;
-  has ConnectionState => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'connectionState' );
+  has ConnectionState => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'connectionState' );
 
 
 ### main pod documentation begin ###

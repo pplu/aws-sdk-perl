@@ -1,8 +1,8 @@
 
 package Paws::Inspector::DescribeResourceGroupsResponse;
   use Moose;
-  has FailedItems => (is => 'ro', isa => 'Paws::Inspector::FailedItems', traits => ['Unwrapped'], xmlname => 'failedItems' , required => 1);
-  has ResourceGroups => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::ResourceGroup]', traits => ['Unwrapped'], xmlname => 'resourceGroups' , required => 1);
+  has FailedItems => (is => 'ro', isa => 'Paws::Inspector::FailedItems', traits => ['NameInRequest'], request_name => 'failedItems' , required => 1);
+  has ResourceGroups => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::ResourceGroup]', traits => ['NameInRequest'], request_name => 'resourceGroups' , required => 1);
 
 
 ### main pod documentation begin ###

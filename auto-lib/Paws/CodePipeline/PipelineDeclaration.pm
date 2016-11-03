@@ -1,10 +1,10 @@
 package Paws::CodePipeline::PipelineDeclaration;
   use Moose;
-  has ArtifactStore => (is => 'ro', isa => 'Paws::CodePipeline::ArtifactStore', xmlname => 'artifactStore', request_name => 'artifactStore', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has Name => (is => 'ro', isa => 'Str', xmlname => 'name', request_name => 'name', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has RoleArn => (is => 'ro', isa => 'Str', xmlname => 'roleArn', request_name => 'roleArn', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has Stages => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::StageDeclaration]', xmlname => 'stages', request_name => 'stages', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has Version => (is => 'ro', isa => 'Int', xmlname => 'version', request_name => 'version', traits => ['Unwrapped','NameInRequest']);
+  has ArtifactStore => (is => 'ro', isa => 'Paws::CodePipeline::ArtifactStore', request_name => 'artifactStore', traits => ['NameInRequest'], required => 1);
+  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
+  has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest'], required => 1);
+  has Stages => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::StageDeclaration]', request_name => 'stages', traits => ['NameInRequest'], required => 1);
+  has Version => (is => 'ro', isa => 'Int', request_name => 'version', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

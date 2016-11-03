@@ -1,9 +1,9 @@
 
 package Paws::CloudWatchLogs::GetLogEventsResponse;
   use Moose;
-  has Events => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatchLogs::OutputLogEvent]', traits => ['Unwrapped'], xmlname => 'events' );
-  has NextBackwardToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextBackwardToken' );
-  has NextForwardToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextForwardToken' );
+  has Events => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatchLogs::OutputLogEvent]', traits => ['NameInRequest'], request_name => 'events' );
+  has NextBackwardToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextBackwardToken' );
+  has NextForwardToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextForwardToken' );
 
 
 ### main pod documentation begin ###

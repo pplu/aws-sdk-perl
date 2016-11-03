@@ -1,7 +1,7 @@
 
 package Paws::EC2::DescribeRouteTablesResult;
   use Moose;
-  has RouteTables => (is => 'ro', isa => 'ArrayRef[Paws::EC2::RouteTable]', xmlname => 'routeTableSet', traits => ['Unwrapped',]);
+  has RouteTables => (is => 'ro', isa => 'ArrayRef[Paws::EC2::RouteTable]', request_name => 'routeTableSet', traits => ['NameInRequest',]);
 
 1;
 

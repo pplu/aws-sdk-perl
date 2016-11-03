@@ -1,6 +1,6 @@
 package Paws::ECR::ListImagesFilter;
   use Moose;
-  has TagStatus => (is => 'ro', isa => 'Str', xmlname => 'tagStatus', request_name => 'tagStatus', traits => ['Unwrapped','NameInRequest']);
+  has TagStatus => (is => 'ro', isa => 'Str', request_name => 'tagStatus', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

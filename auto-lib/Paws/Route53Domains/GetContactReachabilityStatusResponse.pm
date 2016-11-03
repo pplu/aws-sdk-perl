@@ -1,8 +1,8 @@
 
 package Paws::Route53Domains::GetContactReachabilityStatusResponse;
   use Moose;
-  has DomainName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'domainName' );
-  has Status => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'status' );
+  has DomainName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'domainName' );
+  has Status => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'status' );
 
 
 ### main pod documentation begin ###

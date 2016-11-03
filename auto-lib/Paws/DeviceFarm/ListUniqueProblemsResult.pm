@@ -1,8 +1,8 @@
 
 package Paws::DeviceFarm::ListUniqueProblemsResult;
   use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
-  has UniqueProblems => (is => 'ro', isa => 'Paws::DeviceFarm::UniqueProblemsByExecutionResultMap', traits => ['Unwrapped'], xmlname => 'uniqueProblems' );
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  has UniqueProblems => (is => 'ro', isa => 'Paws::DeviceFarm::UniqueProblemsByExecutionResultMap', traits => ['NameInRequest'], request_name => 'uniqueProblems' );
 
 
 ### main pod documentation begin ###

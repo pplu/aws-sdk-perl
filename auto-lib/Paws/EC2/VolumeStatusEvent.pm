@@ -1,10 +1,10 @@
 package Paws::EC2::VolumeStatusEvent;
   use Moose;
-  has Description => (is => 'ro', isa => 'Str', xmlname => 'description', traits => ['Unwrapped']);
-  has EventId => (is => 'ro', isa => 'Str', xmlname => 'eventId', traits => ['Unwrapped']);
-  has EventType => (is => 'ro', isa => 'Str', xmlname => 'eventType', traits => ['Unwrapped']);
-  has NotAfter => (is => 'ro', isa => 'Str', xmlname => 'notAfter', traits => ['Unwrapped']);
-  has NotBefore => (is => 'ro', isa => 'Str', xmlname => 'notBefore', traits => ['Unwrapped']);
+  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
+  has EventId => (is => 'ro', isa => 'Str', request_name => 'eventId', traits => ['NameInRequest']);
+  has EventType => (is => 'ro', isa => 'Str', request_name => 'eventType', traits => ['NameInRequest']);
+  has NotAfter => (is => 'ro', isa => 'Str', request_name => 'notAfter', traits => ['NameInRequest']);
+  has NotBefore => (is => 'ro', isa => 'Str', request_name => 'notBefore', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

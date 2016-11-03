@@ -1,10 +1,10 @@
 package Paws::CodeDeploy::InstanceSummary;
   use Moose;
-  has DeploymentId => (is => 'ro', isa => 'Str', xmlname => 'deploymentId', request_name => 'deploymentId', traits => ['Unwrapped','NameInRequest']);
-  has InstanceId => (is => 'ro', isa => 'Str', xmlname => 'instanceId', request_name => 'instanceId', traits => ['Unwrapped','NameInRequest']);
-  has LastUpdatedAt => (is => 'ro', isa => 'Str', xmlname => 'lastUpdatedAt', request_name => 'lastUpdatedAt', traits => ['Unwrapped','NameInRequest']);
-  has LifecycleEvents => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::LifecycleEvent]', xmlname => 'lifecycleEvents', request_name => 'lifecycleEvents', traits => ['Unwrapped','NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', xmlname => 'status', request_name => 'status', traits => ['Unwrapped','NameInRequest']);
+  has DeploymentId => (is => 'ro', isa => 'Str', request_name => 'deploymentId', traits => ['NameInRequest']);
+  has InstanceId => (is => 'ro', isa => 'Str', request_name => 'instanceId', traits => ['NameInRequest']);
+  has LastUpdatedAt => (is => 'ro', isa => 'Str', request_name => 'lastUpdatedAt', traits => ['NameInRequest']);
+  has LifecycleEvents => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::LifecycleEvent]', request_name => 'lifecycleEvents', traits => ['NameInRequest']);
+  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

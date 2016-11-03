@@ -1,8 +1,8 @@
 
 package Paws::ECS::DescribeClustersResponse;
   use Moose;
-  has Clusters => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Cluster]', traits => ['Unwrapped'], xmlname => 'clusters' );
-  has Failures => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Failure]', traits => ['Unwrapped'], xmlname => 'failures' );
+  has Clusters => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Cluster]', traits => ['NameInRequest'], request_name => 'clusters' );
+  has Failures => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Failure]', traits => ['NameInRequest'], request_name => 'failures' );
 
 
 ### main pod documentation begin ###

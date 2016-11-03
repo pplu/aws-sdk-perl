@@ -1,8 +1,8 @@
 package Paws::CodePipeline::PipelineContext;
   use Moose;
-  has Action => (is => 'ro', isa => 'Paws::CodePipeline::ActionContext', xmlname => 'action', request_name => 'action', traits => ['Unwrapped','NameInRequest']);
-  has PipelineName => (is => 'ro', isa => 'Str', xmlname => 'pipelineName', request_name => 'pipelineName', traits => ['Unwrapped','NameInRequest']);
-  has Stage => (is => 'ro', isa => 'Paws::CodePipeline::StageContext', xmlname => 'stage', request_name => 'stage', traits => ['Unwrapped','NameInRequest']);
+  has Action => (is => 'ro', isa => 'Paws::CodePipeline::ActionContext', request_name => 'action', traits => ['NameInRequest']);
+  has PipelineName => (is => 'ro', isa => 'Str', request_name => 'pipelineName', traits => ['NameInRequest']);
+  has Stage => (is => 'ro', isa => 'Paws::CodePipeline::StageContext', request_name => 'stage', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

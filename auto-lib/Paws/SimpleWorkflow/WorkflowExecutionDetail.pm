@@ -1,11 +1,11 @@
 
 package Paws::SimpleWorkflow::WorkflowExecutionDetail;
   use Moose;
-  has ExecutionConfiguration => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowExecutionConfiguration', traits => ['Unwrapped'], xmlname => 'executionConfiguration' , required => 1);
-  has ExecutionInfo => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowExecutionInfo', traits => ['Unwrapped'], xmlname => 'executionInfo' , required => 1);
-  has LatestActivityTaskTimestamp => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'latestActivityTaskTimestamp' );
-  has LatestExecutionContext => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'latestExecutionContext' );
-  has OpenCounts => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowExecutionOpenCounts', traits => ['Unwrapped'], xmlname => 'openCounts' , required => 1);
+  has ExecutionConfiguration => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowExecutionConfiguration', traits => ['NameInRequest'], request_name => 'executionConfiguration' , required => 1);
+  has ExecutionInfo => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowExecutionInfo', traits => ['NameInRequest'], request_name => 'executionInfo' , required => 1);
+  has LatestActivityTaskTimestamp => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'latestActivityTaskTimestamp' );
+  has LatestExecutionContext => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'latestExecutionContext' );
+  has OpenCounts => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowExecutionOpenCounts', traits => ['NameInRequest'], request_name => 'openCounts' , required => 1);
 
 
 ### main pod documentation begin ###

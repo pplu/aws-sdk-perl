@@ -1,7 +1,7 @@
 
 package Paws::Support::DescribeSeverityLevelsResponse;
   use Moose;
-  has SeverityLevels => (is => 'ro', isa => 'ArrayRef[Paws::Support::SeverityLevel]', traits => ['Unwrapped'], xmlname => 'severityLevels' );
+  has SeverityLevels => (is => 'ro', isa => 'ArrayRef[Paws::Support::SeverityLevel]', traits => ['NameInRequest'], request_name => 'severityLevels' );
 
 
 ### main pod documentation begin ###

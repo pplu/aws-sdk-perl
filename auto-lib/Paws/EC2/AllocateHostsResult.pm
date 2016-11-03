@@ -1,7 +1,7 @@
 
 package Paws::EC2::AllocateHostsResult;
   use Moose;
-  has HostIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'hostIdSet', traits => ['Unwrapped',]);
+  has HostIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'hostIdSet', traits => ['NameInRequest',]);
 
 1;
 

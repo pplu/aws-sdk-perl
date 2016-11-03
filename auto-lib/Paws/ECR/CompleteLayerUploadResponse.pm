@@ -1,10 +1,10 @@
 
 package Paws::ECR::CompleteLayerUploadResponse;
   use Moose;
-  has LayerDigest => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'layerDigest' );
-  has RegistryId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'registryId' );
-  has RepositoryName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'repositoryName' );
-  has UploadId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'uploadId' );
+  has LayerDigest => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'layerDigest' );
+  has RegistryId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'registryId' );
+  has RepositoryName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'repositoryName' );
+  has UploadId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'uploadId' );
 
 
 ### main pod documentation begin ###

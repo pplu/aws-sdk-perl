@@ -1,8 +1,8 @@
 package Paws::EC2::InstanceCapacity;
   use Moose;
-  has AvailableCapacity => (is => 'ro', isa => 'Int', xmlname => 'availableCapacity', traits => ['Unwrapped']);
-  has InstanceType => (is => 'ro', isa => 'Str', xmlname => 'instanceType', traits => ['Unwrapped']);
-  has TotalCapacity => (is => 'ro', isa => 'Int', xmlname => 'totalCapacity', traits => ['Unwrapped']);
+  has AvailableCapacity => (is => 'ro', isa => 'Int', request_name => 'availableCapacity', traits => ['NameInRequest']);
+  has InstanceType => (is => 'ro', isa => 'Str', request_name => 'instanceType', traits => ['NameInRequest']);
+  has TotalCapacity => (is => 'ro', isa => 'Int', request_name => 'totalCapacity', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

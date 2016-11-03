@@ -1,7 +1,7 @@
 
 package Paws::RedShift::EventsMessage;
   use Moose;
-  has Events => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::Event]', xmlname => 'Event', traits => ['Unwrapped',]);
+  has Events => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::Event]', request_name => 'Event', traits => ['NameInRequest',]);
   has Marker => (is => 'ro', isa => 'Str');
 
 1;

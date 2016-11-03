@@ -1,10 +1,10 @@
 package Paws::SimpleWorkflow::WorkflowExecutionOpenCounts;
   use Moose;
-  has OpenActivityTasks => (is => 'ro', isa => 'Int', xmlname => 'openActivityTasks', request_name => 'openActivityTasks', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has OpenChildWorkflowExecutions => (is => 'ro', isa => 'Int', xmlname => 'openChildWorkflowExecutions', request_name => 'openChildWorkflowExecutions', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has OpenDecisionTasks => (is => 'ro', isa => 'Int', xmlname => 'openDecisionTasks', request_name => 'openDecisionTasks', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has OpenLambdaFunctions => (is => 'ro', isa => 'Int', xmlname => 'openLambdaFunctions', request_name => 'openLambdaFunctions', traits => ['Unwrapped','NameInRequest']);
-  has OpenTimers => (is => 'ro', isa => 'Int', xmlname => 'openTimers', request_name => 'openTimers', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has OpenActivityTasks => (is => 'ro', isa => 'Int', request_name => 'openActivityTasks', traits => ['NameInRequest'], required => 1);
+  has OpenChildWorkflowExecutions => (is => 'ro', isa => 'Int', request_name => 'openChildWorkflowExecutions', traits => ['NameInRequest'], required => 1);
+  has OpenDecisionTasks => (is => 'ro', isa => 'Int', request_name => 'openDecisionTasks', traits => ['NameInRequest'], required => 1);
+  has OpenLambdaFunctions => (is => 'ro', isa => 'Int', request_name => 'openLambdaFunctions', traits => ['NameInRequest']);
+  has OpenTimers => (is => 'ro', isa => 'Int', request_name => 'openTimers', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###

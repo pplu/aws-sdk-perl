@@ -1,18 +1,18 @@
 
 package Paws::EC2::Volume;
   use Moose;
-  has Attachments => (is => 'ro', isa => 'ArrayRef[Paws::EC2::VolumeAttachment]', xmlname => 'attachmentSet', traits => ['Unwrapped',]);
-  has AvailabilityZone => (is => 'ro', isa => 'Str', xmlname => 'availabilityZone', traits => ['Unwrapped',]);
-  has CreateTime => (is => 'ro', isa => 'Str', xmlname => 'createTime', traits => ['Unwrapped',]);
-  has Encrypted => (is => 'ro', isa => 'Bool', xmlname => 'encrypted', traits => ['Unwrapped',]);
-  has Iops => (is => 'ro', isa => 'Int', xmlname => 'iops', traits => ['Unwrapped',]);
-  has KmsKeyId => (is => 'ro', isa => 'Str', xmlname => 'kmsKeyId', traits => ['Unwrapped',]);
-  has Size => (is => 'ro', isa => 'Int', xmlname => 'size', traits => ['Unwrapped',]);
-  has SnapshotId => (is => 'ro', isa => 'Str', xmlname => 'snapshotId', traits => ['Unwrapped',]);
-  has State => (is => 'ro', isa => 'Str', xmlname => 'status', traits => ['Unwrapped',]);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', xmlname => 'tagSet', traits => ['Unwrapped',]);
-  has VolumeId => (is => 'ro', isa => 'Str', xmlname => 'volumeId', traits => ['Unwrapped',]);
-  has VolumeType => (is => 'ro', isa => 'Str', xmlname => 'volumeType', traits => ['Unwrapped',]);
+  has Attachments => (is => 'ro', isa => 'ArrayRef[Paws::EC2::VolumeAttachment]', request_name => 'attachmentSet', traits => ['NameInRequest',]);
+  has AvailabilityZone => (is => 'ro', isa => 'Str', request_name => 'availabilityZone', traits => ['NameInRequest',]);
+  has CreateTime => (is => 'ro', isa => 'Str', request_name => 'createTime', traits => ['NameInRequest',]);
+  has Encrypted => (is => 'ro', isa => 'Bool', request_name => 'encrypted', traits => ['NameInRequest',]);
+  has Iops => (is => 'ro', isa => 'Int', request_name => 'iops', traits => ['NameInRequest',]);
+  has KmsKeyId => (is => 'ro', isa => 'Str', request_name => 'kmsKeyId', traits => ['NameInRequest',]);
+  has Size => (is => 'ro', isa => 'Int', request_name => 'size', traits => ['NameInRequest',]);
+  has SnapshotId => (is => 'ro', isa => 'Str', request_name => 'snapshotId', traits => ['NameInRequest',]);
+  has State => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest',]);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest',]);
+  has VolumeId => (is => 'ro', isa => 'Str', request_name => 'volumeId', traits => ['NameInRequest',]);
+  has VolumeType => (is => 'ro', isa => 'Str', request_name => 'volumeType', traits => ['NameInRequest',]);
 
 1;
 

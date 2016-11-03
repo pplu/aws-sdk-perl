@@ -1,7 +1,7 @@
 package Paws::EC2::InstanceMonitoring;
   use Moose;
-  has InstanceId => (is => 'ro', isa => 'Str', xmlname => 'instanceId', traits => ['Unwrapped']);
-  has Monitoring => (is => 'ro', isa => 'Paws::EC2::Monitoring', xmlname => 'monitoring', traits => ['Unwrapped']);
+  has InstanceId => (is => 'ro', isa => 'Str', request_name => 'instanceId', traits => ['NameInRequest']);
+  has Monitoring => (is => 'ro', isa => 'Paws::EC2::Monitoring', request_name => 'monitoring', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

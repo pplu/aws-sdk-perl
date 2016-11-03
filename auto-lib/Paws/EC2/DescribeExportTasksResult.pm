@@ -1,7 +1,7 @@
 
 package Paws::EC2::DescribeExportTasksResult;
   use Moose;
-  has ExportTasks => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ExportTask]', xmlname => 'exportTaskSet', traits => ['Unwrapped',]);
+  has ExportTasks => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ExportTask]', request_name => 'exportTaskSet', traits => ['NameInRequest',]);
 
 1;
 

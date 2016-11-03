@@ -1,7 +1,7 @@
 
 package Paws::SDB::GetAttributesResult;
   use Moose;
-  has Attributes => (is => 'ro', isa => 'ArrayRef[Paws::SDB::Attribute]', xmlname => 'Attribute', traits => ['Unwrapped',]);
+  has Attributes => (is => 'ro', isa => 'ArrayRef[Paws::SDB::Attribute]', request_name => 'Attribute', traits => ['NameInRequest',]);
 
 1;
 

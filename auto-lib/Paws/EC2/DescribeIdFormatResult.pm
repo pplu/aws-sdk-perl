@@ -1,7 +1,7 @@
 
 package Paws::EC2::DescribeIdFormatResult;
   use Moose;
-  has Statuses => (is => 'ro', isa => 'ArrayRef[Paws::EC2::IdFormat]', xmlname => 'statusSet', traits => ['Unwrapped',]);
+  has Statuses => (is => 'ro', isa => 'ArrayRef[Paws::EC2::IdFormat]', request_name => 'statusSet', traits => ['NameInRequest',]);
 
 1;
 

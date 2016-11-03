@@ -1,7 +1,7 @@
 
 package Paws::RDS::DBClusterSnapshotMessage;
   use Moose;
-  has DBClusterSnapshots => (is => 'ro', isa => 'ArrayRef[Paws::RDS::DBClusterSnapshot]', xmlname => 'DBClusterSnapshot', traits => ['Unwrapped',]);
+  has DBClusterSnapshots => (is => 'ro', isa => 'ArrayRef[Paws::RDS::DBClusterSnapshot]', request_name => 'DBClusterSnapshot', traits => ['NameInRequest',]);
   has Marker => (is => 'ro', isa => 'Str');
 
 1;

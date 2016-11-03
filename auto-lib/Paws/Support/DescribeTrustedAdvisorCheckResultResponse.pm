@@ -1,7 +1,7 @@
 
 package Paws::Support::DescribeTrustedAdvisorCheckResultResponse;
   use Moose;
-  has Result => (is => 'ro', isa => 'Paws::Support::TrustedAdvisorCheckResult', traits => ['Unwrapped'], xmlname => 'result' );
+  has Result => (is => 'ro', isa => 'Paws::Support::TrustedAdvisorCheckResult', traits => ['NameInRequest'], request_name => 'result' );
 
 
 ### main pod documentation begin ###

@@ -1,8 +1,8 @@
 
 package Paws::DeviceFarm::ListArtifactsResult;
   use Moose;
-  has Artifacts => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::Artifact]', traits => ['Unwrapped'], xmlname => 'artifacts' );
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
+  has Artifacts => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::Artifact]', traits => ['NameInRequest'], request_name => 'artifacts' );
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
 
 
 ### main pod documentation begin ###

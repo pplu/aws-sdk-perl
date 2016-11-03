@@ -1,8 +1,8 @@
 
 package Paws::DeviceFarm::ListRemoteAccessSessionsResult;
   use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
-  has RemoteAccessSessions => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::RemoteAccessSession]', traits => ['Unwrapped'], xmlname => 'remoteAccessSessions' );
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  has RemoteAccessSessions => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::RemoteAccessSession]', traits => ['NameInRequest'], request_name => 'remoteAccessSessions' );
 
 
 ### main pod documentation begin ###

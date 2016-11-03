@@ -1,9 +1,9 @@
 package Paws::SimpleWorkflow::WorkflowExecutionSignaledEventAttributes;
   use Moose;
-  has ExternalInitiatedEventId => (is => 'ro', isa => 'Int', xmlname => 'externalInitiatedEventId', request_name => 'externalInitiatedEventId', traits => ['Unwrapped','NameInRequest']);
-  has ExternalWorkflowExecution => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowExecution', xmlname => 'externalWorkflowExecution', request_name => 'externalWorkflowExecution', traits => ['Unwrapped','NameInRequest']);
-  has Input => (is => 'ro', isa => 'Str', xmlname => 'input', request_name => 'input', traits => ['Unwrapped','NameInRequest']);
-  has SignalName => (is => 'ro', isa => 'Str', xmlname => 'signalName', request_name => 'signalName', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has ExternalInitiatedEventId => (is => 'ro', isa => 'Int', request_name => 'externalInitiatedEventId', traits => ['NameInRequest']);
+  has ExternalWorkflowExecution => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowExecution', request_name => 'externalWorkflowExecution', traits => ['NameInRequest']);
+  has Input => (is => 'ro', isa => 'Str', request_name => 'input', traits => ['NameInRequest']);
+  has SignalName => (is => 'ro', isa => 'Str', request_name => 'signalName', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###

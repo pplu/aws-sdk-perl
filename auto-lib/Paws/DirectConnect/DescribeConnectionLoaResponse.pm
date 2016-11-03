@@ -1,7 +1,7 @@
 
 package Paws::DirectConnect::DescribeConnectionLoaResponse;
   use Moose;
-  has Loa => (is => 'ro', isa => 'Paws::DirectConnect::Loa', traits => ['Unwrapped'], xmlname => 'loa' );
+  has Loa => (is => 'ro', isa => 'Paws::DirectConnect::Loa', traits => ['NameInRequest'], request_name => 'loa' );
 
 
 ### main pod documentation begin ###

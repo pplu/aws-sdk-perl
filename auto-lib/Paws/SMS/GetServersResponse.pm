@@ -1,10 +1,10 @@
 
 package Paws::SMS::GetServersResponse;
   use Moose;
-  has LastModifiedOn => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'lastModifiedOn' );
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
-  has ServerCatalogStatus => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'serverCatalogStatus' );
-  has ServerList => (is => 'ro', isa => 'ArrayRef[Paws::SMS::Server]', traits => ['Unwrapped'], xmlname => 'serverList' );
+  has LastModifiedOn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'lastModifiedOn' );
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  has ServerCatalogStatus => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'serverCatalogStatus' );
+  has ServerList => (is => 'ro', isa => 'ArrayRef[Paws::SMS::Server]', traits => ['NameInRequest'], request_name => 'serverList' );
 
 
 ### main pod documentation begin ###

@@ -1,8 +1,8 @@
 
 package Paws::CodeDeploy::StopDeploymentOutput;
   use Moose;
-  has Status => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'status' );
-  has StatusMessage => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'statusMessage' );
+  has Status => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'status' );
+  has StatusMessage => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'statusMessage' );
 
 
 ### main pod documentation begin ###

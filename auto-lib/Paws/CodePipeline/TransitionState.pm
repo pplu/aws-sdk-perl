@@ -1,9 +1,9 @@
 package Paws::CodePipeline::TransitionState;
   use Moose;
-  has DisabledReason => (is => 'ro', isa => 'Str', xmlname => 'disabledReason', request_name => 'disabledReason', traits => ['Unwrapped','NameInRequest']);
-  has Enabled => (is => 'ro', isa => 'Bool', xmlname => 'enabled', request_name => 'enabled', traits => ['Unwrapped','NameInRequest']);
-  has LastChangedAt => (is => 'ro', isa => 'Str', xmlname => 'lastChangedAt', request_name => 'lastChangedAt', traits => ['Unwrapped','NameInRequest']);
-  has LastChangedBy => (is => 'ro', isa => 'Str', xmlname => 'lastChangedBy', request_name => 'lastChangedBy', traits => ['Unwrapped','NameInRequest']);
+  has DisabledReason => (is => 'ro', isa => 'Str', request_name => 'disabledReason', traits => ['NameInRequest']);
+  has Enabled => (is => 'ro', isa => 'Bool', request_name => 'enabled', traits => ['NameInRequest']);
+  has LastChangedAt => (is => 'ro', isa => 'Str', request_name => 'lastChangedAt', traits => ['NameInRequest']);
+  has LastChangedBy => (is => 'ro', isa => 'Str', request_name => 'lastChangedBy', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

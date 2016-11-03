@@ -1,7 +1,7 @@
 package Paws::DataPipeline::ValidationWarning;
   use Moose;
-  has Id => (is => 'ro', isa => 'Str', xmlname => 'id', request_name => 'id', traits => ['Unwrapped','NameInRequest']);
-  has Warnings => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'warnings', request_name => 'warnings', traits => ['Unwrapped','NameInRequest']);
+  has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest']);
+  has Warnings => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'warnings', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

@@ -1,7 +1,7 @@
 
 package Paws::EC2::DescribeAvailabilityZonesResult;
   use Moose;
-  has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Paws::EC2::AvailabilityZone]', xmlname => 'availabilityZoneInfo', traits => ['Unwrapped',]);
+  has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Paws::EC2::AvailabilityZone]', request_name => 'availabilityZoneInfo', traits => ['NameInRequest',]);
 
 1;
 

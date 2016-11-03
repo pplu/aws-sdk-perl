@@ -2,7 +2,7 @@
 package Paws::RedShift::TaggedResourceListMessage;
   use Moose;
   has Marker => (is => 'ro', isa => 'Str');
-  has TaggedResources => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::TaggedResource]', xmlname => 'TaggedResource', traits => ['Unwrapped',]);
+  has TaggedResources => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::TaggedResource]', request_name => 'TaggedResource', traits => ['NameInRequest',]);
 
 1;
 

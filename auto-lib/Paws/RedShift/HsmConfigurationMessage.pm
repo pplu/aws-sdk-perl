@@ -1,7 +1,7 @@
 
 package Paws::RedShift::HsmConfigurationMessage;
   use Moose;
-  has HsmConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::HsmConfiguration]', xmlname => 'HsmConfiguration', traits => ['Unwrapped',]);
+  has HsmConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::HsmConfiguration]', request_name => 'HsmConfiguration', traits => ['NameInRequest',]);
   has Marker => (is => 'ro', isa => 'Str');
 
 1;

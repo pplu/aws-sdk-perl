@@ -1,7 +1,7 @@
 
 package Paws::SMS::StartOnDemandReplicationRunResponse;
   use Moose;
-  has ReplicationRunId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'replicationRunId' );
+  has ReplicationRunId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'replicationRunId' );
 
 
 ### main pod documentation begin ###

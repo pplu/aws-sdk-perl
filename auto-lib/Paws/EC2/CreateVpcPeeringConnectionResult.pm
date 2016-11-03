@@ -1,7 +1,7 @@
 
 package Paws::EC2::CreateVpcPeeringConnectionResult;
   use Moose;
-  has VpcPeeringConnection => (is => 'ro', isa => 'Paws::EC2::VpcPeeringConnection', xmlname => 'vpcPeeringConnection', traits => ['Unwrapped',]);
+  has VpcPeeringConnection => (is => 'ro', isa => 'Paws::EC2::VpcPeeringConnection', request_name => 'vpcPeeringConnection', traits => ['NameInRequest',]);
 
 1;
 

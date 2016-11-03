@@ -1,7 +1,7 @@
 
 package Paws::SDB::SelectResult;
   use Moose;
-  has Items => (is => 'ro', isa => 'ArrayRef[Paws::SDB::Item]', xmlname => 'Item', traits => ['Unwrapped',]);
+  has Items => (is => 'ro', isa => 'ArrayRef[Paws::SDB::Item]', request_name => 'Item', traits => ['NameInRequest',]);
   has NextToken => (is => 'ro', isa => 'Str');
 
 1;

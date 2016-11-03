@@ -1,7 +1,7 @@
 
 package Paws::DirectConnect::Interconnects;
   use Moose;
-  has Interconnects => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::Interconnect]', traits => ['Unwrapped'], xmlname => 'interconnects' );
+  has Interconnects => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::Interconnect]', traits => ['NameInRequest'], request_name => 'interconnects' );
 
 
 ### main pod documentation begin ###

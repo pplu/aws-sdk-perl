@@ -1,7 +1,7 @@
 package Paws::ApiGateway::StageKey;
   use Moose;
-  has RestApiId => (is => 'ro', isa => 'Str', xmlname => 'restApiId', request_name => 'restApiId', traits => ['Unwrapped','NameInRequest']);
-  has StageName => (is => 'ro', isa => 'Str', xmlname => 'stageName', request_name => 'stageName', traits => ['Unwrapped','NameInRequest']);
+  has RestApiId => (is => 'ro', isa => 'Str', request_name => 'restApiId', traits => ['NameInRequest']);
+  has StageName => (is => 'ro', isa => 'Str', request_name => 'stageName', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

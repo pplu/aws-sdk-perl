@@ -1,8 +1,8 @@
 
 package Paws::DeviceFarm::ListSuitesResult;
   use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
-  has Suites => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::Suite]', traits => ['Unwrapped'], xmlname => 'suites' );
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  has Suites => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::Suite]', traits => ['NameInRequest'], request_name => 'suites' );
 
 
 ### main pod documentation begin ###

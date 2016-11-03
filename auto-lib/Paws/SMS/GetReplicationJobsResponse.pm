@@ -1,8 +1,8 @@
 
 package Paws::SMS::GetReplicationJobsResponse;
   use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
-  has ReplicationJobList => (is => 'ro', isa => 'ArrayRef[Paws::SMS::ReplicationJob]', traits => ['Unwrapped'], xmlname => 'replicationJobList' );
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  has ReplicationJobList => (is => 'ro', isa => 'ArrayRef[Paws::SMS::ReplicationJob]', traits => ['NameInRequest'], request_name => 'replicationJobList' );
 
 
 ### main pod documentation begin ###

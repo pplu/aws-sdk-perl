@@ -2,7 +2,7 @@
 package Paws::RDS::SourceRegionMessage;
   use Moose;
   has Marker => (is => 'ro', isa => 'Str');
-  has SourceRegions => (is => 'ro', isa => 'ArrayRef[Paws::RDS::SourceRegion]', xmlname => 'SourceRegion', traits => ['Unwrapped',]);
+  has SourceRegions => (is => 'ro', isa => 'ArrayRef[Paws::RDS::SourceRegion]', request_name => 'SourceRegion', traits => ['NameInRequest',]);
 
 1;
 

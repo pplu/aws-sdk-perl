@@ -3,7 +3,7 @@ package Paws::Route53::ListHostedZonesByNameResponse;
   use Moose;
   has DNSName => (is => 'ro', isa => 'Str');
   has HostedZoneId => (is => 'ro', isa => 'Str');
-  has HostedZones => (is => 'ro', isa => 'ArrayRef[Paws::Route53::HostedZone]', traits => ['Unwrapped'], xmlname => 'HostedZone', required => 1);
+  has HostedZones => (is => 'ro', isa => 'ArrayRef[Paws::Route53::HostedZone]', traits => ['NameInRequest'], request_name => 'HostedZone', required => 1);
   has IsTruncated => (is => 'ro', isa => 'Bool', required => 1);
   has MaxItems => (is => 'ro', isa => 'Str', required => 1);
   has NextDNSName => (is => 'ro', isa => 'Str');

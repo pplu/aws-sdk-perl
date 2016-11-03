@@ -1,8 +1,8 @@
 
 package Paws::EC2::DescribeVpcClassicLinkDnsSupportResult;
   use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', xmlname => 'nextToken', traits => ['Unwrapped',]);
-  has Vpcs => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ClassicLinkDnsSupport]', xmlname => 'vpcs', traits => ['Unwrapped',]);
+  has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest',]);
+  has Vpcs => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ClassicLinkDnsSupport]', request_name => 'vpcs', traits => ['NameInRequest',]);
 
 1;
 

@@ -1,7 +1,7 @@
 
 package Paws::ECS::StopTaskResponse;
   use Moose;
-  has Task => (is => 'ro', isa => 'Paws::ECS::Task', traits => ['Unwrapped'], xmlname => 'task' );
+  has Task => (is => 'ro', isa => 'Paws::ECS::Task', traits => ['NameInRequest'], request_name => 'task' );
 
 
 ### main pod documentation begin ###

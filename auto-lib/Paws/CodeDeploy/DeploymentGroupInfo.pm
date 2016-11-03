@@ -1,17 +1,17 @@
 package Paws::CodeDeploy::DeploymentGroupInfo;
   use Moose;
-  has AlarmConfiguration => (is => 'ro', isa => 'Paws::CodeDeploy::AlarmConfiguration', xmlname => 'alarmConfiguration', request_name => 'alarmConfiguration', traits => ['Unwrapped','NameInRequest']);
-  has ApplicationName => (is => 'ro', isa => 'Str', xmlname => 'applicationName', request_name => 'applicationName', traits => ['Unwrapped','NameInRequest']);
-  has AutoRollbackConfiguration => (is => 'ro', isa => 'Paws::CodeDeploy::AutoRollbackConfiguration', xmlname => 'autoRollbackConfiguration', request_name => 'autoRollbackConfiguration', traits => ['Unwrapped','NameInRequest']);
-  has AutoScalingGroups => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::AutoScalingGroup]', xmlname => 'autoScalingGroups', request_name => 'autoScalingGroups', traits => ['Unwrapped','NameInRequest']);
-  has DeploymentConfigName => (is => 'ro', isa => 'Str', xmlname => 'deploymentConfigName', request_name => 'deploymentConfigName', traits => ['Unwrapped','NameInRequest']);
-  has DeploymentGroupId => (is => 'ro', isa => 'Str', xmlname => 'deploymentGroupId', request_name => 'deploymentGroupId', traits => ['Unwrapped','NameInRequest']);
-  has DeploymentGroupName => (is => 'ro', isa => 'Str', xmlname => 'deploymentGroupName', request_name => 'deploymentGroupName', traits => ['Unwrapped','NameInRequest']);
-  has Ec2TagFilters => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::EC2TagFilter]', xmlname => 'ec2TagFilters', request_name => 'ec2TagFilters', traits => ['Unwrapped','NameInRequest']);
-  has OnPremisesInstanceTagFilters => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::TagFilter]', xmlname => 'onPremisesInstanceTagFilters', request_name => 'onPremisesInstanceTagFilters', traits => ['Unwrapped','NameInRequest']);
-  has ServiceRoleArn => (is => 'ro', isa => 'Str', xmlname => 'serviceRoleArn', request_name => 'serviceRoleArn', traits => ['Unwrapped','NameInRequest']);
-  has TargetRevision => (is => 'ro', isa => 'Paws::CodeDeploy::RevisionLocation', xmlname => 'targetRevision', request_name => 'targetRevision', traits => ['Unwrapped','NameInRequest']);
-  has TriggerConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::TriggerConfig]', xmlname => 'triggerConfigurations', request_name => 'triggerConfigurations', traits => ['Unwrapped','NameInRequest']);
+  has AlarmConfiguration => (is => 'ro', isa => 'Paws::CodeDeploy::AlarmConfiguration', request_name => 'alarmConfiguration', traits => ['NameInRequest']);
+  has ApplicationName => (is => 'ro', isa => 'Str', request_name => 'applicationName', traits => ['NameInRequest']);
+  has AutoRollbackConfiguration => (is => 'ro', isa => 'Paws::CodeDeploy::AutoRollbackConfiguration', request_name => 'autoRollbackConfiguration', traits => ['NameInRequest']);
+  has AutoScalingGroups => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::AutoScalingGroup]', request_name => 'autoScalingGroups', traits => ['NameInRequest']);
+  has DeploymentConfigName => (is => 'ro', isa => 'Str', request_name => 'deploymentConfigName', traits => ['NameInRequest']);
+  has DeploymentGroupId => (is => 'ro', isa => 'Str', request_name => 'deploymentGroupId', traits => ['NameInRequest']);
+  has DeploymentGroupName => (is => 'ro', isa => 'Str', request_name => 'deploymentGroupName', traits => ['NameInRequest']);
+  has Ec2TagFilters => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::EC2TagFilter]', request_name => 'ec2TagFilters', traits => ['NameInRequest']);
+  has OnPremisesInstanceTagFilters => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::TagFilter]', request_name => 'onPremisesInstanceTagFilters', traits => ['NameInRequest']);
+  has ServiceRoleArn => (is => 'ro', isa => 'Str', request_name => 'serviceRoleArn', traits => ['NameInRequest']);
+  has TargetRevision => (is => 'ro', isa => 'Paws::CodeDeploy::RevisionLocation', request_name => 'targetRevision', traits => ['NameInRequest']);
+  has TriggerConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::TriggerConfig]', request_name => 'triggerConfigurations', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

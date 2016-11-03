@@ -1,13 +1,13 @@
 
 package Paws::SimpleWorkflow::DecisionTask;
   use Moose;
-  has Events => (is => 'ro', isa => 'ArrayRef[Paws::SimpleWorkflow::HistoryEvent]', traits => ['Unwrapped'], xmlname => 'events' , required => 1);
-  has NextPageToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextPageToken' );
-  has PreviousStartedEventId => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => 'previousStartedEventId' );
-  has StartedEventId => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => 'startedEventId' , required => 1);
-  has TaskToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'taskToken' , required => 1);
-  has WorkflowExecution => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowExecution', traits => ['Unwrapped'], xmlname => 'workflowExecution' , required => 1);
-  has WorkflowType => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowType', traits => ['Unwrapped'], xmlname => 'workflowType' , required => 1);
+  has Events => (is => 'ro', isa => 'ArrayRef[Paws::SimpleWorkflow::HistoryEvent]', traits => ['NameInRequest'], request_name => 'events' , required => 1);
+  has NextPageToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextPageToken' );
+  has PreviousStartedEventId => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'previousStartedEventId' );
+  has StartedEventId => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'startedEventId' , required => 1);
+  has TaskToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'taskToken' , required => 1);
+  has WorkflowExecution => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowExecution', traits => ['NameInRequest'], request_name => 'workflowExecution' , required => 1);
+  has WorkflowType => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowType', traits => ['NameInRequest'], request_name => 'workflowType' , required => 1);
 
 
 ### main pod documentation begin ###

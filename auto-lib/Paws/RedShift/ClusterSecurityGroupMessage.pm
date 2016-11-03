@@ -1,7 +1,7 @@
 
 package Paws::RedShift::ClusterSecurityGroupMessage;
   use Moose;
-  has ClusterSecurityGroups => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::ClusterSecurityGroup]', xmlname => 'ClusterSecurityGroup', traits => ['Unwrapped',]);
+  has ClusterSecurityGroups => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::ClusterSecurityGroup]', request_name => 'ClusterSecurityGroup', traits => ['NameInRequest',]);
   has Marker => (is => 'ro', isa => 'Str');
 
 1;

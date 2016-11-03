@@ -1,7 +1,7 @@
 
 package Paws::EC2::PurchaseReservedInstancesOfferingResult;
   use Moose;
-  has ReservedInstancesId => (is => 'ro', isa => 'Str', xmlname => 'reservedInstancesId', traits => ['Unwrapped',]);
+  has ReservedInstancesId => (is => 'ro', isa => 'Str', request_name => 'reservedInstancesId', traits => ['NameInRequest',]);
 
 1;
 

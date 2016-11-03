@@ -1,9 +1,9 @@
 package Paws::EC2::VpcPeeringConnectionVpcInfo;
   use Moose;
-  has CidrBlock => (is => 'ro', isa => 'Str', xmlname => 'cidrBlock', traits => ['Unwrapped']);
-  has OwnerId => (is => 'ro', isa => 'Str', xmlname => 'ownerId', traits => ['Unwrapped']);
-  has PeeringOptions => (is => 'ro', isa => 'Paws::EC2::VpcPeeringConnectionOptionsDescription', xmlname => 'peeringOptions', traits => ['Unwrapped']);
-  has VpcId => (is => 'ro', isa => 'Str', xmlname => 'vpcId', traits => ['Unwrapped']);
+  has CidrBlock => (is => 'ro', isa => 'Str', request_name => 'cidrBlock', traits => ['NameInRequest']);
+  has OwnerId => (is => 'ro', isa => 'Str', request_name => 'ownerId', traits => ['NameInRequest']);
+  has PeeringOptions => (is => 'ro', isa => 'Paws::EC2::VpcPeeringConnectionOptionsDescription', request_name => 'peeringOptions', traits => ['NameInRequest']);
+  has VpcId => (is => 'ro', isa => 'Str', request_name => 'vpcId', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

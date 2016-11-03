@@ -1,7 +1,7 @@
 package Paws::EC2::Tag;
   use Moose;
-  has Key => (is => 'ro', isa => 'Str', xmlname => 'key', traits => ['Unwrapped']);
-  has Value => (is => 'ro', isa => 'Str', xmlname => 'value', traits => ['Unwrapped']);
+  has Key => (is => 'ro', isa => 'Str', request_name => 'key', traits => ['NameInRequest']);
+  has Value => (is => 'ro', isa => 'Str', request_name => 'value', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

@@ -1,7 +1,7 @@
 
 package Paws::CodeDeploy::BatchGetOnPremisesInstancesOutput;
   use Moose;
-  has InstanceInfos => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::InstanceInfo]', traits => ['Unwrapped'], xmlname => 'instanceInfos' );
+  has InstanceInfos => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::InstanceInfo]', traits => ['NameInRequest'], request_name => 'instanceInfos' );
 
 
 ### main pod documentation begin ###

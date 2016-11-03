@@ -1,7 +1,7 @@
 
 package Paws::DataPipeline::DescribePipelinesOutput;
   use Moose;
-  has PipelineDescriptionList => (is => 'ro', isa => 'ArrayRef[Paws::DataPipeline::PipelineDescription]', traits => ['Unwrapped'], xmlname => 'pipelineDescriptionList' , required => 1);
+  has PipelineDescriptionList => (is => 'ro', isa => 'ArrayRef[Paws::DataPipeline::PipelineDescription]', traits => ['NameInRequest'], request_name => 'pipelineDescriptionList' , required => 1);
 
 
 ### main pod documentation begin ###

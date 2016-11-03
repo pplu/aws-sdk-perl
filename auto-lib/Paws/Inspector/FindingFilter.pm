@@ -1,13 +1,13 @@
 package Paws::Inspector::FindingFilter;
   use Moose;
-  has AgentIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'agentIds', request_name => 'agentIds', traits => ['Unwrapped','NameInRequest']);
-  has Attributes => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::Attribute]', xmlname => 'attributes', request_name => 'attributes', traits => ['Unwrapped','NameInRequest']);
-  has AutoScalingGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'autoScalingGroups', request_name => 'autoScalingGroups', traits => ['Unwrapped','NameInRequest']);
-  has CreationTimeRange => (is => 'ro', isa => 'Paws::Inspector::TimestampRange', xmlname => 'creationTimeRange', request_name => 'creationTimeRange', traits => ['Unwrapped','NameInRequest']);
-  has RuleNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'ruleNames', request_name => 'ruleNames', traits => ['Unwrapped','NameInRequest']);
-  has RulesPackageArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'rulesPackageArns', request_name => 'rulesPackageArns', traits => ['Unwrapped','NameInRequest']);
-  has Severities => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'severities', request_name => 'severities', traits => ['Unwrapped','NameInRequest']);
-  has UserAttributes => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::Attribute]', xmlname => 'userAttributes', request_name => 'userAttributes', traits => ['Unwrapped','NameInRequest']);
+  has AgentIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'agentIds', traits => ['NameInRequest']);
+  has Attributes => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::Attribute]', request_name => 'attributes', traits => ['NameInRequest']);
+  has AutoScalingGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'autoScalingGroups', traits => ['NameInRequest']);
+  has CreationTimeRange => (is => 'ro', isa => 'Paws::Inspector::TimestampRange', request_name => 'creationTimeRange', traits => ['NameInRequest']);
+  has RuleNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'ruleNames', traits => ['NameInRequest']);
+  has RulesPackageArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'rulesPackageArns', traits => ['NameInRequest']);
+  has Severities => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'severities', traits => ['NameInRequest']);
+  has UserAttributes => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::Attribute]', request_name => 'userAttributes', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

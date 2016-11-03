@@ -1,19 +1,19 @@
 package Paws::SMS::ReplicationJob;
   use Moose;
-  has Description => (is => 'ro', isa => 'Str', xmlname => 'description', request_name => 'description', traits => ['Unwrapped','NameInRequest']);
-  has Frequency => (is => 'ro', isa => 'Int', xmlname => 'frequency', request_name => 'frequency', traits => ['Unwrapped','NameInRequest']);
-  has LatestAmiId => (is => 'ro', isa => 'Str', xmlname => 'latestAmiId', request_name => 'latestAmiId', traits => ['Unwrapped','NameInRequest']);
-  has LicenseType => (is => 'ro', isa => 'Str', xmlname => 'licenseType', request_name => 'licenseType', traits => ['Unwrapped','NameInRequest']);
-  has NextReplicationRunStartTime => (is => 'ro', isa => 'Str', xmlname => 'nextReplicationRunStartTime', request_name => 'nextReplicationRunStartTime', traits => ['Unwrapped','NameInRequest']);
-  has ReplicationJobId => (is => 'ro', isa => 'Str', xmlname => 'replicationJobId', request_name => 'replicationJobId', traits => ['Unwrapped','NameInRequest']);
-  has ReplicationRunList => (is => 'ro', isa => 'ArrayRef[Paws::SMS::ReplicationRun]', xmlname => 'replicationRunList', request_name => 'replicationRunList', traits => ['Unwrapped','NameInRequest']);
-  has RoleName => (is => 'ro', isa => 'Str', xmlname => 'roleName', request_name => 'roleName', traits => ['Unwrapped','NameInRequest']);
-  has SeedReplicationTime => (is => 'ro', isa => 'Str', xmlname => 'seedReplicationTime', request_name => 'seedReplicationTime', traits => ['Unwrapped','NameInRequest']);
-  has ServerId => (is => 'ro', isa => 'Str', xmlname => 'serverId', request_name => 'serverId', traits => ['Unwrapped','NameInRequest']);
-  has ServerType => (is => 'ro', isa => 'Str', xmlname => 'serverType', request_name => 'serverType', traits => ['Unwrapped','NameInRequest']);
-  has State => (is => 'ro', isa => 'Str', xmlname => 'state', request_name => 'state', traits => ['Unwrapped','NameInRequest']);
-  has StatusMessage => (is => 'ro', isa => 'Str', xmlname => 'statusMessage', request_name => 'statusMessage', traits => ['Unwrapped','NameInRequest']);
-  has VmServer => (is => 'ro', isa => 'Paws::SMS::VmServer', xmlname => 'vmServer', request_name => 'vmServer', traits => ['Unwrapped','NameInRequest']);
+  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
+  has Frequency => (is => 'ro', isa => 'Int', request_name => 'frequency', traits => ['NameInRequest']);
+  has LatestAmiId => (is => 'ro', isa => 'Str', request_name => 'latestAmiId', traits => ['NameInRequest']);
+  has LicenseType => (is => 'ro', isa => 'Str', request_name => 'licenseType', traits => ['NameInRequest']);
+  has NextReplicationRunStartTime => (is => 'ro', isa => 'Str', request_name => 'nextReplicationRunStartTime', traits => ['NameInRequest']);
+  has ReplicationJobId => (is => 'ro', isa => 'Str', request_name => 'replicationJobId', traits => ['NameInRequest']);
+  has ReplicationRunList => (is => 'ro', isa => 'ArrayRef[Paws::SMS::ReplicationRun]', request_name => 'replicationRunList', traits => ['NameInRequest']);
+  has RoleName => (is => 'ro', isa => 'Str', request_name => 'roleName', traits => ['NameInRequest']);
+  has SeedReplicationTime => (is => 'ro', isa => 'Str', request_name => 'seedReplicationTime', traits => ['NameInRequest']);
+  has ServerId => (is => 'ro', isa => 'Str', request_name => 'serverId', traits => ['NameInRequest']);
+  has ServerType => (is => 'ro', isa => 'Str', request_name => 'serverType', traits => ['NameInRequest']);
+  has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
+  has StatusMessage => (is => 'ro', isa => 'Str', request_name => 'statusMessage', traits => ['NameInRequest']);
+  has VmServer => (is => 'ro', isa => 'Paws::SMS::VmServer', request_name => 'vmServer', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

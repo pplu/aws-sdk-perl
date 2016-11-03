@@ -1,8 +1,8 @@
 package Paws::SimpleWorkflow::WorkflowExecutionFailedEventAttributes;
   use Moose;
-  has DecisionTaskCompletedEventId => (is => 'ro', isa => 'Int', xmlname => 'decisionTaskCompletedEventId', request_name => 'decisionTaskCompletedEventId', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has Details => (is => 'ro', isa => 'Str', xmlname => 'details', request_name => 'details', traits => ['Unwrapped','NameInRequest']);
-  has Reason => (is => 'ro', isa => 'Str', xmlname => 'reason', request_name => 'reason', traits => ['Unwrapped','NameInRequest']);
+  has DecisionTaskCompletedEventId => (is => 'ro', isa => 'Int', request_name => 'decisionTaskCompletedEventId', traits => ['NameInRequest'], required => 1);
+  has Details => (is => 'ro', isa => 'Str', request_name => 'details', traits => ['NameInRequest']);
+  has Reason => (is => 'ro', isa => 'Str', request_name => 'reason', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

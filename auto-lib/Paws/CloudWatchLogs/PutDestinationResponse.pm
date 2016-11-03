@@ -1,7 +1,7 @@
 
 package Paws::CloudWatchLogs::PutDestinationResponse;
   use Moose;
-  has Destination => (is => 'ro', isa => 'Paws::CloudWatchLogs::Destination', traits => ['Unwrapped'], xmlname => 'destination' );
+  has Destination => (is => 'ro', isa => 'Paws::CloudWatchLogs::Destination', traits => ['NameInRequest'], request_name => 'destination' );
 
 
 ### main pod documentation begin ###

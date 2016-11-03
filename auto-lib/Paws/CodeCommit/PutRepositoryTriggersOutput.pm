@@ -1,7 +1,7 @@
 
 package Paws::CodeCommit::PutRepositoryTriggersOutput;
   use Moose;
-  has ConfigurationId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'configurationId' );
+  has ConfigurationId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'configurationId' );
 
 
 ### main pod documentation begin ###

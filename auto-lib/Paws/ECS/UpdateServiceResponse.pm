@@ -1,7 +1,7 @@
 
 package Paws::ECS::UpdateServiceResponse;
   use Moose;
-  has Service => (is => 'ro', isa => 'Paws::ECS::Service', traits => ['Unwrapped'], xmlname => 'service' );
+  has Service => (is => 'ro', isa => 'Paws::ECS::Service', traits => ['NameInRequest'], request_name => 'service' );
 
 
 ### main pod documentation begin ###

@@ -1,7 +1,7 @@
 
 package Paws::EC2::CreateImageResult;
   use Moose;
-  has ImageId => (is => 'ro', isa => 'Str', xmlname => 'imageId', traits => ['Unwrapped',]);
+  has ImageId => (is => 'ro', isa => 'Str', request_name => 'imageId', traits => ['NameInRequest',]);
 
 1;
 

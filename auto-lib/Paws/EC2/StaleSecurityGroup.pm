@@ -1,11 +1,11 @@
 package Paws::EC2::StaleSecurityGroup;
   use Moose;
-  has Description => (is => 'ro', isa => 'Str', xmlname => 'description', traits => ['Unwrapped']);
-  has GroupId => (is => 'ro', isa => 'Str', xmlname => 'groupId', traits => ['Unwrapped'], required => 1);
-  has GroupName => (is => 'ro', isa => 'Str', xmlname => 'groupName', traits => ['Unwrapped']);
-  has StaleIpPermissions => (is => 'ro', isa => 'ArrayRef[Paws::EC2::StaleIpPermission]', xmlname => 'staleIpPermissions', traits => ['Unwrapped']);
-  has StaleIpPermissionsEgress => (is => 'ro', isa => 'ArrayRef[Paws::EC2::StaleIpPermission]', xmlname => 'staleIpPermissionsEgress', traits => ['Unwrapped']);
-  has VpcId => (is => 'ro', isa => 'Str', xmlname => 'vpcId', traits => ['Unwrapped']);
+  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
+  has GroupId => (is => 'ro', isa => 'Str', request_name => 'groupId', traits => ['NameInRequest'], required => 1);
+  has GroupName => (is => 'ro', isa => 'Str', request_name => 'groupName', traits => ['NameInRequest']);
+  has StaleIpPermissions => (is => 'ro', isa => 'ArrayRef[Paws::EC2::StaleIpPermission]', request_name => 'staleIpPermissions', traits => ['NameInRequest']);
+  has StaleIpPermissionsEgress => (is => 'ro', isa => 'ArrayRef[Paws::EC2::StaleIpPermission]', request_name => 'staleIpPermissionsEgress', traits => ['NameInRequest']);
+  has VpcId => (is => 'ro', isa => 'Str', request_name => 'vpcId', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

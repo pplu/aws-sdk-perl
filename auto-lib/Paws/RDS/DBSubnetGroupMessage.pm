@@ -1,7 +1,7 @@
 
 package Paws::RDS::DBSubnetGroupMessage;
   use Moose;
-  has DBSubnetGroups => (is => 'ro', isa => 'ArrayRef[Paws::RDS::DBSubnetGroup]', xmlname => 'DBSubnetGroup', traits => ['Unwrapped',]);
+  has DBSubnetGroups => (is => 'ro', isa => 'ArrayRef[Paws::RDS::DBSubnetGroup]', request_name => 'DBSubnetGroup', traits => ['NameInRequest',]);
   has Marker => (is => 'ro', isa => 'Str');
 
 1;

@@ -1,7 +1,7 @@
 
 package Paws::EC2::CreateSubnetResult;
   use Moose;
-  has Subnet => (is => 'ro', isa => 'Paws::EC2::Subnet', xmlname => 'subnet', traits => ['Unwrapped',]);
+  has Subnet => (is => 'ro', isa => 'Paws::EC2::Subnet', request_name => 'subnet', traits => ['NameInRequest',]);
 
 1;
 

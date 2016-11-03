@@ -1,8 +1,8 @@
 
 package Paws::Inspector::PreviewAgentsResponse;
   use Moose;
-  has AgentPreviews => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::AgentPreview]', traits => ['Unwrapped'], xmlname => 'agentPreviews' , required => 1);
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
+  has AgentPreviews => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::AgentPreview]', traits => ['NameInRequest'], request_name => 'agentPreviews' , required => 1);
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
 
 
 ### main pod documentation begin ###

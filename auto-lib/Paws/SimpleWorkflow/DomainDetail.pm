@@ -1,8 +1,8 @@
 
 package Paws::SimpleWorkflow::DomainDetail;
   use Moose;
-  has Configuration => (is => 'ro', isa => 'Paws::SimpleWorkflow::DomainConfiguration', traits => ['Unwrapped'], xmlname => 'configuration' , required => 1);
-  has DomainInfo => (is => 'ro', isa => 'Paws::SimpleWorkflow::DomainInfo', traits => ['Unwrapped'], xmlname => 'domainInfo' , required => 1);
+  has Configuration => (is => 'ro', isa => 'Paws::SimpleWorkflow::DomainConfiguration', traits => ['NameInRequest'], request_name => 'configuration' , required => 1);
+  has DomainInfo => (is => 'ro', isa => 'Paws::SimpleWorkflow::DomainInfo', traits => ['NameInRequest'], request_name => 'domainInfo' , required => 1);
 
 
 ### main pod documentation begin ###

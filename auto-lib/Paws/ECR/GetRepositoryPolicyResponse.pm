@@ -1,9 +1,9 @@
 
 package Paws::ECR::GetRepositoryPolicyResponse;
   use Moose;
-  has PolicyText => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'policyText' );
-  has RegistryId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'registryId' );
-  has RepositoryName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'repositoryName' );
+  has PolicyText => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'policyText' );
+  has RegistryId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'registryId' );
+  has RepositoryName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'repositoryName' );
 
 
 ### main pod documentation begin ###

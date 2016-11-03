@@ -1,7 +1,7 @@
 
 package Paws::Inspector::CreateAssessmentTemplateResponse;
   use Moose;
-  has AssessmentTemplateArn => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'assessmentTemplateArn' , required => 1);
+  has AssessmentTemplateArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'assessmentTemplateArn' , required => 1);
 
 
 ### main pod documentation begin ###

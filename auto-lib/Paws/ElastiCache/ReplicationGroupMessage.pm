@@ -2,7 +2,7 @@
 package Paws::ElastiCache::ReplicationGroupMessage;
   use Moose;
   has Marker => (is => 'ro', isa => 'Str');
-  has ReplicationGroups => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::ReplicationGroup]', xmlname => 'ReplicationGroup', traits => ['Unwrapped',]);
+  has ReplicationGroups => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::ReplicationGroup]', request_name => 'ReplicationGroup', traits => ['NameInRequest',]);
 
 1;
 

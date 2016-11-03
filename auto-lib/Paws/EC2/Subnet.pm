@@ -1,14 +1,14 @@
 package Paws::EC2::Subnet;
   use Moose;
-  has AvailabilityZone => (is => 'ro', isa => 'Str', xmlname => 'availabilityZone', traits => ['Unwrapped']);
-  has AvailableIpAddressCount => (is => 'ro', isa => 'Int', xmlname => 'availableIpAddressCount', traits => ['Unwrapped']);
-  has CidrBlock => (is => 'ro', isa => 'Str', xmlname => 'cidrBlock', traits => ['Unwrapped']);
-  has DefaultForAz => (is => 'ro', isa => 'Bool', xmlname => 'defaultForAz', traits => ['Unwrapped']);
-  has MapPublicIpOnLaunch => (is => 'ro', isa => 'Bool', xmlname => 'mapPublicIpOnLaunch', traits => ['Unwrapped']);
-  has State => (is => 'ro', isa => 'Str', xmlname => 'state', traits => ['Unwrapped']);
-  has SubnetId => (is => 'ro', isa => 'Str', xmlname => 'subnetId', traits => ['Unwrapped']);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', xmlname => 'tagSet', traits => ['Unwrapped']);
-  has VpcId => (is => 'ro', isa => 'Str', xmlname => 'vpcId', traits => ['Unwrapped']);
+  has AvailabilityZone => (is => 'ro', isa => 'Str', request_name => 'availabilityZone', traits => ['NameInRequest']);
+  has AvailableIpAddressCount => (is => 'ro', isa => 'Int', request_name => 'availableIpAddressCount', traits => ['NameInRequest']);
+  has CidrBlock => (is => 'ro', isa => 'Str', request_name => 'cidrBlock', traits => ['NameInRequest']);
+  has DefaultForAz => (is => 'ro', isa => 'Bool', request_name => 'defaultForAz', traits => ['NameInRequest']);
+  has MapPublicIpOnLaunch => (is => 'ro', isa => 'Bool', request_name => 'mapPublicIpOnLaunch', traits => ['NameInRequest']);
+  has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
+  has SubnetId => (is => 'ro', isa => 'Str', request_name => 'subnetId', traits => ['NameInRequest']);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest']);
+  has VpcId => (is => 'ro', isa => 'Str', request_name => 'vpcId', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

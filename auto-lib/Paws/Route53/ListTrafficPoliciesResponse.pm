@@ -4,7 +4,7 @@ package Paws::Route53::ListTrafficPoliciesResponse;
   has IsTruncated => (is => 'ro', isa => 'Bool', required => 1);
   has MaxItems => (is => 'ro', isa => 'Str', required => 1);
   has TrafficPolicyIdMarker => (is => 'ro', isa => 'Str', required => 1);
-  has TrafficPolicySummaries => (is => 'ro', isa => 'ArrayRef[Paws::Route53::TrafficPolicySummary]', traits => ['Unwrapped'], xmlname => 'TrafficPolicySummary', required => 1);
+  has TrafficPolicySummaries => (is => 'ro', isa => 'ArrayRef[Paws::Route53::TrafficPolicySummary]', traits => ['NameInRequest'], request_name => 'TrafficPolicySummary', required => 1);
 
 1;
 

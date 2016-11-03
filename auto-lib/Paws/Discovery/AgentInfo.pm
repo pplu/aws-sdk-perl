@@ -1,11 +1,11 @@
 package Paws::Discovery::AgentInfo;
   use Moose;
-  has AgentId => (is => 'ro', isa => 'Str', xmlname => 'agentId', request_name => 'agentId', traits => ['Unwrapped','NameInRequest']);
-  has AgentNetworkInfoList => (is => 'ro', isa => 'ArrayRef[Paws::Discovery::AgentNetworkInfo]', xmlname => 'agentNetworkInfoList', request_name => 'agentNetworkInfoList', traits => ['Unwrapped','NameInRequest']);
-  has ConnectorId => (is => 'ro', isa => 'Str', xmlname => 'connectorId', request_name => 'connectorId', traits => ['Unwrapped','NameInRequest']);
-  has Health => (is => 'ro', isa => 'Str', xmlname => 'health', request_name => 'health', traits => ['Unwrapped','NameInRequest']);
-  has HostName => (is => 'ro', isa => 'Str', xmlname => 'hostName', request_name => 'hostName', traits => ['Unwrapped','NameInRequest']);
-  has Version => (is => 'ro', isa => 'Str', xmlname => 'version', request_name => 'version', traits => ['Unwrapped','NameInRequest']);
+  has AgentId => (is => 'ro', isa => 'Str', request_name => 'agentId', traits => ['NameInRequest']);
+  has AgentNetworkInfoList => (is => 'ro', isa => 'ArrayRef[Paws::Discovery::AgentNetworkInfo]', request_name => 'agentNetworkInfoList', traits => ['NameInRequest']);
+  has ConnectorId => (is => 'ro', isa => 'Str', request_name => 'connectorId', traits => ['NameInRequest']);
+  has Health => (is => 'ro', isa => 'Str', request_name => 'health', traits => ['NameInRequest']);
+  has HostName => (is => 'ro', isa => 'Str', request_name => 'hostName', traits => ['NameInRequest']);
+  has Version => (is => 'ro', isa => 'Str', request_name => 'version', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

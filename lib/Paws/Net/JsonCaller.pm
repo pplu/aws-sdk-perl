@@ -25,7 +25,7 @@ package Paws::Net::JsonCaller;
     } else {
       my %p;
       foreach my $att (grep { $_ !~ m/^_/ } $params->meta->get_attribute_list) {
-        my $key = $params->meta->get_attribute($att)->does('Paws::Net::Caller::Attribute::Trait::NameInRequest')?$params->meta->get_attribute($att)->request_name:$att;
+        my $key = $params->meta->get_attribute($att)->does('Paws::API::Attribute::Trait::NameInRequest')?$params->meta->get_attribute($att)->request_name:$att;
         if (defined $params->$att) {
           my $att_type = $params->meta->get_attribute($att)->type_constraint;
           if ($att_type eq 'Bool') {

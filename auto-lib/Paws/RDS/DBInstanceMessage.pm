@@ -1,7 +1,7 @@
 
 package Paws::RDS::DBInstanceMessage;
   use Moose;
-  has DBInstances => (is => 'ro', isa => 'ArrayRef[Paws::RDS::DBInstance]', xmlname => 'DBInstance', traits => ['Unwrapped',]);
+  has DBInstances => (is => 'ro', isa => 'ArrayRef[Paws::RDS::DBInstance]', request_name => 'DBInstance', traits => ['NameInRequest',]);
   has Marker => (is => 'ro', isa => 'Str');
 
 1;

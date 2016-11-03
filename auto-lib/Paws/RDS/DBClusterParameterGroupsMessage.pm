@@ -1,7 +1,7 @@
 
 package Paws::RDS::DBClusterParameterGroupsMessage;
   use Moose;
-  has DBClusterParameterGroups => (is => 'ro', isa => 'ArrayRef[Paws::RDS::DBClusterParameterGroup]', xmlname => 'DBClusterParameterGroup', traits => ['Unwrapped',]);
+  has DBClusterParameterGroups => (is => 'ro', isa => 'ArrayRef[Paws::RDS::DBClusterParameterGroup]', request_name => 'DBClusterParameterGroup', traits => ['NameInRequest',]);
   has Marker => (is => 'ro', isa => 'Str');
 
 1;

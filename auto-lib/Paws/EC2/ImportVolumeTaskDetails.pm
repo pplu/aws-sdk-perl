@@ -1,10 +1,10 @@
 package Paws::EC2::ImportVolumeTaskDetails;
   use Moose;
-  has AvailabilityZone => (is => 'ro', isa => 'Str', xmlname => 'availabilityZone', traits => ['Unwrapped'], required => 1);
-  has BytesConverted => (is => 'ro', isa => 'Int', xmlname => 'bytesConverted', traits => ['Unwrapped'], required => 1);
-  has Description => (is => 'ro', isa => 'Str', xmlname => 'description', traits => ['Unwrapped']);
-  has Image => (is => 'ro', isa => 'Paws::EC2::DiskImageDescription', xmlname => 'image', traits => ['Unwrapped'], required => 1);
-  has Volume => (is => 'ro', isa => 'Paws::EC2::DiskImageVolumeDescription', xmlname => 'volume', traits => ['Unwrapped'], required => 1);
+  has AvailabilityZone => (is => 'ro', isa => 'Str', request_name => 'availabilityZone', traits => ['NameInRequest'], required => 1);
+  has BytesConverted => (is => 'ro', isa => 'Int', request_name => 'bytesConverted', traits => ['NameInRequest'], required => 1);
+  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
+  has Image => (is => 'ro', isa => 'Paws::EC2::DiskImageDescription', request_name => 'image', traits => ['NameInRequest'], required => 1);
+  has Volume => (is => 'ro', isa => 'Paws::EC2::DiskImageVolumeDescription', request_name => 'volume', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###

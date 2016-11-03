@@ -1,7 +1,7 @@
 
 package Paws::DataPipeline::EvaluateExpressionOutput;
   use Moose;
-  has EvaluatedExpression => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'evaluatedExpression' , required => 1);
+  has EvaluatedExpression => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'evaluatedExpression' , required => 1);
 
 
 ### main pod documentation begin ###

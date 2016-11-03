@@ -1,9 +1,9 @@
 
 package Paws::EC2::GetPasswordDataResult;
   use Moose;
-  has InstanceId => (is => 'ro', isa => 'Str', xmlname => 'instanceId', traits => ['Unwrapped',]);
-  has PasswordData => (is => 'ro', isa => 'Str', xmlname => 'passwordData', traits => ['Unwrapped',]);
-  has Timestamp => (is => 'ro', isa => 'Str', xmlname => 'timestamp', traits => ['Unwrapped',]);
+  has InstanceId => (is => 'ro', isa => 'Str', request_name => 'instanceId', traits => ['NameInRequest',]);
+  has PasswordData => (is => 'ro', isa => 'Str', request_name => 'passwordData', traits => ['NameInRequest',]);
+  has Timestamp => (is => 'ro', isa => 'Str', request_name => 'timestamp', traits => ['NameInRequest',]);
 
 1;
 

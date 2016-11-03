@@ -121,7 +121,7 @@ package Paws::API::Caller;
     foreach my $att ($class->meta->get_attribute_list) {
       next if (not my $meta = $class->meta->get_attribute($att));
 
-      my $key = $meta->does('Paws::API::Attribute::Trait::Unwrapped') ? $meta->xmlname : $att;
+      my $key = $meta->does('Paws::API::Attribute::Trait::NameInRequest') ? $meta->request_name : $att;
       my $att_type = $meta->type_constraint;
 
 #      use Data::Dumper;

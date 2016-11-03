@@ -1,7 +1,7 @@
 
 package Paws::CodePipeline::AcknowledgeThirdPartyJobOutput;
   use Moose;
-  has Status => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'status' );
+  has Status => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'status' );
 
 
 ### main pod documentation begin ###

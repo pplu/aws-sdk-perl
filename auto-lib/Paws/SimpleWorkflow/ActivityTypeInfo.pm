@@ -1,10 +1,10 @@
 package Paws::SimpleWorkflow::ActivityTypeInfo;
   use Moose;
-  has ActivityType => (is => 'ro', isa => 'Paws::SimpleWorkflow::ActivityType', xmlname => 'activityType', request_name => 'activityType', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has CreationDate => (is => 'ro', isa => 'Str', xmlname => 'creationDate', request_name => 'creationDate', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has DeprecationDate => (is => 'ro', isa => 'Str', xmlname => 'deprecationDate', request_name => 'deprecationDate', traits => ['Unwrapped','NameInRequest']);
-  has Description => (is => 'ro', isa => 'Str', xmlname => 'description', request_name => 'description', traits => ['Unwrapped','NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', xmlname => 'status', request_name => 'status', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has ActivityType => (is => 'ro', isa => 'Paws::SimpleWorkflow::ActivityType', request_name => 'activityType', traits => ['NameInRequest'], required => 1);
+  has CreationDate => (is => 'ro', isa => 'Str', request_name => 'creationDate', traits => ['NameInRequest'], required => 1);
+  has DeprecationDate => (is => 'ro', isa => 'Str', request_name => 'deprecationDate', traits => ['NameInRequest']);
+  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
+  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###

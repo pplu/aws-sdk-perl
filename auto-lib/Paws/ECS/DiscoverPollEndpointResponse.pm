@@ -1,8 +1,8 @@
 
 package Paws::ECS::DiscoverPollEndpointResponse;
   use Moose;
-  has Endpoint => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'endpoint' );
-  has TelemetryEndpoint => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'telemetryEndpoint' );
+  has Endpoint => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'endpoint' );
+  has TelemetryEndpoint => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'telemetryEndpoint' );
 
 
 ### main pod documentation begin ###

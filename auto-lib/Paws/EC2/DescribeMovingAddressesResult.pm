@@ -1,8 +1,8 @@
 
 package Paws::EC2::DescribeMovingAddressesResult;
   use Moose;
-  has MovingAddressStatuses => (is => 'ro', isa => 'ArrayRef[Paws::EC2::MovingAddressStatus]', xmlname => 'movingAddressStatusSet', traits => ['Unwrapped',]);
-  has NextToken => (is => 'ro', isa => 'Str', xmlname => 'nextToken', traits => ['Unwrapped',]);
+  has MovingAddressStatuses => (is => 'ro', isa => 'ArrayRef[Paws::EC2::MovingAddressStatus]', request_name => 'movingAddressStatusSet', traits => ['NameInRequest',]);
+  has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest',]);
 
 1;
 

@@ -1,7 +1,7 @@
 
 package Paws::CodePipeline::PollForJobsOutput;
   use Moose;
-  has Jobs => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::Job]', traits => ['Unwrapped'], xmlname => 'jobs' );
+  has Jobs => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::Job]', traits => ['NameInRequest'], request_name => 'jobs' );
 
 
 ### main pod documentation begin ###

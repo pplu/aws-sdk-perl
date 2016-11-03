@@ -1,12 +1,12 @@
 package Paws::ECS::Cluster;
   use Moose;
-  has ActiveServicesCount => (is => 'ro', isa => 'Int', xmlname => 'activeServicesCount', request_name => 'activeServicesCount', traits => ['Unwrapped','NameInRequest']);
-  has ClusterArn => (is => 'ro', isa => 'Str', xmlname => 'clusterArn', request_name => 'clusterArn', traits => ['Unwrapped','NameInRequest']);
-  has ClusterName => (is => 'ro', isa => 'Str', xmlname => 'clusterName', request_name => 'clusterName', traits => ['Unwrapped','NameInRequest']);
-  has PendingTasksCount => (is => 'ro', isa => 'Int', xmlname => 'pendingTasksCount', request_name => 'pendingTasksCount', traits => ['Unwrapped','NameInRequest']);
-  has RegisteredContainerInstancesCount => (is => 'ro', isa => 'Int', xmlname => 'registeredContainerInstancesCount', request_name => 'registeredContainerInstancesCount', traits => ['Unwrapped','NameInRequest']);
-  has RunningTasksCount => (is => 'ro', isa => 'Int', xmlname => 'runningTasksCount', request_name => 'runningTasksCount', traits => ['Unwrapped','NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', xmlname => 'status', request_name => 'status', traits => ['Unwrapped','NameInRequest']);
+  has ActiveServicesCount => (is => 'ro', isa => 'Int', request_name => 'activeServicesCount', traits => ['NameInRequest']);
+  has ClusterArn => (is => 'ro', isa => 'Str', request_name => 'clusterArn', traits => ['NameInRequest']);
+  has ClusterName => (is => 'ro', isa => 'Str', request_name => 'clusterName', traits => ['NameInRequest']);
+  has PendingTasksCount => (is => 'ro', isa => 'Int', request_name => 'pendingTasksCount', traits => ['NameInRequest']);
+  has RegisteredContainerInstancesCount => (is => 'ro', isa => 'Int', request_name => 'registeredContainerInstancesCount', traits => ['NameInRequest']);
+  has RunningTasksCount => (is => 'ro', isa => 'Int', request_name => 'runningTasksCount', traits => ['NameInRequest']);
+  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

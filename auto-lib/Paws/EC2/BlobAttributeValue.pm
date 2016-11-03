@@ -1,6 +1,6 @@
 package Paws::EC2::BlobAttributeValue;
   use Moose;
-  has Value => (is => 'ro', isa => 'Str', xmlname => 'value', traits => ['Unwrapped']);
+  has Value => (is => 'ro', isa => 'Str', request_name => 'value', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

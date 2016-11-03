@@ -1,7 +1,7 @@
 
 package Paws::EC2::DescribeSecurityGroupsResult;
   use Moose;
-  has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Paws::EC2::SecurityGroup]', xmlname => 'securityGroupInfo', traits => ['Unwrapped',]);
+  has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Paws::EC2::SecurityGroup]', request_name => 'securityGroupInfo', traits => ['NameInRequest',]);
 
 1;
 

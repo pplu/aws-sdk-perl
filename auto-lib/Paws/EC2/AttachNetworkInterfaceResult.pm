@@ -1,7 +1,7 @@
 
 package Paws::EC2::AttachNetworkInterfaceResult;
   use Moose;
-  has AttachmentId => (is => 'ro', isa => 'Str', xmlname => 'attachmentId', traits => ['Unwrapped',]);
+  has AttachmentId => (is => 'ro', isa => 'Str', request_name => 'attachmentId', traits => ['NameInRequest',]);
 
 1;
 

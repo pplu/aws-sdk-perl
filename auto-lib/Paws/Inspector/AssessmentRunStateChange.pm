@@ -1,7 +1,7 @@
 package Paws::Inspector::AssessmentRunStateChange;
   use Moose;
-  has State => (is => 'ro', isa => 'Str', xmlname => 'state', request_name => 'state', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has StateChangedAt => (is => 'ro', isa => 'Str', xmlname => 'stateChangedAt', request_name => 'stateChangedAt', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest'], required => 1);
+  has StateChangedAt => (is => 'ro', isa => 'Str', request_name => 'stateChangedAt', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###

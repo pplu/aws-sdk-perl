@@ -1,7 +1,7 @@
 
 package Paws::SQS::GetQueueAttributesResult;
   use Moose;
-  has Attributes => (is => 'ro', isa => 'Paws::SQS::QueueAttributeMap', xmlname => 'Attribute', traits => ['Unwrapped',]);
+  has Attributes => (is => 'ro', isa => 'Paws::SQS::QueueAttributeMap', request_name => 'Attribute', traits => ['NameInRequest',]);
 
 1;
 

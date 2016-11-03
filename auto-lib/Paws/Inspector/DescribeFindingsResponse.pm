@@ -1,8 +1,8 @@
 
 package Paws::Inspector::DescribeFindingsResponse;
   use Moose;
-  has FailedItems => (is => 'ro', isa => 'Paws::Inspector::FailedItems', traits => ['Unwrapped'], xmlname => 'failedItems' , required => 1);
-  has Findings => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::Finding]', traits => ['Unwrapped'], xmlname => 'findings' , required => 1);
+  has FailedItems => (is => 'ro', isa => 'Paws::Inspector::FailedItems', traits => ['NameInRequest'], request_name => 'failedItems' , required => 1);
+  has Findings => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::Finding]', traits => ['NameInRequest'], request_name => 'findings' , required => 1);
 
 
 ### main pod documentation begin ###

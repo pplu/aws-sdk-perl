@@ -1,9 +1,9 @@
 package Paws::EC2::DiskImageDescription;
   use Moose;
-  has Checksum => (is => 'ro', isa => 'Str', xmlname => 'checksum', traits => ['Unwrapped']);
-  has Format => (is => 'ro', isa => 'Str', xmlname => 'format', traits => ['Unwrapped'], required => 1);
-  has ImportManifestUrl => (is => 'ro', isa => 'Str', xmlname => 'importManifestUrl', traits => ['Unwrapped'], required => 1);
-  has Size => (is => 'ro', isa => 'Int', xmlname => 'size', traits => ['Unwrapped'], required => 1);
+  has Checksum => (is => 'ro', isa => 'Str', request_name => 'checksum', traits => ['NameInRequest']);
+  has Format => (is => 'ro', isa => 'Str', request_name => 'format', traits => ['NameInRequest'], required => 1);
+  has ImportManifestUrl => (is => 'ro', isa => 'Str', request_name => 'importManifestUrl', traits => ['NameInRequest'], required => 1);
+  has Size => (is => 'ro', isa => 'Int', request_name => 'size', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###

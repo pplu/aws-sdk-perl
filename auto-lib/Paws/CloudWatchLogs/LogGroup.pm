@@ -1,11 +1,11 @@
 package Paws::CloudWatchLogs::LogGroup;
   use Moose;
-  has Arn => (is => 'ro', isa => 'Str', xmlname => 'arn', request_name => 'arn', traits => ['Unwrapped','NameInRequest']);
-  has CreationTime => (is => 'ro', isa => 'Int', xmlname => 'creationTime', request_name => 'creationTime', traits => ['Unwrapped','NameInRequest']);
-  has LogGroupName => (is => 'ro', isa => 'Str', xmlname => 'logGroupName', request_name => 'logGroupName', traits => ['Unwrapped','NameInRequest']);
-  has MetricFilterCount => (is => 'ro', isa => 'Int', xmlname => 'metricFilterCount', request_name => 'metricFilterCount', traits => ['Unwrapped','NameInRequest']);
-  has RetentionInDays => (is => 'ro', isa => 'Int', xmlname => 'retentionInDays', request_name => 'retentionInDays', traits => ['Unwrapped','NameInRequest']);
-  has StoredBytes => (is => 'ro', isa => 'Int', xmlname => 'storedBytes', request_name => 'storedBytes', traits => ['Unwrapped','NameInRequest']);
+  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
+  has CreationTime => (is => 'ro', isa => 'Int', request_name => 'creationTime', traits => ['NameInRequest']);
+  has LogGroupName => (is => 'ro', isa => 'Str', request_name => 'logGroupName', traits => ['NameInRequest']);
+  has MetricFilterCount => (is => 'ro', isa => 'Int', request_name => 'metricFilterCount', traits => ['NameInRequest']);
+  has RetentionInDays => (is => 'ro', isa => 'Int', request_name => 'retentionInDays', traits => ['NameInRequest']);
+  has StoredBytes => (is => 'ro', isa => 'Int', request_name => 'storedBytes', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

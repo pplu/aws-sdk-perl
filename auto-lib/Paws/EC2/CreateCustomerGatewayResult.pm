@@ -1,7 +1,7 @@
 
 package Paws::EC2::CreateCustomerGatewayResult;
   use Moose;
-  has CustomerGateway => (is => 'ro', isa => 'Paws::EC2::CustomerGateway', xmlname => 'customerGateway', traits => ['Unwrapped',]);
+  has CustomerGateway => (is => 'ro', isa => 'Paws::EC2::CustomerGateway', request_name => 'customerGateway', traits => ['NameInRequest',]);
 
 1;
 

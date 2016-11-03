@@ -1,8 +1,8 @@
 
 package Paws::EC2::DescribeHostReservationOfferingsResult;
   use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', xmlname => 'nextToken', traits => ['Unwrapped',]);
-  has OfferingSet => (is => 'ro', isa => 'ArrayRef[Paws::EC2::HostOffering]', xmlname => 'offeringSet', traits => ['Unwrapped',]);
+  has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest',]);
+  has OfferingSet => (is => 'ro', isa => 'ArrayRef[Paws::EC2::HostOffering]', request_name => 'offeringSet', traits => ['NameInRequest',]);
 
 1;
 

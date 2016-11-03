@@ -1,7 +1,7 @@
 
 package Paws::EC2::ModifyInstancePlacementResult;
   use Moose;
-  has Return => (is => 'ro', isa => 'Bool', xmlname => 'return', traits => ['Unwrapped',]);
+  has Return => (is => 'ro', isa => 'Bool', request_name => 'return', traits => ['NameInRequest',]);
 
 1;
 

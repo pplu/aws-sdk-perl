@@ -1,8 +1,8 @@
 
 package Paws::DeviceFarm::ListSamplesResult;
   use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
-  has Samples => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::Sample]', traits => ['Unwrapped'], xmlname => 'samples' );
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  has Samples => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::Sample]', traits => ['NameInRequest'], request_name => 'samples' );
 
 
 ### main pod documentation begin ###

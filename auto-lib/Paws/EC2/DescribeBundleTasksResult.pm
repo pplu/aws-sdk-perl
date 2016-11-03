@@ -1,7 +1,7 @@
 
 package Paws::EC2::DescribeBundleTasksResult;
   use Moose;
-  has BundleTasks => (is => 'ro', isa => 'ArrayRef[Paws::EC2::BundleTask]', xmlname => 'bundleInstanceTasksSet', traits => ['Unwrapped',]);
+  has BundleTasks => (is => 'ro', isa => 'ArrayRef[Paws::EC2::BundleTask]', request_name => 'bundleInstanceTasksSet', traits => ['NameInRequest',]);
 
 1;
 

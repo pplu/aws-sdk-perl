@@ -1,7 +1,7 @@
 package Paws::Inspector::AgentAlreadyRunningAssessment;
   use Moose;
-  has AgentId => (is => 'ro', isa => 'Str', xmlname => 'agentId', request_name => 'agentId', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has AssessmentRunArn => (is => 'ro', isa => 'Str', xmlname => 'assessmentRunArn', request_name => 'assessmentRunArn', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has AgentId => (is => 'ro', isa => 'Str', request_name => 'agentId', traits => ['NameInRequest'], required => 1);
+  has AssessmentRunArn => (is => 'ro', isa => 'Str', request_name => 'assessmentRunArn', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###

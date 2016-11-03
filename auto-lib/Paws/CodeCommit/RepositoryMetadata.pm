@@ -1,15 +1,15 @@
 package Paws::CodeCommit::RepositoryMetadata;
   use Moose;
-  has AccountId => (is => 'ro', isa => 'Str', xmlname => 'accountId', request_name => 'accountId', traits => ['Unwrapped','NameInRequest']);
+  has AccountId => (is => 'ro', isa => 'Str', request_name => 'accountId', traits => ['NameInRequest']);
   has Arn => (is => 'ro', isa => 'Str');
-  has CloneUrlHttp => (is => 'ro', isa => 'Str', xmlname => 'cloneUrlHttp', request_name => 'cloneUrlHttp', traits => ['Unwrapped','NameInRequest']);
-  has CloneUrlSsh => (is => 'ro', isa => 'Str', xmlname => 'cloneUrlSsh', request_name => 'cloneUrlSsh', traits => ['Unwrapped','NameInRequest']);
-  has CreationDate => (is => 'ro', isa => 'Str', xmlname => 'creationDate', request_name => 'creationDate', traits => ['Unwrapped','NameInRequest']);
-  has DefaultBranch => (is => 'ro', isa => 'Str', xmlname => 'defaultBranch', request_name => 'defaultBranch', traits => ['Unwrapped','NameInRequest']);
-  has LastModifiedDate => (is => 'ro', isa => 'Str', xmlname => 'lastModifiedDate', request_name => 'lastModifiedDate', traits => ['Unwrapped','NameInRequest']);
-  has RepositoryDescription => (is => 'ro', isa => 'Str', xmlname => 'repositoryDescription', request_name => 'repositoryDescription', traits => ['Unwrapped','NameInRequest']);
-  has RepositoryId => (is => 'ro', isa => 'Str', xmlname => 'repositoryId', request_name => 'repositoryId', traits => ['Unwrapped','NameInRequest']);
-  has RepositoryName => (is => 'ro', isa => 'Str', xmlname => 'repositoryName', request_name => 'repositoryName', traits => ['Unwrapped','NameInRequest']);
+  has CloneUrlHttp => (is => 'ro', isa => 'Str', request_name => 'cloneUrlHttp', traits => ['NameInRequest']);
+  has CloneUrlSsh => (is => 'ro', isa => 'Str', request_name => 'cloneUrlSsh', traits => ['NameInRequest']);
+  has CreationDate => (is => 'ro', isa => 'Str', request_name => 'creationDate', traits => ['NameInRequest']);
+  has DefaultBranch => (is => 'ro', isa => 'Str', request_name => 'defaultBranch', traits => ['NameInRequest']);
+  has LastModifiedDate => (is => 'ro', isa => 'Str', request_name => 'lastModifiedDate', traits => ['NameInRequest']);
+  has RepositoryDescription => (is => 'ro', isa => 'Str', request_name => 'repositoryDescription', traits => ['NameInRequest']);
+  has RepositoryId => (is => 'ro', isa => 'Str', request_name => 'repositoryId', traits => ['NameInRequest']);
+  has RepositoryName => (is => 'ro', isa => 'Str', request_name => 'repositoryName', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

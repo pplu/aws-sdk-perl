@@ -1,7 +1,7 @@
 
 package Paws::EC2::DescribeVpcClassicLinkResult;
   use Moose;
-  has Vpcs => (is => 'ro', isa => 'ArrayRef[Paws::EC2::VpcClassicLink]', xmlname => 'vpcSet', traits => ['Unwrapped',]);
+  has Vpcs => (is => 'ro', isa => 'ArrayRef[Paws::EC2::VpcClassicLink]', request_name => 'vpcSet', traits => ['NameInRequest',]);
 
 1;
 

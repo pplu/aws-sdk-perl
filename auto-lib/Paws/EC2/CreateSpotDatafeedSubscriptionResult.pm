@@ -1,7 +1,7 @@
 
 package Paws::EC2::CreateSpotDatafeedSubscriptionResult;
   use Moose;
-  has SpotDatafeedSubscription => (is => 'ro', isa => 'Paws::EC2::SpotDatafeedSubscription', xmlname => 'spotDatafeedSubscription', traits => ['Unwrapped',]);
+  has SpotDatafeedSubscription => (is => 'ro', isa => 'Paws::EC2::SpotDatafeedSubscription', request_name => 'spotDatafeedSubscription', traits => ['NameInRequest',]);
 
 1;
 

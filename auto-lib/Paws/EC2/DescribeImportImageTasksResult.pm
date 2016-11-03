@@ -1,8 +1,8 @@
 
 package Paws::EC2::DescribeImportImageTasksResult;
   use Moose;
-  has ImportImageTasks => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ImportImageTask]', xmlname => 'importImageTaskSet', traits => ['Unwrapped',]);
-  has NextToken => (is => 'ro', isa => 'Str', xmlname => 'nextToken', traits => ['Unwrapped',]);
+  has ImportImageTasks => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ImportImageTask]', request_name => 'importImageTaskSet', traits => ['NameInRequest',]);
+  has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest',]);
 
 1;
 

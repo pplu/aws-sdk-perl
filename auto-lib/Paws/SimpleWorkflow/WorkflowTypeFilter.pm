@@ -1,7 +1,7 @@
 package Paws::SimpleWorkflow::WorkflowTypeFilter;
   use Moose;
-  has Name => (is => 'ro', isa => 'Str', xmlname => 'name', request_name => 'name', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has Version => (is => 'ro', isa => 'Str', xmlname => 'version', request_name => 'version', traits => ['Unwrapped','NameInRequest']);
+  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
+  has Version => (is => 'ro', isa => 'Str', request_name => 'version', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

@@ -1,8 +1,8 @@
 
 package Paws::Discovery::DescribeAgentsResponse;
   use Moose;
-  has AgentsInfo => (is => 'ro', isa => 'ArrayRef[Paws::Discovery::AgentInfo]', traits => ['Unwrapped'], xmlname => 'agentsInfo' );
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
+  has AgentsInfo => (is => 'ro', isa => 'ArrayRef[Paws::Discovery::AgentInfo]', traits => ['NameInRequest'], request_name => 'agentsInfo' );
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
 
 
 ### main pod documentation begin ###

@@ -1,7 +1,7 @@
 
 package Paws::CodeDeploy::CreateDeploymentConfigOutput;
   use Moose;
-  has DeploymentConfigId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'deploymentConfigId' );
+  has DeploymentConfigId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'deploymentConfigId' );
 
 
 ### main pod documentation begin ###

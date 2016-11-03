@@ -1,7 +1,7 @@
 
 package Paws::ECS::CreateClusterResponse;
   use Moose;
-  has Cluster => (is => 'ro', isa => 'Paws::ECS::Cluster', traits => ['Unwrapped'], xmlname => 'cluster' );
+  has Cluster => (is => 'ro', isa => 'Paws::ECS::Cluster', traits => ['NameInRequest'], request_name => 'cluster' );
 
 
 ### main pod documentation begin ###

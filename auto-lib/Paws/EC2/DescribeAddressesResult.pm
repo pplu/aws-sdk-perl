@@ -1,7 +1,7 @@
 
 package Paws::EC2::DescribeAddressesResult;
   use Moose;
-  has Addresses => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Address]', xmlname => 'addressesSet', traits => ['Unwrapped',]);
+  has Addresses => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Address]', request_name => 'addressesSet', traits => ['NameInRequest',]);
 
 1;
 

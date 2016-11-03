@@ -1,7 +1,7 @@
 
 package Paws::EC2::AcceptReservedInstancesExchangeQuoteResult;
   use Moose;
-  has ExchangeId => (is => 'ro', isa => 'Str', xmlname => 'exchangeId', traits => ['Unwrapped',]);
+  has ExchangeId => (is => 'ro', isa => 'Str', request_name => 'exchangeId', traits => ['NameInRequest',]);
 
 1;
 

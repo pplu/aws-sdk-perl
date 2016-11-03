@@ -1,7 +1,7 @@
 
 package Paws::EC2::CreateDhcpOptionsResult;
   use Moose;
-  has DhcpOptions => (is => 'ro', isa => 'Paws::EC2::DhcpOptions', xmlname => 'dhcpOptions', traits => ['Unwrapped',]);
+  has DhcpOptions => (is => 'ro', isa => 'Paws::EC2::DhcpOptions', request_name => 'dhcpOptions', traits => ['NameInRequest',]);
 
 1;
 

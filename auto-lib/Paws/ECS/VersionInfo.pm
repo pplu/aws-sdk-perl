@@ -1,8 +1,8 @@
 package Paws::ECS::VersionInfo;
   use Moose;
-  has AgentHash => (is => 'ro', isa => 'Str', xmlname => 'agentHash', request_name => 'agentHash', traits => ['Unwrapped','NameInRequest']);
-  has AgentVersion => (is => 'ro', isa => 'Str', xmlname => 'agentVersion', request_name => 'agentVersion', traits => ['Unwrapped','NameInRequest']);
-  has DockerVersion => (is => 'ro', isa => 'Str', xmlname => 'dockerVersion', request_name => 'dockerVersion', traits => ['Unwrapped','NameInRequest']);
+  has AgentHash => (is => 'ro', isa => 'Str', request_name => 'agentHash', traits => ['NameInRequest']);
+  has AgentVersion => (is => 'ro', isa => 'Str', request_name => 'agentVersion', traits => ['NameInRequest']);
+  has DockerVersion => (is => 'ro', isa => 'Str', request_name => 'dockerVersion', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

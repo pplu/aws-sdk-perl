@@ -1,8 +1,8 @@
 
 package Paws::DeviceFarm::ListOfferingTransactionsResult;
   use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
-  has OfferingTransactions => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::OfferingTransaction]', traits => ['Unwrapped'], xmlname => 'offeringTransactions' );
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  has OfferingTransactions => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::OfferingTransaction]', traits => ['NameInRequest'], request_name => 'offeringTransactions' );
 
 
 ### main pod documentation begin ###

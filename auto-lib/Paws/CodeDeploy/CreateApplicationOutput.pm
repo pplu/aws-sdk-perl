@@ -1,7 +1,7 @@
 
 package Paws::CodeDeploy::CreateApplicationOutput;
   use Moose;
-  has ApplicationId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'applicationId' );
+  has ApplicationId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'applicationId' );
 
 
 ### main pod documentation begin ###

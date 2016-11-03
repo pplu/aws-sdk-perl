@@ -1,8 +1,8 @@
 
 package Paws::CodeCommit::BatchGetRepositoriesOutput;
   use Moose;
-  has Repositories => (is => 'ro', isa => 'ArrayRef[Paws::CodeCommit::RepositoryMetadata]', traits => ['Unwrapped'], xmlname => 'repositories' );
-  has RepositoriesNotFound => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['Unwrapped'], xmlname => 'repositoriesNotFound' );
+  has Repositories => (is => 'ro', isa => 'ArrayRef[Paws::CodeCommit::RepositoryMetadata]', traits => ['NameInRequest'], request_name => 'repositories' );
+  has RepositoriesNotFound => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'repositoriesNotFound' );
 
 
 ### main pod documentation begin ###
