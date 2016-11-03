@@ -6,7 +6,7 @@ package Paws::RDS::OptionGroup;
   has OptionGroupArn => (is => 'ro', isa => 'Str');
   has OptionGroupDescription => (is => 'ro', isa => 'Str');
   has OptionGroupName => (is => 'ro', isa => 'Str');
-  has Options => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Option]');
+  has Options => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Option]', request_name => 'Option', traits => ['NameInRequest']);
   has VpcId => (is => 'ro', isa => 'Str');
 1;
 

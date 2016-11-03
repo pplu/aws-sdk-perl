@@ -1,11 +1,11 @@
 package Paws::RDS::OptionConfiguration;
   use Moose;
-  has DBSecurityGroupMemberships => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has DBSecurityGroupMemberships => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'DBSecurityGroupName', traits => ['NameInRequest']);
   has OptionName => (is => 'ro', isa => 'Str', required => 1);
-  has OptionSettings => (is => 'ro', isa => 'ArrayRef[Paws::RDS::OptionSetting]');
+  has OptionSettings => (is => 'ro', isa => 'ArrayRef[Paws::RDS::OptionSetting]', request_name => 'OptionSetting', traits => ['NameInRequest']);
   has OptionVersion => (is => 'ro', isa => 'Str');
   has Port => (is => 'ro', isa => 'Int');
-  has VpcSecurityGroupMemberships => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has VpcSecurityGroupMemberships => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'VpcSecurityGroupId', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

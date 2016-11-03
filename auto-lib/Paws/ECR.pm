@@ -100,6 +100,48 @@ package Paws::ECR;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub DescribeAllImages {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeImages(@_);
+
+    if (not defined $callback) {
+      while ($result->nextToken) {
+        $result = $self->DescribeImages(@_, nextToken => $result->nextToken);
+        push @{ $result->imageDetails }, @{ $result->imageDetails };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $result = $self->DescribeImages(@_, nextToken => $result->nextToken);
+        $callback->($_ => 'imageDetails') foreach (@{ $result->imageDetails });
+      }
+    }
+
+    return undef
+  }
+  sub DescribeAllRepositories {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeRepositories(@_);
+
+    if (not defined $callback) {
+      while ($result->nextToken) {
+        $result = $self->DescribeRepositories(@_, nextToken => $result->nextToken);
+        push @{ $result->repositories }, @{ $result->repositories };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $result = $self->DescribeRepositories(@_, nextToken => $result->nextToken);
+        $callback->($_ => 'repositories') foreach (@{ $result->repositories });
+      }
+    }
+
+    return undef
+  }
   sub ListAllImages {
     my $self = shift;
 
@@ -376,6 +418,30 @@ push images.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 DescribeAllImages(sub { },RepositoryName => Str, [Filter => L<Paws::ECR::DescribeImagesFilter>, ImageIds => ArrayRef[L<Paws::ECR::ImageIdentifier>], MaxResults => Int, NextToken => Str, RegistryId => Str])
+
+=head2 DescribeAllImages(RepositoryName => Str, [Filter => L<Paws::ECR::DescribeImagesFilter>, ImageIds => ArrayRef[L<Paws::ECR::ImageIdentifier>], MaxResults => Int, NextToken => Str, RegistryId => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - imageDetails, passing the object as the first parameter, and the string 'imageDetails' as the second parameter 
+
+If not, it will return a a L<Paws::ECR::DescribeImagesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllRepositories(sub { },[MaxResults => Int, NextToken => Str, RegistryId => Str, RepositoryNames => ArrayRef[Str|Undef]])
+
+=head2 DescribeAllRepositories([MaxResults => Int, NextToken => Str, RegistryId => Str, RepositoryNames => ArrayRef[Str|Undef]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - repositories, passing the object as the first parameter, and the string 'repositories' as the second parameter 
+
+If not, it will return a a L<Paws::ECR::DescribeRepositoriesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 =head2 ListAllImages(sub { },RepositoryName => Str, [Filter => L<Paws::ECR::ListImagesFilter>, MaxResults => Int, NextToken => Str, RegistryId => Str])
 

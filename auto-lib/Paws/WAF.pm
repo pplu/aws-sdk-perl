@@ -1138,7 +1138,7 @@ add a new one.
 
 =item *
 
-The IP address version, C<IPv4> or C<IPv6>.
+The IP address version, C<IPv4>.
 
 =item *
 
@@ -1148,31 +1148,9 @@ C<192.0.2.44/32> (for the individual IP address C<192.0.2.44>).
 
 =back
 
-AWS WAF supports /8, /16, /24, and /32 IP address ranges for IPv4, and
-/24, /32, /48, /56, /64 and /128 for IPv6. For more information about
-CIDR notation, see the Wikipedia entry Classless Inter-Domain Routing.
-
-IPv6 addresses can be represented using any of the following formats:
-
-=over
-
-=item *
-
-1111:0000:0000:0000:0000:0000:0000:0111/128
-
-=item *
-
-1111:0:0:0:0:0:0:0111/128
-
-=item *
-
-1111::0111/128
-
-=item *
-
-1111::111/128
-
-=back
+AWS WAF supports /8, /16, /24, and /32 IP address ranges. For more
+information about CIDR notation, see the Wikipedia entry Classless
+Inter-Domain Routing.
 
 You use an C<IPSet> to specify which web requests you want to allow or
 block based on the IP addresses that the requests originated from. For

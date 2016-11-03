@@ -1,7 +1,7 @@
 package Paws::Route53::HealthCheckConfig;
   use Moose;
   has AlarmIdentifier => (is => 'ro', isa => 'Paws::Route53::AlarmIdentifier');
-  has ChildHealthChecks => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has ChildHealthChecks => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'ChildHealthCheck', traits => ['NameInRequest']);
   has EnableSNI => (is => 'ro', isa => 'Bool');
   has FailureThreshold => (is => 'ro', isa => 'Int');
   has FullyQualifiedDomainName => (is => 'ro', isa => 'Str');
@@ -11,7 +11,7 @@ package Paws::Route53::HealthCheckConfig;
   has IPAddress => (is => 'ro', isa => 'Str');
   has MeasureLatency => (is => 'ro', isa => 'Bool');
   has Port => (is => 'ro', isa => 'Int');
-  has Regions => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has Regions => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'Region', traits => ['NameInRequest']);
   has RequestInterval => (is => 'ro', isa => 'Int');
   has ResourcePath => (is => 'ro', isa => 'Str');
   has SearchString => (is => 'ro', isa => 'Str');

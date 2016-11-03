@@ -67,7 +67,7 @@ different containers that are launched as part of a task.
   The command that is passed to the container. This parameter maps to
 C<Cmd> in the Create a container section of the Docker Remote API and
 the C<COMMAND> parameter to docker run. For more information, see
-https://docs.docker.com/reference/builder/
+https://docs.docker.com/engine/reference/builder/
 
 
 =head2 Cpu => Int
@@ -178,7 +178,7 @@ C<command> array items instead.
 The entry point that is passed to the container. This parameter maps to
 C<Entrypoint> in the Create a container section of the Docker Remote
 API and the C<--entrypoint> option to docker run. For more information,
-see https://docs.docker.com/reference/builder/
+see https://docs.docker.com/engine/reference/builder/
 
 
 =head2 Environment => ArrayRef[L<Paws::ECS::KeyValuePair>]
@@ -263,9 +263,10 @@ optionally, an C<alias> for the link. This construct is analogous to
 C<name:alias> in Docker links. Up to 255 letters (uppercase and
 lowercase), numbers, hyphens, and underscores are allowed for each
 C<name> and C<alias>. For more information on linking Docker
-containers, see https://docs.docker.com/userguide/dockerlinks/. This
-parameter maps to C<Links> in the Create a container section of the
-Docker Remote API and the C<--link> option to docker run.
+containers, see
+https://docs.docker.com/engine/userguide/networking/default_network/dockerlinks/.
+This parameter maps to C<Links> in the Create a container section of
+the Docker Remote API and the C<--link> option to docker run.
 
 Containers that are collocated on a single container instance may be
 able to communicate with each other without requiring links or host

@@ -1,7 +1,7 @@
 package Paws::Discovery::TagFilter;
   use Moose;
   has Name => (is => 'ro', isa => 'Str', xmlname => 'name', request_name => 'name', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has Values => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'values', request_name => 'values', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has Values => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'item', xmlname => 'values', request_name => 'values', traits => ['NameInRequest','Unwrapped','NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###

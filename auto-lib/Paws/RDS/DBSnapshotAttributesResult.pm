@@ -1,6 +1,6 @@
 package Paws::RDS::DBSnapshotAttributesResult;
   use Moose;
-  has DBSnapshotAttributes => (is => 'ro', isa => 'ArrayRef[Paws::RDS::DBSnapshotAttribute]');
+  has DBSnapshotAttributes => (is => 'ro', isa => 'ArrayRef[Paws::RDS::DBSnapshotAttribute]', request_name => 'DBSnapshotAttribute', traits => ['NameInRequest']);
   has DBSnapshotIdentifier => (is => 'ro', isa => 'Str');
 1;
 
