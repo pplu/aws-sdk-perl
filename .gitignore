@@ -16,3 +16,4 @@ nytprof.out
 pm_to_blib
 cpanfile.snapshot
 .carmel
+.DS_Store
