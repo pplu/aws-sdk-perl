@@ -1,6 +1,6 @@
 package Paws::CloudFront::Aliases;
   use Moose;
-  has Items => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has Items => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'CNAME', traits => ['NameInRequest']);
   has Quantity => (is => 'ro', isa => 'Int', required => 1);
 1;
 

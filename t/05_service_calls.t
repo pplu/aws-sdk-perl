@@ -9,6 +9,7 @@ use Test::More;
 use Paws;
 use Test::CustomCredentials;
 use JSON::MaybeXS;
+use XML::Simple;
 
 sub request_has_params {
   my ($test_params, $request) = @_;
@@ -390,5 +391,37 @@ $request = $efs->CreateFileSystem(
 );
 
 like($request->content, qr/"CreationToken":"4"/, "Got N in a JSON string (quoted), and not a JSON number (unquoted)");
+
+my $cfn = $aws->service('CloudFront', region => 'us-east-1');
+
+$request = $cfn->CreateInvalidation(
+  DistributionId    => 'A999AAA999AAA',
+  InvalidationBatch => {
+    CallerReference => 'uid',
+    Paths           => {
+      Quantity => 3,
+      Items    => [
+        '/object1',
+        '/object2',
+        '/object3'
+      ]
+    }   
+  }   
+);
+
+my $ref = XMLin($request->content);
+
+like($request->url, qr|distribution/A999AAA999AAA/invalidation|, 'URL has the distribution id');
+
+is_deeply(
+  $ref,
+  {
+    Paths => {
+      Items => { Path => [ '/object1', '/object2', '/object3' ] },
+      Quantity => '3'
+    },
+    CallerReference => 'uid'
+  }
+);
 
 done_testing;

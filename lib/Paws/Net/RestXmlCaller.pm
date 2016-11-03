@@ -107,6 +107,9 @@ package Paws::Net::RestXmlCaller;
       my $att_name = $attribute->name;
       if (Moose::Util::find_meta($attribute->type_constraint->name)) { 
         $xml .= sprintf '<%s>%s</%s>', $att_name, $self->_to_xml($attribute->get_value($value)), $att_name;
+      } elsif ($attribute->type_constraint eq 'ArrayRef[Str|Undef]') {
+          my $location = $attribute->does('NameInRequest') ? $attribute->request_name : $att_name;
+          $xml .= "<${att_name}>" . ( join '', map { sprintf '<%s>%s</%s>', $location, $_, $location } @{ $attribute->get_value($value) } ) . "</${att_name}>";
       } else {
         $xml .= sprintf '<%s>%s</%s>', $att_name, $attribute->get_value($value), $att_name;
       }
