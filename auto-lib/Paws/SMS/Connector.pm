@@ -1,7 +1,7 @@
 package Paws::SMS::Connector;
   use Moose;
   has AssociatedOn => (is => 'ro', isa => 'Str', xmlname => 'associatedOn', request_name => 'associatedOn', traits => ['Unwrapped','NameInRequest']);
-  has CapabilityList => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'capabilityList', request_name => 'capabilityList', traits => ['Unwrapped','NameInRequest']);
+  has CapabilityList => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'item', xmlname => 'capabilityList', request_name => 'capabilityList', traits => ['NameInRequest','Unwrapped','NameInRequest']);
   has ConnectorId => (is => 'ro', isa => 'Str', xmlname => 'connectorId', request_name => 'connectorId', traits => ['Unwrapped','NameInRequest']);
   has IpAddress => (is => 'ro', isa => 'Str', xmlname => 'ipAddress', request_name => 'ipAddress', traits => ['Unwrapped','NameInRequest']);
   has MacAddress => (is => 'ro', isa => 'Str', xmlname => 'macAddress', request_name => 'macAddress', traits => ['Unwrapped','NameInRequest']);

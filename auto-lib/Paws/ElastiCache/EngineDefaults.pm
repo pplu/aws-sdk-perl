@@ -1,9 +1,9 @@
 package Paws::ElastiCache::EngineDefaults;
   use Moose;
-  has CacheNodeTypeSpecificParameters => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::CacheNodeTypeSpecificParameter]');
+  has CacheNodeTypeSpecificParameters => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::CacheNodeTypeSpecificParameter]', request_name => 'CacheNodeTypeSpecificParameter', traits => ['NameInRequest']);
   has CacheParameterGroupFamily => (is => 'ro', isa => 'Str');
   has Marker => (is => 'ro', isa => 'Str');
-  has Parameters => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::Parameter]');
+  has Parameters => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::Parameter]', request_name => 'Parameter', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

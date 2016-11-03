@@ -5,6 +5,8 @@ package Paws::Net::RestXmlCaller;
   use URI::Template;
   use URI::Escape;
   use Moose::Util;
+  use Carp;
+  use Data::Dumper;
 
   sub array_flatten_string {
     my $self = shift;
@@ -105,11 +107,14 @@ package Paws::Net::RestXmlCaller;
     my $xml = '';
     foreach my $attribute ($value->meta->get_all_attributes) {
       my $att_name = $attribute->name;
-      if (Moose::Util::find_meta($attribute->type_constraint->name)) { 
+      if (Moose::Util::find_meta($attribute->type_constraint->name)) {
         $xml .= sprintf '<%s>%s</%s>', $att_name, $self->_to_xml($attribute->get_value($value)), $att_name;
       } elsif ($attribute->type_constraint eq 'ArrayRef[Str|Undef]') {
           my $location = $attribute->does('NameInRequest') ? $attribute->request_name : $att_name;
           $xml .= "<${att_name}>" . ( join '', map { sprintf '<%s>%s</%s>', $location, $_, $location } @{ $attribute->get_value($value) } ) . "</${att_name}>";
+      } elsif ($attribute->type_constraint =~ m/^ArrayRef\[(.*?\:\:.*)\]/) { #assume it's an array of Paws API objects
+        my $location = $attribute->does('Unwrapped') ? $attribute->xmlname : $att_name;
+        $xml .=  ( join '', map { sprintf '<%s>%s</%s>', $location, $self->_to_xml($_), $location } @{ $attribute->get_value($value) } );
       } else {
         $xml .= sprintf '<%s>%s</%s>', $att_name, $attribute->get_value($value), $att_name;
       }
@@ -129,6 +134,10 @@ package Paws::Net::RestXmlCaller;
           not $attribute->does('Paws::API::Attribute::Trait::ParamInBody')
          ) {
         my $att_name = $attribute->name;
+        if ($att_name eq q[MultipartUpload]) {
+          carp Dumper($attribute);
+          $att_name = q[CompleteMultipartUpload];
+        }
         $xml .= sprintf '<%s>%s</%s>', $att_name, $self->_to_xml($attribute->get_value($call)), $att_name;
       }
     }

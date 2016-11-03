@@ -3,8 +3,8 @@ package Paws::RedShift::ClusterSubnetGroup;
   has ClusterSubnetGroupName => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has SubnetGroupStatus => (is => 'ro', isa => 'Str');
-  has Subnets => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::Subnet]');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::Tag]');
+  has Subnets => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::Subnet]', request_name => 'Subnet', traits => ['NameInRequest']);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::Tag]', request_name => 'Tag', traits => ['NameInRequest']);
   has VpcId => (is => 'ro', isa => 'Str');
 1;
 

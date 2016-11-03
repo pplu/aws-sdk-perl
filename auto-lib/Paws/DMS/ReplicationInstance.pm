@@ -19,7 +19,7 @@ package Paws::DMS::ReplicationInstance;
   has ReplicationInstancePublicIpAddresses => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has ReplicationInstanceStatus => (is => 'ro', isa => 'Str');
   has ReplicationSubnetGroup => (is => 'ro', isa => 'Paws::DMS::ReplicationSubnetGroup');
-  has VpcSecurityGroups => (is => 'ro', isa => 'ArrayRef[Paws::DMS::VpcSecurityGroupMembership]');
+  has VpcSecurityGroups => (is => 'ro', isa => 'ArrayRef[Paws::DMS::VpcSecurityGroupMembership]', request_name => 'VpcSecurityGroupMembership', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

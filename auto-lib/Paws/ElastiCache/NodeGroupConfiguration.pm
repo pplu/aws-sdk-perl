@@ -1,7 +1,7 @@
 package Paws::ElastiCache::NodeGroupConfiguration;
   use Moose;
   has PrimaryAvailabilityZone => (is => 'ro', isa => 'Str');
-  has ReplicaAvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has ReplicaAvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'AvailabilityZone', traits => ['NameInRequest']);
   has ReplicaCount => (is => 'ro', isa => 'Int');
   has Slots => (is => 'ro', isa => 'Str');
 1;

@@ -5,7 +5,7 @@ package Paws::RedShift::ReservedNodeOffering;
   has FixedPrice => (is => 'ro', isa => 'Num');
   has NodeType => (is => 'ro', isa => 'Str');
   has OfferingType => (is => 'ro', isa => 'Str');
-  has RecurringCharges => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::RecurringCharge]');
+  has RecurringCharges => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::RecurringCharge]', request_name => 'RecurringCharge', traits => ['NameInRequest']);
   has ReservedNodeOfferingId => (is => 'ro', isa => 'Str');
   has UsagePrice => (is => 'ro', isa => 'Num');
 1;

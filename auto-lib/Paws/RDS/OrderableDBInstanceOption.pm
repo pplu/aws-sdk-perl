@@ -1,6 +1,6 @@
 package Paws::RDS::OrderableDBInstanceOption;
   use Moose;
-  has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Paws::RDS::AvailabilityZone]');
+  has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Paws::RDS::AvailabilityZone]', request_name => 'AvailabilityZone', traits => ['NameInRequest']);
   has DBInstanceClass => (is => 'ro', isa => 'Str');
   has Engine => (is => 'ro', isa => 'Str');
   has EngineVersion => (is => 'ro', isa => 'Str');

@@ -1,7 +1,7 @@
 package Paws::ElastiCache::CacheNodeTypeSpecificParameter;
   use Moose;
   has AllowedValues => (is => 'ro', isa => 'Str');
-  has CacheNodeTypeSpecificValues => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::CacheNodeTypeSpecificValue]');
+  has CacheNodeTypeSpecificValues => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::CacheNodeTypeSpecificValue]', request_name => 'CacheNodeTypeSpecificValue', traits => ['NameInRequest']);
   has ChangeType => (is => 'ro', isa => 'Str');
   has DataType => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
