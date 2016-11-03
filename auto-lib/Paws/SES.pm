@@ -18,6 +18,16 @@ package Paws::SES;
     my $call_object = $self->new_with_coercions('Paws::SES::CloneReceiptRuleSet', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateConfigurationSet {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SES::CreateConfigurationSet', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateConfigurationSetEventDestination {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SES::CreateConfigurationSetEventDestination', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateReceiptFilter {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SES::CreateReceiptFilter', @_);
@@ -31,6 +41,16 @@ package Paws::SES;
   sub CreateReceiptRuleSet {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SES::CreateReceiptRuleSet', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteConfigurationSet {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SES::DeleteConfigurationSet', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteConfigurationSetEventDestination {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SES::DeleteConfigurationSetEventDestination', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteIdentity {
@@ -66,6 +86,11 @@ package Paws::SES;
   sub DescribeActiveReceiptRuleSet {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SES::DescribeActiveReceiptRuleSet', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeConfigurationSet {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SES::DescribeConfigurationSet', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeReceiptRule {
@@ -111,6 +136,11 @@ package Paws::SES;
   sub GetSendStatistics {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SES::GetSendStatistics', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListConfigurationSets {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SES::ListConfigurationSets', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListIdentities {
@@ -198,6 +228,11 @@ package Paws::SES;
     my $call_object = $self->new_with_coercions('Paws::SES::SetReceiptRulePosition', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpdateConfigurationSetEventDestination {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SES::UpdateConfigurationSetEventDestination', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateReceiptRule {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SES::UpdateReceiptRule', @_);
@@ -224,7 +259,7 @@ package Paws::SES;
     return $self->caller->do_call($self, $call_object);
   }
 
-  sub operations { qw/CloneReceiptRuleSet CreateReceiptFilter CreateReceiptRule CreateReceiptRuleSet DeleteIdentity DeleteIdentityPolicy DeleteReceiptFilter DeleteReceiptRule DeleteReceiptRuleSet DeleteVerifiedEmailAddress DescribeActiveReceiptRuleSet DescribeReceiptRule DescribeReceiptRuleSet GetIdentityDkimAttributes GetIdentityMailFromDomainAttributes GetIdentityNotificationAttributes GetIdentityPolicies GetIdentityVerificationAttributes GetSendQuota GetSendStatistics ListIdentities ListIdentityPolicies ListReceiptFilters ListReceiptRuleSets ListVerifiedEmailAddresses PutIdentityPolicy ReorderReceiptRuleSet SendBounce SendEmail SendRawEmail SetActiveReceiptRuleSet SetIdentityDkimEnabled SetIdentityFeedbackForwardingEnabled SetIdentityHeadersInNotificationsEnabled SetIdentityMailFromDomain SetIdentityNotificationTopic SetReceiptRulePosition UpdateReceiptRule VerifyDomainDkim VerifyDomainIdentity VerifyEmailAddress VerifyEmailIdentity / }
+  sub operations { qw/CloneReceiptRuleSet CreateConfigurationSet CreateConfigurationSetEventDestination CreateReceiptFilter CreateReceiptRule CreateReceiptRuleSet DeleteConfigurationSet DeleteConfigurationSetEventDestination DeleteIdentity DeleteIdentityPolicy DeleteReceiptFilter DeleteReceiptRule DeleteReceiptRuleSet DeleteVerifiedEmailAddress DescribeActiveReceiptRuleSet DescribeConfigurationSet DescribeReceiptRule DescribeReceiptRuleSet GetIdentityDkimAttributes GetIdentityMailFromDomainAttributes GetIdentityNotificationAttributes GetIdentityPolicies GetIdentityVerificationAttributes GetSendQuota GetSendStatistics ListConfigurationSets ListIdentities ListIdentityPolicies ListReceiptFilters ListReceiptRuleSets ListVerifiedEmailAddresses PutIdentityPolicy ReorderReceiptRuleSet SendBounce SendEmail SendRawEmail SetActiveReceiptRuleSet SetIdentityDkimEnabled SetIdentityFeedbackForwardingEnabled SetIdentityHeadersInNotificationsEnabled SetIdentityMailFromDomain SetIdentityNotificationTopic SetReceiptRulePosition UpdateConfigurationSetEventDestination UpdateReceiptRule VerifyDomainDkim VerifyDomainIdentity VerifyEmailAddress VerifyEmailIdentity / }
 
 1;
 
@@ -279,6 +314,41 @@ Developer Guide.
 This action is throttled at one request per second.
 
 
+=head2 CreateConfigurationSet(ConfigurationSet => L<Paws::SES::ConfigurationSet>)
+
+Each argument is described in detail in: L<Paws::SES::CreateConfigurationSet>
+
+Returns: a L<Paws::SES::CreateConfigurationSetResponse> instance
+
+  Creates a configuration set.
+
+Configuration sets enable you to publish email sending events. For
+information about using configuration sets, see the Amazon SES
+Developer Guide.
+
+This action is throttled at one request per second.
+
+
+=head2 CreateConfigurationSetEventDestination(ConfigurationSetName => Str, EventDestination => L<Paws::SES::EventDestination>)
+
+Each argument is described in detail in: L<Paws::SES::CreateConfigurationSetEventDestination>
+
+Returns: a L<Paws::SES::CreateConfigurationSetEventDestinationResponse> instance
+
+  Creates a configuration set event destination.
+
+When you create or update an event destination, you must provide one,
+and only one, destination. The destination can be either Amazon
+CloudWatch or Amazon Kinesis Firehose.
+
+An event destination is the AWS service to which Amazon SES publishes
+the email sending events associated with a configuration set. For
+information about using configuration sets, see the Amazon SES
+Developer Guide.
+
+This action is throttled at one request per second.
+
+
 =head2 CreateReceiptFilter(Filter => L<Paws::SES::ReceiptFilter>)
 
 Each argument is described in detail in: L<Paws::SES::CreateReceiptFilter>
@@ -317,6 +387,36 @@ Returns: a L<Paws::SES::CreateReceiptRuleSetResponse> instance
 
 For information about setting up receipt rule sets, see the Amazon SES
 Developer Guide.
+
+This action is throttled at one request per second.
+
+
+=head2 DeleteConfigurationSet(ConfigurationSetName => Str)
+
+Each argument is described in detail in: L<Paws::SES::DeleteConfigurationSet>
+
+Returns: a L<Paws::SES::DeleteConfigurationSetResponse> instance
+
+  Deletes a configuration set.
+
+Configuration sets enable you to publish email sending events. For
+information about using configuration sets, see the Amazon SES
+Developer Guide.
+
+This action is throttled at one request per second.
+
+
+=head2 DeleteConfigurationSetEventDestination(ConfigurationSetName => Str, EventDestinationName => Str)
+
+Each argument is described in detail in: L<Paws::SES::DeleteConfigurationSetEventDestination>
+
+Returns: a L<Paws::SES::DeleteConfigurationSetEventDestinationResponse> instance
+
+  Deletes a configuration set event destination.
+
+Configuration set event destinations are associated with configuration
+sets, which enable you to publish email sending events. For information
+about using configuration sets, see the Amazon SES Developer Guide.
 
 This action is throttled at one request per second.
 
@@ -424,6 +524,21 @@ Returns: a L<Paws::SES::DescribeActiveReceiptRuleSetResponse> instance
 currently active.
 
 For information about setting up receipt rule sets, see the Amazon SES
+Developer Guide.
+
+This action is throttled at one request per second.
+
+
+=head2 DescribeConfigurationSet(ConfigurationSetName => Str, [ConfigurationSetAttributeNames => ArrayRef[Str|Undef]])
+
+Each argument is described in detail in: L<Paws::SES::DescribeConfigurationSet>
+
+Returns: a L<Paws::SES::DescribeConfigurationSetResponse> instance
+
+  Returns the details of the specified configuration set.
+
+Configuration sets enable you to publish email sending events. For
+information about using configuration sets, see the Amazon SES
 Developer Guide.
 
 This action is throttled at one request per second.
@@ -587,6 +702,22 @@ interval.
 This action is throttled at one request per second.
 
 
+=head2 ListConfigurationSets([MaxItems => Int, NextToken => Str])
+
+Each argument is described in detail in: L<Paws::SES::ListConfigurationSets>
+
+Returns: a L<Paws::SES::ListConfigurationSetsResponse> instance
+
+  Lists the configuration sets associated with your AWS account.
+
+Configuration sets enable you to publish email sending events. For
+information about using configuration sets, see the Amazon SES
+Developer Guide.
+
+This action is throttled at one request per second and can return up to
+50 configuration sets at a time.
+
+
 =head2 ListIdentities([IdentityType => Str, MaxItems => Int, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::SES::ListIdentities>
@@ -723,7 +854,7 @@ Amazon SES Developer Guide.
 This action is throttled at one request per second.
 
 
-=head2 SendEmail(Destination => L<Paws::SES::Destination>, Message => L<Paws::SES::Message>, Source => Str, [ReplyToAddresses => ArrayRef[Str|Undef], ReturnPath => Str, ReturnPathArn => Str, SourceArn => Str])
+=head2 SendEmail(Destination => L<Paws::SES::Destination>, Message => L<Paws::SES::Message>, Source => Str, [ConfigurationSetName => Str, ReplyToAddresses => ArrayRef[Str|Undef], ReturnPath => Str, ReturnPathArn => Str, SourceArn => Str, Tags => ArrayRef[L<Paws::SES::MessageTag>]])
 
 Each argument is described in detail in: L<Paws::SES::SendEmail>
 
@@ -769,7 +900,7 @@ about your sending quota, go to the Amazon SES Developer Guide.
 
 
 
-=head2 SendRawEmail(RawMessage => L<Paws::SES::RawMessage>, [Destinations => ArrayRef[Str|Undef], FromArn => Str, ReturnPathArn => Str, Source => Str, SourceArn => Str])
+=head2 SendRawEmail(RawMessage => L<Paws::SES::RawMessage>, [ConfigurationSetName => Str, Destinations => ArrayRef[Str|Undef], FromArn => Str, ReturnPathArn => Str, Source => Str, SourceArn => Str, Tags => ArrayRef[L<Paws::SES::MessageTag>]])
 
 Each argument is described in detail in: L<Paws::SES::SendRawEmail>
 
@@ -1002,6 +1133,26 @@ set.
 
 For information about managing receipt rules, see the Amazon SES
 Developer Guide.
+
+This action is throttled at one request per second.
+
+
+=head2 UpdateConfigurationSetEventDestination(ConfigurationSetName => Str, EventDestination => L<Paws::SES::EventDestination>)
+
+Each argument is described in detail in: L<Paws::SES::UpdateConfigurationSetEventDestination>
+
+Returns: a L<Paws::SES::UpdateConfigurationSetEventDestinationResponse> instance
+
+  Updates the event destination of a configuration set.
+
+When you create or update an event destination, you must provide one,
+and only one, destination. The destination can be either Amazon
+CloudWatch or Amazon Kinesis Firehose.
+
+Event destinations are associated with configuration sets, which enable
+you to publish email sending events to Amazon CloudWatch or Amazon
+Kinesis Firehose. For information about using configuration sets, see
+the Amazon SES Developer Guide.
 
 This action is throttled at one request per second.
 

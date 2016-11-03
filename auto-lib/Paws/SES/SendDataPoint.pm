@@ -53,7 +53,7 @@ statistics for a 15-minute period of sending activity.
 
 =head2 DeliveryAttempts => Int
 
-  Number of emails that have been enqueued for sending.
+  Number of emails that have been sent.
 
 
 =head2 Rejects => Int
