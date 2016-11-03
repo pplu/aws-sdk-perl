@@ -8,7 +8,7 @@ package Paws::RDS::ReservedDBInstance;
   has MultiAZ => (is => 'ro', isa => 'Bool');
   has OfferingType => (is => 'ro', isa => 'Str');
   has ProductDescription => (is => 'ro', isa => 'Str');
-  has RecurringCharges => (is => 'ro', isa => 'ArrayRef[Paws::RDS::RecurringCharge]');
+  has RecurringCharges => (is => 'ro', isa => 'ArrayRef[Paws::RDS::RecurringCharge]', request_name => 'RecurringCharge', traits => ['NameInRequest']);
   has ReservedDBInstanceArn => (is => 'ro', isa => 'Str');
   has ReservedDBInstanceId => (is => 'ro', isa => 'Str');
   has ReservedDBInstancesOfferingId => (is => 'ro', isa => 'Str');

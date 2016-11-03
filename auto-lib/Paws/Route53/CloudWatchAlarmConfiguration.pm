@@ -1,7 +1,7 @@
 package Paws::Route53::CloudWatchAlarmConfiguration;
   use Moose;
   has ComparisonOperator => (is => 'ro', isa => 'Str', required => 1);
-  has Dimensions => (is => 'ro', isa => 'ArrayRef[Paws::Route53::Dimension]');
+  has Dimensions => (is => 'ro', isa => 'ArrayRef[Paws::Route53::Dimension]', request_name => 'Dimension', traits => ['NameInRequest']);
   has EvaluationPeriods => (is => 'ro', isa => 'Int', required => 1);
   has MetricName => (is => 'ro', isa => 'Str', required => 1);
   has Namespace => (is => 'ro', isa => 'Str', required => 1);

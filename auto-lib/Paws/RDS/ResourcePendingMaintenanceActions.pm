@@ -1,6 +1,6 @@
 package Paws::RDS::ResourcePendingMaintenanceActions;
   use Moose;
-  has PendingMaintenanceActionDetails => (is => 'ro', isa => 'ArrayRef[Paws::RDS::PendingMaintenanceAction]');
+  has PendingMaintenanceActionDetails => (is => 'ro', isa => 'ArrayRef[Paws::RDS::PendingMaintenanceAction]', request_name => 'PendingMaintenanceAction', traits => ['NameInRequest']);
   has ResourceIdentifier => (is => 'ro', isa => 'Str');
 1;
 

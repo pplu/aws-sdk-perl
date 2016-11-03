@@ -1,14 +1,14 @@
 package Paws::RDS::Option;
   use Moose;
-  has DBSecurityGroupMemberships => (is => 'ro', isa => 'ArrayRef[Paws::RDS::DBSecurityGroupMembership]');
+  has DBSecurityGroupMemberships => (is => 'ro', isa => 'ArrayRef[Paws::RDS::DBSecurityGroupMembership]', request_name => 'DBSecurityGroup', traits => ['NameInRequest']);
   has OptionDescription => (is => 'ro', isa => 'Str');
   has OptionName => (is => 'ro', isa => 'Str');
-  has OptionSettings => (is => 'ro', isa => 'ArrayRef[Paws::RDS::OptionSetting]');
+  has OptionSettings => (is => 'ro', isa => 'ArrayRef[Paws::RDS::OptionSetting]', request_name => 'OptionSetting', traits => ['NameInRequest']);
   has OptionVersion => (is => 'ro', isa => 'Str');
   has Permanent => (is => 'ro', isa => 'Bool');
   has Persistent => (is => 'ro', isa => 'Bool');
   has Port => (is => 'ro', isa => 'Int');
-  has VpcSecurityGroupMemberships => (is => 'ro', isa => 'ArrayRef[Paws::RDS::VpcSecurityGroupMembership]');
+  has VpcSecurityGroupMemberships => (is => 'ro', isa => 'ArrayRef[Paws::RDS::VpcSecurityGroupMembership]', request_name => 'VpcSecurityGroupMembership', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

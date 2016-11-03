@@ -6,7 +6,7 @@ package Paws::SMS::ReplicationJob;
   has LicenseType => (is => 'ro', isa => 'Str', xmlname => 'licenseType', request_name => 'licenseType', traits => ['Unwrapped','NameInRequest']);
   has NextReplicationRunStartTime => (is => 'ro', isa => 'Str', xmlname => 'nextReplicationRunStartTime', request_name => 'nextReplicationRunStartTime', traits => ['Unwrapped','NameInRequest']);
   has ReplicationJobId => (is => 'ro', isa => 'Str', xmlname => 'replicationJobId', request_name => 'replicationJobId', traits => ['Unwrapped','NameInRequest']);
-  has ReplicationRunList => (is => 'ro', isa => 'ArrayRef[Paws::SMS::ReplicationRun]', xmlname => 'replicationRunList', request_name => 'replicationRunList', traits => ['Unwrapped','NameInRequest']);
+  has ReplicationRunList => (is => 'ro', isa => 'ArrayRef[Paws::SMS::ReplicationRun]', request_name => 'item', xmlname => 'replicationRunList', request_name => 'replicationRunList', traits => ['NameInRequest','Unwrapped','NameInRequest']);
   has RoleName => (is => 'ro', isa => 'Str', xmlname => 'roleName', request_name => 'roleName', traits => ['Unwrapped','NameInRequest']);
   has SeedReplicationTime => (is => 'ro', isa => 'Str', xmlname => 'seedReplicationTime', request_name => 'seedReplicationTime', traits => ['Unwrapped','NameInRequest']);
   has ServerId => (is => 'ro', isa => 'Str', xmlname => 'serverId', request_name => 'serverId', traits => ['Unwrapped','NameInRequest']);

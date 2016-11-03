@@ -6,7 +6,7 @@ package Paws::ElastiCache::ReservedCacheNode;
   has FixedPrice => (is => 'ro', isa => 'Num');
   has OfferingType => (is => 'ro', isa => 'Str');
   has ProductDescription => (is => 'ro', isa => 'Str');
-  has RecurringCharges => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::RecurringCharge]');
+  has RecurringCharges => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::RecurringCharge]', request_name => 'RecurringCharge', traits => ['NameInRequest']);
   has ReservedCacheNodeId => (is => 'ro', isa => 'Str');
   has ReservedCacheNodesOfferingId => (is => 'ro', isa => 'Str');
   has StartTime => (is => 'ro', isa => 'Str');

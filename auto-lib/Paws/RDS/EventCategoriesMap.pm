@@ -1,6 +1,6 @@
 package Paws::RDS::EventCategoriesMap;
   use Moose;
-  has EventCategories => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has EventCategories => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'EventCategory', traits => ['NameInRequest']);
   has SourceType => (is => 'ro', isa => 'Str');
 1;
 

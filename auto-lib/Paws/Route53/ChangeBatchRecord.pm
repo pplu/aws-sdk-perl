@@ -1,6 +1,6 @@
 package Paws::Route53::ChangeBatchRecord;
   use Moose;
-  has Changes => (is => 'ro', isa => 'ArrayRef[Paws::Route53::Change]');
+  has Changes => (is => 'ro', isa => 'ArrayRef[Paws::Route53::Change]', request_name => 'Change', traits => ['NameInRequest']);
   has Comment => (is => 'ro', isa => 'Str');
   has Id => (is => 'ro', isa => 'Str', required => 1);
   has Status => (is => 'ro', isa => 'Str', required => 1);
