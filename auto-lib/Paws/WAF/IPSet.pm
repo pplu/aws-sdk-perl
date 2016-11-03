@@ -34,24 +34,20 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WAF::IPSet 
 =head1 DESCRIPTION
 
 Contains one or more IP addresses or blocks of IP addresses specified
-in Classless Inter-Domain Routing (CIDR) notation. AWS WAF supports /8,
-/16, /24, and /32 IP address ranges for IPv4, and /24, /32, /48, /56,
-/64 and /128 for IPv6.
-
-To specify an individual IP address, you specify the four-part IP
-address followed by a C</32>, for example, 192.0.2.0/31. To block a
-range of IP addresses, you can specify a C</128>, C</64>, C</56>,
-C</48>, C</32>, C</24>, C</16>, or C</8> CIDR. For more information
-about CIDR notation, see the Wikipedia entry Classless Inter-Domain
-Routing.
+in Classless Inter-Domain Routing (CIDR) notation. To specify an
+individual IP address, you specify the four-part IP address followed by
+a C</32>, for example, 192.0.2.0/31. To block a range of IP addresses,
+you can specify a C</24>, a C</16>, or a C</8> CIDR. For more
+information about CIDR notation, perform an Internet search on C<cidr
+notation>.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> IPSetDescriptors => ArrayRef[L<Paws::WAF::IPSetDescriptor>]
 
-  The IP address type (C<IPV4> or C<IPV6>) and the IP address range (in
-CIDR notation) that web requests originate from. If the C<WebACL> is
+  The IP address type (C<IPV4>) and the IP address range (in CIDR
+notation) that web requests originate from. If the C<WebACL> is
 associated with a CloudFront distribution, this is the value of one of
 the following fields in CloudFront access logs:
 
