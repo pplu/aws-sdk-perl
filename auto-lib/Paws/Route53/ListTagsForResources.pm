@@ -2,7 +2,7 @@
 package Paws::Route53::ListTagsForResources;
   use Moose;
   has ResourceIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
-  has ResourceType => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'ResourceType' , required => 1);
+  has ResourceType => (is => 'ro', isa => 'Str', uri_name => 'ResourceType', traits => ['ParamInURI'], required => 1);
 
   use MooseX::ClassAttribute;
 

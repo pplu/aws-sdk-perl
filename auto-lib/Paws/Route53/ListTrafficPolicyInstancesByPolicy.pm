@@ -1,12 +1,12 @@
 
 package Paws::Route53::ListTrafficPolicyInstancesByPolicy;
   use Moose;
-  has HostedZoneIdMarker => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'hostedzoneid' );
-  has MaxItems => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'maxitems' );
-  has TrafficPolicyId => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'id' , required => 1);
-  has TrafficPolicyInstanceNameMarker => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'trafficpolicyinstancename' );
-  has TrafficPolicyInstanceTypeMarker => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'trafficpolicyinstancetype' );
-  has TrafficPolicyVersion => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'version' , required => 1);
+  has HostedZoneIdMarker => (is => 'ro', isa => 'Str', query_name => 'hostedzoneid', traits => ['ParamInQuery']);
+  has MaxItems => (is => 'ro', isa => 'Str', query_name => 'maxitems', traits => ['ParamInQuery']);
+  has TrafficPolicyId => (is => 'ro', isa => 'Str', query_name => 'id', traits => ['ParamInQuery'], required => 1);
+  has TrafficPolicyInstanceNameMarker => (is => 'ro', isa => 'Str', query_name => 'trafficpolicyinstancename', traits => ['ParamInQuery']);
+  has TrafficPolicyInstanceTypeMarker => (is => 'ro', isa => 'Str', query_name => 'trafficpolicyinstancetype', traits => ['ParamInQuery']);
+  has TrafficPolicyVersion => (is => 'ro', isa => 'Int', query_name => 'version', traits => ['ParamInQuery'], required => 1);
 
   use MooseX::ClassAttribute;
 

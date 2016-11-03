@@ -1,7 +1,7 @@
 
 package Paws::CloudFront::UntagResource;
   use Moose;
-  has Resource => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'Resource' , required => 1);
+  has Resource => (is => 'ro', isa => 'Str', query_name => 'Resource', traits => ['ParamInQuery'], required => 1);
   has TagKeys => (is => 'ro', isa => 'Paws::CloudFront::TagKeys', required => 1);
 
   use MooseX::ClassAttribute;

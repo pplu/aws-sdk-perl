@@ -1,11 +1,11 @@
 
 package Paws::Route53::ListChangeBatchesByHostedZone;
   use Moose;
-  has EndDate => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'endDate' , required => 1);
-  has HostedZoneId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'Id' , required => 1);
-  has Marker => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'marker' );
-  has MaxItems => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'maxItems' );
-  has StartDate => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'startDate' , required => 1);
+  has EndDate => (is => 'ro', isa => 'Str', query_name => 'endDate', traits => ['ParamInQuery'], required => 1);
+  has HostedZoneId => (is => 'ro', isa => 'Str', uri_name => 'Id', traits => ['ParamInURI'], required => 1);
+  has Marker => (is => 'ro', isa => 'Str', query_name => 'marker', traits => ['ParamInQuery']);
+  has MaxItems => (is => 'ro', isa => 'Str', query_name => 'maxItems', traits => ['ParamInQuery']);
+  has StartDate => (is => 'ro', isa => 'Str', query_name => 'startDate', traits => ['ParamInQuery'], required => 1);
 
   use MooseX::ClassAttribute;
 

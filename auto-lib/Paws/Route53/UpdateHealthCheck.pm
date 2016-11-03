@@ -6,7 +6,7 @@ package Paws::Route53::UpdateHealthCheck;
   has EnableSNI => (is => 'ro', isa => 'Bool');
   has FailureThreshold => (is => 'ro', isa => 'Int');
   has FullyQualifiedDomainName => (is => 'ro', isa => 'Str');
-  has HealthCheckId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'HealthCheckId' , required => 1);
+  has HealthCheckId => (is => 'ro', isa => 'Str', uri_name => 'HealthCheckId', traits => ['ParamInURI'], required => 1);
   has HealthCheckVersion => (is => 'ro', isa => 'Int');
   has HealthThreshold => (is => 'ro', isa => 'Int');
   has InsufficientDataHealthStatus => (is => 'ro', isa => 'Str');

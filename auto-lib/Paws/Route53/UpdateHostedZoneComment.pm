@@ -2,7 +2,7 @@
 package Paws::Route53::UpdateHostedZoneComment;
   use Moose;
   has Comment => (is => 'ro', isa => 'Str');
-  has Id => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'Id' , required => 1);
+  has Id => (is => 'ro', isa => 'Str', uri_name => 'Id', traits => ['ParamInURI'], required => 1);
 
   use MooseX::ClassAttribute;
 

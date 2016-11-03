@@ -1,11 +1,11 @@
 
 package Paws::Route53::ListResourceRecordSets;
   use Moose;
-  has HostedZoneId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'Id' , required => 1);
-  has MaxItems => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'maxitems' );
-  has StartRecordIdentifier => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'identifier' );
-  has StartRecordName => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'name' );
-  has StartRecordType => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'type' );
+  has HostedZoneId => (is => 'ro', isa => 'Str', uri_name => 'Id', traits => ['ParamInURI'], required => 1);
+  has MaxItems => (is => 'ro', isa => 'Str', query_name => 'maxitems', traits => ['ParamInQuery']);
+  has StartRecordIdentifier => (is => 'ro', isa => 'Str', query_name => 'identifier', traits => ['ParamInQuery']);
+  has StartRecordName => (is => 'ro', isa => 'Str', query_name => 'name', traits => ['ParamInQuery']);
+  has StartRecordType => (is => 'ro', isa => 'Str', query_name => 'type', traits => ['ParamInQuery']);
 
   use MooseX::ClassAttribute;
 

@@ -1,9 +1,9 @@
 
 package Paws::CloudFront::ListDistributionsByWebACLId;
   use Moose;
-  has Marker => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'Marker' );
-  has MaxItems => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'MaxItems' );
-  has WebACLId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'WebACLId' , required => 1);
+  has Marker => (is => 'ro', isa => 'Str', query_name => 'Marker', traits => ['ParamInQuery']);
+  has MaxItems => (is => 'ro', isa => 'Str', query_name => 'MaxItems', traits => ['ParamInQuery']);
+  has WebACLId => (is => 'ro', isa => 'Str', uri_name => 'WebACLId', traits => ['ParamInURI'], required => 1);
 
   use MooseX::ClassAttribute;
 

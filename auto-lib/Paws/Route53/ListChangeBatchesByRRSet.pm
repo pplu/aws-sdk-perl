@@ -1,14 +1,14 @@
 
 package Paws::Route53::ListChangeBatchesByRRSet;
   use Moose;
-  has EndDate => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'endDate' , required => 1);
-  has HostedZoneId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'Id' , required => 1);
-  has Marker => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'marker' );
-  has MaxItems => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'maxItems' );
-  has Name => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'rrSet_name' , required => 1);
-  has SetIdentifier => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'identifier' );
-  has StartDate => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'startDate' , required => 1);
-  has Type => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'type' , required => 1);
+  has EndDate => (is => 'ro', isa => 'Str', query_name => 'endDate', traits => ['ParamInQuery'], required => 1);
+  has HostedZoneId => (is => 'ro', isa => 'Str', uri_name => 'Id', traits => ['ParamInURI'], required => 1);
+  has Marker => (is => 'ro', isa => 'Str', query_name => 'marker', traits => ['ParamInQuery']);
+  has MaxItems => (is => 'ro', isa => 'Str', query_name => 'maxItems', traits => ['ParamInQuery']);
+  has Name => (is => 'ro', isa => 'Str', query_name => 'rrSet_name', traits => ['ParamInQuery'], required => 1);
+  has SetIdentifier => (is => 'ro', isa => 'Str', query_name => 'identifier', traits => ['ParamInQuery']);
+  has StartDate => (is => 'ro', isa => 'Str', query_name => 'startDate', traits => ['ParamInQuery'], required => 1);
+  has Type => (is => 'ro', isa => 'Str', query_name => 'type', traits => ['ParamInQuery'], required => 1);
 
   use MooseX::ClassAttribute;
 

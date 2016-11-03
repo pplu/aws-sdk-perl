@@ -2,7 +2,7 @@
 package Paws::Route53::AssociateVPCWithHostedZone;
   use Moose;
   has Comment => (is => 'ro', isa => 'Str');
-  has HostedZoneId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'Id' , required => 1);
+  has HostedZoneId => (is => 'ro', isa => 'Str', uri_name => 'Id', traits => ['ParamInURI'], required => 1);
   has VPC => (is => 'ro', isa => 'Paws::Route53::VPC', required => 1);
 
   use MooseX::ClassAttribute;
