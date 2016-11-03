@@ -2,7 +2,7 @@
 package Paws::S3::PutBucketAccelerateConfiguration;
   use Moose;
   has AccelerateConfiguration => (is => 'ro', isa => 'Paws::S3::AccelerateConfiguration', required => 1);
-  has Bucket => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'Bucket' , required => 1);
+  has Bucket => (is => 'ro', isa => 'Str', uri_name => 'Bucket', traits => ['ParamInURI'], required => 1);
 
   use MooseX::ClassAttribute;
 
