@@ -1,12 +1,12 @@
 ---
 content: |-
-<?xml version="1.0" encoding="UTF-8"?>
-<CompleteMultipartUploadResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/">
-  <Location>https://s3-eu-west-1.amazonaws.com/paws-test-bucket/uploads%2Fmultipart_test.txt</Location>
-  <Bucket>paws-test-bucket</Bucket>
-  <Key>uploads/multipart_test.txt</Key>
-  <ETag>&quot;47f7ce8182fc68d4b157bb895aa48694-1&quot;</ETag>
-</CompleteMultipartUploadResult>
+  <?xml version="1.0" encoding="UTF-8"?>
+  <CompleteMultipartUploadResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/">
+    <Location>https://s3-eu-west-1.amazonaws.com/paws-test-bucket/uploads%2Fmultipart_test.txt</Location>
+    <Bucket>paws-test-bucket</Bucket>
+    <Key>uploads/multipart_test.txt</Key>
+    <ETag>&quot;47f7ce8182fc68d4b157bb895aa48694-1&quot;</ETag>
+  </CompleteMultipartUploadResult>
 headers:
   connection: close
   content-type: application/xml
