@@ -1,0 +1,18 @@
+---
+content: |-
+<?xml version="1.0" encoding="UTF-8"?>
+<CompleteMultipartUploadResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/">
+  <Location>https://s3-eu-west-1.amazonaws.com/paws-test-bucket/uploads%2Fmultipart_test.txt</Location>
+  <Bucket>paws-test-bucket</Bucket>
+  <Key>uploads/multipart_test.txt</Key>
+  <ETag>&quot;47f7ce8182fc68d4b157bb895aa48694-1&quot;</ETag>
+</CompleteMultipartUploadResult>
+headers:
+  connection: close
+  content-type: application/xml
+  date: 'Fri, 04 Nov 2016 09:26:44 GMT'
+  server: AmazonS3
+  transfer-encoding: chunked
+  x-amz-id-2: KE62d6flm5iWk8+c/0EUR1NpVetTYbCnMw1Ffh/I6VinqxVdW1pb5T/R3syPZUsCgV3YAf8dFsc=
+  x-amz-request-id: 90F9E6D4B3BEDA1B
+status: 200

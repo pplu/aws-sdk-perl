@@ -1,0 +1,16 @@
+---
+call: CompleteMultipartUpload
+service: S3
+tests:
+  - expected: '"47f7ce8182fc68d4b157bb895aa48694-1"'
+    op: eq
+    path: ETag
+  - expected: paws-test-bucket
+    op: eq
+    path: Bucket
+  - expected: uploads/multipart_test.txt
+    op: eq
+    path: Key
+  - expected: https://s3-eu-west-1.amazonaws.com/paws-test-bucket/uploads%2Fmultipart_test.txt
+    op: eq
+    path: Location

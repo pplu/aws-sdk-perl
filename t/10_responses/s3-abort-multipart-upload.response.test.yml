@@ -1,0 +1,7 @@
+---
+call: AbortMultipartUpload
+service: S3
+tests:
+  - path: _request_id
+    op: eq
+    expected: 64B276D826882A38
