@@ -109,6 +109,11 @@ package Paws::DirectConnect;
     my $call_object = $self->new_with_coercions('Paws::DirectConnect::DescribeLocations', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeTags {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DirectConnect::DescribeTags', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeVirtualGateways {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DirectConnect::DescribeVirtualGateways', @_);
@@ -119,8 +124,18 @@ package Paws::DirectConnect;
     my $call_object = $self->new_with_coercions('Paws::DirectConnect::DescribeVirtualInterfaces', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub TagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DirectConnect::TagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UntagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DirectConnect::UntagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
 
-  sub operations { qw/AllocateConnectionOnInterconnect AllocatePrivateVirtualInterface AllocatePublicVirtualInterface ConfirmConnection ConfirmPrivateVirtualInterface ConfirmPublicVirtualInterface CreateConnection CreateInterconnect CreatePrivateVirtualInterface CreatePublicVirtualInterface DeleteConnection DeleteInterconnect DeleteVirtualInterface DescribeConnectionLoa DescribeConnections DescribeConnectionsOnInterconnect DescribeInterconnectLoa DescribeInterconnects DescribeLocations DescribeVirtualGateways DescribeVirtualInterfaces / }
+  sub operations { qw/AllocateConnectionOnInterconnect AllocatePrivateVirtualInterface AllocatePublicVirtualInterface ConfirmConnection ConfirmPrivateVirtualInterface ConfirmPublicVirtualInterface CreateConnection CreateInterconnect CreatePrivateVirtualInterface CreatePublicVirtualInterface DeleteConnection DeleteInterconnect DeleteVirtualInterface DescribeConnectionLoa DescribeConnections DescribeConnectionsOnInterconnect DescribeInterconnectLoa DescribeInterconnects DescribeLocations DescribeTags DescribeVirtualGateways DescribeVirtualInterfaces TagResource UntagResource / }
 
 1;
 
@@ -436,6 +451,16 @@ region. These are the locations that may be selected when calling
 CreateConnection or CreateInterconnect.
 
 
+=head2 DescribeTags(ResourceArns => ArrayRef[Str|Undef])
+
+Each argument is described in detail in: L<Paws::DirectConnect::DescribeTags>
+
+Returns: a L<Paws::DirectConnect::DescribeTagsResponse> instance
+
+  Describes the tags associated with the specified Direct Connect
+resources.
+
+
 =head2 DescribeVirtualGateways( => )
 
 Each argument is described in detail in: L<Paws::DirectConnect::DescribeVirtualGateways>
@@ -469,6 +494,29 @@ Connect location and the customer.
 If a connection ID is provided, only virtual interfaces provisioned on
 the specified connection will be returned. If a virtual interface ID is
 provided, only this particular virtual interface will be returned.
+
+
+=head2 TagResource(ResourceArn => Str, Tags => ArrayRef[L<Paws::DirectConnect::Tag>])
+
+Each argument is described in detail in: L<Paws::DirectConnect::TagResource>
+
+Returns: a L<Paws::DirectConnect::TagResourceResponse> instance
+
+  Adds the specified tags to the specified Direct Connect resource. Each
+Direct Connect resource can have a maximum of 50 tags.
+
+Each tag consists of a key and an optional value. If a tag with the
+same key is already associated with the Direct Connect resource, this
+action updates its value.
+
+
+=head2 UntagResource(ResourceArn => Str, TagKeys => ArrayRef[Str|Undef])
+
+Each argument is described in detail in: L<Paws::DirectConnect::UntagResource>
+
+Returns: a L<Paws::DirectConnect::UntagResourceResponse> instance
+
+  Removes one or more tags from the specified Direct Connect resource.
 
 
 =head1 SEE ALSO

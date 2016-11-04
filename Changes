@@ -13,6 +13,7 @@
  - New API: Budgets
  - New API: SMS (Server Migration Service)
  - SES API update: Tagging and ConfigurationSets
+ - DirectConnect API update: Tagging
  - CloudFormation API update
  - ElasticBeanstalk API update
  - Gamelift API update: DescribeInstances
