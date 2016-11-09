@@ -5,6 +5,7 @@ package Paws::EFS::DescribeTagsResponse;
   has NextMarker => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EFS::Tag]', required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -22,7 +23,6 @@ If the request included a C<Marker>, the response returns that value in
 this field.
 
 
-
 =head2 NextMarker => Str
 
 If a value is present, there are more tags to return. In a subsequent
@@ -31,13 +31,13 @@ C<Marker> parameter in your next request to retrieve the next set of
 tags.
 
 
-
 =head2 B<REQUIRED> Tags => ArrayRef[L<Paws::EFS::Tag>]
 
 Returns tags associated with the file system as an array of C<Tag>
 objects.
 
 
+=head2 _request_id => Str
 
 
 =cut

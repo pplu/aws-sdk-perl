@@ -4,6 +4,7 @@ package Paws::SimpleWorkflow::WorkflowExecutionCount;
   has Count => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => 'count' , required => 1);
   has Truncated => (is => 'ro', isa => 'Bool', traits => ['Unwrapped'], xmlname => 'truncated' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -19,7 +20,6 @@ Paws::SimpleWorkflow::WorkflowExecutionCount
 The number of workflow executions.
 
 
-
 =head2 Truncated => Bool
 
 If set to true, indicates that the actual count was more than the
@@ -27,6 +27,7 @@ maximum supported by this API and the count returned is the truncated
 value.
 
 
+=head2 _request_id => Str
 
 
 =cut

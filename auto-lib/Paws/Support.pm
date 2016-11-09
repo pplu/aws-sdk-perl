@@ -84,6 +84,50 @@ package Paws::Support;
     my $call_object = $self->new_with_coercions('Paws::Support::ResolveCase', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
+  sub DescribeAllCases {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeCases(@_);
+
+    if (not defined $callback) {
+      while ($result->nextToken) {
+        $result = $self->DescribeCases(@_, nextToken => $result->nextToken);
+        push @{ $result->cases }, @{ $result->cases };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $result = $self->DescribeCases(@_, nextToken => $result->nextToken);
+        $callback->($_ => 'cases') foreach (@{ $result->cases });
+      }
+    }
+
+    return undef
+  }
+  sub DescribeAllCommunications {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeCommunications(@_);
+
+    if (not defined $callback) {
+      while ($result->nextToken) {
+        $result = $self->DescribeCommunications(@_, nextToken => $result->nextToken);
+        push @{ $result->communications }, @{ $result->communications };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $result = $self->DescribeCommunications(@_, nextToken => $result->nextToken);
+        $callback->($_ => 'communications') foreach (@{ $result->communications });
+      }
+    }
+
+    return undef
+  }
+
 
   sub operations { qw/AddAttachmentsToSet AddCommunicationToCase CreateCase DescribeAttachment DescribeCases DescribeCommunications DescribeServices DescribeSeverityLevels DescribeTrustedAdvisorCheckRefreshStatuses DescribeTrustedAdvisorCheckResult DescribeTrustedAdvisorChecks DescribeTrustedAdvisorCheckSummaries RefreshTrustedAdvisorCheck ResolveCase / }
 
@@ -544,6 +588,39 @@ Returns: a L<Paws::Support::ResolveCaseResponse> instance
 
   Takes a C<caseId> and returns the initial state of the case along with
 the state of the case after the call to ResolveCase completed.
+
+
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 DescribeAllCases(sub { },[AfterTime => Str, BeforeTime => Str, CaseIdList => ArrayRef[Str|Undef], DisplayId => Str, IncludeCommunications => Bool, IncludeResolvedCases => Bool, Language => Str, MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllCases([AfterTime => Str, BeforeTime => Str, CaseIdList => ArrayRef[Str|Undef], DisplayId => Str, IncludeCommunications => Bool, IncludeResolvedCases => Bool, Language => Str, MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - cases, passing the object as the first parameter, and the string 'cases' as the second parameter 
+
+If not, it will return a a L<Paws::Support::DescribeCasesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllCommunications(sub { },CaseId => Str, [AfterTime => Str, BeforeTime => Str, MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllCommunications(CaseId => Str, [AfterTime => Str, BeforeTime => Str, MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - communications, passing the object as the first parameter, and the string 'communications' as the second parameter 
+
+If not, it will return a a L<Paws::Support::DescribeCommunicationsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+
 
 
 =head1 SEE ALSO

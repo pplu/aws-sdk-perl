@@ -4,6 +4,7 @@ package Paws::ApiGateway::UsagePlanKeys;
   has Items => (is => 'ro', isa => 'ArrayRef[Paws::ApiGateway::UsagePlanKey]');
   has Position => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -20,12 +21,12 @@ Paws::ApiGateway::UsagePlanKeys
 Gets the current item of the usage plan keys collection.
 
 
-
 =head2 Position => Str
 
 
 
 
+=head2 _request_id => Str
 
 
 =cut

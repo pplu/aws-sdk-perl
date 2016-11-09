@@ -167,6 +167,113 @@ package Paws::EMR;
     my $call_object = $self->new_with_coercions('Paws::EMR::TerminateJobFlows', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
+  sub ListAllBootstrapActions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListBootstrapActions(@_);
+
+    if (not defined $callback) {
+      while ($result->Marker) {
+        $result = $self->ListBootstrapActions(@_, Marker => $result->Marker);
+        push @{ $result->BootstrapActions }, @{ $result->BootstrapActions };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $result = $self->ListBootstrapActions(@_, Marker => $result->Marker);
+        $callback->($_ => 'BootstrapActions') foreach (@{ $result->BootstrapActions });
+      }
+    }
+
+    return undef
+  }
+  sub ListAllClusters {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListClusters(@_);
+
+    if (not defined $callback) {
+      while ($result->Marker) {
+        $result = $self->ListClusters(@_, Marker => $result->Marker);
+        push @{ $result->Clusters }, @{ $result->Clusters };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $result = $self->ListClusters(@_, Marker => $result->Marker);
+        $callback->($_ => 'Clusters') foreach (@{ $result->Clusters });
+      }
+    }
+
+    return undef
+  }
+  sub ListAllInstanceGroups {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListInstanceGroups(@_);
+
+    if (not defined $callback) {
+      while ($result->Marker) {
+        $result = $self->ListInstanceGroups(@_, Marker => $result->Marker);
+        push @{ $result->InstanceGroups }, @{ $result->InstanceGroups };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $result = $self->ListInstanceGroups(@_, Marker => $result->Marker);
+        $callback->($_ => 'InstanceGroups') foreach (@{ $result->InstanceGroups });
+      }
+    }
+
+    return undef
+  }
+  sub ListAllInstances {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListInstances(@_);
+
+    if (not defined $callback) {
+      while ($result->Marker) {
+        $result = $self->ListInstances(@_, Marker => $result->Marker);
+        push @{ $result->Instances }, @{ $result->Instances };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $result = $self->ListInstances(@_, Marker => $result->Marker);
+        $callback->($_ => 'Instances') foreach (@{ $result->Instances });
+      }
+    }
+
+    return undef
+  }
+  sub ListAllSteps {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListSteps(@_);
+
+    if (not defined $callback) {
+      while ($result->Marker) {
+        $result = $self->ListSteps(@_, Marker => $result->Marker);
+        push @{ $result->Steps }, @{ $result->Steps };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $result = $self->ListSteps(@_, Marker => $result->Marker);
+        $callback->($_ => 'Steps') foreach (@{ $result->Steps });
+      }
+    }
+
+    return undef
+  }
+
 
   sub operations { qw/AddInstanceGroups AddJobFlowSteps AddTags CreateSecurityConfiguration DeleteSecurityConfiguration DescribeCluster DescribeJobFlows DescribeSecurityConfiguration DescribeStep ListBootstrapActions ListClusters ListInstanceGroups ListInstances ListSecurityConfigurations ListSteps ModifyInstanceGroups RemoveTags RunJobFlow SetTerminationProtection SetVisibleToAllUsers TerminateJobFlows / }
 
@@ -531,6 +638,75 @@ TerminateJobFlows is asynchronous. Depending on the configuration of
 the job flow, it may take up to 5-20 minutes for the job flow to
 completely terminate and release allocated resources, such as Amazon
 EC2 instances.
+
+
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllBootstrapActions(sub { },ClusterId => Str, [Marker => Str])
+
+=head2 ListAllBootstrapActions(ClusterId => Str, [Marker => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - BootstrapActions, passing the object as the first parameter, and the string 'BootstrapActions' as the second parameter 
+
+If not, it will return a a L<Paws::EMR::ListBootstrapActionsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllClusters(sub { },[ClusterStates => ArrayRef[Str|Undef], CreatedAfter => Str, CreatedBefore => Str, Marker => Str])
+
+=head2 ListAllClusters([ClusterStates => ArrayRef[Str|Undef], CreatedAfter => Str, CreatedBefore => Str, Marker => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Clusters, passing the object as the first parameter, and the string 'Clusters' as the second parameter 
+
+If not, it will return a a L<Paws::EMR::ListClustersOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllInstanceGroups(sub { },ClusterId => Str, [Marker => Str])
+
+=head2 ListAllInstanceGroups(ClusterId => Str, [Marker => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - InstanceGroups, passing the object as the first parameter, and the string 'InstanceGroups' as the second parameter 
+
+If not, it will return a a L<Paws::EMR::ListInstanceGroupsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllInstances(sub { },ClusterId => Str, [InstanceGroupId => Str, InstanceGroupTypes => ArrayRef[Str|Undef], InstanceStates => ArrayRef[Str|Undef], Marker => Str])
+
+=head2 ListAllInstances(ClusterId => Str, [InstanceGroupId => Str, InstanceGroupTypes => ArrayRef[Str|Undef], InstanceStates => ArrayRef[Str|Undef], Marker => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Instances, passing the object as the first parameter, and the string 'Instances' as the second parameter 
+
+If not, it will return a a L<Paws::EMR::ListInstancesOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllSteps(sub { },ClusterId => Str, [Marker => Str, StepIds => ArrayRef[Str|Undef], StepStates => ArrayRef[Str|Undef]])
+
+=head2 ListAllSteps(ClusterId => Str, [Marker => Str, StepIds => ArrayRef[Str|Undef], StepStates => ArrayRef[Str|Undef]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Steps, passing the object as the first parameter, and the string 'Steps' as the second parameter 
+
+If not, it will return a a L<Paws::EMR::ListStepsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+
 
 
 =head1 SEE ALSO

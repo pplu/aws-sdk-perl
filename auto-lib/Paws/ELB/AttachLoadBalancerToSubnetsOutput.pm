@@ -3,6 +3,7 @@ package Paws::ELB::AttachLoadBalancerToSubnetsOutput;
   use Moose;
   has Subnets => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -19,6 +20,7 @@ Paws::ELB::AttachLoadBalancerToSubnetsOutput
 The IDs of the subnets attached to the load balancer.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -3,6 +3,7 @@ package Paws::IAM::GetRoleResponse;
   use Moose;
   has Role => (is => 'ro', isa => 'Paws::IAM::Role', required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -19,6 +20,7 @@ Paws::IAM::GetRoleResponse
 A structure containing details about the IAM role.
 
 
+=head2 _request_id => Str
 
 
 =cut

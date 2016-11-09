@@ -4,6 +4,7 @@ package Paws::ElastiCache::EventsMessage;
   has Events => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::Event]', xmlname => 'Event', traits => ['Unwrapped',]);
   has Marker => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -21,12 +22,12 @@ A list of events. Each element in the list contains detailed
 information about one event.
 
 
-
 =head2 Marker => Str
 
 Provides an identifier to allow retrieval of paginated results.
 
 
+=head2 _request_id => Str
 
 
 =cut

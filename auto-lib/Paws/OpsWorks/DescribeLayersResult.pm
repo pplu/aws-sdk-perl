@@ -3,6 +3,7 @@ package Paws::OpsWorks::DescribeLayersResult;
   use Moose;
   has Layers => (is => 'ro', isa => 'ArrayRef[Paws::OpsWorks::Layer]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -18,6 +19,7 @@ Paws::OpsWorks::DescribeLayersResult
 An array of C<Layer> objects that describe the layers.
 
 
+=head2 _request_id => Str
 
 
 =cut

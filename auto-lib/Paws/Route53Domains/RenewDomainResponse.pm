@@ -3,6 +3,7 @@ package Paws::Route53Domains::RenewDomainResponse;
   use Moose;
   has OperationId => (is => 'ro', isa => 'Str', required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -18,6 +19,7 @@ Paws::Route53Domains::RenewDomainResponse
 
 
 
+=head2 _request_id => Str
 
 
 =cut

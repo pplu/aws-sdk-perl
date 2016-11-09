@@ -1,6 +1,6 @@
 package Paws::RedShift::EventInfoMap;
   use Moose;
-  has EventCategories => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has EventCategories => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'EventCategory', traits => ['NameInRequest']);
   has EventDescription => (is => 'ro', isa => 'Str');
   has EventId => (is => 'ro', isa => 'Str');
   has Severity => (is => 'ro', isa => 'Str');

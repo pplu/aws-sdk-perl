@@ -6,9 +6,9 @@ package Paws::RDS::DBEngineVersion;
   has DefaultCharacterSet => (is => 'ro', isa => 'Paws::RDS::CharacterSet');
   has Engine => (is => 'ro', isa => 'Str');
   has EngineVersion => (is => 'ro', isa => 'Str');
-  has SupportedCharacterSets => (is => 'ro', isa => 'ArrayRef[Paws::RDS::CharacterSet]');
-  has SupportedTimezones => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Timezone]');
-  has ValidUpgradeTarget => (is => 'ro', isa => 'ArrayRef[Paws::RDS::UpgradeTarget]');
+  has SupportedCharacterSets => (is => 'ro', isa => 'ArrayRef[Paws::RDS::CharacterSet]', request_name => 'CharacterSet', traits => ['NameInRequest']);
+  has SupportedTimezones => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Timezone]', request_name => 'Timezone', traits => ['NameInRequest']);
+  has ValidUpgradeTarget => (is => 'ro', isa => 'ArrayRef[Paws::RDS::UpgradeTarget]', request_name => 'UpgradeTarget', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

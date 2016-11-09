@@ -1,0 +1,13 @@
+---
+call: CopyObject
+service: S3
+tests:
+  - path: CopyObjectResult.ETag
+    op: eq
+    expected: '"3858f62230ac3c915f300c664312c63f"'
+  - path: CopyObjectResult.LastModified
+    op: eq
+    expected: 2016-11-02T09:06:53.000Z
+  - path: VersionId
+    op: eq
+    expected: v1.2.3.4

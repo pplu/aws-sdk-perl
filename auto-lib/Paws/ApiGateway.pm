@@ -458,118 +458,176 @@ package Paws::ApiGateway;
     my $call_object = $self->new_with_coercions('Paws::ApiGateway::UpdateUsagePlan', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
   sub GetAllApiKeys {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->GetApiKeys(@_);
-    my $array = [];
-    push @$array, @{ $result->items };
 
-    while ($result->position) {
-      $result = $self->GetApiKeys(@_, position => $result->position);
-      push @$array, @{ $result->items };
+    if (not defined $callback) {
+      while ($result->position) {
+        $result = $self->GetApiKeys(@_, position => $result->position);
+        push @{ $result->items }, @{ $result->items };
+      }
+      return $result;
+    } else {
+      while ($result->position) {
+        $result = $self->GetApiKeys(@_, position => $result->position);
+        $callback->($_ => 'items') foreach (@{ $result->items });
+      }
     }
 
-    return 'Paws::ApiGateway::GetApiKeys'->_returns->new(items => $array);
+    return undef
   }
   sub GetAllBasePathMappings {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->GetBasePathMappings(@_);
-    my $array = [];
-    push @$array, @{ $result->items };
 
-    while ($result->position) {
-      $result = $self->GetBasePathMappings(@_, position => $result->position);
-      push @$array, @{ $result->items };
+    if (not defined $callback) {
+      while ($result->position) {
+        $result = $self->GetBasePathMappings(@_, position => $result->position);
+        push @{ $result->items }, @{ $result->items };
+      }
+      return $result;
+    } else {
+      while ($result->position) {
+        $result = $self->GetBasePathMappings(@_, position => $result->position);
+        $callback->($_ => 'items') foreach (@{ $result->items });
+      }
     }
 
-    return 'Paws::ApiGateway::GetBasePathMappings'->_returns->new(items => $array);
+    return undef
   }
   sub GetAllClientCertificates {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->GetClientCertificates(@_);
-    my $array = [];
-    push @$array, @{ $result->items };
 
-    while ($result->position) {
-      $result = $self->GetClientCertificates(@_, position => $result->position);
-      push @$array, @{ $result->items };
+    if (not defined $callback) {
+      while ($result->position) {
+        $result = $self->GetClientCertificates(@_, position => $result->position);
+        push @{ $result->items }, @{ $result->items };
+      }
+      return $result;
+    } else {
+      while ($result->position) {
+        $result = $self->GetClientCertificates(@_, position => $result->position);
+        $callback->($_ => 'items') foreach (@{ $result->items });
+      }
     }
 
-    return 'Paws::ApiGateway::GetClientCertificates'->_returns->new(items => $array);
+    return undef
   }
   sub GetAllDeployments {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->GetDeployments(@_);
-    my $array = [];
-    push @$array, @{ $result->items };
 
-    while ($result->position) {
-      $result = $self->GetDeployments(@_, position => $result->position);
-      push @$array, @{ $result->items };
+    if (not defined $callback) {
+      while ($result->position) {
+        $result = $self->GetDeployments(@_, position => $result->position);
+        push @{ $result->items }, @{ $result->items };
+      }
+      return $result;
+    } else {
+      while ($result->position) {
+        $result = $self->GetDeployments(@_, position => $result->position);
+        $callback->($_ => 'items') foreach (@{ $result->items });
+      }
     }
 
-    return 'Paws::ApiGateway::GetDeployments'->_returns->new(items => $array);
+    return undef
   }
   sub GetAllDomainNames {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->GetDomainNames(@_);
-    my $array = [];
-    push @$array, @{ $result->items };
 
-    while ($result->position) {
-      $result = $self->GetDomainNames(@_, position => $result->position);
-      push @$array, @{ $result->items };
+    if (not defined $callback) {
+      while ($result->position) {
+        $result = $self->GetDomainNames(@_, position => $result->position);
+        push @{ $result->items }, @{ $result->items };
+      }
+      return $result;
+    } else {
+      while ($result->position) {
+        $result = $self->GetDomainNames(@_, position => $result->position);
+        $callback->($_ => 'items') foreach (@{ $result->items });
+      }
     }
 
-    return 'Paws::ApiGateway::GetDomainNames'->_returns->new(items => $array);
+    return undef
   }
   sub GetAllModels {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->GetModels(@_);
-    my $array = [];
-    push @$array, @{ $result->items };
 
-    while ($result->position) {
-      $result = $self->GetModels(@_, position => $result->position);
-      push @$array, @{ $result->items };
+    if (not defined $callback) {
+      while ($result->position) {
+        $result = $self->GetModels(@_, position => $result->position);
+        push @{ $result->items }, @{ $result->items };
+      }
+      return $result;
+    } else {
+      while ($result->position) {
+        $result = $self->GetModels(@_, position => $result->position);
+        $callback->($_ => 'items') foreach (@{ $result->items });
+      }
     }
 
-    return 'Paws::ApiGateway::GetModels'->_returns->new(items => $array);
+    return undef
   }
   sub GetAllResources {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->GetResources(@_);
-    my $array = [];
-    push @$array, @{ $result->items };
 
-    while ($result->position) {
-      $result = $self->GetResources(@_, position => $result->position);
-      push @$array, @{ $result->items };
+    if (not defined $callback) {
+      while ($result->position) {
+        $result = $self->GetResources(@_, position => $result->position);
+        push @{ $result->items }, @{ $result->items };
+      }
+      return $result;
+    } else {
+      while ($result->position) {
+        $result = $self->GetResources(@_, position => $result->position);
+        $callback->($_ => 'items') foreach (@{ $result->items });
+      }
     }
 
-    return 'Paws::ApiGateway::GetResources'->_returns->new(items => $array);
+    return undef
   }
   sub GetAllRestApis {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->GetRestApis(@_);
-    my $array = [];
-    push @$array, @{ $result->items };
 
-    while ($result->position) {
-      $result = $self->GetRestApis(@_, position => $result->position);
-      push @$array, @{ $result->items };
+    if (not defined $callback) {
+      while ($result->position) {
+        $result = $self->GetRestApis(@_, position => $result->position);
+        push @{ $result->items }, @{ $result->items };
+      }
+      return $result;
+    } else {
+      while ($result->position) {
+        $result = $self->GetRestApis(@_, position => $result->position);
+        $callback->($_ => 'items') foreach (@{ $result->items });
+      }
     }
 
-    return 'Paws::ApiGateway::GetRestApis'->_returns->new(items => $array);
+    return undef
   }
+
 
   sub operations { qw/CreateApiKey CreateAuthorizer CreateBasePathMapping CreateDeployment CreateDomainName CreateModel CreateResource CreateRestApi CreateStage CreateUsagePlan CreateUsagePlanKey DeleteApiKey DeleteAuthorizer DeleteBasePathMapping DeleteClientCertificate DeleteDeployment DeleteDomainName DeleteIntegration DeleteIntegrationResponse DeleteMethod DeleteMethodResponse DeleteModel DeleteResource DeleteRestApi DeleteStage DeleteUsagePlan DeleteUsagePlanKey FlushStageAuthorizersCache FlushStageCache GenerateClientCertificate GetAccount GetApiKey GetApiKeys GetAuthorizer GetAuthorizers GetBasePathMapping GetBasePathMappings GetClientCertificate GetClientCertificates GetDeployment GetDeployments GetDomainName GetDomainNames GetExport GetIntegration GetIntegrationResponse GetMethod GetMethodResponse GetModel GetModels GetModelTemplate GetResource GetResources GetRestApi GetRestApis GetSdk GetStage GetStages GetUsage GetUsagePlan GetUsagePlanKey GetUsagePlanKeys GetUsagePlans ImportApiKeys ImportRestApi PutIntegration PutIntegrationResponse PutMethod PutMethodResponse PutRestApi TestInvokeAuthorizer TestInvokeMethod UpdateAccount UpdateApiKey UpdateAuthorizer UpdateBasePathMapping UpdateClientCertificate UpdateDeployment UpdateDomainName UpdateIntegration UpdateIntegrationResponse UpdateMethod UpdateMethodResponse UpdateModel UpdateResource UpdateRestApi UpdateStage UpdateUsage UpdateUsagePlan / }
 
@@ -1438,6 +1496,111 @@ Each argument is described in detail in: L<Paws::ApiGateway::UpdateUsagePlan>
 Returns: a L<Paws::ApiGateway::UsagePlan> instance
 
   Updates a usage plan of a given plan Id.
+
+
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 GetAllApiKeys(sub { },[IncludeValues => Bool, Limit => Int, NameQuery => Str, Position => Str])
+
+=head2 GetAllApiKeys([IncludeValues => Bool, Limit => Int, NameQuery => Str, Position => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - items, passing the object as the first parameter, and the string 'items' as the second parameter 
+
+If not, it will return a a L<Paws::ApiGateway::ApiKeys> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllBasePathMappings(sub { },DomainName => Str, [Limit => Int, Position => Str])
+
+=head2 GetAllBasePathMappings(DomainName => Str, [Limit => Int, Position => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - items, passing the object as the first parameter, and the string 'items' as the second parameter 
+
+If not, it will return a a L<Paws::ApiGateway::BasePathMappings> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllClientCertificates(sub { },[Limit => Int, Position => Str])
+
+=head2 GetAllClientCertificates([Limit => Int, Position => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - items, passing the object as the first parameter, and the string 'items' as the second parameter 
+
+If not, it will return a a L<Paws::ApiGateway::ClientCertificates> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllDeployments(sub { },RestApiId => Str, [Limit => Int, Position => Str])
+
+=head2 GetAllDeployments(RestApiId => Str, [Limit => Int, Position => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - items, passing the object as the first parameter, and the string 'items' as the second parameter 
+
+If not, it will return a a L<Paws::ApiGateway::Deployments> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllDomainNames(sub { },[Limit => Int, Position => Str])
+
+=head2 GetAllDomainNames([Limit => Int, Position => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - items, passing the object as the first parameter, and the string 'items' as the second parameter 
+
+If not, it will return a a L<Paws::ApiGateway::DomainNames> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllModels(sub { },RestApiId => Str, [Limit => Int, Position => Str])
+
+=head2 GetAllModels(RestApiId => Str, [Limit => Int, Position => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - items, passing the object as the first parameter, and the string 'items' as the second parameter 
+
+If not, it will return a a L<Paws::ApiGateway::Models> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllResources(sub { },RestApiId => Str, [Limit => Int, Position => Str])
+
+=head2 GetAllResources(RestApiId => Str, [Limit => Int, Position => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - items, passing the object as the first parameter, and the string 'items' as the second parameter 
+
+If not, it will return a a L<Paws::ApiGateway::Resources> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllRestApis(sub { },[Limit => Int, Position => Str])
+
+=head2 GetAllRestApis([Limit => Int, Position => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - items, passing the object as the first parameter, and the string 'items' as the second parameter 
+
+If not, it will return a a L<Paws::ApiGateway::RestApis> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+
 
 
 =head1 SEE ALSO

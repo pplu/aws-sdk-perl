@@ -138,6 +138,92 @@ package Paws::CloudFormation;
     my $call_object = $self->new_with_coercions('Paws::CloudFormation::ValidateTemplate', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
+  sub DescribeAllStackEvents {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeStackEvents(@_);
+
+    if (not defined $callback) {
+      while ($result->NextToken) {
+        $result = $self->DescribeStackEvents(@_, NextToken => $result->NextToken);
+        push @{ $result->StackEvents }, @{ $result->StackEvents };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $result = $self->DescribeStackEvents(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'StackEvents') foreach (@{ $result->StackEvents });
+      }
+    }
+
+    return undef
+  }
+  sub DescribeAllStacks {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeStacks(@_);
+
+    if (not defined $callback) {
+      while ($result->NextToken) {
+        $result = $self->DescribeStacks(@_, NextToken => $result->NextToken);
+        push @{ $result->Stacks }, @{ $result->Stacks };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $result = $self->DescribeStacks(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'Stacks') foreach (@{ $result->Stacks });
+      }
+    }
+
+    return undef
+  }
+  sub ListAllStackResources {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListStackResources(@_);
+
+    if (not defined $callback) {
+      while ($result->NextToken) {
+        $result = $self->ListStackResources(@_, NextToken => $result->NextToken);
+        push @{ $result->StackResourceSummaries }, @{ $result->StackResourceSummaries };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $result = $self->ListStackResources(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'StackResourceSummaries') foreach (@{ $result->StackResourceSummaries });
+      }
+    }
+
+    return undef
+  }
+  sub ListAllStacks {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListStacks(@_);
+
+    if (not defined $callback) {
+      while ($result->NextToken) {
+        $result = $self->ListStacks(@_, NextToken => $result->NextToken);
+        push @{ $result->StackSummaries }, @{ $result->StackSummaries };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $result = $self->ListStacks(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'StackSummaries') foreach (@{ $result->StackSummaries });
+      }
+    }
+
+    return undef
+  }
+
 
   sub operations { qw/CancelUpdateStack ContinueUpdateRollback CreateChangeSet CreateStack DeleteChangeSet DeleteStack DescribeAccountLimits DescribeChangeSet DescribeStackEvents DescribeStackResource DescribeStackResources DescribeStacks EstimateTemplateCost ExecuteChangeSet GetStackPolicy GetTemplate GetTemplateSummary ListChangeSets ListExports ListStackResources ListStacks SetStackPolicy SignalResource UpdateStack ValidateTemplate / }
 
@@ -552,6 +638,63 @@ Returns: a L<Paws::CloudFormation::ValidateTemplateOutput> instance
 template is valid JSON. If it isn't, AWS CloudFormation checks if the
 template is valid YAML. If both these checks fail, AWS CloudFormation
 returns a template validation error.
+
+
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 DescribeAllStackEvents(sub { },[NextToken => Str, StackName => Str])
+
+=head2 DescribeAllStackEvents([NextToken => Str, StackName => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - StackEvents, passing the object as the first parameter, and the string 'StackEvents' as the second parameter 
+
+If not, it will return a a L<Paws::CloudFormation::DescribeStackEventsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllStacks(sub { },[NextToken => Str, StackName => Str])
+
+=head2 DescribeAllStacks([NextToken => Str, StackName => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Stacks, passing the object as the first parameter, and the string 'Stacks' as the second parameter 
+
+If not, it will return a a L<Paws::CloudFormation::DescribeStacksOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllStackResources(sub { },StackName => Str, [NextToken => Str])
+
+=head2 ListAllStackResources(StackName => Str, [NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - StackResourceSummaries, passing the object as the first parameter, and the string 'StackResourceSummaries' as the second parameter 
+
+If not, it will return a a L<Paws::CloudFormation::ListStackResourcesOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllStacks(sub { },[NextToken => Str, StackStatusFilter => ArrayRef[Str|Undef]])
+
+=head2 ListAllStacks([NextToken => Str, StackStatusFilter => ArrayRef[Str|Undef]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - StackSummaries, passing the object as the first parameter, and the string 'StackSummaries' as the second parameter 
+
+If not, it will return a a L<Paws::CloudFormation::ListStacksOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+
 
 
 =head1 SEE ALSO

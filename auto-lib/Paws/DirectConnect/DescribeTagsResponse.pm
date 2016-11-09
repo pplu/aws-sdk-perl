@@ -3,6 +3,7 @@ package Paws::DirectConnect::DescribeTagsResponse;
   use Moose;
   has ResourceTags => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::ResourceTag]', traits => ['Unwrapped'], xmlname => 'resourceTags' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -18,6 +19,7 @@ Paws::DirectConnect::DescribeTagsResponse
 Information about the tags.
 
 
+=head2 _request_id => Str
 
 
 =cut

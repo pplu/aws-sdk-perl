@@ -4,6 +4,7 @@ package Paws::SSM::GetDocumentResult;
   has Content => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -19,12 +20,12 @@ Paws::SSM::GetDocumentResult
 The contents of the SSM document.
 
 
-
 =head2 Name => Str
 
 The name of the SSM document.
 
 
+=head2 _request_id => Str
 
 
 =cut

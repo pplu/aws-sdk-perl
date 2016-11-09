@@ -109,6 +109,71 @@ package Paws::DataPipeline;
     my $call_object = $self->new_with_coercions('Paws::DataPipeline::ValidatePipelineDefinition', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
+  sub DescribeAllObjects {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeObjects(@_);
+
+    if (not defined $callback) {
+      while ($result->hasMoreResults) {
+        $result = $self->DescribeObjects(@_, marker => $result->marker);
+        push @{ $result->pipelineObjects }, @{ $result->pipelineObjects };
+      }
+      return $result;
+    } else {
+      while ($result->hasMoreResults) {
+        $result = $self->DescribeObjects(@_, marker => $result->marker);
+        $callback->($_ => 'pipelineObjects') foreach (@{ $result->pipelineObjects });
+      }
+    }
+
+    return undef
+  }
+  sub ListAllPipelines {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListPipelines(@_);
+
+    if (not defined $callback) {
+      while ($result->hasMoreResults) {
+        $result = $self->ListPipelines(@_, marker => $result->marker);
+        push @{ $result->pipelineIdList }, @{ $result->pipelineIdList };
+      }
+      return $result;
+    } else {
+      while ($result->hasMoreResults) {
+        $result = $self->ListPipelines(@_, marker => $result->marker);
+        $callback->($_ => 'pipelineIdList') foreach (@{ $result->pipelineIdList });
+      }
+    }
+
+    return undef
+  }
+  sub QueryAllObjects {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->QueryObjects(@_);
+
+    if (not defined $callback) {
+      while ($result->hasMoreResults) {
+        $result = $self->QueryObjects(@_, marker => $result->marker);
+        push @{ $result->ids }, @{ $result->ids };
+      }
+      return $result;
+    } else {
+      while ($result->hasMoreResults) {
+        $result = $self->QueryObjects(@_, marker => $result->marker);
+        $callback->($_ => 'ids') foreach (@{ $result->ids });
+      }
+    }
+
+    return undef
+  }
+
 
   sub operations { qw/ActivatePipeline AddTags CreatePipeline DeactivatePipeline DeletePipeline DescribeObjects DescribePipelines EvaluateExpression GetPipelineDefinition ListPipelines PollForTask PutPipelineDefinition QueryObjects RemoveTags ReportTaskProgress ReportTaskRunnerHeartbeat SetStatus SetTaskStatus ValidatePipelineDefinition / }
 
@@ -433,6 +498,51 @@ Returns: a L<Paws::DataPipeline::ValidatePipelineDefinitionOutput> instance
 
   Validates the specified pipeline definition to ensure that it is well
 formed and can be run without error.
+
+
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 DescribeAllObjects(sub { },ObjectIds => ArrayRef[Str|Undef], PipelineId => Str, [EvaluateExpressions => Bool, Marker => Str])
+
+=head2 DescribeAllObjects(ObjectIds => ArrayRef[Str|Undef], PipelineId => Str, [EvaluateExpressions => Bool, Marker => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - pipelineObjects, passing the object as the first parameter, and the string 'pipelineObjects' as the second parameter 
+
+If not, it will return a a L<Paws::DataPipeline::DescribeObjectsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllPipelines(sub { },[Marker => Str])
+
+=head2 ListAllPipelines([Marker => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - pipelineIdList, passing the object as the first parameter, and the string 'pipelineIdList' as the second parameter 
+
+If not, it will return a a L<Paws::DataPipeline::ListPipelinesOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 QueryAllObjects(sub { },PipelineId => Str, Sphere => Str, [Limit => Int, Marker => Str, Query => L<Paws::DataPipeline::Query>])
+
+=head2 QueryAllObjects(PipelineId => Str, Sphere => Str, [Limit => Int, Marker => Str, Query => L<Paws::DataPipeline::Query>])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ids, passing the object as the first parameter, and the string 'ids' as the second parameter 
+
+If not, it will return a a L<Paws::DataPipeline::QueryObjectsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+
 
 
 =head1 SEE ALSO

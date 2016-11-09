@@ -95,12 +95,21 @@ package Paws::API::Caller;
     my ($self, $unserialized_struct, $call_object, $http_status, $content, $headers) = @_;
 
     $call_object = $call_object->meta->name;
+    my $request_id = $headers->{'x-amz-request-id'} 
+                      || $headers->{'x-amzn-requestid'}
+                      || $unserialized_struct->{'requestId'} 
+                      || $unserialized_struct->{'RequestId'} 
+                      || $unserialized_struct->{'RequestID'}
+                      || $unserialized_struct->{ ResponseMetadata }->{ RequestId };
+    
 
     if ($call_object->_returns){
       if ($call_object->_result_key){
         $unserialized_struct = $unserialized_struct->{ $call_object->_result_key };
       }
 
+      $unserialized_struct->{ _request_id } = $request_id;
+      
       Paws->load_class($call_object->_returns);
       my $o_result = $self->new_from_struct($call_object->_returns, $unserialized_struct);
       return $o_result;
@@ -112,7 +121,7 @@ package Paws::API::Caller;
   sub new_from_struct {
     my ($self, $class, $result) = @_;
     my %args;
- 
+    
     if ($class->does('Paws::API::StrToObjMapParser')) {
       return $self->handle_response_strtoobjmap($class, $result);
     } elsif ($class->does('Paws::API::StrToNativeMapParser')) {
@@ -121,12 +130,17 @@ package Paws::API::Caller;
     foreach my $att ($class->meta->get_attribute_list) {
       next if (not my $meta = $class->meta->get_attribute($att));
 
-      my $key = $meta->does('Paws::API::Attribute::Trait::Unwrapped') ? $meta->xmlname : $att;
+      my $key = $meta->does('Paws::API::Attribute::Trait::Unwrapped') ? $meta->xmlname :
+                $meta->does('Paws::API::Attribute::Trait::ParamInHeader') ? lc($meta->header_name) : $att;
+
       my $att_type = $meta->type_constraint;
 
-#      use Data::Dumper;
-#      print STDERR "GOING TO DO AN $att_type\n";
-#      print STDERR "VALUE: " . Dumper($result);
+    #  use Data::Dumper;
+    #  print STDERR "USING KEY:  $key\n";
+    #  print STDERR "$att IS A '$att_type' TYPE\n";
+    #  print STDERR "VALUE: " . Dumper($result);
+    #  my $extracted_val = $result->{ $key };
+    #  print STDERR "RESULT >>> $extracted_val\n";
 
       # We'll consider that an attribute without brackets [] isn't an array type
       if ($att_type !~ m/\[.*\]$/) {
@@ -170,6 +184,17 @@ package Paws::API::Caller;
                 $args{ $att } = $self->new_from_struct($att_class, $value);
               }
             }
+          } else {
+              ##########
+              # This loop is required to guard against cases (such as Paws::S3::CopyObject) where
+              # the root node is removed from the response when unserialising (see KeepRoot => 1 for 
+              # XML::Simple) but is required to create the Paws object. This is mostly due to the 
+              # implementation of the new_from_struct sub 
+              my $att_class = $att_type->class;
+              eval {
+                $args{ $att } = $self->new_from_struct($att_class, $result);
+                1;
+              } or do {}
           }
         } else {
           if (defined $value) {

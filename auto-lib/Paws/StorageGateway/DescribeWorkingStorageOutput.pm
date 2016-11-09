@@ -6,6 +6,7 @@ package Paws::StorageGateway::DescribeWorkingStorageOutput;
   has WorkingStorageAllocatedInBytes => (is => 'ro', isa => 'Int');
   has WorkingStorageUsedInBytes => (is => 'ro', isa => 'Int');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -24,9 +25,7 @@ storage. Each local disk ID is specified as a string (minimum length of
 working storage, then the DiskIds array is empty.
 
 
-
 =head2 GatewayARN => Str
-
 
 
 
@@ -37,13 +36,13 @@ The total working storage in bytes allocated for the gateway. If no
 working storage is configured for the gateway, this field returns 0.
 
 
-
 =head2 WorkingStorageUsedInBytes => Int
 
 The total working storage in bytes in use by the gateway. If no working
 storage is configured for the gateway, this field returns 0.
 
 
+=head2 _request_id => Str
 
 
 =cut

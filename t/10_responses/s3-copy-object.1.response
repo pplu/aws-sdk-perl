@@ -1,0 +1,17 @@
+---
+content: |-
+  <?xml version="1.0" encoding="UTF-8"?>
+  <CopyObjectResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/">
+    <LastModified>2016-11-02T09:06:53.000Z</LastModified>
+    <ETag>&quot;3858f62230ac3c915f300c664312c63f&quot;</ETag>
+  </CopyObjectResult>
+headers:
+  connection: close
+  content-length: 234
+  content-type: application/xml
+  date: 'Wed, 02 Nov 2016 09:06:53 GMT'
+  server: AmazonS3
+  x-amz-id-2: 9at9Tkr12HD9D3BxeTNF19nG5/duQzcdGS7Hx7wNAZsYbUHLpTTUAlm0iz2+rRiImLdracfX4eQ=
+  x-amz-request-id: B284281CCA207EAB
+  x-amz-version-id: v1.2.3.4
+status: 200

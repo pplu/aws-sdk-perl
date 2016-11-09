@@ -79,6 +79,8 @@ package Paws::Budgets;
     my $call_object = $self->new_with_coercions('Paws::Budgets::UpdateSubscriber', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
+
 
   sub operations { qw/CreateBudget CreateNotification CreateSubscriber DeleteBudget DeleteNotification DeleteSubscriber DescribeBudget DescribeBudgets DescribeNotificationsForBudget DescribeSubscribersForNotification UpdateBudget UpdateNotification UpdateSubscriber / }
 
@@ -227,6 +229,15 @@ Each argument is described in detail in: L<Paws::Budgets::UpdateSubscriber>
 Returns: a L<Paws::Budgets::UpdateSubscriberResponse> instance
 
   Update a subscriber
+
+
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+
 
 
 =head1 SEE ALSO

@@ -461,6 +461,386 @@ package Paws::RDS;
     my $call_object = $self->new_with_coercions('Paws::RDS::RevokeDBSecurityGroupIngress', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
+  sub DescribeAllDBClusterSnapshots {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeDBClusterSnapshots(@_);
+
+    if (not defined $callback) {
+      while ($result->Marker) {
+        $result = $self->DescribeDBClusterSnapshots(@_, Marker => $result->Marker);
+        push @{ $result->DBClusterSnapshots }, @{ $result->DBClusterSnapshots };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $result = $self->DescribeDBClusterSnapshots(@_, Marker => $result->Marker);
+        $callback->($_ => 'DBClusterSnapshots') foreach (@{ $result->DBClusterSnapshots });
+      }
+    }
+
+    return undef
+  }
+  sub DescribeAllDBEngineVersions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeDBEngineVersions(@_);
+
+    if (not defined $callback) {
+      while ($result->Marker) {
+        $result = $self->DescribeDBEngineVersions(@_, Marker => $result->Marker);
+        push @{ $result->DBEngineVersions }, @{ $result->DBEngineVersions };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $result = $self->DescribeDBEngineVersions(@_, Marker => $result->Marker);
+        $callback->($_ => 'DBEngineVersions') foreach (@{ $result->DBEngineVersions });
+      }
+    }
+
+    return undef
+  }
+  sub DescribeAllDBInstances {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeDBInstances(@_);
+
+    if (not defined $callback) {
+      while ($result->Marker) {
+        $result = $self->DescribeDBInstances(@_, Marker => $result->Marker);
+        push @{ $result->DBInstances }, @{ $result->DBInstances };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $result = $self->DescribeDBInstances(@_, Marker => $result->Marker);
+        $callback->($_ => 'DBInstances') foreach (@{ $result->DBInstances });
+      }
+    }
+
+    return undef
+  }
+  sub DescribeAllDBLogFiles {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeDBLogFiles(@_);
+
+    if (not defined $callback) {
+      while ($result->Marker) {
+        $result = $self->DescribeDBLogFiles(@_, Marker => $result->Marker);
+        push @{ $result->DescribeDBLogFiles }, @{ $result->DescribeDBLogFiles };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $result = $self->DescribeDBLogFiles(@_, Marker => $result->Marker);
+        $callback->($_ => 'DescribeDBLogFiles') foreach (@{ $result->DescribeDBLogFiles });
+      }
+    }
+
+    return undef
+  }
+  sub DescribeAllDBParameterGroups {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeDBParameterGroups(@_);
+
+    if (not defined $callback) {
+      while ($result->Marker) {
+        $result = $self->DescribeDBParameterGroups(@_, Marker => $result->Marker);
+        push @{ $result->DBParameterGroups }, @{ $result->DBParameterGroups };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $result = $self->DescribeDBParameterGroups(@_, Marker => $result->Marker);
+        $callback->($_ => 'DBParameterGroups') foreach (@{ $result->DBParameterGroups });
+      }
+    }
+
+    return undef
+  }
+  sub DescribeAllDBParameters {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeDBParameters(@_);
+
+    if (not defined $callback) {
+      while ($result->Marker) {
+        $result = $self->DescribeDBParameters(@_, Marker => $result->Marker);
+        push @{ $result->Parameters }, @{ $result->Parameters };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $result = $self->DescribeDBParameters(@_, Marker => $result->Marker);
+        $callback->($_ => 'Parameters') foreach (@{ $result->Parameters });
+      }
+    }
+
+    return undef
+  }
+  sub DescribeAllDBSecurityGroups {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeDBSecurityGroups(@_);
+
+    if (not defined $callback) {
+      while ($result->Marker) {
+        $result = $self->DescribeDBSecurityGroups(@_, Marker => $result->Marker);
+        push @{ $result->DBSecurityGroups }, @{ $result->DBSecurityGroups };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $result = $self->DescribeDBSecurityGroups(@_, Marker => $result->Marker);
+        $callback->($_ => 'DBSecurityGroups') foreach (@{ $result->DBSecurityGroups });
+      }
+    }
+
+    return undef
+  }
+  sub DescribeAllDBSnapshots {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeDBSnapshots(@_);
+
+    if (not defined $callback) {
+      while ($result->Marker) {
+        $result = $self->DescribeDBSnapshots(@_, Marker => $result->Marker);
+        push @{ $result->DBSnapshots }, @{ $result->DBSnapshots };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $result = $self->DescribeDBSnapshots(@_, Marker => $result->Marker);
+        $callback->($_ => 'DBSnapshots') foreach (@{ $result->DBSnapshots });
+      }
+    }
+
+    return undef
+  }
+  sub DescribeAllDBSubnetGroups {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeDBSubnetGroups(@_);
+
+    if (not defined $callback) {
+      while ($result->Marker) {
+        $result = $self->DescribeDBSubnetGroups(@_, Marker => $result->Marker);
+        push @{ $result->DBSubnetGroups }, @{ $result->DBSubnetGroups };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $result = $self->DescribeDBSubnetGroups(@_, Marker => $result->Marker);
+        $callback->($_ => 'DBSubnetGroups') foreach (@{ $result->DBSubnetGroups });
+      }
+    }
+
+    return undef
+  }
+  sub DescribeAllEngineDefaultParameters {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeEngineDefaultParameters(@_);
+
+    if (not defined $callback) {
+      while ($result->Marker) {
+        $result = $self->DescribeEngineDefaultParameters(@_, Marker => $result->EngineDefaults->Marker);
+        push @{ $result->EngineDefaults->Parameters }, @{ $result->EngineDefaults->Parameters };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $result = $self->DescribeEngineDefaultParameters(@_, Marker => $result->EngineDefaults->Marker);
+        $callback->($_ => 'EngineDefaults.Parameters') foreach (@{ $result->EngineDefaults->Parameters });
+      }
+    }
+
+    return undef
+  }
+  sub DescribeAllEvents {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeEvents(@_);
+
+    if (not defined $callback) {
+      while ($result->Marker) {
+        $result = $self->DescribeEvents(@_, Marker => $result->Marker);
+        push @{ $result->Events }, @{ $result->Events };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $result = $self->DescribeEvents(@_, Marker => $result->Marker);
+        $callback->($_ => 'Events') foreach (@{ $result->Events });
+      }
+    }
+
+    return undef
+  }
+  sub DescribeAllEventSubscriptions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeEventSubscriptions(@_);
+
+    if (not defined $callback) {
+      while ($result->Marker) {
+        $result = $self->DescribeEventSubscriptions(@_, Marker => $result->Marker);
+        push @{ $result->EventSubscriptionsList }, @{ $result->EventSubscriptionsList };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $result = $self->DescribeEventSubscriptions(@_, Marker => $result->Marker);
+        $callback->($_ => 'EventSubscriptionsList') foreach (@{ $result->EventSubscriptionsList });
+      }
+    }
+
+    return undef
+  }
+  sub DescribeAllOptionGroupOptions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeOptionGroupOptions(@_);
+
+    if (not defined $callback) {
+      while ($result->Marker) {
+        $result = $self->DescribeOptionGroupOptions(@_, Marker => $result->Marker);
+        push @{ $result->OptionGroupOptions }, @{ $result->OptionGroupOptions };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $result = $self->DescribeOptionGroupOptions(@_, Marker => $result->Marker);
+        $callback->($_ => 'OptionGroupOptions') foreach (@{ $result->OptionGroupOptions });
+      }
+    }
+
+    return undef
+  }
+  sub DescribeAllOptionGroups {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeOptionGroups(@_);
+
+    if (not defined $callback) {
+      while ($result->Marker) {
+        $result = $self->DescribeOptionGroups(@_, Marker => $result->Marker);
+        push @{ $result->OptionGroupsList }, @{ $result->OptionGroupsList };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $result = $self->DescribeOptionGroups(@_, Marker => $result->Marker);
+        $callback->($_ => 'OptionGroupsList') foreach (@{ $result->OptionGroupsList });
+      }
+    }
+
+    return undef
+  }
+  sub DescribeAllOrderableDBInstanceOptions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeOrderableDBInstanceOptions(@_);
+
+    if (not defined $callback) {
+      while ($result->Marker) {
+        $result = $self->DescribeOrderableDBInstanceOptions(@_, Marker => $result->Marker);
+        push @{ $result->OrderableDBInstanceOptions }, @{ $result->OrderableDBInstanceOptions };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $result = $self->DescribeOrderableDBInstanceOptions(@_, Marker => $result->Marker);
+        $callback->($_ => 'OrderableDBInstanceOptions') foreach (@{ $result->OrderableDBInstanceOptions });
+      }
+    }
+
+    return undef
+  }
+  sub DescribeAllReservedDBInstances {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeReservedDBInstances(@_);
+
+    if (not defined $callback) {
+      while ($result->Marker) {
+        $result = $self->DescribeReservedDBInstances(@_, Marker => $result->Marker);
+        push @{ $result->ReservedDBInstances }, @{ $result->ReservedDBInstances };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $result = $self->DescribeReservedDBInstances(@_, Marker => $result->Marker);
+        $callback->($_ => 'ReservedDBInstances') foreach (@{ $result->ReservedDBInstances });
+      }
+    }
+
+    return undef
+  }
+  sub DescribeAllReservedDBInstancesOfferings {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeReservedDBInstancesOfferings(@_);
+
+    if (not defined $callback) {
+      while ($result->Marker) {
+        $result = $self->DescribeReservedDBInstancesOfferings(@_, Marker => $result->Marker);
+        push @{ $result->ReservedDBInstancesOfferings }, @{ $result->ReservedDBInstancesOfferings };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $result = $self->DescribeReservedDBInstancesOfferings(@_, Marker => $result->Marker);
+        $callback->($_ => 'ReservedDBInstancesOfferings') foreach (@{ $result->ReservedDBInstancesOfferings });
+      }
+    }
+
+    return undef
+  }
+  sub DownloadAllDBLogFilePortions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DownloadDBLogFilePortion(@_);
+
+    if (not defined $callback) {
+      while ($result->AdditionalDataPending) {
+        $result = $self->DownloadDBLogFilePortion(@_, Marker => $result->Marker);
+        push @{ $result->LogFileData }, @{ $result->LogFileData };
+      }
+      return $result;
+    } else {
+      while ($result->AdditionalDataPending) {
+        $result = $self->DownloadDBLogFilePortion(@_, Marker => $result->Marker);
+        $callback->($_ => 'LogFileData') foreach (@{ $result->LogFileData });
+      }
+    }
+
+    return undef
+  }
+
 
   sub operations { qw/AddRoleToDBCluster AddSourceIdentifierToSubscription AddTagsToResource ApplyPendingMaintenanceAction AuthorizeDBSecurityGroupIngress CopyDBClusterParameterGroup CopyDBClusterSnapshot CopyDBParameterGroup CopyDBSnapshot CopyOptionGroup CreateDBCluster CreateDBClusterParameterGroup CreateDBClusterSnapshot CreateDBInstance CreateDBInstanceReadReplica CreateDBParameterGroup CreateDBSecurityGroup CreateDBSnapshot CreateDBSubnetGroup CreateEventSubscription CreateOptionGroup DeleteDBCluster DeleteDBClusterParameterGroup DeleteDBClusterSnapshot DeleteDBInstance DeleteDBParameterGroup DeleteDBSecurityGroup DeleteDBSnapshot DeleteDBSubnetGroup DeleteEventSubscription DeleteOptionGroup DescribeAccountAttributes DescribeCertificates DescribeDBClusterParameterGroups DescribeDBClusterParameters DescribeDBClusters DescribeDBClusterSnapshotAttributes DescribeDBClusterSnapshots DescribeDBEngineVersions DescribeDBInstances DescribeDBLogFiles DescribeDBParameterGroups DescribeDBParameters DescribeDBSecurityGroups DescribeDBSnapshotAttributes DescribeDBSnapshots DescribeDBSubnetGroups DescribeEngineDefaultClusterParameters DescribeEngineDefaultParameters DescribeEventCategories DescribeEvents DescribeEventSubscriptions DescribeOptionGroupOptions DescribeOptionGroups DescribeOrderableDBInstanceOptions DescribePendingMaintenanceActions DescribeReservedDBInstances DescribeReservedDBInstancesOfferings DescribeSourceRegions DownloadDBLogFilePortion FailoverDBCluster ListTagsForResource ModifyDBCluster ModifyDBClusterParameterGroup ModifyDBClusterSnapshotAttribute ModifyDBInstance ModifyDBParameterGroup ModifyDBSnapshotAttribute ModifyDBSubnetGroup ModifyEventSubscription ModifyOptionGroup PromoteReadReplica PromoteReadReplicaDBCluster PurchaseReservedDBInstancesOffering RebootDBInstance RemoveRoleFromDBCluster RemoveSourceIdentifierFromSubscription RemoveTagsFromResource ResetDBClusterParameterGroup ResetDBParameterGroup RestoreDBClusterFromS3 RestoreDBClusterFromSnapshot RestoreDBClusterToPointInTime RestoreDBInstanceFromDBSnapshot RestoreDBInstanceToPointInTime RevokeDBSecurityGroupIngress / }
 
@@ -1800,6 +2180,231 @@ ranges or EC2 or VPC Security Groups. Required parameters for this API
 are one of CIDRIP, EC2SecurityGroupId for VPC, or
 (EC2SecurityGroupOwnerId and either EC2SecurityGroupName or
 EC2SecurityGroupId).
+
+
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 DescribeAllDBClusterSnapshots(sub { },[DBClusterIdentifier => Str, DBClusterSnapshotIdentifier => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], IncludePublic => Bool, IncludeShared => Bool, Marker => Str, MaxRecords => Int, SnapshotType => Str])
+
+=head2 DescribeAllDBClusterSnapshots([DBClusterIdentifier => Str, DBClusterSnapshotIdentifier => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], IncludePublic => Bool, IncludeShared => Bool, Marker => Str, MaxRecords => Int, SnapshotType => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - DBClusterSnapshots, passing the object as the first parameter, and the string 'DBClusterSnapshots' as the second parameter 
+
+If not, it will return a a L<Paws::RDS::DBClusterSnapshotMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllDBEngineVersions(sub { },[DBParameterGroupFamily => Str, DefaultOnly => Bool, Engine => Str, EngineVersion => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], ListSupportedCharacterSets => Bool, ListSupportedTimezones => Bool, Marker => Str, MaxRecords => Int])
+
+=head2 DescribeAllDBEngineVersions([DBParameterGroupFamily => Str, DefaultOnly => Bool, Engine => Str, EngineVersion => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], ListSupportedCharacterSets => Bool, ListSupportedTimezones => Bool, Marker => Str, MaxRecords => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - DBEngineVersions, passing the object as the first parameter, and the string 'DBEngineVersions' as the second parameter 
+
+If not, it will return a a L<Paws::RDS::DBEngineVersionMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllDBInstances(sub { },[DBInstanceIdentifier => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
+
+=head2 DescribeAllDBInstances([DBInstanceIdentifier => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - DBInstances, passing the object as the first parameter, and the string 'DBInstances' as the second parameter 
+
+If not, it will return a a L<Paws::RDS::DBInstanceMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllDBLogFiles(sub { },DBInstanceIdentifier => Str, [FileLastWritten => Int, FilenameContains => Str, FileSize => Int, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
+
+=head2 DescribeAllDBLogFiles(DBInstanceIdentifier => Str, [FileLastWritten => Int, FilenameContains => Str, FileSize => Int, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - DescribeDBLogFiles, passing the object as the first parameter, and the string 'DescribeDBLogFiles' as the second parameter 
+
+If not, it will return a a L<Paws::RDS::DescribeDBLogFilesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllDBParameterGroups(sub { },[DBParameterGroupName => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
+
+=head2 DescribeAllDBParameterGroups([DBParameterGroupName => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - DBParameterGroups, passing the object as the first parameter, and the string 'DBParameterGroups' as the second parameter 
+
+If not, it will return a a L<Paws::RDS::DBParameterGroupsMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllDBParameters(sub { },DBParameterGroupName => Str, [Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int, Source => Str])
+
+=head2 DescribeAllDBParameters(DBParameterGroupName => Str, [Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int, Source => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Parameters, passing the object as the first parameter, and the string 'Parameters' as the second parameter 
+
+If not, it will return a a L<Paws::RDS::DBParameterGroupDetails> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllDBSecurityGroups(sub { },[DBSecurityGroupName => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
+
+=head2 DescribeAllDBSecurityGroups([DBSecurityGroupName => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - DBSecurityGroups, passing the object as the first parameter, and the string 'DBSecurityGroups' as the second parameter 
+
+If not, it will return a a L<Paws::RDS::DBSecurityGroupMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllDBSnapshots(sub { },[DBInstanceIdentifier => Str, DBSnapshotIdentifier => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], IncludePublic => Bool, IncludeShared => Bool, Marker => Str, MaxRecords => Int, SnapshotType => Str])
+
+=head2 DescribeAllDBSnapshots([DBInstanceIdentifier => Str, DBSnapshotIdentifier => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], IncludePublic => Bool, IncludeShared => Bool, Marker => Str, MaxRecords => Int, SnapshotType => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - DBSnapshots, passing the object as the first parameter, and the string 'DBSnapshots' as the second parameter 
+
+If not, it will return a a L<Paws::RDS::DBSnapshotMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllDBSubnetGroups(sub { },[DBSubnetGroupName => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
+
+=head2 DescribeAllDBSubnetGroups([DBSubnetGroupName => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - DBSubnetGroups, passing the object as the first parameter, and the string 'DBSubnetGroups' as the second parameter 
+
+If not, it will return a a L<Paws::RDS::DBSubnetGroupMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllEngineDefaultParameters(sub { },DBParameterGroupFamily => Str, [Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
+
+=head2 DescribeAllEngineDefaultParameters(DBParameterGroupFamily => Str, [Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - EngineDefaults.Parameters, passing the object as the first parameter, and the string 'EngineDefaults.Parameters' as the second parameter 
+
+If not, it will return a a L<Paws::RDS::DescribeEngineDefaultParametersResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllEvents(sub { },[Duration => Int, EndTime => Str, EventCategories => ArrayRef[Str|Undef], Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int, SourceIdentifier => Str, SourceType => Str, StartTime => Str])
+
+=head2 DescribeAllEvents([Duration => Int, EndTime => Str, EventCategories => ArrayRef[Str|Undef], Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int, SourceIdentifier => Str, SourceType => Str, StartTime => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Events, passing the object as the first parameter, and the string 'Events' as the second parameter 
+
+If not, it will return a a L<Paws::RDS::EventsMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllEventSubscriptions(sub { },[Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int, SubscriptionName => Str])
+
+=head2 DescribeAllEventSubscriptions([Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int, SubscriptionName => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - EventSubscriptionsList, passing the object as the first parameter, and the string 'EventSubscriptionsList' as the second parameter 
+
+If not, it will return a a L<Paws::RDS::EventSubscriptionsMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllOptionGroupOptions(sub { },EngineName => Str, [Filters => ArrayRef[L<Paws::RDS::Filter>], MajorEngineVersion => Str, Marker => Str, MaxRecords => Int])
+
+=head2 DescribeAllOptionGroupOptions(EngineName => Str, [Filters => ArrayRef[L<Paws::RDS::Filter>], MajorEngineVersion => Str, Marker => Str, MaxRecords => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - OptionGroupOptions, passing the object as the first parameter, and the string 'OptionGroupOptions' as the second parameter 
+
+If not, it will return a a L<Paws::RDS::OptionGroupOptionsMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllOptionGroups(sub { },[EngineName => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], MajorEngineVersion => Str, Marker => Str, MaxRecords => Int, OptionGroupName => Str])
+
+=head2 DescribeAllOptionGroups([EngineName => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], MajorEngineVersion => Str, Marker => Str, MaxRecords => Int, OptionGroupName => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - OptionGroupsList, passing the object as the first parameter, and the string 'OptionGroupsList' as the second parameter 
+
+If not, it will return a a L<Paws::RDS::OptionGroups> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllOrderableDBInstanceOptions(sub { },Engine => Str, [DBInstanceClass => Str, EngineVersion => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], LicenseModel => Str, Marker => Str, MaxRecords => Int, Vpc => Bool])
+
+=head2 DescribeAllOrderableDBInstanceOptions(Engine => Str, [DBInstanceClass => Str, EngineVersion => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], LicenseModel => Str, Marker => Str, MaxRecords => Int, Vpc => Bool])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - OrderableDBInstanceOptions, passing the object as the first parameter, and the string 'OrderableDBInstanceOptions' as the second parameter 
+
+If not, it will return a a L<Paws::RDS::OrderableDBInstanceOptionsMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllReservedDBInstances(sub { },[DBInstanceClass => Str, Duration => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int, MultiAZ => Bool, OfferingType => Str, ProductDescription => Str, ReservedDBInstanceId => Str, ReservedDBInstancesOfferingId => Str])
+
+=head2 DescribeAllReservedDBInstances([DBInstanceClass => Str, Duration => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int, MultiAZ => Bool, OfferingType => Str, ProductDescription => Str, ReservedDBInstanceId => Str, ReservedDBInstancesOfferingId => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ReservedDBInstances, passing the object as the first parameter, and the string 'ReservedDBInstances' as the second parameter 
+
+If not, it will return a a L<Paws::RDS::ReservedDBInstanceMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllReservedDBInstancesOfferings(sub { },[DBInstanceClass => Str, Duration => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int, MultiAZ => Bool, OfferingType => Str, ProductDescription => Str, ReservedDBInstancesOfferingId => Str])
+
+=head2 DescribeAllReservedDBInstancesOfferings([DBInstanceClass => Str, Duration => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int, MultiAZ => Bool, OfferingType => Str, ProductDescription => Str, ReservedDBInstancesOfferingId => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ReservedDBInstancesOfferings, passing the object as the first parameter, and the string 'ReservedDBInstancesOfferings' as the second parameter 
+
+If not, it will return a a L<Paws::RDS::ReservedDBInstancesOfferingMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DownloadAllDBLogFilePortions(sub { },DBInstanceIdentifier => Str, LogFileName => Str, [Marker => Str, NumberOfLines => Int])
+
+=head2 DownloadAllDBLogFilePortions(DBInstanceIdentifier => Str, LogFileName => Str, [Marker => Str, NumberOfLines => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - LogFileData, passing the object as the first parameter, and the string 'LogFileData' as the second parameter 
+
+If not, it will return a a L<Paws::RDS::DownloadDBLogFilePortionDetails> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+
 
 
 =head1 SEE ALSO

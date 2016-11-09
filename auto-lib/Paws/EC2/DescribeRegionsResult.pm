@@ -3,6 +3,7 @@ package Paws::EC2::DescribeRegionsResult;
   use Moose;
   has Regions => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Region]', xmlname => 'regionInfo', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -19,6 +20,7 @@ Paws::EC2::DescribeRegionsResult
 Information about one or more regions.
 
 
+=head2 _request_id => Str
 
 
 =cut

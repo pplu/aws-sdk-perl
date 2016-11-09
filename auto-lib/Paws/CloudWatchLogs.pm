@@ -139,6 +139,136 @@ package Paws::CloudWatchLogs;
     my $call_object = $self->new_with_coercions('Paws::CloudWatchLogs::TestMetricFilter', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
+  sub DescribeAllDestinations {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeDestinations(@_);
+
+    if (not defined $callback) {
+      while ($result->nextToken) {
+        $result = $self->DescribeDestinations(@_, nextToken => $result->nextToken);
+        push @{ $result->destinations }, @{ $result->destinations };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $result = $self->DescribeDestinations(@_, nextToken => $result->nextToken);
+        $callback->($_ => 'destinations') foreach (@{ $result->destinations });
+      }
+    }
+
+    return undef
+  }
+  sub DescribeAllLogGroups {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeLogGroups(@_);
+
+    if (not defined $callback) {
+      while ($result->nextToken) {
+        $result = $self->DescribeLogGroups(@_, nextToken => $result->nextToken);
+        push @{ $result->logGroups }, @{ $result->logGroups };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $result = $self->DescribeLogGroups(@_, nextToken => $result->nextToken);
+        $callback->($_ => 'logGroups') foreach (@{ $result->logGroups });
+      }
+    }
+
+    return undef
+  }
+  sub DescribeAllLogStreams {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeLogStreams(@_);
+
+    if (not defined $callback) {
+      while ($result->nextToken) {
+        $result = $self->DescribeLogStreams(@_, nextToken => $result->nextToken);
+        push @{ $result->logStreams }, @{ $result->logStreams };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $result = $self->DescribeLogStreams(@_, nextToken => $result->nextToken);
+        $callback->($_ => 'logStreams') foreach (@{ $result->logStreams });
+      }
+    }
+
+    return undef
+  }
+  sub DescribeAllMetricFilters {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeMetricFilters(@_);
+
+    if (not defined $callback) {
+      while ($result->nextToken) {
+        $result = $self->DescribeMetricFilters(@_, nextToken => $result->nextToken);
+        push @{ $result->metricFilters }, @{ $result->metricFilters };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $result = $self->DescribeMetricFilters(@_, nextToken => $result->nextToken);
+        $callback->($_ => 'metricFilters') foreach (@{ $result->metricFilters });
+      }
+    }
+
+    return undef
+  }
+  sub DescribeAllSubscriptionFilters {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeSubscriptionFilters(@_);
+
+    if (not defined $callback) {
+      while ($result->nextToken) {
+        $result = $self->DescribeSubscriptionFilters(@_, nextToken => $result->nextToken);
+        push @{ $result->subscriptionFilters }, @{ $result->subscriptionFilters };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $result = $self->DescribeSubscriptionFilters(@_, nextToken => $result->nextToken);
+        $callback->($_ => 'subscriptionFilters') foreach (@{ $result->subscriptionFilters });
+      }
+    }
+
+    return undef
+  }
+  sub FilterAllLogEvents {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->FilterLogEvents(@_);
+
+    if (not defined $callback) {
+      while ($result->nextToken) {
+        $result = $self->FilterLogEvents(@_, nextToken => $result->nextToken);
+        push @{ $result->events }, @{ $result->events };
+        push @{ $result->searchedLogStreams }, @{ $result->searchedLogStreams };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $result = $self->FilterLogEvents(@_, nextToken => $result->nextToken);
+        $callback->($_ => 'events') foreach (@{ $result->events });
+        $callback->($_ => 'searchedLogStreams') foreach (@{ $result->searchedLogStreams });
+      }
+    }
+
+    return undef
+  }
+
 
   sub operations { qw/CancelExportTask CreateExportTask CreateLogGroup CreateLogStream DeleteDestination DeleteLogGroup DeleteLogStream DeleteMetricFilter DeleteRetentionPolicy DeleteSubscriptionFilter DescribeDestinations DescribeExportTasks DescribeLogGroups DescribeLogStreams DescribeMetricFilters DescribeSubscriptionFilters FilterLogEvents GetLogEvents PutDestination PutDestinationPolicy PutLogEvents PutMetricFilter PutRetentionPolicy PutSubscriptionFilter TestMetricFilter / }
 
@@ -661,6 +791,89 @@ Returns: a L<Paws::CloudWatchLogs::TestMetricFilterResponse> instance
   Tests the filter pattern of a metric filter against a sample of log
 event messages. You can use this operation to validate the correctness
 of a metric filter pattern.
+
+
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 DescribeAllDestinations(sub { },[DestinationNamePrefix => Str, Limit => Int, NextToken => Str])
+
+=head2 DescribeAllDestinations([DestinationNamePrefix => Str, Limit => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - destinations, passing the object as the first parameter, and the string 'destinations' as the second parameter 
+
+If not, it will return a a L<Paws::CloudWatchLogs::DescribeDestinationsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllLogGroups(sub { },[Limit => Int, LogGroupNamePrefix => Str, NextToken => Str])
+
+=head2 DescribeAllLogGroups([Limit => Int, LogGroupNamePrefix => Str, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - logGroups, passing the object as the first parameter, and the string 'logGroups' as the second parameter 
+
+If not, it will return a a L<Paws::CloudWatchLogs::DescribeLogGroupsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllLogStreams(sub { },LogGroupName => Str, [Descending => Bool, Limit => Int, LogStreamNamePrefix => Str, NextToken => Str, OrderBy => Str])
+
+=head2 DescribeAllLogStreams(LogGroupName => Str, [Descending => Bool, Limit => Int, LogStreamNamePrefix => Str, NextToken => Str, OrderBy => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - logStreams, passing the object as the first parameter, and the string 'logStreams' as the second parameter 
+
+If not, it will return a a L<Paws::CloudWatchLogs::DescribeLogStreamsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllMetricFilters(sub { },LogGroupName => Str, [FilterNamePrefix => Str, Limit => Int, NextToken => Str])
+
+=head2 DescribeAllMetricFilters(LogGroupName => Str, [FilterNamePrefix => Str, Limit => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - metricFilters, passing the object as the first parameter, and the string 'metricFilters' as the second parameter 
+
+If not, it will return a a L<Paws::CloudWatchLogs::DescribeMetricFiltersResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllSubscriptionFilters(sub { },LogGroupName => Str, [FilterNamePrefix => Str, Limit => Int, NextToken => Str])
+
+=head2 DescribeAllSubscriptionFilters(LogGroupName => Str, [FilterNamePrefix => Str, Limit => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - subscriptionFilters, passing the object as the first parameter, and the string 'subscriptionFilters' as the second parameter 
+
+If not, it will return a a L<Paws::CloudWatchLogs::DescribeSubscriptionFiltersResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 FilterAllLogEvents(sub { },LogGroupName => Str, [EndTime => Int, FilterPattern => Str, Interleaved => Bool, Limit => Int, LogStreamNames => ArrayRef[Str|Undef], NextToken => Str, StartTime => Int])
+
+=head2 FilterAllLogEvents(LogGroupName => Str, [EndTime => Int, FilterPattern => Str, Interleaved => Bool, Limit => Int, LogStreamNames => ArrayRef[Str|Undef], NextToken => Str, StartTime => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - events, passing the object as the first parameter, and the string 'events' as the second parameter 
+
+ - searchedLogStreams, passing the object as the first parameter, and the string 'searchedLogStreams' as the second parameter 
+
+If not, it will return a a L<Paws::CloudWatchLogs::FilterLogEventsResponse> instance with all the C<param>s; andC<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+
 
 
 =head1 SEE ALSO

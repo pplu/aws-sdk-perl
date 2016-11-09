@@ -1,7 +1,7 @@
 
 package Paws::Route53::UpdateTrafficPolicyInstance;
   use Moose;
-  has Id => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'Id' , required => 1);
+  has Id => (is => 'ro', isa => 'Str', uri_name => 'Id', traits => ['ParamInURI'], required => 1);
   has TrafficPolicyId => (is => 'ro', isa => 'Str', required => 1);
   has TrafficPolicyVersion => (is => 'ro', isa => 'Int', required => 1);
   has TTL => (is => 'ro', isa => 'Int', required => 1);

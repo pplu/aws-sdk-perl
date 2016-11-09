@@ -1,0 +1,13 @@
+---
+call: CreateBucket
+service: S3
+tests:
+  - path: request_id
+    op: eq
+    expected: EF9D1C89539E2208
+  - path: message
+    op: eq
+    expected: Conflict
+  - path: code
+    op: eq
+    expected: 409

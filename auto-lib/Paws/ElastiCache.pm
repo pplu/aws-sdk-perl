@@ -203,6 +203,260 @@ package Paws::ElastiCache;
     my $call_object = $self->new_with_coercions('Paws::ElastiCache::RevokeCacheSecurityGroupIngress', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
+  sub DescribeAllCacheClusters {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeCacheClusters(@_);
+
+    if (not defined $callback) {
+      while ($result->Marker) {
+        $result = $self->DescribeCacheClusters(@_, Marker => $result->Marker);
+        push @{ $result->CacheClusters }, @{ $result->CacheClusters };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $result = $self->DescribeCacheClusters(@_, Marker => $result->Marker);
+        $callback->($_ => 'CacheClusters') foreach (@{ $result->CacheClusters });
+      }
+    }
+
+    return undef
+  }
+  sub DescribeAllCacheEngineVersions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeCacheEngineVersions(@_);
+
+    if (not defined $callback) {
+      while ($result->Marker) {
+        $result = $self->DescribeCacheEngineVersions(@_, Marker => $result->Marker);
+        push @{ $result->CacheEngineVersions }, @{ $result->CacheEngineVersions };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $result = $self->DescribeCacheEngineVersions(@_, Marker => $result->Marker);
+        $callback->($_ => 'CacheEngineVersions') foreach (@{ $result->CacheEngineVersions });
+      }
+    }
+
+    return undef
+  }
+  sub DescribeAllCacheParameterGroups {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeCacheParameterGroups(@_);
+
+    if (not defined $callback) {
+      while ($result->Marker) {
+        $result = $self->DescribeCacheParameterGroups(@_, Marker => $result->Marker);
+        push @{ $result->CacheParameterGroups }, @{ $result->CacheParameterGroups };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $result = $self->DescribeCacheParameterGroups(@_, Marker => $result->Marker);
+        $callback->($_ => 'CacheParameterGroups') foreach (@{ $result->CacheParameterGroups });
+      }
+    }
+
+    return undef
+  }
+  sub DescribeAllCacheParameters {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeCacheParameters(@_);
+
+    if (not defined $callback) {
+      while ($result->Marker) {
+        $result = $self->DescribeCacheParameters(@_, Marker => $result->Marker);
+        push @{ $result->Parameters }, @{ $result->Parameters };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $result = $self->DescribeCacheParameters(@_, Marker => $result->Marker);
+        $callback->($_ => 'Parameters') foreach (@{ $result->Parameters });
+      }
+    }
+
+    return undef
+  }
+  sub DescribeAllCacheSecurityGroups {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeCacheSecurityGroups(@_);
+
+    if (not defined $callback) {
+      while ($result->Marker) {
+        $result = $self->DescribeCacheSecurityGroups(@_, Marker => $result->Marker);
+        push @{ $result->CacheSecurityGroups }, @{ $result->CacheSecurityGroups };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $result = $self->DescribeCacheSecurityGroups(@_, Marker => $result->Marker);
+        $callback->($_ => 'CacheSecurityGroups') foreach (@{ $result->CacheSecurityGroups });
+      }
+    }
+
+    return undef
+  }
+  sub DescribeAllCacheSubnetGroups {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeCacheSubnetGroups(@_);
+
+    if (not defined $callback) {
+      while ($result->Marker) {
+        $result = $self->DescribeCacheSubnetGroups(@_, Marker => $result->Marker);
+        push @{ $result->CacheSubnetGroups }, @{ $result->CacheSubnetGroups };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $result = $self->DescribeCacheSubnetGroups(@_, Marker => $result->Marker);
+        $callback->($_ => 'CacheSubnetGroups') foreach (@{ $result->CacheSubnetGroups });
+      }
+    }
+
+    return undef
+  }
+  sub DescribeAllEngineDefaultParameters {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeEngineDefaultParameters(@_);
+
+    if (not defined $callback) {
+      while ($result->Marker) {
+        $result = $self->DescribeEngineDefaultParameters(@_, Marker => $result->EngineDefaults->Marker);
+        push @{ $result->EngineDefaults->Parameters }, @{ $result->EngineDefaults->Parameters };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $result = $self->DescribeEngineDefaultParameters(@_, Marker => $result->EngineDefaults->Marker);
+        $callback->($_ => 'EngineDefaults.Parameters') foreach (@{ $result->EngineDefaults->Parameters });
+      }
+    }
+
+    return undef
+  }
+  sub DescribeAllEvents {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeEvents(@_);
+
+    if (not defined $callback) {
+      while ($result->Marker) {
+        $result = $self->DescribeEvents(@_, Marker => $result->Marker);
+        push @{ $result->Events }, @{ $result->Events };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $result = $self->DescribeEvents(@_, Marker => $result->Marker);
+        $callback->($_ => 'Events') foreach (@{ $result->Events });
+      }
+    }
+
+    return undef
+  }
+  sub DescribeAllReplicationGroups {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeReplicationGroups(@_);
+
+    if (not defined $callback) {
+      while ($result->Marker) {
+        $result = $self->DescribeReplicationGroups(@_, Marker => $result->Marker);
+        push @{ $result->ReplicationGroups }, @{ $result->ReplicationGroups };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $result = $self->DescribeReplicationGroups(@_, Marker => $result->Marker);
+        $callback->($_ => 'ReplicationGroups') foreach (@{ $result->ReplicationGroups });
+      }
+    }
+
+    return undef
+  }
+  sub DescribeAllReservedCacheNodes {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeReservedCacheNodes(@_);
+
+    if (not defined $callback) {
+      while ($result->Marker) {
+        $result = $self->DescribeReservedCacheNodes(@_, Marker => $result->Marker);
+        push @{ $result->ReservedCacheNodes }, @{ $result->ReservedCacheNodes };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $result = $self->DescribeReservedCacheNodes(@_, Marker => $result->Marker);
+        $callback->($_ => 'ReservedCacheNodes') foreach (@{ $result->ReservedCacheNodes });
+      }
+    }
+
+    return undef
+  }
+  sub DescribeAllReservedCacheNodesOfferings {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeReservedCacheNodesOfferings(@_);
+
+    if (not defined $callback) {
+      while ($result->Marker) {
+        $result = $self->DescribeReservedCacheNodesOfferings(@_, Marker => $result->Marker);
+        push @{ $result->ReservedCacheNodesOfferings }, @{ $result->ReservedCacheNodesOfferings };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $result = $self->DescribeReservedCacheNodesOfferings(@_, Marker => $result->Marker);
+        $callback->($_ => 'ReservedCacheNodesOfferings') foreach (@{ $result->ReservedCacheNodesOfferings });
+      }
+    }
+
+    return undef
+  }
+  sub DescribeAllSnapshots {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeSnapshots(@_);
+
+    if (not defined $callback) {
+      while ($result->Marker) {
+        $result = $self->DescribeSnapshots(@_, Marker => $result->Marker);
+        push @{ $result->Snapshots }, @{ $result->Snapshots };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $result = $self->DescribeSnapshots(@_, Marker => $result->Marker);
+        $callback->($_ => 'Snapshots') foreach (@{ $result->Snapshots });
+      }
+    }
+
+    return undef
+  }
+
 
   sub operations { qw/AddTagsToResource AuthorizeCacheSecurityGroupIngress CopySnapshot CreateCacheCluster CreateCacheParameterGroup CreateCacheSecurityGroup CreateCacheSubnetGroup CreateReplicationGroup CreateSnapshot DeleteCacheCluster DeleteCacheParameterGroup DeleteCacheSecurityGroup DeleteCacheSubnetGroup DeleteReplicationGroup DeleteSnapshot DescribeCacheClusters DescribeCacheEngineVersions DescribeCacheParameterGroups DescribeCacheParameters DescribeCacheSecurityGroups DescribeCacheSubnetGroups DescribeEngineDefaultParameters DescribeEvents DescribeReplicationGroups DescribeReservedCacheNodes DescribeReservedCacheNodesOfferings DescribeSnapshots ListAllowedNodeTypeModifications ListTagsForResource ModifyCacheCluster ModifyCacheParameterGroup ModifyCacheSubnetGroup ModifyReplicationGroup PurchaseReservedCacheNodesOffering RebootCacheCluster RemoveTagsFromResource ResetCacheParameterGroup RevokeCacheSecurityGroupIngress / }
 
@@ -852,6 +1106,159 @@ Returns: a L<Paws::ElastiCache::RevokeCacheSecurityGroupIngressResult> instance
   Revokes ingress from a cache security group. Use this operation to
 disallow access from an Amazon EC2 security group that had been
 previously authorized.
+
+
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 DescribeAllCacheClusters(sub { },[CacheClusterId => Str, Marker => Str, MaxRecords => Int, ShowCacheNodeInfo => Bool])
+
+=head2 DescribeAllCacheClusters([CacheClusterId => Str, Marker => Str, MaxRecords => Int, ShowCacheNodeInfo => Bool])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - CacheClusters, passing the object as the first parameter, and the string 'CacheClusters' as the second parameter 
+
+If not, it will return a a L<Paws::ElastiCache::CacheClusterMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllCacheEngineVersions(sub { },[CacheParameterGroupFamily => Str, DefaultOnly => Bool, Engine => Str, EngineVersion => Str, Marker => Str, MaxRecords => Int])
+
+=head2 DescribeAllCacheEngineVersions([CacheParameterGroupFamily => Str, DefaultOnly => Bool, Engine => Str, EngineVersion => Str, Marker => Str, MaxRecords => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - CacheEngineVersions, passing the object as the first parameter, and the string 'CacheEngineVersions' as the second parameter 
+
+If not, it will return a a L<Paws::ElastiCache::CacheEngineVersionMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllCacheParameterGroups(sub { },[CacheParameterGroupName => Str, Marker => Str, MaxRecords => Int])
+
+=head2 DescribeAllCacheParameterGroups([CacheParameterGroupName => Str, Marker => Str, MaxRecords => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - CacheParameterGroups, passing the object as the first parameter, and the string 'CacheParameterGroups' as the second parameter 
+
+If not, it will return a a L<Paws::ElastiCache::CacheParameterGroupsMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllCacheParameters(sub { },CacheParameterGroupName => Str, [Marker => Str, MaxRecords => Int, Source => Str])
+
+=head2 DescribeAllCacheParameters(CacheParameterGroupName => Str, [Marker => Str, MaxRecords => Int, Source => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Parameters, passing the object as the first parameter, and the string 'Parameters' as the second parameter 
+
+If not, it will return a a L<Paws::ElastiCache::CacheParameterGroupDetails> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllCacheSecurityGroups(sub { },[CacheSecurityGroupName => Str, Marker => Str, MaxRecords => Int])
+
+=head2 DescribeAllCacheSecurityGroups([CacheSecurityGroupName => Str, Marker => Str, MaxRecords => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - CacheSecurityGroups, passing the object as the first parameter, and the string 'CacheSecurityGroups' as the second parameter 
+
+If not, it will return a a L<Paws::ElastiCache::CacheSecurityGroupMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllCacheSubnetGroups(sub { },[CacheSubnetGroupName => Str, Marker => Str, MaxRecords => Int])
+
+=head2 DescribeAllCacheSubnetGroups([CacheSubnetGroupName => Str, Marker => Str, MaxRecords => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - CacheSubnetGroups, passing the object as the first parameter, and the string 'CacheSubnetGroups' as the second parameter 
+
+If not, it will return a a L<Paws::ElastiCache::CacheSubnetGroupMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllEngineDefaultParameters(sub { },CacheParameterGroupFamily => Str, [Marker => Str, MaxRecords => Int])
+
+=head2 DescribeAllEngineDefaultParameters(CacheParameterGroupFamily => Str, [Marker => Str, MaxRecords => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - EngineDefaults.Parameters, passing the object as the first parameter, and the string 'EngineDefaults.Parameters' as the second parameter 
+
+If not, it will return a a L<Paws::ElastiCache::DescribeEngineDefaultParametersResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllEvents(sub { },[Duration => Int, EndTime => Str, Marker => Str, MaxRecords => Int, SourceIdentifier => Str, SourceType => Str, StartTime => Str])
+
+=head2 DescribeAllEvents([Duration => Int, EndTime => Str, Marker => Str, MaxRecords => Int, SourceIdentifier => Str, SourceType => Str, StartTime => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Events, passing the object as the first parameter, and the string 'Events' as the second parameter 
+
+If not, it will return a a L<Paws::ElastiCache::EventsMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllReplicationGroups(sub { },[Marker => Str, MaxRecords => Int, ReplicationGroupId => Str])
+
+=head2 DescribeAllReplicationGroups([Marker => Str, MaxRecords => Int, ReplicationGroupId => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ReplicationGroups, passing the object as the first parameter, and the string 'ReplicationGroups' as the second parameter 
+
+If not, it will return a a L<Paws::ElastiCache::ReplicationGroupMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllReservedCacheNodes(sub { },[CacheNodeType => Str, Duration => Str, Marker => Str, MaxRecords => Int, OfferingType => Str, ProductDescription => Str, ReservedCacheNodeId => Str, ReservedCacheNodesOfferingId => Str])
+
+=head2 DescribeAllReservedCacheNodes([CacheNodeType => Str, Duration => Str, Marker => Str, MaxRecords => Int, OfferingType => Str, ProductDescription => Str, ReservedCacheNodeId => Str, ReservedCacheNodesOfferingId => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ReservedCacheNodes, passing the object as the first parameter, and the string 'ReservedCacheNodes' as the second parameter 
+
+If not, it will return a a L<Paws::ElastiCache::ReservedCacheNodeMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllReservedCacheNodesOfferings(sub { },[CacheNodeType => Str, Duration => Str, Marker => Str, MaxRecords => Int, OfferingType => Str, ProductDescription => Str, ReservedCacheNodesOfferingId => Str])
+
+=head2 DescribeAllReservedCacheNodesOfferings([CacheNodeType => Str, Duration => Str, Marker => Str, MaxRecords => Int, OfferingType => Str, ProductDescription => Str, ReservedCacheNodesOfferingId => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ReservedCacheNodesOfferings, passing the object as the first parameter, and the string 'ReservedCacheNodesOfferings' as the second parameter 
+
+If not, it will return a a L<Paws::ElastiCache::ReservedCacheNodesOfferingMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllSnapshots(sub { },[CacheClusterId => Str, Marker => Str, MaxRecords => Int, ReplicationGroupId => Str, ShowNodeGroupConfig => Bool, SnapshotName => Str, SnapshotSource => Str])
+
+=head2 DescribeAllSnapshots([CacheClusterId => Str, Marker => Str, MaxRecords => Int, ReplicationGroupId => Str, ShowNodeGroupConfig => Bool, SnapshotName => Str, SnapshotSource => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Snapshots, passing the object as the first parameter, and the string 'Snapshots' as the second parameter 
+
+If not, it will return a a L<Paws::ElastiCache::DescribeSnapshotsListMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+
 
 
 =head1 SEE ALSO

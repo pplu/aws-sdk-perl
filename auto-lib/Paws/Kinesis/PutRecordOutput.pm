@@ -4,6 +4,7 @@ package Paws::Kinesis::PutRecordOutput;
   has SequenceNumber => (is => 'ro', isa => 'Str', required => 1);
   has ShardId => (is => 'ro', isa => 'Str', required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -22,12 +23,12 @@ in the stream. A sequence number is the identifier associated with
 every record put into the stream.
 
 
-
 =head2 B<REQUIRED> ShardId => Str
 
 The shard ID of the shard where the data record was placed.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -3,6 +3,7 @@ package Paws::EC2::CreateVpnGatewayResult;
   use Moose;
   has VpnGateway => (is => 'ro', isa => 'Paws::EC2::VpnGateway', xmlname => 'vpnGateway', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -19,6 +20,7 @@ Paws::EC2::CreateVpnGatewayResult
 Information about the virtual private gateway.
 
 
+=head2 _request_id => Str
 
 
 =cut

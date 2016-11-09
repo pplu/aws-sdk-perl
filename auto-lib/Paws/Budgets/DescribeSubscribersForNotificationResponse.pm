@@ -4,6 +4,7 @@ package Paws::Budgets::DescribeSubscribersForNotificationResponse;
   has NextToken => (is => 'ro', isa => 'Str');
   has Subscribers => (is => 'ro', isa => 'ArrayRef[Paws::Budgets::Subscriber]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -19,12 +20,12 @@ Paws::Budgets::DescribeSubscribersForNotificationResponse
 
 
 
-
 =head2 Subscribers => ArrayRef[L<Paws::Budgets::Subscriber>]
 
 
 
 
+=head2 _request_id => Str
 
 
 =cut

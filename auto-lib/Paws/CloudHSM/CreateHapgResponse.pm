@@ -3,6 +3,7 @@ package Paws::CloudHSM::CreateHapgResponse;
   use Moose;
   has HapgArn => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -18,6 +19,7 @@ Paws::CloudHSM::CreateHapgResponse
 The ARN of the high-availability partition group.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -3,6 +3,7 @@ package Paws::CloudSearch::DescribeIndexFieldsResponse;
   use Moose;
   has IndexFields => (is => 'ro', isa => 'ArrayRef[Paws::CloudSearch::IndexFieldStatus]', required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -19,6 +20,7 @@ Paws::CloudSearch::DescribeIndexFieldsResponse
 The index fields configured for the domain.
 
 
+=head2 _request_id => Str
 
 
 =cut

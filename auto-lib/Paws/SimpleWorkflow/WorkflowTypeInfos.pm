@@ -4,6 +4,7 @@ package Paws::SimpleWorkflow::WorkflowTypeInfos;
   has NextPageToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextPageToken' );
   has TypeInfos => (is => 'ro', isa => 'ArrayRef[Paws::SimpleWorkflow::WorkflowTypeInfo]', traits => ['Unwrapped'], xmlname => 'typeInfos' , required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -25,12 +26,12 @@ The configured C<maximumPageSize> determines how many results can be
 returned in a single call.
 
 
-
 =head2 B<REQUIRED> TypeInfos => ArrayRef[L<Paws::SimpleWorkflow::WorkflowTypeInfo>]
 
 The list of workflow type information.
 
 
+=head2 _request_id => Str
 
 
 =cut

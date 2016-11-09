@@ -4,6 +4,7 @@ package Paws::DeviceFarm::ListRunsResult;
   has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
   has Runs => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::Run]', traits => ['Unwrapped'], xmlname => 'runs' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -22,12 +23,12 @@ subsequent call to this operation to return the next set of items in
 the list.
 
 
-
 =head2 Runs => ArrayRef[L<Paws::DeviceFarm::Run>]
 
 Information about the runs.
 
 
+=head2 _request_id => Str
 
 
 =cut

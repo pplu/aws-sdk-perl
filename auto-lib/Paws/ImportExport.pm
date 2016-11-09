@@ -61,6 +61,29 @@ package Paws::ImportExport;
     my $call_object = $self->new_with_coercions('Paws::ImportExport::UpdateJob', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
+  sub ListAllJobs {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListJobs(@_);
+
+    if (not defined $callback) {
+      while ($result->IsTruncated) {
+        $result = $self->ListJobs(@_, Marker => $result->Jobs->[-1]->JobId);
+        push @{ $result->Jobs }, @{ $result->Jobs };
+      }
+      return $result;
+    } else {
+      while ($result->IsTruncated) {
+        $result = $self->ListJobs(@_, Marker => $result->Jobs->[-1]->JobId);
+        $callback->($_ => 'Jobs') foreach (@{ $result->Jobs });
+      }
+    }
+
+    return undef
+  }
+
 
   sub operations { qw/CancelJob CreateJob GetShippingLabel GetStatus ListJobs UpdateJob / }
 
@@ -170,6 +193,27 @@ original manifest file by supplying a new manifest file. The manifest
 file attached to this request replaces the original manifest file. You
 can only use the operation after a CreateJob request but before the
 data transfer starts and you can only use it on jobs you own.
+
+
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllJobs(sub { },[APIVersion => Str, Marker => Str, MaxJobs => Int])
+
+=head2 ListAllJobs([APIVersion => Str, Marker => Str, MaxJobs => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Jobs, passing the object as the first parameter, and the string 'Jobs' as the second parameter 
+
+If not, it will return a a L<Paws::ImportExport::ListJobsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+
 
 
 =head1 SEE ALSO

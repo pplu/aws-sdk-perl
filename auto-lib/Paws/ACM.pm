@@ -64,6 +64,29 @@ package Paws::ACM;
     my $call_object = $self->new_with_coercions('Paws::ACM::ResendValidationEmail', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
+  sub ListAllCertificates {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListCertificates(@_);
+
+    if (not defined $callback) {
+      while ($result->NextToken) {
+        $result = $self->ListCertificates(@_, NextToken => $result->NextToken);
+        push @{ $result->CertificateSummaryList }, @{ $result->CertificateSummaryList };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $result = $self->ListCertificates(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'CertificateSummaryList') foreach (@{ $result->CertificateSummaryList });
+      }
+    }
+
+    return undef
+  }
+
 
   sub operations { qw/AddTagsToCertificate DeleteCertificate DescribeCertificate GetCertificate ImportCertificate ListCertificates ListTagsForCertificate RemoveTagsFromCertificate RequestCertificate ResendValidationEmail / }
 
@@ -284,6 +307,27 @@ mail, you can request that the mail be resent within 72 hours of
 requesting the ACM Certificate. If more than 72 hours have elapsed
 since your original request or since your last attempt to resend
 validation mail, you must request a new certificate.
+
+
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllCertificates(sub { },[CertificateStatuses => ArrayRef[Str|Undef], MaxItems => Int, NextToken => Str])
+
+=head2 ListAllCertificates([CertificateStatuses => ArrayRef[Str|Undef], MaxItems => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - CertificateSummaryList, passing the object as the first parameter, and the string 'CertificateSummaryList' as the second parameter 
+
+If not, it will return a a L<Paws::ACM::ListCertificatesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+
 
 
 =head1 SEE ALSO

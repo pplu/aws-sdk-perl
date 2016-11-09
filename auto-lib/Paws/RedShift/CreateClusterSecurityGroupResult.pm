@@ -3,6 +3,7 @@ package Paws::RedShift::CreateClusterSecurityGroupResult;
   use Moose;
   has ClusterSecurityGroup => (is => 'ro', isa => 'Paws::RedShift::ClusterSecurityGroup');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -19,6 +20,7 @@ Paws::RedShift::CreateClusterSecurityGroupResult
 
 
 
+=head2 _request_id => Str
 
 
 =cut

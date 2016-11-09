@@ -10,6 +10,7 @@ package Paws::ElasticBeanstalk::DescribeEnvironmentHealthResult;
   has RefreshedAt => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -26,11 +27,9 @@ Paws::ElasticBeanstalk::DescribeEnvironmentHealthResult
 
 
 
-
 =head2 Causes => ArrayRef[Str|Undef]
 
 Returns potential causes for the reported status.
-
 
 
 =head2 Color => Str
@@ -40,11 +39,9 @@ of the environment. For more information, see Health Colors and
 Statuses.
 
 
-
 =head2 EnvironmentName => Str
 
 The AWS Elastic Beanstalk environment name.
-
 
 
 =head2 HealthStatus => Str
@@ -53,9 +50,7 @@ Contains the response body with information about the health of the
 environment.
 
 
-
 =head2 InstancesHealth => L<Paws::ElasticBeanstalk::InstanceHealthSummary>
-
 
 
 
@@ -65,13 +60,13 @@ environment.
 The date and time the information was last refreshed.
 
 
-
 =head2 Status => Str
 
 Returns the health status value of the environment. For more
 information, see Health Colors and Statuses.
 
 Valid values are: C<"Green">, C<"Yellow">, C<"Red">, C<"Grey">
+=head2 _request_id => Str
 
 
 =cut

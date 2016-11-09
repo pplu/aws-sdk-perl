@@ -4,6 +4,7 @@ package Paws::ApplicationAutoScaling::DescribeScalingPoliciesResponse;
   has NextToken => (is => 'ro', isa => 'Str');
   has ScalingPolicies => (is => 'ro', isa => 'ArrayRef[Paws::ApplicationAutoScaling::ScalingPolicy]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -23,12 +24,12 @@ be used to retrieve the next page of results. This value is C<null>
 when there are no more results to return.
 
 
-
 =head2 ScalingPolicies => ArrayRef[L<Paws::ApplicationAutoScaling::ScalingPolicy>]
 
 A list of scaling policy objects.
 
 
+=head2 _request_id => Str
 
 
 =cut

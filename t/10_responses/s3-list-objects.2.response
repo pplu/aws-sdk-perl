@@ -1,0 +1,31 @@
+---
+content: |-
+  <?xml version="1.0" encoding="UTF-8"?>
+  <ListBucketResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/">
+    <Name>test-1357854246</Name>
+    <Prefix>uploads/test_</Prefix>
+    <Marker></Marker>
+    <MaxKeys>1000</MaxKeys>
+    <IsTruncated>false</IsTruncated>
+    <Contents>
+      <Key>uploads/test_1.txt</Key>
+      <LastModified>2016-11-02T09:09:52.000Z</LastModified>
+      <ETag>&quot;1d921b22129502cbbe5cbaf2c8bac682&quot;</ETag>
+      <Size>6</Size>
+      <Owner>
+        <ID>1936a5d8a2b189cda450d1d1d514f3861b3adc2df515</ID>
+        <DisplayName>aws</DisplayName>
+      </Owner>
+      <StorageClass>STANDARD</StorageClass>
+    </Contents>
+  </ListBucketResult>
+headers:
+  connection: close
+  content-type: application/xml
+  date: 'Wed, 02 Nov 2016 09:15:04 GMT'
+  server: AmazonS3
+  transfer-encoding: chunked
+  x-amz-bucket-region: eu-west-1
+  x-amz-id-2: 6VsaAUnrs3vUHxiluaeVLSjkq2J61/jUoPUhAcm6O67YaNOBKhpzZVZpMK82KHqz7rKy4iwtJkA=
+  x-amz-request-id: AB1E3D228AFB2D20
+status: 200

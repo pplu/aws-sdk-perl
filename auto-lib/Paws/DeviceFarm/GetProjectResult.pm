@@ -3,6 +3,7 @@ package Paws::DeviceFarm::GetProjectResult;
   use Moose;
   has Project => (is => 'ro', isa => 'Paws::DeviceFarm::Project', traits => ['Unwrapped'], xmlname => 'project' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -18,6 +19,7 @@ Paws::DeviceFarm::GetProjectResult
 
 
 
+=head2 _request_id => Str
 
 
 =cut

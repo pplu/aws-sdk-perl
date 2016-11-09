@@ -3,6 +3,7 @@ package Paws::ECS::DeleteServiceResponse;
   use Moose;
   has Service => (is => 'ro', isa => 'Paws::ECS::Service', traits => ['Unwrapped'], xmlname => 'service' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -18,6 +19,7 @@ Paws::ECS::DeleteServiceResponse
 The full description of the deleted service.
 
 
+=head2 _request_id => Str
 
 
 =cut

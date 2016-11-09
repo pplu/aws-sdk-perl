@@ -1,0 +1,10 @@
+---
+call: UploadPart
+service: S3
+tests:
+  - path: ETag
+    op: eq
+    expected: '"db7e0a889cbffee28e35df8eea0532c6"'
+  - path: _request_id
+    op: eq
+    expected: FCDDED669653E749

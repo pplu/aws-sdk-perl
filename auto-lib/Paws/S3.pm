@@ -384,6 +384,123 @@ package Paws::S3;
     my $call_object = $self->new_with_coercions('Paws::S3::UploadPartCopy', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
+  sub ListAllMultipartUploads {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListMultipartUploads(@_);
+
+    if (not defined $callback) {
+      while ($result->IsTruncated) {
+        $result = $self->ListMultipartUploads(@_, KeyMarker => $result->NextKeyMarker, UploadIdMarker => $result->NextUploadIdMarker);
+        push @{ $result->Uploads }, @{ $result->Uploads };
+        push @{ $result->CommonPrefixes }, @{ $result->CommonPrefixes };
+      }
+      return $result;
+    } else {
+      while ($result->IsTruncated) {
+        $result = $self->ListMultipartUploads(@_, KeyMarker => $result->NextKeyMarker, UploadIdMarker => $result->NextUploadIdMarker);
+        $callback->($_ => 'Uploads') foreach (@{ $result->Uploads });
+        $callback->($_ => 'CommonPrefixes') foreach (@{ $result->CommonPrefixes });
+      }
+    }
+
+    return undef
+  }
+  sub ListAllObjects {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListObjects(@_);
+
+    if (not defined $callback) {
+      while ($result->IsTruncated) {
+        $result = $self->ListObjects(@_, Marker => $result->NextMarker || ( (defined $result->Contents->[-1]) ? $result->Contents->[-1]->Key : undef ));
+        push @{ $result->Contents }, @{ $result->Contents };
+        push @{ $result->CommonPrefixes }, @{ $result->CommonPrefixes };
+      }
+      return $result;
+    } else {
+      while ($result->IsTruncated) {
+        $result = $self->ListObjects(@_, Marker => $result->NextMarker || ( (defined $result->Contents->[-1]) ? $result->Contents->[-1]->Key : undef ));
+        $callback->($_ => 'Contents') foreach (@{ $result->Contents });
+        $callback->($_ => 'CommonPrefixes') foreach (@{ $result->CommonPrefixes });
+      }
+    }
+
+    return undef
+  }
+  sub ListAllObjectsV2 {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListObjectsV2(@_);
+
+    if (not defined $callback) {
+      while ($result->IsTruncated) {
+        $result = $self->ListObjectsV2(@_, ContinuationToken => $result->NextContinuationToken);
+        push @{ $result->Contents }, @{ $result->Contents };
+        push @{ $result->CommonPrefixes }, @{ $result->CommonPrefixes };
+      }
+      return $result;
+    } else {
+      while ($result->IsTruncated) {
+        $result = $self->ListObjectsV2(@_, ContinuationToken => $result->NextContinuationToken);
+        $callback->($_ => 'Contents') foreach (@{ $result->Contents });
+        $callback->($_ => 'CommonPrefixes') foreach (@{ $result->CommonPrefixes });
+      }
+    }
+
+    return undef
+  }
+  sub ListAllObjectVersions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListObjectVersions(@_);
+
+    if (not defined $callback) {
+      while ($result->IsTruncated) {
+        $result = $self->ListObjectVersions(@_, KeyMarker => $result->NextKeyMarker, VersionIdMarker => $result->NextVersionIdMarker);
+        push @{ $result->Versions }, @{ $result->Versions };
+        push @{ $result->DeleteMarkers }, @{ $result->DeleteMarkers };
+        push @{ $result->CommonPrefixes }, @{ $result->CommonPrefixes };
+      }
+      return $result;
+    } else {
+      while ($result->IsTruncated) {
+        $result = $self->ListObjectVersions(@_, KeyMarker => $result->NextKeyMarker, VersionIdMarker => $result->NextVersionIdMarker);
+        $callback->($_ => 'Versions') foreach (@{ $result->Versions });
+        $callback->($_ => 'DeleteMarkers') foreach (@{ $result->DeleteMarkers });
+        $callback->($_ => 'CommonPrefixes') foreach (@{ $result->CommonPrefixes });
+      }
+    }
+
+    return undef
+  }
+  sub ListAllParts {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListParts(@_);
+
+    if (not defined $callback) {
+      while ($result->IsTruncated) {
+        $result = $self->ListParts(@_, PartNumberMarker => $result->NextPartNumberMarker);
+        push @{ $result->Parts }, @{ $result->Parts };
+      }
+      return $result;
+    } else {
+      while ($result->IsTruncated) {
+        $result = $self->ListParts(@_, PartNumberMarker => $result->NextPartNumberMarker);
+        $callback->($_ => 'Parts') foreach (@{ $result->Parts });
+      }
+    }
+
+    return undef
+  }
+
 
   sub operations { qw/AbortMultipartUpload CompleteMultipartUpload CopyObject CreateBucket CreateMultipartUpload DeleteBucket DeleteBucketCors DeleteBucketLifecycle DeleteBucketPolicy DeleteBucketReplication DeleteBucketTagging DeleteBucketWebsite DeleteObject DeleteObjects GetBucketAccelerateConfiguration GetBucketAcl GetBucketCors GetBucketLifecycle GetBucketLifecycleConfiguration GetBucketLocation GetBucketLogging GetBucketNotification GetBucketNotificationConfiguration GetBucketPolicy GetBucketReplication GetBucketRequestPayment GetBucketTagging GetBucketVersioning GetBucketWebsite GetObject GetObjectAcl GetObjectTorrent HeadBucket HeadObject ListBuckets ListMultipartUploads ListObjects ListObjectsV2 ListObjectVersions ListParts PutBucketAccelerateConfiguration PutBucketAcl PutBucketCors PutBucketLifecycle PutBucketLifecycleConfiguration PutBucketLogging PutBucketNotification PutBucketNotificationConfiguration PutBucketPolicy PutBucketReplication PutBucketRequestPayment PutBucketTagging PutBucketVersioning PutBucketWebsite PutObject PutObjectAcl RestoreObject UploadPart UploadPartCopy / }
 
@@ -1003,6 +1120,85 @@ Each argument is described in detail in: L<Paws::S3::UploadPartCopy>
 Returns: a L<Paws::S3::UploadPartCopyOutput> instance
 
   Uploads a part by copying data from an existing object as data source.
+
+
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllMultipartUploads(sub { },Bucket => Str, [Delimiter => Str, EncodingType => Str, KeyMarker => Str, MaxUploads => Int, Prefix => Str, UploadIdMarker => Str])
+
+=head2 ListAllMultipartUploads(Bucket => Str, [Delimiter => Str, EncodingType => Str, KeyMarker => Str, MaxUploads => Int, Prefix => Str, UploadIdMarker => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Uploads, passing the object as the first parameter, and the string 'Uploads' as the second parameter 
+
+ - CommonPrefixes, passing the object as the first parameter, and the string 'CommonPrefixes' as the second parameter 
+
+If not, it will return a a L<Paws::S3::ListMultipartUploadsOutput> instance with all the C<param>s; andC<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllObjects(sub { },Bucket => Str, [Delimiter => Str, EncodingType => Str, Marker => Str, MaxKeys => Int, Prefix => Str, RequestPayer => Str])
+
+=head2 ListAllObjects(Bucket => Str, [Delimiter => Str, EncodingType => Str, Marker => Str, MaxKeys => Int, Prefix => Str, RequestPayer => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Contents, passing the object as the first parameter, and the string 'Contents' as the second parameter 
+
+ - CommonPrefixes, passing the object as the first parameter, and the string 'CommonPrefixes' as the second parameter 
+
+If not, it will return a a L<Paws::S3::ListObjectsOutput> instance with all the C<param>s; andC<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllObjectsV2(sub { },Bucket => Str, [ContinuationToken => Str, Delimiter => Str, EncodingType => Str, FetchOwner => Bool, MaxKeys => Int, Prefix => Str, RequestPayer => Str, StartAfter => Str])
+
+=head2 ListAllObjectsV2(Bucket => Str, [ContinuationToken => Str, Delimiter => Str, EncodingType => Str, FetchOwner => Bool, MaxKeys => Int, Prefix => Str, RequestPayer => Str, StartAfter => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Contents, passing the object as the first parameter, and the string 'Contents' as the second parameter 
+
+ - CommonPrefixes, passing the object as the first parameter, and the string 'CommonPrefixes' as the second parameter 
+
+If not, it will return a a L<Paws::S3::ListObjectsV2Output> instance with all the C<param>s; andC<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllObjectVersions(sub { },Bucket => Str, [Delimiter => Str, EncodingType => Str, KeyMarker => Str, MaxKeys => Int, Prefix => Str, VersionIdMarker => Str])
+
+=head2 ListAllObjectVersions(Bucket => Str, [Delimiter => Str, EncodingType => Str, KeyMarker => Str, MaxKeys => Int, Prefix => Str, VersionIdMarker => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Versions, passing the object as the first parameter, and the string 'Versions' as the second parameter 
+
+ - DeleteMarkers, passing the object as the first parameter, and the string 'DeleteMarkers' as the second parameter 
+
+ - CommonPrefixes, passing the object as the first parameter, and the string 'CommonPrefixes' as the second parameter 
+
+If not, it will return a a L<Paws::S3::ListObjectVersionsOutput> instance with all the C<param>s; andC<param>s; andC<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllParts(sub { },Bucket => Str, Key => Str, UploadId => Str, [MaxParts => Int, PartNumberMarker => Int, RequestPayer => Str])
+
+=head2 ListAllParts(Bucket => Str, Key => Str, UploadId => Str, [MaxParts => Int, PartNumberMarker => Int, RequestPayer => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Parts, passing the object as the first parameter, and the string 'Parts' as the second parameter 
+
+If not, it will return a a L<Paws::S3::ListPartsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+
 
 
 =head1 SEE ALSO

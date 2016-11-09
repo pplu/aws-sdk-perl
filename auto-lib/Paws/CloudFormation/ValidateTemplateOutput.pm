@@ -7,6 +7,7 @@ package Paws::CloudFormation::ValidateTemplateOutput;
   has Description => (is => 'ro', isa => 'Str');
   has Parameters => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::TemplateParameter]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -30,12 +31,10 @@ For more information, see Acknowledging IAM Resources in AWS
 CloudFormation Templates.
 
 
-
 =head2 CapabilitiesReason => Str
 
 The list of resources that generated the values in the C<Capabilities>
 response element.
-
 
 
 =head2 DeclaredTransforms => ArrayRef[Str|Undef]
@@ -43,11 +42,9 @@ response element.
 A list of the transforms that have been declared in the template.
 
 
-
 =head2 Description => Str
 
 The description found within the template.
-
 
 
 =head2 Parameters => ArrayRef[L<Paws::CloudFormation::TemplateParameter>]
@@ -55,6 +52,7 @@ The description found within the template.
 A list of C<TemplateParameter> structures.
 
 
+=head2 _request_id => Str
 
 
 =cut

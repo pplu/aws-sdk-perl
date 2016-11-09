@@ -1,0 +1,1 @@
+{"response":{"content":"Cannot resolve host name: ec2.www.amazonaws.com (port: 443), Connection timed out at lib/Paws/Net/FurlCaller.pm line 27.\n","status":500,"headers":{"x-internal-response":1,"content-length":121}},"request":{"call":"DescribeInstances","params":{},"service":"ec2"}}

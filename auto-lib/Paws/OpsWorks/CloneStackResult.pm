@@ -3,6 +3,7 @@ package Paws::OpsWorks::CloneStackResult;
   use Moose;
   has StackId => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -18,6 +19,7 @@ Paws::OpsWorks::CloneStackResult
 The cloned stack ID.
 
 
+=head2 _request_id => Str
 
 
 =cut

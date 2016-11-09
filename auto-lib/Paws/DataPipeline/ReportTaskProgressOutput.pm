@@ -3,6 +3,7 @@ package Paws::DataPipeline::ReportTaskProgressOutput;
   use Moose;
   has Canceled => (is => 'ro', isa => 'Bool', traits => ['Unwrapped'], xmlname => 'canceled' , required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -19,6 +20,7 @@ If true, the calling task runner should cancel processing of the task.
 The task runner does not need to call SetTaskStatus for canceled tasks.
 
 
+=head2 _request_id => Str
 
 
 =cut

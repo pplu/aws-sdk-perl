@@ -3,6 +3,7 @@ package Paws::EC2::ModifyInstancePlacementResult;
   use Moose;
   has Return => (is => 'ro', isa => 'Bool', xmlname => 'return', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -19,6 +20,7 @@ Paws::EC2::ModifyInstancePlacementResult
 Is C<true> if the request succeeds, and an error otherwise.
 
 
+=head2 _request_id => Str
 
 
 =cut

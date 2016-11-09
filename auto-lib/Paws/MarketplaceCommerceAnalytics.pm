@@ -24,6 +24,8 @@ package Paws::MarketplaceCommerceAnalytics;
     my $call_object = $self->new_with_coercions('Paws::MarketplaceCommerceAnalytics::StartSupportDataExport', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
+
 
   sub operations { qw/GenerateDataSet StartSupportDataExport / }
 
@@ -95,6 +97,15 @@ original file will be overwritten by the new file. Requires a Role with
 an attached permissions policy providing Allow permissions for the
 following actions: s3:PutObject, s3:GetBucketLocation,
 sns:GetTopicAttributes, sns:Publish, iam:GetRolePolicy.
+
+
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+
 
 
 =head1 SEE ALSO

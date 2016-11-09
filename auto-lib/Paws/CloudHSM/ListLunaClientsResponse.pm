@@ -4,6 +4,7 @@ package Paws::CloudHSM::ListLunaClientsResponse;
   has ClientList => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
   has NextToken => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -19,13 +20,13 @@ Paws::CloudHSM::ListLunaClientsResponse
 The list of clients.
 
 
-
 =head2 NextToken => Str
 
 If not null, more results are available. Pass this to ListLunaClients
 to retrieve the next set of items.
 
 
+=head2 _request_id => Str
 
 
 =cut

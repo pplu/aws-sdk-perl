@@ -69,6 +69,8 @@ package Paws::ServiceCatalog;
     my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::UpdateProvisionedProduct', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
+
 
   sub operations { qw/DescribeProduct DescribeProductView DescribeProvisioningParameters DescribeRecord ListLaunchPaths ListRecordHistory ProvisionProduct ScanProvisionedProducts SearchProducts TerminateProvisionedProduct UpdateProvisionedProduct / }
 
@@ -264,6 +266,15 @@ interruption, or replace the ProvisionedProduct object entirely.
 
 You can check the status of this request using the DescribeRecord
 operation.
+
+
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+
 
 
 =head1 SEE ALSO

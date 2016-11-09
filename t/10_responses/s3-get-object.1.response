@@ -1,0 +1,14 @@
+---
+content: foobar
+headers:
+  accept-ranges: bytes
+  connection: close
+  content-length: 6
+  content-type: application/octet-stream
+  date: 'Tue, 01 Nov 2016 22:09:46 GMT'
+  etag: '"3858f62230ac3c915f300c664312c63f"'
+  last-modified: 'Tue, 01 Nov 2016 22:02:01 GMT'
+  server: AmazonS3
+  x-amz-id-2: 0BhbE4CVO9i+G5Sa2orpxnTJB9ccKpxCENnnGfazIV88PCnynmhh0gwV0jPMjw1BRRAPeaMa8/Y=
+  x-amz-request-id: 4FE2ED40553211FD
+status: 200

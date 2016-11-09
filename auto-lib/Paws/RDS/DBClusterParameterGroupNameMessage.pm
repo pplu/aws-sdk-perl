@@ -3,6 +3,7 @@ package Paws::RDS::DBClusterParameterGroupNameMessage;
   use Moose;
   has DBClusterParameterGroupName => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -39,6 +40,7 @@ Cannot end with a hyphen or contain two consecutive hyphens
 This value is stored as a lowercase string.
 
 
+=head2 _request_id => Str
 
 
 =cut

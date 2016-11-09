@@ -258,6 +258,29 @@ package Paws::SES;
     my $call_object = $self->new_with_coercions('Paws::SES::VerifyEmailIdentity', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
+  sub ListAllIdentities {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListIdentities(@_);
+
+    if (not defined $callback) {
+      while ($result->NextToken) {
+        $result = $self->ListIdentities(@_, NextToken => $result->NextToken);
+        push @{ $result->Identities }, @{ $result->Identities };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $result = $self->ListIdentities(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'Identities') foreach (@{ $result->Identities });
+      }
+    }
+
+    return undef
+  }
+
 
   sub operations { qw/CloneReceiptRuleSet CreateConfigurationSet CreateConfigurationSetEventDestination CreateReceiptFilter CreateReceiptRule CreateReceiptRuleSet DeleteConfigurationSet DeleteConfigurationSetEventDestination DeleteIdentity DeleteIdentityPolicy DeleteReceiptFilter DeleteReceiptRule DeleteReceiptRuleSet DeleteVerifiedEmailAddress DescribeActiveReceiptRuleSet DescribeConfigurationSet DescribeReceiptRule DescribeReceiptRuleSet GetIdentityDkimAttributes GetIdentityMailFromDomainAttributes GetIdentityNotificationAttributes GetIdentityPolicies GetIdentityVerificationAttributes GetSendQuota GetSendStatistics ListConfigurationSets ListIdentities ListIdentityPolicies ListReceiptFilters ListReceiptRuleSets ListVerifiedEmailAddresses PutIdentityPolicy ReorderReceiptRuleSet SendBounce SendEmail SendRawEmail SetActiveReceiptRuleSet SetIdentityDkimEnabled SetIdentityFeedbackForwardingEnabled SetIdentityHeadersInNotificationsEnabled SetIdentityMailFromDomain SetIdentityNotificationTopic SetReceiptRulePosition UpdateConfigurationSetEventDestination UpdateReceiptRule VerifyDomainDkim VerifyDomainIdentity VerifyEmailAddress VerifyEmailIdentity / }
 
@@ -1231,6 +1254,27 @@ Returns: a L<Paws::SES::VerifyEmailIdentityResponse> instance
 message to be sent to the specified address.
 
 This action is throttled at one request per second.
+
+
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllIdentities(sub { },[IdentityType => Str, MaxItems => Int, NextToken => Str])
+
+=head2 ListAllIdentities([IdentityType => Str, MaxItems => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Identities, passing the object as the first parameter, and the string 'Identities' as the second parameter 
+
+If not, it will return a a L<Paws::SES::ListIdentitiesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+
 
 
 =head1 SEE ALSO

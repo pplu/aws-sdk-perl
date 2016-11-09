@@ -2,7 +2,7 @@ package Paws::SSM::DocumentIdentifier;
   use Moose;
   has Name => (is => 'ro', isa => 'Str');
   has Owner => (is => 'ro', isa => 'Str');
-  has PlatformTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has PlatformTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'PlatformType', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

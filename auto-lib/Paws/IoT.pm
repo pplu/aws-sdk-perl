@@ -298,6 +298,8 @@ package Paws::IoT;
     my $call_object = $self->new_with_coercions('Paws::IoT::UpdateThing', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
+
 
   sub operations { qw/AcceptCertificateTransfer AttachPrincipalPolicy AttachThingPrincipal CancelCertificateTransfer CreateCertificateFromCsr CreateKeysAndCertificate CreatePolicy CreatePolicyVersion CreateThing CreateThingType CreateTopicRule DeleteCACertificate DeleteCertificate DeletePolicy DeletePolicyVersion DeleteRegistrationCode DeleteThing DeleteThingType DeleteTopicRule DeprecateThingType DescribeCACertificate DescribeCertificate DescribeEndpoint DescribeThing DescribeThingType DetachPrincipalPolicy DetachThingPrincipal DisableTopicRule EnableTopicRule GetLoggingOptions GetPolicy GetPolicyVersion GetRegistrationCode GetTopicRule ListCACertificates ListCertificates ListCertificatesByCA ListOutgoingCertificates ListPolicies ListPolicyPrincipals ListPolicyVersions ListPrincipalPolicies ListPrincipalThings ListThingPrincipals ListThings ListThingTypes ListTopicRules RegisterCACertificate RegisterCertificate RejectCertificateTransfer ReplaceTopicRule SetDefaultPolicyVersion SetLoggingOptions TransferCertificate UpdateCACertificate UpdateCertificate UpdateThing / }
 
@@ -1010,6 +1012,15 @@ Each argument is described in detail in: L<Paws::IoT::UpdateThing>
 Returns: a L<Paws::IoT::UpdateThingResponse> instance
 
   Updates the data for a thing.
+
+
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+
 
 
 =head1 SEE ALSO

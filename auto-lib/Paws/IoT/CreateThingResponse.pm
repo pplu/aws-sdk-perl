@@ -4,6 +4,7 @@ package Paws::IoT::CreateThingResponse;
   has ThingArn => (is => 'ro', isa => 'Str');
   has ThingName => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -20,12 +21,12 @@ Paws::IoT::CreateThingResponse
 The ARN of the new thing.
 
 
-
 =head2 ThingName => Str
 
 The name of the new thing.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -26,7 +26,10 @@ package [% c.api %]::[% operation.name %];
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => '[% op_name %]');
-  class_has _returns => (isa => 'Str', is => 'ro'[% IF (operation.output.keys.size) %], default => '[% c.api %]::[% c.shapename_for_operation_output(op_name) %]'[% END %]);
+  class_has _returns => (isa => 'Str', is => 'ro', default => '
+    [%- IF (operation.output.keys.size) -%]
+      [%- c.api %]::[% c.shapename_for_operation_output(op_name) -%]
+    [%- ELSE -%]Paws::API::Response[% END -%]');
   class_has _result_key => (isa => 'Str', is => 'ro'[% IF (operation.output.keys.size) %], default => '[% op_name %]Result'[% END %]);
 1;
 [% c.callclass_documentation_template | eval %]
@@ -50,6 +53,7 @@ package [% c.api %]::[% c.shapename_for_operation_output(op_name) %];
   [%- IF (traits.size) %], traits => [[% FOREACH trait=traits %]'[% trait %]',[% END %]][% END -%]
   [%- IF (c.required_in_shape(shape,param_name)) %], required => 1[% END %]);
 [% END %]
+  has _request_id => (is => 'ro', isa => 'Str');
 [%- END %]
 1;
 [% c.class_documentation_template | eval %]
@@ -95,23 +99,7 @@ package [% c.api %];
     return $self->caller->do_call($self, $call_object);
   }
   [%- END %]
-  [%- FOR op IN [] \#c.paginators_struct.keys.sort %]
-  sub [% c.get_paginator_name(op) %] {
-    [%- paginator = c.paginators_struct.$op %]
-    my $self = shift;
-
-    my $result = $self->[% op %](@_);
-    my $array = [];
-    push @$array, @{ $result->[% paginator.result_key %] };
-
-    while ($result->[% paginator.output_token %]) {
-      $result = $self->[% op %](@_, [% paginator.input_token %] => $result->[% paginator.output_token %]);
-      push @$array, @{ $result->[% paginator.result_key %] };
-    }
-
-    return '[% c.api %]::[% op %]'->_returns->new([% paginator.result_key %] => $array);
-  }
-  [%- END %]
+  [% c.paginator_template | eval %]
 
   sub operations { qw/[% FOR op IN c.api_struct.operations.keys.sort; op _ ' '; END %]/ }
 

@@ -3,6 +3,7 @@ package Paws::GameLift::UpdateRuntimeConfigurationOutput;
   use Moose;
   has RuntimeConfiguration => (is => 'ro', isa => 'Paws::GameLift::RuntimeConfiguration');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -19,6 +20,7 @@ The runtime configuration currently in force. If the update was
 successful, this object matches the one in the request.
 
 
+=head2 _request_id => Str
 
 
 =cut

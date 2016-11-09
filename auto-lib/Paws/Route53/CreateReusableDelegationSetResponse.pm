@@ -2,8 +2,9 @@
 package Paws::Route53::CreateReusableDelegationSetResponse;
   use Moose;
   has DelegationSet => (is => 'ro', isa => 'Paws::Route53::DelegationSet', required => 1);
-  has Location => (is => 'ro', isa => 'Str', required => 1);
+  has Location => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Location', required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

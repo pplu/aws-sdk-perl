@@ -7,6 +7,7 @@ package Paws::CognitoSync::GetBulkPublishDetailsResponse;
   has FailureMessage => (is => 'ro', isa => 'Str');
   has IdentityPoolId => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -24,11 +25,9 @@ If BulkPublishStatus is SUCCEEDED, the time the last bulk publish
 operation completed.
 
 
-
 =head2 BulkPublishStartTime => Str
 
 The date/time at which the last bulk publish was initiated.
-
 
 
 =head2 BulkPublishStatus => Str
@@ -46,12 +45,10 @@ FAILED - Some portion of the data has failed to publish, check
 FailureMessage for the cause.
 
 Valid values are: C<"NOT_STARTED">, C<"IN_PROGRESS">, C<"FAILED">, C<"SUCCEEDED">
-
 =head2 FailureMessage => Str
 
 If BulkPublishStatus is FAILED this field will contain the error
 message that caused the bulk publish to fail.
-
 
 
 =head2 IdentityPoolId => Str
@@ -61,6 +58,7 @@ us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
 Cognito. GUID generation is unique within a region.
 
 
+=head2 _request_id => Str
 
 
 =cut

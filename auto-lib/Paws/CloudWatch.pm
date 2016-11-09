@@ -68,6 +68,71 @@ package Paws::CloudWatch;
     my $call_object = $self->new_with_coercions('Paws::CloudWatch::SetAlarmState', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
+  sub DescribeAllAlarmHistory {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeAlarmHistory(@_);
+
+    if (not defined $callback) {
+      while ($result->NextToken) {
+        $result = $self->DescribeAlarmHistory(@_, NextToken => $result->NextToken);
+        push @{ $result->AlarmHistoryItems }, @{ $result->AlarmHistoryItems };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $result = $self->DescribeAlarmHistory(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'AlarmHistoryItems') foreach (@{ $result->AlarmHistoryItems });
+      }
+    }
+
+    return undef
+  }
+  sub DescribeAllAlarms {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeAlarms(@_);
+
+    if (not defined $callback) {
+      while ($result->NextToken) {
+        $result = $self->DescribeAlarms(@_, NextToken => $result->NextToken);
+        push @{ $result->MetricAlarms }, @{ $result->MetricAlarms };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $result = $self->DescribeAlarms(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'MetricAlarms') foreach (@{ $result->MetricAlarms });
+      }
+    }
+
+    return undef
+  }
+  sub ListAllMetrics {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListMetrics(@_);
+
+    if (not defined $callback) {
+      while ($result->NextToken) {
+        $result = $self->ListMetrics(@_, NextToken => $result->NextToken);
+        push @{ $result->Metrics }, @{ $result->Metrics };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $result = $self->ListMetrics(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'Metrics') foreach (@{ $result->Metrics });
+      }
+    }
+
+    return undef
+  }
+
 
   sub operations { qw/DeleteAlarms DescribeAlarmHistory DescribeAlarms DescribeAlarmsForMetric DisableAlarmActions EnableAlarmActions GetMetricStatistics ListMetrics PutMetricAlarm PutMetricData SetAlarmState / }
 
@@ -357,6 +422,51 @@ Amazon SNS message. The alarm returns to its actual state (often within
 seconds). Because the alarm state change happens very quickly, it is
 typically only visible in the alarm's B<History> tab in the Amazon
 CloudWatch console or through C<DescribeAlarmHistory>.
+
+
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 DescribeAllAlarmHistory(sub { },[AlarmName => Str, EndDate => Str, HistoryItemType => Str, MaxRecords => Int, NextToken => Str, StartDate => Str])
+
+=head2 DescribeAllAlarmHistory([AlarmName => Str, EndDate => Str, HistoryItemType => Str, MaxRecords => Int, NextToken => Str, StartDate => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - AlarmHistoryItems, passing the object as the first parameter, and the string 'AlarmHistoryItems' as the second parameter 
+
+If not, it will return a a L<Paws::CloudWatch::DescribeAlarmHistoryOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllAlarms(sub { },[ActionPrefix => Str, AlarmNamePrefix => Str, AlarmNames => ArrayRef[Str|Undef], MaxRecords => Int, NextToken => Str, StateValue => Str])
+
+=head2 DescribeAllAlarms([ActionPrefix => Str, AlarmNamePrefix => Str, AlarmNames => ArrayRef[Str|Undef], MaxRecords => Int, NextToken => Str, StateValue => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - MetricAlarms, passing the object as the first parameter, and the string 'MetricAlarms' as the second parameter 
+
+If not, it will return a a L<Paws::CloudWatch::DescribeAlarmsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllMetrics(sub { },[Dimensions => ArrayRef[L<Paws::CloudWatch::DimensionFilter>], MetricName => Str, Namespace => Str, NextToken => Str])
+
+=head2 ListAllMetrics([Dimensions => ArrayRef[L<Paws::CloudWatch::DimensionFilter>], MetricName => Str, Namespace => Str, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Metrics, passing the object as the first parameter, and the string 'Metrics' as the second parameter 
+
+If not, it will return a a L<Paws::CloudWatch::ListMetricsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+
 
 
 =head1 SEE ALSO

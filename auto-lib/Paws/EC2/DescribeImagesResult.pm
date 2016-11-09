@@ -3,6 +3,7 @@ package Paws::EC2::DescribeImagesResult;
   use Moose;
   has Images => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Image]', xmlname => 'imagesSet', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -19,6 +20,7 @@ Paws::EC2::DescribeImagesResult
 Information about one or more images.
 
 
+=head2 _request_id => Str
 
 
 =cut

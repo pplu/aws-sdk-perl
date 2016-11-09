@@ -1,0 +1,11 @@
+---
+content: |-
+  <?xml version="1.0"?>
+  <Invalidation xmlns="http://cloudfront.amazonaws.com/doc/2016-09-07/"><Id>I3U0TWG6JMVDSP</Id><Status>InProgress</Status><CreateTime>2016-10-19T21:30:20.148Z</CreateTime><InvalidationBatch><Paths><Quantity>2</Quantity><Items><Path>/object1</Path><Path>/object2</Path></Items></Paths><CallerReference>YYY</CallerReference></InvalidationBatch></Invalidation>
+headers:
+  content-length: 377
+  content-type: text/xml
+  date: 'Wed, 19 Oct 2016 21:30:20 GMT'
+  location: https://cloudfront.amazonaws.com/2016-09-07/distribution/ECFFL7U0PVO9A/invalidation/I3U0TWG6JMVDSP
+  x-amzn-requestid: 3c56dea9-9643-11e6-9a4a-b9668da83fc7
+status: 201

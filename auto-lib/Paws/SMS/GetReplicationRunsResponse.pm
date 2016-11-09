@@ -5,6 +5,7 @@ package Paws::SMS::GetReplicationRunsResponse;
   has ReplicationJob => (is => 'ro', isa => 'Paws::SMS::ReplicationJob', traits => ['Unwrapped'], xmlname => 'replicationJob' );
   has ReplicationRunList => (is => 'ro', isa => 'ArrayRef[Paws::SMS::ReplicationRun]', traits => ['Unwrapped'], xmlname => 'replicationRunList' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -20,9 +21,7 @@ Paws::SMS::GetReplicationRunsResponse
 
 
 
-
 =head2 ReplicationJob => L<Paws::SMS::ReplicationJob>
-
 
 
 
@@ -32,6 +31,7 @@ Paws::SMS::GetReplicationRunsResponse
 
 
 
+=head2 _request_id => Str
 
 
 =cut

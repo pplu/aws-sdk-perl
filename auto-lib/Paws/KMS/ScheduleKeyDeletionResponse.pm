@@ -4,6 +4,7 @@ package Paws::KMS::ScheduleKeyDeletionResponse;
   has DeletionDate => (is => 'ro', isa => 'Str');
   has KeyId => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -20,13 +21,13 @@ The date and time after which AWS KMS deletes the customer master key
 (CMK).
 
 
-
 =head2 KeyId => Str
 
 The unique identifier of the customer master key (CMK) for which
 deletion is scheduled.
 
 
+=head2 _request_id => Str
 
 
 =cut

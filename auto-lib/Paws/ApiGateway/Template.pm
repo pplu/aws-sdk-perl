@@ -3,6 +3,7 @@ package Paws::ApiGateway::Template;
   use Moose;
   has Value => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -20,6 +21,7 @@ The Apache Velocity Template Language (VTL) template content used for
 the template resource.
 
 
+=head2 _request_id => Str
 
 
 =cut

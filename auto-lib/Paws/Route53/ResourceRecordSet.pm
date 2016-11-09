@@ -6,7 +6,7 @@ package Paws::Route53::ResourceRecordSet;
   has HealthCheckId => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has Region => (is => 'ro', isa => 'Str');
-  has ResourceRecords => (is => 'ro', isa => 'ArrayRef[Paws::Route53::ResourceRecord]');
+  has ResourceRecords => (is => 'ro', isa => 'ArrayRef[Paws::Route53::ResourceRecord]', request_name => 'ResourceRecord', traits => ['NameInRequest']);
   has SetIdentifier => (is => 'ro', isa => 'Str');
   has TrafficPolicyInstanceId => (is => 'ro', isa => 'Str');
   has TTL => (is => 'ro', isa => 'Int');

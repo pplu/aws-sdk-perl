@@ -284,6 +284,71 @@ package Paws::Route53;
     my $call_object = $self->new_with_coercions('Paws::Route53::UpdateTrafficPolicyInstance', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
+  sub ListAllHealthChecks {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListHealthChecks(@_);
+
+    if (not defined $callback) {
+      while ($result->IsTruncated) {
+        $result = $self->ListHealthChecks(@_, Marker => $result->NextMarker);
+        push @{ $result->HealthChecks }, @{ $result->HealthChecks };
+      }
+      return $result;
+    } else {
+      while ($result->IsTruncated) {
+        $result = $self->ListHealthChecks(@_, Marker => $result->NextMarker);
+        $callback->($_ => 'HealthChecks') foreach (@{ $result->HealthChecks });
+      }
+    }
+
+    return undef
+  }
+  sub ListAllHostedZones {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListHostedZones(@_);
+
+    if (not defined $callback) {
+      while ($result->IsTruncated) {
+        $result = $self->ListHostedZones(@_, Marker => $result->NextMarker);
+        push @{ $result->HostedZones }, @{ $result->HostedZones };
+      }
+      return $result;
+    } else {
+      while ($result->IsTruncated) {
+        $result = $self->ListHostedZones(@_, Marker => $result->NextMarker);
+        $callback->($_ => 'HostedZones') foreach (@{ $result->HostedZones });
+      }
+    }
+
+    return undef
+  }
+  sub ListAllResourceRecordSets {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListResourceRecordSets(@_);
+
+    if (not defined $callback) {
+      while ($result->IsTruncated) {
+        $result = $self->ListResourceRecordSets(@_, StartRecordName => $result->NextRecordName, StartRecordType => $result->NextRecordType, StartRecordIdentifier => $result->NextRecordIdentifier);
+        push @{ $result->ResourceRecordSets }, @{ $result->ResourceRecordSets };
+      }
+      return $result;
+    } else {
+      while ($result->IsTruncated) {
+        $result = $self->ListResourceRecordSets(@_, StartRecordName => $result->NextRecordName, StartRecordType => $result->NextRecordType, StartRecordIdentifier => $result->NextRecordIdentifier);
+        $callback->($_ => 'ResourceRecordSets') foreach (@{ $result->ResourceRecordSets });
+      }
+    }
+
+    return undef
+  }
+
 
   sub operations { qw/AssociateVPCWithHostedZone ChangeResourceRecordSets ChangeTagsForResource CreateHealthCheck CreateHostedZone CreateReusableDelegationSet CreateTrafficPolicy CreateTrafficPolicyInstance CreateTrafficPolicyVersion DeleteHealthCheck DeleteHostedZone DeleteReusableDelegationSet DeleteTrafficPolicy DeleteTrafficPolicyInstance DisassociateVPCFromHostedZone GetChange GetChangeDetails GetCheckerIpRanges GetGeoLocation GetHealthCheck GetHealthCheckCount GetHealthCheckLastFailureReason GetHealthCheckStatus GetHostedZone GetHostedZoneCount GetReusableDelegationSet GetTrafficPolicy GetTrafficPolicyInstance GetTrafficPolicyInstanceCount ListChangeBatchesByHostedZone ListChangeBatchesByRRSet ListGeoLocations ListHealthChecks ListHostedZones ListHostedZonesByName ListResourceRecordSets ListReusableDelegationSets ListTagsForResource ListTagsForResources ListTrafficPolicies ListTrafficPolicyInstances ListTrafficPolicyInstancesByHostedZone ListTrafficPolicyInstancesByPolicy ListTrafficPolicyVersions TestDNSAnswer UpdateHealthCheck UpdateHostedZoneComment UpdateTrafficPolicyComment UpdateTrafficPolicyInstance / }
 
@@ -1617,6 +1682,51 @@ Amazon Route 53 deletes the old group of resource record sets that are
 associated with the root resource record set name.
 
 =back
+
+
+
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllHealthChecks(sub { },[Marker => Str, MaxItems => Str])
+
+=head2 ListAllHealthChecks([Marker => Str, MaxItems => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - HealthChecks, passing the object as the first parameter, and the string 'HealthChecks' as the second parameter 
+
+If not, it will return a a L<Paws::Route53::ListHealthChecksResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllHostedZones(sub { },[DelegationSetId => Str, Marker => Str, MaxItems => Str])
+
+=head2 ListAllHostedZones([DelegationSetId => Str, Marker => Str, MaxItems => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - HostedZones, passing the object as the first parameter, and the string 'HostedZones' as the second parameter 
+
+If not, it will return a a L<Paws::Route53::ListHostedZonesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllResourceRecordSets(sub { },HostedZoneId => Str, [MaxItems => Str, StartRecordIdentifier => Str, StartRecordName => Str, StartRecordType => Str])
+
+=head2 ListAllResourceRecordSets(HostedZoneId => Str, [MaxItems => Str, StartRecordIdentifier => Str, StartRecordName => Str, StartRecordType => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ResourceRecordSets, passing the object as the first parameter, and the string 'ResourceRecordSets' as the second parameter 
+
+If not, it will return a a L<Paws::Route53::ListResourceRecordSetsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 
 
 

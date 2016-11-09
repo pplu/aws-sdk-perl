@@ -103,6 +103,9 @@ package Paws::API::Builder {
     return 'GetAllWorkflowExecutionHistories' if ($name eq 'GetWorkflowExecutionHistory');
     return 'ScanAll' if ($name eq 'Scan');
     return 'PollForAllDecisionTasks' if ($name eq 'PollForDecisionTask');
+    return 'FilterAllLogEvents' if ($name eq 'FilterLogEvents');
+    return 'SimulateAllCustomPolicies' if ($name eq 'SimulateCustomPolicy');
+    return 'SimulateAllPrincipalPolicies' if ($name eq 'SimulatePrincipalPolicy');
     die "Please help me generate a good name for the paginator $name";
   }
 
@@ -317,9 +320,10 @@ package Paws::API::Builder {
 
 [% c.doc_for_param_name_in_shape(shape, param_name) %]
 
-[% IF member.enum %]Valid values are: [% FOR value=member.enum %]C<"[% value %]">[% IF NOT loop.last %], [% END %][% END %][% END -%]
+[% IF member.enum %]Valid values are: [% FOR value=member.enum %]C<"[% value %]">[% IF NOT loop.last %], [% END %][% END %][% END -%][% END -%]
 
-[% END %]
+=head2 _request_id => Str
+
 
 =cut
 #);
@@ -425,6 +429,9 @@ Returns: [% out_shape = c.shapename_for_operation_output(op_name); IF (out_shape
   [% c.doc_for_method(op_name) %]
 
 [% END %]
+
+[% c.paginator_documentation_template | eval %]
+
 =head1 SEE ALSO
 
 This service class forms part of L<Paws>
@@ -751,6 +758,8 @@ Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
     if (not $doc) {
       return '';
     }
+    $doc =~ s/&amp;/\&/gsmix;
+    $doc =~ s|(\(ampersand\))(\#)(\w+?;)|$1(hash)$3|gsmix;
     return $self->html_to_pod($doc);
   }
 
@@ -945,6 +954,7 @@ package [% inner_class %];
   [%- member_shape_name = shape.members.$param_name.shape %]
   [%- member = c.shape(member_shape_name) -%]
   has [% param_name %] => (is => 'ro', isa => '[% member.perl_type %]'
+  [%- IF (member.type == 'list' and member.member.locationName.defined) %][% traits.push('NameInRequest') %], request_name => '[% member.member.locationName %]'[% END %]
   [%- IF (shape.members.${param_name}.locationName); traits.push('Unwrapped','NameInRequest') %], xmlname => '[% shape.members.${param_name}.locationName %]', request_name => '[% shape.members.${param_name}.locationName %]'[% END %]
   [%- IF (shape.members.$param_name.streaming == 1); traits.push('ParamInBody'); END %]
   [%- encoder = c.encoders_struct.$member_shape_name; IF (encoder); traits.push('JSONAttribute') %], decode_as => '[% encoder.encoding %]', method => '[% encoder.alias %]'[% END %]
@@ -955,6 +965,153 @@ package [% inner_class %];
 1;
 [% iclass=shape; c.innerclass_documentation_template | eval %]
 #);
+
+  sub paginator_accessor {
+    my ($self, $accessor) = @_;
+   
+    if (ref($accessor) eq 'ARRAY'){
+      warn "Complex accessor ", join ',', @$accessor;
+    }
+ 
+    if ($accessor =~ m/ /) {
+      warn "Complex accessor $accessor";
+    }
+    if ($accessor eq 'NextMarker || Contents[-1].Key') {
+      return '$result->NextMarker || ( (defined $result->Contents->[-1]) ? $result->Contents->[-1]->Key : undef )';
+    }
+
+    $accessor =~ s|\.|->|g;
+    $accessor =~ s|(\w+)([.*?])|$1->$2|g;
+    $accessor =~ s|(\w+)\[|$1\-\>\[|g;
+
+    $accessor = "\$result->$accessor";
+    return $accessor;
+  }
+  sub paginator_result_key {
+    my ($self, $paginator) = @_;
+    if (ref($paginator->{ result_key }) eq 'ARRAY'){
+      return $paginator->{ result_key };
+    } else {
+      return [ $paginator->{ result_key } ];
+    }
+  }
+  sub paginator_pass_params {
+    my ($self, $paginator) = @_;
+    if (ref($paginator->{ input_token }) eq 'ARRAY'){
+      my $i = 0;
+      return join ', ', map { "$_ => " . $self->paginator_accessor($paginator->{ output_token }->[ $i++ ]) } @{ $paginator->{ input_token } };
+    } else {
+      return "$paginator->{ input_token } => " . $self->paginator_accessor($paginator->{ output_token });
+    }
+  }
+
+  has paginator_documentation_template => (is => 'ro', isa => 'Str', default => q#
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+[%- FOR op IN c.paginators_struct.keys.sort %]
+[%- op_name = op %]
+=head2 [% c.get_paginator_name(op) %](sub { },
+[%- out_shape = c.input_for_operation(op_name) %]
+[%- req_list = out_shape.required.sort %]
+[%- FOREACH out_name IN req_list.sort -%]
+  [%- member = c.shape(out_shape.members.$out_name.shape) -%]
+  [%- out_name %] => [% c.perl_type_to_pod(member.perl_type) %]
+  [%- IF (NOT loop.last) %], [% END %]
+[%- END %]
+[%- opt_list = c.optional_params_in_shape(out_shape) %]
+[%- IF (opt_list.size > 0) %]
+[%- IF (req_list.size > 0) %], [% END %][
+[%- FOREACH out_name IN opt_list.sort %]
+  [%- member = c.shape(out_shape.members.$out_name.shape) -%]
+  [%- out_name %] => [% c.perl_type_to_pod(member.perl_type) %]
+  [%- IF (NOT loop.last) %], [% END %]
+[%- END %]]
+[%- END %])
+
+=head2 [% c.get_paginator_name(op) %](
+[%- out_shape = c.input_for_operation(op_name) %]
+[%- req_list = out_shape.required.sort %]
+[%- FOREACH out_name IN req_list.sort -%]
+  [%- member = c.shape(out_shape.members.$out_name.shape) -%]
+  [%- out_name %] => [% c.perl_type_to_pod(member.perl_type) %]
+  [%- IF (NOT loop.last) %], [% END %]
+[%- END %]
+[%- opt_list = c.optional_params_in_shape(out_shape) %]
+[%- IF (opt_list.size > 0) %]
+[%- IF (req_list.size > 0) %], [% END %][
+[%- FOREACH out_name IN opt_list.sort %]
+  [%- member = c.shape(out_shape.members.$out_name.shape) -%]
+  [%- out_name %] => [% c.perl_type_to_pod(member.perl_type) %]
+  [%- IF (NOT loop.last) %], [% END %]
+[%- END %]]
+[%- END %])
+
+[%- paginator = c.paginators_struct.$op %]
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+[%- FOREACH param = c.paginator_result_key(paginator) %]
+ - [% param %], passing the object as the first parameter, and the string '[% param %]' as the second parameter 
+[% END -%]
+
+If not, it will return a [% out_shape = c.shapename_for_operation_output(op_name); IF (out_shape) %]a L<[% c.api %]::[% out_shape %]> instance[% ELSE %]nothing[% END %] with all the [%- FOREACH param = c.paginator_result_key(paginator) %]C<param>s; [% 'and' IF (not loop.last)%][% END %] from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+[% END %]
+
+#);
+
+  has paginator_template => (is => 'ro', isa => 'Str', default => q#
+  [%- FOR op IN c.paginators_struct.keys.sort %]
+  sub [% c.get_paginator_name(op) %] {
+    [%- paginator = c.paginators_struct.$op %]
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->[% op %](@_);
+
+    if (not defined $callback) {
+      [%- IF (paginator.more_results.defined) %]
+      while ([% c.paginator_accessor(paginator.more_results) %]) {
+        $result = $self->[% op %](@_, [% c.paginator_pass_params(paginator) %]);
+        [%- FOREACH param = c.paginator_result_key(paginator) %]
+        push @{ [% c.paginator_accessor(param) %] }, @{ [% c.paginator_accessor(param) %] };
+        [%- END %]
+      }
+      [%- ELSE %]
+      while ([% c.paginator_accessor(paginator.input_token) %]) {
+        $result = $self->[% op %](@_, [% c.paginator_pass_params(paginator) %]);
+        [%- FOREACH param = c.paginator_result_key(paginator) %]
+        push @{ [% c.paginator_accessor(param) %] }, @{ [% c.paginator_accessor(param) %] };
+        [%- END %]
+      }
+      [%- END %]
+      return $result;
+    } else {
+      [%- IF (paginator.more_results.defined) %]
+      while ([% c.paginator_accessor(paginator.more_results) %]) {
+        $result = $self->[% op %](@_, [% c.paginator_pass_params(paginator) %]);
+        [%- FOREACH param = c.paginator_result_key(paginator) %]
+        $callback->($_ => '[% param %]') foreach (@{ [% c.paginator_accessor(param) %] });
+        [%- END %]
+      }
+      [%- ELSE %]
+      while ([% c.paginator_accessor(paginator.input_token) %]) {
+        $result = $self->[% op %](@_, [% c.paginator_pass_params(paginator) %]);
+        [%- FOREACH param = c.paginator_result_key(paginator) %]
+        $callback->($_ => '[% param %]') foreach (@{ [% c.paginator_accessor(param) %] });
+        [%- END %]
+      }
+      [%- END %]
+    }
+
+    return undef
+  }
+  [%- END %]
+#);
+
+
 
   sub make_inner_class {
     my $self = shift;

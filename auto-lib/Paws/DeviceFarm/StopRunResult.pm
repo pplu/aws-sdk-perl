@@ -3,6 +3,7 @@ package Paws::DeviceFarm::StopRunResult;
   use Moose;
   has Run => (is => 'ro', isa => 'Paws::DeviceFarm::Run', traits => ['Unwrapped'], xmlname => 'run' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -18,6 +19,7 @@ Paws::DeviceFarm::StopRunResult
 
 
 
+=head2 _request_id => Str
 
 
 =cut

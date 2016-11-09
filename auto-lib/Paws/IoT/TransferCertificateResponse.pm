@@ -3,6 +3,7 @@ package Paws::IoT::TransferCertificateResponse;
   use Moose;
   has TransferredCertificateArn => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -19,6 +20,7 @@ Paws::IoT::TransferCertificateResponse
 The ARN of the certificate.
 
 
+=head2 _request_id => Str
 
 
 =cut

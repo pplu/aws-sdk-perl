@@ -5,6 +5,7 @@ package Paws::ECR::DeleteRepositoryPolicyResponse;
   has RegistryId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'registryId' );
   has RepositoryName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'repositoryName' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -20,11 +21,9 @@ Paws::ECR::DeleteRepositoryPolicyResponse
 The JSON repository policy that was deleted from the repository.
 
 
-
 =head2 RegistryId => Str
 
 The registry ID associated with the request.
-
 
 
 =head2 RepositoryName => Str
@@ -32,6 +31,7 @@ The registry ID associated with the request.
 The repository name associated with the request.
 
 
+=head2 _request_id => Str
 
 
 =cut

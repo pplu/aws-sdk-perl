@@ -5,6 +5,7 @@ package Paws::DataPipeline::ValidatePipelineDefinitionOutput;
   has ValidationErrors => (is => 'ro', isa => 'ArrayRef[Paws::DataPipeline::ValidationError]', traits => ['Unwrapped'], xmlname => 'validationErrors' );
   has ValidationWarnings => (is => 'ro', isa => 'ArrayRef[Paws::DataPipeline::ValidationWarning]', traits => ['Unwrapped'], xmlname => 'validationWarnings' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -20,11 +21,9 @@ Paws::DataPipeline::ValidatePipelineDefinitionOutput
 Indicates whether there were validation errors.
 
 
-
 =head2 ValidationErrors => ArrayRef[L<Paws::DataPipeline::ValidationError>]
 
 Any validation errors that were found.
-
 
 
 =head2 ValidationWarnings => ArrayRef[L<Paws::DataPipeline::ValidationWarning>]
@@ -32,6 +31,7 @@ Any validation errors that were found.
 Any validation warnings that were found.
 
 
+=head2 _request_id => Str
 
 
 =cut

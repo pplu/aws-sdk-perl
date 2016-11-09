@@ -5,6 +5,7 @@ package Paws::EC2::CancelImportTaskResult;
   has PreviousState => (is => 'ro', isa => 'Str', xmlname => 'previousState', traits => ['Unwrapped',]);
   has State => (is => 'ro', isa => 'Str', xmlname => 'state', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -21,11 +22,9 @@ Paws::EC2::CancelImportTaskResult
 The ID of the task being canceled.
 
 
-
 =head2 PreviousState => Str
 
 The current state of the task being canceled.
-
 
 
 =head2 State => Str
@@ -33,6 +32,7 @@ The current state of the task being canceled.
 The current state of the task being canceled.
 
 
+=head2 _request_id => Str
 
 
 =cut

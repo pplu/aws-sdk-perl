@@ -6,6 +6,7 @@ package Paws::SMS::GetServersResponse;
   has ServerCatalogStatus => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'serverCatalogStatus' );
   has ServerList => (is => 'ro', isa => 'ArrayRef[Paws::SMS::Server]', traits => ['Unwrapped'], xmlname => 'serverList' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -21,9 +22,7 @@ Paws::SMS::GetServersResponse
 
 
 
-
 =head2 NextToken => Str
-
 
 
 
@@ -33,12 +32,12 @@ Paws::SMS::GetServersResponse
 
 
 Valid values are: C<"NOT_IMPORTED">, C<"IMPORTING">, C<"AVAILABLE">, C<"DELETED">, C<"EXPIRED">
-
 =head2 ServerList => ArrayRef[L<Paws::SMS::Server>]
 
 
 
 
+=head2 _request_id => Str
 
 
 =cut

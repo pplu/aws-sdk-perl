@@ -5,6 +5,7 @@ package Paws::CognitoIdp::GetUserResponse;
   has UserAttributes => (is => 'ro', isa => 'ArrayRef[Paws::CognitoIdp::AttributeType]', required => 1);
   has Username => (is => 'ro', isa => 'Str', required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -20,11 +21,9 @@ Paws::CognitoIdp::GetUserResponse
 Specifies the options for MFA (e.g., email or phone number).
 
 
-
 =head2 B<REQUIRED> UserAttributes => ArrayRef[L<Paws::CognitoIdp::AttributeType>]
 
 An array of name-value pairs representing user attributes.
-
 
 
 =head2 B<REQUIRED> Username => Str
@@ -33,6 +32,7 @@ The user name of the user you wish to retrieve from the get user
 request.
 
 
+=head2 _request_id => Str
 
 
 =cut

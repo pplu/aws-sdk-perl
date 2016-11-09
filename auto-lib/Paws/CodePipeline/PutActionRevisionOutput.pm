@@ -4,6 +4,7 @@ package Paws::CodePipeline::PutActionRevisionOutput;
   has NewRevision => (is => 'ro', isa => 'Bool', traits => ['Unwrapped'], xmlname => 'newRevision' );
   has PipelineExecutionId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'pipelineExecutionId' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -20,12 +21,12 @@ Indicates whether the artifact revision was previously used in an
 execution of the specified pipeline.
 
 
-
 =head2 PipelineExecutionId => Str
 
 The ID of the current workflow state of the pipeline.
 
 
+=head2 _request_id => Str
 
 
 =cut

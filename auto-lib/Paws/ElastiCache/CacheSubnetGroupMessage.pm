@@ -4,6 +4,7 @@ package Paws::ElastiCache::CacheSubnetGroupMessage;
   has CacheSubnetGroups => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::CacheSubnetGroup]', xmlname => 'CacheSubnetGroup', traits => ['Unwrapped',]);
   has Marker => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -21,12 +22,12 @@ A list of cache subnet groups. Each element in the list contains
 detailed information about one group.
 
 
-
 =head2 Marker => Str
 
 Provides an identifier to allow retrieval of paginated results.
 
 
+=head2 _request_id => Str
 
 
 =cut

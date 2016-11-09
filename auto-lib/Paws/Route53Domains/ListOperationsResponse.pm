@@ -4,6 +4,7 @@ package Paws::Route53Domains::ListOperationsResponse;
   has NextPageMarker => (is => 'ro', isa => 'Str');
   has Operations => (is => 'ro', isa => 'ArrayRef[Paws::Route53Domains::OperationSummary]', required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -25,7 +26,6 @@ Type: String
 Parent: C<Operations>
 
 
-
 =head2 B<REQUIRED> Operations => ArrayRef[L<Paws::Route53Domains::OperationSummary>]
 
 Lists summaries of the operations.
@@ -35,6 +35,7 @@ Type: Complex type containing a list of operation summaries
 Children: C<OperationId>, C<Status>, C<SubmittedDate>, C<Type>
 
 
+=head2 _request_id => Str
 
 
 =cut

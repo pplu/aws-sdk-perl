@@ -614,6 +614,564 @@ package Paws::IAM;
     my $call_object = $self->new_with_coercions('Paws::IAM::UploadSSHPublicKey', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
+  sub GetAllAccountAuthorizationDetails {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetAccountAuthorizationDetails(@_);
+
+    if (not defined $callback) {
+      while ($result->IsTruncated) {
+        $result = $self->GetAccountAuthorizationDetails(@_, Marker => $result->Marker);
+        push @{ $result->UserDetailList }, @{ $result->UserDetailList };
+        push @{ $result->GroupDetailList }, @{ $result->GroupDetailList };
+        push @{ $result->RoleDetailList }, @{ $result->RoleDetailList };
+        push @{ $result->Policies }, @{ $result->Policies };
+      }
+      return $result;
+    } else {
+      while ($result->IsTruncated) {
+        $result = $self->GetAccountAuthorizationDetails(@_, Marker => $result->Marker);
+        $callback->($_ => 'UserDetailList') foreach (@{ $result->UserDetailList });
+        $callback->($_ => 'GroupDetailList') foreach (@{ $result->GroupDetailList });
+        $callback->($_ => 'RoleDetailList') foreach (@{ $result->RoleDetailList });
+        $callback->($_ => 'Policies') foreach (@{ $result->Policies });
+      }
+    }
+
+    return undef
+  }
+  sub GetAllGroup {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetGroup(@_);
+
+    if (not defined $callback) {
+      while ($result->IsTruncated) {
+        $result = $self->GetGroup(@_, Marker => $result->Marker);
+        push @{ $result->Users }, @{ $result->Users };
+      }
+      return $result;
+    } else {
+      while ($result->IsTruncated) {
+        $result = $self->GetGroup(@_, Marker => $result->Marker);
+        $callback->($_ => 'Users') foreach (@{ $result->Users });
+      }
+    }
+
+    return undef
+  }
+  sub ListAllAccessKeys {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListAccessKeys(@_);
+
+    if (not defined $callback) {
+      while ($result->IsTruncated) {
+        $result = $self->ListAccessKeys(@_, Marker => $result->Marker);
+        push @{ $result->AccessKeyMetadata }, @{ $result->AccessKeyMetadata };
+      }
+      return $result;
+    } else {
+      while ($result->IsTruncated) {
+        $result = $self->ListAccessKeys(@_, Marker => $result->Marker);
+        $callback->($_ => 'AccessKeyMetadata') foreach (@{ $result->AccessKeyMetadata });
+      }
+    }
+
+    return undef
+  }
+  sub ListAllAccountAliases {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListAccountAliases(@_);
+
+    if (not defined $callback) {
+      while ($result->IsTruncated) {
+        $result = $self->ListAccountAliases(@_, Marker => $result->Marker);
+        push @{ $result->AccountAliases }, @{ $result->AccountAliases };
+      }
+      return $result;
+    } else {
+      while ($result->IsTruncated) {
+        $result = $self->ListAccountAliases(@_, Marker => $result->Marker);
+        $callback->($_ => 'AccountAliases') foreach (@{ $result->AccountAliases });
+      }
+    }
+
+    return undef
+  }
+  sub ListAllAttachedGroupPolicies {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListAttachedGroupPolicies(@_);
+
+    if (not defined $callback) {
+      while ($result->IsTruncated) {
+        $result = $self->ListAttachedGroupPolicies(@_, Marker => $result->Marker);
+        push @{ $result->AttachedPolicies }, @{ $result->AttachedPolicies };
+      }
+      return $result;
+    } else {
+      while ($result->IsTruncated) {
+        $result = $self->ListAttachedGroupPolicies(@_, Marker => $result->Marker);
+        $callback->($_ => 'AttachedPolicies') foreach (@{ $result->AttachedPolicies });
+      }
+    }
+
+    return undef
+  }
+  sub ListAllAttachedRolePolicies {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListAttachedRolePolicies(@_);
+
+    if (not defined $callback) {
+      while ($result->IsTruncated) {
+        $result = $self->ListAttachedRolePolicies(@_, Marker => $result->Marker);
+        push @{ $result->AttachedPolicies }, @{ $result->AttachedPolicies };
+      }
+      return $result;
+    } else {
+      while ($result->IsTruncated) {
+        $result = $self->ListAttachedRolePolicies(@_, Marker => $result->Marker);
+        $callback->($_ => 'AttachedPolicies') foreach (@{ $result->AttachedPolicies });
+      }
+    }
+
+    return undef
+  }
+  sub ListAllAttachedUserPolicies {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListAttachedUserPolicies(@_);
+
+    if (not defined $callback) {
+      while ($result->IsTruncated) {
+        $result = $self->ListAttachedUserPolicies(@_, Marker => $result->Marker);
+        push @{ $result->AttachedPolicies }, @{ $result->AttachedPolicies };
+      }
+      return $result;
+    } else {
+      while ($result->IsTruncated) {
+        $result = $self->ListAttachedUserPolicies(@_, Marker => $result->Marker);
+        $callback->($_ => 'AttachedPolicies') foreach (@{ $result->AttachedPolicies });
+      }
+    }
+
+    return undef
+  }
+  sub ListAllEntitiesForPolicy {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListEntitiesForPolicy(@_);
+
+    if (not defined $callback) {
+      while ($result->IsTruncated) {
+        $result = $self->ListEntitiesForPolicy(@_, Marker => $result->Marker);
+        push @{ $result->PolicyGroups }, @{ $result->PolicyGroups };
+        push @{ $result->PolicyUsers }, @{ $result->PolicyUsers };
+        push @{ $result->PolicyRoles }, @{ $result->PolicyRoles };
+      }
+      return $result;
+    } else {
+      while ($result->IsTruncated) {
+        $result = $self->ListEntitiesForPolicy(@_, Marker => $result->Marker);
+        $callback->($_ => 'PolicyGroups') foreach (@{ $result->PolicyGroups });
+        $callback->($_ => 'PolicyUsers') foreach (@{ $result->PolicyUsers });
+        $callback->($_ => 'PolicyRoles') foreach (@{ $result->PolicyRoles });
+      }
+    }
+
+    return undef
+  }
+  sub ListAllGroupPolicies {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListGroupPolicies(@_);
+
+    if (not defined $callback) {
+      while ($result->IsTruncated) {
+        $result = $self->ListGroupPolicies(@_, Marker => $result->Marker);
+        push @{ $result->PolicyNames }, @{ $result->PolicyNames };
+      }
+      return $result;
+    } else {
+      while ($result->IsTruncated) {
+        $result = $self->ListGroupPolicies(@_, Marker => $result->Marker);
+        $callback->($_ => 'PolicyNames') foreach (@{ $result->PolicyNames });
+      }
+    }
+
+    return undef
+  }
+  sub ListAllGroups {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListGroups(@_);
+
+    if (not defined $callback) {
+      while ($result->IsTruncated) {
+        $result = $self->ListGroups(@_, Marker => $result->Marker);
+        push @{ $result->Groups }, @{ $result->Groups };
+      }
+      return $result;
+    } else {
+      while ($result->IsTruncated) {
+        $result = $self->ListGroups(@_, Marker => $result->Marker);
+        $callback->($_ => 'Groups') foreach (@{ $result->Groups });
+      }
+    }
+
+    return undef
+  }
+  sub ListAllGroupsForUser {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListGroupsForUser(@_);
+
+    if (not defined $callback) {
+      while ($result->IsTruncated) {
+        $result = $self->ListGroupsForUser(@_, Marker => $result->Marker);
+        push @{ $result->Groups }, @{ $result->Groups };
+      }
+      return $result;
+    } else {
+      while ($result->IsTruncated) {
+        $result = $self->ListGroupsForUser(@_, Marker => $result->Marker);
+        $callback->($_ => 'Groups') foreach (@{ $result->Groups });
+      }
+    }
+
+    return undef
+  }
+  sub ListAllInstanceProfiles {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListInstanceProfiles(@_);
+
+    if (not defined $callback) {
+      while ($result->IsTruncated) {
+        $result = $self->ListInstanceProfiles(@_, Marker => $result->Marker);
+        push @{ $result->InstanceProfiles }, @{ $result->InstanceProfiles };
+      }
+      return $result;
+    } else {
+      while ($result->IsTruncated) {
+        $result = $self->ListInstanceProfiles(@_, Marker => $result->Marker);
+        $callback->($_ => 'InstanceProfiles') foreach (@{ $result->InstanceProfiles });
+      }
+    }
+
+    return undef
+  }
+  sub ListAllInstanceProfilesForRole {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListInstanceProfilesForRole(@_);
+
+    if (not defined $callback) {
+      while ($result->IsTruncated) {
+        $result = $self->ListInstanceProfilesForRole(@_, Marker => $result->Marker);
+        push @{ $result->InstanceProfiles }, @{ $result->InstanceProfiles };
+      }
+      return $result;
+    } else {
+      while ($result->IsTruncated) {
+        $result = $self->ListInstanceProfilesForRole(@_, Marker => $result->Marker);
+        $callback->($_ => 'InstanceProfiles') foreach (@{ $result->InstanceProfiles });
+      }
+    }
+
+    return undef
+  }
+  sub ListAllMFADevices {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListMFADevices(@_);
+
+    if (not defined $callback) {
+      while ($result->IsTruncated) {
+        $result = $self->ListMFADevices(@_, Marker => $result->Marker);
+        push @{ $result->MFADevices }, @{ $result->MFADevices };
+      }
+      return $result;
+    } else {
+      while ($result->IsTruncated) {
+        $result = $self->ListMFADevices(@_, Marker => $result->Marker);
+        $callback->($_ => 'MFADevices') foreach (@{ $result->MFADevices });
+      }
+    }
+
+    return undef
+  }
+  sub ListAllPolicies {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListPolicies(@_);
+
+    if (not defined $callback) {
+      while ($result->IsTruncated) {
+        $result = $self->ListPolicies(@_, Marker => $result->Marker);
+        push @{ $result->Policies }, @{ $result->Policies };
+      }
+      return $result;
+    } else {
+      while ($result->IsTruncated) {
+        $result = $self->ListPolicies(@_, Marker => $result->Marker);
+        $callback->($_ => 'Policies') foreach (@{ $result->Policies });
+      }
+    }
+
+    return undef
+  }
+  sub ListAllPolicyVersions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListPolicyVersions(@_);
+
+    if (not defined $callback) {
+      while ($result->IsTruncated) {
+        $result = $self->ListPolicyVersions(@_, Marker => $result->Marker);
+        push @{ $result->Versions }, @{ $result->Versions };
+      }
+      return $result;
+    } else {
+      while ($result->IsTruncated) {
+        $result = $self->ListPolicyVersions(@_, Marker => $result->Marker);
+        $callback->($_ => 'Versions') foreach (@{ $result->Versions });
+      }
+    }
+
+    return undef
+  }
+  sub ListAllRolePolicies {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListRolePolicies(@_);
+
+    if (not defined $callback) {
+      while ($result->IsTruncated) {
+        $result = $self->ListRolePolicies(@_, Marker => $result->Marker);
+        push @{ $result->PolicyNames }, @{ $result->PolicyNames };
+      }
+      return $result;
+    } else {
+      while ($result->IsTruncated) {
+        $result = $self->ListRolePolicies(@_, Marker => $result->Marker);
+        $callback->($_ => 'PolicyNames') foreach (@{ $result->PolicyNames });
+      }
+    }
+
+    return undef
+  }
+  sub ListAllRoles {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListRoles(@_);
+
+    if (not defined $callback) {
+      while ($result->IsTruncated) {
+        $result = $self->ListRoles(@_, Marker => $result->Marker);
+        push @{ $result->Roles }, @{ $result->Roles };
+      }
+      return $result;
+    } else {
+      while ($result->IsTruncated) {
+        $result = $self->ListRoles(@_, Marker => $result->Marker);
+        $callback->($_ => 'Roles') foreach (@{ $result->Roles });
+      }
+    }
+
+    return undef
+  }
+  sub ListAllServerCertificates {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListServerCertificates(@_);
+
+    if (not defined $callback) {
+      while ($result->IsTruncated) {
+        $result = $self->ListServerCertificates(@_, Marker => $result->Marker);
+        push @{ $result->ServerCertificateMetadataList }, @{ $result->ServerCertificateMetadataList };
+      }
+      return $result;
+    } else {
+      while ($result->IsTruncated) {
+        $result = $self->ListServerCertificates(@_, Marker => $result->Marker);
+        $callback->($_ => 'ServerCertificateMetadataList') foreach (@{ $result->ServerCertificateMetadataList });
+      }
+    }
+
+    return undef
+  }
+  sub ListAllSigningCertificates {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListSigningCertificates(@_);
+
+    if (not defined $callback) {
+      while ($result->IsTruncated) {
+        $result = $self->ListSigningCertificates(@_, Marker => $result->Marker);
+        push @{ $result->Certificates }, @{ $result->Certificates };
+      }
+      return $result;
+    } else {
+      while ($result->IsTruncated) {
+        $result = $self->ListSigningCertificates(@_, Marker => $result->Marker);
+        $callback->($_ => 'Certificates') foreach (@{ $result->Certificates });
+      }
+    }
+
+    return undef
+  }
+  sub ListAllSSHPublicKeys {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListSSHPublicKeys(@_);
+
+    if (not defined $callback) {
+      while ($result->IsTruncated) {
+        $result = $self->ListSSHPublicKeys(@_, Marker => $result->Marker);
+        push @{ $result->SSHPublicKeys }, @{ $result->SSHPublicKeys };
+      }
+      return $result;
+    } else {
+      while ($result->IsTruncated) {
+        $result = $self->ListSSHPublicKeys(@_, Marker => $result->Marker);
+        $callback->($_ => 'SSHPublicKeys') foreach (@{ $result->SSHPublicKeys });
+      }
+    }
+
+    return undef
+  }
+  sub ListAllUserPolicies {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListUserPolicies(@_);
+
+    if (not defined $callback) {
+      while ($result->IsTruncated) {
+        $result = $self->ListUserPolicies(@_, Marker => $result->Marker);
+        push @{ $result->PolicyNames }, @{ $result->PolicyNames };
+      }
+      return $result;
+    } else {
+      while ($result->IsTruncated) {
+        $result = $self->ListUserPolicies(@_, Marker => $result->Marker);
+        $callback->($_ => 'PolicyNames') foreach (@{ $result->PolicyNames });
+      }
+    }
+
+    return undef
+  }
+  sub ListAllUsers {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListUsers(@_);
+
+    if (not defined $callback) {
+      while ($result->IsTruncated) {
+        $result = $self->ListUsers(@_, Marker => $result->Marker);
+        push @{ $result->Users }, @{ $result->Users };
+      }
+      return $result;
+    } else {
+      while ($result->IsTruncated) {
+        $result = $self->ListUsers(@_, Marker => $result->Marker);
+        $callback->($_ => 'Users') foreach (@{ $result->Users });
+      }
+    }
+
+    return undef
+  }
+  sub ListAllVirtualMFADevices {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListVirtualMFADevices(@_);
+
+    if (not defined $callback) {
+      while ($result->IsTruncated) {
+        $result = $self->ListVirtualMFADevices(@_, Marker => $result->Marker);
+        push @{ $result->VirtualMFADevices }, @{ $result->VirtualMFADevices };
+      }
+      return $result;
+    } else {
+      while ($result->IsTruncated) {
+        $result = $self->ListVirtualMFADevices(@_, Marker => $result->Marker);
+        $callback->($_ => 'VirtualMFADevices') foreach (@{ $result->VirtualMFADevices });
+      }
+    }
+
+    return undef
+  }
+  sub SimulateAllCustomPolicies {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->SimulateCustomPolicy(@_);
+
+    if (not defined $callback) {
+      while ($result->IsTruncated) {
+        $result = $self->SimulateCustomPolicy(@_, Marker => $result->Marker);
+        push @{ $result->EvaluationResults }, @{ $result->EvaluationResults };
+      }
+      return $result;
+    } else {
+      while ($result->IsTruncated) {
+        $result = $self->SimulateCustomPolicy(@_, Marker => $result->Marker);
+        $callback->($_ => 'EvaluationResults') foreach (@{ $result->EvaluationResults });
+      }
+    }
+
+    return undef
+  }
+  sub SimulateAllPrincipalPolicies {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->SimulatePrincipalPolicy(@_);
+
+    if (not defined $callback) {
+      while ($result->IsTruncated) {
+        $result = $self->SimulatePrincipalPolicy(@_, Marker => $result->Marker);
+        push @{ $result->EvaluationResults }, @{ $result->EvaluationResults };
+      }
+      return $result;
+    } else {
+      while ($result->IsTruncated) {
+        $result = $self->SimulatePrincipalPolicy(@_, Marker => $result->Marker);
+        $callback->($_ => 'EvaluationResults') foreach (@{ $result->EvaluationResults });
+      }
+    }
+
+    return undef
+  }
+
 
   sub operations { qw/AddClientIDToOpenIDConnectProvider AddRoleToInstanceProfile AddUserToGroup AttachGroupPolicy AttachRolePolicy AttachUserPolicy ChangePassword CreateAccessKey CreateAccountAlias CreateGroup CreateInstanceProfile CreateLoginProfile CreateOpenIDConnectProvider CreatePolicy CreatePolicyVersion CreateRole CreateSAMLProvider CreateUser CreateVirtualMFADevice DeactivateMFADevice DeleteAccessKey DeleteAccountAlias DeleteAccountPasswordPolicy DeleteGroup DeleteGroupPolicy DeleteInstanceProfile DeleteLoginProfile DeleteOpenIDConnectProvider DeletePolicy DeletePolicyVersion DeleteRole DeleteRolePolicy DeleteSAMLProvider DeleteServerCertificate DeleteSigningCertificate DeleteSSHPublicKey DeleteUser DeleteUserPolicy DeleteVirtualMFADevice DetachGroupPolicy DetachRolePolicy DetachUserPolicy EnableMFADevice GenerateCredentialReport GetAccessKeyLastUsed GetAccountAuthorizationDetails GetAccountPasswordPolicy GetAccountSummary GetContextKeysForCustomPolicy GetContextKeysForPrincipalPolicy GetCredentialReport GetGroup GetGroupPolicy GetInstanceProfile GetLoginProfile GetOpenIDConnectProvider GetPolicy GetPolicyVersion GetRole GetRolePolicy GetSAMLProvider GetServerCertificate GetSSHPublicKey GetUser GetUserPolicy ListAccessKeys ListAccountAliases ListAttachedGroupPolicies ListAttachedRolePolicies ListAttachedUserPolicies ListEntitiesForPolicy ListGroupPolicies ListGroups ListGroupsForUser ListInstanceProfiles ListInstanceProfilesForRole ListMFADevices ListOpenIDConnectProviders ListPolicies ListPolicyVersions ListRolePolicies ListRoles ListSAMLProviders ListServerCertificates ListSigningCertificates ListSSHPublicKeys ListUserPolicies ListUsers ListVirtualMFADevices PutGroupPolicy PutRolePolicy PutUserPolicy RemoveClientIDFromOpenIDConnectProvider RemoveRoleFromInstanceProfile RemoveUserFromGroup ResyncMFADevice SetDefaultPolicyVersion SimulateCustomPolicy SimulatePrincipalPolicy UpdateAccessKey UpdateAccountPasswordPolicy UpdateAssumeRolePolicy UpdateGroup UpdateLoginProfile UpdateOpenIDConnectProviderThumbprint UpdateSAMLProvider UpdateServerCertificate UpdateSigningCertificate UpdateSSHPublicKey UpdateUser UploadServerCertificate UploadSigningCertificate UploadSSHPublicKey / }
 
@@ -2647,6 +3205,337 @@ authenticating the associated IAM user to an AWS CodeCommit repository.
 For more information about using SSH keys to authenticate to an AWS
 CodeCommit repository, see Set up AWS CodeCommit for SSH Connections in
 the I<AWS CodeCommit User Guide>.
+
+
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 GetAllAccountAuthorizationDetails(sub { },[Filter => ArrayRef[Str|Undef], Marker => Str, MaxItems => Int])
+
+=head2 GetAllAccountAuthorizationDetails([Filter => ArrayRef[Str|Undef], Marker => Str, MaxItems => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - UserDetailList, passing the object as the first parameter, and the string 'UserDetailList' as the second parameter 
+
+ - GroupDetailList, passing the object as the first parameter, and the string 'GroupDetailList' as the second parameter 
+
+ - RoleDetailList, passing the object as the first parameter, and the string 'RoleDetailList' as the second parameter 
+
+ - Policies, passing the object as the first parameter, and the string 'Policies' as the second parameter 
+
+If not, it will return a a L<Paws::IAM::GetAccountAuthorizationDetailsResponse> instance with all the C<param>s; andC<param>s; andC<param>s; andC<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllGroup(sub { },GroupName => Str, [Marker => Str, MaxItems => Int])
+
+=head2 GetAllGroup(GroupName => Str, [Marker => Str, MaxItems => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Users, passing the object as the first parameter, and the string 'Users' as the second parameter 
+
+If not, it will return a a L<Paws::IAM::GetGroupResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllAccessKeys(sub { },[Marker => Str, MaxItems => Int, UserName => Str])
+
+=head2 ListAllAccessKeys([Marker => Str, MaxItems => Int, UserName => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - AccessKeyMetadata, passing the object as the first parameter, and the string 'AccessKeyMetadata' as the second parameter 
+
+If not, it will return a a L<Paws::IAM::ListAccessKeysResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllAccountAliases(sub { },[Marker => Str, MaxItems => Int])
+
+=head2 ListAllAccountAliases([Marker => Str, MaxItems => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - AccountAliases, passing the object as the first parameter, and the string 'AccountAliases' as the second parameter 
+
+If not, it will return a a L<Paws::IAM::ListAccountAliasesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllAttachedGroupPolicies(sub { },GroupName => Str, [Marker => Str, MaxItems => Int, PathPrefix => Str])
+
+=head2 ListAllAttachedGroupPolicies(GroupName => Str, [Marker => Str, MaxItems => Int, PathPrefix => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - AttachedPolicies, passing the object as the first parameter, and the string 'AttachedPolicies' as the second parameter 
+
+If not, it will return a a L<Paws::IAM::ListAttachedGroupPoliciesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllAttachedRolePolicies(sub { },RoleName => Str, [Marker => Str, MaxItems => Int, PathPrefix => Str])
+
+=head2 ListAllAttachedRolePolicies(RoleName => Str, [Marker => Str, MaxItems => Int, PathPrefix => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - AttachedPolicies, passing the object as the first parameter, and the string 'AttachedPolicies' as the second parameter 
+
+If not, it will return a a L<Paws::IAM::ListAttachedRolePoliciesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllAttachedUserPolicies(sub { },UserName => Str, [Marker => Str, MaxItems => Int, PathPrefix => Str])
+
+=head2 ListAllAttachedUserPolicies(UserName => Str, [Marker => Str, MaxItems => Int, PathPrefix => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - AttachedPolicies, passing the object as the first parameter, and the string 'AttachedPolicies' as the second parameter 
+
+If not, it will return a a L<Paws::IAM::ListAttachedUserPoliciesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllEntitiesForPolicy(sub { },PolicyArn => Str, [EntityFilter => Str, Marker => Str, MaxItems => Int, PathPrefix => Str])
+
+=head2 ListAllEntitiesForPolicy(PolicyArn => Str, [EntityFilter => Str, Marker => Str, MaxItems => Int, PathPrefix => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - PolicyGroups, passing the object as the first parameter, and the string 'PolicyGroups' as the second parameter 
+
+ - PolicyUsers, passing the object as the first parameter, and the string 'PolicyUsers' as the second parameter 
+
+ - PolicyRoles, passing the object as the first parameter, and the string 'PolicyRoles' as the second parameter 
+
+If not, it will return a a L<Paws::IAM::ListEntitiesForPolicyResponse> instance with all the C<param>s; andC<param>s; andC<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllGroupPolicies(sub { },GroupName => Str, [Marker => Str, MaxItems => Int])
+
+=head2 ListAllGroupPolicies(GroupName => Str, [Marker => Str, MaxItems => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - PolicyNames, passing the object as the first parameter, and the string 'PolicyNames' as the second parameter 
+
+If not, it will return a a L<Paws::IAM::ListGroupPoliciesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllGroups(sub { },[Marker => Str, MaxItems => Int, PathPrefix => Str])
+
+=head2 ListAllGroups([Marker => Str, MaxItems => Int, PathPrefix => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Groups, passing the object as the first parameter, and the string 'Groups' as the second parameter 
+
+If not, it will return a a L<Paws::IAM::ListGroupsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllGroupsForUser(sub { },UserName => Str, [Marker => Str, MaxItems => Int])
+
+=head2 ListAllGroupsForUser(UserName => Str, [Marker => Str, MaxItems => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Groups, passing the object as the first parameter, and the string 'Groups' as the second parameter 
+
+If not, it will return a a L<Paws::IAM::ListGroupsForUserResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllInstanceProfiles(sub { },[Marker => Str, MaxItems => Int, PathPrefix => Str])
+
+=head2 ListAllInstanceProfiles([Marker => Str, MaxItems => Int, PathPrefix => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - InstanceProfiles, passing the object as the first parameter, and the string 'InstanceProfiles' as the second parameter 
+
+If not, it will return a a L<Paws::IAM::ListInstanceProfilesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllInstanceProfilesForRole(sub { },RoleName => Str, [Marker => Str, MaxItems => Int])
+
+=head2 ListAllInstanceProfilesForRole(RoleName => Str, [Marker => Str, MaxItems => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - InstanceProfiles, passing the object as the first parameter, and the string 'InstanceProfiles' as the second parameter 
+
+If not, it will return a a L<Paws::IAM::ListInstanceProfilesForRoleResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllMFADevices(sub { },[Marker => Str, MaxItems => Int, UserName => Str])
+
+=head2 ListAllMFADevices([Marker => Str, MaxItems => Int, UserName => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - MFADevices, passing the object as the first parameter, and the string 'MFADevices' as the second parameter 
+
+If not, it will return a a L<Paws::IAM::ListMFADevicesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllPolicies(sub { },[Marker => Str, MaxItems => Int, OnlyAttached => Bool, PathPrefix => Str, Scope => Str])
+
+=head2 ListAllPolicies([Marker => Str, MaxItems => Int, OnlyAttached => Bool, PathPrefix => Str, Scope => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Policies, passing the object as the first parameter, and the string 'Policies' as the second parameter 
+
+If not, it will return a a L<Paws::IAM::ListPoliciesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllPolicyVersions(sub { },PolicyArn => Str, [Marker => Str, MaxItems => Int])
+
+=head2 ListAllPolicyVersions(PolicyArn => Str, [Marker => Str, MaxItems => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Versions, passing the object as the first parameter, and the string 'Versions' as the second parameter 
+
+If not, it will return a a L<Paws::IAM::ListPolicyVersionsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllRolePolicies(sub { },RoleName => Str, [Marker => Str, MaxItems => Int])
+
+=head2 ListAllRolePolicies(RoleName => Str, [Marker => Str, MaxItems => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - PolicyNames, passing the object as the first parameter, and the string 'PolicyNames' as the second parameter 
+
+If not, it will return a a L<Paws::IAM::ListRolePoliciesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllRoles(sub { },[Marker => Str, MaxItems => Int, PathPrefix => Str])
+
+=head2 ListAllRoles([Marker => Str, MaxItems => Int, PathPrefix => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Roles, passing the object as the first parameter, and the string 'Roles' as the second parameter 
+
+If not, it will return a a L<Paws::IAM::ListRolesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllServerCertificates(sub { },[Marker => Str, MaxItems => Int, PathPrefix => Str])
+
+=head2 ListAllServerCertificates([Marker => Str, MaxItems => Int, PathPrefix => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ServerCertificateMetadataList, passing the object as the first parameter, and the string 'ServerCertificateMetadataList' as the second parameter 
+
+If not, it will return a a L<Paws::IAM::ListServerCertificatesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllSigningCertificates(sub { },[Marker => Str, MaxItems => Int, UserName => Str])
+
+=head2 ListAllSigningCertificates([Marker => Str, MaxItems => Int, UserName => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Certificates, passing the object as the first parameter, and the string 'Certificates' as the second parameter 
+
+If not, it will return a a L<Paws::IAM::ListSigningCertificatesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllSSHPublicKeys(sub { },[Marker => Str, MaxItems => Int, UserName => Str])
+
+=head2 ListAllSSHPublicKeys([Marker => Str, MaxItems => Int, UserName => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - SSHPublicKeys, passing the object as the first parameter, and the string 'SSHPublicKeys' as the second parameter 
+
+If not, it will return a a L<Paws::IAM::ListSSHPublicKeysResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllUserPolicies(sub { },UserName => Str, [Marker => Str, MaxItems => Int])
+
+=head2 ListAllUserPolicies(UserName => Str, [Marker => Str, MaxItems => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - PolicyNames, passing the object as the first parameter, and the string 'PolicyNames' as the second parameter 
+
+If not, it will return a a L<Paws::IAM::ListUserPoliciesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllUsers(sub { },[Marker => Str, MaxItems => Int, PathPrefix => Str])
+
+=head2 ListAllUsers([Marker => Str, MaxItems => Int, PathPrefix => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Users, passing the object as the first parameter, and the string 'Users' as the second parameter 
+
+If not, it will return a a L<Paws::IAM::ListUsersResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllVirtualMFADevices(sub { },[AssignmentStatus => Str, Marker => Str, MaxItems => Int])
+
+=head2 ListAllVirtualMFADevices([AssignmentStatus => Str, Marker => Str, MaxItems => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - VirtualMFADevices, passing the object as the first parameter, and the string 'VirtualMFADevices' as the second parameter 
+
+If not, it will return a a L<Paws::IAM::ListVirtualMFADevicesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 SimulateAllCustomPolicies(sub { },ActionNames => ArrayRef[Str|Undef], PolicyInputList => ArrayRef[Str|Undef], [CallerArn => Str, ContextEntries => ArrayRef[L<Paws::IAM::ContextEntry>], Marker => Str, MaxItems => Int, ResourceArns => ArrayRef[Str|Undef], ResourceHandlingOption => Str, ResourceOwner => Str, ResourcePolicy => Str])
+
+=head2 SimulateAllCustomPolicies(ActionNames => ArrayRef[Str|Undef], PolicyInputList => ArrayRef[Str|Undef], [CallerArn => Str, ContextEntries => ArrayRef[L<Paws::IAM::ContextEntry>], Marker => Str, MaxItems => Int, ResourceArns => ArrayRef[Str|Undef], ResourceHandlingOption => Str, ResourceOwner => Str, ResourcePolicy => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - EvaluationResults, passing the object as the first parameter, and the string 'EvaluationResults' as the second parameter 
+
+If not, it will return a a L<Paws::IAM::SimulatePolicyResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 SimulateAllPrincipalPolicies(sub { },ActionNames => ArrayRef[Str|Undef], PolicySourceArn => Str, [CallerArn => Str, ContextEntries => ArrayRef[L<Paws::IAM::ContextEntry>], Marker => Str, MaxItems => Int, PolicyInputList => ArrayRef[Str|Undef], ResourceArns => ArrayRef[Str|Undef], ResourceHandlingOption => Str, ResourceOwner => Str, ResourcePolicy => Str])
+
+=head2 SimulateAllPrincipalPolicies(ActionNames => ArrayRef[Str|Undef], PolicySourceArn => Str, [CallerArn => Str, ContextEntries => ArrayRef[L<Paws::IAM::ContextEntry>], Marker => Str, MaxItems => Int, PolicyInputList => ArrayRef[Str|Undef], ResourceArns => ArrayRef[Str|Undef], ResourceHandlingOption => Str, ResourceOwner => Str, ResourcePolicy => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - EvaluationResults, passing the object as the first parameter, and the string 'EvaluationResults' as the second parameter 
+
+If not, it will return a a L<Paws::IAM::SimulatePolicyResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+
 
 
 =head1 SEE ALSO

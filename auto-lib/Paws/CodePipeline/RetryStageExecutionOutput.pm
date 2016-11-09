@@ -3,6 +3,7 @@ package Paws::CodePipeline::RetryStageExecutionOutput;
   use Moose;
   has PipelineExecutionId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'pipelineExecutionId' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -18,6 +19,7 @@ Paws::CodePipeline::RetryStageExecutionOutput
 The ID of the current workflow execution in the failed stage.
 
 
+=head2 _request_id => Str
 
 
 =cut

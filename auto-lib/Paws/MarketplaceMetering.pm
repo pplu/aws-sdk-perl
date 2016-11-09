@@ -19,6 +19,8 @@ package Paws::MarketplaceMetering;
     my $call_object = $self->new_with_coercions('Paws::MarketplaceMetering::MeterUsage', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
+
 
   sub operations { qw/MeterUsage / }
 
@@ -77,6 +79,15 @@ Returns: a L<Paws::MarketplaceMetering::MeterUsageResult> instance
 
   API to emit metering records. For identical requests, the API is
 idempotent. It simply returns the metering record ID.
+
+
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+
 
 
 =head1 SEE ALSO

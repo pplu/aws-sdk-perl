@@ -4,6 +4,7 @@ package Paws::StorageGateway::ListLocalDisksOutput;
   has Disks => (is => 'ro', isa => 'ArrayRef[Paws::StorageGateway::Disk]');
   has GatewayARN => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -19,12 +20,12 @@ Paws::StorageGateway::ListLocalDisksOutput
 
 
 
-
 =head2 GatewayARN => Str
 
 
 
 
+=head2 _request_id => Str
 
 
 =cut

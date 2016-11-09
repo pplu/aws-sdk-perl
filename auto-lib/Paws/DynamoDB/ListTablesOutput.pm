@@ -4,6 +4,7 @@ package Paws::DynamoDB::ListTablesOutput;
   has LastEvaluatedTableName => (is => 'ro', isa => 'Str');
   has TableNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -25,7 +26,6 @@ response, this means that there are no more table names to be
 retrieved.
 
 
-
 =head2 TableNames => ArrayRef[Str|Undef]
 
 The names of the tables associated with the current account at the
@@ -36,6 +36,7 @@ this value as the I<ExclusiveStartTableName> parameter in a subsequent
 I<ListTables> request and obtain the next page of results.
 
 
+=head2 _request_id => Str
 
 
 =cut

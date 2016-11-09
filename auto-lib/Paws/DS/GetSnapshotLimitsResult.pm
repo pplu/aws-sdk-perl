@@ -3,6 +3,7 @@ package Paws::DS::GetSnapshotLimitsResult;
   use Moose;
   has SnapshotLimits => (is => 'ro', isa => 'Paws::DS::SnapshotLimits');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -19,6 +20,7 @@ A SnapshotLimits object that contains the manual snapshot limits for
 the specified directory.
 
 
+=head2 _request_id => Str
 
 
 =cut

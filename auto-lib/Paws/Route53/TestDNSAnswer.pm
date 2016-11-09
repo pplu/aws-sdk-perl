@@ -1,12 +1,12 @@
 
 package Paws::Route53::TestDNSAnswer;
   use Moose;
-  has EDNS0ClientSubnetIP => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'edns0clientsubnetip' );
-  has EDNS0ClientSubnetMask => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'edns0clientsubnetmask' );
-  has HostedZoneId => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'hostedzoneid' , required => 1);
-  has RecordName => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'recordname' , required => 1);
-  has RecordType => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'recordtype' , required => 1);
-  has ResolverIP => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'resolverip' );
+  has EDNS0ClientSubnetIP => (is => 'ro', isa => 'Str', query_name => 'edns0clientsubnetip', traits => ['ParamInQuery']);
+  has EDNS0ClientSubnetMask => (is => 'ro', isa => 'Str', query_name => 'edns0clientsubnetmask', traits => ['ParamInQuery']);
+  has HostedZoneId => (is => 'ro', isa => 'Str', query_name => 'hostedzoneid', traits => ['ParamInQuery'], required => 1);
+  has RecordName => (is => 'ro', isa => 'Str', query_name => 'recordname', traits => ['ParamInQuery'], required => 1);
+  has RecordType => (is => 'ro', isa => 'Str', query_name => 'recordtype', traits => ['ParamInQuery'], required => 1);
+  has ResolverIP => (is => 'ro', isa => 'Str', query_name => 'resolverip', traits => ['ParamInQuery']);
 
   use MooseX::ClassAttribute;
 

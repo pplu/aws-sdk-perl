@@ -4,9 +4,10 @@ package Paws::Route53::CreateHostedZoneResponse;
   has ChangeInfo => (is => 'ro', isa => 'Paws::Route53::ChangeInfo', required => 1);
   has DelegationSet => (is => 'ro', isa => 'Paws::Route53::DelegationSet', required => 1);
   has HostedZone => (is => 'ro', isa => 'Paws::Route53::HostedZone', required => 1);
-  has Location => (is => 'ro', isa => 'Str', required => 1);
+  has Location => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Location', required => 1);
   has VPC => (is => 'ro', isa => 'Paws::Route53::VPC');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

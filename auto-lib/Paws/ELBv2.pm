@@ -158,6 +158,71 @@ package Paws::ELBv2;
     my $call_object = $self->new_with_coercions('Paws::ELBv2::SetSubnets', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
+  sub DescribeAllListeners {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeListeners(@_);
+
+    if (not defined $callback) {
+      while ($result->Marker) {
+        $result = $self->DescribeListeners(@_, Marker => $result->NextMarker);
+        push @{ $result->Listeners }, @{ $result->Listeners };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $result = $self->DescribeListeners(@_, Marker => $result->NextMarker);
+        $callback->($_ => 'Listeners') foreach (@{ $result->Listeners });
+      }
+    }
+
+    return undef
+  }
+  sub DescribeAllLoadBalancers {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeLoadBalancers(@_);
+
+    if (not defined $callback) {
+      while ($result->Marker) {
+        $result = $self->DescribeLoadBalancers(@_, Marker => $result->NextMarker);
+        push @{ $result->LoadBalancers }, @{ $result->LoadBalancers };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $result = $self->DescribeLoadBalancers(@_, Marker => $result->NextMarker);
+        $callback->($_ => 'LoadBalancers') foreach (@{ $result->LoadBalancers });
+      }
+    }
+
+    return undef
+  }
+  sub DescribeAllTargetGroups {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeTargetGroups(@_);
+
+    if (not defined $callback) {
+      while ($result->Marker) {
+        $result = $self->DescribeTargetGroups(@_, Marker => $result->NextMarker);
+        push @{ $result->TargetGroups }, @{ $result->TargetGroups };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $result = $self->DescribeTargetGroups(@_, Marker => $result->NextMarker);
+        $callback->($_ => 'TargetGroups') foreach (@{ $result->TargetGroups });
+      }
+    }
+
+    return undef
+  }
+
 
   sub operations { qw/AddTags CreateListener CreateLoadBalancer CreateRule CreateTargetGroup DeleteListener DeleteLoadBalancer DeleteRule DeleteTargetGroup DeregisterTargets DescribeListeners DescribeLoadBalancerAttributes DescribeLoadBalancers DescribeRules DescribeSSLPolicies DescribeTags DescribeTargetGroupAttributes DescribeTargetGroups DescribeTargetHealth ModifyListener ModifyLoadBalancerAttributes ModifyRule ModifyTargetGroup ModifyTargetGroupAttributes RegisterTargets RemoveTags SetRulePriorities SetSecurityGroups SetSubnets / }
 
@@ -657,6 +722,51 @@ Returns: a L<Paws::ELBv2::SetSubnetsOutput> instance
   Enables the Availability Zone for the specified subnets for the
 specified load balancer. The specified subnets replace the previously
 enabled subnets.
+
+
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 DescribeAllListeners(sub { },[ListenerArns => ArrayRef[Str|Undef], LoadBalancerArn => Str, Marker => Str, PageSize => Int])
+
+=head2 DescribeAllListeners([ListenerArns => ArrayRef[Str|Undef], LoadBalancerArn => Str, Marker => Str, PageSize => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Listeners, passing the object as the first parameter, and the string 'Listeners' as the second parameter 
+
+If not, it will return a a L<Paws::ELBv2::DescribeListenersOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllLoadBalancers(sub { },[LoadBalancerArns => ArrayRef[Str|Undef], Marker => Str, Names => ArrayRef[Str|Undef], PageSize => Int])
+
+=head2 DescribeAllLoadBalancers([LoadBalancerArns => ArrayRef[Str|Undef], Marker => Str, Names => ArrayRef[Str|Undef], PageSize => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - LoadBalancers, passing the object as the first parameter, and the string 'LoadBalancers' as the second parameter 
+
+If not, it will return a a L<Paws::ELBv2::DescribeLoadBalancersOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllTargetGroups(sub { },[LoadBalancerArn => Str, Marker => Str, Names => ArrayRef[Str|Undef], PageSize => Int, TargetGroupArns => ArrayRef[Str|Undef]])
+
+=head2 DescribeAllTargetGroups([LoadBalancerArn => Str, Marker => Str, Names => ArrayRef[Str|Undef], PageSize => Int, TargetGroupArns => ArrayRef[Str|Undef]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - TargetGroups, passing the object as the first parameter, and the string 'TargetGroups' as the second parameter 
+
+If not, it will return a a L<Paws::ELBv2::DescribeTargetGroupsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+
 
 
 =head1 SEE ALSO

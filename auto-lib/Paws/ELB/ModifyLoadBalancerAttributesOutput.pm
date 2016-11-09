@@ -4,6 +4,7 @@ package Paws::ELB::ModifyLoadBalancerAttributesOutput;
   has LoadBalancerAttributes => (is => 'ro', isa => 'Paws::ELB::LoadBalancerAttributes');
   has LoadBalancerName => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -20,12 +21,12 @@ Paws::ELB::ModifyLoadBalancerAttributesOutput
 
 
 
-
 =head2 LoadBalancerName => Str
 
 The name of the load balancer.
 
 
+=head2 _request_id => Str
 
 
 =cut

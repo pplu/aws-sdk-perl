@@ -14,6 +14,7 @@ package Paws::S3::ListObjectsV2Output;
   has Prefix => (is => 'ro', isa => 'Str');
   has StartAfter => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

@@ -3,6 +3,7 @@ package Paws::SMS::CreateReplicationJobResponse;
   use Moose;
   has ReplicationJobId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'replicationJobId' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -18,6 +19,7 @@ Paws::SMS::CreateReplicationJobResponse
 
 
 
+=head2 _request_id => Str
 
 
 =cut

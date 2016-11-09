@@ -294,6 +294,8 @@ package Paws::CognitoIdp;
     my $call_object = $self->new_with_coercions('Paws::CognitoIdp::VerifyUserAttribute', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
+
 
   sub operations { qw/AddCustomAttributes AdminConfirmSignUp AdminCreateUser AdminDeleteUser AdminDeleteUserAttributes AdminDisableUser AdminEnableUser AdminForgetDevice AdminGetDevice AdminGetUser AdminInitiateAuth AdminListDevices AdminResetUserPassword AdminRespondToAuthChallenge AdminSetUserSettings AdminUpdateDeviceStatus AdminUpdateUserAttributes AdminUserGlobalSignOut ChangePassword ConfirmDevice ConfirmForgotPassword ConfirmSignUp CreateUserImportJob CreateUserPool CreateUserPoolClient DeleteUser DeleteUserAttributes DeleteUserPool DeleteUserPoolClient DescribeUserImportJob DescribeUserPool DescribeUserPoolClient ForgetDevice ForgotPassword GetCSVHeader GetDevice GetUser GetUserAttributeVerificationCode GlobalSignOut InitiateAuth ListDevices ListUserImportJobs ListUserPoolClients ListUserPools ListUsers ResendConfirmationCode RespondToAuthChallenge SetUserSettings SignUp StartUserImportJob StopUserImportJob UpdateDeviceStatus UpdateUserAttributes UpdateUserPool UpdateUserPoolClient VerifyUserAttribute / }
 
@@ -872,6 +874,15 @@ Each argument is described in detail in: L<Paws::CognitoIdp::VerifyUserAttribute
 Returns: a L<Paws::CognitoIdp::VerifyUserAttributeResponse> instance
 
   Verifies the specified user attributes in the user pool.
+
+
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+
 
 
 =head1 SEE ALSO

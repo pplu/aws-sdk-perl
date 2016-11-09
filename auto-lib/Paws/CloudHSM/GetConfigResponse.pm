@@ -5,6 +5,7 @@ package Paws::CloudHSM::GetConfigResponse;
   has ConfigFile => (is => 'ro', isa => 'Str');
   has ConfigType => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -20,11 +21,9 @@ Paws::CloudHSM::GetConfigResponse
 The certificate file containing the server.pem files of the HSMs.
 
 
-
 =head2 ConfigFile => Str
 
 The chrystoki.conf configuration file.
-
 
 
 =head2 ConfigType => Str
@@ -32,6 +31,7 @@ The chrystoki.conf configuration file.
 The type of credentials.
 
 
+=head2 _request_id => Str
 
 
 =cut

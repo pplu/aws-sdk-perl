@@ -3,6 +3,7 @@ package Paws::CloudWatchLogs::PutDestinationResponse;
   use Moose;
   has Destination => (is => 'ro', isa => 'Paws::CloudWatchLogs::Destination', traits => ['Unwrapped'], xmlname => 'destination' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -18,6 +19,7 @@ Paws::CloudWatchLogs::PutDestinationResponse
 
 
 
+=head2 _request_id => Str
 
 
 =cut

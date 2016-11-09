@@ -134,6 +134,8 @@ package Paws::DirectConnect;
     my $call_object = $self->new_with_coercions('Paws::DirectConnect::UntagResource', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
+
 
   sub operations { qw/AllocateConnectionOnInterconnect AllocatePrivateVirtualInterface AllocatePublicVirtualInterface ConfirmConnection ConfirmPrivateVirtualInterface ConfirmPublicVirtualInterface CreateConnection CreateInterconnect CreatePrivateVirtualInterface CreatePublicVirtualInterface DeleteConnection DeleteInterconnect DeleteVirtualInterface DescribeConnectionLoa DescribeConnections DescribeConnectionsOnInterconnect DescribeInterconnectLoa DescribeInterconnects DescribeLocations DescribeTags DescribeVirtualGateways DescribeVirtualInterfaces TagResource UntagResource / }
 
@@ -517,6 +519,15 @@ Each argument is described in detail in: L<Paws::DirectConnect::UntagResource>
 Returns: a L<Paws::DirectConnect::UntagResourceResponse> instance
 
   Removes one or more tags from the specified Direct Connect resource.
+
+
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+
 
 
 =head1 SEE ALSO

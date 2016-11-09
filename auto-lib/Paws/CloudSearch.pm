@@ -134,6 +134,8 @@ package Paws::CloudSearch;
     my $call_object = $self->new_with_coercions('Paws::CloudSearch::UpdateServiceAccessPolicies', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
+
 
   sub operations { qw/BuildSuggesters CreateDomain DefineAnalysisScheme DefineExpression DefineIndexField DefineSuggester DeleteAnalysisScheme DeleteDomain DeleteExpression DeleteIndexField DeleteSuggester DescribeAnalysisSchemes DescribeAvailabilityOptions DescribeDomains DescribeExpressions DescribeIndexFields DescribeScalingParameters DescribeServiceAccessPolicies DescribeSuggesters IndexDocuments ListDomainNames UpdateAvailabilityOptions UpdateScalingParameters UpdateServiceAccessPolicies / }
 
@@ -478,6 +480,15 @@ Returns: a L<Paws::CloudSearch::UpdateServiceAccessPoliciesResponse> instance
   Configures the access rules that control access to the domain's
 document and search endpoints. For more information, see Configuring
 Access for an Amazon CloudSearch Domain.
+
+
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+
 
 
 =head1 SEE ALSO

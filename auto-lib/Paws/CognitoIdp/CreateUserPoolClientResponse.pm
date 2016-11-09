@@ -3,6 +3,7 @@ package Paws::CognitoIdp::CreateUserPoolClientResponse;
   use Moose;
   has UserPoolClient => (is => 'ro', isa => 'Paws::CognitoIdp::UserPoolClientType');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -18,6 +19,7 @@ Paws::CognitoIdp::CreateUserPoolClientResponse
 The user pool client that was just created.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -68,6 +68,8 @@ package Paws::EFS;
     my $call_object = $self->new_with_coercions('Paws::EFS::ModifyMountTargetSecurityGroups', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
+
 
   sub operations { qw/CreateFileSystem CreateMountTarget CreateTags DeleteFileSystem DeleteMountTarget DeleteTags DescribeFileSystems DescribeMountTargets DescribeMountTargetSecurityGroups DescribeTags ModifyMountTargetSecurityGroups / }
 
@@ -573,6 +575,15 @@ C<ec2:ModifyNetworkInterfaceAttribute> action on the mount target's
 network interface.
 
 =back
+
+
+
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
 
 
 

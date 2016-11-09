@@ -1,8 +1,9 @@
 
 package Paws::S3::GetBucketTaggingOutput;
   use Moose;
-  has TagSet => (is => 'ro', isa => 'ArrayRef[Paws::S3::Tag]', traits => ['Unwrapped'], xmlname => 'Tag', required => 1);
+  has TagSet => (is => 'ro', isa => 'ArrayRef[Paws::S3::Tag]', required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

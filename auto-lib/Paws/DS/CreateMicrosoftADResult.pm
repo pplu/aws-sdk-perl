@@ -3,6 +3,7 @@ package Paws::DS::CreateMicrosoftADResult;
   use Moose;
   has DirectoryId => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -18,6 +19,7 @@ Paws::DS::CreateMicrosoftADResult
 The identifier of the directory that was created.
 
 
+=head2 _request_id => Str
 
 
 =cut

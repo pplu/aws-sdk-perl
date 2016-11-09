@@ -4,6 +4,7 @@ package Paws::EC2::DescribeVolumesResult;
   has NextToken => (is => 'ro', isa => 'Str', xmlname => 'nextToken', traits => ['Unwrapped',]);
   has Volumes => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Volume]', xmlname => 'volumeSet', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -24,12 +25,12 @@ results. This value is C<null> when there are no more results to
 return.
 
 
-
 =head2 Volumes => ArrayRef[L<Paws::EC2::Volume>]
 
 Information about the volumes.
 
 
+=head2 _request_id => Str
 
 
 =cut

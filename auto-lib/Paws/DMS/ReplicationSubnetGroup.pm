@@ -3,7 +3,7 @@ package Paws::DMS::ReplicationSubnetGroup;
   has ReplicationSubnetGroupDescription => (is => 'ro', isa => 'Str');
   has ReplicationSubnetGroupIdentifier => (is => 'ro', isa => 'Str');
   has SubnetGroupStatus => (is => 'ro', isa => 'Str');
-  has Subnets => (is => 'ro', isa => 'ArrayRef[Paws::DMS::Subnet]');
+  has Subnets => (is => 'ro', isa => 'ArrayRef[Paws::DMS::Subnet]', request_name => 'Subnet', traits => ['NameInRequest']);
   has VpcId => (is => 'ro', isa => 'Str');
 1;
 

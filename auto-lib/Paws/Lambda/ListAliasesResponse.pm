@@ -4,6 +4,7 @@ package Paws::Lambda::ListAliasesResponse;
   has Aliases => (is => 'ro', isa => 'ArrayRef[Paws::Lambda::AliasConfiguration]');
   has NextMarker => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -20,12 +21,12 @@ Paws::Lambda::ListAliasesResponse
 A list of aliases.
 
 
-
 =head2 NextMarker => Str
 
 A string, present if there are more aliases.
 
 
+=head2 _request_id => Str
 
 
 =cut

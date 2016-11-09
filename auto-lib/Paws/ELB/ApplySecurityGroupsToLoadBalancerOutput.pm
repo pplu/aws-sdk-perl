@@ -3,6 +3,7 @@ package Paws::ELB::ApplySecurityGroupsToLoadBalancerOutput;
   use Moose;
   has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -19,6 +20,7 @@ Paws::ELB::ApplySecurityGroupsToLoadBalancerOutput
 The IDs of the security groups associated with the load balancer.
 
 
+=head2 _request_id => Str
 
 
 =cut

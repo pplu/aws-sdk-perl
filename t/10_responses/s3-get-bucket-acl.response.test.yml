@@ -1,5 +1,4 @@
 ---
-todo: 'S3 is not stable'
 call: GetBucketAcl
 service: S3
 tests:

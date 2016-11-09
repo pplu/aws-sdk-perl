@@ -4,6 +4,7 @@ package Paws::DS::DescribeTrustsResult;
   has NextToken => (is => 'ro', isa => 'Str');
   has Trusts => (is => 'ro', isa => 'ArrayRef[Paws::DS::Trust]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -21,7 +22,6 @@ I<NextToken> parameter in a subsequent call to DescribeTrusts to
 retrieve the next set of items.
 
 
-
 =head2 Trusts => ArrayRef[L<Paws::DS::Trust>]
 
 The list of Trust objects that were retrieved.
@@ -32,6 +32,7 @@ are less than the requested number of items left to retrieve, or if the
 limitations of the operation have been exceeded.
 
 
+=head2 _request_id => Str
 
 
 =cut

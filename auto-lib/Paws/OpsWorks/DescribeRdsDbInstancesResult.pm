@@ -3,6 +3,7 @@ package Paws::OpsWorks::DescribeRdsDbInstancesResult;
   use Moose;
   has RdsDbInstances => (is => 'ro', isa => 'ArrayRef[Paws::OpsWorks::RdsDbInstance]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -18,6 +19,7 @@ Paws::OpsWorks::DescribeRdsDbInstancesResult
 An a array of C<RdsDbInstance> objects that describe the instances.
 
 
+=head2 _request_id => Str
 
 
 =cut

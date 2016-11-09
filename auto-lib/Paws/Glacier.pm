@@ -168,62 +168,92 @@ package Paws::Glacier;
     my $call_object = $self->new_with_coercions('Paws::Glacier::UploadMultipartPart', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
   sub ListAllJobs {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListJobs(@_);
-    my $array = [];
-    push @$array, @{ $result->JobList };
 
-    while ($result->Marker) {
-      $result = $self->ListJobs(@_, marker => $result->Marker);
-      push @$array, @{ $result->JobList };
+    if (not defined $callback) {
+      while ($result->marker) {
+        $result = $self->ListJobs(@_, marker => $result->Marker);
+        push @{ $result->JobList }, @{ $result->JobList };
+      }
+      return $result;
+    } else {
+      while ($result->marker) {
+        $result = $self->ListJobs(@_, marker => $result->Marker);
+        $callback->($_ => 'JobList') foreach (@{ $result->JobList });
+      }
     }
 
-    return 'Paws::Glacier::ListJobs'->_returns->new(JobList => $array);
+    return undef
   }
   sub ListAllMultipartUploads {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListMultipartUploads(@_);
-    my $array = [];
-    push @$array, @{ $result->UploadsList };
 
-    while ($result->Marker) {
-      $result = $self->ListMultipartUploads(@_, marker => $result->Marker);
-      push @$array, @{ $result->UploadsList };
+    if (not defined $callback) {
+      while ($result->marker) {
+        $result = $self->ListMultipartUploads(@_, marker => $result->Marker);
+        push @{ $result->UploadsList }, @{ $result->UploadsList };
+      }
+      return $result;
+    } else {
+      while ($result->marker) {
+        $result = $self->ListMultipartUploads(@_, marker => $result->Marker);
+        $callback->($_ => 'UploadsList') foreach (@{ $result->UploadsList });
+      }
     }
 
-    return 'Paws::Glacier::ListMultipartUploads'->_returns->new(UploadsList => $array);
+    return undef
   }
   sub ListAllParts {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListParts(@_);
-    my $array = [];
-    push @$array, @{ $result->Parts };
 
-    while ($result->Marker) {
-      $result = $self->ListParts(@_, marker => $result->Marker);
-      push @$array, @{ $result->Parts };
+    if (not defined $callback) {
+      while ($result->marker) {
+        $result = $self->ListParts(@_, marker => $result->Marker);
+        push @{ $result->Parts }, @{ $result->Parts };
+      }
+      return $result;
+    } else {
+      while ($result->marker) {
+        $result = $self->ListParts(@_, marker => $result->Marker);
+        $callback->($_ => 'Parts') foreach (@{ $result->Parts });
+      }
     }
 
-    return 'Paws::Glacier::ListParts'->_returns->new(Parts => $array);
+    return undef
   }
   sub ListAllVaults {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListVaults(@_);
-    my $array = [];
-    push @$array, @{ $result->VaultList };
 
-    while ($result->Marker) {
-      $result = $self->ListVaults(@_, marker => $result->Marker);
-      push @$array, @{ $result->VaultList };
+    if (not defined $callback) {
+      while ($result->marker) {
+        $result = $self->ListVaults(@_, marker => $result->Marker);
+        push @{ $result->VaultList }, @{ $result->VaultList };
+      }
+      return $result;
+    } else {
+      while ($result->marker) {
+        $result = $self->ListVaults(@_, marker => $result->Marker);
+        $callback->($_ => 'VaultList') foreach (@{ $result->VaultList });
+      }
     }
 
-    return 'Paws::Glacier::ListVaults'->_returns->new(VaultList => $array);
+    return undef
   }
+
 
   sub operations { qw/AbortMultipartUpload AbortVaultLock AddTagsToVault CompleteMultipartUpload CompleteVaultLock CreateVault DeleteArchive DeleteVault DeleteVaultAccessPolicy DeleteVaultNotifications DescribeJob DescribeVault GetDataRetrievalPolicy GetJobOutput GetVaultAccessPolicy GetVaultLock GetVaultNotifications InitiateJob InitiateMultipartUpload InitiateVaultLock ListJobs ListMultipartUploads ListParts ListTagsForVault ListVaults RemoveTagsFromVault SetDataRetrievalPolicy SetVaultAccessPolicy SetVaultNotifications UploadArchive UploadMultipartPart / }
 
@@ -1404,6 +1434,63 @@ Using AWS Identity and Access Management (IAM).
 For conceptual information and underlying REST API, go to Uploading
 Large Archives in Parts (Multipart Upload) and Upload Part in the
 I<Amazon Glacier Developer Guide>.
+
+
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllJobs(sub { },AccountId => Str, VaultName => Str, [Completed => Str, Limit => Str, Marker => Str, Statuscode => Str])
+
+=head2 ListAllJobs(AccountId => Str, VaultName => Str, [Completed => Str, Limit => Str, Marker => Str, Statuscode => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - JobList, passing the object as the first parameter, and the string 'JobList' as the second parameter 
+
+If not, it will return a a L<Paws::Glacier::ListJobsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllMultipartUploads(sub { },AccountId => Str, VaultName => Str, [Limit => Str, Marker => Str])
+
+=head2 ListAllMultipartUploads(AccountId => Str, VaultName => Str, [Limit => Str, Marker => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - UploadsList, passing the object as the first parameter, and the string 'UploadsList' as the second parameter 
+
+If not, it will return a a L<Paws::Glacier::ListMultipartUploadsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllParts(sub { },AccountId => Str, UploadId => Str, VaultName => Str, [Limit => Str, Marker => Str])
+
+=head2 ListAllParts(AccountId => Str, UploadId => Str, VaultName => Str, [Limit => Str, Marker => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Parts, passing the object as the first parameter, and the string 'Parts' as the second parameter 
+
+If not, it will return a a L<Paws::Glacier::ListPartsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllVaults(sub { },AccountId => Str, [Limit => Str, Marker => Str])
+
+=head2 ListAllVaults(AccountId => Str, [Limit => Str, Marker => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - VaultList, passing the object as the first parameter, and the string 'VaultList' as the second parameter 
+
+If not, it will return a a L<Paws::Glacier::ListVaultsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+
 
 
 =head1 SEE ALSO

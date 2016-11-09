@@ -1,6 +1,6 @@
 package Paws::ElastiCache::PendingModifiedValues;
   use Moose;
-  has CacheNodeIdsToRemove => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has CacheNodeIdsToRemove => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'CacheNodeId', traits => ['NameInRequest']);
   has CacheNodeType => (is => 'ro', isa => 'Str');
   has EngineVersion => (is => 'ro', isa => 'Str');
   has NumCacheNodes => (is => 'ro', isa => 'Int');

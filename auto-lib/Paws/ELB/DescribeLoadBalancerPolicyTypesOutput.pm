@@ -3,6 +3,7 @@ package Paws::ELB::DescribeLoadBalancerPolicyTypesOutput;
   use Moose;
   has PolicyTypeDescriptions => (is => 'ro', isa => 'ArrayRef[Paws::ELB::PolicyTypeDescription]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -19,6 +20,7 @@ Paws::ELB::DescribeLoadBalancerPolicyTypesOutput
 Information about the policy types.
 
 
+=head2 _request_id => Str
 
 
 =cut

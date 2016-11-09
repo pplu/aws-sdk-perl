@@ -5,6 +5,7 @@ package Paws::IAM::GetSAMLProviderResponse;
   has SAMLMetadataDocument => (is => 'ro', isa => 'Str');
   has ValidUntil => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -21,12 +22,10 @@ Paws::IAM::GetSAMLProviderResponse
 The date and time when the SAML provider was created.
 
 
-
 =head2 SAMLMetadataDocument => Str
 
 The XML metadata document that includes information about an identity
 provider.
-
 
 
 =head2 ValidUntil => Str
@@ -34,6 +33,7 @@ provider.
 The expiration date and time for the SAML provider.
 
 
+=head2 _request_id => Str
 
 
 =cut

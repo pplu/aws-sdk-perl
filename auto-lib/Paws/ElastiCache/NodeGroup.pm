@@ -1,7 +1,7 @@
 package Paws::ElastiCache::NodeGroup;
   use Moose;
   has NodeGroupId => (is => 'ro', isa => 'Str');
-  has NodeGroupMembers => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::NodeGroupMember]');
+  has NodeGroupMembers => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::NodeGroupMember]', request_name => 'NodeGroupMember', traits => ['NameInRequest']);
   has PrimaryEndpoint => (is => 'ro', isa => 'Paws::ElastiCache::Endpoint');
   has Slots => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');

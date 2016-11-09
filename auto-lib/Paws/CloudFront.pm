@@ -172,6 +172,92 @@ package Paws::CloudFront;
     my $call_object = $self->new_with_coercions('Paws::CloudFront::UpdateStreamingDistribution', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
+  sub ListAllCloudFrontOriginAccessIdentities {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListCloudFrontOriginAccessIdentities(@_);
+
+    if (not defined $callback) {
+      while ($result->CloudFrontOriginAccessIdentityList->IsTruncated) {
+        $result = $self->ListCloudFrontOriginAccessIdentities(@_, Marker => $result->CloudFrontOriginAccessIdentityList->NextMarker);
+        push @{ $result->CloudFrontOriginAccessIdentityList->Items }, @{ $result->CloudFrontOriginAccessIdentityList->Items };
+      }
+      return $result;
+    } else {
+      while ($result->CloudFrontOriginAccessIdentityList->IsTruncated) {
+        $result = $self->ListCloudFrontOriginAccessIdentities(@_, Marker => $result->CloudFrontOriginAccessIdentityList->NextMarker);
+        $callback->($_ => 'CloudFrontOriginAccessIdentityList.Items') foreach (@{ $result->CloudFrontOriginAccessIdentityList->Items });
+      }
+    }
+
+    return undef
+  }
+  sub ListAllDistributions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListDistributions(@_);
+
+    if (not defined $callback) {
+      while ($result->DistributionList->IsTruncated) {
+        $result = $self->ListDistributions(@_, Marker => $result->DistributionList->NextMarker);
+        push @{ $result->DistributionList->Items }, @{ $result->DistributionList->Items };
+      }
+      return $result;
+    } else {
+      while ($result->DistributionList->IsTruncated) {
+        $result = $self->ListDistributions(@_, Marker => $result->DistributionList->NextMarker);
+        $callback->($_ => 'DistributionList.Items') foreach (@{ $result->DistributionList->Items });
+      }
+    }
+
+    return undef
+  }
+  sub ListAllInvalidations {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListInvalidations(@_);
+
+    if (not defined $callback) {
+      while ($result->InvalidationList->IsTruncated) {
+        $result = $self->ListInvalidations(@_, Marker => $result->InvalidationList->NextMarker);
+        push @{ $result->InvalidationList->Items }, @{ $result->InvalidationList->Items };
+      }
+      return $result;
+    } else {
+      while ($result->InvalidationList->IsTruncated) {
+        $result = $self->ListInvalidations(@_, Marker => $result->InvalidationList->NextMarker);
+        $callback->($_ => 'InvalidationList.Items') foreach (@{ $result->InvalidationList->Items });
+      }
+    }
+
+    return undef
+  }
+  sub ListAllStreamingDistributions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListStreamingDistributions(@_);
+
+    if (not defined $callback) {
+      while ($result->StreamingDistributionList->IsTruncated) {
+        $result = $self->ListStreamingDistributions(@_, Marker => $result->StreamingDistributionList->NextMarker);
+        push @{ $result->StreamingDistributionList->Items }, @{ $result->StreamingDistributionList->Items };
+      }
+      return $result;
+    } else {
+      while ($result->StreamingDistributionList->IsTruncated) {
+        $result = $self->ListStreamingDistributions(@_, Marker => $result->StreamingDistributionList->NextMarker);
+        $callback->($_ => 'StreamingDistributionList.Items') foreach (@{ $result->StreamingDistributionList->Items });
+      }
+    }
+
+    return undef
+  }
+
 
   sub operations { qw/CreateCloudFrontOriginAccessIdentity CreateDistribution CreateDistributionWithTags CreateInvalidation CreateStreamingDistribution CreateStreamingDistributionWithTags DeleteCloudFrontOriginAccessIdentity DeleteDistribution DeleteStreamingDistribution GetCloudFrontOriginAccessIdentity GetCloudFrontOriginAccessIdentityConfig GetDistribution GetDistributionConfig GetInvalidation GetStreamingDistribution GetStreamingDistributionConfig ListCloudFrontOriginAccessIdentities ListDistributions ListDistributionsByWebACLId ListInvalidations ListStreamingDistributions ListTagsForResource TagResource UntagResource UpdateCloudFrontOriginAccessIdentity UpdateDistribution UpdateStreamingDistribution / }
 
@@ -547,6 +633,63 @@ Each argument is described in detail in: L<Paws::CloudFront::UpdateStreamingDist
 Returns: a L<Paws::CloudFront::UpdateStreamingDistributionResult> instance
 
   Update a streaming distribution.
+
+
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllCloudFrontOriginAccessIdentities(sub { },[Marker => Str, MaxItems => Str])
+
+=head2 ListAllCloudFrontOriginAccessIdentities([Marker => Str, MaxItems => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - CloudFrontOriginAccessIdentityList.Items, passing the object as the first parameter, and the string 'CloudFrontOriginAccessIdentityList.Items' as the second parameter 
+
+If not, it will return a a L<Paws::CloudFront::ListCloudFrontOriginAccessIdentitiesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllDistributions(sub { },[Marker => Str, MaxItems => Str])
+
+=head2 ListAllDistributions([Marker => Str, MaxItems => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - DistributionList.Items, passing the object as the first parameter, and the string 'DistributionList.Items' as the second parameter 
+
+If not, it will return a a L<Paws::CloudFront::ListDistributionsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllInvalidations(sub { },DistributionId => Str, [Marker => Str, MaxItems => Str])
+
+=head2 ListAllInvalidations(DistributionId => Str, [Marker => Str, MaxItems => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - InvalidationList.Items, passing the object as the first parameter, and the string 'InvalidationList.Items' as the second parameter 
+
+If not, it will return a a L<Paws::CloudFront::ListInvalidationsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllStreamingDistributions(sub { },[Marker => Str, MaxItems => Str])
+
+=head2 ListAllStreamingDistributions([Marker => Str, MaxItems => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - StreamingDistributionList.Items, passing the object as the first parameter, and the string 'StreamingDistributionList.Items' as the second parameter 
+
+If not, it will return a a L<Paws::CloudFront::ListStreamingDistributionsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+
 
 
 =head1 SEE ALSO

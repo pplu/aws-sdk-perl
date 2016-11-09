@@ -4,6 +4,7 @@ package Paws::CloudWatchEvents::PutTargetsResponse;
   has FailedEntries => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatchEvents::PutTargetsResultEntry]');
   has FailedEntryCount => (is => 'ro', isa => 'Int');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -19,12 +20,12 @@ Paws::CloudWatchEvents::PutTargetsResponse
 An array of failed target entries.
 
 
-
 =head2 FailedEntryCount => Int
 
 The number of failed entries.
 
 
+=head2 _request_id => Str
 
 
 =cut

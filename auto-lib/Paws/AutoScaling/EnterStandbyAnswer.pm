@@ -3,6 +3,7 @@ package Paws::AutoScaling::EnterStandbyAnswer;
   use Moose;
   has Activities => (is => 'ro', isa => 'ArrayRef[Paws::AutoScaling::Activity]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -19,6 +20,7 @@ Paws::AutoScaling::EnterStandbyAnswer
 The activities related to moving instances into C<Standby> mode.
 
 
+=head2 _request_id => Str
 
 
 =cut

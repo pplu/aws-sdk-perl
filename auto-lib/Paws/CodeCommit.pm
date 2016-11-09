@@ -89,6 +89,50 @@ package Paws::CodeCommit;
     my $call_object = $self->new_with_coercions('Paws::CodeCommit::UpdateRepositoryName', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
+  sub ListAllBranches {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListBranches(@_);
+
+    if (not defined $callback) {
+      while ($result->nextToken) {
+        $result = $self->ListBranches(@_, nextToken => $result->nextToken);
+        push @{ $result->branches }, @{ $result->branches };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $result = $self->ListBranches(@_, nextToken => $result->nextToken);
+        $callback->($_ => 'branches') foreach (@{ $result->branches });
+      }
+    }
+
+    return undef
+  }
+  sub ListAllRepositories {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListRepositories(@_);
+
+    if (not defined $callback) {
+      while ($result->nextToken) {
+        $result = $self->ListRepositories(@_, nextToken => $result->nextToken);
+        push @{ $result->repositories }, @{ $result->repositories };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $result = $self->ListRepositories(@_, nextToken => $result->nextToken);
+        $callback->($_ => 'repositories') foreach (@{ $result->repositories });
+      }
+    }
+
+    return undef
+  }
+
 
   sub operations { qw/BatchGetRepositories CreateBranch CreateRepository DeleteRepository GetBranch GetCommit GetRepository GetRepositoryTriggers ListBranches ListRepositories PutRepositoryTriggers TestRepositoryTriggers UpdateDefaultBranch UpdateRepositoryDescription UpdateRepositoryName / }
 
@@ -380,6 +424,39 @@ alphanumeric, dash, and underscore characters, and cannot include
 certain characters. The suffix ".git" is prohibited. For a full
 description of the limits on repository names, see Limits in the AWS
 CodeCommit User Guide.
+
+
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllBranches(sub { },RepositoryName => Str, [NextToken => Str])
+
+=head2 ListAllBranches(RepositoryName => Str, [NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - branches, passing the object as the first parameter, and the string 'branches' as the second parameter 
+
+If not, it will return a a L<Paws::CodeCommit::ListBranchesOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllRepositories(sub { },[NextToken => Str, Order => Str, SortBy => Str])
+
+=head2 ListAllRepositories([NextToken => Str, Order => Str, SortBy => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - repositories, passing the object as the first parameter, and the string 'repositories' as the second parameter 
+
+If not, it will return a a L<Paws::CodeCommit::ListRepositoriesOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+
 
 
 =head1 SEE ALSO

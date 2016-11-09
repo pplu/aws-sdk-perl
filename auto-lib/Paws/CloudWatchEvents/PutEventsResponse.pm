@@ -4,6 +4,7 @@ package Paws::CloudWatchEvents::PutEventsResponse;
   has Entries => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatchEvents::PutEventsResultEntry]');
   has FailedEntryCount => (is => 'ro', isa => 'Int');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -22,12 +23,12 @@ If not, then the ErrorCode and ErrorMessage can be used to identify the
 problem with the entry.
 
 
-
 =head2 FailedEntryCount => Int
 
 The number of failed entries.
 
 
+=head2 _request_id => Str
 
 
 =cut

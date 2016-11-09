@@ -84,6 +84,8 @@ package Paws::WorkSpaces;
     my $call_object = $self->new_with_coercions('Paws::WorkSpaces::TerminateWorkspaces', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
+
 
   sub operations { qw/CreateTags CreateWorkspaces DeleteTags DescribeTags DescribeWorkspaceBundles DescribeWorkspaceDirectories DescribeWorkspaces DescribeWorkspacesConnectionStatus ModifyWorkspaceProperties RebootWorkspaces RebuildWorkspaces StartWorkspaces StopWorkspaces TerminateWorkspaces / }
 
@@ -320,6 +322,15 @@ You can terminate a WorkSpace that is in any state except C<SUSPENDED>.
 
 This operation is asynchronous and returns before the WorkSpaces have
 been completely terminated.
+
+
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+
 
 
 =head1 SEE ALSO

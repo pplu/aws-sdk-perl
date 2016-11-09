@@ -137,6 +137,8 @@ package Paws::SQS;
     my $call_object = $self->new_with_coercions('Paws::SQS::SetQueueAttributes', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
+
 
   sub operations { qw/AddPermission ChangeMessageVisibility ChangeMessageVisibilityBatch CreateQueue DeleteMessage DeleteMessageBatch DeleteQueue GetQueueAttributes GetQueueUrl ListDeadLetterSourceQueues ListQueues PurgeQueue ReceiveMessage RemovePermission SendMessage SendMessageBatch SetQueueAttributes / }
 
@@ -674,6 +676,15 @@ the C<MessageRetentionPeriod> attribute can take up to 15 minutes.
 Going forward, new attributes might be added. If you are writing code
 that calls this action, we recommend that you structure your code so
 that it can handle new attributes gracefully.
+
+
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+
 
 
 =head1 SEE ALSO

@@ -81,6 +81,50 @@ package Paws::SDB;
     my $call_object = $self->new_with_coercions('Paws::SDB::Select', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
+  sub ListAllDomains {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListDomains(@_);
+
+    if (not defined $callback) {
+      while ($result->NextToken) {
+        $result = $self->ListDomains(@_, NextToken => $result->NextToken);
+        push @{ $result->DomainNames }, @{ $result->DomainNames };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $result = $self->ListDomains(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'DomainNames') foreach (@{ $result->DomainNames });
+      }
+    }
+
+    return undef
+  }
+  sub SelectAll {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->Select(@_);
+
+    if (not defined $callback) {
+      while ($result->NextToken) {
+        $result = $self->Select(@_, NextToken => $result->NextToken);
+        push @{ $result->Items }, @{ $result->Items };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $result = $self->Select(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'Items') foreach (@{ $result->Items });
+      }
+    }
+
+    return undef
+  }
+
 
   sub operations { qw/BatchDeleteAttributes BatchPutAttributes CreateDomain DeleteAttributes DeleteDomain DomainMetadata GetAttributes ListDomains PutAttributes Select / }
 
@@ -374,6 +418,39 @@ next page of results.
 
 For information on how to construct select expressions, see Using
 Select to Create Amazon SimpleDB Queries in the Developer Guide.
+
+
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllDomains(sub { },[MaxNumberOfDomains => Int, NextToken => Str])
+
+=head2 ListAllDomains([MaxNumberOfDomains => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - DomainNames, passing the object as the first parameter, and the string 'DomainNames' as the second parameter 
+
+If not, it will return a a L<Paws::SDB::ListDomainsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 SelectAll(sub { },SelectExpression => Str, [ConsistentRead => Bool, NextToken => Str])
+
+=head2 SelectAll(SelectExpression => Str, [ConsistentRead => Bool, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Items, passing the object as the first parameter, and the string 'Items' as the second parameter 
+
+If not, it will return a a L<Paws::SDB::SelectResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+
 
 
 =head1 SEE ALSO

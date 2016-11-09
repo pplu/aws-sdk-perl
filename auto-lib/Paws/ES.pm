@@ -63,6 +63,8 @@ package Paws::ES;
     my $call_object = $self->new_with_coercions('Paws::ES::UpdateElasticsearchDomainConfig', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
+
 
   sub operations { qw/AddTags CreateElasticsearchDomain DeleteElasticsearchDomain DescribeElasticsearchDomain DescribeElasticsearchDomainConfig DescribeElasticsearchDomains ListDomainNames ListTags RemoveTags UpdateElasticsearchDomainConfig / }
 
@@ -208,6 +210,15 @@ Returns: a L<Paws::ES::UpdateElasticsearchDomainConfigResponse> instance
   Modifies the cluster configuration of the specified Elasticsearch
 domain, setting as setting the instance type and the number of
 instances.
+
+
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+
 
 
 =head1 SEE ALSO

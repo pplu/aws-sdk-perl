@@ -94,6 +94,8 @@ package Paws::STS;
     my $call_object = $self->new_with_coercions('Paws::STS::GetSessionToken', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
+
 
   sub operations { qw/AssumeRole AssumeRoleWithSAML AssumeRoleWithWebIdentity DecodeAuthorizationMessage GetCallerIdentity GetFederationToken GetSessionToken / }
 
@@ -707,6 +709,15 @@ temporary credentials have the same permissions as the IAM user.
 For more information about using C<GetSessionToken> to create temporary
 credentials, go to Temporary Credentials for Users in Untrusted
 Environments in the I<IAM User Guide>.
+
+
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+
 
 
 =head1 SEE ALSO

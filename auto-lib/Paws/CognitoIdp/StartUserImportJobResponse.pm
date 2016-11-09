@@ -3,6 +3,7 @@ package Paws::CognitoIdp::StartUserImportJobResponse;
   use Moose;
   has UserImportJob => (is => 'ro', isa => 'Paws::CognitoIdp::UserImportJobType');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -18,6 +19,7 @@ Paws::CognitoIdp::StartUserImportJobResponse
 The job object that represents the user import job.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -1,0 +1,19 @@
+---
+content: |-
+  <?xml version="1.0" encoding="UTF-8"?>
+  <Error>
+    <Code>NoSuchKey</Code>
+    <Message>The specified key does not exist.</Message>
+    <Key>doesnotexist</Key>
+    <RequestId>E4845140F3F4C4AB</RequestId>
+    <HostId>29DLIz8xVkCoTdxQaFZpmsGCwu6JR5QzMhIomc7s9AAKBQikSdAKiAg08pfvujMD2mOmg9ZpFTI=</HostId>
+  </Error>
+headers:
+  connection: close
+  content-type: application/xml
+  date: 'Wed, 02 Nov 2016 09:02:09 GMT'
+  server: AmazonS3
+  transfer-encoding: chunked
+  x-amz-id-2: 29DLIz8xVkCoTdxQaFZpmsGCwu6JR5QzMhIomc7s9AAKBQikSdAKiAg08pfvujMD2mOmg9ZpFTI=
+  x-amz-request-id: E4845140F3F4C4AB
+status: 404

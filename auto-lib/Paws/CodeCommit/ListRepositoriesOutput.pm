@@ -4,6 +4,7 @@ package Paws::CodeCommit::ListRepositoriesOutput;
   has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
   has Repositories => (is => 'ro', isa => 'ArrayRef[Paws::CodeCommit::RepositoryNameIdPair]', traits => ['Unwrapped'], xmlname => 'repositories' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -22,12 +23,12 @@ When the client sends the token back to AWS CodeCommit, another page of
 1,000 records is retrieved.
 
 
-
 =head2 Repositories => ArrayRef[L<Paws::CodeCommit::RepositoryNameIdPair>]
 
 Lists the repositories called by the list repositories operation.
 
 
+=head2 _request_id => Str
 
 
 =cut

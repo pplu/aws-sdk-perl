@@ -3,6 +3,7 @@ package Paws::OpsWorks::CreateLayerResult;
   use Moose;
   has LayerId => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -18,6 +19,7 @@ Paws::OpsWorks::CreateLayerResult
 The layer ID.
 
 
+=head2 _request_id => Str
 
 
 =cut

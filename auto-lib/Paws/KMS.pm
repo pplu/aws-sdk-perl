@@ -174,6 +174,92 @@ package Paws::KMS;
     my $call_object = $self->new_with_coercions('Paws::KMS::UpdateKeyDescription', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
+  sub ListAllAliases {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListAliases(@_);
+
+    if (not defined $callback) {
+      while ($result->Truncated) {
+        $result = $self->ListAliases(@_, Marker => $result->NextMarker);
+        push @{ $result->Aliases }, @{ $result->Aliases };
+      }
+      return $result;
+    } else {
+      while ($result->Truncated) {
+        $result = $self->ListAliases(@_, Marker => $result->NextMarker);
+        $callback->($_ => 'Aliases') foreach (@{ $result->Aliases });
+      }
+    }
+
+    return undef
+  }
+  sub ListAllGrants {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListGrants(@_);
+
+    if (not defined $callback) {
+      while ($result->Truncated) {
+        $result = $self->ListGrants(@_, Marker => $result->NextMarker);
+        push @{ $result->Grants }, @{ $result->Grants };
+      }
+      return $result;
+    } else {
+      while ($result->Truncated) {
+        $result = $self->ListGrants(@_, Marker => $result->NextMarker);
+        $callback->($_ => 'Grants') foreach (@{ $result->Grants });
+      }
+    }
+
+    return undef
+  }
+  sub ListAllKeyPolicies {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListKeyPolicies(@_);
+
+    if (not defined $callback) {
+      while ($result->Truncated) {
+        $result = $self->ListKeyPolicies(@_, Marker => $result->NextMarker);
+        push @{ $result->PolicyNames }, @{ $result->PolicyNames };
+      }
+      return $result;
+    } else {
+      while ($result->Truncated) {
+        $result = $self->ListKeyPolicies(@_, Marker => $result->NextMarker);
+        $callback->($_ => 'PolicyNames') foreach (@{ $result->PolicyNames });
+      }
+    }
+
+    return undef
+  }
+  sub ListAllKeys {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListKeys(@_);
+
+    if (not defined $callback) {
+      while ($result->Truncated) {
+        $result = $self->ListKeys(@_, Marker => $result->NextMarker);
+        push @{ $result->Keys }, @{ $result->Keys };
+      }
+      return $result;
+    } else {
+      while ($result->Truncated) {
+        $result = $self->ListKeys(@_, Marker => $result->NextMarker);
+        $callback->($_ => 'Keys') foreach (@{ $result->Keys });
+      }
+    }
+
+    return undef
+  }
+
 
   sub operations { qw/CancelKeyDeletion CreateAlias CreateGrant CreateKey Decrypt DeleteAlias DeleteImportedKeyMaterial DescribeKey DisableKey DisableKeyRotation EnableKey EnableKeyRotation Encrypt GenerateDataKey GenerateDataKeyWithoutPlaintext GenerateRandom GetKeyPolicy GetKeyRotationStatus GetParametersForImport ImportKeyMaterial ListAliases ListGrants ListKeyPolicies ListKeys ListRetirableGrants PutKeyPolicy ReEncrypt RetireGrant RevokeGrant ScheduleKeyDeletion UpdateAlias UpdateKeyDescription / }
 
@@ -892,6 +978,63 @@ Each argument is described in detail in: L<Paws::KMS::UpdateKeyDescription>
 Returns: nothing
 
   Updates the description of a key.
+
+
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllAliases(sub { },[Limit => Int, Marker => Str])
+
+=head2 ListAllAliases([Limit => Int, Marker => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Aliases, passing the object as the first parameter, and the string 'Aliases' as the second parameter 
+
+If not, it will return a a L<Paws::KMS::ListAliasesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllGrants(sub { },KeyId => Str, [Limit => Int, Marker => Str])
+
+=head2 ListAllGrants(KeyId => Str, [Limit => Int, Marker => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Grants, passing the object as the first parameter, and the string 'Grants' as the second parameter 
+
+If not, it will return a a L<Paws::KMS::ListGrantsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllKeyPolicies(sub { },KeyId => Str, [Limit => Int, Marker => Str])
+
+=head2 ListAllKeyPolicies(KeyId => Str, [Limit => Int, Marker => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - PolicyNames, passing the object as the first parameter, and the string 'PolicyNames' as the second parameter 
+
+If not, it will return a a L<Paws::KMS::ListKeyPoliciesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllKeys(sub { },[Limit => Int, Marker => Str])
+
+=head2 ListAllKeys([Limit => Int, Marker => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Keys, passing the object as the first parameter, and the string 'Keys' as the second parameter 
+
+If not, it will return a a L<Paws::KMS::ListKeysResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+
 
 
 =head1 SEE ALSO

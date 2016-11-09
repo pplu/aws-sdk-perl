@@ -3,6 +3,7 @@ package Paws::Inspector::GetTelemetryMetadataResponse;
   use Moose;
   has TelemetryMetadata => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::TelemetryMetadata]', traits => ['Unwrapped'], xmlname => 'telemetryMetadata' , required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -18,6 +19,7 @@ Paws::Inspector::GetTelemetryMetadataResponse
 Telemetry details.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -5,6 +5,7 @@ package Paws::DataPipeline::DescribeObjectsOutput;
   has Marker => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'marker' );
   has PipelineObjects => (is => 'ro', isa => 'ArrayRef[Paws::DataPipeline::PipelineObject]', traits => ['Unwrapped'], xmlname => 'pipelineObjects' , required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -20,7 +21,6 @@ Paws::DataPipeline::DescribeObjectsOutput
 Indicates whether there are more results to return.
 
 
-
 =head2 Marker => Str
 
 The starting point for the next page of results. To view the next page
@@ -28,12 +28,12 @@ of results, call C<DescribeObjects> again with this marker value. If
 the value is null, there are no more results.
 
 
-
 =head2 B<REQUIRED> PipelineObjects => ArrayRef[L<Paws::DataPipeline::PipelineObject>]
 
 An array of object definitions.
 
 
+=head2 _request_id => Str
 
 
 =cut

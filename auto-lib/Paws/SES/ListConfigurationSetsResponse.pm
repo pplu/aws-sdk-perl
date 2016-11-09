@@ -4,6 +4,7 @@ package Paws::SES::ListConfigurationSetsResponse;
   has ConfigurationSets => (is => 'ro', isa => 'ArrayRef[Paws::SES::ConfigurationSet]');
   has NextToken => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -20,7 +21,6 @@ Paws::SES::ListConfigurationSetsResponse
 A list of configuration sets.
 
 
-
 =head2 NextToken => Str
 
 A token indicating that there are additional configuration sets
@@ -28,6 +28,7 @@ available to be listed. Pass this token to successive calls of
 C<ListConfigurationSets>.
 
 
+=head2 _request_id => Str
 
 
 =cut

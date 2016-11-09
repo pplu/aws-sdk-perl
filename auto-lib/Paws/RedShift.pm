@@ -323,6 +323,323 @@ package Paws::RedShift;
     my $call_object = $self->new_with_coercions('Paws::RedShift::RotateEncryptionKey', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
+  sub DescribeAllClusterParameterGroups {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeClusterParameterGroups(@_);
+
+    if (not defined $callback) {
+      while ($result->Marker) {
+        $result = $self->DescribeClusterParameterGroups(@_, Marker => $result->Marker);
+        push @{ $result->ParameterGroups }, @{ $result->ParameterGroups };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $result = $self->DescribeClusterParameterGroups(@_, Marker => $result->Marker);
+        $callback->($_ => 'ParameterGroups') foreach (@{ $result->ParameterGroups });
+      }
+    }
+
+    return undef
+  }
+  sub DescribeAllClusterParameters {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeClusterParameters(@_);
+
+    if (not defined $callback) {
+      while ($result->Marker) {
+        $result = $self->DescribeClusterParameters(@_, Marker => $result->Marker);
+        push @{ $result->Parameters }, @{ $result->Parameters };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $result = $self->DescribeClusterParameters(@_, Marker => $result->Marker);
+        $callback->($_ => 'Parameters') foreach (@{ $result->Parameters });
+      }
+    }
+
+    return undef
+  }
+  sub DescribeAllClusters {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeClusters(@_);
+
+    if (not defined $callback) {
+      while ($result->Marker) {
+        $result = $self->DescribeClusters(@_, Marker => $result->Marker);
+        push @{ $result->Clusters }, @{ $result->Clusters };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $result = $self->DescribeClusters(@_, Marker => $result->Marker);
+        $callback->($_ => 'Clusters') foreach (@{ $result->Clusters });
+      }
+    }
+
+    return undef
+  }
+  sub DescribeAllClusterSecurityGroups {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeClusterSecurityGroups(@_);
+
+    if (not defined $callback) {
+      while ($result->Marker) {
+        $result = $self->DescribeClusterSecurityGroups(@_, Marker => $result->Marker);
+        push @{ $result->ClusterSecurityGroups }, @{ $result->ClusterSecurityGroups };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $result = $self->DescribeClusterSecurityGroups(@_, Marker => $result->Marker);
+        $callback->($_ => 'ClusterSecurityGroups') foreach (@{ $result->ClusterSecurityGroups });
+      }
+    }
+
+    return undef
+  }
+  sub DescribeAllClusterSnapshots {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeClusterSnapshots(@_);
+
+    if (not defined $callback) {
+      while ($result->Marker) {
+        $result = $self->DescribeClusterSnapshots(@_, Marker => $result->Marker);
+        push @{ $result->Snapshots }, @{ $result->Snapshots };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $result = $self->DescribeClusterSnapshots(@_, Marker => $result->Marker);
+        $callback->($_ => 'Snapshots') foreach (@{ $result->Snapshots });
+      }
+    }
+
+    return undef
+  }
+  sub DescribeAllClusterSubnetGroups {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeClusterSubnetGroups(@_);
+
+    if (not defined $callback) {
+      while ($result->Marker) {
+        $result = $self->DescribeClusterSubnetGroups(@_, Marker => $result->Marker);
+        push @{ $result->ClusterSubnetGroups }, @{ $result->ClusterSubnetGroups };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $result = $self->DescribeClusterSubnetGroups(@_, Marker => $result->Marker);
+        $callback->($_ => 'ClusterSubnetGroups') foreach (@{ $result->ClusterSubnetGroups });
+      }
+    }
+
+    return undef
+  }
+  sub DescribeAllClusterVersions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeClusterVersions(@_);
+
+    if (not defined $callback) {
+      while ($result->Marker) {
+        $result = $self->DescribeClusterVersions(@_, Marker => $result->Marker);
+        push @{ $result->ClusterVersions }, @{ $result->ClusterVersions };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $result = $self->DescribeClusterVersions(@_, Marker => $result->Marker);
+        $callback->($_ => 'ClusterVersions') foreach (@{ $result->ClusterVersions });
+      }
+    }
+
+    return undef
+  }
+  sub DescribeAllDefaultClusterParameters {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeDefaultClusterParameters(@_);
+
+    if (not defined $callback) {
+      while ($result->Marker) {
+        $result = $self->DescribeDefaultClusterParameters(@_, Marker => $result->DefaultClusterParameters->Marker);
+        push @{ $result->DefaultClusterParameters->Parameters }, @{ $result->DefaultClusterParameters->Parameters };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $result = $self->DescribeDefaultClusterParameters(@_, Marker => $result->DefaultClusterParameters->Marker);
+        $callback->($_ => 'DefaultClusterParameters.Parameters') foreach (@{ $result->DefaultClusterParameters->Parameters });
+      }
+    }
+
+    return undef
+  }
+  sub DescribeAllEvents {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeEvents(@_);
+
+    if (not defined $callback) {
+      while ($result->Marker) {
+        $result = $self->DescribeEvents(@_, Marker => $result->Marker);
+        push @{ $result->Events }, @{ $result->Events };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $result = $self->DescribeEvents(@_, Marker => $result->Marker);
+        $callback->($_ => 'Events') foreach (@{ $result->Events });
+      }
+    }
+
+    return undef
+  }
+  sub DescribeAllEventSubscriptions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeEventSubscriptions(@_);
+
+    if (not defined $callback) {
+      while ($result->Marker) {
+        $result = $self->DescribeEventSubscriptions(@_, Marker => $result->Marker);
+        push @{ $result->EventSubscriptionsList }, @{ $result->EventSubscriptionsList };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $result = $self->DescribeEventSubscriptions(@_, Marker => $result->Marker);
+        $callback->($_ => 'EventSubscriptionsList') foreach (@{ $result->EventSubscriptionsList });
+      }
+    }
+
+    return undef
+  }
+  sub DescribeAllHsmClientCertificates {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeHsmClientCertificates(@_);
+
+    if (not defined $callback) {
+      while ($result->Marker) {
+        $result = $self->DescribeHsmClientCertificates(@_, Marker => $result->Marker);
+        push @{ $result->HsmClientCertificates }, @{ $result->HsmClientCertificates };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $result = $self->DescribeHsmClientCertificates(@_, Marker => $result->Marker);
+        $callback->($_ => 'HsmClientCertificates') foreach (@{ $result->HsmClientCertificates });
+      }
+    }
+
+    return undef
+  }
+  sub DescribeAllHsmConfigurations {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeHsmConfigurations(@_);
+
+    if (not defined $callback) {
+      while ($result->Marker) {
+        $result = $self->DescribeHsmConfigurations(@_, Marker => $result->Marker);
+        push @{ $result->HsmConfigurations }, @{ $result->HsmConfigurations };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $result = $self->DescribeHsmConfigurations(@_, Marker => $result->Marker);
+        $callback->($_ => 'HsmConfigurations') foreach (@{ $result->HsmConfigurations });
+      }
+    }
+
+    return undef
+  }
+  sub DescribeAllOrderableClusterOptions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeOrderableClusterOptions(@_);
+
+    if (not defined $callback) {
+      while ($result->Marker) {
+        $result = $self->DescribeOrderableClusterOptions(@_, Marker => $result->Marker);
+        push @{ $result->OrderableClusterOptions }, @{ $result->OrderableClusterOptions };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $result = $self->DescribeOrderableClusterOptions(@_, Marker => $result->Marker);
+        $callback->($_ => 'OrderableClusterOptions') foreach (@{ $result->OrderableClusterOptions });
+      }
+    }
+
+    return undef
+  }
+  sub DescribeAllReservedNodeOfferings {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeReservedNodeOfferings(@_);
+
+    if (not defined $callback) {
+      while ($result->Marker) {
+        $result = $self->DescribeReservedNodeOfferings(@_, Marker => $result->Marker);
+        push @{ $result->ReservedNodeOfferings }, @{ $result->ReservedNodeOfferings };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $result = $self->DescribeReservedNodeOfferings(@_, Marker => $result->Marker);
+        $callback->($_ => 'ReservedNodeOfferings') foreach (@{ $result->ReservedNodeOfferings });
+      }
+    }
+
+    return undef
+  }
+  sub DescribeAllReservedNodes {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeReservedNodes(@_);
+
+    if (not defined $callback) {
+      while ($result->Marker) {
+        $result = $self->DescribeReservedNodes(@_, Marker => $result->Marker);
+        push @{ $result->ReservedNodes }, @{ $result->ReservedNodes };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $result = $self->DescribeReservedNodes(@_, Marker => $result->Marker);
+        $callback->($_ => 'ReservedNodes') foreach (@{ $result->ReservedNodes });
+      }
+    }
+
+    return undef
+  }
+
 
   sub operations { qw/AuthorizeClusterSecurityGroupIngress AuthorizeSnapshotAccess CopyClusterSnapshot CreateCluster CreateClusterParameterGroup CreateClusterSecurityGroup CreateClusterSnapshot CreateClusterSubnetGroup CreateEventSubscription CreateHsmClientCertificate CreateHsmConfiguration CreateSnapshotCopyGrant CreateTags DeleteCluster DeleteClusterParameterGroup DeleteClusterSecurityGroup DeleteClusterSnapshot DeleteClusterSubnetGroup DeleteEventSubscription DeleteHsmClientCertificate DeleteHsmConfiguration DeleteSnapshotCopyGrant DeleteTags DescribeClusterParameterGroups DescribeClusterParameters DescribeClusters DescribeClusterSecurityGroups DescribeClusterSnapshots DescribeClusterSubnetGroups DescribeClusterVersions DescribeDefaultClusterParameters DescribeEventCategories DescribeEvents DescribeEventSubscriptions DescribeHsmClientCertificates DescribeHsmConfigurations DescribeLoggingStatus DescribeOrderableClusterOptions DescribeReservedNodeOfferings DescribeReservedNodes DescribeResize DescribeSnapshotCopyGrants DescribeTableRestoreStatus DescribeTags DisableLogging DisableSnapshotCopy EnableLogging EnableSnapshotCopy ModifyCluster ModifyClusterIamRoles ModifyClusterParameterGroup ModifyClusterSubnetGroup ModifyEventSubscription ModifySnapshotCopyRetentionPeriod PurchaseReservedNodeOffering RebootCluster ResetClusterParameterGroup RestoreFromClusterSnapshot RestoreTableFromClusterSnapshot RevokeClusterSecurityGroupIngress RevokeSnapshotAccess RotateEncryptionKey / }
 
@@ -1383,6 +1700,195 @@ Each argument is described in detail in: L<Paws::RedShift::RotateEncryptionKey>
 Returns: a L<Paws::RedShift::RotateEncryptionKeyResult> instance
 
   Rotates the encryption keys for a cluster.
+
+
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 DescribeAllClusterParameterGroups(sub { },[Marker => Str, MaxRecords => Int, ParameterGroupName => Str, TagKeys => ArrayRef[Str|Undef], TagValues => ArrayRef[Str|Undef]])
+
+=head2 DescribeAllClusterParameterGroups([Marker => Str, MaxRecords => Int, ParameterGroupName => Str, TagKeys => ArrayRef[Str|Undef], TagValues => ArrayRef[Str|Undef]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ParameterGroups, passing the object as the first parameter, and the string 'ParameterGroups' as the second parameter 
+
+If not, it will return a a L<Paws::RedShift::ClusterParameterGroupsMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllClusterParameters(sub { },ParameterGroupName => Str, [Marker => Str, MaxRecords => Int, Source => Str])
+
+=head2 DescribeAllClusterParameters(ParameterGroupName => Str, [Marker => Str, MaxRecords => Int, Source => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Parameters, passing the object as the first parameter, and the string 'Parameters' as the second parameter 
+
+If not, it will return a a L<Paws::RedShift::ClusterParameterGroupDetails> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllClusters(sub { },[ClusterIdentifier => Str, Marker => Str, MaxRecords => Int, TagKeys => ArrayRef[Str|Undef], TagValues => ArrayRef[Str|Undef]])
+
+=head2 DescribeAllClusters([ClusterIdentifier => Str, Marker => Str, MaxRecords => Int, TagKeys => ArrayRef[Str|Undef], TagValues => ArrayRef[Str|Undef]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Clusters, passing the object as the first parameter, and the string 'Clusters' as the second parameter 
+
+If not, it will return a a L<Paws::RedShift::ClustersMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllClusterSecurityGroups(sub { },[ClusterSecurityGroupName => Str, Marker => Str, MaxRecords => Int, TagKeys => ArrayRef[Str|Undef], TagValues => ArrayRef[Str|Undef]])
+
+=head2 DescribeAllClusterSecurityGroups([ClusterSecurityGroupName => Str, Marker => Str, MaxRecords => Int, TagKeys => ArrayRef[Str|Undef], TagValues => ArrayRef[Str|Undef]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ClusterSecurityGroups, passing the object as the first parameter, and the string 'ClusterSecurityGroups' as the second parameter 
+
+If not, it will return a a L<Paws::RedShift::ClusterSecurityGroupMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllClusterSnapshots(sub { },[ClusterIdentifier => Str, EndTime => Str, Marker => Str, MaxRecords => Int, OwnerAccount => Str, SnapshotIdentifier => Str, SnapshotType => Str, StartTime => Str, TagKeys => ArrayRef[Str|Undef], TagValues => ArrayRef[Str|Undef]])
+
+=head2 DescribeAllClusterSnapshots([ClusterIdentifier => Str, EndTime => Str, Marker => Str, MaxRecords => Int, OwnerAccount => Str, SnapshotIdentifier => Str, SnapshotType => Str, StartTime => Str, TagKeys => ArrayRef[Str|Undef], TagValues => ArrayRef[Str|Undef]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Snapshots, passing the object as the first parameter, and the string 'Snapshots' as the second parameter 
+
+If not, it will return a a L<Paws::RedShift::SnapshotMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllClusterSubnetGroups(sub { },[ClusterSubnetGroupName => Str, Marker => Str, MaxRecords => Int, TagKeys => ArrayRef[Str|Undef], TagValues => ArrayRef[Str|Undef]])
+
+=head2 DescribeAllClusterSubnetGroups([ClusterSubnetGroupName => Str, Marker => Str, MaxRecords => Int, TagKeys => ArrayRef[Str|Undef], TagValues => ArrayRef[Str|Undef]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ClusterSubnetGroups, passing the object as the first parameter, and the string 'ClusterSubnetGroups' as the second parameter 
+
+If not, it will return a a L<Paws::RedShift::ClusterSubnetGroupMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllClusterVersions(sub { },[ClusterParameterGroupFamily => Str, ClusterVersion => Str, Marker => Str, MaxRecords => Int])
+
+=head2 DescribeAllClusterVersions([ClusterParameterGroupFamily => Str, ClusterVersion => Str, Marker => Str, MaxRecords => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ClusterVersions, passing the object as the first parameter, and the string 'ClusterVersions' as the second parameter 
+
+If not, it will return a a L<Paws::RedShift::ClusterVersionsMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllDefaultClusterParameters(sub { },ParameterGroupFamily => Str, [Marker => Str, MaxRecords => Int])
+
+=head2 DescribeAllDefaultClusterParameters(ParameterGroupFamily => Str, [Marker => Str, MaxRecords => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - DefaultClusterParameters.Parameters, passing the object as the first parameter, and the string 'DefaultClusterParameters.Parameters' as the second parameter 
+
+If not, it will return a a L<Paws::RedShift::DescribeDefaultClusterParametersResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllEvents(sub { },[Duration => Int, EndTime => Str, Marker => Str, MaxRecords => Int, SourceIdentifier => Str, SourceType => Str, StartTime => Str])
+
+=head2 DescribeAllEvents([Duration => Int, EndTime => Str, Marker => Str, MaxRecords => Int, SourceIdentifier => Str, SourceType => Str, StartTime => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Events, passing the object as the first parameter, and the string 'Events' as the second parameter 
+
+If not, it will return a a L<Paws::RedShift::EventsMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllEventSubscriptions(sub { },[Marker => Str, MaxRecords => Int, SubscriptionName => Str])
+
+=head2 DescribeAllEventSubscriptions([Marker => Str, MaxRecords => Int, SubscriptionName => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - EventSubscriptionsList, passing the object as the first parameter, and the string 'EventSubscriptionsList' as the second parameter 
+
+If not, it will return a a L<Paws::RedShift::EventSubscriptionsMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllHsmClientCertificates(sub { },[HsmClientCertificateIdentifier => Str, Marker => Str, MaxRecords => Int, TagKeys => ArrayRef[Str|Undef], TagValues => ArrayRef[Str|Undef]])
+
+=head2 DescribeAllHsmClientCertificates([HsmClientCertificateIdentifier => Str, Marker => Str, MaxRecords => Int, TagKeys => ArrayRef[Str|Undef], TagValues => ArrayRef[Str|Undef]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - HsmClientCertificates, passing the object as the first parameter, and the string 'HsmClientCertificates' as the second parameter 
+
+If not, it will return a a L<Paws::RedShift::HsmClientCertificateMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllHsmConfigurations(sub { },[HsmConfigurationIdentifier => Str, Marker => Str, MaxRecords => Int, TagKeys => ArrayRef[Str|Undef], TagValues => ArrayRef[Str|Undef]])
+
+=head2 DescribeAllHsmConfigurations([HsmConfigurationIdentifier => Str, Marker => Str, MaxRecords => Int, TagKeys => ArrayRef[Str|Undef], TagValues => ArrayRef[Str|Undef]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - HsmConfigurations, passing the object as the first parameter, and the string 'HsmConfigurations' as the second parameter 
+
+If not, it will return a a L<Paws::RedShift::HsmConfigurationMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllOrderableClusterOptions(sub { },[ClusterVersion => Str, Marker => Str, MaxRecords => Int, NodeType => Str])
+
+=head2 DescribeAllOrderableClusterOptions([ClusterVersion => Str, Marker => Str, MaxRecords => Int, NodeType => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - OrderableClusterOptions, passing the object as the first parameter, and the string 'OrderableClusterOptions' as the second parameter 
+
+If not, it will return a a L<Paws::RedShift::OrderableClusterOptionsMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllReservedNodeOfferings(sub { },[Marker => Str, MaxRecords => Int, ReservedNodeOfferingId => Str])
+
+=head2 DescribeAllReservedNodeOfferings([Marker => Str, MaxRecords => Int, ReservedNodeOfferingId => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ReservedNodeOfferings, passing the object as the first parameter, and the string 'ReservedNodeOfferings' as the second parameter 
+
+If not, it will return a a L<Paws::RedShift::ReservedNodeOfferingsMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllReservedNodes(sub { },[Marker => Str, MaxRecords => Int, ReservedNodeId => Str])
+
+=head2 DescribeAllReservedNodes([Marker => Str, MaxRecords => Int, ReservedNodeId => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ReservedNodes, passing the object as the first parameter, and the string 'ReservedNodes' as the second parameter 
+
+If not, it will return a a L<Paws::RedShift::ReservedNodesMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+
 
 
 =head1 SEE ALSO

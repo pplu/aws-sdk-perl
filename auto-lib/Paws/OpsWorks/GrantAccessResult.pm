@@ -3,6 +3,7 @@ package Paws::OpsWorks::GrantAccessResult;
   use Moose;
   has TemporaryCredential => (is => 'ro', isa => 'Paws::OpsWorks::TemporaryCredential');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -20,6 +21,7 @@ to the instance by RDP clients, such as the Microsoft Remote Desktop
 Connection.
 
 
+=head2 _request_id => Str
 
 
 =cut

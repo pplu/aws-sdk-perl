@@ -69,6 +69,8 @@ package Paws::Snowball;
     my $call_object = $self->new_with_coercions('Paws::Snowball::UpdateJob', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
+
 
   sub operations { qw/CancelJob CreateAddress CreateJob DescribeAddress DescribeAddresses DescribeJob GetJobManifest GetJobUnlockCode GetSnowballUsage ListJobs UpdateJob / }
 
@@ -264,6 +266,15 @@ Returns: a L<Paws::Snowball::UpdateJobResult> instance
 information associated with a job. Once the job changes to a different
 job state, usually within 60 minutes of the job being created, this
 action is no longer available.
+
+
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+
 
 
 =head1 SEE ALSO

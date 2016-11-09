@@ -3,6 +3,7 @@ package Paws::CloudSearch::DescribeDomainsResponse;
   use Moose;
   has DomainStatusList => (is => 'ro', isa => 'ArrayRef[Paws::CloudSearch::DomainStatus]', required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -19,6 +20,7 @@ Paws::CloudSearch::DescribeDomainsResponse
 
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -3,6 +3,7 @@ package Paws::Inspector::ListTagsForResourceResponse;
   use Moose;
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::Tag]', traits => ['Unwrapped'], xmlname => 'tags' , required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -18,6 +19,7 @@ Paws::Inspector::ListTagsForResourceResponse
 A collection of key and value pairs.
 
 
+=head2 _request_id => Str
 
 
 =cut

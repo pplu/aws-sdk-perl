@@ -99,6 +99,50 @@ package Paws::Kinesis;
     my $call_object = $self->new_with_coercions('Paws::Kinesis::SplitShard', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
+  sub DescribeAllStream {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeStream(@_);
+
+    if (not defined $callback) {
+      while ($result->StreamDescription->HasMoreShards) {
+        $result = $self->DescribeStream(@_, ExclusiveStartShardId => $result->StreamDescription->Shards->[-1]->ShardId);
+        push @{ $result->StreamDescription->Shards }, @{ $result->StreamDescription->Shards };
+      }
+      return $result;
+    } else {
+      while ($result->StreamDescription->HasMoreShards) {
+        $result = $self->DescribeStream(@_, ExclusiveStartShardId => $result->StreamDescription->Shards->[-1]->ShardId);
+        $callback->($_ => 'StreamDescription.Shards') foreach (@{ $result->StreamDescription->Shards });
+      }
+    }
+
+    return undef
+  }
+  sub ListAllStreams {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListStreams(@_);
+
+    if (not defined $callback) {
+      while ($result->HasMoreStreams) {
+        $result = $self->ListStreams(@_, ExclusiveStartStreamName => $result->StreamNames->[-1]);
+        push @{ $result->StreamNames }, @{ $result->StreamNames };
+      }
+      return $result;
+    } else {
+      while ($result->HasMoreStreams) {
+        $result = $self->ListStreams(@_, ExclusiveStartStreamName => $result->StreamNames->[-1]);
+        $callback->($_ => 'StreamNames') foreach (@{ $result->StreamNames });
+      }
+    }
+
+    return undef
+  }
+
 
   sub operations { qw/AddTagsToStream CreateStream DecreaseStreamRetentionPeriod DeleteStream DescribeStream DisableEnhancedMonitoring EnableEnhancedMonitoring GetRecords GetShardIterator IncreaseStreamRetentionPeriod ListStreams ListTagsForStream MergeShards PutRecord PutRecords RemoveTagsFromStream SplitShard / }
 
@@ -715,6 +759,39 @@ CreateStream, DeleteStream, MergeShards, and/or SplitShard, you receive
 a C<LimitExceededException>.
 
 C<SplitShard> has limit of 5 transactions per second per account.
+
+
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 DescribeAllStream(sub { },StreamName => Str, [ExclusiveStartShardId => Str, Limit => Int])
+
+=head2 DescribeAllStream(StreamName => Str, [ExclusiveStartShardId => Str, Limit => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - StreamDescription.Shards, passing the object as the first parameter, and the string 'StreamDescription.Shards' as the second parameter 
+
+If not, it will return a a L<Paws::Kinesis::DescribeStreamOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllStreams(sub { },[ExclusiveStartStreamName => Str, Limit => Int])
+
+=head2 ListAllStreams([ExclusiveStartStreamName => Str, Limit => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - StreamNames, passing the object as the first parameter, and the string 'StreamNames' as the second parameter 
+
+If not, it will return a a L<Paws::Kinesis::ListStreamsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+
 
 
 =head1 SEE ALSO

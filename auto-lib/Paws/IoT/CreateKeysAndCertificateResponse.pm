@@ -6,6 +6,7 @@ package Paws::IoT::CreateKeysAndCertificateResponse;
   has CertificatePem => (is => 'ro', isa => 'Str');
   has KeyPair => (is => 'ro', isa => 'Paws::IoT::KeyPair');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -22,12 +23,10 @@ Paws::IoT::CreateKeysAndCertificateResponse
 The ARN of the certificate.
 
 
-
 =head2 CertificateId => Str
 
 The ID of the certificate. AWS IoT issues a default subject name for
 the certificate (for example, AWS IoT Certificate).
-
 
 
 =head2 CertificatePem => Str
@@ -35,12 +34,12 @@ the certificate (for example, AWS IoT Certificate).
 The certificate data, in PEM format.
 
 
-
 =head2 KeyPair => L<Paws::IoT::KeyPair>
 
 The generated key pair.
 
 
+=head2 _request_id => Str
 
 
 =cut

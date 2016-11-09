@@ -3,6 +3,7 @@ package Paws::OpsWorks::RegisterVolumeResult;
   use Moose;
   has VolumeId => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -18,6 +19,7 @@ Paws::OpsWorks::RegisterVolumeResult
 The volume ID.
 
 
+=head2 _request_id => Str
 
 
 =cut

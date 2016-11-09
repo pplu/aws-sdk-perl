@@ -3,6 +3,7 @@ package Paws::DeviceFarm::InstallToRemoteAccessSessionResult;
   use Moose;
   has AppUpload => (is => 'ro', isa => 'Paws::DeviceFarm::Upload', traits => ['Unwrapped'], xmlname => 'appUpload' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -18,6 +19,7 @@ Paws::DeviceFarm::InstallToRemoteAccessSessionResult
 
 
 
+=head2 _request_id => Str
 
 
 =cut

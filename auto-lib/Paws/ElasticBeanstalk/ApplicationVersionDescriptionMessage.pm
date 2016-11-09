@@ -3,6 +3,7 @@ package Paws::ElasticBeanstalk::ApplicationVersionDescriptionMessage;
   use Moose;
   has ApplicationVersion => (is => 'ro', isa => 'Paws::ElasticBeanstalk::ApplicationVersionDescription');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -19,6 +20,7 @@ Paws::ElasticBeanstalk::ApplicationVersionDescriptionMessage
 The ApplicationVersionDescription of the application version.
 
 
+=head2 _request_id => Str
 
 
 =cut

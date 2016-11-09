@@ -4,6 +4,7 @@ package Paws::Glacier::ListVaultsOutput;
   has Marker => (is => 'ro', isa => 'Str');
   has VaultList => (is => 'ro', isa => 'ArrayRef[Paws::Glacier::DescribeVaultOutput]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -22,12 +23,12 @@ the marker in another List Vaults request to obtain more vaults in the
 list.
 
 
-
 =head2 VaultList => ArrayRef[L<Paws::Glacier::DescribeVaultOutput>]
 
 List of vaults.
 
 
+=head2 _request_id => Str
 
 
 =cut

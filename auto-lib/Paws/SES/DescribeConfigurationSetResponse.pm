@@ -4,6 +4,7 @@ package Paws::SES::DescribeConfigurationSetResponse;
   has ConfigurationSet => (is => 'ro', isa => 'Paws::SES::ConfigurationSet');
   has EventDestinations => (is => 'ro', isa => 'ArrayRef[Paws::SES::EventDestination]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -21,12 +22,12 @@ The configuration set object associated with the specified
 configuration set.
 
 
-
 =head2 EventDestinations => ArrayRef[L<Paws::SES::EventDestination>]
 
 A list of event destinations associated with the configuration set.
 
 
+=head2 _request_id => Str
 
 
 =cut

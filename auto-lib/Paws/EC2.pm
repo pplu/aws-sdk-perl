@@ -1077,143 +1077,214 @@ package Paws::EC2;
   sub DescribeAllInstances {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeInstances(@_);
-    my $array = [];
-    push @$array, @{ $result->Reservations };
 
-    while ($result->NextToken) {
-      $result = $self->DescribeInstances(@_, NextToken => $result->NextToken);
-      push @$array, @{ $result->Reservations };
+    if (not defined $callback) {
+      while ($result->NextToken) {
+        $result = $self->DescribeInstances(@_, NextToken => $result->NextToken);
+        push @{ $result->Reservations }, @{ $result->Reservations };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $result = $self->DescribeInstances(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'Reservations') foreach (@{ $result->Reservations });
+      }
     }
 
-    return 'Paws::EC2::DescribeInstances'->_returns->new(Reservations => $array);
+    return undef
   }
   sub DescribeAllInstanceStatus {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeInstanceStatus(@_);
-    my $array = [];
-    push @$array, @{ $result->InstanceStatuses };
 
-    while ($result->NextToken) {
-      $result = $self->DescribeInstanceStatus(@_, NextToken => $result->NextToken);
-      push @$array, @{ $result->InstanceStatuses };
+    if (not defined $callback) {
+      while ($result->NextToken) {
+        $result = $self->DescribeInstanceStatus(@_, NextToken => $result->NextToken);
+        push @{ $result->InstanceStatuses }, @{ $result->InstanceStatuses };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $result = $self->DescribeInstanceStatus(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'InstanceStatuses') foreach (@{ $result->InstanceStatuses });
+      }
     }
 
-    return 'Paws::EC2::DescribeInstanceStatus'->_returns->new(InstanceStatuses => $array);
+    return undef
   }
   sub DescribeAllReservedInstancesModifications {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeReservedInstancesModifications(@_);
-    my $array = [];
-    push @$array, @{ $result->ReservedInstancesModifications };
 
-    while ($result->NextToken) {
-      $result = $self->DescribeReservedInstancesModifications(@_, NextToken => $result->NextToken);
-      push @$array, @{ $result->ReservedInstancesModifications };
+    if (not defined $callback) {
+      while ($result->NextToken) {
+        $result = $self->DescribeReservedInstancesModifications(@_, NextToken => $result->NextToken);
+        push @{ $result->ReservedInstancesModifications }, @{ $result->ReservedInstancesModifications };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $result = $self->DescribeReservedInstancesModifications(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'ReservedInstancesModifications') foreach (@{ $result->ReservedInstancesModifications });
+      }
     }
 
-    return 'Paws::EC2::DescribeReservedInstancesModifications'->_returns->new(ReservedInstancesModifications => $array);
+    return undef
   }
   sub DescribeAllReservedInstancesOfferings {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeReservedInstancesOfferings(@_);
-    my $array = [];
-    push @$array, @{ $result->ReservedInstancesOfferings };
 
-    while ($result->NextToken) {
-      $result = $self->DescribeReservedInstancesOfferings(@_, NextToken => $result->NextToken);
-      push @$array, @{ $result->ReservedInstancesOfferings };
+    if (not defined $callback) {
+      while ($result->NextToken) {
+        $result = $self->DescribeReservedInstancesOfferings(@_, NextToken => $result->NextToken);
+        push @{ $result->ReservedInstancesOfferings }, @{ $result->ReservedInstancesOfferings };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $result = $self->DescribeReservedInstancesOfferings(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'ReservedInstancesOfferings') foreach (@{ $result->ReservedInstancesOfferings });
+      }
     }
 
-    return 'Paws::EC2::DescribeReservedInstancesOfferings'->_returns->new(ReservedInstancesOfferings => $array);
+    return undef
   }
   sub DescribeAllSnapshots {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeSnapshots(@_);
-    my $array = [];
-    push @$array, @{ $result->Snapshots };
 
-    while ($result->NextToken) {
-      $result = $self->DescribeSnapshots(@_, NextToken => $result->NextToken);
-      push @$array, @{ $result->Snapshots };
+    if (not defined $callback) {
+      while ($result->NextToken) {
+        $result = $self->DescribeSnapshots(@_, NextToken => $result->NextToken);
+        push @{ $result->Snapshots }, @{ $result->Snapshots };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $result = $self->DescribeSnapshots(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'Snapshots') foreach (@{ $result->Snapshots });
+      }
     }
 
-    return 'Paws::EC2::DescribeSnapshots'->_returns->new(Snapshots => $array);
+    return undef
   }
   sub DescribeAllSpotFleetRequests {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeSpotFleetRequests(@_);
-    my $array = [];
-    push @$array, @{ $result->SpotFleetRequestConfigs };
 
-    while ($result->NextToken) {
-      $result = $self->DescribeSpotFleetRequests(@_, NextToken => $result->NextToken);
-      push @$array, @{ $result->SpotFleetRequestConfigs };
+    if (not defined $callback) {
+      while ($result->NextToken) {
+        $result = $self->DescribeSpotFleetRequests(@_, NextToken => $result->NextToken);
+        push @{ $result->SpotFleetRequestConfigs }, @{ $result->SpotFleetRequestConfigs };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $result = $self->DescribeSpotFleetRequests(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'SpotFleetRequestConfigs') foreach (@{ $result->SpotFleetRequestConfigs });
+      }
     }
 
-    return 'Paws::EC2::DescribeSpotFleetRequests'->_returns->new(SpotFleetRequestConfigs => $array);
+    return undef
   }
   sub DescribeAllSpotPriceHistory {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeSpotPriceHistory(@_);
-    my $array = [];
-    push @$array, @{ $result->SpotPriceHistory };
 
-    while ($result->NextToken) {
-      $result = $self->DescribeSpotPriceHistory(@_, NextToken => $result->NextToken);
-      push @$array, @{ $result->SpotPriceHistory };
+    if (not defined $callback) {
+      while ($result->NextToken) {
+        $result = $self->DescribeSpotPriceHistory(@_, NextToken => $result->NextToken);
+        push @{ $result->SpotPriceHistory }, @{ $result->SpotPriceHistory };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $result = $self->DescribeSpotPriceHistory(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'SpotPriceHistory') foreach (@{ $result->SpotPriceHistory });
+      }
     }
 
-    return 'Paws::EC2::DescribeSpotPriceHistory'->_returns->new(SpotPriceHistory => $array);
+    return undef
   }
   sub DescribeAllTags {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeTags(@_);
-    my $array = [];
-    push @$array, @{ $result->Tags };
 
-    while ($result->NextToken) {
-      $result = $self->DescribeTags(@_, NextToken => $result->NextToken);
-      push @$array, @{ $result->Tags };
+    if (not defined $callback) {
+      while ($result->NextToken) {
+        $result = $self->DescribeTags(@_, NextToken => $result->NextToken);
+        push @{ $result->Tags }, @{ $result->Tags };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $result = $self->DescribeTags(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'Tags') foreach (@{ $result->Tags });
+      }
     }
 
-    return 'Paws::EC2::DescribeTags'->_returns->new(Tags => $array);
+    return undef
   }
   sub DescribeAllVolumes {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeVolumes(@_);
-    my $array = [];
-    push @$array, @{ $result->Volumes };
 
-    while ($result->NextToken) {
-      $result = $self->DescribeVolumes(@_, NextToken => $result->NextToken);
-      push @$array, @{ $result->Volumes };
+    if (not defined $callback) {
+      while ($result->NextToken) {
+        $result = $self->DescribeVolumes(@_, NextToken => $result->NextToken);
+        push @{ $result->Volumes }, @{ $result->Volumes };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $result = $self->DescribeVolumes(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'Volumes') foreach (@{ $result->Volumes });
+      }
     }
 
-    return 'Paws::EC2::DescribeVolumes'->_returns->new(Volumes => $array);
+    return undef
   }
   sub DescribeAllVolumeStatus {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeVolumeStatus(@_);
-    my $array = [];
-    push @$array, @{ $result->VolumeStatuses };
 
-    while ($result->NextToken) {
-      $result = $self->DescribeVolumeStatus(@_, NextToken => $result->NextToken);
-      push @$array, @{ $result->VolumeStatuses };
+    if (not defined $callback) {
+      while ($result->NextToken) {
+        $result = $self->DescribeVolumeStatus(@_, NextToken => $result->NextToken);
+        push @{ $result->VolumeStatuses }, @{ $result->VolumeStatuses };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $result = $self->DescribeVolumeStatus(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'VolumeStatuses') foreach (@{ $result->VolumeStatuses });
+      }
     }
 
-    return 'Paws::EC2::DescribeVolumeStatus'->_returns->new(VolumeStatuses => $array);
+    return undef
   }
+
 
   sub operations { qw/AcceptReservedInstancesExchangeQuote AcceptVpcPeeringConnection AllocateAddress AllocateHosts AssignPrivateIpAddresses AssociateAddress AssociateDhcpOptions AssociateRouteTable AttachClassicLinkVpc AttachInternetGateway AttachNetworkInterface AttachVolume AttachVpnGateway AuthorizeSecurityGroupEgress AuthorizeSecurityGroupIngress BundleInstance CancelBundleTask CancelConversionTask CancelExportTask CancelImportTask CancelReservedInstancesListing CancelSpotFleetRequests CancelSpotInstanceRequests ConfirmProductInstance CopyImage CopySnapshot CreateCustomerGateway CreateDhcpOptions CreateFlowLogs CreateImage CreateInstanceExportTask CreateInternetGateway CreateKeyPair CreateNatGateway CreateNetworkAcl CreateNetworkAclEntry CreateNetworkInterface CreatePlacementGroup CreateReservedInstancesListing CreateRoute CreateRouteTable CreateSecurityGroup CreateSnapshot CreateSpotDatafeedSubscription CreateSubnet CreateTags CreateVolume CreateVpc CreateVpcEndpoint CreateVpcPeeringConnection CreateVpnConnection CreateVpnConnectionRoute CreateVpnGateway DeleteCustomerGateway DeleteDhcpOptions DeleteFlowLogs DeleteInternetGateway DeleteKeyPair DeleteNatGateway DeleteNetworkAcl DeleteNetworkAclEntry DeleteNetworkInterface DeletePlacementGroup DeleteRoute DeleteRouteTable DeleteSecurityGroup DeleteSnapshot DeleteSpotDatafeedSubscription DeleteSubnet DeleteTags DeleteVolume DeleteVpc DeleteVpcEndpoints DeleteVpcPeeringConnection DeleteVpnConnection DeleteVpnConnectionRoute DeleteVpnGateway DeregisterImage DescribeAccountAttributes DescribeAddresses DescribeAvailabilityZones DescribeBundleTasks DescribeClassicLinkInstances DescribeConversionTasks DescribeCustomerGateways DescribeDhcpOptions DescribeExportTasks DescribeFlowLogs DescribeHostReservationOfferings DescribeHostReservations DescribeHosts DescribeIdentityIdFormat DescribeIdFormat DescribeImageAttribute DescribeImages DescribeImportImageTasks DescribeImportSnapshotTasks DescribeInstanceAttribute DescribeInstances DescribeInstanceStatus DescribeInternetGateways DescribeKeyPairs DescribeMovingAddresses DescribeNatGateways DescribeNetworkAcls DescribeNetworkInterfaceAttribute DescribeNetworkInterfaces DescribePlacementGroups DescribePrefixLists DescribeRegions DescribeReservedInstances DescribeReservedInstancesListings DescribeReservedInstancesModifications DescribeReservedInstancesOfferings DescribeRouteTables DescribeScheduledInstanceAvailability DescribeScheduledInstances DescribeSecurityGroupReferences DescribeSecurityGroups DescribeSnapshotAttribute DescribeSnapshots DescribeSpotDatafeedSubscription DescribeSpotFleetInstances DescribeSpotFleetRequestHistory DescribeSpotFleetRequests DescribeSpotInstanceRequests DescribeSpotPriceHistory DescribeStaleSecurityGroups DescribeSubnets DescribeTags DescribeVolumeAttribute DescribeVolumes DescribeVolumeStatus DescribeVpcAttribute DescribeVpcClassicLink DescribeVpcClassicLinkDnsSupport DescribeVpcEndpoints DescribeVpcEndpointServices DescribeVpcPeeringConnections DescribeVpcs DescribeVpnConnections DescribeVpnGateways DetachClassicLinkVpc DetachInternetGateway DetachNetworkInterface DetachVolume DetachVpnGateway DisableVgwRoutePropagation DisableVpcClassicLink DisableVpcClassicLinkDnsSupport DisassociateAddress DisassociateRouteTable EnableVgwRoutePropagation EnableVolumeIO EnableVpcClassicLink EnableVpcClassicLinkDnsSupport GetConsoleOutput GetConsoleScreenshot GetHostReservationPurchasePreview GetPasswordData GetReservedInstancesExchangeQuote ImportImage ImportInstance ImportKeyPair ImportSnapshot ImportVolume ModifyHosts ModifyIdentityIdFormat ModifyIdFormat ModifyImageAttribute ModifyInstanceAttribute ModifyInstancePlacement ModifyNetworkInterfaceAttribute ModifyReservedInstances ModifySnapshotAttribute ModifySpotFleetRequest ModifySubnetAttribute ModifyVolumeAttribute ModifyVpcAttribute ModifyVpcEndpoint ModifyVpcPeeringConnectionOptions MonitorInstances MoveAddressToVpc PurchaseHostReservation PurchaseReservedInstancesOffering PurchaseScheduledInstances RebootInstances RegisterImage RejectVpcPeeringConnection ReleaseAddress ReleaseHosts ReplaceNetworkAclAssociation ReplaceNetworkAclEntry ReplaceRoute ReplaceRouteTableAssociation ReportInstanceStatus RequestSpotFleet RequestSpotInstances ResetImageAttribute ResetInstanceAttribute ResetNetworkInterfaceAttribute ResetSnapshotAttribute RestoreAddressToClassic RevokeSecurityGroupEgress RevokeSecurityGroupIngress RunInstances RunScheduledInstances StartInstances StopInstances TerminateInstances UnassignPrivateIpAddresses UnmonitorInstances / }
 
@@ -4886,6 +4957,135 @@ Returns: a L<Paws::EC2::UnmonitorInstancesResult> instance
   Disables monitoring for a running instance. For more information about
 monitoring instances, see Monitoring Your Instances and Volumes in the
 I<Amazon Elastic Compute Cloud User Guide>.
+
+
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 DescribeAllInstances(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], InstanceIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllInstances([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], InstanceIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Reservations, passing the object as the first parameter, and the string 'Reservations' as the second parameter 
+
+If not, it will return a a L<Paws::EC2::DescribeInstancesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllInstanceStatus(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], IncludeAllInstances => Bool, InstanceIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllInstanceStatus([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], IncludeAllInstances => Bool, InstanceIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - InstanceStatuses, passing the object as the first parameter, and the string 'InstanceStatuses' as the second parameter 
+
+If not, it will return a a L<Paws::EC2::DescribeInstanceStatusResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllReservedInstancesModifications(sub { },[Filters => ArrayRef[L<Paws::EC2::Filter>], NextToken => Str, ReservedInstancesModificationIds => ArrayRef[Str|Undef]])
+
+=head2 DescribeAllReservedInstancesModifications([Filters => ArrayRef[L<Paws::EC2::Filter>], NextToken => Str, ReservedInstancesModificationIds => ArrayRef[Str|Undef]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ReservedInstancesModifications, passing the object as the first parameter, and the string 'ReservedInstancesModifications' as the second parameter 
+
+If not, it will return a a L<Paws::EC2::DescribeReservedInstancesModificationsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllReservedInstancesOfferings(sub { },[AvailabilityZone => Str, DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], IncludeMarketplace => Bool, InstanceTenancy => Str, InstanceType => Str, MaxDuration => Int, MaxInstanceCount => Int, MaxResults => Int, MinDuration => Int, NextToken => Str, OfferingClass => Str, OfferingType => Str, ProductDescription => Str, ReservedInstancesOfferingIds => ArrayRef[Str|Undef]])
+
+=head2 DescribeAllReservedInstancesOfferings([AvailabilityZone => Str, DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], IncludeMarketplace => Bool, InstanceTenancy => Str, InstanceType => Str, MaxDuration => Int, MaxInstanceCount => Int, MaxResults => Int, MinDuration => Int, NextToken => Str, OfferingClass => Str, OfferingType => Str, ProductDescription => Str, ReservedInstancesOfferingIds => ArrayRef[Str|Undef]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ReservedInstancesOfferings, passing the object as the first parameter, and the string 'ReservedInstancesOfferings' as the second parameter 
+
+If not, it will return a a L<Paws::EC2::DescribeReservedInstancesOfferingsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllSnapshots(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, OwnerIds => ArrayRef[Str|Undef], RestorableByUserIds => ArrayRef[Str|Undef], SnapshotIds => ArrayRef[Str|Undef]])
+
+=head2 DescribeAllSnapshots([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, OwnerIds => ArrayRef[Str|Undef], RestorableByUserIds => ArrayRef[Str|Undef], SnapshotIds => ArrayRef[Str|Undef]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Snapshots, passing the object as the first parameter, and the string 'Snapshots' as the second parameter 
+
+If not, it will return a a L<Paws::EC2::DescribeSnapshotsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllSpotFleetRequests(sub { },[DryRun => Bool, MaxResults => Int, NextToken => Str, SpotFleetRequestIds => ArrayRef[Str|Undef]])
+
+=head2 DescribeAllSpotFleetRequests([DryRun => Bool, MaxResults => Int, NextToken => Str, SpotFleetRequestIds => ArrayRef[Str|Undef]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - SpotFleetRequestConfigs, passing the object as the first parameter, and the string 'SpotFleetRequestConfigs' as the second parameter 
+
+If not, it will return a a L<Paws::EC2::DescribeSpotFleetRequestsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllSpotPriceHistory(sub { },[AvailabilityZone => Str, DryRun => Bool, EndTime => Str, Filters => ArrayRef[L<Paws::EC2::Filter>], InstanceTypes => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str, ProductDescriptions => ArrayRef[Str|Undef], StartTime => Str])
+
+=head2 DescribeAllSpotPriceHistory([AvailabilityZone => Str, DryRun => Bool, EndTime => Str, Filters => ArrayRef[L<Paws::EC2::Filter>], InstanceTypes => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str, ProductDescriptions => ArrayRef[Str|Undef], StartTime => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - SpotPriceHistory, passing the object as the first parameter, and the string 'SpotPriceHistory' as the second parameter 
+
+If not, it will return a a L<Paws::EC2::DescribeSpotPriceHistoryResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllTags(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllTags([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Tags, passing the object as the first parameter, and the string 'Tags' as the second parameter 
+
+If not, it will return a a L<Paws::EC2::DescribeTagsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllVolumes(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, VolumeIds => ArrayRef[Str|Undef]])
+
+=head2 DescribeAllVolumes([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, VolumeIds => ArrayRef[Str|Undef]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Volumes, passing the object as the first parameter, and the string 'Volumes' as the second parameter 
+
+If not, it will return a a L<Paws::EC2::DescribeVolumesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllVolumeStatus(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, VolumeIds => ArrayRef[Str|Undef]])
+
+=head2 DescribeAllVolumeStatus([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, VolumeIds => ArrayRef[Str|Undef]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - VolumeStatuses, passing the object as the first parameter, and the string 'VolumeStatuses' as the second parameter 
+
+If not, it will return a a L<Paws::EC2::DescribeVolumeStatusResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+
 
 
 =head1 SEE ALSO

@@ -4,6 +4,7 @@ package Paws::RedShift::OrderableClusterOptionsMessage;
   has Marker => (is => 'ro', isa => 'Str');
   has OrderableClusterOptions => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::OrderableClusterOption]', xmlname => 'OrderableClusterOption', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -25,13 +26,13 @@ the C<Marker> field is empty, all response records have been retrieved
 for the request.
 
 
-
 =head2 OrderableClusterOptions => ArrayRef[L<Paws::RedShift::OrderableClusterOption>]
 
 An C<OrderableClusterOption> structure containing information about
 orderable options for the cluster.
 
 
+=head2 _request_id => Str
 
 
 =cut

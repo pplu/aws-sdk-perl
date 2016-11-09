@@ -1,7 +1,7 @@
 package Paws::RDS::DBClusterSnapshot;
   use Moose;
   has AllocatedStorage => (is => 'ro', isa => 'Int');
-  has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'AvailabilityZone', traits => ['NameInRequest']);
   has ClusterCreateTime => (is => 'ro', isa => 'Str');
   has DBClusterIdentifier => (is => 'ro', isa => 'Str');
   has DBClusterSnapshotArn => (is => 'ro', isa => 'Str');

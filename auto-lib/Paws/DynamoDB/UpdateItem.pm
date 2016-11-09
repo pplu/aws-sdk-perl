@@ -228,7 +228,8 @@ These function names are case-sensitive.
 
 =item *
 
-Comparison operators: C< = | | | | = | = | BETWEEN | IN>
+Comparison operators: C< = | E<lt>E<gt> | E<lt> | E<gt> | E<lt>= |
+E<gt>= | BETWEEN | IN>
 
 =item *
 

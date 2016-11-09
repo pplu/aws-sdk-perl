@@ -9,6 +9,7 @@ package Paws::EFS::MountTargetDescription;
   has OwnerId => (is => 'ro', isa => 'Str');
   has SubnetId => (is => 'ro', isa => 'Str', required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -25,11 +26,9 @@ Paws::EFS::MountTargetDescription
 ID of the file system for which the mount target is intended.
 
 
-
 =head2 IpAddress => Str
 
 Address at which the file system may be mounted via the mount target.
-
 
 
 =head2 B<REQUIRED> LifeCycleState => Str
@@ -37,11 +36,9 @@ Address at which the file system may be mounted via the mount target.
 Lifecycle state of the mount target.
 
 Valid values are: C<"creating">, C<"available">, C<"deleting">, C<"deleted">
-
 =head2 B<REQUIRED> MountTargetId => Str
 
 System-assigned mount target ID.
-
 
 
 =head2 NetworkInterfaceId => Str
@@ -50,11 +47,9 @@ ID of the network interface that Amazon EFS created when it created the
 mount target.
 
 
-
 =head2 OwnerId => Str
 
 AWS account ID that owns the resource.
-
 
 
 =head2 B<REQUIRED> SubnetId => Str
@@ -62,6 +57,7 @@ AWS account ID that owns the resource.
 ID of the mount target's subnet.
 
 
+=head2 _request_id => Str
 
 
 =cut

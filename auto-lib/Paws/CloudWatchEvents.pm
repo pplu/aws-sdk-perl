@@ -74,6 +74,8 @@ package Paws::CloudWatchEvents;
     my $call_object = $self->new_with_coercions('Paws::CloudWatchEvents::TestEventPattern', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
+
 
   sub operations { qw/DeleteRule DescribeRule DisableRule EnableRule ListRuleNamesByTarget ListRules ListTargetsByRule PutEvents PutRule PutTargets RemoveTargets TestEventPattern / }
 
@@ -325,6 +327,15 @@ Amazon Resource Names (ARNs). However, CloudWatch Events uses an exact
 match in event patterns and rules. Be sure to use the correct ARN
 characters when creating event patterns so that they match the ARN
 syntax in the event you want to match.
+
+
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+
 
 
 =head1 SEE ALSO

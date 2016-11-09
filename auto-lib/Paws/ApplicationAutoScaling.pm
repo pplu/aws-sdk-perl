@@ -49,6 +49,71 @@ package Paws::ApplicationAutoScaling;
     my $call_object = $self->new_with_coercions('Paws::ApplicationAutoScaling::RegisterScalableTarget', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
+  sub DescribeAllScalableTargets {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeScalableTargets(@_);
+
+    if (not defined $callback) {
+      while ($result->NextToken) {
+        $result = $self->DescribeScalableTargets(@_, NextToken => $result->NextToken);
+        push @{ $result->ScalableTargets }, @{ $result->ScalableTargets };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $result = $self->DescribeScalableTargets(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'ScalableTargets') foreach (@{ $result->ScalableTargets });
+      }
+    }
+
+    return undef
+  }
+  sub DescribeAllScalingActivities {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeScalingActivities(@_);
+
+    if (not defined $callback) {
+      while ($result->NextToken) {
+        $result = $self->DescribeScalingActivities(@_, NextToken => $result->NextToken);
+        push @{ $result->ScalingActivities }, @{ $result->ScalingActivities };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $result = $self->DescribeScalingActivities(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'ScalingActivities') foreach (@{ $result->ScalingActivities });
+      }
+    }
+
+    return undef
+  }
+  sub DescribeAllScalingPolicies {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeScalingPolicies(@_);
+
+    if (not defined $callback) {
+      while ($result->NextToken) {
+        $result = $self->DescribeScalingPolicies(@_, NextToken => $result->NextToken);
+        push @{ $result->ScalingPolicies }, @{ $result->ScalingPolicies };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $result = $self->DescribeScalingPolicies(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'ScalingPolicies') foreach (@{ $result->ScalingPolicies });
+      }
+    }
+
+    return undef
+  }
+
 
   sub operations { qw/DeleteScalingPolicy DeregisterScalableTarget DescribeScalableTargets DescribeScalingActivities DescribeScalingPolicies PutScalingPolicy RegisterScalableTarget / }
 
@@ -279,6 +344,51 @@ can create and apply scaling policies to it with PutScalingPolicy. You
 can view the existing scaling policies for a service namespace with
 DescribeScalableTargets. If you are no longer using a scalable target,
 you can deregister it with DeregisterScalableTarget.
+
+
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 DescribeAllScalableTargets(sub { },ServiceNamespace => Str, [MaxResults => Int, NextToken => Str, ResourceIds => ArrayRef[Str|Undef], ScalableDimension => Str])
+
+=head2 DescribeAllScalableTargets(ServiceNamespace => Str, [MaxResults => Int, NextToken => Str, ResourceIds => ArrayRef[Str|Undef], ScalableDimension => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ScalableTargets, passing the object as the first parameter, and the string 'ScalableTargets' as the second parameter 
+
+If not, it will return a a L<Paws::ApplicationAutoScaling::DescribeScalableTargetsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllScalingActivities(sub { },ServiceNamespace => Str, [MaxResults => Int, NextToken => Str, ResourceId => Str, ScalableDimension => Str])
+
+=head2 DescribeAllScalingActivities(ServiceNamespace => Str, [MaxResults => Int, NextToken => Str, ResourceId => Str, ScalableDimension => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ScalingActivities, passing the object as the first parameter, and the string 'ScalingActivities' as the second parameter 
+
+If not, it will return a a L<Paws::ApplicationAutoScaling::DescribeScalingActivitiesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllScalingPolicies(sub { },ServiceNamespace => Str, [MaxResults => Int, NextToken => Str, PolicyNames => ArrayRef[Str|Undef], ResourceId => Str, ScalableDimension => Str])
+
+=head2 DescribeAllScalingPolicies(ServiceNamespace => Str, [MaxResults => Int, NextToken => Str, PolicyNames => ArrayRef[Str|Undef], ResourceId => Str, ScalableDimension => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ScalingPolicies, passing the object as the first parameter, and the string 'ScalingPolicies' as the second parameter 
+
+If not, it will return a a L<Paws::ApplicationAutoScaling::DescribeScalingPoliciesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+
 
 
 =head1 SEE ALSO

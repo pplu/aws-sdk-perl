@@ -3,6 +3,7 @@ package Paws::Route53::GetTrafficPolicyInstanceCountResponse;
   use Moose;
   has TrafficPolicyInstanceCount => (is => 'ro', isa => 'Int', required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

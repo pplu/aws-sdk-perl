@@ -74,6 +74,8 @@ package Paws::CloudTrail;
     my $call_object = $self->new_with_coercions('Paws::CloudTrail::UpdateTrail', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
+
 
   sub operations { qw/AddTags CreateTrail DeleteTrail DescribeTrails GetTrailStatus ListPublicKeys ListTags LookupEvents RemoveTags StartLogging StopLogging UpdateTrail / }
 
@@ -292,6 +294,15 @@ bucket has previously been a target for CloudTrail log files, an IAM
 policy exists for the bucket. C<UpdateTrail> must be called from the
 region in which the trail was created; otherwise, an
 C<InvalidHomeRegionException> is thrown.
+
+
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+
 
 
 =head1 SEE ALSO

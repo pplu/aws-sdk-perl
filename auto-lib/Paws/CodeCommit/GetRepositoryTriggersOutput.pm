@@ -4,6 +4,7 @@ package Paws::CodeCommit::GetRepositoryTriggersOutput;
   has ConfigurationId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'configurationId' );
   has Triggers => (is => 'ro', isa => 'ArrayRef[Paws::CodeCommit::RepositoryTrigger]', traits => ['Unwrapped'], xmlname => 'triggers' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -19,12 +20,12 @@ Paws::CodeCommit::GetRepositoryTriggersOutput
 The system-generated unique ID for the trigger.
 
 
-
 =head2 Triggers => ArrayRef[L<Paws::CodeCommit::RepositoryTrigger>]
 
 The JSON block of configuration information for each trigger.
 
 
+=head2 _request_id => Str
 
 
 =cut

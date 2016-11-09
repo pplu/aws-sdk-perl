@@ -3,6 +3,7 @@ package Paws::EC2::AttachNetworkInterfaceResult;
   use Moose;
   has AttachmentId => (is => 'ro', isa => 'Str', xmlname => 'attachmentId', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -19,6 +20,7 @@ Paws::EC2::AttachNetworkInterfaceResult
 The ID of the network interface attachment.
 
 
+=head2 _request_id => Str
 
 
 =cut

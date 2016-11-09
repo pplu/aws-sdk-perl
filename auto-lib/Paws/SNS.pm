@@ -163,6 +163,113 @@ package Paws::SNS;
     my $call_object = $self->new_with_coercions('Paws::SNS::Unsubscribe', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
+  sub ListAllEndpointsByPlatformApplication {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListEndpointsByPlatformApplication(@_);
+
+    if (not defined $callback) {
+      while ($result->NextToken) {
+        $result = $self->ListEndpointsByPlatformApplication(@_, NextToken => $result->NextToken);
+        push @{ $result->Endpoints }, @{ $result->Endpoints };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $result = $self->ListEndpointsByPlatformApplication(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'Endpoints') foreach (@{ $result->Endpoints });
+      }
+    }
+
+    return undef
+  }
+  sub ListAllPlatformApplications {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListPlatformApplications(@_);
+
+    if (not defined $callback) {
+      while ($result->NextToken) {
+        $result = $self->ListPlatformApplications(@_, NextToken => $result->NextToken);
+        push @{ $result->PlatformApplications }, @{ $result->PlatformApplications };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $result = $self->ListPlatformApplications(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'PlatformApplications') foreach (@{ $result->PlatformApplications });
+      }
+    }
+
+    return undef
+  }
+  sub ListAllSubscriptions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListSubscriptions(@_);
+
+    if (not defined $callback) {
+      while ($result->NextToken) {
+        $result = $self->ListSubscriptions(@_, NextToken => $result->NextToken);
+        push @{ $result->Subscriptions }, @{ $result->Subscriptions };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $result = $self->ListSubscriptions(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'Subscriptions') foreach (@{ $result->Subscriptions });
+      }
+    }
+
+    return undef
+  }
+  sub ListAllSubscriptionsByTopic {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListSubscriptionsByTopic(@_);
+
+    if (not defined $callback) {
+      while ($result->NextToken) {
+        $result = $self->ListSubscriptionsByTopic(@_, NextToken => $result->NextToken);
+        push @{ $result->Subscriptions }, @{ $result->Subscriptions };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $result = $self->ListSubscriptionsByTopic(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'Subscriptions') foreach (@{ $result->Subscriptions });
+      }
+    }
+
+    return undef
+  }
+  sub ListAllTopics {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListTopics(@_);
+
+    if (not defined $callback) {
+      while ($result->NextToken) {
+        $result = $self->ListTopics(@_, NextToken => $result->NextToken);
+        push @{ $result->Topics }, @{ $result->Topics };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $result = $self->ListTopics(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'Topics') foreach (@{ $result->Topics });
+      }
+    }
+
+    return undef
+  }
+
 
   sub operations { qw/AddPermission CheckIfPhoneNumberIsOptedOut ConfirmSubscription CreatePlatformApplication CreatePlatformEndpoint CreateTopic DeleteEndpoint DeletePlatformApplication DeleteTopic GetEndpointAttributes GetPlatformApplicationAttributes GetSMSAttributes GetSubscriptionAttributes GetTopicAttributes ListEndpointsByPlatformApplication ListPhoneNumbersOptedOut ListPlatformApplications ListSubscriptions ListSubscriptionsByTopic ListTopics OptInPhoneNumber Publish RemovePermission SetEndpointAttributes SetPlatformApplicationAttributes SetSMSAttributes SetSubscriptionAttributes SetTopicAttributes Subscribe Unsubscribe / }
 
@@ -622,6 +729,75 @@ call does not require authentication and the requester is not the
 subscription owner, a final cancellation message is delivered to the
 endpoint, so that the endpoint owner can easily resubscribe to the
 topic if the C<Unsubscribe> request was unintended.
+
+
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllEndpointsByPlatformApplication(sub { },PlatformApplicationArn => Str, [NextToken => Str])
+
+=head2 ListAllEndpointsByPlatformApplication(PlatformApplicationArn => Str, [NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Endpoints, passing the object as the first parameter, and the string 'Endpoints' as the second parameter 
+
+If not, it will return a a L<Paws::SNS::ListEndpointsByPlatformApplicationResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllPlatformApplications(sub { },[NextToken => Str])
+
+=head2 ListAllPlatformApplications([NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - PlatformApplications, passing the object as the first parameter, and the string 'PlatformApplications' as the second parameter 
+
+If not, it will return a a L<Paws::SNS::ListPlatformApplicationsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllSubscriptions(sub { },[NextToken => Str])
+
+=head2 ListAllSubscriptions([NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Subscriptions, passing the object as the first parameter, and the string 'Subscriptions' as the second parameter 
+
+If not, it will return a a L<Paws::SNS::ListSubscriptionsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllSubscriptionsByTopic(sub { },TopicArn => Str, [NextToken => Str])
+
+=head2 ListAllSubscriptionsByTopic(TopicArn => Str, [NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Subscriptions, passing the object as the first parameter, and the string 'Subscriptions' as the second parameter 
+
+If not, it will return a a L<Paws::SNS::ListSubscriptionsByTopicResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllTopics(sub { },[NextToken => Str])
+
+=head2 ListAllTopics([NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Topics, passing the object as the first parameter, and the string 'Topics' as the second parameter 
+
+If not, it will return a a L<Paws::SNS::ListTopicsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+
 
 
 =head1 SEE ALSO

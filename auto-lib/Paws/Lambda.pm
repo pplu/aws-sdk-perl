@@ -133,34 +133,50 @@ package Paws::Lambda;
     my $call_object = $self->new_with_coercions('Paws::Lambda::UpdateFunctionConfiguration', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
   sub ListAllEventSourceMappings {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListEventSourceMappings(@_);
-    my $array = [];
-    push @$array, @{ $result->EventSourceMappings };
 
-    while ($result->NextMarker) {
-      $result = $self->ListEventSourceMappings(@_, Marker => $result->NextMarker);
-      push @$array, @{ $result->EventSourceMappings };
+    if (not defined $callback) {
+      while ($result->Marker) {
+        $result = $self->ListEventSourceMappings(@_, Marker => $result->NextMarker);
+        push @{ $result->EventSourceMappings }, @{ $result->EventSourceMappings };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $result = $self->ListEventSourceMappings(@_, Marker => $result->NextMarker);
+        $callback->($_ => 'EventSourceMappings') foreach (@{ $result->EventSourceMappings });
+      }
     }
 
-    return 'Paws::Lambda::ListEventSourceMappings'->_returns->new(EventSourceMappings => $array);
+    return undef
   }
   sub ListAllFunctions {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListFunctions(@_);
-    my $array = [];
-    push @$array, @{ $result->Functions };
 
-    while ($result->NextMarker) {
-      $result = $self->ListFunctions(@_, Marker => $result->NextMarker);
-      push @$array, @{ $result->Functions };
+    if (not defined $callback) {
+      while ($result->Marker) {
+        $result = $self->ListFunctions(@_, Marker => $result->NextMarker);
+        push @{ $result->Functions }, @{ $result->Functions };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $result = $self->ListFunctions(@_, Marker => $result->NextMarker);
+        $callback->($_ => 'Functions') foreach (@{ $result->Functions });
+      }
     }
 
-    return 'Paws::Lambda::ListFunctions'->_returns->new(Functions => $array);
+    return undef
   }
+
 
   sub operations { qw/AddPermission CreateAlias CreateEventSourceMapping CreateFunction DeleteAlias DeleteEventSourceMapping DeleteFunction GetAlias GetEventSourceMapping GetFunction GetFunctionConfiguration GetPolicy Invoke InvokeAsync ListAliases ListEventSourceMappings ListFunctions ListVersionsByFunction PublishVersion RemovePermission UpdateAlias UpdateEventSourceMapping UpdateFunctionCode UpdateFunctionConfiguration / }
 
@@ -645,6 +661,39 @@ Aliases.
 
 This operation requires permission for the
 C<lambda:UpdateFunctionConfiguration> action.
+
+
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllEventSourceMappings(sub { },[EventSourceArn => Str, FunctionName => Str, Marker => Str, MaxItems => Int])
+
+=head2 ListAllEventSourceMappings([EventSourceArn => Str, FunctionName => Str, Marker => Str, MaxItems => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - EventSourceMappings, passing the object as the first parameter, and the string 'EventSourceMappings' as the second parameter 
+
+If not, it will return a a L<Paws::Lambda::ListEventSourceMappingsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllFunctions(sub { },[Marker => Str, MaxItems => Int])
+
+=head2 ListAllFunctions([Marker => Str, MaxItems => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Functions, passing the object as the first parameter, and the string 'Functions' as the second parameter 
+
+If not, it will return a a L<Paws::Lambda::ListFunctionsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+
 
 
 =head1 SEE ALSO

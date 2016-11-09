@@ -104,6 +104,8 @@ package Paws::CognitoIdentity;
     my $call_object = $self->new_with_coercions('Paws::CognitoIdentity::UpdateIdentityPool', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
+
 
   sub operations { qw/CreateIdentityPool DeleteIdentities DeleteIdentityPool DescribeIdentity DescribeIdentityPool GetCredentialsForIdentity GetId GetIdentityPoolRoles GetOpenIdToken GetOpenIdTokenForDeveloperIdentity ListIdentities ListIdentityPools LookupDeveloperIdentity MergeDeveloperIdentities SetIdentityPoolRoles UnlinkDeveloperIdentity UnlinkIdentity UpdateIdentityPool / }
 
@@ -435,6 +437,15 @@ Returns: a L<Paws::CognitoIdentity::IdentityPool> instance
   Updates a user pool.
 
 You must use AWS Developer credentials to call this API.
+
+
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+
 
 
 =head1 SEE ALSO

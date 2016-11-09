@@ -2,22 +2,22 @@
 call: ListServerCertificates
 service: IAM
 tests:
-  - expected: '2016-03-15T10:58:24Z'
+  - expected: 
     op: eq
     path: 'ServerCertificateMetadataList.0.Expiration'
-  - expected: 'AAAAAAAAAAAAAAAAAAAAA'
+  - expected: 'ASCACKCEVSQ6CEXAMPLE1'
     op: eq
     path: 'ServerCertificateMetadataList.0.ServerCertificateId'
-  - expected: '/production/'
+  - expected: '/company/servercerts/'
     op: eq
     path: 'ServerCertificateMetadataList.0.Path'
-  - expected: '2014-02-18T16:24:16Z'
+  - expected: '2010-05-08T01:02:03.004Z'
     op: eq
     path: 'ServerCertificateMetadataList.0.UploadDate'
-  - expected: 'arn:aws:iam::333333333333:server-certificate/production/wildcard1'
+  - expected: 'arn:aws:iam::123456789012:server-certificate/company/servercerts/ProdServerCert'
     op: eq
     path: 'ServerCertificateMetadataList.0.Arn'
-  - expected: 'wildcard1'
+  - expected: 'ProdServerCert'
     op: eq
     path: 'ServerCertificateMetadataList.0.ServerCertificateName'
   - expected: 0

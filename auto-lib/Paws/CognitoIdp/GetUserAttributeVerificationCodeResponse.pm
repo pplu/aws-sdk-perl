@@ -3,6 +3,7 @@ package Paws::CognitoIdp::GetUserAttributeVerificationCodeResponse;
   use Moose;
   has CodeDeliveryDetails => (is => 'ro', isa => 'Paws::CognitoIdp::CodeDeliveryDetailsType');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -19,6 +20,7 @@ The code delivery details returned by the server response to get the
 user attribute verification code.
 
 
+=head2 _request_id => Str
 
 
 =cut

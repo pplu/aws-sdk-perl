@@ -69,6 +69,8 @@ package Paws::SMS;
     my $call_object = $self->new_with_coercions('Paws::SMS::UpdateReplicationJob', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
+
 
   sub operations { qw/CreateReplicationJob DeleteReplicationJob DeleteServerCatalog DisassociateConnector GetConnectors GetReplicationJobs GetReplicationRuns GetServers ImportServerCatalog StartOnDemandReplicationRun UpdateReplicationJob / }
 
@@ -229,6 +231,15 @@ Returns: a L<Paws::SMS::UpdateReplicationJobResponse> instance
   The UpdateReplicationJob API is used to change the settings of your
 existing ReplicationJob created using CreateReplicationJob. Calling
 this API will affect the next scheduled ReplicationRun.
+
+
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+
 
 
 =head1 SEE ALSO

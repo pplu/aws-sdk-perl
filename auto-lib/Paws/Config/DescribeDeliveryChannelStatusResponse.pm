@@ -3,6 +3,7 @@ package Paws::Config::DescribeDeliveryChannelStatusResponse;
   use Moose;
   has DeliveryChannelsStatus => (is => 'ro', isa => 'ArrayRef[Paws::Config::DeliveryChannelStatus]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -18,6 +19,7 @@ Paws::Config::DescribeDeliveryChannelStatusResponse
 A list that contains the status of a specified delivery channel.
 
 
+=head2 _request_id => Str
 
 
 =cut

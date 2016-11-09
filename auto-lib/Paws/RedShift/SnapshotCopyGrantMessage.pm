@@ -4,6 +4,7 @@ package Paws::RedShift::SnapshotCopyGrantMessage;
   has Marker => (is => 'ro', isa => 'Str');
   has SnapshotCopyGrants => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::SnapshotCopyGrant]', xmlname => 'SnapshotCopyGrant', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -28,12 +29,12 @@ Constraints: You can specify either the B<SnapshotCopyGrantName>
 parameter or the B<Marker> parameter, but not both.
 
 
-
 =head2 SnapshotCopyGrants => ArrayRef[L<Paws::RedShift::SnapshotCopyGrant>]
 
 The list of C<SnapshotCopyGrant> objects.
 
 
+=head2 _request_id => Str
 
 
 =cut

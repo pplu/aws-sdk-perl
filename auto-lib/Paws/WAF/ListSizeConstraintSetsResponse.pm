@@ -4,6 +4,7 @@ package Paws::WAF::ListSizeConstraintSetsResponse;
   has NextMarker => (is => 'ro', isa => 'Str');
   has SizeConstraintSets => (is => 'ro', isa => 'ArrayRef[Paws::WAF::SizeConstraintSetSummary]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -24,12 +25,12 @@ C<NextMarker> value from the response in the C<NextMarker> value in the
 next request.
 
 
-
 =head2 SizeConstraintSets => ArrayRef[L<Paws::WAF::SizeConstraintSetSummary>]
 
 An array of SizeConstraintSetSummary objects.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -7,6 +7,7 @@ package Paws::StorageGateway::DescribeMaintenanceStartTimeOutput;
   has MinuteOfHour => (is => 'ro', isa => 'Int');
   has Timezone => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -22,9 +23,7 @@ Paws::StorageGateway::DescribeMaintenanceStartTimeOutput
 
 
 
-
 =head2 GatewayARN => Str
-
 
 
 
@@ -34,9 +33,7 @@ Paws::StorageGateway::DescribeMaintenanceStartTimeOutput
 
 
 
-
 =head2 MinuteOfHour => Int
-
 
 
 
@@ -46,6 +43,7 @@ Paws::StorageGateway::DescribeMaintenanceStartTimeOutput
 
 
 
+=head2 _request_id => Str
 
 
 =cut

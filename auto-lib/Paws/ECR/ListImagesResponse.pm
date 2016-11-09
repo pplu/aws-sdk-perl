@@ -4,6 +4,7 @@ package Paws::ECR::ListImagesResponse;
   has ImageIds => (is => 'ro', isa => 'ArrayRef[Paws::ECR::ImageIdentifier]', traits => ['Unwrapped'], xmlname => 'imageIds' );
   has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -19,7 +20,6 @@ Paws::ECR::ListImagesResponse
 The list of image IDs for the requested repository.
 
 
-
 =head2 NextToken => Str
 
 The C<nextToken> value to include in a future C<ListImages> request.
@@ -28,6 +28,7 @@ value can be used to retrieve the next page of results. This value is
 C<null> when there are no more results to return.
 
 
+=head2 _request_id => Str
 
 
 =cut

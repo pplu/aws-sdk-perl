@@ -3,6 +3,7 @@ package Paws::DMS::CreateReplicationInstanceResponse;
   use Moose;
   has ReplicationInstance => (is => 'ro', isa => 'Paws::DMS::ReplicationInstance');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -18,6 +19,7 @@ Paws::DMS::CreateReplicationInstanceResponse
 The replication instance that was created.
 
 
+=head2 _request_id => Str
 
 
 =cut

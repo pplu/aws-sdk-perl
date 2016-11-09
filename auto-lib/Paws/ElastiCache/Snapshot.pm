@@ -9,7 +9,7 @@ package Paws::ElastiCache::Snapshot;
   has CacheSubnetGroupName => (is => 'ro', isa => 'Str');
   has Engine => (is => 'ro', isa => 'Str');
   has EngineVersion => (is => 'ro', isa => 'Str');
-  has NodeSnapshots => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::NodeSnapshot]');
+  has NodeSnapshots => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::NodeSnapshot]', request_name => 'NodeSnapshot', traits => ['NameInRequest']);
   has NumCacheNodes => (is => 'ro', isa => 'Int');
   has NumNodeGroups => (is => 'ro', isa => 'Int');
   has Port => (is => 'ro', isa => 'Int');

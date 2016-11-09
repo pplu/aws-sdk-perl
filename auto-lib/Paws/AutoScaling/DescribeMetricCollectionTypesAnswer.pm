@@ -4,6 +4,7 @@ package Paws::AutoScaling::DescribeMetricCollectionTypesAnswer;
   has Granularities => (is => 'ro', isa => 'ArrayRef[Paws::AutoScaling::MetricGranularityType]');
   has Metrics => (is => 'ro', isa => 'ArrayRef[Paws::AutoScaling::MetricCollectionType]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -20,12 +21,12 @@ Paws::AutoScaling::DescribeMetricCollectionTypesAnswer
 The granularities for the metrics.
 
 
-
 =head2 Metrics => ArrayRef[L<Paws::AutoScaling::MetricCollectionType>]
 
 One or more metrics.
 
 
+=head2 _request_id => Str
 
 
 =cut

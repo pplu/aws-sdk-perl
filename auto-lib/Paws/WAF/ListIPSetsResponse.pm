@@ -4,6 +4,7 @@ package Paws::WAF::ListIPSetsResponse;
   has IPSets => (is => 'ro', isa => 'ArrayRef[Paws::WAF::IPSetSummary]');
   has NextMarker => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -19,7 +20,6 @@ Paws::WAF::ListIPSetsResponse
 An array of IPSetSummary objects.
 
 
-
 =head2 NextMarker => Str
 
 If you have more C<IPSet> objects than the number that you specified
@@ -29,6 +29,7 @@ request, and specify the C<NextMarker> value from the response in the
 C<NextMarker> value in the next request.
 
 
+=head2 _request_id => Str
 
 
 =cut

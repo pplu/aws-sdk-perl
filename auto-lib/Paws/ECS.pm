@@ -149,6 +149,134 @@ package Paws::ECS;
     my $call_object = $self->new_with_coercions('Paws::ECS::UpdateService', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
+  sub ListAllClusters {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListClusters(@_);
+
+    if (not defined $callback) {
+      while ($result->nextToken) {
+        $result = $self->ListClusters(@_, nextToken => $result->nextToken);
+        push @{ $result->clusterArns }, @{ $result->clusterArns };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $result = $self->ListClusters(@_, nextToken => $result->nextToken);
+        $callback->($_ => 'clusterArns') foreach (@{ $result->clusterArns });
+      }
+    }
+
+    return undef
+  }
+  sub ListAllContainerInstances {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListContainerInstances(@_);
+
+    if (not defined $callback) {
+      while ($result->nextToken) {
+        $result = $self->ListContainerInstances(@_, nextToken => $result->nextToken);
+        push @{ $result->containerInstanceArns }, @{ $result->containerInstanceArns };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $result = $self->ListContainerInstances(@_, nextToken => $result->nextToken);
+        $callback->($_ => 'containerInstanceArns') foreach (@{ $result->containerInstanceArns });
+      }
+    }
+
+    return undef
+  }
+  sub ListAllServices {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListServices(@_);
+
+    if (not defined $callback) {
+      while ($result->nextToken) {
+        $result = $self->ListServices(@_, nextToken => $result->nextToken);
+        push @{ $result->serviceArns }, @{ $result->serviceArns };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $result = $self->ListServices(@_, nextToken => $result->nextToken);
+        $callback->($_ => 'serviceArns') foreach (@{ $result->serviceArns });
+      }
+    }
+
+    return undef
+  }
+  sub ListAllTaskDefinitionFamilies {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListTaskDefinitionFamilies(@_);
+
+    if (not defined $callback) {
+      while ($result->nextToken) {
+        $result = $self->ListTaskDefinitionFamilies(@_, nextToken => $result->nextToken);
+        push @{ $result->families }, @{ $result->families };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $result = $self->ListTaskDefinitionFamilies(@_, nextToken => $result->nextToken);
+        $callback->($_ => 'families') foreach (@{ $result->families });
+      }
+    }
+
+    return undef
+  }
+  sub ListAllTaskDefinitions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListTaskDefinitions(@_);
+
+    if (not defined $callback) {
+      while ($result->nextToken) {
+        $result = $self->ListTaskDefinitions(@_, nextToken => $result->nextToken);
+        push @{ $result->taskDefinitionArns }, @{ $result->taskDefinitionArns };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $result = $self->ListTaskDefinitions(@_, nextToken => $result->nextToken);
+        $callback->($_ => 'taskDefinitionArns') foreach (@{ $result->taskDefinitionArns });
+      }
+    }
+
+    return undef
+  }
+  sub ListAllTasks {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListTasks(@_);
+
+    if (not defined $callback) {
+      while ($result->nextToken) {
+        $result = $self->ListTasks(@_, nextToken => $result->nextToken);
+        push @{ $result->taskArns }, @{ $result->taskArns };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $result = $self->ListTasks(@_, nextToken => $result->nextToken);
+        $callback->($_ => 'taskArns') foreach (@{ $result->taskArns });
+      }
+    }
+
+    return undef
+  }
+
 
   sub operations { qw/CreateCluster CreateService DeleteCluster DeleteService DeregisterContainerInstance DeregisterTaskDefinition DescribeClusters DescribeContainerInstances DescribeServices DescribeTaskDefinition DescribeTasks DiscoverPollEndpoint ListClusters ListContainerInstances ListServices ListTaskDefinitionFamilies ListTaskDefinitions ListTasks RegisterContainerInstance RegisterTaskDefinition RunTask StartTask StopTask SubmitContainerStateChange SubmitTaskStateChange UpdateContainerAgent UpdateService / }
 
@@ -700,6 +828,87 @@ Availability Zone (based on the previous steps), favoring container
 instances with the fewest number of running tasks for this service.
 
 =back
+
+
+
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllClusters(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 ListAllClusters([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - clusterArns, passing the object as the first parameter, and the string 'clusterArns' as the second parameter 
+
+If not, it will return a a L<Paws::ECS::ListClustersResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllContainerInstances(sub { },[Cluster => Str, MaxResults => Int, NextToken => Str])
+
+=head2 ListAllContainerInstances([Cluster => Str, MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - containerInstanceArns, passing the object as the first parameter, and the string 'containerInstanceArns' as the second parameter 
+
+If not, it will return a a L<Paws::ECS::ListContainerInstancesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllServices(sub { },[Cluster => Str, MaxResults => Int, NextToken => Str])
+
+=head2 ListAllServices([Cluster => Str, MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - serviceArns, passing the object as the first parameter, and the string 'serviceArns' as the second parameter 
+
+If not, it will return a a L<Paws::ECS::ListServicesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllTaskDefinitionFamilies(sub { },[FamilyPrefix => Str, MaxResults => Int, NextToken => Str, Status => Str])
+
+=head2 ListAllTaskDefinitionFamilies([FamilyPrefix => Str, MaxResults => Int, NextToken => Str, Status => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - families, passing the object as the first parameter, and the string 'families' as the second parameter 
+
+If not, it will return a a L<Paws::ECS::ListTaskDefinitionFamiliesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllTaskDefinitions(sub { },[FamilyPrefix => Str, MaxResults => Int, NextToken => Str, Sort => Str, Status => Str])
+
+=head2 ListAllTaskDefinitions([FamilyPrefix => Str, MaxResults => Int, NextToken => Str, Sort => Str, Status => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - taskDefinitionArns, passing the object as the first parameter, and the string 'taskDefinitionArns' as the second parameter 
+
+If not, it will return a a L<Paws::ECS::ListTaskDefinitionsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllTasks(sub { },[Cluster => Str, ContainerInstance => Str, DesiredStatus => Str, Family => Str, MaxResults => Int, NextToken => Str, ServiceName => Str, StartedBy => Str])
+
+=head2 ListAllTasks([Cluster => Str, ContainerInstance => Str, DesiredStatus => Str, Family => Str, MaxResults => Int, NextToken => Str, ServiceName => Str, StartedBy => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - taskArns, passing the object as the first parameter, and the string 'taskArns' as the second parameter 
+
+If not, it will return a a L<Paws::ECS::ListTasksResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 
 
 

@@ -3,6 +3,7 @@ package Paws::KMS::CreateKeyResponse;
   use Moose;
   has KeyMetadata => (is => 'ro', isa => 'Paws::KMS::KeyMetadata');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -18,6 +19,7 @@ Paws::KMS::CreateKeyResponse
 Metadata associated with the CMK.
 
 
+=head2 _request_id => Str
 
 
 =cut

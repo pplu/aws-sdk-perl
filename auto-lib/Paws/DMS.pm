@@ -174,6 +174,8 @@ package Paws::DMS;
     my $call_object = $self->new_with_coercions('Paws::DMS::TestConnection', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
+
 
   sub operations { qw/AddTagsToResource CreateEndpoint CreateReplicationInstance CreateReplicationSubnetGroup CreateReplicationTask DeleteCertificate DeleteEndpoint DeleteReplicationInstance DeleteReplicationSubnetGroup DeleteReplicationTask DescribeAccountAttributes DescribeCertificates DescribeConnections DescribeEndpoints DescribeEndpointTypes DescribeOrderableReplicationInstances DescribeRefreshSchemasStatus DescribeReplicationInstances DescribeReplicationSubnetGroups DescribeReplicationTasks DescribeSchemas DescribeTableStatistics ImportCertificate ListTagsForResource ModifyEndpoint ModifyReplicationInstance ModifyReplicationSubnetGroup RefreshSchemas RemoveTagsFromResource StartReplicationTask StopReplicationTask TestConnection / }
 
@@ -531,6 +533,15 @@ Each argument is described in detail in: L<Paws::DMS::TestConnection>
 Returns: a L<Paws::DMS::TestConnectionResponse> instance
 
   Tests the connection between the replication instance and the endpoint.
+
+
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+
 
 
 =head1 SEE ALSO

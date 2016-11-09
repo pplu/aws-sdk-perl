@@ -64,6 +64,8 @@ package Paws::Discovery;
     my $call_object = $self->new_with_coercions('Paws::Discovery::StopDataCollectionByAgentIds', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
+
 
   sub operations { qw/CreateTags DeleteTags DescribeAgents DescribeConfigurations DescribeExportConfigurations DescribeTags ExportConfigurations ListConfigurations StartDataCollectionByAgentIds StopDataCollectionByAgentIds / }
 
@@ -548,6 +550,15 @@ Each argument is described in detail in: L<Paws::Discovery::StopDataCollectionBy
 Returns: a L<Paws::Discovery::StopDataCollectionByAgentIdsResponse> instance
 
   Instructs the specified agents to stop collecting data.
+
+
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+
 
 
 =head1 SEE ALSO

@@ -5,6 +5,7 @@ package Paws::ElastiCache::CacheParameterGroupDetails;
   has Marker => (is => 'ro', isa => 'Str');
   has Parameters => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::Parameter]', xmlname => 'Parameter', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -22,11 +23,9 @@ A list of parameters specific to a particular cache node type. Each
 element in the list contains detailed information about one parameter.
 
 
-
 =head2 Marker => Str
 
 Provides an identifier to allow retrieval of paginated results.
-
 
 
 =head2 Parameters => ArrayRef[L<Paws::ElastiCache::Parameter>]
@@ -34,6 +33,7 @@ Provides an identifier to allow retrieval of paginated results.
 A list of Parameter instances.
 
 
+=head2 _request_id => Str
 
 
 =cut

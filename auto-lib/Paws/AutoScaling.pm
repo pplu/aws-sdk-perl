@@ -273,6 +273,176 @@ package Paws::AutoScaling;
     my $call_object = $self->new_with_coercions('Paws::AutoScaling::UpdateAutoScalingGroup', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
+  sub DescribeAllAutoScalingGroups {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeAutoScalingGroups(@_);
+
+    if (not defined $callback) {
+      while ($result->NextToken) {
+        $result = $self->DescribeAutoScalingGroups(@_, NextToken => $result->NextToken);
+        push @{ $result->AutoScalingGroups }, @{ $result->AutoScalingGroups };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $result = $self->DescribeAutoScalingGroups(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'AutoScalingGroups') foreach (@{ $result->AutoScalingGroups });
+      }
+    }
+
+    return undef
+  }
+  sub DescribeAllAutoScalingInstances {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeAutoScalingInstances(@_);
+
+    if (not defined $callback) {
+      while ($result->NextToken) {
+        $result = $self->DescribeAutoScalingInstances(@_, NextToken => $result->NextToken);
+        push @{ $result->AutoScalingInstances }, @{ $result->AutoScalingInstances };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $result = $self->DescribeAutoScalingInstances(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'AutoScalingInstances') foreach (@{ $result->AutoScalingInstances });
+      }
+    }
+
+    return undef
+  }
+  sub DescribeAllLaunchConfigurations {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeLaunchConfigurations(@_);
+
+    if (not defined $callback) {
+      while ($result->NextToken) {
+        $result = $self->DescribeLaunchConfigurations(@_, NextToken => $result->NextToken);
+        push @{ $result->LaunchConfigurations }, @{ $result->LaunchConfigurations };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $result = $self->DescribeLaunchConfigurations(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'LaunchConfigurations') foreach (@{ $result->LaunchConfigurations });
+      }
+    }
+
+    return undef
+  }
+  sub DescribeAllNotificationConfigurations {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeNotificationConfigurations(@_);
+
+    if (not defined $callback) {
+      while ($result->NextToken) {
+        $result = $self->DescribeNotificationConfigurations(@_, NextToken => $result->NextToken);
+        push @{ $result->NotificationConfigurations }, @{ $result->NotificationConfigurations };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $result = $self->DescribeNotificationConfigurations(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'NotificationConfigurations') foreach (@{ $result->NotificationConfigurations });
+      }
+    }
+
+    return undef
+  }
+  sub DescribeAllPolicies {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribePolicies(@_);
+
+    if (not defined $callback) {
+      while ($result->NextToken) {
+        $result = $self->DescribePolicies(@_, NextToken => $result->NextToken);
+        push @{ $result->ScalingPolicies }, @{ $result->ScalingPolicies };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $result = $self->DescribePolicies(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'ScalingPolicies') foreach (@{ $result->ScalingPolicies });
+      }
+    }
+
+    return undef
+  }
+  sub DescribeAllScalingActivities {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeScalingActivities(@_);
+
+    if (not defined $callback) {
+      while ($result->NextToken) {
+        $result = $self->DescribeScalingActivities(@_, NextToken => $result->NextToken);
+        push @{ $result->Activities }, @{ $result->Activities };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $result = $self->DescribeScalingActivities(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'Activities') foreach (@{ $result->Activities });
+      }
+    }
+
+    return undef
+  }
+  sub DescribeAllScheduledActions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeScheduledActions(@_);
+
+    if (not defined $callback) {
+      while ($result->NextToken) {
+        $result = $self->DescribeScheduledActions(@_, NextToken => $result->NextToken);
+        push @{ $result->ScheduledUpdateGroupActions }, @{ $result->ScheduledUpdateGroupActions };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $result = $self->DescribeScheduledActions(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'ScheduledUpdateGroupActions') foreach (@{ $result->ScheduledUpdateGroupActions });
+      }
+    }
+
+    return undef
+  }
+  sub DescribeAllTags {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeTags(@_);
+
+    if (not defined $callback) {
+      while ($result->NextToken) {
+        $result = $self->DescribeTags(@_, NextToken => $result->NextToken);
+        push @{ $result->Tags }, @{ $result->Tags };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $result = $self->DescribeTags(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'Tags') foreach (@{ $result->Tags });
+      }
+    }
+
+    return undef
+  }
+
 
   sub operations { qw/AttachInstances AttachLoadBalancers AttachLoadBalancerTargetGroups CompleteLifecycleAction CreateAutoScalingGroup CreateLaunchConfiguration CreateOrUpdateTags DeleteAutoScalingGroup DeleteLaunchConfiguration DeleteLifecycleHook DeleteNotificationConfiguration DeletePolicy DeleteScheduledAction DeleteTags DescribeAccountLimits DescribeAdjustmentTypes DescribeAutoScalingGroups DescribeAutoScalingInstances DescribeAutoScalingNotificationTypes DescribeLaunchConfigurations DescribeLifecycleHooks DescribeLifecycleHookTypes DescribeLoadBalancers DescribeLoadBalancerTargetGroups DescribeMetricCollectionTypes DescribeNotificationConfigurations DescribePolicies DescribeScalingActivities DescribeScalingProcessTypes DescribeScheduledActions DescribeTags DescribeTerminationPolicyTypes DetachInstances DetachLoadBalancers DetachLoadBalancerTargetGroups DisableMetricsCollection EnableMetricsCollection EnterStandby ExecutePolicy ExitStandby PutLifecycleHook PutNotificationConfiguration PutScalingPolicy PutScheduledUpdateGroupAction RecordLifecycleActionHeartbeat ResumeProcesses SetDesiredCapacity SetInstanceHealth SetInstanceProtection SuspendProcesses TerminateInstanceInAutoScalingGroup UpdateAutoScalingGroup / }
 
@@ -1120,6 +1290,111 @@ the size of the group to the new value of C<MaxSize>.
 All other optional parameters are left unchanged if not specified.
 
 =back
+
+
+
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 DescribeAllAutoScalingGroups(sub { },[AutoScalingGroupNames => ArrayRef[Str|Undef], MaxRecords => Int, NextToken => Str])
+
+=head2 DescribeAllAutoScalingGroups([AutoScalingGroupNames => ArrayRef[Str|Undef], MaxRecords => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - AutoScalingGroups, passing the object as the first parameter, and the string 'AutoScalingGroups' as the second parameter 
+
+If not, it will return a a L<Paws::AutoScaling::AutoScalingGroupsType> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllAutoScalingInstances(sub { },[InstanceIds => ArrayRef[Str|Undef], MaxRecords => Int, NextToken => Str])
+
+=head2 DescribeAllAutoScalingInstances([InstanceIds => ArrayRef[Str|Undef], MaxRecords => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - AutoScalingInstances, passing the object as the first parameter, and the string 'AutoScalingInstances' as the second parameter 
+
+If not, it will return a a L<Paws::AutoScaling::AutoScalingInstancesType> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllLaunchConfigurations(sub { },[LaunchConfigurationNames => ArrayRef[Str|Undef], MaxRecords => Int, NextToken => Str])
+
+=head2 DescribeAllLaunchConfigurations([LaunchConfigurationNames => ArrayRef[Str|Undef], MaxRecords => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - LaunchConfigurations, passing the object as the first parameter, and the string 'LaunchConfigurations' as the second parameter 
+
+If not, it will return a a L<Paws::AutoScaling::LaunchConfigurationsType> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllNotificationConfigurations(sub { },[AutoScalingGroupNames => ArrayRef[Str|Undef], MaxRecords => Int, NextToken => Str])
+
+=head2 DescribeAllNotificationConfigurations([AutoScalingGroupNames => ArrayRef[Str|Undef], MaxRecords => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - NotificationConfigurations, passing the object as the first parameter, and the string 'NotificationConfigurations' as the second parameter 
+
+If not, it will return a a L<Paws::AutoScaling::DescribeNotificationConfigurationsAnswer> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllPolicies(sub { },[AutoScalingGroupName => Str, MaxRecords => Int, NextToken => Str, PolicyNames => ArrayRef[Str|Undef], PolicyTypes => ArrayRef[Str|Undef]])
+
+=head2 DescribeAllPolicies([AutoScalingGroupName => Str, MaxRecords => Int, NextToken => Str, PolicyNames => ArrayRef[Str|Undef], PolicyTypes => ArrayRef[Str|Undef]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ScalingPolicies, passing the object as the first parameter, and the string 'ScalingPolicies' as the second parameter 
+
+If not, it will return a a L<Paws::AutoScaling::PoliciesType> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllScalingActivities(sub { },[ActivityIds => ArrayRef[Str|Undef], AutoScalingGroupName => Str, MaxRecords => Int, NextToken => Str])
+
+=head2 DescribeAllScalingActivities([ActivityIds => ArrayRef[Str|Undef], AutoScalingGroupName => Str, MaxRecords => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Activities, passing the object as the first parameter, and the string 'Activities' as the second parameter 
+
+If not, it will return a a L<Paws::AutoScaling::ActivitiesType> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllScheduledActions(sub { },[AutoScalingGroupName => Str, EndTime => Str, MaxRecords => Int, NextToken => Str, ScheduledActionNames => ArrayRef[Str|Undef], StartTime => Str])
+
+=head2 DescribeAllScheduledActions([AutoScalingGroupName => Str, EndTime => Str, MaxRecords => Int, NextToken => Str, ScheduledActionNames => ArrayRef[Str|Undef], StartTime => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ScheduledUpdateGroupActions, passing the object as the first parameter, and the string 'ScheduledUpdateGroupActions' as the second parameter 
+
+If not, it will return a a L<Paws::AutoScaling::ScheduledActionsType> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllTags(sub { },[Filters => ArrayRef[L<Paws::AutoScaling::Filter>], MaxRecords => Int, NextToken => Str])
+
+=head2 DescribeAllTags([Filters => ArrayRef[L<Paws::AutoScaling::Filter>], MaxRecords => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Tags, passing the object as the first parameter, and the string 'Tags' as the second parameter 
+
+If not, it will return a a L<Paws::AutoScaling::TagsType> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 
 
 

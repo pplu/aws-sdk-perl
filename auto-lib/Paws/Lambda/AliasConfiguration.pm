@@ -6,6 +6,7 @@ package Paws::Lambda::AliasConfiguration;
   has FunctionVersion => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -25,11 +26,9 @@ to a helloworld function version, the ARN is
 C<arn:aws:lambda:aws-regions:acct-id:function:helloworld:BETA>.
 
 
-
 =head2 Description => Str
 
 Alias description.
-
 
 
 =head2 FunctionVersion => Str
@@ -37,12 +36,12 @@ Alias description.
 Function version to which the alias points.
 
 
-
 =head2 Name => Str
 
 Alias name.
 
 
+=head2 _request_id => Str
 
 
 =cut

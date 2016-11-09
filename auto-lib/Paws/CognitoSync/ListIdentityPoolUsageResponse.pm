@@ -6,6 +6,7 @@ package Paws::CognitoSync::ListIdentityPoolUsageResponse;
   has MaxResults => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -22,11 +23,9 @@ Paws::CognitoSync::ListIdentityPoolUsageResponse
 Total number of identities for the identity pool.
 
 
-
 =head2 IdentityPoolUsages => ArrayRef[L<Paws::CognitoSync::IdentityPoolUsage>]
 
 Usage information for the identity pools.
-
 
 
 =head2 MaxResults => Int
@@ -34,12 +33,12 @@ Usage information for the identity pools.
 The maximum number of results to be returned.
 
 
-
 =head2 NextToken => Str
 
 A pagination token for obtaining the next page of results.
 
 
+=head2 _request_id => Str
 
 
 =cut

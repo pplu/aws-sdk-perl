@@ -3,6 +3,7 @@ package Paws::CodeCommit::GetCommitOutput;
   use Moose;
   has Commit => (is => 'ro', isa => 'Paws::CodeCommit::Commit', traits => ['Unwrapped'], xmlname => 'commit' , required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -18,6 +19,7 @@ Paws::CodeCommit::GetCommitOutput
 Information about the specified commit.
 
 
+=head2 _request_id => Str
 
 
 =cut

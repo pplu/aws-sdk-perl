@@ -144,6 +144,92 @@ package Paws::SSM;
     my $call_object = $self->new_with_coercions('Paws::SSM::UpdateManagedInstanceRole', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
+  sub ListAllAssociations {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListAssociations(@_);
+
+    if (not defined $callback) {
+      while ($result->NextToken) {
+        $result = $self->ListAssociations(@_, NextToken => $result->NextToken);
+        push @{ $result->Associations }, @{ $result->Associations };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $result = $self->ListAssociations(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'Associations') foreach (@{ $result->Associations });
+      }
+    }
+
+    return undef
+  }
+  sub ListAllCommandInvocations {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListCommandInvocations(@_);
+
+    if (not defined $callback) {
+      while ($result->NextToken) {
+        $result = $self->ListCommandInvocations(@_, NextToken => $result->NextToken);
+        push @{ $result->CommandInvocations }, @{ $result->CommandInvocations };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $result = $self->ListCommandInvocations(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'CommandInvocations') foreach (@{ $result->CommandInvocations });
+      }
+    }
+
+    return undef
+  }
+  sub ListAllCommands {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListCommands(@_);
+
+    if (not defined $callback) {
+      while ($result->NextToken) {
+        $result = $self->ListCommands(@_, NextToken => $result->NextToken);
+        push @{ $result->Commands }, @{ $result->Commands };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $result = $self->ListCommands(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'Commands') foreach (@{ $result->Commands });
+      }
+    }
+
+    return undef
+  }
+  sub ListAllDocuments {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListDocuments(@_);
+
+    if (not defined $callback) {
+      while ($result->NextToken) {
+        $result = $self->ListDocuments(@_, NextToken => $result->NextToken);
+        push @{ $result->DocumentIdentifiers }, @{ $result->DocumentIdentifiers };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $result = $self->ListDocuments(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'DocumentIdentifiers') foreach (@{ $result->DocumentIdentifiers });
+      }
+    }
+
+    return undef
+  }
+
 
   sub operations { qw/AddTagsToResource CancelCommand CreateActivation CreateAssociation CreateAssociationBatch CreateDocument DeleteActivation DeleteAssociation DeleteDocument DeregisterManagedInstance DescribeActivations DescribeAssociation DescribeDocument DescribeDocumentPermission DescribeInstanceInformation GetDocument ListAssociations ListCommandInvocations ListCommands ListDocuments ListTagsForResource ModifyDocumentPermission RemoveTagsFromResource SendCommand UpdateAssociationStatus UpdateManagedInstanceRole / }
 
@@ -652,6 +738,63 @@ Returns: a L<Paws::SSM::UpdateManagedInstanceRoleResult> instance
 
   Assigns or changes an Amazon Identity and Access Management (IAM) role
 to the managed instance.
+
+
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllAssociations(sub { },AssociationFilterList => ArrayRef[L<Paws::SSM::AssociationFilter>], [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllAssociations(AssociationFilterList => ArrayRef[L<Paws::SSM::AssociationFilter>], [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Associations, passing the object as the first parameter, and the string 'Associations' as the second parameter 
+
+If not, it will return a a L<Paws::SSM::ListAssociationsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllCommandInvocations(sub { },[CommandId => Str, Details => Bool, Filters => ArrayRef[L<Paws::SSM::CommandFilter>], InstanceId => Str, MaxResults => Int, NextToken => Str])
+
+=head2 ListAllCommandInvocations([CommandId => Str, Details => Bool, Filters => ArrayRef[L<Paws::SSM::CommandFilter>], InstanceId => Str, MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - CommandInvocations, passing the object as the first parameter, and the string 'CommandInvocations' as the second parameter 
+
+If not, it will return a a L<Paws::SSM::ListCommandInvocationsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllCommands(sub { },[CommandId => Str, Filters => ArrayRef[L<Paws::SSM::CommandFilter>], InstanceId => Str, MaxResults => Int, NextToken => Str])
+
+=head2 ListAllCommands([CommandId => Str, Filters => ArrayRef[L<Paws::SSM::CommandFilter>], InstanceId => Str, MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Commands, passing the object as the first parameter, and the string 'Commands' as the second parameter 
+
+If not, it will return a a L<Paws::SSM::ListCommandsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllDocuments(sub { },[DocumentFilterList => ArrayRef[L<Paws::SSM::DocumentFilter>], MaxResults => Int, NextToken => Str])
+
+=head2 ListAllDocuments([DocumentFilterList => ArrayRef[L<Paws::SSM::DocumentFilter>], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - DocumentIdentifiers, passing the object as the first parameter, and the string 'DocumentIdentifiers' as the second parameter 
+
+If not, it will return a a L<Paws::SSM::ListDocumentsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+
 
 
 =head1 SEE ALSO

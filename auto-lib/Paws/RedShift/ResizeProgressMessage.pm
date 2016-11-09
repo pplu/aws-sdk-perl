@@ -14,6 +14,7 @@ package Paws::RedShift::ResizeProgressMessage;
   has TargetNumberOfNodes => (is => 'ro', isa => 'Int');
   has TotalResizeDataInMegaBytes => (is => 'ro', isa => 'Int');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -32,13 +33,11 @@ measured in megabytes per second. After the resize operation completes,
 this value shows the average rate of the entire resize operation.
 
 
-
 =head2 ElapsedTimeInSeconds => Int
 
 The amount of seconds that have elapsed since the resize operation
 began. After the resize operation completes, this value shows the total
 actual time, in seconds, for the resize operation.
-
 
 
 =head2 EstimatedTimeToCompletionInSeconds => Int
@@ -49,13 +48,11 @@ the estimated amount of data remaining to be processed. Once the resize
 operation is complete, this value will be 0.
 
 
-
 =head2 ImportTablesCompleted => ArrayRef[Str|Undef]
 
 The names of tables that have been completely imported .
 
 Valid Values: List of table names.
-
 
 
 =head2 ImportTablesInProgress => ArrayRef[Str|Undef]
@@ -65,13 +62,11 @@ The names of tables that are being currently imported.
 Valid Values: List of table names.
 
 
-
 =head2 ImportTablesNotStarted => ArrayRef[Str|Undef]
 
 The names of tables that have not been yet imported.
 
 Valid Values: List of table names
-
 
 
 =head2 ProgressInMegaBytes => Int
@@ -84,13 +79,11 @@ TotalResizeDataInMegaBytes (the estimated total amount of data before
 resize).
 
 
-
 =head2 Status => Str
 
 The status of the resize operation.
 
 Valid Values: C<NONE> | C<IN_PROGRESS> | C<FAILED> | C<SUCCEEDED>
-
 
 
 =head2 TargetClusterType => Str
@@ -100,12 +93,10 @@ The cluster type after the resize operation is complete.
 Valid Values: C<multi-node> | C<single-node>
 
 
-
 =head2 TargetNodeType => Str
 
 The node type that the cluster will have after the resize operation is
 complete.
-
 
 
 =head2 TargetNumberOfNodes => Int
@@ -114,13 +105,13 @@ The number of nodes that the cluster will have after the resize
 operation is complete.
 
 
-
 =head2 TotalResizeDataInMegaBytes => Int
 
 The estimated total amount of data, in megabytes, on the cluster before
 the resize operation began.
 
 
+=head2 _request_id => Str
 
 
 =cut

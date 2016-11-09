@@ -1,4 +1,6 @@
 0.29 
+ - New functionality: Enabled and documented paginators (methods that repeatedly call methods that 
+   return partial responses)
  - Remove under work warning from JSON-REST services: ApiGateway,CloudSearchDomain,CognitoSync,
    EFS, ES, ElasticTranscoder, Glacier, IoT, IoTData, Lambda
    This means that Bugs and error reports for these APIs will be handled with priority, as they

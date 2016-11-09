@@ -8,6 +8,7 @@ package Paws::IAM::GetAccountAuthorizationDetailsResponse;
   has RoleDetailList => (is => 'ro', isa => 'ArrayRef[Paws::IAM::RoleDetail]');
   has UserDetailList => (is => 'ro', isa => 'ArrayRef[Paws::IAM::UserDetail]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +25,6 @@ Paws::IAM::GetAccountAuthorizationDetailsResponse
 A list containing information about IAM groups.
 
 
-
 =head2 IsTruncated => Bool
 
 A flag that indicates whether there are more items to return. If your
@@ -36,7 +36,6 @@ C<IsTruncated> after every call to ensure that you receive all of your
 results.
 
 
-
 =head2 Marker => Str
 
 When C<IsTruncated> is C<true>, this element is present and contains
@@ -44,11 +43,9 @@ the value to use for the C<Marker> parameter in a subsequent pagination
 request.
 
 
-
 =head2 Policies => ArrayRef[L<Paws::IAM::ManagedPolicyDetail>]
 
 A list containing information about managed policies.
-
 
 
 =head2 RoleDetailList => ArrayRef[L<Paws::IAM::RoleDetail>]
@@ -56,12 +53,12 @@ A list containing information about managed policies.
 A list containing information about IAM roles.
 
 
-
 =head2 UserDetailList => ArrayRef[L<Paws::IAM::UserDetail>]
 
 A list containing information about IAM users.
 
 
+=head2 _request_id => Str
 
 
 =cut

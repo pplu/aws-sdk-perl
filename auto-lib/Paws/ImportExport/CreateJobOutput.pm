@@ -8,6 +8,7 @@ package Paws::ImportExport::CreateJobOutput;
   has SignatureFileContents => (is => 'ro', isa => 'Str');
   has WarningMessage => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -24,9 +25,7 @@ Paws::ImportExport::CreateJobOutput
 
 
 
-
 =head2 JobId => Str
-
 
 
 
@@ -36,9 +35,7 @@ Paws::ImportExport::CreateJobOutput
 
 
 Valid values are: C<"Import">, C<"Export">
-
 =head2 Signature => Str
-
 
 
 
@@ -48,12 +45,12 @@ Valid values are: C<"Import">, C<"Export">
 
 
 
-
 =head2 WarningMessage => Str
 
 
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -3,6 +3,7 @@ package Paws::GameLift::UpdateGameSessionOutput;
   use Moose;
   has GameSession => (is => 'ro', isa => 'Paws::GameLift::GameSession');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -18,6 +19,7 @@ Paws::GameLift::UpdateGameSessionOutput
 Object containing the updated game session metadata.
 
 
+=head2 _request_id => Str
 
 
 =cut

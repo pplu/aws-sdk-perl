@@ -3,6 +3,7 @@ package Paws::MachineLearning::PredictOutput;
   use Moose;
   has Prediction => (is => 'ro', isa => 'Paws::MachineLearning::Prediction');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -18,6 +19,7 @@ Paws::MachineLearning::PredictOutput
 
 
 
+=head2 _request_id => Str
 
 
 =cut

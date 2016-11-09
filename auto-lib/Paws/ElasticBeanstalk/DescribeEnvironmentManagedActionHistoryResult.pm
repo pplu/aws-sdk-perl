@@ -4,6 +4,7 @@ package Paws::ElasticBeanstalk::DescribeEnvironmentManagedActionHistoryResult;
   has ManagedActionHistoryItems => (is => 'ro', isa => 'ArrayRef[Paws::ElasticBeanstalk::ManagedActionHistoryItem]');
   has NextToken => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -20,7 +21,6 @@ Paws::ElasticBeanstalk::DescribeEnvironmentManagedActionHistoryResult
 A list of completed and failed managed actions.
 
 
-
 =head2 NextToken => Str
 
 A pagination token that you pass to
@@ -28,6 +28,7 @@ DescribeEnvironmentManagedActionHistory to get the next page of
 results.
 
 
+=head2 _request_id => Str
 
 
 =cut

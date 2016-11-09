@@ -3,6 +3,7 @@ package Paws::ELBv2::DescribeRulesOutput;
   use Moose;
   has Rules => (is => 'ro', isa => 'ArrayRef[Paws::ELBv2::Rule]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -19,6 +20,7 @@ Paws::ELBv2::DescribeRulesOutput
 Information about the rules.
 
 
+=head2 _request_id => Str
 
 
 =cut

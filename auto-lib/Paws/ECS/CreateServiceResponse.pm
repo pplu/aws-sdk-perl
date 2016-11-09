@@ -3,6 +3,7 @@ package Paws::ECS::CreateServiceResponse;
   use Moose;
   has Service => (is => 'ro', isa => 'Paws::ECS::Service', traits => ['Unwrapped'], xmlname => 'service' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -18,6 +19,7 @@ Paws::ECS::CreateServiceResponse
 The full description of your service following the create call.
 
 
+=head2 _request_id => Str
 
 
 =cut

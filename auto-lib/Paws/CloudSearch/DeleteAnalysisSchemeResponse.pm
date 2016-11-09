@@ -3,6 +3,7 @@ package Paws::CloudSearch::DeleteAnalysisSchemeResponse;
   use Moose;
   has AnalysisScheme => (is => 'ro', isa => 'Paws::CloudSearch::AnalysisSchemeStatus', required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -19,6 +20,7 @@ Paws::CloudSearch::DeleteAnalysisSchemeResponse
 The status of the analysis scheme being deleted.
 
 
+=head2 _request_id => Str
 
 
 =cut

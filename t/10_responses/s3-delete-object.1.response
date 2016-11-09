@@ -1,0 +1,9 @@
+---
+content: ~
+headers:
+  connection: close
+  date: 'Tue, 01 Nov 2016 21:58:15 GMT'
+  server: AmazonS3
+  x-amz-id-2: FQbAr3B+YeF0M2B918n1e8aosHkw0gQ8zh3v2HOm5FL0KRuKopQ/2764w4ZVzJJnWFahVHjU6tM=
+  x-amz-request-id: 30EA1A44D6905562
+status: 204

@@ -3,6 +3,7 @@ package Paws::IoT::DescribeCACertificateResponse;
   use Moose;
   has CertificateDescription => (is => 'ro', isa => 'Paws::IoT::CACertificateDescription');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -19,6 +20,7 @@ Paws::IoT::DescribeCACertificateResponse
 The CA certificate description.
 
 
+=head2 _request_id => Str
 
 
 =cut

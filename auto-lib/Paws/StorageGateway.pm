@@ -294,6 +294,134 @@ package Paws::StorageGateway;
     my $call_object = $self->new_with_coercions('Paws::StorageGateway::UpdateVTLDeviceType', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
+  sub DescribeAllTapeArchives {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeTapeArchives(@_);
+
+    if (not defined $callback) {
+      while ($result->Marker) {
+        $result = $self->DescribeTapeArchives(@_, Marker => $result->Marker);
+        push @{ $result->TapeArchives }, @{ $result->TapeArchives };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $result = $self->DescribeTapeArchives(@_, Marker => $result->Marker);
+        $callback->($_ => 'TapeArchives') foreach (@{ $result->TapeArchives });
+      }
+    }
+
+    return undef
+  }
+  sub DescribeAllTapeRecoveryPoints {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeTapeRecoveryPoints(@_);
+
+    if (not defined $callback) {
+      while ($result->Marker) {
+        $result = $self->DescribeTapeRecoveryPoints(@_, Marker => $result->Marker);
+        push @{ $result->TapeRecoveryPointInfos }, @{ $result->TapeRecoveryPointInfos };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $result = $self->DescribeTapeRecoveryPoints(@_, Marker => $result->Marker);
+        $callback->($_ => 'TapeRecoveryPointInfos') foreach (@{ $result->TapeRecoveryPointInfos });
+      }
+    }
+
+    return undef
+  }
+  sub DescribeAllTapes {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeTapes(@_);
+
+    if (not defined $callback) {
+      while ($result->Marker) {
+        $result = $self->DescribeTapes(@_, Marker => $result->Marker);
+        push @{ $result->Tapes }, @{ $result->Tapes };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $result = $self->DescribeTapes(@_, Marker => $result->Marker);
+        $callback->($_ => 'Tapes') foreach (@{ $result->Tapes });
+      }
+    }
+
+    return undef
+  }
+  sub DescribeAllVTLDevices {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeVTLDevices(@_);
+
+    if (not defined $callback) {
+      while ($result->Marker) {
+        $result = $self->DescribeVTLDevices(@_, Marker => $result->Marker);
+        push @{ $result->VTLDevices }, @{ $result->VTLDevices };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $result = $self->DescribeVTLDevices(@_, Marker => $result->Marker);
+        $callback->($_ => 'VTLDevices') foreach (@{ $result->VTLDevices });
+      }
+    }
+
+    return undef
+  }
+  sub ListAllGateways {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListGateways(@_);
+
+    if (not defined $callback) {
+      while ($result->Marker) {
+        $result = $self->ListGateways(@_, Marker => $result->Marker);
+        push @{ $result->Gateways }, @{ $result->Gateways };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $result = $self->ListGateways(@_, Marker => $result->Marker);
+        $callback->($_ => 'Gateways') foreach (@{ $result->Gateways });
+      }
+    }
+
+    return undef
+  }
+  sub ListAllVolumes {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListVolumes(@_);
+
+    if (not defined $callback) {
+      while ($result->Marker) {
+        $result = $self->ListVolumes(@_, Marker => $result->Marker);
+        push @{ $result->VolumeInfos }, @{ $result->VolumeInfos };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $result = $self->ListVolumes(@_, Marker => $result->Marker);
+        $callback->($_ => 'VolumeInfos') foreach (@{ $result->VolumeInfos });
+      }
+    }
+
+    return undef
+  }
+
 
   sub operations { qw/ActivateGateway AddCache AddTagsToResource AddUploadBuffer AddWorkingStorage CancelArchival CancelRetrieval CreateCachediSCSIVolume CreateSnapshot CreateSnapshotFromVolumeRecoveryPoint CreateStorediSCSIVolume CreateTapes CreateTapeWithBarcode DeleteBandwidthRateLimit DeleteChapCredentials DeleteGateway DeleteSnapshotSchedule DeleteTape DeleteTapeArchive DeleteVolume DescribeBandwidthRateLimit DescribeCache DescribeCachediSCSIVolumes DescribeChapCredentials DescribeGatewayInformation DescribeMaintenanceStartTime DescribeSnapshotSchedule DescribeStorediSCSIVolumes DescribeTapeArchives DescribeTapeRecoveryPoints DescribeTapes DescribeUploadBuffer DescribeVTLDevices DescribeWorkingStorage DisableGateway ListGateways ListLocalDisks ListTagsForResource ListTapes ListVolumeInitiators ListVolumeRecoveryPoints ListVolumes RemoveTagsFromResource ResetCache RetrieveTapeArchive RetrieveTapeRecoveryPoint SetLocalConsolePassword ShutdownGateway StartGateway UpdateBandwidthRateLimit UpdateChapCredentials UpdateGatewayInformation UpdateGatewaySoftwareNow UpdateMaintenanceStartTime UpdateSnapshotSchedule UpdateVTLDeviceType / }
 
@@ -1314,6 +1442,87 @@ Returns: a L<Paws::StorageGateway::UpdateVTLDeviceTypeOutput> instance
 a gateway-VTL, you select a medium changer type for the gateway-VTL.
 This operation enables you to select a different type of medium changer
 after a gateway-VTL is activated.
+
+
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 DescribeAllTapeArchives(sub { },[Limit => Int, Marker => Str, TapeARNs => ArrayRef[Str|Undef]])
+
+=head2 DescribeAllTapeArchives([Limit => Int, Marker => Str, TapeARNs => ArrayRef[Str|Undef]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - TapeArchives, passing the object as the first parameter, and the string 'TapeArchives' as the second parameter 
+
+If not, it will return a a L<Paws::StorageGateway::DescribeTapeArchivesOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllTapeRecoveryPoints(sub { },GatewayARN => Str, [Limit => Int, Marker => Str])
+
+=head2 DescribeAllTapeRecoveryPoints(GatewayARN => Str, [Limit => Int, Marker => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - TapeRecoveryPointInfos, passing the object as the first parameter, and the string 'TapeRecoveryPointInfos' as the second parameter 
+
+If not, it will return a a L<Paws::StorageGateway::DescribeTapeRecoveryPointsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllTapes(sub { },GatewayARN => Str, [Limit => Int, Marker => Str, TapeARNs => ArrayRef[Str|Undef]])
+
+=head2 DescribeAllTapes(GatewayARN => Str, [Limit => Int, Marker => Str, TapeARNs => ArrayRef[Str|Undef]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Tapes, passing the object as the first parameter, and the string 'Tapes' as the second parameter 
+
+If not, it will return a a L<Paws::StorageGateway::DescribeTapesOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllVTLDevices(sub { },GatewayARN => Str, [Limit => Int, Marker => Str, VTLDeviceARNs => ArrayRef[Str|Undef]])
+
+=head2 DescribeAllVTLDevices(GatewayARN => Str, [Limit => Int, Marker => Str, VTLDeviceARNs => ArrayRef[Str|Undef]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - VTLDevices, passing the object as the first parameter, and the string 'VTLDevices' as the second parameter 
+
+If not, it will return a a L<Paws::StorageGateway::DescribeVTLDevicesOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllGateways(sub { },[Limit => Int, Marker => Str])
+
+=head2 ListAllGateways([Limit => Int, Marker => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Gateways, passing the object as the first parameter, and the string 'Gateways' as the second parameter 
+
+If not, it will return a a L<Paws::StorageGateway::ListGatewaysOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllVolumes(sub { },[GatewayARN => Str, Limit => Int, Marker => Str])
+
+=head2 ListAllVolumes([GatewayARN => Str, Limit => Int, Marker => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - VolumeInfos, passing the object as the first parameter, and the string 'VolumeInfos' as the second parameter 
+
+If not, it will return a a L<Paws::StorageGateway::ListVolumesOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+
 
 
 =head1 SEE ALSO

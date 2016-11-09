@@ -3,6 +3,7 @@ package Paws::SNS::GetTopicAttributesResponse;
   use Moose;
   has Attributes => (is => 'ro', isa => 'Paws::SNS::TopicAttributesMap');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -68,6 +69,7 @@ delivery policy that takes into account system defaults
 
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -4,6 +4,7 @@ package Paws::RDS::OptionGroups;
   has Marker => (is => 'ro', isa => 'Str');
   has OptionGroupsList => (is => 'ro', isa => 'ArrayRef[Paws::RDS::OptionGroup]', xmlname => 'OptionGroup', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -22,12 +23,12 @@ parameter is specified, the response includes only records beyond the
 marker, up to the value specified by C<MaxRecords>.
 
 
-
 =head2 OptionGroupsList => ArrayRef[L<Paws::RDS::OptionGroup>]
 
 List of option groups.
 
 
+=head2 _request_id => Str
 
 
 =cut

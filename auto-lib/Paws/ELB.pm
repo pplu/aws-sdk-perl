@@ -153,6 +153,29 @@ package Paws::ELB;
     my $call_object = $self->new_with_coercions('Paws::ELB::SetLoadBalancerPoliciesOfListener', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
+  sub DescribeAllLoadBalancers {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeLoadBalancers(@_);
+
+    if (not defined $callback) {
+      while ($result->Marker) {
+        $result = $self->DescribeLoadBalancers(@_, Marker => $result->NextMarker);
+        push @{ $result->LoadBalancerDescriptions }, @{ $result->LoadBalancerDescriptions };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $result = $self->DescribeLoadBalancers(@_, Marker => $result->NextMarker);
+        $callback->($_ => 'LoadBalancerDescriptions') foreach (@{ $result->LoadBalancerDescriptions });
+      }
+    }
+
+    return undef
+  }
+
 
   sub operations { qw/AddTags ApplySecurityGroupsToLoadBalancer AttachLoadBalancerToSubnets ConfigureHealthCheck CreateAppCookieStickinessPolicy CreateLBCookieStickinessPolicy CreateLoadBalancer CreateLoadBalancerListeners CreateLoadBalancerPolicy DeleteLoadBalancer DeleteLoadBalancerListeners DeleteLoadBalancerPolicy DeregisterInstancesFromLoadBalancer DescribeInstanceHealth DescribeLoadBalancerAttributes DescribeLoadBalancerPolicies DescribeLoadBalancerPolicyTypes DescribeLoadBalancers DescribeTags DetachLoadBalancerFromSubnets DisableAvailabilityZonesForLoadBalancer EnableAvailabilityZonesForLoadBalancer ModifyLoadBalancerAttributes RegisterInstancesWithLoadBalancer RemoveTags SetLoadBalancerListenerSSLCertificate SetLoadBalancerPoliciesForBackendServer SetLoadBalancerPoliciesOfListener / }
 
@@ -699,6 +722,27 @@ For more information about setting policies, see Update the SSL
 Negotiation Configuration, Duration-Based Session Stickiness, and
 Application-Controlled Session Stickiness in the I<Classic Load
 Balancers Guide>.
+
+
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 DescribeAllLoadBalancers(sub { },[LoadBalancerNames => ArrayRef[Str|Undef], Marker => Str, PageSize => Int])
+
+=head2 DescribeAllLoadBalancers([LoadBalancerNames => ArrayRef[Str|Undef], Marker => Str, PageSize => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - LoadBalancerDescriptions, passing the object as the first parameter, and the string 'LoadBalancerDescriptions' as the second parameter 
+
+If not, it will return a a L<Paws::ELB::DescribeAccessPointsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+
 
 
 =head1 SEE ALSO

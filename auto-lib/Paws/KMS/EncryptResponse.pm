@@ -4,6 +4,7 @@ package Paws::KMS::EncryptResponse;
   has CiphertextBlob => (is => 'ro', isa => 'Str');
   has KeyId => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -20,12 +21,12 @@ The encrypted plaintext. If you are using the CLI, the value is Base64
 encoded. Otherwise, it is not encoded.
 
 
-
 =head2 KeyId => Str
 
 The ID of the key used during encryption.
 
 
+=head2 _request_id => Str
 
 
 =cut

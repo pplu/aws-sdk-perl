@@ -4,6 +4,7 @@ package Paws::IoT::ListCertificatesByCAResponse;
   has Certificates => (is => 'ro', isa => 'ArrayRef[Paws::IoT::Certificate]');
   has NextMarker => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -20,13 +21,13 @@ Paws::IoT::ListCertificatesByCAResponse
 The device certificates signed by the specified CA certificate.
 
 
-
 =head2 NextMarker => Str
 
 The marker for the next set of results, or null if there are no
 additional results.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -5,6 +5,7 @@ package Paws::ElasticBeanstalk::DescribeInstancesHealthResult;
   has NextToken => (is => 'ro', isa => 'Str');
   has RefreshedAt => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -22,11 +23,9 @@ Contains the response body with information about the health of the
 instance.
 
 
-
 =head2 NextToken => Str
 
 The next token.
-
 
 
 =head2 RefreshedAt => Str
@@ -34,6 +33,7 @@ The next token.
 The date and time the information was last refreshed.
 
 
+=head2 _request_id => Str
 
 
 =cut

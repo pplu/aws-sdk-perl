@@ -4,6 +4,7 @@ package Paws::WAF::CreateSqlInjectionMatchSetResponse;
   has ChangeToken => (is => 'ro', isa => 'Str');
   has SqlInjectionMatchSet => (is => 'ro', isa => 'Paws::WAF::SqlInjectionMatchSet');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -22,12 +23,12 @@ query the status of the request. For more information, see
 GetChangeTokenStatus.
 
 
-
 =head2 SqlInjectionMatchSet => L<Paws::WAF::SqlInjectionMatchSet>
 
 A SqlInjectionMatchSet.
 
 
+=head2 _request_id => Str
 
 
 =cut
