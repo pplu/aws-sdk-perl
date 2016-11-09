@@ -1,0 +1,16 @@
+---
+content: |-
+  <?xml version="1.0" encoding="UTF-8"?>
+  <InitiateMultipartUploadResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/">
+    <Bucket>paws-test-bucket</Bucket>
+    <Key>uploads/multipart_test.txt</Key>
+    <UploadId>TF4MarOGLlHNJa8QyJQhJykrvuO9DdNxHbbEPCCzRuDFblpR4e9.YK3R26UXYiUbGIzGrxWRAheJ1_iZfKtUgZFn4qlwE.UNzsxBdftyQc_x4M4cbuR.UDJlHHMHiEAZ</UploadId>
+  </InitiateMultipartUploadResult>
+headers:
+  connection: close
+  date: 'Fri, 04 Nov 2016 08:50:59 GMT'
+  server: AmazonS3
+  transfer-encoding: chunked
+  x-amz-id-2: 9mn+UHyIph5DPJUDU+zJW8YwjSDSGTidA4d/dewG5qX0PieNBJVjp0IuXw9Ez4ujzFH/cfK74fw=
+  x-amz-request-id: 71BC002CB24D4BE7
+status: 200
