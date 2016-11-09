@@ -26,6 +26,7 @@ package Paws::Net::SigninCaller;
       #will have to "hand-encode" the Session Parameter
       $qparams = { Action => $call->_api_call,
                    SessionType => 'json',
+                   (defined $call->SessionDuration)?(SessionDuration => $call->SessionDuration):(),
                    Session => encode_json({
                      sessionId    => $call->SessionId,
                      sessionKey   => $call->SessionKey,
