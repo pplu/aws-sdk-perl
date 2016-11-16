@@ -19,7 +19,8 @@ Paws::CognitoIdp::InitiateAuthResponse
 
 =head2 AuthenticationResult => L<Paws::CognitoIdp::AuthenticationResultType>
 
-
+The result returned by the server in response to the request to
+initiate authentication.
 
 
 =head2 ChallengeName => Str

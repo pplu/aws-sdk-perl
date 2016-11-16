@@ -12,6 +12,7 @@ package Paws::CognitoIdp::CreateUserPool;
   has MfaConfiguration => (is => 'ro', isa => 'Str');
   has Policies => (is => 'ro', isa => 'Paws::CognitoIdp::UserPoolPolicyType');
   has PoolName => (is => 'ro', isa => 'Str', required => 1);
+  has Schema => (is => 'ro', isa => 'ArrayRef[Paws::CognitoIdp::SchemaAttributeType]');
   has SmsAuthenticationMessage => (is => 'ro', isa => 'Str');
   has SmsConfiguration => (is => 'ro', isa => 'Paws::CognitoIdp::SmsConfigurationType');
   has SmsVerificationMessage => (is => 'ro', isa => 'Str');
@@ -111,6 +112,13 @@ The policies associated with the new user pool.
 =head2 B<REQUIRED> PoolName => Str
 
 A string used to name the user pool.
+
+
+
+=head2 Schema => ArrayRef[L<Paws::CognitoIdp::SchemaAttributeType>]
+
+An array of schema attributes for the new user pool. These attributes
+can be standard or custom attributes.
 
 
 

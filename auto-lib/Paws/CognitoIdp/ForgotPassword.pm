@@ -51,8 +51,8 @@ message.
 
 =head2 B<REQUIRED> Username => Str
 
-The user name of the user for whom you want to enter a code to retrieve
-a forgotten password.
+The user name of the user for whom you want to enter a code to reset a
+forgotten password.
 
 
 

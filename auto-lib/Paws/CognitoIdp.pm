@@ -568,7 +568,7 @@ Returns: a L<Paws::CognitoIdp::CreateUserImportJobResponse> instance
   Creates the user import job.
 
 
-=head2 CreateUserPool(PoolName => Str, [AdminCreateUserConfig => L<Paws::CognitoIdp::AdminCreateUserConfigType>, AliasAttributes => ArrayRef[Str|Undef], AutoVerifiedAttributes => ArrayRef[Str|Undef], DeviceConfiguration => L<Paws::CognitoIdp::DeviceConfigurationType>, EmailConfiguration => L<Paws::CognitoIdp::EmailConfigurationType>, EmailVerificationMessage => Str, EmailVerificationSubject => Str, LambdaConfig => L<Paws::CognitoIdp::LambdaConfigType>, MfaConfiguration => Str, Policies => L<Paws::CognitoIdp::UserPoolPolicyType>, SmsAuthenticationMessage => Str, SmsConfiguration => L<Paws::CognitoIdp::SmsConfigurationType>, SmsVerificationMessage => Str])
+=head2 CreateUserPool(PoolName => Str, [AdminCreateUserConfig => L<Paws::CognitoIdp::AdminCreateUserConfigType>, AliasAttributes => ArrayRef[Str|Undef], AutoVerifiedAttributes => ArrayRef[Str|Undef], DeviceConfiguration => L<Paws::CognitoIdp::DeviceConfigurationType>, EmailConfiguration => L<Paws::CognitoIdp::EmailConfigurationType>, EmailVerificationMessage => Str, EmailVerificationSubject => Str, LambdaConfig => L<Paws::CognitoIdp::LambdaConfigType>, MfaConfiguration => Str, Policies => L<Paws::CognitoIdp::UserPoolPolicyType>, Schema => ArrayRef[L<Paws::CognitoIdp::SchemaAttributeType>], SmsAuthenticationMessage => Str, SmsConfiguration => L<Paws::CognitoIdp::SmsConfigurationType>, SmsVerificationMessage => Str])
 
 Each argument is described in detail in: L<Paws::CognitoIdp::CreateUserPool>
 

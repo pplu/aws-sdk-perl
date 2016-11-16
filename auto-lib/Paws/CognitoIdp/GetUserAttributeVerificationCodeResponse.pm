@@ -16,8 +16,8 @@ Paws::CognitoIdp::GetUserAttributeVerificationCodeResponse
 
 =head2 CodeDeliveryDetails => L<Paws::CognitoIdp::CodeDeliveryDetailsType>
 
-The code delivery details returned by the server response to get the
-user attribute verification code.
+The code delivery details returned by the server in response to the
+request to get the user attribute verification code.
 
 
 =head2 _request_id => Str

@@ -19,7 +19,7 @@ Paws::CognitoIdp::AdminInitiateAuthResponse
 
 =head2 AuthenticationResult => L<Paws::CognitoIdp::AuthenticationResultType>
 
-
+The result of the authentication response.
 
 
 =head2 ChallengeName => Str

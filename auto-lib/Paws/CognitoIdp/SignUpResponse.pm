@@ -17,7 +17,8 @@ Paws::CognitoIdp::SignUpResponse
 
 =head2 CodeDeliveryDetails => L<Paws::CognitoIdp::CodeDeliveryDetailsType>
 
-
+The code delivery details returned by the server response to the user
+registration request.
 
 
 =head2 UserConfirmed => Bool
