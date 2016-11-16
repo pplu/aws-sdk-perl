@@ -34,6 +34,11 @@ package Paws::Kinesis;
     my $call_object = $self->new_with_coercions('Paws::Kinesis::DeleteStream', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeLimits {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Kinesis::DescribeLimits', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeStream {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Kinesis::DescribeStream', @_);
@@ -99,6 +104,11 @@ package Paws::Kinesis;
     my $call_object = $self->new_with_coercions('Paws::Kinesis::SplitShard', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpdateShardCount {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Kinesis::UpdateShardCount', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   
   sub DescribeAllStream {
     my $self = shift;
@@ -144,7 +154,7 @@ package Paws::Kinesis;
   }
 
 
-  sub operations { qw/AddTagsToStream CreateStream DecreaseStreamRetentionPeriod DeleteStream DescribeStream DisableEnhancedMonitoring EnableEnhancedMonitoring GetRecords GetShardIterator IncreaseStreamRetentionPeriod ListStreams ListTagsForStream MergeShards PutRecord PutRecords RemoveTagsFromStream SplitShard / }
+  sub operations { qw/AddTagsToStream CreateStream DecreaseStreamRetentionPeriod DeleteStream DescribeLimits DescribeStream DisableEnhancedMonitoring EnableEnhancedMonitoring GetRecords GetShardIterator IncreaseStreamRetentionPeriod ListStreams ListTagsForStream MergeShards PutRecord PutRecords RemoveTagsFromStream SplitShard UpdateShardCount / }
 
 1;
 
@@ -229,10 +239,14 @@ request if you try to do one of the following:
 
 =over
 
-=item * Have more than five streams in the C<CREATING> state at any
-point in time.
+=item *
 
-=item * Create more shards than are authorized for your account.
+Have more than five streams in the C<CREATING> state at any point in
+time.
+
+=item *
+
+Create more shards than are authorized for your account.
 
 =back
 
@@ -289,6 +303,20 @@ stream, which is returned in C<StreamStatus>.
 DeleteStream has a limit of 5 transactions per second per account.
 
 
+=head2 DescribeLimits()
+
+Each argument is described in detail in: L<Paws::Kinesis::DescribeLimits>
+
+Returns: a L<Paws::Kinesis::DescribeLimitsOutput> instance
+
+  Describes the shard limits and usage for the account.
+
+If you update your account limits, the old limits might be returned for
+a few minutes.
+
+This operation has a limit of 1 transaction per second per account.
+
+
 =head2 DescribeStream(StreamName => Str, [ExclusiveStartShardId => Str, Limit => Int])
 
 Each argument is described in detail in: L<Paws::Kinesis::DescribeStream>
@@ -297,31 +325,23 @@ Returns: a L<Paws::Kinesis::DescribeStreamOutput> instance
 
   Describes the specified Amazon Kinesis stream.
 
-The information about the stream includes its current status, its
-Amazon Resource Name (ARN), and an array of shard objects. For each
-shard object, there is information about the hash key and sequence
-number ranges that the shard spans, and the IDs of any earlier shards
-that played in a role in creating the shard. A sequence number is the
-identifier associated with every record ingested in the stream. The
-sequence number is assigned when a record is put into the stream.
+The information returned includes the stream name, Amazon Resource Name
+(ARN), creation time, enhanced metric configuration, and shard map. The
+shard map is an array of shard objects. For each shard object, there is
+the hash key and sequence number ranges that the shard spans, and the
+IDs of any earlier shards that played in a role in creating the shard.
+Every record ingested in the stream is identified by a sequence number,
+which is assigned when the record is put into the stream.
 
-You can limit the number of returned shards using the C<Limit>
-parameter. The number of shards in a stream may be too large to return
-from a single call to C<DescribeStream>. You can detect this by using
-the C<HasMoreShards> flag in the returned output. C<HasMoreShards> is
-set to C<true> when there is more data available.
+You can limit the number of shards returned by each call. For more
+information, see Retrieving Shards from a Stream in the I<Amazon
+Kinesis Streams Developer Guide>.
 
-C<DescribeStream> is a paginated operation. If there are more shards
-available, you can request them using the shard ID of the last shard
-returned. Specify this ID in the C<ExclusiveStartShardId> parameter in
-a subsequent request to C<DescribeStream>.
+There are no guarantees about the chronological order shards returned.
+To process shards in chronological order, use the ID of the parent
+shard to track the lineage to the oldest shard.
 
-There are no guarantees about the chronological order shards returned
-in C<DescribeStream> results. If you want to process shards in
-chronological order, use C<ParentShardId> to track lineage to the
-oldest shard.
-
-DescribeStream has a limit of 10 transactions per second per account.
+This operation has a limit of 10 transactions per second per account.
 
 
 =head2 DisableEnhancedMonitoring(ShardLevelMetrics => ArrayRef[Str|Undef], StreamName => Str)
@@ -759,6 +779,39 @@ CreateStream, DeleteStream, MergeShards, and/or SplitShard, you receive
 a C<LimitExceededException>.
 
 C<SplitShard> has limit of 5 transactions per second per account.
+
+
+=head2 UpdateShardCount(ScalingType => Str, StreamName => Str, TargetShardCount => Int)
+
+Each argument is described in detail in: L<Paws::Kinesis::UpdateShardCount>
+
+Returns: a L<Paws::Kinesis::UpdateShardCountOutput> instance
+
+  Updates the shard count of the specified stream to the specified number
+of shards.
+
+Updating the shard count is an asynchronous operation. Upon receiving
+the request, Amazon Kinesis returns immediately and sets the status of
+the stream to C<UPDATING>. After the update is complete, Amazon Kinesis
+sets the status of the stream back to C<ACTIVE>. Depending on the size
+of the stream, the scaling action could take a few minutes to complete.
+You can continue to read and write data to your stream while its status
+is C<UPDATING>.
+
+To update the shard count, Amazon Kinesis performs splits and merges
+and individual shards. This can cause short-lived shards to be created,
+in addition to the final shards. We recommend that you double or halve
+the shard count, as this results in the fewest number of splits or
+merges.
+
+This operation has a rate limit of twice per rolling 24 hour period.
+You cannot scale above double your current shard count, scale below
+half your current shard count, or exceed the shard limits for your
+account.
+
+For the default limits for an AWS account, see Streams Limits in the
+I<Amazon Kinesis Streams Developer Guide>. If you need to increase a
+limit, contact AWS Support.
 
 
 

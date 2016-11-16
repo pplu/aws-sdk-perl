@@ -43,21 +43,37 @@ enables every metric.
 
 =over
 
-=item * C<IncomingBytes>
+=item *
 
-=item * C<IncomingRecords>
+C<IncomingBytes>
 
-=item * C<OutgoingBytes>
+=item *
 
-=item * C<OutgoingRecords>
+C<IncomingRecords>
 
-=item * C<WriteProvisionedThroughputExceeded>
+=item *
 
-=item * C<ReadProvisionedThroughputExceeded>
+C<OutgoingBytes>
 
-=item * C<IteratorAgeMilliseconds>
+=item *
 
-=item * C<ALL>
+C<OutgoingRecords>
+
+=item *
+
+C<WriteProvisionedThroughputExceeded>
+
+=item *
+
+C<ReadProvisionedThroughputExceeded>
+
+=item *
+
+C<IteratorAgeMilliseconds>
+
+=item *
+
+C<ALL>
 
 =back
 

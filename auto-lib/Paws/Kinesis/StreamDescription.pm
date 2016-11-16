@@ -5,6 +5,7 @@ package Paws::Kinesis::StreamDescription;
   has RetentionPeriodHours => (is => 'ro', isa => 'Int', required => 1);
   has Shards => (is => 'ro', isa => 'ArrayRef[Paws::Kinesis::Shard]', required => 1);
   has StreamARN => (is => 'ro', isa => 'Str', required => 1);
+  has StreamCreationTimestamp => (is => 'ro', isa => 'Str', required => 1);
   has StreamName => (is => 'ro', isa => 'Str', required => 1);
   has StreamStatus => (is => 'ro', isa => 'Str', required => 1);
 1;
@@ -67,6 +68,11 @@ Represents the output for DescribeStream.
   The Amazon Resource Name (ARN) for the stream being described.
 
 
+=head2 B<REQUIRED> StreamCreationTimestamp => Str
+
+  The approximate time that the stream was created.
+
+
 =head2 B<REQUIRED> StreamName => Str
 
   The name of the stream being described.
@@ -79,19 +85,26 @@ one of the following states:
 
 =over
 
-=item * C<CREATING> - The stream is being created. Amazon Kinesis
-immediately returns and sets C<StreamStatus> to C<CREATING>.
+=item *
 
-=item * C<DELETING> - The stream is being deleted. The specified stream
-is in the C<DELETING> state until Amazon Kinesis completes the
-deletion.
+C<CREATING> - The stream is being created. Amazon Kinesis immediately
+returns and sets C<StreamStatus> to C<CREATING>.
 
-=item * C<ACTIVE> - The stream exists and is ready for read and write
+=item *
+
+C<DELETING> - The stream is being deleted. The specified stream is in
+the C<DELETING> state until Amazon Kinesis completes the deletion.
+
+=item *
+
+C<ACTIVE> - The stream exists and is ready for read and write
 operations or deletion. You should perform read and write operations
 only on an C<ACTIVE> stream.
 
-=item * C<UPDATING> - Shards in the stream are being merged or split.
-Read and write operations continue to work while the stream is in the
+=item *
+
+C<UPDATING> - Shards in the stream are being merged or split. Read and
+write operations continue to work while the stream is in the
 C<UPDATING> state.
 
 =back

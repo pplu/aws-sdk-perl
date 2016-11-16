@@ -17,8 +17,8 @@ Paws::Kinesis::DescribeStreamOutput
 =head2 B<REQUIRED> StreamDescription => L<Paws::Kinesis::StreamDescription>
 
 The current status of the stream, the stream ARN, an array of shard
-objects that comprise the stream, and states whether there are more
-shards available.
+objects that comprise the stream, and whether there are more shards
+available.
 
 
 =head2 _request_id => Str
