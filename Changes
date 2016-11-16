@@ -39,6 +39,10 @@
  - ElastiCache API update
  - IoT API update: DynamoV2 behaviour
  - CognitoIdp API update: AdminCreateUser
+ - Kinesis API update: UpdateShardCount, DescribeLimits
+ - ElastiCache API update: authenticated cache clusters
+ - Cloudwatch Logs API update: DescribeMetricFilters and docu
+ - DS API update: SchemaExtension support
 
 0.28 30 Aug 2015 23:45:00
  - On errors 503 XMLResponse would not process the error correctly (returning
