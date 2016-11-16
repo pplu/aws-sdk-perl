@@ -18,10 +18,25 @@ Paws::CloudFormation::GetTemplateOutput
 
 =head2 StagesAvailable => ArrayRef[Str|Undef]
 
-The available template type. For stacks, both the C<Original> and
-C<Processed> template types are always available. For change sets, the
-C<Original> template is always available. After the transforms are
-processed, the C<Processed> template becomes available.
+The template type.
+
+=over
+
+=item *
+
+For stacks, you can use either the C<Original> or the C<Processed>
+template type.
+
+=item *
+
+For change sets, you can use only the C<Original> template type. After
+the transforms are processed, you can use the C<Processed> template
+type.
+
+=back
+
+If you create a change set for a new stack, you must select the
+template type.
 
 
 =head2 TemplateBody => Str

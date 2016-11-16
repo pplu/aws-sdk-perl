@@ -67,19 +67,21 @@ Default: There is no default value.
 
 =head2 TemplateStage => Str
 
-The stage of the template that is returned. Valid values are
-C<Original> and C<Processed>:
+The stage of the template that is returned.
+
+Valid values are C<Original> and C<Processed>. The default value is
+C<Original>.
 
 =over
 
 =item *
 
-C<Original> - Use to return the specified pre-transform template.
+C<Original> - Use this value to return the user-submitted template.
 
 =item *
 
-C<Processed> - Use to return the template after all transforms have
-been processed.
+C<Processed> - Use this value to return the template after all
+transforms have been processed.
 
 =back
 

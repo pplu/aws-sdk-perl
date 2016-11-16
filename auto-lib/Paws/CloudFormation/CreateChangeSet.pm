@@ -87,20 +87,25 @@ cannot exceed 128 characters.
 
 =head2 ChangeSetType => Str
 
-The type of change set operation. Valid values are C<CREATE> and
-C<UPDATE>:
+The type of change set operation.
+
+Valid values are C<CREATE> and C<UPDATE>. The default value is
+C<UPDATE>.
 
 =over
 
 =item *
 
-C<CREATE> - Specify for a change set for a stack that does not yet
-exist. The stack has an expected unique ID, but no template or
-resources. It can include multiple change sets.
+C<CREATE> - Specify to use the change set to create a new stack. While
+AWS CloudFormation creates the stack, the stack has the
+C<REVIEW_IN_PROGRESS> status and an expected C<StackId>, but no
+template or resources. Except for its C<StackId>, the stack is
+completely empty until you execute the change set. You can apply
+multiple change sets to a stack.
 
 =item *
 
-C<UPDATE> - Specify for a change set for an existing stack.
+C<UPDATE> - Specify to create a change set for an existing stack.
 
 =back
 
@@ -159,7 +164,7 @@ Guide.
 The Amazon Resource Name (ARN) of an AWS Identity and Access Management
 (IAM) role that AWS CloudFormation assumes when executing the change
 set. AWS CloudFormation uses the role's credentials to make calls on
-your behalf. AWS CloudFormation always uses this role for all future
+your behalf. AWS CloudFormation uses this role for all future
 operations on the stack. As long as users have permission to operate on
 the stack, AWS CloudFormation uses this role even if the users don't
 have permission to pass it. Ensure that the role grants least
