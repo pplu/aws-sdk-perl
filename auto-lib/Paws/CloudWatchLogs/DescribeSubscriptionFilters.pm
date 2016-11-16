@@ -38,27 +38,28 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 FilterNamePrefix => Str
 
-Will only return subscription filters that match the provided
-filterNamePrefix. If you don't specify a value, no prefix filter is
+The prefix to match. If you don't specify a value, no prefix filter is
 applied.
 
 
 
 =head2 Limit => Int
 
-
+The maximum number of items returned. If you don't specify a value, the
+default is up to 50 items.
 
 
 
 =head2 B<REQUIRED> LogGroupName => Str
 
-The log group name for which subscription filters are to be listed.
+The name of the log group.
 
 
 
 =head2 NextToken => Str
 
-
+The token for the next set of items to return. (You received this token
+from a previous call.)
 
 
 

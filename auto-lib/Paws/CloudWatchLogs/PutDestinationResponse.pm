@@ -16,7 +16,7 @@ Paws::CloudWatchLogs::PutDestinationResponse
 
 =head2 Destination => L<Paws::CloudWatchLogs::Destination>
 
-
+The destination.
 
 
 =head2 _request_id => Str

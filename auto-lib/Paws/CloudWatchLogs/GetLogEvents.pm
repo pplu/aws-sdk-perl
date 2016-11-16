@@ -41,49 +41,50 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 EndTime => Int
 
-
+The end of the time range. Events with a timestamp later than this time
+are not included.
 
 
 
 =head2 Limit => Int
 
-The maximum number of log events returned in the response. If you don't
-specify a value, the request would return as many log events as can fit
-in a response size of 1MB, up to 10,000 log events.
+The maximum number of log events returned. If you don't specify a
+value, the maximum is as many log events as can fit in a response size
+of 1MB, up to 10,000 log events.
 
 
 
 =head2 B<REQUIRED> LogGroupName => Str
 
-The name of the log group to query.
+The name of the log group.
 
 
 
 =head2 B<REQUIRED> LogStreamName => Str
 
-The name of the log stream to query.
+The name of the log stream.
 
 
 
 =head2 NextToken => Str
 
-A string token used for pagination that points to the next page of
-results. It must be a value obtained from the C<nextForwardToken> or
-C<nextBackwardToken> fields in the response of the previous
-C<GetLogEvents> request.
+The token for the next set of items to return. (You received this token
+from a previous call.)
 
 
 
 =head2 StartFromHead => Bool
 
-If set to true, the earliest log events would be returned first. The
-default is false (the latest log events are returned first).
+If the value is true, the earliest log events are returned first. If
+the value is false, the latest log events are returned first. The
+default value is false.
 
 
 
 =head2 StartTime => Int
 
-
+The start of the time range. Events with a timestamp earlier than this
+time are not included.
 
 
 

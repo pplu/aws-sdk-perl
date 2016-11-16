@@ -36,7 +36,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudWatchL
 
 =head1 DESCRIPTION
 
-A cross account destination that is the recipient of subscription log
+Represents a cross-account destination that receives subscription log
 events.
 
 =head1 ATTRIBUTES
@@ -50,29 +50,29 @@ subscription filters against this destination.
 
 =head2 Arn => Str
 
-  ARN of this destination.
+  The ARN of this destination.
 
 
 =head2 CreationTime => Int
 
-  A point in time expressed as the number of milliseconds since Jan 1,
-1970 00:00:00 UTC specifying when this destination was created.
+  The creation time of the destination.
 
 
 =head2 DestinationName => Str
 
-  Name of the destination.
+  The name of the destination.
 
 
 =head2 RoleArn => Str
 
-  A role for impersonation for delivering log events to the target.
+  A role for impersonation, used when delivering log events to the
+target.
 
 
 =head2 TargetArn => Str
 
-  ARN of the physical target where the log events will be delivered (eg.
-ARN of a Kinesis stream).
+  The Amazon Resource Name (ARN) of the physical target where the log
+events will be delivered (for example, a Kinesis stream).
 
 
 

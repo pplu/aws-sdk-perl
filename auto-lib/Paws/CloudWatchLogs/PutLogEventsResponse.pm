@@ -17,12 +17,12 @@ Paws::CloudWatchLogs::PutLogEventsResponse
 
 =head2 NextSequenceToken => Str
 
-
+The next sequence token.
 
 
 =head2 RejectedLogEventsInfo => L<Paws::CloudWatchLogs::RejectedLogEventsInfo>
 
-
+The rejected events.
 
 
 =head2 _request_id => Str

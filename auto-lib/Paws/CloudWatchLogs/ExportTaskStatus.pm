@@ -39,12 +39,12 @@ Represents the status of an export task.
 
 =head2 Code => Str
 
-  Status code of the export task.
+  The status code of the export task.
 
 
 =head2 Message => Str
 
-  Status message related to the C<code>.
+  The status message related to the status code.
 
 
 

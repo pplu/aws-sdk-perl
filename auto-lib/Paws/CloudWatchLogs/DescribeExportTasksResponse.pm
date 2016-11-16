@@ -17,7 +17,7 @@ Paws::CloudWatchLogs::DescribeExportTasksResponse
 
 =head2 ExportTasks => ArrayRef[L<Paws::CloudWatchLogs::ExportTask>]
 
-
+The export tasks.
 
 
 =head2 NextToken => Str

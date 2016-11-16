@@ -299,11 +299,10 @@ Paws::CloudWatchLogs - Perl Interface to AWS Amazon CloudWatch Logs
 =head1 DESCRIPTION
 
 You can use Amazon CloudWatch Logs to monitor, store, and access your
-log files from Amazon Elastic Compute Cloud (Amazon EC2) instances,
-Amazon CloudTrail, or other sources. You can then retrieve the
-associated log data from CloudWatch Logs using the Amazon CloudWatch
-console, the CloudWatch Logs commands in the AWS CLI, the CloudWatch
-Logs API, or the CloudWatch Logs SDK.
+log files from EC2 instances, Amazon CloudTrail, or other sources. You
+can then retrieve the associated log data from CloudWatch Logs using
+the Amazon CloudWatch console, the CloudWatch Logs commands in the AWS
+CLI, the CloudWatch Logs API, or the CloudWatch Logs SDK.
 
 You can use CloudWatch Logs to:
 
@@ -351,7 +350,9 @@ Each argument is described in detail in: L<Paws::CloudWatchLogs::CancelExportTas
 
 Returns: nothing
 
-  Cancels an export task if it is in C<PENDING> or C<RUNNING> state.
+  Cancels the specified export task.
+
+The task must be in the C<PENDING> or C<RUNNING> state.
 
 
 =head2 CreateExportTask(Destination => Str, From => Int, LogGroupName => Str, To => Int, [DestinationPrefix => Str, LogStreamNamePrefix => Str, TaskName => Str])
@@ -360,19 +361,20 @@ Each argument is described in detail in: L<Paws::CloudWatchLogs::CreateExportTas
 
 Returns: a L<Paws::CloudWatchLogs::CreateExportTaskResponse> instance
 
-  Creates an C<ExportTask> which allows you to efficiently export data
-from a Log Group to your Amazon S3 bucket.
+  Creates an export task, which allows you to efficiently export data
+from a log group to an Amazon S3 bucket.
 
 This is an asynchronous call. If all the required information is
-provided, this API will initiate an export task and respond with the
-task Id. Once started, C<DescribeExportTasks> can be used to get the
-status of an export task. You can only have one active (C<RUNNING> or
-C<PENDING>) export task at a time, per account.
+provided, this operation initiates an export task and responds with the
+ID of the task. After the task has started, you can use
+DescribeExportTasks to get the status of the export task. Each account
+can only have one active (C<RUNNING> or C<PENDING>) export task at a
+time. To cancel an export task, use CancelExportTask.
 
 You can export logs from multiple log groups or multiple time ranges to
-the same Amazon S3 bucket. To separate out log data for each export
-task, you can specify a prefix that will be used as the Amazon S3 key
-prefix for all exported objects.
+the same S3 bucket. To separate out log data for each export task, you
+can specify a prefix that will be used as the Amazon S3 key prefix for
+all exported objects.
 
 
 =head2 CreateLogGroup(LogGroupName => Str)
@@ -381,9 +383,9 @@ Each argument is described in detail in: L<Paws::CloudWatchLogs::CreateLogGroup>
 
 Returns: nothing
 
-  Creates a new log group with the specified name. The name of the log
-group must be unique within a region for an AWS account. You can create
-up to 500 log groups per account.
+  Creates a log group with the specified name.
+
+You can create up to 5000 log groups per account.
 
 You must use the following guidelines when naming a log group:
 
@@ -391,12 +393,16 @@ You must use the following guidelines when naming a log group:
 
 =item *
 
+Log group names must be unique within a region for an AWS account.
+
+=item *
+
 Log group names can be between 1 and 512 characters long.
 
 =item *
 
-Allowed characters are a-z, A-Z, 0-9, '_' (underscore), '-' (hyphen),
-'/' (forward slash), and '.' (period).
+Log group names consist of the following characters: a-z, A-Z, 0-9, '_'
+(underscore), '-' (hyphen), '/' (forward slash), and '.' (period).
 
 =back
 
@@ -408,9 +414,10 @@ Each argument is described in detail in: L<Paws::CloudWatchLogs::CreateLogStream
 
 Returns: nothing
 
-  Creates a new log stream in the specified log group. The name of the
-log stream must be unique within the log group. There is no limit on
-the number of log streams that can exist in a log group.
+  Creates a log stream for the specified log group.
+
+There is no limit on the number of log streams that you can create for
+a log group.
 
 You must use the following guidelines when naming a log stream:
 
@@ -418,11 +425,15 @@ You must use the following guidelines when naming a log stream:
 
 =item *
 
+Log stream names must be unique within the log group.
+
+=item *
+
 Log stream names can be between 1 and 512 characters long.
 
 =item *
 
-The ':' colon character is not allowed.
+The ':' (colon) and '*' (asterisk) characters are not allowed.
 
 =back
 
@@ -434,8 +445,8 @@ Each argument is described in detail in: L<Paws::CloudWatchLogs::DeleteDestinati
 
 Returns: nothing
 
-  Deletes the destination with the specified name and eventually disables
-all the subscription filters that publish to it. This will not delete
+  Deletes the specified destination, and eventually disables all the
+subscription filters that publish to it. This operation does not delete
 the physical resource encapsulated by the destination.
 
 
@@ -445,8 +456,8 @@ Each argument is described in detail in: L<Paws::CloudWatchLogs::DeleteLogGroup>
 
 Returns: nothing
 
-  Deletes the log group with the specified name and permanently deletes
-all the archived log events associated with it.
+  Deletes the specified log group and permanently deletes all the
+archived log events associated with the log group.
 
 
 =head2 DeleteLogStream(LogGroupName => Str, LogStreamName => Str)
@@ -455,8 +466,8 @@ Each argument is described in detail in: L<Paws::CloudWatchLogs::DeleteLogStream
 
 Returns: nothing
 
-  Deletes a log stream and permanently deletes all the archived log
-events associated with it.
+  Deletes the specified log stream and permanently deletes all the
+archived log events associated with the log stream.
 
 
 =head2 DeleteMetricFilter(FilterName => Str, LogGroupName => Str)
@@ -465,7 +476,7 @@ Each argument is described in detail in: L<Paws::CloudWatchLogs::DeleteMetricFil
 
 Returns: nothing
 
-  Deletes a metric filter associated with the specified log group.
+  Deletes the specified metric filter.
 
 
 =head2 DeleteRetentionPolicy(LogGroupName => Str)
@@ -474,9 +485,10 @@ Each argument is described in detail in: L<Paws::CloudWatchLogs::DeleteRetention
 
 Returns: nothing
 
-  Deletes the retention policy of the specified log group. Log events
-would not expire if they belong to log groups without a retention
-policy.
+  Deletes the specified retention policy.
+
+Log events do not expire if they belong to log groups without a
+retention policy.
 
 
 =head2 DeleteSubscriptionFilter(FilterName => Str, LogGroupName => Str)
@@ -485,7 +497,7 @@ Each argument is described in detail in: L<Paws::CloudWatchLogs::DeleteSubscript
 
 Returns: nothing
 
-  Deletes a subscription filter associated with the specified log group.
+  Deletes the specified subscription filter.
 
 
 =head2 DescribeDestinations([DestinationNamePrefix => Str, Limit => Int, NextToken => Str])
@@ -494,15 +506,8 @@ Each argument is described in detail in: L<Paws::CloudWatchLogs::DescribeDestina
 
 Returns: a L<Paws::CloudWatchLogs::DescribeDestinationsResponse> instance
 
-  Returns all the destinations that are associated with the AWS account
-making the request. The list returned in the response is ASCII-sorted
-by destination name.
-
-By default, this operation returns up to 50 destinations. If there are
-more destinations to list, the response would contain a C<nextToken>
-value in the response body. You can also limit the number of
-destinations returned in the response by specifying the C<limit>
-parameter in the request.
+  Lists all your destinations. The results are ASCII-sorted by
+destination name.
 
 
 =head2 DescribeExportTasks([Limit => Int, NextToken => Str, StatusCode => Str, TaskId => Str])
@@ -511,15 +516,8 @@ Each argument is described in detail in: L<Paws::CloudWatchLogs::DescribeExportT
 
 Returns: a L<Paws::CloudWatchLogs::DescribeExportTasksResponse> instance
 
-  Returns all the export tasks that are associated with the AWS account
-making the request. The export tasks can be filtered based on C<TaskId>
-or C<TaskStatus>.
-
-By default, this operation returns up to 50 export tasks that satisfy
-the specified filters. If there are more export tasks to list, the
-response would contain a C<nextToken> value in the response body. You
-can also limit the number of export tasks returned in the response by
-specifying the C<limit> parameter in the request.
+  Lists the specified export tasks. You can list all your export tasks or
+filter the results based on task ID or task status.
 
 
 =head2 DescribeLogGroups([Limit => Int, LogGroupNamePrefix => Str, NextToken => Str])
@@ -528,15 +526,9 @@ Each argument is described in detail in: L<Paws::CloudWatchLogs::DescribeLogGrou
 
 Returns: a L<Paws::CloudWatchLogs::DescribeLogGroupsResponse> instance
 
-  Returns all the log groups that are associated with the AWS account
-making the request. The list returned in the response is ASCII-sorted
-by log group name.
-
-By default, this operation returns up to 50 log groups. If there are
-more log groups to list, the response would contain a C<nextToken>
-value in the response body. You can also limit the number of log groups
-returned in the response by specifying the C<limit> parameter in the
-request.
+  Lists the specified log groups. You can list all your log groups or
+filter the results by prefix. The results are ASCII-sorted by log group
+name.
 
 
 =head2 DescribeLogStreams(LogGroupName => Str, [Descending => Bool, Limit => Int, LogStreamNamePrefix => Str, NextToken => Str, OrderBy => Str])
@@ -545,33 +537,23 @@ Each argument is described in detail in: L<Paws::CloudWatchLogs::DescribeLogStre
 
 Returns: a L<Paws::CloudWatchLogs::DescribeLogStreamsResponse> instance
 
-  Returns all the log streams that are associated with the specified log
-group. The list returned in the response is ASCII-sorted by log stream
-name.
+  Lists the log streams for the specified log group. You can list all the
+log streams or filter the results by prefix. You can also control how
+the results are ordered.
 
-By default, this operation returns up to 50 log streams. If there are
-more log streams to list, the response would contain a C<nextToken>
-value in the response body. You can also limit the number of log
-streams returned in the response by specifying the C<limit> parameter
-in the request. This operation has a limit of five transactions per
-second, after which transactions are throttled.
+This operation has a limit of five transactions per second, after which
+transactions are throttled.
 
 
-=head2 DescribeMetricFilters(LogGroupName => Str, [FilterNamePrefix => Str, Limit => Int, NextToken => Str])
+=head2 DescribeMetricFilters([FilterNamePrefix => Str, Limit => Int, LogGroupName => Str, MetricName => Str, MetricNamespace => Str, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::CloudWatchLogs::DescribeMetricFilters>
 
 Returns: a L<Paws::CloudWatchLogs::DescribeMetricFiltersResponse> instance
 
-  Returns all the metrics filters associated with the specified log
-group. The list returned in the response is ASCII-sorted by filter
-name.
-
-By default, this operation returns up to 50 metric filters. If there
-are more metric filters to list, the response would contain a
-C<nextToken> value in the response body. You can also limit the number
-of metric filters returned in the response by specifying the C<limit>
-parameter in the request.
+  Lists the specified metric filters. You can list all the metric filters
+or filter the results by log name, prefix, metric name, or metric
+namespace. The results are ASCII-sorted by filter name.
 
 
 =head2 DescribeSubscriptionFilters(LogGroupName => Str, [FilterNamePrefix => Str, Limit => Int, NextToken => Str])
@@ -580,15 +562,9 @@ Each argument is described in detail in: L<Paws::CloudWatchLogs::DescribeSubscri
 
 Returns: a L<Paws::CloudWatchLogs::DescribeSubscriptionFiltersResponse> instance
 
-  Returns all the subscription filters associated with the specified log
-group. The list returned in the response is ASCII-sorted by filter
-name.
-
-By default, this operation returns up to 50 subscription filters. If
-there are more subscription filters to list, the response would contain
-a C<nextToken> value in the response body. You can also limit the
-number of subscription filters returned in the response by specifying
-the C<limit> parameter in the request.
+  Lists the subscription filters for the specified log group. You can
+list all the subscription filters or filter the results by prefix. The
+results are ASCII-sorted by filter name.
 
 
 =head2 FilterLogEvents(LogGroupName => Str, [EndTime => Int, FilterPattern => Str, Interleaved => Bool, Limit => Int, LogStreamNames => ArrayRef[Str|Undef], NextToken => Str, StartTime => Int])
@@ -597,21 +573,15 @@ Each argument is described in detail in: L<Paws::CloudWatchLogs::FilterLogEvents
 
 Returns: a L<Paws::CloudWatchLogs::FilterLogEventsResponse> instance
 
-  Retrieves log events, optionally filtered by a filter pattern from the
-specified log group. You can provide an optional time range to filter
-the results on the event C<timestamp>. You can limit the streams
-searched to an explicit list of C<logStreamNames>.
+  Lists log events from the specified log group. You can list all the log
+events or filter the results using a filter pattern, a time range, and
+the name of the log stream.
 
-By default, this operation returns as much matching log events as can
-fit in a response size of 1MB, up to 10,000 log events, or all the
-events found within a time-bounded scan window. If the response
-includes a C<nextToken>, then there is more data to search, and the
-search can be resumed with a new request providing the nextToken. The
-response will contain a list of C<searchedLogStreams> that contains
-information about which streams were searched in the request and
-whether they have been searched completely or require further
-pagination. The C<limit> parameter in the request can be used to
-specify the maximum number of events to return in a page.
+By default, this operation returns as many log events as can fit in 1MB
+(up to 10,000 log events), or all the events found within the time
+range that you specify. If the results include a token, then there are
+more log events available, and you can get additional results by
+specifying the token in a subsequent call.
 
 
 =head2 GetLogEvents(LogGroupName => Str, LogStreamName => Str, [EndTime => Int, Limit => Int, NextToken => Str, StartFromHead => Bool, StartTime => Int])
@@ -620,17 +590,13 @@ Each argument is described in detail in: L<Paws::CloudWatchLogs::GetLogEvents>
 
 Returns: a L<Paws::CloudWatchLogs::GetLogEventsResponse> instance
 
-  Retrieves log events from the specified log stream. You can provide an
-optional time range to filter the results on the event C<timestamp>.
+  Lists log events from the specified log stream. You can list all the
+log events or filter using a time range.
 
-By default, this operation returns as much log events as can fit in a
-response size of 1MB, up to 10,000 log events. The response will always
-include a C<nextForwardToken> and a C<nextBackwardToken> in the
-response body. You can use any of these tokens in subsequent
-C<GetLogEvents> requests to paginate through events in either forward
-or backward direction. You can also limit the number of log events
-returned in the response by specifying the C<limit> parameter in the
-request.
+By default, this operation returns as many log events as can fit in a
+response size of 1MB (up to 10,000 log events). If the results include
+tokens, there are more log events available. You can get additional log
+events by specifying one of the tokens in a subsequent call.
 
 
 =head2 PutDestination(DestinationName => Str, RoleArn => Str, TargetArn => Str)
@@ -639,19 +605,18 @@ Each argument is described in detail in: L<Paws::CloudWatchLogs::PutDestination>
 
 Returns: a L<Paws::CloudWatchLogs::PutDestinationResponse> instance
 
-  Creates or updates a C<Destination>. A destination encapsulates a
-physical resource (such as a Kinesis stream) and allows you to
-subscribe to a real-time stream of log events of a different account,
-ingested through C<PutLogEvents> requests. Currently, the only
-supported physical resource is a Amazon Kinesis stream belonging to the
-same account as the destination.
+  Creates or updates a destination. A destination encapsulates a physical
+resource (such as a Kinesis stream) and enables you to subscribe to a
+real-time stream of log events of a different account, ingested using
+PutLogEvents. Currently, the only supported physical resource is a
+Amazon Kinesis stream belonging to the same account as the destination.
 
 A destination controls what is written to its Amazon Kinesis stream
-through an access policy. By default, PutDestination does not set any
-access policy with the destination, which means a cross-account user
-will not be able to call C<PutSubscriptionFilter> against this
-destination. To enable that, the destination owner must call
-C<PutDestinationPolicy> after PutDestination.
+through an access policy. By default, C<PutDestination> does not set
+any access policy with the destination, which means a cross-account
+user cannot call PutSubscriptionFilter against this destination. To
+enable this, the destination owner must call PutDestinationPolicy after
+C<PutDestination>.
 
 
 =head2 PutDestinationPolicy(AccessPolicy => Str, DestinationName => Str)
@@ -661,8 +626,8 @@ Each argument is described in detail in: L<Paws::CloudWatchLogs::PutDestinationP
 Returns: nothing
 
   Creates or updates an access policy associated with an existing
-C<Destination>. An access policy is an IAM policy document that is used
-to authorize claims to register a subscription filter against a given
+destination. An access policy is an IAM policy document that is used to
+authorize claims to register a subscription filter against a given
 destination.
 
 
@@ -674,10 +639,10 @@ Returns: a L<Paws::CloudWatchLogs::PutLogEventsResponse> instance
 
   Uploads a batch of log events to the specified log stream.
 
-Every PutLogEvents request must include the C<sequenceToken> obtained
-from the response of the previous request. An upload in a newly created
-log stream does not require a C<sequenceToken>. You can also get the
-C<sequenceToken> using DescribeLogStreams.
+You must include the sequence token obtained from the response of the
+previous call. An upload in a newly created log stream does not require
+a sequence token. You can also get the sequence token using
+DescribeLogStreams.
 
 The batch of events must satisfy the following constraints:
 
@@ -702,7 +667,7 @@ retention period of the log group.
 =item *
 
 The log events in the batch must be in chronological ordered by their
-C<timestamp>.
+timestamp.
 
 =item *
 
@@ -725,7 +690,7 @@ Returns: nothing
 
   Creates or updates a metric filter and associates it with the specified
 log group. Metric filters allow you to configure rules to extract
-metric data from log events ingested through C<PutLogEvents> requests.
+metric data from log events ingested through PutLogEvents.
 
 The maximum number of metric filters that can be associated with a log
 group is 100.
@@ -750,9 +715,9 @@ Returns: nothing
 
   Creates or updates a subscription filter and associates it with the
 specified log group. Subscription filters allow you to subscribe to a
-real-time stream of log events ingested through C<PutLogEvents>
-requests and have them delivered to a specific destination. Currently,
-the supported destinations are:
+real-time stream of log events ingested through PutLogEvents and have
+them delivered to a specific destination. Currently, the supported
+destinations are:
 
 =over
 
@@ -763,23 +728,22 @@ subscription filter, for same-account delivery.
 
 =item *
 
-A logical destination (used via an ARN of C<Destination>) belonging to
-a different account, for cross-account delivery.
+A logical destination that belongs to a different account, for
+cross-account delivery.
 
 =item *
 
-An Amazon Kinesis Firehose stream belonging to the same account as the
-subscription filter, for same-account delivery.
+An Amazon Kinesis Firehose stream that belongs to the same account as
+the subscription filter, for same-account delivery.
 
 =item *
 
-An AWS Lambda function belonging to the same account as the
+An AWS Lambda function that belongs to the same account as the
 subscription filter, for same-account delivery.
 
 =back
 
-Currently there can only be one subscription filter associated with a
-log group.
+There can only be one subscription filter associated with a log group.
 
 
 =head2 TestMetricFilter(FilterPattern => Str, LogEventMessages => ArrayRef[Str|Undef])
@@ -835,9 +799,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::CloudWatchLogs::DescribeLogStreamsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllMetricFilters(sub { },LogGroupName => Str, [FilterNamePrefix => Str, Limit => Int, NextToken => Str])
+=head2 DescribeAllMetricFilters(sub { },[FilterNamePrefix => Str, Limit => Int, LogGroupName => Str, MetricName => Str, MetricNamespace => Str, NextToken => Str])
 
-=head2 DescribeAllMetricFilters(LogGroupName => Str, [FilterNamePrefix => Str, Limit => Int, NextToken => Str])
+=head2 DescribeAllMetricFilters([FilterNamePrefix => Str, Limit => Int, LogGroupName => Str, MetricName => Str, MetricNamespace => Str, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

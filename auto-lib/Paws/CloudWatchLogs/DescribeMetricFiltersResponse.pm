@@ -17,7 +17,7 @@ Paws::CloudWatchLogs::DescribeMetricFiltersResponse
 
 =head2 MetricFilters => ArrayRef[L<Paws::CloudWatchLogs::MetricFilter>]
 
-
+The metric filters.
 
 
 =head2 NextToken => Str

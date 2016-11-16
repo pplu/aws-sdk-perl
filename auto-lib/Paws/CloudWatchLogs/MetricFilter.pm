@@ -3,6 +3,7 @@ package Paws::CloudWatchLogs::MetricFilter;
   has CreationTime => (is => 'ro', isa => 'Int', xmlname => 'creationTime', request_name => 'creationTime', traits => ['Unwrapped','NameInRequest']);
   has FilterName => (is => 'ro', isa => 'Str', xmlname => 'filterName', request_name => 'filterName', traits => ['Unwrapped','NameInRequest']);
   has FilterPattern => (is => 'ro', isa => 'Str', xmlname => 'filterPattern', request_name => 'filterPattern', traits => ['Unwrapped','NameInRequest']);
+  has LogGroupName => (is => 'ro', isa => 'Str', xmlname => 'logGroupName', request_name => 'logGroupName', traits => ['Unwrapped','NameInRequest']);
   has MetricTransformations => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatchLogs::MetricTransformation]', xmlname => 'metricTransformations', request_name => 'metricTransformations', traits => ['Unwrapped','NameInRequest']);
 1;
 
@@ -34,21 +35,21 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudWatchL
 
 =head1 DESCRIPTION
 
-Metric filters can be used to express how CloudWatch Logs would extract
-metric observations from ingested log events and transform them to
-metric data in a CloudWatch metric.
+Metric filters express how CloudWatch Logs would extract metric
+observations from ingested log events and transform them into metric
+data in a CloudWatch metric.
 
 =head1 ATTRIBUTES
 
 
 =head2 CreationTime => Int
 
-  
+  The creation time of the metric filter.
 
 
 =head2 FilterName => Str
 
-  
+  The name of the metric filter.
 
 
 =head2 FilterPattern => Str
@@ -56,9 +57,14 @@ metric data in a CloudWatch metric.
   
 
 
+=head2 LogGroupName => Str
+
+  The name of the log group.
+
+
 =head2 MetricTransformations => ArrayRef[L<Paws::CloudWatchLogs::MetricTransformation>]
 
-  
+  The metric transformations.
 
 
 

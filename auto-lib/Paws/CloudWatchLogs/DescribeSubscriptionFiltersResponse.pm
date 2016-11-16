@@ -22,7 +22,7 @@ Paws::CloudWatchLogs::DescribeSubscriptionFiltersResponse
 
 =head2 SubscriptionFilters => ArrayRef[L<Paws::CloudWatchLogs::SubscriptionFilter>]
 
-
+The subscription filters.
 
 
 =head2 _request_id => Str

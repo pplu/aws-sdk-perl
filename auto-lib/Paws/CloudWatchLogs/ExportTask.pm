@@ -46,12 +46,12 @@ Represents an export task.
 
 =head2 Destination => Str
 
-  Name of Amazon S3 bucket to which the log data was exported.
+  The name of Amazon S3 bucket to which the log data was exported.
 
 
 =head2 DestinationPrefix => Str
 
-  Prefix that was used as the start of Amazon S3 key for every object
+  The prefix that was used as the start of Amazon S3 key for every object
 exported.
 
 
@@ -62,8 +62,7 @@ exported.
 
 =head2 From => Int
 
-  A point in time expressed as the number of milliseconds since Jan 1,
-1970 00:00:00 UTC. Events with a timestamp prior to this time are not
+  The start time. Events with a timestamp prior to this time are not
 exported.
 
 
@@ -74,12 +73,12 @@ exported.
 
 =head2 Status => L<Paws::CloudWatchLogs::ExportTaskStatus>
 
-  Status of the export task.
+  The status of the export task.
 
 
 =head2 TaskId => Str
 
-  Id of the export task.
+  The ID of the export task.
 
 
 =head2 TaskName => Str
@@ -89,8 +88,7 @@ exported.
 
 =head2 To => Int
 
-  A point in time expressed as the number of milliseconds since Jan 1,
-1970 00:00:00 UTC. Events with a timestamp later than this time are not
+  The end time. Events with a timestamp later than this time are not
 exported.
 
 

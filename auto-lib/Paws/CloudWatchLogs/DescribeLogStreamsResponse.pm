@@ -17,7 +17,7 @@ Paws::CloudWatchLogs::DescribeLogStreamsResponse
 
 =head2 LogStreams => ArrayRef[L<Paws::CloudWatchLogs::LogStream>]
 
-
+The log streams.
 
 
 =head2 NextToken => Str

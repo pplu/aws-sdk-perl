@@ -51,8 +51,8 @@ subscription filter, for same-account delivery.
 
 =item *
 
-A logical destination (used via an ARN of C<Destination>) belonging to
-a different account, for cross-account delivery.
+A logical destination (specified using an ARN) belonging to a different
+account, for cross-account delivery.
 
 =item *
 
@@ -77,14 +77,13 @@ A name for the subscription filter.
 
 =head2 B<REQUIRED> FilterPattern => Str
 
-A valid CloudWatch Logs filter pattern for subscribing to a filtered
-stream of log events.
+A filter pattern for subscribing to a filtered stream of log events.
 
 
 
 =head2 B<REQUIRED> LogGroupName => Str
 
-The name of the log group to associate the subscription filter with.
+The name of the log group.
 
 
 
@@ -92,8 +91,8 @@ The name of the log group to associate the subscription filter with.
 
 The ARN of an IAM role that grants CloudWatch Logs permissions to
 deliver ingested log events to the destination stream. You don't need
-to provide the ARN when you are working with a logical destination
-(used via an ARN of C<Destination>) for cross-account delivery.
+to provide the ARN when you are working with a logical destination for
+cross-account delivery.
 
 
 

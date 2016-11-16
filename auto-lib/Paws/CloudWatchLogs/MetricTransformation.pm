@@ -34,31 +34,32 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudWatchL
 
 =head1 DESCRIPTION
 
-This class has no description
+Indicates how to transform ingested log events into metric data in a
+CloudWatch metric.
 
 =head1 ATTRIBUTES
 
 
 =head2 DefaultValue => Num
 
-  (Optional) A default value to emit when a filter pattern does not match
-a log event. Can be null.
+  (Optional) The value to emit when a filter pattern does not match a log
+event. This value can be null.
 
 
 =head2 B<REQUIRED> MetricName => Str
 
-  Name of the metric.
+  The name of the CloudWatch metric.
 
 
 =head2 B<REQUIRED> MetricNamespace => Str
 
-  Namespace to which the metric belongs.
+  The namespace of the CloudWatch metric.
 
 
 =head2 B<REQUIRED> MetricValue => Str
 
-  A string representing a value to publish to this metric when a filter
-pattern matches a log event.
+  The value to publish to the CloudWatch metric when a filter pattern
+matches a log event.
 
 
 

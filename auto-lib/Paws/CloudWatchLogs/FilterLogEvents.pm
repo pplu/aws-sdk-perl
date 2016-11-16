@@ -42,62 +42,56 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 EndTime => Int
 
-A point in time expressed as the number of milliseconds since Jan 1,
-1970 00:00:00 UTC. If provided, events with a timestamp later than this
-time are not returned.
+The end of the time range. Events with a timestamp later than this time
+are not returned.
 
 
 
 =head2 FilterPattern => Str
 
-A valid CloudWatch Logs filter pattern to use for filtering the
-response. If not provided, all the events are matched.
+The filter pattern to use. If not provided, all the events are matched.
 
 
 
 =head2 Interleaved => Bool
 
-If provided, the API will make a best effort to provide responses that
-contain events from multiple log streams within the log group
-interleaved in a single response. If not provided, all the matched log
-events in the first log stream will be searched first, then those in
-the next log stream, etc.
+If the value is true, the operation makes a best effort to provide
+responses that contain events from multiple log streams within the log
+group interleaved in a single response. If the value is false all the
+matched log events in the first log stream are searched first, then
+those in the next log stream, and so on. The default is false.
 
 
 
 =head2 Limit => Int
 
-The maximum number of events to return in a page of results. Default is
-10,000 events.
+The maximum number of events to return. The default is 10,000 events.
 
 
 
 =head2 B<REQUIRED> LogGroupName => Str
 
-The name of the log group to query.
+The name of the log group.
 
 
 
 =head2 LogStreamNames => ArrayRef[Str|Undef]
 
-Optional list of log stream names within the specified log group to
-search. Defaults to all the log streams in the log group.
+Optional list of log stream names.
 
 
 
 =head2 NextToken => Str
 
-A pagination token obtained from a C<FilterLogEvents> response to
-continue paginating the FilterLogEvents results. This token is omitted
-from the response when there are no other events to display.
+The token for the next set of events to return. (You received this
+token from a previous call.)
 
 
 
 =head2 StartTime => Int
 
-A point in time expressed as the number of milliseconds since Jan 1,
-1970 00:00:00 UTC. If provided, events with a timestamp prior to this
-time are not returned.
+The start of the time range. Events with a timestamp prior to this time
+are not returned.
 
 
 

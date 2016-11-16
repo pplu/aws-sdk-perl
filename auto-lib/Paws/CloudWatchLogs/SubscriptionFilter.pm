@@ -36,24 +36,24 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudWatchL
 
 =head1 DESCRIPTION
 
-This class has no description
+Represents a subscription filter.
 
 =head1 ATTRIBUTES
 
 
 =head2 CreationTime => Int
 
-  
+  The creation time of the subscription filter.
 
 
 =head2 DestinationArn => Str
 
-  
+  The Amazon Resource Name (ARN) of the destination.
 
 
 =head2 FilterName => Str
 
-  
+  The name of the subscription filter.
 
 
 =head2 FilterPattern => Str
@@ -63,7 +63,7 @@ This class has no description
 
 =head2 LogGroupName => Str
 
-  
+  The name of the log group.
 
 
 =head2 RoleArn => Str

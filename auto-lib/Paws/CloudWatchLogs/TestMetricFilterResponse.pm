@@ -16,7 +16,7 @@ Paws::CloudWatchLogs::TestMetricFilterResponse
 
 =head2 Matches => ArrayRef[L<Paws::CloudWatchLogs::MetricFilterMatchRecord>]
 
-
+The matched events.
 
 
 =head2 _request_id => Str

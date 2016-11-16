@@ -17,7 +17,7 @@ Paws::CloudWatchLogs::DescribeLogGroupsResponse
 
 =head2 LogGroups => ArrayRef[L<Paws::CloudWatchLogs::LogGroup>]
 
-
+The log groups.
 
 
 =head2 NextToken => Str

@@ -38,49 +38,50 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudWatchL
 
 =head1 DESCRIPTION
 
-A log stream is sequence of log events from a single emitter of logs.
+Represents a log stream, which is a sequence of log events from a
+single emitter of logs.
 
 =head1 ATTRIBUTES
 
 
 =head2 Arn => Str
 
-  
+  The Amazon Resource Name (ARN) of the log stream.
 
 
 =head2 CreationTime => Int
 
-  
+  The creation time of the stream.
 
 
 =head2 FirstEventTimestamp => Int
 
-  
+  The time of the first event.
 
 
 =head2 LastEventTimestamp => Int
 
-  
+  The time of the last event.
 
 
 =head2 LastIngestionTime => Int
 
-  
+  The ingestion time.
 
 
 =head2 LogStreamName => Str
 
-  
+  The name of the log stream.
 
 
 =head2 StoredBytes => Int
 
-  
+  The number of bytes stored.
 
 
 =head2 UploadSequenceToken => Str
 
-  
+  The sequence token.
 
 
 

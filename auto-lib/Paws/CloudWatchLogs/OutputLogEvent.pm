@@ -33,24 +33,24 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudWatchL
 
 =head1 DESCRIPTION
 
-This class has no description
+Represents a log event.
 
 =head1 ATTRIBUTES
 
 
 =head2 IngestionTime => Int
 
-  
+  The time the event was ingested.
 
 
 =head2 Message => Str
 
-  
+  The data contained in the log event.
 
 
 =head2 Timestamp => Int
 
-  
+  The time the event occurred.
 
 
 

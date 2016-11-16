@@ -32,8 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudWatchL
 
 =head1 DESCRIPTION
 
-An object indicating the search status of a log stream in a
-C<FilterLogEvents> request.
+Represents the search status of a log stream.
 
 =head1 ATTRIBUTES
 
@@ -45,8 +44,7 @@ C<FilterLogEvents> request.
 
 =head2 SearchedCompletely => Bool
 
-  Indicates whether all the events in this log stream were searched or
-more data exists to search by paginating further.
+  Indicates whether all the events in this log stream were searched.
 
 
 
