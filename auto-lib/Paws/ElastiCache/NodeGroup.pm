@@ -36,7 +36,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElastiCache
 =head1 DESCRIPTION
 
 Represents a collection of cache nodes in a replication group. One node
-in the node group is the read/write Primary node. All the other nodes
+in the node group is the read/write primary node. All the other nodes
 are read-only Replica nodes.
 
 =head1 ATTRIBUTES

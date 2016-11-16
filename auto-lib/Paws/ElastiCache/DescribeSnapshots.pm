@@ -79,7 +79,7 @@ group are described.
 
 =head2 ShowNodeGroupConfig => Bool
 
-A boolean value which if true, the node group (shard) configuration is
+A Boolean value which if true, the node group (shard) configuration is
 included in the snapshot description.
 
 

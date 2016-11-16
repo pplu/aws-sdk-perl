@@ -136,7 +136,8 @@ C<redis>.
 =head2 Status => Str
 
   The current state of this replication group - C<creating>,
-C<available>, etc.
+C<available>, C<modifying>, C<deleting>, C<create-failed>,
+C<snapshotting>.
 
 
 

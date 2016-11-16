@@ -1,6 +1,7 @@
 
 package Paws::ElastiCache::CreateCacheCluster;
   use Moose;
+  has AuthToken => (is => 'ro', isa => 'Str');
   has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Bool');
   has AZMode => (is => 'ro', isa => 'Str');
   has CacheClusterId => (is => 'ro', isa => 'Str', required => 1);
@@ -52,6 +53,33 @@ As an example:
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 
 =head1 ATTRIBUTES
+
+
+=head2 AuthToken => Str
+
+The password used to access a password protected server.
+
+Password constraints:
+
+=over
+
+=item *
+
+Must be only printable ASCII characters.
+
+=item *
+
+Must be at least 16 characters and no more than 128 characters in
+length.
+
+=item *
+
+Cannot contain any of the following characters: '/', '"', or "@".
+
+=back
+
+For more information, see AUTH password at Redis.
+
 
 
 =head2 AutoMinorVersionUpgrade => Bool

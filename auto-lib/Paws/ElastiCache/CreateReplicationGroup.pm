@@ -1,6 +1,7 @@
 
 package Paws::ElastiCache::CreateReplicationGroup;
   use Moose;
+  has AuthToken => (is => 'ro', isa => 'Str');
   has AutomaticFailoverEnabled => (is => 'ro', isa => 'Bool');
   has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Bool');
   has CacheNodeType => (is => 'ro', isa => 'Str');
@@ -55,6 +56,33 @@ As an example:
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 
 =head1 ATTRIBUTES
+
+
+=head2 AuthToken => Str
+
+The password used to access a password protected server.
+
+Password constraints:
+
+=over
+
+=item *
+
+Must be only printable ASCII characters.
+
+=item *
+
+Must be at least 16 characters and no more than 128 characters in
+length.
+
+=item *
+
+Cannot contain any of the following characters: '/', '"', or "@".
+
+=back
+
+For more information, see AUTH password at Redis.
+
 
 
 =head2 AutomaticFailoverEnabled => Bool
@@ -275,9 +303,7 @@ If C<Multi-AZ> is C<enabled>, the value of this parameter must be at
 least 2.
 
 The maximum permitted value for C<NumCacheClusters> is 6 (primary plus
-5 replicas). If you need to exceed this limit, fill out the ElastiCache
-Limit Increase Request form at
-http://aws.amazon.com/contact-us/elasticache-node-limit-request/.
+5 replicas).
 
 
 
