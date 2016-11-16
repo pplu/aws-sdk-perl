@@ -228,6 +228,153 @@ package Paws::WAF;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub ListAllByteMatchSets {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListByteMatchSets(@_);
+
+    if (not defined $callback) {
+      while ($result->NextMarker) {
+        $result = $self->ListByteMatchSets(@_, NextMarker => $result->NextMarker);
+        push @{ $result->ByteMatchSets }, @{ $result->ByteMatchSets };
+      }
+      return $result;
+    } else {
+      while ($result->NextMarker) {
+        $result = $self->ListByteMatchSets(@_, NextMarker => $result->NextMarker);
+        $callback->($_ => 'ByteMatchSets') foreach (@{ $result->ByteMatchSets });
+      }
+    }
+
+    return undef
+  }
+  sub ListAllIPSets {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListIPSets(@_);
+
+    if (not defined $callback) {
+      while ($result->NextMarker) {
+        $result = $self->ListIPSets(@_, NextMarker => $result->NextMarker);
+        push @{ $result->IPSets }, @{ $result->IPSets };
+      }
+      return $result;
+    } else {
+      while ($result->NextMarker) {
+        $result = $self->ListIPSets(@_, NextMarker => $result->NextMarker);
+        $callback->($_ => 'IPSets') foreach (@{ $result->IPSets });
+      }
+    }
+
+    return undef
+  }
+  sub ListAllRules {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListRules(@_);
+
+    if (not defined $callback) {
+      while ($result->NextMarker) {
+        $result = $self->ListRules(@_, NextMarker => $result->NextMarker);
+        push @{ $result->Rules }, @{ $result->Rules };
+      }
+      return $result;
+    } else {
+      while ($result->NextMarker) {
+        $result = $self->ListRules(@_, NextMarker => $result->NextMarker);
+        $callback->($_ => 'Rules') foreach (@{ $result->Rules });
+      }
+    }
+
+    return undef
+  }
+  sub ListAllSizeConstraintSets {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListSizeConstraintSets(@_);
+
+    if (not defined $callback) {
+      while ($result->NextMarker) {
+        $result = $self->ListSizeConstraintSets(@_, NextMarker => $result->NextMarker);
+        push @{ $result->SizeConstraintSets }, @{ $result->SizeConstraintSets };
+      }
+      return $result;
+    } else {
+      while ($result->NextMarker) {
+        $result = $self->ListSizeConstraintSets(@_, NextMarker => $result->NextMarker);
+        $callback->($_ => 'SizeConstraintSets') foreach (@{ $result->SizeConstraintSets });
+      }
+    }
+
+    return undef
+  }
+  sub ListAllSqlInjectionMatchSets {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListSqlInjectionMatchSets(@_);
+
+    if (not defined $callback) {
+      while ($result->NextMarker) {
+        $result = $self->ListSqlInjectionMatchSets(@_, NextMarker => $result->NextMarker);
+        push @{ $result->SqlInjectionMatchSets }, @{ $result->SqlInjectionMatchSets };
+      }
+      return $result;
+    } else {
+      while ($result->NextMarker) {
+        $result = $self->ListSqlInjectionMatchSets(@_, NextMarker => $result->NextMarker);
+        $callback->($_ => 'SqlInjectionMatchSets') foreach (@{ $result->SqlInjectionMatchSets });
+      }
+    }
+
+    return undef
+  }
+  sub ListAllWebACLs {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListWebACLs(@_);
+
+    if (not defined $callback) {
+      while ($result->NextMarker) {
+        $result = $self->ListWebACLs(@_, NextMarker => $result->NextMarker);
+        push @{ $result->WebACLs }, @{ $result->WebACLs };
+      }
+      return $result;
+    } else {
+      while ($result->NextMarker) {
+        $result = $self->ListWebACLs(@_, NextMarker => $result->NextMarker);
+        $callback->($_ => 'WebACLs') foreach (@{ $result->WebACLs });
+      }
+    }
+
+    return undef
+  }
+  sub ListAllXssMatchSets {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListXssMatchSets(@_);
+
+    if (not defined $callback) {
+      while ($result->NextMarker) {
+        $result = $self->ListXssMatchSets(@_, NextMarker => $result->NextMarker);
+        push @{ $result->XssMatchSets }, @{ $result->XssMatchSets };
+      }
+      return $result;
+    } else {
+      while ($result->NextMarker) {
+        $result = $self->ListXssMatchSets(@_, NextMarker => $result->NextMarker);
+        $callback->($_ => 'XssMatchSets') foreach (@{ $result->XssMatchSets });
+      }
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/CreateByteMatchSet CreateIPSet CreateRule CreateSizeConstraintSet CreateSqlInjectionMatchSet CreateWebACL CreateXssMatchSet DeleteByteMatchSet DeleteIPSet DeleteRule DeleteSizeConstraintSet DeleteSqlInjectionMatchSet DeleteWebACL DeleteXssMatchSet GetByteMatchSet GetChangeToken GetChangeTokenStatus GetIPSet GetRule GetSampledRequests GetSizeConstraintSet GetSqlInjectionMatchSet GetWebACL GetXssMatchSet ListByteMatchSets ListIPSets ListRules ListSizeConstraintSets ListSqlInjectionMatchSets ListWebACLs ListXssMatchSets UpdateByteMatchSet UpdateIPSet UpdateRule UpdateSizeConstraintSet UpdateSqlInjectionMatchSet UpdateWebACL UpdateXssMatchSet / }
@@ -1550,6 +1697,90 @@ HTTP requests, see the AWS WAF Developer Guide.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllByteMatchSets(sub { },[Limit => Int, NextMarker => Str])
+
+=head2 ListAllByteMatchSets([Limit => Int, NextMarker => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ByteMatchSets, passing the object as the first parameter, and the string 'ByteMatchSets' as the second parameter 
+
+If not, it will return a a L<Paws::WAF::ListByteMatchSetsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllIPSets(sub { },[Limit => Int, NextMarker => Str])
+
+=head2 ListAllIPSets([Limit => Int, NextMarker => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - IPSets, passing the object as the first parameter, and the string 'IPSets' as the second parameter 
+
+If not, it will return a a L<Paws::WAF::ListIPSetsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllRules(sub { },[Limit => Int, NextMarker => Str])
+
+=head2 ListAllRules([Limit => Int, NextMarker => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Rules, passing the object as the first parameter, and the string 'Rules' as the second parameter 
+
+If not, it will return a a L<Paws::WAF::ListRulesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllSizeConstraintSets(sub { },[Limit => Int, NextMarker => Str])
+
+=head2 ListAllSizeConstraintSets([Limit => Int, NextMarker => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - SizeConstraintSets, passing the object as the first parameter, and the string 'SizeConstraintSets' as the second parameter 
+
+If not, it will return a a L<Paws::WAF::ListSizeConstraintSetsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllSqlInjectionMatchSets(sub { },[Limit => Int, NextMarker => Str])
+
+=head2 ListAllSqlInjectionMatchSets([Limit => Int, NextMarker => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - SqlInjectionMatchSets, passing the object as the first parameter, and the string 'SqlInjectionMatchSets' as the second parameter 
+
+If not, it will return a a L<Paws::WAF::ListSqlInjectionMatchSetsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllWebACLs(sub { },[Limit => Int, NextMarker => Str])
+
+=head2 ListAllWebACLs([Limit => Int, NextMarker => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - WebACLs, passing the object as the first parameter, and the string 'WebACLs' as the second parameter 
+
+If not, it will return a a L<Paws::WAF::ListWebACLsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllXssMatchSets(sub { },[Limit => Int, NextMarker => Str])
+
+=head2 ListAllXssMatchSets([Limit => Int, NextMarker => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - XssMatchSets, passing the object as the first parameter, and the string 'XssMatchSets' as the second parameter 
+
+If not, it will return a a L<Paws::WAF::ListXssMatchSetsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 
