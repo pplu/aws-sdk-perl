@@ -2,7 +2,7 @@ package Paws::Net::S3Signature;
   use Moose::Role;
   requires 'service';
 
-  use Crypt::Digest::SHA256;
+  use Digest::SHA;
   use Net::Amazon::Signature::V4;
 
   sub sign {
@@ -12,7 +12,7 @@ package Paws::Net::S3Signature;
       $request->header( 'X-Amz-Security-Token' => $self->session_token );
     }
 
-    my $hasher = Crypt::Digest::SHA256->new;
+    my $hasher = Digest::SHA->new(256);
     $hasher->add($request->content || q[]);
     $request->header('X-Amz-Content-Sha256' => $hasher->hexdigest);
 
