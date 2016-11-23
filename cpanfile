@@ -17,7 +17,7 @@ requires 'URL::Encode::XS';
 requires 'URI::Template';
 requires 'Digest::HMAC';
 requires 'Config::INI';
-requires 'Crypt::Digest::SHA256';
+requires 'Digest::SHA';
 # For the paws CLI
 requires 'Hash::Flatten';
 requires 'MooseX::Getopt';
