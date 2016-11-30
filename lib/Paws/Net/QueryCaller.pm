@@ -54,6 +54,14 @@ package Paws::Net::QueryCaller;
             $p{ "$key.entry.$i.value" } = $params->$att->Map->{ $map_key };
             $i++;
           }
+        } elsif ($params->$att->does('Paws::API::MapParser')){
+          my $i = 1;
+          foreach my $map_key (sort $params->$att->meta->get_attribute_list){
+            next if (not defined $params->$att->$map_key);
+            $p{ "$key.$i.Name" } = $map_key;
+            $p{ "$key.$i.Value" } = $params->$att->$map_key;
+            $i++;
+          }
         } else {
           my %complex_value = $self->_to_querycaller_params($params->$att);
           map { $p{ "$key.$_" } = $complex_value{$_} } keys %complex_value;
