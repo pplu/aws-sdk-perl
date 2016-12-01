@@ -39,7 +39,7 @@ logs were requested.
 =head2 Payload => Str
 
 It is the JSON representation of the object returned by the Lambda
-function. In This is present only if the invocation type is
+function. This is present only if the invocation type is
 C<RequestResponse>.
 
 In the event of a function error this field contains a message

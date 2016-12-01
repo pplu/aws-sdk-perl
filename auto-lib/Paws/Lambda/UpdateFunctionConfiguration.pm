@@ -2,8 +2,10 @@
 package Paws::Lambda::UpdateFunctionConfiguration;
   use Moose;
   has Description => (is => 'ro', isa => 'Str');
+  has Environment => (is => 'ro', isa => 'Paws::Lambda::Environment');
   has FunctionName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'FunctionName' , required => 1);
   has Handler => (is => 'ro', isa => 'Str');
+  has KMSKeyArn => (is => 'ro', isa => 'Str');
   has MemorySize => (is => 'ro', isa => 'Int');
   has Role => (is => 'ro', isa => 'Str');
   has Runtime => (is => 'ro', isa => 'Str');
@@ -49,6 +51,13 @@ value. Assign a meaningful description as you see fit.
 
 
 
+=head2 Environment => L<Paws::Lambda::Environment>
+
+The parent object that contains your environment's configuration
+settings.
+
+
+
 =head2 B<REQUIRED> FunctionName => Str
 
 The name of the Lambda function.
@@ -67,6 +76,14 @@ character in length.
 
 The function that Lambda calls to begin executing your function. For
 Node.js, it is the C<module-name.export> value in your function.
+
+
+
+=head2 KMSKeyArn => Str
+
+The Amazon Resource Name (ARN) of the KMS key used to encrypt your
+function's environment variables. If you elect to use the AWS Lambda
+default service key, pass in an empty string ("") for this parameter.
 
 
 

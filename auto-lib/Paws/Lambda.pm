@@ -289,7 +289,7 @@ This operation requires permission for the
 C<lambda:CreateEventSourceMapping> action.
 
 
-=head2 CreateFunction(Code => L<Paws::Lambda::FunctionCode>, FunctionName => Str, Handler => Str, Role => Str, Runtime => Str, [Description => Str, MemorySize => Int, Publish => Bool, Timeout => Int, VpcConfig => L<Paws::Lambda::VpcConfig>])
+=head2 CreateFunction(Code => L<Paws::Lambda::FunctionCode>, FunctionName => Str, Handler => Str, Role => Str, Runtime => Str, [Description => Str, Environment => L<Paws::Lambda::Environment>, KMSKeyArn => Str, MemorySize => Int, Publish => Bool, Timeout => Int, VpcConfig => L<Paws::Lambda::VpcConfig>])
 
 Each argument is described in detail in: L<Paws::Lambda::CreateFunction>
 
@@ -452,7 +452,8 @@ Each argument is described in detail in: L<Paws::Lambda::Invoke>
 
 Returns: a L<Paws::Lambda::InvocationResponse> instance
 
-  Invokes a specific Lambda function.
+  Invokes a specific Lambda function. For an example, see Create the
+Lambda Function and Test It Manually.
 
 If you are using the versioning feature, you can invoke the specific
 function version by providing function version or alias name that is
@@ -642,7 +643,7 @@ This operation requires permission for the C<lambda:UpdateFunctionCode>
 action.
 
 
-=head2 UpdateFunctionConfiguration(FunctionName => Str, [Description => Str, Handler => Str, MemorySize => Int, Role => Str, Runtime => Str, Timeout => Int, VpcConfig => L<Paws::Lambda::VpcConfig>])
+=head2 UpdateFunctionConfiguration(FunctionName => Str, [Description => Str, Environment => L<Paws::Lambda::Environment>, Handler => Str, KMSKeyArn => Str, MemorySize => Int, Role => Str, Runtime => Str, Timeout => Int, VpcConfig => L<Paws::Lambda::VpcConfig>])
 
 Each argument is described in detail in: L<Paws::Lambda::UpdateFunctionConfiguration>
 

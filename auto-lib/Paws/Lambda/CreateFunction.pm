@@ -3,8 +3,10 @@ package Paws::Lambda::CreateFunction;
   use Moose;
   has Code => (is => 'ro', isa => 'Paws::Lambda::FunctionCode', required => 1);
   has Description => (is => 'ro', isa => 'Str');
+  has Environment => (is => 'ro', isa => 'Paws::Lambda::Environment');
   has FunctionName => (is => 'ro', isa => 'Str', required => 1);
   has Handler => (is => 'ro', isa => 'Str', required => 1);
+  has KMSKeyArn => (is => 'ro', isa => 'Str');
   has MemorySize => (is => 'ro', isa => 'Int');
   has Publish => (is => 'ro', isa => 'Bool');
   has Role => (is => 'ro', isa => 'Str', required => 1);
@@ -57,6 +59,12 @@ value. Assign a meaningful description as you see fit.
 
 
 
+=head2 Environment => L<Paws::Lambda::Environment>
+
+
+
+
+
 =head2 B<REQUIRED> FunctionName => Str
 
 The name you want to assign to the function you are uploading. The
@@ -73,6 +81,14 @@ Node.js, it is the I<module-name>.I<export> value in your function. For
 Java, it can be C<package.class-name::handler> or
 C<package.class-name>. For more information, see Lambda Function
 Handler (Java).
+
+
+
+=head2 KMSKeyArn => Str
+
+The Amazon Resource Name (ARN) of the KMS key used to encrypt your
+function's environment variables. If not provided, AWS Lambda will use
+a default service key.
 
 
 

@@ -4,9 +4,11 @@ package Paws::Lambda::FunctionConfiguration;
   has CodeSha256 => (is => 'ro', isa => 'Str');
   has CodeSize => (is => 'ro', isa => 'Int');
   has Description => (is => 'ro', isa => 'Str');
+  has Environment => (is => 'ro', isa => 'Paws::Lambda::EnvironmentResponse');
   has FunctionArn => (is => 'ro', isa => 'Str');
   has FunctionName => (is => 'ro', isa => 'Str');
   has Handler => (is => 'ro', isa => 'Str');
+  has KMSKeyArn => (is => 'ro', isa => 'Str');
   has LastModified => (is => 'ro', isa => 'Str');
   has MemorySize => (is => 'ro', isa => 'Int');
   has Role => (is => 'ro', isa => 'Str');
@@ -42,6 +44,12 @@ The size, in bytes, of the function .zip file you uploaded.
 The user-provided description.
 
 
+=head2 Environment => L<Paws::Lambda::EnvironmentResponse>
+
+The parent object that contains your environment's configuration
+settings.
+
+
 =head2 FunctionArn => Str
 
 The Amazon Resource Name (ARN) assigned to the function.
@@ -55,6 +63,13 @@ The name of the function.
 =head2 Handler => Str
 
 The function Lambda calls to begin executing your function.
+
+
+=head2 KMSKeyArn => Str
+
+The Amazon Resource Name (ARN) of the KMS key used to encrypt your
+function's environment variables. If empty, it means you are using the
+AWS Lambda default service key.
 
 
 =head2 LastModified => Str
