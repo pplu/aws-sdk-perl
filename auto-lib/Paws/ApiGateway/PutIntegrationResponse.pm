@@ -1,6 +1,7 @@
 
 package Paws::ApiGateway::PutIntegrationResponse;
   use Moose;
+  has ContentHandling => (is => 'ro', isa => 'Str');
   has HttpMethod => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'httpMethod' , required => 1);
   has ResourceId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'resourceId' , required => 1);
   has ResponseParameters => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString');
@@ -40,6 +41,32 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
+=head2 ContentHandling => Str
+
+Specifies how to handle response payload content type conversions.
+Supported values are C<CONVERT_TO_BINARY> and C<CONVERT_TO_TEXT>, with
+the following behaviors:
+
+=over
+
+=item *
+
+C<CONVERT_TO_BINARY>: Converts a response payload from a Base64-encoded
+string to the corresponding binary blob.
+
+=item *
+
+C<CONVERT_TO_TEXT>: Converts a response payload from a binary blob to a
+Base64-encoded string.
+
+=back
+
+If this property is not defined, the response payload will be passed
+through from the integration response to the method response without
+modification.
+
+Valid values are: C<"CONVERT_TO_BINARY">, C<"CONVERT_TO_TEXT">
 
 =head2 B<REQUIRED> HttpMethod => Str
 

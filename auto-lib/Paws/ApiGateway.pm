@@ -698,7 +698,7 @@ Returns: a L<Paws::ApiGateway::BasePathMapping> instance
   Creates a new BasePathMapping resource.
 
 
-=head2 CreateDeployment(RestApiId => Str, StageName => Str, [CacheClusterEnabled => Bool, CacheClusterSize => Str, Description => Str, StageDescription => Str, Variables => L<Paws::ApiGateway::MapOfStringToString>])
+=head2 CreateDeployment(RestApiId => Str, [CacheClusterEnabled => Bool, CacheClusterSize => Str, Description => Str, StageDescription => Str, StageName => Str, Variables => L<Paws::ApiGateway::MapOfStringToString>])
 
 Each argument is described in detail in: L<Paws::ApiGateway::CreateDeployment>
 
@@ -735,7 +735,7 @@ Returns: a L<Paws::ApiGateway::Resource> instance
   Creates a Resource resource.
 
 
-=head2 CreateRestApi(Name => Str, [CloneFrom => Str, Description => Str])
+=head2 CreateRestApi(Name => Str, [BinaryMediaTypes => ArrayRef[Str|Undef], CloneFrom => Str, Description => Str])
 
 Each argument is described in detail in: L<Paws::ApiGateway::CreateRestApi>
 
@@ -967,7 +967,7 @@ Returns: a L<Paws::ApiGateway::ApiKey> instance
   Gets information about the current ApiKey resource.
 
 
-=head2 GetApiKeys([IncludeValues => Bool, Limit => Int, NameQuery => Str, Position => Str])
+=head2 GetApiKeys([CustomerId => Str, IncludeValues => Bool, Limit => Int, NameQuery => Str, Position => Str])
 
 Each argument is described in detail in: L<Paws::ApiGateway::GetApiKeys>
 
@@ -1272,7 +1272,7 @@ Returns: a L<Paws::ApiGateway::RestApi> instance
 API from an external API definition file.
 
 
-=head2 PutIntegration(HttpMethod => Str, ResourceId => Str, RestApiId => Str, Type => Str, [CacheKeyParameters => ArrayRef[Str|Undef], CacheNamespace => Str, Credentials => Str, IntegrationHttpMethod => Str, PassthroughBehavior => Str, RequestParameters => L<Paws::ApiGateway::MapOfStringToString>, RequestTemplates => L<Paws::ApiGateway::MapOfStringToString>, Uri => Str])
+=head2 PutIntegration(HttpMethod => Str, ResourceId => Str, RestApiId => Str, Type => Str, [CacheKeyParameters => ArrayRef[Str|Undef], CacheNamespace => Str, ContentHandling => Str, Credentials => Str, IntegrationHttpMethod => Str, PassthroughBehavior => Str, RequestParameters => L<Paws::ApiGateway::MapOfStringToString>, RequestTemplates => L<Paws::ApiGateway::MapOfStringToString>, Uri => Str])
 
 Each argument is described in detail in: L<Paws::ApiGateway::PutIntegration>
 
@@ -1281,7 +1281,7 @@ Returns: a L<Paws::ApiGateway::Integration> instance
   Represents a put integration.
 
 
-=head2 PutIntegrationResponse(HttpMethod => Str, ResourceId => Str, RestApiId => Str, StatusCode => Str, [ResponseParameters => L<Paws::ApiGateway::MapOfStringToString>, ResponseTemplates => L<Paws::ApiGateway::MapOfStringToString>, SelectionPattern => Str])
+=head2 PutIntegrationResponse(HttpMethod => Str, ResourceId => Str, RestApiId => Str, StatusCode => Str, [ContentHandling => Str, ResponseParameters => L<Paws::ApiGateway::MapOfStringToString>, ResponseTemplates => L<Paws::ApiGateway::MapOfStringToString>, SelectionPattern => Str])
 
 Each argument is described in detail in: L<Paws::ApiGateway::PutIntegrationResponse>
 
@@ -1504,9 +1504,9 @@ Returns: a L<Paws::ApiGateway::UsagePlan> instance
 
 Paginator methods are helpers that repetively call methods that return partial results
 
-=head2 GetAllApiKeys(sub { },[IncludeValues => Bool, Limit => Int, NameQuery => Str, Position => Str])
+=head2 GetAllApiKeys(sub { },[CustomerId => Str, IncludeValues => Bool, Limit => Int, NameQuery => Str, Position => Str])
 
-=head2 GetAllApiKeys([IncludeValues => Bool, Limit => Int, NameQuery => Str, Position => Str])
+=head2 GetAllApiKeys([CustomerId => Str, IncludeValues => Bool, Limit => Int, NameQuery => Str, Position => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

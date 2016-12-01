@@ -3,6 +3,7 @@ package Paws::ApiGateway::Integration;
   use Moose;
   has CacheKeyParameters => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has CacheNamespace => (is => 'ro', isa => 'Str');
+  has ContentHandling => (is => 'ro', isa => 'Str');
   has Credentials => (is => 'ro', isa => 'Str');
   has HttpMethod => (is => 'ro', isa => 'Str');
   has IntegrationResponses => (is => 'ro', isa => 'Paws::ApiGateway::MapOfIntegrationResponse');
@@ -34,6 +35,32 @@ Specifies the integration's cache key parameters.
 Specifies the integration's cache namespace.
 
 
+=head2 ContentHandling => Str
+
+Specifies how to handle request payload content type conversions.
+Supported values are C<CONVERT_TO_BINARY> and C<CONVERT_TO_TEXT>, with
+the following behaviors:
+
+=over
+
+=item *
+
+C<CONVERT_TO_BINARY>: Converts a request payload from a Base64-encoded
+string to the corresponding binary blob.
+
+=item *
+
+C<CONVERT_TO_TEXT>: Converts a request payload from a binary blob to a
+Base64-encoded string.
+
+=back
+
+If this property is not defined, the request payload will be passed
+through from the method request to integration request without
+modification, provided that the C<passthroughBehaviors> is configured
+to support payload pass-through.
+
+Valid values are: C<"CONVERT_TO_BINARY">, C<"CONVERT_TO_TEXT">
 =head2 Credentials => Str
 
 Specifies the credentials required for the integration, if any. For AWS

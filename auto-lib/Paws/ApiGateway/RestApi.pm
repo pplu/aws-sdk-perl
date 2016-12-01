@@ -1,6 +1,7 @@
 
 package Paws::ApiGateway::RestApi;
   use Moose;
+  has BinaryMediaTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has CreatedDate => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has Id => (is => 'ro', isa => 'Str');
@@ -17,6 +18,12 @@ package Paws::ApiGateway::RestApi;
 Paws::ApiGateway::RestApi
 
 =head1 ATTRIBUTES
+
+
+=head2 BinaryMediaTypes => ArrayRef[Str|Undef]
+
+The list of binary media types supported by the RestApi. By default,
+the RestApi supports only UTF-8-encoded text payloads.
 
 
 =head2 CreatedDate => Str

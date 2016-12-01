@@ -42,14 +42,16 @@ default value is 300. The maximum value is 3600, or 1 hour.
 =head2 AuthorizerUri => Str
 
 [Required] Specifies the authorizer's Uniform Resource Identifier
-(URI). For TOKEN authorizers, this must be a well-formed Lambda
-function URI. The URI should be of the form
-C<arn:aws:apigateway:{region}:lambda:path/{service_api}>. C<Region> is
-used to determine the right endpoint. In this case, C<path> is used to
-indicate that the remaining substring in the URI should be treated as
-the path to the resource, including the initial C</>. For Lambda
-functions, this is usually of the form
-/2015-03-31/functions/[FunctionARN]/invocations
+(URI). For C<TOKEN> authorizers, this must be a well-formed Lambda
+function URI, for example,
+C<arn:aws:apigateway:us-west-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-2:{account_id}:function:{lambda_function_name}/invocations>.
+In general, the URI has this form
+C<arn:aws:apigateway:{region}:lambda:path/{service_api}>, where
+C<{region}> is the same as the region hosting the Lambda function,
+C<path> indicates that the remaining substring in the URI should be
+treated as the path to the resource, including the initial C</>. For
+Lambda functions, this is usually of the form
+/2015-03-31/functions/[FunctionARN]/invocations.
 
 
 =head2 AuthType => Str
@@ -65,17 +67,18 @@ The identifier for the authorizer resource.
 
 =head2 IdentitySource => Str
 
-[Required] The source of the identity in an incoming request. For TOKEN
-authorizers, this value is a mapping expression with the same syntax as
-integration parameter mappings. The only valid source for tokens is
-'header', so the expression should match
+[Required] The source of the identity in an incoming request. For a
+C<TOKEN> authorizer, this value is a mapping expression with the same
+syntax as integration parameter mappings. The only valid source for
+tokens is 'header', so the expression should match
 'method.request.header.[headerName]'. The value of the header
-'[headerName]' will be interpreted as the incoming token.
+'[headerName]' will be interpreted as the incoming token. For
+C<COGNITO_USER_POOLS> authorizers, this property is used.
 
 
 =head2 IdentityValidationExpression => Str
 
-A validation expression for the incoming identity. For TOKEN
+A validation expression for the incoming identity. For C<TOKEN>
 authorizers, this value should be a regular expression. The incoming
 token from the client is matched against this expression, and will
 proceed if the token matches. If the token doesn't match, the client
@@ -89,13 +92,18 @@ receives a 401 Unauthorized response.
 
 =head2 ProviderARNs => ArrayRef[Str|Undef]
 
-A list of the provider ARNs of the authorizer.
+A list of the provider ARNs of the authorizer. For an C<TOKEN>
+authorizer, this is not defined. For authorizers of the
+C<COGNITO_USER_POOLS> type, each element corresponds to a user pool ARN
+of this format:
+C<arn:aws:cognito-idp:{region}:{account_id}:userpool/{user_pool_id}>.
 
 
 =head2 Type => Str
 
-[Required] The type of the authorizer. Currently, the only valid type
-is TOKEN.
+[Required] The type of the authorizer. Currently, the valid type is
+C<TOKEN> for a Lambda function or C<COGNITO_USER_POOLS> for an Amazon
+Cognito user pool.
 
 Valid values are: C<"TOKEN">, C<"COGNITO_USER_POOLS">
 =head2 _request_id => Str

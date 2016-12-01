@@ -1,6 +1,7 @@
 
 package Paws::ApiGateway::CreateRestApi;
   use Moose;
+  has BinaryMediaTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has CloneFrom => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str', required => 1);
@@ -35,6 +36,13 @@ As an example:
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 
 =head1 ATTRIBUTES
+
+
+=head2 BinaryMediaTypes => ArrayRef[Str|Undef]
+
+The list of binary media types supported by the RestApi. By default,
+the RestApi supports only UTF-8-encoded text payloads.
+
 
 
 =head2 CloneFrom => Str
