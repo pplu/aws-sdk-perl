@@ -2,10 +2,11 @@ package Paws::S3::LifecycleRule;
   use Moose;
   has AbortIncompleteMultipartUpload => (is => 'ro', isa => 'Paws::S3::AbortIncompleteMultipartUpload');
   has Expiration => (is => 'ro', isa => 'Paws::S3::LifecycleExpiration');
+  has Filter => (is => 'ro', isa => 'Paws::S3::LifecycleRuleFilter');
   has ID => (is => 'ro', isa => 'Str');
   has NoncurrentVersionExpiration => (is => 'ro', isa => 'Paws::S3::NoncurrentVersionExpiration');
   has NoncurrentVersionTransitions => (is => 'ro', isa => 'ArrayRef[Paws::S3::NoncurrentVersionTransition]', xmlname => 'NoncurrentVersionTransition', request_name => 'NoncurrentVersionTransition', traits => ['Unwrapped','NameInRequest']);
-  has Prefix => (is => 'ro', isa => 'Str', required => 1);
+  has Prefix => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str', required => 1);
   has Transitions => (is => 'ro', isa => 'ArrayRef[Paws::S3::Transition]', xmlname => 'Transition', request_name => 'Transition', traits => ['Unwrapped','NameInRequest']);
 1;
@@ -53,6 +54,11 @@ This class has no description
   
 
 
+=head2 Filter => L<Paws::S3::LifecycleRuleFilter>
+
+  
+
+
 =head2 ID => Str
 
   Unique identifier for the rule. The value cannot be longer than 255
@@ -69,9 +75,10 @@ characters.
   
 
 
-=head2 B<REQUIRED> Prefix => Str
+=head2 Prefix => Str
 
-  Prefix identifying one or more objects to which the rule applies.
+  Prefix identifying one or more objects to which the rule applies. This
+is deprecated; use Filter instead.
 
 
 =head2 B<REQUIRED> Status => Str

@@ -25,6 +25,7 @@ package Paws::S3::PutObject;
   has SSECustomerKeyMD5 => (is => 'ro', isa => 'Str', header_name => 'x-amz-server-side-encryption-customer-key-MD5', traits => ['ParamInHeader']);
   has SSEKMSKeyId => (is => 'ro', isa => 'Str', header_name => 'x-amz-server-side-encryption-aws-kms-key-id', traits => ['ParamInHeader']);
   has StorageClass => (is => 'ro', isa => 'Str', header_name => 'x-amz-storage-class', traits => ['ParamInHeader']);
+  has Tagging => (is => 'ro', isa => 'Str', header_name => 'x-amz-tagging', traits => ['ParamInHeader']);
   has WebsiteRedirectLocation => (is => 'ro', isa => 'Str', header_name => 'x-amz-website-redirect-location', traits => ['ParamInHeader']);
 
   use MooseX::ClassAttribute;
@@ -219,6 +220,13 @@ http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingAWSSDK.html
 The type of storage to use for the object. Defaults to 'STANDARD'.
 
 Valid values are: C<"STANDARD">, C<"REDUCED_REDUNDANCY">, C<"STANDARD_IA">
+
+=head2 Tagging => Str
+
+The tag-set for the object. The tag-set must be encoded as URL Query
+parameters
+
+
 
 =head2 WebsiteRedirectLocation => Str
 

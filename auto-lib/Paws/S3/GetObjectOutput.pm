@@ -26,6 +26,7 @@ package Paws::S3::GetObjectOutput;
   has SSECustomerKeyMD5 => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-server-side-encryption-customer-key-MD5');
   has SSEKMSKeyId => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-server-side-encryption-aws-kms-key-id');
   has StorageClass => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-storage-class');
+  has TagCount => (is => 'ro', isa => 'Int', traits => ['ParamInHeader'], header_name => 'x-amz-tagging-count');
   has VersionId => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-version-id');
   has WebsiteRedirectLocation => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-website-redirect-location');
   use MooseX::ClassAttribute;
@@ -210,6 +211,12 @@ master encryption key that was used for the object.
 
 
 Valid values are: C<"STANDARD">, C<"REDUCED_REDUNDANCY">, C<"STANDARD_IA">
+
+=head2 TagCount => Int
+
+The number of tags, if any, on the object.
+
+
 
 =head2 VersionId => Str
 

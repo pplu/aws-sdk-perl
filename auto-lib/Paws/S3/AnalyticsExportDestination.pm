@@ -1,14 +1,13 @@
-package Paws::S3::RestoreRequest;
+package Paws::S3::AnalyticsExportDestination;
   use Moose;
-  has Days => (is => 'ro', isa => 'Int', required => 1);
-  has GlacierJobParameters => (is => 'ro', isa => 'Paws::S3::GlacierJobParameters');
+  has S3BucketDestination => (is => 'ro', isa => 'Paws::S3::AnalyticsS3BucketDestination', required => 1);
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::S3::RestoreRequest
+Paws::S3::AnalyticsExportDestination
 
 =head1 USAGE
 
@@ -19,16 +18,16 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::S3::RestoreRequest object:
+As an example, if Att1 is expected to be a Paws::S3::AnalyticsExportDestination object:
 
-  $service_obj->Method(Att1 => { Days => $value, ..., GlacierJobParameters => $value  });
+  $service_obj->Method(Att1 => { S3BucketDestination => $value, ..., S3BucketDestination => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::S3::RestoreRequest object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::S3::AnalyticsExportDestination object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Days
+  $result->Att1->S3BucketDestination
 
 =head1 DESCRIPTION
 
@@ -37,14 +36,9 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Days => Int
+=head2 B<REQUIRED> S3BucketDestination => L<Paws::S3::AnalyticsS3BucketDestination>
 
-  Lifetime of the active copy in days
-
-
-=head2 GlacierJobParameters => L<Paws::S3::GlacierJobParameters>
-
-  Glacier related prameters pertaining to this job.
+  A destination signifying output to an S3 bucket.
 
 
 
