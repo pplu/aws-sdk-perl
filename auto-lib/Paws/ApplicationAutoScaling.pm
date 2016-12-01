@@ -143,32 +143,15 @@ Paws::ApplicationAutoScaling - Perl Interface to AWS Application Auto Scaling
 
 =head1 DESCRIPTION
 
-Application Auto Scaling is a general purpose Auto Scaling service for
-supported elastic AWS resources. With Application Auto Scaling, you can
-automatically scale your AWS resources, with an experience similar to
-that of Auto Scaling.
-
-Application Auto Scaling supports scaling the following AWS resources:
+With Application Auto Scaling, you can automatically scale your AWS
+resources. The experience similar to that of Auto Scaling. You can use
+Application Auto Scaling to accomplish the following tasks:
 
 =over
 
 =item *
 
-Amazon ECS services
-
-=item *
-
-Amazon EC2 Spot fleet instances
-
-=back
-
-You can use Application Auto Scaling to accomplish the following tasks:
-
-=over
-
-=item *
-
-Define scaling policies for automatically adjusting your AWS resources
+Define scaling policies to automatically scale your AWS resources
 
 =item *
 
@@ -176,48 +159,33 @@ Scale your resources in response to CloudWatch alarms
 
 =item *
 
-View history of your scaling events
+View the history of your scaling events
 
 =back
 
-Application Auto Scaling is available in the following regions:
+Application Auto Scaling can scale the following AWS resources:
 
 =over
 
 =item *
 
-C<us-east-1>
+Amazon ECS services. For more information, see Service Auto Scaling in
+the I<Amazon EC2 Container Service Developer Guide>.
 
 =item *
 
-C<us-west-1>
+Amazon EC2 Spot fleets. For more information, see Automatic Scaling for
+Spot Fleet in the I<Amazon EC2 User Guide>.
 
 =item *
 
-C<us-west-2>
-
-=item *
-
-C<ap-southeast-1>
-
-=item *
-
-C<ap-southeast-2>
-
-=item *
-
-C<ap-northeast-1>
-
-=item *
-
-C<eu-central-1>
-
-=item *
-
-C<eu-west-1>
+Amazon EMR clusters. For more information, see Using Automatic Scaling
+in Amazon EMR in the I<Amazon EMR Management Guide>.
 
 =back
 
+For a list of supported regions, see AWS Regions and Endpoints:
+Application Auto Scaling in the I<AWS General Reference>.
 
 =head1 METHODS
 
@@ -227,15 +195,13 @@ Each argument is described in detail in: L<Paws::ApplicationAutoScaling::DeleteS
 
 Returns: a L<Paws::ApplicationAutoScaling::DeleteScalingPolicyResponse> instance
 
-  Deletes an Application Auto Scaling scaling policy that was previously
-created. If you are no longer using a scaling policy, you can delete it
-with this operation.
+  Deletes the specified Application Auto Scaling scaling policy.
 
 Deleting a policy deletes the underlying alarm action, but does not
 delete the CloudWatch alarm associated with the scaling policy, even if
 it no longer has an associated action.
 
-To create a new scaling policy or update an existing one, see
+To create a scaling policy or update an existing one, see
 PutScalingPolicy.
 
 
@@ -245,12 +211,12 @@ Each argument is described in detail in: L<Paws::ApplicationAutoScaling::Deregis
 
 Returns: a L<Paws::ApplicationAutoScaling::DeregisterScalableTargetResponse> instance
 
-  Deregisters a scalable target that was previously registered. If you
-are no longer using a scalable target, you can delete it with this
-operation. When you deregister a scalable target, all of the scaling
-policies that are associated with that scalable target are deleted.
+  Deregisters a scalable target.
 
-To create a new scalable target or update an existing one, see
+Deregistering a scalable target deletes the scaling policies that are
+associated with it.
+
+To create a scalable target or update an existing one, see
 RegisterScalableTarget.
 
 
@@ -260,15 +226,15 @@ Each argument is described in detail in: L<Paws::ApplicationAutoScaling::Describ
 
 Returns: a L<Paws::ApplicationAutoScaling::DescribeScalableTargetsResponse> instance
 
-  Provides descriptive information for scalable targets with a specified
-service namespace.
+  Provides descriptive information about the scalable targets in the
+specified namespace.
 
-You can filter the results in a service namespace with the
-C<ResourceIds> and C<ScalableDimension> parameters.
+You can filter the results using the C<ResourceIds> and
+C<ScalableDimension> parameters.
 
-To create a new scalable target or update an existing one, see
+To create a scalable target or update an existing one, see
 RegisterScalableTarget. If you are no longer using a scalable target,
-you can deregister it with DeregisterScalableTarget.
+you can deregister it using DeregisterScalableTarget.
 
 
 =head2 DescribeScalingActivities(ServiceNamespace => Str, [MaxResults => Int, NextToken => Str, ResourceId => Str, ScalableDimension => Str])
@@ -277,16 +243,16 @@ Each argument is described in detail in: L<Paws::ApplicationAutoScaling::Describ
 
 Returns: a L<Paws::ApplicationAutoScaling::DescribeScalingActivitiesResponse> instance
 
-  Provides descriptive information for scaling activities with a
-specified service namespace for the previous six weeks.
+  Provides descriptive information about the scaling activities in the
+specified namespace from the previous six weeks.
 
-You can filter the results in a service namespace with the
-C<ResourceId> and C<ScalableDimension> parameters.
+You can filter the results using the C<ResourceId> and
+C<ScalableDimension> parameters.
 
 Scaling activities are triggered by CloudWatch alarms that are
-associated with scaling policies. To view the existing scaling policies
-for a service namespace, see DescribeScalingPolicies. To create a new
-scaling policy or update an existing one, see PutScalingPolicy.
+associated with scaling policies. To view the scaling policies for a
+service namespace, see DescribeScalingPolicies. To create a scaling
+policy or update an existing one, see PutScalingPolicy.
 
 
 =head2 DescribeScalingPolicies(ServiceNamespace => Str, [MaxResults => Int, NextToken => Str, PolicyNames => ArrayRef[Str|Undef], ResourceId => Str, ScalableDimension => Str])
@@ -295,15 +261,15 @@ Each argument is described in detail in: L<Paws::ApplicationAutoScaling::Describ
 
 Returns: a L<Paws::ApplicationAutoScaling::DescribeScalingPoliciesResponse> instance
 
-  Provides descriptive information for scaling policies with a specified
-service namespace.
+  Provides descriptive information about the scaling policies in the
+specified namespace.
 
-You can filter the results in a service namespace with the
-C<ResourceId>, C<ScalableDimension>, and C<PolicyNames> parameters.
+You can filter the results using the C<ResourceId>,
+C<ScalableDimension>, and C<PolicyNames> parameters.
 
-To create a new scaling policy or update an existing one, see
+To create a scaling policy or update an existing one, see
 PutScalingPolicy. If you are no longer using a scaling policy, you can
-delete it with DeleteScalingPolicy.
+delete it using DeleteScalingPolicy.
 
 
 =head2 PutScalingPolicy(PolicyName => Str, ResourceId => Str, ScalableDimension => Str, ServiceNamespace => Str, [PolicyType => Str, StepScalingPolicyConfiguration => L<Paws::ApplicationAutoScaling::StepScalingPolicyConfiguration>])
@@ -312,20 +278,22 @@ Each argument is described in detail in: L<Paws::ApplicationAutoScaling::PutScal
 
 Returns: a L<Paws::ApplicationAutoScaling::PutScalingPolicyResponse> instance
 
-  Creates or updates a policy for an existing Application Auto Scaling
-scalable target. Each scalable target is identified by service
-namespace, a resource ID, and a scalable dimension, and a scaling
-policy applies to a scalable target that is identified by those three
-attributes. You cannot create a scaling policy without first
-registering a scalable target with RegisterScalableTarget.
+  Creates or updates a policy for an Application Auto Scaling scalable
+target.
 
-To update an existing policy, use the existing policy name and set the
-parameters you want to change. Any existing parameter not changed in an
-update to an existing policy is not changed in this update request.
+Each scalable target is identified by a service namespace, resource ID,
+and scalable dimension. A scaling policy applies to the scalable target
+identified by those three attributes. You cannot create a scaling
+policy without first registering a scalable target using
+RegisterScalableTarget.
 
-You can view the existing scaling policies for a service namespace with
+To update a policy, specify its policy name and the parameters that you
+want to change. Any parameters that you don't specify are not changed
+by this update request.
+
+You can view the scaling policies for a service namespace using
 DescribeScalingPolicies. If you are no longer using a scaling policy,
-you can delete it with DeleteScalingPolicy.
+you can delete it using DeleteScalingPolicy.
 
 
 =head2 RegisterScalableTarget(ResourceId => Str, ScalableDimension => Str, ServiceNamespace => Str, [MaxCapacity => Int, MinCapacity => Int, RoleARN => Str])
@@ -335,15 +303,15 @@ Each argument is described in detail in: L<Paws::ApplicationAutoScaling::Registe
 Returns: a L<Paws::ApplicationAutoScaling::RegisterScalableTargetResponse> instance
 
   Registers or updates a scalable target. A scalable target is a resource
-that can be scaled out or in with Application Auto Scaling. After you
-have registered a scalable target, you can use this operation to update
-the minimum and maximum values for your scalable dimension.
+that Application Auto Scaling can scale out or scale in. After you have
+registered a scalable target, you can use this operation to update the
+minimum and maximum values for your scalable dimension.
 
-After you register a scalable target with Application Auto Scaling, you
-can create and apply scaling policies to it with PutScalingPolicy. You
-can view the existing scaling policies for a service namespace with
-DescribeScalableTargets. If you are no longer using a scalable target,
-you can deregister it with DeregisterScalableTarget.
+After you register a scalable target, you can create and apply scaling
+policies using PutScalingPolicy. You can view the scaling policies for
+a service namespace using DescribeScalableTargets. If you are no longer
+using a scalable target, you can deregister it using
+DeregisterScalableTarget.
 
 
 

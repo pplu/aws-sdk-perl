@@ -17,11 +17,8 @@ Paws::ApplicationAutoScaling::DescribeScalingPoliciesResponse
 
 =head2 NextToken => Str
 
-The C<NextToken> value to include in a future
-C<DescribeScalingPolicies> request. When the results of a
-C<DescribeScalingPolicies> request exceed C<MaxResults>, this value can
-be used to retrieve the next page of results. This value is C<null>
-when there are no more results to return.
+The token required to get the next set of results. This value is
+C<null> if there are no more results to return.
 
 
 =head2 ScalingPolicies => ArrayRef[L<Paws::ApplicationAutoScaling::ScalingPolicy>]
