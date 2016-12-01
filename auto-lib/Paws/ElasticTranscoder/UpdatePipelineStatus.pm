@@ -48,9 +48,13 @@ The desired status of the pipeline:
 
 =over
 
-=item * C<Active>: The pipeline is processing jobs.
+=item *
 
-=item * C<Paused>: The pipeline is not currently processing jobs.
+C<Active>: The pipeline is processing jobs.
+
+=item *
+
+C<Paused>: The pipeline is not currently processing jobs.
 
 =back
 

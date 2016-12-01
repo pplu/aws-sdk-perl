@@ -46,24 +46,31 @@ C<.jpg> and C<.png>
 
 =head2 MergePolicy => Str
 
-  A policy that determines how Elastic Transcoder will handle the
-existence of multiple album artwork files.
+  A policy that determines how Elastic Transcoder handles the existence
+of multiple album artwork files.
 
 =over
 
-=item * C<Replace:> The specified album art will replace any existing
+=item *
+
+C<Replace:> The specified album art replaces any existing album art.
+
+=item *
+
+C<Prepend:> The specified album art is placed in front of any existing
 album art.
 
-=item * C<Prepend:> The specified album art will be placed in front of
-any existing album art.
+=item *
 
-=item * C<Append:> The specified album art will be placed after any
-existing album art.
+C<Append:> The specified album art is placed after any existing album
+art.
 
-=item * C<Fallback:> If the original input file contains artwork,
-Elastic Transcoder will use that artwork for the output. If the
-original input does not contain artwork, Elastic Transcoder will use
-the specified album art file.
+=item *
+
+C<Fallback:> If the original input file contains artwork, Elastic
+Transcoder uses that artwork for the output. If the original input does
+not contain artwork, Elastic Transcoder uses the specified album art
+file.
 
 =back
 

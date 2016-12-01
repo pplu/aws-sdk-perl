@@ -63,31 +63,49 @@ are as follows:
 
 =over
 
-=item * C<0> B< channels with any input:> Audio omitted from the output
+=item *
 
-=item * C<1, 2, or auto > B<channels with no audio input:> Audio
-omitted from the output
+C<0> B< channels with any input:> Audio omitted from the output
 
-=item * C<1 > B<channel with any input with audio:> One track with one
-channel, downmixed if necessary
+=item *
 
-=item * C<2 > B<channels with one track with one channel:> One track
-with two identical channels
+C<1, 2, or auto > B<channels with no audio input:> Audio omitted from
+the output
 
-=item * C<2 or auto > B<channels with two tracks with one channel
-each:> One track with two channels
+=item *
 
-=item * C<2 or auto > B<channels with one track with two channels:> One
+C<1 > B<channel with any input with audio:> One track with one channel,
+downmixed if necessary
+
+=item *
+
+C<2 > B<channels with one track with one channel:> One track with two
+identical channels
+
+=item *
+
+C<2 or auto > B<channels with two tracks with one channel each:> One
 track with two channels
 
-=item * C<2 > B<channels with one track with multiple channels:> One
-track with two channels
+=item *
 
-=item * C<auto > B<channels with one track with one channel:> One track
-with one channel
+C<2 or auto > B<channels with one track with two channels:> One track
+with two channels
 
-=item * C<auto > B<channels with one track with multiple channels:> One
-track with multiple channels
+=item *
+
+C<2 > B<channels with one track with multiple channels:> One track with
+two channels
+
+=item *
+
+C<auto > B<channels with one track with one channel:> One track with
+one channel
+
+=item *
+
+C<auto > B<channels with one track with multiple channels:> One track
+with multiple channels
 
 =back
 
@@ -100,31 +118,49 @@ inputs are as follows:
 
 =over
 
-=item * C<0 > B<channels with any input:> Audio omitted from the output
+=item *
 
-=item * C<1, 2, or auto > B<channels with no audio input:> Audio
-omitted from the output
+C<0 > B<channels with any input:> Audio omitted from the output
 
-=item * C<1 > B<channel with any input with audio:> One track with one
-channel, downmixed if necessary
+=item *
 
-=item * C<2 > B<channels with one track with one channel:> Two tracks
-with one identical channel each
+C<1, 2, or auto > B<channels with no audio input:> Audio omitted from
+the output
 
-=item * C<2 or auto > B<channels with two tracks with one channel
-each:> Two tracks with one channel each
+=item *
 
-=item * C<2 or auto > B<channels with one track with two channels:> Two
+C<1 > B<channel with any input with audio:> One track with one channel,
+downmixed if necessary
+
+=item *
+
+C<2 > B<channels with one track with one channel:> Two tracks with one
+identical channel each
+
+=item *
+
+C<2 or auto > B<channels with two tracks with one channel each:> Two
 tracks with one channel each
 
-=item * C<2 > B<channels with one track with multiple channels:> Two
+=item *
+
+C<2 or auto > B<channels with one track with two channels:> Two tracks
+with one channel each
+
+=item *
+
+C<2 > B<channels with one track with multiple channels:> Two tracks
+with one channel each
+
+=item *
+
+C<auto > B<channels with one track with one channel:> One track with
+one channel
+
+=item *
+
+C<auto > B<channels with one track with multiple channels:> Up to eight
 tracks with one channel each
-
-=item * C<auto > B<channels with one track with one channel:> One track
-with one channel
-
-=item * C<auto > B<channels with one track with multiple channels:> Up
-to eight tracks with one channel each
 
 =back
 
@@ -138,32 +174,50 @@ channel value and inputs are as follows:
 
 =over
 
-=item * C<0 > B<channels with any input:> Audio omitted from the output
+=item *
 
-=item * C<1, 2, or auto > B<channels with no audio input:> Audio
-omitted from the output
+C<0 > B<channels with any input:> Audio omitted from the output
 
-=item * C<1 > B<channel with any input with audio:> One track with one
-channel, downmixed if necessary, plus six MOS tracks
+=item *
 
-=item * C<2 > B<channels with one track with one channel:> Two tracks
-with one identical channel each, plus six MOS tracks
+C<1, 2, or auto > B<channels with no audio input:> Audio omitted from
+the output
 
-=item * C<2 or auto > B<channels with two tracks with one channel
-each:> Two tracks with one channel each, plus six MOS tracks
+=item *
 
-=item * C<2 or auto > B<channels with one track with two channels:> Two
+C<1 > B<channel with any input with audio:> One track with one channel,
+downmixed if necessary, plus six MOS tracks
+
+=item *
+
+C<2 > B<channels with one track with one channel:> Two tracks with one
+identical channel each, plus six MOS tracks
+
+=item *
+
+C<2 or auto > B<channels with two tracks with one channel each:> Two
 tracks with one channel each, plus six MOS tracks
 
-=item * C<2 > B<channels with one track with multiple channels:> Two
-tracks with one channel each, plus six MOS tracks
+=item *
 
-=item * C<auto > B<channels with one track with one channel:> One track
-with one channel, plus seven MOS tracks
+C<2 or auto > B<channels with one track with two channels:> Two tracks
+with one channel each, plus six MOS tracks
 
-=item * C<auto > B<channels with one track with multiple channels:> Up
-to eight tracks with one channel each, plus MOS tracks until there are
-eight tracks in all
+=item *
+
+C<2 > B<channels with one track with multiple channels:> Two tracks
+with one channel each, plus six MOS tracks
+
+=item *
+
+C<auto > B<channels with one track with one channel:> One track with
+one channel, plus seven MOS tracks
+
+=item *
+
+C<auto > B<channels with one track with multiple channels:> Up to eight
+tracks with one channel each, plus MOS tracks until there are eight
+tracks in all
 
 =back
 
@@ -193,16 +247,24 @@ The output of a specific channel value and inputs are as follows:
 
 =over
 
-=item * C<auto>B< channel specified, with any input:> Pass through up
-to eight input channels.
+=item *
 
-=item * C<0>B< channels specified, with any input:> Audio omitted from
-the output.
+C<auto> B< channel specified, with any input:> Pass through up to eight
+input channels.
 
-=item * C<1>B< channel specified, with at least one input channel:>
-Mono sound.
+=item *
 
-=item * C<2>B< channels specified, with any input:> Two identical mono
+C<0> B< channels specified, with any input:> Audio omitted from the
+output.
+
+=item *
+
+C<1> B< channel specified, with at least one input channel:> Mono
+sound.
+
+=item *
+
+C<2> B< channels specified, with any input:> Two identical mono
 channels or stereo. For more information about tracks, see
 C<Audio:AudioPackingMode.>
 

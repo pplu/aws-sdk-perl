@@ -104,36 +104,46 @@ album art:
 
 =over
 
-=item * C<Fit:> Elastic Transcoder scales the output art so it matches
-the value that you specified in either C<MaxWidth> or C<MaxHeight>
-without exceeding the other value.
+=item *
 
-=item * C<Fill:> Elastic Transcoder scales the output art so it matches
-the value that you specified in either C<MaxWidth> or C<MaxHeight> and
+C<Fit:> Elastic Transcoder scales the output art so it matches the
+value that you specified in either C<MaxWidth> or C<MaxHeight> without
+exceeding the other value.
+
+=item *
+
+C<Fill:> Elastic Transcoder scales the output art so it matches the
+value that you specified in either C<MaxWidth> or C<MaxHeight> and
 matches or exceeds the other value. Elastic Transcoder centers the
 output art and then crops it in the dimension (if any) that exceeds the
 maximum value.
 
-=item * C<Stretch:> Elastic Transcoder stretches the output art to
-match the values that you specified for C<MaxWidth> and C<MaxHeight>.
-If the relative proportions of the input art and the output art are
-different, the output art will be distorted.
+=item *
 
-=item * C<Keep:> Elastic Transcoder does not scale the output art. If
-either dimension of the input art exceeds the values that you specified
-for C<MaxWidth> and C<MaxHeight>, Elastic Transcoder crops the output
-art.
+C<Stretch:> Elastic Transcoder stretches the output art to match the
+values that you specified for C<MaxWidth> and C<MaxHeight>. If the
+relative proportions of the input art and the output art are different,
+the output art will be distorted.
 
-=item * C<ShrinkToFit:> Elastic Transcoder scales the output art down
-so that its dimensions match the values that you specified for at least
-one of C<MaxWidth> and C<MaxHeight> without exceeding either value. If
+=item *
+
+C<Keep:> Elastic Transcoder does not scale the output art. If either
+dimension of the input art exceeds the values that you specified for
+C<MaxWidth> and C<MaxHeight>, Elastic Transcoder crops the output art.
+
+=item *
+
+C<ShrinkToFit:> Elastic Transcoder scales the output art down so that
+its dimensions match the values that you specified for at least one of
+C<MaxWidth> and C<MaxHeight> without exceeding either value. If you
+specify this option, Elastic Transcoder does not scale the art up.
+
+=item *
+
+C<ShrinkToFill> Elastic Transcoder scales the output art down so that
+its dimensions match the values that you specified for at least one of
+C<MaxWidth> and C<MaxHeight> without dropping below either value. If
 you specify this option, Elastic Transcoder does not scale the art up.
-
-=item * C<ShrinkToFill> Elastic Transcoder scales the output art down
-so that its dimensions match the values that you specified for at least
-one of C<MaxWidth> and C<MaxHeight> without dropping below either
-value. If you specify this option, Elastic Transcoder does not scale
-the art up.
 
 =back
 

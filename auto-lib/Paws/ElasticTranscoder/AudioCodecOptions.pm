@@ -73,17 +73,25 @@ supports the following profiles:
 
 =over
 
-=item * C<auto>: If you specify C<auto>, Elastic Transcoder will select
-the profile based on the bit rate selected for the output file.
+=item *
 
-=item * C<AAC-LC>: The most common AAC profile. Use for bit rates
-larger than 64 kbps.
+C<auto>: If you specify C<auto>, Elastic Transcoder selects the profile
+based on the bit rate selected for the output file.
 
-=item * C<HE-AAC>: Not supported on some older players and devices. Use
-for bit rates between 40 and 80 kbps.
+=item *
 
-=item * C<HE-AACv2>: Not supported on some players and devices. Use for
-bit rates less than 48 kbps.
+C<AAC-LC>: The most common AAC profile. Use for bit rates larger than
+64 kbps.
+
+=item *
+
+C<HE-AAC>: Not supported on some older players and devices. Use for bit
+rates between 40 and 80 kbps.
+
+=item *
+
+C<HE-AACv2>: Not supported on some players and devices. Use for bit
+rates less than 48 kbps.
 
 =back
 

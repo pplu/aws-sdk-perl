@@ -43,7 +43,8 @@ transcoding process.
 
 =head2 Encryption => L<Paws::ElasticTranscoder::Encryption>
 
-  The encryption settings, if any, that you want Elastic Transcoder to
+  The encryption settings, if any, that Elastic Transcoder needs to
+decyrpt your caption sources, or that you want Elastic Transcoder to
 apply to your caption sources.
 
 
@@ -62,8 +63,9 @@ language of the captions.
 
 =head2 Language => Str
 
-  A string that specifies the language of the caption. Specify this as
-one of:
+  A string that specifies the language of the caption. If you specified
+multiple inputs with captions, the caption language must match in order
+to be included in the output. Specify this as one of:
 
 =over
 

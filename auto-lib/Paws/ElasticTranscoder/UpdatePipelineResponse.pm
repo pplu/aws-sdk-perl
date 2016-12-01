@@ -18,7 +18,7 @@ Paws::ElasticTranscoder::UpdatePipelineResponse
 
 =head2 Pipeline => L<Paws::ElasticTranscoder::Pipeline>
 
-
+The pipeline updated by this C<UpdatePipelineResponse> call.
 
 
 =head2 Warnings => ArrayRef[L<Paws::ElasticTranscoder::Warning>]

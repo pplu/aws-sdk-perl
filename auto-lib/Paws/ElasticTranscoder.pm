@@ -232,7 +232,7 @@ a pipeline from starting to process a job while you're getting the job
 identifier, use UpdatePipelineStatus to temporarily pause the pipeline.
 
 
-=head2 CreateJob(Input => L<Paws::ElasticTranscoder::JobInput>, PipelineId => Str, [Output => L<Paws::ElasticTranscoder::CreateJobOutput>, OutputKeyPrefix => Str, Outputs => ArrayRef[L<Paws::ElasticTranscoder::CreateJobOutput>], Playlists => ArrayRef[L<Paws::ElasticTranscoder::CreateJobPlaylist>], UserMetadata => L<Paws::ElasticTranscoder::UserMetadata>])
+=head2 CreateJob(PipelineId => Str, [Input => L<Paws::ElasticTranscoder::JobInput>, Inputs => ArrayRef[L<Paws::ElasticTranscoder::JobInput>], Output => L<Paws::ElasticTranscoder::CreateJobOutput>, OutputKeyPrefix => Str, Outputs => ArrayRef[L<Paws::ElasticTranscoder::CreateJobOutput>], Playlists => ArrayRef[L<Paws::ElasticTranscoder::CreateJobPlaylist>], UserMetadata => L<Paws::ElasticTranscoder::UserMetadata>])
 
 Each argument is described in detail in: L<Paws::ElasticTranscoder::CreateJob>
 
@@ -407,6 +407,7 @@ Each argument is described in detail in: L<Paws::ElasticTranscoder::UpdatePipeli
 Returns: a L<Paws::ElasticTranscoder::UpdatePipelineResponse> instance
 
   Use the C<UpdatePipeline> operation to update settings for a pipeline.
+
 When you change pipeline settings, your changes take effect
 immediately. Jobs that you have already submitted and that Elastic
 Transcoder has not started to process are affected in addition to jobs

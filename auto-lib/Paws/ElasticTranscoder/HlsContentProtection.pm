@@ -98,8 +98,8 @@ attribute of the EXT-X-KEY metadata tag in the playlist file.
   The content protection method for your output. The only valid value is:
 C<aes-128>.
 
-This value will be written into the method attribute of the
-C<EXT-X-KEY> metadata tag in the output playlist.
+This value is written into the method attribute of the C<EXT-X-KEY>
+metadata tag in the output playlist.
 
 
 

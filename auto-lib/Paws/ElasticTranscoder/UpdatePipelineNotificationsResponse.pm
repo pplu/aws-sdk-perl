@@ -18,7 +18,7 @@ Paws::ElasticTranscoder::UpdatePipelineNotificationsResponse
 =head2 Pipeline => L<Paws::ElasticTranscoder::Pipeline>
 
 A section of the response body that provides information about the
-pipeline.
+pipeline associated with this notification.
 
 
 =head2 _request_id => Str
