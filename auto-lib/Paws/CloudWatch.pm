@@ -188,7 +188,7 @@ Each argument is described in detail in: L<Paws::CloudWatch::DeleteAlarms>
 
 Returns: nothing
 
-  Deletes all specified alarms. In the event of an error, no alarms are
+  Deletes the specified alarms. In the event of an error, no alarms are
 deleted.
 
 
@@ -198,12 +198,12 @@ Each argument is described in detail in: L<Paws::CloudWatch::DescribeAlarmHistor
 
 Returns: a L<Paws::CloudWatch::DescribeAlarmHistoryOutput> instance
 
-  Retrieves history for the specified alarm. Filter alarms by date range
-or item type. If an alarm name is not specified, Amazon CloudWatch
-returns histories for all of the owner's alarms.
+  Retrieves the history for the specified alarm. You can filter the
+results by date range or item type. If an alarm name is not specified,
+the histories for all alarms are returned.
 
-Amazon CloudWatch retains the history of an alarm for two weeks,
-whether or not you delete the alarm.
+Note that Amazon CloudWatch retains the history of an alarm even if you
+delete the alarm.
 
 
 =head2 DescribeAlarms([ActionPrefix => Str, AlarmNamePrefix => Str, AlarmNames => ArrayRef[Str|Undef], MaxRecords => Int, NextToken => Str, StateValue => Str])
@@ -212,20 +212,19 @@ Each argument is described in detail in: L<Paws::CloudWatch::DescribeAlarms>
 
 Returns: a L<Paws::CloudWatch::DescribeAlarmsOutput> instance
 
-  Retrieves alarms with the specified names. If no name is specified, all
-alarms for the user are returned. Alarms can be retrieved by using only
-a prefix for the alarm name, the alarm state, or a prefix for any
-action.
+  Retrieves the specified alarms. If no alarms are specified, all alarms
+are returned. Alarms can be retrieved by using only a prefix for the
+alarm name, the alarm state, or a prefix for any action.
 
 
-=head2 DescribeAlarmsForMetric(MetricName => Str, Namespace => Str, [Dimensions => ArrayRef[L<Paws::CloudWatch::Dimension>], Period => Int, Statistic => Str, Unit => Str])
+=head2 DescribeAlarmsForMetric(MetricName => Str, Namespace => Str, [Dimensions => ArrayRef[L<Paws::CloudWatch::Dimension>], ExtendedStatistic => Str, Period => Int, Statistic => Str, Unit => Str])
 
 Each argument is described in detail in: L<Paws::CloudWatch::DescribeAlarmsForMetric>
 
 Returns: a L<Paws::CloudWatch::DescribeAlarmsForMetricOutput> instance
 
-  Retrieves all alarms for a single metric. Specify a statistic, period,
-or unit to filter the set of alarms further.
+  Retrieves the alarms for the specified metric. Specify a statistic,
+period, or unit to filter the results.
 
 
 =head2 DisableAlarmActions(AlarmNames => ArrayRef[Str|Undef])
@@ -234,9 +233,9 @@ Each argument is described in detail in: L<Paws::CloudWatch::DisableAlarmActions
 
 Returns: nothing
 
-  Disables actions for the specified alarms. When an alarm's actions are
-disabled the alarm's state may change, but none of the alarm's actions
-will execute.
+  Disables the actions for the specified alarms. When an alarm's actions
+are disabled, the alarm actions do not execute when the alarm state
+changes.
 
 
 =head2 EnableAlarmActions(AlarmNames => ArrayRef[Str|Undef])
@@ -245,10 +244,10 @@ Each argument is described in detail in: L<Paws::CloudWatch::EnableAlarmActions>
 
 Returns: nothing
 
-  Enables actions for the specified alarms.
+  Enables the actions for the specified alarms.
 
 
-=head2 GetMetricStatistics(EndTime => Str, MetricName => Str, Namespace => Str, Period => Int, StartTime => Str, Statistics => ArrayRef[Str|Undef], [Dimensions => ArrayRef[L<Paws::CloudWatch::Dimension>], Unit => Str])
+=head2 GetMetricStatistics(EndTime => Str, MetricName => Str, Namespace => Str, Period => Int, StartTime => Str, [Dimensions => ArrayRef[L<Paws::CloudWatch::Dimension>], ExtendedStatistics => ArrayRef[Str|Undef], Statistics => ArrayRef[Str|Undef], Unit => Str])
 
 Each argument is described in detail in: L<Paws::CloudWatch::GetMetricStatistics>
 
@@ -256,48 +255,48 @@ Returns: a L<Paws::CloudWatch::GetMetricStatisticsOutput> instance
 
   Gets statistics for the specified metric.
 
-The maximum number of data points that can be queried is 50,850,
-whereas the maximum number of data points returned from a single
-C<GetMetricStatistics> request is 1,440. If you make a request that
-generates more than 1,440 data points, Amazon CloudWatch returns an
-error. In such a case, you can alter the request by narrowing the
-specified time range or increasing the specified period. A period can
-be as short as one minute (60 seconds) or as long as one day (86,400
-seconds). Alternatively, you can make multiple requests across adjacent
-time ranges. C<GetMetricStatistics> does not return the data in
-chronological order.
-
-Amazon CloudWatch aggregates data points based on the length of the
-C<period> that you specify. For example, if you request statistics with
-a one-minute granularity, Amazon CloudWatch aggregates data points with
-time stamps that fall within the same one-minute period. In such a
-case, the data points queried can greatly outnumber the data points
-returned.
-
-The following examples show various statistics allowed by the data
-point query maximum of 50,850 when you call C<GetMetricStatistics> on
-Amazon EC2 instances with detailed (one-minute) monitoring enabled:
+Amazon CloudWatch retains metric data as follows:
 
 =over
 
 =item *
 
-Statistics for up to 400 instances for a span of one hour
+Data points with a period of 60 seconds (1 minute) are available for 15
+days
 
 =item *
 
-Statistics for up to 35 instances over a span of 24 hours
+Data points with a period of 300 seconds (5 minute) are available for
+63 days
 
 =item *
 
-Statistics for up to 2 instances over a span of 2 weeks
+Data points with a period of 3600 seconds (1 hour) are available for
+455 days (15 months)
 
 =back
 
-For information about the namespace, metric names, and dimensions that
-other Amazon Web Services products use to send metrics to CloudWatch,
-go to Amazon CloudWatch Metrics, Namespaces, and Dimensions Reference
-in the I<Amazon CloudWatch Developer Guide>.
+Note that CloudWatch started retaining 5-minute and 1-hour metric data
+as of 9 July 2016.
+
+The maximum number of data points returned from a single call is 1,440.
+If you request more than 1,440 data points, Amazon CloudWatch returns
+an error. To reduce the number of data points, you can narrow the
+specified time range and make multiple requests across adjacent time
+ranges, or you can increase the specified period. A period can be as
+short as one minute (60 seconds). Note that data points are not
+returned in chronological order.
+
+Amazon CloudWatch aggregates data points based on the length of the
+period that you specify. For example, if you request statistics with a
+one-hour period, Amazon CloudWatch aggregates all data points with time
+stamps that fall within each one-hour period. Therefore, the number of
+values aggregated by CloudWatch is larger than the number of data
+points returned.
+
+For a list of metrics and dimensions supported by AWS services, see the
+Amazon CloudWatch Metrics and Dimensions Reference in the I<Amazon
+CloudWatch User Guide>.
 
 
 =head2 ListMetrics([Dimensions => ArrayRef[L<Paws::CloudWatch::DimensionFilter>], MetricName => Str, Namespace => Str, NextToken => Str])
@@ -306,79 +305,81 @@ Each argument is described in detail in: L<Paws::CloudWatch::ListMetrics>
 
 Returns: a L<Paws::CloudWatch::ListMetricsOutput> instance
 
-  Returns a list of valid metrics stored for the AWS account owner.
-Returned metrics can be used with GetMetricStatistics to obtain
-statistical data for a given metric.
+  List the specified metrics. You can use the returned metrics with
+GetMetricStatistics to obtain statistical data.
 
-Up to 500 results are returned for any one call. To retrieve further
-results, use returned C<NextToken> values with subsequent
-C<ListMetrics> operations.
+Up to 500 results are returned for any one call. To retrieve additional
+results, use the returned token with subsequent calls.
 
-If you create a metric with PutMetricData, allow up to fifteen minutes
-for the metric to appear in calls to C<ListMetrics>. Statistics about
-the metric, however, are available sooner using GetMetricStatistics.
+After you create a metric, allow up to fifteen minutes before the
+metric appears. Statistics about the metric, however, are available
+sooner using GetMetricStatistics.
 
 
-=head2 PutMetricAlarm(AlarmName => Str, ComparisonOperator => Str, EvaluationPeriods => Int, MetricName => Str, Namespace => Str, Period => Int, Statistic => Str, Threshold => Num, [ActionsEnabled => Bool, AlarmActions => ArrayRef[Str|Undef], AlarmDescription => Str, Dimensions => ArrayRef[L<Paws::CloudWatch::Dimension>], InsufficientDataActions => ArrayRef[Str|Undef], OKActions => ArrayRef[Str|Undef], Unit => Str])
+=head2 PutMetricAlarm(AlarmName => Str, ComparisonOperator => Str, EvaluationPeriods => Int, MetricName => Str, Namespace => Str, Period => Int, Threshold => Num, [ActionsEnabled => Bool, AlarmActions => ArrayRef[Str|Undef], AlarmDescription => Str, Dimensions => ArrayRef[L<Paws::CloudWatch::Dimension>], ExtendedStatistic => Str, InsufficientDataActions => ArrayRef[Str|Undef], OKActions => ArrayRef[Str|Undef], Statistic => Str, Unit => Str])
 
 Each argument is described in detail in: L<Paws::CloudWatch::PutMetricAlarm>
 
 Returns: nothing
 
-  Creates or updates an alarm and associates it with the specified Amazon
-CloudWatch metric. Optionally, this operation can associate one or more
-Amazon SNS resources with the alarm.
+  Creates or updates an alarm and associates it with the specified
+metric. Optionally, this operation can associate one or more Amazon SNS
+resources with the alarm.
 
 When this operation creates an alarm, the alarm state is immediately
-set to C<INSUFFICIENT_DATA>. The alarm is evaluated and its
-C<StateValue> is set appropriately. Any actions associated with the
-C<StateValue> are then executed.
+set to C<INSUFFICIENT_DATA>. The alarm is evaluated and its state is
+set appropriately. Any actions associated with the state are then
+executed.
 
-When updating an existing alarm, its C<StateValue> is left unchanged,
-but it completely overwrites the alarm's previous configuration.
+When you update an existing alarm, its state is left unchanged, but the
+update completely overwrites the previous configuration of the alarm.
 
-If you are using an AWS Identity and Access Management (IAM) account to
-create or modify an alarm, you must have the following Amazon EC2
-permissions:
+If you are an AWS Identity and Access Management (IAM) user, you must
+have Amazon EC2 permissions for some operations:
 
 =over
 
 =item *
 
 C<ec2:DescribeInstanceStatus> and C<ec2:DescribeInstances> for all
-alarms on Amazon EC2 instance status metrics.
+alarms on EC2 instance status metrics
 
 =item *
 
-C<ec2:StopInstances> for alarms with stop actions.
+C<ec2:StopInstances> for alarms with stop actions
 
 =item *
 
-C<ec2:TerminateInstances> for alarms with terminate actions.
+C<ec2:TerminateInstances> for alarms with terminate actions
 
 =item *
 
-C<ec2:DescribeInstanceRecoveryAttribute>, and C<ec2:RecoverInstances>
-for alarms with recover actions.
+C<ec2:DescribeInstanceRecoveryAttribute> and C<ec2:RecoverInstances>
+for alarms with recover actions
 
 =back
 
 If you have read/write permissions for Amazon CloudWatch but not for
-Amazon EC2, you can still create an alarm but the stop or terminate
-actions won't be performed on the Amazon EC2 instance. However, if you
-are later granted permission to use the associated Amazon EC2 APIs, the
-alarm actions you created earlier will be performed. For more
-information about IAM permissions, see Permissions and Policies in
-I<Using IAM>.
+Amazon EC2, you can still create an alarm, but the stop or terminate
+actions won't be performed. However, if you are later granted the
+required permissions, the alarm actions that you created earlier will
+be performed.
 
-If you are using an IAM role (e.g., an Amazon EC2 instance profile),
-you cannot stop or terminate the instance using alarm actions. However,
-you can still see the alarm state and perform any other actions such as
-Amazon SNS notifications or Auto Scaling policies.
+If you are using an IAM role (for example, an Amazon EC2 instance
+profile), you cannot stop or terminate the instance using alarm
+actions. However, you can still see the alarm state and perform any
+other actions such as Amazon SNS notifications or Auto Scaling
+policies.
 
 If you are using temporary security credentials granted using the AWS
 Security Token Service (AWS STS), you cannot stop or terminate an
 Amazon EC2 instance using alarm actions.
+
+Note that you must create at least one stop, terminate, or reboot alarm
+using the Amazon EC2 or CloudWatch console to create the
+B<EC2ActionsAccess> IAM role. After this IAM role is created, you can
+create stop, terminate, or reboot alarms using a command-line interface
+or an API.
 
 
 =head2 PutMetricData(MetricData => ArrayRef[L<Paws::CloudWatch::MetricDatum>], Namespace => Str)
@@ -402,9 +403,9 @@ large. Values must be in the range of 8.515920e-109 to 1.174271e+108
 (Base 10) or 2e-360 to 2e360 (Base 2). In addition, special values
 (e.g., NaN, +Infinity, -Infinity) are not supported.
 
-Data that is timestamped 24 hours or more in the past may take in
-excess of 48 hours to become available from submission time using
-C<GetMetricStatistics>.
+Data points with time stamps from 24 hours ago or longer can take at
+least 48 hours to become available for GetMetricStatistics from the
+time they are submitted.
 
 
 =head2 SetAlarmState(AlarmName => Str, StateReason => Str, StateValue => Str, [StateReasonData => Str])
@@ -414,14 +415,14 @@ Each argument is described in detail in: L<Paws::CloudWatch::SetAlarmState>
 Returns: nothing
 
   Temporarily sets the state of an alarm for testing purposes. When the
-updated C<StateValue> differs from the previous value, the action
-configured for the appropriate state is invoked. For example, if your
-alarm is configured to send an Amazon SNS message when an alarm is
-triggered, temporarily changing the alarm's state to B<ALARM> sends an
-Amazon SNS message. The alarm returns to its actual state (often within
-seconds). Because the alarm state change happens very quickly, it is
-typically only visible in the alarm's B<History> tab in the Amazon
-CloudWatch console or through C<DescribeAlarmHistory>.
+updated state differs from the previous value, the action configured
+for the appropriate state is invoked. For example, if your alarm is
+configured to send an Amazon SNS message when an alarm is triggered,
+temporarily changing the alarm state to C<ALARM> sends an Amazon SNS
+message. The alarm returns to its actual state (often within seconds).
+Because the alarm state change happens very quickly, it is typically
+only visible in the alarm's B<History> tab in the Amazon CloudWatch
+console or through DescribeAlarmHistory.
 
 
 

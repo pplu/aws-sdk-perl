@@ -33,20 +33,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudWatch:
 
 =head1 DESCRIPTION
 
-The C<Metric> data type contains information about a specific metric.
-If you call ListMetrics, Amazon CloudWatch returns information
-contained by this data type.
-
-The example in the Examples section publishes two metrics named buffers
-and latency. Both metrics are in the examples namespace. Both metrics
-have two dimensions, InstanceID and InstanceType.
+Represents a specific metric.
 
 =head1 ATTRIBUTES
 
 
 =head2 Dimensions => ArrayRef[L<Paws::CloudWatch::Dimension>]
 
-  A list of dimensions associated with the metric.
+  The dimensions for the metric.
 
 
 =head2 MetricName => Str

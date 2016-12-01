@@ -36,18 +36,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudWatch:
 
 =head1 DESCRIPTION
 
-The C<MetricDatum> data type encapsulates the information sent with
-PutMetricData to either create a new metric or add new values to be
-aggregated into an existing metric.
+Encapsulates the information sent to either create a metric or add new
+values to be aggregated into an existing metric.
 
 =head1 ATTRIBUTES
 
 
 =head2 Dimensions => ArrayRef[L<Paws::CloudWatch::Dimension>]
 
-  A list of dimensions associated with the metric. Note, when using the
-Dimensions value in a query, you need to append .member.N to it (e.g.,
-Dimensions.member.N).
+  The dimensions associated with the metric.
 
 
 =head2 B<REQUIRED> MetricName => Str
@@ -57,14 +54,13 @@ Dimensions.member.N).
 
 =head2 StatisticValues => L<Paws::CloudWatch::StatisticSet>
 
-  A set of statistical values describing the metric.
+  The statistical values for the metric.
 
 
 =head2 Timestamp => Str
 
-  The time stamp used for the metric in ISO 8601 Universal Coordinated
-Time (UTC) format. If not specified, the default value is set to the
-time the metric data was received.
+  The time the metric data was received, expressed as the number of
+milliseconds since Jan 1, 1970 00:00:00 UTC.
 
 
 =head2 Unit => Str
@@ -76,11 +72,11 @@ time the metric data was received.
 
   The value for the metric.
 
-Although the C<Value> parameter accepts numbers of type C<Double>,
-Amazon CloudWatch rejects values that are either too small or too
-large. Values must be in the range of 8.515920e-109 to 1.174271e+108
-(Base 10) or 2e-360 to 2e360 (Base 2). In addition, special values
-(e.g., NaN, +Infinity, -Infinity) are not supported.
+Although the parameter accepts numbers of type Double, Amazon
+CloudWatch rejects values that are either too small or too large.
+Values must be in the range of 8.515920e-109 to 1.174271e+108 (Base 10)
+or 2e-360 to 2e360 (Base 2). In addition, special values (for example,
+NaN, +Infinity, -Infinity) are not supported.
 
 
 

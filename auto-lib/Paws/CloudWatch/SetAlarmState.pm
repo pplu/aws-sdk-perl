@@ -38,22 +38,22 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> AlarmName => Str
 
-The descriptive name for the alarm. This name must be unique within the
-user's AWS account. The maximum length is 255 characters.
+The name for the alarm. This name must be unique within the AWS
+account. The maximum length is 255 characters.
 
 
 
 =head2 B<REQUIRED> StateReason => Str
 
-The reason that this alarm is set to this specific state (in
-human-readable text format)
+The reason that this alarm is set to this specific state, in text
+format.
 
 
 
 =head2 StateReasonData => Str
 
-The reason that this alarm is set to this specific state (in
-machine-readable JSON format)
+The reason that this alarm is set to this specific state, in JSON
+format.
 
 
 

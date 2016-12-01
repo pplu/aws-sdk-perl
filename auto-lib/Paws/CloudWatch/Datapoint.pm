@@ -1,6 +1,7 @@
 package Paws::CloudWatch::Datapoint;
   use Moose;
   has Average => (is => 'ro', isa => 'Num');
+  has ExtendedStatistics => (is => 'ro', isa => 'Paws::CloudWatch::DatapointValueMap');
   has Maximum => (is => 'ro', isa => 'Num');
   has Minimum => (is => 'ro', isa => 'Num');
   has SampleCount => (is => 'ro', isa => 'Num');
@@ -37,46 +38,51 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudWatch:
 
 =head1 DESCRIPTION
 
-The C<Datapoint> data type encapsulates the statistical data that
-Amazon CloudWatch computes from metric data.
+Encapsulates the statistical data that Amazon CloudWatch computes from
+metric data.
 
 =head1 ATTRIBUTES
 
 
 =head2 Average => Num
 
-  The average of metric values that correspond to the datapoint.
+  The average of the metric values that correspond to the data point.
+
+
+=head2 ExtendedStatistics => L<Paws::CloudWatch::DatapointValueMap>
+
+  The percentile statistic for the data point.
 
 
 =head2 Maximum => Num
 
-  The maximum of the metric value used for the datapoint.
+  The maximum metric value for the data point.
 
 
 =head2 Minimum => Num
 
-  The minimum metric value used for the datapoint.
+  The minimum metric value for the data point.
 
 
 =head2 SampleCount => Num
 
   The number of metric values that contributed to the aggregate value of
-this datapoint.
+this data point.
 
 
 =head2 Sum => Num
 
-  The sum of metric values used for the datapoint.
+  The sum of the metric values for the data point.
 
 
 =head2 Timestamp => Str
 
-  The time stamp used for the datapoint.
+  The time stamp used for the data point.
 
 
 =head2 Unit => Str
 
-  The standard unit used for the datapoint.
+  The standard unit for the data point.
 
 
 

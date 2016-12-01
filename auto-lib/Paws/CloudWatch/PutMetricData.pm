@@ -36,7 +36,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> MetricData => ArrayRef[L<Paws::CloudWatch::MetricDatum>]
 
-A list of data describing the metric.
+The data for the metric.
 
 
 
@@ -45,8 +45,7 @@ A list of data describing the metric.
 The namespace for the metric data.
 
 You cannot specify a namespace that begins with "AWS/". Namespaces that
-begin with "AWS/" are reserved for other Amazon Web Services products
-that send metrics to Amazon CloudWatch.
+begin with "AWS/" are reserved for use by Amazon Web Services products.
 
 
 

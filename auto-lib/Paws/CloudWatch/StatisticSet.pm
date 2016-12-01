@@ -34,9 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudWatch:
 
 =head1 DESCRIPTION
 
-The C<StatisticSet> data type describes the C<StatisticValues>
-component of MetricDatum, and represents a set of statistics that
-describes a specific metric.
+Represents a set of statistics that describes a specific metric.
 
 =head1 ATTRIBUTES
 

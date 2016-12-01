@@ -8,12 +8,13 @@ package Paws::CloudWatch::PutMetricAlarm;
   has ComparisonOperator => (is => 'ro', isa => 'Str', required => 1);
   has Dimensions => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatch::Dimension]');
   has EvaluationPeriods => (is => 'ro', isa => 'Int', required => 1);
+  has ExtendedStatistic => (is => 'ro', isa => 'Str');
   has InsufficientDataActions => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has MetricName => (is => 'ro', isa => 'Str', required => 1);
   has Namespace => (is => 'ro', isa => 'Str', required => 1);
   has OKActions => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Period => (is => 'ro', isa => 'Int', required => 1);
-  has Statistic => (is => 'ro', isa => 'Str', required => 1);
+  has Statistic => (is => 'ro', isa => 'Str');
   has Threshold => (is => 'ro', isa => 'Num', required => 1);
   has Unit => (is => 'ro', isa => 'Str');
 
@@ -49,20 +50,20 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 ActionsEnabled => Bool
 
-Indicates whether or not actions should be executed during any changes
-to the alarm's state.
+Indicates whether actions should be executed during any changes to the
+alarm state.
 
 
 
 =head2 AlarmActions => ArrayRef[Str|Undef]
 
-The list of actions to execute when this alarm transitions into an
-C<ALARM> state from any other state. Each action is specified as an
-Amazon Resource Name (ARN).
+The actions to execute when this alarm transitions to the C<ALARM>
+state from any other state. Each action is specified as an Amazon
+Resource Name (ARN).
 
-Valid Values: arn:aws:automate:I<region (e.g., us-east-1)>:ec2:stop |
-arn:aws:automate:I<region (e.g., us-east-1)>:ec2:terminate |
-arn:aws:automate:I<region (e.g., us-east-1)>:ec2:recover
+Valid Values: arn:aws:automate:I<region>:ec2:stop |
+arn:aws:automate:I<region>:ec2:terminate |
+arn:aws:automate:I<region>:ec2:recover
 
 Valid Values (for use with IAM roles):
 arn:aws:swf:us-east-1:{I<customer-account>}:action/actions/AWS_EC2.InstanceId.Stop/1.0
@@ -70,12 +71,6 @@ arn:aws:swf:us-east-1:{I<customer-account>}:action/actions/AWS_EC2.InstanceId.St
 arn:aws:swf:us-east-1:{I<customer-account>}:action/actions/AWS_EC2.InstanceId.Terminate/1.0
 |
 arn:aws:swf:us-east-1:{I<customer-account>}:action/actions/AWS_EC2.InstanceId.Reboot/1.0
-
-B<Note:> You must create at least one stop, terminate, or reboot alarm
-using the Amazon EC2 or CloudWatch console to create the
-B<EC2ActionsAccess> IAM role for the first time. After this IAM role is
-created, you can create stop, terminate, or reboot alarms using the
-CLI.
 
 
 
@@ -87,22 +82,22 @@ The description for the alarm.
 
 =head2 B<REQUIRED> AlarmName => Str
 
-The descriptive name for the alarm. This name must be unique within the
-user's AWS account
+The name for the alarm. This name must be unique within the AWS
+account.
 
 
 
 =head2 B<REQUIRED> ComparisonOperator => Str
 
-The arithmetic operation to use when comparing the specified
-C<Statistic> and C<Threshold>. The specified C<Statistic> value is used
-as the first operand.
+The arithmetic operation to use when comparing the specified statistic
+and threshold. The specified statistic value is used as the first
+operand.
 
 Valid values are: C<"GreaterThanOrEqualToThreshold">, C<"GreaterThanThreshold">, C<"LessThanThreshold">, C<"LessThanOrEqualToThreshold">
 
 =head2 Dimensions => ArrayRef[L<Paws::CloudWatch::Dimension>]
 
-The dimensions for the alarm's associated metric.
+The dimensions for the metric associated with the alarm.
 
 
 
@@ -113,15 +108,22 @@ threshold.
 
 
 
+=head2 ExtendedStatistic => Str
+
+The percentile statistic for the metric associated with the alarm.
+Specify a value between p0.0 and p100.
+
+
+
 =head2 InsufficientDataActions => ArrayRef[Str|Undef]
 
-The list of actions to execute when this alarm transitions into an
+The actions to execute when this alarm transitions to the
 C<INSUFFICIENT_DATA> state from any other state. Each action is
 specified as an Amazon Resource Name (ARN).
 
-Valid Values: arn:aws:automate:I<region (e.g., us-east-1)>:ec2:stop |
-arn:aws:automate:I<region (e.g., us-east-1)>:ec2:terminate |
-arn:aws:automate:I<region (e.g., us-east-1)>:ec2:recover
+Valid Values: arn:aws:automate:I<region>:ec2:stop |
+arn:aws:automate:I<region>:ec2:terminate |
+arn:aws:automate:I<region>:ec2:recover
 
 Valid Values (for use with IAM roles):
 arn:aws:swf:us-east-1:{I<customer-account>}:action/actions/AWS_EC2.InstanceId.Stop/1.0
@@ -129,36 +131,30 @@ arn:aws:swf:us-east-1:{I<customer-account>}:action/actions/AWS_EC2.InstanceId.St
 arn:aws:swf:us-east-1:{I<customer-account>}:action/actions/AWS_EC2.InstanceId.Terminate/1.0
 |
 arn:aws:swf:us-east-1:{I<customer-account>}:action/actions/AWS_EC2.InstanceId.Reboot/1.0
-
-B<Note:> You must create at least one stop, terminate, or reboot alarm
-using the Amazon EC2 or CloudWatch console to create the
-B<EC2ActionsAccess> IAM role for the first time. After this IAM role is
-created, you can create stop, terminate, or reboot alarms using the
-CLI.
 
 
 
 =head2 B<REQUIRED> MetricName => Str
 
-The name for the alarm's associated metric.
+The name for the metric associated with the alarm.
 
 
 
 =head2 B<REQUIRED> Namespace => Str
 
-The namespace for the alarm's associated metric.
+The namespace for the metric associated with the alarm.
 
 
 
 =head2 OKActions => ArrayRef[Str|Undef]
 
-The list of actions to execute when this alarm transitions into an
-C<OK> state from any other state. Each action is specified as an Amazon
-Resource Name (ARN).
+The actions to execute when this alarm transitions to an C<OK> state
+from any other state. Each action is specified as an Amazon Resource
+Name (ARN).
 
-Valid Values: arn:aws:automate:I<region (e.g., us-east-1)>:ec2:stop |
-arn:aws:automate:I<region (e.g., us-east-1)>:ec2:terminate |
-arn:aws:automate:I<region (e.g., us-east-1)>:ec2:recover
+Valid Values: arn:aws:automate:I<region>:ec2:stop |
+arn:aws:automate:I<region>:ec2:terminate |
+arn:aws:automate:I<region>:ec2:recover
 
 Valid Values (for use with IAM roles):
 arn:aws:swf:us-east-1:{I<customer-account>}:action/actions/AWS_EC2.InstanceId.Stop/1.0
@@ -167,23 +163,18 @@ arn:aws:swf:us-east-1:{I<customer-account>}:action/actions/AWS_EC2.InstanceId.Te
 |
 arn:aws:swf:us-east-1:{I<customer-account>}:action/actions/AWS_EC2.InstanceId.Reboot/1.0
 
-B<Note:> You must create at least one stop, terminate, or reboot alarm
-using the Amazon EC2 or CloudWatch console to create the
-B<EC2ActionsAccess> IAM role for the first time. After this IAM role is
-created, you can create stop, terminate, or reboot alarms using the
-CLI.
-
 
 
 =head2 B<REQUIRED> Period => Int
 
-The period in seconds over which the specified statistic is applied.
+The period, in seconds, over which the specified statistic is applied.
 
 
 
-=head2 B<REQUIRED> Statistic => Str
+=head2 Statistic => Str
 
-The statistic to apply to the alarm's associated metric.
+The statistic for the metric associated with the alarm, other than
+percentile. For percentile statistics, use C<ExtendedStatistic>.
 
 Valid values are: C<"SampleCount">, C<"Average">, C<"Sum">, C<"Minimum">, C<"Maximum">
 
@@ -195,16 +186,16 @@ The value against which the specified statistic is compared.
 
 =head2 Unit => Str
 
-The statistic's unit of measure. For example, the units for the Amazon
-EC2 NetworkIn metric are Bytes because NetworkIn tracks the number of
-bytes that an instance receives on all network interfaces. You can also
-specify a unit when you create a custom metric. Units help provide
-conceptual meaning to your data. Metric data points that specify a unit
-of measure, such as Percent, are aggregated separately.
+The unit of measure for the statistic. For example, the units for the
+Amazon EC2 NetworkIn metric are Bytes because NetworkIn tracks the
+number of bytes that an instance receives on all network interfaces.
+You can also specify a unit when you create a custom metric. Units help
+provide conceptual meaning to your data. Metric data points that
+specify a unit of measure, such as Percent, are aggregated separately.
 
-B<Note:> If you specify a unit, you must use a unit that is appropriate
-for the metric. Otherwise, this can cause an Amazon CloudWatch alarm to
-get stuck in the INSUFFICIENT DATA state.
+If you specify a unit, you must use a unit that is appropriate for the
+metric. Otherwise, the Amazon CloudWatch alarm can get stuck in the
+C<INSUFFICIENT DATA> state.
 
 Valid values are: C<"Seconds">, C<"Microseconds">, C<"Milliseconds">, C<"Bytes">, C<"Kilobytes">, C<"Megabytes">, C<"Gigabytes">, C<"Terabytes">, C<"Bits">, C<"Kilobits">, C<"Megabits">, C<"Gigabits">, C<"Terabits">, C<"Percent">, C<"Count">, C<"Bytes/Second">, C<"Kilobytes/Second">, C<"Megabytes/Second">, C<"Gigabytes/Second">, C<"Terabytes/Second">, C<"Bits/Second">, C<"Kilobits/Second">, C<"Megabits/Second">, C<"Gigabits/Second">, C<"Terabits/Second">, C<"Count/Second">, C<"None">
 

@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudWatch:
 
 =head1 DESCRIPTION
 
-The C<DimensionFilter> data type is used to filter ListMetrics results.
+Represents filters for a dimension.
 
 =head1 ATTRIBUTES
 
@@ -45,9 +45,6 @@ The C<DimensionFilter> data type is used to filter ListMetrics results.
 =head2 Value => Str
 
   The value of the dimension to be matched.
-
-Specifying a C<Name> without specifying a C<Value> returns all values
-associated with that C<Name>.
 
 
 

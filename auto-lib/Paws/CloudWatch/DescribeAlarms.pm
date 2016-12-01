@@ -46,14 +46,14 @@ The action name prefix.
 
 =head2 AlarmNamePrefix => Str
 
-The alarm name prefix. C<AlarmNames> cannot be specified if this
+The alarm name prefix. You cannot specify C<AlarmNames> if this
 parameter is specified.
 
 
 
 =head2 AlarmNames => ArrayRef[Str|Undef]
 
-A list of alarm names to retrieve information for.
+The names of the alarms.
 
 
 
