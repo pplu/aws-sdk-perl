@@ -1,0 +1,81 @@
+package Paws::Lightsail::Region;
+  use Moose;
+  has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::AvailabilityZone]', xmlname => 'availabilityZones', request_name => 'availabilityZones', traits => ['Unwrapped','NameInRequest']);
+  has ContinentCode => (is => 'ro', isa => 'Str', xmlname => 'continentCode', request_name => 'continentCode', traits => ['Unwrapped','NameInRequest']);
+  has Description => (is => 'ro', isa => 'Str', xmlname => 'description', request_name => 'description', traits => ['Unwrapped','NameInRequest']);
+  has DisplayName => (is => 'ro', isa => 'Str', xmlname => 'displayName', request_name => 'displayName', traits => ['Unwrapped','NameInRequest']);
+  has Name => (is => 'ro', isa => 'Str', xmlname => 'name', request_name => 'name', traits => ['Unwrapped','NameInRequest']);
+1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::Lightsail::Region
+
+=head1 USAGE
+
+This class represents one of two things:
+
+=head3 Arguments in a call to a service
+
+Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
+Each attribute should be used as a named argument in the calls that expect this type of object.
+
+As an example, if Att1 is expected to be a Paws::Lightsail::Region object:
+
+  $service_obj->Method(Att1 => { AvailabilityZones => $value, ..., Name => $value  });
+
+=head3 Results returned from an API call
+
+Use accessors for each attribute. If Att1 is expected to be an Paws::Lightsail::Region object:
+
+  $result = $service_obj->Method(...);
+  $result->Att1->AvailabilityZones
+
+=head1 DESCRIPTION
+
+Describes the AWS Region.
+
+=head1 ATTRIBUTES
+
+
+=head2 AvailabilityZones => ArrayRef[L<Paws::Lightsail::AvailabilityZone>]
+
+  The Availability Zones.
+
+
+=head2 ContinentCode => Str
+
+  The continent code (e.g., C<NA>, meaning North America).
+
+
+=head2 Description => Str
+
+  The description of the AWS Region (e.g., C<This region is recommended
+to serve users in the eastern United States and eastern Canada>).
+
+
+=head2 DisplayName => Str
+
+  The display name (e.g., C<Virginia>).
+
+
+=head2 Name => Str
+
+  The region name (e.g., C<us-east-1>).
+
+
+
+=head1 SEE ALSO
+
+This class forms part of L<Paws>, describing an object used in L<Paws::Lightsail>
+
+=head1 BUGS and CONTRIBUTIONS
+
+The source code is located here: https://github.com/pplu/aws-sdk-perl
+
+Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+
+=cut
+
