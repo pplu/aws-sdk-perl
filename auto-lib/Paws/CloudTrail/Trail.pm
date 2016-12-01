@@ -2,6 +2,7 @@ package Paws::CloudTrail::Trail;
   use Moose;
   has CloudWatchLogsLogGroupArn => (is => 'ro', isa => 'Str');
   has CloudWatchLogsRoleArn => (is => 'ro', isa => 'Str');
+  has HasCustomEventSelectors => (is => 'ro', isa => 'Bool');
   has HomeRegion => (is => 'ro', isa => 'Str');
   has IncludeGlobalServiceEvents => (is => 'ro', isa => 'Bool');
   has IsMultiRegionTrail => (is => 'ro', isa => 'Bool');
@@ -58,6 +59,11 @@ represents the log group to which CloudTrail logs will be delivered.
 
   Specifies the role for the CloudWatch Logs endpoint to assume to write
 to a user's log group.
+
+
+=head2 HasCustomEventSelectors => Bool
+
+  Specifies if the trail has custom event selectors.
 
 
 =head2 HomeRegion => Str

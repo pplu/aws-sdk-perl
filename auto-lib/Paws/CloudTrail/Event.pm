@@ -3,6 +3,7 @@ package Paws::CloudTrail::Event;
   has CloudTrailEvent => (is => 'ro', isa => 'Str');
   has EventId => (is => 'ro', isa => 'Str');
   has EventName => (is => 'ro', isa => 'Str');
+  has EventSource => (is => 'ro', isa => 'Str');
   has EventTime => (is => 'ro', isa => 'Str');
   has Resources => (is => 'ro', isa => 'ArrayRef[Paws::CloudTrail::Resource]');
   has Username => (is => 'ro', isa => 'Str');
@@ -55,6 +56,11 @@ request. The result includes a representation of a CloudTrail event.
 =head2 EventName => Str
 
   The name of the event returned.
+
+
+=head2 EventSource => Str
+
+  The AWS service that the request was made to.
 
 
 =head2 EventTime => Str

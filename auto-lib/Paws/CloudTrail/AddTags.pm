@@ -45,7 +45,7 @@ C<arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail>
 
 =head2 TagsList => ArrayRef[L<Paws::CloudTrail::Tag>]
 
-Contains a list of CloudTrail tags, up to a limit of 10.
+Contains a list of CloudTrail tags, up to a limit of 50
 
 
 
