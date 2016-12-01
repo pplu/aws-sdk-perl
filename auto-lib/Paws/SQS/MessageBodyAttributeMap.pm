@@ -1,4 +1,4 @@
-package Paws::SQS::MessageAttributeMap;
+package Paws::SQS::MessageBodyAttributeMap;
   use Moose;
   with 'Paws::API::StrToObjMapParser';
 
@@ -13,7 +13,7 @@ package Paws::SQS::MessageAttributeMap;
 
 =head1 NAME
 
-Paws::SQS::MessageAttributeMap
+Paws::SQS::MessageBodyAttributeMap
 
 =head1 USAGE
 
@@ -24,13 +24,13 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::SQS::MessageAttributeMap object:
+As an example, if Att1 is expected to be a Paws::SQS::MessageBodyAttributeMap object:
 
   $service_obj->Method(Att1 => { key1 => $value, ..., keyN => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::SQS::MessageAttributeMap object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::SQS::MessageBodyAttributeMap object:
 
   $result = $service_obj->Method(...);
   $result->Att1->Map->{ key1 }

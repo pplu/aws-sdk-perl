@@ -64,7 +64,7 @@ compressed data, encrypted data, or images.
 and Binary. For the Number data type, you must use StringValue.
 
 You can also append custom labels. For more information, see Message
-Attribute Data Types.
+Attribute Data Types in the I<Amazon SQS Developer Guide>.
 
 
 =head2 StringListValues => ArrayRef[Str|Undef]
@@ -75,8 +75,7 @@ Attribute Data Types.
 =head2 StringValue => Str
 
   Strings are Unicode with UTF8 binary encoding. For a list of code
-values, see
-http://en.wikipedia.org/wiki/ASCII
+values, see ASCII Printable Characters.
 
 
 

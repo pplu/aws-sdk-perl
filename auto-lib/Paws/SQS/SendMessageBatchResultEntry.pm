@@ -4,6 +4,7 @@ package Paws::SQS::SendMessageBatchResultEntry;
   has MD5OfMessageAttributes => (is => 'ro', isa => 'Str');
   has MD5OfMessageBody => (is => 'ro', isa => 'Str', required => 1);
   has MessageId => (is => 'ro', isa => 'Str', required => 1);
+  has SequenceNumber => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -23,7 +24,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SQS::SendMessageBatchResultEntry object:
 
-  $service_obj->Method(Att1 => { Id => $value, ..., MessageId => $value  });
+  $service_obj->Method(Att1 => { Id => $value, ..., SequenceNumber => $value  });
 
 =head3 Results returned from an API call
 
@@ -50,8 +51,7 @@ SendMessageBatch.
   An MD5 digest of the non-URL-encoded message attribute string. This can
 be used to verify that Amazon SQS received the message batch correctly.
 Amazon SQS first URL decodes the message before creating the MD5
-digest. For information about MD5, go to
-http://www.faqs.org/rfcs/rfc1321.html.
+digest. For information about MD5, see RFC1321.
 
 
 =head2 B<REQUIRED> MD5OfMessageBody => Str
@@ -59,12 +59,23 @@ http://www.faqs.org/rfcs/rfc1321.html.
   An MD5 digest of the non-URL-encoded message body string. This can be
 used to verify that Amazon SQS received the message correctly. Amazon
 SQS first URL decodes the message before creating the MD5 digest. For
-information about MD5, go to http://www.faqs.org/rfcs/rfc1321.html.
+information about MD5, see RFC1321.
 
 
 =head2 B<REQUIRED> MessageId => Str
 
   An identifier for the message.
+
+
+=head2 SequenceNumber => Str
+
+  I<This element applies only to FIFO (first-in-first-out) queues.>
+
+A large, non-consecutive number that Amazon SQS assigns to each
+message.
+
+The length of C<SequenceNumber> is 128 bits. As C<SequenceNumber>
+continues to increase for a particular C<MessageGroupId>.
 
 
 

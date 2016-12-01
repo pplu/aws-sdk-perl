@@ -179,13 +179,27 @@ move data between distributed components of your applications that
 perform different tasks without losing messages or requiring each
 component to be always available.
 
-Helpful Links:
+B<Topics>
 
 =over
 
 =item *
 
-Current WSDL (2012-11-05)
+=item *
+
+=item *
+
+CommonParameters
+
+=item *
+
+CommonErrors
+
+=back
+
+B<Helpful Links>
+
+=over
 
 =item *
 
@@ -229,7 +243,7 @@ Handling error responses
 
 =back
 
-For a list of available SDKs, go to Tools for Amazon Web Services.
+For a list of available SDKs, see Tools for Amazon Web Services.
 
 =head1 METHODS
 
@@ -257,9 +271,9 @@ using the C<param.n> notation. Values of C<n> are integers starting
 from 1. For example, a parameter list with two elements looks like
 this:
 
-C<>
+C<&amp;Attribute.1=this>
 
-C<>
+C<&amp;Attribute.2=that>
 
 
 =head2 ChangeMessageVisibility(QueueUrl => Str, ReceiptHandle => Str, VisibilityTimeout => Int)
@@ -327,9 +341,9 @@ using the C<param.n> notation. Values of C<n> are integers starting
 from 1. For example, a parameter list with two elements looks like
 this:
 
-C<>
+C<&amp;Attribute.1=this>
 
-C<>
+C<&amp;Attribute.2=that>
 
 
 =head2 CreateQueue(QueueName => Str, [Attributes => L<Paws::SQS::QueueAttributeMap>])
@@ -338,35 +352,64 @@ Each argument is described in detail in: L<Paws::SQS::CreateQueue>
 
 Returns: a L<Paws::SQS::CreateQueueResult> instance
 
-  Creates a new queue, or returns the URL of an existing one. When you
-request C<CreateQueue>, you provide a name for the queue. To
-successfully create a new queue, you must provide a name that is unique
-within the scope of your own queues.
+  Creates a new standard or FIFO queue or returns the URL of an existing
+queue. You can pass one or more attributes in the request.
+
+=over
+
+=item *
+
+If you don't specify the C<FifoQueue> attribute, Amazon SQS creates a
+standard queue.
+
+You can't change the queue type after you create it and you can't
+convert an existing standard queue into a FIFO queue. You must either
+create a new FIFO queue for your application or delete your existing
+standard queue and recreate it as a FIFO queue. For more information,
+see Moving From a Standard Queue to a FIFO Queue in the I<Amazon SQS
+Developer Guide>.
+
+=item *
+
+If you don't provide a value for an attribute, the queue is created
+with the default value for the attribute.
+
+=item *
 
 If you delete a queue, you must wait at least 60 seconds before
 creating a queue with the same name.
 
-You may pass one or more attributes in the request. If you do not
-provide a value for any attribute, the queue will have the default
-value for that attribute.
+=back
 
-Use GetQueueUrl to get a queue's URL. GetQueueUrl requires only the
-C<QueueName> parameter.
+To successfully create a new queue, you must provide a queue name that
+adheres to the limits related to queues and is unique within the scope
+of your queues.
 
-If you provide the name of an existing queue, along with the exact
-names and values of all the queue's attributes, C<CreateQueue> returns
-the queue URL for the existing queue. If the queue name, attribute
-names, or attribute values do not match an existing queue,
-C<CreateQueue> returns an error.
+To get the queue URL, use the GetQueueUrl action. GetQueueUrl requires
+only the C<QueueName> parameter.
 
-Some API actions take lists of parameters. These lists are specified
-using the C<param.n> notation. Values of C<n> are integers starting
-from 1. For example, a parameter list with two elements looks like
-this:
+=over
 
-C<>
+=item *
 
-C<>
+If you provide the name of an existing queue along with the exact names
+and values of all the queue's attributes, C<CreateQueue> returns the
+queue URL for the existing queue.
+
+=item *
+
+If the queue name, attribute names, or attribute values don't match an
+existing queue, C<CreateQueue> returns an error.
+
+=back
+
+Some API actions take lists of parameters. Specify these lists using
+the C<param.n> notation. Values of C<n> are integers starting from 1.
+The following is an example of a parameter list with two elements:
+
+C<&amp;Attribute.1=this>
+
+C<&amp;Attribute.2=that>
 
 
 =head2 DeleteMessage(QueueUrl => Str, ReceiptHandle => Str)
@@ -418,9 +461,9 @@ using the C<param.n> notation. Values of C<n> are integers starting
 from 1. For example, a parameter list with two elements looks like
 this:
 
-C<>
+C<&amp;Attribute.1=this>
 
-C<>
+C<&amp;Attribute.2=that>
 
 
 =head2 DeleteQueue(QueueUrl => Str)
@@ -430,7 +473,7 @@ Each argument is described in detail in: L<Paws::SQS::DeleteQueue>
 Returns: nothing
 
   Deletes the queue specified by the B<queue URL>, regardless of whether
-the queue is empty. If the specified queue does not exist, Amazon SQS
+the queue is empty. If the specified queue doesn't exist, Amazon SQS
 returns a successful response.
 
 Use C<DeleteQueue> with care; once you delete your queue, any messages
@@ -461,9 +504,9 @@ using the C<param.n> notation. Values of C<n> are integers starting
 from 1. For example, a parameter list with two elements looks like
 this:
 
-C<>
+C<&amp;Attribute.1=this>
 
-C<>
+C<&amp;Attribute.2=that>
 
 
 =head2 GetQueueUrl(QueueName => Str, [QueueOwnerAWSAccountId => Str])
@@ -479,7 +522,7 @@ To access a queue that belongs to another AWS account, use the
 C<QueueOwnerAWSAccountId> parameter to specify the account ID of the
 queue's owner. The queue's owner must grant you permission to access
 the queue. For more information about shared queue access, see
-AddPermission or go to Shared Queues in the I<Amazon SQS Developer
+AddPermission or see Shared Queues in the I<Amazon SQS Developer
 Guide>.
 
 
@@ -493,7 +536,7 @@ Returns: a L<Paws::SQS::ListDeadLetterSourceQueuesResult> instance
 attribute configured with a dead letter queue.
 
 For more information about using dead letter queues, see Using Amazon
-SQS Dead Letter Queues.
+SQS Dead Letter Queues in the I<Amazon SQS Developer Guide>.
 
 
 =head2 ListQueues([QueueNamePrefix => Str])
@@ -517,17 +560,17 @@ Returns: nothing
   Deletes the messages in a queue specified by the B<queue URL>.
 
 When you use the C<PurgeQueue> API, the deleted messages in the queue
-cannot be retrieved.
+can't be retrieved.
 
 When you purge a queue, the message deletion process takes up to 60
 seconds. All messages sent to the queue before calling C<PurgeQueue>
 will be deleted; messages sent to the queue while it is being purged
-may be deleted. While the queue is being purged, messages sent to the
-queue before C<PurgeQueue> was called may be received, but will be
+might be deleted. While the queue is being purged, messages sent to the
+queue before C<PurgeQueue> was called might be received, but will be
 deleted within the next minute.
 
 
-=head2 ReceiveMessage(QueueUrl => Str, [AttributeNames => ArrayRef[Str|Undef], MaxNumberOfMessages => Int, MessageAttributeNames => ArrayRef[Str|Undef], VisibilityTimeout => Int, WaitTimeSeconds => Int])
+=head2 ReceiveMessage(QueueUrl => Str, [AttributeNames => ArrayRef[Str|Undef], MaxNumberOfMessages => Int, MessageAttributeNames => ArrayRef[Str|Undef], ReceiveRequestAttemptId => Str, VisibilityTimeout => Int, WaitTimeSeconds => Int])
 
 Each argument is described in detail in: L<Paws::SQS::ReceiveMessage>
 
@@ -557,8 +600,7 @@ Message body
 
 =item *
 
-MD5 digest of the message body. For information about MD5, go to
-http://www.faqs.org/rfcs/rfc1321.html.
+MD5 digest of the message body. For information about MD5, see RFC1321.
 
 =item *
 
@@ -584,10 +626,15 @@ I<Amazon SQS Developer Guide>.
 
 You can provide the C<VisibilityTimeout> parameter in your request,
 which will be applied to the messages that Amazon SQS returns in the
-response. If you do not include the parameter, the overall visibility
+response. If you don't include the parameter, the overall visibility
 timeout for the queue is used for the returned messages. For more
 information, see Visibility Timeout in the I<Amazon SQS Developer
 Guide>.
+
+A message that is not deleted or a message whose visibility is not
+extended before the visibility timeout expires counts as a failed
+receive. Depending on the configuration of the queue, the message might
+be sent to the dead letter queue.
 
 Going forward, new attributes might be added. If you are writing code
 that calls this action, we recommend that you structure your code so
@@ -604,22 +651,22 @@ Returns: nothing
 C<Label> parameter. Only the owner of the queue can remove permissions.
 
 
-=head2 SendMessage(MessageBody => Str, QueueUrl => Str, [DelaySeconds => Int, MessageAttributes => L<Paws::SQS::MessageAttributeMap>])
+=head2 SendMessage(MessageBody => Str, QueueUrl => Str, [DelaySeconds => Int, MessageAttributes => L<Paws::SQS::MessageBodyAttributeMap>, MessageDeduplicationId => Str, MessageGroupId => Str])
 
 Each argument is described in detail in: L<Paws::SQS::SendMessage>
 
 Returns: a L<Paws::SQS::SendMessageResult> instance
 
-  Delivers a message to the specified queue. With Amazon SQS, you now
-have the ability to send large payload messages that are up to 256KB
-(262,144 bytes) in size. To send large payloads, you must use an AWS
-SDK that supports SigV4 signing. To verify whether SigV4 is supported
-for an AWS SDK, check the SDK release notes.
+  Delivers a message to the specified queue.
 
-The following list shows the characters (in Unicode) allowed in your
-message, according to the W3C XML specification. For more information,
-go to http://www.w3.org/TR/REC-xml/
-not included in the list, your request will be rejected.
+The following list shows the characters (in Unicode) that are allowed
+in your message, according to the W3C XML specification:
+
+C<
+C<
+
+For more information, see RFC1321. If you send any characters that
+aren't included in this list, your request will be rejected.
 
 
 =head2 SendMessageBatch(Entries => ArrayRef[L<Paws::SQS::SendMessageBatchRequestEntry>], QueueUrl => Str)
@@ -629,37 +676,38 @@ Each argument is described in detail in: L<Paws::SQS::SendMessageBatch>
 Returns: a L<Paws::SQS::SendMessageBatchResult> instance
 
   Delivers up to ten messages to the specified queue. This is a batch
-version of SendMessage. The result of the send action on each message
-is reported individually in the response. The maximum allowed
-individual message size is 256 KB (262,144 bytes).
+version of C< SendMessage >. For a FIFO queue, multiple messages within
+a single batch are enqueued in the order they are sent.
 
-The maximum total payload size (i.e., the sum of all a batch's
-individual message lengths) is also 256 KB (262,144 bytes).
+The result of sending each message is reported individually in the
+response. Because the batch request can result in a combination of
+successful and unsuccessful actions, you should check for batch errors
+even when the call returns an HTTP status code of 200.
 
-If the C<DelaySeconds> parameter is not specified for an entry, the
-default for the queue is used.
+The maximum allowed individual message size and the maximum total
+payload size (the sum of the individual lengths of all of the batched
+messages) are both 256 KB (262,144 bytes).
 
 The following list shows the characters (in Unicode) that are allowed
-in your message, according to the W3C XML specification. For more
-information, go to http://www.faqs.org/rfcs/rfc1321.html. If you send
-any characters that are not included in the list, your request will be
-rejected.
+in your message, according to the W3C XML specification:
 
+C<
+C<
 
+For more information, see RFC1321. If you send any characters that
+aren't included in this list, your request will be rejected.
 
-
-Because the batch request can result in a combination of successful and
-unsuccessful actions, you should check for batch errors even when the
-call returns an HTTP status code of 200.
+If you don't specify the C<DelaySeconds> parameter for an entry, Amazon
+SQS uses the default for the queue.
 
 Some API actions take lists of parameters. These lists are specified
 using the C<param.n> notation. Values of C<n> are integers starting
 from 1. For example, a parameter list with two elements looks like
 this:
 
-C<>
+C<&amp;Attribute.1=this>
 
-C<>
+C<&amp;Attribute.2=that>
 
 
 =head2 SetQueueAttributes(Attributes => L<Paws::SQS::QueueAttributeMap>, QueueUrl => Str)
@@ -673,9 +721,9 @@ queue's attributes, the change can take up to 60 seconds for most of
 the attributes to propagate throughout the SQS system. Changes made to
 the C<MessageRetentionPeriod> attribute can take up to 15 minutes.
 
-Going forward, new attributes might be added. If you are writing code
-that calls this action, we recommend that you structure your code so
-that it can handle new attributes gracefully.
+In the future, new attributes might be added. When you write code that
+calls this action, we recommend structuring your code so that it can
+handle new attributes gracefully.
 
 
 

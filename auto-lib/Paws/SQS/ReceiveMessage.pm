@@ -5,6 +5,7 @@ package Paws::SQS::ReceiveMessage;
   has MaxNumberOfMessages => (is => 'ro', isa => 'Int');
   has MessageAttributeNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has QueueUrl => (is => 'ro', isa => 'Str', required => 1);
+  has ReceiveRequestAttemptId => (is => 'ro', isa => 'Str');
   has VisibilityTimeout => (is => 'ro', isa => 'Int');
   has WaitTimeSeconds => (is => 'ro', isa => 'Int');
 
@@ -47,45 +48,133 @@ These attributes include:
 
 =item *
 
-C<All> - returns all values.
+C<All> - Returns all values.
 
 =item *
 
-C<ApproximateFirstReceiveTimestamp> - returns the time when the message
-was first received from the queue (epoch time in milliseconds).
+C<ApproximateFirstReceiveTimestamp> - Returns the time the message was
+first received from the queue (epoch time in milliseconds).
 
 =item *
 
-C<ApproximateReceiveCount> - returns the number of times a message has
+C<ApproximateReceiveCount> - Returns the number of times a message has
 been received from the queue but not deleted.
 
 =item *
 
-C<SenderId> - returns the AWS account number (or the IP address, if
-anonymous access is allowed) of the sender.
+C<SenderId>
+
+=over
 
 =item *
 
-C<SentTimestamp> - returns the time when the message was sent to the
-queue (epoch time in milliseconds).
+For an IAM user, returns the IAM user ID, for example
+C<ABCDEFGHI1JKLMNOPQ23R>.
+
+=item *
+
+For an IAM role, returns the IAM role ID, for example
+C<ABCDE1F2GH3I4JK5LMNOP:i-a123b456>.
 
 =back
 
-Any other valid special request parameters that are specified (such as
-C<ApproximateNumberOfMessages>, C<ApproximateNumberOfMessagesDelayed>,
-C<ApproximateNumberOfMessagesNotVisible>, C<CreatedTimestamp>,
-C<DelaySeconds>, C<LastModifiedTimestamp>, C<MaximumMessageSize>,
-C<MessageRetentionPeriod>, C<Policy>, C<QueueArn>,
-C<ReceiveMessageWaitTimeSeconds>, C<RedrivePolicy>, and
-C<VisibilityTimeout>) will be ignored.
+=item *
+
+C<SentTimestamp> - Returns the time the message was sent to the queue
+(epoch time in milliseconds).
+
+=item *
+
+C<MessageDeduplicationId> - Returns the value provided by the sender
+that calls the C< SendMessage > action.
+
+=item *
+
+C<MessageGroupId> - Returns the value provided by the sender that calls
+the C< SendMessage > action. Messages with the same C<MessageGroupId>
+are returned in sequence.
+
+=item *
+
+C<SequenceNumber> - Returns the value provided by Amazon SQS.
+
+=back
+
+Any other valid special request parameters (such as the following) that
+are specified are ignored:
+
+=over
+
+=item *
+
+C<ApproximateNumberOfMessages>
+
+=item *
+
+C<ApproximateNumberOfMessagesDelayed>
+
+=item *
+
+C<ApproximateNumberOfMessagesNotVisible>
+
+=item *
+
+C<CreatedTimestamp>
+
+=item *
+
+C<ContentBasedDeduplication>
+
+=item *
+
+C<DelaySeconds>
+
+=item *
+
+C<LastModifiedTimestamp>
+
+=item *
+
+C<MaximumMessageSize>
+
+=item *
+
+C<MessageRetentionPeriod>
+
+=item *
+
+C<Policy>
+
+=item *
+
+C<QueueArn>,
+
+=item *
+
+C<ReceiveMessageWaitTimeSeconds>
+
+=item *
+
+C<RedrivePolicy>
+
+=item *
+
+C<FifoQueue>
+
+=item *
+
+C<VisibilityTimeout>
+
+=back
+
 
 
 
 =head2 MaxNumberOfMessages => Int
 
 The maximum number of messages to return. Amazon SQS never returns more
-messages than this value but may return fewer. Values can be from 1 to
-10. Default is 1.
+messages than this value but might return fewer. Values can be from 1
+to 10. Default is 1.
 
 All of the messages are not necessarily returned.
 
@@ -98,7 +187,7 @@ attribute name can contain the following characters: A-Z, a-z, 0-9,
 underscore (_), hyphen (-), and period (.). The name must not start or
 end with a period, and it should not have successive periods. The name
 is case sensitive and must be unique among all attribute names for the
-message. The name can be up to 256 characters long. The name cannot
+message. The name can be up to 256 characters long. The name can't
 start with "AWS." or "Amazon." (or any variations in casing), because
 these prefixes are reserved for use by Amazon Web Services.
 
@@ -114,6 +203,87 @@ attributes starting with the "bar" prefix.
 The URL of the Amazon SQS queue to take action on.
 
 Queue URLs are case-sensitive.
+
+
+
+=head2 ReceiveRequestAttemptId => Str
+
+This parameter applies only to FIFO (first-in-first-out) queues.
+
+The token used for deduplication of C<ReceiveMessage> calls. If a
+networking issue occurs after a C<ReceiveMessage> action, and instead
+of a response you receive a generic error, you can retry the same
+action with an identical C<ReceiveRequestAttemptId> to retrieve the
+same set of messages, even if their visibility timeout has not yet
+expired.
+
+=over
+
+=item *
+
+You can use C<ReceiveRequestAttemptId> only for 5 minutes after a
+C<ReceiveMessage> action.
+
+=item *
+
+When you set C<FifoQueue>, a caller of the C<ReceiveMessage> action can
+provide a C<ReceiveRequestAttemptId> explicitly.
+
+=item *
+
+If a caller of the C<ReceiveMessage> action doesn't provide a
+C<ReceiveRequestAttemptId>, Amazon SQS generates a
+C<ReceiveRequestAttemptId>.
+
+=item *
+
+You can retry the C<ReceiveMessage> action with the same
+C<ReceiveRequestAttemptId> if none of the messages have been modified
+(deleted or had their visibility changes).
+
+=item *
+
+During a visibility timeout, subsequent calls with the same
+C<ReceiveRequestAttemptId> return the same messages and receipt
+handles. If a retry occurs within the deduplication interval, it resets
+the visibility timeout. For more information, see Visibility Timeout in
+the I<Amazon Simple Queue Service Developer Guide>.
+
+If a caller of the C<ReceiveMessage> action is still processing
+messages when the visibility timeout expires and messages become
+visible, another worker reading from the same queue can receive the
+same messages and therefore process duplicates. Also, if a reader whose
+message processing time is longer than the visibility timeout tries to
+delete the processed messages, the action fails with an error.
+
+To mitigate this effect, ensure that your application observes a safe
+threshold before the visibility timeout expires and extend the
+visibility timeout as necessary.
+
+=item *
+
+While messages with a particular C<MessageGroupId> are invisible, no
+more messages belonging to the same C<MessageGroupId> are returned
+until the visibility timeout expires. You can still receive messages
+with another C<MessageGroupId> as long as it is also visible.
+
+=item *
+
+If a caller of C<ReceiveMessage> can't track the
+C<ReceiveRequestAttemptId>, no retries will work until the original
+visibility timeout expires. As a result, delays might occur but the
+messages in the queue will remain in a strict order.
+
+=back
+
+The length of C<ReceiveRequestAttemptId> is 128 characters.
+C<ReceiveRequestAttemptId> can contain alphanumeric characters (C<a-z>,
+C<A-Z>, C<0-9>) and punctuation
+(C<!"
+
+For best practices of using C<ReceiveRequestAttemptId>, see Using the
+ReceiveRequestAttemptId Request Parameter in the I<Amazon Simple Queue
+Service Developer Guide>.
 
 
 

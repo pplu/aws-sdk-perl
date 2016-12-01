@@ -36,88 +36,108 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AttributeNames => ArrayRef[Str|Undef]
 
-A list of attributes to retrieve information for. The following
-attributes are supported:
+A list of attributes for which to retrieve information.
+
+Going forward, new attributes might be added. If you are writing code
+that calls this action, we recommend that you structure your code so
+that it can handle new attributes gracefully.
+
+The following attributes are supported:
 
 =over
 
 =item *
 
-C<All> - returns all values.
+C<All> - Returns all values.
 
 =item *
 
-C<ApproximateNumberOfMessages> - returns the approximate number of
+C<ApproximateNumberOfMessages> - Returns the approximate number of
 visible messages in a queue. For more information, see Resources
 Required to Process Messages in the I<Amazon SQS Developer Guide>.
 
 =item *
 
-C<ApproximateNumberOfMessagesNotVisible> - returns the approximate
-number of messages that are not timed-out and not deleted. For more
-information, see Resources Required to Process Messages in the I<Amazon
-SQS Developer Guide>.
+C<ApproximateNumberOfMessagesDelayed> - Returns the approximate number
+of messages that are waiting to be added to the queue.
 
 =item *
 
-C<VisibilityTimeout> - returns the visibility timeout for the queue.
-For more information about visibility timeout, see Visibility Timeout
-in the I<Amazon SQS Developer Guide>.
+C<ApproximateNumberOfMessagesNotVisible> - Returns the approximate
+number of messages that have not timed-out and are not deleted. For
+more information, see Resources Required to Process Messages in the
+I<Amazon SQS Developer Guide>.
 
 =item *
 
-C<CreatedTimestamp> - returns the time when the queue was created
-(epoch time in seconds).
+C<CreatedTimestamp> - Returns the time when the queue was created in
+seconds (epoch time).
 
 =item *
 
-C<LastModifiedTimestamp> - returns the time when the queue was last
-changed (epoch time in seconds).
+C<DelaySeconds> - Returns the default delay on the queue in seconds.
 
 =item *
 
-C<Policy> - returns the queue's policy.
+C<LastModifiedTimestamp> - Returns the time when the queue was last
+changed in seconds (epoch time).
 
 =item *
 
-C<MaximumMessageSize> - returns the limit of how many bytes a message
+C<MaximumMessageSize> - Returns the limit of how many bytes a message
 can contain before Amazon SQS rejects it.
 
 =item *
 
-C<MessageRetentionPeriod> - returns the number of seconds Amazon SQS
-retains a message.
+C<MessageRetentionPeriod> - Returns the number of seconds for which
+Amazon SQS retains a message.
 
 =item *
 
-C<QueueArn> - returns the queue's Amazon resource name (ARN).
+C<Policy> - Returns the policy of the queue.
 
 =item *
 
-C<ApproximateNumberOfMessagesDelayed> - returns the approximate number
-of messages that are pending to be added to the queue.
+C<QueueArn> - Returns the Amazon resource name (ARN) of the queue.
 
 =item *
 
-C<DelaySeconds> - returns the default delay on the queue in seconds.
+C<ReceiveMessageWaitTimeSeconds> - Returns the number of seconds for
+which ReceiveMessage call will wait for a message to arrive.
 
 =item *
 
-C<ReceiveMessageWaitTimeSeconds> - returns the time for which a
-ReceiveMessage call will wait for a message to arrive.
-
-=item *
-
-C<RedrivePolicy> - returns the parameters for dead letter queue
-functionality of the source queue. For more information about
-RedrivePolicy and dead letter queues, see Using Amazon SQS Dead Letter
+C<RedrivePolicy> - Returns the parameters for dead letter queue
+functionality of the source queue. For more information about the
+redrive policy and dead letter queues, see Using Amazon SQS Dead Letter
 Queues in the I<Amazon SQS Developer Guide>.
+
+=item *
+
+C<VisibilityTimeout> - Returns the visibility timeout for the queue.
+For more information about the visibility timeout, see Visibility
+Timeout in the I<Amazon SQS Developer Guide>.
 
 =back
 
-Going forward, new attributes might be added. If you are writing code
-that calls this action, we recommend that you structure your code so
-that it can handle new attributes gracefully.
+The following attributes apply only to FIFO (first-in-first-out)
+queues:
+
+=over
+
+=item *
+
+C<FifoQueue> - Returns whether the queue is FIFO. For more information,
+see FIFO Queue Logic in the I<Amazon SQS Developer Guide>.
+
+=item *
+
+C<ContentBasedDeduplication> - Returns whether content-based
+deduplication is enabled for the queue. For more information, see
+Exactly-Once Processing in the I<Amazon SQS Developer Guide>.
+
+=back
+
 
 
 
