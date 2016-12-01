@@ -77,6 +77,11 @@ package Paws::EMR;
     my $call_object = $self->new_with_coercions('Paws::EMR::AddTags', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CancelSteps {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EMR::CancelSteps', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateSecurityConfiguration {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EMR::CreateSecurityConfiguration', @_);
@@ -140,6 +145,16 @@ package Paws::EMR;
   sub ModifyInstanceGroups {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EMR::ModifyInstanceGroups', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub PutAutoScalingPolicy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EMR::PutAutoScalingPolicy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub RemoveAutoScalingPolicy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EMR::RemoveAutoScalingPolicy', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub RemoveTags {
@@ -275,7 +290,7 @@ package Paws::EMR;
   }
 
 
-  sub operations { qw/AddInstanceGroups AddJobFlowSteps AddTags CreateSecurityConfiguration DeleteSecurityConfiguration DescribeCluster DescribeJobFlows DescribeSecurityConfiguration DescribeStep ListBootstrapActions ListClusters ListInstanceGroups ListInstances ListSecurityConfigurations ListSteps ModifyInstanceGroups RemoveTags RunJobFlow SetTerminationProtection SetVisibleToAllUsers TerminateJobFlows / }
+  sub operations { qw/AddInstanceGroups AddJobFlowSteps AddTags CancelSteps CreateSecurityConfiguration DeleteSecurityConfiguration DescribeCluster DescribeJobFlows DescribeSecurityConfiguration DescribeStep ListBootstrapActions ListClusters ListInstanceGroups ListInstances ListSecurityConfigurations ListSteps ModifyInstanceGroups PutAutoScalingPolicy RemoveAutoScalingPolicy RemoveTags RunJobFlow SetTerminationProtection SetVisibleToAllUsers TerminateJobFlows / }
 
 1;
 
@@ -303,11 +318,11 @@ Paws::EMR - Perl Interface to AWS Amazon Elastic MapReduce
 
 =head1 DESCRIPTION
 
-Amazon Elastic MapReduce (Amazon EMR) is a web service that makes it
-easy to process large amounts of data efficiently. Amazon EMR uses
-Hadoop processing combined with several AWS products to do tasks such
-as web indexing, data mining, log file analysis, machine learning,
-scientific simulation, and data warehousing.
+Amazon EMR is a web service that makes it easy to process large amounts
+of data efficiently. Amazon EMR uses Hadoop processing combined with
+several AWS products to do tasks such as web indexing, data mining, log
+file analysis, machine learning, scientific simulation, and data
+warehousing.
 
 =head1 METHODS
 
@@ -317,7 +332,7 @@ Each argument is described in detail in: L<Paws::EMR::AddInstanceGroups>
 
 Returns: a L<Paws::EMR::AddInstanceGroupsOutput> instance
 
-  AddInstanceGroups adds an instance group to a running cluster.
+  Adds one or more instance groups to a running cluster.
 
 
 =head2 AddJobFlowSteps(JobFlowId => Str, Steps => ArrayRef[L<Paws::EMR::StepConfig>])
@@ -334,8 +349,8 @@ complex, you may require more than 256 steps to process your data. You
 can bypass the 256-step limitation in various ways, including using the
 SSH shell to connect to the master node and submitting queries directly
 to the software running on the master node, such as Hive and Hadoop.
-For more information on how to do this, go to Add More than 256 Steps
-to a Job Flow in the I<Amazon Elastic MapReduce Developer's Guide>.
+For more information on how to do this, see Add More than 256 Steps to
+a Job Flow in the I<Amazon EMR Developer's Guide>.
 
 A step specifies the location of a JAR file stored either on the master
 node of the job flow or in Amazon S3. Each step is performed by the
@@ -343,9 +358,9 @@ main function of the main class of the JAR file. The main class can be
 specified either in the manifest of the JAR or by using the
 MainFunction parameter of the step.
 
-Elastic MapReduce executes each step in the order listed. For a step to
-be considered complete, the main function must exit with a zero exit
-code and all Hadoop jobs started while the step was running must have
+Amazon EMR executes each step in the order listed. For a step to be
+considered complete, the main function must exit with a zero exit code
+and all Hadoop jobs started while the step was running must have
 completed and run successfully.
 
 You can only add steps to a job flow that is in one of the following
@@ -364,16 +379,28 @@ Amazon EMR resource allocation costs. For more information, see Tagging
 Amazon EMR Resources.
 
 
+=head2 CancelSteps([ClusterId => Str, StepIds => ArrayRef[Str|Undef]])
+
+Each argument is described in detail in: L<Paws::EMR::CancelSteps>
+
+Returns: a L<Paws::EMR::CancelStepsOutput> instance
+
+  Cancels a pending step or steps in a running cluster. Available only in
+Amazon EMR versions 4.8.0 and later, excluding version 5.0.0. A maximum
+of 256 steps are allowed in each CancelSteps request. CancelSteps is
+idempotent but asynchronous; it does not guarantee a step will be
+canceled, even if the request is successfully submitted. You can only
+cancel steps that are in a C<PENDING> state.
+
+
 =head2 CreateSecurityConfiguration(Name => Str, SecurityConfiguration => Str)
 
 Each argument is described in detail in: L<Paws::EMR::CreateSecurityConfiguration>
 
 Returns: a L<Paws::EMR::CreateSecurityConfigurationOutput> instance
 
-  Creates a security configuration using EMR Security Configurations,
-which are stored in the service. Security Configurations enable you to
-more easily create a configuration, reuse it, and apply it whenever a
-cluster is created.
+  Creates a security configuration, which is stored in the service and
+can be specified when a cluster is created.
 
 
 =head2 DeleteSecurityConfiguration(Name => Str)
@@ -429,8 +456,7 @@ following states: C<RUNNING>, C<WAITING>, C<SHUTTING_DOWN>, C<STARTING>
 
 =back
 
-Amazon Elastic MapReduce can return a maximum of 512 job flow
-descriptions.
+Amazon EMR can return a maximum of 512 job flow descriptions.
 
 
 =head2 DescribeSecurityConfiguration(Name => Str)
@@ -517,10 +543,11 @@ Each argument is described in detail in: L<Paws::EMR::ListSteps>
 
 Returns: a L<Paws::EMR::ListStepsOutput> instance
 
-  Provides a list of steps for the cluster.
+  Provides a list of steps for the cluster in reverse order unless you
+specify stepIds with the request.
 
 
-=head2 ModifyInstanceGroups([InstanceGroups => ArrayRef[L<Paws::EMR::InstanceGroupModifyConfig>]])
+=head2 ModifyInstanceGroups([ClusterId => Str, InstanceGroups => ArrayRef[L<Paws::EMR::InstanceGroupModifyConfig>]])
 
 Each argument is described in detail in: L<Paws::EMR::ModifyInstanceGroups>
 
@@ -530,6 +557,29 @@ Returns: nothing
 settings of an instance group. The input parameters include the new
 target instance count for the group and the instance group ID. The call
 will either succeed or fail atomically.
+
+
+=head2 PutAutoScalingPolicy(AutoScalingPolicy => L<Paws::EMR::AutoScalingPolicy>, ClusterId => Str, InstanceGroupId => Str)
+
+Each argument is described in detail in: L<Paws::EMR::PutAutoScalingPolicy>
+
+Returns: a L<Paws::EMR::PutAutoScalingPolicyOutput> instance
+
+  Creates or updates an automatic scaling policy for a core instance
+group or task instance group in an Amazon EMR cluster. The automatic
+scaling policy defines how an instance group dynamically adds and
+terminates EC2 instances in response to the value of a CloudWatch
+metric.
+
+
+=head2 RemoveAutoScalingPolicy(ClusterId => Str, InstanceGroupId => Str)
+
+Each argument is described in detail in: L<Paws::EMR::RemoveAutoScalingPolicy>
+
+Returns: a L<Paws::EMR::RemoveAutoScalingPolicyOutput> instance
+
+  Removes an automatic scaling policy from a specified instance group
+within an EMR cluster.
 
 
 =head2 RemoveTags(ResourceId => Str, TagKeys => ArrayRef[Str|Undef])
@@ -547,19 +597,19 @@ The following example removes the stack tag with value Prod from a
 cluster:
 
 
-=head2 RunJobFlow(Instances => L<Paws::EMR::JobFlowInstancesConfig>, Name => Str, [AdditionalInfo => Str, AmiVersion => Str, Applications => ArrayRef[L<Paws::EMR::Application>], BootstrapActions => ArrayRef[L<Paws::EMR::BootstrapActionConfig>], Configurations => ArrayRef[L<Paws::EMR::Configuration>], JobFlowRole => Str, LogUri => Str, NewSupportedProducts => ArrayRef[L<Paws::EMR::SupportedProductConfig>], ReleaseLabel => Str, SecurityConfiguration => Str, ServiceRole => Str, Steps => ArrayRef[L<Paws::EMR::StepConfig>], SupportedProducts => ArrayRef[Str|Undef], Tags => ArrayRef[L<Paws::EMR::Tag>], VisibleToAllUsers => Bool])
+=head2 RunJobFlow(Instances => L<Paws::EMR::JobFlowInstancesConfig>, Name => Str, [AdditionalInfo => Str, AmiVersion => Str, Applications => ArrayRef[L<Paws::EMR::Application>], AutoScalingRole => Str, BootstrapActions => ArrayRef[L<Paws::EMR::BootstrapActionConfig>], Configurations => ArrayRef[L<Paws::EMR::Configuration>], JobFlowRole => Str, LogUri => Str, NewSupportedProducts => ArrayRef[L<Paws::EMR::SupportedProductConfig>], ReleaseLabel => Str, ScaleDownBehavior => Str, SecurityConfiguration => Str, ServiceRole => Str, Steps => ArrayRef[L<Paws::EMR::StepConfig>], SupportedProducts => ArrayRef[Str|Undef], Tags => ArrayRef[L<Paws::EMR::Tag>], VisibleToAllUsers => Bool])
 
 Each argument is described in detail in: L<Paws::EMR::RunJobFlow>
 
 Returns: a L<Paws::EMR::RunJobFlowOutput> instance
 
   RunJobFlow creates and starts running a new job flow. The job flow will
-run the steps specified. Once the job flow completes, the cluster is
+run the steps specified. After the job flow completes, the cluster is
 stopped and the HDFS partition is lost. To prevent loss of data,
 configure the last step of the job flow to store results in Amazon S3.
 If the JobFlowInstancesConfig C<KeepJobFlowAliveWhenNoSteps> parameter
 is set to C<TRUE>, the job flow will transition to the WAITING state
-rather than shutting down once the steps have completed.
+rather than shutting down after the steps have completed.
 
 For additional protection, you can set the JobFlowInstancesConfig
 C<TerminationProtected> parameter to C<TRUE> to lock the job flow and
@@ -573,8 +623,8 @@ complex, you may require more than 256 steps to process your data. You
 can bypass the 256-step limitation in various ways, including using the
 SSH shell to connect to the master node and submitting queries directly
 to the software running on the master node, such as Hive and Hadoop.
-For more information on how to do this, go to Add More than 256 Steps
-to a Job Flow in the I<Amazon Elastic MapReduce Developer's Guide>.
+For more information on how to do this, see Add More than 256 Steps to
+a Job Flow in the I<Amazon EMR Management Guide>.
 
 For long running job flows, we recommend that you periodically store
 your results.
@@ -586,9 +636,9 @@ Each argument is described in detail in: L<Paws::EMR::SetTerminationProtection>
 
 Returns: nothing
 
-  SetTerminationProtection locks a job flow so the Amazon EC2 instances
-in the cluster cannot be terminated by user intervention, an API call,
-or in the event of a job-flow error. The cluster still terminates upon
+  SetTerminationProtection locks a job flow so the EC2 instances in the
+cluster cannot be terminated by user intervention, an API call, or in
+the event of a job-flow error. The cluster still terminates upon
 successful completion of the job flow. Calling SetTerminationProtection
 on a job flow is analogous to calling the Amazon EC2
 DisableAPITermination API on all of the EC2 instances in a cluster.
@@ -603,8 +653,8 @@ SetTerminationProtection to C<true>, you must first unlock the job flow
 by a subsequent call to SetTerminationProtection in which you set the
 value to C<false>.
 
-For more information, go to Protecting a Job Flow from Termination in
-the I<Amazon Elastic MapReduce Developer's Guide.>
+For more information, seeProtecting a Job Flow from Termination in the
+I<Amazon EMR Guide.>
 
 
 =head2 SetVisibleToAllUsers(JobFlowIds => ArrayRef[Str|Undef], VisibleToAllUsers => Bool)
@@ -635,7 +685,7 @@ flow was created.
 
 The maximum number of JobFlows allowed is 10. The call to
 TerminateJobFlows is asynchronous. Depending on the configuration of
-the job flow, it may take up to 5-20 minutes for the job flow to
+the job flow, it may take up to 1-5 minutes for the job flow to
 completely terminate and release allocated resources, such as Amazon
 EC2 instances.
 

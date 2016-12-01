@@ -41,8 +41,8 @@ Modify an instance group size.
 
 =head2 EC2InstanceIdsToTerminate => ArrayRef[Str|Undef]
 
-  The EC2 InstanceIds to terminate. Once you terminate the instances, the
-instance group will not return to its original requested size.
+  The EC2 InstanceIds to terminate. After you terminate the instances,
+the instance group will not return to its original requested size.
 
 
 =head2 InstanceCount => Int

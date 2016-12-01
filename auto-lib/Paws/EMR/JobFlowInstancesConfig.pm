@@ -66,8 +66,8 @@ must be present).
 
 =head2 Ec2KeyName => Str
 
-  The name of the Amazon EC2 key pair that can be used to ssh to the
-master node as the user called "hadoop."
+  The name of the EC2 key pair that can be used to ssh to the master node
+as the user called "hadoop."
 
 
 =head2 Ec2SubnetId => Str
@@ -105,7 +105,7 @@ used.
 
 =head2 InstanceCount => Int
 
-  The number of Amazon EC2 instances used to execute the job flow.
+  The number of EC2 instances used to execute the job flow.
 
 
 =head2 InstanceGroups => ArrayRef[L<Paws::EMR::InstanceGroupConfig>]

@@ -87,7 +87,7 @@ expressed in USD.
 
 =head2 B<REQUIRED> InstanceType => Str
 
-  Amazon EC2 Instance type.
+  EC2 instance type.
 
 
 =head2 LastStateChangeReason => Str
@@ -97,7 +97,7 @@ expressed in USD.
 
 =head2 B<REQUIRED> Market => Str
 
-  Market type of the Amazon EC2 instances used to create a cluster node.
+  Market type of the EC2 instances used to create a cluster node.
 
 
 =head2 Name => Str

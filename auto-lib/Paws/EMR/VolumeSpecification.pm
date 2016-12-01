@@ -33,9 +33,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EMR::Volume
 
 =head1 DESCRIPTION
 
-EBS volume specifications such as volume type, IOPS, and size(GiB) that
-will be requested for the EBS volume attached to an EC2 instance in the
-cluster.
+EBS volume specifications such as volume type, IOPS, and size (GiB)
+that will be requested for the EBS volume attached to an EC2 instance
+in the cluster.
 
 =head1 ATTRIBUTES
 

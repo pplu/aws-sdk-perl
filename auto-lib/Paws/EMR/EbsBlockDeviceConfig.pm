@@ -41,14 +41,14 @@ instance.
 
 =head2 B<REQUIRED> VolumeSpecification => L<Paws::EMR::VolumeSpecification>
 
-  EBS volume specifications such as volume type, IOPS, and size(GiB) that
-will be requested for the EBS volume attached to an EC2 instance in the
-cluster.
+  EBS volume specifications such as volume type, IOPS, and size (GiB)
+that will be requested for the EBS volume attached to an EC2 instance
+in the cluster.
 
 
 =head2 VolumesPerInstance => Int
 
-  Number of EBS volumes with specific volume configuration, that will be
+  Number of EBS volumes with a specific volume configuration that will be
 associated with every instance in the instance group
 
 

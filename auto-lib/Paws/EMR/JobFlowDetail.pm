@@ -1,6 +1,7 @@
 package Paws::EMR::JobFlowDetail;
   use Moose;
   has AmiVersion => (is => 'ro', isa => 'Str');
+  has AutoScalingRole => (is => 'ro', isa => 'Str');
   has BootstrapActions => (is => 'ro', isa => 'ArrayRef[Paws::EMR::BootstrapActionDetail]');
   has ExecutionStatusDetail => (is => 'ro', isa => 'Paws::EMR::JobFlowExecutionStatusDetail', required => 1);
   has Instances => (is => 'ro', isa => 'Paws::EMR::JobFlowInstancesDetail', required => 1);
@@ -8,6 +9,7 @@ package Paws::EMR::JobFlowDetail;
   has JobFlowRole => (is => 'ro', isa => 'Str');
   has LogUri => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str', required => 1);
+  has ScaleDownBehavior => (is => 'ro', isa => 'Str');
   has ServiceRole => (is => 'ro', isa => 'Str');
   has Steps => (is => 'ro', isa => 'ArrayRef[Paws::EMR::StepDetail]');
   has SupportedProducts => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
@@ -50,9 +52,16 @@ A description of a job flow.
 =head2 AmiVersion => Str
 
   The version of the AMI used to initialize Amazon EC2 instances in the
-job flow. For a list of AMI versions currently supported by Amazon
-ElasticMapReduce, go to AMI Versions Supported in Elastic MapReduce in
-the I<Amazon Elastic MapReduce Developer Guide.>
+job flow. For a list of AMI versions currently supported by Amazon EMR,
+see AMI Versions Supported in EMR in the I<Amazon EMR Developer Guide.>
+
+
+=head2 AutoScalingRole => Str
+
+  An IAM role for automatic scaling policies. The default role is
+C<EMR_AutoScaling_DefaultRole>. The IAM role provides a way for the
+automatic scaling feature to get the required permissions it needs to
+launch and terminate EC2 instances in an instance group.
 
 
 =head2 BootstrapActions => ArrayRef[L<Paws::EMR::BootstrapActionDetail>]
@@ -89,6 +98,24 @@ instances of the job flow assume this role.
 =head2 B<REQUIRED> Name => Str
 
   The name of the job flow.
+
+
+=head2 ScaleDownBehavior => Str
+
+  The way that individual Amazon EC2 instances terminate when an
+automatic scale-in activity occurs or an instance group is resized.
+C<TERMINATE_AT_INSTANCE_HOUR> indicates that Amazon EMR terminates
+nodes at the instance-hour boundary, regardless of when the request to
+terminate the instance was submitted. This option is only available
+with Amazon EMR 5.1.0 and later and is the default for clusters created
+using that version. C<TERMINATE_AT_TASK_COMPLETION> indicates that
+Amazon EMR blacklists and drains tasks from nodes before terminating
+the Amazon EC2 instances, regardless of the instance-hour boundary.
+With either behavior, Amazon EMR removes the least active nodes first
+and blocks instance termination if it could lead to HDFS corruption.
+C<TERMINATE_AT_TASK_COMPLETION> available only in Amazon EMR version
+4.1.0 and later, and is the default for versions of Amazon EMR earlier
+than 5.1.0.
 
 
 =head2 ServiceRole => Str
