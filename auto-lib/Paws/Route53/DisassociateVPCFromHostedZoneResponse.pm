@@ -17,7 +17,8 @@ Paws::Route53::DisassociateVPCFromHostedZoneResponse
 
 =head2 B<REQUIRED> ChangeInfo => L<Paws::Route53::ChangeInfo>
 
-A complex type that describes the changes made to your hosted zone.
+A complex type that describes the changes made to the specified private
+hosted zone.
 
 
 

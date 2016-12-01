@@ -104,7 +104,7 @@ returns in the DelegationSet element.
 =head2 VPC => L<Paws::Route53::VPC>
 
 The VPC that you want your hosted zone to be associated with. By
-providing this parameter, your newly created hosted cannot be resolved
+providing this parameter, your newly created hosted can't be resolved
 anywhere other than the given VPC.
 
 

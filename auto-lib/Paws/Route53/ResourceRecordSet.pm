@@ -50,10 +50,10 @@ Information about the resource record set to create or delete.
 =head2 AliasTarget => L<Paws::Route53::AliasTarget>
 
   I<Alias resource record sets only:> Information about the CloudFront
-distribution, Elastic Beanstalk environment, ELB load balancer, Amazon
-S3 bucket, or Amazon Route 53 resource record set to which you are
-redirecting queries. The Elastic Beanstalk environment must have a
-regionalized subdomain.
+distribution, AWS Elastic Beanstalk environment, ELB load balancer,
+Amazon S3 bucket, or Amazon Route 53 resource record set to which you
+are redirecting queries. The AWS Elastic Beanstalk environment must
+have a regionalized subdomain.
 
 If you're creating resource records sets for a private hosted zone,
 note the following:
@@ -125,7 +125,7 @@ health of the associated endpoint.
 
 =back
 
-You cannot create non-failover resource record sets that have the same
+You can't create non-failover resource record sets that have the same
 values for the C<Name> and C<Type> elements as failover resource record
 sets.
 
@@ -169,7 +169,7 @@ geographic region. This allows you to route most queries for a
 continent to one resource and to route queries for a country on that
 continent to a different resource.
 
-You cannot create two geolocation resource record sets that specify the
+You can't create two geolocation resource record sets that specify the
 same geographic location.
 
 The value C<*> in the C<CountryCode> element matches all geographic
@@ -188,7 +188,7 @@ addresses that aren't mapped to a location. If you don't create a C<*>
 resource record set, Amazon Route 53 returns a "no answer" response for
 queries from those locations.
 
-You cannot create non-geolocation resource record sets that have the
+You can't create non-geolocation resource record sets that have the
 same values for the C<Name> and C<Type> elements as geolocation
 resource record sets.
 
@@ -342,7 +342,7 @@ of NS.
 =back
 
 You can use the * wildcard as the leftmost label in a domain name, for
-example, C<*.example.com>. You cannot use an * for one of the middle
+example, C<*.example.com>. You can't use an * for one of the middle
 labels, for example, C<marketing.*.example.com>. In addition, the *
 must replace the entire label; for example, you can't specify
 C<prod*.example.com>.
@@ -350,11 +350,11 @@ C<prod*.example.com>.
 
 =head2 Region => Str
 
-  I<Latency-based resource record sets only:> The Amazon EC2 region where
+  I<Latency-based resource record sets only:> The Amazon EC2 Region where
 the resource that is specified in this resource record set resides. The
-resource typically is an AWS resource, such as an Amazon EC2 instance
-or an ELB load balancer, and is referred to by an IP address or a DNS
-domain name, depending on the record type.
+resource typically is an AWS resource, such as an EC2 instance or an
+ELB load balancer, and is referred to by an IP address or a DNS domain
+name, depending on the record type.
 
 Creating latency and latency alias resource record sets in private
 hosted zones is not supported.
@@ -362,7 +362,7 @@ hosted zones is not supported.
 When Amazon Route 53 receives a DNS query for a domain name and type
 for which you have created latency resource record sets, Amazon Route
 53 selects the latency resource record set that has the lowest latency
-between the end user and the associated Amazon EC2 region. Amazon Route
+between the end user and the associated Amazon EC2 Region. Amazon Route
 53 then returns the value that is associated with the selected resource
 record set.
 
@@ -378,18 +378,18 @@ set.
 =item *
 
 You can only create one latency resource record set for each Amazon EC2
-region.
+Region.
 
 =item *
 
 You are not required to create latency resource record sets for all
-Amazon EC2 regions. Amazon Route 53 will choose the region with the
+Amazon EC2 Regions. Amazon Route 53 will choose the region with the
 best latency from among the regions for which you create latency
 resource record sets.
 
 =item *
 
-You cannot create non-latency resource record sets that have the same
+You can't create non-latency resource record sets that have the same
 values for the C<Name> and C<Type> elements as latency resource record
 sets.
 
@@ -502,9 +502,13 @@ Values for alias resource record sets:
 
 B<CloudFront distributions:> C<A>
 
+If IPv6 is enabled for the distribution, create two resource record
+sets to route traffic to your distribution, one with a value of C<A>
+and one with a value of C<AAAA>.
+
 =item *
 
-B<Elastic Beanstalk environment that has a regionalized subdomain>:
+B<AWS Elastic Beanstalk environment that has a regionalized subdomain>:
 C<A>
 
 =item *
@@ -549,8 +553,8 @@ set.
 
 =item *
 
-You cannot create latency, failover, or geolocation resource record
-sets that have the same values for the C<Name> and C<Type> elements as
+You can't create latency, failover, or geolocation resource record sets
+that have the same values for the C<Name> and C<Type> elements as
 weighted resource record sets.
 
 =item *

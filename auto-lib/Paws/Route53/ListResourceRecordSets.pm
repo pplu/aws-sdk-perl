@@ -92,7 +92,7 @@ Values for alias resource record sets:
 
 =item *
 
-B<CloudFront distribution>: A
+B<CloudFront distribution>: A or AAAA
 
 =item *
 

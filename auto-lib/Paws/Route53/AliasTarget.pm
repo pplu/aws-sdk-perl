@@ -35,8 +35,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Route53::Al
 
 I<Alias resource record sets only:> Information about the CloudFront
 distribution, Elastic Beanstalk environment, ELB load balancer, Amazon
-S3 bucket, or Amazon Route 53 resource record set to which you are
-redirecting queries. The Elastic Beanstalk environment must have a
+S3 bucket, or Amazon Route 53 resource record set that you're
+redirecting queries to. The Elastic Beanstalk environment must have a
 regionalized subdomain.
 
 When creating resource record sets for a private hosted zone, note the
@@ -46,8 +46,8 @@ following:
 
 =item *
 
-Resource record sets cannot be created for CloudFront distributions in
-a private hosted zone.
+Resource record sets can't be created for CloudFront distributions in a
+private hosted zone.
 
 =item *
 
@@ -96,8 +96,8 @@ attribute:
 =item *
 
 I<AWS Managment Console>: For information about how to get the value by
-using the console, see Using Custom Domains with Elastic Beanstalk in
-the I<AWS Elastic Beanstalk Developer Guide>.
+using the console, see Using Custom Domains with AWS Elastic Beanstalk
+in the I<AWS Elastic Beanstalk Developer Guide>.
 
 =item *
 
@@ -126,11 +126,11 @@ record set will fail.
 
 =item *
 
-I<AWS Management Console>: Go to the Amazon EC2 page, click Load
-Balancers in the navigation pane, choose the load balancer, choose the
-Description tab, and get the value of the DNS Name field that begins
-with dualstack. Use the same process to get the Hosted Zone ID. See
-HostedZone$Id.
+I<AWS Management Console>: Go to the EC2 page, click B<Load Balancers>
+in the navigation pane, choose the load balancer, choose the
+B<Description> tab, and get the value of the B<DNS Name> field that
+begins with dualstack. Use the same process to get the B<Hosted Zone
+ID>. See HostedZone$Id.
 
 =item *
 
@@ -153,9 +153,9 @@ the domain name of the Amazon S3 website endpoint in which you created
 the bucket; for example, C<s3-website-us-east-1.amazonaws.com>. For
 more information about valid values, see the table Amazon Simple
 Storage Service (S3) Website Endpoints in the I<Amazon Web Services
-General Reference>. For more information about using Amazon S3 buckets
-for websites, see Hosting a Static Website on Amazon S3 in the I<Amazon
-Simple Storage Service Developer Guide.>
+General Reference>. For more information about using S3 buckets for
+websites, see Hosting a Static Website on Amazon S3 in the I<Amazon S3
+Developer Guide.>
 
 =item *
 
@@ -221,7 +221,7 @@ Note the following:
 
 =item *
 
-You cannot set C<EvaluateTargetHealth> to C<true> when the alias target
+You can't set C<EvaluateTargetHealth> to C<true> when the alias target
 is a CloudFront distribution.
 
 =item *
@@ -241,26 +241,26 @@ C<DNSName>, and if the environment contains an ELB load balancer,
 Elastic Load Balancing routes queries only to the healthy Amazon EC2
 instances that are registered with the load balancer. (An environment
 automatically contains an ELB load balancer if it includes more than
-one Amazon EC2 instance.) If you set C<EvaluateTargetHealth> to C<true>
-and either no Amazon EC2 instances are healthy or the load balancer
-itself is unhealthy, Amazon Route 53 routes queries to other available
-resources that are healthy, if any.
+one EC2 instance.) If you set C<EvaluateTargetHealth> to C<true> and
+either no EC2 instances are healthy or the load balancer itself is
+unhealthy, Amazon Route 53 routes queries to other available resources
+that are healthy, if any.
 
-If the environment contains a single Amazon EC2 instance, there are no
-special requirements.
+If the environment contains a single EC2 instance, there are no special
+requirements.
 
 =item *
 
 If you specify an ELB load balancer in C< AliasTarget >, Elastic Load
-Balancing routes queries only to the healthy Amazon EC2 instances that
-are registered with the load balancer. If no Amazon EC2 instances are
-healthy or if the load balancer itself is unhealthy, and if
+Balancing routes queries only to the healthy EC2 instances that are
+registered with the load balancer. If no EC2 instances are healthy or
+if the load balancer itself is unhealthy, and if
 C<EvaluateTargetHealth> is true for the corresponding alias resource
 record set, Amazon Route 53 routes queries to other resources. When you
 create a load balancer, you configure settings for Elastic Load
 Balancing health checks; they're not Amazon Route 53 health checks, but
 they perform a similar function. Do not create Amazon Route 53 health
-checks for the Amazon EC2 instances that you register with an ELB load
+checks for the EC2 instances that you register with an ELB load
 balancer.
 
 For more information, see How Health Checks Work in More Complex Amazon
@@ -289,16 +289,16 @@ the queries are routed:
 
 Specify C<Z2FDTNDATAQYW2>.
 
-Alias resource record sets for CloudFront cannot be created in a
-private zone.
+Alias resource record sets for CloudFront can't be created in a private
+zone.
 
 =item Elastic Beanstalk environment
 
 Specify the hosted zone ID for the region in which you created the
 environment. The environment must have a regionalized subdomain. For a
 list of regions and the corresponding hosted zone IDs, see AWS Elastic
-Beanstalk in the Regions and Endpoints chapter of the I<AWS General
-Reference>.
+Beanstalk in the Regions and Endpoints chapter of the I<Amazon Web
+Services General Reference>.
 
 =item ELB load balancer
 
@@ -309,10 +309,10 @@ following methods to get the hosted zone ID:
 
 =item *
 
-AWS Management Console: Go to the Amazon EC2; page, click Load
-Balancers in the navigation pane, select the load balancer, and get the
-value of the Hosted Zone ID field on the Description tab. Use the same
-process to get the DNS Name. See HostedZone$Name.
+AWS Management Console: Go to the Amazon EC2 page, click B<Load
+Balancers> in the navigation pane, select the load balancer, and get
+the value of the B<Hosted Zone ID> field on the B<Description> tab. Use
+the same process to get the value of B<DNS Name>. See HostedZone$Name.
 
 =item *
 
@@ -338,7 +338,7 @@ General Reference>.
 =item Another Amazon Route 53 resource record set in your hosted zone
 
 Specify the hosted zone ID of your hosted zone. (An alias resource
-record set cannot reference a resource record set in a different hosted
+record set can't reference a resource record set in a different hosted
 zone.)
 
 =back
