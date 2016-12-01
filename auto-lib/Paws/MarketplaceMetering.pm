@@ -14,15 +14,25 @@ package Paws::MarketplaceMetering;
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
 
   
+  sub BatchMeterUsage {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MarketplaceMetering::BatchMeterUsage', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub MeterUsage {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::MarketplaceMetering::MeterUsage', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ResolveCustomer {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MarketplaceMetering::ResolveCustomer', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   
 
 
-  sub operations { qw/MeterUsage / }
+  sub operations { qw/BatchMeterUsage MeterUsage ResolveCustomer / }
 
 1;
 
@@ -65,11 +75,51 @@ B<Submitting Metering Records>
 =item *
 
 I<MeterUsage>- Submits the metering record for a Marketplace product.
+MeterUsage is called from an EC2 instance.
+
+=item *
+
+I<BatchMeterUsage>- Submits the metering record for a set of customers.
+BatchMeterUsage is called from a software-as-a-service (SaaS)
+application.
+
+=back
+
+B<Accepting New Customers>
+
+=over
+
+=item *
+
+I<ResolveCustomer>- Called by a SaaS application during the
+registration process. When a buyer visits your website during the
+registration process, the buyer submits a Registration Token through
+the browser. The Registration Token is resolved through this API to
+obtain a CustomerIdentifier and Product Code.
 
 =back
 
 
 =head1 METHODS
+
+=head2 BatchMeterUsage(ProductCode => Str, UsageRecords => ArrayRef[L<Paws::MarketplaceMetering::UsageRecord>])
+
+Each argument is described in detail in: L<Paws::MarketplaceMetering::BatchMeterUsage>
+
+Returns: a L<Paws::MarketplaceMetering::BatchMeterUsageResult> instance
+
+  BatchMeterUsage is called from a SaaS application listed on the AWS
+Marketplace to post metering records for a set of customers.
+
+For identical requests, the API is idempotent; requests can be retried
+with the same records or a subset of the input records.
+
+Every request to BatchMeterUsage is for one product. If you need to
+meter usage for multiple products, you must make multiple calls to
+BatchMeterUsage.
+
+BatchMeterUsage can process up to 25 UsageRecords at a time.
+
 
 =head2 MeterUsage(DryRun => Bool, ProductCode => Str, Timestamp => Str, UsageDimension => Str, UsageQuantity => Int)
 
@@ -79,6 +129,22 @@ Returns: a L<Paws::MarketplaceMetering::MeterUsageResult> instance
 
   API to emit metering records. For identical requests, the API is
 idempotent. It simply returns the metering record ID.
+
+MeterUsage is authenticated on the buyer's AWS account, generally when
+running from an EC2 instance on the AWS Marketplace.
+
+
+=head2 ResolveCustomer(RegistrationToken => Str)
+
+Each argument is described in detail in: L<Paws::MarketplaceMetering::ResolveCustomer>
+
+Returns: a L<Paws::MarketplaceMetering::ResolveCustomerResult> instance
+
+  ResolveCustomer is called by a SaaS application during the registration
+process. When a buyer visits your website during the registration
+process, the buyer submits a registration token through their browser.
+The registration token is resolved through this API to obtain a
+CustomerIdentifier and product code.
 
 
 
