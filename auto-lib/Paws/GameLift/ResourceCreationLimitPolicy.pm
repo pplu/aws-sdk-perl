@@ -50,13 +50,13 @@ created fewer than 10 game sessions in the past 60 minutes.
 
 =head2 NewGameSessionsPerCreator => Int
 
-  Maximum number of game sessions an individual can create during the
-policy period.
+  Maximum number of game sessions that an individual can create during
+the policy period.
 
 
 =head2 PolicyPeriodInMinutes => Int
 
-  Time span used to evaluate the resource creation limit policy.
+  Time span used in evaluating the resource creation limit policy.
 
 
 

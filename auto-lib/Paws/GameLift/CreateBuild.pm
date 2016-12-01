@@ -39,7 +39,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 Name => Str
 
 Descriptive label associated with a build. Build names do not need to
-be unique. A build name can be changed later using C< UpdateBuild >.
+be unique. A build name can be changed later usingC< UpdateBuild >.
 
 
 
@@ -60,7 +60,7 @@ Valid values are: C<"WINDOWS_2012">, C<"AMAZON_LINUX">
 =head2 Version => Str
 
 Version associated with this build. Version strings do not need to be
-unique to a build. A build version can be changed later using C<
+unique to a build. A build version can be changed later usingC<
 UpdateBuild >.
 
 

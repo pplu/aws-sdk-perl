@@ -37,8 +37,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GameLift::I
 
 =head1 DESCRIPTION
 
-Properties describing an instance of a virtual computing resource that
-is hosting game servers. Fleets contain zero or more instances.
+Properties that describe an instance of a virtual computing resource
+that hosts one or more game servers. A fleet contains zero or more
+instances.
 
 =head1 ATTRIBUTES
 
@@ -66,7 +67,7 @@ number expressed in Unix time as milliseconds (ex: "1469498468.057").
 
 =head2 OperatingSystem => Str
 
-  Operating system being used on this instance.
+  Operating system that is running on this instance.
 
 
 =head2 Status => Str

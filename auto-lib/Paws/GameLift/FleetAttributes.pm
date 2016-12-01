@@ -56,7 +56,7 @@ General properties describing a fleet.
 =head2 CreationTime => Str
 
   Time stamp indicating when this data object was created. Format is a
-number expressed in Unix time as milliseconds (ex: "1469498468.057".
+number expressed in Unix time as milliseconds (ex: "1469498468.057").
 
 
 =head2 Description => Str
@@ -76,8 +76,9 @@ Amazon GameLift captures and stores any log files in this location.
 These logs are in addition to game session logs; see more on game
 session logs in the Amazon GameLift Developer Guide. If no default log
 path for a fleet is specified, GameLift will automatically upload logs
-stored on each instance at C<C:\game\logs>. Use the GameLift console to
-access stored logs.
+that are stored on each instance at C<C:\game\logs> (for Windows) or
+C</local/game/logs> (for Linux). Use the GameLift console to access
+stored logs.
 
 
 =head2 Name => Str
@@ -179,7 +180,7 @@ B<TERMINATED> E<ndash> The fleet no longer exists.
 =head2 TerminationTime => Str
 
   Time stamp indicating when this data object was terminated. Format is a
-number expressed in Unix time as milliseconds (ex: "1469498468.057".
+number expressed in Unix time as milliseconds (ex: "1469498468.057").
 
 
 

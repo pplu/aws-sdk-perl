@@ -50,7 +50,7 @@ Properties describing a game build.
 =head2 CreationTime => Str
 
   Time stamp indicating when this data object was created. Format is a
-number expressed in Unix time as milliseconds (ex: "1469498468.057".
+number expressed in Unix time as milliseconds (ex: "1469498468.057").
 
 
 =head2 Name => Str

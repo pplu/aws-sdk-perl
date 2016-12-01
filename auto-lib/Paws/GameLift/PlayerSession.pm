@@ -47,7 +47,7 @@ Properties describing a player session.
 =head2 CreationTime => Str
 
   Time stamp indicating when this data object was created. Format is a
-number expressed in Unix time as milliseconds (ex: "1469498468.057".
+number expressed in Unix time as milliseconds (ex: "1469498468.057").
 
 
 =head2 FleetId => Str
@@ -119,7 +119,7 @@ limit (60 seconds).
 =head2 TerminationTime => Str
 
   Time stamp indicating when this data object was terminated. Format is a
-number expressed in Unix time as milliseconds (ex: "1469498468.057".
+number expressed in Unix time as milliseconds (ex: "1469498468.057").
 
 
 
