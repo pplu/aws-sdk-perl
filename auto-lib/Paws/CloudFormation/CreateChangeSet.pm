@@ -87,28 +87,18 @@ cannot exceed 128 characters.
 
 =head2 ChangeSetType => Str
 
-The type of change set operation.
+The type of change set operation. To create a change set for a new
+stack, specify C<CREATE>. To create a change set for an existing stack,
+specify C<UPDATE>.
 
-Valid values are C<CREATE> and C<UPDATE>. The default value is
-C<UPDATE>.
+If you create a change set for a new stack, AWS Cloudformation creates
+a stack with a unique stack ID, but no template or resources. The stack
+will be in the C<REVIEW_IN_PROGRESS> state until you execute the change
+set.
 
-=over
-
-=item *
-
-C<CREATE> - Specify to use the change set to create a new stack. While
-AWS CloudFormation creates the stack, the stack has the
-C<REVIEW_IN_PROGRESS> status and an expected C<StackId>, but no
-template or resources. Except for its C<StackId>, the stack is
-completely empty until you execute the change set. You can apply
-multiple change sets to a stack.
-
-=item *
-
-C<UPDATE> - Specify to create a change set for an existing stack.
-
-=back
-
+By default, AWS CloudFormation specifies C<UPDATE>. You can't use the
+C<UPDATE> type to create a change set for a new stack or the C<CREATE>
+type to create a change set for an existing stack.
 
 Valid values are: C<"CREATE">, C<"UPDATE">
 

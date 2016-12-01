@@ -18,25 +18,11 @@ Paws::CloudFormation::GetTemplateOutput
 
 =head2 StagesAvailable => ArrayRef[Str|Undef]
 
-The template type.
-
-=over
-
-=item *
-
-For stacks, you can use either the C<Original> or the C<Processed>
-template type.
-
-=item *
-
-For change sets, you can use only the C<Original> template type. After
-the transforms are processed, you can use the C<Processed> template
-type.
-
-=back
-
-If you create a change set for a new stack, you must select the
-template type.
+The stage of the template that you can retrieve. For stacks, the
+C<Original> and C<Processed> templates are always available. For change
+sets, the C<Original> template is always available. After AWS
+CloudFormation finishes creating the change set, the C<Processed>
+template becomes available.
 
 
 =head2 TemplateBody => Str

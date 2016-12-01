@@ -37,9 +37,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 ChangeSetName => Str
 
-Returns the template for a change set using the Amazon Resource Name
-(ARN) or name of the change set. If you specify a name, you must also
-specify the C<StackName>.
+The name or Amazon Resource Name (ARN) of a change set for which AWS
+CloudFormation returns the associated template. If you specify a name,
+you must also specify the C<StackName>.
 
 
 
@@ -67,24 +67,14 @@ Default: There is no default value.
 
 =head2 TemplateStage => Str
 
-The stage of the template that is returned.
+For templates that include transforms, the stage of the template that
+AWS CloudFormation returns. To get the user-submitted template, specify
+C<Original>. To get the template after AWS CloudFormation has processed
+all transforms, specify C<Processed>.
 
-Valid values are C<Original> and C<Processed>. The default value is
-C<Original>.
-
-=over
-
-=item *
-
-C<Original> - Use this value to return the user-submitted template.
-
-=item *
-
-C<Processed> - Use this value to return the template after all
-transforms have been processed.
-
-=back
-
+If the template doesn't include transforms, C<Original> and
+C<Processed> return the same template. By default, AWS CloudFormation
+specifies C<Original>.
 
 Valid values are: C<"Original">, C<"Processed">
 

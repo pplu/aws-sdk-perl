@@ -108,6 +108,11 @@ package Paws::CloudFormation;
     my $call_object = $self->new_with_coercions('Paws::CloudFormation::ListExports', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListImports {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudFormation::ListImports', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListStackResources {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudFormation::ListStackResources', @_);
@@ -225,7 +230,7 @@ package Paws::CloudFormation;
   }
 
 
-  sub operations { qw/CancelUpdateStack ContinueUpdateRollback CreateChangeSet CreateStack DeleteChangeSet DeleteStack DescribeAccountLimits DescribeChangeSet DescribeStackEvents DescribeStackResource DescribeStackResources DescribeStacks EstimateTemplateCost ExecuteChangeSet GetStackPolicy GetTemplate GetTemplateSummary ListChangeSets ListExports ListStackResources ListStacks SetStackPolicy SignalResource UpdateStack ValidateTemplate / }
+  sub operations { qw/CancelUpdateStack ContinueUpdateRollback CreateChangeSet CreateStack DeleteChangeSet DeleteStack DescribeAccountLimits DescribeChangeSet DescribeStackEvents DescribeStackResource DescribeStackResources DescribeStacks EstimateTemplateCost ExecuteChangeSet GetStackPolicy GetTemplate GetTemplateSummary ListChangeSets ListExports ListImports ListStackResources ListStacks SetStackPolicy SignalResource UpdateStack ValidateTemplate / }
 
 1;
 
@@ -560,6 +565,21 @@ C<Fn::ImportValue> function.
 
 For more information, see AWS CloudFormation Export Stack Output
 Values.
+
+
+=head2 ListImports(ExportName => Str, [NextToken => Str])
+
+Each argument is described in detail in: L<Paws::CloudFormation::ListImports>
+
+Returns: a L<Paws::CloudFormation::ListImportsOutput> instance
+
+  Lists all stacks that are importing an exported output value. To modify
+or remove an exported output value, first use this action to see which
+stacks are using it. To see the exported output values in your account,
+see ListExports.
+
+For more information about importing an exported output value, see the
+C<Fn::ImportValue> function.
 
 
 =head2 ListStackResources(StackName => Str, [NextToken => Str])
