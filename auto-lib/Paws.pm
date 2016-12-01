@@ -344,6 +344,8 @@ L<Paws::KMS>
 
 L<Paws::Lambda>
 
+L<Paws::Lightsail>
+
 L<Paws::MachineLearning>
 
 L<Paws::MarketplaceCommerceAnalytics>
@@ -352,9 +354,13 @@ L<Paws::MarketplaceMetering>
 
 L<Paws::OpsWorks>
 
+L<Paws::Polly>
+
 L<Paws::RDS>
 
 L<Paws::RedShift>
+
+L<Paws::Rekognition>
 
 L<Paws::Route53>
 

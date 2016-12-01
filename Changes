@@ -14,6 +14,10 @@
    his inputs. Thanks to ilmari and rpcme
  - New API: Budgets
  - New API: SMS (Server Migration Service)
+ - New API: AWS Polly
+ - New API: Lightsail
+ - New API: Rekognition
+ - Snowball API update: Cluster operations
  - SES API update: Tagging and ConfigurationSets
  - DirectConnect API update: Tagging
  - CloudFormation API update
@@ -22,20 +26,20 @@
  - ECR API update: DescribeImages
  - ACM API update: ImportCertificate
  - RDS API update: DescribeSourceRegions, Add and Remove RoleToDBCluster
- - ServiceCatalog API update: AccessLevelFilter support
+ - ServiceCatalog API update: AccessLevelFilter, Constraint and Portfolio support
  - CloudFront API update: version 2016-09-07 support
  - CodePipeline API update: GetPipelineExecution
  - CognitoIdp API update: UserImportJob operations
- - Gamelift API update: OperatingSystem for CreateBuild
- - Route53 API update: TestDNSAnswer
+ - Gamelift API update: OperatingSystem for CreateBuild, GetInstanceAccess
+ - Route53 API update: TestDNSAnswer, VPCAssociationAuthorization ops. ListChangeBatches ops gone
  - CodeDeploy API update
  - RedShift API update: Enhanced VPC Routing
  - RDS API update: Timezones and ReadEnpoints
- - EMR API update: SecurityConfigurations
+ - EMR API update: SecurityConfigurations, AutoScaling
  - IoT API update
  - CloudFormation API update: RoleArn
  - EC2 API update: ReservedInstancesExchangeQuote
- - S3 API update
+ - S3 API update: Analytics, Inventory and Metrics
  - ElastiCache API update
  - IoT API update: DynamoV2 behaviour
  - CognitoIdp API update: AdminCreateUser
@@ -43,6 +47,15 @@
  - ElastiCache API update: authenticated cache clusters
  - Cloudwatch Logs API update: DescribeMetricFilters and docu
  - DS API update: SchemaExtension support
+ - SQS API update: FIFO queues
+ - Lambda API update: Environment variables support
+ - MarketplaceMetering API update
+ - Glacier API update: ProvisionedCapacity ops
+ - ElasticTranscoder API update
+ - CloudTrail API update: EventSelectors
+ - ECS API update: support for Version attribute in tasks
+ - ApiGateway API update
+ - CloudWatch API update
 
 0.28 30 Aug 2015 23:45:00
  - On errors 503 XMLResponse would not process the error correctly (returning
