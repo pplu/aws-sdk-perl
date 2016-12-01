@@ -1,16 +1,16 @@
-package Paws::ServiceCatalog::ProvisioningArtifact;
+package Paws::ServiceCatalog::ProductViewDetail;
   use Moose;
   has CreatedTime => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has Id => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
+  has ProductARN => (is => 'ro', isa => 'Str');
+  has ProductViewSummary => (is => 'ro', isa => 'Paws::ServiceCatalog::ProductViewSummary');
+  has Status => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::ServiceCatalog::ProvisioningArtifact
+Paws::ServiceCatalog::ProductViewDetail
 
 =head1 USAGE
 
@@ -21,21 +21,20 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::ServiceCatalog::ProvisioningArtifact object:
+As an example, if Att1 is expected to be a Paws::ServiceCatalog::ProductViewDetail object:
 
-  $service_obj->Method(Att1 => { CreatedTime => $value, ..., Name => $value  });
+  $service_obj->Method(Att1 => { CreatedTime => $value, ..., Status => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::ServiceCatalog::ProvisioningArtifact object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::ServiceCatalog::ProductViewDetail object:
 
   $result = $service_obj->Method(...);
   $result->Att1->CreatedTime
 
 =head1 DESCRIPTION
 
-Contains information indicating the ways in which a product can be
-provisioned.
+Detailed product view information.
 
 =head1 ATTRIBUTES
 
@@ -45,19 +44,19 @@ provisioned.
   The UTC timestamp of the creation time.
 
 
-=head2 Description => Str
+=head2 ProductARN => Str
 
-  The text description of the artifact.
-
-
-=head2 Id => Str
-
-  The identifier for the artifact.
+  The ARN associated with the product.
 
 
-=head2 Name => Str
+=head2 ProductViewSummary => L<Paws::ServiceCatalog::ProductViewSummary>
 
-  The name of the artifact.
+  The summary metadata about the specified product view.
+
+
+=head2 Status => Str
+
+  Current status of the product.
 
 
 
