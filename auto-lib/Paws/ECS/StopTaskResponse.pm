@@ -16,7 +16,7 @@ Paws::ECS::StopTaskResponse
 
 =head2 Task => L<Paws::ECS::Task>
 
-
+The task that was stopped.
 
 
 =head2 _request_id => Str

@@ -10,6 +10,7 @@ package Paws::ECS::ContainerInstance;
   has RemainingResources => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Resource]', xmlname => 'remainingResources', request_name => 'remainingResources', traits => ['Unwrapped','NameInRequest']);
   has RunningTasksCount => (is => 'ro', isa => 'Int', xmlname => 'runningTasksCount', request_name => 'runningTasksCount', traits => ['Unwrapped','NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', xmlname => 'status', request_name => 'status', traits => ['Unwrapped','NameInRequest']);
+  has Version => (is => 'ro', isa => 'Int', xmlname => 'version', request_name => 'version', traits => ['Unwrapped','NameInRequest']);
   has VersionInfo => (is => 'ro', isa => 'Paws::ECS::VersionInfo', xmlname => 'versionInfo', request_name => 'versionInfo', traits => ['Unwrapped','NameInRequest']);
 1;
 
@@ -119,6 +120,18 @@ C<RUNNING> status.
   The status of the container instance. The valid values are C<ACTIVE> or
 C<INACTIVE>. C<ACTIVE> indicates that the container instance can accept
 tasks.
+
+
+=head2 Version => Int
+
+  The version counter for the container instance. Every time a container
+instance experiences a change that triggers a CloudWatch event, the
+version counter is incremented. If you are replicating your Amazon ECS
+container instance state with CloudWatch events, you can compare the
+version of a container instance reported by the Amazon ECS APIs with
+the version reported in CloudWatch events for the container instance
+(inside the C<detail> object) to verify that the version in your event
+stream is current.
 
 
 =head2 VersionInfo => L<Paws::ECS::VersionInfo>

@@ -16,7 +16,7 @@ Paws::ECS::UpdateContainerAgentResponse
 
 =head2 ContainerInstance => L<Paws::ECS::ContainerInstance>
 
-
+The container instance for which the container agent was updated.
 
 
 =head2 _request_id => Str

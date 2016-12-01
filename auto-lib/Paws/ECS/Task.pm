@@ -13,6 +13,7 @@ package Paws::ECS::Task;
   has StoppedReason => (is => 'ro', isa => 'Str', xmlname => 'stoppedReason', request_name => 'stoppedReason', traits => ['Unwrapped','NameInRequest']);
   has TaskArn => (is => 'ro', isa => 'Str', xmlname => 'taskArn', request_name => 'taskArn', traits => ['Unwrapped','NameInRequest']);
   has TaskDefinitionArn => (is => 'ro', isa => 'Str', xmlname => 'taskDefinitionArn', request_name => 'taskDefinitionArn', traits => ['Unwrapped','NameInRequest']);
+  has Version => (is => 'ro', isa => 'Int', xmlname => 'version', request_name => 'version', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -32,7 +33,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::ECS::Task object:
 
-  $service_obj->Method(Att1 => { ClusterArn => $value, ..., TaskDefinitionArn => $value  });
+  $service_obj->Method(Att1 => { ClusterArn => $value, ..., Version => $value  });
 
 =head3 Results returned from an API call
 
@@ -118,6 +119,17 @@ from the C<RUNNING> state to the C<STOPPED> state).
 
   The Amazon Resource Name (ARN) of the task definition that creates the
 task.
+
+
+=head2 Version => Int
+
+  The version counter for the task. Every time a task experiences a
+change that triggers a CloudWatch event, the version counter is
+incremented. If you are replicating your Amazon ECS task state with
+CloudWatch events, you can compare the version of a task reported by
+the Amazon ECS APIs with the version reported in CloudWatch events for
+the task (inside the C<detail> object) to verify that the version in
+your event stream is current.
 
 
 

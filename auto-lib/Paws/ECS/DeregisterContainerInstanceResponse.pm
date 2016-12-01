@@ -16,7 +16,7 @@ Paws::ECS::DeregisterContainerInstanceResponse
 
 =head2 ContainerInstance => L<Paws::ECS::ContainerInstance>
 
-
+The container instance that was deregistered.
 
 
 =head2 _request_id => Str
