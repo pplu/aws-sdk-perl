@@ -1,8 +1,12 @@
 package Paws::Snowball::JobListEntry;
   use Moose;
+  has CreationDate => (is => 'ro', isa => 'Str');
+  has Description => (is => 'ro', isa => 'Str');
   has IsMaster => (is => 'ro', isa => 'Bool');
   has JobId => (is => 'ro', isa => 'Str');
   has JobState => (is => 'ro', isa => 'Str');
+  has JobType => (is => 'ro', isa => 'Str');
+  has SnowballType => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -22,14 +26,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Snowball::JobListEntry object:
 
-  $service_obj->Method(Att1 => { IsMaster => $value, ..., JobState => $value  });
+  $service_obj->Method(Att1 => { CreationDate => $value, ..., SnowballType => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::Snowball::JobListEntry object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->IsMaster
+  $result->Att1->CreationDate
 
 =head1 DESCRIPTION
 
@@ -38,6 +42,17 @@ value that indicates whether the job is a job part, in the case of an
 export job.
 
 =head1 ATTRIBUTES
+
+
+=head2 CreationDate => Str
+
+  The creation date for this job.
+
+
+=head2 Description => Str
+
+  The optional description of this specific job, for example C<Important
+Photos 2016-08-11>.
 
 
 =head2 IsMaster => Bool
@@ -60,6 +75,16 @@ C<JID123e4567-e89b-12d3-a456-426655440000>.
 =head2 JobState => Str
 
   The current state of this job.
+
+
+=head2 JobType => Str
+
+  The type of job.
+
+
+=head2 SnowballType => Str
+
+  The type of appliance used with this job.
 
 
 

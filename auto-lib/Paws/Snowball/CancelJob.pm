@@ -35,7 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> JobId => Str
 
-The 39 character job ID for the job that you want to cancel, for
+The 39-character job ID for the job that you want to cancel, for
 example C<JID123e4567-e89b-12d3-a456-426655440000>.
 
 

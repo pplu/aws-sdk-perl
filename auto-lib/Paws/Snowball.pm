@@ -14,6 +14,11 @@ package Paws::Snowball;
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
 
   
+  sub CancelCluster {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Snowball::CancelCluster', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CancelJob {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Snowball::CancelJob', @_);
@@ -22,6 +27,11 @@ package Paws::Snowball;
   sub CreateAddress {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Snowball::CreateAddress', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateCluster {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Snowball::CreateCluster', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub CreateJob {
@@ -37,6 +47,11 @@ package Paws::Snowball;
   sub DescribeAddresses {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Snowball::DescribeAddresses', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeCluster {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Snowball::DescribeCluster', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeJob {
@@ -59,9 +74,24 @@ package Paws::Snowball;
     my $call_object = $self->new_with_coercions('Paws::Snowball::GetSnowballUsage', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListClusterJobs {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Snowball::ListClusterJobs', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListClusters {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Snowball::ListClusters', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListJobs {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Snowball::ListJobs', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateCluster {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Snowball::UpdateCluster', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateJob {
@@ -72,7 +102,7 @@ package Paws::Snowball;
   
 
 
-  sub operations { qw/CancelJob CreateAddress CreateJob DescribeAddress DescribeAddresses DescribeJob GetJobManifest GetJobUnlockCode GetSnowballUsage ListJobs UpdateJob / }
+  sub operations { qw/CancelCluster CancelJob CreateAddress CreateCluster CreateJob DescribeAddress DescribeAddresses DescribeCluster DescribeJob GetJobManifest GetJobUnlockCode GetSnowballUsage ListClusterJobs ListClusters ListJobs UpdateCluster UpdateJob / }
 
 1;
 
@@ -100,10 +130,10 @@ Paws::Snowball - Perl Interface to AWS Amazon Import/Export Snowball
 
 =head1 DESCRIPTION
 
-AWS Import/Export Snowball is a petabyte-scale data transport solution
-that uses secure appliances to transfer large amounts of data between
-your on-premises data centers and Amazon Simple Storage Service (Amazon
-S3). The Snowball commands described here provide access to the same
+AWS Snowball is a petabyte-scale data transport solution that uses
+secure appliances to transfer large amounts of data between your
+on-premises data centers and Amazon Simple Storage Service (Amazon S3).
+The Snowball commands described here provide access to the same
 functionality that is available in the AWS Snowball Management Console,
 which enables you to create and manage jobs for Snowball. To transfer
 data locally with a Snowball appliance, you'll need to use the Snowball
@@ -112,14 +142,25 @@ see the User Guide.
 
 =head1 METHODS
 
+=head2 CancelCluster(ClusterId => Str)
+
+Each argument is described in detail in: L<Paws::Snowball::CancelCluster>
+
+Returns: a L<Paws::Snowball::CancelClusterResult> instance
+
+  Cancels a cluster job. You can only cancel a cluster job while it's in
+the C<AwaitingQuorum> status. You'll have at least an hour after
+creating a cluster job to cancel it.
+
+
 =head2 CancelJob(JobId => Str)
 
 Each argument is described in detail in: L<Paws::Snowball::CancelJob>
 
 Returns: a L<Paws::Snowball::CancelJobResult> instance
 
-  Cancels the specified job. Note that you can only cancel a job before
-its C<JobState> value changes to C<PreparingAppliance>. Requesting the
+  Cancels the specified job. You can only cancel a job before its
+C<JobState> value changes to C<PreparingAppliance>. Requesting the
 C<ListJobs> or C<DescribeJob> action will return a job's C<JobState> as
 part of the response element data returned.
 
@@ -137,16 +178,29 @@ provide must be located within the serviceable area of your region. If
 the address is invalid or unsupported, then an exception is thrown.
 
 
-=head2 CreateJob(AddressId => Str, JobType => Str, Resources => L<Paws::Snowball::JobResource>, RoleARN => Str, ShippingOption => Str, [Description => Str, KmsKeyARN => Str, Notification => L<Paws::Snowball::Notification>, SnowballCapacityPreference => Str])
+=head2 CreateCluster(AddressId => Str, JobType => Str, Resources => L<Paws::Snowball::JobResource>, RoleARN => Str, ShippingOption => Str, [Description => Str, KmsKeyARN => Str, Notification => L<Paws::Snowball::Notification>, SnowballType => Str])
+
+Each argument is described in detail in: L<Paws::Snowball::CreateCluster>
+
+Returns: a L<Paws::Snowball::CreateClusterResult> instance
+
+  Creates an empty cluster. Each cluster supports five nodes. You use the
+CreateJob action separately to create the jobs for each of these nodes.
+The cluster does not ship until these five node jobs have been created.
+
+
+=head2 CreateJob([AddressId => Str, ClusterId => Str, Description => Str, JobType => Str, KmsKeyARN => Str, Notification => L<Paws::Snowball::Notification>, Resources => L<Paws::Snowball::JobResource>, RoleARN => Str, ShippingOption => Str, SnowballCapacityPreference => Str, SnowballType => Str])
 
 Each argument is described in detail in: L<Paws::Snowball::CreateJob>
 
 Returns: a L<Paws::Snowball::CreateJobResult> instance
 
   Creates a job to import or export data between Amazon S3 and your
-on-premises data center. Note that your AWS account must have the right
-trust policies and permissions in place to create a job for Snowball.
-For more information, see api-reference-policies.
+on-premises data center. Your AWS account must have the right trust
+policies and permissions in place to create a job for Snowball. If
+you're creating a job for a node in a cluster, you only need to provide
+the C<clusterId> value; the other job attributes are inherited from the
+cluster. .
 
 
 =head2 DescribeAddress(AddressId => Str)
@@ -170,6 +224,16 @@ one of the US regions will return addresses from the list of all
 addresses associated with this account in all US regions.
 
 
+=head2 DescribeCluster(ClusterId => Str)
+
+Each argument is described in detail in: L<Paws::Snowball::DescribeCluster>
+
+Returns: a L<Paws::Snowball::DescribeClusterResult> instance
+
+  Returns information about a specific cluster including shipping
+information, cluster status, and other important metadata.
+
+
 =head2 DescribeJob(JobId => Str)
 
 Each argument is described in detail in: L<Paws::Snowball::DescribeJob>
@@ -177,7 +241,7 @@ Each argument is described in detail in: L<Paws::Snowball::DescribeJob>
 Returns: a L<Paws::Snowball::DescribeJobResult> instance
 
   Returns information about a specific job including shipping
-information, job status, and other important metadata.
+information, job status, and other important metadata. .
 
 
 =head2 GetJobManifest(JobId => Str)
@@ -203,8 +267,8 @@ C<UnlockCode> value in the same location as the manifest file for that
 job. Saving these separately helps prevent unauthorized parties from
 gaining access to the Snowball associated with that job.
 
-Note that the credentials of a given job, including its manifest file
-and unlock code, expire 90 days after the job is created.
+The credentials of a given job, including its manifest file and unlock
+code, expire 90 days after the job is created.
 
 
 =head2 GetJobUnlockCode(JobId => Str)
@@ -237,9 +301,31 @@ Returns: a L<Paws::Snowball::GetSnowballUsageResult> instance
   Returns information about the Snowball service limit for your account,
 and also the number of Snowballs your account has in use.
 
-Note that the default service limit for the number of Snowballs that
-you can have at one time is 1. If you want to increase your service
-limit, contact AWS Support.
+The default service limit for the number of Snowballs that you can have
+at one time is 1. If you want to increase your service limit, contact
+AWS Support.
+
+
+=head2 ListClusterJobs(ClusterId => Str, [MaxResults => Int, NextToken => Str])
+
+Each argument is described in detail in: L<Paws::Snowball::ListClusterJobs>
+
+Returns: a L<Paws::Snowball::ListClusterJobsResult> instance
+
+  Returns an array of C<JobListEntry> objects of the specified length.
+Each C<JobListEntry> object is for a job in the specified cluster and
+contains a job's state, a job's ID, and other information.
+
+
+=head2 ListClusters([MaxResults => Int, NextToken => Str])
+
+Each argument is described in detail in: L<Paws::Snowball::ListClusters>
+
+Returns: a L<Paws::Snowball::ListClustersResult> instance
+
+  Returns an array of C<ClusterListEntry> objects of the specified
+length. Each C<ClusterListEntry> object contains a cluster's state, a
+cluster's ID, and other important status information.
 
 
 =head2 ListJobs([MaxResults => Int, NextToken => Str])
@@ -254,6 +340,19 @@ value that indicates whether the job is a job part, in the case of
 export jobs. Calling this API action in one of the US regions will
 return jobs from the list of all jobs associated with this account in
 all US regions.
+
+
+=head2 UpdateCluster(ClusterId => Str, [AddressId => Str, Description => Str, Notification => L<Paws::Snowball::Notification>, Resources => L<Paws::Snowball::JobResource>, RoleARN => Str, ShippingOption => Str])
+
+Each argument is described in detail in: L<Paws::Snowball::UpdateCluster>
+
+Returns: a L<Paws::Snowball::UpdateClusterResult> instance
+
+  While a cluster's C<ClusterState> value is in the C<AwaitingQuorum>
+state, you can update some of the information associated with a
+cluster. Once the cluster changes to a different job state, usually 60
+minutes after the cluster being created, this action is no longer
+available.
 
 
 =head2 UpdateJob(JobId => Str, [AddressId => Str, Description => Str, Notification => L<Paws::Snowball::Notification>, Resources => L<Paws::Snowball::JobResource>, RoleARN => Str, ShippingOption => Str, SnowballCapacityPreference => Str])
