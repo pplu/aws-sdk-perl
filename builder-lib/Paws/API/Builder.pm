@@ -1133,6 +1133,8 @@ If not, it will return a [% out_shape = c.shapename_for_operation_output(op_name
         $self->process_template($self->map_str_to_native_template, { c => $self, iclass => $iclass, inner_class => $inner_class, keys_shape => $keys_shape, values_shape => $values_shape, map_class => 'HashRef[Str]' });
       } elsif ($keys_shape->{type} eq 'string' and $values_shape->{type} eq 'float') {
         $self->process_template($self->map_str_to_native_template, { c => $self, iclass => $iclass, inner_class => $inner_class, keys_shape => $keys_shape, values_shape => $values_shape, map_class => 'HashRef[Num]' });
+      } elsif ($keys_shape->{type} eq 'string' and $values_shape->{type} eq 'double') {
+        $self->process_template($self->map_str_to_native_template, { c => $self, iclass => $iclass, inner_class => $inner_class, keys_shape => $keys_shape, values_shape => $values_shape, map_class => 'HashRef[Num]' });
       } elsif ($keys_shape->{type} eq 'string' and $values_shape->{type} eq 'list') {
         my $type = $self->get_caller_class_type($iclass->{value}->{shape});
         
