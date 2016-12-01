@@ -23,8 +23,7 @@ Paws::Glacier::GetJobOutputOutput
 
 =head2 AcceptRanges => Str
 
-Indicates the range units accepted. For more information, go to
-RFC2616.
+Indicates the range units accepted. For more information, see RFC2616.
 
 
 =head2 ArchiveDescription => Str
@@ -45,18 +44,24 @@ this header appears only under the following conditions:
 
 =over
 
-=item * You get the entire range of the archive.
+=item *
 
-=item * You request a range to return of the archive that starts and
-ends on a multiple of 1 MB. For example, if you have an 3.1 MB archive
-and you specify a range to return that starts at 1 MB and ends at 2 MB,
-then the x-amz-sha256-tree-hash is returned as a response header.
+You get the entire range of the archive.
 
-=item * You request a range of the archive to return that starts on a
-multiple of 1 MB and goes to the end of the archive. For example, if
-you have a 3.1 MB archive and you specify a range that starts at 2 MB
-and ends at 3.1 MB (the end of the archive), then the
-x-amz-sha256-tree-hash is returned as a response header.
+=item *
+
+You request a range to return of the archive that starts and ends on a
+multiple of 1 MB. For example, if you have an 3.1 MB archive and you
+specify a range to return that starts at 1 MB and ends at 2 MB, then
+the x-amz-sha256-tree-hash is returned as a response header.
+
+=item *
+
+You request a range of the archive to return that starts on a multiple
+of 1 MB and goes to the end of the archive. For example, if you have a
+3.1 MB archive and you specify a range that starts at 2 MB and ends at
+3.1 MB (the end of the archive), then the x-amz-sha256-tree-hash is
+returned as a response header.
 
 =back
 

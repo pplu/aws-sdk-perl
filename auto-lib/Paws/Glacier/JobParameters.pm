@@ -6,6 +6,7 @@ package Paws::Glacier::JobParameters;
   has InventoryRetrievalParameters => (is => 'ro', isa => 'Paws::Glacier::InventoryRetrievalJobInput');
   has RetrievalByteRange => (is => 'ro', isa => 'Str');
   has SNSTopic => (is => 'ro', isa => 'Str');
+  has Tier => (is => 'ro', isa => 'Str');
   has Type => (is => 'ro', isa => 'Str');
 1;
 
@@ -91,6 +92,12 @@ job request.
 when the job is completed and the output is ready for you to download.
 The specified topic publishes the notification to its subscribers. The
 SNS topic must exist.
+
+
+=head2 Tier => Str
+
+  The retrieval option to use for the archive retrieval. Valid values are
+C<Expedited>, C<Standard>, or C<Bulk>. C<Standard> is the default.
 
 
 =head2 Type => Str

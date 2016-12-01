@@ -44,25 +44,23 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 The C<AccountId> value is the AWS account ID of the account that owns
 the vault. You can either specify an AWS account ID or optionally a
-single aposC<->apos (hyphen), in which case Amazon Glacier uses the AWS
+single 'C<->' (hyphen), in which case Amazon Glacier uses the AWS
 account ID associated with the credentials used to sign the request. If
-you use an account ID, do not include any hyphens (apos-apos) in the
-ID.
+you use an account ID, do not include any hyphens ('-') in the ID.
 
 
 
 =head2 Completed => Str
 
-Specifies the state of the jobs to return. You can specify C<true> or
-C<false>.
+The state of the jobs to return. You can specify C<true> or C<false>.
 
 
 
 =head2 Limit => Str
 
-Specifies that the response be limited to the specified number of items
-or fewer. If not specified, the List Jobs operation returns up to 1,000
-jobs.
+The maximum number of jobs to be returned. The default limit is 1000.
+The number of jobs returned might be fewer than the specified limit,
+but the number of returned jobs never exceeds the limit.
 
 
 
@@ -70,7 +68,7 @@ jobs.
 
 An opaque string used for pagination. This value specifies the job at
 which the listing of jobs should begin. Get the marker value from a
-previous List Jobs response. You need only include the marker if you
+previous List Jobs response. You only need to include the marker if you
 are continuing the pagination of results started in a previous List
 Jobs request.
 
@@ -78,8 +76,8 @@ Jobs request.
 
 =head2 Statuscode => Str
 
-Specifies the type of job status to return. You can specify the
-following values: "InProgress", "Succeeded", or "Failed".
+The type of job status to return. You can specify the following values:
+C<InProgress>, C<Succeeded>, or C<Failed>.
 
 
 

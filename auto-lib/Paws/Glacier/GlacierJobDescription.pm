@@ -17,6 +17,7 @@ package Paws::Glacier::GlacierJobDescription;
   has SNSTopic => (is => 'ro', isa => 'Str');
   has StatusCode => (is => 'ro', isa => 'Str');
   has StatusMessage => (is => 'ro', isa => 'Str');
+  has Tier => (is => 'ro', isa => 'Str');
   has VaultARN => (is => 'ro', isa => 'Str');
 
   has _request_id => (is => 'ro', isa => 'Str');
@@ -160,6 +161,12 @@ Valid values are: C<"InProgress">, C<"Succeeded">, C<"Failed">
 =head2 StatusMessage => Str
 
 A friendly message that describes the job status.
+
+
+=head2 Tier => Str
+
+The retrieval option to use for the archive retrieval. Valid values are
+C<Expedited>, C<Standard>, or C<Bulk>. C<Standard> is the default.
 
 
 =head2 VaultARN => Str

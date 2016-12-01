@@ -46,12 +46,14 @@ The ID of the upload to which the parts are associated.
 
 =head2 Parts => ArrayRef[L<Paws::Glacier::PartListElement>]
 
-A list of the part sizes of the multipart upload.
+A list of the part sizes of the multipart upload. Each object in the
+array contains a C<RangeBytes> and C<sha256-tree-hash> name/value pair.
 
 
 =head2 PartSizeInBytes => Int
 
-The part size in bytes.
+The part size in bytes. This is the same value that you specified in
+the Initiate Multipart Upload request.
 
 
 =head2 VaultARN => Str

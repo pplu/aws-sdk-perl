@@ -42,10 +42,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 The C<AccountId> value is the AWS account ID of the account that owns
 the vault. You can either specify an AWS account ID or optionally a
-single aposC<->apos (hyphen), in which case Amazon Glacier uses the AWS
+single 'C<->' (hyphen), in which case Amazon Glacier uses the AWS
 account ID associated with the credentials used to sign the request. If
-you use an account ID, do not include any hyphens (apos-apos) in the
-ID.
+you use an account ID, do not include any hyphens ('-') in the ID.
 
 
 
@@ -58,9 +57,48 @@ The job ID whose data is downloaded.
 =head2 Range => Str
 
 The range of bytes to retrieve from the output. For example, if you
-want to download the first 1,048,576 bytes, specify "Range:
-bytes=0-1048575". By default, this operation downloads the entire
+want to download the first 1,048,576 bytes, specify the range as
+C<bytes=0-1048575>. By default, this operation downloads the entire
 output.
+
+If the job output is large, then you can use a range to retrieve a
+portion of the output. This allows you to download the entire output in
+smaller chunks of bytes. For example, suppose you have 1 GB of job
+output you want to download and you decide to download 128 MB chunks of
+data at a time, which is a total of eight Get Job Output requests. You
+use the following process to download the job output:
+
+=over
+
+=item 1.
+
+Download a 128 MB chunk of output by specifying the appropriate byte
+range. Verify that all 128 MB of data was received.
+
+=item 2.
+
+Along with the data, the response includes a SHA256 tree hash of the
+payload. You compute the checksum of the payload on the client and
+compare it with the checksum you received in the response to ensure you
+received all the expected data.
+
+=item 3.
+
+Repeat steps 1 and 2 for all the eight 128 MB chunks of output data,
+each time specifying the appropriate byte range.
+
+=item 4.
+
+After downloading all the parts of the job output, you have a list of
+eight checksum values. Compute the tree hash of these values to find
+the checksum of the entire output. Using the DescribeJob API, obtain
+job information of the job that provided you the output. The response
+includes the checksum of the entire archive stored in Amazon Glacier.
+You compare this value with the checksum you computed to ensure you
+have downloaded the entire archive content with no errors.
+
+=back
+
 
 
 
