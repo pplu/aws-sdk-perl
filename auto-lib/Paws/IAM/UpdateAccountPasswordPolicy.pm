@@ -110,7 +110,7 @@ Default value: false
 Specifies whether IAM user passwords must contain at least one of the
 following non-alphanumeric characters:
 
-! @ 
+! @ # $ % ^ & * ( ) _ + - = [ ] { } | '
 
 Default value: false
 

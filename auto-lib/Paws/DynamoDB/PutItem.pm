@@ -151,7 +151,7 @@ For type Number, value comparisons are numeric.
 String value comparisons for greater than, equals, or less than are
 based on ASCII character code values. For example, C<a> is greater than
 C<A>, and C<a> is greater than C<B>. For a list of code values, see
-http://en.wikipedia.org/wiki/ASCII
+http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters.
 
 For type Binary, DynamoDB treats each byte of the binary data as
 unsigned when it compares binary values.
@@ -427,7 +427,7 @@ I<ExpressionAttributeNames>:
 
 =item *
 
-{"
+{"#P":"Percentile"}
 
 =back
 

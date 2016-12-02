@@ -261,7 +261,7 @@ Specifies the AWS KMS key ID to use for object encryption. All GET and
 PUT requests for an object protected by AWS KMS will fail if not made
 via SSL or using SigV4. Documentation on configuring any of the
 officially supported AWS SDKs and CLI can be found at
-http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingAWSSDK.html
+http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingAWSSDK.html#specify-signature-version
 
 
 

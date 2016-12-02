@@ -662,8 +662,8 @@ Returns: a L<Paws::SQS::SendMessageResult> instance
 The following list shows the characters (in Unicode) that are allowed
 in your message, according to the W3C XML specification:
 
-C<
-C<
+C<#x9> | C<#xA> | C<#xD> | [C<#x20> to C<#xD7FF>] | [C<#xE000> to
+C<#xFFFD>] | [C<#x10000> to C<#x10FFFF>]
 
 For more information, see RFC1321. If you send any characters that
 aren't included in this list, your request will be rejected.
@@ -691,8 +691,8 @@ messages) are both 256 KB (262,144 bytes).
 The following list shows the characters (in Unicode) that are allowed
 in your message, according to the W3C XML specification:
 
-C<
-C<
+C<#x9> | C<#xA> | C<#xD> | [C<#x20> to C<#xD7FF>] | [C<#xE000> to
+C<#xFFFD>] | [C<#x10000> to C<#x10FFFF>]
 
 For more information, see RFC1321. If you send any characters that
 aren't included in this list, your request will be rejected.

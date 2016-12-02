@@ -35,7 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ApiGateway:
 =head1 DESCRIPTION
 
 A single patch operation to apply to the specified resource. Please
-refer to http://tools.ietf.org/html/rfc6902
+refer to http://tools.ietf.org/html/rfc6902#section-4 for an
 explanation of how each operation is used.
 
 =head1 ATTRIBUTES

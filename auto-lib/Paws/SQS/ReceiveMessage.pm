@@ -279,7 +279,7 @@ messages in the queue will remain in a strict order.
 The length of C<ReceiveRequestAttemptId> is 128 characters.
 C<ReceiveRequestAttemptId> can contain alphanumeric characters (C<a-z>,
 C<A-Z>, C<0-9>) and punctuation
-(C<!"
+(C<!"#$%&'()*+,-./:;E<lt>=E<gt>?@[\]^_`{|}~>).
 
 For best practices of using C<ReceiveRequestAttemptId>, see Using the
 ReceiveRequestAttemptId Request Parameter in the I<Amazon Simple Queue

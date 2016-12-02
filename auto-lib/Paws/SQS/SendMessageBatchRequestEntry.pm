@@ -144,7 +144,7 @@ deduplication interval, Amazon SQS can't detect duplicate messages.
 The length of C<MessageDeduplicationId> is 128 characters.
 C<MessageDeduplicationId> can contain alphanumeric characters (C<a-z>,
 C<A-Z>, C<0-9>) and punctuation
-(C<!"
+(C<!"#$%&'()*+,-./:;E<lt>=E<gt>?@[\]^_`{|}~>).
 
 For best practices of using C<MessageDeduplicationId>, see Using the
 MessageDeduplicationId Property in the I<Amazon Simple Queue Service
@@ -181,7 +181,7 @@ sent. The caller can't specify a C<MessageGroupId>.
 
 The length of C<MessageGroupId> is 128 characters. Valid values are
 alphanumeric characters and punctuation
-C<(!"
+C<(!"#$%&'()*+,-./:;E<lt>=E<gt>?@[\]^_`{|}~)>.
 
 For best practices of using C<MessageGroupId>, see Using the
 MessageGroupId Property in the I<Amazon Simple Queue Service Developer

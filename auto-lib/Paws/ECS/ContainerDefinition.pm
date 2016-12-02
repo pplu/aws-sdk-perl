@@ -67,7 +67,7 @@ different containers that are launched as part of a task.
   The command that is passed to the container. This parameter maps to
 C<Cmd> in the Create a container section of the Docker Remote API and
 the C<COMMAND> parameter to docker run. For more information, see
-https://docs.docker.com/engine/reference/builder/
+https://docs.docker.com/engine/reference/builder/#cmd.
 
 
 =head2 Cpu => Int
@@ -178,7 +178,7 @@ C<command> array items instead.
 The entry point that is passed to the container. This parameter maps to
 C<Entrypoint> in the Create a container section of the Docker Remote
 API and the C<--entrypoint> option to docker run. For more information,
-see https://docs.docker.com/engine/reference/builder/
+see https://docs.docker.com/engine/reference/builder/#entrypoint.
 
 
 =head2 Environment => ArrayRef[L<Paws::ECS::KeyValuePair>]

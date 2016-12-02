@@ -62,7 +62,7 @@ and Binary. For more information, see Message Attribute Data Types.
 
   Strings are Unicode with UTF8 binary encoding. For a list of code
 values, see
-http://en.wikipedia.org/wiki/ASCII
+http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters.
 
 
 

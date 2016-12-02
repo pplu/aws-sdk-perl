@@ -106,7 +106,7 @@ the part specified. Useful for downloading just a part of an object.
 
 Downloads the specified range bytes of an object. For more information
 about the HTTP Range header, go to
-http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html
+http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.35.
 
 
 

@@ -790,7 +790,14 @@ Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
     );
     $pod =~ s/=pod//;
     $pod =~ s/=cut$//m;
-    $pod =~ s/#.*$//mg;
+    # Pod2Html leaves lines started with hashes at the end of the pod:
+    # #Pod::HTML2Pod conversion notes:
+    # # xx bytes of input
+    # #Fri Dec  2 17:33:47 2016 devel
+    # # No a_name switch not specified, so will not try to render <a name='...'>
+    # # No a_href switch not specified, so will not try to render <a href='...'>
+    # We want to strip that out
+    $pod =~ s/^#.*$//mg;
     $pod =~ s/^(?:\s*\n)*//;
     $pod =~ s/(?:\s*\n)*$//;
     $pod .= "\n" if ($pod =~ m/=back$/);
