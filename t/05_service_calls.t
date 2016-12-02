@@ -82,6 +82,27 @@ request_has_params($test_params, $request);
 
 my $sqs = $aws->service('SQS');
 
+$request = $sqs->CreateQueue(
+  QueueName => 'Paws2AttributeTest', 
+  Attributes => {
+    DelaySeconds => 10,
+    MessageRetentionPeriod => 3600,
+    VisibilityTimeout => 10
+  }
+);
+
+$test_params = {
+  'Attribute.1.Name' => 'DelaySeconds',
+  'Attribute.1.Value' => 10,
+  'Attribute.2.Name' => 'MessageRetentionPeriod',
+  'Attribute.2.Value' => 3600,
+  'Attribute.3.Name' => 'VisibilityTimeout',
+  'Attribute.3.Value' => 10,
+  'QueueName' => 'Paws2AttributeTest'
+};
+
+request_has_params($test_params, $request);
+
 $request = $sqs->SendMessageBatch(
   QueueUrl => 'http://sqs.us-east-1.amazonaws.com/123456789012/testQueue/',
   Entries => [
