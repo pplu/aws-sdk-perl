@@ -594,7 +594,7 @@ You cannot use these credentials to call any IAM APIs.
 
 =item *
 
-You cannot call any STS APIs.
+You cannot call any STS APIs except C<GetCallerIdentity>.
 
 =back
 
@@ -689,7 +689,8 @@ included in the request.
 
 =item *
 
-You cannot call any STS API I<except> C<AssumeRole>.
+You cannot call any STS API I<except> C<AssumeRole> or
+C<GetCallerIdentity>.
 
 =back
 
