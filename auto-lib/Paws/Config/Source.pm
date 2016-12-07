@@ -1,8 +1,8 @@
 package Paws::Config::Source;
   use Moose;
-  has Owner => (is => 'ro', isa => 'Str');
+  has Owner => (is => 'ro', isa => 'Str', required => 1);
   has SourceDetails => (is => 'ro', isa => 'ArrayRef[Paws::Config::SourceDetail]');
-  has SourceIdentifier => (is => 'ro', isa => 'Str');
+  has SourceIdentifier => (is => 'ro', isa => 'Str', required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -40,7 +40,7 @@ resources.
 =head1 ATTRIBUTES
 
 
-=head2 Owner => Str
+=head2 B<REQUIRED> Owner => Str
 
   Indicates whether AWS or the customer owns and manages the AWS Config
 rule.
@@ -52,7 +52,7 @@ rule.
 evaluate your AWS resources.
 
 
-=head2 SourceIdentifier => Str
+=head2 B<REQUIRED> SourceIdentifier => Str
 
   For AWS Config managed rules, a predefined identifier from a list. For
 example, C<IAM_PASSWORD_POLICY> is a managed rule. To reference a

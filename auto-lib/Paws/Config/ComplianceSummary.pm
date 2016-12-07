@@ -34,7 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Config::Com
 =head1 DESCRIPTION
 
 The number of AWS Config rules or AWS resources that are compliant and
-noncompliant, up to a maximum.
+noncompliant.
 
 =head1 ATTRIBUTES
 

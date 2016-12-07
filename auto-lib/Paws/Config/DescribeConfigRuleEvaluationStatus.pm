@@ -2,6 +2,8 @@
 package Paws::Config::DescribeConfigRuleEvaluationStatus;
   use Moose;
   has ConfigRuleNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has Limit => (is => 'ro', isa => 'Int');
+  has NextToken => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -38,6 +40,25 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 The name of the AWS managed Config rules for which you want status
 information. If you do not specify any names, AWS Config returns status
 information for all AWS managed Config rules that you use.
+
+
+
+=head2 Limit => Int
+
+The number of rule evaluation results that you want returned.
+
+This parameter is required if the rule limit for your account is more
+than the default of 50 rules.
+
+For more information about requesting a rule limit increase, see AWS
+Config Limits in the I<AWS General Reference Guide>.
+
+
+
+=head2 NextToken => Str
+
+The C<NextToken> string returned on a previous page that you use to get
+the next page of results in a paginated response.
 
 
 

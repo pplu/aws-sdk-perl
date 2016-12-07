@@ -383,7 +383,7 @@ removed from the rule's scope.
 
 
 
-=head2 DescribeConfigRuleEvaluationStatus([ConfigRuleNames => ArrayRef[Str|Undef]])
+=head2 DescribeConfigRuleEvaluationStatus([ConfigRuleNames => ArrayRef[Str|Undef], Limit => Int, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::Config::DescribeConfigRuleEvaluationStatus>
 
@@ -587,7 +587,10 @@ If you are updating a rule that you added previously, you can specify
 the rule by C<ConfigRuleName>, C<ConfigRuleId>, or C<ConfigRuleArn> in
 the C<ConfigRule> data type that you use in this request.
 
-The maximum number of rules that AWS Config supports is 25.
+The maximum number of rules that AWS Config supports is 50.
+
+For more information about requesting a rule limit increase, see AWS
+Config Limits in the I<AWS General Reference Guide>.
 
 For more information about developing and using AWS Config rules, see
 Evaluating AWS Resource Configurations with AWS Config in the I<AWS
@@ -654,10 +657,16 @@ Each argument is described in detail in: L<Paws::Config::StartConfigRulesEvaluat
 
 Returns: a L<Paws::Config::StartConfigRulesEvaluationResponse> instance
 
-  Evaluates your resources against the specified Config rules. You can
-specify up to 25 Config rules per request.
+  Runs an on-demand evaluation for the specified Config rules against the
+last known configuration state of the resources. Use
+C<StartConfigRulesEvaluation> when you want to test a rule that you
+updated is working as expected. C<StartConfigRulesEvaluation> does not
+re-record the latest configuration state for your resources; it re-runs
+an evaluation against the last known state of your resources.
 
-An existing StartConfigRulesEvaluation call must complete for the
+You can specify up to 25 Config rules per request.
+
+An existing C<StartConfigRulesEvaluation> call must complete for the
 specified rules before you can call the API again. If you chose to have
 AWS Config stream to an Amazon SNS topic, you will receive a
 C<ConfigRuleEvaluationStarted> notification when the evaluation starts.
