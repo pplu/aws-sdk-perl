@@ -2,6 +2,7 @@
 package Paws::Lambda::CreateFunction;
   use Moose;
   has Code => (is => 'ro', isa => 'Paws::Lambda::FunctionCode', required => 1);
+  has DeadLetterConfig => (is => 'ro', isa => 'Paws::Lambda::DeadLetterConfig');
   has Description => (is => 'ro', isa => 'Str');
   has Environment => (is => 'ro', isa => 'Paws::Lambda::Environment');
   has FunctionName => (is => 'ro', isa => 'Str', required => 1);
@@ -49,6 +50,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 B<REQUIRED> Code => L<Paws::Lambda::FunctionCode>
 
 The code for the Lambda function.
+
+
+
+=head2 DeadLetterConfig => L<Paws::Lambda::DeadLetterConfig>
+
+The parent object that contains the target ARN (Amazon Resource Name)
+of an Amazon SQS queue or Amazon SNS topic.
 
 
 
@@ -125,7 +133,12 @@ The runtime environment for the Lambda function you are uploading.
 To use the Node.js runtime v4.3, set the value to "nodejs4.3". To use
 earlier runtime (v0.10.42), set the value to "nodejs".
 
-Valid values are: C<"nodejs">, C<"nodejs4.3">, C<"java8">, C<"python2.7">
+You can no longer create functions using the v0.10.42 runtime version
+as of November, 2016. Existing functions will be supported until early
+2017 but we recommend you migrate them to nodejs4.3 runtime version as
+soon as possible.
+
+Valid values are: C<"nodejs">, C<"nodejs4.3">, C<"java8">, C<"python2.7">, C<"dotnetcore1.0">, C<"nodejs4.3-edge">
 
 =head2 Timeout => Int
 

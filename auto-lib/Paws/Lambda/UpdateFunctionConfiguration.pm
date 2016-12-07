@@ -1,6 +1,7 @@
 
 package Paws::Lambda::UpdateFunctionConfiguration;
   use Moose;
+  has DeadLetterConfig => (is => 'ro', isa => 'Paws::Lambda::DeadLetterConfig');
   has Description => (is => 'ro', isa => 'Str');
   has Environment => (is => 'ro', isa => 'Paws::Lambda::Environment');
   has FunctionName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'FunctionName' , required => 1);
@@ -42,6 +43,13 @@ As an example:
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 
 =head1 ATTRIBUTES
+
+
+=head2 DeadLetterConfig => L<Paws::Lambda::DeadLetterConfig>
+
+The parent object that contains the target ARN (Amazon Resource Name)
+of an Amazon SQS queue or Amazon SNS topic.
+
 
 
 =head2 Description => Str
@@ -112,7 +120,10 @@ The runtime environment for the Lambda function.
 To use the Node.js runtime v4.3, set the value to "nodejs4.3". To use
 earlier runtime (v0.10.42), set the value to "nodejs".
 
-Valid values are: C<"nodejs">, C<"nodejs4.3">, C<"java8">, C<"python2.7">
+You can no longer downgrade to the v0.10.42 runtime version. This
+version will no longer be supported as of early 2017.
+
+Valid values are: C<"nodejs">, C<"nodejs4.3">, C<"java8">, C<"python2.7">, C<"dotnetcore1.0">, C<"nodejs4.3-edge">
 
 =head2 Timeout => Int
 

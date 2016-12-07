@@ -48,6 +48,11 @@ package Paws::Lambda;
     my $call_object = $self->new_with_coercions('Paws::Lambda::DeleteFunction', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetAccountSettings {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lambda::GetAccountSettings', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetAlias {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Lambda::GetAlias', @_);
@@ -178,7 +183,7 @@ package Paws::Lambda;
   }
 
 
-  sub operations { qw/AddPermission CreateAlias CreateEventSourceMapping CreateFunction DeleteAlias DeleteEventSourceMapping DeleteFunction GetAlias GetEventSourceMapping GetFunction GetFunctionConfiguration GetPolicy Invoke InvokeAsync ListAliases ListEventSourceMappings ListFunctions ListVersionsByFunction PublishVersion RemovePermission UpdateAlias UpdateEventSourceMapping UpdateFunctionCode UpdateFunctionConfiguration / }
+  sub operations { qw/AddPermission CreateAlias CreateEventSourceMapping CreateFunction DeleteAlias DeleteEventSourceMapping DeleteFunction GetAccountSettings GetAlias GetEventSourceMapping GetFunction GetFunctionConfiguration GetPolicy Invoke InvokeAsync ListAliases ListEventSourceMappings ListFunctions ListVersionsByFunction PublishVersion RemovePermission UpdateAlias UpdateEventSourceMapping UpdateFunctionCode UpdateFunctionConfiguration / }
 
 1;
 
@@ -255,7 +260,7 @@ Alias names are unique for a given function. This requires permission
 for the lambda:CreateAlias action.
 
 
-=head2 CreateEventSourceMapping(EventSourceArn => Str, FunctionName => Str, StartingPosition => Str, [BatchSize => Int, Enabled => Bool])
+=head2 CreateEventSourceMapping(EventSourceArn => Str, FunctionName => Str, StartingPosition => Str, [BatchSize => Int, Enabled => Bool, StartingPositionTimestamp => Str])
 
 Each argument is described in detail in: L<Paws::Lambda::CreateEventSourceMapping>
 
@@ -289,7 +294,7 @@ This operation requires permission for the
 C<lambda:CreateEventSourceMapping> action.
 
 
-=head2 CreateFunction(Code => L<Paws::Lambda::FunctionCode>, FunctionName => Str, Handler => Str, Role => Str, Runtime => Str, [Description => Str, Environment => L<Paws::Lambda::Environment>, KMSKeyArn => Str, MemorySize => Int, Publish => Bool, Timeout => Int, VpcConfig => L<Paws::Lambda::VpcConfig>])
+=head2 CreateFunction(Code => L<Paws::Lambda::FunctionCode>, FunctionName => Str, Handler => Str, Role => Str, Runtime => Str, [DeadLetterConfig => L<Paws::Lambda::DeadLetterConfig>, Description => Str, Environment => L<Paws::Lambda::Environment>, KMSKeyArn => Str, MemorySize => Int, Publish => Bool, Timeout => Int, VpcConfig => L<Paws::Lambda::VpcConfig>])
 
 Each argument is described in detail in: L<Paws::Lambda::CreateFunction>
 
@@ -355,6 +360,20 @@ deleted. You will need to delete the event source mappings explicitly.
 
 This operation requires permission for the C<lambda:DeleteFunction>
 action.
+
+
+=head2 GetAccountSettings()
+
+Each argument is described in detail in: L<Paws::Lambda::GetAccountSettings>
+
+Returns: a L<Paws::Lambda::GetAccountSettingsResponse> instance
+
+  Returns a customer's account settings.
+
+You can use this operation to retrieve Lambda limit information such as
+code size and concurrency limits. For more information on limits, see
+AWS Lambda Limits. You can also retrieve resource usage statistics such
+as code storage usage and function count.
 
 
 =head2 GetAlias(FunctionName => Str, Name => Str)
@@ -643,7 +662,7 @@ This operation requires permission for the C<lambda:UpdateFunctionCode>
 action.
 
 
-=head2 UpdateFunctionConfiguration(FunctionName => Str, [Description => Str, Environment => L<Paws::Lambda::Environment>, Handler => Str, KMSKeyArn => Str, MemorySize => Int, Role => Str, Runtime => Str, Timeout => Int, VpcConfig => L<Paws::Lambda::VpcConfig>])
+=head2 UpdateFunctionConfiguration(FunctionName => Str, [DeadLetterConfig => L<Paws::Lambda::DeadLetterConfig>, Description => Str, Environment => L<Paws::Lambda::Environment>, Handler => Str, KMSKeyArn => Str, MemorySize => Int, Role => Str, Runtime => Str, Timeout => Int, VpcConfig => L<Paws::Lambda::VpcConfig>])
 
 Each argument is described in detail in: L<Paws::Lambda::UpdateFunctionConfiguration>
 

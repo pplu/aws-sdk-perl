@@ -3,6 +3,7 @@ package Paws::Lambda::FunctionConfiguration;
   use Moose;
   has CodeSha256 => (is => 'ro', isa => 'Str');
   has CodeSize => (is => 'ro', isa => 'Int');
+  has DeadLetterConfig => (is => 'ro', isa => 'Paws::Lambda::DeadLetterConfig');
   has Description => (is => 'ro', isa => 'Str');
   has Environment => (is => 'ro', isa => 'Paws::Lambda::EnvironmentResponse');
   has FunctionArn => (is => 'ro', isa => 'Str');
@@ -37,6 +38,12 @@ It is the SHA256 hash of your function deployment package.
 =head2 CodeSize => Int
 
 The size, in bytes, of the function .zip file you uploaded.
+
+
+=head2 DeadLetterConfig => L<Paws::Lambda::DeadLetterConfig>
+
+The parent object that contains the target ARN (Amazon Resource Name)
+of an Amazon SQS queue or Amazon SNS topic.
 
 
 =head2 Description => Str
@@ -97,7 +104,7 @@ The runtime environment for the Lambda function.
 To use the Node.js runtime v4.3, set the value to "nodejs4.3". To use
 earlier runtime (v0.10.42), set the value to "nodejs".
 
-Valid values are: C<"nodejs">, C<"nodejs4.3">, C<"java8">, C<"python2.7">
+Valid values are: C<"nodejs">, C<"nodejs4.3">, C<"java8">, C<"python2.7">, C<"dotnetcore1.0">, C<"nodejs4.3-edge">
 =head2 Timeout => Int
 
 The function execution time at which Lambda should terminate the
