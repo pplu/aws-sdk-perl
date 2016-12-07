@@ -37,29 +37,25 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AttributeNames => ArrayRef[Str|Undef]
 
-Specifies the response elements you wish to receive. If no attribute
-names are specified, AWS Elastic Beanstalk only returns the name of the
-environment.
+Specify the response elements to return. To retrieve all attributes,
+set to C<All>. If no attribute names are specified, returns the name of
+the environment.
 
 
 
 =head2 EnvironmentId => Str
 
-Specifies the AWS Elastic Beanstalk environment ID.
+Specify the environment by ID.
 
-Condition: You must specify either this or an EnvironmentName, or both.
-If you do not specify either, AWS Elastic Beanstalk returns
-C<MissingRequiredParameter> error.
+You must specify either this or an EnvironmentName, or both.
 
 
 
 =head2 EnvironmentName => Str
 
-Specifies the AWS Elastic Beanstalk environment name.
+Specify the environment by name.
 
-Condition: You must specify either this or an EnvironmentId, or both.
-If you do not specify either, AWS Elastic Beanstalk returns
-C<MissingRequiredParameter> error.
+You must specify either this or an EnvironmentName, or both.
 
 
 

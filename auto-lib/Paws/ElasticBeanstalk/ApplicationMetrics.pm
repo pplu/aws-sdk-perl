@@ -34,7 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticBean
 
 =head1 DESCRIPTION
 
-Represents the application metrics for a specified environment.
+Application request metrics for an AWS Elastic Beanstalk environment.
 
 =head1 ATTRIBUTES
 

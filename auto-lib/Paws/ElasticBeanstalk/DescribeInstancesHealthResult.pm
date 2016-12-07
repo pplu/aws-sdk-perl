@@ -19,18 +19,17 @@ Paws::ElasticBeanstalk::DescribeInstancesHealthResult
 
 =head2 InstanceHealthList => ArrayRef[L<Paws::ElasticBeanstalk::SingleInstanceHealth>]
 
-Contains the response body with information about the health of the
-instance.
+Detailed health information about each instance.
 
 
 =head2 NextToken => Str
 
-The next token.
+Pagination token for the next page of results, if available.
 
 
 =head2 RefreshedAt => Str
 
-The date and time the information was last refreshed.
+The date and time that the health information was retrieved.
 
 
 =head2 _request_id => Str

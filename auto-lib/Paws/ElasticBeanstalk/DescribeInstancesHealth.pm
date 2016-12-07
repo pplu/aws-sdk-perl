@@ -38,27 +38,27 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AttributeNames => ArrayRef[Str|Undef]
 
-Specifies the response elements you wish to receive. If no attribute
-names are specified, AWS Elastic Beanstalk only returns a list of
-instances.
+Specifies the response elements you wish to receive. To retrieve all
+attributes, set to C<All>. If no attribute names are specified, returns
+a list of instances.
 
 
 
 =head2 EnvironmentId => Str
 
-Specifies the AWS Elastic Beanstalk environment ID.
+Specify the AWS Elastic Beanstalk environment by ID.
 
 
 
 =head2 EnvironmentName => Str
 
-Specifies the AWS Elastic Beanstalk environment name.
+Specify the AWS Elastic Beanstalk environment by name.
 
 
 
 =head2 NextToken => Str
 
-Specifies the next token of the request.
+Specify the pagination token returned by a previous call.
 
 
 

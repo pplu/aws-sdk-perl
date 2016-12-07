@@ -1,6 +1,7 @@
 package Paws::ElasticBeanstalk::ApplicationVersionDescription;
   use Moose;
   has ApplicationName => (is => 'ro', isa => 'Str');
+  has BuildArn => (is => 'ro', isa => 'Str');
   has DateCreated => (is => 'ro', isa => 'Str');
   has DateUpdated => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
@@ -45,7 +46,12 @@ Describes the properties of an application version.
 
 =head2 ApplicationName => Str
 
-  The name of the application associated with this release.
+  The name of the application to which the application version belongs.
+
+
+=head2 BuildArn => Str
+
+  
 
 
 =head2 DateCreated => Str
@@ -60,17 +66,19 @@ Describes the properties of an application version.
 
 =head2 Description => Str
 
-  The description of this application version.
+  The description of the application version.
 
 
 =head2 SourceBuildInformation => L<Paws::ElasticBeanstalk::SourceBuildInformation>
 
-  
+  If the version's source code was retrieved from AWS CodeCommit, the
+location of the source code for the application version.
 
 
 =head2 SourceBundle => L<Paws::ElasticBeanstalk::S3Location>
 
-  The location where the source bundle is located for this version.
+  The storage location of the application version's source bundle in
+Amazon S3.
 
 
 =head2 Status => Str
@@ -80,8 +88,7 @@ Describes the properties of an application version.
 
 =head2 VersionLabel => Str
 
-  A label uniquely identifying the version for the associated
-application.
+  A unique identifier for the application version.
 
 
 

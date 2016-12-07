@@ -321,7 +321,7 @@ Returns: a L<Paws::ElasticBeanstalk::ApplicationDescriptionMessage> instance
 C<default> and no application versions.
 
 
-=head2 CreateApplicationVersion(ApplicationName => Str, VersionLabel => Str, [AutoCreateApplication => Bool, Description => Str, Process => Bool, SourceBuildInformation => L<Paws::ElasticBeanstalk::SourceBuildInformation>, SourceBundle => L<Paws::ElasticBeanstalk::S3Location>])
+=head2 CreateApplicationVersion(ApplicationName => Str, VersionLabel => Str, [AutoCreateApplication => Bool, BuildConfiguration => L<Paws::ElasticBeanstalk::BuildConfiguration>, Description => Str, Process => Bool, SourceBuildInformation => L<Paws::ElasticBeanstalk::SourceBuildInformation>, SourceBundle => L<Paws::ElasticBeanstalk::S3Location>])
 
 Each argument is described in detail in: L<Paws::ElasticBeanstalk::CreateApplicationVersion>
 
@@ -458,8 +458,7 @@ Each argument is described in detail in: L<Paws::ElasticBeanstalk::DescribeAppli
 
 Returns: a L<Paws::ElasticBeanstalk::ApplicationVersionDescriptionsMessage> instance
 
-  Retrieve a list of application versions stored in your AWS Elastic
-Beanstalk storage bucket.
+  Retrieve a list of application versions.
 
 
 =head2 DescribeConfigurationOptions([ApplicationName => Str, EnvironmentName => Str, Options => ArrayRef[L<Paws::ElasticBeanstalk::OptionSpecification>], SolutionStackName => Str, TemplateName => Str])
@@ -569,10 +568,8 @@ Each argument is described in detail in: L<Paws::ElasticBeanstalk::DescribeInsta
 
 Returns: a L<Paws::ElasticBeanstalk::DescribeInstancesHealthResult> instance
 
-  Returns more detailed information about the health of the specified
-instances (for example, CPU utilization, load average, and causes). The
-B<DescribeInstancesHealth> operation is only available with AWS Elastic
-Beanstalk Enhanced Health.
+  Retrives detailed information about the health of instances in your AWS
+Elastic Beanstalk. This operation requires enhanced health reporting.
 
 
 =head2 ListAvailableSolutionStacks( => )

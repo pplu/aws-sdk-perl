@@ -37,10 +37,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticBean
 
 =head1 DESCRIPTION
 
-Represents CPU utilization information from the specified instance that
-belongs to the AWS Elastic Beanstalk environment. Use the C<instanceId>
-property to specify the application instance for which you'd like to
-return data.
+CPU utilization metrics for an instance.
 
 =head1 ATTRIBUTES
 

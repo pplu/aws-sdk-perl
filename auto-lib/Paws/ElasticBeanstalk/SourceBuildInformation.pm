@@ -33,24 +33,25 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticBean
 
 =head1 DESCRIPTION
 
-This class has no description
+Location of the source code for an application version.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> SourceLocation => Str
 
-  
+  The repository name and commit ID, separated by a forward slash. For
+example, C<my-repo/265cfa0cf6af46153527f55d6503ec030551f57a>.
 
 
 =head2 B<REQUIRED> SourceRepository => Str
 
-  
+  Location where the repository is stored, such as C<CodeCommit>.
 
 
 =head2 B<REQUIRED> SourceType => Str
 
-  
+  The type of repository, such as C<Git>.
 
 
 

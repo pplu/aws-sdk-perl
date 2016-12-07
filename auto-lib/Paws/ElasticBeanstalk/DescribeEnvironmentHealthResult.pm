@@ -24,46 +24,44 @@ Paws::ElasticBeanstalk::DescribeEnvironmentHealthResult
 
 =head2 ApplicationMetrics => L<Paws::ElasticBeanstalk::ApplicationMetrics>
 
-
+Application request metrics for the environment.
 
 
 =head2 Causes => ArrayRef[Str|Undef]
 
-Returns potential causes for the reported status.
+Descriptions of the data that contributed to the environment's current
+health status.
 
 
 =head2 Color => Str
 
-Returns the color indicator that tells you information about the health
-of the environment. For more information, see Health Colors and
-Statuses.
+The health color of the environment.
 
 
 =head2 EnvironmentName => Str
 
-The AWS Elastic Beanstalk environment name.
+The environment's name.
 
 
 =head2 HealthStatus => Str
 
-Contains the response body with information about the health of the
-environment.
+The health status of the environment. For example, C<Ok>.
 
 
 =head2 InstancesHealth => L<Paws::ElasticBeanstalk::InstanceHealthSummary>
 
-
+Summary health information for the instances in the environment.
 
 
 =head2 RefreshedAt => Str
 
-The date and time the information was last refreshed.
+The date and time that the health information was retrieved.
 
 
 =head2 Status => Str
 
-Returns the health status value of the environment. For more
-information, see Health Colors and Statuses.
+The environment's operational status. C<Ready>, C<Launching>,
+C<Updating>, C<Terminating>, or C<Terminated>.
 
 Valid values are: C<"Green">, C<"Yellow">, C<"Red">, C<"Grey">
 =head2 _request_id => Str

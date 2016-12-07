@@ -46,7 +46,7 @@ an C<InvalidParameterValue> error.
 
 =head2 Description => Str
 
-A new description for this release.
+A new description for this version.
 
 
 

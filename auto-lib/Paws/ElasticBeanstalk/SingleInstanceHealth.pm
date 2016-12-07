@@ -40,17 +40,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticBean
 
 =head1 DESCRIPTION
 
-Represents health information from the specified instance that belongs
-to the AWS Elastic Beanstalk environment. Use the C<InstanceId>
-property to specify the application instance for which you'd like to
-return data.
+Detailed health information about an Amazon EC2 instance in your
+Elastic Beanstalk environment.
 
 =head1 ATTRIBUTES
 
 
 =head2 ApplicationMetrics => L<Paws::ElasticBeanstalk::ApplicationMetrics>
 
-  
+  Request metrics from your application.
 
 
 =head2 AvailabilityZone => Str
@@ -99,7 +97,7 @@ information, see Health Colors and Statuses.
 
 =head2 System => L<Paws::ElasticBeanstalk::SystemStatus>
 
-  
+  Operating system metrics from the instance.
 
 
 

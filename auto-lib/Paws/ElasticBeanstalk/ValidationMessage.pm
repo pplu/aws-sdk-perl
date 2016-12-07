@@ -46,12 +46,12 @@ An error or warning for a desired configuration option value.
 
 =head2 Namespace => Str
 
-  
+  The namespace to which the option belongs.
 
 
 =head2 OptionName => Str
 
-  
+  The name of the option.
 
 
 =head2 Severity => Str
