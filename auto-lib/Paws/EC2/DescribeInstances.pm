@@ -63,6 +63,26 @@ C<architecture> - The instance architecture (C<i386> | C<x86_64>).
 
 =item *
 
+C<association.public-ip> - The address of the Elastic IP address (IPv4)
+bound to the network interface.
+
+=item *
+
+C<association.ip-owner-id> - The owner of the Elastic IP address (IPv4)
+associated with the network interface.
+
+=item *
+
+C<association.allocation-id> - The allocation ID returned when you
+allocated the Elastic IP address (IPv4) for your network interface.
+
+=item *
+
+C<association.association-id> - The association ID returned when the
+network interface was associated with an IPv4 address.
+
+=item *
+
 C<availability-zone> - The Availability Zone of the instance.
 
 =item *
@@ -164,7 +184,7 @@ instance.
 
 =item *
 
-C<ip-address> - The public IP address of the instance.
+C<ip-address> - The public IPv4 address of the instance.
 
 =item *
 
@@ -186,8 +206,141 @@ C<launch-time> - The time when the instance was launched.
 
 =item *
 
-C<monitoring-state> - Indicates whether monitoring is enabled for the
-instance (C<disabled> | C<enabled>).
+C<monitoring-state> - Indicates whether detailed monitoring is enabled
+(C<disabled> | C<enabled>).
+
+=item *
+
+C<network-interface.addresses.private-ip-address> - The private IPv4
+address associated with the network interface.
+
+=item *
+
+C<network-interface.addresses.primary> - Specifies whether the IPv4
+address of the network interface is the primary private IPv4 address.
+
+=item *
+
+C<network-interface.addresses.association.public-ip> - The ID of the
+association of an Elastic IP address (IPv4) with a network interface.
+
+=item *
+
+C<network-interface.addresses.association.ip-owner-id> - The owner ID
+of the private IPv4 address associated with the network interface.
+
+=item *
+
+C<network-interface.attachment.attachment-id> - The ID of the interface
+attachment.
+
+=item *
+
+C<network-interface.attachment.instance-id> - The ID of the instance to
+which the network interface is attached.
+
+=item *
+
+C<network-interface.attachment.instance-owner-id> - The owner ID of the
+instance to which the network interface is attached.
+
+=item *
+
+C<network-interface.attachment.device-index> - The device index to
+which the network interface is attached.
+
+=item *
+
+C<network-interface.attachment.status> - The status of the attachment
+(C<attaching> | C<attached> | C<detaching> | C<detached>).
+
+=item *
+
+C<network-interface.attachment.attach-time> - The time that the network
+interface was attached to an instance.
+
+=item *
+
+C<network-interface.attachment.delete-on-termination> - Specifies
+whether the attachment is deleted when an instance is terminated.
+
+=item *
+
+C<network-interface.availability-zone> - The Availability Zone for the
+network interface.
+
+=item *
+
+C<network-interface.description> - The description of the network
+interface.
+
+=item *
+
+C<network-interface.group-id> - The ID of a security group associated
+with the network interface.
+
+=item *
+
+C<network-interface.group-name> - The name of a security group
+associated with the network interface.
+
+=item *
+
+C<network-interface.ipv6-addresses.ipv6-address> - The IPv6 address
+associated with the network interface.
+
+=item *
+
+C<network-interface.mac-address> - The MAC address of the network
+interface.
+
+=item *
+
+C<network-interface.network-interface-id> - The ID of the network
+interface.
+
+=item *
+
+C<network-interface.owner-id> - The ID of the owner of the network
+interface.
+
+=item *
+
+C<network-interface.private-dns-name> - The private DNS name of the
+network interface.
+
+=item *
+
+C<network-interface.requester-id> - The requester ID for the network
+interface.
+
+=item *
+
+C<network-interface.requester-managed> - Indicates whether the network
+interface is being managed by AWS.
+
+=item *
+
+C<network-interface.status> - The status of the network interface
+(C<available>) | C<in-use>).
+
+=item *
+
+C<network-interface.source-dest-check> - Whether the network interface
+performs source/destination checking. A value of C<true> means checking
+is enabled, and C<false> means checking is disabled. The value must be
+C<false> for the network interface to perform network address
+translation (NAT) in your VPC.
+
+=item *
+
+C<network-interface.subnet-id> - The ID of the subnet for the network
+interface.
+
+=item *
+
+C<network-interface.vpc-id> - The ID of the VPC for the network
+interface.
 
 =item *
 
@@ -205,11 +358,11 @@ instances; otherwise, leave blank.
 
 =item *
 
-C<private-dns-name> - The private DNS name of the instance.
+C<private-dns-name> - The private IPv4 DNS name of the instance.
 
 =item *
 
-C<private-ip-address> - The private IP address of the instance.
+C<private-ip-address> - The private IPv4 address of the instance.
 
 =item *
 
@@ -314,154 +467,6 @@ C<virtualization-type> - The virtualization type of the instance
 =item *
 
 C<vpc-id> - The ID of the VPC that the instance is running in.
-
-=item *
-
-C<network-interface.description> - The description of the network
-interface.
-
-=item *
-
-C<network-interface.subnet-id> - The ID of the subnet for the network
-interface.
-
-=item *
-
-C<network-interface.vpc-id> - The ID of the VPC for the network
-interface.
-
-=item *
-
-C<network-interface.network-interface-id> - The ID of the network
-interface.
-
-=item *
-
-C<network-interface.owner-id> - The ID of the owner of the network
-interface.
-
-=item *
-
-C<network-interface.availability-zone> - The Availability Zone for the
-network interface.
-
-=item *
-
-C<network-interface.requester-id> - The requester ID for the network
-interface.
-
-=item *
-
-C<network-interface.requester-managed> - Indicates whether the network
-interface is being managed by AWS.
-
-=item *
-
-C<network-interface.status> - The status of the network interface
-(C<available>) | C<in-use>).
-
-=item *
-
-C<network-interface.mac-address> - The MAC address of the network
-interface.
-
-=item *
-
-C<network-interface.private-dns-name> - The private DNS name of the
-network interface.
-
-=item *
-
-C<network-interface.source-dest-check> - Whether the network interface
-performs source/destination checking. A value of C<true> means checking
-is enabled, and C<false> means checking is disabled. The value must be
-C<false> for the network interface to perform network address
-translation (NAT) in your VPC.
-
-=item *
-
-C<network-interface.group-id> - The ID of a security group associated
-with the network interface.
-
-=item *
-
-C<network-interface.group-name> - The name of a security group
-associated with the network interface.
-
-=item *
-
-C<network-interface.attachment.attachment-id> - The ID of the interface
-attachment.
-
-=item *
-
-C<network-interface.attachment.instance-id> - The ID of the instance to
-which the network interface is attached.
-
-=item *
-
-C<network-interface.attachment.instance-owner-id> - The owner ID of the
-instance to which the network interface is attached.
-
-=item *
-
-C<network-interface.addresses.private-ip-address> - The private IP
-address associated with the network interface.
-
-=item *
-
-C<network-interface.attachment.device-index> - The device index to
-which the network interface is attached.
-
-=item *
-
-C<network-interface.attachment.status> - The status of the attachment
-(C<attaching> | C<attached> | C<detaching> | C<detached>).
-
-=item *
-
-C<network-interface.attachment.attach-time> - The time that the network
-interface was attached to an instance.
-
-=item *
-
-C<network-interface.attachment.delete-on-termination> - Specifies
-whether the attachment is deleted when an instance is terminated.
-
-=item *
-
-C<network-interface.addresses.primary> - Specifies whether the IP
-address of the network interface is the primary private IP address.
-
-=item *
-
-C<network-interface.addresses.association.public-ip> - The ID of the
-association of an Elastic IP address with a network interface.
-
-=item *
-
-C<network-interface.addresses.association.ip-owner-id> - The owner ID
-of the private IP address associated with the network interface.
-
-=item *
-
-C<association.public-ip> - The address of the Elastic IP address bound
-to the network interface.
-
-=item *
-
-C<association.ip-owner-id> - The owner of the Elastic IP address
-associated with the network interface.
-
-=item *
-
-C<association.allocation-id> - The allocation ID returned when you
-allocated the Elastic IP address for your network interface.
-
-=item *
-
-C<association.association-id> - The association ID returned when the
-network interface was associated with an IP address.
 
 =back
 

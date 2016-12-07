@@ -38,8 +38,9 @@ This class has no description
 
 =head2 CidrIp => Str
 
-  The CIDR range. You can either specify a CIDR range or a source
-security group, not both.
+  The IPv4 CIDR range. You can either specify a CIDR range or a source
+security group, not both. To specify a single IPv4 address, use the /32
+prefix.
 
 
 

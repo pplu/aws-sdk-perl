@@ -97,6 +97,11 @@ creation).
 
 =item *
 
+C<ena-support> - A Boolean that indicates whether enhanced networking
+with ENA is enabled.
+
+=item *
+
 C<hypervisor> - The hypervisor type (C<ovm> | C<xen>).
 
 =item *

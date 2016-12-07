@@ -31,7 +31,7 @@ The currency of the transaction.
 =head2 IsValidExchange => Bool
 
 If C<true>, the exchange is valid. If C<false>, the exchange cannot be
-performed.
+completed.
 
 
 =head2 OutputReservedInstancesWillExpireAt => Str
@@ -66,7 +66,7 @@ The values of the target Convertible Reserved Instances.
 
 =head2 ValidationFailureReason => Str
 
-Describes the reason why the exchange can not be completed.
+Describes the reason why the exchange cannot be completed.
 
 
 =head2 _request_id => Str

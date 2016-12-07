@@ -1,7 +1,7 @@
 package Paws::EC2;
   use Moose;
   sub service { 'ec2' }
-  sub version { '2016-09-15' }
+  sub version { '2016-11-15' }
   sub flattened_arrays { 1 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);
   has retry => (is => 'ro', isa => 'HashRef', default => sub {
@@ -34,6 +34,11 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::AllocateHosts', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub AssignIpv6Addresses {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::AssignIpv6Addresses', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub AssignPrivateIpAddresses {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::AssignPrivateIpAddresses', @_);
@@ -52,6 +57,16 @@ package Paws::EC2;
   sub AssociateRouteTable {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::AssociateRouteTable', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub AssociateSubnetCidrBlock {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::AssociateSubnetCidrBlock', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub AssociateVpcCidrBlock {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::AssociateVpcCidrBlock', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub AttachClassicLinkVpc {
@@ -152,6 +167,11 @@ package Paws::EC2;
   sub CreateDhcpOptions {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::CreateDhcpOptions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateEgressOnlyInternetGateway {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::CreateEgressOnlyInternetGateway', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub CreateFlowLogs {
@@ -287,6 +307,11 @@ package Paws::EC2;
   sub DeleteDhcpOptions {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::DeleteDhcpOptions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteEgressOnlyInternetGateway {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DeleteEgressOnlyInternetGateway', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteFlowLogs {
@@ -442,6 +467,11 @@ package Paws::EC2;
   sub DescribeDhcpOptions {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::DescribeDhcpOptions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeEgressOnlyInternetGateways {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeEgressOnlyInternetGateways', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeExportTasks {
@@ -774,6 +804,16 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::DisassociateRouteTable', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DisassociateSubnetCidrBlock {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DisassociateSubnetCidrBlock', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DisassociateVpcCidrBlock {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DisassociateVpcCidrBlock', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub EnableVgwRoutePropagation {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::EnableVgwRoutePropagation', @_);
@@ -1064,6 +1104,11 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::TerminateInstances', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UnassignIpv6Addresses {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::UnassignIpv6Addresses', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UnassignPrivateIpAddresses {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::UnassignPrivateIpAddresses', @_);
@@ -1286,7 +1331,7 @@ package Paws::EC2;
   }
 
 
-  sub operations { qw/AcceptReservedInstancesExchangeQuote AcceptVpcPeeringConnection AllocateAddress AllocateHosts AssignPrivateIpAddresses AssociateAddress AssociateDhcpOptions AssociateRouteTable AttachClassicLinkVpc AttachInternetGateway AttachNetworkInterface AttachVolume AttachVpnGateway AuthorizeSecurityGroupEgress AuthorizeSecurityGroupIngress BundleInstance CancelBundleTask CancelConversionTask CancelExportTask CancelImportTask CancelReservedInstancesListing CancelSpotFleetRequests CancelSpotInstanceRequests ConfirmProductInstance CopyImage CopySnapshot CreateCustomerGateway CreateDhcpOptions CreateFlowLogs CreateImage CreateInstanceExportTask CreateInternetGateway CreateKeyPair CreateNatGateway CreateNetworkAcl CreateNetworkAclEntry CreateNetworkInterface CreatePlacementGroup CreateReservedInstancesListing CreateRoute CreateRouteTable CreateSecurityGroup CreateSnapshot CreateSpotDatafeedSubscription CreateSubnet CreateTags CreateVolume CreateVpc CreateVpcEndpoint CreateVpcPeeringConnection CreateVpnConnection CreateVpnConnectionRoute CreateVpnGateway DeleteCustomerGateway DeleteDhcpOptions DeleteFlowLogs DeleteInternetGateway DeleteKeyPair DeleteNatGateway DeleteNetworkAcl DeleteNetworkAclEntry DeleteNetworkInterface DeletePlacementGroup DeleteRoute DeleteRouteTable DeleteSecurityGroup DeleteSnapshot DeleteSpotDatafeedSubscription DeleteSubnet DeleteTags DeleteVolume DeleteVpc DeleteVpcEndpoints DeleteVpcPeeringConnection DeleteVpnConnection DeleteVpnConnectionRoute DeleteVpnGateway DeregisterImage DescribeAccountAttributes DescribeAddresses DescribeAvailabilityZones DescribeBundleTasks DescribeClassicLinkInstances DescribeConversionTasks DescribeCustomerGateways DescribeDhcpOptions DescribeExportTasks DescribeFlowLogs DescribeHostReservationOfferings DescribeHostReservations DescribeHosts DescribeIdentityIdFormat DescribeIdFormat DescribeImageAttribute DescribeImages DescribeImportImageTasks DescribeImportSnapshotTasks DescribeInstanceAttribute DescribeInstances DescribeInstanceStatus DescribeInternetGateways DescribeKeyPairs DescribeMovingAddresses DescribeNatGateways DescribeNetworkAcls DescribeNetworkInterfaceAttribute DescribeNetworkInterfaces DescribePlacementGroups DescribePrefixLists DescribeRegions DescribeReservedInstances DescribeReservedInstancesListings DescribeReservedInstancesModifications DescribeReservedInstancesOfferings DescribeRouteTables DescribeScheduledInstanceAvailability DescribeScheduledInstances DescribeSecurityGroupReferences DescribeSecurityGroups DescribeSnapshotAttribute DescribeSnapshots DescribeSpotDatafeedSubscription DescribeSpotFleetInstances DescribeSpotFleetRequestHistory DescribeSpotFleetRequests DescribeSpotInstanceRequests DescribeSpotPriceHistory DescribeStaleSecurityGroups DescribeSubnets DescribeTags DescribeVolumeAttribute DescribeVolumes DescribeVolumeStatus DescribeVpcAttribute DescribeVpcClassicLink DescribeVpcClassicLinkDnsSupport DescribeVpcEndpoints DescribeVpcEndpointServices DescribeVpcPeeringConnections DescribeVpcs DescribeVpnConnections DescribeVpnGateways DetachClassicLinkVpc DetachInternetGateway DetachNetworkInterface DetachVolume DetachVpnGateway DisableVgwRoutePropagation DisableVpcClassicLink DisableVpcClassicLinkDnsSupport DisassociateAddress DisassociateRouteTable EnableVgwRoutePropagation EnableVolumeIO EnableVpcClassicLink EnableVpcClassicLinkDnsSupport GetConsoleOutput GetConsoleScreenshot GetHostReservationPurchasePreview GetPasswordData GetReservedInstancesExchangeQuote ImportImage ImportInstance ImportKeyPair ImportSnapshot ImportVolume ModifyHosts ModifyIdentityIdFormat ModifyIdFormat ModifyImageAttribute ModifyInstanceAttribute ModifyInstancePlacement ModifyNetworkInterfaceAttribute ModifyReservedInstances ModifySnapshotAttribute ModifySpotFleetRequest ModifySubnetAttribute ModifyVolumeAttribute ModifyVpcAttribute ModifyVpcEndpoint ModifyVpcPeeringConnectionOptions MonitorInstances MoveAddressToVpc PurchaseHostReservation PurchaseReservedInstancesOffering PurchaseScheduledInstances RebootInstances RegisterImage RejectVpcPeeringConnection ReleaseAddress ReleaseHosts ReplaceNetworkAclAssociation ReplaceNetworkAclEntry ReplaceRoute ReplaceRouteTableAssociation ReportInstanceStatus RequestSpotFleet RequestSpotInstances ResetImageAttribute ResetInstanceAttribute ResetNetworkInterfaceAttribute ResetSnapshotAttribute RestoreAddressToClassic RevokeSecurityGroupEgress RevokeSecurityGroupIngress RunInstances RunScheduledInstances StartInstances StopInstances TerminateInstances UnassignPrivateIpAddresses UnmonitorInstances / }
+  sub operations { qw/AcceptReservedInstancesExchangeQuote AcceptVpcPeeringConnection AllocateAddress AllocateHosts AssignIpv6Addresses AssignPrivateIpAddresses AssociateAddress AssociateDhcpOptions AssociateRouteTable AssociateSubnetCidrBlock AssociateVpcCidrBlock AttachClassicLinkVpc AttachInternetGateway AttachNetworkInterface AttachVolume AttachVpnGateway AuthorizeSecurityGroupEgress AuthorizeSecurityGroupIngress BundleInstance CancelBundleTask CancelConversionTask CancelExportTask CancelImportTask CancelReservedInstancesListing CancelSpotFleetRequests CancelSpotInstanceRequests ConfirmProductInstance CopyImage CopySnapshot CreateCustomerGateway CreateDhcpOptions CreateEgressOnlyInternetGateway CreateFlowLogs CreateImage CreateInstanceExportTask CreateInternetGateway CreateKeyPair CreateNatGateway CreateNetworkAcl CreateNetworkAclEntry CreateNetworkInterface CreatePlacementGroup CreateReservedInstancesListing CreateRoute CreateRouteTable CreateSecurityGroup CreateSnapshot CreateSpotDatafeedSubscription CreateSubnet CreateTags CreateVolume CreateVpc CreateVpcEndpoint CreateVpcPeeringConnection CreateVpnConnection CreateVpnConnectionRoute CreateVpnGateway DeleteCustomerGateway DeleteDhcpOptions DeleteEgressOnlyInternetGateway DeleteFlowLogs DeleteInternetGateway DeleteKeyPair DeleteNatGateway DeleteNetworkAcl DeleteNetworkAclEntry DeleteNetworkInterface DeletePlacementGroup DeleteRoute DeleteRouteTable DeleteSecurityGroup DeleteSnapshot DeleteSpotDatafeedSubscription DeleteSubnet DeleteTags DeleteVolume DeleteVpc DeleteVpcEndpoints DeleteVpcPeeringConnection DeleteVpnConnection DeleteVpnConnectionRoute DeleteVpnGateway DeregisterImage DescribeAccountAttributes DescribeAddresses DescribeAvailabilityZones DescribeBundleTasks DescribeClassicLinkInstances DescribeConversionTasks DescribeCustomerGateways DescribeDhcpOptions DescribeEgressOnlyInternetGateways DescribeExportTasks DescribeFlowLogs DescribeHostReservationOfferings DescribeHostReservations DescribeHosts DescribeIdentityIdFormat DescribeIdFormat DescribeImageAttribute DescribeImages DescribeImportImageTasks DescribeImportSnapshotTasks DescribeInstanceAttribute DescribeInstances DescribeInstanceStatus DescribeInternetGateways DescribeKeyPairs DescribeMovingAddresses DescribeNatGateways DescribeNetworkAcls DescribeNetworkInterfaceAttribute DescribeNetworkInterfaces DescribePlacementGroups DescribePrefixLists DescribeRegions DescribeReservedInstances DescribeReservedInstancesListings DescribeReservedInstancesModifications DescribeReservedInstancesOfferings DescribeRouteTables DescribeScheduledInstanceAvailability DescribeScheduledInstances DescribeSecurityGroupReferences DescribeSecurityGroups DescribeSnapshotAttribute DescribeSnapshots DescribeSpotDatafeedSubscription DescribeSpotFleetInstances DescribeSpotFleetRequestHistory DescribeSpotFleetRequests DescribeSpotInstanceRequests DescribeSpotPriceHistory DescribeStaleSecurityGroups DescribeSubnets DescribeTags DescribeVolumeAttribute DescribeVolumes DescribeVolumeStatus DescribeVpcAttribute DescribeVpcClassicLink DescribeVpcClassicLinkDnsSupport DescribeVpcEndpoints DescribeVpcEndpointServices DescribeVpcPeeringConnections DescribeVpcs DescribeVpnConnections DescribeVpnGateways DetachClassicLinkVpc DetachInternetGateway DetachNetworkInterface DetachVolume DetachVpnGateway DisableVgwRoutePropagation DisableVpcClassicLink DisableVpcClassicLinkDnsSupport DisassociateAddress DisassociateRouteTable DisassociateSubnetCidrBlock DisassociateVpcCidrBlock EnableVgwRoutePropagation EnableVolumeIO EnableVpcClassicLink EnableVpcClassicLinkDnsSupport GetConsoleOutput GetConsoleScreenshot GetHostReservationPurchasePreview GetPasswordData GetReservedInstancesExchangeQuote ImportImage ImportInstance ImportKeyPair ImportSnapshot ImportVolume ModifyHosts ModifyIdentityIdFormat ModifyIdFormat ModifyImageAttribute ModifyInstanceAttribute ModifyInstancePlacement ModifyNetworkInterfaceAttribute ModifyReservedInstances ModifySnapshotAttribute ModifySpotFleetRequest ModifySubnetAttribute ModifyVolumeAttribute ModifyVpcAttribute ModifyVpcEndpoint ModifyVpcPeeringConnectionOptions MonitorInstances MoveAddressToVpc PurchaseHostReservation PurchaseReservedInstancesOffering PurchaseScheduledInstances RebootInstances RegisterImage RejectVpcPeeringConnection ReleaseAddress ReleaseHosts ReplaceNetworkAclAssociation ReplaceNetworkAclEntry ReplaceRoute ReplaceRouteTableAssociation ReportInstanceStatus RequestSpotFleet RequestSpotInstances ResetImageAttribute ResetInstanceAttribute ResetNetworkInterfaceAttribute ResetSnapshotAttribute RestoreAddressToClassic RevokeSecurityGroupEgress RevokeSecurityGroupIngress RunInstances RunScheduledInstances StartInstances StopInstances TerminateInstances UnassignIpv6Addresses UnassignPrivateIpAddresses UnmonitorInstances / }
 
 1;
 
@@ -1329,8 +1374,8 @@ Each argument is described in detail in: L<Paws::EC2::AcceptReservedInstancesExc
 
 Returns: a L<Paws::EC2::AcceptReservedInstancesExchangeQuoteResult> instance
 
-  Purchases Convertible Reserved Instance offerings described in the
-GetReservedInstancesExchangeQuote call.
+  Accepts the Convertible Reserved Instance exchange quote described in
+the GetReservedInstancesExchangeQuote call.
 
 
 =head2 AcceptVpcPeeringConnection([DryRun => Bool, VpcPeeringConnectionId => Str])
@@ -1368,6 +1413,22 @@ Returns: a L<Paws::EC2::AllocateHostsResult> instance
   Allocates a Dedicated Host to your account. At minimum you need to
 specify the instance size type, Availability Zone, and quantity of
 hosts you want to allocate.
+
+
+=head2 AssignIpv6Addresses(NetworkInterfaceId => Str, [Ipv6AddressCount => Int, Ipv6Addresses => ArrayRef[Str|Undef]])
+
+Each argument is described in detail in: L<Paws::EC2::AssignIpv6Addresses>
+
+Returns: a L<Paws::EC2::AssignIpv6AddressesResult> instance
+
+  Assigns one or more IPv6 addresses to the specified network interface.
+You can specify one or more specific IPv6 addresses, or you can specify
+the number of IPv6 addresses to be automatically assigned from within
+the subnet's IPv6 CIDR block range. You can assign as many IPv6
+addresses to a network interface as you can assign private IPv4
+addresses, and the limit varies per instance type. For information, see
+IP Addresses Per Network Interface Per Instance Type in the I<Amazon
+Elastic Compute Cloud User Guide>.
 
 
 =head2 AssignPrivateIpAddresses(NetworkInterfaceId => Str, [AllowReassignment => Bool, PrivateIpAddresses => ArrayRef[Str|Undef], SecondaryPrivateIpAddressCount => Int])
@@ -1454,6 +1515,28 @@ be associated with multiple subnets.
 
 For more information about route tables, see Route Tables in the
 I<Amazon Virtual Private Cloud User Guide>.
+
+
+=head2 AssociateSubnetCidrBlock(Ipv6CidrBlock => Str, SubnetId => Str)
+
+Each argument is described in detail in: L<Paws::EC2::AssociateSubnetCidrBlock>
+
+Returns: a L<Paws::EC2::AssociateSubnetCidrBlockResult> instance
+
+  Associates a CIDR block with your subnet. You can only associate a
+single IPv6 CIDR block with your subnet. An IPv6 CIDR block must have a
+prefix length of /64.
+
+
+=head2 AssociateVpcCidrBlock(VpcId => Str, [AmazonProvidedIpv6CidrBlock => Bool])
+
+Each argument is described in detail in: L<Paws::EC2::AssociateVpcCidrBlock>
+
+Returns: a L<Paws::EC2::AssociateVpcCidrBlockResult> instance
+
+  Associates a CIDR block with your VPC. You can only associate a single
+Amazon-provided IPv6 CIDR block with your VPC. The IPv6 CIDR block size
+is fixed at /56.
 
 
 =head2 AttachClassicLinkVpc(Groups => ArrayRef[Str|Undef], InstanceId => Str, VpcId => Str, [DryRun => Bool])
@@ -1566,14 +1649,12 @@ Returns: nothing
 
   [EC2-VPC only] Adds one or more egress rules to a security group for
 use with a VPC. Specifically, this action permits instances to send
-traffic to one or more destination CIDR IP address ranges, or to one or
-more destination security groups for the same VPC. This action doesn't
-apply to security groups for use in EC2-Classic. For more information,
-see Security Groups for Your VPC in the I<Amazon Virtual Private Cloud
-User Guide>.
-
-You can have up to 50 rules per security group (covering both ingress
-and egress rules).
+traffic to one or more destination IPv4 or IPv6 CIDR address ranges, or
+to one or more destination security groups for the same VPC. This
+action doesn't apply to security groups for use in EC2-Classic. For
+more information, see Security Groups for Your VPC in the I<Amazon
+Virtual Private Cloud User Guide>. For more information about security
+group limits, see Amazon VPC Limits.
 
 Each rule consists of the protocol (for example, TCP), plus either a
 CIDR range or a source group. For the TCP and UDP protocols, you must
@@ -1593,25 +1674,21 @@ Returns: nothing
 
   Adds one or more ingress rules to a security group.
 
-EC2-Classic: You can have up to 100 rules per group.
-
-EC2-VPC: You can have up to 50 rules per group (covering both ingress
-and egress rules).
-
 Rule changes are propagated to instances within the security group as
 quickly as possible. However, a small delay might occur.
 
-[EC2-Classic] This action gives one or more CIDR IP address ranges
+[EC2-Classic] This action gives one or more IPv4 CIDR address ranges
 permission to access a security group in your account, or gives one or
 more security groups (called the I<source groups>) permission to access
 a security group for your account. A source group can be for your own
-AWS account, or another.
+AWS account, or another. You can have up to 100 rules per group.
 
-[EC2-VPC] This action gives one or more CIDR IP address ranges
-permission to access a security group in your VPC, or gives one or more
-other security groups (called the I<source groups>) permission to
-access a security group for your VPC. The security groups must all be
-for the same VPC.
+[EC2-VPC] This action gives one or more IPv4 or IPv6 CIDR address
+ranges permission to access a security group in your VPC, or gives one
+or more other security groups (called the I<source groups>) permission
+to access a security group for your VPC. The security groups must all
+be for the same VPC or a peer VPC in a VPC peering connection. For more
+information about VPC security group limits, see Amazon VPC Limits.
 
 
 =head2 BundleInstance(InstanceId => Str, Storage => L<Paws::EC2::Storage>, [DryRun => Bool])
@@ -1882,6 +1959,19 @@ more information about DHCP options, see DHCP Options Sets in the
 I<Amazon Virtual Private Cloud User Guide>.
 
 
+=head2 CreateEgressOnlyInternetGateway(VpcId => Str, [ClientToken => Str, DryRun => Bool])
+
+Each argument is described in detail in: L<Paws::EC2::CreateEgressOnlyInternetGateway>
+
+Returns: a L<Paws::EC2::CreateEgressOnlyInternetGatewayResult> instance
+
+  [IPv6 only] Creates an egress-only Internet gateway for your VPC. An
+egress-only Internet gateway is used to enable outbound communication
+over IPv6 from instances in your VPC to the Internet, and prevents
+hosts outside of your VPC from initiating an IPv6 connection with your
+instance.
+
+
 =head2 CreateFlowLogs(DeliverLogsPermissionArn => Str, LogGroupName => Str, ResourceIds => ArrayRef[Str|Undef], ResourceType => Str, TrafficType => Str, [ClientToken => Str])
 
 Each argument is described in detail in: L<Paws::EC2::CreateFlowLogs>
@@ -1996,7 +2086,7 @@ For more information about network ACLs, see Network ACLs in the
 I<Amazon Virtual Private Cloud User Guide>.
 
 
-=head2 CreateNetworkAclEntry(CidrBlock => Str, Egress => Bool, NetworkAclId => Str, Protocol => Str, RuleAction => Str, RuleNumber => Int, [DryRun => Bool, IcmpTypeCode => L<Paws::EC2::IcmpTypeCode>, PortRange => L<Paws::EC2::PortRange>])
+=head2 CreateNetworkAclEntry(Egress => Bool, NetworkAclId => Str, Protocol => Str, RuleAction => Str, RuleNumber => Int, [CidrBlock => Str, DryRun => Bool, IcmpTypeCode => L<Paws::EC2::IcmpTypeCode>, Ipv6CidrBlock => Str, PortRange => L<Paws::EC2::PortRange>])
 
 Each argument is described in detail in: L<Paws::EC2::CreateNetworkAclEntry>
 
@@ -2022,7 +2112,7 @@ For more information about network ACLs, see Network ACLs in the
 I<Amazon Virtual Private Cloud User Guide>.
 
 
-=head2 CreateNetworkInterface(SubnetId => Str, [Description => Str, DryRun => Bool, Groups => ArrayRef[Str|Undef], PrivateIpAddress => Str, PrivateIpAddresses => ArrayRef[L<Paws::EC2::PrivateIpAddressSpecification>], SecondaryPrivateIpAddressCount => Int])
+=head2 CreateNetworkInterface(SubnetId => Str, [Description => Str, DryRun => Bool, Groups => ArrayRef[Str|Undef], Ipv6AddressCount => Int, Ipv6Addresses => ArrayRef[L<Paws::EC2::InstanceIpv6Address>], PrivateIpAddress => Str, PrivateIpAddresses => ArrayRef[L<Paws::EC2::PrivateIpAddressSpecification>], SecondaryPrivateIpAddressCount => Int])
 
 Each argument is described in detail in: L<Paws::EC2::CreateNetworkInterface>
 
@@ -2031,7 +2121,7 @@ Returns: a L<Paws::EC2::CreateNetworkInterfaceResult> instance
   Creates a network interface in the specified subnet.
 
 For more information about network interfaces, see Elastic Network
-Interfaces in the I<Amazon Elastic Compute Cloud User Guide>.
+Interfaces in the I<Amazon Virtual Private Cloud User Guide>.
 
 
 =head2 CreatePlacementGroup(GroupName => Str, Strategy => Str, [DryRun => Bool])
@@ -2079,7 +2169,7 @@ For more information, see Reserved Instance Marketplace in the I<Amazon
 Elastic Compute Cloud User Guide>.
 
 
-=head2 CreateRoute(DestinationCidrBlock => Str, RouteTableId => Str, [DryRun => Bool, GatewayId => Str, InstanceId => Str, NatGatewayId => Str, NetworkInterfaceId => Str, VpcPeeringConnectionId => Str])
+=head2 CreateRoute(RouteTableId => Str, [DestinationCidrBlock => Str, DestinationIpv6CidrBlock => Str, DryRun => Bool, EgressOnlyInternetGatewayId => Str, GatewayId => Str, InstanceId => Str, NatGatewayId => Str, NetworkInterfaceId => Str, VpcPeeringConnectionId => Str])
 
 Each argument is described in detail in: L<Paws::EC2::CreateRoute>
 
@@ -2089,11 +2179,12 @@ Returns: a L<Paws::EC2::CreateRouteResult> instance
 
 You must specify one of the following targets: Internet gateway or
 virtual private gateway, NAT instance, NAT gateway, VPC peering
-connection, or network interface.
+connection, network interface, or egress-only Internet gateway.
 
 When determining how to route traffic, we use the route with the most
-specific match. For example, let's say the traffic is destined for
-C<192.0.2.3>, and the route table includes the following two routes:
+specific match. For example, traffic is destined for the IPv4 address
+C<192.0.2.3>, and the route table includes the following two IPv4
+routes:
 
 =over
 
@@ -2213,7 +2304,7 @@ more information, see Spot Instance Data Feed in the I<Amazon Elastic
 Compute Cloud User Guide>.
 
 
-=head2 CreateSubnet(CidrBlock => Str, VpcId => Str, [AvailabilityZone => Str, DryRun => Bool])
+=head2 CreateSubnet(CidrBlock => Str, VpcId => Str, [AvailabilityZone => Str, DryRun => Bool, Ipv6CidrBlock => Str])
 
 Each argument is described in detail in: L<Paws::EC2::CreateSubnet>
 
@@ -2223,12 +2314,16 @@ Returns: a L<Paws::EC2::CreateSubnetResult> instance
 
 When you create each subnet, you provide the VPC ID and the CIDR block
 you want for the subnet. After you create a subnet, you can't change
-its CIDR block. The subnet's CIDR block can be the same as the VPC's
-CIDR block (assuming you want only a single subnet in the VPC), or a
-subset of the VPC's CIDR block. If you create more than one subnet in a
-VPC, the subnets' CIDR blocks must not overlap. The smallest subnet
-(and VPC) you can create uses a /28 netmask (16 IP addresses), and the
-largest uses a /16 netmask (65,536 IP addresses).
+its CIDR block. The subnet's IPv4 CIDR block can be the same as the
+VPC's IPv4 CIDR block (assuming you want only a single subnet in the
+VPC), or a subset of the VPC's IPv4 CIDR block. If you create more than
+one subnet in a VPC, the subnets' CIDR blocks must not overlap. The
+smallest IPv4 subnet (and VPC) you can create uses a /28 netmask (16
+IPv4 addresses), and the largest uses a /16 netmask (65,536 IPv4
+addresses).
+
+If you've associated an IPv6 CIDR block with your VPC, you can create a
+subnet with an IPv6 CIDR block that uses a /64 prefix length.
 
 AWS reserves both the first four and the last IP address in each
 subnet's CIDR block. They're not available for use.
@@ -2290,18 +2385,22 @@ For more information, see Creating or Restoring an Amazon EBS Volume in
 the I<Amazon Elastic Compute Cloud User Guide>.
 
 
-=head2 CreateVpc(CidrBlock => Str, [DryRun => Bool, InstanceTenancy => Str])
+=head2 CreateVpc(CidrBlock => Str, [AmazonProvidedIpv6CidrBlock => Bool, DryRun => Bool, InstanceTenancy => Str])
 
 Each argument is described in detail in: L<Paws::EC2::CreateVpc>
 
 Returns: a L<Paws::EC2::CreateVpcResult> instance
 
-  Creates a VPC with the specified CIDR block.
+  Creates a VPC with the specified IPv4 CIDR block. The smallest VPC you
+can create uses a /28 netmask (16 IPv4 addresses), and the largest uses
+a /16 netmask (65,536 IPv4 addresses). To help you decide how big to
+make your VPC, see Your VPC and Subnets in the I<Amazon Virtual Private
+Cloud User Guide>.
 
-The smallest VPC you can create uses a /28 netmask (16 IP addresses),
-and the largest uses a /16 netmask (65,536 IP addresses). To help you
-decide how big to make your VPC, see Your VPC and Subnets in the
-I<Amazon Virtual Private Cloud User Guide>.
+You can optionally request an Amazon-provided IPv6 CIDR block for the
+VPC. The IPv6 CIDR block uses a /56 prefix length, and is allocated
+from Amazon's pool of IPv6 addresses. You cannot choose the IPv6 range
+for your VPC.
 
 By default, each instance you launch in the VPC has the default DHCP
 options, which includes only a default DNS server that we provide
@@ -2431,6 +2530,15 @@ set of DHCP options by associating either a new set of options or the
 default set of options with the VPC.
 
 
+=head2 DeleteEgressOnlyInternetGateway(EgressOnlyInternetGatewayId => Str, [DryRun => Bool])
+
+Each argument is described in detail in: L<Paws::EC2::DeleteEgressOnlyInternetGateway>
+
+Returns: a L<Paws::EC2::DeleteEgressOnlyInternetGatewayResult> instance
+
+  Deletes an egress-only Internet gateway.
+
+
 =head2 DeleteFlowLogs(FlowLogIds => ArrayRef[Str|Undef])
 
 Each argument is described in detail in: L<Paws::EC2::DeleteFlowLogs>
@@ -2514,7 +2622,7 @@ more information about placement groups and cluster instances, see
 Cluster Instances in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
-=head2 DeleteRoute(DestinationCidrBlock => Str, RouteTableId => Str, [DryRun => Bool])
+=head2 DeleteRoute(RouteTableId => Str, [DestinationCidrBlock => Str, DestinationIpv6CidrBlock => Str, DryRun => Bool])
 
 Each argument is described in detail in: L<Paws::EC2::DeleteRoute>
 
@@ -2847,6 +2955,15 @@ Returns: a L<Paws::EC2::DescribeDhcpOptionsResult> instance
 
 For more information about DHCP options sets, see DHCP Options Sets in
 the I<Amazon Virtual Private Cloud User Guide>.
+
+
+=head2 DescribeEgressOnlyInternetGateways([DryRun => Bool, EgressOnlyInternetGatewayIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+
+Each argument is described in detail in: L<Paws::EC2::DescribeEgressOnlyInternetGateways>
+
+Returns: a L<Paws::EC2::DescribeEgressOnlyInternetGatewaysResult> instance
+
+  Describes one or more of your egress-only Internet gateways.
 
 
 =head2 DescribeExportTasks([ExportTaskIds => ArrayRef[Str|Undef]])
@@ -3493,10 +3610,9 @@ Each argument is described in detail in: L<Paws::EC2::DescribeSpotPriceHistory>
 
 Returns: a L<Paws::EC2::DescribeSpotPriceHistoryResult> instance
 
-  Describes the Spot price history. The prices returned are listed in
-chronological order, from the oldest to the most recent, for up to the
-past 90 days. For more information, see Spot Instance Pricing History
-in the I<Amazon Elastic Compute Cloud User Guide>.
+  Describes the Spot price history. For more information, see Spot
+Instance Pricing History in the I<Amazon Elastic Compute Cloud User
+Guide>.
 
 When you specify a start and end time, this operation returns the
 prices of the instance types within the time range that you specified
@@ -3854,6 +3970,30 @@ table. For more information about route tables, see Route Tables in the
 I<Amazon Virtual Private Cloud User Guide>.
 
 
+=head2 DisassociateSubnetCidrBlock(AssociationId => Str)
+
+Each argument is described in detail in: L<Paws::EC2::DisassociateSubnetCidrBlock>
+
+Returns: a L<Paws::EC2::DisassociateSubnetCidrBlockResult> instance
+
+  Disassociates a CIDR block from a subnet. Currently, you can
+disassociate an IPv6 CIDR block only. You must detach or delete all
+gateways and resources that are associated with the CIDR block before
+you can disassociate it.
+
+
+=head2 DisassociateVpcCidrBlock(AssociationId => Str)
+
+Each argument is described in detail in: L<Paws::EC2::DisassociateVpcCidrBlock>
+
+Returns: a L<Paws::EC2::DisassociateVpcCidrBlockResult> instance
+
+  Disassociates a CIDR block from a VPC. Currently, you can disassociate
+an IPv6 CIDR block only. You must detach or delete all gateways and
+resources that are associated with the CIDR block before you can
+disassociate it.
+
+
 =head2 EnableVgwRoutePropagation(GatewayId => Str, RouteTableId => Str)
 
 Each argument is described in detail in: L<Paws::EC2::EnableVgwRoutePropagation>
@@ -3902,7 +4042,7 @@ its private IP address when addressed from an instance in the VPC to
 which it's linked. Similarly, the DNS hostname of an instance in a VPC
 resolves to its private IP address when addressed from a linked
 EC2-Classic instance. For more information about ClassicLink, see
-ClassicLink in the Amazon Elastic Compute Cloud User Guide.
+ClassicLink in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 =head2 GetConsoleOutput(InstanceId => Str, [DryRun => Bool])
@@ -3990,8 +4130,9 @@ Each argument is described in detail in: L<Paws::EC2::GetReservedInstancesExchan
 Returns: a L<Paws::EC2::GetReservedInstancesExchangeQuoteResult> instance
 
   Returns details about the values and term of your specified Convertible
-Reserved Instances. When an offering ID is specified it returns
-information about whether the exchange is valid and can be performed.
+Reserved Instances. When a target configuration is specified, it
+returns information about whether the exchange is valid and can be
+performed.
 
 
 =head2 ImportImage([Architecture => Str, ClientData => L<Paws::EC2::ClientData>, ClientToken => Str, Description => Str, DiskContainers => ArrayRef[L<Paws::EC2::ImageDiskContainer>], DryRun => Bool, Hypervisor => Str, LicenseType => Str, Platform => Str, RoleName => Str])
@@ -4260,13 +4401,14 @@ fleet at its current size, but not replace any Spot instances that are
 interrupted or that you terminate manually.
 
 
-=head2 ModifySubnetAttribute(SubnetId => Str, [MapPublicIpOnLaunch => L<Paws::EC2::AttributeBooleanValue>])
+=head2 ModifySubnetAttribute(SubnetId => Str, [AssignIpv6AddressOnCreation => L<Paws::EC2::AttributeBooleanValue>, MapPublicIpOnLaunch => L<Paws::EC2::AttributeBooleanValue>])
 
 Each argument is described in detail in: L<Paws::EC2::ModifySubnetAttribute>
 
 Returns: nothing
 
-  Modifies a subnet attribute.
+  Modifies a subnet attribute. You can only modify one attribute at a
+time.
 
 
 =head2 ModifyVolumeAttribute(VolumeId => Str, [AutoEnableIO => L<Paws::EC2::AttributeBooleanValue>, DryRun => Bool])
@@ -4353,9 +4495,12 @@ Each argument is described in detail in: L<Paws::EC2::MonitorInstances>
 
 Returns: a L<Paws::EC2::MonitorInstancesResult> instance
 
-  Enables monitoring for a running instance. For more information about
-monitoring instances, see Monitoring Your Instances and Volumes in the
-I<Amazon Elastic Compute Cloud User Guide>.
+  Enables detailed monitoring for a running instance. Otherwise, basic
+monitoring is enabled. For more information, see Monitoring Your
+Instances and Volumes in the I<Amazon Elastic Compute Cloud User
+Guide>.
+
+To disable detailed monitoring, see .
 
 
 =head2 MoveAddressToVpc(PublicIp => Str, [DryRun => Bool])
@@ -4557,7 +4702,7 @@ network ACL. For more information about network ACLs, see Network ACLs
 in the I<Amazon Virtual Private Cloud User Guide>.
 
 
-=head2 ReplaceNetworkAclEntry(CidrBlock => Str, Egress => Bool, NetworkAclId => Str, Protocol => Str, RuleAction => Str, RuleNumber => Int, [DryRun => Bool, IcmpTypeCode => L<Paws::EC2::IcmpTypeCode>, PortRange => L<Paws::EC2::PortRange>])
+=head2 ReplaceNetworkAclEntry(Egress => Bool, NetworkAclId => Str, Protocol => Str, RuleAction => Str, RuleNumber => Int, [CidrBlock => Str, DryRun => Bool, IcmpTypeCode => L<Paws::EC2::IcmpTypeCode>, Ipv6CidrBlock => Str, PortRange => L<Paws::EC2::PortRange>])
 
 Each argument is described in detail in: L<Paws::EC2::ReplaceNetworkAclEntry>
 
@@ -4568,7 +4713,7 @@ network ACLs, see Network ACLs in the I<Amazon Virtual Private Cloud
 User Guide>.
 
 
-=head2 ReplaceRoute(DestinationCidrBlock => Str, RouteTableId => Str, [DryRun => Bool, GatewayId => Str, InstanceId => Str, NatGatewayId => Str, NetworkInterfaceId => Str, VpcPeeringConnectionId => Str])
+=head2 ReplaceRoute(RouteTableId => Str, [DestinationCidrBlock => Str, DestinationIpv6CidrBlock => Str, DryRun => Bool, EgressOnlyInternetGatewayId => Str, GatewayId => Str, InstanceId => Str, NatGatewayId => Str, NetworkInterfaceId => Str, VpcPeeringConnectionId => Str])
 
 Each argument is described in detail in: L<Paws::EC2::ReplaceRoute>
 
@@ -4576,8 +4721,8 @@ Returns: nothing
 
   Replaces an existing route within a route table in a VPC. You must
 provide only one of the following: Internet gateway or virtual private
-gateway, NAT instance, NAT gateway, VPC peering connection, or network
-interface.
+gateway, NAT instance, NAT gateway, VPC peering connection, network
+interface, or egress-only Internet gateway.
 
 For more information about route tables, see Route Tables in the
 I<Amazon Virtual Private Cloud User Guide>.
@@ -4734,10 +4879,10 @@ EC2-Classic. The values that you specify in the revoke request (for
 example, ports) must match the existing rule's values for the rule to
 be revoked.
 
-Each rule consists of the protocol and the CIDR range or source
-security group. For the TCP and UDP protocols, you must also specify
-the destination port or range of ports. For the ICMP protocol, you must
-also specify the ICMP type and code.
+Each rule consists of the protocol and the IPv4 or IPv6 CIDR range or
+source security group. For the TCP and UDP protocols, you must also
+specify the destination port or range of ports. For the ICMP protocol,
+you must also specify the ICMP type and code.
 
 Rule changes are propagated to instances within the security group as
 quickly as possible. However, a small delay might occur.
@@ -4762,7 +4907,7 @@ Rule changes are propagated to instances within the security group as
 quickly as possible. However, a small delay might occur.
 
 
-=head2 RunInstances(ImageId => Str, MaxCount => Int, MinCount => Int, [AdditionalInfo => Str, BlockDeviceMappings => ArrayRef[L<Paws::EC2::BlockDeviceMapping>], ClientToken => Str, DisableApiTermination => Bool, DryRun => Bool, EbsOptimized => Bool, IamInstanceProfile => L<Paws::EC2::IamInstanceProfileSpecification>, InstanceInitiatedShutdownBehavior => Str, InstanceType => Str, KernelId => Str, KeyName => Str, Monitoring => L<Paws::EC2::RunInstancesMonitoringEnabled>, NetworkInterfaces => ArrayRef[L<Paws::EC2::InstanceNetworkInterfaceSpecification>], Placement => L<Paws::EC2::Placement>, PrivateIpAddress => Str, RamdiskId => Str, SecurityGroupIds => ArrayRef[Str|Undef], SecurityGroups => ArrayRef[Str|Undef], SubnetId => Str, UserData => Str])
+=head2 RunInstances(ImageId => Str, MaxCount => Int, MinCount => Int, [AdditionalInfo => Str, BlockDeviceMappings => ArrayRef[L<Paws::EC2::BlockDeviceMapping>], ClientToken => Str, DisableApiTermination => Bool, DryRun => Bool, EbsOptimized => Bool, IamInstanceProfile => L<Paws::EC2::IamInstanceProfileSpecification>, InstanceInitiatedShutdownBehavior => Str, InstanceType => Str, Ipv6AddressCount => Int, Ipv6Addresses => ArrayRef[L<Paws::EC2::InstanceIpv6Address>], KernelId => Str, KeyName => Str, Monitoring => L<Paws::EC2::RunInstancesMonitoringEnabled>, NetworkInterfaces => ArrayRef[L<Paws::EC2::InstanceNetworkInterfaceSpecification>], Placement => L<Paws::EC2::Placement>, PrivateIpAddress => Str, RamdiskId => Str, SecurityGroupIds => ArrayRef[Str|Undef], SecurityGroups => ArrayRef[Str|Undef], SubnetId => Str, UserData => Str])
 
 Each argument is described in detail in: L<Paws::EC2::RunInstances>
 
@@ -4771,27 +4916,60 @@ Returns: a L<Paws::EC2::Reservation> instance
   Launches the specified number of instances using an AMI for which you
 have permissions.
 
-When you launch an instance, it enters the C<pending> state. After the
-instance is ready for you, it enters the C<running> state. To check the
-state of your instance, call DescribeInstances.
+You can specify a number of options, or leave the default options. The
+following rules apply:
+
+=over
+
+=item *
+
+[EC2-VPC] If you don't specify a subnet ID, we choose a default subnet
+from your default VPC for you. If you don't have a default VPC, you
+must specify a subnet ID in the request.
+
+=item *
+
+[EC2-Classic] If don't specify an Availability Zone, we choose one for
+you.
+
+=item *
+
+Some instance types must be launched into a VPC. If you do not have a
+default VPC, or if you do not specify a subnet ID, the request fails.
+For more information, see Instance Types Available Only in a VPC.
+
+=item *
+
+[EC2-VPC] All instances have a network interface with a primary private
+IPv4 address. If you don't specify this address, we choose one from the
+IPv4 range of your subnet.
+
+=item *
+
+Not all instance types support IPv6 addresses. For more information,
+see Amazon EC2 Instance Types.
+
+=item *
+
+If you don't specify a security group ID, we use the default security
+group. For more information, see Security Groups.
+
+=item *
+
+If any of the AMIs have a product code attached for which the user has
+not subscribed, the request fails.
+
+=back
 
 To ensure faster instance launches, break up large requests into
-smaller batches. For example, create five separate launch requests for
-100 instances each instead of one launch request for 500 instances.
+smaller batches. For example, create 5 separate launch requests for 100
+instances each instead of 1 launch request for 500 instances.
 
-To tag your instance, ensure that it is C<running> as CreateTags
-requires a resource ID. For more information about tagging, see Tagging
-Your Amazon EC2 Resources.
-
-If you don't specify a security group when launching an instance,
-Amazon EC2 uses the default security group. For more information, see
-Security Groups in the I<Amazon Elastic Compute Cloud User Guide>.
-
-[EC2-VPC only accounts] If you don't specify a subnet in the request,
-we choose a default subnet from your default VPC for you.
-
-[EC2-Classic accounts] If you're launching into EC2-Classic and you
-don't specify an Availability Zone, we choose one for you.
+An instance is ready for you to use when it's in the C<running> state.
+You can check the state of your instance using DescribeInstances. After
+launch, you can apply tags to your running instance (requires a
+resource ID). For more information, see CreateTags and Tagging Your
+Amazon EC2 Resources.
 
 Linux instances have access to the public key of the key pair at boot.
 You can use this key to provide secure access to the instance. Amazon
@@ -4799,21 +4977,9 @@ EC2 public images use this feature to provide secure access without
 passwords. For more information, see Key Pairs in the I<Amazon Elastic
 Compute Cloud User Guide>.
 
-You can provide optional user data when launching an instance. For more
-information, see Instance Metadata in the I<Amazon Elastic Compute
-Cloud User Guide>.
-
-If any of the AMIs have a product code attached for which the user has
-not subscribed, C<RunInstances> fails.
-
-Some instance types can only be launched into a VPC. If you do not have
-a default VPC, or if you do not specify a subnet ID in the request,
-C<RunInstances> fails. For more information, see Instance Types
-Available Only in a VPC.
-
-For more information about troubleshooting, see What To Do If An
-Instance Immediately Terminates, and Troubleshooting Connecting to Your
-Instance in the I<Amazon Elastic Compute Cloud User Guide>.
+For troubleshooting, see What To Do If An Instance Immediately
+Terminates, and Troubleshooting Connecting to Your Instance in the
+I<Amazon Elastic Compute Cloud User Guide>.
 
 
 =head2 RunScheduledInstances(LaunchSpecification => L<Paws::EC2::ScheduledInstancesLaunchSpecification>, ScheduledInstanceId => Str, [ClientToken => Str, DryRun => Bool, InstanceCount => Int])
@@ -4938,6 +5104,15 @@ Terminating Your Instance in the I<Amazon Elastic Compute Cloud User
 Guide>.
 
 
+=head2 UnassignIpv6Addresses(Ipv6Addresses => ArrayRef[Str|Undef], NetworkInterfaceId => Str)
+
+Each argument is described in detail in: L<Paws::EC2::UnassignIpv6Addresses>
+
+Returns: a L<Paws::EC2::UnassignIpv6AddressesResult> instance
+
+  Unassigns one or more IPv6 addresses from a network interface.
+
+
 =head2 UnassignPrivateIpAddresses(NetworkInterfaceId => Str, PrivateIpAddresses => ArrayRef[Str|Undef])
 
 Each argument is described in detail in: L<Paws::EC2::UnassignPrivateIpAddresses>
@@ -4954,9 +5129,9 @@ Each argument is described in detail in: L<Paws::EC2::UnmonitorInstances>
 
 Returns: a L<Paws::EC2::UnmonitorInstancesResult> instance
 
-  Disables monitoring for a running instance. For more information about
-monitoring instances, see Monitoring Your Instances and Volumes in the
-I<Amazon Elastic Compute Cloud User Guide>.
+  Disables detailed monitoring for a running instance. For more
+information, see Monitoring Your Instances and Volumes in the I<Amazon
+Elastic Compute Cloud User Guide>.
 
 
 

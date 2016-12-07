@@ -39,13 +39,13 @@ This class has no description
 
 =head2 Primary => Bool
 
-  Indicates whether the private IP address is the primary private IP
-address. Only one IP address can be designated as primary.
+  Indicates whether the private IPv4 address is the primary private IPv4
+address. Only one IPv4 address can be designated as primary.
 
 
 =head2 B<REQUIRED> PrivateIpAddress => Str
 
-  The private IP addresses.
+  The private IPv4 addresses.
 
 
 

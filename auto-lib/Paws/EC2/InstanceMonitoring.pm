@@ -44,7 +44,7 @@ This class has no description
 
 =head2 Monitoring => L<Paws::EC2::Monitoring>
 
-  The monitoring information.
+  The monitoring for the instance.
 
 
 

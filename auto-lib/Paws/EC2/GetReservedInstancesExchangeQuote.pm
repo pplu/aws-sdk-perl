@@ -46,14 +46,14 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 =head2 B<REQUIRED> ReservedInstanceIds => ArrayRef[Str|Undef]
 
-The ID/s of the Convertible Reserved Instances you want to exchange.
+The IDs of the Convertible Reserved Instances to exchange.
 
 
 
 =head2 TargetConfigurations => ArrayRef[L<Paws::EC2::TargetConfigurationRequest>]
 
-The configuration requirements of the Convertible Reserved Instances
-you want in exchange for your current Convertible Reserved Instances.
+The configuration requirements of the Convertible Reserved Instances to
+exchange for your current Convertible Reserved Instances.
 
 
 

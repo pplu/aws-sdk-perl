@@ -4,6 +4,7 @@ package Paws::EC2::CreateSubnet;
   has AvailabilityZone => (is => 'ro', isa => 'Str');
   has CidrBlock => (is => 'ro', isa => 'Str', required => 1);
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
+  has Ipv6CidrBlock => (is => 'ro', isa => 'Str');
   has VpcId => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -48,7 +49,7 @@ subnet.
 
 =head2 B<REQUIRED> CidrBlock => Str
 
-The network range for the subnet, in CIDR notation. For example,
+The IPv4 network range for the subnet, in CIDR notation. For example,
 C<10.0.0.0/24>.
 
 
@@ -59,6 +60,13 @@ Checks whether you have the required permissions for the action,
 without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
+
+
+
+=head2 Ipv6CidrBlock => Str
+
+The IPv6 network range for the subnet, in CIDR notation. The subnet
+size must use a /64 prefix length.
 
 
 

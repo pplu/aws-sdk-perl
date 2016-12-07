@@ -74,7 +74,7 @@ Cloud User Guide>.
 
 Only valid for Provisioned IOPS SSD volumes. The number of I/O
 operations per second (IOPS) to provision for the volume, with a
-maximum ratio of 30 IOPS/GiB.
+maximum ratio of 50 IOPS/GiB.
 
 Constraint: Range is 100 to 20000 for Provisioned IOPS SSD volumes
 

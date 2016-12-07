@@ -43,8 +43,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 CidrIp => Str
 
-The CIDR IP address range. We recommend that you specify the CIDR range
-in a set of IP permissions instead.
+The CIDR IPv4 address range. We recommend that you specify the CIDR
+range in a set of IP permissions instead.
 
 
 

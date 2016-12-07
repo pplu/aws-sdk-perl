@@ -1,7 +1,9 @@
 package Paws::EC2::Route;
   use Moose;
   has DestinationCidrBlock => (is => 'ro', isa => 'Str', xmlname => 'destinationCidrBlock', traits => ['Unwrapped']);
+  has DestinationIpv6CidrBlock => (is => 'ro', isa => 'Str', xmlname => 'destinationIpv6CidrBlock', traits => ['Unwrapped']);
   has DestinationPrefixListId => (is => 'ro', isa => 'Str', xmlname => 'destinationPrefixListId', traits => ['Unwrapped']);
+  has EgressOnlyInternetGatewayId => (is => 'ro', isa => 'Str', xmlname => 'egressOnlyInternetGatewayId', traits => ['Unwrapped']);
   has GatewayId => (is => 'ro', isa => 'Str', xmlname => 'gatewayId', traits => ['Unwrapped']);
   has InstanceId => (is => 'ro', isa => 'Str', xmlname => 'instanceId', traits => ['Unwrapped']);
   has InstanceOwnerId => (is => 'ro', isa => 'Str', xmlname => 'instanceOwnerId', traits => ['Unwrapped']);
@@ -47,12 +49,22 @@ This class has no description
 
 =head2 DestinationCidrBlock => Str
 
-  The CIDR block used for the destination match.
+  The IPv4 CIDR block used for the destination match.
+
+
+=head2 DestinationIpv6CidrBlock => Str
+
+  The IPv6 CIDR block used for the destination match.
 
 
 =head2 DestinationPrefixListId => Str
 
   The prefix of the AWS service.
+
+
+=head2 EgressOnlyInternetGatewayId => Str
+
+  The ID of the egress-only Internet gateway.
 
 
 =head2 GatewayId => Str

@@ -39,13 +39,13 @@ This class has no description
 
 =head2 Primary => Bool
 
-  Indicates whether this is a primary IP address. Otherwise, this is a
-secondary IP address.
+  Indicates whether this is a primary IPv4 address. Otherwise, this is a
+secondary IPv4 address.
 
 
 =head2 PrivateIpAddress => Str
 
-  The IP address.
+  The IPv4 address.
 
 
 

@@ -107,7 +107,9 @@ Default: C<false>
 
 =head2 NetworkInterfaces => ArrayRef[L<Paws::EC2::InstanceNetworkInterfaceSpecification>]
 
-  One or more network interfaces.
+  One or more network interfaces. If you specify a network interface, you
+must specify subnet IDs and security group IDs using the network
+interface.
 
 
 =head2 Placement => L<Paws::EC2::SpotPlacement>

@@ -44,7 +44,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 CidrIp => Str
 
-The CIDR IP address range. You can't specify this parameter when
+The CIDR IPv4 address range. You can't specify this parameter when
 specifying a source security group.
 
 
@@ -60,8 +60,9 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 =head2 FromPort => Int
 
-The start of port range for the TCP and UDP protocols, or an ICMP type
-number. For the ICMP type number, use C<-1> to specify all ICMP types.
+The start of port range for the TCP and UDP protocols, or an
+ICMP/ICMPv6 type number. For the ICMP/ICMPv6 type number, use C<-1> to
+specify all types.
 
 
 
@@ -87,9 +88,12 @@ single command.
 =head2 IpProtocol => Str
 
 The IP protocol name (C<tcp>, C<udp>, C<icmp>) or number (see Protocol
-Numbers). (VPC only) Use C<-1> to specify all traffic. If you specify
-C<-1>, traffic on all ports is allowed, regardless of any ports you
-specify.
+Numbers). (VPC only) Use C<-1> to specify all protocols. If you specify
+C<-1>, or a protocol number other than C<tcp>, C<udp>, C<icmp>, or
+C<58> (ICMPv6), traffic on all ports is allowed, regardless of any
+ports you specify. For C<tcp>, C<udp>, and C<icmp>, you must specify a
+port range. For protocol C<58> (ICMPv6), you can optionally specify a
+port range; if you don't, traffic for all types and codes is allowed.
 
 
 
@@ -119,9 +123,9 @@ use a set of IP permissions instead.
 
 =head2 ToPort => Int
 
-The end of port range for the TCP and UDP protocols, or an ICMP code
-number. For the ICMP code number, use C<-1> to specify all ICMP codes
-for the ICMP type.
+The end of port range for the TCP and UDP protocols, or an ICMP/ICMPv6
+code number. For the ICMP/ICMPv6 code number, use C<-1> to specify all
+codes.
 
 
 

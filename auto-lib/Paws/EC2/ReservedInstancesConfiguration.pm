@@ -63,7 +63,8 @@ either EC2-Classic or EC2-VPC.
 
 =head2 Scope => Str
 
-  Whether the Reserved Instance is C<standard> or C<convertible>.
+  Whether the Reserved Instance is applied to instances in a region or
+instances in a specific Availability Zone.
 
 
 

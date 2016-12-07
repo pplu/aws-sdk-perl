@@ -104,7 +104,8 @@ supported.
 
 =head2 InstanceTypes => ArrayRef[Str|Undef]
 
-Filters the results by the specified instance types.
+Filters the results by the specified instance types. Note that T2 and
+HS1 instance types are not supported.
 
 
 

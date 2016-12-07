@@ -52,14 +52,29 @@ One or more filters.
 
 =item *
 
-C<cidr> - The CIDR block of the VPC. The CIDR block you specify must
-exactly match the VPC's CIDR block for information to be returned for
-the VPC. Must contain the slash followed by one or two digits (for
+C<cidr> - The IPv4 CIDR block of the VPC. The CIDR block you specify
+must exactly match the VPC's CIDR block for information to be returned
+for the VPC. Must contain the slash followed by one or two digits (for
 example, C</28>).
 
 =item *
 
 C<dhcp-options-id> - The ID of a set of DHCP options.
+
+=item *
+
+C<ipv6-cidr-block-association.ipv6-cidr-block> - An IPv6 CIDR block
+associated with the VPC.
+
+=item *
+
+C<ipv6-cidr-block-association.association-id> - The association ID for
+an IPv6 CIDR block associated with the VPC.
+
+=item *
+
+C<ipv6-cidr-block-association.state> - The state of an IPv6 CIDR block
+associated with the VPC.
 
 =item *
 

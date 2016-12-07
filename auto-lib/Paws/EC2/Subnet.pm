@@ -1,9 +1,11 @@
 package Paws::EC2::Subnet;
   use Moose;
+  has AssignIpv6AddressOnCreation => (is => 'ro', isa => 'Bool', xmlname => 'assignIpv6AddressOnCreation', traits => ['Unwrapped']);
   has AvailabilityZone => (is => 'ro', isa => 'Str', xmlname => 'availabilityZone', traits => ['Unwrapped']);
   has AvailableIpAddressCount => (is => 'ro', isa => 'Int', xmlname => 'availableIpAddressCount', traits => ['Unwrapped']);
   has CidrBlock => (is => 'ro', isa => 'Str', xmlname => 'cidrBlock', traits => ['Unwrapped']);
   has DefaultForAz => (is => 'ro', isa => 'Bool', xmlname => 'defaultForAz', traits => ['Unwrapped']);
+  has Ipv6CidrBlockAssociationSet => (is => 'ro', isa => 'ArrayRef[Paws::EC2::SubnetIpv6CidrBlockAssociation]', xmlname => 'ipv6CidrBlockAssociationSet', traits => ['Unwrapped']);
   has MapPublicIpOnLaunch => (is => 'ro', isa => 'Bool', xmlname => 'mapPublicIpOnLaunch', traits => ['Unwrapped']);
   has State => (is => 'ro', isa => 'Str', xmlname => 'state', traits => ['Unwrapped']);
   has SubnetId => (is => 'ro', isa => 'Str', xmlname => 'subnetId', traits => ['Unwrapped']);
@@ -28,20 +30,26 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::EC2::Subnet object:
 
-  $service_obj->Method(Att1 => { AvailabilityZone => $value, ..., VpcId => $value  });
+  $service_obj->Method(Att1 => { AssignIpv6AddressOnCreation => $value, ..., VpcId => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Subnet object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->AvailabilityZone
+  $result->Att1->AssignIpv6AddressOnCreation
 
 =head1 DESCRIPTION
 
 This class has no description
 
 =head1 ATTRIBUTES
+
+
+=head2 AssignIpv6AddressOnCreation => Bool
+
+  Indicates whether a network interface created in this subnet (including
+a network interface created by RunInstances) receives an IPv6 address.
 
 
 =head2 AvailabilityZone => Str
@@ -51,13 +59,14 @@ This class has no description
 
 =head2 AvailableIpAddressCount => Int
 
-  The number of unused IP addresses in the subnet. Note that the IP
-addresses for any stopped instances are considered unavailable.
+  The number of unused private IPv4 addresses in the subnet. Note that
+the IPv4 addresses for any stopped instances are considered
+unavailable.
 
 
 =head2 CidrBlock => Str
 
-  The CIDR block assigned to the subnet.
+  The IPv4 CIDR block assigned to the subnet.
 
 
 =head2 DefaultForAz => Bool
@@ -65,10 +74,15 @@ addresses for any stopped instances are considered unavailable.
   Indicates whether this is the default subnet for the Availability Zone.
 
 
+=head2 Ipv6CidrBlockAssociationSet => ArrayRef[L<Paws::EC2::SubnetIpv6CidrBlockAssociation>]
+
+  Information about the IPv6 CIDR blocks associated with the subnet.
+
+
 =head2 MapPublicIpOnLaunch => Bool
 
-  Indicates whether instances launched in this subnet receive a public IP
-address.
+  Indicates whether instances launched in this subnet receive a public
+IPv4 address.
 
 
 =head2 State => Str

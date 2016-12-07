@@ -5,6 +5,8 @@ package Paws::EC2::ScheduledInstancesNetworkInterface;
   has Description => (is => 'ro', isa => 'Str');
   has DeviceIndex => (is => 'ro', isa => 'Int');
   has Groups => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'Group', traits => ['Unwrapped']);
+  has Ipv6AddressCount => (is => 'ro', isa => 'Int');
+  has Ipv6Addresses => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ScheduledInstancesIpv6Address]', xmlname => 'Ipv6Address', traits => ['Unwrapped']);
   has NetworkInterfaceId => (is => 'ro', isa => 'Str');
   has PrivateIpAddress => (is => 'ro', isa => 'Str');
   has PrivateIpAddressConfigs => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ScheduledInstancesPrivateIpAddressConfig]', xmlname => 'PrivateIpAddressConfig', traits => ['Unwrapped']);
@@ -47,8 +49,8 @@ This class has no description
 
 =head2 AssociatePublicIpAddress => Bool
 
-  Indicates whether to assign a public IP address to instances launched
-in a VPC. The public IP address can only be assigned to a network
+  Indicates whether to assign a public IPv4 address to instances launched
+in a VPC. The public IPv4 address can only be assigned to a network
 interface for eth0, and can only be assigned to a new network
 interface, not an existing one. You cannot specify more than one
 network interface in the request. If launching into a default subnet,
@@ -76,6 +78,17 @@ terminated.
   The IDs of one or more security groups.
 
 
+=head2 Ipv6AddressCount => Int
+
+  The number of IPv6 addresses to assign to the network interface. The
+IPv6 addresses are automatically selected from the subnet range.
+
+
+=head2 Ipv6Addresses => ArrayRef[L<Paws::EC2::ScheduledInstancesIpv6Address>]
+
+  One or more specific IPv6 addresses from the subnet range.
+
+
 =head2 NetworkInterfaceId => Str
 
   The ID of the network interface.
@@ -83,17 +96,17 @@ terminated.
 
 =head2 PrivateIpAddress => Str
 
-  The IP address of the network interface within the subnet.
+  The IPv4 address of the network interface within the subnet.
 
 
 =head2 PrivateIpAddressConfigs => ArrayRef[L<Paws::EC2::ScheduledInstancesPrivateIpAddressConfig>]
 
-  The private IP addresses.
+  The private IPv4 addresses.
 
 
 =head2 SecondaryPrivateIpAddressCount => Int
 
-  The number of secondary private IP addresses.
+  The number of secondary private IPv4 addresses.
 
 
 =head2 SubnetId => Str

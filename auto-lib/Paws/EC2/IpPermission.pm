@@ -3,6 +3,7 @@ package Paws::EC2::IpPermission;
   has FromPort => (is => 'ro', isa => 'Int', xmlname => 'fromPort', traits => ['Unwrapped']);
   has IpProtocol => (is => 'ro', isa => 'Str', xmlname => 'ipProtocol', traits => ['Unwrapped']);
   has IpRanges => (is => 'ro', isa => 'ArrayRef[Paws::EC2::IpRange]', xmlname => 'ipRanges', traits => ['Unwrapped']);
+  has Ipv6Ranges => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Ipv6Range]', xmlname => 'ipv6Ranges', traits => ['Unwrapped']);
   has PrefixListIds => (is => 'ro', isa => 'ArrayRef[Paws::EC2::PrefixListId]', xmlname => 'prefixListIds', traits => ['Unwrapped']);
   has ToPort => (is => 'ro', isa => 'Int', xmlname => 'toPort', traits => ['Unwrapped']);
   has UserIdGroupPairs => (is => 'ro', isa => 'ArrayRef[Paws::EC2::UserIdGroupPair]', xmlname => 'groups', traits => ['Unwrapped']);
@@ -43,22 +44,33 @@ This class has no description
 
 =head2 FromPort => Int
 
-  The start of port range for the TCP and UDP protocols, or an ICMP type
-number. A value of C<-1> indicates all ICMP types.
+  The start of port range for the TCP and UDP protocols, or an
+ICMP/ICMPv6 type number. A value of C<-1> indicates all ICMP/ICMPv6
+types.
 
 
 =head2 IpProtocol => Str
 
-  The IP protocol name (for C<tcp>, C<udp>, and C<icmp>) or number (see
-Protocol Numbers).
+  The IP protocol name (C<tcp>, C<udp>, C<icmp>) or number (see Protocol
+Numbers).
 
-[EC2-VPC only] When you authorize or revoke security group rules, you
-can use C<-1> to specify all.
+[EC2-VPC only] Use C<-1> to specify all protocols. When authorizing
+security group rules, specifying C<-1> or a protocol number other than
+C<tcp>, C<udp>, C<icmp>, or C<58> (ICMPv6) allows traffic on all ports,
+regardless of any port range you specify. For C<tcp>, C<udp>, and
+C<icmp>, you must specify a port range. For C<58> (ICMPv6), you can
+optionally specify a port range; if you don't, traffic for all types
+and codes is allowed when authorizing rules.
 
 
 =head2 IpRanges => ArrayRef[L<Paws::EC2::IpRange>]
 
-  One or more IP ranges.
+  One or more IPv4 ranges.
+
+
+=head2 Ipv6Ranges => ArrayRef[L<Paws::EC2::Ipv6Range>]
+
+  [EC2-VPC only] One or more IPv6 ranges.
 
 
 =head2 PrefixListIds => ArrayRef[L<Paws::EC2::PrefixListId>]
@@ -72,8 +84,9 @@ associated with the security group.
 
 =head2 ToPort => Int
 
-  The end of port range for the TCP and UDP protocols, or an ICMP code. A
-value of C<-1> indicates all ICMP codes for the specified ICMP type.
+  The end of port range for the TCP and UDP protocols, or an ICMP/ICMPv6
+code. A value of C<-1> indicates all ICMP/ICMPv6 codes for the
+specified ICMP type.
 
 
 =head2 UserIdGroupPairs => ArrayRef[L<Paws::EC2::UserIdGroupPair>]

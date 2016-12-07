@@ -3,6 +3,7 @@ package Paws::EC2::NetworkAclEntry;
   has CidrBlock => (is => 'ro', isa => 'Str', xmlname => 'cidrBlock', traits => ['Unwrapped']);
   has Egress => (is => 'ro', isa => 'Bool', xmlname => 'egress', traits => ['Unwrapped']);
   has IcmpTypeCode => (is => 'ro', isa => 'Paws::EC2::IcmpTypeCode', xmlname => 'icmpTypeCode', traits => ['Unwrapped']);
+  has Ipv6CidrBlock => (is => 'ro', isa => 'Str', xmlname => 'ipv6CidrBlock', traits => ['Unwrapped']);
   has PortRange => (is => 'ro', isa => 'Paws::EC2::PortRange', xmlname => 'portRange', traits => ['Unwrapped']);
   has Protocol => (is => 'ro', isa => 'Str', xmlname => 'protocol', traits => ['Unwrapped']);
   has RuleAction => (is => 'ro', isa => 'Str', xmlname => 'ruleAction', traits => ['Unwrapped']);
@@ -44,7 +45,7 @@ This class has no description
 
 =head2 CidrBlock => Str
 
-  The network range to allow or deny, in CIDR notation.
+  The IPv4 network range to allow or deny, in CIDR notation.
 
 
 =head2 Egress => Bool
@@ -56,6 +57,11 @@ leaving the subnet).
 =head2 IcmpTypeCode => L<Paws::EC2::IcmpTypeCode>
 
   ICMP protocol: The ICMP type and code.
+
+
+=head2 Ipv6CidrBlock => Str
+
+  The IPv6 network range to allow or deny, in CIDR notation.
 
 
 =head2 PortRange => L<Paws::EC2::PortRange>

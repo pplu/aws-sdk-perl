@@ -1,6 +1,7 @@
 
 package Paws::EC2::CreateVpc;
   use Moose;
+  has AmazonProvidedIpv6CidrBlock => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'amazonProvidedIpv6CidrBlock' );
   has CidrBlock => (is => 'ro', isa => 'Str', required => 1);
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has InstanceTenancy => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'instanceTenancy' );
@@ -35,9 +36,17 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
+=head2 AmazonProvidedIpv6CidrBlock => Bool
+
+Requests an Amazon-provided IPv6 CIDR block with a /56 prefix length
+for the VPC. You cannot specify the range of IP addresses, or the size
+of the CIDR block.
+
+
+
 =head2 B<REQUIRED> CidrBlock => Str
 
-The network range for the VPC, in CIDR notation. For example,
+The IPv4 network range for the VPC, in CIDR notation. For example,
 C<10.0.0.0/16>.
 
 

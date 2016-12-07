@@ -72,7 +72,8 @@ C<group-name> - The name of the security group.
 
 =item *
 
-C<ip-permission.cidr> - A CIDR range that has been granted permission.
+C<ip-permission.cidr> - An IPv4 CIDR range that has been granted
+permission in a security group rule.
 
 =item *
 
@@ -88,6 +89,11 @@ granted permission.
 
 C<ip-permission.group-name> - The name of a security group that has
 been granted permission.
+
+=item *
+
+C<ip-permission.ipv6-cidr> - An IPv6 CIDR range that has been granted
+permission in a security group rule.
 
 =item *
 

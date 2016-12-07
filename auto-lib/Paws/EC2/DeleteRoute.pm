@@ -1,7 +1,8 @@
 
 package Paws::EC2::DeleteRoute;
   use Moose;
-  has DestinationCidrBlock => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'destinationCidrBlock' , required => 1);
+  has DestinationCidrBlock => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'destinationCidrBlock' );
+  has DestinationIpv6CidrBlock => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'destinationIpv6CidrBlock' );
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has RouteTableId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'routeTableId' , required => 1);
 
@@ -35,10 +36,17 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> DestinationCidrBlock => Str
+=head2 DestinationCidrBlock => Str
 
-The CIDR range for the route. The value you specify must match the CIDR
-for the route exactly.
+The IPv4 CIDR range for the route. The value you specify must match the
+CIDR for the route exactly.
+
+
+
+=head2 DestinationIpv6CidrBlock => Str
+
+The IPv6 CIDR range for the route. The value you specify must match the
+CIDR for the route exactly.
 
 
 

@@ -47,7 +47,8 @@ This class has no description
 
 =head2 InstanceType => Str
 
-  The instance type.
+  The instance type. Note that T2 and HS1 instance types are not
+supported.
 
 
 =head2 ProductDescription => Str

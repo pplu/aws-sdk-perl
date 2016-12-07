@@ -1,8 +1,10 @@
 
 package Paws::EC2::ReplaceRoute;
   use Moose;
-  has DestinationCidrBlock => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'destinationCidrBlock' , required => 1);
+  has DestinationCidrBlock => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'destinationCidrBlock' );
+  has DestinationIpv6CidrBlock => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'destinationIpv6CidrBlock' );
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
+  has EgressOnlyInternetGatewayId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'egressOnlyInternetGatewayId' );
   has GatewayId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'gatewayId' );
   has InstanceId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'instanceId' );
   has NatGatewayId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'natGatewayId' );
@@ -40,10 +42,17 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> DestinationCidrBlock => Str
+=head2 DestinationCidrBlock => Str
 
-The CIDR address block used for the destination match. The value you
-provide must match the CIDR of an existing route in the table.
+The IPv4 CIDR address block used for the destination match. The value
+you provide must match the CIDR of an existing route in the table.
+
+
+
+=head2 DestinationIpv6CidrBlock => Str
+
+The IPv6 CIDR address block used for the destination match. The value
+you provide must match the CIDR of an existing route in the table.
 
 
 
@@ -53,6 +62,12 @@ Checks whether you have the required permissions for the action,
 without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
+
+
+
+=head2 EgressOnlyInternetGatewayId => Str
+
+[IPv6 traffic only] The ID of an egress-only Internet gateway.
 
 
 
@@ -70,7 +85,7 @@ The ID of a NAT instance in your VPC.
 
 =head2 NatGatewayId => Str
 
-The ID of a NAT gateway.
+[IPv4 traffic only] The ID of a NAT gateway.
 
 
 
