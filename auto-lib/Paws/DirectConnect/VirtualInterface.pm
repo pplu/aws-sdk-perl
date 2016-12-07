@@ -1,9 +1,11 @@
 
 package Paws::DirectConnect::VirtualInterface;
   use Moose;
+  has AddressFamily => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'addressFamily' );
   has AmazonAddress => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'amazonAddress' );
   has Asn => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => 'asn' );
   has AuthKey => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'authKey' );
+  has BgpPeers => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::BGPPeer]', traits => ['Unwrapped'], xmlname => 'bgpPeers' );
   has ConnectionId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'connectionId' );
   has CustomerAddress => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'customerAddress' );
   has CustomerRouterConfig => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'customerRouterConfig' );
@@ -28,6 +30,11 @@ Paws::DirectConnect::VirtualInterface
 =head1 ATTRIBUTES
 
 
+=head2 AddressFamily => Str
+
+
+
+Valid values are: C<"ipv4">, C<"ipv6">
 =head2 AmazonAddress => Str
 
 
@@ -39,6 +46,11 @@ Paws::DirectConnect::VirtualInterface
 
 
 =head2 AuthKey => Str
+
+
+
+
+=head2 BgpPeers => ArrayRef[L<Paws::DirectConnect::BGPPeer>]
 
 
 

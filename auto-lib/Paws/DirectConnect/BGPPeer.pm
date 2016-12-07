@@ -1,20 +1,19 @@
-package Paws::DirectConnect::NewPublicVirtualInterfaceAllocation;
+package Paws::DirectConnect::BGPPeer;
   use Moose;
   has AddressFamily => (is => 'ro', isa => 'Str', xmlname => 'addressFamily', request_name => 'addressFamily', traits => ['Unwrapped','NameInRequest']);
   has AmazonAddress => (is => 'ro', isa => 'Str', xmlname => 'amazonAddress', request_name => 'amazonAddress', traits => ['Unwrapped','NameInRequest']);
-  has Asn => (is => 'ro', isa => 'Int', xmlname => 'asn', request_name => 'asn', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has Asn => (is => 'ro', isa => 'Int', xmlname => 'asn', request_name => 'asn', traits => ['Unwrapped','NameInRequest']);
   has AuthKey => (is => 'ro', isa => 'Str', xmlname => 'authKey', request_name => 'authKey', traits => ['Unwrapped','NameInRequest']);
+  has BgpPeerState => (is => 'ro', isa => 'Str', xmlname => 'bgpPeerState', request_name => 'bgpPeerState', traits => ['Unwrapped','NameInRequest']);
+  has BgpStatus => (is => 'ro', isa => 'Str', xmlname => 'bgpStatus', request_name => 'bgpStatus', traits => ['Unwrapped','NameInRequest']);
   has CustomerAddress => (is => 'ro', isa => 'Str', xmlname => 'customerAddress', request_name => 'customerAddress', traits => ['Unwrapped','NameInRequest']);
-  has RouteFilterPrefixes => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::RouteFilterPrefix]', xmlname => 'routeFilterPrefixes', request_name => 'routeFilterPrefixes', traits => ['Unwrapped','NameInRequest']);
-  has VirtualInterfaceName => (is => 'ro', isa => 'Str', xmlname => 'virtualInterfaceName', request_name => 'virtualInterfaceName', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has Vlan => (is => 'ro', isa => 'Int', xmlname => 'vlan', request_name => 'vlan', traits => ['Unwrapped','NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::DirectConnect::NewPublicVirtualInterfaceAllocation
+Paws::DirectConnect::BGPPeer
 
 =head1 USAGE
 
@@ -25,21 +24,20 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::DirectConnect::NewPublicVirtualInterfaceAllocation object:
+As an example, if Att1 is expected to be a Paws::DirectConnect::BGPPeer object:
 
-  $service_obj->Method(Att1 => { AddressFamily => $value, ..., Vlan => $value  });
+  $service_obj->Method(Att1 => { AddressFamily => $value, ..., CustomerAddress => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::DirectConnect::NewPublicVirtualInterfaceAllocation object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::DirectConnect::BGPPeer object:
 
   $result = $service_obj->Method(...);
   $result->Att1->AddressFamily
 
 =head1 DESCRIPTION
 
-A structure containing information about a public virtual interface
-that will be provisioned on a connection.
+A structure containing information about a BGP peer.
 
 =head1 ATTRIBUTES
 
@@ -54,7 +52,7 @@ that will be provisioned on a connection.
   
 
 
-=head2 B<REQUIRED> Asn => Int
+=head2 Asn => Int
 
   
 
@@ -64,22 +62,17 @@ that will be provisioned on a connection.
   
 
 
+=head2 BgpPeerState => Str
+
+  
+
+
+=head2 BgpStatus => Str
+
+  
+
+
 =head2 CustomerAddress => Str
-
-  
-
-
-=head2 RouteFilterPrefixes => ArrayRef[L<Paws::DirectConnect::RouteFilterPrefix>]
-
-  
-
-
-=head2 B<REQUIRED> VirtualInterfaceName => Str
-
-  
-
-
-=head2 B<REQUIRED> Vlan => Int
 
   
 

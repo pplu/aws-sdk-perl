@@ -1,5 +1,6 @@
 package Paws::DirectConnect::NewPrivateVirtualInterfaceAllocation;
   use Moose;
+  has AddressFamily => (is => 'ro', isa => 'Str', xmlname => 'addressFamily', request_name => 'addressFamily', traits => ['Unwrapped','NameInRequest']);
   has AmazonAddress => (is => 'ro', isa => 'Str', xmlname => 'amazonAddress', request_name => 'amazonAddress', traits => ['Unwrapped','NameInRequest']);
   has Asn => (is => 'ro', isa => 'Int', xmlname => 'asn', request_name => 'asn', traits => ['Unwrapped','NameInRequest'], required => 1);
   has AuthKey => (is => 'ro', isa => 'Str', xmlname => 'authKey', request_name => 'authKey', traits => ['Unwrapped','NameInRequest']);
@@ -25,14 +26,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::DirectConnect::NewPrivateVirtualInterfaceAllocation object:
 
-  $service_obj->Method(Att1 => { AmazonAddress => $value, ..., Vlan => $value  });
+  $service_obj->Method(Att1 => { AddressFamily => $value, ..., Vlan => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::DirectConnect::NewPrivateVirtualInterfaceAllocation object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->AmazonAddress
+  $result->Att1->AddressFamily
 
 =head1 DESCRIPTION
 
@@ -40,6 +41,11 @@ A structure containing information about a private virtual interface
 that will be provisioned on a connection.
 
 =head1 ATTRIBUTES
+
+
+=head2 AddressFamily => Str
+
+  
 
 
 =head2 AmazonAddress => Str
