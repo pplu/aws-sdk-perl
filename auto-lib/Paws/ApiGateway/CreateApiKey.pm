@@ -1,6 +1,7 @@
 
 package Paws::ApiGateway::CreateApiKey;
   use Moose;
+  has CustomerId => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has Enabled => (is => 'ro', isa => 'Bool');
   has GenerateDistinctId => (is => 'ro', isa => 'Bool');
@@ -38,6 +39,13 @@ As an example:
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 
 =head1 ATTRIBUTES
+
+
+=head2 CustomerId => Str
+
+An AWS Marketplace customer identifier , when integrating with the AWS
+SaaS Marketplace.
+
 
 
 =head2 Description => Str

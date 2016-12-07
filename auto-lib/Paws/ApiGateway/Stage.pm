@@ -8,6 +8,7 @@ package Paws::ApiGateway::Stage;
   has CreatedDate => (is => 'ro', isa => 'Str');
   has DeploymentId => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
+  has DocumentationVersion => (is => 'ro', isa => 'Str');
   has LastUpdatedDate => (is => 'ro', isa => 'Str');
   has MethodSettings => (is => 'ro', isa => 'Paws::ApiGateway::MapOfMethodSettings');
   has StageName => (is => 'ro', isa => 'Str');
@@ -58,6 +59,11 @@ The identifier of the Deployment that the stage points to.
 =head2 Description => Str
 
 The stage's description.
+
+
+=head2 DocumentationVersion => Str
+
+The version of the associated API documentation.
 
 
 =head2 LastUpdatedDate => Str

@@ -33,6 +33,16 @@ package Paws::ApiGateway;
     my $call_object = $self->new_with_coercions('Paws::ApiGateway::CreateDeployment', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateDocumentationPart {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ApiGateway::CreateDocumentationPart', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateDocumentationVersion {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ApiGateway::CreateDocumentationVersion', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateDomainName {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ApiGateway::CreateDomainName', @_);
@@ -91,6 +101,16 @@ package Paws::ApiGateway;
   sub DeleteDeployment {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ApiGateway::DeleteDeployment', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteDocumentationPart {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ApiGateway::DeleteDocumentationPart', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteDocumentationVersion {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ApiGateway::DeleteDocumentationVersion', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteDomainName {
@@ -218,6 +238,26 @@ package Paws::ApiGateway;
     my $call_object = $self->new_with_coercions('Paws::ApiGateway::GetDeployments', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetDocumentationPart {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ApiGateway::GetDocumentationPart', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetDocumentationParts {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ApiGateway::GetDocumentationParts', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetDocumentationVersion {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ApiGateway::GetDocumentationVersion', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetDocumentationVersions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ApiGateway::GetDocumentationVersions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetDomainName {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ApiGateway::GetDomainName', @_);
@@ -333,6 +373,11 @@ package Paws::ApiGateway;
     my $call_object = $self->new_with_coercions('Paws::ApiGateway::ImportApiKeys', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ImportDocumentationParts {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ApiGateway::ImportDocumentationParts', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ImportRestApi {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ApiGateway::ImportRestApi', @_);
@@ -401,6 +446,16 @@ package Paws::ApiGateway;
   sub UpdateDeployment {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ApiGateway::UpdateDeployment', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateDocumentationPart {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ApiGateway::UpdateDocumentationPart', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateDocumentationVersion {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ApiGateway::UpdateDocumentationVersion', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateDomainName {
@@ -629,7 +684,7 @@ package Paws::ApiGateway;
   }
 
 
-  sub operations { qw/CreateApiKey CreateAuthorizer CreateBasePathMapping CreateDeployment CreateDomainName CreateModel CreateResource CreateRestApi CreateStage CreateUsagePlan CreateUsagePlanKey DeleteApiKey DeleteAuthorizer DeleteBasePathMapping DeleteClientCertificate DeleteDeployment DeleteDomainName DeleteIntegration DeleteIntegrationResponse DeleteMethod DeleteMethodResponse DeleteModel DeleteResource DeleteRestApi DeleteStage DeleteUsagePlan DeleteUsagePlanKey FlushStageAuthorizersCache FlushStageCache GenerateClientCertificate GetAccount GetApiKey GetApiKeys GetAuthorizer GetAuthorizers GetBasePathMapping GetBasePathMappings GetClientCertificate GetClientCertificates GetDeployment GetDeployments GetDomainName GetDomainNames GetExport GetIntegration GetIntegrationResponse GetMethod GetMethodResponse GetModel GetModels GetModelTemplate GetResource GetResources GetRestApi GetRestApis GetSdk GetStage GetStages GetUsage GetUsagePlan GetUsagePlanKey GetUsagePlanKeys GetUsagePlans ImportApiKeys ImportRestApi PutIntegration PutIntegrationResponse PutMethod PutMethodResponse PutRestApi TestInvokeAuthorizer TestInvokeMethod UpdateAccount UpdateApiKey UpdateAuthorizer UpdateBasePathMapping UpdateClientCertificate UpdateDeployment UpdateDomainName UpdateIntegration UpdateIntegrationResponse UpdateMethod UpdateMethodResponse UpdateModel UpdateResource UpdateRestApi UpdateStage UpdateUsage UpdateUsagePlan / }
+  sub operations { qw/CreateApiKey CreateAuthorizer CreateBasePathMapping CreateDeployment CreateDocumentationPart CreateDocumentationVersion CreateDomainName CreateModel CreateResource CreateRestApi CreateStage CreateUsagePlan CreateUsagePlanKey DeleteApiKey DeleteAuthorizer DeleteBasePathMapping DeleteClientCertificate DeleteDeployment DeleteDocumentationPart DeleteDocumentationVersion DeleteDomainName DeleteIntegration DeleteIntegrationResponse DeleteMethod DeleteMethodResponse DeleteModel DeleteResource DeleteRestApi DeleteStage DeleteUsagePlan DeleteUsagePlanKey FlushStageAuthorizersCache FlushStageCache GenerateClientCertificate GetAccount GetApiKey GetApiKeys GetAuthorizer GetAuthorizers GetBasePathMapping GetBasePathMappings GetClientCertificate GetClientCertificates GetDeployment GetDeployments GetDocumentationPart GetDocumentationParts GetDocumentationVersion GetDocumentationVersions GetDomainName GetDomainNames GetExport GetIntegration GetIntegrationResponse GetMethod GetMethodResponse GetModel GetModels GetModelTemplate GetResource GetResources GetRestApi GetRestApis GetSdk GetStage GetStages GetUsage GetUsagePlan GetUsagePlanKey GetUsagePlanKeys GetUsagePlans ImportApiKeys ImportDocumentationParts ImportRestApi PutIntegration PutIntegrationResponse PutMethod PutMethodResponse PutRestApi TestInvokeAuthorizer TestInvokeMethod UpdateAccount UpdateApiKey UpdateAuthorizer UpdateBasePathMapping UpdateClientCertificate UpdateDeployment UpdateDocumentationPart UpdateDocumentationVersion UpdateDomainName UpdateIntegration UpdateIntegrationResponse UpdateMethod UpdateMethodResponse UpdateModel UpdateResource UpdateRestApi UpdateStage UpdateUsage UpdateUsagePlan / }
 
 1;
 
@@ -667,7 +722,7 @@ web services that are hosted outside of AWS.
 
 =head1 METHODS
 
-=head2 CreateApiKey([Description => Str, Enabled => Bool, GenerateDistinctId => Bool, Name => Str, StageKeys => ArrayRef[L<Paws::ApiGateway::StageKey>], Value => Str])
+=head2 CreateApiKey([CustomerId => Str, Description => Str, Enabled => Bool, GenerateDistinctId => Bool, Name => Str, StageKeys => ArrayRef[L<Paws::ApiGateway::StageKey>], Value => Str])
 
 Each argument is described in detail in: L<Paws::ApiGateway::CreateApiKey>
 
@@ -708,6 +763,24 @@ Returns: a L<Paws::ApiGateway::Deployment> instance
 over the internet.
 
 
+=head2 CreateDocumentationPart(Location => L<Paws::ApiGateway::DocumentationPartLocation>, Properties => Str, RestApiId => Str)
+
+Each argument is described in detail in: L<Paws::ApiGateway::CreateDocumentationPart>
+
+Returns: a L<Paws::ApiGateway::DocumentationPart> instance
+
+  
+
+
+=head2 CreateDocumentationVersion(DocumentationVersion => Str, RestApiId => Str, [Description => Str, StageName => Str])
+
+Each argument is described in detail in: L<Paws::ApiGateway::CreateDocumentationVersion>
+
+Returns: a L<Paws::ApiGateway::DocumentationVersion> instance
+
+  
+
+
 =head2 CreateDomainName(CertificateBody => Str, CertificateChain => Str, CertificateName => Str, CertificatePrivateKey => Str, DomainName => Str)
 
 Each argument is described in detail in: L<Paws::ApiGateway::CreateDomainName>
@@ -735,7 +808,7 @@ Returns: a L<Paws::ApiGateway::Resource> instance
   Creates a Resource resource.
 
 
-=head2 CreateRestApi(Name => Str, [BinaryMediaTypes => ArrayRef[Str|Undef], CloneFrom => Str, Description => Str])
+=head2 CreateRestApi(Name => Str, [BinaryMediaTypes => ArrayRef[Str|Undef], CloneFrom => Str, Description => Str, Version => Str])
 
 Each argument is described in detail in: L<Paws::ApiGateway::CreateRestApi>
 
@@ -744,7 +817,7 @@ Returns: a L<Paws::ApiGateway::RestApi> instance
   Creates a new RestApi resource.
 
 
-=head2 CreateStage(DeploymentId => Str, RestApiId => Str, StageName => Str, [CacheClusterEnabled => Bool, CacheClusterSize => Str, Description => Str, Variables => L<Paws::ApiGateway::MapOfStringToString>])
+=head2 CreateStage(DeploymentId => Str, RestApiId => Str, StageName => Str, [CacheClusterEnabled => Bool, CacheClusterSize => Str, Description => Str, DocumentationVersion => Str, Variables => L<Paws::ApiGateway::MapOfStringToString>])
 
 Each argument is described in detail in: L<Paws::ApiGateway::CreateStage>
 
@@ -820,6 +893,24 @@ Returns: nothing
 
   Deletes a Deployment resource. Deleting a deployment will only succeed
 if there are no Stage resources associated with it.
+
+
+=head2 DeleteDocumentationPart(DocumentationPartId => Str, RestApiId => Str)
+
+Each argument is described in detail in: L<Paws::ApiGateway::DeleteDocumentationPart>
+
+Returns: nothing
+
+  
+
+
+=head2 DeleteDocumentationVersion(DocumentationVersion => Str, RestApiId => Str)
+
+Each argument is described in detail in: L<Paws::ApiGateway::DeleteDocumentationVersion>
+
+Returns: nothing
+
+  
 
 
 =head2 DeleteDomainName(DomainName => Str)
@@ -1052,6 +1143,42 @@ Returns: a L<Paws::ApiGateway::Deployments> instance
   Gets information about a Deployments collection.
 
 
+=head2 GetDocumentationPart(DocumentationPartId => Str, RestApiId => Str)
+
+Each argument is described in detail in: L<Paws::ApiGateway::GetDocumentationPart>
+
+Returns: a L<Paws::ApiGateway::DocumentationPart> instance
+
+  
+
+
+=head2 GetDocumentationParts(RestApiId => Str, [Limit => Int, NameQuery => Str, Path => Str, Position => Str, Type => Str])
+
+Each argument is described in detail in: L<Paws::ApiGateway::GetDocumentationParts>
+
+Returns: a L<Paws::ApiGateway::DocumentationParts> instance
+
+  
+
+
+=head2 GetDocumentationVersion(DocumentationVersion => Str, RestApiId => Str)
+
+Each argument is described in detail in: L<Paws::ApiGateway::GetDocumentationVersion>
+
+Returns: a L<Paws::ApiGateway::DocumentationVersion> instance
+
+  
+
+
+=head2 GetDocumentationVersions(RestApiId => Str, [Limit => Int, Position => Str])
+
+Each argument is described in detail in: L<Paws::ApiGateway::GetDocumentationVersions>
+
+Returns: a L<Paws::ApiGateway::DocumentationVersions> instance
+
+  
+
+
 =head2 GetDomainName(DomainName => Str)
 
 Each argument is described in detail in: L<Paws::ApiGateway::GetDomainName>
@@ -1262,6 +1389,15 @@ Returns: a L<Paws::ApiGateway::ApiKeyIds> instance
   Import API keys from an external source, such as a CSV-formatted file.
 
 
+=head2 ImportDocumentationParts(Body => Str, RestApiId => Str, [FailOnWarnings => Bool, Mode => Str])
+
+Each argument is described in detail in: L<Paws::ApiGateway::ImportDocumentationParts>
+
+Returns: a L<Paws::ApiGateway::DocumentationPartIds> instance
+
+  
+
+
 =head2 ImportRestApi(Body => Str, [FailOnWarnings => Bool, Parameters => L<Paws::ApiGateway::MapOfStringToString>])
 
 Each argument is described in detail in: L<Paws::ApiGateway::ImportRestApi>
@@ -1396,6 +1532,24 @@ Each argument is described in detail in: L<Paws::ApiGateway::UpdateDeployment>
 Returns: a L<Paws::ApiGateway::Deployment> instance
 
   Changes information about a Deployment resource.
+
+
+=head2 UpdateDocumentationPart(DocumentationPartId => Str, RestApiId => Str, [PatchOperations => ArrayRef[L<Paws::ApiGateway::PatchOperation>]])
+
+Each argument is described in detail in: L<Paws::ApiGateway::UpdateDocumentationPart>
+
+Returns: a L<Paws::ApiGateway::DocumentationPart> instance
+
+  
+
+
+=head2 UpdateDocumentationVersion(DocumentationVersion => Str, RestApiId => Str, [PatchOperations => ArrayRef[L<Paws::ApiGateway::PatchOperation>]])
+
+Each argument is described in detail in: L<Paws::ApiGateway::UpdateDocumentationVersion>
+
+Returns: a L<Paws::ApiGateway::DocumentationVersion> instance
+
+  
 
 
 =head2 UpdateDomainName(DomainName => Str, [PatchOperations => ArrayRef[L<Paws::ApiGateway::PatchOperation>]])

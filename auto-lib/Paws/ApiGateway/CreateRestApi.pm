@@ -5,6 +5,7 @@ package Paws::ApiGateway::CreateRestApi;
   has CloneFrom => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str', required => 1);
+  has Version => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -60,6 +61,12 @@ The description of the RestApi.
 =head2 B<REQUIRED> Name => Str
 
 The name of the RestApi.
+
+
+
+=head2 Version => Str
+
+A version identifier for the API.
 
 
 

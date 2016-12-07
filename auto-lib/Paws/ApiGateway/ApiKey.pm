@@ -2,6 +2,7 @@
 package Paws::ApiGateway::ApiKey;
   use Moose;
   has CreatedDate => (is => 'ro', isa => 'Str');
+  has CustomerId => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has Enabled => (is => 'ro', isa => 'Bool');
   has Id => (is => 'ro', isa => 'Str');
@@ -25,6 +26,12 @@ Paws::ApiGateway::ApiKey
 =head2 CreatedDate => Str
 
 The date when the API Key was created, in ISO 8601 format.
+
+
+=head2 CustomerId => Str
+
+An AWS Marketplace customer identifier , when integrating with the AWS
+SaaS Marketplace.
 
 
 =head2 Description => Str

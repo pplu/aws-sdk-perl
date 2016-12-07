@@ -41,7 +41,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 CustomerId => Str
 
-
+The identifier of a customer in AWS Marketplace or an external system,
+such as a developer portal.
 
 
 

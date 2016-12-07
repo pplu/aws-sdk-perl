@@ -6,6 +6,7 @@ package Paws::ApiGateway::RestApi;
   has Description => (is => 'ro', isa => 'Str');
   has Id => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
+  has Version => (is => 'ro', isa => 'Str');
   has Warnings => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
   has _request_id => (is => 'ro', isa => 'Str');
@@ -45,6 +46,11 @@ in Amazon API Gateway.
 =head2 Name => Str
 
 The API's name.
+
+
+=head2 Version => Str
+
+A version identifier for the API.
 
 
 =head2 Warnings => ArrayRef[Str|Undef]

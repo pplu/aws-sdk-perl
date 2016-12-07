@@ -5,6 +5,7 @@ package Paws::ApiGateway::CreateStage;
   has CacheClusterSize => (is => 'ro', isa => 'Str');
   has DeploymentId => (is => 'ro', isa => 'Str', required => 1);
   has Description => (is => 'ro', isa => 'Str');
+  has DocumentationVersion => (is => 'ro', isa => 'Str');
   has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restApiId' , required => 1);
   has StageName => (is => 'ro', isa => 'Str', required => 1);
   has Variables => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString');
@@ -65,6 +66,12 @@ The description of the Stage resource.
 
 
 
+=head2 DocumentationVersion => Str
+
+The version of the associated API documentation.
+
+
+
 =head2 B<REQUIRED> RestApiId => Str
 
 The identifier of the RestApi resource for the Stage resource to
@@ -82,7 +89,7 @@ The name for the Stage resource.
 
 A map that defines the stage variables for the new Stage resource.
 Variable names can have alphanumeric and underscore characters, and the
-values must match C<[A-Za-z0-9-._~:/?&num;&=,]+>.
+values must match C<[A-Za-z0-9-._~:/?#&=,]+>.
 
 
 

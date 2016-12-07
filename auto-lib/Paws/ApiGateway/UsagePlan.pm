@@ -5,6 +5,7 @@ package Paws::ApiGateway::UsagePlan;
   has Description => (is => 'ro', isa => 'Str');
   has Id => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
+  has ProductCode => (is => 'ro', isa => 'Str');
   has Quota => (is => 'ro', isa => 'Paws::ApiGateway::QuotaSettings');
   has Throttle => (is => 'ro', isa => 'Paws::ApiGateway::ThrottleSettings');
 
@@ -38,6 +39,12 @@ The identifier of a UsagePlan resource.
 =head2 Name => Str
 
 The name of a usage plan.
+
+
+=head2 ProductCode => Str
+
+The AWS Markeplace product identifier to associate with the usage plan
+as a SaaS product on AWS Marketplace.
 
 
 =head2 Quota => L<Paws::ApiGateway::QuotaSettings>
