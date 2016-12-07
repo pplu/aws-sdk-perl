@@ -240,6 +240,8 @@ L<Paws::ApiGateway>
 
 L<Paws::ApplicationAutoScaling>
 
+L<Paws::AppStream>
+
 L<Paws::AutoScaling>
 
 L<Paws::Budgets>
@@ -263,6 +265,8 @@ L<Paws::CloudWatch>
 L<Paws::CloudWatchEvents>
 
 L<Paws::CloudWatchLogs>
+
+L<Paws::CodeBuild>
 
 L<Paws::CodeCommit>
 
@@ -326,6 +330,8 @@ L<Paws::GameLift>
 
 L<Paws::Glacier>
 
+L<Paws::Health>
+
 L<Paws::IAM>
 
 L<Paws::ImportExport>
@@ -354,6 +360,10 @@ L<Paws::MarketplaceMetering>
 
 L<Paws::OpsWorks>
 
+L<Paws::OpsWorksCM>
+
+L<Paws::Pinpoint>
+
 L<Paws::Polly>
 
 L<Paws::RDS>
@@ -374,6 +384,8 @@ L<Paws::ServiceCatalog>
 
 L<Paws::SES>
 
+L<Paws::Shield>
+
 L<Paws::Signin>
 
 L<Paws::SimpleDB>
@@ -390,6 +402,8 @@ L<Paws::SQS>
 
 L<Paws::SSM>
 
+L<Paws::StepFunctions>
+
 L<Paws::StorageGateway>
 
 L<Paws::STS>
@@ -399,6 +413,8 @@ L<Paws::Support>
 L<Paws::WAF>
 
 L<Paws::WorkSpaces>
+
+L<Paws::XRay>
 
 
 =head1 SERVICES CLASSES

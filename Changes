@@ -17,6 +17,15 @@
  - New API: AWS Polly
  - New API: Lightsail
  - New API: Rekognition
+ - New API: XRay
+ - New API: StepFunctions
+ - New API: Shield
+ - New API: Pinpoint
+ - New API: OpsworksCM
+ - New API: Health
+ - New API: AppStream (v2)
+ - New API: CodeBuild
+ - SSM API update: new capabilities like patch applying, inventory, maintenance windows
  - Snowball API update: Cluster operations
  - SES API update: Tagging and ConfigurationSets
  - DirectConnect API update: Tagging
@@ -38,7 +47,7 @@
  - EMR API update: SecurityConfigurations, AutoScaling
  - IoT API update
  - CloudFormation API update: RoleArn
- - EC2 API update: ReservedInstancesExchangeQuote
+ - EC2 API update: ReservedInstancesExchangeQuote, IPv6 support
  - S3 API update: Analytics, Inventory and Metrics
  - ElastiCache API update
  - IoT API update: DynamoV2 behaviour
@@ -48,7 +57,7 @@
  - Cloudwatch Logs API update: DescribeMetricFilters and docu
  - DS API update: SchemaExtension support
  - SQS API update: FIFO queues
- - Lambda API update: Environment variables support
+ - Lambda API update: Environment variables support, GetAccountSettings, DeadLetter
  - MarketplaceMetering API update
  - Glacier API update: ProvisionedCapacity ops
  - ElasticTranscoder API update
@@ -56,6 +65,8 @@
  - ECS API update: support for Version attribute in tasks
  - ApiGateway API update
  - CloudWatch API update
+ - DirectConnect API update: BGP peering
+ - Config: API update
 
 0.28 30 Aug 2015 23:45:00
  - On errors 503 XMLResponse would not process the error correctly (returning
