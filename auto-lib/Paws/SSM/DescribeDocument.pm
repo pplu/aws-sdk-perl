@@ -1,6 +1,7 @@
 
 package Paws::SSM::DescribeDocument;
   use Moose;
+  has DocumentVersion => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -19,7 +20,7 @@ Paws::SSM::DescribeDocument - Arguments for method DescribeDocument on Paws::SSM
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method DescribeDocument on the 
-Amazon Simple Systems Management Service service. Use the attributes of this class
+Amazon Simple Systems Manager (SSM) service. Use the attributes of this class
 as arguments to method DescribeDocument.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeDocument.
@@ -31,6 +32,13 @@ As an example:
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 
 =head1 ATTRIBUTES
+
+
+=head2 DocumentVersion => Str
+
+The document version for which you want information. Can be a specific
+version or the default version.
+
 
 
 =head2 B<REQUIRED> Name => Str

@@ -2,6 +2,7 @@
 package Paws::SSM::CreateDocument;
   use Moose;
   has Content => (is => 'ro', isa => 'Str', required => 1);
+  has DocumentType => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -20,7 +21,7 @@ Paws::SSM::CreateDocument - Arguments for method CreateDocument on Paws::SSM
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method CreateDocument on the 
-Amazon Simple Systems Management Service service. Use the attributes of this class
+Amazon Simple Systems Manager (SSM) service. Use the attributes of this class
 as arguments to method CreateDocument.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateDocument.
@@ -39,6 +40,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 A valid JSON string.
 
 
+
+=head2 DocumentType => Str
+
+The type of document to create. Valid document types include: Policy,
+Automation, and Command.
+
+Valid values are: C<"Command">, C<"Policy">, C<"Automation">
 
 =head2 B<REQUIRED> Name => Str
 

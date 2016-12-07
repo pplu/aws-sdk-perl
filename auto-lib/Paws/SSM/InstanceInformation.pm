@@ -2,12 +2,16 @@ package Paws::SSM::InstanceInformation;
   use Moose;
   has ActivationId => (is => 'ro', isa => 'Str');
   has AgentVersion => (is => 'ro', isa => 'Str');
+  has AssociationOverview => (is => 'ro', isa => 'Paws::SSM::InstanceAggregatedAssociationOverview');
+  has AssociationStatus => (is => 'ro', isa => 'Str');
   has ComputerName => (is => 'ro', isa => 'Str');
   has IamRole => (is => 'ro', isa => 'Str');
   has InstanceId => (is => 'ro', isa => 'Str');
   has IPAddress => (is => 'ro', isa => 'Str');
   has IsLatestVersion => (is => 'ro', isa => 'Bool');
+  has LastAssociationExecutionDate => (is => 'ro', isa => 'Str');
   has LastPingDateTime => (is => 'ro', isa => 'Str');
+  has LastSuccessfulAssociationExecutionDate => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
   has PingStatus => (is => 'ro', isa => 'Str');
   has PlatformName => (is => 'ro', isa => 'Str');
@@ -52,12 +56,23 @@ Describes a filter for a specific list of instances.
 
 =head2 ActivationId => Str
 
-  The activation ID created by SSM when the server or VM was registered.
+  The activation ID created by Systems Manager when the server or VM was
+registered.
 
 
 =head2 AgentVersion => Str
 
   The version of the SSM agent running on your Linux instance.
+
+
+=head2 AssociationOverview => L<Paws::SSM::InstanceAggregatedAssociationOverview>
+
+  Information about the association.
+
+
+=head2 AssociationStatus => Str
+
+  The status of the association.
 
 
 =head2 ComputerName => Str
@@ -87,9 +102,19 @@ instances or managed instances.
 instance.
 
 
+=head2 LastAssociationExecutionDate => Str
+
+  The date the association was last executed.
+
+
 =head2 LastPingDateTime => Str
 
-  The date and time when agent last pinged SSM service.
+  The date and time when agent last pinged Systems Manager service.
+
+
+=head2 LastSuccessfulAssociationExecutionDate => Str
+
+  The last date the association was successfully run.
 
 
 =head2 Name => Str

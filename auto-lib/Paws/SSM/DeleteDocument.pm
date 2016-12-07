@@ -19,7 +19,7 @@ Paws::SSM::DeleteDocument - Arguments for method DeleteDocument on Paws::SSM
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method DeleteDocument on the 
-Amazon Simple Systems Management Service service. Use the attributes of this class
+Amazon Simple Systems Manager (SSM) service. Use the attributes of this class
 as arguments to method DeleteDocument.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteDocument.

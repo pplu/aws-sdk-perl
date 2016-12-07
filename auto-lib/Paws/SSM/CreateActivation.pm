@@ -23,7 +23,7 @@ Paws::SSM::CreateActivation - Arguments for method CreateActivation on Paws::SSM
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method CreateActivation on the 
-Amazon Simple Systems Management Service service. Use the attributes of this class
+Amazon Simple Systems Manager (SSM) service. Use the attributes of this class
 as arguments to method CreateActivation.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateActivation.

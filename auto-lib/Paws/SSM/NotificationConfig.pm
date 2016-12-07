@@ -41,8 +41,8 @@ Configurations for sending notifications.
 =head2 NotificationArn => Str
 
   An Amazon Resource Name (ARN) for a Simple Notification Service (SNS)
-topic. SSM pushes notifications about command status changes to this
-topic.
+topic. Run Command pushes notifications about command status changes to
+this topic.
 
 
 =head2 NotificationEvents => ArrayRef[Str|Undef]

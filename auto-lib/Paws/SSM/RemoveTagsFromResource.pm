@@ -21,7 +21,7 @@ Paws::SSM::RemoveTagsFromResource - Arguments for method RemoveTagsFromResource 
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method RemoveTagsFromResource on the 
-Amazon Simple Systems Management Service service. Use the attributes of this class
+Amazon Simple Systems Manager (SSM) service. Use the attributes of this class
 as arguments to method RemoveTagsFromResource.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to RemoveTagsFromResource.
@@ -45,7 +45,7 @@ The resource ID for which you want to remove tags.
 
 The type of resource of which you want to remove a tag.
 
-Valid values are: C<"ManagedInstance">
+Valid values are: C<"ManagedInstance">, C<"MaintenanceWindow">, C<"Parameter">
 
 =head2 B<REQUIRED> TagKeys => ArrayRef[Str|Undef]
 

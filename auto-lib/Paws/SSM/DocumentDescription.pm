@@ -1,13 +1,18 @@
 package Paws::SSM::DocumentDescription;
   use Moose;
   has CreatedDate => (is => 'ro', isa => 'Str');
+  has DefaultVersion => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
+  has DocumentType => (is => 'ro', isa => 'Str');
+  has DocumentVersion => (is => 'ro', isa => 'Str');
   has Hash => (is => 'ro', isa => 'Str');
   has HashType => (is => 'ro', isa => 'Str');
+  has LatestVersion => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
   has Owner => (is => 'ro', isa => 'Str');
   has Parameters => (is => 'ro', isa => 'ArrayRef[Paws::SSM::DocumentParameter]', request_name => 'DocumentParameter', traits => ['NameInRequest']);
   has PlatformTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'PlatformType', traits => ['NameInRequest']);
+  has SchemaVersion => (is => 'ro', isa => 'Str');
   has Sha1 => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
 1;
@@ -50,9 +55,24 @@ Describes an SSM document.
   The date when the SSM document was created.
 
 
+=head2 DefaultVersion => Str
+
+  The default version.
+
+
 =head2 Description => Str
 
   A description of the document.
+
+
+=head2 DocumentType => Str
+
+  The type of document.
+
+
+=head2 DocumentVersion => Str
+
+  The document version.
 
 
 =head2 Hash => Str
@@ -68,6 +88,11 @@ Sha1 hashes have been deprecated.
   Sha256 or Sha1.
 
 Sha1 hashes have been deprecated.
+
+
+=head2 LatestVersion => Str
+
+  The latest version of the document.
 
 
 =head2 Name => Str
@@ -88,6 +113,11 @@ Sha1 hashes have been deprecated.
 =head2 PlatformTypes => ArrayRef[Str|Undef]
 
   The list of OS platforms compatible with this SSM document.
+
+
+=head2 SchemaVersion => Str
+
+  The schema version.
 
 
 =head2 Sha1 => Str

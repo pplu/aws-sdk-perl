@@ -19,7 +19,7 @@ Paws::SSM::CreateAssociationBatch - Arguments for method CreateAssociationBatch 
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method CreateAssociationBatch on the 
-Amazon Simple Systems Management Service service. Use the attributes of this class
+Amazon Simple Systems Manager (SSM) service. Use the attributes of this class
 as arguments to method CreateAssociationBatch.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateAssociationBatch.
