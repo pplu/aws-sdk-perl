@@ -1047,9 +1047,11 @@ Returns: a L<Paws::RDS::CopyDBSnapshotResult> instance
   Copies the specified DB snapshot. The source DB snapshot must be in the
 "available" state.
 
-If you are copying from a shared manual DB snapshot, the
-C<SourceDBSnapshotIdentifier> must be the ARN of the shared DB
-snapshot.
+To copy a DB snapshot from a shared manual DB snapshot,
+C<SourceDBSnapshotIdentifier> must be the Amazon Resource Name (ARN) of
+the shared DB snapshot.
+
+You can not copy an encrypted DB snapshot from another AWS region.
 
 
 =head2 CopyOptionGroup(SourceOptionGroupIdentifier => Str, TargetOptionGroupDescription => Str, TargetOptionGroupIdentifier => Str, [Tags => ArrayRef[L<Paws::RDS::Tag>]])
@@ -1751,13 +1753,13 @@ Returns: a L<Paws::RDS::FailoverDBClusterResult> instance
 
   Forces a failover for a DB cluster.
 
-A failover for a DB cluster promotes one of the read-only instances in
-the DB cluster to the master DB instance (the cluster writer) and
-deletes the current primary instance.
+A failover for a DB cluster promotes one of the Aurora Replicas
+(read-only instances) in the DB cluster to be the primary instance (the
+cluster writer).
 
-Amazon Aurora will automatically fail over to a read-only instance, if
-one exists, when the primary instance fails. You can force a failover
-when you want to simulate a failure of a DB instance for testing.
+Amazon Aurora will automatically fail over to an Aurora Replica, if one
+exists, when the primary instance fails. You can force a failover when
+you want to simulate a failure of a primary instance for testing.
 Because each instance in a DB cluster has its own endpoint address, you
 will need to clean up and re-establish any existing connections that
 use those endpoint addresses when the failover is complete.

@@ -65,7 +65,20 @@ Cannot end with a hyphen or contain two consecutive hyphens
 
 =head2 Filters => ArrayRef[L<Paws::RDS::Filter>]
 
-This parameter is not currently supported.
+A filter that specifies one or more DB instances to describe.
+
+Supported filters:
+
+=over
+
+=item *
+
+C<db-instance-id> - Accepts DB instance identifiers and DB instance
+Amazon Resource Names (ARNs). The results list will only include
+information about the DB instances identified by these ARNs.
+
+=back
+
 
 
 

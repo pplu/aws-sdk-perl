@@ -5,6 +5,7 @@ package Paws::RDS::DBCluster;
   has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'AvailabilityZone', traits => ['NameInRequest']);
   has BackupRetentionPeriod => (is => 'ro', isa => 'Int');
   has CharacterSetName => (is => 'ro', isa => 'Str');
+  has ClusterCreateTime => (is => 'ro', isa => 'Str');
   has DatabaseName => (is => 'ro', isa => 'Str');
   has DBClusterArn => (is => 'ro', isa => 'Str');
   has DBClusterIdentifier => (is => 'ro', isa => 'Str');
@@ -21,6 +22,7 @@ package Paws::RDS::DBCluster;
   has KmsKeyId => (is => 'ro', isa => 'Str');
   has LatestRestorableTime => (is => 'ro', isa => 'Str');
   has MasterUsername => (is => 'ro', isa => 'Str');
+  has MultiAZ => (is => 'ro', isa => 'Bool');
   has PercentProgress => (is => 'ro', isa => 'Str');
   has Port => (is => 'ro', isa => 'Int');
   has PreferredBackupWindow => (is => 'ro', isa => 'Str');
@@ -129,6 +131,12 @@ retained.
 is associated with.
 
 
+=head2 ClusterCreateTime => Str
+
+  Specifies the time when the DB cluster was created, in Universal
+Coordinated Time (UTC).
+
+
 =head2 DatabaseName => Str
 
   Contains the name of the initial database of this DB cluster that was
@@ -221,6 +229,12 @@ point-in-time restore.
 =head2 MasterUsername => Str
 
   Contains the master username for the DB cluster.
+
+
+=head2 MultiAZ => Bool
+
+  Specifies whether the DB cluster has instances in multiple Availability
+Zones.
 
 
 =head2 PercentProgress => Str
