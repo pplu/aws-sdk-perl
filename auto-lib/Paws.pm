@@ -412,6 +412,8 @@ L<Paws::Support>
 
 L<Paws::WAF>
 
+L<Paws::WAFRegional>
+
 L<Paws::WorkSpaces>
 
 L<Paws::XRay>

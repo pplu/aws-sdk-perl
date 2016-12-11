@@ -93,6 +93,7 @@ package Paws::API::ServiceToClass;
     support => 'Support',
     sdb => 'SDB',
     waf => 'WAF',
+   'waf-regional' => 'WAFRegional',
     workspaces => 'WorkSpaces',
     xray => 'XRay',
   };

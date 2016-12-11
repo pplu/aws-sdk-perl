@@ -25,6 +25,7 @@
  - New API: Health
  - New API: AppStream (v2)
  - New API: CodeBuild
+ - New API: WAFRegional
  - SSM API update: new capabilities like patch applying, inventory, maintenance windows
  - Snowball API update: Cluster operations
  - SES API update: Tagging and ConfigurationSets
@@ -34,9 +35,9 @@
  - Gamelift API update: DescribeInstances
  - ECR API update: DescribeImages
  - ACM API update: ImportCertificate
- - RDS API update: DescribeSourceRegions, Add and Remove RoleToDBCluster
+ - RDS API update: DescribeSourceRegions, Add and Remove RoleToDBCluster, more info in DBClusters
  - ServiceCatalog API update: AccessLevelFilter, Constraint and Portfolio support
- - CloudFront API update: version 2016-09-07 support
+ - CloudFront API update: version 2016-11-25 support
  - CodePipeline API update: GetPipelineExecution
  - CognitoIdp API update: UserImportJob operations
  - Gamelift API update: OperatingSystem for CreateBuild, GetInstanceAccess
