@@ -66,11 +66,7 @@ Objects in the I<Amazon Amazon CloudFront Developer Guide>.
 
 =head2 ACMCertificateArn => Str
 
-  If you want viewers to use HTTPS to request your objects and you're
-using an alternate domain name in your object URLs (for example,
-C<https://example.com/logo.jpg)>, specify the ACM certificate ARN of
-the custom viewer certificate for this distribution. Specify either
-this value, C<IAMCertificateId>, or C<CloudFrontDefaultCertificate>.
+  
 
 
 =head2 Certificate => Str
@@ -223,21 +219,12 @@ C<CloudFrontDefaultCertificate]>.
 
 =head2 CloudFrontDefaultCertificate => Bool
 
-  If you want viewers to use HTTPS to request your objects and you're
-using the CloudFront domain name of your distribution in your object
-URLs (for example, C<https://d111111abcdef8.cloudfront.net/logo.jpg>),
-set to C<true>. Omit this value if you are setting an
-C<ACMCertificateArn> or C<IAMCertificateId>.
+  
 
 
 =head2 IAMCertificateId => Str
 
-  If you want viewers to use HTTPS to request your objects and you're
-using an alternate domain name in your object URLs (for example,
-C<https://example.com/logo.jpg)>, specify the IAM certificate
-identifier of the custom viewer certificate for this distribution.
-Specify either this value, C<ACMCertificateArn>, or
-C<CloudFrontDefaultCertificate>.
+  
 
 
 =head2 MinimumProtocolVersion => Str

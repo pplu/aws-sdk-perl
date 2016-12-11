@@ -4,6 +4,7 @@ package Paws::CloudFront::CacheBehavior;
   has Compress => (is => 'ro', isa => 'Bool');
   has DefaultTTL => (is => 'ro', isa => 'Int');
   has ForwardedValues => (is => 'ro', isa => 'Paws::CloudFront::ForwardedValues', required => 1);
+  has LambdaFunctionAssociations => (is => 'ro', isa => 'Paws::CloudFront::LambdaFunctionAssociations');
   has MaxTTL => (is => 'ro', isa => 'Int');
   has MinTTL => (is => 'ro', isa => 'Int', required => 1);
   has PathPattern => (is => 'ro', isa => 'Str', required => 1);
@@ -102,6 +103,12 @@ CloudFront Developer Guide>.
 
   A complex type that specifies how CloudFront handles query strings and
 cookies.
+
+
+=head2 LambdaFunctionAssociations => L<Paws::CloudFront::LambdaFunctionAssociations>
+
+  A complex type that contains zero or more Lambda function associations
+for a cache behavior.
 
 
 =head2 MaxTTL => Int
