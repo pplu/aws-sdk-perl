@@ -5,7 +5,7 @@ package Paws::S3::PutObjectTagging;
   has ContentMD5 => (is => 'ro', isa => 'Str', header_name => 'Content-MD5', traits => ['ParamInHeader']);
   has Key => (is => 'ro', isa => 'Str', uri_name => 'Key', traits => ['ParamInURI'], required => 1);
   has Tagging => (is => 'ro', isa => 'Paws::S3::Tagging', required => 1);
-  has VersionId => (is => 'ro', isa => 'Str', uri_name => 'VersionId', traits => ['ParamInURI'], required => 1);
+  has VersionId => (is => 'ro', isa => 'Str', query_name => 'versionId', traits => ['ParamInQuery']);
 
   use MooseX::ClassAttribute;
 
@@ -64,7 +64,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 
 
-=head2 B<REQUIRED> VersionId => Str
+=head2 VersionId => Str
 
 
 

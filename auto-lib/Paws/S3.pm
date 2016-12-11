@@ -984,7 +984,7 @@ Returns: a L<Paws::S3::GetObjectAclOutput> instance
   Returns the access control list (ACL) of an object.
 
 
-=head2 GetObjectTagging(Bucket => Str, Key => Str, VersionId => Str)
+=head2 GetObjectTagging(Bucket => Str, Key => Str, [VersionId => Str])
 
 Each argument is described in detail in: L<Paws::S3::GetObjectTagging>
 
@@ -1299,7 +1299,7 @@ Returns: a L<Paws::S3::PutObjectAclOutput> instance
 permissions for an object that already exists in a bucket
 
 
-=head2 PutObjectTagging(Bucket => Str, Key => Str, Tagging => L<Paws::S3::Tagging>, VersionId => Str, [ContentMD5 => Str])
+=head2 PutObjectTagging(Bucket => Str, Key => Str, Tagging => L<Paws::S3::Tagging>, [ContentMD5 => Str, VersionId => Str])
 
 Each argument is described in detail in: L<Paws::S3::PutObjectTagging>
 
