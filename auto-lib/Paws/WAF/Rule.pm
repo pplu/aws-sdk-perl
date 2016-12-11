@@ -62,7 +62,10 @@ C<BadBot>.
 
 =head2 MetricName => Str
 
-  
+  A friendly name or description for the metrics for this C<Rule>. The
+name can contain only alphanumeric characters (A-Z, a-z, 0-9); the name
+can't contain whitespace. You can't change C<MetricName> after you
+create the C<Rule>.
 
 
 =head2 Name => Str

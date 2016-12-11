@@ -64,7 +64,8 @@ compressed data, encrypted data, or images.
 and Binary. For the Number data type, you must use StringValue.
 
 You can also append custom labels. For more information, see Message
-Attribute Data Types in the I<Amazon SQS Developer Guide>.
+Attribute Data Types and Validation in the I<Amazon SQS Developer
+Guide>.
 
 
 =head2 StringListValues => ArrayRef[Str|Undef]

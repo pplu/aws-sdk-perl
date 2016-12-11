@@ -71,8 +71,8 @@ digest. For information about MD5, see RFC1321.
 =head2 MessageAttributes => L<Paws::SQS::MessageBodyAttributeMap>
 
   Each message attribute consists of a Name, Type, and Value. For more
-information, see Message Attribute Items in the I<Amazon SQS Developer
-Guide>.
+information, see Message Attribute Items and Validation in the I<Amazon
+SQS Developer Guide>.
 
 
 =head2 MessageId => Str

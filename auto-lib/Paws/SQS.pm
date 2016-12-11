@@ -179,24 +179,6 @@ move data between distributed components of your applications that
 perform different tasks without losing messages or requiring each
 component to be always available.
 
-B<Topics>
-
-=over
-
-=item *
-
-=item *
-
-=item *
-
-CommonParameters
-
-=item *
-
-CommonErrors
-
-=back
-
 B<Helpful Links>
 
 =over
@@ -299,13 +281,17 @@ ChangeMessageVisibility to extend the visibility timeout to a maximum
 of 12 hours. If you try to extend beyond 12 hours, the request will be
 rejected.
 
-There is a 120,000 limit for the number of inflight messages per queue.
-Messages are inflight after they have been received from the queue by a
-consuming component, but have not yet been deleted from the queue. If
-you reach the 120,000 limit, you will receive an OverLimit error
-message from Amazon SQS. To help avoid reaching the limit, you should
-delete the messages from the queue after they have been processed. You
-can also increase the number of queues you use to process the messages.
+A message is considered to be I<in flight> after it's received from a
+queue by a consumer, but not yet deleted from the queue.
+
+For standard queues, there can be a maximum of 120,000 inflight
+messages per queue. If you reach this limit, Amazon SQS returns the
+C<OverLimit> error message. To avoid reaching the limit, you should
+delete messages from the queue after they're processed. You can also
+increase the number of queues you use to process your messages.
+
+For FIFO queues, there can be a maximum of 20,000 inflight messages per
+queue. If you reach this limit, Amazon SQS returns no error messages.
 
 If you attempt to set the C<VisibilityTimeout> to an amount more than
 the maximum time left, Amazon SQS returns an error. It will not
@@ -579,7 +565,7 @@ Returns: a L<Paws::SQS::ReceiveMessageResult> instance
   Retrieves one or more messages, with a maximum limit of 10 messages,
 from the specified queue. Long poll support is enabled by using the
 C<WaitTimeSeconds> parameter. For more information, see Amazon SQS Long
-Poll in the I<Amazon SQS Developer Guide>.
+Polling in the I<Amazon SQS Developer Guide>.
 
 Short poll is the default behavior where a weighted random set of
 machines is sampled on a C<ReceiveMessage> call. This means only the

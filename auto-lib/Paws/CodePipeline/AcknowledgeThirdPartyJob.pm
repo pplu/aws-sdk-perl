@@ -52,8 +52,8 @@ The unique system-generated ID of the job.
 =head2 B<REQUIRED> Nonce => Str
 
 A system-generated random number that AWS CodePipeline uses to ensure
-that the job is being worked on by only one job worker. This number
-must be returned in the response.
+that the job is being worked on by only one job worker. Get this number
+from the response to a GetThirdPartyJobDetails request.
 
 
 

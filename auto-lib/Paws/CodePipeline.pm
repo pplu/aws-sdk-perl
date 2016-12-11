@@ -233,10 +233,10 @@ structure of the pipeline.
 
 =back
 
-Pipelines include I<stages>, which are which are logical groupings of
-gates and actions. Each stage contains one or more actions that must
-complete before the next stage begins. A stage will result in success
-or failure. If a stage fails, then the pipeline stops at that stage and
+Pipelines include I<stages>, which are logical groupings of gates and
+actions. Each stage contains one or more actions that must complete
+before the next stage begins. A stage will result in success or
+failure. If a stage fails, then the pipeline stops at that stage and
 will remain stopped until either a new version of an artifact appears
 in the source location, or a user takes action to re-run the most
 recent artifact through the pipeline. You can call GetPipelineState,

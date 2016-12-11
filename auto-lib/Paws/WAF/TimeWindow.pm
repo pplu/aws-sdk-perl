@@ -51,16 +51,19 @@ received the 5,000th request.
 =head2 B<REQUIRED> EndTime => Str
 
   The end of the time range from which you want C<GetSampledRequests> to
-return a sample of the requests that your AWS resource received. You
-can specify any time range in the previous three hours.
+return a sample of the requests that your AWS resource received.
+Specify the date and time in the following format:
+C<"2016-09-27T14:50Z">. You can specify any time range in the previous
+three hours.
 
 
 =head2 B<REQUIRED> StartTime => Str
 
   The beginning of the time range from which you want
 C<GetSampledRequests> to return a sample of the requests that your AWS
-resource received. You can specify any time range in the previous three
-hours.
+resource received. Specify the date and time in the following format:
+C<"2016-09-27T14:50Z">. You can specify any time range in the previous
+three hours.
 
 
 

@@ -72,8 +72,9 @@ specified C<WebACL>.
 
 The start date and time and the end date and time of the range for
 which you want C<GetSampledRequests> to return a sample of requests.
-Specify the date and time in Unix time format (in seconds). You can
-specify any time range in the previous three hours.
+Specify the date and time in the following format:
+C<"2016-09-27T14:50Z">. You can specify any time range in the previous
+three hours.
 
 
 

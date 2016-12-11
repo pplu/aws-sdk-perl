@@ -41,7 +41,8 @@ header, the name of the header.
 
 =head2 B<REQUIRED> FieldToMatch => L<Paws::WAF::FieldToMatch>
 
-  
+  Specifies where in a web request to look for cross-site scripting
+attacks.
 
 
 =head2 B<REQUIRED> TextTransformation => Str

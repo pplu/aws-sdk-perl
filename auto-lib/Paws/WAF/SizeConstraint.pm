@@ -72,7 +72,7 @@ the C<FieldToMatch>
 
 =head2 B<REQUIRED> FieldToMatch => L<Paws::WAF::FieldToMatch>
 
-  
+  Specifies where in a web request to look for the size constraint.
 
 
 =head2 B<REQUIRED> Size => Int

@@ -44,7 +44,9 @@ The value returned by the most recent call to GetChangeToken.
 
 =head2 DefaultAction => L<Paws::WAF::WafAction>
 
-
+A default action for the web ACL, either ALLOW or BLOCK. AWS WAF
+performs the default action if a request doesn't match the criteria in
+any of the rules in a web ACL.
 
 
 

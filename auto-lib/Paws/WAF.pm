@@ -405,11 +405,14 @@ Paws::WAF - Perl Interface to AWS AWS WAF
 
 =head1 DESCRIPTION
 
-This is the I<AWS WAF API Reference>. This guide is for developers who
-need detailed information about the AWS WAF API actions, data types,
-and errors. For detailed information about AWS WAF features and an
-overview of how to use the AWS WAF API, see the AWS WAF Developer
-Guide.
+This is the I<AWS WAF API Reference> for using AWS WAF with Amazon
+CloudFront. The AWS WAF actions and data types listed in the reference
+are available for protecting Amazon CloudFront distributions. You can
+use these actions and data types via the endpoint I<waf.amazonaws.com>.
+This guide is for developers who need detailed information about the
+AWS WAF API actions, data types, and errors. For detailed information
+about AWS WAF features and an overview of how to use the AWS WAF API,
+see the AWS WAF Developer Guide.
 
 =head1 METHODS
 
@@ -1285,7 +1288,7 @@ add a new one.
 
 =item *
 
-The IP address version, C<IPv4>.
+The IP address version, C<IPv4> or C<IPv6>.
 
 =item *
 
@@ -1295,9 +1298,31 @@ C<192.0.2.44/32> (for the individual IP address C<192.0.2.44>).
 
 =back
 
-AWS WAF supports /8, /16, /24, and /32 IP address ranges. For more
-information about CIDR notation, see the Wikipedia entry Classless
-Inter-Domain Routing.
+AWS WAF supports /8, /16, /24, and /32 IP address ranges for IPv4, and
+/24, /32, /48, /56, /64 and /128 for IPv6. For more information about
+CIDR notation, see the Wikipedia entry Classless Inter-Domain Routing.
+
+IPv6 addresses can be represented using any of the following formats:
+
+=over
+
+=item *
+
+1111:0000:0000:0000:0000:0000:0000:0111/128
+
+=item *
+
+1111:0:0:0:0:0:0:0111/128
+
+=item *
+
+1111::0111/128
+
+=item *
+
+1111::111/128
+
+=back
 
 You use an C<IPSet> to specify which web requests you want to allow or
 block based on the IP addresses that the requests originated from. For
