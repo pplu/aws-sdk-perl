@@ -145,6 +145,153 @@ package Paws::Config;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub DescribeAllComplianceByConfigRule {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeComplianceByConfigRule(@_);
+
+    if (not defined $callback) {
+      while ($result->NextToken) {
+        $result = $self->DescribeComplianceByConfigRule(@_, NextToken => $result->NextToken);
+        push @{ $result->ComplianceByConfigRules }, @{ $result->ComplianceByConfigRules };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $result = $self->DescribeComplianceByConfigRule(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'ComplianceByConfigRules') foreach (@{ $result->ComplianceByConfigRules });
+      }
+    }
+
+    return undef
+  }
+  sub DescribeAllComplianceByResource {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeComplianceByResource(@_);
+
+    if (not defined $callback) {
+      while ($result->NextToken) {
+        $result = $self->DescribeComplianceByResource(@_, NextToken => $result->NextToken);
+        push @{ $result->ComplianceByResources }, @{ $result->ComplianceByResources };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $result = $self->DescribeComplianceByResource(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'ComplianceByResources') foreach (@{ $result->ComplianceByResources });
+      }
+    }
+
+    return undef
+  }
+  sub DescribeAllConfigRules {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeConfigRules(@_);
+
+    if (not defined $callback) {
+      while ($result->NextToken) {
+        $result = $self->DescribeConfigRules(@_, NextToken => $result->NextToken);
+        push @{ $result->ConfigRules }, @{ $result->ConfigRules };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $result = $self->DescribeConfigRules(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'ConfigRules') foreach (@{ $result->ConfigRules });
+      }
+    }
+
+    return undef
+  }
+  sub GetAllComplianceDetailsByConfigRule {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetComplianceDetailsByConfigRule(@_);
+
+    if (not defined $callback) {
+      while ($result->NextToken) {
+        $result = $self->GetComplianceDetailsByConfigRule(@_, NextToken => $result->NextToken);
+        push @{ $result->EvaluationResults }, @{ $result->EvaluationResults };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $result = $self->GetComplianceDetailsByConfigRule(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'EvaluationResults') foreach (@{ $result->EvaluationResults });
+      }
+    }
+
+    return undef
+  }
+  sub GetAllComplianceDetailsByResource {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetComplianceDetailsByResource(@_);
+
+    if (not defined $callback) {
+      while ($result->NextToken) {
+        $result = $self->GetComplianceDetailsByResource(@_, NextToken => $result->NextToken);
+        push @{ $result->EvaluationResults }, @{ $result->EvaluationResults };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $result = $self->GetComplianceDetailsByResource(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'EvaluationResults') foreach (@{ $result->EvaluationResults });
+      }
+    }
+
+    return undef
+  }
+  sub GetAllResourceConfigHistory {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetResourceConfigHistory(@_);
+
+    if (not defined $callback) {
+      while ($result->nextToken) {
+        $result = $self->GetResourceConfigHistory(@_, nextToken => $result->nextToken);
+        push @{ $result->configurationItems }, @{ $result->configurationItems };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $result = $self->GetResourceConfigHistory(@_, nextToken => $result->nextToken);
+        $callback->($_ => 'configurationItems') foreach (@{ $result->configurationItems });
+      }
+    }
+
+    return undef
+  }
+  sub ListAllDiscoveredResources {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListDiscoveredResources(@_);
+
+    if (not defined $callback) {
+      while ($result->nextToken) {
+        $result = $self->ListDiscoveredResources(@_, nextToken => $result->nextToken);
+        push @{ $result->resourceIdentifiers }, @{ $result->resourceIdentifiers };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $result = $self->ListDiscoveredResources(@_, nextToken => $result->nextToken);
+        $callback->($_ => 'resourceIdentifiers') foreach (@{ $result->resourceIdentifiers });
+      }
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/DeleteConfigRule DeleteConfigurationRecorder DeleteDeliveryChannel DeleteEvaluationResults DeliverConfigSnapshot DescribeComplianceByConfigRule DescribeComplianceByResource DescribeConfigRuleEvaluationStatus DescribeConfigRules DescribeConfigurationRecorders DescribeConfigurationRecorderStatus DescribeDeliveryChannels DescribeDeliveryChannelStatus GetComplianceDetailsByConfigRule GetComplianceDetailsByResource GetComplianceSummaryByConfigRule GetComplianceSummaryByResourceType GetResourceConfigHistory ListDiscoveredResources PutConfigRule PutConfigurationRecorder PutDeliveryChannel PutEvaluations StartConfigRulesEvaluation StartConfigurationRecorder StopConfigurationRecorder / }
@@ -736,6 +883,90 @@ to record in your AWS account.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 DescribeAllComplianceByConfigRule(sub { },[ComplianceTypes => ArrayRef[Str|Undef], ConfigRuleNames => ArrayRef[Str|Undef], NextToken => Str])
+
+=head2 DescribeAllComplianceByConfigRule([ComplianceTypes => ArrayRef[Str|Undef], ConfigRuleNames => ArrayRef[Str|Undef], NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ComplianceByConfigRules, passing the object as the first parameter, and the string 'ComplianceByConfigRules' as the second parameter 
+
+If not, it will return a a L<Paws::Config::DescribeComplianceByConfigRuleResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllComplianceByResource(sub { },[ComplianceTypes => ArrayRef[Str|Undef], Limit => Int, NextToken => Str, ResourceId => Str, ResourceType => Str])
+
+=head2 DescribeAllComplianceByResource([ComplianceTypes => ArrayRef[Str|Undef], Limit => Int, NextToken => Str, ResourceId => Str, ResourceType => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ComplianceByResources, passing the object as the first parameter, and the string 'ComplianceByResources' as the second parameter 
+
+If not, it will return a a L<Paws::Config::DescribeComplianceByResourceResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllConfigRules(sub { },[ConfigRuleNames => ArrayRef[Str|Undef], NextToken => Str])
+
+=head2 DescribeAllConfigRules([ConfigRuleNames => ArrayRef[Str|Undef], NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ConfigRules, passing the object as the first parameter, and the string 'ConfigRules' as the second parameter 
+
+If not, it will return a a L<Paws::Config::DescribeConfigRulesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllComplianceDetailsByConfigRule(sub { },ConfigRuleName => Str, [ComplianceTypes => ArrayRef[Str|Undef], Limit => Int, NextToken => Str])
+
+=head2 GetAllComplianceDetailsByConfigRule(ConfigRuleName => Str, [ComplianceTypes => ArrayRef[Str|Undef], Limit => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - EvaluationResults, passing the object as the first parameter, and the string 'EvaluationResults' as the second parameter 
+
+If not, it will return a a L<Paws::Config::GetComplianceDetailsByConfigRuleResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllComplianceDetailsByResource(sub { },ResourceId => Str, ResourceType => Str, [ComplianceTypes => ArrayRef[Str|Undef], NextToken => Str])
+
+=head2 GetAllComplianceDetailsByResource(ResourceId => Str, ResourceType => Str, [ComplianceTypes => ArrayRef[Str|Undef], NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - EvaluationResults, passing the object as the first parameter, and the string 'EvaluationResults' as the second parameter 
+
+If not, it will return a a L<Paws::Config::GetComplianceDetailsByResourceResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllResourceConfigHistory(sub { },ResourceId => Str, ResourceType => Str, [ChronologicalOrder => Str, EarlierTime => Str, LaterTime => Str, Limit => Int, NextToken => Str])
+
+=head2 GetAllResourceConfigHistory(ResourceId => Str, ResourceType => Str, [ChronologicalOrder => Str, EarlierTime => Str, LaterTime => Str, Limit => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - configurationItems, passing the object as the first parameter, and the string 'configurationItems' as the second parameter 
+
+If not, it will return a a L<Paws::Config::GetResourceConfigHistoryResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllDiscoveredResources(sub { },ResourceType => Str, [IncludeDeletedResources => Bool, Limit => Int, NextToken => Str, ResourceIds => ArrayRef[Str|Undef], ResourceName => Str])
+
+=head2 ListAllDiscoveredResources(ResourceType => Str, [IncludeDeletedResources => Bool, Limit => Int, NextToken => Str, ResourceIds => ArrayRef[Str|Undef], ResourceName => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - resourceIdentifiers, passing the object as the first parameter, and the string 'resourceIdentifiers' as the second parameter 
+
+If not, it will return a a L<Paws::Config::ListDiscoveredResourcesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 
