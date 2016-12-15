@@ -41,8 +41,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 EndTime => Int
 
-The end of the time range. Events with a timestamp later than this time
-are not included.
+The end of the time range, expressed as the number of milliseconds
+since Jan 1, 1970 00:00:00 UTC. Events with a timestamp later than this
+time are not included.
 
 
 
@@ -83,8 +84,9 @@ default value is false.
 
 =head2 StartTime => Int
 
-The start of the time range. Events with a timestamp earlier than this
-time are not included.
+The start of the time range, expressed as the number of milliseconds
+since Jan 1, 1970 00:00:00 UTC. Events with a timestamp earlier than
+this time are not included.
 
 
 

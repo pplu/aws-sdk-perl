@@ -62,7 +62,8 @@ exported.
 
 =head2 From => Int
 
-  The start time. Events with a timestamp prior to this time are not
+  The start time, expressed as the number of milliseconds since Jan 1,
+1970 00:00:00 UTC. Events with a timestamp prior to this time are not
 exported.
 
 
@@ -88,7 +89,8 @@ exported.
 
 =head2 To => Int
 
-  The end time. Events with a timestamp later than this time are not
+  The end time, expressed as the number of milliseconds since Jan 1, 1970
+00:00:00 UTC. Events with a timestamp later than this time are not
 exported.
 
 

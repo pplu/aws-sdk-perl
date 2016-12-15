@@ -56,12 +56,14 @@ single emitter of logs.
 
 =head2 FirstEventTimestamp => Int
 
-  The time of the first event.
+  The time of the first event, expressed as the number of milliseconds
+since Jan 1, 1970 00:00:00 UTC.
 
 
 =head2 LastEventTimestamp => Int
 
-  The time of the last event.
+  The time of the last event, expressed as the number of milliseconds
+since Jan 1, 1970 00:00:00 UTC.
 
 
 =head2 LastIngestionTime => Int

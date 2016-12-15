@@ -104,6 +104,11 @@ package Paws::CloudWatchLogs;
     my $call_object = $self->new_with_coercions('Paws::CloudWatchLogs::GetLogEvents', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListTagsLogGroup {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudWatchLogs::ListTagsLogGroup', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub PutDestination {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudWatchLogs::PutDestination', @_);
@@ -134,9 +139,19 @@ package Paws::CloudWatchLogs;
     my $call_object = $self->new_with_coercions('Paws::CloudWatchLogs::PutSubscriptionFilter', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub TagLogGroup {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudWatchLogs::TagLogGroup', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub TestMetricFilter {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudWatchLogs::TestMetricFilter', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UntagLogGroup {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudWatchLogs::UntagLogGroup', @_);
     return $self->caller->do_call($self, $call_object);
   }
   
@@ -270,7 +285,7 @@ package Paws::CloudWatchLogs;
   }
 
 
-  sub operations { qw/CancelExportTask CreateExportTask CreateLogGroup CreateLogStream DeleteDestination DeleteLogGroup DeleteLogStream DeleteMetricFilter DeleteRetentionPolicy DeleteSubscriptionFilter DescribeDestinations DescribeExportTasks DescribeLogGroups DescribeLogStreams DescribeMetricFilters DescribeSubscriptionFilters FilterLogEvents GetLogEvents PutDestination PutDestinationPolicy PutLogEvents PutMetricFilter PutRetentionPolicy PutSubscriptionFilter TestMetricFilter / }
+  sub operations { qw/CancelExportTask CreateExportTask CreateLogGroup CreateLogStream DeleteDestination DeleteLogGroup DeleteLogStream DeleteMetricFilter DeleteRetentionPolicy DeleteSubscriptionFilter DescribeDestinations DescribeExportTasks DescribeLogGroups DescribeLogStreams DescribeMetricFilters DescribeSubscriptionFilters FilterLogEvents GetLogEvents ListTagsLogGroup PutDestination PutDestinationPolicy PutLogEvents PutMetricFilter PutRetentionPolicy PutSubscriptionFilter TagLogGroup TestMetricFilter UntagLogGroup / }
 
 1;
 
@@ -377,7 +392,7 @@ can specify a prefix that will be used as the Amazon S3 key prefix for
 all exported objects.
 
 
-=head2 CreateLogGroup(LogGroupName => Str)
+=head2 CreateLogGroup(LogGroupName => Str, [Tags => L<Paws::CloudWatchLogs::Tags>])
 
 Each argument is described in detail in: L<Paws::CloudWatchLogs::CreateLogGroup>
 
@@ -552,7 +567,7 @@ Each argument is described in detail in: L<Paws::CloudWatchLogs::DescribeMetricF
 Returns: a L<Paws::CloudWatchLogs::DescribeMetricFiltersResponse> instance
 
   Lists the specified metric filters. You can list all the metric filters
-or filter the results by log name, prefix, metric name, or metric
+or filter the results by log name, prefix, metric name, and metric
 namespace. The results are ASCII-sorted by filter name.
 
 
@@ -597,6 +612,17 @@ By default, this operation returns as many log events as can fit in a
 response size of 1MB (up to 10,000 log events). If the results include
 tokens, there are more log events available. You can get additional log
 events by specifying one of the tokens in a subsequent call.
+
+
+=head2 ListTagsLogGroup(LogGroupName => Str)
+
+Each argument is described in detail in: L<Paws::CloudWatchLogs::ListTagsLogGroup>
+
+Returns: a L<Paws::CloudWatchLogs::ListTagsLogGroupResponse> instance
+
+  Lists the tags for the specified log group.
+
+To add tags, use TagLogGroup. To remove tags, use UntagLogGroup.
 
 
 =head2 PutDestination(DestinationName => Str, RoleArn => Str, TargetArn => Str)
@@ -667,7 +693,8 @@ retention period of the log group.
 =item *
 
 The log events in the batch must be in chronological ordered by their
-timestamp.
+timestamp (the time the event occurred, expressed as the number of
+milliseconds since Jan 1, 1970 00:00:00 UTC).
 
 =item *
 
@@ -675,8 +702,8 @@ The maximum number of log events in a batch is 10,000.
 
 =item *
 
-A batch of log events in a single PutLogEvents request cannot span more
-than 24 hours. Otherwise, the PutLogEvents operation will fail.
+A batch of log events in a single request cannot span more than 24
+hours. Otherwise, the operation fails.
 
 =back
 
@@ -707,7 +734,7 @@ allows you to configure the number of days you want to retain log
 events in the specified log group.
 
 
-=head2 PutSubscriptionFilter(DestinationArn => Str, FilterName => Str, FilterPattern => Str, LogGroupName => Str, [RoleArn => Str])
+=head2 PutSubscriptionFilter(DestinationArn => Str, FilterName => Str, FilterPattern => Str, LogGroupName => Str, [Distribution => Str, RoleArn => Str])
 
 Each argument is described in detail in: L<Paws::CloudWatchLogs::PutSubscriptionFilter>
 
@@ -746,6 +773,21 @@ subscription filter, for same-account delivery.
 There can only be one subscription filter associated with a log group.
 
 
+=head2 TagLogGroup(LogGroupName => Str, Tags => L<Paws::CloudWatchLogs::Tags>)
+
+Each argument is described in detail in: L<Paws::CloudWatchLogs::TagLogGroup>
+
+Returns: nothing
+
+  Adds or updates the specified tags for the specified log group.
+
+To list the tags for a log group, use ListTagsLogGroup. To remove tags,
+use UntagLogGroup.
+
+For more information about tags, see Tag Log Groups in Amazon
+CloudWatch Logs in the I<Amazon CloudWatch Logs User Guide>.
+
+
 =head2 TestMetricFilter(FilterPattern => Str, LogEventMessages => ArrayRef[Str|Undef])
 
 Each argument is described in detail in: L<Paws::CloudWatchLogs::TestMetricFilter>
@@ -755,6 +797,18 @@ Returns: a L<Paws::CloudWatchLogs::TestMetricFilterResponse> instance
   Tests the filter pattern of a metric filter against a sample of log
 event messages. You can use this operation to validate the correctness
 of a metric filter pattern.
+
+
+=head2 UntagLogGroup(LogGroupName => Str, Tags => ArrayRef[Str|Undef])
+
+Each argument is described in detail in: L<Paws::CloudWatchLogs::UntagLogGroup>
+
+Returns: nothing
+
+  Removes the specified tags from the specified log group.
+
+To list the tags for a log group, use ListTagsLogGroup. To add tags,
+use UntagLogGroup.
 
 
 

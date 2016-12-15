@@ -2,6 +2,7 @@
 package Paws::CloudWatchLogs::PutSubscriptionFilter;
   use Moose;
   has DestinationArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'destinationArn' , required => 1);
+  has Distribution => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'distribution' );
   has FilterName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'filterName' , required => 1);
   has FilterPattern => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'filterPattern' , required => 1);
   has LogGroupName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'logGroupName' , required => 1);
@@ -68,6 +69,15 @@ subscription filter, for same-account delivery.
 
 
 
+
+=head2 Distribution => Str
+
+The method used to distribute log data to the destination, when the
+destination is an Amazon Kinesis stream. By default, log data is
+grouped by log stream. For a more even distribution, you can group log
+data randomly.
+
+Valid values are: C<"Random">, C<"ByLogStream">
 
 =head2 B<REQUIRED> FilterName => Str
 

@@ -1,12 +1,12 @@
 
-package Paws::CloudWatchLogs::CreateLogGroup;
+package Paws::CloudWatchLogs::UntagLogGroup;
   use Moose;
   has LogGroupName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'logGroupName' , required => 1);
-  has Tags => (is => 'ro', isa => 'Paws::CloudWatchLogs::Tags', traits => ['NameInRequest'], request_name => 'tags' );
+  has Tags => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'tags' , required => 1);
 
   use MooseX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateLogGroup');
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UntagLogGroup');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
   class_has _result_key => (isa => 'Str', is => 'ro');
 1;
@@ -15,19 +15,19 @@ package Paws::CloudWatchLogs::CreateLogGroup;
 
 =head1 NAME
 
-Paws::CloudWatchLogs::CreateLogGroup - Arguments for method CreateLogGroup on Paws::CloudWatchLogs
+Paws::CloudWatchLogs::UntagLogGroup - Arguments for method UntagLogGroup on Paws::CloudWatchLogs
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method CreateLogGroup on the 
+This class represents the parameters used for calling the method UntagLogGroup on the 
 Amazon CloudWatch Logs service. Use the attributes of this class
-as arguments to method CreateLogGroup.
+as arguments to method UntagLogGroup.
 
-You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateLogGroup.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UntagLogGroup.
 
 As an example:
 
-  $service_obj->CreateLogGroup(Att1 => $value1, Att2 => $value2, ...);
+  $service_obj->UntagLogGroup(Att1 => $value1, Att2 => $value2, ...);
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 
@@ -40,16 +40,16 @@ The name of the log group.
 
 
 
-=head2 Tags => L<Paws::CloudWatchLogs::Tags>
+=head2 B<REQUIRED> Tags => ArrayRef[Str|Undef]
 
-The key-value pairs to use for the tags.
+The tag keys. The corresponding tags are removed from the log group.
 
 
 
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, documenting arguments for method CreateLogGroup in L<Paws::CloudWatchLogs>
+This class forms part of L<Paws>, documenting arguments for method UntagLogGroup in L<Paws::CloudWatchLogs>
 
 =head1 BUGS and CONTRIBUTIONS
 
