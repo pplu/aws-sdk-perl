@@ -19,6 +19,7 @@ package Paws::DMS::ReplicationInstance;
   has ReplicationInstancePublicIpAddresses => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has ReplicationInstanceStatus => (is => 'ro', isa => 'Str');
   has ReplicationSubnetGroup => (is => 'ro', isa => 'Paws::DMS::ReplicationSubnetGroup');
+  has SecondaryAvailabilityZone => (is => 'ro', isa => 'Str');
   has VpcSecurityGroups => (is => 'ro', isa => 'ArrayRef[Paws::DMS::VpcSecurityGroupMembership]', request_name => 'VpcSecurityGroupMembership', traits => ['NameInRequest']);
 1;
 
@@ -184,6 +185,12 @@ Example: C<myrepinstance>
 =head2 ReplicationSubnetGroup => L<Paws::DMS::ReplicationSubnetGroup>
 
   The subnet group for the replication instance.
+
+
+=head2 SecondaryAvailabilityZone => Str
+
+  The availability zone of the standby replication instance in a Multi-AZ
+deployment.
 
 
 =head2 VpcSecurityGroups => ArrayRef[L<Paws::DMS::VpcSecurityGroupMembership>]

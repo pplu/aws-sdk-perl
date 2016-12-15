@@ -86,7 +86,9 @@ Cannot end with a hyphen or contain two consecutive hyphens.
 
 =head2 ReplicationTaskSettings => Str
 
-Settings for the task, such as target metadata settings.
+Settings for the task, such as target metadata settings. For a complete
+list of task settings, see Task Settings for AWS Database Migration
+Service Tasks.
 
 
 

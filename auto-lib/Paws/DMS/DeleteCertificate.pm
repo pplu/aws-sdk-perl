@@ -35,7 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> CertificateArn => Str
 
-the Amazon Resource Name (ARN) of the deleted certificate.
+The Amazon Resource Name (ARN) of the deleted certificate.
 
 
 

@@ -16,7 +16,7 @@ Paws::DMS::DeleteCertificateResponse
 
 =head2 Certificate => L<Paws::DMS::Certificate>
 
-The SSL certificate.
+The Secure Sockets Layer (SSL) certificate.
 
 
 =head2 _request_id => Str

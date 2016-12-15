@@ -17,7 +17,8 @@ Paws::DMS::DescribeCertificatesResponse
 
 =head2 Certificates => ArrayRef[L<Paws::DMS::Certificate>]
 
-The SSL certificates associated with the replication instance.
+The Secure Sockets Layer (SSL) certificates associated with the
+replication instance.
 
 
 =head2 Marker => Str
