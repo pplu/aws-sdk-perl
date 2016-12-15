@@ -51,11 +51,10 @@ Amazon SNS notification message and the data set metadata file.
 Specifies the data set type to be written to the output csv file. The
 data set types customer_support_contacts_data and
 test_customer_support_contacts_data both result in a csv file
-containing the following fields: Product Id, Customer Guid,
-Subscription Guid, Subscription Start Date, Organization, AWS Account
-Id, Given Name, Surname, Telephone Number, Email, Title, Country Code,
-ZIP Code, Operation Type, and Operation Time. Currently, only the
-test_customer_support_contacts_data value is supported
+containing the following fields: Product Id, Product Code, Customer
+Guid, Subscription Guid, Subscription Start Date, Organization, AWS
+Account Id, Given Name, Surname, Telephone Number, Email, Title,
+Country Code, ZIP Code, Operation Type, and Operation Time.
 
 =over
 
@@ -93,8 +92,9 @@ the data set will be published to the S3 bucket root.
 
 =head2 B<REQUIRED> FromDate => Str
 
-The start date from which to retrieve the data set. This parameter only
-affects the customer_support_contacts_data data set type.
+The start date from which to retrieve the data set in UTC. This
+parameter only affects the customer_support_contacts_data data set
+type.
 
 
 
