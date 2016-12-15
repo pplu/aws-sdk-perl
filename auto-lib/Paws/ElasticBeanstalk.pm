@@ -327,7 +327,21 @@ Each argument is described in detail in: L<Paws::ElasticBeanstalk::CreateApplica
 
 Returns: a L<Paws::ElasticBeanstalk::ApplicationVersionDescriptionMessage> instance
 
-  Creates an application version for the specified application.
+  Creates an application version for the specified application. You can
+create an application version from a source bundle in Amazon S3, a
+commit in AWS CodeCommit, or the output of an AWS CodeBuild build as
+follows:
+
+Specify a commit in an AWS CodeCommit repository with
+C<SourceBuildInformation>.
+
+Specify a build in an AWS CodeBuild with C<SourceBuildInformation> and
+C<BuildConfiguration>.
+
+Specify a source bundle in S3 with C<SourceBundle>
+
+Omit both C<SourceBuildInformation> and C<SourceBundle> to use the
+default sample application.
 
 Once you create an application version with a specified Amazon S3
 bucket and key location, you cannot change that Amazon S3 location. If

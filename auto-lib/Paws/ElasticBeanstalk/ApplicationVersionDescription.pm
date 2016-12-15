@@ -51,7 +51,7 @@ Describes the properties of an application version.
 
 =head2 BuildArn => Str
 
-  
+  Reference to the artifact from the AWS CodeBuild build.
 
 
 =head2 DateCreated => Str

@@ -57,7 +57,7 @@ doesn't already exist.
 
 =head2 BuildConfiguration => L<Paws::ElasticBeanstalk::BuildConfiguration>
 
-
+Settings for an AWS CodeBuild build.
 
 
 
@@ -80,17 +80,14 @@ issues prior to deploying the application version to an environment.
 Specify a commit in an AWS CodeCommit Git repository to use as the
 source code for the application version.
 
-Specify a commit in an AWS CodeCommit repository or a source bundle in
-S3 (with C<SourceBundle>), but not both. If neither C<SourceBundle> nor
-C<SourceBuildInformation> are provided, Elastic Beanstalk uses a sample
-application.
-
 
 
 =head2 SourceBundle => L<Paws::ElasticBeanstalk::S3Location>
 
 The Amazon S3 bucket and key that identify the location of the source
 bundle for this version.
+
+The Amazon S3 bucket must be in the same region as the environment.
 
 Specify a source bundle in S3 or a commit in an AWS CodeCommit
 repository (with C<SourceBuildInformation>), but not both. If neither

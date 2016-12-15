@@ -40,18 +40,61 @@ Location of the source code for an application version.
 
 =head2 B<REQUIRED> SourceLocation => Str
 
-  The repository name and commit ID, separated by a forward slash. For
-example, C<my-repo/265cfa0cf6af46153527f55d6503ec030551f57a>.
+  The location of the source code, as a formatted string, depending on
+the value of C<SourceRepository>
+
+=over
+
+=item *
+
+For C<CodeCommit>, the format is the repository name and commit ID,
+separated by a forward slash. For example,
+C<my-git-repo/265cfa0cf6af46153527f55d6503ec030551f57a>.
+
+=item *
+
+For C<S3>, the format is the S3 bucket name and object key, separated
+by a forward slash. For example,
+C<my-s3-bucket/Folders/my-source-file>.
+
+=back
+
 
 
 =head2 B<REQUIRED> SourceRepository => Str
 
-  Location where the repository is stored, such as C<CodeCommit>.
+  Location where the repository is stored.
+
+=over
+
+=item *
+
+C<CodeCommit>
+
+=item *
+
+C<S3>
+
+=back
+
 
 
 =head2 B<REQUIRED> SourceType => Str
 
-  The type of repository, such as C<Git>.
+  The type of repository.
+
+=over
+
+=item *
+
+C<Git>
+
+=item *
+
+C<Zip>
+
+=back
+
 
 
 
