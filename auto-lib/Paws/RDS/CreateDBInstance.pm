@@ -587,6 +587,11 @@ B<Oracle 12c>
 
 =item *
 
+C<12.1.0.2.v6> (supported for EE in all AWS regions, and SE2 in all AWS
+regions except us-gov-west-1)
+
+=item *
+
 C<12.1.0.2.v5> (supported for EE in all AWS regions, and SE2 in all AWS
 regions except us-gov-west-1)
 
@@ -649,6 +654,10 @@ except ap-south-1, ap-northeast-2)
 B<Oracle 11g>
 
 =over
+
+=item *
+
+C<11.2.0.4.v10> (supported for EE, SE1, and SE, in all AWS regions)
 
 =item *
 
