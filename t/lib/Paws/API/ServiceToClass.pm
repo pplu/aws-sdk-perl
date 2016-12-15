@@ -8,6 +8,7 @@ package Paws::API::ServiceToClass;
     autoscaling => 'AutoScaling',
    'application-autoscaling' => 'ApplicationAutoScaling',
     appstream => 'AppStream',
+    batch => 'Batch',
     budgets => 'Budgets',
     cloudformation => 'CloudFormation',
     cloudfront => 'CloudFront',

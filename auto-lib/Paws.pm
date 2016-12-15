@@ -244,6 +244,8 @@ L<Paws::AppStream>
 
 L<Paws::AutoScaling>
 
+L<Paws::Batch>
+
 L<Paws::Budgets>
 
 L<Paws::CloudFormation>

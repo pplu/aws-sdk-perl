@@ -26,6 +26,7 @@
  - New API: AppStream (v2)
  - New API: CodeBuild
  - New API: WAFRegional
+ - New API: Batch
  - SSM API update: new capabilities like patch applying, inventory, maintenance windows
  - Snowball API update: Cluster operations
  - SES API update: Tagging and ConfigurationSets
@@ -68,6 +69,8 @@
  - CloudWatch API update
  - DirectConnect API update: BGP peering
  - Config: API update
+ - DMS API update: ModifyReplicationTask
+ - CloudWatchLogs API update: TagLogGroups
 
 0.28 30 Aug 2015 23:45:00
  - On errors 503 XMLResponse would not process the error correctly (returning
