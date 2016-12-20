@@ -36,9 +36,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AssessmentRunName => Str
 
-You can specify the name for the assessment run, or you can use the
-auto-generated name that is based on the assessment template name. The
-name must be unique for the assessment template.
+You can specify the name for the assessment run. The name must be
+unique for the assessment template whose ARN is used to start the
+assessment run.
 
 
 
