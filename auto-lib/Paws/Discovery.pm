@@ -14,9 +14,24 @@ package Paws::Discovery;
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
 
   
+  sub AssociateConfigurationItemsToApplication {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Discovery::AssociateConfigurationItemsToApplication', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateApplication {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Discovery::CreateApplication', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateTags {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Discovery::CreateTags', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteApplications {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Discovery::DeleteApplications', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteTags {
@@ -44,14 +59,29 @@ package Paws::Discovery;
     my $call_object = $self->new_with_coercions('Paws::Discovery::DescribeTags', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DisassociateConfigurationItemsFromApplication {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Discovery::DisassociateConfigurationItemsFromApplication', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ExportConfigurations {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Discovery::ExportConfigurations', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetDiscoverySummary {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Discovery::GetDiscoverySummary', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListConfigurations {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Discovery::ListConfigurations', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListServerNeighbors {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Discovery::ListServerNeighbors', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub StartDataCollectionByAgentIds {
@@ -64,10 +94,15 @@ package Paws::Discovery;
     my $call_object = $self->new_with_coercions('Paws::Discovery::StopDataCollectionByAgentIds', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpdateApplication {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Discovery::UpdateApplication', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   
 
 
-  sub operations { qw/CreateTags DeleteTags DescribeAgents DescribeConfigurations DescribeExportConfigurations DescribeTags ExportConfigurations ListConfigurations StartDataCollectionByAgentIds StopDataCollectionByAgentIds / }
+  sub operations { qw/AssociateConfigurationItemsToApplication CreateApplication CreateTags DeleteApplications DeleteTags DescribeAgents DescribeConfigurations DescribeExportConfigurations DescribeTags DisassociateConfigurationItemsFromApplication ExportConfigurations GetDiscoverySummary ListConfigurations ListServerNeighbors StartDataCollectionByAgentIds StopDataCollectionByAgentIds UpdateApplication / }
 
 1;
 
@@ -95,354 +130,100 @@ Paws::Discovery - Perl Interface to AWS AWS Application Discovery Service
 
 =head1 DESCRIPTION
 
-The AWS Application Discovery Service helps Systems Integrators quickly
-and reliably plan application migration projects by automatically
-identifying applications running in on-premises data centers, their
-associated dependencies, and their performance profile.
+AWS Application Discovery Service
 
-Planning data center migrations can involve thousands of workloads that
-are often deeply interdependent. Application discovery and dependency
-mapping are important early first steps in the migration process, but
-difficult to perform at scale due to the lack of automated tools.
+AWS Application Discovery Service helps you plan application migration
+projects by automatically identifying servers, virtual machines (VMs),
+software, and software dependencies running in your on-premises data
+centers. Application Discovery Service also collects application
+performance data, which can help you assess the outcome of your
+migration. The data collected by Application Discovery Service is
+securely retained in an Amazon-hosted and managed database in the
+cloud. You can export the data as a CSV or XML file into your preferred
+visualization tool or cloud-migration solution to plan your migration.
+For more information, see the Application Discovery Service FAQ.
 
-The AWS Application Discovery Service automatically collects
-configuration and usage data from servers to develop a list of
-applications, how they perform, and how they are interdependent. This
-information is securely retained in an AWS Application Discovery
-Service database which you can export as a CSV file into your preferred
-visualization tool or cloud migration solution to help reduce the
-complexity and time in planning your cloud migration.
+Application Discovery Service offers two modes of operation.
 
-The Application Discovery Service is currently available for preview.
-Only customers who are engaged with AWS Professional Services or a
-certified AWS partner can use the service. To see the list of certified
-partners and request access to the Application Discovery Service,
-complete the following preview form.
+=over
+
+=item *
+
+B<Agentless discovery> mode is recommended for environments that use
+VMware vCenter Server. This mode doesn't require you to install an
+agent on each host. Agentless discovery gathers server information
+regardless of the operating systems, which minimizes the time required
+for initial on-premises infrastructure assessment. Agentless discovery
+doesn't collect information about software and software dependencies.
+It also doesn't work in non-VMware environments. We recommend that you
+use agent-based discovery for non-VMware environments and if you want
+to collect information about software and software dependencies. You
+can also run agent-based and agentless discovery simultaneously. Use
+agentless discovery to quickly complete the initial infrastructure
+assessment and then install agents on select hosts to gather
+information about software and software dependencies.
+
+=item *
+
+B<Agent-based discovery> mode collects a richer set of data than
+agentless discovery by using Amazon software, the AWS Application
+Discovery Agent, which you install on one or more hosts in your data
+center. The agent captures infrastructure and application information,
+including an inventory of installed software applications, system and
+process performance, resource utilization, and network dependencies
+between workloads. The information collected by agents is secured at
+rest and in transit to the Application Discovery Service database in
+the cloud.
+
+=back
+
+Application Discovery Service integrates with application discovery
+solutions from AWS Partner Network (APN) partners. Third-party
+application discovery tools can query the Application Discovery Service
+and write to the Application Discovery Service database using a public
+API. You can then import the data into either a visualization tool or
+cloud-migration solution.
+
+Application Discovery Service doesn't gather sensitive information. All
+data is handled according to the AWS Privacy Policy. You can operate
+Application Discovery Service using offline mode to inspect collected
+data before it is shared with the service.
+
+Your AWS account must be granted access to Application Discovery
+Service, a process called I<whitelisting>. This is true for AWS
+partners and customers alike. To request access, sign up for the AWS
+Application Discovery Service here. We will send you information about
+how to get started.
 
 This API reference provides descriptions, syntax, and usage examples
-for each of the actions and data types for the Discovery Service. The
-topic for each action shows the API request parameters and the
-response. Alternatively, you can use one of the AWS SDKs to access an
-API that is tailored to the programming language or platform that
+for each of the actions and data types for the Application Discovery
+Service. The topic for each action shows the API request parameters and
+the response. Alternatively, you can use one of the AWS SDKs to access
+an API that is tailored to the programming language or platform that
 you're using. For more information, see AWS SDKs.
 
-This guide is intended for use with the I<AWS Discovery Service User
-Guide> .
-
-The following are short descriptions of each API action, organized by
-function.
-
-B<Managing AWS Agents Using the Application Discovery Service>
-
-An AWS agent is software that you install on on-premises servers and
-virtual machines that are targeted for discovery and migration. Agents
-run on Linux and Windows Server and collect server configuration and
-activity information about your applications and infrastructure.
-Specifically, agents collect the following information and send it to
-the Application Discovery Service using Secure Sockets Layer (SSL)
-encryption:
-
-=over
-
-=item *
-
-User information (user name, home directory)
-
-=item *
-
-Group information (name)
-
-=item *
-
-List of installed packages
-
-=item *
-
-List of kernel modules
-
-=item *
-
-All create and stop process events
-
-=item *
-
-DNS queries
-
-=item *
-
-NIC information
-
-=item *
-
-TCP/UDP process listening ports
-
-=item *
-
-TCPV4/V6 connections
-
-=item *
-
-Operating system information
-
-=item *
-
-System performance
-
-=item *
-
-Process performance
-
-=back
-
-The Application Discovery Service API includes the following actions to
-manage AWS agents:
-
-=over
-
-=item *
-
-I<StartDataCollectionByAgentIds>: Instructs the specified agents to
-start collecting data. The Application Discovery Service takes several
-minutes to receive and process data after you initiate data collection.
-
-=item *
-
-I<StopDataCollectionByAgentIds>: Instructs the specified agents to stop
-collecting data.
-
-=item *
-
-I<DescribeAgents>: Lists AWS agents by ID or lists all agents
-associated with your user account if you did not specify an agent ID.
-The output includes agent IDs, IP addresses, media access control (MAC)
-addresses, agent health, host name where the agent resides, and the
-version number of each agent.
-
-=back
-
-B<Querying Configuration Items>
-
-A I<configuration item> is an IT asset that was discovered in your data
-center by an AWS agent. When you use the Application Discovery Service,
-you can specify filters and query specific configuration items. The
-service supports Server, Process, and Connection configuration items.
-This means you can specify a value for the following keys and query
-your IT assets:
-
-B<Server>
-
-=over
-
-=item *
-
-server.HostName
-
-=item *
-
-server.osName
-
-=item *
-
-server.osVersion
-
-=item *
-
-server.configurationId
-
-=item *
-
-server.agentId
-
-=back
-
-B<Process>
-
-=over
-
-=item *
-
-process.name
-
-=item *
-
-process.CommandLine
-
-=item *
-
-process.configurationId
-
-=item *
-
-server.hostName
-
-=item *
-
-server.osName
-
-=item *
-
-server.osVersion
-
-=item *
-
-server.configurationId
-
-=item *
-
-server.agentId
-
-=back
-
-B<Connection>
-
-=over
-
-=item *
-
-connection.sourceIp
-
-=item *
-
-connection.sourcePort
-
-=item *
-
-connection.destinationIp
-
-=item *
-
-connection.destinationPort
-
-=item *
-
-sourceProcess.configurationId
-
-=item *
-
-sourceProcess.commandLine
-
-=item *
-
-sourceProcess.name
-
-=item *
-
-destinationProcessId.configurationId
-
-=item *
-
-destinationProcess.commandLine
-
-=item *
-
-destinationProcess.name
-
-=item *
-
-sourceServer.configurationId
-
-=item *
-
-sourceServer.hostName
-
-=item *
-
-sourceServer.osName
-
-=item *
-
-sourceServer.osVersion
-
-=item *
-
-destinationServer.configurationId
-
-=item *
-
-destinationServer.hostName
-
-=item *
-
-destinationServer.osName
-
-=item *
-
-destinationServer.osVersion
-
-=back
-
-The Application Discovery Service includes the following actions for
-querying configuration items.
-
-=over
-
-=item *
-
-I<DescribeConfigurations>: Retrieves a list of attributes for a
-specific configuration ID. For example, the output for a I<server>
-configuration item includes a list of attributes about the server,
-including host name, operating system, number of network cards, etc.
-
-=item *
-
-I<ListConfigurations>: Retrieves a list of configuration items
-according to the criteria you specify in a filter. The filter criteria
-identify relationship requirements. For example, you can specify filter
-criteria of process.name with values of I<nginx> and I<apache>.
-
-=back
-
-B<Tagging Discovered Configuration Items>
-
-You can tag discovered configuration items. Tags are metadata that help
-you categorize IT assets in your data center. Tags use a
-I<key>-I<value> format. For example, C<{"key": "serverType", "value":
-"webServer"}>.
-
-=over
-
-=item *
-
-I<CreateTags>: Creates one or more tags for a configuration items.
-
-=item *
-
-I<DescribeTags>: Retrieves a list of configuration items that are
-tagged with a specific tag. I<Or>, retrieves a list of all tags
-assigned to a specific configuration item.
-
-=item *
-
-I<DeleteTags>: Deletes the association between a configuration item and
-one or more tags.
-
-=back
-
-B<Exporting Data>
-
-You can export data as a CSV file to an Amazon S3 bucket or into your
-preferred visualization tool or cloud migration solution to help reduce
-the complexity and time in planning your cloud migration.
-
-=over
-
-=item *
-
-I<ExportConfigurations>: Exports all discovered configuration data to
-an Amazon S3 bucket. Data includes tags and tag associations,
-processes, connections, servers, and system performance. This API
-returns an export ID which you can query using the GetExportStatus API.
-
-=item *
-
-I<DescribeExportConfigurations>: Gets the status of the data export.
-When the export is complete, the service returns an Amazon S3 URL where
-you can download CSV files that include the data.
-
-=back
-
+This guide is intended for use with the I<AWS Application Discovery
+Service User Guide> .
 
 =head1 METHODS
+
+=head2 AssociateConfigurationItemsToApplication(ApplicationConfigurationId => Str, ConfigurationIds => ArrayRef[Str|Undef])
+
+Each argument is described in detail in: L<Paws::Discovery::AssociateConfigurationItemsToApplication>
+
+Returns: a L<Paws::Discovery::AssociateConfigurationItemsToApplicationResponse> instance
+
+  Associates one or more configuration items with an application.
+
+
+=head2 CreateApplication(Name => Str, [Description => Str])
+
+Each argument is described in detail in: L<Paws::Discovery::CreateApplication>
+
+Returns: a L<Paws::Discovery::CreateApplicationResponse> instance
+
+  Creates an application with the given name and description.
+
 
 =head2 CreateTags(ConfigurationIds => ArrayRef[Str|Undef], Tags => ArrayRef[L<Paws::Discovery::Tag>])
 
@@ -452,6 +233,16 @@ Returns: a L<Paws::Discovery::CreateTagsResponse> instance
 
   Creates one or more tags for configuration items. Tags are metadata
 that help you categorize IT assets. This API accepts a list of multiple
+configuration items.
+
+
+=head2 DeleteApplications(ConfigurationIds => ArrayRef[Str|Undef])
+
+Each argument is described in detail in: L<Paws::Discovery::DeleteApplications>
+
+Returns: a L<Paws::Discovery::DeleteApplicationsResponse> instance
+
+  Deletes a list of applications and their associations with
 configuration items.
 
 
@@ -465,14 +256,14 @@ Returns: a L<Paws::Discovery::DeleteTagsResponse> instance
 tags. This API accepts a list of multiple configuration items.
 
 
-=head2 DescribeAgents([AgentIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+=head2 DescribeAgents([AgentIds => ArrayRef[Str|Undef], Filters => ArrayRef[L<Paws::Discovery::Filter>], MaxResults => Int, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::Discovery::DescribeAgents>
 
 Returns: a L<Paws::Discovery::DescribeAgentsResponse> instance
 
-  Lists AWS agents by ID or lists all agents associated with your user
-account if you did not specify an agent ID.
+  Lists agents or the Connector by ID or lists all agents/Connectors
+associated with your user account if you did not specify an ID.
 
 
 =head2 DescribeConfigurations(ConfigurationIds => ArrayRef[Str|Undef])
@@ -481,10 +272,15 @@ Each argument is described in detail in: L<Paws::Discovery::DescribeConfiguratio
 
 Returns: a L<Paws::Discovery::DescribeConfigurationsResponse> instance
 
-  Retrieves a list of attributes for a specific configuration ID. For
-example, the output for a I<server> configuration item includes a list
-of attributes about the server, including host name, operating system,
-number of network cards, etc.
+  Retrieves attributes for a list of configuration item IDs. All of the
+supplied IDs must be for the same asset type (server, application,
+process, or connection). Output fields are specific to the asset type
+selected. For example, the output for a I<server> configuration item
+includes a list of attributes about the server, such as host name,
+operating system, and number of network cards.
+
+For a complete list of outputs for each asset type, see Querying
+Discovered Configuration Items.
 
 
 =head2 DescribeExportConfigurations([ExportIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
@@ -508,6 +304,15 @@ tag. Or retrieves a list of all tags assigned to a specific
 configuration item.
 
 
+=head2 DisassociateConfigurationItemsFromApplication(ApplicationConfigurationId => Str, ConfigurationIds => ArrayRef[Str|Undef])
+
+Each argument is described in detail in: L<Paws::Discovery::DisassociateConfigurationItemsFromApplication>
+
+Returns: a L<Paws::Discovery::DisassociateConfigurationItemsFromApplicationResponse> instance
+
+  Disassociates one or more configuration items from an application.
+
+
 =head2 ExportConfigurations( => )
 
 Each argument is described in detail in: L<Paws::Discovery::ExportConfigurations>
@@ -518,19 +323,38 @@ Returns: a L<Paws::Discovery::ExportConfigurationsResponse> instance
 application that enables you to view and evaluate the data. Data
 includes tags and tag associations, processes, connections, servers,
 and system performance. This API returns an export ID which you can
-query using the I<GetExportStatus> API. The system imposes a limit of
-two configuration exports in six hours.
+query using the I<DescribeExportConfigurations> API. The system imposes
+a limit of two configuration exports in six hours.
 
 
-=head2 ListConfigurations(ConfigurationType => Str, [Filters => ArrayRef[L<Paws::Discovery::Filter>], MaxResults => Int, NextToken => Str])
+=head2 GetDiscoverySummary()
+
+Each argument is described in detail in: L<Paws::Discovery::GetDiscoverySummary>
+
+Returns: a L<Paws::Discovery::GetDiscoverySummaryResponse> instance
+
+  Retrieves a short summary of discovered assets.
+
+
+=head2 ListConfigurations(ConfigurationType => Str, [Filters => ArrayRef[L<Paws::Discovery::Filter>], MaxResults => Int, NextToken => Str, OrderBy => ArrayRef[L<Paws::Discovery::OrderByElement>]])
 
 Each argument is described in detail in: L<Paws::Discovery::ListConfigurations>
 
 Returns: a L<Paws::Discovery::ListConfigurationsResponse> instance
 
-  Retrieves a list of configurations items according to the criteria you
+  Retrieves a list of configuration items according to criteria you
 specify in a filter. The filter criteria identify relationship
 requirements.
+
+
+=head2 ListServerNeighbors(ConfigurationId => Str, [MaxResults => Int, NeighborConfigurationIds => ArrayRef[Str|Undef], NextToken => Str, PortInformationNeeded => Bool])
+
+Each argument is described in detail in: L<Paws::Discovery::ListServerNeighbors>
+
+Returns: a L<Paws::Discovery::ListServerNeighborsResponse> instance
+
+  Retrieves a list of servers which are one network hop away from a
+specified server.
 
 
 =head2 StartDataCollectionByAgentIds(AgentIds => ArrayRef[Str|Undef])
@@ -539,8 +363,7 @@ Each argument is described in detail in: L<Paws::Discovery::StartDataCollectionB
 
 Returns: a L<Paws::Discovery::StartDataCollectionByAgentIdsResponse> instance
 
-  Instructs the specified agents to start collecting data. Agents can
-reside on host servers or virtual machines in your data center.
+  Instructs the specified agents or Connectors to start collecting data.
 
 
 =head2 StopDataCollectionByAgentIds(AgentIds => ArrayRef[Str|Undef])
@@ -549,7 +372,16 @@ Each argument is described in detail in: L<Paws::Discovery::StopDataCollectionBy
 
 Returns: a L<Paws::Discovery::StopDataCollectionByAgentIdsResponse> instance
 
-  Instructs the specified agents to stop collecting data.
+  Instructs the specified agents or Connectors to stop collecting data.
+
+
+=head2 UpdateApplication(ConfigurationId => Str, [Description => Str, Name => Str])
+
+Each argument is described in detail in: L<Paws::Discovery::UpdateApplication>
+
+Returns: a L<Paws::Discovery::UpdateApplicationResponse> instance
+
+  Updates metadata about an application.
 
 
 

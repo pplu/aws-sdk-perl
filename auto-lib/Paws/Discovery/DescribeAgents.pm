@@ -2,6 +2,7 @@
 package Paws::Discovery::DescribeAgents;
   use Moose;
   has AgentIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'agentIds' );
+  has Filters => (is => 'ro', isa => 'ArrayRef[Paws::Discovery::Filter]', traits => ['NameInRequest'], request_name => 'filters' );
   has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults' );
   has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
 
@@ -37,22 +38,39 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AgentIds => ArrayRef[Str|Undef]
 
-The agent IDs for which you want information. If you specify no IDs,
-the system returns information about all agents associated with your
-AWS user account.
+The agent or the Connector IDs for which you want information. If you
+specify no IDs, the system returns information about all
+agents/Connectors associated with your AWS user account.
+
+
+
+=head2 Filters => ArrayRef[L<Paws::Discovery::Filter>]
+
+You can filter the request using various logical operators and a
+I<key>-I<value> format. For example:
+
+C<{"key": "collectionStatus", "value": "STARTED"}>
+
+For a complete list of filter options and guidance about using them
+with this action, see Managing AWS Application Discovery Service Agents
+and the AWS Application Discovery Connector .
 
 
 
 =head2 MaxResults => Int
 
-The total number of agents to return. The maximum value is 100.
+The total number of agents/Connectors to return in a single page of
+output. The maximum value is 100.
 
 
 
 =head2 NextToken => Str
 
-A token to start the list. Use this token to get the next set of
-results.
+Token to retrieve the next set of results. For example, if you
+previously specified 100 IDs for C<DescribeAgentsRequest$agentIds> but
+set C<DescribeAgentsRequest$maxResults> to 10, you received a set of 10
+results along with a token. Use that token in this query to get the
+next set of 10.
 
 
 

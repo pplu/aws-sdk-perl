@@ -41,11 +41,16 @@ You can filter the list using a I<key>-I<value> format. You can
 separate these items by using logical operators. Allowed filters
 include C<tagKey>, C<tagValue>, and C<configurationId>.
 
+For a complete list of filter options and guidance about using them
+with this action, see Managing AWS Application Discovery Service Agents
+and the AWS Application Discovery Connector .
+
 
 
 =head2 MaxResults => Int
 
-The total number of items to return. The maximum value is 100.
+The total number of items to return in a single page of output. The
+maximum value is 100.
 
 
 

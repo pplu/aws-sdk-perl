@@ -16,9 +16,10 @@ Paws::Discovery::StartDataCollectionByAgentIdsResponse
 
 =head2 AgentsConfigurationStatus => ArrayRef[L<Paws::Discovery::AgentConfigurationStatus>]
 
-Information about agents that were instructed to start collecting data.
-Information includes the agent ID, a description of the operation
-performed, and whether or not the agent configuration was updated.
+Information about agents or the Connector that were instructed to start
+collecting data. Information includes the agent/Connector ID, a
+description of the operation performed, and whether or not the
+agent/Connector configuration was updated.
 
 
 =head2 _request_id => Str
