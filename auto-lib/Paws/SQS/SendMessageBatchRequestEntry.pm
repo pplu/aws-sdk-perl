@@ -36,17 +36,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SQS::SendMe
 
 =head1 DESCRIPTION
 
-Contains the details of a single Amazon SQS message along with a C<Id>.
+Contains the details of a single Amazon SQS message along with an
+C<Id>.
 
 =head1 ATTRIBUTES
 
 
 =head2 DelaySeconds => Int
 
-  The number of seconds (0 to 900 - 15 minutes) to delay a specific
-message. Messages with a positive C<DelaySeconds> value become
-available for processing after the delay time is finished. If you don't
-specify a value, the default value for the queue applies.
+  The number of seconds for which a specific message is delayed. Valid
+values: 0 to 900. Maximum: 15 minutes. Messages with a positive
+C<DelaySeconds> value become available for processing after the delay
+period is finished. If you don't specify a value, the default value for
+the queue is applied.
 
 When you set C<FifoQueue>, you can't set C<DelaySeconds> per message.
 You can set this parameter only on a queue level.
@@ -54,21 +56,22 @@ You can set this parameter only on a queue level.
 
 =head2 B<REQUIRED> Id => Str
 
-  An identifier for the message in this batch. This is used to
-communicate the result. Note that the C<Id>s of a batch request need to
-be unique within the request.
+  An identifier for a message in this batch used to communicate the
+result.
+
+The C<Id>s of a batch request need to be unique within a request
 
 
 =head2 MessageAttributes => L<Paws::SQS::MessageBodyAttributeMap>
 
-  Each message attribute consists of a Name, Type, and Value. For more
-information, see Message Attribute Items and Validation in the I<Amazon
-SQS Developer Guide>.
+  Each message attribute consists of a C<Name>, C<Type>, and C<Value>.
+For more information, see Message Attribute Items and Validation in the
+I<Amazon SQS Developer Guide>.
 
 
 =head2 B<REQUIRED> MessageBody => Str
 
-  Body of the message.
+  The body of the message.
 
 
 =head2 MessageDeduplicationId => Str

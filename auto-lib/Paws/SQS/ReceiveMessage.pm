@@ -100,8 +100,8 @@ C<SequenceNumber> - Returns the value provided by Amazon SQS.
 
 =back
 
-Any other valid special request parameters (such as the following) that
-are specified are ignored:
+Any other valid special request parameters (such as the following) are
+ignored:
 
 =over
 
@@ -128,6 +128,10 @@ C<ContentBasedDeduplication>
 =item *
 
 C<DelaySeconds>
+
+=item *
+
+C<FifoQueue>
 
 =item *
 
@@ -159,10 +163,6 @@ C<RedrivePolicy>
 
 =item *
 
-C<FifoQueue>
-
-=item *
-
 C<VisibilityTimeout>
 
 =back
@@ -173,34 +173,53 @@ C<VisibilityTimeout>
 =head2 MaxNumberOfMessages => Int
 
 The maximum number of messages to return. Amazon SQS never returns more
-messages than this value but might return fewer. Values can be from 1
-to 10. Default is 1.
-
-All of the messages are not necessarily returned.
+messages than this value (however, fewer messages might be returned).
+Valid values are 1 to 10. Default is 1.
 
 
 
 =head2 MessageAttributeNames => ArrayRef[Str|Undef]
 
-The name of the message attribute, where I<N> is the index. The message
-attribute name can contain the following characters: A-Z, a-z, 0-9,
-underscore (_), hyphen (-), and period (.). The name must not start or
-end with a period, and it should not have successive periods. The name
-is case sensitive and must be unique among all attribute names for the
-message. The name can be up to 256 characters long. The name can't
-start with "AWS." or "Amazon." (or any variations in casing), because
-these prefixes are reserved for use by Amazon Web Services.
+The name of the message attribute, where I<N> is the index.
+
+=over
+
+=item *
+
+The name can contain alphanumeric characters and the underscore (C<_>),
+hyphen (C<->), and period (C<.>).
+
+=item *
+
+The name is case-sensitive and must be unique among all attribute names
+for the message.
+
+=item *
+
+The name must not start with AWS-reserved prefixes such as C<AWS.> or
+C<Amazon.> (or any casing variants).
+
+=item *
+
+The name must not start or end with a period (C<.>), and it should not
+have periods in succession (C<..>).
+
+=item *
+
+The name can be up to 256 characters long.
+
+=back
 
 When using C<ReceiveMessage>, you can send a list of attribute names to
-receive, or you can return all of the attributes by specifying "All" or
-".*" in your request. You can also use "bar.*" to return all message
-attributes starting with the "bar" prefix.
+receive, or you can return all of the attributes by specifying C<All>
+or C<.*> in your request. You can also use all message attributes
+starting with a prefix, for example C<bar.*>.
 
 
 
 =head2 B<REQUIRED> QueueUrl => Str
 
-The URL of the Amazon SQS queue to take action on.
+The URL of the Amazon SQS queue from which messages are received.
 
 Queue URLs are case-sensitive.
 
@@ -270,9 +289,9 @@ with another C<MessageGroupId> as long as it is also visible.
 =item *
 
 If a caller of C<ReceiveMessage> can't track the
-C<ReceiveRequestAttemptId>, no retries will work until the original
+C<ReceiveRequestAttemptId>, no retries work until the original
 visibility timeout expires. As a result, delays might occur but the
-messages in the queue will remain in a strict order.
+messages in the queue remain in a strict order.
 
 =back
 
@@ -297,9 +316,9 @@ C<ReceiveMessage> request.
 
 =head2 WaitTimeSeconds => Int
 
-The duration (in seconds) for which the call will wait for a message to
+The duration (in seconds) for which the call waits for a message to
 arrive in the queue before returning. If a message is available, the
-call will return sooner than WaitTimeSeconds.
+call returns sooner than C<WaitTimeSeconds>.
 
 
 

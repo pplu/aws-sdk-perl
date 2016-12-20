@@ -39,14 +39,46 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 B<REQUIRED> Actions => ArrayRef[Str|Undef]
 
 The action the client wants to allow for the specified principal. The
-following are valid values: C<* | SendMessage | ReceiveMessage |
-DeleteMessage | ChangeMessageVisibility | GetQueueAttributes |
-GetQueueUrl>. For more information about these actions, see
-Understanding Permissions in the I<Amazon SQS Developer Guide>.
+following values are valid:
+
+=over
+
+=item *
+
+C<*>
+
+=item *
+
+C<ChangeMessageVisibility>
+
+=item *
+
+C<DeleteMessage>
+
+=item *
+
+C<GetQueueAttributes>
+
+=item *
+
+C<GetQueueUrl>
+
+=item *
+
+C<ReceiveMessage>
+
+=item *
+
+C<SendMessage>
+
+=back
+
+For more information about these actions, see Understanding Permissions
+in the I<Amazon SQS Developer Guide>.
 
 Specifying C<SendMessage>, C<DeleteMessage>, or
-C<ChangeMessageVisibility> for the C<ActionName.n> also grants
-permissions for the corresponding batch versions of those actions:
+C<ChangeMessageVisibility> for C<ActionName.n> also grants permissions
+for the corresponding batch versions of those actions:
 C<SendMessageBatch>, C<DeleteMessageBatch>, and
 C<ChangeMessageVisibilityBatch>.
 
@@ -54,9 +86,9 @@ C<ChangeMessageVisibilityBatch>.
 
 =head2 B<REQUIRED> AWSAccountIds => ArrayRef[Str|Undef]
 
-The AWS account number of the principal who will be given permission.
-The principal must have an AWS account, but does not need to be signed
-up for Amazon SQS. For information about locating the AWS account
+The AWS account number of the principal who is given permission. The
+principal must have an AWS account, but does not need to be signed up
+for Amazon SQS. For information about locating the AWS account
 identification, see Your AWS Identifiers in the I<Amazon SQS Developer
 Guide>.
 
@@ -64,15 +96,16 @@ Guide>.
 
 =head2 B<REQUIRED> Label => Str
 
-The unique identification of the permission you're setting (e.g.,
-C<AliceSendMessage>). Constraints: Maximum 80 characters; alphanumeric
-characters, hyphens (-), and underscores (_) are allowed.
+The unique identification of the permission you're setting (for
+example, C<AliceSendMessage>). Maximum 80 characters. Allowed
+characters include alphanumeric characters, hyphens (C<->), and
+underscores (C<_>).
 
 
 
 =head2 B<REQUIRED> QueueUrl => Str
 
-The URL of the Amazon SQS queue to take action on.
+The URL of the Amazon SQS queue to which permissions are added.
 
 Queue URLs are case-sensitive.
 

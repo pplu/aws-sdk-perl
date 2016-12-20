@@ -17,7 +17,7 @@ Paws::SQS::GetQueueAttributesResult
 
 =head2 Attributes => L<Paws::SQS::QueueAttributeMap>
 
-A map of attributes to the respective values.
+A map of attributes to their respective values.
 
 
 =head2 _request_id => Str

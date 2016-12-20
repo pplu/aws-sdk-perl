@@ -17,7 +17,7 @@ Paws::SQS::ListQueuesResult
 
 =head2 QueueUrls => ArrayRef[Str|Undef]
 
-A list of queue URLs, up to 1000 entries.
+A list of queue URLs, up to 1,000 entries.
 
 
 =head2 _request_id => Str

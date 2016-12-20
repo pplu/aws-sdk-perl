@@ -38,9 +38,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 A list of attributes for which to retrieve information.
 
-Going forward, new attributes might be added. If you are writing code
-that calls this action, we recommend that you structure your code so
-that it can handle new attributes gracefully.
+In the future, new attributes might be added. If you write code that
+calls this action, we recommend that you structure your code so that it
+can handle new attributes gracefully.
 
 The following attributes are supported:
 
@@ -64,9 +64,9 @@ of messages that are waiting to be added to the queue.
 =item *
 
 C<ApproximateNumberOfMessagesNotVisible> - Returns the approximate
-number of messages that have not timed-out and are not deleted. For
-more information, see Resources Required to Process Messages in the
-I<Amazon SQS Developer Guide>.
+number of messages that have not timed-out and aren't deleted. For more
+information, see Resources Required to Process Messages in the I<Amazon
+SQS Developer Guide>.
 
 =item *
 
@@ -103,7 +103,7 @@ C<QueueArn> - Returns the Amazon resource name (ARN) of the queue.
 =item *
 
 C<ReceiveMessageWaitTimeSeconds> - Returns the number of seconds for
-which ReceiveMessage call will wait for a message to arrive.
+which the C<ReceiveMessage> action waits for a message to arrive.
 
 =item *
 
@@ -143,7 +143,8 @@ Exactly-Once Processing in the I<Amazon SQS Developer Guide>.
 
 =head2 B<REQUIRED> QueueUrl => Str
 
-The URL of the Amazon SQS queue to take action on.
+The URL of the Amazon SQS queue whose attribute information is
+retrieved.
 
 Queue URLs are case-sensitive.
 

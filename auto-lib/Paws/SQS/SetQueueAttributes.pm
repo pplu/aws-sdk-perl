@@ -46,20 +46,21 @@ request parameters that the C<SetQueueAttributes> action uses:
 =item *
 
 C<DelaySeconds> - The number of seconds for which the delivery of all
-messages in the queue is delayed. An integer from 0 to 900 (15
-minutes). The default is 0 (zero).
+messages in the queue is delayed. Valid values: An integer from 0 to
+900 (15 minutes). The default is 0 (zero).
 
 =item *
 
 C<MaximumMessageSize> - The limit of how many bytes a message can
-contain before Amazon SQS rejects it. An integer from 1,024 bytes (1
-KiB) up to 262,144 bytes (256 KiB). The default is 262,144 (256 KiB).
+contain before Amazon SQS rejects it. Valid values: An integer from
+1,024 bytes (1 KiB) up to 262,144 bytes (256 KiB). The default is
+262,144 (256 KiB).
 
 =item *
 
 C<MessageRetentionPeriod> - The number of seconds for which Amazon SQS
-retains a message. An integer representing seconds, from 60 (1 minute)
-to 120,9600 (14 days). The default is 345,600 (4 days).
+retains a message. Valid values: An integer representing seconds, from
+60 (1 minute) to 1,209,600 (14 days). The default is 345,600 (4 days).
 
 =item *
 
@@ -69,9 +70,9 @@ the I<Amazon IAM User Guide>.
 
 =item *
 
-C<ReceiveMessageWaitTimeSeconds> - The number of seconds for which a
-ReceiveMessage action will wait for a message to arrive. An integer
-from 0 to 20 (seconds). The default is 0.
+C<ReceiveMessageWaitTimeSeconds> - The number of seconds for which a C<
+ReceiveMessage > action waits for a message to arrive. Valid values: an
+integer from 0 to 20 (seconds). The default is 0.
 
 =item *
 
@@ -86,10 +87,10 @@ standard queue.
 
 =item *
 
-C<VisibilityTimeout> - The visibility timeout for the queue. An integer
-from 0 to 43200 (12 hours). The default is 30. For more information
-about the visibility timeout, see Visibility Timeout in the I<Amazon
-SQS Developer Guide>.
+C<VisibilityTimeout> - The visibility timeout for the queue. Valid
+values: an integer from 0 to 43,200 (12 hours). The default is 30. For
+more information about the visibility timeout, see Visibility Timeout
+in the I<Amazon SQS Developer Guide>.
 
 =back
 
@@ -158,16 +159,43 @@ delivered.
 
 =back
 
-Any other valid special request parameters that are specified (such as
-C<ApproximateNumberOfMessages>, C<ApproximateNumberOfMessagesDelayed>,
-C<ApproximateNumberOfMessagesNotVisible>, C<CreatedTimestamp>,
-C<LastModifiedTimestamp>, and C<QueueArn>) will be ignored.
+Any other valid special request parameters (such as the following) are
+ignored:
+
+=over
+
+=item *
+
+C<ApproximateNumberOfMessages>
+
+=item *
+
+C<ApproximateNumberOfMessagesDelayed>
+
+=item *
+
+C<ApproximateNumberOfMessagesNotVisible>
+
+=item *
+
+C<CreatedTimestamp>
+
+=item *
+
+C<LastModifiedTimestamp>
+
+=item *
+
+C<QueueArn>
+
+=back
+
 
 
 
 =head2 B<REQUIRED> QueueUrl => Str
 
-The URL of the Amazon SQS queue to take action on.
+The URL of the Amazon SQS queue whose attributes are set.
 
 Queue URLs are case-sensitive.
 

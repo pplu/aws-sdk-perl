@@ -42,7 +42,7 @@ A list of SendMessageBatchRequestEntry items.
 
 =head2 B<REQUIRED> QueueUrl => Str
 
-The URL of the Amazon SQS queue to take action on.
+The URL of the Amazon SQS queue to which batched messages are sent.
 
 Queue URLs are case-sensitive.
 

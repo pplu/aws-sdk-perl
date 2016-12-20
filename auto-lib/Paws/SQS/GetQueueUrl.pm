@@ -36,8 +36,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> QueueName => Str
 
-The name of the queue whose URL must be fetched. Maximum 80 characters;
-alphanumeric characters, hyphens (-), and underscores (_) are allowed.
+The name of the queue whose URL must be fetched. Maximum 80 characters.
+Valid values: alphanumeric characters, hyphens (C<->), and underscores
+(C<_>).
 
 Queue names are case-sensitive.
 

@@ -17,7 +17,7 @@ Paws::SQS::GetQueueUrlResult
 
 =head2 QueueUrl => Str
 
-The URL for the queue.
+The URL of the queue.
 
 
 =head2 _request_id => Str

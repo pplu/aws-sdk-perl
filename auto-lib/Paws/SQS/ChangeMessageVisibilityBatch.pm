@@ -43,7 +43,7 @@ timeout must be changed.
 
 =head2 B<REQUIRED> QueueUrl => Str
 
-The URL of the Amazon SQS queue to take action on.
+The URL of the Amazon SQS queue whose messages' visibility is changed.
 
 Queue URLs are case-sensitive.
 

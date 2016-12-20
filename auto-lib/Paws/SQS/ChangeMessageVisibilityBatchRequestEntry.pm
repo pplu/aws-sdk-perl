@@ -33,13 +33,13 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SQS::Change
 
 =head1 DESCRIPTION
 
-Encloses a receipt handle and an entry id for each message in
-ChangeMessageVisibilityBatch.
+Encloses a receipt handle and an entry id for each message in C<
+ChangeMessageVisibilityBatch >.
 
-All of the following parameters are list parameters that must be
-prefixed with C<ChangeMessageVisibilityBatchRequestEntry.n>, where C<n>
-is an integer value starting with 1. For example, a parameter list for
-this action might look like this:
+All of the following list parameters must be prefixed with
+C<ChangeMessageVisibilityBatchRequestEntry.n>, where C<n> is an integer
+value starting with C<1>. For example, a parameter list for this action
+might look like this:
 
 C<&amp;ChangeMessageVisibilityBatchRequestEntry.1.Id=change_visibility_msg_2>
 
@@ -52,9 +52,10 @@ C<&amp;ChangeMessageVisibilityBatchRequestEntry.1.VisibilityTimeout=45>
 
 =head2 B<REQUIRED> Id => Str
 
-  An identifier for this particular receipt handle. This is used to
-communicate the result. Note that the C<Id>s of a batch request need to
-be unique within the request.
+  An identifier for this particular receipt handle used to communicate
+the result.
+
+The C<Id>s of a batch request need to be unique within a request
 
 
 =head2 B<REQUIRED> ReceiptHandle => Str

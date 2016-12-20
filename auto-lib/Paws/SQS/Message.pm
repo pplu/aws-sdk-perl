@@ -62,22 +62,22 @@ representing the epoch time in milliseconds.
 
 =head2 MD5OfMessageAttributes => Str
 
-  An MD5 digest of the non-URL-encoded message attribute string. This can
-be used to verify that Amazon SQS received the message correctly.
-Amazon SQS first URL decodes the message before creating the MD5
-digest. For information about MD5, see RFC1321.
+  An MD5 digest of the non-URL-encoded message attribute string. You can
+use this attribute to verify that Amazon SQS received the message
+correctly. Amazon SQS URL-decodes the message before creating the MD5
+digest. For information on MD5, see RFC1321.
 
 
 =head2 MessageAttributes => L<Paws::SQS::MessageBodyAttributeMap>
 
-  Each message attribute consists of a Name, Type, and Value. For more
-information, see Message Attribute Items and Validation in the I<Amazon
-SQS Developer Guide>.
+  Each message attribute consists of a C<Name>, C<Type>, and C<Value>.
+For more information, see Message Attribute Items and Validation in the
+I<Amazon SQS Developer Guide>.
 
 
 =head2 MessageId => Str
 
-  A unique identifier for the message. Message IDs are considered unique
+  A unique identifier for the message. A C<MessageId>is considered unique
 across all AWS accounts for an extended period of time.
 
 

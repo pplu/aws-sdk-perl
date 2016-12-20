@@ -42,7 +42,7 @@ A list of receipt handles for the messages to be deleted.
 
 =head2 B<REQUIRED> QueueUrl => Str
 
-The URL of the Amazon SQS queue to take action on.
+The URL of the Amazon SQS queue from which messages are deleted.
 
 Queue URLs are case-sensitive.
 

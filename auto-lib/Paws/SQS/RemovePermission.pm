@@ -37,13 +37,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 B<REQUIRED> Label => Str
 
 The identification of the permission to remove. This is the label added
-with the AddPermission action.
+using the C< AddPermission > action.
 
 
 
 =head2 B<REQUIRED> QueueUrl => Str
 
-The URL of the Amazon SQS queue to take action on.
+The URL of the Amazon SQS queue from which permissions are removed.
 
 Queue URLs are case-sensitive.
 

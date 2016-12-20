@@ -46,20 +46,21 @@ request parameters that the C<CreateQueue> action uses:
 =item *
 
 C<DelaySeconds> - The number of seconds for which the delivery of all
-messages in the queue is delayed. An integer from 0 to 900 (15
-minutes). The default is 0 (zero).
+messages in the queue is delayed. Valid values: An integer from 0 to
+900 seconds (15 minutes). The default is 0 (zero).
 
 =item *
 
 C<MaximumMessageSize> - The limit of how many bytes a message can
-contain before Amazon SQS rejects it. An integer from 1,024 bytes (1
-KiB) up to 262,144 bytes (256 KiB). The default is 262,144 (256 KiB).
+contain before Amazon SQS rejects it. Valid values: An integer from
+1,024 bytes (1 KiB) to 262,144 bytes (256 KiB). The default is 262,144
+(256 KiB).
 
 =item *
 
 C<MessageRetentionPeriod> - The number of seconds for which Amazon SQS
-retains a message. An integer representing seconds, from 60 (1 minute)
-to 120,9600 (14 days). The default is 345,600 (4 days).
+retains a message. Valid values: An integer from 60 seconds (1 minute)
+to 1,209,600 seconds (14 days). The default is 345,600 (4 days).
 
 =item *
 
@@ -69,9 +70,9 @@ the I<Amazon IAM User Guide>.
 
 =item *
 
-C<ReceiveMessageWaitTimeSeconds> - The number of seconds for which a
-ReceiveMessage action will wait for a message to arrive. An integer
-from 0 to 20 (seconds). The default is 0.
+C<ReceiveMessageWaitTimeSeconds> - The number of seconds for which a C<
+ReceiveMessage > action waits for a message to arrive. Valid values: An
+integer from 0 to 20 (seconds). The default is 0 (zero).
 
 =item *
 
@@ -86,10 +87,10 @@ standard queue.
 
 =item *
 
-C<VisibilityTimeout> - The visibility timeout for the queue. An integer
-from 0 to 43200 (12 hours). The default is 30. For more information
-about the visibility timeout, see Visibility Timeout in the I<Amazon
-SQS Developer Guide>.
+C<VisibilityTimeout> - The visibility timeout for the queue. Valid
+values: An integer from 0 to 43,200 (12 hours). The default is 30. For
+more information about the visibility timeout, see Visibility Timeout
+in the I<Amazon SQS Developer Guide>.
 
 =back
 
@@ -101,7 +102,7 @@ queues:
 =item *
 
 C<FifoQueue> - Designates a queue as FIFO. You can provide this
-attribute only during queue creation; you can't change it for an
+attribute only during queue creation. You can't change it for an
 existing queue. When you set this attribute, you must provide a
 C<MessageGroupId> explicitly.
 
@@ -168,10 +169,37 @@ delivered.
 
 =back
 
-Any other valid special request parameters that are specified (such as
-C<ApproximateNumberOfMessages>, C<ApproximateNumberOfMessagesDelayed>,
-C<ApproximateNumberOfMessagesNotVisible>, C<CreatedTimestamp>,
-C<LastModifiedTimestamp>, and C<QueueArn>) will be ignored.
+Any other valid special request parameters (such as the following) are
+ignored:
+
+=over
+
+=item *
+
+C<ApproximateNumberOfMessages>
+
+=item *
+
+C<ApproximateNumberOfMessagesDelayed>
+
+=item *
+
+C<ApproximateNumberOfMessagesNotVisible>
+
+=item *
+
+C<CreatedTimestamp>
+
+=item *
+
+C<LastModifiedTimestamp>
+
+=item *
+
+C<QueueArn>
+
+=back
+
 
 
 
@@ -187,8 +215,8 @@ A queue name can have up to 80 characters.
 
 =item *
 
-The following are accepted: alphanumeric chatacters, hyphens (C<->),
-and underscores (C<_>).
+Valid values: alphanumeric characters, hyphens (C<->), and underscores
+(C<_>).
 
 =item *
 

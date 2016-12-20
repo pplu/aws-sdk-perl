@@ -40,10 +40,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 DelaySeconds => Int
 
-The number of seconds (0 to 900 - 15 minutes) to delay a specific
-message. Messages with a positive C<DelaySeconds> value become
-available for processing after the delay time is finished. If you don't
-specify a value, the default value for the queue applies.
+The number of seconds to delay a specific message. Valid values: 0 to
+900. Maximum: 15 minutes. Messages with a positive C<DelaySeconds>
+value become available for processing after the delay period is
+finished. If you don't specify a value, the default value for the queue
+applies.
 
 When you set C<FifoQueue>, you can't set C<DelaySeconds> per message.
 You can set this parameter only on a queue level.
@@ -52,16 +53,49 @@ You can set this parameter only on a queue level.
 
 =head2 MessageAttributes => L<Paws::SQS::MessageBodyAttributeMap>
 
-Each message attribute consists of a Name, Type, and Value. For more
-information, see Message Attribute Items and Validation in the I<Amazon
-SQS Developer Guide>.
+Each message attribute consists of a C<Name>, C<Type>, and C<Value>.
+For more information, see Message Attribute Items and Validation in the
+I<Amazon SQS Developer Guide>.
 
 
 
 =head2 B<REQUIRED> MessageBody => Str
 
-The message to send. String maximum 256 KB in size. For a list of
-allowed characters, see the preceding note.
+The message to send. The maximum string size is 256 KB.
+
+The following list shows the characters (in Unicode) that are allowed
+in your message, according to the W3C XML specification:
+
+=over
+
+=item *
+
+C<#x9>
+
+=item *
+
+C<#xA>
+
+=item *
+
+C<#xD>
+
+=item *
+
+C<#x20> to C<#xD7FF>
+
+=item *
+
+C<#xE000> to C<#xFFFD>
+
+=item *
+
+C<#x10000> to C<#x10FFFF>
+
+=back
+
+For more information, see RFC1321. If you send any characters that
+aren't included in this list, your request is rejected.
 
 
 
@@ -131,7 +165,7 @@ delivered.
 The C<MessageDeduplicationId> is available to the recipient of the
 message (this can be useful for troubleshooting delivery issues).
 
-If a message is sent successfully but the acknowledgdment is lost and
+If a message is sent successfully but the acknowledgement is lost and
 the message is resent with the same C<MessageDeduplicationId> after the
 deduplication interval, Amazon SQS can't detect duplicate messages.
 
@@ -186,7 +220,7 @@ Guide>.
 
 =head2 B<REQUIRED> QueueUrl => Str
 
-The URL of the Amazon SQS queue to take action on.
+The URL of the Amazon SQS queue to which a message is sent.
 
 Queue URLs are case-sensitive.
 

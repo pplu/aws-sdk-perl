@@ -17,8 +17,8 @@ Paws::SQS::ListDeadLetterSourceQueuesResult
 
 =head2 B<REQUIRED> QueueUrls => ArrayRef[Str|Undef]
 
-A list of source queue URLs that have the RedrivePolicy queue attribute
-configured with a dead letter queue.
+A list of source queue URLs that have the C<RedrivePolicy> queue
+attribute configured with a dead letter queue.
 
 
 =head2 _request_id => Str
