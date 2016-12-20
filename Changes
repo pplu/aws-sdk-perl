@@ -53,7 +53,7 @@
  - S3 API update: Analytics, Inventory and Metrics
  - ElastiCache API update
  - IoT API update: DynamoV2 behaviour
- - CognitoIdp API update: AdminCreateUser
+ - CognitoIdp API update: AdminCreateUser, RoleMappings
  - Kinesis API update: UpdateShardCount, DescribeLimits
  - ElastiCache API update: authenticated cache clusters
  - Cloudwatch Logs API update: DescribeMetricFilters and docu
@@ -71,6 +71,9 @@
  - Config: API update
  - DMS API update: ModifyReplicationTask
  - CloudWatchLogs API update: TagLogGroups
+ - SSM API update: Patching operations
+ - Discovery API update: Application Discovery
+ - CognitoIdp API update: Groups for user pools
 
 0.28 30 Aug 2015 23:45:00
  - On errors 503 XMLResponse would not process the error correctly (returning
