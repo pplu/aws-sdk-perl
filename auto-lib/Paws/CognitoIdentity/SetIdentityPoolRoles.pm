@@ -2,6 +2,7 @@
 package Paws::CognitoIdentity::SetIdentityPoolRoles;
   use Moose;
   has IdentityPoolId => (is => 'ro', isa => 'Str', required => 1);
+  has RoleMappings => (is => 'ro', isa => 'Paws::CognitoIdentity::RoleMappingMap');
   has Roles => (is => 'ro', isa => 'Paws::CognitoIdentity::RolesMap', required => 1);
 
   use MooseX::ClassAttribute;
@@ -37,6 +38,17 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 B<REQUIRED> IdentityPoolId => Str
 
 An identity pool ID in the format REGION:GUID.
+
+
+
+=head2 RoleMappings => L<Paws::CognitoIdentity::RoleMappingMap>
+
+How users for a specific identity provider are to mapped to roles. This
+is a string to RoleMapping object map. The string identifies the
+identity provider, for example, "graph.facebook.com" or
+"cognito-idp-east-1.amazonaws.com/us-east-1_abcdefghi:app_client_id".
+
+Up to 25 rules can be specified per identity provider.
 
 
 

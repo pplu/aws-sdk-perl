@@ -187,15 +187,25 @@ C<SupportedLoginProviders> are as follows:
 
 =over
 
-=item * Facebook: C<graph.facebook.com>
+=item *
 
-=item * Google: C<accounts.google.com>
+Facebook: C<graph.facebook.com>
 
-=item * Amazon: C<www.amazon.com>
+=item *
 
-=item * Twitter: C<api.twitter.com>
+Google: C<accounts.google.com>
 
-=item * Digits: C<www.digits.com>
+=item *
+
+Amazon: C<www.amazon.com>
+
+=item *
+
+Twitter: C<api.twitter.com>
+
+=item *
+
+Digits: C<www.digits.com>
 
 =back
 
@@ -388,14 +398,14 @@ thrown.
 You must use AWS Developer credentials to call this API.
 
 
-=head2 SetIdentityPoolRoles(IdentityPoolId => Str, Roles => L<Paws::CognitoIdentity::RolesMap>)
+=head2 SetIdentityPoolRoles(IdentityPoolId => Str, Roles => L<Paws::CognitoIdentity::RolesMap>, [RoleMappings => L<Paws::CognitoIdentity::RoleMappingMap>])
 
 Each argument is described in detail in: L<Paws::CognitoIdentity::SetIdentityPoolRoles>
 
 Returns: nothing
 
   Sets the roles for an identity pool. These roles are used when making
-calls to C<GetCredentialsForIdentity> action.
+calls to GetCredentialsForIdentity action.
 
 You must use AWS Developer credentials to call this API.
 
