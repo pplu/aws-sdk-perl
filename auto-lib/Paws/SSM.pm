@@ -49,6 +49,11 @@ package Paws::SSM;
     my $call_object = $self->new_with_coercions('Paws::SSM::CreateMaintenanceWindow', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreatePatchBaseline {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SSM::CreatePatchBaseline', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteActivation {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SSM::DeleteActivation', @_);
@@ -74,9 +79,19 @@ package Paws::SSM;
     my $call_object = $self->new_with_coercions('Paws::SSM::DeleteParameter', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeletePatchBaseline {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SSM::DeletePatchBaseline', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeregisterManagedInstance {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SSM::DeregisterManagedInstance', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeregisterPatchBaselineForPatchGroup {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SSM::DeregisterPatchBaselineForPatchGroup', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeregisterTargetFromMaintenanceWindow {
@@ -104,6 +119,11 @@ package Paws::SSM;
     my $call_object = $self->new_with_coercions('Paws::SSM::DescribeAutomationExecutions', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeAvailablePatches {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SSM::DescribeAvailablePatches', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeDocument {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SSM::DescribeDocument', @_);
@@ -119,6 +139,11 @@ package Paws::SSM;
     my $call_object = $self->new_with_coercions('Paws::SSM::DescribeEffectiveInstanceAssociations', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeEffectivePatchesForPatchBaseline {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SSM::DescribeEffectivePatchesForPatchBaseline', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeInstanceAssociationsStatus {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SSM::DescribeInstanceAssociationsStatus', @_);
@@ -127,6 +152,21 @@ package Paws::SSM;
   sub DescribeInstanceInformation {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SSM::DescribeInstanceInformation', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeInstancePatches {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SSM::DescribeInstancePatches', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeInstancePatchStates {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SSM::DescribeInstancePatchStates', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeInstancePatchStatesForPatchGroup {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SSM::DescribeInstancePatchStatesForPatchGroup', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeMaintenanceWindowExecutions {
@@ -164,6 +204,21 @@ package Paws::SSM;
     my $call_object = $self->new_with_coercions('Paws::SSM::DescribeParameters', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribePatchBaselines {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SSM::DescribePatchBaselines', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribePatchGroups {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SSM::DescribePatchGroups', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribePatchGroupState {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SSM::DescribePatchGroupState', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetAutomationExecution {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SSM::GetAutomationExecution', @_);
@@ -172,6 +227,16 @@ package Paws::SSM;
   sub GetCommandInvocation {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SSM::GetCommandInvocation', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetDefaultPatchBaseline {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SSM::GetDefaultPatchBaseline', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetDeployablePatchSnapshotForInstance {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SSM::GetDeployablePatchSnapshotForInstance', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetDocument {
@@ -212,6 +277,16 @@ package Paws::SSM;
   sub GetParameters {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SSM::GetParameters', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetPatchBaseline {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SSM::GetPatchBaseline', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetPatchBaselineForPatchGroup {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SSM::GetPatchBaselineForPatchGroup', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListAssociations {
@@ -262,6 +337,16 @@ package Paws::SSM;
   sub PutParameter {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SSM::PutParameter', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub RegisterDefaultPatchBaseline {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SSM::RegisterDefaultPatchBaseline', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub RegisterPatchBaselineForPatchGroup {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SSM::RegisterPatchBaselineForPatchGroup', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub RegisterTargetWithMaintenanceWindow {
@@ -322,6 +407,11 @@ package Paws::SSM;
   sub UpdateManagedInstanceRole {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SSM::UpdateManagedInstanceRole', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdatePatchBaseline {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SSM::UpdatePatchBaseline', @_);
     return $self->caller->do_call($self, $call_object);
   }
   
@@ -411,7 +501,7 @@ package Paws::SSM;
   }
 
 
-  sub operations { qw/AddTagsToResource CancelCommand CreateActivation CreateAssociation CreateAssociationBatch CreateDocument CreateMaintenanceWindow DeleteActivation DeleteAssociation DeleteDocument DeleteMaintenanceWindow DeleteParameter DeregisterManagedInstance DeregisterTargetFromMaintenanceWindow DeregisterTaskFromMaintenanceWindow DescribeActivations DescribeAssociation DescribeAutomationExecutions DescribeDocument DescribeDocumentPermission DescribeEffectiveInstanceAssociations DescribeInstanceAssociationsStatus DescribeInstanceInformation DescribeMaintenanceWindowExecutions DescribeMaintenanceWindowExecutionTaskInvocations DescribeMaintenanceWindowExecutionTasks DescribeMaintenanceWindows DescribeMaintenanceWindowTargets DescribeMaintenanceWindowTasks DescribeParameters GetAutomationExecution GetCommandInvocation GetDocument GetInventory GetInventorySchema GetMaintenanceWindow GetMaintenanceWindowExecution GetMaintenanceWindowExecutionTask GetParameterHistory GetParameters ListAssociations ListCommandInvocations ListCommands ListDocuments ListDocumentVersions ListInventoryEntries ListTagsForResource ModifyDocumentPermission PutInventory PutParameter RegisterTargetWithMaintenanceWindow RegisterTaskWithMaintenanceWindow RemoveTagsFromResource SendCommand StartAutomationExecution StopAutomationExecution UpdateAssociation UpdateAssociationStatus UpdateDocument UpdateDocumentDefaultVersion UpdateMaintenanceWindow UpdateManagedInstanceRole / }
+  sub operations { qw/AddTagsToResource CancelCommand CreateActivation CreateAssociation CreateAssociationBatch CreateDocument CreateMaintenanceWindow CreatePatchBaseline DeleteActivation DeleteAssociation DeleteDocument DeleteMaintenanceWindow DeleteParameter DeletePatchBaseline DeregisterManagedInstance DeregisterPatchBaselineForPatchGroup DeregisterTargetFromMaintenanceWindow DeregisterTaskFromMaintenanceWindow DescribeActivations DescribeAssociation DescribeAutomationExecutions DescribeAvailablePatches DescribeDocument DescribeDocumentPermission DescribeEffectiveInstanceAssociations DescribeEffectivePatchesForPatchBaseline DescribeInstanceAssociationsStatus DescribeInstanceInformation DescribeInstancePatches DescribeInstancePatchStates DescribeInstancePatchStatesForPatchGroup DescribeMaintenanceWindowExecutions DescribeMaintenanceWindowExecutionTaskInvocations DescribeMaintenanceWindowExecutionTasks DescribeMaintenanceWindows DescribeMaintenanceWindowTargets DescribeMaintenanceWindowTasks DescribeParameters DescribePatchBaselines DescribePatchGroups DescribePatchGroupState GetAutomationExecution GetCommandInvocation GetDefaultPatchBaseline GetDeployablePatchSnapshotForInstance GetDocument GetInventory GetInventorySchema GetMaintenanceWindow GetMaintenanceWindowExecution GetMaintenanceWindowExecutionTask GetParameterHistory GetParameters GetPatchBaseline GetPatchBaselineForPatchGroup ListAssociations ListCommandInvocations ListCommands ListDocuments ListDocumentVersions ListInventoryEntries ListTagsForResource ModifyDocumentPermission PutInventory PutParameter RegisterDefaultPatchBaseline RegisterPatchBaselineForPatchGroup RegisterTargetWithMaintenanceWindow RegisterTaskWithMaintenanceWindow RemoveTagsFromResource SendCommand StartAutomationExecution StopAutomationExecution UpdateAssociation UpdateAssociationStatus UpdateDocument UpdateDocumentDefaultVersion UpdateMaintenanceWindow UpdateManagedInstanceRole UpdatePatchBaseline / }
 
 1;
 
@@ -565,6 +655,15 @@ Returns: a L<Paws::SSM::CreateMaintenanceWindowResult> instance
   Creates a new Maintenance Window.
 
 
+=head2 CreatePatchBaseline(Name => Str, [ApprovalRules => L<Paws::SSM::PatchRuleGroup>, ApprovedPatches => ArrayRef[Str|Undef], ClientToken => Str, Description => Str, GlobalFilters => L<Paws::SSM::PatchFilterGroup>, RejectedPatches => ArrayRef[Str|Undef]])
+
+Each argument is described in detail in: L<Paws::SSM::CreatePatchBaseline>
+
+Returns: a L<Paws::SSM::CreatePatchBaselineResult> instance
+
+  Creates a patch baseline.
+
+
 =head2 DeleteActivation(ActivationId => Str)
 
 Each argument is described in detail in: L<Paws::SSM::DeleteActivation>
@@ -624,6 +723,15 @@ Returns: a L<Paws::SSM::DeleteParameterResult> instance
   Delete a parameter from the system.
 
 
+=head2 DeletePatchBaseline(BaselineId => Str)
+
+Each argument is described in detail in: L<Paws::SSM::DeletePatchBaseline>
+
+Returns: a L<Paws::SSM::DeletePatchBaselineResult> instance
+
+  Deletes a patch baseline.
+
+
 =head2 DeregisterManagedInstance(InstanceId => Str)
 
 Each argument is described in detail in: L<Paws::SSM::DeregisterManagedInstance>
@@ -634,6 +742,15 @@ Returns: a L<Paws::SSM::DeregisterManagedInstanceResult> instance
 servers. You can reregister the instance again at any time. If you
 donE<rsquo>t plan to use Run Command on the server, we suggest
 uninstalling the SSM agent first.
+
+
+=head2 DeregisterPatchBaselineForPatchGroup(BaselineId => Str, PatchGroup => Str)
+
+Each argument is described in detail in: L<Paws::SSM::DeregisterPatchBaselineForPatchGroup>
+
+Returns: a L<Paws::SSM::DeregisterPatchBaselineForPatchGroupResult> instance
+
+  Removes a patch group from a patch baseline.
 
 
 =head2 DeregisterTargetFromMaintenanceWindow(WindowId => Str, WindowTargetId => Str)
@@ -684,6 +801,15 @@ Returns: a L<Paws::SSM::DescribeAutomationExecutionsResult> instance
   Provides details about all active and terminated Automation executions.
 
 
+=head2 DescribeAvailablePatches([Filters => ArrayRef[L<Paws::SSM::PatchOrchestratorFilter>], MaxResults => Int, NextToken => Str])
+
+Each argument is described in detail in: L<Paws::SSM::DescribeAvailablePatches>
+
+Returns: a L<Paws::SSM::DescribeAvailablePatchesResult> instance
+
+  Lists all patches that could possibly be included in a patch baseline.
+
+
 =head2 DescribeDocument(Name => Str, [DocumentVersion => Str])
 
 Each argument is described in detail in: L<Paws::SSM::DescribeDocument>
@@ -714,6 +840,16 @@ Returns: a L<Paws::SSM::DescribeEffectiveInstanceAssociationsResult> instance
   All associations for the instance(s).
 
 
+=head2 DescribeEffectivePatchesForPatchBaseline(BaselineId => Str, [MaxResults => Int, NextToken => Str])
+
+Each argument is described in detail in: L<Paws::SSM::DescribeEffectivePatchesForPatchBaseline>
+
+Returns: a L<Paws::SSM::DescribeEffectivePatchesForPatchBaselineResult> instance
+
+  Retrieves the current effective patches (the patch and the approval
+state) for the specified patch baseline.
+
+
 =head2 DescribeInstanceAssociationsStatus(InstanceId => Str, [MaxResults => Int, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::SSM::DescribeInstanceAssociationsStatus>
@@ -736,6 +872,35 @@ IDs, it returns information for those instances. If you do not specify
 instance IDs, it returns information for all your instances. If you
 specify an instance ID that is not valid or an instance that you do not
 own, you receive an error.
+
+
+=head2 DescribeInstancePatches(InstanceId => Str, [Filters => ArrayRef[L<Paws::SSM::PatchOrchestratorFilter>], MaxResults => Int, NextToken => Str])
+
+Each argument is described in detail in: L<Paws::SSM::DescribeInstancePatches>
+
+Returns: a L<Paws::SSM::DescribeInstancePatchesResult> instance
+
+  Retrieves information about the patches on the specified instance and
+their state relative to the patch baseline being used for the instance.
+
+
+=head2 DescribeInstancePatchStates(InstanceIds => ArrayRef[Str|Undef], [MaxResults => Int, NextToken => Str])
+
+Each argument is described in detail in: L<Paws::SSM::DescribeInstancePatchStates>
+
+Returns: a L<Paws::SSM::DescribeInstancePatchStatesResult> instance
+
+  Retrieves the high-level patch state of one or more instances.
+
+
+=head2 DescribeInstancePatchStatesForPatchGroup(PatchGroup => Str, [Filters => ArrayRef[L<Paws::SSM::InstancePatchStateFilter>], MaxResults => Int, NextToken => Str])
+
+Each argument is described in detail in: L<Paws::SSM::DescribeInstancePatchStatesForPatchGroup>
+
+Returns: a L<Paws::SSM::DescribeInstancePatchStatesForPatchGroupResult> instance
+
+  Retrieves the high-level patch state for the instances in the specified
+patch group.
 
 
 =head2 DescribeMaintenanceWindowExecutions(WindowId => Str, [Filters => ArrayRef[L<Paws::SSM::MaintenanceWindowFilter>], MaxResults => Int, NextToken => Str])
@@ -806,6 +971,33 @@ Returns: a L<Paws::SSM::DescribeParametersResult> instance
   Get information about a parameter.
 
 
+=head2 DescribePatchBaselines([Filters => ArrayRef[L<Paws::SSM::PatchOrchestratorFilter>], MaxResults => Int, NextToken => Str])
+
+Each argument is described in detail in: L<Paws::SSM::DescribePatchBaselines>
+
+Returns: a L<Paws::SSM::DescribePatchBaselinesResult> instance
+
+  Lists the patch baselines in your AWS account.
+
+
+=head2 DescribePatchGroups([MaxResults => Int, NextToken => Str])
+
+Each argument is described in detail in: L<Paws::SSM::DescribePatchGroups>
+
+Returns: a L<Paws::SSM::DescribePatchGroupsResult> instance
+
+  Lists all patch groups that have been registered with patch baselines.
+
+
+=head2 DescribePatchGroupState(PatchGroup => Str)
+
+Each argument is described in detail in: L<Paws::SSM::DescribePatchGroupState>
+
+Returns: a L<Paws::SSM::DescribePatchGroupStateResult> instance
+
+  Returns high-level aggregated patch compliance state for a patch group.
+
+
 =head2 GetAutomationExecution(AutomationExecutionId => Str)
 
 Each argument is described in detail in: L<Paws::SSM::GetAutomationExecution>
@@ -823,6 +1015,26 @@ Returns: a L<Paws::SSM::GetCommandInvocationResult> instance
 
   Returns detailed information about command execution for an invocation
 or plugin.
+
+
+=head2 GetDefaultPatchBaseline()
+
+Each argument is described in detail in: L<Paws::SSM::GetDefaultPatchBaseline>
+
+Returns: a L<Paws::SSM::GetDefaultPatchBaselineResult> instance
+
+  Retrieves the default patch baseline.
+
+
+=head2 GetDeployablePatchSnapshotForInstance(InstanceId => Str, SnapshotId => Str)
+
+Each argument is described in detail in: L<Paws::SSM::GetDeployablePatchSnapshotForInstance>
+
+Returns: a L<Paws::SSM::GetDeployablePatchSnapshotForInstanceResult> instance
+
+  Retrieves the current snapshot for the patch baseline the instance
+uses. This API is primarily used by the AWS-ApplyPatchBaseline Systems
+Manager document.
 
 
 =head2 GetDocument(Name => Str, [DocumentVersion => Str])
@@ -898,6 +1110,25 @@ Each argument is described in detail in: L<Paws::SSM::GetParameters>
 Returns: a L<Paws::SSM::GetParametersResult> instance
 
   Get a list of parameters used by the AWS account.E<gt>
+
+
+=head2 GetPatchBaseline(BaselineId => Str)
+
+Each argument is described in detail in: L<Paws::SSM::GetPatchBaseline>
+
+Returns: a L<Paws::SSM::GetPatchBaselineResult> instance
+
+  Retrieves information about a patch baseline.
+
+
+=head2 GetPatchBaselineForPatchGroup(PatchGroup => Str)
+
+Each argument is described in detail in: L<Paws::SSM::GetPatchBaselineForPatchGroup>
+
+Returns: a L<Paws::SSM::GetPatchBaselineForPatchGroupResult> instance
+
+  Retrieves the patch baseline that should be used for the specified
+patch group.
 
 
 =head2 ListAssociations([AssociationFilterList => ArrayRef[L<Paws::SSM::AssociationFilter>], MaxResults => Int, NextToken => Str])
@@ -998,6 +1229,24 @@ Each argument is described in detail in: L<Paws::SSM::PutParameter>
 Returns: a L<Paws::SSM::PutParameterResult> instance
 
   Add one or more paramaters to the system.
+
+
+=head2 RegisterDefaultPatchBaseline(BaselineId => Str)
+
+Each argument is described in detail in: L<Paws::SSM::RegisterDefaultPatchBaseline>
+
+Returns: a L<Paws::SSM::RegisterDefaultPatchBaselineResult> instance
+
+  Defines the default patch baseline.
+
+
+=head2 RegisterPatchBaselineForPatchGroup(BaselineId => Str, PatchGroup => Str)
+
+Each argument is described in detail in: L<Paws::SSM::RegisterPatchBaselineForPatchGroup>
+
+Returns: a L<Paws::SSM::RegisterPatchBaselineForPatchGroupResult> instance
+
+  Registers a patch baseline for a patch group.
 
 
 =head2 RegisterTargetWithMaintenanceWindow(ResourceType => Str, Targets => ArrayRef[L<Paws::SSM::Target>], WindowId => Str, [ClientToken => Str, OwnerInformation => Str])
@@ -1110,6 +1359,16 @@ Returns: a L<Paws::SSM::UpdateManagedInstanceRoleResult> instance
 
   Assigns or changes an Amazon Identity and Access Management (IAM) role
 to the managed instance.
+
+
+=head2 UpdatePatchBaseline(BaselineId => Str, [ApprovalRules => L<Paws::SSM::PatchRuleGroup>, ApprovedPatches => ArrayRef[Str|Undef], Description => Str, GlobalFilters => L<Paws::SSM::PatchFilterGroup>, Name => Str, RejectedPatches => ArrayRef[Str|Undef]])
+
+Each argument is described in detail in: L<Paws::SSM::UpdatePatchBaseline>
+
+Returns: a L<Paws::SSM::UpdatePatchBaselineResult> instance
+
+  Modifies an existing patch baseline. Fields not specified in the
+request are left unchanged.
 
 
 
