@@ -277,10 +277,9 @@ dependencies between the resources for you.
 For more information about AWS CloudFormation, see the AWS
 CloudFormation Product Page.
 
-Amazon CloudFormation makes use of other AWS products. If you need
-additional technical information about a specific AWS product, you can
-find the product's technical documentation at
-http://docs.aws.amazon.com/.
+Amazon CloudFormation makes use of other AWS products. For additional
+technical information about a specific AWS product, see its technical
+documentation.
 
 =head1 METHODS
 
