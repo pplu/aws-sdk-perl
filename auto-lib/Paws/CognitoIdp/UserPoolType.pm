@@ -22,6 +22,7 @@ package Paws::CognitoIdp::UserPoolType;
   has SmsConfigurationFailure => (is => 'ro', isa => 'Str');
   has SmsVerificationMessage => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
+  has UserPoolTags => (is => 'ro', isa => 'Paws::CognitoIdp::UserPoolTagsType');
 1;
 
 ### main pod documentation begin ###
@@ -41,7 +42,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CognitoIdp::UserPoolType object:
 
-  $service_obj->Method(Att1 => { AdminCreateUserConfig => $value, ..., Status => $value  });
+  $service_obj->Method(Att1 => { AdminCreateUserConfig => $value, ..., UserPoolTags => $value  });
 
 =head3 Results returned from an API call
 
@@ -188,6 +189,12 @@ users.
 =head2 Status => Str
 
   The status of a user pool.
+
+
+=head2 UserPoolTags => L<Paws::CognitoIdp::UserPoolTagsType>
+
+  The cost allocation tags for the user pool. For more information, see
+Adding Cost Allocation Tags to Your User Pool
 
 
 

@@ -65,7 +65,7 @@ The read-only attributes of the user pool.
 
 =head2 RefreshTokenValidity => Int
 
-The validity of the refresh token.
+The validity of the refresh token, in days.
 
 
 

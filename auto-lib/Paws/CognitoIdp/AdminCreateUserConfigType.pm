@@ -54,7 +54,7 @@ profiles. Set to False if users can sign themselves up via an app.
   The user account expiration limit, in days, after which the account is
 no longer usable. To reset the account after that time limit, you must
 call AdminCreateUser again, specifying "RESEND" for the MessageAction
-parameter.
+parameter. The default value for this paameter is 7.
 
 
 

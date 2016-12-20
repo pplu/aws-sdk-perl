@@ -14,6 +14,7 @@ package Paws::CognitoIdp::UpdateUserPool;
   has SmsConfiguration => (is => 'ro', isa => 'Paws::CognitoIdp::SmsConfigurationType');
   has SmsVerificationMessage => (is => 'ro', isa => 'Str');
   has UserPoolId => (is => 'ro', isa => 'Str', required => 1);
+  has UserPoolTags => (is => 'ro', isa => 'Paws::CognitoIdp::UserPoolTagsType');
 
   use MooseX::ClassAttribute;
 
@@ -142,6 +143,13 @@ A container with information about the SMS verification message.
 =head2 B<REQUIRED> UserPoolId => Str
 
 The user pool ID for the user pool you want to update.
+
+
+
+=head2 UserPoolTags => L<Paws::CognitoIdp::UserPoolTagsType>
+
+The cost allocation tags for the user pool. For more information, see
+Adding Cost Allocation Tags to Your User Pool
 
 
 

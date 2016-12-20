@@ -66,7 +66,7 @@ The read attributes.
 
 =head2 RefreshTokenValidity => Int
 
-Refreshes the token validity.
+The validity of the refresh token, in days.
 
 
 

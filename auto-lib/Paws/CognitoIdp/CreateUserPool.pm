@@ -16,6 +16,7 @@ package Paws::CognitoIdp::CreateUserPool;
   has SmsAuthenticationMessage => (is => 'ro', isa => 'Str');
   has SmsConfiguration => (is => 'ro', isa => 'Paws::CognitoIdp::SmsConfigurationType');
   has SmsVerificationMessage => (is => 'ro', isa => 'Str');
+  has UserPoolTags => (is => 'ro', isa => 'Paws::CognitoIdp::UserPoolTagsType');
 
   use MooseX::ClassAttribute;
 
@@ -137,6 +138,13 @@ The SMS configuration.
 =head2 SmsVerificationMessage => Str
 
 A string representing the SMS verification message.
+
+
+
+=head2 UserPoolTags => L<Paws::CognitoIdp::UserPoolTagsType>
+
+The cost allocation tags for the user pool. For more information, see
+Adding Cost Allocation Tags to Your User Pool
 
 
 

@@ -33,7 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CognitoIdp:
 
 =head1 DESCRIPTION
 
-The description of the user poool client.
+The description of the user pool client.
 
 =head1 ATTRIBUTES
 
