@@ -54,6 +54,11 @@ package Paws::StorageGateway;
     my $call_object = $self->new_with_coercions('Paws::StorageGateway::CreateCachediSCSIVolume', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateNFSFileShare {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::StorageGateway::CreateNFSFileShare', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateSnapshot {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::StorageGateway::CreateSnapshot', @_);
@@ -87,6 +92,11 @@ package Paws::StorageGateway;
   sub DeleteChapCredentials {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::StorageGateway::DeleteChapCredentials', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteFileShare {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::StorageGateway::DeleteFileShare', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteGateway {
@@ -144,6 +154,11 @@ package Paws::StorageGateway;
     my $call_object = $self->new_with_coercions('Paws::StorageGateway::DescribeMaintenanceStartTime', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeNFSFileShares {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::StorageGateway::DescribeNFSFileShares', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeSnapshotSchedule {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::StorageGateway::DescribeSnapshotSchedule', @_);
@@ -187,6 +202,11 @@ package Paws::StorageGateway;
   sub DisableGateway {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::StorageGateway::DisableGateway', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListFileShares {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::StorageGateway::ListFileShares', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListGateways {
@@ -282,6 +302,11 @@ package Paws::StorageGateway;
   sub UpdateMaintenanceStartTime {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::StorageGateway::UpdateMaintenanceStartTime', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateNFSFileShare {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::StorageGateway::UpdateNFSFileShare', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateSnapshotSchedule {
@@ -423,7 +448,7 @@ package Paws::StorageGateway;
   }
 
 
-  sub operations { qw/ActivateGateway AddCache AddTagsToResource AddUploadBuffer AddWorkingStorage CancelArchival CancelRetrieval CreateCachediSCSIVolume CreateSnapshot CreateSnapshotFromVolumeRecoveryPoint CreateStorediSCSIVolume CreateTapes CreateTapeWithBarcode DeleteBandwidthRateLimit DeleteChapCredentials DeleteGateway DeleteSnapshotSchedule DeleteTape DeleteTapeArchive DeleteVolume DescribeBandwidthRateLimit DescribeCache DescribeCachediSCSIVolumes DescribeChapCredentials DescribeGatewayInformation DescribeMaintenanceStartTime DescribeSnapshotSchedule DescribeStorediSCSIVolumes DescribeTapeArchives DescribeTapeRecoveryPoints DescribeTapes DescribeUploadBuffer DescribeVTLDevices DescribeWorkingStorage DisableGateway ListGateways ListLocalDisks ListTagsForResource ListTapes ListVolumeInitiators ListVolumeRecoveryPoints ListVolumes RemoveTagsFromResource ResetCache RetrieveTapeArchive RetrieveTapeRecoveryPoint SetLocalConsolePassword ShutdownGateway StartGateway UpdateBandwidthRateLimit UpdateChapCredentials UpdateGatewayInformation UpdateGatewaySoftwareNow UpdateMaintenanceStartTime UpdateSnapshotSchedule UpdateVTLDeviceType / }
+  sub operations { qw/ActivateGateway AddCache AddTagsToResource AddUploadBuffer AddWorkingStorage CancelArchival CancelRetrieval CreateCachediSCSIVolume CreateNFSFileShare CreateSnapshot CreateSnapshotFromVolumeRecoveryPoint CreateStorediSCSIVolume CreateTapes CreateTapeWithBarcode DeleteBandwidthRateLimit DeleteChapCredentials DeleteFileShare DeleteGateway DeleteSnapshotSchedule DeleteTape DeleteTapeArchive DeleteVolume DescribeBandwidthRateLimit DescribeCache DescribeCachediSCSIVolumes DescribeChapCredentials DescribeGatewayInformation DescribeMaintenanceStartTime DescribeNFSFileShares DescribeSnapshotSchedule DescribeStorediSCSIVolumes DescribeTapeArchives DescribeTapeRecoveryPoints DescribeTapes DescribeUploadBuffer DescribeVTLDevices DescribeWorkingStorage DisableGateway ListFileShares ListGateways ListLocalDisks ListTagsForResource ListTapes ListVolumeInitiators ListVolumeRecoveryPoints ListVolumes RemoveTagsFromResource ResetCache RetrieveTapeArchive RetrieveTapeRecoveryPoint SetLocalConsolePassword ShutdownGateway StartGateway UpdateBandwidthRateLimit UpdateChapCredentials UpdateGatewayInformation UpdateGatewaySoftwareNow UpdateMaintenanceStartTime UpdateNFSFileShare UpdateSnapshotSchedule UpdateVTLDeviceType / }
 
 1;
 
@@ -652,7 +677,7 @@ to a gateway after the retrieval process is initiated. The virtual tape
 is returned to the VTS.
 
 
-=head2 CreateCachediSCSIVolume(ClientToken => Str, GatewayARN => Str, NetworkInterfaceId => Str, TargetName => Str, VolumeSizeInBytes => Int, [SnapshotId => Str])
+=head2 CreateCachediSCSIVolume(ClientToken => Str, GatewayARN => Str, NetworkInterfaceId => Str, TargetName => Str, VolumeSizeInBytes => Int, [SnapshotId => Str, SourceVolumeARN => Str])
 
 Each argument is described in detail in: L<Paws::StorageGateway::CreateCachediSCSIVolume>
 
@@ -668,9 +693,27 @@ gateway.
 In the request, you must specify the gateway, size of the volume in
 bytes, the iSCSI target name, an IP address on which to expose the
 target, and a unique client token. In response, AWS Storage Gateway
-creates the volume and returns information about it such as the volume
-Amazon Resource Name (ARN), its size, and the iSCSI target ARN that
-initiators can use to connect to the volume target.
+creates the volume and returns information about it. This information
+includes the volume Amazon Resource Name (ARN), its size, and the iSCSI
+target ARN that initiators can use to connect to the volume target.
+
+Optionally, you can provide the ARN for an existing volume as the
+C<SourceVolumeARN> for this cached volume, which creates an exact copy
+of the existing volumeE<rsquo>s latest recovery point. The
+C<VolumeSizeInBytes> value must be equal to or larger than the size of
+the copied volume, in bytes.
+
+
+=head2 CreateNFSFileShare(ClientToken => Str, GatewayARN => Str, LocationARN => Str, Role => Str, [DefaultStorageClass => Str, KMSEncrypted => Bool, KMSKey => Str, NFSFileShareDefaults => L<Paws::StorageGateway::NFSFileShareDefaults>])
+
+Each argument is described in detail in: L<Paws::StorageGateway::CreateNFSFileShare>
+
+Returns: a L<Paws::StorageGateway::CreateNFSFileShareOutput> instance
+
+  Creates a file share on an existing file gateway. In Storage Gateway, a
+file share is a file system mount point backed by Amazon S3 cloud
+storage. Storage Gateway exposes file shares using a Network File
+System (NFS) interface.
 
 
 =head2 CreateSnapshot(SnapshotDescription => Str, VolumeARN => Str)
@@ -802,6 +845,15 @@ Returns: a L<Paws::StorageGateway::DeleteChapCredentialsOutput> instance
 
   Deletes Challenge-Handshake Authentication Protocol (CHAP) credentials
 for a specified iSCSI target and initiator pair.
+
+
+=head2 DeleteFileShare(FileShareARN => Str)
+
+Each argument is described in detail in: L<Paws::StorageGateway::DeleteFileShare>
+
+Returns: a L<Paws::StorageGateway::DeleteFileShareOutput> instance
+
+  Deletes a file share from a file gateway.
 
 
 =head2 DeleteGateway(GatewayARN => Str)
@@ -967,6 +1019,15 @@ and time of the week. Note that values are in terms of the gateway's
 time zone.
 
 
+=head2 DescribeNFSFileShares(FileShareARNList => ArrayRef[Str|Undef])
+
+Each argument is described in detail in: L<Paws::StorageGateway::DescribeNFSFileShares>
+
+Returns: a L<Paws::StorageGateway::DescribeNFSFileSharesOutput> instance
+
+  Gets a description for one or more file shares from a file gateway.
+
+
 =head2 DescribeSnapshotSchedule(VolumeARN => Str)
 
 Each argument is described in detail in: L<Paws::StorageGateway::DescribeSnapshotSchedule>
@@ -1093,6 +1154,16 @@ functioning.
 Once a gateway is disabled it cannot be enabled.
 
 
+=head2 ListFileShares([GatewayARN => Str, Limit => Int, Marker => Str])
+
+Each argument is described in detail in: L<Paws::StorageGateway::ListFileShares>
+
+Returns: a L<Paws::StorageGateway::ListFileSharesOutput> instance
+
+  Gets a list of the file shares for a specific file gateway, or the list
+of file shares that belong to the calling user account.
+
+
 =head2 ListGateways([Limit => Int, Marker => Str])
 
 Each argument is described in detail in: L<Paws::StorageGateway::ListGateways>
@@ -1194,7 +1265,8 @@ Returns: a L<Paws::StorageGateway::ListVolumesOutput> instance
 
   Lists the iSCSI stored volumes of a gateway. Results are sorted by
 volume ARN. The response includes only the volume ARNs. If you want
-additional volume information, use the DescribeStorediSCSIVolumes API.
+additional volume information, use the DescribeStorediSCSIVolumes or
+the DescribeCachediSCSIVolumes API.
 
 The operation supports pagination. By default, the operation returns a
 maximum of up to 100 volumes. You can optionally specify the C<Limit>
@@ -1412,6 +1484,18 @@ Returns: a L<Paws::StorageGateway::UpdateMaintenanceStartTimeOutput> instance
   Updates a gateway's weekly maintenance start time information,
 including day and time of the week. The maintenance time is the time in
 your gateway's time zone.
+
+
+=head2 UpdateNFSFileShare(FileShareARN => Str, [DefaultStorageClass => Str, KMSEncrypted => Bool, KMSKey => Str, NFSFileShareDefaults => L<Paws::StorageGateway::NFSFileShareDefaults>])
+
+Each argument is described in detail in: L<Paws::StorageGateway::UpdateNFSFileShare>
+
+Returns: a L<Paws::StorageGateway::UpdateNFSFileShareOutput> instance
+
+  Updates a file share.
+
+To leave a file share field unchanged, set the corresponding input
+field to null.
 
 
 =head2 UpdateSnapshotSchedule(RecurrenceInHours => Int, StartAt => Int, VolumeARN => Str, [Description => Str])

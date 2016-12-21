@@ -36,7 +36,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> BandwidthType => Str
 
+One of the BandwidthType values that indicates the gateway bandwidth
+rate limit to delete.
 
+Valid Values: C<Upload>, C<Download>, C<All>.
 
 
 

@@ -1,5 +1,6 @@
 package Paws::StorageGateway::CachediSCSIVolume;
   use Moose;
+  has CreatedDate => (is => 'ro', isa => 'Str');
   has SourceSnapshotId => (is => 'ro', isa => 'Str');
   has VolumeARN => (is => 'ro', isa => 'Str');
   has VolumeId => (is => 'ro', isa => 'Str');
@@ -27,60 +28,73 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::StorageGateway::CachediSCSIVolume object:
 
-  $service_obj->Method(Att1 => { SourceSnapshotId => $value, ..., VolumeType => $value  });
+  $service_obj->Method(Att1 => { CreatedDate => $value, ..., VolumeType => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::StorageGateway::CachediSCSIVolume object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->SourceSnapshotId
+  $result->Att1->CreatedDate
 
 =head1 DESCRIPTION
 
-This class has no description
+Describes an iSCSI cached volume.
 
 =head1 ATTRIBUTES
 
 
-=head2 SourceSnapshotId => Str
+=head2 CreatedDate => Str
 
   
+
+
+=head2 SourceSnapshotId => Str
+
+  If the cached volume was created from a snapshot, this field contains
+the snapshot ID used, e.g. snap-78e22663. Otherwise, this field is not
+included.
 
 
 =head2 VolumeARN => Str
 
-  
+  The Amazon Resource Name (ARN) of the storage volume.
 
 
 =head2 VolumeId => Str
 
-  
+  The unique identifier of the volume, e.g. vol-AE4B946D.
 
 
 =head2 VolumeiSCSIAttributes => L<Paws::StorageGateway::VolumeiSCSIAttributes>
 
-  
+  An VolumeiSCSIAttributes object that represents a collection of iSCSI
+attributes for one stored volume.
 
 
 =head2 VolumeProgress => Num
 
-  
+  Represents the percentage complete if the volume is restoring or
+bootstrapping that represents the percent of data transferred. This
+field does not appear in the response if the cached volume is not
+restoring or bootstrapping.
 
 
 =head2 VolumeSizeInBytes => Int
 
-  
+  The size of the volume in bytes.
 
 
 =head2 VolumeStatus => Str
 
-  
+  One of the VolumeStatus values that indicates the state of the storage
+volume.
 
 
 =head2 VolumeType => Str
 
-  
+  One of the VolumeType enumeration values that describes the type of the
+volume.
 
 
 

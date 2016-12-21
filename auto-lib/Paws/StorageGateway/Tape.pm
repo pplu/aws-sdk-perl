@@ -3,6 +3,7 @@ package Paws::StorageGateway::Tape;
   has Progress => (is => 'ro', isa => 'Num');
   has TapeARN => (is => 'ro', isa => 'Str');
   has TapeBarcode => (is => 'ro', isa => 'Str');
+  has TapeCreatedDate => (is => 'ro', isa => 'Str');
   has TapeSizeInBytes => (is => 'ro', isa => 'Int');
   has TapeStatus => (is => 'ro', isa => 'Str');
   has VTLDevice => (is => 'ro', isa => 'Str');
@@ -57,6 +58,11 @@ Range: 0 (not started) to 100 (complete).
 =head2 TapeBarcode => Str
 
   The barcode that identifies a specific virtual tape.
+
+
+=head2 TapeCreatedDate => Str
+
+  
 
 
 =head2 TapeSizeInBytes => Int
