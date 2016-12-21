@@ -74,6 +74,8 @@
  - SSM API update: Patching operations
  - Discovery API update: Application Discovery
  - CognitoIdp API update: Groups for user pools
+ - StorageGateway API update: NFS mounts operations
+ - Firehose API update
 
 0.28 30 Aug 2015 23:45:00
  - On errors 503 XMLResponse would not process the error correctly (returning
