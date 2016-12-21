@@ -95,32 +95,32 @@ attribute:
 
 =item *
 
-I<AWS Managment Console>: For information about how to get the value by
-using the console, see Using Custom Domains with AWS Elastic Beanstalk
-in the I<AWS Elastic Beanstalk Developer Guide>.
+I<AWS Management Console>: For information about how to get the value
+by using the console, see Using Custom Domains with AWS Elastic
+Beanstalk in the I<AWS Elastic Beanstalk Developer Guide>.
 
 =item *
 
-I<Elastic Load Balancing API>: Use the C<DescribeEnvironments> action
-to get the value of the C<CNAME> attribute. For more information, see
+I<Elastic Beanstalk API>: Use the C<DescribeEnvironments> action to get
+the value of the C<CNAME> attribute. For more information, see
 DescribeEnvironments in the I<AWS Elastic Beanstalk API Reference>.
 
 =item *
 
-I<AWS CLI>: Use the describe-environments command to get the value of
-the C<CNAME> attribute. For more information, see describe-environments
-in the I<AWS Command Line Interface Reference>.
+I<AWS CLI>: Use the C<describe-environments> command to get the value
+of the C<CNAME> attribute. For more information, see
+describe-environments in the I<AWS Command Line Interface Reference>.
 
 =back
 
 =item *
 
-B<An ELB load balancer:> Specify the DNS name associated with the load
-balancer. Get the DNS name by using the AWS Management Console, the ELB
-API, or the AWS CLI. Use the same method to get values for
-C<HostedZoneId> and C<DNSName>. If you get one value from the console
-and the other value from the API or the CLI, creating the resource
-record set will fail.
+B<An ELB load balancer:> Specify the DNS name that is associated with
+the load balancer. Get the DNS name by using the AWS Management
+Console, the ELB API, or the AWS CLI. Use the same method to get values
+for C<HostedZoneId> and C<DNSName>. If you get one value from the
+console and the other value from the API or the CLI, creating the
+resource record set will fail.
 
 =over
 
@@ -128,21 +128,35 @@ record set will fail.
 
 I<AWS Management Console>: Go to the EC2 page, click B<Load Balancers>
 in the navigation pane, choose the load balancer, choose the
-B<Description> tab, and get the value of the B<DNS Name> field that
-begins with dualstack. Use the same process to get the B<Hosted Zone
-ID>. See HostedZone$Id.
+B<Description> tab, and get the value of the B<DNS name> field. (If
+you're routing traffic to a Classic Load Balancer, get the value that
+begins with B<dualstack>.) Use the same process to get the value of the
+B<Hosted zone> field. See AliasTarget$HostedZoneId.
 
 =item *
 
-I<Elastic Load Balancing API>: Use C< DescribeLoadBalancers > to get
-the value of C<CanonicalHostedZoneName>. Use the same process to get
-the C<CanonicalHostedZoneNameId>. See HostedZone$Id.
+I<Elastic Load Balancing API>: Use C<DescribeLoadBalancers> to get the
+value of C<DNSName> and C<CanonicalHostedZoneNameId>. (You specify the
+value of C<CanonicalHostedZoneNameId> for AliasTarget$HostedZoneId.)
+For more information, see the applicable guide:
+
+=over
+
+=item *
+
+Classic Load Balancer: DescribeLoadBalancers
+
+=item *
+
+Application Load Balancer: DescribeLoadBalancers
+
+=back
 
 =item *
 
 I<AWS CLI>: Use C< describe-load-balancers > to get the value of
-C<CanonicalHostedZoneName>. Use the same process to get the
-C<CanonicalHostedZoneNameId>. See HostedZoneId.
+C<DNSName> and C<CanonicalHostedZoneNameId>. (You specify the value of
+C<CanonicalHostedZoneNameId> for AliasTarget$HostedZoneId.)
 
 =back
 
@@ -150,12 +164,12 @@ C<CanonicalHostedZoneNameId>. See HostedZoneId.
 
 B<An Amazon S3 bucket that is configured as a static website:> Specify
 the domain name of the Amazon S3 website endpoint in which you created
-the bucket; for example, C<s3-website-us-east-1.amazonaws.com>. For
+the bucket, for example, C<s3-website-us-east-1.amazonaws.com>. For
 more information about valid values, see the table Amazon Simple
 Storage Service (S3) Website Endpoints in the I<Amazon Web Services
 General Reference>. For more information about using S3 buckets for
-websites, see Hosting a Static Website on Amazon S3 in the I<Amazon S3
-Developer Guide.>
+websites, see Getting Started with Amazon Route 53 in the I<Amazon
+Route 53 Developer Guide.>
 
 =item *
 
@@ -311,28 +325,42 @@ following methods to get the hosted zone ID:
 
 AWS Management Console: Go to the Amazon EC2 page, click B<Load
 Balancers> in the navigation pane, select the load balancer, and get
-the value of the B<Hosted Zone ID> field on the B<Description> tab. Use
-the same process to get the value of B<DNS Name>. See HostedZone$Name.
+the value of the B<Hosted zone> field on the B<Description> tab. Use
+the same process to get the value of B<DNS name>. (You specify the
+value of B<DNS name> for AliasTarget$DNSName.)
 
 =item *
 
-Elastic Load Balancing API: Use C<DescribeLoadBalancers> to get the
-value of C<CanonicalHostedZoneNameID>. Use the same process to get the
-C<CanonicalHostedZoneName>. See HostedZone$Name.
+I<Elastic Load Balancing API>: Use C<DescribeLoadBalancers> to get the
+value of C<CanonicalHostedZoneNameId> and C<DNSName>. (You specify the
+value of C<DNSName> for AliasTarget$DNSName.) For more information, see
+the applicable guide:
+
+=over
+
+=item *
+
+Classic Load Balancer: DescribeLoadBalancers
+
+=item *
+
+Application Load Balancer: DescribeLoadBalancers
+
+=back
 
 =item *
 
 AWS CLI: Use C< describe-load-balancers > to get the value of
-C<CanonicalHostedZoneNameID>. Use the same process to get the
-C<CanonicalHostedZoneName>. See HostedZone$Name.
+C<CanonicalHostedZoneNameID> and C<DNSName>. (You specify the value of
+C<DNSName> for AliasTarget$DNSName.)
 
 =back
 
 =item An Amazon S3 bucket configured as a static website
 
-Specify the hosted zone ID for the Amazon S3 website endpoint in which
-you created the bucket. For more information about valid values, see
-the table Amazon S3 (S3) Website Endpoints in the I<Amazon Web Services
+Specify the hosted zone ID for the region that you created the bucket
+in. For more information about valid values, see the table Amazon
+Simple Storage Service Website Endpoints in the I<Amazon Web Services
 General Reference>.
 
 =item Another Amazon Route 53 resource record set in your hosted zone
