@@ -250,6 +250,195 @@ package Paws::Lightsail;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub GetAllActiveNames {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetActiveNames(@_);
+
+    if (not defined $callback) {
+      while ($result->pageToken) {
+        $result = $self->GetActiveNames(@_, pageToken => $result->nextPageToken);
+        push @{ $result->activeNames }, @{ $result->activeNames };
+      }
+      return $result;
+    } else {
+      while ($result->pageToken) {
+        $result = $self->GetActiveNames(@_, pageToken => $result->nextPageToken);
+        $callback->($_ => 'activeNames') foreach (@{ $result->activeNames });
+      }
+    }
+
+    return undef
+  }
+  sub GetAllBlueprints {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetBlueprints(@_);
+
+    if (not defined $callback) {
+      while ($result->pageToken) {
+        $result = $self->GetBlueprints(@_, pageToken => $result->nextPageToken);
+        push @{ $result->blueprints }, @{ $result->blueprints };
+      }
+      return $result;
+    } else {
+      while ($result->pageToken) {
+        $result = $self->GetBlueprints(@_, pageToken => $result->nextPageToken);
+        $callback->($_ => 'blueprints') foreach (@{ $result->blueprints });
+      }
+    }
+
+    return undef
+  }
+  sub GetAllBundles {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetBundles(@_);
+
+    if (not defined $callback) {
+      while ($result->pageToken) {
+        $result = $self->GetBundles(@_, pageToken => $result->nextPageToken);
+        push @{ $result->bundles }, @{ $result->bundles };
+      }
+      return $result;
+    } else {
+      while ($result->pageToken) {
+        $result = $self->GetBundles(@_, pageToken => $result->nextPageToken);
+        $callback->($_ => 'bundles') foreach (@{ $result->bundles });
+      }
+    }
+
+    return undef
+  }
+  sub GetAllDomains {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetDomains(@_);
+
+    if (not defined $callback) {
+      while ($result->pageToken) {
+        $result = $self->GetDomains(@_, pageToken => $result->nextPageToken);
+        push @{ $result->domains }, @{ $result->domains };
+      }
+      return $result;
+    } else {
+      while ($result->pageToken) {
+        $result = $self->GetDomains(@_, pageToken => $result->nextPageToken);
+        $callback->($_ => 'domains') foreach (@{ $result->domains });
+      }
+    }
+
+    return undef
+  }
+  sub GetAllInstances {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetInstances(@_);
+
+    if (not defined $callback) {
+      while ($result->pageToken) {
+        $result = $self->GetInstances(@_, pageToken => $result->nextPageToken);
+        push @{ $result->instances }, @{ $result->instances };
+      }
+      return $result;
+    } else {
+      while ($result->pageToken) {
+        $result = $self->GetInstances(@_, pageToken => $result->nextPageToken);
+        $callback->($_ => 'instances') foreach (@{ $result->instances });
+      }
+    }
+
+    return undef
+  }
+  sub GetAllInstanceSnapshots {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetInstanceSnapshots(@_);
+
+    if (not defined $callback) {
+      while ($result->pageToken) {
+        $result = $self->GetInstanceSnapshots(@_, pageToken => $result->nextPageToken);
+        push @{ $result->instanceSnapshots }, @{ $result->instanceSnapshots };
+      }
+      return $result;
+    } else {
+      while ($result->pageToken) {
+        $result = $self->GetInstanceSnapshots(@_, pageToken => $result->nextPageToken);
+        $callback->($_ => 'instanceSnapshots') foreach (@{ $result->instanceSnapshots });
+      }
+    }
+
+    return undef
+  }
+  sub GetAllKeyPairs {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetKeyPairs(@_);
+
+    if (not defined $callback) {
+      while ($result->pageToken) {
+        $result = $self->GetKeyPairs(@_, pageToken => $result->nextPageToken);
+        push @{ $result->keyPairs }, @{ $result->keyPairs };
+      }
+      return $result;
+    } else {
+      while ($result->pageToken) {
+        $result = $self->GetKeyPairs(@_, pageToken => $result->nextPageToken);
+        $callback->($_ => 'keyPairs') foreach (@{ $result->keyPairs });
+      }
+    }
+
+    return undef
+  }
+  sub GetAllOperations {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetOperations(@_);
+
+    if (not defined $callback) {
+      while ($result->pageToken) {
+        $result = $self->GetOperations(@_, pageToken => $result->nextPageToken);
+        push @{ $result->operations }, @{ $result->operations };
+      }
+      return $result;
+    } else {
+      while ($result->pageToken) {
+        $result = $self->GetOperations(@_, pageToken => $result->nextPageToken);
+        $callback->($_ => 'operations') foreach (@{ $result->operations });
+      }
+    }
+
+    return undef
+  }
+  sub GetAllStaticIps {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetStaticIps(@_);
+
+    if (not defined $callback) {
+      while ($result->pageToken) {
+        $result = $self->GetStaticIps(@_, pageToken => $result->nextPageToken);
+        push @{ $result->staticIps }, @{ $result->staticIps };
+      }
+      return $result;
+    } else {
+      while ($result->pageToken) {
+        $result = $self->GetStaticIps(@_, pageToken => $result->nextPageToken);
+        $callback->($_ => 'staticIps') foreach (@{ $result->staticIps });
+      }
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/AllocateStaticIp AttachStaticIp CloseInstancePublicPorts CreateDomain CreateDomainEntry CreateInstances CreateInstancesFromSnapshot CreateInstanceSnapshot CreateKeyPair DeleteDomain DeleteDomainEntry DeleteInstance DeleteInstanceSnapshot DeleteKeyPair DetachStaticIp DownloadDefaultKeyPair GetActiveNames GetBlueprints GetBundles GetDomain GetDomains GetInstance GetInstanceAccessDetails GetInstanceMetricData GetInstancePortStates GetInstances GetInstanceSnapshot GetInstanceSnapshots GetInstanceState GetKeyPair GetKeyPairs GetOperation GetOperations GetOperationsForResource GetRegions GetStaticIp GetStaticIps ImportKeyPair IsVpcPeered OpenInstancePublicPorts PeerVpc RebootInstance ReleaseStaticIp StartInstance StopInstance UnpeerVpc UpdateDomainEntry / }
@@ -757,6 +946,114 @@ Returns: a L<Paws::Lightsail::UpdateDomainEntryResult> instance
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 GetAllActiveNames(sub { },[PageToken => Str])
+
+=head2 GetAllActiveNames([PageToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - activeNames, passing the object as the first parameter, and the string 'activeNames' as the second parameter 
+
+If not, it will return a a L<Paws::Lightsail::GetActiveNamesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllBlueprints(sub { },[IncludeInactive => Bool, PageToken => Str])
+
+=head2 GetAllBlueprints([IncludeInactive => Bool, PageToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - blueprints, passing the object as the first parameter, and the string 'blueprints' as the second parameter 
+
+If not, it will return a a L<Paws::Lightsail::GetBlueprintsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllBundles(sub { },[IncludeInactive => Bool, PageToken => Str])
+
+=head2 GetAllBundles([IncludeInactive => Bool, PageToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - bundles, passing the object as the first parameter, and the string 'bundles' as the second parameter 
+
+If not, it will return a a L<Paws::Lightsail::GetBundlesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllDomains(sub { },[PageToken => Str])
+
+=head2 GetAllDomains([PageToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - domains, passing the object as the first parameter, and the string 'domains' as the second parameter 
+
+If not, it will return a a L<Paws::Lightsail::GetDomainsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllInstances(sub { },[PageToken => Str])
+
+=head2 GetAllInstances([PageToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - instances, passing the object as the first parameter, and the string 'instances' as the second parameter 
+
+If not, it will return a a L<Paws::Lightsail::GetInstancesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllInstanceSnapshots(sub { },[PageToken => Str])
+
+=head2 GetAllInstanceSnapshots([PageToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - instanceSnapshots, passing the object as the first parameter, and the string 'instanceSnapshots' as the second parameter 
+
+If not, it will return a a L<Paws::Lightsail::GetInstanceSnapshotsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllKeyPairs(sub { },[PageToken => Str])
+
+=head2 GetAllKeyPairs([PageToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - keyPairs, passing the object as the first parameter, and the string 'keyPairs' as the second parameter 
+
+If not, it will return a a L<Paws::Lightsail::GetKeyPairsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllOperations(sub { },[PageToken => Str])
+
+=head2 GetAllOperations([PageToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - operations, passing the object as the first parameter, and the string 'operations' as the second parameter 
+
+If not, it will return a a L<Paws::Lightsail::GetOperationsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllStaticIps(sub { },[PageToken => Str])
+
+=head2 GetAllStaticIps([PageToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - staticIps, passing the object as the first parameter, and the string 'staticIps' as the second parameter 
+
+If not, it will return a a L<Paws::Lightsail::GetStaticIpsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 
