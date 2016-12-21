@@ -17,13 +17,13 @@ Paws::Firehose::PutRecordBatchOutput
 
 =head2 B<REQUIRED> FailedPutCount => Int
 
-The number of unsuccessfully written records.
+The number of records that might have failed processing.
 
 
 =head2 B<REQUIRED> RequestResponses => ArrayRef[L<Paws::Firehose::PutRecordBatchResponseEntry>]
 
-The results for the individual records. The index of each element
-matches the same index in which records were sent.
+The results array. For each record, the index of the response element
+is the same as the index used in the request array.
 
 
 =head2 _request_id => Str

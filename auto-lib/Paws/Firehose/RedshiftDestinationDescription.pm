@@ -3,8 +3,11 @@ package Paws::Firehose::RedshiftDestinationDescription;
   has CloudWatchLoggingOptions => (is => 'ro', isa => 'Paws::Firehose::CloudWatchLoggingOptions');
   has ClusterJDBCURL => (is => 'ro', isa => 'Str', required => 1);
   has CopyCommand => (is => 'ro', isa => 'Paws::Firehose::CopyCommand', required => 1);
+  has ProcessingConfiguration => (is => 'ro', isa => 'Paws::Firehose::ProcessingConfiguration');
   has RetryOptions => (is => 'ro', isa => 'Paws::Firehose::RedshiftRetryOptions');
   has RoleARN => (is => 'ro', isa => 'Str', required => 1);
+  has S3BackupDescription => (is => 'ro', isa => 'Paws::Firehose::S3DestinationDescription');
+  has S3BackupMode => (is => 'ro', isa => 'Str');
   has S3DestinationDescription => (is => 'ro', isa => 'Paws::Firehose::S3DestinationDescription', required => 1);
   has Username => (is => 'ro', isa => 'Str', required => 1);
 1;
@@ -44,7 +47,7 @@ Describes a destination in Amazon Redshift.
 
 =head2 CloudWatchLoggingOptions => L<Paws::Firehose::CloudWatchLoggingOptions>
 
-  Describes CloudWatch logging options for your delivery stream.
+  The CloudWatch logging options for your delivery stream.
 
 
 =head2 B<REQUIRED> ClusterJDBCURL => Str
@@ -57,16 +60,30 @@ Describes a destination in Amazon Redshift.
   The C<COPY> command.
 
 
+=head2 ProcessingConfiguration => L<Paws::Firehose::ProcessingConfiguration>
+
+  The data processing configuration.
+
+
 =head2 RetryOptions => L<Paws::Firehose::RedshiftRetryOptions>
 
-  Configures retry behavior in the event that Firehose is unable to
-deliver documents to Amazon Redshift. Default value is 3600 (60
-minutes).
+  The retry behavior in the event that Firehose is unable to deliver
+documents to Amazon Redshift. Default value is 3600 (60 minutes).
 
 
 =head2 B<REQUIRED> RoleARN => Str
 
   The ARN of the AWS credentials.
+
+
+=head2 S3BackupDescription => L<Paws::Firehose::S3DestinationDescription>
+
+  The configuration for backup in Amazon S3.
+
+
+=head2 S3BackupMode => Str
+
+  The Amazon S3 backup mode.
 
 
 =head2 B<REQUIRED> S3DestinationDescription => L<Paws::Firehose::S3DestinationDescription>

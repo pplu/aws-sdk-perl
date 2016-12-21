@@ -4,8 +4,11 @@ package Paws::Firehose::RedshiftDestinationConfiguration;
   has ClusterJDBCURL => (is => 'ro', isa => 'Str', required => 1);
   has CopyCommand => (is => 'ro', isa => 'Paws::Firehose::CopyCommand', required => 1);
   has Password => (is => 'ro', isa => 'Str', required => 1);
+  has ProcessingConfiguration => (is => 'ro', isa => 'Paws::Firehose::ProcessingConfiguration');
   has RetryOptions => (is => 'ro', isa => 'Paws::Firehose::RedshiftRetryOptions');
   has RoleARN => (is => 'ro', isa => 'Str', required => 1);
+  has S3BackupConfiguration => (is => 'ro', isa => 'Paws::Firehose::S3DestinationConfiguration');
+  has S3BackupMode => (is => 'ro', isa => 'Str');
   has S3Configuration => (is => 'ro', isa => 'Paws::Firehose::S3DestinationConfiguration', required => 1);
   has Username => (is => 'ro', isa => 'Str', required => 1);
 1;
@@ -45,7 +48,7 @@ Describes the configuration of a destination in Amazon Redshift.
 
 =head2 CloudWatchLoggingOptions => L<Paws::Firehose::CloudWatchLoggingOptions>
 
-  Describes CloudWatch logging options for your delivery stream.
+  The CloudWatch logging options for your delivery stream.
 
 
 =head2 B<REQUIRED> ClusterJDBCURL => Str
@@ -63,11 +66,15 @@ Describes the configuration of a destination in Amazon Redshift.
   The user password.
 
 
+=head2 ProcessingConfiguration => L<Paws::Firehose::ProcessingConfiguration>
+
+  The data processing configuration.
+
+
 =head2 RetryOptions => L<Paws::Firehose::RedshiftRetryOptions>
 
-  Configures retry behavior in the event that Firehose is unable to
-deliver documents to Amazon Redshift. Default value is 3600 (60
-minutes).
+  The retry behavior in the event that Firehose is unable to deliver
+documents to Amazon Redshift. Default value is 3600 (60 minutes).
 
 
 =head2 B<REQUIRED> RoleARN => Str
@@ -75,11 +82,21 @@ minutes).
   The ARN of the AWS credentials.
 
 
+=head2 S3BackupConfiguration => L<Paws::Firehose::S3DestinationConfiguration>
+
+  The configuration for backup in Amazon S3.
+
+
+=head2 S3BackupMode => Str
+
+  The Amazon S3 backup mode.
+
+
 =head2 B<REQUIRED> S3Configuration => L<Paws::Firehose::S3DestinationConfiguration>
 
-  The S3 configuration for the intermediate location from which Amazon
-Redshift obtains data. Restrictions are described in the topic for
-CreateDeliveryStream.
+  The configuration for the intermediate Amazon S3 location from which
+Amazon Redshift obtains data. Restrictions are described in the topic
+for CreateDeliveryStream.
 
 The compression formats C<SNAPPY> or C<ZIP> cannot be specified in
 B<RedshiftDestinationConfiguration.S3Configuration> because the Amazon

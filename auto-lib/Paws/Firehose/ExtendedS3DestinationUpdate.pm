@@ -1,4 +1,4 @@
-package Paws::Firehose::S3DestinationUpdate;
+package Paws::Firehose::ExtendedS3DestinationUpdate;
   use Moose;
   has BucketARN => (is => 'ro', isa => 'Str');
   has BufferingHints => (is => 'ro', isa => 'Paws::Firehose::BufferingHints');
@@ -6,14 +6,17 @@ package Paws::Firehose::S3DestinationUpdate;
   has CompressionFormat => (is => 'ro', isa => 'Str');
   has EncryptionConfiguration => (is => 'ro', isa => 'Paws::Firehose::EncryptionConfiguration');
   has Prefix => (is => 'ro', isa => 'Str');
+  has ProcessingConfiguration => (is => 'ro', isa => 'Paws::Firehose::ProcessingConfiguration');
   has RoleARN => (is => 'ro', isa => 'Str');
+  has S3BackupMode => (is => 'ro', isa => 'Str');
+  has S3BackupUpdate => (is => 'ro', isa => 'Paws::Firehose::S3DestinationUpdate');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::Firehose::S3DestinationUpdate
+Paws::Firehose::ExtendedS3DestinationUpdate
 
 =head1 USAGE
 
@@ -24,13 +27,13 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::Firehose::S3DestinationUpdate object:
+As an example, if Att1 is expected to be a Paws::Firehose::ExtendedS3DestinationUpdate object:
 
-  $service_obj->Method(Att1 => { BucketARN => $value, ..., RoleARN => $value  });
+  $service_obj->Method(Att1 => { BucketARN => $value, ..., S3BackupUpdate => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::Firehose::S3DestinationUpdate object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::Firehose::ExtendedS3DestinationUpdate object:
 
   $result = $service_obj->Method(...);
   $result->Att1->BucketARN
@@ -49,8 +52,7 @@ Describes an update for a destination in Amazon S3.
 
 =head2 BufferingHints => L<Paws::Firehose::BufferingHints>
 
-  The buffering option. If no value is specified, B<BufferingHints>
-object default values are used.
+  The buffering option.
 
 
 =head2 CloudWatchLoggingOptions => L<Paws::Firehose::CloudWatchLoggingOptions>
@@ -62,10 +64,6 @@ object default values are used.
 
   The compression format. If no value is specified, the default is
 C<UNCOMPRESSED>.
-
-The compression formats C<SNAPPY> or C<ZIP> cannot be specified for
-Amazon Redshift destinations because they are not supported by the
-Amazon Redshift C<COPY> operation that reads from the S3 bucket.
 
 
 =head2 EncryptionConfiguration => L<Paws::Firehose::EncryptionConfiguration>
@@ -84,9 +82,24 @@ see Amazon S3 Object Name Format in the I<Amazon Kinesis Firehose
 Developer Guide>.
 
 
+=head2 ProcessingConfiguration => L<Paws::Firehose::ProcessingConfiguration>
+
+  The data processing configuration.
+
+
 =head2 RoleARN => Str
 
   The ARN of the AWS credentials.
+
+
+=head2 S3BackupMode => Str
+
+  Enables or disables Amazon S3 backup mode.
+
+
+=head2 S3BackupUpdate => L<Paws::Firehose::S3DestinationUpdate>
+
+  The Amazon S3 destination for backup.
 
 
 

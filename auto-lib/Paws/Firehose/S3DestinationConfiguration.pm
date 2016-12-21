@@ -55,7 +55,7 @@ object default values are used.
 
 =head2 CloudWatchLoggingOptions => L<Paws::Firehose::CloudWatchLoggingOptions>
 
-  Describes CloudWatch logging options for your delivery stream.
+  The CloudWatch logging options for your delivery stream.
 
 
 =head2 CompressionFormat => Str
@@ -80,8 +80,8 @@ no encryption.
 delivered S3 files. You can specify an extra prefix to be added in
 front of the time format prefix. Note that if the prefix ends with a
 slash, it appears as a folder in the S3 bucket. For more information,
-see Amazon S3 Object Name Format in the Amazon Kinesis Firehose
-Developer Guide.
+see Amazon S3 Object Name Format in the I<Amazon Kinesis Firehose
+Developer Guide>.
 
 
 =head2 B<REQUIRED> RoleARN => Str

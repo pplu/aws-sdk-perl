@@ -1,15 +1,14 @@
-package Paws::Firehose::CloudWatchLoggingOptions;
+package Paws::Firehose::ProcessingConfiguration;
   use Moose;
   has Enabled => (is => 'ro', isa => 'Bool');
-  has LogGroupName => (is => 'ro', isa => 'Str');
-  has LogStreamName => (is => 'ro', isa => 'Str');
+  has Processors => (is => 'ro', isa => 'ArrayRef[Paws::Firehose::Processor]');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::Firehose::CloudWatchLoggingOptions
+Paws::Firehose::ProcessingConfiguration
 
 =head1 USAGE
 
@@ -20,39 +19,32 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::Firehose::CloudWatchLoggingOptions object:
+As an example, if Att1 is expected to be a Paws::Firehose::ProcessingConfiguration object:
 
-  $service_obj->Method(Att1 => { Enabled => $value, ..., LogStreamName => $value  });
+  $service_obj->Method(Att1 => { Enabled => $value, ..., Processors => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::Firehose::CloudWatchLoggingOptions object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::Firehose::ProcessingConfiguration object:
 
   $result = $service_obj->Method(...);
   $result->Att1->Enabled
 
 =head1 DESCRIPTION
 
-Describes the CloudWatch logging options for your delivery stream.
+Describes a data processing configuration.
 
 =head1 ATTRIBUTES
 
 
 =head2 Enabled => Bool
 
-  Enables or disables CloudWatch logging.
+  Enables or disables data processing.
 
 
-=head2 LogGroupName => Str
+=head2 Processors => ArrayRef[L<Paws::Firehose::Processor>]
 
-  The CloudWatch group name for logging. This value is required if
-CloudWatch logging is enabled.
-
-
-=head2 LogStreamName => Str
-
-  The CloudWatch log stream name for logging. This value is required if
-CloudWatch logging is enabled.
+  The data processors.
 
 
 

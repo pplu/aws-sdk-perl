@@ -4,8 +4,11 @@ package Paws::Firehose::RedshiftDestinationUpdate;
   has ClusterJDBCURL => (is => 'ro', isa => 'Str');
   has CopyCommand => (is => 'ro', isa => 'Paws::Firehose::CopyCommand');
   has Password => (is => 'ro', isa => 'Str');
+  has ProcessingConfiguration => (is => 'ro', isa => 'Paws::Firehose::ProcessingConfiguration');
   has RetryOptions => (is => 'ro', isa => 'Paws::Firehose::RedshiftRetryOptions');
   has RoleARN => (is => 'ro', isa => 'Str');
+  has S3BackupMode => (is => 'ro', isa => 'Str');
+  has S3BackupUpdate => (is => 'ro', isa => 'Paws::Firehose::S3DestinationUpdate');
   has S3Update => (is => 'ro', isa => 'Paws::Firehose::S3DestinationUpdate');
   has Username => (is => 'ro', isa => 'Str');
 1;
@@ -45,7 +48,7 @@ Describes an update for a destination in Amazon Redshift.
 
 =head2 CloudWatchLoggingOptions => L<Paws::Firehose::CloudWatchLoggingOptions>
 
-  Describes CloudWatch logging options for your delivery stream.
+  The CloudWatch logging options for your delivery stream.
 
 
 =head2 ClusterJDBCURL => Str
@@ -63,16 +66,30 @@ Describes an update for a destination in Amazon Redshift.
   The user password.
 
 
+=head2 ProcessingConfiguration => L<Paws::Firehose::ProcessingConfiguration>
+
+  The data processing configuration.
+
+
 =head2 RetryOptions => L<Paws::Firehose::RedshiftRetryOptions>
 
-  Configures retry behavior in the event that Firehose is unable to
-deliver documents to Amazon Redshift. Default value is 3600 (60
-minutes).
+  The retry behavior in the event that Firehose is unable to deliver
+documents to Amazon Redshift. Default value is 3600 (60 minutes).
 
 
 =head2 RoleARN => Str
 
   The ARN of the AWS credentials.
+
+
+=head2 S3BackupMode => Str
+
+  The Amazon S3 backup mode.
+
+
+=head2 S3BackupUpdate => L<Paws::Firehose::S3DestinationUpdate>
+
+  The Amazon S3 destination for backup.
 
 
 =head2 S3Update => L<Paws::Firehose::S3DestinationUpdate>
