@@ -1,4 +1,4 @@
-0.29 
+0.29 27 Dec 2016
  - New functionality: Enabled and documented paginators (methods that repeatedly call methods that 
    return partial responses)
  - Remove under work warning from JSON-REST services: ApiGateway,CloudSearchDomain,CognitoSync,
