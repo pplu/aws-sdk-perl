@@ -40,7 +40,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 The new path for the server certificate. Include this only if you are
 updating the server certificate's path.
 
-The regex pattern for this parameter is a string of characters
+This paramater allows (per its regex pattern) a string of characters
 consisting of either a forward slash (/) by itself or a string that
 must begin and end with forward slashes, containing any ASCII character
 from the ! (\u0021) thru the DEL character (\u007F), including most
@@ -54,7 +54,7 @@ The new name for the server certificate. Include this only if you are
 updating the server certificate's name. The name of the certificate
 cannot contain any spaces.
 
-The regex pattern for this parameter is a string of characters
+This parameter allows (per its regex pattern) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
 spaces. You can also include any of the following characters: =,.@-
 
@@ -64,7 +64,7 @@ spaces. You can also include any of the following characters: =,.@-
 
 The name of the server certificate that you want to update.
 
-The regex pattern for this parameter is a string of characters
+This parameter allows (per its regex pattern) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
 spaces. You can also include any of the following characters: =,.@-
 

@@ -72,7 +72,7 @@ created.
 
 =head2 InstanceProfileList => ArrayRef[L<Paws::IAM::InstanceProfile>]
 
-  
+  A list of instance profiles that contain this role.
 
 
 =head2 Path => Str

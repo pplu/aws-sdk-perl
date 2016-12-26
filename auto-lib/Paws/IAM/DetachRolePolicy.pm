@@ -48,7 +48,7 @@ AWS Service Namespaces in the I<AWS General Reference>.
 The name (friendly name, not ARN) of the IAM role to detach the policy
 from.
 
-The regex pattern for this parameter is a string of characters
+This parameter allows (per its regex pattern) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
 spaces. You can also include any of the following characters: =,.@-
 

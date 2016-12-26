@@ -38,7 +38,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 The name of the server certificate you want to retrieve information
 about.
 
-The regex pattern for this parameter is a string of characters
+This parameter allows (per its regex pattern) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
 spaces. You can also include any of the following characters: =,.@-
 

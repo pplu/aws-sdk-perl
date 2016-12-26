@@ -39,7 +39,7 @@ A list of policies for which you want the list of context keys
 referenced in those policies. Each document is specified as a string
 containing the complete, valid JSON text of an IAM policy.
 
-The regex pattern for this parameter is a string of characters
+This parameter allows (per its regex pattern) a string of characters
 consisting of any printable ASCII character ranging from the space
 character (\u0020) through end of the ASCII character range (\u00FF).
 It also includes the special characters tab (\u0009), line feed

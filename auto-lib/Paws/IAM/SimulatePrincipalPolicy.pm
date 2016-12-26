@@ -94,15 +94,16 @@ indicate where the next call should start.
 
 =head2 MaxItems => Int
 
-Use this only when paginating results to indicate the maximum number of
-items you want in the response. If additional items exist beyond the
-maximum you specify, the C<IsTruncated> response element is C<true>.
+(Optional) Use this only when paginating results to indicate the
+maximum number of items you want in the response. If additional items
+exist beyond the maximum you specify, the C<IsTruncated> response
+element is C<true>.
 
-This parameter is optional. If you do not include it, it defaults to
-100. Note that IAM might return fewer results, even when there are more
-results available. In that case, the C<IsTruncated> response element
-returns C<true> and C<Marker> contains a value to include in the
-subsequent call that tells the service where to continue from.
+If you do not include this parameter, it defaults to 100. Note that IAM
+might return fewer results, even when there are more results available.
+In that case, the C<IsTruncated> response element returns C<true> and
+C<Marker> contains a value to include in the subsequent call that tells
+the service where to continue from.
 
 
 
@@ -112,7 +113,7 @@ An optional list of additional policy documents to include in the
 simulation. Each document is specified as a string containing the
 complete, valid JSON text of an IAM policy.
 
-The regex pattern for this parameter is a string of characters
+This parameter allows (per its regex pattern) a string of characters
 consisting of any printable ASCII character ranging from the space
 character (\u0020) through end of the ASCII character range (\u00FF).
 It also includes the special characters tab (\u0009), line feed
@@ -235,7 +236,7 @@ string. Each resource in the simulation is treated as if it had this
 policy attached. You can include only one resource-based policy in a
 simulation.
 
-The regex pattern for this parameter is a string of characters
+This parameter allows (per its regex pattern) a string of characters
 consisting of any printable ASCII character ranging from the space
 character (\u0020) through end of the ASCII character range (\u00FF).
 It also includes the special characters tab (\u0009), line feed

@@ -48,9 +48,10 @@ AWS Service Namespaces in the I<AWS General Reference>.
 
 Identifies the policy version to retrieve.
 
-The regex pattern for this parameter is a string of characters that
-consists of the lowercase letter 'v' followed by one or two digits, and
-optionally followed by a period '.' and a string of letters and digits.
+This parameter allows (per its regex pattern) a string of characters
+that consists of the lowercase letter 'v' followed by one or two
+digits, and optionally followed by a period '.' and a string of letters
+and digits.
 
 
 

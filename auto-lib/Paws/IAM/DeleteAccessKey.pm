@@ -39,8 +39,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 The access key ID for the access key ID and secret access key you want
 to delete.
 
-The regex pattern for this parameter is a string of characters that can
-consist of any upper or lowercased letter or digit.
+This parameter allows (per its regex pattern) a string of characters
+that can consist of any upper or lowercased letter or digit.
 
 
 
@@ -48,7 +48,7 @@ consist of any upper or lowercased letter or digit.
 
 The name of the user whose access key pair you want to delete.
 
-The regex pattern for this parameter is a string of characters
+This parameter allows (per its regex pattern) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
 spaces. You can also include any of the following characters: =,.@-
 

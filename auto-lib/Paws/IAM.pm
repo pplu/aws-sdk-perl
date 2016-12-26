@@ -134,6 +134,11 @@ package Paws::IAM;
     my $call_object = $self->new_with_coercions('Paws::IAM::CreateSAMLProvider', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateServiceSpecificCredential {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IAM::CreateServiceSpecificCredential', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateUser {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IAM::CreateUser', @_);
@@ -217,6 +222,11 @@ package Paws::IAM;
   sub DeleteServerCertificate {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IAM::DeleteServerCertificate', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteServiceSpecificCredential {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IAM::DeleteServiceSpecificCredential', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteSigningCertificate {
@@ -469,6 +479,11 @@ package Paws::IAM;
     my $call_object = $self->new_with_coercions('Paws::IAM::ListServerCertificates', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListServiceSpecificCredentials {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IAM::ListServiceSpecificCredentials', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListSigningCertificates {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IAM::ListSigningCertificates', @_);
@@ -522,6 +537,11 @@ package Paws::IAM;
   sub RemoveUserFromGroup {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IAM::RemoveUserFromGroup', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ResetServiceSpecificCredential {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IAM::ResetServiceSpecificCredential', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ResyncMFADevice {
@@ -582,6 +602,11 @@ package Paws::IAM;
   sub UpdateServerCertificate {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IAM::UpdateServerCertificate', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateServiceSpecificCredential {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IAM::UpdateServiceSpecificCredential', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateSigningCertificate {
@@ -1173,7 +1198,7 @@ package Paws::IAM;
   }
 
 
-  sub operations { qw/AddClientIDToOpenIDConnectProvider AddRoleToInstanceProfile AddUserToGroup AttachGroupPolicy AttachRolePolicy AttachUserPolicy ChangePassword CreateAccessKey CreateAccountAlias CreateGroup CreateInstanceProfile CreateLoginProfile CreateOpenIDConnectProvider CreatePolicy CreatePolicyVersion CreateRole CreateSAMLProvider CreateUser CreateVirtualMFADevice DeactivateMFADevice DeleteAccessKey DeleteAccountAlias DeleteAccountPasswordPolicy DeleteGroup DeleteGroupPolicy DeleteInstanceProfile DeleteLoginProfile DeleteOpenIDConnectProvider DeletePolicy DeletePolicyVersion DeleteRole DeleteRolePolicy DeleteSAMLProvider DeleteServerCertificate DeleteSigningCertificate DeleteSSHPublicKey DeleteUser DeleteUserPolicy DeleteVirtualMFADevice DetachGroupPolicy DetachRolePolicy DetachUserPolicy EnableMFADevice GenerateCredentialReport GetAccessKeyLastUsed GetAccountAuthorizationDetails GetAccountPasswordPolicy GetAccountSummary GetContextKeysForCustomPolicy GetContextKeysForPrincipalPolicy GetCredentialReport GetGroup GetGroupPolicy GetInstanceProfile GetLoginProfile GetOpenIDConnectProvider GetPolicy GetPolicyVersion GetRole GetRolePolicy GetSAMLProvider GetServerCertificate GetSSHPublicKey GetUser GetUserPolicy ListAccessKeys ListAccountAliases ListAttachedGroupPolicies ListAttachedRolePolicies ListAttachedUserPolicies ListEntitiesForPolicy ListGroupPolicies ListGroups ListGroupsForUser ListInstanceProfiles ListInstanceProfilesForRole ListMFADevices ListOpenIDConnectProviders ListPolicies ListPolicyVersions ListRolePolicies ListRoles ListSAMLProviders ListServerCertificates ListSigningCertificates ListSSHPublicKeys ListUserPolicies ListUsers ListVirtualMFADevices PutGroupPolicy PutRolePolicy PutUserPolicy RemoveClientIDFromOpenIDConnectProvider RemoveRoleFromInstanceProfile RemoveUserFromGroup ResyncMFADevice SetDefaultPolicyVersion SimulateCustomPolicy SimulatePrincipalPolicy UpdateAccessKey UpdateAccountPasswordPolicy UpdateAssumeRolePolicy UpdateGroup UpdateLoginProfile UpdateOpenIDConnectProviderThumbprint UpdateSAMLProvider UpdateServerCertificate UpdateSigningCertificate UpdateSSHPublicKey UpdateUser UploadServerCertificate UploadSigningCertificate UploadSSHPublicKey / }
+  sub operations { qw/AddClientIDToOpenIDConnectProvider AddRoleToInstanceProfile AddUserToGroup AttachGroupPolicy AttachRolePolicy AttachUserPolicy ChangePassword CreateAccessKey CreateAccountAlias CreateGroup CreateInstanceProfile CreateLoginProfile CreateOpenIDConnectProvider CreatePolicy CreatePolicyVersion CreateRole CreateSAMLProvider CreateServiceSpecificCredential CreateUser CreateVirtualMFADevice DeactivateMFADevice DeleteAccessKey DeleteAccountAlias DeleteAccountPasswordPolicy DeleteGroup DeleteGroupPolicy DeleteInstanceProfile DeleteLoginProfile DeleteOpenIDConnectProvider DeletePolicy DeletePolicyVersion DeleteRole DeleteRolePolicy DeleteSAMLProvider DeleteServerCertificate DeleteServiceSpecificCredential DeleteSigningCertificate DeleteSSHPublicKey DeleteUser DeleteUserPolicy DeleteVirtualMFADevice DetachGroupPolicy DetachRolePolicy DetachUserPolicy EnableMFADevice GenerateCredentialReport GetAccessKeyLastUsed GetAccountAuthorizationDetails GetAccountPasswordPolicy GetAccountSummary GetContextKeysForCustomPolicy GetContextKeysForPrincipalPolicy GetCredentialReport GetGroup GetGroupPolicy GetInstanceProfile GetLoginProfile GetOpenIDConnectProvider GetPolicy GetPolicyVersion GetRole GetRolePolicy GetSAMLProvider GetServerCertificate GetSSHPublicKey GetUser GetUserPolicy ListAccessKeys ListAccountAliases ListAttachedGroupPolicies ListAttachedRolePolicies ListAttachedUserPolicies ListEntitiesForPolicy ListGroupPolicies ListGroups ListGroupsForUser ListInstanceProfiles ListInstanceProfilesForRole ListMFADevices ListOpenIDConnectProviders ListPolicies ListPolicyVersions ListRolePolicies ListRoles ListSAMLProviders ListServerCertificates ListServiceSpecificCredentials ListSigningCertificates ListSSHPublicKeys ListUserPolicies ListUsers ListVirtualMFADevices PutGroupPolicy PutRolePolicy PutUserPolicy RemoveClientIDFromOpenIDConnectProvider RemoveRoleFromInstanceProfile RemoveUserFromGroup ResetServiceSpecificCredential ResyncMFADevice SetDefaultPolicyVersion SimulateCustomPolicy SimulatePrincipalPolicy UpdateAccessKey UpdateAccountPasswordPolicy UpdateAssumeRolePolicy UpdateGroup UpdateLoginProfile UpdateOpenIDConnectProviderThumbprint UpdateSAMLProvider UpdateServerCertificate UpdateServiceSpecificCredential UpdateSigningCertificate UpdateSSHPublicKey UpdateUser UploadServerCertificate UploadSigningCertificate UploadSSHPublicKey / }
 
 1;
 
@@ -1549,6 +1574,30 @@ the AWS Management Console and About SAML 2.0-based Federation in the
 I<IAM User Guide>.
 
 
+=head2 CreateServiceSpecificCredential(ServiceName => Str, UserName => Str)
+
+Each argument is described in detail in: L<Paws::IAM::CreateServiceSpecificCredential>
+
+Returns: a L<Paws::IAM::CreateServiceSpecificCredentialResponse> instance
+
+  Generates a set of credentials consisting of a user name and password
+that can be used to access the service specified in the request. These
+credentials are generated by IAM, and can be used only for the
+specified service.
+
+You can have a maximum of two sets of service-specific credentials for
+each supported service per user.
+
+The only supported service at this time is AWS CodeCommit.
+
+You can reset the password to a new service-generated value by calling
+ResetServiceSpecificCredential.
+
+For more information about service-specific credentials, see Using IAM
+with AWS CodeCommit: Git Credentials, SSH Keys, and AWS Access Keys in
+the I<IAM User Guide>.
+
+
 =head2 CreateUser(UserName => Str, [Path => Str])
 
 Each argument is described in detail in: L<Paws::IAM::CreateUser>
@@ -1834,6 +1883,15 @@ remove the reference to the certificate from Elastic Load Balancing
 before using this command to delete the certificate. For more
 information, go to DeleteLoadBalancerListeners in the I<Elastic Load
 Balancing API Reference>.
+
+
+=head2 DeleteServiceSpecificCredential(ServiceSpecificCredentialId => Str, [UserName => Str])
+
+Each argument is described in detail in: L<Paws::IAM::DeleteServiceSpecificCredential>
+
+Returns: nothing
+
+  Deletes the specified service-specific credential.
 
 
 =head2 DeleteSigningCertificate(CertificateId => Str, [UserName => Str])
@@ -2632,6 +2690,21 @@ manage with IAM, go to Working with Server Certificates in the I<IAM
 User Guide>.
 
 
+=head2 ListServiceSpecificCredentials([ServiceName => Str, UserName => Str])
+
+Each argument is described in detail in: L<Paws::IAM::ListServiceSpecificCredentials>
+
+Returns: a L<Paws::IAM::ListServiceSpecificCredentialsResponse> instance
+
+  Returns information about the service-specific credentials associated
+with the specified IAM user. If there are none, the action returns an
+empty list. The service-specific credentials returned by this action
+are used only for authenticating the IAM user to a specific service.
+For more information about using service-specific credentials to
+authenticate to an AWS service, see Set Up service-specific credentials
+in the AWS CodeCommit User Guide.
+
+
 =head2 ListSigningCertificates([Marker => Str, MaxItems => Int, UserName => Str])
 
 Each argument is described in detail in: L<Paws::IAM::ListSigningCertificates>
@@ -2839,6 +2912,18 @@ Each argument is described in detail in: L<Paws::IAM::RemoveUserFromGroup>
 Returns: nothing
 
   Removes the specified user from the specified group.
+
+
+=head2 ResetServiceSpecificCredential(ServiceSpecificCredentialId => Str, [UserName => Str])
+
+Each argument is described in detail in: L<Paws::IAM::ResetServiceSpecificCredential>
+
+Returns: a L<Paws::IAM::ResetServiceSpecificCredentialResponse> instance
+
+  Resets the password for a service-specific credential. The new password
+is AWS generated and cryptographically strong. It cannot be configured
+by the user. Resetting the password immediately invalidates the
+previous password associated with this user.
 
 
 =head2 ResyncMFADevice(AuthenticationCode1 => Str, AuthenticationCode2 => Str, SerialNumber => Str, UserName => Str)
@@ -3082,6 +3167,19 @@ example, to change the name from "ProductionCert" to "ProdCert", the
 entity making the request must have permission on "ProductionCert" and
 "ProdCert", or must have permission on all (*). For more information
 about permissions, see Access Management in the I<IAM User Guide>.
+
+
+=head2 UpdateServiceSpecificCredential(ServiceSpecificCredentialId => Str, Status => Str, [UserName => Str])
+
+Each argument is described in detail in: L<Paws::IAM::UpdateServiceSpecificCredential>
+
+Returns: nothing
+
+  Sets the status of a service-specific credential to C<Active> or
+C<Inactive>. Service-specific credentials that are inactive cannot be
+used for authentication to the service. This action can be used to
+disable a userE<rsquo>s service-specific credential as part of a
+credential rotation work flow.
 
 
 =head2 UpdateSigningCertificate(CertificateId => Str, Status => Str, [UserName => Str])

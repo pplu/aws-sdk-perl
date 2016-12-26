@@ -39,8 +39,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 The ID of the signing certificate you want to update.
 
-The regex pattern for this parameter is a string of characters that can
-consist of any upper or lowercased letter or digit.
+This parameter allows (per its regex pattern) a string of characters
+that can consist of any upper or lowercased letter or digit.
 
 
 
@@ -56,7 +56,7 @@ Valid values are: C<"Active">, C<"Inactive">
 
 The name of the IAM user the signing certificate belongs to.
 
-The regex pattern for this parameter is a string of characters
+This parameter allows (per its regex pattern) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
 spaces. You can also include any of the following characters: =,.@-
 

@@ -39,7 +39,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 The new password. The new password must conform to the AWS account's
 password policy, if one exists.
 
-The regex pattern for this parameter is a string of characters
+This parameter allows (per its regex pattern) a string of characters
 consisting of almost any printable ASCII character from the space
 (\u0020) through the end of the ASCII character range (\u00FF). You can
 also include the tab (\u0009), line feed (\u000A), and carriage return

@@ -39,7 +39,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 The new password for the user.
 
-The regex pattern for this parameter is a string of characters
+This parameter allows (per its regex pattern) a string of characters
 consisting of almost any printable ASCII character from the space
 (\u0020) through the end of the ASCII character range (\u00FF). You can
 also include the tab (\u0009), line feed (\u000A), and carriage return
@@ -62,7 +62,7 @@ sign-in.
 The name of the IAM user to create a password for. The user must
 already exist.
 
-The regex pattern for this parameter is a string of characters
+This parameter allows (per its regex pattern) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
 spaces. You can also include any of the following characters: =,.@-
 

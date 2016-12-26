@@ -37,7 +37,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 The name of the account alias to delete.
 
-The regex pattern for this parameter is a string of characters
+This parameter allows (per its regex pattern) a string of characters
 consisting of lowercase letters, digits, and dashes. You cannot start
 or finish with a dash, nor can you have two dashes in a row.
 

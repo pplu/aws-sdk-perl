@@ -1,13 +1,13 @@
 
-package Paws::IAM::UpdateSSHPublicKey;
+package Paws::IAM::UpdateServiceSpecificCredential;
   use Moose;
-  has SSHPublicKeyId => (is => 'ro', isa => 'Str', required => 1);
+  has ServiceSpecificCredentialId => (is => 'ro', isa => 'Str', required => 1);
   has Status => (is => 'ro', isa => 'Str', required => 1);
-  has UserName => (is => 'ro', isa => 'Str', required => 1);
+  has UserName => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateSSHPublicKey');
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateServiceSpecificCredential');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
   class_has _result_key => (isa => 'Str', is => 'ro');
 1;
@@ -16,28 +16,28 @@ package Paws::IAM::UpdateSSHPublicKey;
 
 =head1 NAME
 
-Paws::IAM::UpdateSSHPublicKey - Arguments for method UpdateSSHPublicKey on Paws::IAM
+Paws::IAM::UpdateServiceSpecificCredential - Arguments for method UpdateServiceSpecificCredential on Paws::IAM
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method UpdateSSHPublicKey on the 
+This class represents the parameters used for calling the method UpdateServiceSpecificCredential on the 
 AWS Identity and Access Management service. Use the attributes of this class
-as arguments to method UpdateSSHPublicKey.
+as arguments to method UpdateServiceSpecificCredential.
 
-You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateSSHPublicKey.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateServiceSpecificCredential.
 
 As an example:
 
-  $service_obj->UpdateSSHPublicKey(Att1 => $value1, Att2 => $value2, ...);
+  $service_obj->UpdateServiceSpecificCredential(Att1 => $value1, Att2 => $value2, ...);
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> SSHPublicKeyId => Str
+=head2 B<REQUIRED> ServiceSpecificCredentialId => Str
 
-The unique identifier for the SSH public key.
+The unique identifier of the service-specific credential.
 
 This parameter allows (per its regex pattern) a string of characters
 that can consist of any upper or lowercased letter or digit.
@@ -46,15 +46,15 @@ that can consist of any upper or lowercased letter or digit.
 
 =head2 B<REQUIRED> Status => Str
 
-The status to assign to the SSH public key. C<Active> means the key can
-be used for authentication with an AWS CodeCommit repository.
-C<Inactive> means the key cannot be used.
+The status to be assigned to the service-specific credential.
 
 Valid values are: C<"Active">, C<"Inactive">
 
-=head2 B<REQUIRED> UserName => Str
+=head2 UserName => Str
 
-The name of the IAM user associated with the SSH public key.
+The name of the IAM user associated with the service-specific
+credential. If you do not specify this value, then the operation
+assumes the user whose credentials are used to call the operation.
 
 This parameter allows (per its regex pattern) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
@@ -65,7 +65,7 @@ spaces. You can also include any of the following characters: =,.@-
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, documenting arguments for method UpdateSSHPublicKey in L<Paws::IAM>
+This class forms part of L<Paws>, documenting arguments for method UpdateServiceSpecificCredential in L<Paws::IAM>
 
 =head1 BUGS and CONTRIBUTIONS
 

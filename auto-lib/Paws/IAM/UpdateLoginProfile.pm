@@ -39,7 +39,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 The new password for the specified IAM user.
 
-The regex pattern for this parameter is a string of characters
+This parameter allows (per its regex pattern) a string of characters
 consisting of any printable ASCII character ranging from the space
 character (\u0020) through end of the ASCII character range (\u00FF).
 It also includes the special characters tab (\u0009), line feed
@@ -61,7 +61,7 @@ specified IAM user to set a new password on next sign-in.
 
 The name of the user whose password you want to update.
 
-The regex pattern for this parameter is a string of characters
+This parameter allows (per its regex pattern) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
 spaces. You can also include any of the following characters: =,.@-
 
