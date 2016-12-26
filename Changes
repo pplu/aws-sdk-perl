@@ -36,7 +36,8 @@
  - Gamelift API update: DescribeInstances
  - ECR API update: DescribeImages
  - ACM API update: ImportCertificate
- - RDS API update: DescribeSourceRegions, Add and Remove RoleToDBCluster, more info in DBClusters
+ - RDS API update: DescribeSourceRegions, Add and Remove RoleToDBCluster, more info in DBClusters, copy 
+   encrypted snapshots between regions
  - ServiceCatalog API update: AccessLevelFilter, Constraint and Portfolio support
  - CloudFront API update: version 2016-11-25 support
  - CodePipeline API update: GetPipelineExecution
@@ -76,6 +77,7 @@
  - CognitoIdp API update: Groups for user pools
  - StorageGateway API update: NFS mounts operations
  - Firehose API update
+ - IAM API update: ServiceSpecificCredential
 
 0.28 30 Aug 2015 23:45:00
  - On errors 503 XMLResponse would not process the error correctly (returning
