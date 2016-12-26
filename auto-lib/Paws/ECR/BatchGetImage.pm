@@ -1,6 +1,7 @@
 
 package Paws::ECR::BatchGetImage;
   use Moose;
+  has AcceptedMediaTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'acceptedMediaTypes' );
   has ImageIds => (is => 'ro', isa => 'ArrayRef[Paws::ECR::ImageIdentifier]', traits => ['NameInRequest'], request_name => 'imageIds' , required => 1);
   has RegistryId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'registryId' );
   has RepositoryName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'repositoryName' , required => 1);
@@ -33,6 +34,16 @@ As an example:
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 
 =head1 ATTRIBUTES
+
+
+=head2 AcceptedMediaTypes => ArrayRef[Str|Undef]
+
+The accepted media types for the request.
+
+Valid values: C<application/vnd.docker.distribution.manifest.v1+json> |
+C<application/vnd.docker.distribution.manifest.v2+json> |
+C<application/vnd.oci.image.manifest.v1+json>
+
 
 
 =head2 B<REQUIRED> ImageIds => ArrayRef[L<Paws::ECR::ImageIdentifier>]

@@ -213,8 +213,8 @@ Returns: a L<Paws::ECR::BatchCheckLayerAvailabilityResponse> instance
 and repository.
 
 This operation is used by the Amazon ECR proxy, and it is not intended
-for general use by customers. Use the C<docker> CLI to pull, tag, and
-push images.
+for general use by customers for pulling and pushing images. In most
+cases, you should use the C<docker> CLI to pull, tag, and push images.
 
 
 =head2 BatchDeleteImage(ImageIds => ArrayRef[L<Paws::ECR::ImageIdentifier>], RepositoryName => Str, [RegistryId => Str])
@@ -226,8 +226,15 @@ Returns: a L<Paws::ECR::BatchDeleteImageResponse> instance
   Deletes a list of specified images within a specified repository.
 Images are specified with either C<imageTag> or C<imageDigest>.
 
+You can remove a tag from an image by specifying the image's tag in
+your request. When you remove the last tag from an image, the image is
+deleted from your repository.
 
-=head2 BatchGetImage(ImageIds => ArrayRef[L<Paws::ECR::ImageIdentifier>], RepositoryName => Str, [RegistryId => Str])
+You can completely delete an image (and all of its tags) by specifying
+the image's digest in your request.
+
+
+=head2 BatchGetImage(ImageIds => ArrayRef[L<Paws::ECR::ImageIdentifier>], RepositoryName => Str, [AcceptedMediaTypes => ArrayRef[Str|Undef], RegistryId => Str])
 
 Each argument is described in detail in: L<Paws::ECR::BatchGetImage>
 
@@ -250,8 +257,8 @@ provide a C<sha256> digest of the image layer for data validation
 purposes.
 
 This operation is used by the Amazon ECR proxy, and it is not intended
-for general use by customers. Use the C<docker> CLI to pull, tag, and
-push images.
+for general use by customers for pulling and pushing images. In most
+cases, you should use the C<docker> CLI to pull, tag, and push images.
 
 
 =head2 CreateRepository(RepositoryName => Str)
@@ -288,8 +295,8 @@ Each argument is described in detail in: L<Paws::ECR::DescribeImages>
 
 Returns: a L<Paws::ECR::DescribeImagesResponse> instance
 
-  Returns metadata about the images in a repository, including image size
-and creation date.
+  Returns metadata about the images in a repository, including image
+size, image tags, and creation date.
 
 Beginning with Docker version 1.9, the Docker client compresses image
 layers before pushing them to a V2 Docker registry. The output of the
@@ -335,8 +342,8 @@ image layer. You can only get URLs for image layers that are referenced
 in an image.
 
 This operation is used by the Amazon ECR proxy, and it is not intended
-for general use by customers. Use the C<docker> CLI to pull, tag, and
-push images.
+for general use by customers for pulling and pushing images. In most
+cases, you should use the C<docker> CLI to pull, tag, and push images.
 
 
 =head2 GetRepositoryPolicy(RepositoryName => Str, [RegistryId => Str])
@@ -357,8 +364,8 @@ Returns: a L<Paws::ECR::InitiateLayerUploadResponse> instance
   Notify Amazon ECR that you intend to upload an image layer.
 
 This operation is used by the Amazon ECR proxy, and it is not intended
-for general use by customers. Use the C<docker> CLI to pull, tag, and
-push images.
+for general use by customers for pulling and pushing images. In most
+cases, you should use the C<docker> CLI to pull, tag, and push images.
 
 
 =head2 ListImages(RepositoryName => Str, [Filter => L<Paws::ECR::ListImagesFilter>, MaxResults => Int, NextToken => Str, RegistryId => Str])
@@ -377,17 +384,18 @@ them. Or, you can filter your results to return only C<TAGGED> images
 to list all of the tags in your repository.
 
 
-=head2 PutImage(ImageManifest => Str, RepositoryName => Str, [RegistryId => Str])
+=head2 PutImage(ImageManifest => Str, RepositoryName => Str, [ImageTag => Str, RegistryId => Str])
 
 Each argument is described in detail in: L<Paws::ECR::PutImage>
 
 Returns: a L<Paws::ECR::PutImageResponse> instance
 
-  Creates or updates the image manifest associated with an image.
+  Creates or updates the image manifest and tags associated with an
+image.
 
 This operation is used by the Amazon ECR proxy, and it is not intended
-for general use by customers. Use the C<docker> CLI to pull, tag, and
-push images.
+for general use by customers for pulling and pushing images. In most
+cases, you should use the C<docker> CLI to pull, tag, and push images.
 
 
 =head2 SetRepositoryPolicy(PolicyText => Str, RepositoryName => Str, [Force => Bool, RegistryId => Str])
@@ -409,8 +417,8 @@ Returns: a L<Paws::ECR::UploadLayerPartResponse> instance
   Uploads an image layer part to Amazon ECR.
 
 This operation is used by the Amazon ECR proxy, and it is not intended
-for general use by customers. Use the C<docker> CLI to pull, tag, and
-push images.
+for general use by customers for pulling and pushing images. In most
+cases, you should use the C<docker> CLI to pull, tag, and push images.
 
 
 

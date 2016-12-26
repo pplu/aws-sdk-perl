@@ -2,6 +2,7 @@
 package Paws::ECR::PutImage;
   use Moose;
   has ImageManifest => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'imageManifest' , required => 1);
+  has ImageTag => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'imageTag' );
   has RegistryId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'registryId' );
   has RepositoryName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'repositoryName' , required => 1);
 
@@ -38,6 +39,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 B<REQUIRED> ImageManifest => Str
 
 The image manifest corresponding to the image to be uploaded.
+
+
+
+=head2 ImageTag => Str
+
+The tag to associate with the image. This parameter is required for
+images that use the Docker Image Manifest V2 Schema 2 or OCI formats.
 
 
 

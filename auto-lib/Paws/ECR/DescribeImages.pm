@@ -77,8 +77,8 @@ value is C<null> when there are no more results to return.
 =head2 RegistryId => Str
 
 The AWS account ID associated with the registry that contains the
-repository in which to list images. If you do not specify a registry,
-the default registry is assumed.
+repository in which to describe images. If you do not specify a
+registry, the default registry is assumed.
 
 
 

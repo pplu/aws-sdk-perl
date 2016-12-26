@@ -3,6 +3,7 @@ package Paws::ECR::Layer;
   has LayerAvailability => (is => 'ro', isa => 'Str', xmlname => 'layerAvailability', request_name => 'layerAvailability', traits => ['Unwrapped','NameInRequest']);
   has LayerDigest => (is => 'ro', isa => 'Str', xmlname => 'layerDigest', request_name => 'layerDigest', traits => ['Unwrapped','NameInRequest']);
   has LayerSize => (is => 'ro', isa => 'Int', xmlname => 'layerSize', request_name => 'layerSize', traits => ['Unwrapped','NameInRequest']);
+  has MediaType => (is => 'ro', isa => 'Str', xmlname => 'mediaType', request_name => 'mediaType', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -22,7 +23,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::ECR::Layer object:
 
-  $service_obj->Method(Att1 => { LayerAvailability => $value, ..., LayerSize => $value  });
+  $service_obj->Method(Att1 => { LayerAvailability => $value, ..., MediaType => $value  });
 
 =head3 Results returned from an API call
 
@@ -40,8 +41,7 @@ An object representing an Amazon ECR image layer.
 
 =head2 LayerAvailability => Str
 
-  The availability status of the image layer. Valid values are
-C<AVAILABLE> and C<UNAVAILABLE>.
+  The availability status of the image layer.
 
 
 =head2 LayerDigest => Str
@@ -52,6 +52,13 @@ C<AVAILABLE> and C<UNAVAILABLE>.
 =head2 LayerSize => Int
 
   The size, in bytes, of the image layer.
+
+
+=head2 MediaType => Str
+
+  The media type of the layer, such as
+C<application/vnd.docker.image.rootfs.diff.tar.gzip> or
+C<application/vnd.oci.image.layer.v1.tar+gzip>.
 
 
 
