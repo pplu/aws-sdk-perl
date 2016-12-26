@@ -42,7 +42,7 @@ Identifier (ID) for the directory to which to add the tag.
 
 =head2 B<REQUIRED> Tags => ArrayRef[L<Paws::DS::Tag>]
 
-The tags to be assigned to the Amazon Directory Services directory.
+The tags to be assigned to the directory.
 
 
 

@@ -237,9 +237,20 @@ Paws::DS - Perl Interface to AWS AWS Directory Service
 
 AWS Directory Service
 
-This is the I<AWS Directory Service API Reference>. This guide provides
-detailed information about AWS Directory Service operations, data
-types, parameters, and errors.
+AWS Directory Service is a web service that makes it easy for you to
+setup and run directories in the AWS cloud, or connect your AWS
+resources with an existing on-premises Microsoft Active Directory. This
+guide provides detailed information about AWS Directory Service
+operations, data types, parameters, and errors. For information about
+AWS Directory Services features, see AWS Directory Service and the AWS
+Directory Service Administration Guide.
+
+AWS provides SDKs that consist of libraries and sample code for various
+programming languages and platforms (Java, Ruby, .Net, iOS, Android,
+etc.). The SDKs provide a convenient way to create programmatic access
+to AWS Directory Service and other AWS services. For more information
+about the AWS SDKs, including how to download and install them, see
+Tools for Amazon Web Services.
 
 =head1 METHODS
 
@@ -269,10 +280,9 @@ Each argument is described in detail in: L<Paws::DS::AddTagsToResource>
 
 Returns: a L<Paws::DS::AddTagsToResourceResult> instance
 
-  Adds or overwrites one or more tags for the specified Amazon Directory
-Services directory. Each directory can have a maximum of 50 tags. Each
-tag consists of a key and optional value. Tag keys must be unique to
-each resource.
+  Adds or overwrites one or more tags for the specified directory. Each
+directory can have a maximum of 50 tags. Each tag consists of a key and
+optional value. Tag keys must be unique to each resource.
 
 
 =head2 CancelSchemaExtension(DirectoryId => Str, SchemaExtensionId => Str)
@@ -568,7 +578,7 @@ Each argument is described in detail in: L<Paws::DS::EnableSso>
 
 Returns: a L<Paws::DS::EnableSsoResult> instance
 
-  Enables single-sign on for a directory.
+  Enables single sign-on for a directory.
 
 
 =head2 GetDirectoryLimits()
@@ -613,7 +623,7 @@ Each argument is described in detail in: L<Paws::DS::ListTagsForResource>
 
 Returns: a L<Paws::DS::ListTagsForResourceResult> instance
 
-  Lists all tags on an Amazon Directory Services directory.
+  Lists all tags on a directory.
 
 
 =head2 RegisterEventTopic(DirectoryId => Str, TopicName => Str)
@@ -645,7 +655,7 @@ Each argument is described in detail in: L<Paws::DS::RemoveTagsFromResource>
 
 Returns: a L<Paws::DS::RemoveTagsFromResourceResult> instance
 
-  Removes tags from an Amazon Directory Services directory.
+  Removes tags from a directory.
 
 
 =head2 RestoreFromSnapshot(SnapshotId => Str)
