@@ -18,18 +18,17 @@ Paws::KMS::ReEncryptResponse
 
 =head2 CiphertextBlob => Str
 
-The re-encrypted data. If you are using the CLI, the value is Base64
-encoded. Otherwise, it is not encoded.
+The reencrypted data.
 
 
 =head2 KeyId => Str
 
-Unique identifier of the key used to re-encrypt the data.
+Unique identifier of the CMK used to reencrypt the data.
 
 
 =head2 SourceKeyId => Str
 
-Unique identifier of the key used to originally encrypt the data.
+Unique identifier of the CMK used to originally encrypt the data.
 
 
 =head2 _request_id => Str

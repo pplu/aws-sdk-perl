@@ -71,7 +71,7 @@ Unique ID: 1234abcd-12ab-34cd-56ef-1234567890ab
 =item *
 
 ARN:
-arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab
+arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab
 
 =back
 

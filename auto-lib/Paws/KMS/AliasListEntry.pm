@@ -50,7 +50,7 @@ Contains information about an alias.
 
 =head2 TargetKeyId => Str
 
-  String that contains the key identifier pointed to by the alias.
+  String that contains the key identifier referred to by the alias.
 
 
 

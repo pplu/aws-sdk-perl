@@ -37,8 +37,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 GrantId => Str
 
-Unique identifier of the grant to be retired. The grant ID is returned
-by the C<CreateGrant> function.
+Unique identifier of the grant to retire. The grant ID is returned in
+the response to a C<CreateGrant> operation.
 
 =over
 
@@ -60,20 +60,13 @@ Token that identifies the grant to be retired.
 
 =head2 KeyId => Str
 
-A unique identifier for the customer master key associated with the
-grant. This value can be a globally unique identifier or a fully
-specified ARN of the key.
+The Amazon Resource Name of the CMK associated with the grant. Example:
 
 =over
 
 =item *
 
-Key ARN Example -
-arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012
-
-=item *
-
-Globally Unique Key ID Example - 12345678-1234-1234-1234-123456789012
+arn:aws:kms:us-east-2:444455556666:key/1234abcd-12ab-34cd-56ef-1234567890ab
 
 =back
 

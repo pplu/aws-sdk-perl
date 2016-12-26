@@ -39,21 +39,21 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> CiphertextBlob => Str
 
-Ciphertext of the data to re-encrypt.
+Ciphertext of the data to reencrypt.
 
 
 
 =head2 DestinationEncryptionContext => L<Paws::KMS::EncryptionContextType>
 
-Encryption context to be used when the data is re-encrypted.
+Encryption context to use when the data is reencrypted.
 
 
 
 =head2 B<REQUIRED> DestinationKeyId => Str
 
-A unique identifier for the customer master key used to re-encrypt the
-data. This value can be a globally unique identifier, a fully specified
-ARN to either an alias or a key, or an alias name prefixed by "alias/".
+A unique identifier for the CMK to use to reencrypt the data. This
+value can be a globally unique identifier, a fully specified ARN to
+either an alias or a key, or an alias name prefixed by "alias/".
 
 =over
 
