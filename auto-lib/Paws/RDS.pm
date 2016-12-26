@@ -1038,7 +1038,7 @@ Returns: a L<Paws::RDS::CopyDBParameterGroupResult> instance
   Copies the specified DB parameter group.
 
 
-=head2 CopyDBSnapshot(SourceDBSnapshotIdentifier => Str, TargetDBSnapshotIdentifier => Str, [CopyTags => Bool, KmsKeyId => Str, Tags => ArrayRef[L<Paws::RDS::Tag>]])
+=head2 CopyDBSnapshot(SourceDBSnapshotIdentifier => Str, TargetDBSnapshotIdentifier => Str, [CopyTags => Bool, KmsKeyId => Str, PreSignedUrl => Str, Tags => ArrayRef[L<Paws::RDS::Tag>]])
 
 Each argument is described in detail in: L<Paws::RDS::CopyDBSnapshot>
 
@@ -1052,6 +1052,73 @@ C<SourceDBSnapshotIdentifier> must be the Amazon Resource Name (ARN) of
 the shared DB snapshot.
 
 You can not copy an encrypted DB snapshot from another AWS region.
+
+You can copy an encrypted DB snapshot from another AWS region. In that
+case, the region where you call the C<CopyDBSnapshot> action is the
+destination region for the encrypted DB snapshot to be copied to. To
+copy an encrypted DB snapshot from another region, you must provide the
+following values:
+
+=over
+
+=item *
+
+C<KmsKeyId> - the AWS Key Management System (KMS) key identifier for
+the key to use to encrypt the copy of the DB snapshot in the
+destination region.
+
+=item *
+
+C<PreSignedUrl> - a URL that contains a Signature Version 4 signed
+request for the C<CopyDBSnapshot> action to be called in the source
+region where the DB snapshot will be copied from. The pre-signed URL
+must be a valid request for the C<CopyDBSnapshot> API action that can
+be executed in the source region that contains the encrypted DB
+snapshot to be copied.
+
+The pre-signed URL request must contain the following parameter values:
+
+=over
+
+=item *
+
+C<KmsKeyId> - The KMS key identifier for the key to use to encrypt the
+copy of the DB snapshot in the destination region. This is the same
+identifier for both the C<CopyDBSnapshot> action that is called in the
+destination region, and the action contained in the pre-signed URL.
+
+=item *
+
+C<SourceDBSnapshotIdentifier> - the DB snapshot identifier for the
+encrypted snapshot to be copied. This identifier must be in the Amazon
+Resource Name (ARN) format for the source region. For example, if you
+are copying an encrypted DB snapshot from the us-west-2 region, then
+your C<SourceDBSnapshotIdentifier> would look like Example:
+C<arn:aws:rds:us-west-2:123456789012:snapshot:mysql-instance1-snapshot-20161115>.
+
+=back
+
+To learn how to generate a Signature Version 4 signed request, see
+Authenticating Requests: Using Query Parameters (AWS Signature Version
+4) and Signature Version 4 Signing Process.
+
+=item *
+
+C<TargetDBSnapshotIdentifier> - the identifier for the new copy of the
+DB snapshot in the destination region.
+
+=item *
+
+C<SourceDBSnapshotIdentifier> - the DB snapshot identifier for the
+encrypted snapshot to be copied. This identifier must be in the ARN
+format for the source region and is the same value as the
+C<SourceDBSnapshotIdentifier> in the pre-signed URL.
+
+=back
+
+For more information on copying encrypted snapshots from one region to
+another, see Copying an Encrypted DB Snapshot to Another Region in the
+Amazon RDS User Guide.
 
 
 =head2 CopyOptionGroup(SourceOptionGroupIdentifier => Str, TargetOptionGroupDescription => Str, TargetOptionGroupIdentifier => Str, [Tags => ArrayRef[L<Paws::RDS::Tag>]])

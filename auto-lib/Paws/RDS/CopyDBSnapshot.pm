@@ -3,6 +3,7 @@ package Paws::RDS::CopyDBSnapshot;
   use Moose;
   has CopyTags => (is => 'ro', isa => 'Bool');
   has KmsKeyId => (is => 'ro', isa => 'Str');
+  has PreSignedUrl => (is => 'ro', isa => 'Str');
   has SourceDBSnapshotIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Tag]');
   has TargetDBSnapshotIdentifier => (is => 'ro', isa => 'Str', required => 1);
@@ -60,8 +61,60 @@ encryption key. If you don't specify a value for C<KmsKeyId>, then the
 copy of the DB snapshot is encrypted with the same KMS key as the
 source DB snapshot.
 
+If you copy an encrypted DB snapshot from your AWS account, you can
+specify a value for C<KmsKeyId> to encrypt the copy with a new KMS
+encryption key. If you don't specify a value for C<KmsKeyId>, then the
+copy of the DB snapshot is encrypted with the same KMS key as the
+source DB snapshot. If you copy an encrypted snapshot to a different
+AWS region, then you must specify a KMS key for the destination AWS
+region.
+
 If you copy an encrypted DB snapshot that is shared from another AWS
 account, then you must specify a value for C<KmsKeyId>.
+
+To copy an encrypted DB snapshot to another region, you must set
+C<KmsKeyId> to the KMS key ID used to encrypt the copy of the DB
+snapshot in the destination region. KMS encryption keys are specific to
+the region that they are created in, and you cannot use encryption keys
+from one region in another region.
+
+
+
+=head2 PreSignedUrl => Str
+
+The URL that contains a Signature Version 4 signed request for the
+C<CopyDBSnapshot> API action in the AWS region that contains the source
+DB snapshot to copy. The C<PreSignedUrl> parameter must be used when
+copying an encrypted DB snapshot from another AWS region.
+
+The pre-signed URL must be a valid request for the C<CopyDBSnapshot>
+API action that can be executed in the source region that contains the
+encrypted DB snapshot to be copied. The pre-signed URL request must
+contain the following parameter values:
+
+=over
+
+=item *
+
+C<KmsKeyId> - The KMS key identifier for the key to use to encrypt the
+copy of the DB snapshot in the destination region. This is the same
+identifier for both the C<CopyDBSnapshot> action that is called in the
+destination region, and the action contained in the pre-signed URL.
+
+=item *
+
+C<SourceDBSnapshotIdentifier> - the DB snapshot identifier for the
+encrypted snapshot to be copied. This identifier must be in the Amazon
+Resource Name (ARN) format for the source region. For example, if you
+are copying an encrypted DB snapshot from the us-west-2 region, then
+your C<SourceDBSnapshotIdentifier> would look like Example:
+C<arn:aws:rds:us-west-2:123456789012:snapshot:mysql-instance1-snapshot-20161115>.
+
+=back
+
+To learn how to generate a Signature Version 4 signed request, see
+Authenticating Requests: Using Query Parameters (AWS Signature Version
+4) and Signature Version 4 Signing Process.
 
 
 
