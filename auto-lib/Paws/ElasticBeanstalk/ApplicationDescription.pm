@@ -5,6 +5,7 @@ package Paws::ElasticBeanstalk::ApplicationDescription;
   has DateCreated => (is => 'ro', isa => 'Str');
   has DateUpdated => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
+  has ResourceLifecycleConfig => (is => 'ro', isa => 'Paws::ElasticBeanstalk::ApplicationResourceLifecycleConfig');
   has Versions => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 1;
 
@@ -65,6 +66,11 @@ application.
 =head2 Description => Str
 
   User-defined description of the application.
+
+
+=head2 ResourceLifecycleConfig => L<Paws::ElasticBeanstalk::ApplicationResourceLifecycleConfig>
+
+  The lifecycle settings for the application.
 
 
 =head2 Versions => ArrayRef[Str|Undef]

@@ -173,6 +173,11 @@ package Paws::ElasticBeanstalk;
     my $call_object = $self->new_with_coercions('Paws::ElasticBeanstalk::UpdateApplication', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpdateApplicationResourceLifecycle {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ElasticBeanstalk::UpdateApplicationResourceLifecycle', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateApplicationVersion {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ElasticBeanstalk::UpdateApplicationVersion', @_);
@@ -217,7 +222,7 @@ package Paws::ElasticBeanstalk;
   }
 
 
-  sub operations { qw/AbortEnvironmentUpdate ApplyEnvironmentManagedAction CheckDNSAvailability ComposeEnvironments CreateApplication CreateApplicationVersion CreateConfigurationTemplate CreateEnvironment CreateStorageLocation DeleteApplication DeleteApplicationVersion DeleteConfigurationTemplate DeleteEnvironmentConfiguration DescribeApplications DescribeApplicationVersions DescribeConfigurationOptions DescribeConfigurationSettings DescribeEnvironmentHealth DescribeEnvironmentManagedActionHistory DescribeEnvironmentManagedActions DescribeEnvironmentResources DescribeEnvironments DescribeEvents DescribeInstancesHealth ListAvailableSolutionStacks RebuildEnvironment RequestEnvironmentInfo RestartAppServer RetrieveEnvironmentInfo SwapEnvironmentCNAMEs TerminateEnvironment UpdateApplication UpdateApplicationVersion UpdateConfigurationTemplate UpdateEnvironment ValidateConfigurationSettings / }
+  sub operations { qw/AbortEnvironmentUpdate ApplyEnvironmentManagedAction CheckDNSAvailability ComposeEnvironments CreateApplication CreateApplicationVersion CreateConfigurationTemplate CreateEnvironment CreateStorageLocation DeleteApplication DeleteApplicationVersion DeleteConfigurationTemplate DeleteEnvironmentConfiguration DescribeApplications DescribeApplicationVersions DescribeConfigurationOptions DescribeConfigurationSettings DescribeEnvironmentHealth DescribeEnvironmentManagedActionHistory DescribeEnvironmentManagedActions DescribeEnvironmentResources DescribeEnvironments DescribeEvents DescribeInstancesHealth ListAvailableSolutionStacks RebuildEnvironment RequestEnvironmentInfo RestartAppServer RetrieveEnvironmentInfo SwapEnvironmentCNAMEs TerminateEnvironment UpdateApplication UpdateApplicationResourceLifecycle UpdateApplicationVersion UpdateConfigurationTemplate UpdateEnvironment ValidateConfigurationSettings / }
 
 1;
 
@@ -311,7 +316,7 @@ information must be included in the source bundles in an environment
 manifest named C<env.yaml>. See Compose Environments for details.
 
 
-=head2 CreateApplication(ApplicationName => Str, [Description => Str])
+=head2 CreateApplication(ApplicationName => Str, [Description => Str, ResourceLifecycleConfig => L<Paws::ElasticBeanstalk::ApplicationResourceLifecycleConfig>])
 
 Each argument is described in detail in: L<Paws::ElasticBeanstalk::CreateApplication>
 
@@ -696,6 +701,15 @@ Returns: a L<Paws::ElasticBeanstalk::ApplicationDescriptionMessage> instance
 
 If a property (for example, C<description>) is not provided, the value
 remains unchanged. To clear these properties, specify an empty string.
+
+
+=head2 UpdateApplicationResourceLifecycle(ApplicationName => Str, ResourceLifecycleConfig => L<Paws::ElasticBeanstalk::ApplicationResourceLifecycleConfig>)
+
+Each argument is described in detail in: L<Paws::ElasticBeanstalk::UpdateApplicationResourceLifecycle>
+
+Returns: a L<Paws::ElasticBeanstalk::ApplicationResourceLifecycleDescriptionMessage> instance
+
+  Modifies lifecycle settings for an application.
 
 
 =head2 UpdateApplicationVersion(ApplicationName => Str, VersionLabel => Str, [Description => Str])

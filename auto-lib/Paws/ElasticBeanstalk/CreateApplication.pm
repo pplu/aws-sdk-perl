@@ -3,6 +3,7 @@ package Paws::ElasticBeanstalk::CreateApplication;
   use Moose;
   has ApplicationName => (is => 'ro', isa => 'Str', required => 1);
   has Description => (is => 'ro', isa => 'Str');
+  has ResourceLifecycleConfig => (is => 'ro', isa => 'Paws::ElasticBeanstalk::ApplicationResourceLifecycleConfig');
 
   use MooseX::ClassAttribute;
 
@@ -47,6 +48,13 @@ C<InvalidParameterValue> error.
 =head2 Description => Str
 
 Describes the application.
+
+
+
+=head2 ResourceLifecycleConfig => L<Paws::ElasticBeanstalk::ApplicationResourceLifecycleConfig>
+
+Specify an application resource lifecycle configuration to prevent your
+application from accumulating too many versions.
 
 
 
