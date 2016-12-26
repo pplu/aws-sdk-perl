@@ -6,7 +6,7 @@ package Paws::S3::Metadata;
   class_has xml_keys =>(is => 'ro', default => 'key');
   class_has xml_values =>(is => 'ro', default => 'value');
 
-  has Map => (is => 'ro', isa => 'HashRef[Str]');
+  has Map => (is => 'ro', isa => 'HashRef[Maybe[Str]]');
 1;
 
 ### main pod documentation begin ###
