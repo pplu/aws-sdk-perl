@@ -5,6 +5,7 @@ package Paws::ApiGateway::PutMethod;
   has AuthorizationType => (is => 'ro', isa => 'Str', required => 1);
   has AuthorizerId => (is => 'ro', isa => 'Str');
   has HttpMethod => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'httpMethod' , required => 1);
+  has OperationName => (is => 'ro', isa => 'Str');
   has RequestModels => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString');
   has RequestParameters => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToBoolean');
   has ResourceId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'resourceId' , required => 1);
@@ -64,6 +65,14 @@ type is CUSTOM.
 =head2 B<REQUIRED> HttpMethod => Str
 
 Specifies the method request's HTTP method type.
+
+
+
+=head2 OperationName => Str
+
+A human-friendly operation identifier for the method. For example, you
+can assign the C<operationName> of C<ListPets> for the C<GET /pets>
+method in PetStore example.
 
 
 

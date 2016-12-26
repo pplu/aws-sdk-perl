@@ -7,6 +7,7 @@ package Paws::ApiGateway::Method;
   has HttpMethod => (is => 'ro', isa => 'Str');
   has MethodIntegration => (is => 'ro', isa => 'Paws::ApiGateway::Integration');
   has MethodResponses => (is => 'ro', isa => 'Paws::ApiGateway::MapOfMethodResponse');
+  has OperationName => (is => 'ro', isa => 'Str');
   has RequestModels => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString');
   has RequestParameters => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToBoolean');
 
@@ -89,6 +90,13 @@ similar to the following:
  { "_links": { "curies": { "href": "http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-method-response-{rel}.html", "name": "methodresponse", "templated": true }, "self": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/responses/200", "title": "200" }, "methodresponse:delete": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/responses/200" }, "methodresponse:update": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/responses/200" } }, "responseModels": { "application/json": "Empty" }, "responseParameters": { "method.response.header.operator": false, "method.response.header.operand_2": false, "method.response.header.operand_1": false }, "statusCode": "200" }
 
 AWS CLI
+
+
+=head2 OperationName => Str
+
+A human-friendly operation identifier for the method. For example, you
+can assign the C<operationName> of C<ListPets> for the C<GET /pets>
+method in PetStore example.
 
 
 =head2 RequestModels => L<Paws::ApiGateway::MapOfStringToString>
