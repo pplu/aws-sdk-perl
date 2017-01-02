@@ -2,6 +2,7 @@
 package Paws::ECS::ListContainerInstances;
   use Moose;
   has Cluster => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cluster' );
+  has Filter => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'filter' );
   has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults' );
   has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
 
@@ -40,6 +41,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 The short name or full Amazon Resource Name (ARN) of the cluster that
 hosts the container instances to list. If you do not specify a cluster,
 the default cluster is assumed.
+
+
+
+=head2 Filter => Str
+
+You can filter the results of a C<ListContainerInstances> operation
+with cluster query language statements. For more information, see
+Cluster Query Language in the I<Amazon EC2 Container Service Developer
+Guide>.
 
 
 

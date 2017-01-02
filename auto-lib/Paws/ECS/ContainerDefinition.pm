@@ -234,7 +234,16 @@ slashes, and number signs are allowed. This parameter maps to C<Image>
 in the Create a container section of the Docker Remote API and the
 C<IMAGE> parameter of docker run.
 
+Amazon ECS task definitions currently only support tags as image
+identifiers within a specified repository (and not C<sha256> digests).
+
 =over
+
+=item *
+
+Images in Amazon ECR repositories use the full registry and repository
+URI (for example,
+C<012345678910.dkr.ecr.E<lt>region-nameE<gt>.amazonaws.com/E<lt>repository-nameE<gt>>).
 
 =item *
 
@@ -290,8 +299,8 @@ see Configure logging drivers in the Docker documentation.
 
 Amazon ECS currently supports a subset of the logging drivers available
 to the Docker daemon (shown in the LogConfiguration data type).
-Currently unsupported log drivers may be available in future releases
-of the Amazon ECS container agent.
+Additional log drivers may be available in future releases of the
+Amazon ECS container agent.
 
 This parameter requires version 1.18 of the Docker Remote API or
 greater on your container instance. To check the Docker Remote API

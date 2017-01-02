@@ -64,8 +64,9 @@ requested, this value is C<NULL>.
 
 =head2 Attributes => ArrayRef[L<Paws::ECS::Attribute>]
 
-  The attributes set for the container instance by the Amazon ECS
-container agent at instance registration.
+  The attributes set for the container instance, either by the Amazon ECS
+container agent at instance registration or manually with the
+PutAttributes operation.
 
 
 =head2 ContainerInstanceArn => Str

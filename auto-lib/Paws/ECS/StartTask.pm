@@ -3,6 +3,7 @@ package Paws::ECS::StartTask;
   use Moose;
   has Cluster => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cluster' );
   has ContainerInstances => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'containerInstances' , required => 1);
+  has Group => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'group' );
   has Overrides => (is => 'ro', isa => 'Paws::ECS::TaskOverride', traits => ['NameInRequest'], request_name => 'overrides' );
   has StartedBy => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'startedBy' );
   has TaskDefinition => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'taskDefinition' , required => 1);
@@ -49,8 +50,14 @@ cluster is assumed.
 
 The container instance IDs or full Amazon Resource Name (ARN) entries
 for the container instances on which you would like to place your task.
+You can specify up to 10 container instances.
 
-The list of container instances to start tasks on is limited to 10.
+
+
+=head2 Group => Str
+
+The task group to associate with the task. By default, if you do not
+specify a task group, the default group is C<family:TASKDEF-FAMILY>.
 
 
 

@@ -70,7 +70,7 @@ A Docker container that is part of a task.
 =head2 Reason => Str
 
   A short (255 max characters) human-readable string to provide
-additional detail about a running or stopped container.
+additional details about a running or stopped container.
 
 
 =head2 TaskArn => Str

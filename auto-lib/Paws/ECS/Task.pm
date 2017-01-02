@@ -5,6 +5,7 @@ package Paws::ECS::Task;
   has Containers => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Container]', xmlname => 'containers', request_name => 'containers', traits => ['Unwrapped','NameInRequest']);
   has CreatedAt => (is => 'ro', isa => 'Str', xmlname => 'createdAt', request_name => 'createdAt', traits => ['Unwrapped','NameInRequest']);
   has DesiredStatus => (is => 'ro', isa => 'Str', xmlname => 'desiredStatus', request_name => 'desiredStatus', traits => ['Unwrapped','NameInRequest']);
+  has Group => (is => 'ro', isa => 'Str', xmlname => 'group', request_name => 'group', traits => ['Unwrapped','NameInRequest']);
   has LastStatus => (is => 'ro', isa => 'Str', xmlname => 'lastStatus', request_name => 'lastStatus', traits => ['Unwrapped','NameInRequest']);
   has Overrides => (is => 'ro', isa => 'Paws::ECS::TaskOverride', xmlname => 'overrides', request_name => 'overrides', traits => ['Unwrapped','NameInRequest']);
   has StartedAt => (is => 'ro', isa => 'Str', xmlname => 'startedAt', request_name => 'startedAt', traits => ['Unwrapped','NameInRequest']);
@@ -74,6 +75,11 @@ C<PENDING> state).
 =head2 DesiredStatus => Str
 
   The desired status of the task.
+
+
+=head2 Group => Str
+
+  The task group associated with the task.
 
 
 =head2 LastStatus => Str

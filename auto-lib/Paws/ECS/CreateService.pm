@@ -6,6 +6,8 @@ package Paws::ECS::CreateService;
   has DeploymentConfiguration => (is => 'ro', isa => 'Paws::ECS::DeploymentConfiguration', traits => ['NameInRequest'], request_name => 'deploymentConfiguration' );
   has DesiredCount => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'desiredCount' , required => 1);
   has LoadBalancers => (is => 'ro', isa => 'ArrayRef[Paws::ECS::LoadBalancer]', traits => ['NameInRequest'], request_name => 'loadBalancers' );
+  has PlacementConstraints => (is => 'ro', isa => 'ArrayRef[Paws::ECS::PlacementConstraint]', traits => ['NameInRequest'], request_name => 'placementConstraints' );
+  has PlacementStrategy => (is => 'ro', isa => 'ArrayRef[Paws::ECS::PlacementStrategy]', traits => ['NameInRequest'], request_name => 'placementStrategy' );
   has Role => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'role' );
   has ServiceName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'serviceName' , required => 1);
   has TaskDefinition => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'taskDefinition' , required => 1);
@@ -72,9 +74,10 @@ and keep running on your cluster.
 =head2 LoadBalancers => ArrayRef[L<Paws::ECS::LoadBalancer>]
 
 A load balancer object representing the load balancer to use with your
-service. Currently, you are limited to one load balancer per service.
-After you create a service, the load balancer name, container name, and
-container port specified in the service definition are immutable.
+service. Currently, you are limited to one load balancer or target
+group per service. After you create a service, the load balancer name
+or target group ARN, container name, and container port specified in
+the service definition are immutable.
 
 For Elastic Load Balancing Classic load balancers, this object must
 contain the load balancer name, the container name (as it appears in a
@@ -89,6 +92,22 @@ appears in a container definition), and the container port to access
 from the load balancer. When a task from this service is placed on a
 container instance, the container instance and port combination is
 registered as a target in the target group specified here.
+
+
+
+=head2 PlacementConstraints => ArrayRef[L<Paws::ECS::PlacementConstraint>]
+
+An array of placement constraint objects to use for tasks in your
+service. You can specify a maximum of 10 constraints per task (this
+limit includes constraints in the task definition and those specified
+at run time).
+
+
+
+=head2 PlacementStrategy => ArrayRef[L<Paws::ECS::PlacementStrategy>]
+
+The placement strategy objects to use for tasks in your service. You
+can specify a maximum of 5 strategy rules per service.
 
 
 

@@ -4,6 +4,7 @@ package Paws::ECS::RegisterTaskDefinition;
   has ContainerDefinitions => (is => 'ro', isa => 'ArrayRef[Paws::ECS::ContainerDefinition]', traits => ['NameInRequest'], request_name => 'containerDefinitions' , required => 1);
   has Family => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'family' , required => 1);
   has NetworkMode => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'networkMode' );
+  has PlacementConstraints => (is => 'ro', isa => 'ArrayRef[Paws::ECS::TaskDefinitionPlacementConstraint]', traits => ['NameInRequest'], request_name => 'placementConstraints' );
   has TaskRoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'taskRoleArn' );
   has Volumes => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Volume]', traits => ['NameInRequest'], request_name => 'volumes' );
 
@@ -73,6 +74,14 @@ For more information, see Network settings in the I<Docker run
 reference>.
 
 Valid values are: C<"bridge">, C<"host">, C<"none">
+
+=head2 PlacementConstraints => ArrayRef[L<Paws::ECS::TaskDefinitionPlacementConstraint>]
+
+An array of placement constraint objects to use for the task. You can
+specify a maximum of 10 constraints per task (this limit includes
+constraints in the task definition and those specified at run time).
+
+
 
 =head2 TaskRoleArn => Str
 
