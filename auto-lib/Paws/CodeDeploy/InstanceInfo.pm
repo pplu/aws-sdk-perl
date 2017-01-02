@@ -1,6 +1,7 @@
 package Paws::CodeDeploy::InstanceInfo;
   use Moose;
   has DeregisterTime => (is => 'ro', isa => 'Str', xmlname => 'deregisterTime', request_name => 'deregisterTime', traits => ['Unwrapped','NameInRequest']);
+  has IamSessionArn => (is => 'ro', isa => 'Str', xmlname => 'iamSessionArn', request_name => 'iamSessionArn', traits => ['Unwrapped','NameInRequest']);
   has IamUserArn => (is => 'ro', isa => 'Str', xmlname => 'iamUserArn', request_name => 'iamUserArn', traits => ['Unwrapped','NameInRequest']);
   has InstanceArn => (is => 'ro', isa => 'Str', xmlname => 'instanceArn', request_name => 'instanceArn', traits => ['Unwrapped','NameInRequest']);
   has InstanceName => (is => 'ro', isa => 'Str', xmlname => 'instanceName', request_name => 'instanceName', traits => ['Unwrapped','NameInRequest']);
@@ -45,6 +46,11 @@ Information about an on-premises instance.
 
   If the on-premises instance was deregistered, the time at which the
 on-premises instance was deregistered.
+
+
+=head2 IamSessionArn => Str
+
+  The ARN of the IAM session associated with the on-premises instance.
 
 
 =head2 IamUserArn => Str

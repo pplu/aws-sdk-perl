@@ -329,7 +329,7 @@ Each argument is described in detail in: L<Paws::CodeDeploy::BatchGetDeploymentG
 
 Returns: a L<Paws::CodeDeploy::BatchGetDeploymentGroupsOutput> instance
 
-  Get information about one or more deployment groups.
+  Gets information about one or more deployment groups.
 
 
 =head2 BatchGetDeploymentInstances(DeploymentId => Str, InstanceIds => ArrayRef[Str|Undef])
@@ -581,13 +581,16 @@ Returns: nothing
   Registers with AWS CodeDeploy a revision for the specified application.
 
 
-=head2 RegisterOnPremisesInstance(IamUserArn => Str, InstanceName => Str)
+=head2 RegisterOnPremisesInstance(InstanceName => Str, [IamSessionArn => Str, IamUserArn => Str])
 
 Each argument is described in detail in: L<Paws::CodeDeploy::RegisterOnPremisesInstance>
 
 Returns: nothing
 
   Registers an on-premises instance.
+
+Only one IAM ARN (an IAM session ARN or IAM user ARN) is supported in
+the request. You cannot use both.
 
 
 =head2 RemoveTagsFromOnPremisesInstances(InstanceNames => ArrayRef[Str|Undef], Tags => ArrayRef[L<Paws::CodeDeploy::Tag>])
