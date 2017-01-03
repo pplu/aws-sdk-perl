@@ -16,6 +16,9 @@
    Method(StringParameter => "33"). Paws will now auto-stringify the contents in these parameters
    so AWS will accept them correctly, and the programmer doesn't have to worry about stringifying
    his inputs. Thanks to ilmari and rpcme
+ - Fixed Bug (Issue #107): Some services transmit undef as a valid value in an Array of things (rpcme)
+ - Support for S3 is now much better. Multipart uploads are working (glenveegee)
+ - Don't depend on Crypt::Digest::SHA256. Use Digest::SHA (Grinzz)
  - New API: Budgets
  - New API: SMS (Server Migration Service)
  - New API: AWS Polly

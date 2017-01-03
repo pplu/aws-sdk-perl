@@ -680,5 +680,9 @@ Brian Hartsock for better handling of XMLResponse exceptions
 
 rpcme for reporting various bugs in the SDK
 
+glenveegee for lots of work sorting out the S3 implementation
+
+Grinzz for many bugs, suggestions and fixes
+
 
 =cut
