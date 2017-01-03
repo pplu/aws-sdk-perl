@@ -1,4 +1,7 @@
-0.30 
+0.30 04 Jan 2017 
+ - Specify minumum perl version (PR #137)
+ - Update RestXmlCaller.pm to fix malformed xml schema issues (PR #133)
+ - Don't trim values coming from APIs (Issue #130)
  - CodeDeploy API update: IamSessionArn, IamUserArn
  - ECS API update: Attributes and Placement constraints
 
