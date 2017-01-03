@@ -2,7 +2,6 @@ package Paws::API::Caller;
   use Moose::Role;
   use Carp;
   use Paws::Net::APIRequest;
-  use String::Util qw/trim/;
 
   has caller => (is => 'ro', required => 1);
 
@@ -209,7 +208,7 @@ package Paws::API::Caller;
                 $args{ $att } = 0;
               }
             } else {
-              $args{ $att } = trim($value);
+              $args{ $att } = $value;
             }
           }
         }
