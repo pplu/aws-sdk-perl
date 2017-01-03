@@ -22,7 +22,13 @@ my $caller_dirs = {
 };
 
 foreach my $caller_name ('Paws::Net::FurlCaller', 'Paws::Net::Caller', 'Paws::Net::LWPCaller') {
-  require_module($caller_name);
+  eval {
+    require_module($caller_name);
+  };
+  if ($@) {
+    diag "Skipping $caller_name due to probem loading: $@";
+    next;
+  }
 
   my $caller_dir = $caller_dirs->{ $caller_name } . '/';
   diag "Testing with caller $caller_name";
