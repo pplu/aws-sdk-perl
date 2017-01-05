@@ -50,9 +50,6 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Config::Con
 
 A list that contains detailed configurations of a specified resource.
 
-Currently, the list does not contain information about non-AWS
-components (for example, applications on your Amazon EC2 instances).
-
 =head1 ATTRIBUTES
 
 
