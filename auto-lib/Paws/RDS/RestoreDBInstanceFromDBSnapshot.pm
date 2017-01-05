@@ -188,7 +188,8 @@ The database engine to use for the new instance.
 
 Default: The same as source
 
-Constraint: Must be compatible with the engine of the source
+Constraint: Must be compatible with the engine of the source. You can
+restore a MariaDB 10.1 DB instance from a MySQL 5.6 snapshot.
 
 Valid Values: C<MySQL> | C<mariadb> | C<oracle-se1> | C<oracle-se> |
 C<oracle-ee> | C<sqlserver-ee> | C<sqlserver-se> | C<sqlserver-ex> |

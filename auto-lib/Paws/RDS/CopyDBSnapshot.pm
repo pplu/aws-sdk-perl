@@ -87,23 +87,36 @@ C<CopyDBSnapshot> API action in the AWS region that contains the source
 DB snapshot to copy. The C<PreSignedUrl> parameter must be used when
 copying an encrypted DB snapshot from another AWS region.
 
-The pre-signed URL must be a valid request for the C<CopyDBSnapshot>
-API action that can be executed in the source region that contains the
-encrypted DB snapshot to be copied. The pre-signed URL request must
+The presigned URL must be a valid request for the C<CopyDBSnapshot> API
+action that can be executed in the source region that contains the
+encrypted DB snapshot to be copied. The presigned URL request must
 contain the following parameter values:
 
 =over
 
 =item *
 
-C<KmsKeyId> - The KMS key identifier for the key to use to encrypt the
-copy of the DB snapshot in the destination region. This is the same
-identifier for both the C<CopyDBSnapshot> action that is called in the
-destination region, and the action contained in the pre-signed URL.
+C<DestinationRegion> - The AWS Region that the encrypted DB snapshot
+will be copied to. This region is the same one where the
+C<CopyDBSnapshot> action is called that contains this presigned URL.
+
+For example, if you copy an encrypted DB snapshot from the us-west-2
+region to the us-east-1 region, then you will call the
+C<CopyDBSnapshot> action in the us-east-1 region and provide a
+presigned URL that contains a call to the C<CopyDBSnapshot> action in
+the us-west-2 region. For this example, the C<DestinationRegion> in the
+presigned URL must be set to the us-east-1 region.
 
 =item *
 
-C<SourceDBSnapshotIdentifier> - the DB snapshot identifier for the
+C<KmsKeyId> - The KMS key identifier for the key to use to encrypt the
+copy of the DB snapshot in the destination region. This is the same
+identifier for both the C<CopyDBSnapshot> action that is called in the
+destination region, and the action contained in the presigned URL.
+
+=item *
+
+C<SourceDBSnapshotIdentifier> - The DB snapshot identifier for the
 encrypted snapshot to be copied. This identifier must be in the Amazon
 Resource Name (ARN) format for the source region. For example, if you
 are copying an encrypted DB snapshot from the us-west-2 region, then
