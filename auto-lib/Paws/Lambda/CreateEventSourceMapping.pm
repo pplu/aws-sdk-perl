@@ -91,7 +91,7 @@ only the function name, it is limited to 64 character in length.
 =head2 B<REQUIRED> StartingPosition => Str
 
 The position in the stream where AWS Lambda should start reading. Valid
-only for Kinesis streams. For more information, go to ShardIteratorType
+only for Kinesis streams. For more information, see ShardIteratorType
 in the I<Amazon Kinesis API Reference>.
 
 Valid values are: C<"TRIM_HORIZON">, C<"LATEST">, C<"AT_TIMESTAMP">

@@ -55,7 +55,7 @@ The code for the Lambda function.
 
 =head2 DeadLetterConfig => L<Paws::Lambda::DeadLetterConfig>
 
-The parent object that contains the target ARN (Amazon Resource Name)
+The parent object that contains the target Amazon Resource Name (ARN)
 of an Amazon SQS queue or Amazon SNS topic.
 
 
@@ -78,7 +78,7 @@ value. Assign a meaningful description as you see fit.
 The name you want to assign to the function you are uploading. The
 function names appear in the console and are returned in the
 ListFunctions API. Function names are used to specify functions to
-other AWS Lambda APIs, such as Invoke.
+other AWS Lambda API operations, such as Invoke.
 
 
 
@@ -135,7 +135,7 @@ earlier runtime (v0.10.42), set the value to "nodejs".
 
 You can no longer create functions using the v0.10.42 runtime version
 as of November, 2016. Existing functions will be supported until early
-2017 but we recommend you migrate them to nodejs4.3 runtime version as
+2017, but we recommend you migrate them to nodejs4.3 runtime version as
 soon as possible.
 
 Valid values are: C<"nodejs">, C<"nodejs4.3">, C<"java8">, C<"python2.7">, C<"dotnetcore1.0">, C<"nodejs4.3-edge">

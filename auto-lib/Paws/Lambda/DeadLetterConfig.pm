@@ -31,7 +31,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Lambda::Dea
 
 =head1 DESCRIPTION
 
-The parent object that contains the target ARN (Amazon Resource Name)
+The parent object that contains the target Amazon Resource Name (ARN)
 of an Amazon SQS queue or Amazon SNS topic.
 
 =head1 ATTRIBUTES
@@ -39,7 +39,7 @@ of an Amazon SQS queue or Amazon SNS topic.
 
 =head2 TargetArn => Str
 
-  The ARN (Amazon Resource Value) of an Amazon SQS queue or Amazon SNS
+  The Amazon Resource Name (ARN) of an Amazon SQS queue or Amazon SNS
 topic you specify as your Dead Letter Queue (DLQ).
 
 

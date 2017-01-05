@@ -42,7 +42,7 @@ The size, in bytes, of the function .zip file you uploaded.
 
 =head2 DeadLetterConfig => L<Paws::Lambda::DeadLetterConfig>
 
-The parent object that contains the target ARN (Amazon Resource Name)
+The parent object that contains the target Amazon Resource Name (ARN)
 of an Amazon SQS queue or Amazon SNS topic.
 
 

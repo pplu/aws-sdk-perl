@@ -50,8 +50,8 @@ package (uncompressed zip/jar size) for uploading. The default limit is
 =head2 CodeSizeZipped => Int
 
   Size, in bytes, of a single zipped code/dependencies package you can
-upload for your Lambda function(.zip/.jar file). Try using AWS S3 for
-uploading larger files. Default limit is 50 MB.
+upload for your Lambda function(.zip/.jar file). Try using Amazon S3
+for uploading larger files. Default limit is 50 MB.
 
 
 =head2 ConcurrentExecutions => Int

@@ -47,7 +47,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 DeadLetterConfig => L<Paws::Lambda::DeadLetterConfig>
 
-The parent object that contains the target ARN (Amazon Resource Name)
+The parent object that contains the target Amazon Resource Name (ARN)
 of an Amazon SQS queue or Amazon SNS topic.
 
 

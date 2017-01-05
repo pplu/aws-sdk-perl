@@ -216,9 +216,9 @@ AWS Lambda
 B<Overview>
 
 This is the I<AWS Lambda API Reference>. The AWS Lambda Developer Guide
-provides additional information. For the service overview, go to What
-is AWS Lambda, and for information about how the service works, go to
-AWS Lambda: How it Works in the I<AWS Lambda Developer Guide>.
+provides additional information. For the service overview, see What is
+AWS Lambda, and for information about how the service works, see AWS
+Lambda: How it Works in the I<AWS Lambda Developer Guide>.
 
 =head1 METHODS
 
@@ -275,8 +275,8 @@ This association between a stream source and a Lambda function is
 called the event source mapping.
 
 This event source mapping is relevant only in the AWS Lambda pull
-model, where AWS Lambda invokes the function. For more information, go
-to AWS Lambda: How it Works in the I<AWS Lambda Developer Guide>.
+model, where AWS Lambda invokes the function. For more information, see
+AWS Lambda: How it Works in the I<AWS Lambda Developer Guide>.
 
 You provide mapping information (for example, which stream to read from
 and which Lambda function to invoke) in the request body.
@@ -370,10 +370,10 @@ Returns: a L<Paws::Lambda::GetAccountSettingsResponse> instance
 
   Returns a customer's account settings.
 
-You can use this operation to retrieve Lambda limit information such as
-code size and concurrency limits. For more information on limits, see
-AWS Lambda Limits. You can also retrieve resource usage statistics such
-as code storage usage and function count.
+You can use this operation to retrieve Lambda limits information, such
+as code size and concurrency limits. For more information about limits,
+see AWS Lambda Limits. You can also retrieve resource usage statistics,
+such as code storage usage and function count.
 
 
 =head2 GetAlias(FunctionName => Str, Name => Str)

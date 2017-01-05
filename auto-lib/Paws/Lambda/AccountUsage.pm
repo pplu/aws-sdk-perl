@@ -45,8 +45,7 @@ account and region.
 
 =head2 TotalCodeSize => Int
 
-  Total size, in megabytes, of the account's deployment packages per
-region.
+  Total size, in bytes, of the account's deployment packages per region.
 
 
 
