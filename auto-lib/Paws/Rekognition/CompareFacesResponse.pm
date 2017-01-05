@@ -17,10 +17,10 @@ Paws::Rekognition::CompareFacesResponse
 
 =head2 FaceMatches => ArrayRef[L<Paws::Rekognition::CompareFacesMatch>]
 
-Provides an array of C<CompareFacesMatch > objects. Each object
-provides the bounding box, confidence that the bounding box contains a
-face, and the similarity between the face in the bounding box and the
-face in the source image.
+Provides an array of C<CompareFacesMatch> objects. Each object provides
+the bounding box, confidence that the bounding box contains a face, and
+the similarity between the face in the bounding box and the face in the
+source image.
 
 
 =head2 SourceImageFace => L<Paws::Rekognition::ComparedSourceImageFace>

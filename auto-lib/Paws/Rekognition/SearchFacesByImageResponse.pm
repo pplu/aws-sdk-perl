@@ -24,8 +24,8 @@ in the match.
 
 =head2 SearchedFaceBoundingBox => L<Paws::Rekognition::BoundingBox>
 
-The bounding box around the face in the input image that Rekognition
-used for the search.
+The bounding box around the face in the input image that Amazon
+Rekognition used for the search.
 
 
 =head2 SearchedFaceConfidence => Num

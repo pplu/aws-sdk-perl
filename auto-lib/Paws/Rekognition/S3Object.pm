@@ -35,6 +35,13 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Rekognition
 
 Provides the S3 bucket name and object name.
 
+The region for the S3 bucket containing the S3 object must match the
+region you use for Amazon Rekognition operations.
+
+For Amazon Rekognition to process an S3 object, the user must have
+permission to access the S3 object. For more information, see
+manage-access-resource-policies.
+
 =head1 ATTRIBUTES
 
 

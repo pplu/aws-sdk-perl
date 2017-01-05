@@ -32,8 +32,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Rekognition
 
 =head1 DESCRIPTION
 
-Structure containing details about the detected label, including
-bounding box, name, and level of confidence.
+Structure containing details about the detected label, including name,
+and level of confidence.
 
 =head1 ATTRIBUTES
 

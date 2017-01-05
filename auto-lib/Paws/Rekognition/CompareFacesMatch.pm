@@ -32,9 +32,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Rekognition
 
 =head1 DESCRIPTION
 
-Provide the bounding box, confidence that the bounding box actually
-contains a face, and the similarity between the face in the bounding
-box and the face in the source image.
+For the provided the bounding box, confidence level that the bounding
+box actually contains a face, and the similarity between the face in
+the bounding box and the face in the source image.
 
 =head1 ATTRIBUTES
 

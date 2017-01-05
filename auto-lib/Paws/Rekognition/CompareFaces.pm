@@ -44,13 +44,13 @@ result.
 
 =head2 B<REQUIRED> SourceImage => L<Paws::Rekognition::Image>
 
-Source image either as bytes or an Amazon S3 object
+Source image either as bytes or an S3 object
 
 
 
 =head2 B<REQUIRED> TargetImage => L<Paws::Rekognition::Image>
 
-Target image either as bytes or an Amazon S3 object
+Target image either as bytes or an S3 object
 
 
 

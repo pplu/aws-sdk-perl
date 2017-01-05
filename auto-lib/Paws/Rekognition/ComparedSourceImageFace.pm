@@ -48,7 +48,7 @@ for this comparison.
 
 =head2 Confidence => Num
 
-  Confidence that the selected bounding box contains a face.
+  Confidence level that the selected bounding box contains a face.
 
 
 

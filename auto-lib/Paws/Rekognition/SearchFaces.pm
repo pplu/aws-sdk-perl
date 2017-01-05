@@ -38,7 +38,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> CollectionId => Str
 
-ID of the collection to search.
+ID of the collection the face belongs to.
 
 
 
@@ -58,7 +58,7 @@ matches is less than 70%.
 
 =head2 MaxFaces => Int
 
-Maximum number of faces to return. The API will return the maximum
+Maximum number of faces to return. The operation returns the maximum
 number of faces with the highest confidence in the match.
 
 

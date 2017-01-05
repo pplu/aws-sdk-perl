@@ -49,10 +49,10 @@ are detected in the input images.
 the operation returns a subset of the facial attributes.
 
 For example, you can specify the value as, ["ALL"] or ["DEFAULT"]. If
-you provide both, ["ALL", "DEFAULT"], Rekognition uses the logical AND
-operator to determine which attributes to return (in this case, it is
-all attributes). If you specify all attributes, the service performs
-additional detection, in addition to the default.
+you provide both, ["ALL", "DEFAULT"], Amazon Rekognition uses the
+logical AND operator to determine which attributes to return (in this
+case, it is all attributes). If you specify all attributes, the service
+performs additional detection, in addition to the default.
 
 
 

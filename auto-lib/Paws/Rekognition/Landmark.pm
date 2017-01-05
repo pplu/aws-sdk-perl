@@ -47,16 +47,14 @@ Indicates the location of the landmark on the face.
 
   x-coordinate from the top left of the landmark expressed as the ration
 of the width of the image. For example, if the images is 700x200 and
-the x-coordinate of the landmark is at 350 pixels, then this value is
-0.5.
+the x-coordinate of the landmark is at 350 pixels, this value is 0.5.
 
 
 =head2 Y => Num
 
   y-coordinate from the top left of the landmark expressed as the ration
 of the height of the image. For example, if the images is 700x200 and
-the y-coordinate of the landmark is at 100 pixels, then this value is
-0.5.
+the y-coordinate of the landmark is at 100 pixels, this value is 0.5.
 
 
 

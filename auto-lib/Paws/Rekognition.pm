@@ -100,7 +100,7 @@ Paws::Rekognition - Perl Interface to AWS Amazon Rekognition
 
 =head1 DESCRIPTION
 
-This is Amazon Rekognition API guide.
+This is the Amazon Rekognition API reference.
 
 =head1 METHODS
 
@@ -146,7 +146,7 @@ Each argument is described in detail in: L<Paws::Rekognition::CreateCollection>
 
 Returns: a L<Paws::Rekognition::CreateCollectionResponse> instance
 
-  Creates a collection in an AWS region. You can add faces to the
+  Creates a collection in an AWS Region. You can add faces to the
 collection using the operation.
 
 For example, you might create collections, one for each of your
@@ -298,11 +298,11 @@ confidence value (indicating the bounding box contains a face), a face
 ID assigned by the service for each face that is detected and stored,
 and an image ID assigned by the service for the input image If you
 request all facial attributes (using the C<detectionAttributes>
-parameter, Rekognition returns detailed facial attributes such as
-facial landmarks (for example, location of eye and mount) and other
+parameter, Amazon Rekognition returns detailed facial attributes such
+as facial landmarks (for example, location of eye and mount) and other
 facial attributes such gender. If you provide the same image, specify
 the same collection, and use the same external ID in the C<IndexFaces>
-operation, Rekognition doesn't save duplicate face metadata.
+operation, Amazon Rekognition doesn't save duplicate face metadata.
 
 For an example, see example2.
 
@@ -347,10 +347,11 @@ Each argument is described in detail in: L<Paws::Rekognition::SearchFaces>
 
 Returns: a L<Paws::Rekognition::SearchFacesResponse> instance
 
-  For a given input face ID, searches the specified collection for
-matching faces. You get a face ID when you add a face to the collection
-using the IndexFaces operation. The operation compares the features of
-the input face with faces in the specified collection.
+  For a given input face ID, searches for matching faces in the
+collection the face belongs to. You get a face ID when you add a face
+to the collection using the IndexFaces operation. The operation
+compares the features of the input face with faces in the specified
+collection.
 
 You can also search faces without indexing faces by using the
 C<SearchFacesByImage> operation.
@@ -380,19 +381,21 @@ operation compares the features of the input face with faces in the
 specified collection.
 
 To search for all faces in an input image, you might first call the
-API, and then use the face IDs returned in subsequent calls to the API.
+operation, and then use the face IDs returned in subsequent calls to
+the operation.
 
-You can also call the C<DetectFaces> API and use the bounding boxes in
-the response to make face crops, which then you can pass in to the
-C<SearchFacesByImage> API.
+You can also call the C<DetectFaces> operation and use the bounding
+boxes in the response to make face crops, which then you can pass in to
+the C<SearchFacesByImage> operation.
 
 The response returns an array of faces that match, ordered by
 similarity score with the highest similarity first. More specifically,
 it is an array of metadata for each face match found. Along with the
 metadata, the response also includes a C<similarity> indicating how
-similar the face is to the input face. In the response, the API also
-returns the bounding box (and a confidence level that the bounding box
-contains a face) of the face that Rekognition used for the input image.
+similar the face is to the input face. In the response, the operation
+also returns the bounding box (and a confidence level that the bounding
+box contains a face) of the face that Amazon Rekognition used for the
+input image.
 
 For an example, see example3.
 
