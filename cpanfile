@@ -9,7 +9,6 @@ requires 'Net::Amazon::Signature::V3';
 requires 'Net::Amazon::Signature::V4';
 requires 'JSON::MaybeXS';
 requires 'XML::Simple';
-requires 'String::Util';
 requires 'IO::Socket::SSL';
 requires 'DateTime';
 requires 'DateTime::Format::ISO8601';
