@@ -7,7 +7,7 @@ package Paws::IAM::DeleteSSHPublicKey;
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteSSHPublicKey');
-  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
   class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
@@ -38,8 +38,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 The unique identifier for the SSH public key.
 
-The regex pattern for this parameter is a string of characters that can
-consist of any upper or lowercased letter or digit.
+This parameter allows (per its regex pattern) a string of characters
+that can consist of any upper or lowercased letter or digit.
 
 
 
@@ -47,7 +47,7 @@ consist of any upper or lowercased letter or digit.
 
 The name of the IAM user associated with the SSH public key.
 
-The regex pattern for this parameter is a string of characters
+This parameter allows (per its regex pattern) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
 spaces. You can also include any of the following characters: =,.@-
 

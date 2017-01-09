@@ -2,7 +2,7 @@
 package Paws::Route53::AssociateVPCWithHostedZone;
   use Moose;
   has Comment => (is => 'ro', isa => 'Str');
-  has HostedZoneId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'Id' , required => 1);
+  has HostedZoneId => (is => 'ro', isa => 'Str', uri_name => 'Id', traits => ['ParamInURI'], required => 1);
   has VPC => (is => 'ro', isa => 'Paws::Route53::VPC', required => 1);
 
   use MooseX::ClassAttribute;
@@ -46,17 +46,18 @@ I<Optional:> A comment about the association request.
 
 =head2 B<REQUIRED> HostedZoneId => Str
 
-The ID of the hosted zone you want to associate your VPC with.
+The ID of the private hosted zone that you want to associate an Amazon
+VPC with.
 
-Note that you cannot associate a VPC with a hosted zone that doesn't
+Note that you can't associate a VPC with a hosted zone that doesn't
 have an existing VPC association.
 
 
 
 =head2 B<REQUIRED> VPC => L<Paws::Route53::VPC>
 
-A complex type containing information about the Amazon VPC that you're
-associating with the specified hosted zone.
+A complex type that contains information about the VPC that you want to
+associate with a private hosted zone.
 
 
 

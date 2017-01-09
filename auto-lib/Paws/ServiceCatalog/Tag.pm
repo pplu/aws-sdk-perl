@@ -1,7 +1,7 @@
 package Paws::ServiceCatalog::Tag;
   use Moose;
-  has Key => (is => 'ro', isa => 'Str');
-  has Value => (is => 'ro', isa => 'Str');
+  has Key => (is => 'ro', isa => 'Str', required => 1);
+  has Value => (is => 'ro', isa => 'Str', required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -39,13 +39,13 @@ the provisioning.
 =head1 ATTRIBUTES
 
 
-=head2 Key => Str
+=head2 B<REQUIRED> Key => Str
 
   The C<ProvisioningArtifactParameter.TagKey> parameter from
 DescribeProvisioningParameters.
 
 
-=head2 Value => Str
+=head2 B<REQUIRED> Value => Str
 
   The esired value for this key.
 

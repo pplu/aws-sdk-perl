@@ -2,11 +2,12 @@
 package Paws::CloudWatchLogs::CreateLogGroup;
   use Moose;
   has LogGroupName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'logGroupName' , required => 1);
+  has Tags => (is => 'ro', isa => 'Paws::CloudWatchLogs::Tags', traits => ['NameInRequest'], request_name => 'tags' );
 
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateLogGroup');
-  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
   class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
@@ -35,7 +36,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> LogGroupName => Str
 
-The name of the log group to create.
+The name of the log group.
+
+
+
+=head2 Tags => L<Paws::CloudWatchLogs::Tags>
+
+The key-value pairs to use for the tags.
 
 
 

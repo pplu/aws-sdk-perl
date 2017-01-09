@@ -44,6 +44,11 @@ package Paws::DirectConnect;
     my $call_object = $self->new_with_coercions('Paws::DirectConnect::ConfirmPublicVirtualInterface', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateBGPPeer {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DirectConnect::CreateBGPPeer', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateConnection {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DirectConnect::CreateConnection', @_);
@@ -62,6 +67,11 @@ package Paws::DirectConnect;
   sub CreatePublicVirtualInterface {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DirectConnect::CreatePublicVirtualInterface', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteBGPPeer {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DirectConnect::DeleteBGPPeer', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteConnection {
@@ -109,6 +119,11 @@ package Paws::DirectConnect;
     my $call_object = $self->new_with_coercions('Paws::DirectConnect::DescribeLocations', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeTags {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DirectConnect::DescribeTags', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeVirtualGateways {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DirectConnect::DescribeVirtualGateways', @_);
@@ -119,8 +134,20 @@ package Paws::DirectConnect;
     my $call_object = $self->new_with_coercions('Paws::DirectConnect::DescribeVirtualInterfaces', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub TagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DirectConnect::TagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UntagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DirectConnect::UntagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  
 
-  sub operations { qw/AllocateConnectionOnInterconnect AllocatePrivateVirtualInterface AllocatePublicVirtualInterface ConfirmConnection ConfirmPrivateVirtualInterface ConfirmPublicVirtualInterface CreateConnection CreateInterconnect CreatePrivateVirtualInterface CreatePublicVirtualInterface DeleteConnection DeleteInterconnect DeleteVirtualInterface DescribeConnectionLoa DescribeConnections DescribeConnectionsOnInterconnect DescribeInterconnectLoa DescribeInterconnects DescribeLocations DescribeVirtualGateways DescribeVirtualInterfaces / }
+
+  sub operations { qw/AllocateConnectionOnInterconnect AllocatePrivateVirtualInterface AllocatePublicVirtualInterface ConfirmConnection ConfirmPrivateVirtualInterface ConfirmPublicVirtualInterface CreateBGPPeer CreateConnection CreateInterconnect CreatePrivateVirtualInterface CreatePublicVirtualInterface DeleteBGPPeer DeleteConnection DeleteInterconnect DeleteVirtualInterface DescribeConnectionLoa DescribeConnections DescribeConnectionsOnInterconnect DescribeInterconnectLoa DescribeInterconnects DescribeLocations DescribeTags DescribeVirtualGateways DescribeVirtualInterfaces TagResource UntagResource / }
 
 1;
 
@@ -213,6 +240,11 @@ virtual interface owner by calling ConfirmPublicVirtualInterface. Until
 this step has been completed, the virtual interface will be in
 'Confirming' state, and will not be available for handling traffic.
 
+When creating an IPv6 public virtual interface (addressFamily is
+'ipv6'), the customer and amazon address fields should be left blank to
+use auto-assigned IPv6 space. Custom IPv6 Addresses are currently not
+supported.
+
 
 =head2 ConfirmConnection(ConnectionId => Str)
 
@@ -253,6 +285,28 @@ customer.
 After the virtual interface owner calls this function, the specified
 virtual interface will be created and made available for handling
 traffic.
+
+
+=head2 CreateBGPPeer([NewBGPPeer => L<Paws::DirectConnect::NewBGPPeer>, VirtualInterfaceId => Str])
+
+Each argument is described in detail in: L<Paws::DirectConnect::CreateBGPPeer>
+
+Returns: a L<Paws::DirectConnect::CreateBGPPeerResponse> instance
+
+  Creates a new BGP peer on a specified virtual interface. The BGP peer
+cannot be in the same address family (IPv4/IPv6) of an existing BGP
+peer on the virtual interface.
+
+You must create a BGP peer for the corresponding address family in
+order to access AWS resources that also use that address family.
+
+When creating a IPv6 BGP peer, the Amazon address and customer address
+fields must be left blank. IPv6 addresses are automatically assigned
+from Amazon's pool of IPv6 addresses; you cannot specify custom IPv6
+addresses.
+
+For a public virtual interface, the Autonomous System Number (ASN) must
+be private or already whitelisted for the virtual interface.
 
 
 =head2 CreateConnection(Bandwidth => Str, ConnectionName => Str, Location => Str)
@@ -323,6 +377,22 @@ Returns: a L<Paws::DirectConnect::VirtualInterface> instance
 that transports AWS Direct Connect traffic. A public virtual interface
 supports sending traffic to public services of AWS such as Amazon
 Simple Storage Service (Amazon S3).
+
+When creating an IPv6 public virtual interface (addressFamily is
+'ipv6'), the customer and amazon address fields should be left blank to
+use auto-assigned IPv6 space. Custom IPv6 Addresses are currently not
+supported.
+
+
+=head2 DeleteBGPPeer([Asn => Int, CustomerAddress => Str, VirtualInterfaceId => Str])
+
+Each argument is described in detail in: L<Paws::DirectConnect::DeleteBGPPeer>
+
+Returns: a L<Paws::DirectConnect::DeleteBGPPeerResponse> instance
+
+  Deletes a BGP peer on the specified virtual interface that matches the
+specified customer address and ASN. You cannot delete the last BGP peer
+from a virtual interface.
 
 
 =head2 DeleteConnection(ConnectionId => Str)
@@ -436,6 +506,16 @@ region. These are the locations that may be selected when calling
 CreateConnection or CreateInterconnect.
 
 
+=head2 DescribeTags(ResourceArns => ArrayRef[Str|Undef])
+
+Each argument is described in detail in: L<Paws::DirectConnect::DescribeTags>
+
+Returns: a L<Paws::DirectConnect::DescribeTagsResponse> instance
+
+  Describes the tags associated with the specified Direct Connect
+resources.
+
+
 =head2 DescribeVirtualGateways( => )
 
 Each argument is described in detail in: L<Paws::DirectConnect::DescribeVirtualGateways>
@@ -469,6 +549,38 @@ Connect location and the customer.
 If a connection ID is provided, only virtual interfaces provisioned on
 the specified connection will be returned. If a virtual interface ID is
 provided, only this particular virtual interface will be returned.
+
+
+=head2 TagResource(ResourceArn => Str, Tags => ArrayRef[L<Paws::DirectConnect::Tag>])
+
+Each argument is described in detail in: L<Paws::DirectConnect::TagResource>
+
+Returns: a L<Paws::DirectConnect::TagResourceResponse> instance
+
+  Adds the specified tags to the specified Direct Connect resource. Each
+Direct Connect resource can have a maximum of 50 tags.
+
+Each tag consists of a key and an optional value. If a tag with the
+same key is already associated with the Direct Connect resource, this
+action updates its value.
+
+
+=head2 UntagResource(ResourceArn => Str, TagKeys => ArrayRef[Str|Undef])
+
+Each argument is described in detail in: L<Paws::DirectConnect::UntagResource>
+
+Returns: a L<Paws::DirectConnect::UntagResourceResponse> instance
+
+  Removes one or more tags from the specified Direct Connect resource.
+
+
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+
 
 
 =head1 SEE ALSO

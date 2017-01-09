@@ -3,6 +3,7 @@ package Paws::CloudFront::ListDistributionsByWebACLIdResult;
   use Moose;
   has DistributionList => (is => 'ro', isa => 'Paws::CloudFront::DistributionList');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +17,7 @@ Paws::CloudFront::ListDistributionsByWebACLIdResult
 
 =head2 DistributionList => L<Paws::CloudFront::DistributionList>
 
-The DistributionList type.
+The C<DistributionList> type.
 
 
 

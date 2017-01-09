@@ -3,6 +3,7 @@ package Paws::IAM::CreateGroupResponse;
   use Moose;
   has Group => (is => 'ro', isa => 'Paws::IAM::Group', required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -19,6 +20,7 @@ Paws::IAM::CreateGroupResponse
 A structure containing details about the new group.
 
 
+=head2 _request_id => Str
 
 
 =cut

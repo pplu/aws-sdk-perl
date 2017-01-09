@@ -3,6 +3,7 @@ package Paws::EC2::PurchaseReservedInstancesOfferingResult;
   use Moose;
   has ReservedInstancesId => (is => 'ro', isa => 'Str', xmlname => 'reservedInstancesId', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -19,6 +20,7 @@ Paws::EC2::PurchaseReservedInstancesOfferingResult
 The IDs of the purchased Reserved Instances.
 
 
+=head2 _request_id => Str
 
 
 =cut

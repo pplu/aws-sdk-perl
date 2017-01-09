@@ -3,6 +3,7 @@ package Paws::DS::VerifyTrustResult;
   use Moose;
   has TrustId => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -18,6 +19,7 @@ Paws::DS::VerifyTrustResult
 The unique Trust ID of the trust relationship that was verified.
 
 
+=head2 _request_id => Str
 
 
 =cut

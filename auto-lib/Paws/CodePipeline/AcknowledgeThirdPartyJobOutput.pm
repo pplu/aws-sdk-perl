@@ -3,6 +3,7 @@ package Paws::CodePipeline::AcknowledgeThirdPartyJobOutput;
   use Moose;
   has Status => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'status' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -18,6 +19,7 @@ Paws::CodePipeline::AcknowledgeThirdPartyJobOutput
 The status information for the third party job, if any.
 
 Valid values are: C<"Created">, C<"Queued">, C<"Dispatched">, C<"InProgress">, C<"TimedOut">, C<"Succeeded">, C<"Failed">
+=head2 _request_id => Str
 
 
 =cut

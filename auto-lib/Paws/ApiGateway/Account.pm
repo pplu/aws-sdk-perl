@@ -6,6 +6,7 @@ package Paws::ApiGateway::Account;
   has Features => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has ThrottleSettings => (is => 'ro', isa => 'Paws::ApiGateway::ThrottleSettings');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -22,11 +23,9 @@ Paws::ApiGateway::Account
 The version of the API keys used for the account.
 
 
-
 =head2 CloudwatchRoleArn => Str
 
 The ARN of an Amazon CloudWatch role for the current Account.
-
 
 
 =head2 Features => ArrayRef[Str|Undef]
@@ -35,12 +34,12 @@ A list of features supported for the account. When usage plans are
 enabled, the features list will include an entry of C<"UsagePlans">.
 
 
-
 =head2 ThrottleSettings => L<Paws::ApiGateway::ThrottleSettings>
 
 Specifies the API request limits configured for the current Account.
 
 
+=head2 _request_id => Str
 
 
 =cut

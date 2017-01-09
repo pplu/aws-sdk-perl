@@ -3,6 +3,7 @@ package Paws::EC2::DescribeSecurityGroupReferencesResult;
   use Moose;
   has SecurityGroupReferenceSet => (is => 'ro', isa => 'ArrayRef[Paws::EC2::SecurityGroupReference]', xmlname => 'securityGroupReferenceSet', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -19,6 +20,7 @@ Paws::EC2::DescribeSecurityGroupReferencesResult
 Information about the VPCs with the referencing security groups.
 
 
+=head2 _request_id => Str
 
 
 =cut

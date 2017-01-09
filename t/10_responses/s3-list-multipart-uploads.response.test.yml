@@ -1,0 +1,25 @@
+---
+call: ListMultipartUploads
+service: S3
+tests:
+  - path: MaxUploads
+    op: eq
+    expected: 1000
+  - path: NextUploadIdMarker
+    op: eq
+    expected: 
+  - path: NextKeyMarker
+    op: eq
+    expected: 
+  - path: IsTruncated
+    op: eq
+    expected: 0
+  - path: Bucket
+    op: eq
+    expected: botocoretest1374528673-218
+  - path: Prefix
+    op: eq
+    expected: foo
+  - path: Delimiter
+    op: eq
+    expected: /

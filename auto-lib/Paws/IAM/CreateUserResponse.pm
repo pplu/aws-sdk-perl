@@ -3,6 +3,7 @@ package Paws::IAM::CreateUserResponse;
   use Moose;
   has User => (is => 'ro', isa => 'Paws::IAM::User');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -19,6 +20,7 @@ Paws::IAM::CreateUserResponse
 A structure with details about the new IAM user.
 
 
+=head2 _request_id => Str
 
 
 =cut

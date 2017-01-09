@@ -49,27 +49,90 @@ C<CREATE>: Creates a resource record set that has the specified values.
 
 =item *
 
-C<DELETE>: Deletes a existing resource record set that has the
-specified values for C<Name>, C<Type>, C<SetIdentifier> (for latency,
-weighted, geolocation, and failover resource record sets), and C<TTL>
-(except alias resource record sets, for which the TTL is determined by
-the AWS resource that you're routing DNS queries to).
+C<DELETE>: Deletes a existing resource record set.
 
 To delete the resource record set that is associated with a traffic
-policy instance, use C< DeleteTrafficPolicyInstance >. Amazon Route
-53will delete the resource record set automatically. If you delete the
+policy instance, use C< DeleteTrafficPolicyInstance >. Amazon Route 53
+will delete the resource record set automatically. If you delete the
 resource record set by using C<ChangeResourceRecordSets>, Amazon Route
 53 doesn't automatically delete the traffic policy instance, and you'll
 continue to be charged for it even though it's no longer in use.
 
 =item *
 
-C<UPSERT>: If a resource record set does not already exist, Amazon
-Route 53 creates it. If a resource record set does exist, Amazon Route
-53 updates it with the values in the request. Amazon Route 53 can
-update an existing resource record set only when all of the following
-values match: C<Name>, C<Type>, and C<SetIdentifier> (for weighted,
-latency, geolocation, and failover resource record sets).
+C<UPSERT>: If a resource record set doesn't already exist, Amazon Route
+53 creates it. If a resource record set does exist, Amazon Route 53
+updates it with the values in the request.
+
+=back
+
+The values that you need to include in the request depend on the type
+of resource record set that you're creating, deleting, or updating:
+
+B<Basic resource record sets (excluding alias, failover, geolocation,
+latency, and weighted resource record sets)>
+
+=over
+
+=item *
+
+C<Name>
+
+=item *
+
+C<Type>
+
+=item *
+
+C<TTL>
+
+=back
+
+B<Failover, geolocation, latency, or weighted resource record sets
+(excluding alias resource record sets)>
+
+=over
+
+=item *
+
+C<Name>
+
+=item *
+
+C<Type>
+
+=item *
+
+C<TTL>
+
+=item *
+
+C<SetIdentifier>
+
+=back
+
+B<Alias resource record sets (including failover alias, geolocation
+alias, latency alias, and weighted alias resource record sets)>
+
+=over
+
+=item *
+
+C<Name>
+
+=item *
+
+C<Type>
+
+=item *
+
+C<AliasTarget> (includes C<DNSName>, C<EvaluateTargetHealth>, and
+C<HostedZoneId>)
+
+=item *
+
+C<SetIdentifier> (for failover, geolocation, latency, and weighted
+resource record sets)
 
 =back
 
@@ -77,7 +140,7 @@ latency, geolocation, and failover resource record sets).
 
 =head2 B<REQUIRED> ResourceRecordSet => L<Paws::Route53::ResourceRecordSet>
 
-  Information about the resource record set to create or delete.
+  Information about the resource record set to create, delete, or update.
 
 
 

@@ -5,6 +5,7 @@ package Paws::CodeDeploy::ListDeploymentGroupsOutput;
   has DeploymentGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['Unwrapped'], xmlname => 'deploymentGroups' );
   has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -20,11 +21,9 @@ Paws::CodeDeploy::ListDeploymentGroupsOutput
 The application name.
 
 
-
 =head2 DeploymentGroups => ArrayRef[Str|Undef]
 
 A list of corresponding deployment group names.
-
 
 
 =head2 NextToken => Str
@@ -34,6 +33,7 @@ returned. It can be used in a subsequent list deployment groups call to
 return the next set of deployment groups in the list.
 
 
+=head2 _request_id => Str
 
 
 =cut

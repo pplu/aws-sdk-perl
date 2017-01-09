@@ -4,6 +4,7 @@ package Paws::EC2::ReleaseHostsResult;
   has Successful => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'successful', traits => ['Unwrapped',]);
   has Unsuccessful => (is => 'ro', isa => 'ArrayRef[Paws::EC2::UnsuccessfulItem]', xmlname => 'unsuccessful', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -20,13 +21,13 @@ Paws::EC2::ReleaseHostsResult
 The IDs of the Dedicated Hosts that were successfully released.
 
 
-
 =head2 Unsuccessful => ArrayRef[L<Paws::EC2::UnsuccessfulItem>]
 
 The IDs of the Dedicated Hosts that could not be released, including an
 error message.
 
 
+=head2 _request_id => Str
 
 
 =cut

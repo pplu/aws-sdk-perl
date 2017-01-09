@@ -1,6 +1,6 @@
 package Paws::CloudFront::GeoRestriction;
   use Moose;
-  has Items => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has Items => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'Location', traits => ['NameInRequest']);
   has Quantity => (is => 'ro', isa => 'Int', required => 1);
   has RestrictionType => (is => 'ro', isa => 'Str', required => 1);
 1;
@@ -34,45 +34,60 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 =head1 DESCRIPTION
 
 A complex type that controls the countries in which your content is
-distributed. For more information about geo restriction, go to
-Customizing Error Responses in the Amazon CloudFront Developer Guide.
-CloudFront determines the location of your users using MaxMind GeoIP
-databases. For information about the accuracy of these databases, see
-How accurate are your GeoIP databases? on the MaxMind website.
+distributed. CloudFront determines the location of your users using
+C<MaxMind> GeoIP databases.
 
 =head1 ATTRIBUTES
 
 
 =head2 Items => ArrayRef[Str|Undef]
 
-  A complex type that contains a Location element for each country in
-which you want CloudFront either to distribute your content (whitelist)
-or not distribute your content (blacklist). The Location element is a
-two-letter, uppercase country code for a country that you want to
-include in your blacklist or whitelist. Include one Location element
-for each country. CloudFront and MaxMind both use ISO 3166 country
-codes. For the current list of countries and the corresponding codes,
-see ISO 3166-1-alpha-2 code on the International Organization for
-Standardization website. You can also refer to the country list in the
+  A complex type that contains a C<Location> element for each country in
+which you want CloudFront either to distribute your content
+(C<whitelist>) or not distribute your content (C<blacklist>).
+
+The C<Location> element is a two-letter, uppercase country code for a
+country that you want to include in your C<blacklist> or C<whitelist>.
+Include one C<Location> element for each country.
+
+CloudFront and C<MaxMind> both use C<ISO 3166> country codes. For the
+current list of countries and the corresponding codes, see C<ISO
+3166-1-alpha-2> code on the I<International Organization for
+Standardization> website. You can also refer to the country list in the
 CloudFront console, which includes both country names and codes.
 
 
 =head2 B<REQUIRED> Quantity => Int
 
-  When geo restriction is enabled, this is the number of countries in
-your whitelist or blacklist. Otherwise, when it is not enabled,
-Quantity is 0, and you can omit Items.
+  When geo restriction is C<enabled>, this is the number of countries in
+your C<whitelist> or C<blacklist>. Otherwise, when it is not enabled,
+C<Quantity> is C<0>, and you can omit C<Items>.
 
 
 =head2 B<REQUIRED> RestrictionType => Str
 
   The method that you want to use to restrict distribution of your
-content by country: - none: No geo restriction is enabled, meaning
-access to content is not restricted by client geo location. -
-blacklist: The Location elements specify the countries in which you do
-not want CloudFront to distribute your content. - whitelist: The
-Location elements specify the countries in which you want CloudFront to
-distribute your content.
+content by country:
+
+=over
+
+=item *
+
+C<none>: No geo restriction is enabled, meaning access to content is
+not restricted by client geo location.
+
+=item *
+
+C<blacklist>: The C<Location> elements specify the countries in which
+you do not want CloudFront to distribute your content.
+
+=item *
+
+C<whitelist>: The C<Location> elements specify the countries in which
+you want CloudFront to distribute your content.
+
+=back
+
 
 
 

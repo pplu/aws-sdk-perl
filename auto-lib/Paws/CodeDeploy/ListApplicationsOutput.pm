@@ -4,6 +4,7 @@ package Paws::CodeDeploy::ListApplicationsOutput;
   has Applications => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['Unwrapped'], xmlname => 'applications' );
   has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -19,7 +20,6 @@ Paws::CodeDeploy::ListApplicationsOutput
 A list of application names.
 
 
-
 =head2 NextToken => Str
 
 If a large amount of information is returned, an identifier is also
@@ -28,6 +28,7 @@ return the next set of applications, will also be returned. in the
 list.
 
 
+=head2 _request_id => Str
 
 
 =cut

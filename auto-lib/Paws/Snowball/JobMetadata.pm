@@ -1,6 +1,7 @@
 package Paws::Snowball::JobMetadata;
   use Moose;
   has AddressId => (is => 'ro', isa => 'Str');
+  has ClusterId => (is => 'ro', isa => 'Str');
   has CreationDate => (is => 'ro', isa => 'Str');
   has DataTransferProgress => (is => 'ro', isa => 'Paws::Snowball::DataTransfer');
   has Description => (is => 'ro', isa => 'Str');
@@ -14,6 +15,7 @@ package Paws::Snowball::JobMetadata;
   has RoleARN => (is => 'ro', isa => 'Str');
   has ShippingDetails => (is => 'ro', isa => 'Paws::Snowball::ShippingDetails');
   has SnowballCapacityPreference => (is => 'ro', isa => 'Str');
+  has SnowballType => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -33,7 +35,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Snowball::JobMetadata object:
 
-  $service_obj->Method(Att1 => { AddressId => $value, ..., SnowballCapacityPreference => $value  });
+  $service_obj->Method(Att1 => { AddressId => $value, ..., SnowballType => $value  });
 
 =head3 Results returned from an API call
 
@@ -57,6 +59,12 @@ action.
   The ID for the address that you want the Snowball shipped to.
 
 
+=head2 ClusterId => Str
+
+  The 39-character ID for the cluster, for example
+C<CID123e4567-e89b-12d3-a456-426655440000>.
+
+
 =head2 CreationDate => Str
 
   The creation date for this job.
@@ -65,9 +73,9 @@ action.
 =head2 DataTransferProgress => L<Paws::Snowball::DataTransfer>
 
   A value that defines the real-time status of a Snowball's data transfer
-while the appliance is at AWS. Note that this data is only available
-while a job has a C<JobState> value of C<InProgress>, for both import
-and export jobs.
+while the appliance is at AWS. This data is only available while a job
+has a C<JobState> value of C<InProgress>, for both import and export
+jobs.
 
 
 =head2 Description => Str
@@ -92,7 +100,7 @@ you.
 
 =head2 JobState => Str
 
-  The current state of the jobs.
+  The current status of the jobs.
 
 
 =head2 JobType => Str
@@ -139,6 +147,11 @@ numbers and shipping speed options.
   The Snowball capacity preference for this job, specified at job
 creation. In US regions, you can choose between 50 TB and 80 TB
 Snowballs. All other regions use 80 TB capacity Snowballs.
+
+
+=head2 SnowballType => Str
+
+  The type of appliance used with this job.
 
 
 

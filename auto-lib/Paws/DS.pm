@@ -24,6 +24,11 @@ package Paws::DS;
     my $call_object = $self->new_with_coercions('Paws::DS::AddTagsToResource', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CancelSchemaExtension {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DS::CancelSchemaExtension', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ConnectDirectory {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DS::ConnectDirectory', @_);
@@ -149,6 +154,11 @@ package Paws::DS;
     my $call_object = $self->new_with_coercions('Paws::DS::ListIpRoutes', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListSchemaExtensions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DS::ListSchemaExtensions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListTagsForResource {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DS::ListTagsForResource', @_);
@@ -174,6 +184,11 @@ package Paws::DS;
     my $call_object = $self->new_with_coercions('Paws::DS::RestoreFromSnapshot', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub StartSchemaExtension {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DS::StartSchemaExtension', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateConditionalForwarder {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DS::UpdateConditionalForwarder', @_);
@@ -189,8 +204,10 @@ package Paws::DS;
     my $call_object = $self->new_with_coercions('Paws::DS::VerifyTrust', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
 
-  sub operations { qw/AddIpRoutes AddTagsToResource ConnectDirectory CreateAlias CreateComputer CreateConditionalForwarder CreateDirectory CreateMicrosoftAD CreateSnapshot CreateTrust DeleteConditionalForwarder DeleteDirectory DeleteSnapshot DeleteTrust DeregisterEventTopic DescribeConditionalForwarders DescribeDirectories DescribeEventTopics DescribeSnapshots DescribeTrusts DisableRadius DisableSso EnableRadius EnableSso GetDirectoryLimits GetSnapshotLimits ListIpRoutes ListTagsForResource RegisterEventTopic RemoveIpRoutes RemoveTagsFromResource RestoreFromSnapshot UpdateConditionalForwarder UpdateRadius VerifyTrust / }
+
+  sub operations { qw/AddIpRoutes AddTagsToResource CancelSchemaExtension ConnectDirectory CreateAlias CreateComputer CreateConditionalForwarder CreateDirectory CreateMicrosoftAD CreateSnapshot CreateTrust DeleteConditionalForwarder DeleteDirectory DeleteSnapshot DeleteTrust DeregisterEventTopic DescribeConditionalForwarders DescribeDirectories DescribeEventTopics DescribeSnapshots DescribeTrusts DisableRadius DisableSso EnableRadius EnableSso GetDirectoryLimits GetSnapshotLimits ListIpRoutes ListSchemaExtensions ListTagsForResource RegisterEventTopic RemoveIpRoutes RemoveTagsFromResource RestoreFromSnapshot StartSchemaExtension UpdateConditionalForwarder UpdateRadius VerifyTrust / }
 
 1;
 
@@ -220,9 +237,20 @@ Paws::DS - Perl Interface to AWS AWS Directory Service
 
 AWS Directory Service
 
-This is the I<AWS Directory Service API Reference>. This guide provides
-detailed information about AWS Directory Service operations, data
-types, parameters, and errors.
+AWS Directory Service is a web service that makes it easy for you to
+setup and run directories in the AWS cloud, or connect your AWS
+resources with an existing on-premises Microsoft Active Directory. This
+guide provides detailed information about AWS Directory Service
+operations, data types, parameters, and errors. For information about
+AWS Directory Services features, see AWS Directory Service and the AWS
+Directory Service Administration Guide.
+
+AWS provides SDKs that consist of libraries and sample code for various
+programming languages and platforms (Java, Ruby, .Net, iOS, Android,
+etc.). The SDKs provide a convenient way to create programmatic access
+to AWS Directory Service and other AWS services. For more information
+about the AWS SDKs, including how to download and install them, see
+Tools for Amazon Web Services.
 
 =head1 METHODS
 
@@ -239,6 +267,12 @@ I<AddIpRoutes> adds this address block. You can also use I<AddIpRoutes>
 to facilitate routing traffic that uses public IP ranges from your
 Microsoft AD on AWS to a peer VPC.
 
+Before you call I<AddIpRoutes>, ensure that all of the required
+permissions have been explicitly granted through a policy. For details
+about what permissions are required to run the I<AddIpRoutes>
+operation, see AWS Directory Service API Permissions: Actions,
+Resources, and Conditions Reference.
+
 
 =head2 AddTagsToResource(ResourceId => Str, Tags => ArrayRef[L<Paws::DS::Tag>])
 
@@ -246,10 +280,22 @@ Each argument is described in detail in: L<Paws::DS::AddTagsToResource>
 
 Returns: a L<Paws::DS::AddTagsToResourceResult> instance
 
-  Adds or overwrites one or more tags for the specified Amazon Directory
-Services directory. Each directory can have a maximum of 10 tags. Each
-tag consists of a key and optional value. Tag keys must be unique to
-each resource.
+  Adds or overwrites one or more tags for the specified directory. Each
+directory can have a maximum of 50 tags. Each tag consists of a key and
+optional value. Tag keys must be unique to each resource.
+
+
+=head2 CancelSchemaExtension(DirectoryId => Str, SchemaExtensionId => Str)
+
+Each argument is described in detail in: L<Paws::DS::CancelSchemaExtension>
+
+Returns: a L<Paws::DS::CancelSchemaExtensionResult> instance
+
+  Cancels an in-progress schema extension to a Microsoft AD directory.
+Once a schema extension has started replicating to all domain
+controllers, the task can no longer be canceled. A schema extension can
+be canceled during any of the following states; C<Initializing>,
+C<CreatingSnapshot>, and C<UpdatingSchema>.
 
 
 =head2 ConnectDirectory(ConnectSettings => L<Paws::DS::DirectoryConnectSettings>, Name => Str, Password => Str, Size => Str, [Description => Str, ShortName => Str])
@@ -259,6 +305,12 @@ Each argument is described in detail in: L<Paws::DS::ConnectDirectory>
 Returns: a L<Paws::DS::ConnectDirectoryResult> instance
 
   Creates an AD Connector to connect to an on-premises directory.
+
+Before you call I<ConnectDirectory>, ensure that all of the required
+permissions have been explicitly granted through a policy. For details
+about what permissions are required to run the I<ConnectDirectory>
+operation, see AWS Directory Service API Permissions: Actions,
+Resources, and Conditions Reference.
 
 
 =head2 CreateAlias(Alias => Str, DirectoryId => Str)
@@ -305,6 +357,12 @@ Returns: a L<Paws::DS::CreateDirectoryResult> instance
 
   Creates a Simple AD directory.
 
+Before you call I<CreateDirectory>, ensure that all of the required
+permissions have been explicitly granted through a policy. For details
+about what permissions are required to run the I<CreateDirectory>
+operation, see AWS Directory Service API Permissions: Actions,
+Resources, and Conditions Reference.
+
 
 =head2 CreateMicrosoftAD(Name => Str, Password => Str, VpcSettings => L<Paws::DS::DirectoryVpcSettings>, [Description => Str, ShortName => Str])
 
@@ -313,6 +371,12 @@ Each argument is described in detail in: L<Paws::DS::CreateMicrosoftAD>
 Returns: a L<Paws::DS::CreateMicrosoftADResult> instance
 
   Creates a Microsoft AD in the AWS cloud.
+
+Before you call I<CreateMicrosoftAD>, ensure that all of the required
+permissions have been explicitly granted through a policy. For details
+about what permissions are required to run the I<CreateMicrosoftAD>
+operation, see AWS Directory Service API Permissions: Actions,
+Resources, and Conditions Reference.
 
 
 =head2 CreateSnapshot(DirectoryId => Str, [Name => Str])
@@ -362,6 +426,12 @@ Each argument is described in detail in: L<Paws::DS::DeleteDirectory>
 Returns: a L<Paws::DS::DeleteDirectoryResult> instance
 
   Deletes an AWS Directory Service directory.
+
+Before you call I<DeleteDirectory>, ensure that all of the required
+permissions have been explicitly granted through a policy. For details
+about what permissions are required to run the I<DeleteDirectory>
+operation, see AWS Directory Service API Permissions: Actions,
+Resources, and Conditions Reference.
 
 
 =head2 DeleteSnapshot(SnapshotId => Str)
@@ -508,7 +578,7 @@ Each argument is described in detail in: L<Paws::DS::EnableSso>
 
 Returns: a L<Paws::DS::EnableSsoResult> instance
 
-  Enables single-sign on for a directory.
+  Enables single sign-on for a directory.
 
 
 =head2 GetDirectoryLimits()
@@ -538,13 +608,22 @@ Returns: a L<Paws::DS::ListIpRoutesResult> instance
   Lists the address blocks that you have added to a directory.
 
 
+=head2 ListSchemaExtensions(DirectoryId => Str, [Limit => Int, NextToken => Str])
+
+Each argument is described in detail in: L<Paws::DS::ListSchemaExtensions>
+
+Returns: a L<Paws::DS::ListSchemaExtensionsResult> instance
+
+  Lists all schema extensions applied to a Microsoft AD Directory.
+
+
 =head2 ListTagsForResource(ResourceId => Str, [Limit => Int, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::DS::ListTagsForResource>
 
 Returns: a L<Paws::DS::ListTagsForResourceResult> instance
 
-  Lists all tags on an Amazon Directory Services directory.
+  Lists all tags on a directory.
 
 
 =head2 RegisterEventTopic(DirectoryId => Str, TopicName => Str)
@@ -576,7 +655,7 @@ Each argument is described in detail in: L<Paws::DS::RemoveTagsFromResource>
 
 Returns: a L<Paws::DS::RemoveTagsFromResourceResult> instance
 
-  Removes tags from an Amazon Directory Services directory.
+  Removes tags from a directory.
 
 
 =head2 RestoreFromSnapshot(SnapshotId => Str)
@@ -595,6 +674,15 @@ can monitor the progress of the restore operation by calling the
 DescribeDirectories operation with the directory identifier. When the
 B<DirectoryDescription.Stage> value changes to C<Active>, the restore
 operation is complete.
+
+
+=head2 StartSchemaExtension(CreateSnapshotBeforeSchemaExtension => Bool, Description => Str, DirectoryId => Str, LdifContent => Str)
+
+Each argument is described in detail in: L<Paws::DS::StartSchemaExtension>
+
+Returns: a L<Paws::DS::StartSchemaExtensionResult> instance
+
+  Applies a schema extension to a Microsoft AD directory.
 
 
 =head2 UpdateConditionalForwarder(DirectoryId => Str, DnsIpAddrs => ArrayRef[Str|Undef], RemoteDomainName => Str)
@@ -628,6 +716,15 @@ configure and verify trust relationships.
 
 This action verifies a trust relationship between your Microsoft AD in
 the AWS cloud and an external domain.
+
+
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+
 
 
 =head1 SEE ALSO

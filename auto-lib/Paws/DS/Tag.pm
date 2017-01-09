@@ -32,8 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DS::Tag obj
 
 =head1 DESCRIPTION
 
-Metadata assigned to an Amazon Directory Services directory consisting
-of a key-value pair.
+Metadata assigned to a directory consisting of a key-value pair.
 
 =head1 ATTRIBUTES
 

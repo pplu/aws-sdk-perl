@@ -2,7 +2,7 @@
 package Paws::Route53::DisassociateVPCFromHostedZone;
   use Moose;
   has Comment => (is => 'ro', isa => 'Str');
-  has HostedZoneId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'Id' , required => 1);
+  has HostedZoneId => (is => 'ro', isa => 'Str', uri_name => 'Id', traits => ['ParamInURI'], required => 1);
   has VPC => (is => 'ro', isa => 'Paws::Route53::VPC', required => 1);
 
   use MooseX::ClassAttribute;
@@ -46,14 +46,14 @@ I<Optional:> A comment about the disassociation request.
 
 =head2 B<REQUIRED> HostedZoneId => Str
 
-The ID of the VPC that you want to disassociate from an Amazon Route 53
-hosted zone.
+The ID of the private hosted zone that you want to disassociate a VPC
+from.
 
 
 
 =head2 B<REQUIRED> VPC => L<Paws::Route53::VPC>
 
-A complex type containing information about the Amazon VPC that you're
+A complex type that contains information about the VPC that you're
 disassociating from the specified hosted zone.
 
 

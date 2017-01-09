@@ -36,29 +36,29 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudWatchL
 
 =head1 DESCRIPTION
 
-This class has no description
+Represents a log group.
 
 =head1 ATTRIBUTES
 
 
 =head2 Arn => Str
 
-  
+  The Amazon Resource Name (ARN) of the log group.
 
 
 =head2 CreationTime => Int
 
-  
+  The creation time of the log group.
 
 
 =head2 LogGroupName => Str
 
-  
+  The name of the log group.
 
 
 =head2 MetricFilterCount => Int
 
-  
+  The number of metric filters.
 
 
 =head2 RetentionInDays => Int
@@ -68,7 +68,7 @@ This class has no description
 
 =head2 StoredBytes => Int
 
-  
+  The number of bytes stored.
 
 
 

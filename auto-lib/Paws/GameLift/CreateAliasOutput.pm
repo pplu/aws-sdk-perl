@@ -3,6 +3,7 @@ package Paws::GameLift::CreateAliasOutput;
   use Moose;
   has Alias => (is => 'ro', isa => 'Paws::GameLift::Alias');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -18,6 +19,7 @@ Paws::GameLift::CreateAliasOutput
 Object containing the newly created alias record.
 
 
+=head2 _request_id => Str
 
 
 =cut

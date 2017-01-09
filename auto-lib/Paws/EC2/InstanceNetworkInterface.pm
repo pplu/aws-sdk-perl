@@ -4,6 +4,7 @@ package Paws::EC2::InstanceNetworkInterface;
   has Attachment => (is => 'ro', isa => 'Paws::EC2::InstanceNetworkInterfaceAttachment', xmlname => 'attachment', traits => ['Unwrapped']);
   has Description => (is => 'ro', isa => 'Str', xmlname => 'description', traits => ['Unwrapped']);
   has Groups => (is => 'ro', isa => 'ArrayRef[Paws::EC2::GroupIdentifier]', xmlname => 'groupSet', traits => ['Unwrapped']);
+  has Ipv6Addresses => (is => 'ro', isa => 'ArrayRef[Paws::EC2::InstanceIpv6Address]', xmlname => 'ipv6AddressesSet', traits => ['Unwrapped']);
   has MacAddress => (is => 'ro', isa => 'Str', xmlname => 'macAddress', traits => ['Unwrapped']);
   has NetworkInterfaceId => (is => 'ro', isa => 'Str', xmlname => 'networkInterfaceId', traits => ['Unwrapped']);
   has OwnerId => (is => 'ro', isa => 'Str', xmlname => 'ownerId', traits => ['Unwrapped']);
@@ -51,7 +52,7 @@ This class has no description
 
 =head2 Association => L<Paws::EC2::InstanceNetworkInterfaceAssociation>
 
-  The association information for an Elastic IP associated with the
+  The association information for an Elastic IPv4 associated with the
 network interface.
 
 
@@ -68,6 +69,11 @@ network interface.
 =head2 Groups => ArrayRef[L<Paws::EC2::GroupIdentifier>]
 
   One or more security groups.
+
+
+=head2 Ipv6Addresses => ArrayRef[L<Paws::EC2::InstanceIpv6Address>]
+
+  One or more IPv6 addresses associated with the network interface.
 
 
 =head2 MacAddress => Str
@@ -92,12 +98,13 @@ network interface.
 
 =head2 PrivateIpAddress => Str
 
-  The IP address of the network interface within the subnet.
+  The IPv4 address of the network interface within the subnet.
 
 
 =head2 PrivateIpAddresses => ArrayRef[L<Paws::EC2::InstancePrivateIpAddress>]
 
-  The private IP addresses associated with the network interface.
+  One or more private IPv4 addresses associated with the network
+interface.
 
 
 =head2 SourceDestCheck => Bool

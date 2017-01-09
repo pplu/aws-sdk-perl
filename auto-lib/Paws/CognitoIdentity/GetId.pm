@@ -50,21 +50,34 @@ An identity pool ID in the format REGION:GUID.
 =head2 Logins => L<Paws::CognitoIdentity::LoginsMap>
 
 A set of optional name-value pairs that map provider names to provider
-tokens.
-
-The available provider names for C<Logins> are as follows:
+tokens. The available provider names for C<Logins> are as follows:
 
 =over
 
-=item * Facebook: C<graph.facebook.com>
+=item *
 
-=item * Google: C<accounts.google.com>
+Facebook: C<graph.facebook.com>
 
-=item * Amazon: C<www.amazon.com>
+=item *
 
-=item * Twitter: C<api.twitter.com>
+Amazon Cognito Identity Provider:
+C<cognito-idp.us-east-1.amazonaws.com/us-east-1_123456789>
 
-=item * Digits: C<www.digits.com>
+=item *
+
+Google: C<accounts.google.com>
+
+=item *
+
+Amazon: C<www.amazon.com>
+
+=item *
+
+Twitter: C<api.twitter.com>
+
+=item *
+
+Digits: C<www.digits.com>
 
 =back
 

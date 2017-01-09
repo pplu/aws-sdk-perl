@@ -58,17 +58,39 @@ C<ScheduledNotification> value.
 
 =head2 MessageType => Str
 
-  The type of notification that triggers AWS Config to run an evaluation.
-You can specify the following notification types:
+  The type of notification that triggers AWS Config to run an evaluation
+for a rule. You can specify the following notification types:
+
+=over
+
+=item *
 
 C<ConfigurationItemChangeNotification> - Triggers an evaluation when
-AWS Config delivers a configuration item change notification.
+AWS Config delivers a configuration item as a result of a resource
+change.
+
+=item *
+
+C<OversizedConfigurationItemChangeNotification> - Triggers an
+evaluation when AWS Config delivers an oversized configuration item.
+AWS Config may generate this notification type when a resource changes
+and the notification exceeds the maximum size allowed by Amazon SNS.
+
+=item *
 
 C<ScheduledNotification> - Triggers a periodic evaluation at the
 frequency specified for C<MaximumExecutionFrequency>.
 
+=item *
+
 C<ConfigurationSnapshotDeliveryCompleted> - Triggers a periodic
 evaluation when AWS Config delivers a configuration snapshot.
+
+=back
+
+If you want your custom rule to be triggered by configuration changes,
+specify both C<ConfigurationItemChangeNotification> and
+C<OversizedConfigurationItemChangeNotification>.
 
 
 

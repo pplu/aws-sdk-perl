@@ -1,9 +1,10 @@
 
 package Paws::CloudFront::UpdateStreamingDistributionResult;
   use Moose;
-  has ETag => (is => 'ro', isa => 'Str');
+  has ETag => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'ETag');
   has StreamingDistribution => (is => 'ro', isa => 'Paws::CloudFront::StreamingDistribution');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -17,7 +18,8 @@ Paws::CloudFront::UpdateStreamingDistributionResult
 
 =head2 ETag => Str
 
-The current version of the configuration. For example: E2QWRUHAPOMQZL.
+The current version of the configuration. For example:
+C<E2QWRUHAPOMQZL>.
 
 
 

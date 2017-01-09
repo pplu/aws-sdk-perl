@@ -5,6 +5,7 @@ package Paws::Firehose::ElasticsearchDestinationConfiguration;
   has DomainARN => (is => 'ro', isa => 'Str', required => 1);
   has IndexName => (is => 'ro', isa => 'Str', required => 1);
   has IndexRotationPeriod => (is => 'ro', isa => 'Str');
+  has ProcessingConfiguration => (is => 'ro', isa => 'Paws::Firehose::ProcessingConfiguration');
   has RetryOptions => (is => 'ro', isa => 'Paws::Firehose::ElasticsearchRetryOptions');
   has RoleARN => (is => 'ro', isa => 'Str', required => 1);
   has S3BackupMode => (is => 'ro', isa => 'Str');
@@ -47,20 +48,21 @@ Describes the configuration of a destination in Amazon ES.
 
 =head2 BufferingHints => L<Paws::Firehose::ElasticsearchBufferingHints>
 
-  Buffering options. If no value is specified,
-B<ElasticsearchBufferingHints> object default values are used.
+  The buffering options. If no value is specified, the default values for
+B<ElasticsearchBufferingHints> are used.
 
 
 =head2 CloudWatchLoggingOptions => L<Paws::Firehose::CloudWatchLoggingOptions>
 
-  Describes CloudWatch logging options for your delivery stream.
+  The CloudWatch logging options for your delivery stream.
 
 
 =head2 B<REQUIRED> DomainARN => Str
 
-  The ARN of the Amazon ES domain. The IAM role must have permission for
-C<DescribeElasticsearchDomain>, C<DescribeElasticsearchDomains> , and
-C<DescribeElasticsearchDomainConfig> after assuming B<RoleARN>.
+  The ARN of the Amazon ES domain. The IAM role must have permissions for
+C<DescribeElasticsearchDomain>, C<DescribeElasticsearchDomains>, and
+C<DescribeElasticsearchDomainConfig> after assuming the role specified
+in B<RoleARN>.
 
 
 =head2 B<REQUIRED> IndexName => Str
@@ -73,13 +75,18 @@ C<DescribeElasticsearchDomainConfig> after assuming B<RoleARN>.
   The Elasticsearch index rotation period. Index rotation appends a
 timestamp to the IndexName to facilitate expiration of old data. For
 more information, see Index Rotation for Amazon Elasticsearch Service
-Destination. Default value is C<OneDay>.
+Destination. The default value is C<OneDay>.
+
+
+=head2 ProcessingConfiguration => L<Paws::Firehose::ProcessingConfiguration>
+
+  The data processing configuration.
 
 
 =head2 RetryOptions => L<Paws::Firehose::ElasticsearchRetryOptions>
 
-  Configures retry behavior in the event that Firehose is unable to
-deliver documents to Amazon ES. Default value is 300 (5 minutes).
+  The retry behavior in the event that Firehose is unable to deliver
+documents to Amazon ES. The default value is 300 (5 minutes).
 
 
 =head2 B<REQUIRED> RoleARN => Str
@@ -104,7 +111,8 @@ FailedDocumentsOnly.
 
 =head2 B<REQUIRED> S3Configuration => L<Paws::Firehose::S3DestinationConfiguration>
 
-  
+  The configuration for the intermediate Amazon S3 location from which
+Amazon ES obtains data.
 
 
 =head2 B<REQUIRED> TypeName => Str

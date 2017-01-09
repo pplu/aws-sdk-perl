@@ -4,9 +4,10 @@ package Paws::Route53::ListTrafficPolicyInstancesByHostedZoneResponse;
   has IsTruncated => (is => 'ro', isa => 'Bool', required => 1);
   has MaxItems => (is => 'ro', isa => 'Str', required => 1);
   has TrafficPolicyInstanceNameMarker => (is => 'ro', isa => 'Str');
-  has TrafficPolicyInstances => (is => 'ro', isa => 'ArrayRef[Paws::Route53::TrafficPolicyInstance]', traits => ['Unwrapped'], xmlname => 'TrafficPolicyInstance', required => 1);
+  has TrafficPolicyInstances => (is => 'ro', isa => 'ArrayRef[Paws::Route53::TrafficPolicyInstance]', required => 1);
   has TrafficPolicyInstanceTypeMarker => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

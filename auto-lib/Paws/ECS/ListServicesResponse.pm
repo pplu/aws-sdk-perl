@@ -4,6 +4,7 @@ package Paws::ECS::ListServicesResponse;
   has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
   has ServiceArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['Unwrapped'], xmlname => 'serviceArns' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -22,13 +23,13 @@ this value can be used to retrieve the next page of results. This value
 is C<null> when there are no more results to return.
 
 
-
 =head2 ServiceArns => ArrayRef[Str|Undef]
 
 The list of full Amazon Resource Name (ARN) entries for each service
 associated with the specified cluster.
 
 
+=head2 _request_id => Str
 
 
 =cut

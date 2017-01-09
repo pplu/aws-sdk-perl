@@ -65,23 +65,36 @@ force when in an C<ACTIVE> status.
 
 =over
 
-=item * B<ACTIVE> E<ndash> The scaling policy is currently in force.
+=item *
 
-=item * B<UPDATEREQUESTED> E<ndash> A request to update the scaling
-policy has been received.
+B<ACTIVE> E<ndash> The scaling policy is currently in force.
 
-=item * B<UPDATING> E<ndash> A change is being made to the scaling
-policy.
+=item *
 
-=item * B<DELETEREQUESTED> E<ndash> A request to delete the scaling
-policy has been received.
+B<UPDATEREQUESTED> E<ndash> A request to update the scaling policy has
+been received.
 
-=item * B<DELETING> E<ndash> The scaling policy is being deleted.
+=item *
 
-=item * B<DELETED> E<ndash> The scaling policy has been deleted.
+B<UPDATING> E<ndash> A change is being made to the scaling policy.
 
-=item * B<ERROR> E<ndash> An error occurred in creating the policy. It
-should be removed and recreated.
+=item *
+
+B<DELETEREQUESTED> E<ndash> A request to delete the scaling policy has
+been received.
+
+=item *
+
+B<DELETING> E<ndash> The scaling policy is being deleted.
+
+=item *
+
+B<DELETED> E<ndash> The scaling policy has been deleted.
+
+=item *
+
+B<ERROR> E<ndash> An error occurred in creating the policy. It should
+be removed and recreated.
 
 =back
 

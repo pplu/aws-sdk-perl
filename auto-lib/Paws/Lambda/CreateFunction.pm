@@ -2,9 +2,12 @@
 package Paws::Lambda::CreateFunction;
   use Moose;
   has Code => (is => 'ro', isa => 'Paws::Lambda::FunctionCode', required => 1);
+  has DeadLetterConfig => (is => 'ro', isa => 'Paws::Lambda::DeadLetterConfig');
   has Description => (is => 'ro', isa => 'Str');
+  has Environment => (is => 'ro', isa => 'Paws::Lambda::Environment');
   has FunctionName => (is => 'ro', isa => 'Str', required => 1);
   has Handler => (is => 'ro', isa => 'Str', required => 1);
+  has KMSKeyArn => (is => 'ro', isa => 'Str');
   has MemorySize => (is => 'ro', isa => 'Int');
   has Publish => (is => 'ro', isa => 'Bool');
   has Role => (is => 'ro', isa => 'Str', required => 1);
@@ -50,10 +53,23 @@ The code for the Lambda function.
 
 
 
+=head2 DeadLetterConfig => L<Paws::Lambda::DeadLetterConfig>
+
+The parent object that contains the target Amazon Resource Name (ARN)
+of an Amazon SQS queue or Amazon SNS topic.
+
+
+
 =head2 Description => Str
 
 A short, user-defined function description. Lambda does not use this
 value. Assign a meaningful description as you see fit.
+
+
+
+=head2 Environment => L<Paws::Lambda::Environment>
+
+
 
 
 
@@ -62,7 +78,7 @@ value. Assign a meaningful description as you see fit.
 The name you want to assign to the function you are uploading. The
 function names appear in the console and are returned in the
 ListFunctions API. Function names are used to specify functions to
-other AWS Lambda APIs, such as Invoke.
+other AWS Lambda API operations, such as Invoke.
 
 
 
@@ -73,6 +89,14 @@ Node.js, it is the I<module-name>.I<export> value in your function. For
 Java, it can be C<package.class-name::handler> or
 C<package.class-name>. For more information, see Lambda Function
 Handler (Java).
+
+
+
+=head2 KMSKeyArn => Str
+
+The Amazon Resource Name (ARN) of the KMS key used to encrypt your
+function's environment variables. If not provided, AWS Lambda will use
+a default service key.
 
 
 
@@ -109,7 +133,12 @@ The runtime environment for the Lambda function you are uploading.
 To use the Node.js runtime v4.3, set the value to "nodejs4.3". To use
 earlier runtime (v0.10.42), set the value to "nodejs".
 
-Valid values are: C<"nodejs">, C<"nodejs4.3">, C<"java8">, C<"python2.7">
+You can no longer create functions using the v0.10.42 runtime version
+as of November, 2016. Existing functions will be supported until early
+2017, but we recommend you migrate them to nodejs4.3 runtime version as
+soon as possible.
+
+Valid values are: C<"nodejs">, C<"nodejs4.3">, C<"java8">, C<"python2.7">, C<"dotnetcore1.0">, C<"nodejs4.3-edge">
 
 =head2 Timeout => Int
 

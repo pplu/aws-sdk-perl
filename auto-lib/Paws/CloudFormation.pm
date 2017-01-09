@@ -103,6 +103,16 @@ package Paws::CloudFormation;
     my $call_object = $self->new_with_coercions('Paws::CloudFormation::ListChangeSets', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListExports {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudFormation::ListExports', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListImports {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudFormation::ListImports', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListStackResources {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudFormation::ListStackResources', @_);
@@ -133,8 +143,94 @@ package Paws::CloudFormation;
     my $call_object = $self->new_with_coercions('Paws::CloudFormation::ValidateTemplate', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
+  sub DescribeAllStackEvents {
+    my $self = shift;
 
-  sub operations { qw/CancelUpdateStack ContinueUpdateRollback CreateChangeSet CreateStack DeleteChangeSet DeleteStack DescribeAccountLimits DescribeChangeSet DescribeStackEvents DescribeStackResource DescribeStackResources DescribeStacks EstimateTemplateCost ExecuteChangeSet GetStackPolicy GetTemplate GetTemplateSummary ListChangeSets ListStackResources ListStacks SetStackPolicy SignalResource UpdateStack ValidateTemplate / }
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeStackEvents(@_);
+
+    if (not defined $callback) {
+      while ($result->NextToken) {
+        $result = $self->DescribeStackEvents(@_, NextToken => $result->NextToken);
+        push @{ $result->StackEvents }, @{ $result->StackEvents };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $result = $self->DescribeStackEvents(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'StackEvents') foreach (@{ $result->StackEvents });
+      }
+    }
+
+    return undef
+  }
+  sub DescribeAllStacks {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeStacks(@_);
+
+    if (not defined $callback) {
+      while ($result->NextToken) {
+        $result = $self->DescribeStacks(@_, NextToken => $result->NextToken);
+        push @{ $result->Stacks }, @{ $result->Stacks };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $result = $self->DescribeStacks(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'Stacks') foreach (@{ $result->Stacks });
+      }
+    }
+
+    return undef
+  }
+  sub ListAllStackResources {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListStackResources(@_);
+
+    if (not defined $callback) {
+      while ($result->NextToken) {
+        $result = $self->ListStackResources(@_, NextToken => $result->NextToken);
+        push @{ $result->StackResourceSummaries }, @{ $result->StackResourceSummaries };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $result = $self->ListStackResources(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'StackResourceSummaries') foreach (@{ $result->StackResourceSummaries });
+      }
+    }
+
+    return undef
+  }
+  sub ListAllStacks {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListStacks(@_);
+
+    if (not defined $callback) {
+      while ($result->NextToken) {
+        $result = $self->ListStacks(@_, NextToken => $result->NextToken);
+        push @{ $result->StackSummaries }, @{ $result->StackSummaries };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $result = $self->ListStacks(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'StackSummaries') foreach (@{ $result->StackSummaries });
+      }
+    }
+
+    return undef
+  }
+
+
+  sub operations { qw/CancelUpdateStack ContinueUpdateRollback CreateChangeSet CreateStack DeleteChangeSet DeleteStack DescribeAccountLimits DescribeChangeSet DescribeStackEvents DescribeStackResource DescribeStackResources DescribeStacks EstimateTemplateCost ExecuteChangeSet GetStackPolicy GetTemplate GetTemplateSummary ListChangeSets ListExports ListImports ListStackResources ListStacks SetStackPolicy SignalResource UpdateStack ValidateTemplate / }
 
 1;
 
@@ -164,11 +260,12 @@ Paws::CloudFormation - Perl Interface to AWS AWS CloudFormation
 
 AWS CloudFormation
 
-AWS CloudFormation enables you to create and manage AWS infrastructure
-deployments predictably and repeatedly. AWS CloudFormation helps you
-leverage AWS products such as Amazon EC2, EBS, Amazon SNS, ELB, and
-Auto Scaling to build highly-reliable, highly scalable, cost effective
-applications without worrying about creating and configuring the
+AWS CloudFormation allows you to create and manage AWS infrastructure
+deployments predictably and repeatedly. You can use AWS CloudFormation
+to leverage AWS products, such as Amazon Elastic Compute Cloud, Amazon
+Elastic Block Store, Amazon Simple Notification Service, Elastic Load
+Balancing, and Auto Scaling to build highly-reliable, highly scalable,
+cost-effective applications without creating or configuring the
 underlying AWS infrastructure.
 
 With AWS CloudFormation, you declare all of your resources and
@@ -177,13 +274,12 @@ resources as a single unit called a stack. AWS CloudFormation creates
 and deletes all member resources of the stack together and manages all
 dependencies between the resources for you.
 
-For more information about this product, go to the CloudFormation
-Product Page.
+For more information about AWS CloudFormation, see the AWS
+CloudFormation Product Page.
 
-Amazon CloudFormation makes use of other AWS products. If you need
-additional technical information about a specific AWS product, you can
-find the product's technical documentation at
-http://docs.aws.amazon.com/.
+Amazon CloudFormation makes use of other AWS products. For additional
+technical information about a specific AWS product, see its technical
+documentation.
 
 =head1 METHODS
 
@@ -200,7 +296,7 @@ previous stack configuration.
 You can cancel only stacks that are in the UPDATE_IN_PROGRESS state.
 
 
-=head2 ContinueUpdateRollback(StackName => Str, [RoleARN => Str])
+=head2 ContinueUpdateRollback(StackName => Str, [ResourcesToSkip => ArrayRef[Str|Undef], RoleARN => Str])
 
 Each argument is described in detail in: L<Paws::CloudFormation::ContinueUpdateRollback>
 
@@ -222,18 +318,18 @@ assumes that the database instance still exists and attempts to roll
 back to it, causing the update rollback to fail.
 
 
-=head2 CreateChangeSet(ChangeSetName => Str, StackName => Str, [Capabilities => ArrayRef[Str|Undef], ClientToken => Str, Description => Str, NotificationARNs => ArrayRef[Str|Undef], Parameters => ArrayRef[L<Paws::CloudFormation::Parameter>], ResourceTypes => ArrayRef[Str|Undef], RoleARN => Str, Tags => ArrayRef[L<Paws::CloudFormation::Tag>], TemplateBody => Str, TemplateURL => Str, UsePreviousTemplate => Bool])
+=head2 CreateChangeSet(ChangeSetName => Str, StackName => Str, [Capabilities => ArrayRef[Str|Undef], ChangeSetType => Str, ClientToken => Str, Description => Str, NotificationARNs => ArrayRef[Str|Undef], Parameters => ArrayRef[L<Paws::CloudFormation::Parameter>], ResourceTypes => ArrayRef[Str|Undef], RoleARN => Str, Tags => ArrayRef[L<Paws::CloudFormation::Tag>], TemplateBody => Str, TemplateURL => Str, UsePreviousTemplate => Bool])
 
 Each argument is described in detail in: L<Paws::CloudFormation::CreateChangeSet>
 
 Returns: a L<Paws::CloudFormation::CreateChangeSetOutput> instance
 
   Creates a list of changes for a stack. AWS CloudFormation generates the
-change set by comparing the stack's information with the information
+change set by comparing the template's information with the information
 that you submit. A change set can help you understand which resources
-AWS CloudFormation will change and how it will change them before you
-update your stack. Change sets allow you to check before you make a
-change so that you don't delete or replace critical resources.
+AWS CloudFormation will change, and how it will change them, before you
+update your stack. Change sets allow you to check before making a
+change to avoid deleting or replacing critical resources.
 
 AWS CloudFormation doesn't make any changes to the stack when you
 create a change set. To make the specified changes, you must execute
@@ -409,7 +505,7 @@ Returns: a L<Paws::CloudFormation::GetStackPolicyOutput> instance
 a policy, a null value is returned.
 
 
-=head2 GetTemplate(StackName => Str)
+=head2 GetTemplate([ChangeSetName => Str, StackName => Str, TemplateStage => Str])
 
 Each argument is described in detail in: L<Paws::CloudFormation::GetTemplate>
 
@@ -453,6 +549,36 @@ Returns: a L<Paws::CloudFormation::ListChangeSetsOutput> instance
   Returns the ID and status of each active change set for a stack. For
 example, AWS CloudFormation lists change sets that are in the
 C<CREATE_IN_PROGRESS> or C<CREATE_PENDING> state.
+
+
+=head2 ListExports([NextToken => Str])
+
+Each argument is described in detail in: L<Paws::CloudFormation::ListExports>
+
+Returns: a L<Paws::CloudFormation::ListExportsOutput> instance
+
+  Lists all exported output values in the account and region in which you
+call this action. Use this action to see the exported output values
+that you can import into other stacks. To import values, use the
+C<Fn::ImportValue> function.
+
+For more information, see AWS CloudFormation Export Stack Output
+Values.
+
+
+=head2 ListImports(ExportName => Str, [NextToken => Str])
+
+Each argument is described in detail in: L<Paws::CloudFormation::ListImports>
+
+Returns: a L<Paws::CloudFormation::ListImportsOutput> instance
+
+  Lists all stacks that are importing an exported output value. To modify
+or remove an exported output value, first use this action to see which
+stacks are using it. To see the exported output values in your account,
+see ListExports.
+
+For more information about importing an exported output value, see the
+C<Fn::ImportValue> function.
 
 
 =head2 ListStackResources(StackName => Str, [NextToken => Str])
@@ -531,6 +657,63 @@ Returns: a L<Paws::CloudFormation::ValidateTemplateOutput> instance
 template is valid JSON. If it isn't, AWS CloudFormation checks if the
 template is valid YAML. If both these checks fail, AWS CloudFormation
 returns a template validation error.
+
+
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 DescribeAllStackEvents(sub { },[NextToken => Str, StackName => Str])
+
+=head2 DescribeAllStackEvents([NextToken => Str, StackName => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - StackEvents, passing the object as the first parameter, and the string 'StackEvents' as the second parameter 
+
+If not, it will return a a L<Paws::CloudFormation::DescribeStackEventsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllStacks(sub { },[NextToken => Str, StackName => Str])
+
+=head2 DescribeAllStacks([NextToken => Str, StackName => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Stacks, passing the object as the first parameter, and the string 'Stacks' as the second parameter 
+
+If not, it will return a a L<Paws::CloudFormation::DescribeStacksOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllStackResources(sub { },StackName => Str, [NextToken => Str])
+
+=head2 ListAllStackResources(StackName => Str, [NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - StackResourceSummaries, passing the object as the first parameter, and the string 'StackResourceSummaries' as the second parameter 
+
+If not, it will return a a L<Paws::CloudFormation::ListStackResourcesOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllStacks(sub { },[NextToken => Str, StackStatusFilter => ArrayRef[Str|Undef]])
+
+=head2 ListAllStacks([NextToken => Str, StackStatusFilter => ArrayRef[Str|Undef]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - StackSummaries, passing the object as the first parameter, and the string 'StackSummaries' as the second parameter 
+
+If not, it will return a a L<Paws::CloudFormation::ListStacksOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+
 
 
 =head1 SEE ALSO

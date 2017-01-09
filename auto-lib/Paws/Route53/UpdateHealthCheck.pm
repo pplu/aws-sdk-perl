@@ -6,7 +6,7 @@ package Paws::Route53::UpdateHealthCheck;
   has EnableSNI => (is => 'ro', isa => 'Bool');
   has FailureThreshold => (is => 'ro', isa => 'Int');
   has FullyQualifiedDomainName => (is => 'ro', isa => 'Str');
-  has HealthCheckId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'HealthCheckId' , required => 1);
+  has HealthCheckId => (is => 'ro', isa => 'Str', uri_name => 'HealthCheckId', traits => ['ParamInURI'], required => 1);
   has HealthCheckVersion => (is => 'ro', isa => 'Int');
   has HealthThreshold => (is => 'ro', isa => 'Int');
   has InsufficientDataHealthStatus => (is => 'ro', isa => 'Str');
@@ -111,13 +111,16 @@ If a health check already has a value for C<IPAddress>, you can change
 the value. However, you can't update an existing health check to add or
 remove the value of C<IPAddress>.
 
-B<If you specify> C<IPAddress>:
+B<If you specify a value for> C<IPAddress>:
 
-The value that you want Amazon Route 53 to pass in the C<Host> header
-in all health checks except TCP health checks. This is typically the
-fully qualified DNS name of the endpoint on which you want Amazon Route
-53 to perform health checks. When Amazon Route 53 checks the health of
-an endpoint, here is how it constructs the C<Host> header:
+Amazon Route 53 sends health check requests to the specified IPv4 or
+IPv6 address and passes the value of C<FullyQualifiedDomainName> in the
+C<Host> header for all health checks except TCP health checks. This is
+typically the fully qualified DNS name of the endpoint on which you
+want Amazon Route 53 to perform health checks.
+
+When Amazon Route 53 checks the health of an endpoint, here is how it
+constructs the C<Host> header:
 
 =over
 
@@ -146,13 +149,19 @@ If you don't specify a value for C<FullyQualifiedDomainName>, Amazon
 Route 53 substitutes the value of C<IPAddress> in the C<Host> header in
 each of the above cases.
 
-B<If you don't specify> C<IPAddress>:
+B<If you don't specify a value for> C<IPAddress>:
 
 If you don't specify a value for C<IPAddress>, Amazon Route 53 sends a
 DNS request to the domain that you specify in
 C<FullyQualifiedDomainName> at the interval you specify in
-C<RequestInterval>. Using an IP address that DNS returns, Amazon Route
-53 then checks the health of the endpoint.
+C<RequestInterval>. Using an IPv4 address that is returned by DNS,
+Amazon Route 53 then checks the health of the endpoint.
+
+If you don't specify a value for C<IPAddress>, Amazon Route 53 uses
+only IPv4 to send health checks to the endpoint. If there's no resource
+record set with a type of A for the name that you specify for
+C<FullyQualifiedDomainName>, the health check fails with a "DNS
+resolution failed" error.
 
 If you want to check the health of weighted, latency, or failover
 resource record sets and you choose to specify the endpoint only by
@@ -246,6 +255,29 @@ to be healthy.
 
 =head2 InsufficientDataHealthStatus => Str
 
+When CloudWatch has insufficient data about the metric to determine the
+alarm state, the status that you want Amazon Route 53 to assign to the
+health check:
+
+=over
+
+=item *
+
+C<Healthy>: Amazon Route 53 considers the health check to be healthy.
+
+=item *
+
+C<Unhealthy>: Amazon Route 53 considers the health check to be
+unhealthy.
+
+=item *
+
+C<LastKnownStatus>: Amazon Route 53 uses the status of the health check
+from the last time CloudWatch had sufficient data to determine the
+alarm state. For new health checks that have no last known status, the
+default status for the health check is healthy.
+
+=back
 
 
 Valid values are: C<"Healthy">, C<"Unhealthy">, C<"LastKnownStatus">
@@ -260,17 +292,18 @@ otherwise would be considered healthy.
 
 =head2 IPAddress => Str
 
-The IPv4 IP address of the endpoint on which you want Amazon Route 53
-to perform health checks. If you don't specify a value for
+The IPv4 or IPv6 IP address for the endpoint that you want Amazon Route
+53 to perform health checks on. If you don't specify a value for
 C<IPAddress>, Amazon Route 53 sends a DNS request to resolve the domain
 name that you specify in C<FullyQualifiedDomainName> at the interval
-you specify in C<RequestInterval>. Using an IP address that DNS
-returns, Amazon Route 53 then checks the health of the endpoint.
+that you specify in C<RequestInterval>. Using an IP address that is
+returned by DNS, Amazon Route 53 then checks the health of the
+endpoint.
 
-f the endpoint is an Amazon EC2 instance, we recommend that you create
-an Elastic IP address, associate it with your Amazon EC2 instance, and
-specify the Elastic IP address for C<IPAddress>. This ensures that the
-IP address of your instance never changes. For more information, see
+If the endpoint is an EC2 instance, we recommend that you create an
+Elastic IP address, associate it with your EC2 instance, and specify
+the Elastic IP address for C<IPAddress>. This ensures that the IP
+address of your instance never changes. For more information, see
 Elastic IP Addresses (EIP) in the I<Amazon EC2 User Guide for Linux
 Instances>.
 
@@ -280,6 +313,28 @@ remove the value of C<IPAddress>.
 
 For more information, see
 UpdateHealthCheckRequest$FullyQualifiedDomainName.
+
+Constraints: Amazon Route 53 can't check the health of endpoints for
+which the IP address is in local, private, non-routable, or multicast
+ranges. For more information about IP addresses for which you can't
+create health checks, see the following documents:
+
+=over
+
+=item *
+
+RFC 5735, Special Use IPv4 Addresses
+
+=item *
+
+RFC 6598, IANA-Reserved IPv4 Prefix for Shared Address Space
+
+=item *
+
+RFC 5156, Special-Use IPv6 Addresses
+
+=back
+
 
 
 

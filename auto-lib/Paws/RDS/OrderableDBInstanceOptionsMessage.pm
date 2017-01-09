@@ -4,6 +4,7 @@ package Paws::RDS::OrderableDBInstanceOptionsMessage;
   has Marker => (is => 'ro', isa => 'Str');
   has OrderableDBInstanceOptions => (is => 'ro', isa => 'ArrayRef[Paws::RDS::OrderableDBInstanceOption]', xmlname => 'OrderableDBInstanceOption', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -23,13 +24,13 @@ response includes only records beyond the marker, up to the value
 specified by C<MaxRecords> .
 
 
-
 =head2 OrderableDBInstanceOptions => ArrayRef[L<Paws::RDS::OrderableDBInstanceOption>]
 
 An OrderableDBInstanceOption structure containing information about
 orderable options for the DB instance.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -3,6 +3,7 @@ package Paws::OpsWorks::RegisterInstanceResult;
   use Moose;
   has InstanceId => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -18,6 +19,7 @@ Paws::OpsWorks::RegisterInstanceResult
 The registered instance's AWS OpsWorks ID.
 
 
+=head2 _request_id => Str
 
 
 =cut

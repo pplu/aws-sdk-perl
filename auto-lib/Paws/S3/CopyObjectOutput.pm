@@ -2,15 +2,16 @@
 package Paws::S3::CopyObjectOutput;
   use Moose;
   has CopyObjectResult => (is => 'ro', isa => 'Paws::S3::CopyObjectResult');
-  has CopySourceVersionId => (is => 'ro', isa => 'Str');
-  has Expiration => (is => 'ro', isa => 'Str');
-  has RequestCharged => (is => 'ro', isa => 'Str');
-  has ServerSideEncryption => (is => 'ro', isa => 'Str');
-  has SSECustomerAlgorithm => (is => 'ro', isa => 'Str');
-  has SSECustomerKeyMD5 => (is => 'ro', isa => 'Str');
-  has SSEKMSKeyId => (is => 'ro', isa => 'Str');
-  has VersionId => (is => 'ro', isa => 'Str');
+  has CopySourceVersionId => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-copy-source-version-id');
+  has Expiration => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-expiration');
+  has RequestCharged => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-request-charged');
+  has ServerSideEncryption => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-server-side-encryption');
+  has SSECustomerAlgorithm => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-server-side-encryption-customer-algorithm');
+  has SSECustomerKeyMD5 => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-server-side-encryption-customer-key-MD5');
+  has SSEKMSKeyId => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-server-side-encryption-aws-kms-key-id');
+  has VersionId => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-version-id');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

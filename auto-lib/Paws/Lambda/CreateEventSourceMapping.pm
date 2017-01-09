@@ -6,6 +6,7 @@ package Paws::Lambda::CreateEventSourceMapping;
   has EventSourceArn => (is => 'ro', isa => 'Str', required => 1);
   has FunctionName => (is => 'ro', isa => 'Str', required => 1);
   has StartingPosition => (is => 'ro', isa => 'Str', required => 1);
+  has StartingPositionTimestamp => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -89,11 +90,22 @@ only the function name, it is limited to 64 character in length.
 
 =head2 B<REQUIRED> StartingPosition => Str
 
-The position in the stream where AWS Lambda should start reading. For
-more information, go to ShardIteratorType in the I<Amazon Kinesis API
-Reference>.
+The position in the stream where AWS Lambda should start reading. Valid
+only for Kinesis streams. For more information, see ShardIteratorType
+in the I<Amazon Kinesis API Reference>.
 
-Valid values are: C<"TRIM_HORIZON">, C<"LATEST">
+Valid values are: C<"TRIM_HORIZON">, C<"LATEST">, C<"AT_TIMESTAMP">
+
+=head2 StartingPositionTimestamp => Str
+
+The timestamp of the data record from which to start reading. Used with
+shard iterator type AT_TIMESTAMP. If a record with this exact timestamp
+does not exist, the iterator returned is for the next (later) record.
+If the timestamp is older than the current trim horizon, the iterator
+returned is for the oldest untrimmed data record (TRIM_HORIZON). Valid
+only for Kinesis streams.
+
+
 
 
 =head1 SEE ALSO

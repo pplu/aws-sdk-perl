@@ -9,6 +9,7 @@ package Paws::StorageGateway::DescribeCacheOutput;
   has DiskIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has GatewayARN => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -24,9 +25,7 @@ Paws::StorageGateway::DescribeCacheOutput
 
 
 
-
 =head2 CacheDirtyPercentage => Num
-
 
 
 
@@ -36,9 +35,7 @@ Paws::StorageGateway::DescribeCacheOutput
 
 
 
-
 =head2 CacheMissPercentage => Num
-
 
 
 
@@ -48,9 +45,7 @@ Paws::StorageGateway::DescribeCacheOutput
 
 
 
-
 =head2 DiskIds => ArrayRef[Str|Undef]
-
 
 
 
@@ -60,6 +55,7 @@ Paws::StorageGateway::DescribeCacheOutput
 
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -3,6 +3,7 @@ package Paws::StorageGateway::DescribeChapCredentialsOutput;
   use Moose;
   has ChapCredentials => (is => 'ro', isa => 'ArrayRef[Paws::StorageGateway::ChapInfo]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -47,6 +48,7 @@ B<TargetARN>: The Amazon Resource Name (ARN) of the storage volume.
 
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -8,12 +8,12 @@ package Paws::DMS::CreateEndpoint;
   has EngineName => (is => 'ro', isa => 'Str', required => 1);
   has ExtraConnectionAttributes => (is => 'ro', isa => 'Str');
   has KmsKeyId => (is => 'ro', isa => 'Str');
-  has Password => (is => 'ro', isa => 'Str', required => 1);
-  has Port => (is => 'ro', isa => 'Int', required => 1);
-  has ServerName => (is => 'ro', isa => 'Str', required => 1);
+  has Password => (is => 'ro', isa => 'Str');
+  has Port => (is => 'ro', isa => 'Int');
+  has ServerName => (is => 'ro', isa => 'Str');
   has SslMode => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::DMS::Tag]');
-  has Username => (is => 'ro', isa => 'Str', required => 1);
+  has Username => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -74,7 +74,7 @@ Valid values are: C<"source">, C<"target">
 =head2 B<REQUIRED> EngineName => Str
 
 The type of engine for the endpoint. Valid values include MYSQL,
-ORACLE, POSTGRES, MARIADB, AURORA, REDSHIFT, and SQLSERVER.
+ORACLE, POSTGRES, MARIADB, AURORA, REDSHIFT, SYBASE, and SQLSERVER.
 
 
 
@@ -94,19 +94,19 @@ different default encryption key for each AWS region.
 
 
 
-=head2 B<REQUIRED> Password => Str
+=head2 Password => Str
 
 The password to be used to login to the endpoint database.
 
 
 
-=head2 B<REQUIRED> Port => Int
+=head2 Port => Int
 
 The port used by the endpoint database.
 
 
 
-=head2 B<REQUIRED> ServerName => Str
+=head2 ServerName => Str
 
 The name of the server where the endpoint database resides.
 
@@ -129,7 +129,7 @@ Tags to be added to the endpoint.
 
 
 
-=head2 B<REQUIRED> Username => Str
+=head2 Username => Str
 
 The user name to be used to login to the endpoint database.
 

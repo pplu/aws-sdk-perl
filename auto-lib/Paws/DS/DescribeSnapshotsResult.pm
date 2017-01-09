@@ -4,6 +4,7 @@ package Paws::DS::DescribeSnapshotsResult;
   has NextToken => (is => 'ro', isa => 'Str');
   has Snapshots => (is => 'ro', isa => 'ArrayRef[Paws::DS::Snapshot]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -20,7 +21,6 @@ If not null, more results are available. Pass this value in the
 I<NextToken> member of a subsequent call to DescribeSnapshots.
 
 
-
 =head2 Snapshots => ArrayRef[L<Paws::DS::Snapshot>]
 
 The list of Snapshot objects that were retrieved.
@@ -31,6 +31,7 @@ are less than the requested number of items left to retrieve, or if the
 limitations of the operation have been exceeded.
 
 
+=head2 _request_id => Str
 
 
 =cut

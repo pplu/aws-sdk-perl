@@ -1,9 +1,11 @@
 
 package Paws::DirectConnect::VirtualInterface;
   use Moose;
+  has AddressFamily => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'addressFamily' );
   has AmazonAddress => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'amazonAddress' );
   has Asn => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => 'asn' );
   has AuthKey => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'authKey' );
+  has BgpPeers => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::BGPPeer]', traits => ['Unwrapped'], xmlname => 'bgpPeers' );
   has ConnectionId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'connectionId' );
   has CustomerAddress => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'customerAddress' );
   has CustomerRouterConfig => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'customerRouterConfig' );
@@ -17,6 +19,7 @@ package Paws::DirectConnect::VirtualInterface;
   has VirtualInterfaceType => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'virtualInterfaceType' );
   has Vlan => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => 'vlan' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -27,8 +30,12 @@ Paws::DirectConnect::VirtualInterface
 =head1 ATTRIBUTES
 
 
-=head2 AmazonAddress => Str
+=head2 AddressFamily => Str
 
+
+
+Valid values are: C<"ipv4">, C<"ipv6">
+=head2 AmazonAddress => Str
 
 
 
@@ -38,9 +45,12 @@ Paws::DirectConnect::VirtualInterface
 
 
 
-
 =head2 AuthKey => Str
 
+
+
+
+=head2 BgpPeers => ArrayRef[L<Paws::DirectConnect::BGPPeer>]
 
 
 
@@ -50,9 +60,7 @@ Paws::DirectConnect::VirtualInterface
 
 
 
-
 =head2 CustomerAddress => Str
-
 
 
 
@@ -62,9 +70,7 @@ Paws::DirectConnect::VirtualInterface
 Information for generating the customer router configuration.
 
 
-
 =head2 Location => Str
-
 
 
 
@@ -74,9 +80,7 @@ Information for generating the customer router configuration.
 The AWS account that will own the new virtual interface.
 
 
-
 =head2 RouteFilterPrefixes => ArrayRef[L<Paws::DirectConnect::RouteFilterPrefix>]
-
 
 
 
@@ -86,9 +90,7 @@ The AWS account that will own the new virtual interface.
 
 
 
-
 =head2 VirtualInterfaceId => Str
-
 
 
 
@@ -98,15 +100,12 @@ The AWS account that will own the new virtual interface.
 
 
 
-
 =head2 VirtualInterfaceState => Str
 
 
 
 Valid values are: C<"confirming">, C<"verifying">, C<"pending">, C<"available">, C<"down">, C<"deleting">, C<"deleted">, C<"rejected">
-
 =head2 VirtualInterfaceType => Str
-
 
 
 
@@ -116,6 +115,7 @@ Valid values are: C<"confirming">, C<"verifying">, C<"pending">, C<"available">,
 
 
 
+=head2 _request_id => Str
 
 
 =cut

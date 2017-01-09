@@ -33,24 +33,24 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudWatchL
 
 =head1 DESCRIPTION
 
-This class has no description
+Represents the rejected events.
 
 =head1 ATTRIBUTES
 
 
 =head2 ExpiredLogEventEndIndex => Int
 
-  
+  The expired log events.
 
 
 =head2 TooNewLogEventStartIndex => Int
 
-  
+  The log events that are too new.
 
 
 =head2 TooOldLogEventEndIndex => Int
 
-  
+  The log events that are too old.
 
 
 

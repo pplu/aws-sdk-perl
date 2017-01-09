@@ -3,6 +3,7 @@ package Paws::CodeDeploy::DeleteDeploymentGroupOutput;
   use Moose;
   has HooksNotCleanedUp => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::AutoScalingGroup]', traits => ['Unwrapped'], xmlname => 'hooksNotCleanedUp' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -23,6 +24,7 @@ data, AWS CodeDeploy could not remove some Auto Scaling lifecycle event
 hooks from the Amazon EC2 instances in the Auto Scaling group.
 
 
+=head2 _request_id => Str
 
 
 =cut

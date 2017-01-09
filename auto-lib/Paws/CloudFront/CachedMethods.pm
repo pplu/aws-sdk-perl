@@ -1,6 +1,6 @@
 package Paws::CloudFront::CachedMethods;
   use Moose;
-  has Items => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
+  has Items => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'Method', traits => ['NameInRequest'], required => 1);
   has Quantity => (is => 'ro', isa => 'Int', required => 1);
 1;
 
@@ -33,12 +33,25 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 =head1 DESCRIPTION
 
 A complex type that controls whether CloudFront caches the response to
-requests using the specified HTTP methods. There are two choices: -
-CloudFront caches responses to GET and HEAD requests. - CloudFront
-caches responses to GET, HEAD, and OPTIONS requests. If you pick the
-second choice for your S3 Origin, you may need to forward
-Access-Control-Request-Method, Access-Control-Request-Headers and
-Origin headers for the responses to be cached correctly.
+requests using the specified HTTP methods. There are two choices:
+
+=over
+
+=item *
+
+CloudFront caches responses to C<GET> and C<HEAD> requests.
+
+=item *
+
+CloudFront caches responses to C<GET>, C<HEAD>, and C<OPTIONS>
+requests.
+
+=back
+
+If you pick the second choice for your Amazon S3 Origin, you may need
+to forward Access-Control-Request-Method,
+Access-Control-Request-Headers, and Origin headers for the responses to
+be cached correctly.
 
 =head1 ATTRIBUTES
 
@@ -52,9 +65,9 @@ to cache responses to.
 =head2 B<REQUIRED> Quantity => Int
 
   The number of HTTP methods for which you want CloudFront to cache
-responses. Valid values are 2 (for caching responses to GET and HEAD
-requests) and 3 (for caching responses to GET, HEAD, and OPTIONS
-requests).
+responses. Valid values are C<2> (for caching responses to C<GET> and
+C<HEAD> requests) and C<3> (for caching responses to C<GET>, C<HEAD>,
+and C<OPTIONS> requests).
 
 
 

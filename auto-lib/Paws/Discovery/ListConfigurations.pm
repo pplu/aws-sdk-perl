@@ -5,6 +5,7 @@ package Paws::Discovery::ListConfigurations;
   has Filters => (is => 'ro', isa => 'ArrayRef[Paws::Discovery::Filter]', traits => ['NameInRequest'], request_name => 'filters' );
   has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults' );
   has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  has OrderBy => (is => 'ro', isa => 'ArrayRef[Paws::Discovery::OrderByElement]', traits => ['NameInRequest'], request_name => 'orderBy' );
 
   use MooseX::ClassAttribute;
 
@@ -40,15 +41,17 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 A valid configuration identified by the Discovery Service.
 
-Valid values are: C<"SERVER">, C<"PROCESS">, C<"CONNECTION">
+Valid values are: C<"SERVER">, C<"PROCESS">, C<"CONNECTION">, C<"APPLICATION">
 
 =head2 Filters => ArrayRef[L<Paws::Discovery::Filter>]
 
-You can filter the list using a I<key>-I<value> format. For example:
+You can filter the request using various logical operators and a
+I<key>-I<value> format. For example:
 
 C<{"key": "serverType", "value": "webServer"}>
 
-You can separate these items by using logical operators.
+For a complete list of filter options and guidance about using them
+with this action, see Querying Discovered Configuration Items.
 
 
 
@@ -60,8 +63,19 @@ The total number of items to return. The maximum value is 100.
 
 =head2 NextToken => Str
 
-A token to start the list. Use this token to get the next set of
-results.
+Token to retrieve the next set of results. For example, if a previous
+call to ListConfigurations returned 100 items, but you set
+C<ListConfigurationsRequest$maxResults> to 10, you received a set of 10
+results along with a token. Use that token in this query to get the
+next set of 10.
+
+
+
+=head2 OrderBy => ArrayRef[L<Paws::Discovery::OrderByElement>]
+
+Certain filter criteria return output that can be sorted in ascending
+or descending order. For a list of output characteristics for each
+filter, see Querying Discovered Configuration Items.
 
 
 

@@ -33,7 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 =head1 DESCRIPTION
 
 A complex type that lists the AWS accounts that were included in the
-TrustedSigners complex type, as well as their active CloudFront key
+C<TrustedSigners> complex type, as well as their active CloudFront key
 pair IDs, if any.
 
 =head1 ATTRIBUTES
@@ -41,16 +41,27 @@ pair IDs, if any.
 
 =head2 AwsAccountNumber => Str
 
-  Specifies an AWS account that can create signed URLs. Values: self,
-which indicates that the AWS account that was used to create the
-distribution can created signed URLs, or an AWS account number. Omit
-the dashes in the account number.
+  An AWS account that is included in the C<TrustedSigners> complex type
+for this RTMP distribution. Valid values include:
+
+=over
+
+=item *
+
+C<self>, which is the AWS account used to create the distribution.
+
+=item *
+
+An AWS account number.
+
+=back
+
 
 
 =head2 KeyPairIds => L<Paws::CloudFront::KeyPairIds>
 
   A complex type that lists the active CloudFront key pairs, if any, that
-are associated with AwsAccountNumber.
+are associated with C<AwsAccountNumber>.
 
 
 

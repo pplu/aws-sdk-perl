@@ -1,6 +1,7 @@
 
 package Paws::CognitoIdp::CreateUserPool;
   use Moose;
+  has AdminCreateUserConfig => (is => 'ro', isa => 'Paws::CognitoIdp::AdminCreateUserConfigType');
   has AliasAttributes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has AutoVerifiedAttributes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has DeviceConfiguration => (is => 'ro', isa => 'Paws::CognitoIdp::DeviceConfigurationType');
@@ -11,9 +12,11 @@ package Paws::CognitoIdp::CreateUserPool;
   has MfaConfiguration => (is => 'ro', isa => 'Str');
   has Policies => (is => 'ro', isa => 'Paws::CognitoIdp::UserPoolPolicyType');
   has PoolName => (is => 'ro', isa => 'Str', required => 1);
+  has Schema => (is => 'ro', isa => 'ArrayRef[Paws::CognitoIdp::SchemaAttributeType]');
   has SmsAuthenticationMessage => (is => 'ro', isa => 'Str');
   has SmsConfiguration => (is => 'ro', isa => 'Paws::CognitoIdp::SmsConfigurationType');
   has SmsVerificationMessage => (is => 'ro', isa => 'Str');
+  has UserPoolTags => (is => 'ro', isa => 'Paws::CognitoIdp::UserPoolTagsType');
 
   use MooseX::ClassAttribute;
 
@@ -43,6 +46,12 @@ As an example:
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 
 =head1 ATTRIBUTES
+
+
+=head2 AdminCreateUserConfig => L<Paws::CognitoIdp::AdminCreateUserConfigType>
+
+The configuration for AdminCreateUser requests.
+
 
 
 =head2 AliasAttributes => ArrayRef[Str|Undef]
@@ -107,6 +116,13 @@ A string used to name the user pool.
 
 
 
+=head2 Schema => ArrayRef[L<Paws::CognitoIdp::SchemaAttributeType>]
+
+An array of schema attributes for the new user pool. These attributes
+can be standard or custom attributes.
+
+
+
 =head2 SmsAuthenticationMessage => Str
 
 A string representing the SMS authentication message.
@@ -122,6 +138,13 @@ The SMS configuration.
 =head2 SmsVerificationMessage => Str
 
 A string representing the SMS verification message.
+
+
+
+=head2 UserPoolTags => L<Paws::CognitoIdp::UserPoolTagsType>
+
+The cost allocation tags for the user pool. For more information, see
+Adding Cost Allocation Tags to Your User Pool
 
 
 

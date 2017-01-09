@@ -3,6 +3,7 @@ package Paws::ElasticBeanstalk::EnvironmentResourceDescriptionsMessage;
   use Moose;
   has EnvironmentResources => (is => 'ro', isa => 'Paws::ElasticBeanstalk::EnvironmentResourceDescription');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -19,6 +20,7 @@ Paws::ElasticBeanstalk::EnvironmentResourceDescriptionsMessage
 A list of EnvironmentResourceDescription.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -119,49 +119,7 @@ this way can be used interchangeably.
 
 =head2 Operations => ArrayRef[Str|Undef]
 
-A list of operations that the grant permits. The list can contain any
-combination of one or more of the following values:
-
-=over
-
-=item *
-
-Decrypt
-
-=item *
-
-Encrypt
-
-=item *
-
-GenerateDataKey
-
-=item *
-
-GenerateDataKeyWithoutPlaintext
-
-=item *
-
-ReEncryptFrom
-
-=item *
-
-ReEncryptTo
-
-=item *
-
-CreateGrant
-
-=item *
-
-RetireGrant
-
-=item *
-
-DescribeKey
-
-=back
-
+A list of operations that the grant permits.
 
 
 

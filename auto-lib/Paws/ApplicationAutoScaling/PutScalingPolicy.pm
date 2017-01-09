@@ -47,47 +47,78 @@ The name of the scaling policy.
 =head2 PolicyType => Str
 
 The policy type. If you are creating a new policy, this parameter is
-required. If you are updating an existing policy, this parameter is not
-required.
+required. If you are updating a policy, this parameter is not required.
 
 Valid values are: C<"StepScaling">
 
 =head2 B<REQUIRED> ResourceId => Str
 
-The unique resource identifier string for the scalable target that this
-scaling policy applies to. For Amazon ECS services, the resource type
-is C<services>, and the identifier is the cluster name and service
-name; for example, C<service/default/sample-webapp>. For Amazon EC2
-Spot fleet requests, the resource type is C<spot-fleet-request>, and
-the identifier is the Spot fleet request ID; for example,
+The identifier of the resource associated with the scaling policy. This
+string consists of the resource type and unique identifier.
+
+=over
+
+=item *
+
+ECS service - The resource type is C<service> and the unique identifier
+is the cluster name and service name. Example:
+C<service/default/sample-webapp>.
+
+=item *
+
+Spot fleet request - The resource type is C<spot-fleet-request> and the
+unique identifier is the Spot fleet request ID. Example:
 C<spot-fleet-request/sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE>.
+
+=item *
+
+EMR cluster - The resource type is C<instancegroup> and the unique
+identifier is the cluster ID and instance group ID. Example:
+C<instancegroup/j-2EEZNYKUA1NTV/ig-1791Y4E1L8YI0>.
+
+=back
+
 
 
 
 =head2 B<REQUIRED> ScalableDimension => Str
 
-The scalable dimension of the scalable target that this scaling policy
-applies to. The scalable dimension contains the service namespace,
-resource type, and scaling property, such as
-C<ecs:service:DesiredCount> for the desired task count of an Amazon ECS
-service, or C<ec2:spot-fleet-request:TargetCapacity> for the target
-capacity of an Amazon EC2 Spot fleet request.
+The scalable dimension. This string consists of the service namespace,
+resource type, and scaling property.
 
-Valid values are: C<"ecs:service:DesiredCount">, C<"ec2:spot-fleet-request:TargetCapacity">
+=over
+
+=item *
+
+C<ecs:service:DesiredCount> - The desired task count of an ECS service.
+
+=item *
+
+C<ec2:spot-fleet-request:TargetCapacity> - The target capacity of a
+Spot fleet request.
+
+=item *
+
+C<elasticmapreduce:instancegroup:InstanceCount> - The instance count of
+an EMR Instance Group.
+
+=back
+
+
+Valid values are: C<"ecs:service:DesiredCount">, C<"ec2:spot-fleet-request:TargetCapacity">, C<"elasticmapreduce:instancegroup:InstanceCount">
 
 =head2 B<REQUIRED> ServiceNamespace => Str
 
-The AWS service namespace of the scalable target that this scaling
-policy applies to. For more information, see AWS Service Namespaces in
-the Amazon Web Services General Reference.
+The namespace of the AWS service. For more information, see AWS Service
+Namespaces in the I<Amazon Web Services General Reference>.
 
-Valid values are: C<"ecs">, C<"ec2">
+Valid values are: C<"ecs">, C<"elasticmapreduce">, C<"ec2">
 
 =head2 StepScalingPolicyConfiguration => L<Paws::ApplicationAutoScaling::StepScalingPolicyConfiguration>
 
 The configuration for the step scaling policy. If you are creating a
-new policy, this parameter is required. If you are updating an existing
-policy, this parameter is not required. For more information, see
+new policy, this parameter is required. If you are updating a policy,
+this parameter is not required. For more information, see
 StepScalingPolicyConfiguration and StepAdjustment.
 
 

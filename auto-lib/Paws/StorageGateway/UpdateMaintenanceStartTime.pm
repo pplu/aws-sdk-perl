@@ -38,7 +38,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DayOfWeek => Int
 
-The maintenance start time day of the week.
+The maintenance start time day of the week represented as an ordinal
+number from 0 to 6, where 0 represents Sunday and 6 Saturday.
 
 
 

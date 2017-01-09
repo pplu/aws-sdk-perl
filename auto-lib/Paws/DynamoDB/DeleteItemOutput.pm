@@ -5,6 +5,7 @@ package Paws::DynamoDB::DeleteItemOutput;
   has ConsumedCapacity => (is => 'ro', isa => 'Paws::DynamoDB::ConsumedCapacity');
   has ItemCollectionMetrics => (is => 'ro', isa => 'Paws::DynamoDB::ItemCollectionMetrics');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -23,9 +24,7 @@ appears in the response only if I<ReturnValues> was specified as
 C<ALL_OLD> in the request.
 
 
-
 =head2 ConsumedCapacity => L<Paws::DynamoDB::ConsumedCapacity>
-
 
 
 
@@ -63,6 +62,7 @@ the precision or accuracy of the estimate.
 
 
 
+=head2 _request_id => Str
 
 
 =cut

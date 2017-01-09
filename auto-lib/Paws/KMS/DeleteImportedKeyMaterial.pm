@@ -6,7 +6,7 @@ package Paws::KMS::DeleteImportedKeyMaterial;
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteImportedKeyMaterial');
-  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
   class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
@@ -50,7 +50,7 @@ Unique key ID: C<1234abcd-12ab-34cd-56ef-1234567890ab>
 =item *
 
 Key ARN:
-C<arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab>
+C<arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab>
 
 =back
 

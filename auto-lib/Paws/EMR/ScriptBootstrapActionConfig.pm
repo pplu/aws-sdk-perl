@@ -32,19 +32,21 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EMR::Script
 
 =head1 DESCRIPTION
 
-This class has no description
+Configuration of the script to run during a bootstrap action.
 
 =head1 ATTRIBUTES
 
 
 =head2 Args => ArrayRef[Str|Undef]
 
-  
+  A list of command line arguments to pass to the bootstrap action
+script.
 
 
 =head2 B<REQUIRED> Path => Str
 
-  
+  Location of the script to run during a bootstrap action. Can be either
+a location in Amazon S3 or on a local file system.
 
 
 

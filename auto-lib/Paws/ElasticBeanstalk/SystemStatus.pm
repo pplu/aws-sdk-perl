@@ -32,15 +32,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticBean
 
 =head1 DESCRIPTION
 
-Represents CPU utilization and load average information for
-applications running in the specified environment.
+CPU utilization and load average metrics for an Amazon EC2 instance.
 
 =head1 ATTRIBUTES
 
 
 =head2 CPUUtilization => L<Paws::ElasticBeanstalk::CPUUtilization>
 
-  
+  CPU utilization metrics for the instance.
 
 
 =head2 LoadAverage => ArrayRef[Num]

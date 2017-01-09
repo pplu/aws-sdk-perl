@@ -1,10 +1,11 @@
 package Paws::DirectConnect::NewPublicVirtualInterfaceAllocation;
   use Moose;
-  has AmazonAddress => (is => 'ro', isa => 'Str', xmlname => 'amazonAddress', request_name => 'amazonAddress', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has AddressFamily => (is => 'ro', isa => 'Str', xmlname => 'addressFamily', request_name => 'addressFamily', traits => ['Unwrapped','NameInRequest']);
+  has AmazonAddress => (is => 'ro', isa => 'Str', xmlname => 'amazonAddress', request_name => 'amazonAddress', traits => ['Unwrapped','NameInRequest']);
   has Asn => (is => 'ro', isa => 'Int', xmlname => 'asn', request_name => 'asn', traits => ['Unwrapped','NameInRequest'], required => 1);
   has AuthKey => (is => 'ro', isa => 'Str', xmlname => 'authKey', request_name => 'authKey', traits => ['Unwrapped','NameInRequest']);
-  has CustomerAddress => (is => 'ro', isa => 'Str', xmlname => 'customerAddress', request_name => 'customerAddress', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has RouteFilterPrefixes => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::RouteFilterPrefix]', xmlname => 'routeFilterPrefixes', request_name => 'routeFilterPrefixes', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has CustomerAddress => (is => 'ro', isa => 'Str', xmlname => 'customerAddress', request_name => 'customerAddress', traits => ['Unwrapped','NameInRequest']);
+  has RouteFilterPrefixes => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::RouteFilterPrefix]', xmlname => 'routeFilterPrefixes', request_name => 'routeFilterPrefixes', traits => ['Unwrapped','NameInRequest']);
   has VirtualInterfaceName => (is => 'ro', isa => 'Str', xmlname => 'virtualInterfaceName', request_name => 'virtualInterfaceName', traits => ['Unwrapped','NameInRequest'], required => 1);
   has Vlan => (is => 'ro', isa => 'Int', xmlname => 'vlan', request_name => 'vlan', traits => ['Unwrapped','NameInRequest'], required => 1);
 1;
@@ -26,14 +27,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::DirectConnect::NewPublicVirtualInterfaceAllocation object:
 
-  $service_obj->Method(Att1 => { AmazonAddress => $value, ..., Vlan => $value  });
+  $service_obj->Method(Att1 => { AddressFamily => $value, ..., Vlan => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::DirectConnect::NewPublicVirtualInterfaceAllocation object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->AmazonAddress
+  $result->Att1->AddressFamily
 
 =head1 DESCRIPTION
 
@@ -43,7 +44,12 @@ that will be provisioned on a connection.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> AmazonAddress => Str
+=head2 AddressFamily => Str
+
+  
+
+
+=head2 AmazonAddress => Str
 
   
 
@@ -58,12 +64,12 @@ that will be provisioned on a connection.
   
 
 
-=head2 B<REQUIRED> CustomerAddress => Str
+=head2 CustomerAddress => Str
 
   
 
 
-=head2 B<REQUIRED> RouteFilterPrefixes => ArrayRef[L<Paws::DirectConnect::RouteFilterPrefix>]
+=head2 RouteFilterPrefixes => ArrayRef[L<Paws::DirectConnect::RouteFilterPrefix>]
 
   
 

@@ -5,6 +5,7 @@ package Paws::DMS::DescribeTableStatisticsResponse;
   has ReplicationTaskArn => (is => 'ro', isa => 'Str');
   has TableStatistics => (is => 'ro', isa => 'ArrayRef[Paws::DMS::TableStatistics]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -22,11 +23,9 @@ parameter is specified, the response includes only records beyond the
 marker, up to the value specified by C<MaxRecords>.
 
 
-
 =head2 ReplicationTaskArn => Str
 
 The Amazon Resource Name (ARN) of the replication task.
-
 
 
 =head2 TableStatistics => ArrayRef[L<Paws::DMS::TableStatistics>]
@@ -34,6 +33,7 @@ The Amazon Resource Name (ARN) of the replication task.
 The table statistics.
 
 
+=head2 _request_id => Str
 
 
 =cut

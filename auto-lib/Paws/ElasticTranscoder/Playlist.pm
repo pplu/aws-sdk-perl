@@ -67,11 +67,10 @@ character, the section of the name before the last C</> must be
 identical for all C<Name> objects. If you create more than one master
 playlist, the values of all C<Name> objects must be unique.
 
-B<Note>: Elastic Transcoder automatically appends the relevant file
-extension to the file name (C<.m3u8> for C<HLSv3> and C<HLSv4>
-playlists, and C<.ism> and C<.ismc> for C<Smooth> playlists). If you
-include a file extension in C<Name>, the file name will have two
-extensions.
+Elastic Transcoder automatically appends the relevant file extension to
+the file name (C<.m3u8> for C<HLSv3> and C<HLSv4> playlists, and
+C<.ism> and C<.ismc> for C<Smooth> playlists). If you include a file
+extension in C<Name>, the file name will have two extensions.
 
 
 =head2 OutputKeys => ArrayRef[Str|Undef]

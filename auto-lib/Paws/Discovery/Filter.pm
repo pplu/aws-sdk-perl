@@ -2,7 +2,7 @@ package Paws::Discovery::Filter;
   use Moose;
   has Condition => (is => 'ro', isa => 'Str', xmlname => 'condition', request_name => 'condition', traits => ['Unwrapped','NameInRequest'], required => 1);
   has Name => (is => 'ro', isa => 'Str', xmlname => 'name', request_name => 'name', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has Values => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'values', request_name => 'values', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has Values => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'item', xmlname => 'values', request_name => 'values', traits => ['NameInRequest','Unwrapped','NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -35,6 +35,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Discovery::
 
 A filter that can use conditional operators.
 
+for a complete list of filters and guidance for using them with the
+Application Discovery Service, see Querying Discovered Configuration
+Items.
+
 =head1 ATTRIBUTES
 
 
@@ -51,161 +55,7 @@ of matching configuration items.
 
 =head2 B<REQUIRED> Name => Str
 
-  The name of the filter. The following filter names are allowed for
-C<SERVER> configuration items.
-
-B<Server>
-
-=over
-
-=item *
-
-C<server.hostName>
-
-=item *
-
-C<server.osName>
-
-=item *
-
-C<server.osVersion>
-
-=item *
-
-C<server.configurationid>
-
-=item *
-
-C<server.agentid>
-
-=back
-
-The name of the filter. The following filter names are allowed for
-C<PROCESS> configuration items.
-
-B<Process>
-
-=over
-
-=item *
-
-C<process.configurationid>
-
-=item *
-
-C<process.name>
-
-=item *
-
-C<process.commandLine>
-
-=item *
-
-C<server.configurationid>
-
-=item *
-
-C<server.hostName>
-
-=item *
-
-C<server.osName>
-
-=item *
-
-C<server.osVersion>
-
-=item *
-
-C<server.agentId>
-
-=back
-
-The name of the filter. The following filter names are allowed for
-C<CONNECTION> configuration items.
-
-B<Connection>
-
-=over
-
-=item *
-
-C<connection.sourceIp>
-
-=item *
-
-C<connection.destinationIp>
-
-=item *
-
-C<connection.destinationPort>
-
-=item *
-
-C<sourceProcess.configurationId>
-
-=item *
-
-C<sourceProcess.name>
-
-=item *
-
-C<sourceProcess.commandLine>
-
-=item *
-
-C<destinationProcess.configurationId>
-
-=item *
-
-C<destinationProcess.name>
-
-=item *
-
-C<destinationProcess.commandLine>
-
-=item *
-
-C<sourceServer.configurationId>
-
-=item *
-
-C<sourceServer.hostName>
-
-=item *
-
-C<sourceServer.osName>
-
-=item *
-
-C<sourceServer.osVersion>
-
-=item *
-
-C<sourceServer.agentId>
-
-=item *
-
-C<destinationServer.configurationId>
-
-=item *
-
-C<destinationServer.hostName>
-
-=item *
-
-C<destinationServer.osName>
-
-=item *
-
-C<destinationServer.osVersion>
-
-=item *
-
-C<destinationServer.agentId>
-
-=back
-
+  The name of the filter.
 
 
 =head2 B<REQUIRED> Values => ArrayRef[Str|Undef]

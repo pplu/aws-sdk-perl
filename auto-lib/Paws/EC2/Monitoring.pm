@@ -38,7 +38,8 @@ This class has no description
 
 =head2 State => Str
 
-  Indicates whether monitoring is enabled for the instance.
+  Indicates whether detailed monitoring is enabled. Otherwise, basic
+monitoring is enabled.
 
 
 

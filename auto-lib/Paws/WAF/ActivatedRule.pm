@@ -52,14 +52,19 @@ C<Action> include the following:
 
 =over
 
-=item * C<ALLOW>: CloudFront responds with the requested object.
+=item *
 
-=item * C<BLOCK>: CloudFront responds with an HTTP 403 (Forbidden)
-status code.
+C<ALLOW>: CloudFront responds with the requested object.
 
-=item * C<COUNT>: AWS WAF increments a counter of requests that match
-the conditions in the rule and then continues to inspect the web
-request based on the remaining rules in the web ACL.
+=item *
+
+C<BLOCK>: CloudFront responds with an HTTP 403 (Forbidden) status code.
+
+=item *
+
+C<COUNT>: AWS WAF increments a counter of requests that match the
+conditions in the rule and then continues to inspect the web request
+based on the remaining rules in the web ACL.
 
 =back
 

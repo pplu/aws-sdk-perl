@@ -129,6 +129,50 @@ package Paws::Route53Domains;
     my $call_object = $self->new_with_coercions('Paws::Route53Domains::ViewBilling', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
+  sub ListAllDomains {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListDomains(@_);
+
+    if (not defined $callback) {
+      while ($result->Marker) {
+        $result = $self->ListDomains(@_, Marker => $result->NextPageMarker);
+        push @{ $result->Domains }, @{ $result->Domains };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $result = $self->ListDomains(@_, Marker => $result->NextPageMarker);
+        $callback->($_ => 'Domains') foreach (@{ $result->Domains });
+      }
+    }
+
+    return undef
+  }
+  sub ListAllOperations {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListOperations(@_);
+
+    if (not defined $callback) {
+      while ($result->Marker) {
+        $result = $self->ListOperations(@_, Marker => $result->NextPageMarker);
+        push @{ $result->Operations }, @{ $result->Operations };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $result = $self->ListOperations(@_, Marker => $result->NextPageMarker);
+        $callback->($_ => 'Operations') foreach (@{ $result->Operations });
+      }
+    }
+
+    return undef
+  }
+
 
   sub operations { qw/CheckDomainAvailability DeleteTagsForDomain DisableDomainAutoRenew DisableDomainTransferLock EnableDomainAutoRenew EnableDomainTransferLock GetContactReachabilityStatus GetDomainDetail GetDomainSuggestions GetOperationDetail ListDomains ListOperations ListTagsForDomain RegisterDomain RenewDomain ResendContactReachabilityEmail RetrieveDomainAuthCode TransferDomain UpdateDomainContact UpdateDomainContactPrivacy UpdateDomainNameservers UpdateTagsForDomain ViewBilling / }
 
@@ -527,6 +571,39 @@ Returns: a L<Paws::Route53Domains::ViewBillingResponse> instance
 
   This operation returns all the domain-related billing records for the
 current AWS account for a specified period
+
+
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllDomains(sub { },[Marker => Str, MaxItems => Int])
+
+=head2 ListAllDomains([Marker => Str, MaxItems => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Domains, passing the object as the first parameter, and the string 'Domains' as the second parameter 
+
+If not, it will return a a L<Paws::Route53Domains::ListDomainsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllOperations(sub { },[Marker => Str, MaxItems => Int])
+
+=head2 ListAllOperations([Marker => Str, MaxItems => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Operations, passing the object as the first parameter, and the string 'Operations' as the second parameter 
+
+If not, it will return a a L<Paws::Route53Domains::ListOperationsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+
 
 
 =head1 SEE ALSO

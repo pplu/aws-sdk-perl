@@ -9,7 +9,7 @@ package Paws::KMS::PutKeyPolicy;
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutKeyPolicy');
-  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
   class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
@@ -71,7 +71,7 @@ Unique ID: 1234abcd-12ab-34cd-56ef-1234567890ab
 =item *
 
 ARN:
-arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab
+arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab
 
 =back
 

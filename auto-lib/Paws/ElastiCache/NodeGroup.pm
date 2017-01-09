@@ -1,8 +1,9 @@
 package Paws::ElastiCache::NodeGroup;
   use Moose;
   has NodeGroupId => (is => 'ro', isa => 'Str');
-  has NodeGroupMembers => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::NodeGroupMember]');
+  has NodeGroupMembers => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::NodeGroupMember]', request_name => 'NodeGroupMember', traits => ['NameInRequest']);
   has PrimaryEndpoint => (is => 'ro', isa => 'Paws::ElastiCache::Endpoint');
+  has Slots => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
 1;
 
@@ -34,32 +35,41 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElastiCache
 
 =head1 DESCRIPTION
 
-Represents a collection of cache nodes in a replication group.
+Represents a collection of cache nodes in a replication group. One node
+in the node group is the read/write primary node. All the other nodes
+are read-only Replica nodes.
 
 =head1 ATTRIBUTES
 
 
 =head2 NodeGroupId => Str
 
-  The identifier for the node group. A replication group contains only
-one node group; therefore, the node group ID is 0001.
+  The identifier for the node group (shard). A Redis (cluster mode
+disabled) replication group contains only 1 node group; therefore, the
+node group ID is 0001. A Redis (cluster mode enabled) replication group
+contains 1 to 15 node groups numbered 0001 to 0015.
 
 
 =head2 NodeGroupMembers => ArrayRef[L<Paws::ElastiCache::NodeGroupMember>]
 
   A list containing information about individual nodes within the node
-group.
+group (shard).
 
 
 =head2 PrimaryEndpoint => L<Paws::ElastiCache::Endpoint>
 
-  
+  The endpoint of the primary node in this node group (shard).
+
+
+=head2 Slots => Str
+
+  The keyspace for this node group (shard).
 
 
 =head2 Status => Str
 
-  The current state of this replication group - I<creating>,
-I<available>, etc.
+  The current state of this replication group - C<creating>,
+C<available>, etc.
 
 
 

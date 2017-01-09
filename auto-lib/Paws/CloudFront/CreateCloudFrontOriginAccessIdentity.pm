@@ -6,7 +6,7 @@ package Paws::CloudFront::CreateCloudFrontOriginAccessIdentity;
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateCloudFrontOriginAccessIdentity');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2016-09-07/origin-access-identity/cloudfront');
+  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2016-11-25/origin-access-identity/cloudfront');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudFront::CreateCloudFrontOriginAccessIdentityResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
@@ -21,15 +21,15 @@ Paws::CloudFront::CreateCloudFrontOriginAccessIdentity - Arguments for method Cr
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method CreateCloudFrontOriginAccessIdentity2016_09_07 on the 
+This class represents the parameters used for calling the method CreateCloudFrontOriginAccessIdentity2016_11_25 on the 
 Amazon CloudFront service. Use the attributes of this class
-as arguments to method CreateCloudFrontOriginAccessIdentity2016_09_07.
+as arguments to method CreateCloudFrontOriginAccessIdentity2016_11_25.
 
-You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateCloudFrontOriginAccessIdentity2016_09_07.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateCloudFrontOriginAccessIdentity2016_11_25.
 
 As an example:
 
-  $service_obj->CreateCloudFrontOriginAccessIdentity2016_09_07(Att1 => $value1, Att2 => $value2, ...);
+  $service_obj->CreateCloudFrontOriginAccessIdentity2016_11_25(Att1 => $value1, Att2 => $value2, ...);
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 
@@ -38,14 +38,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> CloudFrontOriginAccessIdentityConfig => L<Paws::CloudFront::CloudFrontOriginAccessIdentityConfig>
 
-The origin access identity's configuration information.
+The current configuration information for the identity.
 
 
 
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, documenting arguments for method CreateCloudFrontOriginAccessIdentity2016_09_07 in L<Paws::CloudFront>
+This class forms part of L<Paws>, documenting arguments for method CreateCloudFrontOriginAccessIdentity2016_11_25 in L<Paws::CloudFront>
 
 =head1 BUGS and CONTRIBUTIONS
 

@@ -66,13 +66,19 @@ value for C<HorizontalOffset>:
 
 =over
 
-=item * B<Left>: The left edge of the watermark is aligned with the
-left border of the video.
+=item *
 
-=item * B<Right>: The right edge of the watermark is aligned with the
-right border of the video.
+B<Left>: The left edge of the watermark is aligned with the left border
+of the video.
 
-=item * B<Center>: The watermark is centered between the left and right
+=item *
+
+B<Right>: The right edge of the watermark is aligned with the right
+border of the video.
+
+=item *
+
+B<Center>: The watermark is centered between the left and right
 borders.
 
 =back
@@ -86,10 +92,14 @@ to be offset from the position specified by HorizontalAlign:
 
 =over
 
-=item * number of pixels (px): The minimum value is 0 pixels, and the
-maximum value is the value of MaxWidth.
+=item *
 
-=item * integer percentage (%): The range of valid values is 0 to 100.
+number of pixels (px): The minimum value is 0 pixels, and the maximum
+value is the value of MaxWidth.
+
+=item *
+
+integer percentage (%): The range of valid values is 0 to 100.
 
 =back
 
@@ -122,13 +132,17 @@ C<Id> can be up to 40 characters long.
 
 =over
 
-=item * number of pixels (px): The minimum value is 16 pixels, and the
-maximum value is the value of C<MaxHeight>.
+=item *
 
-=item * integer percentage (%): The range of valid values is 0 to 100.
-Use the value of C<Target> to specify whether you want Elastic
-Transcoder to include the black bars that are added by Elastic
-Transcoder, if any, in the calculation.
+number of pixels (px): The minimum value is 16 pixels, and the maximum
+value is the value of C<MaxHeight>.
+
+=item *
+
+integer percentage (%): The range of valid values is 0 to 100. Use the
+value of C<Target> to specify whether you want Elastic Transcoder to
+include the black bars that are added by Elastic Transcoder, if any, in
+the calculation.
 
 =back
 
@@ -142,13 +156,17 @@ the value of C<MaxHeight>.
 
 =over
 
-=item * number of pixels (px): The minimum value is 16 pixels, and the
-maximum value is the value of C<MaxWidth>.
+=item *
 
-=item * integer percentage (%): The range of valid values is 0 to 100.
-Use the value of C<Target> to specify whether you want Elastic
-Transcoder to include the black bars that are added by Elastic
-Transcoder, if any, in the calculation.
+number of pixels (px): The minimum value is 16 pixels, and the maximum
+value is the value of C<MaxWidth>.
+
+=item *
+
+integer percentage (%): The range of valid values is 0 to 100. Use the
+value of C<Target> to specify whether you want Elastic Transcoder to
+include the black bars that are added by Elastic Transcoder, if any, in
+the calculation.
 
 If you specify the value in pixels, it must be less than or equal to
 the value of C<MaxWidth>.
@@ -176,20 +194,26 @@ doesn't support transparency.
 
 =over
 
-=item * B<Fit>: Elastic Transcoder scales the watermark so it matches
-the value that you specified in either C<MaxWidth> or C<MaxHeight>
-without exceeding the other value.
+=item *
 
-=item * B<Stretch>: Elastic Transcoder stretches the watermark to match
-the values that you specified for C<MaxWidth> and C<MaxHeight>. If the
+B<Fit>: Elastic Transcoder scales the watermark so it matches the value
+that you specified in either C<MaxWidth> or C<MaxHeight> without
+exceeding the other value.
+
+=item *
+
+B<Stretch>: Elastic Transcoder stretches the watermark to match the
+values that you specified for C<MaxWidth> and C<MaxHeight>. If the
 relative proportions of the watermark and the values of C<MaxWidth> and
 C<MaxHeight> are different, the watermark will be distorted.
 
-=item * B<ShrinkToFit>: Elastic Transcoder scales the watermark down so
-that its dimensions match the values that you specified for at least
-one of C<MaxWidth> and C<MaxHeight> without exceeding either value. If
-you specify this option, Elastic Transcoder does not scale the
-watermark up.
+=item *
+
+B<ShrinkToFit>: Elastic Transcoder scales the watermark down so that
+its dimensions match the values that you specified for at least one of
+C<MaxWidth> and C<MaxHeight> without exceeding either value. If you
+specify this option, Elastic Transcoder does not scale the watermark
+up.
 
 =back
 
@@ -203,20 +227,23 @@ and C<MaxHeight>:
 
 =over
 
-=item * B<Content>: C<HorizontalOffset> and C<VerticalOffset> values
-are calculated based on the borders of the video excluding black bars
-added by Elastic Transcoder, if any. In addition, C<MaxWidth> and
+=item *
+
+B<Content>: C<HorizontalOffset> and C<VerticalOffset> values are
+calculated based on the borders of the video excluding black bars added
+by Elastic Transcoder, if any. In addition, C<MaxWidth> and
 C<MaxHeight>, if specified as a percentage, are calculated based on the
 borders of the video excluding black bars added by Elastic Transcoder,
 if any.
 
-=item * B<Frame>: C<HorizontalOffset> and C<VerticalOffset> values are
-calculated based on the borders of the video including black bars added
-by Elastic Transcoder, if any.
+=item *
 
-In addition, C<MaxWidth> and C<MaxHeight>, if specified as a
-percentage, are calculated based on the borders of the video including
-black bars added by Elastic Transcoder, if any.
+B<Frame>: C<HorizontalOffset> and C<VerticalOffset> values are
+calculated based on the borders of the video including black bars added
+by Elastic Transcoder, if any. In addition, C<MaxWidth> and
+C<MaxHeight>, if specified as a percentage, are calculated based on the
+borders of the video including black bars added by Elastic Transcoder,
+if any.
 
 =back
 
@@ -229,13 +256,19 @@ value for C<VerticalOffset>:
 
 =over
 
-=item * B<Top>: The top edge of the watermark is aligned with the top
+=item *
+
+B<Top>: The top edge of the watermark is aligned with the top border of
+the video.
+
+=item *
+
+B<Bottom>: The bottom edge of the watermark is aligned with the bottom
 border of the video.
 
-=item * B<Bottom>: The bottom edge of the watermark is aligned with the
-bottom border of the video.
+=item *
 
-=item * B<Center>: The watermark is centered between the top and bottom
+B<Center>: The watermark is centered between the top and bottom
 borders.
 
 =back
@@ -251,10 +284,14 @@ be offset from the position specified by VerticalAlign:
 
 =over
 
-=item * number of pixels (px): The minimum value is 0 pixels, and the
-maximum value is the value of C<MaxHeight>.
+=item *
 
-=item * integer percentage (%): The range of valid values is 0 to 100.
+number of pixels (px): The minimum value is 0 pixels, and the maximum
+value is the value of C<MaxHeight>.
+
+=item *
+
+integer percentage (%): The range of valid values is 0 to 100.
 
 =back
 

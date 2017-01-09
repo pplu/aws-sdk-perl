@@ -5,6 +5,7 @@ package Paws::CloudWatchLogs::GetLogEventsResponse;
   has NextBackwardToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextBackwardToken' );
   has NextForwardToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextForwardToken' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -17,21 +18,22 @@ Paws::CloudWatchLogs::GetLogEventsResponse
 
 =head2 Events => ArrayRef[L<Paws::CloudWatchLogs::OutputLogEvent>]
 
-
-
+The events.
 
 
 =head2 NextBackwardToken => Str
 
-
-
+The token for the next set of items in the backward direction. The
+token expires after 24 hours.
 
 
 =head2 NextForwardToken => Str
 
+The token for the next set of items in the forward direction. The token
+expires after 24 hours.
 
 
-
+=head2 _request_id => Str
 
 
 =cut

@@ -3,6 +3,7 @@ package Paws::CloudWatchLogs::TestMetricFilterResponse;
   use Moose;
   has Matches => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatchLogs::MetricFilterMatchRecord]', traits => ['Unwrapped'], xmlname => 'matches' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -15,9 +16,10 @@ Paws::CloudWatchLogs::TestMetricFilterResponse
 
 =head2 Matches => ArrayRef[L<Paws::CloudWatchLogs::MetricFilterMatchRecord>]
 
+The matched events.
 
 
-
+=head2 _request_id => Str
 
 
 =cut

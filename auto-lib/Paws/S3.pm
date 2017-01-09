@@ -119,14 +119,29 @@ package Paws::S3;
     my $call_object = $self->new_with_coercions('Paws::S3::DeleteBucket', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteBucketAnalyticsConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::S3::DeleteBucketAnalyticsConfiguration', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteBucketCors {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::S3::DeleteBucketCors', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteBucketInventoryConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::S3::DeleteBucketInventoryConfiguration', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteBucketLifecycle {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::S3::DeleteBucketLifecycle', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteBucketMetricsConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::S3::DeleteBucketMetricsConfiguration', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteBucketPolicy {
@@ -159,6 +174,11 @@ package Paws::S3;
     my $call_object = $self->new_with_coercions('Paws::S3::DeleteObjects', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteObjectTagging {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::S3::DeleteObjectTagging', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetBucketAccelerateConfiguration {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::S3::GetBucketAccelerateConfiguration', @_);
@@ -169,9 +189,19 @@ package Paws::S3;
     my $call_object = $self->new_with_coercions('Paws::S3::GetBucketAcl', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetBucketAnalyticsConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::S3::GetBucketAnalyticsConfiguration', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetBucketCors {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::S3::GetBucketCors', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetBucketInventoryConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::S3::GetBucketInventoryConfiguration', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetBucketLifecycle {
@@ -192,6 +222,11 @@ package Paws::S3;
   sub GetBucketLogging {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::S3::GetBucketLogging', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetBucketMetricsConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::S3::GetBucketMetricsConfiguration', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetBucketNotification {
@@ -244,6 +279,11 @@ package Paws::S3;
     my $call_object = $self->new_with_coercions('Paws::S3::GetObjectAcl', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetObjectTagging {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::S3::GetObjectTagging', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetObjectTorrent {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::S3::GetObjectTorrent', @_);
@@ -257,6 +297,21 @@ package Paws::S3;
   sub HeadObject {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::S3::HeadObject', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListBucketAnalyticsConfigurations {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::S3::ListBucketAnalyticsConfigurations', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListBucketInventoryConfigurations {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::S3::ListBucketInventoryConfigurations', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListBucketMetricsConfigurations {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::S3::ListBucketMetricsConfigurations', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListBuckets {
@@ -299,9 +354,19 @@ package Paws::S3;
     my $call_object = $self->new_with_coercions('Paws::S3::PutBucketAcl', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub PutBucketAnalyticsConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::S3::PutBucketAnalyticsConfiguration', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub PutBucketCors {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::S3::PutBucketCors', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub PutBucketInventoryConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::S3::PutBucketInventoryConfiguration', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub PutBucketLifecycle {
@@ -317,6 +382,11 @@ package Paws::S3;
   sub PutBucketLogging {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::S3::PutBucketLogging', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub PutBucketMetricsConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::S3::PutBucketMetricsConfiguration', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub PutBucketNotification {
@@ -369,6 +439,11 @@ package Paws::S3;
     my $call_object = $self->new_with_coercions('Paws::S3::PutObjectAcl', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub PutObjectTagging {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::S3::PutObjectTagging', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub RestoreObject {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::S3::RestoreObject', @_);
@@ -384,8 +459,125 @@ package Paws::S3;
     my $call_object = $self->new_with_coercions('Paws::S3::UploadPartCopy', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
+  sub ListAllMultipartUploads {
+    my $self = shift;
 
-  sub operations { qw/AbortMultipartUpload CompleteMultipartUpload CopyObject CreateBucket CreateMultipartUpload DeleteBucket DeleteBucketCors DeleteBucketLifecycle DeleteBucketPolicy DeleteBucketReplication DeleteBucketTagging DeleteBucketWebsite DeleteObject DeleteObjects GetBucketAccelerateConfiguration GetBucketAcl GetBucketCors GetBucketLifecycle GetBucketLifecycleConfiguration GetBucketLocation GetBucketLogging GetBucketNotification GetBucketNotificationConfiguration GetBucketPolicy GetBucketReplication GetBucketRequestPayment GetBucketTagging GetBucketVersioning GetBucketWebsite GetObject GetObjectAcl GetObjectTorrent HeadBucket HeadObject ListBuckets ListMultipartUploads ListObjects ListObjectsV2 ListObjectVersions ListParts PutBucketAccelerateConfiguration PutBucketAcl PutBucketCors PutBucketLifecycle PutBucketLifecycleConfiguration PutBucketLogging PutBucketNotification PutBucketNotificationConfiguration PutBucketPolicy PutBucketReplication PutBucketRequestPayment PutBucketTagging PutBucketVersioning PutBucketWebsite PutObject PutObjectAcl RestoreObject UploadPart UploadPartCopy / }
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListMultipartUploads(@_);
+
+    if (not defined $callback) {
+      while ($result->IsTruncated) {
+        $result = $self->ListMultipartUploads(@_, KeyMarker => $result->NextKeyMarker, UploadIdMarker => $result->NextUploadIdMarker);
+        push @{ $result->Uploads }, @{ $result->Uploads };
+        push @{ $result->CommonPrefixes }, @{ $result->CommonPrefixes };
+      }
+      return $result;
+    } else {
+      while ($result->IsTruncated) {
+        $result = $self->ListMultipartUploads(@_, KeyMarker => $result->NextKeyMarker, UploadIdMarker => $result->NextUploadIdMarker);
+        $callback->($_ => 'Uploads') foreach (@{ $result->Uploads });
+        $callback->($_ => 'CommonPrefixes') foreach (@{ $result->CommonPrefixes });
+      }
+    }
+
+    return undef
+  }
+  sub ListAllObjects {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListObjects(@_);
+
+    if (not defined $callback) {
+      while ($result->IsTruncated) {
+        $result = $self->ListObjects(@_, Marker => $result->NextMarker || ( (defined $result->Contents->[-1]) ? $result->Contents->[-1]->Key : undef ));
+        push @{ $result->Contents }, @{ $result->Contents };
+        push @{ $result->CommonPrefixes }, @{ $result->CommonPrefixes };
+      }
+      return $result;
+    } else {
+      while ($result->IsTruncated) {
+        $result = $self->ListObjects(@_, Marker => $result->NextMarker || ( (defined $result->Contents->[-1]) ? $result->Contents->[-1]->Key : undef ));
+        $callback->($_ => 'Contents') foreach (@{ $result->Contents });
+        $callback->($_ => 'CommonPrefixes') foreach (@{ $result->CommonPrefixes });
+      }
+    }
+
+    return undef
+  }
+  sub ListAllObjectsV2 {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListObjectsV2(@_);
+
+    if (not defined $callback) {
+      while ($result->IsTruncated) {
+        $result = $self->ListObjectsV2(@_, ContinuationToken => $result->NextContinuationToken);
+        push @{ $result->Contents }, @{ $result->Contents };
+        push @{ $result->CommonPrefixes }, @{ $result->CommonPrefixes };
+      }
+      return $result;
+    } else {
+      while ($result->IsTruncated) {
+        $result = $self->ListObjectsV2(@_, ContinuationToken => $result->NextContinuationToken);
+        $callback->($_ => 'Contents') foreach (@{ $result->Contents });
+        $callback->($_ => 'CommonPrefixes') foreach (@{ $result->CommonPrefixes });
+      }
+    }
+
+    return undef
+  }
+  sub ListAllObjectVersions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListObjectVersions(@_);
+
+    if (not defined $callback) {
+      while ($result->IsTruncated) {
+        $result = $self->ListObjectVersions(@_, KeyMarker => $result->NextKeyMarker, VersionIdMarker => $result->NextVersionIdMarker);
+        push @{ $result->Versions }, @{ $result->Versions };
+        push @{ $result->DeleteMarkers }, @{ $result->DeleteMarkers };
+        push @{ $result->CommonPrefixes }, @{ $result->CommonPrefixes };
+      }
+      return $result;
+    } else {
+      while ($result->IsTruncated) {
+        $result = $self->ListObjectVersions(@_, KeyMarker => $result->NextKeyMarker, VersionIdMarker => $result->NextVersionIdMarker);
+        $callback->($_ => 'Versions') foreach (@{ $result->Versions });
+        $callback->($_ => 'DeleteMarkers') foreach (@{ $result->DeleteMarkers });
+        $callback->($_ => 'CommonPrefixes') foreach (@{ $result->CommonPrefixes });
+      }
+    }
+
+    return undef
+  }
+  sub ListAllParts {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListParts(@_);
+
+    if (not defined $callback) {
+      while ($result->IsTruncated) {
+        $result = $self->ListParts(@_, PartNumberMarker => $result->NextPartNumberMarker);
+        push @{ $result->Parts }, @{ $result->Parts };
+      }
+      return $result;
+    } else {
+      while ($result->IsTruncated) {
+        $result = $self->ListParts(@_, PartNumberMarker => $result->NextPartNumberMarker);
+        $callback->($_ => 'Parts') foreach (@{ $result->Parts });
+      }
+    }
+
+    return undef
+  }
+
+
+  sub operations { qw/AbortMultipartUpload CompleteMultipartUpload CopyObject CreateBucket CreateMultipartUpload DeleteBucket DeleteBucketAnalyticsConfiguration DeleteBucketCors DeleteBucketInventoryConfiguration DeleteBucketLifecycle DeleteBucketMetricsConfiguration DeleteBucketPolicy DeleteBucketReplication DeleteBucketTagging DeleteBucketWebsite DeleteObject DeleteObjects DeleteObjectTagging GetBucketAccelerateConfiguration GetBucketAcl GetBucketAnalyticsConfiguration GetBucketCors GetBucketInventoryConfiguration GetBucketLifecycle GetBucketLifecycleConfiguration GetBucketLocation GetBucketLogging GetBucketMetricsConfiguration GetBucketNotification GetBucketNotificationConfiguration GetBucketPolicy GetBucketReplication GetBucketRequestPayment GetBucketTagging GetBucketVersioning GetBucketWebsite GetObject GetObjectAcl GetObjectTagging GetObjectTorrent HeadBucket HeadObject ListBucketAnalyticsConfigurations ListBucketInventoryConfigurations ListBucketMetricsConfigurations ListBuckets ListMultipartUploads ListObjects ListObjectsV2 ListObjectVersions ListParts PutBucketAccelerateConfiguration PutBucketAcl PutBucketAnalyticsConfiguration PutBucketCors PutBucketInventoryConfiguration PutBucketLifecycle PutBucketLifecycleConfiguration PutBucketLogging PutBucketMetricsConfiguration PutBucketNotification PutBucketNotificationConfiguration PutBucketPolicy PutBucketReplication PutBucketRequestPayment PutBucketTagging PutBucketVersioning PutBucketWebsite PutObject PutObjectAcl PutObjectTagging RestoreObject UploadPart UploadPartCopy / }
 
 1;
 
@@ -449,7 +641,7 @@ Returns: a L<Paws::S3::CompleteMultipartUploadOutput> instance
   Completes a multipart upload by assembling previously uploaded parts.
 
 
-=head2 CopyObject(Bucket => Str, CopySource => Str, Key => Str, [ACL => Str, CacheControl => Str, ContentDisposition => Str, ContentEncoding => Str, ContentLanguage => Str, ContentType => Str, CopySourceIfMatch => Str, CopySourceIfModifiedSince => Str, CopySourceIfNoneMatch => Str, CopySourceIfUnmodifiedSince => Str, CopySourceSSECustomerAlgorithm => Str, CopySourceSSECustomerKey => Str, CopySourceSSECustomerKeyMD5 => Str, Expires => Str, GrantFullControl => Str, GrantRead => Str, GrantReadACP => Str, GrantWriteACP => Str, Metadata => L<Paws::S3::Metadata>, MetadataDirective => Str, RequestPayer => Str, ServerSideEncryption => Str, SSECustomerAlgorithm => Str, SSECustomerKey => Str, SSECustomerKeyMD5 => Str, SSEKMSKeyId => Str, StorageClass => Str, WebsiteRedirectLocation => Str])
+=head2 CopyObject(Bucket => Str, CopySource => Str, Key => Str, [ACL => Str, CacheControl => Str, ContentDisposition => Str, ContentEncoding => Str, ContentLanguage => Str, ContentType => Str, CopySourceIfMatch => Str, CopySourceIfModifiedSince => Str, CopySourceIfNoneMatch => Str, CopySourceIfUnmodifiedSince => Str, CopySourceSSECustomerAlgorithm => Str, CopySourceSSECustomerKey => Str, CopySourceSSECustomerKeyMD5 => Str, Expires => Str, GrantFullControl => Str, GrantRead => Str, GrantReadACP => Str, GrantWriteACP => Str, Metadata => L<Paws::S3::Metadata>, MetadataDirective => Str, RequestPayer => Str, ServerSideEncryption => Str, SSECustomerAlgorithm => Str, SSECustomerKey => Str, SSECustomerKeyMD5 => Str, SSEKMSKeyId => Str, StorageClass => Str, Tagging => Str, TaggingDirective => Str, WebsiteRedirectLocation => Str])
 
 Each argument is described in detail in: L<Paws::S3::CopyObject>
 
@@ -493,6 +685,16 @@ Delete Markers) in the bucket must be deleted before the bucket itself
 can be deleted.
 
 
+=head2 DeleteBucketAnalyticsConfiguration(Bucket => Str, Id => Str)
+
+Each argument is described in detail in: L<Paws::S3::DeleteBucketAnalyticsConfiguration>
+
+Returns: nothing
+
+  Deletes an analytics configuration for the bucket (specified by the
+analytics configuration ID).
+
+
 =head2 DeleteBucketCors(Bucket => Str)
 
 Each argument is described in detail in: L<Paws::S3::DeleteBucketCors>
@@ -502,6 +704,16 @@ Returns: nothing
   Deletes the cors configuration information set for the bucket.
 
 
+=head2 DeleteBucketInventoryConfiguration(Bucket => Str, Id => Str)
+
+Each argument is described in detail in: L<Paws::S3::DeleteBucketInventoryConfiguration>
+
+Returns: nothing
+
+  Deletes an inventory configuration (identified by the inventory ID)
+from the bucket.
+
+
 =head2 DeleteBucketLifecycle(Bucket => Str)
 
 Each argument is described in detail in: L<Paws::S3::DeleteBucketLifecycle>
@@ -509,6 +721,16 @@ Each argument is described in detail in: L<Paws::S3::DeleteBucketLifecycle>
 Returns: nothing
 
   Deletes the lifecycle configuration from the bucket.
+
+
+=head2 DeleteBucketMetricsConfiguration(Bucket => Str, Id => Str)
+
+Each argument is described in detail in: L<Paws::S3::DeleteBucketMetricsConfiguration>
+
+Returns: nothing
+
+  Deletes a metrics configuration (specified by the metrics configuration
+ID) from the bucket.
 
 
 =head2 DeleteBucketPolicy(Bucket => Str)
@@ -568,6 +790,15 @@ Returns: a L<Paws::S3::DeleteObjectsOutput> instance
 using a single HTTP request. You may specify up to 1000 keys.
 
 
+=head2 DeleteObjectTagging(Bucket => Str, Key => Str, [VersionId => Str])
+
+Each argument is described in detail in: L<Paws::S3::DeleteObjectTagging>
+
+Returns: a L<Paws::S3::DeleteObjectTaggingOutput> instance
+
+  Removes the tag-set from an existing object.
+
+
 =head2 GetBucketAccelerateConfiguration(Bucket => Str)
 
 Each argument is described in detail in: L<Paws::S3::GetBucketAccelerateConfiguration>
@@ -586,6 +817,16 @@ Returns: a L<Paws::S3::GetBucketAclOutput> instance
   Gets the access control policy for the bucket.
 
 
+=head2 GetBucketAnalyticsConfiguration(Bucket => Str, Id => Str)
+
+Each argument is described in detail in: L<Paws::S3::GetBucketAnalyticsConfiguration>
+
+Returns: a L<Paws::S3::GetBucketAnalyticsConfigurationOutput> instance
+
+  Gets an analytics configuration for the bucket (specified by the
+analytics configuration ID).
+
+
 =head2 GetBucketCors(Bucket => Str)
 
 Each argument is described in detail in: L<Paws::S3::GetBucketCors>
@@ -593,6 +834,16 @@ Each argument is described in detail in: L<Paws::S3::GetBucketCors>
 Returns: a L<Paws::S3::GetBucketCorsOutput> instance
 
   Returns the cors configuration for the bucket.
+
+
+=head2 GetBucketInventoryConfiguration(Bucket => Str, Id => Str)
+
+Each argument is described in detail in: L<Paws::S3::GetBucketInventoryConfiguration>
+
+Returns: a L<Paws::S3::GetBucketInventoryConfigurationOutput> instance
+
+  Returns an inventory configuration (identified by the inventory ID)
+from the bucket.
 
 
 =head2 GetBucketLifecycle(Bucket => Str)
@@ -631,6 +882,16 @@ Returns: a L<Paws::S3::GetBucketLoggingOutput> instance
   Returns the logging status of a bucket and the permissions users have
 to view and modify that status. To use GET, you must be the bucket
 owner.
+
+
+=head2 GetBucketMetricsConfiguration(Bucket => Str, Id => Str)
+
+Each argument is described in detail in: L<Paws::S3::GetBucketMetricsConfiguration>
+
+Returns: a L<Paws::S3::GetBucketMetricsConfigurationOutput> instance
+
+  Gets a metrics configuration (specified by the metrics configuration
+ID) from the bucket.
 
 
 =head2 GetBucketNotification(Bucket => Str)
@@ -723,6 +984,15 @@ Returns: a L<Paws::S3::GetObjectAclOutput> instance
   Returns the access control list (ACL) of an object.
 
 
+=head2 GetObjectTagging(Bucket => Str, Key => Str, [VersionId => Str])
+
+Each argument is described in detail in: L<Paws::S3::GetObjectTagging>
+
+Returns: a L<Paws::S3::GetObjectTaggingOutput> instance
+
+  Returns the tag-set of an object.
+
+
 =head2 GetObjectTorrent(Bucket => Str, Key => Str, [RequestPayer => Str])
 
 Each argument is described in detail in: L<Paws::S3::GetObjectTorrent>
@@ -752,6 +1022,33 @@ Returns: a L<Paws::S3::HeadObjectOutput> instance
 the object itself. This operation is useful if you're only interested
 in an object's metadata. To use HEAD, you must have READ access to the
 object.
+
+
+=head2 ListBucketAnalyticsConfigurations(Bucket => Str, [ContinuationToken => Str])
+
+Each argument is described in detail in: L<Paws::S3::ListBucketAnalyticsConfigurations>
+
+Returns: a L<Paws::S3::ListBucketAnalyticsConfigurationsOutput> instance
+
+  Lists the analytics configurations for the bucket.
+
+
+=head2 ListBucketInventoryConfigurations(Bucket => Str, [ContinuationToken => Str])
+
+Each argument is described in detail in: L<Paws::S3::ListBucketInventoryConfigurations>
+
+Returns: a L<Paws::S3::ListBucketInventoryConfigurationsOutput> instance
+
+  Returns a list of inventory configurations for the bucket.
+
+
+=head2 ListBucketMetricsConfigurations(Bucket => Str, [ContinuationToken => Str])
+
+Each argument is described in detail in: L<Paws::S3::ListBucketMetricsConfigurations>
+
+Returns: a L<Paws::S3::ListBucketMetricsConfigurationsOutput> instance
+
+  Lists the metrics configurations for the bucket.
 
 
 =head2 ListBuckets( => )
@@ -834,6 +1131,16 @@ Returns: nothing
   Sets the permissions on a bucket using access control lists (ACL).
 
 
+=head2 PutBucketAnalyticsConfiguration(AnalyticsConfiguration => L<Paws::S3::AnalyticsConfiguration>, Bucket => Str, Id => Str)
+
+Each argument is described in detail in: L<Paws::S3::PutBucketAnalyticsConfiguration>
+
+Returns: nothing
+
+  Sets an analytics configuration for the bucket (specified by the
+analytics configuration ID).
+
+
 =head2 PutBucketCors(Bucket => Str, CORSConfiguration => L<Paws::S3::CORSConfiguration>, [ContentMD5 => Str])
 
 Each argument is described in detail in: L<Paws::S3::PutBucketCors>
@@ -841,6 +1148,16 @@ Each argument is described in detail in: L<Paws::S3::PutBucketCors>
 Returns: nothing
 
   Sets the cors configuration for a bucket.
+
+
+=head2 PutBucketInventoryConfiguration(Bucket => Str, Id => Str, InventoryConfiguration => L<Paws::S3::InventoryConfiguration>)
+
+Each argument is described in detail in: L<Paws::S3::PutBucketInventoryConfiguration>
+
+Returns: nothing
+
+  Adds an inventory configuration (identified by the inventory ID) from
+the bucket.
 
 
 =head2 PutBucketLifecycle(Bucket => Str, [ContentMD5 => Str, LifecycleConfiguration => L<Paws::S3::LifecycleConfiguration>])
@@ -871,6 +1188,16 @@ Returns: nothing
   Set the logging parameters for a bucket and to specify permissions for
 who can view and modify the logging parameters. To set the logging
 status of a bucket, you must be the bucket owner.
+
+
+=head2 PutBucketMetricsConfiguration(Bucket => Str, Id => Str, MetricsConfiguration => L<Paws::S3::MetricsConfiguration>)
+
+Each argument is described in detail in: L<Paws::S3::PutBucketMetricsConfiguration>
+
+Returns: nothing
+
+  Sets a metrics configuration (specified by the metrics configuration
+ID) for the bucket.
 
 
 =head2 PutBucketNotification(Bucket => Str, NotificationConfiguration => L<Paws::S3::NotificationConfigurationDeprecated>, [ContentMD5 => Str])
@@ -953,7 +1280,7 @@ Returns: nothing
   Set the website configuration for a bucket.
 
 
-=head2 PutObject(Bucket => Str, Key => Str, [ACL => Str, Body => Str, CacheControl => Str, ContentDisposition => Str, ContentEncoding => Str, ContentLanguage => Str, ContentLength => Int, ContentMD5 => Str, ContentType => Str, Expires => Str, GrantFullControl => Str, GrantRead => Str, GrantReadACP => Str, GrantWriteACP => Str, Metadata => L<Paws::S3::Metadata>, RequestPayer => Str, ServerSideEncryption => Str, SSECustomerAlgorithm => Str, SSECustomerKey => Str, SSECustomerKeyMD5 => Str, SSEKMSKeyId => Str, StorageClass => Str, WebsiteRedirectLocation => Str])
+=head2 PutObject(Bucket => Str, Key => Str, [ACL => Str, Body => Str, CacheControl => Str, ContentDisposition => Str, ContentEncoding => Str, ContentLanguage => Str, ContentLength => Int, ContentMD5 => Str, ContentType => Str, Expires => Str, GrantFullControl => Str, GrantRead => Str, GrantReadACP => Str, GrantWriteACP => Str, Metadata => L<Paws::S3::Metadata>, RequestPayer => Str, ServerSideEncryption => Str, SSECustomerAlgorithm => Str, SSECustomerKey => Str, SSECustomerKeyMD5 => Str, SSEKMSKeyId => Str, StorageClass => Str, Tagging => Str, WebsiteRedirectLocation => Str])
 
 Each argument is described in detail in: L<Paws::S3::PutObject>
 
@@ -970,6 +1297,15 @@ Returns: a L<Paws::S3::PutObjectAclOutput> instance
 
   uses the acl subresource to set the access control list (ACL)
 permissions for an object that already exists in a bucket
+
+
+=head2 PutObjectTagging(Bucket => Str, Key => Str, Tagging => L<Paws::S3::Tagging>, [ContentMD5 => Str, VersionId => Str])
+
+Each argument is described in detail in: L<Paws::S3::PutObjectTagging>
+
+Returns: a L<Paws::S3::PutObjectTaggingOutput> instance
+
+  Sets the supplied tag-set to an object that already exists in a bucket
 
 
 =head2 RestoreObject(Bucket => Str, Key => Str, [RequestPayer => Str, RestoreRequest => L<Paws::S3::RestoreRequest>, VersionId => Str])
@@ -1003,6 +1339,85 @@ Each argument is described in detail in: L<Paws::S3::UploadPartCopy>
 Returns: a L<Paws::S3::UploadPartCopyOutput> instance
 
   Uploads a part by copying data from an existing object as data source.
+
+
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllMultipartUploads(sub { },Bucket => Str, [Delimiter => Str, EncodingType => Str, KeyMarker => Str, MaxUploads => Int, Prefix => Str, UploadIdMarker => Str])
+
+=head2 ListAllMultipartUploads(Bucket => Str, [Delimiter => Str, EncodingType => Str, KeyMarker => Str, MaxUploads => Int, Prefix => Str, UploadIdMarker => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Uploads, passing the object as the first parameter, and the string 'Uploads' as the second parameter 
+
+ - CommonPrefixes, passing the object as the first parameter, and the string 'CommonPrefixes' as the second parameter 
+
+If not, it will return a a L<Paws::S3::ListMultipartUploadsOutput> instance with all the C<param>s; andC<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllObjects(sub { },Bucket => Str, [Delimiter => Str, EncodingType => Str, Marker => Str, MaxKeys => Int, Prefix => Str, RequestPayer => Str])
+
+=head2 ListAllObjects(Bucket => Str, [Delimiter => Str, EncodingType => Str, Marker => Str, MaxKeys => Int, Prefix => Str, RequestPayer => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Contents, passing the object as the first parameter, and the string 'Contents' as the second parameter 
+
+ - CommonPrefixes, passing the object as the first parameter, and the string 'CommonPrefixes' as the second parameter 
+
+If not, it will return a a L<Paws::S3::ListObjectsOutput> instance with all the C<param>s; andC<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllObjectsV2(sub { },Bucket => Str, [ContinuationToken => Str, Delimiter => Str, EncodingType => Str, FetchOwner => Bool, MaxKeys => Int, Prefix => Str, RequestPayer => Str, StartAfter => Str])
+
+=head2 ListAllObjectsV2(Bucket => Str, [ContinuationToken => Str, Delimiter => Str, EncodingType => Str, FetchOwner => Bool, MaxKeys => Int, Prefix => Str, RequestPayer => Str, StartAfter => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Contents, passing the object as the first parameter, and the string 'Contents' as the second parameter 
+
+ - CommonPrefixes, passing the object as the first parameter, and the string 'CommonPrefixes' as the second parameter 
+
+If not, it will return a a L<Paws::S3::ListObjectsV2Output> instance with all the C<param>s; andC<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllObjectVersions(sub { },Bucket => Str, [Delimiter => Str, EncodingType => Str, KeyMarker => Str, MaxKeys => Int, Prefix => Str, VersionIdMarker => Str])
+
+=head2 ListAllObjectVersions(Bucket => Str, [Delimiter => Str, EncodingType => Str, KeyMarker => Str, MaxKeys => Int, Prefix => Str, VersionIdMarker => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Versions, passing the object as the first parameter, and the string 'Versions' as the second parameter 
+
+ - DeleteMarkers, passing the object as the first parameter, and the string 'DeleteMarkers' as the second parameter 
+
+ - CommonPrefixes, passing the object as the first parameter, and the string 'CommonPrefixes' as the second parameter 
+
+If not, it will return a a L<Paws::S3::ListObjectVersionsOutput> instance with all the C<param>s; andC<param>s; andC<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllParts(sub { },Bucket => Str, Key => Str, UploadId => Str, [MaxParts => Int, PartNumberMarker => Int, RequestPayer => Str])
+
+=head2 ListAllParts(Bucket => Str, Key => Str, UploadId => Str, [MaxParts => Int, PartNumberMarker => Int, RequestPayer => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Parts, passing the object as the first parameter, and the string 'Parts' as the second parameter 
+
+If not, it will return a a L<Paws::S3::ListPartsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+
 
 
 =head1 SEE ALSO

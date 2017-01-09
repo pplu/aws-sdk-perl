@@ -33,7 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Firehose::C
 
 =head1 DESCRIPTION
 
-Describes CloudWatch logging options for your delivery stream.
+Describes the CloudWatch logging options for your delivery stream.
 
 =head1 ATTRIBUTES
 
@@ -46,13 +46,13 @@ Describes CloudWatch logging options for your delivery stream.
 =head2 LogGroupName => Str
 
   The CloudWatch group name for logging. This value is required if
-Enabled is true.
+CloudWatch logging is enabled.
 
 
 =head2 LogStreamName => Str
 
   The CloudWatch log stream name for logging. This value is required if
-Enabled is true.
+CloudWatch logging is enabled.
 
 
 

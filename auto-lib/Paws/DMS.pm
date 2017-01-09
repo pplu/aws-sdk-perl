@@ -149,6 +149,11 @@ package Paws::DMS;
     my $call_object = $self->new_with_coercions('Paws::DMS::ModifyReplicationSubnetGroup', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ModifyReplicationTask {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DMS::ModifyReplicationTask', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub RefreshSchemas {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DMS::RefreshSchemas', @_);
@@ -174,8 +179,10 @@ package Paws::DMS;
     my $call_object = $self->new_with_coercions('Paws::DMS::TestConnection', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
 
-  sub operations { qw/AddTagsToResource CreateEndpoint CreateReplicationInstance CreateReplicationSubnetGroup CreateReplicationTask DeleteCertificate DeleteEndpoint DeleteReplicationInstance DeleteReplicationSubnetGroup DeleteReplicationTask DescribeAccountAttributes DescribeCertificates DescribeConnections DescribeEndpoints DescribeEndpointTypes DescribeOrderableReplicationInstances DescribeRefreshSchemasStatus DescribeReplicationInstances DescribeReplicationSubnetGroups DescribeReplicationTasks DescribeSchemas DescribeTableStatistics ImportCertificate ListTagsForResource ModifyEndpoint ModifyReplicationInstance ModifyReplicationSubnetGroup RefreshSchemas RemoveTagsFromResource StartReplicationTask StopReplicationTask TestConnection / }
+
+  sub operations { qw/AddTagsToResource CreateEndpoint CreateReplicationInstance CreateReplicationSubnetGroup CreateReplicationTask DeleteCertificate DeleteEndpoint DeleteReplicationInstance DeleteReplicationSubnetGroup DeleteReplicationTask DescribeAccountAttributes DescribeCertificates DescribeConnections DescribeEndpoints DescribeEndpointTypes DescribeOrderableReplicationInstances DescribeRefreshSchemasStatus DescribeReplicationInstances DescribeReplicationSubnetGroups DescribeReplicationTasks DescribeSchemas DescribeTableStatistics ImportCertificate ListTagsForResource ModifyEndpoint ModifyReplicationInstance ModifyReplicationSubnetGroup ModifyReplicationTask RefreshSchemas RemoveTagsFromResource StartReplicationTask StopReplicationTask TestConnection / }
 
 1;
 
@@ -208,10 +215,10 @@ AWS Database Migration Service
 AWS Database Migration Service (AWS DMS) can migrate your data to and
 from the most widely used commercial and open-source databases such as
 Oracle, PostgreSQL, Microsoft SQL Server, Amazon Redshift, MariaDB,
-Amazon Aurora, and MySQL. The service supports homogeneous migrations
-such as Oracle to Oracle, as well as heterogeneous migrations between
-different database platforms, such as Oracle to MySQL or SQL Server to
-PostgreSQL.
+Amazon Aurora, MySQL, and SAP Adaptive Server Enterprise (ASE). The
+service supports homogeneous migrations such as Oracle to Oracle, as
+well as heterogeneous migrations between different database platforms,
+such as Oracle to MySQL or SQL Server to PostgreSQL.
 
 =head1 METHODS
 
@@ -227,7 +234,7 @@ used with cost allocation reporting to track cost associated with DMS
 resources, or used in a Condition statement in an IAM policy for DMS.
 
 
-=head2 CreateEndpoint(EndpointIdentifier => Str, EndpointType => Str, EngineName => Str, Password => Str, Port => Int, ServerName => Str, Username => Str, [CertificateArn => Str, DatabaseName => Str, ExtraConnectionAttributes => Str, KmsKeyId => Str, SslMode => Str, Tags => ArrayRef[L<Paws::DMS::Tag>]])
+=head2 CreateEndpoint(EndpointIdentifier => Str, EndpointType => Str, EngineName => Str, [CertificateArn => Str, DatabaseName => Str, ExtraConnectionAttributes => Str, KmsKeyId => Str, Password => Str, Port => Int, ServerName => Str, SslMode => Str, Tags => ArrayRef[L<Paws::DMS::Tag>], Username => Str])
 
 Each argument is described in detail in: L<Paws::DMS::CreateEndpoint>
 
@@ -436,7 +443,7 @@ Returns: a L<Paws::DMS::DescribeTableStatisticsResponse> instance
 table name, rows inserted, rows updated, and rows deleted.
 
 
-=head2 ImportCertificate(CertificateIdentifier => Str, [CertificatePem => Str])
+=head2 ImportCertificate(CertificateIdentifier => Str, [CertificatePem => Str, CertificateWallet => Str])
 
 Each argument is described in detail in: L<Paws::DMS::ImportCertificate>
 
@@ -485,6 +492,18 @@ Returns: a L<Paws::DMS::ModifyReplicationSubnetGroupResponse> instance
   Modifies the settings for the specified replication subnet group.
 
 
+=head2 ModifyReplicationTask(ReplicationTaskArn => Str, [CdcStartTime => Str, MigrationType => Str, ReplicationTaskIdentifier => Str, ReplicationTaskSettings => Str, TableMappings => Str])
+
+Each argument is described in detail in: L<Paws::DMS::ModifyReplicationTask>
+
+Returns: a L<Paws::DMS::ModifyReplicationTaskResponse> instance
+
+  Modifies the specified replication task.
+
+You can't modify the task endpoints. The task must be stopped before
+you can modify it.
+
+
 =head2 RefreshSchemas(EndpointArn => Str, ReplicationInstanceArn => Str)
 
 Each argument is described in detail in: L<Paws::DMS::RefreshSchemas>
@@ -531,6 +550,15 @@ Each argument is described in detail in: L<Paws::DMS::TestConnection>
 Returns: a L<Paws::DMS::TestConnectionResponse> instance
 
   Tests the connection between the replication instance and the endpoint.
+
+
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+
 
 
 =head1 SEE ALSO

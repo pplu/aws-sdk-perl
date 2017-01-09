@@ -68,8 +68,8 @@ first page of size C<PageSize>.
 
 =head2 B<REQUIRED> ProductId => Str
 
-Identifies the product for which to retrieve C<LaunchPathSummaries>
-information.
+The product identifier.. Identifies the product for which to retrieve
+C<LaunchPathSummaries> information.
 
 
 

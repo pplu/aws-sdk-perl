@@ -1,0 +1,7 @@
+---
+call: DeleteObject
+service: S3
+tests:
+  - path: _request_id
+    op: eq
+    expected: 30EA1A44D6905562

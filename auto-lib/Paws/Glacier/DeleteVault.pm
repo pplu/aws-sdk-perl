@@ -9,7 +9,7 @@ package Paws::Glacier::DeleteVault;
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteVault');
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/{accountId}/vaults/{vaultName}');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'DELETE');
-  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
   class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
@@ -40,10 +40,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 The C<AccountId> value is the AWS account ID of the account that owns
 the vault. You can either specify an AWS account ID or optionally a
-single aposC<->apos (hyphen), in which case Amazon Glacier uses the AWS
+single 'C<->' (hyphen), in which case Amazon Glacier uses the AWS
 account ID associated with the credentials used to sign the request. If
-you use an account ID, do not include any hyphens (apos-apos) in the
-ID.
+you use an account ID, do not include any hyphens ('-') in the ID.
 
 
 

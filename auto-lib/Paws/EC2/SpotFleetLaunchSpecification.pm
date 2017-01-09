@@ -85,7 +85,8 @@ Default: C<false>
 
 =head2 InstanceType => Str
 
-  The instance type.
+  The instance type. Note that T2 and HS1 instance types are not
+supported.
 
 
 =head2 KernelId => Str
@@ -105,7 +106,9 @@ Default: C<false>
 
 =head2 NetworkInterfaces => ArrayRef[L<Paws::EC2::InstanceNetworkInterfaceSpecification>]
 
-  One or more network interfaces.
+  One or more network interfaces. If you specify a network interface, you
+must specify subnet IDs and security group IDs using the network
+interface.
 
 
 =head2 Placement => L<Paws::EC2::SpotPlacement>

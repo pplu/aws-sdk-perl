@@ -73,7 +73,7 @@ is more than one path for the specified product.
 
 =head2 B<REQUIRED> ProductId => Str
 
-The identifier of the product.
+The product identifier.
 
 
 

@@ -4,6 +4,7 @@ package Paws::DynamoDBStreams::ListStreamsOutput;
   has LastEvaluatedStreamArn => (is => 'ro', isa => 'Str');
   has Streams => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDBStreams::Stream]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -29,13 +30,13 @@ you have reached the end of the result set is when
 C<LastEvaluatedStreamArn> is empty.
 
 
-
 =head2 Streams => ArrayRef[L<Paws::DynamoDBStreams::Stream>]
 
 A list of stream descriptors associated with the current account and
 endpoint.
 
 
+=head2 _request_id => Str
 
 
 =cut

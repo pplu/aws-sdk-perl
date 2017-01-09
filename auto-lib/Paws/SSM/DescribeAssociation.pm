@@ -1,8 +1,9 @@
 
 package Paws::SSM::DescribeAssociation;
   use Moose;
-  has InstanceId => (is => 'ro', isa => 'Str', required => 1);
-  has Name => (is => 'ro', isa => 'Str', required => 1);
+  has AssociationId => (is => 'ro', isa => 'Str');
+  has InstanceId => (is => 'ro', isa => 'Str');
+  has Name => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -20,7 +21,7 @@ Paws::SSM::DescribeAssociation - Arguments for method DescribeAssociation on Paw
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method DescribeAssociation on the 
-Amazon Simple Systems Management Service service. Use the attributes of this class
+Amazon Simple Systems Manager (SSM) service. Use the attributes of this class
 as arguments to method DescribeAssociation.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeAssociation.
@@ -34,13 +35,19 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> InstanceId => Str
+=head2 AssociationId => Str
+
+The association ID for which you want information.
+
+
+
+=head2 InstanceId => Str
 
 The instance ID.
 
 
 
-=head2 B<REQUIRED> Name => Str
+=head2 Name => Str
 
 The name of the SSM document.
 

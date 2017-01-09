@@ -76,13 +76,23 @@ C<route-table-id> - The ID of the route table.
 
 =item *
 
-C<route.destination-cidr-block> - The CIDR range specified in a route
-in the table.
+C<route.destination-cidr-block> - The IPv4 CIDR range specified in a
+route in the table.
+
+=item *
+
+C<route.destination-ipv6-cidr-block> - The IPv6 CIDR range specified in
+a route in the route table.
 
 =item *
 
 C<route.destination-prefix-list-id> - The ID (prefix) of the AWS
 service specified in a route in the table.
+
+=item *
+
+C<route.egress-only-internet-gateway-id> - The ID of an egress-only
+Internet gateway specified in a route in the route table.
 
 =item *
 

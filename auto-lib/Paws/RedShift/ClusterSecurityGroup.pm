@@ -2,9 +2,9 @@ package Paws::RedShift::ClusterSecurityGroup;
   use Moose;
   has ClusterSecurityGroupName => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
-  has EC2SecurityGroups => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::EC2SecurityGroup]');
-  has IPRanges => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::IPRange]');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::Tag]');
+  has EC2SecurityGroups => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::EC2SecurityGroup]', request_name => 'EC2SecurityGroup', traits => ['NameInRequest']);
+  has IPRanges => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::IPRange]', request_name => 'IPRange', traits => ['NameInRequest']);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::Tag]', request_name => 'Tag', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

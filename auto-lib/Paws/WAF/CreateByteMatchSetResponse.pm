@@ -4,6 +4,7 @@ package Paws::WAF::CreateByteMatchSetResponse;
   has ByteMatchSet => (is => 'ro', isa => 'Paws::WAF::ByteMatchSet');
   has ChangeToken => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -19,7 +20,6 @@ Paws::WAF::CreateByteMatchSetResponse
 A ByteMatchSet that contains no C<ByteMatchTuple> objects.
 
 
-
 =head2 ChangeToken => Str
 
 The C<ChangeToken> that you used to submit the C<CreateByteMatchSet>
@@ -27,6 +27,7 @@ request. You can also use this value to query the status of the
 request. For more information, see GetChangeTokenStatus.
 
 
+=head2 _request_id => Str
 
 
 =cut

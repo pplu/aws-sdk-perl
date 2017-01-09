@@ -33,6 +33,8 @@ package Paws::IoTData;
     my $call_object = $self->new_with_coercions('Paws::IoTData::UpdateThingShadow', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
+
 
   sub operations { qw/DeleteThingShadow GetThingShadow Publish UpdateThingShadow / }
 
@@ -120,6 +122,15 @@ Returns: a L<Paws::IoTData::UpdateThingShadowResponse> instance
 
 For more information, see UpdateThingShadow in the I<AWS IoT Developer
 Guide>.
+
+
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+
 
 
 =head1 SEE ALSO

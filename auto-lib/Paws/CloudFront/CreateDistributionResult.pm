@@ -2,9 +2,10 @@
 package Paws::CloudFront::CreateDistributionResult;
   use Moose;
   has Distribution => (is => 'ro', isa => 'Paws::CloudFront::Distribution');
-  has ETag => (is => 'ro', isa => 'Str');
-  has Location => (is => 'ro', isa => 'Str');
+  has ETag => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'ETag');
+  has Location => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Location');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -32,7 +33,7 @@ The current version of the distribution created.
 
 The fully qualified URI of the new distribution resource just created.
 For example:
-https://cloudfront.amazonaws.com/2010-11-01/distribution/EDFDVBD632BHDS5.
+C<https://cloudfront.amazonaws.com/2010-11-01/distribution/EDFDVBD632BHDS5>.
 
 
 

@@ -98,62 +98,92 @@ package Paws::ElasticTranscoder;
     my $call_object = $self->new_with_coercions('Paws::ElasticTranscoder::UpdatePipelineStatus', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
   sub ListAllJobsByPipeline {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListJobsByPipeline(@_);
-    my $array = [];
-    push @$array, @{ $result->Jobs };
 
-    while ($result->NextPageToken) {
-      $result = $self->ListJobsByPipeline(@_, PageToken => $result->NextPageToken);
-      push @$array, @{ $result->Jobs };
+    if (not defined $callback) {
+      while ($result->PageToken) {
+        $result = $self->ListJobsByPipeline(@_, PageToken => $result->NextPageToken);
+        push @{ $result->Jobs }, @{ $result->Jobs };
+      }
+      return $result;
+    } else {
+      while ($result->PageToken) {
+        $result = $self->ListJobsByPipeline(@_, PageToken => $result->NextPageToken);
+        $callback->($_ => 'Jobs') foreach (@{ $result->Jobs });
+      }
     }
 
-    return 'Paws::ElasticTranscoder::ListJobsByPipeline'->_returns->new(Jobs => $array);
+    return undef
   }
   sub ListAllJobsByStatus {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListJobsByStatus(@_);
-    my $array = [];
-    push @$array, @{ $result->Jobs };
 
-    while ($result->NextPageToken) {
-      $result = $self->ListJobsByStatus(@_, PageToken => $result->NextPageToken);
-      push @$array, @{ $result->Jobs };
+    if (not defined $callback) {
+      while ($result->PageToken) {
+        $result = $self->ListJobsByStatus(@_, PageToken => $result->NextPageToken);
+        push @{ $result->Jobs }, @{ $result->Jobs };
+      }
+      return $result;
+    } else {
+      while ($result->PageToken) {
+        $result = $self->ListJobsByStatus(@_, PageToken => $result->NextPageToken);
+        $callback->($_ => 'Jobs') foreach (@{ $result->Jobs });
+      }
     }
 
-    return 'Paws::ElasticTranscoder::ListJobsByStatus'->_returns->new(Jobs => $array);
+    return undef
   }
   sub ListAllPipelines {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListPipelines(@_);
-    my $array = [];
-    push @$array, @{ $result->Pipelines };
 
-    while ($result->NextPageToken) {
-      $result = $self->ListPipelines(@_, PageToken => $result->NextPageToken);
-      push @$array, @{ $result->Pipelines };
+    if (not defined $callback) {
+      while ($result->PageToken) {
+        $result = $self->ListPipelines(@_, PageToken => $result->NextPageToken);
+        push @{ $result->Pipelines }, @{ $result->Pipelines };
+      }
+      return $result;
+    } else {
+      while ($result->PageToken) {
+        $result = $self->ListPipelines(@_, PageToken => $result->NextPageToken);
+        $callback->($_ => 'Pipelines') foreach (@{ $result->Pipelines });
+      }
     }
 
-    return 'Paws::ElasticTranscoder::ListPipelines'->_returns->new(Pipelines => $array);
+    return undef
   }
   sub ListAllPresets {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListPresets(@_);
-    my $array = [];
-    push @$array, @{ $result->Presets };
 
-    while ($result->NextPageToken) {
-      $result = $self->ListPresets(@_, PageToken => $result->NextPageToken);
-      push @$array, @{ $result->Presets };
+    if (not defined $callback) {
+      while ($result->PageToken) {
+        $result = $self->ListPresets(@_, PageToken => $result->NextPageToken);
+        push @{ $result->Presets }, @{ $result->Presets };
+      }
+      return $result;
+    } else {
+      while ($result->PageToken) {
+        $result = $self->ListPresets(@_, PageToken => $result->NextPageToken);
+        $callback->($_ => 'Presets') foreach (@{ $result->Presets });
+      }
     }
 
-    return 'Paws::ElasticTranscoder::ListPresets'->_returns->new(Presets => $array);
+    return undef
   }
+
 
   sub operations { qw/CancelJob CreateJob CreatePipeline CreatePreset DeletePipeline DeletePreset ListJobsByPipeline ListJobsByStatus ListPipelines ListPresets ReadJob ReadPipeline ReadPreset TestRole UpdatePipeline UpdatePipelineNotifications UpdatePipelineStatus / }
 
@@ -202,7 +232,7 @@ a pipeline from starting to process a job while you're getting the job
 identifier, use UpdatePipelineStatus to temporarily pause the pipeline.
 
 
-=head2 CreateJob(Input => L<Paws::ElasticTranscoder::JobInput>, PipelineId => Str, [Output => L<Paws::ElasticTranscoder::CreateJobOutput>, OutputKeyPrefix => Str, Outputs => ArrayRef[L<Paws::ElasticTranscoder::CreateJobOutput>], Playlists => ArrayRef[L<Paws::ElasticTranscoder::CreateJobPlaylist>], UserMetadata => L<Paws::ElasticTranscoder::UserMetadata>])
+=head2 CreateJob(PipelineId => Str, [Input => L<Paws::ElasticTranscoder::JobInput>, Inputs => ArrayRef[L<Paws::ElasticTranscoder::JobInput>], Output => L<Paws::ElasticTranscoder::CreateJobOutput>, OutputKeyPrefix => Str, Outputs => ArrayRef[L<Paws::ElasticTranscoder::CreateJobOutput>], Playlists => ArrayRef[L<Paws::ElasticTranscoder::CreateJobPlaylist>], UserMetadata => L<Paws::ElasticTranscoder::UserMetadata>])
 
 Each argument is described in detail in: L<Paws::ElasticTranscoder::CreateJob>
 
@@ -377,6 +407,7 @@ Each argument is described in detail in: L<Paws::ElasticTranscoder::UpdatePipeli
 Returns: a L<Paws::ElasticTranscoder::UpdatePipelineResponse> instance
 
   Use the C<UpdatePipeline> operation to update settings for a pipeline.
+
 When you change pipeline settings, your changes take effect
 immediately. Jobs that you have already submitted and that Elastic
 Transcoder has not started to process are affected in addition to jobs
@@ -410,6 +441,63 @@ more jobs. You can't cancel jobs after Elastic Transcoder has started
 processing them; if you pause the pipeline to which you submitted the
 jobs, you have more time to get the job IDs for the jobs that you want
 to cancel, and to send a CancelJob request.
+
+
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllJobsByPipeline(sub { },PipelineId => Str, [Ascending => Str, PageToken => Str])
+
+=head2 ListAllJobsByPipeline(PipelineId => Str, [Ascending => Str, PageToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Jobs, passing the object as the first parameter, and the string 'Jobs' as the second parameter 
+
+If not, it will return a a L<Paws::ElasticTranscoder::ListJobsByPipelineResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllJobsByStatus(sub { },Status => Str, [Ascending => Str, PageToken => Str])
+
+=head2 ListAllJobsByStatus(Status => Str, [Ascending => Str, PageToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Jobs, passing the object as the first parameter, and the string 'Jobs' as the second parameter 
+
+If not, it will return a a L<Paws::ElasticTranscoder::ListJobsByStatusResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllPipelines(sub { },[Ascending => Str, PageToken => Str])
+
+=head2 ListAllPipelines([Ascending => Str, PageToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Pipelines, passing the object as the first parameter, and the string 'Pipelines' as the second parameter 
+
+If not, it will return a a L<Paws::ElasticTranscoder::ListPipelinesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllPresets(sub { },[Ascending => Str, PageToken => Str])
+
+=head2 ListAllPresets([Ascending => Str, PageToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Presets, passing the object as the first parameter, and the string 'Presets' as the second parameter 
+
+If not, it will return a a L<Paws::ElasticTranscoder::ListPresetsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+
 
 
 =head1 SEE ALSO

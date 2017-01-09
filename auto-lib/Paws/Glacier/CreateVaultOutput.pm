@@ -3,6 +3,7 @@ package Paws::Glacier::CreateVaultOutput;
   use Moose;
   has Location => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -19,6 +20,7 @@ Paws::Glacier::CreateVaultOutput
 The URI of the vault that was created.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -144,6 +144,8 @@ package Paws::CodePipeline;
     my $call_object = $self->new_with_coercions('Paws::CodePipeline::UpdatePipeline', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
+
 
   sub operations { qw/AcknowledgeJob AcknowledgeThirdPartyJob CreateCustomActionType CreatePipeline DeleteCustomActionType DeletePipeline DisableStageTransition EnableStageTransition GetJobDetails GetPipeline GetPipelineExecution GetPipelineState GetThirdPartyJobDetails ListActionTypes ListPipelines PollForJobs PollForThirdPartyJobs PutActionRevision PutApprovalResult PutJobFailureResult PutJobSuccessResult PutThirdPartyJobFailureResult PutThirdPartyJobSuccessResult RetryStageExecution StartPipelineExecution UpdatePipeline / }
 
@@ -231,10 +233,10 @@ structure of the pipeline.
 
 =back
 
-Pipelines include I<stages>, which are which are logical groupings of
-gates and actions. Each stage contains one or more actions that must
-complete before the next stage begins. A stage will result in success
-or failure. If a stage fails, then the pipeline stops at that stage and
+Pipelines include I<stages>, which are logical groupings of gates and
+actions. Each stage contains one or more actions that must complete
+before the next stage begins. A stage will result in success or
+failure. If a stage fails, then the pipeline stops at that stage and
 will remain stopped until either a new version of an artifact appears
 in the source location, or a user takes action to re-run the most
 recent artifact through the pipeline. You can call GetPipelineState,
@@ -630,6 +632,15 @@ Returns: a L<Paws::CodePipeline::UpdatePipelineOutput> instance
 Use a JSON file with the pipeline structure in conjunction with
 UpdatePipeline to provide the full structure of the pipeline. Updating
 the pipeline increases the version number of the pipeline by 1.
+
+
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+
 
 
 =head1 SEE ALSO

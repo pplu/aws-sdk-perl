@@ -3,6 +3,7 @@ package Paws::IAM::CreatePolicyVersionResponse;
   use Moose;
   has PolicyVersion => (is => 'ro', isa => 'Paws::IAM::PolicyVersion');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -19,6 +20,7 @@ Paws::IAM::CreatePolicyVersionResponse
 A structure containing details about the new policy version.
 
 
+=head2 _request_id => Str
 
 
 =cut

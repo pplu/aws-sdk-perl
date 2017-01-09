@@ -3,6 +3,7 @@ package Paws::CloudFormation::GetStackPolicyOutput;
   use Moose;
   has StackPolicyBody => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -21,6 +22,7 @@ to Prevent Updates to Stack Resources in the AWS CloudFormation User
 Guide.)
 
 
+=head2 _request_id => Str
 
 
 =cut

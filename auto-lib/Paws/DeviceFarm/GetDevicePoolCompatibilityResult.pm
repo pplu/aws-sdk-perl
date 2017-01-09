@@ -4,6 +4,7 @@ package Paws::DeviceFarm::GetDevicePoolCompatibilityResult;
   has CompatibleDevices => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::DevicePoolCompatibilityResult]', traits => ['Unwrapped'], xmlname => 'compatibleDevices' );
   has IncompatibleDevices => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::DevicePoolCompatibilityResult]', traits => ['Unwrapped'], xmlname => 'incompatibleDevices' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -19,12 +20,12 @@ Paws::DeviceFarm::GetDevicePoolCompatibilityResult
 Information about compatible devices.
 
 
-
 =head2 IncompatibleDevices => ArrayRef[L<Paws::DeviceFarm::DevicePoolCompatibilityResult>]
 
 Information about incompatible devices.
 
 
+=head2 _request_id => Str
 
 
 =cut

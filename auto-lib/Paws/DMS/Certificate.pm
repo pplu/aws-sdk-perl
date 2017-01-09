@@ -5,6 +5,7 @@ package Paws::DMS::Certificate;
   has CertificateIdentifier => (is => 'ro', isa => 'Str');
   has CertificateOwner => (is => 'ro', isa => 'Str');
   has CertificatePem => (is => 'ro', isa => 'Str');
+  has CertificateWallet => (is => 'ro', isa => 'Str');
   has KeyLength => (is => 'ro', isa => 'Int');
   has SigningAlgorithm => (is => 'ro', isa => 'Str');
   has ValidFromDate => (is => 'ro', isa => 'Str');
@@ -52,13 +53,13 @@ endpoints and the replication instance.
 
 =head2 CertificateCreationDate => Str
 
-  the date the certificate was created.
+  The date that the certificate was created.
 
 
 =head2 CertificateIdentifier => Str
 
-  The customer-assigned name of the certificate. Valid characters are
-[A-z_0-9].
+  The customer-assigned name of the certificate. Valid characters are A-z
+and 0-9.
 
 
 =head2 CertificateOwner => Str
@@ -68,7 +69,13 @@ endpoints and the replication instance.
 
 =head2 CertificatePem => Str
 
-  The contents of the .pem X.509 certificate file.
+  The contents of the .pem X.509 certificate file for the certificate.
+
+
+=head2 CertificateWallet => Str
+
+  The location of the imported Oracle Wallet certificate for use with
+SSL.
 
 
 =head2 KeyLength => Int
@@ -83,12 +90,12 @@ endpoints and the replication instance.
 
 =head2 ValidFromDate => Str
 
-  The beginning date the certificate is valid.
+  The beginning date that the certificate is valid.
 
 
 =head2 ValidToDate => Str
 
-  the final date the certificate is valid.
+  The final date that the certificate is valid.
 
 
 

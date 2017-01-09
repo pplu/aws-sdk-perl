@@ -34,52 +34,119 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 
 =head1 DESCRIPTION
 
-A complex type that describes how you'd prefer CloudFront to respond to
-requests that result in either a 4xx or 5xx response. You can control
-whether a custom error page should be displayed, what the desired
-response code should be for this error page and how long should the
-error response be cached by CloudFront. If you don't want to specify
-any custom error responses, include only an empty CustomErrorResponses
-element. To delete all custom error responses in an existing
-distribution, update the distribution configuration and include only an
-empty CustomErrorResponses element. To add, change, or remove one or
-more custom error responses, update the distribution configuration and
-specify all of the custom error responses that you want to include in
-the updated distribution.
+A complex type that controls:
+
+=over
+
+=item *
+
+Whether CloudFront replaces HTTP status codes in the 4xx and 5xx range
+with custom error messages before returning the response to the viewer.
+
+=item *
+
+How long CloudFront caches HTTP status codes in the 4xx and 5xx range.
+
+=back
+
+For more information about custom error pages, see Customizing Error
+Responses in the I<Amazon CloudFront Developer Guide>.
 
 =head1 ATTRIBUTES
 
 
 =head2 ErrorCachingMinTTL => Int
 
-  The minimum amount of time you want HTTP error codes to stay in
-CloudFront caches before CloudFront queries your origin to see whether
-the object has been updated. You can specify a value from 0 to
-31,536,000.
+  The minimum amount of time, in seconds, that you want CloudFront to
+cache the HTTP status code specified in C<ErrorCode>. When this time
+period has elapsed, CloudFront queries your origin to see whether the
+problem that caused the error has been resolved and the requested
+object is now available.
+
+If you don't want to specify a value, include an empty element,
+C<E<lt>ErrorCachingMinTTLE<gt>>, in the XML document.
+
+For more information, see Customizing Error Responses in the I<Amazon
+CloudFront Developer Guide>.
 
 
 =head2 B<REQUIRED> ErrorCode => Int
 
-  The 4xx or 5xx HTTP status code that you want to customize. For a list
-of HTTP status codes that you can customize, see CloudFront
-documentation.
+  The HTTP status code for which you want to specify a custom error page
+and/or a caching duration.
 
 
 =head2 ResponseCode => Str
 
-  The HTTP status code that you want CloudFront to return with the custom
-error page to the viewer. For a list of HTTP status codes that you can
-replace, see CloudFront Documentation.
+  The HTTP status code that you want CloudFront to return to the viewer
+along with the custom error page. There are a variety of reasons that
+you might want CloudFront to return a status code different from the
+status code that your origin returned to CloudFront, for example:
+
+=over
+
+=item *
+
+Some Internet devices (some firewalls and corporate proxies, for
+example) intercept HTTP 4xx and 5xx and prevent the response from being
+returned to the viewer. If you substitute C<200>, the response
+typically won't be intercepted.
+
+=item *
+
+If you don't care about distinguishing among different client errors or
+server errors, you can specify C<400> or C<500> as the C<ResponseCode>
+for all 4xx or 5xx errors.
+
+=item *
+
+You might want to return a C<200> status code (OK) and static website
+so your customers don't know that your website is down.
+
+=back
+
+If you specify a value for C<ResponseCode>, you must also specify a
+value for C<ResponsePagePath>. If you don't want to specify a value,
+include an empty element, C<E<lt>ResponseCodeE<gt>>, in the XML
+document.
 
 
 =head2 ResponsePagePath => Str
 
-  The path of the custom error page (for example, /custom_404.html). The
-path is relative to the distribution and must begin with a slash (/).
-If the path includes any non-ASCII characters or unsafe characters as
-defined in RFC 1783 (http://www.ietf.org/rfc/rfc1738.txt), URL encode
-those characters. Do not URL encode any other characters in the path,
-or CloudFront will not return the custom error page to the viewer.
+  The path to the custom error page that you want CloudFront to return to
+a viewer when your origin returns the HTTP status code specified by
+C<ErrorCode>, for example, C</4xx-errors/403-forbidden.html>. If you
+want to store your objects and your custom error pages in different
+locations, your distribution must include a cache behavior for which
+the following is true:
+
+=over
+
+=item *
+
+The value of C<PathPattern> matches the path to your custom error
+messages. For example, suppose you saved custom error pages for 4xx
+errors in an Amazon S3 bucket in a directory named C</4xx-errors>. Your
+distribution must include a cache behavior for which the path pattern
+routes requests for your custom error pages to that location, for
+example, C</4xx-errors/*>.
+
+=item *
+
+The value of C<TargetOriginId> specifies the value of the C<ID> element
+for the origin that contains your custom error pages.
+
+=back
+
+If you specify a value for C<ResponsePagePath>, you must also specify a
+value for C<ResponseCode>. If you don't want to specify a value,
+include an empty element, C<E<lt>ResponsePagePathE<gt>>, in the XML
+document.
+
+We recommend that you store custom error pages in an Amazon S3 bucket.
+If you store custom error pages on an HTTP server and the server starts
+to return 5xx errors, CloudFront can't get the files that you want to
+return to viewers because the origin server is unavailable.
 
 
 

@@ -6,7 +6,7 @@ package Paws::CloudWatch::DisableAlarmActions;
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DisableAlarmActions');
-  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
   class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
@@ -35,7 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> AlarmNames => ArrayRef[Str|Undef]
 
-The names of the alarms to disable actions for.
+The names of the alarms.
 
 
 

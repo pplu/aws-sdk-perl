@@ -6,7 +6,7 @@ package Paws::IAM::CreateAccountAlias;
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateAccountAlias');
-  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
   class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
@@ -37,7 +37,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 The account alias to create.
 
-The regex pattern for this parameter is a string of characters
+This parameter allows (per its regex pattern) a string of characters
 consisting of lowercase letters, digits, and dashes. You cannot start
 or finish with a dash, nor can you have two dashes in a row.
 

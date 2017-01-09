@@ -41,11 +41,15 @@ following predicates:
 
 =over
 
-=item * An C<IPSet> that causes AWS WAF to search for web requests that
+=item *
+
+An C<IPSet> that causes AWS WAF to search for web requests that
 originate from the IP address C<192.0.2.44>
 
-=item * A C<ByteMatchSet> that causes AWS WAF to search for web
-requests for which the value of the C<User-Agent> header is C<BadBot>.
+=item *
+
+A C<ByteMatchSet> that causes AWS WAF to search for web requests for
+which the value of the C<User-Agent> header is C<BadBot>.
 
 =back
 
@@ -58,7 +62,10 @@ C<BadBot>.
 
 =head2 MetricName => Str
 
-  
+  A friendly name or description for the metrics for this C<Rule>. The
+name can contain only alphanumeric characters (A-Z, a-z, 0-9); the name
+can't contain whitespace. You can't change C<MetricName> after you
+create the C<Rule>.
 
 
 =head2 Name => Str

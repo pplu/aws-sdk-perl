@@ -2,8 +2,9 @@
 package Paws::CloudFront::GetCloudFrontOriginAccessIdentityResult;
   use Moose;
   has CloudFrontOriginAccessIdentity => (is => 'ro', isa => 'Paws::CloudFront::CloudFrontOriginAccessIdentity');
-  has ETag => (is => 'ro', isa => 'Str');
+  has ETag => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'ETag');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +25,7 @@ The origin access identity's information.
 =head2 ETag => Str
 
 The current version of the origin access identity's information. For
-example: E2QWRUHAPOMQZL.
+example: C<E2QWRUHAPOMQZL>.
 
 
 

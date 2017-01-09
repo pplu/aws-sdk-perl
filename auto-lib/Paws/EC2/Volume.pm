@@ -14,6 +14,7 @@ package Paws::EC2::Volume;
   has VolumeId => (is => 'ro', isa => 'Str', xmlname => 'volumeId', traits => ['Unwrapped',]);
   has VolumeType => (is => 'ro', isa => 'Str', xmlname => 'volumeType', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -30,11 +31,9 @@ Paws::EC2::Volume
 Information about the volume attachments.
 
 
-
 =head2 AvailabilityZone => Str
 
 The Availability Zone for the volume.
-
 
 
 =head2 CreateTime => Str
@@ -42,11 +41,9 @@ The Availability Zone for the volume.
 The time stamp when volume creation was initiated.
 
 
-
 =head2 Encrypted => Bool
 
 Indicates whether the volume will be encrypted.
-
 
 
 =head2 Iops => Int
@@ -68,7 +65,6 @@ volumes; it is not used in requests to create C<gp2>, C<st1>, C<sc1>,
 or C<standard> volumes.
 
 
-
 =head2 KmsKeyId => Str
 
 The full ARN of the AWS Key Management Service (AWS KMS) customer
@@ -76,11 +72,9 @@ master key (CMK) that was used to protect the volume encryption key for
 the volume.
 
 
-
 =head2 Size => Int
 
 The size of the volume, in GiBs.
-
 
 
 =head2 SnapshotId => Str
@@ -88,23 +82,19 @@ The size of the volume, in GiBs.
 The snapshot from which the volume was created, if applicable.
 
 
-
 =head2 State => Str
 
 The volume state.
 
 Valid values are: C<"creating">, C<"available">, C<"in-use">, C<"deleting">, C<"deleted">, C<"error">
-
 =head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
 
 Any tags assigned to the volume.
 
 
-
 =head2 VolumeId => Str
 
 The ID of the volume.
-
 
 
 =head2 VolumeType => Str
@@ -114,6 +104,7 @@ Provisioned IOPS SSD, C<st1> for Throughput Optimized HDD, C<sc1> for
 Cold HDD, or C<standard> for Magnetic volumes.
 
 Valid values are: C<"standard">, C<"io1">, C<"gp2">, C<"sc1">, C<"st1">
+=head2 _request_id => Str
 
 
 =cut

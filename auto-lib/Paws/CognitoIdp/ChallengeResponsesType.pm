@@ -2,7 +2,7 @@ package Paws::CognitoIdp::ChallengeResponsesType;
   use Moose;
   with 'Paws::API::StrToNativeMapParser';
 
-  has Map => (is => 'ro', isa => 'HashRef[Str]');
+  has Map => (is => 'ro', isa => 'HashRef[Maybe[Str]]');
 1;
 
 ### main pod documentation begin ###

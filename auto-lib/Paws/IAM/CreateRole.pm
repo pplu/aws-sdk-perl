@@ -40,11 +40,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 The trust relationship policy document that grants an entity permission
 to assume the role.
 
-The regex pattern for this parameter is a string of characters
-consisting of any printable ASCII character ranging from the space
-character (\u0020) through end of the ASCII character range (\u00FF).
-It also includes the special characters tab (\u0009), line feed
-(\u000A), and carriage return (\u000D).
+The regex pattern used to validate this parameter is a string of
+characters consisting of any printable ASCII character ranging from the
+space character (\u0020) through end of the ASCII character range as
+well as the printable characters in the Basic Latin and Latin-1
+Supplement character set (through \u00FF). It also includes the special
+characters tab (\u0009), line feed (\u000A), and carriage return
+(\u000D).
 
 
 
@@ -56,7 +58,7 @@ Identifiers in the I<IAM User Guide>.
 This parameter is optional. If it is not included, it defaults to a
 slash (/).
 
-The regex pattern for this parameter is a string of characters
+This paramater allows (per its regex pattern) a string of characters
 consisting of either a forward slash (/) by itself or a string that
 must begin and end with forward slashes, containing any ASCII character
 from the ! (\u0021) thru the DEL character (\u007F), including most
@@ -68,7 +70,7 @@ punctuation characters, digits, and upper and lowercased letters.
 
 The name of the role to create.
 
-The regex pattern for this parameter is a string of characters
+This parameter allows (per its regex pattern) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
 spaces. You can also include any of the following characters: =,.@-.
 Role names are not distinguished by case. For example, you cannot

@@ -45,7 +45,7 @@ Constraints: Up to 255 characters in length
 Constraints for EC2-Classic: ASCII characters
 
 Constraints for EC2-VPC: a-z, A-Z, 0-9, spaces, and
-._-:/()
+._-:/()#,@[]+=&;{}!$*
 
 
 
@@ -67,7 +67,7 @@ Constraints: Up to 255 characters in length
 Constraints for EC2-Classic: ASCII characters
 
 Constraints for EC2-VPC: a-z, A-Z, 0-9, spaces, and
-._-:/()
+._-:/()#,@[]+=&;{}!$*
 
 
 

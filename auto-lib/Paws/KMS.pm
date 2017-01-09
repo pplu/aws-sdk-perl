@@ -174,6 +174,92 @@ package Paws::KMS;
     my $call_object = $self->new_with_coercions('Paws::KMS::UpdateKeyDescription', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
+  sub ListAllAliases {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListAliases(@_);
+
+    if (not defined $callback) {
+      while ($result->Truncated) {
+        $result = $self->ListAliases(@_, Marker => $result->NextMarker);
+        push @{ $result->Aliases }, @{ $result->Aliases };
+      }
+      return $result;
+    } else {
+      while ($result->Truncated) {
+        $result = $self->ListAliases(@_, Marker => $result->NextMarker);
+        $callback->($_ => 'Aliases') foreach (@{ $result->Aliases });
+      }
+    }
+
+    return undef
+  }
+  sub ListAllGrants {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListGrants(@_);
+
+    if (not defined $callback) {
+      while ($result->Truncated) {
+        $result = $self->ListGrants(@_, Marker => $result->NextMarker);
+        push @{ $result->Grants }, @{ $result->Grants };
+      }
+      return $result;
+    } else {
+      while ($result->Truncated) {
+        $result = $self->ListGrants(@_, Marker => $result->NextMarker);
+        $callback->($_ => 'Grants') foreach (@{ $result->Grants });
+      }
+    }
+
+    return undef
+  }
+  sub ListAllKeyPolicies {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListKeyPolicies(@_);
+
+    if (not defined $callback) {
+      while ($result->Truncated) {
+        $result = $self->ListKeyPolicies(@_, Marker => $result->NextMarker);
+        push @{ $result->PolicyNames }, @{ $result->PolicyNames };
+      }
+      return $result;
+    } else {
+      while ($result->Truncated) {
+        $result = $self->ListKeyPolicies(@_, Marker => $result->NextMarker);
+        $callback->($_ => 'PolicyNames') foreach (@{ $result->PolicyNames });
+      }
+    }
+
+    return undef
+  }
+  sub ListAllKeys {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListKeys(@_);
+
+    if (not defined $callback) {
+      while ($result->Truncated) {
+        $result = $self->ListKeys(@_, Marker => $result->NextMarker);
+        push @{ $result->Keys }, @{ $result->Keys };
+      }
+      return $result;
+    } else {
+      while ($result->Truncated) {
+        $result = $self->ListKeys(@_, Marker => $result->NextMarker);
+        $callback->($_ => 'Keys') foreach (@{ $result->Keys });
+      }
+    }
+
+    return undef
+  }
+
 
   sub operations { qw/CancelKeyDeletion CreateAlias CreateGrant CreateKey Decrypt DeleteAlias DeleteImportedKeyMaterial DescribeKey DisableKey DisableKeyRotation EnableKey EnableKeyRotation Encrypt GenerateDataKey GenerateDataKeyWithoutPlaintext GenerateRandom GetKeyPolicy GetKeyRotationStatus GetParametersForImport ImportKeyMaterial ListAliases ListGrants ListKeyPolicies ListKeys ListRetirableGrants PutKeyPolicy ReEncrypt RetireGrant RevokeGrant ScheduleKeyDeletion UpdateAlias UpdateKeyDescription / }
 
@@ -779,19 +865,19 @@ Each argument is described in detail in: L<Paws::KMS::ReEncrypt>
 
 Returns: a L<Paws::KMS::ReEncryptResponse> instance
 
-  Encrypts data on the server side with a new customer master key without
-exposing the plaintext of the data on the client side. The data is
-first decrypted and then encrypted. This operation can also be used to
-change the encryption context of a ciphertext.
+  Encrypts data on the server side with a new customer master key (CMK)
+without exposing the plaintext of the data on the client side. The data
+is first decrypted and then reencrypted. You can also use this
+operation to change the encryption context of a ciphertext.
 
-Unlike other actions, C<ReEncrypt> is authorized twice - once as
-C<ReEncryptFrom> on the source key and once as C<ReEncryptTo> on the
-destination key. We therefore recommend that you include the
-C<"action":"kms:ReEncrypt*"> statement in your key policies to permit
-re-encryption from or to the key. The statement is included
-automatically when you authorize use of the key through the console but
-must be included manually when you set a policy by using the
-PutKeyPolicy function.
+Unlike other operations, C<ReEncrypt> is authorized twice, once as
+C<ReEncryptFrom> on the source CMK and once as C<ReEncryptTo> on the
+destination CMK. We recommend that you include the C<"kms:ReEncrypt*">
+permission in your key policies to permit reencryption from or to the
+CMK. This permission is automatically included in the key policy when
+you create a CMK through the console, but you must include it manually
+when you create a CMK programmatically or when you set a key policy
+with the PutKeyPolicy operation.
 
 
 =head2 RetireGrant([GrantId => Str, GrantToken => Str, KeyId => Str])
@@ -800,8 +886,8 @@ Each argument is described in detail in: L<Paws::KMS::RetireGrant>
 
 Returns: nothing
 
-  Retires a grant. You can retire a grant when you're done using it to
-clean up. You should revoke a grant when you intend to actively deny
+  Retires a grant. To clean up, you can retire a grant when you're done
+using it. You should revoke a grant when you intend to actively deny
 operations that depend on it. The following are permitted to call this
 API:
 
@@ -809,23 +895,24 @@ API:
 
 =item *
 
-The account that created the grant
+The AWS account (root user) under which the grant was created
 
 =item *
 
-The C<RetiringPrincipal>, if present
+The C<RetiringPrincipal>, if present in the grant
 
 =item *
 
-The C<GranteePrincipal>, if C<RetireGrant> is a grantee operation
+The C<GranteePrincipal>, if C<RetireGrant> is an operation specified in
+the grant
 
 =back
 
-The grant to retire must be identified by its grant token or by a
-combination of the key ARN and the grant ID. A grant token is a unique
-variable-length base64-encoded string. A grant ID is a 64 character
-unique identifier of a grant. Both are returned by the C<CreateGrant>
-function.
+You must identify the grant to retire by its grant token or by a
+combination of the grant ID and the Amazon Resource Name (ARN) of the
+customer master key (CMK). A grant token is a unique variable-length
+base64-encoded string. A grant ID is a 64 character unique identifier
+of a grant. The CreateGrant operation returns both.
 
 
 =head2 RevokeGrant(GrantId => Str, KeyId => Str)
@@ -851,7 +938,7 @@ When this operation is successful, the state of the CMK changes to
 C<PendingDeletion>. Before the waiting period ends, you can use
 CancelKeyDeletion to cancel the deletion of the CMK. After the waiting
 period ends, AWS KMS deletes the CMK and all AWS KMS data associated
-with it, including all aliases that point to it.
+with it, including all aliases that refer to it.
 
 Deleting a CMK is a destructive and potentially dangerous operation.
 When a CMK is deleted, all data that was encrypted under the CMK is
@@ -891,7 +978,64 @@ Each argument is described in detail in: L<Paws::KMS::UpdateKeyDescription>
 
 Returns: nothing
 
-  Updates the description of a key.
+  Updates the description of a customer master key (CMK).
+
+
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllAliases(sub { },[Limit => Int, Marker => Str])
+
+=head2 ListAllAliases([Limit => Int, Marker => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Aliases, passing the object as the first parameter, and the string 'Aliases' as the second parameter 
+
+If not, it will return a a L<Paws::KMS::ListAliasesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllGrants(sub { },KeyId => Str, [Limit => Int, Marker => Str])
+
+=head2 ListAllGrants(KeyId => Str, [Limit => Int, Marker => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Grants, passing the object as the first parameter, and the string 'Grants' as the second parameter 
+
+If not, it will return a a L<Paws::KMS::ListGrantsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllKeyPolicies(sub { },KeyId => Str, [Limit => Int, Marker => Str])
+
+=head2 ListAllKeyPolicies(KeyId => Str, [Limit => Int, Marker => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - PolicyNames, passing the object as the first parameter, and the string 'PolicyNames' as the second parameter 
+
+If not, it will return a a L<Paws::KMS::ListKeyPoliciesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllKeys(sub { },[Limit => Int, Marker => Str])
+
+=head2 ListAllKeys([Limit => Int, Marker => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Keys, passing the object as the first parameter, and the string 'Keys' as the second parameter 
+
+If not, it will return a a L<Paws::KMS::ListKeysResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+
 
 
 =head1 SEE ALSO

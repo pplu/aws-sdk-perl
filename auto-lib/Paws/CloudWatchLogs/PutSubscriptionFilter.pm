@@ -2,6 +2,7 @@
 package Paws::CloudWatchLogs::PutSubscriptionFilter;
   use Moose;
   has DestinationArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'destinationArn' , required => 1);
+  has Distribution => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'distribution' );
   has FilterName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'filterName' , required => 1);
   has FilterPattern => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'filterPattern' , required => 1);
   has LogGroupName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'logGroupName' , required => 1);
@@ -10,7 +11,7 @@ package Paws::CloudWatchLogs::PutSubscriptionFilter;
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutSubscriptionFilter');
-  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
   class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
@@ -51,8 +52,8 @@ subscription filter, for same-account delivery.
 
 =item *
 
-A logical destination (used via an ARN of C<Destination>) belonging to
-a different account, for cross-account delivery.
+A logical destination (specified using an ARN) belonging to a different
+account, for cross-account delivery.
 
 =item *
 
@@ -69,6 +70,15 @@ subscription filter, for same-account delivery.
 
 
 
+=head2 Distribution => Str
+
+The method used to distribute log data to the destination, when the
+destination is an Amazon Kinesis stream. By default, log data is
+grouped by log stream. For a more even distribution, you can group log
+data randomly.
+
+Valid values are: C<"Random">, C<"ByLogStream">
+
 =head2 B<REQUIRED> FilterName => Str
 
 A name for the subscription filter.
@@ -77,14 +87,13 @@ A name for the subscription filter.
 
 =head2 B<REQUIRED> FilterPattern => Str
 
-A valid CloudWatch Logs filter pattern for subscribing to a filtered
-stream of log events.
+A filter pattern for subscribing to a filtered stream of log events.
 
 
 
 =head2 B<REQUIRED> LogGroupName => Str
 
-The name of the log group to associate the subscription filter with.
+The name of the log group.
 
 
 
@@ -92,8 +101,8 @@ The name of the log group to associate the subscription filter with.
 
 The ARN of an IAM role that grants CloudWatch Logs permissions to
 deliver ingested log events to the destination stream. You don't need
-to provide the ARN when you are working with a logical destination
-(used via an ARN of C<Destination>) for cross-account delivery.
+to provide the ARN when you are working with a logical destination for
+cross-account delivery.
 
 
 

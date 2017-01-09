@@ -47,7 +47,7 @@ description of the result of an action on each entry in the request.
 
 =head2 B<REQUIRED> Id => Str
 
-  The id of an entry in a batch request.
+  The C<Id> of an entry in a batch request.
 
 
 =head2 Message => Str
@@ -57,7 +57,7 @@ description of the result of an action on each entry in the request.
 
 =head2 B<REQUIRED> SenderFault => Bool
 
-  Whether the error happened due to the sender's fault.
+  Specifies whether the error happened due to the sender's fault.
 
 
 

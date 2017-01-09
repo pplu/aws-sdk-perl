@@ -34,6 +34,11 @@ package Paws::ACM;
     my $call_object = $self->new_with_coercions('Paws::ACM::GetCertificate', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ImportCertificate {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ACM::ImportCertificate', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListCertificates {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ACM::ListCertificates', @_);
@@ -59,8 +64,31 @@ package Paws::ACM;
     my $call_object = $self->new_with_coercions('Paws::ACM::ResendValidationEmail', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
+  sub ListAllCertificates {
+    my $self = shift;
 
-  sub operations { qw/AddTagsToCertificate DeleteCertificate DescribeCertificate GetCertificate ListCertificates ListTagsForCertificate RemoveTagsFromCertificate RequestCertificate ResendValidationEmail / }
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListCertificates(@_);
+
+    if (not defined $callback) {
+      while ($result->NextToken) {
+        $result = $self->ListCertificates(@_, NextToken => $result->NextToken);
+        push @{ $result->CertificateSummaryList }, @{ $result->CertificateSummaryList };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $result = $self->ListCertificates(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'CertificateSummaryList') foreach (@{ $result->CertificateSummaryList });
+      }
+    }
+
+    return undef
+  }
+
+
+  sub operations { qw/AddTagsToCertificate DeleteCertificate DescribeCertificate GetCertificate ImportCertificate ListCertificates ListTagsForCertificate RemoveTagsFromCertificate RequestCertificate ResendValidationEmail / }
 
 1;
 
@@ -90,14 +118,11 @@ Paws::ACM - Perl Interface to AWS AWS Certificate Manager
 
 AWS Certificate Manager
 
-Welcome to the AWS Certificate Manager (ACM) Command Reference. This
-guide provides descriptions, syntax, and usage examples for each ACM
-command. You can use AWS Certificate Manager to request ACM
-Certificates for your AWS-based websites and applications. For general
-information about using ACM and for more information about using the
-console, see the AWS Certificate Manager User Guide. For more
-information about using the ACM API, see the AWS Certificate Manager
-API Reference.
+Welcome to the AWS Certificate Manager (ACM) API documentation.
+
+You can use ACM to manage SSL/TLS certificates for your AWS-based
+websites and applications. For general information about using ACM, see
+the I<AWS Certificate Manager User Guide> .
 
 =head1 METHODS
 
@@ -176,6 +201,40 @@ Currently, ACM Certificates can be used only with Elastic Load
 Balancing and Amazon CloudFront.
 
 
+=head2 ImportCertificate(Certificate => Str, PrivateKey => Str, [CertificateArn => Str, CertificateChain => Str])
+
+Each argument is described in detail in: L<Paws::ACM::ImportCertificate>
+
+Returns: a L<Paws::ACM::ImportCertificateResponse> instance
+
+  Imports an SSL/TLS certificate into AWS Certificate Manager (ACM) to
+use with ACM's integrated AWS services.
+
+ACM does not provide managed renewal for certificates that you import.
+
+For more information about importing certificates into ACM, including
+the differences between certificates that you import and those that ACM
+provides, see Importing Certificates in the I<AWS Certificate Manager
+User Guide>.
+
+To import a certificate, you must provide the certificate and the
+matching private key. When the certificate is not self-signed, you must
+also provide a certificate chain. You can omit the certificate chain
+when importing a self-signed certificate.
+
+The certificate, private key, and certificate chain must be
+PEM-encoded. For more information about converting these items to PEM
+format, see Importing Certificates Troubleshooting in the I<AWS
+Certificate Manager User Guide>.
+
+To import a new certificate, omit the C<CertificateArn> field. Include
+this field only when you want to replace a previously imported
+certificate.
+
+This operation returns the Amazon Resource Name (ARN) of the imported
+certificate.
+
+
 =head2 ListCertificates([CertificateStatuses => ArrayRef[Str|Undef], MaxItems => Int, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::ACM::ListCertificates>
@@ -229,7 +288,7 @@ can reach your site by using other names. For each domain name you
 specify, email is sent to the domain owner to request approval to issue
 the certificate. After receiving approval from the domain owner, the
 ACM Certificate is issued. For more information, see the AWS
-Certificate Manager User Guide .
+Certificate Manager User Guide.
 
 
 =head2 ResendValidationEmail(CertificateArn => Str, Domain => Str, ValidationDomain => Str)
@@ -248,6 +307,27 @@ mail, you can request that the mail be resent within 72 hours of
 requesting the ACM Certificate. If more than 72 hours have elapsed
 since your original request or since your last attempt to resend
 validation mail, you must request a new certificate.
+
+
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllCertificates(sub { },[CertificateStatuses => ArrayRef[Str|Undef], MaxItems => Int, NextToken => Str])
+
+=head2 ListAllCertificates([CertificateStatuses => ArrayRef[Str|Undef], MaxItems => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - CertificateSummaryList, passing the object as the first parameter, and the string 'CertificateSummaryList' as the second parameter 
+
+If not, it will return a a L<Paws::ACM::ListCertificatesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+
 
 
 =head1 SEE ALSO

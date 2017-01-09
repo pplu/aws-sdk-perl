@@ -157,7 +157,7 @@ associated key pair.
 
 =head2 Monitoring => L<Paws::EC2::Monitoring>
 
-  The monitoring information for the instance.
+  The monitoring for the instance.
 
 
 =head2 NetworkInterfaces => ArrayRef[L<Paws::EC2::InstanceNetworkInterface>]
@@ -177,15 +177,20 @@ associated key pair.
 
 =head2 PrivateDnsName => Str
 
-  The private DNS name assigned to the instance. This DNS name can only
-be used inside the Amazon EC2 network. This name is not available until
-the instance enters the C<running> state. For EC2-VPC, this name is
-only available if you've enabled DNS hostnames for your VPC.
+  (IPv4 only) The private DNS hostname name assigned to the instance.
+This DNS hostname can only be used inside the Amazon EC2 network. This
+name is not available until the instance enters the C<running> state.
+
+[EC2-VPC] The Amazon-provided DNS server will resolve Amazon-provided
+private DNS hostnames if you've enabled DNS resolution and DNS
+hostnames in your VPC. If you are not using the Amazon-provided DNS
+server in your VPC, your custom domain name servers must resolve the
+hostname as appropriate.
 
 
 =head2 PrivateIpAddress => Str
 
-  The private IP address assigned to the instance.
+  The private IPv4 address assigned to the instance.
 
 
 =head2 ProductCodes => ArrayRef[L<Paws::EC2::ProductCode>]
@@ -195,15 +200,15 @@ only available if you've enabled DNS hostnames for your VPC.
 
 =head2 PublicDnsName => Str
 
-  The public DNS name assigned to the instance. This name is not
-available until the instance enters the C<running> state. For EC2-VPC,
-this name is only available if you've enabled DNS hostnames for your
-VPC.
+  (IPv4 only) The public DNS name assigned to the instance. This name is
+not available until the instance enters the C<running> state. For
+EC2-VPC, this name is only available if you've enabled DNS hostnames
+for your VPC.
 
 
 =head2 PublicIpAddress => Str
 
-  The public IP address assigned to the instance, if applicable.
+  The public IPv4 address assigned to the instance, if applicable.
 
 
 =head2 RamdiskId => Str

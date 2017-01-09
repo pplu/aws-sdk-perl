@@ -52,7 +52,7 @@ One or more filters.
 
 =item *
 
-C<accepter-vpc-info.cidr-block> - The CIDR block of the peer VPC.
+C<accepter-vpc-info.cidr-block> - The IPv4 CIDR block of the peer VPC.
 
 =item *
 
@@ -70,8 +70,8 @@ connection.
 
 =item *
 
-C<requester-vpc-info.cidr-block> - The CIDR block of the requester's
-VPC.
+C<requester-vpc-info.cidr-block> - The IPv4 CIDR block of the
+requester's VPC.
 
 =item *
 

@@ -3,9 +3,11 @@ package Paws::CloudFormation::ValidateTemplateOutput;
   use Moose;
   has Capabilities => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has CapabilitiesReason => (is => 'ro', isa => 'Str');
+  has DeclaredTransforms => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Description => (is => 'ro', isa => 'Str');
   has Parameters => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::TemplateParameter]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -29,12 +31,15 @@ For more information, see Acknowledging IAM Resources in AWS
 CloudFormation Templates.
 
 
-
 =head2 CapabilitiesReason => Str
 
 The list of resources that generated the values in the C<Capabilities>
 response element.
 
+
+=head2 DeclaredTransforms => ArrayRef[Str|Undef]
+
+A list of the transforms that are declared in the template.
 
 
 =head2 Description => Str
@@ -42,12 +47,12 @@ response element.
 The description found within the template.
 
 
-
 =head2 Parameters => ArrayRef[L<Paws::CloudFormation::TemplateParameter>]
 
 A list of C<TemplateParameter> structures.
 
 
+=head2 _request_id => Str
 
 
 =cut

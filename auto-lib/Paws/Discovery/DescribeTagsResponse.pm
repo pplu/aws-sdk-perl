@@ -4,6 +4,7 @@ package Paws::Discovery::DescribeTagsResponse;
   has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Discovery::ConfigurationTag]', traits => ['Unwrapped'], xmlname => 'tags' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -20,7 +21,6 @@ The call returns a token. Use this token to get the next set of
 results.
 
 
-
 =head2 Tags => ArrayRef[L<Paws::Discovery::ConfigurationTag>]
 
 Depending on the input, this is a list of configuration items tagged
@@ -28,6 +28,7 @@ with a specific tag, or a list of tags for a specific configuration
 item.
 
 
+=head2 _request_id => Str
 
 
 =cut

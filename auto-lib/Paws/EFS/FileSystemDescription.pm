@@ -11,6 +11,7 @@ package Paws::EFS::FileSystemDescription;
   has PerformanceMode => (is => 'ro', isa => 'Str', required => 1);
   has SizeInBytes => (is => 'ro', isa => 'Paws::EFS::FileSystemSize', required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -28,11 +29,9 @@ Time that the file system was created, in seconds (since
 1970-01-01T00:00:00Z).
 
 
-
 =head2 B<REQUIRED> CreationToken => Str
 
 Opaque string specified in the request.
-
 
 
 =head2 B<REQUIRED> FileSystemId => Str
@@ -40,13 +39,11 @@ Opaque string specified in the request.
 ID of the file system, assigned by Amazon EFS.
 
 
-
 =head2 B<REQUIRED> LifeCycleState => Str
 
 Lifecycle phase of the file system.
 
 Valid values are: C<"creating">, C<"available">, C<"deleting">, C<"deleted">
-
 =head2 Name => Str
 
 You can add tags to a file system, including a C<Name> tag. For more
@@ -54,12 +51,10 @@ information, see CreateTags. If the file system has a C<Name> tag,
 Amazon EFS returns the value in this field.
 
 
-
 =head2 B<REQUIRED> NumberOfMountTargets => Int
 
 Current number of mount targets that the file system has. For more
 information, see CreateMountTarget.
-
 
 
 =head2 B<REQUIRED> OwnerId => Str
@@ -69,13 +64,11 @@ created by an IAM user, the parent account to which the user belongs is
 the owner.
 
 
-
 =head2 B<REQUIRED> PerformanceMode => Str
 
 The C<PerformanceMode> of the file system.
 
 Valid values are: C<"generalPurpose">, C<"maxIO">
-
 =head2 B<REQUIRED> SizeInBytes => L<Paws::EFS::FileSystemSize>
 
 Latest known metered size (in bytes) of data stored in the file system,
@@ -90,6 +83,7 @@ Otherwise, the value is not the exact size the file system was at any
 instant in time.
 
 
+=head2 _request_id => Str
 
 
 =cut

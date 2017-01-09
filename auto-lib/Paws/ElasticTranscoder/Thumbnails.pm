@@ -104,7 +104,7 @@ C<AspectRatio>. The two groups of settings are mutually exclusive. Do
 not use them together.
 
 The width and height of thumbnail files in pixels. Specify a value in
-the format C<I<width>> x C<I<height>> where both values are even
+the format C< I<width> > x C< I<height> > where both values are even
 integers. The values cannot exceed the width and height that you
 specified in the C<Video:Resolution> object.
 
@@ -115,37 +115,49 @@ specified in the C<Video:Resolution> object.
 
 =over
 
-=item * C<Fit>: Elastic Transcoder scales thumbnails so they match the
-value that you specified in thumbnail MaxWidth or MaxHeight settings
-without exceeding the other value.
+=item *
 
-=item * C<Fill>: Elastic Transcoder scales thumbnails so they match the
-value that you specified in thumbnail C<MaxWidth> or C<MaxHeight>
-settings and matches or exceeds the other value. Elastic Transcoder
-centers the image in thumbnails and then crops in the dimension (if
-any) that exceeds the maximum value.
+C<Fit>: Elastic Transcoder scales thumbnails so they match the value
+that you specified in thumbnail MaxWidth or MaxHeight settings without
+exceeding the other value.
 
-=item * C<Stretch>: Elastic Transcoder stretches thumbnails to match
-the values that you specified for thumbnail C<MaxWidth> and
-C<MaxHeight> settings. If the relative proportions of the input video
-and thumbnails are different, the thumbnails will be distorted.
+=item *
 
-=item * C<Keep>: Elastic Transcoder does not scale thumbnails. If
-either dimension of the input video exceeds the values that you
-specified for thumbnail C<MaxWidth> and C<MaxHeight> settings, Elastic
-Transcoder crops the thumbnails.
+C<Fill>: Elastic Transcoder scales thumbnails so they match the value
+that you specified in thumbnail C<MaxWidth> or C<MaxHeight> settings
+and matches or exceeds the other value. Elastic Transcoder centers the
+image in thumbnails and then crops in the dimension (if any) that
+exceeds the maximum value.
 
-=item * C<ShrinkToFit>: Elastic Transcoder scales thumbnails down so
-that their dimensions match the values that you specified for at least
-one of thumbnail C<MaxWidth> and C<MaxHeight> without exceeding either
-value. If you specify this option, Elastic Transcoder does not scale
+=item *
+
+C<Stretch>: Elastic Transcoder stretches thumbnails to match the values
+that you specified for thumbnail C<MaxWidth> and C<MaxHeight> settings.
+If the relative proportions of the input video and thumbnails are
+different, the thumbnails will be distorted.
+
+=item *
+
+C<Keep>: Elastic Transcoder does not scale thumbnails. If either
+dimension of the input video exceeds the values that you specified for
+thumbnail C<MaxWidth> and C<MaxHeight> settings, Elastic Transcoder
+crops the thumbnails.
+
+=item *
+
+C<ShrinkToFit>: Elastic Transcoder scales thumbnails down so that their
+dimensions match the values that you specified for at least one of
+thumbnail C<MaxWidth> and C<MaxHeight> without exceeding either value.
+If you specify this option, Elastic Transcoder does not scale
 thumbnails up.
 
-=item * C<ShrinkToFill>: Elastic Transcoder scales thumbnails down so
-that their dimensions match the values that you specified for at least
-one of C<MaxWidth> and C<MaxHeight> without dropping below either
-value. If you specify this option, Elastic Transcoder does not scale
-thumbnails up.
+=item *
+
+C<ShrinkToFill>: Elastic Transcoder scales thumbnails down so that
+their dimensions match the values that you specified for at least one
+of C<MaxWidth> and C<MaxHeight> without dropping below either value. If
+you specify this option, Elastic Transcoder does not scale thumbnails
+up.
 
 =back
 

@@ -4,6 +4,7 @@ package Paws::DeviceFarm::ListRemoteAccessSessionsResult;
   has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
   has RemoteAccessSessions => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::RemoteAccessSession]', traits => ['Unwrapped'], xmlname => 'remoteAccessSessions' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -21,13 +22,13 @@ operation, which can be used to return the next set of items in the
 list.
 
 
-
 =head2 RemoteAccessSessions => ArrayRef[L<Paws::DeviceFarm::RemoteAccessSession>]
 
 A container representing the metadata from the service about each
 remote access session you are requesting.
 
 
+=head2 _request_id => Str
 
 
 =cut

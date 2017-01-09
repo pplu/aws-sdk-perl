@@ -1,6 +1,6 @@
 package Paws::CloudFront::CacheBehaviors;
   use Moose;
-  has Items => (is => 'ro', isa => 'ArrayRef[Paws::CloudFront::CacheBehavior]');
+  has Items => (is => 'ro', isa => 'ArrayRef[Paws::CloudFront::CacheBehavior]', request_name => 'CacheBehavior', traits => ['NameInRequest']);
   has Quantity => (is => 'ro', isa => 'Int', required => 1);
 1;
 
@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 
 =head1 DESCRIPTION
 
-A complex type that contains zero or more CacheBehavior elements.
+A complex type that contains zero or more C<CacheBehavior> elements.
 
 =head1 ATTRIBUTES
 
@@ -40,7 +40,7 @@ A complex type that contains zero or more CacheBehavior elements.
 =head2 Items => ArrayRef[L<Paws::CloudFront::CacheBehavior>]
 
   Optional: A complex type that contains cache behaviors for this
-distribution. If Quantity is 0, you can omit Items.
+distribution. If C<Quantity> is C<0>, you can omit C<Items>.
 
 
 =head2 B<REQUIRED> Quantity => Int

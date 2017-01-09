@@ -4,6 +4,7 @@ package Paws::KMS::CreateGrantResponse;
   has GrantId => (is => 'ro', isa => 'Str');
   has GrantToken => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -22,7 +23,6 @@ You can use the C<GrantId> in a subsequent RetireGrant or RevokeGrant
 operation.
 
 
-
 =head2 GrantToken => Str
 
 The grant token.
@@ -31,6 +31,7 @@ For more information, see Grant Tokens in the I<AWS Key Management
 Service Developer Guide>.
 
 
+=head2 _request_id => Str
 
 
 =cut

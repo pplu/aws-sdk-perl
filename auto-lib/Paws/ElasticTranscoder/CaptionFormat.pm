@@ -115,11 +115,15 @@ I<description>-C<{language}>, where:
 
 =over
 
-=item * I<description> is a description of the video.
+=item *
 
-=item * C<{language}> is a literal value that Elastic Transcoder
-replaces with the two- or three-letter code for the language of the
-caption in the output file names.
+I<description> is a description of the video.
+
+=item *
+
+C<{language}> is a literal value that Elastic Transcoder replaces with
+the two- or three-letter code for the language of the caption in the
+output file names.
 
 =back
 
@@ -130,7 +134,7 @@ automatically appends the count to the end of the segment files.
 
 For example, suppose you're transcoding into srt format. When you enter
 "Sydney-{language}-sunrise", and the language of the captions is
-English (en), the name of the first caption file will be
+English (en), the name of the first caption file is be
 Sydney-en-sunrise00000.srt.
 
 

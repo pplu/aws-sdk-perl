@@ -7,7 +7,7 @@ package Paws::IAM::DeactivateMFADevice;
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeactivateMFADevice');
-  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
   class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
@@ -39,7 +39,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 The serial number that uniquely identifies the MFA device. For virtual
 MFA devices, the serial number is the device ARN.
 
-The regex pattern for this parameter is a string of characters
+This parameter allows (per its regex pattern) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
 spaces. You can also include any of the following characters: =/:,.@-
 
@@ -49,7 +49,7 @@ spaces. You can also include any of the following characters: =/:,.@-
 
 The name of the user whose MFA device you want to deactivate.
 
-The regex pattern for this parameter is a string of characters
+This parameter allows (per its regex pattern) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
 spaces. You can also include any of the following characters: =,.@-
 

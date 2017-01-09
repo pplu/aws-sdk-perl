@@ -72,7 +72,7 @@ the VPC.
 
 =item *
 
-C<entry.cidr> - The CIDR range specified in the entry.
+C<entry.cidr> - The IPv4 CIDR range specified in the entry.
 
 =item *
 
@@ -86,6 +86,10 @@ C<entry.icmp.code> - The ICMP code specified in the entry, if any.
 =item *
 
 C<entry.icmp.type> - The ICMP type specified in the entry, if any.
+
+=item *
+
+C<entry.ipv6-cidr> - The IPv6 CIDR range specified in the entry.
 
 =item *
 

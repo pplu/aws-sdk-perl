@@ -72,67 +72,94 @@ the C<OutputBucket> object.
 
 =over
 
-=item * B<Bucket>: The Amazon S3 bucket in which you want Elastic
-Transcoder to save transcoded files and playlists.
+=item *
 
-=item * B<Permissions> (Optional): The Permissions object specifies
-which users you want to have access to transcoded files and the type of
-access you want them to have. You can grant permissions to a maximum of
-30 users and/or predefined Amazon S3 groups.
+B<Bucket>: The Amazon S3 bucket in which you want Elastic Transcoder to
+save transcoded files and playlists.
 
-=item * B<Grantee Type>: Specify the type of value that appears in the
+=item *
+
+B<Permissions> (Optional): The Permissions object specifies which users
+you want to have access to transcoded files and the type of access you
+want them to have. You can grant permissions to a maximum of 30 users
+and/or predefined Amazon S3 groups.
+
+=item *
+
+B<Grantee Type>: Specify the type of value that appears in the
 C<Grantee> object:
 
 =over
 
-=item * B<Canonical>: The value in the C<Grantee> object is either the
+=item *
+
+B<Canonical>: The value in the C<Grantee> object is either the
 canonical user ID for an AWS account or an origin access identity for
 an Amazon CloudFront distribution. For more information about canonical
 user IDs, see Access Control List (ACL) Overview in the Amazon Simple
 Storage Service Developer Guide. For more information about using
 CloudFront origin access identities to require that users use
 CloudFront URLs instead of Amazon S3 URLs, see Using an Origin Access
-Identity to Restrict Access to Your Amazon S3 Content. A canonical user
-ID is not the same as an AWS account number.
+Identity to Restrict Access to Your Amazon S3 Content.
 
-=item * B<Email>: The value in the C<Grantee> object is the registered
-email address of an AWS account.
+A canonical user ID is not the same as an AWS account number.
 
-=item * B<Group>: The value in the C<Grantee> object is one of the
-following predefined Amazon S3 groups: C<AllUsers>,
-C<AuthenticatedUsers>, or C<LogDelivery>.
+=item *
+
+B<Email>: The value in the C<Grantee> object is the registered email
+address of an AWS account.
+
+=item *
+
+B<Group>: The value in the C<Grantee> object is one of the following
+predefined Amazon S3 groups: C<AllUsers>, C<AuthenticatedUsers>, or
+C<LogDelivery>.
 
 =back
 
-=item * B<Grantee>: The AWS user or group that you want to have access
-to transcoded files and playlists. To identify the user or group, you
-can specify the canonical user ID for an AWS account, an origin access
+=item *
+
+B<Grantee>: The AWS user or group that you want to have access to
+transcoded files and playlists. To identify the user or group, you can
+specify the canonical user ID for an AWS account, an origin access
 identity for a CloudFront distribution, the registered email address of
 an AWS account, or a predefined Amazon S3 group
 
-=item * B<Access>: The permission that you want to give to the AWS user
-that you specified in C<Grantee>. Permissions are granted on the files
-that Elastic Transcoder adds to the bucket, including playlists and
-video files. Valid values include:
+=item *
+
+B<Access>: The permission that you want to give to the AWS user that
+you specified in C<Grantee>. Permissions are granted on the files that
+Elastic Transcoder adds to the bucket, including playlists and video
+files. Valid values include:
 
 =over
 
-=item * C<READ>: The grantee can read the objects and metadata for
-objects that Elastic Transcoder adds to the Amazon S3 bucket.
+=item *
 
-=item * C<READ_ACP>: The grantee can read the object ACL for objects
-that Elastic Transcoder adds to the Amazon S3 bucket.
+C<READ>: The grantee can read the objects and metadata for objects that
+Elastic Transcoder adds to the Amazon S3 bucket.
 
-=item * C<WRITE_ACP>: The grantee can write the ACL for the objects
-that Elastic Transcoder adds to the Amazon S3 bucket.
+=item *
 
-=item * C<FULL_CONTROL>: The grantee has C<READ>, C<READ_ACP>, and
-C<WRITE_ACP> permissions for the objects that Elastic Transcoder adds
-to the Amazon S3 bucket.
+C<READ_ACP>: The grantee can read the object ACL for objects that
+Elastic Transcoder adds to the Amazon S3 bucket.
+
+=item *
+
+C<WRITE_ACP>: The grantee can write the ACL for the objects that
+Elastic Transcoder adds to the Amazon S3 bucket.
+
+=item *
+
+C<FULL_CONTROL>: The grantee has C<READ>, C<READ_ACP>, and C<WRITE_ACP>
+permissions for the objects that Elastic Transcoder adds to the Amazon
+S3 bucket.
 
 =back
 
-=item * B<StorageClass>: The Amazon S3 storage class, C<Standard> or
+=item *
+
+B<StorageClass>: The Amazon S3 storage class, C<Standard> or
 C<ReducedRedundancy>, that you want Elastic Transcoder to assign to the
 video files and playlists that it stores in your Amazon S3 bucket.
 
@@ -167,25 +194,33 @@ the Amazon SNS console.
 
 =over
 
-=item * B<Progressing>: The topic ARN for the Amazon Simple
-Notification Service (Amazon SNS) topic that you want to notify when
-Elastic Transcoder has started to process a job in this pipeline. This
-is the ARN that Amazon SNS returned when you created the topic. For
-more information, see Create a Topic in the Amazon Simple Notification
+=item *
+
+B<Progressing>: The topic ARN for the Amazon Simple Notification
+Service (Amazon SNS) topic that you want to notify when Elastic
+Transcoder has started to process a job in this pipeline. This is the
+ARN that Amazon SNS returned when you created the topic. For more
+information, see Create a Topic in the Amazon Simple Notification
 Service Developer Guide.
 
-=item * B<Completed>: The topic ARN for the Amazon SNS topic that you
-want to notify when Elastic Transcoder has finished processing a job in
-this pipeline. This is the ARN that Amazon SNS returned when you
-created the topic.
+=item *
 
-=item * B<Warning>: The topic ARN for the Amazon SNS topic that you
-want to notify when Elastic Transcoder encounters a warning condition
-while processing a job in this pipeline. This is the ARN that Amazon
-SNS returned when you created the topic.
+B<Completed>: The topic ARN for the Amazon SNS topic that you want to
+notify when Elastic Transcoder has finished processing a job in this
+pipeline. This is the ARN that Amazon SNS returned when you created the
+topic.
 
-=item * B<Error>: The topic ARN for the Amazon SNS topic that you want
-to notify when Elastic Transcoder encounters an error condition while
+=item *
+
+B<Warning>: The topic ARN for the Amazon SNS topic that you want to
+notify when Elastic Transcoder encounters a warning condition while
+processing a job in this pipeline. This is the ARN that Amazon SNS
+returned when you created the topic.
+
+=item *
+
+B<Error>: The topic ARN for the Amazon SNS topic that you want to
+notify when Elastic Transcoder encounters an error condition while
 processing a job in this pipeline. This is the ARN that Amazon SNS
 returned when you created the topic.
 
@@ -204,19 +239,29 @@ Specify this value when all of the following are true:
 
 =over
 
-=item * You want to save transcoded files, thumbnails (if any), and
-playlists (if any) together in one bucket.
+=item *
 
-=item * You do not want to specify the users or groups who have access
-to the transcoded files, thumbnails, and playlists.
+You want to save transcoded files, thumbnails (if any), and playlists
+(if any) together in one bucket.
 
-=item * You do not want to specify the permissions that Elastic
-Transcoder grants to the files. When Elastic Transcoder saves files in
-C<OutputBucket>, it grants full control over the files only to the AWS
-account that owns the role that is specified by C<Role>.
+=item *
 
-=item * You want to associate the transcoded files and thumbnails with
-the Amazon S3 Standard storage class.
+You do not want to specify the users or groups who have access to the
+transcoded files, thumbnails, and playlists.
+
+=item *
+
+You do not want to specify the permissions that Elastic Transcoder
+grants to the files.
+
+When Elastic Transcoder saves files in C<OutputBucket>, it grants full
+control over the files only to the AWS account that owns the role that
+is specified by C<Role>.
+
+=item *
+
+You want to associate the transcoded files and thumbnails with the
+Amazon S3 Standard storage class.
 
 =back
 
@@ -252,63 +297,89 @@ the C<OutputBucket> object.
 
 =over
 
-=item * B<Bucket>: The Amazon S3 bucket in which you want Elastic
-Transcoder to save thumbnail files.
+=item *
 
-=item * B<Permissions> (Optional): The C<Permissions> object specifies
-which users and/or predefined Amazon S3 groups you want to have access
-to thumbnail files, and the type of access you want them to have. You
-can grant permissions to a maximum of 30 users and/or predefined Amazon
-S3 groups.
+B<Bucket>: The Amazon S3 bucket in which you want Elastic Transcoder to
+save thumbnail files.
 
-=item * B<GranteeType>: Specify the type of value that appears in the
-Grantee object:
+=item *
+
+B<Permissions> (Optional): The C<Permissions> object specifies which
+users and/or predefined Amazon S3 groups you want to have access to
+thumbnail files, and the type of access you want them to have. You can
+grant permissions to a maximum of 30 users and/or predefined Amazon S3
+groups.
+
+=item *
+
+B<GranteeType>: Specify the type of value that appears in the Grantee
+object:
 
 =over
 
-=item * B<Canonical>: The value in the C<Grantee> object is either the
+=item *
+
+B<Canonical>: The value in the C<Grantee> object is either the
 canonical user ID for an AWS account or an origin access identity for
-an Amazon CloudFront distribution. A canonical user ID is not the same
-as an AWS account number.
+an Amazon CloudFront distribution.
 
-=item * B<Email>: The value in the C<Grantee> object is the registered
-email address of an AWS account.
+A canonical user ID is not the same as an AWS account number.
 
-=item * B<Group>: The value in the C<Grantee> object is one of the
-following predefined Amazon S3 groups: C<AllUsers>,
-C<AuthenticatedUsers>, or C<LogDelivery>.
+=item *
+
+B<Email>: The value in the C<Grantee> object is the registered email
+address of an AWS account.
+
+=item *
+
+B<Group>: The value in the C<Grantee> object is one of the following
+predefined Amazon S3 groups: C<AllUsers>, C<AuthenticatedUsers>, or
+C<LogDelivery>.
 
 =back
 
-=item * B<Grantee>: The AWS user or group that you want to have access
-to thumbnail files. To identify the user or group, you can specify the
+=item *
+
+B<Grantee>: The AWS user or group that you want to have access to
+thumbnail files. To identify the user or group, you can specify the
 canonical user ID for an AWS account, an origin access identity for a
 CloudFront distribution, the registered email address of an AWS
 account, or a predefined Amazon S3 group.
 
-=item * B<Access>: The permission that you want to give to the AWS user
-that you specified in C<Grantee>. Permissions are granted on the
-thumbnail files that Elastic Transcoder adds to the bucket. Valid
-values include:
+=item *
+
+B<Access>: The permission that you want to give to the AWS user that
+you specified in C<Grantee>. Permissions are granted on the thumbnail
+files that Elastic Transcoder adds to the bucket. Valid values include:
 
 =over
 
-=item * C<READ>: The grantee can read the thumbnails and metadata for
-objects that Elastic Transcoder adds to the Amazon S3 bucket.
+=item *
 
-=item * C<READ_ACP>: The grantee can read the object ACL for thumbnails
+C<READ>: The grantee can read the thumbnails and metadata for objects
 that Elastic Transcoder adds to the Amazon S3 bucket.
 
-=item * C<WRITE_ACP>: The grantee can write the ACL for the thumbnails
-that Elastic Transcoder adds to the Amazon S3 bucket.
+=item *
 
-=item * C<FULL_CONTROL>: The grantee has C<READ>, C<READ_ACP>, and
-C<WRITE_ACP> permissions for the thumbnails that Elastic Transcoder
-adds to the Amazon S3 bucket.
+C<READ_ACP>: The grantee can read the object ACL for thumbnails that
+Elastic Transcoder adds to the Amazon S3 bucket.
+
+=item *
+
+C<WRITE_ACP>: The grantee can write the ACL for the thumbnails that
+Elastic Transcoder adds to the Amazon S3 bucket.
+
+=item *
+
+C<FULL_CONTROL>: The grantee has C<READ>, C<READ_ACP>, and C<WRITE_ACP>
+permissions for the thumbnails that Elastic Transcoder adds to the
+Amazon S3 bucket.
 
 =back
 
-=item * B<StorageClass>: The Amazon S3 storage class, C<Standard> or
+=item *
+
+B<StorageClass>: The Amazon S3 storage class, C<Standard> or
 C<ReducedRedundancy>, that you want Elastic Transcoder to assign to the
 thumbnails that it stores in your Amazon S3 bucket.
 

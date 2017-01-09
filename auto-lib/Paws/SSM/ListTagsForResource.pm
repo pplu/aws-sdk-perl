@@ -20,7 +20,7 @@ Paws::SSM::ListTagsForResource - Arguments for method ListTagsForResource on Paw
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method ListTagsForResource on the 
-Amazon Simple Systems Management Service service. Use the attributes of this class
+Amazon Simple Systems Manager (SSM) service. Use the attributes of this class
 as arguments to method ListTagsForResource.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListTagsForResource.
@@ -44,7 +44,7 @@ The resource ID for which you want to see a list of tags.
 
 Returns a list of tags for a specific resource type.
 
-Valid values are: C<"ManagedInstance">
+Valid values are: C<"ManagedInstance">, C<"MaintenanceWindow">, C<"Parameter">
 
 
 =head1 SEE ALSO

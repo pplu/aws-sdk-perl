@@ -2,6 +2,7 @@
 package Paws::CloudWatch::DescribeAlarmsForMetric;
   use Moose;
   has Dimensions => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatch::Dimension]');
+  has ExtendedStatistic => (is => 'ro', isa => 'Str');
   has MetricName => (is => 'ro', isa => 'Str', required => 1);
   has Namespace => (is => 'ro', isa => 'Str', required => 1);
   has Period => (is => 'ro', isa => 'Int');
@@ -40,9 +41,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Dimensions => ArrayRef[L<Paws::CloudWatch::Dimension>]
 
-The list of dimensions associated with the metric. If the metric has
-any associated dimensions, you must specify them in order for the
-DescribeAlarmsForMetric to succeed.
+The dimensions associated with the metric. If the metric has any
+associated dimensions, you must specify them in order for the call to
+succeed.
+
+
+
+=head2 ExtendedStatistic => Str
+
+The percentile statistic for the metric. Specify a value between p0.0
+and p100.
 
 
 
@@ -60,13 +68,14 @@ The namespace of the metric.
 
 =head2 Period => Int
 
-The period in seconds over which the statistic is applied.
+The period, in seconds, over which the statistic is applied.
 
 
 
 =head2 Statistic => Str
 
-The statistic for the metric.
+The statistic for the metric, other than percentiles. For percentile
+statistics, use C<ExtendedStatistics>.
 
 Valid values are: C<"SampleCount">, C<"Average">, C<"Sum">, C<"Minimum">, C<"Maximum">
 

@@ -9,7 +9,7 @@ package Paws::OpsWorks::UpdateUserProfile;
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateUserProfile');
-  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
   class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
@@ -45,7 +45,7 @@ Settings page. For more information, see Managing User Permissions.
 
 =head2 B<REQUIRED> IamUserArn => Str
 
-The user IAM ARN.
+The user IAM ARN. This can also be a federated user's ARN.
 
 
 

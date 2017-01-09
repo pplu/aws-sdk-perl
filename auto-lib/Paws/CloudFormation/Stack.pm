@@ -1,6 +1,7 @@
 package Paws::CloudFormation::Stack;
   use Moose;
   has Capabilities => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has ChangeSetId => (is => 'ro', isa => 'Str');
   has CreationTime => (is => 'ro', isa => 'Str', required => 1);
   has Description => (is => 'ro', isa => 'Str');
   has DisableRollback => (is => 'ro', isa => 'Bool');
@@ -53,6 +54,11 @@ The Stack data type.
 =head2 Capabilities => ArrayRef[Str|Undef]
 
   The capabilities allowed in the stack.
+
+
+=head2 ChangeSetId => Str
+
+  The unique ID of the change set.
 
 
 =head2 B<REQUIRED> CreationTime => Str

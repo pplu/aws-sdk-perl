@@ -174,6 +174,8 @@ package Paws::Inspector;
     my $call_object = $self->new_with_coercions('Paws::Inspector::UpdateAssessmentTarget', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
+
 
   sub operations { qw/AddAttributesToFindings CreateAssessmentTarget CreateAssessmentTemplate CreateResourceGroup DeleteAssessmentRun DeleteAssessmentTarget DeleteAssessmentTemplate DescribeAssessmentRuns DescribeAssessmentTargets DescribeAssessmentTemplates DescribeCrossAccountAccessRole DescribeFindings DescribeResourceGroups DescribeRulesPackages GetTelemetryMetadata ListAssessmentRunAgents ListAssessmentRuns ListAssessmentTargets ListAssessmentTemplates ListEventSubscriptions ListFindings ListRulesPackages ListTagsForResource PreviewAgents RegisterCrossAccountAccessRole RemoveAttributesFromFindings SetTagsForResource StartAssessmentRun StopAssessmentRun SubscribeToEvent UnsubscribeFromEvent UpdateAssessmentTarget / }
 
@@ -537,6 +539,15 @@ Returns: nothing
 
   Updates the assessment target that is specified by the ARN of the
 assessment target.
+
+
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+
 
 
 =head1 SEE ALSO

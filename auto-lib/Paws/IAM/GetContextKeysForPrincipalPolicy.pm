@@ -39,11 +39,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 An optional list of additional policies for which you want the list of
 context keys that are referenced.
 
-The regex pattern for this parameter is a string of characters
-consisting of any printable ASCII character ranging from the space
-character (\u0020) through end of the ASCII character range (\u00FF).
-It also includes the special characters tab (\u0009), line feed
-(\u000A), and carriage return (\u000D).
+The regex pattern used to validate this parameter is a string of
+characters consisting of any printable ASCII character ranging from the
+space character (\u0020) through end of the ASCII character range as
+well as the printable characters in the Basic Latin and Latin-1
+Supplement character set (through \u00FF). It also includes the special
+characters tab (\u0009), line feed (\u000A), and carriage return
+(\u000D).
 
 
 

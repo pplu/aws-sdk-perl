@@ -3,6 +3,7 @@ package Paws::DynamoDBStreams::DescribeStreamOutput;
   use Moose;
   has StreamDescription => (is => 'ro', isa => 'Paws::DynamoDBStreams::StreamDescription');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -21,6 +22,7 @@ within the stream, and the beginning and ending sequence numbers of
 stream records within the shards.
 
 
+=head2 _request_id => Str
 
 
 =cut

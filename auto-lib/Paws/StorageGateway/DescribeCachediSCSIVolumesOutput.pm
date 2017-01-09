@@ -3,6 +3,7 @@ package Paws::StorageGateway::DescribeCachediSCSIVolumesOutput;
   use Moose;
   has CachediSCSIVolumes => (is => 'ro', isa => 'ArrayRef[Paws::StorageGateway::CachediSCSIVolume]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -19,6 +20,7 @@ An array of objects where each object contains metadata about one
 cached volume.
 
 
+=head2 _request_id => Str
 
 
 =cut

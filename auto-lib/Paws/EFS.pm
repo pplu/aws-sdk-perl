@@ -68,6 +68,8 @@ package Paws::EFS;
     my $call_object = $self->new_with_coercions('Paws::EFS::ModifyMountTargetSecurityGroups', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
+
 
   sub operations { qw/CreateFileSystem CreateMountTarget CreateTags DeleteFileSystem DeleteMountTarget DeleteTags DescribeFileSystems DescribeMountTargets DescribeMountTargetSecurityGroups DescribeTags ModifyMountTargetSecurityGroups / }
 
@@ -284,7 +286,7 @@ C<true>, and the C<requesterId> value to C<EFS>.
 
 =back
 
-Each Amazon EFS mount target has one corresponding requestor-managed
+Each Amazon EFS mount target has one corresponding requester-managed
 EC2 network interface. After the network interface is created, Amazon
 EFS sets the C<NetworkInterfaceId> field in the mount target's
 description to the network interface ID, and the C<IpAddress> field to
@@ -294,9 +296,9 @@ C<CreateMountTarget> operation fails.
 =back
 
 The C<CreateMountTarget> call returns only after creating the network
-interface, but while the mount target state is still C<creating>. You
+interface, but while the mount target state is still C<creating>, you
 can check the mount target creation status by calling the
-DescribeFileSystems operation, which among other things returns the
+DescribeMountTargets operation, which among other things returns the
 mount target state.
 
 We recommend you create a mount target in each of the Availability
@@ -573,6 +575,15 @@ C<ec2:ModifyNetworkInterfaceAttribute> action on the mount target's
 network interface.
 
 =back
+
+
+
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
 
 
 

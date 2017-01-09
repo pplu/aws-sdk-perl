@@ -62,8 +62,8 @@ portions of the timestamp will be ignored.
 
 =head2 B<REQUIRED> UsageDimension => Str
 
-It will be one of the 'fcp dimension name' provided during the
-publishing of the product.
+It will be one of the fcp dimension name provided during the publishing
+of the product.
 
 
 

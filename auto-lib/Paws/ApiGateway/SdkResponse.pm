@@ -5,6 +5,7 @@ package Paws::ApiGateway::SdkResponse;
   has ContentDisposition => (is => 'ro', isa => 'Str');
   has ContentType => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -21,11 +22,9 @@ Paws::ApiGateway::SdkResponse
 The binary blob response to GetSdk, which contains the generated SDK.
 
 
-
 =head2 ContentDisposition => Str
 
 The content-disposition header value in the HTTP response.
-
 
 
 =head2 ContentType => Str
@@ -33,6 +32,7 @@ The content-disposition header value in the HTTP response.
 The content-type header value in the HTTP response.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -1,9 +1,9 @@
 
 package Paws::Route53::ListHostedZones;
   use Moose;
-  has DelegationSetId => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'delegationsetid' );
-  has Marker => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'marker' );
-  has MaxItems => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'maxitems' );
+  has DelegationSetId => (is => 'ro', isa => 'Str', query_name => 'delegationsetid', traits => ['ParamInQuery']);
+  has Marker => (is => 'ro', isa => 'Str', query_name => 'marker', traits => ['ParamInQuery']);
+  has MaxItems => (is => 'ro', isa => 'Str', query_name => 'maxitems', traits => ['ParamInQuery']);
 
   use MooseX::ClassAttribute;
 
@@ -40,7 +40,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 DelegationSetId => Str
 
-
+If you're using reusable delegation sets and you want to list all of
+the hosted zones that are associated with a reusable delegation set,
+specify the ID of that reusable delegation set.
 
 
 

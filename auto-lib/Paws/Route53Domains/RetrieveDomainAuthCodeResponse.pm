@@ -3,6 +3,7 @@ package Paws::Route53Domains::RetrieveDomainAuthCodeResponse;
   use Moose;
   has AuthCode => (is => 'ro', isa => 'Str', required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -20,6 +21,7 @@ The authorization code for the domain.
 Type: String
 
 
+=head2 _request_id => Str
 
 
 =cut

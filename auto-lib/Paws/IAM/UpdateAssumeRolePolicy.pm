@@ -7,7 +7,7 @@ package Paws::IAM::UpdateAssumeRolePolicy;
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateAssumeRolePolicy');
-  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
   class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
@@ -38,11 +38,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 The policy that grants an entity permission to assume the role.
 
-The regex pattern for this parameter is a string of characters
-consisting of any printable ASCII character ranging from the space
-character (\u0020) through end of the ASCII character range (\u00FF).
-It also includes the special characters tab (\u0009), line feed
-(\u000A), and carriage return (\u000D).
+The regex pattern used to validate this parameter is a string of
+characters consisting of any printable ASCII character ranging from the
+space character (\u0020) through end of the ASCII character range as
+well as the printable characters in the Basic Latin and Latin-1
+Supplement character set (through \u00FF). It also includes the special
+characters tab (\u0009), line feed (\u000A), and carriage return
+(\u000D).
 
 
 
@@ -50,7 +52,7 @@ It also includes the special characters tab (\u0009), line feed
 
 The name of the role to update with the new policy.
 
-The regex pattern for this parameter is a string of characters
+This parameter allows (per its regex pattern) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
 spaces. You can also include any of the following characters: =,.@-
 

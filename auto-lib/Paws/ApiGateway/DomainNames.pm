@@ -4,6 +4,7 @@ package Paws::ApiGateway::DomainNames;
   has Items => (is => 'ro', isa => 'ArrayRef[Paws::ApiGateway::DomainName]');
   has Position => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -21,12 +22,12 @@ The current page of any DomainName resources in the collection of
 DomainName resources.
 
 
-
 =head2 Position => Str
 
 
 
 
+=head2 _request_id => Str
 
 
 =cut

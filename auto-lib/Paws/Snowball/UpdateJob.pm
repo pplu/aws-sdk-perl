@@ -90,10 +90,9 @@ Valid values are: C<"SECOND_DAY">, C<"NEXT_DAY">, C<"EXPRESS">, C<"STANDARD">
 =head2 SnowballCapacityPreference => Str
 
 The updated C<SnowballCapacityPreference> of this job's JobMetadata
-object. Note that the 50 TB Snowballs are only available in the US
-regions.
+object. The 50 TB Snowballs are only available in the US regions.
 
-Valid values are: C<"T50">, C<"T80">, C<"NoPreference">
+Valid values are: C<"T50">, C<"T80">, C<"T100">, C<"NoPreference">
 
 
 =head1 SEE ALSO

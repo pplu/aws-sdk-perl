@@ -40,8 +40,9 @@ Encloses a receipt handle and an identifier for it.
 =head2 B<REQUIRED> Id => Str
 
   An identifier for this particular receipt handle. This is used to
-communicate the result. Note that the C<Id>s of a batch request need to
-be unique within the request.
+communicate the result.
+
+The C<Id>s of a batch request need to be unique within a request
 
 
 =head2 B<REQUIRED> ReceiptHandle => Str

@@ -4,6 +4,7 @@ package Paws::CodeDeploy::ListOnPremisesInstancesOutput;
   has InstanceNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['Unwrapped'], xmlname => 'instanceNames' );
   has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -19,7 +20,6 @@ Paws::CodeDeploy::ListOnPremisesInstancesOutput
 The list of matching on-premises instance names.
 
 
-
 =head2 NextToken => Str
 
 If a large amount of information is returned, an identifier is also
@@ -27,6 +27,7 @@ returned. It can be used in a subsequent list on-premises instances
 call to return the next set of on-premises instances in the list.
 
 
+=head2 _request_id => Str
 
 
 =cut

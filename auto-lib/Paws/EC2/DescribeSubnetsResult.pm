@@ -3,6 +3,7 @@ package Paws::EC2::DescribeSubnetsResult;
   use Moose;
   has Subnets => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Subnet]', xmlname => 'subnetSet', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -19,6 +20,7 @@ Paws::EC2::DescribeSubnetsResult
 Information about one or more subnets.
 
 
+=head2 _request_id => Str
 
 
 =cut

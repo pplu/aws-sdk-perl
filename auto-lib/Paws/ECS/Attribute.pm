@@ -1,6 +1,8 @@
 package Paws::ECS::Attribute;
   use Moose;
   has Name => (is => 'ro', isa => 'Str', xmlname => 'name', request_name => 'name', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has TargetId => (is => 'ro', isa => 'Str', xmlname => 'targetId', request_name => 'targetId', traits => ['Unwrapped','NameInRequest']);
+  has TargetType => (is => 'ro', isa => 'Str', xmlname => 'targetType', request_name => 'targetType', traits => ['Unwrapped','NameInRequest']);
   has Value => (is => 'ro', isa => 'Str', xmlname => 'value', request_name => 'value', traits => ['Unwrapped','NameInRequest']);
 1;
 
@@ -32,22 +34,37 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ECS::Attrib
 
 =head1 DESCRIPTION
 
-The attributes applicable to a container instance when it is
-registered.
+Attributes are name-value pairs associated with various Amazon ECS
+objects. Attributes allow you to extend the Amazon ECS data model by
+adding custom metadata to your resources.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> Name => Str
 
-  The name of the container instance attribute.
+  The name of the attribute. Up to 128 letters (uppercase and lowercase),
+numbers, hyphens, underscores, and periods are allowed.
+
+
+=head2 TargetId => Str
+
+  The ID of the target. You can specify the short form ID for a resource
+or the full Amazon Resource Name (ARN).
+
+
+=head2 TargetType => Str
+
+  The type of the target with which to attach the attribute. This
+parameter is required if you use the short form ID for a resource
+instead of the full Amazon Resource Name (ARN).
 
 
 =head2 Value => Str
 
-  The value of the container instance attribute (at this time, the value
-here is C<Null>, but this could change in future revisions for
-expandability).
+  The value of the attribute. Up to 128 letters (uppercase and
+lowercase), numbers, hyphens, underscores, periods, at signs (@),
+forward slashes, colons, and spaces are allowed.
 
 
 

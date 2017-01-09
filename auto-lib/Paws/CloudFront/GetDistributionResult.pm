@@ -2,8 +2,9 @@
 package Paws::CloudFront::GetDistributionResult;
   use Moose;
   has Distribution => (is => 'ro', isa => 'Paws::CloudFront::Distribution');
-  has ETag => (is => 'ro', isa => 'Str');
+  has ETag => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'ETag');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +25,7 @@ The distribution's information.
 =head2 ETag => Str
 
 The current version of the distribution's information. For example:
-E2QWRUHAPOMQZL.
+C<E2QWRUHAPOMQZL>.
 
 
 

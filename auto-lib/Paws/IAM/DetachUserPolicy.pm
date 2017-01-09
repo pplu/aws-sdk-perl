@@ -7,7 +7,7 @@ package Paws::IAM::DetachUserPolicy;
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DetachUserPolicy');
-  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
   class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
@@ -48,7 +48,7 @@ AWS Service Namespaces in the I<AWS General Reference>.
 The name (friendly name, not ARN) of the IAM user to detach the policy
 from.
 
-The regex pattern for this parameter is a string of characters
+This parameter allows (per its regex pattern) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
 spaces. You can also include any of the following characters: =,.@-
 

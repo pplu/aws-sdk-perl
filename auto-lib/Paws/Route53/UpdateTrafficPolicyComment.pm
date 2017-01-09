@@ -2,8 +2,8 @@
 package Paws::Route53::UpdateTrafficPolicyComment;
   use Moose;
   has Comment => (is => 'ro', isa => 'Str', required => 1);
-  has Id => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'Id' , required => 1);
-  has Version => (is => 'ro', isa => 'Int', traits => ['ParamInURI'], uri_name => 'Version' , required => 1);
+  has Id => (is => 'ro', isa => 'Str', uri_name => 'Id', traits => ['ParamInURI'], required => 1);
+  has Version => (is => 'ro', isa => 'Int', uri_name => 'Version', traits => ['ParamInURI'], required => 1);
 
   use MooseX::ClassAttribute;
 

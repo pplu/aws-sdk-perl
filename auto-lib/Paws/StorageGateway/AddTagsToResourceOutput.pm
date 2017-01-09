@@ -3,6 +3,7 @@ package Paws::StorageGateway::AddTagsToResourceOutput;
   use Moose;
   has ResourceARN => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -18,6 +19,7 @@ Paws::StorageGateway::AddTagsToResourceOutput
 The Amazon Resource Name (ARN) of the resource you want to add tags to.
 
 
+=head2 _request_id => Str
 
 
 =cut

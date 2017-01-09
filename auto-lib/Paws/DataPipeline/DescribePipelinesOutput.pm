@@ -3,6 +3,7 @@ package Paws::DataPipeline::DescribePipelinesOutput;
   use Moose;
   has PipelineDescriptionList => (is => 'ro', isa => 'ArrayRef[Paws::DataPipeline::PipelineDescription]', traits => ['Unwrapped'], xmlname => 'pipelineDescriptionList' , required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -18,6 +19,7 @@ Paws::DataPipeline::DescribePipelinesOutput
 An array of descriptions for the specified pipelines.
 
 
+=head2 _request_id => Str
 
 
 =cut

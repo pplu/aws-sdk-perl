@@ -67,10 +67,10 @@ bind a role to the customer who created it. For more information about
 the external ID, see How to Use an External ID When Granting Access to
 Your AWS Resources to a Third Party in the I<IAM User Guide>.
 
-The format for this parameter, as described by its regex pattern, is a
-string of characters consisting of upper- and lower-case alphanumeric
-characters with no spaces. You can also include underscores or any of
-the following characters: =,.@:\/-
+The regex used to validated this parameter is a string of characters
+consisting of upper- and lower-case alphanumeric characters with no
+spaces. You can also include underscores or any of the following
+characters: =,.@:\/-
 
 
 
@@ -122,10 +122,10 @@ subsequent cross-account API requests using the temporary security
 credentials will expose the role session name to the external account
 in their CloudTrail logs.
 
-The format for this parameter, as described by its regex pattern, is a
-string of characters consisting of upper- and lower-case alphanumeric
-characters with no spaces. You can also include underscores or any of
-the following characters: =,.@-
+The regex used to validate this parameter is a string of characters
+consisting of upper- and lower-case alphanumeric characters with no
+spaces. You can also include underscores or any of the following
+characters: =,.@-
 
 
 
@@ -139,10 +139,10 @@ a hardware device (such as C<GAHT12345678>) or an Amazon Resource Name
 (ARN) for a virtual device (such as
 C<arn:aws:iam::123456789012:mfa/user>).
 
-The format for this parameter, as described by its regex pattern, is a
-string of characters consisting of upper- and lower-case alphanumeric
-characters with no spaces. You can also include underscores or any of
-the following characters: =,.@-
+The regex used to validate this parameter is a string of characters
+consisting of upper- and lower-case alphanumeric characters with no
+spaces. You can also include underscores or any of the following
+characters: =,.@-
 
 
 

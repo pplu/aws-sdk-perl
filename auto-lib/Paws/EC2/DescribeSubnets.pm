@@ -57,21 +57,36 @@ also use C<availability-zone> as the filter name.
 
 =item *
 
-C<available-ip-address-count> - The number of IP addresses in the
+C<available-ip-address-count> - The number of IPv4 addresses in the
 subnet that are available.
 
 =item *
 
-C<cidrBlock> - The CIDR block of the subnet. The CIDR block you specify
-must exactly match the subnet's CIDR block for information to be
-returned for the subnet. You can also use C<cidr> or C<cidr-block> as
-the filter names.
+C<cidrBlock> - The IPv4 CIDR block of the subnet. The CIDR block you
+specify must exactly match the subnet's CIDR block for information to
+be returned for the subnet. You can also use C<cidr> or C<cidr-block>
+as the filter names.
 
 =item *
 
 C<defaultForAz> - Indicates whether this is the default subnet for the
 Availability Zone. You can also use C<default-for-az> as the filter
 name.
+
+=item *
+
+C<ipv6-cidr-block-association.ipv6-cidr-block> - An IPv6 CIDR block
+associated with the subnet.
+
+=item *
+
+C<ipv6-cidr-block-association.association-id> - An association ID for
+an IPv6 CIDR block associated with the subnet.
+
+=item *
+
+C<ipv6-cidr-block-association.state> - The state of an IPv6 CIDR block
+associated with the subnet.
 
 =item *
 

@@ -3,6 +3,7 @@ package Paws::RedShift::DescribeDefaultClusterParametersResult;
   use Moose;
   has DefaultClusterParameters => (is => 'ro', isa => 'Paws::RedShift::DefaultClusterParameters');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -19,6 +20,7 @@ Paws::RedShift::DescribeDefaultClusterParametersResult
 
 
 
+=head2 _request_id => Str
 
 
 =cut

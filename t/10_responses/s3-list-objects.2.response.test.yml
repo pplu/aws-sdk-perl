@@ -1,0 +1,37 @@
+---
+call: ListObjects
+service: S3
+tests:
+  - expected: 1936a5d8a2b189cda450d1d1d514f3861b3adc2df515
+    op: eq
+    path: Contents.0.Owner.ID
+  - expected: 0
+    op: eq
+    path: IsTruncated
+  - expected: 2016-11-02T09:09:52.000Z
+    op: eq
+    path: Contents.0.LastModified
+  - expected: test-1357854246
+    op: eq
+    path: Name
+  - expected: 1000
+    op: eq
+    path: MaxKeys
+  - expected: '"1d921b22129502cbbe5cbaf2c8bac682"'
+    op: eq
+    path: Contents.0.ETag
+  - expected: 6
+    op: eq
+    path: Contents.0.Size
+  - expected: STANDARD
+    op: eq
+    path: Contents.0.StorageClass
+  - expected: uploads/test_1.txt
+    op: eq
+    path: Contents.0.Key
+  - expected: uploads/test_
+    op: eq
+    path: Prefix
+  - expected: aws
+    op: eq
+    path: Contents.0.Owner.DisplayName

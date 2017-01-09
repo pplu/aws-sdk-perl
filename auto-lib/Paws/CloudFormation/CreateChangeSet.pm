@@ -3,6 +3,7 @@ package Paws::CloudFormation::CreateChangeSet;
   use Moose;
   has Capabilities => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has ChangeSetName => (is => 'ro', isa => 'Str', required => 1);
+  has ChangeSetType => (is => 'ro', isa => 'Str');
   has ClientToken => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has NotificationARNs => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
@@ -84,6 +85,23 @@ cannot exceed 128 characters.
 
 
 
+=head2 ChangeSetType => Str
+
+The type of change set operation. To create a change set for a new
+stack, specify C<CREATE>. To create a change set for an existing stack,
+specify C<UPDATE>.
+
+If you create a change set for a new stack, AWS Cloudformation creates
+a stack with a unique stack ID, but no template or resources. The stack
+will be in the C<REVIEW_IN_PROGRESS> state until you execute the change
+set.
+
+By default, AWS CloudFormation specifies C<UPDATE>. You can't use the
+C<UPDATE> type to create a change set for a new stack or the C<CREATE>
+type to create a change set for an existing stack.
+
+Valid values are: C<"CREATE">, C<"UPDATE">
+
 =head2 ClientToken => Str
 
 A unique identifier for this C<CreateChangeSet> request. Specify this
@@ -136,7 +154,7 @@ Guide.
 The Amazon Resource Name (ARN) of an AWS Identity and Access Management
 (IAM) role that AWS CloudFormation assumes when executing the change
 set. AWS CloudFormation uses the role's credentials to make calls on
-your behalf. AWS CloudFormation always uses this role for all future
+your behalf. AWS CloudFormation uses this role for all future
 operations on the stack. As long as users have permission to operate on
 the stack, AWS CloudFormation uses this role even if the users don't
 have permission to pass it. Ensure that the role grants least

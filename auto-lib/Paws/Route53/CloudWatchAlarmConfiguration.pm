@@ -1,7 +1,7 @@
 package Paws::Route53::CloudWatchAlarmConfiguration;
   use Moose;
   has ComparisonOperator => (is => 'ro', isa => 'Str', required => 1);
-  has Dimensions => (is => 'ro', isa => 'ArrayRef[Paws::Route53::Dimension]');
+  has Dimensions => (is => 'ro', isa => 'ArrayRef[Paws::Route53::Dimension]', request_name => 'Dimension', traits => ['NameInRequest']);
   has EvaluationPeriods => (is => 'ro', isa => 'Int', required => 1);
   has MetricName => (is => 'ro', isa => 'Str', required => 1);
   has Namespace => (is => 'ro', isa => 'Str', required => 1);
@@ -55,7 +55,7 @@ arithmetic operation that is used for the comparison.
   For the metric that the CloudWatch alarm is associated with, a complex
 type that contains information about the dimensions for the metric.For
 information, see Amazon CloudWatch Namespaces, Dimensions, and Metrics
-Reference in the I<Amazon CloudWatch Developer Guide>.
+Reference in the I<Amazon CloudWatch User Guide>.
 
 
 =head2 B<REQUIRED> EvaluationPeriods => Int
@@ -73,7 +73,7 @@ of periods that the metric is compared to the threshold.
 
   The namespace of the metric that the alarm is associated with. For more
 information, see Amazon CloudWatch Namespaces, Dimensions, and Metrics
-Reference in the I<Amazon CloudWatch Developer Guide>.
+Reference in the I<Amazon CloudWatch User Guide>.
 
 
 =head2 B<REQUIRED> Period => Int

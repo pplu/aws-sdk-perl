@@ -4,6 +4,7 @@ package Paws::DMS::DescribeReplicationSubnetGroupsResponse;
   has Marker => (is => 'ro', isa => 'Str');
   has ReplicationSubnetGroups => (is => 'ro', isa => 'ArrayRef[Paws::DMS::ReplicationSubnetGroup]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -21,12 +22,12 @@ parameter is specified, the response includes only records beyond the
 marker, up to the value specified by C<MaxRecords>.
 
 
-
 =head2 ReplicationSubnetGroups => ArrayRef[L<Paws::DMS::ReplicationSubnetGroup>]
 
 A description of the replication subnet groups.
 
 
+=head2 _request_id => Str
 
 
 =cut

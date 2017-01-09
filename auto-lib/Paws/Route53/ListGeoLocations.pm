@@ -1,10 +1,10 @@
 
 package Paws::Route53::ListGeoLocations;
   use Moose;
-  has MaxItems => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'maxitems' );
-  has StartContinentCode => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'startcontinentcode' );
-  has StartCountryCode => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'startcountrycode' );
-  has StartSubdivisionCode => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'startsubdivisioncode' );
+  has MaxItems => (is => 'ro', isa => 'Str', query_name => 'maxitems', traits => ['ParamInQuery']);
+  has StartContinentCode => (is => 'ro', isa => 'Str', query_name => 'startcontinentcode', traits => ['ParamInQuery']);
+  has StartCountryCode => (is => 'ro', isa => 'Str', query_name => 'startcountrycode', traits => ['ParamInQuery']);
+  has StartSubdivisionCode => (is => 'ro', isa => 'Str', query_name => 'startsubdivisioncode', traits => ['ParamInQuery']);
 
   use MooseX::ClassAttribute;
 

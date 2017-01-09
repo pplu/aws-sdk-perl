@@ -1,6 +1,6 @@
 package Paws::CloudFront::CustomHeaders;
   use Moose;
-  has Items => (is => 'ro', isa => 'ArrayRef[Paws::CloudFront::OriginCustomHeader]');
+  has Items => (is => 'ro', isa => 'ArrayRef[Paws::CloudFront::OriginCustomHeader]', request_name => 'OriginCustomHeader', traits => ['NameInRequest']);
   has Quantity => (is => 'ro', isa => 'Int', required => 1);
 1;
 
@@ -40,12 +40,14 @@ origin.
 
 =head2 Items => ArrayRef[L<Paws::CloudFront::OriginCustomHeader>]
 
-  A complex type that contains the custom headers for this Origin.
+  B<Optional>: A list that contains one C<OriginCustomHeader> element for
+each custom header that you want CloudFront to forward to the origin.
+If Quantity is C<0>, omit C<Items>.
 
 
 =head2 B<REQUIRED> Quantity => Int
 
-  The number of custom headers for this origin.
+  The number of custom headers, if any, for this distribution.
 
 
 

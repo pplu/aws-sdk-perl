@@ -32,10 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudWatch:
 
 =head1 DESCRIPTION
 
-The C<Dimension> data type further expands on the identity of a metric
-using a Name, Value pair.
-
-For examples that use one or more dimensions, see PutMetricData.
+Expands the identity of a metric.
 
 =head1 ATTRIBUTES
 
@@ -47,7 +44,7 @@ For examples that use one or more dimensions, see PutMetricData.
 
 =head2 B<REQUIRED> Value => Str
 
-  The value representing the dimension measurement
+  The value representing the dimension measurement.
 
 
 

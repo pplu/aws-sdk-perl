@@ -48,6 +48,11 @@ package Paws::Lambda;
     my $call_object = $self->new_with_coercions('Paws::Lambda::DeleteFunction', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetAccountSettings {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lambda::GetAccountSettings', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetAlias {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Lambda::GetAlias', @_);
@@ -133,36 +138,52 @@ package Paws::Lambda;
     my $call_object = $self->new_with_coercions('Paws::Lambda::UpdateFunctionConfiguration', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
   sub ListAllEventSourceMappings {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListEventSourceMappings(@_);
-    my $array = [];
-    push @$array, @{ $result->EventSourceMappings };
 
-    while ($result->NextMarker) {
-      $result = $self->ListEventSourceMappings(@_, Marker => $result->NextMarker);
-      push @$array, @{ $result->EventSourceMappings };
+    if (not defined $callback) {
+      while ($result->Marker) {
+        $result = $self->ListEventSourceMappings(@_, Marker => $result->NextMarker);
+        push @{ $result->EventSourceMappings }, @{ $result->EventSourceMappings };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $result = $self->ListEventSourceMappings(@_, Marker => $result->NextMarker);
+        $callback->($_ => 'EventSourceMappings') foreach (@{ $result->EventSourceMappings });
+      }
     }
 
-    return 'Paws::Lambda::ListEventSourceMappings'->_returns->new(EventSourceMappings => $array);
+    return undef
   }
   sub ListAllFunctions {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListFunctions(@_);
-    my $array = [];
-    push @$array, @{ $result->Functions };
 
-    while ($result->NextMarker) {
-      $result = $self->ListFunctions(@_, Marker => $result->NextMarker);
-      push @$array, @{ $result->Functions };
+    if (not defined $callback) {
+      while ($result->Marker) {
+        $result = $self->ListFunctions(@_, Marker => $result->NextMarker);
+        push @{ $result->Functions }, @{ $result->Functions };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $result = $self->ListFunctions(@_, Marker => $result->NextMarker);
+        $callback->($_ => 'Functions') foreach (@{ $result->Functions });
+      }
     }
 
-    return 'Paws::Lambda::ListFunctions'->_returns->new(Functions => $array);
+    return undef
   }
 
-  sub operations { qw/AddPermission CreateAlias CreateEventSourceMapping CreateFunction DeleteAlias DeleteEventSourceMapping DeleteFunction GetAlias GetEventSourceMapping GetFunction GetFunctionConfiguration GetPolicy Invoke InvokeAsync ListAliases ListEventSourceMappings ListFunctions ListVersionsByFunction PublishVersion RemovePermission UpdateAlias UpdateEventSourceMapping UpdateFunctionCode UpdateFunctionConfiguration / }
+
+  sub operations { qw/AddPermission CreateAlias CreateEventSourceMapping CreateFunction DeleteAlias DeleteEventSourceMapping DeleteFunction GetAccountSettings GetAlias GetEventSourceMapping GetFunction GetFunctionConfiguration GetPolicy Invoke InvokeAsync ListAliases ListEventSourceMappings ListFunctions ListVersionsByFunction PublishVersion RemovePermission UpdateAlias UpdateEventSourceMapping UpdateFunctionCode UpdateFunctionConfiguration / }
 
 1;
 
@@ -195,9 +216,9 @@ AWS Lambda
 B<Overview>
 
 This is the I<AWS Lambda API Reference>. The AWS Lambda Developer Guide
-provides additional information. For the service overview, go to What
-is AWS Lambda, and for information about how the service works, go to
-AWS Lambda: How it Works in the I<AWS Lambda Developer Guide>.
+provides additional information. For the service overview, see What is
+AWS Lambda, and for information about how the service works, see AWS
+Lambda: How it Works in the I<AWS Lambda Developer Guide>.
 
 =head1 METHODS
 
@@ -239,7 +260,7 @@ Alias names are unique for a given function. This requires permission
 for the lambda:CreateAlias action.
 
 
-=head2 CreateEventSourceMapping(EventSourceArn => Str, FunctionName => Str, StartingPosition => Str, [BatchSize => Int, Enabled => Bool])
+=head2 CreateEventSourceMapping(EventSourceArn => Str, FunctionName => Str, StartingPosition => Str, [BatchSize => Int, Enabled => Bool, StartingPositionTimestamp => Str])
 
 Each argument is described in detail in: L<Paws::Lambda::CreateEventSourceMapping>
 
@@ -254,8 +275,8 @@ This association between a stream source and a Lambda function is
 called the event source mapping.
 
 This event source mapping is relevant only in the AWS Lambda pull
-model, where AWS Lambda invokes the function. For more information, go
-to AWS Lambda: How it Works in the I<AWS Lambda Developer Guide>.
+model, where AWS Lambda invokes the function. For more information, see
+AWS Lambda: How it Works in the I<AWS Lambda Developer Guide>.
 
 You provide mapping information (for example, which stream to read from
 and which Lambda function to invoke) in the request body.
@@ -273,7 +294,7 @@ This operation requires permission for the
 C<lambda:CreateEventSourceMapping> action.
 
 
-=head2 CreateFunction(Code => L<Paws::Lambda::FunctionCode>, FunctionName => Str, Handler => Str, Role => Str, Runtime => Str, [Description => Str, MemorySize => Int, Publish => Bool, Timeout => Int, VpcConfig => L<Paws::Lambda::VpcConfig>])
+=head2 CreateFunction(Code => L<Paws::Lambda::FunctionCode>, FunctionName => Str, Handler => Str, Role => Str, Runtime => Str, [DeadLetterConfig => L<Paws::Lambda::DeadLetterConfig>, Description => Str, Environment => L<Paws::Lambda::Environment>, KMSKeyArn => Str, MemorySize => Int, Publish => Bool, Timeout => Int, VpcConfig => L<Paws::Lambda::VpcConfig>])
 
 Each argument is described in detail in: L<Paws::Lambda::CreateFunction>
 
@@ -339,6 +360,20 @@ deleted. You will need to delete the event source mappings explicitly.
 
 This operation requires permission for the C<lambda:DeleteFunction>
 action.
+
+
+=head2 GetAccountSettings()
+
+Each argument is described in detail in: L<Paws::Lambda::GetAccountSettings>
+
+Returns: a L<Paws::Lambda::GetAccountSettingsResponse> instance
+
+  Returns a customer's account settings.
+
+You can use this operation to retrieve Lambda limits information, such
+as code size and concurrency limits. For more information about limits,
+see AWS Lambda Limits. You can also retrieve resource usage statistics,
+such as code storage usage and function count.
 
 
 =head2 GetAlias(FunctionName => Str, Name => Str)
@@ -436,7 +471,8 @@ Each argument is described in detail in: L<Paws::Lambda::Invoke>
 
 Returns: a L<Paws::Lambda::InvocationResponse> instance
 
-  Invokes a specific Lambda function.
+  Invokes a specific Lambda function. For an example, see Create the
+Lambda Function and Test It Manually.
 
 If you are using the versioning feature, you can invoke the specific
 function version by providing function version or alias name that is
@@ -626,7 +662,7 @@ This operation requires permission for the C<lambda:UpdateFunctionCode>
 action.
 
 
-=head2 UpdateFunctionConfiguration(FunctionName => Str, [Description => Str, Handler => Str, MemorySize => Int, Role => Str, Runtime => Str, Timeout => Int, VpcConfig => L<Paws::Lambda::VpcConfig>])
+=head2 UpdateFunctionConfiguration(FunctionName => Str, [DeadLetterConfig => L<Paws::Lambda::DeadLetterConfig>, Description => Str, Environment => L<Paws::Lambda::Environment>, Handler => Str, KMSKeyArn => Str, MemorySize => Int, Role => Str, Runtime => Str, Timeout => Int, VpcConfig => L<Paws::Lambda::VpcConfig>])
 
 Each argument is described in detail in: L<Paws::Lambda::UpdateFunctionConfiguration>
 
@@ -645,6 +681,39 @@ Aliases.
 
 This operation requires permission for the
 C<lambda:UpdateFunctionConfiguration> action.
+
+
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllEventSourceMappings(sub { },[EventSourceArn => Str, FunctionName => Str, Marker => Str, MaxItems => Int])
+
+=head2 ListAllEventSourceMappings([EventSourceArn => Str, FunctionName => Str, Marker => Str, MaxItems => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - EventSourceMappings, passing the object as the first parameter, and the string 'EventSourceMappings' as the second parameter 
+
+If not, it will return a a L<Paws::Lambda::ListEventSourceMappingsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllFunctions(sub { },[Marker => Str, MaxItems => Int])
+
+=head2 ListAllFunctions([Marker => Str, MaxItems => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Functions, passing the object as the first parameter, and the string 'Functions' as the second parameter 
+
+If not, it will return a a L<Paws::Lambda::ListFunctionsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+
 
 
 =head1 SEE ALSO

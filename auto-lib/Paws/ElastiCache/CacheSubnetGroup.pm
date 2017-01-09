@@ -2,7 +2,7 @@ package Paws::ElastiCache::CacheSubnetGroup;
   use Moose;
   has CacheSubnetGroupDescription => (is => 'ro', isa => 'Str');
   has CacheSubnetGroupName => (is => 'ro', isa => 'Str');
-  has Subnets => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::Subnet]');
+  has Subnets => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::Subnet]', request_name => 'Subnet', traits => ['NameInRequest']);
   has VpcId => (is => 'ro', isa => 'Str');
 1;
 
@@ -34,17 +34,17 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElastiCache
 
 =head1 DESCRIPTION
 
-Represents the output of one of the following actions:
+Represents the output of one of the following operations:
 
 =over
 
 =item *
 
-I<CreateCacheSubnetGroup>
+C<CreateCacheSubnetGroup>
 
 =item *
 
-I<ModifyCacheSubnetGroup>
+C<ModifyCacheSubnetGroup>
 
 =back
 

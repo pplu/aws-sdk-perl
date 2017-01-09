@@ -46,17 +46,25 @@ true:
 
 =over
 
-=item * You want to save transcoded files, thumbnails (if any), and
-playlists (if any) together in one bucket.
+=item *
 
-=item * You do not want to specify the users or groups who have access
-to the transcoded files, thumbnails, and playlists.
+You want to save transcoded files, thumbnails (if any), and playlists
+(if any) together in one bucket.
 
-=item * You do not want to specify the permissions that Elastic
-Transcoder grants to the files.
+=item *
 
-=item * You want to associate the transcoded files and thumbnails with
-the Amazon S3 Standard storage class.
+You do not want to specify the users or groups who have access to the
+transcoded files, thumbnails, and playlists.
+
+=item *
+
+You do not want to specify the permissions that Elastic Transcoder
+grants to the files.
+
+=item *
+
+You want to associate the transcoded files and thumbnails with the
+Amazon S3 Standard storage class.
 
 =back
 

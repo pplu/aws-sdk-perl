@@ -3,6 +3,7 @@ package Paws::CodeDeploy::GetOnPremisesInstanceOutput;
   use Moose;
   has InstanceInfo => (is => 'ro', isa => 'Paws::CodeDeploy::InstanceInfo', traits => ['Unwrapped'], xmlname => 'instanceInfo' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -18,6 +19,7 @@ Paws::CodeDeploy::GetOnPremisesInstanceOutput
 Information about the on-premises instance.
 
 
+=head2 _request_id => Str
 
 
 =cut

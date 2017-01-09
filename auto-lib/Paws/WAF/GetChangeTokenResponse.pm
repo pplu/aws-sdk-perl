@@ -3,6 +3,7 @@ package Paws::WAF::GetChangeTokenResponse;
   use Moose;
   has ChangeToken => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -20,6 +21,7 @@ C<GetChangeTokenStatus> request to get the current status of the
 request.
 
 
+=head2 _request_id => Str
 
 
 =cut

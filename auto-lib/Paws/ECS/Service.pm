@@ -8,6 +8,8 @@ package Paws::ECS::Service;
   has Events => (is => 'ro', isa => 'ArrayRef[Paws::ECS::ServiceEvent]', xmlname => 'events', request_name => 'events', traits => ['Unwrapped','NameInRequest']);
   has LoadBalancers => (is => 'ro', isa => 'ArrayRef[Paws::ECS::LoadBalancer]', xmlname => 'loadBalancers', request_name => 'loadBalancers', traits => ['Unwrapped','NameInRequest']);
   has PendingCount => (is => 'ro', isa => 'Int', xmlname => 'pendingCount', request_name => 'pendingCount', traits => ['Unwrapped','NameInRequest']);
+  has PlacementConstraints => (is => 'ro', isa => 'ArrayRef[Paws::ECS::PlacementConstraint]', xmlname => 'placementConstraints', request_name => 'placementConstraints', traits => ['Unwrapped','NameInRequest']);
+  has PlacementStrategy => (is => 'ro', isa => 'ArrayRef[Paws::ECS::PlacementStrategy]', xmlname => 'placementStrategy', request_name => 'placementStrategy', traits => ['Unwrapped','NameInRequest']);
   has RoleArn => (is => 'ro', isa => 'Str', xmlname => 'roleArn', request_name => 'roleArn', traits => ['Unwrapped','NameInRequest']);
   has RunningCount => (is => 'ro', isa => 'Int', xmlname => 'runningCount', request_name => 'runningCount', traits => ['Unwrapped','NameInRequest']);
   has ServiceArn => (is => 'ro', isa => 'Str', xmlname => 'serviceArn', request_name => 'serviceArn', traits => ['Unwrapped','NameInRequest']);
@@ -93,6 +95,17 @@ definition), and the container port to access from the load balancer.
 =head2 PendingCount => Int
 
   The number of tasks in the cluster that are in the C<PENDING> state.
+
+
+=head2 PlacementConstraints => ArrayRef[L<Paws::ECS::PlacementConstraint>]
+
+  The placement constraints for the tasks in the service.
+
+
+=head2 PlacementStrategy => ArrayRef[L<Paws::ECS::PlacementStrategy>]
+
+  The placement strategy that determines how tasks for the service are
+placed.
 
 
 =head2 RoleArn => Str

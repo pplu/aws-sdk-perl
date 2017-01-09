@@ -3,6 +3,7 @@ package Paws::CloudSearch::ListDomainNamesResponse;
   use Moose;
   has DomainNames => (is => 'ro', isa => 'Paws::CloudSearch::DomainNameMap');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -19,6 +20,7 @@ Paws::CloudSearch::ListDomainNamesResponse
 The names of the search domains owned by an account.
 
 
+=head2 _request_id => Str
 
 
 =cut

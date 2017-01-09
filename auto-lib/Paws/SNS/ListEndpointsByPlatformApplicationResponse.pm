@@ -4,6 +4,7 @@ package Paws::SNS::ListEndpointsByPlatformApplicationResponse;
   has Endpoints => (is => 'ro', isa => 'ArrayRef[Paws::SNS::Endpoint]');
   has NextToken => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -20,7 +21,6 @@ Paws::SNS::ListEndpointsByPlatformApplicationResponse
 Endpoints returned for ListEndpointsByPlatformApplication action.
 
 
-
 =head2 NextToken => Str
 
 NextToken string is returned when calling
@@ -28,6 +28,7 @@ ListEndpointsByPlatformApplication action if additional records are
 available after the first page results.
 
 
+=head2 _request_id => Str
 
 
 =cut

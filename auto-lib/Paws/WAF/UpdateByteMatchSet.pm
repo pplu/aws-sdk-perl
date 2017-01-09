@@ -57,12 +57,18 @@ data types:
 
 =over
 
-=item * ByteMatchSetUpdate: Contains C<Action> and C<ByteMatchTuple>
+=item *
 
-=item * ByteMatchTuple: Contains C<FieldToMatch>,
-C<PositionalConstraint>, C<TargetString>, and C<TextTransformation>
+ByteMatchSetUpdate: Contains C<Action> and C<ByteMatchTuple>
 
-=item * FieldToMatch: Contains C<Data> and C<Type>
+=item *
+
+ByteMatchTuple: Contains C<FieldToMatch>, C<PositionalConstraint>,
+C<TargetString>, and C<TextTransformation>
+
+=item *
+
+FieldToMatch: Contains C<Data> and C<Type>
 
 =back
 

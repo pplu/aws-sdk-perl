@@ -1,5 +1,6 @@
 package Paws::ElastiCache::Snapshot;
   use Moose;
+  has AutomaticFailover => (is => 'ro', isa => 'Str');
   has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Bool');
   has CacheClusterCreateTime => (is => 'ro', isa => 'Str');
   has CacheClusterId => (is => 'ro', isa => 'Str');
@@ -8,11 +9,14 @@ package Paws::ElastiCache::Snapshot;
   has CacheSubnetGroupName => (is => 'ro', isa => 'Str');
   has Engine => (is => 'ro', isa => 'Str');
   has EngineVersion => (is => 'ro', isa => 'Str');
-  has NodeSnapshots => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::NodeSnapshot]');
+  has NodeSnapshots => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::NodeSnapshot]', request_name => 'NodeSnapshot', traits => ['NameInRequest']);
   has NumCacheNodes => (is => 'ro', isa => 'Int');
+  has NumNodeGroups => (is => 'ro', isa => 'Int');
   has Port => (is => 'ro', isa => 'Int');
   has PreferredAvailabilityZone => (is => 'ro', isa => 'Str');
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
+  has ReplicationGroupDescription => (is => 'ro', isa => 'Str');
+  has ReplicationGroupId => (is => 'ro', isa => 'Str');
   has SnapshotName => (is => 'ro', isa => 'Str');
   has SnapshotRetentionLimit => (is => 'ro', isa => 'Int');
   has SnapshotSource => (is => 'ro', isa => 'Str');
@@ -39,21 +43,43 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::ElastiCache::Snapshot object:
 
-  $service_obj->Method(Att1 => { AutoMinorVersionUpgrade => $value, ..., VpcId => $value  });
+  $service_obj->Method(Att1 => { AutomaticFailover => $value, ..., VpcId => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::ElastiCache::Snapshot object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->AutoMinorVersionUpgrade
+  $result->Att1->AutomaticFailover
 
 =head1 DESCRIPTION
 
-Represents a copy of an entire cache cluster as of the time when the
-snapshot was taken.
+Represents a copy of an entire Redis cache cluster as of the time when
+the snapshot was taken.
 
 =head1 ATTRIBUTES
+
+
+=head2 AutomaticFailover => Str
+
+  Indicates the status of Multi-AZ for the source replication group.
+
+ElastiCache Multi-AZ replication groups are not supported on:
+
+=over
+
+=item *
+
+Redis versions earlier than 2.8.6.
+
+=item *
+
+Redis (cluster mode disabled):T1 and T2 cache node types.
+
+Redis (cluster mode enabled): T1 node types.
+
+=back
+
 
 
 =head2 AutoMinorVersionUpgrade => Bool
@@ -90,7 +116,9 @@ General purpose:
 
 Current generation: C<cache.t2.micro>, C<cache.t2.small>,
 C<cache.t2.medium>, C<cache.m3.medium>, C<cache.m3.large>,
-C<cache.m3.xlarge>, C<cache.m3.2xlarge>
+C<cache.m3.xlarge>, C<cache.m3.2xlarge>, C<cache.m4.large>,
+C<cache.m4.xlarge>, C<cache.m4.2xlarge>, C<cache.m4.4xlarge>,
+C<cache.m4.10xlarge>
 
 =item *
 
@@ -129,21 +157,24 @@ B<Notes:>
 
 =item *
 
-All t2 instances are created in an Amazon Virtual Private Cloud (VPC).
+All T2 instances are created in an Amazon Virtual Private Cloud (Amazon
+VPC).
 
 =item *
 
-Redis backup/restore is not supported for t2 instances.
+Redis backup/restore is not supported for Redis (cluster mode disabled)
+T1 and T2 instances. Backup/restore is supported on Redis (cluster mode
+enabled) T2 instances.
 
 =item *
 
-Redis Append-only files (AOF) functionality is not supported for t1 or
-t2 instances.
+Redis Append-only files (AOF) functionality is not supported for T1 or
+T2 instances.
 
 =back
 
-For a complete listing of cache node types and specifications, see
-Amazon ElastiCache Product Features and Details and Cache Node
+For a complete listing of node types and specifications, see Amazon
+ElastiCache Product Features and Details and either Cache Node
 Type-Specific Parameters for Memcached or Cache Node Type-Specific
 Parameters for Redis.
 
@@ -162,7 +193,7 @@ cluster.
 
 =head2 Engine => Str
 
-  The name of the cache engine (I<memcached> or I<redis>) used by the
+  The name of the cache engine (C<memcached> or C<redis>) used by the
 source cache cluster.
 
 
@@ -185,6 +216,13 @@ For clusters running Redis, this value must be 1. For clusters running
 Memcached, this value must be between 1 and 20.
 
 
+=head2 NumNodeGroups => Int
+
+  The number of node groups (shards) in this snapshot. When restoring
+from a snapshot, the number of node groups (shards) in the snapshot and
+in the restored replication group must be the same.
+
+
 =head2 Port => Int
 
   The port number used by each cache nodes in the source cache cluster.
@@ -198,10 +236,12 @@ located.
 
 =head2 PreferredMaintenanceWindow => Str
 
-  Specifies the weekly time range during which maintenance on the cache
-cluster is performed. It is specified as a range in the format
+  Specifies the weekly time range during which maintenance on the cluster
+is performed. It is specified as a range in the format
 ddd:hh24:mi-ddd:hh24:mi (24H Clock UTC). The minimum maintenance window
-is a 60 minute period. Valid values for C<ddd> are:
+is a 60 minute period.
+
+Valid values for C<ddd> are:
 
 =over
 
@@ -235,25 +275,35 @@ C<sat>
 
 =back
 
-Example: C<sun:05:00-sun:09:00>
+Example: C<sun:23:00-mon:01:30>
+
+
+=head2 ReplicationGroupDescription => Str
+
+  A description of the source replication group.
+
+
+=head2 ReplicationGroupId => Str
+
+  The unique identifier of the source replication group.
 
 
 =head2 SnapshotName => Str
 
   The name of a snapshot. For an automatic snapshot, the name is
-system-generated; for a manual snapshot, this is the user-provided
+system-generated. For a manual snapshot, this is the user-provided
 name.
 
 
 =head2 SnapshotRetentionLimit => Int
 
   For an automatic snapshot, the number of days for which ElastiCache
-will retain the snapshot before deleting it.
+retains the snapshot before deleting it.
 
-For manual snapshots, this field reflects the I<SnapshotRetentionLimit>
+For manual snapshots, this field reflects the C<SnapshotRetentionLimit>
 for the source cache cluster when the snapshot was created. This field
 is otherwise ignored: Manual snapshots do not expire, and can only be
-deleted using the I<DeleteSnapshot> action.
+deleted using the C<DeleteSnapshot> operation.
 
 B<Important> If the value of SnapshotRetentionLimit is set to zero (0),
 backups are turned off.

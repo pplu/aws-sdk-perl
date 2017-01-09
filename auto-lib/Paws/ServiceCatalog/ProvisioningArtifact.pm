@@ -42,7 +42,7 @@ provisioned.
 
 =head2 CreatedTime => Str
 
-  The time that the artifact was created by the Administrator.
+  The UTC timestamp of the creation time.
 
 
 =head2 Description => Str

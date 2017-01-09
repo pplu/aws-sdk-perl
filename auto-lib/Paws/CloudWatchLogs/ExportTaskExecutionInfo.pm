@@ -39,12 +39,12 @@ Represents the status of an export task.
 
 =head2 CompletionTime => Int
 
-  A point in time when the export task got completed.
+  The completion time of the export task.
 
 
 =head2 CreationTime => Int
 
-  A point in time when the export task got created.
+  The creation time of the export task.
 
 
 

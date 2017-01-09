@@ -1,0 +1,145 @@
+package Paws::Rekognition::FaceDetail;
+  use Moose;
+  has Beard => (is => 'ro', isa => 'Paws::Rekognition::Beard');
+  has BoundingBox => (is => 'ro', isa => 'Paws::Rekognition::BoundingBox');
+  has Confidence => (is => 'ro', isa => 'Num');
+  has Emotions => (is => 'ro', isa => 'ArrayRef[Paws::Rekognition::Emotion]');
+  has Eyeglasses => (is => 'ro', isa => 'Paws::Rekognition::Eyeglasses');
+  has EyesOpen => (is => 'ro', isa => 'Paws::Rekognition::EyeOpen');
+  has Gender => (is => 'ro', isa => 'Paws::Rekognition::Gender');
+  has Landmarks => (is => 'ro', isa => 'ArrayRef[Paws::Rekognition::Landmark]');
+  has MouthOpen => (is => 'ro', isa => 'Paws::Rekognition::MouthOpen');
+  has Mustache => (is => 'ro', isa => 'Paws::Rekognition::Mustache');
+  has Pose => (is => 'ro', isa => 'Paws::Rekognition::Pose');
+  has Quality => (is => 'ro', isa => 'Paws::Rekognition::ImageQuality');
+  has Smile => (is => 'ro', isa => 'Paws::Rekognition::Smile');
+  has Sunglasses => (is => 'ro', isa => 'Paws::Rekognition::Sunglasses');
+1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::Rekognition::FaceDetail
+
+=head1 USAGE
+
+This class represents one of two things:
+
+=head3 Arguments in a call to a service
+
+Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
+Each attribute should be used as a named argument in the calls that expect this type of object.
+
+As an example, if Att1 is expected to be a Paws::Rekognition::FaceDetail object:
+
+  $service_obj->Method(Att1 => { Beard => $value, ..., Sunglasses => $value  });
+
+=head3 Results returned from an API call
+
+Use accessors for each attribute. If Att1 is expected to be an Paws::Rekognition::FaceDetail object:
+
+  $result = $service_obj->Method(...);
+  $result->Att1->Beard
+
+=head1 DESCRIPTION
+
+Structure containing attributes of the face that the algorithm
+detected.
+
+=head1 ATTRIBUTES
+
+
+=head2 Beard => L<Paws::Rekognition::Beard>
+
+  Indicates whether or not the face has a beard, and the confidence level
+in the determination.
+
+
+=head2 BoundingBox => L<Paws::Rekognition::BoundingBox>
+
+  Bounding box of the face.
+
+
+=head2 Confidence => Num
+
+  Confidence level that the bounding box contains a face (and not a
+different object such as a tree).
+
+
+=head2 Emotions => ArrayRef[L<Paws::Rekognition::Emotion>]
+
+  The emotions detected on the face, and the confidence level in the
+determination. For example, HAPPY, SAD, and ANGRY.
+
+
+=head2 Eyeglasses => L<Paws::Rekognition::Eyeglasses>
+
+  Indicates whether or not the face is wearing eye glasses, and the
+confidence level in the determination.
+
+
+=head2 EyesOpen => L<Paws::Rekognition::EyeOpen>
+
+  Indicates whether or not the eyes on the face are open, and the
+confidence level in the determination.
+
+
+=head2 Gender => L<Paws::Rekognition::Gender>
+
+  Gender of the face and the confidence level in the determination.
+
+
+=head2 Landmarks => ArrayRef[L<Paws::Rekognition::Landmark>]
+
+  Indicates the location of the landmark on the face.
+
+
+=head2 MouthOpen => L<Paws::Rekognition::MouthOpen>
+
+  Indicates whether or not the mouth on the face is open, and the
+confidence level in the determination.
+
+
+=head2 Mustache => L<Paws::Rekognition::Mustache>
+
+  Indicates whether or not the face has a mustache, and the confidence
+level in the determination.
+
+
+=head2 Pose => L<Paws::Rekognition::Pose>
+
+  Indicates the pose of the face as determined by pitch, roll, and the
+yaw.
+
+
+=head2 Quality => L<Paws::Rekognition::ImageQuality>
+
+  Identifies image brightness and sharpness.
+
+
+=head2 Smile => L<Paws::Rekognition::Smile>
+
+  Indicates whether or not the face is smiling, and the confidence level
+in the determination.
+
+
+=head2 Sunglasses => L<Paws::Rekognition::Sunglasses>
+
+  Indicates whether or not the face is wearing sunglasses, and the
+confidence level in the determination.
+
+
+
+=head1 SEE ALSO
+
+This class forms part of L<Paws>, describing an object used in L<Paws::Rekognition>
+
+=head1 BUGS and CONTRIBUTIONS
+
+The source code is located here: https://github.com/pplu/aws-sdk-perl
+
+Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+
+=cut
+

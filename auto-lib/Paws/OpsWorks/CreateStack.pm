@@ -117,7 +117,7 @@ default value for Linux stacks is currently 11.4.
 A string that contains user-defined, custom JSON. It can be used to
 override the corresponding default stack configuration attribute values
 or to pass data to recipes. The string should be in the following
-escape characters such as '"':
+format:
 
 C<"{\"key1\": \"value1\", \"key2\": \"value2\",...}">
 

@@ -1,9 +1,9 @@
 
 package Paws::Route53::ListTrafficPolicyVersions;
   use Moose;
-  has Id => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'Id' , required => 1);
-  has MaxItems => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'maxitems' );
-  has TrafficPolicyVersionMarker => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'trafficpolicyversion' );
+  has Id => (is => 'ro', isa => 'Str', uri_name => 'Id', traits => ['ParamInURI'], required => 1);
+  has MaxItems => (is => 'ro', isa => 'Str', query_name => 'maxitems', traits => ['ParamInQuery']);
+  has TrafficPolicyVersionMarker => (is => 'ro', isa => 'Str', query_name => 'trafficpolicyversion', traits => ['ParamInQuery']);
 
   use MooseX::ClassAttribute;
 

@@ -3,6 +3,7 @@ package Paws::RDS::CreateDBSnapshotResult;
   use Moose;
   has DBSnapshot => (is => 'ro', isa => 'Paws::RDS::DBSnapshot');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -19,6 +20,7 @@ Paws::RDS::CreateDBSnapshotResult
 
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -1,6 +1,6 @@
 package Paws::CloudFront::TagKeys;
   use Moose;
-  has Items => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has Items => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'Key', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -31,14 +31,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 
 =head1 DESCRIPTION
 
-A complex type that contains zero or more Tag elements.
+A complex type that contains zero or more C<Tag> elements.
 
 =head1 ATTRIBUTES
 
 
 =head2 Items => ArrayRef[Str|Undef]
 
-  A complex type that contains Tag key elements
+  A complex type that contains C<Tag> key elements.
 
 
 

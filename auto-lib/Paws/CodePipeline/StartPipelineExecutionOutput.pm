@@ -3,6 +3,7 @@ package Paws::CodePipeline::StartPipelineExecutionOutput;
   use Moose;
   has PipelineExecutionId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'pipelineExecutionId' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -19,6 +20,7 @@ The unique system-generated ID of the pipeline execution that was
 started.
 
 
+=head2 _request_id => Str
 
 
 =cut

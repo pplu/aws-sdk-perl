@@ -3,6 +3,7 @@ package Paws::ECS::TaskDefinition;
   has ContainerDefinitions => (is => 'ro', isa => 'ArrayRef[Paws::ECS::ContainerDefinition]', xmlname => 'containerDefinitions', request_name => 'containerDefinitions', traits => ['Unwrapped','NameInRequest']);
   has Family => (is => 'ro', isa => 'Str', xmlname => 'family', request_name => 'family', traits => ['Unwrapped','NameInRequest']);
   has NetworkMode => (is => 'ro', isa => 'Str', xmlname => 'networkMode', request_name => 'networkMode', traits => ['Unwrapped','NameInRequest']);
+  has PlacementConstraints => (is => 'ro', isa => 'ArrayRef[Paws::ECS::TaskDefinitionPlacementConstraint]', xmlname => 'placementConstraints', request_name => 'placementConstraints', traits => ['Unwrapped','NameInRequest']);
   has RequiresAttributes => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Attribute]', xmlname => 'requiresAttributes', request_name => 'requiresAttributes', traits => ['Unwrapped','NameInRequest']);
   has Revision => (is => 'ro', isa => 'Int', xmlname => 'revision', request_name => 'revision', traits => ['Unwrapped','NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', xmlname => 'status', request_name => 'status', traits => ['Unwrapped','NameInRequest']);
@@ -70,6 +71,11 @@ network stack provided by the C<bridge> mode.
 
 For more information, see Network settings in the I<Docker run
 reference>.
+
+
+=head2 PlacementConstraints => ArrayRef[L<Paws::ECS::TaskDefinitionPlacementConstraint>]
+
+  An array of placement constraint objects to use for tasks.
 
 
 =head2 RequiresAttributes => ArrayRef[L<Paws::ECS::Attribute>]

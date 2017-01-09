@@ -46,7 +46,10 @@ C<WebACL>.
 
 =head2 B<REQUIRED> ActivatedRule => L<Paws::WAF::ActivatedRule>
 
-  
+  The C<ActivatedRule> object in an UpdateWebACL request specifies a
+C<Rule> that you want to insert or delete, the priority of the C<Rule>
+in the C<WebACL>, and the action that you want AWS WAF to take when a
+web request matches the C<Rule> (C<ALLOW>, C<BLOCK>, or C<COUNT>).
 
 
 

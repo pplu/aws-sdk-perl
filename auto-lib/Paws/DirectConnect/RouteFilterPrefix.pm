@@ -42,7 +42,9 @@ Gateway Protocol (BGP) over a public virtual interface.
   CIDR notation for the advertised route. Multiple routes are separated
 by commas.
 
-Example: 10.10.10.0/24,10.10.11.0/24
+IPv6 CIDRs must be at least a /64 or shorter
+
+Example: 10.10.10.0/24,10.10.11.0/24,2001:db8::/64
 
 
 

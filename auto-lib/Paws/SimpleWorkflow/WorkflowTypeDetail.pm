@@ -4,6 +4,7 @@ package Paws::SimpleWorkflow::WorkflowTypeDetail;
   has Configuration => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowTypeConfiguration', traits => ['Unwrapped'], xmlname => 'configuration' , required => 1);
   has TypeInfo => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowTypeInfo', traits => ['Unwrapped'], xmlname => 'typeInfo' , required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -18,7 +19,6 @@ Paws::SimpleWorkflow::WorkflowTypeDetail
 
 Configuration settings of the workflow type registered through
 RegisterWorkflowType
-
 
 
 =head2 B<REQUIRED> TypeInfo => L<Paws::SimpleWorkflow::WorkflowTypeInfo>
@@ -42,6 +42,7 @@ of this type.
 
 
 
+=head2 _request_id => Str
 
 
 =cut

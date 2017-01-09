@@ -6,11 +6,14 @@ package Paws::SQS::QueueAttributeMap;
   class_has xml_keys =>(is => 'ro', default => 'Name');
   class_has xml_values =>(is => 'ro', default => 'Value');
 
+  has All => (is => 'ro', isa => 'Str');
   has ApproximateNumberOfMessages => (is => 'ro', isa => 'Str');
   has ApproximateNumberOfMessagesDelayed => (is => 'ro', isa => 'Str');
   has ApproximateNumberOfMessagesNotVisible => (is => 'ro', isa => 'Str');
+  has ContentBasedDeduplication => (is => 'ro', isa => 'Str');
   has CreatedTimestamp => (is => 'ro', isa => 'Str');
   has DelaySeconds => (is => 'ro', isa => 'Str');
+  has FifoQueue => (is => 'ro', isa => 'Str');
   has LastModifiedTimestamp => (is => 'ro', isa => 'Str');
   has MaximumMessageSize => (is => 'ro', isa => 'Str');
   has MessageRetentionPeriod => (is => 'ro', isa => 'Str');
@@ -38,20 +41,23 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SQS::QueueAttributeMap object:
 
-  $service_obj->Method(Att1 => { ApproximateNumberOfMessages => $value, ..., VisibilityTimeout => $value  });
+  $service_obj->Method(Att1 => { All => $value, ..., VisibilityTimeout => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::SQS::QueueAttributeMap object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->ApproximateNumberOfMessages
+  $result->Att1->All
 
 =head1 DESCRIPTION
 
 This class has no description
 
 =head1 ATTRIBUTES
+
+
+=head2 All => Str
 
 
 =head2 ApproximateNumberOfMessages => Str
@@ -63,10 +69,16 @@ This class has no description
 =head2 ApproximateNumberOfMessagesNotVisible => Str
 
 
+=head2 ContentBasedDeduplication => Str
+
+
 =head2 CreatedTimestamp => Str
 
 
 =head2 DelaySeconds => Str
+
+
+=head2 FifoQueue => Str
 
 
 =head2 LastModifiedTimestamp => Str

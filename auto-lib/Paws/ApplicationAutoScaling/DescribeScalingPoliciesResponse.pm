@@ -4,6 +4,7 @@ package Paws::ApplicationAutoScaling::DescribeScalingPoliciesResponse;
   has NextToken => (is => 'ro', isa => 'Str');
   has ScalingPolicies => (is => 'ro', isa => 'ArrayRef[Paws::ApplicationAutoScaling::ScalingPolicy]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -16,12 +17,8 @@ Paws::ApplicationAutoScaling::DescribeScalingPoliciesResponse
 
 =head2 NextToken => Str
 
-The C<NextToken> value to include in a future
-C<DescribeScalingPolicies> request. When the results of a
-C<DescribeScalingPolicies> request exceed C<MaxResults>, this value can
-be used to retrieve the next page of results. This value is C<null>
-when there are no more results to return.
-
+The token required to get the next set of results. This value is
+C<null> if there are no more results to return.
 
 
 =head2 ScalingPolicies => ArrayRef[L<Paws::ApplicationAutoScaling::ScalingPolicy>]
@@ -29,6 +26,7 @@ when there are no more results to return.
 A list of scaling policy objects.
 
 
+=head2 _request_id => Str
 
 
 =cut

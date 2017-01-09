@@ -1,0 +1,6 @@
+---
+call: GetTopicAttributes
+service: SNS
+tests:
+  - op: eq
+    path: Attributes.Map.DisplayName

@@ -1,7 +1,7 @@
 package Paws::CognitoIdp::SmsConfigurationType;
   use Moose;
   has ExternalId => (is => 'ro', isa => 'Str');
-  has SnsCallerArn => (is => 'ro', isa => 'Str');
+  has SnsCallerArn => (is => 'ro', isa => 'Str', required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +42,7 @@ The SMS configuratoin type.
   The external ID.
 
 
-=head2 SnsCallerArn => Str
+=head2 B<REQUIRED> SnsCallerArn => Str
 
   The Amazon Resource Name (ARN) of the Amazon Simple Notification
 Service (SNS) caller.

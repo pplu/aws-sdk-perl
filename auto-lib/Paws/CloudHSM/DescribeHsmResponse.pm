@@ -23,6 +23,7 @@ package Paws::CloudHSM::DescribeHsmResponse;
   has VendorName => (is => 'ro', isa => 'Str');
   has VpcId => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -38,12 +39,10 @@ Paws::CloudHSM::DescribeHsmResponse
 The Availability Zone that the HSM is in.
 
 
-
 =head2 EniId => Str
 
 The identifier of the elastic network interface (ENI) attached to the
 HSM.
-
 
 
 =head2 EniIp => Str
@@ -51,11 +50,9 @@ HSM.
 The IP address assigned to the HSM's ENI.
 
 
-
 =head2 HsmArn => Str
 
 The ARN of the HSM.
-
 
 
 =head2 HsmType => Str
@@ -63,11 +60,9 @@ The ARN of the HSM.
 The HSM model type.
 
 
-
 =head2 IamRoleArn => Str
 
 The ARN of the IAM role assigned to the HSM.
-
 
 
 =head2 Partitions => ArrayRef[Str|Undef]
@@ -75,11 +70,9 @@ The ARN of the IAM role assigned to the HSM.
 The list of partitions on the HSM.
 
 
-
 =head2 SerialNumber => Str
 
 The serial number of the HSM.
-
 
 
 =head2 ServerCertLastUpdated => Str
@@ -87,11 +80,9 @@ The serial number of the HSM.
 The date and time that the server certificate was last updated.
 
 
-
 =head2 ServerCertUri => Str
 
 The URI of the certificate server.
-
 
 
 =head2 SoftwareVersion => Str
@@ -99,11 +90,9 @@ The URI of the certificate server.
 The HSM software version.
 
 
-
 =head2 SshKeyLastUpdated => Str
 
 The date and time that the SSH key was last updated.
-
 
 
 =head2 SshPublicKey => Str
@@ -111,17 +100,14 @@ The date and time that the SSH key was last updated.
 The public SSH key.
 
 
-
 =head2 Status => Str
 
 The status of the HSM.
 
 Valid values are: C<"PENDING">, C<"RUNNING">, C<"UPDATING">, C<"SUSPENDED">, C<"TERMINATING">, C<"TERMINATED">, C<"DEGRADED">
-
 =head2 StatusDetails => Str
 
 Contains additional information about the status of the HSM.
-
 
 
 =head2 SubnetId => Str
@@ -129,11 +115,9 @@ Contains additional information about the status of the HSM.
 The identifier of the subnet that the HSM is in.
 
 
-
 =head2 SubscriptionEndDate => Str
 
 The subscription end date.
-
 
 
 =head2 SubscriptionStartDate => Str
@@ -141,17 +125,14 @@ The subscription end date.
 The subscription start date.
 
 
-
 =head2 SubscriptionType => Str
 
 
 
 Valid values are: C<"PRODUCTION">
-
 =head2 VendorName => Str
 
 The name of the HSM vendor.
-
 
 
 =head2 VpcId => Str
@@ -159,6 +140,7 @@ The name of the HSM vendor.
 The identifier of the VPC that the HSM is in.
 
 
+=head2 _request_id => Str
 
 
 =cut

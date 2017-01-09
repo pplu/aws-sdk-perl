@@ -35,8 +35,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GameLift::E
 
 =head1 DESCRIPTION
 
-Log entry describing an event involving an Amazon GameLift resource
-(such as a fleet).
+Log entry describing an event involving Amazon GameLift resources (such
+as a fleet). In addition to tracking activity, event codes and messages
+can provide additional information for troubleshooting and debugging
+problems.
 
 =head1 ATTRIBUTES
 
@@ -54,7 +56,7 @@ Log entry describing an event involving an Amazon GameLift resource
 =head2 EventTime => Str
 
   Time stamp indicating when this event occurred. Format is a number
-expressed in Unix time as milliseconds (ex: "1469498468.057".
+expressed in Unix time as milliseconds (ex: "1469498468.057").
 
 
 =head2 Message => Str

@@ -1,7 +1,9 @@
 
 package Paws::CloudFormation::GetTemplate;
   use Moose;
-  has StackName => (is => 'ro', isa => 'Str', required => 1);
+  has ChangeSetName => (is => 'ro', isa => 'Str');
+  has StackName => (is => 'ro', isa => 'Str');
+  has TemplateStage => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -33,7 +35,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> StackName => Str
+=head2 ChangeSetName => Str
+
+The name or Amazon Resource Name (ARN) of a change set for which AWS
+CloudFormation returns the associated template. If you specify a name,
+you must also specify the C<StackName>.
+
+
+
+=head2 StackName => Str
 
 The name or the unique stack ID that is associated with the stack,
 which are not always interchangeable:
@@ -54,6 +64,19 @@ Deleted stacks: You must specify the unique stack ID.
 Default: There is no default value.
 
 
+
+=head2 TemplateStage => Str
+
+For templates that include transforms, the stage of the template that
+AWS CloudFormation returns. To get the user-submitted template, specify
+C<Original>. To get the template after AWS CloudFormation has processed
+all transforms, specify C<Processed>.
+
+If the template doesn't include transforms, C<Original> and
+C<Processed> return the same template. By default, AWS CloudFormation
+specifies C<Original>.
+
+Valid values are: C<"Original">, C<"Processed">
 
 
 =head1 SEE ALSO

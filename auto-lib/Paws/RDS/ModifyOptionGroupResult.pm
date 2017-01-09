@@ -3,6 +3,7 @@ package Paws::RDS::ModifyOptionGroupResult;
   use Moose;
   has OptionGroup => (is => 'ro', isa => 'Paws::RDS::OptionGroup');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -19,6 +20,7 @@ Paws::RDS::ModifyOptionGroupResult
 
 
 
+=head2 _request_id => Str
 
 
 =cut

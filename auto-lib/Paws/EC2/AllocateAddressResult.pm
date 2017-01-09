@@ -5,6 +5,7 @@ package Paws::EC2::AllocateAddressResult;
   has Domain => (is => 'ro', isa => 'Str', xmlname => 'domain', traits => ['Unwrapped',]);
   has PublicIp => (is => 'ro', isa => 'Str', xmlname => 'publicIp', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -22,19 +23,18 @@ Paws::EC2::AllocateAddressResult
 Elastic IP address for use with instances in a VPC.
 
 
-
 =head2 Domain => Str
 
 Indicates whether this Elastic IP address is for use with instances in
 EC2-Classic (C<standard>) or instances in a VPC (C<vpc>).
 
 Valid values are: C<"vpc">, C<"standard">
-
 =head2 PublicIp => Str
 
 The Elastic IP address.
 
 
+=head2 _request_id => Str
 
 
 =cut

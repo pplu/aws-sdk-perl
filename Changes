@@ -1,4 +1,13 @@
-0.29 
+0.30 04 Jan 2017 
+ - Specify minumum perl version (PR #137)
+ - Update RestXmlCaller.pm to fix malformed xml schema issues (PR #133)
+ - Don't trim values coming from APIs (Issue #130)
+ - CodeDeploy API update: IamSessionArn, IamUserArn
+ - ECS API update: Attributes and Placement constraints
+
+0.29 27 Dec 2016
+ - New functionality: Enabled and documented paginators (methods that repeatedly call methods that 
+   return partial responses)
  - Remove under work warning from JSON-REST services: ApiGateway,CloudSearchDomain,CognitoSync,
    EFS, ES, ElasticTranscoder, Glacier, IoT, IoTData, Lambda
    This means that Bugs and error reports for these APIs will be handled with priority, as they
@@ -10,21 +19,75 @@
    Method(StringParameter => "33"). Paws will now auto-stringify the contents in these parameters
    so AWS will accept them correctly, and the programmer doesn't have to worry about stringifying
    his inputs. Thanks to ilmari and rpcme
- - RDS API update: DescribeSourceRegions
- - ServiceCatalog API update: AccessLevelFilter support
- - CloudFront API update: version 2016-09-07 support
+ - Fixed Bug (Issue #107): Some services transmit undef as a valid value in an Array of things (rpcme)
+ - Support for S3 is now much better. Multipart uploads are working (glenveegee)
+ - Don't depend on Crypt::Digest::SHA256. Use Digest::SHA (Grinzz)
+ - New API: Budgets
+ - New API: SMS (Server Migration Service)
+ - New API: AWS Polly
+ - New API: Lightsail
+ - New API: Rekognition
+ - New API: XRay
+ - New API: StepFunctions
+ - New API: Shield
+ - New API: Pinpoint
+ - New API: OpsworksCM
+ - New API: Health
+ - New API: AppStream (v2)
+ - New API: CodeBuild
+ - New API: WAFRegional
+ - New API: Batch
+ - SSM API update: new capabilities like patch applying, inventory, maintenance windows
+ - Snowball API update: Cluster operations
+ - SES API update: Tagging and ConfigurationSets
+ - DirectConnect API update: Tagging
+ - CloudFormation API update
+ - ElasticBeanstalk API update
+ - Gamelift API update: DescribeInstances
+ - ECR API update: DescribeImages
+ - ACM API update: ImportCertificate
+ - RDS API update: DescribeSourceRegions, Add and Remove RoleToDBCluster, more info in DBClusters, copy 
+   encrypted snapshots between regions
+ - ServiceCatalog API update: AccessLevelFilter, Constraint and Portfolio support
+ - CloudFront API update: version 2016-11-25 support
  - CodePipeline API update: GetPipelineExecution
  - CognitoIdp API update: UserImportJob operations
- - Gamelift API update: OperatingSystem for CreateBuild
- - Route53 API update: TestDNSAnswer
+ - Gamelift API update: OperatingSystem for CreateBuild, GetInstanceAccess
+ - Route53 API update: TestDNSAnswer, VPCAssociationAuthorization ops. ListChangeBatches ops gone
  - CodeDeploy API update
  - RedShift API update: Enhanced VPC Routing
  - RDS API update: Timezones and ReadEnpoints
- - EMR API update: SecurityConfigurations
+ - EMR API update: SecurityConfigurations, AutoScaling
  - IoT API update
  - CloudFormation API update: RoleArn
- - EC2 API update: ReservedInstancesExchangeQuote
- - S3 API update
+ - EC2 API update: ReservedInstancesExchangeQuote, IPv6 support
+ - S3 API update: Analytics, Inventory and Metrics
+ - ElastiCache API update
+ - IoT API update: DynamoV2 behaviour
+ - CognitoIdp API update: AdminCreateUser, RoleMappings
+ - Kinesis API update: UpdateShardCount, DescribeLimits
+ - ElastiCache API update: authenticated cache clusters
+ - Cloudwatch Logs API update: DescribeMetricFilters and docu
+ - DS API update: SchemaExtension support
+ - SQS API update: FIFO queues
+ - Lambda API update: Environment variables support, GetAccountSettings, DeadLetter
+ - MarketplaceMetering API update
+ - Glacier API update: ProvisionedCapacity ops
+ - ElasticTranscoder API update
+ - CloudTrail API update: EventSelectors
+ - ECS API update: support for Version attribute in tasks
+ - ApiGateway API update
+ - CloudWatch API update
+ - DirectConnect API update: BGP peering
+ - Config: API update
+ - DMS API update: ModifyReplicationTask
+ - CloudWatchLogs API update: TagLogGroups
+ - SSM API update: Patching operations
+ - Discovery API update: Application Discovery
+ - CognitoIdp API update: Groups for user pools
+ - StorageGateway API update: NFS mounts operations
+ - Firehose API update
+ - IAM API update: ServiceSpecificCredential
 
 0.28 30 Aug 2015 23:45:00
  - On errors 503 XMLResponse would not process the error correctly (returning

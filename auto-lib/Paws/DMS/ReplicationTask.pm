@@ -11,6 +11,7 @@ package Paws::DMS::ReplicationTask;
   has ReplicationTaskStats => (is => 'ro', isa => 'Paws::DMS::ReplicationTaskStats');
   has SourceEndpointArn => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
+  has StopReason => (is => 'ro', isa => 'Str');
   has TableMappings => (is => 'ro', isa => 'Str');
   has TargetEndpointArn => (is => 'ro', isa => 'Str');
 1;
@@ -123,6 +124,11 @@ endpoint.
 =head2 Status => Str
 
   The status of the replication task.
+
+
+=head2 StopReason => Str
+
+  The reason the replication task was stopped.
 
 
 =head2 TableMappings => Str

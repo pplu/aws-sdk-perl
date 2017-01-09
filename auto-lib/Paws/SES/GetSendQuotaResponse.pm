@@ -5,6 +5,7 @@ package Paws::SES::GetSendQuotaResponse;
   has MaxSendRate => (is => 'ro', isa => 'Num');
   has SentLast24Hours => (is => 'ro', isa => 'Num');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -22,7 +23,6 @@ The maximum number of emails the user is allowed to send in a 24-hour
 interval. A value of -1 signifies an unlimited quota.
 
 
-
 =head2 MaxSendRate => Num
 
 The maximum number of emails that Amazon SES can accept from the user's
@@ -32,12 +32,12 @@ The rate at which Amazon SES accepts the user's messages might be less
 than the maximum send rate.
 
 
-
 =head2 SentLast24Hours => Num
 
 The number of emails sent during the previous 24 hours.
 
 
+=head2 _request_id => Str
 
 
 =cut

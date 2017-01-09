@@ -78,8 +78,9 @@ C<INSUFFICIENT_DATA> value to AWS Config.
   The time of the event in AWS Config that triggered the evaluation. For
 event-based evaluations, the time indicates when AWS Config created the
 configuration item that triggered the evaluation. For periodic
-evaluations, the time indicates when AWS Config delivered the
-configuration snapshot that triggered the evaluation.
+evaluations, the time indicates when AWS Config triggered the
+evaluation at the frequency that you specified (for example, every 24
+hours).
 
 
 

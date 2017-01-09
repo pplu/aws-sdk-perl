@@ -33,24 +33,24 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudWatchL
 
 =head1 DESCRIPTION
 
-This class has no description
+Represents a matched event.
 
 =head1 ATTRIBUTES
 
 
 =head2 EventMessage => Str
 
-  
+  The raw event data.
 
 
 =head2 EventNumber => Int
 
-  
+  The event number.
 
 
 =head2 ExtractedValues => L<Paws::CloudWatchLogs::ExtractedValues>
 
-  
+  The values extracted from the event data by the filter.
 
 
 

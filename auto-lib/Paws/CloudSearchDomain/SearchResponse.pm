@@ -6,6 +6,7 @@ package Paws::CloudSearchDomain::SearchResponse;
   has Stats => (is => 'ro', isa => 'Paws::CloudSearchDomain::Stats');
   has Status => (is => 'ro', isa => 'Paws::CloudSearchDomain::SearchStatus');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -22,11 +23,9 @@ Paws::CloudSearchDomain::SearchResponse
 The requested facet information.
 
 
-
 =head2 Hits => L<Paws::CloudSearchDomain::Hits>
 
 The documents that match the search criteria.
-
 
 
 =head2 Stats => L<Paws::CloudSearchDomain::Stats>
@@ -34,12 +33,12 @@ The documents that match the search criteria.
 The requested field statistics information.
 
 
-
 =head2 Status => L<Paws::CloudSearchDomain::SearchStatus>
 
 The status information returned for the search request.
 
 
+=head2 _request_id => Str
 
 
 =cut

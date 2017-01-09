@@ -3,6 +3,7 @@ package Paws::ElastiCache::PurchaseReservedCacheNodesOfferingResult;
   use Moose;
   has ReservedCacheNode => (is => 'ro', isa => 'Paws::ElastiCache::ReservedCacheNode');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -19,6 +20,7 @@ Paws::ElastiCache::PurchaseReservedCacheNodesOfferingResult
 
 
 
+=head2 _request_id => Str
 
 
 =cut

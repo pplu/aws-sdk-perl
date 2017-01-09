@@ -3,6 +3,7 @@ package Paws::Discovery::ExportConfigurationsResponse;
   use Moose;
   has ExportId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'exportId' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -18,6 +19,7 @@ Paws::Discovery::ExportConfigurationsResponse
 A unique identifier that you can use to query the export status.
 
 
+=head2 _request_id => Str
 
 
 =cut

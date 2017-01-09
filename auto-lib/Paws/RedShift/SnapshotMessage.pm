@@ -4,6 +4,7 @@ package Paws::RedShift::SnapshotMessage;
   has Marker => (is => 'ro', isa => 'Str');
   has Snapshots => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::Snapshot]', xmlname => 'Snapshot', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -25,12 +26,12 @@ the C<Marker> field is empty, all response records have been retrieved
 for the request.
 
 
-
 =head2 Snapshots => ArrayRef[L<Paws::RedShift::Snapshot>]
 
 A list of Snapshot instances.
 
 
+=head2 _request_id => Str
 
 
 =cut

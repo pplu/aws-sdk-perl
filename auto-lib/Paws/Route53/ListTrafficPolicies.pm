@@ -1,8 +1,8 @@
 
 package Paws::Route53::ListTrafficPolicies;
   use Moose;
-  has MaxItems => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'maxitems' );
-  has TrafficPolicyIdMarker => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'trafficpolicyid' );
+  has MaxItems => (is => 'ro', isa => 'Str', query_name => 'maxitems', traits => ['ParamInQuery']);
+  has TrafficPolicyIdMarker => (is => 'ro', isa => 'Str', query_name => 'trafficpolicyid', traits => ['ParamInQuery']);
 
   use MooseX::ClassAttribute;
 

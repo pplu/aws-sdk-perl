@@ -56,7 +56,7 @@ Contains information about a returned public key.
 
 =head2 Value => Str
 
-  The DER encoded public key value in PKCS
+  The DER encoded public key value in PKCS#1 format.
 
 
 

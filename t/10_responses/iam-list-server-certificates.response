@@ -5,17 +5,30 @@ content: |
       <IsTruncated>false</IsTruncated>
       <ServerCertificateMetadataList>
         <member>
-          <Expiration>2016-03-15T10:58:24Z</Expiration>
-          <ServerCertificateName>wildcard1</ServerCertificateName>
-          <Path>/production/</Path>
-          <Arn>arn:aws:iam::333333333333:server-certificate/production/wildcard1</Arn>
-          <UploadDate>2014-02-18T16:24:16Z</UploadDate>
-          <ServerCertificateId>AAAAAAAAAAAAAAAAAAAAA</ServerCertificateId>
+          <ServerCertificateName>ProdServerCert</ServerCertificateName>
+          <Path>/company/servercerts/</Path>
+          <Arn>arn:aws:iam::123456789012:server-certificate/company/servercerts/ProdServerCert</Arn>
+          <UploadDate>2010-05-08T01:02:03.004Z</UploadDate>
+          <ServerCertificateId>ASCACKCEVSQ6CEXAMPLE1</ServerCertificateId>
+        </member>
+        <member>
+          <ServerCertificateName>BetaServerCert</ServerCertificateName>
+          <Path>/company/servercerts/</Path>
+          <Arn>arn:aws:iam::123456789012:server-certificate/company/servercerts/BetaServerCert</Arn>
+          <UploadDate>2010-05-08T02:03:01.004Z</UploadDate>
+          <ServerCertificateId>ASCACKCEVSQ6CEXAMPLE2</ServerCertificateId>
+        </member>
+        <member>
+          <ServerCertificateName>TestServerCert</ServerCertificateName>
+          <Path>/company/servercerts/</Path>
+          <Arn>arn:aws:iam::123456789012:server-certificate/company/servercerts/TestServerCert</Arn>
+          <UploadDate>2010-05-08T03:01:02.004Z</UploadDate>
+          <ServerCertificateId>ASCACKCEVSQ6CEXAMPLE3</ServerCertificateId>
         </member>
       </ServerCertificateMetadataList>
     </ListServerCertificatesResult>
     <ResponseMetadata>
-      <RequestId>7923397d-347f-11e4-b4f8-37c6eabd2d37</RequestId>
+      <RequestId>7a62c49f-347e-4fc4-9331-6e8eEXAMPLE</RequestId>
     </ResponseMetadata>
   </ListServerCertificatesResponse>
 headers: []

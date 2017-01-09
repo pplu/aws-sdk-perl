@@ -14,7 +14,7 @@ package Paws::EC2::AuthorizeSecurityGroupEgress;
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'AuthorizeSecurityGroupEgress');
-  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
   class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
@@ -43,8 +43,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 CidrIp => Str
 
-The CIDR IP address range. We recommend that you specify the CIDR range
-in a set of IP permissions instead.
+The CIDR IPv4 address range. We recommend that you specify the CIDR
+range in a set of IP permissions instead.
 
 
 

@@ -40,7 +40,8 @@ Information about the location of an application revision.
 
 =head2 GitHubLocation => L<Paws::CodeDeploy::GitHubLocation>
 
-  
+  Information about the location of application artifacts stored in
+GitHub.
 
 
 =head2 RevisionType => Str
@@ -63,7 +64,8 @@ GitHub: An application revision stored in GitHub.
 
 =head2 S3Location => L<Paws::CodeDeploy::S3Location>
 
-  
+  Information about the location of application artifacts stored in
+Amazon S3.
 
 
 

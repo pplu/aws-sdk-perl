@@ -3,6 +3,7 @@ package Paws::ELBv2::DescribeTargetHealthOutput;
   use Moose;
   has TargetHealthDescriptions => (is => 'ro', isa => 'ArrayRef[Paws::ELBv2::TargetHealthDescription]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -19,6 +20,7 @@ Paws::ELBv2::DescribeTargetHealthOutput
 Information about the health of the targets.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -5,6 +5,7 @@ package Paws::StorageGateway::CreateCachediSCSIVolume;
   has GatewayARN => (is => 'ro', isa => 'Str', required => 1);
   has NetworkInterfaceId => (is => 'ro', isa => 'Str', required => 1);
   has SnapshotId => (is => 'ro', isa => 'Str');
+  has SourceVolumeARN => (is => 'ro', isa => 'Str');
   has TargetName => (is => 'ro', isa => 'Str', required => 1);
   has VolumeSizeInBytes => (is => 'ro', isa => 'Int', required => 1);
 
@@ -59,6 +60,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 SnapshotId => Str
 
 
+
+
+
+=head2 SourceVolumeARN => Str
+
+The ARN for an existing volume. Specifying this ARN makes the new
+volume into an exact copy of the specified existing volume's latest
+recovery point. The C<VolumeSizeInBytes> value for this new volume must
+be equal to or larger than the size of the existing volume, in bytes.
 
 
 

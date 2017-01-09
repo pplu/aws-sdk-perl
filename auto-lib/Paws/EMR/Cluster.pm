@@ -1,6 +1,7 @@
 package Paws::EMR::Cluster;
   use Moose;
   has Applications => (is => 'ro', isa => 'ArrayRef[Paws::EMR::Application]');
+  has AutoScalingRole => (is => 'ro', isa => 'Str');
   has AutoTerminate => (is => 'ro', isa => 'Bool');
   has Configurations => (is => 'ro', isa => 'ArrayRef[Paws::EMR::Configuration]');
   has Ec2InstanceAttributes => (is => 'ro', isa => 'Paws::EMR::Ec2InstanceAttributes');
@@ -12,6 +13,7 @@ package Paws::EMR::Cluster;
   has ReleaseLabel => (is => 'ro', isa => 'Str');
   has RequestedAmiVersion => (is => 'ro', isa => 'Str');
   has RunningAmiVersion => (is => 'ro', isa => 'Str');
+  has ScaleDownBehavior => (is => 'ro', isa => 'Str');
   has SecurityConfiguration => (is => 'ro', isa => 'Str');
   has ServiceRole => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Paws::EMR::ClusterStatus');
@@ -58,6 +60,14 @@ The detailed description of the cluster.
   The applications installed on this cluster.
 
 
+=head2 AutoScalingRole => Str
+
+  An IAM role for automatic scaling policies. The default role is
+C<EMR_AutoScaling_DefaultRole>. The IAM role provides permissions that
+the automatic scaling feature requires to launch and terminate EC2
+instances in an instance group.
+
+
 =head2 AutoTerminate => Bool
 
   Specifies whether the cluster should terminate after completing all
@@ -73,7 +83,9 @@ The list of Configurations supplied to the EMR cluster.
 
 =head2 Ec2InstanceAttributes => L<Paws::EMR::Ec2InstanceAttributes>
 
-  
+  Provides information about the EC2 instances in a cluster grouped by
+category. For example, key name, subnet ID, IAM instance profile, and
+so on.
 
 
 =head2 Id => Str
@@ -121,6 +133,24 @@ only an approximation and does not reflect the actual billing rate.
 =head2 RunningAmiVersion => Str
 
   The AMI version running on this cluster.
+
+
+=head2 ScaleDownBehavior => Str
+
+  The way that individual Amazon EC2 instances terminate when an
+automatic scale-in activity occurs or an instance group is resized.
+C<TERMINATE_AT_INSTANCE_HOUR> indicates that Amazon EMR terminates
+nodes at the instance-hour boundary, regardless of when the request to
+terminate the instance was submitted. This option is only available
+with Amazon EMR 5.1.0 and later and is the default for clusters created
+using that version. C<TERMINATE_AT_TASK_COMPLETION> indicates that
+Amazon EMR blacklists and drains tasks from nodes before terminating
+the Amazon EC2 instances, regardless of the instance-hour boundary.
+With either behavior, Amazon EMR removes the least active nodes first
+and blocks instance termination if it could lead to HDFS corruption.
+C<TERMINATE_AT_TASK_COMPLETION> is available only in Amazon EMR version
+4.1.0 and later, and is the default for versions of Amazon EMR earlier
+than 5.1.0.
 
 
 =head2 SecurityConfiguration => Str

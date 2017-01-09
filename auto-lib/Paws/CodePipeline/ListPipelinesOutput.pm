@@ -4,6 +4,7 @@ package Paws::CodePipeline::ListPipelinesOutput;
   has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
   has Pipelines => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::PipelineSummary]', traits => ['Unwrapped'], xmlname => 'pipelines' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -21,12 +22,12 @@ identifier is also returned which can be used in a subsequent list
 pipelines call to return the next set of pipelines in the list.
 
 
-
 =head2 Pipelines => ArrayRef[L<Paws::CodePipeline::PipelineSummary>]
 
 The list of pipelines.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -35,8 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> AssessmentTemplateArns => ArrayRef[Str|Undef]
 
-The ARN that specifiesthe assessment templates that you want to
-describe.
+
 
 
 

@@ -3,6 +3,7 @@ package Paws::ElasticTranscoder::Job;
   has Arn => (is => 'ro', isa => 'Str');
   has Id => (is => 'ro', isa => 'Str');
   has Input => (is => 'ro', isa => 'Paws::ElasticTranscoder::JobInput');
+  has Inputs => (is => 'ro', isa => 'ArrayRef[Paws::ElasticTranscoder::JobInput]');
   has Output => (is => 'ro', isa => 'Paws::ElasticTranscoder::JobOutput');
   has OutputKeyPrefix => (is => 'ro', isa => 'Str');
   has Outputs => (is => 'ro', isa => 'ArrayRef[Paws::ElasticTranscoder::JobOutput]');
@@ -64,6 +65,13 @@ this value to get settings for the job or to delete the job.
 about the file that is being transcoded.
 
 
+=head2 Inputs => ArrayRef[L<Paws::ElasticTranscoder::JobInput>]
+
+  Information about the files that you're transcoding. If you specified
+multiple files for this job, Elastic Transcoder stitches the files
+together to make one output.
+
+
 =head2 Output => L<Paws::ElasticTranscoder::JobOutput>
 
   If you specified one output for a job, information about that output.
@@ -71,8 +79,10 @@ If you specified multiple outputs for a job, the Output object lists
 information about the first output. This duplicates the information
 that is listed for the first output in the Outputs object.
 
-Outputs recommended instead. A section of the request or response body
-that provides information about the transcoded (target) file.
+Outputs recommended instead.
+
+A section of the request or response body that provides information
+about the transcoded (target) file.
 
 
 =head2 OutputKeyPrefix => Str
@@ -107,10 +117,12 @@ transcoded files.
 
 =head2 Playlists => ArrayRef[L<Paws::ElasticTranscoder::Playlist>]
 
-  Outputs in Fragmented MP4 or MPEG-TS format only.If you specify a
-preset in C<PresetId> for which the value of C<Container> is fmp4
-(Fragmented MP4) or ts (MPEG-TS), C<Playlists> contains information
-about the master playlists that you want Elastic Transcoder to create.
+  Outputs in Fragmented MP4 or MPEG-TS format only.
+
+If you specify a preset in C<PresetId> for which the value of
+C<Container> is fmp4 (Fragmented MP4) or ts (MPEG-TS), C<Playlists>
+contains information about the master playlists that you want Elastic
+Transcoder to create.
 
 The maximum number of master playlists in a job is 30.
 
@@ -131,7 +143,7 @@ C<Canceled>, or C<Error>.
   User-defined metadata that you want to associate with an Elastic
 Transcoder job. You specify metadata in C<key/value> pairs, and you can
 add up to 10 C<key/value> pairs per job. Elastic Transcoder does not
-guarantee that C<key/value> pairs will be returned in the same order in
+guarantee that C<key/value> pairs are returned in the same order in
 which you specify them.
 
 Metadata C<keys> and C<values> must use characters from the following

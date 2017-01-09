@@ -34,6 +34,11 @@ package Paws::CloudTrail;
     my $call_object = $self->new_with_coercions('Paws::CloudTrail::DescribeTrails', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetEventSelectors {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudTrail::GetEventSelectors', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetTrailStatus {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudTrail::GetTrailStatus', @_);
@@ -52,6 +57,11 @@ package Paws::CloudTrail;
   sub LookupEvents {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudTrail::LookupEvents', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub PutEventSelectors {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudTrail::PutEventSelectors', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub RemoveTags {
@@ -74,8 +84,10 @@ package Paws::CloudTrail;
     my $call_object = $self->new_with_coercions('Paws::CloudTrail::UpdateTrail', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
 
-  sub operations { qw/AddTags CreateTrail DeleteTrail DescribeTrails GetTrailStatus ListPublicKeys ListTags LookupEvents RemoveTags StartLogging StopLogging UpdateTrail / }
+
+  sub operations { qw/AddTags CreateTrail DeleteTrail DescribeTrails GetEventSelectors GetTrailStatus ListPublicKeys ListTags LookupEvents PutEventSelectors RemoveTags StartLogging StopLogging UpdateTrail / }
 
 1;
 
@@ -124,8 +136,8 @@ managing errors, and retrying requests automatically. For information
 about the AWS SDKs, including how to download and install them, see the
 Tools for Amazon Web Services page.
 
-See the CloudTrail User Guide for information about the data that is
-included with each AWS API call listed in the log files.
+See the AWS CloudTrail User Guide for information about the data that
+is included with each AWS API call listed in the log files.
 
 =head1 METHODS
 
@@ -135,7 +147,7 @@ Each argument is described in detail in: L<Paws::CloudTrail::AddTags>
 
 Returns: a L<Paws::CloudTrail::AddTagsResponse> instance
 
-  Adds one or more tags to a trail, up to a limit of 10. Tags must be
+  Adds one or more tags to a trail, up to a limit of 50. Tags must be
 unique per trail. Overwrites an existing tag's value when a new value
 is specified for an existing tag key. If you specify a key without a
 value, the tag will be created with the specified key and a value of
@@ -174,6 +186,37 @@ Returns: a L<Paws::CloudTrail::DescribeTrailsResponse> instance
 
   Retrieves settings for the trail associated with the current region for
 your account.
+
+
+=head2 GetEventSelectors([TrailName => Str])
+
+Each argument is described in detail in: L<Paws::CloudTrail::GetEventSelectors>
+
+Returns: a L<Paws::CloudTrail::GetEventSelectorsResponse> instance
+
+  Describes the settings for the event selectors that you configured for
+your trail. The information returned for your event selectors includes
+the following:
+
+=over
+
+=item *
+
+The S3 objects that you are logging for data events.
+
+=item *
+
+If your event selector includes management events.
+
+=item *
+
+If your event selector includes read-only events, write-only events, or
+all.
+
+=back
+
+For more information, see Configuring Event Selectors for Trails in the
+I<AWS CloudTrail User Guide>.
 
 
 =head2 GetTrailStatus(Name => Str)
@@ -224,14 +267,36 @@ Returns: a L<Paws::CloudTrail::LookupEventsResponse> instance
   Looks up API activity events captured by CloudTrail that create,
 update, or delete resources in your account. Events for a region can be
 looked up for the times in which you had CloudTrail turned on in that
-region during the last seven days. Lookup supports five different
-attributes: time range (defined by a start time and end time), user
-name, event name, resource type, and resource name. All attributes are
-optional. The maximum number of attributes that can be specified in any
-one lookup request are time range and one other attribute. The default
-number of results returned is 10, with a maximum of 50 possible. The
-response includes a token that you can use to get the next page of
-results.
+region during the last seven days. Lookup supports the following
+attributes:
+
+=over
+
+=item *
+
+Event ID
+
+=item *
+
+Event name
+
+=item *
+
+Resource name
+
+=item *
+
+Resource type
+
+=item *
+
+User name
+
+=back
+
+All attributes are optional. The default number of results returned is
+10, with a maximum of 50 possible. The response includes a token that
+you can use to get the next page of results.
 
 The rate of lookup requests is limited to one per second per account.
 If this limit is exceeded, a throttling error occurs.
@@ -239,6 +304,58 @@ If this limit is exceeded, a throttling error occurs.
 Events that occurred during the selected time range will not be
 available for lookup if CloudTrail logging was not enabled when the
 events occurred.
+
+
+=head2 PutEventSelectors([EventSelectors => ArrayRef[L<Paws::CloudTrail::EventSelector>], TrailName => Str])
+
+Each argument is described in detail in: L<Paws::CloudTrail::PutEventSelectors>
+
+Returns: a L<Paws::CloudTrail::PutEventSelectorsResponse> instance
+
+  Configures an event selector for your trail. Use event selectors to
+specify the type of events that you want your trail to log. When an
+event occurs in your account, CloudTrail evaluates the event selectors
+in all trails. For each trail, if the event matches any event selector,
+the trail processes and logs the event. If the event doesn't match any
+event selector, the trail doesn't log the event.
+
+Example
+
+=over
+
+=item 1.
+
+You create an event selector for a trail and specify that you want
+write-only events.
+
+=item 2.
+
+The EC2 C<GetConsoleOutput> and C<RunInstances> API operations occur in
+your account.
+
+=item 3.
+
+CloudTrail evaluates whether the events match your event selectors.
+
+=item 4.
+
+The C<RunInstances> is a write-only event and it matches your event
+selector. The trail logs the event.
+
+=item 5.
+
+The C<GetConsoleOutput> is a read-only event but it doesn't match your
+event selector. The trail doesn't log the event.
+
+=back
+
+The C<PutEventSelectors> operation must be called from the region in
+which the trail was created; otherwise, an
+C<InvalidHomeRegionException> is thrown.
+
+You can configure up to five event selectors for each trail. For more
+information, see Configuring Event Selectors for Trails in the I<AWS
+CloudTrail User Guide>.
 
 
 =head2 RemoveTags(ResourceId => Str, [TagsList => ArrayRef[L<Paws::CloudTrail::Tag>]])
@@ -292,6 +409,15 @@ bucket has previously been a target for CloudTrail log files, an IAM
 policy exists for the bucket. C<UpdateTrail> must be called from the
 region in which the trail was created; otherwise, an
 C<InvalidHomeRegionException> is thrown.
+
+
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+
 
 
 =head1 SEE ALSO

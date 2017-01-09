@@ -3,6 +3,7 @@ package Paws::OpsWorks::DescribeTimeBasedAutoScalingResult;
   use Moose;
   has TimeBasedAutoScalingConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::OpsWorks::TimeBasedAutoScalingConfiguration]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -19,6 +20,7 @@ An array of C<TimeBasedAutoScalingConfiguration> objects that describe
 the configuration for the specified instances.
 
 
+=head2 _request_id => Str
 
 
 =cut

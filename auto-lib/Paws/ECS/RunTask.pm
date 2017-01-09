@@ -3,7 +3,10 @@ package Paws::ECS::RunTask;
   use Moose;
   has Cluster => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cluster' );
   has Count => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'count' );
+  has Group => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'group' );
   has Overrides => (is => 'ro', isa => 'Paws::ECS::TaskOverride', traits => ['NameInRequest'], request_name => 'overrides' );
+  has PlacementConstraints => (is => 'ro', isa => 'ArrayRef[Paws::ECS::PlacementConstraint]', traits => ['NameInRequest'], request_name => 'placementConstraints' );
+  has PlacementStrategy => (is => 'ro', isa => 'ArrayRef[Paws::ECS::PlacementStrategy]', traits => ['NameInRequest'], request_name => 'placementStrategy' );
   has StartedBy => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'startedBy' );
   has TaskDefinition => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'taskDefinition' , required => 1);
 
@@ -41,16 +44,21 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 The short name or full Amazon Resource Name (ARN) of the cluster on
 which to run your task. If you do not specify a cluster, the default
-cluster is assumed..
+cluster is assumed.
 
 
 
 =head2 Count => Int
 
 The number of instantiations of the specified task to place on your
-cluster.
+cluster. You can specify up to 10 tasks per call.
 
-The C<count> parameter is limited to 10 tasks per call.
+
+
+=head2 Group => Str
+
+The task group to associate with the task. By default, if you do not
+specify a task group, the group C<family:TASKDEF-FAMILY> is applied.
 
 
 
@@ -66,6 +74,21 @@ add new environment variables to it with an C<environment> override.
 
 A total of 8192 characters are allowed for overrides. This limit
 includes the JSON formatting characters of the override structure.
+
+
+
+=head2 PlacementConstraints => ArrayRef[L<Paws::ECS::PlacementConstraint>]
+
+An array of placement constraint objects to use for the task. You can
+specify up to 10 constraints per task (including constraints in the
+task definition and those specified at run time).
+
+
+
+=head2 PlacementStrategy => ArrayRef[L<Paws::ECS::PlacementStrategy>]
+
+The placement strategy objects to use for the task. You can specify a
+maximum of 5 strategy rules per task.
 
 
 

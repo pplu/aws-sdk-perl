@@ -32,22 +32,21 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudWatchL
 
 =head1 DESCRIPTION
 
-A log event is a record of some activity that was recorded by the
-application or resource being monitored. The log event record that
-CloudWatch Logs understands contains two properties: the timestamp of
-when the event occurred, and the raw event message.
+Represents a log event, which is a record of activity that was recorded
+by the application or resource being monitored.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> Message => Str
 
-  
+  The raw event message.
 
 
 =head2 B<REQUIRED> Timestamp => Int
 
-  
+  The time the event occurred, expressed as the number of milliseconds
+since Jan 1, 1970 00:00:00 UTC.
 
 
 

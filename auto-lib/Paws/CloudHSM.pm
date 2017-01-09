@@ -114,6 +114,8 @@ package Paws::CloudHSM;
     my $call_object = $self->new_with_coercions('Paws::CloudHSM::RemoveTagsFromResource', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
+
 
   sub operations { qw/AddTagsToResource CreateHapg CreateHsm CreateLunaClient DeleteHapg DeleteHsm DeleteLunaClient DescribeHapg DescribeHsm DescribeLunaClient GetConfig ListAvailableZones ListHapgs ListHsms ListLunaClients ListTagsForResource ModifyHapg ModifyHsm ModifyLunaClient RemoveTagsFromResource / }
 
@@ -372,6 +374,15 @@ Returns: a L<Paws::CloudHSM::RemoveTagsFromResourceResponse> instance
 
 To remove a tag, specify only the tag key to remove (not the value). To
 overwrite the value for an existing tag, use AddTagsToResource.
+
+
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+
 
 
 =head1 SEE ALSO

@@ -4,6 +4,7 @@ package Paws::EC2::DescribeVpcEndpointsResult;
   has NextToken => (is => 'ro', isa => 'Str', xmlname => 'nextToken', traits => ['Unwrapped',]);
   has VpcEndpoints => (is => 'ro', isa => 'ArrayRef[Paws::EC2::VpcEndpoint]', xmlname => 'vpcEndpointSet', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -21,12 +22,12 @@ The token to use when requesting the next set of items. If there are no
 additional items to return, the string is empty.
 
 
-
 =head2 VpcEndpoints => ArrayRef[L<Paws::EC2::VpcEndpoint>]
 
 Information about the endpoints.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -1,5 +1,6 @@
 package Paws::EMR::InstanceGroupConfig;
   use Moose;
+  has AutoScalingPolicy => (is => 'ro', isa => 'Paws::EMR::AutoScalingPolicy');
   has BidPrice => (is => 'ro', isa => 'Str');
   has Configurations => (is => 'ro', isa => 'ArrayRef[Paws::EMR::Configuration]');
   has EbsConfiguration => (is => 'ro', isa => 'Paws::EMR::EbsConfiguration');
@@ -27,14 +28,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::EMR::InstanceGroupConfig object:
 
-  $service_obj->Method(Att1 => { BidPrice => $value, ..., Name => $value  });
+  $service_obj->Method(Att1 => { AutoScalingPolicy => $value, ..., Name => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::EMR::InstanceGroupConfig object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->BidPrice
+  $result->Att1->AutoScalingPolicy
 
 =head1 DESCRIPTION
 
@@ -43,10 +44,18 @@ Configuration defining a new instance group.
 =head1 ATTRIBUTES
 
 
+=head2 AutoScalingPolicy => L<Paws::EMR::AutoScalingPolicy>
+
+  An automatic scaling policy for a core instance group or task instance
+group in an Amazon EMR cluster. The automatic scaling policy defines
+how an instance group dynamically adds and terminates EC2 instances in
+response to the value of a CloudWatch metric. See PutAutoScalingPolicy.
+
+
 =head2 BidPrice => Str
 
-  Bid price for each Amazon EC2 instance in the instance group when
-launching nodes as Spot Instances, expressed in USD.
+  Bid price for each EC2 instance in the instance group when launching
+nodes as Spot Instances, expressed in USD.
 
 
 =head2 Configurations => ArrayRef[L<Paws::EMR::Configuration>]
@@ -60,8 +69,8 @@ You can specify a separate configuration for each instance group
 
 =head2 EbsConfiguration => L<Paws::EMR::EbsConfiguration>
 
-  EBS configurations that will be attached to each Amazon EC2 instance in
-the instance group.
+  EBS configurations that will be attached to each EC2 instance in the
+instance group.
 
 
 =head2 B<REQUIRED> InstanceCount => Int
@@ -76,12 +85,12 @@ the instance group.
 
 =head2 B<REQUIRED> InstanceType => Str
 
-  The Amazon EC2 instance type for all instances in the instance group.
+  The EC2 instance type for all instances in the instance group.
 
 
 =head2 Market => Str
 
-  Market type of the Amazon EC2 instances used to create a cluster node.
+  Market type of the EC2 instances used to create a cluster node.
 
 
 =head2 Name => Str

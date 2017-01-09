@@ -98,6 +98,8 @@ package Paws::CognitoSync;
     my $call_object = $self->new_with_coercions('Paws::CognitoSync::UpdateRecords', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
+
 
   sub operations { qw/BulkPublish DeleteDataset DescribeDataset DescribeIdentityPoolUsage DescribeIdentityUsage GetBulkPublishDetails GetCognitoEvents GetIdentityPoolConfiguration ListDatasets ListIdentityPoolUsage ListRecords RegisterDevice SetCognitoEvents SetIdentityPoolConfiguration SubscribeToDataset UnsubscribeFromDataset UpdateRecords / }
 
@@ -401,6 +403,15 @@ the record does not exist, specify the sync count as 0.
 
 This API can be called with temporary user credentials provided by
 Cognito Identity or with developer credentials.
+
+
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+
 
 
 =head1 SEE ALSO

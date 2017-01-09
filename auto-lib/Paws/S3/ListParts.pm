@@ -1,12 +1,12 @@
 
 package Paws::S3::ListParts;
   use Moose;
-  has Bucket => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'Bucket' , required => 1);
-  has Key => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'Key' , required => 1);
-  has MaxParts => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'max-parts' );
-  has PartNumberMarker => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'part-number-marker' );
-  has RequestPayer => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-request-payer' );
-  has UploadId => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'uploadId' , required => 1);
+  has Bucket => (is => 'ro', isa => 'Str', uri_name => 'Bucket', traits => ['ParamInURI'], required => 1);
+  has Key => (is => 'ro', isa => 'Str', uri_name => 'Key', traits => ['ParamInURI'], required => 1);
+  has MaxParts => (is => 'ro', isa => 'Int', query_name => 'max-parts', traits => ['ParamInQuery']);
+  has PartNumberMarker => (is => 'ro', isa => 'Int', query_name => 'part-number-marker', traits => ['ParamInQuery']);
+  has RequestPayer => (is => 'ro', isa => 'Str', header_name => 'x-amz-request-payer', traits => ['ParamInHeader']);
+  has UploadId => (is => 'ro', isa => 'Str', query_name => 'uploadId', traits => ['ParamInQuery'], required => 1);
 
   use MooseX::ClassAttribute;
 

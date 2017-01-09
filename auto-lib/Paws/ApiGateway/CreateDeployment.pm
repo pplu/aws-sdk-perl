@@ -6,7 +6,7 @@ package Paws::ApiGateway::CreateDeployment;
   has Description => (is => 'ro', isa => 'Str');
   has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restApiId' , required => 1);
   has StageDescription => (is => 'ro', isa => 'Str');
-  has StageName => (is => 'ro', isa => 'Str', required => 1);
+  has StageName => (is => 'ro', isa => 'Str');
   has Variables => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString');
 
   use MooseX::ClassAttribute;
@@ -73,7 +73,7 @@ create.
 
 
 
-=head2 B<REQUIRED> StageName => Str
+=head2 StageName => Str
 
 The name of the Stage resource for the Deployment resource to create.
 

@@ -7,7 +7,7 @@ package Paws::IAM::DeletePolicyVersion;
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeletePolicyVersion');
-  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
   class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
@@ -48,9 +48,10 @@ AWS Service Namespaces in the I<AWS General Reference>.
 
 The policy version to delete.
 
-The regex pattern for this parameter is a string of characters that
-consists of the lowercase letter 'v' followed by one or two digits, and
-optionally followed by a period '.' and a string of letters and digits.
+This parameter allows (per its regex pattern) a string of characters
+that consists of the lowercase letter 'v' followed by one or two
+digits, and optionally followed by a period '.' and a string of letters
+and digits.
 
 For more information about managed policy versions, see Versioning for
 Managed Policies in the I<IAM User Guide>.

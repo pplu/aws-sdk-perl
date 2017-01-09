@@ -1,7 +1,7 @@
 
 package Paws::Route53::DeleteHealthCheck;
   use Moose;
-  has HealthCheckId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'HealthCheckId' , required => 1);
+  has HealthCheckId => (is => 'ro', isa => 'Str', uri_name => 'HealthCheckId', traits => ['ParamInURI'], required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -38,7 +38,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> HealthCheckId => Str
 
-
+The ID of the health check that you want to delete.
 
 
 

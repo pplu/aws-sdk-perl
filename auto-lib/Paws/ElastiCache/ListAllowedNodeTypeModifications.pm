@@ -38,11 +38,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 The name of the cache cluster you want to scale up to a larger node
 instanced type. ElastiCache uses the cluster id to identify the current
-node type of this cluster and from that to to create a list of node
-types you can scale up to.
+node type of this cluster and from that to create a list of node types
+you can scale up to.
 
-You must provide a value for either the I<CacheClusterId> or the
-I<ReplicationGroupId>.
+You must provide a value for either the C<CacheClusterId> or the
+C<ReplicationGroupId>.
 
 
 
@@ -53,8 +53,8 @@ type. ElastiCache uses the replication group id to identify the current
 node type being used by this replication group, and from that to create
 a list of node types you can scale up to.
 
-You must provide a value for either the I<CacheClusterId> or the
-I<ReplicationGroupId>.
+You must provide a value for either the C<CacheClusterId> or the
+C<ReplicationGroupId>.
 
 
 

@@ -4,6 +4,7 @@ package Paws::RedShift::ReservedNodesMessage;
   has Marker => (is => 'ro', isa => 'Str');
   has ReservedNodes => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::ReservedNode]', xmlname => 'ReservedNode', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -25,12 +26,12 @@ the C<Marker> field is empty, all response records have been retrieved
 for the request.
 
 
-
 =head2 ReservedNodes => ArrayRef[L<Paws::RedShift::ReservedNode>]
 
 The list of C<ReservedNode> objects.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -1,9 +1,12 @@
 
 package Paws::Lambda::UpdateFunctionConfiguration;
   use Moose;
+  has DeadLetterConfig => (is => 'ro', isa => 'Paws::Lambda::DeadLetterConfig');
   has Description => (is => 'ro', isa => 'Str');
+  has Environment => (is => 'ro', isa => 'Paws::Lambda::Environment');
   has FunctionName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'FunctionName' , required => 1);
   has Handler => (is => 'ro', isa => 'Str');
+  has KMSKeyArn => (is => 'ro', isa => 'Str');
   has MemorySize => (is => 'ro', isa => 'Int');
   has Role => (is => 'ro', isa => 'Str');
   has Runtime => (is => 'ro', isa => 'Str');
@@ -42,10 +45,24 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
+=head2 DeadLetterConfig => L<Paws::Lambda::DeadLetterConfig>
+
+The parent object that contains the target Amazon Resource Name (ARN)
+of an Amazon SQS queue or Amazon SNS topic.
+
+
+
 =head2 Description => Str
 
 A short user-defined function description. AWS Lambda does not use this
 value. Assign a meaningful description as you see fit.
+
+
+
+=head2 Environment => L<Paws::Lambda::Environment>
+
+The parent object that contains your environment's configuration
+settings.
 
 
 
@@ -67,6 +84,14 @@ character in length.
 
 The function that Lambda calls to begin executing your function. For
 Node.js, it is the C<module-name.export> value in your function.
+
+
+
+=head2 KMSKeyArn => Str
+
+The Amazon Resource Name (ARN) of the KMS key used to encrypt your
+function's environment variables. If you elect to use the AWS Lambda
+default service key, pass in an empty string ("") for this parameter.
 
 
 
@@ -95,7 +120,10 @@ The runtime environment for the Lambda function.
 To use the Node.js runtime v4.3, set the value to "nodejs4.3". To use
 earlier runtime (v0.10.42), set the value to "nodejs".
 
-Valid values are: C<"nodejs">, C<"nodejs4.3">, C<"java8">, C<"python2.7">
+You can no longer downgrade to the v0.10.42 runtime version. This
+version will no longer be supported as of early 2017.
+
+Valid values are: C<"nodejs">, C<"nodejs4.3">, C<"java8">, C<"python2.7">, C<"dotnetcore1.0">, C<"nodejs4.3-edge">
 
 =head2 Timeout => Int
 

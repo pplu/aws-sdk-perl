@@ -173,6 +173,11 @@ package Paws::ElasticBeanstalk;
     my $call_object = $self->new_with_coercions('Paws::ElasticBeanstalk::UpdateApplication', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpdateApplicationResourceLifecycle {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ElasticBeanstalk::UpdateApplicationResourceLifecycle', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateApplicationVersion {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ElasticBeanstalk::UpdateApplicationVersion', @_);
@@ -193,8 +198,31 @@ package Paws::ElasticBeanstalk;
     my $call_object = $self->new_with_coercions('Paws::ElasticBeanstalk::ValidateConfigurationSettings', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
+  sub DescribeAllEvents {
+    my $self = shift;
 
-  sub operations { qw/AbortEnvironmentUpdate ApplyEnvironmentManagedAction CheckDNSAvailability ComposeEnvironments CreateApplication CreateApplicationVersion CreateConfigurationTemplate CreateEnvironment CreateStorageLocation DeleteApplication DeleteApplicationVersion DeleteConfigurationTemplate DeleteEnvironmentConfiguration DescribeApplications DescribeApplicationVersions DescribeConfigurationOptions DescribeConfigurationSettings DescribeEnvironmentHealth DescribeEnvironmentManagedActionHistory DescribeEnvironmentManagedActions DescribeEnvironmentResources DescribeEnvironments DescribeEvents DescribeInstancesHealth ListAvailableSolutionStacks RebuildEnvironment RequestEnvironmentInfo RestartAppServer RetrieveEnvironmentInfo SwapEnvironmentCNAMEs TerminateEnvironment UpdateApplication UpdateApplicationVersion UpdateConfigurationTemplate UpdateEnvironment ValidateConfigurationSettings / }
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeEvents(@_);
+
+    if (not defined $callback) {
+      while ($result->NextToken) {
+        $result = $self->DescribeEvents(@_, NextToken => $result->NextToken);
+        push @{ $result->Events }, @{ $result->Events };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $result = $self->DescribeEvents(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'Events') foreach (@{ $result->Events });
+      }
+    }
+
+    return undef
+  }
+
+
+  sub operations { qw/AbortEnvironmentUpdate ApplyEnvironmentManagedAction CheckDNSAvailability ComposeEnvironments CreateApplication CreateApplicationVersion CreateConfigurationTemplate CreateEnvironment CreateStorageLocation DeleteApplication DeleteApplicationVersion DeleteConfigurationTemplate DeleteEnvironmentConfiguration DescribeApplications DescribeApplicationVersions DescribeConfigurationOptions DescribeConfigurationSettings DescribeEnvironmentHealth DescribeEnvironmentManagedActionHistory DescribeEnvironmentManagedActions DescribeEnvironmentResources DescribeEnvironments DescribeEvents DescribeInstancesHealth ListAvailableSolutionStacks RebuildEnvironment RequestEnvironmentInfo RestartAppServer RetrieveEnvironmentInfo SwapEnvironmentCNAMEs TerminateEnvironment UpdateApplication UpdateApplicationResourceLifecycle UpdateApplicationVersion UpdateConfigurationTemplate UpdateEnvironment ValidateConfigurationSettings / }
 
 1;
 
@@ -288,7 +316,7 @@ information must be included in the source bundles in an environment
 manifest named C<env.yaml>. See Compose Environments for details.
 
 
-=head2 CreateApplication(ApplicationName => Str, [Description => Str])
+=head2 CreateApplication(ApplicationName => Str, [Description => Str, ResourceLifecycleConfig => L<Paws::ElasticBeanstalk::ApplicationResourceLifecycleConfig>])
 
 Each argument is described in detail in: L<Paws::ElasticBeanstalk::CreateApplication>
 
@@ -298,13 +326,27 @@ Returns: a L<Paws::ElasticBeanstalk::ApplicationDescriptionMessage> instance
 C<default> and no application versions.
 
 
-=head2 CreateApplicationVersion(ApplicationName => Str, VersionLabel => Str, [AutoCreateApplication => Bool, Description => Str, Process => Bool, SourceBundle => L<Paws::ElasticBeanstalk::S3Location>])
+=head2 CreateApplicationVersion(ApplicationName => Str, VersionLabel => Str, [AutoCreateApplication => Bool, BuildConfiguration => L<Paws::ElasticBeanstalk::BuildConfiguration>, Description => Str, Process => Bool, SourceBuildInformation => L<Paws::ElasticBeanstalk::SourceBuildInformation>, SourceBundle => L<Paws::ElasticBeanstalk::S3Location>])
 
 Each argument is described in detail in: L<Paws::ElasticBeanstalk::CreateApplicationVersion>
 
 Returns: a L<Paws::ElasticBeanstalk::ApplicationVersionDescriptionMessage> instance
 
-  Creates an application version for the specified application.
+  Creates an application version for the specified application. You can
+create an application version from a source bundle in Amazon S3, a
+commit in AWS CodeCommit, or the output of an AWS CodeBuild build as
+follows:
+
+Specify a commit in an AWS CodeCommit repository with
+C<SourceBuildInformation>.
+
+Specify a build in an AWS CodeBuild with C<SourceBuildInformation> and
+C<BuildConfiguration>.
+
+Specify a source bundle in S3 with C<SourceBundle>
+
+Omit both C<SourceBuildInformation> and C<SourceBundle> to use the
+default sample application.
 
 Once you create an application version with a specified Amazon S3
 bucket and key location, you cannot change that Amazon S3 location. If
@@ -326,11 +368,17 @@ Related Topics
 
 =over
 
-=item * DescribeConfigurationOptions
+=item *
 
-=item * DescribeConfigurationSettings
+DescribeConfigurationOptions
 
-=item * ListAvailableSolutionStacks
+=item *
+
+DescribeConfigurationSettings
+
+=item *
+
+ListAvailableSolutionStacks
 
 =back
 
@@ -423,14 +471,13 @@ Returns: a L<Paws::ElasticBeanstalk::ApplicationDescriptionsMessage> instance
   Returns the descriptions of existing applications.
 
 
-=head2 DescribeApplicationVersions([ApplicationName => Str, VersionLabels => ArrayRef[Str|Undef]])
+=head2 DescribeApplicationVersions([ApplicationName => Str, MaxRecords => Int, NextToken => Str, VersionLabels => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::ElasticBeanstalk::DescribeApplicationVersions>
 
 Returns: a L<Paws::ElasticBeanstalk::ApplicationVersionDescriptionsMessage> instance
 
-  Retrieve a list of application versions stored in your AWS Elastic
-Beanstalk storage bucket.
+  Retrieve a list of application versions.
 
 
 =head2 DescribeConfigurationOptions([ApplicationName => Str, EnvironmentName => Str, Options => ArrayRef[L<Paws::ElasticBeanstalk::OptionSpecification>], SolutionStackName => Str, TemplateName => Str])
@@ -466,7 +513,9 @@ Related Topics
 
 =over
 
-=item * DeleteEnvironmentConfiguration
+=item *
+
+DeleteEnvironmentConfiguration
 
 =back
 
@@ -538,10 +587,8 @@ Each argument is described in detail in: L<Paws::ElasticBeanstalk::DescribeInsta
 
 Returns: a L<Paws::ElasticBeanstalk::DescribeInstancesHealthResult> instance
 
-  Returns more detailed information about the health of the specified
-instances (for example, CPU utilization, load average, and causes). The
-B<DescribeInstancesHealth> operation is only available with AWS Elastic
-Beanstalk Enhanced Health.
+  Retrives detailed information about the health of instances in your AWS
+Elastic Beanstalk. This operation requires enhanced health reporting.
 
 
 =head2 ListAvailableSolutionStacks( => )
@@ -587,7 +634,9 @@ Related Topics
 
 =over
 
-=item * RetrieveEnvironmentInfo
+=item *
+
+RetrieveEnvironmentInfo
 
 =back
 
@@ -616,7 +665,9 @@ Related Topics
 
 =over
 
-=item * RequestEnvironmentInfo
+=item *
+
+RequestEnvironmentInfo
 
 =back
 
@@ -652,6 +703,15 @@ If a property (for example, C<description>) is not provided, the value
 remains unchanged. To clear these properties, specify an empty string.
 
 
+=head2 UpdateApplicationResourceLifecycle(ApplicationName => Str, ResourceLifecycleConfig => L<Paws::ElasticBeanstalk::ApplicationResourceLifecycleConfig>)
+
+Each argument is described in detail in: L<Paws::ElasticBeanstalk::UpdateApplicationResourceLifecycle>
+
+Returns: a L<Paws::ElasticBeanstalk::ApplicationResourceLifecycleDescriptionMessage> instance
+
+  Modifies lifecycle settings for an application.
+
+
 =head2 UpdateApplicationVersion(ApplicationName => Str, VersionLabel => Str, [Description => Str])
 
 Each argument is described in detail in: L<Paws::ElasticBeanstalk::UpdateApplicationVersion>
@@ -682,7 +742,9 @@ Related Topics
 
 =over
 
-=item * DescribeConfigurationOptions
+=item *
+
+DescribeConfigurationOptions
 
 =back
 
@@ -720,6 +782,27 @@ template or environment, and determines whether those values are valid.
 
 This action returns a list of messages indicating any errors or
 warnings associated with the selection of option values.
+
+
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 DescribeAllEvents(sub { },[ApplicationName => Str, EndTime => Str, EnvironmentId => Str, EnvironmentName => Str, MaxRecords => Int, NextToken => Str, RequestId => Str, Severity => Str, StartTime => Str, TemplateName => Str, VersionLabel => Str])
+
+=head2 DescribeAllEvents([ApplicationName => Str, EndTime => Str, EnvironmentId => Str, EnvironmentName => Str, MaxRecords => Int, NextToken => Str, RequestId => Str, Severity => Str, StartTime => Str, TemplateName => Str, VersionLabel => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Events, passing the object as the first parameter, and the string 'Events' as the second parameter 
+
+If not, it will return a a L<Paws::ElasticBeanstalk::EventDescriptionsMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+
 
 
 =head1 SEE ALSO

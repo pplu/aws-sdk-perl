@@ -1,0 +1,18 @@
+---
+content: |-
+  <?xml version="1.0" encoding="UTF-8"?>
+  <Error>
+    <Code>IllegalLocationConstraintException</Code>
+    <Message>The unspecified location constraint is incompatible for the region specific endpoint this request was sent to.</Message>
+    <RequestId>195AF4042CD6DF80</RequestId>
+    <HostId>YlYhLgAlr7Ac/hEeRMaFrb1OpUKwTw63GPBQS7On1AiQshabdMHZxHEg2s04UGrF4610wp5X6xQ=</HostId>
+  </Error>
+headers:
+  connection: close
+  content-type: application/xml
+  date: 'Tue, 01 Nov 2016 21:34:25 GMT'
+  server: AmazonS3
+  transfer-encoding: chunked
+  x-amz-id-2: YlYhLgAlr7Ac/hEeRMaFrb1OpUKwTw63GPBQS7On1AiQshabdMHZxHEg2s04UGrF4610wp5X6xQ=
+  x-amz-request-id: 195AF4042CD6DF80
+status: 400

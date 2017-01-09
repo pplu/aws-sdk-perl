@@ -19,6 +19,7 @@ package Paws::CloudTrail::GetTrailStatusResponse;
   has TimeLoggingStarted => (is => 'ro', isa => 'Str');
   has TimeLoggingStopped => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -34,12 +35,10 @@ Paws::CloudTrail::GetTrailStatusResponse
 Whether the CloudTrail is currently logging AWS API calls.
 
 
-
 =head2 LatestCloudWatchLogsDeliveryError => Str
 
 Displays any CloudWatch Logs error that CloudTrail encountered when
 attempting to deliver logs to CloudWatch Logs.
-
 
 
 =head2 LatestCloudWatchLogsDeliveryTime => Str
@@ -48,17 +47,14 @@ Displays the most recent date and time when CloudTrail delivered logs
 to CloudWatch Logs.
 
 
-
 =head2 LatestDeliveryAttemptSucceeded => Str
 
 This field is deprecated.
 
 
-
 =head2 LatestDeliveryAttemptTime => Str
 
 This field is deprecated.
-
 
 
 =head2 LatestDeliveryError => Str
@@ -74,12 +70,10 @@ new bucket and call C<UpdateTrail> to specify the new bucket, or fix
 the existing objects so that CloudTrail can again write to the bucket.
 
 
-
 =head2 LatestDeliveryTime => Str
 
 Specifies the date and time that CloudTrail last delivered log files to
 an account's Amazon S3 bucket.
-
 
 
 =head2 LatestDigestDeliveryError => Str
@@ -95,12 +89,10 @@ new bucket and call C<UpdateTrail> to specify the new bucket, or fix
 the existing objects so that CloudTrail can again write to the bucket.
 
 
-
 =head2 LatestDigestDeliveryTime => Str
 
 Specifies the date and time that CloudTrail last delivered a digest
 file to an account's Amazon S3 bucket.
-
 
 
 =head2 LatestNotificationAttemptSucceeded => Str
@@ -108,11 +100,9 @@ file to an account's Amazon S3 bucket.
 This field is deprecated.
 
 
-
 =head2 LatestNotificationAttemptTime => Str
 
 This field is deprecated.
-
 
 
 =head2 LatestNotificationError => Str
@@ -122,13 +112,11 @@ attempting to send a notification. For more information about Amazon
 SNS errors, see the Amazon SNS Developer Guide.
 
 
-
 =head2 LatestNotificationTime => Str
 
 Specifies the date and time of the most recent Amazon SNS notification
 that CloudTrail has written a new log file to an account's Amazon S3
 bucket.
-
 
 
 =head2 StartLoggingTime => Str
@@ -137,12 +125,10 @@ Specifies the most recent date and time when CloudTrail started
 recording API calls for an AWS account.
 
 
-
 =head2 StopLoggingTime => Str
 
 Specifies the most recent date and time when CloudTrail stopped
 recording API calls for an AWS account.
-
 
 
 =head2 TimeLoggingStarted => Str
@@ -150,12 +136,12 @@ recording API calls for an AWS account.
 This field is deprecated.
 
 
-
 =head2 TimeLoggingStopped => Str
 
 This field is deprecated.
 
 
+=head2 _request_id => Str
 
 
 =cut

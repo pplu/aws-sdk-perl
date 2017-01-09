@@ -37,8 +37,8 @@ A set of instructions for launching server processes on each instance
 in a fleet. Each instruction set identifies the location of the server
 executable, optional launch parameters, and the number of server
 processes with this configuration to maintain concurrently on the
-instance. Server process configurations make up a fleet's
-C<RuntimeConfiguration>.
+instance. Server process configurations make up a fleet's C<
+RuntimeConfiguration >.
 
 =head1 ATTRIBUTES
 
@@ -51,10 +51,13 @@ on an instance.
 
 =head2 B<REQUIRED> LaunchPath => Str
 
-  Location in the game build of the server executable. All game builds
-are installed on instances at the root C<C:\game\...>, so an executable
-file located at C<MyGame\latest\server.exe> has a launch path of
-"C<C:\game\MyGame\latest\server.exe>".
+  Location of the server executable in a game build. All game builds are
+installed on instances at the root : for Windows instances C<C:\game>,
+and for Linux instances C</local/game>. A Windows game build with an
+executable file located at C<MyGame\latest\server.exe> must have a
+launch path of "C<C:\game\MyGame\latest\server.exe>". A Linux game
+build with an executable file located at C<MyGame/latest/server.exe>
+must have a launch path of "C</local/game/MyGame/latest/server.exe>".
 
 
 =head2 Parameters => Str

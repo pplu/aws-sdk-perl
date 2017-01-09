@@ -24,6 +24,11 @@ package Paws::ECS;
     my $call_object = $self->new_with_coercions('Paws::ECS::CreateService', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteAttributes {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ECS::DeleteAttributes', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteCluster {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ECS::DeleteCluster', @_);
@@ -74,6 +79,11 @@ package Paws::ECS;
     my $call_object = $self->new_with_coercions('Paws::ECS::DiscoverPollEndpoint', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListAttributes {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ECS::ListAttributes', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListClusters {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ECS::ListClusters', @_);
@@ -102,6 +112,11 @@ package Paws::ECS;
   sub ListTasks {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ECS::ListTasks', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub PutAttributes {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ECS::PutAttributes', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub RegisterContainerInstance {
@@ -149,8 +164,136 @@ package Paws::ECS;
     my $call_object = $self->new_with_coercions('Paws::ECS::UpdateService', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
+  sub ListAllClusters {
+    my $self = shift;
 
-  sub operations { qw/CreateCluster CreateService DeleteCluster DeleteService DeregisterContainerInstance DeregisterTaskDefinition DescribeClusters DescribeContainerInstances DescribeServices DescribeTaskDefinition DescribeTasks DiscoverPollEndpoint ListClusters ListContainerInstances ListServices ListTaskDefinitionFamilies ListTaskDefinitions ListTasks RegisterContainerInstance RegisterTaskDefinition RunTask StartTask StopTask SubmitContainerStateChange SubmitTaskStateChange UpdateContainerAgent UpdateService / }
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListClusters(@_);
+
+    if (not defined $callback) {
+      while ($result->nextToken) {
+        $result = $self->ListClusters(@_, nextToken => $result->nextToken);
+        push @{ $result->clusterArns }, @{ $result->clusterArns };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $result = $self->ListClusters(@_, nextToken => $result->nextToken);
+        $callback->($_ => 'clusterArns') foreach (@{ $result->clusterArns });
+      }
+    }
+
+    return undef
+  }
+  sub ListAllContainerInstances {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListContainerInstances(@_);
+
+    if (not defined $callback) {
+      while ($result->nextToken) {
+        $result = $self->ListContainerInstances(@_, nextToken => $result->nextToken);
+        push @{ $result->containerInstanceArns }, @{ $result->containerInstanceArns };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $result = $self->ListContainerInstances(@_, nextToken => $result->nextToken);
+        $callback->($_ => 'containerInstanceArns') foreach (@{ $result->containerInstanceArns });
+      }
+    }
+
+    return undef
+  }
+  sub ListAllServices {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListServices(@_);
+
+    if (not defined $callback) {
+      while ($result->nextToken) {
+        $result = $self->ListServices(@_, nextToken => $result->nextToken);
+        push @{ $result->serviceArns }, @{ $result->serviceArns };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $result = $self->ListServices(@_, nextToken => $result->nextToken);
+        $callback->($_ => 'serviceArns') foreach (@{ $result->serviceArns });
+      }
+    }
+
+    return undef
+  }
+  sub ListAllTaskDefinitionFamilies {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListTaskDefinitionFamilies(@_);
+
+    if (not defined $callback) {
+      while ($result->nextToken) {
+        $result = $self->ListTaskDefinitionFamilies(@_, nextToken => $result->nextToken);
+        push @{ $result->families }, @{ $result->families };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $result = $self->ListTaskDefinitionFamilies(@_, nextToken => $result->nextToken);
+        $callback->($_ => 'families') foreach (@{ $result->families });
+      }
+    }
+
+    return undef
+  }
+  sub ListAllTaskDefinitions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListTaskDefinitions(@_);
+
+    if (not defined $callback) {
+      while ($result->nextToken) {
+        $result = $self->ListTaskDefinitions(@_, nextToken => $result->nextToken);
+        push @{ $result->taskDefinitionArns }, @{ $result->taskDefinitionArns };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $result = $self->ListTaskDefinitions(@_, nextToken => $result->nextToken);
+        $callback->($_ => 'taskDefinitionArns') foreach (@{ $result->taskDefinitionArns });
+      }
+    }
+
+    return undef
+  }
+  sub ListAllTasks {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListTasks(@_);
+
+    if (not defined $callback) {
+      while ($result->nextToken) {
+        $result = $self->ListTasks(@_, nextToken => $result->nextToken);
+        push @{ $result->taskArns }, @{ $result->taskArns };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $result = $self->ListTasks(@_, nextToken => $result->nextToken);
+        $callback->($_ => 'taskArns') foreach (@{ $result->taskArns });
+      }
+    }
+
+    return undef
+  }
+
+
+  sub operations { qw/CreateCluster CreateService DeleteAttributes DeleteCluster DeleteService DeregisterContainerInstance DeregisterTaskDefinition DescribeClusters DescribeContainerInstances DescribeServices DescribeTaskDefinition DescribeTasks DiscoverPollEndpoint ListAttributes ListClusters ListContainerInstances ListServices ListTaskDefinitionFamilies ListTaskDefinitions ListTasks PutAttributes RegisterContainerInstance RegisterTaskDefinition RunTask StartTask StopTask SubmitContainerStateChange SubmitTaskStateChange UpdateContainerAgent UpdateService / }
 
 1;
 
@@ -207,7 +350,7 @@ However, you can create your own cluster with a unique name with the
 C<CreateCluster> action.
 
 
-=head2 CreateService(DesiredCount => Int, ServiceName => Str, TaskDefinition => Str, [ClientToken => Str, Cluster => Str, DeploymentConfiguration => L<Paws::ECS::DeploymentConfiguration>, LoadBalancers => ArrayRef[L<Paws::ECS::LoadBalancer>], Role => Str])
+=head2 CreateService(DesiredCount => Int, ServiceName => Str, TaskDefinition => Str, [ClientToken => Str, Cluster => Str, DeploymentConfiguration => L<Paws::ECS::DeploymentConfiguration>, LoadBalancers => ArrayRef[L<Paws::ECS::LoadBalancer>], PlacementConstraints => ArrayRef[L<Paws::ECS::PlacementConstraint>], PlacementStrategy => ArrayRef[L<Paws::ECS::PlacementStrategy>], Role => Str])
 
 Each argument is described in detail in: L<Paws::ECS::CreateService>
 
@@ -215,9 +358,8 @@ Returns: a L<Paws::ECS::CreateServiceResponse> instance
 
   Runs and maintains a desired number of tasks from a specified task
 definition. If the number of tasks running in a service drops below
-C<desiredCount>, Amazon ECS spawns another instantiation of the task in
-the specified cluster. To update an existing service, see
-UpdateService.
+C<desiredCount>, Amazon ECS spawns another copy of the task in the
+specified cluster. To update an existing service, see UpdateService.
 
 In addition to maintaining the desired count of tasks in your service,
 you can optionally run your service behind a load balancer. The load
@@ -227,33 +369,38 @@ I<Amazon EC2 Container Service Developer Guide>.
 
 You can optionally specify a deployment configuration for your service.
 During a deployment (which is triggered by changing the task definition
-of a service with an UpdateService operation), the service scheduler
-uses the C<minimumHealthyPercent> and C<maximumPercent> parameters to
-determine the deployment strategy.
+or the desired count of a service with an UpdateService operation), the
+service scheduler uses the C<minimumHealthyPercent> and
+C<maximumPercent> parameters to determine the deployment strategy.
 
-If the C<minimumHealthyPercent> is below 100%, the scheduler can ignore
-the C<desiredCount> temporarily during a deployment. For example, if
-your service has a C<desiredCount> of four tasks, a
-C<minimumHealthyPercent> of 50% allows the scheduler to stop two
-existing tasks before starting two new tasks. Tasks for services that
-I<do not> use a load balancer are considered healthy if they are in the
-C<RUNNING> state; tasks for services that I<do> use a load balancer are
-considered healthy if they are in the C<RUNNING> state and the
-container instance it is hosted on is reported as healthy by the load
-balancer. The default value for C<minimumHealthyPercent> is 50% in the
-console and 100% for the AWS CLI, the AWS SDKs, and the APIs.
+The C<minimumHealthyPercent> represents a lower limit on the number of
+your service's tasks that must remain in the C<RUNNING> state during a
+deployment, as a percentage of the C<desiredCount> (rounded up to the
+nearest integer). This parameter enables you to deploy without using
+additional cluster capacity. For example, if your service has a
+C<desiredCount> of four tasks and a C<minimumHealthyPercent> of 50%,
+the scheduler may stop two existing tasks to free up cluster capacity
+before starting two new tasks. Tasks for services that I<do not> use a
+load balancer are considered healthy if they are in the C<RUNNING>
+state; tasks for services that I<do> use a load balancer are considered
+healthy if they are in the C<RUNNING> state and the container instance
+it is hosted on is reported as healthy by the load balancer. The
+default value for C<minimumHealthyPercent> is 50% in the console and
+100% for the AWS CLI, the AWS SDKs, and the APIs.
 
 The C<maximumPercent> parameter represents an upper limit on the number
-of running tasks during a deployment, which enables you to define the
-deployment batch size. For example, if your service has a
-C<desiredCount> of four tasks, a C<maximumPercent> value of 200% starts
-four new tasks before stopping the four older tasks (provided that the
-cluster resources required to do this are available). The default value
-for C<maximumPercent> is 200%.
+of your service's tasks that are allowed in the C<RUNNING> or
+C<PENDING> state during a deployment, as a percentage of the
+C<desiredCount> (rounded down to the nearest integer). This parameter
+enables you to define the deployment batch size. For example, if your
+service has a C<desiredCount> of four tasks and a C<maximumPercent>
+value of 200%, the scheduler may start four new tasks before stopping
+the four older tasks (provided that the cluster resources required to
+do this are available). The default value for C<maximumPercent> is
+200%.
 
-When the service scheduler launches new tasks, it attempts to balance
-them across the Availability Zones in your cluster with the following
-logic:
+When the service scheduler launches new tasks, it determines task
+placement in your cluster with the following logic:
 
 =over
 
@@ -262,6 +409,14 @@ logic:
 Determine which of the container instances in your cluster can support
 your service's task definition (for example, they have the required
 CPU, memory, ports, and container instance attributes).
+
+=item *
+
+By default, the service scheduler attempts to balance tasks across
+Availability Zones in this manner (although you can choose a different
+placement strategy with the C<placementStrategy> parameter):
+
+=over
 
 =item *
 
@@ -279,6 +434,17 @@ instances with the fewest number of running tasks for this service.
 
 =back
 
+=back
+
+
+
+=head2 DeleteAttributes(Attributes => ArrayRef[L<Paws::ECS::Attribute>], [Cluster => Str])
+
+Each argument is described in detail in: L<Paws::ECS::DeleteAttributes>
+
+Returns: a L<Paws::ECS::DeleteAttributesResponse> instance
+
+  Deletes one or more attributes from an Amazon ECS resource.
 
 
 =head2 DeleteCluster(Cluster => Str)
@@ -336,11 +502,10 @@ but it does not terminate the EC2 instance; if you are finished using
 the instance, be sure to terminate it in the Amazon EC2 console to stop
 billing.
 
-If you terminate a running container instance with a connected Amazon
-ECS container agent, the agent automatically deregisters the instance
-from your cluster (stopped container instances or instances with
-disconnected agents are not automatically deregistered when
-terminated).
+If you terminate a running container instance, Amazon ECS automatically
+deregisters the instance from your cluster (stopped container instances
+or instances with disconnected agents are not automatically
+deregistered when terminated).
 
 
 =head2 DeregisterTaskDefinition(TaskDefinition => Str)
@@ -429,6 +594,22 @@ Returns an endpoint for the Amazon EC2 Container Service agent to poll
 for updates.
 
 
+=head2 ListAttributes(TargetType => Str, [AttributeName => Str, AttributeValue => Str, Cluster => Str, MaxResults => Int, NextToken => Str])
+
+Each argument is described in detail in: L<Paws::ECS::ListAttributes>
+
+Returns: a L<Paws::ECS::ListAttributesResponse> instance
+
+  Lists the attributes for Amazon ECS resources within a specified target
+type and cluster. When you specify a target type and cluster,
+C<LisAttributes> returns a list of attribute objects, one for each
+attribute on each resource. You can filter the list of results to a
+single attribute name to only return results that have that name. You
+can also filter the results by attribute name and value, for example,
+to see which container instances in a cluster are running a Linux AMI
+(C<ecs.os-type=linux>).
+
+
 =head2 ListClusters([MaxResults => Int, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::ECS::ListClusters>
@@ -438,13 +619,17 @@ Returns: a L<Paws::ECS::ListClustersResponse> instance
   Returns a list of existing clusters.
 
 
-=head2 ListContainerInstances([Cluster => Str, MaxResults => Int, NextToken => Str])
+=head2 ListContainerInstances([Cluster => Str, Filter => Str, MaxResults => Int, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::ECS::ListContainerInstances>
 
 Returns: a L<Paws::ECS::ListContainerInstancesResponse> instance
 
-  Returns a list of container instances in a specified cluster.
+  Returns a list of container instances in a specified cluster. You can
+filter the results of a C<ListContainerInstances> operation with
+cluster query language statements inside the C<filter> parameter. For
+more information, see Cluster Query Language in the I<Amazon EC2
+Container Service Developer Guide>.
 
 
 =head2 ListServices([Cluster => Str, MaxResults => Int, NextToken => Str])
@@ -498,6 +683,17 @@ Recently-stopped tasks might appear in the returned results. Currently,
 stopped tasks appear in the returned results for at least one hour.
 
 
+=head2 PutAttributes(Attributes => ArrayRef[L<Paws::ECS::Attribute>], [Cluster => Str])
+
+Each argument is described in detail in: L<Paws::ECS::PutAttributes>
+
+Returns: a L<Paws::ECS::PutAttributesResponse> instance
+
+  Create or update an attribute on an Amazon ECS resource. If the
+attribute does not already exist on the given target, it is created; if
+it does exist, it is replaced with the new value.
+
+
 =head2 RegisterContainerInstance([Attributes => ArrayRef[L<Paws::ECS::Attribute>], Cluster => Str, ContainerInstanceArn => Str, InstanceIdentityDocument => Str, InstanceIdentityDocumentSignature => Str, TotalResources => ArrayRef[L<Paws::ECS::Resource>], VersionInfo => L<Paws::ECS::VersionInfo>])
 
 Each argument is described in detail in: L<Paws::ECS::RegisterContainerInstance>
@@ -511,7 +707,7 @@ Registers an EC2 instance into the specified cluster. This instance
 becomes available to place containers on.
 
 
-=head2 RegisterTaskDefinition(ContainerDefinitions => ArrayRef[L<Paws::ECS::ContainerDefinition>], Family => Str, [NetworkMode => Str, TaskRoleArn => Str, Volumes => ArrayRef[L<Paws::ECS::Volume>]])
+=head2 RegisterTaskDefinition(ContainerDefinitions => ArrayRef[L<Paws::ECS::ContainerDefinition>], Family => Str, [NetworkMode => Str, PlacementConstraints => ArrayRef[L<Paws::ECS::TaskDefinitionPlacementConstraint>], TaskRoleArn => Str, Volumes => ArrayRef[L<Paws::ECS::Volume>]])
 
 Each argument is described in detail in: L<Paws::ECS::RegisterTaskDefinition>
 
@@ -536,30 +732,35 @@ network modes correspond to those described in Network settings in the
 Docker run reference.
 
 
-=head2 RunTask(TaskDefinition => Str, [Cluster => Str, Count => Int, Overrides => L<Paws::ECS::TaskOverride>, StartedBy => Str])
+=head2 RunTask(TaskDefinition => Str, [Cluster => Str, Count => Int, Group => Str, Overrides => L<Paws::ECS::TaskOverride>, PlacementConstraints => ArrayRef[L<Paws::ECS::PlacementConstraint>], PlacementStrategy => ArrayRef[L<Paws::ECS::PlacementStrategy>], StartedBy => Str])
 
 Each argument is described in detail in: L<Paws::ECS::RunTask>
 
 Returns: a L<Paws::ECS::RunTaskResponse> instance
 
-  Start a task using random placement and the default Amazon ECS
-scheduler. To use your own scheduler or place a task on a specific
-container instance, use C<StartTask> instead.
+  Starts a new task using the specified task definition.
 
-The C<count> parameter is limited to 10 tasks per call.
+You can allow Amazon ECS to place tasks for you, or you can customize
+how Amazon ECS places tasks using placement constraints and placement
+strategies. For more information, see Scheduling Tasks in the I<Amazon
+EC2 Container Service Developer Guide>.
+
+Alternatively, you can use StartTask to use your own scheduler or place
+tasks manually on specific container instances.
 
 
-=head2 StartTask(ContainerInstances => ArrayRef[Str|Undef], TaskDefinition => Str, [Cluster => Str, Overrides => L<Paws::ECS::TaskOverride>, StartedBy => Str])
+=head2 StartTask(ContainerInstances => ArrayRef[Str|Undef], TaskDefinition => Str, [Cluster => Str, Group => Str, Overrides => L<Paws::ECS::TaskOverride>, StartedBy => Str])
 
 Each argument is described in detail in: L<Paws::ECS::StartTask>
 
 Returns: a L<Paws::ECS::StartTaskResponse> instance
 
   Starts a new task from the specified task definition on the specified
-container instance or instances. To use the default Amazon ECS
-scheduler to place your task, use C<RunTask> instead.
+container instance or instances.
 
-The list of container instances to start tasks on is limited to 10.
+Alternatively, you can use RunTask to place tasks for you. For more
+information, see Scheduling Tasks in the I<Amazon EC2 Container Service
+Developer Guide>.
 
 
 =head2 StopTask(Task => Str, [Cluster => Str, Reason => Str])
@@ -669,9 +870,8 @@ is sent and the containers are forcibly stopped. If the container
 handles the C<SIGTERM> gracefully and exits within 30 seconds from
 receiving it, no C<SIGKILL> is sent.
 
-When the service scheduler launches new tasks, it attempts to balance
-them across the Availability Zones in your cluster with the following
-logic:
+When the service scheduler launches new tasks, it determines task
+placement in your cluster with the following logic:
 
 =over
 
@@ -680,6 +880,14 @@ logic:
 Determine which of the container instances in your cluster can support
 your service's task definition (for example, they have the required
 CPU, memory, ports, and container instance attributes).
+
+=item *
+
+By default, the service scheduler attempts to balance tasks across
+Availability Zones in this manner (although you can choose a different
+placement strategy with the C<placementStrategy> parameter):
+
+=over
 
 =item *
 
@@ -696,6 +904,111 @@ Availability Zone (based on the previous steps), favoring container
 instances with the fewest number of running tasks for this service.
 
 =back
+
+=back
+
+When the service scheduler stops running tasks, it attempts to maintain
+balance across the Availability Zones in your cluster with the
+following logic:
+
+=over
+
+=item *
+
+Sort the container instances by the largest number of running tasks for
+this service in the same Availability Zone as the instance. For
+example, if zone A has one running service task and zones B and C each
+have two, container instances in either zone B or C are considered
+optimal for termination.
+
+=item *
+
+Stop the task on a container instance in an optimal Availability Zone
+(based on the previous steps), favoring container instances with the
+largest number of running tasks for this service.
+
+=back
+
+
+
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllClusters(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 ListAllClusters([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - clusterArns, passing the object as the first parameter, and the string 'clusterArns' as the second parameter 
+
+If not, it will return a a L<Paws::ECS::ListClustersResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllContainerInstances(sub { },[Cluster => Str, Filter => Str, MaxResults => Int, NextToken => Str])
+
+=head2 ListAllContainerInstances([Cluster => Str, Filter => Str, MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - containerInstanceArns, passing the object as the first parameter, and the string 'containerInstanceArns' as the second parameter 
+
+If not, it will return a a L<Paws::ECS::ListContainerInstancesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllServices(sub { },[Cluster => Str, MaxResults => Int, NextToken => Str])
+
+=head2 ListAllServices([Cluster => Str, MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - serviceArns, passing the object as the first parameter, and the string 'serviceArns' as the second parameter 
+
+If not, it will return a a L<Paws::ECS::ListServicesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllTaskDefinitionFamilies(sub { },[FamilyPrefix => Str, MaxResults => Int, NextToken => Str, Status => Str])
+
+=head2 ListAllTaskDefinitionFamilies([FamilyPrefix => Str, MaxResults => Int, NextToken => Str, Status => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - families, passing the object as the first parameter, and the string 'families' as the second parameter 
+
+If not, it will return a a L<Paws::ECS::ListTaskDefinitionFamiliesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllTaskDefinitions(sub { },[FamilyPrefix => Str, MaxResults => Int, NextToken => Str, Sort => Str, Status => Str])
+
+=head2 ListAllTaskDefinitions([FamilyPrefix => Str, MaxResults => Int, NextToken => Str, Sort => Str, Status => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - taskDefinitionArns, passing the object as the first parameter, and the string 'taskDefinitionArns' as the second parameter 
+
+If not, it will return a a L<Paws::ECS::ListTaskDefinitionsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllTasks(sub { },[Cluster => Str, ContainerInstance => Str, DesiredStatus => Str, Family => Str, MaxResults => Int, NextToken => Str, ServiceName => Str, StartedBy => Str])
+
+=head2 ListAllTasks([Cluster => Str, ContainerInstance => Str, DesiredStatus => Str, Family => Str, MaxResults => Int, NextToken => Str, ServiceName => Str, StartedBy => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - taskArns, passing the object as the first parameter, and the string 'taskArns' as the second parameter 
+
+If not, it will return a a L<Paws::ECS::ListTasksResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 
 
 

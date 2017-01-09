@@ -1,6 +1,7 @@
 package Paws::S3::RestoreRequest;
   use Moose;
   has Days => (is => 'ro', isa => 'Int', required => 1);
+  has GlacierJobParameters => (is => 'ro', isa => 'Paws::S3::GlacierJobParameters');
 1;
 
 ### main pod documentation begin ###
@@ -20,7 +21,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::S3::RestoreRequest object:
 
-  $service_obj->Method(Att1 => { Days => $value, ..., Days => $value  });
+  $service_obj->Method(Att1 => { Days => $value, ..., GlacierJobParameters => $value  });
 
 =head3 Results returned from an API call
 
@@ -39,6 +40,11 @@ This class has no description
 =head2 B<REQUIRED> Days => Int
 
   Lifetime of the active copy in days
+
+
+=head2 GlacierJobParameters => L<Paws::S3::GlacierJobParameters>
+
+  Glacier related prameters pertaining to this job.
 
 
 

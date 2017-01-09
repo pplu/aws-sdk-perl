@@ -4,6 +4,7 @@ package Paws::CloudWatchLogs::DescribeExportTasksResponse;
   has ExportTasks => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatchLogs::ExportTask]', traits => ['Unwrapped'], xmlname => 'exportTasks' );
   has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -16,8 +17,7 @@ Paws::CloudWatchLogs::DescribeExportTasksResponse
 
 =head2 ExportTasks => ArrayRef[L<Paws::CloudWatchLogs::ExportTask>]
 
-
-
+The export tasks.
 
 
 =head2 NextToken => Str
@@ -25,6 +25,7 @@ Paws::CloudWatchLogs::DescribeExportTasksResponse
 
 
 
+=head2 _request_id => Str
 
 
 =cut

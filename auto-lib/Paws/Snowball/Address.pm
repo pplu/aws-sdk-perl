@@ -75,7 +75,8 @@ an exception is thrown.
 
 =head2 Landmark => Str
 
-  A landmark listed in an address that a Snowball is to be delivered to.
+  The landmark identifying the address that the appliance will be shipped
+to.
 
 
 =head2 Name => Str
@@ -96,8 +97,7 @@ delivered to.
 
 =head2 PrefectureOrDistrict => Str
 
-  The prefecture or district in an address that a Snowball is to be
-delivered to.
+  The prefecture or district that the appliance will be shipped to.
 
 
 =head2 StateOrProvince => Str

@@ -33,7 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElastiCache
 
 =head1 DESCRIPTION
 
-Represents the output of a I<CreateCacheParameterGroup> action.
+Represents the output of a C<CreateCacheParameterGroup> operation.
 
 =head1 ATTRIBUTES
 
@@ -42,6 +42,9 @@ Represents the output of a I<CreateCacheParameterGroup> action.
 
   The name of the cache parameter group family that this cache parameter
 group is compatible with.
+
+Valid values are: C<memcached1.4> | C<redis2.6> | C<redis2.8> |
+C<redis3.2>
 
 
 =head2 CacheParameterGroupName => Str

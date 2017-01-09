@@ -1,0 +1,10 @@
+---
+call: PutObject
+service: S3
+tests:
+  - path: ETag
+    op: eq
+    expected: '"3858f62230ac3c915f300c664312c63f"'
+  - path: _request_id
+    op: eq
+    expected: B1977252D37805FB

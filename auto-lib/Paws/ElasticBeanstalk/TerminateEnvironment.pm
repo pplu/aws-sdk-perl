@@ -70,12 +70,15 @@ the environment is terminated:
 
 =over
 
-=item * C<true>: The specified environment as well as the associated
-AWS resources, such as Auto Scaling group and LoadBalancer, are
-terminated.
+=item *
 
-=item * C<false>: AWS Elastic Beanstalk resource management is removed
-from the environment, but the AWS resources continue to operate.
+C<true>: The specified environment as well as the associated AWS
+resources, such as Auto Scaling group and LoadBalancer, are terminated.
+
+=item *
+
+C<false>: AWS Elastic Beanstalk resource management is removed from the
+environment, but the AWS resources continue to operate.
 
 =back
 

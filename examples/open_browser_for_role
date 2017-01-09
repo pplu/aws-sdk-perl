@@ -1,0 +1,34 @@
+#!/usr/bin/env perl
+
+use Paws;
+use Browser::Open qw( open_browser );
+
+my $user = $ENV{USER} or 'paws federated user';
+my $issuer = 'http://aws.amazon.com';
+my $dest = 'https://console.aws.amazon.com/';
+
+my $role_arn = $ARGV[0] or die "Usage $0 role_arn [externalid]";
+my $external_id = $ARGV[1];
+
+my $creds = Paws->service('STS')->AssumeRole(
+  DurationSeconds => 900,
+  (defined $external_id)?(ExternalId => $external_id):(),
+  Policy => '{"Version": "2012-10-17","Statement": {"Effect": "Allow","Action": "*", "Resource": "*" } }',
+  RoleArn => $role_arn,
+  RoleSessionName => $user,
+);
+
+my $token = Paws->service('Signin')->GetSigninToken(
+  SessionDuration => 1800,
+  SessionId => $creds->Credentials->AccessKeyId, 
+  SessionKey => $creds->Credentials->SecretAccessKey, 
+  SessionToken => $creds->Credentials->SessionToken
+);
+
+my $url = Paws->service('Signin')->Login(
+  Issuer => $issuer,
+  Destination => $dest,
+  SigninToken => $token->SigninToken
+);
+
+open_browser($url->URL);

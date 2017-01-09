@@ -5,6 +5,7 @@ package Paws::Firehose::UpdateDestination;
   has DeliveryStreamName => (is => 'ro', isa => 'Str', required => 1);
   has DestinationId => (is => 'ro', isa => 'Str', required => 1);
   has ElasticsearchDestinationUpdate => (is => 'ro', isa => 'Paws::Firehose::ElasticsearchDestinationUpdate');
+  has ExtendedS3DestinationUpdate => (is => 'ro', isa => 'Paws::Firehose::ExtendedS3DestinationUpdate');
   has RedshiftDestinationUpdate => (is => 'ro', isa => 'Paws::Firehose::RedshiftDestinationUpdate');
   has S3DestinationUpdate => (is => 'ro', isa => 'Paws::Firehose::S3DestinationUpdate');
 
@@ -40,13 +41,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> CurrentDeliveryStreamVersionId => Str
 
-Obtain this value from the B<VersionId> result of the
-DeliveryStreamDescription operation. This value is required, and helps
-the service to perform conditional operations. For example, if there is
-a interleaving update and this value is null, then the update
-destination fails. After the update is successful, the B<VersionId>
-value is updated. The service then performs a merge of the old
-configuration with the new configuration.
+Obtain this value from the B<VersionId> result of
+DeliveryStreamDescription. This value is required, and helps the
+service to perform conditional operations. For example, if there is a
+interleaving update and this value is null, then the update destination
+fails. After the update is successful, the B<VersionId> value is
+updated. The service then performs a merge of the old configuration
+with the new configuration.
 
 
 
@@ -68,6 +69,12 @@ Describes an update for a destination in Amazon ES.
 
 
 
+=head2 ExtendedS3DestinationUpdate => L<Paws::Firehose::ExtendedS3DestinationUpdate>
+
+Describes an update for a destination in Amazon S3.
+
+
+
 =head2 RedshiftDestinationUpdate => L<Paws::Firehose::RedshiftDestinationUpdate>
 
 Describes an update for a destination in Amazon Redshift.
@@ -76,7 +83,7 @@ Describes an update for a destination in Amazon Redshift.
 
 =head2 S3DestinationUpdate => L<Paws::Firehose::S3DestinationUpdate>
 
-Describes an update for a destination in Amazon S3.
+[Deprecated] Describes an update for a destination in Amazon S3.
 
 
 

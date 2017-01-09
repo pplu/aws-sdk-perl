@@ -3,6 +3,7 @@ package Paws::ElasticTranscoder::UpdatePipelineNotificationsResponse;
   use Moose;
   has Pipeline => (is => 'ro', isa => 'Paws::ElasticTranscoder::Pipeline');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -17,9 +18,10 @@ Paws::ElasticTranscoder::UpdatePipelineNotificationsResponse
 =head2 Pipeline => L<Paws::ElasticTranscoder::Pipeline>
 
 A section of the response body that provides information about the
-pipeline.
+pipeline associated with this notification.
 
 
+=head2 _request_id => Str
 
 
 =cut

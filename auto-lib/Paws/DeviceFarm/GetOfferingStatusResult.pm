@@ -5,6 +5,7 @@ package Paws::DeviceFarm::GetOfferingStatusResult;
   has NextPeriod => (is => 'ro', isa => 'Paws::DeviceFarm::OfferingStatusMap', traits => ['Unwrapped'], xmlname => 'nextPeriod' );
   has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -20,11 +21,9 @@ Paws::DeviceFarm::GetOfferingStatusResult
 When specified, gets the offering status for the current period.
 
 
-
 =head2 NextPeriod => L<Paws::DeviceFarm::OfferingStatusMap>
 
 When specified, gets the offering status for the next period.
-
 
 
 =head2 NextToken => Str
@@ -34,6 +33,7 @@ operation, which can be used to return the next set of items in the
 list.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -3,6 +3,7 @@ package Paws::OpsWorks::RegisterElasticIpResult;
   use Moose;
   has ElasticIp => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -18,6 +19,7 @@ Paws::OpsWorks::RegisterElasticIpResult
 The Elastic IP address.
 
 
+=head2 _request_id => Str
 
 
 =cut

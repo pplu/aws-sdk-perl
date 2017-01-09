@@ -4,6 +4,7 @@ package Paws::ElasticTranscoder::ListJobsByStatusResponse;
   has Jobs => (is => 'ro', isa => 'ArrayRef[Paws::ElasticTranscoder::Job]');
   has NextPageToken => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -20,7 +21,6 @@ Paws::ElasticTranscoder::ListJobsByStatusResponse
 An array of C<Job> objects that have the specified status.
 
 
-
 =head2 NextPageToken => Str
 
 A value that you use to access the second and subsequent pages of
@@ -29,6 +29,7 @@ page or when you've reached the last page of results, the value of
 C<NextPageToken> is C<null>.
 
 
+=head2 _request_id => Str
 
 
 =cut

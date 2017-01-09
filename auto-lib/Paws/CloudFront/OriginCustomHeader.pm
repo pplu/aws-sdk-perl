@@ -32,19 +32,23 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 
 =head1 DESCRIPTION
 
-A complex type that contains information related to a Header
+A complex type that contains C<HeaderName> and C<HeaderValue> elements,
+if any, for this distribution.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> HeaderName => Str
 
-  The header's name.
+  The name of a header that you want CloudFront to forward to your
+origin. For more information, see Forwarding Custom Headers to Your
+Origin (Web Distributions Only) in the I<Amazon Amazon CloudFront
+Developer Guide>.
 
 
 =head2 B<REQUIRED> HeaderValue => Str
 
-  The header's value.
+  The value for the header that you specified in the C<HeaderName> field.
 
 
 

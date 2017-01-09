@@ -4,6 +4,7 @@ package Paws::ApiGateway::RestApis;
   has Items => (is => 'ro', isa => 'ArrayRef[Paws::ApiGateway::RestApi]');
   has Position => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -20,12 +21,12 @@ Paws::ApiGateway::RestApis
 An array of links to the current page of RestApi resources.
 
 
-
 =head2 Position => Str
 
 
 
 
+=head2 _request_id => Str
 
 
 =cut

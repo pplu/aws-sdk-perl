@@ -1,14 +1,16 @@
 package Paws::RDS::DBCluster;
   use Moose;
   has AllocatedStorage => (is => 'ro', isa => 'Int');
-  has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has AssociatedRoles => (is => 'ro', isa => 'ArrayRef[Paws::RDS::DBClusterRole]', request_name => 'DBClusterRole', traits => ['NameInRequest']);
+  has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'AvailabilityZone', traits => ['NameInRequest']);
   has BackupRetentionPeriod => (is => 'ro', isa => 'Int');
   has CharacterSetName => (is => 'ro', isa => 'Str');
+  has ClusterCreateTime => (is => 'ro', isa => 'Str');
   has DatabaseName => (is => 'ro', isa => 'Str');
   has DBClusterArn => (is => 'ro', isa => 'Str');
   has DBClusterIdentifier => (is => 'ro', isa => 'Str');
-  has DBClusterMembers => (is => 'ro', isa => 'ArrayRef[Paws::RDS::DBClusterMember]');
-  has DBClusterOptionGroupMemberships => (is => 'ro', isa => 'ArrayRef[Paws::RDS::DBClusterOptionGroupStatus]');
+  has DBClusterMembers => (is => 'ro', isa => 'ArrayRef[Paws::RDS::DBClusterMember]', request_name => 'DBClusterMember', traits => ['NameInRequest']);
+  has DBClusterOptionGroupMemberships => (is => 'ro', isa => 'ArrayRef[Paws::RDS::DBClusterOptionGroupStatus]', request_name => 'DBClusterOptionGroup', traits => ['NameInRequest']);
   has DBClusterParameterGroup => (is => 'ro', isa => 'Str');
   has DbClusterResourceId => (is => 'ro', isa => 'Str');
   has DBSubnetGroup => (is => 'ro', isa => 'Str');
@@ -20,16 +22,17 @@ package Paws::RDS::DBCluster;
   has KmsKeyId => (is => 'ro', isa => 'Str');
   has LatestRestorableTime => (is => 'ro', isa => 'Str');
   has MasterUsername => (is => 'ro', isa => 'Str');
+  has MultiAZ => (is => 'ro', isa => 'Bool');
   has PercentProgress => (is => 'ro', isa => 'Str');
   has Port => (is => 'ro', isa => 'Int');
   has PreferredBackupWindow => (is => 'ro', isa => 'Str');
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
   has ReaderEndpoint => (is => 'ro', isa => 'Str');
-  has ReadReplicaIdentifiers => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has ReadReplicaIdentifiers => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'ReadReplicaIdentifier', traits => ['NameInRequest']);
   has ReplicationSourceIdentifier => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
   has StorageEncrypted => (is => 'ro', isa => 'Bool');
-  has VpcSecurityGroups => (is => 'ro', isa => 'ArrayRef[Paws::RDS::VpcSecurityGroupMembership]');
+  has VpcSecurityGroups => (is => 'ro', isa => 'ArrayRef[Paws::RDS::VpcSecurityGroupMembership]', request_name => 'VpcSecurityGroupMembership', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -102,6 +105,14 @@ action.
   Specifies the allocated storage size in gigabytes (GB).
 
 
+=head2 AssociatedRoles => ArrayRef[L<Paws::RDS::DBClusterRole>]
+
+  Provides a list of the AWS Identity and Access Management (IAM) roles
+that are associated with the DB cluster. IAM roles that are associated
+with a DB cluster grant permission for the DB cluster to access other
+AWS services on your behalf.
+
+
 =head2 AvailabilityZones => ArrayRef[Str|Undef]
 
   Provides the list of EC2 Availability Zones that instances in the DB
@@ -118,6 +129,12 @@ retained.
 
   If present, specifies the name of the character set that this cluster
 is associated with.
+
+
+=head2 ClusterCreateTime => Str
+
+  Specifies the time when the DB cluster was created, in Universal
+Coordinated Time (UTC).
 
 
 =head2 DatabaseName => Str
@@ -212,6 +229,12 @@ point-in-time restore.
 =head2 MasterUsername => Str
 
   Contains the master username for the DB cluster.
+
+
+=head2 MultiAZ => Bool
+
+  Specifies whether the DB cluster has instances in multiple Availability
+Zones.
 
 
 =head2 PercentProgress => Str

@@ -43,22 +43,23 @@ Describes the options for a range inventory retrieval job.
 =head2 EndDate => Str
 
   The end of the date range in UTC for vault inventory retrieval that
-includes archives created before this date. A string representation of
-ISO 8601 date format, for example, 2013-03-20T17:03:43Z.
+includes archives created before this date. This value should be a
+string in the ISO 8601 date format, for example
+C<2013-03-20T17:03:43Z>.
 
 
 =head2 Format => Str
 
   The output format for the vault inventory list, which is set by the
 B<InitiateJob> request when initiating a job to retrieve a vault
-inventory. Valid values are "CSV" and "JSON".
+inventory. Valid values are C<CSV> and C<JSON>.
 
 
 =head2 Limit => Str
 
-  Specifies the maximum number of inventory items returned per vault
-inventory retrieval request. This limit is set when initiating the job
-with the a B<InitiateJob> request.
+  The maximum number of inventory items returned per vault inventory
+retrieval request. This limit is set when initiating the job with the a
+B<InitiateJob> request.
 
 
 =head2 Marker => Str
@@ -72,10 +73,10 @@ information, see Range Inventory Retrieval.
 
 =head2 StartDate => Str
 
-  The start of the date range in UTC for vault inventory retrieval that
-includes archives created on or after this date. A string
-representation of ISO 8601 date format, for example,
-2013-03-20T17:03:43Z.
+  The start of the date range in Universal Coordinated Time (UTC) for
+vault inventory retrieval that includes archives created on or after
+this date. This value should be a string in the ISO 8601 date format,
+for example C<2013-03-20T17:03:43Z>.
 
 
 

@@ -8,6 +8,7 @@ package Paws::STS::AssumeRoleWithWebIdentityResponse;
   has Provider => (is => 'ro', isa => 'Str');
   has SubjectFromWebIdentityToken => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -29,13 +30,11 @@ role ID. The ARN and ID include the C<RoleSessionName> that you
 specified when you called C<AssumeRole>.
 
 
-
 =head2 Audience => Str
 
 The intended audience (also known as client ID) of the web identity
 token. This is traditionally the client identifier issued to the
 application that requested the web identity token.
-
 
 
 =head2 Credentials => L<Paws::STS::Credentials>
@@ -50,13 +49,11 @@ bytes, but that can vary. Also, future updates to AWS might require
 larger sizes.
 
 
-
 =head2 PackedPolicySize => Int
 
 A percentage value that indicates the size of the policy in packed
 form. The service rejects any policy with a packed size greater than
 100 percent, which means the policy exceeded the allowed space.
-
 
 
 =head2 Provider => Str
@@ -65,7 +62,6 @@ The issuing authority of the web identity token presented. For OpenID
 Connect ID Tokens this contains the value of the C<iss> field. For
 OAuth 2.0 access tokens, this contains the value of the C<ProviderId>
 parameter that was passed in the C<AssumeRoleWithWebIdentity> request.
-
 
 
 =head2 SubjectFromWebIdentityToken => Str
@@ -79,6 +75,7 @@ tokens, this field contains the value returned by the identity provider
 as the token's C<sub> (Subject) claim.
 
 
+=head2 _request_id => Str
 
 
 =cut

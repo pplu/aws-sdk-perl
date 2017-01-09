@@ -35,10 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudWatch:
 
 =head1 DESCRIPTION
 
-The C<AlarmHistoryItem> data type contains descriptive information
-about the history of a specific alarm. If you call
-DescribeAlarmHistory, Amazon CloudWatch returns this data type as part
-of the DescribeAlarmHistoryResult data type.
+Represents the history of a specific alarm.
 
 =head1 ATTRIBUTES
 
@@ -50,7 +47,7 @@ of the DescribeAlarmHistoryResult data type.
 
 =head2 HistoryData => Str
 
-  Machine-readable data about the alarm in JSON format.
+  Data about the alarm, in JSON format.
 
 
 =head2 HistoryItemType => Str
@@ -60,7 +57,7 @@ of the DescribeAlarmHistoryResult data type.
 
 =head2 HistorySummary => Str
 
-  A human-readable summary of the alarm history.
+  A summary of the alarm history, in text format.
 
 
 =head2 Timestamp => Str

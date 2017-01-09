@@ -3,6 +3,7 @@ package Paws::WAF::GetSizeConstraintSetResponse;
   use Moose;
   has SizeConstraintSet => (is => 'ro', isa => 'Paws::WAF::SizeConstraintSet');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -21,19 +22,26 @@ following topics:
 
 =over
 
-=item * SizeConstraintSet: Contains C<SizeConstraintSetId>,
-C<SizeConstraints>, and C<Name>
+=item *
 
-=item * C<SizeConstraints>: Contains an array of SizeConstraint
-objects. Each C<SizeConstraint> object contains FieldToMatch,
-C<TextTransformation>, C<ComparisonOperator>, and C<Size>
+SizeConstraintSet: Contains C<SizeConstraintSetId>, C<SizeConstraints>,
+and C<Name>
 
-=item * FieldToMatch: Contains C<Data> and C<Type>
+=item *
+
+C<SizeConstraints>: Contains an array of SizeConstraint objects. Each
+C<SizeConstraint> object contains FieldToMatch, C<TextTransformation>,
+C<ComparisonOperator>, and C<Size>
+
+=item *
+
+FieldToMatch: Contains C<Data> and C<Type>
 
 =back
 
 
 
+=head2 _request_id => Str
 
 
 =cut

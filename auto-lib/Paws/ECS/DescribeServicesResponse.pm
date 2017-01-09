@@ -4,6 +4,7 @@ package Paws::ECS::DescribeServicesResponse;
   has Failures => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Failure]', traits => ['Unwrapped'], xmlname => 'failures' );
   has Services => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Service]', traits => ['Unwrapped'], xmlname => 'services' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -19,12 +20,12 @@ Paws::ECS::DescribeServicesResponse
 Any failures associated with the call.
 
 
-
 =head2 Services => ArrayRef[L<Paws::ECS::Service>]
 
 The list of services described.
 
 
+=head2 _request_id => Str
 
 
 =cut

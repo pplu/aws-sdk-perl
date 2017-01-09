@@ -1,8 +1,8 @@
 
 package Paws::S3::ListPartsOutput;
   use Moose;
-  has AbortDate => (is => 'ro', isa => 'Str');
-  has AbortRuleId => (is => 'ro', isa => 'Str');
+  has AbortDate => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-abort-date');
+  has AbortRuleId => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-abort-rule-id');
   has Bucket => (is => 'ro', isa => 'Str');
   has Initiator => (is => 'ro', isa => 'Paws::S3::Initiator');
   has IsTruncated => (is => 'ro', isa => 'Bool');
@@ -11,11 +11,12 @@ package Paws::S3::ListPartsOutput;
   has NextPartNumberMarker => (is => 'ro', isa => 'Int');
   has Owner => (is => 'ro', isa => 'Paws::S3::Owner');
   has PartNumberMarker => (is => 'ro', isa => 'Int');
-  has Parts => (is => 'ro', isa => 'ArrayRef[Paws::S3::Part]');
-  has RequestCharged => (is => 'ro', isa => 'Str');
+  has Parts => (is => 'ro', isa => 'ArrayRef[Paws::S3::Part]', traits => ['Unwrapped'], xmlname => 'Part');
+  has RequestCharged => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-request-charged');
   has StorageClass => (is => 'ro', isa => 'Str');
   has UploadId => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

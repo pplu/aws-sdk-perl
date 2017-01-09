@@ -1,6 +1,6 @@
 package Paws::S3::Tagging;
   use Moose;
-  has TagSet => (is => 'ro', isa => 'ArrayRef[Paws::S3::Tag]', required => 1);
+  has TagSet => (is => 'ro', isa => 'ArrayRef[Paws::S3::Tag]', request_name => 'Tag', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###

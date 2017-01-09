@@ -4,10 +4,10 @@ package Paws::ElastiCache::CacheCluster;
   has CacheClusterCreateTime => (is => 'ro', isa => 'Str');
   has CacheClusterId => (is => 'ro', isa => 'Str');
   has CacheClusterStatus => (is => 'ro', isa => 'Str');
-  has CacheNodes => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::CacheNode]');
+  has CacheNodes => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::CacheNode]', request_name => 'CacheNode', traits => ['NameInRequest']);
   has CacheNodeType => (is => 'ro', isa => 'Str');
   has CacheParameterGroup => (is => 'ro', isa => 'Paws::ElastiCache::CacheParameterGroupStatus');
-  has CacheSecurityGroups => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::CacheSecurityGroupMembership]');
+  has CacheSecurityGroups => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::CacheSecurityGroupMembership]', request_name => 'CacheSecurityGroup', traits => ['NameInRequest']);
   has CacheSubnetGroupName => (is => 'ro', isa => 'Str');
   has ClientDownloadLandingPage => (is => 'ro', isa => 'Str');
   has ConfigurationEndpoint => (is => 'ro', isa => 'Paws::ElastiCache::Endpoint');
@@ -76,9 +76,9 @@ unique key that identifies a cache cluster.
 =head2 CacheClusterStatus => Str
 
   The current state of this cache cluster, one of the following values:
-I<available>, I<creating>, I<deleted>, I<deleting>,
-I<incompatible-network>, I<modifying>, I<rebooting cache cluster
-nodes>, I<restore-failed>, or I<snapshotting>.
+C<available>, C<creating>, C<deleted>, C<deleting>,
+C<incompatible-network>, C<modifying>, C<rebooting cache cluster
+nodes>, C<restore-failed>, or C<snapshotting>.
 
 
 =head2 CacheNodes => ArrayRef[L<Paws::ElastiCache::CacheNode>]
@@ -105,7 +105,9 @@ General purpose:
 
 Current generation: C<cache.t2.micro>, C<cache.t2.small>,
 C<cache.t2.medium>, C<cache.m3.medium>, C<cache.m3.large>,
-C<cache.m3.xlarge>, C<cache.m3.2xlarge>
+C<cache.m3.xlarge>, C<cache.m3.2xlarge>, C<cache.m4.large>,
+C<cache.m4.xlarge>, C<cache.m4.2xlarge>, C<cache.m4.4xlarge>,
+C<cache.m4.10xlarge>
 
 =item *
 
@@ -144,21 +146,24 @@ B<Notes:>
 
 =item *
 
-All t2 instances are created in an Amazon Virtual Private Cloud (VPC).
+All T2 instances are created in an Amazon Virtual Private Cloud (Amazon
+VPC).
 
 =item *
 
-Redis backup/restore is not supported for t2 instances.
+Redis backup/restore is not supported for Redis (cluster mode disabled)
+T1 and T2 instances. Backup/restore is supported on Redis (cluster mode
+enabled) T2 instances.
 
 =item *
 
-Redis Append-only files (AOF) functionality is not supported for t1 or
-t2 instances.
+Redis Append-only files (AOF) functionality is not supported for T1 or
+T2 instances.
 
 =back
 
-For a complete listing of cache node types and specifications, see
-Amazon ElastiCache Product Features and Details and Cache Node
+For a complete listing of node types and specifications, see Amazon
+ElastiCache Product Features and Details and either Cache Node
 Type-Specific Parameters for Memcached or Cache Node Type-Specific
 Parameters for Redis.
 
@@ -192,7 +197,7 @@ client library.
 
 =head2 Engine => Str
 
-  The name of the cache engine (I<memcached> or I<redis>) to be used for
+  The name of the cache engine (C<memcached> or C<redis>) to be used for
 this cache cluster.
 
 
@@ -228,10 +233,12 @@ Zones.
 
 =head2 PreferredMaintenanceWindow => Str
 
-  Specifies the weekly time range during which maintenance on the cache
-cluster is performed. It is specified as a range in the format
+  Specifies the weekly time range during which maintenance on the cluster
+is performed. It is specified as a range in the format
 ddd:hh24:mi-ddd:hh24:mi (24H Clock UTC). The minimum maintenance window
-is a 60 minute period. Valid values for C<ddd> are:
+is a 60 minute period.
+
+Valid values for C<ddd> are:
 
 =over
 
@@ -265,7 +272,7 @@ C<sat>
 
 =back
 
-Example: C<sun:05:00-sun:09:00>
+Example: C<sun:23:00-mon:01:30>
 
 
 =head2 ReplicationGroupId => Str
@@ -282,10 +289,10 @@ replication group.
 
 =head2 SnapshotRetentionLimit => Int
 
-  The number of days for which ElastiCache will retain automatic cache
+  The number of days for which ElastiCache retains automatic cache
 cluster snapshots before deleting them. For example, if you set
-I<SnapshotRetentionLimit> to 5, then a snapshot that was taken today
-will be retained for 5 days before being deleted.
+C<SnapshotRetentionLimit> to 5, a snapshot that was taken today is
+retained for 5 days before being deleted.
 
 If the value of SnapshotRetentionLimit is set to zero (0), backups are
 turned off.
@@ -293,8 +300,8 @@ turned off.
 
 =head2 SnapshotWindow => Str
 
-  The daily time range (in UTC) during which ElastiCache will begin
-taking a daily snapshot of your cache cluster.
+  The daily time range (in UTC) during which ElastiCache begins taking a
+daily snapshot of your cache cluster.
 
 Example: C<05:00-09:00>
 

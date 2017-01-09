@@ -4,6 +4,7 @@ package Paws::StorageGateway::TapeArchive;
   has RetrievedTo => (is => 'ro', isa => 'Str');
   has TapeARN => (is => 'ro', isa => 'Str');
   has TapeBarcode => (is => 'ro', isa => 'Str');
+  has TapeCreatedDate => (is => 'ro', isa => 'Str');
   has TapeSizeInBytes => (is => 'ro', isa => 'Int');
   has TapeStatus => (is => 'ro', isa => 'Str');
 1;
@@ -66,6 +67,11 @@ The virtual tape is retrieved from the virtual tape shelf (VTS).
 =head2 TapeBarcode => Str
 
   The barcode that identifies the archived virtual tape.
+
+
+=head2 TapeCreatedDate => Str
+
+  
 
 
 =head2 TapeSizeInBytes => Int

@@ -79,6 +79,8 @@ package Paws::KinesisAnalytics;
     my $call_object = $self->new_with_coercions('Paws::KinesisAnalytics::UpdateApplication', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
+
 
   sub operations { qw/AddApplicationInput AddApplicationOutput AddApplicationReferenceDataSource CreateApplication DeleteApplication DeleteApplicationOutput DeleteApplicationReferenceDataSource DescribeApplication DiscoverInputSchema ListApplications StartApplication StopApplication UpdateApplication / }
 
@@ -390,6 +392,15 @@ each time you update your application.
 
 This opeation requires permission for the
 C<kinesisanalytics:UpdateApplication> action.
+
+
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+
 
 
 =head1 SEE ALSO

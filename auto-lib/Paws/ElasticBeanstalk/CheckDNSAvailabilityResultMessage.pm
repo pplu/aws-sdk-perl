@@ -4,6 +4,7 @@ package Paws::ElasticBeanstalk::CheckDNSAvailabilityResultMessage;
   has Available => (is => 'ro', isa => 'Bool');
   has FullyQualifiedCNAME => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -21,12 +22,15 @@ Indicates if the specified CNAME is available:
 
 =over
 
-=item * C<true> : The CNAME is available.
+=item *
 
-=item * C<false> : The CNAME is not available.
+C<true> : The CNAME is available.
+
+=item *
+
+C<false> : The CNAME is not available.
 
 =back
-
 
 
 
@@ -36,6 +40,7 @@ The fully qualified CNAME to reserve when CreateEnvironment is called
 with the provided prefix.
 
 
+=head2 _request_id => Str
 
 
 =cut

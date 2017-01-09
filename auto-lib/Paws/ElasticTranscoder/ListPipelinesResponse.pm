@@ -4,6 +4,7 @@ package Paws::ElasticTranscoder::ListPipelinesResponse;
   has NextPageToken => (is => 'ro', isa => 'Str');
   has Pipelines => (is => 'ro', isa => 'ArrayRef[Paws::ElasticTranscoder::Pipeline]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -23,12 +24,12 @@ reached the last page of results, the value of C<NextPageToken> is
 C<null>.
 
 
-
 =head2 Pipelines => ArrayRef[L<Paws::ElasticTranscoder::Pipeline>]
 
 An array of C<Pipeline> objects.
 
 
+=head2 _request_id => Str
 
 
 =cut

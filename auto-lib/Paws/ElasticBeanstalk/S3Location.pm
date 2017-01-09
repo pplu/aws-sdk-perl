@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticBean
 
 =head1 DESCRIPTION
 
-A specification of a location in Amazon S3.
+The bucket and key of an item stored in Amazon S3.
 
 =head1 ATTRIBUTES
 

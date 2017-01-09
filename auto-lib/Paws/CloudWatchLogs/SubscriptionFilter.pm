@@ -2,6 +2,7 @@ package Paws::CloudWatchLogs::SubscriptionFilter;
   use Moose;
   has CreationTime => (is => 'ro', isa => 'Int', xmlname => 'creationTime', request_name => 'creationTime', traits => ['Unwrapped','NameInRequest']);
   has DestinationArn => (is => 'ro', isa => 'Str', xmlname => 'destinationArn', request_name => 'destinationArn', traits => ['Unwrapped','NameInRequest']);
+  has Distribution => (is => 'ro', isa => 'Str', xmlname => 'distribution', request_name => 'distribution', traits => ['Unwrapped','NameInRequest']);
   has FilterName => (is => 'ro', isa => 'Str', xmlname => 'filterName', request_name => 'filterName', traits => ['Unwrapped','NameInRequest']);
   has FilterPattern => (is => 'ro', isa => 'Str', xmlname => 'filterPattern', request_name => 'filterPattern', traits => ['Unwrapped','NameInRequest']);
   has LogGroupName => (is => 'ro', isa => 'Str', xmlname => 'logGroupName', request_name => 'logGroupName', traits => ['Unwrapped','NameInRequest']);
@@ -36,24 +37,30 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudWatchL
 
 =head1 DESCRIPTION
 
-This class has no description
+Represents a subscription filter.
 
 =head1 ATTRIBUTES
 
 
 =head2 CreationTime => Int
 
-  
+  The creation time of the subscription filter.
 
 
 =head2 DestinationArn => Str
 
-  
+  The Amazon Resource Name (ARN) of the destination.
+
+
+=head2 Distribution => Str
+
+  The method used to distribute log data to the destination, when the
+destination is an Amazon Kinesis stream.
 
 
 =head2 FilterName => Str
 
-  
+  The name of the subscription filter.
 
 
 =head2 FilterPattern => Str
@@ -63,7 +70,7 @@ This class has no description
 
 =head2 LogGroupName => Str
 
-  
+  The name of the log group.
 
 
 =head2 RoleArn => Str

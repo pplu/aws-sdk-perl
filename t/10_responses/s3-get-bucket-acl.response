@@ -13,7 +13,7 @@ content: |
           <DisplayName>CustomersName@amazon.com</DisplayName>
         </Grantee>
         <Permission>FULL_CONTROL</Permission>
-  ï¿¼ï¿¼ï¿¼    </Grant>
+      </Grant>
     </AccessControlList>
   </AccessControlPolicy>
 headers: []

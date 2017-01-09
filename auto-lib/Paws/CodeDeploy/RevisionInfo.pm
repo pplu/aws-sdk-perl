@@ -39,12 +39,13 @@ Information about an application revision.
 
 =head2 GenericRevisionInfo => L<Paws::CodeDeploy::GenericRevisionInfo>
 
-  
+  Information about an application revision, including usage details and
+currently associated deployment groups.
 
 
 =head2 RevisionLocation => L<Paws::CodeDeploy::RevisionLocation>
 
-  
+  Information about the location and type of an application revision.
 
 
 

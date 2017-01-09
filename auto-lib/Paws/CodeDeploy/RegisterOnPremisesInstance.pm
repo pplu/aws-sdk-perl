@@ -1,13 +1,14 @@
 
 package Paws::CodeDeploy::RegisterOnPremisesInstance;
   use Moose;
-  has IamUserArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'iamUserArn' , required => 1);
+  has IamSessionArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'iamSessionArn' );
+  has IamUserArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'iamUserArn' );
   has InstanceName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'instanceName' , required => 1);
 
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'RegisterOnPremisesInstance');
-  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
   class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
@@ -34,7 +35,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> IamUserArn => Str
+=head2 IamSessionArn => Str
+
+The ARN of the IAM session to associate with the on-premises instance.
+
+
+
+=head2 IamUserArn => Str
 
 The ARN of the IAM user to associate with the on-premises instance.
 

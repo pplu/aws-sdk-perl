@@ -8,7 +8,7 @@ package Paws::ElasticBeanstalk::DeleteApplicationVersion;
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteApplicationVersion');
-  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
   class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
@@ -37,26 +37,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ApplicationName => Str
 
-The name of the application to delete releases from.
+The name of the application to which the version belongs.
 
 
 
 =head2 DeleteSourceBundle => Bool
 
-Indicates whether to delete the associated source bundle from Amazon
-S3:
-
-=over
-
-=item * C<true>: An attempt is made to delete the associated Amazon S3
-source bundle specified at time of creation.
-
-=item * C<false>: No action is taken on the Amazon S3 source bundle
-specified at time of creation.
-
-=back
-
-Valid Values: C<true> | C<false>
+Set to C<true> to delete the source bundle from your storage bucket.
+Otherwise, the application version is deleted only from Elastic
+Beanstalk and the source bundle remains in Amazon S3.
 
 
 

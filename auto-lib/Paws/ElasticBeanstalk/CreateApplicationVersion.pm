@@ -3,8 +3,10 @@ package Paws::ElasticBeanstalk::CreateApplicationVersion;
   use Moose;
   has ApplicationName => (is => 'ro', isa => 'Str', required => 1);
   has AutoCreateApplication => (is => 'ro', isa => 'Bool');
+  has BuildConfiguration => (is => 'ro', isa => 'Paws::ElasticBeanstalk::BuildConfiguration');
   has Description => (is => 'ro', isa => 'Str');
   has Process => (is => 'ro', isa => 'Bool');
+  has SourceBuildInformation => (is => 'ro', isa => 'Paws::ElasticBeanstalk::SourceBuildInformation');
   has SourceBundle => (is => 'ro', isa => 'Paws::ElasticBeanstalk::S3Location');
   has VersionLabel => (is => 'ro', isa => 'Str', required => 1);
 
@@ -48,22 +50,14 @@ C<InvalidParameterValue> error.
 
 =head2 AutoCreateApplication => Bool
 
-Determines how the system behaves if the specified application for this
-version does not already exist:
+Set to C<true> to create an application with the specified name if it
+doesn't already exist.
 
-=over
 
-=item * C<true> : Automatically creates the specified application for
-this release if it does not already exist.
 
-=item * C<false> : Throws an C<InvalidParameterValue> if the specified
-application for this release does not already exist.
+=head2 BuildConfiguration => L<Paws::ElasticBeanstalk::BuildConfiguration>
 
-=back
-
-Default: C<false>
-
-Valid Values: C<true> | C<false>
+Settings for an AWS CodeBuild build.
 
 
 
@@ -81,20 +75,24 @@ issues prior to deploying the application version to an environment.
 
 
 
+=head2 SourceBuildInformation => L<Paws::ElasticBeanstalk::SourceBuildInformation>
+
+Specify a commit in an AWS CodeCommit Git repository to use as the
+source code for the application version.
+
+
+
 =head2 SourceBundle => L<Paws::ElasticBeanstalk::S3Location>
 
 The Amazon S3 bucket and key that identify the location of the source
 bundle for this version.
 
-If data found at the Amazon S3 location exceeds the maximum allowed
-source bundle size, AWS Elastic Beanstalk returns an
-C<InvalidParameterValue> error. The maximum size allowed is 512 MB.
+The Amazon S3 bucket must be in the same region as the environment.
 
-Default: If not specified, AWS Elastic Beanstalk uses a sample
-application. If only partially specified (for example, a bucket is
-provided but not the key) or if no data is found at the Amazon S3
-location, AWS Elastic Beanstalk returns an
-C<InvalidParameterCombination> error.
+Specify a source bundle in S3 or a commit in an AWS CodeCommit
+repository (with C<SourceBuildInformation>), but not both. If neither
+C<SourceBundle> nor C<SourceBuildInformation> are provided, Elastic
+Beanstalk uses a sample application.
 
 
 

@@ -128,6 +128,11 @@ package Paws::Glacier;
     my $call_object = $self->new_with_coercions('Paws::Glacier::ListParts', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListProvisionedCapacity {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Glacier::ListProvisionedCapacity', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListTagsForVault {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Glacier::ListTagsForVault', @_);
@@ -136,6 +141,11 @@ package Paws::Glacier;
   sub ListVaults {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Glacier::ListVaults', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub PurchaseProvisionedCapacity {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Glacier::PurchaseProvisionedCapacity', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub RemoveTagsFromVault {
@@ -168,64 +178,94 @@ package Paws::Glacier;
     my $call_object = $self->new_with_coercions('Paws::Glacier::UploadMultipartPart', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
   sub ListAllJobs {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListJobs(@_);
-    my $array = [];
-    push @$array, @{ $result->JobList };
 
-    while ($result->Marker) {
-      $result = $self->ListJobs(@_, marker => $result->Marker);
-      push @$array, @{ $result->JobList };
+    if (not defined $callback) {
+      while ($result->marker) {
+        $result = $self->ListJobs(@_, marker => $result->Marker);
+        push @{ $result->JobList }, @{ $result->JobList };
+      }
+      return $result;
+    } else {
+      while ($result->marker) {
+        $result = $self->ListJobs(@_, marker => $result->Marker);
+        $callback->($_ => 'JobList') foreach (@{ $result->JobList });
+      }
     }
 
-    return 'Paws::Glacier::ListJobs'->_returns->new(JobList => $array);
+    return undef
   }
   sub ListAllMultipartUploads {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListMultipartUploads(@_);
-    my $array = [];
-    push @$array, @{ $result->UploadsList };
 
-    while ($result->Marker) {
-      $result = $self->ListMultipartUploads(@_, marker => $result->Marker);
-      push @$array, @{ $result->UploadsList };
+    if (not defined $callback) {
+      while ($result->marker) {
+        $result = $self->ListMultipartUploads(@_, marker => $result->Marker);
+        push @{ $result->UploadsList }, @{ $result->UploadsList };
+      }
+      return $result;
+    } else {
+      while ($result->marker) {
+        $result = $self->ListMultipartUploads(@_, marker => $result->Marker);
+        $callback->($_ => 'UploadsList') foreach (@{ $result->UploadsList });
+      }
     }
 
-    return 'Paws::Glacier::ListMultipartUploads'->_returns->new(UploadsList => $array);
+    return undef
   }
   sub ListAllParts {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListParts(@_);
-    my $array = [];
-    push @$array, @{ $result->Parts };
 
-    while ($result->Marker) {
-      $result = $self->ListParts(@_, marker => $result->Marker);
-      push @$array, @{ $result->Parts };
+    if (not defined $callback) {
+      while ($result->marker) {
+        $result = $self->ListParts(@_, marker => $result->Marker);
+        push @{ $result->Parts }, @{ $result->Parts };
+      }
+      return $result;
+    } else {
+      while ($result->marker) {
+        $result = $self->ListParts(@_, marker => $result->Marker);
+        $callback->($_ => 'Parts') foreach (@{ $result->Parts });
+      }
     }
 
-    return 'Paws::Glacier::ListParts'->_returns->new(Parts => $array);
+    return undef
   }
   sub ListAllVaults {
     my $self = shift;
 
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListVaults(@_);
-    my $array = [];
-    push @$array, @{ $result->VaultList };
 
-    while ($result->Marker) {
-      $result = $self->ListVaults(@_, marker => $result->Marker);
-      push @$array, @{ $result->VaultList };
+    if (not defined $callback) {
+      while ($result->marker) {
+        $result = $self->ListVaults(@_, marker => $result->Marker);
+        push @{ $result->VaultList }, @{ $result->VaultList };
+      }
+      return $result;
+    } else {
+      while ($result->marker) {
+        $result = $self->ListVaults(@_, marker => $result->Marker);
+        $callback->($_ => 'VaultList') foreach (@{ $result->VaultList });
+      }
     }
 
-    return 'Paws::Glacier::ListVaults'->_returns->new(VaultList => $array);
+    return undef
   }
 
-  sub operations { qw/AbortMultipartUpload AbortVaultLock AddTagsToVault CompleteMultipartUpload CompleteVaultLock CreateVault DeleteArchive DeleteVault DeleteVaultAccessPolicy DeleteVaultNotifications DescribeJob DescribeVault GetDataRetrievalPolicy GetJobOutput GetVaultAccessPolicy GetVaultLock GetVaultNotifications InitiateJob InitiateMultipartUpload InitiateVaultLock ListJobs ListMultipartUploads ListParts ListTagsForVault ListVaults RemoveTagsFromVault SetDataRetrievalPolicy SetVaultAccessPolicy SetVaultNotifications UploadArchive UploadMultipartPart / }
+
+  sub operations { qw/AbortMultipartUpload AbortVaultLock AddTagsToVault CompleteMultipartUpload CompleteVaultLock CreateVault DeleteArchive DeleteVault DeleteVaultAccessPolicy DeleteVaultNotifications DescribeJob DescribeVault GetDataRetrievalPolicy GetJobOutput GetVaultAccessPolicy GetVaultLock GetVaultNotifications InitiateJob InitiateMultipartUpload InitiateVaultLock ListJobs ListMultipartUploads ListParts ListProvisionedCapacity ListTagsForVault ListVaults PurchaseProvisionedCapacity RemoveTagsFromVault SetDataRetrievalPolicy SetVaultAccessPolicy SetVaultNotifications UploadArchive UploadMultipartPart / }
 
 1;
 
@@ -268,7 +308,7 @@ Amazon Glacier is a great storage choice when low storage cost is
 paramount, your data is rarely retrieved, and retrieval latency of
 several hours is acceptable. If your application requires fast or
 frequent access to your data, consider using Amazon S3. For more
-information, go to Amazon Simple Storage Service (Amazon S3).
+information, see Amazon Simple Storage Service (Amazon S3).
 
 You can store any kind of data in any format. There is no maximum limit
 on the total amount of data you can store in Amazon Glacier.
@@ -320,7 +360,7 @@ permissions by default. You must grant them explicit permission to
 perform specific actions. For more information, see Access Control
 Using AWS Identity and Access Management (IAM).
 
-For conceptual information and underlying REST API, go to Working with
+For conceptual information and underlying REST API, see Working with
 Archives in Amazon Glacier and Abort Multipart Upload in the I<Amazon
 Glacier Developer Guide>.
 
@@ -412,9 +452,9 @@ permissions by default. You must grant them explicit permission to
 perform specific actions. For more information, see Access Control
 Using AWS Identity and Access Management (IAM).
 
-For conceptual information and underlying REST API, go to Uploading
-Large Archives in Parts (Multipart Upload) and Complete Multipart
-Upload in the I<Amazon Glacier Developer Guide>.
+For conceptual information and underlying REST API, see Uploading Large
+Archives in Parts (Multipart Upload) and Complete Multipart Upload in
+the I<Amazon Glacier Developer Guide>.
 
 
 =head2 CompleteVaultLock(AccountId => Str, LockId => Str, VaultName => Str)
@@ -475,7 +515,7 @@ permissions by default. You must grant them explicit permission to
 perform specific actions. For more information, see Access Control
 Using AWS Identity and Access Management (IAM).
 
-For conceptual information and underlying REST API, go to Creating a
+For conceptual information and underlying REST API, see Creating a
 Vault in Amazon Glacier and Create Vault in the I<Amazon Glacier
 Developer Guide>.
 
@@ -493,13 +533,17 @@ the following scenarios:
 
 =over
 
-=item * If the archive retrieval job is actively preparing the data for
+=item *
+
+If the archive retrieval job is actively preparing the data for
 download when Amazon Glacier receives the delete archive request, the
 archival retrieval operation might fail.
 
-=item * If the archive retrieval job has successfully prepared the
-archive for download when Amazon Glacier receives the delete archive
-request, you will be able to download the output.
+=item *
+
+If the archive retrieval job has successfully prepared the archive for
+download when Amazon Glacier receives the delete archive request, you
+will be able to download the output.
 
 =back
 
@@ -512,7 +556,7 @@ permissions by default. You must grant them explicit permission to
 perform specific actions. For more information, see Access Control
 Using AWS Identity and Access Management (IAM).
 
-For conceptual information and underlying REST API, go to Deleting an
+For conceptual information and underlying REST API, see Deleting an
 Archive in Amazon Glacier and Delete Archive in the I<Amazon Glacier
 Developer Guide>.
 
@@ -541,7 +585,7 @@ permissions by default. You must grant them explicit permission to
 perform specific actions. For more information, see Access Control
 Using AWS Identity and Access Management (IAM).
 
-For conceptual information and underlying REST API, go to Deleting a
+For conceptual information and underlying REST API, see Deleting a
 Vault in Amazon Glacier and Delete Vault in the I<Amazon Glacier
 Developer Guide>.
 
@@ -582,7 +626,7 @@ permissions by default. You must grant them explicit permission to
 perform specific actions. For more information, see Access Control
 Using AWS Identity and Access Management (IAM).
 
-For conceptual information and underlying REST API, go to Configuring
+For conceptual information and underlying REST API, see Configuring
 Vault Notifications in Amazon Glacier and Delete Vault Notification
 Configuration in the Amazon Glacier Developer Guide.
 
@@ -613,7 +657,7 @@ permissions by default. You must grant them explicit permission to
 perform specific actions. For more information, see Access Control
 Using AWS Identity and Access Management (IAM).
 
-For information about the underlying REST API, go to Working with
+For information about the underlying REST API, see Working with
 Archives in Amazon Glacier in the I<Amazon Glacier Developer Guide>.
 
 
@@ -640,7 +684,7 @@ permissions by default. You must grant them explicit permission to
 perform specific actions. For more information, see Access Control
 Using AWS Identity and Access Management (IAM).
 
-For conceptual information and underlying REST API, go to Retrieving
+For conceptual information and underlying REST API, see Retrieving
 Vault Metadata in Amazon Glacier and Describe Vault in the I<Amazon
 Glacier Developer Guide>.
 
@@ -668,48 +712,36 @@ InitiateJob. Depending on the job type you specified when you initiated
 the job, the output will be either the content of an archive or a vault
 inventory.
 
+You can download all the job output or download a portion of the output
+by specifying a byte range. In the case of an archive retrieval job,
+depending on the byte range you specify, Amazon Glacier returns the
+checksum for the portion of the data. You can compute the checksum on
+the client and verify that the values match to ensure the portion you
+downloaded is the correct data.
+
 A job ID will not expire for at least 24 hours after Amazon Glacier
+completes the job. That a byte range. For both archive and inventory
+retrieval jobs, you should verify the downloaded size against the size
+returned in the headers from the B<Get Job Output> response.
+
+For archive retrieval jobs, you should also verify that the size is
+what you expected. If you download a portion of the output, the
+expected size is based on the range of bytes you specified. For
+example, if you specify a range of C<bytes=0-1048575>, you should
+verify your download size is 1,048,576 bytes. If you download an entire
+archive, the expected size is the size of the archive when you uploaded
+it to Amazon Glacier The expected size is also returned in the headers
+from the B<Get Job Output> response.
+
+In the case of an archive retrieval job, depending on the byte range
+you specify, Amazon Glacier returns the checksum for the portion of the
+data. To ensure the portion you downloaded is the correct data, compute
+the checksum on the client, verify that the values match, and verify
+that the size is what you expected.
+
+A job ID does not expire for at least 24 hours after Amazon Glacier
 completes the job. That is, you can download the job output within the
 24 hours period after Amazon Glacier completes the job.
-
-If the job output is large, then you can use the C<Range> request
-header to retrieve a portion of the output. This allows you to download
-the entire output in smaller chunks of bytes. For example, suppose you
-have 1 GB of job output you want to download and you decide to download
-128 MB chunks of data at a time, which is a total of eight Get Job
-Output requests. You use the following process to download the job
-output:
-
-=over
-
-=item 1.
-
-Download a 128 MB chunk of output by specifying the appropriate byte
-range using the C<Range> header.
-
-=item 2.
-
-Along with the data, the response includes a SHA256 tree hash of the
-payload. You compute the checksum of the payload on the client and
-compare it with the checksum you received in the response to ensure you
-received all the expected data.
-
-=item 3.
-
-Repeat steps 1 and 2 for all the eight 128 MB chunks of output data,
-each time specifying the appropriate byte range.
-
-=item 4.
-
-After downloading all the parts of the job output, you have a list of
-eight checksum values. Compute the tree hash of these values to find
-the checksum of the entire output. Using the DescribeJob API, obtain
-job information of the job that provided you the output. The response
-includes the checksum of the entire archive stored in Amazon Glacier.
-You compare this value with the checksum you computed to ensure you
-have downloaded the entire archive content with no errors.
-
-=back
 
 An AWS account has full permission to perform all operations (actions).
 However, AWS Identity and Access Management (IAM) users don't have any
@@ -717,9 +749,8 @@ permissions by default. You must grant them explicit permission to
 perform specific actions. For more information, see Access Control
 Using AWS Identity and Access Management (IAM).
 
-For conceptual information and the underlying REST API, go to
-Downloading a Vault Inventory, Downloading an Archive, and Get Job
-Output
+For conceptual information and the underlying REST API, see Downloading
+a Vault Inventory, Downloading an Archive, and Get Job Output
 
 
 =head2 GetVaultAccessPolicy(AccountId => Str, VaultName => Str)
@@ -798,7 +829,7 @@ permissions by default. You must grant them explicit permission to
 perform specific actions. For more information, see Access Control
 Using AWS Identity and Access Management (IAM).
 
-For conceptual information and underlying REST API, go to Configuring
+For conceptual information and underlying REST API, see Configuring
 Vault Notifications in Amazon Glacier and Get Vault Notification
 Configuration in the I<Amazon Glacier Developer Guide>.
 
@@ -947,8 +978,38 @@ permissions by default. You must grant them explicit permission to
 perform specific actions. For more information, see Access Control
 Using AWS Identity and Access Management (IAM).
 
-For conceptual information and the underlying REST API, go to Initiate
-a Job and Downloading a Vault Inventory
+For conceptual information and the underlying REST API, see Initiate a
+Job and Downloading a Vault Inventory
+
+B<Expedited and Bulk Archive Retrievals>
+
+When retrieving an archive, you can specify one of the following
+options in the C<Tier> field of the request body:
+
+=over
+
+=item *
+
+B<Standard> The default type of retrieval, which allows access to any
+of your archives within several hours. Standard retrievals typically
+complete within 3E<ndash>5 hours.
+
+=item *
+
+B<Bulk> Amazon GlacierE<rsquo>s lowest-cost retrieval option, which
+enables you to retrieve large amounts of data inexpensively in a day.
+Bulk retrieval requests typically complete within 5E<ndash>12 hours.
+
+=item *
+
+B<Expedited> Amazon GlacierE<rsquo>s option for the fastest retrievals.
+Archives requested using the expedited retrievals typically become
+accessible within 1E<ndash>5 minutes.
+
+=back
+
+For more information about expedited and bulk retrievals, see
+Retrieving Amazon Glacier Archives.
 
 
 =head2 InitiateMultipartUpload(AccountId => Str, VaultName => Str, [ArchiveDescription => Str, PartSize => Str])
@@ -990,9 +1051,9 @@ permissions by default. You must grant them explicit permission to
 perform specific actions. For more information, see Access Control
 Using AWS Identity and Access Management (IAM).
 
-For conceptual information and underlying REST API, go to Uploading
-Large Archives in Parts (Multipart Upload) and Initiate Multipart
-Upload in the I<Amazon Glacier Developer Guide>.
+For conceptual information and underlying REST API, see Uploading Large
+Archives in Parts (Multipart Upload) and Initiate Multipart Upload in
+the I<Amazon Glacier Developer Guide>.
 
 
 =head2 InitiateVaultLock(AccountId => Str, VaultName => Str, [Policy => L<Paws::Glacier::VaultLockPolicy>])
@@ -1068,33 +1129,33 @@ exists.
 To retrieve an archive or retrieve a vault inventory from Amazon
 Glacier, you first initiate a job, and after the job completes, you
 download the data. For an archive retrieval, the output is the archive
-data, and for an inventory retrieval, it is the inventory list. The
-List Job operation returns a list of these jobs sorted by job
-initiation time.
+data. For an inventory retrieval, it is the inventory list. The List
+Job operation returns a list of these jobs sorted by job initiation
+time.
 
-This List Jobs operation supports pagination. By default, this
-operation returns up to 1,000 jobs in the response. You should always
-check the response for a C<marker> at which to continue the list; if
-there are no more items the C<marker> is C<null>. To return a list of
-jobs that begins at a specific job, set the C<marker> request parameter
-to the value you obtained from a previous List Jobs request. You can
-also limit the number of jobs returned in the response by specifying
-the C<limit> parameter in the request.
+The List Jobs operation supports pagination. You should always check
+the response C<Marker> field. If there are no more jobs to list, the
+C<Marker> field is set to C<null>. If there are more jobs to list, the
+C<Marker> field is set to a non-null value, which you can use to
+continue the pagination of the list. To return a list of jobs that
+begins at a specific job, set the marker request parameter to the
+C<Marker> value for that job that you obtained from a previous List
+Jobs request.
 
-Additionally, you can filter the jobs list returned by specifying an
-optional C<statuscode> (InProgress, Succeeded, or Failed) and
-C<completed> (true, false) parameter. The C<statuscode> allows you to
-specify that only jobs that match a specified status are returned. The
-C<completed> parameter allows you to specify that only jobs in a
-specific completion state are returned.
+You can set a maximum limit for the number of jobs returned in the
+response by specifying the C<limit> parameter in the request. The
+default limit is 1000. The number of jobs returned might be fewer than
+the limit, but the number of returned jobs never exceeds the limit.
 
-An AWS account has full permission to perform all operations (actions).
-However, AWS Identity and Access Management (IAM) users don't have any
-permissions by default. You must grant them explicit permission to
-perform specific actions. For more information, see Access Control
-Using AWS Identity and Access Management (IAM).
+Additionally, you can filter the jobs list returned by specifying the
+optional C<statuscode> parameter or C<completed> parameter, or both.
+Using the C<statuscode> parameter, you can specify to return only jobs
+that match either the C<InProgress>, C<Succeeded>, or C<Failed> status.
+Using the C<completed> parameter, you can specify to return only jobs
+that were completed (C<true>) or jobs that were not completed
+(C<false>).
 
-For the underlying REST API, go to List Jobs
+For the underlying REST API, see List Jobs.
 
 
 =head2 ListMultipartUploads(AccountId => Str, VaultName => Str, [Limit => Str, Marker => Str])
@@ -1131,7 +1192,7 @@ permissions by default. You must grant them explicit permission to
 perform specific actions. For more information, see Access Control
 Using AWS Identity and Access Management (IAM).
 
-For conceptual information and the underlying REST API, go to Working
+For conceptual information and the underlying REST API, see Working
 with Archives in Amazon Glacier and List Multipart Uploads in the
 I<Amazon Glacier Developer Guide>.
 
@@ -1164,9 +1225,19 @@ permissions by default. You must grant them explicit permission to
 perform specific actions. For more information, see Access Control
 Using AWS Identity and Access Management (IAM).
 
-For conceptual information and the underlying REST API, go to Working
+For conceptual information and the underlying REST API, see Working
 with Archives in Amazon Glacier and List Parts in the I<Amazon Glacier
 Developer Guide>.
+
+
+=head2 ListProvisionedCapacity(AccountId => Str)
+
+Each argument is described in detail in: L<Paws::Glacier::ListProvisionedCapacity>
+
+Returns: a L<Paws::Glacier::ListProvisionedCapacityOutput> instance
+
+  This operation lists the provisioned capacity for the specified AWS
+account.
 
 
 =head2 ListTagsForVault(AccountId => Str, VaultName => Str)
@@ -1204,9 +1275,19 @@ permissions by default. You must grant them explicit permission to
 perform specific actions. For more information, see Access Control
 Using AWS Identity and Access Management (IAM).
 
-For conceptual information and underlying REST API, go to Retrieving
+For conceptual information and underlying REST API, see Retrieving
 Vault Metadata in Amazon Glacier and List Vaults in the I<Amazon
 Glacier Developer Guide>.
+
+
+=head2 PurchaseProvisionedCapacity(AccountId => Str)
+
+Each argument is described in detail in: L<Paws::Glacier::PurchaseProvisionedCapacity>
+
+Returns: a L<Paws::Glacier::PurchaseProvisionedCapacityOutput> instance
+
+  This operation purchases a provisioned capacity unit for an AWS
+account.
 
 
 =head2 RemoveTagsFromVault(AccountId => Str, VaultName => Str, [TagKeys => ArrayRef[Str|Undef]])
@@ -1273,17 +1354,21 @@ publish a notification for the following vault events:
 
 =over
 
-=item * B<ArchiveRetrievalCompleted> This event occurs when a job that
-was initiated for an archive retrieval is completed (InitiateJob). The
+=item *
+
+B<ArchiveRetrievalCompleted> This event occurs when a job that was
+initiated for an archive retrieval is completed (InitiateJob). The
 status of the completed job can be "Succeeded" or "Failed". The
 notification sent to the SNS topic is the same output as returned from
 DescribeJob.
 
-=item * B<InventoryRetrievalCompleted> This event occurs when a job
-that was initiated for an inventory retrieval is completed
-(InitiateJob). The status of the completed job can be "Succeeded" or
-"Failed". The notification sent to the SNS topic is the same output as
-returned from DescribeJob.
+=item *
+
+B<InventoryRetrievalCompleted> This event occurs when a job that was
+initiated for an inventory retrieval is completed (InitiateJob). The
+status of the completed job can be "Succeeded" or "Failed". The
+notification sent to the SNS topic is the same output as returned from
+DescribeJob.
 
 =back
 
@@ -1293,7 +1378,7 @@ permissions by default. You must grant them explicit permission to
 perform specific actions. For more information, see Access Control
 Using AWS Identity and Access Management (IAM).
 
-For conceptual information and underlying REST API, go to Configuring
+For conceptual information and underlying REST API, see Configuring
 Vault Notifications in Amazon Glacier and Set Vault Notification
 Configuration in the I<Amazon Glacier Developer Guide>.
 
@@ -1340,7 +1425,7 @@ permissions by default. You must grant them explicit permission to
 perform specific actions. For more information, see Access Control
 Using AWS Identity and Access Management (IAM).
 
-For conceptual information and underlying REST API, go to Uploading an
+For conceptual information and underlying REST API, see Uploading an
 Archive in Amazon Glacier and Upload Archive in the I<Amazon Glacier
 Developer Guide>.
 
@@ -1381,8 +1466,10 @@ specified in your initiate multipart upload request and that part is
 not the last part, then the upload part request will succeed. However,
 the subsequent Complete Multipart Upload request will fail.
 
-=item * B<Range does not align>The byte range value in the request does
-not align with the part size specified in the corresponding initiate
+=item *
+
+B<Range does not align>The byte range value in the request does not
+align with the part size specified in the corresponding initiate
 request. For example, if you specify a part size of 4194304 bytes (4
 MB), then 0 to 4194303 bytes (4 MB - 1) and 4194304 (4 MB) to 8388607
 (8 MB - 1) are valid part ranges. However, if you set a range value of
@@ -1401,9 +1488,66 @@ permissions by default. You must grant them explicit permission to
 perform specific actions. For more information, see Access Control
 Using AWS Identity and Access Management (IAM).
 
-For conceptual information and underlying REST API, go to Uploading
-Large Archives in Parts (Multipart Upload) and Upload Part in the
-I<Amazon Glacier Developer Guide>.
+For conceptual information and underlying REST API, see Uploading Large
+Archives in Parts (Multipart Upload) and Upload Part in the I<Amazon
+Glacier Developer Guide>.
+
+
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllJobs(sub { },AccountId => Str, VaultName => Str, [Completed => Str, Limit => Str, Marker => Str, Statuscode => Str])
+
+=head2 ListAllJobs(AccountId => Str, VaultName => Str, [Completed => Str, Limit => Str, Marker => Str, Statuscode => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - JobList, passing the object as the first parameter, and the string 'JobList' as the second parameter 
+
+If not, it will return a a L<Paws::Glacier::ListJobsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllMultipartUploads(sub { },AccountId => Str, VaultName => Str, [Limit => Str, Marker => Str])
+
+=head2 ListAllMultipartUploads(AccountId => Str, VaultName => Str, [Limit => Str, Marker => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - UploadsList, passing the object as the first parameter, and the string 'UploadsList' as the second parameter 
+
+If not, it will return a a L<Paws::Glacier::ListMultipartUploadsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllParts(sub { },AccountId => Str, UploadId => Str, VaultName => Str, [Limit => Str, Marker => Str])
+
+=head2 ListAllParts(AccountId => Str, UploadId => Str, VaultName => Str, [Limit => Str, Marker => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Parts, passing the object as the first parameter, and the string 'Parts' as the second parameter 
+
+If not, it will return a a L<Paws::Glacier::ListPartsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllVaults(sub { },AccountId => Str, [Limit => Str, Marker => Str])
+
+=head2 ListAllVaults(AccountId => Str, [Limit => Str, Marker => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - VaultList, passing the object as the first parameter, and the string 'VaultList' as the second parameter 
+
+If not, it will return a a L<Paws::Glacier::ListVaultsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+
 
 
 =head1 SEE ALSO

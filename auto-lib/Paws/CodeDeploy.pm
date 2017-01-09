@@ -189,6 +189,8 @@ package Paws::CodeDeploy;
     my $call_object = $self->new_with_coercions('Paws::CodeDeploy::UpdateDeploymentGroup', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
+
 
   sub operations { qw/AddTagsToOnPremisesInstances BatchGetApplicationRevisions BatchGetApplications BatchGetDeploymentGroups BatchGetDeploymentInstances BatchGetDeployments BatchGetOnPremisesInstances CreateApplication CreateDeployment CreateDeploymentConfig CreateDeploymentGroup DeleteApplication DeleteDeploymentConfig DeleteDeploymentGroup DeregisterOnPremisesInstance GetApplication GetApplicationRevision GetDeployment GetDeploymentConfig GetDeploymentGroup GetDeploymentInstance GetOnPremisesInstance ListApplicationRevisions ListApplications ListDeploymentConfigs ListDeploymentGroups ListDeploymentInstances ListDeployments ListOnPremisesInstances RegisterApplicationRevision RegisterOnPremisesInstance RemoveTagsFromOnPremisesInstances StopDeployment UpdateApplication UpdateDeploymentGroup / }
 
@@ -327,7 +329,7 @@ Each argument is described in detail in: L<Paws::CodeDeploy::BatchGetDeploymentG
 
 Returns: a L<Paws::CodeDeploy::BatchGetDeploymentGroupsOutput> instance
 
-  Get information about one or more deployment groups.
+  Gets information about one or more deployment groups.
 
 
 =head2 BatchGetDeploymentInstances(DeploymentId => Str, InstanceIds => ArrayRef[Str|Undef])
@@ -579,13 +581,16 @@ Returns: nothing
   Registers with AWS CodeDeploy a revision for the specified application.
 
 
-=head2 RegisterOnPremisesInstance(IamUserArn => Str, InstanceName => Str)
+=head2 RegisterOnPremisesInstance(InstanceName => Str, [IamSessionArn => Str, IamUserArn => Str])
 
 Each argument is described in detail in: L<Paws::CodeDeploy::RegisterOnPremisesInstance>
 
 Returns: nothing
 
   Registers an on-premises instance.
+
+Only one IAM ARN (an IAM session ARN or IAM user ARN) is supported in
+the request. You cannot use both.
 
 
 =head2 RemoveTagsFromOnPremisesInstances(InstanceNames => ArrayRef[Str|Undef], Tags => ArrayRef[L<Paws::CodeDeploy::Tag>])
@@ -622,6 +627,15 @@ Each argument is described in detail in: L<Paws::CodeDeploy::UpdateDeploymentGro
 Returns: a L<Paws::CodeDeploy::UpdateDeploymentGroupOutput> instance
 
   Changes information about a deployment group.
+
+
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+
 
 
 =head1 SEE ALSO

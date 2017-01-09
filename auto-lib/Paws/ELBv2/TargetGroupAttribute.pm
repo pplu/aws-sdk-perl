@@ -53,6 +53,7 @@ default value is 300 seconds.
 =item *
 
 C<stickiness.enabled> - Indicates whether sticky sessions are enabled.
+The value is C<true> or C<false>.
 
 =item *
 

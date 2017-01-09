@@ -1,9 +1,9 @@
 package Paws::SQS::MessageAttributeValue;
   use Moose;
-  has BinaryListValues => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'BinaryListValue', request_name => 'BinaryListValue', traits => ['Unwrapped','NameInRequest']);
+  has BinaryListValues => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'BinaryListValue', xmlname => 'BinaryListValue', request_name => 'BinaryListValue', traits => ['NameInRequest','Unwrapped','NameInRequest']);
   has BinaryValue => (is => 'ro', isa => 'Str');
   has DataType => (is => 'ro', isa => 'Str', required => 1);
-  has StringListValues => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'StringListValue', request_name => 'StringListValue', traits => ['Unwrapped','NameInRequest']);
+  has StringListValues => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'StringListValue', xmlname => 'StringListValue', request_name => 'StringListValue', traits => ['NameInRequest','Unwrapped','NameInRequest']);
   has StringValue => (is => 'ro', isa => 'Str');
 1;
 
@@ -36,13 +36,13 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SQS::Messag
 =head1 DESCRIPTION
 
 The user-specified message attribute value. For string data types, the
-value attribute has the same restrictions on the content as the message
-body. For more information, see SendMessage.
+C<Value> attribute has the same restrictions on the content as the
+message body. For more information, see C< SendMessage >.
 
-Name, type, and value must not be empty or null. In addition, the
-message body should not be empty or null. All parts of the message
-attribute, including name, type, and value, are included in the message
-size restriction, which is currently 256 KB (262,144 bytes).
+C<Name>, C<type>, C<value> and the message body must not be empty or
+null. All parts of the message attribute, including C<Name>, C<Type>,
+and C<Value>, are part of the message size restriction (256 KB or
+262,144 bytes).
 
 =head1 ATTRIBUTES
 
@@ -54,17 +54,19 @@ size restriction, which is currently 256 KB (262,144 bytes).
 
 =head2 BinaryValue => Str
 
-  Binary type attributes can store any binary data, for example,
-compressed data, encrypted data, or images.
+  Binary type attributes can store any binary data, such as compressed
+data, encrypted data, or images.
 
 
 =head2 B<REQUIRED> DataType => Str
 
-  Amazon SQS supports the following logical data types: String, Number,
-and Binary. For the Number data type, you must use StringValue.
+  Amazon SQS supports the following logical data types: C<String>,
+C<Number>, and C<Binary>. For the C<Number> data type, you must use
+C<StringValue>.
 
 You can also append custom labels. For more information, see Message
-Attribute Data Types.
+Attribute Data Types and Validation in the I<Amazon SQS Developer
+Guide>.
 
 
 =head2 StringListValues => ArrayRef[Str|Undef]
@@ -74,9 +76,8 @@ Attribute Data Types.
 
 =head2 StringValue => Str
 
-  Strings are Unicode with UTF8 binary encoding. For a list of code
-values, see
-http://en.wikipedia.org/wiki/ASCII
+  Strings are Unicode with UTF-8 binary encoding. For a list of code
+values, see ASCII Printable Characters.
 
 
 

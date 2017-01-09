@@ -3,6 +3,7 @@ package Paws::OpsWorks::DescribeDeploymentsResult;
   use Moose;
   has Deployments => (is => 'ro', isa => 'ArrayRef[Paws::OpsWorks::Deployment]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -18,6 +19,7 @@ Paws::OpsWorks::DescribeDeploymentsResult
 An array of C<Deployment> objects that describe the deployments.
 
 
+=head2 _request_id => Str
 
 
 =cut

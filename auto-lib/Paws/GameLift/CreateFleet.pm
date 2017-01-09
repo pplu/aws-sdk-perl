@@ -8,6 +8,7 @@ package Paws::GameLift::CreateFleet;
   has LogPaths => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has NewGameSessionProtectionPolicy => (is => 'ro', isa => 'Str');
+  has ResourceCreationLimitPolicy => (is => 'ro', isa => 'Paws::GameLift::ResourceCreationLimitPolicy');
   has RuntimeConfiguration => (is => 'ro', isa => 'Paws::GameLift::RuntimeConfiguration');
   has ServerLaunchParameters => (is => 'ro', isa => 'Str');
   has ServerLaunchPath => (is => 'ro', isa => 'Str');
@@ -84,8 +85,9 @@ Amazon GameLift captures and stores any log files in this location.
 These logs are in addition to game session logs; see more on game
 session logs in the Amazon GameLift Developer Guide. If no default log
 path for a fleet is specified, GameLift will automatically upload logs
-stored on each instance at C<C:\game\logs>. Use the GameLift console to
-access stored logs.
+stored on each instance at C<C:\game\logs> (for Windows) or
+C</local/game/logs> (for Linux). Use the GameLift console to access
+stored logs.
 
 
 
@@ -107,16 +109,27 @@ individual instances using UpdateGameSession.
 
 =over
 
-=item * B<NoProtection> E<ndash> The game session can be terminated
-during a scale-down event.
+=item *
 
-=item * B<FullProtection> E<ndash> If the game session is in an
-C<ACTIVE> status, it cannot be terminated during a scale-down event.
+B<NoProtection> E<ndash> The game session can be terminated during a
+scale-down event.
+
+=item *
+
+B<FullProtection> E<ndash> If the game session is in an C<ACTIVE>
+status, it cannot be terminated during a scale-down event.
 
 =back
 
 
 Valid values are: C<"NoProtection">, C<"FullProtection">
+
+=head2 ResourceCreationLimitPolicy => L<Paws::GameLift::ResourceCreationLimitPolicy>
+
+Policy that limits the number of game sessions an individual player can
+create over a span of time for this fleet.
+
+
 
 =head2 RuntimeConfiguration => L<Paws::GameLift::RuntimeConfiguration>
 

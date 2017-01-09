@@ -3,6 +3,7 @@ package Paws::OpsWorks::DescribeStackSummaryResult;
   use Moose;
   has StackSummary => (is => 'ro', isa => 'Paws::OpsWorks::StackSummary');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -18,6 +19,7 @@ Paws::OpsWorks::DescribeStackSummaryResult
 A C<StackSummary> object that contains the results.
 
 
+=head2 _request_id => Str
 
 
 =cut

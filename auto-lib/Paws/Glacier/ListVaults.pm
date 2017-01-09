@@ -42,17 +42,18 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 The C<AccountId> value is the AWS account ID. This value must match the
 AWS account ID associated with the credentials used to sign the
 request. You can either specify an AWS account ID or optionally a
-single aposC<->apos (hyphen), in which case Amazon Glacier uses the AWS
+single 'C<->' (hyphen), in which case Amazon Glacier uses the AWS
 account ID associated with the credentials used to sign the request. If
-you specify your account ID, do not include any hyphens (apos-apos) in
-the ID.
+you specify your account ID, do not include any hyphens ('-') in the
+ID.
 
 
 
 =head2 Limit => Str
 
-The maximum number of items returned in the response. If you don't
-specify a value, the List Vaults operation returns up to 1,000 items.
+The maximum number of vaults to be returned. The default limit is 1000.
+The number of vaults returned might be fewer than the specified limit,
+but the number of returned vaults never exceeds the limit.
 
 
 

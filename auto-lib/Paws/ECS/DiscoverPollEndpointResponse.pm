@@ -4,6 +4,7 @@ package Paws::ECS::DiscoverPollEndpointResponse;
   has Endpoint => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'endpoint' );
   has TelemetryEndpoint => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'telemetryEndpoint' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -19,12 +20,12 @@ Paws::ECS::DiscoverPollEndpointResponse
 The endpoint for the Amazon ECS agent to poll.
 
 
-
 =head2 TelemetryEndpoint => Str
 
 The telemetry endpoint for the Amazon ECS agent.
 
 
+=head2 _request_id => Str
 
 
 =cut

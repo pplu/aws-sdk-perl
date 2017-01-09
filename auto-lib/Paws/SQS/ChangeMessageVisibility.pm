@@ -8,7 +8,7 @@ package Paws::SQS::ChangeMessageVisibility;
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ChangeMessageVisibility');
-  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
   class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
@@ -37,7 +37,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> QueueUrl => Str
 
-The URL of the Amazon SQS queue to take action on.
+The URL of the Amazon SQS queue whose message's visibility is changed.
 
 Queue URLs are case-sensitive.
 
@@ -46,15 +46,15 @@ Queue URLs are case-sensitive.
 =head2 B<REQUIRED> ReceiptHandle => Str
 
 The receipt handle associated with the message whose visibility timeout
-should be changed. This parameter is returned by the ReceiveMessage
+is changed. This parameter is returned by the C< ReceiveMessage >
 action.
 
 
 
 =head2 B<REQUIRED> VisibilityTimeout => Int
 
-The new value (in seconds - from 0 to 43200 - maximum 12 hours) for the
-message's visibility timeout.
+The new value for the message's visibility timeout (in seconds). Values
+values: C<0> to C<43200>. Maximum: 12 hours.
 
 
 

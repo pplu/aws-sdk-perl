@@ -159,15 +159,16 @@ rotation metadata.
 
 =head2 SegmentDuration => Str
 
-  (Outputs in Fragmented MP4 or MPEG-TS format only.If you specify a
-preset in C<PresetId> for which the value of C<Container> is C<fmp4>
-(Fragmented MP4) or C<ts> (MPEG-TS), C<SegmentDuration> is the target
-maximum duration of each segment in seconds. For C<HLSv3> format
-playlists, each media segment is stored in a separate C<.ts> file. For
-C<HLSv4> and C<Smooth> playlists, all media segments for an output are
-stored in a single file. Each segment is approximately the length of
-the C<SegmentDuration>, though individual segments might be shorter or
-longer.
+  (Outputs in Fragmented MP4 or MPEG-TS format only.
+
+If you specify a preset in C<PresetId> for which the value of
+C<Container> is C<fmp4> (Fragmented MP4) or C<ts> (MPEG-TS),
+C<SegmentDuration> is the target maximum duration of each segment in
+seconds. For C<HLSv3> format playlists, each media segment is stored in
+a separate C<.ts> file. For C<HLSv4> and C<Smooth> playlists, all media
+segments for an output are stored in a single file. Each segment is
+approximately the length of the C<SegmentDuration>, though individual
+segments might be shorter or longer.
 
 The range of valid values is 1 to 60 seconds. If the duration of the
 video is not evenly divisible by C<SegmentDuration>, the duration of

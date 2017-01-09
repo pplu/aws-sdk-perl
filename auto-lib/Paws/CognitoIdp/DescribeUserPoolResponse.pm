@@ -3,6 +3,7 @@ package Paws::CognitoIdp::DescribeUserPoolResponse;
   use Moose;
   has UserPool => (is => 'ro', isa => 'Paws::CognitoIdp::UserPoolType');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -18,6 +19,7 @@ Paws::CognitoIdp::DescribeUserPoolResponse
 The container of metadata returned by the server to describe the pool.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -1,6 +1,6 @@
 package Paws::CloudFront::OriginSslProtocols;
   use Moose;
-  has Items => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
+  has Items => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'SslProtocol', traits => ['NameInRequest'], required => 1);
   has Quantity => (is => 'ro', isa => 'Int', required => 1);
 1;
 
@@ -32,17 +32,16 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 
 =head1 DESCRIPTION
 
-A complex type that contains the list of SSL/TLS protocols that you
-want CloudFront to use when communicating with your origin over HTTPS.
+A complex type that contains information about the SSL/TLS protocols
+that CloudFront can use when establishing an HTTPS connection with your
+origin.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> Items => ArrayRef[Str|Undef]
 
-  A complex type that contains one SslProtocol element for each SSL/TLS
-protocol that you want to allow CloudFront to use when establishing an
-HTTPS connection with this origin.
+  A list that contains allowed SSL/TLS protocols for this distribution.
 
 
 =head2 B<REQUIRED> Quantity => Int

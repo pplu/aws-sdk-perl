@@ -57,7 +57,7 @@ __PACKAGE__->meta->make_immutable;
 
 package Paws;
 
-our $VERSION = '0.28';
+our $VERSION = '0.30';
 
 use Moose;
 use MooseX::ClassAttribute;
@@ -240,7 +240,13 @@ L<Paws::ApiGateway>
 
 L<Paws::ApplicationAutoScaling>
 
+L<Paws::AppStream>
+
 L<Paws::AutoScaling>
+
+L<Paws::Batch>
+
+L<Paws::Budgets>
 
 L<Paws::CloudFormation>
 
@@ -261,6 +267,8 @@ L<Paws::CloudWatch>
 L<Paws::CloudWatchEvents>
 
 L<Paws::CloudWatchLogs>
+
+L<Paws::CodeBuild>
 
 L<Paws::CodeCommit>
 
@@ -324,6 +332,8 @@ L<Paws::GameLift>
 
 L<Paws::Glacier>
 
+L<Paws::Health>
+
 L<Paws::IAM>
 
 L<Paws::ImportExport>
@@ -342,6 +352,8 @@ L<Paws::KMS>
 
 L<Paws::Lambda>
 
+L<Paws::Lightsail>
+
 L<Paws::MachineLearning>
 
 L<Paws::MarketplaceCommerceAnalytics>
@@ -350,9 +362,17 @@ L<Paws::MarketplaceMetering>
 
 L<Paws::OpsWorks>
 
+L<Paws::OpsWorksCM>
+
+L<Paws::Pinpoint>
+
+L<Paws::Polly>
+
 L<Paws::RDS>
 
 L<Paws::RedShift>
+
+L<Paws::Rekognition>
 
 L<Paws::Route53>
 
@@ -366,11 +386,15 @@ L<Paws::ServiceCatalog>
 
 L<Paws::SES>
 
+L<Paws::Shield>
+
 L<Paws::Signin>
 
 L<Paws::SimpleDB>
 
 L<Paws::SimpleWorkflow>
+
+L<Paws::SMS>
 
 L<Paws::Snowball>
 
@@ -380,6 +404,8 @@ L<Paws::SQS>
 
 L<Paws::SSM>
 
+L<Paws::StepFunctions>
+
 L<Paws::StorageGateway>
 
 L<Paws::STS>
@@ -388,7 +414,11 @@ L<Paws::Support>
 
 L<Paws::WAF>
 
+L<Paws::WAFRegional>
+
 L<Paws::WorkSpaces>
+
+L<Paws::XRay>
 
 
 =head1 SERVICES CLASSES
@@ -649,6 +679,10 @@ Albert Bendicho (wiof) for contributing better retry logic
 Brian Hartsock for better handling of XMLResponse exceptions
 
 rpcme for reporting various bugs in the SDK
+
+glenveegee for lots of work sorting out the S3 implementation
+
+Grinzz for many bugs, suggestions and fixes
 
 
 =cut

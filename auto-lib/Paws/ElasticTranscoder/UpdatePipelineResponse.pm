@@ -4,6 +4,7 @@ package Paws::ElasticTranscoder::UpdatePipelineResponse;
   has Pipeline => (is => 'ro', isa => 'Paws::ElasticTranscoder::Pipeline');
   has Warnings => (is => 'ro', isa => 'ArrayRef[Paws::ElasticTranscoder::Warning]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -17,8 +18,7 @@ Paws::ElasticTranscoder::UpdatePipelineResponse
 
 =head2 Pipeline => L<Paws::ElasticTranscoder::Pipeline>
 
-
-
+The pipeline updated by this C<UpdatePipelineResponse> call.
 
 
 =head2 Warnings => ArrayRef[L<Paws::ElasticTranscoder::Warning>]
@@ -31,6 +31,7 @@ Amazon SNS notification topics, and AWS KMS key, reduces processing
 time and prevents cross-regional charges.
 
 
+=head2 _request_id => Str
 
 
 =cut

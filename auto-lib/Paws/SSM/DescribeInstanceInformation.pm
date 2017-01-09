@@ -1,6 +1,7 @@
 
 package Paws::SSM::DescribeInstanceInformation;
   use Moose;
+  has Filters => (is => 'ro', isa => 'ArrayRef[Paws::SSM::InstanceInformationStringFilter]');
   has InstanceInformationFilterList => (is => 'ro', isa => 'ArrayRef[Paws::SSM::InstanceInformationFilter]');
   has MaxResults => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
@@ -21,7 +22,7 @@ Paws::SSM::DescribeInstanceInformation - Arguments for method DescribeInstanceIn
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method DescribeInstanceInformation on the 
-Amazon Simple Systems Management Service service. Use the attributes of this class
+Amazon Simple Systems Manager (SSM) service. Use the attributes of this class
 as arguments to method DescribeInstanceInformation.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeInstanceInformation.
@@ -33,6 +34,13 @@ As an example:
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 
 =head1 ATTRIBUTES
+
+
+=head2 Filters => ArrayRef[L<Paws::SSM::InstanceInformationStringFilter>]
+
+One or more filters. Use a filter to return a more specific list of
+instances.
+
 
 
 =head2 InstanceInformationFilterList => ArrayRef[L<Paws::SSM::InstanceInformationFilter>]

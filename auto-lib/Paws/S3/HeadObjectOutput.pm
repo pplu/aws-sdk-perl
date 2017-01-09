@@ -1,32 +1,33 @@
 
 package Paws::S3::HeadObjectOutput;
   use Moose;
-  has AcceptRanges => (is => 'ro', isa => 'Str');
-  has CacheControl => (is => 'ro', isa => 'Str');
-  has ContentDisposition => (is => 'ro', isa => 'Str');
-  has ContentEncoding => (is => 'ro', isa => 'Str');
-  has ContentLanguage => (is => 'ro', isa => 'Str');
-  has ContentLength => (is => 'ro', isa => 'Int');
-  has ContentType => (is => 'ro', isa => 'Str');
-  has DeleteMarker => (is => 'ro', isa => 'Bool');
-  has ETag => (is => 'ro', isa => 'Str');
-  has Expiration => (is => 'ro', isa => 'Str');
-  has Expires => (is => 'ro', isa => 'Str');
-  has LastModified => (is => 'ro', isa => 'Str');
-  has Metadata => (is => 'ro', isa => 'Paws::S3::Metadata');
-  has MissingMeta => (is => 'ro', isa => 'Int');
-  has PartsCount => (is => 'ro', isa => 'Int');
-  has ReplicationStatus => (is => 'ro', isa => 'Str');
-  has RequestCharged => (is => 'ro', isa => 'Str');
-  has Restore => (is => 'ro', isa => 'Str');
-  has ServerSideEncryption => (is => 'ro', isa => 'Str');
-  has SSECustomerAlgorithm => (is => 'ro', isa => 'Str');
-  has SSECustomerKeyMD5 => (is => 'ro', isa => 'Str');
-  has SSEKMSKeyId => (is => 'ro', isa => 'Str');
-  has StorageClass => (is => 'ro', isa => 'Str');
-  has VersionId => (is => 'ro', isa => 'Str');
-  has WebsiteRedirectLocation => (is => 'ro', isa => 'Str');
+  has AcceptRanges => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'accept-ranges');
+  has CacheControl => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Cache-Control');
+  has ContentDisposition => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Content-Disposition');
+  has ContentEncoding => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Content-Encoding');
+  has ContentLanguage => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Content-Language');
+  has ContentLength => (is => 'ro', isa => 'Int', traits => ['ParamInHeader'], header_name => 'Content-Length');
+  has ContentType => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Content-Type');
+  has DeleteMarker => (is => 'ro', isa => 'Bool', traits => ['ParamInHeader'], header_name => 'x-amz-delete-marker');
+  has ETag => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'ETag');
+  has Expiration => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-expiration');
+  has Expires => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Expires');
+  has LastModified => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Last-Modified');
+  has Metadata => (is => 'ro', isa => 'Paws::S3::Metadata', traits => ['Unwrapped'], xmlname => 'x-amz-meta-');
+  has MissingMeta => (is => 'ro', isa => 'Int', traits => ['ParamInHeader'], header_name => 'x-amz-missing-meta');
+  has PartsCount => (is => 'ro', isa => 'Int', traits => ['ParamInHeader'], header_name => 'x-amz-mp-parts-count');
+  has ReplicationStatus => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-replication-status');
+  has RequestCharged => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-request-charged');
+  has Restore => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-restore');
+  has ServerSideEncryption => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-server-side-encryption');
+  has SSECustomerAlgorithm => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-server-side-encryption-customer-algorithm');
+  has SSECustomerKeyMD5 => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-server-side-encryption-customer-key-MD5');
+  has SSEKMSKeyId => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-server-side-encryption-aws-kms-key-id');
+  has StorageClass => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-storage-class');
+  has VersionId => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-version-id');
+  has WebsiteRedirectLocation => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-website-redirect-location');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

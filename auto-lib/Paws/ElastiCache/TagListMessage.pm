@@ -3,6 +3,7 @@ package Paws::ElastiCache::TagListMessage;
   use Moose;
   has TagList => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::Tag]', xmlname => 'Tag', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -19,6 +20,7 @@ Paws::ElastiCache::TagListMessage
 A list of cost allocation tags as key-value pairs.
 
 
+=head2 _request_id => Str
 
 
 =cut

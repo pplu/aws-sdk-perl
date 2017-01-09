@@ -3,6 +3,7 @@ package Paws::ECS::DeleteClusterResponse;
   use Moose;
   has Cluster => (is => 'ro', isa => 'Paws::ECS::Cluster', traits => ['Unwrapped'], xmlname => 'cluster' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -18,6 +19,7 @@ Paws::ECS::DeleteClusterResponse
 The full description of the deleted cluster.
 
 
+=head2 _request_id => Str
 
 
 =cut

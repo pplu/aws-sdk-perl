@@ -4,6 +4,7 @@ package Paws::StorageGateway::UpdateGatewayInformationOutput;
   has GatewayARN => (is => 'ro', isa => 'Str');
   has GatewayName => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -19,12 +20,12 @@ Paws::StorageGateway::UpdateGatewayInformationOutput
 
 
 
-
 =head2 GatewayName => Str
 
 
 
 
+=head2 _request_id => Str
 
 
 =cut

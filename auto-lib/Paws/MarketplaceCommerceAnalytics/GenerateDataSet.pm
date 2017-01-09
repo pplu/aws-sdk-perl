@@ -105,6 +105,9 @@ disbursed_amount_by_product,
 disbursed_amount_by_age_of_uncollected_funds, and
 disbursed_amount_by_age_of_disbursed_funds.
 
+=item * I<disbursed_amount_by_instance_hours> - Available every 30 days
+by 5:00 PM Pacific Time since 2012-09-04.
+
 =item * I<disbursed_amount_by_customer_geo> - Available every 30 days
 by 5:00 PM Pacific Time since 2012-04-19.
 
@@ -123,10 +126,13 @@ Pacific Time since 2015-10-01.
 =item * I<customer_profile_by_geography> - Available daily by 5:00 PM
 Pacific Time since 2015-10-01.
 
+=item * I<sales_compensation_billed_revenue> - Available monthly on the
+4th day of the month by 5:00 PM Pacific Time since 2016-12.
+
 =back
 
 
-Valid values are: C<"customer_subscriber_hourly_monthly_subscriptions">, C<"customer_subscriber_annual_subscriptions">, C<"daily_business_usage_by_instance_type">, C<"daily_business_fees">, C<"daily_business_free_trial_conversions">, C<"daily_business_new_instances">, C<"daily_business_new_product_subscribers">, C<"daily_business_canceled_product_subscribers">, C<"monthly_revenue_billing_and_revenue_data">, C<"monthly_revenue_annual_subscriptions">, C<"disbursed_amount_by_product">, C<"disbursed_amount_by_product_with_uncollected_funds">, C<"disbursed_amount_by_customer_geo">, C<"disbursed_amount_by_age_of_uncollected_funds">, C<"disbursed_amount_by_age_of_disbursed_funds">, C<"customer_profile_by_industry">, C<"customer_profile_by_revenue">, C<"customer_profile_by_geography">
+Valid values are: C<"customer_subscriber_hourly_monthly_subscriptions">, C<"customer_subscriber_annual_subscriptions">, C<"daily_business_usage_by_instance_type">, C<"daily_business_fees">, C<"daily_business_free_trial_conversions">, C<"daily_business_new_instances">, C<"daily_business_new_product_subscribers">, C<"daily_business_canceled_product_subscribers">, C<"monthly_revenue_billing_and_revenue_data">, C<"monthly_revenue_annual_subscriptions">, C<"disbursed_amount_by_product">, C<"disbursed_amount_by_product_with_uncollected_funds">, C<"disbursed_amount_by_instance_hours">, C<"disbursed_amount_by_customer_geo">, C<"disbursed_amount_by_age_of_uncollected_funds">, C<"disbursed_amount_by_age_of_disbursed_funds">, C<"customer_profile_by_industry">, C<"customer_profile_by_revenue">, C<"customer_profile_by_geography">, C<"sales_compensation_billed_revenue">
 
 =head2 B<REQUIRED> DestinationS3BucketName => Str
 

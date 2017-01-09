@@ -1,9 +1,11 @@
 
 package Paws::ApiGateway::CreateRestApi;
   use Moose;
+  has BinaryMediaTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has CloneFrom => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str', required => 1);
+  has Version => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -37,6 +39,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
+=head2 BinaryMediaTypes => ArrayRef[Str|Undef]
+
+The list of binary media types supported by the RestApi. By default,
+the RestApi supports only UTF-8-encoded text payloads.
+
+
+
 =head2 CloneFrom => Str
 
 The ID of the RestApi that you want to clone from.
@@ -52,6 +61,12 @@ The description of the RestApi.
 =head2 B<REQUIRED> Name => Str
 
 The name of the RestApi.
+
+
+
+=head2 Version => Str
+
+A version identifier for the API.
 
 
 

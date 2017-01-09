@@ -1,6 +1,7 @@
 
 package Paws::CloudFormation::ContinueUpdateRollback;
   use Moose;
+  has ResourcesToSkip => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has RoleARN => (is => 'ro', isa => 'Str');
   has StackName => (is => 'ro', isa => 'Str', required => 1);
 
@@ -34,6 +35,40 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
+=head2 ResourcesToSkip => ArrayRef[Str|Undef]
+
+A list of the logical IDs of the resources that AWS CloudFormation
+skips during the continue update rollback operation. You can specify
+only resources that are in the C<UPDATE_FAILED> state because a
+rollback failed. You can't specify resources that are in the
+C<UPDATE_FAILED> state for other reasons, for example, because an
+update was canceled. To check why a resource update failed, use the
+DescribeStackResources action, and view the resource status reason.
+
+Specify this property to skip rolling back resources that AWS
+CloudFormation can't successfully roll back. We recommend that you
+troubleshoot resources before skipping them. AWS CloudFormation sets
+the status of the specified resources to C<UPDATE_COMPLETE> and
+continues to roll back the stack. After the rollback is complete, the
+state of the skipped resources will be inconsistent with the state of
+the resources in the stack template. Before performing another stack
+update, you must update the stack or resources to be consistent with
+each other. If you don't, subsequent stack updates might fail, and the
+stack will become unrecoverable.
+
+Specify the minimum number of resources required to successfully roll
+back your stack. For example, a failed resource update might cause
+dependent resources to fail. In this case, it might not be necessary to
+skip the dependent resources.
+
+To specify resources in a nested stack, use the following format:
+C<NestedStackName.ResourceLogicalID>. You can specify a nested stack
+resource (the logical ID of an C<AWS::CloudFormation::Stack> resource)
+only if it's in one of the following states: C<DELETE_IN_PROGRESS>,
+C<DELETE_COMPLETE>, or C<DELETE_FAILED>.
+
+
+
 =head2 RoleARN => Str
 
 The Amazon Resource Name (ARN) of an AWS Identity and Access Management
@@ -56,6 +91,11 @@ user credentials.
 
 The name or the unique ID of the stack that you want to continue
 rolling back.
+
+Don't specify the name of a nested stack (a stack that was created by
+using the C<AWS::CloudFormation::Stack> resource). Instead, use this
+operation on the parent stack (the stack that contains the
+C<AWS::CloudFormation::Stack> resource).
 
 
 

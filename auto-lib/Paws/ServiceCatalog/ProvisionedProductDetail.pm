@@ -51,7 +51,7 @@ Detailed information about a ProvisionedProduct object.
 
 =head2 CreatedTime => Str
 
-  The time the ProvisionedProduct was created.
+  The UTC timestamp of the creation time.
 
 
 =head2 Id => Str
@@ -61,7 +61,9 @@ Detailed information about a ProvisionedProduct object.
 
 =head2 IdempotencyToken => Str
 
-  An idempotency token that uniquely identifies this ProvisionedProduct.
+  A token to disambiguate duplicate requests. You can create multiple
+resources using the same input in multiple requests, provided that you
+also specify a different idempotency token for each request.
 
 
 =head2 LastRecordId => Str

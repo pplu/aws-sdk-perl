@@ -1,7 +1,7 @@
 package Paws::CloudFront::CloudFrontOriginAccessIdentityList;
   use Moose;
   has IsTruncated => (is => 'ro', isa => 'Bool', required => 1);
-  has Items => (is => 'ro', isa => 'ArrayRef[Paws::CloudFront::CloudFrontOriginAccessIdentitySummary]');
+  has Items => (is => 'ro', isa => 'ArrayRef[Paws::CloudFront::CloudFrontOriginAccessIdentitySummary]', request_name => 'CloudFrontOriginAccessIdentitySummary', traits => ['NameInRequest']);
   has Marker => (is => 'ro', isa => 'Str', required => 1);
   has MaxItems => (is => 'ro', isa => 'Int', required => 1);
   has NextMarker => (is => 'ro', isa => 'Str');
@@ -36,7 +36,13 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 
 =head1 DESCRIPTION
 
-The CloudFrontOriginAccessIdentityList type.
+Lists the origin access identities for CloudFront.Send a C<GET> request
+to the C</I<CloudFront API version>/origin-access-identity/cloudfront>
+resource. The response includes a C<CloudFrontOriginAccessIdentityList>
+element with zero or more C<CloudFrontOriginAccessIdentitySummary>
+child elements. By default, your entire list of origin access
+identities is returned in one single page. If the list is long, you can
+paginate it using the C<MaxItems> and C<Marker> parameters.
 
 =head1 ATTRIBUTES
 
@@ -45,32 +51,37 @@ The CloudFrontOriginAccessIdentityList type.
 
   A flag that indicates whether more origin access identities remain to
 be listed. If your results were truncated, you can make a follow-up
-pagination request using the Marker request parameter to retrieve more
-items in the list.
+pagination request using the C<Marker> request parameter to retrieve
+more items in the list.
 
 
 =head2 Items => ArrayRef[L<Paws::CloudFront::CloudFrontOriginAccessIdentitySummary>]
 
-  A complex type that contains one CloudFrontOriginAccessIdentitySummary
-element for each origin access identity that was created by the current
-AWS account.
+  A complex type that contains one
+C<CloudFrontOriginAccessIdentitySummary> element for each origin access
+identity that was created by the current AWS account.
 
 
 =head2 B<REQUIRED> Marker => Str
 
-  The value you provided for the Marker request parameter.
+  Use this when paginating results to indicate where to begin in your
+list of origin access identities. The results include identities in the
+list that occur after the marker. To get the next page of results, set
+the C<Marker> to the value of the C<NextMarker> from the current page's
+response (which is also the ID of the last identity on that page).
 
 
 =head2 B<REQUIRED> MaxItems => Int
 
-  The value you provided for the MaxItems request parameter.
+  The maximum number of origin access identities you want in the response
+body.
 
 
 =head2 NextMarker => Str
 
-  If IsTruncated is true, this element is present and contains the value
-you can use for the Marker request parameter to continue listing your
-origin access identities where they left off.
+  If C<IsTruncated> is C<true>, this element is present and contains the
+value you can use for the C<Marker> request parameter to continue
+listing your origin access identities where they left off.
 
 
 =head2 B<REQUIRED> Quantity => Int

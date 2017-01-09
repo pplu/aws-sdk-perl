@@ -53,16 +53,22 @@ configuration option changes:
 
 =over
 
-=item * C<NoInterruption> : There is no interruption to the environment
-or application availability.
+=item *
 
-=item * C<RestartEnvironment> : The environment is entirely restarted,
-all AWS resources are deleted and recreated, and the environment is
-unavailable during the process.
+C<NoInterruption> : There is no interruption to the environment or
+application availability.
 
-=item * C<RestartApplicationServer> : The environment is available the
-entire time. However, a short application outage occurs when the
-application servers on the running Amazon EC2 instances are restarted.
+=item *
+
+C<RestartEnvironment> : The environment is entirely restarted, all AWS
+resources are deleted and recreated, and the environment is unavailable
+during the process.
+
+=item *
+
+C<RestartApplicationServer> : The environment is available the entire
+time. However, a short application outage occurs when the application
+servers on the running Amazon EC2 instances are restarted.
 
 =back
 
@@ -119,7 +125,9 @@ C<true> : This configuration option was defined by the user. It is a
 valid choice for specifying if this as an C<Option to Remove> when
 updating configuration settings.
 
-=item * C<false> : This configuration was not defined by the user.
+=item *
+
+C<false> : This configuration was not defined by the user.
 
 =back
 
@@ -142,17 +150,24 @@ allowable to select one or more than one of the possible values:
 
 =over
 
-=item * C<Scalar> : Values for this option are a single selection from
-the possible values, or an unformatted string, or numeric value
-governed by the C<MIN/MAX/Regex> constraints.
+=item *
 
-=item * C<List> : Values for this option are multiple selections from
-the possible values.
+C<Scalar> : Values for this option are a single selection from the
+possible values, or an unformatted string, or numeric value governed by
+the C<MIN/MAX/Regex> constraints.
 
-=item * C<Boolean> : Values for this option are either C<true> or
-C<false> .
+=item *
 
-=item * C<Json> : Values for this option are a JSON representation of a
+C<List> : Values for this option are multiple selections from the
+possible values.
+
+=item *
+
+C<Boolean> : Values for this option are either C<true> or C<false> .
+
+=item *
+
+C<Json> : Values for this option are a JSON representation of a
 C<ConfigDocument>.
 
 =back

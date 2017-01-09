@@ -9,6 +9,7 @@ use Test::More;
 use Paws;
 use Test::CustomCredentials;
 use JSON::MaybeXS;
+use XML::Simple;
 
 sub request_has_params {
   my ($test_params, $request) = @_;
@@ -80,6 +81,27 @@ request_has_params($test_params, $request);
 
 
 my $sqs = $aws->service('SQS');
+
+$request = $sqs->CreateQueue(
+  QueueName => 'Paws2AttributeTest', 
+  Attributes => {
+    DelaySeconds => 10,
+    MessageRetentionPeriod => 3600,
+    VisibilityTimeout => 10
+  }
+);
+
+$test_params = {
+  'Attribute.1.Name' => 'DelaySeconds',
+  'Attribute.1.Value' => 10,
+  'Attribute.2.Name' => 'MessageRetentionPeriod',
+  'Attribute.2.Value' => 3600,
+  'Attribute.3.Name' => 'VisibilityTimeout',
+  'Attribute.3.Value' => 10,
+  'QueueName' => 'Paws2AttributeTest'
+};
+
+request_has_params($test_params, $request);
 
 $request = $sqs->SendMessageBatch(
   QueueUrl => 'http://sqs.us-east-1.amazonaws.com/123456789012/testQueue/',
@@ -405,5 +427,37 @@ $request = $efs->CreateFileSystem(
 );
 
 like($request->content, qr/"CreationToken":"4"/, "Got N in a JSON string (quoted), and not a JSON number (unquoted)");
+
+my $cfn = $aws->service('CloudFront', region => 'us-east-1');
+
+$request = $cfn->CreateInvalidation(
+  DistributionId    => 'A999AAA999AAA',
+  InvalidationBatch => {
+    CallerReference => 'uid',
+    Paths           => {
+      Quantity => 3,
+      Items    => [
+        '/object1',
+        '/object2',
+        '/object3'
+      ]
+    }   
+  }   
+);
+
+my $ref = XMLin($request->content);
+
+like($request->url, qr|distribution/A999AAA999AAA/invalidation|, 'URL has the distribution id');
+
+is_deeply(
+  $ref,
+  {
+    Paths => {
+      Items => { Path => [ '/object1', '/object2', '/object3' ] },
+      Quantity => '3'
+    },
+    CallerReference => 'uid'
+  }
+);
 
 done_testing;

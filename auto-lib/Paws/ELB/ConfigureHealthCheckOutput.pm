@@ -3,6 +3,7 @@ package Paws::ELB::ConfigureHealthCheckOutput;
   use Moose;
   has HealthCheck => (is => 'ro', isa => 'Paws::ELB::HealthCheck');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -19,6 +20,7 @@ Paws::ELB::ConfigureHealthCheckOutput
 The updated health check.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -7,7 +7,7 @@ package Paws::KMS::UpdateKeyDescription;
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateKeyDescription');
-  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
   class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
@@ -36,14 +36,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Description => Str
 
-New description for the key.
+New description for the CMK.
 
 
 
 =head2 B<REQUIRED> KeyId => Str
 
-A unique identifier for the customer master key. This value can be a
-globally unique identifier or the fully specified ARN to a key.
+A unique identifier for the CMK. This value can be a globally unique
+identifier or the fully specified ARN to a key.
 
 =over
 

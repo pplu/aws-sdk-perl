@@ -1,7 +1,7 @@
 package Paws::RedShift::Event;
   use Moose;
   has Date => (is => 'ro', isa => 'Str');
-  has EventCategories => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has EventCategories => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'EventCategory', traits => ['NameInRequest']);
   has EventId => (is => 'ro', isa => 'Str');
   has Message => (is => 'ro', isa => 'Str');
   has Severity => (is => 'ro', isa => 'Str');

@@ -4,6 +4,7 @@ package Paws::SimpleWorkflow::History;
   has Events => (is => 'ro', isa => 'ArrayRef[Paws::SimpleWorkflow::HistoryEvent]', traits => ['Unwrapped'], xmlname => 'events' , required => 1);
   has NextPageToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextPageToken' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -19,7 +20,6 @@ Paws::SimpleWorkflow::History
 The list of history events.
 
 
-
 =head2 NextPageToken => Str
 
 If a C<NextPageToken> was returned by a previous call, there are more
@@ -31,6 +31,7 @@ The configured C<maximumPageSize> determines how many results can be
 returned in a single call.
 
 
+=head2 _request_id => Str
 
 
 =cut

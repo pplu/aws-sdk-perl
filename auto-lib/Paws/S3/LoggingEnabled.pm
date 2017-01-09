@@ -1,7 +1,7 @@
 package Paws::S3::LoggingEnabled;
   use Moose;
   has TargetBucket => (is => 'ro', isa => 'Str');
-  has TargetGrants => (is => 'ro', isa => 'ArrayRef[Paws::S3::TargetGrant]');
+  has TargetGrants => (is => 'ro', isa => 'ArrayRef[Paws::S3::TargetGrant]', request_name => 'Grant', traits => ['NameInRequest']);
   has TargetPrefix => (is => 'ro', isa => 'Str');
 1;
 

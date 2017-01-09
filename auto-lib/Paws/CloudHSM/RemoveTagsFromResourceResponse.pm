@@ -3,6 +3,7 @@ package Paws::CloudHSM::RemoveTagsFromResourceResponse;
   use Moose;
   has Status => (is => 'ro', isa => 'Str', required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -18,6 +19,7 @@ Paws::CloudHSM::RemoveTagsFromResourceResponse
 The status of the operation.
 
 
+=head2 _request_id => Str
 
 
 =cut

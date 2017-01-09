@@ -2,6 +2,8 @@
 package Paws::ElasticBeanstalk::DescribeApplicationVersions;
   use Moose;
   has ApplicationName => (is => 'ro', isa => 'Str');
+  has MaxRecords => (is => 'ro', isa => 'Int');
+  has NextToken => (is => 'ro', isa => 'Str');
   has VersionLabels => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
   use MooseX::ClassAttribute;
@@ -36,16 +38,27 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 ApplicationName => Str
 
-If specified, AWS Elastic Beanstalk restricts the returned descriptions
-to only include ones that are associated with the specified
+Specify an application name to show only application versions for that
 application.
+
+
+
+=head2 MaxRecords => Int
+
+Specify a maximum number of application versions to paginate in the
+request.
+
+
+
+=head2 NextToken => Str
+
+Specify a next token to retrieve the next page in a paginated request.
 
 
 
 =head2 VersionLabels => ArrayRef[Str|Undef]
 
-If specified, restricts the returned descriptions to only include ones
-that have the specified version labels.
+Specify a version label to show a specific application version.
 
 
 

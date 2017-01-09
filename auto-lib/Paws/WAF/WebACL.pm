@@ -57,7 +57,10 @@ C<WebACL> match. The action is specified by the WafAction object.
 
 =head2 MetricName => Str
 
-  
+  A friendly name or description for the metrics for this C<WebACL>. The
+name can contain only alphanumeric characters (A-Z, a-z, 0-9); the name
+can't contain whitespace. You can't change C<MetricName> after you
+create the C<WebACL>.
 
 
 =head2 Name => Str

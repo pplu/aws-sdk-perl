@@ -52,18 +52,19 @@ One or more filters.
 
 =item *
 
-C<addresses.private-ip-address> - The private IP addresses associated
+C<addresses.private-ip-address> - The private IPv4 addresses associated
 with the network interface.
 
 =item *
 
-C<addresses.primary> - Whether the private IP address is the primary IP
-address associated with the network interface.
+C<addresses.primary> - Whether the private IPv4 address is the primary
+IP address associated with the network interface.
 
 =item *
 
 C<addresses.association.public-ip> - The association ID returned when
-the network interface was associated with the Elastic IP address.
+the network interface was associated with the Elastic IP address
+(IPv4).
 
 =item *
 
@@ -73,27 +74,27 @@ associated with the network interface.
 =item *
 
 C<association.association-id> - The association ID returned when the
-network interface was associated with an IP address.
+network interface was associated with an IPv4 address.
 
 =item *
 
 C<association.allocation-id> - The allocation ID returned when you
-allocated the Elastic IP address for your network interface.
+allocated the Elastic IP address (IPv4) for your network interface.
 
 =item *
 
-C<association.ip-owner-id> - The owner of the Elastic IP address
+C<association.ip-owner-id> - The owner of the Elastic IP address (IPv4)
 associated with the network interface.
 
 =item *
 
-C<association.public-ip> - The address of the Elastic IP address bound
-to the network interface.
+C<association.public-ip> - The address of the Elastic IP address (IPv4)
+bound to the network interface.
 
 =item *
 
 C<association.public-dns-name> - The public DNS name for the network
-interface.
+interface (IPv4).
 
 =item *
 
@@ -154,6 +155,11 @@ network interface.
 
 =item *
 
+C<ipv6-addresses.ipv6-address> - An IPv6 address associated with the
+network interface.
+
+=item *
+
 C<mac-address> - The MAC address of the network interface.
 
 =item *
@@ -166,12 +172,13 @@ C<owner-id> - The AWS account ID of the network interface owner.
 
 =item *
 
-C<private-ip-address> - The private IP address or addresses of the
+C<private-ip-address> - The private IPv4 address or addresses of the
 network interface.
 
 =item *
 
-C<private-dns-name> - The private DNS name of the network interface.
+C<private-dns-name> - The private DNS name of the network interface
+(IPv4).
 
 =item *
 

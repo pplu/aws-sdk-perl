@@ -47,14 +47,20 @@ settings in a C<Rule>. Valid settings include the following:
 
 =over
 
-=item * C<ALLOW>: AWS WAF allows requests
+=item *
 
-=item * C<BLOCK>: AWS WAF blocks requests
+C<ALLOW>: AWS WAF allows requests
 
-=item * C<COUNT>: AWS WAF increments a counter of the requests that
-match all of the conditions in the rule. AWS WAF then continues to
-inspect the web request based on the remaining rules in the web ACL.
-You can't specify C<COUNT> for the default action for a C<WebACL>.
+=item *
+
+C<BLOCK>: AWS WAF blocks requests
+
+=item *
+
+C<COUNT>: AWS WAF increments a counter of the requests that match all
+of the conditions in the rule. AWS WAF then continues to inspect the
+web request based on the remaining rules in the web ACL. You can't
+specify C<COUNT> for the default action for a C<WebACL>.
 
 =back
 

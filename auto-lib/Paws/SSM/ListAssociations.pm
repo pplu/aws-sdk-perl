@@ -1,7 +1,7 @@
 
 package Paws::SSM::ListAssociations;
   use Moose;
-  has AssociationFilterList => (is => 'ro', isa => 'ArrayRef[Paws::SSM::AssociationFilter]', required => 1);
+  has AssociationFilterList => (is => 'ro', isa => 'ArrayRef[Paws::SSM::AssociationFilter]');
   has MaxResults => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
 
@@ -21,7 +21,7 @@ Paws::SSM::ListAssociations - Arguments for method ListAssociations on Paws::SSM
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method ListAssociations on the 
-Amazon Simple Systems Management Service service. Use the attributes of this class
+Amazon Simple Systems Manager (SSM) service. Use the attributes of this class
 as arguments to method ListAssociations.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListAssociations.
@@ -35,7 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> AssociationFilterList => ArrayRef[L<Paws::SSM::AssociationFilter>]
+=head2 AssociationFilterList => ArrayRef[L<Paws::SSM::AssociationFilter>]
 
 One or more filters. Use a filter to return a more specific list of
 results.

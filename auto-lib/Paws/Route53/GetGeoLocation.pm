@@ -1,9 +1,9 @@
 
 package Paws::Route53::GetGeoLocation;
   use Moose;
-  has ContinentCode => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'continentcode' );
-  has CountryCode => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'countrycode' );
-  has SubdivisionCode => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'subdivisioncode' );
+  has ContinentCode => (is => 'ro', isa => 'Str', query_name => 'continentcode', traits => ['ParamInQuery']);
+  has CountryCode => (is => 'ro', isa => 'Str', query_name => 'countrycode', traits => ['ParamInQuery']);
+  has SubdivisionCode => (is => 'ro', isa => 'Str', query_name => 'subdivisioncode', traits => ['ParamInQuery']);
 
   use MooseX::ClassAttribute;
 
@@ -40,7 +40,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 ContinentCode => Str
 
-Amazon Route 53 supports the following contintent codes:
+Amazon Route 53 supports the following continent codes:
 
 =over
 

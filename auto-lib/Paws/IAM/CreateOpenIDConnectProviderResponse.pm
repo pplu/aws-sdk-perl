@@ -3,6 +3,7 @@ package Paws::IAM::CreateOpenIDConnectProviderResponse;
   use Moose;
   has OpenIDConnectProviderArn => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -21,6 +22,7 @@ that is created. For more information, see
 OpenIDConnectProviderListEntry.
 
 
+=head2 _request_id => Str
 
 
 =cut

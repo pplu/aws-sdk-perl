@@ -32,8 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Application
 
 =head1 DESCRIPTION
 
-An object representing a CloudWatch alarm associated with a scaling
-policy.
+Represents a CloudWatch alarm associated with a scaling policy.
 
 =head1 ATTRIBUTES
 

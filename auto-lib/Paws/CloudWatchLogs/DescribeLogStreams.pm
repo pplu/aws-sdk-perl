@@ -40,47 +40,48 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Descending => Bool
 
-If set to true, results are returned in descending order. If you don't
-specify a value or set it to false, results are returned in ascending
-order.
+If the value is true, results are returned in descending order. If the
+value is to false, results are returned in ascending order. The default
+value is false.
 
 
 
 =head2 Limit => Int
 
-The maximum number of items returned in the response. If you don't
-specify a value, the request would return up to 50 items.
+The maximum number of items returned. If you don't specify a value, the
+default is up to 50 items.
 
 
 
 =head2 B<REQUIRED> LogGroupName => Str
 
-The log group name for which log streams are to be listed.
+The name of the log group.
 
 
 
 =head2 LogStreamNamePrefix => Str
 
-Will only return log streams that match the provided
-logStreamNamePrefix. If you don't specify a value, no prefix filter is
-applied.
+The prefix to match.
+
+You cannot specify this parameter if C<orderBy> is C<LastEventTime>.
 
 
 
 =head2 NextToken => Str
 
-A string token used for pagination that points to the next page of
-results. It must be a value obtained from the response of the previous
-C<DescribeLogStreams> request.
+The token for the next set of items to return. (You received this token
+from a previous call.)
 
 
 
 =head2 OrderBy => Str
 
-Specifies what to order the returned log streams by. Valid arguments
-are 'LogStreamName' or 'LastEventTime'. If you don't specify a value,
-results are ordered by LogStreamName. If 'LastEventTime' is chosen, the
-request cannot also contain a logStreamNamePrefix.
+If the value is C<LogStreamName>, the results are ordered by log stream
+name. If the value is C<LastEventTime>, the results are ordered by the
+event time. The default value is C<LogStreamName>.
+
+If you order the results by event time, you cannot specify the
+C<logStreamNamePrefix> parameter.
 
 Valid values are: C<"LogStreamName">, C<"LastEventTime">
 

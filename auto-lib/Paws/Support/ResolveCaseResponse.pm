@@ -4,6 +4,7 @@ package Paws::Support::ResolveCaseResponse;
   has FinalCaseStatus => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'finalCaseStatus' );
   has InitialCaseStatus => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'initialCaseStatus' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -19,12 +20,12 @@ Paws::Support::ResolveCaseResponse
 The status of the case after the ResolveCase request was processed.
 
 
-
 =head2 InitialCaseStatus => Str
 
 The status of the case when the ResolveCase request was sent.
 
 
+=head2 _request_id => Str
 
 
 =cut

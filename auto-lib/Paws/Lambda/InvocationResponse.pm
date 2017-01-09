@@ -6,6 +6,7 @@ package Paws::Lambda::InvocationResponse;
   has Payload => (is => 'ro', isa => 'Str');
   has StatusCode => (is => 'ro', isa => 'Int');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -28,7 +29,6 @@ memory errors and function timeouts. For information about how to
 report an C<Handled> error, see Programming Model.
 
 
-
 =head2 LogResult => Str
 
 It is the base64-encoded logs for the Lambda function invocation. This
@@ -36,18 +36,16 @@ is present only if the invocation type is C<RequestResponse> and the
 logs were requested.
 
 
-
 =head2 Payload => Str
 
 It is the JSON representation of the object returned by the Lambda
-function. In This is present only if the invocation type is
+function. This is present only if the invocation type is
 C<RequestResponse>.
 
 In the event of a function error this field contains a message
 describing the error. For the C<Handled> errors the Lambda function
 will report this message. For C<Unhandled> errors AWS Lambda reports
 the message.
-
 
 
 =head2 StatusCode => Int
@@ -58,6 +56,7 @@ For the C<Event> invocation type this status code will be 202. For the
 C<DryRun> invocation type the status code will be 204.
 
 
+=head2 _request_id => Str
 
 
 =cut

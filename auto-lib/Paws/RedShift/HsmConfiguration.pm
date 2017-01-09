@@ -4,7 +4,7 @@ package Paws::RedShift::HsmConfiguration;
   has HsmConfigurationIdentifier => (is => 'ro', isa => 'Str');
   has HsmIpAddress => (is => 'ro', isa => 'Str');
   has HsmPartitionName => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::Tag]');
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::Tag]', request_name => 'Tag', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

@@ -3,6 +3,7 @@ package Paws::DMS::DeleteCertificateResponse;
   use Moose;
   has Certificate => (is => 'ro', isa => 'Paws::DMS::Certificate');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -15,9 +16,10 @@ Paws::DMS::DeleteCertificateResponse
 
 =head2 Certificate => L<Paws::DMS::Certificate>
 
-The SSL certificate.
+The Secure Sockets Layer (SSL) certificate.
 
 
+=head2 _request_id => Str
 
 
 =cut

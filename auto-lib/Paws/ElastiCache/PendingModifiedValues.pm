@@ -1,6 +1,6 @@
 package Paws::ElastiCache::PendingModifiedValues;
   use Moose;
-  has CacheNodeIdsToRemove => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has CacheNodeIdsToRemove => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'CacheNodeId', traits => ['NameInRequest']);
   has CacheNodeType => (is => 'ro', isa => 'Str');
   has EngineVersion => (is => 'ro', isa => 'Str');
   has NumCacheNodes => (is => 'ro', isa => 'Int');
@@ -34,7 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElastiCache
 
 =head1 DESCRIPTION
 
-A group of settings that will be applied to the cache cluster in the
+A group of settings that are applied to the cache cluster in the
 future, or that are currently being applied.
 
 =head1 ATTRIBUTES
@@ -49,13 +49,13 @@ etc.).
 
 =head2 CacheNodeType => Str
 
-  The cache node type that this cache cluster or replication group will
-be scaled to.
+  The cache node type that this cache cluster or replication group is
+scaled to.
 
 
 =head2 EngineVersion => Str
 
-  The new cache engine version that the cache cluster will run.
+  The new cache engine version that the cache cluster runs.
 
 
 =head2 NumCacheNodes => Int

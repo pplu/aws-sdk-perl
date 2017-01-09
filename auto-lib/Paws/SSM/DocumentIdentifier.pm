@@ -1,8 +1,11 @@
 package Paws::SSM::DocumentIdentifier;
   use Moose;
+  has DocumentType => (is => 'ro', isa => 'Str');
+  has DocumentVersion => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
   has Owner => (is => 'ro', isa => 'Str');
-  has PlatformTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has PlatformTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'PlatformType', traits => ['NameInRequest']);
+  has SchemaVersion => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -22,20 +25,30 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SSM::DocumentIdentifier object:
 
-  $service_obj->Method(Att1 => { Name => $value, ..., PlatformTypes => $value  });
+  $service_obj->Method(Att1 => { DocumentType => $value, ..., SchemaVersion => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::SSM::DocumentIdentifier object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Name
+  $result->Att1->DocumentType
 
 =head1 DESCRIPTION
 
 Describes the name of an SSM document.
 
 =head1 ATTRIBUTES
+
+
+=head2 DocumentType => Str
+
+  The document type.
+
+
+=head2 DocumentVersion => Str
+
+  The document version.
 
 
 =head2 Name => Str
@@ -51,6 +64,11 @@ Describes the name of an SSM document.
 =head2 PlatformTypes => ArrayRef[Str|Undef]
 
   The operating system platform.
+
+
+=head2 SchemaVersion => Str
+
+  The schema version.
 
 
 

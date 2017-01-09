@@ -169,6 +169,155 @@ package Paws::SimpleWorkflow;
     my $call_object = $self->new_with_coercions('Paws::SimpleWorkflow::TerminateWorkflowExecution', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
+  sub GetAllWorkflowExecutionHistory {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetWorkflowExecutionHistory(@_);
+
+    if (not defined $callback) {
+      while ($result->nextPageToken) {
+        $result = $self->GetWorkflowExecutionHistory(@_, nextPageToken => $result->nextPageToken);
+        push @{ $result->events }, @{ $result->events };
+      }
+      return $result;
+    } else {
+      while ($result->nextPageToken) {
+        $result = $self->GetWorkflowExecutionHistory(@_, nextPageToken => $result->nextPageToken);
+        $callback->($_ => 'events') foreach (@{ $result->events });
+      }
+    }
+
+    return undef
+  }
+  sub ListAllActivityTypes {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListActivityTypes(@_);
+
+    if (not defined $callback) {
+      while ($result->nextPageToken) {
+        $result = $self->ListActivityTypes(@_, nextPageToken => $result->nextPageToken);
+        push @{ $result->typeInfos }, @{ $result->typeInfos };
+      }
+      return $result;
+    } else {
+      while ($result->nextPageToken) {
+        $result = $self->ListActivityTypes(@_, nextPageToken => $result->nextPageToken);
+        $callback->($_ => 'typeInfos') foreach (@{ $result->typeInfos });
+      }
+    }
+
+    return undef
+  }
+  sub ListAllClosedWorkflowExecutions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListClosedWorkflowExecutions(@_);
+
+    if (not defined $callback) {
+      while ($result->nextPageToken) {
+        $result = $self->ListClosedWorkflowExecutions(@_, nextPageToken => $result->nextPageToken);
+        push @{ $result->executionInfos }, @{ $result->executionInfos };
+      }
+      return $result;
+    } else {
+      while ($result->nextPageToken) {
+        $result = $self->ListClosedWorkflowExecutions(@_, nextPageToken => $result->nextPageToken);
+        $callback->($_ => 'executionInfos') foreach (@{ $result->executionInfos });
+      }
+    }
+
+    return undef
+  }
+  sub ListAllDomains {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListDomains(@_);
+
+    if (not defined $callback) {
+      while ($result->nextPageToken) {
+        $result = $self->ListDomains(@_, nextPageToken => $result->nextPageToken);
+        push @{ $result->domainInfos }, @{ $result->domainInfos };
+      }
+      return $result;
+    } else {
+      while ($result->nextPageToken) {
+        $result = $self->ListDomains(@_, nextPageToken => $result->nextPageToken);
+        $callback->($_ => 'domainInfos') foreach (@{ $result->domainInfos });
+      }
+    }
+
+    return undef
+  }
+  sub ListAllOpenWorkflowExecutions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListOpenWorkflowExecutions(@_);
+
+    if (not defined $callback) {
+      while ($result->nextPageToken) {
+        $result = $self->ListOpenWorkflowExecutions(@_, nextPageToken => $result->nextPageToken);
+        push @{ $result->executionInfos }, @{ $result->executionInfos };
+      }
+      return $result;
+    } else {
+      while ($result->nextPageToken) {
+        $result = $self->ListOpenWorkflowExecutions(@_, nextPageToken => $result->nextPageToken);
+        $callback->($_ => 'executionInfos') foreach (@{ $result->executionInfos });
+      }
+    }
+
+    return undef
+  }
+  sub ListAllWorkflowTypes {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListWorkflowTypes(@_);
+
+    if (not defined $callback) {
+      while ($result->nextPageToken) {
+        $result = $self->ListWorkflowTypes(@_, nextPageToken => $result->nextPageToken);
+        push @{ $result->typeInfos }, @{ $result->typeInfos };
+      }
+      return $result;
+    } else {
+      while ($result->nextPageToken) {
+        $result = $self->ListWorkflowTypes(@_, nextPageToken => $result->nextPageToken);
+        $callback->($_ => 'typeInfos') foreach (@{ $result->typeInfos });
+      }
+    }
+
+    return undef
+  }
+  sub PollForAllDecisionTasks {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->PollForDecisionTask(@_);
+
+    if (not defined $callback) {
+      while ($result->nextPageToken) {
+        $result = $self->PollForDecisionTask(@_, nextPageToken => $result->nextPageToken);
+        push @{ $result->events }, @{ $result->events };
+      }
+      return $result;
+    } else {
+      while ($result->nextPageToken) {
+        $result = $self->PollForDecisionTask(@_, nextPageToken => $result->nextPageToken);
+        $callback->($_ => 'events') foreach (@{ $result->events });
+      }
+    }
+
+    return undef
+  }
+
 
   sub operations { qw/CountClosedWorkflowExecutions CountOpenWorkflowExecutions CountPendingActivityTasks CountPendingDecisionTasks DeprecateActivityType DeprecateDomain DeprecateWorkflowType DescribeActivityType DescribeDomain DescribeWorkflowExecution DescribeWorkflowType GetWorkflowExecutionHistory ListActivityTypes ListClosedWorkflowExecutions ListDomains ListOpenWorkflowExecutions ListWorkflowTypes PollForActivityTask PollForDecisionTask RecordActivityTaskHeartbeat RegisterActivityType RegisterDomain RegisterWorkflowType RequestCancelWorkflowExecution RespondActivityTaskCanceled RespondActivityTaskCompleted RespondActivityTaskFailed RespondDecisionTaskCompleted SignalWorkflowExecution StartWorkflowExecution TerminateWorkflowExecution / }
 
@@ -1596,6 +1745,99 @@ action, or the parameter values fall outside the specified constraints,
 the action fails. The associated event attribute's B<cause> parameter
 will be set to OPERATION_NOT_PERMITTED. For details and example IAM
 policies, see Using IAM to Manage Access to Amazon SWF Workflows.
+
+
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 GetAllWorkflowExecutionHistory(sub { },Domain => Str, Execution => L<Paws::SimpleWorkflow::WorkflowExecution>, [MaximumPageSize => Int, NextPageToken => Str, ReverseOrder => Bool])
+
+=head2 GetAllWorkflowExecutionHistory(Domain => Str, Execution => L<Paws::SimpleWorkflow::WorkflowExecution>, [MaximumPageSize => Int, NextPageToken => Str, ReverseOrder => Bool])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - events, passing the object as the first parameter, and the string 'events' as the second parameter 
+
+If not, it will return a a L<Paws::SimpleWorkflow::History> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllActivityTypes(sub { },Domain => Str, RegistrationStatus => Str, [MaximumPageSize => Int, Name => Str, NextPageToken => Str, ReverseOrder => Bool])
+
+=head2 ListAllActivityTypes(Domain => Str, RegistrationStatus => Str, [MaximumPageSize => Int, Name => Str, NextPageToken => Str, ReverseOrder => Bool])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - typeInfos, passing the object as the first parameter, and the string 'typeInfos' as the second parameter 
+
+If not, it will return a a L<Paws::SimpleWorkflow::ActivityTypeInfos> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllClosedWorkflowExecutions(sub { },Domain => Str, [CloseStatusFilter => L<Paws::SimpleWorkflow::CloseStatusFilter>, CloseTimeFilter => L<Paws::SimpleWorkflow::ExecutionTimeFilter>, ExecutionFilter => L<Paws::SimpleWorkflow::WorkflowExecutionFilter>, MaximumPageSize => Int, NextPageToken => Str, ReverseOrder => Bool, StartTimeFilter => L<Paws::SimpleWorkflow::ExecutionTimeFilter>, TagFilter => L<Paws::SimpleWorkflow::TagFilter>, TypeFilter => L<Paws::SimpleWorkflow::WorkflowTypeFilter>])
+
+=head2 ListAllClosedWorkflowExecutions(Domain => Str, [CloseStatusFilter => L<Paws::SimpleWorkflow::CloseStatusFilter>, CloseTimeFilter => L<Paws::SimpleWorkflow::ExecutionTimeFilter>, ExecutionFilter => L<Paws::SimpleWorkflow::WorkflowExecutionFilter>, MaximumPageSize => Int, NextPageToken => Str, ReverseOrder => Bool, StartTimeFilter => L<Paws::SimpleWorkflow::ExecutionTimeFilter>, TagFilter => L<Paws::SimpleWorkflow::TagFilter>, TypeFilter => L<Paws::SimpleWorkflow::WorkflowTypeFilter>])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - executionInfos, passing the object as the first parameter, and the string 'executionInfos' as the second parameter 
+
+If not, it will return a a L<Paws::SimpleWorkflow::WorkflowExecutionInfos> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllDomains(sub { },RegistrationStatus => Str, [MaximumPageSize => Int, NextPageToken => Str, ReverseOrder => Bool])
+
+=head2 ListAllDomains(RegistrationStatus => Str, [MaximumPageSize => Int, NextPageToken => Str, ReverseOrder => Bool])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - domainInfos, passing the object as the first parameter, and the string 'domainInfos' as the second parameter 
+
+If not, it will return a a L<Paws::SimpleWorkflow::DomainInfos> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllOpenWorkflowExecutions(sub { },Domain => Str, StartTimeFilter => L<Paws::SimpleWorkflow::ExecutionTimeFilter>, [ExecutionFilter => L<Paws::SimpleWorkflow::WorkflowExecutionFilter>, MaximumPageSize => Int, NextPageToken => Str, ReverseOrder => Bool, TagFilter => L<Paws::SimpleWorkflow::TagFilter>, TypeFilter => L<Paws::SimpleWorkflow::WorkflowTypeFilter>])
+
+=head2 ListAllOpenWorkflowExecutions(Domain => Str, StartTimeFilter => L<Paws::SimpleWorkflow::ExecutionTimeFilter>, [ExecutionFilter => L<Paws::SimpleWorkflow::WorkflowExecutionFilter>, MaximumPageSize => Int, NextPageToken => Str, ReverseOrder => Bool, TagFilter => L<Paws::SimpleWorkflow::TagFilter>, TypeFilter => L<Paws::SimpleWorkflow::WorkflowTypeFilter>])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - executionInfos, passing the object as the first parameter, and the string 'executionInfos' as the second parameter 
+
+If not, it will return a a L<Paws::SimpleWorkflow::WorkflowExecutionInfos> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllWorkflowTypes(sub { },Domain => Str, RegistrationStatus => Str, [MaximumPageSize => Int, Name => Str, NextPageToken => Str, ReverseOrder => Bool])
+
+=head2 ListAllWorkflowTypes(Domain => Str, RegistrationStatus => Str, [MaximumPageSize => Int, Name => Str, NextPageToken => Str, ReverseOrder => Bool])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - typeInfos, passing the object as the first parameter, and the string 'typeInfos' as the second parameter 
+
+If not, it will return a a L<Paws::SimpleWorkflow::WorkflowTypeInfos> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 PollForAllDecisionTasks(sub { },Domain => Str, TaskList => L<Paws::SimpleWorkflow::TaskList>, [Identity => Str, MaximumPageSize => Int, NextPageToken => Str, ReverseOrder => Bool])
+
+=head2 PollForAllDecisionTasks(Domain => Str, TaskList => L<Paws::SimpleWorkflow::TaskList>, [Identity => Str, MaximumPageSize => Int, NextPageToken => Str, ReverseOrder => Bool])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - events, passing the object as the first parameter, and the string 'events' as the second parameter 
+
+If not, it will return a a L<Paws::SimpleWorkflow::DecisionTask> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+
 
 
 =head1 SEE ALSO

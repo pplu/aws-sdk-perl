@@ -46,9 +46,7 @@ request
 
 =head2 B<REQUIRED> OfferingId => Str
 
-  The Convertible Reserved Instance offering ID. If this isn't included
-in the request, the response lists your current Convertible Reserved
-Instance/s and their value/s.
+  The Convertible Reserved Instance offering ID.
 
 
 

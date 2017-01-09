@@ -3,6 +3,7 @@ package Paws::ElastiCache::DeleteCacheClusterResult;
   use Moose;
   has CacheCluster => (is => 'ro', isa => 'Paws::ElastiCache::CacheCluster');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -19,6 +20,7 @@ Paws::ElastiCache::DeleteCacheClusterResult
 
 
 
+=head2 _request_id => Str
 
 
 =cut

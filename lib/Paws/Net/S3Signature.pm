@@ -2,7 +2,7 @@ package Paws::Net::S3Signature;
   use Moose::Role;
   requires 'service';
 
-  use Crypt::Digest::SHA256;
+  use Digest::SHA;
   use Net::Amazon::Signature::V4;
 
   sub sign {
@@ -12,15 +12,13 @@ package Paws::Net::S3Signature;
       $request->header( 'X-Amz-Security-Token' => $self->session_token );
     }
 
-    if ($request->content) { # && !$request->content_md5) {
-      my $hasher = Crypt::Digest::SHA256->new;
-      $hasher->add($request->content);
-      $request->header('X-Amz-Content-Sha256' => $hasher->hexdigest);
-    } else {
-      $request->header('X-Amz-Content-Sha256' => 'STREAMING-AWS4-HMAC-SHA256-PAYLOAD' );
-    }
+    my $hasher = Digest::SHA->new(256);
+    $hasher->add($request->content || q[]);
+    $request->header('X-Amz-Content-Sha256' => $hasher->hexdigest);
 
+    # AWS prefers X-Amz-Date but Net::Amazon::Signature::V4 only handles Date in the headerpackage Paws::Net::S3Signature;
     $request->header( 'Date' => $request->{'date'} );
+
     $request->header( 'Host' => $self->endpoint_host );
 
     my $sig = Net::Amazon::Signature::V4->new( $self->access_key, $self->secret_key, $self->region, $self->service );

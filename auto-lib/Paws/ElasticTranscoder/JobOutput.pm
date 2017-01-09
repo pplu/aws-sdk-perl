@@ -51,11 +51,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticTran
 
 =head1 DESCRIPTION
 
-Outputs recommended instead.If you specified one output for a job,
-information about that output. If you specified multiple outputs for a
-job, the C<Output> object lists information about the first output.
-This duplicates the information that is listed for the first output in
-the C<Outputs> object.
+Outputs recommended instead.
+
+If you specified one output for a job, information about that output.
+If you specified multiple outputs for a job, the C<Output> object lists
+information about the first output. This duplicates the information
+that is listed for the first output in the C<Outputs> object.
 
 =head1 ATTRIBUTES
 
@@ -70,8 +71,8 @@ the C<Outputs> object.
   If Elastic Transcoder used a preset with a C<ColorSpaceConversionMode>
 to transcode the output file, the C<AppliedColorSpaceConversion>
 parameter shows the conversion used. If no C<ColorSpaceConversionMode>
-was defined in the preset, this parameter will not be included in the
-job response.
+was defined in the preset, this parameter is not be included in the job
+response.
 
 
 =head2 Captions => L<Paws::ElasticTranscoder::Captions>
@@ -160,7 +161,7 @@ Composition object cannot be null.
   The encryption settings, if any, that you want Elastic Transcoder to
 apply to your output files. If you choose to use encryption, you must
 specify a mode to use. If you choose not to use encryption, Elastic
-Transcoder will write an unencrypted file to your Amazon S3 bucket.
+Transcoder writes an unencrypted file to your Amazon S3 bucket.
 
 
 =head2 FileSize => Int
@@ -217,14 +218,16 @@ transcoding contains rotation metadata.
 
 =head2 SegmentDuration => Str
 
-  (Outputs in Fragmented MP4 or MPEG-TS format only.If you specify a
-preset in C<PresetId> for which the value of C<Container> is C<fmp4>
-(Fragmented MP4) or C<ts> (MPEG-TS), C<SegmentDuration> is the target
-maximum duration of each segment in seconds. For C<HLSv3> format
-playlists, each media segment is stored in a separate C<.ts> file. For
-C<HLSv4> and C<Smooth> playlists, all media segments for an output are
-stored in a single file. Each segment is approximately the length of
-the C<SegmentDuration>, though individual segments might be shorter or
+  (Outputs in Fragmented MP4 or MPEG-TS format only.
+
+If you specify a preset in C<PresetId> for which the value of
+C<Container> is C<fmp4> (Fragmented MP4) or C<ts> (MPEG-TS),
+C<SegmentDuration> is the target maximum duration of each segment in
+seconds. For C<HLSv3> format playlists, each media segment is stored in
+a separate C<.ts> file. For C<HLSv4>, C<MPEG-DASH>, and C<Smooth>
+playlists, all media segments for an output are stored in a single
+file. Each segment is approximately the length of the
+C<SegmentDuration>, though individual segments might be shorter or
 longer.
 
 The range of valid values is 1 to 60 seconds. If the duration of the
@@ -245,19 +248,27 @@ specified more than one output:
 
 =over
 
-=item * C<Job:Status> and C<Outputs:Status> for all of the outputs is
-Submitted until Elastic Transcoder starts to process the first output.
+=item *
 
-=item * When Elastic Transcoder starts to process the first output,
+C<Job:Status> and C<Outputs:Status> for all of the outputs is Submitted
+until Elastic Transcoder starts to process the first output.
+
+=item *
+
+When Elastic Transcoder starts to process the first output,
 C<Outputs:Status> for that output and C<Job:Status> both change to
 Progressing. For each output, the value of C<Outputs:Status> remains
 Submitted until Elastic Transcoder starts to process the output.
 
-=item * Job:Status remains Progressing until all of the outputs reach a
+=item *
+
+Job:Status remains Progressing until all of the outputs reach a
 terminal status, either Complete or Error.
 
-=item * When all of the outputs reach a terminal status, C<Job:Status>
-changes to Complete only if C<Outputs:Status> for all of the outputs is
+=item *
+
+When all of the outputs reach a terminal status, C<Job:Status> changes
+to Complete only if C<Outputs:Status> for all of the outputs is
 C<Complete>. If C<Outputs:Status> for one or more outputs is C<Error>,
 the terminal status for C<Job:Status> is also C<Error>.
 
@@ -337,8 +348,8 @@ list them in the job outputE<mdash>the first watermark in the list is
 added to the output video first, the second watermark in the list is
 added next, and so on. As a result, if the settings in a preset cause
 Elastic Transcoder to place all watermarks in the same location, the
-second watermark that you add will cover the first one, the third one
-will cover the second, and the fourth one will cover the third.
+second watermark that you add covers the first one, the third one
+covers the second, and the fourth one covers the third.
 
 
 =head2 Width => Int

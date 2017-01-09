@@ -3,6 +3,7 @@ package Paws::EC2::DescribeInternetGatewaysResult;
   use Moose;
   has InternetGateways => (is => 'ro', isa => 'ArrayRef[Paws::EC2::InternetGateway]', xmlname => 'internetGatewaySet', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -19,6 +20,7 @@ Paws::EC2::DescribeInternetGatewaysResult
 Information about one or more Internet gateways.
 
 
+=head2 _request_id => Str
 
 
 =cut

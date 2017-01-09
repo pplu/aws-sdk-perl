@@ -9,7 +9,7 @@ package Paws::Glacier::SetDataRetrievalPolicy;
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'SetDataRetrievalPolicy');
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/{accountId}/policies/data-retrieval');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
   class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
@@ -41,10 +41,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 The C<AccountId> value is the AWS account ID. This value must match the
 AWS account ID associated with the credentials used to sign the
 request. You can either specify an AWS account ID or optionally a
-single aposC<->apos (hyphen), in which case Amazon Glacier uses the AWS
+single 'C<->' (hyphen), in which case Amazon Glacier uses the AWS
 account ID associated with the credentials used to sign the request. If
-you specify your account ID, do not include any hyphens (apos-apos) in
-the ID.
+you specify your account ID, do not include any hyphens ('-') in the
+ID.
 
 
 

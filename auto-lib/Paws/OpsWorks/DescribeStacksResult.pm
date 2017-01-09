@@ -3,6 +3,7 @@ package Paws::OpsWorks::DescribeStacksResult;
   use Moose;
   has Stacks => (is => 'ro', isa => 'ArrayRef[Paws::OpsWorks::Stack]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -18,6 +19,7 @@ Paws::OpsWorks::DescribeStacksResult
 An array of C<Stack> objects that describe the stacks.
 
 
+=head2 _request_id => Str
 
 
 =cut

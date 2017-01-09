@@ -52,7 +52,7 @@ time and prevents cross-regional charges.
   The message explaining what resources are in a different region from
 the pipeline.
 
-B<Note:> AWS KMS keys must be in the same region as the pipeline.
+AWS KMS keys must be in the same region as the pipeline.
 
 
 

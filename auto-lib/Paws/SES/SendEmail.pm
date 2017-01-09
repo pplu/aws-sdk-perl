@@ -1,6 +1,7 @@
 
 package Paws::SES::SendEmail;
   use Moose;
+  has ConfigurationSetName => (is => 'ro', isa => 'Str');
   has Destination => (is => 'ro', isa => 'Paws::SES::Destination', required => 1);
   has Message => (is => 'ro', isa => 'Paws::SES::Message', required => 1);
   has ReplyToAddresses => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
@@ -8,6 +9,7 @@ package Paws::SES::SendEmail;
   has ReturnPathArn => (is => 'ro', isa => 'Str');
   has Source => (is => 'ro', isa => 'Str', required => 1);
   has SourceArn => (is => 'ro', isa => 'Str');
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::SES::MessageTag]');
 
   use MooseX::ClassAttribute;
 
@@ -37,6 +39,13 @@ As an example:
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 
 =head1 ATTRIBUTES
+
+
+=head2 ConfigurationSetName => Str
+
+The name of the configuration set to use when you send an email using
+C<SendEmail>.
+
 
 
 =head2 B<REQUIRED> Destination => L<Paws::SES::Destination>
@@ -126,6 +135,15 @@ C<Source> to be C<user@example.com>.
 
 For more information about sending authorization, see the Amazon SES
 Developer Guide.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::SES::MessageTag>]
+
+A list of tags, in the form of name/value pairs, to apply to an email
+that you send using C<SendEmail>. Tags correspond to characteristics of
+the email that you define, so that you can publish email sending
+events.
 
 
 

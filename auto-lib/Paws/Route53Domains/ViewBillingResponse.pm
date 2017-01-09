@@ -4,6 +4,7 @@ package Paws::Route53Domains::ViewBillingResponse;
   has BillingRecords => (is => 'ro', isa => 'ArrayRef[Paws::Route53Domains::BillingRecord]');
   has NextPageMarker => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -24,7 +25,6 @@ Children: C<DomainName>, C<Operation>, C<InvoiceId>, C<BillDate> and
 C<Price>
 
 
-
 =head2 NextPageMarker => Str
 
 If there are more billing records than you specified for C<MaxItems> in
@@ -36,6 +36,7 @@ Type: String
 Parent: C<BillingRecords>
 
 
+=head2 _request_id => Str
 
 
 =cut

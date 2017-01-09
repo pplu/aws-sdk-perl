@@ -49,6 +49,11 @@ package Paws::ECR;
     my $call_object = $self->new_with_coercions('Paws::ECR::DeleteRepositoryPolicy', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeImages {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ECR::DescribeImages', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeRepositories {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ECR::DescribeRepositories', @_);
@@ -94,8 +99,73 @@ package Paws::ECR;
     my $call_object = $self->new_with_coercions('Paws::ECR::UploadLayerPart', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
+  sub DescribeAllImages {
+    my $self = shift;
 
-  sub operations { qw/BatchCheckLayerAvailability BatchDeleteImage BatchGetImage CompleteLayerUpload CreateRepository DeleteRepository DeleteRepositoryPolicy DescribeRepositories GetAuthorizationToken GetDownloadUrlForLayer GetRepositoryPolicy InitiateLayerUpload ListImages PutImage SetRepositoryPolicy UploadLayerPart / }
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeImages(@_);
+
+    if (not defined $callback) {
+      while ($result->nextToken) {
+        $result = $self->DescribeImages(@_, nextToken => $result->nextToken);
+        push @{ $result->imageDetails }, @{ $result->imageDetails };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $result = $self->DescribeImages(@_, nextToken => $result->nextToken);
+        $callback->($_ => 'imageDetails') foreach (@{ $result->imageDetails });
+      }
+    }
+
+    return undef
+  }
+  sub DescribeAllRepositories {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeRepositories(@_);
+
+    if (not defined $callback) {
+      while ($result->nextToken) {
+        $result = $self->DescribeRepositories(@_, nextToken => $result->nextToken);
+        push @{ $result->repositories }, @{ $result->repositories };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $result = $self->DescribeRepositories(@_, nextToken => $result->nextToken);
+        $callback->($_ => 'repositories') foreach (@{ $result->repositories });
+      }
+    }
+
+    return undef
+  }
+  sub ListAllImages {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListImages(@_);
+
+    if (not defined $callback) {
+      while ($result->nextToken) {
+        $result = $self->ListImages(@_, nextToken => $result->nextToken);
+        push @{ $result->imageIds }, @{ $result->imageIds };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $result = $self->ListImages(@_, nextToken => $result->nextToken);
+        $callback->($_ => 'imageIds') foreach (@{ $result->imageIds });
+      }
+    }
+
+    return undef
+  }
+
+
+  sub operations { qw/BatchCheckLayerAvailability BatchDeleteImage BatchGetImage CompleteLayerUpload CreateRepository DeleteRepository DeleteRepositoryPolicy DescribeImages DescribeRepositories GetAuthorizationToken GetDownloadUrlForLayer GetRepositoryPolicy InitiateLayerUpload ListImages PutImage SetRepositoryPolicy UploadLayerPart / }
 
 1;
 
@@ -143,8 +213,8 @@ Returns: a L<Paws::ECR::BatchCheckLayerAvailabilityResponse> instance
 and repository.
 
 This operation is used by the Amazon ECR proxy, and it is not intended
-for general use by customers. Use the C<docker> CLI to pull, tag, and
-push images.
+for general use by customers for pulling and pushing images. In most
+cases, you should use the C<docker> CLI to pull, tag, and push images.
 
 
 =head2 BatchDeleteImage(ImageIds => ArrayRef[L<Paws::ECR::ImageIdentifier>], RepositoryName => Str, [RegistryId => Str])
@@ -156,8 +226,15 @@ Returns: a L<Paws::ECR::BatchDeleteImageResponse> instance
   Deletes a list of specified images within a specified repository.
 Images are specified with either C<imageTag> or C<imageDigest>.
 
+You can remove a tag from an image by specifying the image's tag in
+your request. When you remove the last tag from an image, the image is
+deleted from your repository.
 
-=head2 BatchGetImage(ImageIds => ArrayRef[L<Paws::ECR::ImageIdentifier>], RepositoryName => Str, [RegistryId => Str])
+You can completely delete an image (and all of its tags) by specifying
+the image's digest in your request.
+
+
+=head2 BatchGetImage(ImageIds => ArrayRef[L<Paws::ECR::ImageIdentifier>], RepositoryName => Str, [AcceptedMediaTypes => ArrayRef[Str|Undef], RegistryId => Str])
 
 Each argument is described in detail in: L<Paws::ECR::BatchGetImage>
 
@@ -180,8 +257,8 @@ provide a C<sha256> digest of the image layer for data validation
 purposes.
 
 This operation is used by the Amazon ECR proxy, and it is not intended
-for general use by customers. Use the C<docker> CLI to pull, tag, and
-push images.
+for general use by customers for pulling and pushing images. In most
+cases, you should use the C<docker> CLI to pull, tag, and push images.
 
 
 =head2 CreateRepository(RepositoryName => Str)
@@ -210,6 +287,22 @@ Each argument is described in detail in: L<Paws::ECR::DeleteRepositoryPolicy>
 Returns: a L<Paws::ECR::DeleteRepositoryPolicyResponse> instance
 
   Deletes the repository policy from a specified repository.
+
+
+=head2 DescribeImages(RepositoryName => Str, [Filter => L<Paws::ECR::DescribeImagesFilter>, ImageIds => ArrayRef[L<Paws::ECR::ImageIdentifier>], MaxResults => Int, NextToken => Str, RegistryId => Str])
+
+Each argument is described in detail in: L<Paws::ECR::DescribeImages>
+
+Returns: a L<Paws::ECR::DescribeImagesResponse> instance
+
+  Returns metadata about the images in a repository, including image
+size, image tags, and creation date.
+
+Beginning with Docker version 1.9, the Docker client compresses image
+layers before pushing them to a V2 Docker registry. The output of the
+C<docker images> command shows the uncompressed image size, so it may
+return a larger image size than the image sizes returned by
+DescribeImages.
 
 
 =head2 DescribeRepositories([MaxResults => Int, NextToken => Str, RegistryId => Str, RepositoryNames => ArrayRef[Str|Undef]])
@@ -249,8 +342,8 @@ image layer. You can only get URLs for image layers that are referenced
 in an image.
 
 This operation is used by the Amazon ECR proxy, and it is not intended
-for general use by customers. Use the C<docker> CLI to pull, tag, and
-push images.
+for general use by customers for pulling and pushing images. In most
+cases, you should use the C<docker> CLI to pull, tag, and push images.
 
 
 =head2 GetRepositoryPolicy(RepositoryName => Str, [RegistryId => Str])
@@ -271,8 +364,8 @@ Returns: a L<Paws::ECR::InitiateLayerUploadResponse> instance
   Notify Amazon ECR that you intend to upload an image layer.
 
 This operation is used by the Amazon ECR proxy, and it is not intended
-for general use by customers. Use the C<docker> CLI to pull, tag, and
-push images.
+for general use by customers for pulling and pushing images. In most
+cases, you should use the C<docker> CLI to pull, tag, and push images.
 
 
 =head2 ListImages(RepositoryName => Str, [Filter => L<Paws::ECR::ListImagesFilter>, MaxResults => Int, NextToken => Str, RegistryId => Str])
@@ -291,17 +384,18 @@ them. Or, you can filter your results to return only C<TAGGED> images
 to list all of the tags in your repository.
 
 
-=head2 PutImage(ImageManifest => Str, RepositoryName => Str, [RegistryId => Str])
+=head2 PutImage(ImageManifest => Str, RepositoryName => Str, [ImageTag => Str, RegistryId => Str])
 
 Each argument is described in detail in: L<Paws::ECR::PutImage>
 
 Returns: a L<Paws::ECR::PutImageResponse> instance
 
-  Creates or updates the image manifest associated with an image.
+  Creates or updates the image manifest and tags associated with an
+image.
 
 This operation is used by the Amazon ECR proxy, and it is not intended
-for general use by customers. Use the C<docker> CLI to pull, tag, and
-push images.
+for general use by customers for pulling and pushing images. In most
+cases, you should use the C<docker> CLI to pull, tag, and push images.
 
 
 =head2 SetRepositoryPolicy(PolicyText => Str, RepositoryName => Str, [Force => Bool, RegistryId => Str])
@@ -323,8 +417,53 @@ Returns: a L<Paws::ECR::UploadLayerPartResponse> instance
   Uploads an image layer part to Amazon ECR.
 
 This operation is used by the Amazon ECR proxy, and it is not intended
-for general use by customers. Use the C<docker> CLI to pull, tag, and
-push images.
+for general use by customers for pulling and pushing images. In most
+cases, you should use the C<docker> CLI to pull, tag, and push images.
+
+
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 DescribeAllImages(sub { },RepositoryName => Str, [Filter => L<Paws::ECR::DescribeImagesFilter>, ImageIds => ArrayRef[L<Paws::ECR::ImageIdentifier>], MaxResults => Int, NextToken => Str, RegistryId => Str])
+
+=head2 DescribeAllImages(RepositoryName => Str, [Filter => L<Paws::ECR::DescribeImagesFilter>, ImageIds => ArrayRef[L<Paws::ECR::ImageIdentifier>], MaxResults => Int, NextToken => Str, RegistryId => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - imageDetails, passing the object as the first parameter, and the string 'imageDetails' as the second parameter 
+
+If not, it will return a a L<Paws::ECR::DescribeImagesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllRepositories(sub { },[MaxResults => Int, NextToken => Str, RegistryId => Str, RepositoryNames => ArrayRef[Str|Undef]])
+
+=head2 DescribeAllRepositories([MaxResults => Int, NextToken => Str, RegistryId => Str, RepositoryNames => ArrayRef[Str|Undef]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - repositories, passing the object as the first parameter, and the string 'repositories' as the second parameter 
+
+If not, it will return a a L<Paws::ECR::DescribeRepositoriesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllImages(sub { },RepositoryName => Str, [Filter => L<Paws::ECR::ListImagesFilter>, MaxResults => Int, NextToken => Str, RegistryId => Str])
+
+=head2 ListAllImages(RepositoryName => Str, [Filter => L<Paws::ECR::ListImagesFilter>, MaxResults => Int, NextToken => Str, RegistryId => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - imageIds, passing the object as the first parameter, and the string 'imageIds' as the second parameter 
+
+If not, it will return a a L<Paws::ECR::ListImagesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+
 
 
 =head1 SEE ALSO

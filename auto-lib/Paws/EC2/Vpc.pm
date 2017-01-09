@@ -3,6 +3,7 @@ package Paws::EC2::Vpc;
   has CidrBlock => (is => 'ro', isa => 'Str', xmlname => 'cidrBlock', traits => ['Unwrapped']);
   has DhcpOptionsId => (is => 'ro', isa => 'Str', xmlname => 'dhcpOptionsId', traits => ['Unwrapped']);
   has InstanceTenancy => (is => 'ro', isa => 'Str', xmlname => 'instanceTenancy', traits => ['Unwrapped']);
+  has Ipv6CidrBlockAssociationSet => (is => 'ro', isa => 'ArrayRef[Paws::EC2::VpcIpv6CidrBlockAssociation]', xmlname => 'ipv6CidrBlockAssociationSet', traits => ['Unwrapped']);
   has IsDefault => (is => 'ro', isa => 'Bool', xmlname => 'isDefault', traits => ['Unwrapped']);
   has State => (is => 'ro', isa => 'Str', xmlname => 'state', traits => ['Unwrapped']);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', xmlname => 'tagSet', traits => ['Unwrapped']);
@@ -44,7 +45,7 @@ This class has no description
 
 =head2 CidrBlock => Str
 
-  The CIDR block for the VPC.
+  The IPv4 CIDR block for the VPC.
 
 
 =head2 DhcpOptionsId => Str
@@ -56,6 +57,11 @@ C<default> if the default options are associated with the VPC).
 =head2 InstanceTenancy => Str
 
   The allowed tenancy of instances launched into the VPC.
+
+
+=head2 Ipv6CidrBlockAssociationSet => ArrayRef[L<Paws::EC2::VpcIpv6CidrBlockAssociation>]
+
+  Information about the IPv6 CIDR blocks associated with the VPC.
 
 
 =head2 IsDefault => Bool

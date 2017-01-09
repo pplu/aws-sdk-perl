@@ -3,6 +3,7 @@ package Paws::DMS::StartReplicationTaskResponse;
   use Moose;
   has ReplicationTask => (is => 'ro', isa => 'Paws::DMS::ReplicationTask');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -18,6 +19,7 @@ Paws::DMS::StartReplicationTaskResponse
 The replication task started.
 
 
+=head2 _request_id => Str
 
 
 =cut

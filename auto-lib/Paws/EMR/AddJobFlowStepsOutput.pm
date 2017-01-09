@@ -3,6 +3,7 @@ package Paws::EMR::AddJobFlowStepsOutput;
   use Moose;
   has StepIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -18,6 +19,7 @@ Paws::EMR::AddJobFlowStepsOutput
 The identifiers of the list of steps added to the job flow.
 
 
+=head2 _request_id => Str
 
 
 =cut

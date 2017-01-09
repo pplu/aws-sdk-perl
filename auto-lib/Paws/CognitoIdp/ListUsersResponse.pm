@@ -4,6 +4,7 @@ package Paws::CognitoIdp::ListUsersResponse;
   has PaginationToken => (is => 'ro', isa => 'Str');
   has Users => (is => 'ro', isa => 'ArrayRef[Paws::CognitoIdp::UserType]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -21,12 +22,12 @@ operation, which can be used to return the next set of items in the
 list.
 
 
-
 =head2 Users => ArrayRef[L<Paws::CognitoIdp::UserType>]
 
 The users returned in the request to list users.
 
 
+=head2 _request_id => Str
 
 
 =cut

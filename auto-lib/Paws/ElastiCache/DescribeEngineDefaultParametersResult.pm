@@ -3,6 +3,7 @@ package Paws::ElastiCache::DescribeEngineDefaultParametersResult;
   use Moose;
   has EngineDefaults => (is => 'ro', isa => 'Paws::ElastiCache::EngineDefaults');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -19,6 +20,7 @@ Paws::ElastiCache::DescribeEngineDefaultParametersResult
 
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -49,7 +49,7 @@ called a managed instance.
 
 =head2 ActivationId => Str
 
-  The ID created by SSM when you submitted the activation.
+  The ID created by Systems Manager when you submitted the activation.
 
 
 =head2 CreatedDate => Str

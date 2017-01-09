@@ -3,6 +3,7 @@ package Paws::ElasticBeanstalk::CreateStorageLocationResultMessage;
   use Moose;
   has S3Bucket => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -19,6 +20,7 @@ Paws::ElasticBeanstalk::CreateStorageLocationResultMessage
 The name of the Amazon S3 bucket created.
 
 
+=head2 _request_id => Str
 
 
 =cut

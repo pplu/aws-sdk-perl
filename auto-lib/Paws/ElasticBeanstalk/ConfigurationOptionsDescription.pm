@@ -4,6 +4,7 @@ package Paws::ElasticBeanstalk::ConfigurationOptionsDescription;
   has Options => (is => 'ro', isa => 'ArrayRef[Paws::ElasticBeanstalk::ConfigurationOptionDescription]');
   has SolutionStackName => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -20,12 +21,12 @@ Paws::ElasticBeanstalk::ConfigurationOptionsDescription
 A list of ConfigurationOptionDescription.
 
 
-
 =head2 SolutionStackName => Str
 
 The name of the solution stack these configuration options belong to.
 
 
+=head2 _request_id => Str
 
 
 =cut

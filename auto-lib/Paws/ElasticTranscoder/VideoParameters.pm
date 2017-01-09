@@ -86,27 +86,49 @@ Profile) : maximum video bit rate in kilobits/second (high Profile)>
 
 =over
 
-=item * 1 - 64 : 80
+=item *
 
-=item * 1b - 128 : 160
+1 - 64 : 80
 
-=item * 1.1 - 192 : 240
+=item *
 
-=item * 1.2 - 384 : 480
+1b - 128 : 160
 
-=item * 1.3 - 768 : 960
+=item *
 
-=item * 2 - 2000 : 2500
+1.1 - 192 : 240
 
-=item * 3 - 10000 : 12500
+=item *
 
-=item * 3.1 - 14000 : 17500
+1.2 - 384 : 480
 
-=item * 3.2 - 20000 : 25000
+=item *
 
-=item * 4 - 20000 : 25000
+1.3 - 768 : 960
 
-=item * 4.1 - 50000 : 62500
+=item *
+
+2 - 2000 : 2500
+
+=item *
+
+3 - 10000 : 12500
+
+=item *
+
+3.1 - 14000 : 17500
+
+=item *
+
+3.2 - 20000 : 25000
+
+=item *
+
+4 - 20000 : 25000
+
+=item *
+
+4.1 - 50000 : 62500
 
 =back
 
@@ -115,28 +137,34 @@ Profile) : maximum video bit rate in kilobits/second (high Profile)>
 =head2 Codec => Str
 
   The video codec for the output file. Valid values include C<gif>,
-C<H.264>, C<mpeg2>, and C<vp8>. You can only specify C<vp8> when the
-container type is C<webm>, C<gif> when the container type is C<gif>,
-and C<mpeg2> when the container type is C<mpg>.
+C<H.264>, C<mpeg2>, C<vp8>, and C<vp9>. You can only specify C<vp8> and
+C<vp9> when the container type is C<webm>, C<gif> when the container
+type is C<gif>, and C<mpeg2> when the container type is C<mpg>.
 
 
 =head2 CodecOptions => L<Paws::ElasticTranscoder::CodecOptions>
 
-  B<Profile (H.264/VP8 Only)>
+  B<Profile (H.264/VP8/VP9 Only)>
 
 The H.264 profile that you want to use for the output file. Elastic
 Transcoder supports the following profiles:
 
 =over
 
-=item * C<baseline>: The profile most commonly used for
-videoconferencing and for mobile applications.
+=item *
 
-=item * C<main>: The profile used for standard-definition digital TV
+C<baseline>: The profile most commonly used for videoconferencing and
+for mobile applications.
+
+=item *
+
+C<main>: The profile used for standard-definition digital TV
 broadcasts.
 
-=item * C<high>: The profile used for high-definition digital TV
-broadcasts and for Blu-ray discs.
+=item *
+
+C<high>: The profile used for high-definition digital TV broadcasts and
+for Blu-ray discs.
 
 =back
 
@@ -165,35 +193,61 @@ list below. (A macroblock is a block of pixels measuring 16x16.)
 
 =over
 
-=item * 1 - 396
+=item *
 
-=item * 1b - 396
+1 - 396
 
-=item * 1.1 - 900
+=item *
 
-=item * 1.2 - 2376
+1b - 396
 
-=item * 1.3 - 2376
+=item *
 
-=item * 2 - 2376
+1.1 - 900
 
-=item * 2.1 - 4752
+=item *
 
-=item * 2.2 - 8100
+1.2 - 2376
 
-=item * 3 - 8100
+=item *
 
-=item * 3.1 - 18000
+1.3 - 2376
 
-=item * 3.2 - 20480
+=item *
 
-=item * 4 - 32768
+2 - 2376
 
-=item * 4.1 - 32768
+=item *
+
+2.1 - 4752
+
+=item *
+
+2.2 - 8100
+
+=item *
+
+3 - 8100
+
+=item *
+
+3.1 - 18000
+
+=item *
+
+3.2 - 20480
+
+=item *
+
+4 - 32768
+
+=item *
+
+4.1 - 32768
 
 =back
 
-B<MaxBitRate (Optional, H.264/MPEG2/VP8 only)>
+B<MaxBitRate (Optional, H.264/MPEG2/VP8/VP9 only)>
 
 The maximum number of bits per second in a video buffer; the size of
 the buffer is specified by C<BufferSize>. Specify a value between 16
@@ -201,7 +255,7 @@ and 62,500. You can reduce the bandwidth required to stream a video by
 reducing the maximum bit rate, but this also reduces the quality of the
 video.
 
-B<BufferSize (Optional, H.264/MPEG2/VP8 only)>
+B<BufferSize (Optional, H.264/MPEG2/VP8/VP9 only)>
 
 The maximum number of bits in any x seconds of the output video. This
 window is commonly 10 seconds, the standard segment duration when
@@ -247,17 +301,25 @@ applies the following color space conversions:
 
 =over
 
-=item * I<Standard to HD, 720x480 to 1920x1080> - Elastic Transcoder
-applies C<Bt601ToBt709>
+=item *
 
-=item * I<Standard to HD, 720x576 to 1920x1080> - Elastic Transcoder
-applies C<Bt601ToBt709>
+I<Standard to HD, 720x480 to 1920x1080> - Elastic Transcoder applies
+C<Bt601ToBt709>
 
-=item * I<HD to Standard, 1920x1080 to 720x480> - Elastic Transcoder
-applies C<Bt709ToBt601>
+=item *
 
-=item * I<HD to Standard, 1920x1080 to 720x576> - Elastic Transcoder
-applies C<Bt709ToBt601>
+I<Standard to HD, 720x576 to 1920x1080> - Elastic Transcoder applies
+C<Bt601ToBt709>
+
+=item *
+
+I<HD to Standard, 1920x1080 to 720x480> - Elastic Transcoder applies
+C<Bt709ToBt601>
+
+=item *
+
+I<HD to Standard, 1920x1080 to 720x576> - Elastic Transcoder applies
+C<Bt709ToBt601>
 
 =back
 
@@ -303,11 +365,15 @@ and C<false>:
 
 =over
 
-=item * C<true>: Elastic Transcoder uses the value of
-C<KeyframesMaxDist> for the distance between key frames (the number of
-frames in a group of pictures, or GOP).
+=item *
 
-=item * C<false>: The distance between key frames can vary.
+C<true>: Elastic Transcoder uses the value of C<KeyframesMaxDist> for
+the distance between key frames (the number of frames in a group of
+pictures, or GOP).
+
+=item *
+
+C<false>: The distance between key frames can vary.
 
 =back
 
@@ -332,12 +398,16 @@ where:
 
 =over
 
-=item * I<width in pixels> and I<height in pixels> represent the
-Resolution of the output video.
+=item *
 
-=item * I<maximum recommended decoding speed in Luma samples/second> is
-less than or equal to the maximum value listed in the following table,
-based on the value that you specified for Level.
+I<width in pixels> and I<height in pixels> represent the Resolution of
+the output video.
+
+=item *
+
+I<maximum recommended decoding speed in Luma samples/second> is less
+than or equal to the maximum value listed in the following table, based
+on the value that you specified for Level.
 
 =back
 
@@ -346,31 +416,57 @@ level is described in the following list (I<Level - Decoding speed>):
 
 =over
 
-=item * 1 - 380160
+=item *
 
-=item * 1b - 380160
+1 - 380160
 
-=item * 1.1 - 76800
+=item *
 
-=item * 1.2 - 1536000
+1b - 380160
 
-=item * 1.3 - 3041280
+=item *
 
-=item * 2 - 3041280
+1.1 - 76800
 
-=item * 2.1 - 5068800
+=item *
 
-=item * 2.2 - 5184000
+1.2 - 1536000
 
-=item * 3 - 10368000
+=item *
 
-=item * 3.1 - 27648000
+1.3 - 3041280
 
-=item * 3.2 - 55296000
+=item *
 
-=item * 4 - 62914560
+2 - 3041280
 
-=item * 4.1 - 62914560
+=item *
+
+2.1 - 5068800
+
+=item *
+
+2.2 - 5184000
+
+=item *
+
+3 - 10368000
+
+=item *
+
+3.1 - 27648000
+
+=item *
+
+3.2 - 55296000
+
+=item *
+
+4 - 62914560
+
+=item *
+
+4.1 - 62914560
 
 =back
 
@@ -448,11 +544,15 @@ values are C<auto> and I<width> x I<height>:
 
 =over
 
-=item * C<auto>: Elastic Transcoder attempts to preserve the width and
-height of the input file, subject to the following rules.
+=item *
 
-=item * C<I<width> x I<height>>: The width and height of the output
-video in pixels.
+C<auto>: Elastic Transcoder attempts to preserve the width and height
+of the input file, subject to the following rules.
+
+=item *
+
+C<I<width> x I<height> >: The width and height of the output video in
+pixels.
 
 =back
 
@@ -460,51 +560,85 @@ Note the following about specifying the width and height:
 
 =over
 
-=item * The width must be an even integer between 128 and 4096,
-inclusive.
+=item *
 
-=item * The height must be an even integer between 96 and 3072,
-inclusive.
+The width must be an even integer between 128 and 4096, inclusive.
 
-=item * If you specify a resolution that is less than the resolution of
-the input file, Elastic Transcoder rescales the output file to the
-lower resolution.
+=item *
 
-=item * If you specify a resolution that is greater than the resolution
-of the input file, Elastic Transcoder rescales the output to the higher
+The height must be an even integer between 96 and 3072, inclusive.
+
+=item *
+
+If you specify a resolution that is less than the resolution of the
+input file, Elastic Transcoder rescales the output file to the lower
 resolution.
 
-=item * We recommend that you specify a resolution for which the
-product of width and height is less than or equal to the applicable
-value in the following list (I<List - Max width x height value>):
+=item *
+
+If you specify a resolution that is greater than the resolution of the
+input file, Elastic Transcoder rescales the output to the higher
+resolution.
+
+=item *
+
+We recommend that you specify a resolution for which the product of
+width and height is less than or equal to the applicable value in the
+following list (I<List - Max width x height value>):
 
 =over
 
-=item * 1 - 25344
+=item *
 
-=item * 1b - 25344
+1 - 25344
 
-=item * 1.1 - 101376
+=item *
 
-=item * 1.2 - 101376
+1b - 25344
 
-=item * 1.3 - 101376
+=item *
 
-=item * 2 - 101376
+1.1 - 101376
 
-=item * 2.1 - 202752
+=item *
 
-=item * 2.2 - 404720
+1.2 - 101376
 
-=item * 3 - 404720
+=item *
 
-=item * 3.1 - 921600
+1.3 - 101376
 
-=item * 3.2 - 1310720
+=item *
 
-=item * 4 - 2097152
+2 - 101376
 
-=item * 4.1 - 2097152
+=item *
+
+2.1 - 202752
+
+=item *
+
+2.2 - 404720
+
+=item *
+
+3 - 404720
+
+=item *
+
+3.1 - 921600
+
+=item *
+
+3.2 - 1310720
+
+=item *
+
+4 - 2097152
+
+=item *
+
+4.1 - 2097152
 
 =back
 
@@ -519,35 +653,46 @@ video:
 
 =over
 
-=item * C<Fit>: Elastic Transcoder scales the output video so it
-matches the value that you specified in either C<MaxWidth> or
-C<MaxHeight> without exceeding the other value.
+=item *
 
-=item * C<Fill>: Elastic Transcoder scales the output video so it
-matches the value that you specified in either C<MaxWidth> or
-C<MaxHeight> and matches or exceeds the other value. Elastic Transcoder
-centers the output video and then crops it in the dimension (if any)
-that exceeds the maximum value.
+C<Fit>: Elastic Transcoder scales the output video so it matches the
+value that you specified in either C<MaxWidth> or C<MaxHeight> without
+exceeding the other value.
 
-=item * C<Stretch>: Elastic Transcoder stretches the output video to
-match the values that you specified for C<MaxWidth> and C<MaxHeight>.
-If the relative proportions of the input video and the output video are
+=item *
+
+C<Fill>: Elastic Transcoder scales the output video so it matches the
+value that you specified in either C<MaxWidth> or C<MaxHeight> and
+matches or exceeds the other value. Elastic Transcoder centers the
+output video and then crops it in the dimension (if any) that exceeds
+the maximum value.
+
+=item *
+
+C<Stretch>: Elastic Transcoder stretches the output video to match the
+values that you specified for C<MaxWidth> and C<MaxHeight>. If the
+relative proportions of the input video and the output video are
 different, the output video will be distorted.
 
-=item * C<Keep>: Elastic Transcoder does not scale the output video. If
-either dimension of the input video exceeds the values that you
-specified for C<MaxWidth> and C<MaxHeight>, Elastic Transcoder crops
-the output video.
+=item *
 
-=item * C<ShrinkToFit>: Elastic Transcoder scales the output video down
-so that its dimensions match the values that you specified for at least
-one of C<MaxWidth> and C<MaxHeight> without exceeding either value. If
-you specify this option, Elastic Transcoder does not scale the video
-up.
+C<Keep>: Elastic Transcoder does not scale the output video. If either
+dimension of the input video exceeds the values that you specified for
+C<MaxWidth> and C<MaxHeight>, Elastic Transcoder crops the output
+video.
 
-=item * C<ShrinkToFill>: Elastic Transcoder scales the output video
-down so that its dimensions match the values that you specified for at
-least one of C<MaxWidth> and C<MaxHeight> without dropping below either
+=item *
+
+C<ShrinkToFit>: Elastic Transcoder scales the output video down so that
+its dimensions match the values that you specified for at least one of
+C<MaxWidth> and C<MaxHeight> without exceeding either value. If you
+specify this option, Elastic Transcoder does not scale the video up.
+
+=item *
+
+C<ShrinkToFill>: Elastic Transcoder scales the output video down so
+that its dimensions match the values that you specified for at least
+one of C<MaxWidth> and C<MaxHeight> without dropping below either
 value. If you specify this option, Elastic Transcoder does not scale
 the video up.
 

@@ -6,6 +6,7 @@ package Paws::IoT::CreatePolicyResponse;
   has PolicyName => (is => 'ro', isa => 'Str');
   has PolicyVersionId => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -22,11 +23,9 @@ Paws::IoT::CreatePolicyResponse
 The policy ARN.
 
 
-
 =head2 PolicyDocument => Str
 
 The JSON document that describes the policy.
-
 
 
 =head2 PolicyName => Str
@@ -34,12 +33,12 @@ The JSON document that describes the policy.
 The policy name.
 
 
-
 =head2 PolicyVersionId => Str
 
 The policy version ID.
 
 
+=head2 _request_id => Str
 
 
 =cut

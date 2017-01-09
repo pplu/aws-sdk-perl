@@ -10,6 +10,7 @@ package Paws::ECS::ContainerInstance;
   has RemainingResources => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Resource]', xmlname => 'remainingResources', request_name => 'remainingResources', traits => ['Unwrapped','NameInRequest']);
   has RunningTasksCount => (is => 'ro', isa => 'Int', xmlname => 'runningTasksCount', request_name => 'runningTasksCount', traits => ['Unwrapped','NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', xmlname => 'status', request_name => 'status', traits => ['Unwrapped','NameInRequest']);
+  has Version => (is => 'ro', isa => 'Int', xmlname => 'version', request_name => 'version', traits => ['Unwrapped','NameInRequest']);
   has VersionInfo => (is => 'ro', isa => 'Paws::ECS::VersionInfo', xmlname => 'versionInfo', request_name => 'versionInfo', traits => ['Unwrapped','NameInRequest']);
 1;
 
@@ -63,8 +64,9 @@ requested, this value is C<NULL>.
 
 =head2 Attributes => ArrayRef[L<Paws::ECS::Attribute>]
 
-  The attributes set for the container instance by the Amazon ECS
-container agent at instance registration.
+  The attributes set for the container instance, either by the Amazon ECS
+container agent at instance registration or manually with the
+PutAttributes operation.
 
 
 =head2 ContainerInstanceArn => Str
@@ -91,14 +93,21 @@ C<PENDING> status.
 
 =head2 RegisteredResources => ArrayRef[L<Paws::ECS::Resource>]
 
-  The registered resources on the container instance that are in use by
-current tasks.
+  For most resource types, this parameter describes the registered
+resources on the container instance that are in use by current tasks.
+For port resource types, this parameter describes the ports that were
+reserved by the Amazon ECS container agent when it registered the
+container instance with Amazon ECS.
 
 
 =head2 RemainingResources => ArrayRef[L<Paws::ECS::Resource>]
 
-  The remaining resources of the container instance that are available
-for new tasks.
+  For most resource types, this parameter describes the remaining
+resources of the container instance that are available for new tasks.
+For port resource types, this parameter describes the ports that are
+reserved by the Amazon ECS container agent and any containers that have
+reserved port mappings; any port that is not specified here is
+available for new tasks.
 
 
 =head2 RunningTasksCount => Int
@@ -112,6 +121,18 @@ C<RUNNING> status.
   The status of the container instance. The valid values are C<ACTIVE> or
 C<INACTIVE>. C<ACTIVE> indicates that the container instance can accept
 tasks.
+
+
+=head2 Version => Int
+
+  The version counter for the container instance. Every time a container
+instance experiences a change that triggers a CloudWatch event, the
+version counter is incremented. If you are replicating your Amazon ECS
+container instance state with CloudWatch events, you can compare the
+version of a container instance reported by the Amazon ECS APIs with
+the version reported in CloudWatch events for the container instance
+(inside the C<detail> object) to verify that the version in your event
+stream is current.
 
 
 =head2 VersionInfo => L<Paws::ECS::VersionInfo>

@@ -38,7 +38,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Dimensions => ArrayRef[L<Paws::CloudWatch::DimensionFilter>]
 
-A list of dimensions to filter against.
+The dimensions to filter against.
 
 
 

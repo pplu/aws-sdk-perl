@@ -56,9 +56,13 @@ types:
 
 =over
 
-=item * IPSetUpdate: Contains C<Action> and C<IPSetDescriptor>
+=item *
 
-=item * IPSetDescriptor: Contains C<Type> and C<Value>
+IPSetUpdate: Contains C<Action> and C<IPSetDescriptor>
+
+=item *
+
+IPSetDescriptor: Contains C<Type> and C<Value>
 
 =back
 

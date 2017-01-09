@@ -65,7 +65,20 @@ Cannot end with a hyphen or contain two consecutive hyphens
 
 =head2 Filters => ArrayRef[L<Paws::RDS::Filter>]
 
-This parameter is not currently supported.
+A filter that specifies one or more DB clusters to describe.
+
+Supported filters:
+
+=over
+
+=item *
+
+C<db-cluster-id> - Accepts DB cluster identifiers and DB cluster Amazon
+Resource Names (ARNs). The results list will only include information
+about the DB clusters identified by these ARNs.
+
+=back
+
 
 
 

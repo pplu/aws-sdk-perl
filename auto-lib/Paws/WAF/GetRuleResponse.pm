@@ -3,6 +3,7 @@ package Paws::WAF::GetRuleResponse;
   use Moose;
   has Rule => (is => 'ro', isa => 'Paws::WAF::Rule');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -20,16 +21,21 @@ request. For more information, see the following topics:
 
 =over
 
-=item * Rule: Contains C<MetricName>, C<Name>, an array of C<Predicate>
+=item *
+
+Rule: Contains C<MetricName>, C<Name>, an array of C<Predicate>
 objects, and C<RuleId>
 
-=item * Predicate: Each C<Predicate> object contains C<DataId>,
-C<Negated>, and C<Type>
+=item *
+
+Predicate: Each C<Predicate> object contains C<DataId>, C<Negated>, and
+C<Type>
 
 =back
 
 
 
+=head2 _request_id => Str
 
 
 =cut

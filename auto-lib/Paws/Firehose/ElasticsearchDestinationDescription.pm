@@ -5,6 +5,7 @@ package Paws::Firehose::ElasticsearchDestinationDescription;
   has DomainARN => (is => 'ro', isa => 'Str');
   has IndexName => (is => 'ro', isa => 'Str');
   has IndexRotationPeriod => (is => 'ro', isa => 'Str');
+  has ProcessingConfiguration => (is => 'ro', isa => 'Paws::Firehose::ProcessingConfiguration');
   has RetryOptions => (is => 'ro', isa => 'Paws::Firehose::ElasticsearchRetryOptions');
   has RoleARN => (is => 'ro', isa => 'Str');
   has S3BackupMode => (is => 'ro', isa => 'Str');
@@ -47,12 +48,12 @@ The destination description in Amazon ES.
 
 =head2 BufferingHints => L<Paws::Firehose::ElasticsearchBufferingHints>
 
-  Buffering options.
+  The buffering options.
 
 
 =head2 CloudWatchLoggingOptions => L<Paws::Firehose::CloudWatchLoggingOptions>
 
-  CloudWatch logging options.
+  The CloudWatch logging options.
 
 
 =head2 DomainARN => Str
@@ -70,9 +71,14 @@ The destination description in Amazon ES.
   The Elasticsearch index rotation period
 
 
+=head2 ProcessingConfiguration => L<Paws::Firehose::ProcessingConfiguration>
+
+  The data processing configuration.
+
+
 =head2 RetryOptions => L<Paws::Firehose::ElasticsearchRetryOptions>
 
-  Elasticsearch retry options.
+  The Amazon ES retry options.
 
 
 =head2 RoleARN => Str
@@ -82,12 +88,12 @@ The destination description in Amazon ES.
 
 =head2 S3BackupMode => Str
 
-  Amazon S3 backup mode.
+  The Amazon S3 backup mode.
 
 
 =head2 S3DestinationDescription => L<Paws::Firehose::S3DestinationDescription>
 
-  
+  The Amazon S3 destination.
 
 
 =head2 TypeName => Str

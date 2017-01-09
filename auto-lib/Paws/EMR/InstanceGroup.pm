@@ -1,5 +1,6 @@
 package Paws::EMR::InstanceGroup;
   use Moose;
+  has AutoScalingPolicy => (is => 'ro', isa => 'Paws::EMR::AutoScalingPolicyDescription');
   has BidPrice => (is => 'ro', isa => 'Str');
   has Configurations => (is => 'ro', isa => 'ArrayRef[Paws::EMR::Configuration]');
   has EbsBlockDevices => (is => 'ro', isa => 'ArrayRef[Paws::EMR::EbsBlockDevice]');
@@ -32,14 +33,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::EMR::InstanceGroup object:
 
-  $service_obj->Method(Att1 => { BidPrice => $value, ..., Status => $value  });
+  $service_obj->Method(Att1 => { AutoScalingPolicy => $value, ..., Status => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::EMR::InstanceGroup object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->BidPrice
+  $result->Att1->AutoScalingPolicy
 
 =head1 DESCRIPTION
 
@@ -48,6 +49,14 @@ that have common purpose. For example, CORE instance group is used for
 HDFS.
 
 =head1 ATTRIBUTES
+
+
+=head2 AutoScalingPolicy => L<Paws::EMR::AutoScalingPolicyDescription>
+
+  An automatic scaling policy for a core instance group or task instance
+group in an Amazon EMR cluster. The automatic scaling policy defines
+how an instance group dynamically adds and terminates EC2 instances in
+response to the value of a CloudWatch metric. See PutAutoScalingPolicy.
 
 
 =head2 BidPrice => Str

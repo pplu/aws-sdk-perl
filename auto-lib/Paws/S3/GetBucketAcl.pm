@@ -1,7 +1,7 @@
 
 package Paws::S3::GetBucketAcl;
   use Moose;
-  has Bucket => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'Bucket' , required => 1);
+  has Bucket => (is => 'ro', isa => 'Str', uri_name => 'Bucket', traits => ['ParamInURI'], required => 1);
 
   use MooseX::ClassAttribute;
 

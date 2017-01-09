@@ -1,0 +1,11 @@
+---
+content: ''
+headers:
+  connection: close
+  content-length: 0
+  date: 'Tue, 01 Nov 2016 22:07:26 GMT'
+  etag: '"d41d8cd98f00b204e9800998ecf8427e"'
+  server: AmazonS3
+  x-amz-id-2: 60x2RTe0q1esjxmyO0tiBakjCcJvZwt4AROL9k0SIsyEd30EpQxAGsfVSO1L/bx5fQ+jufMSfV0=
+  x-amz-request-id: 5A5F29474F4C7603
+status: 200

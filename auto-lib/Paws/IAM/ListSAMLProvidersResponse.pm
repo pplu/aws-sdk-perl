@@ -3,6 +3,7 @@ package Paws::IAM::ListSAMLProvidersResponse;
   use Moose;
   has SAMLProviderList => (is => 'ro', isa => 'ArrayRef[Paws::IAM::SAMLProviderListEntry]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -20,6 +21,7 @@ The list of SAML provider resource objects defined in IAM for this AWS
 account.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -3,6 +3,7 @@ package Paws::EC2::CreateRouteTableResult;
   use Moose;
   has RouteTable => (is => 'ro', isa => 'Paws::EC2::RouteTable', xmlname => 'routeTable', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -19,6 +20,7 @@ Paws::EC2::CreateRouteTableResult
 Information about the route table.
 
 
+=head2 _request_id => Str
 
 
 =cut

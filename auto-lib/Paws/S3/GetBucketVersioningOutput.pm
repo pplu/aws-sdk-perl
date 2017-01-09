@@ -1,9 +1,10 @@
 
 package Paws::S3::GetBucketVersioningOutput;
   use Moose;
-  has MFADelete => (is => 'ro', isa => 'Str');
+  has MFADelete => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'MfaDelete');
   has Status => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###

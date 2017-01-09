@@ -4,6 +4,7 @@ package Paws::ECS::ListTaskDefinitionsResponse;
   has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
   has TaskDefinitionArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['Unwrapped'], xmlname => 'taskDefinitionArns' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -23,13 +24,13 @@ results. This value is C<null> when there are no more results to
 return.
 
 
-
 =head2 TaskDefinitionArns => ArrayRef[Str|Undef]
 
 The list of task definition Amazon Resource Name (ARN) entries for the
 C<ListTaskDefinitions> request.
 
 
+=head2 _request_id => Str
 
 
 =cut

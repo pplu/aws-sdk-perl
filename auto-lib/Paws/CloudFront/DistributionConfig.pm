@@ -9,6 +9,7 @@ package Paws::CloudFront::DistributionConfig;
   has DefaultRootObject => (is => 'ro', isa => 'Str');
   has Enabled => (is => 'ro', isa => 'Bool', required => 1);
   has HttpVersion => (is => 'ro', isa => 'Str');
+  has IsIPV6Enabled => (is => 'ro', isa => 'Bool');
   has Logging => (is => 'ro', isa => 'Paws::CloudFront::LoggingConfig');
   has Origins => (is => 'ro', isa => 'Paws::CloudFront::Origins', required => 1);
   has PriceClass => (is => 'ro', isa => 'Str');
@@ -45,7 +46,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 
 =head1 DESCRIPTION
 
-A distribution Configuration.
+A distribution configuration.
 
 =head1 ATTRIBUTES
 
@@ -58,74 +59,181 @@ names), if any, for this distribution.
 
 =head2 CacheBehaviors => L<Paws::CloudFront::CacheBehaviors>
 
-  A complex type that contains zero or more CacheBehavior elements.
+  A complex type that contains zero or more C<CacheBehavior> elements.
 
 
 =head2 B<REQUIRED> CallerReference => Str
 
-  A unique number that ensures the request can't be replayed. If the
-CallerReference is new (no matter the content of the DistributionConfig
-object), a new distribution is created. If the CallerReference is a
-value you already sent in a previous request to create a distribution,
-and the content of the DistributionConfig is identical to the original
-request (ignoring white space), the response includes the same
-information returned to the original request. If the CallerReference is
-a value you already sent in a previous request to create a distribution
-but the content of the DistributionConfig is different from the
-original request, CloudFront returns a DistributionAlreadyExists error.
+  A unique value (for example, a date-time stamp) that ensures that the
+request can't be replayed.
+
+If the value of C<CallerReference> is new (regardless of the content of
+the C<DistributionConfig> object), CloudFront creates a new
+distribution.
+
+If C<CallerReference> is a value you already sent in a previous request
+to create a distribution, and if the content of the
+C<DistributionConfig> is identical to the original request (ignoring
+white space), CloudFront returns the same the response that it returned
+to the original request.
+
+If C<CallerReference> is a value you already sent in a previous request
+to create a distribution but the content of the C<DistributionConfig>
+is different from the original request, CloudFront returns a
+C<DistributionAlreadyExists> error.
 
 
 =head2 B<REQUIRED> Comment => Str
 
   Any comments you want to include about the distribution.
 
+If you don't want to specify a comment, include an empty C<Comment>
+element.
+
+To delete an existing comment, update the distribution configuration
+and include an empty C<Comment> element.
+
+To add or change a comment, update the distribution configuration and
+specify the new comment.
+
 
 =head2 CustomErrorResponses => L<Paws::CloudFront::CustomErrorResponses>
 
-  A complex type that contains zero or more CustomErrorResponse elements.
+  A complex type that controls the following:
+
+=over
+
+=item *
+
+Whether CloudFront replaces HTTP status codes in the 4xx and 5xx range
+with custom error messages before returning the response to the viewer.
+
+=item *
+
+How long CloudFront caches HTTP status codes in the 4xx and 5xx range.
+
+=back
+
+For more information about custom error pages, see Customizing Error
+Responses in the I<Amazon CloudFront Developer Guide>.
 
 
 =head2 B<REQUIRED> DefaultCacheBehavior => L<Paws::CloudFront::DefaultCacheBehavior>
 
   A complex type that describes the default cache behavior if you do not
-specify a CacheBehavior element or if files don't match any of the
-values of PathPattern in CacheBehavior elements.You must create exactly
-one default cache behavior.
+specify a C<CacheBehavior> element or if files don't match any of the
+values of C<PathPattern> in C<CacheBehavior> elements. You must create
+exactly one default cache behavior.
 
 
 =head2 DefaultRootObject => Str
 
-  The object that you want CloudFront to return (for example, index.html)
-when an end user requests the root URL for your distribution
-(http://www.example.com) instead of an object in your distribution
-(http://www.example.com/index.html). Specifying a default root object
-avoids exposing the contents of your distribution. If you don't want to
-specify a default root object when you create a distribution, include
-an empty DefaultRootObject element. To delete the default root object
-from an existing distribution, update the distribution configuration
-and include an empty DefaultRootObject element. To replace the default
-root object, update the distribution configuration and specify the new
-object.
+  The object that you want CloudFront to request from your origin (for
+example, C<index.html>) when a viewer requests the root URL for your
+distribution (C<http://www.example.com>) instead of an object in your
+distribution (C<http://www.example.com/product-description.html>).
+Specifying a default root object avoids exposing the contents of your
+distribution.
+
+Specify only the object name, for example, C<index.html>. Do not add a
+C</> before the object name.
+
+If you don't want to specify a default root object when you create a
+distribution, include an empty C<DefaultRootObject> element.
+
+To delete the default root object from an existing distribution, update
+the distribution configuration and include an empty
+C<DefaultRootObject> element.
+
+To replace the default root object, update the distribution
+configuration and specify the new object.
+
+For more information about the default root object, see Creating a
+Default Root Object in the I<Amazon CloudFront Developer Guide>.
 
 
 =head2 B<REQUIRED> Enabled => Bool
 
-  Whether the distribution is enabled to accept end user requests for
-content.
+  Specifies whether you want CloudFront to save access logs to an Amazon
+S3 bucket.
+
+If you do not want to enable logging when you create a distribution, or
+if you want to disable logging for an existing distribution, specify
+C<false> for C<Enabled>, and specify empty C<Bucket> and C<Prefix>
+elements.
+
+If you specify C<false> for C<Enabled> but you specify values for
+C<Bucket> and C<Prefix>, the values are automatically deleted.
 
 
 =head2 HttpVersion => Str
 
   (Optional) Specify the maximum HTTP version that you want viewers to
 use to communicate with CloudFront. The default value for new web
-distributions is http2. Viewers that don't support HTTP/2 will
-automatically use an earlier version.
+distributions is http2. Viewers that don't support HTTP/2 automatically
+use an earlier HTTP version.
+
+For viewers and CloudFront to use HTTP/2, viewers must support TLS 1.2
+or later, and must support Server Name Identification (SNI).
+
+In general, configuring CloudFront to communicate with viewers using
+HTTP/2 reduces latency. You can improve performance by optimizing for
+HTTP/2. For more information, do an Internet search for "http/2
+optimization."
+
+
+=head2 IsIPV6Enabled => Bool
+
+  If you want CloudFront to respond to IPv6 DNS requests with an IPv6
+address for your distribution, specify C<true>. If you specify
+C<false>, CloudFront responds to IPv6 DNS requests with the DNS
+response code C<NOERROR> and with no IP addresses. This allows viewers
+to submit a second request, for an IPv4 address for your distribution.
+
+In general, you should enable IPv6 if you have users on IPv6 networks
+who want to access your content. However, if you're using signed URLs
+or signed cookies to restrict access to your content, and if you're
+using a custom policy that includes the C<IpAddress> parameter to
+restrict the IP addresses that can access your content, do not enable
+IPv6. If you want to restrict access to some content by IP address and
+not restrict access to other content (or restrict access but not by IP
+address), you can create two distributions. For more information, see
+Creating a Signed URL Using a Custom Policy in the I<Amazon CloudFront
+Developer Guide>.
+
+If you're using an Amazon Route 53 alias resource record set to route
+traffic to your CloudFront distribution, you need to create a second
+alias resource record set when both of the following are true:
+
+=over
+
+=item *
+
+You enable IPv6 for the distribution
+
+=item *
+
+You're using alternate domain names in the URLs for your objects
+
+=back
+
+For more information, see Routing Traffic to an Amazon CloudFront Web
+Distribution by Using Your Domain Name in the I<Amazon Route 53
+Developer Guide>.
+
+If you created a CNAME resource record set, either with Amazon Route 53
+or with another DNS service, you don't need to make any changes. A
+CNAME record will route traffic to your distribution regardless of the
+IP address format of the viewer request.
 
 
 =head2 Logging => L<Paws::CloudFront::LoggingConfig>
 
   A complex type that controls whether access logs are written for the
 distribution.
+
+For more information about logging, see Access Logs in the I<Amazon
+CloudFront Developer Guide>.
 
 
 =head2 B<REQUIRED> Origins => L<Paws::CloudFront::Origins>
@@ -136,8 +244,21 @@ distribution.
 
 =head2 PriceClass => Str
 
-  A complex type that contains information about price class for this
-distribution.
+  The price class that corresponds with the maximum price that you want
+to pay for CloudFront service. If you specify C<PriceClass_All>,
+CloudFront responds to requests for your objects from all CloudFront
+edge locations.
+
+If you specify a price class other than C<PriceClass_All>, CloudFront
+serves your objects from the CloudFront edge location that has the
+lowest latency among the edge locations in your price class. Viewers
+who are in or near regions that are excluded from your specified price
+class may encounter slower performance.
+
+For more information about price classes, see Choosing the Price Class
+for a CloudFront Distribution in the I<Amazon CloudFront Developer
+Guide>. For information about CloudFront pricing, including how price
+classes map to CloudFront regions, see Amazon CloudFront Pricing.
 
 
 =head2 Restrictions => L<Paws::CloudFront::Restrictions>
@@ -152,8 +273,18 @@ distribution.
 
 =head2 WebACLId => Str
 
-  (Optional) If you're using AWS WAF to filter CloudFront requests, the
-Id of the AWS WAF web ACL that is associated with the distribution.
+  A unique identifier that specifies the AWS WAF web ACL, if any, to
+associate with this distribution.
+
+AWS WAF is a web application firewall that lets you monitor the HTTP
+and HTTPS requests that are forwarded to CloudFront, and lets you
+control access to your content. Based on conditions that you specify,
+such as the IP addresses that requests originate from or the values of
+query strings, CloudFront responds to requests either with the
+requested content or with an HTTP 403 status code (Forbidden). You can
+also configure CloudFront to return a custom error page when a request
+is blocked. For more information about AWS WAF, see the AWS WAF
+Developer Guide.
 
 
 

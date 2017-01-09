@@ -4,6 +4,7 @@ package Paws::DeviceFarm::ListOfferingsResult;
   has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
   has Offerings => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::Offering]', traits => ['Unwrapped'], xmlname => 'offerings' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -21,12 +22,12 @@ operation, which can be used to return the next set of items in the
 list.
 
 
-
 =head2 Offerings => ArrayRef[L<Paws::DeviceFarm::Offering>]
 
 A value representing the list offering results.
 
 
+=head2 _request_id => Str
 
 
 =cut

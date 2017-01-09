@@ -42,8 +42,9 @@ Provides options for specifying a range inventory retrieval job.
 =head2 EndDate => Str
 
   The end of the date range in UTC for vault inventory retrieval that
-includes archives created before this date. A string representation of
-ISO 8601 date format, for example, 2013-03-20T17:03:43Z.
+includes archives created before this date. This value should be a
+string in the ISO 8601 date format, for example
+C<2013-03-20T17:03:43Z>.
 
 
 =head2 Limit => Str
@@ -64,9 +65,9 @@ are no more inventory items, this value is C<null>.
 =head2 StartDate => Str
 
   The start of the date range in UTC for vault inventory retrieval that
-includes archives created on or after this date. A string
-representation of ISO 8601 date format, for example,
-2013-03-20T17:03:43Z.
+includes archives created on or after this date. This value should be a
+string in the ISO 8601 date format, for example
+C<2013-03-20T17:03:43Z>.
 
 
 

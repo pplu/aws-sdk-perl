@@ -61,7 +61,7 @@ The identifier of the CMK under which to generate and encrypt the data
 encryption key.
 
 A valid identifier is the unique key ID or the Amazon Resource Name
-(ARN) of the CMK, or the alias name or ARN of an alias that points to
+(ARN) of the CMK, or the alias name or ARN of an alias that refers to
 the CMK. Examples:
 
 =over
@@ -73,7 +73,7 @@ Unique key ID: C<1234abcd-12ab-34cd-56ef-1234567890ab>
 =item *
 
 CMK ARN:
-C<arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab>
+C<arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab>
 
 =item *
 
@@ -81,7 +81,7 @@ Alias name: C<alias/ExampleAlias>
 
 =item *
 
-Alias ARN: C<arn:aws:kms:us-west-2:111122223333:alias/ExampleAlias>
+Alias ARN: C<arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias>
 
 =back
 

@@ -20,6 +20,7 @@ package Paws::ElasticBeanstalk::EnvironmentDescription;
   has Tier => (is => 'ro', isa => 'Paws::ElasticBeanstalk::EnvironmentTier');
   has VersionLabel => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -41,11 +42,9 @@ C<true:> There is an update in progress.
 C<false:> There are no updates currently in progress.
 
 
-
 =head2 ApplicationName => Str
 
 The name of the application associated with this environment.
-
 
 
 =head2 CNAME => Str
@@ -53,11 +52,9 @@ The name of the application associated with this environment.
 The URL to the CNAME for this environment.
 
 
-
 =head2 DateCreated => Str
 
 The creation date for this environment.
-
 
 
 =head2 DateUpdated => Str
@@ -65,11 +62,9 @@ The creation date for this environment.
 The last modified date for this environment.
 
 
-
 =head2 Description => Str
 
 Describes this environment.
-
 
 
 =head2 EndpointURL => Str
@@ -79,11 +74,9 @@ LoadBalancer. For single-instance environments, the IP address of the
 instance.
 
 
-
 =head2 EnvironmentId => Str
 
 The ID of this environment.
-
 
 
 =head2 EnvironmentLinks => ArrayRef[L<Paws::ElasticBeanstalk::EnvironmentLink>]
@@ -91,11 +84,9 @@ The ID of this environment.
 A list of links to other environments in the same group.
 
 
-
 =head2 EnvironmentName => Str
 
 The name of this environment.
-
 
 
 =head2 Health => Str
@@ -105,43 +96,46 @@ indicates the failure levels for a running environment:
 
 =over
 
-=item * C<Red>: Indicates the environment is not responsive. Occurs
-when three or more consecutive failures occur for an environment.
+=item *
 
-=item * C<Yellow>: Indicates that something is wrong. Occurs when two
+C<Red>: Indicates the environment is not responsive. Occurs when three
+or more consecutive failures occur for an environment.
+
+=item *
+
+C<Yellow>: Indicates that something is wrong. Occurs when two
 consecutive failures occur for an environment.
 
-=item * C<Green>: Indicates the environment is healthy and fully
-functional.
+=item *
 
-=item * C<Grey>: Default health for a new environment. The environment
-is not fully launched and health checks have not started or health
-checks are suspended during an C<UpdateEnvironment> or
-C<RestartEnvironement> request.
+C<Green>: Indicates the environment is healthy and fully functional.
+
+=item *
+
+C<Grey>: Default health for a new environment. The environment is not
+fully launched and health checks have not started or health checks are
+suspended during an C<UpdateEnvironment> or C<RestartEnvironement>
+request.
 
 =back
 
 Default: C<Grey>
 
 Valid values are: C<"Green">, C<"Yellow">, C<"Red">, C<"Grey">
-
 =head2 HealthStatus => Str
 
 Returns the health status of the application running in your
 environment. For more information, see Health Colors and Statuses.
 
 Valid values are: C<"NoData">, C<"Unknown">, C<"Pending">, C<"Ok">, C<"Info">, C<"Warning">, C<"Degraded">, C<"Severe">
-
 =head2 Resources => L<Paws::ElasticBeanstalk::EnvironmentResourcesDescription>
 
 The description of the AWS resources used by this environment.
 
 
-
 =head2 SolutionStackName => Str
 
 The name of the C<SolutionStack> deployed with this environment.
-
 
 
 =head2 Status => Str
@@ -150,29 +144,36 @@ The current operational status of the environment:
 
 =over
 
-=item * C<Launching>: Environment is in the process of initial
-deployment.
+=item *
 
-=item * C<Updating>: Environment is in the process of updating its
+C<Launching>: Environment is in the process of initial deployment.
+
+=item *
+
+C<Updating>: Environment is in the process of updating its
 configuration settings or application version.
 
-=item * C<Ready>: Environment is available to have an action performed
-on it, such as update or terminate.
+=item *
 
-=item * C<Terminating>: Environment is in the shut-down process.
+C<Ready>: Environment is available to have an action performed on it,
+such as update or terminate.
 
-=item * C<Terminated>: Environment is not running.
+=item *
+
+C<Terminating>: Environment is in the shut-down process.
+
+=item *
+
+C<Terminated>: Environment is not running.
 
 =back
 
 
 Valid values are: C<"Launching">, C<"Updating">, C<"Ready">, C<"Terminating">, C<"Terminated">
-
 =head2 TemplateName => Str
 
 The name of the configuration template used to originally launch this
 environment.
-
 
 
 =head2 Tier => L<Paws::ElasticBeanstalk::EnvironmentTier>
@@ -180,12 +181,12 @@ environment.
 Describes the current tier of this environment.
 
 
-
 =head2 VersionLabel => Str
 
 The application version deployed in this environment.
 
 
+=head2 _request_id => Str
 
 
 =cut

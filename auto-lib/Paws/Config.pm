@@ -144,6 +144,155 @@ package Paws::Config;
     my $call_object = $self->new_with_coercions('Paws::Config::StopConfigurationRecorder', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
+  sub DescribeAllComplianceByConfigRule {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeComplianceByConfigRule(@_);
+
+    if (not defined $callback) {
+      while ($result->NextToken) {
+        $result = $self->DescribeComplianceByConfigRule(@_, NextToken => $result->NextToken);
+        push @{ $result->ComplianceByConfigRules }, @{ $result->ComplianceByConfigRules };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $result = $self->DescribeComplianceByConfigRule(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'ComplianceByConfigRules') foreach (@{ $result->ComplianceByConfigRules });
+      }
+    }
+
+    return undef
+  }
+  sub DescribeAllComplianceByResource {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeComplianceByResource(@_);
+
+    if (not defined $callback) {
+      while ($result->NextToken) {
+        $result = $self->DescribeComplianceByResource(@_, NextToken => $result->NextToken);
+        push @{ $result->ComplianceByResources }, @{ $result->ComplianceByResources };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $result = $self->DescribeComplianceByResource(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'ComplianceByResources') foreach (@{ $result->ComplianceByResources });
+      }
+    }
+
+    return undef
+  }
+  sub DescribeAllConfigRules {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeConfigRules(@_);
+
+    if (not defined $callback) {
+      while ($result->NextToken) {
+        $result = $self->DescribeConfigRules(@_, NextToken => $result->NextToken);
+        push @{ $result->ConfigRules }, @{ $result->ConfigRules };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $result = $self->DescribeConfigRules(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'ConfigRules') foreach (@{ $result->ConfigRules });
+      }
+    }
+
+    return undef
+  }
+  sub GetAllComplianceDetailsByConfigRule {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetComplianceDetailsByConfigRule(@_);
+
+    if (not defined $callback) {
+      while ($result->NextToken) {
+        $result = $self->GetComplianceDetailsByConfigRule(@_, NextToken => $result->NextToken);
+        push @{ $result->EvaluationResults }, @{ $result->EvaluationResults };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $result = $self->GetComplianceDetailsByConfigRule(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'EvaluationResults') foreach (@{ $result->EvaluationResults });
+      }
+    }
+
+    return undef
+  }
+  sub GetAllComplianceDetailsByResource {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetComplianceDetailsByResource(@_);
+
+    if (not defined $callback) {
+      while ($result->NextToken) {
+        $result = $self->GetComplianceDetailsByResource(@_, NextToken => $result->NextToken);
+        push @{ $result->EvaluationResults }, @{ $result->EvaluationResults };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $result = $self->GetComplianceDetailsByResource(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'EvaluationResults') foreach (@{ $result->EvaluationResults });
+      }
+    }
+
+    return undef
+  }
+  sub GetAllResourceConfigHistory {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetResourceConfigHistory(@_);
+
+    if (not defined $callback) {
+      while ($result->nextToken) {
+        $result = $self->GetResourceConfigHistory(@_, nextToken => $result->nextToken);
+        push @{ $result->configurationItems }, @{ $result->configurationItems };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $result = $self->GetResourceConfigHistory(@_, nextToken => $result->nextToken);
+        $callback->($_ => 'configurationItems') foreach (@{ $result->configurationItems });
+      }
+    }
+
+    return undef
+  }
+  sub ListAllDiscoveredResources {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListDiscoveredResources(@_);
+
+    if (not defined $callback) {
+      while ($result->nextToken) {
+        $result = $self->ListDiscoveredResources(@_, nextToken => $result->nextToken);
+        push @{ $result->resourceIdentifiers }, @{ $result->resourceIdentifiers };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $result = $self->ListDiscoveredResources(@_, nextToken => $result->nextToken);
+        $callback->($_ => 'resourceIdentifiers') foreach (@{ $result->resourceIdentifiers });
+      }
+    }
+
+    return undef
+  }
+
 
   sub operations { qw/DeleteConfigRule DeleteConfigurationRecorder DeleteDeliveryChannel DeleteEvaluationResults DeliverConfigSnapshot DescribeComplianceByConfigRule DescribeComplianceByResource DescribeConfigRuleEvaluationStatus DescribeConfigRules DescribeConfigurationRecorders DescribeConfigurationRecorderStatus DescribeDeliveryChannels DescribeDeliveryChannelStatus GetComplianceDetailsByConfigRule GetComplianceDetailsByResource GetComplianceSummaryByConfigRule GetComplianceSummaryByResourceType GetResourceConfigHistory ListDiscoveredResources PutConfigRule PutConfigurationRecorder PutDeliveryChannel PutEvaluations StartConfigRulesEvaluation StartConfigurationRecorder StopConfigurationRecorder / }
 
@@ -275,13 +424,18 @@ have specified.
 
 =over
 
-=item * Notification of starting the delivery.
+=item *
 
-=item * Notification of delivery completed, if the delivery was
-successfully completed.
+Notification of starting the delivery.
 
-=item * Notification of delivery failure, if the delivery failed to
-complete.
+=item *
+
+Notification of delivery completed, if the delivery was successfully
+completed.
+
+=item *
+
+Notification of delivery failure, if the delivery failed to complete.
 
 =back
 
@@ -306,20 +460,26 @@ following conditions:
 
 =over
 
-=item * AWS Config has never invoked an evaluation for the rule. To
-check whether it has, use the C<DescribeConfigRuleEvaluationStatus>
-action to get the C<LastSuccessfulInvocationTime> and
+=item *
+
+AWS Config has never invoked an evaluation for the rule. To check
+whether it has, use the C<DescribeConfigRuleEvaluationStatus> action to
+get the C<LastSuccessfulInvocationTime> and
 C<LastFailedInvocationTime>.
 
-=item * The rule's AWS Lambda function is failing to send evaluation
-results to AWS Config. Verify that the role that you assigned to your
+=item *
+
+The rule's AWS Lambda function is failing to send evaluation results to
+AWS Config. Verify that the role that you assigned to your
 configuration recorder includes the C<config:PutEvaluations>
 permission. If the rule is a custom rule, verify that the AWS Lambda
 execution role includes the C<config:PutEvaluations> permission.
 
-=item * The rule's AWS Lambda function has returned C<NOT_APPLICABLE>
-for all evaluation results. This can occur if the resources were
-deleted or removed from the rule's scope.
+=item *
+
+The rule's AWS Lambda function has returned C<NOT_APPLICABLE> for all
+evaluation results. This can occur if the resources were deleted or
+removed from the rule's scope.
 
 =back
 
@@ -345,26 +505,32 @@ following conditions about the rules that evaluate the resource:
 
 =over
 
-=item * AWS Config has never invoked an evaluation for the rule. To
-check whether it has, use the C<DescribeConfigRuleEvaluationStatus>
-action to get the C<LastSuccessfulInvocationTime> and
+=item *
+
+AWS Config has never invoked an evaluation for the rule. To check
+whether it has, use the C<DescribeConfigRuleEvaluationStatus> action to
+get the C<LastSuccessfulInvocationTime> and
 C<LastFailedInvocationTime>.
 
-=item * The rule's AWS Lambda function is failing to send evaluation
-results to AWS Config. Verify that the role that you assigned to your
+=item *
+
+The rule's AWS Lambda function is failing to send evaluation results to
+AWS Config. Verify that the role that you assigned to your
 configuration recorder includes the C<config:PutEvaluations>
 permission. If the rule is a custom rule, verify that the AWS Lambda
 execution role includes the C<config:PutEvaluations> permission.
 
-=item * The rule's AWS Lambda function has returned C<NOT_APPLICABLE>
-for all evaluation results. This can occur if the resources were
-deleted or removed from the rule's scope.
+=item *
+
+The rule's AWS Lambda function has returned C<NOT_APPLICABLE> for all
+evaluation results. This can occur if the resources were deleted or
+removed from the rule's scope.
 
 =back
 
 
 
-=head2 DescribeConfigRuleEvaluationStatus([ConfigRuleNames => ArrayRef[Str|Undef]])
+=head2 DescribeConfigRuleEvaluationStatus([ConfigRuleNames => ArrayRef[Str|Undef], Limit => Int, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::Config::DescribeConfigRuleEvaluationStatus>
 
@@ -391,11 +557,12 @@ Each argument is described in detail in: L<Paws::Config::DescribeConfigurationRe
 
 Returns: a L<Paws::Config::DescribeConfigurationRecordersResponse> instance
 
-  Returns the name of one or more specified configuration recorders. If
-the recorder name is not specified, this action returns the names of
-all the configuration recorders associated with the account.
+  Returns the details for the specified configuration recorders. If the
+configuration recorder is not specified, this action returns the
+details for all configuration recorders associated with the account.
 
-Currently, you can specify only one configuration recorder per account.
+Currently, you can specify only one configuration recorder per region
+in your account.
 
 
 =head2 DescribeConfigurationRecorderStatus([ConfigurationRecorderNames => ArrayRef[Str|Undef]])
@@ -408,7 +575,8 @@ Returns: a L<Paws::Config::DescribeConfigurationRecorderStatusResponse> instance
 a configuration recorder is not specified, this action returns the
 status of all configuration recorder associated with the account.
 
-Currently, you can specify only one configuration recorder per account.
+Currently, you can specify only one configuration recorder per region
+in your account.
 
 
 =head2 DescribeDeliveryChannels([DeliveryChannelNames => ArrayRef[Str|Undef]])
@@ -421,7 +589,8 @@ Returns: a L<Paws::Config::DescribeDeliveryChannelsResponse> instance
 channel is not specified, this action returns the details of all
 delivery channels associated with the account.
 
-Currently, you can specify only one delivery channel per account.
+Currently, you can specify only one delivery channel per region in your
+account.
 
 
 =head2 DescribeDeliveryChannelStatus([DeliveryChannelNames => ArrayRef[Str|Undef]])
@@ -434,7 +603,8 @@ Returns: a L<Paws::Config::DescribeDeliveryChannelStatusResponse> instance
 delivery channel is not specified, this action returns the current
 status of all delivery channels associated with the account.
 
-Currently, you can specify only one delivery channel per account.
+Currently, you can specify only one delivery channel per region in your
+account.
 
 
 =head2 GetComplianceDetailsByConfigRule(ConfigRuleName => Str, [ComplianceTypes => ArrayRef[Str|Undef], Limit => Int, NextToken => Str])
@@ -560,11 +730,14 @@ C<ConfigRule> object. Do not specify the C<ConfigRuleArn> or the
 C<ConfigRuleId>. These values are generated by AWS Config for new
 rules.
 
-If you are updating a rule that you have added previously, specify the
-rule's C<ConfigRuleName>, C<ConfigRuleId>, or C<ConfigRuleArn> in the
-C<ConfigRule> data type that you use in this request.
+If you are updating a rule that you added previously, you can specify
+the rule by C<ConfigRuleName>, C<ConfigRuleId>, or C<ConfigRuleArn> in
+the C<ConfigRule> data type that you use in this request.
 
-The maximum number of rules that AWS Config supports is 25.
+The maximum number of rules that AWS Config supports is 50.
+
+For more information about requesting a rule limit increase, see AWS
+Config Limits in the I<AWS General Reference Guide>.
 
 For more information about developing and using AWS Config rules, see
 Evaluating AWS Resource Configurations with AWS Config in the I<AWS
@@ -584,7 +757,8 @@ You can use this action to change the role C<roleARN> and/or the
 C<recordingGroup> of an existing recorder. To change the role, call the
 action on the existing configuration recorder and specify a role.
 
-Currently, you can specify only one configuration recorder per account.
+Currently, you can specify only one configuration recorder per region
+in your account.
 
 If C<ConfigurationRecorder> does not have the B<recordingGroup>
 parameter specified, the default is to record all supported resource
@@ -610,7 +784,7 @@ for the S3 bucket and the SNS topic. If you specify a different value
 for either the S3 bucket or the SNS topic, this action will keep the
 existing value for the parameter that is not changed.
 
-You can have only one delivery channel per AWS account.
+You can have only one delivery channel per region in your account.
 
 
 =head2 PutEvaluations(ResultToken => Str, [Evaluations => ArrayRef[L<Paws::Config::Evaluation>]])
@@ -630,10 +804,16 @@ Each argument is described in detail in: L<Paws::Config::StartConfigRulesEvaluat
 
 Returns: a L<Paws::Config::StartConfigRulesEvaluationResponse> instance
 
-  Evaluates your resources against the specified Config rules. You can
-specify up to 25 Config rules per request.
+  Runs an on-demand evaluation for the specified Config rules against the
+last known configuration state of the resources. Use
+C<StartConfigRulesEvaluation> when you want to test a rule that you
+updated is working as expected. C<StartConfigRulesEvaluation> does not
+re-record the latest configuration state for your resources; it re-runs
+an evaluation against the last known state of your resources.
 
-An existing StartConfigRulesEvaluation call must complete for the
+You can specify up to 25 Config rules per request.
+
+An existing C<StartConfigRulesEvaluation> call must complete for the
 specified rules before you can call the API again. If you chose to have
 AWS Config stream to an Amazon SNS topic, you will receive a
 C<ConfigRuleEvaluationStarted> notification when the evaluation starts.
@@ -696,6 +876,99 @@ Returns: nothing
 
   Stops recording configurations of the AWS resources you have selected
 to record in your AWS account.
+
+
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 DescribeAllComplianceByConfigRule(sub { },[ComplianceTypes => ArrayRef[Str|Undef], ConfigRuleNames => ArrayRef[Str|Undef], NextToken => Str])
+
+=head2 DescribeAllComplianceByConfigRule([ComplianceTypes => ArrayRef[Str|Undef], ConfigRuleNames => ArrayRef[Str|Undef], NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ComplianceByConfigRules, passing the object as the first parameter, and the string 'ComplianceByConfigRules' as the second parameter 
+
+If not, it will return a a L<Paws::Config::DescribeComplianceByConfigRuleResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllComplianceByResource(sub { },[ComplianceTypes => ArrayRef[Str|Undef], Limit => Int, NextToken => Str, ResourceId => Str, ResourceType => Str])
+
+=head2 DescribeAllComplianceByResource([ComplianceTypes => ArrayRef[Str|Undef], Limit => Int, NextToken => Str, ResourceId => Str, ResourceType => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ComplianceByResources, passing the object as the first parameter, and the string 'ComplianceByResources' as the second parameter 
+
+If not, it will return a a L<Paws::Config::DescribeComplianceByResourceResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllConfigRules(sub { },[ConfigRuleNames => ArrayRef[Str|Undef], NextToken => Str])
+
+=head2 DescribeAllConfigRules([ConfigRuleNames => ArrayRef[Str|Undef], NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ConfigRules, passing the object as the first parameter, and the string 'ConfigRules' as the second parameter 
+
+If not, it will return a a L<Paws::Config::DescribeConfigRulesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllComplianceDetailsByConfigRule(sub { },ConfigRuleName => Str, [ComplianceTypes => ArrayRef[Str|Undef], Limit => Int, NextToken => Str])
+
+=head2 GetAllComplianceDetailsByConfigRule(ConfigRuleName => Str, [ComplianceTypes => ArrayRef[Str|Undef], Limit => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - EvaluationResults, passing the object as the first parameter, and the string 'EvaluationResults' as the second parameter 
+
+If not, it will return a a L<Paws::Config::GetComplianceDetailsByConfigRuleResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllComplianceDetailsByResource(sub { },ResourceId => Str, ResourceType => Str, [ComplianceTypes => ArrayRef[Str|Undef], NextToken => Str])
+
+=head2 GetAllComplianceDetailsByResource(ResourceId => Str, ResourceType => Str, [ComplianceTypes => ArrayRef[Str|Undef], NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - EvaluationResults, passing the object as the first parameter, and the string 'EvaluationResults' as the second parameter 
+
+If not, it will return a a L<Paws::Config::GetComplianceDetailsByResourceResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllResourceConfigHistory(sub { },ResourceId => Str, ResourceType => Str, [ChronologicalOrder => Str, EarlierTime => Str, LaterTime => Str, Limit => Int, NextToken => Str])
+
+=head2 GetAllResourceConfigHistory(ResourceId => Str, ResourceType => Str, [ChronologicalOrder => Str, EarlierTime => Str, LaterTime => Str, Limit => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - configurationItems, passing the object as the first parameter, and the string 'configurationItems' as the second parameter 
+
+If not, it will return a a L<Paws::Config::GetResourceConfigHistoryResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllDiscoveredResources(sub { },ResourceType => Str, [IncludeDeletedResources => Bool, Limit => Int, NextToken => Str, ResourceIds => ArrayRef[Str|Undef], ResourceName => Str])
+
+=head2 ListAllDiscoveredResources(ResourceType => Str, [IncludeDeletedResources => Bool, Limit => Int, NextToken => Str, ResourceIds => ArrayRef[Str|Undef], ResourceName => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - resourceIdentifiers, passing the object as the first parameter, and the string 'resourceIdentifiers' as the second parameter 
+
+If not, it will return a a L<Paws::Config::ListDiscoveredResourcesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+
 
 
 =head1 SEE ALSO

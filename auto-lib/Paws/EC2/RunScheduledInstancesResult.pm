@@ -3,6 +3,7 @@ package Paws::EC2::RunScheduledInstancesResult;
   use Moose;
   has InstanceIdSet => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'instanceIdSet', traits => ['Unwrapped',]);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -19,6 +20,7 @@ Paws::EC2::RunScheduledInstancesResult
 The IDs of the newly launched instances.
 
 
+=head2 _request_id => Str
 
 
 =cut

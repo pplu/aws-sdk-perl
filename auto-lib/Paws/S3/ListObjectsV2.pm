@@ -1,15 +1,15 @@
 
 package Paws::S3::ListObjectsV2;
   use Moose;
-  has Bucket => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'Bucket' , required => 1);
-  has ContinuationToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'continuation-token' );
-  has Delimiter => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'delimiter' );
-  has EncodingType => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'encoding-type' );
-  has FetchOwner => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'fetch-owner' );
-  has MaxKeys => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'max-keys' );
-  has Prefix => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'prefix' );
-  has RequestPayer => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-request-payer' );
-  has StartAfter => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'start-after' );
+  has Bucket => (is => 'ro', isa => 'Str', uri_name => 'Bucket', traits => ['ParamInURI'], required => 1);
+  has ContinuationToken => (is => 'ro', isa => 'Str', query_name => 'continuation-token', traits => ['ParamInQuery']);
+  has Delimiter => (is => 'ro', isa => 'Str', query_name => 'delimiter', traits => ['ParamInQuery']);
+  has EncodingType => (is => 'ro', isa => 'Str', query_name => 'encoding-type', traits => ['ParamInQuery']);
+  has FetchOwner => (is => 'ro', isa => 'Bool', query_name => 'fetch-owner', traits => ['ParamInQuery']);
+  has MaxKeys => (is => 'ro', isa => 'Int', query_name => 'max-keys', traits => ['ParamInQuery']);
+  has Prefix => (is => 'ro', isa => 'Str', query_name => 'prefix', traits => ['ParamInQuery']);
+  has RequestPayer => (is => 'ro', isa => 'Str', header_name => 'x-amz-request-payer', traits => ['ParamInHeader']);
+  has StartAfter => (is => 'ro', isa => 'Str', query_name => 'start-after', traits => ['ParamInQuery']);
 
   use MooseX::ClassAttribute;
 
@@ -93,7 +93,9 @@ Limits the response to keys that begin with the specified prefix.
 
 =head2 RequestPayer => Str
 
-
+Confirms that the requester knows that she or he will be charged for
+the list objects request in V2 style. Bucket owners need not specify
+this parameter in their requests.
 
 Valid values are: C<"requester">
 

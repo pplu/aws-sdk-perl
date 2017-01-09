@@ -35,7 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> QueueUrl => Str
 
-The queue URL of a dead letter queue.
+The URL of a dead letter queue.
 
 Queue URLs are case-sensitive.
 

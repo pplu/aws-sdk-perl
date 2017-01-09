@@ -9,7 +9,7 @@ package Paws::IAM::EnableMFADevice;
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'EnableMFADevice');
-  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
   class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
@@ -57,7 +57,7 @@ The format for this parameter is a string of 6 digits.
 The serial number that uniquely identifies the MFA device. For virtual
 MFA devices, the serial number is the device ARN.
 
-The regex pattern for this parameter is a string of characters
+This parameter allows (per its regex pattern) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
 spaces. You can also include any of the following characters: =/:,.@-
 
@@ -67,7 +67,7 @@ spaces. You can also include any of the following characters: =/:,.@-
 
 The name of the IAM user for whom you want to enable the MFA device.
 
-The regex pattern for this parameter is a string of characters
+This parameter allows (per its regex pattern) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
 spaces. You can also include any of the following characters: =,.@-
 

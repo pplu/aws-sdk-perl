@@ -4,6 +4,7 @@ package Paws::EMR::RunJobFlow;
   has AdditionalInfo => (is => 'ro', isa => 'Str');
   has AmiVersion => (is => 'ro', isa => 'Str');
   has Applications => (is => 'ro', isa => 'ArrayRef[Paws::EMR::Application]');
+  has AutoScalingRole => (is => 'ro', isa => 'Str');
   has BootstrapActions => (is => 'ro', isa => 'ArrayRef[Paws::EMR::BootstrapActionConfig]');
   has Configurations => (is => 'ro', isa => 'ArrayRef[Paws::EMR::Configuration]');
   has Instances => (is => 'ro', isa => 'Paws::EMR::JobFlowInstancesConfig', required => 1);
@@ -12,6 +13,7 @@ package Paws::EMR::RunJobFlow;
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has NewSupportedProducts => (is => 'ro', isa => 'ArrayRef[Paws::EMR::SupportedProductConfig]');
   has ReleaseLabel => (is => 'ro', isa => 'Str');
+  has ScaleDownBehavior => (is => 'ro', isa => 'Str');
   has SecurityConfiguration => (is => 'ro', isa => 'Str');
   has ServiceRole => (is => 'ro', isa => 'Str');
   has Steps => (is => 'ro', isa => 'ArrayRef[Paws::EMR::StepConfig]');
@@ -77,8 +79,14 @@ JobFlowInstancesConfig C<HadoopVersion> parameter to modify the version
 of Hadoop from the defaults shown above.
 
 For details about the AMI versions currently supported by Amazon
-Elastic MapReduce, go to AMI Versions Supported in Elastic MapReduce in
-the I<Amazon Elastic MapReduce Developer's Guide.>
+Elastic MapReduce, see AMI Versions Supported in Elastic MapReduce in
+the I<Amazon Elastic MapReduce Developer Guide.>
+
+Previously, the EMR AMI version API parameter options allowed you to
+use latest for the latest AMI version rather than specify a numerical
+value. Some regions no longer support this deprecated option as they
+only have a newer release label version of EMR, which requires you to
+specify an EMR release label release (EMR 4.x or later).
 
 
 
@@ -88,6 +96,15 @@ Amazon EMR releases 4.x or later.
 
 A list of applications for the cluster. Valid values are: "Hadoop",
 "Hive", "Mahout", "Pig", and "Spark." They are case insensitive.
+
+
+
+=head2 AutoScalingRole => Str
+
+An IAM role for automatic scaling policies. The default role is
+C<EMR_AutoScaling_DefaultRole>. The IAM role provides permissions that
+the automatic scaling feature requires to launch and terminate EC2
+instances in an instance group.
 
 
 
@@ -198,6 +215,25 @@ The release label for the Amazon EMR release. For Amazon EMR 3.x and
 
 
 
+=head2 ScaleDownBehavior => Str
+
+Specifies the way that individual Amazon EC2 instances terminate when
+an automatic scale-in activity occurs or an instance group is resized.
+C<TERMINATE_AT_INSTANCE_HOUR> indicates that Amazon EMR terminates
+nodes at the instance-hour boundary, regardless of when the request to
+terminate the instance was submitted. This option is only available
+with Amazon EMR 5.1.0 and later and is the default for clusters created
+using that version. C<TERMINATE_AT_TASK_COMPLETION> indicates that
+Amazon EMR blacklists and drains tasks from nodes before terminating
+the Amazon EC2 instances, regardless of the instance-hour boundary.
+With either behavior, Amazon EMR removes the least active nodes first
+and blocks instance termination if it could lead to HDFS corruption.
+C<TERMINATE_AT_TASK_COMPLETION> available only in Amazon EMR version
+4.1.0 and later, and is the default for versions of Amazon EMR earlier
+than 5.1.0.
+
+Valid values are: C<"TERMINATE_AT_INSTANCE_HOUR">, C<"TERMINATE_AT_TASK_COMPLETION">
+
 =head2 SecurityConfiguration => Str
 
 The name of a security configuration to apply to the cluster.
@@ -223,7 +259,7 @@ For Amazon EMR releases 3.x and 2.x. For Amazon EMR releases 4.x and
 greater, use Applications.
 
 A list of strings that indicates third-party software to use with the
-job flow. For more information, go to Use Third Party Applications with
+job flow. For more information, see Use Third Party Applications with
 Amazon EMR. Currently supported values are:
 
 =over

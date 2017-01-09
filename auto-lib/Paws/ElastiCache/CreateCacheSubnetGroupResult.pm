@@ -3,6 +3,7 @@ package Paws::ElastiCache::CreateCacheSubnetGroupResult;
   use Moose;
   has CacheSubnetGroup => (is => 'ro', isa => 'Paws::ElastiCache::CacheSubnetGroup');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -19,6 +20,7 @@ Paws::ElastiCache::CreateCacheSubnetGroupResult
 
 
 
+=head2 _request_id => Str
 
 
 =cut

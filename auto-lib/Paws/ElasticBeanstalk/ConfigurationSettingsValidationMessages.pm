@@ -3,6 +3,7 @@ package Paws::ElasticBeanstalk::ConfigurationSettingsValidationMessages;
   use Moose;
   has Messages => (is => 'ro', isa => 'ArrayRef[Paws::ElasticBeanstalk::ValidationMessage]');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -19,6 +20,7 @@ Paws::ElasticBeanstalk::ConfigurationSettingsValidationMessages
 A list of ValidationMessage.
 
 
+=head2 _request_id => Str
 
 
 =cut

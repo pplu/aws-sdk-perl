@@ -3,6 +3,7 @@ package Paws::WAF::GetXssMatchSetResponse;
   use Moose;
   has XssMatchSet => (is => 'ro', isa => 'Paws::WAF::XssMatchSet');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -21,18 +22,25 @@ topics:
 
 =over
 
-=item * XssMatchSet: Contains C<Name>, C<XssMatchSetId>, and an array
-of C<XssMatchTuple> objects
+=item *
 
-=item * XssMatchTuple: Each C<XssMatchTuple> object contains
-C<FieldToMatch> and C<TextTransformation>
+XssMatchSet: Contains C<Name>, C<XssMatchSetId>, and an array of
+C<XssMatchTuple> objects
 
-=item * FieldToMatch: Contains C<Data> and C<Type>
+=item *
+
+XssMatchTuple: Each C<XssMatchTuple> object contains C<FieldToMatch>
+and C<TextTransformation>
+
+=item *
+
+FieldToMatch: Contains C<Data> and C<Type>
 
 =back
 
 
 
+=head2 _request_id => Str
 
 
 =cut

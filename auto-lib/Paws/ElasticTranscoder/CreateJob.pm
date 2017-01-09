@@ -1,7 +1,8 @@
 
 package Paws::ElasticTranscoder::CreateJob;
   use Moose;
-  has Input => (is => 'ro', isa => 'Paws::ElasticTranscoder::JobInput', required => 1);
+  has Input => (is => 'ro', isa => 'Paws::ElasticTranscoder::JobInput');
+  has Inputs => (is => 'ro', isa => 'ArrayRef[Paws::ElasticTranscoder::JobInput]');
   has Output => (is => 'ro', isa => 'Paws::ElasticTranscoder::CreateJobOutput');
   has OutputKeyPrefix => (is => 'ro', isa => 'Str');
   has Outputs => (is => 'ro', isa => 'ArrayRef[Paws::ElasticTranscoder::CreateJobOutput]');
@@ -41,16 +42,25 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Input => L<Paws::ElasticTranscoder::JobInput>
+=head2 Input => L<Paws::ElasticTranscoder::JobInput>
 
 A section of the request body that provides information about the file
 that is being transcoded.
 
 
 
+=head2 Inputs => ArrayRef[L<Paws::ElasticTranscoder::JobInput>]
+
+A section of the request body that provides information about the files
+that are being transcoded.
+
+
+
 =head2 Output => L<Paws::ElasticTranscoder::CreateJobOutput>
 
-
+A section of the request body that provides information about the
+transcoded (target) file. We strongly recommend that you use the
+C<Outputs> syntax instead of the C<Output> syntax.
 
 
 
@@ -96,7 +106,7 @@ The maximum number of master playlists in a job is 30.
 User-defined metadata that you want to associate with an Elastic
 Transcoder job. You specify metadata in C<key/value> pairs, and you can
 add up to 10 C<key/value> pairs per job. Elastic Transcoder does not
-guarantee that C<key/value> pairs will be returned in the same order in
+guarantee that C<key/value> pairs are returned in the same order in
 which you specify them.
 
 

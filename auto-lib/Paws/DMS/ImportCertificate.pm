@@ -3,6 +3,7 @@ package Paws::DMS::ImportCertificate;
   use Moose;
   has CertificateIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has CertificatePem => (is => 'ro', isa => 'Str');
+  has CertificateWallet => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -36,14 +37,21 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> CertificateIdentifier => Str
 
-The customer-assigned name of the certificate. Valid characters are
-[A-z_0-9].
+The customer-assigned name of the certificate. Valid characters are A-z
+and 0-9.
 
 
 
 =head2 CertificatePem => Str
 
-The contents of the .pem X.509 certificate file.
+The contents of the .pem X.509 certificate file for the certificate.
+
+
+
+=head2 CertificateWallet => Str
+
+The location of the imported Oracle Wallet certificate for use with
+SSL.
 
 
 

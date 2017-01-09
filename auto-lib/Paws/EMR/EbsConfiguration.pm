@@ -32,19 +32,20 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EMR::EbsCon
 
 =head1 DESCRIPTION
 
-This class has no description
+The Amazon EBS configuration of a cluster instance.
 
 =head1 ATTRIBUTES
 
 
 =head2 EbsBlockDeviceConfigs => ArrayRef[L<Paws::EMR::EbsBlockDeviceConfig>]
 
-  
+  An array of Amazon EBS volume specifications attached to a cluster
+instance.
 
 
 =head2 EbsOptimized => Bool
 
-  
+  Indicates whether an Amazon EBS volume is EBS-optimized.
 
 
 

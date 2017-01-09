@@ -9,7 +9,7 @@ package Paws::CloudWatchLogs::PutMetricFilter;
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutMetricFilter');
-  class_has _returns => (isa => 'Str', is => 'ro');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
   class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
@@ -44,14 +44,13 @@ A name for the metric filter.
 
 =head2 B<REQUIRED> FilterPattern => Str
 
-A valid CloudWatch Logs filter pattern for extracting metric data out
-of ingested log events.
+A filter pattern for extracting metric data out of ingested log events.
 
 
 
 =head2 B<REQUIRED> LogGroupName => Str
 
-The name of the log group to associate the metric filter with.
+The name of the log group.
 
 
 

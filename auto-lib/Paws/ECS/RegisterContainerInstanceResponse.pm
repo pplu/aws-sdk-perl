@@ -3,6 +3,7 @@ package Paws::ECS::RegisterContainerInstanceResponse;
   use Moose;
   has ContainerInstance => (is => 'ro', isa => 'Paws::ECS::ContainerInstance', traits => ['Unwrapped'], xmlname => 'containerInstance' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -15,9 +16,10 @@ Paws::ECS::RegisterContainerInstanceResponse
 
 =head2 ContainerInstance => L<Paws::ECS::ContainerInstance>
 
+The container instance that was registered.
 
 
-
+=head2 _request_id => Str
 
 
 =cut

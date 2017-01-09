@@ -79,7 +79,7 @@ hyphens (-).
 
 =head2 VolumeSizeInBytes => Int
 
-  The size, in bytes, of the volume.
+  The size of the volume in bytes.
 
 Valid Values: 50 to 500 lowercase letters, numbers, periods (.), and
 hyphens (-).

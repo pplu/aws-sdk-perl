@@ -34,6 +34,8 @@ package Paws::DynamoDBStreams;
     my $call_object = $self->new_with_coercions('Paws::DynamoDBStreams::ListStreams', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
+
 
   sub operations { qw/DescribeStream GetRecords GetShardIterator ListStreams / }
 
@@ -166,6 +168,15 @@ endpoint. If the C<TableName> parameter is present, then I<ListStreams>
 will return only the streams ARNs for that table.
 
 You can call I<ListStreams> at a maximum rate of 5 times per second.
+
+
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+
 
 
 =head1 SEE ALSO

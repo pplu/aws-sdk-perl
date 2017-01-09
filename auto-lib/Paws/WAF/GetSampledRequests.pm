@@ -52,11 +52,15 @@ C<RuleId> is one of two values:
 
 =over
 
-=item * The C<RuleId> of the C<Rule> for which you want
-C<GetSampledRequests> to return a sample of requests.
+=item *
 
-=item * C<Default_Action>, which causes C<GetSampledRequests> to return
-a sample of the requests that didn't match any of the rules in the
+The C<RuleId> of the C<Rule> for which you want C<GetSampledRequests>
+to return a sample of requests.
+
+=item *
+
+C<Default_Action>, which causes C<GetSampledRequests> to return a
+sample of the requests that didn't match any of the rules in the
 specified C<WebACL>.
 
 =back
@@ -68,8 +72,9 @@ specified C<WebACL>.
 
 The start date and time and the end date and time of the range for
 which you want C<GetSampledRequests> to return a sample of requests.
-Specify the date and time in Unix time format (in seconds). You can
-specify any time range in the previous three hours.
+Specify the date and time in the following format:
+C<"2016-09-27T14:50Z">. You can specify any time range in the previous
+three hours.
 
 
 

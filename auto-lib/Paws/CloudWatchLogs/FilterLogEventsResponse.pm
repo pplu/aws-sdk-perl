@@ -5,6 +5,7 @@ package Paws::CloudWatchLogs::FilterLogEventsResponse;
   has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
   has SearchedLogStreams => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatchLogs::SearchedLogStream]', traits => ['Unwrapped'], xmlname => 'searchedLogStreams' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -17,26 +18,22 @@ Paws::CloudWatchLogs::FilterLogEventsResponse
 
 =head2 Events => ArrayRef[L<Paws::CloudWatchLogs::FilteredLogEvent>]
 
-A list of C<FilteredLogEvent> objects representing the matched events
-from the request.
-
+The matched events.
 
 
 =head2 NextToken => Str
 
-A pagination token obtained from a C<FilterLogEvents> response to
-continue paginating the FilterLogEvents results. This token is omitted
-from the response when there are no other events to display.
-
+The token to use when requesting the next set of items. The token
+expires after 24 hours.
 
 
 =head2 SearchedLogStreams => ArrayRef[L<Paws::CloudWatchLogs::SearchedLogStream>]
 
-A list of C<SearchedLogStream> objects indicating which log streams
-have been searched in this request and whether each has been searched
-completely or still has more to be paginated.
+Indicates which log streams have been searched and whether each has
+been searched completely.
 
 
+=head2 _request_id => Str
 
 
 =cut

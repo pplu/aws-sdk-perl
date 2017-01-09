@@ -28,6 +28,8 @@ package Paws::CloudSearchDomain;
     my $call_object = $self->new_with_coercions('Paws::CloudSearchDomain::UploadDocuments', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
+
 
   sub operations { qw/Search Suggest UploadDocuments / }
 
@@ -164,6 +166,15 @@ For more information about formatting your data for Amazon CloudSearch,
 see Preparing Your Data in the I<Amazon CloudSearch Developer Guide>.
 For more information about uploading data for indexing, see Uploading
 Data in the I<Amazon CloudSearch Developer Guide>.
+
+
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+
 
 
 =head1 SEE ALSO

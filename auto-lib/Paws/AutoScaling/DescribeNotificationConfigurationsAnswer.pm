@@ -4,6 +4,7 @@ package Paws::AutoScaling::DescribeNotificationConfigurationsAnswer;
   has NextToken => (is => 'ro', isa => 'Str');
   has NotificationConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::AutoScaling::NotificationConfiguration]', required => 1);
 
+  has _request_id => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -21,12 +22,12 @@ The token to use when requesting the next set of items. If there are no
 additional items to return, the string is empty.
 
 
-
 =head2 B<REQUIRED> NotificationConfigurations => ArrayRef[L<Paws::AutoScaling::NotificationConfiguration>]
 
 The notification configurations.
 
 
+=head2 _request_id => Str
 
 
 =cut

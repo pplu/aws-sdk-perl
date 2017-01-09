@@ -32,15 +32,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElastiCache
 
 =head1 DESCRIPTION
 
-The settings to be applied to the replication group, either immediately
-or during the next maintenance window.
+The settings to be applied to the Redis replication group, either
+immediately or during the next maintenance window.
 
 =head1 ATTRIBUTES
 
 
 =head2 AutomaticFailoverStatus => Str
 
-  Indicates the status of Multi-AZ for this replication group.
+  Indicates the status of Multi-AZ for this Redis replication group.
 
 ElastiCache Multi-AZ replication groups are not supported on:
 
@@ -52,7 +52,9 @@ Redis versions earlier than 2.8.6.
 
 =item *
 
-T1 and T2 cache node types.
+Redis (cluster mode disabled):T1 and T2 cache node types.
+
+Redis (cluster mode enabled): T1 node types.
 
 =back
 
@@ -60,7 +62,7 @@ T1 and T2 cache node types.
 
 =head2 PrimaryClusterId => Str
 
-  The primary cluster ID which will be applied immediately (if
+  The primary cluster ID that is applied immediately (if
 C<--apply-immediately> was specified), or during the next maintenance
 window.
 

@@ -57,8 +57,8 @@ Represents information about a job.
 =head2 Nonce => Str
 
   A system-generated random number that AWS CodePipeline uses to ensure
-that the job is being worked on by only one job worker. This number
-must be returned in the response.
+that the job is being worked on by only one job worker. Use this number
+in an AcknowledgeJob request.
 
 
 

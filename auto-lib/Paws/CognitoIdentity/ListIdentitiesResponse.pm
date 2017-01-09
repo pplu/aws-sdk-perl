@@ -5,6 +5,7 @@ package Paws::CognitoIdentity::ListIdentitiesResponse;
   has IdentityPoolId => (is => 'ro', isa => 'Str');
   has NextToken => (is => 'ro', isa => 'Str');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -20,11 +21,9 @@ Paws::CognitoIdentity::ListIdentitiesResponse
 An object containing a set of identities and associated mappings.
 
 
-
 =head2 IdentityPoolId => Str
 
 An identity pool ID in the format REGION:GUID.
-
 
 
 =head2 NextToken => Str
@@ -32,6 +31,7 @@ An identity pool ID in the format REGION:GUID.
 A pagination token.
 
 
+=head2 _request_id => Str
 
 
 =cut

@@ -35,19 +35,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudWatchL
 
 =head1 DESCRIPTION
 
-Represents a matched event from a C<FilterLogEvents> request.
+Represents a matched event.
 
 =head1 ATTRIBUTES
 
 
 =head2 EventId => Str
 
-  A unique identifier for this event.
+  The ID of the event.
 
 
 =head2 IngestionTime => Int
 
-  
+  The time the event was ingested.
 
 
 =head2 LogStreamName => Str
@@ -62,7 +62,8 @@ Represents a matched event from a C<FilterLogEvents> request.
 
 =head2 Timestamp => Int
 
-  
+  The time the event occurred, expressed as the number of milliseconds
+since Jan 1, 1970 00:00:00 UTC.
 
 
 

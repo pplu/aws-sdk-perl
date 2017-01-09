@@ -1,15 +1,17 @@
 
 package Paws::Snowball::CreateJob;
   use Moose;
-  has AddressId => (is => 'ro', isa => 'Str', required => 1);
+  has AddressId => (is => 'ro', isa => 'Str');
+  has ClusterId => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
-  has JobType => (is => 'ro', isa => 'Str', required => 1);
+  has JobType => (is => 'ro', isa => 'Str');
   has KmsKeyARN => (is => 'ro', isa => 'Str');
   has Notification => (is => 'ro', isa => 'Paws::Snowball::Notification');
-  has Resources => (is => 'ro', isa => 'Paws::Snowball::JobResource', required => 1);
-  has RoleARN => (is => 'ro', isa => 'Str', required => 1);
-  has ShippingOption => (is => 'ro', isa => 'Str', required => 1);
+  has Resources => (is => 'ro', isa => 'Paws::Snowball::JobResource');
+  has RoleARN => (is => 'ro', isa => 'Str');
+  has ShippingOption => (is => 'ro', isa => 'Str');
   has SnowballCapacityPreference => (is => 'ro', isa => 'Str');
+  has SnowballType => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -41,9 +43,17 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> AddressId => Str
+=head2 AddressId => Str
 
 The ID for the address that you want the Snowball shipped to.
+
+
+
+=head2 ClusterId => Str
+
+The ID of a cluster. If you're creating a job for a node in a cluster,
+you need to provide only this C<clusterId> value. The other job
+attributes are inherited from the cluster.
 
 
 
@@ -54,11 +64,11 @@ C<Important Photos 2016-08-11>.
 
 
 
-=head2 B<REQUIRED> JobType => Str
+=head2 JobType => Str
 
 Defines the type of job that you're creating.
 
-Valid values are: C<"IMPORT">, C<"EXPORT">
+Valid values are: C<"IMPORT">, C<"EXPORT">, C<"LOCAL_USE">
 
 =head2 KmsKeyARN => Str
 
@@ -75,7 +85,7 @@ notification settings for this job.
 
 
 
-=head2 B<REQUIRED> Resources => L<Paws::Snowball::JobResource>
+=head2 Resources => L<Paws::Snowball::JobResource>
 
 Defines the Amazon S3 buckets associated with this job.
 
@@ -91,7 +101,7 @@ are UTF-8 binary sorted.
 
 
 
-=head2 B<REQUIRED> RoleARN => Str
+=head2 RoleARN => Str
 
 The C<RoleARN> that you want to associate with this job. C<RoleArn>s
 are created using the CreateRole AWS Identity and Access Management
@@ -99,12 +109,12 @@ are created using the CreateRole AWS Identity and Access Management
 
 
 
-=head2 B<REQUIRED> ShippingOption => Str
+=head2 ShippingOption => Str
 
-The shipping speed for this job. Note that this speed does not dictate
-how soon you'll get the Snowball, rather it represents how quickly the
-Snowball moves to its destination while in transit. Regional shipping
-speeds are as follows:
+The shipping speed for this job. This speed doesn't dictate how soon
+you'll get the Snowball, rather it represents how quickly the Snowball
+moves to its destination while in transit. Regional shipping speeds are
+as follows:
 
 =over
 
@@ -139,7 +149,14 @@ If your job is being created in one of the US regions, you have the
 option of specifying what size Snowball you'd like for this job. In all
 other regions, Snowballs come with 80 TB in storage capacity.
 
-Valid values are: C<"T50">, C<"T80">, C<"NoPreference">
+Valid values are: C<"T50">, C<"T80">, C<"T100">, C<"NoPreference">
+
+=head2 SnowballType => Str
+
+The type of AWS Snowball appliance to use for this job. Currently, the
+only supported appliance type for cluster jobs is C<EDGE>.
+
+Valid values are: C<"STANDARD">, C<"EDGE">
 
 
 =head1 SEE ALSO

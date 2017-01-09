@@ -3,6 +3,7 @@ package Paws::ECR::DeleteRepositoryResponse;
   use Moose;
   has Repository => (is => 'ro', isa => 'Paws::ECR::Repository', traits => ['Unwrapped'], xmlname => 'repository' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -15,9 +16,10 @@ Paws::ECR::DeleteRepositoryResponse
 
 =head2 Repository => L<Paws::ECR::Repository>
 
+The repository that was deleted.
 
 
-
+=head2 _request_id => Str
 
 
 =cut

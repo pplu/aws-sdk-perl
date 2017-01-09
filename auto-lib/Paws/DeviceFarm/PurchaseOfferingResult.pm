@@ -3,6 +3,7 @@ package Paws::DeviceFarm::PurchaseOfferingResult;
   use Moose;
   has OfferingTransaction => (is => 'ro', isa => 'Paws::DeviceFarm::OfferingTransaction', traits => ['Unwrapped'], xmlname => 'offeringTransaction' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -18,6 +19,7 @@ Paws::DeviceFarm::PurchaseOfferingResult
 Represents the offering transaction for the purchase result.
 
 
+=head2 _request_id => Str
 
 
 =cut

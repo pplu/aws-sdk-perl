@@ -50,7 +50,7 @@ The full details of a specific ProvisionedProduct object.
 
 =head2 CreatedTime => Str
 
-  The time when the record for the ProvisionedProduct object was created.
+  The UTC timestamp of the creation time.
 
 
 =head2 PathId => Str
@@ -60,7 +60,7 @@ The full details of a specific ProvisionedProduct object.
 
 =head2 ProductId => Str
 
-  The identifier of the product.
+  The product identifier.
 
 
 =head2 ProvisionedProductId => Str

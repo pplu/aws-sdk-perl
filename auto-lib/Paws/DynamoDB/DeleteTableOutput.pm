@@ -3,6 +3,7 @@ package Paws::DynamoDB::DeleteTableOutput;
   use Moose;
   has TableDescription => (is => 'ro', isa => 'Paws::DynamoDB::TableDescription');
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -18,6 +19,7 @@ Paws::DynamoDB::DeleteTableOutput
 
 
 
+=head2 _request_id => Str
 
 
 =cut

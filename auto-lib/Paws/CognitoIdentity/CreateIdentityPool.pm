@@ -47,7 +47,7 @@ TRUE if the identity pool supports unauthenticated logins.
 
 =head2 CognitoIdentityProviders => ArrayRef[L<Paws::CognitoIdentity::CognitoIdentityProvider>]
 
-An array of Amazon Cognito Identity user pools.
+An array of Amazon Cognito Identity user pools and their client IDs.
 
 
 

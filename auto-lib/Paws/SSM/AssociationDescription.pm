@@ -1,10 +1,19 @@
 package Paws::SSM::AssociationDescription;
   use Moose;
+  has AssociationId => (is => 'ro', isa => 'Str');
   has Date => (is => 'ro', isa => 'Str');
+  has DocumentVersion => (is => 'ro', isa => 'Str');
   has InstanceId => (is => 'ro', isa => 'Str');
+  has LastExecutionDate => (is => 'ro', isa => 'Str');
+  has LastSuccessfulExecutionDate => (is => 'ro', isa => 'Str');
+  has LastUpdateAssociationDate => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
+  has OutputLocation => (is => 'ro', isa => 'Paws::SSM::InstanceAssociationOutputLocation');
+  has Overview => (is => 'ro', isa => 'Paws::SSM::AssociationOverview');
   has Parameters => (is => 'ro', isa => 'Paws::SSM::Parameters');
+  has ScheduleExpression => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Paws::SSM::AssociationStatus');
+  has Targets => (is => 'ro', isa => 'ArrayRef[Paws::SSM::Target]');
 1;
 
 ### main pod documentation begin ###
@@ -24,14 +33,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SSM::AssociationDescription object:
 
-  $service_obj->Method(Att1 => { Date => $value, ..., Status => $value  });
+  $service_obj->Method(Att1 => { AssociationId => $value, ..., Targets => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::SSM::AssociationDescription object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Date
+  $result->Att1->AssociationId
 
 =head1 DESCRIPTION
 
@@ -40,9 +49,19 @@ Describes the parameters for a document.
 =head1 ATTRIBUTES
 
 
+=head2 AssociationId => Str
+
+  The association ID.
+
+
 =head2 Date => Str
 
   The date when the association was made.
+
+
+=head2 DocumentVersion => Str
+
+  The document version.
 
 
 =head2 InstanceId => Str
@@ -50,9 +69,35 @@ Describes the parameters for a document.
   The ID of the instance.
 
 
+=head2 LastExecutionDate => Str
+
+  The date on which the association was last run.
+
+
+=head2 LastSuccessfulExecutionDate => Str
+
+  The last date on which the association was successfully run.
+
+
+=head2 LastUpdateAssociationDate => Str
+
+  The date when the association was last updated.
+
+
 =head2 Name => Str
 
   The name of the SSM document.
+
+
+=head2 OutputLocation => L<Paws::SSM::InstanceAssociationOutputLocation>
+
+  An Amazon S3 bucket where you want to store the output details of the
+request.
+
+
+=head2 Overview => L<Paws::SSM::AssociationOverview>
+
+  Information about the association.
 
 
 =head2 Parameters => L<Paws::SSM::Parameters>
@@ -60,9 +105,19 @@ Describes the parameters for a document.
   A description of the parameters for a document.
 
 
+=head2 ScheduleExpression => Str
+
+  A cron expression that specifies a schedule when the association runs.
+
+
 =head2 Status => L<Paws::SSM::AssociationStatus>
 
   The association status.
+
+
+=head2 Targets => ArrayRef[L<Paws::SSM::Target>]
+
+  The instances targeted by the request.
 
 
 

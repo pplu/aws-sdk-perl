@@ -3,6 +3,7 @@ package Paws::DirectConnect::ConfirmPublicVirtualInterfaceResponse;
   use Moose;
   has VirtualInterfaceState => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'virtualInterfaceState' );
 
+  has _request_id => (is => 'ro', isa => 'Str');
 
 ### main pod documentation begin ###
 
@@ -18,6 +19,7 @@ Paws::DirectConnect::ConfirmPublicVirtualInterfaceResponse
 
 
 Valid values are: C<"confirming">, C<"verifying">, C<"pending">, C<"available">, C<"down">, C<"deleting">, C<"deleted">, C<"rejected">
+=head2 _request_id => Str
 
 
 =cut

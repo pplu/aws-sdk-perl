@@ -1,3 +1,4 @@
+requires 'perl' => '5.010001';
 requires 'Moose';
 requires 'MooseX::ClassAttribute';
 requires 'HTTP::Tiny';
@@ -8,16 +9,14 @@ requires 'Net::Amazon::Signature::V3';
 requires 'Net::Amazon::Signature::V4';
 requires 'JSON::MaybeXS';
 requires 'XML::Simple';
-requires 'String::Util';
 requires 'IO::Socket::SSL';
 requires 'DateTime';
 requires 'DateTime::Format::ISO8601';
 requires 'URL::Encode';
 requires 'URL::Encode::XS';
 requires 'URI::Template';
-requires 'Digest::HMAC';
 requires 'Config::INI';
-requires 'Crypt::Digest::SHA256';
+requires 'Digest::SHA';
 # For the paws CLI
 requires 'Hash::Flatten';
 requires 'MooseX::Getopt';
