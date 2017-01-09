@@ -11,10 +11,11 @@ package Paws::S3::ListObjectsV2;
   has RequestPayer => (is => 'ro', isa => 'Str', header_name => 'x-amz-request-payer', traits => ['ParamInHeader']);
   has StartAfter => (is => 'ro', isa => 'Str', query_name => 'start-after', traits => ['ParamInQuery']);
 
+  has 'list-type' => (is => 'ro', default => sub { '2' }, traits => ['ParamInQuery'], query_name => 'list-type');
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListObjectsV2');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/{Bucket}?list-type=2');
+  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/{Bucket}');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::S3::ListObjectsV2Output');
   class_has _result_key => (isa => 'Str', is => 'ro');

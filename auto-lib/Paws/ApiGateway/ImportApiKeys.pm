@@ -5,10 +5,11 @@ package Paws::ApiGateway::ImportApiKeys;
   has FailOnWarnings => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'failOnWarnings' );
   has Format => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'format' , required => 1);
 
+  has 'mode' => (is => 'ro', default => sub { 'import' }, traits => ['ParamInQuery'], query_name => 'mode');
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ImportApiKeys');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/apikeys?mode=import');
+  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/apikeys');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGateway::ApiKeyIds');
   class_has _result_key => (isa => 'Str', is => 'ro');

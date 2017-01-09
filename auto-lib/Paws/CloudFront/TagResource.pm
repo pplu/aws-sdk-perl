@@ -4,10 +4,11 @@ package Paws::CloudFront::TagResource;
   has Resource => (is => 'ro', isa => 'Str', query_name => 'Resource', traits => ['ParamInQuery'], required => 1);
   has Tags => (is => 'ro', isa => 'Paws::CloudFront::Tags', required => 1);
 
+  has 'Operation' => (is => 'ro', default => sub { 'Tag' }, traits => ['ParamInQuery'], query_name => 'Operation');
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'TagResource');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2016-11-25/tagging?Operation=Tag');
+  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2016-11-25/tagging');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
   class_has _result_key => (isa => 'Str', is => 'ro');
