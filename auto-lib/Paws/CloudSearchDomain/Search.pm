@@ -16,8 +16,8 @@ package Paws::CloudSearchDomain::Search;
   has Start => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'start' );
   has Stats => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'stats' );
 
-  has 'pretty' => (is => 'ro', default => sub { 'true' }, traits => ['ParamInQuery'], query_name => 'pretty');
-  has 'format' => (is => 'ro', default => sub { 'sdk' }, traits => ['ParamInQuery'], query_name => 'format');
+  has 'format' => (is => 'ro', isa => 'Str', default => sub { 'sdk' }, traits => ['ParamInQuery'], query_name => 'format');
+  has 'pretty' => (is => 'ro', isa => 'Str', default => sub { 'true' }, traits => ['ParamInQuery'], query_name => 'pretty');
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'Search');

@@ -5,7 +5,7 @@ package Paws::Glacier::RemoveTagsFromVault;
   has TagKeys => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has VaultName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'vaultName' , required => 1);
 
-  has 'operation' => (is => 'ro', default => sub { 'remove' }, traits => ['ParamInQuery'], query_name => 'operation');
+  has 'operation' => (is => 'ro', isa => 'Str', default => sub { 'remove' }, traits => ['ParamInQuery'], query_name => 'operation');
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'RemoveTagsFromVault');

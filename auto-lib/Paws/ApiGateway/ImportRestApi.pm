@@ -5,7 +5,7 @@ package Paws::ApiGateway::ImportRestApi;
   has FailOnWarnings => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'failOnWarnings' );
   has Parameters => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['ParamInQuery'], query_name => 'parameters' );
 
-  has 'mode' => (is => 'ro', default => sub { 'import' }, traits => ['ParamInQuery'], query_name => 'mode');
+  has 'mode' => (is => 'ro', isa => 'Str', default => sub { 'import' }, traits => ['ParamInQuery'], query_name => 'mode');
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ImportRestApi');

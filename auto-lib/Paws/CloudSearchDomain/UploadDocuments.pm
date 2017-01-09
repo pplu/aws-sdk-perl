@@ -4,7 +4,7 @@ package Paws::CloudSearchDomain::UploadDocuments;
   has ContentType => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'contentType' , required => 1);
   has Documents => (is => 'ro', isa => 'Str', required => 1);
 
-  has 'format' => (is => 'ro', default => sub { 'sdk' }, traits => ['ParamInQuery'], query_name => 'format');
+  has 'format' => (is => 'ro', isa => 'Str', default => sub { 'sdk' }, traits => ['ParamInQuery'], query_name => 'format');
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'UploadDocuments');

@@ -68,7 +68,7 @@ package [% c.api %]::[% operation.name %];
 [%-
   extra_params = c.query_params_for_operation(op_name); 
   FOREACH extra_param IN extra_params.keys %]
-  has '[% extra_param %]' => (is => 'ro', default => sub { '[% extra_params.$extra_param %]' }, traits => ['ParamInQuery'], query_name => '[% extra_param %]');[% END %]
+  has '[% extra_param %]' => (is => 'ro', isa => 'Str', default => sub { '[% extra_params.$extra_param %]' }, traits => ['ParamInQuery'], query_name => '[% extra_param %]');[% END %]
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => '[% op_name %]');

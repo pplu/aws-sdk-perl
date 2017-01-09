@@ -4,7 +4,7 @@ package Paws::CloudFront::UntagResource;
   has Resource => (is => 'ro', isa => 'Str', query_name => 'Resource', traits => ['ParamInQuery'], required => 1);
   has TagKeys => (is => 'ro', isa => 'Paws::CloudFront::TagKeys', required => 1);
 
-  has 'Operation' => (is => 'ro', default => sub { 'Untag' }, traits => ['ParamInQuery'], query_name => 'Operation');
+  has 'Operation' => (is => 'ro', isa => 'Str', default => sub { 'Untag' }, traits => ['ParamInQuery'], query_name => 'Operation');
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'UntagResource');

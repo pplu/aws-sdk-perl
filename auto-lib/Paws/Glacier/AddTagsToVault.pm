@@ -5,7 +5,7 @@ package Paws::Glacier::AddTagsToVault;
   has Tags => (is => 'ro', isa => 'Paws::Glacier::TagMap');
   has VaultName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'vaultName' , required => 1);
 
-  has 'operation' => (is => 'ro', default => sub { 'add' }, traits => ['ParamInQuery'], query_name => 'operation');
+  has 'operation' => (is => 'ro', isa => 'Str', default => sub { 'add' }, traits => ['ParamInQuery'], query_name => 'operation');
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'AddTagsToVault');
