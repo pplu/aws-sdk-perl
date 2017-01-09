@@ -65,10 +65,14 @@ package [% c.api %]::[% operation.name %];
   [%- IF (shape.members.$param_name.streaming == 1) %], traits => ['ParamInBody'][% END %]
   [%- IF (c.required_in_shape(shape,param_name)) %], required => 1[% END %]);
 [% END %]
+[%-
+  extra_params = c.query_params_for_operation(op_name); 
+  FOREACH extra_param IN extra_params.keys %]
+  has '[% extra_param %]' => (is => 'ro', default => sub { '[% extra_params.$extra_param %]' }, traits => ['ParamInQuery'], query_name => '[% extra_param %]');[% END %]
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => '[% op_name %]');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '[% operation.http.requestUri %]');
+  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '[% c.path_for_operation(op_name) %]');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => '[% operation.http.method %]');
   class_has _returns => (isa => 'Str', is => 'ro'[% IF (operation.output.keys.size) %], default => '[% c.api %]::[% c.shapename_for_operation_output(op_name) %]'[% END %]);
   class_has _result_key => (isa => 'Str', is => 'ro');

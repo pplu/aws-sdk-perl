@@ -492,6 +492,43 @@ Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
 =cut
 #);
 
+  use URI;
+  use URI::QueryParam;
+
+  sub query_params_for_operation {
+    my ($self, $operation) = @_;
+    my $op = $self->operation($operation);
+
+    my $params = {};
+    my $uri = URI->new($op->{ http }->{ requestUri });
+
+    foreach my $param ($uri->query_param){
+      $params->{ $param } = $uri->query_param( $param )
+    }
+
+    return $params; 
+  }
+
+  sub path_for_operation {
+    my ($self, $operation) = @_;
+    my $op = $self->operation($operation);
+
+    my $raw_uri = $op->{ http }->{ requestUri };
+
+    if ($raw_uri =~ m/\?.*\=.*/){
+      my $uri = URI->new($raw_uri);
+      my $path = $uri->path;
+      # The {XXX} notation in paths is getting URIEncoded
+      $path =~ s/%7B/{/g;
+      $path =~ s/%7D/}/g;
+      return $path;
+    } elsif ($raw_uri =~ m/\?.*/){
+      return $raw_uri;
+    } else {
+      return $raw_uri;
+    }
+  }
+
   sub required_in_shape {
     my ($self, $shape, $attribute) = @_;
     return (1 == (grep { $_ eq $attribute } @{ $shape->{ required } }));
