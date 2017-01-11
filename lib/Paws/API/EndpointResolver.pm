@@ -48,14 +48,21 @@ package Paws::API::EndpointResolver;
   has region_rules => (is => 'ro', isa => 'ArrayRef');
 
   has _default_rules => (is => 'ro', isa => 'ArrayRef', default => sub {
-    [ { constraints => [ [ 'region', 'startsWith', 'cn-' ] ], 
-        properties => { signatureVersion => 'v4' }, 
+    [ { constraints => [ [ 'region', 'startsWith', 'cn-' ] ],
+        properties => { signatureVersion => 'v4' },
         uri => '{scheme}://{service}.{region}.amazonaws.com.cn'
+      },
+      # These regions don't support version 2 signatures and should default to version 4.
+      # Ref: http://docs.aws.amazon.com/general/latest/gr/signature-version-2.html
+      # Ref: http://docs.aws.amazon.com/general/latest/gr/rande.html
+      { constraints => [ [ 'region', 'oneOf',
+            ['ca-central-1','us-east-2','ap-south-1', 'ap-northeast-2', 'eu-central-1', 'eu-west-2'] ] ],
+        properties => { signatureVersion => 'v4' },
       },
       { constraints => [ [ 'region', 'notEquals', undef ] ],
         uri => '{scheme}://{service}.{region}.amazonaws.com'
       },
-    ]    
+    ]
     },
   );
 
