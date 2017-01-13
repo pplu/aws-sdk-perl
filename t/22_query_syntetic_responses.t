@@ -7,7 +7,7 @@ use lib 't/lib';
 
 use Test::More;
 use Paws;
-use JsonParamsService;
+use Paws::JsonParamsService;
 use TestGivenResponse;
 use Data::Dumper;
 
