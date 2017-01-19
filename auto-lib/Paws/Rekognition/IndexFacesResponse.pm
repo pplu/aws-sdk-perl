@@ -28,6 +28,10 @@ image was rotated, it returns the degree of rotation. You can use this
 value to correct the orientation and also appropriately analyze the
 bounding box coordinates that are returned.
 
+If the source image Exif metadata populates the orientation field,
+Amazon Rekognition does not perform orientation correction and the
+value of OrientationCorrection will be nil.
+
 Valid values are: C<"ROTATE_0">, C<"ROTATE_90">, C<"ROTATE_180">, C<"ROTATE_270">
 =head2 _request_id => Str
 

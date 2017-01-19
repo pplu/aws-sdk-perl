@@ -32,6 +32,10 @@ For example, if the service detects that the input image was rotated by
 returns the faces. That is, the bounding box coordinates in the
 response are based on the corrected orientation.
 
+If the source image Exif metadata populates the orientation field,
+Amazon Rekognition does not perform orientation correction and the
+value of OrientationCorrection will be nil.
+
 Valid values are: C<"ROTATE_0">, C<"ROTATE_90">, C<"ROTATE_180">, C<"ROTATE_270">
 =head2 _request_id => Str
 

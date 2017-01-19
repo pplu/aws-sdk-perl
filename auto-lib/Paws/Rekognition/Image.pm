@@ -41,6 +41,11 @@ You may need to Base64-encode the image bytes depending on the language
 you are using and whether or not you are using the AWS SDK. For more
 information, see example4.
 
+If you use the Amazon CLI to call Amazon Rekognition operations,
+passing image bytes using the Bytes property is not supported. You must
+first upload the image to an Amazon S3 bucket and then call the
+operation using the S3Object property.
+
 For Amazon Rekognition to process an S3 object, the user must have
 permission to access the S3 object. For more information, see
 manage-access-resource-policies.
