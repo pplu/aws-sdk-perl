@@ -305,8 +305,8 @@ Constraints: Minimum 30-minute window.
 
 =head2 ReplicationSourceIdentifier => Str
 
-The Amazon Resource Name (ARN) of the source DB cluster if this DB
-cluster is created as a Read Replica.
+The Amazon Resource Name (ARN) of the source DB instance or DB cluster
+if this DB cluster is created as a Read Replica.
 
 
 

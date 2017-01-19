@@ -38,6 +38,7 @@ package Paws::RDS::DBInstance;
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
   has PromotionTier => (is => 'ro', isa => 'Int');
   has PubliclyAccessible => (is => 'ro', isa => 'Bool');
+  has ReadReplicaDBClusterIdentifiers => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'ReadReplicaDBClusterIdentifier', traits => ['NameInRequest']);
   has ReadReplicaDBInstanceIdentifiers => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'ReadReplicaDBInstanceIdentifier', traits => ['NameInRequest']);
   has ReadReplicaSourceDBInstanceIdentifier => (is => 'ro', isa => 'Str');
   has SecondaryAvailabilityZone => (is => 'ro', isa => 'Str');
@@ -362,6 +363,12 @@ PubliclyAccessible value has not been set, the DB instance will be
 publicly accessible. If a specific DB subnet group has been specified
 as part of the request and the PubliclyAccessible value has not been
 set, the DB instance will be private.
+
+
+=head2 ReadReplicaDBClusterIdentifiers => ArrayRef[Str|Undef]
+
+  Contains one or more identifiers of Aurora DB clusters that are read
+replicas of this DB instance.
 
 
 =head2 ReadReplicaDBInstanceIdentifiers => ArrayRef[Str|Undef]

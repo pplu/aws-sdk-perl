@@ -1150,7 +1150,8 @@ Returns: a L<Paws::RDS::CreateDBClusterResult> instance
   Creates a new Amazon Aurora DB cluster.
 
 You can use the C<ReplicationSourceIdentifier> parameter to create the
-DB cluster as a Read Replica of another DB cluster.
+DB cluster as a Read Replica of another DB cluster or Amazon RDS MySQL
+DB instance.
 
 For more information on Amazon Aurora, see Aurora on Amazon RDS in the
 I<Amazon RDS User Guide.>
