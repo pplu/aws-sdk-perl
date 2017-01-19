@@ -43,7 +43,7 @@ not specify any names, AWS Config returns details for all your rules.
 
 =head2 NextToken => Str
 
-The C<nextToken> string returned on a previous page that you use to get
+The C<NextToken> string returned on a previous page that you use to get
 the next page of results in a paginated response.
 
 
