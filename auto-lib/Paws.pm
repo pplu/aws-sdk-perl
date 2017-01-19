@@ -284,6 +284,8 @@ L<Paws::CognitoSync>
 
 L<Paws::Config>
 
+L<Paws::CUR>
+
 L<Paws::DataPipeline>
 
 L<Paws::DeviceFarm>

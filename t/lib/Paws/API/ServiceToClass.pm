@@ -25,6 +25,7 @@ package Paws::API::ServiceToClass;
    'cognito-idp' => 'CognitoIdp',
    'cognito-sync' => 'CognitoSync',
     config => 'Config',
+    cur => 'CUR',
     datapipeline => 'DataPipeline',
     devicefarm => 'DeviceFarm',
     discovery => 'Discovery',
