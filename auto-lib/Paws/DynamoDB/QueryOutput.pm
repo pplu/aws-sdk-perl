@@ -20,20 +20,25 @@ Paws::DynamoDB::QueryOutput
 
 =head2 ConsumedCapacity => L<Paws::DynamoDB::ConsumedCapacity>
 
-
+The capacity units consumed by the C<Query> operation. The data
+returned includes the total provisioned throughput consumed, along with
+statistics for the table and any indexes involved in the operation.
+C<ConsumedCapacity> is only returned if the C<ReturnConsumedCapacity>
+parameter was specified For more information, see Provisioned
+Throughput in the I<Amazon DynamoDB Developer Guide>.
 
 
 =head2 Count => Int
 
 The number of items in the response.
 
-If you used a I<QueryFilter> in the request, then I<Count> is the
+If you used a C<QueryFilter> in the request, then C<Count> is the
 number of items returned after the filter was applied, and
-I<ScannedCount> is the number of matching items before the filter was
+C<ScannedCount> is the number of matching items before the filter was
 applied.
 
-If you did not use a filter in the request, then I<Count> and
-I<ScannedCount> are the same.
+If you did not use a filter in the request, then C<Count> and
+C<ScannedCount> are the same.
 
 
 =head2 Items => ArrayRef[L<Paws::DynamoDB::AttributeMap>]
@@ -49,24 +54,24 @@ The primary key of the item where the operation stopped, inclusive of
 the previous result set. Use this value to start a new operation,
 excluding this value in the new request.
 
-If I<LastEvaluatedKey> is empty, then the "last page" of results has
+If C<LastEvaluatedKey> is empty, then the "last page" of results has
 been processed and there is no more data to be retrieved.
 
-If I<LastEvaluatedKey> is not empty, it does not necessarily mean that
+If C<LastEvaluatedKey> is not empty, it does not necessarily mean that
 there is more data in the result set. The only way to know when you
-have reached the end of the result set is when I<LastEvaluatedKey> is
+have reached the end of the result set is when C<LastEvaluatedKey> is
 empty.
 
 
 =head2 ScannedCount => Int
 
-The number of items evaluated, before any I<QueryFilter> is applied. A
-high I<ScannedCount> value with few, or no, I<Count> results indicates
-an inefficient I<Query> operation. For more information, see Count and
+The number of items evaluated, before any C<QueryFilter> is applied. A
+high C<ScannedCount> value with few, or no, C<Count> results indicates
+an inefficient C<Query> operation. For more information, see Count and
 ScannedCount in the I<Amazon DynamoDB Developer Guide>.
 
-If you did not use a filter in the request, then I<ScannedCount> is the
-same as I<Count>.
+If you did not use a filter in the request, then C<ScannedCount> is the
+same as C<Count>.
 
 
 =head2 _request_id => Str

@@ -48,10 +48,9 @@ the partition key and the sort key.
 
 =head2 AttributesToGet => ArrayRef[Str|Undef]
 
-  One or more attributes to retrieve from the table or index. If no
-attribute names are specified then all attributes will be returned. If
-any of the specified attributes are not found, they will not appear in
-the result.
+  This is a legacy parameter. Use C<ProjectionExpression> instead. For
+more information, see Legacy Conditional Parameters in the I<Amazon
+DynamoDB Developer Guide>.
 
 
 =head2 ConsistentRead => Bool
@@ -64,7 +63,7 @@ used.
 =head2 ExpressionAttributeNames => L<Paws::DynamoDB::ExpressionAttributeNameMap>
 
   One or more substitution tokens for attribute names in an expression.
-The following are some use cases for using I<ExpressionAttributeNames>:
+The following are some use cases for using C<ExpressionAttributeNames>:
 
 =over
 
@@ -85,7 +84,7 @@ misinterpreted in an expression.
 
 =back
 
-Use the hash character in an expression to dereference an attribute
+Use the B<#> character in an expression to dereference an attribute
 name. For example, consider the following attribute name:
 
 =over
@@ -100,13 +99,13 @@ The name of this attribute conflicts with a reserved word, so it cannot
 be used directly in an expression. (For the complete list of reserved
 words, see Reserved Words in the I<Amazon DynamoDB Developer Guide>).
 To work around this, you could specify the following for
-I<ExpressionAttributeNames>:
+C<ExpressionAttributeNames>:
 
 =over
 
 =item *
 
-{"#P":"Percentile"}
+C<{"#P":"Percentile"}>
 
 =back
 
@@ -117,7 +116,7 @@ example:
 
 =item *
 
-
+C<#P = :val>
 
 =back
 
@@ -138,7 +137,7 @@ attributes associated with the items.
 
   A string that identifies one or more attributes to retrieve from the
 table. These attributes can include scalars, sets, or elements of a
-JSON document. The attributes in the I<ProjectionExpression> must be
+JSON document. The attributes in the C<ProjectionExpression> must be
 separated by commas.
 
 If no attribute names are specified, then all attributes will be
@@ -147,9 +146,6 @@ not appear in the result.
 
 For more information, see Accessing Item Attributes in the I<Amazon
 DynamoDB Developer Guide>.
-
-I<ProjectionExpression> replaces the legacy I<AttributesToGet>
-parameter.
 
 
 

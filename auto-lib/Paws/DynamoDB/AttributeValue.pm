@@ -40,66 +40,93 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DynamoDB::A
 
 =head1 DESCRIPTION
 
-Represents the data for an attribute. You can set one, and only one, of
-the elements.
+Represents the data for an attribute.
 
-Each attribute in an item is a name-value pair. An attribute can be
-single-valued or multi-valued set. For example, a book item can have
-title and authors attributes. Each book has one title but can have many
-authors. The multi-valued attribute is a set; duplicate values are not
-allowed.
+Each attribute value is described as a name-value pair. The name is the
+data type, and the value is the data itself.
+
+For more information, see Data Types in the I<Amazon DynamoDB Developer
+Guide>.
 
 =head1 ATTRIBUTES
 
 
 =head2 B => Str
 
-  A Binary data type.
+  An attribute of type Binary. For example:
+
+C<"B": "dGhpcyB0ZXh0IGlzIGJhc2U2NC1lbmNvZGVk">
 
 
 =head2 BOOL => Bool
 
-  A Boolean data type.
+  An attribute of type Boolean. For example:
+
+C<"BOOL": true>
 
 
 =head2 BS => ArrayRef[Str|Undef]
 
-  A Binary Set data type.
+  An attribute of type Binary Set. For example:
+
+C<"BS": ["U3Vubnk=", "UmFpbnk=", "U25vd3k="]>
 
 
 =head2 L => ArrayRef[L<Paws::DynamoDB::AttributeValue>]
 
-  A List of attribute values.
+  An attribute of type List. For example:
+
+C<"L": ["Cookies", "Coffee", 3.14159]>
 
 
 =head2 M => L<Paws::DynamoDB::MapAttributeValue>
 
-  A Map of attribute values.
+  An attribute of type Map. For example:
+
+C<"M": {"Name": {"S": "Joe"}, "Age": {"N": "35"}}>
 
 
 =head2 N => Str
 
-  A Number data type.
+  An attribute of type Number. For example:
+
+C<"N": "123.45">
+
+Numbers are sent across the network to DynamoDB as strings, to maximize
+compatibility across languages and libraries. However, DynamoDB treats
+them as number type attributes for mathematical operations.
 
 
 =head2 NS => ArrayRef[Str|Undef]
 
-  A Number Set data type.
+  An attribute of type Number Set. For example:
+
+C<"NS": ["42.2", "-19", "7.5", "3.14"]>
+
+Numbers are sent across the network to DynamoDB as strings, to maximize
+compatibility across languages and libraries. However, DynamoDB treats
+them as number type attributes for mathematical operations.
 
 
 =head2 NULL => Bool
 
-  A Null data type.
+  An attribute of type Null. For example:
+
+C<"NULL": true>
 
 
 =head2 S => Str
 
-  A String data type.
+  An attribute of type String. For example:
+
+C<"S": "Hello">
 
 
 =head2 SS => ArrayRef[Str|Undef]
 
-  A String Set data type.
+  An attribute of type String Set. For example:
+
+C<"SS": ["Giraffe", "Hippo" ,"Zebra"]>
 
 
 

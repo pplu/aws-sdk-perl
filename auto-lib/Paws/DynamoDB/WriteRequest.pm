@@ -32,10 +32,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DynamoDB::W
 
 =head1 DESCRIPTION
 
-Represents an operation to perform - either I<DeleteItem> or
-I<PutItem>. You can only request one of these operations, not both, in
-a single I<WriteRequest>. If you do need to perform both of these
-operations, you will need to provide two separate I<WriteRequest>
+Represents an operation to perform - either C<DeleteItem> or
+C<PutItem>. You can only request one of these operations, not both, in
+a single C<WriteRequest>. If you do need to perform both of these
+operations, you will need to provide two separate C<WriteRequest>
 objects.
 
 =head1 ATTRIBUTES
@@ -43,12 +43,12 @@ objects.
 
 =head2 DeleteRequest => L<Paws::DynamoDB::DeleteRequest>
 
-  A request to perform a I<DeleteItem> operation.
+  A request to perform a C<DeleteItem> operation.
 
 
 =head2 PutRequest => L<Paws::DynamoDB::PutRequest>
 
-  A request to perform a I<PutItem> operation.
+  A request to perform a C<PutItem> operation.
 
 
 

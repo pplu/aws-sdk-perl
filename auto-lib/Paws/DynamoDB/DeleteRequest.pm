@@ -31,7 +31,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DynamoDB::D
 
 =head1 DESCRIPTION
 
-Represents a request to perform a I<DeleteItem> operation on an item.
+Represents a request to perform a C<DeleteItem> operation on an item.
 
 =head1 ATTRIBUTES
 

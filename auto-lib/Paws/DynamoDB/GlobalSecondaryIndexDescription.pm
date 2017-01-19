@@ -52,10 +52,10 @@ they can be added to the index. (Not all items will qualify: For
 example, a partition key cannot have any duplicate values.) If an item
 can be added to the index, DynamoDB will do so. After all items have
 been processed, the backfilling operation is complete and
-I<Backfilling> is false.
+C<Backfilling> is false.
 
-For indexes that were created during a I<CreateTable> operation, the
-I<Backfilling> attribute does not appear in the I<DescribeTable>
+For indexes that were created during a C<CreateTable> operation, the
+C<Backfilling> attribute does not appear in the C<DescribeTable>
 output.
 
 
@@ -84,19 +84,19 @@ reflected in this value.
 
 =item *
 
-I<CREATING> - The index is being created.
+C<CREATING> - The index is being created.
 
 =item *
 
-I<UPDATING> - The index is being updated.
+C<UPDATING> - The index is being updated.
 
 =item *
 
-I<DELETING> - The index is being deleted.
+C<DELETING> - The index is being deleted.
 
 =item *
 
-I<ACTIVE> - The index is ready for use.
+C<ACTIVE> - The index is ready for use.
 
 =back
 
@@ -139,12 +139,18 @@ the sort key value.
 
 =head2 Projection => L<Paws::DynamoDB::Projection>
 
-  
+  Represents attributes that are copied (projected) from the table into
+the global secondary index. These are in addition to the primary key
+attributes and index key attributes, which are automatically projected.
 
 
 =head2 ProvisionedThroughput => L<Paws::DynamoDB::ProvisionedThroughputDescription>
 
-  
+  Represents the provisioned throughput settings for the specified global
+secondary index.
+
+For current minimum and maximum provisioned throughput values, see
+Limits in the I<Amazon DynamoDB Developer Guide>.
 
 
 

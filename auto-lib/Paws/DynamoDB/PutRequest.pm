@@ -31,7 +31,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DynamoDB::P
 
 =head1 DESCRIPTION
 
-Represents a request to perform a I<PutItem> operation on an item.
+Represents a request to perform a C<PutItem> operation on an item.
 
 =head1 ATTRIBUTES
 
@@ -39,7 +39,7 @@ Represents a request to perform a I<PutItem> operation on an item.
 =head2 B<REQUIRED> Item => L<Paws::DynamoDB::PutItemInputAttributeMap>
 
   A map of attribute name to attribute values, representing the primary
-key of an item to be processed by I<PutItem>. All of the table's
+key of an item to be processed by C<PutItem>. All of the table's
 primary key attributes must be specified, and their data types must
 match those of the table's key schema. If any attributes are present in
 the item which are part of an index key schema for the table, their

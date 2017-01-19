@@ -38,7 +38,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DynamoDB::C
 The capacity units consumed by an operation. The data returned includes
 the total provisioned throughput consumed, along with statistics for
 the table and any indexes involved in the operation.
-I<ConsumedCapacity> is only returned if the request asked for it. For
+C<ConsumedCapacity> is only returned if the request asked for it. For
 more information, see Provisioned Throughput in the I<Amazon DynamoDB
 Developer Guide>.
 

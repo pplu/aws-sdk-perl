@@ -51,20 +51,20 @@ Represents the properties of a table.
 
 =head2 AttributeDefinitions => ArrayRef[L<Paws::DynamoDB::AttributeDefinition>]
 
-  An array of I<AttributeDefinition> objects. Each of these objects
+  An array of C<AttributeDefinition> objects. Each of these objects
 describes one attribute in the table and index key schema.
 
-Each I<AttributeDefinition> object in this array is composed of:
+Each C<AttributeDefinition> object in this array is composed of:
 
 =over
 
 =item *
 
-I<AttributeName> - The name of the attribute.
+C<AttributeName> - The name of the attribute.
 
 =item *
 
-I<AttributeType> - The data type for the attribute.
+C<AttributeType> - The data type for the attribute.
 
 =back
 
@@ -85,63 +85,63 @@ scoped to a given partition key value. Each element is composed of:
 
 =item *
 
-I<Backfilling> - If true, then the index is currently in the
+C<Backfilling> - If true, then the index is currently in the
 backfilling phase. Backfilling occurs only when a new global secondary
 index is added to the table; it is the process by which DynamoDB
 populates the new index with data from the table. (This attribute does
-not appear for indexes that were created during a I<CreateTable>
+not appear for indexes that were created during a C<CreateTable>
 operation.)
 
 =item *
 
-I<IndexName> - The name of the global secondary index.
+C<IndexName> - The name of the global secondary index.
 
 =item *
 
-I<IndexSizeBytes> - The total size of the global secondary index, in
+C<IndexSizeBytes> - The total size of the global secondary index, in
 bytes. DynamoDB updates this value approximately every six hours.
 Recent changes might not be reflected in this value.
 
 =item *
 
-I<IndexStatus> - The current status of the global secondary index:
+C<IndexStatus> - The current status of the global secondary index:
 
 =over
 
 =item *
 
-I<CREATING> - The index is being created.
+C<CREATING> - The index is being created.
 
 =item *
 
-I<UPDATING> - The index is being updated.
+C<UPDATING> - The index is being updated.
 
 =item *
 
-I<DELETING> - The index is being deleted.
+C<DELETING> - The index is being deleted.
 
 =item *
 
-I<ACTIVE> - The index is ready for use.
+C<ACTIVE> - The index is ready for use.
 
 =back
 
 =item *
 
-I<ItemCount> - The number of items in the global secondary index.
+C<ItemCount> - The number of items in the global secondary index.
 DynamoDB updates this value approximately every six hours. Recent
 changes might not be reflected in this value.
 
 =item *
 
-I<KeySchema> - Specifies the complete index key schema. The attribute
+C<KeySchema> - Specifies the complete index key schema. The attribute
 names in the key schema must be between 1 and 255 characters
 (inclusive). The key schema must begin with the same partition key as
 the table.
 
 =item *
 
-I<Projection> - Specifies attributes that are copied (projected) from
+C<Projection> - Specifies attributes that are copied (projected) from
 the table into the index. These are in addition to the primary key
 attributes and index key attributes, which are automatically projected.
 Each attribute specification is composed of:
@@ -150,7 +150,7 @@ Each attribute specification is composed of:
 
 =item *
 
-I<ProjectionType> - One of the following:
+C<ProjectionType> - One of the following:
 
 =over
 
@@ -162,7 +162,7 @@ index.
 =item *
 
 C<INCLUDE> - Only the specified table attributes are projected into the
-index. The list of projected attributes are in I<NonKeyAttributes>.
+index. The list of projected attributes are in C<NonKeyAttributes>.
 
 =item *
 
@@ -172,9 +172,9 @@ C<ALL> - All of the table attributes are projected into the index.
 
 =item *
 
-I<NonKeyAttributes> - A list of one or more non-key attribute names
+C<NonKeyAttributes> - A list of one or more non-key attribute names
 that are projected into the secondary index. The total count of
-attributes provided in I<NonKeyAttributes>, summed across all of the
+attributes provided in C<NonKeyAttributes>, summed across all of the
 secondary indexes, must not exceed 20. If you project the same
 attribute into two different indexes, this counts as two distinct
 attributes when determining the total.
@@ -183,7 +183,7 @@ attributes when determining the total.
 
 =item *
 
-I<ProvisionedThroughput> - The provisioned throughput settings for the
+C<ProvisionedThroughput> - The provisioned throughput settings for the
 global secondary index, consisting of read and write capacity units,
 along with data about increases and decreases.
 
@@ -202,18 +202,18 @@ this value.
 
 =head2 KeySchema => ArrayRef[L<Paws::DynamoDB::KeySchemaElement>]
 
-  The primary key structure for the table. Each I<KeySchemaElement>
+  The primary key structure for the table. Each C<KeySchemaElement>
 consists of:
 
 =over
 
 =item *
 
-I<AttributeName> - The name of the attribute.
+C<AttributeName> - The name of the attribute.
 
 =item *
 
-I<KeyType> - The role of the attribute:
+C<KeyType> - The role of the attribute:
 
 =over
 
@@ -253,7 +253,7 @@ stream for this table.
 
   A timestamp, in ISO 8601 format, for this stream.
 
-Note that I<LatestStreamLabel> is not a unique identifier for the
+Note that C<LatestStreamLabel> is not a unique identifier for the
 stream, because it is possible that a stream from another table might
 have the same timestamp. However, the combination of the following
 three elements is guaranteed to be unique:
@@ -270,7 +270,7 @@ the table name.
 
 =item *
 
-the I<StreamLabel>.
+the C<StreamLabel>.
 
 =back
 
@@ -288,18 +288,18 @@ Each element is composed of:
 
 =item *
 
-I<IndexName> - The name of the local secondary index.
+C<IndexName> - The name of the local secondary index.
 
 =item *
 
-I<KeySchema> - Specifies the complete index key schema. The attribute
+C<KeySchema> - Specifies the complete index key schema. The attribute
 names in the key schema must be between 1 and 255 characters
 (inclusive). The key schema must begin with the same partition key as
 the table.
 
 =item *
 
-I<Projection> - Specifies attributes that are copied (projected) from
+C<Projection> - Specifies attributes that are copied (projected) from
 the table into the index. These are in addition to the primary key
 attributes and index key attributes, which are automatically projected.
 Each attribute specification is composed of:
@@ -308,7 +308,7 @@ Each attribute specification is composed of:
 
 =item *
 
-I<ProjectionType> - One of the following:
+C<ProjectionType> - One of the following:
 
 =over
 
@@ -320,7 +320,7 @@ index.
 =item *
 
 C<INCLUDE> - Only the specified table attributes are projected into the
-index. The list of projected attributes are in I<NonKeyAttributes>.
+index. The list of projected attributes are in C<NonKeyAttributes>.
 
 =item *
 
@@ -330,9 +330,9 @@ C<ALL> - All of the table attributes are projected into the index.
 
 =item *
 
-I<NonKeyAttributes> - A list of one or more non-key attribute names
+C<NonKeyAttributes> - A list of one or more non-key attribute names
 that are projected into the secondary index. The total count of
-attributes provided in I<NonKeyAttributes>, summed across all of the
+attributes provided in C<NonKeyAttributes>, summed across all of the
 secondary indexes, must not exceed 20. If you project the same
 attribute into two different indexes, this counts as two distinct
 attributes when determining the total.
@@ -341,13 +341,13 @@ attributes when determining the total.
 
 =item *
 
-I<IndexSizeBytes> - Represents the total size of the index, in bytes.
+C<IndexSizeBytes> - Represents the total size of the index, in bytes.
 DynamoDB updates this value approximately every six hours. Recent
 changes might not be reflected in this value.
 
 =item *
 
-I<ItemCount> - Represents the number of items in the index. DynamoDB
+C<ItemCount> - Represents the number of items in the index. DynamoDB
 updates this value approximately every six hours. Recent changes might
 not be reflected in this value.
 
@@ -394,19 +394,19 @@ reflected in this value.
 
 =item *
 
-I<CREATING> - The table is being created.
+C<CREATING> - The table is being created.
 
 =item *
 
-I<UPDATING> - The table is being updated.
+C<UPDATING> - The table is being updated.
 
 =item *
 
-I<DELETING> - The table is being deleted.
+C<DELETING> - The table is being deleted.
 
 =item *
 
-I<ACTIVE> - The table is ready for use.
+C<ACTIVE> - The table is ready for use.
 
 =back
 

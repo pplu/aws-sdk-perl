@@ -56,16 +56,16 @@ the following:
 
 =item *
 
-I<IndexName> - The name of the global secondary index. Must be unique
+C<IndexName> - The name of the global secondary index. Must be unique
 only for this table.
 
 =item *
 
-I<KeySchema> - Specifies the key schema for the global secondary index.
+C<KeySchema> - Specifies the key schema for the global secondary index.
 
 =item *
 
-I<Projection> - Specifies attributes that are copied (projected) from
+C<Projection> - Specifies attributes that are copied (projected) from
 the table into the index. These are in addition to the primary key
 attributes and index key attributes, which are automatically projected.
 Each attribute specification is composed of:
@@ -74,7 +74,7 @@ Each attribute specification is composed of:
 
 =item *
 
-I<ProjectionType> - One of the following:
+C<ProjectionType> - One of the following:
 
 =over
 
@@ -86,7 +86,7 @@ index.
 =item *
 
 C<INCLUDE> - Only the specified table attributes are projected into the
-index. The list of projected attributes are in I<NonKeyAttributes>.
+index. The list of projected attributes are in C<NonKeyAttributes>.
 
 =item *
 
@@ -96,9 +96,9 @@ C<ALL> - All of the table attributes are projected into the index.
 
 =item *
 
-I<NonKeyAttributes> - A list of one or more non-key attribute names
+C<NonKeyAttributes> - A list of one or more non-key attribute names
 that are projected into the secondary index. The total count of
-attributes provided in I<NonKeyAttributes>, summed across all of the
+attributes provided in C<NonKeyAttributes>, summed across all of the
 secondary indexes, must not exceed 20. If you project the same
 attribute into two different indexes, this counts as two distinct
 attributes when determining the total.
@@ -107,7 +107,7 @@ attributes when determining the total.
 
 =item *
 
-I<ProvisionedThroughput> - The provisioned throughput settings for the
+C<ProvisionedThroughput> - The provisioned throughput settings for the
 global secondary index, consisting of read and write capacity units.
 
 =back
@@ -118,21 +118,21 @@ global secondary index, consisting of read and write capacity units.
 =head2 B<REQUIRED> KeySchema => ArrayRef[L<Paws::DynamoDB::KeySchemaElement>]
 
 Specifies the attributes that make up the primary key for a table or an
-index. The attributes in I<KeySchema> must also be defined in the
-I<AttributeDefinitions> array. For more information, see Data Model in
+index. The attributes in C<KeySchema> must also be defined in the
+C<AttributeDefinitions> array. For more information, see Data Model in
 the I<Amazon DynamoDB Developer Guide>.
 
-Each I<KeySchemaElement> in the array is composed of:
+Each C<KeySchemaElement> in the array is composed of:
 
 =over
 
 =item *
 
-I<AttributeName> - The name of this key attribute.
+C<AttributeName> - The name of this key attribute.
 
 =item *
 
-I<KeyType> - The role that the key attribute will assume:
+C<KeyType> - The role that the key attribute will assume:
 
 =over
 
@@ -159,12 +159,12 @@ the same partition key physically close together, in sorted order by
 the sort key value.
 
 For a simple primary key (partition key), you must provide exactly one
-element with a I<KeyType> of C<HASH>.
+element with a C<KeyType> of C<HASH>.
 
 For a composite primary key (partition key and sort key), you must
 provide exactly two elements, in this order: The first element must
-have a I<KeyType> of C<HASH>, and the second element must have a
-I<KeyType> of C<RANGE>.
+have a C<KeyType> of C<HASH>, and the second element must have a
+C<KeyType> of C<RANGE>.
 
 For more information, see Specifying the Primary Key in the I<Amazon
 DynamoDB Developer Guide>.
@@ -184,17 +184,17 @@ Each local secondary index in the array includes the following:
 
 =item *
 
-I<IndexName> - The name of the local secondary index. Must be unique
+C<IndexName> - The name of the local secondary index. Must be unique
 only for this table.
 
 =item *
 
-I<KeySchema> - Specifies the key schema for the local secondary index.
+C<KeySchema> - Specifies the key schema for the local secondary index.
 The key schema must begin with the same partition key as the table.
 
 =item *
 
-I<Projection> - Specifies attributes that are copied (projected) from
+C<Projection> - Specifies attributes that are copied (projected) from
 the table into the index. These are in addition to the primary key
 attributes and index key attributes, which are automatically projected.
 Each attribute specification is composed of:
@@ -203,7 +203,7 @@ Each attribute specification is composed of:
 
 =item *
 
-I<ProjectionType> - One of the following:
+C<ProjectionType> - One of the following:
 
 =over
 
@@ -215,7 +215,7 @@ index.
 =item *
 
 C<INCLUDE> - Only the specified table attributes are projected into the
-index. The list of projected attributes are in I<NonKeyAttributes>.
+index. The list of projected attributes are in C<NonKeyAttributes>.
 
 =item *
 
@@ -225,9 +225,9 @@ C<ALL> - All of the table attributes are projected into the index.
 
 =item *
 
-I<NonKeyAttributes> - A list of one or more non-key attribute names
+C<NonKeyAttributes> - A list of one or more non-key attribute names
 that are projected into the secondary index. The total count of
-attributes provided in I<NonKeyAttributes>, summed across all of the
+attributes provided in C<NonKeyAttributes>, summed across all of the
 secondary indexes, must not exceed 20. If you project the same
 attribute into two different indexes, this counts as two distinct
 attributes when determining the total.
@@ -241,7 +241,11 @@ attributes when determining the total.
 
 =head2 B<REQUIRED> ProvisionedThroughput => L<Paws::DynamoDB::ProvisionedThroughput>
 
+Represents the provisioned throughput settings for a specified table or
+index. The settings can be modified using the C<UpdateTable> operation.
 
+For current minimum and maximum provisioned throughput values, see
+Limits in the I<Amazon DynamoDB Developer Guide>.
 
 
 
@@ -254,35 +258,35 @@ of:
 
 =item *
 
-I<StreamEnabled> - Indicates whether Streams is to be enabled (true) or
+C<StreamEnabled> - Indicates whether Streams is to be enabled (true) or
 disabled (false).
 
 =item *
 
-I<StreamViewType> - When an item in the table is modified,
-I<StreamViewType> determines what information is written to the table's
-stream. Valid values for I<StreamViewType> are:
+C<StreamViewType> - When an item in the table is modified,
+C<StreamViewType> determines what information is written to the table's
+stream. Valid values for C<StreamViewType> are:
 
 =over
 
 =item *
 
-I<KEYS_ONLY> - Only the key attributes of the modified item are written
+C<KEYS_ONLY> - Only the key attributes of the modified item are written
 to the stream.
 
 =item *
 
-I<NEW_IMAGE> - The entire item, as it appears after it was modified, is
+C<NEW_IMAGE> - The entire item, as it appears after it was modified, is
 written to the stream.
 
 =item *
 
-I<OLD_IMAGE> - The entire item, as it appeared before it was modified,
+C<OLD_IMAGE> - The entire item, as it appeared before it was modified,
 is written to the stream.
 
 =item *
 
-I<NEW_AND_OLD_IMAGES> - Both the new and the old item images of the
+C<NEW_AND_OLD_IMAGES> - Both the new and the old item images of the
 item are written to the stream.
 
 =back

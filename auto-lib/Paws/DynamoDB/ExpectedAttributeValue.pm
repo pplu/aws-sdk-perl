@@ -35,35 +35,35 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DynamoDB::E
 =head1 DESCRIPTION
 
 Represents a condition to be compared with an attribute value. This
-condition can be used with I<DeleteItem>, I<PutItem> or I<UpdateItem>
+condition can be used with C<DeleteItem>, C<PutItem> or C<UpdateItem>
 operations; if the comparison evaluates to true, the operation
 succeeds; if not, the operation fails. You can use
-I<ExpectedAttributeValue> in one of two different ways:
+C<ExpectedAttributeValue> in one of two different ways:
 
 =over
 
 =item *
 
-Use I<AttributeValueList> to specify one or more values to compare
-against an attribute. Use I<ComparisonOperator> to specify how you want
+Use C<AttributeValueList> to specify one or more values to compare
+against an attribute. Use C<ComparisonOperator> to specify how you want
 to perform the comparison. If the comparison evaluates to true, then
 the conditional operation succeeds.
 
 =item *
 
-Use I<Value> to specify a value that DynamoDB will compare against an
-attribute. If the values match, then I<ExpectedAttributeValue>
+Use C<Value> to specify a value that DynamoDB will compare against an
+attribute. If the values match, then C<ExpectedAttributeValue>
 evaluates to true and the conditional operation succeeds. Optionally,
-you can also set I<Exists> to false, indicating that you I<do not>
+you can also set C<Exists> to false, indicating that you I<do not>
 expect to find the attribute value in the table. In this case, the
 conditional operation succeeds only if the comparison evaluates to
 false.
 
 =back
 
-I<Value> and I<Exists> are incompatible with I<AttributeValueList> and
-I<ComparisonOperator>. Note that if you use both sets of parameters at
-once, DynamoDB will return a I<ValidationException> exception.
+C<Value> and C<Exists> are incompatible with C<AttributeValueList> and
+C<ComparisonOperator>. Note that if you use both sets of parameters at
+once, DynamoDB will return a C<ValidationException> exception.
 
 =head1 ATTRIBUTES
 
@@ -71,7 +71,7 @@ once, DynamoDB will return a I<ValidationException> exception.
 =head2 AttributeValueList => ArrayRef[L<Paws::DynamoDB::AttributeValue>]
 
   One or more values to evaluate against the supplied attribute. The
-number of values in the list depends on the I<ComparisonOperator> being
+number of values in the list depends on the C<ComparisonOperator> being
 used.
 
 For type Number, value comparisons are numeric.
@@ -90,7 +90,7 @@ in the I<Amazon DynamoDB Developer Guide>.
 
 =head2 ComparisonOperator => Str
 
-  A comparator for evaluating attributes in the I<AttributeValueList>.
+  A comparator for evaluating attributes in the C<AttributeValueList>.
 For example, equals, greater than, less than, etc.
 
 The following comparison operators are available:
@@ -104,24 +104,24 @@ The following are descriptions of each comparison operator.
 
 =item *
 
-C<EQ> : Equal. C<EQ> is supported for all datatypes, including lists
+C<EQ> : Equal. C<EQ> is supported for all data types, including lists
 and maps.
 
-I<AttributeValueList> can contain only one I<AttributeValue> element of
+C<AttributeValueList> can contain only one C<AttributeValue> element of
 type String, Number, Binary, String Set, Number Set, or Binary Set. If
-an item contains an I<AttributeValue> element of a different type than
+an item contains an C<AttributeValue> element of a different type than
 the one provided in the request, the value does not match. For example,
 C<{"S":"6"}> does not equal C<{"N":"6"}>. Also, C<{"N":"6"}> does not
 equal C<{"NS":["6", "2", "1"]}>.
 
 =item *
 
-C<NE> : Not equal. C<NE> is supported for all datatypes, including
+C<NE> : Not equal. C<NE> is supported for all data types, including
 lists and maps.
 
-I<AttributeValueList> can contain only one I<AttributeValue> of type
+C<AttributeValueList> can contain only one C<AttributeValue> of type
 String, Number, Binary, String Set, Number Set, or Binary Set. If an
-item contains an I<AttributeValue> of a different type than the one
+item contains an C<AttributeValue> of a different type than the one
 provided in the request, the value does not match. For example,
 C<{"S":"6"}> does not equal C<{"N":"6"}>. Also, C<{"N":"6"}> does not
 equal C<{"NS":["6", "2", "1"]}>.
@@ -130,9 +130,9 @@ equal C<{"NS":["6", "2", "1"]}>.
 
 C<LE> : Less than or equal.
 
-I<AttributeValueList> can contain only one I<AttributeValue> element of
+C<AttributeValueList> can contain only one C<AttributeValue> element of
 type String, Number, or Binary (not a set type). If an item contains an
-I<AttributeValue> element of a different type than the one provided in
+C<AttributeValue> element of a different type than the one provided in
 the request, the value does not match. For example, C<{"S":"6"}> does
 not equal C<{"N":"6"}>. Also, C<{"N":"6"}> does not compare to
 C<{"NS":["6", "2", "1"]}>.
@@ -141,9 +141,9 @@ C<{"NS":["6", "2", "1"]}>.
 
 C<LT> : Less than.
 
-I<AttributeValueList> can contain only one I<AttributeValue> of type
+C<AttributeValueList> can contain only one C<AttributeValue> of type
 String, Number, or Binary (not a set type). If an item contains an
-I<AttributeValue> element of a different type than the one provided in
+C<AttributeValue> element of a different type than the one provided in
 the request, the value does not match. For example, C<{"S":"6"}> does
 not equal C<{"N":"6"}>. Also, C<{"N":"6"}> does not compare to
 C<{"NS":["6", "2", "1"]}>.
@@ -152,9 +152,9 @@ C<{"NS":["6", "2", "1"]}>.
 
 C<GE> : Greater than or equal.
 
-I<AttributeValueList> can contain only one I<AttributeValue> element of
+C<AttributeValueList> can contain only one C<AttributeValue> element of
 type String, Number, or Binary (not a set type). If an item contains an
-I<AttributeValue> element of a different type than the one provided in
+C<AttributeValue> element of a different type than the one provided in
 the request, the value does not match. For example, C<{"S":"6"}> does
 not equal C<{"N":"6"}>. Also, C<{"N":"6"}> does not compare to
 C<{"NS":["6", "2", "1"]}>.
@@ -163,9 +163,9 @@ C<{"NS":["6", "2", "1"]}>.
 
 C<GT> : Greater than.
 
-I<AttributeValueList> can contain only one I<AttributeValue> element of
+C<AttributeValueList> can contain only one C<AttributeValue> element of
 type String, Number, or Binary (not a set type). If an item contains an
-I<AttributeValue> element of a different type than the one provided in
+C<AttributeValue> element of a different type than the one provided in
 the request, the value does not match. For example, C<{"S":"6"}> does
 not equal C<{"N":"6"}>. Also, C<{"N":"6"}> does not compare to
 C<{"NS":["6", "2", "1"]}>.
@@ -173,22 +173,22 @@ C<{"NS":["6", "2", "1"]}>.
 =item *
 
 C<NOT_NULL> : The attribute exists. C<NOT_NULL> is supported for all
-datatypes, including lists and maps.
+data types, including lists and maps.
 
 This operator tests for the existence of an attribute, not its data
 type. If the data type of attribute "C<a>" is null, and you evaluate it
-using C<NOT_NULL>, the result is a Boolean I<true>. This result is
+using C<NOT_NULL>, the result is a Boolean C<true>. This result is
 because the attribute "C<a>" exists; its data type is not relevant to
 the C<NOT_NULL> comparison operator.
 
 =item *
 
 C<NULL> : The attribute does not exist. C<NULL> is supported for all
-datatypes, including lists and maps.
+data types, including lists and maps.
 
 This operator tests for the nonexistence of an attribute, not its data
 type. If the data type of attribute "C<a>" is null, and you evaluate it
-using C<NULL>, the result is a Boolean I<false>. This is because the
+using C<NULL>, the result is a Boolean C<false>. This is because the
 attribute "C<a>" exists; its data type is not relevant to the C<NULL>
 comparison operator.
 
@@ -196,7 +196,7 @@ comparison operator.
 
 C<CONTAINS> : Checks for a subsequence, or value in a set.
 
-I<AttributeValueList> can contain only one I<AttributeValue> element of
+C<AttributeValueList> can contain only one C<AttributeValue> element of
 type String, Number, or Binary (not a set type). If the target
 attribute of the comparison is of type String, then the operator checks
 for a substring match. If the target attribute of the comparison is of
@@ -214,7 +214,7 @@ list.
 C<NOT_CONTAINS> : Checks for absence of a subsequence, or absence of a
 value in a set.
 
-I<AttributeValueList> can contain only one I<AttributeValue> element of
+C<AttributeValueList> can contain only one C<AttributeValue> element of
 type String, Number, or Binary (not a set type). If the target
 attribute of the comparison is a String, then the operator checks for
 the absence of a substring match. If the target attribute of the
@@ -232,31 +232,31 @@ list.
 
 C<BEGINS_WITH> : Checks for a prefix.
 
-I<AttributeValueList> can contain only one I<AttributeValue> of type
+C<AttributeValueList> can contain only one C<AttributeValue> of type
 String or Binary (not a Number or a set type). The target attribute of
 the comparison must be of type String or Binary (not a Number or a set
 type).
 
 =item *
 
-C<IN> : Checks for matching elements within two sets.
+C<IN> : Checks for matching elements in a list.
 
-I<AttributeValueList> can contain one or more I<AttributeValue>
-elements of type String, Number, or Binary (not a set type). These
-attributes are compared against an existing set type attribute of an
-item. If any elements of the input set are present in the item
-attribute, the expression evaluates to true.
+C<AttributeValueList> can contain one or more C<AttributeValue>
+elements of type String, Number, or Binary. These attributes are
+compared against an existing attribute of an item. If any elements of
+the input are equal to the item attribute, the expression evaluates to
+true.
 
 =item *
 
 C<BETWEEN> : Greater than or equal to the first value, and less than or
 equal to the second value.
 
-I<AttributeValueList> must contain two I<AttributeValue> elements of
+C<AttributeValueList> must contain two C<AttributeValue> elements of
 the same type, either String, Number, or Binary (not a set type). A
 target attribute matches if the target value is greater than, or equal
 to, the first element and less than, or equal to, the second element.
-If an item contains an I<AttributeValue> element of a different type
+If an item contains an C<AttributeValue> element of a different type
 than the one provided in the request, the value does not match. For
 example, C<{"S":"6"}> does not compare to C<{"N":"6"}>. Also,
 C<{"N":"6"}> does not compare to C<{"NS":["6", "2", "1"]}>
@@ -274,37 +274,37 @@ operation:
 
 =item *
 
-If I<Exists> is C<true>, DynamoDB will check to see if that attribute
+If C<Exists> is C<true>, DynamoDB will check to see if that attribute
 value already exists in the table. If it is found, then the operation
 succeeds. If it is not found, the operation fails with a
-I<ConditionalCheckFailedException>.
+C<ConditionalCheckFailedException>.
 
 =item *
 
-If I<Exists> is C<false>, DynamoDB assumes that the attribute value
+If C<Exists> is C<false>, DynamoDB assumes that the attribute value
 does not exist in the table. If in fact the value does not exist, then
 the assumption is valid and the operation succeeds. If the value is
 found, despite the assumption that it does not exist, the operation
-fails with a I<ConditionalCheckFailedException>.
+fails with a C<ConditionalCheckFailedException>.
 
 =back
 
-The default setting for I<Exists> is C<true>. If you supply a I<Value>
+The default setting for C<Exists> is C<true>. If you supply a C<Value>
 all by itself, DynamoDB assumes the attribute exists: You don't have to
-set I<Exists> to C<true>, because it is implied.
+set C<Exists> to C<true>, because it is implied.
 
-DynamoDB returns a I<ValidationException> if:
+DynamoDB returns a C<ValidationException> if:
 
 =over
 
 =item *
 
-I<Exists> is C<true> but there is no I<Value> to check. (You expect a
+C<Exists> is C<true> but there is no C<Value> to check. (You expect a
 value to exist, but don't specify what that value is.)
 
 =item *
 
-I<Exists> is C<false> but you also provide a I<Value>. (You cannot
+C<Exists> is C<false> but you also provide a C<Value>. (You cannot
 expect an attribute to have a value, while also expecting it not to
 exist.)
 
@@ -314,7 +314,13 @@ exist.)
 
 =head2 Value => L<Paws::DynamoDB::AttributeValue>
 
-  
+  Represents the data for the expected attribute.
+
+Each attribute value is described as a name-value pair. The name is the
+data type, and the value is the data itself.
+
+For more information, see Data Types in the I<Amazon DynamoDB Developer
+Guide>.
 
 
 

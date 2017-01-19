@@ -45,44 +45,31 @@ Represents the DynamoDB Streams configuration for a table in DynamoDB.
 
 =head2 StreamViewType => Str
 
-  The DynamoDB Streams settings for the table. These settings consist of:
+  When an item in the table is modified, C<StreamViewType> determines
+what information is written to the stream for this table. Valid values
+for C<StreamViewType> are:
 
 =over
 
 =item *
 
-I<StreamEnabled> - Indicates whether DynamoDB Streams is enabled (true)
-or disabled (false) on the table.
-
-=item *
-
-I<StreamViewType> - When an item in the table is modified,
-I<StreamViewType> determines what information is written to the stream
-for this table. Valid values for I<StreamViewType> are:
-
-=over
-
-=item *
-
-I<KEYS_ONLY> - Only the key attributes of the modified item are written
+C<KEYS_ONLY> - Only the key attributes of the modified item are written
 to the stream.
 
 =item *
 
-I<NEW_IMAGE> - The entire item, as it appears after it was modified, is
+C<NEW_IMAGE> - The entire item, as it appears after it was modified, is
 written to the stream.
 
 =item *
 
-I<OLD_IMAGE> - The entire item, as it appeared before it was modified,
+C<OLD_IMAGE> - The entire item, as it appeared before it was modified,
 is written to the stream.
 
 =item *
 
-I<NEW_AND_OLD_IMAGES> - Both the new and the old item images of the
+C<NEW_AND_OLD_IMAGES> - Both the new and the old item images of the
 item are written to the stream.
-
-=back
 
 =back
 

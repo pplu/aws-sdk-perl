@@ -95,7 +95,9 @@ the sort key value.
 
 =head2 Projection => L<Paws::DynamoDB::Projection>
 
-  
+  Represents attributes that are copied (projected) from the table into
+the global secondary index. These are in addition to the primary key
+attributes and index key attributes, which are automatically projected.
 
 
 

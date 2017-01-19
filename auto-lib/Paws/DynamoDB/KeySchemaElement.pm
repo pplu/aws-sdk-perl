@@ -36,13 +36,13 @@ Represents I<a single element> of a key schema. A key schema specifies
 the attributes that make up the primary key of a table, or the key
 attributes of an index.
 
-A I<KeySchemaElement> represents exactly one attribute of the primary
+A C<KeySchemaElement> represents exactly one attribute of the primary
 key. For example, a simple primary key would be represented by one
-I<KeySchemaElement> (for the partition key). A composite primary key
-would require one I<KeySchemaElement> for the partition key, and
-another I<KeySchemaElement> for the sort key.
+C<KeySchemaElement> (for the partition key). A composite primary key
+would require one C<KeySchemaElement> for the partition key, and
+another C<KeySchemaElement> for the sort key.
 
-A I<KeySchemaElement> must be a scalar, top-level attribute (not a
+A C<KeySchemaElement> must be a scalar, top-level attribute (not a
 nested attribute). The data type must be one of String, Number, or
 Binary. The attribute cannot be nested within a List or a Map.
 

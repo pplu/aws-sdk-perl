@@ -52,12 +52,18 @@ table.
 
 =head2 B<REQUIRED> Projection => L<Paws::DynamoDB::Projection>
 
-  
+  Represents attributes that are copied (projected) from the table into
+an index. These are in addition to the primary key attributes and index
+key attributes, which are automatically projected.
 
 
 =head2 B<REQUIRED> ProvisionedThroughput => L<Paws::DynamoDB::ProvisionedThroughput>
 
-  
+  Represents the provisioned throughput settings for the specified global
+secondary index.
+
+For current minimum and maximum provisioned throughput values, see
+Limits in the I<Amazon DynamoDB Developer Guide>.
 
 
 

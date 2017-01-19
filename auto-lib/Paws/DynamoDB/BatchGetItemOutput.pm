@@ -18,7 +18,8 @@ Paws::DynamoDB::BatchGetItemOutput
 
 =head2 ConsumedCapacity => ArrayRef[L<Paws::DynamoDB::ConsumedCapacity>]
 
-The read capacity units consumed by the operation.
+The read capacity units consumed by the entire C<BatchGetItem>
+operation.
 
 Each element consists of:
 
@@ -26,11 +27,11 @@ Each element consists of:
 
 =item *
 
-I<TableName> - The table that consumed the provisioned throughput.
+C<TableName> - The table that consumed the provisioned throughput.
 
 =item *
 
-I<CapacityUnits> - The total number of capacity units consumed.
+C<CapacityUnits> - The total number of capacity units consumed.
 
 =back
 
@@ -38,7 +39,7 @@ I<CapacityUnits> - The total number of capacity units consumed.
 
 =head2 Responses => L<Paws::DynamoDB::BatchGetResponseMap>
 
-A map of table name to a list of items. Each object in I<Responses>
+A map of table name to a list of items. Each object in C<Responses>
 consists of a table name, along with a map of attribute data consisting
 of the data type and attribute value.
 
@@ -46,10 +47,10 @@ of the data type and attribute value.
 =head2 UnprocessedKeys => L<Paws::DynamoDB::BatchGetRequestMap>
 
 A map of tables and their respective keys that were not processed with
-the current response. The I<UnprocessedKeys> value is in the same form
-as I<RequestItems>, so the value can be provided directly to a
-subsequent I<BatchGetItem> operation. For more information, see
-I<RequestItems> in the Request Parameters section.
+the current response. The C<UnprocessedKeys> value is in the same form
+as C<RequestItems>, so the value can be provided directly to a
+subsequent C<BatchGetItem> operation. For more information, see
+C<RequestItems> in the Request Parameters section.
 
 Each element consists of:
 
@@ -57,25 +58,25 @@ Each element consists of:
 
 =item *
 
-I<Keys> - An array of primary key attribute values that define specific
+C<Keys> - An array of primary key attribute values that define specific
 items in the table.
 
 =item *
 
-I<AttributesToGet> - One or more attributes to be retrieved from the
-table or index. By default, all attributes are returned. If a requested
-attribute is not found, it does not appear in the result.
+C<ProjectionExpression> - One or more attributes to be retrieved from
+the table or index. By default, all attributes are returned. If a
+requested attribute is not found, it does not appear in the result.
 
 =item *
 
-I<ConsistentRead> - The consistency of a read operation. If set to
+C<ConsistentRead> - The consistency of a read operation. If set to
 C<true>, then a strongly consistent read is used; otherwise, an
 eventually consistent read is used.
 
 =back
 
 If there are no unprocessed keys remaining, the response contains an
-empty I<UnprocessedKeys> map.
+empty C<UnprocessedKeys> map.
 
 
 =head2 _request_id => Str

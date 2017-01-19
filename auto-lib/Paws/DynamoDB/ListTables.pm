@@ -37,7 +37,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 ExclusiveStartTableName => Str
 
 The first table name that this operation will evaluate. Use the value
-that was returned for I<LastEvaluatedTableName> in a previous
+that was returned for C<LastEvaluatedTableName> in a previous
 operation, so that you can obtain the next page of results.
 
 

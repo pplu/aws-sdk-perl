@@ -33,7 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DynamoDB::P
 =head1 DESCRIPTION
 
 Represents the provisioned throughput settings for a specified table or
-index. The settings can be modified using the I<UpdateTable> operation.
+index. The settings can be modified using the C<UpdateTable> operation.
 
 For current minimum and maximum provisioned throughput values, see
 Limits in the I<Amazon DynamoDB Developer Guide>.
@@ -44,7 +44,7 @@ Limits in the I<Amazon DynamoDB Developer Guide>.
 =head2 B<REQUIRED> ReadCapacityUnits => Int
 
   The maximum number of strongly consistent reads consumed per second
-before DynamoDB returns a I<ThrottlingException>. For more information,
+before DynamoDB returns a C<ThrottlingException>. For more information,
 see Specifying Read and Write Requirements in the I<Amazon DynamoDB
 Developer Guide>.
 
@@ -52,7 +52,7 @@ Developer Guide>.
 =head2 B<REQUIRED> WriteCapacityUnits => Int
 
   The maximum number of writes consumed per second before DynamoDB
-returns a I<ThrottlingException>. For more information, see Specifying
+returns a C<ThrottlingException>. For more information, see Specifying
 Read and Write Requirements in the I<Amazon DynamoDB Developer Guide>.
 
 

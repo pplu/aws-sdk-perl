@@ -18,36 +18,42 @@ Paws::DynamoDB::DeleteItemOutput
 
 =head2 Attributes => L<Paws::DynamoDB::AttributeMap>
 
-A map of attribute names to I<AttributeValue> objects, representing the
-item as it appeared before the I<DeleteItem> operation. This map
-appears in the response only if I<ReturnValues> was specified as
+A map of attribute names to C<AttributeValue> objects, representing the
+item as it appeared before the C<DeleteItem> operation. This map
+appears in the response only if C<ReturnValues> was specified as
 C<ALL_OLD> in the request.
 
 
 =head2 ConsumedCapacity => L<Paws::DynamoDB::ConsumedCapacity>
 
-
+The capacity units consumed by the C<DeleteItem> operation. The data
+returned includes the total provisioned throughput consumed, along with
+statistics for the table and any indexes involved in the operation.
+C<ConsumedCapacity> is only returned if the C<ReturnConsumedCapacity>
+parameter was specified. For more information, see Provisioned
+Throughput in the I<Amazon DynamoDB Developer Guide>.
 
 
 =head2 ItemCollectionMetrics => L<Paws::DynamoDB::ItemCollectionMetrics>
 
 Information about item collections, if any, that were affected by the
-operation. I<ItemCollectionMetrics> is only returned if the request
-asked for it. If the table does not have any local secondary indexes,
-this information is not returned in the response.
+C<DeleteItem> operation. C<ItemCollectionMetrics> is only returned if
+the C<ReturnItemCollectionMetrics> parameter was specified. If the
+table does not have any local secondary indexes, this information is
+not returned in the response.
 
-Each I<ItemCollectionMetrics> element consists of:
+Each C<ItemCollectionMetrics> element consists of:
 
 =over
 
 =item *
 
-I<ItemCollectionKey> - The partition key value of the item collection.
+C<ItemCollectionKey> - The partition key value of the item collection.
 This is the same as the partition key value of the item itself.
 
 =item *
 
-I<SizeEstimateRange> - An estimate of item collection size, in
+C<SizeEstimateRange> - An estimate of item collection size, in
 gigabytes. This value is a two-element array containing a lower bound
 and an upper bound for the estimate. The estimate includes the size of
 all the items in the table, plus the size of all attributes projected

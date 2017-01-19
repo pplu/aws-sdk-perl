@@ -50,52 +50,17 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AttributesToGet => ArrayRef[Str|Undef]
 
-This is a legacy parameter, for backward compatibility. New
-applications should use I<ProjectionExpression> instead. Do not combine
-legacy parameters and expression parameters in a single API call;
-otherwise, DynamoDB will return a I<ValidationException> exception.
-
-This parameter allows you to retrieve attributes of type List or Map;
-however, it cannot retrieve individual elements within a List or a Map.
-
-The names of one or more attributes to retrieve. If no attribute names
-are provided, then all attributes will be returned. If any of the
-requested attributes are not found, they will not appear in the result.
-
-Note that I<AttributesToGet> has no effect on provisioned throughput
-consumption. DynamoDB determines capacity units consumed based on item
-size, not on the amount of data that is returned to an application.
+This is a legacy parameter. Use C<ProjectionExpression> instead. For
+more information, see AttributesToGet in the I<Amazon DynamoDB
+Developer Guide>.
 
 
 
 =head2 ConditionalOperator => Str
 
-This is a legacy parameter, for backward compatibility. New
-applications should use I<FilterExpression> instead. Do not combine
-legacy parameters and expression parameters in a single API call;
-otherwise, DynamoDB will return a I<ValidationException> exception.
-
-A logical operator to apply to the conditions in a I<ScanFilter> map:
-
-=over
-
-=item *
-
-C<AND> - If all of the conditions evaluate to true, then the entire map
-evaluates to true.
-
-=item *
-
-C<OR> - If at least one of the conditions evaluate to true, then the
-entire map evaluates to true.
-
-=back
-
-If you omit I<ConditionalOperator>, then C<AND> is the default.
-
-The operation will succeed only if the entire map evaluates to true.
-
-This parameter does not support attributes of type List or Map.
+This is a legacy parameter. Use C<FilterExpression> instead. For more
+information, see ConditionalOperator in the I<Amazon DynamoDB Developer
+Guide>.
 
 Valid values are: C<"AND">, C<"OR">
 
@@ -108,45 +73,45 @@ scan:
 
 =item *
 
-If I<ConsistentRead> is C<false>, then the data returned from I<Scan>
+If C<ConsistentRead> is C<false>, then the data returned from C<Scan>
 might not contain the results from other recently completed write
 operations (PutItem, UpdateItem or DeleteItem).
 
 =item *
 
-If I<ConsistentRead> is C<true>, then all of the write operations that
-completed before the I<Scan> began are guaranteed to be contained in
-the I<Scan> response.
+If C<ConsistentRead> is C<true>, then all of the write operations that
+completed before the C<Scan> began are guaranteed to be contained in
+the C<Scan> response.
 
 =back
 
-The default setting for I<ConsistentRead> is C<false>.
+The default setting for C<ConsistentRead> is C<false>.
 
-The I<ConsistentRead> parameter is not supported on global secondary
-indexes. If you scan a global secondary index with I<ConsistentRead>
-set to true, you will receive a I<ValidationException>.
+The C<ConsistentRead> parameter is not supported on global secondary
+indexes. If you scan a global secondary index with C<ConsistentRead>
+set to true, you will receive a C<ValidationException>.
 
 
 
 =head2 ExclusiveStartKey => L<Paws::DynamoDB::Key>
 
 The primary key of the first item that this operation will evaluate.
-Use the value that was returned for I<LastEvaluatedKey> in the previous
+Use the value that was returned for C<LastEvaluatedKey> in the previous
 operation.
 
-The data type for I<ExclusiveStartKey> must be String, Number or
+The data type for C<ExclusiveStartKey> must be String, Number or
 Binary. No set data types are allowed.
 
-In a parallel scan, a I<Scan> request that includes
-I<ExclusiveStartKey> must specify the same segment whose previous
-I<Scan> returned the corresponding value of I<LastEvaluatedKey>.
+In a parallel scan, a C<Scan> request that includes
+C<ExclusiveStartKey> must specify the same segment whose previous
+C<Scan> returned the corresponding value of C<LastEvaluatedKey>.
 
 
 
 =head2 ExpressionAttributeNames => L<Paws::DynamoDB::ExpressionAttributeNameMap>
 
 One or more substitution tokens for attribute names in an expression.
-The following are some use cases for using I<ExpressionAttributeNames>:
+The following are some use cases for using C<ExpressionAttributeNames>:
 
 =over
 
@@ -167,7 +132,7 @@ misinterpreted in an expression.
 
 =back
 
-Use the hash character in an expression to dereference an attribute
+Use the B<#> character in an expression to dereference an attribute
 name. For example, consider the following attribute name:
 
 =over
@@ -182,13 +147,13 @@ The name of this attribute conflicts with a reserved word, so it cannot
 be used directly in an expression. (For the complete list of reserved
 words, see Reserved Words in the I<Amazon DynamoDB Developer Guide>).
 To work around this, you could specify the following for
-I<ExpressionAttributeNames>:
+C<ExpressionAttributeNames>:
 
 =over
 
 =item *
 
-{"#P":"Percentile"}
+C<{"#P":"Percentile"}>
 
 =back
 
@@ -199,7 +164,7 @@ example:
 
 =item *
 
-
+C<#P = :val>
 
 =back
 
@@ -221,7 +186,7 @@ the value of the I<ProductStatus> attribute was one of the following:
 
 C<Available | Backordered | Discontinued>
 
-You would first need to specify I<ExpressionAttributeValues> as
+You would first need to specify C<ExpressionAttributeValues> as
 follows:
 
 C<{ ":avail":{"S":"Available"}, ":back":{"S":"Backordered"},
@@ -239,18 +204,15 @@ Conditions in the I<Amazon DynamoDB Developer Guide>.
 =head2 FilterExpression => Str
 
 A string that contains conditions that DynamoDB applies after the
-I<Scan> operation, but before the data is returned to you. Items that
-do not satisfy the I<FilterExpression> criteria are not returned.
+C<Scan> operation, but before the data is returned to you. Items that
+do not satisfy the C<FilterExpression> criteria are not returned.
 
-A I<FilterExpression> is applied after the items have already been
+A C<FilterExpression> is applied after the items have already been
 read; the process of filtering does not consume any additional read
 capacity units.
 
 For more information, see Filter Expressions in the I<Amazon DynamoDB
 Developer Guide>.
-
-I<FilterExpression> replaces the legacy I<ScanFilter> and
-I<ConditionalOperator> parameters.
 
 
 
@@ -267,11 +229,11 @@ C<IndexName> parameter, you must also provide C<TableName>.
 The maximum number of items to evaluate (not necessarily the number of
 matching items). If DynamoDB processes the number of items up to the
 limit while processing the results, it stops the operation and returns
-the matching values up to that point, and a key in I<LastEvaluatedKey>
+the matching values up to that point, and a key in C<LastEvaluatedKey>
 to apply in a subsequent operation, so that you can pick up where you
 left off. Also, if the processed data set size exceeds 1 MB before
 DynamoDB reaches this limit, it stops the operation and returns the
-matching values up to the limit, and a key in I<LastEvaluatedKey> to
+matching values up to the limit, and a key in C<LastEvaluatedKey> to
 apply in a subsequent operation to continue the operation. For more
 information, see Query and Scan in the I<Amazon DynamoDB Developer
 Guide>.
@@ -292,9 +254,6 @@ not appear in the result.
 For more information, see Accessing Item Attributes in the I<Amazon
 DynamoDB Developer Guide>.
 
-I<ProjectionExpression> replaces the legacy I<AttributesToGet>
-parameter.
-
 
 
 =head2 ReturnConsumedCapacity => Str
@@ -305,95 +264,49 @@ Valid values are: C<"INDEXES">, C<"TOTAL">, C<"NONE">
 
 =head2 ScanFilter => L<Paws::DynamoDB::FilterConditionMap>
 
-This is a legacy parameter, for backward compatibility. New
-applications should use I<FilterExpression> instead. Do not combine
-legacy parameters and expression parameters in a single API call;
-otherwise, DynamoDB will return a I<ValidationException> exception.
-
-A condition that evaluates the scan results and returns only the
-desired values.
-
-This parameter does not support attributes of type List or Map.
-
-If you specify more than one condition in the I<ScanFilter> map, then
-by default all of the conditions must evaluate to true. In other words,
-the conditions are ANDed together. (You can use the
-I<ConditionalOperator> parameter to OR the conditions instead. If you
-do this, then at least one of the conditions must evaluate to true,
-rather than all of them.)
-
-Each I<ScanFilter> element consists of an attribute name to compare,
-along with the following:
-
-=over
-
-=item *
-
-I<AttributeValueList> - One or more values to evaluate against the
-supplied attribute. The number of values in the list depends on the
-operator specified in I<ComparisonOperator> .
-
-For type Number, value comparisons are numeric.
-
-String value comparisons for greater than, equals, or less than are
-based on ASCII character code values. For example, C<a> is greater than
-C<A>, and C<a> is greater than C<B>. For a list of code values, see
-http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters.
-
-For Binary, DynamoDB treats each byte of the binary data as unsigned
-when it compares binary values.
-
-For information on specifying data types in JSON, see JSON Data Format
-in the I<Amazon DynamoDB Developer Guide>.
-
-=item *
-
-I<ComparisonOperator> - A comparator for evaluating attributes. For
-example, equals, greater than, less than, etc.
-
-The following comparison operators are available:
-
-C<EQ | NE | LE | LT | GE | GT | NOT_NULL | NULL | CONTAINS |
-NOT_CONTAINS | BEGINS_WITH | IN | BETWEEN>
-
-For complete descriptions of all comparison operators, see Condition.
-
-=back
-
+This is a legacy parameter. Use C<FilterExpression> instead. For more
+information, see ScanFilter in the I<Amazon DynamoDB Developer Guide>.
 
 
 
 =head2 Segment => Int
 
-For a parallel I<Scan> request, I<Segment> identifies an individual
+For a parallel C<Scan> request, C<Segment> identifies an individual
 segment to be scanned by an application worker.
 
 Segment IDs are zero-based, so the first segment is always 0. For
 example, if you want to use four application threads to scan a table or
-an index, then the first thread specifies a I<Segment> value of 0, the
+an index, then the first thread specifies a C<Segment> value of 0, the
 second thread specifies 1, and so on.
 
-The value of I<LastEvaluatedKey> returned from a parallel I<Scan>
-request must be used as I<ExclusiveStartKey> with the same segment ID
-in a subsequent I<Scan> operation.
+The value of C<LastEvaluatedKey> returned from a parallel C<Scan>
+request must be used as C<ExclusiveStartKey> with the same segment ID
+in a subsequent C<Scan> operation.
 
-The value for I<Segment> must be greater than or equal to 0, and less
-than the value provided for I<TotalSegments>.
+The value for C<Segment> must be greater than or equal to 0, and less
+than the value provided for C<TotalSegments>.
 
-If you provide I<Segment>, you must also provide I<TotalSegments>.
+If you provide C<Segment>, you must also provide C<TotalSegments>.
 
 
 
 =head2 Select => Str
 
 The attributes to be returned in the result. You can retrieve all item
-attributes, specific item attributes, or the count of matching items.
+attributes, specific item attributes, the count of matching items, or
+in the case of an index, some or all of the attributes projected into
+the index.
 
 =over
 
 =item *
 
-C<ALL_ATTRIBUTES> - Returns all of the item attributes.
+C<ALL_ATTRIBUTES> - Returns all of the item attributes from the
+specified table or index. If you query a local secondary index, then
+for each matching item in the index DynamoDB will fetch the entire item
+from the parent table. If the index is configured to project all item
+attributes, then all of the data can be obtained from the local
+secondary index, and no fetching is required.
 
 =item *
 
@@ -410,16 +323,33 @@ matching items themselves.
 =item *
 
 C<SPECIFIC_ATTRIBUTES> - Returns only the attributes listed in
-I<AttributesToGet>. This return value is equivalent to specifying
-I<AttributesToGet> without specifying any value for I<Select>.
+C<AttributesToGet>. This return value is equivalent to specifying
+C<AttributesToGet> without specifying any value for C<Select>.
+
+If you query or scan a local secondary index and request only
+attributes that are projected into that index, the operation will read
+only the index and not the table. If any of the requested attributes
+are not projected into the local secondary index, DynamoDB will fetch
+each of these attributes from the parent table. This extra fetching
+incurs additional throughput cost and latency.
+
+If you query or scan a global secondary index, you can only request
+attributes that are projected into the index. Global secondary index
+queries cannot fetch attributes from the parent table.
 
 =back
 
-If neither I<Select> nor I<AttributesToGet> are specified, DynamoDB
-defaults to C<ALL_ATTRIBUTES>. You cannot use both I<AttributesToGet>
-and I<Select> together in a single request, unless the value for
-I<Select> is C<SPECIFIC_ATTRIBUTES>. (This usage is equivalent to
-specifying I<AttributesToGet> without any value for I<Select>.)
+If neither C<Select> nor C<AttributesToGet> are specified, DynamoDB
+defaults to C<ALL_ATTRIBUTES> when accessing a table, and
+C<ALL_PROJECTED_ATTRIBUTES> when accessing an index. You cannot use
+both C<Select> and C<AttributesToGet> together in a single request,
+unless the value for C<Select> is C<SPECIFIC_ATTRIBUTES>. (This usage
+is equivalent to specifying C<AttributesToGet> without any value for
+C<Select>.)
+
+If you use the C<ProjectionExpression> parameter, then the value for
+C<Select> can only be C<SPECIFIC_ATTRIBUTES>. Any other value for
+C<Select> will return an error.
 
 Valid values are: C<"ALL_ATTRIBUTES">, C<"ALL_PROJECTED_ATTRIBUTES">, C<"SPECIFIC_ATTRIBUTES">, C<"COUNT">
 
@@ -433,18 +363,18 @@ belongs.
 
 =head2 TotalSegments => Int
 
-For a parallel I<Scan> request, I<TotalSegments> represents the total
-number of segments into which the I<Scan> operation will be divided.
-The value of I<TotalSegments> corresponds to the number of application
+For a parallel C<Scan> request, C<TotalSegments> represents the total
+number of segments into which the C<Scan> operation will be divided.
+The value of C<TotalSegments> corresponds to the number of application
 workers that will perform the parallel scan. For example, if you want
 to use four application threads to scan a table or an index, specify a
-I<TotalSegments> value of 4.
+C<TotalSegments> value of 4.
 
-The value for I<TotalSegments> must be greater than or equal to 1, and
-less than or equal to 1000000. If you specify a I<TotalSegments> value
-of 1, the I<Scan> operation will be sequential rather than parallel.
+The value for C<TotalSegments> must be greater than or equal to 1, and
+less than or equal to 1000000. If you specify a C<TotalSegments> value
+of 1, the C<Scan> operation will be sequential rather than parallel.
 
-If you specify I<TotalSegments>, you must also specify I<Segment>.
+If you specify C<TotalSegments>, you must also specify C<Segment>.
 
 
 

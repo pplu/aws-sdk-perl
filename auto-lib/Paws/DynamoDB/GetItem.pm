@@ -41,21 +41,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AttributesToGet => ArrayRef[Str|Undef]
 
-This is a legacy parameter, for backward compatibility. New
-applications should use I<ProjectionExpression> instead. Do not combine
-legacy parameters and expression parameters in a single API call;
-otherwise, DynamoDB will return a I<ValidationException> exception.
-
-This parameter allows you to retrieve attributes of type List or Map;
-however, it cannot retrieve individual elements within a List or a Map.
-
-The names of one or more attributes to retrieve. If no attribute names
-are provided, then all attributes will be returned. If any of the
-requested attributes are not found, they will not appear in the result.
-
-Note that I<AttributesToGet> has no effect on provisioned throughput
-consumption. DynamoDB determines capacity units consumed based on item
-size, not on the amount of data that is returned to an application.
+This is a legacy parameter. Use C<ProjectionExpression> instead. For
+more information, see AttributesToGet in the I<Amazon DynamoDB
+Developer Guide>.
 
 
 
@@ -70,7 +58,7 @@ eventually consistent reads.
 =head2 ExpressionAttributeNames => L<Paws::DynamoDB::ExpressionAttributeNameMap>
 
 One or more substitution tokens for attribute names in an expression.
-The following are some use cases for using I<ExpressionAttributeNames>:
+The following are some use cases for using C<ExpressionAttributeNames>:
 
 =over
 
@@ -91,7 +79,7 @@ misinterpreted in an expression.
 
 =back
 
-Use the hash character in an expression to dereference an attribute
+Use the B<#> character in an expression to dereference an attribute
 name. For example, consider the following attribute name:
 
 =over
@@ -106,13 +94,13 @@ The name of this attribute conflicts with a reserved word, so it cannot
 be used directly in an expression. (For the complete list of reserved
 words, see Reserved Words in the I<Amazon DynamoDB Developer Guide>).
 To work around this, you could specify the following for
-I<ExpressionAttributeNames>:
+C<ExpressionAttributeNames>:
 
 =over
 
 =item *
 
-{"#P":"Percentile"}
+C<{"#P":"Percentile"}>
 
 =back
 
@@ -123,7 +111,7 @@ example:
 
 =item *
 
-
+C<#P = :val>
 
 =back
 
@@ -137,7 +125,7 @@ Attributes in the I<Amazon DynamoDB Developer Guide>.
 
 =head2 B<REQUIRED> Key => L<Paws::DynamoDB::Key>
 
-A map of attribute names to I<AttributeValue> objects, representing the
+A map of attribute names to C<AttributeValue> objects, representing the
 primary key of the item to retrieve.
 
 For the primary key, you must provide all of the attributes. For
@@ -160,9 +148,6 @@ not appear in the result.
 
 For more information, see Accessing Item Attributes in the I<Amazon
 DynamoDB Developer Guide>.
-
-I<ProjectionExpression> replaces the legacy I<AttributesToGet>
-parameter.
 
 
 

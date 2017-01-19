@@ -41,7 +41,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 An array of attributes that describe the key schema for the table and
 indexes. If you are adding a new global secondary index to the table,
-I<AttributeDefinitions> must include the key element(s) of the new
+C<AttributeDefinitions> must include the key element(s) of the new
 index.
 
 
@@ -55,16 +55,16 @@ each index in the array, you can request one action:
 
 =item *
 
-I<Create> - add a new global secondary index to the table.
+C<Create> - add a new global secondary index to the table.
 
 =item *
 
-I<Update> - modify the provisioned throughput settings of an existing
+C<Update> - modify the provisioned throughput settings of an existing
 global secondary index.
 
 =item *
 
-I<Delete> - remove a global secondary index from the table.
+C<Delete> - remove a global secondary index from the table.
 
 =back
 
@@ -75,7 +75,8 @@ I<Amazon DynamoDB Developer Guide>.
 
 =head2 ProvisionedThroughput => L<Paws::DynamoDB::ProvisionedThroughput>
 
-
+The new provisioned throughput settings for the specified table or
+index.
 
 
 
@@ -83,7 +84,7 @@ I<Amazon DynamoDB Developer Guide>.
 
 Represents the DynamoDB Streams configuration for the table.
 
-You will receive a I<ResourceInUseException> if you attempt to enable a
+You will receive a C<ResourceInUseException> if you attempt to enable a
 stream on a table that already has a stream, or if you attempt to
 disable a stream on a table which does not have a stream.
 

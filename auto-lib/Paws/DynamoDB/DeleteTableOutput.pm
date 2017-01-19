@@ -16,7 +16,7 @@ Paws::DynamoDB::DeleteTableOutput
 
 =head2 TableDescription => L<Paws::DynamoDB::TableDescription>
 
-
+Represents the properties of a table.
 
 
 =head2 _request_id => Str

@@ -33,7 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DynamoDB::I
 =head1 DESCRIPTION
 
 Information about item collections, if any, that were affected by the
-operation. I<ItemCollectionMetrics> is only returned if the request
+operation. C<ItemCollectionMetrics> is only returned if the request
 asked for it. If the table does not have any local secondary indexes,
 this information is not returned in the response.
 

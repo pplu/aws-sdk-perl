@@ -16,7 +16,7 @@ Paws::DynamoDB::DescribeTableOutput
 
 =head2 Table => L<Paws::DynamoDB::TableDescription>
 
-
+The properties of the table.
 
 
 =head2 _request_id => Str

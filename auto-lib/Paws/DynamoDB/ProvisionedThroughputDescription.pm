@@ -64,16 +64,16 @@ decreases, see Limits in the I<Amazon DynamoDB Developer Guide>.
 =head2 ReadCapacityUnits => Int
 
   The maximum number of strongly consistent reads consumed per second
-before DynamoDB returns a I<ThrottlingException>. Eventually consistent
+before DynamoDB returns a C<ThrottlingException>. Eventually consistent
 reads require less effort than strongly consistent reads, so a setting
-of 50 I<ReadCapacityUnits> per second provides 100 eventually
-consistent I<ReadCapacityUnits> per second.
+of 50 C<ReadCapacityUnits> per second provides 100 eventually
+consistent C<ReadCapacityUnits> per second.
 
 
 =head2 WriteCapacityUnits => Int
 
   The maximum number of writes consumed per second before DynamoDB
-returns a I<ThrottlingException>.
+returns a C<ThrottlingException>.
 
 
 

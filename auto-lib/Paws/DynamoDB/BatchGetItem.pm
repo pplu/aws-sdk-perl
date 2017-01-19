@@ -38,7 +38,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 A map of one or more table names and, for each table, a map that
 describes one or more items to retrieve from that table. Each table
-name can be used only once per I<BatchGetItem> request.
+name can be used only once per C<BatchGetItem> request.
 
 Each element in the map of items to retrieve consists of the following:
 
@@ -46,14 +46,14 @@ Each element in the map of items to retrieve consists of the following:
 
 =item *
 
-I<ConsistentRead> - If C<true>, a strongly consistent read is used; if
+C<ConsistentRead> - If C<true>, a strongly consistent read is used; if
 C<false> (the default), an eventually consistent read is used.
 
 =item *
 
-I<ExpressionAttributeNames> - One or more substitution tokens for
-attribute names in the I<ProjectionExpression> parameter. The following
-are some use cases for using I<ExpressionAttributeNames>:
+C<ExpressionAttributeNames> - One or more substitution tokens for
+attribute names in the C<ProjectionExpression> parameter. The following
+are some use cases for using C<ExpressionAttributeNames>:
 
 =over
 
@@ -74,7 +74,7 @@ misinterpreted in an expression.
 
 =back
 
-Use the hash character in an expression to dereference an attribute
+Use the B<#> character in an expression to dereference an attribute
 name. For example, consider the following attribute name:
 
 =over
@@ -89,13 +89,13 @@ The name of this attribute conflicts with a reserved word, so it cannot
 be used directly in an expression. (For the complete list of reserved
 words, see Reserved Words in the I<Amazon DynamoDB Developer Guide>).
 To work around this, you could specify the following for
-I<ExpressionAttributeNames>:
+C<ExpressionAttributeNames>:
 
 =over
 
 =item *
 
-{"#P":"Percentile"}
+C<{"#P":"Percentile"}>
 
 =back
 
@@ -106,7 +106,7 @@ example:
 
 =item *
 
-
+C<#P = :val>
 
 =back
 
@@ -118,16 +118,15 @@ Attributes in the I<Amazon DynamoDB Developer Guide>.
 
 =item *
 
-I<Keys> - An array of primary key attribute values that define specific
+C<Keys> - An array of primary key attribute values that define specific
 items in the table. For each primary key, you must provide I<all> of
-the key attributes. For example, with a hash type primary key, you only
-need to provide the hash attribute. For a hash-and-range type primary
-key, you must provide I<both> the hash attribute and the range
-attribute.
+the key attributes. For example, with a simple primary key, you only
+need to provide the partition key value. For a composite key, you must
+provide I<both> the partition key value and the sort key value.
 
 =item *
 
-I<ProjectionExpression> - A string that identifies one or more
+C<ProjectionExpression> - A string that identifies one or more
 attributes to retrieve from the table. These attributes can include
 scalars, sets, or elements of a JSON document. The attributes in the
 expression must be separated by commas.
@@ -141,23 +140,9 @@ DynamoDB Developer Guide>.
 
 =item *
 
-I<AttributesToGet> -
-
-This is a legacy parameter, for backward compatibility. New
-applications should use I<ProjectionExpression> instead. Do not combine
-legacy parameters and expression parameters in a single API call;
-otherwise, DynamoDB will return a I<ValidationException> exception.
-
-This parameter allows you to retrieve attributes of type List or Map;
-however, it cannot retrieve individual elements within a List or a Map.
-
-The names of one or more attributes to retrieve. If no attribute names
-are provided, then all attributes will be returned. If any of the
-requested attributes are not found, they will not appear in the result.
-
-Note that I<AttributesToGet> has no effect on provisioned throughput
-consumption. DynamoDB determines capacity units consumed based on item
-size, not on the amount of data that is returned to an application.
+C<AttributesToGet> - This is a legacy parameter. Use
+C<ProjectionExpression> instead. For more information, see
+AttributesToGet in the I<Amazon DynamoDB Developer Guide>.
 
 =back
 

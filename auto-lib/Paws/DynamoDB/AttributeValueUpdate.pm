@@ -32,17 +32,17 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DynamoDB::A
 
 =head1 DESCRIPTION
 
-For the I<UpdateItem> operation, represents the attributes to be
+For the C<UpdateItem> operation, represents the attributes to be
 modified, the action to perform on each, and the new value for each.
 
-You cannot use I<UpdateItem> to update any primary key attributes.
-Instead, you will need to delete the item, and then use I<PutItem> to
+You cannot use C<UpdateItem> to update any primary key attributes.
+Instead, you will need to delete the item, and then use C<PutItem> to
 create a new item with new attributes.
 
 Attribute values cannot be null; string and binary type attributes must
 have lengths greater than zero; and set type attributes must not be
 empty. Requests with empty values will be rejected with a
-I<ValidationException> exception.
+C<ValidationException> exception.
 
 =head1 ATTRIBUTES
 
@@ -70,7 +70,7 @@ the existing value's data type.
 
 If a I<set> of values is specified, then those values are subtracted
 from the old set. For example, if the attribute value was the set
-C<[a,b,c]> and the I<DELETE> action specified C<[a,c]>, then the final
+C<[a,b,c]> and the C<DELETE> action specified C<[a,c]>, then the final
 attribute value would be C<[b]>. Specifying an empty set is an error.
 
 =item *
@@ -83,9 +83,9 @@ the behavior of C<ADD> depends on the data type of the attribute:
 
 =item *
 
-If the existing attribute is a number, and if I<Value> is also a
-number, then the I<Value> is mathematically added to the existing
-attribute. If I<Value> is a negative number, then it is subtracted from
+If the existing attribute is a number, and if C<Value> is also a
+number, then the C<Value> is mathematically added to the existing
+attribute. If C<Value> is a negative number, then it is subtracted from
 the existing attribute.
 
 If you use C<ADD> to increment or decrement a number value for an item
@@ -104,8 +104,8 @@ attribute in the item, with a value of C<3>.
 
 =item *
 
-If the existing data type is a set, and if the I<Value> is also a set,
-then the I<Value> is added to the existing set. (This is a I<set>
+If the existing data type is a set, and if the C<Value> is also a set,
+then the C<Value> is added to the existing set. (This is a I<set>
 operation, not mathematical addition.) For example, if the attribute
 value was the set C<[1,2]>, and the C<ADD> action specified C<[3]>,
 then the final attribute value would be C<[1,2,3]>. An error occurs if
@@ -113,7 +113,7 @@ an Add action is specified for a set attribute and the attribute type
 specified does not match the existing set type.
 
 Both sets must have the same primitive data type. For example, if the
-existing data type is a set of strings, the I<Value> must also be a set
+existing data type is a set of strings, the C<Value> must also be a set
 of strings. The same holds true for number sets and binary sets.
 
 =back
@@ -149,7 +149,13 @@ specified.
 
 =head2 Value => L<Paws::DynamoDB::AttributeValue>
 
-  
+  Represents the data for an attribute.
+
+Each attribute value is described as a name-value pair. The name is the
+data type, and the value is the data itself.
+
+For more information, see Data TYpes in the I<Amazon DynamoDB Developer
+Guide>.
 
 
 
