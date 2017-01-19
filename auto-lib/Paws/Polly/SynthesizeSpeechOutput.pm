@@ -42,7 +42,8 @@ returned is audio/ogg.
 =item *
 
 If you request C<pcm> as the C<OutputFormat>, the C<ContentType>
-returned is audio/pcm.
+returned is audio/pcm in a signed 16-bit, 1 channel (mono),
+little-endian format.
 
 =back
 
