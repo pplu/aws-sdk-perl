@@ -57,7 +57,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AuthToken => Str
 
-The password used to access a password protected server.
+B<Reserved parameter.> The password used to access a password protected
+server.
 
 Password constraints:
 
