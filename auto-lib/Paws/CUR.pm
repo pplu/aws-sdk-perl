@@ -1,0 +1,114 @@
+package Paws::CUR;
+  use Moose;
+  sub service { 'cur' }
+  sub version { '2017-01-06' }
+  sub target_prefix { 'AWSOrigamiServiceGatewayService' }
+  sub json_version { "1.1" }
+  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
+  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+    { base => 'rand', type => 'exponential', growth_factor => 2 }
+  });
+  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  ] });
+
+  with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
+
+  
+  sub DeleteReportDefinition {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CUR::DeleteReportDefinition', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeReportDefinitions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CUR::DescribeReportDefinitions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub PutReportDefinition {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CUR::PutReportDefinition', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  
+
+
+  sub operations { qw/DeleteReportDefinition DescribeReportDefinitions PutReportDefinition / }
+
+1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::CUR - Perl Interface to AWS AWS Cost and Usage Report Service
+
+=head1 SYNOPSIS
+
+  use Paws;
+
+  my $obj = Paws->service('CUR');
+  my $res = $obj->Method(
+    Arg1 => $val1,
+    Arg2 => [ 'V1', 'V2' ],
+    # if Arg3 is an object, the HashRef will be used as arguments to the constructor
+    # of the arguments type
+    Arg3 => { Att1 => 'Val1' },
+    # if Arg4 is an array of objects, the HashRefs will be passed as arguments to
+    # the constructor of the arguments type
+    Arg4 => [ { Att1 => 'Val1'  }, { Att1 => 'Val2' } ],
+  );
+
+=head1 DESCRIPTION
+
+All public APIs for AWS Cost and Usage Report service
+
+=head1 METHODS
+
+=head2 DeleteReportDefinition([ReportName => Str])
+
+Each argument is described in detail in: L<Paws::CUR::DeleteReportDefinition>
+
+Returns: a L<Paws::CUR::DeleteReportDefinitionResponse> instance
+
+  Delete a specified report definition
+
+
+=head2 DescribeReportDefinitions([MaxResults => Int, NextToken => Str])
+
+Each argument is described in detail in: L<Paws::CUR::DescribeReportDefinitions>
+
+Returns: a L<Paws::CUR::DescribeReportDefinitionsResponse> instance
+
+  Describe a list of report definitions owned by the account
+
+
+=head2 PutReportDefinition(ReportDefinition => L<Paws::CUR::ReportDefinition>)
+
+Each argument is described in detail in: L<Paws::CUR::PutReportDefinition>
+
+Returns: a L<Paws::CUR::PutReportDefinitionResponse> instance
+
+  Create a new report definition
+
+
+
+
+=head1 PAGINATORS
+
+Paginator methods are helpers that repetively call methods that return partial results
+
+
+
+
+=head1 SEE ALSO
+
+This service class forms part of L<Paws>
+
+=head1 BUGS and CONTRIBUTIONS
+
+The source code is located here: https://github.com/pplu/aws-sdk-perl
+
+Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+
+=cut
+
