@@ -35,8 +35,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> CertificateArn => Str
 
-String that contains an ACM Certificate ARN. The ARN must be of the
-form:
+The Amazon Resource Name (ARN) of the ACM Certificate. The ARN must
+have the following form:
 
 C<arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012>
 

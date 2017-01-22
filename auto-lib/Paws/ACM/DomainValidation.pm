@@ -3,6 +3,7 @@ package Paws::ACM::DomainValidation;
   has DomainName => (is => 'ro', isa => 'Str', required => 1);
   has ValidationDomain => (is => 'ro', isa => 'Str');
   has ValidationEmails => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has ValidationStatus => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -22,7 +23,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::ACM::DomainValidation object:
 
-  $service_obj->Method(Att1 => { DomainName => $value, ..., ValidationEmails => $value  });
+  $service_obj->Method(Att1 => { DomainName => $value, ..., ValidationStatus => $value  });
 
 =head3 Results returned from an API call
 
@@ -33,28 +34,32 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ACM::Domain
 
 =head1 DESCRIPTION
 
-Structure that contains the domain name, the base validation domain to
-which validation email is sent, and the email addresses used to
-validate the domain identity.
+Contains information about the validation of each domain name in the
+certificate.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> DomainName => Str
 
-  Fully Qualified Domain Name (FQDN) of the form C<www.example.com or >
-C<example.com>.
+  A fully qualified domain name (FQDN) in the certificate. For example,
+C<www.example.com> or C<example.com>.
 
 
 =head2 ValidationDomain => Str
 
-  The base validation domain that acts as the suffix of the email
-addresses that are used to send the emails.
+  The domain name that ACM used to send domain validation emails.
 
 
 =head2 ValidationEmails => ArrayRef[Str|Undef]
 
-  A list of contact address for the domain registrant.
+  A list of email addresses that ACM used to send domain validation
+emails.
+
+
+=head2 ValidationStatus => Str
+
+  The validation status of the domain name.
 
 
 

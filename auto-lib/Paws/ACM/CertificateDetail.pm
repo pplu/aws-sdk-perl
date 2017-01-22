@@ -12,6 +12,7 @@ package Paws::ACM::CertificateDetail;
   has KeyAlgorithm => (is => 'ro', isa => 'Str');
   has NotAfter => (is => 'ro', isa => 'Str');
   has NotBefore => (is => 'ro', isa => 'Str');
+  has RenewalSummary => (is => 'ro', isa => 'Paws::ACM::RenewalSummary');
   has RevocationReason => (is => 'ro', isa => 'Str');
   has RevokedAt => (is => 'ro', isa => 'Str');
   has Serial => (is => 'ro', isa => 'Str');
@@ -50,8 +51,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ACM::Certif
 
 =head1 DESCRIPTION
 
-Contains detailed metadata about an ACM Certificate. This structure is
-returned in the response to a DescribeCertificate request.
+Contains metadata about an ACM certificate. This structure is returned
+in the response to a DescribeCertificate request.
 
 =head1 ATTRIBUTES
 
@@ -77,9 +78,9 @@ www.example.com or example.com.
 
 =head2 DomainValidationOptions => ArrayRef[L<Paws::ACM::DomainValidation>]
 
-  Contains information about the email address or addresses used for
-domain validation. This field exists only when the certificate type is
-C<AMAZON_ISSUED>.
+  Contains information about the initial validation of each domain name
+that occurs as a result of the RequestCertificate request. This field
+exists only when the certificate type is C<AMAZON_ISSUED>.
 
 
 =head2 FailureReason => Str
@@ -128,6 +129,13 @@ private key).
 =head2 NotBefore => Str
 
   The time before which the certificate is not valid.
+
+
+=head2 RenewalSummary => L<Paws::ACM::RenewalSummary>
+
+  Contains information about the status of ACM's managed renewal for the
+certificate. This field exists only when the certificate type is
+C<AMAZON_ISSUED>.
 
 
 =head2 RevocationReason => Str

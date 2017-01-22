@@ -32,49 +32,48 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ACM::Domain
 
 =head1 DESCRIPTION
 
-This structure is used in the request object of the RequestCertificate
-action.
+Contains information about the domain names that you want ACM to use to
+send you emails to validate your ownership of the domain.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> DomainName => Str
 
-  Fully Qualified Domain Name (FQDN) of the certificate being requested.
+  A fully qualified domain name (FQDN) in the certificate request.
 
 
 =head2 B<REQUIRED> ValidationDomain => Str
 
-  The domain to which validation email is sent. This is the base
-validation domain that will act as the suffix of the email addresses.
-This must be the same as the C<DomainName> value or a superdomain of
-the C<DomainName> value. For example, if you requested a certificate
-for C<site.subdomain.example.com> and specify a B<ValidationDomain> of
-C<subdomain.example.com>, ACM sends email to the domain registrant,
-technical contact, and administrative contact in WHOIS for the base
-domain and the following five addresses:
+  The domain name that you want ACM to use to send you validation emails.
+This domain name is the suffix of the email addresses that you want ACM
+to use. This must be the same as the C<DomainName> value or a
+superdomain of the C<DomainName> value. For example, if you request a
+certificate for C<testing.example.com>, you can specify C<example.com>
+for this value. In that case, ACM sends domain validation emails to the
+following five addresses:
 
 =over
 
 =item *
 
-admin@subdomain.example.com
+admin@example.com
 
 =item *
 
-administrator@subdomain.example.com
+administrator@example.com
 
 =item *
 
-hostmaster@subdomain.example.com
+hostmaster@example.com
 
 =item *
 
-postmaster@subdomain.example.com
+postmaster@example.com
 
 =item *
 
-webmaster@subdomain.example.com
+webmaster@example.com
 
 =back
 

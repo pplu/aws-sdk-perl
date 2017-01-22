@@ -16,8 +16,7 @@ Paws::ACM::DescribeCertificateResponse
 
 =head2 Certificate => L<Paws::ACM::CertificateDetail>
 
-Contains a CertificateDetail structure that lists the fields of an ACM
-Certificate.
+Metadata about an ACM certificate.
 
 
 =head2 _request_id => Str

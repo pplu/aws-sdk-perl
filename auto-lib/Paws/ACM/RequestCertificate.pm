@@ -39,47 +39,17 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 B<REQUIRED> DomainName => Str
 
 Fully qualified domain name (FQDN), such as www.example.com, of the
-site you want to secure with an ACM Certificate. Use an asterisk (*) to
-create a wildcard certificate that protects several sites in the same
-domain. For example, *.example.com protects www.example.com,
+site that you want to secure with an ACM Certificate. Use an asterisk
+(*) to create a wildcard certificate that protects several sites in the
+same domain. For example, *.example.com protects www.example.com,
 site.example.com, and images.example.com.
 
 
 
 =head2 DomainValidationOptions => ArrayRef[L<Paws::ACM::DomainValidationOption>]
 
-The base validation domain that will act as the suffix of the email
-addresses that are used to send the emails. This must be the same as
-the C<Domain> value or a superdomain of the C<Domain> value. For
-example, if you requested a certificate for C<test.example.com> and
-specify B<DomainValidationOptions> of C<example.com>, ACM sends email
-to the domain registrant, technical contact, and administrative contact
-in WHOIS and the following five addresses:
-
-=over
-
-=item *
-
-admin@example.com
-
-=item *
-
-administrator@example.com
-
-=item *
-
-hostmaster@example.com
-
-=item *
-
-postmaster@example.com
-
-=item *
-
-webmaster@example.com
-
-=back
-
+The domain name that you want ACM to use to send you emails to validate
+your ownership of the domain.
 
 
 

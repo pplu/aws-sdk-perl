@@ -51,7 +51,7 @@ C<arn:aws:acm:us-east-1:123456789012:certificate/12345678-1234-1234-1234-1234567
 
 =head2 B<REQUIRED> Domain => Str
 
-The Fully Qualified Domain Name (FQDN) of the certificate that needs to
+The fully qualified domain name (FQDN) of the certificate that needs to
 be validated.
 
 

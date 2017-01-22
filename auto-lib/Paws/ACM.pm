@@ -176,12 +176,7 @@ Each argument is described in detail in: L<Paws::ACM::DescribeCertificate>
 
 Returns: a L<Paws::ACM::DescribeCertificateResponse> instance
 
-  Returns a list of the fields contained in the specified ACM
-Certificate. For example, this action returns the certificate status, a
-flag that indicates whether the certificate is associated with any
-other AWS service, and the date at which the certificate request was
-created. You specify the ACM Certificate on input by its Amazon
-Resource Name (ARN).
+  Returns detailed metadata about the specified ACM Certificate.
 
 
 =head2 GetCertificate(CertificateArn => Str)
@@ -253,9 +248,9 @@ Each argument is described in detail in: L<Paws::ACM::ListTagsForCertificate>
 Returns: a L<Paws::ACM::ListTagsForCertificateResponse> instance
 
   Lists the tags that have been applied to the ACM Certificate. Use the
-certificate ARN to specify the certificate. To add a tag to an ACM
-Certificate, use the AddTagsToCertificate action. To delete a tag, use
-the RemoveTagsFromCertificate action.
+certificate's Amazon Resource Name (ARN) to specify the certificate. To
+add a tag to an ACM Certificate, use the AddTagsToCertificate action.
+To delete a tag, use the RemoveTagsFromCertificate action.
 
 
 =head2 RemoveTagsFromCertificate(CertificateArn => Str, Tags => ArrayRef[L<Paws::ACM::Tag>])
