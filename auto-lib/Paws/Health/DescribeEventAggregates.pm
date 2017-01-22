@@ -50,7 +50,8 @@ Values to narrow the results returned.
 
 =head2 MaxResults => Int
 
-The maximum number of items to return in one batch.
+The maximum number of items to return in one batch, between 10 and 100,
+inclusive.
 
 
 

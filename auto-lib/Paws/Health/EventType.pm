@@ -34,7 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Health::Eve
 =head1 DESCRIPTION
 
 Metadata about a type of event that is reported by AWS Health. Data
-consists of the category (for example, C<issue>, the service (for
+consists of the category (for example, C<issue>), the service (for
 example, C<EC2>), and the event type code (for example,
 C<AWS_EC2_SYSTEM_MAINTENANCE_EVENT>).
 

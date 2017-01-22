@@ -45,13 +45,15 @@ required.
 
 =head2 Locale => Str
 
-The locale (language) to return information in. The default is English.
+The locale (language) to return information in. English (en) is the
+default and the only supported value at this time.
 
 
 
 =head2 MaxResults => Int
 
-The maximum number of items to return in one batch.
+The maximum number of items to return in one batch, between 10 and 100,
+inclusive.
 
 
 

@@ -44,7 +44,8 @@ C<"arn:aws:health:us-east-1::event/AWS_EC2_MAINTENANCE_5331",
 
 =head2 Locale => Str
 
-The locale (language) to return information in. The default is English.
+The locale (language) to return information in. English (en) is the
+default and the only supported value at this time.
 
 
 

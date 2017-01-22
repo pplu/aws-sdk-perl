@@ -17,7 +17,11 @@ Paws::Health::DescribeEventTypesResponse
 
 =head2 EventTypes => ArrayRef[L<Paws::Health::EventType>]
 
-List of event types to be matched with.
+A list of event types that match the filter criteria. Event types have
+a category (C<issue>, C<accountNotification>, or C<scheduledChange>), a
+service (for example, C<EC2>, C<RDS>, C<DATAPIPELINE>, C<BILLING>), and
+a code (in the format C<AWS_I<SERVICE>_I<DESCRIPTION> >; for example,
+C<AWS_EC2_SYSTEM_MAINTENANCE_EVENT>).
 
 
 =head2 NextToken => Str
