@@ -6,7 +6,9 @@
  - CodeDeploy API update: IamSessionArn, IamUserArn
  - ECS API update: Attributes and Placement constraints
  - RDS APU update: create Aurora read replica of an RDS
- - DynamoDB APU update: Tagging for DynamoDB
+ - DynamoDB API update: Tagging for DynamoDB
+ - ACM API update
+ - EC2 API update
 
 0.29 27 Dec 2016
  - New functionality: Enabled and documented paginators (methods that repeatedly call methods that 
