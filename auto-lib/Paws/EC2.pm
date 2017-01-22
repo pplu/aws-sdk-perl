@@ -2150,6 +2150,11 @@ Reserved Instance listing at a time. To get a list of your Standard
 Reserved Instances, you can use the DescribeReservedInstances
 operation.
 
+Only Standard Reserved Instances with a capacity reservation can be
+sold in the Reserved Instance Marketplace. Convertible Reserved
+Instances and Standard Reserved Instances with a regional benefit
+cannot be sold.
+
 The Reserved Instance Marketplace matches sellers who want to resell
 Standard Reserved Instance capacity that they no longer need with
 buyers who want to purchase additional capacity. Reserved Instances
@@ -2409,8 +2414,8 @@ Options Sets in the I<Amazon Virtual Private Cloud User Guide>.
 
 You can specify the instance tenancy value for the VPC when you create
 it. You can't change this value for the VPC after you create it. For
-more information, see Dedicated Instances in the I<Amazon Virtual
-Private Cloud User Guide>.
+more information, see Dedicated Instances in the I<Amazon Elastic
+Compute Cloud User Guide>.
 
 
 =head2 CreateVpcEndpoint(ServiceName => Str, VpcId => Str, [ClientToken => Str, DryRun => Bool, PolicyDocument => Str, RouteTableIds => ArrayRef[Str|Undef]])
@@ -2425,7 +2430,8 @@ service in your account. You can specify an endpoint policy to attach
 to the endpoint that will control access to the service from your VPC.
 You can also specify the VPC route tables that use the endpoint.
 
-Currently, only endpoints to Amazon S3 are supported.
+Use DescribeVpcEndpointServices to get a list of supported AWS
+services.
 
 
 =head2 CreateVpcPeeringConnection([DryRun => Bool, PeerOwnerId => Str, PeerVpcId => Str, VpcId => Str])

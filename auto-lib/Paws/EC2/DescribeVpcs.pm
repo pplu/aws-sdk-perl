@@ -87,7 +87,10 @@ C<state> - The state of the VPC (C<pending> | C<available>).
 =item *
 
 C<tag>:I<key>=I<value> - The key/value combination of a tag assigned to
-the resource.
+the resource. Specify the key of the tag in the filter name and the
+value of the tag in the filter value. For example, for the tag
+Purpose=X, specify C<tag:Purpose> for the filter name and C<X> for the
+filter value.
 
 =item *
 

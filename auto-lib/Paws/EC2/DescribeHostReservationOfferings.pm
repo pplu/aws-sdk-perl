@@ -50,8 +50,8 @@ C<instance-family> - The instance family of the offering (e.g., C<m4>).
 
 =item *
 
-C<payment-option> - The payment option (C<No Upfront> | C<Partial
-Upfront> | C<All Upfront>).
+C<payment-option> - The payment option (C<NoUpfront> |
+C<PartialUpfront> | C<AllUpfront>).
 
 =back
 

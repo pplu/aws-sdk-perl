@@ -2,6 +2,7 @@ package Paws::EC2::SpotPlacement;
   use Moose;
   has AvailabilityZone => (is => 'ro', isa => 'Str', xmlname => 'availabilityZone', traits => ['Unwrapped']);
   has GroupName => (is => 'ro', isa => 'Str', xmlname => 'groupName', traits => ['Unwrapped']);
+  has Tenancy => (is => 'ro', isa => 'Str', xmlname => 'tenancy', traits => ['Unwrapped']);
 1;
 
 ### main pod documentation begin ###
@@ -21,7 +22,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::EC2::SpotPlacement object:
 
-  $service_obj->Method(Att1 => { AvailabilityZone => $value, ..., GroupName => $value  });
+  $service_obj->Method(Att1 => { AvailabilityZone => $value, ..., Tenancy => $value  });
 
 =head3 Results returned from an API call
 
@@ -48,6 +49,13 @@ using commas; for example, "us-west-2a, us-west-2b".
 =head2 GroupName => Str
 
   The name of the placement group (for cluster instances).
+
+
+=head2 Tenancy => Str
+
+  The tenancy of the instance (if the instance is running in a VPC). An
+instance with a tenancy of C<dedicated> runs on single-tenant hardware.
+The C<host> tenancy is not supported for Spot instances.
 
 
 
