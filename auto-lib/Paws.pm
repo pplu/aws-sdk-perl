@@ -248,6 +248,8 @@ L<Paws::Batch>
 
 L<Paws::Budgets>
 
+L<Paws::CloudDirectory>
+
 L<Paws::CloudFormation>
 
 L<Paws::CloudFront>

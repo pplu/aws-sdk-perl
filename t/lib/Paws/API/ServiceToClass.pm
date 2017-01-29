@@ -10,6 +10,7 @@ package Paws::API::ServiceToClass;
     appstream => 'AppStream',
     batch => 'Batch',
     budgets => 'Budgets',
+    clouddirectory => 'CloudDirectory',
     cloudformation => 'CloudFormation',
     cloudfront => 'CloudFront',
     cloudhsm => 'CloudHSM',

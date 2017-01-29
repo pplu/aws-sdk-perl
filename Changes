@@ -3,11 +3,16 @@
  - Update RestXmlCaller.pm to fix malformed xml schema issues (PR #133)
  - Don't trim values coming from APIs (Issue #130)
  - New API: CUR (AWS Cost and Usage Report Service) 
- - CodeDeploy API update: IamSessionArn, IamUserArn
+ - New API: CloudDirectory 
+ - CodeDeploy API update: IamSessionArn, IamUserArn, BlueGreen deployments
  - ECS API update: Attributes and Placement constraints
- - RDS APU update: create Aurora read replica of an RDS
+ - RDS API update: create Aurora read replica of an RDS
  - DynamoDB API update: Tagging for DynamoDB
  - ACM API update
+ - EC2 API update
+ - CodeCommit API update
+ - ELBv2 API update
+ - ECS API update 
  - EC2 API update
 
 0.29 27 Dec 2016
