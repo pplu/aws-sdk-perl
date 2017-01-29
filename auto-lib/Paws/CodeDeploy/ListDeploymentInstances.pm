@@ -3,6 +3,7 @@ package Paws::CodeDeploy::ListDeploymentInstances;
   use Moose;
   has DeploymentId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'deploymentId' , required => 1);
   has InstanceStatusFilter => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'instanceStatusFilter' );
+  has InstanceTypeFilter => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'instanceTypeFilter' );
   has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
 
   use MooseX::ClassAttribute;
@@ -74,6 +75,14 @@ Unknown: Include those instance with deployments in an unknown state.
 
 =back
 
+
+
+
+=head2 InstanceTypeFilter => ArrayRef[Str|Undef]
+
+The set of instances in a blue/green deployment, either those in the
+original environment ("BLUE") or those in the replacement environment
+("GREEN"), for which you want to view instance information.
 
 
 

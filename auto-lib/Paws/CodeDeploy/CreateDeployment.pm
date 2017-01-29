@@ -8,6 +8,7 @@ package Paws::CodeDeploy::CreateDeployment;
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description' );
   has IgnoreApplicationStopFailures => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'ignoreApplicationStopFailures' );
   has Revision => (is => 'ro', isa => 'Paws::CodeDeploy::RevisionLocation', traits => ['NameInRequest'], request_name => 'revision' );
+  has TargetInstances => (is => 'ro', isa => 'Paws::CodeDeploy::TargetInstances', traits => ['NameInRequest'], request_name => 'targetInstances' );
   has UpdateOutdatedInstancesOnly => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'updateOutdatedInstancesOnly' );
 
   use MooseX::ClassAttribute;
@@ -95,6 +96,13 @@ instance will be considered to have failed.
 =head2 Revision => L<Paws::CodeDeploy::RevisionLocation>
 
 The type and location of the revision to deploy.
+
+
+
+=head2 TargetInstances => L<Paws::CodeDeploy::TargetInstances>
+
+Information about the instances that will belong to the replacement
+environment in a blue/green deployment.
 
 
 

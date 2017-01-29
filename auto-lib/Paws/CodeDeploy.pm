@@ -49,6 +49,11 @@ package Paws::CodeDeploy;
     my $call_object = $self->new_with_coercions('Paws::CodeDeploy::BatchGetOnPremisesInstances', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ContinueDeployment {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeDeploy::ContinueDeployment', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateApplication {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CodeDeploy::CreateApplication', @_);
@@ -174,6 +179,11 @@ package Paws::CodeDeploy;
     my $call_object = $self->new_with_coercions('Paws::CodeDeploy::RemoveTagsFromOnPremisesInstances', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub SkipWaitTimeForInstanceTermination {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeDeploy::SkipWaitTimeForInstanceTermination', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub StopDeployment {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CodeDeploy::StopDeployment', @_);
@@ -192,7 +202,7 @@ package Paws::CodeDeploy;
   
 
 
-  sub operations { qw/AddTagsToOnPremisesInstances BatchGetApplicationRevisions BatchGetApplications BatchGetDeploymentGroups BatchGetDeploymentInstances BatchGetDeployments BatchGetOnPremisesInstances CreateApplication CreateDeployment CreateDeploymentConfig CreateDeploymentGroup DeleteApplication DeleteDeploymentConfig DeleteDeploymentGroup DeregisterOnPremisesInstance GetApplication GetApplicationRevision GetDeployment GetDeploymentConfig GetDeploymentGroup GetDeploymentInstance GetOnPremisesInstance ListApplicationRevisions ListApplications ListDeploymentConfigs ListDeploymentGroups ListDeploymentInstances ListDeployments ListOnPremisesInstances RegisterApplicationRevision RegisterOnPremisesInstance RemoveTagsFromOnPremisesInstances StopDeployment UpdateApplication UpdateDeploymentGroup / }
+  sub operations { qw/AddTagsToOnPremisesInstances BatchGetApplicationRevisions BatchGetApplications BatchGetDeploymentGroups BatchGetDeploymentInstances BatchGetDeployments BatchGetOnPremisesInstances ContinueDeployment CreateApplication CreateDeployment CreateDeploymentConfig CreateDeploymentGroup DeleteApplication DeleteDeploymentConfig DeleteDeploymentGroup DeregisterOnPremisesInstance GetApplication GetApplicationRevision GetDeployment GetDeploymentConfig GetDeploymentGroup GetDeploymentInstance GetOnPremisesInstance ListApplicationRevisions ListApplications ListDeploymentConfigs ListDeploymentGroups ListDeploymentInstances ListDeployments ListOnPremisesInstances RegisterApplicationRevision RegisterOnPremisesInstance RemoveTagsFromOnPremisesInstances SkipWaitTimeForInstanceTermination StopDeployment UpdateApplication UpdateDeploymentGroup / }
 
 1;
 
@@ -360,6 +370,20 @@ Returns: a L<Paws::CodeDeploy::BatchGetOnPremisesInstancesOutput> instance
   Gets information about one or more on-premises instances.
 
 
+=head2 ContinueDeployment([DeploymentId => Str])
+
+Each argument is described in detail in: L<Paws::CodeDeploy::ContinueDeployment>
+
+Returns: nothing
+
+  Starts the process of rerouting traffic from instances in the original
+environment to instances in thereplacement environment without waiting
+for a specified wait time to elapse. (Traffic rerouting, which is
+achieved by registering instances in the replacement environment with
+the load balancer, can start as soon as all instances have a status of
+Ready.)
+
+
 =head2 CreateApplication(ApplicationName => Str)
 
 Each argument is described in detail in: L<Paws::CodeDeploy::CreateApplication>
@@ -369,7 +393,7 @@ Returns: a L<Paws::CodeDeploy::CreateApplicationOutput> instance
   Creates an application.
 
 
-=head2 CreateDeployment(ApplicationName => Str, [AutoRollbackConfiguration => L<Paws::CodeDeploy::AutoRollbackConfiguration>, DeploymentConfigName => Str, DeploymentGroupName => Str, Description => Str, IgnoreApplicationStopFailures => Bool, Revision => L<Paws::CodeDeploy::RevisionLocation>, UpdateOutdatedInstancesOnly => Bool])
+=head2 CreateDeployment(ApplicationName => Str, [AutoRollbackConfiguration => L<Paws::CodeDeploy::AutoRollbackConfiguration>, DeploymentConfigName => Str, DeploymentGroupName => Str, Description => Str, IgnoreApplicationStopFailures => Bool, Revision => L<Paws::CodeDeploy::RevisionLocation>, TargetInstances => L<Paws::CodeDeploy::TargetInstances>, UpdateOutdatedInstancesOnly => Bool])
 
 Each argument is described in detail in: L<Paws::CodeDeploy::CreateDeployment>
 
@@ -387,7 +411,7 @@ Returns: a L<Paws::CodeDeploy::CreateDeploymentConfigOutput> instance
   Creates a deployment configuration.
 
 
-=head2 CreateDeploymentGroup(ApplicationName => Str, DeploymentGroupName => Str, ServiceRoleArn => Str, [AlarmConfiguration => L<Paws::CodeDeploy::AlarmConfiguration>, AutoRollbackConfiguration => L<Paws::CodeDeploy::AutoRollbackConfiguration>, AutoScalingGroups => ArrayRef[Str|Undef], DeploymentConfigName => Str, Ec2TagFilters => ArrayRef[L<Paws::CodeDeploy::EC2TagFilter>], OnPremisesInstanceTagFilters => ArrayRef[L<Paws::CodeDeploy::TagFilter>], TriggerConfigurations => ArrayRef[L<Paws::CodeDeploy::TriggerConfig>]])
+=head2 CreateDeploymentGroup(ApplicationName => Str, DeploymentGroupName => Str, ServiceRoleArn => Str, [AlarmConfiguration => L<Paws::CodeDeploy::AlarmConfiguration>, AutoRollbackConfiguration => L<Paws::CodeDeploy::AutoRollbackConfiguration>, AutoScalingGroups => ArrayRef[Str|Undef], BlueGreenDeploymentConfiguration => L<Paws::CodeDeploy::BlueGreenDeploymentConfiguration>, DeploymentConfigName => Str, DeploymentStyle => L<Paws::CodeDeploy::DeploymentStyle>, Ec2TagFilters => ArrayRef[L<Paws::CodeDeploy::EC2TagFilter>], LoadBalancerInfo => L<Paws::CodeDeploy::LoadBalancerInfo>, OnPremisesInstanceTagFilters => ArrayRef[L<Paws::CodeDeploy::TagFilter>], TriggerConfigurations => ArrayRef[L<Paws::CodeDeploy::TriggerConfig>]])
 
 Each argument is described in detail in: L<Paws::CodeDeploy::CreateDeploymentGroup>
 
@@ -538,7 +562,7 @@ Returns: a L<Paws::CodeDeploy::ListDeploymentGroupsOutput> instance
 applicable IAM user or AWS account.
 
 
-=head2 ListDeploymentInstances(DeploymentId => Str, [InstanceStatusFilter => ArrayRef[Str|Undef], NextToken => Str])
+=head2 ListDeploymentInstances(DeploymentId => Str, [InstanceStatusFilter => ArrayRef[Str|Undef], InstanceTypeFilter => ArrayRef[Str|Undef], NextToken => Str])
 
 Each argument is described in detail in: L<Paws::CodeDeploy::ListDeploymentInstances>
 
@@ -602,6 +626,17 @@ Returns: nothing
   Removes one or more tags from one or more on-premises instances.
 
 
+=head2 SkipWaitTimeForInstanceTermination([DeploymentId => Str])
+
+Each argument is described in detail in: L<Paws::CodeDeploy::SkipWaitTimeForInstanceTermination>
+
+Returns: nothing
+
+  In a blue/green deployment, overrides any specified wait time and
+starts terminating instances immediately after the traffic routing is
+completed.
+
+
 =head2 StopDeployment(DeploymentId => Str, [AutoRollbackEnabled => Bool])
 
 Each argument is described in detail in: L<Paws::CodeDeploy::StopDeployment>
@@ -620,7 +655,7 @@ Returns: nothing
   Changes the name of an application.
 
 
-=head2 UpdateDeploymentGroup(ApplicationName => Str, CurrentDeploymentGroupName => Str, [AlarmConfiguration => L<Paws::CodeDeploy::AlarmConfiguration>, AutoRollbackConfiguration => L<Paws::CodeDeploy::AutoRollbackConfiguration>, AutoScalingGroups => ArrayRef[Str|Undef], DeploymentConfigName => Str, Ec2TagFilters => ArrayRef[L<Paws::CodeDeploy::EC2TagFilter>], NewDeploymentGroupName => Str, OnPremisesInstanceTagFilters => ArrayRef[L<Paws::CodeDeploy::TagFilter>], ServiceRoleArn => Str, TriggerConfigurations => ArrayRef[L<Paws::CodeDeploy::TriggerConfig>]])
+=head2 UpdateDeploymentGroup(ApplicationName => Str, CurrentDeploymentGroupName => Str, [AlarmConfiguration => L<Paws::CodeDeploy::AlarmConfiguration>, AutoRollbackConfiguration => L<Paws::CodeDeploy::AutoRollbackConfiguration>, AutoScalingGroups => ArrayRef[Str|Undef], BlueGreenDeploymentConfiguration => L<Paws::CodeDeploy::BlueGreenDeploymentConfiguration>, DeploymentConfigName => Str, DeploymentStyle => L<Paws::CodeDeploy::DeploymentStyle>, Ec2TagFilters => ArrayRef[L<Paws::CodeDeploy::EC2TagFilter>], LoadBalancerInfo => L<Paws::CodeDeploy::LoadBalancerInfo>, NewDeploymentGroupName => Str, OnPremisesInstanceTagFilters => ArrayRef[L<Paws::CodeDeploy::TagFilter>], ServiceRoleArn => Str, TriggerConfigurations => ArrayRef[L<Paws::CodeDeploy::TriggerConfig>]])
 
 Each argument is described in detail in: L<Paws::CodeDeploy::UpdateDeploymentGroup>
 

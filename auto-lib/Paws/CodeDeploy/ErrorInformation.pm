@@ -39,7 +39,10 @@ Information about a deployment error.
 
 =head2 Code => Str
 
-  The error code:
+  For information about additional error codes, see Error Codes for AWS
+CodeDeploy in the AWS CodeDeploy User Guide.
+
+The error code:
 
 =over
 

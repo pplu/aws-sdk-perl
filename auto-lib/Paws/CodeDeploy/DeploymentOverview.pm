@@ -3,6 +3,7 @@ package Paws::CodeDeploy::DeploymentOverview;
   has Failed => (is => 'ro', isa => 'Int');
   has InProgress => (is => 'ro', isa => 'Int');
   has Pending => (is => 'ro', isa => 'Int');
+  has Ready => (is => 'ro', isa => 'Int');
   has Skipped => (is => 'ro', isa => 'Int');
   has Succeeded => (is => 'ro', isa => 'Int');
 1;
@@ -54,6 +55,12 @@ deployment.
 =head2 Pending => Int
 
   The number of instances in the deployment in a pending state.
+
+
+=head2 Ready => Int
+
+  The number of instances in a replacement environment ready to receive
+traffic in a blue/green deployment.
 
 
 =head2 Skipped => Int

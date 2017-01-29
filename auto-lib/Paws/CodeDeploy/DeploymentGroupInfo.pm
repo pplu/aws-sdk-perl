@@ -4,10 +4,13 @@ package Paws::CodeDeploy::DeploymentGroupInfo;
   has ApplicationName => (is => 'ro', isa => 'Str', xmlname => 'applicationName', request_name => 'applicationName', traits => ['Unwrapped','NameInRequest']);
   has AutoRollbackConfiguration => (is => 'ro', isa => 'Paws::CodeDeploy::AutoRollbackConfiguration', xmlname => 'autoRollbackConfiguration', request_name => 'autoRollbackConfiguration', traits => ['Unwrapped','NameInRequest']);
   has AutoScalingGroups => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::AutoScalingGroup]', xmlname => 'autoScalingGroups', request_name => 'autoScalingGroups', traits => ['Unwrapped','NameInRequest']);
+  has BlueGreenDeploymentConfiguration => (is => 'ro', isa => 'Paws::CodeDeploy::BlueGreenDeploymentConfiguration', xmlname => 'blueGreenDeploymentConfiguration', request_name => 'blueGreenDeploymentConfiguration', traits => ['Unwrapped','NameInRequest']);
   has DeploymentConfigName => (is => 'ro', isa => 'Str', xmlname => 'deploymentConfigName', request_name => 'deploymentConfigName', traits => ['Unwrapped','NameInRequest']);
   has DeploymentGroupId => (is => 'ro', isa => 'Str', xmlname => 'deploymentGroupId', request_name => 'deploymentGroupId', traits => ['Unwrapped','NameInRequest']);
   has DeploymentGroupName => (is => 'ro', isa => 'Str', xmlname => 'deploymentGroupName', request_name => 'deploymentGroupName', traits => ['Unwrapped','NameInRequest']);
+  has DeploymentStyle => (is => 'ro', isa => 'Paws::CodeDeploy::DeploymentStyle', xmlname => 'deploymentStyle', request_name => 'deploymentStyle', traits => ['Unwrapped','NameInRequest']);
   has Ec2TagFilters => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::EC2TagFilter]', xmlname => 'ec2TagFilters', request_name => 'ec2TagFilters', traits => ['Unwrapped','NameInRequest']);
+  has LoadBalancerInfo => (is => 'ro', isa => 'Paws::CodeDeploy::LoadBalancerInfo', xmlname => 'loadBalancerInfo', request_name => 'loadBalancerInfo', traits => ['Unwrapped','NameInRequest']);
   has OnPremisesInstanceTagFilters => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::TagFilter]', xmlname => 'onPremisesInstanceTagFilters', request_name => 'onPremisesInstanceTagFilters', traits => ['Unwrapped','NameInRequest']);
   has ServiceRoleArn => (is => 'ro', isa => 'Str', xmlname => 'serviceRoleArn', request_name => 'serviceRoleArn', traits => ['Unwrapped','NameInRequest']);
   has TargetRevision => (is => 'ro', isa => 'Paws::CodeDeploy::RevisionLocation', xmlname => 'targetRevision', request_name => 'targetRevision', traits => ['Unwrapped','NameInRequest']);
@@ -68,6 +71,11 @@ the deployment group.
   A list of associated Auto Scaling groups.
 
 
+=head2 BlueGreenDeploymentConfiguration => L<Paws::CodeDeploy::BlueGreenDeploymentConfiguration>
+
+  Information about blue/green deployment options for a deployment group.
+
+
 =head2 DeploymentConfigName => Str
 
   The deployment configuration name.
@@ -83,9 +91,21 @@ the deployment group.
   The deployment group name.
 
 
+=head2 DeploymentStyle => L<Paws::CodeDeploy::DeploymentStyle>
+
+  Information about the type of deployment, either standard or
+blue/green, you want to run and whether to route deployment traffic
+behind a load balancer.
+
+
 =head2 Ec2TagFilters => ArrayRef[L<Paws::CodeDeploy::EC2TagFilter>]
 
   The Amazon EC2 tags on which to filter.
+
+
+=head2 LoadBalancerInfo => L<Paws::CodeDeploy::LoadBalancerInfo>
+
+  Information about the load balancer to use in a blue/green deployment.
 
 
 =head2 OnPremisesInstanceTagFilters => ArrayRef[L<Paws::CodeDeploy::TagFilter>]

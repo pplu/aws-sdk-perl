@@ -1,7 +1,9 @@
 package Paws::CodeDeploy::DeploymentInfo;
   use Moose;
+  has AdditionalDeploymentStatusInfo => (is => 'ro', isa => 'Str', xmlname => 'additionalDeploymentStatusInfo', request_name => 'additionalDeploymentStatusInfo', traits => ['Unwrapped','NameInRequest']);
   has ApplicationName => (is => 'ro', isa => 'Str', xmlname => 'applicationName', request_name => 'applicationName', traits => ['Unwrapped','NameInRequest']);
   has AutoRollbackConfiguration => (is => 'ro', isa => 'Paws::CodeDeploy::AutoRollbackConfiguration', xmlname => 'autoRollbackConfiguration', request_name => 'autoRollbackConfiguration', traits => ['Unwrapped','NameInRequest']);
+  has BlueGreenDeploymentConfiguration => (is => 'ro', isa => 'Paws::CodeDeploy::BlueGreenDeploymentConfiguration', xmlname => 'blueGreenDeploymentConfiguration', request_name => 'blueGreenDeploymentConfiguration', traits => ['Unwrapped','NameInRequest']);
   has CompleteTime => (is => 'ro', isa => 'Str', xmlname => 'completeTime', request_name => 'completeTime', traits => ['Unwrapped','NameInRequest']);
   has CreateTime => (is => 'ro', isa => 'Str', xmlname => 'createTime', request_name => 'createTime', traits => ['Unwrapped','NameInRequest']);
   has Creator => (is => 'ro', isa => 'Str', xmlname => 'creator', request_name => 'creator', traits => ['Unwrapped','NameInRequest']);
@@ -9,13 +11,17 @@ package Paws::CodeDeploy::DeploymentInfo;
   has DeploymentGroupName => (is => 'ro', isa => 'Str', xmlname => 'deploymentGroupName', request_name => 'deploymentGroupName', traits => ['Unwrapped','NameInRequest']);
   has DeploymentId => (is => 'ro', isa => 'Str', xmlname => 'deploymentId', request_name => 'deploymentId', traits => ['Unwrapped','NameInRequest']);
   has DeploymentOverview => (is => 'ro', isa => 'Paws::CodeDeploy::DeploymentOverview', xmlname => 'deploymentOverview', request_name => 'deploymentOverview', traits => ['Unwrapped','NameInRequest']);
+  has DeploymentStyle => (is => 'ro', isa => 'Paws::CodeDeploy::DeploymentStyle', xmlname => 'deploymentStyle', request_name => 'deploymentStyle', traits => ['Unwrapped','NameInRequest']);
   has Description => (is => 'ro', isa => 'Str', xmlname => 'description', request_name => 'description', traits => ['Unwrapped','NameInRequest']);
   has ErrorInformation => (is => 'ro', isa => 'Paws::CodeDeploy::ErrorInformation', xmlname => 'errorInformation', request_name => 'errorInformation', traits => ['Unwrapped','NameInRequest']);
   has IgnoreApplicationStopFailures => (is => 'ro', isa => 'Bool', xmlname => 'ignoreApplicationStopFailures', request_name => 'ignoreApplicationStopFailures', traits => ['Unwrapped','NameInRequest']);
+  has InstanceTerminationWaitTimeStarted => (is => 'ro', isa => 'Bool', xmlname => 'instanceTerminationWaitTimeStarted', request_name => 'instanceTerminationWaitTimeStarted', traits => ['Unwrapped','NameInRequest']);
+  has LoadBalancerInfo => (is => 'ro', isa => 'Paws::CodeDeploy::LoadBalancerInfo', xmlname => 'loadBalancerInfo', request_name => 'loadBalancerInfo', traits => ['Unwrapped','NameInRequest']);
   has Revision => (is => 'ro', isa => 'Paws::CodeDeploy::RevisionLocation', xmlname => 'revision', request_name => 'revision', traits => ['Unwrapped','NameInRequest']);
   has RollbackInfo => (is => 'ro', isa => 'Paws::CodeDeploy::RollbackInfo', xmlname => 'rollbackInfo', request_name => 'rollbackInfo', traits => ['Unwrapped','NameInRequest']);
   has StartTime => (is => 'ro', isa => 'Str', xmlname => 'startTime', request_name => 'startTime', traits => ['Unwrapped','NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', xmlname => 'status', request_name => 'status', traits => ['Unwrapped','NameInRequest']);
+  has TargetInstances => (is => 'ro', isa => 'Paws::CodeDeploy::TargetInstances', xmlname => 'targetInstances', request_name => 'targetInstances', traits => ['Unwrapped','NameInRequest']);
   has UpdateOutdatedInstancesOnly => (is => 'ro', isa => 'Bool', xmlname => 'updateOutdatedInstancesOnly', request_name => 'updateOutdatedInstancesOnly', traits => ['Unwrapped','NameInRequest']);
 1;
 
@@ -36,20 +42,27 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CodeDeploy::DeploymentInfo object:
 
-  $service_obj->Method(Att1 => { ApplicationName => $value, ..., UpdateOutdatedInstancesOnly => $value  });
+  $service_obj->Method(Att1 => { AdditionalDeploymentStatusInfo => $value, ..., UpdateOutdatedInstancesOnly => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::CodeDeploy::DeploymentInfo object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->ApplicationName
+  $result->Att1->AdditionalDeploymentStatusInfo
 
 =head1 DESCRIPTION
 
 Information about a deployment.
 
 =head1 ATTRIBUTES
+
+
+=head2 AdditionalDeploymentStatusInfo => Str
+
+  Provides information about the results of a deployment, such as whether
+instances in the original environment in a blue/green deployment were
+not terminated.
 
 
 =head2 ApplicationName => Str
@@ -61,6 +74,11 @@ Information about a deployment.
 
   Information about the automatic rollback configuration associated with
 the deployment.
+
+
+=head2 BlueGreenDeploymentConfiguration => L<Paws::CodeDeploy::BlueGreenDeploymentConfiguration>
+
+  Information about blue/green deployment options for this deployment.
 
 
 =head2 CompleteTime => Str
@@ -115,6 +133,13 @@ codeDeployRollback: A rollback process created the deployment.
   A summary of the deployment status of the instances in the deployment.
 
 
+=head2 DeploymentStyle => L<Paws::CodeDeploy::DeploymentStyle>
+
+  Information about the type of deployment, either standard or
+blue/green, you want to run and whether to route deployment traffic
+behind a load balancer.
+
+
 =head2 Description => Str
 
   A comment about the deployment.
@@ -136,6 +161,19 @@ If false or not specified, then if the deployment causes the
 ApplicationStop deployment lifecycle event to an instance to fail, the
 deployment to that instance will stop, and the deployment to that
 instance will be considered to have failed.
+
+
+=head2 InstanceTerminationWaitTimeStarted => Bool
+
+  Indicates whether the wait period set for the termination of instances
+in the original environment has started. Status is 'false' if the
+KEEP_ALIVE option is specified; otherwise, 'true' as soon as the
+termination wait period starts.
+
+
+=head2 LoadBalancerInfo => L<Paws::CodeDeploy::LoadBalancerInfo>
+
+  Information about the load balancer used in this blue/green deployment.
 
 
 =head2 Revision => L<Paws::CodeDeploy::RevisionLocation>
@@ -162,6 +200,12 @@ back-end servers that participate in the deployment process.
 =head2 Status => Str
 
   The current state of the deployment as a whole.
+
+
+=head2 TargetInstances => L<Paws::CodeDeploy::TargetInstances>
+
+  Information about the instances that belong to the replacement
+environment in a blue/green deployment.
 
 
 =head2 UpdateOutdatedInstancesOnly => Bool
