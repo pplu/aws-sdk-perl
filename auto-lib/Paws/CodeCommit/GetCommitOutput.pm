@@ -16,7 +16,8 @@ Paws::CodeCommit::GetCommitOutput
 
 =head2 B<REQUIRED> Commit => L<Paws::CodeCommit::Commit>
 
-Information about the specified commit.
+A commit data type object that contains information about the specified
+commit.
 
 
 =head2 _request_id => Str

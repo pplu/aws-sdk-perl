@@ -34,6 +34,11 @@ package Paws::CodeCommit;
     my $call_object = $self->new_with_coercions('Paws::CodeCommit::DeleteRepository', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetBlob {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeCommit::GetBlob', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetBranch {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CodeCommit::GetBranch', @_);
@@ -42,6 +47,11 @@ package Paws::CodeCommit;
   sub GetCommit {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CodeCommit::GetCommit', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetDifferences {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeCommit::GetDifferences', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetRepository {
@@ -134,7 +144,7 @@ package Paws::CodeCommit;
   }
 
 
-  sub operations { qw/BatchGetRepositories CreateBranch CreateRepository DeleteRepository GetBranch GetCommit GetRepository GetRepositoryTriggers ListBranches ListRepositories PutRepositoryTriggers TestRepositoryTriggers UpdateDefaultBranch UpdateRepositoryDescription UpdateRepositoryName / }
+  sub operations { qw/BatchGetRepositories CreateBranch CreateRepository DeleteRepository GetBlob GetBranch GetCommit GetDifferences GetRepository GetRepositoryTriggers ListBranches ListRepositories PutRepositoryTriggers TestRepositoryTriggers UpdateDefaultBranch UpdateRepositoryDescription UpdateRepositoryName / }
 
 1;
 
@@ -165,80 +175,114 @@ Paws::CodeCommit - Perl Interface to AWS AWS CodeCommit
 AWS CodeCommit
 
 This is the I<AWS CodeCommit API Reference>. This reference provides
-descriptions of the operations and data types for AWS CodeCommit API.
+descriptions of the operations and data types for AWS CodeCommit API
+along with usage examples.
 
 You can use the AWS CodeCommit API to work with the following objects:
 
-=over
-
-=item * Repositories, by calling the following:
+Repositories, by calling the following:
 
 =over
 
-=item * BatchGetRepositories, which returns information about one or
-more repositories associated with your AWS account
+=item *
 
-=item * CreateRepository, which creates an AWS CodeCommit repository
+BatchGetRepositories, which returns information about one or more
+repositories associated with your AWS account
 
-=item * DeleteRepository, which deletes an AWS CodeCommit repository
+=item *
 
-=item * GetRepository, which returns information about a specified
-repository
+CreateRepository, which creates an AWS CodeCommit repository
 
-=item * ListRepositories, which lists all AWS CodeCommit repositories
+=item *
+
+DeleteRepository, which deletes an AWS CodeCommit repository
+
+=item *
+
+GetRepository, which returns information about a specified repository
+
+=item *
+
+ListRepositories, which lists all AWS CodeCommit repositories
 associated with your AWS account
 
-=item * UpdateRepositoryDescription, which sets or updates the
-description of the repository
+=item *
 
-=item * UpdateRepositoryName, which changes the name of the repository.
-If you change the name of a repository, no other users of that
-repository will be able to access it until you send them the new HTTPS
-or SSH URL to use.
+UpdateRepositoryDescription, which sets or updates the description of
+the repository
 
-=back
+=item *
 
-=item * Branches, by calling the following:
-
-=over
-
-=item * CreateBranch, which creates a new branch in a specified
-repository
-
-=item * GetBranch, which returns information about a specified branch
-
-=item * ListBranches, which lists all branches for a specified
-repository
-
-=item * UpdateDefaultBranch, which changes the default branch for a
-repository
+UpdateRepositoryName, which changes the name of the repository. If you
+change the name of a repository, no other users of that repository will
+be able to access it until you send them the new HTTPS or SSH URL to
+use.
 
 =back
 
-=item * Information about committed code in a repository, by calling
-the following:
+Branches, by calling the following:
 
 =over
 
-=item * GetCommit, which returns information about a commit, including
-commit messages and committer information.
+=item *
+
+CreateBranch, which creates a new branch in a specified repository
+
+=item *
+
+GetBranch, which returns information about a specified branch
+
+=item *
+
+ListBranches, which lists all branches for a specified repository
+
+=item *
+
+UpdateDefaultBranch, which changes the default branch for a repository
 
 =back
 
-=item * Triggers, by calling the following:
+Information about committed code in a repository, by calling the
+following:
 
 =over
 
-=item * GetRepositoryTriggers, which returns information about triggers
+=item *
+
+GetBlob, which returns the base-64 encoded content of an individual Git
+blob object within a repository
+
+=item *
+
+GetCommit, which returns information about a commit, including commit
+messages and author and committer information
+
+=item *
+
+GetDifferences, which returns information about the differences in a
+valid commit specifier (such as a branch, tag, HEAD, commit ID or other
+fully qualified reference)
+
+=back
+
+Triggers, by calling the following:
+
+=over
+
+=item *
+
+GetRepositoryTriggers, which returns information about triggers
 configured for a repository
 
-=item * PutRepositoryTriggers, which replaces all triggers for a
-repository and can be used to create or delete triggers
+=item *
 
-=item * TestRepositoryTriggers, which tests the functionality of a
-repository trigger by sending data to the trigger target
+PutRepositoryTriggers, which replaces all triggers for a repository and
+can be used to create or delete triggers
 
-=back
+=item *
+
+TestRepositoryTriggers, which tests the functionality of a repository
+trigger by sending data to the trigger target
 
 =back
 
@@ -298,6 +342,16 @@ After a repository is deleted, all future push calls to the deleted
 repository will fail.
 
 
+=head2 GetBlob(BlobId => Str, RepositoryName => Str)
+
+Each argument is described in detail in: L<Paws::CodeCommit::GetBlob>
+
+Returns: a L<Paws::CodeCommit::GetBlobOutput> instance
+
+  Returns the base-64 encoded content of an individual blob within a
+repository.
+
+
 =head2 GetBranch([BranchName => Str, RepositoryName => Str])
 
 Each argument is described in detail in: L<Paws::CodeCommit::GetBranch>
@@ -318,6 +372,17 @@ Returns: a L<Paws::CodeCommit::GetCommitOutput> instance
 committer information.
 
 
+=head2 GetDifferences(AfterCommitSpecifier => Str, RepositoryName => Str, [AfterPath => Str, BeforeCommitSpecifier => Str, BeforePath => Str, MaxResults => Int, NextToken => Str])
+
+Each argument is described in detail in: L<Paws::CodeCommit::GetDifferences>
+
+Returns: a L<Paws::CodeCommit::GetDifferencesOutput> instance
+
+  Returns information about the differences in a valid commit specifier
+(such as a branch, tag, HEAD, commit ID or other fully qualified
+reference). Results can be limited to a specified path.
+
+
 =head2 GetRepository(RepositoryName => Str)
 
 Each argument is described in detail in: L<Paws::CodeCommit::GetRepository>
@@ -334,7 +399,7 @@ description field in any application that uses this API to display the
 repository description on a web page.
 
 
-=head2 GetRepositoryTriggers([RepositoryName => Str])
+=head2 GetRepositoryTriggers(RepositoryName => Str)
 
 Each argument is described in detail in: L<Paws::CodeCommit::GetRepositoryTriggers>
 
@@ -361,7 +426,7 @@ Returns: a L<Paws::CodeCommit::ListRepositoriesOutput> instance
   Gets information about one or more repositories.
 
 
-=head2 PutRepositoryTriggers([RepositoryName => Str, Triggers => ArrayRef[L<Paws::CodeCommit::RepositoryTrigger>]])
+=head2 PutRepositoryTriggers(RepositoryName => Str, Triggers => ArrayRef[L<Paws::CodeCommit::RepositoryTrigger>])
 
 Each argument is described in detail in: L<Paws::CodeCommit::PutRepositoryTriggers>
 
@@ -371,7 +436,7 @@ Returns: a L<Paws::CodeCommit::PutRepositoryTriggersOutput> instance
 delete triggers.
 
 
-=head2 TestRepositoryTriggers([RepositoryName => Str, Triggers => ArrayRef[L<Paws::CodeCommit::RepositoryTrigger>]])
+=head2 TestRepositoryTriggers(RepositoryName => Str, Triggers => ArrayRef[L<Paws::CodeCommit::RepositoryTrigger>])
 
 Each argument is described in detail in: L<Paws::CodeCommit::TestRepositoryTriggers>
 

@@ -48,20 +48,26 @@ Returns information about a specific commit.
 
 =head2 Author => L<Paws::CodeCommit::UserInfo>
 
-  Information about the author of the specified commit.
+  Information about the author of the specified commit. Information
+includes the date in timestamp format with GMT offset, the name of the
+author, and the email address for the author, as configured in Git.
 
 
 =head2 Committer => L<Paws::CodeCommit::UserInfo>
 
   Information about the person who committed the specified commit, also
-known as the committer. For more information about the difference
-between an author and a committer in Git, see Viewing the Commit
-History in Pro Git by Scott Chacon and Ben Straub.
+known as the committer. Information includes the date in timestamp
+format with GMT offset, the name of the committer, and the email
+address for the committer, as configured in Git.
+
+For more information about the difference between an author and a
+committer in Git, see Viewing the Commit History in Pro Git by Scott
+Chacon and Ben Straub.
 
 
 =head2 Message => Str
 
-  The message associated with the specified commit.
+  The commit message associated with the specified commit.
 
 
 =head2 Parents => ArrayRef[Str|Undef]

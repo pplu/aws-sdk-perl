@@ -2,9 +2,9 @@ package Paws::CodeCommit::RepositoryTrigger;
   use Moose;
   has Branches => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'branches', request_name => 'branches', traits => ['Unwrapped','NameInRequest']);
   has CustomData => (is => 'ro', isa => 'Str', xmlname => 'customData', request_name => 'customData', traits => ['Unwrapped','NameInRequest']);
-  has DestinationArn => (is => 'ro', isa => 'Str', xmlname => 'destinationArn', request_name => 'destinationArn', traits => ['Unwrapped','NameInRequest']);
-  has Events => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'events', request_name => 'events', traits => ['Unwrapped','NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', xmlname => 'name', request_name => 'name', traits => ['Unwrapped','NameInRequest']);
+  has DestinationArn => (is => 'ro', isa => 'Str', xmlname => 'destinationArn', request_name => 'destinationArn', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has Events => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'events', request_name => 'events', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has Name => (is => 'ro', isa => 'Str', xmlname => 'name', request_name => 'name', traits => ['Unwrapped','NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -52,21 +52,22 @@ branches are specified, the trigger will apply to all branches.
 the information sent to the target of the trigger.
 
 
-=head2 DestinationArn => Str
+=head2 B<REQUIRED> DestinationArn => Str
 
   The ARN of the resource that is the target for a trigger. For example,
 the ARN of a topic in Amazon Simple Notification Service (SNS).
 
 
-=head2 Events => ArrayRef[Str|Undef]
+=head2 B<REQUIRED> Events => ArrayRef[Str|Undef]
 
   The repository events that will cause the trigger to run actions in
 another service, such as sending a notification through Amazon Simple
-Notification Service (SNS). If no events are specified, the trigger
-will run for all repository events.
+Notification Service (SNS).
+
+The valid value "all" cannot be used with any other values.
 
 
-=head2 Name => Str
+=head2 B<REQUIRED> Name => Str
 
   The name of the trigger.
 

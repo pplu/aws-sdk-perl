@@ -1,8 +1,8 @@
 
 package Paws::CodeCommit::PutRepositoryTriggers;
   use Moose;
-  has RepositoryName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'repositoryName' );
-  has Triggers => (is => 'ro', isa => 'ArrayRef[Paws::CodeCommit::RepositoryTrigger]', traits => ['NameInRequest'], request_name => 'triggers' );
+  has RepositoryName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'repositoryName' , required => 1);
+  has Triggers => (is => 'ro', isa => 'ArrayRef[Paws::CodeCommit::RepositoryTrigger]', traits => ['NameInRequest'], request_name => 'triggers' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -34,14 +34,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 RepositoryName => Str
+=head2 B<REQUIRED> RepositoryName => Str
 
 The name of the repository where you want to create or update the
 trigger.
 
 
 
-=head2 Triggers => ArrayRef[L<Paws::CodeCommit::RepositoryTrigger>]
+=head2 B<REQUIRED> Triggers => ArrayRef[L<Paws::CodeCommit::RepositoryTrigger>]
 
 The JSON block of configuration information for each trigger.
 

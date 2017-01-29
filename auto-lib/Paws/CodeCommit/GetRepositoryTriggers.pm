@@ -1,7 +1,7 @@
 
 package Paws::CodeCommit::GetRepositoryTriggers;
   use Moose;
-  has RepositoryName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'repositoryName' );
+  has RepositoryName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'repositoryName' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -33,7 +33,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 RepositoryName => Str
+=head2 B<REQUIRED> RepositoryName => Str
 
 The name of the repository for which the trigger is configured.
 
