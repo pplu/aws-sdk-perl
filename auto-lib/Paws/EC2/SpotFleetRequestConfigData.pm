@@ -6,6 +6,7 @@ package Paws::EC2::SpotFleetRequestConfigData;
   has FulfilledCapacity => (is => 'ro', isa => 'Num', xmlname => 'fulfilledCapacity', traits => ['Unwrapped']);
   has IamFleetRole => (is => 'ro', isa => 'Str', xmlname => 'iamFleetRole', traits => ['Unwrapped'], required => 1);
   has LaunchSpecifications => (is => 'ro', isa => 'ArrayRef[Paws::EC2::SpotFleetLaunchSpecification]', xmlname => 'launchSpecifications', traits => ['Unwrapped'], required => 1);
+  has ReplaceUnhealthyInstances => (is => 'ro', isa => 'Bool', xmlname => 'replaceUnhealthyInstances', traits => ['Unwrapped']);
   has SpotPrice => (is => 'ro', isa => 'Str', xmlname => 'spotPrice', traits => ['Unwrapped'], required => 1);
   has TargetCapacity => (is => 'ro', isa => 'Int', xmlname => 'targetCapacity', traits => ['Unwrapped'], required => 1);
   has TerminateInstancesWithExpiration => (is => 'ro', isa => 'Bool', xmlname => 'terminateInstancesWithExpiration', traits => ['Unwrapped']);
@@ -84,6 +85,11 @@ set C<terminateInstancesWithExpiration>.
 =head2 B<REQUIRED> LaunchSpecifications => ArrayRef[L<Paws::EC2::SpotFleetLaunchSpecification>]
 
   Information about the launch specifications for the Spot fleet request.
+
+
+=head2 ReplaceUnhealthyInstances => Bool
+
+  Indicates whether Spot fleet should replace unhealthy instances.
 
 
 =head2 B<REQUIRED> SpotPrice => Str

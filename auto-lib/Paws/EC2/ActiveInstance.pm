@@ -1,5 +1,6 @@
 package Paws::EC2::ActiveInstance;
   use Moose;
+  has InstanceHealth => (is => 'ro', isa => 'Str', xmlname => 'instanceHealth', traits => ['Unwrapped']);
   has InstanceId => (is => 'ro', isa => 'Str', xmlname => 'instanceId', traits => ['Unwrapped']);
   has InstanceType => (is => 'ro', isa => 'Str', xmlname => 'instanceType', traits => ['Unwrapped']);
   has SpotInstanceRequestId => (is => 'ro', isa => 'Str', xmlname => 'spotInstanceRequestId', traits => ['Unwrapped']);
@@ -22,20 +23,28 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::EC2::ActiveInstance object:
 
-  $service_obj->Method(Att1 => { InstanceId => $value, ..., SpotInstanceRequestId => $value  });
+  $service_obj->Method(Att1 => { InstanceHealth => $value, ..., SpotInstanceRequestId => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::ActiveInstance object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->InstanceId
+  $result->Att1->InstanceHealth
 
 =head1 DESCRIPTION
 
 This class has no description
 
 =head1 ATTRIBUTES
+
+
+=head2 InstanceHealth => Str
+
+  The health status of the instance. If the status of both the instance
+status check and the system status check is C<impaired>, the health
+status of the instance is C<unhealthy>. Otherwise, the health status is
+C<healthy>.
 
 
 =head2 InstanceId => Str
