@@ -1,6 +1,7 @@
 
 package Paws::ELBv2::CreateLoadBalancer;
   use Moose;
+  has IpAddressType => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has Scheme => (is => 'ro', isa => 'Str');
   has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
@@ -36,6 +37,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
+=head2 IpAddressType => Str
+
+The type of IP addresses used by the subnets for your load balancer.
+The possible values are C<ipv4> (for IPv4 addresses) and C<dualstack>
+(for IPv4 and IPv6 addresses). Internal load balancers must use
+C<ipv4>.
+
+Valid values are: C<"ipv4">, C<"dualstack">
 
 =head2 B<REQUIRED> Name => Str
 

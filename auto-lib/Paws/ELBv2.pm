@@ -143,6 +143,11 @@ package Paws::ELBv2;
     my $call_object = $self->new_with_coercions('Paws::ELBv2::RemoveTags', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub SetIpAddressType {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ELBv2::SetIpAddressType', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub SetRulePriorities {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ELBv2::SetRulePriorities', @_);
@@ -224,7 +229,7 @@ package Paws::ELBv2;
   }
 
 
-  sub operations { qw/AddTags CreateListener CreateLoadBalancer CreateRule CreateTargetGroup DeleteListener DeleteLoadBalancer DeleteRule DeleteTargetGroup DeregisterTargets DescribeListeners DescribeLoadBalancerAttributes DescribeLoadBalancers DescribeRules DescribeSSLPolicies DescribeTags DescribeTargetGroupAttributes DescribeTargetGroups DescribeTargetHealth ModifyListener ModifyLoadBalancerAttributes ModifyRule ModifyTargetGroup ModifyTargetGroupAttributes RegisterTargets RemoveTags SetRulePriorities SetSecurityGroups SetSubnets / }
+  sub operations { qw/AddTags CreateListener CreateLoadBalancer CreateRule CreateTargetGroup DeleteListener DeleteLoadBalancer DeleteRule DeleteTargetGroup DeregisterTargets DescribeListeners DescribeLoadBalancerAttributes DescribeLoadBalancers DescribeRules DescribeSSLPolicies DescribeTags DescribeTargetGroupAttributes DescribeTargetGroups DescribeTargetHealth ModifyListener ModifyLoadBalancerAttributes ModifyRule ModifyTargetGroup ModifyTargetGroupAttributes RegisterTargets RemoveTags SetIpAddressType SetRulePriorities SetSecurityGroups SetSubnets / }
 
 1;
 
@@ -364,7 +369,7 @@ For more information, see Listeners for Your Application Load Balancers
 in the I<Application Load Balancers Guide>.
 
 
-=head2 CreateLoadBalancer(Name => Str, Subnets => ArrayRef[Str|Undef], [Scheme => Str, SecurityGroups => ArrayRef[Str|Undef], Tags => ArrayRef[L<Paws::ELBv2::Tag>]])
+=head2 CreateLoadBalancer(Name => Str, Subnets => ArrayRef[Str|Undef], [IpAddressType => Str, Scheme => Str, SecurityGroups => ArrayRef[Str|Undef], Tags => ArrayRef[L<Paws::ELBv2::Tag>]])
 
 Each argument is described in detail in: L<Paws::ELBv2::CreateLoadBalancer>
 
@@ -372,13 +377,13 @@ Returns: a L<Paws::ELBv2::CreateLoadBalancerOutput> instance
 
   Creates an Application Load Balancer.
 
-To create listeners for your load balancer, use CreateListener. You can
-add security groups, subnets, and tags when you create your load
-balancer, or you can add them later using SetSecurityGroups,
-SetSubnets, and AddTags.
+When you create a load balancer, you can specify security groups,
+subnets, IP address type, and tags. Otherwise, you could do so later
+using SetSecurityGroups, SetSubnets, SetIpAddressType, and AddTags.
 
-To describe your current load balancers, see DescribeLoadBalancers.
-When you are finished with a load balancer, you can delete it using
+To create listeners for your load balancer, use CreateListener. To
+describe your current load balancers, see DescribeLoadBalancers. When
+you are finished with a load balancer, you can delete it using
 DeleteLoadBalancer.
 
 You can create up to 20 load balancers per region per account. You can
@@ -673,7 +678,7 @@ you can override the port for a target when you register it.
 
 The target must be in the virtual private cloud (VPC) that you
 specified for the target group. If the target is an EC2 instance, it
-can't be in the C<stopped> or C<running> state when you register it.
+must be in the C<running> state when you register it.
 
 To remove a target from a target group, use DeregisterTargets.
 
@@ -687,6 +692,16 @@ Returns: a L<Paws::ELBv2::RemoveTagsOutput> instance
   Removes the specified tags from the specified resource.
 
 To list the current tags for your resources, use DescribeTags.
+
+
+=head2 SetIpAddressType(IpAddressType => Str, LoadBalancerArn => Str)
+
+Each argument is described in detail in: L<Paws::ELBv2::SetIpAddressType>
+
+Returns: a L<Paws::ELBv2::SetIpAddressTypeOutput> instance
+
+  Sets the type of IP addresses used by the subnets of the specified
+Application Load Balancer.
 
 
 =head2 SetRulePriorities(RulePriorities => ArrayRef[L<Paws::ELBv2::RulePriorityPair>])

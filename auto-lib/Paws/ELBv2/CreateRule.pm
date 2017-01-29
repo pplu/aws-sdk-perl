@@ -46,8 +46,10 @@ group.
 =head2 B<REQUIRED> Conditions => ArrayRef[L<Paws::ELBv2::RuleCondition>]
 
 A condition. Each condition has the field C<path-pattern> and specifies
-one path pattern. A path pattern is case sensitive, can be up to 255
-characters in length, and can contain any of the following characters:
+one path pattern. A path pattern is case sensitive, can be up to 128
+characters in length, and can contain any of the following characters.
+Note that you can include up to three wildcard characters in a path
+pattern.
 
 =over
 

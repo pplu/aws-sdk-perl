@@ -4,6 +4,7 @@ package Paws::ELBv2::LoadBalancer;
   has CanonicalHostedZoneId => (is => 'ro', isa => 'Str');
   has CreatedTime => (is => 'ro', isa => 'Str');
   has DNSName => (is => 'ro', isa => 'Str');
+  has IpAddressType => (is => 'ro', isa => 'Str');
   has LoadBalancerArn => (is => 'ro', isa => 'Str');
   has LoadBalancerName => (is => 'ro', isa => 'Str');
   has Scheme => (is => 'ro', isa => 'Str');
@@ -65,6 +66,13 @@ balancer.
 =head2 DNSName => Str
 
   The public DNS name of the load balancer.
+
+
+=head2 IpAddressType => Str
+
+  The type of IP addresses used by the subnets for your load balancer.
+The possible values are C<ipv4> (for IPv4 addresses) and C<dualstack>
+(for IPv4 and IPv6 addresses).
 
 
 =head2 LoadBalancerArn => Str
