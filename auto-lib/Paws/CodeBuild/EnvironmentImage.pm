@@ -39,12 +39,12 @@ Information about a Docker image that is managed by AWS CodeBuild.
 
 =head2 Description => Str
 
-  The Docker image's description.
+  The description of the Docker image.
 
 
 =head2 Name => Str
 
-  The Docker image's name.
+  The name of the Docker image.
 
 
 

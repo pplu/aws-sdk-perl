@@ -16,7 +16,7 @@ Paws::CodeBuild::StopBuildOutput
 
 =head2 Build => L<Paws::CodeBuild::Build>
 
-Information about the build that was attempted to be stopped.
+Information about the build.
 
 
 =head2 _request_id => Str

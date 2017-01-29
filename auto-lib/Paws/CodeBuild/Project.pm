@@ -49,12 +49,12 @@ Information about a build project.
 
 =head2 Arn => Str
 
-  The build project's Amazon Resource Name (ARN).
+  The Amazon Resource Name (ARN) of the build project.
 
 
 =head2 Artifacts => L<Paws::CodeBuild::ProjectArtifacts>
 
-  Information about the build project's build output artifacts.
+  Information about the build output artifacts for the build project.
 
 
 =head2 Created => Str
@@ -64,13 +64,13 @@ Information about a build project.
 
 =head2 Description => Str
 
-  A meaningful description of the build project.
+  A description that makes the build project easy to identify.
 
 
 =head2 EncryptionKey => Str
 
   The AWS Key Management Service (AWS KMS) customer master key (CMK) to
-be used for encrypting the build project's build output artifacts.
+be used for encrypting the build output artifacts.
 
 This is expressed either as the CMK's Amazon Resource Name (ARN) or, if
 specified, the CMK's alias (using the format C<alias/I<alias-name> >).
@@ -89,19 +89,19 @@ time format.
 
 =head2 Name => Str
 
-  The build project's name.
+  The name of the build project.
 
 
 =head2 ServiceRole => Str
 
-  The Amazon Resource Name (ARN) of the AWS Identity and Access
-Management (IAM) role that enables AWS CodeBuild to interact with
-dependent AWS services on behalf of the AWS account.
+  The ARN of the AWS Identity and Access Management (IAM) role that
+enables AWS CodeBuild to interact with dependent AWS services on behalf
+of the AWS account.
 
 
 =head2 Source => L<Paws::CodeBuild::ProjectSource>
 
-  Information about the build project's build input source code.
+  Information about the build input source code for this build project.
 
 
 =head2 Tags => ArrayRef[L<Paws::CodeBuild::Tag>]
@@ -114,9 +114,9 @@ CodeBuild build project tags.
 
 =head2 TimeoutInMinutes => Int
 
-  How long in minutes, from 5 to 480 (8 hours), for AWS CodeBuild to wait
-to timeout any related build that did not get marked as completed. The
-default is 60 minutes.
+  How long, in minutes, from 5 to 480 (8 hours), for AWS CodeBuild to
+wait before timing out any related build that did not get marked as
+completed. The default is 60 minutes.
 
 
 

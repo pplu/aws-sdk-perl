@@ -43,20 +43,20 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Artifacts => L<Paws::CodeBuild::ProjectArtifacts>
 
-Information about the build project's build output artifacts.
+Information about the build output artifacts for the build project.
 
 
 
 =head2 Description => Str
 
-A meaningful description of the build project.
+A description that makes the build project easy to identify.
 
 
 
 =head2 EncryptionKey => Str
 
 The AWS Key Management Service (AWS KMS) customer master key (CMK) to
-be used for encrypting the build project's build output artifacts.
+be used for encrypting the build output artifacts.
 
 You can specify either the CMK's Amazon Resource Name (ARN) or, if
 available, the CMK's alias (using the format C<alias/I<alias-name> >).
@@ -65,27 +65,27 @@ available, the CMK's alias (using the format C<alias/I<alias-name> >).
 
 =head2 B<REQUIRED> Environment => L<Paws::CodeBuild::ProjectEnvironment>
 
-Information about the build project's build environment.
+Information about the build environment for the build project.
 
 
 
 =head2 B<REQUIRED> Name => Str
 
-The build project's name.
+The name of the build project.
 
 
 
 =head2 ServiceRole => Str
 
-The Amazon Resource Name (ARN) of the AWS Identity and Access
-Management (IAM) role that enables AWS CodeBuild to interact with
-dependent AWS services on behalf of the AWS account.
+The ARN of the AWS Identity and Access Management (IAM) role that
+enables AWS CodeBuild to interact with dependent AWS services on behalf
+of the AWS account.
 
 
 
 =head2 B<REQUIRED> Source => L<Paws::CodeBuild::ProjectSource>
 
-Information about the build project's build input source code.
+Information about the build input source code for the build project.
 
 
 
@@ -100,9 +100,9 @@ CodeBuild build project tags.
 
 =head2 TimeoutInMinutes => Int
 
-How long in minutes, from 5 to 480 (8 hours), for AWS CodeBuild to wait
-until timing out any related build that does not get marked as
-completed. The default is 60 minutes.
+How long, in minutes, from 5 to 480 (8 hours), for AWS CodeBuild to
+wait until timing out any build that has not been marked as completed.
+The default is 60 minutes.
 
 
 

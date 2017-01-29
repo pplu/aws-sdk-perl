@@ -49,8 +49,8 @@ troubleshoot a failed build.
 
 =head2 DurationInSeconds => Int
 
-  How long, in seconds, between the build's phase starting and ending
-times.
+  How long, in seconds, between the starting and ending times of the
+build's phase.
 
 
 =head2 EndTime => Str
@@ -60,7 +60,7 @@ times.
 
 =head2 PhaseStatus => Str
 
-  The build phase's current status. Valid values include:
+  The current status of the build phase. Valid values include:
 
 =over
 
@@ -94,7 +94,7 @@ C<TIMED_OUT>: The build phase timed out.
 
 =head2 PhaseType => Str
 
-  The build phase's name. Valid values include:
+  The name of the build phase. Valid values include:
 
 =over
 
@@ -104,7 +104,7 @@ C<BUILD>: Core build activities typically occur in this build phase.
 
 =item *
 
-C<COMPLETED>: The build has completed.
+C<COMPLETED>: The build has been completed.
 
 =item *
 
@@ -139,7 +139,7 @@ C<SUBMITTED>: The build has been submitted.
 
 =item *
 
-C<UPLOAD_ARTIFACTS>: Build output artifacts are being uploaded to
+C<UPLOAD_ARTIFACTS>: Build output artifacts are being uploaded to the
 output location.
 
 =back

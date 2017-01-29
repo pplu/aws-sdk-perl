@@ -34,7 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodeBuild::
 
 =head1 DESCRIPTION
 
-Information about the build project's build input source code.
+Information about the build input source code for the build project.
 
 =head1 ATTRIBUTES
 
@@ -44,14 +44,14 @@ Information about the build project's build input source code.
   Information about the authorization settings for AWS CodeBuild to
 access the source code to be built.
 
-This information is only for the AWS CodeBuild console's use. Your code
-should not get or set this information directly.
+This information is for the AWS CodeBuild console's use only. Your code
+should not get or set this information directly (unless the build
+project's source C<type> value is C<GITHUB>).
 
 
 =head2 Buildspec => Str
 
-  The build spec declaration to use for this build project's related
-builds.
+  The build spec declaration to use for the builds in this build project.
 
 If this value is not specified, a build spec must be included along
 with the source code to be built.
@@ -88,12 +88,14 @@ example, C< I<bucket-name>/I<path>/I<to>/I<object-name>.zip>)
 
 =item *
 
-For source code in a GitHub repository, the HTTPS clone URL, including
-the user name and personal access token, to the repository that
-contains the source code and the build spec (for example,
-C<https://I<login-user-name>:I<personal-access-token>@github.com/I<repo-owner-name>/I<repo-name>.git>).
-For more information, see Creating an Access Token for Command-Line Use
-on the GitHub Help website.
+For source code in a GitHub repository, instead of specifying a value
+here, you connect your AWS account to your GitHub account. To do this,
+use the AWS CodeBuild console to begin creating a build project, and
+follow the on-screen instructions to complete the connection. (After
+you have connected to your GitHub account, you do not need to finish
+creating the build project, and you may then leave the AWS CodeBuild
+console.) To instruct AWS CodeBuild to then use this connection, in the
+C<source> object, set the C<auth> object's C<type> value to C<OAUTH>.
 
 =back
 

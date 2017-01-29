@@ -40,12 +40,12 @@ build.
 
 =head2 B<REQUIRED> Name => Str
 
-  The environment variable's name or key.
+  The name or key of the environment variable.
 
 
 =head2 B<REQUIRED> Value => Str
 
-  The environment variable's value.
+  The value of the environment variable.
 
 
 

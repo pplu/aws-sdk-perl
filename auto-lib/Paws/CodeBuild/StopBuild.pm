@@ -35,7 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Id => Str
 
-The ID of the build to attempt to stop running.
+The ID of the build.
 
 
 

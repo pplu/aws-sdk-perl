@@ -40,7 +40,7 @@ Information about build output artifacts.
 
 =head2 Location => Str
 
-  Information about the build artifacts' location.
+  Information about the location of the build artifacts.
 
 
 =head2 Md5sum => Str
@@ -50,8 +50,8 @@ Information about build output artifacts.
 You can use this hash along with a checksum tool to confirm both file
 integrity and authenticity.
 
-This value is available only if the related build project's
-C<packaging> value is set to C<ZIP>.
+This value is available only if the build project's C<packaging> value
+is set to C<ZIP>.
 
 
 =head2 Sha256sum => Str
@@ -61,8 +61,8 @@ C<packaging> value is set to C<ZIP>.
 You can use this hash along with a checksum tool to confirm both file
 integrity and authenticity.
 
-This value is available only if the related build project's
-C<packaging> value is set to C<ZIP>.
+This value is available only if the build project's C<packaging> value
+is set to C<ZIP>.
 
 
 

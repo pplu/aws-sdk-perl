@@ -49,7 +49,7 @@ returned.
 
 =head2 B<REQUIRED> ProjectName => Str
 
-The name of the build project to get a list of build IDs for.
+The name of the build project.
 
 
 

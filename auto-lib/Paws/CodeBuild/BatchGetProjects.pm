@@ -35,7 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Names => ArrayRef[Str|Undef]
 
-The names of the build projects to get information about.
+The names of the build projects.
 
 
 

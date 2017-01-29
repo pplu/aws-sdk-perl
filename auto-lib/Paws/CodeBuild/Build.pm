@@ -53,23 +53,22 @@ Information about a build.
 
 =head2 Arn => Str
 
-  The build's Amazon Resource Name (ARN).
+  The Amazon Resource Name (ARN) of the build.
 
 
 =head2 Artifacts => L<Paws::CodeBuild::BuildArtifacts>
 
-  Information about the build's output artifacts.
+  Information about the output artifacts for the build.
 
 
 =head2 BuildComplete => Bool
 
-  Whether the build has finished. Valid values include true if completed;
-otherwise, false.
+  Whether the build has finished. True if completed; otherwise, false.
 
 
 =head2 BuildStatus => Str
 
-  The build's current status. Valid values include:
+  The current status of the build. Valid values include:
 
 =over
 
@@ -103,7 +102,7 @@ C<TIMED_OUT>: The build timed out.
 
 =head2 CurrentPhase => Str
 
-  The build's current build phase.
+  The current build phase.
 
 
 =head2 EndTime => Str
@@ -118,7 +117,7 @@ C<TIMED_OUT>: The build timed out.
 
 =head2 Id => Str
 
-  The build's unique ID.
+  The unique ID for the build.
 
 
 =head2 Initiator => Str
@@ -129,13 +128,13 @@ C<TIMED_OUT>: The build timed out.
 
 =item *
 
-If AWS CodePipeline started the build, the pipeline's name, for example
-C<codepipeline/my-demo-pipeline>.
+If AWS CodePipeline started the build, the pipeline's name (for
+example, C<codepipeline/my-demo-pipeline>).
 
 =item *
 
 If an AWS Identity and Access Management (IAM) user started the build,
-the user's name, for example C<MyUserName>.
+the user's name (for example C<MyUserName>).
 
 =item *
 
@@ -153,13 +152,13 @@ C<CodeBuild-Jenkins-Plugin>.
 
 =head2 Phases => ArrayRef[L<Paws::CodeBuild::BuildPhase>]
 
-  Information about all previous build phases that have completed, and
-information about any current build phase that has not yet completed.
+  Information about all previous build phases that are completed and
+information about any current build phase that is not yet complete.
 
 
 =head2 ProjectName => Str
 
-  The build project's name.
+  The name of the build project.
 
 
 =head2 Source => L<Paws::CodeBuild::ProjectSource>
@@ -179,8 +178,8 @@ information about any current build phase that has not yet completed.
 
 =head2 TimeoutInMinutes => Int
 
-  How long in minutes for AWS CodeBuild to wait to timeout this build if
-it does not get marked as completed.
+  How long, in minutes, for AWS CodeBuild to wait before timing out this
+build if it does not get marked as completed.
 
 
 

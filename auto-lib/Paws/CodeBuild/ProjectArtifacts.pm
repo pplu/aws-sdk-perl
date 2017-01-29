@@ -36,7 +36,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodeBuild::
 
 =head1 DESCRIPTION
 
-Information about the build project's build output artifacts.
+Information about the build output artifacts for the build project.
 
 =head1 ATTRIBUTES
 
@@ -60,9 +60,7 @@ if specified, because no build output will be produced.
 
 =item *
 
-If C<type> is set to C<S3>, this is the name of the output bucket. If
-C<path> is not also specified, then C<location> can also specify the
-path of the output artifact in the output bucket.
+If C<type> is set to C<S3>, this is the name of the output bucket.
 
 =back
 
@@ -217,13 +215,13 @@ C<MyArtifacts/MyArtifact.zip>.
 
 =head2 B<REQUIRED> Type => Str
 
-  The build output artifact's type. Valid values include:
+  The type of build output artifact. Valid values include:
 
 =over
 
 =item *
 
-C<CODEPIPELINE>: The build project with have build output generated
+C<CODEPIPELINE>: The build project will have build output generated
 through AWS CodePipeline.
 
 =item *

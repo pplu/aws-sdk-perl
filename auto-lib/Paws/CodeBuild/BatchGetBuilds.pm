@@ -35,7 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Ids => ArrayRef[Str|Undef]
 
-The IDs of the builds to get information about.
+The IDs of the builds.
 
 
 

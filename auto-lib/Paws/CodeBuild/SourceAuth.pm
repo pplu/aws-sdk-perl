@@ -35,8 +35,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodeBuild::
 Information about the authorization settings for AWS CodeBuild to
 access the source code to be built.
 
-This information is only for the AWS CodeBuild console's use. Your code
-should not get or set this information directly.
+This information is for the AWS CodeBuild console's use only. Your code
+should not get or set this information directly (unless the build
+project's source C<type> value is C<GITHUB>).
 
 =head1 ATTRIBUTES
 

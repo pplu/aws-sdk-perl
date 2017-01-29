@@ -41,21 +41,21 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 ArtifactsOverride => L<Paws::CodeBuild::ProjectArtifacts>
 
 Build output artifact settings that override, for this build only, the
-latest ones already defined in the corresponding build project.
+latest ones already defined in the build project.
 
 
 
 =head2 BuildspecOverride => Str
 
 A build spec declaration that overrides, for this build only, the
-latest one already defined in the corresponding build project.
+latest one already defined in the build project.
 
 
 
 =head2 EnvironmentVariablesOverride => ArrayRef[L<Paws::CodeBuild::EnvironmentVariable>]
 
 A set of environment variables that overrides, for this build only, the
-latest ones already defined in the corresponding build project.
+latest ones already defined in the build project.
 
 
 
@@ -89,9 +89,9 @@ object representing the build input ZIP file to use.
 
 =head2 TimeoutInMinutesOverride => Int
 
-The number of build timeout minutes, from 5 to 480 (8 hours) that
+The number of build timeout minutes, from 5 to 480 (8 hours), that
 overrides, for this build only, the latest setting already defined in
-the corresponding build project.
+the build project.
 
 
 

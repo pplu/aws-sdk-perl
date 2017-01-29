@@ -43,8 +43,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Artifacts => L<Paws::CodeBuild::ProjectArtifacts>
 
-Information to be changed about the build project's build output
-artifacts.
+Information to be changed about the build output artifacts for the
+build project.
 
 
 
@@ -57,8 +57,7 @@ A new or replacement description of the build project.
 =head2 EncryptionKey => Str
 
 The replacement AWS Key Management Service (AWS KMS) customer master
-key (CMK) to be used for encrypting the build project's build output
-artifacts.
+key (CMK) to be used for encrypting the build output artifacts.
 
 You can specify either the CMK's Amazon Resource Name (ARN) or, if
 available, the CMK's alias (using the format C<alias/I<alias-name> >).
@@ -67,30 +66,31 @@ available, the CMK's alias (using the format C<alias/I<alias-name> >).
 
 =head2 Environment => L<Paws::CodeBuild::ProjectEnvironment>
 
-Information to be changed about the build project's build environment.
+Information to be changed about the build environment for the build
+project.
 
 
 
 =head2 B<REQUIRED> Name => Str
 
-The name of the existing build project to change settings.
+The name of the build project.
 
-You cannot change an existing build project's name.
+You cannot change a build project's name.
 
 
 
 =head2 ServiceRole => Str
 
-The replacement Amazon Resource Name (ARN) of the AWS Identity and
-Access Management (IAM) role that enables AWS CodeBuild to interact
-with dependent AWS services on behalf of the AWS account.
+The replacement ARN of the AWS Identity and Access Management (IAM)
+role that enables AWS CodeBuild to interact with dependent AWS services
+on behalf of the AWS account.
 
 
 
 =head2 Source => L<Paws::CodeBuild::ProjectSource>
 
-Information to be changed about the build project's build input source
-code.
+Information to be changed about the build input source code for the
+build project.
 
 
 
@@ -106,8 +106,8 @@ CodeBuild build project tags.
 =head2 TimeoutInMinutes => Int
 
 The replacement value in minutes, from 5 to 480 (8 hours), for AWS
-CodeBuild to wait to timeout any related build that did not get marked
-as completed.
+CodeBuild to wait before timing out any related build that did not get
+marked as completed.
 
 
 

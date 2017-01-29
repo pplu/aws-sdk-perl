@@ -34,7 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodeBuild::
 
 =head1 DESCRIPTION
 
-Information about the build project's build environment.
+Information about the build environment of the build project.
 
 =head1 ATTRIBUTES
 
@@ -76,9 +76,6 @@ build project.
 =head2 B<REQUIRED> Type => Str
 
   The type of build environment to use for related builds.
-
-The only valid value is C<LINUX_CONTAINER>, which represents a
-Linux-based build environment.
 
 
 

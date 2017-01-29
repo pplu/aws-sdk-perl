@@ -45,14 +45,12 @@ Information about build logs in Amazon CloudWatch Logs.
 
 =head2 GroupName => Str
 
-  The name of the Amazon CloudWatch Logs group for the associated build
-logs.
+  The name of the Amazon CloudWatch Logs group for the build logs.
 
 
 =head2 StreamName => Str
 
-  The name of the Amazon CloudWatch Logs stream for the associated build
-logs.
+  The name of the Amazon CloudWatch Logs stream for the build logs.
 
 
 

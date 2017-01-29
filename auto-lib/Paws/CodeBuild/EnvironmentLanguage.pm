@@ -46,7 +46,7 @@ language.
 
 =head2 Language => Str
 
-  The programming language for the related set of Docker images.
+  The programming language for the Docker images.
 
 
 

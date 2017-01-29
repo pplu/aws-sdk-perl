@@ -102,12 +102,12 @@ Paws::CodeBuild - Perl Interface to AWS AWS CodeBuild
 
 AWS CodeBuild
 
-AWS CodeBuild is a fully-managed build service in the cloud. AWS
+AWS CodeBuild is a fully managed build service in the cloud. AWS
 CodeBuild compiles your source code, runs unit tests, and produces
 artifacts that are ready to deploy. AWS CodeBuild eliminates the need
 to provision, manage, and scale your own build servers. It provides
 prepackaged build environments for the most popular programming
-languages and build tools such as Apach Maven, Gradle, and more. You
+languages and build tools, such as Apach Maven, Gradle, and more. You
 can also fully customize build environments in AWS CodeBuild to use
 your own build tools. AWS CodeBuild scales automatically to meet peak
 build requests, and you pay only for the build time you consume. For
@@ -184,7 +184,7 @@ Each argument is described in detail in: L<Paws::CodeBuild::BatchGetBuilds>
 
 Returns: a L<Paws::CodeBuild::BatchGetBuildsOutput> instance
 
-  Gets information about one or more builds.
+  Gets information about builds.
 
 
 =head2 BatchGetProjects(Names => ArrayRef[Str|Undef])
@@ -193,7 +193,7 @@ Each argument is described in detail in: L<Paws::CodeBuild::BatchGetProjects>
 
 Returns: a L<Paws::CodeBuild::BatchGetProjectsOutput> instance
 
-  Gets information about one or more build projects.
+  Gets information about build projects.
 
 
 =head2 CreateProject(Artifacts => L<Paws::CodeBuild::ProjectArtifacts>, Environment => L<Paws::CodeBuild::ProjectEnvironment>, Name => Str, Source => L<Paws::CodeBuild::ProjectSource>, [Description => Str, EncryptionKey => Str, ServiceRole => Str, Tags => ArrayRef[L<Paws::CodeBuild::Tag>], TimeoutInMinutes => Int])
@@ -270,8 +270,6 @@ Returns: a L<Paws::CodeBuild::StopBuildOutput> instance
 
   Attempts to stop running a build.
 
-Completed builds cannot be stopped.
-
 
 =head2 UpdateProject(Name => Str, [Artifacts => L<Paws::CodeBuild::ProjectArtifacts>, Description => Str, EncryptionKey => Str, Environment => L<Paws::CodeBuild::ProjectEnvironment>, ServiceRole => Str, Source => L<Paws::CodeBuild::ProjectSource>, Tags => ArrayRef[L<Paws::CodeBuild::Tag>], TimeoutInMinutes => Int])
 
@@ -279,7 +277,7 @@ Each argument is described in detail in: L<Paws::CodeBuild::UpdateProject>
 
 Returns: a L<Paws::CodeBuild::UpdateProjectOutput> instance
 
-  Changes the settings of an existing build project.
+  Changes the settings of a build project.
 
 
 
