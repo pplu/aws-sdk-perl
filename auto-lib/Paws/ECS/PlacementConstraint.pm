@@ -52,7 +52,8 @@ in the I<Amazon EC2 Container Service Developer Guide>.
   The type of constraint. Use C<distinctInstance> to ensure that each
 task in a particular group is running on a different container
 instance. Use C<memberOf> to restrict selection to a group of valid
-candidates.
+candidates. Note that C<distinctInstance> is not supported in task
+definitions.
 
 
 

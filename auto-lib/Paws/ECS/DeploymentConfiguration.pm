@@ -43,7 +43,7 @@ the deployment and the ordering of stopping and starting tasks.
   The upper limit (as a percentage of the service's C<desiredCount>) of
 the number of tasks that are allowed in the C<RUNNING> or C<PENDING>
 state in a service during a deployment. The maximum number of tasks
-during a deployment is the C<desiredCount> multiplied by the
+during a deployment is the C<desiredCount> multiplied by
 C<maximumPercent>/100, rounded down to the nearest integer value.
 
 
@@ -52,7 +52,7 @@ C<maximumPercent>/100, rounded down to the nearest integer value.
   The lower limit (as a percentage of the service's C<desiredCount>) of
 the number of running tasks that must remain in the C<RUNNING> state in
 a service during a deployment. The minimum healthy tasks during a
-deployment is the C<desiredCount> multiplied by the
+deployment is the C<desiredCount> multiplied by
 C<minimumHealthyPercent>/100, rounded up to the nearest integer value.
 
 

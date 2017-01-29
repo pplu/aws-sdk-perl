@@ -79,7 +79,7 @@ C<PENDING> state).
 
 =head2 Group => Str
 
-  The task group associated with the task.
+  The name of the task group associated with the task.
 
 
 =head2 LastStatus => Str

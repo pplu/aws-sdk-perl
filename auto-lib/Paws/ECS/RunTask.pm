@@ -57,8 +57,9 @@ cluster. You can specify up to 10 tasks per call.
 
 =head2 Group => Str
 
-The task group to associate with the task. By default, if you do not
-specify a task group, the group C<family:TASKDEF-FAMILY> is applied.
+The name of the task group to associate with the task. The default
+value is the family name of the task definition (for example,
+family:my-family-name).
 
 
 

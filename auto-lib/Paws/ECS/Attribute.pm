@@ -34,9 +34,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ECS::Attrib
 
 =head1 DESCRIPTION
 
-Attributes are name-value pairs associated with various Amazon ECS
-objects. Attributes allow you to extend the Amazon ECS data model by
-adding custom metadata to your resources.
+An attribute is a name-value pair associated with an Amazon ECS object.
+Attributes enable you to extend the Amazon ECS data model by adding
+custom metadata to your resources. For more information, see Attributes
+in the I<Amazon EC2 Container Service Developer Guide>.
 
 =head1 ATTRIBUTES
 

@@ -159,6 +159,11 @@ package Paws::ECS;
     my $call_object = $self->new_with_coercions('Paws::ECS::UpdateContainerAgent', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpdateContainerInstancesState {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ECS::UpdateContainerInstancesState', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateService {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ECS::UpdateService', @_);
@@ -293,7 +298,7 @@ package Paws::ECS;
   }
 
 
-  sub operations { qw/CreateCluster CreateService DeleteAttributes DeleteCluster DeleteService DeregisterContainerInstance DeregisterTaskDefinition DescribeClusters DescribeContainerInstances DescribeServices DescribeTaskDefinition DescribeTasks DiscoverPollEndpoint ListAttributes ListClusters ListContainerInstances ListServices ListTaskDefinitionFamilies ListTaskDefinitions ListTasks PutAttributes RegisterContainerInstance RegisterTaskDefinition RunTask StartTask StopTask SubmitContainerStateChange SubmitTaskStateChange UpdateContainerAgent UpdateService / }
+  sub operations { qw/CreateCluster CreateService DeleteAttributes DeleteCluster DeleteService DeregisterContainerInstance DeregisterTaskDefinition DescribeClusters DescribeContainerInstances DescribeServices DescribeTaskDefinition DescribeTasks DiscoverPollEndpoint ListAttributes ListClusters ListContainerInstances ListServices ListTaskDefinitionFamilies ListTaskDefinitions ListTasks PutAttributes RegisterContainerInstance RegisterTaskDefinition RunTask StartTask StopTask SubmitContainerStateChange SubmitTaskStateChange UpdateContainerAgent UpdateContainerInstancesState UpdateService / }
 
 1;
 
@@ -377,30 +382,28 @@ The C<minimumHealthyPercent> represents a lower limit on the number of
 your service's tasks that must remain in the C<RUNNING> state during a
 deployment, as a percentage of the C<desiredCount> (rounded up to the
 nearest integer). This parameter enables you to deploy without using
-additional cluster capacity. For example, if your service has a
-C<desiredCount> of four tasks and a C<minimumHealthyPercent> of 50%,
-the scheduler may stop two existing tasks to free up cluster capacity
-before starting two new tasks. Tasks for services that I<do not> use a
-load balancer are considered healthy if they are in the C<RUNNING>
-state; tasks for services that I<do> use a load balancer are considered
-healthy if they are in the C<RUNNING> state and the container instance
-it is hosted on is reported as healthy by the load balancer. The
-default value for C<minimumHealthyPercent> is 50% in the console and
-100% for the AWS CLI, the AWS SDKs, and the APIs.
+additional cluster capacity. For example, if C<desiredCount> is four
+tasks and the minimum is 50%, the scheduler can stop two existing tasks
+to free up cluster capacity before starting two new tasks. Tasks for
+services that do not use a load balancer are considered healthy if they
+are in the C<RUNNING> state. Tasks for services that use a load
+balancer are considered healthy if they are in the C<RUNNING> state and
+the container instance they are hosted on is reported as healthy by the
+load balancer. The default value is 50% in the console and 100% for the
+AWS CLI, the AWS SDKs, and the APIs.
 
 The C<maximumPercent> parameter represents an upper limit on the number
 of your service's tasks that are allowed in the C<RUNNING> or
 C<PENDING> state during a deployment, as a percentage of the
 C<desiredCount> (rounded down to the nearest integer). This parameter
-enables you to define the deployment batch size. For example, if your
-service has a C<desiredCount> of four tasks and a C<maximumPercent>
-value of 200%, the scheduler may start four new tasks before stopping
-the four older tasks (provided that the cluster resources required to
-do this are available). The default value for C<maximumPercent> is
-200%.
+enables you to define the deployment batch size. For example, if
+C<desiredCount> is four tasks and the maximum is 200%, the scheduler
+can start four new tasks before stopping the four older tasks (provided
+that the cluster resources required to do this are available). The
+default value is 200%.
 
 When the service scheduler launches new tasks, it determines task
-placement in your cluster with the following logic:
+placement in your cluster using the following logic:
 
 =over
 
@@ -414,7 +417,7 @@ CPU, memory, ports, and container instance attributes).
 
 By default, the service scheduler attempts to balance tasks across
 Availability Zones in this manner (although you can choose a different
-placement strategy with the C<placementStrategy> parameter):
+placement strategy):
 
 =over
 
@@ -444,7 +447,7 @@ Each argument is described in detail in: L<Paws::ECS::DeleteAttributes>
 
 Returns: a L<Paws::ECS::DeleteAttributesResponse> instance
 
-  Deletes one or more attributes from an Amazon ECS resource.
+  Deletes one or more custom attributes from an Amazon ECS resource.
 
 
 =head2 DeleteCluster(Cluster => Str)
@@ -619,7 +622,7 @@ Returns: a L<Paws::ECS::ListClustersResponse> instance
   Returns a list of existing clusters.
 
 
-=head2 ListContainerInstances([Cluster => Str, Filter => Str, MaxResults => Int, NextToken => Str])
+=head2 ListContainerInstances([Cluster => Str, Filter => Str, MaxResults => Int, NextToken => Str, Status => Str])
 
 Each argument is described in detail in: L<Paws::ECS::ListContainerInstances>
 
@@ -690,8 +693,10 @@ Each argument is described in detail in: L<Paws::ECS::PutAttributes>
 Returns: a L<Paws::ECS::PutAttributesResponse> instance
 
   Create or update an attribute on an Amazon ECS resource. If the
-attribute does not already exist on the given target, it is created; if
-it does exist, it is replaced with the new value.
+attribute does not exist, it is created. If the attribute exists, its
+value is replaced with the specified value. To delete an attribute, use
+DeleteAttributes. For more information, see Attributes in the I<Amazon
+EC2 Container Service Developer Guide>.
 
 
 =head2 RegisterContainerInstance([Attributes => ArrayRef[L<Paws::ECS::Attribute>], Cluster => Str, ContainerInstanceArn => Str, InstanceIdentityDocument => Str, InstanceIdentityDocumentSignature => Str, TotalResources => ArrayRef[L<Paws::ECS::Resource>], VersionInfo => L<Paws::ECS::VersionInfo>])
@@ -823,6 +828,70 @@ Manually Updating the Amazon ECS Container Agent in the I<Amazon EC2
 Container Service Developer Guide>.
 
 
+=head2 UpdateContainerInstancesState(ContainerInstances => ArrayRef[Str|Undef], Status => Str, [Cluster => Str])
+
+Each argument is described in detail in: L<Paws::ECS::UpdateContainerInstancesState>
+
+Returns: a L<Paws::ECS::UpdateContainerInstancesStateResponse> instance
+
+  Modifies the status of an Amazon ECS container instance.
+
+You can change the status of a container instance to C<DRAINING> to
+manually remove an instance from a cluster, for example to perform
+system updates, update the Docker daemon, or scale down the cluster
+size.
+
+When you set a container instance to C<DRAINING>, Amazon ECS prevents
+new tasks from being scheduled for placement on the container instance
+and replacement service tasks are started on other container instances
+in the cluster if the resources are available. Service tasks on the
+container instance that are in the C<PENDING> state are stopped
+immediately.
+
+Service tasks on the container instance that are in the C<RUNNING>
+state are stopped and replaced according the service's deployment
+configuration parameters, C<minimumHealthyPercent> and
+C<maximumPercent>. Note that you can change the deployment
+configuration of your service using UpdateService.
+
+=over
+
+=item *
+
+If C<minimumHealthyPercent> is below 100%, the scheduler can ignore
+C<desiredCount> temporarily during task replacement. For example,
+C<desiredCount> is four tasks, a minimum of 50% allows the scheduler to
+stop two existing tasks before starting two new tasks. If the minimum
+is 100%, the service scheduler can't remove existing tasks until the
+replacement tasks are considered healthy. Tasks for services that do
+not use a load balancer are considered healthy if they are in the
+C<RUNNING> state. Tasks for services that use a load balancer are
+considered healthy if they are in the C<RUNNING> state and the
+container instance they are hosted on is reported as healthy by the
+load balancer.
+
+=item *
+
+The C<maximumPercent> parameter represents an upper limit on the number
+of running tasks during task replacement, which enables you to define
+the replacement batch size. For example, if C<desiredCount> of four
+tasks, a maximum of 200% starts four new tasks before stopping the four
+tasks to be drained (provided that the cluster resources required to do
+this are available). If the maximum is 100%, then replacement tasks
+can't start until the draining tasks have stopped.
+
+=back
+
+Any C<PENDING> or C<RUNNING> tasks that do not belong to a service are
+not affected; you must wait for them to finish or stop them manually.
+
+A container instance has completed draining when it has no more
+C<RUNNING> tasks. You can verify this using ListTasks.
+
+When you set a container instance to C<ACTIVE>, the Amazon ECS
+scheduler can begin scheduling tasks on the instance again.
+
+
 =head2 UpdateService(Service => Str, [Cluster => Str, DeploymentConfiguration => L<Paws::ECS::DeploymentConfiguration>, DesiredCount => Int, TaskDefinition => Str])
 
 Each argument is described in detail in: L<Paws::ECS::UpdateService>
@@ -845,23 +914,30 @@ the service scheduler uses the deployment configuration parameters,
 C<minimumHealthyPercent> and C<maximumPercent>, to determine the
 deployment strategy.
 
-If the C<minimumHealthyPercent> is below 100%, the scheduler can ignore
-the C<desiredCount> temporarily during a deployment. For example, if
-your service has a C<desiredCount> of four tasks, a
-C<minimumHealthyPercent> of 50% allows the scheduler to stop two
-existing tasks before starting two new tasks. Tasks for services that
-I<do not> use a load balancer are considered healthy if they are in the
-C<RUNNING> state; tasks for services that I<do> use a load balancer are
-considered healthy if they are in the C<RUNNING> state and the
-container instance it is hosted on is reported as healthy by the load
-balancer.
+=over
+
+=item *
+
+If C<minimumHealthyPercent> is below 100%, the scheduler can ignore
+C<desiredCount> temporarily during a deployment. For example, if
+C<desiredCount> is four tasks, a minimum of 50% allows the scheduler to
+stop two existing tasks before starting two new tasks. Tasks for
+services that do not use a load balancer are considered healthy if they
+are in the C<RUNNING> state. Tasks for services that use a load
+balancer are considered healthy if they are in the C<RUNNING> state and
+the container instance they are hosted on is reported as healthy by the
+load balancer.
+
+=item *
 
 The C<maximumPercent> parameter represents an upper limit on the number
 of running tasks during a deployment, which enables you to define the
-deployment batch size. For example, if your service has a
-C<desiredCount> of four tasks, a C<maximumPercent> value of 200% starts
-four new tasks before stopping the four older tasks (provided that the
-cluster resources required to do this are available).
+deployment batch size. For example, if C<desiredCount> is four tasks, a
+maximum of 200% starts four new tasks before stopping the four older
+tasks (provided that the cluster resources required to do this are
+available).
+
+=back
 
 When UpdateService stops a task during a deployment, the equivalent of
 C<docker stop> is issued to the containers running in the task. This
@@ -885,7 +961,7 @@ CPU, memory, ports, and container instance attributes).
 
 By default, the service scheduler attempts to balance tasks across
 Availability Zones in this manner (although you can choose a different
-placement strategy with the C<placementStrategy> parameter):
+placement strategy):
 
 =over
 
@@ -908,7 +984,7 @@ instances with the fewest number of running tasks for this service.
 =back
 
 When the service scheduler stops running tasks, it attempts to maintain
-balance across the Availability Zones in your cluster with the
+balance across the Availability Zones in your cluster using the
 following logic:
 
 =over
@@ -949,9 +1025,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::ECS::ListClustersResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllContainerInstances(sub { },[Cluster => Str, Filter => Str, MaxResults => Int, NextToken => Str])
+=head2 ListAllContainerInstances(sub { },[Cluster => Str, Filter => Str, MaxResults => Int, NextToken => Str, Status => Str])
 
-=head2 ListAllContainerInstances([Cluster => Str, Filter => Str, MaxResults => Int, NextToken => Str])
+=head2 ListAllContainerInstances([Cluster => Str, Filter => Str, MaxResults => Int, NextToken => Str, Status => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

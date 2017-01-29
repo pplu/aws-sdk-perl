@@ -46,7 +46,8 @@ placement strategy, valid values are C<instanceId> (or C<host>, which
 has the same effect), or any platform or custom attribute that is
 applied to a container instance, such as
 C<attribute:ecs.availability-zone>. For the C<binpack> placement
-strategy, valid values are C<CPU and MEMORY>.
+strategy, valid values are C<cpu> and C<memory>. For the C<random>
+placement strategy, this field is not used.
 
 
 =head2 Type => Str

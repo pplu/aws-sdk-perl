@@ -5,6 +5,7 @@ package Paws::ECS::ListContainerInstances;
   has Filter => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'filter' );
   has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults' );
   has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  has Status => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'status' );
 
   use MooseX::ClassAttribute;
 
@@ -80,6 +81,16 @@ to retrieve the next items in a list and not for other programmatic
 purposes.
 
 
+
+=head2 Status => Str
+
+The container instance status with which to filter the
+C<ListContainerInstances> results. Specifying a container instance
+status of C<DRAINING> limits the results to container instances that
+have been set to drain with the UpdateContainerInstancesState
+operation.
+
+Valid values are: C<"ACTIVE">, C<"DRAINING">
 
 
 =head1 SEE ALSO
