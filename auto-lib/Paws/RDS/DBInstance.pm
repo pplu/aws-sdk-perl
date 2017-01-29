@@ -367,8 +367,8 @@ set, the DB instance will be private.
 
 =head2 ReadReplicaDBClusterIdentifiers => ArrayRef[Str|Undef]
 
-  Contains one or more identifiers of Aurora DB clusters that are read
-replicas of this DB instance.
+  Contains one or more identifiers of Aurora DB clusters that are Read
+Replicas of this DB instance.
 
 
 =head2 ReadReplicaDBInstanceIdentifiers => ArrayRef[Str|Undef]

@@ -61,13 +61,8 @@ encryption key. If you don't specify a value for C<KmsKeyId>, then the
 copy of the DB snapshot is encrypted with the same KMS key as the
 source DB snapshot.
 
-If you copy an encrypted DB snapshot from your AWS account, you can
-specify a value for C<KmsKeyId> to encrypt the copy with a new KMS
-encryption key. If you don't specify a value for C<KmsKeyId>, then the
-copy of the DB snapshot is encrypted with the same KMS key as the
-source DB snapshot. If you copy an encrypted snapshot to a different
-AWS region, then you must specify a KMS key for the destination AWS
-region.
+If you copy an encrypted snapshot to a different AWS region, then you
+must specify a KMS key for the destination AWS region.
 
 If you copy an encrypted DB snapshot that is shared from another AWS
 account, then you must specify a value for C<KmsKeyId>.

@@ -8,10 +8,12 @@ package Paws::RDS::CreateDBInstanceReadReplica;
   has DBInstanceIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has DBSubnetGroupName => (is => 'ro', isa => 'Str');
   has Iops => (is => 'ro', isa => 'Int');
+  has KmsKeyId => (is => 'ro', isa => 'Str');
   has MonitoringInterval => (is => 'ro', isa => 'Int');
   has MonitoringRoleArn => (is => 'ro', isa => 'Str');
   has OptionGroupName => (is => 'ro', isa => 'Str');
   has Port => (is => 'ro', isa => 'Int');
+  has PreSignedUrl => (is => 'ro', isa => 'Str');
   has PubliclyAccessible => (is => 'ro', isa => 'Bool');
   has SourceDBInstanceIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has StorageType => (is => 'ro', isa => 'Str');
@@ -77,7 +79,8 @@ Replica; otherwise false. The default is false.
 
 =head2 DBInstanceClass => Str
 
-The compute and memory capacity of the Read Replica.
+The compute and memory capacity of the Read Replica. Note that not all
+instance classes are available in all regions for all DB engines.
 
 Valid Values: C<db.m1.small | db.m1.medium | db.m1.large | db.m1.xlarge
 | db.m2.xlarge |db.m2.2xlarge | db.m2.4xlarge | db.m3.medium |
@@ -154,6 +157,29 @@ be initially allocated for the DB instance.
 
 
 
+=head2 KmsKeyId => Str
+
+The AWS KMS key ID for an encrypted Read Replica. The KMS key ID is the
+Amazon Resource Name (ARN), KMS key identifier, or the KMS key alias
+for the KMS encryption key.
+
+If you create an unencrypted Read Replica and specify a value for the
+C<KmsKeyId> parameter, Amazon RDS encrypts the target Read Replica
+using the specified KMS encryption key.
+
+If you create an encrypted Read Replica from your AWS account, you can
+specify a value for C<KmsKeyId> to encrypt the Read Replica with a new
+KMS encryption key. If you don't specify a value for C<KmsKeyId>, then
+the Read Replica is encrypted with the same KMS key as the source DB
+instance.
+
+If you create an encrypted Read Replica in a different AWS region, then
+you must specify a KMS key for the destination AWS region. KMS
+encryption keys are specific to the region that they are created in,
+and you cannot use encryption keys from one region in another region.
+
+
+
 =head2 MonitoringInterval => Int
 
 The interval, in seconds, between points when Enhanced Monitoring
@@ -194,6 +220,60 @@ The port number that the DB instance uses for connections.
 Default: Inherits from the source DB instance
 
 Valid Values: C<1150-65535>
+
+
+
+=head2 PreSignedUrl => Str
+
+The URL that contains a Signature Version 4 signed request for the C<
+CreateDBInstanceReadReplica> API action in the AWS region that contains
+the source DB instance. The C<PreSignedUrl> parameter must be used when
+encrypting a Read Replica from another AWS region.
+
+The presigned URL must be a valid request for the
+C<CreateDBInstanceReadReplica> API action that can be executed in the
+source region that contains the encrypted DB instance. The presigned
+URL request must contain the following parameter values:
+
+=over
+
+=item *
+
+C<DestinationRegion> - The AWS Region that the Read Replica is created
+in. This region is the same one where the
+C<CreateDBInstanceReadReplica> action is called that contains this
+presigned URL.
+
+For example, if you create an encrypted Read Replica in the us-east-1
+region, and the source DB instance is in the west-2 region, then you
+call the C<CreateDBInstanceReadReplica> action in the us-east-1 region
+and provide a presigned URL that contains a call to the
+C<CreateDBInstanceReadReplica> action in the us-west-2 region. For this
+example, the C<DestinationRegion> in the presigned URL must be set to
+the us-east-1 region.
+
+=item *
+
+C<KmsKeyId> - The KMS key identifier for the key to use to encrypt the
+Read Replica in the destination region. This is the same identifier for
+both the C<CreateDBInstanceReadReplica> action that is called in the
+destination region, and the action contained in the presigned URL.
+
+=item *
+
+C<SourceDBInstanceIdentifier> - The DB instance identifier for the
+encrypted Read Replica to be created. This identifier must be in the
+Amazon Resource Name (ARN) format for the source region. For example,
+if you create an encrypted Read Replica from a DB instance in the
+us-west-2 region, then your C<SourceDBInstanceIdentifier> would look
+like this example: C<
+arn:aws:rds:us-west-2:123456789012:instance:mysql-instance1-instance-20161115>.
+
+=back
+
+To learn how to generate a Signature Version 4 signed request, see
+Authenticating Requests: Using Query Parameters (AWS Signature Version
+4) and Signature Version 4 Signing Process.
 
 
 
@@ -250,8 +330,8 @@ source is running MySQL 5.6.
 
 =item *
 
-Can specify a DB instance that is a PostgreSQL Read Replica only if the
-source is running PostgreSQL 9.3.5.
+Can specify a DB instance that is a PostgreSQL DB instance only if the
+source is running PostgreSQL 9.3.5 or later.
 
 =item *
 

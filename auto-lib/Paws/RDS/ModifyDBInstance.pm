@@ -246,7 +246,8 @@ instance; otherwise false. The default is false.
 
 The new compute and memory capacity of the DB instance. To determine
 the instance classes that are available for a particular DB engine, use
-the DescribeOrderableDBInstanceOptions action.
+the DescribeOrderableDBInstanceOptions action. Note that not all
+instance classes are available in all regions for all DB engines.
 
 Passing a value for this setting causes an outage during the change and
 is applied during the next maintenance window, unless

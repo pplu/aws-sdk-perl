@@ -366,6 +366,11 @@ package Paws::RDS;
     my $call_object = $self->new_with_coercions('Paws::RDS::ModifyDBParameterGroup', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ModifyDBSnapshot {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::ModifyDBSnapshot', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ModifyDBSnapshotAttribute {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RDS::ModifyDBSnapshotAttribute', @_);
@@ -842,7 +847,7 @@ package Paws::RDS;
   }
 
 
-  sub operations { qw/AddRoleToDBCluster AddSourceIdentifierToSubscription AddTagsToResource ApplyPendingMaintenanceAction AuthorizeDBSecurityGroupIngress CopyDBClusterParameterGroup CopyDBClusterSnapshot CopyDBParameterGroup CopyDBSnapshot CopyOptionGroup CreateDBCluster CreateDBClusterParameterGroup CreateDBClusterSnapshot CreateDBInstance CreateDBInstanceReadReplica CreateDBParameterGroup CreateDBSecurityGroup CreateDBSnapshot CreateDBSubnetGroup CreateEventSubscription CreateOptionGroup DeleteDBCluster DeleteDBClusterParameterGroup DeleteDBClusterSnapshot DeleteDBInstance DeleteDBParameterGroup DeleteDBSecurityGroup DeleteDBSnapshot DeleteDBSubnetGroup DeleteEventSubscription DeleteOptionGroup DescribeAccountAttributes DescribeCertificates DescribeDBClusterParameterGroups DescribeDBClusterParameters DescribeDBClusters DescribeDBClusterSnapshotAttributes DescribeDBClusterSnapshots DescribeDBEngineVersions DescribeDBInstances DescribeDBLogFiles DescribeDBParameterGroups DescribeDBParameters DescribeDBSecurityGroups DescribeDBSnapshotAttributes DescribeDBSnapshots DescribeDBSubnetGroups DescribeEngineDefaultClusterParameters DescribeEngineDefaultParameters DescribeEventCategories DescribeEvents DescribeEventSubscriptions DescribeOptionGroupOptions DescribeOptionGroups DescribeOrderableDBInstanceOptions DescribePendingMaintenanceActions DescribeReservedDBInstances DescribeReservedDBInstancesOfferings DescribeSourceRegions DownloadDBLogFilePortion FailoverDBCluster ListTagsForResource ModifyDBCluster ModifyDBClusterParameterGroup ModifyDBClusterSnapshotAttribute ModifyDBInstance ModifyDBParameterGroup ModifyDBSnapshotAttribute ModifyDBSubnetGroup ModifyEventSubscription ModifyOptionGroup PromoteReadReplica PromoteReadReplicaDBCluster PurchaseReservedDBInstancesOffering RebootDBInstance RemoveRoleFromDBCluster RemoveSourceIdentifierFromSubscription RemoveTagsFromResource ResetDBClusterParameterGroup ResetDBParameterGroup RestoreDBClusterFromS3 RestoreDBClusterFromSnapshot RestoreDBClusterToPointInTime RestoreDBInstanceFromDBSnapshot RestoreDBInstanceToPointInTime RevokeDBSecurityGroupIngress / }
+  sub operations { qw/AddRoleToDBCluster AddSourceIdentifierToSubscription AddTagsToResource ApplyPendingMaintenanceAction AuthorizeDBSecurityGroupIngress CopyDBClusterParameterGroup CopyDBClusterSnapshot CopyDBParameterGroup CopyDBSnapshot CopyOptionGroup CreateDBCluster CreateDBClusterParameterGroup CreateDBClusterSnapshot CreateDBInstance CreateDBInstanceReadReplica CreateDBParameterGroup CreateDBSecurityGroup CreateDBSnapshot CreateDBSubnetGroup CreateEventSubscription CreateOptionGroup DeleteDBCluster DeleteDBClusterParameterGroup DeleteDBClusterSnapshot DeleteDBInstance DeleteDBParameterGroup DeleteDBSecurityGroup DeleteDBSnapshot DeleteDBSubnetGroup DeleteEventSubscription DeleteOptionGroup DescribeAccountAttributes DescribeCertificates DescribeDBClusterParameterGroups DescribeDBClusterParameters DescribeDBClusters DescribeDBClusterSnapshotAttributes DescribeDBClusterSnapshots DescribeDBEngineVersions DescribeDBInstances DescribeDBLogFiles DescribeDBParameterGroups DescribeDBParameters DescribeDBSecurityGroups DescribeDBSnapshotAttributes DescribeDBSnapshots DescribeDBSubnetGroups DescribeEngineDefaultClusterParameters DescribeEngineDefaultParameters DescribeEventCategories DescribeEvents DescribeEventSubscriptions DescribeOptionGroupOptions DescribeOptionGroups DescribeOrderableDBInstanceOptions DescribePendingMaintenanceActions DescribeReservedDBInstances DescribeReservedDBInstancesOfferings DescribeSourceRegions DownloadDBLogFilePortion FailoverDBCluster ListTagsForResource ModifyDBCluster ModifyDBClusterParameterGroup ModifyDBClusterSnapshotAttribute ModifyDBInstance ModifyDBParameterGroup ModifyDBSnapshot ModifyDBSnapshotAttribute ModifyDBSubnetGroup ModifyEventSubscription ModifyOptionGroup PromoteReadReplica PromoteReadReplicaDBCluster PurchaseReservedDBInstancesOffering RebootDBInstance RemoveRoleFromDBCluster RemoveSourceIdentifierFromSubscription RemoveTagsFromResource ResetDBClusterParameterGroup ResetDBParameterGroup RestoreDBClusterFromS3 RestoreDBClusterFromSnapshot RestoreDBClusterToPointInTime RestoreDBInstanceFromDBSnapshot RestoreDBInstanceToPointInTime RevokeDBSecurityGroupIngress / }
 
 1;
 
@@ -1213,7 +1218,7 @@ Returns: a L<Paws::RDS::CreateDBInstanceResult> instance
   Creates a new DB instance.
 
 
-=head2 CreateDBInstanceReadReplica(DBInstanceIdentifier => Str, SourceDBInstanceIdentifier => Str, [AutoMinorVersionUpgrade => Bool, AvailabilityZone => Str, CopyTagsToSnapshot => Bool, DBInstanceClass => Str, DBSubnetGroupName => Str, Iops => Int, MonitoringInterval => Int, MonitoringRoleArn => Str, OptionGroupName => Str, Port => Int, PubliclyAccessible => Bool, StorageType => Str, Tags => ArrayRef[L<Paws::RDS::Tag>]])
+=head2 CreateDBInstanceReadReplica(DBInstanceIdentifier => Str, SourceDBInstanceIdentifier => Str, [AutoMinorVersionUpgrade => Bool, AvailabilityZone => Str, CopyTagsToSnapshot => Bool, DBInstanceClass => Str, DBSubnetGroupName => Str, Iops => Int, KmsKeyId => Str, MonitoringInterval => Int, MonitoringRoleArn => Str, OptionGroupName => Str, Port => Int, PreSignedUrl => Str, PubliclyAccessible => Bool, StorageType => Str, Tags => ArrayRef[L<Paws::RDS::Tag>]])
 
 Each argument is described in detail in: L<Paws::RDS::CreateDBInstanceReadReplica>
 
@@ -1228,6 +1233,89 @@ security groups and DB parameter groups) are inherited from the source
 DB instance, except as specified below.
 
 The source DB instance must have backup retention enabled.
+
+You can create an encrypted Read Replica in a different AWS Region than
+the source DB instance. In that case, the region where you call the
+C<CreateDBInstanceReadReplica> action is the destination region of the
+encrypted Read Replica. The source DB instance must be encrypted.
+
+To create an encrypted Read Replica in another AWS Region, you must
+provide the following values:
+
+=over
+
+=item *
+
+C<KmsKeyId> - The AWS Key Management System (KMS) key identifier for
+the key to use to encrypt the Read Replica in the destination region.
+
+=item *
+
+C<PreSignedUrl> - A URL that contains a Signature Version 4 signed
+request for the C< CreateDBInstanceReadReplica> API action in the AWS
+region that contains the source DB instance. The C<PreSignedUrl>
+parameter must be used when encrypting a Read Replica from another AWS
+region.
+
+The presigned URL must be a valid request for the
+C<CreateDBInstanceReadReplica> API action that can be executed in the
+source region that contains the encrypted DB instance. The presigned
+URL request must contain the following parameter values:
+
+=over
+
+=item *
+
+C<DestinationRegion> - The AWS Region that the Read Replica is created
+in. This region is the same one where the
+C<CreateDBInstanceReadReplica> action is called that contains this
+presigned URL.
+
+For example, if you create an encrypted Read Replica in the us-east-1
+region, and the source DB instance is in the west-2 region, then you
+call the C<CreateDBInstanceReadReplica> action in the us-east-1 region
+and provide a presigned URL that contains a call to the
+C<CreateDBInstanceReadReplica> action in the us-west-2 region. For this
+example, the C<DestinationRegion> in the presigned URL must be set to
+the us-east-1 region.
+
+=item *
+
+C<KmsKeyId> - The KMS key identifier for the key to use to encrypt the
+Read Replica in the destination region. This is the same identifier for
+both the C<CreateDBInstanceReadReplica> action that is called in the
+destination region, and the action contained in the presigned URL.
+
+=item *
+
+C<SourceDBInstanceIdentifier> - The DB instance identifier for the
+encrypted Read Replica to be created. This identifier must be in the
+Amazon Resource Name (ARN) format for the source region. For example,
+if you create an encrypted Read Replica from a DB instance in the
+us-west-2 region, then your C<SourceDBInstanceIdentifier> would look
+like this example: C<
+arn:aws:rds:us-west-2:123456789012:instance:mysql-instance1-instance-20161115>.
+
+=back
+
+To learn how to generate a Signature Version 4 signed request, see
+Authenticating Requests: Using Query Parameters (AWS Signature Version
+4) and Signature Version 4 Signing Process.
+
+=item *
+
+C<DBInstanceIdentifier> - The identifier for the encrypted Read Replica
+in the destination region.
+
+=item *
+
+C<SourceDBInstanceIdentifier> - The DB instance identifier for the
+encrypted Read Replica. This identifier must be in the ARN format for
+the source region and is the same value as the
+C<SourceDBInstanceIdentifier> in the presigned URL.
+
+=back
+
 
 
 =head2 CreateDBParameterGroup(DBParameterGroupFamily => Str, DBParameterGroupName => Str, Description => Str, [Tags => ArrayRef[L<Paws::RDS::Tag>]])
@@ -1964,6 +2052,20 @@ by the C<character_set_database> parameter. You can use the I<Parameter
 Groups> option of the Amazon RDS console or the I<DescribeDBParameters>
 command to verify that your DB parameter group has been created or
 modified.
+
+
+=head2 ModifyDBSnapshot(DBSnapshotIdentifier => Str, [EngineVersion => Str])
+
+Each argument is described in detail in: L<Paws::RDS::ModifyDBSnapshot>
+
+Returns: a L<Paws::RDS::ModifyDBSnapshotResult> instance
+
+  Updates a manual DB snapshot, which can be encrypted or not encrypted,
+with a new engine version. You can update the engine version to either
+a new major or minor engine version.
+
+Amazon RDS supports upgrading a MySQL DB snapshot from MySQL 5.1 to
+MySQL 5.5.
 
 
 =head2 ModifyDBSnapshotAttribute(AttributeName => Str, DBSnapshotIdentifier => Str, [ValuesToAdd => ArrayRef[Str|Undef], ValuesToRemove => ArrayRef[Str|Undef]])
