@@ -85,6 +85,27 @@ package Paws::CloudTrail;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub LookupAllEvents {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->LookupEvents(@_);
+
+    if (not defined $callback) {
+      while ($result->NextToken) {
+        $result = $self->LookupEvents(@_, NextToken => $result->NextToken);
+        push @{ $result->Events }, @{ $result->Events };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $result = $self->LookupEvents(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'Events') foreach (@{ $result->Events });
+      }
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/AddTags CreateTrail DeleteTrail DescribeTrails GetEventSelectors GetTrailStatus ListPublicKeys ListTags LookupEvents PutEventSelectors RemoveTags StartLogging StopLogging UpdateTrail / }
@@ -416,6 +437,18 @@ C<InvalidHomeRegionException> is thrown.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 LookupAllEvents(sub { },[EndTime => Str, LookupAttributes => ArrayRef[L<Paws::CloudTrail::LookupAttribute>], MaxResults => Int, NextToken => Str, StartTime => Str])
+
+=head2 LookupAllEvents([EndTime => Str, LookupAttributes => ArrayRef[L<Paws::CloudTrail::LookupAttribute>], MaxResults => Int, NextToken => Str, StartTime => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Events, passing the object as the first parameter, and the string 'Events' as the second parameter 
+
+If not, it will return a a L<Paws::CloudTrail::LookupEventsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 

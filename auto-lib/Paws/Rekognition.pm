@@ -70,6 +70,48 @@ package Paws::Rekognition;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub ListAllCollections {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListCollections(@_);
+
+    if (not defined $callback) {
+      while ($result->NextToken) {
+        $result = $self->ListCollections(@_, NextToken => $result->NextToken);
+        push @{ $result->CollectionIds }, @{ $result->CollectionIds };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $result = $self->ListCollections(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'CollectionIds') foreach (@{ $result->CollectionIds });
+      }
+    }
+
+    return undef
+  }
+  sub ListAllFaces {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListFaces(@_);
+
+    if (not defined $callback) {
+      while ($result->NextToken) {
+        $result = $self->ListFaces(@_, NextToken => $result->NextToken);
+        push @{ $result->Faces }, @{ $result->Faces };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $result = $self->ListFaces(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'Faces') foreach (@{ $result->Faces });
+      }
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/CompareFaces CreateCollection DeleteCollection DeleteFaces DetectFaces DetectLabels IndexFaces ListCollections ListFaces SearchFaces SearchFacesByImage / }
@@ -408,6 +450,30 @@ C<rekognition:SearchFacesByImage> action.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllCollections(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 ListAllCollections([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - CollectionIds, passing the object as the first parameter, and the string 'CollectionIds' as the second parameter 
+
+If not, it will return a a L<Paws::Rekognition::ListCollectionsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllFaces(sub { },CollectionId => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllFaces(CollectionId => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Faces, passing the object as the first parameter, and the string 'Faces' as the second parameter 
+
+If not, it will return a a L<Paws::Rekognition::ListFacesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 

@@ -230,6 +230,29 @@ package Paws::DeviceFarm;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub GetAllOfferingStatus {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetOfferingStatus(@_);
+
+    if (not defined $callback) {
+      while ($result->nextToken) {
+        $result = $self->GetOfferingStatus(@_, nextToken => $result->nextToken);
+        push @{ $result->current }, @{ $result->current };
+        push @{ $result->nextPeriod }, @{ $result->nextPeriod };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $result = $self->GetOfferingStatus(@_, nextToken => $result->nextToken);
+        $callback->($_ => 'current') foreach (@{ $result->current });
+        $callback->($_ => 'nextPeriod') foreach (@{ $result->nextPeriod });
+      }
+    }
+
+    return undef
+  }
   sub ListAllArtifacts {
     my $self = shift;
 
@@ -309,6 +332,48 @@ package Paws::DeviceFarm;
       while ($result->nextToken) {
         $result = $self->ListJobs(@_, nextToken => $result->nextToken);
         $callback->($_ => 'jobs') foreach (@{ $result->jobs });
+      }
+    }
+
+    return undef
+  }
+  sub ListAllOfferings {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListOfferings(@_);
+
+    if (not defined $callback) {
+      while ($result->nextToken) {
+        $result = $self->ListOfferings(@_, nextToken => $result->nextToken);
+        push @{ $result->offerings }, @{ $result->offerings };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $result = $self->ListOfferings(@_, nextToken => $result->nextToken);
+        $callback->($_ => 'offerings') foreach (@{ $result->offerings });
+      }
+    }
+
+    return undef
+  }
+  sub ListAllOfferingTransactions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListOfferingTransactions(@_);
+
+    if (not defined $callback) {
+      while ($result->nextToken) {
+        $result = $self->ListOfferingTransactions(@_, nextToken => $result->nextToken);
+        push @{ $result->offeringTransactions }, @{ $result->offeringTransactions };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $result = $self->ListOfferingTransactions(@_, nextToken => $result->nextToken);
+        $callback->($_ => 'offeringTransactions') foreach (@{ $result->offeringTransactions });
       }
     }
 
@@ -931,6 +996,20 @@ name.
 
 Paginator methods are helpers that repetively call methods that return partial results
 
+=head2 GetAllOfferingStatus(sub { },[NextToken => Str])
+
+=head2 GetAllOfferingStatus([NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - current, passing the object as the first parameter, and the string 'current' as the second parameter 
+
+ - nextPeriod, passing the object as the first parameter, and the string 'nextPeriod' as the second parameter 
+
+If not, it will return a a L<Paws::DeviceFarm::GetOfferingStatusResult> instance with all the C<param>s; andC<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 =head2 ListAllArtifacts(sub { },Arn => Str, Type => Str, [NextToken => Str])
 
 =head2 ListAllArtifacts(Arn => Str, Type => Str, [NextToken => Str])
@@ -977,6 +1056,30 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - jobs, passing the object as the first parameter, and the string 'jobs' as the second parameter 
 
 If not, it will return a a L<Paws::DeviceFarm::ListJobsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllOfferings(sub { },[NextToken => Str])
+
+=head2 ListAllOfferings([NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - offerings, passing the object as the first parameter, and the string 'offerings' as the second parameter 
+
+If not, it will return a a L<Paws::DeviceFarm::ListOfferingsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllOfferingTransactions(sub { },[NextToken => Str])
+
+=head2 ListAllOfferingTransactions([NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - offeringTransactions, passing the object as the first parameter, and the string 'offeringTransactions' as the second parameter 
+
+If not, it will return a a L<Paws::DeviceFarm::ListOfferingTransactionsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 ListAllProjects(sub { },[Arn => Str, NextToken => Str])

@@ -85,6 +85,69 @@ package Paws::WorkSpaces;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub DescribeAllWorkspaceBundles {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeWorkspaceBundles(@_);
+
+    if (not defined $callback) {
+      while ($result->NextToken) {
+        $result = $self->DescribeWorkspaceBundles(@_, NextToken => $result->NextToken);
+        push @{ $result->Bundles }, @{ $result->Bundles };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $result = $self->DescribeWorkspaceBundles(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'Bundles') foreach (@{ $result->Bundles });
+      }
+    }
+
+    return undef
+  }
+  sub DescribeAllWorkspaceDirectories {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeWorkspaceDirectories(@_);
+
+    if (not defined $callback) {
+      while ($result->NextToken) {
+        $result = $self->DescribeWorkspaceDirectories(@_, NextToken => $result->NextToken);
+        push @{ $result->Directories }, @{ $result->Directories };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $result = $self->DescribeWorkspaceDirectories(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'Directories') foreach (@{ $result->Directories });
+      }
+    }
+
+    return undef
+  }
+  sub DescribeAllWorkspaces {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeWorkspaces(@_);
+
+    if (not defined $callback) {
+      while ($result->NextToken) {
+        $result = $self->DescribeWorkspaces(@_, NextToken => $result->NextToken);
+        push @{ $result->Workspaces }, @{ $result->Workspaces };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $result = $self->DescribeWorkspaces(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'Workspaces') foreach (@{ $result->Workspaces });
+      }
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/CreateTags CreateWorkspaces DeleteTags DescribeTags DescribeWorkspaceBundles DescribeWorkspaceDirectories DescribeWorkspaces DescribeWorkspacesConnectionStatus ModifyWorkspaceProperties RebootWorkspaces RebuildWorkspaces StartWorkspaces StopWorkspaces TerminateWorkspaces / }
@@ -329,6 +392,42 @@ been completely terminated.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 DescribeAllWorkspaceBundles(sub { },[BundleIds => ArrayRef[Str|Undef], NextToken => Str, Owner => Str])
+
+=head2 DescribeAllWorkspaceBundles([BundleIds => ArrayRef[Str|Undef], NextToken => Str, Owner => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Bundles, passing the object as the first parameter, and the string 'Bundles' as the second parameter 
+
+If not, it will return a a L<Paws::WorkSpaces::DescribeWorkspaceBundlesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllWorkspaceDirectories(sub { },[DirectoryIds => ArrayRef[Str|Undef], NextToken => Str])
+
+=head2 DescribeAllWorkspaceDirectories([DirectoryIds => ArrayRef[Str|Undef], NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Directories, passing the object as the first parameter, and the string 'Directories' as the second parameter 
+
+If not, it will return a a L<Paws::WorkSpaces::DescribeWorkspaceDirectoriesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllWorkspaces(sub { },[BundleId => Str, DirectoryId => Str, Limit => Int, NextToken => Str, UserName => Str, WorkspaceIds => ArrayRef[Str|Undef]])
+
+=head2 DescribeAllWorkspaces([BundleId => Str, DirectoryId => Str, Limit => Int, NextToken => Str, UserName => Str, WorkspaceIds => ArrayRef[Str|Undef]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Workspaces, passing the object as the first parameter, and the string 'Workspaces' as the second parameter 
+
+If not, it will return a a L<Paws::WorkSpaces::DescribeWorkspacesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 

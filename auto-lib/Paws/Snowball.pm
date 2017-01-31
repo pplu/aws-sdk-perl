@@ -100,6 +100,48 @@ package Paws::Snowball;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub DescribeAllAddresses {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeAddresses(@_);
+
+    if (not defined $callback) {
+      while ($result->NextToken) {
+        $result = $self->DescribeAddresses(@_, NextToken => $result->NextToken);
+        push @{ $result->Addresses }, @{ $result->Addresses };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $result = $self->DescribeAddresses(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'Addresses') foreach (@{ $result->Addresses });
+      }
+    }
+
+    return undef
+  }
+  sub ListAllJobs {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListJobs(@_);
+
+    if (not defined $callback) {
+      while ($result->NextToken) {
+        $result = $self->ListJobs(@_, NextToken => $result->NextToken);
+        push @{ $result->JobListEntries }, @{ $result->JobListEntries };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $result = $self->ListJobs(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'JobListEntries') foreach (@{ $result->JobListEntries });
+      }
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/CancelCluster CancelJob CreateAddress CreateCluster CreateJob DescribeAddress DescribeAddresses DescribeCluster DescribeJob GetJobManifest GetJobUnlockCode GetSnowballUsage ListClusterJobs ListClusters ListJobs UpdateCluster UpdateJob / }
@@ -372,6 +414,30 @@ action is no longer available.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 DescribeAllAddresses(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllAddresses([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Addresses, passing the object as the first parameter, and the string 'Addresses' as the second parameter 
+
+If not, it will return a a L<Paws::Snowball::DescribeAddressesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllJobs(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 ListAllJobs([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - JobListEntries, passing the object as the first parameter, and the string 'JobListEntries' as the second parameter 
+
+If not, it will return a a L<Paws::Snowball::ListJobsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 

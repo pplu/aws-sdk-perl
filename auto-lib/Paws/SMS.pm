@@ -70,6 +70,90 @@ package Paws::SMS;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub GetAllConnectors {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetConnectors(@_);
+
+    if (not defined $callback) {
+      while ($result->nextToken) {
+        $result = $self->GetConnectors(@_, nextToken => $result->nextToken);
+        push @{ $result->connectorList }, @{ $result->connectorList };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $result = $self->GetConnectors(@_, nextToken => $result->nextToken);
+        $callback->($_ => 'connectorList') foreach (@{ $result->connectorList });
+      }
+    }
+
+    return undef
+  }
+  sub GetAllReplicationJobs {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetReplicationJobs(@_);
+
+    if (not defined $callback) {
+      while ($result->nextToken) {
+        $result = $self->GetReplicationJobs(@_, nextToken => $result->nextToken);
+        push @{ $result->replicationJobList }, @{ $result->replicationJobList };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $result = $self->GetReplicationJobs(@_, nextToken => $result->nextToken);
+        $callback->($_ => 'replicationJobList') foreach (@{ $result->replicationJobList });
+      }
+    }
+
+    return undef
+  }
+  sub GetAllReplicationRuns {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetReplicationRuns(@_);
+
+    if (not defined $callback) {
+      while ($result->nextToken) {
+        $result = $self->GetReplicationRuns(@_, nextToken => $result->nextToken);
+        push @{ $result->replicationRunList }, @{ $result->replicationRunList };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $result = $self->GetReplicationRuns(@_, nextToken => $result->nextToken);
+        $callback->($_ => 'replicationRunList') foreach (@{ $result->replicationRunList });
+      }
+    }
+
+    return undef
+  }
+  sub GetAllServers {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetServers(@_);
+
+    if (not defined $callback) {
+      while ($result->nextToken) {
+        $result = $self->GetServers(@_, nextToken => $result->nextToken);
+        push @{ $result->serverList }, @{ $result->serverList };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $result = $self->GetServers(@_, nextToken => $result->nextToken);
+        $callback->($_ => 'serverList') foreach (@{ $result->serverList });
+      }
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/CreateReplicationJob DeleteReplicationJob DeleteServerCatalog DisassociateConnector GetConnectors GetReplicationJobs GetReplicationRuns GetServers ImportServerCatalog StartOnDemandReplicationRun UpdateReplicationJob / }
@@ -238,6 +322,54 @@ this API will affect the next scheduled ReplicationRun.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 GetAllConnectors(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 GetAllConnectors([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - connectorList, passing the object as the first parameter, and the string 'connectorList' as the second parameter 
+
+If not, it will return a a L<Paws::SMS::GetConnectorsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllReplicationJobs(sub { },[MaxResults => Int, NextToken => Str, ReplicationJobId => Str])
+
+=head2 GetAllReplicationJobs([MaxResults => Int, NextToken => Str, ReplicationJobId => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - replicationJobList, passing the object as the first parameter, and the string 'replicationJobList' as the second parameter 
+
+If not, it will return a a L<Paws::SMS::GetReplicationJobsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllReplicationRuns(sub { },ReplicationJobId => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 GetAllReplicationRuns(ReplicationJobId => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - replicationRunList, passing the object as the first parameter, and the string 'replicationRunList' as the second parameter 
+
+If not, it will return a a L<Paws::SMS::GetReplicationRunsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllServers(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 GetAllServers([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - serverList, passing the object as the first parameter, and the string 'serverList' as the second parameter 
+
+If not, it will return a a L<Paws::SMS::GetServersResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 

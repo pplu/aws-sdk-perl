@@ -200,6 +200,132 @@ package Paws::CodeDeploy;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub ListAllApplicationRevisions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListApplicationRevisions(@_);
+
+    if (not defined $callback) {
+      while ($result->nextToken) {
+        $result = $self->ListApplicationRevisions(@_, nextToken => $result->nextToken);
+        push @{ $result->revisions }, @{ $result->revisions };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $result = $self->ListApplicationRevisions(@_, nextToken => $result->nextToken);
+        $callback->($_ => 'revisions') foreach (@{ $result->revisions });
+      }
+    }
+
+    return undef
+  }
+  sub ListAllApplications {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListApplications(@_);
+
+    if (not defined $callback) {
+      while ($result->nextToken) {
+        $result = $self->ListApplications(@_, nextToken => $result->nextToken);
+        push @{ $result->applications }, @{ $result->applications };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $result = $self->ListApplications(@_, nextToken => $result->nextToken);
+        $callback->($_ => 'applications') foreach (@{ $result->applications });
+      }
+    }
+
+    return undef
+  }
+  sub ListAllDeploymentConfigs {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListDeploymentConfigs(@_);
+
+    if (not defined $callback) {
+      while ($result->nextToken) {
+        $result = $self->ListDeploymentConfigs(@_, nextToken => $result->nextToken);
+        push @{ $result->deploymentConfigsList }, @{ $result->deploymentConfigsList };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $result = $self->ListDeploymentConfigs(@_, nextToken => $result->nextToken);
+        $callback->($_ => 'deploymentConfigsList') foreach (@{ $result->deploymentConfigsList });
+      }
+    }
+
+    return undef
+  }
+  sub ListAllDeploymentGroups {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListDeploymentGroups(@_);
+
+    if (not defined $callback) {
+      while ($result->nextToken) {
+        $result = $self->ListDeploymentGroups(@_, nextToken => $result->nextToken);
+        push @{ $result->deploymentGroups }, @{ $result->deploymentGroups };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $result = $self->ListDeploymentGroups(@_, nextToken => $result->nextToken);
+        $callback->($_ => 'deploymentGroups') foreach (@{ $result->deploymentGroups });
+      }
+    }
+
+    return undef
+  }
+  sub ListAllDeploymentInstances {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListDeploymentInstances(@_);
+
+    if (not defined $callback) {
+      while ($result->nextToken) {
+        $result = $self->ListDeploymentInstances(@_, nextToken => $result->nextToken);
+        push @{ $result->instancesList }, @{ $result->instancesList };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $result = $self->ListDeploymentInstances(@_, nextToken => $result->nextToken);
+        $callback->($_ => 'instancesList') foreach (@{ $result->instancesList });
+      }
+    }
+
+    return undef
+  }
+  sub ListAllDeployments {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListDeployments(@_);
+
+    if (not defined $callback) {
+      while ($result->nextToken) {
+        $result = $self->ListDeployments(@_, nextToken => $result->nextToken);
+        push @{ $result->deployments }, @{ $result->deployments };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $result = $self->ListDeployments(@_, nextToken => $result->nextToken);
+        $callback->($_ => 'deployments') foreach (@{ $result->deployments });
+      }
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/AddTagsToOnPremisesInstances BatchGetApplicationRevisions BatchGetApplications BatchGetDeploymentGroups BatchGetDeploymentInstances BatchGetDeployments BatchGetOnPremisesInstances ContinueDeployment CreateApplication CreateDeployment CreateDeploymentConfig CreateDeploymentGroup DeleteApplication DeleteDeploymentConfig DeleteDeploymentGroup DeregisterOnPremisesInstance GetApplication GetApplicationRevision GetDeployment GetDeploymentConfig GetDeploymentGroup GetDeploymentInstance GetOnPremisesInstance ListApplicationRevisions ListApplications ListDeploymentConfigs ListDeploymentGroups ListDeploymentInstances ListDeployments ListOnPremisesInstances RegisterApplicationRevision RegisterOnPremisesInstance RemoveTagsFromOnPremisesInstances SkipWaitTimeForInstanceTermination StopDeployment UpdateApplication UpdateDeploymentGroup / }
@@ -669,6 +795,78 @@ Returns: a L<Paws::CodeDeploy::UpdateDeploymentGroupOutput> instance
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllApplicationRevisions(sub { },ApplicationName => Str, [Deployed => Str, NextToken => Str, S3Bucket => Str, S3KeyPrefix => Str, SortBy => Str, SortOrder => Str])
+
+=head2 ListAllApplicationRevisions(ApplicationName => Str, [Deployed => Str, NextToken => Str, S3Bucket => Str, S3KeyPrefix => Str, SortBy => Str, SortOrder => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - revisions, passing the object as the first parameter, and the string 'revisions' as the second parameter 
+
+If not, it will return a a L<Paws::CodeDeploy::ListApplicationRevisionsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllApplications(sub { },[NextToken => Str])
+
+=head2 ListAllApplications([NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - applications, passing the object as the first parameter, and the string 'applications' as the second parameter 
+
+If not, it will return a a L<Paws::CodeDeploy::ListApplicationsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllDeploymentConfigs(sub { },[NextToken => Str])
+
+=head2 ListAllDeploymentConfigs([NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - deploymentConfigsList, passing the object as the first parameter, and the string 'deploymentConfigsList' as the second parameter 
+
+If not, it will return a a L<Paws::CodeDeploy::ListDeploymentConfigsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllDeploymentGroups(sub { },ApplicationName => Str, [NextToken => Str])
+
+=head2 ListAllDeploymentGroups(ApplicationName => Str, [NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - deploymentGroups, passing the object as the first parameter, and the string 'deploymentGroups' as the second parameter 
+
+If not, it will return a a L<Paws::CodeDeploy::ListDeploymentGroupsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllDeploymentInstances(sub { },DeploymentId => Str, [InstanceStatusFilter => ArrayRef[Str|Undef], InstanceTypeFilter => ArrayRef[Str|Undef], NextToken => Str])
+
+=head2 ListAllDeploymentInstances(DeploymentId => Str, [InstanceStatusFilter => ArrayRef[Str|Undef], InstanceTypeFilter => ArrayRef[Str|Undef], NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - instancesList, passing the object as the first parameter, and the string 'instancesList' as the second parameter 
+
+If not, it will return a a L<Paws::CodeDeploy::ListDeploymentInstancesOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllDeployments(sub { },[ApplicationName => Str, CreateTimeRange => L<Paws::CodeDeploy::TimeRange>, DeploymentGroupName => Str, IncludeOnlyStatuses => ArrayRef[Str|Undef], NextToken => Str])
+
+=head2 ListAllDeployments([ApplicationName => Str, CreateTimeRange => L<Paws::CodeDeploy::TimeRange>, DeploymentGroupName => Str, IncludeOnlyStatuses => ArrayRef[Str|Undef], NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - deployments, passing the object as the first parameter, and the string 'deployments' as the second parameter 
+
+If not, it will return a a L<Paws::CodeDeploy::ListDeploymentsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 

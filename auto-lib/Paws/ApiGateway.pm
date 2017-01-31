@@ -692,6 +692,69 @@ package Paws::ApiGateway;
 
     return undef
   }
+  sub GetAllUsage {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetUsage(@_);
+
+    if (not defined $callback) {
+      while ($result->position) {
+        $result = $self->GetUsage(@_, position => $result->position);
+        push @{ $result->items }, @{ $result->items };
+      }
+      return $result;
+    } else {
+      while ($result->position) {
+        $result = $self->GetUsage(@_, position => $result->position);
+        $callback->($_ => 'items') foreach (@{ $result->items });
+      }
+    }
+
+    return undef
+  }
+  sub GetAllUsagePlanKeys {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetUsagePlanKeys(@_);
+
+    if (not defined $callback) {
+      while ($result->position) {
+        $result = $self->GetUsagePlanKeys(@_, position => $result->position);
+        push @{ $result->items }, @{ $result->items };
+      }
+      return $result;
+    } else {
+      while ($result->position) {
+        $result = $self->GetUsagePlanKeys(@_, position => $result->position);
+        $callback->($_ => 'items') foreach (@{ $result->items });
+      }
+    }
+
+    return undef
+  }
+  sub GetAllUsagePlans {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetUsagePlans(@_);
+
+    if (not defined $callback) {
+      while ($result->position) {
+        $result = $self->GetUsagePlans(@_, position => $result->position);
+        push @{ $result->items }, @{ $result->items };
+      }
+      return $result;
+    } else {
+      while ($result->position) {
+        $result = $self->GetUsagePlans(@_, position => $result->position);
+        $callback->($_ => 'items') foreach (@{ $result->items });
+      }
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/CreateApiKey CreateAuthorizer CreateBasePathMapping CreateDeployment CreateDocumentationPart CreateDocumentationVersion CreateDomainName CreateModel CreateResource CreateRestApi CreateStage CreateUsagePlan CreateUsagePlanKey DeleteApiKey DeleteAuthorizer DeleteBasePathMapping DeleteClientCertificate DeleteDeployment DeleteDocumentationPart DeleteDocumentationVersion DeleteDomainName DeleteIntegration DeleteIntegrationResponse DeleteMethod DeleteMethodResponse DeleteModel DeleteResource DeleteRestApi DeleteStage DeleteUsagePlan DeleteUsagePlanKey FlushStageAuthorizersCache FlushStageCache GenerateClientCertificate GetAccount GetApiKey GetApiKeys GetAuthorizer GetAuthorizers GetBasePathMapping GetBasePathMappings GetClientCertificate GetClientCertificates GetDeployment GetDeployments GetDocumentationPart GetDocumentationParts GetDocumentationVersion GetDocumentationVersions GetDomainName GetDomainNames GetExport GetIntegration GetIntegrationResponse GetMethod GetMethodResponse GetModel GetModels GetModelTemplate GetResource GetResources GetRestApi GetRestApis GetSdk GetSdkType GetSdkTypes GetStage GetStages GetUsage GetUsagePlan GetUsagePlanKey GetUsagePlanKeys GetUsagePlans ImportApiKeys ImportDocumentationParts ImportRestApi PutIntegration PutIntegrationResponse PutMethod PutMethodResponse PutRestApi TestInvokeAuthorizer TestInvokeMethod UpdateAccount UpdateApiKey UpdateAuthorizer UpdateBasePathMapping UpdateClientCertificate UpdateDeployment UpdateDocumentationPart UpdateDocumentationVersion UpdateDomainName UpdateIntegration UpdateIntegrationResponse UpdateMethod UpdateMethodResponse UpdateModel UpdateResource UpdateRestApi UpdateStage UpdateUsage UpdateUsagePlan / }
@@ -1780,6 +1843,42 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - items, passing the object as the first parameter, and the string 'items' as the second parameter 
 
 If not, it will return a a L<Paws::ApiGateway::RestApis> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllUsage(sub { },EndDate => Str, StartDate => Str, UsagePlanId => Str, [KeyId => Str, Limit => Int, Position => Str])
+
+=head2 GetAllUsage(EndDate => Str, StartDate => Str, UsagePlanId => Str, [KeyId => Str, Limit => Int, Position => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - items, passing the object as the first parameter, and the string 'items' as the second parameter 
+
+If not, it will return a a L<Paws::ApiGateway::Usage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllUsagePlanKeys(sub { },UsagePlanId => Str, [Limit => Int, NameQuery => Str, Position => Str])
+
+=head2 GetAllUsagePlanKeys(UsagePlanId => Str, [Limit => Int, NameQuery => Str, Position => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - items, passing the object as the first parameter, and the string 'items' as the second parameter 
+
+If not, it will return a a L<Paws::ApiGateway::UsagePlanKeys> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllUsagePlans(sub { },[KeyId => Str, Limit => Int, Position => Str])
+
+=head2 GetAllUsagePlans([KeyId => Str, Limit => Int, Position => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - items, passing the object as the first parameter, and the string 'items' as the second parameter 
+
+If not, it will return a a L<Paws::ApiGateway::UsagePlans> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 

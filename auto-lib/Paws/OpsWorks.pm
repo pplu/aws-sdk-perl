@@ -365,6 +365,27 @@ package Paws::OpsWorks;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub DescribeAllEcsClusters {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeEcsClusters(@_);
+
+    if (not defined $callback) {
+      while ($result->NextToken) {
+        $result = $self->DescribeEcsClusters(@_, NextToken => $result->NextToken);
+        push @{ $result->EcsClusters }, @{ $result->EcsClusters };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $result = $self->DescribeEcsClusters(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'EcsClusters') foreach (@{ $result->EcsClusters });
+      }
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/AssignInstance AssignVolume AssociateElasticIp AttachElasticLoadBalancer CloneStack CreateApp CreateDeployment CreateInstance CreateLayer CreateStack CreateUserProfile DeleteApp DeleteInstance DeleteLayer DeleteStack DeleteUserProfile DeregisterEcsCluster DeregisterElasticIp DeregisterInstance DeregisterRdsDbInstance DeregisterVolume DescribeAgentVersions DescribeApps DescribeCommands DescribeDeployments DescribeEcsClusters DescribeElasticIps DescribeElasticLoadBalancers DescribeInstances DescribeLayers DescribeLoadBasedAutoScaling DescribeMyUserProfile DescribePermissions DescribeRaidArrays DescribeRdsDbInstances DescribeServiceErrors DescribeStackProvisioningParameters DescribeStacks DescribeStackSummary DescribeTimeBasedAutoScaling DescribeUserProfiles DescribeVolumes DetachElasticLoadBalancer DisassociateElasticIp GetHostnameSuggestion GrantAccess RebootInstance RegisterEcsCluster RegisterElasticIp RegisterInstance RegisterRdsDbInstance RegisterVolume SetLoadBasedAutoScaling SetPermission SetTimeBasedAutoScaling StartInstance StartStack StopInstance StopStack UnassignInstance UnassignVolume UpdateApp UpdateElasticIp UpdateInstance UpdateLayer UpdateMyUserProfile UpdateRdsDbInstance UpdateStack UpdateUserProfile UpdateVolume / }
@@ -1612,6 +1633,18 @@ permissions, see Managing User Permissions.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 DescribeAllEcsClusters(sub { },[EcsClusterArns => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str, StackId => Str])
+
+=head2 DescribeAllEcsClusters([EcsClusterArns => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str, StackId => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - EcsClusters, passing the object as the first parameter, and the string 'EcsClusters' as the second parameter 
+
+If not, it will return a a L<Paws::OpsWorks::DescribeEcsClustersResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 

@@ -415,6 +415,48 @@ package Paws::SSM;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub DescribeAllActivations {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeActivations(@_);
+
+    if (not defined $callback) {
+      while ($result->NextToken) {
+        $result = $self->DescribeActivations(@_, NextToken => $result->NextToken);
+        push @{ $result->ActivationList }, @{ $result->ActivationList };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $result = $self->DescribeActivations(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'ActivationList') foreach (@{ $result->ActivationList });
+      }
+    }
+
+    return undef
+  }
+  sub DescribeAllInstanceInformation {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeInstanceInformation(@_);
+
+    if (not defined $callback) {
+      while ($result->NextToken) {
+        $result = $self->DescribeInstanceInformation(@_, NextToken => $result->NextToken);
+        push @{ $result->InstanceInformationList }, @{ $result->InstanceInformationList };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $result = $self->DescribeInstanceInformation(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'InstanceInformationList') foreach (@{ $result->InstanceInformationList });
+      }
+    }
+
+    return undef
+  }
   sub ListAllAssociations {
     my $self = shift;
 
@@ -1376,6 +1418,30 @@ request are left unchanged.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 DescribeAllActivations(sub { },[Filters => ArrayRef[L<Paws::SSM::DescribeActivationsFilter>], MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllActivations([Filters => ArrayRef[L<Paws::SSM::DescribeActivationsFilter>], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ActivationList, passing the object as the first parameter, and the string 'ActivationList' as the second parameter 
+
+If not, it will return a a L<Paws::SSM::DescribeActivationsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllInstanceInformation(sub { },[Filters => ArrayRef[L<Paws::SSM::InstanceInformationStringFilter>], InstanceInformationFilterList => ArrayRef[L<Paws::SSM::InstanceInformationFilter>], MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllInstanceInformation([Filters => ArrayRef[L<Paws::SSM::InstanceInformationStringFilter>], InstanceInformationFilterList => ArrayRef[L<Paws::SSM::InstanceInformationFilter>], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - InstanceInformationList, passing the object as the first parameter, and the string 'InstanceInformationList' as the second parameter 
+
+If not, it will return a a L<Paws::SSM::DescribeInstanceInformationResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 =head2 ListAllAssociations(sub { },[AssociationFilterList => ArrayRef[L<Paws::SSM::AssociationFilter>], MaxResults => Int, NextToken => Str])
 

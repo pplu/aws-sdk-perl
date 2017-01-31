@@ -100,6 +100,90 @@ package Paws::StepFunctions;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub GetAllExecutionHistory {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetExecutionHistory(@_);
+
+    if (not defined $callback) {
+      while ($result->nextToken) {
+        $result = $self->GetExecutionHistory(@_, nextToken => $result->nextToken);
+        push @{ $result->events }, @{ $result->events };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $result = $self->GetExecutionHistory(@_, nextToken => $result->nextToken);
+        $callback->($_ => 'events') foreach (@{ $result->events });
+      }
+    }
+
+    return undef
+  }
+  sub ListAllActivities {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListActivities(@_);
+
+    if (not defined $callback) {
+      while ($result->nextToken) {
+        $result = $self->ListActivities(@_, nextToken => $result->nextToken);
+        push @{ $result->activities }, @{ $result->activities };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $result = $self->ListActivities(@_, nextToken => $result->nextToken);
+        $callback->($_ => 'activities') foreach (@{ $result->activities });
+      }
+    }
+
+    return undef
+  }
+  sub ListAllExecutions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListExecutions(@_);
+
+    if (not defined $callback) {
+      while ($result->nextToken) {
+        $result = $self->ListExecutions(@_, nextToken => $result->nextToken);
+        push @{ $result->executions }, @{ $result->executions };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $result = $self->ListExecutions(@_, nextToken => $result->nextToken);
+        $callback->($_ => 'executions') foreach (@{ $result->executions });
+      }
+    }
+
+    return undef
+  }
+  sub ListAllStateMachines {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListStateMachines(@_);
+
+    if (not defined $callback) {
+      while ($result->nextToken) {
+        $result = $self->ListStateMachines(@_, nextToken => $result->nextToken);
+        push @{ $result->stateMachines }, @{ $result->stateMachines };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $result = $self->ListStateMachines(@_, nextToken => $result->nextToken);
+        $callback->($_ => 'stateMachines') foreach (@{ $result->stateMachines });
+      }
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/CreateActivity CreateStateMachine DeleteActivity DeleteStateMachine DescribeActivity DescribeExecution DescribeStateMachine GetActivityTask GetExecutionHistory ListActivities ListExecutions ListStateMachines SendTaskFailure SendTaskHeartbeat SendTaskSuccess StartExecution StopExecution / }
@@ -349,6 +433,54 @@ Returns: a L<Paws::StepFunctions::StopExecutionOutput> instance
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 GetAllExecutionHistory(sub { },ExecutionArn => Str, [MaxResults => Int, NextToken => Str, ReverseOrder => Bool])
+
+=head2 GetAllExecutionHistory(ExecutionArn => Str, [MaxResults => Int, NextToken => Str, ReverseOrder => Bool])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - events, passing the object as the first parameter, and the string 'events' as the second parameter 
+
+If not, it will return a a L<Paws::StepFunctions::GetExecutionHistoryOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllActivities(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 ListAllActivities([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - activities, passing the object as the first parameter, and the string 'activities' as the second parameter 
+
+If not, it will return a a L<Paws::StepFunctions::ListActivitiesOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllExecutions(sub { },StateMachineArn => Str, [MaxResults => Int, NextToken => Str, StatusFilter => Str])
+
+=head2 ListAllExecutions(StateMachineArn => Str, [MaxResults => Int, NextToken => Str, StatusFilter => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - executions, passing the object as the first parameter, and the string 'executions' as the second parameter 
+
+If not, it will return a a L<Paws::StepFunctions::ListExecutionsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllStateMachines(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 ListAllStateMachines([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - stateMachines, passing the object as the first parameter, and the string 'stateMachines' as the second parameter 
+
+If not, it will return a a L<Paws::StepFunctions::ListStateMachinesOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 
