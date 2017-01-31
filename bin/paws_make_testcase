@@ -2,6 +2,9 @@
 
 my @args = @ARGV;
 
-my @cmd = ('perl', '-I', 't/lib', 'bin/paws', $args[0], '--caller', 'TestMakerCaller', @args[1..$#args]);
+$ENV{PAWS_MOCK_MODE} = 'RECORD';
+$ENV{PAWS_MOCK_DIR} = 'tests/' . time . '/';
+
+my @cmd = ('perl', '-I', 't/lib', 'bin/paws', $args[0], '--caller', 'Paws::Net::MockCaller', @args[1..$#args]);
 
 system @cmd;

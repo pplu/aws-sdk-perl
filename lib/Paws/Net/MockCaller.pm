@@ -5,6 +5,7 @@ package Paws::Net::MockCaller;
   use File::Slurper qw(read_text write_text);
   use JSON::MaybeXS;
   use Moose::Util::TypeConstraints;
+  use Path::Class;
 
   has real_caller => (
     is => 'ro', 
@@ -87,6 +88,9 @@ package Paws::Net::MockCaller;
     }
 
     if ($self->mock_mode eq 'RECORD') {
+      my $file = file $self->_test_file;
+      $file->dir->mkpath;
+
       write_text($self->_test_file, encode_json({
         request => {
           params => $service->to_hash($call_object),
