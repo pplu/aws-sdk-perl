@@ -1,12 +1,8 @@
-0.30 04 Jan 2017 
+0.31 
  - Bug fixed: Services that use QueryCaller and EC2Caller were not serializing Booleans correctly
- - Specify minumum perl version (PR #137)
- - Update RestXmlCaller.pm to fix malformed xml schema issues (PR #133)
- - Don't trim values coming from APIs (Issue #130)
  - New API: CUR (AWS Cost and Usage Report Service) 
  - New API: CloudDirectory 
- - CodeDeploy API update: IamSessionArn, IamUserArn, BlueGreen deployments
- - ECS API update: Attributes and Placement constraints
+ - CodeDeploy API update: BlueGreen deployments
  - RDS API update: create Aurora read replica of an RDS
  - DynamoDB API update: Tagging for DynamoDB
  - ACM API update
@@ -15,6 +11,13 @@
  - ELBv2 API update
  - ECS API update 
  - EC2 API update
+
+0.30 04 Jan 2017 
+ - Specify minumum perl version (PR #137)
+ - Update RestXmlCaller.pm to fix malformed xml schema issues (PR #133)
+ - Don't trim values coming from APIs (Issue #130)
+ - CodeDeploy API update: IamSessionArn, IamUserArn
+ - ECS API update: Attributes and Placement constraints
 
 0.29 27 Dec 2016
  - New functionality: Enabled and documented paginators (methods that repeatedly call methods that 
