@@ -65,7 +65,8 @@ $request = $ec2->RunInstances(
   MinCount => 1,
   NetworkInterfaces => [
    { DeviceIndex => 0, Groups => [ 'sg-1', 'sg-2' ] }
-  ]
+  ],
+  DryRun => 1,
 );
 
 $test_params = {
@@ -75,10 +76,8 @@ $test_params = {
   'NetworkInterface.1.DeviceIndex' => 0,
   'NetworkInterface.1.SecurityGroupId.1' => 'sg-1',
   'NetworkInterface.1.SecurityGroupId.2' => 'sg-2',
+  'DryRun' => 'true',
 };
-
-request_has_params($test_params, $request);
-
 
 my $sqs = $aws->service('SQS');
 
@@ -235,6 +234,19 @@ $test_params = {
 
 request_has_params($test_params, $request);
 
+my $elb = $aws->service('ELB');
+
+$request = $elb->ModifyLoadBalancerAttributes(
+  LoadBalancerName => 'lbname',
+  LoadBalancerAttributes => { CrossZoneLoadBalancing => { Enabled => 1 } },
+);
+
+$test_params = {
+  'LoadBalancerName' => 'lbname',
+  'LoadBalancerAttributes.CrossZoneLoadBalancing.Enabled' => 'true',
+};
+
+request_has_params($test_params, $request);
 
 $request = $asg->CreateAutoScalingGroup(
   'AutoScalingGroupName' => 'my-test-asg',

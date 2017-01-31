@@ -34,7 +34,11 @@ package Paws::Net::EC2Caller;
         my $att_type = $params->meta->get_attribute($att)->type_constraint;
 
         if ($self->_is_internal_type($att_type)) {
-          $p{ $key } = $params->{$att};
+          if ($att_type eq 'Bool') {
+            $p{ $key } = ($params->{$att} == 1) ? 'true' : 'false';
+          } else {
+            $p{ $key } = $params->{$att};
+          }
         } elsif ($att_type =~ m/^ArrayRef\[(.*)\]/) {
           if ($self->_is_internal_type("$1")){
             my $i = 1;

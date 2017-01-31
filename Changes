@@ -1,4 +1,5 @@
 0.30 04 Jan 2017 
+ - Bug fixed: Services that use QueryCaller and EC2Caller were not serializing Booleans correctly
  - Specify minumum perl version (PR #137)
  - Update RestXmlCaller.pm to fix malformed xml schema issues (PR #133)
  - Don't trim values coming from APIs (Issue #130)
