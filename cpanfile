@@ -26,6 +26,7 @@ requires 'Getopt::Long';
 recommends 'Browser::Open';
 requires 'File::HomeDir';
 requires 'String::CRC32';
+requires 'Path::Class';
 
 on 'develop' => sub {
   requires 'Template';
@@ -42,6 +43,7 @@ on 'develop' => sub {
   requires 'Data::Printer';
   requires 'Carp::Always';
   requires 'Test::Pod';
+  requires 'Devel::CoverReport';
   # For developing / testing the pluggable callers
   requires 'Mojolicious';
   requires 'Future::Mojo', '>= 0.003';
