@@ -1,4 +1,4 @@
-0.31 
+0.31 01 Feb 2017 
  - Bug fixed: Services that use QueryCaller and EC2Caller were not serializing Booleans correctly
  - New API: CUR (AWS Cost and Usage Report Service) 
  - New API: CloudDirectory 
