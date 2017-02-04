@@ -26,7 +26,7 @@ requires 'Getopt::Long';
 recommends 'Browser::Open';
 requires 'File::HomeDir';
 requires 'String::CRC32';
-requires 'Path::Class';
+requires 'Path::Tiny' => '0.017';
 
 on 'develop' => sub {
   requires 'Template';
