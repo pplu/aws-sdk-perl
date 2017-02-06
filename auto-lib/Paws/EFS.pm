@@ -69,6 +69,69 @@ package Paws::EFS;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub DescribeAllFileSystems {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeFileSystems(@_);
+
+    if (not defined $callback) {
+      while ($result->Marker) {
+        $result = $self->DescribeFileSystems(@_, Marker => $result->NextMarker);
+        push @{ $result->FileSystems }, @{ $result->FileSystems };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $result = $self->DescribeFileSystems(@_, Marker => $result->NextMarker);
+        $callback->($_ => 'FileSystems') foreach (@{ $result->FileSystems });
+      }
+    }
+
+    return undef
+  }
+  sub DescribeAllMountTargets {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeMountTargets(@_);
+
+    if (not defined $callback) {
+      while ($result->Marker) {
+        $result = $self->DescribeMountTargets(@_, Marker => $result->NextMarker);
+        push @{ $result->MountTargets }, @{ $result->MountTargets };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $result = $self->DescribeMountTargets(@_, Marker => $result->NextMarker);
+        $callback->($_ => 'MountTargets') foreach (@{ $result->MountTargets });
+      }
+    }
+
+    return undef
+  }
+  sub DescribeAllTags {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeTags(@_);
+
+    if (not defined $callback) {
+      while ($result->Marker) {
+        $result = $self->DescribeTags(@_, Marker => $result->NextMarker);
+        push @{ $result->Tags }, @{ $result->Tags };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $result = $self->DescribeTags(@_, Marker => $result->NextMarker);
+        $callback->($_ => 'Tags') foreach (@{ $result->Tags });
+      }
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/CreateFileSystem CreateMountTarget CreateTags DeleteFileSystem DeleteMountTarget DeleteTags DescribeFileSystems DescribeMountTargets DescribeMountTargetSecurityGroups DescribeTags ModifyMountTargetSecurityGroups / }
@@ -583,6 +646,42 @@ network interface.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 DescribeAllFileSystems(sub { },[CreationToken => Str, FileSystemId => Str, Marker => Str, MaxItems => Int])
+
+=head2 DescribeAllFileSystems([CreationToken => Str, FileSystemId => Str, Marker => Str, MaxItems => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - FileSystems, passing the object as the first parameter, and the string 'FileSystems' as the second parameter 
+
+If not, it will return a a L<Paws::EFS::DescribeFileSystemsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllMountTargets(sub { },[FileSystemId => Str, Marker => Str, MaxItems => Int, MountTargetId => Str])
+
+=head2 DescribeAllMountTargets([FileSystemId => Str, Marker => Str, MaxItems => Int, MountTargetId => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - MountTargets, passing the object as the first parameter, and the string 'MountTargets' as the second parameter 
+
+If not, it will return a a L<Paws::EFS::DescribeMountTargetsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllTags(sub { },FileSystemId => Str, [Marker => Str, MaxItems => Int])
+
+=head2 DescribeAllTags(FileSystemId => Str, [Marker => Str, MaxItems => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Tags, passing the object as the first parameter, and the string 'Tags' as the second parameter 
+
+If not, it will return a a L<Paws::EFS::DescribeTagsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 
