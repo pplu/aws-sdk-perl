@@ -963,10 +963,10 @@ package [% inner_class %];
   [%- member = c.shape(member_shape_name) -%]
   has [% param_name %] => (is => 'ro', isa => '[% member.perl_type %]'
   [%- IF (member.type == 'list' and member.member.locationName.defined) %][% traits.push('NameInRequest') %], request_name => '[% member.member.locationName %]'[% END %]
-  [%- IF (shape.members.${param_name}.locationName); traits.push('Unwrapped','NameInRequest') %], xmlname => '[% shape.members.${param_name}.locationName %]', request_name => '[% shape.members.${param_name}.locationName %]'[% END %]
+  [%- IF (shape.members.${param_name}.locationName); traits.push('NameInRequest') %], request_name => '[% shape.members.${param_name}.locationName %]'[% END %]
   [%- IF (shape.members.$param_name.streaming == 1); traits.push('ParamInBody'); END %]
   [%- encoder = c.encoders_struct.$member_shape_name; IF (encoder); traits.push('JSONAttribute') %], decode_as => '[% encoder.encoding %]', method => '[% encoder.alias %]'[% END %]
-  [%- IF (member.members.xmlname and (member.members.xmlname != 'item')) %], traits => ['Unwrapped'], xmlname => '[% member.members.xmlname %]'[% END %]
+  [%- IF (member.members.xmlname and (member.members.xmlname != 'item')) %], traits => ['NameInRequest'], request_name => '[% member.members.xmlname %]'[% END %]
   [%- IF (traits.size) %], traits => [[% FOREACH trait=traits %]'[% trait %]'[% IF (NOT loop.last) %],[% END %][% END %]][% END -%]
   [%- IF (c.required_in_shape(shape,param_name)) %], required => 1[% END %]);
 [% END -%]

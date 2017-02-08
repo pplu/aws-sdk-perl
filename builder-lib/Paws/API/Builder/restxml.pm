@@ -80,7 +80,7 @@ package [% c.api %]::[% op_name %];
     [%- IF (shape.members.$param_name.location == 'header') %], traits => ['ParamInHeader'], header_name => '[% shape.members.$param_name.locationName -%]'
     [%- ELSIF (shape.members.$param_name.location == 'querystring') %], traits => ['ParamInQuery'], query_name => '[% shape.members.$param_name.locationName -%]' 
     [%- ELSIF (shape.members.$param_name.location == 'uri') %], traits => ['ParamInURI'], uri_name => '[% shape.members.$param_name.locationName -%]' 
-    [%- ELSE %], traits => ['Unwrapped'], xmlname => '[% shape.members.$param_name.locationName %]'[%- END -%][%- END -%]
+    [%- ELSE %], traits => ['NameInRequest'], request_name => '[% shape.members.$param_name.locationName %]'[%- END -%][%- END -%]
   [%- IF (shape.members.$param_name.streaming == 1) %], traits => ['ParamInBody'][% stream_param = param_name %][% END %]
   [%- IF (c.required_in_shape(shape,param_name)) %], required => 1[% END %]);
 [% END %]
