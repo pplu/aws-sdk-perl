@@ -1,14 +1,15 @@
 
 package Paws::Glacier::GetJobOutputOutput;
   use Moose;
-  has AcceptRanges => (is => 'ro', isa => 'Str');
-  has ArchiveDescription => (is => 'ro', isa => 'Str');
-  has Body => (is => 'ro', isa => 'Str');
-  has Checksum => (is => 'ro', isa => 'Str');
-  has ContentRange => (is => 'ro', isa => 'Str');
-  has ContentType => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Int');
-
+  has AcceptRanges => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'acceptRanges');
+  has ArchiveDescription => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'archiveDescription');
+  has Body => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'body');
+  has Checksum => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'checksum');
+  has ContentRange => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'contentRange');
+  has ContentType => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'contentType');
+  has Status => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => 'status');
+  use MooseX::ClassAttribute;
+  class_has _stream_param => (is => 'ro', default => 'body');
   has _request_id => (is => 'ro', isa => 'Str');
 1;
 
