@@ -1,10 +1,10 @@
 
 package Paws::ApiGateway::Deployment;
   use Moose;
-  has ApiSummary => (is => 'ro', isa => 'Paws::ApiGateway::PathToMapOfMethodSnapshot');
-  has CreatedDate => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has Id => (is => 'ro', isa => 'Str');
+  has ApiSummary => (is => 'ro', isa => 'Paws::ApiGateway::PathToMapOfMethodSnapshot', traits => ['Unwrapped'], xmlname => 'apiSummary');
+  has CreatedDate => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'createdDate');
+  has Description => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'description');
+  has Id => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'id');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

@@ -7,7 +7,7 @@ package Paws::ApiGateway::ImportDocumentationParts;
   has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restApiId' , required => 1);
 
   use MooseX::ClassAttribute;
-
+  class_has _stream_param => (is => 'ro', default => 'body');
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ImportDocumentationParts');
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/restapis/{restapi_id}/documentation/parts');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');

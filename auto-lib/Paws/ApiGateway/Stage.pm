@@ -1,18 +1,18 @@
 
 package Paws::ApiGateway::Stage;
   use Moose;
-  has CacheClusterEnabled => (is => 'ro', isa => 'Bool');
-  has CacheClusterSize => (is => 'ro', isa => 'Str');
-  has CacheClusterStatus => (is => 'ro', isa => 'Str');
-  has ClientCertificateId => (is => 'ro', isa => 'Str');
-  has CreatedDate => (is => 'ro', isa => 'Str');
-  has DeploymentId => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has DocumentationVersion => (is => 'ro', isa => 'Str');
-  has LastUpdatedDate => (is => 'ro', isa => 'Str');
-  has MethodSettings => (is => 'ro', isa => 'Paws::ApiGateway::MapOfMethodSettings');
-  has StageName => (is => 'ro', isa => 'Str');
-  has Variables => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString');
+  has CacheClusterEnabled => (is => 'ro', isa => 'Bool', traits => ['Unwrapped'], xmlname => 'cacheClusterEnabled');
+  has CacheClusterSize => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'cacheClusterSize');
+  has CacheClusterStatus => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'cacheClusterStatus');
+  has ClientCertificateId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'clientCertificateId');
+  has CreatedDate => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'createdDate');
+  has DeploymentId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'deploymentId');
+  has Description => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'description');
+  has DocumentationVersion => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'documentationVersion');
+  has LastUpdatedDate => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'lastUpdatedDate');
+  has MethodSettings => (is => 'ro', isa => 'Paws::ApiGateway::MapOfMethodSettings', traits => ['Unwrapped'], xmlname => 'methodSettings');
+  has StageName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'stageName');
+  has Variables => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['Unwrapped'], xmlname => 'variables');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

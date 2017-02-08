@@ -1,8 +1,8 @@
 
 package Paws::ApiGateway::Resources;
   use Moose;
-  has Items => (is => 'ro', isa => 'ArrayRef[Paws::ApiGateway::Resource]');
-  has Position => (is => 'ro', isa => 'Str');
+  has Items => (is => 'ro', isa => 'ArrayRef[Paws::ApiGateway::Resource]', traits => ['Unwrapped'], xmlname => 'items');
+  has Position => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'position');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

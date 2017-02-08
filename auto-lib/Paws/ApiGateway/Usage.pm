@@ -1,11 +1,11 @@
 
 package Paws::ApiGateway::Usage;
   use Moose;
-  has EndDate => (is => 'ro', isa => 'Str');
-  has Items => (is => 'ro', isa => 'Paws::ApiGateway::MapOfKeyUsages');
-  has Position => (is => 'ro', isa => 'Str');
-  has StartDate => (is => 'ro', isa => 'Str');
-  has UsagePlanId => (is => 'ro', isa => 'Str');
+  has EndDate => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'endDate');
+  has Items => (is => 'ro', isa => 'Paws::ApiGateway::MapOfKeyUsages', traits => ['Unwrapped'], xmlname => 'items');
+  has Position => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'position');
+  has StartDate => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'startDate');
+  has UsagePlanId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'usagePlanId');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

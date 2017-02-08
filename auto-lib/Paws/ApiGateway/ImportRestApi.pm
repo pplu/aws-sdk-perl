@@ -6,7 +6,7 @@ package Paws::ApiGateway::ImportRestApi;
   has Parameters => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['ParamInQuery'], query_name => 'parameters' );
 
   use MooseX::ClassAttribute;
-
+  class_has _stream_param => (is => 'ro', default => 'body');
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ImportRestApi');
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/restapis?mode=import');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');

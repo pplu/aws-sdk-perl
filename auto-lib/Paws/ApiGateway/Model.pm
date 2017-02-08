@@ -1,11 +1,11 @@
 
 package Paws::ApiGateway::Model;
   use Moose;
-  has ContentType => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has Id => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has Schema => (is => 'ro', isa => 'Str');
+  has ContentType => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'contentType');
+  has Description => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'description');
+  has Id => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'id');
+  has Name => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'name');
+  has Schema => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'schema');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

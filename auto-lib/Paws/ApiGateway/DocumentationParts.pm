@@ -1,8 +1,8 @@
 
 package Paws::ApiGateway::DocumentationParts;
   use Moose;
-  has Items => (is => 'ro', isa => 'ArrayRef[Paws::ApiGateway::DocumentationPart]');
-  has Position => (is => 'ro', isa => 'Str');
+  has Items => (is => 'ro', isa => 'ArrayRef[Paws::ApiGateway::DocumentationPart]', traits => ['Unwrapped'], xmlname => 'items');
+  has Position => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'position');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

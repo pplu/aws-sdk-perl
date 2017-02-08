@@ -1,7 +1,7 @@
 
 package Paws::ApiGateway::Stages;
   use Moose;
-  has Item => (is => 'ro', isa => 'ArrayRef[Paws::ApiGateway::Stage]');
+  has Item => (is => 'ro', isa => 'ArrayRef[Paws::ApiGateway::Stage]', traits => ['Unwrapped'], xmlname => 'item');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

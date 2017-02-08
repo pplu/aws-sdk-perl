@@ -1,9 +1,9 @@
 
 package Paws::ApiGateway::DocumentationVersion;
   use Moose;
-  has CreatedDate => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has Version => (is => 'ro', isa => 'Str');
+  has CreatedDate => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'createdDate');
+  has Description => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'description');
+  has Version => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'version');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

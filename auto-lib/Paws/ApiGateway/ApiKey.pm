@@ -1,15 +1,15 @@
 
 package Paws::ApiGateway::ApiKey;
   use Moose;
-  has CreatedDate => (is => 'ro', isa => 'Str');
-  has CustomerId => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has Enabled => (is => 'ro', isa => 'Bool');
-  has Id => (is => 'ro', isa => 'Str');
-  has LastUpdatedDate => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has StageKeys => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Value => (is => 'ro', isa => 'Str');
+  has CreatedDate => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'createdDate');
+  has CustomerId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'customerId');
+  has Description => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'description');
+  has Enabled => (is => 'ro', isa => 'Bool', traits => ['Unwrapped'], xmlname => 'enabled');
+  has Id => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'id');
+  has LastUpdatedDate => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'lastUpdatedDate');
+  has Name => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'name');
+  has StageKeys => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['Unwrapped'], xmlname => 'stageKeys');
+  has Value => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'value');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

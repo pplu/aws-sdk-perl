@@ -1,10 +1,10 @@
 
 package Paws::ApiGateway::Account;
   use Moose;
-  has ApiKeyVersion => (is => 'ro', isa => 'Str');
-  has CloudwatchRoleArn => (is => 'ro', isa => 'Str');
-  has Features => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has ThrottleSettings => (is => 'ro', isa => 'Paws::ApiGateway::ThrottleSettings');
+  has ApiKeyVersion => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'apiKeyVersion');
+  has CloudwatchRoleArn => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'cloudwatchRoleArn');
+  has Features => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['Unwrapped'], xmlname => 'features');
+  has ThrottleSettings => (is => 'ro', isa => 'Paws::ApiGateway::ThrottleSettings', traits => ['Unwrapped'], xmlname => 'throttleSettings');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

@@ -1,11 +1,11 @@
 
 package Paws::ApiGateway::IntegrationResponse;
   use Moose;
-  has ContentHandling => (is => 'ro', isa => 'Str');
-  has ResponseParameters => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString');
-  has ResponseTemplates => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString');
-  has SelectionPattern => (is => 'ro', isa => 'Str');
-  has StatusCode => (is => 'ro', isa => 'Str');
+  has ContentHandling => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'contentHandling');
+  has ResponseParameters => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['Unwrapped'], xmlname => 'responseParameters');
+  has ResponseTemplates => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['Unwrapped'], xmlname => 'responseTemplates');
+  has SelectionPattern => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'selectionPattern');
+  has StatusCode => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'statusCode');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

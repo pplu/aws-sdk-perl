@@ -1,11 +1,11 @@
 
 package Paws::ApiGateway::TestInvokeMethodResponse;
   use Moose;
-  has Body => (is => 'ro', isa => 'Str');
-  has Headers => (is => 'ro', isa => 'Paws::ApiGateway::MapOfHeaderValues');
-  has Latency => (is => 'ro', isa => 'Int');
-  has Log => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Int');
+  has Body => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'body');
+  has Headers => (is => 'ro', isa => 'Paws::ApiGateway::MapOfHeaderValues', traits => ['Unwrapped'], xmlname => 'headers');
+  has Latency => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => 'latency');
+  has Log => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'log');
+  has Status => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => 'status');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

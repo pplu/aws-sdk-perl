@@ -1,17 +1,17 @@
 
 package Paws::ApiGateway::Integration;
   use Moose;
-  has CacheKeyParameters => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has CacheNamespace => (is => 'ro', isa => 'Str');
-  has ContentHandling => (is => 'ro', isa => 'Str');
-  has Credentials => (is => 'ro', isa => 'Str');
-  has HttpMethod => (is => 'ro', isa => 'Str');
-  has IntegrationResponses => (is => 'ro', isa => 'Paws::ApiGateway::MapOfIntegrationResponse');
-  has PassthroughBehavior => (is => 'ro', isa => 'Str');
-  has RequestParameters => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString');
-  has RequestTemplates => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString');
-  has Type => (is => 'ro', isa => 'Str');
-  has Uri => (is => 'ro', isa => 'Str');
+  has CacheKeyParameters => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['Unwrapped'], xmlname => 'cacheKeyParameters');
+  has CacheNamespace => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'cacheNamespace');
+  has ContentHandling => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'contentHandling');
+  has Credentials => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'credentials');
+  has HttpMethod => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'httpMethod');
+  has IntegrationResponses => (is => 'ro', isa => 'Paws::ApiGateway::MapOfIntegrationResponse', traits => ['Unwrapped'], xmlname => 'integrationResponses');
+  has PassthroughBehavior => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'passthroughBehavior');
+  has RequestParameters => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['Unwrapped'], xmlname => 'requestParameters');
+  has RequestTemplates => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['Unwrapped'], xmlname => 'requestTemplates');
+  has Type => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'type');
+  has Uri => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'uri');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

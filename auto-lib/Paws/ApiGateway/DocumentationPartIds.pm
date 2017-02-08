@@ -1,8 +1,8 @@
 
 package Paws::ApiGateway::DocumentationPartIds;
   use Moose;
-  has Ids => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Warnings => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has Ids => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['Unwrapped'], xmlname => 'ids');
+  has Warnings => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['Unwrapped'], xmlname => 'warnings');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

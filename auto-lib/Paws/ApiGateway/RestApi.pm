@@ -1,13 +1,13 @@
 
 package Paws::ApiGateway::RestApi;
   use Moose;
-  has BinaryMediaTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has CreatedDate => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has Id => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has Version => (is => 'ro', isa => 'Str');
-  has Warnings => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has BinaryMediaTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['Unwrapped'], xmlname => 'binaryMediaTypes');
+  has CreatedDate => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'createdDate');
+  has Description => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'description');
+  has Id => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'id');
+  has Name => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'name');
+  has Version => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'version');
+  has Warnings => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['Unwrapped'], xmlname => 'warnings');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

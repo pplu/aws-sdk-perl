@@ -1,13 +1,13 @@
 
 package Paws::ApiGateway::UsagePlan;
   use Moose;
-  has ApiStages => (is => 'ro', isa => 'ArrayRef[Paws::ApiGateway::ApiStage]');
-  has Description => (is => 'ro', isa => 'Str');
-  has Id => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has ProductCode => (is => 'ro', isa => 'Str');
-  has Quota => (is => 'ro', isa => 'Paws::ApiGateway::QuotaSettings');
-  has Throttle => (is => 'ro', isa => 'Paws::ApiGateway::ThrottleSettings');
+  has ApiStages => (is => 'ro', isa => 'ArrayRef[Paws::ApiGateway::ApiStage]', traits => ['Unwrapped'], xmlname => 'apiStages');
+  has Description => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'description');
+  has Id => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'id');
+  has Name => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'name');
+  has ProductCode => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'productCode');
+  has Quota => (is => 'ro', isa => 'Paws::ApiGateway::QuotaSettings', traits => ['Unwrapped'], xmlname => 'quota');
+  has Throttle => (is => 'ro', isa => 'Paws::ApiGateway::ThrottleSettings', traits => ['Unwrapped'], xmlname => 'throttle');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

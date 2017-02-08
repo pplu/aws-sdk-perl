@@ -1,10 +1,10 @@
 
 package Paws::ApiGateway::DomainName;
   use Moose;
-  has CertificateName => (is => 'ro', isa => 'Str');
-  has CertificateUploadDate => (is => 'ro', isa => 'Str');
-  has DistributionDomainName => (is => 'ro', isa => 'Str');
-  has DomainName => (is => 'ro', isa => 'Str');
+  has CertificateName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'certificateName');
+  has CertificateUploadDate => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'certificateUploadDate');
+  has DistributionDomainName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'distributionDomainName');
+  has DomainName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'domainName');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

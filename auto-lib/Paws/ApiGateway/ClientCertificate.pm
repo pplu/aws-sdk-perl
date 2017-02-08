@@ -1,11 +1,11 @@
 
 package Paws::ApiGateway::ClientCertificate;
   use Moose;
-  has ClientCertificateId => (is => 'ro', isa => 'Str');
-  has CreatedDate => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has ExpirationDate => (is => 'ro', isa => 'Str');
-  has PemEncodedCertificate => (is => 'ro', isa => 'Str');
+  has ClientCertificateId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'clientCertificateId');
+  has CreatedDate => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'createdDate');
+  has Description => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'description');
+  has ExpirationDate => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'expirationDate');
+  has PemEncodedCertificate => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'pemEncodedCertificate');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;
