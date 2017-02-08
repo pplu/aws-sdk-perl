@@ -1,8 +1,8 @@
 
 package Paws::Batch::DescribeComputeEnvironmentsResponse;
   use Moose;
-  has ComputeEnvironments => (is => 'ro', isa => 'ArrayRef[Paws::Batch::ComputeEnvironmentDetail]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  has ComputeEnvironments => (is => 'ro', isa => 'ArrayRef[Paws::Batch::ComputeEnvironmentDetail]', traits => ['Unwrapped'], xmlname => 'computeEnvironments');
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

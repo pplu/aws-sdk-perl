@@ -1,8 +1,8 @@
 
 package Paws::Batch::DescribeJobDefinitionsResponse;
   use Moose;
-  has JobDefinitions => (is => 'ro', isa => 'ArrayRef[Paws::Batch::JobDefinition]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  has JobDefinitions => (is => 'ro', isa => 'ArrayRef[Paws::Batch::JobDefinition]', traits => ['Unwrapped'], xmlname => 'jobDefinitions');
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

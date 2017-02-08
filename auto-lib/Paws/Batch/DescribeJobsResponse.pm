@@ -1,7 +1,7 @@
 
 package Paws::Batch::DescribeJobsResponse;
   use Moose;
-  has Jobs => (is => 'ro', isa => 'ArrayRef[Paws::Batch::JobDetail]');
+  has Jobs => (is => 'ro', isa => 'ArrayRef[Paws::Batch::JobDetail]', traits => ['Unwrapped'], xmlname => 'jobs');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

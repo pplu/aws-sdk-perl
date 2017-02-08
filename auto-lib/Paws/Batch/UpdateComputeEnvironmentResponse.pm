@@ -1,8 +1,8 @@
 
 package Paws::Batch::UpdateComputeEnvironmentResponse;
   use Moose;
-  has ComputeEnvironmentArn => (is => 'ro', isa => 'Str');
-  has ComputeEnvironmentName => (is => 'ro', isa => 'Str');
+  has ComputeEnvironmentArn => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'computeEnvironmentArn');
+  has ComputeEnvironmentName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'computeEnvironmentName');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

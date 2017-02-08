@@ -1,8 +1,8 @@
 
 package Paws::Batch::SubmitJobResponse;
   use Moose;
-  has JobId => (is => 'ro', isa => 'Str', required => 1);
-  has JobName => (is => 'ro', isa => 'Str', required => 1);
+  has JobId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'jobId', required => 1);
+  has JobName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'jobName', required => 1);
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;
