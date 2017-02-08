@@ -1,7 +1,7 @@
 
 package Paws::IoT::ListPolicyVersionsResponse;
   use Moose;
-  has PolicyVersions => (is => 'ro', isa => 'ArrayRef[Paws::IoT::PolicyVersion]');
+  has PolicyVersions => (is => 'ro', isa => 'ArrayRef[Paws::IoT::PolicyVersion]', traits => ['Unwrapped'], xmlname => 'policyVersions');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

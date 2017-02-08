@@ -1,8 +1,8 @@
 
 package Paws::IoT::RegisterCertificateResponse;
   use Moose;
-  has CertificateArn => (is => 'ro', isa => 'Str');
-  has CertificateId => (is => 'ro', isa => 'Str');
+  has CertificateArn => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'certificateArn');
+  has CertificateId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'certificateId');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

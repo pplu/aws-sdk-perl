@@ -1,10 +1,10 @@
 
 package Paws::IoT::CreatePolicyVersionResponse;
   use Moose;
-  has IsDefaultVersion => (is => 'ro', isa => 'Bool');
-  has PolicyArn => (is => 'ro', isa => 'Str');
-  has PolicyDocument => (is => 'ro', isa => 'Str');
-  has PolicyVersionId => (is => 'ro', isa => 'Str');
+  has IsDefaultVersion => (is => 'ro', isa => 'Bool', traits => ['Unwrapped'], xmlname => 'isDefaultVersion');
+  has PolicyArn => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'policyArn');
+  has PolicyDocument => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'policyDocument');
+  has PolicyVersionId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'policyVersionId');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

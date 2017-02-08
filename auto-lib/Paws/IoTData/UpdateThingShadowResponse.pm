@@ -1,8 +1,9 @@
 
 package Paws::IoTData::UpdateThingShadowResponse;
   use Moose;
-  has Payload => (is => 'ro', isa => 'Str');
-
+  has Payload => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'payload');
+  use MooseX::ClassAttribute;
+  class_has _stream_param => (is => 'ro', default => 'payload');
   has _request_id => (is => 'ro', isa => 'Str');
 1;
 
