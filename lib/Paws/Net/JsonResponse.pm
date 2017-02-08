@@ -7,8 +7,6 @@ package Paws::Net::JsonResponse;
   sub handle_response {
     my ($self, $call_object, $http_status, $content, $headers) = @_;
 
-    my $unserialized_struct = $self->unserialize_response( $content );
-
     if (defined $headers->{ 'x-amz-crc32' }) {
       require String::CRC32;
       my $crc = String::CRC32::crc32($content);
@@ -17,6 +15,18 @@ package Paws::Net::JsonResponse;
         message => 'Content CRC32 mismatch',
         request_id => $headers->{ 'x-amzn-requestid' }
       ) if ($crc != $headers->{ 'x-amz-crc32' });
+    }
+
+    my $unserialized_struct;
+
+    my $ret_class = $call_object->meta->name->_returns;
+    if (defined $ret_class){
+      Paws->load_class($ret_class);
+      if ($ret_class->can('_stream_param')) {
+        $unserialized_struct->{ $ret_class->_stream_param } = $content;
+      } else {
+        $unserialized_struct = $self->unserialize_response( $content );
+      }
     }
 
     if ( $http_status >= 300 ) {
