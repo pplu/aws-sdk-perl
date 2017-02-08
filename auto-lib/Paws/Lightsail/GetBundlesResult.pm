@@ -1,8 +1,8 @@
 
 package Paws::Lightsail::GetBundlesResult;
   use Moose;
-  has Bundles => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::Bundle]', traits => ['Unwrapped'], xmlname => 'bundles' );
-  has NextPageToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextPageToken' );
+  has Bundles => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::Bundle]', traits => ['NameInRequest'], request_name => 'bundles' );
+  has NextPageToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextPageToken' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

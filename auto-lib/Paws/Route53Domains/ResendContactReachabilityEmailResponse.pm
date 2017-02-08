@@ -1,9 +1,9 @@
 
 package Paws::Route53Domains::ResendContactReachabilityEmailResponse;
   use Moose;
-  has DomainName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'domainName' );
-  has EmailAddress => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'emailAddress' );
-  has IsAlreadyVerified => (is => 'ro', isa => 'Bool', traits => ['Unwrapped'], xmlname => 'isAlreadyVerified' );
+  has DomainName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'domainName' );
+  has EmailAddress => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'emailAddress' );
+  has IsAlreadyVerified => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'isAlreadyVerified' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

@@ -1,7 +1,7 @@
 
 package Paws::DeviceFarm::StopRunResult;
   use Moose;
-  has Run => (is => 'ro', isa => 'Paws::DeviceFarm::Run', traits => ['Unwrapped'], xmlname => 'run' );
+  has Run => (is => 'ro', isa => 'Paws::DeviceFarm::Run', traits => ['NameInRequest'], request_name => 'run' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

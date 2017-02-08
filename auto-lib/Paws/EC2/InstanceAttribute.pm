@@ -1,21 +1,21 @@
 
 package Paws::EC2::InstanceAttribute;
   use Moose;
-  has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[Paws::EC2::InstanceBlockDeviceMapping]', xmlname => 'blockDeviceMapping', traits => ['Unwrapped',]);
-  has DisableApiTermination => (is => 'ro', isa => 'Paws::EC2::AttributeBooleanValue', xmlname => 'disableApiTermination', traits => ['Unwrapped',]);
-  has EbsOptimized => (is => 'ro', isa => 'Paws::EC2::AttributeBooleanValue', xmlname => 'ebsOptimized', traits => ['Unwrapped',]);
-  has EnaSupport => (is => 'ro', isa => 'Paws::EC2::AttributeBooleanValue', xmlname => 'enaSupport', traits => ['Unwrapped',]);
-  has Groups => (is => 'ro', isa => 'ArrayRef[Paws::EC2::GroupIdentifier]', xmlname => 'groupSet', traits => ['Unwrapped',]);
-  has InstanceId => (is => 'ro', isa => 'Str', xmlname => 'instanceId', traits => ['Unwrapped',]);
-  has InstanceInitiatedShutdownBehavior => (is => 'ro', isa => 'Paws::EC2::AttributeValue', xmlname => 'instanceInitiatedShutdownBehavior', traits => ['Unwrapped',]);
-  has InstanceType => (is => 'ro', isa => 'Paws::EC2::AttributeValue', xmlname => 'instanceType', traits => ['Unwrapped',]);
-  has KernelId => (is => 'ro', isa => 'Paws::EC2::AttributeValue', xmlname => 'kernel', traits => ['Unwrapped',]);
-  has ProductCodes => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ProductCode]', xmlname => 'productCodes', traits => ['Unwrapped',]);
-  has RamdiskId => (is => 'ro', isa => 'Paws::EC2::AttributeValue', xmlname => 'ramdisk', traits => ['Unwrapped',]);
-  has RootDeviceName => (is => 'ro', isa => 'Paws::EC2::AttributeValue', xmlname => 'rootDeviceName', traits => ['Unwrapped',]);
-  has SourceDestCheck => (is => 'ro', isa => 'Paws::EC2::AttributeBooleanValue', xmlname => 'sourceDestCheck', traits => ['Unwrapped',]);
-  has SriovNetSupport => (is => 'ro', isa => 'Paws::EC2::AttributeValue', xmlname => 'sriovNetSupport', traits => ['Unwrapped',]);
-  has UserData => (is => 'ro', isa => 'Paws::EC2::AttributeValue', xmlname => 'userData', traits => ['Unwrapped',]);
+  has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[Paws::EC2::InstanceBlockDeviceMapping]', request_name => 'blockDeviceMapping', traits => ['NameInRequest',]);
+  has DisableApiTermination => (is => 'ro', isa => 'Paws::EC2::AttributeBooleanValue', request_name => 'disableApiTermination', traits => ['NameInRequest',]);
+  has EbsOptimized => (is => 'ro', isa => 'Paws::EC2::AttributeBooleanValue', request_name => 'ebsOptimized', traits => ['NameInRequest',]);
+  has EnaSupport => (is => 'ro', isa => 'Paws::EC2::AttributeBooleanValue', request_name => 'enaSupport', traits => ['NameInRequest',]);
+  has Groups => (is => 'ro', isa => 'ArrayRef[Paws::EC2::GroupIdentifier]', request_name => 'groupSet', traits => ['NameInRequest',]);
+  has InstanceId => (is => 'ro', isa => 'Str', request_name => 'instanceId', traits => ['NameInRequest',]);
+  has InstanceInitiatedShutdownBehavior => (is => 'ro', isa => 'Paws::EC2::AttributeValue', request_name => 'instanceInitiatedShutdownBehavior', traits => ['NameInRequest',]);
+  has InstanceType => (is => 'ro', isa => 'Paws::EC2::AttributeValue', request_name => 'instanceType', traits => ['NameInRequest',]);
+  has KernelId => (is => 'ro', isa => 'Paws::EC2::AttributeValue', request_name => 'kernel', traits => ['NameInRequest',]);
+  has ProductCodes => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ProductCode]', request_name => 'productCodes', traits => ['NameInRequest',]);
+  has RamdiskId => (is => 'ro', isa => 'Paws::EC2::AttributeValue', request_name => 'ramdisk', traits => ['NameInRequest',]);
+  has RootDeviceName => (is => 'ro', isa => 'Paws::EC2::AttributeValue', request_name => 'rootDeviceName', traits => ['NameInRequest',]);
+  has SourceDestCheck => (is => 'ro', isa => 'Paws::EC2::AttributeBooleanValue', request_name => 'sourceDestCheck', traits => ['NameInRequest',]);
+  has SriovNetSupport => (is => 'ro', isa => 'Paws::EC2::AttributeValue', request_name => 'sriovNetSupport', traits => ['NameInRequest',]);
+  has UserData => (is => 'ro', isa => 'Paws::EC2::AttributeValue', request_name => 'userData', traits => ['NameInRequest',]);
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

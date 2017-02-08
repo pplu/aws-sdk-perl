@@ -1,10 +1,10 @@
 package Paws::EC2::ProvisionedBandwidth;
   use Moose;
-  has Provisioned => (is => 'ro', isa => 'Str', xmlname => 'provisioned', traits => ['Unwrapped']);
-  has ProvisionTime => (is => 'ro', isa => 'Str', xmlname => 'provisionTime', traits => ['Unwrapped']);
-  has Requested => (is => 'ro', isa => 'Str', xmlname => 'requested', traits => ['Unwrapped']);
-  has RequestTime => (is => 'ro', isa => 'Str', xmlname => 'requestTime', traits => ['Unwrapped']);
-  has Status => (is => 'ro', isa => 'Str', xmlname => 'status', traits => ['Unwrapped']);
+  has Provisioned => (is => 'ro', isa => 'Str', request_name => 'provisioned', traits => ['NameInRequest']);
+  has ProvisionTime => (is => 'ro', isa => 'Str', request_name => 'provisionTime', traits => ['NameInRequest']);
+  has Requested => (is => 'ro', isa => 'Str', request_name => 'requested', traits => ['NameInRequest']);
+  has RequestTime => (is => 'ro', isa => 'Str', request_name => 'requestTime', traits => ['NameInRequest']);
+  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

@@ -1,13 +1,13 @@
 package Paws::CloudSearchDomain::FieldStats;
   use Moose;
-  has Count => (is => 'ro', isa => 'Int', xmlname => 'count', request_name => 'count', traits => ['Unwrapped','NameInRequest']);
-  has Max => (is => 'ro', isa => 'Str', xmlname => 'max', request_name => 'max', traits => ['Unwrapped','NameInRequest']);
-  has Mean => (is => 'ro', isa => 'Str', xmlname => 'mean', request_name => 'mean', traits => ['Unwrapped','NameInRequest']);
-  has Min => (is => 'ro', isa => 'Str', xmlname => 'min', request_name => 'min', traits => ['Unwrapped','NameInRequest']);
-  has Missing => (is => 'ro', isa => 'Int', xmlname => 'missing', request_name => 'missing', traits => ['Unwrapped','NameInRequest']);
-  has Stddev => (is => 'ro', isa => 'Num', xmlname => 'stddev', request_name => 'stddev', traits => ['Unwrapped','NameInRequest']);
-  has Sum => (is => 'ro', isa => 'Num', xmlname => 'sum', request_name => 'sum', traits => ['Unwrapped','NameInRequest']);
-  has SumOfSquares => (is => 'ro', isa => 'Num', xmlname => 'sumOfSquares', request_name => 'sumOfSquares', traits => ['Unwrapped','NameInRequest']);
+  has Count => (is => 'ro', isa => 'Int', request_name => 'count', traits => ['NameInRequest']);
+  has Max => (is => 'ro', isa => 'Str', request_name => 'max', traits => ['NameInRequest']);
+  has Mean => (is => 'ro', isa => 'Str', request_name => 'mean', traits => ['NameInRequest']);
+  has Min => (is => 'ro', isa => 'Str', request_name => 'min', traits => ['NameInRequest']);
+  has Missing => (is => 'ro', isa => 'Int', request_name => 'missing', traits => ['NameInRequest']);
+  has Stddev => (is => 'ro', isa => 'Num', request_name => 'stddev', traits => ['NameInRequest']);
+  has Sum => (is => 'ro', isa => 'Num', request_name => 'sum', traits => ['NameInRequest']);
+  has SumOfSquares => (is => 'ro', isa => 'Num', request_name => 'sumOfSquares', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

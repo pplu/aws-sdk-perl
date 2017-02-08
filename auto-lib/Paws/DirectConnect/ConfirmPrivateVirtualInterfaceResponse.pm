@@ -1,7 +1,7 @@
 
 package Paws::DirectConnect::ConfirmPrivateVirtualInterfaceResponse;
   use Moose;
-  has VirtualInterfaceState => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'virtualInterfaceState' );
+  has VirtualInterfaceState => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'virtualInterfaceState' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

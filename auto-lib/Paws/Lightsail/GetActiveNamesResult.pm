@@ -1,8 +1,8 @@
 
 package Paws::Lightsail::GetActiveNamesResult;
   use Moose;
-  has ActiveNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['Unwrapped'], xmlname => 'activeNames' );
-  has NextPageToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextPageToken' );
+  has ActiveNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'activeNames' );
+  has NextPageToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextPageToken' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

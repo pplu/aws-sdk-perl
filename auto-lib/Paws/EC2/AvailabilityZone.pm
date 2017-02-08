@@ -1,9 +1,9 @@
 package Paws::EC2::AvailabilityZone;
   use Moose;
-  has Messages => (is => 'ro', isa => 'ArrayRef[Paws::EC2::AvailabilityZoneMessage]', xmlname => 'messageSet', traits => ['Unwrapped']);
-  has RegionName => (is => 'ro', isa => 'Str', xmlname => 'regionName', traits => ['Unwrapped']);
-  has State => (is => 'ro', isa => 'Str', xmlname => 'zoneState', traits => ['Unwrapped']);
-  has ZoneName => (is => 'ro', isa => 'Str', xmlname => 'zoneName', traits => ['Unwrapped']);
+  has Messages => (is => 'ro', isa => 'ArrayRef[Paws::EC2::AvailabilityZoneMessage]', request_name => 'messageSet', traits => ['NameInRequest']);
+  has RegionName => (is => 'ro', isa => 'Str', request_name => 'regionName', traits => ['NameInRequest']);
+  has State => (is => 'ro', isa => 'Str', request_name => 'zoneState', traits => ['NameInRequest']);
+  has ZoneName => (is => 'ro', isa => 'Str', request_name => 'zoneName', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

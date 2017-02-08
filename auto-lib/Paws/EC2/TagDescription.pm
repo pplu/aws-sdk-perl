@@ -1,9 +1,9 @@
 package Paws::EC2::TagDescription;
   use Moose;
-  has Key => (is => 'ro', isa => 'Str', xmlname => 'key', traits => ['Unwrapped']);
-  has ResourceId => (is => 'ro', isa => 'Str', xmlname => 'resourceId', traits => ['Unwrapped']);
-  has ResourceType => (is => 'ro', isa => 'Str', xmlname => 'resourceType', traits => ['Unwrapped']);
-  has Value => (is => 'ro', isa => 'Str', xmlname => 'value', traits => ['Unwrapped']);
+  has Key => (is => 'ro', isa => 'Str', request_name => 'key', traits => ['NameInRequest']);
+  has ResourceId => (is => 'ro', isa => 'Str', request_name => 'resourceId', traits => ['NameInRequest']);
+  has ResourceType => (is => 'ro', isa => 'Str', request_name => 'resourceType', traits => ['NameInRequest']);
+  has Value => (is => 'ro', isa => 'Str', request_name => 'value', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

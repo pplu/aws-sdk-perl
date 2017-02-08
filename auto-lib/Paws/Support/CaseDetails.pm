@@ -1,17 +1,17 @@
 package Paws::Support::CaseDetails;
   use Moose;
-  has CaseId => (is => 'ro', isa => 'Str', xmlname => 'caseId', request_name => 'caseId', traits => ['Unwrapped','NameInRequest']);
-  has CategoryCode => (is => 'ro', isa => 'Str', xmlname => 'categoryCode', request_name => 'categoryCode', traits => ['Unwrapped','NameInRequest']);
-  has CcEmailAddresses => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'ccEmailAddresses', request_name => 'ccEmailAddresses', traits => ['Unwrapped','NameInRequest']);
-  has DisplayId => (is => 'ro', isa => 'Str', xmlname => 'displayId', request_name => 'displayId', traits => ['Unwrapped','NameInRequest']);
-  has Language => (is => 'ro', isa => 'Str', xmlname => 'language', request_name => 'language', traits => ['Unwrapped','NameInRequest']);
-  has RecentCommunications => (is => 'ro', isa => 'Paws::Support::RecentCaseCommunications', xmlname => 'recentCommunications', request_name => 'recentCommunications', traits => ['Unwrapped','NameInRequest']);
-  has ServiceCode => (is => 'ro', isa => 'Str', xmlname => 'serviceCode', request_name => 'serviceCode', traits => ['Unwrapped','NameInRequest']);
-  has SeverityCode => (is => 'ro', isa => 'Str', xmlname => 'severityCode', request_name => 'severityCode', traits => ['Unwrapped','NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', xmlname => 'status', request_name => 'status', traits => ['Unwrapped','NameInRequest']);
-  has Subject => (is => 'ro', isa => 'Str', xmlname => 'subject', request_name => 'subject', traits => ['Unwrapped','NameInRequest']);
-  has SubmittedBy => (is => 'ro', isa => 'Str', xmlname => 'submittedBy', request_name => 'submittedBy', traits => ['Unwrapped','NameInRequest']);
-  has TimeCreated => (is => 'ro', isa => 'Str', xmlname => 'timeCreated', request_name => 'timeCreated', traits => ['Unwrapped','NameInRequest']);
+  has CaseId => (is => 'ro', isa => 'Str', request_name => 'caseId', traits => ['NameInRequest']);
+  has CategoryCode => (is => 'ro', isa => 'Str', request_name => 'categoryCode', traits => ['NameInRequest']);
+  has CcEmailAddresses => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'ccEmailAddresses', traits => ['NameInRequest']);
+  has DisplayId => (is => 'ro', isa => 'Str', request_name => 'displayId', traits => ['NameInRequest']);
+  has Language => (is => 'ro', isa => 'Str', request_name => 'language', traits => ['NameInRequest']);
+  has RecentCommunications => (is => 'ro', isa => 'Paws::Support::RecentCaseCommunications', request_name => 'recentCommunications', traits => ['NameInRequest']);
+  has ServiceCode => (is => 'ro', isa => 'Str', request_name => 'serviceCode', traits => ['NameInRequest']);
+  has SeverityCode => (is => 'ro', isa => 'Str', request_name => 'severityCode', traits => ['NameInRequest']);
+  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+  has Subject => (is => 'ro', isa => 'Str', request_name => 'subject', traits => ['NameInRequest']);
+  has SubmittedBy => (is => 'ro', isa => 'Str', request_name => 'submittedBy', traits => ['NameInRequest']);
+  has TimeCreated => (is => 'ro', isa => 'Str', request_name => 'timeCreated', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

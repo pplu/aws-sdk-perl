@@ -1,7 +1,7 @@
 package Paws::EC2::Filter;
   use Moose;
   has Name => (is => 'ro', isa => 'Str');
-  has Values => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'Value', traits => ['Unwrapped']);
+  has Values => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'Value', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

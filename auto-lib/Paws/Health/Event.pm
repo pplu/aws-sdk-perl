@@ -1,15 +1,15 @@
 package Paws::Health::Event;
   use Moose;
-  has Arn => (is => 'ro', isa => 'Str', xmlname => 'arn', request_name => 'arn', traits => ['Unwrapped','NameInRequest']);
-  has AvailabilityZone => (is => 'ro', isa => 'Str', xmlname => 'availabilityZone', request_name => 'availabilityZone', traits => ['Unwrapped','NameInRequest']);
-  has EndTime => (is => 'ro', isa => 'Str', xmlname => 'endTime', request_name => 'endTime', traits => ['Unwrapped','NameInRequest']);
-  has EventTypeCategory => (is => 'ro', isa => 'Str', xmlname => 'eventTypeCategory', request_name => 'eventTypeCategory', traits => ['Unwrapped','NameInRequest']);
-  has EventTypeCode => (is => 'ro', isa => 'Str', xmlname => 'eventTypeCode', request_name => 'eventTypeCode', traits => ['Unwrapped','NameInRequest']);
-  has LastUpdatedTime => (is => 'ro', isa => 'Str', xmlname => 'lastUpdatedTime', request_name => 'lastUpdatedTime', traits => ['Unwrapped','NameInRequest']);
-  has Region => (is => 'ro', isa => 'Str', xmlname => 'region', request_name => 'region', traits => ['Unwrapped','NameInRequest']);
-  has Service => (is => 'ro', isa => 'Str', xmlname => 'service', request_name => 'service', traits => ['Unwrapped','NameInRequest']);
-  has StartTime => (is => 'ro', isa => 'Str', xmlname => 'startTime', request_name => 'startTime', traits => ['Unwrapped','NameInRequest']);
-  has StatusCode => (is => 'ro', isa => 'Str', xmlname => 'statusCode', request_name => 'statusCode', traits => ['Unwrapped','NameInRequest']);
+  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
+  has AvailabilityZone => (is => 'ro', isa => 'Str', request_name => 'availabilityZone', traits => ['NameInRequest']);
+  has EndTime => (is => 'ro', isa => 'Str', request_name => 'endTime', traits => ['NameInRequest']);
+  has EventTypeCategory => (is => 'ro', isa => 'Str', request_name => 'eventTypeCategory', traits => ['NameInRequest']);
+  has EventTypeCode => (is => 'ro', isa => 'Str', request_name => 'eventTypeCode', traits => ['NameInRequest']);
+  has LastUpdatedTime => (is => 'ro', isa => 'Str', request_name => 'lastUpdatedTime', traits => ['NameInRequest']);
+  has Region => (is => 'ro', isa => 'Str', request_name => 'region', traits => ['NameInRequest']);
+  has Service => (is => 'ro', isa => 'Str', request_name => 'service', traits => ['NameInRequest']);
+  has StartTime => (is => 'ro', isa => 'Str', request_name => 'startTime', traits => ['NameInRequest']);
+  has StatusCode => (is => 'ro', isa => 'Str', request_name => 'statusCode', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

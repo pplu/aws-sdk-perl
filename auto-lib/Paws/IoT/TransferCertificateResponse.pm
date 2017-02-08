@@ -1,7 +1,7 @@
 
 package Paws::IoT::TransferCertificateResponse;
   use Moose;
-  has TransferredCertificateArn => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'transferredCertificateArn');
+  has TransferredCertificateArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'transferredCertificateArn');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

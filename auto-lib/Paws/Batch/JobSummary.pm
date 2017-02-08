@@ -1,7 +1,7 @@
 package Paws::Batch::JobSummary;
   use Moose;
-  has JobId => (is => 'ro', isa => 'Str', xmlname => 'jobId', request_name => 'jobId', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has JobName => (is => 'ro', isa => 'Str', xmlname => 'jobName', request_name => 'jobName', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has JobId => (is => 'ro', isa => 'Str', request_name => 'jobId', traits => ['NameInRequest'], required => 1);
+  has JobName => (is => 'ro', isa => 'Str', request_name => 'jobName', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###

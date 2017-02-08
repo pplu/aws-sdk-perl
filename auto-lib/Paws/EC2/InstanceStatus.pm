@@ -1,11 +1,11 @@
 package Paws::EC2::InstanceStatus;
   use Moose;
-  has AvailabilityZone => (is => 'ro', isa => 'Str', xmlname => 'availabilityZone', traits => ['Unwrapped']);
-  has Events => (is => 'ro', isa => 'ArrayRef[Paws::EC2::InstanceStatusEvent]', xmlname => 'eventsSet', traits => ['Unwrapped']);
-  has InstanceId => (is => 'ro', isa => 'Str', xmlname => 'instanceId', traits => ['Unwrapped']);
-  has InstanceState => (is => 'ro', isa => 'Paws::EC2::InstanceState', xmlname => 'instanceState', traits => ['Unwrapped']);
-  has InstanceStatus => (is => 'ro', isa => 'Paws::EC2::InstanceStatusSummary', xmlname => 'instanceStatus', traits => ['Unwrapped']);
-  has SystemStatus => (is => 'ro', isa => 'Paws::EC2::InstanceStatusSummary', xmlname => 'systemStatus', traits => ['Unwrapped']);
+  has AvailabilityZone => (is => 'ro', isa => 'Str', request_name => 'availabilityZone', traits => ['NameInRequest']);
+  has Events => (is => 'ro', isa => 'ArrayRef[Paws::EC2::InstanceStatusEvent]', request_name => 'eventsSet', traits => ['NameInRequest']);
+  has InstanceId => (is => 'ro', isa => 'Str', request_name => 'instanceId', traits => ['NameInRequest']);
+  has InstanceState => (is => 'ro', isa => 'Paws::EC2::InstanceState', request_name => 'instanceState', traits => ['NameInRequest']);
+  has InstanceStatus => (is => 'ro', isa => 'Paws::EC2::InstanceStatusSummary', request_name => 'instanceStatus', traits => ['NameInRequest']);
+  has SystemStatus => (is => 'ro', isa => 'Paws::EC2::InstanceStatusSummary', request_name => 'systemStatus', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

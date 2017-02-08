@@ -1,8 +1,8 @@
 package Paws::IoT::ThingTypeMetadata;
   use Moose;
-  has CreationDate => (is => 'ro', isa => 'Str', xmlname => 'creationDate', request_name => 'creationDate', traits => ['Unwrapped','NameInRequest']);
-  has Deprecated => (is => 'ro', isa => 'Bool', xmlname => 'deprecated', request_name => 'deprecated', traits => ['Unwrapped','NameInRequest']);
-  has DeprecationDate => (is => 'ro', isa => 'Str', xmlname => 'deprecationDate', request_name => 'deprecationDate', traits => ['Unwrapped','NameInRequest']);
+  has CreationDate => (is => 'ro', isa => 'Str', request_name => 'creationDate', traits => ['NameInRequest']);
+  has Deprecated => (is => 'ro', isa => 'Bool', request_name => 'deprecated', traits => ['NameInRequest']);
+  has DeprecationDate => (is => 'ro', isa => 'Str', request_name => 'deprecationDate', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

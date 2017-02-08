@@ -1,7 +1,7 @@
 package Paws::EC2::ReservedInstanceLimitPrice;
   use Moose;
-  has Amount => (is => 'ro', isa => 'Num', xmlname => 'amount', traits => ['Unwrapped']);
-  has CurrencyCode => (is => 'ro', isa => 'Str', xmlname => 'currencyCode', traits => ['Unwrapped']);
+  has Amount => (is => 'ro', isa => 'Num', request_name => 'amount', traits => ['NameInRequest']);
+  has CurrencyCode => (is => 'ro', isa => 'Str', request_name => 'currencyCode', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

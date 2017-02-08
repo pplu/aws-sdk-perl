@@ -1,10 +1,10 @@
 package Paws::CodeDeploy::LifecycleEvent;
   use Moose;
-  has Diagnostics => (is => 'ro', isa => 'Paws::CodeDeploy::Diagnostics', xmlname => 'diagnostics', request_name => 'diagnostics', traits => ['Unwrapped','NameInRequest']);
-  has EndTime => (is => 'ro', isa => 'Str', xmlname => 'endTime', request_name => 'endTime', traits => ['Unwrapped','NameInRequest']);
-  has LifecycleEventName => (is => 'ro', isa => 'Str', xmlname => 'lifecycleEventName', request_name => 'lifecycleEventName', traits => ['Unwrapped','NameInRequest']);
-  has StartTime => (is => 'ro', isa => 'Str', xmlname => 'startTime', request_name => 'startTime', traits => ['Unwrapped','NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', xmlname => 'status', request_name => 'status', traits => ['Unwrapped','NameInRequest']);
+  has Diagnostics => (is => 'ro', isa => 'Paws::CodeDeploy::Diagnostics', request_name => 'diagnostics', traits => ['NameInRequest']);
+  has EndTime => (is => 'ro', isa => 'Str', request_name => 'endTime', traits => ['NameInRequest']);
+  has LifecycleEventName => (is => 'ro', isa => 'Str', request_name => 'lifecycleEventName', traits => ['NameInRequest']);
+  has StartTime => (is => 'ro', isa => 'Str', request_name => 'startTime', traits => ['NameInRequest']);
+  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

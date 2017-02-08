@@ -1,10 +1,10 @@
 package Paws::CloudWatchLogs::MetricFilter;
   use Moose;
-  has CreationTime => (is => 'ro', isa => 'Int', xmlname => 'creationTime', request_name => 'creationTime', traits => ['Unwrapped','NameInRequest']);
-  has FilterName => (is => 'ro', isa => 'Str', xmlname => 'filterName', request_name => 'filterName', traits => ['Unwrapped','NameInRequest']);
-  has FilterPattern => (is => 'ro', isa => 'Str', xmlname => 'filterPattern', request_name => 'filterPattern', traits => ['Unwrapped','NameInRequest']);
-  has LogGroupName => (is => 'ro', isa => 'Str', xmlname => 'logGroupName', request_name => 'logGroupName', traits => ['Unwrapped','NameInRequest']);
-  has MetricTransformations => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatchLogs::MetricTransformation]', xmlname => 'metricTransformations', request_name => 'metricTransformations', traits => ['Unwrapped','NameInRequest']);
+  has CreationTime => (is => 'ro', isa => 'Int', request_name => 'creationTime', traits => ['NameInRequest']);
+  has FilterName => (is => 'ro', isa => 'Str', request_name => 'filterName', traits => ['NameInRequest']);
+  has FilterPattern => (is => 'ro', isa => 'Str', request_name => 'filterPattern', traits => ['NameInRequest']);
+  has LogGroupName => (is => 'ro', isa => 'Str', request_name => 'logGroupName', traits => ['NameInRequest']);
+  has MetricTransformations => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatchLogs::MetricTransformation]', request_name => 'metricTransformations', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

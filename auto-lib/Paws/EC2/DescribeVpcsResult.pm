@@ -1,7 +1,7 @@
 
 package Paws::EC2::DescribeVpcsResult;
   use Moose;
-  has Vpcs => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Vpc]', xmlname => 'vpcSet', traits => ['Unwrapped',]);
+  has Vpcs => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Vpc]', request_name => 'vpcSet', traits => ['NameInRequest',]);
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

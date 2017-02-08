@@ -1,7 +1,7 @@
 package Paws::Support::TrustedAdvisorCostOptimizingSummary;
   use Moose;
-  has EstimatedMonthlySavings => (is => 'ro', isa => 'Num', xmlname => 'estimatedMonthlySavings', request_name => 'estimatedMonthlySavings', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has EstimatedPercentMonthlySavings => (is => 'ro', isa => 'Num', xmlname => 'estimatedPercentMonthlySavings', request_name => 'estimatedPercentMonthlySavings', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has EstimatedMonthlySavings => (is => 'ro', isa => 'Num', request_name => 'estimatedMonthlySavings', traits => ['NameInRequest'], required => 1);
+  has EstimatedPercentMonthlySavings => (is => 'ro', isa => 'Num', request_name => 'estimatedPercentMonthlySavings', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###

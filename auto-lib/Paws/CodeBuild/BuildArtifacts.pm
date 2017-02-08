@@ -1,8 +1,8 @@
 package Paws::CodeBuild::BuildArtifacts;
   use Moose;
-  has Location => (is => 'ro', isa => 'Str', xmlname => 'location', request_name => 'location', traits => ['Unwrapped','NameInRequest']);
-  has Md5sum => (is => 'ro', isa => 'Str', xmlname => 'md5sum', request_name => 'md5sum', traits => ['Unwrapped','NameInRequest']);
-  has Sha256sum => (is => 'ro', isa => 'Str', xmlname => 'sha256sum', request_name => 'sha256sum', traits => ['Unwrapped','NameInRequest']);
+  has Location => (is => 'ro', isa => 'Str', request_name => 'location', traits => ['NameInRequest']);
+  has Md5sum => (is => 'ro', isa => 'Str', request_name => 'md5sum', traits => ['NameInRequest']);
+  has Sha256sum => (is => 'ro', isa => 'Str', request_name => 'sha256sum', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

@@ -1,12 +1,12 @@
 package Paws::Lightsail::InstancePortInfo;
   use Moose;
-  has AccessDirection => (is => 'ro', isa => 'Str', xmlname => 'accessDirection', request_name => 'accessDirection', traits => ['Unwrapped','NameInRequest']);
-  has AccessFrom => (is => 'ro', isa => 'Str', xmlname => 'accessFrom', request_name => 'accessFrom', traits => ['Unwrapped','NameInRequest']);
-  has AccessType => (is => 'ro', isa => 'Str', xmlname => 'accessType', request_name => 'accessType', traits => ['Unwrapped','NameInRequest']);
-  has CommonName => (is => 'ro', isa => 'Str', xmlname => 'commonName', request_name => 'commonName', traits => ['Unwrapped','NameInRequest']);
-  has FromPort => (is => 'ro', isa => 'Int', xmlname => 'fromPort', request_name => 'fromPort', traits => ['Unwrapped','NameInRequest']);
-  has Protocol => (is => 'ro', isa => 'Str', xmlname => 'protocol', request_name => 'protocol', traits => ['Unwrapped','NameInRequest']);
-  has ToPort => (is => 'ro', isa => 'Int', xmlname => 'toPort', request_name => 'toPort', traits => ['Unwrapped','NameInRequest']);
+  has AccessDirection => (is => 'ro', isa => 'Str', request_name => 'accessDirection', traits => ['NameInRequest']);
+  has AccessFrom => (is => 'ro', isa => 'Str', request_name => 'accessFrom', traits => ['NameInRequest']);
+  has AccessType => (is => 'ro', isa => 'Str', request_name => 'accessType', traits => ['NameInRequest']);
+  has CommonName => (is => 'ro', isa => 'Str', request_name => 'commonName', traits => ['NameInRequest']);
+  has FromPort => (is => 'ro', isa => 'Int', request_name => 'fromPort', traits => ['NameInRequest']);
+  has Protocol => (is => 'ro', isa => 'Str', request_name => 'protocol', traits => ['NameInRequest']);
+  has ToPort => (is => 'ro', isa => 'Int', request_name => 'toPort', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

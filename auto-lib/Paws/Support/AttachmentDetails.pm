@@ -1,7 +1,7 @@
 package Paws::Support::AttachmentDetails;
   use Moose;
-  has AttachmentId => (is => 'ro', isa => 'Str', xmlname => 'attachmentId', request_name => 'attachmentId', traits => ['Unwrapped','NameInRequest']);
-  has FileName => (is => 'ro', isa => 'Str', xmlname => 'fileName', request_name => 'fileName', traits => ['Unwrapped','NameInRequest']);
+  has AttachmentId => (is => 'ro', isa => 'Str', request_name => 'attachmentId', traits => ['NameInRequest']);
+  has FileName => (is => 'ro', isa => 'Str', request_name => 'fileName', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

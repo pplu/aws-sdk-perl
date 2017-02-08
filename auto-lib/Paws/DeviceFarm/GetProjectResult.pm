@@ -1,7 +1,7 @@
 
 package Paws::DeviceFarm::GetProjectResult;
   use Moose;
-  has Project => (is => 'ro', isa => 'Paws::DeviceFarm::Project', traits => ['Unwrapped'], xmlname => 'project' );
+  has Project => (is => 'ro', isa => 'Paws::DeviceFarm::Project', traits => ['NameInRequest'], request_name => 'project' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

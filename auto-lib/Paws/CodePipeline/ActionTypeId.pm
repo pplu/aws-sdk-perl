@@ -1,9 +1,9 @@
 package Paws::CodePipeline::ActionTypeId;
   use Moose;
-  has Category => (is => 'ro', isa => 'Str', xmlname => 'category', request_name => 'category', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has Owner => (is => 'ro', isa => 'Str', xmlname => 'owner', request_name => 'owner', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has Provider => (is => 'ro', isa => 'Str', xmlname => 'provider', request_name => 'provider', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has Version => (is => 'ro', isa => 'Str', xmlname => 'version', request_name => 'version', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has Category => (is => 'ro', isa => 'Str', request_name => 'category', traits => ['NameInRequest'], required => 1);
+  has Owner => (is => 'ro', isa => 'Str', request_name => 'owner', traits => ['NameInRequest'], required => 1);
+  has Provider => (is => 'ro', isa => 'Str', request_name => 'provider', traits => ['NameInRequest'], required => 1);
+  has Version => (is => 'ro', isa => 'Str', request_name => 'version', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###

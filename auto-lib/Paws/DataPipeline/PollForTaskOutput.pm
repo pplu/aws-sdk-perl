@@ -1,7 +1,7 @@
 
 package Paws::DataPipeline::PollForTaskOutput;
   use Moose;
-  has TaskObject => (is => 'ro', isa => 'Paws::DataPipeline::TaskObject', traits => ['Unwrapped'], xmlname => 'taskObject' );
+  has TaskObject => (is => 'ro', isa => 'Paws::DataPipeline::TaskObject', traits => ['NameInRequest'], request_name => 'taskObject' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

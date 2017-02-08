@@ -1,12 +1,12 @@
 package Paws::Inspector::AssessmentTemplate;
   use Moose;
-  has Arn => (is => 'ro', isa => 'Str', xmlname => 'arn', request_name => 'arn', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has AssessmentTargetArn => (is => 'ro', isa => 'Str', xmlname => 'assessmentTargetArn', request_name => 'assessmentTargetArn', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has CreatedAt => (is => 'ro', isa => 'Str', xmlname => 'createdAt', request_name => 'createdAt', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has DurationInSeconds => (is => 'ro', isa => 'Int', xmlname => 'durationInSeconds', request_name => 'durationInSeconds', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has Name => (is => 'ro', isa => 'Str', xmlname => 'name', request_name => 'name', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has RulesPackageArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'rulesPackageArns', request_name => 'rulesPackageArns', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has UserAttributesForFindings => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::Attribute]', xmlname => 'userAttributesForFindings', request_name => 'userAttributesForFindings', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest'], required => 1);
+  has AssessmentTargetArn => (is => 'ro', isa => 'Str', request_name => 'assessmentTargetArn', traits => ['NameInRequest'], required => 1);
+  has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest'], required => 1);
+  has DurationInSeconds => (is => 'ro', isa => 'Int', request_name => 'durationInSeconds', traits => ['NameInRequest'], required => 1);
+  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
+  has RulesPackageArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'rulesPackageArns', traits => ['NameInRequest'], required => 1);
+  has UserAttributesForFindings => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::Attribute]', request_name => 'userAttributesForFindings', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###

@@ -1,7 +1,7 @@
 
 package Paws::EC2::ImportVolumeResult;
   use Moose;
-  has ConversionTask => (is => 'ro', isa => 'Paws::EC2::ConversionTask', xmlname => 'conversionTask', traits => ['Unwrapped',]);
+  has ConversionTask => (is => 'ro', isa => 'Paws::EC2::ConversionTask', request_name => 'conversionTask', traits => ['NameInRequest',]);
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

@@ -1,7 +1,7 @@
 package Paws::CloudWatchLogs::InputLogEvent;
   use Moose;
-  has Message => (is => 'ro', isa => 'Str', xmlname => 'message', request_name => 'message', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has Timestamp => (is => 'ro', isa => 'Int', xmlname => 'timestamp', request_name => 'timestamp', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has Message => (is => 'ro', isa => 'Str', request_name => 'message', traits => ['NameInRequest'], required => 1);
+  has Timestamp => (is => 'ro', isa => 'Int', request_name => 'timestamp', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###

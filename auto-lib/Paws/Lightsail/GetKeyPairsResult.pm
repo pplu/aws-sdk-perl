@@ -1,8 +1,8 @@
 
 package Paws::Lightsail::GetKeyPairsResult;
   use Moose;
-  has KeyPairs => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::KeyPair]', traits => ['Unwrapped'], xmlname => 'keyPairs' );
-  has NextPageToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextPageToken' );
+  has KeyPairs => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::KeyPair]', traits => ['NameInRequest'], request_name => 'keyPairs' );
+  has NextPageToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextPageToken' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

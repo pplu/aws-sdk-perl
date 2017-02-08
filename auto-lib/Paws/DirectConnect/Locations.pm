@@ -1,7 +1,7 @@
 
 package Paws::DirectConnect::Locations;
   use Moose;
-  has Locations => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::Location]', traits => ['Unwrapped'], xmlname => 'locations' );
+  has Locations => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::Location]', traits => ['NameInRequest'], request_name => 'locations' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

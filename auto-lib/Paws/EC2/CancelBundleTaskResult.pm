@@ -1,7 +1,7 @@
 
 package Paws::EC2::CancelBundleTaskResult;
   use Moose;
-  has BundleTask => (is => 'ro', isa => 'Paws::EC2::BundleTask', xmlname => 'bundleInstanceTask', traits => ['Unwrapped',]);
+  has BundleTask => (is => 'ro', isa => 'Paws::EC2::BundleTask', request_name => 'bundleInstanceTask', traits => ['NameInRequest',]);
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

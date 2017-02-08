@@ -1,7 +1,7 @@
 package Paws::CodeBuild::EnvironmentPlatform;
   use Moose;
-  has Languages => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::EnvironmentLanguage]', xmlname => 'languages', request_name => 'languages', traits => ['Unwrapped','NameInRequest']);
-  has Platform => (is => 'ro', isa => 'Str', xmlname => 'platform', request_name => 'platform', traits => ['Unwrapped','NameInRequest']);
+  has Languages => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::EnvironmentLanguage]', request_name => 'languages', traits => ['NameInRequest']);
+  has Platform => (is => 'ro', isa => 'Str', request_name => 'platform', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

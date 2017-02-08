@@ -1,8 +1,8 @@
 
 package Paws::CodeCommit::GetRepositoryTriggersOutput;
   use Moose;
-  has ConfigurationId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'configurationId' );
-  has Triggers => (is => 'ro', isa => 'ArrayRef[Paws::CodeCommit::RepositoryTrigger]', traits => ['Unwrapped'], xmlname => 'triggers' );
+  has ConfigurationId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'configurationId' );
+  has Triggers => (is => 'ro', isa => 'ArrayRef[Paws::CodeCommit::RepositoryTrigger]', traits => ['NameInRequest'], request_name => 'triggers' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

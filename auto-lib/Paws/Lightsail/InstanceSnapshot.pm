@@ -1,18 +1,18 @@
 package Paws::Lightsail::InstanceSnapshot;
   use Moose;
-  has Arn => (is => 'ro', isa => 'Str', xmlname => 'arn', request_name => 'arn', traits => ['Unwrapped','NameInRequest']);
-  has CreatedAt => (is => 'ro', isa => 'Str', xmlname => 'createdAt', request_name => 'createdAt', traits => ['Unwrapped','NameInRequest']);
-  has FromBlueprintId => (is => 'ro', isa => 'Str', xmlname => 'fromBlueprintId', request_name => 'fromBlueprintId', traits => ['Unwrapped','NameInRequest']);
-  has FromBundleId => (is => 'ro', isa => 'Str', xmlname => 'fromBundleId', request_name => 'fromBundleId', traits => ['Unwrapped','NameInRequest']);
-  has FromInstanceArn => (is => 'ro', isa => 'Str', xmlname => 'fromInstanceArn', request_name => 'fromInstanceArn', traits => ['Unwrapped','NameInRequest']);
-  has FromInstanceName => (is => 'ro', isa => 'Str', xmlname => 'fromInstanceName', request_name => 'fromInstanceName', traits => ['Unwrapped','NameInRequest']);
-  has Location => (is => 'ro', isa => 'Paws::Lightsail::ResourceLocation', xmlname => 'location', request_name => 'location', traits => ['Unwrapped','NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', xmlname => 'name', request_name => 'name', traits => ['Unwrapped','NameInRequest']);
-  has Progress => (is => 'ro', isa => 'Str', xmlname => 'progress', request_name => 'progress', traits => ['Unwrapped','NameInRequest']);
-  has ResourceType => (is => 'ro', isa => 'Str', xmlname => 'resourceType', request_name => 'resourceType', traits => ['Unwrapped','NameInRequest']);
-  has SizeInGb => (is => 'ro', isa => 'Int', xmlname => 'sizeInGb', request_name => 'sizeInGb', traits => ['Unwrapped','NameInRequest']);
-  has State => (is => 'ro', isa => 'Str', xmlname => 'state', request_name => 'state', traits => ['Unwrapped','NameInRequest']);
-  has SupportCode => (is => 'ro', isa => 'Str', xmlname => 'supportCode', request_name => 'supportCode', traits => ['Unwrapped','NameInRequest']);
+  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
+  has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest']);
+  has FromBlueprintId => (is => 'ro', isa => 'Str', request_name => 'fromBlueprintId', traits => ['NameInRequest']);
+  has FromBundleId => (is => 'ro', isa => 'Str', request_name => 'fromBundleId', traits => ['NameInRequest']);
+  has FromInstanceArn => (is => 'ro', isa => 'Str', request_name => 'fromInstanceArn', traits => ['NameInRequest']);
+  has FromInstanceName => (is => 'ro', isa => 'Str', request_name => 'fromInstanceName', traits => ['NameInRequest']);
+  has Location => (is => 'ro', isa => 'Paws::Lightsail::ResourceLocation', request_name => 'location', traits => ['NameInRequest']);
+  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
+  has Progress => (is => 'ro', isa => 'Str', request_name => 'progress', traits => ['NameInRequest']);
+  has ResourceType => (is => 'ro', isa => 'Str', request_name => 'resourceType', traits => ['NameInRequest']);
+  has SizeInGb => (is => 'ro', isa => 'Int', request_name => 'sizeInGb', traits => ['NameInRequest']);
+  has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
+  has SupportCode => (is => 'ro', isa => 'Str', request_name => 'supportCode', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

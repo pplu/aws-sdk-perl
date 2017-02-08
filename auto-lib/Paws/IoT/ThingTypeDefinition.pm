@@ -1,8 +1,8 @@
 package Paws::IoT::ThingTypeDefinition;
   use Moose;
-  has ThingTypeMetadata => (is => 'ro', isa => 'Paws::IoT::ThingTypeMetadata', xmlname => 'thingTypeMetadata', request_name => 'thingTypeMetadata', traits => ['Unwrapped','NameInRequest']);
-  has ThingTypeName => (is => 'ro', isa => 'Str', xmlname => 'thingTypeName', request_name => 'thingTypeName', traits => ['Unwrapped','NameInRequest']);
-  has ThingTypeProperties => (is => 'ro', isa => 'Paws::IoT::ThingTypeProperties', xmlname => 'thingTypeProperties', request_name => 'thingTypeProperties', traits => ['Unwrapped','NameInRequest']);
+  has ThingTypeMetadata => (is => 'ro', isa => 'Paws::IoT::ThingTypeMetadata', request_name => 'thingTypeMetadata', traits => ['NameInRequest']);
+  has ThingTypeName => (is => 'ro', isa => 'Str', request_name => 'thingTypeName', traits => ['NameInRequest']);
+  has ThingTypeProperties => (is => 'ro', isa => 'Paws::IoT::ThingTypeProperties', request_name => 'thingTypeProperties', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

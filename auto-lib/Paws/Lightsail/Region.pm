@@ -1,10 +1,10 @@
 package Paws::Lightsail::Region;
   use Moose;
-  has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::AvailabilityZone]', xmlname => 'availabilityZones', request_name => 'availabilityZones', traits => ['Unwrapped','NameInRequest']);
-  has ContinentCode => (is => 'ro', isa => 'Str', xmlname => 'continentCode', request_name => 'continentCode', traits => ['Unwrapped','NameInRequest']);
-  has Description => (is => 'ro', isa => 'Str', xmlname => 'description', request_name => 'description', traits => ['Unwrapped','NameInRequest']);
-  has DisplayName => (is => 'ro', isa => 'Str', xmlname => 'displayName', request_name => 'displayName', traits => ['Unwrapped','NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', xmlname => 'name', request_name => 'name', traits => ['Unwrapped','NameInRequest']);
+  has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::AvailabilityZone]', request_name => 'availabilityZones', traits => ['NameInRequest']);
+  has ContinentCode => (is => 'ro', isa => 'Str', request_name => 'continentCode', traits => ['NameInRequest']);
+  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
+  has DisplayName => (is => 'ro', isa => 'Str', request_name => 'displayName', traits => ['NameInRequest']);
+  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

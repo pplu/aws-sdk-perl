@@ -1,15 +1,15 @@
 package Paws::IoT::DynamoDBAction;
   use Moose;
-  has HashKeyField => (is => 'ro', isa => 'Str', xmlname => 'hashKeyField', request_name => 'hashKeyField', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has HashKeyType => (is => 'ro', isa => 'Str', xmlname => 'hashKeyType', request_name => 'hashKeyType', traits => ['Unwrapped','NameInRequest']);
-  has HashKeyValue => (is => 'ro', isa => 'Str', xmlname => 'hashKeyValue', request_name => 'hashKeyValue', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has Operation => (is => 'ro', isa => 'Str', xmlname => 'operation', request_name => 'operation', traits => ['Unwrapped','NameInRequest']);
-  has PayloadField => (is => 'ro', isa => 'Str', xmlname => 'payloadField', request_name => 'payloadField', traits => ['Unwrapped','NameInRequest']);
-  has RangeKeyField => (is => 'ro', isa => 'Str', xmlname => 'rangeKeyField', request_name => 'rangeKeyField', traits => ['Unwrapped','NameInRequest']);
-  has RangeKeyType => (is => 'ro', isa => 'Str', xmlname => 'rangeKeyType', request_name => 'rangeKeyType', traits => ['Unwrapped','NameInRequest']);
-  has RangeKeyValue => (is => 'ro', isa => 'Str', xmlname => 'rangeKeyValue', request_name => 'rangeKeyValue', traits => ['Unwrapped','NameInRequest']);
-  has RoleArn => (is => 'ro', isa => 'Str', xmlname => 'roleArn', request_name => 'roleArn', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has TableName => (is => 'ro', isa => 'Str', xmlname => 'tableName', request_name => 'tableName', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has HashKeyField => (is => 'ro', isa => 'Str', request_name => 'hashKeyField', traits => ['NameInRequest'], required => 1);
+  has HashKeyType => (is => 'ro', isa => 'Str', request_name => 'hashKeyType', traits => ['NameInRequest']);
+  has HashKeyValue => (is => 'ro', isa => 'Str', request_name => 'hashKeyValue', traits => ['NameInRequest'], required => 1);
+  has Operation => (is => 'ro', isa => 'Str', request_name => 'operation', traits => ['NameInRequest']);
+  has PayloadField => (is => 'ro', isa => 'Str', request_name => 'payloadField', traits => ['NameInRequest']);
+  has RangeKeyField => (is => 'ro', isa => 'Str', request_name => 'rangeKeyField', traits => ['NameInRequest']);
+  has RangeKeyType => (is => 'ro', isa => 'Str', request_name => 'rangeKeyType', traits => ['NameInRequest']);
+  has RangeKeyValue => (is => 'ro', isa => 'Str', request_name => 'rangeKeyValue', traits => ['NameInRequest']);
+  has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest'], required => 1);
+  has TableName => (is => 'ro', isa => 'Str', request_name => 'tableName', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###

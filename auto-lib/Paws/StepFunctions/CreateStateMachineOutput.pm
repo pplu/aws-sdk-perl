@@ -1,8 +1,8 @@
 
 package Paws::StepFunctions::CreateStateMachineOutput;
   use Moose;
-  has CreationDate => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'creationDate' , required => 1);
-  has StateMachineArn => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'stateMachineArn' , required => 1);
+  has CreationDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'creationDate' , required => 1);
+  has StateMachineArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'stateMachineArn' , required => 1);
 
   has _request_id => (is => 'ro', isa => 'Str');
 

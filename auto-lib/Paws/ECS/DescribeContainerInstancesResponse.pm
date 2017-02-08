@@ -1,8 +1,8 @@
 
 package Paws::ECS::DescribeContainerInstancesResponse;
   use Moose;
-  has ContainerInstances => (is => 'ro', isa => 'ArrayRef[Paws::ECS::ContainerInstance]', traits => ['Unwrapped'], xmlname => 'containerInstances' );
-  has Failures => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Failure]', traits => ['Unwrapped'], xmlname => 'failures' );
+  has ContainerInstances => (is => 'ro', isa => 'ArrayRef[Paws::ECS::ContainerInstance]', traits => ['NameInRequest'], request_name => 'containerInstances' );
+  has Failures => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Failure]', traits => ['NameInRequest'], request_name => 'failures' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

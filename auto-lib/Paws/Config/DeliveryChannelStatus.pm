@@ -1,9 +1,9 @@
 package Paws::Config::DeliveryChannelStatus;
   use Moose;
-  has ConfigHistoryDeliveryInfo => (is => 'ro', isa => 'Paws::Config::ConfigExportDeliveryInfo', xmlname => 'configHistoryDeliveryInfo', request_name => 'configHistoryDeliveryInfo', traits => ['Unwrapped','NameInRequest']);
-  has ConfigSnapshotDeliveryInfo => (is => 'ro', isa => 'Paws::Config::ConfigExportDeliveryInfo', xmlname => 'configSnapshotDeliveryInfo', request_name => 'configSnapshotDeliveryInfo', traits => ['Unwrapped','NameInRequest']);
-  has ConfigStreamDeliveryInfo => (is => 'ro', isa => 'Paws::Config::ConfigStreamDeliveryInfo', xmlname => 'configStreamDeliveryInfo', request_name => 'configStreamDeliveryInfo', traits => ['Unwrapped','NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', xmlname => 'name', request_name => 'name', traits => ['Unwrapped','NameInRequest']);
+  has ConfigHistoryDeliveryInfo => (is => 'ro', isa => 'Paws::Config::ConfigExportDeliveryInfo', request_name => 'configHistoryDeliveryInfo', traits => ['NameInRequest']);
+  has ConfigSnapshotDeliveryInfo => (is => 'ro', isa => 'Paws::Config::ConfigExportDeliveryInfo', request_name => 'configSnapshotDeliveryInfo', traits => ['NameInRequest']);
+  has ConfigStreamDeliveryInfo => (is => 'ro', isa => 'Paws::Config::ConfigStreamDeliveryInfo', request_name => 'configStreamDeliveryInfo', traits => ['NameInRequest']);
+  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

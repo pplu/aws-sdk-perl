@@ -1,7 +1,7 @@
 package Paws::CodeDeploy::AutoRollbackConfiguration;
   use Moose;
-  has Enabled => (is => 'ro', isa => 'Bool', xmlname => 'enabled', request_name => 'enabled', traits => ['Unwrapped','NameInRequest']);
-  has Events => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'events', request_name => 'events', traits => ['Unwrapped','NameInRequest']);
+  has Enabled => (is => 'ro', isa => 'Bool', request_name => 'enabled', traits => ['NameInRequest']);
+  has Events => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'events', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

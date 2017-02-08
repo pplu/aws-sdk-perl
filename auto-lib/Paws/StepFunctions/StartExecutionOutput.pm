@@ -1,8 +1,8 @@
 
 package Paws::StepFunctions::StartExecutionOutput;
   use Moose;
-  has ExecutionArn => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'executionArn' , required => 1);
-  has StartDate => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'startDate' , required => 1);
+  has ExecutionArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'executionArn' , required => 1);
+  has StartDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'startDate' , required => 1);
 
   has _request_id => (is => 'ro', isa => 'Str');
 

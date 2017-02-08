@@ -1,8 +1,8 @@
 
 package Paws::Lightsail::GetInstancesResult;
   use Moose;
-  has Instances => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::Instance]', traits => ['Unwrapped'], xmlname => 'instances' );
-  has NextPageToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextPageToken' );
+  has Instances => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::Instance]', traits => ['NameInRequest'], request_name => 'instances' );
+  has NextPageToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextPageToken' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

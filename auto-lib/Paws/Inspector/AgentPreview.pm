@@ -1,7 +1,7 @@
 package Paws::Inspector::AgentPreview;
   use Moose;
-  has AgentId => (is => 'ro', isa => 'Str', xmlname => 'agentId', request_name => 'agentId', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has AutoScalingGroup => (is => 'ro', isa => 'Str', xmlname => 'autoScalingGroup', request_name => 'autoScalingGroup', traits => ['Unwrapped','NameInRequest']);
+  has AgentId => (is => 'ro', isa => 'Str', request_name => 'agentId', traits => ['NameInRequest'], required => 1);
+  has AutoScalingGroup => (is => 'ro', isa => 'Str', request_name => 'autoScalingGroup', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

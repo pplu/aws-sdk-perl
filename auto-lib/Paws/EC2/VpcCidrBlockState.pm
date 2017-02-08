@@ -1,7 +1,7 @@
 package Paws::EC2::VpcCidrBlockState;
   use Moose;
-  has State => (is => 'ro', isa => 'Str', xmlname => 'state', traits => ['Unwrapped']);
-  has StatusMessage => (is => 'ro', isa => 'Str', xmlname => 'statusMessage', traits => ['Unwrapped']);
+  has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
+  has StatusMessage => (is => 'ro', isa => 'Str', request_name => 'statusMessage', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

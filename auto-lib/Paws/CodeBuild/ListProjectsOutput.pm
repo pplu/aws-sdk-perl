@@ -1,8 +1,8 @@
 
 package Paws::CodeBuild::ListProjectsOutput;
   use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
-  has Projects => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['Unwrapped'], xmlname => 'projects' );
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  has Projects => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'projects' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

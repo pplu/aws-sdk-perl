@@ -1,7 +1,7 @@
 package Paws::StepFunctions::StateExitedEventDetails;
   use Moose;
-  has Name => (is => 'ro', isa => 'Str', xmlname => 'name', request_name => 'name', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has Output => (is => 'ro', isa => 'Str', xmlname => 'output', request_name => 'output', traits => ['Unwrapped','NameInRequest']);
+  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
+  has Output => (is => 'ro', isa => 'Str', request_name => 'output', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

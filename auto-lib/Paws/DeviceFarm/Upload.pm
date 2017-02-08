@@ -1,14 +1,14 @@
 package Paws::DeviceFarm::Upload;
   use Moose;
-  has Arn => (is => 'ro', isa => 'Str', xmlname => 'arn', request_name => 'arn', traits => ['Unwrapped','NameInRequest']);
-  has ContentType => (is => 'ro', isa => 'Str', xmlname => 'contentType', request_name => 'contentType', traits => ['Unwrapped','NameInRequest']);
-  has Created => (is => 'ro', isa => 'Str', xmlname => 'created', request_name => 'created', traits => ['Unwrapped','NameInRequest']);
-  has Message => (is => 'ro', isa => 'Str', xmlname => 'message', request_name => 'message', traits => ['Unwrapped','NameInRequest']);
-  has Metadata => (is => 'ro', isa => 'Str', xmlname => 'metadata', request_name => 'metadata', traits => ['Unwrapped','NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', xmlname => 'name', request_name => 'name', traits => ['Unwrapped','NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', xmlname => 'status', request_name => 'status', traits => ['Unwrapped','NameInRequest']);
-  has Type => (is => 'ro', isa => 'Str', xmlname => 'type', request_name => 'type', traits => ['Unwrapped','NameInRequest']);
-  has Url => (is => 'ro', isa => 'Str', xmlname => 'url', request_name => 'url', traits => ['Unwrapped','NameInRequest']);
+  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
+  has ContentType => (is => 'ro', isa => 'Str', request_name => 'contentType', traits => ['NameInRequest']);
+  has Created => (is => 'ro', isa => 'Str', request_name => 'created', traits => ['NameInRequest']);
+  has Message => (is => 'ro', isa => 'Str', request_name => 'message', traits => ['NameInRequest']);
+  has Metadata => (is => 'ro', isa => 'Str', request_name => 'metadata', traits => ['NameInRequest']);
+  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
+  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
+  has Url => (is => 'ro', isa => 'Str', request_name => 'url', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

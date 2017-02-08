@@ -1,8 +1,8 @@
 
 package Paws::EC2::GetConsoleScreenshotResult;
   use Moose;
-  has ImageData => (is => 'ro', isa => 'Str', xmlname => 'imageData', traits => ['Unwrapped',]);
-  has InstanceId => (is => 'ro', isa => 'Str', xmlname => 'instanceId', traits => ['Unwrapped',]);
+  has ImageData => (is => 'ro', isa => 'Str', request_name => 'imageData', traits => ['NameInRequest',]);
+  has InstanceId => (is => 'ro', isa => 'Str', request_name => 'instanceId', traits => ['NameInRequest',]);
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

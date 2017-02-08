@@ -1,7 +1,7 @@
 package Paws::IoT::AttributePayload;
   use Moose;
-  has Attributes => (is => 'ro', isa => 'Paws::IoT::Attributes', xmlname => 'attributes', request_name => 'attributes', traits => ['Unwrapped','NameInRequest']);
-  has Merge => (is => 'ro', isa => 'Bool', xmlname => 'merge', request_name => 'merge', traits => ['Unwrapped','NameInRequest']);
+  has Attributes => (is => 'ro', isa => 'Paws::IoT::Attributes', request_name => 'attributes', traits => ['NameInRequest']);
+  has Merge => (is => 'ro', isa => 'Bool', request_name => 'merge', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

@@ -1,12 +1,12 @@
 package Paws::EC2::IpPermission;
   use Moose;
-  has FromPort => (is => 'ro', isa => 'Int', xmlname => 'fromPort', traits => ['Unwrapped']);
-  has IpProtocol => (is => 'ro', isa => 'Str', xmlname => 'ipProtocol', traits => ['Unwrapped']);
-  has IpRanges => (is => 'ro', isa => 'ArrayRef[Paws::EC2::IpRange]', xmlname => 'ipRanges', traits => ['Unwrapped']);
-  has Ipv6Ranges => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Ipv6Range]', xmlname => 'ipv6Ranges', traits => ['Unwrapped']);
-  has PrefixListIds => (is => 'ro', isa => 'ArrayRef[Paws::EC2::PrefixListId]', xmlname => 'prefixListIds', traits => ['Unwrapped']);
-  has ToPort => (is => 'ro', isa => 'Int', xmlname => 'toPort', traits => ['Unwrapped']);
-  has UserIdGroupPairs => (is => 'ro', isa => 'ArrayRef[Paws::EC2::UserIdGroupPair]', xmlname => 'groups', traits => ['Unwrapped']);
+  has FromPort => (is => 'ro', isa => 'Int', request_name => 'fromPort', traits => ['NameInRequest']);
+  has IpProtocol => (is => 'ro', isa => 'Str', request_name => 'ipProtocol', traits => ['NameInRequest']);
+  has IpRanges => (is => 'ro', isa => 'ArrayRef[Paws::EC2::IpRange]', request_name => 'ipRanges', traits => ['NameInRequest']);
+  has Ipv6Ranges => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Ipv6Range]', request_name => 'ipv6Ranges', traits => ['NameInRequest']);
+  has PrefixListIds => (is => 'ro', isa => 'ArrayRef[Paws::EC2::PrefixListId]', request_name => 'prefixListIds', traits => ['NameInRequest']);
+  has ToPort => (is => 'ro', isa => 'Int', request_name => 'toPort', traits => ['NameInRequest']);
+  has UserIdGroupPairs => (is => 'ro', isa => 'ArrayRef[Paws::EC2::UserIdGroupPair]', request_name => 'groups', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

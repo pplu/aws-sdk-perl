@@ -1,12 +1,12 @@
 package Paws::CodePipeline::ActionConfigurationProperty;
   use Moose;
-  has Description => (is => 'ro', isa => 'Str', xmlname => 'description', request_name => 'description', traits => ['Unwrapped','NameInRequest']);
-  has Key => (is => 'ro', isa => 'Bool', xmlname => 'key', request_name => 'key', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has Name => (is => 'ro', isa => 'Str', xmlname => 'name', request_name => 'name', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has Queryable => (is => 'ro', isa => 'Bool', xmlname => 'queryable', request_name => 'queryable', traits => ['Unwrapped','NameInRequest']);
-  has Required => (is => 'ro', isa => 'Bool', xmlname => 'required', request_name => 'required', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has Secret => (is => 'ro', isa => 'Bool', xmlname => 'secret', request_name => 'secret', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has Type => (is => 'ro', isa => 'Str', xmlname => 'type', request_name => 'type', traits => ['Unwrapped','NameInRequest']);
+  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
+  has Key => (is => 'ro', isa => 'Bool', request_name => 'key', traits => ['NameInRequest'], required => 1);
+  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
+  has Queryable => (is => 'ro', isa => 'Bool', request_name => 'queryable', traits => ['NameInRequest']);
+  has Required => (is => 'ro', isa => 'Bool', request_name => 'required', traits => ['NameInRequest'], required => 1);
+  has Secret => (is => 'ro', isa => 'Bool', request_name => 'secret', traits => ['NameInRequest'], required => 1);
+  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

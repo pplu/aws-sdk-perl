@@ -1,7 +1,7 @@
 package Paws::EC2::MovingAddressStatus;
   use Moose;
-  has MoveStatus => (is => 'ro', isa => 'Str', xmlname => 'moveStatus', traits => ['Unwrapped']);
-  has PublicIp => (is => 'ro', isa => 'Str', xmlname => 'publicIp', traits => ['Unwrapped']);
+  has MoveStatus => (is => 'ro', isa => 'Str', request_name => 'moveStatus', traits => ['NameInRequest']);
+  has PublicIp => (is => 'ro', isa => 'Str', request_name => 'publicIp', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

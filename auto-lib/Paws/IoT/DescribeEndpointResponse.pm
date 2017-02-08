@@ -1,7 +1,7 @@
 
 package Paws::IoT::DescribeEndpointResponse;
   use Moose;
-  has EndpointAddress => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'endpointAddress');
+  has EndpointAddress => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'endpointAddress');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

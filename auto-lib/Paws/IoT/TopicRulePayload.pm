@@ -1,10 +1,10 @@
 package Paws::IoT::TopicRulePayload;
   use Moose;
-  has Actions => (is => 'ro', isa => 'ArrayRef[Paws::IoT::Action]', xmlname => 'actions', request_name => 'actions', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has AwsIotSqlVersion => (is => 'ro', isa => 'Str', xmlname => 'awsIotSqlVersion', request_name => 'awsIotSqlVersion', traits => ['Unwrapped','NameInRequest']);
-  has Description => (is => 'ro', isa => 'Str', xmlname => 'description', request_name => 'description', traits => ['Unwrapped','NameInRequest']);
-  has RuleDisabled => (is => 'ro', isa => 'Bool', xmlname => 'ruleDisabled', request_name => 'ruleDisabled', traits => ['Unwrapped','NameInRequest']);
-  has Sql => (is => 'ro', isa => 'Str', xmlname => 'sql', request_name => 'sql', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has Actions => (is => 'ro', isa => 'ArrayRef[Paws::IoT::Action]', request_name => 'actions', traits => ['NameInRequest'], required => 1);
+  has AwsIotSqlVersion => (is => 'ro', isa => 'Str', request_name => 'awsIotSqlVersion', traits => ['NameInRequest']);
+  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
+  has RuleDisabled => (is => 'ro', isa => 'Bool', request_name => 'ruleDisabled', traits => ['NameInRequest']);
+  has Sql => (is => 'ro', isa => 'Str', request_name => 'sql', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###

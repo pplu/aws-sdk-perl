@@ -1,15 +1,15 @@
 
 package Paws::EC2::GetReservedInstancesExchangeQuoteResult;
   use Moose;
-  has CurrencyCode => (is => 'ro', isa => 'Str', xmlname => 'currencyCode', traits => ['Unwrapped',]);
-  has IsValidExchange => (is => 'ro', isa => 'Bool', xmlname => 'isValidExchange', traits => ['Unwrapped',]);
-  has OutputReservedInstancesWillExpireAt => (is => 'ro', isa => 'Str', xmlname => 'outputReservedInstancesWillExpireAt', traits => ['Unwrapped',]);
-  has PaymentDue => (is => 'ro', isa => 'Str', xmlname => 'paymentDue', traits => ['Unwrapped',]);
-  has ReservedInstanceValueRollup => (is => 'ro', isa => 'Paws::EC2::ReservationValue', xmlname => 'reservedInstanceValueRollup', traits => ['Unwrapped',]);
-  has ReservedInstanceValueSet => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ReservedInstanceReservationValue]', xmlname => 'reservedInstanceValueSet', traits => ['Unwrapped',]);
-  has TargetConfigurationValueRollup => (is => 'ro', isa => 'Paws::EC2::ReservationValue', xmlname => 'targetConfigurationValueRollup', traits => ['Unwrapped',]);
-  has TargetConfigurationValueSet => (is => 'ro', isa => 'ArrayRef[Paws::EC2::TargetReservationValue]', xmlname => 'targetConfigurationValueSet', traits => ['Unwrapped',]);
-  has ValidationFailureReason => (is => 'ro', isa => 'Str', xmlname => 'validationFailureReason', traits => ['Unwrapped',]);
+  has CurrencyCode => (is => 'ro', isa => 'Str', request_name => 'currencyCode', traits => ['NameInRequest',]);
+  has IsValidExchange => (is => 'ro', isa => 'Bool', request_name => 'isValidExchange', traits => ['NameInRequest',]);
+  has OutputReservedInstancesWillExpireAt => (is => 'ro', isa => 'Str', request_name => 'outputReservedInstancesWillExpireAt', traits => ['NameInRequest',]);
+  has PaymentDue => (is => 'ro', isa => 'Str', request_name => 'paymentDue', traits => ['NameInRequest',]);
+  has ReservedInstanceValueRollup => (is => 'ro', isa => 'Paws::EC2::ReservationValue', request_name => 'reservedInstanceValueRollup', traits => ['NameInRequest',]);
+  has ReservedInstanceValueSet => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ReservedInstanceReservationValue]', request_name => 'reservedInstanceValueSet', traits => ['NameInRequest',]);
+  has TargetConfigurationValueRollup => (is => 'ro', isa => 'Paws::EC2::ReservationValue', request_name => 'targetConfigurationValueRollup', traits => ['NameInRequest',]);
+  has TargetConfigurationValueSet => (is => 'ro', isa => 'ArrayRef[Paws::EC2::TargetReservationValue]', request_name => 'targetConfigurationValueSet', traits => ['NameInRequest',]);
+  has ValidationFailureReason => (is => 'ro', isa => 'Str', request_name => 'validationFailureReason', traits => ['NameInRequest',]);
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

@@ -2,7 +2,7 @@
 package Paws::S3::ListBucketInventoryConfigurationsOutput;
   use Moose;
   has ContinuationToken => (is => 'ro', isa => 'Str');
-  has InventoryConfigurationList => (is => 'ro', isa => 'ArrayRef[Paws::S3::InventoryConfiguration]', traits => ['Unwrapped'], xmlname => 'InventoryConfiguration');
+  has InventoryConfigurationList => (is => 'ro', isa => 'ArrayRef[Paws::S3::InventoryConfiguration]', traits => ['NameInRequest'], request_name => 'InventoryConfiguration');
   has IsTruncated => (is => 'ro', isa => 'Bool');
   has NextContinuationToken => (is => 'ro', isa => 'Str');
 

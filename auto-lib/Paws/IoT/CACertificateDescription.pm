@@ -1,12 +1,12 @@
 package Paws::IoT::CACertificateDescription;
   use Moose;
-  has AutoRegistrationStatus => (is => 'ro', isa => 'Str', xmlname => 'autoRegistrationStatus', request_name => 'autoRegistrationStatus', traits => ['Unwrapped','NameInRequest']);
-  has CertificateArn => (is => 'ro', isa => 'Str', xmlname => 'certificateArn', request_name => 'certificateArn', traits => ['Unwrapped','NameInRequest']);
-  has CertificateId => (is => 'ro', isa => 'Str', xmlname => 'certificateId', request_name => 'certificateId', traits => ['Unwrapped','NameInRequest']);
-  has CertificatePem => (is => 'ro', isa => 'Str', xmlname => 'certificatePem', request_name => 'certificatePem', traits => ['Unwrapped','NameInRequest']);
-  has CreationDate => (is => 'ro', isa => 'Str', xmlname => 'creationDate', request_name => 'creationDate', traits => ['Unwrapped','NameInRequest']);
-  has OwnedBy => (is => 'ro', isa => 'Str', xmlname => 'ownedBy', request_name => 'ownedBy', traits => ['Unwrapped','NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', xmlname => 'status', request_name => 'status', traits => ['Unwrapped','NameInRequest']);
+  has AutoRegistrationStatus => (is => 'ro', isa => 'Str', request_name => 'autoRegistrationStatus', traits => ['NameInRequest']);
+  has CertificateArn => (is => 'ro', isa => 'Str', request_name => 'certificateArn', traits => ['NameInRequest']);
+  has CertificateId => (is => 'ro', isa => 'Str', request_name => 'certificateId', traits => ['NameInRequest']);
+  has CertificatePem => (is => 'ro', isa => 'Str', request_name => 'certificatePem', traits => ['NameInRequest']);
+  has CreationDate => (is => 'ro', isa => 'Str', request_name => 'creationDate', traits => ['NameInRequest']);
+  has OwnedBy => (is => 'ro', isa => 'Str', request_name => 'ownedBy', traits => ['NameInRequest']);
+  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

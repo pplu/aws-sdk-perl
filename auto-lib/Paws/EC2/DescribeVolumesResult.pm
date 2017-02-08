@@ -1,8 +1,8 @@
 
 package Paws::EC2::DescribeVolumesResult;
   use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', xmlname => 'nextToken', traits => ['Unwrapped',]);
-  has Volumes => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Volume]', xmlname => 'volumeSet', traits => ['Unwrapped',]);
+  has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest',]);
+  has Volumes => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Volume]', request_name => 'volumeSet', traits => ['NameInRequest',]);
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

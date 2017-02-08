@@ -1,8 +1,8 @@
 
 package Paws::CloudWatchLogs::DescribeLogGroupsResponse;
   use Moose;
-  has LogGroups => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatchLogs::LogGroup]', traits => ['Unwrapped'], xmlname => 'logGroups' );
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
+  has LogGroups => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatchLogs::LogGroup]', traits => ['NameInRequest'], request_name => 'logGroups' );
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

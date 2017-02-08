@@ -1,8 +1,8 @@
 package Paws::EC2::DhcpOptions;
   use Moose;
-  has DhcpConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::EC2::DhcpConfiguration]', xmlname => 'dhcpConfigurationSet', traits => ['Unwrapped']);
-  has DhcpOptionsId => (is => 'ro', isa => 'Str', xmlname => 'dhcpOptionsId', traits => ['Unwrapped']);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', xmlname => 'tagSet', traits => ['Unwrapped']);
+  has DhcpConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::EC2::DhcpConfiguration]', request_name => 'dhcpConfigurationSet', traits => ['NameInRequest']);
+  has DhcpOptionsId => (is => 'ro', isa => 'Str', request_name => 'dhcpOptionsId', traits => ['NameInRequest']);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

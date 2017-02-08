@@ -1,7 +1,7 @@
 
 package Paws::Lightsail::DetachStaticIpResult;
   use Moose;
-  has Operations => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::Operation]', traits => ['Unwrapped'], xmlname => 'operations' );
+  has Operations => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::Operation]', traits => ['NameInRequest'], request_name => 'operations' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

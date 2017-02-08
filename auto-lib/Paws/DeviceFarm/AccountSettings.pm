@@ -1,8 +1,8 @@
 package Paws::DeviceFarm::AccountSettings;
   use Moose;
-  has AwsAccountNumber => (is => 'ro', isa => 'Str', xmlname => 'awsAccountNumber', request_name => 'awsAccountNumber', traits => ['Unwrapped','NameInRequest']);
-  has UnmeteredDevices => (is => 'ro', isa => 'Paws::DeviceFarm::PurchasedDevicesMap', xmlname => 'unmeteredDevices', request_name => 'unmeteredDevices', traits => ['Unwrapped','NameInRequest']);
-  has UnmeteredRemoteAccessDevices => (is => 'ro', isa => 'Paws::DeviceFarm::PurchasedDevicesMap', xmlname => 'unmeteredRemoteAccessDevices', request_name => 'unmeteredRemoteAccessDevices', traits => ['Unwrapped','NameInRequest']);
+  has AwsAccountNumber => (is => 'ro', isa => 'Str', request_name => 'awsAccountNumber', traits => ['NameInRequest']);
+  has UnmeteredDevices => (is => 'ro', isa => 'Paws::DeviceFarm::PurchasedDevicesMap', request_name => 'unmeteredDevices', traits => ['NameInRequest']);
+  has UnmeteredRemoteAccessDevices => (is => 'ro', isa => 'Paws::DeviceFarm::PurchasedDevicesMap', request_name => 'unmeteredRemoteAccessDevices', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

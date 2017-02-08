@@ -1,7 +1,7 @@
 
 package Paws::EC2::TerminateInstancesResult;
   use Moose;
-  has TerminatingInstances => (is => 'ro', isa => 'ArrayRef[Paws::EC2::InstanceStateChange]', xmlname => 'instancesSet', traits => ['Unwrapped',]);
+  has TerminatingInstances => (is => 'ro', isa => 'ArrayRef[Paws::EC2::InstanceStateChange]', request_name => 'instancesSet', traits => ['NameInRequest',]);
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

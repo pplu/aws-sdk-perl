@@ -1,8 +1,8 @@
 package Paws::CodeDeploy::AlarmConfiguration;
   use Moose;
-  has Alarms => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::Alarm]', xmlname => 'alarms', request_name => 'alarms', traits => ['Unwrapped','NameInRequest']);
-  has Enabled => (is => 'ro', isa => 'Bool', xmlname => 'enabled', request_name => 'enabled', traits => ['Unwrapped','NameInRequest']);
-  has IgnorePollAlarmFailure => (is => 'ro', isa => 'Bool', xmlname => 'ignorePollAlarmFailure', request_name => 'ignorePollAlarmFailure', traits => ['Unwrapped','NameInRequest']);
+  has Alarms => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::Alarm]', request_name => 'alarms', traits => ['NameInRequest']);
+  has Enabled => (is => 'ro', isa => 'Bool', request_name => 'enabled', traits => ['NameInRequest']);
+  has IgnorePollAlarmFailure => (is => 'ro', isa => 'Bool', request_name => 'ignorePollAlarmFailure', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

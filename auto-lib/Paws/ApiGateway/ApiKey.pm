@@ -1,15 +1,15 @@
 
 package Paws::ApiGateway::ApiKey;
   use Moose;
-  has CreatedDate => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'createdDate');
-  has CustomerId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'customerId');
-  has Description => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'description');
-  has Enabled => (is => 'ro', isa => 'Bool', traits => ['Unwrapped'], xmlname => 'enabled');
-  has Id => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'id');
-  has LastUpdatedDate => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'lastUpdatedDate');
-  has Name => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'name');
-  has StageKeys => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['Unwrapped'], xmlname => 'stageKeys');
-  has Value => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'value');
+  has CreatedDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'createdDate');
+  has CustomerId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'customerId');
+  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
+  has Enabled => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'enabled');
+  has Id => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'id');
+  has LastUpdatedDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'lastUpdatedDate');
+  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name');
+  has StageKeys => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'stageKeys');
+  has Value => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'value');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

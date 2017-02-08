@@ -1,6 +1,6 @@
 package Paws::CloudDirectory::BatchDetachObjectResponse;
   use Moose;
-  has DetachedObjectIdentifier => (is => 'ro', isa => 'Str', xmlname => 'detachedObjectIdentifier', request_name => 'detachedObjectIdentifier', traits => ['Unwrapped','NameInRequest']);
+  has DetachedObjectIdentifier => (is => 'ro', isa => 'Str', request_name => 'detachedObjectIdentifier', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

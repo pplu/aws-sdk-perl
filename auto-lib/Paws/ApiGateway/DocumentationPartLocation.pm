@@ -1,10 +1,10 @@
 package Paws::ApiGateway::DocumentationPartLocation;
   use Moose;
-  has Method => (is => 'ro', isa => 'Str', xmlname => 'method', request_name => 'method', traits => ['Unwrapped','NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', xmlname => 'name', request_name => 'name', traits => ['Unwrapped','NameInRequest']);
-  has Path => (is => 'ro', isa => 'Str', xmlname => 'path', request_name => 'path', traits => ['Unwrapped','NameInRequest']);
-  has StatusCode => (is => 'ro', isa => 'Str', xmlname => 'statusCode', request_name => 'statusCode', traits => ['Unwrapped','NameInRequest']);
-  has Type => (is => 'ro', isa => 'Str', xmlname => 'type', request_name => 'type', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has Method => (is => 'ro', isa => 'Str', request_name => 'method', traits => ['NameInRequest']);
+  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
+  has Path => (is => 'ro', isa => 'Str', request_name => 'path', traits => ['NameInRequest']);
+  has StatusCode => (is => 'ro', isa => 'Str', request_name => 'statusCode', traits => ['NameInRequest']);
+  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###

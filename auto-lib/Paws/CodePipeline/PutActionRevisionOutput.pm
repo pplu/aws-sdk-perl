@@ -1,8 +1,8 @@
 
 package Paws::CodePipeline::PutActionRevisionOutput;
   use Moose;
-  has NewRevision => (is => 'ro', isa => 'Bool', traits => ['Unwrapped'], xmlname => 'newRevision' );
-  has PipelineExecutionId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'pipelineExecutionId' );
+  has NewRevision => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'newRevision' );
+  has PipelineExecutionId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'pipelineExecutionId' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

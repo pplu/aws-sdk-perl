@@ -1,8 +1,8 @@
 
 package Paws::CodePipeline::ListActionTypesOutput;
   use Moose;
-  has ActionTypes => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::ActionType]', traits => ['Unwrapped'], xmlname => 'actionTypes' , required => 1);
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
+  has ActionTypes => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::ActionType]', traits => ['NameInRequest'], request_name => 'actionTypes' , required => 1);
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

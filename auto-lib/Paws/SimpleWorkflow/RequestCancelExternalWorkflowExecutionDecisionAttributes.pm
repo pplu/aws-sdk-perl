@@ -1,8 +1,8 @@
 package Paws::SimpleWorkflow::RequestCancelExternalWorkflowExecutionDecisionAttributes;
   use Moose;
-  has Control => (is => 'ro', isa => 'Str', xmlname => 'control', request_name => 'control', traits => ['Unwrapped','NameInRequest']);
-  has RunId => (is => 'ro', isa => 'Str', xmlname => 'runId', request_name => 'runId', traits => ['Unwrapped','NameInRequest']);
-  has WorkflowId => (is => 'ro', isa => 'Str', xmlname => 'workflowId', request_name => 'workflowId', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has Control => (is => 'ro', isa => 'Str', request_name => 'control', traits => ['NameInRequest']);
+  has RunId => (is => 'ro', isa => 'Str', request_name => 'runId', traits => ['NameInRequest']);
+  has WorkflowId => (is => 'ro', isa => 'Str', request_name => 'workflowId', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###

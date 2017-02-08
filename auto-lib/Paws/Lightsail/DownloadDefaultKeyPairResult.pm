@@ -1,8 +1,8 @@
 
 package Paws::Lightsail::DownloadDefaultKeyPairResult;
   use Moose;
-  has PrivateKeyBase64 => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'privateKeyBase64' );
-  has PublicKeyBase64 => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'publicKeyBase64' );
+  has PrivateKeyBase64 => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'privateKeyBase64' );
+  has PublicKeyBase64 => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'publicKeyBase64' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

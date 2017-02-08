@@ -1,6 +1,6 @@
 package Paws::Batch::Host;
   use Moose;
-  has SourcePath => (is => 'ro', isa => 'Str', xmlname => 'sourcePath', request_name => 'sourcePath', traits => ['Unwrapped','NameInRequest']);
+  has SourcePath => (is => 'ro', isa => 'Str', request_name => 'sourcePath', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

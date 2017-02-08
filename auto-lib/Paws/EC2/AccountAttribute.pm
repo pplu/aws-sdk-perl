@@ -1,7 +1,7 @@
 package Paws::EC2::AccountAttribute;
   use Moose;
-  has AttributeName => (is => 'ro', isa => 'Str', xmlname => 'attributeName', traits => ['Unwrapped']);
-  has AttributeValues => (is => 'ro', isa => 'ArrayRef[Paws::EC2::AccountAttributeValue]', xmlname => 'attributeValueSet', traits => ['Unwrapped']);
+  has AttributeName => (is => 'ro', isa => 'Str', request_name => 'attributeName', traits => ['NameInRequest']);
+  has AttributeValues => (is => 'ro', isa => 'ArrayRef[Paws::EC2::AccountAttributeValue]', request_name => 'attributeValueSet', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

@@ -1,7 +1,7 @@
 package Paws::EC2::EgressOnlyInternetGateway;
   use Moose;
-  has Attachments => (is => 'ro', isa => 'ArrayRef[Paws::EC2::InternetGatewayAttachment]', xmlname => 'attachmentSet', traits => ['Unwrapped']);
-  has EgressOnlyInternetGatewayId => (is => 'ro', isa => 'Str', xmlname => 'egressOnlyInternetGatewayId', traits => ['Unwrapped']);
+  has Attachments => (is => 'ro', isa => 'ArrayRef[Paws::EC2::InternetGatewayAttachment]', request_name => 'attachmentSet', traits => ['NameInRequest']);
+  has EgressOnlyInternetGatewayId => (is => 'ro', isa => 'Str', request_name => 'egressOnlyInternetGatewayId', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

@@ -1,6 +1,6 @@
 package Paws::Inspector::AssessmentTargetFilter;
   use Moose;
-  has AssessmentTargetNamePattern => (is => 'ro', isa => 'Str', xmlname => 'assessmentTargetNamePattern', request_name => 'assessmentTargetNamePattern', traits => ['Unwrapped','NameInRequest']);
+  has AssessmentTargetNamePattern => (is => 'ro', isa => 'Str', request_name => 'assessmentTargetNamePattern', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

@@ -1,7 +1,7 @@
 package Paws::EC2::ClassicLinkDnsSupport;
   use Moose;
-  has ClassicLinkDnsSupported => (is => 'ro', isa => 'Bool', xmlname => 'classicLinkDnsSupported', traits => ['Unwrapped']);
-  has VpcId => (is => 'ro', isa => 'Str', xmlname => 'vpcId', traits => ['Unwrapped']);
+  has ClassicLinkDnsSupported => (is => 'ro', isa => 'Bool', request_name => 'classicLinkDnsSupported', traits => ['NameInRequest']);
+  has VpcId => (is => 'ro', isa => 'Str', request_name => 'vpcId', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

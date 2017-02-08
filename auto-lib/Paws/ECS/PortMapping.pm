@@ -1,8 +1,8 @@
 package Paws::ECS::PortMapping;
   use Moose;
-  has ContainerPort => (is => 'ro', isa => 'Int', xmlname => 'containerPort', request_name => 'containerPort', traits => ['Unwrapped','NameInRequest']);
-  has HostPort => (is => 'ro', isa => 'Int', xmlname => 'hostPort', request_name => 'hostPort', traits => ['Unwrapped','NameInRequest']);
-  has Protocol => (is => 'ro', isa => 'Str', xmlname => 'protocol', request_name => 'protocol', traits => ['Unwrapped','NameInRequest']);
+  has ContainerPort => (is => 'ro', isa => 'Int', request_name => 'containerPort', traits => ['NameInRequest']);
+  has HostPort => (is => 'ro', isa => 'Int', request_name => 'hostPort', traits => ['NameInRequest']);
+  has Protocol => (is => 'ro', isa => 'Str', request_name => 'protocol', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

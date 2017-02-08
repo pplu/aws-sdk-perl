@@ -1,11 +1,11 @@
 package Paws::IoT::CloudwatchMetricAction;
   use Moose;
-  has MetricName => (is => 'ro', isa => 'Str', xmlname => 'metricName', request_name => 'metricName', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has MetricNamespace => (is => 'ro', isa => 'Str', xmlname => 'metricNamespace', request_name => 'metricNamespace', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has MetricTimestamp => (is => 'ro', isa => 'Str', xmlname => 'metricTimestamp', request_name => 'metricTimestamp', traits => ['Unwrapped','NameInRequest']);
-  has MetricUnit => (is => 'ro', isa => 'Str', xmlname => 'metricUnit', request_name => 'metricUnit', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has MetricValue => (is => 'ro', isa => 'Str', xmlname => 'metricValue', request_name => 'metricValue', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has RoleArn => (is => 'ro', isa => 'Str', xmlname => 'roleArn', request_name => 'roleArn', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has MetricName => (is => 'ro', isa => 'Str', request_name => 'metricName', traits => ['NameInRequest'], required => 1);
+  has MetricNamespace => (is => 'ro', isa => 'Str', request_name => 'metricNamespace', traits => ['NameInRequest'], required => 1);
+  has MetricTimestamp => (is => 'ro', isa => 'Str', request_name => 'metricTimestamp', traits => ['NameInRequest']);
+  has MetricUnit => (is => 'ro', isa => 'Str', request_name => 'metricUnit', traits => ['NameInRequest'], required => 1);
+  has MetricValue => (is => 'ro', isa => 'Str', request_name => 'metricValue', traits => ['NameInRequest'], required => 1);
+  has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###

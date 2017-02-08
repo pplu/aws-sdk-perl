@@ -1,9 +1,9 @@
 
 package Paws::EC2::CancelImportTaskResult;
   use Moose;
-  has ImportTaskId => (is => 'ro', isa => 'Str', xmlname => 'importTaskId', traits => ['Unwrapped',]);
-  has PreviousState => (is => 'ro', isa => 'Str', xmlname => 'previousState', traits => ['Unwrapped',]);
-  has State => (is => 'ro', isa => 'Str', xmlname => 'state', traits => ['Unwrapped',]);
+  has ImportTaskId => (is => 'ro', isa => 'Str', request_name => 'importTaskId', traits => ['NameInRequest',]);
+  has PreviousState => (is => 'ro', isa => 'Str', request_name => 'previousState', traits => ['NameInRequest',]);
+  has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest',]);
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

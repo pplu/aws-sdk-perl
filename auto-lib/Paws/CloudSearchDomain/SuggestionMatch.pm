@@ -1,8 +1,8 @@
 package Paws::CloudSearchDomain::SuggestionMatch;
   use Moose;
-  has Id => (is => 'ro', isa => 'Str', xmlname => 'id', request_name => 'id', traits => ['Unwrapped','NameInRequest']);
-  has Score => (is => 'ro', isa => 'Int', xmlname => 'score', request_name => 'score', traits => ['Unwrapped','NameInRequest']);
-  has Suggestion => (is => 'ro', isa => 'Str', xmlname => 'suggestion', request_name => 'suggestion', traits => ['Unwrapped','NameInRequest']);
+  has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest']);
+  has Score => (is => 'ro', isa => 'Int', request_name => 'score', traits => ['NameInRequest']);
+  has Suggestion => (is => 'ro', isa => 'Str', request_name => 'suggestion', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

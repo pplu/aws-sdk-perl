@@ -1,7 +1,7 @@
 package Paws::CodeDeploy::MinimumHealthyHosts;
   use Moose;
-  has Type => (is => 'ro', isa => 'Str', xmlname => 'type', request_name => 'type', traits => ['Unwrapped','NameInRequest']);
-  has Value => (is => 'ro', isa => 'Int', xmlname => 'value', request_name => 'value', traits => ['Unwrapped','NameInRequest']);
+  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
+  has Value => (is => 'ro', isa => 'Int', request_name => 'value', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

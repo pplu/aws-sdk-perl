@@ -1,7 +1,7 @@
 package Paws::EC2::KeyPairInfo;
   use Moose;
-  has KeyFingerprint => (is => 'ro', isa => 'Str', xmlname => 'keyFingerprint', traits => ['Unwrapped']);
-  has KeyName => (is => 'ro', isa => 'Str', xmlname => 'keyName', traits => ['Unwrapped']);
+  has KeyFingerprint => (is => 'ro', isa => 'Str', request_name => 'keyFingerprint', traits => ['NameInRequest']);
+  has KeyName => (is => 'ro', isa => 'Str', request_name => 'keyName', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

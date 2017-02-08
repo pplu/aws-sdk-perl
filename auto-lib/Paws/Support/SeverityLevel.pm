@@ -1,7 +1,7 @@
 package Paws::Support::SeverityLevel;
   use Moose;
-  has Code => (is => 'ro', isa => 'Str', xmlname => 'code', request_name => 'code', traits => ['Unwrapped','NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', xmlname => 'name', request_name => 'name', traits => ['Unwrapped','NameInRequest']);
+  has Code => (is => 'ro', isa => 'Str', request_name => 'code', traits => ['NameInRequest']);
+  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

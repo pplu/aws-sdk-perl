@@ -1,7 +1,7 @@
 package Paws::StepFunctions::LambdaFunctionScheduleFailedEventDetails;
   use Moose;
-  has Cause => (is => 'ro', isa => 'Str', xmlname => 'cause', request_name => 'cause', traits => ['Unwrapped','NameInRequest']);
-  has Error => (is => 'ro', isa => 'Str', xmlname => 'error', request_name => 'error', traits => ['Unwrapped','NameInRequest']);
+  has Cause => (is => 'ro', isa => 'Str', request_name => 'cause', traits => ['NameInRequest']);
+  has Error => (is => 'ro', isa => 'Str', request_name => 'error', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

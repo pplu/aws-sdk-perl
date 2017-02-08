@@ -1,6 +1,6 @@
 package Paws::CloudSearchDomain::DocumentServiceWarning;
   use Moose;
-  has Message => (is => 'ro', isa => 'Str', xmlname => 'message', request_name => 'message', traits => ['Unwrapped','NameInRequest']);
+  has Message => (is => 'ro', isa => 'Str', request_name => 'message', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

@@ -1,8 +1,8 @@
 package Paws::EC2::PrefixList;
   use Moose;
-  has Cidrs => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'cidrSet', traits => ['Unwrapped']);
-  has PrefixListId => (is => 'ro', isa => 'Str', xmlname => 'prefixListId', traits => ['Unwrapped']);
-  has PrefixListName => (is => 'ro', isa => 'Str', xmlname => 'prefixListName', traits => ['Unwrapped']);
+  has Cidrs => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'cidrSet', traits => ['NameInRequest']);
+  has PrefixListId => (is => 'ro', isa => 'Str', request_name => 'prefixListId', traits => ['NameInRequest']);
+  has PrefixListName => (is => 'ro', isa => 'Str', request_name => 'prefixListName', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

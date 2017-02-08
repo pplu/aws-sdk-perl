@@ -1,7 +1,7 @@
 package Paws::EC2::Region;
   use Moose;
-  has Endpoint => (is => 'ro', isa => 'Str', xmlname => 'regionEndpoint', traits => ['Unwrapped']);
-  has RegionName => (is => 'ro', isa => 'Str', xmlname => 'regionName', traits => ['Unwrapped']);
+  has Endpoint => (is => 'ro', isa => 'Str', request_name => 'regionEndpoint', traits => ['NameInRequest']);
+  has RegionName => (is => 'ro', isa => 'Str', request_name => 'regionName', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

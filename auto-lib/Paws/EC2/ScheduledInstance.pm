@@ -1,20 +1,20 @@
 package Paws::EC2::ScheduledInstance;
   use Moose;
-  has AvailabilityZone => (is => 'ro', isa => 'Str', xmlname => 'availabilityZone', traits => ['Unwrapped']);
-  has CreateDate => (is => 'ro', isa => 'Str', xmlname => 'createDate', traits => ['Unwrapped']);
-  has HourlyPrice => (is => 'ro', isa => 'Str', xmlname => 'hourlyPrice', traits => ['Unwrapped']);
-  has InstanceCount => (is => 'ro', isa => 'Int', xmlname => 'instanceCount', traits => ['Unwrapped']);
-  has InstanceType => (is => 'ro', isa => 'Str', xmlname => 'instanceType', traits => ['Unwrapped']);
-  has NetworkPlatform => (is => 'ro', isa => 'Str', xmlname => 'networkPlatform', traits => ['Unwrapped']);
-  has NextSlotStartTime => (is => 'ro', isa => 'Str', xmlname => 'nextSlotStartTime', traits => ['Unwrapped']);
-  has Platform => (is => 'ro', isa => 'Str', xmlname => 'platform', traits => ['Unwrapped']);
-  has PreviousSlotEndTime => (is => 'ro', isa => 'Str', xmlname => 'previousSlotEndTime', traits => ['Unwrapped']);
-  has Recurrence => (is => 'ro', isa => 'Paws::EC2::ScheduledInstanceRecurrence', xmlname => 'recurrence', traits => ['Unwrapped']);
-  has ScheduledInstanceId => (is => 'ro', isa => 'Str', xmlname => 'scheduledInstanceId', traits => ['Unwrapped']);
-  has SlotDurationInHours => (is => 'ro', isa => 'Int', xmlname => 'slotDurationInHours', traits => ['Unwrapped']);
-  has TermEndDate => (is => 'ro', isa => 'Str', xmlname => 'termEndDate', traits => ['Unwrapped']);
-  has TermStartDate => (is => 'ro', isa => 'Str', xmlname => 'termStartDate', traits => ['Unwrapped']);
-  has TotalScheduledInstanceHours => (is => 'ro', isa => 'Int', xmlname => 'totalScheduledInstanceHours', traits => ['Unwrapped']);
+  has AvailabilityZone => (is => 'ro', isa => 'Str', request_name => 'availabilityZone', traits => ['NameInRequest']);
+  has CreateDate => (is => 'ro', isa => 'Str', request_name => 'createDate', traits => ['NameInRequest']);
+  has HourlyPrice => (is => 'ro', isa => 'Str', request_name => 'hourlyPrice', traits => ['NameInRequest']);
+  has InstanceCount => (is => 'ro', isa => 'Int', request_name => 'instanceCount', traits => ['NameInRequest']);
+  has InstanceType => (is => 'ro', isa => 'Str', request_name => 'instanceType', traits => ['NameInRequest']);
+  has NetworkPlatform => (is => 'ro', isa => 'Str', request_name => 'networkPlatform', traits => ['NameInRequest']);
+  has NextSlotStartTime => (is => 'ro', isa => 'Str', request_name => 'nextSlotStartTime', traits => ['NameInRequest']);
+  has Platform => (is => 'ro', isa => 'Str', request_name => 'platform', traits => ['NameInRequest']);
+  has PreviousSlotEndTime => (is => 'ro', isa => 'Str', request_name => 'previousSlotEndTime', traits => ['NameInRequest']);
+  has Recurrence => (is => 'ro', isa => 'Paws::EC2::ScheduledInstanceRecurrence', request_name => 'recurrence', traits => ['NameInRequest']);
+  has ScheduledInstanceId => (is => 'ro', isa => 'Str', request_name => 'scheduledInstanceId', traits => ['NameInRequest']);
+  has SlotDurationInHours => (is => 'ro', isa => 'Int', request_name => 'slotDurationInHours', traits => ['NameInRequest']);
+  has TermEndDate => (is => 'ro', isa => 'Str', request_name => 'termEndDate', traits => ['NameInRequest']);
+  has TermStartDate => (is => 'ro', isa => 'Str', request_name => 'termStartDate', traits => ['NameInRequest']);
+  has TotalScheduledInstanceHours => (is => 'ro', isa => 'Int', request_name => 'totalScheduledInstanceHours', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

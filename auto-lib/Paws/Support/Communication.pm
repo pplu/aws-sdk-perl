@@ -1,10 +1,10 @@
 package Paws::Support::Communication;
   use Moose;
-  has AttachmentSet => (is => 'ro', isa => 'ArrayRef[Paws::Support::AttachmentDetails]', xmlname => 'attachmentSet', request_name => 'attachmentSet', traits => ['Unwrapped','NameInRequest']);
-  has Body => (is => 'ro', isa => 'Str', xmlname => 'body', request_name => 'body', traits => ['Unwrapped','NameInRequest']);
-  has CaseId => (is => 'ro', isa => 'Str', xmlname => 'caseId', request_name => 'caseId', traits => ['Unwrapped','NameInRequest']);
-  has SubmittedBy => (is => 'ro', isa => 'Str', xmlname => 'submittedBy', request_name => 'submittedBy', traits => ['Unwrapped','NameInRequest']);
-  has TimeCreated => (is => 'ro', isa => 'Str', xmlname => 'timeCreated', request_name => 'timeCreated', traits => ['Unwrapped','NameInRequest']);
+  has AttachmentSet => (is => 'ro', isa => 'ArrayRef[Paws::Support::AttachmentDetails]', request_name => 'attachmentSet', traits => ['NameInRequest']);
+  has Body => (is => 'ro', isa => 'Str', request_name => 'body', traits => ['NameInRequest']);
+  has CaseId => (is => 'ro', isa => 'Str', request_name => 'caseId', traits => ['NameInRequest']);
+  has SubmittedBy => (is => 'ro', isa => 'Str', request_name => 'submittedBy', traits => ['NameInRequest']);
+  has TimeCreated => (is => 'ro', isa => 'Str', request_name => 'timeCreated', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

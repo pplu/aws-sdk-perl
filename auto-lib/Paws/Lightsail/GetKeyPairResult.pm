@@ -1,7 +1,7 @@
 
 package Paws::Lightsail::GetKeyPairResult;
   use Moose;
-  has KeyPair => (is => 'ro', isa => 'Paws::Lightsail::KeyPair', traits => ['Unwrapped'], xmlname => 'keyPair' );
+  has KeyPair => (is => 'ro', isa => 'Paws::Lightsail::KeyPair', traits => ['NameInRequest'], request_name => 'keyPair' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

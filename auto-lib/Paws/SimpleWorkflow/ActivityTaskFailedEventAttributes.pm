@@ -1,9 +1,9 @@
 package Paws::SimpleWorkflow::ActivityTaskFailedEventAttributes;
   use Moose;
-  has Details => (is => 'ro', isa => 'Str', xmlname => 'details', request_name => 'details', traits => ['Unwrapped','NameInRequest']);
-  has Reason => (is => 'ro', isa => 'Str', xmlname => 'reason', request_name => 'reason', traits => ['Unwrapped','NameInRequest']);
-  has ScheduledEventId => (is => 'ro', isa => 'Int', xmlname => 'scheduledEventId', request_name => 'scheduledEventId', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has StartedEventId => (is => 'ro', isa => 'Int', xmlname => 'startedEventId', request_name => 'startedEventId', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has Details => (is => 'ro', isa => 'Str', request_name => 'details', traits => ['NameInRequest']);
+  has Reason => (is => 'ro', isa => 'Str', request_name => 'reason', traits => ['NameInRequest']);
+  has ScheduledEventId => (is => 'ro', isa => 'Int', request_name => 'scheduledEventId', traits => ['NameInRequest'], required => 1);
+  has StartedEventId => (is => 'ro', isa => 'Int', request_name => 'startedEventId', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###

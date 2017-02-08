@@ -1,7 +1,7 @@
 
 package Paws::StepFunctions::StopExecutionOutput;
   use Moose;
-  has StopDate => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'stopDate' , required => 1);
+  has StopDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'stopDate' , required => 1);
 
   has _request_id => (is => 'ro', isa => 'Str');
 

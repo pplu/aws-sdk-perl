@@ -1,10 +1,10 @@
 package Paws::ApiGateway::SdkConfigurationProperty;
   use Moose;
-  has DefaultValue => (is => 'ro', isa => 'Str', xmlname => 'defaultValue', request_name => 'defaultValue', traits => ['Unwrapped','NameInRequest']);
-  has Description => (is => 'ro', isa => 'Str', xmlname => 'description', request_name => 'description', traits => ['Unwrapped','NameInRequest']);
-  has FriendlyName => (is => 'ro', isa => 'Str', xmlname => 'friendlyName', request_name => 'friendlyName', traits => ['Unwrapped','NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', xmlname => 'name', request_name => 'name', traits => ['Unwrapped','NameInRequest']);
-  has Required => (is => 'ro', isa => 'Bool', xmlname => 'required', request_name => 'required', traits => ['Unwrapped','NameInRequest']);
+  has DefaultValue => (is => 'ro', isa => 'Str', request_name => 'defaultValue', traits => ['NameInRequest']);
+  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
+  has FriendlyName => (is => 'ro', isa => 'Str', request_name => 'friendlyName', traits => ['NameInRequest']);
+  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
+  has Required => (is => 'ro', isa => 'Bool', request_name => 'required', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

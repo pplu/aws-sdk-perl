@@ -2,7 +2,7 @@
 package Paws::RedShift::ClusterParameterGroupDetails;
   use Moose;
   has Marker => (is => 'ro', isa => 'Str');
-  has Parameters => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::Parameter]', xmlname => 'Parameter', traits => ['Unwrapped',]);
+  has Parameters => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::Parameter]', request_name => 'Parameter', traits => ['NameInRequest',]);
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

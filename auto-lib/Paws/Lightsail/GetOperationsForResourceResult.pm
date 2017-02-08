@@ -1,8 +1,8 @@
 
 package Paws::Lightsail::GetOperationsForResourceResult;
   use Moose;
-  has NextPageCount => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextPageCount' );
-  has Operations => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::Operation]', traits => ['Unwrapped'], xmlname => 'operations' );
+  has NextPageCount => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextPageCount' );
+  has Operations => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::Operation]', traits => ['NameInRequest'], request_name => 'operations' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

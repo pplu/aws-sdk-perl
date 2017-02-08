@@ -1,10 +1,10 @@
 package Paws::Discovery::ConfigurationTag;
   use Moose;
-  has ConfigurationId => (is => 'ro', isa => 'Str', xmlname => 'configurationId', request_name => 'configurationId', traits => ['Unwrapped','NameInRequest']);
-  has ConfigurationType => (is => 'ro', isa => 'Str', xmlname => 'configurationType', request_name => 'configurationType', traits => ['Unwrapped','NameInRequest']);
-  has Key => (is => 'ro', isa => 'Str', xmlname => 'key', request_name => 'key', traits => ['Unwrapped','NameInRequest']);
-  has TimeOfCreation => (is => 'ro', isa => 'Str', xmlname => 'timeOfCreation', request_name => 'timeOfCreation', traits => ['Unwrapped','NameInRequest']);
-  has Value => (is => 'ro', isa => 'Str', xmlname => 'value', request_name => 'value', traits => ['Unwrapped','NameInRequest']);
+  has ConfigurationId => (is => 'ro', isa => 'Str', request_name => 'configurationId', traits => ['NameInRequest']);
+  has ConfigurationType => (is => 'ro', isa => 'Str', request_name => 'configurationType', traits => ['NameInRequest']);
+  has Key => (is => 'ro', isa => 'Str', request_name => 'key', traits => ['NameInRequest']);
+  has TimeOfCreation => (is => 'ro', isa => 'Str', request_name => 'timeOfCreation', traits => ['NameInRequest']);
+  has Value => (is => 'ro', isa => 'Str', request_name => 'value', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

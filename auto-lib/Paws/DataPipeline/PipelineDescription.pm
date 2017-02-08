@@ -1,10 +1,10 @@
 package Paws::DataPipeline::PipelineDescription;
   use Moose;
-  has Description => (is => 'ro', isa => 'Str', xmlname => 'description', request_name => 'description', traits => ['Unwrapped','NameInRequest']);
-  has Fields => (is => 'ro', isa => 'ArrayRef[Paws::DataPipeline::Field]', xmlname => 'fields', request_name => 'fields', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has Name => (is => 'ro', isa => 'Str', xmlname => 'name', request_name => 'name', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has PipelineId => (is => 'ro', isa => 'Str', xmlname => 'pipelineId', request_name => 'pipelineId', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::DataPipeline::Tag]', xmlname => 'tags', request_name => 'tags', traits => ['Unwrapped','NameInRequest']);
+  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
+  has Fields => (is => 'ro', isa => 'ArrayRef[Paws::DataPipeline::Field]', request_name => 'fields', traits => ['NameInRequest'], required => 1);
+  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
+  has PipelineId => (is => 'ro', isa => 'Str', request_name => 'pipelineId', traits => ['NameInRequest'], required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::DataPipeline::Tag]', request_name => 'tags', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

@@ -1,7 +1,7 @@
 
 package Paws::IoTData::DeleteThingShadowResponse;
   use Moose;
-  has Payload => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'payload', required => 1);
+  has Payload => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'payload', required => 1);
   use MooseX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => 'payload');
   has _request_id => (is => 'ro', isa => 'Str');

@@ -1,7 +1,7 @@
 
 package Paws::Lightsail::IsVpcPeeredResult;
   use Moose;
-  has IsPeered => (is => 'ro', isa => 'Bool', traits => ['Unwrapped'], xmlname => 'isPeered' );
+  has IsPeered => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'isPeered' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

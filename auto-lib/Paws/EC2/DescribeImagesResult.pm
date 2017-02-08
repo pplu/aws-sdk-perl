@@ -1,7 +1,7 @@
 
 package Paws::EC2::DescribeImagesResult;
   use Moose;
-  has Images => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Image]', xmlname => 'imagesSet', traits => ['Unwrapped',]);
+  has Images => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Image]', request_name => 'imagesSet', traits => ['NameInRequest',]);
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

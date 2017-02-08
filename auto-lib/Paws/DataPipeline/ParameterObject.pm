@@ -1,7 +1,7 @@
 package Paws::DataPipeline::ParameterObject;
   use Moose;
-  has Attributes => (is => 'ro', isa => 'ArrayRef[Paws::DataPipeline::ParameterAttribute]', xmlname => 'attributes', request_name => 'attributes', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has Id => (is => 'ro', isa => 'Str', xmlname => 'id', request_name => 'id', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has Attributes => (is => 'ro', isa => 'ArrayRef[Paws::DataPipeline::ParameterAttribute]', request_name => 'attributes', traits => ['NameInRequest'], required => 1);
+  has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###

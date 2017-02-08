@@ -1,7 +1,7 @@
 
 package Paws::RDS::DBClusterMessage;
   use Moose;
-  has DBClusters => (is => 'ro', isa => 'ArrayRef[Paws::RDS::DBCluster]', xmlname => 'DBCluster', traits => ['Unwrapped',]);
+  has DBClusters => (is => 'ro', isa => 'ArrayRef[Paws::RDS::DBCluster]', request_name => 'DBCluster', traits => ['NameInRequest',]);
   has Marker => (is => 'ro', isa => 'Str');
 
   has _request_id => (is => 'ro', isa => 'Str');

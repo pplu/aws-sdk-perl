@@ -1,17 +1,17 @@
 
 package Paws::ApiGateway::Integration;
   use Moose;
-  has CacheKeyParameters => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['Unwrapped'], xmlname => 'cacheKeyParameters');
-  has CacheNamespace => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'cacheNamespace');
-  has ContentHandling => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'contentHandling');
-  has Credentials => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'credentials');
-  has HttpMethod => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'httpMethod');
-  has IntegrationResponses => (is => 'ro', isa => 'Paws::ApiGateway::MapOfIntegrationResponse', traits => ['Unwrapped'], xmlname => 'integrationResponses');
-  has PassthroughBehavior => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'passthroughBehavior');
-  has RequestParameters => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['Unwrapped'], xmlname => 'requestParameters');
-  has RequestTemplates => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['Unwrapped'], xmlname => 'requestTemplates');
-  has Type => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'type');
-  has Uri => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'uri');
+  has CacheKeyParameters => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'cacheKeyParameters');
+  has CacheNamespace => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cacheNamespace');
+  has ContentHandling => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'contentHandling');
+  has Credentials => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'credentials');
+  has HttpMethod => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'httpMethod');
+  has IntegrationResponses => (is => 'ro', isa => 'Paws::ApiGateway::MapOfIntegrationResponse', traits => ['NameInRequest'], request_name => 'integrationResponses');
+  has PassthroughBehavior => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'passthroughBehavior');
+  has RequestParameters => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['NameInRequest'], request_name => 'requestParameters');
+  has RequestTemplates => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['NameInRequest'], request_name => 'requestTemplates');
+  has Type => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'type');
+  has Uri => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'uri');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

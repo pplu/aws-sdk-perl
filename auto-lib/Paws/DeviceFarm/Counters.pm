@@ -1,12 +1,12 @@
 package Paws::DeviceFarm::Counters;
   use Moose;
-  has Errored => (is => 'ro', isa => 'Int', xmlname => 'errored', request_name => 'errored', traits => ['Unwrapped','NameInRequest']);
-  has Failed => (is => 'ro', isa => 'Int', xmlname => 'failed', request_name => 'failed', traits => ['Unwrapped','NameInRequest']);
-  has Passed => (is => 'ro', isa => 'Int', xmlname => 'passed', request_name => 'passed', traits => ['Unwrapped','NameInRequest']);
-  has Skipped => (is => 'ro', isa => 'Int', xmlname => 'skipped', request_name => 'skipped', traits => ['Unwrapped','NameInRequest']);
-  has Stopped => (is => 'ro', isa => 'Int', xmlname => 'stopped', request_name => 'stopped', traits => ['Unwrapped','NameInRequest']);
-  has Total => (is => 'ro', isa => 'Int', xmlname => 'total', request_name => 'total', traits => ['Unwrapped','NameInRequest']);
-  has Warned => (is => 'ro', isa => 'Int', xmlname => 'warned', request_name => 'warned', traits => ['Unwrapped','NameInRequest']);
+  has Errored => (is => 'ro', isa => 'Int', request_name => 'errored', traits => ['NameInRequest']);
+  has Failed => (is => 'ro', isa => 'Int', request_name => 'failed', traits => ['NameInRequest']);
+  has Passed => (is => 'ro', isa => 'Int', request_name => 'passed', traits => ['NameInRequest']);
+  has Skipped => (is => 'ro', isa => 'Int', request_name => 'skipped', traits => ['NameInRequest']);
+  has Stopped => (is => 'ro', isa => 'Int', request_name => 'stopped', traits => ['NameInRequest']);
+  has Total => (is => 'ro', isa => 'Int', request_name => 'total', traits => ['NameInRequest']);
+  has Warned => (is => 'ro', isa => 'Int', request_name => 'warned', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

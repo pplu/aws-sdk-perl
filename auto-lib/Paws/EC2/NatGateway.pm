@@ -1,15 +1,15 @@
 package Paws::EC2::NatGateway;
   use Moose;
-  has CreateTime => (is => 'ro', isa => 'Str', xmlname => 'createTime', traits => ['Unwrapped']);
-  has DeleteTime => (is => 'ro', isa => 'Str', xmlname => 'deleteTime', traits => ['Unwrapped']);
-  has FailureCode => (is => 'ro', isa => 'Str', xmlname => 'failureCode', traits => ['Unwrapped']);
-  has FailureMessage => (is => 'ro', isa => 'Str', xmlname => 'failureMessage', traits => ['Unwrapped']);
-  has NatGatewayAddresses => (is => 'ro', isa => 'ArrayRef[Paws::EC2::NatGatewayAddress]', xmlname => 'natGatewayAddressSet', traits => ['Unwrapped']);
-  has NatGatewayId => (is => 'ro', isa => 'Str', xmlname => 'natGatewayId', traits => ['Unwrapped']);
-  has ProvisionedBandwidth => (is => 'ro', isa => 'Paws::EC2::ProvisionedBandwidth', xmlname => 'provisionedBandwidth', traits => ['Unwrapped']);
-  has State => (is => 'ro', isa => 'Str', xmlname => 'state', traits => ['Unwrapped']);
-  has SubnetId => (is => 'ro', isa => 'Str', xmlname => 'subnetId', traits => ['Unwrapped']);
-  has VpcId => (is => 'ro', isa => 'Str', xmlname => 'vpcId', traits => ['Unwrapped']);
+  has CreateTime => (is => 'ro', isa => 'Str', request_name => 'createTime', traits => ['NameInRequest']);
+  has DeleteTime => (is => 'ro', isa => 'Str', request_name => 'deleteTime', traits => ['NameInRequest']);
+  has FailureCode => (is => 'ro', isa => 'Str', request_name => 'failureCode', traits => ['NameInRequest']);
+  has FailureMessage => (is => 'ro', isa => 'Str', request_name => 'failureMessage', traits => ['NameInRequest']);
+  has NatGatewayAddresses => (is => 'ro', isa => 'ArrayRef[Paws::EC2::NatGatewayAddress]', request_name => 'natGatewayAddressSet', traits => ['NameInRequest']);
+  has NatGatewayId => (is => 'ro', isa => 'Str', request_name => 'natGatewayId', traits => ['NameInRequest']);
+  has ProvisionedBandwidth => (is => 'ro', isa => 'Paws::EC2::ProvisionedBandwidth', request_name => 'provisionedBandwidth', traits => ['NameInRequest']);
+  has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
+  has SubnetId => (is => 'ro', isa => 'Str', request_name => 'subnetId', traits => ['NameInRequest']);
+  has VpcId => (is => 'ro', isa => 'Str', request_name => 'vpcId', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

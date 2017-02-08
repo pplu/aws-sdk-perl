@@ -1,8 +1,8 @@
 
 package Paws::IoT::ListThingTypesResponse;
   use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken');
-  has ThingTypes => (is => 'ro', isa => 'ArrayRef[Paws::IoT::ThingTypeDefinition]', traits => ['Unwrapped'], xmlname => 'thingTypes');
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
+  has ThingTypes => (is => 'ro', isa => 'ArrayRef[Paws::IoT::ThingTypeDefinition]', traits => ['NameInRequest'], request_name => 'thingTypes');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

@@ -1,7 +1,7 @@
 package Paws::CodeDeploy::DeploymentStyle;
   use Moose;
-  has DeploymentOption => (is => 'ro', isa => 'Str', xmlname => 'deploymentOption', request_name => 'deploymentOption', traits => ['Unwrapped','NameInRequest']);
-  has DeploymentType => (is => 'ro', isa => 'Str', xmlname => 'deploymentType', request_name => 'deploymentType', traits => ['Unwrapped','NameInRequest']);
+  has DeploymentOption => (is => 'ro', isa => 'Str', request_name => 'deploymentOption', traits => ['NameInRequest']);
+  has DeploymentType => (is => 'ro', isa => 'Str', request_name => 'deploymentType', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

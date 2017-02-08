@@ -1,8 +1,8 @@
 package Paws::IoT::KinesisAction;
   use Moose;
-  has PartitionKey => (is => 'ro', isa => 'Str', xmlname => 'partitionKey', request_name => 'partitionKey', traits => ['Unwrapped','NameInRequest']);
-  has RoleArn => (is => 'ro', isa => 'Str', xmlname => 'roleArn', request_name => 'roleArn', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has StreamName => (is => 'ro', isa => 'Str', xmlname => 'streamName', request_name => 'streamName', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has PartitionKey => (is => 'ro', isa => 'Str', request_name => 'partitionKey', traits => ['NameInRequest']);
+  has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest'], required => 1);
+  has StreamName => (is => 'ro', isa => 'Str', request_name => 'streamName', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###

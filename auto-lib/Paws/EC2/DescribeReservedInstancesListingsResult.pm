@@ -1,7 +1,7 @@
 
 package Paws::EC2::DescribeReservedInstancesListingsResult;
   use Moose;
-  has ReservedInstancesListings => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ReservedInstancesListing]', xmlname => 'reservedInstancesListingsSet', traits => ['Unwrapped',]);
+  has ReservedInstancesListings => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ReservedInstancesListing]', request_name => 'reservedInstancesListingsSet', traits => ['NameInRequest',]);
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

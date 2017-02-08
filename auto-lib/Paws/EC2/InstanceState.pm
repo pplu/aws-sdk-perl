@@ -1,7 +1,7 @@
 package Paws::EC2::InstanceState;
   use Moose;
-  has Code => (is => 'ro', isa => 'Int', xmlname => 'code', traits => ['Unwrapped']);
-  has Name => (is => 'ro', isa => 'Str', xmlname => 'name', traits => ['Unwrapped']);
+  has Code => (is => 'ro', isa => 'Int', request_name => 'code', traits => ['NameInRequest']);
+  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

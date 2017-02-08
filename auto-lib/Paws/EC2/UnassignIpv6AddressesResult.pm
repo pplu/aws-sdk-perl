@@ -1,8 +1,8 @@
 
 package Paws::EC2::UnassignIpv6AddressesResult;
   use Moose;
-  has NetworkInterfaceId => (is => 'ro', isa => 'Str', xmlname => 'networkInterfaceId', traits => ['Unwrapped',]);
-  has UnassignedIpv6Addresses => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'unassignedIpv6Addresses', traits => ['Unwrapped',]);
+  has NetworkInterfaceId => (is => 'ro', isa => 'Str', request_name => 'networkInterfaceId', traits => ['NameInRequest',]);
+  has UnassignedIpv6Addresses => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'unassignedIpv6Addresses', traits => ['NameInRequest',]);
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

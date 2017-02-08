@@ -1,7 +1,7 @@
 
 package Paws::Support::DescribeAttachmentResponse;
   use Moose;
-  has Attachment => (is => 'ro', isa => 'Paws::Support::Attachment', traits => ['Unwrapped'], xmlname => 'attachment' );
+  has Attachment => (is => 'ro', isa => 'Paws::Support::Attachment', traits => ['NameInRequest'], request_name => 'attachment' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

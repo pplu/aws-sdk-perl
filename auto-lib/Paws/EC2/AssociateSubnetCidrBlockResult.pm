@@ -1,8 +1,8 @@
 
 package Paws::EC2::AssociateSubnetCidrBlockResult;
   use Moose;
-  has Ipv6CidrBlockAssociation => (is => 'ro', isa => 'Paws::EC2::SubnetIpv6CidrBlockAssociation', xmlname => 'ipv6CidrBlockAssociation', traits => ['Unwrapped',]);
-  has SubnetId => (is => 'ro', isa => 'Str', xmlname => 'subnetId', traits => ['Unwrapped',]);
+  has Ipv6CidrBlockAssociation => (is => 'ro', isa => 'Paws::EC2::SubnetIpv6CidrBlockAssociation', request_name => 'ipv6CidrBlockAssociation', traits => ['NameInRequest',]);
+  has SubnetId => (is => 'ro', isa => 'Str', request_name => 'subnetId', traits => ['NameInRequest',]);
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

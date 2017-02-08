@@ -1,23 +1,23 @@
 
 package Paws::DirectConnect::VirtualInterface;
   use Moose;
-  has AddressFamily => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'addressFamily' );
-  has AmazonAddress => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'amazonAddress' );
-  has Asn => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => 'asn' );
-  has AuthKey => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'authKey' );
-  has BgpPeers => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::BGPPeer]', traits => ['Unwrapped'], xmlname => 'bgpPeers' );
-  has ConnectionId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'connectionId' );
-  has CustomerAddress => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'customerAddress' );
-  has CustomerRouterConfig => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'customerRouterConfig' );
-  has Location => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'location' );
-  has OwnerAccount => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'ownerAccount' );
-  has RouteFilterPrefixes => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::RouteFilterPrefix]', traits => ['Unwrapped'], xmlname => 'routeFilterPrefixes' );
-  has VirtualGatewayId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'virtualGatewayId' );
-  has VirtualInterfaceId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'virtualInterfaceId' );
-  has VirtualInterfaceName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'virtualInterfaceName' );
-  has VirtualInterfaceState => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'virtualInterfaceState' );
-  has VirtualInterfaceType => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'virtualInterfaceType' );
-  has Vlan => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => 'vlan' );
+  has AddressFamily => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'addressFamily' );
+  has AmazonAddress => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'amazonAddress' );
+  has Asn => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'asn' );
+  has AuthKey => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'authKey' );
+  has BgpPeers => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::BGPPeer]', traits => ['NameInRequest'], request_name => 'bgpPeers' );
+  has ConnectionId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'connectionId' );
+  has CustomerAddress => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'customerAddress' );
+  has CustomerRouterConfig => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'customerRouterConfig' );
+  has Location => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'location' );
+  has OwnerAccount => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'ownerAccount' );
+  has RouteFilterPrefixes => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::RouteFilterPrefix]', traits => ['NameInRequest'], request_name => 'routeFilterPrefixes' );
+  has VirtualGatewayId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'virtualGatewayId' );
+  has VirtualInterfaceId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'virtualInterfaceId' );
+  has VirtualInterfaceName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'virtualInterfaceName' );
+  has VirtualInterfaceState => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'virtualInterfaceState' );
+  has VirtualInterfaceType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'virtualInterfaceType' );
+  has Vlan => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'vlan' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

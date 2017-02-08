@@ -1,8 +1,8 @@
 
 package Paws::EC2::DescribeImportSnapshotTasksResult;
   use Moose;
-  has ImportSnapshotTasks => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ImportSnapshotTask]', xmlname => 'importSnapshotTaskSet', traits => ['Unwrapped',]);
-  has NextToken => (is => 'ro', isa => 'Str', xmlname => 'nextToken', traits => ['Unwrapped',]);
+  has ImportSnapshotTasks => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ImportSnapshotTask]', request_name => 'importSnapshotTaskSet', traits => ['NameInRequest',]);
+  has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest',]);
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

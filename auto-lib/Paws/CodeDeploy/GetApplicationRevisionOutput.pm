@@ -1,9 +1,9 @@
 
 package Paws::CodeDeploy::GetApplicationRevisionOutput;
   use Moose;
-  has ApplicationName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'applicationName' );
-  has Revision => (is => 'ro', isa => 'Paws::CodeDeploy::RevisionLocation', traits => ['Unwrapped'], xmlname => 'revision' );
-  has RevisionInfo => (is => 'ro', isa => 'Paws::CodeDeploy::GenericRevisionInfo', traits => ['Unwrapped'], xmlname => 'revisionInfo' );
+  has ApplicationName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'applicationName' );
+  has Revision => (is => 'ro', isa => 'Paws::CodeDeploy::RevisionLocation', traits => ['NameInRequest'], request_name => 'revision' );
+  has RevisionInfo => (is => 'ro', isa => 'Paws::CodeDeploy::GenericRevisionInfo', traits => ['NameInRequest'], request_name => 'revisionInfo' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

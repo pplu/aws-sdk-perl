@@ -1,8 +1,8 @@
 
 package Paws::Batch::UpdateJobQueueResponse;
   use Moose;
-  has JobQueueArn => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'jobQueueArn');
-  has JobQueueName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'jobQueueName');
+  has JobQueueArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'jobQueueArn');
+  has JobQueueName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'jobQueueName');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

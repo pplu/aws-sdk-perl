@@ -1,8 +1,8 @@
 
 package Paws::EC2::CreateVpcEndpointResult;
   use Moose;
-  has ClientToken => (is => 'ro', isa => 'Str', xmlname => 'clientToken', traits => ['Unwrapped',]);
-  has VpcEndpoint => (is => 'ro', isa => 'Paws::EC2::VpcEndpoint', xmlname => 'vpcEndpoint', traits => ['Unwrapped',]);
+  has ClientToken => (is => 'ro', isa => 'Str', request_name => 'clientToken', traits => ['NameInRequest',]);
+  has VpcEndpoint => (is => 'ro', isa => 'Paws::EC2::VpcEndpoint', request_name => 'vpcEndpoint', traits => ['NameInRequest',]);
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

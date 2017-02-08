@@ -1,7 +1,7 @@
 package Paws::IoT::LoggingOptionsPayload;
   use Moose;
-  has LogLevel => (is => 'ro', isa => 'Str', xmlname => 'logLevel', request_name => 'logLevel', traits => ['Unwrapped','NameInRequest']);
-  has RoleArn => (is => 'ro', isa => 'Str', xmlname => 'roleArn', request_name => 'roleArn', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has LogLevel => (is => 'ro', isa => 'Str', request_name => 'logLevel', traits => ['NameInRequest']);
+  has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###

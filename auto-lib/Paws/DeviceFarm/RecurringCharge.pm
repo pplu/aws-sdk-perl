@@ -1,7 +1,7 @@
 package Paws::DeviceFarm::RecurringCharge;
   use Moose;
-  has Cost => (is => 'ro', isa => 'Paws::DeviceFarm::MonetaryAmount', xmlname => 'cost', request_name => 'cost', traits => ['Unwrapped','NameInRequest']);
-  has Frequency => (is => 'ro', isa => 'Str', xmlname => 'frequency', request_name => 'frequency', traits => ['Unwrapped','NameInRequest']);
+  has Cost => (is => 'ro', isa => 'Paws::DeviceFarm::MonetaryAmount', request_name => 'cost', traits => ['NameInRequest']);
+  has Frequency => (is => 'ro', isa => 'Str', request_name => 'frequency', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

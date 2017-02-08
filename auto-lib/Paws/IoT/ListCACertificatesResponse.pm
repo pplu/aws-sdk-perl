@@ -1,8 +1,8 @@
 
 package Paws::IoT::ListCACertificatesResponse;
   use Moose;
-  has Certificates => (is => 'ro', isa => 'ArrayRef[Paws::IoT::CACertificate]', traits => ['Unwrapped'], xmlname => 'certificates');
-  has NextMarker => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextMarker');
+  has Certificates => (is => 'ro', isa => 'ArrayRef[Paws::IoT::CACertificate]', traits => ['NameInRequest'], request_name => 'certificates');
+  has NextMarker => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextMarker');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

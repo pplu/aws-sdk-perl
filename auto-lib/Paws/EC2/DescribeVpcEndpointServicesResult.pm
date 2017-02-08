@@ -1,8 +1,8 @@
 
 package Paws::EC2::DescribeVpcEndpointServicesResult;
   use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', xmlname => 'nextToken', traits => ['Unwrapped',]);
-  has ServiceNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'serviceNameSet', traits => ['Unwrapped',]);
+  has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest',]);
+  has ServiceNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'serviceNameSet', traits => ['NameInRequest',]);
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

@@ -1,12 +1,12 @@
 package Paws::CloudWatchLogs::SubscriptionFilter;
   use Moose;
-  has CreationTime => (is => 'ro', isa => 'Int', xmlname => 'creationTime', request_name => 'creationTime', traits => ['Unwrapped','NameInRequest']);
-  has DestinationArn => (is => 'ro', isa => 'Str', xmlname => 'destinationArn', request_name => 'destinationArn', traits => ['Unwrapped','NameInRequest']);
-  has Distribution => (is => 'ro', isa => 'Str', xmlname => 'distribution', request_name => 'distribution', traits => ['Unwrapped','NameInRequest']);
-  has FilterName => (is => 'ro', isa => 'Str', xmlname => 'filterName', request_name => 'filterName', traits => ['Unwrapped','NameInRequest']);
-  has FilterPattern => (is => 'ro', isa => 'Str', xmlname => 'filterPattern', request_name => 'filterPattern', traits => ['Unwrapped','NameInRequest']);
-  has LogGroupName => (is => 'ro', isa => 'Str', xmlname => 'logGroupName', request_name => 'logGroupName', traits => ['Unwrapped','NameInRequest']);
-  has RoleArn => (is => 'ro', isa => 'Str', xmlname => 'roleArn', request_name => 'roleArn', traits => ['Unwrapped','NameInRequest']);
+  has CreationTime => (is => 'ro', isa => 'Int', request_name => 'creationTime', traits => ['NameInRequest']);
+  has DestinationArn => (is => 'ro', isa => 'Str', request_name => 'destinationArn', traits => ['NameInRequest']);
+  has Distribution => (is => 'ro', isa => 'Str', request_name => 'distribution', traits => ['NameInRequest']);
+  has FilterName => (is => 'ro', isa => 'Str', request_name => 'filterName', traits => ['NameInRequest']);
+  has FilterPattern => (is => 'ro', isa => 'Str', request_name => 'filterPattern', traits => ['NameInRequest']);
+  has LogGroupName => (is => 'ro', isa => 'Str', request_name => 'logGroupName', traits => ['NameInRequest']);
+  has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

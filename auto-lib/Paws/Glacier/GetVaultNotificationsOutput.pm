@@ -1,7 +1,7 @@
 
 package Paws::Glacier::GetVaultNotificationsOutput;
   use Moose;
-  has VaultNotificationConfig => (is => 'ro', isa => 'Paws::Glacier::VaultNotificationConfig', traits => ['Unwrapped'], xmlname => 'vaultNotificationConfig');
+  has VaultNotificationConfig => (is => 'ro', isa => 'Paws::Glacier::VaultNotificationConfig', traits => ['NameInRequest'], request_name => 'vaultNotificationConfig');
   use MooseX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => 'vaultNotificationConfig');
   has _request_id => (is => 'ro', isa => 'Str');

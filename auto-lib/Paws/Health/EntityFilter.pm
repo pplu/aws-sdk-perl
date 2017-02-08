@@ -1,11 +1,11 @@
 package Paws::Health::EntityFilter;
   use Moose;
-  has EntityArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'entityArns', request_name => 'entityArns', traits => ['Unwrapped','NameInRequest']);
-  has EntityValues => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'entityValues', request_name => 'entityValues', traits => ['Unwrapped','NameInRequest']);
-  has EventArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'eventArns', request_name => 'eventArns', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has LastUpdatedTimes => (is => 'ro', isa => 'ArrayRef[Paws::Health::DateTimeRange]', xmlname => 'lastUpdatedTimes', request_name => 'lastUpdatedTimes', traits => ['Unwrapped','NameInRequest']);
-  has StatusCodes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'statusCodes', request_name => 'statusCodes', traits => ['Unwrapped','NameInRequest']);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Health::TagSet]', xmlname => 'tags', request_name => 'tags', traits => ['Unwrapped','NameInRequest']);
+  has EntityArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'entityArns', traits => ['NameInRequest']);
+  has EntityValues => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'entityValues', traits => ['NameInRequest']);
+  has EventArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'eventArns', traits => ['NameInRequest'], required => 1);
+  has LastUpdatedTimes => (is => 'ro', isa => 'ArrayRef[Paws::Health::DateTimeRange]', request_name => 'lastUpdatedTimes', traits => ['NameInRequest']);
+  has StatusCodes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'statusCodes', traits => ['NameInRequest']);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Health::TagSet]', request_name => 'tags', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

@@ -1,11 +1,11 @@
 package Paws::DynamoDBStreams::Record;
   use Moose;
-  has AwsRegion => (is => 'ro', isa => 'Str', xmlname => 'awsRegion', request_name => 'awsRegion', traits => ['Unwrapped','NameInRequest']);
-  has Dynamodb => (is => 'ro', isa => 'Paws::DynamoDBStreams::StreamRecord', xmlname => 'dynamodb', request_name => 'dynamodb', traits => ['Unwrapped','NameInRequest']);
-  has EventID => (is => 'ro', isa => 'Str', xmlname => 'eventID', request_name => 'eventID', traits => ['Unwrapped','NameInRequest']);
-  has EventName => (is => 'ro', isa => 'Str', xmlname => 'eventName', request_name => 'eventName', traits => ['Unwrapped','NameInRequest']);
-  has EventSource => (is => 'ro', isa => 'Str', xmlname => 'eventSource', request_name => 'eventSource', traits => ['Unwrapped','NameInRequest']);
-  has EventVersion => (is => 'ro', isa => 'Str', xmlname => 'eventVersion', request_name => 'eventVersion', traits => ['Unwrapped','NameInRequest']);
+  has AwsRegion => (is => 'ro', isa => 'Str', request_name => 'awsRegion', traits => ['NameInRequest']);
+  has Dynamodb => (is => 'ro', isa => 'Paws::DynamoDBStreams::StreamRecord', request_name => 'dynamodb', traits => ['NameInRequest']);
+  has EventID => (is => 'ro', isa => 'Str', request_name => 'eventID', traits => ['NameInRequest']);
+  has EventName => (is => 'ro', isa => 'Str', request_name => 'eventName', traits => ['NameInRequest']);
+  has EventSource => (is => 'ro', isa => 'Str', request_name => 'eventSource', traits => ['NameInRequest']);
+  has EventVersion => (is => 'ro', isa => 'Str', request_name => 'eventVersion', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

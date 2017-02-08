@@ -1,7 +1,7 @@
 
 package Paws::DeviceFarm::UpdateDevicePoolResult;
   use Moose;
-  has DevicePool => (is => 'ro', isa => 'Paws::DeviceFarm::DevicePool', traits => ['Unwrapped'], xmlname => 'devicePool' );
+  has DevicePool => (is => 'ro', isa => 'Paws::DeviceFarm::DevicePool', traits => ['NameInRequest'], request_name => 'devicePool' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

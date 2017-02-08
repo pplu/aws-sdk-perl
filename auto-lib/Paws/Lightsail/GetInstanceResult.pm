@@ -1,7 +1,7 @@
 
 package Paws::Lightsail::GetInstanceResult;
   use Moose;
-  has Instance => (is => 'ro', isa => 'Paws::Lightsail::Instance', traits => ['Unwrapped'], xmlname => 'instance' );
+  has Instance => (is => 'ro', isa => 'Paws::Lightsail::Instance', traits => ['NameInRequest'], request_name => 'instance' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

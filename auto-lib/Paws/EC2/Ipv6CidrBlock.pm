@@ -1,6 +1,6 @@
 package Paws::EC2::Ipv6CidrBlock;
   use Moose;
-  has Ipv6CidrBlock => (is => 'ro', isa => 'Str', xmlname => 'ipv6CidrBlock', traits => ['Unwrapped']);
+  has Ipv6CidrBlock => (is => 'ro', isa => 'Str', request_name => 'ipv6CidrBlock', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

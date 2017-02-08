@@ -1,9 +1,9 @@
 
 package Paws::SMS::GetReplicationRunsResponse;
   use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
-  has ReplicationJob => (is => 'ro', isa => 'Paws::SMS::ReplicationJob', traits => ['Unwrapped'], xmlname => 'replicationJob' );
-  has ReplicationRunList => (is => 'ro', isa => 'ArrayRef[Paws::SMS::ReplicationRun]', traits => ['Unwrapped'], xmlname => 'replicationRunList' );
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  has ReplicationJob => (is => 'ro', isa => 'Paws::SMS::ReplicationJob', traits => ['NameInRequest'], request_name => 'replicationJob' );
+  has ReplicationRunList => (is => 'ro', isa => 'ArrayRef[Paws::SMS::ReplicationRun]', traits => ['NameInRequest'], request_name => 'replicationRunList' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

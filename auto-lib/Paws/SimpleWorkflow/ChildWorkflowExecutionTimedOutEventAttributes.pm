@@ -1,10 +1,10 @@
 package Paws::SimpleWorkflow::ChildWorkflowExecutionTimedOutEventAttributes;
   use Moose;
-  has InitiatedEventId => (is => 'ro', isa => 'Int', xmlname => 'initiatedEventId', request_name => 'initiatedEventId', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has StartedEventId => (is => 'ro', isa => 'Int', xmlname => 'startedEventId', request_name => 'startedEventId', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has TimeoutType => (is => 'ro', isa => 'Str', xmlname => 'timeoutType', request_name => 'timeoutType', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has WorkflowExecution => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowExecution', xmlname => 'workflowExecution', request_name => 'workflowExecution', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has WorkflowType => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowType', xmlname => 'workflowType', request_name => 'workflowType', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has InitiatedEventId => (is => 'ro', isa => 'Int', request_name => 'initiatedEventId', traits => ['NameInRequest'], required => 1);
+  has StartedEventId => (is => 'ro', isa => 'Int', request_name => 'startedEventId', traits => ['NameInRequest'], required => 1);
+  has TimeoutType => (is => 'ro', isa => 'Str', request_name => 'timeoutType', traits => ['NameInRequest'], required => 1);
+  has WorkflowExecution => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowExecution', request_name => 'workflowExecution', traits => ['NameInRequest'], required => 1);
+  has WorkflowType => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowType', request_name => 'workflowType', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###

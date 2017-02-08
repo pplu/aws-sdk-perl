@@ -1,15 +1,15 @@
 package Paws::EC2::ReservedInstancesListing;
   use Moose;
-  has ClientToken => (is => 'ro', isa => 'Str', xmlname => 'clientToken', traits => ['Unwrapped']);
-  has CreateDate => (is => 'ro', isa => 'Str', xmlname => 'createDate', traits => ['Unwrapped']);
-  has InstanceCounts => (is => 'ro', isa => 'ArrayRef[Paws::EC2::InstanceCount]', xmlname => 'instanceCounts', traits => ['Unwrapped']);
-  has PriceSchedules => (is => 'ro', isa => 'ArrayRef[Paws::EC2::PriceSchedule]', xmlname => 'priceSchedules', traits => ['Unwrapped']);
-  has ReservedInstancesId => (is => 'ro', isa => 'Str', xmlname => 'reservedInstancesId', traits => ['Unwrapped']);
-  has ReservedInstancesListingId => (is => 'ro', isa => 'Str', xmlname => 'reservedInstancesListingId', traits => ['Unwrapped']);
-  has Status => (is => 'ro', isa => 'Str', xmlname => 'status', traits => ['Unwrapped']);
-  has StatusMessage => (is => 'ro', isa => 'Str', xmlname => 'statusMessage', traits => ['Unwrapped']);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', xmlname => 'tagSet', traits => ['Unwrapped']);
-  has UpdateDate => (is => 'ro', isa => 'Str', xmlname => 'updateDate', traits => ['Unwrapped']);
+  has ClientToken => (is => 'ro', isa => 'Str', request_name => 'clientToken', traits => ['NameInRequest']);
+  has CreateDate => (is => 'ro', isa => 'Str', request_name => 'createDate', traits => ['NameInRequest']);
+  has InstanceCounts => (is => 'ro', isa => 'ArrayRef[Paws::EC2::InstanceCount]', request_name => 'instanceCounts', traits => ['NameInRequest']);
+  has PriceSchedules => (is => 'ro', isa => 'ArrayRef[Paws::EC2::PriceSchedule]', request_name => 'priceSchedules', traits => ['NameInRequest']);
+  has ReservedInstancesId => (is => 'ro', isa => 'Str', request_name => 'reservedInstancesId', traits => ['NameInRequest']);
+  has ReservedInstancesListingId => (is => 'ro', isa => 'Str', request_name => 'reservedInstancesListingId', traits => ['NameInRequest']);
+  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+  has StatusMessage => (is => 'ro', isa => 'Str', request_name => 'statusMessage', traits => ['NameInRequest']);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest']);
+  has UpdateDate => (is => 'ro', isa => 'Str', request_name => 'updateDate', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

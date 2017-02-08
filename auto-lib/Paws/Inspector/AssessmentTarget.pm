@@ -1,10 +1,10 @@
 package Paws::Inspector::AssessmentTarget;
   use Moose;
-  has Arn => (is => 'ro', isa => 'Str', xmlname => 'arn', request_name => 'arn', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has CreatedAt => (is => 'ro', isa => 'Str', xmlname => 'createdAt', request_name => 'createdAt', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has Name => (is => 'ro', isa => 'Str', xmlname => 'name', request_name => 'name', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has ResourceGroupArn => (is => 'ro', isa => 'Str', xmlname => 'resourceGroupArn', request_name => 'resourceGroupArn', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has UpdatedAt => (is => 'ro', isa => 'Str', xmlname => 'updatedAt', request_name => 'updatedAt', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest'], required => 1);
+  has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest'], required => 1);
+  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
+  has ResourceGroupArn => (is => 'ro', isa => 'Str', request_name => 'resourceGroupArn', traits => ['NameInRequest'], required => 1);
+  has UpdatedAt => (is => 'ro', isa => 'Str', request_name => 'updatedAt', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###

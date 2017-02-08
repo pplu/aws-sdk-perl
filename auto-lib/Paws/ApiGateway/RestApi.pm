@@ -1,13 +1,13 @@
 
 package Paws::ApiGateway::RestApi;
   use Moose;
-  has BinaryMediaTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['Unwrapped'], xmlname => 'binaryMediaTypes');
-  has CreatedDate => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'createdDate');
-  has Description => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'description');
-  has Id => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'id');
-  has Name => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'name');
-  has Version => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'version');
-  has Warnings => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['Unwrapped'], xmlname => 'warnings');
+  has BinaryMediaTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'binaryMediaTypes');
+  has CreatedDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'createdDate');
+  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
+  has Id => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'id');
+  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name');
+  has Version => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'version');
+  has Warnings => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'warnings');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

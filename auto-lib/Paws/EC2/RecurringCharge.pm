@@ -1,7 +1,7 @@
 package Paws::EC2::RecurringCharge;
   use Moose;
-  has Amount => (is => 'ro', isa => 'Num', xmlname => 'amount', traits => ['Unwrapped']);
-  has Frequency => (is => 'ro', isa => 'Str', xmlname => 'frequency', traits => ['Unwrapped']);
+  has Amount => (is => 'ro', isa => 'Num', request_name => 'amount', traits => ['NameInRequest']);
+  has Frequency => (is => 'ro', isa => 'Str', request_name => 'frequency', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

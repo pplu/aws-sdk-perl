@@ -1,8 +1,8 @@
 package Paws::Health::EventDetails;
   use Moose;
-  has Event => (is => 'ro', isa => 'Paws::Health::Event', xmlname => 'event', request_name => 'event', traits => ['Unwrapped','NameInRequest']);
-  has EventDescription => (is => 'ro', isa => 'Paws::Health::EventDescription', xmlname => 'eventDescription', request_name => 'eventDescription', traits => ['Unwrapped','NameInRequest']);
-  has EventMetadata => (is => 'ro', isa => 'Paws::Health::EventMetadata', xmlname => 'eventMetadata', request_name => 'eventMetadata', traits => ['Unwrapped','NameInRequest']);
+  has Event => (is => 'ro', isa => 'Paws::Health::Event', request_name => 'event', traits => ['NameInRequest']);
+  has EventDescription => (is => 'ro', isa => 'Paws::Health::EventDescription', request_name => 'eventDescription', traits => ['NameInRequest']);
+  has EventMetadata => (is => 'ro', isa => 'Paws::Health::EventMetadata', request_name => 'eventMetadata', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
