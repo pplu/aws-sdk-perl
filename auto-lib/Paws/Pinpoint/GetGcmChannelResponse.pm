@@ -2,7 +2,8 @@
 package Paws::Pinpoint::GetGcmChannelResponse;
   use Moose;
   has GCMChannelResponse => (is => 'ro', isa => 'Paws::Pinpoint::GCMChannelResponse', required => 1);
-
+  use MooseX::ClassAttribute;
+  class_has _stream_param => (is => 'ro', default => 'GCMChannelResponse');
   has _request_id => (is => 'ro', isa => 'Str');
 1;
 

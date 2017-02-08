@@ -2,7 +2,8 @@
 package Paws::Pinpoint::GetCampaignsResponse;
   use Moose;
   has CampaignsResponse => (is => 'ro', isa => 'Paws::Pinpoint::CampaignsResponse', required => 1);
-
+  use MooseX::ClassAttribute;
+  class_has _stream_param => (is => 'ro', default => 'CampaignsResponse');
   has _request_id => (is => 'ro', isa => 'Str');
 1;
 

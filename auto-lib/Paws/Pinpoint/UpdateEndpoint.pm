@@ -6,7 +6,7 @@ package Paws::Pinpoint::UpdateEndpoint;
   has EndpointRequest => (is => 'ro', isa => 'Paws::Pinpoint::EndpointRequest', required => 1);
 
   use MooseX::ClassAttribute;
-
+  class_has _stream_param => (is => 'ro', default => 'EndpointRequest');
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateEndpoint');
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/apps/{application-id}/endpoints/{endpoint-id}');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');

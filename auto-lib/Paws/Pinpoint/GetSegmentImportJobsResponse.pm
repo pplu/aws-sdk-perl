@@ -2,7 +2,8 @@
 package Paws::Pinpoint::GetSegmentImportJobsResponse;
   use Moose;
   has ImportJobsResponse => (is => 'ro', isa => 'Paws::Pinpoint::ImportJobsResponse', required => 1);
-
+  use MooseX::ClassAttribute;
+  class_has _stream_param => (is => 'ro', default => 'ImportJobsResponse');
   has _request_id => (is => 'ro', isa => 'Str');
 1;
 

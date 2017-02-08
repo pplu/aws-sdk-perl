@@ -5,7 +5,7 @@ package Paws::Pinpoint::UpdateGcmChannel;
   has GCMChannelRequest => (is => 'ro', isa => 'Paws::Pinpoint::GCMChannelRequest', required => 1);
 
   use MooseX::ClassAttribute;
-
+  class_has _stream_param => (is => 'ro', default => 'GCMChannelRequest');
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateGcmChannel');
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/apps/{application-id}/channels/gcm');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
