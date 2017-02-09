@@ -356,6 +356,8 @@ L<Paws::KMS>
 
 L<Paws::Lambda>
 
+L<Paws::LexRuntime>
+
 L<Paws::Lightsail>
 
 L<Paws::MachineLearning>

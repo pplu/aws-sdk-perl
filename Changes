@@ -2,6 +2,7 @@
  - Bug fixed: Services that use QueryCaller and EC2Caller were not serializing Booleans correctly
  - New API: CUR (AWS Cost and Usage Report Service) 
  - New API: CloudDirectory 
+ - New API: LexRuntime
  - CodeDeploy API update: BlueGreen deployments
  - RDS API update: create Aurora read replica of an RDS
  - DynamoDB API update: Tagging for DynamoDB
