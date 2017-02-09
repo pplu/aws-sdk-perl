@@ -63,6 +63,7 @@ package Paws::API::ServiceToClass;
     kinesisanalytics => 'KinesisAnalytics',
     kms => 'KMS',
     lambda => 'Lambda',
+   'lex-runtime' => 'LexRuntime',
     lightsail => 'Lightsail',
     logs => 'CloudWatchLogs',
     machinelearning => 'MachineLearning',

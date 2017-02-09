@@ -30,6 +30,27 @@ package Paws::CUR;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub DescribeAllReportDefinitions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeReportDefinitions(@_);
+
+    if (not defined $callback) {
+      while ($result->NextToken) {
+        $result = $self->DescribeReportDefinitions(@_, NextToken => $result->NextToken);
+        push @{ $result->ReportDefinitions }, @{ $result->ReportDefinitions };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $result = $self->DescribeReportDefinitions(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'ReportDefinitions') foreach (@{ $result->ReportDefinitions });
+      }
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/DeleteReportDefinition DescribeReportDefinitions PutReportDefinition / }
@@ -96,6 +117,18 @@ Returns: a L<Paws::CUR::PutReportDefinitionResponse> instance
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 DescribeAllReportDefinitions(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllReportDefinitions([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ReportDefinitions, passing the object as the first parameter, and the string 'ReportDefinitions' as the second parameter 
+
+If not, it will return a a L<Paws::CUR::DescribeReportDefinitionsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 
