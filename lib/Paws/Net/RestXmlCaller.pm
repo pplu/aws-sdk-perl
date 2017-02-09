@@ -114,13 +114,8 @@ package Paws::Net::RestXmlCaller;
           $xml .= sprintf '<%s>%s</%s>', $att_name, $self->_to_xml($attribute->get_value($value)), $att_name;
         }
       } elsif ($attribute->type_constraint eq 'ArrayRef[Str|Undef]') {
-          my $location = $attribute->does('NameInRequest') ? $attribute->request_name : $att_name;
-          if ($attribute->does('NameInRequest')) {
-            $location = $attribute->request_name;
-            $xml .=  ( join '', map { sprintf '<%s>%s</%s>', $location, $_, $location } @{ $attribute->get_value($value) } );
-          } else {
-            $xml .= "<${att_name}>" . ( join '', map { sprintf '<%s>%s</%s>', $location, $_, $location } @{ $attribute->get_value($value) } ) . "</${att_name}>";
-          }
+          my $location = $attribute->request_name;
+          $xml .= "<${att_name}>" . ( join '', map { sprintf '<%s>%s</%s>', $location, $_, $location } @{ $attribute->get_value($value) } ) . "</${att_name}>";
       } elsif ($attribute->type_constraint =~ m/^ArrayRef\[(.*?\:\:.*)\]/) { #assume it's an array of Paws API objects
         my $location = $attribute->does('NameInRequest') ? $attribute->request_name : $att_name;
         $xml .=  ( join '', map { sprintf '<%s>%s</%s>', $location, $self->_to_xml($_), $location } @{ $attribute->get_value($value) } );
