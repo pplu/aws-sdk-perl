@@ -17,10 +17,11 @@ package Paws::Net::RestJsonCaller;
     foreach my $att (grep { $_ !~ m/^_/ } $params->meta->get_attribute_list) {
       my $attribute = $params->meta->get_attribute($att);
 
-      next if (not $attribute->does('ParamInHeader') and
-               not $attribute->does('ParamInQuery') and
-               not $attribute->does('ParamInURI') and
-               not $attribute->does('ParamInBody'));
+      next if ($attribute->does('ParamInHeader') or
+               $attribute->does('ParamInQuery') or
+               $attribute->does('ParamInURI') or
+               $attribute->does('ParamInBody')
+      );
 
       my $key = $attribute->does('NameInRequest')?$attribute->request_name:$att;
       if (defined $params->$att) {
@@ -90,27 +91,6 @@ package Paws::Net::RestJsonCaller;
       }
     }
   }
-
-  sub _to_json_body {
-    my ($self, $call) = @_;
-
-    my $json = {};
-    foreach my $attribute ($call->meta->get_all_attributes) {
-      if ($attribute->has_value($call) and 
-          not $attribute->does('Paws::API::Attribute::Trait::ParamInHeader') and
-          not $attribute->does('Paws::API::Attribute::Trait::ParamInQuery') and
-          not $attribute->does('Paws::API::Attribute::Trait::ParamInURI') and
-          not $attribute->does('Paws::API::Attribute::Trait::ParamInBody')
-         ) {
-        my $location = $attribute->does('NameInRequest') ? $attribute->request_name : $attribute->name;
-        $json->{ $location } = $self->_to_jsoncaller_params($attribute->get_value($call));
-      }
-    }
-
-    return undef if (keys %$json == 0);
-    return $json;
-  }
-
 
   sub prepare_request_for_call {
     my ($self, $call) = @_;

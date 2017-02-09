@@ -423,9 +423,6 @@ $request = $efs->CreateFileSystem(
   PerformanceMode => 'generalPurpose'
 );
 
-use Data::Dumper;
-print Dumper($request);
-
 like($request->content, qr/"CreationToken":"4"/, "Got N in a JSON string (quoted), and not a JSON number (unquoted)");
 
 my $cfn = $aws->service('CloudFront', region => 'us-east-1');
