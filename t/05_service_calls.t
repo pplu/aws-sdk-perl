@@ -423,6 +423,9 @@ $request = $efs->CreateFileSystem(
   PerformanceMode => 'generalPurpose'
 );
 
+use Data::Dumper;
+print Dumper($request);
+
 like($request->content, qr/"CreationToken":"4"/, "Got N in a JSON string (quoted), and not a JSON number (unquoted)");
 
 my $cfn = $aws->service('CloudFront', region => 'us-east-1');
@@ -442,6 +445,9 @@ $request = $cfn->CreateInvalidation(
   }   
 );
 
+use Data::Dumper;
+print Dumper($request);
+
 my $ref = XMLin($request->content);
 
 like($request->url, qr|distribution/A999AAA999AAA/invalidation|, 'URL has the distribution id');
@@ -456,5 +462,21 @@ is_deeply(
     CallerReference => 'uid'
   }
 );
+
+my $lambda = $aws->service('Lambda', region => 'eu-west-1');
+
+$request = $lambda->Invoke(
+  FunctionName => 'f',
+  Payload => '{"my":{"json":"payload"}}',
+  Qualifier => 'qualifier',
+  InvocationType => 'RequestResponse',
+  LogType => 'Tail',
+);
+
+cmp_ok($request->content, 'eq', '{"my":{"json":"payload"}}', 'Content is the JSON payload');
+cmp_ok($request->uri, 'eq', '/2015-03-31/functions/f/invocations?Qualifier=qualifier', 'Params found in the url');
+cmp_ok($request->headers->header('X-Amz-Invocation-Type'), 'eq', 'RequestResponse');
+cmp_ok($request->headers->header('X-Amz-Log-Type'), 'eq', 'Tail');
+#cmp_ok($request->headers->header('X-Amz-Client-Context'), 'eq', 'Tail');
 
 done_testing;
