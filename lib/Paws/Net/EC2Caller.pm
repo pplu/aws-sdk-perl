@@ -19,7 +19,7 @@ package Paws::Net::EC2Caller;
     my %p;
     foreach my $att (grep { $_ !~ m/^_/ } $params->meta->get_attribute_list) {
       my $key;
-      if ($params->meta->get_attribute($att)->does('Paws::Net::Caller::Attribute::Trait::NameInRequest')){
+      if ($params->meta->get_attribute($att)->does('NameInRequest')){
         $key = $params->meta->get_attribute($att)->request_name;
       } else {
         $key = $att;

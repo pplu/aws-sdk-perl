@@ -17,12 +17,12 @@ package Paws::Net::RestJsonCaller;
     foreach my $att (grep { $_ !~ m/^_/ } $params->meta->get_attribute_list) {
       my $attribute = $params->meta->get_attribute($att);
 
-      next if (not $attribute->does('Paws::API::Attribute::Trait::ParamInHeader') and
-               not $attribute->does('Paws::API::Attribute::Trait::ParamInQuery') and
-               not $attribute->does('Paws::API::Attribute::Trait::ParamInURI') and
-               not $attribute->does('Paws::API::Attribute::Trait::ParamInBody'));
+      next if (not $attribute->does('ParamInHeader') and
+               not $attribute->does('ParamInQuery') and
+               not $attribute->does('ParamInURI') and
+               not $attribute->does('ParamInBody'));
 
-      my $key = $attribute->does('Paws::Net::Caller::Attribute::Trait::NameInRequest')?$attribute->request_name:$att;
+      my $key = $attribute->does('NameInRequest')?$attribute->request_name:$att;
       if (defined $params->$att) {
         my $att_type = $attribute->type_constraint;
         if ($att_type eq 'Bool') {
