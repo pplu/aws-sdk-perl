@@ -442,9 +442,6 @@ $request = $cfn->CreateInvalidation(
   }   
 );
 
-use Data::Dumper;
-print Dumper($request);
-
 my $ref = XMLin($request->content);
 
 like($request->url, qr|distribution/A999AAA999AAA/invalidation|, 'URL has the distribution id');
@@ -468,12 +465,54 @@ $request = $lambda->Invoke(
   Qualifier => 'qualifier',
   InvocationType => 'RequestResponse',
   LogType => 'Tail',
+  ClientContext => 'eyJjbGllbnQiOiJjb250ZXh0In0K',
 );
 
 cmp_ok($request->content, 'eq', '{"my":{"json":"payload"}}', 'Content is the JSON payload');
 cmp_ok($request->uri, 'eq', '/2015-03-31/functions/f/invocations?Qualifier=qualifier', 'Params found in the url');
-cmp_ok($request->headers->header('X-Amz-Invocation-Type'), 'eq', 'RequestResponse');
-cmp_ok($request->headers->header('X-Amz-Log-Type'), 'eq', 'Tail');
-#cmp_ok($request->headers->header('X-Amz-Client-Context'), 'eq', 'Tail');
+cmp_ok($request->headers->header('X-Amz-Invocation-Type'), 'eq', 'RequestResponse', 'InvocationType is in headers');
+cmp_ok($request->headers->header('X-Amz-Log-Type'), 'eq', 'Tail', 'LogType is in headers');
+cmp_ok($request->headers->header('X-Amz-Client-Context'), 'eq', 'eyJjbGllbnQiOiJjb250ZXh0In0K', 'ClientContext is in headers');
+
+
+$request = $lambda->CreateFunction(
+  FunctionName => 'afunc',
+  Handler => 'xxx.afunc',
+  Role => 'arn:aws:iam::123456789012:role/XXX',
+  Runtime => 'nodejs',
+  VpcConfig => {
+    SecurityGroupIds => [ 'sg-1', 'sg-2' ],
+    SubnetIds => [ 'sn-1', 'sn-2' ],
+  },
+  Code => {
+    ZipFile => 'ZIPFILE',
+  }
+);
+
+$test_params = {
+  FunctionName => 'afunc',
+  Handler => 'xxx.afunc',
+  Role => 'arn:aws:iam::123456789012:role/XXX',
+  Runtime => 'nodejs',
+  VpcConfig => {
+    SecurityGroupIds => [ 'sg-1', 'sg-2' ],
+    SubnetIds => [ 'sn-1', 'sn-2' ],
+  },
+  Code => {
+    ZipFile => 'ZIPFILE',
+  }
+};
+
+request_contentjson($test_params, $request);
+
+my $r53 = $aws->service('Route53');
+
+$request = $r53->ListHealthChecks(
+  Marker => 'X',
+  MaxItems => 50,
+);
+
+like($request->url, qr/marker=X/, 'marker with correct name in URL');
+like($request->url, qr/maxitems=50/, 'maxitems with correct name in URL');
 
 done_testing;
