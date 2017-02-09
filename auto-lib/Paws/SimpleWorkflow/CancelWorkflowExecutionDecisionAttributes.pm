@@ -1,6 +1,6 @@
 package Paws::SimpleWorkflow::CancelWorkflowExecutionDecisionAttributes;
   use Moose;
-  has Details => (is => 'ro', isa => 'Str', xmlname => 'details', request_name => 'details', traits => ['Unwrapped','NameInRequest']);
+  has Details => (is => 'ro', isa => 'Str', request_name => 'details', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

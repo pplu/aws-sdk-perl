@@ -1,8 +1,8 @@
 package Paws::Inspector::TelemetryMetadata;
   use Moose;
-  has Count => (is => 'ro', isa => 'Int', xmlname => 'count', request_name => 'count', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has DataSize => (is => 'ro', isa => 'Int', xmlname => 'dataSize', request_name => 'dataSize', traits => ['Unwrapped','NameInRequest']);
-  has MessageType => (is => 'ro', isa => 'Str', xmlname => 'messageType', request_name => 'messageType', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has Count => (is => 'ro', isa => 'Int', request_name => 'count', traits => ['NameInRequest'], required => 1);
+  has DataSize => (is => 'ro', isa => 'Int', request_name => 'dataSize', traits => ['NameInRequest']);
+  has MessageType => (is => 'ro', isa => 'Str', request_name => 'messageType', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###

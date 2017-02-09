@@ -1,7 +1,7 @@
 
 package Paws::EC2::DescribeRegionsResult;
   use Moose;
-  has Regions => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Region]', xmlname => 'regionInfo', traits => ['Unwrapped',]);
+  has Regions => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Region]', request_name => 'regionInfo', traits => ['NameInRequest',]);
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

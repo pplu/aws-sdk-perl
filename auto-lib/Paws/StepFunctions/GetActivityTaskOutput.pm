@@ -1,8 +1,8 @@
 
 package Paws::StepFunctions::GetActivityTaskOutput;
   use Moose;
-  has Input => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'input' );
-  has TaskToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'taskToken' );
+  has Input => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'input' );
+  has TaskToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'taskToken' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

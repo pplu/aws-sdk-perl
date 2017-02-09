@@ -1,7 +1,7 @@
 
 package Paws::IoT::ListThingPrincipalsResponse;
   use Moose;
-  has Principals => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['Unwrapped'], xmlname => 'principals');
+  has Principals => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'principals');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

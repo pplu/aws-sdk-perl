@@ -1,8 +1,8 @@
 
 package Paws::DeviceFarm::ListDevicesResult;
   use Moose;
-  has Devices => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::Device]', traits => ['Unwrapped'], xmlname => 'devices' );
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
+  has Devices => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::Device]', traits => ['NameInRequest'], request_name => 'devices' );
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

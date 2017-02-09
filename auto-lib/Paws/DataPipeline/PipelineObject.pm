@@ -1,8 +1,8 @@
 package Paws::DataPipeline::PipelineObject;
   use Moose;
-  has Fields => (is => 'ro', isa => 'ArrayRef[Paws::DataPipeline::Field]', xmlname => 'fields', request_name => 'fields', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has Id => (is => 'ro', isa => 'Str', xmlname => 'id', request_name => 'id', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has Name => (is => 'ro', isa => 'Str', xmlname => 'name', request_name => 'name', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has Fields => (is => 'ro', isa => 'ArrayRef[Paws::DataPipeline::Field]', request_name => 'fields', traits => ['NameInRequest'], required => 1);
+  has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest'], required => 1);
+  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###

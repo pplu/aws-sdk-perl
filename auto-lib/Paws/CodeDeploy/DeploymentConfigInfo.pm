@@ -1,9 +1,9 @@
 package Paws::CodeDeploy::DeploymentConfigInfo;
   use Moose;
-  has CreateTime => (is => 'ro', isa => 'Str', xmlname => 'createTime', request_name => 'createTime', traits => ['Unwrapped','NameInRequest']);
-  has DeploymentConfigId => (is => 'ro', isa => 'Str', xmlname => 'deploymentConfigId', request_name => 'deploymentConfigId', traits => ['Unwrapped','NameInRequest']);
-  has DeploymentConfigName => (is => 'ro', isa => 'Str', xmlname => 'deploymentConfigName', request_name => 'deploymentConfigName', traits => ['Unwrapped','NameInRequest']);
-  has MinimumHealthyHosts => (is => 'ro', isa => 'Paws::CodeDeploy::MinimumHealthyHosts', xmlname => 'minimumHealthyHosts', request_name => 'minimumHealthyHosts', traits => ['Unwrapped','NameInRequest']);
+  has CreateTime => (is => 'ro', isa => 'Str', request_name => 'createTime', traits => ['NameInRequest']);
+  has DeploymentConfigId => (is => 'ro', isa => 'Str', request_name => 'deploymentConfigId', traits => ['NameInRequest']);
+  has DeploymentConfigName => (is => 'ro', isa => 'Str', request_name => 'deploymentConfigName', traits => ['NameInRequest']);
+  has MinimumHealthyHosts => (is => 'ro', isa => 'Paws::CodeDeploy::MinimumHealthyHosts', request_name => 'minimumHealthyHosts', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

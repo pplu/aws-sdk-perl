@@ -1,14 +1,14 @@
 package Paws::CodePipeline::ActionExecution;
   use Moose;
-  has ErrorDetails => (is => 'ro', isa => 'Paws::CodePipeline::ErrorDetails', xmlname => 'errorDetails', request_name => 'errorDetails', traits => ['Unwrapped','NameInRequest']);
-  has ExternalExecutionId => (is => 'ro', isa => 'Str', xmlname => 'externalExecutionId', request_name => 'externalExecutionId', traits => ['Unwrapped','NameInRequest']);
-  has ExternalExecutionUrl => (is => 'ro', isa => 'Str', xmlname => 'externalExecutionUrl', request_name => 'externalExecutionUrl', traits => ['Unwrapped','NameInRequest']);
-  has LastStatusChange => (is => 'ro', isa => 'Str', xmlname => 'lastStatusChange', request_name => 'lastStatusChange', traits => ['Unwrapped','NameInRequest']);
-  has LastUpdatedBy => (is => 'ro', isa => 'Str', xmlname => 'lastUpdatedBy', request_name => 'lastUpdatedBy', traits => ['Unwrapped','NameInRequest']);
-  has PercentComplete => (is => 'ro', isa => 'Int', xmlname => 'percentComplete', request_name => 'percentComplete', traits => ['Unwrapped','NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', xmlname => 'status', request_name => 'status', traits => ['Unwrapped','NameInRequest']);
-  has Summary => (is => 'ro', isa => 'Str', xmlname => 'summary', request_name => 'summary', traits => ['Unwrapped','NameInRequest']);
-  has Token => (is => 'ro', isa => 'Str', xmlname => 'token', request_name => 'token', traits => ['Unwrapped','NameInRequest']);
+  has ErrorDetails => (is => 'ro', isa => 'Paws::CodePipeline::ErrorDetails', request_name => 'errorDetails', traits => ['NameInRequest']);
+  has ExternalExecutionId => (is => 'ro', isa => 'Str', request_name => 'externalExecutionId', traits => ['NameInRequest']);
+  has ExternalExecutionUrl => (is => 'ro', isa => 'Str', request_name => 'externalExecutionUrl', traits => ['NameInRequest']);
+  has LastStatusChange => (is => 'ro', isa => 'Str', request_name => 'lastStatusChange', traits => ['NameInRequest']);
+  has LastUpdatedBy => (is => 'ro', isa => 'Str', request_name => 'lastUpdatedBy', traits => ['NameInRequest']);
+  has PercentComplete => (is => 'ro', isa => 'Int', request_name => 'percentComplete', traits => ['NameInRequest']);
+  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+  has Summary => (is => 'ro', isa => 'Str', request_name => 'summary', traits => ['NameInRequest']);
+  has Token => (is => 'ro', isa => 'Str', request_name => 'token', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

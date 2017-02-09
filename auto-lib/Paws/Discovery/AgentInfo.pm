@@ -1,15 +1,15 @@
 package Paws::Discovery::AgentInfo;
   use Moose;
-  has AgentId => (is => 'ro', isa => 'Str', xmlname => 'agentId', request_name => 'agentId', traits => ['Unwrapped','NameInRequest']);
-  has AgentNetworkInfoList => (is => 'ro', isa => 'ArrayRef[Paws::Discovery::AgentNetworkInfo]', xmlname => 'agentNetworkInfoList', request_name => 'agentNetworkInfoList', traits => ['Unwrapped','NameInRequest']);
-  has AgentType => (is => 'ro', isa => 'Str', xmlname => 'agentType', request_name => 'agentType', traits => ['Unwrapped','NameInRequest']);
-  has CollectionStatus => (is => 'ro', isa => 'Str', xmlname => 'collectionStatus', request_name => 'collectionStatus', traits => ['Unwrapped','NameInRequest']);
-  has ConnectorId => (is => 'ro', isa => 'Str', xmlname => 'connectorId', request_name => 'connectorId', traits => ['Unwrapped','NameInRequest']);
-  has Health => (is => 'ro', isa => 'Str', xmlname => 'health', request_name => 'health', traits => ['Unwrapped','NameInRequest']);
-  has HostName => (is => 'ro', isa => 'Str', xmlname => 'hostName', request_name => 'hostName', traits => ['Unwrapped','NameInRequest']);
-  has LastHealthPingTime => (is => 'ro', isa => 'Str', xmlname => 'lastHealthPingTime', request_name => 'lastHealthPingTime', traits => ['Unwrapped','NameInRequest']);
-  has RegisteredTime => (is => 'ro', isa => 'Str', xmlname => 'registeredTime', request_name => 'registeredTime', traits => ['Unwrapped','NameInRequest']);
-  has Version => (is => 'ro', isa => 'Str', xmlname => 'version', request_name => 'version', traits => ['Unwrapped','NameInRequest']);
+  has AgentId => (is => 'ro', isa => 'Str', request_name => 'agentId', traits => ['NameInRequest']);
+  has AgentNetworkInfoList => (is => 'ro', isa => 'ArrayRef[Paws::Discovery::AgentNetworkInfo]', request_name => 'agentNetworkInfoList', traits => ['NameInRequest']);
+  has AgentType => (is => 'ro', isa => 'Str', request_name => 'agentType', traits => ['NameInRequest']);
+  has CollectionStatus => (is => 'ro', isa => 'Str', request_name => 'collectionStatus', traits => ['NameInRequest']);
+  has ConnectorId => (is => 'ro', isa => 'Str', request_name => 'connectorId', traits => ['NameInRequest']);
+  has Health => (is => 'ro', isa => 'Str', request_name => 'health', traits => ['NameInRequest']);
+  has HostName => (is => 'ro', isa => 'Str', request_name => 'hostName', traits => ['NameInRequest']);
+  has LastHealthPingTime => (is => 'ro', isa => 'Str', request_name => 'lastHealthPingTime', traits => ['NameInRequest']);
+  has RegisteredTime => (is => 'ro', isa => 'Str', request_name => 'registeredTime', traits => ['NameInRequest']);
+  has Version => (is => 'ro', isa => 'Str', request_name => 'version', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

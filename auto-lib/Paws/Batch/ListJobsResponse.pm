@@ -1,8 +1,8 @@
 
 package Paws::Batch::ListJobsResponse;
   use Moose;
-  has JobSummaryList => (is => 'ro', isa => 'ArrayRef[Paws::Batch::JobSummary]', traits => ['Unwrapped'], xmlname => 'jobSummaryList', required => 1);
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken');
+  has JobSummaryList => (is => 'ro', isa => 'ArrayRef[Paws::Batch::JobSummary]', traits => ['NameInRequest'], request_name => 'jobSummaryList', required => 1);
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

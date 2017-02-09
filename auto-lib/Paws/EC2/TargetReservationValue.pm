@@ -1,7 +1,7 @@
 package Paws::EC2::TargetReservationValue;
   use Moose;
-  has ReservationValue => (is => 'ro', isa => 'Paws::EC2::ReservationValue', xmlname => 'reservationValue', traits => ['Unwrapped']);
-  has TargetConfiguration => (is => 'ro', isa => 'Paws::EC2::TargetConfiguration', xmlname => 'targetConfiguration', traits => ['Unwrapped']);
+  has ReservationValue => (is => 'ro', isa => 'Paws::EC2::ReservationValue', request_name => 'reservationValue', traits => ['NameInRequest']);
+  has TargetConfiguration => (is => 'ro', isa => 'Paws::EC2::TargetConfiguration', request_name => 'targetConfiguration', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

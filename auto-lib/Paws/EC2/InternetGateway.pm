@@ -1,8 +1,8 @@
 package Paws::EC2::InternetGateway;
   use Moose;
-  has Attachments => (is => 'ro', isa => 'ArrayRef[Paws::EC2::InternetGatewayAttachment]', xmlname => 'attachmentSet', traits => ['Unwrapped']);
-  has InternetGatewayId => (is => 'ro', isa => 'Str', xmlname => 'internetGatewayId', traits => ['Unwrapped']);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', xmlname => 'tagSet', traits => ['Unwrapped']);
+  has Attachments => (is => 'ro', isa => 'ArrayRef[Paws::EC2::InternetGatewayAttachment]', request_name => 'attachmentSet', traits => ['NameInRequest']);
+  has InternetGatewayId => (is => 'ro', isa => 'Str', request_name => 'internetGatewayId', traits => ['NameInRequest']);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

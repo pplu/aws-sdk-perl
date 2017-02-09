@@ -1,7 +1,7 @@
 package Paws::EC2::InstanceStatusSummary;
   use Moose;
-  has Details => (is => 'ro', isa => 'ArrayRef[Paws::EC2::InstanceStatusDetails]', xmlname => 'details', traits => ['Unwrapped']);
-  has Status => (is => 'ro', isa => 'Str', xmlname => 'status', traits => ['Unwrapped']);
+  has Details => (is => 'ro', isa => 'ArrayRef[Paws::EC2::InstanceStatusDetails]', request_name => 'details', traits => ['NameInRequest']);
+  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

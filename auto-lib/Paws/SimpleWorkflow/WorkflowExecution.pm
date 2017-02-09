@@ -1,7 +1,7 @@
 package Paws::SimpleWorkflow::WorkflowExecution;
   use Moose;
-  has RunId => (is => 'ro', isa => 'Str', xmlname => 'runId', request_name => 'runId', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has WorkflowId => (is => 'ro', isa => 'Str', xmlname => 'workflowId', request_name => 'workflowId', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has RunId => (is => 'ro', isa => 'Str', request_name => 'runId', traits => ['NameInRequest'], required => 1);
+  has WorkflowId => (is => 'ro', isa => 'Str', request_name => 'workflowId', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###

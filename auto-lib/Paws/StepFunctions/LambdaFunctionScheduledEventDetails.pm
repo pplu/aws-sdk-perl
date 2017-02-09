@@ -1,8 +1,8 @@
 package Paws::StepFunctions::LambdaFunctionScheduledEventDetails;
   use Moose;
-  has Input => (is => 'ro', isa => 'Str', xmlname => 'input', request_name => 'input', traits => ['Unwrapped','NameInRequest']);
-  has Resource => (is => 'ro', isa => 'Str', xmlname => 'resource', request_name => 'resource', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has TimeoutInSeconds => (is => 'ro', isa => 'Int', xmlname => 'timeoutInSeconds', request_name => 'timeoutInSeconds', traits => ['Unwrapped','NameInRequest']);
+  has Input => (is => 'ro', isa => 'Str', request_name => 'input', traits => ['NameInRequest']);
+  has Resource => (is => 'ro', isa => 'Str', request_name => 'resource', traits => ['NameInRequest'], required => 1);
+  has TimeoutInSeconds => (is => 'ro', isa => 'Int', request_name => 'timeoutInSeconds', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

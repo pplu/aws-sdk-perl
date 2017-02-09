@@ -1,9 +1,9 @@
 package Paws::DataPipeline::TaskObject;
   use Moose;
-  has AttemptId => (is => 'ro', isa => 'Str', xmlname => 'attemptId', request_name => 'attemptId', traits => ['Unwrapped','NameInRequest']);
-  has Objects => (is => 'ro', isa => 'Paws::DataPipeline::PipelineObjectMap', xmlname => 'objects', request_name => 'objects', traits => ['Unwrapped','NameInRequest']);
-  has PipelineId => (is => 'ro', isa => 'Str', xmlname => 'pipelineId', request_name => 'pipelineId', traits => ['Unwrapped','NameInRequest']);
-  has TaskId => (is => 'ro', isa => 'Str', xmlname => 'taskId', request_name => 'taskId', traits => ['Unwrapped','NameInRequest']);
+  has AttemptId => (is => 'ro', isa => 'Str', request_name => 'attemptId', traits => ['NameInRequest']);
+  has Objects => (is => 'ro', isa => 'Paws::DataPipeline::PipelineObjectMap', request_name => 'objects', traits => ['NameInRequest']);
+  has PipelineId => (is => 'ro', isa => 'Str', request_name => 'pipelineId', traits => ['NameInRequest']);
+  has TaskId => (is => 'ro', isa => 'Str', request_name => 'taskId', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

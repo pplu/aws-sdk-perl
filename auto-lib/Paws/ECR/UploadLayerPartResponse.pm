@@ -1,10 +1,10 @@
 
 package Paws::ECR::UploadLayerPartResponse;
   use Moose;
-  has LastByteReceived => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => 'lastByteReceived' );
-  has RegistryId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'registryId' );
-  has RepositoryName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'repositoryName' );
-  has UploadId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'uploadId' );
+  has LastByteReceived => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'lastByteReceived' );
+  has RegistryId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'registryId' );
+  has RepositoryName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'repositoryName' );
+  has UploadId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'uploadId' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

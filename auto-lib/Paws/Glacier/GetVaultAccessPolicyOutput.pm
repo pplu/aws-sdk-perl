@@ -1,7 +1,7 @@
 
 package Paws::Glacier::GetVaultAccessPolicyOutput;
   use Moose;
-  has Policy => (is => 'ro', isa => 'Paws::Glacier::VaultAccessPolicy', traits => ['Unwrapped'], xmlname => 'policy');
+  has Policy => (is => 'ro', isa => 'Paws::Glacier::VaultAccessPolicy', traits => ['NameInRequest'], request_name => 'policy');
   use MooseX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => 'policy');
   has _request_id => (is => 'ro', isa => 'Str');

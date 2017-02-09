@@ -1,15 +1,15 @@
 package Paws::ApiGateway::MethodSetting;
   use Moose;
-  has CacheDataEncrypted => (is => 'ro', isa => 'Bool', xmlname => 'cacheDataEncrypted', request_name => 'cacheDataEncrypted', traits => ['Unwrapped','NameInRequest']);
-  has CacheTtlInSeconds => (is => 'ro', isa => 'Int', xmlname => 'cacheTtlInSeconds', request_name => 'cacheTtlInSeconds', traits => ['Unwrapped','NameInRequest']);
-  has CachingEnabled => (is => 'ro', isa => 'Bool', xmlname => 'cachingEnabled', request_name => 'cachingEnabled', traits => ['Unwrapped','NameInRequest']);
-  has DataTraceEnabled => (is => 'ro', isa => 'Bool', xmlname => 'dataTraceEnabled', request_name => 'dataTraceEnabled', traits => ['Unwrapped','NameInRequest']);
-  has LoggingLevel => (is => 'ro', isa => 'Str', xmlname => 'loggingLevel', request_name => 'loggingLevel', traits => ['Unwrapped','NameInRequest']);
-  has MetricsEnabled => (is => 'ro', isa => 'Bool', xmlname => 'metricsEnabled', request_name => 'metricsEnabled', traits => ['Unwrapped','NameInRequest']);
-  has RequireAuthorizationForCacheControl => (is => 'ro', isa => 'Bool', xmlname => 'requireAuthorizationForCacheControl', request_name => 'requireAuthorizationForCacheControl', traits => ['Unwrapped','NameInRequest']);
-  has ThrottlingBurstLimit => (is => 'ro', isa => 'Int', xmlname => 'throttlingBurstLimit', request_name => 'throttlingBurstLimit', traits => ['Unwrapped','NameInRequest']);
-  has ThrottlingRateLimit => (is => 'ro', isa => 'Num', xmlname => 'throttlingRateLimit', request_name => 'throttlingRateLimit', traits => ['Unwrapped','NameInRequest']);
-  has UnauthorizedCacheControlHeaderStrategy => (is => 'ro', isa => 'Str', xmlname => 'unauthorizedCacheControlHeaderStrategy', request_name => 'unauthorizedCacheControlHeaderStrategy', traits => ['Unwrapped','NameInRequest']);
+  has CacheDataEncrypted => (is => 'ro', isa => 'Bool', request_name => 'cacheDataEncrypted', traits => ['NameInRequest']);
+  has CacheTtlInSeconds => (is => 'ro', isa => 'Int', request_name => 'cacheTtlInSeconds', traits => ['NameInRequest']);
+  has CachingEnabled => (is => 'ro', isa => 'Bool', request_name => 'cachingEnabled', traits => ['NameInRequest']);
+  has DataTraceEnabled => (is => 'ro', isa => 'Bool', request_name => 'dataTraceEnabled', traits => ['NameInRequest']);
+  has LoggingLevel => (is => 'ro', isa => 'Str', request_name => 'loggingLevel', traits => ['NameInRequest']);
+  has MetricsEnabled => (is => 'ro', isa => 'Bool', request_name => 'metricsEnabled', traits => ['NameInRequest']);
+  has RequireAuthorizationForCacheControl => (is => 'ro', isa => 'Bool', request_name => 'requireAuthorizationForCacheControl', traits => ['NameInRequest']);
+  has ThrottlingBurstLimit => (is => 'ro', isa => 'Int', request_name => 'throttlingBurstLimit', traits => ['NameInRequest']);
+  has ThrottlingRateLimit => (is => 'ro', isa => 'Num', request_name => 'throttlingRateLimit', traits => ['NameInRequest']);
+  has UnauthorizedCacheControlHeaderStrategy => (is => 'ro', isa => 'Str', request_name => 'unauthorizedCacheControlHeaderStrategy', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

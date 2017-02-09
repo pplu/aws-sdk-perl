@@ -1,8 +1,8 @@
 package Paws::DeviceFarm::Rule;
   use Moose;
-  has Attribute => (is => 'ro', isa => 'Str', xmlname => 'attribute', request_name => 'attribute', traits => ['Unwrapped','NameInRequest']);
-  has Operator => (is => 'ro', isa => 'Str', xmlname => 'operator', request_name => 'operator', traits => ['Unwrapped','NameInRequest']);
-  has Value => (is => 'ro', isa => 'Str', xmlname => 'value', request_name => 'value', traits => ['Unwrapped','NameInRequest']);
+  has Attribute => (is => 'ro', isa => 'Str', request_name => 'attribute', traits => ['NameInRequest']);
+  has Operator => (is => 'ro', isa => 'Str', request_name => 'operator', traits => ['NameInRequest']);
+  has Value => (is => 'ro', isa => 'Str', request_name => 'value', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

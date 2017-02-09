@@ -1,10 +1,10 @@
 
 package Paws::ApiGateway::UsagePlanKey;
   use Moose;
-  has Id => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'id');
-  has Name => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'name');
-  has Type => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'type');
-  has Value => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'value');
+  has Id => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'id');
+  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name');
+  has Type => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'type');
+  has Value => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'value');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

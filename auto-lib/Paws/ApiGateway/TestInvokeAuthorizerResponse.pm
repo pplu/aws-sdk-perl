@@ -1,13 +1,13 @@
 
 package Paws::ApiGateway::TestInvokeAuthorizerResponse;
   use Moose;
-  has Authorization => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToList', traits => ['Unwrapped'], xmlname => 'authorization');
-  has Claims => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['Unwrapped'], xmlname => 'claims');
-  has ClientStatus => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => 'clientStatus');
-  has Latency => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => 'latency');
-  has Log => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'log');
-  has Policy => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'policy');
-  has PrincipalId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'principalId');
+  has Authorization => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToList', traits => ['NameInRequest'], request_name => 'authorization');
+  has Claims => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['NameInRequest'], request_name => 'claims');
+  has ClientStatus => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'clientStatus');
+  has Latency => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'latency');
+  has Log => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'log');
+  has Policy => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'policy');
+  has PrincipalId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'principalId');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

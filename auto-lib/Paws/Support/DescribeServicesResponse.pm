@@ -1,7 +1,7 @@
 
 package Paws::Support::DescribeServicesResponse;
   use Moose;
-  has Services => (is => 'ro', isa => 'ArrayRef[Paws::Support::Service]', traits => ['Unwrapped'], xmlname => 'services' );
+  has Services => (is => 'ro', isa => 'ArrayRef[Paws::Support::Service]', traits => ['NameInRequest'], request_name => 'services' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

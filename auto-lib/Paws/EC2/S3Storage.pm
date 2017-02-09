@@ -1,10 +1,10 @@
 package Paws::EC2::S3Storage;
   use Moose;
   has AWSAccessKeyId => (is => 'ro', isa => 'Str');
-  has Bucket => (is => 'ro', isa => 'Str', xmlname => 'bucket', traits => ['Unwrapped']);
-  has Prefix => (is => 'ro', isa => 'Str', xmlname => 'prefix', traits => ['Unwrapped']);
-  has UploadPolicy => (is => 'ro', isa => 'Str', xmlname => 'uploadPolicy', traits => ['Unwrapped']);
-  has UploadPolicySignature => (is => 'ro', isa => 'Str', xmlname => 'uploadPolicySignature', traits => ['Unwrapped']);
+  has Bucket => (is => 'ro', isa => 'Str', request_name => 'bucket', traits => ['NameInRequest']);
+  has Prefix => (is => 'ro', isa => 'Str', request_name => 'prefix', traits => ['NameInRequest']);
+  has UploadPolicy => (is => 'ro', isa => 'Str', request_name => 'uploadPolicy', traits => ['NameInRequest']);
+  has UploadPolicySignature => (is => 'ro', isa => 'Str', request_name => 'uploadPolicySignature', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

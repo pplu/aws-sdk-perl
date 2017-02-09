@@ -1,7 +1,7 @@
 
 package Paws::CodeBuild::ListCuratedEnvironmentImagesOutput;
   use Moose;
-  has Platforms => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::EnvironmentPlatform]', traits => ['Unwrapped'], xmlname => 'platforms' );
+  has Platforms => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::EnvironmentPlatform]', traits => ['NameInRequest'], request_name => 'platforms' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

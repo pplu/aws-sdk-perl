@@ -1,8 +1,8 @@
 
 package Paws::Lightsail::GetStaticIpsResult;
   use Moose;
-  has NextPageToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextPageToken' );
-  has StaticIps => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::StaticIp]', traits => ['Unwrapped'], xmlname => 'staticIps' );
+  has NextPageToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextPageToken' );
+  has StaticIps => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::StaticIp]', traits => ['NameInRequest'], request_name => 'staticIps' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

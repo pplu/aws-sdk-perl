@@ -1,9 +1,9 @@
 package Paws::ECR::Layer;
   use Moose;
-  has LayerAvailability => (is => 'ro', isa => 'Str', xmlname => 'layerAvailability', request_name => 'layerAvailability', traits => ['Unwrapped','NameInRequest']);
-  has LayerDigest => (is => 'ro', isa => 'Str', xmlname => 'layerDigest', request_name => 'layerDigest', traits => ['Unwrapped','NameInRequest']);
-  has LayerSize => (is => 'ro', isa => 'Int', xmlname => 'layerSize', request_name => 'layerSize', traits => ['Unwrapped','NameInRequest']);
-  has MediaType => (is => 'ro', isa => 'Str', xmlname => 'mediaType', request_name => 'mediaType', traits => ['Unwrapped','NameInRequest']);
+  has LayerAvailability => (is => 'ro', isa => 'Str', request_name => 'layerAvailability', traits => ['NameInRequest']);
+  has LayerDigest => (is => 'ro', isa => 'Str', request_name => 'layerDigest', traits => ['NameInRequest']);
+  has LayerSize => (is => 'ro', isa => 'Int', request_name => 'layerSize', traits => ['NameInRequest']);
+  has MediaType => (is => 'ro', isa => 'Str', request_name => 'mediaType', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

@@ -1,8 +1,8 @@
 
 package Paws::CloudWatchLogs::DescribeSubscriptionFiltersResponse;
   use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
-  has SubscriptionFilters => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatchLogs::SubscriptionFilter]', traits => ['Unwrapped'], xmlname => 'subscriptionFilters' );
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  has SubscriptionFilters => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatchLogs::SubscriptionFilter]', traits => ['NameInRequest'], request_name => 'subscriptionFilters' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

@@ -1,7 +1,7 @@
 
 package Paws::ApiGateway::ExportResponse;
   use Moose;
-  has Body => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'body');
+  has Body => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'body');
   has ContentDisposition => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'contentDisposition');
   has ContentType => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'contentType');
   use MooseX::ClassAttribute;

@@ -1,7 +1,7 @@
 
 package Paws::CodePipeline::CreatePipelineOutput;
   use Moose;
-  has Pipeline => (is => 'ro', isa => 'Paws::CodePipeline::PipelineDeclaration', traits => ['Unwrapped'], xmlname => 'pipeline' );
+  has Pipeline => (is => 'ro', isa => 'Paws::CodePipeline::PipelineDeclaration', traits => ['NameInRequest'], request_name => 'pipeline' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

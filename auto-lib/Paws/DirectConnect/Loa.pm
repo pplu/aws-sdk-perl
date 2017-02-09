@@ -1,7 +1,7 @@
 package Paws::DirectConnect::Loa;
   use Moose;
-  has LoaContent => (is => 'ro', isa => 'Str', xmlname => 'loaContent', request_name => 'loaContent', traits => ['Unwrapped','NameInRequest']);
-  has LoaContentType => (is => 'ro', isa => 'Str', xmlname => 'loaContentType', request_name => 'loaContentType', traits => ['Unwrapped','NameInRequest']);
+  has LoaContent => (is => 'ro', isa => 'Str', request_name => 'loaContent', traits => ['NameInRequest']);
+  has LoaContentType => (is => 'ro', isa => 'Str', request_name => 'loaContentType', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

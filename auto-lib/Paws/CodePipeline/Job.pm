@@ -1,9 +1,9 @@
 package Paws::CodePipeline::Job;
   use Moose;
-  has AccountId => (is => 'ro', isa => 'Str', xmlname => 'accountId', request_name => 'accountId', traits => ['Unwrapped','NameInRequest']);
-  has Data => (is => 'ro', isa => 'Paws::CodePipeline::JobData', xmlname => 'data', request_name => 'data', traits => ['Unwrapped','NameInRequest']);
-  has Id => (is => 'ro', isa => 'Str', xmlname => 'id', request_name => 'id', traits => ['Unwrapped','NameInRequest']);
-  has Nonce => (is => 'ro', isa => 'Str', xmlname => 'nonce', request_name => 'nonce', traits => ['Unwrapped','NameInRequest']);
+  has AccountId => (is => 'ro', isa => 'Str', request_name => 'accountId', traits => ['NameInRequest']);
+  has Data => (is => 'ro', isa => 'Paws::CodePipeline::JobData', request_name => 'data', traits => ['NameInRequest']);
+  has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest']);
+  has Nonce => (is => 'ro', isa => 'Str', request_name => 'nonce', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

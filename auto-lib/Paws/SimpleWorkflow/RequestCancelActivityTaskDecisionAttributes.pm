@@ -1,6 +1,6 @@
 package Paws::SimpleWorkflow::RequestCancelActivityTaskDecisionAttributes;
   use Moose;
-  has ActivityId => (is => 'ro', isa => 'Str', xmlname => 'activityId', request_name => 'activityId', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has ActivityId => (is => 'ro', isa => 'Str', request_name => 'activityId', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###

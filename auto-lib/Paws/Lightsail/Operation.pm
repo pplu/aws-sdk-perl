@@ -1,17 +1,17 @@
 package Paws::Lightsail::Operation;
   use Moose;
-  has CreatedAt => (is => 'ro', isa => 'Str', xmlname => 'createdAt', request_name => 'createdAt', traits => ['Unwrapped','NameInRequest']);
-  has ErrorCode => (is => 'ro', isa => 'Str', xmlname => 'errorCode', request_name => 'errorCode', traits => ['Unwrapped','NameInRequest']);
-  has ErrorDetails => (is => 'ro', isa => 'Str', xmlname => 'errorDetails', request_name => 'errorDetails', traits => ['Unwrapped','NameInRequest']);
-  has Id => (is => 'ro', isa => 'Str', xmlname => 'id', request_name => 'id', traits => ['Unwrapped','NameInRequest']);
-  has IsTerminal => (is => 'ro', isa => 'Bool', xmlname => 'isTerminal', request_name => 'isTerminal', traits => ['Unwrapped','NameInRequest']);
-  has Location => (is => 'ro', isa => 'Paws::Lightsail::ResourceLocation', xmlname => 'location', request_name => 'location', traits => ['Unwrapped','NameInRequest']);
-  has OperationDetails => (is => 'ro', isa => 'Str', xmlname => 'operationDetails', request_name => 'operationDetails', traits => ['Unwrapped','NameInRequest']);
-  has OperationType => (is => 'ro', isa => 'Str', xmlname => 'operationType', request_name => 'operationType', traits => ['Unwrapped','NameInRequest']);
-  has ResourceName => (is => 'ro', isa => 'Str', xmlname => 'resourceName', request_name => 'resourceName', traits => ['Unwrapped','NameInRequest']);
-  has ResourceType => (is => 'ro', isa => 'Str', xmlname => 'resourceType', request_name => 'resourceType', traits => ['Unwrapped','NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', xmlname => 'status', request_name => 'status', traits => ['Unwrapped','NameInRequest']);
-  has StatusChangedAt => (is => 'ro', isa => 'Str', xmlname => 'statusChangedAt', request_name => 'statusChangedAt', traits => ['Unwrapped','NameInRequest']);
+  has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest']);
+  has ErrorCode => (is => 'ro', isa => 'Str', request_name => 'errorCode', traits => ['NameInRequest']);
+  has ErrorDetails => (is => 'ro', isa => 'Str', request_name => 'errorDetails', traits => ['NameInRequest']);
+  has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest']);
+  has IsTerminal => (is => 'ro', isa => 'Bool', request_name => 'isTerminal', traits => ['NameInRequest']);
+  has Location => (is => 'ro', isa => 'Paws::Lightsail::ResourceLocation', request_name => 'location', traits => ['NameInRequest']);
+  has OperationDetails => (is => 'ro', isa => 'Str', request_name => 'operationDetails', traits => ['NameInRequest']);
+  has OperationType => (is => 'ro', isa => 'Str', request_name => 'operationType', traits => ['NameInRequest']);
+  has ResourceName => (is => 'ro', isa => 'Str', request_name => 'resourceName', traits => ['NameInRequest']);
+  has ResourceType => (is => 'ro', isa => 'Str', request_name => 'resourceType', traits => ['NameInRequest']);
+  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+  has StatusChangedAt => (is => 'ro', isa => 'Str', request_name => 'statusChangedAt', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

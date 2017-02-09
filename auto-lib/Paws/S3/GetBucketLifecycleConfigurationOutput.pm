@@ -1,7 +1,7 @@
 
 package Paws::S3::GetBucketLifecycleConfigurationOutput;
   use Moose;
-  has Rules => (is => 'ro', isa => 'ArrayRef[Paws::S3::LifecycleRule]', traits => ['Unwrapped'], xmlname => 'Rule');
+  has Rules => (is => 'ro', isa => 'ArrayRef[Paws::S3::LifecycleRule]', traits => ['NameInRequest'], request_name => 'Rule');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

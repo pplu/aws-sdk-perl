@@ -1,7 +1,7 @@
 package Paws::Inspector::AgentFilter;
   use Moose;
-  has AgentHealthCodes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'agentHealthCodes', request_name => 'agentHealthCodes', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has AgentHealths => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'agentHealths', request_name => 'agentHealths', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has AgentHealthCodes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'agentHealthCodes', traits => ['NameInRequest'], required => 1);
+  has AgentHealths => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'agentHealths', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###

@@ -1,11 +1,11 @@
 package Paws::SimpleWorkflow::ActivityTypeConfiguration;
   use Moose;
-  has DefaultTaskHeartbeatTimeout => (is => 'ro', isa => 'Str', xmlname => 'defaultTaskHeartbeatTimeout', request_name => 'defaultTaskHeartbeatTimeout', traits => ['Unwrapped','NameInRequest']);
-  has DefaultTaskList => (is => 'ro', isa => 'Paws::SimpleWorkflow::TaskList', xmlname => 'defaultTaskList', request_name => 'defaultTaskList', traits => ['Unwrapped','NameInRequest']);
-  has DefaultTaskPriority => (is => 'ro', isa => 'Str', xmlname => 'defaultTaskPriority', request_name => 'defaultTaskPriority', traits => ['Unwrapped','NameInRequest']);
-  has DefaultTaskScheduleToCloseTimeout => (is => 'ro', isa => 'Str', xmlname => 'defaultTaskScheduleToCloseTimeout', request_name => 'defaultTaskScheduleToCloseTimeout', traits => ['Unwrapped','NameInRequest']);
-  has DefaultTaskScheduleToStartTimeout => (is => 'ro', isa => 'Str', xmlname => 'defaultTaskScheduleToStartTimeout', request_name => 'defaultTaskScheduleToStartTimeout', traits => ['Unwrapped','NameInRequest']);
-  has DefaultTaskStartToCloseTimeout => (is => 'ro', isa => 'Str', xmlname => 'defaultTaskStartToCloseTimeout', request_name => 'defaultTaskStartToCloseTimeout', traits => ['Unwrapped','NameInRequest']);
+  has DefaultTaskHeartbeatTimeout => (is => 'ro', isa => 'Str', request_name => 'defaultTaskHeartbeatTimeout', traits => ['NameInRequest']);
+  has DefaultTaskList => (is => 'ro', isa => 'Paws::SimpleWorkflow::TaskList', request_name => 'defaultTaskList', traits => ['NameInRequest']);
+  has DefaultTaskPriority => (is => 'ro', isa => 'Str', request_name => 'defaultTaskPriority', traits => ['NameInRequest']);
+  has DefaultTaskScheduleToCloseTimeout => (is => 'ro', isa => 'Str', request_name => 'defaultTaskScheduleToCloseTimeout', traits => ['NameInRequest']);
+  has DefaultTaskScheduleToStartTimeout => (is => 'ro', isa => 'Str', request_name => 'defaultTaskScheduleToStartTimeout', traits => ['NameInRequest']);
+  has DefaultTaskStartToCloseTimeout => (is => 'ro', isa => 'Str', request_name => 'defaultTaskStartToCloseTimeout', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

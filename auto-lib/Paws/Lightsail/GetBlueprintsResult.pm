@@ -1,8 +1,8 @@
 
 package Paws::Lightsail::GetBlueprintsResult;
   use Moose;
-  has Blueprints => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::Blueprint]', traits => ['Unwrapped'], xmlname => 'blueprints' );
-  has NextPageToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextPageToken' );
+  has Blueprints => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::Blueprint]', traits => ['NameInRequest'], request_name => 'blueprints' );
+  has NextPageToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextPageToken' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

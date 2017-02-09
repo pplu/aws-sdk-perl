@@ -1,10 +1,10 @@
 package Paws::CodeDeploy::GenericRevisionInfo;
   use Moose;
-  has DeploymentGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'deploymentGroups', request_name => 'deploymentGroups', traits => ['Unwrapped','NameInRequest']);
-  has Description => (is => 'ro', isa => 'Str', xmlname => 'description', request_name => 'description', traits => ['Unwrapped','NameInRequest']);
-  has FirstUsedTime => (is => 'ro', isa => 'Str', xmlname => 'firstUsedTime', request_name => 'firstUsedTime', traits => ['Unwrapped','NameInRequest']);
-  has LastUsedTime => (is => 'ro', isa => 'Str', xmlname => 'lastUsedTime', request_name => 'lastUsedTime', traits => ['Unwrapped','NameInRequest']);
-  has RegisterTime => (is => 'ro', isa => 'Str', xmlname => 'registerTime', request_name => 'registerTime', traits => ['Unwrapped','NameInRequest']);
+  has DeploymentGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'deploymentGroups', traits => ['NameInRequest']);
+  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
+  has FirstUsedTime => (is => 'ro', isa => 'Str', request_name => 'firstUsedTime', traits => ['NameInRequest']);
+  has LastUsedTime => (is => 'ro', isa => 'Str', request_name => 'lastUsedTime', traits => ['NameInRequest']);
+  has RegisterTime => (is => 'ro', isa => 'Str', request_name => 'registerTime', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

@@ -2,7 +2,7 @@
 package Paws::RedShift::TableRestoreStatusMessage;
   use Moose;
   has Marker => (is => 'ro', isa => 'Str');
-  has TableRestoreStatusDetails => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::TableRestoreStatus]', xmlname => 'TableRestoreStatus', traits => ['Unwrapped',]);
+  has TableRestoreStatusDetails => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::TableRestoreStatus]', request_name => 'TableRestoreStatus', traits => ['NameInRequest',]);
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

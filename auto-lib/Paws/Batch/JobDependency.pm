@@ -1,6 +1,6 @@
 package Paws::Batch::JobDependency;
   use Moose;
-  has JobId => (is => 'ro', isa => 'Str', xmlname => 'jobId', request_name => 'jobId', traits => ['Unwrapped','NameInRequest']);
+  has JobId => (is => 'ro', isa => 'Str', request_name => 'jobId', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

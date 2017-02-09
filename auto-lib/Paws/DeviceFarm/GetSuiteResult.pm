@@ -1,7 +1,7 @@
 
 package Paws::DeviceFarm::GetSuiteResult;
   use Moose;
-  has Suite => (is => 'ro', isa => 'Paws::DeviceFarm::Suite', traits => ['Unwrapped'], xmlname => 'suite' );
+  has Suite => (is => 'ro', isa => 'Paws::DeviceFarm::Suite', traits => ['NameInRequest'], request_name => 'suite' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

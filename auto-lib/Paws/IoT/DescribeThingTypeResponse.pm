@@ -1,9 +1,9 @@
 
 package Paws::IoT::DescribeThingTypeResponse;
   use Moose;
-  has ThingTypeMetadata => (is => 'ro', isa => 'Paws::IoT::ThingTypeMetadata', traits => ['Unwrapped'], xmlname => 'thingTypeMetadata');
-  has ThingTypeName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'thingTypeName');
-  has ThingTypeProperties => (is => 'ro', isa => 'Paws::IoT::ThingTypeProperties', traits => ['Unwrapped'], xmlname => 'thingTypeProperties');
+  has ThingTypeMetadata => (is => 'ro', isa => 'Paws::IoT::ThingTypeMetadata', traits => ['NameInRequest'], request_name => 'thingTypeMetadata');
+  has ThingTypeName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'thingTypeName');
+  has ThingTypeProperties => (is => 'ro', isa => 'Paws::IoT::ThingTypeProperties', traits => ['NameInRequest'], request_name => 'thingTypeProperties');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

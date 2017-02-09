@@ -1,8 +1,8 @@
 
 package Paws::Health::DescribeEventAggregatesResponse;
   use Moose;
-  has EventAggregates => (is => 'ro', isa => 'ArrayRef[Paws::Health::EventAggregate]', traits => ['Unwrapped'], xmlname => 'eventAggregates' );
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
+  has EventAggregates => (is => 'ro', isa => 'ArrayRef[Paws::Health::EventAggregate]', traits => ['NameInRequest'], request_name => 'eventAggregates' );
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

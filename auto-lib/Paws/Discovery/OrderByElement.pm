@@ -1,7 +1,7 @@
 package Paws::Discovery::OrderByElement;
   use Moose;
-  has FieldName => (is => 'ro', isa => 'Str', xmlname => 'fieldName', request_name => 'fieldName', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has SortOrder => (is => 'ro', isa => 'Str', xmlname => 'sortOrder', request_name => 'sortOrder', traits => ['Unwrapped','NameInRequest']);
+  has FieldName => (is => 'ro', isa => 'Str', request_name => 'fieldName', traits => ['NameInRequest'], required => 1);
+  has SortOrder => (is => 'ro', isa => 'Str', request_name => 'sortOrder', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

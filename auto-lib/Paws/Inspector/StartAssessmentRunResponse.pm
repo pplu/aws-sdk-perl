@@ -1,7 +1,7 @@
 
 package Paws::Inspector::StartAssessmentRunResponse;
   use Moose;
-  has AssessmentRunArn => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'assessmentRunArn' , required => 1);
+  has AssessmentRunArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'assessmentRunArn' , required => 1);
 
   has _request_id => (is => 'ro', isa => 'Str');
 

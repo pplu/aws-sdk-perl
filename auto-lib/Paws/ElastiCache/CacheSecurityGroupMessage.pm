@@ -1,7 +1,7 @@
 
 package Paws::ElastiCache::CacheSecurityGroupMessage;
   use Moose;
-  has CacheSecurityGroups => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::CacheSecurityGroup]', xmlname => 'CacheSecurityGroup', traits => ['Unwrapped',]);
+  has CacheSecurityGroups => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::CacheSecurityGroup]', request_name => 'CacheSecurityGroup', traits => ['NameInRequest',]);
   has Marker => (is => 'ro', isa => 'Str');
 
   has _request_id => (is => 'ro', isa => 'Str');

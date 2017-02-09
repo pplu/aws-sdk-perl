@@ -1,11 +1,11 @@
 
 package Paws::ApiGateway::Resource;
   use Moose;
-  has Id => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'id');
-  has ParentId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'parentId');
-  has Path => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'path');
-  has PathPart => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'pathPart');
-  has ResourceMethods => (is => 'ro', isa => 'Paws::ApiGateway::MapOfMethod', traits => ['Unwrapped'], xmlname => 'resourceMethods');
+  has Id => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'id');
+  has ParentId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'parentId');
+  has Path => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'path');
+  has PathPart => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'pathPart');
+  has ResourceMethods => (is => 'ro', isa => 'Paws::ApiGateway::MapOfMethod', traits => ['NameInRequest'], request_name => 'resourceMethods');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

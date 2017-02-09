@@ -1,11 +1,11 @@
 
 package Paws::ApiGateway::IntegrationResponse;
   use Moose;
-  has ContentHandling => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'contentHandling');
-  has ResponseParameters => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['Unwrapped'], xmlname => 'responseParameters');
-  has ResponseTemplates => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['Unwrapped'], xmlname => 'responseTemplates');
-  has SelectionPattern => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'selectionPattern');
-  has StatusCode => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'statusCode');
+  has ContentHandling => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'contentHandling');
+  has ResponseParameters => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['NameInRequest'], request_name => 'responseParameters');
+  has ResponseTemplates => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['NameInRequest'], request_name => 'responseTemplates');
+  has SelectionPattern => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'selectionPattern');
+  has StatusCode => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'statusCode');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

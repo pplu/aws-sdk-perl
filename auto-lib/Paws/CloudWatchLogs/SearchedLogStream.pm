@@ -1,7 +1,7 @@
 package Paws::CloudWatchLogs::SearchedLogStream;
   use Moose;
-  has LogStreamName => (is => 'ro', isa => 'Str', xmlname => 'logStreamName', request_name => 'logStreamName', traits => ['Unwrapped','NameInRequest']);
-  has SearchedCompletely => (is => 'ro', isa => 'Bool', xmlname => 'searchedCompletely', request_name => 'searchedCompletely', traits => ['Unwrapped','NameInRequest']);
+  has LogStreamName => (is => 'ro', isa => 'Str', request_name => 'logStreamName', traits => ['NameInRequest']);
+  has SearchedCompletely => (is => 'ro', isa => 'Bool', request_name => 'searchedCompletely', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

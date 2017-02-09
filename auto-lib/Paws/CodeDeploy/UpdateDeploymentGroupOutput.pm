@@ -1,7 +1,7 @@
 
 package Paws::CodeDeploy::UpdateDeploymentGroupOutput;
   use Moose;
-  has HooksNotCleanedUp => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::AutoScalingGroup]', traits => ['Unwrapped'], xmlname => 'hooksNotCleanedUp' );
+  has HooksNotCleanedUp => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::AutoScalingGroup]', traits => ['NameInRequest'], request_name => 'hooksNotCleanedUp' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

@@ -1,8 +1,8 @@
 package Paws::EC2::VpcClassicLink;
   use Moose;
-  has ClassicLinkEnabled => (is => 'ro', isa => 'Bool', xmlname => 'classicLinkEnabled', traits => ['Unwrapped']);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', xmlname => 'tagSet', traits => ['Unwrapped']);
-  has VpcId => (is => 'ro', isa => 'Str', xmlname => 'vpcId', traits => ['Unwrapped']);
+  has ClassicLinkEnabled => (is => 'ro', isa => 'Bool', request_name => 'classicLinkEnabled', traits => ['NameInRequest']);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest']);
+  has VpcId => (is => 'ro', isa => 'Str', request_name => 'vpcId', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

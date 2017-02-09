@@ -1,8 +1,8 @@
 package Paws::Health::EventDetailsErrorItem;
   use Moose;
-  has ErrorMessage => (is => 'ro', isa => 'Str', xmlname => 'errorMessage', request_name => 'errorMessage', traits => ['Unwrapped','NameInRequest']);
-  has ErrorName => (is => 'ro', isa => 'Str', xmlname => 'errorName', request_name => 'errorName', traits => ['Unwrapped','NameInRequest']);
-  has EventArn => (is => 'ro', isa => 'Str', xmlname => 'eventArn', request_name => 'eventArn', traits => ['Unwrapped','NameInRequest']);
+  has ErrorMessage => (is => 'ro', isa => 'Str', request_name => 'errorMessage', traits => ['NameInRequest']);
+  has ErrorName => (is => 'ro', isa => 'Str', request_name => 'errorName', traits => ['NameInRequest']);
+  has EventArn => (is => 'ro', isa => 'Str', request_name => 'eventArn', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

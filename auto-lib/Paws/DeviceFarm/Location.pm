@@ -1,7 +1,7 @@
 package Paws::DeviceFarm::Location;
   use Moose;
-  has Latitude => (is => 'ro', isa => 'Num', xmlname => 'latitude', request_name => 'latitude', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has Longitude => (is => 'ro', isa => 'Num', xmlname => 'longitude', request_name => 'longitude', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has Latitude => (is => 'ro', isa => 'Num', request_name => 'latitude', traits => ['NameInRequest'], required => 1);
+  has Longitude => (is => 'ro', isa => 'Num', request_name => 'longitude', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###

@@ -1,11 +1,11 @@
 package Paws::EC2::VpnGateway;
   use Moose;
-  has AvailabilityZone => (is => 'ro', isa => 'Str', xmlname => 'availabilityZone', traits => ['Unwrapped']);
-  has State => (is => 'ro', isa => 'Str', xmlname => 'state', traits => ['Unwrapped']);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', xmlname => 'tagSet', traits => ['Unwrapped']);
-  has Type => (is => 'ro', isa => 'Str', xmlname => 'type', traits => ['Unwrapped']);
-  has VpcAttachments => (is => 'ro', isa => 'ArrayRef[Paws::EC2::VpcAttachment]', xmlname => 'attachments', traits => ['Unwrapped']);
-  has VpnGatewayId => (is => 'ro', isa => 'Str', xmlname => 'vpnGatewayId', traits => ['Unwrapped']);
+  has AvailabilityZone => (is => 'ro', isa => 'Str', request_name => 'availabilityZone', traits => ['NameInRequest']);
+  has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest']);
+  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
+  has VpcAttachments => (is => 'ro', isa => 'ArrayRef[Paws::EC2::VpcAttachment]', request_name => 'attachments', traits => ['NameInRequest']);
+  has VpnGatewayId => (is => 'ro', isa => 'Str', request_name => 'vpnGatewayId', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

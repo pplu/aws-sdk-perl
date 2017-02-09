@@ -1,10 +1,10 @@
 package Paws::ECR::Repository;
   use Moose;
-  has CreatedAt => (is => 'ro', isa => 'Str', xmlname => 'createdAt', request_name => 'createdAt', traits => ['Unwrapped','NameInRequest']);
-  has RegistryId => (is => 'ro', isa => 'Str', xmlname => 'registryId', request_name => 'registryId', traits => ['Unwrapped','NameInRequest']);
-  has RepositoryArn => (is => 'ro', isa => 'Str', xmlname => 'repositoryArn', request_name => 'repositoryArn', traits => ['Unwrapped','NameInRequest']);
-  has RepositoryName => (is => 'ro', isa => 'Str', xmlname => 'repositoryName', request_name => 'repositoryName', traits => ['Unwrapped','NameInRequest']);
-  has RepositoryUri => (is => 'ro', isa => 'Str', xmlname => 'repositoryUri', request_name => 'repositoryUri', traits => ['Unwrapped','NameInRequest']);
+  has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest']);
+  has RegistryId => (is => 'ro', isa => 'Str', request_name => 'registryId', traits => ['NameInRequest']);
+  has RepositoryArn => (is => 'ro', isa => 'Str', request_name => 'repositoryArn', traits => ['NameInRequest']);
+  has RepositoryName => (is => 'ro', isa => 'Str', request_name => 'repositoryName', traits => ['NameInRequest']);
+  has RepositoryUri => (is => 'ro', isa => 'Str', request_name => 'repositoryUri', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

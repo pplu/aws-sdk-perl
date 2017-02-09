@@ -1,7 +1,7 @@
 package Paws::Lightsail::ResourceLocation;
   use Moose;
-  has AvailabilityZone => (is => 'ro', isa => 'Str', xmlname => 'availabilityZone', request_name => 'availabilityZone', traits => ['Unwrapped','NameInRequest']);
-  has RegionName => (is => 'ro', isa => 'Str', xmlname => 'regionName', request_name => 'regionName', traits => ['Unwrapped','NameInRequest']);
+  has AvailabilityZone => (is => 'ro', isa => 'Str', request_name => 'availabilityZone', traits => ['NameInRequest']);
+  has RegionName => (is => 'ro', isa => 'Str', request_name => 'regionName', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

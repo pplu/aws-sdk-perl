@@ -1,8 +1,8 @@
 
 package Paws::IoT::ListPolicyPrincipalsResponse;
   use Moose;
-  has NextMarker => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextMarker');
-  has Principals => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['Unwrapped'], xmlname => 'principals');
+  has NextMarker => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextMarker');
+  has Principals => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'principals');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

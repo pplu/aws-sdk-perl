@@ -1,11 +1,11 @@
 package Paws::CodeBuild::BuildPhase;
   use Moose;
-  has Contexts => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::PhaseContext]', xmlname => 'contexts', request_name => 'contexts', traits => ['Unwrapped','NameInRequest']);
-  has DurationInSeconds => (is => 'ro', isa => 'Int', xmlname => 'durationInSeconds', request_name => 'durationInSeconds', traits => ['Unwrapped','NameInRequest']);
-  has EndTime => (is => 'ro', isa => 'Str', xmlname => 'endTime', request_name => 'endTime', traits => ['Unwrapped','NameInRequest']);
-  has PhaseStatus => (is => 'ro', isa => 'Str', xmlname => 'phaseStatus', request_name => 'phaseStatus', traits => ['Unwrapped','NameInRequest']);
-  has PhaseType => (is => 'ro', isa => 'Str', xmlname => 'phaseType', request_name => 'phaseType', traits => ['Unwrapped','NameInRequest']);
-  has StartTime => (is => 'ro', isa => 'Str', xmlname => 'startTime', request_name => 'startTime', traits => ['Unwrapped','NameInRequest']);
+  has Contexts => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::PhaseContext]', request_name => 'contexts', traits => ['NameInRequest']);
+  has DurationInSeconds => (is => 'ro', isa => 'Int', request_name => 'durationInSeconds', traits => ['NameInRequest']);
+  has EndTime => (is => 'ro', isa => 'Str', request_name => 'endTime', traits => ['NameInRequest']);
+  has PhaseStatus => (is => 'ro', isa => 'Str', request_name => 'phaseStatus', traits => ['NameInRequest']);
+  has PhaseType => (is => 'ro', isa => 'Str', request_name => 'phaseType', traits => ['NameInRequest']);
+  has StartTime => (is => 'ro', isa => 'Str', request_name => 'startTime', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

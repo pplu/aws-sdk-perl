@@ -1,7 +1,7 @@
 package Paws::ECS::PlacementStrategy;
   use Moose;
-  has Field => (is => 'ro', isa => 'Str', xmlname => 'field', request_name => 'field', traits => ['Unwrapped','NameInRequest']);
-  has Type => (is => 'ro', isa => 'Str', xmlname => 'type', request_name => 'type', traits => ['Unwrapped','NameInRequest']);
+  has Field => (is => 'ro', isa => 'Str', request_name => 'field', traits => ['NameInRequest']);
+  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

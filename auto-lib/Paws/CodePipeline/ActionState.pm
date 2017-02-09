@@ -1,10 +1,10 @@
 package Paws::CodePipeline::ActionState;
   use Moose;
-  has ActionName => (is => 'ro', isa => 'Str', xmlname => 'actionName', request_name => 'actionName', traits => ['Unwrapped','NameInRequest']);
-  has CurrentRevision => (is => 'ro', isa => 'Paws::CodePipeline::ActionRevision', xmlname => 'currentRevision', request_name => 'currentRevision', traits => ['Unwrapped','NameInRequest']);
-  has EntityUrl => (is => 'ro', isa => 'Str', xmlname => 'entityUrl', request_name => 'entityUrl', traits => ['Unwrapped','NameInRequest']);
-  has LatestExecution => (is => 'ro', isa => 'Paws::CodePipeline::ActionExecution', xmlname => 'latestExecution', request_name => 'latestExecution', traits => ['Unwrapped','NameInRequest']);
-  has RevisionUrl => (is => 'ro', isa => 'Str', xmlname => 'revisionUrl', request_name => 'revisionUrl', traits => ['Unwrapped','NameInRequest']);
+  has ActionName => (is => 'ro', isa => 'Str', request_name => 'actionName', traits => ['NameInRequest']);
+  has CurrentRevision => (is => 'ro', isa => 'Paws::CodePipeline::ActionRevision', request_name => 'currentRevision', traits => ['NameInRequest']);
+  has EntityUrl => (is => 'ro', isa => 'Str', request_name => 'entityUrl', traits => ['NameInRequest']);
+  has LatestExecution => (is => 'ro', isa => 'Paws::CodePipeline::ActionExecution', request_name => 'latestExecution', traits => ['NameInRequest']);
+  has RevisionUrl => (is => 'ro', isa => 'Str', request_name => 'revisionUrl', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

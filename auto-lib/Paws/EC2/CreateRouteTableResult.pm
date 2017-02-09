@@ -1,7 +1,7 @@
 
 package Paws::EC2::CreateRouteTableResult;
   use Moose;
-  has RouteTable => (is => 'ro', isa => 'Paws::EC2::RouteTable', xmlname => 'routeTable', traits => ['Unwrapped',]);
+  has RouteTable => (is => 'ro', isa => 'Paws::EC2::RouteTable', request_name => 'routeTable', traits => ['NameInRequest',]);
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

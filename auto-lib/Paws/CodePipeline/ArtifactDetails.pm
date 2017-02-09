@@ -1,7 +1,7 @@
 package Paws::CodePipeline::ArtifactDetails;
   use Moose;
-  has MaximumCount => (is => 'ro', isa => 'Int', xmlname => 'maximumCount', request_name => 'maximumCount', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has MinimumCount => (is => 'ro', isa => 'Int', xmlname => 'minimumCount', request_name => 'minimumCount', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has MaximumCount => (is => 'ro', isa => 'Int', request_name => 'maximumCount', traits => ['NameInRequest'], required => 1);
+  has MinimumCount => (is => 'ro', isa => 'Int', request_name => 'minimumCount', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###

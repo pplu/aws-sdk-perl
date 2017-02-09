@@ -1,8 +1,8 @@
 
 package Paws::SQS::ChangeMessageVisibilityBatchResult;
   use Moose;
-  has Failed => (is => 'ro', isa => 'ArrayRef[Paws::SQS::BatchResultErrorEntry]', xmlname => 'BatchResultErrorEntry', traits => ['Unwrapped',], required => 1);
-  has Successful => (is => 'ro', isa => 'ArrayRef[Paws::SQS::ChangeMessageVisibilityBatchResultEntry]', xmlname => 'ChangeMessageVisibilityBatchResultEntry', traits => ['Unwrapped',], required => 1);
+  has Failed => (is => 'ro', isa => 'ArrayRef[Paws::SQS::BatchResultErrorEntry]', request_name => 'BatchResultErrorEntry', traits => ['NameInRequest',], required => 1);
+  has Successful => (is => 'ro', isa => 'ArrayRef[Paws::SQS::ChangeMessageVisibilityBatchResultEntry]', request_name => 'ChangeMessageVisibilityBatchResultEntry', traits => ['NameInRequest',], required => 1);
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

@@ -1,15 +1,15 @@
 
 package Paws::ApiGateway::Method;
   use Moose;
-  has ApiKeyRequired => (is => 'ro', isa => 'Bool', traits => ['Unwrapped'], xmlname => 'apiKeyRequired');
-  has AuthorizationType => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'authorizationType');
-  has AuthorizerId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'authorizerId');
-  has HttpMethod => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'httpMethod');
-  has MethodIntegration => (is => 'ro', isa => 'Paws::ApiGateway::Integration', traits => ['Unwrapped'], xmlname => 'methodIntegration');
-  has MethodResponses => (is => 'ro', isa => 'Paws::ApiGateway::MapOfMethodResponse', traits => ['Unwrapped'], xmlname => 'methodResponses');
-  has OperationName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'operationName');
-  has RequestModels => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['Unwrapped'], xmlname => 'requestModels');
-  has RequestParameters => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToBoolean', traits => ['Unwrapped'], xmlname => 'requestParameters');
+  has ApiKeyRequired => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'apiKeyRequired');
+  has AuthorizationType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'authorizationType');
+  has AuthorizerId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'authorizerId');
+  has HttpMethod => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'httpMethod');
+  has MethodIntegration => (is => 'ro', isa => 'Paws::ApiGateway::Integration', traits => ['NameInRequest'], request_name => 'methodIntegration');
+  has MethodResponses => (is => 'ro', isa => 'Paws::ApiGateway::MapOfMethodResponse', traits => ['NameInRequest'], request_name => 'methodResponses');
+  has OperationName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'operationName');
+  has RequestModels => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['NameInRequest'], request_name => 'requestModels');
+  has RequestParameters => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToBoolean', traits => ['NameInRequest'], request_name => 'requestParameters');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

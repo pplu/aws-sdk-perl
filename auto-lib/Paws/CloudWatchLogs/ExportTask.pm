@@ -1,14 +1,14 @@
 package Paws::CloudWatchLogs::ExportTask;
   use Moose;
-  has Destination => (is => 'ro', isa => 'Str', xmlname => 'destination', request_name => 'destination', traits => ['Unwrapped','NameInRequest']);
-  has DestinationPrefix => (is => 'ro', isa => 'Str', xmlname => 'destinationPrefix', request_name => 'destinationPrefix', traits => ['Unwrapped','NameInRequest']);
-  has ExecutionInfo => (is => 'ro', isa => 'Paws::CloudWatchLogs::ExportTaskExecutionInfo', xmlname => 'executionInfo', request_name => 'executionInfo', traits => ['Unwrapped','NameInRequest']);
-  has From => (is => 'ro', isa => 'Int', xmlname => 'from', request_name => 'from', traits => ['Unwrapped','NameInRequest']);
-  has LogGroupName => (is => 'ro', isa => 'Str', xmlname => 'logGroupName', request_name => 'logGroupName', traits => ['Unwrapped','NameInRequest']);
-  has Status => (is => 'ro', isa => 'Paws::CloudWatchLogs::ExportTaskStatus', xmlname => 'status', request_name => 'status', traits => ['Unwrapped','NameInRequest']);
-  has TaskId => (is => 'ro', isa => 'Str', xmlname => 'taskId', request_name => 'taskId', traits => ['Unwrapped','NameInRequest']);
-  has TaskName => (is => 'ro', isa => 'Str', xmlname => 'taskName', request_name => 'taskName', traits => ['Unwrapped','NameInRequest']);
-  has To => (is => 'ro', isa => 'Int', xmlname => 'to', request_name => 'to', traits => ['Unwrapped','NameInRequest']);
+  has Destination => (is => 'ro', isa => 'Str', request_name => 'destination', traits => ['NameInRequest']);
+  has DestinationPrefix => (is => 'ro', isa => 'Str', request_name => 'destinationPrefix', traits => ['NameInRequest']);
+  has ExecutionInfo => (is => 'ro', isa => 'Paws::CloudWatchLogs::ExportTaskExecutionInfo', request_name => 'executionInfo', traits => ['NameInRequest']);
+  has From => (is => 'ro', isa => 'Int', request_name => 'from', traits => ['NameInRequest']);
+  has LogGroupName => (is => 'ro', isa => 'Str', request_name => 'logGroupName', traits => ['NameInRequest']);
+  has Status => (is => 'ro', isa => 'Paws::CloudWatchLogs::ExportTaskStatus', request_name => 'status', traits => ['NameInRequest']);
+  has TaskId => (is => 'ro', isa => 'Str', request_name => 'taskId', traits => ['NameInRequest']);
+  has TaskName => (is => 'ro', isa => 'Str', request_name => 'taskName', traits => ['NameInRequest']);
+  has To => (is => 'ro', isa => 'Int', request_name => 'to', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

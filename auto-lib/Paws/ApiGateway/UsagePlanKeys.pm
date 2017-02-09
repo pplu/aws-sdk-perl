@@ -1,8 +1,8 @@
 
 package Paws::ApiGateway::UsagePlanKeys;
   use Moose;
-  has Items => (is => 'ro', isa => 'ArrayRef[Paws::ApiGateway::UsagePlanKey]', traits => ['Unwrapped'], xmlname => 'items');
-  has Position => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'position');
+  has Items => (is => 'ro', isa => 'ArrayRef[Paws::ApiGateway::UsagePlanKey]', traits => ['NameInRequest'], request_name => 'items');
+  has Position => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'position');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

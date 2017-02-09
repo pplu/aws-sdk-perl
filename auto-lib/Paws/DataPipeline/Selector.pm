@@ -1,7 +1,7 @@
 package Paws::DataPipeline::Selector;
   use Moose;
-  has FieldName => (is => 'ro', isa => 'Str', xmlname => 'fieldName', request_name => 'fieldName', traits => ['Unwrapped','NameInRequest']);
-  has Operator => (is => 'ro', isa => 'Paws::DataPipeline::Operator', xmlname => 'operator', request_name => 'operator', traits => ['Unwrapped','NameInRequest']);
+  has FieldName => (is => 'ro', isa => 'Str', request_name => 'fieldName', traits => ['NameInRequest']);
+  has Operator => (is => 'ro', isa => 'Paws::DataPipeline::Operator', request_name => 'operator', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

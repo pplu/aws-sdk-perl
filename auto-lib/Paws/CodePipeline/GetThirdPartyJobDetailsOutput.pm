@@ -1,7 +1,7 @@
 
 package Paws::CodePipeline::GetThirdPartyJobDetailsOutput;
   use Moose;
-  has JobDetails => (is => 'ro', isa => 'Paws::CodePipeline::ThirdPartyJobDetails', traits => ['Unwrapped'], xmlname => 'jobDetails' );
+  has JobDetails => (is => 'ro', isa => 'Paws::CodePipeline::ThirdPartyJobDetails', traits => ['NameInRequest'], request_name => 'jobDetails' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

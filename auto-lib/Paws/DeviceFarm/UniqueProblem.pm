@@ -1,7 +1,7 @@
 package Paws::DeviceFarm::UniqueProblem;
   use Moose;
-  has Message => (is => 'ro', isa => 'Str', xmlname => 'message', request_name => 'message', traits => ['Unwrapped','NameInRequest']);
-  has Problems => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::Problem]', xmlname => 'problems', request_name => 'problems', traits => ['Unwrapped','NameInRequest']);
+  has Message => (is => 'ro', isa => 'Str', request_name => 'message', traits => ['NameInRequest']);
+  has Problems => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::Problem]', request_name => 'problems', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

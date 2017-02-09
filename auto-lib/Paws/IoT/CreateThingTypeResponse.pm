@@ -1,8 +1,8 @@
 
 package Paws::IoT::CreateThingTypeResponse;
   use Moose;
-  has ThingTypeArn => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'thingTypeArn');
-  has ThingTypeName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'thingTypeName');
+  has ThingTypeArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'thingTypeArn');
+  has ThingTypeName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'thingTypeName');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

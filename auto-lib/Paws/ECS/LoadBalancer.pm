@@ -1,9 +1,9 @@
 package Paws::ECS::LoadBalancer;
   use Moose;
-  has ContainerName => (is => 'ro', isa => 'Str', xmlname => 'containerName', request_name => 'containerName', traits => ['Unwrapped','NameInRequest']);
-  has ContainerPort => (is => 'ro', isa => 'Int', xmlname => 'containerPort', request_name => 'containerPort', traits => ['Unwrapped','NameInRequest']);
-  has LoadBalancerName => (is => 'ro', isa => 'Str', xmlname => 'loadBalancerName', request_name => 'loadBalancerName', traits => ['Unwrapped','NameInRequest']);
-  has TargetGroupArn => (is => 'ro', isa => 'Str', xmlname => 'targetGroupArn', request_name => 'targetGroupArn', traits => ['Unwrapped','NameInRequest']);
+  has ContainerName => (is => 'ro', isa => 'Str', request_name => 'containerName', traits => ['NameInRequest']);
+  has ContainerPort => (is => 'ro', isa => 'Int', request_name => 'containerPort', traits => ['NameInRequest']);
+  has LoadBalancerName => (is => 'ro', isa => 'Str', request_name => 'loadBalancerName', traits => ['NameInRequest']);
+  has TargetGroupArn => (is => 'ro', isa => 'Str', request_name => 'targetGroupArn', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

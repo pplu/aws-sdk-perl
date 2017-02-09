@@ -1,8 +1,8 @@
 package Paws::EC2::InstanceStateChange;
   use Moose;
-  has CurrentState => (is => 'ro', isa => 'Paws::EC2::InstanceState', xmlname => 'currentState', traits => ['Unwrapped']);
-  has InstanceId => (is => 'ro', isa => 'Str', xmlname => 'instanceId', traits => ['Unwrapped']);
-  has PreviousState => (is => 'ro', isa => 'Paws::EC2::InstanceState', xmlname => 'previousState', traits => ['Unwrapped']);
+  has CurrentState => (is => 'ro', isa => 'Paws::EC2::InstanceState', request_name => 'currentState', traits => ['NameInRequest']);
+  has InstanceId => (is => 'ro', isa => 'Str', request_name => 'instanceId', traits => ['NameInRequest']);
+  has PreviousState => (is => 'ro', isa => 'Paws::EC2::InstanceState', request_name => 'previousState', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

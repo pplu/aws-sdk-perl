@@ -1,7 +1,7 @@
 
 package Paws::DeviceFarm::GetTestResult;
   use Moose;
-  has Test => (is => 'ro', isa => 'Paws::DeviceFarm::Test', traits => ['Unwrapped'], xmlname => 'test' );
+  has Test => (is => 'ro', isa => 'Paws::DeviceFarm::Test', traits => ['NameInRequest'], request_name => 'test' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

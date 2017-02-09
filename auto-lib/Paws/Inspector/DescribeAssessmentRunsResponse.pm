@@ -1,8 +1,8 @@
 
 package Paws::Inspector::DescribeAssessmentRunsResponse;
   use Moose;
-  has AssessmentRuns => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::AssessmentRun]', traits => ['Unwrapped'], xmlname => 'assessmentRuns' , required => 1);
-  has FailedItems => (is => 'ro', isa => 'Paws::Inspector::FailedItems', traits => ['Unwrapped'], xmlname => 'failedItems' , required => 1);
+  has AssessmentRuns => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::AssessmentRun]', traits => ['NameInRequest'], request_name => 'assessmentRuns' , required => 1);
+  has FailedItems => (is => 'ro', isa => 'Paws::Inspector::FailedItems', traits => ['NameInRequest'], request_name => 'failedItems' , required => 1);
 
   has _request_id => (is => 'ro', isa => 'Str');
 

@@ -1,9 +1,9 @@
 
 package Paws::Inspector::DescribeCrossAccountAccessRoleResponse;
   use Moose;
-  has RegisteredAt => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'registeredAt' , required => 1);
-  has RoleArn => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'roleArn' , required => 1);
-  has Valid => (is => 'ro', isa => 'Bool', traits => ['Unwrapped'], xmlname => 'valid' , required => 1);
+  has RegisteredAt => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'registeredAt' , required => 1);
+  has RoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'roleArn' , required => 1);
+  has Valid => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'valid' , required => 1);
 
   has _request_id => (is => 'ro', isa => 'Str');
 

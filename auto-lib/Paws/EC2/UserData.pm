@@ -1,6 +1,6 @@
 package Paws::EC2::UserData;
   use Moose;
-  has Data => (is => 'ro', isa => 'Str', xmlname => 'data', traits => ['Unwrapped']);
+  has Data => (is => 'ro', isa => 'Str', request_name => 'data', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

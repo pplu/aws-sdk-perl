@@ -1,7 +1,7 @@
 
 package Paws::CloudWatchLogs::ListTagsLogGroupResponse;
   use Moose;
-  has Tags => (is => 'ro', isa => 'Paws::CloudWatchLogs::Tags', traits => ['Unwrapped'], xmlname => 'tags' );
+  has Tags => (is => 'ro', isa => 'Paws::CloudWatchLogs::Tags', traits => ['NameInRequest'], request_name => 'tags' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

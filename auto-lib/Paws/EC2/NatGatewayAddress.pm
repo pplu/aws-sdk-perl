@@ -1,9 +1,9 @@
 package Paws::EC2::NatGatewayAddress;
   use Moose;
-  has AllocationId => (is => 'ro', isa => 'Str', xmlname => 'allocationId', traits => ['Unwrapped']);
-  has NetworkInterfaceId => (is => 'ro', isa => 'Str', xmlname => 'networkInterfaceId', traits => ['Unwrapped']);
-  has PrivateIp => (is => 'ro', isa => 'Str', xmlname => 'privateIp', traits => ['Unwrapped']);
-  has PublicIp => (is => 'ro', isa => 'Str', xmlname => 'publicIp', traits => ['Unwrapped']);
+  has AllocationId => (is => 'ro', isa => 'Str', request_name => 'allocationId', traits => ['NameInRequest']);
+  has NetworkInterfaceId => (is => 'ro', isa => 'Str', request_name => 'networkInterfaceId', traits => ['NameInRequest']);
+  has PrivateIp => (is => 'ro', isa => 'Str', request_name => 'privateIp', traits => ['NameInRequest']);
+  has PublicIp => (is => 'ro', isa => 'Str', request_name => 'publicIp', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

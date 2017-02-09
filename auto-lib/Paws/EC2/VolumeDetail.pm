@@ -1,6 +1,6 @@
 package Paws::EC2::VolumeDetail;
   use Moose;
-  has Size => (is => 'ro', isa => 'Int', xmlname => 'size', traits => ['Unwrapped'], required => 1);
+  has Size => (is => 'ro', isa => 'Int', request_name => 'size', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###

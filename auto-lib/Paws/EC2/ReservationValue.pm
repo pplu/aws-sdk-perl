@@ -1,8 +1,8 @@
 package Paws::EC2::ReservationValue;
   use Moose;
-  has HourlyPrice => (is => 'ro', isa => 'Str', xmlname => 'hourlyPrice', traits => ['Unwrapped']);
-  has RemainingTotalValue => (is => 'ro', isa => 'Str', xmlname => 'remainingTotalValue', traits => ['Unwrapped']);
-  has RemainingUpfrontValue => (is => 'ro', isa => 'Str', xmlname => 'remainingUpfrontValue', traits => ['Unwrapped']);
+  has HourlyPrice => (is => 'ro', isa => 'Str', request_name => 'hourlyPrice', traits => ['NameInRequest']);
+  has RemainingTotalValue => (is => 'ro', isa => 'Str', request_name => 'remainingTotalValue', traits => ['NameInRequest']);
+  has RemainingUpfrontValue => (is => 'ro', isa => 'Str', request_name => 'remainingUpfrontValue', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

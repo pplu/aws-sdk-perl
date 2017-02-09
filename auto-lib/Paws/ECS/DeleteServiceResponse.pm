@@ -1,7 +1,7 @@
 
 package Paws::ECS::DeleteServiceResponse;
   use Moose;
-  has Service => (is => 'ro', isa => 'Paws::ECS::Service', traits => ['Unwrapped'], xmlname => 'service' );
+  has Service => (is => 'ro', isa => 'Paws::ECS::Service', traits => ['NameInRequest'], request_name => 'service' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

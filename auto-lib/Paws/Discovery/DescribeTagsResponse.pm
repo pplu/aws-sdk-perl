@@ -1,8 +1,8 @@
 
 package Paws::Discovery::DescribeTagsResponse;
   use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Discovery::ConfigurationTag]', traits => ['Unwrapped'], xmlname => 'tags' );
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Discovery::ConfigurationTag]', traits => ['NameInRequest'], request_name => 'tags' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

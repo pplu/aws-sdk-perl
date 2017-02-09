@@ -1,7 +1,7 @@
 
 package Paws::Lightsail::GetInstanceAccessDetailsResult;
   use Moose;
-  has AccessDetails => (is => 'ro', isa => 'Paws::Lightsail::InstanceAccessDetails', traits => ['Unwrapped'], xmlname => 'accessDetails' );
+  has AccessDetails => (is => 'ro', isa => 'Paws::Lightsail::InstanceAccessDetails', traits => ['NameInRequest'], request_name => 'accessDetails' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

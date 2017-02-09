@@ -1,8 +1,8 @@
 
 package Paws::StepFunctions::GetExecutionHistoryOutput;
   use Moose;
-  has Events => (is => 'ro', isa => 'ArrayRef[Paws::StepFunctions::HistoryEvent]', traits => ['Unwrapped'], xmlname => 'events' , required => 1);
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
+  has Events => (is => 'ro', isa => 'ArrayRef[Paws::StepFunctions::HistoryEvent]', traits => ['NameInRequest'], request_name => 'events' , required => 1);
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

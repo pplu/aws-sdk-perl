@@ -1,8 +1,8 @@
 package Paws::CodePipeline::StageDeclaration;
   use Moose;
-  has Actions => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::ActionDeclaration]', xmlname => 'actions', request_name => 'actions', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has Blockers => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::BlockerDeclaration]', xmlname => 'blockers', request_name => 'blockers', traits => ['Unwrapped','NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', xmlname => 'name', request_name => 'name', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has Actions => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::ActionDeclaration]', request_name => 'actions', traits => ['NameInRequest'], required => 1);
+  has Blockers => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::BlockerDeclaration]', request_name => 'blockers', traits => ['NameInRequest']);
+  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###

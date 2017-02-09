@@ -1,7 +1,7 @@
 
 package Paws::RDS::CertificateMessage;
   use Moose;
-  has Certificates => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Certificate]', xmlname => 'Certificate', traits => ['Unwrapped',]);
+  has Certificates => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Certificate]', request_name => 'Certificate', traits => ['NameInRequest',]);
   has Marker => (is => 'ro', isa => 'Str');
 
   has _request_id => (is => 'ro', isa => 'Str');

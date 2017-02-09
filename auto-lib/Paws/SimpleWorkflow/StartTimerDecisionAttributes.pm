@@ -1,8 +1,8 @@
 package Paws::SimpleWorkflow::StartTimerDecisionAttributes;
   use Moose;
-  has Control => (is => 'ro', isa => 'Str', xmlname => 'control', request_name => 'control', traits => ['Unwrapped','NameInRequest']);
-  has StartToFireTimeout => (is => 'ro', isa => 'Str', xmlname => 'startToFireTimeout', request_name => 'startToFireTimeout', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has TimerId => (is => 'ro', isa => 'Str', xmlname => 'timerId', request_name => 'timerId', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has Control => (is => 'ro', isa => 'Str', request_name => 'control', traits => ['NameInRequest']);
+  has StartToFireTimeout => (is => 'ro', isa => 'Str', request_name => 'startToFireTimeout', traits => ['NameInRequest'], required => 1);
+  has TimerId => (is => 'ro', isa => 'Str', request_name => 'timerId', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###

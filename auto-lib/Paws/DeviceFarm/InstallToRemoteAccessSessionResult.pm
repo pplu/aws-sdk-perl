@@ -1,7 +1,7 @@
 
 package Paws::DeviceFarm::InstallToRemoteAccessSessionResult;
   use Moose;
-  has AppUpload => (is => 'ro', isa => 'Paws::DeviceFarm::Upload', traits => ['Unwrapped'], xmlname => 'appUpload' );
+  has AppUpload => (is => 'ro', isa => 'Paws::DeviceFarm::Upload', traits => ['NameInRequest'], request_name => 'appUpload' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

@@ -1,7 +1,7 @@
 package Paws::ECS::TaskDefinitionPlacementConstraint;
   use Moose;
-  has Expression => (is => 'ro', isa => 'Str', xmlname => 'expression', request_name => 'expression', traits => ['Unwrapped','NameInRequest']);
-  has Type => (is => 'ro', isa => 'Str', xmlname => 'type', request_name => 'type', traits => ['Unwrapped','NameInRequest']);
+  has Expression => (is => 'ro', isa => 'Str', request_name => 'expression', traits => ['NameInRequest']);
+  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

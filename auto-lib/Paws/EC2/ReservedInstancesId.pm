@@ -1,6 +1,6 @@
 package Paws::EC2::ReservedInstancesId;
   use Moose;
-  has ReservedInstancesId => (is => 'ro', isa => 'Str', xmlname => 'reservedInstancesId', traits => ['Unwrapped']);
+  has ReservedInstancesId => (is => 'ro', isa => 'Str', request_name => 'reservedInstancesId', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

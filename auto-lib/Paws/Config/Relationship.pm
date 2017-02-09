@@ -1,9 +1,9 @@
 package Paws::Config::Relationship;
   use Moose;
-  has RelationshipName => (is => 'ro', isa => 'Str', xmlname => 'relationshipName', request_name => 'relationshipName', traits => ['Unwrapped','NameInRequest']);
-  has ResourceId => (is => 'ro', isa => 'Str', xmlname => 'resourceId', request_name => 'resourceId', traits => ['Unwrapped','NameInRequest']);
-  has ResourceName => (is => 'ro', isa => 'Str', xmlname => 'resourceName', request_name => 'resourceName', traits => ['Unwrapped','NameInRequest']);
-  has ResourceType => (is => 'ro', isa => 'Str', xmlname => 'resourceType', request_name => 'resourceType', traits => ['Unwrapped','NameInRequest']);
+  has RelationshipName => (is => 'ro', isa => 'Str', request_name => 'relationshipName', traits => ['NameInRequest']);
+  has ResourceId => (is => 'ro', isa => 'Str', request_name => 'resourceId', traits => ['NameInRequest']);
+  has ResourceName => (is => 'ro', isa => 'Str', request_name => 'resourceName', traits => ['NameInRequest']);
+  has ResourceType => (is => 'ro', isa => 'Str', request_name => 'resourceType', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

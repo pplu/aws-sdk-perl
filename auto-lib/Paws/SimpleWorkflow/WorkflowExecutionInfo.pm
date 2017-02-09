@@ -1,14 +1,14 @@
 package Paws::SimpleWorkflow::WorkflowExecutionInfo;
   use Moose;
-  has CancelRequested => (is => 'ro', isa => 'Bool', xmlname => 'cancelRequested', request_name => 'cancelRequested', traits => ['Unwrapped','NameInRequest']);
-  has CloseStatus => (is => 'ro', isa => 'Str', xmlname => 'closeStatus', request_name => 'closeStatus', traits => ['Unwrapped','NameInRequest']);
-  has CloseTimestamp => (is => 'ro', isa => 'Str', xmlname => 'closeTimestamp', request_name => 'closeTimestamp', traits => ['Unwrapped','NameInRequest']);
-  has Execution => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowExecution', xmlname => 'execution', request_name => 'execution', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has ExecutionStatus => (is => 'ro', isa => 'Str', xmlname => 'executionStatus', request_name => 'executionStatus', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has Parent => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowExecution', xmlname => 'parent', request_name => 'parent', traits => ['Unwrapped','NameInRequest']);
-  has StartTimestamp => (is => 'ro', isa => 'Str', xmlname => 'startTimestamp', request_name => 'startTimestamp', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has TagList => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'tagList', request_name => 'tagList', traits => ['Unwrapped','NameInRequest']);
-  has WorkflowType => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowType', xmlname => 'workflowType', request_name => 'workflowType', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has CancelRequested => (is => 'ro', isa => 'Bool', request_name => 'cancelRequested', traits => ['NameInRequest']);
+  has CloseStatus => (is => 'ro', isa => 'Str', request_name => 'closeStatus', traits => ['NameInRequest']);
+  has CloseTimestamp => (is => 'ro', isa => 'Str', request_name => 'closeTimestamp', traits => ['NameInRequest']);
+  has Execution => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowExecution', request_name => 'execution', traits => ['NameInRequest'], required => 1);
+  has ExecutionStatus => (is => 'ro', isa => 'Str', request_name => 'executionStatus', traits => ['NameInRequest'], required => 1);
+  has Parent => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowExecution', request_name => 'parent', traits => ['NameInRequest']);
+  has StartTimestamp => (is => 'ro', isa => 'Str', request_name => 'startTimestamp', traits => ['NameInRequest'], required => 1);
+  has TagList => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'tagList', traits => ['NameInRequest']);
+  has WorkflowType => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowType', request_name => 'workflowType', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###

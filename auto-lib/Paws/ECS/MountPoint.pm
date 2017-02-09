@@ -1,8 +1,8 @@
 package Paws::ECS::MountPoint;
   use Moose;
-  has ContainerPath => (is => 'ro', isa => 'Str', xmlname => 'containerPath', request_name => 'containerPath', traits => ['Unwrapped','NameInRequest']);
-  has ReadOnly => (is => 'ro', isa => 'Bool', xmlname => 'readOnly', request_name => 'readOnly', traits => ['Unwrapped','NameInRequest']);
-  has SourceVolume => (is => 'ro', isa => 'Str', xmlname => 'sourceVolume', request_name => 'sourceVolume', traits => ['Unwrapped','NameInRequest']);
+  has ContainerPath => (is => 'ro', isa => 'Str', request_name => 'containerPath', traits => ['NameInRequest']);
+  has ReadOnly => (is => 'ro', isa => 'Bool', request_name => 'readOnly', traits => ['NameInRequest']);
+  has SourceVolume => (is => 'ro', isa => 'Str', request_name => 'sourceVolume', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

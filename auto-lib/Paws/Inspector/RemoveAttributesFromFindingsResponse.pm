@@ -1,7 +1,7 @@
 
 package Paws::Inspector::RemoveAttributesFromFindingsResponse;
   use Moose;
-  has FailedItems => (is => 'ro', isa => 'Paws::Inspector::FailedItems', traits => ['Unwrapped'], xmlname => 'failedItems' , required => 1);
+  has FailedItems => (is => 'ro', isa => 'Paws::Inspector::FailedItems', traits => ['NameInRequest'], request_name => 'failedItems' , required => 1);
 
   has _request_id => (is => 'ro', isa => 'Str');
 

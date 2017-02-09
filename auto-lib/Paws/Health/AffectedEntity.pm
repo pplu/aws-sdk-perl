@@ -1,12 +1,12 @@
 package Paws::Health::AffectedEntity;
   use Moose;
-  has AwsAccountId => (is => 'ro', isa => 'Str', xmlname => 'awsAccountId', request_name => 'awsAccountId', traits => ['Unwrapped','NameInRequest']);
-  has EntityArn => (is => 'ro', isa => 'Str', xmlname => 'entityArn', request_name => 'entityArn', traits => ['Unwrapped','NameInRequest']);
-  has EntityValue => (is => 'ro', isa => 'Str', xmlname => 'entityValue', request_name => 'entityValue', traits => ['Unwrapped','NameInRequest']);
-  has EventArn => (is => 'ro', isa => 'Str', xmlname => 'eventArn', request_name => 'eventArn', traits => ['Unwrapped','NameInRequest']);
-  has LastUpdatedTime => (is => 'ro', isa => 'Str', xmlname => 'lastUpdatedTime', request_name => 'lastUpdatedTime', traits => ['Unwrapped','NameInRequest']);
-  has StatusCode => (is => 'ro', isa => 'Str', xmlname => 'statusCode', request_name => 'statusCode', traits => ['Unwrapped','NameInRequest']);
-  has Tags => (is => 'ro', isa => 'Paws::Health::TagSet', xmlname => 'tags', request_name => 'tags', traits => ['Unwrapped','NameInRequest']);
+  has AwsAccountId => (is => 'ro', isa => 'Str', request_name => 'awsAccountId', traits => ['NameInRequest']);
+  has EntityArn => (is => 'ro', isa => 'Str', request_name => 'entityArn', traits => ['NameInRequest']);
+  has EntityValue => (is => 'ro', isa => 'Str', request_name => 'entityValue', traits => ['NameInRequest']);
+  has EventArn => (is => 'ro', isa => 'Str', request_name => 'eventArn', traits => ['NameInRequest']);
+  has LastUpdatedTime => (is => 'ro', isa => 'Str', request_name => 'lastUpdatedTime', traits => ['NameInRequest']);
+  has StatusCode => (is => 'ro', isa => 'Str', request_name => 'statusCode', traits => ['NameInRequest']);
+  has Tags => (is => 'ro', isa => 'Paws::Health::TagSet', request_name => 'tags', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

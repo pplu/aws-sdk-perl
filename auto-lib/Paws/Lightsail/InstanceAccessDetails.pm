@@ -1,13 +1,13 @@
 package Paws::Lightsail::InstanceAccessDetails;
   use Moose;
-  has CertKey => (is => 'ro', isa => 'Str', xmlname => 'certKey', request_name => 'certKey', traits => ['Unwrapped','NameInRequest']);
-  has ExpiresAt => (is => 'ro', isa => 'Str', xmlname => 'expiresAt', request_name => 'expiresAt', traits => ['Unwrapped','NameInRequest']);
-  has InstanceName => (is => 'ro', isa => 'Str', xmlname => 'instanceName', request_name => 'instanceName', traits => ['Unwrapped','NameInRequest']);
-  has IpAddress => (is => 'ro', isa => 'Str', xmlname => 'ipAddress', request_name => 'ipAddress', traits => ['Unwrapped','NameInRequest']);
-  has Password => (is => 'ro', isa => 'Str', xmlname => 'password', request_name => 'password', traits => ['Unwrapped','NameInRequest']);
-  has PrivateKey => (is => 'ro', isa => 'Str', xmlname => 'privateKey', request_name => 'privateKey', traits => ['Unwrapped','NameInRequest']);
-  has Protocol => (is => 'ro', isa => 'Str', xmlname => 'protocol', request_name => 'protocol', traits => ['Unwrapped','NameInRequest']);
-  has Username => (is => 'ro', isa => 'Str', xmlname => 'username', request_name => 'username', traits => ['Unwrapped','NameInRequest']);
+  has CertKey => (is => 'ro', isa => 'Str', request_name => 'certKey', traits => ['NameInRequest']);
+  has ExpiresAt => (is => 'ro', isa => 'Str', request_name => 'expiresAt', traits => ['NameInRequest']);
+  has InstanceName => (is => 'ro', isa => 'Str', request_name => 'instanceName', traits => ['NameInRequest']);
+  has IpAddress => (is => 'ro', isa => 'Str', request_name => 'ipAddress', traits => ['NameInRequest']);
+  has Password => (is => 'ro', isa => 'Str', request_name => 'password', traits => ['NameInRequest']);
+  has PrivateKey => (is => 'ro', isa => 'Str', request_name => 'privateKey', traits => ['NameInRequest']);
+  has Protocol => (is => 'ro', isa => 'Str', request_name => 'protocol', traits => ['NameInRequest']);
+  has Username => (is => 'ro', isa => 'Str', request_name => 'username', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

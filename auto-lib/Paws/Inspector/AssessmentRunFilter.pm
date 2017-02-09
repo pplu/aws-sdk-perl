@@ -1,12 +1,12 @@
 package Paws::Inspector::AssessmentRunFilter;
   use Moose;
-  has CompletionTimeRange => (is => 'ro', isa => 'Paws::Inspector::TimestampRange', xmlname => 'completionTimeRange', request_name => 'completionTimeRange', traits => ['Unwrapped','NameInRequest']);
-  has DurationRange => (is => 'ro', isa => 'Paws::Inspector::DurationRange', xmlname => 'durationRange', request_name => 'durationRange', traits => ['Unwrapped','NameInRequest']);
-  has NamePattern => (is => 'ro', isa => 'Str', xmlname => 'namePattern', request_name => 'namePattern', traits => ['Unwrapped','NameInRequest']);
-  has RulesPackageArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'rulesPackageArns', request_name => 'rulesPackageArns', traits => ['Unwrapped','NameInRequest']);
-  has StartTimeRange => (is => 'ro', isa => 'Paws::Inspector::TimestampRange', xmlname => 'startTimeRange', request_name => 'startTimeRange', traits => ['Unwrapped','NameInRequest']);
-  has StateChangeTimeRange => (is => 'ro', isa => 'Paws::Inspector::TimestampRange', xmlname => 'stateChangeTimeRange', request_name => 'stateChangeTimeRange', traits => ['Unwrapped','NameInRequest']);
-  has States => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'states', request_name => 'states', traits => ['Unwrapped','NameInRequest']);
+  has CompletionTimeRange => (is => 'ro', isa => 'Paws::Inspector::TimestampRange', request_name => 'completionTimeRange', traits => ['NameInRequest']);
+  has DurationRange => (is => 'ro', isa => 'Paws::Inspector::DurationRange', request_name => 'durationRange', traits => ['NameInRequest']);
+  has NamePattern => (is => 'ro', isa => 'Str', request_name => 'namePattern', traits => ['NameInRequest']);
+  has RulesPackageArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'rulesPackageArns', traits => ['NameInRequest']);
+  has StartTimeRange => (is => 'ro', isa => 'Paws::Inspector::TimestampRange', request_name => 'startTimeRange', traits => ['NameInRequest']);
+  has StateChangeTimeRange => (is => 'ro', isa => 'Paws::Inspector::TimestampRange', request_name => 'stateChangeTimeRange', traits => ['NameInRequest']);
+  has States => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'states', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
