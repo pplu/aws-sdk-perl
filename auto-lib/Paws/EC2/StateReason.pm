@@ -50,8 +50,8 @@ This class has no description
 
 =item *
 
-C<Server.SpotInstanceTermination>: A Spot instance was terminated due
-to an increase in the market price.
+C<Server.InsufficientInstanceCapacity>: There was insufficient instance
+capacity to satisfy the launch request.
 
 =item *
 
@@ -60,8 +60,13 @@ launch, resulting in termination.
 
 =item *
 
-C<Server.InsufficientInstanceCapacity>: There was insufficient instance
-capacity to satisfy the launch request.
+C<Server.ScheduledStop>: The instance was stopped due to a scheduled
+retirement.
+
+=item *
+
+C<Server.SpotInstanceTermination>: A Spot instance was terminated due
+to an increase in the market price.
 
 =item *
 
