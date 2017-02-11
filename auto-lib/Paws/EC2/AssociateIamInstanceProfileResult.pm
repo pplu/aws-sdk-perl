@@ -1,7 +1,7 @@
 
 package Paws::EC2::AssociateIamInstanceProfileResult;
   use Moose;
-  has IamInstanceProfileAssociation => (is => 'ro', isa => 'Paws::EC2::IamInstanceProfileAssociation', xmlname => 'iamInstanceProfileAssociation', traits => ['Unwrapped',]);
+  has IamInstanceProfileAssociation => (is => 'ro', isa => 'Paws::EC2::IamInstanceProfileAssociation', request_name => 'iamInstanceProfileAssociation', traits => ['NameInRequest',]);
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;
