@@ -54,6 +54,11 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::AssociateDhcpOptions', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub AssociateIamInstanceProfile {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::AssociateIamInstanceProfile', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub AssociateRouteTable {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::AssociateRouteTable', @_);
@@ -499,6 +504,11 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::DescribeHosts', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeIamInstanceProfileAssociations {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeIamInstanceProfileAssociations', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeIdentityIdFormat {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::DescribeIdentityIdFormat', @_);
@@ -799,6 +809,11 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::DisassociateAddress', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DisassociateIamInstanceProfile {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DisassociateIamInstanceProfile', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DisassociateRouteTable {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::DisassociateRouteTable', @_);
@@ -1007,6 +1022,11 @@ package Paws::EC2;
   sub ReleaseHosts {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::ReleaseHosts', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ReplaceIamInstanceProfileAssociation {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::ReplaceIamInstanceProfileAssociation', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ReplaceNetworkAclAssociation {
@@ -1331,7 +1351,7 @@ package Paws::EC2;
   }
 
 
-  sub operations { qw/AcceptReservedInstancesExchangeQuote AcceptVpcPeeringConnection AllocateAddress AllocateHosts AssignIpv6Addresses AssignPrivateIpAddresses AssociateAddress AssociateDhcpOptions AssociateRouteTable AssociateSubnetCidrBlock AssociateVpcCidrBlock AttachClassicLinkVpc AttachInternetGateway AttachNetworkInterface AttachVolume AttachVpnGateway AuthorizeSecurityGroupEgress AuthorizeSecurityGroupIngress BundleInstance CancelBundleTask CancelConversionTask CancelExportTask CancelImportTask CancelReservedInstancesListing CancelSpotFleetRequests CancelSpotInstanceRequests ConfirmProductInstance CopyImage CopySnapshot CreateCustomerGateway CreateDhcpOptions CreateEgressOnlyInternetGateway CreateFlowLogs CreateImage CreateInstanceExportTask CreateInternetGateway CreateKeyPair CreateNatGateway CreateNetworkAcl CreateNetworkAclEntry CreateNetworkInterface CreatePlacementGroup CreateReservedInstancesListing CreateRoute CreateRouteTable CreateSecurityGroup CreateSnapshot CreateSpotDatafeedSubscription CreateSubnet CreateTags CreateVolume CreateVpc CreateVpcEndpoint CreateVpcPeeringConnection CreateVpnConnection CreateVpnConnectionRoute CreateVpnGateway DeleteCustomerGateway DeleteDhcpOptions DeleteEgressOnlyInternetGateway DeleteFlowLogs DeleteInternetGateway DeleteKeyPair DeleteNatGateway DeleteNetworkAcl DeleteNetworkAclEntry DeleteNetworkInterface DeletePlacementGroup DeleteRoute DeleteRouteTable DeleteSecurityGroup DeleteSnapshot DeleteSpotDatafeedSubscription DeleteSubnet DeleteTags DeleteVolume DeleteVpc DeleteVpcEndpoints DeleteVpcPeeringConnection DeleteVpnConnection DeleteVpnConnectionRoute DeleteVpnGateway DeregisterImage DescribeAccountAttributes DescribeAddresses DescribeAvailabilityZones DescribeBundleTasks DescribeClassicLinkInstances DescribeConversionTasks DescribeCustomerGateways DescribeDhcpOptions DescribeEgressOnlyInternetGateways DescribeExportTasks DescribeFlowLogs DescribeHostReservationOfferings DescribeHostReservations DescribeHosts DescribeIdentityIdFormat DescribeIdFormat DescribeImageAttribute DescribeImages DescribeImportImageTasks DescribeImportSnapshotTasks DescribeInstanceAttribute DescribeInstances DescribeInstanceStatus DescribeInternetGateways DescribeKeyPairs DescribeMovingAddresses DescribeNatGateways DescribeNetworkAcls DescribeNetworkInterfaceAttribute DescribeNetworkInterfaces DescribePlacementGroups DescribePrefixLists DescribeRegions DescribeReservedInstances DescribeReservedInstancesListings DescribeReservedInstancesModifications DescribeReservedInstancesOfferings DescribeRouteTables DescribeScheduledInstanceAvailability DescribeScheduledInstances DescribeSecurityGroupReferences DescribeSecurityGroups DescribeSnapshotAttribute DescribeSnapshots DescribeSpotDatafeedSubscription DescribeSpotFleetInstances DescribeSpotFleetRequestHistory DescribeSpotFleetRequests DescribeSpotInstanceRequests DescribeSpotPriceHistory DescribeStaleSecurityGroups DescribeSubnets DescribeTags DescribeVolumeAttribute DescribeVolumes DescribeVolumeStatus DescribeVpcAttribute DescribeVpcClassicLink DescribeVpcClassicLinkDnsSupport DescribeVpcEndpoints DescribeVpcEndpointServices DescribeVpcPeeringConnections DescribeVpcs DescribeVpnConnections DescribeVpnGateways DetachClassicLinkVpc DetachInternetGateway DetachNetworkInterface DetachVolume DetachVpnGateway DisableVgwRoutePropagation DisableVpcClassicLink DisableVpcClassicLinkDnsSupport DisassociateAddress DisassociateRouteTable DisassociateSubnetCidrBlock DisassociateVpcCidrBlock EnableVgwRoutePropagation EnableVolumeIO EnableVpcClassicLink EnableVpcClassicLinkDnsSupport GetConsoleOutput GetConsoleScreenshot GetHostReservationPurchasePreview GetPasswordData GetReservedInstancesExchangeQuote ImportImage ImportInstance ImportKeyPair ImportSnapshot ImportVolume ModifyHosts ModifyIdentityIdFormat ModifyIdFormat ModifyImageAttribute ModifyInstanceAttribute ModifyInstancePlacement ModifyNetworkInterfaceAttribute ModifyReservedInstances ModifySnapshotAttribute ModifySpotFleetRequest ModifySubnetAttribute ModifyVolumeAttribute ModifyVpcAttribute ModifyVpcEndpoint ModifyVpcPeeringConnectionOptions MonitorInstances MoveAddressToVpc PurchaseHostReservation PurchaseReservedInstancesOffering PurchaseScheduledInstances RebootInstances RegisterImage RejectVpcPeeringConnection ReleaseAddress ReleaseHosts ReplaceNetworkAclAssociation ReplaceNetworkAclEntry ReplaceRoute ReplaceRouteTableAssociation ReportInstanceStatus RequestSpotFleet RequestSpotInstances ResetImageAttribute ResetInstanceAttribute ResetNetworkInterfaceAttribute ResetSnapshotAttribute RestoreAddressToClassic RevokeSecurityGroupEgress RevokeSecurityGroupIngress RunInstances RunScheduledInstances StartInstances StopInstances TerminateInstances UnassignIpv6Addresses UnassignPrivateIpAddresses UnmonitorInstances / }
+  sub operations { qw/AcceptReservedInstancesExchangeQuote AcceptVpcPeeringConnection AllocateAddress AllocateHosts AssignIpv6Addresses AssignPrivateIpAddresses AssociateAddress AssociateDhcpOptions AssociateIamInstanceProfile AssociateRouteTable AssociateSubnetCidrBlock AssociateVpcCidrBlock AttachClassicLinkVpc AttachInternetGateway AttachNetworkInterface AttachVolume AttachVpnGateway AuthorizeSecurityGroupEgress AuthorizeSecurityGroupIngress BundleInstance CancelBundleTask CancelConversionTask CancelExportTask CancelImportTask CancelReservedInstancesListing CancelSpotFleetRequests CancelSpotInstanceRequests ConfirmProductInstance CopyImage CopySnapshot CreateCustomerGateway CreateDhcpOptions CreateEgressOnlyInternetGateway CreateFlowLogs CreateImage CreateInstanceExportTask CreateInternetGateway CreateKeyPair CreateNatGateway CreateNetworkAcl CreateNetworkAclEntry CreateNetworkInterface CreatePlacementGroup CreateReservedInstancesListing CreateRoute CreateRouteTable CreateSecurityGroup CreateSnapshot CreateSpotDatafeedSubscription CreateSubnet CreateTags CreateVolume CreateVpc CreateVpcEndpoint CreateVpcPeeringConnection CreateVpnConnection CreateVpnConnectionRoute CreateVpnGateway DeleteCustomerGateway DeleteDhcpOptions DeleteEgressOnlyInternetGateway DeleteFlowLogs DeleteInternetGateway DeleteKeyPair DeleteNatGateway DeleteNetworkAcl DeleteNetworkAclEntry DeleteNetworkInterface DeletePlacementGroup DeleteRoute DeleteRouteTable DeleteSecurityGroup DeleteSnapshot DeleteSpotDatafeedSubscription DeleteSubnet DeleteTags DeleteVolume DeleteVpc DeleteVpcEndpoints DeleteVpcPeeringConnection DeleteVpnConnection DeleteVpnConnectionRoute DeleteVpnGateway DeregisterImage DescribeAccountAttributes DescribeAddresses DescribeAvailabilityZones DescribeBundleTasks DescribeClassicLinkInstances DescribeConversionTasks DescribeCustomerGateways DescribeDhcpOptions DescribeEgressOnlyInternetGateways DescribeExportTasks DescribeFlowLogs DescribeHostReservationOfferings DescribeHostReservations DescribeHosts DescribeIamInstanceProfileAssociations DescribeIdentityIdFormat DescribeIdFormat DescribeImageAttribute DescribeImages DescribeImportImageTasks DescribeImportSnapshotTasks DescribeInstanceAttribute DescribeInstances DescribeInstanceStatus DescribeInternetGateways DescribeKeyPairs DescribeMovingAddresses DescribeNatGateways DescribeNetworkAcls DescribeNetworkInterfaceAttribute DescribeNetworkInterfaces DescribePlacementGroups DescribePrefixLists DescribeRegions DescribeReservedInstances DescribeReservedInstancesListings DescribeReservedInstancesModifications DescribeReservedInstancesOfferings DescribeRouteTables DescribeScheduledInstanceAvailability DescribeScheduledInstances DescribeSecurityGroupReferences DescribeSecurityGroups DescribeSnapshotAttribute DescribeSnapshots DescribeSpotDatafeedSubscription DescribeSpotFleetInstances DescribeSpotFleetRequestHistory DescribeSpotFleetRequests DescribeSpotInstanceRequests DescribeSpotPriceHistory DescribeStaleSecurityGroups DescribeSubnets DescribeTags DescribeVolumeAttribute DescribeVolumes DescribeVolumeStatus DescribeVpcAttribute DescribeVpcClassicLink DescribeVpcClassicLinkDnsSupport DescribeVpcEndpoints DescribeVpcEndpointServices DescribeVpcPeeringConnections DescribeVpcs DescribeVpnConnections DescribeVpnGateways DetachClassicLinkVpc DetachInternetGateway DetachNetworkInterface DetachVolume DetachVpnGateway DisableVgwRoutePropagation DisableVpcClassicLink DisableVpcClassicLinkDnsSupport DisassociateAddress DisassociateIamInstanceProfile DisassociateRouteTable DisassociateSubnetCidrBlock DisassociateVpcCidrBlock EnableVgwRoutePropagation EnableVolumeIO EnableVpcClassicLink EnableVpcClassicLinkDnsSupport GetConsoleOutput GetConsoleScreenshot GetHostReservationPurchasePreview GetPasswordData GetReservedInstancesExchangeQuote ImportImage ImportInstance ImportKeyPair ImportSnapshot ImportVolume ModifyHosts ModifyIdentityIdFormat ModifyIdFormat ModifyImageAttribute ModifyInstanceAttribute ModifyInstancePlacement ModifyNetworkInterfaceAttribute ModifyReservedInstances ModifySnapshotAttribute ModifySpotFleetRequest ModifySubnetAttribute ModifyVolumeAttribute ModifyVpcAttribute ModifyVpcEndpoint ModifyVpcPeeringConnectionOptions MonitorInstances MoveAddressToVpc PurchaseHostReservation PurchaseReservedInstancesOffering PurchaseScheduledInstances RebootInstances RegisterImage RejectVpcPeeringConnection ReleaseAddress ReleaseHosts ReplaceIamInstanceProfileAssociation ReplaceNetworkAclAssociation ReplaceNetworkAclEntry ReplaceRoute ReplaceRouteTableAssociation ReportInstanceStatus RequestSpotFleet RequestSpotInstances ResetImageAttribute ResetInstanceAttribute ResetNetworkInterfaceAttribute ResetSnapshotAttribute RestoreAddressToClassic RevokeSecurityGroupEgress RevokeSecurityGroupIngress RunInstances RunScheduledInstances StartInstances StopInstances TerminateInstances UnassignIpv6Addresses UnassignPrivateIpAddresses UnmonitorInstances / }
 
 1;
 
@@ -1498,6 +1518,17 @@ using the operating system on the instance.
 
 For more information, see DHCP Options Sets in the I<Amazon Virtual
 Private Cloud User Guide>.
+
+
+=head2 AssociateIamInstanceProfile(IamInstanceProfile => L<Paws::EC2::IamInstanceProfileSpecification>, InstanceId => Str)
+
+Each argument is described in detail in: L<Paws::EC2::AssociateIamInstanceProfile>
+
+Returns: a L<Paws::EC2::AssociateIamInstanceProfileResult> instance
+
+  Associates an IAM instance profile with a running or stopped instance.
+You cannot associate more than one IAM instance profile with an
+instance.
 
 
 =head2 AssociateRouteTable(RouteTableId => Str, SubnetId => Str, [DryRun => Bool])
@@ -3034,6 +3065,15 @@ Dedicated Host. Dedicated Hosts that have recently been released will
 be listed with the state C<released>.
 
 
+=head2 DescribeIamInstanceProfileAssociations([AssociationIds => ArrayRef[Str|Undef], Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str])
+
+Each argument is described in detail in: L<Paws::EC2::DescribeIamInstanceProfileAssociations>
+
+Returns: a L<Paws::EC2::DescribeIamInstanceProfileAssociationsResult> instance
+
+  Describes your IAM instance profile associations.
+
+
 =head2 DescribeIdentityIdFormat(PrincipalArn => Str, [Resource => Str])
 
 Each argument is described in detail in: L<Paws::EC2::DescribeIdentityIdFormat>
@@ -3962,6 +4002,18 @@ This is an idempotent operation. If you perform the operation more than
 once, Amazon EC2 doesn't return an error.
 
 
+=head2 DisassociateIamInstanceProfile(AssociationId => Str)
+
+Each argument is described in detail in: L<Paws::EC2::DisassociateIamInstanceProfile>
+
+Returns: a L<Paws::EC2::DisassociateIamInstanceProfileResult> instance
+
+  Disassociates an IAM instance profile from a running or stopped
+instance.
+
+Use DescribeIamInstanceProfileAssociations to get the association ID.
+
+
 =head2 DisassociateRouteTable(AssociationId => Str, [DryRun => Bool])
 
 Each argument is described in detail in: L<Paws::EC2::DisassociateRouteTable>
@@ -4696,6 +4748,20 @@ and then try again.
 Released hosts will still appear in a DescribeHosts response.
 
 
+=head2 ReplaceIamInstanceProfileAssociation(AssociationId => Str, IamInstanceProfile => L<Paws::EC2::IamInstanceProfileSpecification>)
+
+Each argument is described in detail in: L<Paws::EC2::ReplaceIamInstanceProfileAssociation>
+
+Returns: a L<Paws::EC2::ReplaceIamInstanceProfileAssociationResult> instance
+
+  Replaces an IAM instance profile for the specified instance. You can
+use this action to change the IAM instance profile that's associated
+with an instance without having to disassociate the existing IAM
+instance profile first.
+
+Use DescribeIamInstanceProfileAssociations to get the association ID.
+
+
 =head2 ReplaceNetworkAclAssociation(AssociationId => Str, NetworkAclId => Str, [DryRun => Bool])
 
 Each argument is described in detail in: L<Paws::EC2::ReplaceNetworkAclAssociation>
@@ -4953,7 +5019,7 @@ IPv4 range of your subnet.
 =item *
 
 Not all instance types support IPv6 addresses. For more information,
-see Amazon EC2 Instance Types.
+see Instance Types.
 
 =item *
 

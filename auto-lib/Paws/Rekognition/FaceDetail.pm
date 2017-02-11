@@ -1,5 +1,6 @@
 package Paws::Rekognition::FaceDetail;
   use Moose;
+  has AgeRange => (is => 'ro', isa => 'Paws::Rekognition::AgeRange');
   has Beard => (is => 'ro', isa => 'Paws::Rekognition::Beard');
   has BoundingBox => (is => 'ro', isa => 'Paws::Rekognition::BoundingBox');
   has Confidence => (is => 'ro', isa => 'Num');
@@ -33,14 +34,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Rekognition::FaceDetail object:
 
-  $service_obj->Method(Att1 => { Beard => $value, ..., Sunglasses => $value  });
+  $service_obj->Method(Att1 => { AgeRange => $value, ..., Sunglasses => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::Rekognition::FaceDetail object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Beard
+  $result->Att1->AgeRange
 
 =head1 DESCRIPTION
 
@@ -48,6 +49,12 @@ Structure containing attributes of the face that the algorithm
 detected.
 
 =head1 ATTRIBUTES
+
+
+=head2 AgeRange => L<Paws::Rekognition::AgeRange>
+
+  The estimated age range, in years, for the face. Low represents the
+lowest estimated age and High represents the highest estimated age.
 
 
 =head2 Beard => L<Paws::Rekognition::Beard>
