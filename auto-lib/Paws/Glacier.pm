@@ -186,13 +186,13 @@ package Paws::Glacier;
     my $result = $self->ListJobs(@_);
 
     if (not defined $callback) {
-      while ($result->marker) {
+      while ($result->Marker) {
         $result = $self->ListJobs(@_, marker => $result->Marker);
         push @{ $result->JobList }, @{ $result->JobList };
       }
       return $result;
     } else {
-      while ($result->marker) {
+      while ($result->Marker) {
         $result = $self->ListJobs(@_, marker => $result->Marker);
         $callback->($_ => 'JobList') foreach (@{ $result->JobList });
       }
@@ -207,13 +207,13 @@ package Paws::Glacier;
     my $result = $self->ListMultipartUploads(@_);
 
     if (not defined $callback) {
-      while ($result->marker) {
+      while ($result->Marker) {
         $result = $self->ListMultipartUploads(@_, marker => $result->Marker);
         push @{ $result->UploadsList }, @{ $result->UploadsList };
       }
       return $result;
     } else {
-      while ($result->marker) {
+      while ($result->Marker) {
         $result = $self->ListMultipartUploads(@_, marker => $result->Marker);
         $callback->($_ => 'UploadsList') foreach (@{ $result->UploadsList });
       }
@@ -228,13 +228,13 @@ package Paws::Glacier;
     my $result = $self->ListParts(@_);
 
     if (not defined $callback) {
-      while ($result->marker) {
+      while ($result->Marker) {
         $result = $self->ListParts(@_, marker => $result->Marker);
         push @{ $result->Parts }, @{ $result->Parts };
       }
       return $result;
     } else {
-      while ($result->marker) {
+      while ($result->Marker) {
         $result = $self->ListParts(@_, marker => $result->Marker);
         $callback->($_ => 'Parts') foreach (@{ $result->Parts });
       }
@@ -249,13 +249,13 @@ package Paws::Glacier;
     my $result = $self->ListVaults(@_);
 
     if (not defined $callback) {
-      while ($result->marker) {
+      while ($result->Marker) {
         $result = $self->ListVaults(@_, marker => $result->Marker);
         push @{ $result->VaultList }, @{ $result->VaultList };
       }
       return $result;
     } else {
-      while ($result->marker) {
+      while ($result->Marker) {
         $result = $self->ListVaults(@_, marker => $result->Marker);
         $callback->($_ => 'VaultList') foreach (@{ $result->VaultList });
       }

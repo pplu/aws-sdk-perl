@@ -106,13 +106,13 @@ package Paws::ElasticTranscoder;
     my $result = $self->ListJobsByPipeline(@_);
 
     if (not defined $callback) {
-      while ($result->PageToken) {
+      while ($result->NextPageToken) {
         $result = $self->ListJobsByPipeline(@_, PageToken => $result->NextPageToken);
         push @{ $result->Jobs }, @{ $result->Jobs };
       }
       return $result;
     } else {
-      while ($result->PageToken) {
+      while ($result->NextPageToken) {
         $result = $self->ListJobsByPipeline(@_, PageToken => $result->NextPageToken);
         $callback->($_ => 'Jobs') foreach (@{ $result->Jobs });
       }
@@ -127,13 +127,13 @@ package Paws::ElasticTranscoder;
     my $result = $self->ListJobsByStatus(@_);
 
     if (not defined $callback) {
-      while ($result->PageToken) {
+      while ($result->NextPageToken) {
         $result = $self->ListJobsByStatus(@_, PageToken => $result->NextPageToken);
         push @{ $result->Jobs }, @{ $result->Jobs };
       }
       return $result;
     } else {
-      while ($result->PageToken) {
+      while ($result->NextPageToken) {
         $result = $self->ListJobsByStatus(@_, PageToken => $result->NextPageToken);
         $callback->($_ => 'Jobs') foreach (@{ $result->Jobs });
       }
@@ -148,13 +148,13 @@ package Paws::ElasticTranscoder;
     my $result = $self->ListPipelines(@_);
 
     if (not defined $callback) {
-      while ($result->PageToken) {
+      while ($result->NextPageToken) {
         $result = $self->ListPipelines(@_, PageToken => $result->NextPageToken);
         push @{ $result->Pipelines }, @{ $result->Pipelines };
       }
       return $result;
     } else {
-      while ($result->PageToken) {
+      while ($result->NextPageToken) {
         $result = $self->ListPipelines(@_, PageToken => $result->NextPageToken);
         $callback->($_ => 'Pipelines') foreach (@{ $result->Pipelines });
       }
@@ -169,13 +169,13 @@ package Paws::ElasticTranscoder;
     my $result = $self->ListPresets(@_);
 
     if (not defined $callback) {
-      while ($result->PageToken) {
+      while ($result->NextPageToken) {
         $result = $self->ListPresets(@_, PageToken => $result->NextPageToken);
         push @{ $result->Presets }, @{ $result->Presets };
       }
       return $result;
     } else {
-      while ($result->PageToken) {
+      while ($result->NextPageToken) {
         $result = $self->ListPresets(@_, PageToken => $result->NextPageToken);
         $callback->($_ => 'Presets') foreach (@{ $result->Presets });
       }

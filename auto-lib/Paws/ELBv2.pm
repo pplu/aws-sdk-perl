@@ -171,13 +171,13 @@ package Paws::ELBv2;
     my $result = $self->DescribeListeners(@_);
 
     if (not defined $callback) {
-      while ($result->Marker) {
+      while ($result->NextMarker) {
         $result = $self->DescribeListeners(@_, Marker => $result->NextMarker);
         push @{ $result->Listeners }, @{ $result->Listeners };
       }
       return $result;
     } else {
-      while ($result->Marker) {
+      while ($result->NextMarker) {
         $result = $self->DescribeListeners(@_, Marker => $result->NextMarker);
         $callback->($_ => 'Listeners') foreach (@{ $result->Listeners });
       }
@@ -192,13 +192,13 @@ package Paws::ELBv2;
     my $result = $self->DescribeLoadBalancers(@_);
 
     if (not defined $callback) {
-      while ($result->Marker) {
+      while ($result->NextMarker) {
         $result = $self->DescribeLoadBalancers(@_, Marker => $result->NextMarker);
         push @{ $result->LoadBalancers }, @{ $result->LoadBalancers };
       }
       return $result;
     } else {
-      while ($result->Marker) {
+      while ($result->NextMarker) {
         $result = $self->DescribeLoadBalancers(@_, Marker => $result->NextMarker);
         $callback->($_ => 'LoadBalancers') foreach (@{ $result->LoadBalancers });
       }
@@ -213,13 +213,13 @@ package Paws::ELBv2;
     my $result = $self->DescribeTargetGroups(@_);
 
     if (not defined $callback) {
-      while ($result->Marker) {
+      while ($result->NextMarker) {
         $result = $self->DescribeTargetGroups(@_, Marker => $result->NextMarker);
         push @{ $result->TargetGroups }, @{ $result->TargetGroups };
       }
       return $result;
     } else {
-      while ($result->Marker) {
+      while ($result->NextMarker) {
         $result = $self->DescribeTargetGroups(@_, Marker => $result->NextMarker);
         $callback->($_ => 'TargetGroups') foreach (@{ $result->TargetGroups });
       }

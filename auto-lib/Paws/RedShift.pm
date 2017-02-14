@@ -478,13 +478,13 @@ package Paws::RedShift;
     my $result = $self->DescribeDefaultClusterParameters(@_);
 
     if (not defined $callback) {
-      while ($result->Marker) {
+      while ($result->DefaultClusterParameters->Marker) {
         $result = $self->DescribeDefaultClusterParameters(@_, Marker => $result->DefaultClusterParameters->Marker);
         push @{ $result->DefaultClusterParameters->Parameters }, @{ $result->DefaultClusterParameters->Parameters };
       }
       return $result;
     } else {
-      while ($result->Marker) {
+      while ($result->DefaultClusterParameters->Marker) {
         $result = $self->DescribeDefaultClusterParameters(@_, Marker => $result->DefaultClusterParameters->Marker);
         $callback->($_ => 'DefaultClusterParameters.Parameters') foreach (@{ $result->DefaultClusterParameters->Parameters });
       }

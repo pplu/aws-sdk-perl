@@ -1088,7 +1088,7 @@ If not, it will return a [% out_shape = c.shapename_for_operation_output(op_name
         [%- END %]
       }
       [%- ELSE %]
-      while ([% c.paginator_accessor(paginator.input_token) %]) {
+      while ([% c.paginator_accessor(paginator.output_token) %]) {
         $result = $self->[% op %](@_, [% c.paginator_pass_params(paginator) %]);
         [%- FOREACH param = c.paginator_result_key(paginator) %]
         push @{ [% c.paginator_accessor(param) %] }, @{ [% c.paginator_accessor(param) %] };
@@ -1105,7 +1105,7 @@ If not, it will return a [% out_shape = c.shapename_for_operation_output(op_name
         [%- END %]
       }
       [%- ELSE %]
-      while ([% c.paginator_accessor(paginator.input_token) %]) {
+      while ([% c.paginator_accessor(paginator.output_token) %]) {
         $result = $self->[% op %](@_, [% c.paginator_pass_params(paginator) %]);
         [%- FOREACH param = c.paginator_result_key(paginator) %]
         $callback->($_ => '[% param %]') foreach (@{ [% c.paginator_accessor(param) %] });

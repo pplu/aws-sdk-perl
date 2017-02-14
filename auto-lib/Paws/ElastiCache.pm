@@ -337,13 +337,13 @@ package Paws::ElastiCache;
     my $result = $self->DescribeEngineDefaultParameters(@_);
 
     if (not defined $callback) {
-      while ($result->Marker) {
+      while ($result->EngineDefaults->Marker) {
         $result = $self->DescribeEngineDefaultParameters(@_, Marker => $result->EngineDefaults->Marker);
         push @{ $result->EngineDefaults->Parameters }, @{ $result->EngineDefaults->Parameters };
       }
       return $result;
     } else {
-      while ($result->Marker) {
+      while ($result->EngineDefaults->Marker) {
         $result = $self->DescribeEngineDefaultParameters(@_, Marker => $result->EngineDefaults->Marker);
         $callback->($_ => 'EngineDefaults.Parameters') foreach (@{ $result->EngineDefaults->Parameters });
       }
