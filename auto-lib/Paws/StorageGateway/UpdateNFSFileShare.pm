@@ -1,6 +1,7 @@
 
 package Paws::StorageGateway::UpdateNFSFileShare;
   use Moose;
+  has ClientList => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has DefaultStorageClass => (is => 'ro', isa => 'Str');
   has FileShareARN => (is => 'ro', isa => 'Str', required => 1);
   has KMSEncrypted => (is => 'ro', isa => 'Bool');
@@ -35,6 +36,13 @@ As an example:
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 
 =head1 ATTRIBUTES
+
+
+=head2 ClientList => ArrayRef[Str|Undef]
+
+The list of clients that are allowed to access the file gateway. The
+list must contain either valid IP addresses or valid CIDR blocks.
+
 
 
 =head2 DefaultStorageClass => Str

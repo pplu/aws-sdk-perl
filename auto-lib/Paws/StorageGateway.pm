@@ -704,7 +704,7 @@ C<VolumeSizeInBytes> value must be equal to or larger than the size of
 the copied volume, in bytes.
 
 
-=head2 CreateNFSFileShare(ClientToken => Str, GatewayARN => Str, LocationARN => Str, Role => Str, [DefaultStorageClass => Str, KMSEncrypted => Bool, KMSKey => Str, NFSFileShareDefaults => L<Paws::StorageGateway::NFSFileShareDefaults>])
+=head2 CreateNFSFileShare(ClientToken => Str, GatewayARN => Str, LocationARN => Str, Role => Str, [ClientList => ArrayRef[Str|Undef], DefaultStorageClass => Str, KMSEncrypted => Bool, KMSKey => Str, NFSFileShareDefaults => L<Paws::StorageGateway::NFSFileShareDefaults>])
 
 Each argument is described in detail in: L<Paws::StorageGateway::CreateNFSFileShare>
 
@@ -1486,7 +1486,7 @@ including day and time of the week. The maintenance time is the time in
 your gateway's time zone.
 
 
-=head2 UpdateNFSFileShare(FileShareARN => Str, [DefaultStorageClass => Str, KMSEncrypted => Bool, KMSKey => Str, NFSFileShareDefaults => L<Paws::StorageGateway::NFSFileShareDefaults>])
+=head2 UpdateNFSFileShare(FileShareARN => Str, [ClientList => ArrayRef[Str|Undef], DefaultStorageClass => Str, KMSEncrypted => Bool, KMSKey => Str, NFSFileShareDefaults => L<Paws::StorageGateway::NFSFileShareDefaults>])
 
 Each argument is described in detail in: L<Paws::StorageGateway::UpdateNFSFileShare>
 

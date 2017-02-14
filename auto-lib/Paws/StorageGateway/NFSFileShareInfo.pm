@@ -1,5 +1,6 @@
 package Paws::StorageGateway::NFSFileShareInfo;
   use Moose;
+  has ClientList => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has DefaultStorageClass => (is => 'ro', isa => 'Str');
   has FileShareARN => (is => 'ro', isa => 'Str');
   has FileShareId => (is => 'ro', isa => 'Str');
@@ -30,14 +31,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::StorageGateway::NFSFileShareInfo object:
 
-  $service_obj->Method(Att1 => { DefaultStorageClass => $value, ..., Role => $value  });
+  $service_obj->Method(Att1 => { ClientList => $value, ..., Role => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::StorageGateway::NFSFileShareInfo object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->DefaultStorageClass
+  $result->Att1->ClientList
 
 =head1 DESCRIPTION
 
@@ -46,6 +47,11 @@ default, to native S3 objects when Storage Gateway discovers them in S3
 buckets.
 
 =head1 ATTRIBUTES
+
+
+=head2 ClientList => ArrayRef[Str|Undef]
+
+  
 
 
 =head2 DefaultStorageClass => Str
