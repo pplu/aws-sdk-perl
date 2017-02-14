@@ -1,3 +1,7 @@
+0.32
+ - Bug fixed: Paginators for DynamoDB, EFS, ELB, ELBv2, ElasicCache, ElasticTranscoder, Glacier
+              Lambda, Lightsail, RDS, RedShift and Route53Domains were not working correctly (SeptamusNonovant)
+
 0.31 01 Feb 2017 
  - Bug fixed: Services that use QueryCaller and EC2Caller were not serializing Booleans correctly
  - New API: CUR (AWS Cost and Usage Report Service) 
