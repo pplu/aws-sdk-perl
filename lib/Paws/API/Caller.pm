@@ -172,11 +172,12 @@ package Paws::API::Caller;
                   } elsif (keys %$value == 1) {
                     $value = $value->{ (keys %$value)[0] };
                   } else {
-                    #die "Can't detect the item that has the array in the response hash";
+                    # Force it to be an arrayref and hope it is processed correctly
+                    $value = [ $value ];
                   }
                   $value_ref = ref($value);
                 }
-        
+
 
                 $args{ $att } = $att_class->new(map { ($_->{ $xml_keys } => $_->{ $xml_values }) } @$value);
               } else {
