@@ -159,22 +159,6 @@ package Paws::Net::JsonResponse;
                 my $xml_keys = $att_class->xml_keys;
                 my $xml_values = $att_class->xml_values;
 
-                #TODO: handle in one place
-                if ($value_ref eq 'HASH') {
-                  if (exists $value->{ member }) {
-                    $value = $value->{ member };
-                  } elsif (exists $value->{ entry }) {
-                    $value = $value->{ entry  };
-                  } elsif (keys %$value == 1) {
-                    $value = $value->{ (keys %$value)[0] };
-                  } else {
-                    # Force it to be an arrayref and hope it is processed correctly
-                    $value = [ $value ];
-                  }
-                  $value_ref = ref($value);
-                }
-
-
                 $args{ $att } = $att_class->new(map { ($_->{ $xml_keys } => $_->{ $xml_values }) } @$value);
               } else {
                 $args{ $att } = $self->new_from_result_struct($att_class, $value);
@@ -214,19 +198,6 @@ package Paws::Net::JsonResponse;
         $value = $result->{ $key } if (not defined $value and $key ne $att);
         my $value_ref = ref($value);
 
-        if ($value_ref eq 'HASH') {
-          if (exists $value->{ member }) {
-            $value = $value->{ member };
-          } elsif (exists $value->{ entry }) {
-            $value = $value->{ entry  };
-          } elsif (keys %$value == 1) {
-            $value = $value->{ (keys %$value)[0] };
-          } else {
-            #die "Can't detect the item that has the array in the response hash";
-          }
-          $value_ref = ref($value);
-        }
- 
         if ($type =~ m/\:\:/) {
           Paws->load_class($type);
 
