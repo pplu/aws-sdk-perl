@@ -1,0 +1,7 @@
+---
+call: GetQueueAttributes
+service: SQS
+tests:
+  - expected: 147
+    op: eq
+    path: Attributes.ApproximateNumberOfMessages
