@@ -1,10 +1,12 @@
 
 package Paws::DirectConnect::Connection;
   use Moose;
+  has AwsDevice => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'awsDevice' );
   has Bandwidth => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'bandwidth' );
   has ConnectionId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'connectionId' );
   has ConnectionName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'connectionName' );
   has ConnectionState => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'connectionState' );
+  has LagId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'lagId' );
   has LoaIssueTime => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'loaIssueTime' );
   has Location => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'location' );
   has OwnerAccount => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'ownerAccount' );
@@ -21,6 +23,12 @@ package Paws::DirectConnect::Connection;
 Paws::DirectConnect::Connection
 
 =head1 ATTRIBUTES
+
+
+=head2 AwsDevice => Str
+
+The Direct Connection endpoint which the physical connection terminates
+on.
 
 
 =head2 Bandwidth => Str
@@ -48,10 +56,14 @@ Default: None
 
 
 Valid values are: C<"ordering">, C<"requested">, C<"pending">, C<"available">, C<"down">, C<"deleting">, C<"deleted">, C<"rejected">
+=head2 LagId => Str
+
+
+
+
 =head2 LoaIssueTime => Str
 
-The time of the most recent call to DescribeConnectionLoa for this
-Connection.
+The time of the most recent call to DescribeLoa for this connection.
 
 
 =head2 Location => Str

@@ -3,6 +3,7 @@ package Paws::DirectConnect::CreateInterconnect;
   use Moose;
   has Bandwidth => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'bandwidth' , required => 1);
   has InterconnectName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'interconnectName' , required => 1);
+  has LagId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'lagId' );
   has Location => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'location' , required => 1);
 
   use MooseX::ClassAttribute;
@@ -54,6 +55,12 @@ The name of the interconnect.
 Example: "I<1G Interconnect to AWS>"
 
 Default: None
+
+
+
+=head2 LagId => Str
+
+
 
 
 
