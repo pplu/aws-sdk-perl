@@ -2,6 +2,7 @@ package Paws::CognitoIdentity::CognitoIdentityProvider;
   use Moose;
   has ClientId => (is => 'ro', isa => 'Str');
   has ProviderName => (is => 'ro', isa => 'Str');
+  has ServerSideTokenCheck => (is => 'ro', isa => 'Bool');
 1;
 
 ### main pod documentation begin ###
@@ -21,7 +22,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CognitoIdentity::CognitoIdentityProvider object:
 
-  $service_obj->Method(Att1 => { ClientId => $value, ..., ProviderName => $value  });
+  $service_obj->Method(Att1 => { ClientId => $value, ..., ServerSideTokenCheck => $value  });
 
 =head3 Results returned from an API call
 
@@ -47,6 +48,12 @@ client ID.
 
   The provider name for an Amazon Cognito Identity User Pool. For
 example, C<cognito-idp.us-east-1.amazonaws.com/us-east-1_123456789>.
+
+
+=head2 ServerSideTokenCheck => Bool
+
+  TRUE if server-side token validation is enabled for the identity
+providerE<rsquo>s token.
 
 
 
