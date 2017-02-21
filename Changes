@@ -5,6 +5,10 @@
  - ECS API update 
  - EC2 API update
  - StorageGateway API update
+ - DirectConnect API update
+ - CognitoIdentity API update
+ - Config API update
+ - KMS API update
 
 0.31 01 Feb 2017 
  - Bug fixed: Services that use QueryCaller and EC2Caller were not serializing Booleans correctly
