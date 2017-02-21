@@ -149,9 +149,9 @@ paginated output. When this parameter is used, C<DescribeVolumes> only
 returns C<MaxResults> results in a single page along with a
 C<NextToken> response element. The remaining results of the initial
 request can be seen by sending another C<DescribeVolumes> request with
-the returned C<NextToken> value. This value can be between 5 and 1000;
-if C<MaxResults> is given a value larger than 1000, only 1000 results
-are returned. If this parameter is not used, then C<DescribeVolumes>
+the returned C<NextToken> value. This value can be between 5 and 500;
+if C<MaxResults> is given a value larger than 500, only 500 results are
+returned. If this parameter is not used, then C<DescribeVolumes>
 returns all results. You cannot specify this parameter and the volume
 IDs parameter in the same request.
 

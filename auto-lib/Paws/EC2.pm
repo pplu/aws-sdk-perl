@@ -714,6 +714,11 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::DescribeVolumes', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeVolumesModifications {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeVolumesModifications', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeVolumeStatus {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::DescribeVolumeStatus', @_);
@@ -954,6 +959,11 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::ModifySubnetAttribute', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ModifyVolume {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::ModifyVolume', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ModifyVolumeAttribute {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::ModifyVolumeAttribute', @_);
@@ -1181,6 +1191,27 @@ package Paws::EC2;
 
     return undef
   }
+  sub DescribeAllNatGateways {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeNatGateways(@_);
+
+    if (not defined $callback) {
+      while ($result->NextToken) {
+        $result = $self->DescribeNatGateways(@_, NextToken => $result->NextToken);
+        push @{ $result->NatGateways }, @{ $result->NatGateways };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $result = $self->DescribeNatGateways(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'NatGateways') foreach (@{ $result->NatGateways });
+      }
+    }
+
+    return undef
+  }
   sub DescribeAllReservedInstancesModifications {
     my $self = shift;
 
@@ -1351,7 +1382,7 @@ package Paws::EC2;
   }
 
 
-  sub operations { qw/AcceptReservedInstancesExchangeQuote AcceptVpcPeeringConnection AllocateAddress AllocateHosts AssignIpv6Addresses AssignPrivateIpAddresses AssociateAddress AssociateDhcpOptions AssociateIamInstanceProfile AssociateRouteTable AssociateSubnetCidrBlock AssociateVpcCidrBlock AttachClassicLinkVpc AttachInternetGateway AttachNetworkInterface AttachVolume AttachVpnGateway AuthorizeSecurityGroupEgress AuthorizeSecurityGroupIngress BundleInstance CancelBundleTask CancelConversionTask CancelExportTask CancelImportTask CancelReservedInstancesListing CancelSpotFleetRequests CancelSpotInstanceRequests ConfirmProductInstance CopyImage CopySnapshot CreateCustomerGateway CreateDhcpOptions CreateEgressOnlyInternetGateway CreateFlowLogs CreateImage CreateInstanceExportTask CreateInternetGateway CreateKeyPair CreateNatGateway CreateNetworkAcl CreateNetworkAclEntry CreateNetworkInterface CreatePlacementGroup CreateReservedInstancesListing CreateRoute CreateRouteTable CreateSecurityGroup CreateSnapshot CreateSpotDatafeedSubscription CreateSubnet CreateTags CreateVolume CreateVpc CreateVpcEndpoint CreateVpcPeeringConnection CreateVpnConnection CreateVpnConnectionRoute CreateVpnGateway DeleteCustomerGateway DeleteDhcpOptions DeleteEgressOnlyInternetGateway DeleteFlowLogs DeleteInternetGateway DeleteKeyPair DeleteNatGateway DeleteNetworkAcl DeleteNetworkAclEntry DeleteNetworkInterface DeletePlacementGroup DeleteRoute DeleteRouteTable DeleteSecurityGroup DeleteSnapshot DeleteSpotDatafeedSubscription DeleteSubnet DeleteTags DeleteVolume DeleteVpc DeleteVpcEndpoints DeleteVpcPeeringConnection DeleteVpnConnection DeleteVpnConnectionRoute DeleteVpnGateway DeregisterImage DescribeAccountAttributes DescribeAddresses DescribeAvailabilityZones DescribeBundleTasks DescribeClassicLinkInstances DescribeConversionTasks DescribeCustomerGateways DescribeDhcpOptions DescribeEgressOnlyInternetGateways DescribeExportTasks DescribeFlowLogs DescribeHostReservationOfferings DescribeHostReservations DescribeHosts DescribeIamInstanceProfileAssociations DescribeIdentityIdFormat DescribeIdFormat DescribeImageAttribute DescribeImages DescribeImportImageTasks DescribeImportSnapshotTasks DescribeInstanceAttribute DescribeInstances DescribeInstanceStatus DescribeInternetGateways DescribeKeyPairs DescribeMovingAddresses DescribeNatGateways DescribeNetworkAcls DescribeNetworkInterfaceAttribute DescribeNetworkInterfaces DescribePlacementGroups DescribePrefixLists DescribeRegions DescribeReservedInstances DescribeReservedInstancesListings DescribeReservedInstancesModifications DescribeReservedInstancesOfferings DescribeRouteTables DescribeScheduledInstanceAvailability DescribeScheduledInstances DescribeSecurityGroupReferences DescribeSecurityGroups DescribeSnapshotAttribute DescribeSnapshots DescribeSpotDatafeedSubscription DescribeSpotFleetInstances DescribeSpotFleetRequestHistory DescribeSpotFleetRequests DescribeSpotInstanceRequests DescribeSpotPriceHistory DescribeStaleSecurityGroups DescribeSubnets DescribeTags DescribeVolumeAttribute DescribeVolumes DescribeVolumeStatus DescribeVpcAttribute DescribeVpcClassicLink DescribeVpcClassicLinkDnsSupport DescribeVpcEndpoints DescribeVpcEndpointServices DescribeVpcPeeringConnections DescribeVpcs DescribeVpnConnections DescribeVpnGateways DetachClassicLinkVpc DetachInternetGateway DetachNetworkInterface DetachVolume DetachVpnGateway DisableVgwRoutePropagation DisableVpcClassicLink DisableVpcClassicLinkDnsSupport DisassociateAddress DisassociateIamInstanceProfile DisassociateRouteTable DisassociateSubnetCidrBlock DisassociateVpcCidrBlock EnableVgwRoutePropagation EnableVolumeIO EnableVpcClassicLink EnableVpcClassicLinkDnsSupport GetConsoleOutput GetConsoleScreenshot GetHostReservationPurchasePreview GetPasswordData GetReservedInstancesExchangeQuote ImportImage ImportInstance ImportKeyPair ImportSnapshot ImportVolume ModifyHosts ModifyIdentityIdFormat ModifyIdFormat ModifyImageAttribute ModifyInstanceAttribute ModifyInstancePlacement ModifyNetworkInterfaceAttribute ModifyReservedInstances ModifySnapshotAttribute ModifySpotFleetRequest ModifySubnetAttribute ModifyVolumeAttribute ModifyVpcAttribute ModifyVpcEndpoint ModifyVpcPeeringConnectionOptions MonitorInstances MoveAddressToVpc PurchaseHostReservation PurchaseReservedInstancesOffering PurchaseScheduledInstances RebootInstances RegisterImage RejectVpcPeeringConnection ReleaseAddress ReleaseHosts ReplaceIamInstanceProfileAssociation ReplaceNetworkAclAssociation ReplaceNetworkAclEntry ReplaceRoute ReplaceRouteTableAssociation ReportInstanceStatus RequestSpotFleet RequestSpotInstances ResetImageAttribute ResetInstanceAttribute ResetNetworkInterfaceAttribute ResetSnapshotAttribute RestoreAddressToClassic RevokeSecurityGroupEgress RevokeSecurityGroupIngress RunInstances RunScheduledInstances StartInstances StopInstances TerminateInstances UnassignIpv6Addresses UnassignPrivateIpAddresses UnmonitorInstances / }
+  sub operations { qw/AcceptReservedInstancesExchangeQuote AcceptVpcPeeringConnection AllocateAddress AllocateHosts AssignIpv6Addresses AssignPrivateIpAddresses AssociateAddress AssociateDhcpOptions AssociateIamInstanceProfile AssociateRouteTable AssociateSubnetCidrBlock AssociateVpcCidrBlock AttachClassicLinkVpc AttachInternetGateway AttachNetworkInterface AttachVolume AttachVpnGateway AuthorizeSecurityGroupEgress AuthorizeSecurityGroupIngress BundleInstance CancelBundleTask CancelConversionTask CancelExportTask CancelImportTask CancelReservedInstancesListing CancelSpotFleetRequests CancelSpotInstanceRequests ConfirmProductInstance CopyImage CopySnapshot CreateCustomerGateway CreateDhcpOptions CreateEgressOnlyInternetGateway CreateFlowLogs CreateImage CreateInstanceExportTask CreateInternetGateway CreateKeyPair CreateNatGateway CreateNetworkAcl CreateNetworkAclEntry CreateNetworkInterface CreatePlacementGroup CreateReservedInstancesListing CreateRoute CreateRouteTable CreateSecurityGroup CreateSnapshot CreateSpotDatafeedSubscription CreateSubnet CreateTags CreateVolume CreateVpc CreateVpcEndpoint CreateVpcPeeringConnection CreateVpnConnection CreateVpnConnectionRoute CreateVpnGateway DeleteCustomerGateway DeleteDhcpOptions DeleteEgressOnlyInternetGateway DeleteFlowLogs DeleteInternetGateway DeleteKeyPair DeleteNatGateway DeleteNetworkAcl DeleteNetworkAclEntry DeleteNetworkInterface DeletePlacementGroup DeleteRoute DeleteRouteTable DeleteSecurityGroup DeleteSnapshot DeleteSpotDatafeedSubscription DeleteSubnet DeleteTags DeleteVolume DeleteVpc DeleteVpcEndpoints DeleteVpcPeeringConnection DeleteVpnConnection DeleteVpnConnectionRoute DeleteVpnGateway DeregisterImage DescribeAccountAttributes DescribeAddresses DescribeAvailabilityZones DescribeBundleTasks DescribeClassicLinkInstances DescribeConversionTasks DescribeCustomerGateways DescribeDhcpOptions DescribeEgressOnlyInternetGateways DescribeExportTasks DescribeFlowLogs DescribeHostReservationOfferings DescribeHostReservations DescribeHosts DescribeIamInstanceProfileAssociations DescribeIdentityIdFormat DescribeIdFormat DescribeImageAttribute DescribeImages DescribeImportImageTasks DescribeImportSnapshotTasks DescribeInstanceAttribute DescribeInstances DescribeInstanceStatus DescribeInternetGateways DescribeKeyPairs DescribeMovingAddresses DescribeNatGateways DescribeNetworkAcls DescribeNetworkInterfaceAttribute DescribeNetworkInterfaces DescribePlacementGroups DescribePrefixLists DescribeRegions DescribeReservedInstances DescribeReservedInstancesListings DescribeReservedInstancesModifications DescribeReservedInstancesOfferings DescribeRouteTables DescribeScheduledInstanceAvailability DescribeScheduledInstances DescribeSecurityGroupReferences DescribeSecurityGroups DescribeSnapshotAttribute DescribeSnapshots DescribeSpotDatafeedSubscription DescribeSpotFleetInstances DescribeSpotFleetRequestHistory DescribeSpotFleetRequests DescribeSpotInstanceRequests DescribeSpotPriceHistory DescribeStaleSecurityGroups DescribeSubnets DescribeTags DescribeVolumeAttribute DescribeVolumes DescribeVolumesModifications DescribeVolumeStatus DescribeVpcAttribute DescribeVpcClassicLink DescribeVpcClassicLinkDnsSupport DescribeVpcEndpoints DescribeVpcEndpointServices DescribeVpcPeeringConnections DescribeVpcs DescribeVpnConnections DescribeVpnGateways DetachClassicLinkVpc DetachInternetGateway DetachNetworkInterface DetachVolume DetachVpnGateway DisableVgwRoutePropagation DisableVpcClassicLink DisableVpcClassicLinkDnsSupport DisassociateAddress DisassociateIamInstanceProfile DisassociateRouteTable DisassociateSubnetCidrBlock DisassociateVpcCidrBlock EnableVgwRoutePropagation EnableVolumeIO EnableVpcClassicLink EnableVpcClassicLinkDnsSupport GetConsoleOutput GetConsoleScreenshot GetHostReservationPurchasePreview GetPasswordData GetReservedInstancesExchangeQuote ImportImage ImportInstance ImportKeyPair ImportSnapshot ImportVolume ModifyHosts ModifyIdentityIdFormat ModifyIdFormat ModifyImageAttribute ModifyInstanceAttribute ModifyInstancePlacement ModifyNetworkInterfaceAttribute ModifyReservedInstances ModifySnapshotAttribute ModifySpotFleetRequest ModifySubnetAttribute ModifyVolume ModifyVolumeAttribute ModifyVpcAttribute ModifyVpcEndpoint ModifyVpcPeeringConnectionOptions MonitorInstances MoveAddressToVpc PurchaseHostReservation PurchaseReservedInstancesOffering PurchaseScheduledInstances RebootInstances RegisterImage RejectVpcPeeringConnection ReleaseAddress ReleaseHosts ReplaceIamInstanceProfileAssociation ReplaceNetworkAclAssociation ReplaceNetworkAclEntry ReplaceRoute ReplaceRouteTableAssociation ReportInstanceStatus RequestSpotFleet RequestSpotInstances ResetImageAttribute ResetInstanceAttribute ResetNetworkInterfaceAttribute ResetSnapshotAttribute RestoreAddressToClassic RevokeSecurityGroupEgress RevokeSecurityGroupIngress RunInstances RunScheduledInstances StartInstances StopInstances TerminateInstances UnassignIpv6Addresses UnassignPrivateIpAddresses UnmonitorInstances / }
 
 1;
 
@@ -3736,6 +3767,28 @@ For more information about EBS volumes, see Amazon EBS Volumes in the
 I<Amazon Elastic Compute Cloud User Guide>.
 
 
+=head2 DescribeVolumesModifications([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, VolumeIds => ArrayRef[Str|Undef]])
+
+Each argument is described in detail in: L<Paws::EC2::DescribeVolumesModifications>
+
+Returns: a L<Paws::EC2::DescribeVolumesModificationsResult> instance
+
+  Reports the current modification status of EBS volumes.
+
+Current-generation EBS volumes support modification of attributes
+including type, size, and (for C<io1> volumes) IOPS provisioning while
+either attached to or detached from an instance. Following an action
+from the API or the console to modify a volume, the status of the
+modification may be C<modifying>, C<optimizing>, C<completed>, or
+C<failed>. If a volume has never been modified, then certain elements
+of the returned C<VolumeModification> objects are null.
+
+You can also use CloudWatch Events to check the status of a
+modification to an EBS volume. For information about CloudWatch Events,
+see the Amazon CloudWatch Events User Guide. For more information, see
+Monitoring Volume Modifications".
+
+
 =head2 DescribeVolumeStatus([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, VolumeIds => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::EC2::DescribeVolumeStatus>
@@ -4469,6 +4522,47 @@ Returns: nothing
 time.
 
 
+=head2 ModifyVolume(VolumeId => Str, [DryRun => Bool, Iops => Int, Size => Int, VolumeType => Str])
+
+Each argument is described in detail in: L<Paws::EC2::ModifyVolume>
+
+Returns: a L<Paws::EC2::ModifyVolumeResult> instance
+
+  You can modify several parameters of an existing EBS volume, including
+volume size, volume type, and IOPS capacity. If your EBS volume is
+attached to a current-generation EC2 instance type, you may be able to
+apply these changes without stopping the instance or detaching the
+volume from it. For more information about modifying an EBS volume
+running Linux, see Modifying the Size, IOPS, or Type of an EBS Volume
+on Linux. For more information about modifying an EBS volume running
+Windows, see Expanding the Storage Space of an EBS Volume on Windows.
+
+When you complete a resize operation on your volume, you need to extend
+the volume's file-system size to take advantage of the new storage
+capacity. For information about extending a Linux file system, see
+Extending a Linux File System. For information about extending a
+Windows file system, see Extending a Windows File System.
+
+You can use CloudWatch Events to check the status of a modification to
+an EBS volume. For information about CloudWatch Events, see the Amazon
+CloudWatch Events User Guide. You can also track the status of a
+modification using the C<DescribeVolumesModifications> API. For
+information about tracking status changes using either method, see
+Monitoring Volume Modifications".
+
+With previous-generation volumes and instance types, resizing an EBS
+volume may require detaching and reattaching the volume or stopping and
+restarting the instance. For more information about modifying an EBS
+volume running Linux, see Modifying the Size, IOPS, or Type of an EBS
+Volume on Linux. For more information about modifying an EBS volume
+running Windows, see Modifying the Size, IOPS, or Type of an EBS Volume
+on Windows.
+
+If you reach the maximum volume modification rate per volume limit, you
+will need to wait at least six hours before applying further
+modifications to the affected EBS volume.
+
+
 =head2 ModifyVolumeAttribute(VolumeId => Str, [AutoEnableIO => L<Paws::EC2::AttributeBooleanValue>, DryRun => Bool])
 
 Each argument is described in detail in: L<Paws::EC2::ModifyVolumeAttribute>
@@ -4754,10 +4848,10 @@ Each argument is described in detail in: L<Paws::EC2::ReplaceIamInstanceProfileA
 
 Returns: a L<Paws::EC2::ReplaceIamInstanceProfileAssociationResult> instance
 
-  Replaces an IAM instance profile for the specified instance. You can
-use this action to change the IAM instance profile that's associated
-with an instance without having to disassociate the existing IAM
-instance profile first.
+  Replaces an IAM instance profile for the specified running instance.
+You can use this action to change the IAM instance profile that's
+associated with an instance without having to disassociate the existing
+IAM instance profile first.
 
 Use DescribeIamInstanceProfileAssociations to get the association ID.
 
@@ -5234,6 +5328,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - InstanceStatuses, passing the object as the first parameter, and the string 'InstanceStatuses' as the second parameter 
 
 If not, it will return a a L<Paws::EC2::DescribeInstanceStatusResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllNatGateways(sub { },[Filter => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NatGatewayIds => ArrayRef[Str|Undef], NextToken => Str])
+
+=head2 DescribeAllNatGateways([Filter => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NatGatewayIds => ArrayRef[Str|Undef], NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - NatGateways, passing the object as the first parameter, and the string 'NatGateways' as the second parameter 
+
+If not, it will return a a L<Paws::EC2::DescribeNatGatewaysResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 DescribeAllReservedInstancesModifications(sub { },[Filters => ArrayRef[L<Paws::EC2::Filter>], NextToken => Str, ReservedInstancesModificationIds => ArrayRef[Str|Undef]])
