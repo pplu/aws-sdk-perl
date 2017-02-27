@@ -171,23 +171,14 @@ package Paws::Net::RestJsonResponse;
         if ($type =~ m/\:\:/) {
           Paws->load_class($type);
 
-          my $val;
-          if (not defined $value) {
-            $val = [ ];
-          } elsif ($value_ref eq 'ARRAY') {
-            $val = $value;
-          } elsif ($value_ref eq 'HASH') {
-            $val = [ $value ];
-          }
-
           if ($type->does('Paws::API::StrToObjMapParser')) {
-            $args{ $att } = [ map { $self->handle_response_strtoobjmap($type, $_) } @$val ];
+            $args{ $att } = [ map { $self->handle_response_strtoobjmap($type, $_) } @$value ];
           } elsif ($type->does('Paws::API::StrToNativeMapParser')) {
-            $args{ $att } = [ map { $self->handle_response_strtonativemap($type, $_) } @$val ];
+            $args{ $att } = [ map { $self->handle_response_strtonativemap($type, $_) } @$value ];
           } elsif ($type->does('Paws::API::MapParser')) {
             die "MapParser Type in an Array. Please implement me";
           } else {
-            $args{ $att } = [ map { $self->new_from_result_struct($type, $_) } @$val ];
+            $args{ $att } = [ map { $self->new_from_result_struct($type, $_) } @$value ];
           }
         } else {
           if (defined $value){
