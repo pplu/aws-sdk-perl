@@ -787,7 +787,7 @@ existing value for the parameter that is not changed.
 You can have only one delivery channel per region in your account.
 
 
-=head2 PutEvaluations(ResultToken => Str, [Evaluations => ArrayRef[L<Paws::Config::Evaluation>]])
+=head2 PutEvaluations(ResultToken => Str, [Evaluations => ArrayRef[L<Paws::Config::Evaluation>], TestMode => Bool])
 
 Each argument is described in detail in: L<Paws::Config::PutEvaluations>
 

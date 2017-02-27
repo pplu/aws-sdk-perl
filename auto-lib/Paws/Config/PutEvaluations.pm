@@ -3,6 +3,7 @@ package Paws::Config::PutEvaluations;
   use Moose;
   has Evaluations => (is => 'ro', isa => 'ArrayRef[Paws::Config::Evaluation]');
   has ResultToken => (is => 'ro', isa => 'Str', required => 1);
+  has TestMode => (is => 'ro', isa => 'Bool');
 
   use MooseX::ClassAttribute;
 
@@ -46,6 +47,18 @@ AWS Config rule that invokes the AWS Lambda function.
 
 An encrypted token that associates an evaluation with an AWS Config
 rule. Identifies the rule and the event that triggered the evaluation
+
+
+
+=head2 TestMode => Bool
+
+Use this parameter to specify a test run for C<PutEvaluations>. You can
+verify whether your AWS Lambda function will deliver evaluation results
+to AWS Config. No updates occur to your existing evaluations, and
+evaluation results are not sent to AWS Config.
+
+When C<TestMode> is C<true>, C<PutEvaluations> doesn't require a valid
+value for the C<ResultToken> parameter, but the value cannot be null.
 
 
 
