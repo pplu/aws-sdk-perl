@@ -650,10 +650,7 @@ Each argument is described in detail in: L<Paws::CloudDirectory::ListObjectAttri
 
 Returns: a L<Paws::CloudDirectory::ListObjectAttributesResponse> instance
 
-  Lists all attributes associated with an object. This also supports
-common namespace prefix (key) listing. For example, if you want to
-retrieve all attributes associated with facet1, key can be C<facet1>.
-If key is empty, all attributes are returned in a paginated list.
+  Lists all attributes associated with an object.
 
 
 =head2 ListObjectChildren(DirectoryArn => Str, ObjectReference => L<Paws::CloudDirectory::ObjectReference>, [ConsistencyLevel => Str, MaxResults => Int, NextToken => Str])
