@@ -133,6 +133,7 @@ package Paws::API::Caller;
                 $meta->does('Paws::API::Attribute::Trait::ParamInHeader') ? lc($meta->header_name) : $att;
 
       my $att_type = $meta->type_constraint;
+      my $att_is_required = $meta->is_required;
 
     #  use Data::Dumper;
     #  print STDERR "USING KEY:  $key\n";
@@ -258,6 +259,8 @@ package Paws::API::Caller;
             } else {
               $args{ $att } = [ $value ];
             }
+          } else {
+            $args{ $att } = [] if ($att_is_required);
           }
         }
       }
