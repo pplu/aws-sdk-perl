@@ -3,6 +3,7 @@ package Paws::DirectConnect::CreateConnection;
   use Moose;
   has Bandwidth => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'bandwidth' , required => 1);
   has ConnectionName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'connectionName' , required => 1);
+  has LagId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'lagId' );
   has Location => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'location' , required => 1);
 
   use MooseX::ClassAttribute;
@@ -42,6 +43,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 
 =head2 B<REQUIRED> ConnectionName => Str
+
+
+
+
+
+=head2 LagId => Str
 
 
 

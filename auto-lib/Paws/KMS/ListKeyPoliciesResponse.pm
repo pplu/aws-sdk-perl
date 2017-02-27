@@ -18,8 +18,8 @@ Paws::KMS::ListKeyPoliciesResponse
 
 =head2 NextMarker => Str
 
-When C<Truncated> is true, this value is present and contains the value
-to use for the C<Marker> parameter in a subsequent pagination request.
+When C<Truncated> is true, this element is present and contains the
+value to use for the C<Marker> parameter in a subsequent request.
 
 
 =head2 PolicyNames => ArrayRef[Str|Undef]
@@ -30,9 +30,10 @@ named "Default".
 
 =head2 Truncated => Bool
 
-A flag that indicates whether there are more items in the list. If your
-results were truncated, you can use the C<Marker> parameter to make a
-subsequent pagination request to retrieve more items in the list.
+A flag that indicates whether there are more items in the list. When
+this value is true, the list in this response is truncated. To retrieve
+more items, pass the value of the C<NextMarker> element in this
+response to the C<Marker> parameter in a subsequent request.
 
 
 =head2 _request_id => Str
