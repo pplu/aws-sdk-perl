@@ -145,17 +145,6 @@ package Paws::Net::RestJsonResponse;
                 $args{ $att } = $self->new_from_result_struct($att_class, $value);
               }
             }
-          } else {
-              ##########
-              # This loop is required to guard against cases (such as Paws::S3::CopyObject) where
-              # the root node is removed from the response when unserialising (see KeepRoot => 1 for 
-              # XML::Simple) but is required to create the Paws object. This is mostly due to the 
-              # implementation of the new_from_result_struct sub 
-              my $att_class = $att_type->class;
-              eval {
-                $args{ $att } = $self->new_from_result_struct($att_class, $result);
-                1;
-              } or do {}
           }
         } else {
           if (defined $value) {
