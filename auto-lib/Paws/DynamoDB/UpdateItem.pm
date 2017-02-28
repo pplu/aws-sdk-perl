@@ -78,7 +78,7 @@ These function names are case-sensitive.
 
 =item *
 
-Comparison operators: C< = | E<lt>E<gt> | E<lt> | E<gt> | E<lt>= |
+Comparison operators: C<= | E<lt>E<gt> | E<lt> | E<gt> | E<lt>= |
 E<gt>= | BETWEEN | IN>
 
 =item *
@@ -236,23 +236,23 @@ C<ReturnValues>.)
 
 =item *
 
-C<ALL_OLD> - If C<UpdateItem> overwrote an attribute name-value pair,
-then the content of the old item is returned.
+C<ALL_OLD> - Returns all of the attributes of the item, as they
+appeared before the UpdateItem operation.
 
 =item *
 
-C<UPDATED_OLD> - The old versions of only the updated attributes are
-returned.
+C<UPDATED_OLD> - Returns only the updated attributes, as they appeared
+before the UpdateItem operation.
 
 =item *
 
-C<ALL_NEW> - All of the attributes of the new version of the item are
-returned.
+C<ALL_NEW> - Returns all of the attributes of the item, as they appear
+after the UpdateItem operation.
 
 =item *
 
-C<UPDATED_NEW> - The new versions of only the updated attributes are
-returned.
+C<UPDATED_NEW> - Returns only the updated attributes, as they appear
+after the UpdateItem operation.
 
 =back
 

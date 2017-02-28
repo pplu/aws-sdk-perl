@@ -6,6 +6,7 @@ package Paws::DynamoDBStreams::Record;
   has EventName => (is => 'ro', isa => 'Str', xmlname => 'eventName', request_name => 'eventName', traits => ['Unwrapped','NameInRequest']);
   has EventSource => (is => 'ro', isa => 'Str', xmlname => 'eventSource', request_name => 'eventSource', traits => ['Unwrapped','NameInRequest']);
   has EventVersion => (is => 'ro', isa => 'Str', xmlname => 'eventVersion', request_name => 'eventVersion', traits => ['Unwrapped','NameInRequest']);
+  has UserIdentity => (is => 'ro', isa => 'Paws::DynamoDBStreams::Identity', xmlname => 'userIdentity', request_name => 'userIdentity', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -25,7 +26,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::DynamoDBStreams::Record object:
 
-  $service_obj->Method(Att1 => { AwsRegion => $value, ..., EventVersion => $value  });
+  $service_obj->Method(Att1 => { AwsRegion => $value, ..., UserIdentity => $value  });
 
 =head3 Results returned from an API call
 
@@ -43,7 +44,7 @@ A description of a unique event within a stream.
 
 =head2 AwsRegion => Str
 
-  The region in which the I<GetRecords> request was received.
+  The region in which the C<GetRecords> request was received.
 
 
 =head2 Dynamodb => L<Paws::DynamoDBStreams::StreamRecord>
@@ -83,18 +84,41 @@ C<REMOVE> - the item was deleted from the table
 =head2 EventSource => Str
 
   The AWS service from which the stream record originated. For DynamoDB
-Streams, this is I<aws:dynamodb>.
+Streams, this is C<aws:dynamodb>.
 
 
 =head2 EventVersion => Str
 
   The version number of the stream record format. This number is updated
-whenever the structure of I<Record> is modified.
+whenever the structure of C<Record> is modified.
 
-Client applications must not assume that I<eventVersion> will remain at
+Client applications must not assume that C<eventVersion> will remain at
 a particular value, as this number is subject to change at any time. In
-general, I<eventVersion> will only increase as the low-level DynamoDB
+general, C<eventVersion> will only increase as the low-level DynamoDB
 Streams API evolves.
+
+
+=head2 UserIdentity => L<Paws::DynamoDBStreams::Identity>
+
+  Items that are deleted by the Time to Live process after expiration
+have the following fields:
+
+=over
+
+=item *
+
+Records[].userIdentity.type
+
+"Service"
+
+=item *
+
+Records[].userIdentity.principalId
+
+"dynamodb.amazonaws.com"
+
+=back
+
 
 
 

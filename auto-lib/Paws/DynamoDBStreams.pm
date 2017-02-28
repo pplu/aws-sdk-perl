@@ -72,33 +72,6 @@ processing stream records. To learn more about application development
 with Streams, see Capturing Table Activity with DynamoDB Streams in the
 Amazon DynamoDB Developer Guide.
 
-The following are short descriptions of each low-level DynamoDB Streams
-action:
-
-=over
-
-=item *
-
-I<DescribeStream> - Returns detailed information about a particular
-stream.
-
-=item *
-
-I<GetRecords> - Retrieves the stream records from within a shard.
-
-=item *
-
-I<GetShardIterator> - Returns information on how to retrieve the
-streams record from a shard with a given shard ID.
-
-=item *
-
-I<ListStreams> - Returns a list of all the streams associated with the
-current AWS account and endpoint.
-
-=back
-
-
 =head1 METHODS
 
 =head2 DescribeStream(StreamArn => Str, [ExclusiveStartShardId => Str, Limit => Int])
@@ -111,7 +84,7 @@ Returns: a L<Paws::DynamoDBStreams::DescribeStreamOutput> instance
 stream, its Amazon Resource Name (ARN), the composition of its shards,
 and its corresponding DynamoDB table.
 
-You can call I<DescribeStream> at a maximum rate of 10 times per
+You can call C<DescribeStream> at a maximum rate of 10 times per
 second.
 
 Each shard in the stream has a C<SequenceNumberRange> associated with
@@ -164,10 +137,10 @@ Each argument is described in detail in: L<Paws::DynamoDBStreams::ListStreams>
 Returns: a L<Paws::DynamoDBStreams::ListStreamsOutput> instance
 
   Returns an array of stream ARNs associated with the current account and
-endpoint. If the C<TableName> parameter is present, then I<ListStreams>
+endpoint. If the C<TableName> parameter is present, then C<ListStreams>
 will return only the streams ARNs for that table.
 
-You can call I<ListStreams> at a maximum rate of 5 times per second.
+You can call C<ListStreams> at a maximum rate of 5 times per second.
 
 
 

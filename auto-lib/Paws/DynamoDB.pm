@@ -75,6 +75,11 @@ package Paws::DynamoDB;
     my $call_object = $self->new_with_coercions('Paws::DynamoDB::DescribeTable', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeTimeToLive {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DynamoDB::DescribeTimeToLive', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetItem {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DynamoDB::GetItem', @_);
@@ -123,6 +128,11 @@ package Paws::DynamoDB;
   sub UpdateTable {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DynamoDB::UpdateTable', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateTimeToLive {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DynamoDB::UpdateTimeToLive', @_);
     return $self->caller->do_call($self, $call_object);
   }
   
@@ -199,7 +209,7 @@ package Paws::DynamoDB;
   }
 
 
-  sub operations { qw/BatchGetItem BatchWriteItem CreateTable DeleteItem DeleteTable DescribeLimits DescribeTable GetItem ListTables ListTagsOfResource PutItem Query Scan TagResource UntagResource UpdateItem UpdateTable / }
+  sub operations { qw/BatchGetItem BatchWriteItem CreateTable DeleteItem DeleteTable DescribeLimits DescribeTable DescribeTimeToLive GetItem ListTables ListTagsOfResource PutItem Query Scan TagResource UntagResource UpdateItem UpdateTable UpdateTimeToLive / }
 
 1;
 
@@ -606,6 +616,16 @@ be available at that moment. Wait for a few seconds, and then try the
 C<DescribeTable> request again.
 
 
+=head2 DescribeTimeToLive(TableName => Str)
+
+Each argument is described in detail in: L<Paws::DynamoDB::DescribeTimeToLive>
+
+Returns: a L<Paws::DynamoDB::DescribeTimeToLiveOutput> instance
+
+  Gives a description of the Time to Live (TTL) status on the specified
+table.
+
+
 =head2 GetItem(Key => L<Paws::DynamoDB::Key>, TableName => Str, [AttributesToGet => ArrayRef[Str|Undef], ConsistentRead => Bool, ExpressionAttributeNames => L<Paws::DynamoDB::ExpressionAttributeNameMap>, ProjectionExpression => Str, ReturnConsumedCapacity => Str])
 
 Each argument is described in detail in: L<Paws::DynamoDB::GetItem>
@@ -830,6 +850,43 @@ table status changes from C<ACTIVE> to C<UPDATING>. While it is
 C<UPDATING>, you cannot issue another C<UpdateTable> request. When the
 table returns to the C<ACTIVE> state, the C<UpdateTable> operation is
 complete.
+
+
+=head2 UpdateTimeToLive(TableName => Str, TimeToLiveSpecification => L<Paws::DynamoDB::TimeToLiveSpecification>)
+
+Each argument is described in detail in: L<Paws::DynamoDB::UpdateTimeToLive>
+
+Returns: a L<Paws::DynamoDB::UpdateTimeToLiveOutput> instance
+
+  Specify the lifetime of individual table items. The database
+automatically removes the item at the expiration of the item. The
+UpdateTimeToLive method will enable or disable TTL for the specified
+table. A successful C<UpdateTimeToLive> call returns the current
+C<TimeToLiveSpecification>; it may take up to one hour for the change
+to fully process.
+
+TTL compares the current time in epoch time format to the time stored
+in the TTL attribute of an item. If the epoch time value stored in the
+attribute is less than the current time, the item is marked as expired
+and subsequently deleted.
+
+The epoch time format is the number of seconds elapsed since 12:00:00
+AM January 1st, 1970 UTC.
+
+DynamoDB deletes expired items on a best-effort basis to ensure
+availability of throughput for other data operations.
+
+DynamoDB typically deletes expired items within two days of expiration.
+The exact duration within which an item gets deleted after expiration
+is specific to the nature of the workload. Items that have expired and
+not been deleted will still show up in reads, queries, and scans.
+
+As items are deleted, they are removed from any Local Secondary Index
+and Global Secondary Index immediately in the same eventually
+consistent way as a standard delete operation.
+
+For more information, see Time To Live in the Amazon DynamoDB Developer
+Guide.
 
 
 
