@@ -43,9 +43,24 @@ package Paws::ES;
     my $call_object = $self->new_with_coercions('Paws::ES::DescribeElasticsearchDomains', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeElasticsearchInstanceTypeLimits {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ES::DescribeElasticsearchInstanceTypeLimits', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListDomainNames {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ES::ListDomainNames', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListElasticsearchInstanceTypes {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ES::ListElasticsearchInstanceTypes', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListElasticsearchVersions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ES::ListElasticsearchVersions', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListTags {
@@ -66,7 +81,7 @@ package Paws::ES;
   
 
 
-  sub operations { qw/AddTags CreateElasticsearchDomain DeleteElasticsearchDomain DescribeElasticsearchDomain DescribeElasticsearchDomainConfig DescribeElasticsearchDomains ListDomainNames ListTags RemoveTags UpdateElasticsearchDomainConfig / }
+  sub operations { qw/AddTags CreateElasticsearchDomain DeleteElasticsearchDomain DescribeElasticsearchDomain DescribeElasticsearchDomainConfig DescribeElasticsearchDomains DescribeElasticsearchInstanceTypeLimits ListDomainNames ListElasticsearchInstanceTypes ListElasticsearchVersions ListTags RemoveTags UpdateElasticsearchDomainConfig / }
 
 1;
 
@@ -172,6 +187,17 @@ Elasticsearch domains, including the domain ID, domain endpoint, and
 domain ARN.
 
 
+=head2 DescribeElasticsearchInstanceTypeLimits(ElasticsearchVersion => Str, InstanceType => Str, [DomainName => Str])
+
+Each argument is described in detail in: L<Paws::ES::DescribeElasticsearchInstanceTypeLimits>
+
+Returns: a L<Paws::ES::DescribeElasticsearchInstanceTypeLimitsResponse> instance
+
+  Describe Elasticsearch Limits for a given InstanceType and
+ElasticsearchVersion. When modifying existing Domain, specify the C<
+DomainName > to know what Limits are supported for modifying.
+
+
 =head2 ListDomainNames( => )
 
 Each argument is described in detail in: L<Paws::ES::ListDomainNames>
@@ -180,6 +206,25 @@ Returns: a L<Paws::ES::ListDomainNamesResponse> instance
 
   Returns the name of all Elasticsearch domains owned by the current
 user's account.
+
+
+=head2 ListElasticsearchInstanceTypes(ElasticsearchVersion => Str, [DomainName => Str, MaxResults => Int, NextToken => Str])
+
+Each argument is described in detail in: L<Paws::ES::ListElasticsearchInstanceTypes>
+
+Returns: a L<Paws::ES::ListElasticsearchInstanceTypesResponse> instance
+
+  List all Elasticsearch instance types that are supported for given
+ElasticsearchVersion
+
+
+=head2 ListElasticsearchVersions([MaxResults => Int, NextToken => Str])
+
+Each argument is described in detail in: L<Paws::ES::ListElasticsearchVersions>
+
+Returns: a L<Paws::ES::ListElasticsearchVersionsResponse> instance
+
+  List all supported Elasticsearch versions
 
 
 =head2 ListTags(ARN => Str)
