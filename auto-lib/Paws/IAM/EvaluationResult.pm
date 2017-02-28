@@ -6,6 +6,7 @@ package Paws::IAM::EvaluationResult;
   has EvalResourceName => (is => 'ro', isa => 'Str');
   has MatchedStatements => (is => 'ro', isa => 'ArrayRef[Paws::IAM::Statement]');
   has MissingContextValues => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has OrganizationsDecisionDetail => (is => 'ro', isa => 'Paws::IAM::OrganizationsDecisionDetail');
   has ResourceSpecificResults => (is => 'ro', isa => 'ArrayRef[Paws::IAM::ResourceSpecificResult]');
 1;
 
@@ -89,6 +90,13 @@ resources, then any missing context values are instead included under
 the C<ResourceSpecificResults> section. To discover the context keys
 used by a set of policies, you can call GetContextKeysForCustomPolicy
 or GetContextKeysForPrincipalPolicy.
+
+
+=head2 OrganizationsDecisionDetail => L<Paws::IAM::OrganizationsDecisionDetail>
+
+  A structure that details how AWS Organizations and its service control
+policies affect the results of the simulation. Only applies if the
+simulated user's account is part of an organization.
 
 
 =head2 ResourceSpecificResults => ArrayRef[L<Paws::IAM::ResourceSpecificResult>]
