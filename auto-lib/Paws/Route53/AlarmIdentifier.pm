@@ -52,8 +52,8 @@ Amazon Route 53 health checkers to use to determine whether this health
 check is healthy.
 
 For the current list of CloudWatch regions, see Amazon CloudWatch in
-I<AWS Regions and Endpoints> in the I<Amazon Web Services General
-Reference>.
+the I<AWS Regions and Endpoints> chapter of the I<Amazon Web Services
+General Reference>.
 
 
 

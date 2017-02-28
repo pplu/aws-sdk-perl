@@ -51,8 +51,8 @@ Information about the resource record set to create or delete.
 
   I<Alias resource record sets only:> Information about the CloudFront
 distribution, AWS Elastic Beanstalk environment, ELB load balancer,
-Amazon S3 bucket, or Amazon Route 53 resource record set to which you
-are redirecting queries. The AWS Elastic Beanstalk environment must
+Amazon S3 bucket, or Amazon Route 53 resource record set to which
+you're redirecting queries. The AWS Elastic Beanstalk environment must
 have a regionalized subdomain.
 
 If you're creating resource records sets for a private hosted zone,
@@ -222,8 +222,8 @@ metric health checks)
 
 =back
 
-For information about how Amazon Route 53 determines whether a health
-check is healthy, see CreateHealthCheck.
+For more information, see How Amazon Route 53 Determines Whether an
+Endpoint Is Healthy.
 
 The C<HealthCheckId> element is only useful when Amazon Route 53 is
 choosing between two or more resource record sets to respond to a DNS
@@ -235,20 +235,20 @@ the following configurations:
 
 =item *
 
-You're checking the health of the resource record sets in a weighted,
-latency, geolocation, or failover resource record set, and you specify
-health check IDs for all of the resource record sets. If the health
-check for one resource record set specifies an endpoint that is not
-healthy, Amazon Route 53 stops responding to queries using the value
-for that resource record set.
+You're checking the health of the resource record sets in a group of
+weighted, latency, geolocation, or failover resource record sets, and
+you specify health check IDs for all of the resource record sets. If
+the health check for one resource record set specifies an endpoint that
+is not healthy, Amazon Route 53 stops responding to queries using the
+value for that resource record set.
 
 =item *
 
 You set C<EvaluateTargetHealth> to true for the resource record sets in
-an alias, weighted alias, latency alias, geolocation alias, or failover
-alias resource record set, and you specify health check IDs for all of
-the resource record sets that are referenced by the alias resource
-record sets.
+a group of alias, weighted alias, latency alias, geolocation alias, or
+failover alias resource record sets, and you specify health check IDs
+for all of the resource record sets that are referenced by the alias
+resource record sets.
 
 =back
 
@@ -274,7 +274,7 @@ recommend that you create a separate health check for each endpoint.
 For example, create a health check for each C<HTTP> server that is
 serving content for C<www.example.com>. For the value of
 C<FullyQualifiedDomainName>, specify the domain name of the server
-(such as C<us-east-1-www.example.com>), not the name of the resource
+(such as C<us-east-2-www.example.com>), not the name of the resource
 record sets (example.com).
 
 n this configuration, if you create a health check for which the value
@@ -382,7 +382,7 @@ Region.
 
 =item *
 
-You are not required to create latency resource record sets for all
+You aren't required to create latency resource record sets for all
 Amazon EC2 Regions. Amazon Route 53 will choose the region with the
 best latency from among the regions for which you create latency
 resource record sets.
@@ -401,7 +401,7 @@ sets.
 
   Information about the resource records to act upon.
 
-If you are creating an alias resource record set, omit
+If you're creating an alias resource record set, omit
 C<ResourceRecords>.
 
 

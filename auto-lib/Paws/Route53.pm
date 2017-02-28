@@ -434,6 +434,8 @@ Amazon Route 53 servers. Send a C<POST> request to:
 C</2013-04-01/hostedzone/I<Amazon Route 53 hosted Zone ID>/rrset>
 resource.
 
+B<Change Batches and Transactional Changes>
+
 The request body must include a document with a
 C<ChangeResourceRecordSetsRequest> element. The request body contains a
 list of change items, known as a change batch. Change batches are
@@ -456,6 +458,8 @@ resource record set more than once in a single change batch. If you
 attempt to delete the same change batch more than once, Amazon Route 53
 returns an C<InvalidChangeBatch> error.
 
+B<Traffic Flow>
+
 To create resource record sets for complex routing configurations, use
 either the traffic flow visual editor in the Amazon Route 53 console or
 the API actions for traffic policies and traffic policy instances. Save
@@ -465,6 +469,8 @@ names (such as www.example.com), in the same hosted zone or in multiple
 hosted zones. You can roll back the updates if the new configuration
 isn't performing as expected. For more information, see Using Traffic
 Flow to Route DNS Traffic in the I<Amazon Route 53 Developer Guide>.
+
+B<Create, Delete, and Upsert>
 
 Use C<ChangeResourceRecordsSetsRequest> to perform the following
 actions:
@@ -488,75 +494,20 @@ values in the request.
 
 =back
 
-The values that you need to include in the request depend on the type
-of resource record set that you're creating, deleting, or updating:
+B<Syntaxes for Creating, Updating, and Deleting Resource Record Sets>
 
-B<Basic resource record sets (excluding alias, failover, geolocation,
-latency, and weighted resource record sets)>
+The syntax for a request depends on the type of resource record set
+that you want to create, delete, or update, such as weighted, alias, or
+failover. The XML elements in your request must appear in the order
+listed in the syntax.
 
-=over
+For an example for each type of resource record set, see "Examples."
 
-=item *
+Don't refer to the syntax in the "Parameter Syntax" section, which
+includes all of the elements for every kind of resource record set that
+you can create, delete, or update by using C<ChangeResourceRecordSets>.
 
-C<Name>
-
-=item *
-
-C<Type>
-
-=item *
-
-C<TTL>
-
-=back
-
-B<Failover, geolocation, latency, or weighted resource record sets
-(excluding alias resource record sets)>
-
-=over
-
-=item *
-
-C<Name>
-
-=item *
-
-C<Type>
-
-=item *
-
-C<TTL>
-
-=item *
-
-C<SetIdentifier>
-
-=back
-
-B<Alias resource record sets (including failover alias, geolocation
-alias, latency alias, and weighted alias resource record sets)>
-
-=over
-
-=item *
-
-C<Name>
-
-=item *
-
-C<Type>
-
-=item *
-
-C<AliasTarget> (includes C<DNSName>, C<EvaluateTargetHealth>, and
-C<HostedZoneId>)
-
-=item *
-
-C<SetIdentifier> (for failover, geolocation, latency, and weighted
-resource record sets)
-
-=back
+B<Change Propagation to Amazon Route 53 DNS Servers>
 
 When you submit a C<ChangeResourceRecordSets> request, Amazon Route 53
 propagates your changes to all of the Amazon Route 53 authoritative DNS
@@ -565,7 +516,9 @@ status of C<PENDING>. When propagation is complete, C<GetChange>
 returns a status of C<INSYNC>. Changes generally propagate to all
 Amazon Route 53 name servers in a few minutes. In rare circumstances,
 propagation can take up to 30 minutes. For more information, see
-GetChange
+GetChange.
+
+B<Limits on ChangeResourceRecordSets Requests>
 
 For information about the limits on a C<ChangeResourceRecordSets>
 request, see Limits in the I<Amazon Route 53 Developer Guide>.
@@ -599,7 +552,7 @@ check ID specified when adding health check to a resource record set.
 For information about adding health checks to resource record sets, see
 ResourceRecordSet$HealthCheckId in ChangeResourceRecordSets.
 
-If you are registering EC2 instances with an Elastic Load Balancing
+If you're registering EC2 instances with an Elastic Load Balancing
 (ELB) load balancer, do not create Amazon Route 53 health checks for
 the EC2 instances. When you register an EC2 instance with a load
 balancer, you configure settings for an ELB health check, which
@@ -958,11 +911,10 @@ Each argument is described in detail in: L<Paws::Route53::GetCheckerIpRanges>
 
 Returns: a L<Paws::Route53::GetCheckerIpRangesResponse> instance
 
-  Retrieves a list of the IP ranges used by Amazon Route 53 health
-checkers to check the health of your resources. Send a C<GET> request
-to the C</I<Amazon Route 53 API version>/checkeripranges> resource. Use
-these IP addresses to configure router and firewall rules to allow
-health checkers to check the health of your resources.
+  C<GetCheckerIpRanges> still works, but we recommend that you download
+ip-ranges.json, which includes IP address ranges for all AWS services.
+For more information, see IP Address Ranges of Amazon Route 53 Servers
+in the I<Amazon Route 53 Developer Guide>.
 
 
 =head2 GetGeoLocation([ContinentCode => Str, CountryCode => Str, SubdivisionCode => Str])

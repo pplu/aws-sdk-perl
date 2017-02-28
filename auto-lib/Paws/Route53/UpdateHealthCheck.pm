@@ -100,6 +100,9 @@ from unhealthy to healthy or vice versa. For more information, see How
 Amazon Route 53 Determines Whether an Endpoint Is Healthy in the
 I<Amazon Route 53 Developer Guide>.
 
+If you don't specify a value for C<FailureThreshold>, the default value
+is three health checks.
+
 
 
 =head2 FullyQualifiedDomainName => Str
@@ -169,7 +172,7 @@ C<FullyQualifiedDomainName>, we recommend that you create a separate
 health check for each endpoint. For example, create a health check for
 each HTTP server that is serving content for www.example.com. For the
 value of C<FullyQualifiedDomainName>, specify the domain name of the
-server (such as C<us-east-1-www.example.com>), not the name of the
+server (such as C<us-east-2-www.example.com>), not the name of the
 resource record sets (www.example.com).
 
 In this configuration, if the value of C<FullyQualifiedDomainName>
@@ -299,6 +302,24 @@ name that you specify in C<FullyQualifiedDomainName> at the interval
 that you specify in C<RequestInterval>. Using an IP address that is
 returned by DNS, Amazon Route 53 then checks the health of the
 endpoint.
+
+Use one of the following formats for the value of C<IPAddress>:
+
+=over
+
+=item *
+
+B<IPv4 address>: four values between 0 and 255, separated by periods
+(.), for example, C<192.0.2.44>.
+
+=item *
+
+B<IPv6 address>: eight groups of four hexadecimal values, separated by
+colons (:), for example, C<2001:0db8:85a3:0000:0000:abcd:0001:2345>.
+You can also shorten IPv6 addresses as described in RFC 5952, for
+example, C<2001:db8:85a3::abcd:1:2345>.
+
+=back
 
 If the endpoint is an EC2 instance, we recommend that you create an
 Elastic IP address, associate it with your EC2 instance, and specify

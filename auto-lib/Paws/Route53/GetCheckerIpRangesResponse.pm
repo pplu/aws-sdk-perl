@@ -17,8 +17,7 @@ Paws::Route53::GetCheckerIpRangesResponse
 
 =head2 B<REQUIRED> CheckerIpRanges => ArrayRef[Str|Undef]
 
-A complex type that contains sorted list of IP ranges in CIDR format
-for Amazon Route 53 health checkers.
+
 
 
 
