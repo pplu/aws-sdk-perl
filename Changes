@@ -1,5 +1,7 @@
 0.32
  - New API: LexRuntime
+ - New API: Organizations
+ - New API: MTurk (Mechanical Turk)
  - CodeCommit API update
  - ELBv2 API update
  - ECS API update 
@@ -9,6 +11,11 @@
  - CognitoIdentity API update
  - Config API update
  - KMS API update
+ - GameLift API update
+ - ElasticBeanstalk API update
+ - ES API update
+ - DynamoDB API update
+ - IAM API update
 
 0.31 01 Feb 2017 
  - Bug fixed: Services that use QueryCaller and EC2Caller were not serializing Booleans correctly
