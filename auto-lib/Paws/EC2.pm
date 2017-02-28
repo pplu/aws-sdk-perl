@@ -4535,7 +4535,8 @@ apply these changes without stopping the instance or detaching the
 volume from it. For more information about modifying an EBS volume
 running Linux, see Modifying the Size, IOPS, or Type of an EBS Volume
 on Linux. For more information about modifying an EBS volume running
-Windows, see Expanding the Storage Space of an EBS Volume on Windows.
+Windows, see Modifying the Size, IOPS, or Type of an EBS Volume on
+Windows.
 
 When you complete a resize operation on your volume, you need to extend
 the volume's file-system size to take advantage of the new storage
@@ -4546,17 +4547,17 @@ Windows file system, see Extending a Windows File System.
 You can use CloudWatch Events to check the status of a modification to
 an EBS volume. For information about CloudWatch Events, see the Amazon
 CloudWatch Events User Guide. You can also track the status of a
-modification using the C<DescribeVolumesModifications> API. For
+modification using the DescribeVolumesModifications API. For
 information about tracking status changes using either method, see
-Monitoring Volume Modifications".
+Monitoring Volume Modifications.
 
-With previous-generation volumes and instance types, resizing an EBS
-volume may require detaching and reattaching the volume or stopping and
-restarting the instance. For more information about modifying an EBS
-volume running Linux, see Modifying the Size, IOPS, or Type of an EBS
-Volume on Linux. For more information about modifying an EBS volume
-running Windows, see Modifying the Size, IOPS, or Type of an EBS Volume
-on Windows.
+With previous-generation instance types, resizing an EBS volume may
+require detaching and reattaching the volume or stopping and restarting
+the instance. For more information about modifying an EBS volume
+running Linux, see Modifying the Size, IOPS, or Type of an EBS Volume
+on Linux. For more information about modifying an EBS volume running
+Windows, see Modifying the Size, IOPS, or Type of an EBS Volume on
+Windows.
 
 If you reach the maximum volume modification rate per volume limit, you
 will need to wait at least six hours before applying further
@@ -4740,7 +4741,7 @@ and Rebooting Instances in the I<Amazon Elastic Compute Cloud User
 Guide>.
 
 
-=head2 RegisterImage(Name => Str, [Architecture => Str, BlockDeviceMappings => ArrayRef[L<Paws::EC2::BlockDeviceMapping>], Description => Str, DryRun => Bool, EnaSupport => Bool, ImageLocation => Str, KernelId => Str, RamdiskId => Str, RootDeviceName => Str, SriovNetSupport => Str, VirtualizationType => Str])
+=head2 RegisterImage(Name => Str, [Architecture => Str, BillingProducts => ArrayRef[Str|Undef], BlockDeviceMappings => ArrayRef[L<Paws::EC2::BlockDeviceMapping>], Description => Str, DryRun => Bool, EnaSupport => Bool, ImageLocation => Str, KernelId => Str, RamdiskId => Str, RootDeviceName => Str, SriovNetSupport => Str, VirtualizationType => Str])
 
 Each argument is described in detail in: L<Paws::EC2::RegisterImage>
 
@@ -4756,30 +4757,26 @@ AMI in a single request, so you don't have to register the AMI
 yourself.
 
 You can also use C<RegisterImage> to create an Amazon EBS-backed Linux
-AMI from a snapshot of a root device volume. For more information, see
-Launching an Instance from a Snapshot in the I<Amazon Elastic Compute
-Cloud User Guide>.
+AMI from a snapshot of a root device volume. You specify the snapshot
+using the block device mapping. For more information, see Launching an
+Instance from a Snapshot in the I<Amazon Elastic Compute Cloud User
+Guide>.
+
+You can't register an image where a secondary (non-root) snapshot has
+AWS Marketplace product codes.
 
 Some Linux distributions, such as Red Hat Enterprise Linux (RHEL) and
-SUSE Linux Enterprise Server (SLES), use the EC2 C<billingProduct> code
-associated with an AMI to verify subscription status for package
+SUSE Linux Enterprise Server (SLES), use the EC2 billing product code
+associated with an AMI to verify the subscription status for package
 updates. Creating an AMI from an EBS snapshot does not maintain this
 billing code, and subsequent instances launched from such an AMI will
-not be able to connect to package update infrastructure.
-
-Similarly, although you can create a Windows AMI from a snapshot, you
-can't successfully launch an instance from the AMI.
-
-To create Windows AMIs or to create AMIs for Linux operating systems
-that must retain AMI billing codes to work properly, see CreateImage.
+not be able to connect to package update infrastructure. To create an
+AMI that must retain billing codes, see CreateImage.
 
 If needed, you can deregister an AMI at any time. Any modifications you
 make to an AMI backed by an instance store volume invalidates its
 registration. If you make changes to an image, deregister the previous
 image and register the new image.
-
-You can't register an image where a secondary (non-root) snapshot has
-AWS Marketplace product codes.
 
 
 =head2 RejectVpcPeeringConnection(VpcPeeringConnectionId => Str, [DryRun => Bool])

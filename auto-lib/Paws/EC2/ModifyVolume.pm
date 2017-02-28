@@ -54,6 +54,8 @@ Only valid for Provisioned IOPS SSD (C<io1>) volumes. For more
 information about C<io1> IOPS configuration, see
 http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html#EBSVolumeTypes_piops.
 
+Default: If no IOPS value is specified, the existing value is retained.
+
 
 
 =head2 Size => Int
@@ -77,10 +79,10 @@ Default: If no size is specified, the existing size is retained.
 
 Target EBS volume type of the volume to be modified
 
-Valid values are C<io1> | C<gp2> | C<sc1> | C<st1>
-
 The API does not support modifications for volume type C<standard>. You
 also cannot change the type of a volume to C<standard>.
+
+Default: If no type is specified, the existing type is retained.
 
 Valid values are: C<"standard">, C<"io1">, C<"gp2">, C<"sc1">, C<"st1">
 
