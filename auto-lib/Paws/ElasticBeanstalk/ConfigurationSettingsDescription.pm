@@ -8,6 +8,7 @@ package Paws::ElasticBeanstalk::ConfigurationSettingsDescription;
   has Description => (is => 'ro', isa => 'Str');
   has EnvironmentName => (is => 'ro', isa => 'Str');
   has OptionSettings => (is => 'ro', isa => 'ArrayRef[Paws::ElasticBeanstalk::ConfigurationOptionSetting]');
+  has PlatformArn => (is => 'ro', isa => 'Str');
   has SolutionStackName => (is => 'ro', isa => 'Str');
   has TemplateName => (is => 'ro', isa => 'Str');
 
@@ -84,6 +85,11 @@ If not C<null>, the name of the environment for this configuration set.
 
 A list of the configuration options and their values in this
 configuration set.
+
+
+=head2 PlatformArn => Str
+
+The ARN of the custom platform.
 
 
 =head2 SolutionStackName => Str

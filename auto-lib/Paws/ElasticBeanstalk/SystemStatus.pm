@@ -44,8 +44,8 @@ CPU utilization and load average metrics for an Amazon EC2 instance.
 
 =head2 LoadAverage => ArrayRef[Num]
 
-  Load average in the last 1-minute and 5-minute periods. For more
-information, see Operating System Metrics.
+  Load average in the last 1-minute, 5-minute, and 15-minute periods. For
+more information, see Operating System Metrics.
 
 
 

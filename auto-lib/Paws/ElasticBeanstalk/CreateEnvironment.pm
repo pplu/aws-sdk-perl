@@ -8,6 +8,7 @@ package Paws::ElasticBeanstalk::CreateEnvironment;
   has GroupName => (is => 'ro', isa => 'Str');
   has OptionSettings => (is => 'ro', isa => 'ArrayRef[Paws::ElasticBeanstalk::ConfigurationOptionSetting]');
   has OptionsToRemove => (is => 'ro', isa => 'ArrayRef[Paws::ElasticBeanstalk::OptionSpecification]');
+  has PlatformArn => (is => 'ro', isa => 'Str');
   has SolutionStackName => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ElasticBeanstalk::Tag]');
   has TemplateName => (is => 'ro', isa => 'Str');
@@ -109,16 +110,17 @@ configuration set for this new environment.
 
 
 
+=head2 PlatformArn => Str
+
+The ARN of the custom platform.
+
+
+
 =head2 SolutionStackName => Str
 
 This is an alternative to specifying a template name. If specified, AWS
 Elastic Beanstalk sets the configuration values to the default values
 associated with the specified solution stack.
-
-Condition: You must specify either this or a C<TemplateName>, but not
-both. If you specify both, AWS Elastic Beanstalk returns an
-C<InvalidParameterCombination> error. If you do not specify either, AWS
-Elastic Beanstalk returns a C<MissingRequiredParameter> error.
 
 
 
@@ -133,12 +135,6 @@ This specifies the tags applied to resources in the environment.
 The name of the configuration template to use in deployment. If no
 configuration template is found with this name, AWS Elastic Beanstalk
 returns an C<InvalidParameterValue> error.
-
-Condition: You must specify either this parameter or a
-C<SolutionStackName>, but not both. If you specify both, AWS Elastic
-Beanstalk returns an C<InvalidParameterCombination> error. If you do
-not specify either, AWS Elastic Beanstalk returns a
-C<MissingRequiredParameter> error.
 
 
 

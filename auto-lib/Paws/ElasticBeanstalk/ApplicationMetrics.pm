@@ -49,7 +49,7 @@ recent time slice of 10 seconds (C<duration>).
 =head2 Latency => L<Paws::ElasticBeanstalk::Latency>
 
   Represents the average latency for the slowest X percent of requests
-over the last 10 seconds. Latencies are in seconds with one milisecond
+over the last 10 seconds. Latencies are in seconds with one millisecond
 resolution.
 
 

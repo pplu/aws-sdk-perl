@@ -2,6 +2,7 @@
 package Paws::ElasticBeanstalk::ConfigurationOptionsDescription;
   use Moose;
   has Options => (is => 'ro', isa => 'ArrayRef[Paws::ElasticBeanstalk::ConfigurationOptionDescription]');
+  has PlatformArn => (is => 'ro', isa => 'Str');
   has SolutionStackName => (is => 'ro', isa => 'Str');
 
   has _request_id => (is => 'ro', isa => 'Str');
@@ -19,6 +20,11 @@ Paws::ElasticBeanstalk::ConfigurationOptionsDescription
 =head2 Options => ArrayRef[L<Paws::ElasticBeanstalk::ConfigurationOptionDescription>]
 
 A list of ConfigurationOptionDescription.
+
+
+=head2 PlatformArn => Str
+
+The ARN of the custom platform.
 
 
 =head2 SolutionStackName => Str

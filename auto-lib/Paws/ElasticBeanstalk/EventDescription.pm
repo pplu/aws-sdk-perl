@@ -4,6 +4,7 @@ package Paws::ElasticBeanstalk::EventDescription;
   has EnvironmentName => (is => 'ro', isa => 'Str');
   has EventDate => (is => 'ro', isa => 'Str');
   has Message => (is => 'ro', isa => 'Str');
+  has PlatformArn => (is => 'ro', isa => 'Str');
   has RequestId => (is => 'ro', isa => 'Str');
   has Severity => (is => 'ro', isa => 'Str');
   has TemplateName => (is => 'ro', isa => 'Str');
@@ -61,6 +62,11 @@ Describes an event.
 =head2 Message => Str
 
   The event message.
+
+
+=head2 PlatformArn => Str
+
+  The ARN of the custom platform.
 
 
 =head2 RequestId => Str

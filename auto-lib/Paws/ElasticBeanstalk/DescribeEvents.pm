@@ -7,6 +7,7 @@ package Paws::ElasticBeanstalk::DescribeEvents;
   has EnvironmentName => (is => 'ro', isa => 'Str');
   has MaxRecords => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
+  has PlatformArn => (is => 'ro', isa => 'Str');
   has RequestId => (is => 'ro', isa => 'Str');
   has Severity => (is => 'ro', isa => 'Str');
   has StartTime => (is => 'ro', isa => 'Str');
@@ -82,6 +83,12 @@ with the most recent event.
 
 Pagination token. If specified, the events return the next batch of
 results.
+
+
+
+=head2 PlatformArn => Str
+
+The ARN of the version of the custom platform.
 
 
 
