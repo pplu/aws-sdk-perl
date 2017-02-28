@@ -1,5 +1,5 @@
 
-package Paws::KMS::ListKeyPolicies;
+package Paws::KMS::ListResourceTags;
   use Moose;
   has KeyId => (is => 'ro', isa => 'Str', required => 1);
   has Limit => (is => 'ro', isa => 'Int');
@@ -7,8 +7,8 @@ package Paws::KMS::ListKeyPolicies;
 
   use MooseX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListKeyPolicies');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::KMS::ListKeyPoliciesResponse');
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListResourceTags');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::KMS::ListResourceTagsResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
@@ -16,19 +16,19 @@ package Paws::KMS::ListKeyPolicies;
 
 =head1 NAME
 
-Paws::KMS::ListKeyPolicies - Arguments for method ListKeyPolicies on Paws::KMS
+Paws::KMS::ListResourceTags - Arguments for method ListResourceTags on Paws::KMS
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method ListKeyPolicies on the 
+This class represents the parameters used for calling the method ListResourceTags on the 
 AWS Key Management Service service. Use the attributes of this class
-as arguments to method ListKeyPolicies.
+as arguments to method ListResourceTags.
 
-You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListKeyPolicies.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListResourceTags.
 
 As an example:
 
-  $service_obj->ListKeyPolicies(Att1 => $value1, Att2 => $value2, ...);
+  $service_obj->ListResourceTags(Att1 => $value1, Att2 => $value2, ...);
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 
@@ -37,8 +37,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> KeyId => Str
 
-A unique identifier for the customer master key (CMK). You can use the
-unique key ID or the Amazon Resource Name (ARN) of the CMK. Examples:
+A unique identifier for the CMK whose tags you are listing. You can use
+the unique key ID or the Amazon Resource Name (ARN) of the CMK.
+Examples:
 
 =over
 
@@ -63,9 +64,7 @@ When this value is present, AWS KMS does not return more than the
 specified number of items, but it might return fewer.
 
 This value is optional. If you include a value, it must be between 1
-and 1000, inclusive. If you do not include a value, it defaults to 100.
-
-Currently only 1 policy can be attached to a key.
+and 50, inclusive. If you do not include a value, it defaults to 50.
 
 
 
@@ -75,12 +74,15 @@ Use this parameter in a subsequent request after you receive a response
 with truncated results. Set it to the value of C<NextMarker> from the
 truncated response you just received.
 
+Do not attempt to construct this value. Use only the value of
+C<NextMarker> from the truncated response you just received.
+
 
 
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, documenting arguments for method ListKeyPolicies in L<Paws::KMS>
+This class forms part of L<Paws>, documenting arguments for method ListResourceTags in L<Paws::KMS>
 
 =head1 BUGS and CONTRIBUTIONS
 

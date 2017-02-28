@@ -1,8 +1,8 @@
 
-package Paws::KMS::ListKeysResponse;
+package Paws::KMS::ListResourceTagsResponse;
   use Moose;
-  has Keys => (is => 'ro', isa => 'ArrayRef[Paws::KMS::KeyListEntry]');
   has NextMarker => (is => 'ro', isa => 'Str');
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::KMS::Tag]');
   has Truncated => (is => 'ro', isa => 'Bool');
 
   has _request_id => (is => 'ro', isa => 'Str');
@@ -11,20 +11,22 @@ package Paws::KMS::ListKeysResponse;
 
 =head1 NAME
 
-Paws::KMS::ListKeysResponse
+Paws::KMS::ListResourceTagsResponse
 
 =head1 ATTRIBUTES
-
-
-=head2 Keys => ArrayRef[L<Paws::KMS::KeyListEntry>]
-
-A list of keys.
 
 
 =head2 NextMarker => Str
 
 When C<Truncated> is true, this element is present and contains the
 value to use for the C<Marker> parameter in a subsequent request.
+
+Do not assume or infer any information from this value.
+
+
+=head2 Tags => ArrayRef[L<Paws::KMS::Tag>]
+
+A list of tags. Each tag consists of a tag key and a tag value.
 
 
 =head2 Truncated => Bool

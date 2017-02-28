@@ -6,6 +6,7 @@ package Paws::KMS::CreateKey;
   has KeyUsage => (is => 'ro', isa => 'Str');
   has Origin => (is => 'ro', isa => 'Str');
   has Policy => (is => 'ro', isa => 'Str');
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::KMS::Tag]');
 
   use MooseX::ClassAttribute;
 
@@ -49,8 +50,8 @@ For more information, refer to the scenario in the Default Key Policy
 section in the I<AWS Key Management Service Developer Guide>.
 
 Use this parameter only when you include a policy in the request and
-you intend to prevent the principal making the request from making a
-subsequent PutKeyPolicy request on the CMK.
+you intend to prevent the principal that is making the request from
+making a subsequent PutKeyPolicy request on the CMK.
 
 The default value is false.
 
@@ -100,21 +101,21 @@ following criteria:
 
 =item *
 
-It must allow the principal making the C<CreateKey> request to make a
-subsequent PutKeyPolicy request on the CMK. This reduces the likelihood
-that the CMK becomes unmanageable. For more information, refer to the
-scenario in the Default Key Policy section in the I<AWS Key Management
-Service Developer Guide>.
+It must allow the principal that is making the C<CreateKey> request to
+make a subsequent PutKeyPolicy request on the CMK. This reduces the
+likelihood that the CMK becomes unmanageable. For more information,
+refer to the scenario in the Default Key Policy section in the I<AWS
+Key Management Service Developer Guide>.
 
 =item *
 
-The principal(s) specified in the key policy must exist and be visible
-to AWS KMS. When you create a new AWS principal (for example, an IAM
-user or role), you might need to enforce a delay before specifying the
-new principal in a key policy because the new principal might not
-immediately be visible to AWS KMS. For more information, see Changes
-that I make are not always immediately visible in the I<IAM User
-Guide>.
+The principals that are specified in the key policy must exist and be
+visible to AWS KMS. When you create a new AWS principal (for example,
+an IAM user or role), you might need to enforce a delay before
+specifying the new principal in a key policy because the new principal
+might not immediately be visible to AWS KMS. For more information, see
+Changes that I make are not always immediately visible in the I<IAM
+User Guide>.
 
 =back
 
@@ -123,6 +124,18 @@ to the CMK. For more information, see Default Key Policy in the I<AWS
 Key Management Service Developer Guide>.
 
 The policy size limit is 32 KiB (32768 bytes).
+
+
+
+=head2 Tags => ArrayRef[L<Paws::KMS::Tag>]
+
+One or more tags. Each tag consists of a tag key and a tag value. Tag
+keys and tag values are both required, but tag values can be empty
+(null) strings.
+
+Use this parameter to tag the CMK when it is created. Alternately, you
+can omit this parameter and instead tag the CMK after it is created
+using TagResource.
 
 
 

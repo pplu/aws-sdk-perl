@@ -134,6 +134,11 @@ package Paws::KMS;
     my $call_object = $self->new_with_coercions('Paws::KMS::ListKeys', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListResourceTags {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::KMS::ListResourceTags', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListRetirableGrants {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::KMS::ListRetirableGrants', @_);
@@ -162,6 +167,16 @@ package Paws::KMS;
   sub ScheduleKeyDeletion {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::KMS::ScheduleKeyDeletion', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub TagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::KMS::TagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UntagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::KMS::UntagResource', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateAlias {
@@ -261,7 +276,7 @@ package Paws::KMS;
   }
 
 
-  sub operations { qw/CancelKeyDeletion CreateAlias CreateGrant CreateKey Decrypt DeleteAlias DeleteImportedKeyMaterial DescribeKey DisableKey DisableKeyRotation EnableKey EnableKeyRotation Encrypt GenerateDataKey GenerateDataKeyWithoutPlaintext GenerateRandom GetKeyPolicy GetKeyRotationStatus GetParametersForImport ImportKeyMaterial ListAliases ListGrants ListKeyPolicies ListKeys ListRetirableGrants PutKeyPolicy ReEncrypt RetireGrant RevokeGrant ScheduleKeyDeletion UpdateAlias UpdateKeyDescription / }
+  sub operations { qw/CancelKeyDeletion CreateAlias CreateGrant CreateKey Decrypt DeleteAlias DeleteImportedKeyMaterial DescribeKey DisableKey DisableKeyRotation EnableKey EnableKeyRotation Encrypt GenerateDataKey GenerateDataKeyWithoutPlaintext GenerateRandom GetKeyPolicy GetKeyRotationStatus GetParametersForImport ImportKeyMaterial ListAliases ListGrants ListKeyPolicies ListKeys ListResourceTags ListRetirableGrants PutKeyPolicy ReEncrypt RetireGrant RevokeGrant ScheduleKeyDeletion TagResource UntagResource UpdateAlias UpdateKeyDescription / }
 
 1;
 
@@ -438,7 +453,7 @@ For more information about grants, see Grants in the I<AWS Key
 Management Service Developer Guide>.
 
 
-=head2 CreateKey([BypassPolicyLockoutSafetyCheck => Bool, Description => Str, KeyUsage => Str, Origin => Str, Policy => Str])
+=head2 CreateKey([BypassPolicyLockoutSafetyCheck => Bool, Description => Str, KeyUsage => Str, Origin => Str, Policy => Str, Tags => ArrayRef[L<Paws::KMS::Tag>]])
 
 Each argument is described in detail in: L<Paws::KMS::CreateKey>
 
@@ -834,6 +849,15 @@ Returns: a L<Paws::KMS::ListKeysResponse> instance
   Lists the customer master keys.
 
 
+=head2 ListResourceTags(KeyId => Str, [Limit => Int, Marker => Str])
+
+Each argument is described in detail in: L<Paws::KMS::ListResourceTags>
+
+Returns: a L<Paws::KMS::ListResourceTagsResponse> instance
+
+  Returns a list of all tags for the specified customer master key (CMK).
+
+
 =head2 ListRetirableGrants(RetiringPrincipal => Str, [Limit => Int, Marker => Str])
 
 Each argument is described in detail in: L<Paws::KMS::ListRetirableGrants>
@@ -948,6 +972,40 @@ it, use DisableKey.
 For more information about scheduling a CMK for deletion, see Deleting
 Customer Master Keys in the I<AWS Key Management Service Developer
 Guide>.
+
+
+=head2 TagResource(KeyId => Str, Tags => ArrayRef[L<Paws::KMS::Tag>])
+
+Each argument is described in detail in: L<Paws::KMS::TagResource>
+
+Returns: nothing
+
+  Adds or overwrites one or more tags for the specified customer master
+key (CMK).
+
+Each tag consists of a tag key and a tag value. Tag keys and tag values
+are both required, but tag values can be empty (null) strings.
+
+You cannot use the same tag key more than once per CMK. For example,
+consider a CMK with one tag whose tag key is C<Purpose> and tag value
+is C<Test>. If you send a C<TagResource> request for this CMK with a
+tag key of C<Purpose> and a tag value of C<Prod>, it does not create a
+second tag. Instead, the original tag is overwritten with the new tag
+value.
+
+
+=head2 UntagResource(KeyId => Str, TagKeys => ArrayRef[Str|Undef])
+
+Each argument is described in detail in: L<Paws::KMS::UntagResource>
+
+Returns: nothing
+
+  Removes the specified tag or tags from the specified customer master
+key (CMK).
+
+To remove a tag, you specify the tag key for each tag to remove. You do
+not specify the tag value. To overwrite the tag value for an existing
+tag, use TagResource.
 
 
 =head2 UpdateAlias(AliasName => Str, TargetKeyId => Str)
