@@ -18,21 +18,17 @@ Paws::GameLift::CreateBuildOutput
 
 =head2 Build => L<Paws::GameLift::Build>
 
-Set of properties for the newly created build.
+The newly created build record, including a unique build ID and status.
 
 
 =head2 StorageLocation => L<Paws::GameLift::S3Location>
 
-Amazon S3 path and key, identifying where the game build files are
-stored.
+Amazon S3 location specified in the request.
 
 
 =head2 UploadCredentials => L<Paws::GameLift::AwsCredentials>
 
-AWS credentials required when uploading a game build to the storage
-location. These credentials have a limited lifespan and are valid only
-for the build they were issued for. If you need to get fresh
-credentials, callC< RequestUploadCredentials >.
+This element is not currently in use.
 
 
 =head2 _request_id => Str

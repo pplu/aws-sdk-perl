@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GameLift::G
 
 =head1 DESCRIPTION
 
-A game session's properties and the protection policy currently in
+A game session's properties plus the protection policy currently in
 force.
 
 =head1 ATTRIBUTES
@@ -40,7 +40,7 @@ force.
 
 =head2 GameSession => L<Paws::GameLift::GameSession>
 
-  
+  Object that describes a game session.
 
 
 =head2 ProtectionPolicy => Str

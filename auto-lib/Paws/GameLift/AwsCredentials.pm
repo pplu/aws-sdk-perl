@@ -33,10 +33,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GameLift::A
 
 =head1 DESCRIPTION
 
-AWS access credentials required to upload game build files to Amazon
-GameLift. These credentials are generated with CreateBuild, and are
-valid for a limited time. If they expire before you upload your game
-build, get a new set by calling RequestUploadCredentials.
+AWS access credentials sometimes used for uploading game build files to
+Amazon GameLift. They are valid for a limited time. If they expire
+before you upload your game build, get a new set by calling
+RequestUploadCredentials.
 
 =head1 ATTRIBUTES
 

@@ -35,10 +35,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GameLift::I
 =head1 DESCRIPTION
 
 A range of IP addresses and port settings that allow inbound traffic to
-connect to server processes on GameLift. Each game session hosted on a
-fleet is assigned a unique combination of IP address and port number,
-which must fall into the fleet's allowed ranges. This combination is
-included in the GameSession object.
+connect to server processes on Amazon GameLift. Each game session
+hosted on a fleet is assigned a unique combination of IP address and
+port number, which must fall into the fleet's allowed ranges. This
+combination is included in the GameSession object.
 
 =head1 ATTRIBUTES
 

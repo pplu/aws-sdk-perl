@@ -41,8 +41,9 @@ an InstanceAccess object.
 
 =head2 Secret => Str
 
-  Secret string. For Windows instances, the secret is a password. For
-Linux instances, it is a private key.
+  Secret string. For Windows instances, the secret is a password for use
+with Windows Remote Desktop. For Linux instances, it is a private key
+(which must be saved as a C<.pem> file) for use with SSH.
 
 
 =head2 UserName => Str

@@ -56,7 +56,7 @@ problems.
 =head2 EventTime => Str
 
   Time stamp indicating when this event occurred. Format is a number
-expressed in Unix time as milliseconds (ex: "1469498468.057").
+expressed in Unix time as milliseconds (for example "1469498468.057").
 
 
 =head2 Message => Str
@@ -66,7 +66,7 @@ expressed in Unix time as milliseconds (ex: "1469498468.057").
 
 =head2 ResourceId => Str
 
-  Unique identifier for the resource, such as a fleet ID.
+  Unique identifier for an event resource, such as a fleet ID.
 
 
 

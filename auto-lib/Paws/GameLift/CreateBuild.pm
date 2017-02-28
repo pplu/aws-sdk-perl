@@ -38,8 +38,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Name => Str
 
-Descriptive label associated with a build. Build names do not need to
-be unique. A build name can be changed later usingC< UpdateBuild >.
+Descriptive label that is associated with a build. Build names do not
+need to be unique. You can use UpdateBuild to change this value later.
 
 
 
@@ -47,21 +47,26 @@ be unique. A build name can be changed later usingC< UpdateBuild >.
 
 Operating system that the game server binaries are built to run on.
 This value determines the type of fleet resources that you can use for
-this build.
+this build. If your game build contains multiple executables, they all
+must run on the same operating system.
 
 Valid values are: C<"WINDOWS_2012">, C<"AMAZON_LINUX">
 
 =head2 StorageLocation => L<Paws::GameLift::S3Location>
 
-
+Amazon S3 location of the game build files to be uploaded. The S3
+bucket must be owned by the same AWS account that you're using to
+manage Amazon GameLift. It also must in the same region that you want
+to create a new build in. Before calling C<CreateBuild> with this
+location, you must allow Amazon GameLift to access your Amazon S3
+bucket (see Create a Build with Files in Amazon S3).
 
 
 
 =head2 Version => Str
 
-Version associated with this build. Version strings do not need to be
-unique to a build. A build version can be changed later usingC<
-UpdateBuild >.
+Version that is associated with this build. Version strings do not need
+to be unique. You can use UpdateBuild to change this value later.
 
 
 

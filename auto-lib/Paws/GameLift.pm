@@ -34,6 +34,11 @@ package Paws::GameLift;
     my $call_object = $self->new_with_coercions('Paws::GameLift::CreateGameSession', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateGameSessionQueue {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::GameLift::CreateGameSessionQueue', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreatePlayerSession {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::GameLift::CreatePlayerSession', @_);
@@ -57,6 +62,11 @@ package Paws::GameLift;
   sub DeleteFleet {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::GameLift::DeleteFleet', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteGameSessionQueue {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::GameLift::DeleteGameSessionQueue', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteScalingPolicy {
@@ -107,6 +117,16 @@ package Paws::GameLift;
   sub DescribeGameSessionDetails {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::GameLift::DescribeGameSessionDetails', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeGameSessionPlacement {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::GameLift::DescribeGameSessionPlacement', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeGameSessionQueues {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::GameLift::DescribeGameSessionQueues', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeGameSessions {
@@ -179,6 +199,16 @@ package Paws::GameLift;
     my $call_object = $self->new_with_coercions('Paws::GameLift::SearchGameSessions', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub StartGameSessionPlacement {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::GameLift::StartGameSessionPlacement', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub StopGameSessionPlacement {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::GameLift::StopGameSessionPlacement', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateAlias {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::GameLift::UpdateAlias', @_);
@@ -209,6 +239,11 @@ package Paws::GameLift;
     my $call_object = $self->new_with_coercions('Paws::GameLift::UpdateGameSession', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpdateGameSessionQueue {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::GameLift::UpdateGameSessionQueue', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateRuntimeConfiguration {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::GameLift::UpdateRuntimeConfiguration', @_);
@@ -217,7 +252,7 @@ package Paws::GameLift;
   
 
 
-  sub operations { qw/CreateAlias CreateBuild CreateFleet CreateGameSession CreatePlayerSession CreatePlayerSessions DeleteAlias DeleteBuild DeleteFleet DeleteScalingPolicy DescribeAlias DescribeBuild DescribeEC2InstanceLimits DescribeFleetAttributes DescribeFleetCapacity DescribeFleetEvents DescribeFleetPortSettings DescribeFleetUtilization DescribeGameSessionDetails DescribeGameSessions DescribeInstances DescribePlayerSessions DescribeRuntimeConfiguration DescribeScalingPolicies GetGameSessionLogUrl GetInstanceAccess ListAliases ListBuilds ListFleets PutScalingPolicy RequestUploadCredentials ResolveAlias SearchGameSessions UpdateAlias UpdateBuild UpdateFleetAttributes UpdateFleetCapacity UpdateFleetPortSettings UpdateGameSession UpdateRuntimeConfiguration / }
+  sub operations { qw/CreateAlias CreateBuild CreateFleet CreateGameSession CreateGameSessionQueue CreatePlayerSession CreatePlayerSessions DeleteAlias DeleteBuild DeleteFleet DeleteGameSessionQueue DeleteScalingPolicy DescribeAlias DescribeBuild DescribeEC2InstanceLimits DescribeFleetAttributes DescribeFleetCapacity DescribeFleetEvents DescribeFleetPortSettings DescribeFleetUtilization DescribeGameSessionDetails DescribeGameSessionPlacement DescribeGameSessionQueues DescribeGameSessions DescribeInstances DescribePlayerSessions DescribeRuntimeConfiguration DescribeScalingPolicies GetGameSessionLogUrl GetInstanceAccess ListAliases ListBuilds ListFleets PutScalingPolicy RequestUploadCredentials ResolveAlias SearchGameSessions StartGameSessionPlacement StopGameSessionPlacement UpdateAlias UpdateBuild UpdateFleetAttributes UpdateFleetCapacity UpdateFleetPortSettings UpdateGameSession UpdateGameSessionQueue UpdateRuntimeConfiguration / }
 
 1;
 
@@ -247,307 +282,422 @@ Paws::GameLift - Perl Interface to AWS Amazon GameLift
 
 Amazon GameLift Service
 
-Welcome to the I<Amazon GameLift API Reference>. Amazon GameLift is a
-managed Amazon Web Services (AWS) service for developers who need a
-scalable, server-based solution for multiplayer games. Amazon GameLift
-provides setup and deployment of game servers, and handles
-infrastructure scaling and session management.
+Amazon GameLift is a managed service for developers who need a
+scalable, dedicated server solution for their multiplayer games. Amazon
+GameLift provides tools to acquire computing resources and deploy game
+servers, scale game server capacity to meed player demand, and track
+in-depth metrics on player usage and server performance.
 
-This reference describes the low-level service API for GameLift. You
-can call this API directly or use the AWS SDK for your preferred
-language. The AWS SDK includes a set of high-level GameLift actions
-multiplayer game sessions. Alternatively, you can use the AWS
-command-line interface (CLI) tool, which includes commands for
-GameLift. For administrative actions, you can also use the Amazon
-GameLift console.
-
-B<More Resources>
+The Amazon GameLift service API includes important functionality to:
 
 =over
 
 =item *
 
-Amazon GameLift Developer Guide: Learn more about GameLift features and
-how to use them
+Find game sessions and match players to games E<ndash> Retrieve
+information on available game sessions; create new game sessions; send
+player requests to join a game session.
 
 =item *
 
-Lumberyard and GameLift Tutorials: Get started fast with walkthroughs
-and sample projects
-
-=item *
-
-GameDev Blog: Stay up to date with new features and techniques
-
-=item *
-
-GameDev Forums: Connect with the GameDev community
+Configure and manage game server resources E<ndash> Manage builds,
+fleets, queues, and aliases; set autoscaling policies; retrieve logs
+and metrics.
 
 =back
 
-B<Manage Games and Players Through GameLift>
+This reference guide describes the low-level service API for Amazon
+GameLift. We recommend using either the Amazon Web Services software
+development kit (AWS SDK), available in multiple languages, or the AWS
+command-line interface (CLI) tool. Both of these align with the
+low-level service API. In addition, you can use the AWS Management
+Console for Amazon GameLift for many administrative actions.
 
-Call these actions from your game clients and/or services to create and
-manage multiplayer game sessions and player sessions.
+B<MORE RESOURCES>
 
 =over
 
 =item *
 
-B<Game sessions:>
+Amazon GameLift Developer Guide E<ndash> Learn more about Amazon
+GameLift features and how to use them.
+
+=item *
+
+Lumberyard and Amazon GameLift Tutorials E<ndash> Get started fast with
+walkthroughs and sample projects.
+
+=item *
+
+GameDev Blog E<ndash> Stay up to date with new features and techniques.
+
+=item *
+
+GameDev Forums E<ndash> Connect with the GameDev community.
+
+=item *
+
+Amazon GameLift Document History E<ndash> See changes to the Amazon
+GameLift service, SDKs, and documentation, as well as links to release
+notes.
+
+=back
+
+B<API SUMMARY>
+
+This list offers a functional overview of the Amazon GameLift service
+API.
+
+B<Finding Games and Joining Players>
+
+You can enable players to connect to game servers on Amazon GameLift
+from a game client or through a game service (such as a matchmaking
+service). You can use these operations to discover actively running
+game or start new games. You can also match players to games, either
+singly or as a group.
 
 =over
 
 =item *
 
-CreateGameSession
-
-=item *
-
-DescribeGameSessions
-
-=item *
-
-DescribeGameSessionDetails
-
-=item *
-
-UpdateGameSession
-
-=item *
-
-SearchGameSessions
-
-=back
-
-=item *
-
-B<Player sessions:>
+B<Discover existing game sessions>
 
 =over
 
 =item *
 
-CreatePlayerSession
-
-=item *
-
-CreatePlayerSessions
-
-=item *
-
-DescribePlayerSessions
+SearchGameSessions E<ndash> Get all available game sessions or search
+for game sessions that match a set of criteria.
 
 =back
 
 =item *
 
-B<Other actions:>
+B<Start a new game session>
 
 =over
 
 =item *
 
-GetGameSessionLogUrl
-
-=back
-
-=back
-
-B<Set Up and Manage Game Servers>
-
-Use these administrative actions to configure GameLift to host your
-game servers. When setting up GameLift, you will need to (1) configure
-a build for your game and upload build files, and (2) set up one or
-more fleets to host game sessions. Once you've created and activated a
-fleet, you can assign aliases to it, scale capacity, track performance
-and utilization, etc.
+Game session placement E<ndash> Use a queue to process new game session
+requests and create game sessions on fleets designated for the queue.
 
 =over
 
 =item *
 
-B<Game builds:>
+StartGameSessionPlacement E<ndash> Request a new game session placement
+and add one or more players to it.
+
+=item *
+
+DescribeGameSessionPlacement E<ndash> Get details on a placement
+request, including status.
+
+=item *
+
+StopGameSessionPlacement E<ndash> Cancel a placement request.
+
+=back
+
+=item *
+
+CreateGameSession E<ndash> Start a new game session on a specific
+fleet.
+
+=back
+
+=item *
+
+B<Manage game session objects>
 
 =over
 
 =item *
 
-ListBuilds
+DescribeGameSessionDetails E<ndash> Retrieve metadata and protection
+policies associated with one or more game sessions, including length of
+time active and current player count.
 
 =item *
 
-CreateBuild
+UpdateGameSession E<ndash> Change game session settings, such as
+maximum player count and join policy.
 
 =item *
 
-DescribeBuild
-
-=item *
-
-UpdateBuild
-
-=item *
-
-DeleteBuild
-
-=item *
-
-RequestUploadCredentials
+GetGameSessionLogUrl E<ndash> Get the location of saved logs for a game
+session.
 
 =back
 
 =item *
 
-B<Fleets:>
+B<Manage player sessions objects>
 
 =over
 
 =item *
 
-ListFleets
+CreatePlayerSession E<ndash> Send a request for a player to join a game
+session.
 
 =item *
 
-CreateFleet
+CreatePlayerSessions E<ndash> Send a request for multiple players to
+join a game session.
 
 =item *
 
-Describe fleets:
+DescribePlayerSessions E<ndash> Get details on player activity,
+including status, playing time, and player data.
+
+=back
+
+=back
+
+B<Setting Up and Managing Game Servers>
+
+When setting up Amazon GameLift, first create a game build and upload
+the files to Amazon GameLift. Then use these operations to set up a
+fleet of resources to run your game servers. Manage games to scale
+capacity, adjust configuration settings, access raw utilization data,
+and more.
 
 =over
 
 =item *
 
-DescribeFleetAttributes
-
-=item *
-
-DescribeFleetCapacity
-
-=item *
-
-DescribeFleetPortSettings
-
-=item *
-
-DescribeFleetUtilization
-
-=item *
-
-DescribeEC2InstanceLimits
-
-=item *
-
-DescribeFleetEvents
-
-=item *
-
-DescribeRuntimeConfiguration
-
-=back
-
-=item *
-
-Update fleets:
+B<Manage game builds>
 
 =over
 
 =item *
 
-UpdateFleetAttributes
+CreateBuild E<ndash> Create a new build by uploading files stored in an
+Amazon S3 bucket. (To create a build stored at a local file location,
+use the AWS CLI command C<upload-build>.)
 
 =item *
 
-UpdateFleetCapacity
+ListBuilds E<ndash> Get a list of all builds uploaded to a Amazon
+GameLift region.
 
 =item *
 
-UpdateFleetPortSettings
+DescribeBuild E<ndash> Retrieve information associated with a build.
 
 =item *
 
-UpdateRuntimeConfiguration
+UpdateBuild E<ndash> Change build metadata, including build name and
+version.
+
+=item *
+
+DeleteBuild E<ndash> Remove a build from Amazon GameLift.
 
 =back
 
 =item *
 
-DeleteFleet
-
-=back
-
-=item *
-
-B<Manage your instances:>
+B<Manage fleets>
 
 =over
 
 =item *
 
-DescribeInstances
+CreateFleet E<ndash> Configure and activate a new fleet to run a
+build's game servers.
 
 =item *
 
-GetInstanceAccess
-
-=back
+DeleteFleet E<ndash> Terminate a fleet that is no longer running game
+servers or hosting players.
 
 =item *
 
-B<Manage fleet aliases:>
+View / update fleet configurations.
 
 =over
 
 =item *
 
-ListAliases
+ListFleets E<ndash> Get a list of all fleet IDs in a Amazon GameLift
+region (all statuses).
 
 =item *
 
-CreateAlias
+DescribeFleetAttributes / UpdateFleetAttributes E<ndash> View or change
+a fleet's metadata and settings for game session protection and
+resource creation limits.
 
 =item *
 
-DescribeAlias
+DescribeFleetPortSettings / UpdateFleetPortSettings E<ndash> View or
+change the inbound permissions (IP address and port setting ranges)
+allowed for a fleet.
 
 =item *
 
-UpdateAlias
+DescribeRuntimeConfiguration / UpdateRuntimeConfiguration E<ndash> View
+or change what server processes (and how many) to run on each instance
+in a fleet.
 
 =item *
 
-DeleteAlias
+DescribeInstances E<ndash> Get information on each instance in a fleet,
+including instance ID, IP address, and status.
 
-=item *
-
-ResolveAlias
+=back
 
 =back
 
 =item *
 
-B<Manage autoscaling:>
+B<Control fleet capacity>
 
 =over
 
 =item *
 
-PutScalingPolicy
+DescribeEC2InstanceLimits E<ndash> Retrieve maximum number of instances
+allowed for the current AWS account and the current usage level.
 
 =item *
 
-DescribeScalingPolicies
+DescribeFleetCapacity / UpdateFleetCapacity E<ndash> Retrieve the
+capacity settings and the current number of instances in a fleet;
+adjust fleet capacity settings to scale up or down.
 
 =item *
 
-DeleteScalingPolicy
+Autoscale E<ndash> Manage autoscaling rules and apply them to a fleet.
+
+=over
+
+=item *
+
+PutScalingPolicy E<ndash> Create a new autoscaling policy, or update an
+existing one.
+
+=item *
+
+DescribeScalingPolicies E<ndash> Retrieve an existing autoscaling
+policy.
+
+=item *
+
+DeleteScalingPolicy E<ndash> Delete an autoscaling policy and stop it
+from affecting a fleet's capacity.
 
 =back
 
 =back
 
-To view changes to the API, see the GameLift Document History page.
+=item *
+
+B<Access fleet activity statistics>
+
+=over
+
+=item *
+
+DescribeFleetUtilization E<ndash> Get current data on the number of
+server processes, game sessions, and players currently active on a
+fleet.
+
+=item *
+
+DescribeFleetEvents E<ndash> Get a fleet's logged events for a
+specified time span.
+
+=item *
+
+DescribeGameSessions E<ndash> Retrieve metadata associated with one or
+more game sessions, including length of time active and current player
+count.
+
+=back
+
+=item *
+
+B<Remotely access an instance>
+
+=over
+
+=item *
+
+GetInstanceAccess E<ndash> Request access credentials needed to
+remotely connect to a specified instance on a fleet.
+
+=back
+
+=item *
+
+B<Manage fleet aliases>
+
+=over
+
+=item *
+
+CreateAlias E<ndash> Define a new alias and optionally assign it to a
+fleet.
+
+=item *
+
+ListAliases E<ndash> Get all fleet aliases defined in a Amazon GameLift
+region.
+
+=item *
+
+DescribeAlias E<ndash> Retrieve information on an existing alias.
+
+=item *
+
+UpdateAlias E<ndash> Change settings for a alias, such as redirecting
+it from one fleet to another.
+
+=item *
+
+DeleteAlias E<ndash> Remove an alias from the region.
+
+=item *
+
+ResolveAlias E<ndash> Get the fleet ID that a specified alias points
+to.
+
+=back
+
+=item *
+
+B<Manage game session queues>
+
+=over
+
+=item *
+
+CreateGameSessionQueue E<ndash> Create a queue for processing requests
+for new game sessions.
+
+=item *
+
+DescribeGameSessionQueues E<ndash> Get data on all game session queues
+defined in a Amazon GameLift region.
+
+=item *
+
+UpdateGameSessionQueue E<ndash> Change the configuration of a game
+session queue.
+
+=item *
+
+DeleteGameSessionQueue E<ndash> Remove a game session queue from the
+region.
+
+=back
+
+=back
+
 
 =head1 METHODS
 
@@ -557,14 +707,20 @@ Each argument is described in detail in: L<Paws::GameLift::CreateAlias>
 
 Returns: a L<Paws::GameLift::CreateAliasOutput> instance
 
-  Creates an alias for a fleet. You can use an alias to anonymize your
-fleet by referencing an alias instead of a specific fleet when you
-create game sessions. Amazon GameLift supports two types of routing
-strategies for aliases: simple and terminal. Use a simple alias to
-point to an active fleet. Use a terminal alias to display a message to
-incoming traffic instead of routing players to an active fleet. This
-option is useful when a game server is no longer supported but you want
-to provide better messaging than a standard 404 error.
+  Creates an alias and sets a target fleet. A fleet alias can be used in
+place of a fleet ID, such as when calling C<CreateGameSession> from a
+game client or game service or adding destinations to a game session
+queue. By changing an alias's target fleet, you can switch your players
+to the new fleet without changing any other component. In production,
+this feature is particularly useful to redirect your player base
+seamlessly to the latest game server update.
+
+Amazon GameLift supports two types of routing strategies for aliases:
+simple and terminal. Use a simple alias to point to an active fleet.
+Use a terminal alias to display a message to incoming traffic instead
+of routing players to an active fleet. This option is useful when a
+game server is no longer supported but you want to provide better
+messaging than a standard 404 error.
 
 To create a fleet alias, specify an alias name, routing strategy, and
 optional description. If successful, a new alias record is returned,
@@ -578,26 +734,26 @@ Each argument is described in detail in: L<Paws::GameLift::CreateBuild>
 
 Returns: a L<Paws::GameLift::CreateBuildOutput> instance
 
-  Initializes a new build record and generates information required to
-upload a game build to Amazon GameLift. Once the build record has been
-created and its status is C<INITIALIZED>, you can upload your game
+  Creates a new Amazon GameLift build from a set of game server binary
+files stored in an Amazon Simple Storage Service (Amazon S3) location.
+When using this API call, you must create a C<.zip> file containing all
+of the build files and store it in an Amazon S3 bucket under your AWS
+account. For help on packaging your build files and creating a build,
+see Uploading Your Game to Amazon GameLift.
+
+Use this API action ONLY if you are storing your game build files in an
+Amazon S3 bucket in your AWS account. To create a build using files
+stored in a directory, use the CLI command C<upload-build> , which
+uploads the build files from a file location you specify and creates a
 build.
 
-Do not use this API action unless you are using your own Amazon Simple
-Storage Service (Amazon S3) client and need to manually upload your
-build files. Instead, to create a build, use the CLI command
-C<upload-build>, which creates a new build record and uploads the build
-files in one step. (See the Amazon GameLift Developer Guide help on
-packaging and uploading your build.)
-
-To create a new build, identify the operating system of the game server
-binaries. All game servers in a build must use the same operating
-system. Optionally, specify a build name and version; this metadata is
-stored with other properties in the build record and is displayed in
-the GameLift console (it is not visible to players). If successful,
-this action returns the newly created build record along with the
-Amazon S3 storage location and AWS account credentials. Use the
-location and credentials to upload your game build.
+To create a new build using C<CreateBuild>, identify the storage
+location and operating system of your game build. You also have the
+option of specifying a build name and version. If successful, this
+action creates a new build record with an unique build ID and in
+C<INITIALIZED> status. Use the API call DescribeBuild to check the
+status of your build. A build must be in C<READY> status before it can
+be used to create fleets to host your game.
 
 
 =head2 CreateFleet(BuildId => Str, EC2InstanceType => Str, Name => Str, [Description => Str, EC2InboundPermissions => ArrayRef[L<Paws::GameLift::IpPermission>], LogPaths => ArrayRef[Str|Undef], NewGameSessionProtectionPolicy => Str, ResourceCreationLimitPolicy => L<Paws::GameLift::ResourceCreationLimitPolicy>, RuntimeConfiguration => L<Paws::GameLift::RuntimeConfiguration>, ServerLaunchParameters => Str, ServerLaunchPath => Str])
@@ -621,9 +777,9 @@ fleet with the following settings: (1) a runtime configuration
 describing what server processes to run on each instance in the fleet
 (required to create fleet), (2) access permissions for inbound traffic,
 (3) fleet-wide game session protection, and (4) the location of default
-log files for GameLift to upload and store.
+log files for Amazon GameLift to upload and store.
 
-If the C<CreateFleet> call is successful, Amazon GameLift performs the
+If the CreateFleet call is successful, Amazon GameLift performs the
 following tasks:
 
 =over
@@ -635,19 +791,19 @@ statuses as the fleet is activated).
 
 =item *
 
-Sets the fleet's capacity to 1 "desired", which causes GameLift to
-start one new EC2 instance.
+Sets the fleet's capacity to 1 "desired", which causes Amazon GameLift
+to start one new EC2 instance.
 
 =item *
 
 Starts launching server processes on the instance. If the fleet is
-configured to run multiple server processes per instance, GameLift
-staggers each launch by a few seconds.
+configured to run multiple server processes per instance, Amazon
+GameLift staggers each launch by a few seconds.
 
 =item *
 
 Begins writing events to the fleet event log, which can be accessed in
-the GameLift console.
+the Amazon GameLift console.
 
 =item *
 
@@ -682,6 +838,11 @@ UpdateRuntimeConfiguration -- Change how server processes are launched
 in the fleet, including launch path, launch parameters, and the number
 of concurrent processes.
 
+=item *
+
+PutScalingPolicy -- Create or update rules that are used to set the
+fleet's capacity (autoscaling).
+
 =back
 
 
@@ -694,7 +855,7 @@ Returns: a L<Paws::GameLift::CreateGameSessionOutput> instance
 
   Creates a multiplayer game session for players. This action creates a
 game session record and assigns an available server process in the
-specified fleet to host the game session. A fleet must be in an
+specified fleet to host the game session. A fleet must have an
 C<ACTIVE> status before a game session can be created in it.
 
 To create a game session, specify either fleet ID or alias ID, and
@@ -703,45 +864,71 @@ can also provide a name and game-specific properties for this game
 session. If successful, a GameSession object is returned containing
 session properties, including an IP address. By default, newly created
 game sessions allow new players to join. Use UpdateGameSession to
-change the game sessions player session creation policy.
+change the game session's player session creation policy.
 
 When creating a game session on a fleet with a resource limit creation
 policy, the request should include a creator ID. If none is provided,
-GameLift does not evaluate the fleet's resource limit creation policy.
+Amazon GameLift does not evaluate the fleet's resource limit creation
+policy.
 
 
-=head2 CreatePlayerSession(GameSessionId => Str, PlayerId => Str)
+=head2 CreateGameSessionQueue(Name => Str, [Destinations => ArrayRef[L<Paws::GameLift::GameSessionQueueDestination>], TimeoutInSeconds => Int])
+
+Each argument is described in detail in: L<Paws::GameLift::CreateGameSessionQueue>
+
+Returns: a L<Paws::GameLift::CreateGameSessionQueueOutput> instance
+
+  Establishes a new queue for processing requests for new game sessions.
+A queue identifies where new game sessions can be hosted--by specifying
+a list of fleet destinations--and how long a request can remain in the
+queue waiting to be placed before timing out. Requests for new game
+sessions are added to a queue by calling StartGameSessionPlacement and
+referencing the queue name.
+
+When processing a request for a game session, Amazon GameLift tries
+each destination in order until it finds one with available resources
+to host the new game session. A queue's default order is determined by
+how destinations are listed. This default order can be overridden in a
+game session placement request.
+
+To create a new queue, provide a name, timeout value, and a list of
+destinations. If successful, a new queue object is returned.
+
+
+=head2 CreatePlayerSession(GameSessionId => Str, PlayerId => Str, [PlayerData => Str])
 
 Each argument is described in detail in: L<Paws::GameLift::CreatePlayerSession>
 
 Returns: a L<Paws::GameLift::CreatePlayerSessionOutput> instance
 
-  Adds a player to a game session and creates a player session record. A
-game session must be in an C<ACTIVE> status, have a creation policy of
-C<ALLOW_ALL>, and have an open player slot before players can be added
-to the session.
+  Adds a player to a game session and creates a player session record.
+Before a player can be added, a game session must have an C<ACTIVE>
+status, have a creation policy of C<ALLOW_ALL>, and have an open player
+slot. To add a group of players to a game session, use
+CreatePlayerSessions.
 
-To create a player session, specify a game session ID and player ID. If
-successful, the player is added to the game session and a new
-PlayerSession object is returned.
+To create a player session, specify a game session ID, player ID, and
+optionally a string of player data. If successful, the player is added
+to the game session and a new PlayerSession object is returned. Player
+sessions cannot be updated.
 
 
-=head2 CreatePlayerSessions(GameSessionId => Str, PlayerIds => ArrayRef[Str|Undef])
+=head2 CreatePlayerSessions(GameSessionId => Str, PlayerIds => ArrayRef[Str|Undef], [PlayerDataMap => L<Paws::GameLift::PlayerDataMap>])
 
 Each argument is described in detail in: L<Paws::GameLift::CreatePlayerSessions>
 
 Returns: a L<Paws::GameLift::CreatePlayerSessionsOutput> instance
 
-  Adds a group of players to a game session. Similar to
-CreatePlayerSession, this action allows you to add multiple players in
-a single call, which is useful for games that provide party and/or
-matchmaking features. A game session must be in an C<ACTIVE> status,
-have a creation policy of C<ALLOW_ALL>, and have an open player slot
-before players can be added to the session.
+  Adds a group of players to a game session. This action is useful with a
+team matching feature. Before players can be added, a game session must
+have an C<ACTIVE> status, have a creation policy of C<ALLOW_ALL>, and
+have an open player slot. To add a single player to a game session, use
+CreatePlayerSession.
 
-To create player sessions, specify a game session ID and a list of
-player IDs. If successful, the players are added to the game session
-and a set of new PlayerSession objects is returned.
+To create player sessions, specify a game session ID, a list of player
+IDs, and optionally a set of player data strings. If successful, the
+players are added to the game session and a set of new PlayerSession
+objects is returned. Player sessions cannot be updated.
 
 
 =head2 DeleteAlias(AliasId => Str)
@@ -750,9 +937,9 @@ Each argument is described in detail in: L<Paws::GameLift::DeleteAlias>
 
 Returns: nothing
 
-  Deletes an alias. This action removes all record of the alias; game
-clients attempting to access a server process using the deleted alias
-receive an error. To delete an alias, specify the alias ID to be
+  Deletes a fleet alias. This action removes all record of the alias.
+Game clients attempting to access a server process using the deleted
+alias receive an error. To delete an alias, specify the alias ID to be
 deleted.
 
 
@@ -783,6 +970,17 @@ This action removes the fleet's resources and the fleet record. Once a
 fleet is deleted, you can no longer use that fleet.
 
 
+=head2 DeleteGameSessionQueue(Name => Str)
+
+Each argument is described in detail in: L<Paws::GameLift::DeleteGameSessionQueue>
+
+Returns: a L<Paws::GameLift::DeleteGameSessionQueueOutput> instance
+
+  Deletes a game session queue. This action means that any
+StartGameSessionPlacement requests that reference this queue will fail.
+To delete a queue, specify the queue name.
+
+
 =head2 DeleteScalingPolicy(FleetId => Str, Name => Str)
 
 Each argument is described in detail in: L<Paws::GameLift::DeleteScalingPolicy>
@@ -801,8 +999,12 @@ Each argument is described in detail in: L<Paws::GameLift::DescribeAlias>
 
 Returns: a L<Paws::GameLift::DescribeAliasOutput> instance
 
-  Retrieves properties for a specified alias. To get the alias, specify
-an alias ID. If successful, an Alias object is returned.
+  Retrieves properties for a fleet alias. This operation returns all
+alias metadata and settings. To get just the fleet ID an alias is
+currently pointing to, use ResolveAlias.
+
+To get alias properties, specify the alias ID. If successful, an Alias
+object is returned.
 
 
 =head2 DescribeBuild(BuildId => Str)
@@ -837,9 +1039,9 @@ current usage level for the AWS account
 
 =back
 
-Service limits vary depending on region. Available regions for GameLift
-can be found in the AWS Management Console for GameLift (see the
-drop-down list in the upper right corner).
+Service limits vary depending on region. Available regions for Amazon
+GameLift can be found in the AWS Management Console for Amazon GameLift
+(see the drop-down list in the upper right corner).
 
 
 =head2 DescribeFleetAttributes([FleetIds => ArrayRef[Str|Undef], Limit => Int, NextToken => Str])
@@ -948,27 +1150,48 @@ set of sequential pages. If successful, a GameSessionDetail object is
 returned for each session matching the request.
 
 
+=head2 DescribeGameSessionPlacement(PlacementId => Str)
+
+Each argument is described in detail in: L<Paws::GameLift::DescribeGameSessionPlacement>
+
+Returns: a L<Paws::GameLift::DescribeGameSessionPlacementOutput> instance
+
+  Retrieves properties and current status of a game session placement
+request. To get game session placement details, specify the placement
+ID. If successful, a GameSessionPlacement object is returned.
+
+
+=head2 DescribeGameSessionQueues([Limit => Int, Names => ArrayRef[Str|Undef], NextToken => Str])
+
+Each argument is described in detail in: L<Paws::GameLift::DescribeGameSessionQueues>
+
+Returns: a L<Paws::GameLift::DescribeGameSessionQueuesOutput> instance
+
+  Retrieves the properties for one or more game session queues. When
+requesting multiple queues, use the pagination parameters to retrieve
+results as a set of sequential pages. If successful, a GameSessionQueue
+object is returned for each requested queue. When specifying a list of
+queues, objects are returned only for queues that currently exist in
+the region.
+
+
 =head2 DescribeGameSessions([AliasId => Str, FleetId => Str, GameSessionId => Str, Limit => Int, NextToken => Str, StatusFilter => Str])
 
 Each argument is described in detail in: L<Paws::GameLift::DescribeGameSessions>
 
 Returns: a L<Paws::GameLift::DescribeGameSessionsOutput> instance
 
-  Retrieves a set of one or more game sessions and properties. This
-action can be used in several ways: (1) provide a C<GameSessionId> to
-request properties for a specific game session; (2) provide a
-C<FleetId> or an C<AliasId> to request properties for all game sessions
-running on a fleet. You can also use SearchGameSessions, which allows
-you to retrieve all game sessions or filter on certain criteria, but
-only returns game sessions with a status of ACTIVE. If you need to
-retrieve the protection policy for each game session, use
-DescribeGameSessionDetails.
+  Retrieves a set of one or more game sessions. Request a specific game
+session or request all game sessions on a fleet. Alternatively, use
+SearchGameSessions to request a set of active game sessions that are
+filtered by certain criteria. To retrieve protection policy settings
+for game sessions, use DescribeGameSessionDetails.
 
-To get game session record(s), specify just one of the following: game
-session ID, fleet ID, or alias ID. You can filter this request by game
-session status. Use the pagination parameters to retrieve results as a
-set of sequential pages. If successful, a GameSession object is
-returned for each session matching the request.
+To get game sessions, specify one of the following: game session ID,
+fleet ID, or alias ID. You can filter this request by game session
+status. Use the pagination parameters to retrieve results as a set of
+sequential pages. If successful, a GameSession object is returned for
+each game session matching the request.
 
 
 =head2 DescribeInstances(FleetId => Str, [InstanceId => Str, Limit => Int, NextToken => Str])
@@ -1015,8 +1238,8 @@ Each argument is described in detail in: L<Paws::GameLift::DescribeRuntimeConfig
 Returns: a L<Paws::GameLift::DescribeRuntimeConfigurationOutput> instance
 
   Retrieves the current runtime configuration for the specified fleet.
-The runtime configuration tells GameLift how to launch server processes
-on instances in the fleet.
+The runtime configuration tells Amazon GameLift how to launch server
+processes on instances in the fleet.
 
 
 =head2 DescribeScalingPolicies(FleetId => Str, [Limit => Int, NextToken => Str, StatusFilter => Str])
@@ -1060,15 +1283,15 @@ debugging, gathering benchmarking data, or watching activity in real
 time.
 
 Access requires credentials that match the operating system of the
-instance. For a Windows instance, GameLift returns a username and
-password as strings for use with a Windows Remote Desktop client. For a
-Linux instance, GameLift returns a username and RSA private key, also
-as strings, for use with an SSH client. The private key must be saved
-in the proper format to a .pem file before using. If you're making this
-request using the AWS CLI, saving the secret can be handled as part of
-the GetInstanceAccess request (see the example later in this topic).
-For more information on remote access, see Remotely Accessing an
-Instance.
+instance. For a Windows instance, Amazon GameLift returns a user name
+and password as strings for use with a Windows Remote Desktop client.
+For a Linux instance, Amazon GameLift returns a user name and RSA
+private key, also as strings, for use with an SSH client. The private
+key must be saved in the proper format to a C<.pem> file before using.
+If you're making this request using the AWS CLI, saving the secret can
+be handled as part of the GetInstanceAccess request. (See the example
+later in this topic). For more information on remote access, see
+Remotely Accessing an Instance.
 
 To request access to a specific instance, specify the IDs of the
 instance and the fleet it belongs to. If successful, an InstanceAccess
@@ -1154,19 +1377,10 @@ Each argument is described in detail in: L<Paws::GameLift::RequestUploadCredenti
 
 Returns: a L<Paws::GameLift::RequestUploadCredentialsOutput> instance
 
-  Retrieves a fresh set of upload credentials and the assigned Amazon S3
-storage location for a specific build. Valid credentials are required
-to upload your game build files to Amazon S3.
-
-Call this action only if you need credentials for a build created
-withC< CreateBuild >. This is a rare situation; in most cases, builds
-are created using the CLI command C<upload-build>, which creates a
-build record and also uploads build files.
-
-Upload credentials are returned when you create the build, but they
-have a limited lifespan. You can get fresh credentials and use them to
-re-upload game files until the status of that build changes to
-C<READY>. Once this happens, you must create a brand new build.
+  I<This API call is not currently in use. > Retrieves a fresh set of
+upload credentials and the assigned Amazon S3 storage location for a
+specific build. Valid credentials are required to upload your game
+build files to Amazon S3.
 
 
 =head2 ResolveAlias(AliasId => Str)
@@ -1187,9 +1401,9 @@ Returns: a L<Paws::GameLift::SearchGameSessionsOutput> instance
   Retrieves a set of game sessions that match a set of search criteria
 and sorts them in a specified order. Currently a game session search is
 limited to a single fleet. Search results include only game sessions
-that are in ACTIVE status. If you need to retrieve game sessions with a
-status other than active, use DescribeGameSessions. If you need to
-retrieve the protection policy for each game session, use
+that are in C<ACTIVE> status. If you need to retrieve game sessions
+with a status other than active, use DescribeGameSessions. If you need
+to retrieve the protection policy for each game session, use
 DescribeGameSessionDetails.
 
 You can search or sort by the following game session attributes:
@@ -1250,13 +1464,66 @@ Be sure to refresh search results often, and handle sessions that fill
 up before a player can join.
 
 
+=head2 StartGameSessionPlacement(GameSessionQueueName => Str, MaximumPlayerSessionCount => Int, PlacementId => Str, [DesiredPlayerSessions => ArrayRef[L<Paws::GameLift::DesiredPlayerSession>], GameProperties => ArrayRef[L<Paws::GameLift::GameProperty>], GameSessionName => Str, PlayerLatencies => ArrayRef[L<Paws::GameLift::PlayerLatency>]])
+
+Each argument is described in detail in: L<Paws::GameLift::StartGameSessionPlacement>
+
+Returns: a L<Paws::GameLift::StartGameSessionPlacementOutput> instance
+
+  Places a request for a new game session in a queue (see
+CreateGameSessionQueue). When processing a placement request, Amazon
+GameLift attempts to create a new game session on one of the fleets
+associated with the queue. If no resources are available, Amazon
+GameLift tries again with another and so on until resources are found
+or the placement request times out. A game session placement request
+can also request player sessions. When a new game session is
+successfully created, Amazon GameLift creates a player session for each
+player included in the request.
+
+When placing a game session, by default Amazon GameLift tries each
+fleet in the order they are listed in the queue configuration. Ideally,
+a queue's destinations are listed in preference order. Alternatively,
+when requesting a game session with players, you can also provide
+latency data for each player in relevant regions. Latency data
+indicates the performance lag a player experiences when connected to a
+fleet in the region. Amazon GameLift uses latency data to reorder the
+list of destinations to place the game session in a region with minimal
+lag. If latency data is provided for multiple players, Amazon GameLift
+calculates each region's average lag for all players and reorders to
+get the best game play across all players.
+
+To place a new game session request, specify the queue name and a set
+of game session properties and settings. Also provide a unique ID (such
+as a UUID) for the placement. You'll use this ID to track the status of
+the placement request. Optionally, provide a set of IDs and player data
+for each player you want to join to the new game session. To optimize
+game play for the players, also provide latency data for all players.
+If successful, a new game session placement is created. To track the
+status of a placement request, call DescribeGameSessionPlacement and
+check the request's status. If the status is Fulfilled, a new game
+session has been created and a game session ARN and region are
+referenced. If the placement request times out, you have the option of
+resubmitting the request or retrying it with a different queue.
+
+
+=head2 StopGameSessionPlacement(PlacementId => Str)
+
+Each argument is described in detail in: L<Paws::GameLift::StopGameSessionPlacement>
+
+Returns: a L<Paws::GameLift::StopGameSessionPlacementOutput> instance
+
+  Cancels a game session placement that is in Pending status. To stop a
+placement, provide the placement ID values. If successful, the
+placement is moved to Cancelled status.
+
+
 =head2 UpdateAlias(AliasId => Str, [Description => Str, Name => Str, RoutingStrategy => L<Paws::GameLift::RoutingStrategy>])
 
 Each argument is described in detail in: L<Paws::GameLift::UpdateAlias>
 
 Returns: a L<Paws::GameLift::UpdateAliasOutput> instance
 
-  Updates properties for an alias. To update properties, specify the
+  Updates properties for a fleet alias. To update properties, specify the
 alias ID to be updated and provide the information to be changed. To
 reassign an alias to another fleet, provide an updated routing
 strategy. If successful, the updated alias record is returned.
@@ -1342,6 +1609,18 @@ game session ID and the values you want to change. If successful, an
 updated GameSession object is returned.
 
 
+=head2 UpdateGameSessionQueue(Name => Str, [Destinations => ArrayRef[L<Paws::GameLift::GameSessionQueueDestination>], TimeoutInSeconds => Int])
+
+Each argument is described in detail in: L<Paws::GameLift::UpdateGameSessionQueue>
+
+Returns: a L<Paws::GameLift::UpdateGameSessionQueueOutput> instance
+
+  Updates settings for a game session queue, which determines how new
+game session requests in the queue are processed. To update settings,
+specify the queue name to be updated and provide the new settings. When
+updating destinations, provide a complete list of destinations.
+
+
 =head2 UpdateRuntimeConfiguration(FleetId => Str, RuntimeConfiguration => L<Paws::GameLift::RuntimeConfiguration>)
 
 Each argument is described in detail in: L<Paws::GameLift::UpdateRuntimeConfiguration>
@@ -1349,22 +1628,24 @@ Each argument is described in detail in: L<Paws::GameLift::UpdateRuntimeConfigur
 Returns: a L<Paws::GameLift::UpdateRuntimeConfigurationOutput> instance
 
   Updates the current runtime configuration for the specified fleet,
-which tells GameLift how to launch server processes on instances in the
-fleet. You can update a fleet's runtime configuration at any time after
-the fleet is created; it does not need to be in an C<ACTIVE> status.
+which tells Amazon GameLift how to launch server processes on instances
+in the fleet. You can update a fleet's runtime configuration at any
+time after the fleet is created; it does not need to be in an C<ACTIVE>
+status.
 
 To update runtime configuration, specify the fleet ID and provide a
 C<RuntimeConfiguration> object with the updated collection of server
 process configurations.
 
-Each instance in a GameLift fleet checks regularly for an updated
-runtime configuration and changes how it launches server processes to
-comply with the latest version. Existing server processes are not
-affected by the update; they continue to run until they end, while
-GameLift simply adds new server processes to fit the current runtime
-configuration. As a result, the runtime configuration changes are
-applied gradually as existing processes shut down and new processes are
-launched in GameLift's normal process recycling activity.
+Each instance in a Amazon GameLift fleet checks regularly for an
+updated runtime configuration and changes how it launches server
+processes to comply with the latest version. Existing server processes
+are not affected by the update; they continue to run until they end,
+while Amazon GameLift simply adds new server processes to fit the
+current runtime configuration. As a result, the runtime configuration
+changes are applied gradually as existing processes shut down and new
+processes are launched in Amazon GameLift's normal process recycling
+activity.
 
 
 

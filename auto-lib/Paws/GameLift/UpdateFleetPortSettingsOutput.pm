@@ -16,7 +16,7 @@ Paws::GameLift::UpdateFleetPortSettingsOutput
 
 =head2 FleetId => Str
 
-Unique identifier for the updated fleet.
+Unique identifier for a fleet that was updated.
 
 
 =head2 _request_id => Str

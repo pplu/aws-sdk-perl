@@ -48,12 +48,12 @@ requested by calling GetInstanceAccess.
 
 =head2 FleetId => Str
 
-  Unique identifier for the fleet containing the instance being accessed.
+  Unique identifier for a fleet containing the instance being accessed.
 
 
 =head2 InstanceId => Str
 
-  Unique identifier for the instance being accessed.
+  Unique identifier for an instance being accessed.
 
 
 =head2 IpAddress => Str

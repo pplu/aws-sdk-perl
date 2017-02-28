@@ -43,14 +43,14 @@ Human-readable description of an alias.
 
 =head2 B<REQUIRED> Name => Str
 
-Descriptive label associated with an alias. Alias names do not need to
-be unique.
+Descriptive label that is associated with an alias. Alias names do not
+need to be unique.
 
 
 
 =head2 B<REQUIRED> RoutingStrategy => L<Paws::GameLift::RoutingStrategy>
 
-Object specifying the fleet and routing type to use for the alias.
+Object that specifies the fleet and routing type to use for the alias.
 
 
 

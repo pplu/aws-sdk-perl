@@ -40,8 +40,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AliasId => Str
 
-Unique identifier for a fleet alias. Each request must reference either
-a fleet ID or alias ID, but not both.
+Unique identifier for an alias associated with the fleet to search for
+active game sessions. Each request must reference either a fleet ID or
+alias ID, but not both.
 
 
 
@@ -49,7 +50,7 @@ a fleet ID or alias ID, but not both.
 
 String containing the search criteria for the session search. If no
 filter expression is included, the request returns results for all game
-sessions in the fleet that are in ACTIVE status.
+sessions in the fleet that are in C<ACTIVE> status.
 
 A filter expression can contain one or multiple conditions. Each
 condition consists of the following:
@@ -119,8 +120,8 @@ C<"maximumSessionsE<gt>=10 AND hasAvailablePlayerSessions=true">.
 
 =head2 FleetId => Str
 
-Unique identifier for a fleet. Each request must reference either a
-fleet ID or alias ID, but not both.
+Unique identifier for a fleet to search for active game sessions. Each
+request must reference either a fleet ID or alias ID, but not both.
 
 
 
@@ -135,8 +136,8 @@ set higher than 20.
 
 =head2 NextToken => Str
 
-Token indicating the start of the next sequential page of results. Use
-the token that is returned with a previous call to this action. To
+Token that indicates the start of the next sequential page of results.
+Use the token that is returned with a previous call to this action. To
 specify the start of the result set, do not specify a value.
 
 

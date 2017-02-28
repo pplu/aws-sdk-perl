@@ -42,7 +42,7 @@ time period".
 The policy is evaluated when a player tries to create a new game
 session. For example, with a policy of 10 new game sessions and a time
 period of 60 minutes, on receiving a C<CreateGameSession> request,
-GameLift checks that the player (identified by C<CreatorId>) has
+Amazon GameLift checks that the player (identified by C<CreatorId>) has
 created fewer than 10 game sessions in the past 60 minutes.
 
 =head1 ATTRIBUTES

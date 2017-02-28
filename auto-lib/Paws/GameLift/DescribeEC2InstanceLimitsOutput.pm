@@ -16,7 +16,7 @@ Paws::GameLift::DescribeEC2InstanceLimitsOutput
 
 =head2 EC2InstanceLimits => ArrayRef[L<Paws::GameLift::EC2InstanceLimit>]
 
-Object containing the maximum number of instances for the specified
+Object that contains the maximum number of instances for the specified
 instance type.
 
 

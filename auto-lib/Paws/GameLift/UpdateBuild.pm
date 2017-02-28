@@ -37,21 +37,21 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> BuildId => Str
 
-Unique identifier of the build you want to update.
+Unique identifier for a build to update.
 
 
 
 =head2 Name => Str
 
-Descriptive label associated with a build. Build names do not need to
-be unique.
+Descriptive label that is associated with a build. Build names do not
+need to be unique.
 
 
 
 =head2 Version => Str
 
-Version associated with this build. Version strings do not need to be
-unique to a build.
+Version that is associated with this build. Version strings do not need
+to be unique.
 
 
 
