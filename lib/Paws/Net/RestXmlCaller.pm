@@ -5,6 +5,7 @@ package Paws::Net::RestXmlCaller;
   use URI::Template;
   use URI::Escape;
   use Moose::Util;
+  use Safe::Isa qw($_isa);
 
   sub array_flatten_string {
     my $self = shift;
@@ -19,6 +20,10 @@ package Paws::Net::RestXmlCaller;
   # converts the objects that represent the call into parameters that the API can understand
   sub _to_querycaller_params {
     my ($self, $params) = @_;
+
+    # S3 Metadata are passed in the header
+    return if $params->$_isa('Paws::S3::Metadata');
+
     my %p;
     foreach my $att (grep { $_ !~ m/^_/ } $params->meta->get_attribute_list) {
       my $key = $params->meta->get_attribute($att)->does('Paws::API::Attribute::Trait::ParamInQuery')?$params->meta->get_attribute($att)->query_name:$att;
@@ -79,8 +84,15 @@ package Paws::Net::RestXmlCaller;
   sub _to_header_params {
     my ($self, $request, $call) = @_;
     foreach my $attribute ($call->meta->get_all_attributes) {
-      if ($attribute->does('Paws::API::Attribute::Trait::ParamInHeader') and $attribute->has_value($call)) {
+      next unless $attribute->has_value($call);
+      if ($attribute->does('Paws::API::Attribute::Trait::ParamInHeader')) {
         $request->headers->header( $attribute->header_name => $attribute->get_value($call) );
+      }
+      elsif ($attribute->type_constraint eq 'Paws::S3::Metadata') { 
+        my $map = $attribute->get_value($call)->Map;
+        for my $header (keys %{$map}) { 
+          $request->headers->header( qq{x-amz-meta-$header} => $map->{$header} );
+        }
       }
     }
   }
@@ -145,8 +157,10 @@ package Paws::Net::RestXmlCaller;
           not $attribute->does('Paws::API::Attribute::Trait::ParamInHeader') and
           not $attribute->does('Paws::API::Attribute::Trait::ParamInQuery') and
           not $attribute->does('Paws::API::Attribute::Trait::ParamInURI') and
-          not $attribute->does('Paws::API::Attribute::Trait::ParamInBody')
+          not $attribute->does('Paws::API::Attribute::Trait::ParamInBody') and 
+          not $attribute->type_constraint eq 'Paws::S3::Metadata'
          ) {
+        
         my $location = $attribute->does('NameInRequest') ? $attribute->request_name : $attribute->name;
         $xml .= sprintf '<%s>%s</%s>', $location, $self->_to_xml($attribute->get_value($call)), $location;
       }
