@@ -21,11 +21,13 @@ package Paws::Net::RestXmlCaller;
   sub _to_querycaller_params {
     my ($self, $params) = @_;
 
-    # S3 Metadata are passed in the header
-    return if $params->$_isa('Paws::S3::Metadata');
 
     my %p;
     foreach my $att (grep { $_ !~ m/^_/ } $params->meta->get_attribute_list) {
+      
+      # e.g. S3 metadata objects, which are passed in the header
+      next if $params->meta->get_attribute($att)->does('Paws::API::Attribute::Trait::ParamInHeaders');
+
       my $key = $params->meta->get_attribute($att)->does('Paws::API::Attribute::Trait::ParamInQuery')?$params->meta->get_attribute($att)->query_name:$att;
       if (defined $params->$att) {
         my $att_type = $params->meta->get_attribute($att)->type_constraint;
@@ -88,10 +90,12 @@ package Paws::Net::RestXmlCaller;
       if ($attribute->does('Paws::API::Attribute::Trait::ParamInHeader')) {
         $request->headers->header( $attribute->header_name => $attribute->get_value($call) );
       }
-      elsif ($attribute->type_constraint eq 'Paws::S3::Metadata') { 
+      elsif ($attribute->does('Paws::API::Attribute::Trait::ParamInHeaders')) { 
         my $map = $attribute->get_value($call)->Map;
+        my $prefix = $attribute->header_prefix;
         for my $header (keys %{$map}) { 
-          $request->headers->header( qq{x-amz-meta-$header} => $map->{$header} );
+          my $header_name = $prefix . $header;
+          $request->headers->header( $header_name => $map->{$header} );
         }
       }
     }
