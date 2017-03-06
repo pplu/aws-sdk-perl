@@ -3247,6 +3247,13 @@ Returns: a L<Paws::IAM::UploadServerCertificateResponse> instance
 certificate entity includes a public key certificate, a private key,
 and an optional certificate chain, which should all be PEM-encoded.
 
+We recommend that you use AWS Certificate Manager to provision, manage,
+and deploy your server certificates. With ACM you can request a
+certificate, deploy it to AWS resources, and let ACM handle certificate
+renewals for you. Certificates provided by ACM are free. For more
+information about using ACM, see the AWS Certificate Manager User
+Guide.
+
 For more information about working with server certificates, including
 a list of AWS services that can use the server certificates that you
 manage with IAM, go to Working with Server Certificates in the I<IAM

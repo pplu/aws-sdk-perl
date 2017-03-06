@@ -1,5 +1,6 @@
 package Paws::GameLift::Alias;
   use Moose;
+  has AliasArn => (is => 'ro', isa => 'Str');
   has AliasId => (is => 'ro', isa => 'Str');
   has CreationTime => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
@@ -25,31 +26,65 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::GameLift::Alias object:
 
-  $service_obj->Method(Att1 => { AliasId => $value, ..., RoutingStrategy => $value  });
+  $service_obj->Method(Att1 => { AliasArn => $value, ..., RoutingStrategy => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::GameLift::Alias object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->AliasId
+  $result->Att1->AliasArn
 
 =head1 DESCRIPTION
 
 Properties describing a fleet alias.
 
+Alias-related operations include:
+
+=over
+
+=item *
+
+CreateAlias
+
+=item *
+
+ListAliases
+
+=item *
+
+DescribeAlias
+
+=item *
+
+UpdateAlias
+
+=item *
+
+DeleteAlias
+
+=back
+
+
 =head1 ATTRIBUTES
+
+
+=head2 AliasArn => Str
+
+  Unique identifier for an alias; alias ARNs are unique across all
+regions.
 
 
 =head2 AliasId => Str
 
-  Unique identifier for a fleet alias.
+  Unique identifier for an alias; alias IDs are unique within a region.
 
 
 =head2 CreationTime => Str
 
   Time stamp indicating when this data object was created. Format is a
-number expressed in Unix time as milliseconds (ex: "1469498468.057").
+number expressed in Unix time as milliseconds (for example
+"1469498468.057").
 
 
 =head2 Description => Str
@@ -60,19 +95,19 @@ number expressed in Unix time as milliseconds (ex: "1469498468.057").
 =head2 LastUpdatedTime => Str
 
   Time stamp indicating when this data object was last modified. Format
-is a number expressed in Unix time as milliseconds (ex:
+is a number expressed in Unix time as milliseconds (for example
 "1469498468.057").
 
 
 =head2 Name => Str
 
-  Descriptive label associated with an alias. Alias names do not need to
-be unique.
+  Descriptive label that is associated with an alias. Alias names do not
+need to be unique.
 
 
 =head2 RoutingStrategy => L<Paws::GameLift::RoutingStrategy>
 
-  
+  Alias configuration for the alias, including routing type and settings.
 
 
 

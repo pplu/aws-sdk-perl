@@ -53,6 +53,11 @@ package Paws::ElasticBeanstalk;
     my $call_object = $self->new_with_coercions('Paws::ElasticBeanstalk::CreateEnvironment', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreatePlatformVersion {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ElasticBeanstalk::CreatePlatformVersion', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateStorageLocation {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ElasticBeanstalk::CreateStorageLocation', @_);
@@ -76,6 +81,11 @@ package Paws::ElasticBeanstalk;
   sub DeleteEnvironmentConfiguration {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ElasticBeanstalk::DeleteEnvironmentConfiguration', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeletePlatformVersion {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ElasticBeanstalk::DeletePlatformVersion', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeApplications {
@@ -133,9 +143,19 @@ package Paws::ElasticBeanstalk;
     my $call_object = $self->new_with_coercions('Paws::ElasticBeanstalk::DescribeInstancesHealth', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribePlatformVersion {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ElasticBeanstalk::DescribePlatformVersion', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListAvailableSolutionStacks {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ElasticBeanstalk::ListAvailableSolutionStacks', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListPlatformVersions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ElasticBeanstalk::ListPlatformVersions', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub RebuildEnvironment {
@@ -222,7 +242,7 @@ package Paws::ElasticBeanstalk;
   }
 
 
-  sub operations { qw/AbortEnvironmentUpdate ApplyEnvironmentManagedAction CheckDNSAvailability ComposeEnvironments CreateApplication CreateApplicationVersion CreateConfigurationTemplate CreateEnvironment CreateStorageLocation DeleteApplication DeleteApplicationVersion DeleteConfigurationTemplate DeleteEnvironmentConfiguration DescribeApplications DescribeApplicationVersions DescribeConfigurationOptions DescribeConfigurationSettings DescribeEnvironmentHealth DescribeEnvironmentManagedActionHistory DescribeEnvironmentManagedActions DescribeEnvironmentResources DescribeEnvironments DescribeEvents DescribeInstancesHealth ListAvailableSolutionStacks RebuildEnvironment RequestEnvironmentInfo RestartAppServer RetrieveEnvironmentInfo SwapEnvironmentCNAMEs TerminateEnvironment UpdateApplication UpdateApplicationResourceLifecycle UpdateApplicationVersion UpdateConfigurationTemplate UpdateEnvironment ValidateConfigurationSettings / }
+  sub operations { qw/AbortEnvironmentUpdate ApplyEnvironmentManagedAction CheckDNSAvailability ComposeEnvironments CreateApplication CreateApplicationVersion CreateConfigurationTemplate CreateEnvironment CreatePlatformVersion CreateStorageLocation DeleteApplication DeleteApplicationVersion DeleteConfigurationTemplate DeleteEnvironmentConfiguration DeletePlatformVersion DescribeApplications DescribeApplicationVersions DescribeConfigurationOptions DescribeConfigurationSettings DescribeEnvironmentHealth DescribeEnvironmentManagedActionHistory DescribeEnvironmentManagedActions DescribeEnvironmentResources DescribeEnvironments DescribeEvents DescribeInstancesHealth DescribePlatformVersion ListAvailableSolutionStacks ListPlatformVersions RebuildEnvironment RequestEnvironmentInfo RestartAppServer RetrieveEnvironmentInfo SwapEnvironmentCNAMEs TerminateEnvironment UpdateApplication UpdateApplicationResourceLifecycle UpdateApplicationVersion UpdateConfigurationTemplate UpdateEnvironment ValidateConfigurationSettings / }
 
 1;
 
@@ -354,7 +374,7 @@ you change the Amazon S3 location, you receive an exception when you
 attempt to launch an environment from the application version.
 
 
-=head2 CreateConfigurationTemplate(ApplicationName => Str, TemplateName => Str, [Description => Str, EnvironmentId => Str, OptionSettings => ArrayRef[L<Paws::ElasticBeanstalk::ConfigurationOptionSetting>], SolutionStackName => Str, SourceConfiguration => L<Paws::ElasticBeanstalk::SourceConfiguration>])
+=head2 CreateConfigurationTemplate(ApplicationName => Str, TemplateName => Str, [Description => Str, EnvironmentId => Str, OptionSettings => ArrayRef[L<Paws::ElasticBeanstalk::ConfigurationOptionSetting>], PlatformArn => Str, SolutionStackName => Str, SourceConfiguration => L<Paws::ElasticBeanstalk::SourceConfiguration>])
 
 Each argument is described in detail in: L<Paws::ElasticBeanstalk::CreateConfigurationTemplate>
 
@@ -384,7 +404,7 @@ ListAvailableSolutionStacks
 
 
 
-=head2 CreateEnvironment(ApplicationName => Str, [CNAMEPrefix => Str, Description => Str, EnvironmentName => Str, GroupName => Str, OptionSettings => ArrayRef[L<Paws::ElasticBeanstalk::ConfigurationOptionSetting>], OptionsToRemove => ArrayRef[L<Paws::ElasticBeanstalk::OptionSpecification>], SolutionStackName => Str, Tags => ArrayRef[L<Paws::ElasticBeanstalk::Tag>], TemplateName => Str, Tier => L<Paws::ElasticBeanstalk::EnvironmentTier>, VersionLabel => Str])
+=head2 CreateEnvironment(ApplicationName => Str, [CNAMEPrefix => Str, Description => Str, EnvironmentName => Str, GroupName => Str, OptionSettings => ArrayRef[L<Paws::ElasticBeanstalk::ConfigurationOptionSetting>], OptionsToRemove => ArrayRef[L<Paws::ElasticBeanstalk::OptionSpecification>], PlatformArn => Str, SolutionStackName => Str, Tags => ArrayRef[L<Paws::ElasticBeanstalk::Tag>], TemplateName => Str, Tier => L<Paws::ElasticBeanstalk::EnvironmentTier>, VersionLabel => Str])
 
 Each argument is described in detail in: L<Paws::ElasticBeanstalk::CreateEnvironment>
 
@@ -392,6 +412,15 @@ Returns: a L<Paws::ElasticBeanstalk::EnvironmentDescription> instance
 
   Launches an environment for the specified application using the
 specified configuration.
+
+
+=head2 CreatePlatformVersion(PlatformDefinitionBundle => L<Paws::ElasticBeanstalk::S3Location>, PlatformName => Str, PlatformVersion => Str, [EnvironmentName => Str, OptionSettings => ArrayRef[L<Paws::ElasticBeanstalk::ConfigurationOptionSetting>]])
+
+Each argument is described in detail in: L<Paws::ElasticBeanstalk::CreatePlatformVersion>
+
+Returns: a L<Paws::ElasticBeanstalk::CreatePlatformVersionResult> instance
+
+  Create a new version of your custom platform.
 
 
 =head2 CreateStorageLocation( => )
@@ -462,6 +491,15 @@ configuration remains in existence until it is deleted with this
 action.
 
 
+=head2 DeletePlatformVersion([PlatformArn => Str])
+
+Each argument is described in detail in: L<Paws::ElasticBeanstalk::DeletePlatformVersion>
+
+Returns: a L<Paws::ElasticBeanstalk::DeletePlatformVersionResult> instance
+
+  Deletes the specified version of a custom platform.
+
+
 =head2 DescribeApplications([ApplicationNames => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::ElasticBeanstalk::DescribeApplications>
@@ -480,7 +518,7 @@ Returns: a L<Paws::ElasticBeanstalk::ApplicationVersionDescriptionsMessage> inst
   Retrieve a list of application versions.
 
 
-=head2 DescribeConfigurationOptions([ApplicationName => Str, EnvironmentName => Str, Options => ArrayRef[L<Paws::ElasticBeanstalk::OptionSpecification>], SolutionStackName => Str, TemplateName => Str])
+=head2 DescribeConfigurationOptions([ApplicationName => Str, EnvironmentName => Str, Options => ArrayRef[L<Paws::ElasticBeanstalk::OptionSpecification>], PlatformArn => Str, SolutionStackName => Str, TemplateName => Str])
 
 Each argument is described in detail in: L<Paws::ElasticBeanstalk::DescribeConfigurationOptions>
 
@@ -568,7 +606,7 @@ Returns: a L<Paws::ElasticBeanstalk::EnvironmentDescriptionsMessage> instance
   Returns descriptions for existing environments.
 
 
-=head2 DescribeEvents([ApplicationName => Str, EndTime => Str, EnvironmentId => Str, EnvironmentName => Str, MaxRecords => Int, NextToken => Str, RequestId => Str, Severity => Str, StartTime => Str, TemplateName => Str, VersionLabel => Str])
+=head2 DescribeEvents([ApplicationName => Str, EndTime => Str, EnvironmentId => Str, EnvironmentName => Str, MaxRecords => Int, NextToken => Str, PlatformArn => Str, RequestId => Str, Severity => Str, StartTime => Str, TemplateName => Str, VersionLabel => Str])
 
 Each argument is described in detail in: L<Paws::ElasticBeanstalk::DescribeEvents>
 
@@ -591,13 +629,32 @@ Returns: a L<Paws::ElasticBeanstalk::DescribeInstancesHealthResult> instance
 Elastic Beanstalk. This operation requires enhanced health reporting.
 
 
+=head2 DescribePlatformVersion([PlatformArn => Str])
+
+Each argument is described in detail in: L<Paws::ElasticBeanstalk::DescribePlatformVersion>
+
+Returns: a L<Paws::ElasticBeanstalk::DescribePlatformVersionResult> instance
+
+  Describes the version of the platform.
+
+
 =head2 ListAvailableSolutionStacks( => )
 
 Each argument is described in detail in: L<Paws::ElasticBeanstalk::ListAvailableSolutionStacks>
 
 Returns: a L<Paws::ElasticBeanstalk::ListAvailableSolutionStacksResultMessage> instance
 
-  Returns a list of the available solution stack names.
+  Returns a list of the available solution stack names, with the public
+version first and then in reverse chronological order.
+
+
+=head2 ListPlatformVersions([Filters => ArrayRef[L<Paws::ElasticBeanstalk::PlatformFilter>], MaxRecords => Int, NextToken => Str])
+
+Each argument is described in detail in: L<Paws::ElasticBeanstalk::ListPlatformVersions>
+
+Returns: a L<Paws::ElasticBeanstalk::ListPlatformVersionsResult> instance
+
+  Lists the available platforms.
 
 
 =head2 RebuildEnvironment([EnvironmentId => Str, EnvironmentName => Str])
@@ -750,7 +807,7 @@ DescribeConfigurationOptions
 
 
 
-=head2 UpdateEnvironment([ApplicationName => Str, Description => Str, EnvironmentId => Str, EnvironmentName => Str, GroupName => Str, OptionSettings => ArrayRef[L<Paws::ElasticBeanstalk::ConfigurationOptionSetting>], OptionsToRemove => ArrayRef[L<Paws::ElasticBeanstalk::OptionSpecification>], SolutionStackName => Str, TemplateName => Str, Tier => L<Paws::ElasticBeanstalk::EnvironmentTier>, VersionLabel => Str])
+=head2 UpdateEnvironment([ApplicationName => Str, Description => Str, EnvironmentId => Str, EnvironmentName => Str, GroupName => Str, OptionSettings => ArrayRef[L<Paws::ElasticBeanstalk::ConfigurationOptionSetting>], OptionsToRemove => ArrayRef[L<Paws::ElasticBeanstalk::OptionSpecification>], PlatformArn => Str, SolutionStackName => Str, TemplateName => Str, Tier => L<Paws::ElasticBeanstalk::EnvironmentTier>, VersionLabel => Str])
 
 Each argument is described in detail in: L<Paws::ElasticBeanstalk::UpdateEnvironment>
 
@@ -790,9 +847,9 @@ warnings associated with the selection of option values.
 
 Paginator methods are helpers that repetively call methods that return partial results
 
-=head2 DescribeAllEvents(sub { },[ApplicationName => Str, EndTime => Str, EnvironmentId => Str, EnvironmentName => Str, MaxRecords => Int, NextToken => Str, RequestId => Str, Severity => Str, StartTime => Str, TemplateName => Str, VersionLabel => Str])
+=head2 DescribeAllEvents(sub { },[ApplicationName => Str, EndTime => Str, EnvironmentId => Str, EnvironmentName => Str, MaxRecords => Int, NextToken => Str, PlatformArn => Str, RequestId => Str, Severity => Str, StartTime => Str, TemplateName => Str, VersionLabel => Str])
 
-=head2 DescribeAllEvents([ApplicationName => Str, EndTime => Str, EnvironmentId => Str, EnvironmentName => Str, MaxRecords => Int, NextToken => Str, RequestId => Str, Severity => Str, StartTime => Str, TemplateName => Str, VersionLabel => Str])
+=head2 DescribeAllEvents([ApplicationName => Str, EndTime => Str, EnvironmentId => Str, EnvironmentName => Str, MaxRecords => Int, NextToken => Str, PlatformArn => Str, RequestId => Str, Severity => Str, StartTime => Str, TemplateName => Str, VersionLabel => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

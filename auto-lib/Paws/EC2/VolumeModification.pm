@@ -54,8 +54,7 @@ This class has no description
 
 =head2 ModificationState => Str
 
-  Current state of modification. Possible values are C<modifying> |
-C<optimizing> | C<complete> | C<failed>. Modification state is null for
+  Current state of modification. Modification state is null for
 unmodified volumes.
 
 

@@ -45,15 +45,14 @@ Human-readable description of a fleet.
 
 =head2 B<REQUIRED> FleetId => Str
 
-Unique identifier for the fleet you want to update attribute metadata
-for.
+Unique identifier for a fleet to update attribute metadata for.
 
 
 
 =head2 Name => Str
 
-Descriptive label associated with a fleet. Fleet names do not need to
-be unique.
+Descriptive label that is associated with a fleet. Fleet names do not
+need to be unique.
 
 
 

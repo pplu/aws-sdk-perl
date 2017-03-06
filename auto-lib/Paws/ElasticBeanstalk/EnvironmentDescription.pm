@@ -13,6 +13,7 @@ package Paws::ElasticBeanstalk::EnvironmentDescription;
   has EnvironmentName => (is => 'ro', isa => 'Str');
   has Health => (is => 'ro', isa => 'Str');
   has HealthStatus => (is => 'ro', isa => 'Str');
+  has PlatformArn => (is => 'ro', isa => 'Str');
   has Resources => (is => 'ro', isa => 'Paws::ElasticBeanstalk::EnvironmentResourcesDescription');
   has SolutionStackName => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
@@ -128,6 +129,11 @@ Returns the health status of the application running in your
 environment. For more information, see Health Colors and Statuses.
 
 Valid values are: C<"NoData">, C<"Unknown">, C<"Pending">, C<"Ok">, C<"Info">, C<"Warning">, C<"Degraded">, C<"Severe">
+=head2 PlatformArn => Str
+
+The ARN of the custom platform.
+
+
 =head2 Resources => L<Paws::ElasticBeanstalk::EnvironmentResourcesDescription>
 
 The description of the AWS resources used by this environment.

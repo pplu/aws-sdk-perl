@@ -36,7 +36,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> FleetId => Str
 
-Unique identifier of the fleet to update runtime configuration for.
+Unique identifier for a fleet to update runtime configuration for.
 
 
 

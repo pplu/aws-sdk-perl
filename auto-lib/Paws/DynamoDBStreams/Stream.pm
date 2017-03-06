@@ -47,7 +47,7 @@ Represents all of the data describing a particular stream.
 
   A timestamp, in ISO 8601 format, for this stream.
 
-Note that I<LatestStreamLabel> is not a unique identifier for the
+Note that C<LatestStreamLabel> is not a unique identifier for the
 stream, because it is possible that a stream from another table might
 have the same timestamp. However, the combination of the following
 three elements is guaranteed to be unique:
@@ -64,7 +64,7 @@ the table name
 
 =item *
 
-the I<StreamLabel>
+the C<StreamLabel>
 
 =back
 

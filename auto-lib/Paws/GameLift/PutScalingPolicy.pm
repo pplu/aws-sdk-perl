@@ -56,7 +56,7 @@ threshold before a scaling event is triggered.
 
 =head2 B<REQUIRED> FleetId => Str
 
-Unique identity for the fleet to scale with this policy.
+Unique identifier for a fleet to apply this policy to.
 
 
 
@@ -104,13 +104,13 @@ game session.
 =back
 
 
-Valid values are: C<"ActivatingGameSessions">, C<"ActiveGameSessions">, C<"ActiveInstances">, C<"AvailablePlayerSessions">, C<"CurrentPlayerSessions">, C<"IdleInstances">
+Valid values are: C<"ActivatingGameSessions">, C<"ActiveGameSessions">, C<"ActiveInstances">, C<"AvailablePlayerSessions">, C<"CurrentPlayerSessions">, C<"IdleInstances">, C<"QueueDepth">, C<"WaitTime">
 
 =head2 B<REQUIRED> Name => Str
 
-Descriptive label associated with a scaling policy. Policy names do not
-need to be unique. A fleet can have only one scaling policy with the
-same name.
+Descriptive label that is associated with a scaling policy. Policy
+names do not need to be unique. A fleet can have only one scaling
+policy with the same name.
 
 
 

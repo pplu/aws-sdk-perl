@@ -5,6 +5,7 @@ package Paws::ElasticBeanstalk::CreateConfigurationTemplate;
   has Description => (is => 'ro', isa => 'Str');
   has EnvironmentId => (is => 'ro', isa => 'Str');
   has OptionSettings => (is => 'ro', isa => 'ArrayRef[Paws::ElasticBeanstalk::ConfigurationOptionSetting]');
+  has PlatformArn => (is => 'ro', isa => 'Str');
   has SolutionStackName => (is => 'ro', isa => 'Str');
   has SourceConfiguration => (is => 'ro', isa => 'Paws::ElasticBeanstalk::SourceConfiguration');
   has TemplateName => (is => 'ro', isa => 'Str', required => 1);
@@ -64,6 +65,12 @@ The ID of the environment used with this configuration template.
 If specified, AWS Elastic Beanstalk sets the specified configuration
 option to the requested value. The new value overrides the value
 obtained from the solution stack or the source configuration template.
+
+
+
+=head2 PlatformArn => Str
+
+The ARN of the custome platform.
 
 
 

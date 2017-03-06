@@ -16,7 +16,7 @@ Paws::GameLift::UpdateAliasOutput
 
 =head2 Alias => L<Paws::GameLift::Alias>
 
-Object containing the updated alias configuration.
+Object that contains the updated alias configuration.
 
 
 =head2 _request_id => Str

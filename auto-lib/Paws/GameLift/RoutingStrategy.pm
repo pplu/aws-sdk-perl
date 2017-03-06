@@ -40,7 +40,7 @@ Routing configuration for a fleet alias.
 
 =head2 FleetId => Str
 
-  Unique identifier for a fleet.
+  Unique identifier for a fleet that the alias points to.
 
 
 =head2 Message => Str

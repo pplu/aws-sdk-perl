@@ -46,7 +46,7 @@ The total true upfront charge for the exchange.
 
 =head2 ReservedInstanceValueRollup => L<Paws::EC2::ReservationValue>
 
-
+The cost associated with the Reserved Instance.
 
 
 =head2 ReservedInstanceValueSet => ArrayRef[L<Paws::EC2::ReservedInstanceReservationValue>]
@@ -56,7 +56,7 @@ The configuration of your Convertible Reserved Instances.
 
 =head2 TargetConfigurationValueRollup => L<Paws::EC2::ReservationValue>
 
-
+The cost associated with the Reserved Instance.
 
 
 =head2 TargetConfigurationValueSet => ArrayRef[L<Paws::EC2::TargetReservationValue>]

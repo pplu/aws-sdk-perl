@@ -47,17 +47,18 @@ instances.
 =head2 CreationTime => Str
 
   Time stamp indicating when this data object was created. Format is a
-number expressed in Unix time as milliseconds (ex: "1469498468.057").
+number expressed in Unix time as milliseconds (for example
+"1469498468.057").
 
 
 =head2 FleetId => Str
 
-  Unique identifier for the fleet that the instance belongs to.
+  Unique identifier for a fleet that the instance is in.
 
 
 =head2 InstanceId => Str
 
-  Unique identifier for the instance.
+  Unique identifier for an instance.
 
 
 =head2 IpAddress => Str
@@ -87,8 +88,8 @@ configuration.
 
 B<ACTIVE> E<ndash> The instance has been successfully created and at
 least one server process has successfully launched and reported back to
-GameLift that it is ready to host a game session. The instance is now
-considered ready to host game sessions.
+Amazon GameLift that it is ready to host a game session. The instance
+is now considered ready to host game sessions.
 
 =item *
 

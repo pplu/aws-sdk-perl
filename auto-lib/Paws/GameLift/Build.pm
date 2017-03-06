@@ -39,6 +39,33 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GameLift::B
 
 Properties describing a game build.
 
+Build-related operations include:
+
+=over
+
+=item *
+
+CreateBuild
+
+=item *
+
+ListBuilds
+
+=item *
+
+DescribeBuild
+
+=item *
+
+UpdateBuild
+
+=item *
+
+DeleteBuild
+
+=back
+
+
 =head1 ATTRIBUTES
 
 
@@ -50,13 +77,14 @@ Properties describing a game build.
 =head2 CreationTime => Str
 
   Time stamp indicating when this data object was created. Format is a
-number expressed in Unix time as milliseconds (ex: "1469498468.057").
+number expressed in Unix time as milliseconds (for example
+"1469498468.057").
 
 
 =head2 Name => Str
 
-  Descriptive label associated with a build. Build names do not need to
-be unique. It can be set using CreateBuild or UpdateBuild.
+  Descriptive label that is associated with a build. Build names do not
+need to be unique. It can be set using CreateBuild or UpdateBuild.
 
 
 =head2 OperatingSystem => Str
@@ -103,9 +131,8 @@ fleets for this build.
 
 =head2 Version => Str
 
-  Version associated with this build. Version strings do not need to be
-unique to a build. This value can be set using CreateBuild or
-UpdateBuild.
+  Version that is associated with this build. Version strings do not need
+to be unique. This value can be set using CreateBuild or UpdateBuild.
 
 
 

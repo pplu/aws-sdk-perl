@@ -36,17 +36,17 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> FleetId => Str
 
-Unique identifier for a fleet. Specify the fleet that contain the
-instance you want access to. The fleet can be in any of the following
-statuses: ACTIVATING, ACTIVE, or ERROR. Fleets with an ERROR status can
-be accessed for a few hours before being deleted.
+Unique identifier for a fleet that contains the instance you want
+access to. The fleet can be in any of the following statuses:
+C<ACTIVATING>, C<ACTIVE>, or C<ERROR>. Fleets with an C<ERROR> status
+may be accessible for a short time before they are deleted.
 
 
 
 =head2 B<REQUIRED> InstanceId => Str
 
-Unique identifier for an instance. Specify the instance you want to get
-access to. You can access an instance in any status.
+Unique identifier for an instance you want to get access to. You can
+access an instance in any status.
 
 
 

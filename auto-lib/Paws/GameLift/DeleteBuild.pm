@@ -35,7 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> BuildId => Str
 
-Unique identifier for the build you want to delete.
+Unique identifier for a build to delete.
 
 
 

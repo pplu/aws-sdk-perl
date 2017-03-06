@@ -37,9 +37,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 FleetIds => ArrayRef[Str|Undef]
 
-Unique identifiers for the fleet(s) that you want to retrieve
-attributes for. To request attributes for all fleets, leave this
-parameter empty.
+Unique identifier for a fleet(s) to retrieve attributes for. To request
+attributes for all fleets, leave this parameter empty.
 
 
 
@@ -54,8 +53,8 @@ IDs.
 
 =head2 NextToken => Str
 
-Token indicating the start of the next sequential page of results. Use
-the token that is returned with a previous call to this action. To
+Token that indicates the start of the next sequential page of results.
+Use the token that is returned with a previous call to this action. To
 specify the start of the result set, do not specify a value. This
 parameter is ignored when the request specifies one or a list of fleet
 IDs.

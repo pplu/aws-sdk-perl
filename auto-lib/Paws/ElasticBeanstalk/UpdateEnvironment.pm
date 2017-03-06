@@ -8,6 +8,7 @@ package Paws::ElasticBeanstalk::UpdateEnvironment;
   has GroupName => (is => 'ro', isa => 'Str');
   has OptionSettings => (is => 'ro', isa => 'ArrayRef[Paws::ElasticBeanstalk::ConfigurationOptionSetting]');
   has OptionsToRemove => (is => 'ro', isa => 'ArrayRef[Paws::ElasticBeanstalk::OptionSpecification]');
+  has PlatformArn => (is => 'ro', isa => 'Str');
   has SolutionStackName => (is => 'ro', isa => 'Str');
   has TemplateName => (is => 'ro', isa => 'Str');
   has Tier => (is => 'ro', isa => 'Paws::ElasticBeanstalk::EnvironmentTier');
@@ -102,6 +103,12 @@ configuration options to the requested value.
 
 A list of custom user-defined configuration options to remove from the
 configuration set for this environment.
+
+
+
+=head2 PlatformArn => Str
+
+The ARN of the platform, if used.
 
 
 

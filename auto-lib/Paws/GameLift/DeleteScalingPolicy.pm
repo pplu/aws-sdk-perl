@@ -36,14 +36,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> FleetId => Str
 
-Unique identifier for a fleet.
+Unique identifier for a fleet to be deleted.
 
 
 
 =head2 B<REQUIRED> Name => Str
 
-Descriptive label associated with a scaling policy. Policy names do not
-need to be unique.
+Descriptive label that is associated with a scaling policy. Policy
+names do not need to be unique.
 
 
 

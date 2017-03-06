@@ -16,7 +16,7 @@ Paws::GameLift::ResolveAliasOutput
 
 =head2 FleetId => Str
 
-Fleet ID associated with the requested alias.
+Fleet identifier that is associated with the requested alias.
 
 
 =head2 _request_id => Str

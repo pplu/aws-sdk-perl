@@ -4,6 +4,7 @@ package Paws::ElasticBeanstalk::DescribeConfigurationOptions;
   has ApplicationName => (is => 'ro', isa => 'Str');
   has EnvironmentName => (is => 'ro', isa => 'Str');
   has Options => (is => 'ro', isa => 'ArrayRef[Paws::ElasticBeanstalk::OptionSpecification]');
+  has PlatformArn => (is => 'ro', isa => 'Str');
   has SolutionStackName => (is => 'ro', isa => 'Str');
   has TemplateName => (is => 'ro', isa => 'Str');
 
@@ -56,6 +57,12 @@ describe.
 =head2 Options => ArrayRef[L<Paws::ElasticBeanstalk::OptionSpecification>]
 
 If specified, restricts the descriptions to only the specified options.
+
+
+
+=head2 PlatformArn => Str
+
+The ARN of the custom platform.
 
 
 

@@ -4,6 +4,7 @@ package Paws::GameLift::PlayerSession;
   has FleetId => (is => 'ro', isa => 'Str');
   has GameSessionId => (is => 'ro', isa => 'Str');
   has IpAddress => (is => 'ro', isa => 'Str');
+  has PlayerData => (is => 'ro', isa => 'Str');
   has PlayerId => (is => 'ro', isa => 'Str');
   has PlayerSessionId => (is => 'ro', isa => 'Str');
   has Port => (is => 'ro', isa => 'Int');
@@ -39,7 +40,30 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GameLift::P
 
 =head1 DESCRIPTION
 
-Properties describing a player session.
+Properties describing a player session. A player session represents
+either a player reservation for a game session or actual player
+activity in a game session. A player session object (including player
+data) is automatically passed to a game session when the player
+connects to the game session and is validated.
+
+Player session-related operations include:
+
+=over
+
+=item *
+
+CreatePlayerSession
+
+=item *
+
+CreatePlayerSessions
+
+=item *
+
+DescribePlayerSessions
+
+=back
+
 
 =head1 ATTRIBUTES
 
@@ -47,12 +71,14 @@ Properties describing a player session.
 =head2 CreationTime => Str
 
   Time stamp indicating when this data object was created. Format is a
-number expressed in Unix time as milliseconds (ex: "1469498468.057").
+number expressed in Unix time as milliseconds (for example
+"1469498468.057").
 
 
 =head2 FleetId => Str
 
-  Unique identifier for a fleet.
+  Unique identifier for a fleet that the player's game session is running
+on.
 
 
 =head2 GameSessionId => Str
@@ -67,9 +93,17 @@ connected to.
 location.
 
 
+=head2 PlayerData => Str
+
+  Developer-defined information related to a player. Amazon GameLift does
+not use this data, so it can be formatted as needed for use in the
+game.
+
+
 =head2 PlayerId => Str
 
-  Unique identifier for a player.
+  Unique identifier for a player that is associated with this player
+session.
 
 
 =head2 PlayerSessionId => Str
@@ -79,8 +113,8 @@ location.
 
 =head2 Port => Int
 
-  Port number for the game session. To connect to a GameLift server
-process, an app needs both the IP address and port number.
+  Port number for the game session. To connect to a Amazon GameLift
+server process, an app needs both the IP address and port number.
 
 
 =head2 Status => Str
@@ -119,7 +153,8 @@ limit (60 seconds).
 =head2 TerminationTime => Str
 
   Time stamp indicating when this data object was terminated. Format is a
-number expressed in Unix time as milliseconds (ex: "1469498468.057").
+number expressed in Unix time as milliseconds (for example
+"1469498468.057").
 
 
 

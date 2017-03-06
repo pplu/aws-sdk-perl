@@ -36,11 +36,11 @@ Represents I<a single element> of a key schema. A key schema specifies
 the attributes that make up the primary key of a table, or the key
 attributes of an index.
 
-A I<KeySchemaElement> represents exactly one attribute of the primary
+A C<KeySchemaElement> represents exactly one attribute of the primary
 key. For example, a simple primary key (partition key) would be
-represented by one I<KeySchemaElement>. A composite primary key
-(partition key and sort key) would require one I<KeySchemaElement> for
-the partition key, and another I<KeySchemaElement> for the sort key.
+represented by one C<KeySchemaElement>. A composite primary key
+(partition key and sort key) would require one C<KeySchemaElement> for
+the partition key, and another C<KeySchemaElement> for the sort key.
 
 The partition key of an item is also known as its I<hash attribute>.
 The term "hash attribute" derives from DynamoDB's usage of an internal

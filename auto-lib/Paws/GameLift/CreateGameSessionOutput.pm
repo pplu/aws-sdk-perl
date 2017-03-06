@@ -16,7 +16,7 @@ Paws::GameLift::CreateGameSessionOutput
 
 =head2 GameSession => L<Paws::GameLift::GameSession>
 
-Object containing the newly created game session record.
+Object that describes the newly created game session record.
 
 
 =head2 _request_id => Str

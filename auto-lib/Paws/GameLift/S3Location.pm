@@ -33,28 +33,28 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GameLift::S
 
 =head1 DESCRIPTION
 
-Location in Amazon Simple Storage Service (Amazon S3) where a build's
-files are stored. This location is assigned in response to a
-CreateBuild call, and is always in the same region as the service used
-to create the build. For more details see the Amazon S3 documentation.
+Location in Amazon Simple Storage Service (Amazon S3) where build files
+can be stored for access by Amazon GameLift. This location is specified
+in a CreateBuild request. For more details, see the Create a Build with
+Files in Amazon S3.
 
 =head1 ATTRIBUTES
 
 
 =head2 Bucket => Str
 
-  Amazon S3 bucket identifier.
+  Amazon S3 bucket identifier. This is the name of your S3 bucket.
 
 
 =head2 Key => Str
 
-  Amazon S3 bucket key.
+  Name of the zip file containing your build files.
 
 
 =head2 RoleArn => Str
 
-  Amazon resource number for the cross-account access role that allows
-GameLift access to the S3 bucket.
+  Amazon Resource Name (ARN) for the access role that allows Amazon
+GameLift to access your S3 bucket.
 
 
 

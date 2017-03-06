@@ -3,6 +3,7 @@ package Paws::GameLift::FleetAttributes;
   has BuildId => (is => 'ro', isa => 'Str');
   has CreationTime => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
+  has FleetArn => (is => 'ro', isa => 'Str');
   has FleetId => (is => 'ro', isa => 'Str');
   has LogPaths => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Name => (is => 'ro', isa => 'Str');
@@ -56,12 +57,18 @@ General properties describing a fleet.
 =head2 CreationTime => Str
 
   Time stamp indicating when this data object was created. Format is a
-number expressed in Unix time as milliseconds (ex: "1469498468.057").
+number expressed in Unix time as milliseconds (for example
+"1469498468.057").
 
 
 =head2 Description => Str
 
   Human-readable description of the fleet.
+
+
+=head2 FleetArn => Str
+
+  Identifier for a fleet that is unique across all regions.
 
 
 =head2 FleetId => Str
@@ -75,16 +82,16 @@ number expressed in Unix time as milliseconds (ex: "1469498468.057").
 Amazon GameLift captures and stores any log files in this location.
 These logs are in addition to game session logs; see more on game
 session logs in the Amazon GameLift Developer Guide. If no default log
-path for a fleet is specified, GameLift will automatically upload logs
-that are stored on each instance at C<C:\game\logs> (for Windows) or
-C</local/game/logs> (for Linux). Use the GameLift console to access
-stored logs.
+path for a fleet is specified, Amazon GameLift will automatically
+upload logs that are stored on each instance at C<C:\game\logs> (for
+Windows) or C</local/game/logs> (for Linux). Use the Amazon GameLift
+console to access stored logs.
 
 
 =head2 Name => Str
 
-  Descriptive label associated with a fleet. Fleet names do not need to
-be unique.
+  Descriptive label that is associated with a fleet. Fleet names do not
+need to be unique.
 
 
 =head2 NewGameSessionProtectionPolicy => Str
@@ -125,8 +132,8 @@ can create over a span of time.
 
   Game server launch parameters specified for fleets created prior to
 2016-08-04 (or AWS SDK v. 0.12.16). Server launch parameters for fleets
-created after this date are specified in the fleet's C<
-RuntimeConfiguration >.
+created after this date are specified in the fleet's
+RuntimeConfiguration.
 
 
 =head2 ServerLaunchPath => Str
@@ -134,7 +141,7 @@ RuntimeConfiguration >.
   Path to a game server executable in the fleet's build, specified for
 fleets created prior to 2016-08-04 (or AWS SDK v. 0.12.16). Server
 launch paths for fleets created after this date are specified in the
-fleet's C< RuntimeConfiguration >.
+fleet's RuntimeConfiguration.
 
 
 =head2 Status => Str
@@ -152,8 +159,8 @@ set to 1.
 
 =item *
 
-B<DOWNLOADING/VALIDATING/BUILDING/ACTIVATING> E<ndash> GameLift is
-setting up the new fleet, creating new instances with the game build
+B<DOWNLOADING/VALIDATING/BUILDING/ACTIVATING> E<ndash> Amazon GameLift
+is setting up the new fleet, creating new instances with the game build
 and starting server processes.
 
 =item *
@@ -180,7 +187,8 @@ B<TERMINATED> E<ndash> The fleet no longer exists.
 =head2 TerminationTime => Str
 
   Time stamp indicating when this data object was terminated. Format is a
-number expressed in Unix time as milliseconds (ex: "1469498468.057").
+number expressed in Unix time as milliseconds (for example
+"1469498468.057").
 
 
 

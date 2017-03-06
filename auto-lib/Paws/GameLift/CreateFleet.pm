@@ -45,10 +45,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> BuildId => Str
 
-Unique identifier of the build to be deployed on the new fleet. The
-build must have been successfully uploaded to GameLift and be in a
-C<READY> status. This fleet setting cannot be changed once the fleet is
-created.
+Unique identifier for a build to be deployed on the new fleet. The
+build must have been successfully uploaded to Amazon GameLift and be in
+a C<READY> status. This fleet setting cannot be changed once the fleet
+is created.
 
 
 
@@ -73,28 +73,25 @@ or more sets of permissions for a fleet.
 Name of an EC2 instance type that is supported in Amazon GameLift. A
 fleet instance type determines the computing resources of each instance
 in the fleet, including CPU, memory, storage, and networking capacity.
-GameLift supports the following EC2 instance types. See Amazon EC2
-Instance Types for detailed descriptions.
+Amazon GameLift supports the following EC2 instance types. See Amazon
+EC2 Instance Types for detailed descriptions.
 
 Valid values are: C<"t2.micro">, C<"t2.small">, C<"t2.medium">, C<"t2.large">, C<"c3.large">, C<"c3.xlarge">, C<"c3.2xlarge">, C<"c3.4xlarge">, C<"c3.8xlarge">, C<"c4.large">, C<"c4.xlarge">, C<"c4.2xlarge">, C<"c4.4xlarge">, C<"c4.8xlarge">, C<"r3.large">, C<"r3.xlarge">, C<"r3.2xlarge">, C<"r3.4xlarge">, C<"r3.8xlarge">, C<"m3.medium">, C<"m3.large">, C<"m3.xlarge">, C<"m3.2xlarge">, C<"m4.large">, C<"m4.xlarge">, C<"m4.2xlarge">, C<"m4.4xlarge">, C<"m4.10xlarge">
 
 =head2 LogPaths => ArrayRef[Str|Undef]
 
-Location of default log files. When a server process is shut down,
-Amazon GameLift captures and stores any log files in this location.
-These logs are in addition to game session logs; see more on game
-session logs in the Amazon GameLift Developer Guide. If no default log
-path for a fleet is specified, GameLift will automatically upload logs
-stored on each instance at C<C:\game\logs> (for Windows) or
-C</local/game/logs> (for Linux). Use the GameLift console to access
-stored logs.
+This parameter is no longer used. Instead, to specify where Amazon
+GameLift should store log files once a server process shuts down, use
+the Amazon GameLift server API C<ProcessReady()> and specify one or
+more directory paths in C<logParameters>. See more information in the
+Server API Reference.
 
 
 
 =head2 B<REQUIRED> Name => Str
 
-Descriptive label associated with a fleet. Fleet names do not need to
-be unique.
+Descriptive label that is associated with a fleet. Fleet names do not
+need to be unique.
 
 
 
@@ -139,12 +136,12 @@ process configurations, one for each type of server process to run on
 an instance. A server process configuration specifies the location of
 the server executable, launch parameters, and the number of concurrent
 processes with that configuration to maintain on each instance. A
-C<CreateFleet> request must include a runtime configuration with at
-least one server process configuration; otherwise the request will fail
-with an invalid request exception. (This parameter replaces the
-parameters C<ServerLaunchPath> and C<ServerLaunchParameters>; requests
-that contain values for these parameters instead of a runtime
-configuration will continue to work.)
+CreateFleet request must include a runtime configuration with at least
+one server process configuration; otherwise the request will fail with
+an invalid request exception. (This parameter replaces the parameters
+C<ServerLaunchPath> and C<ServerLaunchParameters>; requests that
+contain values for these parameters instead of a runtime configuration
+will continue to work.)
 
 
 

@@ -45,15 +45,15 @@ C<NextToken> to get results as a set of sequential pages.
 
 =head2 Name => Str
 
-Descriptive label associated with an alias. Alias names do not need to
-be unique.
+Descriptive label that is associated with an alias. Alias names do not
+need to be unique.
 
 
 
 =head2 NextToken => Str
 
-Token indicating the start of the next sequential page of results. Use
-the token that is returned with a previous call to this action. To
+Token that indicates the start of the next sequential page of results.
+Use the token that is returned with a previous call to this action. To
 specify the start of the result set, do not specify a value.
 
 

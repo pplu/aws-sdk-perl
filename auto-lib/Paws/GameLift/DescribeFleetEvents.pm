@@ -48,7 +48,7 @@ milliseconds (ex: "1469498468.057").
 
 =head2 B<REQUIRED> FleetId => Str
 
-Unique identifier for the fleet to get event logs for.
+Unique identifier for a fleet to get event logs for.
 
 
 
@@ -61,8 +61,8 @@ C<NextToken> to get results as a set of sequential pages.
 
 =head2 NextToken => Str
 
-Token indicating the start of the next sequential page of results. Use
-the token that is returned with a previous call to this action. To
+Token that indicates the start of the next sequential page of results.
+Use the token that is returned with a previous call to this action. To
 specify the start of the result set, do not specify a value.
 
 

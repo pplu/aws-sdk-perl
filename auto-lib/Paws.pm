@@ -366,9 +366,13 @@ L<Paws::MarketplaceCommerceAnalytics>
 
 L<Paws::MarketplaceMetering>
 
+L<Paws::MTurk>
+
 L<Paws::OpsWorks>
 
 L<Paws::OpsWorksCM>
+
+L<Paws::Organizations>
 
 L<Paws::Pinpoint>
 

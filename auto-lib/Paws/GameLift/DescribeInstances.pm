@@ -38,16 +38,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> FleetId => Str
 
-Unique identifier for a fleet. Specify the fleet to retrieve instance
-information for.
+Unique identifier for a fleet to retrieve instance information for.
 
 
 
 =head2 InstanceId => Str
 
-Unique identifier for an instance. Specify an instance to retrieve
-information for or leave blank to get information on all instances in
-the fleet.
+Unique identifier for an instance to retrieve. Specify an instance ID
+or leave blank to retrieve all instances in the fleet.
 
 
 
@@ -60,8 +58,8 @@ C<NextToken> to get results as a set of sequential pages.
 
 =head2 NextToken => Str
 
-Token indicating the start of the next sequential page of results. Use
-the token that is returned with a previous call to this action. To
+Token that indicates the start of the next sequential page of results.
+Use the token that is returned with a previous call to this action. To
 specify the start of the result set, do not specify a value.
 
 

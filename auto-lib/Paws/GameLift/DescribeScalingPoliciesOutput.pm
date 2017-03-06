@@ -17,9 +17,9 @@ Paws::GameLift::DescribeScalingPoliciesOutput
 
 =head2 NextToken => Str
 
-Token indicating where to resume retrieving results on the next call to
-this action. If no token is returned, these results represent the end
-of the list.
+Token that indicates where to resume retrieving results on the next
+call to this action. If no token is returned, these results represent
+the end of the list.
 
 
 =head2 ScalingPolicies => ArrayRef[L<Paws::GameLift::ScalingPolicy>]

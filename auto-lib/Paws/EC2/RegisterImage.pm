@@ -2,6 +2,7 @@
 package Paws::EC2::RegisterImage;
   use Moose;
   has Architecture => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'architecture' );
+  has BillingProducts => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'BillingProduct' );
   has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[Paws::EC2::BlockDeviceMapping]', traits => ['NameInRequest'], request_name => 'BlockDeviceMapping' );
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description' );
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
@@ -52,6 +53,12 @@ Default: For Amazon EBS-backed AMIs, C<i386>. For instance store-backed
 AMIs, the architecture specified in the manifest file.
 
 Valid values are: C<"i386">, C<"x86_64">
+
+=head2 BillingProducts => ArrayRef[Str|Undef]
+
+The billing product codes.
+
+
 
 =head2 BlockDeviceMappings => ArrayRef[L<Paws::EC2::BlockDeviceMapping>]
 

@@ -59,12 +59,13 @@ threshold before a scaling event is triggered.
 
 =head2 FleetId => Str
 
-  Unique identity for the fleet associated with this scaling policy.
+  Unique identifier for a fleet that is associated with this scaling
+policy.
 
 
 =head2 MetricName => Str
 
-  Name of the GameLift-defined metric that is used to trigger an
+  Name of the Amazon GameLift-defined metric that is used to trigger an
 adjustment.
 
 =over
@@ -109,8 +110,8 @@ game session.
 
 =head2 Name => Str
 
-  Descriptive label associated with a scaling policy. Policy names do not
-need to be unique.
+  Descriptive label that is associated with a scaling policy. Policy
+names do not need to be unique.
 
 
 =head2 ScalingAdjustment => Int

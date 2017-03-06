@@ -44,7 +44,7 @@ Number of EC2 instances you want this fleet to host.
 
 =head2 B<REQUIRED> FleetId => Str
 
-Unique identifier for the fleet you want to update capacity for.
+Unique identifier for a fleet to update capacity for.
 
 
 
