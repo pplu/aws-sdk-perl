@@ -16,6 +16,8 @@
  - ES API update
  - DynamoDB API update
  - IAM API update
+ - RDS API update
+ - New API: WorkDocs
 
 0.31 01 Feb 2017 
  - Bug fixed: Services that use QueryCaller and EC2Caller were not serializing Booleans correctly

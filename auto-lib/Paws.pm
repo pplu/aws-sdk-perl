@@ -426,6 +426,8 @@ L<Paws::WAF>
 
 L<Paws::WAFRegional>
 
+L<Paws::WorkDocs>
+
 L<Paws::WorkSpaces>
 
 L<Paws::XRay>
