@@ -33,10 +33,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudTrail:
 =head1 DESCRIPTION
 
 The Amazon S3 objects that you specify in your event selectors for your
-trail to log data events. Data events are object level API operations
+trail to log data events. Data events are object-level API operations
 that access S3 objects, such as C<GetObject>, C<DeleteObject>, and
-C<PutObject>. You can specify up to 50 S3 buckets and object prefixes
-for an event selector.
+C<PutObject>. You can specify up to 250 S3 buckets and object prefixes
+for a trail.
 
 Example
 

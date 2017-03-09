@@ -33,12 +33,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudTrail:
 
 =head1 DESCRIPTION
 
-Use event selectors to specify the types of events that you want your
-trail to log. When an event occurs in your account, CloudTrail
-evaluates the event selector for all trails. For each trail, if the
-event matches any event selector, the trail processes and logs the
-event. If the event doesn't match any event selector, the trail doesn't
-log the event.
+Use event selectors to specify whether you want your trail to log
+management and/or data events. When an event occurs in your account,
+CloudTrail evaluates the event selector for all trails. For each trail,
+if the event matches any event selector, the trail processes and logs
+the event. If the event doesn't match any event selector, the trail
+doesn't log the event.
 
 You can configure up to five event selectors for a trail.
 
@@ -48,7 +48,7 @@ You can configure up to five event selectors for a trail.
 =head2 DataResources => ArrayRef[L<Paws::CloudTrail::DataResource>]
 
   CloudTrail supports logging only data events for S3 objects. You can
-specify up to 50 S3 buckets and object prefixes for an event selector.
+specify up to 250 S3 buckets and object prefixes for a trail.
 
 For more information, see Data Events in the I<AWS CloudTrail User
 Guide>.

@@ -236,8 +236,8 @@ all.
 
 =back
 
-For more information, see Configuring Event Selectors for Trails in the
-I<AWS CloudTrail User Guide>.
+For more information, see Logging Data and Management Events for Trails
+in the I<AWS CloudTrail User Guide>.
 
 
 =head2 GetTrailStatus(Name => Str)
@@ -303,6 +303,10 @@ Event name
 
 =item *
 
+Event source
+
+=item *
+
 Resource name
 
 =item *
@@ -334,11 +338,11 @@ Each argument is described in detail in: L<Paws::CloudTrail::PutEventSelectors>
 Returns: a L<Paws::CloudTrail::PutEventSelectorsResponse> instance
 
   Configures an event selector for your trail. Use event selectors to
-specify the type of events that you want your trail to log. When an
-event occurs in your account, CloudTrail evaluates the event selectors
-in all trails. For each trail, if the event matches any event selector,
-the trail processes and logs the event. If the event doesn't match any
-event selector, the trail doesn't log the event.
+specify whether you want your trail to log management and/or data
+events. When an event occurs in your account, CloudTrail evaluates the
+event selectors in all trails. For each trail, if the event matches any
+event selector, the trail processes and logs the event. If the event
+doesn't match any event selector, the trail doesn't log the event.
 
 Example
 
@@ -375,8 +379,8 @@ which the trail was created; otherwise, an
 C<InvalidHomeRegionException> is thrown.
 
 You can configure up to five event selectors for each trail. For more
-information, see Configuring Event Selectors for Trails in the I<AWS
-CloudTrail User Guide>.
+information, see Logging Data and Management Events for Trails in the
+I<AWS CloudTrail User Guide>.
 
 
 =head2 RemoveTags(ResourceId => Str, [TagsList => ArrayRef[L<Paws::CloudTrail::Tag>]])
