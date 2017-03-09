@@ -45,8 +45,9 @@ The ID of the backup that you want to use to restore a server.
 =head2 InstanceType => Str
 
 The type of the instance to create. Valid values must be specified in
-the following format: C<^([cm][34]|t2).*> For example, C<c3.large>. If
-you do not specify this parameter, RestoreServer uses the instance type
+the following format: C<^([cm][34]|t2).*> For example, C<m4.large>.
+Valid values are C<t2.medium>, C<m4.large>, and C<m4.2xlarge>. If you
+do not specify this parameter, RestoreServer uses the instance type
 from the specified backup.
 
 
@@ -54,8 +55,7 @@ from the specified backup.
 =head2 KeyPair => Str
 
 The name of the key pair to set on the new EC2 instance. This can be
-helpful if any of the administrators who manage the server no longer
-have the SSH key.
+helpful if the administrator no longer has the SSH key.
 
 
 

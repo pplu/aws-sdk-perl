@@ -37,19 +37,32 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 EngineAttributes => ArrayRef[L<Paws::OpsWorksCM::EngineAttribute>]
 
+Engine attributes used for disassociating the node.
+
+B<Attributes accepted in a DisassociateNode request:>
+
+=over
+
+=item *
+
+C<CHEF_ORGANIZATION>: The Chef organization with which the node was
+associated. By default only one organization named C<default> can
+exist.
+
+=back
 
 
 
 
 =head2 B<REQUIRED> NodeName => Str
 
-
+The name of the Chef client node.
 
 
 
 =head2 B<REQUIRED> ServerName => Str
 
-
+The name of the server from which to disassociate the node.
 
 
 

@@ -1,7 +1,7 @@
 
 package Paws::OpsWorksCM::AssociateNode;
   use Moose;
-  has EngineAttributes => (is => 'ro', isa => 'ArrayRef[Paws::OpsWorksCM::EngineAttribute]');
+  has EngineAttributes => (is => 'ro', isa => 'ArrayRef[Paws::OpsWorksCM::EngineAttribute]', required => 1);
   has NodeName => (is => 'ro', isa => 'Str', required => 1);
   has ServerName => (is => 'ro', isa => 'Str', required => 1);
 
@@ -35,21 +35,39 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 EngineAttributes => ArrayRef[L<Paws::OpsWorksCM::EngineAttribute>]
+=head2 B<REQUIRED> EngineAttributes => ArrayRef[L<Paws::OpsWorksCM::EngineAttribute>]
 
+Engine attributes used for associating the node.
+
+B<Attributes accepted in a AssociateNode request:>
+
+=over
+
+=item *
+
+C<CHEF_ORGANIZATION>: The Chef organization with which the node is
+associated. By default only one organization named C<default> can
+exist.
+
+=item *
+
+C<CHEF_NODE_PUBLIC_KEY>: A PEM-formatted public key. This key is
+required for the C<chef-client> agent to access the Chef API.
+
+=back
 
 
 
 
 =head2 B<REQUIRED> NodeName => Str
 
-
+The name of the Chef client node.
 
 
 
 =head2 B<REQUIRED> ServerName => Str
 
-
+The name of the server with which to associate the node.
 
 
 

@@ -1,6 +1,7 @@
 
 package Paws::OpsWorksCM::CreateServer;
   use Moose;
+  has AssociatePublicIpAddress => (is => 'ro', isa => 'Bool');
   has BackupId => (is => 'ro', isa => 'Str');
   has BackupRetentionCount => (is => 'ro', isa => 'Int');
   has DisableAutomatedBackup => (is => 'ro', isa => 'Bool');
@@ -9,7 +10,7 @@ package Paws::OpsWorksCM::CreateServer;
   has EngineModel => (is => 'ro', isa => 'Str');
   has EngineVersion => (is => 'ro', isa => 'Str');
   has InstanceProfileArn => (is => 'ro', isa => 'Str', required => 1);
-  has InstanceType => (is => 'ro', isa => 'Str');
+  has InstanceType => (is => 'ro', isa => 'Str', required => 1);
   has KeyPair => (is => 'ro', isa => 'Str');
   has PreferredBackupWindow => (is => 'ro', isa => 'Str');
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
@@ -48,6 +49,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
+=head2 AssociatePublicIpAddress => Bool
+
+Associate a public IP address with a server that you are launching.
+Valid values are C<true> or C<false>. The default value is C<true>.
+
+
+
 =head2 BackupId => Str
 
 If you specify this field, AWS OpsWorks for Chef Automate creates the
@@ -79,7 +87,7 @@ C<Chef>.
 
 =head2 EngineAttributes => ArrayRef[L<Paws::OpsWorksCM::EngineAttribute>]
 
-Engine attributes on a specified server.
+Optional engine attributes on a specified server.
 
 B<Attributes accepted in a createServer request:>
 
@@ -88,8 +96,19 @@ B<Attributes accepted in a createServer request:>
 =item *
 
 C<CHEF_PIVOTAL_KEY>: A base64-encoded RSA private key that is not
-stored by AWS OpsWorks for Chef Automate. This private key is required
-to access the Chef API.
+stored by AWS OpsWorks for Chef. This private key is required to access
+the Chef API. When no CHEF_PIVOTAL_KEY is set, one is generated and
+returned in the response.
+
+=item *
+
+C<CHEF_DELIVERY_ADMIN_PASSWORD>: The password for the administrative
+user in the Chef Automate GUI. The password length is a minimum of
+eight characters, and a maximum of 32. The password can contain
+letters, numbers, and special characters (!/@#$%^&+=_). The password
+must contain at least one lower case letter, one upper case letter, one
+number, and one special character. When no CHEF_DELIVERY_ADMIN_PASSWORD
+is set, one is generated and returned in the response.
 
 =back
 
@@ -113,34 +132,36 @@ depend on the engine that you choose.
 
 The ARN of the instance profile that your Amazon EC2 instances use.
 Although the AWS OpsWorks console typically creates the instance
-profile for you, in this release of AWS OpsWorks for Chef Automate, run
-the service-role-creation.yaml AWS CloudFormation template, located at
-https://s3.amazonaws.com/opsworks-stuff/latest/service-role-creation.yaml.
-This template creates a stack that includes the instance profile you
-need.
+profile for you, if you are using API commands instead, run the
+service-role-creation.yaml AWS CloudFormation template, located at
+https://s3.amazonaws.com/opsworks-cm-us-east-1-prod-default-assets/misc/opsworks-cm-roles.yaml.
+This template creates a CloudFormation stack that includes the instance
+profile you need.
 
 
 
-=head2 InstanceType => Str
+=head2 B<REQUIRED> InstanceType => Str
 
 The Amazon EC2 instance type to use. Valid values must be specified in
-the following format: C<^([cm][34]|t2).*> For example, C<c3.large>.
+the following format: C<^([cm][34]|t2).*> For example, C<m4.large>.
+Valid values are C<t2.medium>, C<m4.large>, or C<m4.2xlarge>.
 
 
 
 =head2 KeyPair => Str
 
-The Amazon EC2 key pair to set for the instance. You may specify this
-parameter to connect to your instances by using SSH.
+The Amazon EC2 key pair to set for the instance. This parameter is
+optional; if desired, you may specify this parameter to connect to your
+instances by using SSH.
 
 
 
 =head2 PreferredBackupWindow => Str
 
 The start time for a one-hour period during which AWS OpsWorks for Chef
-Automate backs up application-level data on your server if backups are
-enabled. Valid values must be specified in one of the following
-formats:
+Automate backs up application-level data on your server if automated
+backups are enabled. Valid values must be specified in one of the
+following formats:
 
 =over
 
@@ -195,7 +216,7 @@ creates one new security group that uses TCP ports 22 and 443, open to
 The name of the server. The server name must be unique within your AWS
 account, within each region. Server names must start with a letter;
 then letters, numbers, or hyphens (-) are allowed, up to a maximum of
-32 characters.
+40 characters.
 
 
 
@@ -203,12 +224,12 @@ then letters, numbers, or hyphens (-) are allowed, up to a maximum of
 
 The service role that the AWS OpsWorks for Chef Automate service
 backend uses to work with your account. Although the AWS OpsWorks
-console typically creates the service role for you, in this release of
-AWS OpsWorks for Chef Automate, run the service-role-creation.yaml AWS
-CloudFormation template, located at
+management console typically creates the service role for you, if you
+are using the AWS CLI or API commands, run the
+service-role-creation.yaml AWS CloudFormation template, located at
 https://s3.amazonaws.com/opsworks-stuff/latest/service-role-creation.yaml.
-This template creates a stack that includes the service role that you
-need.
+This template creates a CloudFormation stack that includes the service
+role that you need.
 
 
 

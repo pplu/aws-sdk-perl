@@ -16,7 +16,9 @@ Paws::OpsWorksCM::DisassociateNodeResponse
 
 =head2 NodeAssociationStatusToken => Str
 
-
+Contains a token which can be passed to the
+C<DescribeNodeAssociationStatus> API call to get the status of the
+disassociation request.
 
 
 =head2 _request_id => Str

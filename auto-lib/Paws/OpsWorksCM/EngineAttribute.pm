@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::OpsWorksCM:
 
 =head1 DESCRIPTION
 
-A name/value pair that is specific to the engine of the server.
+A name and value pair that is specific to the engine of the server.
 
 =head1 ATTRIBUTES
 
