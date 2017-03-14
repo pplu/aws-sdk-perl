@@ -92,7 +92,7 @@ regions. The default is false.
 =head2 KmsKeyId => Str
 
 Specifies the KMS key ID to use to encrypt the logs delivered by
-CloudTrail. The value can be a an alias name prefixed by "alias/", a
+CloudTrail. The value can be an alias name prefixed by "alias/", a
 fully specified ARN to an alias, a fully specified ARN to a key, or a
 globally unique identifier.
 

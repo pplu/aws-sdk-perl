@@ -16,6 +16,25 @@ Paws::OpsWorksCM::DescribeNodeAssociationStatusResponse
 
 =head2 NodeAssociationStatus => Str
 
+The status of the association or disassociation request.
+
+B<Possible values:>
+
+=over
+
+=item *
+
+C<SUCCESS>: The association or disassociation succeeded.
+
+=item *
+
+C<FAILED>: The association or disassociation failed.
+
+=item *
+
+C<IN_PROGRESS>: The association or disassociation is still in progress.
+
+=back
 
 
 Valid values are: C<"SUCCESS">, C<"FAILED">, C<"IN_PROGRESS">

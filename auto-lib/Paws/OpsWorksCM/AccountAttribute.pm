@@ -51,13 +51,14 @@ Stores account attributes.
 
 =item *
 
-I<ServerLimit:> The number of servers that currently existing / maximal
-allowed. By default 10 servers can be created.
+I<ServerLimit:> The number of current servers/maximum number of servers
+allowed. By default, you can have a maximum of 10 servers.
 
 =item *
 
-I<ManualBackupLimit:> The number of manual backups that currently exist
-/ are maximal allowed. By default 50 manual backups can be created.
+I<ManualBackupLimit:> The number of current manual backups/maximum
+number of backups allowed. By default, you can have a maximum of 50
+manual backups saved.
 
 =back
 
@@ -65,8 +66,8 @@ I<ManualBackupLimit:> The number of manual backups that currently exist
 
 =head2 Used => Int
 
-  The current usage, such as the current number of servers associated
-with the account.
+  The current usage, such as the current number of servers that are
+associated with the account.
 
 
 

@@ -305,7 +305,7 @@ release, a single organization will support multiple roots.
 B<Support and Feedback for AWS Organizations>
 
 We welcome your feedback. Send your comments to
-aws-organizations-feedback@amazon.com or post your feedback and
+feedback-awsorganizations@amazon.com or post your feedback and
 questions in our private AWS Organizations support forum. If you don't
 have access to the forum, send a request for access to the email
 address, along with your forum user ID. For more information about the

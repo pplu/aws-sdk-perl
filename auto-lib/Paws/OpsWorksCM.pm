@@ -122,15 +122,16 @@ Paws::OpsWorksCM - Perl Interface to AWS AWS OpsWorks for Chef Automate
 
 AWS OpsWorks for Chef Automate
 
-A service that runs and manages configuration management servers.
+AWS OpsWorks for Chef Automate is a service that runs and manages
+configuration management servers.
 
-Glossary of terms
+B<Glossary of terms>
 
 =over
 
 =item *
 
-B<Server>: A server is a configuration management server, and can be
+B<Server>: A configuration management server that can be
 highly-available. The configuration manager runs on your instances by
 using various AWS services, such as Amazon Elastic Compute Cloud (EC2),
 and potentially Amazon Relational Database Service (RDS). A server is a
@@ -169,20 +170,58 @@ your customer account.
 
 =back
 
-Throttling limits
+B<Endpoints>
 
-All API operations allow for 5 requests per second with a burst of 10
-requests per second.
+AWS OpsWorks for Chef Automate supports the following endpoints, all
+HTTPS. You must connect to one of the following endpoints. Chef servers
+can only be accessed or managed within the endpoint in which they are
+created.
+
+=over
+
+=item *
+
+opsworks-cm.us-east-1.amazonaws.com
+
+=item *
+
+opsworks-cm.us-west-2.amazonaws.com
+
+=item *
+
+opsworks-cm.eu-west-1.amazonaws.com
+
+=back
+
+B<Throttling limits>
+
+All API operations allow for five requests per second with a burst of
+10 requests per second.
 
 =head1 METHODS
 
-=head2 AssociateNode(NodeName => Str, ServerName => Str, [EngineAttributes => ArrayRef[L<Paws::OpsWorksCM::EngineAttribute>]])
+=head2 AssociateNode(EngineAttributes => ArrayRef[L<Paws::OpsWorksCM::EngineAttribute>], NodeName => Str, ServerName => Str)
 
 Each argument is described in detail in: L<Paws::OpsWorksCM::AssociateNode>
 
 Returns: a L<Paws::OpsWorksCM::AssociateNodeResponse> instance
 
-  
+  Associates a new node with the Chef server. This command is an
+alternative to C<knife bootstrap>. For more information about how to
+disassociate a node, see DisassociateNode.
+
+A node can can only be associated with servers that are in a C<HEALTHY>
+state. Otherwise, an C<InvalidStateException> is thrown. A
+C<ResourceNotFoundException> is thrown when the server does not exist.
+A C<ValidationException> is raised when parameters of the request are
+not valid. The AssociateNode API call can be integrated into Auto
+Scaling configurations, AWS Cloudformation templates, or the user data
+of a server's instance.
+
+Example: C<aws opsworks-cm associate-node --server-name I<MyServer>
+--node-name I<MyManagedNode> --engine-attributes
+"Name=I<MyOrganization>,Value=default"
+"Name=I<Chef_node_public_key>,Value=I<Public_key_contents>">
 
 
 =head2 CreateBackup(ServerName => Str, [Description => Str])
@@ -191,50 +230,49 @@ Each argument is described in detail in: L<Paws::OpsWorksCM::CreateBackup>
 
 Returns: a L<Paws::OpsWorksCM::CreateBackupResponse> instance
 
-  Creates an application-level backup of a server. While the server is
-C<BACKING_UP>, the server can not be modified and no additional backup
-can be created.
+  Creates an application-level backup of a server. While the server is in
+the C<BACKING_UP> state, the server cannot be changed, and no
+additional backup can be created.
 
-Backups can be created for C<RUNNING>, C<HEALTHY> and C<UNHEALTHY>
-servers.
+Backups can be created for servers in C<RUNNING>, C<HEALTHY>, and
+C<UNHEALTHY> states. By default, you can create a maximum of 50 manual
+backups.
 
-This operation is asnychronous.
+This operation is asynchronous.
 
-By default 50 manual backups can be created.
-
-A C<LimitExceededException> is thrown then the maximum number of manual
-backup is reached. A C<InvalidStateException> is thrown when the server
-is not in any of RUNNING, HEALTHY, UNHEALTHY. A
-C<ResourceNotFoundException> is thrown when the server is not found. A
-C<ValidationException> is thrown when parameters of the request are not
-valid.
+A C<LimitExceededException> is thrown when the maximum number of manual
+backups is reached. An C<InvalidStateException> is thrown when the
+server is not in any of the following states: RUNNING, HEALTHY, or
+UNHEALTHY. A C<ResourceNotFoundException> is thrown when the server is
+not found. A C<ValidationException> is thrown when parameters of the
+request are not valid.
 
 
-=head2 CreateServer(InstanceProfileArn => Str, ServerName => Str, ServiceRoleArn => Str, [BackupId => Str, BackupRetentionCount => Int, DisableAutomatedBackup => Bool, Engine => Str, EngineAttributes => ArrayRef[L<Paws::OpsWorksCM::EngineAttribute>], EngineModel => Str, EngineVersion => Str, InstanceType => Str, KeyPair => Str, PreferredBackupWindow => Str, PreferredMaintenanceWindow => Str, SecurityGroupIds => ArrayRef[Str|Undef], SubnetIds => ArrayRef[Str|Undef]])
+=head2 CreateServer(InstanceProfileArn => Str, InstanceType => Str, ServerName => Str, ServiceRoleArn => Str, [AssociatePublicIpAddress => Bool, BackupId => Str, BackupRetentionCount => Int, DisableAutomatedBackup => Bool, Engine => Str, EngineAttributes => ArrayRef[L<Paws::OpsWorksCM::EngineAttribute>], EngineModel => Str, EngineVersion => Str, KeyPair => Str, PreferredBackupWindow => Str, PreferredMaintenanceWindow => Str, SecurityGroupIds => ArrayRef[Str|Undef], SubnetIds => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::OpsWorksCM::CreateServer>
 
 Returns: a L<Paws::OpsWorksCM::CreateServerResponse> instance
 
-  Creates and immedately starts a new Server. The server can be used once
-it has reached the C<HEALTHY> state.
+  Creates and immedately starts a new server. The server is ready to use
+when it is in the C<HEALTHY> state. By default, you can create a
+maximum of 10 servers.
 
-This operation is asnychronous.
+This operation is asynchronous.
 
-A C<LimitExceededException> is thrown then the maximum number of server
-backup is reached. A C<ResourceAlreadyExistsException> is raise when a
-server with the same name already exists in the account. A
-C<ResourceNotFoundException> is thrown when a backupId is passed, but
-the backup does not exist. A C<ValidationException> is thrown when
-parameters of the request are not valid.
+A C<LimitExceededException> is thrown when you have created the maximum
+number of servers (10). A C<ResourceAlreadyExistsException> is thrown
+when a server with the same name already exists in the account. A
+C<ResourceNotFoundException> is thrown when you specify a backup ID
+that is not valid or is for a backup that does not exist. A
+C<ValidationException> is thrown when parameters of the request are not
+valid.
 
-By default 10 servers can be created. A C<LimitExceededException> is
-raised when the limit is exceeded.
-
-When no security groups are provided by using C<SecurityGroupIds>, AWS
-OpsWorks creates a new security group. This security group opens the
-Chef server to the world on TCP port 443. If a KeyName is present, SSH
-access is enabled. SSH is also open to the world on TCP port 22.
+If you do not specify a security group by adding the
+C<SecurityGroupIds> parameter, AWS OpsWorks creates a new security
+group. The default security group opens the Chef server to the world on
+TCP port 443. If a KeyName is present, AWS OpsWorks enables SSH access.
+SSH is also open to the world on TCP port 22.
 
 By default, the Chef Server is accessible from any IP address. We
 recommend that you update your security group rules to allow access
@@ -250,13 +288,12 @@ Each argument is described in detail in: L<Paws::OpsWorksCM::DeleteBackup>
 Returns: a L<Paws::OpsWorksCM::DeleteBackupResponse> instance
 
   Deletes a backup. You can delete both manual and automated backups.
-
 This operation is asynchronous.
 
-A C<InvalidStateException> is thrown then a backup is already deleting.
-A C<ResourceNotFoundException> is thrown when the backup does not
-exist. A C<ValidationException> is thrown when parameters of the
-request are not valid.
+An C<InvalidStateException> is thrown when a backup deletion is already
+in progress. A C<ResourceNotFoundException> is thrown when the backup
+does not exist. A C<ValidationException> is thrown when parameters of
+the request are not valid.
 
 
 =head2 DeleteServer(ServerName => Str)
@@ -266,17 +303,17 @@ Each argument is described in detail in: L<Paws::OpsWorksCM::DeleteServer>
 Returns: a L<Paws::OpsWorksCM::DeleteServerResponse> instance
 
   Deletes the server and the underlying AWS CloudFormation stack
-(including the server's EC2 instance). The server status updated to
-C<DELETING>. Once the server is successfully deleted, it will no longer
-be returned by C<DescribeServer> requests. If the AWS CloudFormation
-stack cannot be deleted, the server cannot be deleted.
+(including the server's EC2 instance). When you run this command, the
+server state is updated to C<DELETING>. After the server is deleted, it
+is no longer returned by C<DescribeServer> requests. If the AWS
+CloudFormation stack cannot be deleted, the server cannot be deleted.
 
 This operation is asynchronous.
 
-A C<InvalidStateException> is thrown then a server is already deleting.
-A C<ResourceNotFoundException> is thrown when the server does not
-exist. A C<ValidationException> is raised when parameters of the
-request are invalid.
+An C<InvalidStateException> is thrown when a server deletion is already
+in progress. A C<ResourceNotFoundException> is thrown when the server
+does not exist. A C<ValidationException> is raised when parameters of
+the request are not valid.
 
 
 =head2 DescribeAccountAttributes()
@@ -305,7 +342,7 @@ This operation is synchronous.
 
 A C<ResourceNotFoundException> is thrown when the backup does not
 exist. A C<ValidationException> is raised when parameters of the
-request are invalid.
+request are not valid.
 
 
 =head2 DescribeEvents(ServerName => Str, [MaxResults => Int, NextToken => Str])
@@ -321,7 +358,7 @@ This operation is synchronous.
 
 A C<ResourceNotFoundException> is thrown when the server does not
 exist. A C<ValidationException> is raised when parameters of the
-request are invalid.
+request are not valid.
 
 
 =head2 DescribeNodeAssociationStatus(NodeAssociationStatusToken => Str, ServerName => Str)
@@ -330,7 +367,13 @@ Each argument is described in detail in: L<Paws::OpsWorksCM::DescribeNodeAssocia
 
 Returns: a L<Paws::OpsWorksCM::DescribeNodeAssociationStatusResponse> instance
 
-  
+  Returns the current status of an existing association or disassociation
+request.
+
+A C<ResourceNotFoundException> is thrown when no recent association or
+disassociation request with the specified token is found, or when the
+server does not exist. A C<ValidationException> is raised when
+parameters of the request are not valid.
 
 
 =head2 DescribeServers([MaxResults => Int, NextToken => Str, ServerName => Str])
@@ -347,7 +390,7 @@ This operation is synchronous.
 
 A C<ResourceNotFoundException> is thrown when the server does not
 exist. A C<ValidationException> is raised when parameters of the
-request are invalid.
+request are not valid.
 
 
 =head2 DisassociateNode(NodeName => Str, ServerName => Str, [EngineAttributes => ArrayRef[L<Paws::OpsWorksCM::EngineAttribute>]])
@@ -356,7 +399,16 @@ Each argument is described in detail in: L<Paws::OpsWorksCM::DisassociateNode>
 
 Returns: a L<Paws::OpsWorksCM::DisassociateNodeResponse> instance
 
-  
+  Disassociates a node from a Chef server, and removes the node from the
+Chef server's managed nodes. After a node is disassociated, the node
+key pair is no longer valid for accessing the Chef API. For more
+information about how to associate a node, see AssociateNode.
+
+A node can can only be disassociated from a server that is in a
+C<HEALTHY> state. Otherwise, an C<InvalidStateException> is thrown. A
+C<ResourceNotFoundException> is thrown when the server does not exist.
+A C<ValidationException> is raised when parameters of the request are
+not valid.
 
 
 =head2 RestoreServer(BackupId => Str, ServerName => Str, [InstanceType => Str, KeyPair => Str])
@@ -365,18 +417,19 @@ Each argument is described in detail in: L<Paws::OpsWorksCM::RestoreServer>
 
 Returns: a L<Paws::OpsWorksCM::RestoreServerResponse> instance
 
-  Restores a backup to a server that is in a C<RUNNING>, C<FAILED>, or
-C<HEALTHY> state. When you run RestoreServer, the server's EC2 instance
-is deleted, and a new EC2 instance is configured. RestoreServer
-maintains the existing server endpoint, so configuration management of
-all of the server's client devices should continue to work.
+  Restores a backup to a server that is in a C<CONNECTION_LOST>,
+C<HEALTHY>, C<RUNNING>, C<UNHEALTHY>, or C<TERMINATED> state. When you
+run RestoreServer, the server's EC2 instance is deleted, and a new EC2
+instance is configured. RestoreServer maintains the existing server
+endpoint, so configuration management of the server's client devices
+(nodes) should continue to work.
 
 This operation is asynchronous.
 
-A C<InvalidStateException> is thrown when the server is not in a valid
+An C<InvalidStateException> is thrown when the server is not in a valid
 state. A C<ResourceNotFoundException> is thrown when the server does
 not exist. A C<ValidationException> is raised when parameters of the
-request are invalid.
+request are not valid.
 
 
 =head2 StartMaintenance(ServerName => Str)
@@ -387,14 +440,14 @@ Returns: a L<Paws::OpsWorksCM::StartMaintenanceResponse> instance
 
   Manually starts server maintenance. This command can be useful if an
 earlier maintenance attempt failed, and the underlying cause of
-maintenance failure has been resolved. The server will switch to
-C<UNDER_MAINTENANCE> state, while maintenace is in progress.
+maintenance failure has been resolved. The server is in an
+C<UNDER_MAINTENANCE> state while maintenance is in progress.
 
-Maintenace can only be started for C<HEALTHY> and C<UNHEALTHY> servers.
-A C<InvalidStateException> is thrown otherwise. A
-C<ResourceNotFoundException> is thrown when the server does not exist.
-A C<ValidationException> is raised when parameters of the request are
-invalid.
+Maintenance can only be started on servers in C<HEALTHY> and
+C<UNHEALTHY> states. Otherwise, an C<InvalidStateException> is thrown.
+A C<ResourceNotFoundException> is thrown when the server does not
+exist. A C<ValidationException> is raised when parameters of the
+request are not valid.
 
 
 =head2 UpdateServer(ServerName => Str, [BackupRetentionCount => Int, DisableAutomatedBackup => Bool, PreferredBackupWindow => Str, PreferredMaintenanceWindow => Str])
@@ -414,20 +467,18 @@ Each argument is described in detail in: L<Paws::OpsWorksCM::UpdateServerEngineA
 
 Returns: a L<Paws::OpsWorksCM::UpdateServerEngineAttributesResponse> instance
 
-  Updates engine specific attributes on a specified server. Server will
-enter the C<MODIFYING> state when this operation is in progress. Only
-one update can take place at a time.
-
-This operation can be use to reset Chef Server main API key
-(C<CHEF_PIVOTAL_KEY>).
+  Updates engine-specific attributes on a specified server. The server
+enters the C<MODIFYING> state when this operation is in progress. Only
+one update can occur at a time. You can use this command to reset the
+Chef server's private key (C<CHEF_PIVOTAL_KEY>).
 
 This operation is asynchronous.
 
-This operation can only be called for C<HEALTHY> and C<UNHEALTHY>
-servers. Otherwise a C<InvalidStateException> is raised. A
-C<ResourceNotFoundException> is thrown when the server does not exist.
-A C<ValidationException> is raised when parameters of the request are
-invalid.
+This operation can only be called for servers in C<HEALTHY> or
+C<UNHEALTHY> states. Otherwise, an C<InvalidStateException> is raised.
+A C<ResourceNotFoundException> is thrown when the server does not
+exist. A C<ValidationException> is raised when parameters of the
+request are not valid.
 
 
 

@@ -100,6 +100,7 @@ package Paws::API::ServiceToClass;
     sdb => 'SDB',
     waf => 'WAF',
    'waf-regional' => 'WAFRegional',
+    workdocs => 'WorkDocs',
     workspaces => 'WorkSpaces',
     xray => 'XRay',
   };

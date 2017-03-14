@@ -1,6 +1,8 @@
 package Paws::OpsWorksCM::Server;
   use Moose;
+  has AssociatePublicIpAddress => (is => 'ro', isa => 'Bool');
   has BackupRetentionCount => (is => 'ro', isa => 'Int');
+  has CloudFormationStackArn => (is => 'ro', isa => 'Str');
   has CreatedAt => (is => 'ro', isa => 'Str');
   has DisableAutomatedBackup => (is => 'ro', isa => 'Bool');
   has Endpoint => (is => 'ro', isa => 'Str');
@@ -40,14 +42,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::OpsWorksCM::Server object:
 
-  $service_obj->Method(Att1 => { BackupRetentionCount => $value, ..., SubnetIds => $value  });
+  $service_obj->Method(Att1 => { AssociatePublicIpAddress => $value, ..., SubnetIds => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::OpsWorksCM::Server object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->BackupRetentionCount
+  $result->Att1->AssociatePublicIpAddress
 
 =head1 DESCRIPTION
 
@@ -56,9 +58,19 @@ Describes a configuration management server.
 =head1 ATTRIBUTES
 
 
+=head2 AssociatePublicIpAddress => Bool
+
+  Associate a public IP address with a server that you are launching.
+
+
 =head2 BackupRetentionCount => Int
 
   The number of automated backups to keep.
+
+
+=head2 CloudFormationStackArn => Str
+
+  The ARN of the CloudFormation stack that was used to create the server.
 
 
 =head2 CreatedAt => Str
@@ -184,7 +196,7 @@ are shown in the EC2 console.
 
   The server's status. This field displays the states of actions in
 progress, such as creating, running, or backing up the server, as well
-as server health.
+as the server's health state.
 
 
 =head2 StatusReason => Str

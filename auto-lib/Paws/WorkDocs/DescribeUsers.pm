@@ -1,0 +1,114 @@
+
+package Paws::WorkDocs::DescribeUsers;
+  use Moose;
+  has Fields => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'fields' );
+  has Include => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'include' );
+  has Limit => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'limit' );
+  has Marker => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'marker' );
+  has Order => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'order' );
+  has OrganizationId => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'organizationId' );
+  has Query => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'query' );
+  has Sort => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'sort' );
+  has UserIds => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'userIds' );
+
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeUsers');
+  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/api/v1/users');
+  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::WorkDocs::DescribeUsersResponse');
+  class_has _result_key => (isa => 'Str', is => 'ro');
+1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::WorkDocs::DescribeUsers - Arguments for method DescribeUsers on Paws::WorkDocs
+
+=head1 DESCRIPTION
+
+This class represents the parameters used for calling the method DescribeUsers on the 
+Amazon WorkDocs service. Use the attributes of this class
+as arguments to method DescribeUsers.
+
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeUsers.
+
+As an example:
+
+  $service_obj->DescribeUsers(Att1 => $value1, Att2 => $value2, ...);
+
+Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+
+=head1 ATTRIBUTES
+
+
+=head2 Fields => Str
+
+A comma-separated list of values. Specify "STORAGE_METADATA" to include
+the user storage quota and utilization information.
+
+
+
+=head2 Include => Str
+
+The state of the users. Specify "ALL" to include inactive users.
+
+Valid values are: C<"ALL">, C<"ACTIVE_PENDING">
+
+=head2 Limit => Int
+
+The maximum number of items to return.
+
+
+
+=head2 Marker => Str
+
+The marker for the next set of results. (You received this marker from
+a previous call.)
+
+
+
+=head2 Order => Str
+
+The order for the results.
+
+Valid values are: C<"ASCENDING">, C<"DESCENDING">
+
+=head2 OrganizationId => Str
+
+The ID of the organization.
+
+
+
+=head2 Query => Str
+
+A query to filter users by user name.
+
+
+
+=head2 Sort => Str
+
+The sorting criteria.
+
+Valid values are: C<"USER_NAME">, C<"FULL_NAME">, C<"STORAGE_LIMIT">, C<"USER_STATUS">, C<"STORAGE_USED">
+
+=head2 UserIds => Str
+
+The IDs of the users.
+
+
+
+
+=head1 SEE ALSO
+
+This class forms part of L<Paws>, documenting arguments for method DescribeUsers in L<Paws::WorkDocs>
+
+=head1 BUGS and CONTRIBUTIONS
+
+The source code is located here: https://github.com/pplu/aws-sdk-perl
+
+Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+
+=cut
+
