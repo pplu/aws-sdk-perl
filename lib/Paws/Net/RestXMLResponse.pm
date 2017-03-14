@@ -35,7 +35,7 @@ package Paws::Net::RestXMLResponse;
 
     # Set respones headers attributes
     foreach my $key (keys %$headers){
-      $unserialized_struct->{$key} = $headers->{$key};
+      $unserialized_struct->{lc $key} = $headers->{$key};
     }
  
     if ( $http_status >= 300 ) {
