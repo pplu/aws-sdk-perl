@@ -1,6 +1,7 @@
 
 package Paws::DeviceFarm::CreateProject;
   use Moose;
+  has DefaultJobTimeoutMinutes => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'defaultJobTimeoutMinutes' );
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name' , required => 1);
 
   use MooseX::ClassAttribute;
@@ -31,6 +32,14 @@ As an example:
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 
 =head1 ATTRIBUTES
+
+
+=head2 DefaultJobTimeoutMinutes => Int
+
+Sets the execution timeout value (in minutes) for a project. All test
+runs in this project will use the specified execution timeout value
+unless overridden when scheduling a run.
+
 
 
 =head2 B<REQUIRED> Name => Str

@@ -66,12 +66,13 @@ devices, see AWS Device Farm terminology."
 
 =head2 Device => L<Paws::DeviceFarm::Device>
 
-  
+  The device (phone or tablet) used in the remote access session.
 
 
 =head2 DeviceMinutes => L<Paws::DeviceFarm::DeviceMinutes>
 
-  
+  The number of minutes a device is used in a remote access sesssion
+(including setup and teardown minutes).
 
 
 =head2 Endpoint => Str

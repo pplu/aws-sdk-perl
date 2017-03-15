@@ -16,7 +16,7 @@ Paws::DeviceFarm::GetSuiteResult
 
 =head2 Suite => L<Paws::DeviceFarm::Suite>
 
-
+A collection of one or more tests.
 
 
 =head2 _request_id => Str

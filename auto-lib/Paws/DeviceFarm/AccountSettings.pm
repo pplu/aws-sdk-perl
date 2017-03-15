@@ -1,6 +1,8 @@
 package Paws::DeviceFarm::AccountSettings;
   use Moose;
   has AwsAccountNumber => (is => 'ro', isa => 'Str', xmlname => 'awsAccountNumber', request_name => 'awsAccountNumber', traits => ['Unwrapped','NameInRequest']);
+  has DefaultJobTimeoutMinutes => (is => 'ro', isa => 'Int', xmlname => 'defaultJobTimeoutMinutes', request_name => 'defaultJobTimeoutMinutes', traits => ['Unwrapped','NameInRequest']);
+  has MaxJobTimeoutMinutes => (is => 'ro', isa => 'Int', xmlname => 'maxJobTimeoutMinutes', request_name => 'maxJobTimeoutMinutes', traits => ['Unwrapped','NameInRequest']);
   has UnmeteredDevices => (is => 'ro', isa => 'Paws::DeviceFarm::PurchasedDevicesMap', xmlname => 'unmeteredDevices', request_name => 'unmeteredDevices', traits => ['Unwrapped','NameInRequest']);
   has UnmeteredRemoteAccessDevices => (is => 'ro', isa => 'Paws::DeviceFarm::PurchasedDevicesMap', xmlname => 'unmeteredRemoteAccessDevices', request_name => 'unmeteredRemoteAccessDevices', traits => ['Unwrapped','NameInRequest']);
 1;
@@ -41,6 +43,18 @@ A container for account-level settings within AWS Device Farm.
 =head2 AwsAccountNumber => Str
 
   The AWS account number specified in the C<AccountSettings> container.
+
+
+=head2 DefaultJobTimeoutMinutes => Int
+
+  The default number of minutes (at the account level) a test run will
+execute before it times out. Default value is 60 minutes.
+
+
+=head2 MaxJobTimeoutMinutes => Int
+
+  The maximum number of minutes a test run will execute before it times
+out.
 
 
 =head2 UnmeteredDevices => L<Paws::DeviceFarm::PurchasedDevicesMap>

@@ -166,7 +166,7 @@ device.
 
 =head2 Resolution => L<Paws::DeviceFarm::Resolution>
 
-  
+  The resolution of the device.
 
 
 

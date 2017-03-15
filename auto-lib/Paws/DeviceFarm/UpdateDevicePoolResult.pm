@@ -16,7 +16,7 @@ Paws::DeviceFarm::UpdateDevicePoolResult
 
 =head2 DevicePool => L<Paws::DeviceFarm::DevicePool>
 
-
+The device pool you just updated.
 
 
 =head2 _request_id => Str

@@ -16,7 +16,7 @@ Paws::DeviceFarm::GetTestResult
 
 =head2 Test => L<Paws::DeviceFarm::Test>
 
-
+A test condition that is evaluated.
 
 
 =head2 _request_id => Str

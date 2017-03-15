@@ -64,7 +64,7 @@ Represents a device.
 
 =head2 Device => L<Paws::DeviceFarm::Device>
 
-  
+  The device (phone or tablet).
 
 
 =head2 DeviceMinutes => L<Paws::DeviceFarm::DeviceMinutes>

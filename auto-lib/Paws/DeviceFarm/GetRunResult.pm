@@ -16,7 +16,7 @@ Paws::DeviceFarm::GetRunResult
 
 =head2 Run => L<Paws::DeviceFarm::Run>
 
-
+The run you wish to get results from.
 
 
 =head2 _request_id => Str
