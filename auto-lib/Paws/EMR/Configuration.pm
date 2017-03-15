@@ -35,30 +35,31 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EMR::Config
 
 Amazon EMR releases 4.x or later.
 
-Specifies a hardware and software configuration of the EMR cluster.
-This includes configurations for applications and software bundled with
-Amazon EMR. The Configuration object is a JSON object which is defined
-by a classification and a set of properties. Configurations can be
-nested, so a configuration may have its own Configuration objects
-listed.
+An optional configuration specification to be used when provisioning
+cluster instances, which can include configurations for applications
+and software bundled with Amazon EMR. A configuration consists of a
+classification, properties, and optional nested configurations. A
+classification refers to an application-specific configuration file.
+Properties are the settings you want to change in that file. For more
+information, see Configuring Applications.
 
 =head1 ATTRIBUTES
 
 
 =head2 Classification => Str
 
-  The classification of a configuration. For more information see, Amazon
-EMR Configurations.
+  The classification within a configuration.
 
 
 =head2 Configurations => ArrayRef[L<Paws::EMR::Configuration>]
 
-  A list of configurations you apply to this configuration object.
+  A list of additional configurations to apply within a configuration
+object.
 
 
 =head2 Properties => L<Paws::EMR::StringMap>
 
-  A set of properties supplied to the Configuration object.
+  A set of properties specified within a configuration classification.
 
 
 

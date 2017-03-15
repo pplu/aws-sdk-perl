@@ -3,7 +3,10 @@ package Paws::EMR::Instance;
   has EbsVolumes => (is => 'ro', isa => 'ArrayRef[Paws::EMR::EbsVolume]');
   has Ec2InstanceId => (is => 'ro', isa => 'Str');
   has Id => (is => 'ro', isa => 'Str');
+  has InstanceFleetId => (is => 'ro', isa => 'Str');
   has InstanceGroupId => (is => 'ro', isa => 'Str');
+  has InstanceType => (is => 'ro', isa => 'Str');
+  has Market => (is => 'ro', isa => 'Str');
   has PrivateDnsName => (is => 'ro', isa => 'Str');
   has PrivateIpAddress => (is => 'ro', isa => 'Str');
   has PublicDnsName => (is => 'ro', isa => 'Str');
@@ -59,9 +62,26 @@ Represents an EC2 instance provisioned as part of cluster.
   The unique identifier for the instance in Amazon EMR.
 
 
+=head2 InstanceFleetId => Str
+
+  The unique identifier of the instance fleet to which an EC2 instance
+belongs.
+
+
 =head2 InstanceGroupId => Str
 
   The identifier of the instance group to which this instance belongs.
+
+
+=head2 InstanceType => Str
+
+  The EC2 instance type, for example C<m3.xlarge>.
+
+
+=head2 Market => Str
+
+  The instance purchasing option. Valid values are C<ON_DEMAND> or
+C<SPOT>.
 
 
 =head2 PrivateDnsName => Str

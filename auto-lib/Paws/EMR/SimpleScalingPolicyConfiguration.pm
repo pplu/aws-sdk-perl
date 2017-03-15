@@ -51,7 +51,7 @@ that the EC2 instance count increments or decrements by
 C<ScalingAdjustment>, which should be expressed as an integer.
 C<PERCENT_CHANGE_IN_CAPACITY> indicates the instance count increments
 or decrements by the percentage specified by C<ScalingAdjustment>,
-which should be expressed as a decimal, for example, 0.20 indicates an
+which should be expressed as a decimal. For example, 0.20 indicates an
 increase in 20% increments of cluster capacity. C<EXACT_CAPACITY>
 indicates the scaling activity results in an instance group with the
 number of EC2 instances specified by C<ScalingAdjustment>, which should
