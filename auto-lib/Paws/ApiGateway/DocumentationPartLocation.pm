@@ -90,8 +90,8 @@ is a valid and required field for API entity types of C<API>,
 C<AUTHORIZER>, C<MODEL>, C<RESOURCE>, C<METHOD>, C<PATH_PARAMETER>,
 C<QUERY_PARAMETER>, C<REQUEST_HEADER>, C<REQUEST_BODY>, C<RESPONSE>,
 C<RESPONSE_HEADER>, and C<RESPONSE_BODY>. Content inheritance does not
-apply to any entity of the C<API>, C<AUTHROZER>, C<MODEL>, or
-C<RESOURCE> type.
+apply to any entity of the C<API>, C<AUTHROZER>, C<METHOD>, C<MODEL>,
+C<REQUEST_BODY>, or C<RESOURCE> type.
 
 
 

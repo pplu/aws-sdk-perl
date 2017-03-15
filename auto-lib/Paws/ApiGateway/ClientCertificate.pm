@@ -26,7 +26,7 @@ The identifier of the client certificate.
 
 =head2 CreatedDate => Str
 
-The date when the client certificate was created, in ISO 8601 format.
+The timestamp when the client certificate was created.
 
 
 =head2 Description => Str
@@ -36,7 +36,7 @@ The description of the client certificate.
 
 =head2 ExpirationDate => Str
 
-The date when the client certificate will expire, in ISO 8601 format.
+The timestamp when the client certificate will expire.
 
 
 =head2 PemEncodedCertificate => Str
