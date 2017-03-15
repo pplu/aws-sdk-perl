@@ -18,12 +18,12 @@ Paws::CloudDirectory::ListPolicyAttachmentsResponse
 
 =head2 NextToken => Str
 
-Token used for pagination.
+The pagination token.
 
 
 =head2 ObjectIdentifiers => ArrayRef[Str|Undef]
 
-List of ObjectIdentifiers to which the policy is attached.
+List of C<ObjectIdentifiers> to which the policy is attached.
 
 
 =head2 _request_id => Str

@@ -38,7 +38,7 @@ Represents the output batch AttachObject response operation.
 
 =head2 AttachedObjectIdentifier => Str
 
-  The ObjectIdentifier of the object that has been attached.
+  The C<ObjectIdentifier> of the object that has been attached.
 
 
 

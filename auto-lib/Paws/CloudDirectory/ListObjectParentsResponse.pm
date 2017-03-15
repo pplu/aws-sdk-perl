@@ -18,13 +18,13 @@ Paws::CloudDirectory::ListObjectParentsResponse
 
 =head2 NextToken => Str
 
-Token used for pagination.
+The pagination token.
 
 
 =head2 Parents => L<Paws::CloudDirectory::ObjectIdentifierToLinkNameMap>
 
-Parent structure, which is a map with key as the ObjectIdentifier and
-LinkName as the value.
+Parent structure, which is a map with key as the C<ObjectIdentifier>
+and LinkName as the value.
 
 
 =head2 _request_id => Str

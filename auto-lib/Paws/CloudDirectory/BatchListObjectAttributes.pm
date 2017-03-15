@@ -33,7 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudDirect
 
 =head1 DESCRIPTION
 
-Represents the output of a ListObjectAttributes operation.
+Represents the output of a C<ListObjectAttributes> operation.
 
 =head1 ATTRIBUTES
 
@@ -46,7 +46,7 @@ approximate number.
 
 =head2 NextToken => Str
 
-  Token used for pagination.
+  The pagination token.
 
 
 =head2 B<REQUIRED> ObjectReference => L<Paws::CloudDirectory::ObjectReference>

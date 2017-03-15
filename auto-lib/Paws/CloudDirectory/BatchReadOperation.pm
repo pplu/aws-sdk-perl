@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudDirect
 
 =head1 DESCRIPTION
 
-Represents the output of a BatchRead operation.
+Represents the output of a C<BatchRead> operation.
 
 =head1 ATTRIBUTES
 

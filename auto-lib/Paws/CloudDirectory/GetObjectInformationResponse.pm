@@ -18,7 +18,7 @@ Paws::CloudDirectory::GetObjectInformationResponse
 
 =head2 ObjectIdentifier => Str
 
-The ObjectIdentifier of the specified object.
+The C<ObjectIdentifier> of the specified object.
 
 
 =head2 SchemaFacets => ArrayRef[L<Paws::CloudDirectory::SchemaFacet>]

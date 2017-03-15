@@ -32,20 +32,20 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudDirect
 
 =head1 DESCRIPTION
 
-Represents the output of a ListObjectChildren response operation.
+Represents the output of a C<ListObjectChildren> response operation.
 
 =head1 ATTRIBUTES
 
 
 =head2 Children => L<Paws::CloudDirectory::LinkNameToObjectIdentifierMap>
 
-  Children structure, which is a map with key as the LinkName and
-ObjectIdentifier as the value.
+  Children structure, which is a map with key as the C<LinkName> and
+C<ObjectIdentifier> as the value.
 
 
 =head2 NextToken => Str
 
-  Token used for pagination.
+  The pagination token.
 
 
 

@@ -17,7 +17,7 @@ Paws::CloudDirectory::AttachObjectResponse
 
 =head2 AttachedObjectIdentifier => Str
 
-Attached ObjectIdentifier, which is the child ObjectIdentifier.
+Attached C<ObjectIdentifier>, which is the child C<ObjectIdentifier>.
 
 
 =head2 _request_id => Str

@@ -32,20 +32,20 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudDirect
 
 =head1 DESCRIPTION
 
-Represents the output of a ListObjectAttributes response operation.
+Represents the output of a C<ListObjectAttributes> response operation.
 
 =head1 ATTRIBUTES
 
 
 =head2 Attributes => ArrayRef[L<Paws::CloudDirectory::AttributeKeyAndValue>]
 
-  Attributes map associated with the object. AttributeArn is the key;
+  Attributes map associated with the object. C<AttributeArn> is the key;
 attribute value is the value.
 
 
 =head2 NextToken => Str
 
-  Token used for pagination.
+  The pagination token.
 
 
 
