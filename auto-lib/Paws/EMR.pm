@@ -62,6 +62,11 @@ package Paws::EMR;
   });
 
   
+  sub AddInstanceFleet {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EMR::AddInstanceFleet', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub AddInstanceGroups {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EMR::AddInstanceGroups', @_);
@@ -122,6 +127,11 @@ package Paws::EMR;
     my $call_object = $self->new_with_coercions('Paws::EMR::ListClusters', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListInstanceFleets {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EMR::ListInstanceFleets', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListInstanceGroups {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EMR::ListInstanceGroups', @_);
@@ -140,6 +150,11 @@ package Paws::EMR;
   sub ListSteps {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EMR::ListSteps', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ModifyInstanceFleet {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EMR::ModifyInstanceFleet', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ModifyInstanceGroups {
@@ -225,6 +240,27 @@ package Paws::EMR;
 
     return undef
   }
+  sub ListAllInstanceFleets {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListInstanceFleets(@_);
+
+    if (not defined $callback) {
+      while ($result->Marker) {
+        $result = $self->ListInstanceFleets(@_, Marker => $result->Marker);
+        push @{ $result->InstanceFleets }, @{ $result->InstanceFleets };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $result = $self->ListInstanceFleets(@_, Marker => $result->Marker);
+        $callback->($_ => 'InstanceFleets') foreach (@{ $result->InstanceFleets });
+      }
+    }
+
+    return undef
+  }
   sub ListAllInstanceGroups {
     my $self = shift;
 
@@ -290,7 +326,7 @@ package Paws::EMR;
   }
 
 
-  sub operations { qw/AddInstanceGroups AddJobFlowSteps AddTags CancelSteps CreateSecurityConfiguration DeleteSecurityConfiguration DescribeCluster DescribeJobFlows DescribeSecurityConfiguration DescribeStep ListBootstrapActions ListClusters ListInstanceGroups ListInstances ListSecurityConfigurations ListSteps ModifyInstanceGroups PutAutoScalingPolicy RemoveAutoScalingPolicy RemoveTags RunJobFlow SetTerminationProtection SetVisibleToAllUsers TerminateJobFlows / }
+  sub operations { qw/AddInstanceFleet AddInstanceGroups AddJobFlowSteps AddTags CancelSteps CreateSecurityConfiguration DeleteSecurityConfiguration DescribeCluster DescribeJobFlows DescribeSecurityConfiguration DescribeStep ListBootstrapActions ListClusters ListInstanceFleets ListInstanceGroups ListInstances ListSecurityConfigurations ListSteps ModifyInstanceFleet ModifyInstanceGroups PutAutoScalingPolicy RemoveAutoScalingPolicy RemoveTags RunJobFlow SetTerminationProtection SetVisibleToAllUsers TerminateJobFlows / }
 
 1;
 
@@ -326,6 +362,18 @@ warehousing.
 
 =head1 METHODS
 
+=head2 AddInstanceFleet(ClusterId => Str, InstanceFleet => L<Paws::EMR::InstanceFleetConfig>)
+
+Each argument is described in detail in: L<Paws::EMR::AddInstanceFleet>
+
+Returns: a L<Paws::EMR::AddInstanceFleetOutput> instance
+
+  Adds an instance fleet to a running cluster.
+
+The instance fleet configuration is available only in Amazon EMR
+versions 4.8.0 and later, excluding 5.0.x.
+
+
 =head2 AddInstanceGroups(InstanceGroups => ArrayRef[L<Paws::EMR::InstanceGroupConfig>], JobFlowId => Str)
 
 Each argument is described in detail in: L<Paws::EMR::AddInstanceGroups>
@@ -341,20 +389,20 @@ Each argument is described in detail in: L<Paws::EMR::AddJobFlowSteps>
 
 Returns: a L<Paws::EMR::AddJobFlowStepsOutput> instance
 
-  AddJobFlowSteps adds new steps to a running job flow. A maximum of 256
+  AddJobFlowSteps adds new steps to a running cluster. A maximum of 256
 steps are allowed in each job flow.
 
-If your job flow is long-running (such as a Hive data warehouse) or
+If your cluster is long-running (such as a Hive data warehouse) or
 complex, you may require more than 256 steps to process your data. You
-can bypass the 256-step limitation in various ways, including using the
-SSH shell to connect to the master node and submitting queries directly
-to the software running on the master node, such as Hive and Hadoop.
-For more information on how to do this, see Add More than 256 Steps to
-a Job Flow in the I<Amazon EMR Developer's Guide>.
+can bypass the 256-step limitation in various ways, including using SSH
+to connect to the master node and submitting queries directly to the
+software running on the master node, such as Hive and Hadoop. For more
+information on how to do this, see Add More than 256 Steps to a Cluster
+in the I<Amazon EMR Management Guide>.
 
 A step specifies the location of a JAR file stored either on the master
-node of the job flow or in Amazon S3. Each step is performed by the
-main function of the main class of the JAR file. The main class can be
+node of the cluster or in Amazon S3. Each step is performed by the main
+function of the main class of the JAR file. The main class can be
 specified either in the manifest of the JAR or by using the
 MainFunction parameter of the step.
 
@@ -363,7 +411,7 @@ considered complete, the main function must exit with a zero exit code
 and all Hadoop jobs started while the step was running must have
 completed and run successfully.
 
-You can only add steps to a job flow that is in one of the following
+You can only add steps to a cluster that is in one of the following
 states: STARTING, BOOTSTRAPPING, RUNNING, or WAITING.
 
 
@@ -502,6 +550,18 @@ track the paging of the cluster list across multiple ListClusters
 calls.
 
 
+=head2 ListInstanceFleets(ClusterId => Str, [Marker => Str])
+
+Each argument is described in detail in: L<Paws::EMR::ListInstanceFleets>
+
+Returns: a L<Paws::EMR::ListInstanceFleetsOutput> instance
+
+  Lists all available details about the instance fleets in a cluster.
+
+The instance fleet configuration is available only in Amazon EMR
+versions 4.8.0 and later, excluding 5.0.x versions.
+
+
 =head2 ListInstanceGroups(ClusterId => Str, [Marker => Str])
 
 Each argument is described in detail in: L<Paws::EMR::ListInstanceGroups>
@@ -511,7 +571,7 @@ Returns: a L<Paws::EMR::ListInstanceGroupsOutput> instance
   Provides all available details about the instance groups in a cluster.
 
 
-=head2 ListInstances(ClusterId => Str, [InstanceGroupId => Str, InstanceGroupTypes => ArrayRef[Str|Undef], InstanceStates => ArrayRef[Str|Undef], Marker => Str])
+=head2 ListInstances(ClusterId => Str, [InstanceFleetId => Str, InstanceFleetType => Str, InstanceGroupId => Str, InstanceGroupTypes => ArrayRef[Str|Undef], InstanceStates => ArrayRef[Str|Undef], Marker => Str])
 
 Each argument is described in detail in: L<Paws::EMR::ListInstances>
 
@@ -545,6 +605,21 @@ Returns: a L<Paws::EMR::ListStepsOutput> instance
 
   Provides a list of steps for the cluster in reverse order unless you
 specify stepIds with the request.
+
+
+=head2 ModifyInstanceFleet(ClusterId => Str, InstanceFleet => L<Paws::EMR::InstanceFleetModifyConfig>)
+
+Each argument is described in detail in: L<Paws::EMR::ModifyInstanceFleet>
+
+Returns: nothing
+
+  Modifies the target On-Demand and target Spot capacities for the
+instance fleet with the specified InstanceFleetID within the cluster
+specified using ClusterID. The call either succeeds or fails
+atomically.
+
+The instance fleet configuration is available only in Amazon EMR
+versions 4.8.0 and later, excluding 5.0.x versions.
 
 
 =head2 ModifyInstanceGroups([ClusterId => Str, InstanceGroups => ArrayRef[L<Paws::EMR::InstanceGroupModifyConfig>]])
@@ -603,31 +678,36 @@ Each argument is described in detail in: L<Paws::EMR::RunJobFlow>
 
 Returns: a L<Paws::EMR::RunJobFlowOutput> instance
 
-  RunJobFlow creates and starts running a new job flow. The job flow will
-run the steps specified. After the job flow completes, the cluster is
-stopped and the HDFS partition is lost. To prevent loss of data,
+  RunJobFlow creates and starts running a new cluster (job flow). The
+cluster runs the steps specified. After the steps complete, the cluster
+stops and the HDFS partition is lost. To prevent loss of data,
 configure the last step of the job flow to store results in Amazon S3.
 If the JobFlowInstancesConfig C<KeepJobFlowAliveWhenNoSteps> parameter
-is set to C<TRUE>, the job flow will transition to the WAITING state
-rather than shutting down after the steps have completed.
+is set to C<TRUE>, the cluster transitions to the WAITING state rather
+than shutting down after the steps have completed.
 
 For additional protection, you can set the JobFlowInstancesConfig
-C<TerminationProtected> parameter to C<TRUE> to lock the job flow and
+C<TerminationProtected> parameter to C<TRUE> to lock the cluster and
 prevent it from being terminated by API call, user intervention, or in
 the event of a job flow error.
 
 A maximum of 256 steps are allowed in each job flow.
 
-If your job flow is long-running (such as a Hive data warehouse) or
+If your cluster is long-running (such as a Hive data warehouse) or
 complex, you may require more than 256 steps to process your data. You
 can bypass the 256-step limitation in various ways, including using the
 SSH shell to connect to the master node and submitting queries directly
 to the software running on the master node, such as Hive and Hadoop.
 For more information on how to do this, see Add More than 256 Steps to
-a Job Flow in the I<Amazon EMR Management Guide>.
+a Cluster in the I<Amazon EMR Management Guide>.
 
-For long running job flows, we recommend that you periodically store
+For long running clusters, we recommend that you periodically store
 your results.
+
+The instance fleets configuration is available only in Amazon EMR
+versions 4.8.0 and later, excluding 5.0.x versions. The RunJobFlow
+request can contain InstanceFleets parameters or InstanceGroups
+parameters, but not both.
 
 
 =head2 SetTerminationProtection(JobFlowIds => ArrayRef[Str|Undef], TerminationProtected => Bool)
@@ -636,25 +716,26 @@ Each argument is described in detail in: L<Paws::EMR::SetTerminationProtection>
 
 Returns: nothing
 
-  SetTerminationProtection locks a job flow so the EC2 instances in the
-cluster cannot be terminated by user intervention, an API call, or in
-the event of a job-flow error. The cluster still terminates upon
-successful completion of the job flow. Calling SetTerminationProtection
-on a job flow is analogous to calling the Amazon EC2
-DisableAPITermination API on all of the EC2 instances in a cluster.
+  SetTerminationProtection locks a cluster (job flow) so the EC2
+instances in the cluster cannot be terminated by user intervention, an
+API call, or in the event of a job-flow error. The cluster still
+terminates upon successful completion of the job flow. Calling
+C<SetTerminationProtection> on a cluster is similar to calling the
+Amazon EC2 C<DisableAPITermination> API on all EC2 instances in a
+cluster.
 
-SetTerminationProtection is used to prevent accidental termination of a
-job flow and to ensure that in the event of an error, the instances
-will persist so you can recover any data stored in their ephemeral
+C<SetTerminationProtection> is used to prevent accidental termination
+of a cluster and to ensure that in the event of an error, the instances
+persist so that you can recover any data stored in their ephemeral
 instance storage.
 
-To terminate a job flow that has been locked by setting
-SetTerminationProtection to C<true>, you must first unlock the job flow
-by a subsequent call to SetTerminationProtection in which you set the
-value to C<false>.
+To terminate a cluster that has been locked by setting
+C<SetTerminationProtection> to C<true>, you must first unlock the job
+flow by a subsequent call to C<SetTerminationProtection> in which you
+set the value to C<false>.
 
-For more information, seeProtecting a Job Flow from Termination in the
-I<Amazon EMR Guide.>
+For more information, seeManaging Cluster Termination in the I<Amazon
+EMR Management Guide>.
 
 
 =head2 SetVisibleToAllUsers(JobFlowIds => ArrayRef[Str|Undef], VisibleToAllUsers => Bool)
@@ -664,11 +745,12 @@ Each argument is described in detail in: L<Paws::EMR::SetVisibleToAllUsers>
 Returns: nothing
 
   Sets whether all AWS Identity and Access Management (IAM) users under
-your account can access the specified job flows. This action works on
-running job flows. You can also set the visibility of a job flow when
-you launch it using the C<VisibleToAllUsers> parameter of RunJobFlow.
-The SetVisibleToAllUsers action can be called only by an IAM user who
-created the job flow or the AWS account that owns the job flow.
+your account can access the specified clusters (job flows). This action
+works on running clusters. You can also set the visibility of a cluster
+when you launch it using the C<VisibleToAllUsers> parameter of
+RunJobFlow. The SetVisibleToAllUsers action can be called only by an
+IAM user who created the cluster or the AWS account that owns the
+cluster.
 
 
 =head2 TerminateJobFlows(JobFlowIds => ArrayRef[Str|Undef])
@@ -677,15 +759,15 @@ Each argument is described in detail in: L<Paws::EMR::TerminateJobFlows>
 
 Returns: nothing
 
-  TerminateJobFlows shuts a list of job flows down. When a job flow is
-shut down, any step not yet completed is canceled and the EC2 instances
-on which the job flow is running are stopped. Any log files not already
-saved are uploaded to Amazon S3 if a LogUri was specified when the job
-flow was created.
+  TerminateJobFlows shuts a list of clusters (job flows) down. When a job
+flow is shut down, any step not yet completed is canceled and the EC2
+instances on which the cluster is running are stopped. Any log files
+not already saved are uploaded to Amazon S3 if a LogUri was specified
+when the cluster was created.
 
-The maximum number of JobFlows allowed is 10. The call to
-TerminateJobFlows is asynchronous. Depending on the configuration of
-the job flow, it may take up to 1-5 minutes for the job flow to
+The maximum number of clusters allowed is 10. The call to
+C<TerminateJobFlows> is asynchronous. Depending on the configuration of
+the cluster, it may take up to 1-5 minutes for the cluster to
 completely terminate and release allocated resources, such as Amazon
 EC2 instances.
 
@@ -720,6 +802,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::EMR::ListClustersOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
+=head2 ListAllInstanceFleets(sub { },ClusterId => Str, [Marker => Str])
+
+=head2 ListAllInstanceFleets(ClusterId => Str, [Marker => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - InstanceFleets, passing the object as the first parameter, and the string 'InstanceFleets' as the second parameter 
+
+If not, it will return a a L<Paws::EMR::ListInstanceFleetsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 =head2 ListAllInstanceGroups(sub { },ClusterId => Str, [Marker => Str])
 
 =head2 ListAllInstanceGroups(ClusterId => Str, [Marker => Str])
@@ -732,9 +826,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::EMR::ListInstanceGroupsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllInstances(sub { },ClusterId => Str, [InstanceGroupId => Str, InstanceGroupTypes => ArrayRef[Str|Undef], InstanceStates => ArrayRef[Str|Undef], Marker => Str])
+=head2 ListAllInstances(sub { },ClusterId => Str, [InstanceFleetId => Str, InstanceFleetType => Str, InstanceGroupId => Str, InstanceGroupTypes => ArrayRef[Str|Undef], InstanceStates => ArrayRef[Str|Undef], Marker => Str])
 
-=head2 ListAllInstances(ClusterId => Str, [InstanceGroupId => Str, InstanceGroupTypes => ArrayRef[Str|Undef], InstanceStates => ArrayRef[Str|Undef], Marker => Str])
+=head2 ListAllInstances(ClusterId => Str, [InstanceFleetId => Str, InstanceFleetType => Str, InstanceGroupId => Str, InstanceGroupTypes => ArrayRef[Str|Undef], InstanceStates => ArrayRef[Str|Undef], Marker => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

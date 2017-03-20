@@ -59,7 +59,7 @@ References for more information.
 
 =head2 RequiredBehavior => Str
 
-  The required behavior of the FacetAttribute.
+  The required behavior of the C<FacetAttribute>.
 
 
 

@@ -33,24 +33,24 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EMR::StepCo
 
 =head1 DESCRIPTION
 
-Specification of a job flow step.
+Specification of a cluster (job flow) step.
 
 =head1 ATTRIBUTES
 
 
 =head2 ActionOnFailure => Str
 
-  The action to take if the job flow step fails.
+  The action to take if the step fails.
 
 
 =head2 B<REQUIRED> HadoopJarStep => L<Paws::EMR::HadoopJarStepConfig>
 
-  The JAR file used for the job flow step.
+  The JAR file used for the step.
 
 
 =head2 B<REQUIRED> Name => Str
 
-  The name of the job flow step.
+  The name of the step.
 
 
 

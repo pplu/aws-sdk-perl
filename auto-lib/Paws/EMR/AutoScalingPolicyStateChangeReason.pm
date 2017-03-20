@@ -42,8 +42,7 @@ The reason for an AutoScalingPolicyStatus change.
   The code indicating the reason for the change in status.C<USER_REQUEST>
 indicates that the scaling policy status was changed by a user.
 C<PROVISION_FAILURE> indicates that the status change was because the
-policy failed to provision. C<CLEANUP_FAILURE> indicates something
-unclean happened.--E<gt>
+policy failed to provision. C<CLEANUP_FAILURE> indicates an error.
 
 
 =head2 Message => Str

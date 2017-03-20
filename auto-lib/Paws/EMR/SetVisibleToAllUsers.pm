@@ -42,11 +42,11 @@ Identifiers of the job flows to receive the new visibility setting.
 
 =head2 B<REQUIRED> VisibleToAllUsers => Bool
 
-Whether the specified job flows are visible to all IAM users of the AWS
-account associated with the job flow. If this value is set to True, all
+Whether the specified clusters are visible to all IAM users of the AWS
+account associated with the cluster. If this value is set to True, all
 IAM users of that AWS account can view and, if they have the proper IAM
-policy permissions set, manage the job flows. If it is set to False,
-only the IAM user that created a job flow can view and manage it.
+policy permissions set, manage the clusters. If it is set to False,
+only the IAM user that created a cluster can view and manage it.
 
 
 

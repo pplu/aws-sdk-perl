@@ -16,7 +16,7 @@ Paws::DeviceFarm::InstallToRemoteAccessSessionResult
 
 =head2 AppUpload => L<Paws::DeviceFarm::Upload>
 
-
+An app to upload or that has been uploaded.
 
 
 =head2 _request_id => Str

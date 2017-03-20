@@ -16,7 +16,8 @@ Paws::DeviceFarm::GetUploadResult
 
 =head2 Upload => L<Paws::DeviceFarm::Upload>
 
-
+An app or a set of one or more tests to upload or that have been
+uploaded.
 
 
 =head2 _request_id => Str

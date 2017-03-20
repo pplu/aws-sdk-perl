@@ -25,7 +25,7 @@ Paws::ApiGateway::ApiKey
 
 =head2 CreatedDate => Str
 
-The date when the API Key was created, in ISO 8601 format.
+The timestamp when the API Key was created.
 
 
 =head2 CustomerId => Str
@@ -51,7 +51,7 @@ The identifier of the API Key.
 
 =head2 LastUpdatedDate => Str
 
-When the API Key was last updated, in ISO 8601 format.
+The timestamp when the API Key was last updated.
 
 
 =head2 Name => Str

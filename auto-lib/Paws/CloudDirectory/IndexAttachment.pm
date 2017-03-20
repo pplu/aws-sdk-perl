@@ -44,7 +44,7 @@ Represents an index and an attached object.
 
 =head2 ObjectIdentifier => Str
 
-  The ObjectIdentifier of the object attached to the index.
+  The C<ObjectIdentifier> of the object attached to the index.
 
 
 

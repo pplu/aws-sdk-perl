@@ -110,8 +110,8 @@ instances in an instance group.
 
 =head2 BootstrapActions => ArrayRef[L<Paws::EMR::BootstrapActionConfig>]
 
-A list of bootstrap actions that will be run before Hadoop is started
-on the cluster nodes.
+A list of bootstrap actions to run before Hadoop starts on the cluster
+nodes.
 
 
 
@@ -126,8 +126,7 @@ creating.
 
 =head2 B<REQUIRED> Instances => L<Paws::EMR::JobFlowInstancesConfig>
 
-A specification of the number and type of Amazon EC2 instances on which
-to run the job flow.
+A specification of the number and type of Amazon EC2 instances.
 
 
 
@@ -161,8 +160,9 @@ greater, use Applications.
 A list of strings that indicates third-party software to use with the
 job flow that accepts a user argument list. EMR accepts and forwards
 the argument list to the corresponding installation script as bootstrap
-action arguments. For more information, see Launch a Job Flow on the
-MapR Distribution for Hadoop. Currently supported values are:
+action arguments. For more information, see "Launch a Job Flow on the
+MapR Distribution for Hadoop" in the Amazon EMR Developer Guide.
+Supported values are:
 
 =over
 
@@ -249,7 +249,7 @@ AWS resources on your behalf.
 
 =head2 Steps => ArrayRef[L<Paws::EMR::StepConfig>]
 
-A list of steps to be executed by the job flow.
+A list of steps to run.
 
 
 
@@ -258,9 +258,9 @@ A list of steps to be executed by the job flow.
 For Amazon EMR releases 3.x and 2.x. For Amazon EMR releases 4.x and
 greater, use Applications.
 
-A list of strings that indicates third-party software to use with the
-job flow. For more information, see Use Third Party Applications with
-Amazon EMR. Currently supported values are:
+A list of strings that indicates third-party software to use. For more
+information, see Use Third Party Applications with Amazon EMR.
+Currently supported values are:
 
 =over
 
@@ -286,11 +286,11 @@ instances.
 
 =head2 VisibleToAllUsers => Bool
 
-Whether the job flow is visible to all IAM users of the AWS account
-associated with the job flow. If this value is set to C<true>, all IAM
+Whether the cluster is visible to all IAM users of the AWS account
+associated with the cluster. If this value is set to C<true>, all IAM
 users of that AWS account can view and (if they have the proper policy
-permissions set) manage the job flow. If it is set to C<false>, only
-the IAM user that created the job flow can view and manage it.
+permissions set) manage the cluster. If it is set to C<false>, only the
+IAM user that created the cluster can view and manage it.
 
 
 

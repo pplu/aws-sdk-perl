@@ -36,13 +36,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Rule => Str
 
-The name of the rule you want to add targets to.
+The name of the rule.
 
 
 
 =head2 B<REQUIRED> Targets => ArrayRef[L<Paws::CloudWatchEvents::Target>]
 
-List of targets you want to update or add to the rule.
+The targets to update or add to the rule.
 
 
 

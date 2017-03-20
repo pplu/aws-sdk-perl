@@ -8,6 +8,7 @@ package Paws::DeviceFarm::Run;
   has DeviceMinutes => (is => 'ro', isa => 'Paws::DeviceFarm::DeviceMinutes', xmlname => 'deviceMinutes', request_name => 'deviceMinutes', traits => ['Unwrapped','NameInRequest']);
   has Message => (is => 'ro', isa => 'Str', xmlname => 'message', request_name => 'message', traits => ['Unwrapped','NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', xmlname => 'name', request_name => 'name', traits => ['Unwrapped','NameInRequest']);
+  has NetworkProfile => (is => 'ro', isa => 'Paws::DeviceFarm::NetworkProfile', xmlname => 'networkProfile', request_name => 'networkProfile', traits => ['Unwrapped','NameInRequest']);
   has Platform => (is => 'ro', isa => 'Str', xmlname => 'platform', request_name => 'platform', traits => ['Unwrapped','NameInRequest']);
   has Result => (is => 'ro', isa => 'Str', xmlname => 'result', request_name => 'result', traits => ['Unwrapped','NameInRequest']);
   has Started => (is => 'ro', isa => 'Str', xmlname => 'started', request_name => 'started', traits => ['Unwrapped','NameInRequest']);
@@ -92,6 +93,11 @@ run.
 =head2 Name => Str
 
   The run's name.
+
+
+=head2 NetworkProfile => L<Paws::DeviceFarm::NetworkProfile>
+
+  The network profile being used for a test run.
 
 
 =head2 Platform => Str

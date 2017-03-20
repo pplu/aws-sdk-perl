@@ -36,13 +36,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Ids => ArrayRef[Str|Undef]
 
-The list of target IDs to remove from the rule.
+The IDs of the targets to remove from the rule.
 
 
 
 =head2 B<REQUIRED> Rule => Str
 
-The name of the rule you want to remove targets from.
+The name of the rule.
 
 
 

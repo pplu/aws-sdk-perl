@@ -2,6 +2,7 @@ package Paws::DeviceFarm::Project;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str', xmlname => 'arn', request_name => 'arn', traits => ['Unwrapped','NameInRequest']);
   has Created => (is => 'ro', isa => 'Str', xmlname => 'created', request_name => 'created', traits => ['Unwrapped','NameInRequest']);
+  has DefaultJobTimeoutMinutes => (is => 'ro', isa => 'Int', xmlname => 'defaultJobTimeoutMinutes', request_name => 'defaultJobTimeoutMinutes', traits => ['Unwrapped','NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', xmlname => 'name', request_name => 'name', traits => ['Unwrapped','NameInRequest']);
 1;
 
@@ -47,6 +48,12 @@ managing tests.
 =head2 Created => Str
 
   When the project was created.
+
+
+=head2 DefaultJobTimeoutMinutes => Int
+
+  The default number of minutes (at the project level) a test run will
+execute before it times out. Default value is 60 minutes.
 
 
 =head2 Name => Str

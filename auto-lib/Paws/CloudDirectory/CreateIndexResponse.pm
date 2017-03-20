@@ -17,7 +17,7 @@ Paws::CloudDirectory::CreateIndexResponse
 
 =head2 ObjectIdentifier => Str
 
-The ObjectIdentifier of the index created by this operation.
+The C<ObjectIdentifier> of the index created by this operation.
 
 
 =head2 _request_id => Str

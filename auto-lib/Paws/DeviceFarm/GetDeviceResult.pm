@@ -16,7 +16,7 @@ Paws::DeviceFarm::GetDeviceResult
 
 =head2 Device => L<Paws::DeviceFarm::Device>
 
-
+An object containing information about the requested device.
 
 
 =head2 _request_id => Str

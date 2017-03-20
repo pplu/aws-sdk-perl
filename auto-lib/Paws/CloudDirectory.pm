@@ -183,6 +183,11 @@ package Paws::CloudDirectory;
     my $call_object = $self->new_with_coercions('Paws::CloudDirectory::ListObjectChildren', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListObjectParentPaths {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudDirectory::ListObjectParentPaths', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListObjectParents {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudDirectory::ListObjectParents', @_);
@@ -256,7 +261,7 @@ package Paws::CloudDirectory;
   
 
 
-  sub operations { qw/AddFacetToObject ApplySchema AttachObject AttachPolicy AttachToIndex BatchRead BatchWrite CreateDirectory CreateFacet CreateIndex CreateObject CreateSchema DeleteDirectory DeleteFacet DeleteObject DeleteSchema DetachFromIndex DetachObject DetachPolicy DisableDirectory EnableDirectory GetDirectory GetFacet GetObjectInformation GetSchemaAsJson ListAppliedSchemaArns ListAttachedIndices ListDevelopmentSchemaArns ListDirectories ListFacetAttributes ListFacetNames ListIndex ListObjectAttributes ListObjectChildren ListObjectParents ListObjectPolicies ListPolicyAttachments ListPublishedSchemaArns ListTagsForResource LookupPolicy PublishSchema PutSchemaFromJson RemoveFacetFromObject TagResource UntagResource UpdateFacet UpdateObjectAttributes UpdateSchema / }
+  sub operations { qw/AddFacetToObject ApplySchema AttachObject AttachPolicy AttachToIndex BatchRead BatchWrite CreateDirectory CreateFacet CreateIndex CreateObject CreateSchema DeleteDirectory DeleteFacet DeleteObject DeleteSchema DetachFromIndex DetachObject DetachPolicy DisableDirectory EnableDirectory GetDirectory GetFacet GetObjectInformation GetSchemaAsJson ListAppliedSchemaArns ListAttachedIndices ListDevelopmentSchemaArns ListDirectories ListFacetAttributes ListFacetNames ListIndex ListObjectAttributes ListObjectChildren ListObjectParentPaths ListObjectParents ListObjectPolicies ListPolicyAttachments ListPublishedSchemaArns ListTagsForResource LookupPolicy PublishSchema PutSchemaFromJson RemoveFacetFromObject TagResource UntagResource UpdateFacet UpdateObjectAttributes UpdateSchema / }
 
 1;
 
@@ -332,7 +337,7 @@ Using the path
 
 =item 2.
 
-Using ObjectIdentifier
+Using C<ObjectIdentifier>
 
 =back
 
@@ -663,6 +668,25 @@ Returns: a L<Paws::CloudDirectory::ListObjectChildrenResponse> instance
 object.
 
 
+=head2 ListObjectParentPaths(DirectoryArn => Str, ObjectReference => L<Paws::CloudDirectory::ObjectReference>, [MaxResults => Int, NextToken => Str])
+
+Each argument is described in detail in: L<Paws::CloudDirectory::ListObjectParentPaths>
+
+Returns: a L<Paws::CloudDirectory::ListObjectParentPathsResponse> instance
+
+  Retrieves all available parent paths for any object type such as node,
+leaf node, policy node, and index node objects. For more information
+about objects, see Directory Structure.
+
+Use this API to evaluate all parents for an object. The call returns
+all objects from the root of the directory up to the requested object.
+The API returns the number of paths based on user-defined
+C<MaxResults>, in case there are multiple paths to the parent. The
+order of the paths and nodes returned is consistent among multiple API
+calls unless the objects are deleted or moved. Paths not leading to
+directory root are ignored from the target object.
+
+
 =head2 ListObjectParents(DirectoryArn => Str, ObjectReference => L<Paws::CloudDirectory::ObjectReference>, [ConsistencyLevel => Str, MaxResults => Int, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::CloudDirectory::ListObjectParents>
@@ -688,7 +712,7 @@ Each argument is described in detail in: L<Paws::CloudDirectory::ListPolicyAttac
 
 Returns: a L<Paws::CloudDirectory::ListPolicyAttachmentsResponse> instance
 
-  Returns all of the ObjectIdentifiers to which a given policy is
+  Returns all of the C<ObjectIdentifiers> to which a given policy is
 attached.
 
 
@@ -721,9 +745,10 @@ Returns: a L<Paws::CloudDirectory::LookupPolicyResponse> instance
   Lists all policies from the root of the Directory to the object
 specified. If there are no policies present, an empty list is returned.
 If policies are present, and if some objects don't have the policies
-attached, it returns the objectIdentifier for such objects. If policies
-are present, it returns objectIdentifier, policyId, and policyType.
-Paths that don't lead to the root from the target object are ignored.
+attached, it returns the C<ObjectIdentifier> for such objects. If
+policies are present, it returns C<ObjectIdentifier>, C<policyId>, and
+C<policyType>. Paths that don't lead to the root from the target object
+are ignored.
 
 
 =head2 PublishSchema(DevelopmentSchemaArn => Str, Version => Str, [Name => Str])
@@ -787,15 +812,15 @@ Returns: a L<Paws::CloudDirectory::UpdateFacetResponse> instance
 
 =item 1.
 
-Adds new Attributes, Rules, or ObjectTypes.
+Adds new C<Attributes>, C<Rules>, or C<ObjectTypes>.
 
 =item 2.
 
-Updates existing Attributes, Rules, or ObjectTypes.
+Updates existing C<Attributes>, C<Rules>, or C<ObjectTypes>.
 
 =item 3.
 
-Deletes existing Attributes, Rules, or ObjectTypes.
+Deletes existing C<Attributes>, C<Rules>, or C<ObjectTypes>.
 
 =back
 

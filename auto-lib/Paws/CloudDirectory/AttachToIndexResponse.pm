@@ -17,7 +17,7 @@ Paws::CloudDirectory::AttachToIndexResponse
 
 =head2 AttachedObjectIdentifier => Str
 
-The ObjectIdentifier of the object that was attached to the index.
+The C<ObjectIdentifier> of the object that was attached to the index.
 
 
 =head2 _request_id => Str

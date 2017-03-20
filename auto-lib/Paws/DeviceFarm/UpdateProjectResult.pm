@@ -16,7 +16,7 @@ Paws::DeviceFarm::UpdateProjectResult
 
 =head2 Project => L<Paws::DeviceFarm::Project>
 
-
+The project you wish to update.
 
 
 =head2 _request_id => Str

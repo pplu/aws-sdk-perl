@@ -16,7 +16,7 @@ Paws::DeviceFarm::GetAccountSettingsResult
 
 =head2 AccountSettings => L<Paws::DeviceFarm::AccountSettings>
 
-
+The account settings.
 
 
 =head2 _request_id => Str

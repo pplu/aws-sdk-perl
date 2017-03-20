@@ -51,7 +51,7 @@ The summary description of the cluster.
 
 =head2 NormalizedInstanceHours => Int
 
-  An approximation of the cost of the job flow, represented in
+  An approximation of the cost of the cluster, represented in
 m1.small/hours. This value is incremented one time for every hour an
 m1.small instance runs. Larger instances are weighted more, so an EC2
 instance that is roughly four times more expensive would result in the

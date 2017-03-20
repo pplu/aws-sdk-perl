@@ -32,8 +32,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudDirect
 
 =head1 DESCRIPTION
 
-A structure that contains Name, ARN, Attributes, Rules, and
-ObjectTypes.
+A structure that contains C<Name>, C<ARN>, C<Attributes>, Rules, and
+C<ObjectTypes>.
 
 =head1 ATTRIBUTES
 

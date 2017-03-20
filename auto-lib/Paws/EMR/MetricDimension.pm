@@ -33,12 +33,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EMR::Metric
 =head1 DESCRIPTION
 
 A CloudWatch dimension, which is specified using a C<Key> (known as a
-C<Name> in CloudWatch), Value pair. By default, Amazon EMR uses one
+C<Name> in CloudWatch), C<Value> pair. By default, Amazon EMR uses one
 dimension whose C<Key> is C<JobFlowID> and C<Value> is a variable
-representing the cluster ID, which is C<${emr:cluster_id}>. This
-enables the rule to bootstrap when the cluster ID becomes available,
-and also enables a single automatic scaling policy to be reused for
-multiple clusters and instance groups.
+representing the cluster ID, which is C<${emr.clusterId}>. This enables
+the rule to bootstrap when the cluster ID becomes available.
 
 =head1 ATTRIBUTES
 

@@ -854,7 +854,7 @@ Returns: a L<Paws::ApiGateway::DocumentationVersion> instance
   
 
 
-=head2 CreateDomainName(CertificateBody => Str, CertificateChain => Str, CertificateName => Str, CertificatePrivateKey => Str, DomainName => Str)
+=head2 CreateDomainName(DomainName => Str, [CertificateArn => Str, CertificateBody => Str, CertificateChain => Str, CertificateName => Str, CertificatePrivateKey => Str])
 
 Each argument is described in detail in: L<Paws::ApiGateway::CreateDomainName>
 

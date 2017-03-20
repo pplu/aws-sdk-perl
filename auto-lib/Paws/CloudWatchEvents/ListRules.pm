@@ -49,8 +49,8 @@ The prefix matching the rule name.
 
 =head2 NextToken => Str
 
-The token returned by a previous call to indicate that there is more
-data available.
+The token returned by a previous call to retrieve the next set of
+results.
 
 
 

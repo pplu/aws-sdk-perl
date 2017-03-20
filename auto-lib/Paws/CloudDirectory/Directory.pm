@@ -56,8 +56,8 @@ Directory structure that includes the directory name and directory ARN.
 
 =head2 State => Str
 
-  The state of the directory. Can be either Enabled, Disabled, or
-Deleted.
+  The state of the directory. Can be either C<Enabled>, C<Disabled>, or
+C<Deleted>.
 
 
 
