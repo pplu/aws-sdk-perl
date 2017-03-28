@@ -76,6 +76,11 @@ EMR cluster - The resource type is C<instancegroup> and the unique
 identifier is the cluster ID and instance group ID. Example:
 C<instancegroup/j-2EEZNYKUA1NTV/ig-1791Y4E1L8YI0>.
 
+=item *
+
+AppStream 2.0 fleet - The resource type is C<fleet> and the unique
+identifier is the fleet name. Example: C<fleet/sample-fleet>.
+
 =back
 
 
@@ -102,17 +107,22 @@ Spot fleet request.
 C<elasticmapreduce:instancegroup:InstanceCount> - The instance count of
 an EMR Instance Group.
 
+=item *
+
+C<appstream:fleet:DesiredCapacity> - The desired capacity of an
+AppStream 2.0 fleet.
+
 =back
 
 
-Valid values are: C<"ecs:service:DesiredCount">, C<"ec2:spot-fleet-request:TargetCapacity">, C<"elasticmapreduce:instancegroup:InstanceCount">
+Valid values are: C<"ecs:service:DesiredCount">, C<"ec2:spot-fleet-request:TargetCapacity">, C<"elasticmapreduce:instancegroup:InstanceCount">, C<"appstream:fleet:DesiredCapacity">
 
 =head2 B<REQUIRED> ServiceNamespace => Str
 
 The namespace of the AWS service. For more information, see AWS Service
 Namespaces in the I<Amazon Web Services General Reference>.
 
-Valid values are: C<"ecs">, C<"elasticmapreduce">, C<"ec2">
+Valid values are: C<"ecs">, C<"elasticmapreduce">, C<"ec2">, C<"appstream">
 
 =head2 StepScalingPolicyConfiguration => L<Paws::ApplicationAutoScaling::StepScalingPolicyConfiguration>
 

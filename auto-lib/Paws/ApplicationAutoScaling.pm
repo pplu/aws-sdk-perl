@@ -182,6 +182,11 @@ Spot Fleet in the I<Amazon EC2 User Guide>.
 Amazon EMR clusters. For more information, see Using Automatic Scaling
 in Amazon EMR in the I<Amazon EMR Management Guide>.
 
+=item *
+
+AppStream 2.0 fleets. For more information, see Autoscaling Amazon
+AppStream 2.0 Resources in the I<Amazon AppStream 2.0 Developer Guide>.
+
 =back
 
 For a list of supported regions, see AWS Regions and Endpoints:
