@@ -43,18 +43,18 @@ categorize IT assets.
 
 =head2 ConfigurationId => Str
 
-  The configuration ID for the item you want to tag. You can specify a
-list of keys and values.
+  The configuration ID for the item to tag. You can specify a list of
+keys and values.
 
 
 =head2 ConfigurationType => Str
 
-  A type of IT asset that you want to tag.
+  A type of IT asset to tag.
 
 
 =head2 Key => Str
 
-  A type of tag to filter on. For example, I<serverType>.
+  A type of tag on which to filter. For example, I<serverType>.
 
 
 =head2 TimeOfCreation => Str
@@ -65,8 +65,8 @@ Time (UTC).
 
 =head2 Value => Str
 
-  A value to filter on. For example I<key = serverType> and I<value = web
-server>.
+  A value on which to filter. For example I<key = serverType> and I<value
+= web server>.
 
 
 

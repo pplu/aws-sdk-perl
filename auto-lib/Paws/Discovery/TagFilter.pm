@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Discovery::
 
 =head1 DESCRIPTION
 
-The name of a tag filter. Valid names are: C<tagKey>, C<tagValue>,
+The tag filter. Valid names are: C<tagKey>, C<tagValue>,
 C<configurationId>.
 
 =head1 ATTRIBUTES
@@ -40,12 +40,12 @@ C<configurationId>.
 
 =head2 B<REQUIRED> Name => Str
 
-  A name of a tag filter.
+  A name of the tag filter.
 
 
 =head2 B<REQUIRED> Values => ArrayRef[Str|Undef]
 
-  Values of a tag filter.
+  Values for the tag filter.
 
 
 

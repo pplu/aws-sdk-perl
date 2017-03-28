@@ -42,27 +42,27 @@ Details about neighboring servers.
 
 =head2 B<REQUIRED> ConnectionsCount => Int
 
-  Number of open network connections with the neighboring server.
+  The number of open network connections with the neighboring server.
 
 
 =head2 DestinationPort => Int
 
-  Destination network port for the connection.
+  The destination network port for the connection.
 
 
 =head2 B<REQUIRED> DestinationServerId => Str
 
-  ID of the server that accepted the networker connection.
+  The ID of the server that accepted the network connection.
 
 
 =head2 B<REQUIRED> SourceServerId => Str
 
-  ID of server that opened the network connection.
+  The ID of the server that opened the network connection.
 
 
 =head2 TransportProtocol => Str
 
-  Network protocol used for the connection.
+  The network protocol used for the connection.
 
 
 

@@ -35,8 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> AgentIds => ArrayRef[Str|Undef]
 
-The IDs of the agents or Connectors that you want to stop collecting
-data.
+The IDs of the agents or connectors from which to stop collecting data.
 
 
 

@@ -32,14 +32,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Discovery::
 
 =head1 DESCRIPTION
 
-Field and direction for ordered output.
+A field and direction for ordered output.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> FieldName => Str
 
-  Field to order on.
+  The field on which to order.
 
 
 =head2 SortOrder => Str
