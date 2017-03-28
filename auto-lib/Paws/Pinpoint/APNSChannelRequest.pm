@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::A
 
 =head1 DESCRIPTION
 
-This class has no description
+Apple Push Notification Service channel definition.
 
 =head1 ATTRIBUTES
 

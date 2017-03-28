@@ -38,6 +38,11 @@ package Paws::Pinpoint;
     my $call_object = $self->new_with_coercions('Paws::Pinpoint::DeleteCampaign', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteEventStream {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Pinpoint::DeleteEventStream', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteGcmChannel {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Pinpoint::DeleteGcmChannel', @_);
@@ -88,6 +93,11 @@ package Paws::Pinpoint;
     my $call_object = $self->new_with_coercions('Paws::Pinpoint::GetEndpoint', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetEventStream {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Pinpoint::GetEventStream', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetGcmChannel {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Pinpoint::GetGcmChannel', @_);
@@ -128,6 +138,11 @@ package Paws::Pinpoint;
     my $call_object = $self->new_with_coercions('Paws::Pinpoint::GetSegmentVersions', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub PutEventStream {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Pinpoint::PutEventStream', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateApnsChannel {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Pinpoint::UpdateApnsChannel', @_);
@@ -166,7 +181,7 @@ package Paws::Pinpoint;
   
 
 
-  sub operations { qw/CreateCampaign CreateImportJob CreateSegment DeleteApnsChannel DeleteCampaign DeleteGcmChannel DeleteSegment GetApnsChannel GetApplicationSettings GetCampaign GetCampaignActivities GetCampaigns GetCampaignVersion GetCampaignVersions GetEndpoint GetGcmChannel GetImportJob GetImportJobs GetSegment GetSegmentImportJobs GetSegments GetSegmentVersion GetSegmentVersions UpdateApnsChannel UpdateApplicationSettings UpdateCampaign UpdateEndpoint UpdateEndpointsBatch UpdateGcmChannel UpdateSegment / }
+  sub operations { qw/CreateCampaign CreateImportJob CreateSegment DeleteApnsChannel DeleteCampaign DeleteEventStream DeleteGcmChannel DeleteSegment GetApnsChannel GetApplicationSettings GetCampaign GetCampaignActivities GetCampaigns GetCampaignVersion GetCampaignVersions GetEndpoint GetEventStream GetGcmChannel GetImportJob GetImportJobs GetSegment GetSegmentImportJobs GetSegments GetSegmentVersion GetSegmentVersions PutEventStream UpdateApnsChannel UpdateApplicationSettings UpdateCampaign UpdateEndpoint UpdateEndpointsBatch UpdateGcmChannel UpdateSegment / }
 
 1;
 
@@ -243,6 +258,15 @@ Returns: a L<Paws::Pinpoint::DeleteCampaignResponse> instance
   Deletes a campaign.
 
 
+=head2 DeleteEventStream(ApplicationId => Str)
+
+Each argument is described in detail in: L<Paws::Pinpoint::DeleteEventStream>
+
+Returns: a L<Paws::Pinpoint::DeleteEventStreamResponse> instance
+
+  Deletes the event stream for an app.
+
+
 =head2 DeleteGcmChannel(ApplicationId => Str)
 
 Each argument is described in detail in: L<Paws::Pinpoint::DeleteGcmChannel>
@@ -312,7 +336,7 @@ Each argument is described in detail in: L<Paws::Pinpoint::GetCampaignVersion>
 
 Returns: a L<Paws::Pinpoint::GetCampaignVersionResponse> instance
 
-  Returns information about your campaign versions.
+  Returns information about a specific version of a campaign.
 
 
 =head2 GetCampaignVersions(ApplicationId => Str, CampaignId => Str, [PageSize => Str, Token => Str])
@@ -331,6 +355,15 @@ Each argument is described in detail in: L<Paws::Pinpoint::GetEndpoint>
 Returns: a L<Paws::Pinpoint::GetEndpointResponse> instance
 
   Returns information about an endpoint.
+
+
+=head2 GetEventStream(ApplicationId => Str)
+
+Each argument is described in detail in: L<Paws::Pinpoint::GetEventStream>
+
+Returns: a L<Paws::Pinpoint::GetEventStreamResponse> instance
+
+  Returns the event stream for an app.
 
 
 =head2 GetGcmChannel(ApplicationId => Str)
@@ -405,6 +438,15 @@ Returns: a L<Paws::Pinpoint::GetSegmentVersionsResponse> instance
   Returns information about your segment versions.
 
 
+=head2 PutEventStream(ApplicationId => Str, WriteEventStream => L<Paws::Pinpoint::WriteEventStream>)
+
+Each argument is described in detail in: L<Paws::Pinpoint::PutEventStream>
+
+Returns: a L<Paws::Pinpoint::PutEventStreamResponse> instance
+
+  Use to create or update the event stream for an app.
+
+
 =head2 UpdateApnsChannel(APNSChannelRequest => L<Paws::Pinpoint::APNSChannelRequest>, ApplicationId => Str)
 
 Each argument is described in detail in: L<Paws::Pinpoint::UpdateApnsChannel>
@@ -447,7 +489,7 @@ Each argument is described in detail in: L<Paws::Pinpoint::UpdateEndpointsBatch>
 
 Returns: a L<Paws::Pinpoint::UpdateEndpointsBatchResponse> instance
 
-  Use to update your endpoints.
+  Use to update a batch of endpoints.
 
 
 =head2 UpdateGcmChannel(ApplicationId => Str, GCMChannelRequest => L<Paws::Pinpoint::GCMChannelRequest>)

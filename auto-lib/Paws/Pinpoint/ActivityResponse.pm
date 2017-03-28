@@ -9,6 +9,8 @@ package Paws::Pinpoint::ActivityResponse;
   has Start => (is => 'ro', isa => 'Str');
   has State => (is => 'ro', isa => 'Str');
   has SuccessfulEndpointCount => (is => 'ro', isa => 'Int');
+  has TimezonesCompletedCount => (is => 'ro', isa => 'Int');
+  has TimezonesTotalCount => (is => 'ro', isa => 'Int');
   has TotalEndpointCount => (is => 'ro', isa => 'Int');
   has TreatmentId => (is => 'ro', isa => 'Str');
 1;
@@ -41,7 +43,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::A
 
 =head1 DESCRIPTION
 
-This class has no description
+Activity definition
 
 =head1 ATTRIBUTES
 
@@ -92,6 +94,16 @@ RUNNING, PAUSED, CANCELLED, COMPLETED
 
   The total number of endpoints to which the campaign successfully
 delivered messages.
+
+
+=head2 TimezonesCompletedCount => Int
+
+  The total number of timezones completed.
+
+
+=head2 TimezonesTotalCount => Int
+
+  The total number of unique timezones present in the segment.
 
 
 =head2 TotalEndpointCount => Int

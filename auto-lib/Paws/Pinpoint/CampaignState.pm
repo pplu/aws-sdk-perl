@@ -31,7 +31,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::C
 
 =head1 DESCRIPTION
 
-This class has no description
+State of the Campaign
 
 =head1 ATTRIBUTES
 

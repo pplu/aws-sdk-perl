@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::A
 
 =head1 DESCRIPTION
 
-This class has no description
+Custom attibute dimension
 
 =head1 ATTRIBUTES
 

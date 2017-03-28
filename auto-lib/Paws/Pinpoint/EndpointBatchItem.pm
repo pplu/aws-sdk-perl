@@ -42,14 +42,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::E
 
 =head1 DESCRIPTION
 
-This class has no description
+Endpoint update request
 
 =head1 ATTRIBUTES
 
 
 =head2 Address => Str
 
-  The address or token of the endpoint.
+  The address or token of the endpoint as provided by your push provider
+(e.g. DeviceToken or RegistrationId).
 
 
 =head2 Attributes => L<Paws::Pinpoint::MapOfListOf__string>
@@ -82,7 +83,7 @@ updated.
 
 =head2 Id => Str
 
-  
+  The unique Id for the Endpoint in the batch.
 
 
 =head2 Location => L<Paws::Pinpoint::EndpointLocation>
