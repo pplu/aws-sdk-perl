@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Rekognition
 
 =head1 DESCRIPTION
 
-Identifies image brightness and sharpness.
+Identifies face image brightness and sharpness.
 
 =head1 ATTRIBUTES
 
@@ -40,12 +40,15 @@ Identifies image brightness and sharpness.
 =head2 Brightness => Num
 
   Value representing brightness of the face. The service returns a value
-between 0 and 1 (inclusive).
+between 0 and 100 (inclusive). A higher value indicates a brighter face
+image.
 
 
 =head2 Sharpness => Num
 
-  Value representing sharpness of the face.
+  Value representing sharpness of the face. The service returns a value
+between 0 and 100 (inclusive). A higher value indicates a sharper face
+image.
 
 
 
