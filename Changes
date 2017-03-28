@@ -22,6 +22,9 @@
  - DeviceFarm API update 
  - EMR API update
  - ApiGateway API update
+ - Pinpoint API update
+ - Discovery API update
+ - CloudTrail API update
 
 0.31 01 Feb 2017 
  - Bug fixed: Services that use QueryCaller and EC2Caller were not serializing Booleans correctly
