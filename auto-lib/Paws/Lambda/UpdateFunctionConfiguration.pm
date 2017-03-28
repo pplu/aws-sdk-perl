@@ -123,7 +123,7 @@ earlier runtime (v0.10.42), set the value to "nodejs".
 You can no longer downgrade to the v0.10.42 runtime version. This
 version will no longer be supported as of early 2017.
 
-Valid values are: C<"nodejs">, C<"nodejs4.3">, C<"java8">, C<"python2.7">, C<"dotnetcore1.0">, C<"nodejs4.3-edge">
+Valid values are: C<"nodejs">, C<"nodejs4.3">, C<"nodejs6.10">, C<"java8">, C<"python2.7">, C<"dotnetcore1.0">, C<"nodejs4.3-edge">
 
 =head2 Timeout => Int
 
