@@ -1,8 +1,8 @@
 
 package Paws::CloudTrail::PutEventSelectors;
   use Moose;
-  has EventSelectors => (is => 'ro', isa => 'ArrayRef[Paws::CloudTrail::EventSelector]');
-  has TrailName => (is => 'ro', isa => 'Str');
+  has EventSelectors => (is => 'ro', isa => 'ArrayRef[Paws::CloudTrail::EventSelector]', required => 1);
+  has TrailName => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -34,14 +34,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 EventSelectors => ArrayRef[L<Paws::CloudTrail::EventSelector>]
+=head2 B<REQUIRED> EventSelectors => ArrayRef[L<Paws::CloudTrail::EventSelector>]
 
 Specifies the settings for your event selectors. You can configure up
 to five event selectors for a trail.
 
 
 
-=head2 TrailName => Str
+=head2 B<REQUIRED> TrailName => Str
 
 Specifies the name of the trail or trail ARN. If you specify a trail
 name, the string must meet the following requirements:

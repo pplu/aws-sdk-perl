@@ -1,7 +1,7 @@
 
 package Paws::CloudTrail::GetEventSelectors;
   use Moose;
-  has TrailName => (is => 'ro', isa => 'Str');
+  has TrailName => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -33,7 +33,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 TrailName => Str
+=head2 B<REQUIRED> TrailName => Str
 
 Specifies the name of the trail or trail ARN. If you specify a trail
 name, the string must meet the following requirements:
