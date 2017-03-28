@@ -76,7 +76,7 @@ C<Terminated>, or C<Undeliverable>.
 
 =head2 DocumentName => Str
 
-  The name of the SSM document requested for execution.
+  The name of the document requested for execution.
 
 
 =head2 ErrorCount => Int
@@ -103,8 +103,7 @@ user input provided as part of the SendCommand API.
 at the same time. You can specify a number of instances, such as 10, or
 a percentage of instances, such as 10%. The default value is 50. For
 more information about how to use C<MaxConcurrency>, see Executing a
-Command Using Amazon EC2 Run Command (Linux) or Executing a Command
-Using Amazon EC2 Run Command (Windows).
+Command Using Systems Manager Run Command.
 
 
 =head2 MaxErrors => Str
@@ -113,8 +112,7 @@ Using Amazon EC2 Run Command (Windows).
 the command to additional targets. You can specify a number of errors,
 such as 10, or a percentage or errors, such as 10%. The default value
 is 50. For more information about how to use C<MaxErrors>, see
-Executing a Command Using Amazon EC2 Run Command (Linux) or Executing a
-Command Using Amazon EC2 Run Command (Windows).
+Executing a Command Using Systems Manager Run Command.
 
 
 =head2 NotificationConfig => L<Paws::SSM::NotificationConfig>
@@ -144,8 +142,8 @@ being called.
 
 =head2 Parameters => L<Paws::SSM::Parameters>
 
-  The parameter values to be inserted in the SSM document when executing
-the command.
+  The parameter values to be inserted in the document when executing the
+command.
 
 
 =head2 RequestedDateTime => Str
@@ -170,8 +168,8 @@ sending notifications about command status changes.
 more information than C<Status> because it includes states resulting
 from error and concurrency control parameters. C<StatusDetails> can
 show different results than C<Status>. For more information about these
-statuses, see Monitor Commands (Linux) or Monitor Commands (Windows).
-C<StatusDetails> can be one of the following values:
+statuses, see Run Command Status. C<StatusDetails> can be one of the
+following values:
 
 =over
 
@@ -237,7 +235,7 @@ terminal state.
 =head2 Targets => ArrayRef[L<Paws::SSM::Target>]
 
   An array of search criteria that targets instances using a
-C<Key>;C<Value> combination that you specify. C<Targets> is required if
+C<Key>,C<Value> combination that you specify. C<Targets> is required if
 you don't provide one or more instance IDs in the call.
 
 

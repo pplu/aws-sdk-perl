@@ -62,7 +62,7 @@ registered.
 
 =head2 AgentVersion => Str
 
-  The version of the SSM agent running on your Linux instance.
+  The version of the SSM Agent running on your Linux instance.
 
 
 =head2 AssociationOverview => L<Paws::SSM::InstanceAggregatedAssociationOverview>
@@ -98,7 +98,7 @@ instances or managed instances.
 
 =head2 IsLatestVersion => Bool
 
-  Indicates whether latest version of the SSM agent is running on your
+  Indicates whether latest version of the SSM Agent is running on your
 instance.
 
 
@@ -124,7 +124,7 @@ instance.
 
 =head2 PingStatus => Str
 
-  Connection status of the SSM agent.
+  Connection status of the SSM Agent.
 
 
 =head2 PlatformName => Str

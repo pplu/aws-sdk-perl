@@ -58,7 +58,8 @@ The name of the parameter that you want to add to the system.
 
 =head2 Overwrite => Bool
 
-Overwrite an existing parameter.
+Overwrite an existing parameter. If not specified, will default to
+"false".
 
 
 

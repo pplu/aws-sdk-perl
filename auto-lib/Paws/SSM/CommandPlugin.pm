@@ -142,8 +142,8 @@ plugins.
 more information than C<Status> because it includes states resulting
 from error and concurrency control parameters. C<StatusDetails> can
 show different results than C<Status>. For more information about these
-statuses, see Monitor Commands (Linux) or Monitor Commands (Windows).
-C<StatusDetails> can be one of the following values:
+statuses, see Run Command Status. C<StatusDetails> can be one of the
+following values:
 
 =over
 

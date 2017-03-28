@@ -40,8 +40,8 @@ The comment text for the command.
 
 =head2 DocumentName => Str
 
-The name of the SSM document that was executed. For example,
-AWS-RunShellScript is an SSM document.
+The name of the document that was executed. For example,
+AWS-RunShellScript.
 
 
 =head2 ExecutionElapsedTime => Str
@@ -123,9 +123,8 @@ A detailed status of the command execution for an invocation.
 C<StatusDetails> includes more information than C<Status> because it
 includes states resulting from error and concurrency control
 parameters. C<StatusDetails> can show different results than C<Status>.
-For more information about these statuses, see Monitor Commands (Linux)
-or Monitor Commands (Windows). C<StatusDetails> can be one of the
-following values:
+For more information about these statuses, see Run Command Status.
+C<StatusDetails> can be one of the following values:
 
 =over
 
