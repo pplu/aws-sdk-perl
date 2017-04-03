@@ -649,7 +649,7 @@ Returns: a L<Paws::CloudDirectory::ListIndexResponse> instance
   Lists objects attached to the specified index.
 
 
-=head2 ListObjectAttributes(DirectoryArn => Str, ObjectReference => L<Paws::CloudDirectory::ObjectReference>, [ConsistencyLevel => Str, MaxResults => Int, NextToken => Str])
+=head2 ListObjectAttributes(DirectoryArn => Str, ObjectReference => L<Paws::CloudDirectory::ObjectReference>, [ConsistencyLevel => Str, FacetFilter => L<Paws::CloudDirectory::SchemaFacet>, MaxResults => Int, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::CloudDirectory::ListObjectAttributes>
 
