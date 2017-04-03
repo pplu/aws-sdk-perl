@@ -43,7 +43,8 @@ configuration states.
 
 =head2 ConfigSnapshotDeliveryProperties => L<Paws::Config::ConfigSnapshotDeliveryProperties>
 
-  
+  The options for how often AWS Config delivers configuration snapshots
+to the Amazon S3 bucket.
 
 
 =head2 Name => Str
