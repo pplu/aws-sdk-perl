@@ -1,7 +1,6 @@
 package Paws::Credential::InstanceProfile;
   use JSON::MaybeXS;
   use Moose;
-  use DateTime;
   use DateTime::Format::ISO8601;
   with 'Paws::Credential';
 
@@ -28,10 +27,8 @@ package Paws::Credential::InstanceProfile;
 
   has expiration => (
     is => 'rw',
-    isa => 'DateTime',
-    default => sub {
-      DateTime->from_epoch(epoch => 0); # need a better way to do this
-    }
+    isa => 'Int',
+    default => sub { 0 }
   );
 
   has actual_creds => (is => 'rw', default => sub { {} });
@@ -58,7 +55,7 @@ package Paws::Credential::InstanceProfile;
   sub _refresh {
     my $self = shift;
 
-    return if (($self->expiration - DateTime->now())->is_positive);
+    return if $self->expiration >= time;
 
     my $ua = $self->ua;
     my $r = $ua->get($self->metadata_url);
@@ -72,7 +69,7 @@ package Paws::Credential::InstanceProfile;
     if ($@) { die "Error in JSON from metadata URL" }
 
     $self->actual_creds($json);
-    $self->expiration(DateTime::Format::ISO8601->parse_datetime($json->{Expiration}));
+    $self->expiration(DateTime::Format::ISO8601->parse_datetime($json->{Expiration})->epoch);
   }
 
   no Moose;

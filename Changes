@@ -1,4 +1,5 @@
 0.32
+ - Speed up Credential Refreshing (Arthur Axel fREW Schmidt)
  - Bug fixed: Issue #105. Some API calls where not correctly handling parameters specified in their URI.
    Notably, this fixes S3 ListObjectsV2. (dakkar)
  - New API: LexRuntime
