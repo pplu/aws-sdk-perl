@@ -5,7 +5,6 @@ package Paws::Net::RestXmlCaller;
   use URI::Template;
   use URI::Escape;
   use Moose::Util;
-  use Safe::Isa qw($_isa);
 
   sub array_flatten_string {
     my $self = shift;
