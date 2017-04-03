@@ -2,7 +2,9 @@ package Paws::CloudFront::CustomOriginConfig;
   use Moose;
   has HTTPPort => (is => 'ro', isa => 'Int', required => 1);
   has HTTPSPort => (is => 'ro', isa => 'Int', required => 1);
+  has OriginKeepaliveTimeout => (is => 'ro', isa => 'Int');
   has OriginProtocolPolicy => (is => 'ro', isa => 'Str', required => 1);
+  has OriginReadTimeout => (is => 'ro', isa => 'Int');
   has OriginSslProtocols => (is => 'ro', isa => 'Paws::CloudFront::OriginSslProtocols');
 1;
 
@@ -49,9 +51,31 @@ A customer origin.
   The HTTPS port the custom origin listens on.
 
 
+=head2 OriginKeepaliveTimeout => Int
+
+  You can create a custom keep-alive timeout. All timeout units are in
+seconds. The default keep-alive timeout is 5 seconds, but you can
+configure custom timeout lengths using the CloudFront API. The minimum
+timeout length is 1 second; the maximum is 60 seconds.
+
+If you need to increase the maximum time limit, contact the AWS Support
+Center.
+
+
 =head2 B<REQUIRED> OriginProtocolPolicy => Str
 
   The origin protocol policy to apply to your origin.
+
+
+=head2 OriginReadTimeout => Int
+
+  You can create a custom origin read timeout. All timeout units are in
+seconds. The default origin read timeout is 30 seconds, but you can
+configure custom timeout lengths using the CloudFront API. The minimum
+timeout length is 4 seconds; the maximum is 60 seconds.
+
+If you need to increase the maximum time limit, contact the AWS Support
+Center.
 
 
 =head2 OriginSslProtocols => L<Paws::CloudFront::OriginSslProtocols>
