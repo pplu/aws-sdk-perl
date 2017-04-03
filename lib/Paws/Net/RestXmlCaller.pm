@@ -169,7 +169,7 @@ package Paws::Net::RestXmlCaller;
 
     my $uri = $self->_call_uri($call); #in RestXmlCaller
 
-    my $qparams = {};
+    my $qparams = { $uri->query_form };
     foreach my $attribute ($call->meta->get_all_attributes) {
       my $att_name = $attribute->name;
       if ($attribute->does('Paws::API::Attribute::Trait::ParamInQuery')) {
