@@ -1,4 +1,4 @@
-#!/usr/bin/env perl
+
 
 use strict;
 use warnings;
@@ -290,6 +290,29 @@ $test_params = {
  'max-keys' => 5,
 };
 
+request_has_params($test_params, $request);
+
+$request = $s3->ListObjectsV2(
+  Bucket => 'test_bucket',
+  Prefix => 'A/Prefix',
+  MaxKeys => 5
+);
+
+$test_params = {
+  prefix => 'A/Prefix',
+ 'max-keys' => 5,
+};
+
+like($request->uri, qr/list-type=2/, 'Found list-type=2 in the URI');
+request_has_params($test_params, $request);
+
+$request = $s3->DeleteBucketLifecycle(
+  Bucket => 'test_bucket',
+);
+
+$test_params = { };
+
+like($request->uri, qr/\?lifecycle/, 'Found lifecycle in the URI');
 request_has_params($test_params, $request);
 
 my $cognito = $aws->service('CognitoIdentity');
