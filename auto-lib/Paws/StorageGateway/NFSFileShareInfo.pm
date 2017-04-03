@@ -11,7 +11,9 @@ package Paws::StorageGateway::NFSFileShareInfo;
   has LocationARN => (is => 'ro', isa => 'Str');
   has NFSFileShareDefaults => (is => 'ro', isa => 'Paws::StorageGateway::NFSFileShareDefaults');
   has Path => (is => 'ro', isa => 'Str');
+  has ReadOnly => (is => 'ro', isa => 'Bool');
   has Role => (is => 'ro', isa => 'Str');
+  has Squash => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -31,7 +33,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::StorageGateway::NFSFileShareInfo object:
 
-  $service_obj->Method(Att1 => { ClientList => $value, ..., Role => $value  });
+  $service_obj->Method(Att1 => { ClientList => $value, ..., Squash => $value  });
 
 =head3 Results returned from an API call
 
@@ -44,7 +46,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::StorageGate
 
 The Unix file permissions and ownership information assigned, by
 default, to native S3 objects when Storage Gateway discovers them in S3
-buckets.
+buckets. This operation is only supported in file gateways.
 
 =head1 ATTRIBUTES
 
@@ -108,7 +110,17 @@ false to use a key managed by Amazon S3. Optional.
   
 
 
+=head2 ReadOnly => Bool
+
+  
+
+
 =head2 Role => Str
+
+  
+
+
+=head2 Squash => Str
 
   
 
