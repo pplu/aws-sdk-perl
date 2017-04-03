@@ -186,6 +186,48 @@ package Paws::CloudFormation;
 
     return undef
   }
+  sub ListAllExports {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListExports(@_);
+
+    if (not defined $callback) {
+      while ($result->NextToken) {
+        $result = $self->ListExports(@_, NextToken => $result->NextToken);
+        push @{ $result->Exports }, @{ $result->Exports };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $result = $self->ListExports(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'Exports') foreach (@{ $result->Exports });
+      }
+    }
+
+    return undef
+  }
+  sub ListAllImports {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListImports(@_);
+
+    if (not defined $callback) {
+      while ($result->NextToken) {
+        $result = $self->ListImports(@_, NextToken => $result->NextToken);
+        push @{ $result->Imports }, @{ $result->Imports };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $result = $self->ListImports(@_, NextToken => $result->NextToken);
+        $callback->($_ => 'Imports') foreach (@{ $result->Imports });
+      }
+    }
+
+    return undef
+  }
   sub ListAllStackResources {
     my $self = shift;
 
@@ -687,6 +729,30 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - Stacks, passing the object as the first parameter, and the string 'Stacks' as the second parameter 
 
 If not, it will return a a L<Paws::CloudFormation::DescribeStacksOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllExports(sub { },[NextToken => Str])
+
+=head2 ListAllExports([NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Exports, passing the object as the first parameter, and the string 'Exports' as the second parameter 
+
+If not, it will return a a L<Paws::CloudFormation::ListExportsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllImports(sub { },ExportName => Str, [NextToken => Str])
+
+=head2 ListAllImports(ExportName => Str, [NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Imports, passing the object as the first parameter, and the string 'Imports' as the second parameter 
+
+If not, it will return a a L<Paws::CloudFormation::ListImportsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 ListAllStackResources(sub { },StackName => Str, [NextToken => Str])
