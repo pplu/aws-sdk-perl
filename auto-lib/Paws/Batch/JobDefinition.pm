@@ -4,6 +4,7 @@ package Paws::Batch::JobDefinition;
   has JobDefinitionArn => (is => 'ro', isa => 'Str', xmlname => 'jobDefinitionArn', request_name => 'jobDefinitionArn', traits => ['Unwrapped','NameInRequest'], required => 1);
   has JobDefinitionName => (is => 'ro', isa => 'Str', xmlname => 'jobDefinitionName', request_name => 'jobDefinitionName', traits => ['Unwrapped','NameInRequest'], required => 1);
   has Parameters => (is => 'ro', isa => 'Paws::Batch::ParametersMap', xmlname => 'parameters', request_name => 'parameters', traits => ['Unwrapped','NameInRequest']);
+  has RetryStrategy => (is => 'ro', isa => 'Paws::Batch::RetryStrategy', xmlname => 'retryStrategy', request_name => 'retryStrategy', traits => ['Unwrapped','NameInRequest']);
   has Revision => (is => 'ro', isa => 'Int', xmlname => 'revision', request_name => 'revision', traits => ['Unwrapped','NameInRequest'], required => 1);
   has Status => (is => 'ro', isa => 'Str', xmlname => 'status', request_name => 'status', traits => ['Unwrapped','NameInRequest']);
   has Type => (is => 'ro', isa => 'Str', xmlname => 'type', request_name => 'type', traits => ['Unwrapped','NameInRequest'], required => 1);
@@ -63,6 +64,12 @@ An object representing an AWS Batch job definition.
 in the job definition. Parameters are specified as a key-value pair
 mapping. Parameters in a C<SubmitJob> request override any
 corresponding parameter defaults from the job definition.
+
+
+=head2 RetryStrategy => L<Paws::Batch::RetryStrategy>
+
+  The retry strategy to use for failed jobs that are submitted with this
+job definition.
 
 
 =head2 B<REQUIRED> Revision => Int

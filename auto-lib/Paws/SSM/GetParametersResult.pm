@@ -23,7 +23,7 @@ when executed.
 
 =head2 Parameters => ArrayRef[L<Paws::SSM::Parameter>]
 
-A list of parameters used by the AWS account.
+A list of details for a parameter.
 
 
 =head2 _request_id => Str

@@ -32,7 +32,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::C
 
 =head1 DESCRIPTION
 
-This class has no description
+Campaign Limits are used to limit the number of messages that can be
+sent to a user.
 
 =head1 ATTRIBUTES
 

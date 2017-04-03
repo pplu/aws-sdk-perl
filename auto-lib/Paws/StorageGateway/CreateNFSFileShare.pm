@@ -9,7 +9,9 @@ package Paws::StorageGateway::CreateNFSFileShare;
   has KMSKey => (is => 'ro', isa => 'Str');
   has LocationARN => (is => 'ro', isa => 'Str', required => 1);
   has NFSFileShareDefaults => (is => 'ro', isa => 'Paws::StorageGateway::NFSFileShareDefaults');
+  has ReadOnly => (is => 'ro', isa => 'Bool');
   has Role => (is => 'ro', isa => 'Str', required => 1);
+  has Squash => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -97,10 +99,25 @@ File share default values. Optional.
 
 
 
+=head2 ReadOnly => Bool
+
+Sets the write status of a file share. "true", if the write status is
+read-only; otherwise "false.
+
+
+
 =head2 B<REQUIRED> Role => Str
 
 The ARN of the AWS Identity and Access Management (IAM) role that a
 file gateway assumes when it accesses the underlying storage.
+
+
+
+=head2 Squash => Str
+
+Maps a user to anonymous user. Valid options: "RootSquash" - Only root
+is mapped to anonymous user, "NoSquash" - No one is mapped to anonymous
+user or "AllSquash" - Everyone is mapped to anonymous user.
 
 
 

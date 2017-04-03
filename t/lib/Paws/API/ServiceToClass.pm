@@ -79,6 +79,7 @@ package Paws::API::ServiceToClass;
     rds => 'RDS',
     rekognition => 'Rekognition',
     redshift => 'RedShift',
+    resourcegroupstaggingapi => 'ResourceTagging',
     route53 => 'Route53',
     route53domains => 'Route53Domains',
     s3 => 'S3',

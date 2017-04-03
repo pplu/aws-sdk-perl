@@ -16,7 +16,7 @@ Paws::SSM::CreateDocumentResult
 
 =head2 DocumentDescription => L<Paws::SSM::DocumentDescription>
 
-Information about the SSM document.
+Information about the Systems Manager document.
 
 
 =head2 _request_id => Str

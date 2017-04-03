@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::Q
 
 =head1 DESCRIPTION
 
-This class has no description
+Quiet Time
 
 =head1 ATTRIBUTES
 

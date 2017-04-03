@@ -44,7 +44,7 @@ A resource tag.
 
 =head2 TagsList => ArrayRef[L<Paws::CloudTrail::Tag>]
 
-  
+  A list of tags.
 
 
 

@@ -2,7 +2,7 @@ package Paws::CloudFront;
   warn "Paws::CloudFront is not stable / supported / entirely developed";
   use Moose;
   sub service { 'cloudfront' }
-  sub version { '2016-11-25' }
+  sub version { '2017-03-25' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);
   has retry => (is => 'ro', isa => 'HashRef', default => sub {
@@ -317,7 +317,7 @@ Each argument is described in detail in: L<Paws::CloudFront::CreateDistribution>
 
 Returns: a L<Paws::CloudFront::CreateDistributionResult> instance
 
-  Creates a new web distribution. Send a C<GET> request to the
+  Creates a new web distribution. Send a C<POST> request to the
 C</I<CloudFront API version>/distribution>/C<distribution ID> resource.
 
 

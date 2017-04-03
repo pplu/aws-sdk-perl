@@ -268,9 +268,8 @@ that works for most clients:
 =item *
 
 C<vip>: CloudFront uses dedicated IP addresses for your content and can
-respond to HTTPS requests from any viewer. However, you must request
-permission to use this feature, and you incur additional monthly
-charges.
+respond to HTTPS requests from any viewer. However, you will incur
+additional monthly charges.
 
 =item *
 

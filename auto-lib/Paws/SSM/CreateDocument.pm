@@ -50,7 +50,7 @@ Valid values are: C<"Command">, C<"Policy">, C<"Automation">
 
 =head2 B<REQUIRED> Name => Str
 
-A name for the SSM document.
+A name for the Systems Manager document.
 
 
 

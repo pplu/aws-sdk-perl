@@ -92,7 +92,7 @@ be a server or virtual machine.
 
 =head2 RegisteredTime => Str
 
-  Agent's first registration time stamp in UTC.
+  Agent's first registration timestamp in UTC.
 
 
 =head2 Version => Str

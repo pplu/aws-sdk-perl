@@ -50,10 +50,14 @@ Config to evaluate your AWS resources.
 
 =head2 MaximumExecutionFrequency => Str
 
-  The frequency that you want AWS Config to run evaluations for a rule
-that is triggered periodically. If you specify a value for
+  The frequency that you want AWS Config to run evaluations for a custom
+rule with a periodic trigger. If you specify a value for
 C<MaximumExecutionFrequency>, then C<MessageType> must use the
 C<ScheduledNotification> value.
+
+By default, rules with a periodic trigger are evaluated every 24 hours.
+To change the frequency, specify a valid value for the
+C<MaximumExecutionFrequency> parameter.
 
 
 =head2 MessageType => Str

@@ -26,7 +26,7 @@ Details about discovered agents, including agent status and health.
 
 =head2 Applications => Int
 
-Number of applications discovered.
+The number of applications discovered.
 
 
 =head2 ConnectorSummary => L<Paws::Discovery::CustomerConnectorInfo>
@@ -37,17 +37,17 @@ health.
 
 =head2 Servers => Int
 
-Number of servers discovered.
+The number of servers discovered.
 
 
 =head2 ServersMappedToApplications => Int
 
-Number of servers mapped to applications.
+The number of servers mapped to applications.
 
 
 =head2 ServersMappedtoTags => Int
 
-Number of servers mapped to tags.
+The number of servers mapped to tags.
 
 
 =head2 _request_id => Str

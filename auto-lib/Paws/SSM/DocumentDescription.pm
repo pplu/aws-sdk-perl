@@ -52,7 +52,7 @@ Describes an SSM document.
 
 =head2 CreatedDate => Str
 
-  The date when the SSM document was created.
+  The date when the document was created.
 
 
 =head2 DefaultVersion => Str

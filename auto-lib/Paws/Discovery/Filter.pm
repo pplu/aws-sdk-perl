@@ -35,9 +35,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Discovery::
 
 A filter that can use conditional operators.
 
-for a complete list of filters and guidance for using them with the
-Application Discovery Service, see Querying Discovered Configuration
-Items.
+For more information about filters, see Querying Discovered
+Configuration Items.
 
 =head1 ATTRIBUTES
 
@@ -60,9 +59,9 @@ of matching configuration items.
 
 =head2 B<REQUIRED> Values => ArrayRef[Str|Undef]
 
-  A string value that you want to filter on. For example, if you choose
-the C<destinationServer.osVersion> filter name, you could specify
-C<Ubuntu> for the value.
+  A string value on which to filter. For example, if you choose the
+C<destinationServer.osVersion> filter name, you could specify C<Ubuntu>
+for the value.
 
 
 

@@ -33,8 +33,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Batch::Moun
 
 =head1 DESCRIPTION
 
-Details on a volume mount point that is used in a job's container
-properties.
+Details on a Docker volume mount point that is used in a job's
+container properties.
 
 =head1 ATTRIBUTES
 

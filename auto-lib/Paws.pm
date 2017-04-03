@@ -384,6 +384,8 @@ L<Paws::RedShift>
 
 L<Paws::Rekognition>
 
+L<Paws::ResourceTagging>
+
 L<Paws::Route53>
 
 L<Paws::Route53Domains>

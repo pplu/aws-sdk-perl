@@ -54,7 +54,7 @@ data. The URL is displayed only if the export succeeded.
 
 =head2 B<REQUIRED> ExportRequestTime => Str
 
-  The time the configuration data export was initiated.
+  The time that the configuration data export was initiated.
 
 
 =head2 B<REQUIRED> ExportStatus => Str

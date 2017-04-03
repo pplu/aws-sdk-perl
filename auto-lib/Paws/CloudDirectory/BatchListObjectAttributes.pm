@@ -1,5 +1,6 @@
 package Paws::CloudDirectory::BatchListObjectAttributes;
   use Moose;
+  has FacetFilter => (is => 'ro', isa => 'Paws::CloudDirectory::SchemaFacet');
   has MaxResults => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
   has ObjectReference => (is => 'ro', isa => 'Paws::CloudDirectory::ObjectReference', required => 1);
@@ -22,20 +23,26 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CloudDirectory::BatchListObjectAttributes object:
 
-  $service_obj->Method(Att1 => { MaxResults => $value, ..., ObjectReference => $value  });
+  $service_obj->Method(Att1 => { FacetFilter => $value, ..., ObjectReference => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::CloudDirectory::BatchListObjectAttributes object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->MaxResults
+  $result->Att1->FacetFilter
 
 =head1 DESCRIPTION
 
 Represents the output of a C<ListObjectAttributes> operation.
 
 =head1 ATTRIBUTES
+
+
+=head2 FacetFilter => L<Paws::CloudDirectory::SchemaFacet>
+
+  Used to filter the list of object attributes associated with a certain
+facet.
 
 
 =head2 MaxResults => Int

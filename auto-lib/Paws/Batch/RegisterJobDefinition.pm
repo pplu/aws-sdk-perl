@@ -4,6 +4,7 @@ package Paws::Batch::RegisterJobDefinition;
   has ContainerProperties => (is => 'ro', isa => 'Paws::Batch::ContainerProperties');
   has JobDefinitionName => (is => 'ro', isa => 'Str', required => 1);
   has Parameters => (is => 'ro', isa => 'Paws::Batch::ParametersMap');
+  has RetryStrategy => (is => 'ro', isa => 'Paws::Batch::RetryStrategy');
   has Type => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -57,6 +58,14 @@ Default parameter substitution placeholders to set in the job
 definition. Parameters are specified as a key-value pair mapping.
 Parameters in a C<SubmitJob> request override any corresponding
 parameter defaults from the job definition.
+
+
+
+=head2 RetryStrategy => L<Paws::Batch::RetryStrategy>
+
+The retry strategy to use for failed jobs that are submitted with this
+job definition. Any retry strategy that is specified during a SubmitJob
+operation overrides the retry strategy defined here.
 
 
 

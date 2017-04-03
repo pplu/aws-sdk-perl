@@ -121,11 +121,14 @@ frequency.
 =item *
 
 Your custom rule is triggered when AWS Config delivers the
-configuration snapshot.
+configuration snapshot. For more information, see
+ConfigSnapshotDeliveryProperties.
 
 =back
 
-For more information, see ConfigSnapshotDeliveryProperties.
+By default, rules with a periodic trigger are evaluated every 24 hours.
+To change the frequency, specify a valid value for the
+C<MaximumExecutionFrequency> parameter.
 
 
 =head2 Scope => L<Paws::Config::Scope>

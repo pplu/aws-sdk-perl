@@ -22,7 +22,7 @@ Reserved for future use.
 
 =head2 ResourceTagList => ArrayRef[L<Paws::CloudTrail::ResourceTag>]
 
-
+A list of resource tags.
 
 
 =head2 _request_id => Str

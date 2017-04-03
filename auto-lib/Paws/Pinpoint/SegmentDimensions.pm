@@ -4,6 +4,7 @@ package Paws::Pinpoint::SegmentDimensions;
   has Behavior => (is => 'ro', isa => 'Paws::Pinpoint::SegmentBehaviors');
   has Demographic => (is => 'ro', isa => 'Paws::Pinpoint::SegmentDemographics');
   has Location => (is => 'ro', isa => 'Paws::Pinpoint::SegmentLocation');
+  has UserAttributes => (is => 'ro', isa => 'Paws::Pinpoint::MapOfAttributeDimension');
 1;
 
 ### main pod documentation begin ###
@@ -23,7 +24,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Pinpoint::SegmentDimensions object:
 
-  $service_obj->Method(Att1 => { Attributes => $value, ..., Location => $value  });
+  $service_obj->Method(Att1 => { Attributes => $value, ..., UserAttributes => $value  });
 
 =head3 Results returned from an API call
 
@@ -34,7 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::S
 
 =head1 DESCRIPTION
 
-This class has no description
+Segment dimensions
 
 =head1 ATTRIBUTES
 
@@ -57,6 +58,11 @@ This class has no description
 =head2 Location => L<Paws::Pinpoint::SegmentLocation>
 
   The segment location attributes.
+
+
+=head2 UserAttributes => L<Paws::Pinpoint::MapOfAttributeDimension>
+
+  Custom segment user attributes.
 
 
 

@@ -49,7 +49,7 @@ The ID of the instance.
 
 =head2 Name => Str
 
-The name of the SSM document.
+The name of the Systems Manager document.
 
 
 

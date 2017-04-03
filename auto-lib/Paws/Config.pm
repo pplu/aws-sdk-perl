@@ -721,9 +721,9 @@ to the function. Specify the ARN for the C<SourceIdentifier> key. This
 key is part of the C<Source> object, which is part of the C<ConfigRule>
 object.
 
-If you are adding a new AWS managed Config rule, specify the rule's
+If you are adding an AWS managed Config rule, specify the rule's
 identifier for the C<SourceIdentifier> key. To reference AWS managed
-Config rule identifiers, see Using AWS Managed Config Rules.
+Config rule identifiers, see About AWS Managed Config Rules.
 
 For any new rule that you add, specify the C<ConfigRuleName> in the
 C<ConfigRule> object. Do not specify the C<ConfigRuleArn> or the

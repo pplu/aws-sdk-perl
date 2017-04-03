@@ -35,7 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::StorageGate
 
 =head1 DESCRIPTION
 
-Represents a device object associated with a gateway-VTL.
+Represents a device object associated with a tape gateway.
 
 =head1 ATTRIBUTES
 

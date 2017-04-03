@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::R
 
 =head1 DESCRIPTION
 
-This class has no description
+Define how a segment based on recency of use.
 
 =head1 ATTRIBUTES
 

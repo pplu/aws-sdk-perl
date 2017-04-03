@@ -316,3 +316,5 @@ rpcme for reporting various bugs in the SDK
 glenveegee for lots of work sorting out the S3 implementation
 
 Grinzz for many bugs, suggestions and fixes
+
+Dakkar for solving issues with parameter passing

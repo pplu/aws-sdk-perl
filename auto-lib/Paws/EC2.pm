@@ -1698,9 +1698,11 @@ Each argument is described in detail in: L<Paws::EC2::AttachVpnGateway>
 
 Returns: a L<Paws::EC2::AttachVpnGatewayResult> instance
 
-  Attaches a virtual private gateway to a VPC. For more information, see
-Adding a Hardware Virtual Private Gateway to Your VPC in the I<Amazon
-Virtual Private Cloud User Guide>.
+  Attaches a virtual private gateway to a VPC. You can attach one virtual
+private gateway to one VPC at a time.
+
+For more information, see Adding a Hardware Virtual Private Gateway to
+Your VPC in the I<Amazon Virtual Private Cloud User Guide>.
 
 
 =head2 AuthorizeSecurityGroupEgress(GroupId => Str, [CidrIp => Str, DryRun => Bool, FromPort => Int, IpPermissions => ArrayRef[L<Paws::EC2::IpPermission>], IpProtocol => Str, SourceSecurityGroupName => Str, SourceSecurityGroupOwnerId => Str, ToPort => Int])
@@ -2427,7 +2429,7 @@ tags, see Supported Resource-Level Permissions for Amazon EC2 API
 Actions in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
-=head2 CreateVolume(AvailabilityZone => Str, [DryRun => Bool, Encrypted => Bool, Iops => Int, KmsKeyId => Str, Size => Int, SnapshotId => Str, VolumeType => Str])
+=head2 CreateVolume(AvailabilityZone => Str, [DryRun => Bool, Encrypted => Bool, Iops => Int, KmsKeyId => Str, Size => Int, SnapshotId => Str, TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>], VolumeType => Str])
 
 Each argument is described in detail in: L<Paws::EC2::CreateVolume>
 
@@ -2448,8 +2450,11 @@ EBS encryption. Volumes that are created from encrypted snapshots are
 also automatically encrypted. For more information, see Amazon EBS
 Encryption in the I<Amazon Elastic Compute Cloud User Guide>.
 
-For more information, see Creating or Restoring an Amazon EBS Volume in
-the I<Amazon Elastic Compute Cloud User Guide>.
+You can tag your volumes during creation. For more information, see
+Tagging Your Amazon EC2 Resources.
+
+For more information, see Creating an Amazon EBS Volume in the I<Amazon
+Elastic Compute Cloud User Guide>.
 
 
 =head2 CreateVpc(CidrBlock => Str, [AmazonProvidedIpv6CidrBlock => Bool, DryRun => Bool, InstanceTenancy => Str])
@@ -4758,8 +4763,8 @@ yourself.
 
 You can also use C<RegisterImage> to create an Amazon EBS-backed Linux
 AMI from a snapshot of a root device volume. You specify the snapshot
-using the block device mapping. For more information, see Launching an
-Instance from a Snapshot in the I<Amazon Elastic Compute Cloud User
+using the block device mapping. For more information, see Launching a
+Linux Instance from a Backup in the I<Amazon Elastic Compute Cloud User
 Guide>.
 
 You can't register an image where a secondary (non-root) snapshot has
@@ -5070,7 +5075,7 @@ Rule changes are propagated to instances within the security group as
 quickly as possible. However, a small delay might occur.
 
 
-=head2 RunInstances(ImageId => Str, MaxCount => Int, MinCount => Int, [AdditionalInfo => Str, BlockDeviceMappings => ArrayRef[L<Paws::EC2::BlockDeviceMapping>], ClientToken => Str, DisableApiTermination => Bool, DryRun => Bool, EbsOptimized => Bool, IamInstanceProfile => L<Paws::EC2::IamInstanceProfileSpecification>, InstanceInitiatedShutdownBehavior => Str, InstanceType => Str, Ipv6AddressCount => Int, Ipv6Addresses => ArrayRef[L<Paws::EC2::InstanceIpv6Address>], KernelId => Str, KeyName => Str, Monitoring => L<Paws::EC2::RunInstancesMonitoringEnabled>, NetworkInterfaces => ArrayRef[L<Paws::EC2::InstanceNetworkInterfaceSpecification>], Placement => L<Paws::EC2::Placement>, PrivateIpAddress => Str, RamdiskId => Str, SecurityGroupIds => ArrayRef[Str|Undef], SecurityGroups => ArrayRef[Str|Undef], SubnetId => Str, UserData => Str])
+=head2 RunInstances(ImageId => Str, MaxCount => Int, MinCount => Int, [AdditionalInfo => Str, BlockDeviceMappings => ArrayRef[L<Paws::EC2::BlockDeviceMapping>], ClientToken => Str, DisableApiTermination => Bool, DryRun => Bool, EbsOptimized => Bool, IamInstanceProfile => L<Paws::EC2::IamInstanceProfileSpecification>, InstanceInitiatedShutdownBehavior => Str, InstanceType => Str, Ipv6AddressCount => Int, Ipv6Addresses => ArrayRef[L<Paws::EC2::InstanceIpv6Address>], KernelId => Str, KeyName => Str, Monitoring => L<Paws::EC2::RunInstancesMonitoringEnabled>, NetworkInterfaces => ArrayRef[L<Paws::EC2::InstanceNetworkInterfaceSpecification>], Placement => L<Paws::EC2::Placement>, PrivateIpAddress => Str, RamdiskId => Str, SecurityGroupIds => ArrayRef[Str|Undef], SecurityGroups => ArrayRef[Str|Undef], SubnetId => Str, TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>], UserData => Str])
 
 Each argument is described in detail in: L<Paws::EC2::RunInstances>
 
@@ -5129,10 +5134,10 @@ smaller batches. For example, create 5 separate launch requests for 100
 instances each instead of 1 launch request for 500 instances.
 
 An instance is ready for you to use when it's in the C<running> state.
-You can check the state of your instance using DescribeInstances. After
-launch, you can apply tags to your running instance (requires a
-resource ID). For more information, see CreateTags and Tagging Your
-Amazon EC2 Resources.
+You can check the state of your instance using DescribeInstances. You
+can tag instances and EBS volumes during launch, after launch, or both.
+For more information, see CreateTags and Tagging Your Amazon EC2
+Resources.
 
 Linux instances have access to the public key of the key pair at boot.
 You can use this key to provide secure access to the instance. Amazon

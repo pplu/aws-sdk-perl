@@ -209,7 +209,7 @@ Returns: a L<Paws::CloudTrail::DescribeTrailsResponse> instance
 your account.
 
 
-=head2 GetEventSelectors([TrailName => Str])
+=head2 GetEventSelectors(TrailName => Str)
 
 Each argument is described in detail in: L<Paws::CloudTrail::GetEventSelectors>
 
@@ -331,7 +331,7 @@ available for lookup if CloudTrail logging was not enabled when the
 events occurred.
 
 
-=head2 PutEventSelectors([EventSelectors => ArrayRef[L<Paws::CloudTrail::EventSelector>], TrailName => Str])
+=head2 PutEventSelectors(EventSelectors => ArrayRef[L<Paws::CloudTrail::EventSelector>], TrailName => Str)
 
 Each argument is described in detail in: L<Paws::CloudTrail::PutEventSelectors>
 

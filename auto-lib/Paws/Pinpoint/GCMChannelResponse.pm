@@ -39,14 +39,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::G
 
 =head1 DESCRIPTION
 
-This class has no description
+Google Cloud Messaging channel definition
 
 =head1 ATTRIBUTES
 
 
 =head2 ApplicationId => Str
 
-  
+  The ID of the application to which the channel applies.
 
 
 =head2 CreationDate => Str
@@ -61,7 +61,7 @@ This class has no description
 
 =head2 Id => Str
 
-  
+  The unique channel ID.
 
 
 =head2 IsArchived => Bool

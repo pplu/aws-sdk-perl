@@ -35,13 +35,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> AgentIds => ArrayRef[Str|Undef]
 
-The IDs of the agents or Connectors that you want to start collecting
-data. If you send a request to an agent/Connector ID that you do not
+The IDs of the agents or connectors from which to start collecting
+data. If you send a request to an agent/connector ID that you do not
 have permission to contact, according to your AWS account, the service
 does not throw an exception. Instead, it returns the error in the
 I<Description> field. If you send a request to multiple
-agents/Connectors and you do not have permission to contact some of
-those agents/Connectors, the system does not throw an exception.
+agents/connectors and you do not have permission to contact some of
+those agents/connectors, the system does not throw an exception.
 Instead, the system shows C<Failed> in the I<Description> field.
 
 

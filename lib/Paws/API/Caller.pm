@@ -12,6 +12,8 @@ package Paws::API::Caller;
     handles => [ 'access_key', 'secret_key', 'session_token' ],
   );
 
+  requires 'new_from_result_struct';
+
   # converts the params the user passed to the call into objects that represent the call
   sub new_with_coercions {
     my ($self, $class, %params) = @_;
@@ -110,7 +112,7 @@ package Paws::API::Caller;
       $unserialized_struct->{ _request_id } = $request_id;
       
       Paws->load_class($call_object->_returns);
-      my $o_result = $self->new_from_struct($call_object->_returns, $unserialized_struct);
+      my $o_result = $self->new_from_result_struct($call_object->_returns, $unserialized_struct);
       return $o_result;
     } else {
       return 1;
