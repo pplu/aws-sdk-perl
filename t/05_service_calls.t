@@ -331,6 +331,16 @@ $test_params = {
 
 request_contentjson($test_params, $request);
 
+my $apigw = $aws->service('ApiGateway');
+
+$request = $apigw->ImportApiKeys(
+  Body => 'csvdocu',
+  FailOnWarnings => 1,
+  Format => 'csv',
+);
+
+like($request->uri, qr/mode=import/, 'Found mode=import in the URI');
+
 my $dynamo = $aws->service('DynamoDB');
 
 $request = $dynamo->GetItem(

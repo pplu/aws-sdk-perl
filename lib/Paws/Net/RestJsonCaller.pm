@@ -58,21 +58,16 @@ package Paws::Net::RestJsonCaller;
     my $t = URI::Template->new( $uri_template );
 
     my $vars = {};
-    my $qparams = {};
 
     foreach my $attribute ($call->meta->get_all_attributes) {
       my $att_name = $attribute->name;
       if ($attribute->does('Paws::API::Attribute::Trait::ParamInURI')) {
         $vars->{ $attribute->uri_name } = $call->$att_name
       }
-      if ($attribute->does('Paws::API::Attribute::Trait::ParamInQuery')) {
-        $qparams->{ $attribute->query_name } = $call->$att_name if (defined $call->$att_name);
-      }
     }
 
     my $uri = $t->process($vars);
-    $uri->query_form(%$qparams);
-    return $uri->as_string;
+    return $uri;
   }
 
   sub prepare_request_for_call {
@@ -81,9 +76,18 @@ package Paws::Net::RestJsonCaller;
     my $request = Paws::Net::APIRequest->new();
 
     my $uri = $self->_call_uri($call);
-    $request->uri($uri);
 
-    my $url = $self->_api_endpoint . $uri;
+    my $qparams = { $uri->query_form };
+    foreach my $attribute ($call->meta->get_all_attributes) {
+      my $att_name = $attribute->name;
+      if ($attribute->does('Paws::API::Attribute::Trait::ParamInQuery')) {
+        $qparams->{ $attribute->query_name } = $call->$att_name if (defined $call->$att_name);
+      }
+    }
+    $uri->query_form(%$qparams);
+
+    $request->uri($uri->as_string);
+    my $url = $self->_api_endpoint . $uri->as_string;
     $request->url($url);
     
     my $data = $self->_to_jsoncaller_params($call);
