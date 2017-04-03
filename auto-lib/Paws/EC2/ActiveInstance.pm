@@ -41,8 +41,8 @@ This class has no description
 
 =head2 InstanceHealth => Str
 
-  The health status of the instance. If the status of both the instance
-status check and the system status check is C<impaired>, the health
+  The health status of the instance. If the status of either the instance
+status check or the system status check is C<impaired>, the health
 status of the instance is C<unhealthy>. Otherwise, the health status is
 C<healthy>.
 

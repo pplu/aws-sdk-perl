@@ -8,6 +8,7 @@ package Paws::EC2::CreateVolume;
   has KmsKeyId => (is => 'ro', isa => 'Str');
   has Size => (is => 'ro', isa => 'Int');
   has SnapshotId => (is => 'ro', isa => 'Str');
+  has TagSpecifications => (is => 'ro', isa => 'ArrayRef[Paws::EC2::TagSpecification]', traits => ['NameInRequest'], request_name => 'TagSpecification' );
   has VolumeType => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
@@ -111,6 +112,12 @@ specify a volume size, the default is the snapshot size.
 =head2 SnapshotId => Str
 
 The snapshot from which to create the volume.
+
+
+
+=head2 TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]
+
+The tags to apply to the volume during creation.
 
 
 
