@@ -1,16 +1,13 @@
 package Paws::Credential::STS;
   use Moose;
-  use DateTime;
   use DateTime::Format::ISO8601;
   with 'Paws::Credential';
 
   has expiration => (
     is => 'rw',
-    isa => 'DateTime',
+    isa => 'Int',
     lazy => 1,
-    default => sub {
-      DateTime->from_epoch(epoch => 0); # need a better way to do this
-    }
+    default => sub { 0 }
   );
 
   has actual_creds => (is => 'rw');
@@ -47,7 +44,7 @@ package Paws::Credential::STS;
   sub _refresh {
     my $self = shift;
 
-    return if (($self->expiration - DateTime->now())->is_positive);
+    return if $self->expiration >= time;
 
     my $result = $self->sts->GetFederationToken(
       Name => $self->Name,
@@ -56,7 +53,7 @@ package Paws::Credential::STS;
     );
 
     my $creds = $self->actual_creds($result->Credentials);
-    $self->expiration(DateTime::Format::ISO8601->parse_datetime($result->Credentials->Expiration));
+    $self->expiration(DateTime::Format::ISO8601->parse_datetime($result->Credentials->Expiration)->epoch);
   }
 
   no Moose;
