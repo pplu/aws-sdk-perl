@@ -1,0 +1,13 @@
+---
+content: |
+  <ListUserPoliciesResponse xmlns="https://iam.amazonaws.com/doc/2010-05-08/">
+    <ListUserPoliciesResult>
+      <IsTruncated>false</IsTruncated>
+      <PolicyNames/>
+    </ListUserPoliciesResult>
+    <ResponseMetadata>
+      <RequestId>123034f0-fd0d-11e6-a37e-af2e0a7be820</RequestId>
+    </ResponseMetadata>
+  </ListUserPoliciesResponse>
+headers: []
+status: 200
