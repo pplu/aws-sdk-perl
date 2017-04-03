@@ -39,6 +39,7 @@ package [% c.api %]::[% op_name %];
   [%- traits = [] -%]
   has [% param_name %] => (is => 'ro', isa => '[% member.perl_type %]'
   [%-    IF (shape.members.$param_name.location == 'header');      traits.push('ParamInHeader') %], header_name => '[% shape.members.$param_name.locationName %]'
+  [%- ELSIF (shape.members.$param_name.location == 'headers');     traits.push('ParamInHeaders') %], header_prefix => '[% shape.members.$param_name.locationName %]'
   [%- ELSIF (shape.members.$param_name.location == 'querystring'); traits.push('ParamInQuery') %], query_name => '[% shape.members.$param_name.locationName %]'
   [%- ELSIF (shape.members.$param_name.location == 'uri');         traits.push('ParamInURI') %], uri_name => '[% shape.members.$param_name.locationName %]'
   [%- ELSIF (shape.members.$param_name.streaming == 1);            traits.push('ParamInBody'); %][% stream_param = param_name -%]
@@ -78,6 +79,7 @@ package [% c.api %]::[% op_name %];
   has [% param_name %] => (is => 'ro', isa => '[% member.perl_type %]'
   [%- IF (shape.members.$param_name.locationName) %]
     [%- IF (shape.members.$param_name.location == 'header') %], traits => ['ParamInHeader'], header_name => '[% shape.members.$param_name.locationName -%]'
+    [%- ELSIF (shape.members.$param_name.location == 'headers') %], traits => ['ParamInHeaders'], header_prefix => '[% shape.members.$param_name.locationName %]'
     [%- ELSIF (shape.members.$param_name.location == 'querystring') %], traits => ['ParamInQuery'], query_name => '[% shape.members.$param_name.locationName -%]' 
     [%- ELSIF (shape.members.$param_name.location == 'uri') %], traits => ['ParamInURI'], uri_name => '[% shape.members.$param_name.locationName -%]' 
     [%- ELSE %], traits => ['Unwrapped'], xmlname => '[% shape.members.$param_name.locationName %]'[%- END -%][%- END -%]
