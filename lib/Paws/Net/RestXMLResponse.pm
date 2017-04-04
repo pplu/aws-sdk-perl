@@ -155,8 +155,8 @@ package Paws::Net::RestXMLResponse;
         Paws->load_class("$att_type");
         my $att_class        = $att_type->class;
         my $header_prefix    = $meta->header_prefix;
-        my @metadata_headers = grep /^$header_prefix/, keys %{$result};
-        $args{ $att }        = $att_class->new( Map => { map { $_ => $result->{$_} } @metadata_headers } ); 
+        my @metadata_headers = map { my ($h, $nometa) = ($_, $_); $nometa =~ s/^$header_prefix//; [ $h, $nometa ] } grep /^$header_prefix/, keys %{$result};
+        $args{ $att }        = $att_class->new( Map => { map { $_->[1] => $result->{$_->[0]} } @metadata_headers } ); 
       }
       # We'll consider that an attribute without brackets [] isn't an array type
       elsif ($att_type !~ m/\[.*\]$/) {
