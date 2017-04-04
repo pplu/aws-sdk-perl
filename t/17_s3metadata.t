@@ -1,5 +1,10 @@
 #!/usr/bin/env perl
 
+use strict;
+use warnings;
+
+use lib 't/lib';
+
 use Test::More;
 use Paws;
 use Paws::Net::MockCaller;
@@ -8,7 +13,8 @@ my $paws = Paws->new(config => {
   caller => Paws::Net::MockCaller->new(
     mock_dir => 't/17_s3metadata',
     mock_mode => 'REPLAY',
-  )
+  ),
+  credentials => 'Test::CustomCredentials'
 });
 
 my $s3 = $paws->service('S3');
