@@ -318,3 +318,5 @@ glenveegee for lots of work sorting out the S3 implementation
 Grinzz for many bugs, suggestions and fixes
 
 Dakkar for solving issues with parameter passing
+
+PopeFelix for solving issues around S3
