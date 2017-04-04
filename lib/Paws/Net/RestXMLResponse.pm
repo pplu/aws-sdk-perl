@@ -150,8 +150,16 @@ package Paws::Net::RestXMLResponse;
     #  my $extracted_val = $result->{ $key };
     #  print STDERR "RESULT >>> $extracted_val\n";
 
+      # Free-form paramaters passed in the HTTP headers
+      if ($meta->does('Paws::API::Attribute::Trait::ParamInHeaders')) { 
+        Paws->load_class("$att_type");
+        my $att_class        = $att_type->class;
+        my $header_prefix    = $meta->header_prefix;
+        my @metadata_headers = grep /^$header_prefix/, keys %{$result};
+        $args{ $att }        = $att_class->new( Map => { map { $_ => $result->{$_} } @metadata_headers } ); 
+      }
       # We'll consider that an attribute without brackets [] isn't an array type
-      if ($att_type !~ m/\[.*\]$/) {
+      elsif ($att_type !~ m/\[.*\]$/) {
         my $value = $result->{ $key };
         my $value_ref = ref($value);
 
