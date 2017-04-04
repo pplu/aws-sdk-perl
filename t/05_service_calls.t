@@ -315,6 +315,20 @@ $test_params = { };
 like($request->uri, qr/\?lifecycle/, 'Found lifecycle in the URI');
 request_has_params($test_params, $request);
 
+$request = $s3->PutObject(
+  Bucket => 'test_bucket',
+  Key => 'a/key',
+  Body => 'content',
+  Metadata => {
+    'key1' => 'value1',
+    'key2' => 'value2',
+  },
+);
+
+cmp_ok($request->header('x-amz-meta-key1'), 'eq', 'value1', 'meta key1 has correct value in header');
+cmp_ok($request->header('x-amz-meta-key2'), 'eq', 'value2', 'meta key2 has correct value in header');
+cmp_ok($request->content, 'eq', 'content', 'content is correct in request');
+
 my $cognito = $aws->service('CognitoIdentity');
 
 $request = $cognito->GetOpenIdTokenForDeveloperIdentity(

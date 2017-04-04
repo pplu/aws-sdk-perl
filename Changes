@@ -2,6 +2,7 @@
  - Speed up Credential Refreshing (Arthur Axel fREW Schmidt)
  - Bug fixed: Issue #105. Some API calls where not correctly handling parameters specified in their URI.
    Notably, this fixes S3 ListObjectsV2. (dakkar)
+ - S3 now supports Metadata correctly (PopeFelix)
  - New API: LexRuntime
  - New API: Organizations
  - New API: MTurk (Mechanical Turk)

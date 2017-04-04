@@ -13,7 +13,7 @@ package Paws::S3::HeadObjectOutput;
   has Expiration => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-expiration');
   has Expires => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Expires');
   has LastModified => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Last-Modified');
-  has Metadata => (is => 'ro', isa => 'Paws::S3::Metadata', traits => ['Unwrapped'], xmlname => 'x-amz-meta-');
+  has Metadata => (is => 'ro', isa => 'Paws::S3::Metadata', traits => ['ParamInHeaders'], header_prefix => 'x-amz-meta-');
   has MissingMeta => (is => 'ro', isa => 'Int', traits => ['ParamInHeader'], header_name => 'x-amz-missing-meta');
   has PartsCount => (is => 'ro', isa => 'Int', traits => ['ParamInHeader'], header_name => 'x-amz-mp-parts-count');
   has ReplicationStatus => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-replication-status');
