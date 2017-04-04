@@ -1,19 +1,19 @@
 package Paws::Lightsail::Disk;
   use Moose;
-  has Arn => (is => 'ro', isa => 'Str', xmlname => 'arn', request_name => 'arn', traits => ['Unwrapped','NameInRequest']);
-  has AttachedTo => (is => 'ro', isa => 'Str', xmlname => 'attachedTo', request_name => 'attachedTo', traits => ['Unwrapped','NameInRequest']);
-  has AttachmentState => (is => 'ro', isa => 'Str', xmlname => 'attachmentState', request_name => 'attachmentState', traits => ['Unwrapped','NameInRequest']);
-  has CreatedAt => (is => 'ro', isa => 'Str', xmlname => 'createdAt', request_name => 'createdAt', traits => ['Unwrapped','NameInRequest']);
-  has GbInUse => (is => 'ro', isa => 'Int', xmlname => 'gbInUse', request_name => 'gbInUse', traits => ['Unwrapped','NameInRequest']);
-  has Iops => (is => 'ro', isa => 'Int', xmlname => 'iops', request_name => 'iops', traits => ['Unwrapped','NameInRequest']);
-  has IsAttached => (is => 'ro', isa => 'Bool', xmlname => 'isAttached', request_name => 'isAttached', traits => ['Unwrapped','NameInRequest']);
-  has IsSystemDisk => (is => 'ro', isa => 'Bool', xmlname => 'isSystemDisk', request_name => 'isSystemDisk', traits => ['Unwrapped','NameInRequest']);
-  has Location => (is => 'ro', isa => 'Paws::Lightsail::ResourceLocation', xmlname => 'location', request_name => 'location', traits => ['Unwrapped','NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', xmlname => 'name', request_name => 'name', traits => ['Unwrapped','NameInRequest']);
-  has Path => (is => 'ro', isa => 'Str', xmlname => 'path', request_name => 'path', traits => ['Unwrapped','NameInRequest']);
-  has ResourceType => (is => 'ro', isa => 'Str', xmlname => 'resourceType', request_name => 'resourceType', traits => ['Unwrapped','NameInRequest']);
-  has SizeInGb => (is => 'ro', isa => 'Int', xmlname => 'sizeInGb', request_name => 'sizeInGb', traits => ['Unwrapped','NameInRequest']);
-  has SupportCode => (is => 'ro', isa => 'Str', xmlname => 'supportCode', request_name => 'supportCode', traits => ['Unwrapped','NameInRequest']);
+  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
+  has AttachedTo => (is => 'ro', isa => 'Str', request_name => 'attachedTo', traits => ['NameInRequest']);
+  has AttachmentState => (is => 'ro', isa => 'Str', request_name => 'attachmentState', traits => ['NameInRequest']);
+  has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest']);
+  has GbInUse => (is => 'ro', isa => 'Int', request_name => 'gbInUse', traits => ['NameInRequest']);
+  has Iops => (is => 'ro', isa => 'Int', request_name => 'iops', traits => ['NameInRequest']);
+  has IsAttached => (is => 'ro', isa => 'Bool', request_name => 'isAttached', traits => ['NameInRequest']);
+  has IsSystemDisk => (is => 'ro', isa => 'Bool', request_name => 'isSystemDisk', traits => ['NameInRequest']);
+  has Location => (is => 'ro', isa => 'Paws::Lightsail::ResourceLocation', request_name => 'location', traits => ['NameInRequest']);
+  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
+  has Path => (is => 'ro', isa => 'Str', request_name => 'path', traits => ['NameInRequest']);
+  has ResourceType => (is => 'ro', isa => 'Str', request_name => 'resourceType', traits => ['NameInRequest']);
+  has SizeInGb => (is => 'ro', isa => 'Int', request_name => 'sizeInGb', traits => ['NameInRequest']);
+  has SupportCode => (is => 'ro', isa => 'Str', request_name => 'supportCode', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

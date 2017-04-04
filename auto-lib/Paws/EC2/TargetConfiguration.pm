@@ -1,7 +1,7 @@
 package Paws::EC2::TargetConfiguration;
   use Moose;
-  has InstanceCount => (is => 'ro', isa => 'Int', xmlname => 'instanceCount', traits => ['Unwrapped']);
-  has OfferingId => (is => 'ro', isa => 'Str', xmlname => 'offeringId', traits => ['Unwrapped']);
+  has InstanceCount => (is => 'ro', isa => 'Int', request_name => 'instanceCount', traits => ['NameInRequest']);
+  has OfferingId => (is => 'ro', isa => 'Str', request_name => 'offeringId', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

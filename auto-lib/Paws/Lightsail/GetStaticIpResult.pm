@@ -1,7 +1,7 @@
 
 package Paws::Lightsail::GetStaticIpResult;
   use Moose;
-  has StaticIp => (is => 'ro', isa => 'Paws::Lightsail::StaticIp', traits => ['Unwrapped'], xmlname => 'staticIp' );
+  has StaticIp => (is => 'ro', isa => 'Paws::Lightsail::StaticIp', traits => ['NameInRequest'], request_name => 'staticIp' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

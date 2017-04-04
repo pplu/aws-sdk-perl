@@ -1,7 +1,7 @@
 package Paws::EC2::CreateVolumePermission;
   use Moose;
-  has Group => (is => 'ro', isa => 'Str', xmlname => 'group', traits => ['Unwrapped']);
-  has UserId => (is => 'ro', isa => 'Str', xmlname => 'userId', traits => ['Unwrapped']);
+  has Group => (is => 'ro', isa => 'Str', request_name => 'group', traits => ['NameInRequest']);
+  has UserId => (is => 'ro', isa => 'Str', request_name => 'userId', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

@@ -1,6 +1,6 @@
 package Paws::CodeDeploy::LoadBalancerInfo;
   use Moose;
-  has ElbInfoList => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::ELBInfo]', xmlname => 'elbInfoList', request_name => 'elbInfoList', traits => ['Unwrapped','NameInRequest']);
+  has ElbInfoList => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::ELBInfo]', request_name => 'elbInfoList', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

@@ -1,7 +1,7 @@
 
 package Paws::Lightsail::CloseInstancePublicPortsResult;
   use Moose;
-  has Operation => (is => 'ro', isa => 'Paws::Lightsail::Operation', traits => ['Unwrapped'], xmlname => 'operation' );
+  has Operation => (is => 'ro', isa => 'Paws::Lightsail::Operation', traits => ['NameInRequest'], request_name => 'operation' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

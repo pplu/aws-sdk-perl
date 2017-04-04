@@ -1,8 +1,8 @@
 
 package Paws::EC2::DescribeIamInstanceProfileAssociationsResult;
   use Moose;
-  has IamInstanceProfileAssociations => (is => 'ro', isa => 'ArrayRef[Paws::EC2::IamInstanceProfileAssociation]', xmlname => 'iamInstanceProfileAssociationSet', traits => ['Unwrapped',]);
-  has NextToken => (is => 'ro', isa => 'Str', xmlname => 'nextToken', traits => ['Unwrapped',]);
+  has IamInstanceProfileAssociations => (is => 'ro', isa => 'ArrayRef[Paws::EC2::IamInstanceProfileAssociation]', request_name => 'iamInstanceProfileAssociationSet', traits => ['NameInRequest',]);
+  has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest',]);
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

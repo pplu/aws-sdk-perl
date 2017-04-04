@@ -1,8 +1,8 @@
 
 package Paws::EC2::ModifyVpcPeeringConnectionOptionsResult;
   use Moose;
-  has AccepterPeeringConnectionOptions => (is => 'ro', isa => 'Paws::EC2::PeeringConnectionOptions', xmlname => 'accepterPeeringConnectionOptions', traits => ['Unwrapped',]);
-  has RequesterPeeringConnectionOptions => (is => 'ro', isa => 'Paws::EC2::PeeringConnectionOptions', xmlname => 'requesterPeeringConnectionOptions', traits => ['Unwrapped',]);
+  has AccepterPeeringConnectionOptions => (is => 'ro', isa => 'Paws::EC2::PeeringConnectionOptions', request_name => 'accepterPeeringConnectionOptions', traits => ['NameInRequest',]);
+  has RequesterPeeringConnectionOptions => (is => 'ro', isa => 'Paws::EC2::PeeringConnectionOptions', request_name => 'requesterPeeringConnectionOptions', traits => ['NameInRequest',]);
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

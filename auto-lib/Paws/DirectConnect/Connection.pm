@@ -1,18 +1,18 @@
 
 package Paws::DirectConnect::Connection;
   use Moose;
-  has AwsDevice => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'awsDevice' );
-  has Bandwidth => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'bandwidth' );
-  has ConnectionId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'connectionId' );
-  has ConnectionName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'connectionName' );
-  has ConnectionState => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'connectionState' );
-  has LagId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'lagId' );
-  has LoaIssueTime => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'loaIssueTime' );
-  has Location => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'location' );
-  has OwnerAccount => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'ownerAccount' );
-  has PartnerName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'partnerName' );
-  has Region => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'region' );
-  has Vlan => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => 'vlan' );
+  has AwsDevice => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'awsDevice' );
+  has Bandwidth => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'bandwidth' );
+  has ConnectionId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'connectionId' );
+  has ConnectionName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'connectionName' );
+  has ConnectionState => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'connectionState' );
+  has LagId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'lagId' );
+  has LoaIssueTime => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'loaIssueTime' );
+  has Location => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'location' );
+  has OwnerAccount => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'ownerAccount' );
+  has PartnerName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'partnerName' );
+  has Region => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'region' );
+  has Vlan => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'vlan' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

@@ -1,8 +1,8 @@
 
 package Paws::CodeBuild::BatchGetProjectsOutput;
   use Moose;
-  has Projects => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::Project]', traits => ['Unwrapped'], xmlname => 'projects' );
-  has ProjectsNotFound => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['Unwrapped'], xmlname => 'projectsNotFound' );
+  has Projects => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::Project]', traits => ['NameInRequest'], request_name => 'projects' );
+  has ProjectsNotFound => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'projectsNotFound' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

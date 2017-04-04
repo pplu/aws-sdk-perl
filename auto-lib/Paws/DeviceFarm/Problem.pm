@@ -1,12 +1,12 @@
 package Paws::DeviceFarm::Problem;
   use Moose;
-  has Device => (is => 'ro', isa => 'Paws::DeviceFarm::Device', xmlname => 'device', request_name => 'device', traits => ['Unwrapped','NameInRequest']);
-  has Job => (is => 'ro', isa => 'Paws::DeviceFarm::ProblemDetail', xmlname => 'job', request_name => 'job', traits => ['Unwrapped','NameInRequest']);
-  has Message => (is => 'ro', isa => 'Str', xmlname => 'message', request_name => 'message', traits => ['Unwrapped','NameInRequest']);
-  has Result => (is => 'ro', isa => 'Str', xmlname => 'result', request_name => 'result', traits => ['Unwrapped','NameInRequest']);
-  has Run => (is => 'ro', isa => 'Paws::DeviceFarm::ProblemDetail', xmlname => 'run', request_name => 'run', traits => ['Unwrapped','NameInRequest']);
-  has Suite => (is => 'ro', isa => 'Paws::DeviceFarm::ProblemDetail', xmlname => 'suite', request_name => 'suite', traits => ['Unwrapped','NameInRequest']);
-  has Test => (is => 'ro', isa => 'Paws::DeviceFarm::ProblemDetail', xmlname => 'test', request_name => 'test', traits => ['Unwrapped','NameInRequest']);
+  has Device => (is => 'ro', isa => 'Paws::DeviceFarm::Device', request_name => 'device', traits => ['NameInRequest']);
+  has Job => (is => 'ro', isa => 'Paws::DeviceFarm::ProblemDetail', request_name => 'job', traits => ['NameInRequest']);
+  has Message => (is => 'ro', isa => 'Str', request_name => 'message', traits => ['NameInRequest']);
+  has Result => (is => 'ro', isa => 'Str', request_name => 'result', traits => ['NameInRequest']);
+  has Run => (is => 'ro', isa => 'Paws::DeviceFarm::ProblemDetail', request_name => 'run', traits => ['NameInRequest']);
+  has Suite => (is => 'ro', isa => 'Paws::DeviceFarm::ProblemDetail', request_name => 'suite', traits => ['NameInRequest']);
+  has Test => (is => 'ro', isa => 'Paws::DeviceFarm::ProblemDetail', request_name => 'test', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

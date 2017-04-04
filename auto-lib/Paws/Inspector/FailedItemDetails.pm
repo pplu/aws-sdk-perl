@@ -1,7 +1,7 @@
 package Paws::Inspector::FailedItemDetails;
   use Moose;
-  has FailureCode => (is => 'ro', isa => 'Str', xmlname => 'failureCode', request_name => 'failureCode', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has Retryable => (is => 'ro', isa => 'Bool', xmlname => 'retryable', request_name => 'retryable', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has FailureCode => (is => 'ro', isa => 'Str', request_name => 'failureCode', traits => ['NameInRequest'], required => 1);
+  has Retryable => (is => 'ro', isa => 'Bool', request_name => 'retryable', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###

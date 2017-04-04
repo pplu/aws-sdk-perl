@@ -1,9 +1,9 @@
 package Paws::S3::CORSRule;
   use Moose;
-  has AllowedHeaders => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'AllowedHeader', request_name => 'AllowedHeader', traits => ['Unwrapped','NameInRequest']);
-  has AllowedMethods => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'AllowedMethod', request_name => 'AllowedMethod', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has AllowedOrigins => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'AllowedOrigin', request_name => 'AllowedOrigin', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has ExposeHeaders => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'ExposeHeader', request_name => 'ExposeHeader', traits => ['Unwrapped','NameInRequest']);
+  has AllowedHeaders => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'AllowedHeader', traits => ['NameInRequest']);
+  has AllowedMethods => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'AllowedMethod', traits => ['NameInRequest'], required => 1);
+  has AllowedOrigins => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'AllowedOrigin', traits => ['NameInRequest'], required => 1);
+  has ExposeHeaders => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'ExposeHeader', traits => ['NameInRequest']);
   has MaxAgeSeconds => (is => 'ro', isa => 'Int');
 1;
 

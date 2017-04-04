@@ -1,21 +1,21 @@
 package Paws::Batch::ContainerDetail;
   use Moose;
-  has Command => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'command', request_name => 'command', traits => ['Unwrapped','NameInRequest']);
-  has ContainerInstanceArn => (is => 'ro', isa => 'Str', xmlname => 'containerInstanceArn', request_name => 'containerInstanceArn', traits => ['Unwrapped','NameInRequest']);
-  has Environment => (is => 'ro', isa => 'ArrayRef[Paws::Batch::KeyValuePair]', xmlname => 'environment', request_name => 'environment', traits => ['Unwrapped','NameInRequest']);
-  has ExitCode => (is => 'ro', isa => 'Int', xmlname => 'exitCode', request_name => 'exitCode', traits => ['Unwrapped','NameInRequest']);
-  has Image => (is => 'ro', isa => 'Str', xmlname => 'image', request_name => 'image', traits => ['Unwrapped','NameInRequest']);
-  has JobRoleArn => (is => 'ro', isa => 'Str', xmlname => 'jobRoleArn', request_name => 'jobRoleArn', traits => ['Unwrapped','NameInRequest']);
-  has Memory => (is => 'ro', isa => 'Int', xmlname => 'memory', request_name => 'memory', traits => ['Unwrapped','NameInRequest']);
-  has MountPoints => (is => 'ro', isa => 'ArrayRef[Paws::Batch::MountPoint]', xmlname => 'mountPoints', request_name => 'mountPoints', traits => ['Unwrapped','NameInRequest']);
-  has Privileged => (is => 'ro', isa => 'Bool', xmlname => 'privileged', request_name => 'privileged', traits => ['Unwrapped','NameInRequest']);
-  has ReadonlyRootFilesystem => (is => 'ro', isa => 'Bool', xmlname => 'readonlyRootFilesystem', request_name => 'readonlyRootFilesystem', traits => ['Unwrapped','NameInRequest']);
-  has Reason => (is => 'ro', isa => 'Str', xmlname => 'reason', request_name => 'reason', traits => ['Unwrapped','NameInRequest']);
-  has TaskArn => (is => 'ro', isa => 'Str', xmlname => 'taskArn', request_name => 'taskArn', traits => ['Unwrapped','NameInRequest']);
-  has Ulimits => (is => 'ro', isa => 'ArrayRef[Paws::Batch::Ulimit]', xmlname => 'ulimits', request_name => 'ulimits', traits => ['Unwrapped','NameInRequest']);
-  has User => (is => 'ro', isa => 'Str', xmlname => 'user', request_name => 'user', traits => ['Unwrapped','NameInRequest']);
-  has Vcpus => (is => 'ro', isa => 'Int', xmlname => 'vcpus', request_name => 'vcpus', traits => ['Unwrapped','NameInRequest']);
-  has Volumes => (is => 'ro', isa => 'ArrayRef[Paws::Batch::Volume]', xmlname => 'volumes', request_name => 'volumes', traits => ['Unwrapped','NameInRequest']);
+  has Command => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'command', traits => ['NameInRequest']);
+  has ContainerInstanceArn => (is => 'ro', isa => 'Str', request_name => 'containerInstanceArn', traits => ['NameInRequest']);
+  has Environment => (is => 'ro', isa => 'ArrayRef[Paws::Batch::KeyValuePair]', request_name => 'environment', traits => ['NameInRequest']);
+  has ExitCode => (is => 'ro', isa => 'Int', request_name => 'exitCode', traits => ['NameInRequest']);
+  has Image => (is => 'ro', isa => 'Str', request_name => 'image', traits => ['NameInRequest']);
+  has JobRoleArn => (is => 'ro', isa => 'Str', request_name => 'jobRoleArn', traits => ['NameInRequest']);
+  has Memory => (is => 'ro', isa => 'Int', request_name => 'memory', traits => ['NameInRequest']);
+  has MountPoints => (is => 'ro', isa => 'ArrayRef[Paws::Batch::MountPoint]', request_name => 'mountPoints', traits => ['NameInRequest']);
+  has Privileged => (is => 'ro', isa => 'Bool', request_name => 'privileged', traits => ['NameInRequest']);
+  has ReadonlyRootFilesystem => (is => 'ro', isa => 'Bool', request_name => 'readonlyRootFilesystem', traits => ['NameInRequest']);
+  has Reason => (is => 'ro', isa => 'Str', request_name => 'reason', traits => ['NameInRequest']);
+  has TaskArn => (is => 'ro', isa => 'Str', request_name => 'taskArn', traits => ['NameInRequest']);
+  has Ulimits => (is => 'ro', isa => 'ArrayRef[Paws::Batch::Ulimit]', request_name => 'ulimits', traits => ['NameInRequest']);
+  has User => (is => 'ro', isa => 'Str', request_name => 'user', traits => ['NameInRequest']);
+  has Vcpus => (is => 'ro', isa => 'Int', request_name => 'vcpus', traits => ['NameInRequest']);
+  has Volumes => (is => 'ro', isa => 'ArrayRef[Paws::Batch::Volume]', request_name => 'volumes', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

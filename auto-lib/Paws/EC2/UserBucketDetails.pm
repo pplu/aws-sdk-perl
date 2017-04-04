@@ -1,7 +1,7 @@
 package Paws::EC2::UserBucketDetails;
   use Moose;
-  has S3Bucket => (is => 'ro', isa => 'Str', xmlname => 's3Bucket', traits => ['Unwrapped']);
-  has S3Key => (is => 'ro', isa => 'Str', xmlname => 's3Key', traits => ['Unwrapped']);
+  has S3Bucket => (is => 'ro', isa => 'Str', request_name => 's3Bucket', traits => ['NameInRequest']);
+  has S3Key => (is => 'ro', isa => 'Str', request_name => 's3Key', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

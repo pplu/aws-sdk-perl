@@ -1,10 +1,10 @@
 package Paws::CodePipeline::ActionType;
   use Moose;
-  has ActionConfigurationProperties => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::ActionConfigurationProperty]', xmlname => 'actionConfigurationProperties', request_name => 'actionConfigurationProperties', traits => ['Unwrapped','NameInRequest']);
-  has Id => (is => 'ro', isa => 'Paws::CodePipeline::ActionTypeId', xmlname => 'id', request_name => 'id', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has InputArtifactDetails => (is => 'ro', isa => 'Paws::CodePipeline::ArtifactDetails', xmlname => 'inputArtifactDetails', request_name => 'inputArtifactDetails', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has OutputArtifactDetails => (is => 'ro', isa => 'Paws::CodePipeline::ArtifactDetails', xmlname => 'outputArtifactDetails', request_name => 'outputArtifactDetails', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has Settings => (is => 'ro', isa => 'Paws::CodePipeline::ActionTypeSettings', xmlname => 'settings', request_name => 'settings', traits => ['Unwrapped','NameInRequest']);
+  has ActionConfigurationProperties => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::ActionConfigurationProperty]', request_name => 'actionConfigurationProperties', traits => ['NameInRequest']);
+  has Id => (is => 'ro', isa => 'Paws::CodePipeline::ActionTypeId', request_name => 'id', traits => ['NameInRequest'], required => 1);
+  has InputArtifactDetails => (is => 'ro', isa => 'Paws::CodePipeline::ArtifactDetails', request_name => 'inputArtifactDetails', traits => ['NameInRequest'], required => 1);
+  has OutputArtifactDetails => (is => 'ro', isa => 'Paws::CodePipeline::ArtifactDetails', request_name => 'outputArtifactDetails', traits => ['NameInRequest'], required => 1);
+  has Settings => (is => 'ro', isa => 'Paws::CodePipeline::ActionTypeSettings', request_name => 'settings', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

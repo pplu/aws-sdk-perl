@@ -1,9 +1,9 @@
 package Paws::DeviceFarm::ScheduleRunTest;
   use Moose;
-  has Filter => (is => 'ro', isa => 'Str', xmlname => 'filter', request_name => 'filter', traits => ['Unwrapped','NameInRequest']);
-  has Parameters => (is => 'ro', isa => 'Paws::DeviceFarm::TestParameters', xmlname => 'parameters', request_name => 'parameters', traits => ['Unwrapped','NameInRequest']);
-  has TestPackageArn => (is => 'ro', isa => 'Str', xmlname => 'testPackageArn', request_name => 'testPackageArn', traits => ['Unwrapped','NameInRequest']);
-  has Type => (is => 'ro', isa => 'Str', xmlname => 'type', request_name => 'type', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has Filter => (is => 'ro', isa => 'Str', request_name => 'filter', traits => ['NameInRequest']);
+  has Parameters => (is => 'ro', isa => 'Paws::DeviceFarm::TestParameters', request_name => 'parameters', traits => ['NameInRequest']);
+  has TestPackageArn => (is => 'ro', isa => 'Str', request_name => 'testPackageArn', traits => ['NameInRequest']);
+  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###

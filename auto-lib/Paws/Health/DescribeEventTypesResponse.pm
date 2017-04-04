@@ -1,8 +1,8 @@
 
 package Paws::Health::DescribeEventTypesResponse;
   use Moose;
-  has EventTypes => (is => 'ro', isa => 'ArrayRef[Paws::Health::EventType]', traits => ['Unwrapped'], xmlname => 'eventTypes' );
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
+  has EventTypes => (is => 'ro', isa => 'ArrayRef[Paws::Health::EventType]', traits => ['NameInRequest'], request_name => 'eventTypes' );
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

@@ -1,7 +1,7 @@
 
 package Paws::CodeCommit::GetBranchOutput;
   use Moose;
-  has Branch => (is => 'ro', isa => 'Paws::CodeCommit::BranchInfo', traits => ['Unwrapped'], xmlname => 'branch' );
+  has Branch => (is => 'ro', isa => 'Paws::CodeCommit::BranchInfo', traits => ['NameInRequest'], request_name => 'branch' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

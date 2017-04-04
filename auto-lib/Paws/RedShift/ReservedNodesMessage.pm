@@ -2,7 +2,7 @@
 package Paws::RedShift::ReservedNodesMessage;
   use Moose;
   has Marker => (is => 'ro', isa => 'Str');
-  has ReservedNodes => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::ReservedNode]', xmlname => 'ReservedNode', traits => ['Unwrapped',]);
+  has ReservedNodes => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::ReservedNode]', request_name => 'ReservedNode', traits => ['NameInRequest',]);
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

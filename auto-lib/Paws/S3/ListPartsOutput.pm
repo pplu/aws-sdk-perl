@@ -11,7 +11,7 @@ package Paws::S3::ListPartsOutput;
   has NextPartNumberMarker => (is => 'ro', isa => 'Int');
   has Owner => (is => 'ro', isa => 'Paws::S3::Owner');
   has PartNumberMarker => (is => 'ro', isa => 'Int');
-  has Parts => (is => 'ro', isa => 'ArrayRef[Paws::S3::Part]', traits => ['Unwrapped'], xmlname => 'Part');
+  has Parts => (is => 'ro', isa => 'ArrayRef[Paws::S3::Part]', traits => ['NameInRequest'], request_name => 'Part');
   has RequestCharged => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-request-charged');
   has StorageClass => (is => 'ro', isa => 'Str');
   has UploadId => (is => 'ro', isa => 'Str');

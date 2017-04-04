@@ -1,8 +1,8 @@
 package Paws::CodeCommit::UserInfo;
   use Moose;
-  has Date => (is => 'ro', isa => 'Str', xmlname => 'date', request_name => 'date', traits => ['Unwrapped','NameInRequest']);
-  has Email => (is => 'ro', isa => 'Str', xmlname => 'email', request_name => 'email', traits => ['Unwrapped','NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', xmlname => 'name', request_name => 'name', traits => ['Unwrapped','NameInRequest']);
+  has Date => (is => 'ro', isa => 'Str', request_name => 'date', traits => ['NameInRequest']);
+  has Email => (is => 'ro', isa => 'Str', request_name => 'email', traits => ['NameInRequest']);
+  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

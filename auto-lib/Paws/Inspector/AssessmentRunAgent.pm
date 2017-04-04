@@ -1,12 +1,12 @@
 package Paws::Inspector::AssessmentRunAgent;
   use Moose;
-  has AgentHealth => (is => 'ro', isa => 'Str', xmlname => 'agentHealth', request_name => 'agentHealth', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has AgentHealthCode => (is => 'ro', isa => 'Str', xmlname => 'agentHealthCode', request_name => 'agentHealthCode', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has AgentHealthDetails => (is => 'ro', isa => 'Str', xmlname => 'agentHealthDetails', request_name => 'agentHealthDetails', traits => ['Unwrapped','NameInRequest']);
-  has AgentId => (is => 'ro', isa => 'Str', xmlname => 'agentId', request_name => 'agentId', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has AssessmentRunArn => (is => 'ro', isa => 'Str', xmlname => 'assessmentRunArn', request_name => 'assessmentRunArn', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has AutoScalingGroup => (is => 'ro', isa => 'Str', xmlname => 'autoScalingGroup', request_name => 'autoScalingGroup', traits => ['Unwrapped','NameInRequest']);
-  has TelemetryMetadata => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::TelemetryMetadata]', xmlname => 'telemetryMetadata', request_name => 'telemetryMetadata', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has AgentHealth => (is => 'ro', isa => 'Str', request_name => 'agentHealth', traits => ['NameInRequest'], required => 1);
+  has AgentHealthCode => (is => 'ro', isa => 'Str', request_name => 'agentHealthCode', traits => ['NameInRequest'], required => 1);
+  has AgentHealthDetails => (is => 'ro', isa => 'Str', request_name => 'agentHealthDetails', traits => ['NameInRequest']);
+  has AgentId => (is => 'ro', isa => 'Str', request_name => 'agentId', traits => ['NameInRequest'], required => 1);
+  has AssessmentRunArn => (is => 'ro', isa => 'Str', request_name => 'assessmentRunArn', traits => ['NameInRequest'], required => 1);
+  has AutoScalingGroup => (is => 'ro', isa => 'Str', request_name => 'autoScalingGroup', traits => ['NameInRequest']);
+  has TelemetryMetadata => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::TelemetryMetadata]', request_name => 'telemetryMetadata', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###

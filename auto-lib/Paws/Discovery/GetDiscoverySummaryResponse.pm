@@ -1,12 +1,12 @@
 
 package Paws::Discovery::GetDiscoverySummaryResponse;
   use Moose;
-  has AgentSummary => (is => 'ro', isa => 'Paws::Discovery::CustomerAgentInfo', traits => ['Unwrapped'], xmlname => 'agentSummary' );
-  has Applications => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => 'applications' );
-  has ConnectorSummary => (is => 'ro', isa => 'Paws::Discovery::CustomerConnectorInfo', traits => ['Unwrapped'], xmlname => 'connectorSummary' );
-  has Servers => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => 'servers' );
-  has ServersMappedToApplications => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => 'serversMappedToApplications' );
-  has ServersMappedtoTags => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => 'serversMappedtoTags' );
+  has AgentSummary => (is => 'ro', isa => 'Paws::Discovery::CustomerAgentInfo', traits => ['NameInRequest'], request_name => 'agentSummary' );
+  has Applications => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'applications' );
+  has ConnectorSummary => (is => 'ro', isa => 'Paws::Discovery::CustomerConnectorInfo', traits => ['NameInRequest'], request_name => 'connectorSummary' );
+  has Servers => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'servers' );
+  has ServersMappedToApplications => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'serversMappedToApplications' );
+  has ServersMappedtoTags => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'serversMappedtoTags' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

@@ -1,10 +1,10 @@
 package Paws::CodeCommit::RepositoryTrigger;
   use Moose;
-  has Branches => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'branches', request_name => 'branches', traits => ['Unwrapped','NameInRequest']);
-  has CustomData => (is => 'ro', isa => 'Str', xmlname => 'customData', request_name => 'customData', traits => ['Unwrapped','NameInRequest']);
-  has DestinationArn => (is => 'ro', isa => 'Str', xmlname => 'destinationArn', request_name => 'destinationArn', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has Events => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'events', request_name => 'events', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has Name => (is => 'ro', isa => 'Str', xmlname => 'name', request_name => 'name', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has Branches => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'branches', traits => ['NameInRequest']);
+  has CustomData => (is => 'ro', isa => 'Str', request_name => 'customData', traits => ['NameInRequest']);
+  has DestinationArn => (is => 'ro', isa => 'Str', request_name => 'destinationArn', traits => ['NameInRequest'], required => 1);
+  has Events => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'events', traits => ['NameInRequest'], required => 1);
+  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###

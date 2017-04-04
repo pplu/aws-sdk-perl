@@ -1,21 +1,21 @@
 package Paws::CodeBuild::Build;
   use Moose;
-  has Arn => (is => 'ro', isa => 'Str', xmlname => 'arn', request_name => 'arn', traits => ['Unwrapped','NameInRequest']);
-  has Artifacts => (is => 'ro', isa => 'Paws::CodeBuild::BuildArtifacts', xmlname => 'artifacts', request_name => 'artifacts', traits => ['Unwrapped','NameInRequest']);
-  has BuildComplete => (is => 'ro', isa => 'Bool', xmlname => 'buildComplete', request_name => 'buildComplete', traits => ['Unwrapped','NameInRequest']);
-  has BuildStatus => (is => 'ro', isa => 'Str', xmlname => 'buildStatus', request_name => 'buildStatus', traits => ['Unwrapped','NameInRequest']);
-  has CurrentPhase => (is => 'ro', isa => 'Str', xmlname => 'currentPhase', request_name => 'currentPhase', traits => ['Unwrapped','NameInRequest']);
-  has EndTime => (is => 'ro', isa => 'Str', xmlname => 'endTime', request_name => 'endTime', traits => ['Unwrapped','NameInRequest']);
-  has Environment => (is => 'ro', isa => 'Paws::CodeBuild::ProjectEnvironment', xmlname => 'environment', request_name => 'environment', traits => ['Unwrapped','NameInRequest']);
-  has Id => (is => 'ro', isa => 'Str', xmlname => 'id', request_name => 'id', traits => ['Unwrapped','NameInRequest']);
-  has Initiator => (is => 'ro', isa => 'Str', xmlname => 'initiator', request_name => 'initiator', traits => ['Unwrapped','NameInRequest']);
-  has Logs => (is => 'ro', isa => 'Paws::CodeBuild::LogsLocation', xmlname => 'logs', request_name => 'logs', traits => ['Unwrapped','NameInRequest']);
-  has Phases => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::BuildPhase]', xmlname => 'phases', request_name => 'phases', traits => ['Unwrapped','NameInRequest']);
-  has ProjectName => (is => 'ro', isa => 'Str', xmlname => 'projectName', request_name => 'projectName', traits => ['Unwrapped','NameInRequest']);
-  has Source => (is => 'ro', isa => 'Paws::CodeBuild::ProjectSource', xmlname => 'source', request_name => 'source', traits => ['Unwrapped','NameInRequest']);
-  has SourceVersion => (is => 'ro', isa => 'Str', xmlname => 'sourceVersion', request_name => 'sourceVersion', traits => ['Unwrapped','NameInRequest']);
-  has StartTime => (is => 'ro', isa => 'Str', xmlname => 'startTime', request_name => 'startTime', traits => ['Unwrapped','NameInRequest']);
-  has TimeoutInMinutes => (is => 'ro', isa => 'Int', xmlname => 'timeoutInMinutes', request_name => 'timeoutInMinutes', traits => ['Unwrapped','NameInRequest']);
+  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
+  has Artifacts => (is => 'ro', isa => 'Paws::CodeBuild::BuildArtifacts', request_name => 'artifacts', traits => ['NameInRequest']);
+  has BuildComplete => (is => 'ro', isa => 'Bool', request_name => 'buildComplete', traits => ['NameInRequest']);
+  has BuildStatus => (is => 'ro', isa => 'Str', request_name => 'buildStatus', traits => ['NameInRequest']);
+  has CurrentPhase => (is => 'ro', isa => 'Str', request_name => 'currentPhase', traits => ['NameInRequest']);
+  has EndTime => (is => 'ro', isa => 'Str', request_name => 'endTime', traits => ['NameInRequest']);
+  has Environment => (is => 'ro', isa => 'Paws::CodeBuild::ProjectEnvironment', request_name => 'environment', traits => ['NameInRequest']);
+  has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest']);
+  has Initiator => (is => 'ro', isa => 'Str', request_name => 'initiator', traits => ['NameInRequest']);
+  has Logs => (is => 'ro', isa => 'Paws::CodeBuild::LogsLocation', request_name => 'logs', traits => ['NameInRequest']);
+  has Phases => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::BuildPhase]', request_name => 'phases', traits => ['NameInRequest']);
+  has ProjectName => (is => 'ro', isa => 'Str', request_name => 'projectName', traits => ['NameInRequest']);
+  has Source => (is => 'ro', isa => 'Paws::CodeBuild::ProjectSource', request_name => 'source', traits => ['NameInRequest']);
+  has SourceVersion => (is => 'ro', isa => 'Str', request_name => 'sourceVersion', traits => ['NameInRequest']);
+  has StartTime => (is => 'ro', isa => 'Str', request_name => 'startTime', traits => ['NameInRequest']);
+  has TimeoutInMinutes => (is => 'ro', isa => 'Int', request_name => 'timeoutInMinutes', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

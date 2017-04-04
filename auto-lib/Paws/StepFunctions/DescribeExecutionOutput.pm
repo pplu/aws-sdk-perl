@@ -1,14 +1,14 @@
 
 package Paws::StepFunctions::DescribeExecutionOutput;
   use Moose;
-  has ExecutionArn => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'executionArn' , required => 1);
-  has Input => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'input' , required => 1);
-  has Name => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'name' );
-  has Output => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'output' );
-  has StartDate => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'startDate' , required => 1);
-  has StateMachineArn => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'stateMachineArn' , required => 1);
-  has Status => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'status' , required => 1);
-  has StopDate => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'stopDate' );
+  has ExecutionArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'executionArn' , required => 1);
+  has Input => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'input' , required => 1);
+  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name' );
+  has Output => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'output' );
+  has StartDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'startDate' , required => 1);
+  has StateMachineArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'stateMachineArn' , required => 1);
+  has Status => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'status' , required => 1);
+  has StopDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'stopDate' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

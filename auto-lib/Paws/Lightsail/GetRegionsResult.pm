@@ -1,7 +1,7 @@
 
 package Paws::Lightsail::GetRegionsResult;
   use Moose;
-  has Regions => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::Region]', traits => ['Unwrapped'], xmlname => 'regions' );
+  has Regions => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::Region]', traits => ['NameInRequest'], request_name => 'regions' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

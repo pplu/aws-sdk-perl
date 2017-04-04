@@ -1,9 +1,9 @@
 package Paws::EC2::InstanceStatusEvent;
   use Moose;
-  has Code => (is => 'ro', isa => 'Str', xmlname => 'code', traits => ['Unwrapped']);
-  has Description => (is => 'ro', isa => 'Str', xmlname => 'description', traits => ['Unwrapped']);
-  has NotAfter => (is => 'ro', isa => 'Str', xmlname => 'notAfter', traits => ['Unwrapped']);
-  has NotBefore => (is => 'ro', isa => 'Str', xmlname => 'notBefore', traits => ['Unwrapped']);
+  has Code => (is => 'ro', isa => 'Str', request_name => 'code', traits => ['NameInRequest']);
+  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
+  has NotAfter => (is => 'ro', isa => 'Str', request_name => 'notAfter', traits => ['NameInRequest']);
+  has NotBefore => (is => 'ro', isa => 'Str', request_name => 'notBefore', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

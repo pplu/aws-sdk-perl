@@ -1,8 +1,8 @@
 package Paws::CloudSearchDomain::SuggestModel;
   use Moose;
-  has Found => (is => 'ro', isa => 'Int', xmlname => 'found', request_name => 'found', traits => ['Unwrapped','NameInRequest']);
-  has Query => (is => 'ro', isa => 'Str', xmlname => 'query', request_name => 'query', traits => ['Unwrapped','NameInRequest']);
-  has Suggestions => (is => 'ro', isa => 'ArrayRef[Paws::CloudSearchDomain::SuggestionMatch]', xmlname => 'suggestions', request_name => 'suggestions', traits => ['Unwrapped','NameInRequest']);
+  has Found => (is => 'ro', isa => 'Int', request_name => 'found', traits => ['NameInRequest']);
+  has Query => (is => 'ro', isa => 'Str', request_name => 'query', traits => ['NameInRequest']);
+  has Suggestions => (is => 'ro', isa => 'ArrayRef[Paws::CloudSearchDomain::SuggestionMatch]', request_name => 'suggestions', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

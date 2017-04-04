@@ -1,8 +1,8 @@
 
 package Paws::Discovery::DescribeExportTasksResponse;
   use Moose;
-  has ExportsInfo => (is => 'ro', isa => 'ArrayRef[Paws::Discovery::ExportInfo]', traits => ['Unwrapped'], xmlname => 'exportsInfo' );
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
+  has ExportsInfo => (is => 'ro', isa => 'ArrayRef[Paws::Discovery::ExportInfo]', traits => ['NameInRequest'], request_name => 'exportsInfo' );
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

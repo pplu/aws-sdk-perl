@@ -1,7 +1,7 @@
 package Paws::SimpleWorkflow::FailWorkflowExecutionDecisionAttributes;
   use Moose;
-  has Details => (is => 'ro', isa => 'Str', xmlname => 'details', request_name => 'details', traits => ['Unwrapped','NameInRequest']);
-  has Reason => (is => 'ro', isa => 'Str', xmlname => 'reason', request_name => 'reason', traits => ['Unwrapped','NameInRequest']);
+  has Details => (is => 'ro', isa => 'Str', request_name => 'details', traits => ['NameInRequest']);
+  has Reason => (is => 'ro', isa => 'Str', request_name => 'reason', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

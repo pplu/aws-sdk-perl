@@ -1,11 +1,11 @@
 package Paws::ECS::Resource;
   use Moose;
-  has DoubleValue => (is => 'ro', isa => 'Num', xmlname => 'doubleValue', request_name => 'doubleValue', traits => ['Unwrapped','NameInRequest']);
-  has IntegerValue => (is => 'ro', isa => 'Int', xmlname => 'integerValue', request_name => 'integerValue', traits => ['Unwrapped','NameInRequest']);
-  has LongValue => (is => 'ro', isa => 'Int', xmlname => 'longValue', request_name => 'longValue', traits => ['Unwrapped','NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', xmlname => 'name', request_name => 'name', traits => ['Unwrapped','NameInRequest']);
-  has StringSetValue => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'stringSetValue', request_name => 'stringSetValue', traits => ['Unwrapped','NameInRequest']);
-  has Type => (is => 'ro', isa => 'Str', xmlname => 'type', request_name => 'type', traits => ['Unwrapped','NameInRequest']);
+  has DoubleValue => (is => 'ro', isa => 'Num', request_name => 'doubleValue', traits => ['NameInRequest']);
+  has IntegerValue => (is => 'ro', isa => 'Int', request_name => 'integerValue', traits => ['NameInRequest']);
+  has LongValue => (is => 'ro', isa => 'Int', request_name => 'longValue', traits => ['NameInRequest']);
+  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
+  has StringSetValue => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'stringSetValue', traits => ['NameInRequest']);
+  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

@@ -1,10 +1,10 @@
 package Paws::CloudWatchLogs::FilteredLogEvent;
   use Moose;
-  has EventId => (is => 'ro', isa => 'Str', xmlname => 'eventId', request_name => 'eventId', traits => ['Unwrapped','NameInRequest']);
-  has IngestionTime => (is => 'ro', isa => 'Int', xmlname => 'ingestionTime', request_name => 'ingestionTime', traits => ['Unwrapped','NameInRequest']);
-  has LogStreamName => (is => 'ro', isa => 'Str', xmlname => 'logStreamName', request_name => 'logStreamName', traits => ['Unwrapped','NameInRequest']);
-  has Message => (is => 'ro', isa => 'Str', xmlname => 'message', request_name => 'message', traits => ['Unwrapped','NameInRequest']);
-  has Timestamp => (is => 'ro', isa => 'Int', xmlname => 'timestamp', request_name => 'timestamp', traits => ['Unwrapped','NameInRequest']);
+  has EventId => (is => 'ro', isa => 'Str', request_name => 'eventId', traits => ['NameInRequest']);
+  has IngestionTime => (is => 'ro', isa => 'Int', request_name => 'ingestionTime', traits => ['NameInRequest']);
+  has LogStreamName => (is => 'ro', isa => 'Str', request_name => 'logStreamName', traits => ['NameInRequest']);
+  has Message => (is => 'ro', isa => 'Str', request_name => 'message', traits => ['NameInRequest']);
+  has Timestamp => (is => 'ro', isa => 'Int', request_name => 'timestamp', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

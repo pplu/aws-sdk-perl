@@ -1,8 +1,8 @@
 
 package Paws::SMS::GetConnectorsResponse;
   use Moose;
-  has ConnectorList => (is => 'ro', isa => 'ArrayRef[Paws::SMS::Connector]', traits => ['Unwrapped'], xmlname => 'connectorList' );
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
+  has ConnectorList => (is => 'ro', isa => 'ArrayRef[Paws::SMS::Connector]', traits => ['NameInRequest'], request_name => 'connectorList' );
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

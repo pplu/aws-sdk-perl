@@ -1,19 +1,19 @@
 package Paws::Batch::JobDetail;
   use Moose;
-  has Attempts => (is => 'ro', isa => 'ArrayRef[Paws::Batch::AttemptDetail]', xmlname => 'attempts', request_name => 'attempts', traits => ['Unwrapped','NameInRequest']);
-  has Container => (is => 'ro', isa => 'Paws::Batch::ContainerDetail', xmlname => 'container', request_name => 'container', traits => ['Unwrapped','NameInRequest']);
-  has CreatedAt => (is => 'ro', isa => 'Int', xmlname => 'createdAt', request_name => 'createdAt', traits => ['Unwrapped','NameInRequest']);
-  has DependsOn => (is => 'ro', isa => 'ArrayRef[Paws::Batch::JobDependency]', xmlname => 'dependsOn', request_name => 'dependsOn', traits => ['Unwrapped','NameInRequest']);
-  has JobDefinition => (is => 'ro', isa => 'Str', xmlname => 'jobDefinition', request_name => 'jobDefinition', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has JobId => (is => 'ro', isa => 'Str', xmlname => 'jobId', request_name => 'jobId', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has JobName => (is => 'ro', isa => 'Str', xmlname => 'jobName', request_name => 'jobName', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has JobQueue => (is => 'ro', isa => 'Str', xmlname => 'jobQueue', request_name => 'jobQueue', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has Parameters => (is => 'ro', isa => 'Paws::Batch::ParametersMap', xmlname => 'parameters', request_name => 'parameters', traits => ['Unwrapped','NameInRequest']);
-  has RetryStrategy => (is => 'ro', isa => 'Paws::Batch::RetryStrategy', xmlname => 'retryStrategy', request_name => 'retryStrategy', traits => ['Unwrapped','NameInRequest']);
-  has StartedAt => (is => 'ro', isa => 'Int', xmlname => 'startedAt', request_name => 'startedAt', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has Status => (is => 'ro', isa => 'Str', xmlname => 'status', request_name => 'status', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has StatusReason => (is => 'ro', isa => 'Str', xmlname => 'statusReason', request_name => 'statusReason', traits => ['Unwrapped','NameInRequest']);
-  has StoppedAt => (is => 'ro', isa => 'Int', xmlname => 'stoppedAt', request_name => 'stoppedAt', traits => ['Unwrapped','NameInRequest']);
+  has Attempts => (is => 'ro', isa => 'ArrayRef[Paws::Batch::AttemptDetail]', request_name => 'attempts', traits => ['NameInRequest']);
+  has Container => (is => 'ro', isa => 'Paws::Batch::ContainerDetail', request_name => 'container', traits => ['NameInRequest']);
+  has CreatedAt => (is => 'ro', isa => 'Int', request_name => 'createdAt', traits => ['NameInRequest']);
+  has DependsOn => (is => 'ro', isa => 'ArrayRef[Paws::Batch::JobDependency]', request_name => 'dependsOn', traits => ['NameInRequest']);
+  has JobDefinition => (is => 'ro', isa => 'Str', request_name => 'jobDefinition', traits => ['NameInRequest'], required => 1);
+  has JobId => (is => 'ro', isa => 'Str', request_name => 'jobId', traits => ['NameInRequest'], required => 1);
+  has JobName => (is => 'ro', isa => 'Str', request_name => 'jobName', traits => ['NameInRequest'], required => 1);
+  has JobQueue => (is => 'ro', isa => 'Str', request_name => 'jobQueue', traits => ['NameInRequest'], required => 1);
+  has Parameters => (is => 'ro', isa => 'Paws::Batch::ParametersMap', request_name => 'parameters', traits => ['NameInRequest']);
+  has RetryStrategy => (is => 'ro', isa => 'Paws::Batch::RetryStrategy', request_name => 'retryStrategy', traits => ['NameInRequest']);
+  has StartedAt => (is => 'ro', isa => 'Int', request_name => 'startedAt', traits => ['NameInRequest'], required => 1);
+  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest'], required => 1);
+  has StatusReason => (is => 'ro', isa => 'Str', request_name => 'statusReason', traits => ['NameInRequest']);
+  has StoppedAt => (is => 'ro', isa => 'Int', request_name => 'stoppedAt', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

@@ -1,8 +1,8 @@
 package Paws::Inspector::InspectorServiceAttributes;
   use Moose;
-  has AssessmentRunArn => (is => 'ro', isa => 'Str', xmlname => 'assessmentRunArn', request_name => 'assessmentRunArn', traits => ['Unwrapped','NameInRequest']);
-  has RulesPackageArn => (is => 'ro', isa => 'Str', xmlname => 'rulesPackageArn', request_name => 'rulesPackageArn', traits => ['Unwrapped','NameInRequest']);
-  has SchemaVersion => (is => 'ro', isa => 'Int', xmlname => 'schemaVersion', request_name => 'schemaVersion', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has AssessmentRunArn => (is => 'ro', isa => 'Str', request_name => 'assessmentRunArn', traits => ['NameInRequest']);
+  has RulesPackageArn => (is => 'ro', isa => 'Str', request_name => 'rulesPackageArn', traits => ['NameInRequest']);
+  has SchemaVersion => (is => 'ro', isa => 'Int', request_name => 'schemaVersion', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###

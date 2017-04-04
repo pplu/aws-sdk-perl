@@ -1,11 +1,11 @@
 package Paws::IoT::OutgoingCertificate;
   use Moose;
-  has CertificateArn => (is => 'ro', isa => 'Str', xmlname => 'certificateArn', request_name => 'certificateArn', traits => ['Unwrapped','NameInRequest']);
-  has CertificateId => (is => 'ro', isa => 'Str', xmlname => 'certificateId', request_name => 'certificateId', traits => ['Unwrapped','NameInRequest']);
-  has CreationDate => (is => 'ro', isa => 'Str', xmlname => 'creationDate', request_name => 'creationDate', traits => ['Unwrapped','NameInRequest']);
-  has TransferDate => (is => 'ro', isa => 'Str', xmlname => 'transferDate', request_name => 'transferDate', traits => ['Unwrapped','NameInRequest']);
-  has TransferMessage => (is => 'ro', isa => 'Str', xmlname => 'transferMessage', request_name => 'transferMessage', traits => ['Unwrapped','NameInRequest']);
-  has TransferredTo => (is => 'ro', isa => 'Str', xmlname => 'transferredTo', request_name => 'transferredTo', traits => ['Unwrapped','NameInRequest']);
+  has CertificateArn => (is => 'ro', isa => 'Str', request_name => 'certificateArn', traits => ['NameInRequest']);
+  has CertificateId => (is => 'ro', isa => 'Str', request_name => 'certificateId', traits => ['NameInRequest']);
+  has CreationDate => (is => 'ro', isa => 'Str', request_name => 'creationDate', traits => ['NameInRequest']);
+  has TransferDate => (is => 'ro', isa => 'Str', request_name => 'transferDate', traits => ['NameInRequest']);
+  has TransferMessage => (is => 'ro', isa => 'Str', request_name => 'transferMessage', traits => ['NameInRequest']);
+  has TransferredTo => (is => 'ro', isa => 'Str', request_name => 'transferredTo', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

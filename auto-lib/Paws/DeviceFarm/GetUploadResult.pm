@@ -1,7 +1,7 @@
 
 package Paws::DeviceFarm::GetUploadResult;
   use Moose;
-  has Upload => (is => 'ro', isa => 'Paws::DeviceFarm::Upload', traits => ['Unwrapped'], xmlname => 'upload' );
+  has Upload => (is => 'ro', isa => 'Paws::DeviceFarm::Upload', traits => ['NameInRequest'], request_name => 'upload' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

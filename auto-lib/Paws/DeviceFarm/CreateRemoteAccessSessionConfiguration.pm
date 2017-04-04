@@ -1,6 +1,6 @@
 package Paws::DeviceFarm::CreateRemoteAccessSessionConfiguration;
   use Moose;
-  has BillingMethod => (is => 'ro', isa => 'Str', xmlname => 'billingMethod', request_name => 'billingMethod', traits => ['Unwrapped','NameInRequest']);
+  has BillingMethod => (is => 'ro', isa => 'Str', request_name => 'billingMethod', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

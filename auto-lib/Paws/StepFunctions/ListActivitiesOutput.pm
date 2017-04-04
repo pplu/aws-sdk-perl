@@ -1,8 +1,8 @@
 
 package Paws::StepFunctions::ListActivitiesOutput;
   use Moose;
-  has Activities => (is => 'ro', isa => 'ArrayRef[Paws::StepFunctions::ActivityListItem]', traits => ['Unwrapped'], xmlname => 'activities' , required => 1);
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
+  has Activities => (is => 'ro', isa => 'ArrayRef[Paws::StepFunctions::ActivityListItem]', traits => ['NameInRequest'], request_name => 'activities' , required => 1);
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

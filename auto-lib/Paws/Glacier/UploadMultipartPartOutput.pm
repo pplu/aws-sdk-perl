@@ -1,7 +1,7 @@
 
 package Paws::Glacier::UploadMultipartPartOutput;
   use Moose;
-  has Checksum => (is => 'ro', isa => 'Str');
+  has Checksum => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'checksum');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

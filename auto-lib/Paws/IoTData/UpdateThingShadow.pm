@@ -5,7 +5,7 @@ package Paws::IoTData::UpdateThingShadow;
   has ThingName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'thingName' , required => 1);
 
   use MooseX::ClassAttribute;
-
+  class_has _stream_param => (is => 'ro', default => 'payload');
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateThingShadow');
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/things/{thingName}/shadow');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');

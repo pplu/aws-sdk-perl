@@ -1,9 +1,9 @@
 
 package Paws::ApiGateway::MethodResponse;
   use Moose;
-  has ResponseModels => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString');
-  has ResponseParameters => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToBoolean');
-  has StatusCode => (is => 'ro', isa => 'Str');
+  has ResponseModels => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['NameInRequest'], request_name => 'responseModels');
+  has ResponseParameters => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToBoolean', traits => ['NameInRequest'], request_name => 'responseParameters');
+  has StatusCode => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'statusCode');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

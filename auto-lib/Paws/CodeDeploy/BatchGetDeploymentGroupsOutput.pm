@@ -1,8 +1,8 @@
 
 package Paws::CodeDeploy::BatchGetDeploymentGroupsOutput;
   use Moose;
-  has DeploymentGroupsInfo => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::DeploymentGroupInfo]', traits => ['Unwrapped'], xmlname => 'deploymentGroupsInfo' );
-  has ErrorMessage => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'errorMessage' );
+  has DeploymentGroupsInfo => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::DeploymentGroupInfo]', traits => ['NameInRequest'], request_name => 'deploymentGroupsInfo' );
+  has ErrorMessage => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'errorMessage' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

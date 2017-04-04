@@ -1,9 +1,9 @@
 package Paws::CodeDeploy::ApplicationInfo;
   use Moose;
-  has ApplicationId => (is => 'ro', isa => 'Str', xmlname => 'applicationId', request_name => 'applicationId', traits => ['Unwrapped','NameInRequest']);
-  has ApplicationName => (is => 'ro', isa => 'Str', xmlname => 'applicationName', request_name => 'applicationName', traits => ['Unwrapped','NameInRequest']);
-  has CreateTime => (is => 'ro', isa => 'Str', xmlname => 'createTime', request_name => 'createTime', traits => ['Unwrapped','NameInRequest']);
-  has LinkedToGitHub => (is => 'ro', isa => 'Bool', xmlname => 'linkedToGitHub', request_name => 'linkedToGitHub', traits => ['Unwrapped','NameInRequest']);
+  has ApplicationId => (is => 'ro', isa => 'Str', request_name => 'applicationId', traits => ['NameInRequest']);
+  has ApplicationName => (is => 'ro', isa => 'Str', request_name => 'applicationName', traits => ['NameInRequest']);
+  has CreateTime => (is => 'ro', isa => 'Str', request_name => 'createTime', traits => ['NameInRequest']);
+  has LinkedToGitHub => (is => 'ro', isa => 'Bool', request_name => 'linkedToGitHub', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

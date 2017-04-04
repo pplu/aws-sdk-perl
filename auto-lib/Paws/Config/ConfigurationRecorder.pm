@@ -1,8 +1,8 @@
 package Paws::Config::ConfigurationRecorder;
   use Moose;
-  has Name => (is => 'ro', isa => 'Str', xmlname => 'name', request_name => 'name', traits => ['Unwrapped','NameInRequest']);
-  has RecordingGroup => (is => 'ro', isa => 'Paws::Config::RecordingGroup', xmlname => 'recordingGroup', request_name => 'recordingGroup', traits => ['Unwrapped','NameInRequest']);
-  has RoleARN => (is => 'ro', isa => 'Str', xmlname => 'roleARN', request_name => 'roleARN', traits => ['Unwrapped','NameInRequest']);
+  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
+  has RecordingGroup => (is => 'ro', isa => 'Paws::Config::RecordingGroup', request_name => 'recordingGroup', traits => ['NameInRequest']);
+  has RoleARN => (is => 'ro', isa => 'Str', request_name => 'roleARN', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

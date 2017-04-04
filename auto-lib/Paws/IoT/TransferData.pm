@@ -1,10 +1,10 @@
 package Paws::IoT::TransferData;
   use Moose;
-  has AcceptDate => (is => 'ro', isa => 'Str', xmlname => 'acceptDate', request_name => 'acceptDate', traits => ['Unwrapped','NameInRequest']);
-  has RejectDate => (is => 'ro', isa => 'Str', xmlname => 'rejectDate', request_name => 'rejectDate', traits => ['Unwrapped','NameInRequest']);
-  has RejectReason => (is => 'ro', isa => 'Str', xmlname => 'rejectReason', request_name => 'rejectReason', traits => ['Unwrapped','NameInRequest']);
-  has TransferDate => (is => 'ro', isa => 'Str', xmlname => 'transferDate', request_name => 'transferDate', traits => ['Unwrapped','NameInRequest']);
-  has TransferMessage => (is => 'ro', isa => 'Str', xmlname => 'transferMessage', request_name => 'transferMessage', traits => ['Unwrapped','NameInRequest']);
+  has AcceptDate => (is => 'ro', isa => 'Str', request_name => 'acceptDate', traits => ['NameInRequest']);
+  has RejectDate => (is => 'ro', isa => 'Str', request_name => 'rejectDate', traits => ['NameInRequest']);
+  has RejectReason => (is => 'ro', isa => 'Str', request_name => 'rejectReason', traits => ['NameInRequest']);
+  has TransferDate => (is => 'ro', isa => 'Str', request_name => 'transferDate', traits => ['NameInRequest']);
+  has TransferMessage => (is => 'ro', isa => 'Str', request_name => 'transferMessage', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

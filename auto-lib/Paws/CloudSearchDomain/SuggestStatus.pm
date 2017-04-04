@@ -1,7 +1,7 @@
 package Paws::CloudSearchDomain::SuggestStatus;
   use Moose;
-  has Rid => (is => 'ro', isa => 'Str', xmlname => 'rid', request_name => 'rid', traits => ['Unwrapped','NameInRequest']);
-  has Timems => (is => 'ro', isa => 'Int', xmlname => 'timems', request_name => 'timems', traits => ['Unwrapped','NameInRequest']);
+  has Rid => (is => 'ro', isa => 'Str', request_name => 'rid', traits => ['NameInRequest']);
+  has Timems => (is => 'ro', isa => 'Int', request_name => 'timems', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

@@ -1,6 +1,6 @@
 package Paws::Support::TrustedAdvisorCategorySpecificSummary;
   use Moose;
-  has CostOptimizing => (is => 'ro', isa => 'Paws::Support::TrustedAdvisorCostOptimizingSummary', xmlname => 'costOptimizing', request_name => 'costOptimizing', traits => ['Unwrapped','NameInRequest']);
+  has CostOptimizing => (is => 'ro', isa => 'Paws::Support::TrustedAdvisorCostOptimizingSummary', request_name => 'costOptimizing', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

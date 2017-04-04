@@ -1,6 +1,6 @@
 package Paws::StepFunctions::ActivitySucceededEventDetails;
   use Moose;
-  has Output => (is => 'ro', isa => 'Str', xmlname => 'output', request_name => 'output', traits => ['Unwrapped','NameInRequest']);
+  has Output => (is => 'ro', isa => 'Str', request_name => 'output', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

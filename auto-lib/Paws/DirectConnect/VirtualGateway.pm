@@ -1,7 +1,7 @@
 package Paws::DirectConnect::VirtualGateway;
   use Moose;
-  has VirtualGatewayId => (is => 'ro', isa => 'Str', xmlname => 'virtualGatewayId', request_name => 'virtualGatewayId', traits => ['Unwrapped','NameInRequest']);
-  has VirtualGatewayState => (is => 'ro', isa => 'Str', xmlname => 'virtualGatewayState', request_name => 'virtualGatewayState', traits => ['Unwrapped','NameInRequest']);
+  has VirtualGatewayId => (is => 'ro', isa => 'Str', request_name => 'virtualGatewayId', traits => ['NameInRequest']);
+  has VirtualGatewayState => (is => 'ro', isa => 'Str', request_name => 'virtualGatewayState', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

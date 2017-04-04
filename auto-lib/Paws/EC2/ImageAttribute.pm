@@ -1,14 +1,14 @@
 
 package Paws::EC2::ImageAttribute;
   use Moose;
-  has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[Paws::EC2::BlockDeviceMapping]', xmlname => 'blockDeviceMapping', traits => ['Unwrapped',]);
-  has Description => (is => 'ro', isa => 'Paws::EC2::AttributeValue', xmlname => 'description', traits => ['Unwrapped',]);
-  has ImageId => (is => 'ro', isa => 'Str', xmlname => 'imageId', traits => ['Unwrapped',]);
-  has KernelId => (is => 'ro', isa => 'Paws::EC2::AttributeValue', xmlname => 'kernel', traits => ['Unwrapped',]);
-  has LaunchPermissions => (is => 'ro', isa => 'ArrayRef[Paws::EC2::LaunchPermission]', xmlname => 'launchPermission', traits => ['Unwrapped',]);
-  has ProductCodes => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ProductCode]', xmlname => 'productCodes', traits => ['Unwrapped',]);
-  has RamdiskId => (is => 'ro', isa => 'Paws::EC2::AttributeValue', xmlname => 'ramdisk', traits => ['Unwrapped',]);
-  has SriovNetSupport => (is => 'ro', isa => 'Paws::EC2::AttributeValue', xmlname => 'sriovNetSupport', traits => ['Unwrapped',]);
+  has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[Paws::EC2::BlockDeviceMapping]', request_name => 'blockDeviceMapping', traits => ['NameInRequest',]);
+  has Description => (is => 'ro', isa => 'Paws::EC2::AttributeValue', request_name => 'description', traits => ['NameInRequest',]);
+  has ImageId => (is => 'ro', isa => 'Str', request_name => 'imageId', traits => ['NameInRequest',]);
+  has KernelId => (is => 'ro', isa => 'Paws::EC2::AttributeValue', request_name => 'kernel', traits => ['NameInRequest',]);
+  has LaunchPermissions => (is => 'ro', isa => 'ArrayRef[Paws::EC2::LaunchPermission]', request_name => 'launchPermission', traits => ['NameInRequest',]);
+  has ProductCodes => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ProductCode]', request_name => 'productCodes', traits => ['NameInRequest',]);
+  has RamdiskId => (is => 'ro', isa => 'Paws::EC2::AttributeValue', request_name => 'ramdisk', traits => ['NameInRequest',]);
+  has SriovNetSupport => (is => 'ro', isa => 'Paws::EC2::AttributeValue', request_name => 'sriovNetSupport', traits => ['NameInRequest',]);
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

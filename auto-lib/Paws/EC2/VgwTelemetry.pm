@@ -1,10 +1,10 @@
 package Paws::EC2::VgwTelemetry;
   use Moose;
-  has AcceptedRouteCount => (is => 'ro', isa => 'Int', xmlname => 'acceptedRouteCount', traits => ['Unwrapped']);
-  has LastStatusChange => (is => 'ro', isa => 'Str', xmlname => 'lastStatusChange', traits => ['Unwrapped']);
-  has OutsideIpAddress => (is => 'ro', isa => 'Str', xmlname => 'outsideIpAddress', traits => ['Unwrapped']);
-  has Status => (is => 'ro', isa => 'Str', xmlname => 'status', traits => ['Unwrapped']);
-  has StatusMessage => (is => 'ro', isa => 'Str', xmlname => 'statusMessage', traits => ['Unwrapped']);
+  has AcceptedRouteCount => (is => 'ro', isa => 'Int', request_name => 'acceptedRouteCount', traits => ['NameInRequest']);
+  has LastStatusChange => (is => 'ro', isa => 'Str', request_name => 'lastStatusChange', traits => ['NameInRequest']);
+  has OutsideIpAddress => (is => 'ro', isa => 'Str', request_name => 'outsideIpAddress', traits => ['NameInRequest']);
+  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+  has StatusMessage => (is => 'ro', isa => 'Str', request_name => 'statusMessage', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

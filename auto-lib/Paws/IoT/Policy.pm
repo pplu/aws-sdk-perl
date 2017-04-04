@@ -1,7 +1,7 @@
 package Paws::IoT::Policy;
   use Moose;
-  has PolicyArn => (is => 'ro', isa => 'Str', xmlname => 'policyArn', request_name => 'policyArn', traits => ['Unwrapped','NameInRequest']);
-  has PolicyName => (is => 'ro', isa => 'Str', xmlname => 'policyName', request_name => 'policyName', traits => ['Unwrapped','NameInRequest']);
+  has PolicyArn => (is => 'ro', isa => 'Str', request_name => 'policyArn', traits => ['NameInRequest']);
+  has PolicyName => (is => 'ro', isa => 'Str', request_name => 'policyName', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

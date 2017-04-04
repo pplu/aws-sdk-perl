@@ -1,7 +1,7 @@
 package Paws::DirectConnect::ResourceTag;
   use Moose;
-  has ResourceArn => (is => 'ro', isa => 'Str', xmlname => 'resourceArn', request_name => 'resourceArn', traits => ['Unwrapped','NameInRequest']);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::Tag]', xmlname => 'tags', request_name => 'tags', traits => ['Unwrapped','NameInRequest']);
+  has ResourceArn => (is => 'ro', isa => 'Str', request_name => 'resourceArn', traits => ['NameInRequest']);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::Tag]', request_name => 'tags', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

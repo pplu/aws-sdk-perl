@@ -1,7 +1,7 @@
 package Paws::EC2::IamInstanceProfile;
   use Moose;
-  has Arn => (is => 'ro', isa => 'Str', xmlname => 'arn', traits => ['Unwrapped']);
-  has Id => (is => 'ro', isa => 'Str', xmlname => 'id', traits => ['Unwrapped']);
+  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
+  has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

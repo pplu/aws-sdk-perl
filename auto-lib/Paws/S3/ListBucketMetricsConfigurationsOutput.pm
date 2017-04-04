@@ -3,7 +3,7 @@ package Paws::S3::ListBucketMetricsConfigurationsOutput;
   use Moose;
   has ContinuationToken => (is => 'ro', isa => 'Str');
   has IsTruncated => (is => 'ro', isa => 'Bool');
-  has MetricsConfigurationList => (is => 'ro', isa => 'ArrayRef[Paws::S3::MetricsConfiguration]', traits => ['Unwrapped'], xmlname => 'MetricsConfiguration');
+  has MetricsConfigurationList => (is => 'ro', isa => 'ArrayRef[Paws::S3::MetricsConfiguration]', traits => ['NameInRequest'], request_name => 'MetricsConfiguration');
   has NextContinuationToken => (is => 'ro', isa => 'Str');
 
   has _request_id => (is => 'ro', isa => 'Str');

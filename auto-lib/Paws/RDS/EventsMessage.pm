@@ -1,7 +1,7 @@
 
 package Paws::RDS::EventsMessage;
   use Moose;
-  has Events => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Event]', xmlname => 'Event', traits => ['Unwrapped',]);
+  has Events => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Event]', request_name => 'Event', traits => ['NameInRequest',]);
   has Marker => (is => 'ro', isa => 'Str');
 
   has _request_id => (is => 'ro', isa => 'Str');

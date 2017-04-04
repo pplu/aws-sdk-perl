@@ -1,15 +1,15 @@
 package Paws::SimpleWorkflow::ScheduleActivityTaskDecisionAttributes;
   use Moose;
-  has ActivityId => (is => 'ro', isa => 'Str', xmlname => 'activityId', request_name => 'activityId', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has ActivityType => (is => 'ro', isa => 'Paws::SimpleWorkflow::ActivityType', xmlname => 'activityType', request_name => 'activityType', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has Control => (is => 'ro', isa => 'Str', xmlname => 'control', request_name => 'control', traits => ['Unwrapped','NameInRequest']);
-  has HeartbeatTimeout => (is => 'ro', isa => 'Str', xmlname => 'heartbeatTimeout', request_name => 'heartbeatTimeout', traits => ['Unwrapped','NameInRequest']);
-  has Input => (is => 'ro', isa => 'Str', xmlname => 'input', request_name => 'input', traits => ['Unwrapped','NameInRequest']);
-  has ScheduleToCloseTimeout => (is => 'ro', isa => 'Str', xmlname => 'scheduleToCloseTimeout', request_name => 'scheduleToCloseTimeout', traits => ['Unwrapped','NameInRequest']);
-  has ScheduleToStartTimeout => (is => 'ro', isa => 'Str', xmlname => 'scheduleToStartTimeout', request_name => 'scheduleToStartTimeout', traits => ['Unwrapped','NameInRequest']);
-  has StartToCloseTimeout => (is => 'ro', isa => 'Str', xmlname => 'startToCloseTimeout', request_name => 'startToCloseTimeout', traits => ['Unwrapped','NameInRequest']);
-  has TaskList => (is => 'ro', isa => 'Paws::SimpleWorkflow::TaskList', xmlname => 'taskList', request_name => 'taskList', traits => ['Unwrapped','NameInRequest']);
-  has TaskPriority => (is => 'ro', isa => 'Str', xmlname => 'taskPriority', request_name => 'taskPriority', traits => ['Unwrapped','NameInRequest']);
+  has ActivityId => (is => 'ro', isa => 'Str', request_name => 'activityId', traits => ['NameInRequest'], required => 1);
+  has ActivityType => (is => 'ro', isa => 'Paws::SimpleWorkflow::ActivityType', request_name => 'activityType', traits => ['NameInRequest'], required => 1);
+  has Control => (is => 'ro', isa => 'Str', request_name => 'control', traits => ['NameInRequest']);
+  has HeartbeatTimeout => (is => 'ro', isa => 'Str', request_name => 'heartbeatTimeout', traits => ['NameInRequest']);
+  has Input => (is => 'ro', isa => 'Str', request_name => 'input', traits => ['NameInRequest']);
+  has ScheduleToCloseTimeout => (is => 'ro', isa => 'Str', request_name => 'scheduleToCloseTimeout', traits => ['NameInRequest']);
+  has ScheduleToStartTimeout => (is => 'ro', isa => 'Str', request_name => 'scheduleToStartTimeout', traits => ['NameInRequest']);
+  has StartToCloseTimeout => (is => 'ro', isa => 'Str', request_name => 'startToCloseTimeout', traits => ['NameInRequest']);
+  has TaskList => (is => 'ro', isa => 'Paws::SimpleWorkflow::TaskList', request_name => 'taskList', traits => ['NameInRequest']);
+  has TaskPriority => (is => 'ro', isa => 'Str', request_name => 'taskPriority', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

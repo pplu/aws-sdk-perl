@@ -1,7 +1,7 @@
 
 package Paws::Support::DescribeTrustedAdvisorCheckSummariesResponse;
   use Moose;
-  has Summaries => (is => 'ro', isa => 'ArrayRef[Paws::Support::TrustedAdvisorCheckSummary]', traits => ['Unwrapped'], xmlname => 'summaries' , required => 1);
+  has Summaries => (is => 'ro', isa => 'ArrayRef[Paws::Support::TrustedAdvisorCheckSummary]', traits => ['NameInRequest'], request_name => 'summaries' , required => 1);
 
   has _request_id => (is => 'ro', isa => 'Str');
 

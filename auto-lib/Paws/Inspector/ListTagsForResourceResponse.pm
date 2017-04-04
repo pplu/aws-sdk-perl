@@ -1,7 +1,7 @@
 
 package Paws::Inspector::ListTagsForResourceResponse;
   use Moose;
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::Tag]', traits => ['Unwrapped'], xmlname => 'tags' , required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::Tag]', traits => ['NameInRequest'], request_name => 'tags' , required => 1);
 
   has _request_id => (is => 'ro', isa => 'Str');
 

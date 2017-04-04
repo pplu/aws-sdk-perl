@@ -1,14 +1,14 @@
 package Paws::EC2::Host;
   use Moose;
-  has AutoPlacement => (is => 'ro', isa => 'Str', xmlname => 'autoPlacement', traits => ['Unwrapped']);
-  has AvailabilityZone => (is => 'ro', isa => 'Str', xmlname => 'availabilityZone', traits => ['Unwrapped']);
-  has AvailableCapacity => (is => 'ro', isa => 'Paws::EC2::AvailableCapacity', xmlname => 'availableCapacity', traits => ['Unwrapped']);
-  has ClientToken => (is => 'ro', isa => 'Str', xmlname => 'clientToken', traits => ['Unwrapped']);
-  has HostId => (is => 'ro', isa => 'Str', xmlname => 'hostId', traits => ['Unwrapped']);
-  has HostProperties => (is => 'ro', isa => 'Paws::EC2::HostProperties', xmlname => 'hostProperties', traits => ['Unwrapped']);
-  has HostReservationId => (is => 'ro', isa => 'Str', xmlname => 'hostReservationId', traits => ['Unwrapped']);
-  has Instances => (is => 'ro', isa => 'ArrayRef[Paws::EC2::HostInstance]', xmlname => 'instances', traits => ['Unwrapped']);
-  has State => (is => 'ro', isa => 'Str', xmlname => 'state', traits => ['Unwrapped']);
+  has AutoPlacement => (is => 'ro', isa => 'Str', request_name => 'autoPlacement', traits => ['NameInRequest']);
+  has AvailabilityZone => (is => 'ro', isa => 'Str', request_name => 'availabilityZone', traits => ['NameInRequest']);
+  has AvailableCapacity => (is => 'ro', isa => 'Paws::EC2::AvailableCapacity', request_name => 'availableCapacity', traits => ['NameInRequest']);
+  has ClientToken => (is => 'ro', isa => 'Str', request_name => 'clientToken', traits => ['NameInRequest']);
+  has HostId => (is => 'ro', isa => 'Str', request_name => 'hostId', traits => ['NameInRequest']);
+  has HostProperties => (is => 'ro', isa => 'Paws::EC2::HostProperties', request_name => 'hostProperties', traits => ['NameInRequest']);
+  has HostReservationId => (is => 'ro', isa => 'Str', request_name => 'hostReservationId', traits => ['NameInRequest']);
+  has Instances => (is => 'ro', isa => 'ArrayRef[Paws::EC2::HostInstance]', request_name => 'instances', traits => ['NameInRequest']);
+  has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

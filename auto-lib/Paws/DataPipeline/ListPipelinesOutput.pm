@@ -1,9 +1,9 @@
 
 package Paws::DataPipeline::ListPipelinesOutput;
   use Moose;
-  has HasMoreResults => (is => 'ro', isa => 'Bool', traits => ['Unwrapped'], xmlname => 'hasMoreResults' );
-  has Marker => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'marker' );
-  has PipelineIdList => (is => 'ro', isa => 'ArrayRef[Paws::DataPipeline::PipelineIdName]', traits => ['Unwrapped'], xmlname => 'pipelineIdList' , required => 1);
+  has HasMoreResults => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'hasMoreResults' );
+  has Marker => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'marker' );
+  has PipelineIdList => (is => 'ro', isa => 'ArrayRef[Paws::DataPipeline::PipelineIdName]', traits => ['NameInRequest'], request_name => 'pipelineIdList' , required => 1);
 
   has _request_id => (is => 'ro', isa => 'Str');
 

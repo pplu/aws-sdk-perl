@@ -1,16 +1,16 @@
 
 package Paws::ApiGateway::Authorizer;
   use Moose;
-  has AuthorizerCredentials => (is => 'ro', isa => 'Str');
-  has AuthorizerResultTtlInSeconds => (is => 'ro', isa => 'Int');
-  has AuthorizerUri => (is => 'ro', isa => 'Str');
-  has AuthType => (is => 'ro', isa => 'Str');
-  has Id => (is => 'ro', isa => 'Str');
-  has IdentitySource => (is => 'ro', isa => 'Str');
-  has IdentityValidationExpression => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has ProviderARNs => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Type => (is => 'ro', isa => 'Str');
+  has AuthorizerCredentials => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'authorizerCredentials');
+  has AuthorizerResultTtlInSeconds => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'authorizerResultTtlInSeconds');
+  has AuthorizerUri => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'authorizerUri');
+  has AuthType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'authType');
+  has Id => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'id');
+  has IdentitySource => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'identitySource');
+  has IdentityValidationExpression => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'identityValidationExpression');
+  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name');
+  has ProviderARNs => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'providerARNs');
+  has Type => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'type');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

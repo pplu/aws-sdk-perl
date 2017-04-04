@@ -1,10 +1,10 @@
 package Paws::SMS::VmServer;
   use Moose;
-  has VmManagerName => (is => 'ro', isa => 'Str', xmlname => 'vmManagerName', request_name => 'vmManagerName', traits => ['Unwrapped','NameInRequest']);
-  has VmManagerType => (is => 'ro', isa => 'Str', xmlname => 'vmManagerType', request_name => 'vmManagerType', traits => ['Unwrapped','NameInRequest']);
-  has VmName => (is => 'ro', isa => 'Str', xmlname => 'vmName', request_name => 'vmName', traits => ['Unwrapped','NameInRequest']);
-  has VmPath => (is => 'ro', isa => 'Str', xmlname => 'vmPath', request_name => 'vmPath', traits => ['Unwrapped','NameInRequest']);
-  has VmServerAddress => (is => 'ro', isa => 'Paws::SMS::VmServerAddress', xmlname => 'vmServerAddress', request_name => 'vmServerAddress', traits => ['Unwrapped','NameInRequest']);
+  has VmManagerName => (is => 'ro', isa => 'Str', request_name => 'vmManagerName', traits => ['NameInRequest']);
+  has VmManagerType => (is => 'ro', isa => 'Str', request_name => 'vmManagerType', traits => ['NameInRequest']);
+  has VmName => (is => 'ro', isa => 'Str', request_name => 'vmName', traits => ['NameInRequest']);
+  has VmPath => (is => 'ro', isa => 'Str', request_name => 'vmPath', traits => ['NameInRequest']);
+  has VmServerAddress => (is => 'ro', isa => 'Paws::SMS::VmServerAddress', request_name => 'vmServerAddress', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

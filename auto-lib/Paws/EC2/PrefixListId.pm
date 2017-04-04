@@ -1,6 +1,6 @@
 package Paws::EC2::PrefixListId;
   use Moose;
-  has PrefixListId => (is => 'ro', isa => 'Str', xmlname => 'prefixListId', traits => ['Unwrapped']);
+  has PrefixListId => (is => 'ro', isa => 'Str', request_name => 'prefixListId', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

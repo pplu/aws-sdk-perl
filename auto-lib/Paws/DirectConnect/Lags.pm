@@ -1,7 +1,7 @@
 
 package Paws::DirectConnect::Lags;
   use Moose;
-  has Lags => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::Lag]', traits => ['Unwrapped'], xmlname => 'lags' );
+  has Lags => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::Lag]', traits => ['NameInRequest'], request_name => 'lags' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

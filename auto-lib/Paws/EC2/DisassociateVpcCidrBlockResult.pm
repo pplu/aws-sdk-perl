@@ -1,8 +1,8 @@
 
 package Paws::EC2::DisassociateVpcCidrBlockResult;
   use Moose;
-  has Ipv6CidrBlockAssociation => (is => 'ro', isa => 'Paws::EC2::VpcIpv6CidrBlockAssociation', xmlname => 'ipv6CidrBlockAssociation', traits => ['Unwrapped',]);
-  has VpcId => (is => 'ro', isa => 'Str', xmlname => 'vpcId', traits => ['Unwrapped',]);
+  has Ipv6CidrBlockAssociation => (is => 'ro', isa => 'Paws::EC2::VpcIpv6CidrBlockAssociation', request_name => 'ipv6CidrBlockAssociation', traits => ['NameInRequest',]);
+  has VpcId => (is => 'ro', isa => 'Str', request_name => 'vpcId', traits => ['NameInRequest',]);
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

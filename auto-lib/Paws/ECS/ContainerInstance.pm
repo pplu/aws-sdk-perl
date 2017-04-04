@@ -1,17 +1,17 @@
 package Paws::ECS::ContainerInstance;
   use Moose;
-  has AgentConnected => (is => 'ro', isa => 'Bool', xmlname => 'agentConnected', request_name => 'agentConnected', traits => ['Unwrapped','NameInRequest']);
-  has AgentUpdateStatus => (is => 'ro', isa => 'Str', xmlname => 'agentUpdateStatus', request_name => 'agentUpdateStatus', traits => ['Unwrapped','NameInRequest']);
-  has Attributes => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Attribute]', xmlname => 'attributes', request_name => 'attributes', traits => ['Unwrapped','NameInRequest']);
-  has ContainerInstanceArn => (is => 'ro', isa => 'Str', xmlname => 'containerInstanceArn', request_name => 'containerInstanceArn', traits => ['Unwrapped','NameInRequest']);
-  has Ec2InstanceId => (is => 'ro', isa => 'Str', xmlname => 'ec2InstanceId', request_name => 'ec2InstanceId', traits => ['Unwrapped','NameInRequest']);
-  has PendingTasksCount => (is => 'ro', isa => 'Int', xmlname => 'pendingTasksCount', request_name => 'pendingTasksCount', traits => ['Unwrapped','NameInRequest']);
-  has RegisteredResources => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Resource]', xmlname => 'registeredResources', request_name => 'registeredResources', traits => ['Unwrapped','NameInRequest']);
-  has RemainingResources => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Resource]', xmlname => 'remainingResources', request_name => 'remainingResources', traits => ['Unwrapped','NameInRequest']);
-  has RunningTasksCount => (is => 'ro', isa => 'Int', xmlname => 'runningTasksCount', request_name => 'runningTasksCount', traits => ['Unwrapped','NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', xmlname => 'status', request_name => 'status', traits => ['Unwrapped','NameInRequest']);
-  has Version => (is => 'ro', isa => 'Int', xmlname => 'version', request_name => 'version', traits => ['Unwrapped','NameInRequest']);
-  has VersionInfo => (is => 'ro', isa => 'Paws::ECS::VersionInfo', xmlname => 'versionInfo', request_name => 'versionInfo', traits => ['Unwrapped','NameInRequest']);
+  has AgentConnected => (is => 'ro', isa => 'Bool', request_name => 'agentConnected', traits => ['NameInRequest']);
+  has AgentUpdateStatus => (is => 'ro', isa => 'Str', request_name => 'agentUpdateStatus', traits => ['NameInRequest']);
+  has Attributes => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Attribute]', request_name => 'attributes', traits => ['NameInRequest']);
+  has ContainerInstanceArn => (is => 'ro', isa => 'Str', request_name => 'containerInstanceArn', traits => ['NameInRequest']);
+  has Ec2InstanceId => (is => 'ro', isa => 'Str', request_name => 'ec2InstanceId', traits => ['NameInRequest']);
+  has PendingTasksCount => (is => 'ro', isa => 'Int', request_name => 'pendingTasksCount', traits => ['NameInRequest']);
+  has RegisteredResources => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Resource]', request_name => 'registeredResources', traits => ['NameInRequest']);
+  has RemainingResources => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Resource]', request_name => 'remainingResources', traits => ['NameInRequest']);
+  has RunningTasksCount => (is => 'ro', isa => 'Int', request_name => 'runningTasksCount', traits => ['NameInRequest']);
+  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+  has Version => (is => 'ro', isa => 'Int', request_name => 'version', traits => ['NameInRequest']);
+  has VersionInfo => (is => 'ro', isa => 'Paws::ECS::VersionInfo', request_name => 'versionInfo', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

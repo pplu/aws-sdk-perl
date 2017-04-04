@@ -1,8 +1,8 @@
 
 package Paws::EC2::DescribeClassicLinkInstancesResult;
   use Moose;
-  has Instances => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ClassicLinkInstance]', xmlname => 'instancesSet', traits => ['Unwrapped',]);
-  has NextToken => (is => 'ro', isa => 'Str', xmlname => 'nextToken', traits => ['Unwrapped',]);
+  has Instances => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ClassicLinkInstance]', request_name => 'instancesSet', traits => ['NameInRequest',]);
+  has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest',]);
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

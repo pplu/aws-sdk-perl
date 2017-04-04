@@ -1,7 +1,7 @@
 
 package Paws::SQS::ReceiveMessageResult;
   use Moose;
-  has Messages => (is => 'ro', isa => 'ArrayRef[Paws::SQS::Message]', xmlname => 'Message', traits => ['Unwrapped',]);
+  has Messages => (is => 'ro', isa => 'ArrayRef[Paws::SQS::Message]', request_name => 'Message', traits => ['NameInRequest',]);
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

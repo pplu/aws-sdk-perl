@@ -5,7 +5,7 @@ package Paws::IoT::ReplaceTopicRule;
   has TopicRulePayload => (is => 'ro', isa => 'Paws::IoT::TopicRulePayload', required => 1);
 
   use MooseX::ClassAttribute;
-
+  class_has _stream_param => (is => 'ro', default => 'topicRulePayload');
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ReplaceTopicRule');
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/rules/{ruleName}');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PATCH');

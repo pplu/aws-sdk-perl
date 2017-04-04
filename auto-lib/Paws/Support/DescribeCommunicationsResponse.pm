@@ -1,8 +1,8 @@
 
 package Paws::Support::DescribeCommunicationsResponse;
   use Moose;
-  has Communications => (is => 'ro', isa => 'ArrayRef[Paws::Support::Communication]', traits => ['Unwrapped'], xmlname => 'communications' );
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
+  has Communications => (is => 'ro', isa => 'ArrayRef[Paws::Support::Communication]', traits => ['NameInRequest'], request_name => 'communications' );
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

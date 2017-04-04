@@ -1,7 +1,7 @@
 
 package Paws::EC2::DescribePlacementGroupsResult;
   use Moose;
-  has PlacementGroups => (is => 'ro', isa => 'ArrayRef[Paws::EC2::PlacementGroup]', xmlname => 'placementGroupSet', traits => ['Unwrapped',]);
+  has PlacementGroups => (is => 'ro', isa => 'ArrayRef[Paws::EC2::PlacementGroup]', request_name => 'placementGroupSet', traits => ['NameInRequest',]);
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

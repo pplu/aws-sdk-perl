@@ -1,8 +1,8 @@
 package Paws::Health::EventType;
   use Moose;
-  has Category => (is => 'ro', isa => 'Str', xmlname => 'category', request_name => 'category', traits => ['Unwrapped','NameInRequest']);
-  has Code => (is => 'ro', isa => 'Str', xmlname => 'code', request_name => 'code', traits => ['Unwrapped','NameInRequest']);
-  has Service => (is => 'ro', isa => 'Str', xmlname => 'service', request_name => 'service', traits => ['Unwrapped','NameInRequest']);
+  has Category => (is => 'ro', isa => 'Str', request_name => 'category', traits => ['NameInRequest']);
+  has Code => (is => 'ro', isa => 'Str', request_name => 'code', traits => ['NameInRequest']);
+  has Service => (is => 'ro', isa => 'Str', request_name => 'service', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

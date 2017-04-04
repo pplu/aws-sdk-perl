@@ -43,6 +43,11 @@
  - DynamoDB API update: Tagging for DynamoDB
  - ACM API update
  - EC2 API update
+ - CodeCommit API update
+ - ELBv2 API update
+ - ECS API update 
+ - EC2 API update
+ - Rekognition API update
 
 0.30 04 Jan 2017 
  - Specify minumum perl version (PR #137)

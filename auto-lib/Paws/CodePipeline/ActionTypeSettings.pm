@@ -1,9 +1,9 @@
 package Paws::CodePipeline::ActionTypeSettings;
   use Moose;
-  has EntityUrlTemplate => (is => 'ro', isa => 'Str', xmlname => 'entityUrlTemplate', request_name => 'entityUrlTemplate', traits => ['Unwrapped','NameInRequest']);
-  has ExecutionUrlTemplate => (is => 'ro', isa => 'Str', xmlname => 'executionUrlTemplate', request_name => 'executionUrlTemplate', traits => ['Unwrapped','NameInRequest']);
-  has RevisionUrlTemplate => (is => 'ro', isa => 'Str', xmlname => 'revisionUrlTemplate', request_name => 'revisionUrlTemplate', traits => ['Unwrapped','NameInRequest']);
-  has ThirdPartyConfigurationUrl => (is => 'ro', isa => 'Str', xmlname => 'thirdPartyConfigurationUrl', request_name => 'thirdPartyConfigurationUrl', traits => ['Unwrapped','NameInRequest']);
+  has EntityUrlTemplate => (is => 'ro', isa => 'Str', request_name => 'entityUrlTemplate', traits => ['NameInRequest']);
+  has ExecutionUrlTemplate => (is => 'ro', isa => 'Str', request_name => 'executionUrlTemplate', traits => ['NameInRequest']);
+  has RevisionUrlTemplate => (is => 'ro', isa => 'Str', request_name => 'revisionUrlTemplate', traits => ['NameInRequest']);
+  has ThirdPartyConfigurationUrl => (is => 'ro', isa => 'Str', request_name => 'thirdPartyConfigurationUrl', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

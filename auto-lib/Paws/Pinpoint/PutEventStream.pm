@@ -5,7 +5,7 @@ package Paws::Pinpoint::PutEventStream;
   has WriteEventStream => (is => 'ro', isa => 'Paws::Pinpoint::WriteEventStream', required => 1);
 
   use MooseX::ClassAttribute;
-
+  class_has _stream_param => (is => 'ro', default => 'WriteEventStream');
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutEventStream');
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/apps/{application-id}/eventstream');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');

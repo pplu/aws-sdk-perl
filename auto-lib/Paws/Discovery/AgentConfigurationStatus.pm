@@ -1,8 +1,8 @@
 package Paws::Discovery::AgentConfigurationStatus;
   use Moose;
-  has AgentId => (is => 'ro', isa => 'Str', xmlname => 'agentId', request_name => 'agentId', traits => ['Unwrapped','NameInRequest']);
-  has Description => (is => 'ro', isa => 'Str', xmlname => 'description', request_name => 'description', traits => ['Unwrapped','NameInRequest']);
-  has OperationSucceeded => (is => 'ro', isa => 'Bool', xmlname => 'operationSucceeded', request_name => 'operationSucceeded', traits => ['Unwrapped','NameInRequest']);
+  has AgentId => (is => 'ro', isa => 'Str', request_name => 'agentId', traits => ['NameInRequest']);
+  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
+  has OperationSucceeded => (is => 'ro', isa => 'Bool', request_name => 'operationSucceeded', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

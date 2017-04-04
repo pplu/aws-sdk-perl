@@ -1,8 +1,8 @@
 
 package Paws::EC2::DescribeEgressOnlyInternetGatewaysResult;
   use Moose;
-  has EgressOnlyInternetGateways => (is => 'ro', isa => 'ArrayRef[Paws::EC2::EgressOnlyInternetGateway]', xmlname => 'egressOnlyInternetGatewaySet', traits => ['Unwrapped',]);
-  has NextToken => (is => 'ro', isa => 'Str', xmlname => 'nextToken', traits => ['Unwrapped',]);
+  has EgressOnlyInternetGateways => (is => 'ro', isa => 'ArrayRef[Paws::EC2::EgressOnlyInternetGateway]', request_name => 'egressOnlyInternetGatewaySet', traits => ['NameInRequest',]);
+  has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest',]);
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

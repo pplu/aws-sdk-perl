@@ -1,9 +1,9 @@
 
 package Paws::Batch::RegisterJobDefinitionResponse;
   use Moose;
-  has JobDefinitionArn => (is => 'ro', isa => 'Str', required => 1);
-  has JobDefinitionName => (is => 'ro', isa => 'Str', required => 1);
-  has Revision => (is => 'ro', isa => 'Int', required => 1);
+  has JobDefinitionArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'jobDefinitionArn', required => 1);
+  has JobDefinitionName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'jobDefinitionName', required => 1);
+  has Revision => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'revision', required => 1);
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

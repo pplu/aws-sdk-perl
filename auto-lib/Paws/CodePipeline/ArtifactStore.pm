@@ -1,8 +1,8 @@
 package Paws::CodePipeline::ArtifactStore;
   use Moose;
-  has EncryptionKey => (is => 'ro', isa => 'Paws::CodePipeline::EncryptionKey', xmlname => 'encryptionKey', request_name => 'encryptionKey', traits => ['Unwrapped','NameInRequest']);
-  has Location => (is => 'ro', isa => 'Str', xmlname => 'location', request_name => 'location', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has Type => (is => 'ro', isa => 'Str', xmlname => 'type', request_name => 'type', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has EncryptionKey => (is => 'ro', isa => 'Paws::CodePipeline::EncryptionKey', request_name => 'encryptionKey', traits => ['NameInRequest']);
+  has Location => (is => 'ro', isa => 'Str', request_name => 'location', traits => ['NameInRequest'], required => 1);
+  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###

@@ -1,8 +1,8 @@
 
 package Paws::EC2::DescribeSpotFleetRequestsResponse;
   use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', xmlname => 'nextToken', traits => ['Unwrapped',]);
-  has SpotFleetRequestConfigs => (is => 'ro', isa => 'ArrayRef[Paws::EC2::SpotFleetRequestConfig]', xmlname => 'spotFleetRequestConfigSet', traits => ['Unwrapped',], required => 1);
+  has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest',]);
+  has SpotFleetRequestConfigs => (is => 'ro', isa => 'ArrayRef[Paws::EC2::SpotFleetRequestConfig]', request_name => 'spotFleetRequestConfigSet', traits => ['NameInRequest',], required => 1);
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

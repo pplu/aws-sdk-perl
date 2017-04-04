@@ -1,8 +1,8 @@
 
 package Paws::Lightsail::GetInstanceSnapshotsResult;
   use Moose;
-  has InstanceSnapshots => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::InstanceSnapshot]', traits => ['Unwrapped'], xmlname => 'instanceSnapshots' );
-  has NextPageToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextPageToken' );
+  has InstanceSnapshots => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::InstanceSnapshot]', traits => ['NameInRequest'], request_name => 'instanceSnapshots' );
+  has NextPageToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextPageToken' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

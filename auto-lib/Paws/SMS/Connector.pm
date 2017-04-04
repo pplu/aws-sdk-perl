@@ -1,15 +1,15 @@
 package Paws::SMS::Connector;
   use Moose;
-  has AssociatedOn => (is => 'ro', isa => 'Str', xmlname => 'associatedOn', request_name => 'associatedOn', traits => ['Unwrapped','NameInRequest']);
-  has CapabilityList => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'item', xmlname => 'capabilityList', request_name => 'capabilityList', traits => ['NameInRequest','Unwrapped','NameInRequest']);
-  has ConnectorId => (is => 'ro', isa => 'Str', xmlname => 'connectorId', request_name => 'connectorId', traits => ['Unwrapped','NameInRequest']);
-  has IpAddress => (is => 'ro', isa => 'Str', xmlname => 'ipAddress', request_name => 'ipAddress', traits => ['Unwrapped','NameInRequest']);
-  has MacAddress => (is => 'ro', isa => 'Str', xmlname => 'macAddress', request_name => 'macAddress', traits => ['Unwrapped','NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', xmlname => 'status', request_name => 'status', traits => ['Unwrapped','NameInRequest']);
-  has Version => (is => 'ro', isa => 'Str', xmlname => 'version', request_name => 'version', traits => ['Unwrapped','NameInRequest']);
-  has VmManagerId => (is => 'ro', isa => 'Str', xmlname => 'vmManagerId', request_name => 'vmManagerId', traits => ['Unwrapped','NameInRequest']);
-  has VmManagerName => (is => 'ro', isa => 'Str', xmlname => 'vmManagerName', request_name => 'vmManagerName', traits => ['Unwrapped','NameInRequest']);
-  has VmManagerType => (is => 'ro', isa => 'Str', xmlname => 'vmManagerType', request_name => 'vmManagerType', traits => ['Unwrapped','NameInRequest']);
+  has AssociatedOn => (is => 'ro', isa => 'Str', request_name => 'associatedOn', traits => ['NameInRequest']);
+  has CapabilityList => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'item', request_name => 'capabilityList', traits => ['NameInRequest','NameInRequest']);
+  has ConnectorId => (is => 'ro', isa => 'Str', request_name => 'connectorId', traits => ['NameInRequest']);
+  has IpAddress => (is => 'ro', isa => 'Str', request_name => 'ipAddress', traits => ['NameInRequest']);
+  has MacAddress => (is => 'ro', isa => 'Str', request_name => 'macAddress', traits => ['NameInRequest']);
+  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+  has Version => (is => 'ro', isa => 'Str', request_name => 'version', traits => ['NameInRequest']);
+  has VmManagerId => (is => 'ro', isa => 'Str', request_name => 'vmManagerId', traits => ['NameInRequest']);
+  has VmManagerName => (is => 'ro', isa => 'Str', request_name => 'vmManagerName', traits => ['NameInRequest']);
+  has VmManagerType => (is => 'ro', isa => 'Str', request_name => 'vmManagerType', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

@@ -1,7 +1,7 @@
 package Paws::SimpleWorkflow::TimerFiredEventAttributes;
   use Moose;
-  has StartedEventId => (is => 'ro', isa => 'Int', xmlname => 'startedEventId', request_name => 'startedEventId', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has TimerId => (is => 'ro', isa => 'Str', xmlname => 'timerId', request_name => 'timerId', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has StartedEventId => (is => 'ro', isa => 'Int', request_name => 'startedEventId', traits => ['NameInRequest'], required => 1);
+  has TimerId => (is => 'ro', isa => 'Str', request_name => 'timerId', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###

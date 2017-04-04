@@ -1,9 +1,9 @@
 package Paws::EC2::ExportToS3Task;
   use Moose;
-  has ContainerFormat => (is => 'ro', isa => 'Str', xmlname => 'containerFormat', traits => ['Unwrapped']);
-  has DiskImageFormat => (is => 'ro', isa => 'Str', xmlname => 'diskImageFormat', traits => ['Unwrapped']);
-  has S3Bucket => (is => 'ro', isa => 'Str', xmlname => 's3Bucket', traits => ['Unwrapped']);
-  has S3Key => (is => 'ro', isa => 'Str', xmlname => 's3Key', traits => ['Unwrapped']);
+  has ContainerFormat => (is => 'ro', isa => 'Str', request_name => 'containerFormat', traits => ['NameInRequest']);
+  has DiskImageFormat => (is => 'ro', isa => 'Str', request_name => 'diskImageFormat', traits => ['NameInRequest']);
+  has S3Bucket => (is => 'ro', isa => 'Str', request_name => 's3Bucket', traits => ['NameInRequest']);
+  has S3Key => (is => 'ro', isa => 'Str', request_name => 's3Key', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

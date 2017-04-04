@@ -1,7 +1,7 @@
 
 package Paws::IoT::DescribeCertificateResponse;
   use Moose;
-  has CertificateDescription => (is => 'ro', isa => 'Paws::IoT::CertificateDescription');
+  has CertificateDescription => (is => 'ro', isa => 'Paws::IoT::CertificateDescription', traits => ['NameInRequest'], request_name => 'certificateDescription');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

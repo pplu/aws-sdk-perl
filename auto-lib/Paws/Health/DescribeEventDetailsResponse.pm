@@ -1,8 +1,8 @@
 
 package Paws::Health::DescribeEventDetailsResponse;
   use Moose;
-  has FailedSet => (is => 'ro', isa => 'ArrayRef[Paws::Health::EventDetailsErrorItem]', traits => ['Unwrapped'], xmlname => 'failedSet' );
-  has SuccessfulSet => (is => 'ro', isa => 'ArrayRef[Paws::Health::EventDetails]', traits => ['Unwrapped'], xmlname => 'successfulSet' );
+  has FailedSet => (is => 'ro', isa => 'ArrayRef[Paws::Health::EventDetailsErrorItem]', traits => ['NameInRequest'], request_name => 'failedSet' );
+  has SuccessfulSet => (is => 'ro', isa => 'ArrayRef[Paws::Health::EventDetails]', traits => ['NameInRequest'], request_name => 'successfulSet' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

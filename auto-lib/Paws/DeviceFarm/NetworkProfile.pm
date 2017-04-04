@@ -1,17 +1,17 @@
 package Paws::DeviceFarm::NetworkProfile;
   use Moose;
-  has Arn => (is => 'ro', isa => 'Str', xmlname => 'arn', request_name => 'arn', traits => ['Unwrapped','NameInRequest']);
-  has Description => (is => 'ro', isa => 'Str', xmlname => 'description', request_name => 'description', traits => ['Unwrapped','NameInRequest']);
-  has DownlinkBandwidthBits => (is => 'ro', isa => 'Int', xmlname => 'downlinkBandwidthBits', request_name => 'downlinkBandwidthBits', traits => ['Unwrapped','NameInRequest']);
-  has DownlinkDelayMs => (is => 'ro', isa => 'Int', xmlname => 'downlinkDelayMs', request_name => 'downlinkDelayMs', traits => ['Unwrapped','NameInRequest']);
-  has DownlinkJitterMs => (is => 'ro', isa => 'Int', xmlname => 'downlinkJitterMs', request_name => 'downlinkJitterMs', traits => ['Unwrapped','NameInRequest']);
-  has DownlinkLossPercent => (is => 'ro', isa => 'Int', xmlname => 'downlinkLossPercent', request_name => 'downlinkLossPercent', traits => ['Unwrapped','NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', xmlname => 'name', request_name => 'name', traits => ['Unwrapped','NameInRequest']);
-  has Type => (is => 'ro', isa => 'Str', xmlname => 'type', request_name => 'type', traits => ['Unwrapped','NameInRequest']);
-  has UplinkBandwidthBits => (is => 'ro', isa => 'Int', xmlname => 'uplinkBandwidthBits', request_name => 'uplinkBandwidthBits', traits => ['Unwrapped','NameInRequest']);
-  has UplinkDelayMs => (is => 'ro', isa => 'Int', xmlname => 'uplinkDelayMs', request_name => 'uplinkDelayMs', traits => ['Unwrapped','NameInRequest']);
-  has UplinkJitterMs => (is => 'ro', isa => 'Int', xmlname => 'uplinkJitterMs', request_name => 'uplinkJitterMs', traits => ['Unwrapped','NameInRequest']);
-  has UplinkLossPercent => (is => 'ro', isa => 'Int', xmlname => 'uplinkLossPercent', request_name => 'uplinkLossPercent', traits => ['Unwrapped','NameInRequest']);
+  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
+  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
+  has DownlinkBandwidthBits => (is => 'ro', isa => 'Int', request_name => 'downlinkBandwidthBits', traits => ['NameInRequest']);
+  has DownlinkDelayMs => (is => 'ro', isa => 'Int', request_name => 'downlinkDelayMs', traits => ['NameInRequest']);
+  has DownlinkJitterMs => (is => 'ro', isa => 'Int', request_name => 'downlinkJitterMs', traits => ['NameInRequest']);
+  has DownlinkLossPercent => (is => 'ro', isa => 'Int', request_name => 'downlinkLossPercent', traits => ['NameInRequest']);
+  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
+  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
+  has UplinkBandwidthBits => (is => 'ro', isa => 'Int', request_name => 'uplinkBandwidthBits', traits => ['NameInRequest']);
+  has UplinkDelayMs => (is => 'ro', isa => 'Int', request_name => 'uplinkDelayMs', traits => ['NameInRequest']);
+  has UplinkJitterMs => (is => 'ro', isa => 'Int', request_name => 'uplinkJitterMs', traits => ['NameInRequest']);
+  has UplinkLossPercent => (is => 'ro', isa => 'Int', request_name => 'uplinkLossPercent', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

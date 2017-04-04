@@ -1,9 +1,9 @@
 package Paws::Batch::AttemptDetail;
   use Moose;
-  has Container => (is => 'ro', isa => 'Paws::Batch::AttemptContainerDetail', xmlname => 'container', request_name => 'container', traits => ['Unwrapped','NameInRequest']);
-  has StartedAt => (is => 'ro', isa => 'Int', xmlname => 'startedAt', request_name => 'startedAt', traits => ['Unwrapped','NameInRequest']);
-  has StatusReason => (is => 'ro', isa => 'Str', xmlname => 'statusReason', request_name => 'statusReason', traits => ['Unwrapped','NameInRequest']);
-  has StoppedAt => (is => 'ro', isa => 'Int', xmlname => 'stoppedAt', request_name => 'stoppedAt', traits => ['Unwrapped','NameInRequest']);
+  has Container => (is => 'ro', isa => 'Paws::Batch::AttemptContainerDetail', request_name => 'container', traits => ['NameInRequest']);
+  has StartedAt => (is => 'ro', isa => 'Int', request_name => 'startedAt', traits => ['NameInRequest']);
+  has StatusReason => (is => 'ro', isa => 'Str', request_name => 'statusReason', traits => ['NameInRequest']);
+  has StoppedAt => (is => 'ro', isa => 'Int', request_name => 'stoppedAt', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

@@ -1,16 +1,16 @@
 package Paws::EC2::ImportInstanceLaunchSpecification;
   use Moose;
-  has AdditionalInfo => (is => 'ro', isa => 'Str', xmlname => 'additionalInfo', traits => ['Unwrapped']);
-  has Architecture => (is => 'ro', isa => 'Str', xmlname => 'architecture', traits => ['Unwrapped']);
-  has GroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'GroupId', traits => ['Unwrapped']);
-  has GroupNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'GroupName', traits => ['Unwrapped']);
-  has InstanceInitiatedShutdownBehavior => (is => 'ro', isa => 'Str', xmlname => 'instanceInitiatedShutdownBehavior', traits => ['Unwrapped']);
-  has InstanceType => (is => 'ro', isa => 'Str', xmlname => 'instanceType', traits => ['Unwrapped']);
-  has Monitoring => (is => 'ro', isa => 'Bool', xmlname => 'monitoring', traits => ['Unwrapped']);
-  has Placement => (is => 'ro', isa => 'Paws::EC2::Placement', xmlname => 'placement', traits => ['Unwrapped']);
-  has PrivateIpAddress => (is => 'ro', isa => 'Str', xmlname => 'privateIpAddress', traits => ['Unwrapped']);
-  has SubnetId => (is => 'ro', isa => 'Str', xmlname => 'subnetId', traits => ['Unwrapped']);
-  has UserData => (is => 'ro', isa => 'Paws::EC2::UserData', xmlname => 'userData', traits => ['Unwrapped']);
+  has AdditionalInfo => (is => 'ro', isa => 'Str', request_name => 'additionalInfo', traits => ['NameInRequest']);
+  has Architecture => (is => 'ro', isa => 'Str', request_name => 'architecture', traits => ['NameInRequest']);
+  has GroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'GroupId', traits => ['NameInRequest']);
+  has GroupNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'GroupName', traits => ['NameInRequest']);
+  has InstanceInitiatedShutdownBehavior => (is => 'ro', isa => 'Str', request_name => 'instanceInitiatedShutdownBehavior', traits => ['NameInRequest']);
+  has InstanceType => (is => 'ro', isa => 'Str', request_name => 'instanceType', traits => ['NameInRequest']);
+  has Monitoring => (is => 'ro', isa => 'Bool', request_name => 'monitoring', traits => ['NameInRequest']);
+  has Placement => (is => 'ro', isa => 'Paws::EC2::Placement', request_name => 'placement', traits => ['NameInRequest']);
+  has PrivateIpAddress => (is => 'ro', isa => 'Str', request_name => 'privateIpAddress', traits => ['NameInRequest']);
+  has SubnetId => (is => 'ro', isa => 'Str', request_name => 'subnetId', traits => ['NameInRequest']);
+  has UserData => (is => 'ro', isa => 'Paws::EC2::UserData', request_name => 'userData', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

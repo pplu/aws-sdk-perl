@@ -1,9 +1,9 @@
 
 package Paws::EC2::CreateFlowLogsResult;
   use Moose;
-  has ClientToken => (is => 'ro', isa => 'Str', xmlname => 'clientToken', traits => ['Unwrapped',]);
-  has FlowLogIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'flowLogIdSet', traits => ['Unwrapped',]);
-  has Unsuccessful => (is => 'ro', isa => 'ArrayRef[Paws::EC2::UnsuccessfulItem]', xmlname => 'unsuccessful', traits => ['Unwrapped',]);
+  has ClientToken => (is => 'ro', isa => 'Str', request_name => 'clientToken', traits => ['NameInRequest',]);
+  has FlowLogIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'flowLogIdSet', traits => ['NameInRequest',]);
+  has Unsuccessful => (is => 'ro', isa => 'ArrayRef[Paws::EC2::UnsuccessfulItem]', request_name => 'unsuccessful', traits => ['NameInRequest',]);
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

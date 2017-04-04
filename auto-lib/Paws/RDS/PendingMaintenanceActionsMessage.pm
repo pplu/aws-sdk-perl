@@ -2,7 +2,7 @@
 package Paws::RDS::PendingMaintenanceActionsMessage;
   use Moose;
   has Marker => (is => 'ro', isa => 'Str');
-  has PendingMaintenanceActions => (is => 'ro', isa => 'ArrayRef[Paws::RDS::ResourcePendingMaintenanceActions]', xmlname => 'ResourcePendingMaintenanceActions', traits => ['Unwrapped',]);
+  has PendingMaintenanceActions => (is => 'ro', isa => 'ArrayRef[Paws::RDS::ResourcePendingMaintenanceActions]', request_name => 'ResourcePendingMaintenanceActions', traits => ['NameInRequest',]);
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

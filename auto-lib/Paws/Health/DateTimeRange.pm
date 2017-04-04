@@ -1,7 +1,7 @@
 package Paws::Health::DateTimeRange;
   use Moose;
-  has From => (is => 'ro', isa => 'Str', xmlname => 'from', request_name => 'from', traits => ['Unwrapped','NameInRequest']);
-  has To => (is => 'ro', isa => 'Str', xmlname => 'to', request_name => 'to', traits => ['Unwrapped','NameInRequest']);
+  has From => (is => 'ro', isa => 'Str', request_name => 'from', traits => ['NameInRequest']);
+  has To => (is => 'ro', isa => 'Str', request_name => 'to', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

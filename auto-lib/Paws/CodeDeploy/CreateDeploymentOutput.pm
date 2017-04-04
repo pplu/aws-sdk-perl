@@ -1,7 +1,7 @@
 
 package Paws::CodeDeploy::CreateDeploymentOutput;
   use Moose;
-  has DeploymentId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'deploymentId' );
+  has DeploymentId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'deploymentId' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

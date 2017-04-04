@@ -1,8 +1,8 @@
 package Paws::CodePipeline::Artifact;
   use Moose;
-  has Location => (is => 'ro', isa => 'Paws::CodePipeline::ArtifactLocation', xmlname => 'location', request_name => 'location', traits => ['Unwrapped','NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', xmlname => 'name', request_name => 'name', traits => ['Unwrapped','NameInRequest']);
-  has Revision => (is => 'ro', isa => 'Str', xmlname => 'revision', request_name => 'revision', traits => ['Unwrapped','NameInRequest']);
+  has Location => (is => 'ro', isa => 'Paws::CodePipeline::ArtifactLocation', request_name => 'location', traits => ['NameInRequest']);
+  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
+  has Revision => (is => 'ro', isa => 'Str', request_name => 'revision', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

@@ -1,19 +1,19 @@
 package Paws::Inspector::AssessmentRun;
   use Moose;
-  has Arn => (is => 'ro', isa => 'Str', xmlname => 'arn', request_name => 'arn', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has AssessmentTemplateArn => (is => 'ro', isa => 'Str', xmlname => 'assessmentTemplateArn', request_name => 'assessmentTemplateArn', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has CompletedAt => (is => 'ro', isa => 'Str', xmlname => 'completedAt', request_name => 'completedAt', traits => ['Unwrapped','NameInRequest']);
-  has CreatedAt => (is => 'ro', isa => 'Str', xmlname => 'createdAt', request_name => 'createdAt', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has DataCollected => (is => 'ro', isa => 'Bool', xmlname => 'dataCollected', request_name => 'dataCollected', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has DurationInSeconds => (is => 'ro', isa => 'Int', xmlname => 'durationInSeconds', request_name => 'durationInSeconds', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has Name => (is => 'ro', isa => 'Str', xmlname => 'name', request_name => 'name', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has Notifications => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::AssessmentRunNotification]', xmlname => 'notifications', request_name => 'notifications', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has RulesPackageArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'rulesPackageArns', request_name => 'rulesPackageArns', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has StartedAt => (is => 'ro', isa => 'Str', xmlname => 'startedAt', request_name => 'startedAt', traits => ['Unwrapped','NameInRequest']);
-  has State => (is => 'ro', isa => 'Str', xmlname => 'state', request_name => 'state', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has StateChangedAt => (is => 'ro', isa => 'Str', xmlname => 'stateChangedAt', request_name => 'stateChangedAt', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has StateChanges => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::AssessmentRunStateChange]', xmlname => 'stateChanges', request_name => 'stateChanges', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has UserAttributesForFindings => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::Attribute]', xmlname => 'userAttributesForFindings', request_name => 'userAttributesForFindings', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest'], required => 1);
+  has AssessmentTemplateArn => (is => 'ro', isa => 'Str', request_name => 'assessmentTemplateArn', traits => ['NameInRequest'], required => 1);
+  has CompletedAt => (is => 'ro', isa => 'Str', request_name => 'completedAt', traits => ['NameInRequest']);
+  has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest'], required => 1);
+  has DataCollected => (is => 'ro', isa => 'Bool', request_name => 'dataCollected', traits => ['NameInRequest'], required => 1);
+  has DurationInSeconds => (is => 'ro', isa => 'Int', request_name => 'durationInSeconds', traits => ['NameInRequest'], required => 1);
+  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
+  has Notifications => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::AssessmentRunNotification]', request_name => 'notifications', traits => ['NameInRequest'], required => 1);
+  has RulesPackageArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'rulesPackageArns', traits => ['NameInRequest'], required => 1);
+  has StartedAt => (is => 'ro', isa => 'Str', request_name => 'startedAt', traits => ['NameInRequest']);
+  has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest'], required => 1);
+  has StateChangedAt => (is => 'ro', isa => 'Str', request_name => 'stateChangedAt', traits => ['NameInRequest'], required => 1);
+  has StateChanges => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::AssessmentRunStateChange]', request_name => 'stateChanges', traits => ['NameInRequest'], required => 1);
+  has UserAttributesForFindings => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::Attribute]', request_name => 'userAttributesForFindings', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###

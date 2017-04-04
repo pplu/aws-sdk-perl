@@ -1,8 +1,8 @@
 package Paws::Lightsail::InstanceHardware;
   use Moose;
-  has CpuCount => (is => 'ro', isa => 'Int', xmlname => 'cpuCount', request_name => 'cpuCount', traits => ['Unwrapped','NameInRequest']);
-  has Disks => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::Disk]', xmlname => 'disks', request_name => 'disks', traits => ['Unwrapped','NameInRequest']);
-  has RamSizeInGb => (is => 'ro', isa => 'Num', xmlname => 'ramSizeInGb', request_name => 'ramSizeInGb', traits => ['Unwrapped','NameInRequest']);
+  has CpuCount => (is => 'ro', isa => 'Int', request_name => 'cpuCount', traits => ['NameInRequest']);
+  has Disks => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::Disk]', request_name => 'disks', traits => ['NameInRequest']);
+  has RamSizeInGb => (is => 'ro', isa => 'Num', request_name => 'ramSizeInGb', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

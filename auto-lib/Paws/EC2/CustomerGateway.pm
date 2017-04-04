@@ -1,11 +1,11 @@
 package Paws::EC2::CustomerGateway;
   use Moose;
-  has BgpAsn => (is => 'ro', isa => 'Str', xmlname => 'bgpAsn', traits => ['Unwrapped']);
-  has CustomerGatewayId => (is => 'ro', isa => 'Str', xmlname => 'customerGatewayId', traits => ['Unwrapped']);
-  has IpAddress => (is => 'ro', isa => 'Str', xmlname => 'ipAddress', traits => ['Unwrapped']);
-  has State => (is => 'ro', isa => 'Str', xmlname => 'state', traits => ['Unwrapped']);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', xmlname => 'tagSet', traits => ['Unwrapped']);
-  has Type => (is => 'ro', isa => 'Str', xmlname => 'type', traits => ['Unwrapped']);
+  has BgpAsn => (is => 'ro', isa => 'Str', request_name => 'bgpAsn', traits => ['NameInRequest']);
+  has CustomerGatewayId => (is => 'ro', isa => 'Str', request_name => 'customerGatewayId', traits => ['NameInRequest']);
+  has IpAddress => (is => 'ro', isa => 'Str', request_name => 'ipAddress', traits => ['NameInRequest']);
+  has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest']);
+  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

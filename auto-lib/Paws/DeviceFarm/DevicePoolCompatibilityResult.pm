@@ -1,8 +1,8 @@
 package Paws::DeviceFarm::DevicePoolCompatibilityResult;
   use Moose;
-  has Compatible => (is => 'ro', isa => 'Bool', xmlname => 'compatible', request_name => 'compatible', traits => ['Unwrapped','NameInRequest']);
-  has Device => (is => 'ro', isa => 'Paws::DeviceFarm::Device', xmlname => 'device', request_name => 'device', traits => ['Unwrapped','NameInRequest']);
-  has IncompatibilityMessages => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::IncompatibilityMessage]', xmlname => 'incompatibilityMessages', request_name => 'incompatibilityMessages', traits => ['Unwrapped','NameInRequest']);
+  has Compatible => (is => 'ro', isa => 'Bool', request_name => 'compatible', traits => ['NameInRequest']);
+  has Device => (is => 'ro', isa => 'Paws::DeviceFarm::Device', request_name => 'device', traits => ['NameInRequest']);
+  has IncompatibilityMessages => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::IncompatibilityMessage]', request_name => 'incompatibilityMessages', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

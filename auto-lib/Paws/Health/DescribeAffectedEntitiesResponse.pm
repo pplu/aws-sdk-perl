@@ -1,8 +1,8 @@
 
 package Paws::Health::DescribeAffectedEntitiesResponse;
   use Moose;
-  has Entities => (is => 'ro', isa => 'ArrayRef[Paws::Health::AffectedEntity]', traits => ['Unwrapped'], xmlname => 'entities' );
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
+  has Entities => (is => 'ro', isa => 'ArrayRef[Paws::Health::AffectedEntity]', traits => ['NameInRequest'], request_name => 'entities' );
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

@@ -1,8 +1,8 @@
 
 package Paws::Lightsail::GetDomainsResult;
   use Moose;
-  has Domains => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::Domain]', traits => ['Unwrapped'], xmlname => 'domains' );
-  has NextPageToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextPageToken' );
+  has Domains => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::Domain]', traits => ['NameInRequest'], request_name => 'domains' );
+  has NextPageToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextPageToken' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

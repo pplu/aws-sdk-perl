@@ -1,7 +1,7 @@
 package Paws::CodeCommit::BranchInfo;
   use Moose;
-  has BranchName => (is => 'ro', isa => 'Str', xmlname => 'branchName', request_name => 'branchName', traits => ['Unwrapped','NameInRequest']);
-  has CommitId => (is => 'ro', isa => 'Str', xmlname => 'commitId', request_name => 'commitId', traits => ['Unwrapped','NameInRequest']);
+  has BranchName => (is => 'ro', isa => 'Str', request_name => 'branchName', traits => ['NameInRequest']);
+  has CommitId => (is => 'ro', isa => 'Str', request_name => 'commitId', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

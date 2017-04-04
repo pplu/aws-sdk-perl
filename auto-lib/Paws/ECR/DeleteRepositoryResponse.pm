@@ -1,7 +1,7 @@
 
 package Paws::ECR::DeleteRepositoryResponse;
   use Moose;
-  has Repository => (is => 'ro', isa => 'Paws::ECR::Repository', traits => ['Unwrapped'], xmlname => 'repository' );
+  has Repository => (is => 'ro', isa => 'Paws::ECR::Repository', traits => ['NameInRequest'], request_name => 'repository' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

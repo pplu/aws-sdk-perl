@@ -1,8 +1,8 @@
 
 package Paws::ECR::InitiateLayerUploadResponse;
   use Moose;
-  has PartSize => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => 'partSize' );
-  has UploadId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'uploadId' );
+  has PartSize => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'partSize' );
+  has UploadId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'uploadId' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

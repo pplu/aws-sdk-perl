@@ -1,7 +1,7 @@
 
 package Paws::EC2::ModifyVolumeResult;
   use Moose;
-  has VolumeModification => (is => 'ro', isa => 'Paws::EC2::VolumeModification', xmlname => 'volumeModification', traits => ['Unwrapped',]);
+  has VolumeModification => (is => 'ro', isa => 'Paws::EC2::VolumeModification', request_name => 'volumeModification', traits => ['NameInRequest',]);
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

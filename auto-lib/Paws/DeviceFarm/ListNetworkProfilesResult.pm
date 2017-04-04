@@ -1,8 +1,8 @@
 
 package Paws::DeviceFarm::ListNetworkProfilesResult;
   use Moose;
-  has NetworkProfiles => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::NetworkProfile]', traits => ['Unwrapped'], xmlname => 'networkProfiles' );
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
+  has NetworkProfiles => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::NetworkProfile]', traits => ['NameInRequest'], request_name => 'networkProfiles' );
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

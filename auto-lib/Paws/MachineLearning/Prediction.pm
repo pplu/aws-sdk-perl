@@ -1,9 +1,9 @@
 package Paws::MachineLearning::Prediction;
   use Moose;
-  has Details => (is => 'ro', isa => 'Paws::MachineLearning::DetailsMap', xmlname => 'details', request_name => 'details', traits => ['Unwrapped','NameInRequest']);
-  has PredictedLabel => (is => 'ro', isa => 'Str', xmlname => 'predictedLabel', request_name => 'predictedLabel', traits => ['Unwrapped','NameInRequest']);
-  has PredictedScores => (is => 'ro', isa => 'Paws::MachineLearning::ScoreValuePerLabelMap', xmlname => 'predictedScores', request_name => 'predictedScores', traits => ['Unwrapped','NameInRequest']);
-  has PredictedValue => (is => 'ro', isa => 'Num', xmlname => 'predictedValue', request_name => 'predictedValue', traits => ['Unwrapped','NameInRequest']);
+  has Details => (is => 'ro', isa => 'Paws::MachineLearning::DetailsMap', request_name => 'details', traits => ['NameInRequest']);
+  has PredictedLabel => (is => 'ro', isa => 'Str', request_name => 'predictedLabel', traits => ['NameInRequest']);
+  has PredictedScores => (is => 'ro', isa => 'Paws::MachineLearning::ScoreValuePerLabelMap', request_name => 'predictedScores', traits => ['NameInRequest']);
+  has PredictedValue => (is => 'ro', isa => 'Num', request_name => 'predictedValue', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

@@ -1,8 +1,8 @@
 
 package Paws::IoT::ListTopicRulesResponse;
   use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
-  has Rules => (is => 'ro', isa => 'ArrayRef[Paws::IoT::TopicRuleListItem]');
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
+  has Rules => (is => 'ro', isa => 'ArrayRef[Paws::IoT::TopicRuleListItem]', traits => ['NameInRequest'], request_name => 'rules');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

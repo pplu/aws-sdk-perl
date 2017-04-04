@@ -1,8 +1,8 @@
 package Paws::SimpleWorkflow::DecisionTaskScheduledEventAttributes;
   use Moose;
-  has StartToCloseTimeout => (is => 'ro', isa => 'Str', xmlname => 'startToCloseTimeout', request_name => 'startToCloseTimeout', traits => ['Unwrapped','NameInRequest']);
-  has TaskList => (is => 'ro', isa => 'Paws::SimpleWorkflow::TaskList', xmlname => 'taskList', request_name => 'taskList', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has TaskPriority => (is => 'ro', isa => 'Str', xmlname => 'taskPriority', request_name => 'taskPriority', traits => ['Unwrapped','NameInRequest']);
+  has StartToCloseTimeout => (is => 'ro', isa => 'Str', request_name => 'startToCloseTimeout', traits => ['NameInRequest']);
+  has TaskList => (is => 'ro', isa => 'Paws::SimpleWorkflow::TaskList', request_name => 'taskList', traits => ['NameInRequest'], required => 1);
+  has TaskPriority => (is => 'ro', isa => 'Str', request_name => 'taskPriority', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

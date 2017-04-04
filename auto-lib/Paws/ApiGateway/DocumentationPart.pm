@@ -1,9 +1,9 @@
 
 package Paws::ApiGateway::DocumentationPart;
   use Moose;
-  has Id => (is => 'ro', isa => 'Str');
-  has Location => (is => 'ro', isa => 'Paws::ApiGateway::DocumentationPartLocation');
-  has Properties => (is => 'ro', isa => 'Str');
+  has Id => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'id');
+  has Location => (is => 'ro', isa => 'Paws::ApiGateway::DocumentationPartLocation', traits => ['NameInRequest'], request_name => 'location');
+  has Properties => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'properties');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

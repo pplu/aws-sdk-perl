@@ -1,10 +1,10 @@
 package Paws::Config::DeliveryChannel;
   use Moose;
-  has ConfigSnapshotDeliveryProperties => (is => 'ro', isa => 'Paws::Config::ConfigSnapshotDeliveryProperties', xmlname => 'configSnapshotDeliveryProperties', request_name => 'configSnapshotDeliveryProperties', traits => ['Unwrapped','NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', xmlname => 'name', request_name => 'name', traits => ['Unwrapped','NameInRequest']);
-  has S3BucketName => (is => 'ro', isa => 'Str', xmlname => 's3BucketName', request_name => 's3BucketName', traits => ['Unwrapped','NameInRequest']);
-  has S3KeyPrefix => (is => 'ro', isa => 'Str', xmlname => 's3KeyPrefix', request_name => 's3KeyPrefix', traits => ['Unwrapped','NameInRequest']);
-  has SnsTopicARN => (is => 'ro', isa => 'Str', xmlname => 'snsTopicARN', request_name => 'snsTopicARN', traits => ['Unwrapped','NameInRequest']);
+  has ConfigSnapshotDeliveryProperties => (is => 'ro', isa => 'Paws::Config::ConfigSnapshotDeliveryProperties', request_name => 'configSnapshotDeliveryProperties', traits => ['NameInRequest']);
+  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
+  has S3BucketName => (is => 'ro', isa => 'Str', request_name => 's3BucketName', traits => ['NameInRequest']);
+  has S3KeyPrefix => (is => 'ro', isa => 'Str', request_name => 's3KeyPrefix', traits => ['NameInRequest']);
+  has SnsTopicARN => (is => 'ro', isa => 'Str', request_name => 'snsTopicARN', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

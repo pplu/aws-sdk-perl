@@ -1,7 +1,7 @@
 
 package Paws::CodeCommit::GetBlobOutput;
   use Moose;
-  has Content => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'content' , required => 1);
+  has Content => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'content' , required => 1);
 
   has _request_id => (is => 'ro', isa => 'Str');
 

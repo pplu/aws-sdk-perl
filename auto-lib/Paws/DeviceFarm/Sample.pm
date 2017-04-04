@@ -1,8 +1,8 @@
 package Paws::DeviceFarm::Sample;
   use Moose;
-  has Arn => (is => 'ro', isa => 'Str', xmlname => 'arn', request_name => 'arn', traits => ['Unwrapped','NameInRequest']);
-  has Type => (is => 'ro', isa => 'Str', xmlname => 'type', request_name => 'type', traits => ['Unwrapped','NameInRequest']);
-  has Url => (is => 'ro', isa => 'Str', xmlname => 'url', request_name => 'url', traits => ['Unwrapped','NameInRequest']);
+  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
+  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
+  has Url => (is => 'ro', isa => 'Str', request_name => 'url', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
