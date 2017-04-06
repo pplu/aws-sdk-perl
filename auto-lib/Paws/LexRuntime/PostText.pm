@@ -41,81 +41,106 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> BotAlias => Str
 
-Alias of the Amazon Lex bot.
+The alias of the Amazon Lex bot.
 
 
 
 =head2 B<REQUIRED> BotName => Str
 
-Name of the Amazon Lex bot.
+The name of the Amazon Lex bot.
 
 
 
 =head2 B<REQUIRED> InputText => Str
 
-Text user entered (Amazon Lex interprets this text).
+The text that the user entered (Amazon Lex interprets this text).
 
 
 
 =head2 SessionAttributes => L<Paws::LexRuntime::StringMap>
 
-A session represents the dialog between a user and Amazon Lex. At
-runtime, a client application can pass contextual information (session
-attributes) in the request. For example, C<"FirstName" : "Joe">. Amazon
-Lex passes these session attributes to the AWS Lambda functions
-configured for the intent (see C<dialogCodeHook> and
-C<fulfillmentActivity.codeHook> in C<CreateIntent>).
-
-In your Lambda function, you can use the session attributes for
-customization. Some examples are:
+By using session attributes, a client application can pass contextual
+information in the request to Amazon Lex For example,
 
 =over
 
 =item *
 
-In a pizza ordering application, if you can pass user location as a
-session attribute (for example, C<"Location" : "111 Maple street">),
-your Lambda function might use this information to determine the
-closest pizzeria to place the order.
+In Getting Started Exercise 1, the example bot uses the C<price>
+session attribute to maintain the price of the flowers ordered (for
+example, "Price":25). The code hook (the Lambda function) sets this
+attribute based on the type of flowers ordered. For more information,
+see Review the Details of Information Flow.
 
 =item *
 
-Use session attributes to personalize prompts. For example, you pass in
-user name as a session attribute (C<"FirstName" : "Joe">), you might
-configure subsequent prompts to refer to this attribute, as
-C<$session.FirstName">. At runtime, Amazon Lex substitutes a real value
-when it generates a prompt, such as "Hello Joe, what would you like to
-order?"
+In the BookTrip bot exercise, the bot uses the C<currentReservation>
+session attribute to maintain slot data during the in-progress
+conversation to book a hotel or book a car. For more information, see
+Details of Information Flow.
+
+=item *
+
+You might use the session attributes (key, value pairs) to track the
+requestID of user requests.
+
+=back
+
+Amazon Lex simply passes these session attributes to the Lambda
+functions configured for the intent.
+
+In your Lambda function, you can also use the session attributes for
+initialization and customization (prompts and response cards). Some
+examples are:
+
+=over
+
+=item *
+
+Initialization - In a pizza ordering bot, if you can pass the user
+location as a session attribute (for example, C<"Location" : "111 Maple
+street">), then your Lambda function might use this information to
+determine the closest pizzeria to place the order (perhaps to set the
+storeAddress slot value).
+
+=item *
+
+Personalize prompts - For example, you can configure prompts to refer
+to the user name. (For example, "Hey [FirstName], what toppings would
+you like?"). You can pass the user name as a session attribute
+(C<"FirstName" : "Joe">) so that Amazon Lex can substitute the
+placeholder to provide a personalize prompt to the user ("Hey Joe, what
+toppings would you like?").
 
 =back
 
 Amazon Lex does not persist session attributes.
 
-If the intent is configured without a Lambda function to process the
-intent (that is, the client application to process the intent), Amazon
-Lex simply returns the session attributes back to the client
-application.
+If you configure a code hook for the intent, Amazon Lex passes the
+incoming session attributes to the Lambda function. If you want Amazon
+Lex to return these session attributes back to the client, the Lambda
+function must return them.
 
-If the intent is configured with a Lambda function to process the
-intent, Amazon Lex passes the incoming session attributes to the Lambda
-function. The Lambda function must return these session attributes if
-you want Amazon Lex to return them back to the client.
+If there is no code hook configured for the intent, Amazon Lex simply
+returns the session attributes back to the client application.
 
 
 
 =head2 B<REQUIRED> UserId => Str
 
-User ID of your client application. Typically, each of your application
-users should have a unique ID. Note the following considerations:
+The ID of the client application user. The application developer
+decides the user IDs. At runtime, each request must include the user
+ID. Typically, each of your application users should have a unique ID.
+Note the following considerations:
 
 =over
 
 =item *
 
-If you want a user to start a conversation on one mobile device and
-continue the conversation on another device, you might choose a
-user-specific identifier, such as a login or Amazon Cognito user ID
-(assuming your application is using Amazon Cognito).
+If you want a user to start a conversation on one device and continue
+the conversation on another device, you might choose a user-specific
+identifier, such as a login or Amazon Cognito user ID (assuming your
+application is using Amazon Cognito).
 
 =item *
 

@@ -43,27 +43,27 @@ could be an image, a button, a link, or text.
 
 =head2 AttachmentLinkUrl => Str
 
-  
+  The URL of an attachment to the response card.
 
 
 =head2 Buttons => ArrayRef[L<Paws::LexRuntime::Button>]
 
-  List of options to show to the user.
+  The list of options to show to the user.
 
 
 =head2 ImageUrl => Str
 
-  URL of an image that is displayed to the user.
+  The URL of an image that is displayed to the user.
 
 
 =head2 SubTitle => Str
 
-  Subtitle shown below the title.
+  The subtitle shown below the title.
 
 
 =head2 Title => Str
 
-  Title of the option.
+  The title of the option.
 
 
 

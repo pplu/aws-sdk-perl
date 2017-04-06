@@ -34,16 +34,16 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::LexRuntime:
 =head1 DESCRIPTION
 
 If you configure a response card when creating your bots, Amazon Lex
-substitutes the session attributes and slot values available, and then
-returns it. The response card can also come from a Lambda function (
-C<dialogCodeHook> and C<fulfillmentActivity> on an intent).
+substitutes the session attributes and slot values that are available,
+and then returns it. The response card can also come from a Lambda
+function ( C<dialogCodeHook> and C<fulfillmentActivity> on an intent).
 
 =head1 ATTRIBUTES
 
 
 =head2 ContentType => Str
 
-  Content type of the response.
+  The content type of the response.
 
 
 =head2 GenericAttachments => ArrayRef[L<Paws::LexRuntime::GenericAttachment>]
@@ -53,7 +53,7 @@ C<dialogCodeHook> and C<fulfillmentActivity> on an intent).
 
 =head2 Version => Str
 
-  Version of response card format.
+  The version of the response card format.
 
 
 
