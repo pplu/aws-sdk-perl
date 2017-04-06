@@ -70,8 +70,9 @@ Valid values are: C<"HTTP">, C<"HTTPS">
 
 =head2 SslPolicy => Str
 
-The security policy that defines which ciphers and protocols are
-supported.
+The security policy that defines which protocols and ciphers are
+supported. For more information, see Security Policies in the
+I<Application Load Balancers Guide>.
 
 
 

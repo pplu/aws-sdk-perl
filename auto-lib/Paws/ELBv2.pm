@@ -553,8 +553,8 @@ Returns: a L<Paws::ELBv2::DescribeSSLPoliciesOutput> instance
   Describes the specified policies or all policies used for SSL
 negotiation.
 
-Note that the only supported policy at this time is
-ELBSecurityPolicy-2015-05.
+For more information, see Security Policies in the I<Application Load
+Balancers Guide>.
 
 
 =head2 DescribeTags(ResourceArns => ArrayRef[Str|Undef])
@@ -563,7 +563,8 @@ Each argument is described in detail in: L<Paws::ELBv2::DescribeTags>
 
 Returns: a L<Paws::ELBv2::DescribeTagsOutput> instance
 
-  Describes the tags for the specified resources.
+  Describes the tags for the specified resources. You can describe the
+tags for one or more Application Load Balancers and target groups.
 
 
 =head2 DescribeTargetGroupAttributes(TargetGroupArn => Str)
@@ -612,7 +613,7 @@ Returns: a L<Paws::ELBv2::ModifyListenerOutput> instance
 Any properties that you do not specify retain their current values.
 However, changing the protocol from HTTPS to HTTP removes the security
 policy and SSL certificate properties. If you change the protocol from
-HTTP to HTTPS, you must add the security policy.
+HTTP to HTTPS, you must add the security policy and server certificate.
 
 
 =head2 ModifyLoadBalancerAttributes(Attributes => ArrayRef[L<Paws::ELBv2::LoadBalancerAttribute>], LoadBalancerArn => Str)
