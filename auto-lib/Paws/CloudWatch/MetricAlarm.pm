@@ -8,6 +8,7 @@ package Paws::CloudWatch::MetricAlarm;
   has AlarmName => (is => 'ro', isa => 'Str');
   has ComparisonOperator => (is => 'ro', isa => 'Str');
   has Dimensions => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatch::Dimension]');
+  has EvaluateLowSampleCountPercentile => (is => 'ro', isa => 'Str');
   has EvaluationPeriods => (is => 'ro', isa => 'Int');
   has ExtendedStatistic => (is => 'ro', isa => 'Str');
   has InsufficientDataActions => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
@@ -21,6 +22,7 @@ package Paws::CloudWatch::MetricAlarm;
   has StateValue => (is => 'ro', isa => 'Str');
   has Statistic => (is => 'ro', isa => 'Str');
   has Threshold => (is => 'ro', isa => 'Num');
+  has TreatMissingData => (is => 'ro', isa => 'Str');
   has Unit => (is => 'ro', isa => 'Str');
 1;
 
@@ -102,6 +104,11 @@ operand.
   The dimensions for the metric associated with the alarm.
 
 
+=head2 EvaluateLowSampleCountPercentile => Str
+
+  
+
+
 =head2 EvaluationPeriods => Int
 
   The number of periods over which data is compared to the specified
@@ -172,6 +179,11 @@ percentile. For percentile statistics, use C<ExtendedStatistic>.
 =head2 Threshold => Num
 
   The value to compare with the specified statistic.
+
+
+=head2 TreatMissingData => Str
+
+  
 
 
 =head2 Unit => Str

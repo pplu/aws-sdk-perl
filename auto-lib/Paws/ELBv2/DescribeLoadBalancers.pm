@@ -38,7 +38,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 LoadBalancerArns => ArrayRef[Str|Undef]
 
-The Amazon Resource Names (ARN) of the load balancers.
+The Amazon Resource Names (ARN) of the load balancers. You can specify
+up to 20 load balancers in a single call.
 
 
 

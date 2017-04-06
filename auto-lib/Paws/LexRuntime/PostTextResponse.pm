@@ -23,69 +23,63 @@ Paws::LexRuntime::PostTextResponse
 
 =head2 DialogState => Str
 
-Represents the message type to be conveyed to the user. For example:
+Identifies the current state of the user interaction. Amazon Lex
+returns one of the following values as C<dialogState>. The client can
+optionally use this information to customize the user interface.
 
 =over
 
 =item *
 
-C<ElicitIntent> E<ndash> Amazon Lex wants to elicit user intent. For
-example, Amazon Lex did not understand the first utterances such as "I
-want to order pizza", which indicates the OrderPizza intent. If Amazon
-Lex doesn't understand the intent, it returns this C<dialogState>.
-Another example is when your intent is configured with a follow up
-prompt. For example, after OrderPizza intent is fulfilled, the intent
-might have a follow up prompt such as " Do you want to order a drink or
-desert?" In this case, Amazon Lex returns this C<dialogState>.
+C<ElicitIntent> E<ndash> Amazon Lex wants to elicit user intent.
+
+For example, a user might utter an intent ("I want to order a pizza").
+If Amazon Lex cannot infer the user intent from this utterance, it will
+return this dialogState.
 
 =item *
 
-C<ConfirmIntent> E<ndash> Amazon Lex is expecting a yes/no response
-from the user indicating whether to go ahead and fulfill the intent
-(for example, OK to go ahead and order the pizza). In addition to a
-yes/no reply, the user might provide a response with additional slot
-information (either new slot information or changes to the existing
-slot values). For example, "Yes, but change to thick crust." Amazon Lex
-understands the additional information and updates the intent slots
-accordingly.
+C<ConfirmIntent> E<ndash> Amazon Lex is expecting a "yes" or "no"
+response.
 
-Consider another example. Before fulfilling an order, your application
-might prompt for confirmation such as "Do you want to place this pizza
-order?" A user might reply with "No, I want to order a drink." Amazon
-Lex recognizes the new OrderDrink intent.
+For example, Amazon Lex wants user confirmation before fulfilling an
+intent.
+
+Instead of a simple "yes" or "no," a user might respond with additional
+information. For example, "yes, but make it thick crust pizza" or "no,
+I want to order a drink". Amazon Lex can process such additional
+information (in these examples, update the crust type slot value, or
+change intent from OrderPizza to OrderDrink).
 
 =item *
 
-C<ElicitSlot> E<ndash> Amazon Lex is expecting a value of a slot for
-the current intent. For example, suppose Amazon Lex asks, "What size
-pizza would you like?" A user might reply with "Medium pepperoni
-pizza." Amazon Lex recognizes the size and the topping as the two
-separate slot values.
+C<ElicitSlot> E<ndash> Amazon Lex is expecting a slot value for the
+current intent.
+
+For example, suppose that in the response Amazon Lex sends this
+message: "What size pizza would you like?". A user might reply with the
+slot value (e.g., "medium"). The user might also provide additional
+information in the response (e.g., "medium thick crust pizza"). Amazon
+Lex can process such additional information appropriately.
 
 =item *
 
-C<Fulfilled> E<ndash> Conveys that the Lambda function has successfully
-fulfilled the intent. If Lambda function returns a statement/message to
-convey the fulfillment result, Amazon Lex passes this string to the
-client. If not, Amazon Lex looks for C<conclusionStatement> that you
-configured for the intent.
-
-If both the Lambda function statement and the C<conclusionStatement>
-are missing, Amazon Lex throws a bad request exception.
+C<Fulfilled> E<ndash> Conveys that the Lambda function configured for
+the intent has successfully fulfilled the intent.
 
 =item *
 
-C<ReadyForFulfillment> E<ndash> conveys that the client has to do the
-fulfillment work for the intent. This is the case when the current
-intent is configured with C<ReturnIntent> as the C<fulfillmentActivity
->, where Amazon Lex returns this state to client.
+C<ReadyForFulfillment> E<ndash> Conveys that the client has to fulfill
+the intent.
 
 =item *
 
-C<Failed> E<ndash> Conversation with the user failed. Some of the
-reasons for this C<dialogState> are: after the configured number of
-attempts the user didn't provide an appropriate response, or the Lambda
-function failed to fulfill an intent.
+C<Failed> E<ndash> Conveys that the conversation with the user failed.
+
+This can happen for various reasons including that the user did not
+provide an appropriate response to prompts from the service (you can
+configure how many times Amazon Lex can prompt a user for specific
+information), or the Lambda function failed to fulfill the intent.
 
 =back
 
@@ -93,45 +87,50 @@ function failed to fulfill an intent.
 Valid values are: C<"ElicitIntent">, C<"ConfirmIntent">, C<"ElicitSlot">, C<"Fulfilled">, C<"ReadyForFulfillment">, C<"Failed">
 =head2 IntentName => Str
 
-Intent Amazon Lex inferred from the user input text. This is one of the
-intents configured for the bot.
+The current user intent that Amazon Lex is aware of.
 
 
 =head2 Message => Str
 
-Prompt (or statement) to convey to the user. This is based on the
-application configuration and context. For example, if Amazon Lex did
-not understand the user intent, it sends the C<clarificationPrompt>
-configured for the application. In another example, if the intent
-requires confirmation before taking the fulfillment action, it sends
-the C<confirmationPrompt>. Suppose the Lambda function successfully
-fulfilled the intent, and sent a message to convey to the user. In that
-situation, Amazon Lex sends that message in the response.
+A message to convey to the user. It can come from the bot's
+configuration or a code hook (Lambda function). If the current intent
+is not configured with a code hook or the code hook returned
+C<Delegate> as the C<dialogAction.type> in its response, then Amazon
+Lex decides the next course of action and selects an appropriate
+message from the bot configuration based on the current user
+interaction context. For example, if Amazon Lex is not able to
+understand the user input, it uses a clarification prompt message (for
+more information, see the Error Handling section in the Amazon Lex
+console). Another example: if the intent requires confirmation before
+fulfillment, then Amazon Lex uses the confirmation prompt message in
+the intent configuration. If the code hook returns a message, Amazon
+Lex passes it as-is in its response to the client.
 
 
 =head2 ResponseCard => L<Paws::LexRuntime::ResponseCard>
 
 Represents the options that the user has to respond to the current
-prompt. Amazon Lex sends this in the response only if the
-C<dialogState> value indicates that a user response is expected.
+prompt. Response Card can come from the bot configuration (in the
+Amazon Lex console, choose the settings button next to a slot) or from
+a code hook (Lambda function).
 
 
 =head2 SessionAttributes => L<Paws::LexRuntime::StringMap>
 
-Map of key value pairs representing the session specific context
+A map of key-value pairs representing the session-specific context
 information.
 
 
 =head2 Slots => L<Paws::LexRuntime::StringMap>
 
-Intent slots (name/value pairs) Amazon Lex detected so far from the
-user input in the conversation.
+The intent slots (name/value pairs) that Amazon Lex detected so far
+from the user input in the conversation.
 
 
 =head2 SlotToElicit => Str
 
-If C<dialogState> value is C<ElicitSlot>, returns the name of the slot
-for which Amazon Lex is eliciting a value.
+If the C<dialogState> value is C<ElicitSlot>, returns the name of the
+slot for which Amazon Lex is eliciting a value.
 
 
 =head2 _request_id => Str

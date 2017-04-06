@@ -8,6 +8,7 @@ package Paws::ElastiCache::ModifyReplicationGroup;
   has CacheParameterGroupName => (is => 'ro', isa => 'Str');
   has CacheSecurityGroupNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has EngineVersion => (is => 'ro', isa => 'Str');
+  has NodeGroupId => (is => 'ro', isa => 'Str');
   has NotificationTopicArn => (is => 'ro', isa => 'Str');
   has NotificationTopicStatus => (is => 'ro', isa => 'Str');
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
@@ -139,6 +140,12 @@ a Cache Engine and Version), but you cannot downgrade to an earlier
 engine version. If you want to use an earlier engine version, you must
 delete the existing replication group and create it anew with the
 earlier engine version.
+
+
+
+=head2 NodeGroupId => Str
+
+The name of the Node Group (called shard in the console).
 
 
 

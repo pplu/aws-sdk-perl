@@ -40,14 +40,14 @@ Slack, etc.)
 
 =head2 B<REQUIRED> Text => Str
 
-  Text visible to the user on the button.
+  Text that is visible to the user on the button.
 
 
 =head2 B<REQUIRED> Value => Str
 
-  Value sent to Amazon Lex when user clicks the button. For example,
-consider button text "NYC". When the user clicks the button, the value
-sent can be "New York City".
+  The value sent to Amazon Lex when a user chooses the button. For
+example, consider button text "NYC." When the user chooses the button,
+the value sent can be "New York City."
 
 
 

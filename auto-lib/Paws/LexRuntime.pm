@@ -13,6 +13,11 @@ package Paws::LexRuntime;
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller', 'Paws::Net::RestJsonResponse';
 
   
+  sub PostContent {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::LexRuntime::PostContent', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub PostText {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::LexRuntime::PostText', @_);
@@ -21,7 +26,7 @@ package Paws::LexRuntime;
   
 
 
-  sub operations { qw/PostText / }
+  sub operations { qw/PostContent PostText / }
 
 1;
 
@@ -50,20 +55,112 @@ Paws::LexRuntime - Perl Interface to AWS Amazon Lex Runtime Service
 =head1 DESCRIPTION
 
 Amazon Lex provides both build and runtime endpoints. Each endpoint
-provides a set of operations (API). Your application uses the runtime
-API to understand user utterances (user input text or voice). For
-example, suppose user says "I want pizza", your application sends this
+provides a set of operations (API). Your conversational bot uses the
+runtime API to understand user utterances (user input text or voice).
+For example, suppose a user says "I want pizza", your bot sends this
 input to Amazon Lex using the runtime API. Amazon Lex recognizes that
 the user request is for the OrderPizza intent (one of the intents
-defined in the application). Then Amazon Lex engages in user
-conversation on behalf of the application to elicit required
-information (slot values, such as pizza size and crust type), and then
-performs fulfillment activity (that you configured when you created the
-application). You use the build-time API to create and manage your
-Amazon Lex applications. For a list of build-time operations, see the
-build-time API. .
+defined in the bot). Then Amazon Lex engages in user conversation on
+behalf of the bot to elicit required information (slot values, such as
+pizza size and crust type), and then performs fulfillment activity
+(that you configured when you created the bot). You use the build-time
+API to create and manage your Amazon Lex bot. For a list of build-time
+operations, see the build-time API, .
 
 =head1 METHODS
+
+=head2 PostContent(BotAlias => Str, BotName => Str, ContentType => Str, InputStream => Str, UserId => Str, [Accept => Str, SessionAttributes => Str])
+
+Each argument is described in detail in: L<Paws::LexRuntime::PostContent>
+
+Returns: a L<Paws::LexRuntime::PostContentResponse> instance
+
+  Sends user input (text or speech) to Amazon Lex. Clients use this API
+to send requests to Amazon Lex at runtime. Amazon Lex interprets the
+user input using the machine learning model that it built for the bot.
+
+In response, Amazon Lex returns the next message to convey to the user.
+Consider the following example messages:
+
+=over
+
+=item *
+
+For a user input "I would like a pizza," Amazon Lex might return a
+response with a message eliciting slot data (for example,
+C<PizzaSize>): "What size pizza would you like?".
+
+=item *
+
+After the user provides all of the pizza order information, Amazon Lex
+might return a response with a message to get user confirmation: "Order
+the pizza?".
+
+=item *
+
+After the user replies "Yes" to the confirmation prompt, Amazon Lex
+might return a conclusion statement: "Thank you, your cheese pizza has
+been ordered.".
+
+=back
+
+Not all Amazon Lex messages require a response from the user. For
+example, conclusion statements do not require a response. Some messages
+require only a yes or no response. In addition to the C<message>,
+Amazon Lex provides additional context about the message in the
+response that you can use to enhance client behavior, such as
+displaying the appropriate client user interface. Consider the
+following examples:
+
+=over
+
+=item *
+
+If the message is to elicit slot data, Amazon Lex returns the following
+context information:
+
+=over
+
+=item *
+
+C<x-amz-lex-dialog-state> header set to C<ElicitSlot>
+
+=item *
+
+C<x-amz-lex-intent-name> header set to the intent name in the current
+context
+
+=item *
+
+C<x-amz-lex-slot-to-elicit> header set to the slot name for which the
+C<message> is eliciting information
+
+=item *
+
+C<x-amz-lex-slots> header set to a map of slots configured for the
+intent with their current values
+
+=back
+
+=item *
+
+If the message is a confirmation prompt, the C<x-amz-lex-dialog-state>
+header is set to C<Confirmation> and the C<x-amz-lex-slot-to-elicit>
+header is omitted.
+
+=item *
+
+If the message is a clarification prompt configured for the intent,
+indicating that the user intent is not understood, the
+C<x-amz-dialog-state> header is set to C<ElicitIntent> and the
+C<x-amz-slot-to-elicit> header is omitted.
+
+=back
+
+In addition, Amazon Lex also returns your application-specific
+C<sessionAttributes>. For more information, see Managing Conversation
+Context.
+
 
 =head2 PostText(BotAlias => Str, BotName => Str, InputText => Str, UserId => Str, [SessionAttributes => L<Paws::LexRuntime::StringMap>])
 
@@ -71,46 +168,91 @@ Each argument is described in detail in: L<Paws::LexRuntime::PostText>
 
 Returns: a L<Paws::LexRuntime::PostTextResponse> instance
 
-  Sends user input text to Amazon Lex at runtime. Amazon Lex uses the
-machine learning model that the service built for the application to
-interpret user input.
+  Sends user input (text-only) to Amazon Lex. Client applications can use
+this API to send requests to Amazon Lex at runtime. Amazon Lex then
+interprets the user input using the machine learning model it built for
+the bot.
 
-In response, Amazon Lex returns the next message to convey to the user
-(based on the context of the user interaction) and whether to expect a
-user response to the message (C<dialogState>). For example, consider
-the following response messages:
-
-=over
-
-=item *
-
-"What pizza toppings would you like?" E<ndash> In this case, the
-C<dialogState> would be C<ElicitSlot> (that is, a user response is
-expected).
-
-=item *
-
-"Your order has been placed." E<ndash> In this case, Amazon Lex returns
-one of the following C<dialogState> values depending on how the intent
-fulfillment is configured (see C<fulfillmentActivity> in
-C<CreateIntent>):
+In response, Amazon Lex returns the next C<message> to convey to the
+user an optional C<responseCard> to display. Consider the following
+example messages:
 
 =over
 
 =item *
 
-C<FulFilled> E<ndash> The intent fulfillment is configured through a
-Lambda function.
+For a user input "I would like a pizza", Amazon Lex might return a
+response with a message eliciting slot data (for example, PizzaSize):
+"What size pizza would you like?"
 
 =item *
 
-C<ReadyForFulfilment> E<ndash> The intent's C<fulfillmentActivity> is
-to simply return the intent data back to the client application.
+After the user provides all of the pizza order information, Amazon Lex
+might return a response with a message to obtain user confirmation
+"Proceed with the pizza order?".
+
+=item *
+
+After the user replies to a confirmation prompt with a "yes", Amazon
+Lex might return a conclusion statement: "Thank you, your cheese pizza
+has been ordered.".
 
 =back
 
+Not all Amazon Lex messages require a user response. For example, a
+conclusion statement does not require a response. Some messages require
+only a "yes" or "no" user response. In addition to the C<message>,
+Amazon Lex provides additional context about the message in the
+response that you might use to enhance client behavior, for example, to
+display the appropriate client user interface. These are the
+C<slotToElicit>, C<dialogState>, C<intentName>, and C<slots> fields in
+the response. Consider the following examples:
+
+=over
+
+=item *
+
+If the message is to elicit slot data, Amazon Lex returns the following
+context information:
+
+=over
+
+=item *
+
+C<dialogState> set to ElicitSlot
+
+=item *
+
+C<intentName> set to the intent name in the current context
+
+=item *
+
+C<slotToElicit> set to the slot name for which the C<message> is
+eliciting information
+
+=item *
+
+C<slots> set to a map of slots, configured for the intent, with
+currently known values
+
 =back
 
+=item *
+
+If the message is a confirmation prompt, the C<dialogState> is set to
+ConfirmIntent and C<SlotToElicit> is set to null.
+
+=item *
+
+If the message is a clarification prompt (configured for the intent)
+that indicates that user intent is not understood, the C<dialogState>
+is set to ElicitIntent and C<slotToElicit> is set to null.
+
+=back
+
+In addition, Amazon Lex also returns your application-specific
+C<sessionAttributes>. For more information, see Managing Conversation
+Context.
 
 
 

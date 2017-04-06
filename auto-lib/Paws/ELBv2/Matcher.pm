@@ -39,9 +39,9 @@ target.
 
 =head2 B<REQUIRED> HttpCode => Str
 
-  The HTTP codes. The default value is 200. You can specify multiple
-values (for example, "200,202") or a range of values (for example,
-"200-299").
+  The HTTP codes. You can specify values between 200 and 499. The default
+value is 200. You can specify multiple values (for example, "200,202")
+or a range of values (for example, "200-299").
 
 
 
