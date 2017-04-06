@@ -294,6 +294,23 @@ stamps that fall within each one-hour period. Therefore, the number of
 values aggregated by CloudWatch is larger than the number of data
 points returned.
 
+CloudWatch needs raw data points to calculate percentile statistics. If
+you publish data using a statistic set instead, you cannot retrieve
+percentile statistics for this data unless one of the following
+conditions is true:
+
+=over
+
+=item *
+
+The SampleCount of the statistic set is 1
+
+=item *
+
+The Min and the Max of the statistic set are equal
+
+=back
+
 For a list of metrics and dimensions supported by AWS services, see the
 Amazon CloudWatch Metrics and Dimensions Reference in the I<Amazon
 CloudWatch User Guide>.
@@ -316,7 +333,7 @@ metric appears. Statistics about the metric, however, are available
 sooner using GetMetricStatistics.
 
 
-=head2 PutMetricAlarm(AlarmName => Str, ComparisonOperator => Str, EvaluationPeriods => Int, MetricName => Str, Namespace => Str, Period => Int, Threshold => Num, [ActionsEnabled => Bool, AlarmActions => ArrayRef[Str|Undef], AlarmDescription => Str, Dimensions => ArrayRef[L<Paws::CloudWatch::Dimension>], ExtendedStatistic => Str, InsufficientDataActions => ArrayRef[Str|Undef], OKActions => ArrayRef[Str|Undef], Statistic => Str, Unit => Str])
+=head2 PutMetricAlarm(AlarmName => Str, ComparisonOperator => Str, EvaluationPeriods => Int, MetricName => Str, Namespace => Str, Period => Int, Threshold => Num, [ActionsEnabled => Bool, AlarmActions => ArrayRef[Str|Undef], AlarmDescription => Str, Dimensions => ArrayRef[L<Paws::CloudWatch::Dimension>], EvaluateLowSampleCountPercentile => Str, ExtendedStatistic => Str, InsufficientDataActions => ArrayRef[Str|Undef], OKActions => ArrayRef[Str|Undef], Statistic => Str, TreatMissingData => Str, Unit => Str])
 
 Each argument is described in detail in: L<Paws::CloudWatch::PutMetricAlarm>
 
@@ -394,8 +411,8 @@ metric does not exist, Amazon CloudWatch creates the metric. When
 Amazon CloudWatch creates a metric, it can take up to fifteen minutes
 for the metric to appear in calls to ListMetrics.
 
-Each C<PutMetricData> request is limited to 8 KB in size for HTTP GET
-requests and is limited to 40 KB in size for HTTP POST requests.
+Each C<PutMetricData> request is limited to 40 KB in size for HTTP POST
+requests.
 
 Although the C<Value> parameter accepts numbers of type C<Double>,
 Amazon CloudWatch rejects values that are either too small or too
@@ -403,9 +420,31 @@ large. Values must be in the range of 8.515920e-109 to 1.174271e+108
 (Base 10) or 2e-360 to 2e360 (Base 2). In addition, special values
 (e.g., NaN, +Infinity, -Infinity) are not supported.
 
+You can use up to 10 dimensions per metric to further clarify what data
+the metric collects. For more information on specifying dimensions, see
+Publishing Metrics in the I<Amazon CloudWatch User Guide>.
+
 Data points with time stamps from 24 hours ago or longer can take at
 least 48 hours to become available for GetMetricStatistics from the
 time they are submitted.
+
+CloudWatch needs raw data points to calculate percentile statistics. If
+you publish data using a statistic set instead, you cannot retrieve
+percentile statistics for this data unless one of the following
+conditions is true:
+
+=over
+
+=item *
+
+The SampleCount of the statistic set is 1
+
+=item *
+
+The Min and the Max of the statistic set are equal
+
+=back
+
 
 
 =head2 SetAlarmState(AlarmName => Str, StateReason => Str, StateValue => Str, [StateReasonData => Str])

@@ -7,6 +7,7 @@ package Paws::CloudWatch::PutMetricAlarm;
   has AlarmName => (is => 'ro', isa => 'Str', required => 1);
   has ComparisonOperator => (is => 'ro', isa => 'Str', required => 1);
   has Dimensions => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatch::Dimension]');
+  has EvaluateLowSampleCountPercentile => (is => 'ro', isa => 'Str');
   has EvaluationPeriods => (is => 'ro', isa => 'Int', required => 1);
   has ExtendedStatistic => (is => 'ro', isa => 'Str');
   has InsufficientDataActions => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
@@ -16,6 +17,7 @@ package Paws::CloudWatch::PutMetricAlarm;
   has Period => (is => 'ro', isa => 'Int', required => 1);
   has Statistic => (is => 'ro', isa => 'Str');
   has Threshold => (is => 'ro', isa => 'Num', required => 1);
+  has TreatMissingData => (is => 'ro', isa => 'Str');
   has Unit => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
@@ -101,6 +103,20 @@ The dimensions for the metric associated with the alarm.
 
 
 
+=head2 EvaluateLowSampleCountPercentile => Str
+
+Used only for alarms based on percentiles. If you specify C<ignore>,
+the alarm state will not change during periods with too few data points
+to be statistically significant. If you specify C<evaluate> or omit
+this parameter, the alarm will always be evaluated and possibly change
+state no matter how many data points are available. For more
+information, see Percentile-Based CloudWatch Alarms and Low Data
+Samples.
+
+Valid Values: C<evaluate | ignore>
+
+
+
 =head2 B<REQUIRED> EvaluationPeriods => Int
 
 The number of periods over which data is compared to the specified
@@ -181,6 +197,17 @@ Valid values are: C<"SampleCount">, C<"Average">, C<"Sum">, C<"Minimum">, C<"Max
 =head2 B<REQUIRED> Threshold => Num
 
 The value against which the specified statistic is compared.
+
+
+
+=head2 TreatMissingData => Str
+
+Sets how this alarm is to handle missing data points. If
+C<TreatMissingData> is omitted, the default behavior of C<missing> is
+used. For more information, see Configuring How CloudWatch Alarms
+Treats Missing Data.
+
+Valid Values: C<breaching | notBreaching | ignore | missing>
 
 
 
