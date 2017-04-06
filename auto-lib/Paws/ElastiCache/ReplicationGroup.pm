@@ -1,6 +1,8 @@
 package Paws::ElastiCache::ReplicationGroup;
   use Moose;
   has AutomaticFailover => (is => 'ro', isa => 'Str');
+  has CacheNodeType => (is => 'ro', isa => 'Str');
+  has ClusterEnabled => (is => 'ro', isa => 'Bool');
   has ConfigurationEndpoint => (is => 'ro', isa => 'Paws::ElastiCache::Endpoint');
   has Description => (is => 'ro', isa => 'Str');
   has MemberClusters => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'ClusterId', traits => ['NameInRequest']);
@@ -66,6 +68,21 @@ Redis (cluster mode enabled): T1 node types.
 
 =back
 
+
+
+=head2 CacheNodeType => Str
+
+  The name of the compute and memory capacity node type for each node in
+the replication group.
+
+
+=head2 ClusterEnabled => Bool
+
+  A flag indicating whether or not this replication group is cluster
+enabled; i.e., whether its data can be partitioned across multiple
+shards (API/CLI: node groups).
+
+Valid values: C<true> | C<false>
 
 
 =head2 ConfigurationEndpoint => L<Paws::ElastiCache::Endpoint>

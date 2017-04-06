@@ -4,6 +4,7 @@ package Paws::ElastiCache::DescribeCacheClusters;
   has CacheClusterId => (is => 'ro', isa => 'Str');
   has Marker => (is => 'ro', isa => 'Str');
   has MaxRecords => (is => 'ro', isa => 'Int');
+  has ShowCacheClustersNotInReplicationGroups => (is => 'ro', isa => 'Bool');
   has ShowCacheNodeInfo => (is => 'ro', isa => 'Bool');
 
   use MooseX::ClassAttribute;
@@ -66,9 +67,18 @@ Constraints: minimum 20; maximum 100.
 
 
 
+=head2 ShowCacheClustersNotInReplicationGroups => Bool
+
+An optional flag that can be included in the C<DescribeCacheCluster>
+request to show only nodes (API/CLI: clusters) that are not members of
+a replication group. In practice, this mean Memcached and single node
+Redis clusters.
+
+
+
 =head2 ShowCacheNodeInfo => Bool
 
-An optional flag that can be included in the DescribeCacheCluster
+An optional flag that can be included in the C<DescribeCacheCluster>
 request to retrieve information about the individual cache nodes.
 
 

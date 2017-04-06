@@ -192,7 +192,12 @@ client library.
 
 =head2 ConfigurationEndpoint => L<Paws::ElastiCache::Endpoint>
 
-  
+  Represents a Memcached cluster endpoint which, if Automatic Discovery
+is enabled on the cluster, can be used by an application to connect to
+any node in the cluster. The configuration endpoint will always have
+C<.cfg> in it.
+
+Example: C<mem-3.9dvc4r.cfg.usw2.cache.amazonaws.com:11211>
 
 
 =head2 Engine => Str
