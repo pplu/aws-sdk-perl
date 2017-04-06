@@ -32,6 +32,8 @@
  - Batch API update
  - CloudFront API update
  - CloudDirectory API update
+ - CloudWatch API update
+ - ElastiCache API update
 
 0.31 01 Feb 2017 
  - Bug fixed: Services that use QueryCaller and EC2Caller were not serializing Booleans correctly
