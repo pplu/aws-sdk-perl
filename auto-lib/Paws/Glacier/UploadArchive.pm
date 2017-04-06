@@ -8,7 +8,7 @@ package Paws::Glacier::UploadArchive;
   has VaultName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'vaultName' , required => 1);
 
   use MooseX::ClassAttribute;
-  class_has _stream_param => (is => 'ro', default => 'body');
+  class_has _stream_param => (is => 'ro', default => 'Body');
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'UploadArchive');
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/{accountId}/vaults/{vaultName}/archives');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');

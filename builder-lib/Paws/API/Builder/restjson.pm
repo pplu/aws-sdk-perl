@@ -67,7 +67,7 @@ package [% c.api %]::[% operation.name %];
 [% END %]
   use MooseX::ClassAttribute;
 
-  [%- IF (shape.payload) -%]  class_has _stream_param => (is => 'ro', default => '[% shape.payload %]');[% END %]
+  [%- IF (shape.payload) -%]  class_has _stream_param => (is => 'ro', default => '[% c.to_payload_shape_name(shape.payload) %]');[% END %]
   class_has _api_call => (isa => 'Str', is => 'ro', default => '[% op_name %]');
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '[% operation.http.requestUri %]');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => '[% operation.http.method %]');
@@ -99,7 +99,7 @@ package [% c.api %]::[% c.shapename_for_operation_output(op_name) %];
 [% END %]
   [%- IF (shape.payload) -%]
   use MooseX::ClassAttribute;
-  class_has _stream_param => (is => 'ro', default => '[% shape.payload %]');
+  class_has _stream_param => (is => 'ro', default => '[% c.to_payload_shape_name(shape.payload) %]');
   [%- END %]
   has _request_id => (is => 'ro', isa => 'Str');
 [%- END %]

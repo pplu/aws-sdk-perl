@@ -1,16 +1,17 @@
 
 package Paws::LexRuntime::PostContentResponse;
   use Moose;
-  has AudioStream => (is => 'ro', isa => 'Str');
-  has ContentType => (is => 'ro', isa => 'Str');
-  has DialogState => (is => 'ro', isa => 'Str');
-  has InputTranscript => (is => 'ro', isa => 'Str');
-  has IntentName => (is => 'ro', isa => 'Str');
-  has Message => (is => 'ro', isa => 'Str');
-  has SessionAttributes => (is => 'ro', isa => 'Str');
-  has Slots => (is => 'ro', isa => 'Str');
-  has SlotToElicit => (is => 'ro', isa => 'Str');
-
+  has AudioStream => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'audioStream');
+  has ContentType => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'contentType');
+  has DialogState => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'dialogState');
+  has InputTranscript => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'inputTranscript');
+  has IntentName => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'intentName');
+  has Message => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'message');
+  has SessionAttributes => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'sessionAttributes');
+  has Slots => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'slots');
+  has SlotToElicit => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'slotToElicit');
+  use MooseX::ClassAttribute;
+  class_has _stream_param => (is => 'ro', default => 'AudioStream');
   has _request_id => (is => 'ro', isa => 'Str');
 1;
 

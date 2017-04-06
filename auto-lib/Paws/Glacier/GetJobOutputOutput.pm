@@ -9,7 +9,7 @@ package Paws::Glacier::GetJobOutputOutput;
   has ContentType => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'contentType');
   has Status => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'status');
   use MooseX::ClassAttribute;
-  class_has _stream_param => (is => 'ro', default => 'body');
+  class_has _stream_param => (is => 'ro', default => 'Body');
   has _request_id => (is => 'ro', isa => 'Str');
 1;
 

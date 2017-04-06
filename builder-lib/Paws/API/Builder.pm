@@ -1119,7 +1119,11 @@ If not, it will return a [% out_shape = c.shapename_for_operation_output(op_name
   [%- END %]
 #);
 
-
+  sub to_payload_shape_name {
+    my ($self, $shape_name) = @_;
+    substr($shape_name,0,1) = uc(substr($shape_name,0,1));
+    return $shape_name;
+  }
 
   sub make_inner_class {
     my $self = shift;

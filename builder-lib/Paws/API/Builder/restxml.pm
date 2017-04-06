@@ -62,7 +62,7 @@ package [% c.api %]::[% op_name %];
       [%- c.api %]::[% c.shapename_for_operation_output(op_name) -%]
     [%- ELSE -%]Paws::API::Response[% END -%]');
   class_has _result_key => (isa => 'Str', is => 'ro');
-  [% IF (stream_param) %]class_has _stream_param => (is => 'ro', default => '[% stream_param %]');[% END %]
+  [% IF (stream_param) %]class_has _stream_param => (is => 'ro', default => '[% c.to_payload_shape_name(stream_param) %]');[% END %]
 1;
 [% c.callclass_documentation_template | eval %]
 #);
@@ -88,7 +88,7 @@ package [% c.api %]::[% op_name %];
 [% END %]
   [%- IF (stream_param) -%]
   use MooseX::ClassAttribute;
-  class_has _stream_param => (is => 'ro', default => '[% stream_param %]');
+  class_has _stream_param => (is => 'ro', default => '[% c.to_payload_shape_name(stream_param) %]');
   [%- END %]
   has _request_id => (is => 'ro', isa => 'Str');
 [%- END %]

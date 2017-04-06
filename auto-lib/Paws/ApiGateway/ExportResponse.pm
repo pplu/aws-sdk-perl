@@ -5,7 +5,7 @@ package Paws::ApiGateway::ExportResponse;
   has ContentDisposition => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'contentDisposition');
   has ContentType => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'contentType');
   use MooseX::ClassAttribute;
-  class_has _stream_param => (is => 'ro', default => 'body');
+  class_has _stream_param => (is => 'ro', default => 'Body');
   has _request_id => (is => 'ro', isa => 'Str');
 1;
 
