@@ -13,6 +13,8 @@ package Paws::QueryFlattenedParamsService;
        sub { defined $_[0]->http_status and $_[0]->http_status == 403 and $_[0]->code eq 'RequestThrottled' },
   ] });
 
+  sub operations { return () }
+
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::QueryCaller', 'Paws::Net::XMLResponse';
 
   sub Method2 {

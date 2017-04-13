@@ -13,6 +13,8 @@ package Paws::JsonParamsService;
   has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
   ] });
 
+  sub operations { qw/Method1 Method2/ }
+
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
 
   sub Method1 {
