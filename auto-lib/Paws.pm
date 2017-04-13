@@ -674,7 +674,7 @@ CloudFront and Route53, help with number stringification
 
 stevecaldwell77 for contributing support for temporary credentials in S3
 
-Gimpson for contributing documentation fixes
+Ryan Olson (BeerBikesBBQ) for contributing documentation fixes
 
 Roger Pettett for testing and contributing fixes for tests on MacOSX
 
