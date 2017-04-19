@@ -23,7 +23,7 @@ package Paws::Net::RestJsonCaller;
                $attribute->does('ParamInBody')
       );
 
-      my $key = $attribute->does('NameInRequest')?$attribute->request_name:$att;
+      my $key = $attribute->does('Paws::API::Attribute::Trait::NameInRequest')?$attribute->request_name:$att;
       if (defined $params->$att) {
         my $att_type = $attribute->type_constraint;
         if ($att_type eq 'Bool') {

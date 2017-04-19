@@ -1,4 +1,4 @@
-package Paws::Net::Caller::Attribute::Trait::NameInRequest;
+package Paws::API::Attribute::Trait::NameInRequest;
   use Moose::Role;
   use Moose::Util;
   Moose::Util::meta_attribute_alias('NameInRequest');
