@@ -38,16 +38,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> CollectionId => Str
 
-ID of an existing collection to which you want to add the faces that
-are detected in the input images.
+The ID of an existing collection to which you want to add the faces
+that are detected in the input images.
 
 
 
 =head2 DetectionAttributes => ArrayRef[Str|Undef]
 
-A list of facial attributes you want to be returned. This can be the
-default list of attributes or all attributes. If you don't specify a
-value for C<Attributes> or if you specify C<["DEFAULT"]>, the API
+A list of facial attributes that you want to be returned. This can be
+the default list of attributes or all attributes. If you don't specify
+a value for C<Attributes> or if you specify C<["DEFAULT"]>, the API
 returns the following subset of facial attributes: C<BoundingBox>,
 C<Confidence>, C<Pose>, C<Quality> and C<Landmarks>. If you provide
 C<["ALL"]>, all facial attributes are returned but the operation will
