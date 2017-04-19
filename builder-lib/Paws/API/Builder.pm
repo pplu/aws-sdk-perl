@@ -1158,7 +1158,11 @@ If not, it will return a [% out_shape = c.shapename_for_operation_output(op_name
         if ($inner_shape->{type} eq 'structure'){
           $self->process_template($self->map_str_to_obj_template, { c => $self, iclass => $iclass, inner_class => $inner_class, keys_shape => $keys_shape, values_shape => $values_shape, map_class => "HashRef[$type]" });
         } else {
-          $self->process_template($self->map_str_to_native_template, { c => $self, iclass => $iclass, inner_class => $inner_class, keys_shape => $keys_shape, values_shape => $values_shape, map_class => "HashRef[$type]" });
+          if ($type =~ /::/) {
+            $self->process_template($self->map_str_to_obj_template, { c => $self, iclass => $iclass, inner_class => $inner_class, keys_shape => $keys_shape, values_shape => $values_shape, map_class => "HashRef[$type]" });
+          } else {
+            $self->process_template($self->map_str_to_native_template, { c => $self, iclass => $iclass, inner_class => $inner_class, keys_shape => $keys_shape, values_shape => $values_shape, map_class => "HashRef[$type]" });
+          }
         }
       } elsif ($keys_shape->{type} eq 'string' and $values_shape->{type} eq 'structure') {
         my $type = $self->get_caller_class_type($iclass->{value}->{shape});
