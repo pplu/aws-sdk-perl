@@ -45,14 +45,13 @@ The identifier of the API key associated with the usage plans.
 
 =head2 Limit => Int
 
-The number of UsagePlan resources to be returned as the result.
+The maximum number of returned results per page.
 
 
 
 =head2 Position => Str
 
-The zero-based array index specifying the position of the
-to-be-retrieved UsagePlan resource.
+The current pagination position in the paged result set.
 
 
 

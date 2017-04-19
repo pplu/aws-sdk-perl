@@ -42,7 +42,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Limit => Int
 
-The size of the paged results.
+The maximum number of returned results per page.
 
 
 
@@ -60,8 +60,7 @@ The path of API entities of the to-be-retrieved documentation parts.
 
 =head2 Position => Str
 
-The position of the to-be-retrieved documentation part in the
-DocumentationParts collection.
+The current pagination position in the paged result set.
 
 
 
