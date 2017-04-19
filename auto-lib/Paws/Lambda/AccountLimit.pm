@@ -63,8 +63,8 @@ see Lambda Function Concurrent Executions. The default limit is 100.
 
 =head2 TotalCodeSize => Int
 
-  Maximum size, in megabytes, of a code package you can upload per
-region. The default size is 75 GB.
+  Maximum size, in bytes, of a code package you can upload per region.
+The default size is 75 GB.
 
 
 

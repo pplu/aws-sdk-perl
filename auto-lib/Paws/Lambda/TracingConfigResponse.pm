@@ -1,13 +1,13 @@
-package Paws::Lambda::DeadLetterConfig;
+package Paws::Lambda::TracingConfigResponse;
   use Moose;
-  has TargetArn => (is => 'ro', isa => 'Str');
+  has Mode => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::Lambda::DeadLetterConfig
+Paws::Lambda::TracingConfigResponse
 
 =head1 USAGE
 
@@ -18,29 +18,28 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::Lambda::DeadLetterConfig object:
+As an example, if Att1 is expected to be a Paws::Lambda::TracingConfigResponse object:
 
-  $service_obj->Method(Att1 => { TargetArn => $value, ..., TargetArn => $value  });
+  $service_obj->Method(Att1 => { Mode => $value, ..., Mode => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::Lambda::DeadLetterConfig object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::Lambda::TracingConfigResponse object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->TargetArn
+  $result->Att1->Mode
 
 =head1 DESCRIPTION
 
-The parent object that contains the target ARN (Amazon Resource Name)
-of an Amazon SQS queue or Amazon SNS topic.
+Parent object of the tracing information associated with your Lambda
+function.
 
 =head1 ATTRIBUTES
 
 
-=head2 TargetArn => Str
+=head2 Mode => Str
 
-  The Amazon Resource Name (ARN) of an Amazon SQS queue or Amazon SNS
-topic you specify as your Dead Letter Queue (DLQ).
+  The tracing mode associated with your Lambda function.
 
 
 
