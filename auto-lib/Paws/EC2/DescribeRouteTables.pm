@@ -68,7 +68,8 @@ association.
 =item *
 
 C<association.main> - Indicates whether the route table is the main
-route table for the VPC (C<true> | C<false>).
+route table for the VPC (C<true> | C<false>). Route tables that do not
+have an association ID are not returned in the response.
 
 =item *
 

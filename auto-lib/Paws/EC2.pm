@@ -184,6 +184,11 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::CreateFlowLogs', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateFpgaImage {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::CreateFpgaImage', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateImage {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::CreateImage', @_);
@@ -1382,7 +1387,7 @@ package Paws::EC2;
   }
 
 
-  sub operations { qw/AcceptReservedInstancesExchangeQuote AcceptVpcPeeringConnection AllocateAddress AllocateHosts AssignIpv6Addresses AssignPrivateIpAddresses AssociateAddress AssociateDhcpOptions AssociateIamInstanceProfile AssociateRouteTable AssociateSubnetCidrBlock AssociateVpcCidrBlock AttachClassicLinkVpc AttachInternetGateway AttachNetworkInterface AttachVolume AttachVpnGateway AuthorizeSecurityGroupEgress AuthorizeSecurityGroupIngress BundleInstance CancelBundleTask CancelConversionTask CancelExportTask CancelImportTask CancelReservedInstancesListing CancelSpotFleetRequests CancelSpotInstanceRequests ConfirmProductInstance CopyImage CopySnapshot CreateCustomerGateway CreateDhcpOptions CreateEgressOnlyInternetGateway CreateFlowLogs CreateImage CreateInstanceExportTask CreateInternetGateway CreateKeyPair CreateNatGateway CreateNetworkAcl CreateNetworkAclEntry CreateNetworkInterface CreatePlacementGroup CreateReservedInstancesListing CreateRoute CreateRouteTable CreateSecurityGroup CreateSnapshot CreateSpotDatafeedSubscription CreateSubnet CreateTags CreateVolume CreateVpc CreateVpcEndpoint CreateVpcPeeringConnection CreateVpnConnection CreateVpnConnectionRoute CreateVpnGateway DeleteCustomerGateway DeleteDhcpOptions DeleteEgressOnlyInternetGateway DeleteFlowLogs DeleteInternetGateway DeleteKeyPair DeleteNatGateway DeleteNetworkAcl DeleteNetworkAclEntry DeleteNetworkInterface DeletePlacementGroup DeleteRoute DeleteRouteTable DeleteSecurityGroup DeleteSnapshot DeleteSpotDatafeedSubscription DeleteSubnet DeleteTags DeleteVolume DeleteVpc DeleteVpcEndpoints DeleteVpcPeeringConnection DeleteVpnConnection DeleteVpnConnectionRoute DeleteVpnGateway DeregisterImage DescribeAccountAttributes DescribeAddresses DescribeAvailabilityZones DescribeBundleTasks DescribeClassicLinkInstances DescribeConversionTasks DescribeCustomerGateways DescribeDhcpOptions DescribeEgressOnlyInternetGateways DescribeExportTasks DescribeFlowLogs DescribeHostReservationOfferings DescribeHostReservations DescribeHosts DescribeIamInstanceProfileAssociations DescribeIdentityIdFormat DescribeIdFormat DescribeImageAttribute DescribeImages DescribeImportImageTasks DescribeImportSnapshotTasks DescribeInstanceAttribute DescribeInstances DescribeInstanceStatus DescribeInternetGateways DescribeKeyPairs DescribeMovingAddresses DescribeNatGateways DescribeNetworkAcls DescribeNetworkInterfaceAttribute DescribeNetworkInterfaces DescribePlacementGroups DescribePrefixLists DescribeRegions DescribeReservedInstances DescribeReservedInstancesListings DescribeReservedInstancesModifications DescribeReservedInstancesOfferings DescribeRouteTables DescribeScheduledInstanceAvailability DescribeScheduledInstances DescribeSecurityGroupReferences DescribeSecurityGroups DescribeSnapshotAttribute DescribeSnapshots DescribeSpotDatafeedSubscription DescribeSpotFleetInstances DescribeSpotFleetRequestHistory DescribeSpotFleetRequests DescribeSpotInstanceRequests DescribeSpotPriceHistory DescribeStaleSecurityGroups DescribeSubnets DescribeTags DescribeVolumeAttribute DescribeVolumes DescribeVolumesModifications DescribeVolumeStatus DescribeVpcAttribute DescribeVpcClassicLink DescribeVpcClassicLinkDnsSupport DescribeVpcEndpoints DescribeVpcEndpointServices DescribeVpcPeeringConnections DescribeVpcs DescribeVpnConnections DescribeVpnGateways DetachClassicLinkVpc DetachInternetGateway DetachNetworkInterface DetachVolume DetachVpnGateway DisableVgwRoutePropagation DisableVpcClassicLink DisableVpcClassicLinkDnsSupport DisassociateAddress DisassociateIamInstanceProfile DisassociateRouteTable DisassociateSubnetCidrBlock DisassociateVpcCidrBlock EnableVgwRoutePropagation EnableVolumeIO EnableVpcClassicLink EnableVpcClassicLinkDnsSupport GetConsoleOutput GetConsoleScreenshot GetHostReservationPurchasePreview GetPasswordData GetReservedInstancesExchangeQuote ImportImage ImportInstance ImportKeyPair ImportSnapshot ImportVolume ModifyHosts ModifyIdentityIdFormat ModifyIdFormat ModifyImageAttribute ModifyInstanceAttribute ModifyInstancePlacement ModifyNetworkInterfaceAttribute ModifyReservedInstances ModifySnapshotAttribute ModifySpotFleetRequest ModifySubnetAttribute ModifyVolume ModifyVolumeAttribute ModifyVpcAttribute ModifyVpcEndpoint ModifyVpcPeeringConnectionOptions MonitorInstances MoveAddressToVpc PurchaseHostReservation PurchaseReservedInstancesOffering PurchaseScheduledInstances RebootInstances RegisterImage RejectVpcPeeringConnection ReleaseAddress ReleaseHosts ReplaceIamInstanceProfileAssociation ReplaceNetworkAclAssociation ReplaceNetworkAclEntry ReplaceRoute ReplaceRouteTableAssociation ReportInstanceStatus RequestSpotFleet RequestSpotInstances ResetImageAttribute ResetInstanceAttribute ResetNetworkInterfaceAttribute ResetSnapshotAttribute RestoreAddressToClassic RevokeSecurityGroupEgress RevokeSecurityGroupIngress RunInstances RunScheduledInstances StartInstances StopInstances TerminateInstances UnassignIpv6Addresses UnassignPrivateIpAddresses UnmonitorInstances / }
+  sub operations { qw/AcceptReservedInstancesExchangeQuote AcceptVpcPeeringConnection AllocateAddress AllocateHosts AssignIpv6Addresses AssignPrivateIpAddresses AssociateAddress AssociateDhcpOptions AssociateIamInstanceProfile AssociateRouteTable AssociateSubnetCidrBlock AssociateVpcCidrBlock AttachClassicLinkVpc AttachInternetGateway AttachNetworkInterface AttachVolume AttachVpnGateway AuthorizeSecurityGroupEgress AuthorizeSecurityGroupIngress BundleInstance CancelBundleTask CancelConversionTask CancelExportTask CancelImportTask CancelReservedInstancesListing CancelSpotFleetRequests CancelSpotInstanceRequests ConfirmProductInstance CopyImage CopySnapshot CreateCustomerGateway CreateDhcpOptions CreateEgressOnlyInternetGateway CreateFlowLogs CreateFpgaImage CreateImage CreateInstanceExportTask CreateInternetGateway CreateKeyPair CreateNatGateway CreateNetworkAcl CreateNetworkAclEntry CreateNetworkInterface CreatePlacementGroup CreateReservedInstancesListing CreateRoute CreateRouteTable CreateSecurityGroup CreateSnapshot CreateSpotDatafeedSubscription CreateSubnet CreateTags CreateVolume CreateVpc CreateVpcEndpoint CreateVpcPeeringConnection CreateVpnConnection CreateVpnConnectionRoute CreateVpnGateway DeleteCustomerGateway DeleteDhcpOptions DeleteEgressOnlyInternetGateway DeleteFlowLogs DeleteInternetGateway DeleteKeyPair DeleteNatGateway DeleteNetworkAcl DeleteNetworkAclEntry DeleteNetworkInterface DeletePlacementGroup DeleteRoute DeleteRouteTable DeleteSecurityGroup DeleteSnapshot DeleteSpotDatafeedSubscription DeleteSubnet DeleteTags DeleteVolume DeleteVpc DeleteVpcEndpoints DeleteVpcPeeringConnection DeleteVpnConnection DeleteVpnConnectionRoute DeleteVpnGateway DeregisterImage DescribeAccountAttributes DescribeAddresses DescribeAvailabilityZones DescribeBundleTasks DescribeClassicLinkInstances DescribeConversionTasks DescribeCustomerGateways DescribeDhcpOptions DescribeEgressOnlyInternetGateways DescribeExportTasks DescribeFlowLogs DescribeHostReservationOfferings DescribeHostReservations DescribeHosts DescribeIamInstanceProfileAssociations DescribeIdentityIdFormat DescribeIdFormat DescribeImageAttribute DescribeImages DescribeImportImageTasks DescribeImportSnapshotTasks DescribeInstanceAttribute DescribeInstances DescribeInstanceStatus DescribeInternetGateways DescribeKeyPairs DescribeMovingAddresses DescribeNatGateways DescribeNetworkAcls DescribeNetworkInterfaceAttribute DescribeNetworkInterfaces DescribePlacementGroups DescribePrefixLists DescribeRegions DescribeReservedInstances DescribeReservedInstancesListings DescribeReservedInstancesModifications DescribeReservedInstancesOfferings DescribeRouteTables DescribeScheduledInstanceAvailability DescribeScheduledInstances DescribeSecurityGroupReferences DescribeSecurityGroups DescribeSnapshotAttribute DescribeSnapshots DescribeSpotDatafeedSubscription DescribeSpotFleetInstances DescribeSpotFleetRequestHistory DescribeSpotFleetRequests DescribeSpotInstanceRequests DescribeSpotPriceHistory DescribeStaleSecurityGroups DescribeSubnets DescribeTags DescribeVolumeAttribute DescribeVolumes DescribeVolumesModifications DescribeVolumeStatus DescribeVpcAttribute DescribeVpcClassicLink DescribeVpcClassicLinkDnsSupport DescribeVpcEndpoints DescribeVpcEndpointServices DescribeVpcPeeringConnections DescribeVpcs DescribeVpnConnections DescribeVpnGateways DetachClassicLinkVpc DetachInternetGateway DetachNetworkInterface DetachVolume DetachVpnGateway DisableVgwRoutePropagation DisableVpcClassicLink DisableVpcClassicLinkDnsSupport DisassociateAddress DisassociateIamInstanceProfile DisassociateRouteTable DisassociateSubnetCidrBlock DisassociateVpcCidrBlock EnableVgwRoutePropagation EnableVolumeIO EnableVpcClassicLink EnableVpcClassicLinkDnsSupport GetConsoleOutput GetConsoleScreenshot GetHostReservationPurchasePreview GetPasswordData GetReservedInstancesExchangeQuote ImportImage ImportInstance ImportKeyPair ImportSnapshot ImportVolume ModifyHosts ModifyIdentityIdFormat ModifyIdFormat ModifyImageAttribute ModifyInstanceAttribute ModifyInstancePlacement ModifyNetworkInterfaceAttribute ModifyReservedInstances ModifySnapshotAttribute ModifySpotFleetRequest ModifySubnetAttribute ModifyVolume ModifyVolumeAttribute ModifyVpcAttribute ModifyVpcEndpoint ModifyVpcPeeringConnectionOptions MonitorInstances MoveAddressToVpc PurchaseHostReservation PurchaseReservedInstancesOffering PurchaseScheduledInstances RebootInstances RegisterImage RejectVpcPeeringConnection ReleaseAddress ReleaseHosts ReplaceIamInstanceProfileAssociation ReplaceNetworkAclAssociation ReplaceNetworkAclEntry ReplaceRoute ReplaceRouteTableAssociation ReportInstanceStatus RequestSpotFleet RequestSpotInstances ResetImageAttribute ResetInstanceAttribute ResetNetworkInterfaceAttribute ResetSnapshotAttribute RestoreAddressToClassic RevokeSecurityGroupEgress RevokeSecurityGroupIngress RunInstances RunScheduledInstances StartInstances StopInstances TerminateInstances UnassignIpv6Addresses UnassignPrivateIpAddresses UnmonitorInstances / }
 
 1;
 
@@ -1437,9 +1442,8 @@ Returns: a L<Paws::EC2::AcceptVpcPeeringConnectionResult> instance
 
   Accept a VPC peering connection request. To accept a request, the VPC
 peering connection must be in the C<pending-acceptance> state, and you
-must be the owner of the peer VPC. Use the
-C<DescribeVpcPeeringConnections> request to view your outstanding VPC
-peering connection requests.
+must be the owner of the peer VPC. Use DescribeVpcPeeringConnections to
+view your outstanding VPC peering connection requests.
 
 
 =head2 AllocateAddress([Domain => Str, DryRun => Bool])
@@ -1516,13 +1520,17 @@ I<Amazon Elastic Compute Cloud User Guide>.
 
 [EC2-Classic, VPC in an EC2-VPC-only account] If the Elastic IP address
 is already associated with a different instance, it is disassociated
-from that instance and associated with the specified instance.
+from that instance and associated with the specified instance. If you
+associate an Elastic IP address with an instance that has an existing
+Elastic IP address, the existing address is disassociated from the
+instance, but remains allocated to your account.
 
 [VPC in an EC2-Classic account] If you don't specify a private IP
 address, the Elastic IP address is associated with the primary IP
 address. If the Elastic IP address is already associated with a
 different instance or a network interface, you get an error unless you
-allow reassociation.
+allow reassociation. You cannot associate an Elastic IP address with an
+instance or network interface that has an existing Elastic IP address.
 
 This is an idempotent operation. If you perform the operation more than
 once, Amazon EC2 doesn't return an error, and you may be charged for
@@ -1984,11 +1992,11 @@ server.
 
 =item *
 
-C<domain-name> - If you're using AmazonProvidedDNS in "us-east-1",
-specify "ec2.internal". If you're using AmazonProvidedDNS in another
-region, specify "region.compute.internal" (for example,
-"ap-northeast-1.compute.internal"). Otherwise, specify a domain name
-(for example, "MyCompany.com"). This value is used to complete
+C<domain-name> - If you're using AmazonProvidedDNS in C<us-east-1>,
+specify C<ec2.internal>. If you're using AmazonProvidedDNS in another
+region, specify C<region.compute.internal> (for example,
+C<ap-northeast-1.compute.internal>). Otherwise, specify a domain name
+(for example, C<MyCompany.com>). This value is used to complete
 unqualified DNS hostnames. B<Important>: Some Linux operating systems
 accept multiple domain names separated by spaces. However, Windows and
 other Linux operating systems treat the value as a single domain, which
@@ -2052,6 +2060,24 @@ You can view the data in your log streams using Amazon CloudWatch Logs.
 
 In your request, you must also specify an IAM role that has permission
 to publish logs to CloudWatch Logs.
+
+
+=head2 CreateFpgaImage(InputStorageLocation => L<Paws::EC2::StorageLocation>, [ClientToken => Str, Description => Str, DryRun => Bool, LogsStorageLocation => L<Paws::EC2::StorageLocation>, Name => Str])
+
+Each argument is described in detail in: L<Paws::EC2::CreateFpgaImage>
+
+Returns: a L<Paws::EC2::CreateFpgaImageResult> instance
+
+  Creates an Amazon FPGA Image (AFI) from the specified design checkpoint
+(DCP).
+
+The create operation is asynchronous. To verify that the AFI is ready
+for use, check the output logs.
+
+An AFI contains the FPGA bitstream that is ready to download to an
+FPGA. You can securely deploy an AFI on one or more FPGA-accelerated
+instances. For more information, see the AWS FPGA Hardware Development
+Kit.
 
 
 =head2 CreateImage(InstanceId => Str, Name => Str, [BlockDeviceMappings => ArrayRef[L<Paws::EC2::BlockDeviceMapping>], Description => Str, DryRun => Bool, NoReboot => Bool])
@@ -2394,7 +2420,7 @@ addresses).
 If you've associated an IPv6 CIDR block with your VPC, you can create a
 subnet with an IPv6 CIDR block that uses a /64 prefix length.
 
-AWS reserves both the first four and the last IP address in each
+AWS reserves both the first four and the last IPv4 address in each
 subnet's CIDR block. They're not available for use.
 
 If you add more than one subnet to a VPC, they're set up in a star
@@ -2516,8 +2542,8 @@ The owner of the peer VPC must accept the peering request to activate
 the peering connection. The VPC peering connection request expires
 after 7 days, after which it cannot be accepted or rejected.
 
-A C<CreateVpcPeeringConnection> request between VPCs with overlapping
-CIDR blocks results in the VPC peering connection having a status of
+If you try to create a VPC peering connection between VPCs that have
+overlapping CIDR blocks, the VPC peering connection status goes to
 C<failed>.
 
 
@@ -3872,8 +3898,8 @@ enabled, the DNS hostname of a linked EC2-Classic instance resolves to
 its private IP address when addressed from an instance in the VPC to
 which it's linked. Similarly, the DNS hostname of an instance in a VPC
 resolves to its private IP address when addressed from a linked
-EC2-Classic instance. For more information about ClassicLink, see
-ClassicLink in the Amazon Elastic Compute Cloud User Guide.
+EC2-Classic instance. For more information, see ClassicLink in the
+I<Amazon Elastic Compute Cloud User Guide>.
 
 
 =head2 DescribeVpcEndpoints([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, VpcEndpointIds => ArrayRef[Str|Undef]])
@@ -3959,7 +3985,7 @@ Returns: nothing
 
   Detaches an Internet gateway from a VPC, disabling connectivity between
 the Internet and the VPC. The VPC must not contain any running
-instances with Elastic IP addresses.
+instances with Elastic IP addresses or public IPv4 addresses.
 
 
 =head2 DetachNetworkInterface(AttachmentId => Str, [DryRun => Bool, Force => Bool])
@@ -4039,8 +4065,8 @@ Returns: a L<Paws::EC2::DisableVpcClassicLinkDnsSupportResult> instance
   Disables ClassicLink DNS support for a VPC. If disabled, DNS hostnames
 resolve to public IP addresses when addressed between a linked
 EC2-Classic instance and instances in the VPC to which it's linked. For
-more information about ClassicLink, see ClassicLink in the Amazon
-Elastic Compute Cloud User Guide.
+more information about ClassicLink, see ClassicLink in the I<Amazon
+Elastic Compute Cloud User Guide>.
 
 
 =head2 DisassociateAddress([AssociationId => Str, DryRun => Bool, PublicIp => Str])
@@ -4142,8 +4168,8 @@ addresses. You cannot enable your VPC for ClassicLink if any of your
 VPC's route tables have existing routes for address ranges within the
 C<10.0.0.0/8> IP address range, excluding local routes for VPCs in the
 C<10.0.0.0/16> and C<10.1.0.0/16> IP address ranges. For more
-information, see ClassicLink in the Amazon Elastic Compute Cloud User
-Guide.
+information, see ClassicLink in the I<Amazon Elastic Compute Cloud User
+Guide>.
 
 
 =head2 EnableVpcClassicLinkDnsSupport([VpcId => Str])
