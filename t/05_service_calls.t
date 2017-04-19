@@ -472,9 +472,9 @@ $request = $efs->CreateFileSystem(
 
 like($request->content, qr/"CreationToken":"4"/, "Got N in a JSON string (quoted), and not a JSON number (unquoted)");
 
-my $cfn = $aws->service('CloudFront', region => 'us-east-1');
+my $cf = $aws->service('CloudFront', region => 'us-east-1');
 
-$request = $cfn->CreateInvalidation(
+$request = $cf->CreateInvalidation(
   DistributionId    => 'A999AAA999AAA',
   InvalidationBatch => {
     CallerReference => 'uid',
