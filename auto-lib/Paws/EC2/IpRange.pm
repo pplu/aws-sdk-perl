@@ -1,6 +1,6 @@
 package Paws::EC2::IpRange;
   use Moose;
-  has CidrIp => (is => 'ro', isa => 'Str', xmlname => 'cidrIp', traits => ['Unwrapped']);
+  has CidrIp => (is => 'ro', isa => 'Str', request_name => 'cidrIp', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

@@ -1,7 +1,7 @@
 
 package Paws::DeviceFarm::GetAccountSettingsResult;
   use Moose;
-  has AccountSettings => (is => 'ro', isa => 'Paws::DeviceFarm::AccountSettings', traits => ['Unwrapped'], xmlname => 'accountSettings' );
+  has AccountSettings => (is => 'ro', isa => 'Paws::DeviceFarm::AccountSettings', traits => ['NameInRequest'], request_name => 'accountSettings' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

@@ -1,12 +1,12 @@
 package Paws::DeviceFarm::ScheduleRunConfiguration;
   use Moose;
-  has AuxiliaryApps => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'auxiliaryApps', request_name => 'auxiliaryApps', traits => ['Unwrapped','NameInRequest']);
-  has BillingMethod => (is => 'ro', isa => 'Str', xmlname => 'billingMethod', request_name => 'billingMethod', traits => ['Unwrapped','NameInRequest']);
-  has ExtraDataPackageArn => (is => 'ro', isa => 'Str', xmlname => 'extraDataPackageArn', request_name => 'extraDataPackageArn', traits => ['Unwrapped','NameInRequest']);
-  has Locale => (is => 'ro', isa => 'Str', xmlname => 'locale', request_name => 'locale', traits => ['Unwrapped','NameInRequest']);
-  has Location => (is => 'ro', isa => 'Paws::DeviceFarm::Location', xmlname => 'location', request_name => 'location', traits => ['Unwrapped','NameInRequest']);
-  has NetworkProfileArn => (is => 'ro', isa => 'Str', xmlname => 'networkProfileArn', request_name => 'networkProfileArn', traits => ['Unwrapped','NameInRequest']);
-  has Radios => (is => 'ro', isa => 'Paws::DeviceFarm::Radios', xmlname => 'radios', request_name => 'radios', traits => ['Unwrapped','NameInRequest']);
+  has AuxiliaryApps => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'auxiliaryApps', traits => ['NameInRequest']);
+  has BillingMethod => (is => 'ro', isa => 'Str', request_name => 'billingMethod', traits => ['NameInRequest']);
+  has ExtraDataPackageArn => (is => 'ro', isa => 'Str', request_name => 'extraDataPackageArn', traits => ['NameInRequest']);
+  has Locale => (is => 'ro', isa => 'Str', request_name => 'locale', traits => ['NameInRequest']);
+  has Location => (is => 'ro', isa => 'Paws::DeviceFarm::Location', request_name => 'location', traits => ['NameInRequest']);
+  has NetworkProfileArn => (is => 'ro', isa => 'Str', request_name => 'networkProfileArn', traits => ['NameInRequest']);
+  has Radios => (is => 'ro', isa => 'Paws::DeviceFarm::Radios', request_name => 'radios', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

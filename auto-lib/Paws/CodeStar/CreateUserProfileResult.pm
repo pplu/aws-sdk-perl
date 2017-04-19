@@ -1,12 +1,12 @@
 
 package Paws::CodeStar::CreateUserProfileResult;
   use Moose;
-  has CreatedTimestamp => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'createdTimestamp' );
-  has DisplayName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'displayName' );
-  has EmailAddress => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'emailAddress' );
-  has LastModifiedTimestamp => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'lastModifiedTimestamp' );
-  has SshPublicKey => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'sshPublicKey' );
-  has UserArn => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'userArn' , required => 1);
+  has CreatedTimestamp => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'createdTimestamp' );
+  has DisplayName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'displayName' );
+  has EmailAddress => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'emailAddress' );
+  has LastModifiedTimestamp => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'lastModifiedTimestamp' );
+  has SshPublicKey => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'sshPublicKey' );
+  has UserArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'userArn' , required => 1);
 
   has _request_id => (is => 'ro', isa => 'Str');
 

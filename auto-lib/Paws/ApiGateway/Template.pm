@@ -1,7 +1,7 @@
 
 package Paws::ApiGateway::Template;
   use Moose;
-  has Value => (is => 'ro', isa => 'Str');
+  has Value => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'value');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

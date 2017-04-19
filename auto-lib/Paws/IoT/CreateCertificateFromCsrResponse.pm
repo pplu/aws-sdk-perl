@@ -1,9 +1,9 @@
 
 package Paws::IoT::CreateCertificateFromCsrResponse;
   use Moose;
-  has CertificateArn => (is => 'ro', isa => 'Str');
-  has CertificateId => (is => 'ro', isa => 'Str');
-  has CertificatePem => (is => 'ro', isa => 'Str');
+  has CertificateArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'certificateArn');
+  has CertificateId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'certificateId');
+  has CertificatePem => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'certificatePem');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

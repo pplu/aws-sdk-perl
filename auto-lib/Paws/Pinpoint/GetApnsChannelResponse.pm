@@ -2,7 +2,8 @@
 package Paws::Pinpoint::GetApnsChannelResponse;
   use Moose;
   has APNSChannelResponse => (is => 'ro', isa => 'Paws::Pinpoint::APNSChannelResponse', required => 1);
-
+  use MooseX::ClassAttribute;
+  class_has _stream_param => (is => 'ro', default => 'APNSChannelResponse');
   has _request_id => (is => 'ro', isa => 'Str');
 1;
 

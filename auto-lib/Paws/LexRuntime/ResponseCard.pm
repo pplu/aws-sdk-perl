@@ -1,8 +1,8 @@
 package Paws::LexRuntime::ResponseCard;
   use Moose;
-  has ContentType => (is => 'ro', isa => 'Str', xmlname => 'contentType', request_name => 'contentType', traits => ['Unwrapped','NameInRequest']);
-  has GenericAttachments => (is => 'ro', isa => 'ArrayRef[Paws::LexRuntime::GenericAttachment]', xmlname => 'genericAttachments', request_name => 'genericAttachments', traits => ['Unwrapped','NameInRequest']);
-  has Version => (is => 'ro', isa => 'Str', xmlname => 'version', request_name => 'version', traits => ['Unwrapped','NameInRequest']);
+  has ContentType => (is => 'ro', isa => 'Str', request_name => 'contentType', traits => ['NameInRequest']);
+  has GenericAttachments => (is => 'ro', isa => 'ArrayRef[Paws::LexRuntime::GenericAttachment]', request_name => 'genericAttachments', traits => ['NameInRequest']);
+  has Version => (is => 'ro', isa => 'Str', request_name => 'version', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

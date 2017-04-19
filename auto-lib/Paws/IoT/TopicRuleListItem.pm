@@ -1,10 +1,10 @@
 package Paws::IoT::TopicRuleListItem;
   use Moose;
-  has CreatedAt => (is => 'ro', isa => 'Str', xmlname => 'createdAt', request_name => 'createdAt', traits => ['Unwrapped','NameInRequest']);
-  has RuleArn => (is => 'ro', isa => 'Str', xmlname => 'ruleArn', request_name => 'ruleArn', traits => ['Unwrapped','NameInRequest']);
-  has RuleDisabled => (is => 'ro', isa => 'Bool', xmlname => 'ruleDisabled', request_name => 'ruleDisabled', traits => ['Unwrapped','NameInRequest']);
-  has RuleName => (is => 'ro', isa => 'Str', xmlname => 'ruleName', request_name => 'ruleName', traits => ['Unwrapped','NameInRequest']);
-  has TopicPattern => (is => 'ro', isa => 'Str', xmlname => 'topicPattern', request_name => 'topicPattern', traits => ['Unwrapped','NameInRequest']);
+  has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest']);
+  has RuleArn => (is => 'ro', isa => 'Str', request_name => 'ruleArn', traits => ['NameInRequest']);
+  has RuleDisabled => (is => 'ro', isa => 'Bool', request_name => 'ruleDisabled', traits => ['NameInRequest']);
+  has RuleName => (is => 'ro', isa => 'Str', request_name => 'ruleName', traits => ['NameInRequest']);
+  has TopicPattern => (is => 'ro', isa => 'Str', request_name => 'topicPattern', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

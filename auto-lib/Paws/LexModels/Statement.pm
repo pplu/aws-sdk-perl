@@ -1,7 +1,7 @@
 package Paws::LexModels::Statement;
   use Moose;
-  has Messages => (is => 'ro', isa => 'ArrayRef[Paws::LexModels::Message]', xmlname => 'messages', request_name => 'messages', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has ResponseCard => (is => 'ro', isa => 'Str', xmlname => 'responseCard', request_name => 'responseCard', traits => ['Unwrapped','NameInRequest']);
+  has Messages => (is => 'ro', isa => 'ArrayRef[Paws::LexModels::Message]', request_name => 'messages', traits => ['NameInRequest'], required => 1);
+  has ResponseCard => (is => 'ro', isa => 'Str', request_name => 'responseCard', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

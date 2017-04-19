@@ -1,15 +1,15 @@
 package Paws::EC2::VpnConnection;
   use Moose;
-  has CustomerGatewayConfiguration => (is => 'ro', isa => 'Str', xmlname => 'customerGatewayConfiguration', traits => ['Unwrapped']);
-  has CustomerGatewayId => (is => 'ro', isa => 'Str', xmlname => 'customerGatewayId', traits => ['Unwrapped']);
-  has Options => (is => 'ro', isa => 'Paws::EC2::VpnConnectionOptions', xmlname => 'options', traits => ['Unwrapped']);
-  has Routes => (is => 'ro', isa => 'ArrayRef[Paws::EC2::VpnStaticRoute]', xmlname => 'routes', traits => ['Unwrapped']);
-  has State => (is => 'ro', isa => 'Str', xmlname => 'state', traits => ['Unwrapped']);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', xmlname => 'tagSet', traits => ['Unwrapped']);
-  has Type => (is => 'ro', isa => 'Str', xmlname => 'type', traits => ['Unwrapped']);
-  has VgwTelemetry => (is => 'ro', isa => 'ArrayRef[Paws::EC2::VgwTelemetry]', xmlname => 'vgwTelemetry', traits => ['Unwrapped']);
-  has VpnConnectionId => (is => 'ro', isa => 'Str', xmlname => 'vpnConnectionId', traits => ['Unwrapped']);
-  has VpnGatewayId => (is => 'ro', isa => 'Str', xmlname => 'vpnGatewayId', traits => ['Unwrapped']);
+  has CustomerGatewayConfiguration => (is => 'ro', isa => 'Str', request_name => 'customerGatewayConfiguration', traits => ['NameInRequest']);
+  has CustomerGatewayId => (is => 'ro', isa => 'Str', request_name => 'customerGatewayId', traits => ['NameInRequest']);
+  has Options => (is => 'ro', isa => 'Paws::EC2::VpnConnectionOptions', request_name => 'options', traits => ['NameInRequest']);
+  has Routes => (is => 'ro', isa => 'ArrayRef[Paws::EC2::VpnStaticRoute]', request_name => 'routes', traits => ['NameInRequest']);
+  has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest']);
+  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
+  has VgwTelemetry => (is => 'ro', isa => 'ArrayRef[Paws::EC2::VgwTelemetry]', request_name => 'vgwTelemetry', traits => ['NameInRequest']);
+  has VpnConnectionId => (is => 'ro', isa => 'Str', request_name => 'vpnConnectionId', traits => ['NameInRequest']);
+  has VpnGatewayId => (is => 'ro', isa => 'Str', request_name => 'vpnGatewayId', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

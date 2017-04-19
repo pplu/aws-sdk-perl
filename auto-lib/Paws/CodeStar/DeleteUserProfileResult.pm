@@ -1,7 +1,7 @@
 
 package Paws::CodeStar::DeleteUserProfileResult;
   use Moose;
-  has UserArn => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'userArn' , required => 1);
+  has UserArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'userArn' , required => 1);
 
   has _request_id => (is => 'ro', isa => 'Str');
 

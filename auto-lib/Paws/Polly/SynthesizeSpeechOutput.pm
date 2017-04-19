@@ -2,9 +2,10 @@
 package Paws::Polly::SynthesizeSpeechOutput;
   use Moose;
   has AudioStream => (is => 'ro', isa => 'Str');
-  has ContentType => (is => 'ro', isa => 'Str');
-  has RequestCharacters => (is => 'ro', isa => 'Int');
-
+  has ContentType => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Content-Type');
+  has RequestCharacters => (is => 'ro', isa => 'Int', traits => ['ParamInHeader'], header_name => 'x-amzn-RequestCharacters');
+  use MooseX::ClassAttribute;
+  class_has _stream_param => (is => 'ro', default => 'AudioStream');
   has _request_id => (is => 'ro', isa => 'Str');
 1;
 

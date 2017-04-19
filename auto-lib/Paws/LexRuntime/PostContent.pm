@@ -10,7 +10,7 @@ package Paws::LexRuntime::PostContent;
   has UserId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'userId' , required => 1);
 
   use MooseX::ClassAttribute;
-
+  class_has _stream_param => (is => 'ro', default => 'InputStream');
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'PostContent');
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/bot/{botName}/alias/{botAlias}/user/{userId}/content');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');

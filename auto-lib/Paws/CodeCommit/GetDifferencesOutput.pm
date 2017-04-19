@@ -1,7 +1,7 @@
 
 package Paws::CodeCommit::GetDifferencesOutput;
   use Moose;
-  has Differences => (is => 'ro', isa => 'ArrayRef[Paws::CodeCommit::Difference]', traits => ['Unwrapped'], xmlname => 'differences' );
+  has Differences => (is => 'ro', isa => 'ArrayRef[Paws::CodeCommit::Difference]', traits => ['NameInRequest'], request_name => 'differences' );
   has NextToken => (is => 'ro', isa => 'Str');
 
   has _request_id => (is => 'ro', isa => 'Str');

@@ -1,7 +1,7 @@
 
 package Paws::EC2::RunScheduledInstancesResult;
   use Moose;
-  has InstanceIdSet => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'instanceIdSet', traits => ['Unwrapped',]);
+  has InstanceIdSet => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'instanceIdSet', traits => ['NameInRequest',]);
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

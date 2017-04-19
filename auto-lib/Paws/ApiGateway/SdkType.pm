@@ -1,10 +1,10 @@
 
 package Paws::ApiGateway::SdkType;
   use Moose;
-  has ConfigurationProperties => (is => 'ro', isa => 'ArrayRef[Paws::ApiGateway::SdkConfigurationProperty]');
-  has Description => (is => 'ro', isa => 'Str');
-  has FriendlyName => (is => 'ro', isa => 'Str');
-  has Id => (is => 'ro', isa => 'Str');
+  has ConfigurationProperties => (is => 'ro', isa => 'ArrayRef[Paws::ApiGateway::SdkConfigurationProperty]', traits => ['NameInRequest'], request_name => 'configurationProperties');
+  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
+  has FriendlyName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'friendlyName');
+  has Id => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'id');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

@@ -1,9 +1,9 @@
 package Paws::CodeDeploy::Diagnostics;
   use Moose;
-  has ErrorCode => (is => 'ro', isa => 'Str', xmlname => 'errorCode', request_name => 'errorCode', traits => ['Unwrapped','NameInRequest']);
-  has LogTail => (is => 'ro', isa => 'Str', xmlname => 'logTail', request_name => 'logTail', traits => ['Unwrapped','NameInRequest']);
-  has Message => (is => 'ro', isa => 'Str', xmlname => 'message', request_name => 'message', traits => ['Unwrapped','NameInRequest']);
-  has ScriptName => (is => 'ro', isa => 'Str', xmlname => 'scriptName', request_name => 'scriptName', traits => ['Unwrapped','NameInRequest']);
+  has ErrorCode => (is => 'ro', isa => 'Str', request_name => 'errorCode', traits => ['NameInRequest']);
+  has LogTail => (is => 'ro', isa => 'Str', request_name => 'logTail', traits => ['NameInRequest']);
+  has Message => (is => 'ro', isa => 'Str', request_name => 'message', traits => ['NameInRequest']);
+  has ScriptName => (is => 'ro', isa => 'Str', request_name => 'scriptName', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

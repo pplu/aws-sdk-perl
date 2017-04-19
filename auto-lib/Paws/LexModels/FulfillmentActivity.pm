@@ -1,7 +1,7 @@
 package Paws::LexModels::FulfillmentActivity;
   use Moose;
-  has CodeHook => (is => 'ro', isa => 'Paws::LexModels::CodeHook', xmlname => 'codeHook', request_name => 'codeHook', traits => ['Unwrapped','NameInRequest']);
-  has Type => (is => 'ro', isa => 'Str', xmlname => 'type', request_name => 'type', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has CodeHook => (is => 'ro', isa => 'Paws::LexModels::CodeHook', request_name => 'codeHook', traits => ['NameInRequest']);
+  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###

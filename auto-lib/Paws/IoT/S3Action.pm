@@ -1,9 +1,9 @@
 package Paws::IoT::S3Action;
   use Moose;
-  has BucketName => (is => 'ro', isa => 'Str', xmlname => 'bucketName', request_name => 'bucketName', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has CannedAcl => (is => 'ro', isa => 'Str', xmlname => 'cannedAcl', request_name => 'cannedAcl', traits => ['Unwrapped','NameInRequest']);
-  has Key => (is => 'ro', isa => 'Str', xmlname => 'key', request_name => 'key', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has RoleArn => (is => 'ro', isa => 'Str', xmlname => 'roleArn', request_name => 'roleArn', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has BucketName => (is => 'ro', isa => 'Str', request_name => 'bucketName', traits => ['NameInRequest'], required => 1);
+  has CannedAcl => (is => 'ro', isa => 'Str', request_name => 'cannedAcl', traits => ['NameInRequest']);
+  has Key => (is => 'ro', isa => 'Str', request_name => 'key', traits => ['NameInRequest'], required => 1);
+  has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###

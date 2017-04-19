@@ -1,11 +1,11 @@
 package Paws::LexModels::BotMetadata;
   use Moose;
-  has CreatedDate => (is => 'ro', isa => 'Str', xmlname => 'createdDate', request_name => 'createdDate', traits => ['Unwrapped','NameInRequest']);
-  has Description => (is => 'ro', isa => 'Str', xmlname => 'description', request_name => 'description', traits => ['Unwrapped','NameInRequest']);
-  has LastUpdatedDate => (is => 'ro', isa => 'Str', xmlname => 'lastUpdatedDate', request_name => 'lastUpdatedDate', traits => ['Unwrapped','NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', xmlname => 'name', request_name => 'name', traits => ['Unwrapped','NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', xmlname => 'status', request_name => 'status', traits => ['Unwrapped','NameInRequest']);
-  has Version => (is => 'ro', isa => 'Str', xmlname => 'version', request_name => 'version', traits => ['Unwrapped','NameInRequest']);
+  has CreatedDate => (is => 'ro', isa => 'Str', request_name => 'createdDate', traits => ['NameInRequest']);
+  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
+  has LastUpdatedDate => (is => 'ro', isa => 'Str', request_name => 'lastUpdatedDate', traits => ['NameInRequest']);
+  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
+  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+  has Version => (is => 'ro', isa => 'Str', request_name => 'version', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

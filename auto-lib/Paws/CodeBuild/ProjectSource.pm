@@ -1,9 +1,9 @@
 package Paws::CodeBuild::ProjectSource;
   use Moose;
-  has Auth => (is => 'ro', isa => 'Paws::CodeBuild::SourceAuth', xmlname => 'auth', request_name => 'auth', traits => ['Unwrapped','NameInRequest']);
-  has Buildspec => (is => 'ro', isa => 'Str', xmlname => 'buildspec', request_name => 'buildspec', traits => ['Unwrapped','NameInRequest']);
-  has Location => (is => 'ro', isa => 'Str', xmlname => 'location', request_name => 'location', traits => ['Unwrapped','NameInRequest']);
-  has Type => (is => 'ro', isa => 'Str', xmlname => 'type', request_name => 'type', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has Auth => (is => 'ro', isa => 'Paws::CodeBuild::SourceAuth', request_name => 'auth', traits => ['NameInRequest']);
+  has Buildspec => (is => 'ro', isa => 'Str', request_name => 'buildspec', traits => ['NameInRequest']);
+  has Location => (is => 'ro', isa => 'Str', request_name => 'location', traits => ['NameInRequest']);
+  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###

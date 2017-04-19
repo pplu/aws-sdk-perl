@@ -1,13 +1,13 @@
 
 package Paws::LexRuntime::PostTextResponse;
   use Moose;
-  has DialogState => (is => 'ro', isa => 'Str');
-  has IntentName => (is => 'ro', isa => 'Str');
-  has Message => (is => 'ro', isa => 'Str');
-  has ResponseCard => (is => 'ro', isa => 'Paws::LexRuntime::ResponseCard');
-  has SessionAttributes => (is => 'ro', isa => 'Paws::LexRuntime::StringMap');
-  has Slots => (is => 'ro', isa => 'Paws::LexRuntime::StringMap');
-  has SlotToElicit => (is => 'ro', isa => 'Str');
+  has DialogState => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'dialogState');
+  has IntentName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'intentName');
+  has Message => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'message');
+  has ResponseCard => (is => 'ro', isa => 'Paws::LexRuntime::ResponseCard', traits => ['NameInRequest'], request_name => 'responseCard');
+  has SessionAttributes => (is => 'ro', isa => 'Paws::LexRuntime::StringMap', traits => ['NameInRequest'], request_name => 'sessionAttributes');
+  has Slots => (is => 'ro', isa => 'Paws::LexRuntime::StringMap', traits => ['NameInRequest'], request_name => 'slots');
+  has SlotToElicit => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'slotToElicit');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

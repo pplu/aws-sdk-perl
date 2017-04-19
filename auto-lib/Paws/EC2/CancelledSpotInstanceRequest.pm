@@ -1,7 +1,7 @@
 package Paws::EC2::CancelledSpotInstanceRequest;
   use Moose;
-  has SpotInstanceRequestId => (is => 'ro', isa => 'Str', xmlname => 'spotInstanceRequestId', traits => ['Unwrapped']);
-  has State => (is => 'ro', isa => 'Str', xmlname => 'state', traits => ['Unwrapped']);
+  has SpotInstanceRequestId => (is => 'ro', isa => 'Str', request_name => 'spotInstanceRequestId', traits => ['NameInRequest']);
+  has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

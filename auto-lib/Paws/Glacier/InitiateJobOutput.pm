@@ -1,8 +1,8 @@
 
 package Paws::Glacier::InitiateJobOutput;
   use Moose;
-  has JobId => (is => 'ro', isa => 'Str');
-  has Location => (is => 'ro', isa => 'Str');
+  has JobId => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'jobId');
+  has Location => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'location');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

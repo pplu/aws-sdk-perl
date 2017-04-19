@@ -5,7 +5,7 @@ package Paws::CloudSearchDomain::UploadDocuments;
   has Documents => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
-
+  class_has _stream_param => (is => 'ro', default => 'Documents');
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'UploadDocuments');
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2013-01-01/documents/batch?format=sdk');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');

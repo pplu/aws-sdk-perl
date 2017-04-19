@@ -57,7 +57,7 @@ __PACKAGE__->meta->make_immutable;
 
 package Paws;
 
-our $VERSION = '0.31';
+our $VERSION = '0.32';
 
 use Moose;
 use MooseX::ClassAttribute;
@@ -705,6 +705,8 @@ Grinzz for many bugs, suggestions and fixes
 Dakkar for solving issues with parameter passing
 
 Arthur Axel fREW Schmidt for speeding up credential refreshing
+
+PopeFelix for solving issues around S3
 
 
 =cut

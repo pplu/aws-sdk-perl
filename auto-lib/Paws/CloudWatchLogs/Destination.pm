@@ -1,11 +1,11 @@
 package Paws::CloudWatchLogs::Destination;
   use Moose;
-  has AccessPolicy => (is => 'ro', isa => 'Str', xmlname => 'accessPolicy', request_name => 'accessPolicy', traits => ['Unwrapped','NameInRequest']);
-  has Arn => (is => 'ro', isa => 'Str', xmlname => 'arn', request_name => 'arn', traits => ['Unwrapped','NameInRequest']);
-  has CreationTime => (is => 'ro', isa => 'Int', xmlname => 'creationTime', request_name => 'creationTime', traits => ['Unwrapped','NameInRequest']);
-  has DestinationName => (is => 'ro', isa => 'Str', xmlname => 'destinationName', request_name => 'destinationName', traits => ['Unwrapped','NameInRequest']);
-  has RoleArn => (is => 'ro', isa => 'Str', xmlname => 'roleArn', request_name => 'roleArn', traits => ['Unwrapped','NameInRequest']);
-  has TargetArn => (is => 'ro', isa => 'Str', xmlname => 'targetArn', request_name => 'targetArn', traits => ['Unwrapped','NameInRequest']);
+  has AccessPolicy => (is => 'ro', isa => 'Str', request_name => 'accessPolicy', traits => ['NameInRequest']);
+  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
+  has CreationTime => (is => 'ro', isa => 'Int', request_name => 'creationTime', traits => ['NameInRequest']);
+  has DestinationName => (is => 'ro', isa => 'Str', request_name => 'destinationName', traits => ['NameInRequest']);
+  has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest']);
+  has TargetArn => (is => 'ro', isa => 'Str', request_name => 'targetArn', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

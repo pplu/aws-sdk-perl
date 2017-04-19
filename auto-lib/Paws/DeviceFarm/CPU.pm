@@ -1,8 +1,8 @@
 package Paws::DeviceFarm::CPU;
   use Moose;
-  has Architecture => (is => 'ro', isa => 'Str', xmlname => 'architecture', request_name => 'architecture', traits => ['Unwrapped','NameInRequest']);
-  has Clock => (is => 'ro', isa => 'Num', xmlname => 'clock', request_name => 'clock', traits => ['Unwrapped','NameInRequest']);
-  has Frequency => (is => 'ro', isa => 'Str', xmlname => 'frequency', request_name => 'frequency', traits => ['Unwrapped','NameInRequest']);
+  has Architecture => (is => 'ro', isa => 'Str', request_name => 'architecture', traits => ['NameInRequest']);
+  has Clock => (is => 'ro', isa => 'Num', request_name => 'clock', traits => ['NameInRequest']);
+  has Frequency => (is => 'ro', isa => 'Str', request_name => 'frequency', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

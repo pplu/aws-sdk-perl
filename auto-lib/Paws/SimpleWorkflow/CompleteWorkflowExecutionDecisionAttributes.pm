@@ -1,6 +1,6 @@
 package Paws::SimpleWorkflow::CompleteWorkflowExecutionDecisionAttributes;
   use Moose;
-  has Result => (is => 'ro', isa => 'Str', xmlname => 'result', request_name => 'result', traits => ['Unwrapped','NameInRequest']);
+  has Result => (is => 'ro', isa => 'Str', request_name => 'result', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

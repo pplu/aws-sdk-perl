@@ -1,12 +1,12 @@
 package Paws::Lightsail::MetricDatapoint;
   use Moose;
-  has Average => (is => 'ro', isa => 'Num', xmlname => 'average', request_name => 'average', traits => ['Unwrapped','NameInRequest']);
-  has Maximum => (is => 'ro', isa => 'Num', xmlname => 'maximum', request_name => 'maximum', traits => ['Unwrapped','NameInRequest']);
-  has Minimum => (is => 'ro', isa => 'Num', xmlname => 'minimum', request_name => 'minimum', traits => ['Unwrapped','NameInRequest']);
-  has SampleCount => (is => 'ro', isa => 'Num', xmlname => 'sampleCount', request_name => 'sampleCount', traits => ['Unwrapped','NameInRequest']);
-  has Sum => (is => 'ro', isa => 'Num', xmlname => 'sum', request_name => 'sum', traits => ['Unwrapped','NameInRequest']);
-  has Timestamp => (is => 'ro', isa => 'Str', xmlname => 'timestamp', request_name => 'timestamp', traits => ['Unwrapped','NameInRequest']);
-  has Unit => (is => 'ro', isa => 'Str', xmlname => 'unit', request_name => 'unit', traits => ['Unwrapped','NameInRequest']);
+  has Average => (is => 'ro', isa => 'Num', request_name => 'average', traits => ['NameInRequest']);
+  has Maximum => (is => 'ro', isa => 'Num', request_name => 'maximum', traits => ['NameInRequest']);
+  has Minimum => (is => 'ro', isa => 'Num', request_name => 'minimum', traits => ['NameInRequest']);
+  has SampleCount => (is => 'ro', isa => 'Num', request_name => 'sampleCount', traits => ['NameInRequest']);
+  has Sum => (is => 'ro', isa => 'Num', request_name => 'sum', traits => ['NameInRequest']);
+  has Timestamp => (is => 'ro', isa => 'Str', request_name => 'timestamp', traits => ['NameInRequest']);
+  has Unit => (is => 'ro', isa => 'Str', request_name => 'unit', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

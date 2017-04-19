@@ -5,7 +5,7 @@ package Paws::Lambda::InvokeAsync;
   has InvokeArgs => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
-
+  class_has _stream_param => (is => 'ro', default => 'InvokeArgs');
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'InvokeAsync');
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2014-11-13/functions/{FunctionName}/invoke-async/');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');

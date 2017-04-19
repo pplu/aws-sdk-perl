@@ -1,8 +1,8 @@
 
 package Paws::LexModels::GetIntentVersionsResponse;
   use Moose;
-  has Intents => (is => 'ro', isa => 'ArrayRef[Paws::LexModels::IntentMetadata]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  has Intents => (is => 'ro', isa => 'ArrayRef[Paws::LexModels::IntentMetadata]', traits => ['NameInRequest'], request_name => 'intents');
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

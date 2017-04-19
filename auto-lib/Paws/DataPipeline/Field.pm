@@ -1,8 +1,8 @@
 package Paws::DataPipeline::Field;
   use Moose;
-  has Key => (is => 'ro', isa => 'Str', xmlname => 'key', request_name => 'key', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has RefValue => (is => 'ro', isa => 'Str', xmlname => 'refValue', request_name => 'refValue', traits => ['Unwrapped','NameInRequest']);
-  has StringValue => (is => 'ro', isa => 'Str', xmlname => 'stringValue', request_name => 'stringValue', traits => ['Unwrapped','NameInRequest']);
+  has Key => (is => 'ro', isa => 'Str', request_name => 'key', traits => ['NameInRequest'], required => 1);
+  has RefValue => (is => 'ro', isa => 'Str', request_name => 'refValue', traits => ['NameInRequest']);
+  has StringValue => (is => 'ro', isa => 'Str', request_name => 'stringValue', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

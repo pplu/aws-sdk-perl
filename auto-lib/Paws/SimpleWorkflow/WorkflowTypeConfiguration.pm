@@ -1,11 +1,11 @@
 package Paws::SimpleWorkflow::WorkflowTypeConfiguration;
   use Moose;
-  has DefaultChildPolicy => (is => 'ro', isa => 'Str', xmlname => 'defaultChildPolicy', request_name => 'defaultChildPolicy', traits => ['Unwrapped','NameInRequest']);
-  has DefaultExecutionStartToCloseTimeout => (is => 'ro', isa => 'Str', xmlname => 'defaultExecutionStartToCloseTimeout', request_name => 'defaultExecutionStartToCloseTimeout', traits => ['Unwrapped','NameInRequest']);
-  has DefaultLambdaRole => (is => 'ro', isa => 'Str', xmlname => 'defaultLambdaRole', request_name => 'defaultLambdaRole', traits => ['Unwrapped','NameInRequest']);
-  has DefaultTaskList => (is => 'ro', isa => 'Paws::SimpleWorkflow::TaskList', xmlname => 'defaultTaskList', request_name => 'defaultTaskList', traits => ['Unwrapped','NameInRequest']);
-  has DefaultTaskPriority => (is => 'ro', isa => 'Str', xmlname => 'defaultTaskPriority', request_name => 'defaultTaskPriority', traits => ['Unwrapped','NameInRequest']);
-  has DefaultTaskStartToCloseTimeout => (is => 'ro', isa => 'Str', xmlname => 'defaultTaskStartToCloseTimeout', request_name => 'defaultTaskStartToCloseTimeout', traits => ['Unwrapped','NameInRequest']);
+  has DefaultChildPolicy => (is => 'ro', isa => 'Str', request_name => 'defaultChildPolicy', traits => ['NameInRequest']);
+  has DefaultExecutionStartToCloseTimeout => (is => 'ro', isa => 'Str', request_name => 'defaultExecutionStartToCloseTimeout', traits => ['NameInRequest']);
+  has DefaultLambdaRole => (is => 'ro', isa => 'Str', request_name => 'defaultLambdaRole', traits => ['NameInRequest']);
+  has DefaultTaskList => (is => 'ro', isa => 'Paws::SimpleWorkflow::TaskList', request_name => 'defaultTaskList', traits => ['NameInRequest']);
+  has DefaultTaskPriority => (is => 'ro', isa => 'Str', request_name => 'defaultTaskPriority', traits => ['NameInRequest']);
+  has DefaultTaskStartToCloseTimeout => (is => 'ro', isa => 'Str', request_name => 'defaultTaskStartToCloseTimeout', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

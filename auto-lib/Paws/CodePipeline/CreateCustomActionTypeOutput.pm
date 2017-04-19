@@ -1,7 +1,7 @@
 
 package Paws::CodePipeline::CreateCustomActionTypeOutput;
   use Moose;
-  has ActionType => (is => 'ro', isa => 'Paws::CodePipeline::ActionType', traits => ['Unwrapped'], xmlname => 'actionType' , required => 1);
+  has ActionType => (is => 'ro', isa => 'Paws::CodePipeline::ActionType', traits => ['NameInRequest'], request_name => 'actionType' , required => 1);
 
   has _request_id => (is => 'ro', isa => 'Str');
 

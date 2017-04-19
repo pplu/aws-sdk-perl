@@ -1,7 +1,7 @@
 
 package Paws::EC2::DeleteEgressOnlyInternetGatewayResult;
   use Moose;
-  has ReturnCode => (is => 'ro', isa => 'Bool', xmlname => 'returnCode', traits => ['Unwrapped',]);
+  has ReturnCode => (is => 'ro', isa => 'Bool', request_name => 'returnCode', traits => ['NameInRequest',]);
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

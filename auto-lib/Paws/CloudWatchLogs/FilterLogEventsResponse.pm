@@ -1,9 +1,9 @@
 
 package Paws::CloudWatchLogs::FilterLogEventsResponse;
   use Moose;
-  has Events => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatchLogs::FilteredLogEvent]', traits => ['Unwrapped'], xmlname => 'events' );
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
-  has SearchedLogStreams => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatchLogs::SearchedLogStream]', traits => ['Unwrapped'], xmlname => 'searchedLogStreams' );
+  has Events => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatchLogs::FilteredLogEvent]', traits => ['NameInRequest'], request_name => 'events' );
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  has SearchedLogStreams => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatchLogs::SearchedLogStream]', traits => ['NameInRequest'], request_name => 'searchedLogStreams' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

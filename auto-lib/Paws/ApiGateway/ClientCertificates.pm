@@ -1,8 +1,8 @@
 
 package Paws::ApiGateway::ClientCertificates;
   use Moose;
-  has Items => (is => 'ro', isa => 'ArrayRef[Paws::ApiGateway::ClientCertificate]');
-  has Position => (is => 'ro', isa => 'Str');
+  has Items => (is => 'ro', isa => 'ArrayRef[Paws::ApiGateway::ClientCertificate]', traits => ['NameInRequest'], request_name => 'items');
+  has Position => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'position');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

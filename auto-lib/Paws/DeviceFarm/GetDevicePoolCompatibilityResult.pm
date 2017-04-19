@@ -1,8 +1,8 @@
 
 package Paws::DeviceFarm::GetDevicePoolCompatibilityResult;
   use Moose;
-  has CompatibleDevices => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::DevicePoolCompatibilityResult]', traits => ['Unwrapped'], xmlname => 'compatibleDevices' );
-  has IncompatibleDevices => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::DevicePoolCompatibilityResult]', traits => ['Unwrapped'], xmlname => 'incompatibleDevices' );
+  has CompatibleDevices => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::DevicePoolCompatibilityResult]', traits => ['NameInRequest'], request_name => 'compatibleDevices' );
+  has IncompatibleDevices => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::DevicePoolCompatibilityResult]', traits => ['NameInRequest'], request_name => 'incompatibleDevices' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

@@ -1,6 +1,6 @@
 package Paws::EC2::AttributeBooleanValue;
   use Moose;
-  has Value => (is => 'ro', isa => 'Bool', xmlname => 'value', traits => ['Unwrapped']);
+  has Value => (is => 'ro', isa => 'Bool', request_name => 'value', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

@@ -1,6 +1,6 @@
 package Paws::SimpleWorkflow::TagFilter;
   use Moose;
-  has Tag => (is => 'ro', isa => 'Str', xmlname => 'tag', request_name => 'tag', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has Tag => (is => 'ro', isa => 'Str', request_name => 'tag', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###

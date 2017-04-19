@@ -1,10 +1,10 @@
 package Paws::SMS::Server;
   use Moose;
-  has ReplicationJobId => (is => 'ro', isa => 'Str', xmlname => 'replicationJobId', request_name => 'replicationJobId', traits => ['Unwrapped','NameInRequest']);
-  has ReplicationJobTerminated => (is => 'ro', isa => 'Bool', xmlname => 'replicationJobTerminated', request_name => 'replicationJobTerminated', traits => ['Unwrapped','NameInRequest']);
-  has ServerId => (is => 'ro', isa => 'Str', xmlname => 'serverId', request_name => 'serverId', traits => ['Unwrapped','NameInRequest']);
-  has ServerType => (is => 'ro', isa => 'Str', xmlname => 'serverType', request_name => 'serverType', traits => ['Unwrapped','NameInRequest']);
-  has VmServer => (is => 'ro', isa => 'Paws::SMS::VmServer', xmlname => 'vmServer', request_name => 'vmServer', traits => ['Unwrapped','NameInRequest']);
+  has ReplicationJobId => (is => 'ro', isa => 'Str', request_name => 'replicationJobId', traits => ['NameInRequest']);
+  has ReplicationJobTerminated => (is => 'ro', isa => 'Bool', request_name => 'replicationJobTerminated', traits => ['NameInRequest']);
+  has ServerId => (is => 'ro', isa => 'Str', request_name => 'serverId', traits => ['NameInRequest']);
+  has ServerType => (is => 'ro', isa => 'Str', request_name => 'serverType', traits => ['NameInRequest']);
+  has VmServer => (is => 'ro', isa => 'Paws::SMS::VmServer', request_name => 'vmServer', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

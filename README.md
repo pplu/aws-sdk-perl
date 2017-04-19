@@ -320,3 +320,5 @@ Grinzz for many bugs, suggestions and fixes
 Dakkar for solving issues with parameter passing
 
 Arthur Axel fREW Schmidt for speeding up credential refreshing
+
+PopeFelix for solving issues around S3

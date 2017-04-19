@@ -1,10 +1,10 @@
 package Paws::EC2::IamInstanceProfileAssociation;
   use Moose;
-  has AssociationId => (is => 'ro', isa => 'Str', xmlname => 'associationId', traits => ['Unwrapped']);
-  has IamInstanceProfile => (is => 'ro', isa => 'Paws::EC2::IamInstanceProfile', xmlname => 'iamInstanceProfile', traits => ['Unwrapped']);
-  has InstanceId => (is => 'ro', isa => 'Str', xmlname => 'instanceId', traits => ['Unwrapped']);
-  has State => (is => 'ro', isa => 'Str', xmlname => 'state', traits => ['Unwrapped']);
-  has Timestamp => (is => 'ro', isa => 'Str', xmlname => 'timestamp', traits => ['Unwrapped']);
+  has AssociationId => (is => 'ro', isa => 'Str', request_name => 'associationId', traits => ['NameInRequest']);
+  has IamInstanceProfile => (is => 'ro', isa => 'Paws::EC2::IamInstanceProfile', request_name => 'iamInstanceProfile', traits => ['NameInRequest']);
+  has InstanceId => (is => 'ro', isa => 'Str', request_name => 'instanceId', traits => ['NameInRequest']);
+  has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
+  has Timestamp => (is => 'ro', isa => 'Str', request_name => 'timestamp', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

@@ -1,7 +1,7 @@
 
 package Paws::RedShift::EventCategoriesMessage;
   use Moose;
-  has EventCategoriesMapList => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::EventCategoriesMap]', xmlname => 'EventCategoriesMap', traits => ['Unwrapped',]);
+  has EventCategoriesMapList => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::EventCategoriesMap]', request_name => 'EventCategoriesMap', traits => ['NameInRequest',]);
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

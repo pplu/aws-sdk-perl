@@ -1,8 +1,8 @@
 package Paws::EC2::VpcPeeringConnectionOptionsDescription;
   use Moose;
-  has AllowDnsResolutionFromRemoteVpc => (is => 'ro', isa => 'Bool', xmlname => 'allowDnsResolutionFromRemoteVpc', traits => ['Unwrapped']);
-  has AllowEgressFromLocalClassicLinkToRemoteVpc => (is => 'ro', isa => 'Bool', xmlname => 'allowEgressFromLocalClassicLinkToRemoteVpc', traits => ['Unwrapped']);
-  has AllowEgressFromLocalVpcToRemoteClassicLink => (is => 'ro', isa => 'Bool', xmlname => 'allowEgressFromLocalVpcToRemoteClassicLink', traits => ['Unwrapped']);
+  has AllowDnsResolutionFromRemoteVpc => (is => 'ro', isa => 'Bool', request_name => 'allowDnsResolutionFromRemoteVpc', traits => ['NameInRequest']);
+  has AllowEgressFromLocalClassicLinkToRemoteVpc => (is => 'ro', isa => 'Bool', request_name => 'allowEgressFromLocalClassicLinkToRemoteVpc', traits => ['NameInRequest']);
+  has AllowEgressFromLocalVpcToRemoteClassicLink => (is => 'ro', isa => 'Bool', request_name => 'allowEgressFromLocalVpcToRemoteClassicLink', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

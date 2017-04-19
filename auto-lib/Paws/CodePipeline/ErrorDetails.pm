@@ -1,7 +1,7 @@
 package Paws::CodePipeline::ErrorDetails;
   use Moose;
-  has Code => (is => 'ro', isa => 'Str', xmlname => 'code', request_name => 'code', traits => ['Unwrapped','NameInRequest']);
-  has Message => (is => 'ro', isa => 'Str', xmlname => 'message', request_name => 'message', traits => ['Unwrapped','NameInRequest']);
+  has Code => (is => 'ro', isa => 'Str', request_name => 'code', traits => ['NameInRequest']);
+  has Message => (is => 'ro', isa => 'Str', request_name => 'message', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

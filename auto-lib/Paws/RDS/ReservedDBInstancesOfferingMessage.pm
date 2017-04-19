@@ -2,7 +2,7 @@
 package Paws::RDS::ReservedDBInstancesOfferingMessage;
   use Moose;
   has Marker => (is => 'ro', isa => 'Str');
-  has ReservedDBInstancesOfferings => (is => 'ro', isa => 'ArrayRef[Paws::RDS::ReservedDBInstancesOffering]', xmlname => 'ReservedDBInstancesOffering', traits => ['Unwrapped',]);
+  has ReservedDBInstancesOfferings => (is => 'ro', isa => 'ArrayRef[Paws::RDS::ReservedDBInstancesOffering]', request_name => 'ReservedDBInstancesOffering', traits => ['NameInRequest',]);
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

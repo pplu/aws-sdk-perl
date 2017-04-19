@@ -1,11 +1,12 @@
 
 package Paws::Lambda::InvocationResponse;
   use Moose;
-  has FunctionError => (is => 'ro', isa => 'Str');
-  has LogResult => (is => 'ro', isa => 'Str');
+  has FunctionError => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'X-Amz-Function-Error');
+  has LogResult => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'X-Amz-Log-Result');
   has Payload => (is => 'ro', isa => 'Str');
   has StatusCode => (is => 'ro', isa => 'Int');
-
+  use MooseX::ClassAttribute;
+  class_has _stream_param => (is => 'ro', default => 'Payload');
   has _request_id => (is => 'ro', isa => 'Str');
 1;
 

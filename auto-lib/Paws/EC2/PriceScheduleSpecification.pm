@@ -1,8 +1,8 @@
 package Paws::EC2::PriceScheduleSpecification;
   use Moose;
-  has CurrencyCode => (is => 'ro', isa => 'Str', xmlname => 'currencyCode', traits => ['Unwrapped']);
-  has Price => (is => 'ro', isa => 'Num', xmlname => 'price', traits => ['Unwrapped']);
-  has Term => (is => 'ro', isa => 'Int', xmlname => 'term', traits => ['Unwrapped']);
+  has CurrencyCode => (is => 'ro', isa => 'Str', request_name => 'currencyCode', traits => ['NameInRequest']);
+  has Price => (is => 'ro', isa => 'Num', request_name => 'price', traits => ['NameInRequest']);
+  has Term => (is => 'ro', isa => 'Int', request_name => 'term', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

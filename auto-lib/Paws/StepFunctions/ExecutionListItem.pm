@@ -1,11 +1,11 @@
 package Paws::StepFunctions::ExecutionListItem;
   use Moose;
-  has ExecutionArn => (is => 'ro', isa => 'Str', xmlname => 'executionArn', request_name => 'executionArn', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has Name => (is => 'ro', isa => 'Str', xmlname => 'name', request_name => 'name', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has StartDate => (is => 'ro', isa => 'Str', xmlname => 'startDate', request_name => 'startDate', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has StateMachineArn => (is => 'ro', isa => 'Str', xmlname => 'stateMachineArn', request_name => 'stateMachineArn', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has Status => (is => 'ro', isa => 'Str', xmlname => 'status', request_name => 'status', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has StopDate => (is => 'ro', isa => 'Str', xmlname => 'stopDate', request_name => 'stopDate', traits => ['Unwrapped','NameInRequest']);
+  has ExecutionArn => (is => 'ro', isa => 'Str', request_name => 'executionArn', traits => ['NameInRequest'], required => 1);
+  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
+  has StartDate => (is => 'ro', isa => 'Str', request_name => 'startDate', traits => ['NameInRequest'], required => 1);
+  has StateMachineArn => (is => 'ro', isa => 'Str', request_name => 'stateMachineArn', traits => ['NameInRequest'], required => 1);
+  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest'], required => 1);
+  has StopDate => (is => 'ro', isa => 'Str', request_name => 'stopDate', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

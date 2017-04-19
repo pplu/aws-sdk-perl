@@ -19,8 +19,14 @@ package Paws::Net::RestXmlCaller;
   # converts the objects that represent the call into parameters that the API can understand
   sub _to_querycaller_params {
     my ($self, $params) = @_;
+
+
     my %p;
     foreach my $att (grep { $_ !~ m/^_/ } $params->meta->get_attribute_list) {
+      
+      # e.g. S3 metadata objects, which are passed in the header
+      next if $params->meta->get_attribute($att)->does('Paws::API::Attribute::Trait::ParamInHeaders');
+
       my $key = $params->meta->get_attribute($att)->does('Paws::API::Attribute::Trait::ParamInQuery')?$params->meta->get_attribute($att)->query_name:$att;
       if (defined $params->$att) {
         my $att_type = $params->meta->get_attribute($att)->type_constraint;
@@ -79,8 +85,17 @@ package Paws::Net::RestXmlCaller;
   sub _to_header_params {
     my ($self, $request, $call) = @_;
     foreach my $attribute ($call->meta->get_all_attributes) {
-      if ($attribute->does('Paws::API::Attribute::Trait::ParamInHeader') and $attribute->has_value($call)) {
+      next unless $attribute->has_value($call);
+      if ($attribute->does('Paws::API::Attribute::Trait::ParamInHeader')) {
         $request->headers->header( $attribute->header_name => $attribute->get_value($call) );
+      }
+      elsif ($attribute->does('Paws::API::Attribute::Trait::ParamInHeaders')) { 
+        my $map = $attribute->get_value($call)->Map;
+        my $prefix = $attribute->header_prefix;
+        for my $header (keys %{$map}) { 
+          my $header_name = $prefix . $header;
+          $request->headers->header( $header_name => $map->{$header} );
+        }
       }
     }
   }
@@ -107,26 +122,21 @@ package Paws::Net::RestXmlCaller;
       my $att_name = $attribute->name;
       next if (not $attribute->has_value($value));
       if (Moose::Util::find_meta($attribute->type_constraint->name)) {
-        if ($attribute->does('Unwrapped')) {
-          my $location = $attribute->xmlname;
+        if ($attribute->does('NameInRequest')) {
+          my $location = $attribute->request_name;
           $xml .= sprintf '<%s>%s</%s>', $location, $self->_to_xml($attribute->get_value($value)), $location;
         } else {
           $xml .= sprintf '<%s>%s</%s>', $att_name, $self->_to_xml($attribute->get_value($value)), $att_name;
         }
       } elsif ($attribute->type_constraint eq 'ArrayRef[Str|Undef]') {
-          my $location = $attribute->does('NameInRequest') ? $attribute->request_name : $att_name;
-          if ($attribute->does('Unwrapped')) {
-            $location = $attribute->xmlname;
-            $xml .=  ( join '', map { sprintf '<%s>%s</%s>', $location, $_, $location } @{ $attribute->get_value($value) } );
-          } else {
-            $xml .= "<${att_name}>" . ( join '', map { sprintf '<%s>%s</%s>', $location, $_, $location } @{ $attribute->get_value($value) } ) . "</${att_name}>";
-          }
+          my $location = $attribute->request_name;
+          $xml .= "<${att_name}>" . ( join '', map { sprintf '<%s>%s</%s>', $location, $_, $location } @{ $attribute->get_value($value) } ) . "</${att_name}>";
       } elsif ($attribute->type_constraint =~ m/^ArrayRef\[(.*?\:\:.*)\]/) { #assume it's an array of Paws API objects
-        my $location = $attribute->does('Unwrapped') ? $attribute->xmlname : $att_name;
+        my $location = $attribute->does('NameInRequest') ? $attribute->request_name : $att_name;
         $xml .=  ( join '', map { sprintf '<%s>%s</%s>', $location, $self->_to_xml($_), $location } @{ $attribute->get_value($value) } );
       } else {
-        if ($attribute->does('Unwrapped')) {
-          my $location = $attribute->xmlname;
+        if ($attribute->does('NameInRequest')) {
+          my $location = $attribute->request_name;
           $xml .=  sprintf '<%s>%s</%s>', $location, $attribute->get_value($value), $location;
         } else {
           $xml .= sprintf '<%s>%s</%s>', $att_name, $attribute->get_value($value), $att_name;
@@ -145,8 +155,10 @@ package Paws::Net::RestXmlCaller;
           not $attribute->does('Paws::API::Attribute::Trait::ParamInHeader') and
           not $attribute->does('Paws::API::Attribute::Trait::ParamInQuery') and
           not $attribute->does('Paws::API::Attribute::Trait::ParamInURI') and
-          not $attribute->does('Paws::API::Attribute::Trait::ParamInBody')
+          not $attribute->does('Paws::API::Attribute::Trait::ParamInBody') and 
+          not $attribute->type_constraint eq 'Paws::S3::Metadata'
          ) {
+        
         my $location = $attribute->does('NameInRequest') ? $attribute->request_name : $attribute->name;
         $xml .= sprintf '<%s>%s</%s>', $location, $self->_to_xml($attribute->get_value($call)), $location;
       }

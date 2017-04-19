@@ -1,10 +1,10 @@
 package Paws::IoT::ElasticsearchAction;
   use Moose;
-  has Endpoint => (is => 'ro', isa => 'Str', xmlname => 'endpoint', request_name => 'endpoint', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has Id => (is => 'ro', isa => 'Str', xmlname => 'id', request_name => 'id', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has Index => (is => 'ro', isa => 'Str', xmlname => 'index', request_name => 'index', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has RoleArn => (is => 'ro', isa => 'Str', xmlname => 'roleArn', request_name => 'roleArn', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has Type => (is => 'ro', isa => 'Str', xmlname => 'type', request_name => 'type', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has Endpoint => (is => 'ro', isa => 'Str', request_name => 'endpoint', traits => ['NameInRequest'], required => 1);
+  has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest'], required => 1);
+  has Index => (is => 'ro', isa => 'Str', request_name => 'index', traits => ['NameInRequest'], required => 1);
+  has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest'], required => 1);
+  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###

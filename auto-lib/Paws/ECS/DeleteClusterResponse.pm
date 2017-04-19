@@ -1,7 +1,7 @@
 
 package Paws::ECS::DeleteClusterResponse;
   use Moose;
-  has Cluster => (is => 'ro', isa => 'Paws::ECS::Cluster', traits => ['Unwrapped'], xmlname => 'cluster' );
+  has Cluster => (is => 'ro', isa => 'Paws::ECS::Cluster', traits => ['NameInRequest'], request_name => 'cluster' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

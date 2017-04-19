@@ -1,8 +1,8 @@
 package Paws::Discovery::Filter;
   use Moose;
-  has Condition => (is => 'ro', isa => 'Str', xmlname => 'condition', request_name => 'condition', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has Name => (is => 'ro', isa => 'Str', xmlname => 'name', request_name => 'name', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has Values => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'item', xmlname => 'values', request_name => 'values', traits => ['NameInRequest','Unwrapped','NameInRequest'], required => 1);
+  has Condition => (is => 'ro', isa => 'Str', request_name => 'condition', traits => ['NameInRequest'], required => 1);
+  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
+  has Values => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'item', request_name => 'values', traits => ['NameInRequest','NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###

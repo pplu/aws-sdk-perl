@@ -1,12 +1,12 @@
 
 package Paws::StepFunctions::DescribeStateMachineOutput;
   use Moose;
-  has CreationDate => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'creationDate' , required => 1);
-  has Definition => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'definition' , required => 1);
-  has Name => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'name' , required => 1);
-  has RoleArn => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'roleArn' , required => 1);
-  has StateMachineArn => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'stateMachineArn' , required => 1);
-  has Status => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'status' );
+  has CreationDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'creationDate' , required => 1);
+  has Definition => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'definition' , required => 1);
+  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name' , required => 1);
+  has RoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'roleArn' , required => 1);
+  has StateMachineArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'stateMachineArn' , required => 1);
+  has Status => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'status' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

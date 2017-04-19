@@ -1,7 +1,7 @@
 
 package Paws::EC2::DescribeNetworkAclsResult;
   use Moose;
-  has NetworkAcls => (is => 'ro', isa => 'ArrayRef[Paws::EC2::NetworkAcl]', xmlname => 'networkAclSet', traits => ['Unwrapped',]);
+  has NetworkAcls => (is => 'ro', isa => 'ArrayRef[Paws::EC2::NetworkAcl]', request_name => 'networkAclSet', traits => ['NameInRequest',]);
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

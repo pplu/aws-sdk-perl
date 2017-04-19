@@ -1,7 +1,7 @@
 
 package Paws::SMS::CreateReplicationJobResponse;
   use Moose;
-  has ReplicationJobId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'replicationJobId' );
+  has ReplicationJobId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'replicationJobId' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

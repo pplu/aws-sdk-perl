@@ -1,7 +1,7 @@
 
 package Paws::IoT::GetRegistrationCodeResponse;
   use Moose;
-  has RegistrationCode => (is => 'ro', isa => 'Str');
+  has RegistrationCode => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'registrationCode');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

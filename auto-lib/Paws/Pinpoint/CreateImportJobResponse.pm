@@ -2,7 +2,8 @@
 package Paws::Pinpoint::CreateImportJobResponse;
   use Moose;
   has ImportJobResponse => (is => 'ro', isa => 'Paws::Pinpoint::ImportJobResponse', required => 1);
-
+  use MooseX::ClassAttribute;
+  class_has _stream_param => (is => 'ro', default => 'ImportJobResponse');
   has _request_id => (is => 'ro', isa => 'Str');
 1;
 

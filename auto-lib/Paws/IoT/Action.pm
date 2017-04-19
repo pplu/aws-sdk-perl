@@ -1,17 +1,17 @@
 package Paws::IoT::Action;
   use Moose;
-  has CloudwatchAlarm => (is => 'ro', isa => 'Paws::IoT::CloudwatchAlarmAction', xmlname => 'cloudwatchAlarm', request_name => 'cloudwatchAlarm', traits => ['Unwrapped','NameInRequest']);
-  has CloudwatchMetric => (is => 'ro', isa => 'Paws::IoT::CloudwatchMetricAction', xmlname => 'cloudwatchMetric', request_name => 'cloudwatchMetric', traits => ['Unwrapped','NameInRequest']);
-  has DynamoDB => (is => 'ro', isa => 'Paws::IoT::DynamoDBAction', xmlname => 'dynamoDB', request_name => 'dynamoDB', traits => ['Unwrapped','NameInRequest']);
-  has DynamoDBv2 => (is => 'ro', isa => 'Paws::IoT::DynamoDBv2Action', xmlname => 'dynamoDBv2', request_name => 'dynamoDBv2', traits => ['Unwrapped','NameInRequest']);
-  has Elasticsearch => (is => 'ro', isa => 'Paws::IoT::ElasticsearchAction', xmlname => 'elasticsearch', request_name => 'elasticsearch', traits => ['Unwrapped','NameInRequest']);
-  has Firehose => (is => 'ro', isa => 'Paws::IoT::FirehoseAction', xmlname => 'firehose', request_name => 'firehose', traits => ['Unwrapped','NameInRequest']);
-  has Kinesis => (is => 'ro', isa => 'Paws::IoT::KinesisAction', xmlname => 'kinesis', request_name => 'kinesis', traits => ['Unwrapped','NameInRequest']);
-  has Lambda => (is => 'ro', isa => 'Paws::IoT::LambdaAction', xmlname => 'lambda', request_name => 'lambda', traits => ['Unwrapped','NameInRequest']);
-  has Republish => (is => 'ro', isa => 'Paws::IoT::RepublishAction', xmlname => 'republish', request_name => 'republish', traits => ['Unwrapped','NameInRequest']);
-  has S3 => (is => 'ro', isa => 'Paws::IoT::S3Action', xmlname => 's3', request_name => 's3', traits => ['Unwrapped','NameInRequest']);
-  has Sns => (is => 'ro', isa => 'Paws::IoT::SnsAction', xmlname => 'sns', request_name => 'sns', traits => ['Unwrapped','NameInRequest']);
-  has Sqs => (is => 'ro', isa => 'Paws::IoT::SqsAction', xmlname => 'sqs', request_name => 'sqs', traits => ['Unwrapped','NameInRequest']);
+  has CloudwatchAlarm => (is => 'ro', isa => 'Paws::IoT::CloudwatchAlarmAction', request_name => 'cloudwatchAlarm', traits => ['NameInRequest']);
+  has CloudwatchMetric => (is => 'ro', isa => 'Paws::IoT::CloudwatchMetricAction', request_name => 'cloudwatchMetric', traits => ['NameInRequest']);
+  has DynamoDB => (is => 'ro', isa => 'Paws::IoT::DynamoDBAction', request_name => 'dynamoDB', traits => ['NameInRequest']);
+  has DynamoDBv2 => (is => 'ro', isa => 'Paws::IoT::DynamoDBv2Action', request_name => 'dynamoDBv2', traits => ['NameInRequest']);
+  has Elasticsearch => (is => 'ro', isa => 'Paws::IoT::ElasticsearchAction', request_name => 'elasticsearch', traits => ['NameInRequest']);
+  has Firehose => (is => 'ro', isa => 'Paws::IoT::FirehoseAction', request_name => 'firehose', traits => ['NameInRequest']);
+  has Kinesis => (is => 'ro', isa => 'Paws::IoT::KinesisAction', request_name => 'kinesis', traits => ['NameInRequest']);
+  has Lambda => (is => 'ro', isa => 'Paws::IoT::LambdaAction', request_name => 'lambda', traits => ['NameInRequest']);
+  has Republish => (is => 'ro', isa => 'Paws::IoT::RepublishAction', request_name => 'republish', traits => ['NameInRequest']);
+  has S3 => (is => 'ro', isa => 'Paws::IoT::S3Action', request_name => 's3', traits => ['NameInRequest']);
+  has Sns => (is => 'ro', isa => 'Paws::IoT::SnsAction', request_name => 'sns', traits => ['NameInRequest']);
+  has Sqs => (is => 'ro', isa => 'Paws::IoT::SqsAction', request_name => 'sqs', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

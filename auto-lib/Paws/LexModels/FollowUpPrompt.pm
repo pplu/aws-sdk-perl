@@ -1,7 +1,7 @@
 package Paws::LexModels::FollowUpPrompt;
   use Moose;
-  has Prompt => (is => 'ro', isa => 'Paws::LexModels::Prompt', xmlname => 'prompt', request_name => 'prompt', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has RejectionStatement => (is => 'ro', isa => 'Paws::LexModels::Statement', xmlname => 'rejectionStatement', request_name => 'rejectionStatement', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has Prompt => (is => 'ro', isa => 'Paws::LexModels::Prompt', request_name => 'prompt', traits => ['NameInRequest'], required => 1);
+  has RejectionStatement => (is => 'ro', isa => 'Paws::LexModels::Statement', request_name => 'rejectionStatement', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###

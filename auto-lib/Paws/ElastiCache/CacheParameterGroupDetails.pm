@@ -1,9 +1,9 @@
 
 package Paws::ElastiCache::CacheParameterGroupDetails;
   use Moose;
-  has CacheNodeTypeSpecificParameters => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::CacheNodeTypeSpecificParameter]', xmlname => 'CacheNodeTypeSpecificParameter', traits => ['Unwrapped',]);
+  has CacheNodeTypeSpecificParameters => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::CacheNodeTypeSpecificParameter]', request_name => 'CacheNodeTypeSpecificParameter', traits => ['NameInRequest',]);
   has Marker => (is => 'ro', isa => 'Str');
-  has Parameters => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::Parameter]', xmlname => 'Parameter', traits => ['Unwrapped',]);
+  has Parameters => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::Parameter]', request_name => 'Parameter', traits => ['NameInRequest',]);
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

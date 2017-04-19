@@ -1,8 +1,8 @@
 package Paws::Batch::ComputeResourceUpdate;
   use Moose;
-  has DesiredvCpus => (is => 'ro', isa => 'Int', xmlname => 'desiredvCpus', request_name => 'desiredvCpus', traits => ['Unwrapped','NameInRequest']);
-  has MaxvCpus => (is => 'ro', isa => 'Int', xmlname => 'maxvCpus', request_name => 'maxvCpus', traits => ['Unwrapped','NameInRequest']);
-  has MinvCpus => (is => 'ro', isa => 'Int', xmlname => 'minvCpus', request_name => 'minvCpus', traits => ['Unwrapped','NameInRequest']);
+  has DesiredvCpus => (is => 'ro', isa => 'Int', request_name => 'desiredvCpus', traits => ['NameInRequest']);
+  has MaxvCpus => (is => 'ro', isa => 'Int', request_name => 'maxvCpus', traits => ['NameInRequest']);
+  has MinvCpus => (is => 'ro', isa => 'Int', request_name => 'minvCpus', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

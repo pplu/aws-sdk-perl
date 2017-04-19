@@ -1,8 +1,8 @@
 
 package Paws::StepFunctions::CreateActivityOutput;
   use Moose;
-  has ActivityArn => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'activityArn' , required => 1);
-  has CreationDate => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'creationDate' , required => 1);
+  has ActivityArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'activityArn' , required => 1);
+  has CreationDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'creationDate' , required => 1);
 
   has _request_id => (is => 'ro', isa => 'Str');
 

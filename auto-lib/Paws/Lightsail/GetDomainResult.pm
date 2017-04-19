@@ -1,7 +1,7 @@
 
 package Paws::Lightsail::GetDomainResult;
   use Moose;
-  has Domain => (is => 'ro', isa => 'Paws::Lightsail::Domain', traits => ['Unwrapped'], xmlname => 'domain' );
+  has Domain => (is => 'ro', isa => 'Paws::Lightsail::Domain', traits => ['NameInRequest'], request_name => 'domain' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

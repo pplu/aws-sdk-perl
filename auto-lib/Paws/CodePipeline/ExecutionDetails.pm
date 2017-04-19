@@ -1,8 +1,8 @@
 package Paws::CodePipeline::ExecutionDetails;
   use Moose;
-  has ExternalExecutionId => (is => 'ro', isa => 'Str', xmlname => 'externalExecutionId', request_name => 'externalExecutionId', traits => ['Unwrapped','NameInRequest']);
-  has PercentComplete => (is => 'ro', isa => 'Int', xmlname => 'percentComplete', request_name => 'percentComplete', traits => ['Unwrapped','NameInRequest']);
-  has Summary => (is => 'ro', isa => 'Str', xmlname => 'summary', request_name => 'summary', traits => ['Unwrapped','NameInRequest']);
+  has ExternalExecutionId => (is => 'ro', isa => 'Str', request_name => 'externalExecutionId', traits => ['NameInRequest']);
+  has PercentComplete => (is => 'ro', isa => 'Int', request_name => 'percentComplete', traits => ['NameInRequest']);
+  has Summary => (is => 'ro', isa => 'Str', request_name => 'summary', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

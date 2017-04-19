@@ -1,8 +1,8 @@
 package Paws::Inspector::AssessmentTemplateFilter;
   use Moose;
-  has DurationRange => (is => 'ro', isa => 'Paws::Inspector::DurationRange', xmlname => 'durationRange', request_name => 'durationRange', traits => ['Unwrapped','NameInRequest']);
-  has NamePattern => (is => 'ro', isa => 'Str', xmlname => 'namePattern', request_name => 'namePattern', traits => ['Unwrapped','NameInRequest']);
-  has RulesPackageArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'rulesPackageArns', request_name => 'rulesPackageArns', traits => ['Unwrapped','NameInRequest']);
+  has DurationRange => (is => 'ro', isa => 'Paws::Inspector::DurationRange', request_name => 'durationRange', traits => ['NameInRequest']);
+  has NamePattern => (is => 'ro', isa => 'Str', request_name => 'namePattern', traits => ['NameInRequest']);
+  has RulesPackageArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'rulesPackageArns', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

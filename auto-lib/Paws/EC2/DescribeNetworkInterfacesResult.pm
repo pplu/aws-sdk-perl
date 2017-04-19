@@ -1,7 +1,7 @@
 
 package Paws::EC2::DescribeNetworkInterfacesResult;
   use Moose;
-  has NetworkInterfaces => (is => 'ro', isa => 'ArrayRef[Paws::EC2::NetworkInterface]', xmlname => 'networkInterfaceSet', traits => ['Unwrapped',]);
+  has NetworkInterfaces => (is => 'ro', isa => 'ArrayRef[Paws::EC2::NetworkInterface]', request_name => 'networkInterfaceSet', traits => ['NameInRequest',]);
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

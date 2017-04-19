@@ -1,9 +1,9 @@
 package Paws::CodePipeline::PipelineSummary;
   use Moose;
-  has Created => (is => 'ro', isa => 'Str', xmlname => 'created', request_name => 'created', traits => ['Unwrapped','NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', xmlname => 'name', request_name => 'name', traits => ['Unwrapped','NameInRequest']);
-  has Updated => (is => 'ro', isa => 'Str', xmlname => 'updated', request_name => 'updated', traits => ['Unwrapped','NameInRequest']);
-  has Version => (is => 'ro', isa => 'Int', xmlname => 'version', request_name => 'version', traits => ['Unwrapped','NameInRequest']);
+  has Created => (is => 'ro', isa => 'Str', request_name => 'created', traits => ['NameInRequest']);
+  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
+  has Updated => (is => 'ro', isa => 'Str', request_name => 'updated', traits => ['NameInRequest']);
+  has Version => (is => 'ro', isa => 'Int', request_name => 'version', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

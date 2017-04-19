@@ -1,8 +1,8 @@
 
 package Paws::Lightsail::GetInstanceMetricDataResult;
   use Moose;
-  has MetricData => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::MetricDatapoint]', traits => ['Unwrapped'], xmlname => 'metricData' );
-  has MetricName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'metricName' );
+  has MetricData => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::MetricDatapoint]', traits => ['NameInRequest'], request_name => 'metricData' );
+  has MetricName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'metricName' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

@@ -7,8 +7,6 @@ package Paws::Net::RestJsonResponse;
   sub handle_response {
     my ($self, $call_object, $http_status, $content, $headers) = @_;
 
-    my $unserialized_struct = $self->unserialize_response( $content );
-
     if (defined $headers->{ 'x-amz-crc32' }) {
       require String::CRC32;
       my $crc = String::CRC32::crc32($content);
@@ -17,6 +15,18 @@ package Paws::Net::RestJsonResponse;
         message => 'Content CRC32 mismatch',
         request_id => $headers->{ 'x-amzn-requestid' }
       ) if ($crc != $headers->{ 'x-amz-crc32' });
+    }
+
+    my $unserialized_struct;
+
+    my $ret_class = $call_object->meta->name->_returns;
+    if (defined $ret_class){
+      Paws->load_class($ret_class);
+      if ($ret_class->can('_stream_param')) {
+        $unserialized_struct->{ $ret_class->_stream_param } = $content;
+      } else {
+        $unserialized_struct = $self->unserialize_response( $content );
+      }
     }
 
     if ( $http_status >= 300 ) {
@@ -106,8 +116,8 @@ package Paws::Net::RestJsonResponse;
     foreach my $att ($class->meta->get_attribute_list) {
       next if (not my $meta = $class->meta->get_attribute($att));
 
-      my $key = $meta->does('Paws::API::Attribute::Trait::Unwrapped') ? $meta->xmlname :
-                $meta->does('Paws::API::Attribute::Trait::ParamInHeader') ? lc($meta->header_name) : $att;
+      my $key = $meta->does('NameInRequest') ? $meta->request_name :
+                $meta->does('ParamInHeader') ? lc($meta->header_name) : $att;
 
       my $att_type = $meta->type_constraint;
 

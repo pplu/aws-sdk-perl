@@ -1,9 +1,9 @@
 
 package Paws::ApiGateway::ApiKeys;
   use Moose;
-  has Items => (is => 'ro', isa => 'ArrayRef[Paws::ApiGateway::ApiKey]');
-  has Position => (is => 'ro', isa => 'Str');
-  has Warnings => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has Items => (is => 'ro', isa => 'ArrayRef[Paws::ApiGateway::ApiKey]', traits => ['NameInRequest'], request_name => 'items');
+  has Position => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'position');
+  has Warnings => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'warnings');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

@@ -1,7 +1,7 @@
 package Paws::CodeBuild::EnvironmentLanguage;
   use Moose;
-  has Images => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::EnvironmentImage]', xmlname => 'images', request_name => 'images', traits => ['Unwrapped','NameInRequest']);
-  has Language => (is => 'ro', isa => 'Str', xmlname => 'language', request_name => 'language', traits => ['Unwrapped','NameInRequest']);
+  has Images => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::EnvironmentImage]', request_name => 'images', traits => ['NameInRequest']);
+  has Language => (is => 'ro', isa => 'Str', request_name => 'language', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

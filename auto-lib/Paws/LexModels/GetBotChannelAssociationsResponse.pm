@@ -1,8 +1,8 @@
 
 package Paws::LexModels::GetBotChannelAssociationsResponse;
   use Moose;
-  has BotChannelAssociations => (is => 'ro', isa => 'ArrayRef[Paws::LexModels::BotChannelAssociation]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  has BotChannelAssociations => (is => 'ro', isa => 'ArrayRef[Paws::LexModels::BotChannelAssociation]', traits => ['NameInRequest'], request_name => 'botChannelAssociations');
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

@@ -1,8 +1,8 @@
 package Paws::EC2::SecurityGroupReference;
   use Moose;
-  has GroupId => (is => 'ro', isa => 'Str', xmlname => 'groupId', traits => ['Unwrapped'], required => 1);
-  has ReferencingVpcId => (is => 'ro', isa => 'Str', xmlname => 'referencingVpcId', traits => ['Unwrapped'], required => 1);
-  has VpcPeeringConnectionId => (is => 'ro', isa => 'Str', xmlname => 'vpcPeeringConnectionId', traits => ['Unwrapped']);
+  has GroupId => (is => 'ro', isa => 'Str', request_name => 'groupId', traits => ['NameInRequest'], required => 1);
+  has ReferencingVpcId => (is => 'ro', isa => 'Str', request_name => 'referencingVpcId', traits => ['NameInRequest'], required => 1);
+  has VpcPeeringConnectionId => (is => 'ro', isa => 'Str', request_name => 'vpcPeeringConnectionId', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

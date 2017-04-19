@@ -1,8 +1,8 @@
 
 package Paws::CodeDeploy::BatchGetDeploymentInstancesOutput;
   use Moose;
-  has ErrorMessage => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'errorMessage' );
-  has InstancesSummary => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::InstanceSummary]', traits => ['Unwrapped'], xmlname => 'instancesSummary' );
+  has ErrorMessage => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'errorMessage' );
+  has InstancesSummary => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::InstanceSummary]', traits => ['NameInRequest'], request_name => 'instancesSummary' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

@@ -1,8 +1,8 @@
 package Paws::CodePipeline::AWSSessionCredentials;
   use Moose;
-  has AccessKeyId => (is => 'ro', isa => 'Str', xmlname => 'accessKeyId', request_name => 'accessKeyId', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has SecretAccessKey => (is => 'ro', isa => 'Str', xmlname => 'secretAccessKey', request_name => 'secretAccessKey', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has SessionToken => (is => 'ro', isa => 'Str', xmlname => 'sessionToken', request_name => 'sessionToken', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has AccessKeyId => (is => 'ro', isa => 'Str', request_name => 'accessKeyId', traits => ['NameInRequest'], required => 1);
+  has SecretAccessKey => (is => 'ro', isa => 'Str', request_name => 'secretAccessKey', traits => ['NameInRequest'], required => 1);
+  has SessionToken => (is => 'ro', isa => 'Str', request_name => 'sessionToken', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###

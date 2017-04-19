@@ -1,8 +1,8 @@
 package Paws::ApiGateway::QuotaSettings;
   use Moose;
-  has Limit => (is => 'ro', isa => 'Int', xmlname => 'limit', request_name => 'limit', traits => ['Unwrapped','NameInRequest']);
-  has Offset => (is => 'ro', isa => 'Int', xmlname => 'offset', request_name => 'offset', traits => ['Unwrapped','NameInRequest']);
-  has Period => (is => 'ro', isa => 'Str', xmlname => 'period', request_name => 'period', traits => ['Unwrapped','NameInRequest']);
+  has Limit => (is => 'ro', isa => 'Int', request_name => 'limit', traits => ['NameInRequest']);
+  has Offset => (is => 'ro', isa => 'Int', request_name => 'offset', traits => ['NameInRequest']);
+  has Period => (is => 'ro', isa => 'Str', request_name => 'period', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

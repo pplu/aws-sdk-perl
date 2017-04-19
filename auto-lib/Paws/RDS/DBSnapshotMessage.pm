@@ -1,7 +1,7 @@
 
 package Paws::RDS::DBSnapshotMessage;
   use Moose;
-  has DBSnapshots => (is => 'ro', isa => 'ArrayRef[Paws::RDS::DBSnapshot]', xmlname => 'DBSnapshot', traits => ['Unwrapped',]);
+  has DBSnapshots => (is => 'ro', isa => 'ArrayRef[Paws::RDS::DBSnapshot]', request_name => 'DBSnapshot', traits => ['NameInRequest',]);
   has Marker => (is => 'ro', isa => 'Str');
 
   has _request_id => (is => 'ro', isa => 'Str');

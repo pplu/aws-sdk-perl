@@ -1,7 +1,7 @@
 
 package Paws::RDS::EventSubscriptionsMessage;
   use Moose;
-  has EventSubscriptionsList => (is => 'ro', isa => 'ArrayRef[Paws::RDS::EventSubscription]', xmlname => 'EventSubscription', traits => ['Unwrapped',]);
+  has EventSubscriptionsList => (is => 'ro', isa => 'ArrayRef[Paws::RDS::EventSubscription]', request_name => 'EventSubscription', traits => ['NameInRequest',]);
   has Marker => (is => 'ro', isa => 'Str');
 
   has _request_id => (is => 'ro', isa => 'Str');

@@ -1,13 +1,13 @@
 
 package Paws::LexModels::PutSlotTypeResponse;
   use Moose;
-  has Checksum => (is => 'ro', isa => 'Str');
-  has CreatedDate => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has EnumerationValues => (is => 'ro', isa => 'ArrayRef[Paws::LexModels::EnumerationValue]');
-  has LastUpdatedDate => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has Version => (is => 'ro', isa => 'Str');
+  has Checksum => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'checksum');
+  has CreatedDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'createdDate');
+  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
+  has EnumerationValues => (is => 'ro', isa => 'ArrayRef[Paws::LexModels::EnumerationValue]', traits => ['NameInRequest'], request_name => 'enumerationValues');
+  has LastUpdatedDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'lastUpdatedDate');
+  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name');
+  has Version => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'version');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

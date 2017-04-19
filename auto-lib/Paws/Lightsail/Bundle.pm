@@ -1,15 +1,15 @@
 package Paws::Lightsail::Bundle;
   use Moose;
-  has BundleId => (is => 'ro', isa => 'Str', xmlname => 'bundleId', request_name => 'bundleId', traits => ['Unwrapped','NameInRequest']);
-  has CpuCount => (is => 'ro', isa => 'Int', xmlname => 'cpuCount', request_name => 'cpuCount', traits => ['Unwrapped','NameInRequest']);
-  has DiskSizeInGb => (is => 'ro', isa => 'Int', xmlname => 'diskSizeInGb', request_name => 'diskSizeInGb', traits => ['Unwrapped','NameInRequest']);
-  has InstanceType => (is => 'ro', isa => 'Str', xmlname => 'instanceType', request_name => 'instanceType', traits => ['Unwrapped','NameInRequest']);
-  has IsActive => (is => 'ro', isa => 'Bool', xmlname => 'isActive', request_name => 'isActive', traits => ['Unwrapped','NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', xmlname => 'name', request_name => 'name', traits => ['Unwrapped','NameInRequest']);
-  has Power => (is => 'ro', isa => 'Int', xmlname => 'power', request_name => 'power', traits => ['Unwrapped','NameInRequest']);
-  has Price => (is => 'ro', isa => 'Num', xmlname => 'price', request_name => 'price', traits => ['Unwrapped','NameInRequest']);
-  has RamSizeInGb => (is => 'ro', isa => 'Num', xmlname => 'ramSizeInGb', request_name => 'ramSizeInGb', traits => ['Unwrapped','NameInRequest']);
-  has TransferPerMonthInGb => (is => 'ro', isa => 'Int', xmlname => 'transferPerMonthInGb', request_name => 'transferPerMonthInGb', traits => ['Unwrapped','NameInRequest']);
+  has BundleId => (is => 'ro', isa => 'Str', request_name => 'bundleId', traits => ['NameInRequest']);
+  has CpuCount => (is => 'ro', isa => 'Int', request_name => 'cpuCount', traits => ['NameInRequest']);
+  has DiskSizeInGb => (is => 'ro', isa => 'Int', request_name => 'diskSizeInGb', traits => ['NameInRequest']);
+  has InstanceType => (is => 'ro', isa => 'Str', request_name => 'instanceType', traits => ['NameInRequest']);
+  has IsActive => (is => 'ro', isa => 'Bool', request_name => 'isActive', traits => ['NameInRequest']);
+  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
+  has Power => (is => 'ro', isa => 'Int', request_name => 'power', traits => ['NameInRequest']);
+  has Price => (is => 'ro', isa => 'Num', request_name => 'price', traits => ['NameInRequest']);
+  has RamSizeInGb => (is => 'ro', isa => 'Num', request_name => 'ramSizeInGb', traits => ['NameInRequest']);
+  has TransferPerMonthInGb => (is => 'ro', isa => 'Int', request_name => 'transferPerMonthInGb', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

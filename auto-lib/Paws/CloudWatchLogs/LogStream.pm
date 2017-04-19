@@ -1,13 +1,13 @@
 package Paws::CloudWatchLogs::LogStream;
   use Moose;
-  has Arn => (is => 'ro', isa => 'Str', xmlname => 'arn', request_name => 'arn', traits => ['Unwrapped','NameInRequest']);
-  has CreationTime => (is => 'ro', isa => 'Int', xmlname => 'creationTime', request_name => 'creationTime', traits => ['Unwrapped','NameInRequest']);
-  has FirstEventTimestamp => (is => 'ro', isa => 'Int', xmlname => 'firstEventTimestamp', request_name => 'firstEventTimestamp', traits => ['Unwrapped','NameInRequest']);
-  has LastEventTimestamp => (is => 'ro', isa => 'Int', xmlname => 'lastEventTimestamp', request_name => 'lastEventTimestamp', traits => ['Unwrapped','NameInRequest']);
-  has LastIngestionTime => (is => 'ro', isa => 'Int', xmlname => 'lastIngestionTime', request_name => 'lastIngestionTime', traits => ['Unwrapped','NameInRequest']);
-  has LogStreamName => (is => 'ro', isa => 'Str', xmlname => 'logStreamName', request_name => 'logStreamName', traits => ['Unwrapped','NameInRequest']);
-  has StoredBytes => (is => 'ro', isa => 'Int', xmlname => 'storedBytes', request_name => 'storedBytes', traits => ['Unwrapped','NameInRequest']);
-  has UploadSequenceToken => (is => 'ro', isa => 'Str', xmlname => 'uploadSequenceToken', request_name => 'uploadSequenceToken', traits => ['Unwrapped','NameInRequest']);
+  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
+  has CreationTime => (is => 'ro', isa => 'Int', request_name => 'creationTime', traits => ['NameInRequest']);
+  has FirstEventTimestamp => (is => 'ro', isa => 'Int', request_name => 'firstEventTimestamp', traits => ['NameInRequest']);
+  has LastEventTimestamp => (is => 'ro', isa => 'Int', request_name => 'lastEventTimestamp', traits => ['NameInRequest']);
+  has LastIngestionTime => (is => 'ro', isa => 'Int', request_name => 'lastIngestionTime', traits => ['NameInRequest']);
+  has LogStreamName => (is => 'ro', isa => 'Str', request_name => 'logStreamName', traits => ['NameInRequest']);
+  has StoredBytes => (is => 'ro', isa => 'Int', request_name => 'storedBytes', traits => ['NameInRequest']);
+  has UploadSequenceToken => (is => 'ro', isa => 'Str', request_name => 'uploadSequenceToken', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

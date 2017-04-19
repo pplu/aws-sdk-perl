@@ -137,8 +137,8 @@ package Paws::Net::RestXMLResponse;
     foreach my $att ($class->meta->get_attribute_list) {
       next if (not my $meta = $class->meta->get_attribute($att));
 
-      my $key = $meta->does('Paws::API::Attribute::Trait::Unwrapped') ? $meta->xmlname :
-                $meta->does('Paws::API::Attribute::Trait::ParamInHeader') ? lc($meta->header_name) : $att;
+      my $key = $meta->does('NameInRequest') ? $meta->request_name :
+                $meta->does('ParamInHeader') ? lc($meta->header_name) : $att;
 
       my $att_type = $meta->type_constraint;
       my $att_is_required = $meta->is_required;
@@ -150,8 +150,16 @@ package Paws::Net::RestXMLResponse;
     #  my $extracted_val = $result->{ $key };
     #  print STDERR "RESULT >>> $extracted_val\n";
 
+      # Free-form paramaters passed in the HTTP headers
+      if ($meta->does('Paws::API::Attribute::Trait::ParamInHeaders')) { 
+        Paws->load_class("$att_type");
+        my $att_class        = $att_type->class;
+        my $header_prefix    = $meta->header_prefix;
+        my @metadata_headers = map { my ($h, $nometa) = ($_, $_); $nometa =~ s/^$header_prefix//; [ $h, $nometa ] } grep /^$header_prefix/, keys %{$result};
+        $args{ $att }        = $att_class->new( Map => { map { $_->[1] => $result->{$_->[0]} } @metadata_headers } ); 
+      }
       # We'll consider that an attribute without brackets [] isn't an array type
-      if ($att_type !~ m/\[.*\]$/) {
+      elsif ($att_type !~ m/\[.*\]$/) {
         my $value = $result->{ $key };
         my $value_ref = ref($value);
 

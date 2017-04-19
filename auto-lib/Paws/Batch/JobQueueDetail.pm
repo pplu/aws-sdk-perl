@@ -1,12 +1,12 @@
 package Paws::Batch::JobQueueDetail;
   use Moose;
-  has ComputeEnvironmentOrder => (is => 'ro', isa => 'ArrayRef[Paws::Batch::ComputeEnvironmentOrder]', xmlname => 'computeEnvironmentOrder', request_name => 'computeEnvironmentOrder', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has JobQueueArn => (is => 'ro', isa => 'Str', xmlname => 'jobQueueArn', request_name => 'jobQueueArn', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has JobQueueName => (is => 'ro', isa => 'Str', xmlname => 'jobQueueName', request_name => 'jobQueueName', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has Priority => (is => 'ro', isa => 'Int', xmlname => 'priority', request_name => 'priority', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has State => (is => 'ro', isa => 'Str', xmlname => 'state', request_name => 'state', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has Status => (is => 'ro', isa => 'Str', xmlname => 'status', request_name => 'status', traits => ['Unwrapped','NameInRequest']);
-  has StatusReason => (is => 'ro', isa => 'Str', xmlname => 'statusReason', request_name => 'statusReason', traits => ['Unwrapped','NameInRequest']);
+  has ComputeEnvironmentOrder => (is => 'ro', isa => 'ArrayRef[Paws::Batch::ComputeEnvironmentOrder]', request_name => 'computeEnvironmentOrder', traits => ['NameInRequest'], required => 1);
+  has JobQueueArn => (is => 'ro', isa => 'Str', request_name => 'jobQueueArn', traits => ['NameInRequest'], required => 1);
+  has JobQueueName => (is => 'ro', isa => 'Str', request_name => 'jobQueueName', traits => ['NameInRequest'], required => 1);
+  has Priority => (is => 'ro', isa => 'Int', request_name => 'priority', traits => ['NameInRequest'], required => 1);
+  has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest'], required => 1);
+  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+  has StatusReason => (is => 'ro', isa => 'Str', request_name => 'statusReason', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

@@ -1,7 +1,7 @@
 package Paws::Discovery::AgentNetworkInfo;
   use Moose;
-  has IpAddress => (is => 'ro', isa => 'Str', xmlname => 'ipAddress', request_name => 'ipAddress', traits => ['Unwrapped','NameInRequest']);
-  has MacAddress => (is => 'ro', isa => 'Str', xmlname => 'macAddress', request_name => 'macAddress', traits => ['Unwrapped','NameInRequest']);
+  has IpAddress => (is => 'ro', isa => 'Str', request_name => 'ipAddress', traits => ['NameInRequest']);
+  has MacAddress => (is => 'ro', isa => 'Str', request_name => 'macAddress', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

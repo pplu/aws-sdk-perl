@@ -1,8 +1,8 @@
 
 package Paws::LexModels::GetUtterancesViewResponse;
   use Moose;
-  has BotName => (is => 'ro', isa => 'Str');
-  has Utterances => (is => 'ro', isa => 'ArrayRef[Paws::LexModels::UtteranceList]');
+  has BotName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'botName');
+  has Utterances => (is => 'ro', isa => 'ArrayRef[Paws::LexModels::UtteranceList]', traits => ['NameInRequest'], request_name => 'utterances');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

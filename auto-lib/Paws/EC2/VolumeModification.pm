@@ -1,17 +1,17 @@
 package Paws::EC2::VolumeModification;
   use Moose;
-  has EndTime => (is => 'ro', isa => 'Str', xmlname => 'endTime', traits => ['Unwrapped']);
-  has ModificationState => (is => 'ro', isa => 'Str', xmlname => 'modificationState', traits => ['Unwrapped']);
-  has OriginalIops => (is => 'ro', isa => 'Int', xmlname => 'originalIops', traits => ['Unwrapped']);
-  has OriginalSize => (is => 'ro', isa => 'Int', xmlname => 'originalSize', traits => ['Unwrapped']);
-  has OriginalVolumeType => (is => 'ro', isa => 'Str', xmlname => 'originalVolumeType', traits => ['Unwrapped']);
-  has Progress => (is => 'ro', isa => 'Int', xmlname => 'progress', traits => ['Unwrapped']);
-  has StartTime => (is => 'ro', isa => 'Str', xmlname => 'startTime', traits => ['Unwrapped']);
-  has StatusMessage => (is => 'ro', isa => 'Str', xmlname => 'statusMessage', traits => ['Unwrapped']);
-  has TargetIops => (is => 'ro', isa => 'Int', xmlname => 'targetIops', traits => ['Unwrapped']);
-  has TargetSize => (is => 'ro', isa => 'Int', xmlname => 'targetSize', traits => ['Unwrapped']);
-  has TargetVolumeType => (is => 'ro', isa => 'Str', xmlname => 'targetVolumeType', traits => ['Unwrapped']);
-  has VolumeId => (is => 'ro', isa => 'Str', xmlname => 'volumeId', traits => ['Unwrapped']);
+  has EndTime => (is => 'ro', isa => 'Str', request_name => 'endTime', traits => ['NameInRequest']);
+  has ModificationState => (is => 'ro', isa => 'Str', request_name => 'modificationState', traits => ['NameInRequest']);
+  has OriginalIops => (is => 'ro', isa => 'Int', request_name => 'originalIops', traits => ['NameInRequest']);
+  has OriginalSize => (is => 'ro', isa => 'Int', request_name => 'originalSize', traits => ['NameInRequest']);
+  has OriginalVolumeType => (is => 'ro', isa => 'Str', request_name => 'originalVolumeType', traits => ['NameInRequest']);
+  has Progress => (is => 'ro', isa => 'Int', request_name => 'progress', traits => ['NameInRequest']);
+  has StartTime => (is => 'ro', isa => 'Str', request_name => 'startTime', traits => ['NameInRequest']);
+  has StatusMessage => (is => 'ro', isa => 'Str', request_name => 'statusMessage', traits => ['NameInRequest']);
+  has TargetIops => (is => 'ro', isa => 'Int', request_name => 'targetIops', traits => ['NameInRequest']);
+  has TargetSize => (is => 'ro', isa => 'Int', request_name => 'targetSize', traits => ['NameInRequest']);
+  has TargetVolumeType => (is => 'ro', isa => 'Str', request_name => 'targetVolumeType', traits => ['NameInRequest']);
+  has VolumeId => (is => 'ro', isa => 'Str', request_name => 'volumeId', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

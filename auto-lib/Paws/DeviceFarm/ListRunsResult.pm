@@ -1,8 +1,8 @@
 
 package Paws::DeviceFarm::ListRunsResult;
   use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
-  has Runs => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::Run]', traits => ['Unwrapped'], xmlname => 'runs' );
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  has Runs => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::Run]', traits => ['NameInRequest'], request_name => 'runs' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

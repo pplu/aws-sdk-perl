@@ -1,8 +1,8 @@
 
 package Paws::EC2::CreateNatGatewayResult;
   use Moose;
-  has ClientToken => (is => 'ro', isa => 'Str', xmlname => 'clientToken', traits => ['Unwrapped',]);
-  has NatGateway => (is => 'ro', isa => 'Paws::EC2::NatGateway', xmlname => 'natGateway', traits => ['Unwrapped',]);
+  has ClientToken => (is => 'ro', isa => 'Str', request_name => 'clientToken', traits => ['NameInRequest',]);
+  has NatGateway => (is => 'ro', isa => 'Paws::EC2::NatGateway', request_name => 'natGateway', traits => ['NameInRequest',]);
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

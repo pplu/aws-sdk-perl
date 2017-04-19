@@ -1,8 +1,8 @@
 package Paws::SimpleWorkflow::RecordMarkerFailedEventAttributes;
   use Moose;
-  has Cause => (is => 'ro', isa => 'Str', xmlname => 'cause', request_name => 'cause', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has DecisionTaskCompletedEventId => (is => 'ro', isa => 'Int', xmlname => 'decisionTaskCompletedEventId', request_name => 'decisionTaskCompletedEventId', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has MarkerName => (is => 'ro', isa => 'Str', xmlname => 'markerName', request_name => 'markerName', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has Cause => (is => 'ro', isa => 'Str', request_name => 'cause', traits => ['NameInRequest'], required => 1);
+  has DecisionTaskCompletedEventId => (is => 'ro', isa => 'Int', request_name => 'decisionTaskCompletedEventId', traits => ['NameInRequest'], required => 1);
+  has MarkerName => (is => 'ro', isa => 'Str', request_name => 'markerName', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###

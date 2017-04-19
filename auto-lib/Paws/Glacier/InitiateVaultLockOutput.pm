@@ -1,7 +1,7 @@
 
 package Paws::Glacier::InitiateVaultLockOutput;
   use Moose;
-  has LockId => (is => 'ro', isa => 'Str');
+  has LockId => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'lockId');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

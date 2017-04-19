@@ -1,21 +1,21 @@
 
 package Paws::LexModels::GetBotResponse;
   use Moose;
-  has AbortStatement => (is => 'ro', isa => 'Paws::LexModels::Statement');
-  has Checksum => (is => 'ro', isa => 'Str');
-  has ChildDirected => (is => 'ro', isa => 'Bool');
-  has ClarificationPrompt => (is => 'ro', isa => 'Paws::LexModels::Prompt');
-  has CreatedDate => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has FailureReason => (is => 'ro', isa => 'Str');
-  has IdleSessionTTLInSeconds => (is => 'ro', isa => 'Int');
-  has Intents => (is => 'ro', isa => 'ArrayRef[Paws::LexModels::Intent]');
-  has LastUpdatedDate => (is => 'ro', isa => 'Str');
-  has Locale => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has Version => (is => 'ro', isa => 'Str');
-  has VoiceId => (is => 'ro', isa => 'Str');
+  has AbortStatement => (is => 'ro', isa => 'Paws::LexModels::Statement', traits => ['NameInRequest'], request_name => 'abortStatement');
+  has Checksum => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'checksum');
+  has ChildDirected => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'childDirected');
+  has ClarificationPrompt => (is => 'ro', isa => 'Paws::LexModels::Prompt', traits => ['NameInRequest'], request_name => 'clarificationPrompt');
+  has CreatedDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'createdDate');
+  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
+  has FailureReason => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'failureReason');
+  has IdleSessionTTLInSeconds => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'idleSessionTTLInSeconds');
+  has Intents => (is => 'ro', isa => 'ArrayRef[Paws::LexModels::Intent]', traits => ['NameInRequest'], request_name => 'intents');
+  has LastUpdatedDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'lastUpdatedDate');
+  has Locale => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'locale');
+  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name');
+  has Status => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'status');
+  has Version => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'version');
+  has VoiceId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'voiceId');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

@@ -1,8 +1,8 @@
 
 package Paws::LexModels::GetBotVersionsResponse;
   use Moose;
-  has Bots => (is => 'ro', isa => 'ArrayRef[Paws::LexModels::BotMetadata]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  has Bots => (is => 'ro', isa => 'ArrayRef[Paws::LexModels::BotMetadata]', traits => ['NameInRequest'], request_name => 'bots');
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

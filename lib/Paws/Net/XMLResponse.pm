@@ -143,8 +143,8 @@ package Paws::Net::XMLResponse;
     foreach my $att ($class->meta->get_attribute_list) {
       next if (not my $meta = $class->meta->get_attribute($att));
 
-      my $key = $meta->does('Paws::API::Attribute::Trait::Unwrapped') ? $meta->xmlname :
-                $meta->does('Paws::API::Attribute::Trait::ParamInHeader') ? lc($meta->header_name) : $att;
+      my $key = $meta->does('NameInRequest') ? $meta->request_name :
+                $meta->does('ParamInHeader') ? lc($meta->header_name) : $att;
 
       my $att_type = $meta->type_constraint;
       my $att_is_required = $meta->is_required;

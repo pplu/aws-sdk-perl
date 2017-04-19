@@ -1,7 +1,7 @@
 package Paws::EC2::CancelSpotFleetRequestsErrorItem;
   use Moose;
-  has Error => (is => 'ro', isa => 'Paws::EC2::CancelSpotFleetRequestsError', xmlname => 'error', traits => ['Unwrapped'], required => 1);
-  has SpotFleetRequestId => (is => 'ro', isa => 'Str', xmlname => 'spotFleetRequestId', traits => ['Unwrapped'], required => 1);
+  has Error => (is => 'ro', isa => 'Paws::EC2::CancelSpotFleetRequestsError', request_name => 'error', traits => ['NameInRequest'], required => 1);
+  has SpotFleetRequestId => (is => 'ro', isa => 'Str', request_name => 'spotFleetRequestId', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###

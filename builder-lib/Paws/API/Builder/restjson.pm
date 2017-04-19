@@ -67,6 +67,7 @@ package [% c.api %]::[% operation.name %];
 [% END %]
   use MooseX::ClassAttribute;
 
+  [%- IF (shape.payload) -%]  class_has _stream_param => (is => 'ro', default => '[% c.to_payload_shape_name(shape.payload) %]');[% END %]
   class_has _api_call => (isa => 'Str', is => 'ro', default => '[% op_name %]');
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '[% operation.http.requestUri %]');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => '[% operation.http.method %]');
@@ -88,9 +89,18 @@ package [% c.api %]::[% c.shapename_for_operation_output(op_name) %];
 [% FOREACH param_name IN shape.members.keys.sort -%]
   [%- member = c.shape(shape.members.$param_name.shape) -%]
   has [% param_name %] => (is => 'ro', isa => '[% member.perl_type %]'
-  [%- IF (shape.members.$param_name.streaming == 1) %], traits => ['ParamInBody'][% END %]
+  [%- IF (shape.members.$param_name.locationName) %]
+    [%- IF (shape.members.$param_name.location == 'header') %], traits => ['ParamInHeader'], header_name => '[% shape.members.$param_name.locationName -%]'
+    [%- ELSIF (shape.members.$param_name.location == 'querystring') %], traits => ['ParamInQuery'], query_name => '[% shape.members.$param_name.locationName -%]' 
+    [%- ELSIF (shape.members.$param_name.location == 'uri') %], traits => ['ParamInURI'], uri_name => '[% shape.members.$param_name.locationName -%]' 
+    [%- ELSE %], traits => ['NameInRequest'], request_name => '[% shape.members.$param_name.locationName %]'[%- END -%][%- END -%]
+  [%- IF (shape.members.$param_name.streaming == 1) %], traits => ['ParamInBody'][% stream_param = param_name %][% END %]
   [%- IF (c.required_in_shape(shape,param_name)) %], required => 1[% END %]);
 [% END %]
+  [%- IF (shape.payload) -%]
+  use MooseX::ClassAttribute;
+  class_has _stream_param => (is => 'ro', default => '[% c.to_payload_shape_name(shape.payload) %]');
+  [%- END %]
   has _request_id => (is => 'ro', isa => 'Str');
 [%- END %]
 1;

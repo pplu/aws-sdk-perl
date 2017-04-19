@@ -1,8 +1,8 @@
 
 package Paws::LexModels::GetBuiltinSlotTypesResponse;
   use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
-  has SlotTypes => (is => 'ro', isa => 'ArrayRef[Paws::LexModels::BuiltinSlotTypeMetadata]');
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
+  has SlotTypes => (is => 'ro', isa => 'ArrayRef[Paws::LexModels::BuiltinSlotTypeMetadata]', traits => ['NameInRequest'], request_name => 'slotTypes');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

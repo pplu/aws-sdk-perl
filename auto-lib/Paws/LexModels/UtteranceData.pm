@@ -1,10 +1,10 @@
 package Paws::LexModels::UtteranceData;
   use Moose;
-  has Count => (is => 'ro', isa => 'Int', xmlname => 'count', request_name => 'count', traits => ['Unwrapped','NameInRequest']);
-  has DistinctUsers => (is => 'ro', isa => 'Int', xmlname => 'distinctUsers', request_name => 'distinctUsers', traits => ['Unwrapped','NameInRequest']);
-  has FirstUtteredDate => (is => 'ro', isa => 'Str', xmlname => 'firstUtteredDate', request_name => 'firstUtteredDate', traits => ['Unwrapped','NameInRequest']);
-  has LastUtteredDate => (is => 'ro', isa => 'Str', xmlname => 'lastUtteredDate', request_name => 'lastUtteredDate', traits => ['Unwrapped','NameInRequest']);
-  has UtteranceString => (is => 'ro', isa => 'Str', xmlname => 'utteranceString', request_name => 'utteranceString', traits => ['Unwrapped','NameInRequest']);
+  has Count => (is => 'ro', isa => 'Int', request_name => 'count', traits => ['NameInRequest']);
+  has DistinctUsers => (is => 'ro', isa => 'Int', request_name => 'distinctUsers', traits => ['NameInRequest']);
+  has FirstUtteredDate => (is => 'ro', isa => 'Str', request_name => 'firstUtteredDate', traits => ['NameInRequest']);
+  has LastUtteredDate => (is => 'ro', isa => 'Str', request_name => 'lastUtteredDate', traits => ['NameInRequest']);
+  has UtteranceString => (is => 'ro', isa => 'Str', request_name => 'utteranceString', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

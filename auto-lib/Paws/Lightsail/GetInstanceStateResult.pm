@@ -1,7 +1,7 @@
 
 package Paws::Lightsail::GetInstanceStateResult;
   use Moose;
-  has State => (is => 'ro', isa => 'Paws::Lightsail::InstanceState', traits => ['Unwrapped'], xmlname => 'state' );
+  has State => (is => 'ro', isa => 'Paws::Lightsail::InstanceState', traits => ['NameInRequest'], request_name => 'state' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

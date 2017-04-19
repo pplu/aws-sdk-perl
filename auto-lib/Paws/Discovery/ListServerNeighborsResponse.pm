@@ -1,9 +1,9 @@
 
 package Paws::Discovery::ListServerNeighborsResponse;
   use Moose;
-  has KnownDependencyCount => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => 'knownDependencyCount' );
-  has Neighbors => (is => 'ro', isa => 'ArrayRef[Paws::Discovery::NeighborConnectionDetail]', traits => ['Unwrapped'], xmlname => 'neighbors' , required => 1);
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
+  has KnownDependencyCount => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'knownDependencyCount' );
+  has Neighbors => (is => 'ro', isa => 'ArrayRef[Paws::Discovery::NeighborConnectionDetail]', traits => ['NameInRequest'], request_name => 'neighbors' , required => 1);
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

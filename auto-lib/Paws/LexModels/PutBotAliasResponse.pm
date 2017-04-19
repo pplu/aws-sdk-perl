@@ -1,13 +1,13 @@
 
 package Paws::LexModels::PutBotAliasResponse;
   use Moose;
-  has BotName => (is => 'ro', isa => 'Str');
-  has BotVersion => (is => 'ro', isa => 'Str');
-  has Checksum => (is => 'ro', isa => 'Str');
-  has CreatedDate => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has LastUpdatedDate => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
+  has BotName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'botName');
+  has BotVersion => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'botVersion');
+  has Checksum => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'checksum');
+  has CreatedDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'createdDate');
+  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
+  has LastUpdatedDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'lastUpdatedDate');
+  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

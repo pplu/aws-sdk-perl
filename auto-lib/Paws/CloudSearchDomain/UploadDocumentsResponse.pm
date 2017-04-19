@@ -1,10 +1,10 @@
 
 package Paws::CloudSearchDomain::UploadDocumentsResponse;
   use Moose;
-  has Adds => (is => 'ro', isa => 'Int');
-  has Deletes => (is => 'ro', isa => 'Int');
-  has Status => (is => 'ro', isa => 'Str');
-  has Warnings => (is => 'ro', isa => 'ArrayRef[Paws::CloudSearchDomain::DocumentServiceWarning]');
+  has Adds => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'adds');
+  has Deletes => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'deletes');
+  has Status => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'status');
+  has Warnings => (is => 'ro', isa => 'ArrayRef[Paws::CloudSearchDomain::DocumentServiceWarning]', traits => ['NameInRequest'], request_name => 'warnings');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

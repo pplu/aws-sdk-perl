@@ -1,8 +1,8 @@
 package Paws::CodeCommit::BlobMetadata;
   use Moose;
-  has BlobId => (is => 'ro', isa => 'Str', xmlname => 'blobId', request_name => 'blobId', traits => ['Unwrapped','NameInRequest']);
-  has Mode => (is => 'ro', isa => 'Str', xmlname => 'mode', request_name => 'mode', traits => ['Unwrapped','NameInRequest']);
-  has Path => (is => 'ro', isa => 'Str', xmlname => 'path', request_name => 'path', traits => ['Unwrapped','NameInRequest']);
+  has BlobId => (is => 'ro', isa => 'Str', request_name => 'blobId', traits => ['NameInRequest']);
+  has Mode => (is => 'ro', isa => 'Str', request_name => 'mode', traits => ['NameInRequest']);
+  has Path => (is => 'ro', isa => 'Str', request_name => 'path', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

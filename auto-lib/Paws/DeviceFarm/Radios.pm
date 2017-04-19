@@ -1,9 +1,9 @@
 package Paws::DeviceFarm::Radios;
   use Moose;
-  has Bluetooth => (is => 'ro', isa => 'Bool', xmlname => 'bluetooth', request_name => 'bluetooth', traits => ['Unwrapped','NameInRequest']);
-  has Gps => (is => 'ro', isa => 'Bool', xmlname => 'gps', request_name => 'gps', traits => ['Unwrapped','NameInRequest']);
-  has Nfc => (is => 'ro', isa => 'Bool', xmlname => 'nfc', request_name => 'nfc', traits => ['Unwrapped','NameInRequest']);
-  has Wifi => (is => 'ro', isa => 'Bool', xmlname => 'wifi', request_name => 'wifi', traits => ['Unwrapped','NameInRequest']);
+  has Bluetooth => (is => 'ro', isa => 'Bool', request_name => 'bluetooth', traits => ['NameInRequest']);
+  has Gps => (is => 'ro', isa => 'Bool', request_name => 'gps', traits => ['NameInRequest']);
+  has Nfc => (is => 'ro', isa => 'Bool', request_name => 'nfc', traits => ['NameInRequest']);
+  has Wifi => (is => 'ro', isa => 'Bool', request_name => 'wifi', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

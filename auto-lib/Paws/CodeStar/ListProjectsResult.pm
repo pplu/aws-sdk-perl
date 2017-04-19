@@ -1,8 +1,8 @@
 
 package Paws::CodeStar::ListProjectsResult;
   use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
-  has Projects => (is => 'ro', isa => 'ArrayRef[Paws::CodeStar::ProjectSummary]', traits => ['Unwrapped'], xmlname => 'projects' , required => 1);
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  has Projects => (is => 'ro', isa => 'ArrayRef[Paws::CodeStar::ProjectSummary]', traits => ['NameInRequest'], request_name => 'projects' , required => 1);
 
   has _request_id => (is => 'ro', isa => 'Str');
 

@@ -1,14 +1,14 @@
 
 package Paws::CodeStar::DescribeProjectResult;
   use Moose;
-  has Arn => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'arn' );
-  has ClientRequestToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'clientRequestToken' );
-  has CreatedTimeStamp => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'createdTimeStamp' );
-  has Description => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'description' );
-  has Id => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'id' );
-  has Name => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'name' );
-  has ProjectTemplateId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'projectTemplateId' );
-  has StackId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'stackId' );
+  has Arn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'arn' );
+  has ClientRequestToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientRequestToken' );
+  has CreatedTimeStamp => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'createdTimeStamp' );
+  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description' );
+  has Id => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'id' );
+  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name' );
+  has ProjectTemplateId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'projectTemplateId' );
+  has StackId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'stackId' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

@@ -1,8 +1,8 @@
 
 package Paws::ApiGateway::RequestValidators;
   use Moose;
-  has Items => (is => 'ro', isa => 'ArrayRef[Paws::ApiGateway::RequestValidator]');
-  has Position => (is => 'ro', isa => 'Str');
+  has Items => (is => 'ro', isa => 'ArrayRef[Paws::ApiGateway::RequestValidator]', traits => ['NameInRequest'], request_name => 'items');
+  has Position => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'position');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

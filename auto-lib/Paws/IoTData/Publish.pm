@@ -6,7 +6,7 @@ package Paws::IoTData::Publish;
   has Topic => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'topic' , required => 1);
 
   use MooseX::ClassAttribute;
-
+  class_has _stream_param => (is => 'ro', default => 'Payload');
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'Publish');
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/topics/{topic}');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');

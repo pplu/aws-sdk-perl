@@ -1,7 +1,7 @@
 package Paws::LexModels::BuiltinIntentMetadata;
   use Moose;
-  has Signature => (is => 'ro', isa => 'Str', xmlname => 'signature', request_name => 'signature', traits => ['Unwrapped','NameInRequest']);
-  has SupportedLocales => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'supportedLocales', request_name => 'supportedLocales', traits => ['Unwrapped','NameInRequest']);
+  has Signature => (is => 'ro', isa => 'Str', request_name => 'signature', traits => ['NameInRequest']);
+  has SupportedLocales => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'supportedLocales', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

@@ -1,7 +1,7 @@
 
 package Paws::ElastiCache::CacheEngineVersionMessage;
   use Moose;
-  has CacheEngineVersions => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::CacheEngineVersion]', xmlname => 'CacheEngineVersion', traits => ['Unwrapped',]);
+  has CacheEngineVersions => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::CacheEngineVersion]', request_name => 'CacheEngineVersion', traits => ['NameInRequest',]);
   has Marker => (is => 'ro', isa => 'Str');
 
   has _request_id => (is => 'ro', isa => 'Str');

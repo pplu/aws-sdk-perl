@@ -1,13 +1,13 @@
 package Paws::Config::ConfigurationRecorderStatus;
   use Moose;
-  has LastErrorCode => (is => 'ro', isa => 'Str', xmlname => 'lastErrorCode', request_name => 'lastErrorCode', traits => ['Unwrapped','NameInRequest']);
-  has LastErrorMessage => (is => 'ro', isa => 'Str', xmlname => 'lastErrorMessage', request_name => 'lastErrorMessage', traits => ['Unwrapped','NameInRequest']);
-  has LastStartTime => (is => 'ro', isa => 'Str', xmlname => 'lastStartTime', request_name => 'lastStartTime', traits => ['Unwrapped','NameInRequest']);
-  has LastStatus => (is => 'ro', isa => 'Str', xmlname => 'lastStatus', request_name => 'lastStatus', traits => ['Unwrapped','NameInRequest']);
-  has LastStatusChangeTime => (is => 'ro', isa => 'Str', xmlname => 'lastStatusChangeTime', request_name => 'lastStatusChangeTime', traits => ['Unwrapped','NameInRequest']);
-  has LastStopTime => (is => 'ro', isa => 'Str', xmlname => 'lastStopTime', request_name => 'lastStopTime', traits => ['Unwrapped','NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', xmlname => 'name', request_name => 'name', traits => ['Unwrapped','NameInRequest']);
-  has Recording => (is => 'ro', isa => 'Bool', xmlname => 'recording', request_name => 'recording', traits => ['Unwrapped','NameInRequest']);
+  has LastErrorCode => (is => 'ro', isa => 'Str', request_name => 'lastErrorCode', traits => ['NameInRequest']);
+  has LastErrorMessage => (is => 'ro', isa => 'Str', request_name => 'lastErrorMessage', traits => ['NameInRequest']);
+  has LastStartTime => (is => 'ro', isa => 'Str', request_name => 'lastStartTime', traits => ['NameInRequest']);
+  has LastStatus => (is => 'ro', isa => 'Str', request_name => 'lastStatus', traits => ['NameInRequest']);
+  has LastStatusChangeTime => (is => 'ro', isa => 'Str', request_name => 'lastStatusChangeTime', traits => ['NameInRequest']);
+  has LastStopTime => (is => 'ro', isa => 'Str', request_name => 'lastStopTime', traits => ['NameInRequest']);
+  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
+  has Recording => (is => 'ro', isa => 'Bool', request_name => 'recording', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

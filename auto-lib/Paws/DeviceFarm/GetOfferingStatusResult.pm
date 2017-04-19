@@ -1,9 +1,9 @@
 
 package Paws::DeviceFarm::GetOfferingStatusResult;
   use Moose;
-  has Current => (is => 'ro', isa => 'Paws::DeviceFarm::OfferingStatusMap', traits => ['Unwrapped'], xmlname => 'current' );
-  has NextPeriod => (is => 'ro', isa => 'Paws::DeviceFarm::OfferingStatusMap', traits => ['Unwrapped'], xmlname => 'nextPeriod' );
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
+  has Current => (is => 'ro', isa => 'Paws::DeviceFarm::OfferingStatusMap', traits => ['NameInRequest'], request_name => 'current' );
+  has NextPeriod => (is => 'ro', isa => 'Paws::DeviceFarm::OfferingStatusMap', traits => ['NameInRequest'], request_name => 'nextPeriod' );
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

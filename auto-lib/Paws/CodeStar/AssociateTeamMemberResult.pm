@@ -1,7 +1,7 @@
 
 package Paws::CodeStar::AssociateTeamMemberResult;
   use Moose;
-  has ClientRequestToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'clientRequestToken' );
+  has ClientRequestToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientRequestToken' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

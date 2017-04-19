@@ -1,8 +1,8 @@
 
 package Paws::StepFunctions::ListExecutionsOutput;
   use Moose;
-  has Executions => (is => 'ro', isa => 'ArrayRef[Paws::StepFunctions::ExecutionListItem]', traits => ['Unwrapped'], xmlname => 'executions' , required => 1);
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
+  has Executions => (is => 'ro', isa => 'ArrayRef[Paws::StepFunctions::ExecutionListItem]', traits => ['NameInRequest'], request_name => 'executions' , required => 1);
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

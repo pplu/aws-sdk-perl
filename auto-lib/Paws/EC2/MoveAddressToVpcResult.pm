@@ -1,8 +1,8 @@
 
 package Paws::EC2::MoveAddressToVpcResult;
   use Moose;
-  has AllocationId => (is => 'ro', isa => 'Str', xmlname => 'allocationId', traits => ['Unwrapped',]);
-  has Status => (is => 'ro', isa => 'Str', xmlname => 'status', traits => ['Unwrapped',]);
+  has AllocationId => (is => 'ro', isa => 'Str', request_name => 'allocationId', traits => ['NameInRequest',]);
+  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest',]);
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

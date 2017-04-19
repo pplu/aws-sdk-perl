@@ -1,8 +1,8 @@
 
 package Paws::EC2::AssignIpv6AddressesResult;
   use Moose;
-  has AssignedIpv6Addresses => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'assignedIpv6Addresses', traits => ['Unwrapped',]);
-  has NetworkInterfaceId => (is => 'ro', isa => 'Str', xmlname => 'networkInterfaceId', traits => ['Unwrapped',]);
+  has AssignedIpv6Addresses => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'assignedIpv6Addresses', traits => ['NameInRequest',]);
+  has NetworkInterfaceId => (is => 'ro', isa => 'Str', request_name => 'networkInterfaceId', traits => ['NameInRequest',]);
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

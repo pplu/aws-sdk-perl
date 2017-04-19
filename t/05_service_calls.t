@@ -315,6 +315,20 @@ $test_params = { };
 like($request->uri, qr/\?lifecycle/, 'Found lifecycle in the URI');
 request_has_params($test_params, $request);
 
+$request = $s3->PutObject(
+  Bucket => 'test_bucket',
+  Key => 'a/key',
+  Body => 'content',
+  Metadata => {
+    'key1' => 'value1',
+    'key2' => 'value2',
+  },
+);
+
+cmp_ok($request->header('x-amz-meta-key1'), 'eq', 'value1', 'meta key1 has correct value in header');
+cmp_ok($request->header('x-amz-meta-key2'), 'eq', 'value2', 'meta key2 has correct value in header');
+cmp_ok($request->content, 'eq', 'content', 'content is correct in request');
+
 my $cognito = $aws->service('CognitoIdentity');
 
 $request = $cognito->GetOpenIdTokenForDeveloperIdentity(
@@ -458,9 +472,9 @@ $request = $efs->CreateFileSystem(
 
 like($request->content, qr/"CreationToken":"4"/, "Got N in a JSON string (quoted), and not a JSON number (unquoted)");
 
-my $cfn = $aws->service('CloudFront', region => 'us-east-1');
+my $cf = $aws->service('CloudFront', region => 'us-east-1');
 
-$request = $cfn->CreateInvalidation(
+$request = $cf->CreateInvalidation(
   DistributionId    => 'A999AAA999AAA',
   InvalidationBatch => {
     CallerReference => 'uid',
@@ -489,5 +503,63 @@ is_deeply(
     CallerReference => 'uid'
   }
 );
+
+my $lambda = $aws->service('Lambda', region => 'eu-west-1');
+
+$request = $lambda->Invoke(
+  FunctionName => 'f',
+  Payload => '{"my":{"json":"payload"}}',
+  Qualifier => 'qualifier',
+  InvocationType => 'RequestResponse',
+  LogType => 'Tail',
+  ClientContext => 'eyJjbGllbnQiOiJjb250ZXh0In0K',
+);
+
+cmp_ok($request->content, 'eq', '{"my":{"json":"payload"}}', 'Content is the JSON payload');
+cmp_ok($request->uri, 'eq', '/2015-03-31/functions/f/invocations?Qualifier=qualifier', 'Params found in the url');
+cmp_ok($request->headers->header('X-Amz-Invocation-Type'), 'eq', 'RequestResponse', 'InvocationType is in headers');
+cmp_ok($request->headers->header('X-Amz-Log-Type'), 'eq', 'Tail', 'LogType is in headers');
+cmp_ok($request->headers->header('X-Amz-Client-Context'), 'eq', 'eyJjbGllbnQiOiJjb250ZXh0In0K', 'ClientContext is in headers');
+
+
+$request = $lambda->CreateFunction(
+  FunctionName => 'afunc',
+  Handler => 'xxx.afunc',
+  Role => 'arn:aws:iam::123456789012:role/XXX',
+  Runtime => 'nodejs',
+  VpcConfig => {
+    SecurityGroupIds => [ 'sg-1', 'sg-2' ],
+    SubnetIds => [ 'sn-1', 'sn-2' ],
+  },
+  Code => {
+    ZipFile => 'ZIPFILE',
+  }
+);
+
+$test_params = {
+  FunctionName => 'afunc',
+  Handler => 'xxx.afunc',
+  Role => 'arn:aws:iam::123456789012:role/XXX',
+  Runtime => 'nodejs',
+  VpcConfig => {
+    SecurityGroupIds => [ 'sg-1', 'sg-2' ],
+    SubnetIds => [ 'sn-1', 'sn-2' ],
+  },
+  Code => {
+    ZipFile => 'ZIPFILE',
+  }
+};
+
+request_contentjson($test_params, $request);
+
+my $r53 = $aws->service('Route53');
+
+$request = $r53->ListHealthChecks(
+  Marker => 'X',
+  MaxItems => 50,
+);
+
+like($request->url, qr/marker=X/, 'marker with correct name in URL');
+like($request->url, qr/maxitems=50/, 'maxitems with correct name in URL');
 
 done_testing;

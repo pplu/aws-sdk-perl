@@ -1,12 +1,12 @@
 package Paws::Discovery::CustomerAgentInfo;
   use Moose;
-  has ActiveAgents => (is => 'ro', isa => 'Int', xmlname => 'activeAgents', request_name => 'activeAgents', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has BlackListedAgents => (is => 'ro', isa => 'Int', xmlname => 'blackListedAgents', request_name => 'blackListedAgents', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has HealthyAgents => (is => 'ro', isa => 'Int', xmlname => 'healthyAgents', request_name => 'healthyAgents', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has ShutdownAgents => (is => 'ro', isa => 'Int', xmlname => 'shutdownAgents', request_name => 'shutdownAgents', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has TotalAgents => (is => 'ro', isa => 'Int', xmlname => 'totalAgents', request_name => 'totalAgents', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has UnhealthyAgents => (is => 'ro', isa => 'Int', xmlname => 'unhealthyAgents', request_name => 'unhealthyAgents', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has UnknownAgents => (is => 'ro', isa => 'Int', xmlname => 'unknownAgents', request_name => 'unknownAgents', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has ActiveAgents => (is => 'ro', isa => 'Int', request_name => 'activeAgents', traits => ['NameInRequest'], required => 1);
+  has BlackListedAgents => (is => 'ro', isa => 'Int', request_name => 'blackListedAgents', traits => ['NameInRequest'], required => 1);
+  has HealthyAgents => (is => 'ro', isa => 'Int', request_name => 'healthyAgents', traits => ['NameInRequest'], required => 1);
+  has ShutdownAgents => (is => 'ro', isa => 'Int', request_name => 'shutdownAgents', traits => ['NameInRequest'], required => 1);
+  has TotalAgents => (is => 'ro', isa => 'Int', request_name => 'totalAgents', traits => ['NameInRequest'], required => 1);
+  has UnhealthyAgents => (is => 'ro', isa => 'Int', request_name => 'unhealthyAgents', traits => ['NameInRequest'], required => 1);
+  has UnknownAgents => (is => 'ro', isa => 'Int', request_name => 'unknownAgents', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###

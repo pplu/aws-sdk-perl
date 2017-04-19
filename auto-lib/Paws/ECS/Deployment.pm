@@ -1,13 +1,13 @@
 package Paws::ECS::Deployment;
   use Moose;
-  has CreatedAt => (is => 'ro', isa => 'Str', xmlname => 'createdAt', request_name => 'createdAt', traits => ['Unwrapped','NameInRequest']);
-  has DesiredCount => (is => 'ro', isa => 'Int', xmlname => 'desiredCount', request_name => 'desiredCount', traits => ['Unwrapped','NameInRequest']);
-  has Id => (is => 'ro', isa => 'Str', xmlname => 'id', request_name => 'id', traits => ['Unwrapped','NameInRequest']);
-  has PendingCount => (is => 'ro', isa => 'Int', xmlname => 'pendingCount', request_name => 'pendingCount', traits => ['Unwrapped','NameInRequest']);
-  has RunningCount => (is => 'ro', isa => 'Int', xmlname => 'runningCount', request_name => 'runningCount', traits => ['Unwrapped','NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', xmlname => 'status', request_name => 'status', traits => ['Unwrapped','NameInRequest']);
-  has TaskDefinition => (is => 'ro', isa => 'Str', xmlname => 'taskDefinition', request_name => 'taskDefinition', traits => ['Unwrapped','NameInRequest']);
-  has UpdatedAt => (is => 'ro', isa => 'Str', xmlname => 'updatedAt', request_name => 'updatedAt', traits => ['Unwrapped','NameInRequest']);
+  has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest']);
+  has DesiredCount => (is => 'ro', isa => 'Int', request_name => 'desiredCount', traits => ['NameInRequest']);
+  has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest']);
+  has PendingCount => (is => 'ro', isa => 'Int', request_name => 'pendingCount', traits => ['NameInRequest']);
+  has RunningCount => (is => 'ro', isa => 'Int', request_name => 'runningCount', traits => ['NameInRequest']);
+  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+  has TaskDefinition => (is => 'ro', isa => 'Str', request_name => 'taskDefinition', traits => ['NameInRequest']);
+  has UpdatedAt => (is => 'ro', isa => 'Str', request_name => 'updatedAt', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

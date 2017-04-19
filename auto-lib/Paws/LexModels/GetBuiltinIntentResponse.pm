@@ -1,9 +1,9 @@
 
 package Paws::LexModels::GetBuiltinIntentResponse;
   use Moose;
-  has Signature => (is => 'ro', isa => 'Str');
-  has Slots => (is => 'ro', isa => 'ArrayRef[Paws::LexModels::BuiltinIntentSlot]');
-  has SupportedLocales => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has Signature => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'signature');
+  has Slots => (is => 'ro', isa => 'ArrayRef[Paws::LexModels::BuiltinIntentSlot]', traits => ['NameInRequest'], request_name => 'slots');
+  has SupportedLocales => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'supportedLocales');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

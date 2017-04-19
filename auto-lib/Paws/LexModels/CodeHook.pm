@@ -1,7 +1,7 @@
 package Paws::LexModels::CodeHook;
   use Moose;
-  has MessageVersion => (is => 'ro', isa => 'Str', xmlname => 'messageVersion', request_name => 'messageVersion', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has Uri => (is => 'ro', isa => 'Str', xmlname => 'uri', request_name => 'uri', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has MessageVersion => (is => 'ro', isa => 'Str', request_name => 'messageVersion', traits => ['NameInRequest'], required => 1);
+  has Uri => (is => 'ro', isa => 'Str', request_name => 'uri', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###

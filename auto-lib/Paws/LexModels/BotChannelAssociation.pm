@@ -1,12 +1,12 @@
 package Paws::LexModels::BotChannelAssociation;
   use Moose;
-  has BotAlias => (is => 'ro', isa => 'Str', xmlname => 'botAlias', request_name => 'botAlias', traits => ['Unwrapped','NameInRequest']);
-  has BotConfiguration => (is => 'ro', isa => 'Paws::LexModels::ChannelConfigurationMap', xmlname => 'botConfiguration', request_name => 'botConfiguration', traits => ['Unwrapped','NameInRequest']);
-  has BotName => (is => 'ro', isa => 'Str', xmlname => 'botName', request_name => 'botName', traits => ['Unwrapped','NameInRequest']);
-  has CreatedDate => (is => 'ro', isa => 'Str', xmlname => 'createdDate', request_name => 'createdDate', traits => ['Unwrapped','NameInRequest']);
-  has Description => (is => 'ro', isa => 'Str', xmlname => 'description', request_name => 'description', traits => ['Unwrapped','NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', xmlname => 'name', request_name => 'name', traits => ['Unwrapped','NameInRequest']);
-  has Type => (is => 'ro', isa => 'Str', xmlname => 'type', request_name => 'type', traits => ['Unwrapped','NameInRequest']);
+  has BotAlias => (is => 'ro', isa => 'Str', request_name => 'botAlias', traits => ['NameInRequest']);
+  has BotConfiguration => (is => 'ro', isa => 'Paws::LexModels::ChannelConfigurationMap', request_name => 'botConfiguration', traits => ['NameInRequest']);
+  has BotName => (is => 'ro', isa => 'Str', request_name => 'botName', traits => ['NameInRequest']);
+  has CreatedDate => (is => 'ro', isa => 'Str', request_name => 'createdDate', traits => ['NameInRequest']);
+  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
+  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
+  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

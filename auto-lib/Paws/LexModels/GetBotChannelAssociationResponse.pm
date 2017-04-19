@@ -1,13 +1,13 @@
 
 package Paws::LexModels::GetBotChannelAssociationResponse;
   use Moose;
-  has BotAlias => (is => 'ro', isa => 'Str');
-  has BotConfiguration => (is => 'ro', isa => 'Paws::LexModels::ChannelConfigurationMap');
-  has BotName => (is => 'ro', isa => 'Str');
-  has CreatedDate => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has Type => (is => 'ro', isa => 'Str');
+  has BotAlias => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'botAlias');
+  has BotConfiguration => (is => 'ro', isa => 'Paws::LexModels::ChannelConfigurationMap', traits => ['NameInRequest'], request_name => 'botConfiguration');
+  has BotName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'botName');
+  has CreatedDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'createdDate');
+  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
+  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name');
+  has Type => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'type');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

@@ -1,7 +1,7 @@
 package Paws::LexModels::UtteranceList;
   use Moose;
-  has BotVersion => (is => 'ro', isa => 'Str', xmlname => 'botVersion', request_name => 'botVersion', traits => ['Unwrapped','NameInRequest']);
-  has Utterances => (is => 'ro', isa => 'ArrayRef[Paws::LexModels::UtteranceData]', xmlname => 'utterances', request_name => 'utterances', traits => ['Unwrapped','NameInRequest']);
+  has BotVersion => (is => 'ro', isa => 'Str', request_name => 'botVersion', traits => ['NameInRequest']);
+  has Utterances => (is => 'ro', isa => 'ArrayRef[Paws::LexModels::UtteranceData]', request_name => 'utterances', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

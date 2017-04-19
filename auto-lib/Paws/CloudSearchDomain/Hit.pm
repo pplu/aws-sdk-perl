@@ -1,9 +1,9 @@
 package Paws::CloudSearchDomain::Hit;
   use Moose;
-  has Exprs => (is => 'ro', isa => 'Paws::CloudSearchDomain::Exprs', xmlname => 'exprs', request_name => 'exprs', traits => ['Unwrapped','NameInRequest']);
-  has Fields => (is => 'ro', isa => 'Paws::CloudSearchDomain::Fields', xmlname => 'fields', request_name => 'fields', traits => ['Unwrapped','NameInRequest']);
-  has Highlights => (is => 'ro', isa => 'Paws::CloudSearchDomain::Highlights', xmlname => 'highlights', request_name => 'highlights', traits => ['Unwrapped','NameInRequest']);
-  has Id => (is => 'ro', isa => 'Str', xmlname => 'id', request_name => 'id', traits => ['Unwrapped','NameInRequest']);
+  has Exprs => (is => 'ro', isa => 'Paws::CloudSearchDomain::Exprs', request_name => 'exprs', traits => ['NameInRequest']);
+  has Fields => (is => 'ro', isa => 'Paws::CloudSearchDomain::Fields', request_name => 'fields', traits => ['NameInRequest']);
+  has Highlights => (is => 'ro', isa => 'Paws::CloudSearchDomain::Highlights', request_name => 'highlights', traits => ['NameInRequest']);
+  has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

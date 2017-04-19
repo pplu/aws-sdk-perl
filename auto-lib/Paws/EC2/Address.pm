@@ -1,13 +1,13 @@
 package Paws::EC2::Address;
   use Moose;
-  has AllocationId => (is => 'ro', isa => 'Str', xmlname => 'allocationId', traits => ['Unwrapped']);
-  has AssociationId => (is => 'ro', isa => 'Str', xmlname => 'associationId', traits => ['Unwrapped']);
-  has Domain => (is => 'ro', isa => 'Str', xmlname => 'domain', traits => ['Unwrapped']);
-  has InstanceId => (is => 'ro', isa => 'Str', xmlname => 'instanceId', traits => ['Unwrapped']);
-  has NetworkInterfaceId => (is => 'ro', isa => 'Str', xmlname => 'networkInterfaceId', traits => ['Unwrapped']);
-  has NetworkInterfaceOwnerId => (is => 'ro', isa => 'Str', xmlname => 'networkInterfaceOwnerId', traits => ['Unwrapped']);
-  has PrivateIpAddress => (is => 'ro', isa => 'Str', xmlname => 'privateIpAddress', traits => ['Unwrapped']);
-  has PublicIp => (is => 'ro', isa => 'Str', xmlname => 'publicIp', traits => ['Unwrapped']);
+  has AllocationId => (is => 'ro', isa => 'Str', request_name => 'allocationId', traits => ['NameInRequest']);
+  has AssociationId => (is => 'ro', isa => 'Str', request_name => 'associationId', traits => ['NameInRequest']);
+  has Domain => (is => 'ro', isa => 'Str', request_name => 'domain', traits => ['NameInRequest']);
+  has InstanceId => (is => 'ro', isa => 'Str', request_name => 'instanceId', traits => ['NameInRequest']);
+  has NetworkInterfaceId => (is => 'ro', isa => 'Str', request_name => 'networkInterfaceId', traits => ['NameInRequest']);
+  has NetworkInterfaceOwnerId => (is => 'ro', isa => 'Str', request_name => 'networkInterfaceOwnerId', traits => ['NameInRequest']);
+  has PrivateIpAddress => (is => 'ro', isa => 'Str', request_name => 'privateIpAddress', traits => ['NameInRequest']);
+  has PublicIp => (is => 'ro', isa => 'Str', request_name => 'publicIp', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

@@ -1,11 +1,11 @@
 
 package Paws::IoT::DescribeThingResponse;
   use Moose;
-  has Attributes => (is => 'ro', isa => 'Paws::IoT::Attributes');
-  has DefaultClientId => (is => 'ro', isa => 'Str');
-  has ThingName => (is => 'ro', isa => 'Str');
-  has ThingTypeName => (is => 'ro', isa => 'Str');
-  has Version => (is => 'ro', isa => 'Int');
+  has Attributes => (is => 'ro', isa => 'Paws::IoT::Attributes', traits => ['NameInRequest'], request_name => 'attributes');
+  has DefaultClientId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'defaultClientId');
+  has ThingName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'thingName');
+  has ThingTypeName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'thingTypeName');
+  has Version => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'version');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

@@ -9,7 +9,7 @@ package Paws::Lambda::Invoke;
   has Qualifier => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'Qualifier' );
 
   use MooseX::ClassAttribute;
-
+  class_has _stream_param => (is => 'ro', default => 'Payload');
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'Invoke');
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2015-03-31/functions/{FunctionName}/invocations');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');

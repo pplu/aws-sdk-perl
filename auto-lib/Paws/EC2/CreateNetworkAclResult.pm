@@ -1,7 +1,7 @@
 
 package Paws::EC2::CreateNetworkAclResult;
   use Moose;
-  has NetworkAcl => (is => 'ro', isa => 'Paws::EC2::NetworkAcl', xmlname => 'networkAcl', traits => ['Unwrapped',]);
+  has NetworkAcl => (is => 'ro', isa => 'Paws::EC2::NetworkAcl', request_name => 'networkAcl', traits => ['NameInRequest',]);
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

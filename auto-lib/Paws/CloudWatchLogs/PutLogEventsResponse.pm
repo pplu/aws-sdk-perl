@@ -1,8 +1,8 @@
 
 package Paws::CloudWatchLogs::PutLogEventsResponse;
   use Moose;
-  has NextSequenceToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextSequenceToken' );
-  has RejectedLogEventsInfo => (is => 'ro', isa => 'Paws::CloudWatchLogs::RejectedLogEventsInfo', traits => ['Unwrapped'], xmlname => 'rejectedLogEventsInfo' );
+  has NextSequenceToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextSequenceToken' );
+  has RejectedLogEventsInfo => (is => 'ro', isa => 'Paws::CloudWatchLogs::RejectedLogEventsInfo', traits => ['NameInRequest'], request_name => 'rejectedLogEventsInfo' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

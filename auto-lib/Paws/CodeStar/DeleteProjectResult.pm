@@ -1,8 +1,8 @@
 
 package Paws::CodeStar::DeleteProjectResult;
   use Moose;
-  has ProjectArn => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'projectArn' );
-  has StackId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'stackId' );
+  has ProjectArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'projectArn' );
+  has StackId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'stackId' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

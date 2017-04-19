@@ -1,8 +1,8 @@
 
 package Paws::CodeStar::ListUserProfilesResult;
   use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
-  has UserProfiles => (is => 'ro', isa => 'ArrayRef[Paws::CodeStar::UserProfileSummary]', traits => ['Unwrapped'], xmlname => 'userProfiles' , required => 1);
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  has UserProfiles => (is => 'ro', isa => 'ArrayRef[Paws::CodeStar::UserProfileSummary]', traits => ['NameInRequest'], request_name => 'userProfiles' , required => 1);
 
   has _request_id => (is => 'ro', isa => 'Str');
 

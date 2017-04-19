@@ -1,8 +1,8 @@
 
 package Paws::EC2::CreateFpgaImageResult;
   use Moose;
-  has FpgaImageGlobalId => (is => 'ro', isa => 'Str', xmlname => 'fpgaImageGlobalId', traits => ['Unwrapped',]);
-  has FpgaImageId => (is => 'ro', isa => 'Str', xmlname => 'fpgaImageId', traits => ['Unwrapped',]);
+  has FpgaImageGlobalId => (is => 'ro', isa => 'Str', request_name => 'fpgaImageGlobalId', traits => ['NameInRequest',]);
+  has FpgaImageId => (is => 'ro', isa => 'Str', request_name => 'fpgaImageId', traits => ['NameInRequest',]);
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

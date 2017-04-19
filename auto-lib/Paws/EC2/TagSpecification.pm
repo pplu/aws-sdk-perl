@@ -1,7 +1,7 @@
 package Paws::EC2::TagSpecification;
   use Moose;
-  has ResourceType => (is => 'ro', isa => 'Str', xmlname => 'resourceType', traits => ['Unwrapped']);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', xmlname => 'Tag', traits => ['Unwrapped']);
+  has ResourceType => (is => 'ro', isa => 'Str', request_name => 'resourceType', traits => ['NameInRequest']);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'Tag', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

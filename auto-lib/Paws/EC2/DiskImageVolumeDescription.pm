@@ -1,7 +1,7 @@
 package Paws::EC2::DiskImageVolumeDescription;
   use Moose;
-  has Id => (is => 'ro', isa => 'Str', xmlname => 'id', traits => ['Unwrapped'], required => 1);
-  has Size => (is => 'ro', isa => 'Int', xmlname => 'size', traits => ['Unwrapped']);
+  has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest'], required => 1);
+  has Size => (is => 'ro', isa => 'Int', request_name => 'size', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

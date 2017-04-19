@@ -2,7 +2,7 @@
 package Paws::LexModels::GetBotAliasesResponse;
   use Moose;
   has BotAliases => (is => 'ro', isa => 'ArrayRef[Paws::LexModels::BotAliasMetadata]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

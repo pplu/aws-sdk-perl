@@ -1,8 +1,8 @@
 package Paws::CodeStar::TeamMember;
   use Moose;
-  has ProjectRole => (is => 'ro', isa => 'Str', xmlname => 'projectRole', request_name => 'projectRole', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has RemoteAccessAllowed => (is => 'ro', isa => 'Bool', xmlname => 'remoteAccessAllowed', request_name => 'remoteAccessAllowed', traits => ['Unwrapped','NameInRequest']);
-  has UserArn => (is => 'ro', isa => 'Str', xmlname => 'userArn', request_name => 'userArn', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has ProjectRole => (is => 'ro', isa => 'Str', request_name => 'projectRole', traits => ['NameInRequest'], required => 1);
+  has RemoteAccessAllowed => (is => 'ro', isa => 'Bool', request_name => 'remoteAccessAllowed', traits => ['NameInRequest']);
+  has UserArn => (is => 'ro', isa => 'Str', request_name => 'userArn', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###

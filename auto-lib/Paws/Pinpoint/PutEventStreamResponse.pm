@@ -2,7 +2,8 @@
 package Paws::Pinpoint::PutEventStreamResponse;
   use Moose;
   has EventStream => (is => 'ro', isa => 'Paws::Pinpoint::EventStream', required => 1);
-
+  use MooseX::ClassAttribute;
+  class_has _stream_param => (is => 'ro', default => 'EventStream');
   has _request_id => (is => 'ro', isa => 'Str');
 1;
 

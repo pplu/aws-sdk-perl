@@ -1,6 +1,6 @@
 package Paws::DeviceFarm::ExecutionConfiguration;
   use Moose;
-  has JobTimeoutMinutes => (is => 'ro', isa => 'Int', xmlname => 'jobTimeoutMinutes', request_name => 'jobTimeoutMinutes', traits => ['Unwrapped','NameInRequest']);
+  has JobTimeoutMinutes => (is => 'ro', isa => 'Int', request_name => 'jobTimeoutMinutes', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

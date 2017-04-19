@@ -1,7 +1,7 @@
 
 package Paws::DeviceFarm::UpdateNetworkProfileResult;
   use Moose;
-  has NetworkProfile => (is => 'ro', isa => 'Paws::DeviceFarm::NetworkProfile', traits => ['Unwrapped'], xmlname => 'networkProfile' );
+  has NetworkProfile => (is => 'ro', isa => 'Paws::DeviceFarm::NetworkProfile', traits => ['NameInRequest'], request_name => 'networkProfile' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

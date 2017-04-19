@@ -1,7 +1,7 @@
 
 package Paws::Lightsail::GetInstanceSnapshotResult;
   use Moose;
-  has InstanceSnapshot => (is => 'ro', isa => 'Paws::Lightsail::InstanceSnapshot', traits => ['Unwrapped'], xmlname => 'instanceSnapshot' );
+  has InstanceSnapshot => (is => 'ro', isa => 'Paws::Lightsail::InstanceSnapshot', traits => ['NameInRequest'], request_name => 'instanceSnapshot' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

@@ -1,9 +1,9 @@
 package Paws::CodePipeline::StageState;
   use Moose;
-  has ActionStates => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::ActionState]', xmlname => 'actionStates', request_name => 'actionStates', traits => ['Unwrapped','NameInRequest']);
-  has InboundTransitionState => (is => 'ro', isa => 'Paws::CodePipeline::TransitionState', xmlname => 'inboundTransitionState', request_name => 'inboundTransitionState', traits => ['Unwrapped','NameInRequest']);
-  has LatestExecution => (is => 'ro', isa => 'Paws::CodePipeline::StageExecution', xmlname => 'latestExecution', request_name => 'latestExecution', traits => ['Unwrapped','NameInRequest']);
-  has StageName => (is => 'ro', isa => 'Str', xmlname => 'stageName', request_name => 'stageName', traits => ['Unwrapped','NameInRequest']);
+  has ActionStates => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::ActionState]', request_name => 'actionStates', traits => ['NameInRequest']);
+  has InboundTransitionState => (is => 'ro', isa => 'Paws::CodePipeline::TransitionState', request_name => 'inboundTransitionState', traits => ['NameInRequest']);
+  has LatestExecution => (is => 'ro', isa => 'Paws::CodePipeline::StageExecution', request_name => 'latestExecution', traits => ['NameInRequest']);
+  has StageName => (is => 'ro', isa => 'Str', request_name => 'stageName', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

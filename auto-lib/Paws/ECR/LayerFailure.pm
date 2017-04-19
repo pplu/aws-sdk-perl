@@ -1,8 +1,8 @@
 package Paws::ECR::LayerFailure;
   use Moose;
-  has FailureCode => (is => 'ro', isa => 'Str', xmlname => 'failureCode', request_name => 'failureCode', traits => ['Unwrapped','NameInRequest']);
-  has FailureReason => (is => 'ro', isa => 'Str', xmlname => 'failureReason', request_name => 'failureReason', traits => ['Unwrapped','NameInRequest']);
-  has LayerDigest => (is => 'ro', isa => 'Str', xmlname => 'layerDigest', request_name => 'layerDigest', traits => ['Unwrapped','NameInRequest']);
+  has FailureCode => (is => 'ro', isa => 'Str', request_name => 'failureCode', traits => ['NameInRequest']);
+  has FailureReason => (is => 'ro', isa => 'Str', request_name => 'failureReason', traits => ['NameInRequest']);
+  has LayerDigest => (is => 'ro', isa => 'Str', request_name => 'layerDigest', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

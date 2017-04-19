@@ -1,9 +1,9 @@
 
 package Paws::DataPipeline::GetPipelineDefinitionOutput;
   use Moose;
-  has ParameterObjects => (is => 'ro', isa => 'ArrayRef[Paws::DataPipeline::ParameterObject]', traits => ['Unwrapped'], xmlname => 'parameterObjects' );
-  has ParameterValues => (is => 'ro', isa => 'ArrayRef[Paws::DataPipeline::ParameterValue]', traits => ['Unwrapped'], xmlname => 'parameterValues' );
-  has PipelineObjects => (is => 'ro', isa => 'ArrayRef[Paws::DataPipeline::PipelineObject]', traits => ['Unwrapped'], xmlname => 'pipelineObjects' );
+  has ParameterObjects => (is => 'ro', isa => 'ArrayRef[Paws::DataPipeline::ParameterObject]', traits => ['NameInRequest'], request_name => 'parameterObjects' );
+  has ParameterValues => (is => 'ro', isa => 'ArrayRef[Paws::DataPipeline::ParameterValue]', traits => ['NameInRequest'], request_name => 'parameterValues' );
+  has PipelineObjects => (is => 'ro', isa => 'ArrayRef[Paws::DataPipeline::PipelineObject]', traits => ['NameInRequest'], request_name => 'pipelineObjects' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

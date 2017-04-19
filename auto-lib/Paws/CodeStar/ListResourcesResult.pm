@@ -1,8 +1,8 @@
 
 package Paws::CodeStar::ListResourcesResult;
   use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
-  has Resources => (is => 'ro', isa => 'ArrayRef[Paws::CodeStar::Resource]', traits => ['Unwrapped'], xmlname => 'resources' );
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  has Resources => (is => 'ro', isa => 'ArrayRef[Paws::CodeStar::Resource]', traits => ['NameInRequest'], request_name => 'resources' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

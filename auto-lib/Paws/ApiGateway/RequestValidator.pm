@@ -1,10 +1,10 @@
 
 package Paws::ApiGateway::RequestValidator;
   use Moose;
-  has Id => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has ValidateRequestBody => (is => 'ro', isa => 'Bool');
-  has ValidateRequestParameters => (is => 'ro', isa => 'Bool');
+  has Id => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'id');
+  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name');
+  has ValidateRequestBody => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'validateRequestBody');
+  has ValidateRequestParameters => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'validateRequestParameters');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

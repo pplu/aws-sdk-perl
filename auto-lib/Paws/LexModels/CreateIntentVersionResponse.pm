@@ -1,21 +1,21 @@
 
 package Paws::LexModels::CreateIntentVersionResponse;
   use Moose;
-  has Checksum => (is => 'ro', isa => 'Str');
-  has ConclusionStatement => (is => 'ro', isa => 'Paws::LexModels::Statement');
-  has ConfirmationPrompt => (is => 'ro', isa => 'Paws::LexModels::Prompt');
-  has CreatedDate => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has DialogCodeHook => (is => 'ro', isa => 'Paws::LexModels::CodeHook');
-  has FollowUpPrompt => (is => 'ro', isa => 'Paws::LexModels::FollowUpPrompt');
-  has FulfillmentActivity => (is => 'ro', isa => 'Paws::LexModels::FulfillmentActivity');
-  has LastUpdatedDate => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has ParentIntentSignature => (is => 'ro', isa => 'Str');
-  has RejectionStatement => (is => 'ro', isa => 'Paws::LexModels::Statement');
-  has SampleUtterances => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Slots => (is => 'ro', isa => 'ArrayRef[Paws::LexModels::Slot]');
-  has Version => (is => 'ro', isa => 'Str');
+  has Checksum => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'checksum');
+  has ConclusionStatement => (is => 'ro', isa => 'Paws::LexModels::Statement', traits => ['NameInRequest'], request_name => 'conclusionStatement');
+  has ConfirmationPrompt => (is => 'ro', isa => 'Paws::LexModels::Prompt', traits => ['NameInRequest'], request_name => 'confirmationPrompt');
+  has CreatedDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'createdDate');
+  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
+  has DialogCodeHook => (is => 'ro', isa => 'Paws::LexModels::CodeHook', traits => ['NameInRequest'], request_name => 'dialogCodeHook');
+  has FollowUpPrompt => (is => 'ro', isa => 'Paws::LexModels::FollowUpPrompt', traits => ['NameInRequest'], request_name => 'followUpPrompt');
+  has FulfillmentActivity => (is => 'ro', isa => 'Paws::LexModels::FulfillmentActivity', traits => ['NameInRequest'], request_name => 'fulfillmentActivity');
+  has LastUpdatedDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'lastUpdatedDate');
+  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name');
+  has ParentIntentSignature => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'parentIntentSignature');
+  has RejectionStatement => (is => 'ro', isa => 'Paws::LexModels::Statement', traits => ['NameInRequest'], request_name => 'rejectionStatement');
+  has SampleUtterances => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'sampleUtterances');
+  has Slots => (is => 'ro', isa => 'ArrayRef[Paws::LexModels::Slot]', traits => ['NameInRequest'], request_name => 'slots');
+  has Version => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'version');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

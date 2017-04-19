@@ -1,7 +1,7 @@
 package Paws::LexModels::Intent;
   use Moose;
-  has IntentName => (is => 'ro', isa => 'Str', xmlname => 'intentName', request_name => 'intentName', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has IntentVersion => (is => 'ro', isa => 'Str', xmlname => 'intentVersion', request_name => 'intentVersion', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has IntentName => (is => 'ro', isa => 'Str', request_name => 'intentName', traits => ['NameInRequest'], required => 1);
+  has IntentVersion => (is => 'ro', isa => 'Str', request_name => 'intentVersion', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###

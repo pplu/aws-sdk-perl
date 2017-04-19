@@ -1,9 +1,9 @@
 package Paws::CodeStar::UserProfileSummary;
   use Moose;
-  has DisplayName => (is => 'ro', isa => 'Str', xmlname => 'displayName', request_name => 'displayName', traits => ['Unwrapped','NameInRequest']);
-  has EmailAddress => (is => 'ro', isa => 'Str', xmlname => 'emailAddress', request_name => 'emailAddress', traits => ['Unwrapped','NameInRequest']);
-  has SshPublicKey => (is => 'ro', isa => 'Str', xmlname => 'sshPublicKey', request_name => 'sshPublicKey', traits => ['Unwrapped','NameInRequest']);
-  has UserArn => (is => 'ro', isa => 'Str', xmlname => 'userArn', request_name => 'userArn', traits => ['Unwrapped','NameInRequest']);
+  has DisplayName => (is => 'ro', isa => 'Str', request_name => 'displayName', traits => ['NameInRequest']);
+  has EmailAddress => (is => 'ro', isa => 'Str', request_name => 'emailAddress', traits => ['NameInRequest']);
+  has SshPublicKey => (is => 'ro', isa => 'Str', request_name => 'sshPublicKey', traits => ['NameInRequest']);
+  has UserArn => (is => 'ro', isa => 'Str', request_name => 'userArn', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

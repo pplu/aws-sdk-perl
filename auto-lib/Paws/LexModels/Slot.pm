@@ -1,14 +1,14 @@
 package Paws::LexModels::Slot;
   use Moose;
-  has Description => (is => 'ro', isa => 'Str', xmlname => 'description', request_name => 'description', traits => ['Unwrapped','NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', xmlname => 'name', request_name => 'name', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has Priority => (is => 'ro', isa => 'Int', xmlname => 'priority', request_name => 'priority', traits => ['Unwrapped','NameInRequest']);
-  has ResponseCard => (is => 'ro', isa => 'Str', xmlname => 'responseCard', request_name => 'responseCard', traits => ['Unwrapped','NameInRequest']);
-  has SampleUtterances => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'sampleUtterances', request_name => 'sampleUtterances', traits => ['Unwrapped','NameInRequest']);
-  has SlotConstraint => (is => 'ro', isa => 'Str', xmlname => 'slotConstraint', request_name => 'slotConstraint', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has SlotType => (is => 'ro', isa => 'Str', xmlname => 'slotType', request_name => 'slotType', traits => ['Unwrapped','NameInRequest']);
-  has SlotTypeVersion => (is => 'ro', isa => 'Str', xmlname => 'slotTypeVersion', request_name => 'slotTypeVersion', traits => ['Unwrapped','NameInRequest']);
-  has ValueElicitationPrompt => (is => 'ro', isa => 'Paws::LexModels::Prompt', xmlname => 'valueElicitationPrompt', request_name => 'valueElicitationPrompt', traits => ['Unwrapped','NameInRequest']);
+  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
+  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
+  has Priority => (is => 'ro', isa => 'Int', request_name => 'priority', traits => ['NameInRequest']);
+  has ResponseCard => (is => 'ro', isa => 'Str', request_name => 'responseCard', traits => ['NameInRequest']);
+  has SampleUtterances => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'sampleUtterances', traits => ['NameInRequest']);
+  has SlotConstraint => (is => 'ro', isa => 'Str', request_name => 'slotConstraint', traits => ['NameInRequest'], required => 1);
+  has SlotType => (is => 'ro', isa => 'Str', request_name => 'slotType', traits => ['NameInRequest']);
+  has SlotTypeVersion => (is => 'ro', isa => 'Str', request_name => 'slotTypeVersion', traits => ['NameInRequest']);
+  has ValueElicitationPrompt => (is => 'ro', isa => 'Paws::LexModels::Prompt', request_name => 'valueElicitationPrompt', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

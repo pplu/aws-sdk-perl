@@ -1,7 +1,7 @@
 package Paws::LexModels::Message;
   use Moose;
-  has Content => (is => 'ro', isa => 'Str', xmlname => 'content', request_name => 'content', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has ContentType => (is => 'ro', isa => 'Str', xmlname => 'contentType', request_name => 'contentType', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has Content => (is => 'ro', isa => 'Str', request_name => 'content', traits => ['NameInRequest'], required => 1);
+  has ContentType => (is => 'ro', isa => 'Str', request_name => 'contentType', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###

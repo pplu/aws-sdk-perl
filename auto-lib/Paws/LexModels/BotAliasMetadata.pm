@@ -1,12 +1,12 @@
 package Paws::LexModels::BotAliasMetadata;
   use Moose;
-  has BotName => (is => 'ro', isa => 'Str', xmlname => 'botName', request_name => 'botName', traits => ['Unwrapped','NameInRequest']);
-  has BotVersion => (is => 'ro', isa => 'Str', xmlname => 'botVersion', request_name => 'botVersion', traits => ['Unwrapped','NameInRequest']);
-  has Checksum => (is => 'ro', isa => 'Str', xmlname => 'checksum', request_name => 'checksum', traits => ['Unwrapped','NameInRequest']);
-  has CreatedDate => (is => 'ro', isa => 'Str', xmlname => 'createdDate', request_name => 'createdDate', traits => ['Unwrapped','NameInRequest']);
-  has Description => (is => 'ro', isa => 'Str', xmlname => 'description', request_name => 'description', traits => ['Unwrapped','NameInRequest']);
-  has LastUpdatedDate => (is => 'ro', isa => 'Str', xmlname => 'lastUpdatedDate', request_name => 'lastUpdatedDate', traits => ['Unwrapped','NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', xmlname => 'name', request_name => 'name', traits => ['Unwrapped','NameInRequest']);
+  has BotName => (is => 'ro', isa => 'Str', request_name => 'botName', traits => ['NameInRequest']);
+  has BotVersion => (is => 'ro', isa => 'Str', request_name => 'botVersion', traits => ['NameInRequest']);
+  has Checksum => (is => 'ro', isa => 'Str', request_name => 'checksum', traits => ['NameInRequest']);
+  has CreatedDate => (is => 'ro', isa => 'Str', request_name => 'createdDate', traits => ['NameInRequest']);
+  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
+  has LastUpdatedDate => (is => 'ro', isa => 'Str', request_name => 'lastUpdatedDate', traits => ['NameInRequest']);
+  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

@@ -1,11 +1,11 @@
 package Paws::CodePipeline::ArtifactRevision;
   use Moose;
-  has Created => (is => 'ro', isa => 'Str', xmlname => 'created', request_name => 'created', traits => ['Unwrapped','NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', xmlname => 'name', request_name => 'name', traits => ['Unwrapped','NameInRequest']);
-  has RevisionChangeIdentifier => (is => 'ro', isa => 'Str', xmlname => 'revisionChangeIdentifier', request_name => 'revisionChangeIdentifier', traits => ['Unwrapped','NameInRequest']);
-  has RevisionId => (is => 'ro', isa => 'Str', xmlname => 'revisionId', request_name => 'revisionId', traits => ['Unwrapped','NameInRequest']);
-  has RevisionSummary => (is => 'ro', isa => 'Str', xmlname => 'revisionSummary', request_name => 'revisionSummary', traits => ['Unwrapped','NameInRequest']);
-  has RevisionUrl => (is => 'ro', isa => 'Str', xmlname => 'revisionUrl', request_name => 'revisionUrl', traits => ['Unwrapped','NameInRequest']);
+  has Created => (is => 'ro', isa => 'Str', request_name => 'created', traits => ['NameInRequest']);
+  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
+  has RevisionChangeIdentifier => (is => 'ro', isa => 'Str', request_name => 'revisionChangeIdentifier', traits => ['NameInRequest']);
+  has RevisionId => (is => 'ro', isa => 'Str', request_name => 'revisionId', traits => ['NameInRequest']);
+  has RevisionSummary => (is => 'ro', isa => 'Str', request_name => 'revisionSummary', traits => ['NameInRequest']);
+  has RevisionUrl => (is => 'ro', isa => 'Str', request_name => 'revisionUrl', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

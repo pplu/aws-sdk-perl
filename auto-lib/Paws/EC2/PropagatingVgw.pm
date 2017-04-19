@@ -1,6 +1,6 @@
 package Paws::EC2::PropagatingVgw;
   use Moose;
-  has GatewayId => (is => 'ro', isa => 'Str', xmlname => 'gatewayId', traits => ['Unwrapped']);
+  has GatewayId => (is => 'ro', isa => 'Str', request_name => 'gatewayId', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

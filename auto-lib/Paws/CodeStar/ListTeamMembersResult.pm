@@ -1,8 +1,8 @@
 
 package Paws::CodeStar::ListTeamMembersResult;
   use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
-  has TeamMembers => (is => 'ro', isa => 'ArrayRef[Paws::CodeStar::TeamMember]', traits => ['Unwrapped'], xmlname => 'teamMembers' , required => 1);
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  has TeamMembers => (is => 'ro', isa => 'ArrayRef[Paws::CodeStar::TeamMember]', traits => ['NameInRequest'], request_name => 'teamMembers' , required => 1);
 
   has _request_id => (is => 'ro', isa => 'Str');
 

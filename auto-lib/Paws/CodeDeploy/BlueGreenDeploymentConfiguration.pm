@@ -1,8 +1,8 @@
 package Paws::CodeDeploy::BlueGreenDeploymentConfiguration;
   use Moose;
-  has DeploymentReadyOption => (is => 'ro', isa => 'Paws::CodeDeploy::DeploymentReadyOption', xmlname => 'deploymentReadyOption', request_name => 'deploymentReadyOption', traits => ['Unwrapped','NameInRequest']);
-  has GreenFleetProvisioningOption => (is => 'ro', isa => 'Paws::CodeDeploy::GreenFleetProvisioningOption', xmlname => 'greenFleetProvisioningOption', request_name => 'greenFleetProvisioningOption', traits => ['Unwrapped','NameInRequest']);
-  has TerminateBlueInstancesOnDeploymentSuccess => (is => 'ro', isa => 'Paws::CodeDeploy::BlueInstanceTerminationOption', xmlname => 'terminateBlueInstancesOnDeploymentSuccess', request_name => 'terminateBlueInstancesOnDeploymentSuccess', traits => ['Unwrapped','NameInRequest']);
+  has DeploymentReadyOption => (is => 'ro', isa => 'Paws::CodeDeploy::DeploymentReadyOption', request_name => 'deploymentReadyOption', traits => ['NameInRequest']);
+  has GreenFleetProvisioningOption => (is => 'ro', isa => 'Paws::CodeDeploy::GreenFleetProvisioningOption', request_name => 'greenFleetProvisioningOption', traits => ['NameInRequest']);
+  has TerminateBlueInstancesOnDeploymentSuccess => (is => 'ro', isa => 'Paws::CodeDeploy::BlueInstanceTerminationOption', request_name => 'terminateBlueInstancesOnDeploymentSuccess', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

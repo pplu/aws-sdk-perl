@@ -1,8 +1,8 @@
 package Paws::Config::RecordingGroup;
   use Moose;
-  has AllSupported => (is => 'ro', isa => 'Bool', xmlname => 'allSupported', request_name => 'allSupported', traits => ['Unwrapped','NameInRequest']);
-  has IncludeGlobalResourceTypes => (is => 'ro', isa => 'Bool', xmlname => 'includeGlobalResourceTypes', request_name => 'includeGlobalResourceTypes', traits => ['Unwrapped','NameInRequest']);
-  has ResourceTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'resourceTypes', request_name => 'resourceTypes', traits => ['Unwrapped','NameInRequest']);
+  has AllSupported => (is => 'ro', isa => 'Bool', request_name => 'allSupported', traits => ['NameInRequest']);
+  has IncludeGlobalResourceTypes => (is => 'ro', isa => 'Bool', request_name => 'includeGlobalResourceTypes', traits => ['NameInRequest']);
+  has ResourceTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'resourceTypes', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

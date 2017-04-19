@@ -1,6 +1,6 @@
 package Paws::EC2::InstanceIpv6Address;
   use Moose;
-  has Ipv6Address => (is => 'ro', isa => 'Str', xmlname => 'ipv6Address', traits => ['Unwrapped']);
+  has Ipv6Address => (is => 'ro', isa => 'Str', request_name => 'ipv6Address', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

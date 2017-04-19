@@ -1,7 +1,7 @@
 
 package Paws::EC2::CreateVpnGatewayResult;
   use Moose;
-  has VpnGateway => (is => 'ro', isa => 'Paws::EC2::VpnGateway', xmlname => 'vpnGateway', traits => ['Unwrapped',]);
+  has VpnGateway => (is => 'ro', isa => 'Paws::EC2::VpnGateway', request_name => 'vpnGateway', traits => ['NameInRequest',]);
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

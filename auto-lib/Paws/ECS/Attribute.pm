@@ -1,9 +1,9 @@
 package Paws::ECS::Attribute;
   use Moose;
-  has Name => (is => 'ro', isa => 'Str', xmlname => 'name', request_name => 'name', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has TargetId => (is => 'ro', isa => 'Str', xmlname => 'targetId', request_name => 'targetId', traits => ['Unwrapped','NameInRequest']);
-  has TargetType => (is => 'ro', isa => 'Str', xmlname => 'targetType', request_name => 'targetType', traits => ['Unwrapped','NameInRequest']);
-  has Value => (is => 'ro', isa => 'Str', xmlname => 'value', request_name => 'value', traits => ['Unwrapped','NameInRequest']);
+  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
+  has TargetId => (is => 'ro', isa => 'Str', request_name => 'targetId', traits => ['NameInRequest']);
+  has TargetType => (is => 'ro', isa => 'Str', request_name => 'targetType', traits => ['NameInRequest']);
+  has Value => (is => 'ro', isa => 'Str', request_name => 'value', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

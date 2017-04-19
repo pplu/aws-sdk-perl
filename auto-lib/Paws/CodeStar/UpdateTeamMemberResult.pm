@@ -1,9 +1,9 @@
 
 package Paws::CodeStar::UpdateTeamMemberResult;
   use Moose;
-  has ProjectRole => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'projectRole' );
-  has RemoteAccessAllowed => (is => 'ro', isa => 'Bool', traits => ['Unwrapped'], xmlname => 'remoteAccessAllowed' );
-  has UserArn => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'userArn' );
+  has ProjectRole => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'projectRole' );
+  has RemoteAccessAllowed => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'remoteAccessAllowed' );
+  has UserArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'userArn' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

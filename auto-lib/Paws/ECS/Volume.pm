@@ -1,7 +1,7 @@
 package Paws::ECS::Volume;
   use Moose;
-  has Host => (is => 'ro', isa => 'Paws::ECS::HostVolumeProperties', xmlname => 'host', request_name => 'host', traits => ['Unwrapped','NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', xmlname => 'name', request_name => 'name', traits => ['Unwrapped','NameInRequest']);
+  has Host => (is => 'ro', isa => 'Paws::ECS::HostVolumeProperties', request_name => 'host', traits => ['NameInRequest']);
+  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

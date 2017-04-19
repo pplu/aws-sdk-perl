@@ -1,10 +1,10 @@
 
 package Paws::CodeStar::CreateProjectResult;
   use Moose;
-  has Arn => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'arn' , required => 1);
-  has ClientRequestToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'clientRequestToken' );
-  has Id => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'id' , required => 1);
-  has ProjectTemplateId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'projectTemplateId' );
+  has Arn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'arn' , required => 1);
+  has ClientRequestToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientRequestToken' );
+  has Id => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'id' , required => 1);
+  has ProjectTemplateId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'projectTemplateId' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

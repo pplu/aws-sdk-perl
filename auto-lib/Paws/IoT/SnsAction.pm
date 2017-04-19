@@ -1,8 +1,8 @@
 package Paws::IoT::SnsAction;
   use Moose;
-  has MessageFormat => (is => 'ro', isa => 'Str', xmlname => 'messageFormat', request_name => 'messageFormat', traits => ['Unwrapped','NameInRequest']);
-  has RoleArn => (is => 'ro', isa => 'Str', xmlname => 'roleArn', request_name => 'roleArn', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has TargetArn => (is => 'ro', isa => 'Str', xmlname => 'targetArn', request_name => 'targetArn', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has MessageFormat => (is => 'ro', isa => 'Str', request_name => 'messageFormat', traits => ['NameInRequest']);
+  has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest'], required => 1);
+  has TargetArn => (is => 'ro', isa => 'Str', request_name => 'targetArn', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###

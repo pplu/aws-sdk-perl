@@ -1,6 +1,6 @@
 package Paws::IoT::PutItemInput;
   use Moose;
-  has TableName => (is => 'ro', isa => 'Str', xmlname => 'tableName', request_name => 'tableName', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has TableName => (is => 'ro', isa => 'Str', request_name => 'tableName', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
