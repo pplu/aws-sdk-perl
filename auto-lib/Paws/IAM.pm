@@ -134,6 +134,11 @@ package Paws::IAM;
     my $call_object = $self->new_with_coercions('Paws::IAM::CreateSAMLProvider', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateServiceLinkedRole {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IAM::CreateServiceLinkedRole', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateServiceSpecificCredential {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IAM::CreateServiceSpecificCredential', @_);
@@ -592,6 +597,11 @@ package Paws::IAM;
   sub UpdateOpenIDConnectProviderThumbprint {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IAM::UpdateOpenIDConnectProviderThumbprint', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateRoleDescription {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IAM::UpdateRoleDescription', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateSAMLProvider {
@@ -1198,7 +1208,7 @@ package Paws::IAM;
   }
 
 
-  sub operations { qw/AddClientIDToOpenIDConnectProvider AddRoleToInstanceProfile AddUserToGroup AttachGroupPolicy AttachRolePolicy AttachUserPolicy ChangePassword CreateAccessKey CreateAccountAlias CreateGroup CreateInstanceProfile CreateLoginProfile CreateOpenIDConnectProvider CreatePolicy CreatePolicyVersion CreateRole CreateSAMLProvider CreateServiceSpecificCredential CreateUser CreateVirtualMFADevice DeactivateMFADevice DeleteAccessKey DeleteAccountAlias DeleteAccountPasswordPolicy DeleteGroup DeleteGroupPolicy DeleteInstanceProfile DeleteLoginProfile DeleteOpenIDConnectProvider DeletePolicy DeletePolicyVersion DeleteRole DeleteRolePolicy DeleteSAMLProvider DeleteServerCertificate DeleteServiceSpecificCredential DeleteSigningCertificate DeleteSSHPublicKey DeleteUser DeleteUserPolicy DeleteVirtualMFADevice DetachGroupPolicy DetachRolePolicy DetachUserPolicy EnableMFADevice GenerateCredentialReport GetAccessKeyLastUsed GetAccountAuthorizationDetails GetAccountPasswordPolicy GetAccountSummary GetContextKeysForCustomPolicy GetContextKeysForPrincipalPolicy GetCredentialReport GetGroup GetGroupPolicy GetInstanceProfile GetLoginProfile GetOpenIDConnectProvider GetPolicy GetPolicyVersion GetRole GetRolePolicy GetSAMLProvider GetServerCertificate GetSSHPublicKey GetUser GetUserPolicy ListAccessKeys ListAccountAliases ListAttachedGroupPolicies ListAttachedRolePolicies ListAttachedUserPolicies ListEntitiesForPolicy ListGroupPolicies ListGroups ListGroupsForUser ListInstanceProfiles ListInstanceProfilesForRole ListMFADevices ListOpenIDConnectProviders ListPolicies ListPolicyVersions ListRolePolicies ListRoles ListSAMLProviders ListServerCertificates ListServiceSpecificCredentials ListSigningCertificates ListSSHPublicKeys ListUserPolicies ListUsers ListVirtualMFADevices PutGroupPolicy PutRolePolicy PutUserPolicy RemoveClientIDFromOpenIDConnectProvider RemoveRoleFromInstanceProfile RemoveUserFromGroup ResetServiceSpecificCredential ResyncMFADevice SetDefaultPolicyVersion SimulateCustomPolicy SimulatePrincipalPolicy UpdateAccessKey UpdateAccountPasswordPolicy UpdateAssumeRolePolicy UpdateGroup UpdateLoginProfile UpdateOpenIDConnectProviderThumbprint UpdateSAMLProvider UpdateServerCertificate UpdateServiceSpecificCredential UpdateSigningCertificate UpdateSSHPublicKey UpdateUser UploadServerCertificate UploadSigningCertificate UploadSSHPublicKey / }
+  sub operations { qw/AddClientIDToOpenIDConnectProvider AddRoleToInstanceProfile AddUserToGroup AttachGroupPolicy AttachRolePolicy AttachUserPolicy ChangePassword CreateAccessKey CreateAccountAlias CreateGroup CreateInstanceProfile CreateLoginProfile CreateOpenIDConnectProvider CreatePolicy CreatePolicyVersion CreateRole CreateSAMLProvider CreateServiceLinkedRole CreateServiceSpecificCredential CreateUser CreateVirtualMFADevice DeactivateMFADevice DeleteAccessKey DeleteAccountAlias DeleteAccountPasswordPolicy DeleteGroup DeleteGroupPolicy DeleteInstanceProfile DeleteLoginProfile DeleteOpenIDConnectProvider DeletePolicy DeletePolicyVersion DeleteRole DeleteRolePolicy DeleteSAMLProvider DeleteServerCertificate DeleteServiceSpecificCredential DeleteSigningCertificate DeleteSSHPublicKey DeleteUser DeleteUserPolicy DeleteVirtualMFADevice DetachGroupPolicy DetachRolePolicy DetachUserPolicy EnableMFADevice GenerateCredentialReport GetAccessKeyLastUsed GetAccountAuthorizationDetails GetAccountPasswordPolicy GetAccountSummary GetContextKeysForCustomPolicy GetContextKeysForPrincipalPolicy GetCredentialReport GetGroup GetGroupPolicy GetInstanceProfile GetLoginProfile GetOpenIDConnectProvider GetPolicy GetPolicyVersion GetRole GetRolePolicy GetSAMLProvider GetServerCertificate GetSSHPublicKey GetUser GetUserPolicy ListAccessKeys ListAccountAliases ListAttachedGroupPolicies ListAttachedRolePolicies ListAttachedUserPolicies ListEntitiesForPolicy ListGroupPolicies ListGroups ListGroupsForUser ListInstanceProfiles ListInstanceProfilesForRole ListMFADevices ListOpenIDConnectProviders ListPolicies ListPolicyVersions ListRolePolicies ListRoles ListSAMLProviders ListServerCertificates ListServiceSpecificCredentials ListSigningCertificates ListSSHPublicKeys ListUserPolicies ListUsers ListVirtualMFADevices PutGroupPolicy PutRolePolicy PutUserPolicy RemoveClientIDFromOpenIDConnectProvider RemoveRoleFromInstanceProfile RemoveUserFromGroup ResetServiceSpecificCredential ResyncMFADevice SetDefaultPolicyVersion SimulateCustomPolicy SimulatePrincipalPolicy UpdateAccessKey UpdateAccountPasswordPolicy UpdateAssumeRolePolicy UpdateGroup UpdateLoginProfile UpdateOpenIDConnectProviderThumbprint UpdateRoleDescription UpdateSAMLProvider UpdateServerCertificate UpdateServiceSpecificCredential UpdateSigningCertificate UpdateSSHPublicKey UpdateUser UploadServerCertificate UploadSigningCertificate UploadSSHPublicKey / }
 
 1;
 
@@ -1314,7 +1324,9 @@ Each argument is described in detail in: L<Paws::IAM::AddRoleToInstanceProfile>
 
 Returns: nothing
 
-  Adds the specified IAM role to the specified instance profile.
+  Adds the specified IAM role to the specified instance profile. An
+instance profile can contain only one role, and this limit cannot be
+increased.
 
 The caller of this API must be granted the C<PassRole> permission on
 the IAM role by a permission policy.
@@ -1353,13 +1365,13 @@ Each argument is described in detail in: L<Paws::IAM::AttachRolePolicy>
 
 Returns: nothing
 
-  Attaches the specified managed policy to the specified IAM role.
+  Attaches the specified managed policy to the specified IAM role. When
+you attach a managed policy to a role, the managed policy becomes part
+of the role's permission (access) policy.
 
-When you attach a managed policy to a role, the managed policy becomes
-part of the role's permission (access) policy. You cannot use a managed
-policy as the role's trust policy. The role's trust policy is created
-at the same time as the role, using CreateRole. You can update a role's
-trust policy using UpdateAssumeRolePolicy.
+You cannot use a managed policy as the role's trust policy. The role's
+trust policy is created at the same time as the role, using CreateRole.
+You can update a role's trust policy using UpdateAssumeRolePolicy.
 
 Use this API to attach a I<managed> policy to a role. To embed an
 inline policy in a role, use PutRolePolicy. For more information about
@@ -1533,7 +1545,7 @@ For more information about managed policy versions, see Versioning for
 Managed Policies in the I<IAM User Guide>.
 
 
-=head2 CreateRole(AssumeRolePolicyDocument => Str, RoleName => Str, [Path => Str])
+=head2 CreateRole(AssumeRolePolicyDocument => Str, RoleName => Str, [Description => Str, Path => Str])
 
 Each argument is described in detail in: L<Paws::IAM::CreateRole>
 
@@ -1572,6 +1584,29 @@ This operation requires Signature Version 4.
 For more information, see Enabling SAML 2.0 Federated Users to Access
 the AWS Management Console and About SAML 2.0-based Federation in the
 I<IAM User Guide>.
+
+
+=head2 CreateServiceLinkedRole(AWSServiceName => Str, [CustomSuffix => Str, Description => Str])
+
+Each argument is described in detail in: L<Paws::IAM::CreateServiceLinkedRole>
+
+Returns: a L<Paws::IAM::CreateServiceLinkedRoleResponse> instance
+
+  Creates an IAM role that is linked to a specific AWS service. The
+service controls the attached policies and when the role can be
+deleted. This helps ensure that the service is not broken by an
+unexpectedly changed or deleted role, which could put your AWS
+resources into an unknown state. Allowing the service to control the
+role helps improve service stability and proper cleanup when a service
+and its role are no longer needed.
+
+The name of the role is autogenerated by combining the string that you
+specify for the C<AWSServiceName> parameter with the string that you
+specify for the C<CustomSuffix> parameter. The resulting name must be
+unique in your account or the request fails.
+
+To attach a policy to this service-linked role, you must make the
+request using the AWS service that depends on this role.
 
 
 =head2 CreateServiceSpecificCredential(ServiceName => Str, UserName => Str)
@@ -2898,7 +2933,7 @@ Returns: nothing
 Make sure you do not have any Amazon EC2 instances running with the
 role you are about to remove from the instance profile. Removing a role
 from an instance profile that is associated with a running instance
-break any applications running on the instance.
+might break any applications running on the instance.
 
 For more information about IAM roles, go to Working with Roles. For
 more information about instance profiles, go to About Instance
@@ -3129,6 +3164,15 @@ provider's certificate and is validated by the thumbprint, it is a best
 practice to limit access to the
 C<UpdateOpenIDConnectProviderThumbprint> action to highly-privileged
 users.
+
+
+=head2 UpdateRoleDescription(Description => Str, RoleName => Str)
+
+Each argument is described in detail in: L<Paws::IAM::UpdateRoleDescription>
+
+Returns: a L<Paws::IAM::UpdateRoleDescriptionResponse> instance
+
+  Modifies the description of a role.
 
 
 =head2 UpdateSAMLProvider(SAMLMetadataDocument => Str, SAMLProviderArn => Str)

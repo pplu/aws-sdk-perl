@@ -68,7 +68,7 @@ There is no sign-in data associated with the user
 =head2 B<REQUIRED> Region => Str
 
   The AWS region where this access key was most recently used. This field
-is null when:
+is displays "N/A" when:
 
 =over
 
@@ -94,7 +94,7 @@ the Amazon Web Services General Reference.
 =head2 B<REQUIRED> ServiceName => Str
 
   The name of the AWS service with which this access key was most
-recently used. This field is null when:
+recently used. This field displays "N/A" when:
 
 =over
 

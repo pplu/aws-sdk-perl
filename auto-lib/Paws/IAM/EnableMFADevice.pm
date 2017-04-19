@@ -42,6 +42,13 @@ An authentication code emitted by the device.
 
 The format for this parameter is a string of 6 digits.
 
+Submit your request immediately after generating the authentication
+codes. If you generate the codes and then wait too long to submit the
+request, the MFA device successfully associates with the user but the
+MFA device becomes out of sync. This happens because time-based
+one-time passwords (TOTP) expire after a short period of time. If this
+happens, you can resync the device.
+
 
 
 =head2 B<REQUIRED> AuthenticationCode2 => Str
@@ -49,6 +56,13 @@ The format for this parameter is a string of 6 digits.
 A subsequent authentication code emitted by the device.
 
 The format for this parameter is a string of 6 digits.
+
+Submit your request immediately after generating the authentication
+codes. If you generate the codes and then wait too long to submit the
+request, the MFA device successfully associates with the user but the
+MFA device becomes out of sync. This happens because time-based
+one-time passwords (TOTP) expire after a short period of time. If this
+happens, you can resync the device.
 
 
 
@@ -59,7 +73,7 @@ MFA devices, the serial number is the device ARN.
 
 This parameter allows (per its regex pattern) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
-spaces. You can also include any of the following characters: =/:,.@-
+spaces. You can also include any of the following characters: =,.@:/-
 
 
 

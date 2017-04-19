@@ -68,7 +68,7 @@ C<Base32String> value is Base64-encoded.
 
 =head2 User => L<Paws::IAM::User>
 
-  The user to whom the MFA device is assigned.
+  The IAM user associated with this virtual MFA device.
 
 
 

@@ -17,7 +17,7 @@ Paws::IAM::GetAccountPasswordPolicyResponse
 
 =head2 B<REQUIRED> PasswordPolicy => L<Paws::IAM::PasswordPolicy>
 
-Contains information about the account password policy.
+A structure that contains details about the account's password policy.
 
 
 =head2 _request_id => Str
