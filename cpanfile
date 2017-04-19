@@ -38,6 +38,10 @@ on 'develop' => sub {
   requires 'Dist::Zilla::Plugin::UploadToCPAN';
   requires 'Dist::Zilla::Plugin::RunExtraTests';
   requires 'Dist::Zilla::Plugin::Test::Compile';
+  requires 'Dist::Zilla::Plugin::Git::Check';
+  requires 'Dist::Zilla::Plugin::Git::GatherDir';
+  requires 'Dist::Zilla::Plugin::Git::Push';
+  requires 'Dist::Zilla::Plugin::Git::Tag';
   requires 'Carp::Always';
   requires 'Devel::Cover';
   requires 'Data::Printer';
