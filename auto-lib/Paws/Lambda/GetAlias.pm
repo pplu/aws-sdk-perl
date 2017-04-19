@@ -40,7 +40,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 Function name for which the alias is created. An alias is a subresource
 that exists only in the context of an existing Lambda function so you
-must specify the function name.
+must specify the function name. Note that the length constraint applies
+only to the ARN. If you specify only the function name, it is limited
+to 64 characters in length.
 
 
 

@@ -33,7 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GameLift::G
 
 Fleet designated in a game session queue. Requests for new game
 sessions in the queue are fulfilled by starting a new game session on
-any destination listed for a queue.
+any destination configured for a queue.
 
 =head1 ATTRIBUTES
 

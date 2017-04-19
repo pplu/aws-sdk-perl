@@ -179,8 +179,8 @@ about AWS regions, see Regions and Endpoints.
 
 =head2 UseOpsworksSecurityGroups => Bool
 
-  Whether the stack automatically associates the AWS OpsWorks built-in
-security groups with the stack's layers.
+  Whether the stack automatically associates the AWS OpsWorks Stacks
+built-in security groups with the stack's layers.
 
 
 =head2 VpcId => Str

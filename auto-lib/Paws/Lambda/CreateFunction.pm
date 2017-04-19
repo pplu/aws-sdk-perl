@@ -12,7 +12,9 @@ package Paws::Lambda::CreateFunction;
   has Publish => (is => 'ro', isa => 'Bool');
   has Role => (is => 'ro', isa => 'Str', required => 1);
   has Runtime => (is => 'ro', isa => 'Str', required => 1);
+  has Tags => (is => 'ro', isa => 'Paws::Lambda::Tags');
   has Timeout => (is => 'ro', isa => 'Int');
+  has TracingConfig => (is => 'ro', isa => 'Paws::Lambda::TracingConfig');
   has VpcConfig => (is => 'ro', isa => 'Paws::Lambda::VpcConfig');
 
   use MooseX::ClassAttribute;
@@ -55,7 +57,7 @@ The code for the Lambda function.
 
 =head2 DeadLetterConfig => L<Paws::Lambda::DeadLetterConfig>
 
-The parent object that contains the target Amazon Resource Name (ARN)
+The parent object that contains the target ARN (Amazon Resource Name)
 of an Amazon SQS queue or Amazon SNS topic.
 
 
@@ -78,7 +80,9 @@ value. Assign a meaningful description as you see fit.
 The name you want to assign to the function you are uploading. The
 function names appear in the console and are returned in the
 ListFunctions API. Function names are used to specify functions to
-other AWS Lambda API operations, such as Invoke.
+other AWS Lambda API operations, such as Invoke. Note that the length
+constraint applies only to the ARN. If you specify only the function
+name, it is limited to 64 characters in length.
 
 
 
@@ -130,15 +134,23 @@ resources. For more information, see AWS Lambda: How it Works.
 
 The runtime environment for the Lambda function you are uploading.
 
-To use the Node.js runtime v4.3, set the value to "nodejs4.3". To use
-earlier runtime (v0.10.42), set the value to "nodejs".
+To use the Python runtime v3.6, set the value to "python3.6". To use
+the Python runtime v2.7, set the value to "python2.7". To use the
+Node.js runtime v6.10, set the value to "nodejs6.10". To use the
+Node.js runtime v4.3, set the value to "nodejs4.3".
 
 You can no longer create functions using the v0.10.42 runtime version
 as of November, 2016. Existing functions will be supported until early
-2017, but we recommend you migrate them to nodejs4.3 runtime version as
-soon as possible.
+2017, but we recommend you migrate them to either nodejs6.10 or
+nodejs4.3 runtime version as soon as possible.
 
-Valid values are: C<"nodejs">, C<"nodejs4.3">, C<"nodejs6.10">, C<"java8">, C<"python2.7">, C<"dotnetcore1.0">, C<"nodejs4.3-edge">
+Valid values are: C<"nodejs">, C<"nodejs4.3">, C<"nodejs6.10">, C<"java8">, C<"python2.7">, C<"python3.6">, C<"dotnetcore1.0">, C<"nodejs4.3-edge">
+
+=head2 Tags => L<Paws::Lambda::Tags>
+
+The list of tags (key-value pairs) assigned to the new function.
+
+
 
 =head2 Timeout => Int
 
@@ -146,6 +158,12 @@ The function execution time at which Lambda should terminate the
 function. Because the execution time has cost implications, we
 recommend you set this value based on your expected execution time. The
 default is 3 seconds.
+
+
+
+=head2 TracingConfig => L<Paws::Lambda::TracingConfig>
+
+The parent object that contains your function's tracing settings.
 
 
 

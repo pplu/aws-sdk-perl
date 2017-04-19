@@ -40,7 +40,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 An C<AutoScalingThresholds> object with the downscaling threshold
 configuration. If the load falls below these thresholds for a specified
-amount of time, AWS OpsWorks stops a specified number of instances.
+amount of time, AWS OpsWorks Stacks stops a specified number of
+instances.
 
 
 
@@ -60,7 +61,8 @@ The layer ID.
 
 An C<AutoScalingThresholds> object with the upscaling threshold
 configuration. If the load exceeds these thresholds for a specified
-amount of time, AWS OpsWorks starts a specified number of instances.
+amount of time, AWS OpsWorks Stacks starts a specified number of
+instances.
 
 
 

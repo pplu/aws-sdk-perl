@@ -39,14 +39,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Limit => Int
 
-Limit the number of Authorizer resources in the response.
+The maximum number of returned results per page.
 
 
 
 =head2 Position => Str
 
-If not all Authorizer resources in the response were present, the
-position will specify where to start the next page of results.
+The current pagination position in the paged result set.
 
 
 

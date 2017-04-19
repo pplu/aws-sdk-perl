@@ -37,7 +37,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Attribute => Str
 
-The instance attribute.
+The attribute of the volume. This parameter is required.
 
 Valid values are: C<"autoEnableIO">, C<"productCodes">
 

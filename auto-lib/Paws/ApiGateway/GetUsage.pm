@@ -54,13 +54,13 @@ The Id of the API key associated with the resultant usage data.
 
 =head2 Limit => Int
 
-The maximum number of results to be returned.
+The maximum number of returned results per page.
 
 
 
 =head2 Position => Str
 
-Position
+The current pagination position in the paged result set.
 
 
 

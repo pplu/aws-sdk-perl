@@ -40,6 +40,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 The Lambda function name for which the alias is created. Deleting an
 alias does not delete the function version to which it is pointing.
+Note that the length constraint applies only to the ARN. If you specify
+only the function name, it is limited to 64 characters in length.
 
 
 

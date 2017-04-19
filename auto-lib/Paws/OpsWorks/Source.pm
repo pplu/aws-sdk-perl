@@ -65,24 +65,24 @@ password.
 For more information on how to safely handle IAM credentials, see
 http://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html.
 
-In responses, AWS OpsWorks returns C<*****FILTERED*****> instead of the
-actual value.
+In responses, AWS OpsWorks Stacks returns C<*****FILTERED*****> instead
+of the actual value.
 
 
 =head2 Revision => Str
 
-  The application's version. AWS OpsWorks enables you to easily deploy
-new versions of an application. One of the simplest approaches is to
-have branches or revisions in your repository that represent different
-versions that can potentially be deployed.
+  The application's version. AWS OpsWorks Stacks enables you to easily
+deploy new versions of an application. One of the simplest approaches
+is to have branches or revisions in your repository that represent
+different versions that can potentially be deployed.
 
 
 =head2 SshKey => Str
 
   In requests, the repository's SSH key.
 
-In responses, AWS OpsWorks returns C<*****FILTERED*****> instead of the
-actual value.
+In responses, AWS OpsWorks Stacks returns C<*****FILTERED*****> instead
+of the actual value.
 
 
 =head2 Type => Str

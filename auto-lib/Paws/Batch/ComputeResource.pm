@@ -3,6 +3,7 @@ package Paws::Batch::ComputeResource;
   has BidPercentage => (is => 'ro', isa => 'Int', request_name => 'bidPercentage', traits => ['NameInRequest']);
   has DesiredvCpus => (is => 'ro', isa => 'Int', request_name => 'desiredvCpus', traits => ['NameInRequest']);
   has Ec2KeyPair => (is => 'ro', isa => 'Str', request_name => 'ec2KeyPair', traits => ['NameInRequest']);
+  has ImageId => (is => 'ro', isa => 'Str', request_name => 'imageId', traits => ['NameInRequest']);
   has InstanceRole => (is => 'ro', isa => 'Str', request_name => 'instanceRole', traits => ['NameInRequest'], required => 1);
   has InstanceTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'instanceTypes', traits => ['NameInRequest'], required => 1);
   has MaxvCpus => (is => 'ro', isa => 'Int', request_name => 'maxvCpus', traits => ['NameInRequest'], required => 1);
@@ -65,6 +66,12 @@ instance.
 
   The EC2 key pair that is used for instances launched in the compute
 environment.
+
+
+=head2 ImageId => Str
+
+  The Amazon Machine Image (AMI) ID used for instances launched in the
+compute environment.
 
 
 =head2 B<REQUIRED> InstanceRole => Str

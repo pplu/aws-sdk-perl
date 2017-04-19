@@ -60,7 +60,9 @@ You can specify a function name (for example, C<Thumbnail>) or you can
 specify Amazon Resource Name (ARN) of the function (for example,
 C<arn:aws:lambda:us-west-2:account-id:function:ThumbNail>). AWS Lambda
 also allows you to specify a partial ARN (for example,
-C<account-id:Thumbnail>).
+C<account-id:Thumbnail>). Note that the length constraint applies only
+to the ARN. If you specify only the function name, it is limited to 64
+characters in length.
 
 If you are using versioning, you can also provide a qualified function
 ARN (ARN that is qualified with function version or alias name as

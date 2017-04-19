@@ -55,7 +55,7 @@ Specifies the minimum confidence level for the labels to return. Amazon
 Rekognition doesn't return any labels with confidence lower than this
 specified value.
 
-If C<minConfidence> is not specified, the operation returns labels with
+If C<MinConfidence> is not specified, the operation returns labels with
 a confidence values greater than or equal to 50 percent.
 
 

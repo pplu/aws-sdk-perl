@@ -40,8 +40,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Limit => Int
 
-A query parameter specifying the maximum number usage plan keys
-returned by the GET request.
+The maximum number of returned results per page.
 
 
 
@@ -54,8 +53,7 @@ keys.
 
 =head2 Position => Str
 
-A query parameter specifying the zero-based index specifying the
-position of a usage plan key.
+The current pagination position in the paged result set.
 
 
 

@@ -103,6 +103,11 @@ package Paws::Lambda;
     my $call_object = $self->new_with_coercions('Paws::Lambda::ListFunctions', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListTags {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lambda::ListTags', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListVersionsByFunction {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Lambda::ListVersionsByFunction', @_);
@@ -116,6 +121,16 @@ package Paws::Lambda;
   sub RemovePermission {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Lambda::RemovePermission', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub TagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lambda::TagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UntagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lambda::UntagResource', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateAlias {
@@ -183,7 +198,7 @@ package Paws::Lambda;
   }
 
 
-  sub operations { qw/AddPermission CreateAlias CreateEventSourceMapping CreateFunction DeleteAlias DeleteEventSourceMapping DeleteFunction GetAccountSettings GetAlias GetEventSourceMapping GetFunction GetFunctionConfiguration GetPolicy Invoke InvokeAsync ListAliases ListEventSourceMappings ListFunctions ListVersionsByFunction PublishVersion RemovePermission UpdateAlias UpdateEventSourceMapping UpdateFunctionCode UpdateFunctionConfiguration / }
+  sub operations { qw/AddPermission CreateAlias CreateEventSourceMapping CreateFunction DeleteAlias DeleteEventSourceMapping DeleteFunction GetAccountSettings GetAlias GetEventSourceMapping GetFunction GetFunctionConfiguration GetPolicy Invoke InvokeAsync ListAliases ListEventSourceMappings ListFunctions ListTags ListVersionsByFunction PublishVersion RemovePermission TagResource UntagResource UpdateAlias UpdateEventSourceMapping UpdateFunctionCode UpdateFunctionConfiguration / }
 
 1;
 
@@ -294,7 +309,7 @@ This operation requires permission for the
 C<lambda:CreateEventSourceMapping> action.
 
 
-=head2 CreateFunction(Code => L<Paws::Lambda::FunctionCode>, FunctionName => Str, Handler => Str, Role => Str, Runtime => Str, [DeadLetterConfig => L<Paws::Lambda::DeadLetterConfig>, Description => Str, Environment => L<Paws::Lambda::Environment>, KMSKeyArn => Str, MemorySize => Int, Publish => Bool, Timeout => Int, VpcConfig => L<Paws::Lambda::VpcConfig>])
+=head2 CreateFunction(Code => L<Paws::Lambda::FunctionCode>, FunctionName => Str, Handler => Str, Role => Str, Runtime => Str, [DeadLetterConfig => L<Paws::Lambda::DeadLetterConfig>, Description => Str, Environment => L<Paws::Lambda::Environment>, KMSKeyArn => Str, MemorySize => Int, Publish => Bool, Tags => L<Paws::Lambda::Tags>, Timeout => Int, TracingConfig => L<Paws::Lambda::TracingConfig>, VpcConfig => L<Paws::Lambda::VpcConfig>])
 
 Each argument is described in detail in: L<Paws::Lambda::CreateFunction>
 
@@ -460,8 +475,6 @@ specifying the version or alias name using the C<Qualifier> parameter.
 For more information about versioning, see AWS Lambda Function
 Versioning and Aliases.
 
-For information about adding permissions, see AddPermission.
-
 You need permission for the C<lambda:GetPolicy action.>
 
 
@@ -558,6 +571,16 @@ $LATEST versions of your functions. For information about the
 versioning feature, see AWS Lambda Function Versioning and Aliases.
 
 
+=head2 ListTags(Resource => Str)
+
+Each argument is described in detail in: L<Paws::Lambda::ListTags>
+
+Returns: a L<Paws::Lambda::ListTagsResponse> instance
+
+  Returns a list of tags assigned to a function when supplied the
+function ARN (Amazon Resource Name).
+
+
 =head2 ListVersionsByFunction(FunctionName => Str, [Marker => Str, MaxItems => Int])
 
 Each argument is described in detail in: L<Paws::Lambda::ListVersionsByFunction>
@@ -602,6 +625,28 @@ Note that removal of a permission will cause an active event source to
 lose permission to the function.
 
 You need permission for the C<lambda:RemovePermission> action.
+
+
+=head2 TagResource(Resource => Str, Tags => L<Paws::Lambda::Tags>)
+
+Each argument is described in detail in: L<Paws::Lambda::TagResource>
+
+Returns: nothing
+
+  Creates a list of tags (key-value pairs) on the Lambda function.
+Requires the Lambda function ARN (Amazon Resource Name). If a key is
+specified without a value, Lambda creates a tag with the specified key
+and a value of null.
+
+
+=head2 UntagResource(Resource => Str, TagKeys => ArrayRef[Str|Undef])
+
+Each argument is described in detail in: L<Paws::Lambda::UntagResource>
+
+Returns: nothing
+
+  Removes tags from a Lambda function. Requires the function ARN (Amazon
+Resource Name).
 
 
 =head2 UpdateAlias(FunctionName => Str, Name => Str, [Description => Str, FunctionVersion => Str])
@@ -662,7 +707,7 @@ This operation requires permission for the C<lambda:UpdateFunctionCode>
 action.
 
 
-=head2 UpdateFunctionConfiguration(FunctionName => Str, [DeadLetterConfig => L<Paws::Lambda::DeadLetterConfig>, Description => Str, Environment => L<Paws::Lambda::Environment>, Handler => Str, KMSKeyArn => Str, MemorySize => Int, Role => Str, Runtime => Str, Timeout => Int, VpcConfig => L<Paws::Lambda::VpcConfig>])
+=head2 UpdateFunctionConfiguration(FunctionName => Str, [DeadLetterConfig => L<Paws::Lambda::DeadLetterConfig>, Description => Str, Environment => L<Paws::Lambda::Environment>, Handler => Str, KMSKeyArn => Str, MemorySize => Int, Role => Str, Runtime => Str, Timeout => Int, TracingConfig => L<Paws::Lambda::TracingConfig>, VpcConfig => L<Paws::Lambda::VpcConfig>])
 
 Each argument is described in detail in: L<Paws::Lambda::UpdateFunctionConfiguration>
 

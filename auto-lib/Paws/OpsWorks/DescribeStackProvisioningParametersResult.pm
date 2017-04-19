@@ -17,7 +17,7 @@ Paws::OpsWorks::DescribeStackProvisioningParametersResult
 
 =head2 AgentInstallerUrl => Str
 
-The AWS OpsWorks agent installer's URL.
+The AWS OpsWorks Stacks agent installer's URL.
 
 
 =head2 Parameters => L<Paws::OpsWorks::Parameters>

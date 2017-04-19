@@ -161,7 +161,7 @@ SynthesizeSpeech operation.
 For more information, see Managing Lexicons.
 
 
-=head2 SynthesizeSpeech(OutputFormat => Str, Text => Str, VoiceId => Str, [LexiconNames => ArrayRef[Str|Undef], SampleRate => Str, TextType => Str])
+=head2 SynthesizeSpeech(OutputFormat => Str, Text => Str, VoiceId => Str, [LexiconNames => ArrayRef[Str|Undef], SampleRate => Str, SpeechMarkTypes => ArrayRef[Str|Undef], TextType => Str])
 
 Each argument is described in detail in: L<Paws::Polly::SynthesizeSpeech>
 

@@ -82,14 +82,14 @@ properties are passed to the server process hosting the game session.
 
   Unique identifier for the game session. A game session ID has the
 following format:
-"arn:aws:gamelift:E<lt>regionE<gt>::gamesession/E<lt>fleet
-IDE<gt>/E<lt>game session IDE<gt>".
+C<arn:aws:gamelift:E<lt>regionE<gt>::gamesession/E<lt>fleet
+IDE<gt>/E<lt>custom ID string or idempotency tokenE<gt>>.
 
 
 =head2 IpAddress => Str
 
-  IP address of the game session. To connect to a Amazon GameLift server
-process, an app needs both the IP address and port number.
+  IP address of the game session. To connect to a Amazon GameLift game
+server, an app needs both the IP address and port number.
 
 
 =head2 MaximumPlayerSessionCount => Int
@@ -111,8 +111,8 @@ do not need to be unique.
 
 =head2 Port => Int
 
-  Port number for the game session. To connect to a Amazon GameLift
-server process, an app needs both the IP address and port number.
+  Port number for the game session. To connect to a Amazon GameLift game
+server, an app needs both the IP address and port number.
 
 
 =head2 Status => Str

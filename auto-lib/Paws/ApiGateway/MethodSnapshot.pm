@@ -45,7 +45,10 @@ time.
 
 =head2 AuthorizationType => Str
 
-  Specifies the type of authorization used for the method.
+  The method's authorization type. Valid values are C<NONE> for open
+access, C<AWS_IAM> for using AWS IAM permissions, C<CUSTOM> for using a
+custom authorizer, or C<COGNITO_USER_POOLS> for using a Cognito user
+pool.
 
 
 

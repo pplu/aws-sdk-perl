@@ -57,9 +57,10 @@ instances whose OS you want to upgrade, such as C<Amazon Linux
 
 =item *
 
-C<allow_reboot> - Specifies whether to allow AWS OpsWorks to reboot the
-instances if necessary, after installing the updates. This argument can
-be set to either C<true> or C<false>. The default value is C<false>.
+C<allow_reboot> - Specifies whether to allow AWS OpsWorks Stacks to
+reboot the instances if necessary, after installing the updates. This
+argument can be set to either C<true> or C<false>. The default value is
+C<false>.
 
 =back
 
@@ -116,9 +117,9 @@ migrate the database. The default setting is {"migrate":["false"]}.
 =item *
 
 C<rollback> Roll the app back to the previous version. When you update
-an app, AWS OpsWorks stores the previous version, up to a maximum of
-five versions. You can use this command to roll an app back as many as
-four versions.
+an app, AWS OpsWorks Stacks stores the previous version, up to a
+maximum of five versions. You can use this command to roll an app back
+as many as four versions.
 
 =item *
 

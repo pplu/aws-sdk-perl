@@ -46,7 +46,9 @@ You can change the description of the alias using this parameter.
 
 =head2 B<REQUIRED> FunctionName => Str
 
-The function name for which the alias is created.
+The function name for which the alias is created. Note that the length
+constraint applies only to the ARN. If you specify only the function
+name, it is limited to 64 characters in length.
 
 
 

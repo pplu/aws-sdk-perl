@@ -4,6 +4,7 @@ package Paws::Polly::SynthesizeSpeech;
   has LexiconNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has OutputFormat => (is => 'ro', isa => 'Str', required => 1);
   has SampleRate => (is => 'ro', isa => 'Str');
+  has SpeechMarkTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Text => (is => 'ro', isa => 'Str', required => 1);
   has TextType => (is => 'ro', isa => 'Str');
   has VoiceId => (is => 'ro', isa => 'Str', required => 1);
@@ -51,9 +52,11 @@ about storing lexicons, see PutLexicon.
 
 =head2 B<REQUIRED> OutputFormat => Str
 
-The audio format in which the resulting stream will be encoded.
+The format in which the returned output will be encoded. For audio
+stream, this will be mp3, ogg_vorbis, or pcm. For speech marks, this
+will be json.
 
-Valid values are: C<"mp3">, C<"ogg_vorbis">, C<"pcm">
+Valid values are: C<"json">, C<"mp3">, C<"ogg_vorbis">, C<"pcm">
 
 =head2 SampleRate => Str
 
@@ -64,6 +67,12 @@ The valid values for C<mp3> and C<ogg_vorbis> are "8000", "16000", and
 
 Valid values for C<pcm> are "8000" and "16000" The default value is
 "16000".
+
+
+
+=head2 SpeechMarkTypes => ArrayRef[Str|Undef]
+
+The type of speech marks returned for the input text.
 
 
 

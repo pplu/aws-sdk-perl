@@ -2,6 +2,7 @@
 package Paws::ApiGateway::GetDeployment;
   use Moose;
   has DeploymentId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'deploymentId' , required => 1);
+  has Embed => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['ParamInQuery'], query_name => 'embed' );
   has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restApiId' , required => 1);
 
   use MooseX::ClassAttribute;
@@ -39,6 +40,22 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 B<REQUIRED> DeploymentId => Str
 
 The identifier of the Deployment resource to get information about.
+
+
+
+=head2 Embed => ArrayRef[Str|Undef]
+
+A query parameter to retrieve the specified embedded resources of the
+returned Deployment resource in the response. In a REST API call, this
+C<embed> parameter value is a list of comma-separated strings, as in
+C<GET
+/restapis/{restapi_id}/deployments/{deployment_id}?embed=var1,var2>.
+The SDK and other platform-dependent libraries might use a different
+format for the list. Currently, this request supports only retrieval of
+the embedded API summary this way. Hence, the parameter value must be a
+single-valued list containing only the C<"apisummary"> string. For
+example, C<GET
+/restapis/{restapi_id}/deployments/{deployment_id}?embed=apisummary>.
 
 
 

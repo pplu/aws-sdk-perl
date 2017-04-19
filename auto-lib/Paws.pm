@@ -278,6 +278,8 @@ L<Paws::CodeDeploy>
 
 L<Paws::CodePipeline>
 
+L<Paws::CodeStar>
+
 L<Paws::CognitoIdentity>
 
 L<Paws::CognitoIdp>
@@ -355,6 +357,8 @@ L<Paws::KinesisAnalytics>
 L<Paws::KMS>
 
 L<Paws::Lambda>
+
+L<Paws::LexModels>
 
 L<Paws::LexRuntime>
 

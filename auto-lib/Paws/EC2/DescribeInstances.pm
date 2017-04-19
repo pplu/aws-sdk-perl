@@ -63,26 +63,6 @@ C<architecture> - The instance architecture (C<i386> | C<x86_64>).
 
 =item *
 
-C<association.public-ip> - The address of the Elastic IP address (IPv4)
-bound to the network interface.
-
-=item *
-
-C<association.ip-owner-id> - The owner of the Elastic IP address (IPv4)
-associated with the network interface.
-
-=item *
-
-C<association.allocation-id> - The allocation ID returned when you
-allocated the Elastic IP address (IPv4) for your network interface.
-
-=item *
-
-C<association.association-id> - The association ID returned when the
-network interface was associated with an IPv4 address.
-
-=item *
-
 C<availability-zone> - The Availability Zone of the instance.
 
 =item *
@@ -228,6 +208,28 @@ association of an Elastic IP address (IPv4) with a network interface.
 
 C<network-interface.addresses.association.ip-owner-id> - The owner ID
 of the private IPv4 address associated with the network interface.
+
+=item *
+
+C<network-interface.association.public-ip> - The address of the Elastic
+IP address (IPv4) bound to the network interface.
+
+=item *
+
+C<network-interface.association.ip-owner-id> - The owner of the Elastic
+IP address (IPv4) associated with the network interface.
+
+=item *
+
+C<network-interface.association.allocation-id> - The allocation ID
+returned when you allocated the Elastic IP address (IPv4) for your
+network interface.
+
+=item *
+
+C<network-interface.association.association-id> - The association ID
+returned when the network interface was associated with an IPv4
+address.
 
 =item *
 

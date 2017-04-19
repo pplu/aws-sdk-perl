@@ -46,7 +46,9 @@ Description of the alias.
 
 =head2 B<REQUIRED> FunctionName => Str
 
-Name of the Lambda function for which you want to create an alias.
+Name of the Lambda function for which you want to create an alias. Note
+that the length constraint applies only to the ARN. If you specify only
+the function name, it is limited to 64 characters in length.
 
 
 

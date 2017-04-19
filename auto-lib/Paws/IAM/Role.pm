@@ -3,6 +3,7 @@ package Paws::IAM::Role;
   has Arn => (is => 'ro', isa => 'Str', required => 1);
   has AssumeRolePolicyDocument => (is => 'ro', isa => 'Str', decode_as => 'URLJSON', method => 'Policy', traits => ['JSONAttribute']);
   has CreateDate => (is => 'ro', isa => 'Str', required => 1);
+  has Description => (is => 'ro', isa => 'Str');
   has Path => (is => 'ro', isa => 'Str', required => 1);
   has RoleId => (is => 'ro', isa => 'Str', required => 1);
   has RoleName => (is => 'ro', isa => 'Str', required => 1);
@@ -36,26 +37,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IAM::Role o
 
 =head1 DESCRIPTION
 
-Contains information about an IAM role.
-
-This data type is used as a response element in the following actions:
-
-=over
-
-=item *
-
-CreateRole
-
-=item *
-
-GetRole
-
-=item *
-
-ListRoles
-
-=back
-
+Contains information about an IAM role. This structure is returned as a
+response element in several APIs that interact with roles.
 
 =head1 ATTRIBUTES
 
@@ -64,7 +47,7 @@ ListRoles
 
   The Amazon Resource Name (ARN) specifying the role. For more
 information about ARNs and how to use them in policies, see IAM
-Identifiers in the I<Using IAM> guide.
+Identifiers in the I<IAM User Guide> guide.
 
 
 =head2 AssumeRolePolicyDocument => Str
@@ -76,6 +59,11 @@ Identifiers in the I<Using IAM> guide.
 
   The date and time, in ISO 8601 date-time format, when the role was
 created.
+
+
+=head2 Description => Str
+
+  A description of the role that you provide.
 
 
 =head2 B<REQUIRED> Path => Str

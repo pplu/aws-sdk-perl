@@ -4,6 +4,7 @@ package Paws::OpsWorks::CreateLayer;
   has Attributes => (is => 'ro', isa => 'Paws::OpsWorks::LayerAttributes');
   has AutoAssignElasticIps => (is => 'ro', isa => 'Bool');
   has AutoAssignPublicIps => (is => 'ro', isa => 'Bool');
+  has CloudWatchLogsConfiguration => (is => 'ro', isa => 'Paws::OpsWorks::CloudWatchLogsConfiguration');
   has CustomInstanceProfileArn => (is => 'ro', isa => 'Str');
   has CustomJson => (is => 'ro', isa => 'Str');
   has CustomRecipes => (is => 'ro', isa => 'Paws::OpsWorks::Recipes');
@@ -71,6 +72,13 @@ instances. For more information, see How to Edit a Layer.
 For stacks that are running in a VPC, whether to automatically assign a
 public IP address to the layer's instances. For more information, see
 How to Edit a Layer.
+
+
+
+=head2 CloudWatchLogsConfiguration => L<Paws::OpsWorks::CloudWatchLogsConfiguration>
+
+Specifies CloudWatch Logs configuration options for the layer. For more
+information, see CloudWatchLogsLogStream.
 
 
 
@@ -145,13 +153,14 @@ An array of C<Package> objects that describes the layer packages.
 =head2 B<REQUIRED> Shortname => Str
 
 For custom layers only, use this parameter to specify the layer's short
-name, which is used internally by AWS OpsWorks and by Chef recipes. The
-short name is also used as the name for the directory where your app
-files are installed. It can have a maximum of 200 characters, which are
-limited to the alphanumeric characters, '-', '_', and '.'.
+name, which is used internally by AWS OpsWorks Stacks and by Chef
+recipes. The short name is also used as the name for the directory
+where your app files are installed. It can have a maximum of 200
+characters, which are limited to the alphanumeric characters, '-', '_',
+and '.'.
 
-The built-in layers' short names are defined by AWS OpsWorks. For more
-information, see the Layer Reference.
+The built-in layers' short names are defined by AWS OpsWorks Stacks.
+For more information, see the Layer Reference.
 
 
 

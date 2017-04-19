@@ -6,6 +6,7 @@ package Paws::GameLift::CreateGameSession;
   has FleetId => (is => 'ro', isa => 'Str');
   has GameProperties => (is => 'ro', isa => 'ArrayRef[Paws::GameLift::GameProperty]');
   has GameSessionId => (is => 'ro', isa => 'Str');
+  has IdempotencyToken => (is => 'ro', isa => 'Str');
   has MaximumPlayerSessionCount => (is => 'ro', isa => 'Int', required => 1);
   has Name => (is => 'ro', isa => 'Str');
 
@@ -49,9 +50,10 @@ ID, but not both.
 
 =head2 CreatorId => Str
 
-$player-id; or entity creating the game session. This ID is used to
-enforce a resource protection policy (if one exists) that limits the
-number of concurrent active game sessions one player can have.
+Unique identifier for a player or entity creating the game session.
+This ID is used to enforce a resource protection policy (if one exists)
+that limits the number of concurrent active game sessions one player
+can have.
 
 
 
@@ -71,12 +73,24 @@ properties are passed to the server process hosting the game session.
 
 =head2 GameSessionId => Str
 
-Custom string to include in the game session ID, with a maximum length
-of 48 characters. A game session ID has the following format:
-"arn:aws:gamelift:E<lt>regionE<gt>::gamesession/E<lt>fleet
-IDE<gt>/E<lt>game session IDE<gt>". If provided, the custom string is
-used for the game session ID string. This value cannot be updated once
-a game session is created.
+I<This parameter is no longer preferred. Please use C<IdempotencyToken>
+instead.> Custom string that uniquely identifies a request for a new
+game session. Maximum token length is 48 characters. If provided, this
+string is included in the new game session's ID. (A game session ID has
+the following format:
+C<arn:aws:gamelift:E<lt>regionE<gt>::gamesession/E<lt>fleet
+IDE<gt>/E<lt>custom ID string or idempotency tokenE<gt>>.)
+
+
+
+=head2 IdempotencyToken => Str
+
+Custom string that uniquely identifies a request for a new game
+session. Maximum token length is 48 characters. If provided, this
+string is included in the new game session's ID. (A game session ID has
+the following format:
+C<arn:aws:gamelift:E<lt>regionE<gt>::gamesession/E<lt>fleet
+IDE<gt>/E<lt>custom ID string or idempotency tokenE<gt>>.)
 
 
 

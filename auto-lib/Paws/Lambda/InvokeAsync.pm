@@ -38,7 +38,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> FunctionName => Str
 
-The Lambda function name.
+The Lambda function name. Note that the length constraint applies only
+to the ARN. If you specify only the function name, it is limited to 64
+characters in length.
 
 
 

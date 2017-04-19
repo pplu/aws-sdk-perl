@@ -42,7 +42,7 @@ Desktop Connection to log in to the instance.
 
 =head2 InstanceId => Str
 
-  The instance's AWS OpsWorks ID.
+  The instance's AWS OpsWorks Stacks ID.
 
 
 =head2 Password => Str

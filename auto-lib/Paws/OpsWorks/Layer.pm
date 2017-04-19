@@ -3,6 +3,7 @@ package Paws::OpsWorks::Layer;
   has Attributes => (is => 'ro', isa => 'Paws::OpsWorks::LayerAttributes');
   has AutoAssignElasticIps => (is => 'ro', isa => 'Bool');
   has AutoAssignPublicIps => (is => 'ro', isa => 'Bool');
+  has CloudWatchLogsConfiguration => (is => 'ro', isa => 'Paws::OpsWorks::CloudWatchLogsConfiguration');
   has CreatedAt => (is => 'ro', isa => 'Str');
   has CustomInstanceProfileArn => (is => 'ro', isa => 'Str');
   has CustomJson => (is => 'ro', isa => 'Str');
@@ -61,11 +62,11 @@ Describes a layer.
   The layer attributes.
 
 For the C<HaproxyStatsPassword>, C<MysqlRootPassword>, and
-C<GangliaPassword> attributes, AWS OpsWorks returns
+C<GangliaPassword> attributes, AWS OpsWorks Stacks returns
 C<*****FILTERED*****> instead of the actual value
 
-For an ECS Cluster layer, AWS OpsWorks the C<EcsClusterArn> attribute
-is set to the cluster's ARN.
+For an ECS Cluster layer, AWS OpsWorks Stacks the C<EcsClusterArn>
+attribute is set to the cluster's ARN.
 
 
 =head2 AutoAssignElasticIps => Bool
@@ -79,6 +80,11 @@ instances. For more information, see How to Edit a Layer.
   For stacks that are running in a VPC, whether to automatically assign a
 public IP address to the layer's instances. For more information, see
 How to Edit a Layer.
+
+
+=head2 CloudWatchLogsConfiguration => L<Paws::OpsWorks::CloudWatchLogsConfiguration>
+
+  The Amazon CloudWatch Logs configuration settings for the layer.
 
 
 =head2 CreatedAt => Str

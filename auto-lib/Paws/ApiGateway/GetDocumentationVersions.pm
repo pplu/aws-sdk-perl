@@ -39,14 +39,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Limit => Int
 
-The page size of the returned documentation versions.
+The maximum number of returned results per page.
 
 
 
 =head2 Position => Str
 
-The position of the returned C<DocumentationVersion> in the
-DocumentationVersions collection.
+The current pagination position in the paged result set.
 
 
 

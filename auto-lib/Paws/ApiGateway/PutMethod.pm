@@ -8,6 +8,7 @@ package Paws::ApiGateway::PutMethod;
   has OperationName => (is => 'ro', isa => 'Str');
   has RequestModels => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString');
   has RequestParameters => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToBoolean');
+  has RequestValidatorId => (is => 'ro', isa => 'Str');
   has ResourceId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'resourceId' , required => 1);
   has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restApiId' , required => 1);
 
@@ -51,7 +52,10 @@ Specifies whether the method required a valid ApiKey.
 
 =head2 B<REQUIRED> AuthorizationType => Str
 
-Specifies the type of authorization used for the method.
+The method's authorization type. Valid values are C<NONE> for open
+access, C<AWS_IAM> for using AWS IAM permissions, C<CUSTOM> for using a
+custom authorizer, or C<COGNITO_USER_POOLS> for using a Cognito user
+pool.
 
 
 
@@ -96,6 +100,12 @@ indicating whether the parameter is required (C<true>) or optional
 (C<false>). The method request parameter names defined here are
 available in Integration to be mapped to integration request parameters
 or body-mapping templates.
+
+
+
+=head2 RequestValidatorId => Str
+
+The identifier of a RequestValidator for validating the method request.
 
 
 

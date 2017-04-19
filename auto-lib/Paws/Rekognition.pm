@@ -44,6 +44,11 @@ package Paws::Rekognition;
     my $call_object = $self->new_with_coercions('Paws::Rekognition::DetectLabels', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DetectModerationLabels {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Rekognition::DetectModerationLabels', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub IndexFaces {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Rekognition::IndexFaces', @_);
@@ -114,7 +119,7 @@ package Paws::Rekognition;
   }
 
 
-  sub operations { qw/CompareFaces CreateCollection DeleteCollection DeleteFaces DetectFaces DetectLabels IndexFaces ListCollections ListFaces SearchFaces SearchFacesByImage / }
+  sub operations { qw/CompareFaces CreateCollection DeleteCollection DeleteFaces DetectFaces DetectLabels DetectModerationLabels IndexFaces ListCollections ListFaces SearchFaces SearchFacesByImage / }
 
 1;
 
@@ -309,6 +314,22 @@ persist any data.
 
 This operation requires permissions to perform the
 C<rekognition:DetectLabels> action.
+
+
+=head2 DetectModerationLabels(Image => L<Paws::Rekognition::Image>, [MinConfidence => Num])
+
+Each argument is described in detail in: L<Paws::Rekognition::DetectModerationLabels>
+
+Returns: a L<Paws::Rekognition::DetectModerationLabelsResponse> instance
+
+  Detects explicit or suggestive adult content in a specified .jpeg or
+.png image. Use C<DetectModerationLabels> to moderate images depending
+on your requirements. For example, you might want to filter images that
+contain nudity, but not images containing suggestive content.
+
+To filter images, use the labels returned by C<DetectModerationLabels>
+to determine which types of content are appropriate. For information
+about moderation labels, see howitworks-moderateimage.
 
 
 =head2 IndexFaces(CollectionId => Str, Image => L<Paws::Rekognition::Image>, [DetectionAttributes => ArrayRef[Str|Undef], ExternalImageId => Str])

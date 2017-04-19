@@ -71,7 +71,10 @@ associated with it.
 
 =head2 Value => Str
 
-  The new target value of the update operation.
+  The new target value of the update operation. When using AWS CLI to
+update a property of a JSON value, enclose the JSON object with a pair
+of single quotes in a Linux shell, e.g., '{"a": ...}'. In a Windows
+shell, see Using JSON for Parameters.
 
 
 
