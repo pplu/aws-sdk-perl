@@ -56,7 +56,8 @@ Describes an Amazon RDS instance.
 
 =head2 DbPassword => Str
 
-  AWS OpsWorks returns C<*****FILTERED*****> instead of the actual value.
+  AWS OpsWorks Stacks returns C<*****FILTERED*****> instead of the actual
+value.
 
 
 =head2 DbUser => Str
@@ -71,10 +72,10 @@ Describes an Amazon RDS instance.
 
 =head2 MissingOnRds => Bool
 
-  Set to C<true> if AWS OpsWorks was unable to discover the Amazon RDS
-instance. AWS OpsWorks attempts to discover the instance only once. If
-this value is set to C<true>, you must deregister the instance and then
-register it again.
+  Set to C<true> if AWS OpsWorks Stacks is unable to discover the Amazon
+RDS instance. AWS OpsWorks Stacks attempts to discover the instance
+only once. If this value is set to C<true>, you must deregister the
+instance, and then register it again.
 
 
 =head2 RdsDbInstanceArn => Str
@@ -89,7 +90,7 @@ register it again.
 
 =head2 StackId => Str
 
-  The ID of the stack that the instance is registered with.
+  The ID of the stack with which the instance is registered.
 
 
 

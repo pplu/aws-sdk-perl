@@ -35,13 +35,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::OpsWorks::R
 
 =head1 DESCRIPTION
 
-AWS OpsWorks supports five lifecycle events: B<setup>,
+AWS OpsWorks Stacks supports five lifecycle events: B<setup>,
 B<configuration>, B<deploy>, B<undeploy>, and B<shutdown>. For each
-layer, AWS OpsWorks runs a set of standard recipes for each event. In
-addition, you can provide custom recipes for any or all layers and
-events. AWS OpsWorks runs custom event recipes after the standard
-recipes. C<LayerCustomRecipes> specifies the custom recipes for a
-particular layer to be run in response to each of the five events.
+layer, AWS OpsWorks Stacks runs a set of standard recipes for each
+event. In addition, you can provide custom recipes for any or all
+layers and events. AWS OpsWorks Stacks runs custom event recipes after
+the standard recipes. C<LayerCustomRecipes> specifies the custom
+recipes for a particular layer to be run in response to each of the
+five events.
 
 To specify a recipe, use the cookbook's directory name in the
 repository followed by two colons and the recipe name, which is the

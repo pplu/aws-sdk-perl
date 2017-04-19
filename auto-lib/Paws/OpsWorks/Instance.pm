@@ -228,7 +228,7 @@ DescribeServiceErrors.
 
 =head2 ReportedAgentVersion => Str
 
-  The instance's reported AWS OpsWorks agent version.
+  The instance's reported AWS OpsWorks Stacks agent version.
 
 
 =head2 ReportedOs => L<Paws::OpsWorks::ReportedOs>

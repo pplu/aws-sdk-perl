@@ -418,19 +418,20 @@ Paws::OpsWorks - Perl Interface to AWS AWS OpsWorks
 
 AWS OpsWorks
 
-Welcome to the I<AWS OpsWorks API Reference>. This guide provides
-descriptions, syntax, and usage examples for AWS OpsWorks actions and
-data types, including common parameters and error codes.
+Welcome to the I<AWS OpsWorks Stacks API Reference>. This guide
+provides descriptions, syntax, and usage examples for AWS OpsWorks
+Stacks actions and data types, including common parameters and error
+codes.
 
-AWS OpsWorks is an application management service that provides an
-integrated experience for overseeing the complete application
+AWS OpsWorks Stacks is an application management service that provides
+an integrated experience for overseeing the complete application
 lifecycle. For information about this product, go to the AWS OpsWorks
 details page.
 
 B<SDKs and CLI>
 
-The most common way to use the AWS OpsWorks API is by using the AWS
-Command Line Interface (CLI) or by using one of the AWS SDKs to
+The most common way to use the AWS OpsWorks Stacks API is by using the
+AWS Command Line Interface (CLI) or by using one of the AWS SDKs to
 implement applications in your preferred language. For more
 information, see:
 
@@ -468,15 +469,19 @@ AWS SDK for Python(Boto)
 
 B<Endpoints>
 
-AWS OpsWorks supports the following endpoints, all HTTPS. You must
-connect to one of the following endpoints. Stacks can only be accessed
-or managed within the endpoint in which they are created.
+AWS OpsWorks Stacks supports the following endpoints, all HTTPS. You
+must connect to one of the following endpoints. Stacks can only be
+accessed or managed within the endpoint in which they are created.
 
 =over
 
 =item *
 
 opsworks.us-east-1.amazonaws.com
+
+=item *
+
+opsworks.us-east-2.amazonaws.com
 
 =item *
 
@@ -489,6 +494,10 @@ opsworks.us-west-2.amazonaws.com
 =item *
 
 opsworks.eu-west-1.amazonaws.com
+
+=item *
+
+opsworks.eu-west-2.amazonaws.com
 
 =item *
 
@@ -554,7 +563,7 @@ You can assign registered Amazon EC2 instances only to custom layers.
 =item *
 
 You cannot use this action with instances that were created with AWS
-OpsWorks.
+OpsWorks Stacks.
 
 =back
 
@@ -678,7 +687,7 @@ explicitly grants permissions. For more information on user
 permissions, see Managing User Permissions.
 
 
-=head2 CreateLayer(Name => Str, Shortname => Str, StackId => Str, Type => Str, [Attributes => L<Paws::OpsWorks::LayerAttributes>, AutoAssignElasticIps => Bool, AutoAssignPublicIps => Bool, CustomInstanceProfileArn => Str, CustomJson => Str, CustomRecipes => L<Paws::OpsWorks::Recipes>, CustomSecurityGroupIds => ArrayRef[Str|Undef], EnableAutoHealing => Bool, InstallUpdatesOnBoot => Bool, LifecycleEventConfiguration => L<Paws::OpsWorks::LifecycleEventConfiguration>, Packages => ArrayRef[Str|Undef], UseEbsOptimizedInstances => Bool, VolumeConfigurations => ArrayRef[L<Paws::OpsWorks::VolumeConfiguration>]])
+=head2 CreateLayer(Name => Str, Shortname => Str, StackId => Str, Type => Str, [Attributes => L<Paws::OpsWorks::LayerAttributes>, AutoAssignElasticIps => Bool, AutoAssignPublicIps => Bool, CloudWatchLogsConfiguration => L<Paws::OpsWorks::CloudWatchLogsConfiguration>, CustomInstanceProfileArn => Str, CustomJson => Str, CustomRecipes => L<Paws::OpsWorks::Recipes>, CustomSecurityGroupIds => ArrayRef[Str|Undef], EnableAutoHealing => Bool, InstallUpdatesOnBoot => Bool, LifecycleEventConfiguration => L<Paws::OpsWorks::LifecycleEventConfiguration>, Packages => ArrayRef[Str|Undef], UseEbsOptimizedInstances => Bool, VolumeConfigurations => ArrayRef[L<Paws::OpsWorks::VolumeConfiguration>]])
 
 Each argument is described in detail in: L<Paws::OpsWorks::CreateLayer>
 
@@ -842,7 +851,7 @@ Returns: nothing
   Deregister a registered Amazon EC2 or on-premises instance. This action
 removes the instance from the stack and returns it to your control.
 This action can not be used with instances that were created with AWS
-OpsWorks.
+OpsWorks Stacks.
 
 B<Required Permissions>: To use this action, an IAM user must have a
 Manage permissions level for the stack or an attached policy that
@@ -885,9 +894,9 @@ Each argument is described in detail in: L<Paws::OpsWorks::DescribeAgentVersions
 
 Returns: a L<Paws::OpsWorks::DescribeAgentVersionsResult> instance
 
-  Describes the available AWS OpsWorks agent versions. You must specify a
-stack ID or a configuration manager. C<DescribeAgentVersions> returns a
-list of available agent versions for the specified stack or
+  Describes the available AWS OpsWorks Stacks agent versions. You must
+specify a stack ID or a configuration manager. C<DescribeAgentVersions>
+returns a list of available agent versions for the specified stack or
 configuration manager.
 
 
@@ -899,7 +908,7 @@ Returns: a L<Paws::OpsWorks::DescribeAppsResult> instance
 
   Requests a description of a specified set of apps.
 
-You must specify at least one of the parameters.
+This call accepts only one resource-identifying parameter.
 
 B<Required Permissions>: To use this action, an IAM user must have a
 Show, Deploy, or Manage permissions level for the stack, or an attached
@@ -915,7 +924,7 @@ Returns: a L<Paws::OpsWorks::DescribeCommandsResult> instance
 
   Describes the results of specified commands.
 
-You must specify at least one of the parameters.
+This call accepts only one resource-identifying parameter.
 
 B<Required Permissions>: To use this action, an IAM user must have a
 Show, Deploy, or Manage permissions level for the stack, or an attached
@@ -931,7 +940,7 @@ Returns: a L<Paws::OpsWorks::DescribeDeploymentsResult> instance
 
   Requests a description of a specified set of deployments.
 
-You must specify at least one of the parameters.
+This call accepts only one resource-identifying parameter.
 
 B<Required Permissions>: To use this action, an IAM user must have a
 Show, Deploy, or Manage permissions level for the stack, or an attached
@@ -947,14 +956,16 @@ Returns: a L<Paws::OpsWorks::DescribeEcsClustersResult> instance
 
   Describes Amazon ECS clusters that are registered with a stack. If you
 specify only a stack ID, you can use the C<MaxResults> and C<NextToken>
-parameters to paginate the response. However, AWS OpsWorks currently
-supports only one cluster per layer, so the result set has a maximum of
-one element.
+parameters to paginate the response. However, AWS OpsWorks Stacks
+currently supports only one cluster per layer, so the result set has a
+maximum of one element.
 
 B<Required Permissions>: To use this action, an IAM user must have a
 Show, Deploy, or Manage permissions level for the stack or an attached
 policy that explicitly grants permission. For more information on user
 permissions, see Managing User Permissions.
+
+This call accepts only one resource-identifying parameter.
 
 
 =head2 DescribeElasticIps([InstanceId => Str, Ips => ArrayRef[Str|Undef], StackId => Str])
@@ -965,7 +976,7 @@ Returns: a L<Paws::OpsWorks::DescribeElasticIpsResult> instance
 
   Describes Elastic IP addresses.
 
-You must specify at least one of the parameters.
+This call accepts only one resource-identifying parameter.
 
 B<Required Permissions>: To use this action, an IAM user must have a
 Show, Deploy, or Manage permissions level for the stack, or an attached
@@ -981,7 +992,7 @@ Returns: a L<Paws::OpsWorks::DescribeElasticLoadBalancersResult> instance
 
   Describes a stack's Elastic Load Balancing instances.
 
-You must specify at least one of the parameters.
+This call accepts only one resource-identifying parameter.
 
 B<Required Permissions>: To use this action, an IAM user must have a
 Show, Deploy, or Manage permissions level for the stack, or an attached
@@ -997,7 +1008,7 @@ Returns: a L<Paws::OpsWorks::DescribeInstancesResult> instance
 
   Requests a description of a set of instances.
 
-You must specify at least one of the parameters.
+This call accepts only one resource-identifying parameter.
 
 B<Required Permissions>: To use this action, an IAM user must have a
 Show, Deploy, or Manage permissions level for the stack, or an attached
@@ -1013,7 +1024,7 @@ Returns: a L<Paws::OpsWorks::DescribeLayersResult> instance
 
   Requests a description of one or more layers in a specified stack.
 
-You must specify at least one of the parameters.
+This call accepts only one resource-identifying parameter.
 
 B<Required Permissions>: To use this action, an IAM user must have a
 Show, Deploy, or Manage permissions level for the stack, or an attached
@@ -1073,7 +1084,7 @@ Returns: a L<Paws::OpsWorks::DescribeRaidArraysResult> instance
 
   Describe an instance's RAID arrays.
 
-You must specify at least one of the parameters.
+This call accepts only one resource-identifying parameter.
 
 B<Required Permissions>: To use this action, an IAM user must have a
 Show, Deploy, or Manage permissions level for the stack, or an attached
@@ -1094,6 +1105,8 @@ Show, Deploy, or Manage permissions level for the stack, or an attached
 policy that explicitly grants permissions. For more information on user
 permissions, see Managing User Permissions.
 
+This call accepts only one resource-identifying parameter.
+
 
 =head2 DescribeServiceErrors([InstanceId => Str, ServiceErrorIds => ArrayRef[Str|Undef], StackId => Str])
 
@@ -1101,12 +1114,14 @@ Each argument is described in detail in: L<Paws::OpsWorks::DescribeServiceErrors
 
 Returns: a L<Paws::OpsWorks::DescribeServiceErrorsResult> instance
 
-  Describes AWS OpsWorks service errors.
+  Describes AWS OpsWorks Stacks service errors.
 
 B<Required Permissions>: To use this action, an IAM user must have a
 Show, Deploy, or Manage permissions level for the stack, or an attached
 policy that explicitly grants permissions. For more information on user
 permissions, see Managing User Permissions.
+
+This call accepts only one resource-identifying parameter.
 
 
 =head2 DescribeStackProvisioningParameters(StackId => Str)
@@ -1191,7 +1206,7 @@ Returns: a L<Paws::OpsWorks::DescribeVolumesResult> instance
 
   Describes an instance's Amazon EBS volumes.
 
-You must specify at least one of the parameters.
+This call accepts only one resource-identifying parameter.
 
 B<Required Permissions>: To use this action, an IAM user must have a
 Show, Deploy, or Manage permissions level for the stack, or an attached
@@ -1309,16 +1324,23 @@ Each argument is described in detail in: L<Paws::OpsWorks::RegisterInstance>
 
 Returns: a L<Paws::OpsWorks::RegisterInstanceResult> instance
 
-  Registers instances with a specified stack that were created outside of
-AWS OpsWorks.
+  Registers instances that were created outside of AWS OpsWorks Stacks
+with a specified stack.
 
 We do not recommend using this action to register instances. The
-complete registration operation has two primary steps, installing the
-AWS OpsWorks agent on the instance and registering the instance with
-the stack. C<RegisterInstance> handles only the second step. You should
-instead use the AWS CLI C<register> command, which performs the entire
-registration operation. For more information, see Registering an
-Instance with an AWS OpsWorks Stack.
+complete registration operation includes two tasks: installing the AWS
+OpsWorks Stacks agent on the instance, and registering the instance
+with the stack. C<RegisterInstance> handles only the second step. You
+should instead use the AWS CLI C<register> command, which performs the
+entire registration operation. For more information, see Registering an
+Instance with an AWS OpsWorks Stacks Stack.
+
+Registered instances have the same requirements as instances that are
+created by using the CreateInstance API. For example, registered
+instances must be running a supported Linux-based operating system, and
+they must have a supported instance type. For more information about
+requirements for instances that you want to register, see Preparing the
+Instance.
 
 B<Required Permissions>: To use this action, an IAM user must have a
 Manage permissions level for the stack or an attached policy that
@@ -1478,7 +1500,7 @@ Returns: nothing
   Unassigns a registered instance from all of it's layers. The instance
 remains in the stack as an unassigned instance and can be assigned to
 another layer, as needed. You cannot use this action with instances
-that were created with AWS OpsWorks.
+that were created with AWS OpsWorks Stacks.
 
 B<Required Permissions>: To use this action, an IAM user must have a
 Manage permissions level for the stack or an attached policy that
@@ -1544,7 +1566,7 @@ explicitly grants permissions. For more information on user
 permissions, see Managing User Permissions.
 
 
-=head2 UpdateLayer(LayerId => Str, [Attributes => L<Paws::OpsWorks::LayerAttributes>, AutoAssignElasticIps => Bool, AutoAssignPublicIps => Bool, CustomInstanceProfileArn => Str, CustomJson => Str, CustomRecipes => L<Paws::OpsWorks::Recipes>, CustomSecurityGroupIds => ArrayRef[Str|Undef], EnableAutoHealing => Bool, InstallUpdatesOnBoot => Bool, LifecycleEventConfiguration => L<Paws::OpsWorks::LifecycleEventConfiguration>, Name => Str, Packages => ArrayRef[Str|Undef], Shortname => Str, UseEbsOptimizedInstances => Bool, VolumeConfigurations => ArrayRef[L<Paws::OpsWorks::VolumeConfiguration>]])
+=head2 UpdateLayer(LayerId => Str, [Attributes => L<Paws::OpsWorks::LayerAttributes>, AutoAssignElasticIps => Bool, AutoAssignPublicIps => Bool, CloudWatchLogsConfiguration => L<Paws::OpsWorks::CloudWatchLogsConfiguration>, CustomInstanceProfileArn => Str, CustomJson => Str, CustomRecipes => L<Paws::OpsWorks::Recipes>, CustomSecurityGroupIds => ArrayRef[Str|Undef], EnableAutoHealing => Bool, InstallUpdatesOnBoot => Bool, LifecycleEventConfiguration => L<Paws::OpsWorks::LifecycleEventConfiguration>, Name => Str, Packages => ArrayRef[Str|Undef], Shortname => Str, UseEbsOptimizedInstances => Bool, VolumeConfigurations => ArrayRef[L<Paws::OpsWorks::VolumeConfiguration>]])
 
 Each argument is described in detail in: L<Paws::OpsWorks::UpdateLayer>
 

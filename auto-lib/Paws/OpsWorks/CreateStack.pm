@@ -53,13 +53,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AgentVersion => Str
 
-The default AWS OpsWorks agent version. You have the following options:
+The default AWS OpsWorks Stacks agent version. You have the following
+options:
 
 =over
 
 =item *
 
-Auto-update - Set this parameter to C<LATEST>. AWS OpsWorks
+Auto-update - Set this parameter to C<LATEST>. AWS OpsWorks Stacks
 automatically installs new agent versions on the stack's instances as
 soon as they are available.
 
@@ -67,15 +68,16 @@ soon as they are available.
 
 Fixed version - Set this parameter to your preferred agent version. To
 update the agent version, you must edit the stack configuration and
-specify a new version. AWS OpsWorks then automatically installs that
-version on the stack's instances.
+specify a new version. AWS OpsWorks Stacks then automatically installs
+that version on the stack's instances.
 
 =back
 
 The default setting is the most recent release of the agent. To specify
 an agent version, you must use the complete version number, not the
 abbreviated number shown on the console. For a list of available agent
-version numbers, call DescribeAgentVersions.
+version numbers, call DescribeAgentVersions. AgentVersion cannot be set
+to Chef 12.2.
 
 You can also specify an agent version when you create or update an
 instance, which overrides the stack's default setting.
@@ -154,8 +156,8 @@ create the instance. You can specify one of the following.
 =item *
 
 A supported Linux operating system: An Amazon Linux version, such as
-C<Amazon Linux 2016.03>, C<Amazon Linux 2015.09>, or C<Amazon Linux
-2015.03>.
+C<Amazon Linux 2016.09>, C<Amazon Linux 2016.03>, C<Amazon Linux
+2015.09>, or C<Amazon Linux 2015.03>.
 
 =item *
 
@@ -164,7 +166,7 @@ C<Ubuntu 14.04 LTS>, or C<Ubuntu 12.04 LTS>.
 
 =item *
 
-C<CentOS 7>
+C<CentOS Linux 7>
 
 =item *
 
@@ -185,7 +187,7 @@ when you create instances. For more information, see Using Custom AMIs.
 =back
 
 The default option is the current Amazon Linux version. For more
-information on the supported operating systems, see AWS OpsWorks
+information on the supported operating systems, see AWS OpsWorks Stacks
 Operating Systems.
 
 
@@ -300,9 +302,9 @@ about Amazon regions, see Regions and Endpoints.
 =head2 B<REQUIRED> ServiceRoleArn => Str
 
 The stack's AWS Identity and Access Management (IAM) role, which allows
-AWS OpsWorks to work with AWS resources on your behalf. You must set
-this parameter to the Amazon Resource Name (ARN) for an existing IAM
-role. For more information about IAM ARNs, see Using Identifiers.
+AWS OpsWorks Stacks to work with AWS resources on your behalf. You must
+set this parameter to the Amazon Resource Name (ARN) for an existing
+IAM role. For more information about IAM ARNs, see Using Identifiers.
 
 
 
@@ -314,32 +316,32 @@ Whether the stack uses custom cookbooks.
 
 =head2 UseOpsworksSecurityGroups => Bool
 
-Whether to associate the AWS OpsWorks built-in security groups with the
-stack's layers.
+Whether to associate the AWS OpsWorks Stacks built-in security groups
+with the stack's layers.
 
-AWS OpsWorks provides a standard set of built-in security groups, one
-for each layer, which are associated with layers by default. With
-C<UseOpsworksSecurityGroups> you can instead provide your own custom
-security groups. C<UseOpsworksSecurityGroups> has the following
-settings:
+AWS OpsWorks Stacks provides a standard set of built-in security
+groups, one for each layer, which are associated with layers by
+default. With C<UseOpsworksSecurityGroups> you can instead provide your
+own custom security groups. C<UseOpsworksSecurityGroups> has the
+following settings:
 
 =over
 
 =item *
 
-True - AWS OpsWorks automatically associates the appropriate built-in
-security group with each layer (default setting). You can associate
-additional security groups with a layer after you create it, but you
-cannot delete the built-in security group.
+True - AWS OpsWorks Stacks automatically associates the appropriate
+built-in security group with each layer (default setting). You can
+associate additional security groups with a layer after you create it,
+but you cannot delete the built-in security group.
 
 =item *
 
-False - AWS OpsWorks does not associate built-in security groups with
-layers. You must create appropriate EC2 security groups and associate a
-security group with each layer that you create. However, you can still
-manually associate a built-in security group with a layer on creation;
-custom security groups are required only for those layers that need
-custom settings.
+False - AWS OpsWorks Stacks does not associate built-in security groups
+with layers. You must create appropriate EC2 security groups and
+associate a security group with each layer that you create. However,
+you can still manually associate a built-in security group with a layer
+on creation; custom security groups are required only for those layers
+that need custom settings.
 
 =back
 
@@ -368,10 +370,10 @@ default VPC for the specified region.
 
 If the VPC ID corresponds to a default VPC and you have specified
 either the C<DefaultAvailabilityZone> or the C<DefaultSubnetId>
-parameter only, AWS OpsWorks infers the value of the other parameter.
-If you specify neither parameter, AWS OpsWorks sets these parameters to
-the first valid Availability Zone for the specified region and the
-corresponding default VPC subnet ID, respectively.
+parameter only, AWS OpsWorks Stacks infers the value of the other
+parameter. If you specify neither parameter, AWS OpsWorks Stacks sets
+these parameters to the first valid Availability Zone for the specified
+region and the corresponding default VPC subnet ID, respectively.
 
 If you specify a nondefault VPC ID, note the following:
 
@@ -388,9 +390,9 @@ You must specify a value for C<DefaultSubnetId>.
 
 =back
 
-For more information on how to use AWS OpsWorks with a VPC, see Running
-a Stack in a VPC. For more information on default VPC and EC2-Classic,
-see Supported Platforms.
+For more information on how to use AWS OpsWorks Stacks with a VPC, see
+Running a Stack in a VPC. For more information on default VPC and
+EC2-Classic, see Supported Platforms.
 
 
 
