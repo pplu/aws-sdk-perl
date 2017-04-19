@@ -3,12 +3,16 @@ package Paws::GameLift::GameSessionPlacement;
   has EndTime => (is => 'ro', isa => 'Str');
   has GameProperties => (is => 'ro', isa => 'ArrayRef[Paws::GameLift::GameProperty]');
   has GameSessionArn => (is => 'ro', isa => 'Str');
+  has GameSessionId => (is => 'ro', isa => 'Str');
   has GameSessionName => (is => 'ro', isa => 'Str');
   has GameSessionQueueName => (is => 'ro', isa => 'Str');
   has GameSessionRegion => (is => 'ro', isa => 'Str');
+  has IpAddress => (is => 'ro', isa => 'Str');
   has MaximumPlayerSessionCount => (is => 'ro', isa => 'Int');
+  has PlacedPlayerSessions => (is => 'ro', isa => 'ArrayRef[Paws::GameLift::PlacedPlayerSession]');
   has PlacementId => (is => 'ro', isa => 'Str');
   has PlayerLatencies => (is => 'ro', isa => 'ArrayRef[Paws::GameLift::PlayerLatency]');
+  has Port => (is => 'ro', isa => 'Int');
   has StartTime => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
 1;
@@ -69,7 +73,7 @@ StopGameSessionPlacement
 
 =head2 EndTime => Str
 
-  Time stamp indicating when this request was completed, cancelled, or
+  Time stamp indicating when this request was completed, canceled, or
 timed out.
 
 
@@ -82,8 +86,15 @@ properties are passed to the server process hosting the game session.
 =head2 GameSessionArn => Str
 
   Identifier for the game session created by this placement request. This
-value exists only if the game session placement status is Completed.
-This identifier is unique across all regions.
+value is set once the new game session is placed (placement status is
+Fulfilled). This identifier is unique across all regions. You can use
+this value as a C<GameSessionId> value as needed.
+
+
+=head2 GameSessionId => Str
+
+  Unique identifier for the game session. This value is set once the new
+game session is placed (placement status is Fulfilled).
 
 
 =head2 GameSessionName => Str
@@ -101,14 +112,33 @@ unique within each region.
 =head2 GameSessionRegion => Str
 
   Name of the region where the game session created by this placement
-request is running. This value exists only if the game session
-placement status is Completed.
+request is running. This value is set once the new game session is
+placed (placement status is Fulfilled).
+
+
+=head2 IpAddress => Str
+
+  IP address of the game session. To connect to a Amazon GameLift game
+server, an app needs both the IP address and port number. This value is
+set once the new game session is placed (placement status is
+Fulfilled).
 
 
 =head2 MaximumPlayerSessionCount => Int
 
   Maximum number of players that can be connected simultaneously to the
 game session.
+
+
+=head2 PlacedPlayerSessions => ArrayRef[L<Paws::GameLift::PlacedPlayerSession>]
+
+  Collection of information on player sessions created in response to the
+game session placement request. These player sessions are created only
+once a new game session is successfully placed (placement status is
+Fulfilled). This information includes the player ID (as provided in the
+placement request) and the corresponding player session ID. Retrieve
+full player sessions by calling DescribePlayerSessions with the player
+session ID.
 
 
 =head2 PlacementId => Str
@@ -119,7 +149,15 @@ game session.
 =head2 PlayerLatencies => ArrayRef[L<Paws::GameLift::PlayerLatency>]
 
   Set of values, expressed in milliseconds, indicating the amount of
-latency that players experience when connected to AWS regions.
+latency that players are experiencing when connected to AWS regions.
+
+
+=head2 Port => Int
+
+  Port number for the game session. To connect to a Amazon GameLift game
+server, an app needs both the IP address and port number. This value is
+set once the new game session is placed (placement status is
+Fulfilled).
 
 
 =head2 StartTime => Str
@@ -148,8 +186,8 @@ and I<GameSessionRegion> are available.
 
 =item *
 
-B<CANCELLED> E<ndash> The placement request was cancelled with a call
-to StopGameSessionPlacement.
+B<CANCELLED> E<ndash> The placement request was canceled with a call to
+StopGameSessionPlacement.
 
 =item *
 

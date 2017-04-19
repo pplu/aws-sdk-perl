@@ -76,7 +76,7 @@ game session.
 
 Unique identifier to assign to the new game session placement. This
 value is developer-defined. The value must be unique across all regions
-and cannot be reused unless you are resubmitting a cancelled or
+and cannot be reused unless you are resubmitting a canceled or
 timed-out placement request.
 
 
@@ -84,10 +84,9 @@ timed-out placement request.
 =head2 PlayerLatencies => ArrayRef[L<Paws::GameLift::PlayerLatency>]
 
 Set of values, expressed in milliseconds, indicating the amount of
-latency that players experience when connected to AWS regions. This
-information is relevant when requesting player sessions. Latency
-information provided for player IDs not included in
-I<DesiredPlayerSessions> are ignored.
+latency that players are experiencing when connected to AWS regions.
+This information is used to try to place the new game session where it
+can offer the best possible gameplay experience for the players.
 
 
 
