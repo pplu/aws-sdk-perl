@@ -1,9 +1,9 @@
 
 package Paws::EC2::DescribeSpotFleetInstancesResponse;
   use Moose;
-  has ActiveInstances => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ActiveInstance]', xmlname => 'activeInstanceSet', traits => ['Unwrapped',], required => 1);
-  has NextToken => (is => 'ro', isa => 'Str', xmlname => 'nextToken', traits => ['Unwrapped',]);
-  has SpotFleetRequestId => (is => 'ro', isa => 'Str', xmlname => 'spotFleetRequestId', traits => ['Unwrapped',], required => 1);
+  has ActiveInstances => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ActiveInstance]', request_name => 'activeInstanceSet', traits => ['NameInRequest',], required => 1);
+  has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest',]);
+  has SpotFleetRequestId => (is => 'ro', isa => 'Str', request_name => 'spotFleetRequestId', traits => ['NameInRequest',], required => 1);
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

@@ -1,6 +1,6 @@
 package Paws::S3::CompletedMultipartUpload;
   use Moose;
-  has Parts => (is => 'ro', isa => 'ArrayRef[Paws::S3::CompletedPart]', xmlname => 'Part', request_name => 'Part', traits => ['Unwrapped','NameInRequest']);
+  has Parts => (is => 'ro', isa => 'ArrayRef[Paws::S3::CompletedPart]', request_name => 'Part', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

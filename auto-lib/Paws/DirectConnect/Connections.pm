@@ -1,7 +1,7 @@
 
 package Paws::DirectConnect::Connections;
   use Moose;
-  has Connections => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::Connection]', traits => ['Unwrapped'], xmlname => 'connections' );
+  has Connections => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::Connection]', traits => ['NameInRequest'], request_name => 'connections' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

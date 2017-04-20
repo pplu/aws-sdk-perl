@@ -1,8 +1,8 @@
 
 package Paws::CodeCommit::TestRepositoryTriggersOutput;
   use Moose;
-  has FailedExecutions => (is => 'ro', isa => 'ArrayRef[Paws::CodeCommit::RepositoryTriggerExecutionFailure]', traits => ['Unwrapped'], xmlname => 'failedExecutions' );
-  has SuccessfulExecutions => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['Unwrapped'], xmlname => 'successfulExecutions' );
+  has FailedExecutions => (is => 'ro', isa => 'ArrayRef[Paws::CodeCommit::RepositoryTriggerExecutionFailure]', traits => ['NameInRequest'], request_name => 'failedExecutions' );
+  has SuccessfulExecutions => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'successfulExecutions' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

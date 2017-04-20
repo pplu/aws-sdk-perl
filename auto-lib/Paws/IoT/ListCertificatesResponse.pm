@@ -1,8 +1,8 @@
 
 package Paws::IoT::ListCertificatesResponse;
   use Moose;
-  has Certificates => (is => 'ro', isa => 'ArrayRef[Paws::IoT::Certificate]');
-  has NextMarker => (is => 'ro', isa => 'Str');
+  has Certificates => (is => 'ro', isa => 'ArrayRef[Paws::IoT::Certificate]', traits => ['NameInRequest'], request_name => 'certificates');
+  has NextMarker => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextMarker');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

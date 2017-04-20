@@ -154,13 +154,7 @@ Default Root Object in the I<Amazon CloudFront Developer Guide>.
 
 =head2 B<REQUIRED> Enabled => Bool
 
-  Specifies whether you want CloudFront to save access logs to an Amazon
-S3 bucket.
-
-If you do not want to enable logging when you create a distribution, or
-if you want to disable logging for an existing distribution, specify
-C<false> for C<Enabled>, and specify empty C<Bucket> and C<Prefix>
-elements.
+  From this field, you can enable or disable the selected distribution.
 
 If you specify C<false> for C<Enabled> but you specify values for
 C<Bucket> and C<Prefix>, the values are automatically deleted.

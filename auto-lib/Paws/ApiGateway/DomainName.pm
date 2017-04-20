@@ -1,10 +1,11 @@
 
 package Paws::ApiGateway::DomainName;
   use Moose;
-  has CertificateName => (is => 'ro', isa => 'Str');
-  has CertificateUploadDate => (is => 'ro', isa => 'Str');
-  has DistributionDomainName => (is => 'ro', isa => 'Str');
-  has DomainName => (is => 'ro', isa => 'Str');
+  has CertificateArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'certificateArn');
+  has CertificateName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'certificateName');
+  has CertificateUploadDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'certificateUploadDate');
+  has DistributionDomainName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'distributionDomainName');
+  has DomainName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'domainName');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;
@@ -18,6 +19,12 @@ Paws::ApiGateway::DomainName
 =head1 ATTRIBUTES
 
 
+=head2 CertificateArn => Str
+
+The reference to an AWS-managed certificate. AWS Certificate Manager is
+the only supported source.
+
+
 =head2 CertificateName => Str
 
 The name of the certificate.
@@ -25,7 +32,7 @@ The name of the certificate.
 
 =head2 CertificateUploadDate => Str
 
-The date when the certificate was uploaded, in ISO 8601 format.
+The timestamp when the certificate was uploaded.
 
 
 =head2 DistributionDomainName => Str

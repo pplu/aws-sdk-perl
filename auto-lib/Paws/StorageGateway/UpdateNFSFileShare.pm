@@ -7,6 +7,8 @@ package Paws::StorageGateway::UpdateNFSFileShare;
   has KMSEncrypted => (is => 'ro', isa => 'Bool');
   has KMSKey => (is => 'ro', isa => 'Str');
   has NFSFileShareDefaults => (is => 'ro', isa => 'Paws::StorageGateway::NFSFileShareDefaults');
+  has ReadOnly => (is => 'ro', isa => 'Bool');
+  has Squash => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -77,6 +79,22 @@ only be set when KmsEncrypted is true. Optional.
 =head2 NFSFileShareDefaults => L<Paws::StorageGateway::NFSFileShareDefaults>
 
 The default values for the file share. Optional.
+
+
+
+=head2 ReadOnly => Bool
+
+Sets the write status of a file share. "true", if the write status is
+read-only; otherwise "false.
+
+
+
+=head2 Squash => Str
+
+Indicates the user mapped to anonymous user. Valid options:
+"RootSquash" - Only root is mapped to anonymous user, "NoSquash" - No
+one is mapped to anonymous user or "AllSquash" - Everyone is mapped to
+anonymous user.
 
 
 

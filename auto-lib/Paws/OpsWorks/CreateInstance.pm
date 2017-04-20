@@ -52,7 +52,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AgentVersion => Str
 
-The default AWS OpsWorks agent version. You have the following options:
+The default AWS OpsWorks Stacks agent version. You have the following
+options:
 
 =over
 
@@ -65,14 +66,14 @@ C<INHERIT> - Use the stack's default agent version setting.
 I<version_number> - Use the specified agent version. This value
 overrides the stack's default setting. To update the agent version,
 edit the instance configuration and specify a new version. AWS OpsWorks
-then automatically installs that version on the instance.
+Stacks then automatically installs that version on the instance.
 
 =back
 
 The default setting is C<INHERIT>. To specify an agent version, you
 must use the complete version number, not the abbreviated number shown
 on the console. For a list of available agent version numbers, call
-DescribeAgentVersions.
+DescribeAgentVersions. AgentVersion cannot be set to Chef 12.2.
 
 
 
@@ -170,8 +171,8 @@ following.
 =item *
 
 A supported Linux operating system: An Amazon Linux version, such as
-C<Amazon Linux 2016.03>, C<Amazon Linux 2015.09>, or C<Amazon Linux
-2015.03>.
+C<Amazon Linux 2016.09>, C<Amazon Linux 2016.03>, C<Amazon Linux
+2015.09>, or C<Amazon Linux 2015.03>.
 
 =item *
 
@@ -180,7 +181,7 @@ C<Ubuntu 14.04 LTS>, or C<Ubuntu 12.04 LTS>.
 
 =item *
 
-C<CentOS 7>
+C<CentOS Linux 7>
 
 =item *
 
@@ -200,15 +201,15 @@ A custom AMI: C<Custom>.
 =back
 
 For more information on the supported operating systems, see AWS
-OpsWorks Operating Systems.
+OpsWorks Stacks Operating Systems.
 
 The default option is the current Amazon Linux version. If you set this
 parameter to C<Custom>, you must use the CreateInstance action's AmiId
 parameter to specify the custom AMI that you want to use. Block device
 mappings are not supported if the value is C<Custom>. For more
 information on the supported operating systems, see Operating
-SystemsFor more information on how to use custom AMIs with AWS
-OpsWorks, see Using Custom AMIs.
+SystemsFor more information on how to use custom AMIs with AWS OpsWorks
+Stacks, see Using Custom AMIs.
 
 
 
@@ -235,7 +236,8 @@ The stack ID.
 
 The ID of the instance's subnet. If the stack is running in a VPC, you
 can use this parameter to override the stack's default subnet ID value
-and direct AWS OpsWorks to launch the instance in a different subnet.
+and direct AWS OpsWorks Stacks to launch the instance in a different
+subnet.
 
 
 

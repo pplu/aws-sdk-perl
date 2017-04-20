@@ -1,7 +1,7 @@
 
 package Paws::SimpleWorkflow::ActivityTaskStatus;
   use Moose;
-  has CancelRequested => (is => 'ro', isa => 'Bool', traits => ['Unwrapped'], xmlname => 'cancelRequested' , required => 1);
+  has CancelRequested => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'cancelRequested' , required => 1);
 
   has _request_id => (is => 'ro', isa => 'Str');
 

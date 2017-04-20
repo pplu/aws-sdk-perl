@@ -1,9 +1,9 @@
 package Paws::CodePipeline::CurrentRevision;
   use Moose;
-  has ChangeIdentifier => (is => 'ro', isa => 'Str', xmlname => 'changeIdentifier', request_name => 'changeIdentifier', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has Created => (is => 'ro', isa => 'Str', xmlname => 'created', request_name => 'created', traits => ['Unwrapped','NameInRequest']);
-  has Revision => (is => 'ro', isa => 'Str', xmlname => 'revision', request_name => 'revision', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has RevisionSummary => (is => 'ro', isa => 'Str', xmlname => 'revisionSummary', request_name => 'revisionSummary', traits => ['Unwrapped','NameInRequest']);
+  has ChangeIdentifier => (is => 'ro', isa => 'Str', request_name => 'changeIdentifier', traits => ['NameInRequest'], required => 1);
+  has Created => (is => 'ro', isa => 'Str', request_name => 'created', traits => ['NameInRequest']);
+  has Revision => (is => 'ro', isa => 'Str', request_name => 'revision', traits => ['NameInRequest'], required => 1);
+  has RevisionSummary => (is => 'ro', isa => 'Str', request_name => 'revisionSummary', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

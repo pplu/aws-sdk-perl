@@ -1,8 +1,8 @@
 
 package Paws::CloudSearchDomain::SuggestResponse;
   use Moose;
-  has Status => (is => 'ro', isa => 'Paws::CloudSearchDomain::SuggestStatus');
-  has Suggest => (is => 'ro', isa => 'Paws::CloudSearchDomain::SuggestModel');
+  has Status => (is => 'ro', isa => 'Paws::CloudSearchDomain::SuggestStatus', traits => ['NameInRequest'], request_name => 'status');
+  has Suggest => (is => 'ro', isa => 'Paws::CloudSearchDomain::SuggestModel', traits => ['NameInRequest'], request_name => 'suggest');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

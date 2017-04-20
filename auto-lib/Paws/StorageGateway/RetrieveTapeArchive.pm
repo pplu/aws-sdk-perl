@@ -41,7 +41,7 @@ virtual tape to. Use the ListGateways operation to return a list of
 gateways for your account and region.
 
 You retrieve archived virtual tapes to only one gateway and the gateway
-must be a gateway-VTL.
+must be a tape gateway.
 
 
 

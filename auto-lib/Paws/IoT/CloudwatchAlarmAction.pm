@@ -1,9 +1,9 @@
 package Paws::IoT::CloudwatchAlarmAction;
   use Moose;
-  has AlarmName => (is => 'ro', isa => 'Str', xmlname => 'alarmName', request_name => 'alarmName', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has RoleArn => (is => 'ro', isa => 'Str', xmlname => 'roleArn', request_name => 'roleArn', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has StateReason => (is => 'ro', isa => 'Str', xmlname => 'stateReason', request_name => 'stateReason', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has StateValue => (is => 'ro', isa => 'Str', xmlname => 'stateValue', request_name => 'stateValue', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has AlarmName => (is => 'ro', isa => 'Str', request_name => 'alarmName', traits => ['NameInRequest'], required => 1);
+  has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest'], required => 1);
+  has StateReason => (is => 'ro', isa => 'Str', request_name => 'stateReason', traits => ['NameInRequest'], required => 1);
+  has StateValue => (is => 'ro', isa => 'Str', request_name => 'stateValue', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###

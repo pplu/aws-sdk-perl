@@ -1,8 +1,8 @@
 
 package Paws::EC2::DescribePrefixListsResult;
   use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', xmlname => 'nextToken', traits => ['Unwrapped',]);
-  has PrefixLists => (is => 'ro', isa => 'ArrayRef[Paws::EC2::PrefixList]', xmlname => 'prefixListSet', traits => ['Unwrapped',]);
+  has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest',]);
+  has PrefixLists => (is => 'ro', isa => 'ArrayRef[Paws::EC2::PrefixList]', request_name => 'prefixListSet', traits => ['NameInRequest',]);
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

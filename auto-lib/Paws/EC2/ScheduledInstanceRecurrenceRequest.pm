@@ -2,7 +2,7 @@ package Paws::EC2::ScheduledInstanceRecurrenceRequest;
   use Moose;
   has Frequency => (is => 'ro', isa => 'Str');
   has Interval => (is => 'ro', isa => 'Int');
-  has OccurrenceDays => (is => 'ro', isa => 'ArrayRef[Int]', xmlname => 'OccurrenceDay', traits => ['Unwrapped']);
+  has OccurrenceDays => (is => 'ro', isa => 'ArrayRef[Int]', request_name => 'OccurrenceDay', traits => ['NameInRequest']);
   has OccurrenceRelativeToEnd => (is => 'ro', isa => 'Bool');
   has OccurrenceUnit => (is => 'ro', isa => 'Str');
 1;

@@ -4,7 +4,7 @@ package Paws::IoT::SetLoggingOptions;
   has LoggingOptionsPayload => (is => 'ro', isa => 'Paws::IoT::LoggingOptionsPayload', required => 1);
 
   use MooseX::ClassAttribute;
-
+  class_has _stream_param => (is => 'ro', default => 'LoggingOptionsPayload');
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'SetLoggingOptions');
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/loggingOptions');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');

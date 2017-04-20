@@ -6,7 +6,7 @@ package Paws::Glacier::InitiateJob;
   has VaultName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'vaultName' , required => 1);
 
   use MooseX::ClassAttribute;
-
+  class_has _stream_param => (is => 'ro', default => 'JobParameters');
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'InitiateJob');
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/{accountId}/vaults/{vaultName}/jobs');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');

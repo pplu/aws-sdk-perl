@@ -2,7 +2,7 @@
 package Paws::RedShift::OrderableClusterOptionsMessage;
   use Moose;
   has Marker => (is => 'ro', isa => 'Str');
-  has OrderableClusterOptions => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::OrderableClusterOption]', xmlname => 'OrderableClusterOption', traits => ['Unwrapped',]);
+  has OrderableClusterOptions => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::OrderableClusterOption]', request_name => 'OrderableClusterOption', traits => ['NameInRequest',]);
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

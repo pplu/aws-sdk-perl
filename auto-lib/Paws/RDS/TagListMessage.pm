@@ -1,7 +1,7 @@
 
 package Paws::RDS::TagListMessage;
   use Moose;
-  has TagList => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Tag]', xmlname => 'Tag', traits => ['Unwrapped',]);
+  has TagList => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Tag]', request_name => 'Tag', traits => ['NameInRequest',]);
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

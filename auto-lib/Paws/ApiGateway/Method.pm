@@ -1,15 +1,16 @@
 
 package Paws::ApiGateway::Method;
   use Moose;
-  has ApiKeyRequired => (is => 'ro', isa => 'Bool');
-  has AuthorizationType => (is => 'ro', isa => 'Str');
-  has AuthorizerId => (is => 'ro', isa => 'Str');
-  has HttpMethod => (is => 'ro', isa => 'Str');
-  has MethodIntegration => (is => 'ro', isa => 'Paws::ApiGateway::Integration');
-  has MethodResponses => (is => 'ro', isa => 'Paws::ApiGateway::MapOfMethodResponse');
-  has OperationName => (is => 'ro', isa => 'Str');
-  has RequestModels => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString');
-  has RequestParameters => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToBoolean');
+  has ApiKeyRequired => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'apiKeyRequired');
+  has AuthorizationType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'authorizationType');
+  has AuthorizerId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'authorizerId');
+  has HttpMethod => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'httpMethod');
+  has MethodIntegration => (is => 'ro', isa => 'Paws::ApiGateway::Integration', traits => ['NameInRequest'], request_name => 'methodIntegration');
+  has MethodResponses => (is => 'ro', isa => 'Paws::ApiGateway::MapOfMethodResponse', traits => ['NameInRequest'], request_name => 'methodResponses');
+  has OperationName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'operationName');
+  has RequestModels => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['NameInRequest'], request_name => 'requestModels');
+  has RequestParameters => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToBoolean', traits => ['NameInRequest'], request_name => 'requestParameters');
+  has RequestValidatorId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'requestValidatorId');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;
@@ -31,7 +32,10 @@ this method.
 
 =head2 AuthorizationType => Str
 
-The method's authorization type.
+The method's authorization type. Valid values are C<NONE> for open
+access, C<AWS_IAM> for using AWS IAM permissions, C<CUSTOM> for using a
+custom authorizer, or C<COGNITO_USER_POOLS> for using a Cognito user
+pool.
 
 
 =head2 AuthorizerId => Str
@@ -118,6 +122,11 @@ indicating whether the parameter is required (C<true>) or optional
 (C<false>). The method request parameter names defined here are
 available in Integration to be mapped to integration request parameters
 or templates.
+
+
+=head2 RequestValidatorId => Str
+
+The identifier of a RequestValidator for request validation.
 
 
 =head2 _request_id => Str

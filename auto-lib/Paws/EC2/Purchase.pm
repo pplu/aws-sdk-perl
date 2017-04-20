@@ -1,13 +1,13 @@
 package Paws::EC2::Purchase;
   use Moose;
-  has CurrencyCode => (is => 'ro', isa => 'Str', xmlname => 'currencyCode', traits => ['Unwrapped']);
-  has Duration => (is => 'ro', isa => 'Int', xmlname => 'duration', traits => ['Unwrapped']);
-  has HostIdSet => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'hostIdSet', traits => ['Unwrapped']);
-  has HostReservationId => (is => 'ro', isa => 'Str', xmlname => 'hostReservationId', traits => ['Unwrapped']);
-  has HourlyPrice => (is => 'ro', isa => 'Str', xmlname => 'hourlyPrice', traits => ['Unwrapped']);
-  has InstanceFamily => (is => 'ro', isa => 'Str', xmlname => 'instanceFamily', traits => ['Unwrapped']);
-  has PaymentOption => (is => 'ro', isa => 'Str', xmlname => 'paymentOption', traits => ['Unwrapped']);
-  has UpfrontPrice => (is => 'ro', isa => 'Str', xmlname => 'upfrontPrice', traits => ['Unwrapped']);
+  has CurrencyCode => (is => 'ro', isa => 'Str', request_name => 'currencyCode', traits => ['NameInRequest']);
+  has Duration => (is => 'ro', isa => 'Int', request_name => 'duration', traits => ['NameInRequest']);
+  has HostIdSet => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'hostIdSet', traits => ['NameInRequest']);
+  has HostReservationId => (is => 'ro', isa => 'Str', request_name => 'hostReservationId', traits => ['NameInRequest']);
+  has HourlyPrice => (is => 'ro', isa => 'Str', request_name => 'hourlyPrice', traits => ['NameInRequest']);
+  has InstanceFamily => (is => 'ro', isa => 'Str', request_name => 'instanceFamily', traits => ['NameInRequest']);
+  has PaymentOption => (is => 'ro', isa => 'Str', request_name => 'paymentOption', traits => ['NameInRequest']);
+  has UpfrontPrice => (is => 'ro', isa => 'Str', request_name => 'upfrontPrice', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

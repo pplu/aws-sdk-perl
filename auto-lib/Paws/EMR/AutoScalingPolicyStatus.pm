@@ -39,7 +39,7 @@ The status of an automatic scaling policy.
 
 =head2 State => Str
 
-  
+  Indicates the status of the automatic scaling policy.
 
 
 =head2 StateChangeReason => L<Paws::EMR::AutoScalingPolicyStateChangeReason>

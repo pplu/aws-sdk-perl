@@ -1,10 +1,10 @@
 package Paws::Lightsail::DomainEntry;
   use Moose;
-  has Id => (is => 'ro', isa => 'Str', xmlname => 'id', request_name => 'id', traits => ['Unwrapped','NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', xmlname => 'name', request_name => 'name', traits => ['Unwrapped','NameInRequest']);
-  has Options => (is => 'ro', isa => 'Paws::Lightsail::DomainEntryOptions', xmlname => 'options', request_name => 'options', traits => ['Unwrapped','NameInRequest']);
-  has Target => (is => 'ro', isa => 'Str', xmlname => 'target', request_name => 'target', traits => ['Unwrapped','NameInRequest']);
-  has Type => (is => 'ro', isa => 'Str', xmlname => 'type', request_name => 'type', traits => ['Unwrapped','NameInRequest']);
+  has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest']);
+  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
+  has Options => (is => 'ro', isa => 'Paws::Lightsail::DomainEntryOptions', request_name => 'options', traits => ['NameInRequest']);
+  has Target => (is => 'ro', isa => 'Str', request_name => 'target', traits => ['NameInRequest']);
+  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

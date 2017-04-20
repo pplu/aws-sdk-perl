@@ -166,7 +166,7 @@ Each argument is described in detail in: L<Paws::Batch::CreateComputeEnvironment
 Returns: a L<Paws::Batch::CreateComputeEnvironmentResponse> instance
 
   Creates an AWS Batch compute environment. You can create C<MANAGED> or
-C<UNMANAGED>compute environments.
+C<UNMANAGED> compute environments.
 
 In a managed compute environment, AWS Batch manages the compute
 resources within the environment, based on the compute resources that
@@ -295,7 +295,7 @@ Returns: a L<Paws::Batch::ListJobsResponse> instance
 the results by job status with the C<jobStatus> parameter.
 
 
-=head2 RegisterJobDefinition(JobDefinitionName => Str, Type => Str, [ContainerProperties => L<Paws::Batch::ContainerProperties>, Parameters => L<Paws::Batch::ParametersMap>])
+=head2 RegisterJobDefinition(JobDefinitionName => Str, Type => Str, [ContainerProperties => L<Paws::Batch::ContainerProperties>, Parameters => L<Paws::Batch::ParametersMap>, RetryStrategy => L<Paws::Batch::RetryStrategy>])
 
 Each argument is described in detail in: L<Paws::Batch::RegisterJobDefinition>
 
@@ -304,7 +304,7 @@ Returns: a L<Paws::Batch::RegisterJobDefinitionResponse> instance
   Registers an AWS Batch job definition.
 
 
-=head2 SubmitJob(JobDefinition => Str, JobName => Str, JobQueue => Str, [ContainerOverrides => L<Paws::Batch::ContainerOverrides>, DependsOn => ArrayRef[L<Paws::Batch::JobDependency>], Parameters => L<Paws::Batch::ParametersMap>])
+=head2 SubmitJob(JobDefinition => Str, JobName => Str, JobQueue => Str, [ContainerOverrides => L<Paws::Batch::ContainerOverrides>, DependsOn => ArrayRef[L<Paws::Batch::JobDependency>], Parameters => L<Paws::Batch::ParametersMap>, RetryStrategy => L<Paws::Batch::RetryStrategy>])
 
 Each argument is described in detail in: L<Paws::Batch::SubmitJob>
 

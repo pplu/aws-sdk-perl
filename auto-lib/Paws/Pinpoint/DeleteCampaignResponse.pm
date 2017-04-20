@@ -2,7 +2,8 @@
 package Paws::Pinpoint::DeleteCampaignResponse;
   use Moose;
   has CampaignResponse => (is => 'ro', isa => 'Paws::Pinpoint::CampaignResponse', required => 1);
-
+  use MooseX::ClassAttribute;
+  class_has _stream_param => (is => 'ro', default => 'CampaignResponse');
   has _request_id => (is => 'ro', isa => 'Str');
 1;
 

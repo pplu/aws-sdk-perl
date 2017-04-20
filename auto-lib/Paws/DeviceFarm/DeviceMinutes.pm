@@ -1,8 +1,8 @@
 package Paws::DeviceFarm::DeviceMinutes;
   use Moose;
-  has Metered => (is => 'ro', isa => 'Num', xmlname => 'metered', request_name => 'metered', traits => ['Unwrapped','NameInRequest']);
-  has Total => (is => 'ro', isa => 'Num', xmlname => 'total', request_name => 'total', traits => ['Unwrapped','NameInRequest']);
-  has Unmetered => (is => 'ro', isa => 'Num', xmlname => 'unmetered', request_name => 'unmetered', traits => ['Unwrapped','NameInRequest']);
+  has Metered => (is => 'ro', isa => 'Num', request_name => 'metered', traits => ['NameInRequest']);
+  has Total => (is => 'ro', isa => 'Num', request_name => 'total', traits => ['NameInRequest']);
+  has Unmetered => (is => 'ro', isa => 'Num', request_name => 'unmetered', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

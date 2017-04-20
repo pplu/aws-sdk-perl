@@ -285,10 +285,10 @@ Amazon GameLift Service
 Amazon GameLift is a managed service for developers who need a
 scalable, dedicated server solution for their multiplayer games. Amazon
 GameLift provides tools to acquire computing resources and deploy game
-servers, scale game server capacity to meed player demand, and track
+servers, scale game server capacity to meet player demand, and track
 in-depth metrics on player usage and server performance.
 
-The Amazon GameLift service API includes important functionality to:
+The Amazon GameLift service API includes important features:
 
 =over
 
@@ -312,6 +312,13 @@ development kit (AWS SDK), available in multiple languages, or the AWS
 command-line interface (CLI) tool. Both of these align with the
 low-level service API. In addition, you can use the AWS Management
 Console for Amazon GameLift for many administrative actions.
+
+You can use some API actions with Amazon GameLift Local, a testing tool
+that lets you test your game integration locally before deploying on
+Amazon GameLift. You can call these APIs from the AWS CLI or
+programmatically; API calls to Amazon GameLift Local servers perform
+exactly as they do when calling Amazon GameLift web servers. For more
+information on using Amazon GameLift Local, see Testing an Integration.
 
 B<MORE RESOURCES>
 
@@ -367,7 +374,8 @@ B<Discover existing game sessions>
 =item *
 
 SearchGameSessions E<ndash> Get all available game sessions or search
-for game sessions that match a set of criteria.
+for game sessions that match a set of criteria. I<Available in Amazon
+GameLift Local.>
 
 =back
 
@@ -403,7 +411,7 @@ StopGameSessionPlacement E<ndash> Cancel a placement request.
 =item *
 
 CreateGameSession E<ndash> Start a new game session on a specific
-fleet.
+fleet. I<Available in Amazon GameLift Local.>
 
 =back
 
@@ -415,9 +423,14 @@ B<Manage game session objects>
 
 =item *
 
-DescribeGameSessionDetails E<ndash> Retrieve metadata and protection
-policies associated with one or more game sessions, including length of
-time active and current player count.
+DescribeGameSessions E<ndash> Retrieve metadata for one or more game
+sessions, including length of time active and current player count.
+I<Available in Amazon GameLift Local.>
+
+=item *
+
+DescribeGameSessionDetails E<ndash> Retrieve metadata and the game
+session protection setting for one or more game sessions.
 
 =item *
 
@@ -440,17 +453,18 @@ B<Manage player sessions objects>
 =item *
 
 CreatePlayerSession E<ndash> Send a request for a player to join a game
-session.
+session. I<Available in Amazon GameLift Local.>
 
 =item *
 
 CreatePlayerSessions E<ndash> Send a request for multiple players to
-join a game session.
+join a game session. I<Available in Amazon GameLift Local.>
 
 =item *
 
 DescribePlayerSessions E<ndash> Get details on player activity,
-including status, playing time, and player data.
+including status, playing time, and player data. I<Available in Amazon
+GameLift Local.>
 
 =back
 
@@ -628,7 +642,7 @@ B<Remotely access an instance>
 =item *
 
 GetInstanceAccess E<ndash> Request access credentials needed to
-remotely connect to a specified instance on a fleet.
+remotely connect to a specified instance in a fleet.
 
 =back
 
@@ -847,7 +861,7 @@ fleet's capacity (autoscaling).
 
 
 
-=head2 CreateGameSession(MaximumPlayerSessionCount => Int, [AliasId => Str, CreatorId => Str, FleetId => Str, GameProperties => ArrayRef[L<Paws::GameLift::GameProperty>], GameSessionId => Str, Name => Str])
+=head2 CreateGameSession(MaximumPlayerSessionCount => Int, [AliasId => Str, CreatorId => Str, FleetId => Str, GameProperties => ArrayRef[L<Paws::GameLift::GameProperty>], GameSessionId => Str, IdempotencyToken => Str, Name => Str])
 
 Each argument is described in detail in: L<Paws::GameLift::CreateGameSession>
 
@@ -858,41 +872,71 @@ game session record and assigns an available server process in the
 specified fleet to host the game session. A fleet must have an
 C<ACTIVE> status before a game session can be created in it.
 
-To create a game session, specify either fleet ID or alias ID, and
+To create a game session, specify either fleet ID or alias ID and
 indicate a maximum number of players to allow in the game session. You
 can also provide a name and game-specific properties for this game
 session. If successful, a GameSession object is returned containing
-session properties, including an IP address. By default, newly created
-game sessions allow new players to join. Use UpdateGameSession to
-change the game session's player session creation policy.
+game session properties, including a game session ID with the custom
+string you provided.
 
-When creating a game session on a fleet with a resource limit creation
-policy, the request should include a creator ID. If none is provided,
-Amazon GameLift does not evaluate the fleet's resource limit creation
+B<Idempotency tokens.> You can add a token that uniquely identifies
+game session requests. This is useful for ensuring that game session
+requests are idempotent. Multiple requests with the same idempotency
+token are processed only once; subsequent requests return the original
+result. All response values are the same with the exception of game
+session status, which may change.
+
+B<Resource creation limits.> If you are creating a game session on a
+fleet with a resource creation limit policy in force, then you must
+specify a creator ID. Without this ID, Amazon GameLift has no way to
+evaluate the policy for this new game session request.
+
+By default, newly created game sessions allow new players to join. Use
+UpdateGameSession to change the game session's player session creation
 policy.
 
+I<Available in Amazon GameLift Local.>
 
-=head2 CreateGameSessionQueue(Name => Str, [Destinations => ArrayRef[L<Paws::GameLift::GameSessionQueueDestination>], TimeoutInSeconds => Int])
+
+=head2 CreateGameSessionQueue(Name => Str, [Destinations => ArrayRef[L<Paws::GameLift::GameSessionQueueDestination>], PlayerLatencyPolicies => ArrayRef[L<Paws::GameLift::PlayerLatencyPolicy>], TimeoutInSeconds => Int])
 
 Each argument is described in detail in: L<Paws::GameLift::CreateGameSessionQueue>
 
 Returns: a L<Paws::GameLift::CreateGameSessionQueueOutput> instance
 
-  Establishes a new queue for processing requests for new game sessions.
-A queue identifies where new game sessions can be hosted--by specifying
-a list of fleet destinations--and how long a request can remain in the
-queue waiting to be placed before timing out. Requests for new game
-sessions are added to a queue by calling StartGameSessionPlacement and
-referencing the queue name.
+  Establishes a new queue for processing requests to place new game
+sessions. A queue identifies where new game sessions can be hosted --
+by specifying a list of destinations (fleets or aliases) -- and how
+long requests can wait in the queue before timing out. You can set up a
+queue to try to place game sessions on fleets in multiple regions. To
+add placement requests to a queue, call StartGameSessionPlacement and
+reference the queue name.
 
-When processing a request for a game session, Amazon GameLift tries
-each destination in order until it finds one with available resources
-to host the new game session. A queue's default order is determined by
-how destinations are listed. This default order can be overridden in a
-game session placement request.
+B<Destination order.> When processing a request for a game session,
+Amazon GameLift tries each destination in order until it finds one with
+available resources to host the new game session. A queue's default
+order is determined by how destinations are listed. The default order
+is overridden when a game session placement request provides player
+latency information. Player latency information enables Amazon GameLift
+to prioritize destinations where players report the lowest average
+latency, as a result placing the new game session where the majority of
+players will have the best possible gameplay experience.
 
-To create a new queue, provide a name, timeout value, and a list of
-destinations. If successful, a new queue object is returned.
+B<Player latency policies.> For placement requests containing player
+latency information, use player latency policies to protect individual
+players from very high latencies. With a latency cap, even when a
+destination can deliver a low latency for most players, the game is not
+placed where any individual player is reporting latency higher than a
+policy's maximum. A queue can have multiple latency policies, which are
+enforced consecutively starting with the policy with the lowest latency
+cap. Use multiple policies to gradually relax latency controls; for
+example, you might set a policy with a low latency cap for the first 60
+seconds, a second policy with a higher cap for the next 60 seconds,
+etc.
+
+To create a new queue, provide a name, timeout value, a list of
+destinations and, if desired, a set of latency policies. If successful,
+a new queue object is returned.
 
 
 =head2 CreatePlayerSession(GameSessionId => Str, PlayerId => Str, [PlayerData => Str])
@@ -912,6 +956,8 @@ optionally a string of player data. If successful, the player is added
 to the game session and a new PlayerSession object is returned. Player
 sessions cannot be updated.
 
+I<Available in Amazon GameLift Local.>
+
 
 =head2 CreatePlayerSessions(GameSessionId => Str, PlayerIds => ArrayRef[Str|Undef], [PlayerDataMap => L<Paws::GameLift::PlayerDataMap>])
 
@@ -929,6 +975,8 @@ To create player sessions, specify a game session ID, a list of player
 IDs, and optionally a set of player data strings. If successful, the
 players are added to the game session and a set of new PlayerSession
 objects is returned. Player sessions cannot be updated.
+
+I<Available in Amazon GameLift Local.>
 
 
 =head2 DeleteAlias(AliasId => Str)
@@ -1139,9 +1187,10 @@ Returns: a L<Paws::GameLift::DescribeGameSessionDetailsOutput> instance
 
   Retrieves properties, including the protection policy in force, for one
 or more game sessions. This action can be used in several ways: (1)
-provide a C<GameSessionId> to request details for a specific game
-session; (2) provide either a C<FleetId> or an C<AliasId> to request
-properties for all game sessions running on a fleet.
+provide a C<GameSessionId> or C<GameSessionArn> to request details for
+a specific game session; (2) provide either a C<FleetId> or an
+C<AliasId> to request properties for all game sessions running on a
+fleet.
 
 To get game session record(s), specify just one of the following: game
 session ID, fleet ID, or alias ID. You can filter this request by game
@@ -1193,6 +1242,8 @@ status. Use the pagination parameters to retrieve results as a set of
 sequential pages. If successful, a GameSession object is returned for
 each game session matching the request.
 
+I<Available in Amazon GameLift Local.>
+
 
 =head2 DescribeInstances(FleetId => Str, [InstanceId => Str, Limit => Int, NextToken => Str])
 
@@ -1217,18 +1268,19 @@ Each argument is described in detail in: L<Paws::GameLift::DescribePlayerSession
 Returns: a L<Paws::GameLift::DescribePlayerSessionsOutput> instance
 
   Retrieves properties for one or more player sessions. This action can
-be used in several ways: (1) provide a C<PlayerSessionId> parameter to
-request properties for a specific player session; (2) provide a
-C<GameSessionId> parameter to request properties for all player
-sessions in the specified game session; (3) provide a C<PlayerId>
-parameter to request properties for all player sessions of a specified
-player.
+be used in several ways: (1) provide a C<PlayerSessionId> to request
+properties for a specific player session; (2) provide a
+C<GameSessionId> to request properties for all player sessions in the
+specified game session; (3) provide a C<PlayerId> to request properties
+for all player sessions of a specified player.
 
 To get game session record(s), specify only one of the following: a
 player session ID, a game session ID, or a player ID. You can filter
 this request by player session status. Use the pagination parameters to
 retrieve results as a set of sequential pages. If successful, a
 PlayerSession object is returned for each session matching the request.
+
+I<Available in Amazon GameLift Local.>
 
 
 =head2 DescribeRuntimeConfiguration(FleetId => Str)
@@ -1412,9 +1464,8 @@ You can search or sort by the following game session attributes:
 
 =item *
 
-B<gameSessionId> -- ID value assigned to a game session. This unique
-value is returned in a GameSession object when a new game session is
-created.
+B<gameSessionId> -- Unique identifier for the game session. You can use
+either a C<GameSessionId> or C<GameSessionArn> value.
 
 =item *
 
@@ -1463,6 +1514,8 @@ and others drop out. Results should be considered a snapshot in time.
 Be sure to refresh search results often, and handle sessions that fill
 up before a player can join.
 
+I<Available in Amazon GameLift Local.>
+
 
 =head2 StartGameSessionPlacement(GameSessionQueueName => Str, MaximumPlayerSessionCount => Int, PlacementId => Str, [DesiredPlayerSessions => ArrayRef[L<Paws::GameLift::DesiredPlayerSession>], GameProperties => ArrayRef[L<Paws::GameLift::GameProperty>], GameSessionName => Str, PlayerLatencies => ArrayRef[L<Paws::GameLift::PlayerLatency>]])
 
@@ -1472,13 +1525,11 @@ Returns: a L<Paws::GameLift::StartGameSessionPlacementOutput> instance
 
   Places a request for a new game session in a queue (see
 CreateGameSessionQueue). When processing a placement request, Amazon
-GameLift attempts to create a new game session on one of the fleets
-associated with the queue. If no resources are available, Amazon
-GameLift tries again with another and so on until resources are found
-or the placement request times out. A game session placement request
-can also request player sessions. When a new game session is
-successfully created, Amazon GameLift creates a player session for each
-player included in the request.
+GameLift searches for available resources on the queue's destinations,
+scanning each until it finds resources or the placement request times
+out. A game session placement request can also request player sessions.
+When a new game session is successfully created, Amazon GameLift
+creates a player session for each player included in the request.
 
 When placing a game session, by default Amazon GameLift tries each
 fleet in the order they are listed in the queue configuration. Ideally,
@@ -1609,7 +1660,7 @@ game session ID and the values you want to change. If successful, an
 updated GameSession object is returned.
 
 
-=head2 UpdateGameSessionQueue(Name => Str, [Destinations => ArrayRef[L<Paws::GameLift::GameSessionQueueDestination>], TimeoutInSeconds => Int])
+=head2 UpdateGameSessionQueue(Name => Str, [Destinations => ArrayRef[L<Paws::GameLift::GameSessionQueueDestination>], PlayerLatencyPolicies => ArrayRef[L<Paws::GameLift::PlayerLatencyPolicy>], TimeoutInSeconds => Int])
 
 Each argument is described in detail in: L<Paws::GameLift::UpdateGameSessionQueue>
 

@@ -1,7 +1,7 @@
 package Paws::ECS::TaskOverride;
   use Moose;
-  has ContainerOverrides => (is => 'ro', isa => 'ArrayRef[Paws::ECS::ContainerOverride]', xmlname => 'containerOverrides', request_name => 'containerOverrides', traits => ['Unwrapped','NameInRequest']);
-  has TaskRoleArn => (is => 'ro', isa => 'Str', xmlname => 'taskRoleArn', request_name => 'taskRoleArn', traits => ['Unwrapped','NameInRequest']);
+  has ContainerOverrides => (is => 'ro', isa => 'ArrayRef[Paws::ECS::ContainerOverride]', request_name => 'containerOverrides', traits => ['NameInRequest']);
+  has TaskRoleArn => (is => 'ro', isa => 'Str', request_name => 'taskRoleArn', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

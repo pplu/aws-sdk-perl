@@ -1,8 +1,8 @@
 
 package Paws::CodeDeploy::ListApplicationRevisionsOutput;
   use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
-  has Revisions => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::RevisionLocation]', traits => ['Unwrapped'], xmlname => 'revisions' );
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  has Revisions => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::RevisionLocation]', traits => ['NameInRequest'], request_name => 'revisions' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

@@ -1,11 +1,11 @@
 package Paws::EC2::RouteTable;
   use Moose;
-  has Associations => (is => 'ro', isa => 'ArrayRef[Paws::EC2::RouteTableAssociation]', xmlname => 'associationSet', traits => ['Unwrapped']);
-  has PropagatingVgws => (is => 'ro', isa => 'ArrayRef[Paws::EC2::PropagatingVgw]', xmlname => 'propagatingVgwSet', traits => ['Unwrapped']);
-  has Routes => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Route]', xmlname => 'routeSet', traits => ['Unwrapped']);
-  has RouteTableId => (is => 'ro', isa => 'Str', xmlname => 'routeTableId', traits => ['Unwrapped']);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', xmlname => 'tagSet', traits => ['Unwrapped']);
-  has VpcId => (is => 'ro', isa => 'Str', xmlname => 'vpcId', traits => ['Unwrapped']);
+  has Associations => (is => 'ro', isa => 'ArrayRef[Paws::EC2::RouteTableAssociation]', request_name => 'associationSet', traits => ['NameInRequest']);
+  has PropagatingVgws => (is => 'ro', isa => 'ArrayRef[Paws::EC2::PropagatingVgw]', request_name => 'propagatingVgwSet', traits => ['NameInRequest']);
+  has Routes => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Route]', request_name => 'routeSet', traits => ['NameInRequest']);
+  has RouteTableId => (is => 'ro', isa => 'Str', request_name => 'routeTableId', traits => ['NameInRequest']);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest']);
+  has VpcId => (is => 'ro', isa => 'Str', request_name => 'vpcId', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

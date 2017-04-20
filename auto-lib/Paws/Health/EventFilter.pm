@@ -1,18 +1,18 @@
 package Paws::Health::EventFilter;
   use Moose;
-  has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'availabilityZones', request_name => 'availabilityZones', traits => ['Unwrapped','NameInRequest']);
-  has EndTimes => (is => 'ro', isa => 'ArrayRef[Paws::Health::DateTimeRange]', xmlname => 'endTimes', request_name => 'endTimes', traits => ['Unwrapped','NameInRequest']);
-  has EntityArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'entityArns', request_name => 'entityArns', traits => ['Unwrapped','NameInRequest']);
-  has EntityValues => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'entityValues', request_name => 'entityValues', traits => ['Unwrapped','NameInRequest']);
-  has EventArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'eventArns', request_name => 'eventArns', traits => ['Unwrapped','NameInRequest']);
-  has EventStatusCodes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'eventStatusCodes', request_name => 'eventStatusCodes', traits => ['Unwrapped','NameInRequest']);
-  has EventTypeCategories => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'eventTypeCategories', request_name => 'eventTypeCategories', traits => ['Unwrapped','NameInRequest']);
-  has EventTypeCodes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'eventTypeCodes', request_name => 'eventTypeCodes', traits => ['Unwrapped','NameInRequest']);
-  has LastUpdatedTimes => (is => 'ro', isa => 'ArrayRef[Paws::Health::DateTimeRange]', xmlname => 'lastUpdatedTimes', request_name => 'lastUpdatedTimes', traits => ['Unwrapped','NameInRequest']);
-  has Regions => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'regions', request_name => 'regions', traits => ['Unwrapped','NameInRequest']);
-  has Services => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'services', request_name => 'services', traits => ['Unwrapped','NameInRequest']);
-  has StartTimes => (is => 'ro', isa => 'ArrayRef[Paws::Health::DateTimeRange]', xmlname => 'startTimes', request_name => 'startTimes', traits => ['Unwrapped','NameInRequest']);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Health::TagSet]', xmlname => 'tags', request_name => 'tags', traits => ['Unwrapped','NameInRequest']);
+  has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'availabilityZones', traits => ['NameInRequest']);
+  has EndTimes => (is => 'ro', isa => 'ArrayRef[Paws::Health::DateTimeRange]', request_name => 'endTimes', traits => ['NameInRequest']);
+  has EntityArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'entityArns', traits => ['NameInRequest']);
+  has EntityValues => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'entityValues', traits => ['NameInRequest']);
+  has EventArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'eventArns', traits => ['NameInRequest']);
+  has EventStatusCodes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'eventStatusCodes', traits => ['NameInRequest']);
+  has EventTypeCategories => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'eventTypeCategories', traits => ['NameInRequest']);
+  has EventTypeCodes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'eventTypeCodes', traits => ['NameInRequest']);
+  has LastUpdatedTimes => (is => 'ro', isa => 'ArrayRef[Paws::Health::DateTimeRange]', request_name => 'lastUpdatedTimes', traits => ['NameInRequest']);
+  has Regions => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'regions', traits => ['NameInRequest']);
+  has Services => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'services', traits => ['NameInRequest']);
+  has StartTimes => (is => 'ro', isa => 'ArrayRef[Paws::Health::DateTimeRange]', request_name => 'startTimes', traits => ['NameInRequest']);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Health::TagSet]', request_name => 'tags', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

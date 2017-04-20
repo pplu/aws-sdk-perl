@@ -1,10 +1,10 @@
 
 package Paws::CloudSearchDomain::SearchResponse;
   use Moose;
-  has Facets => (is => 'ro', isa => 'Paws::CloudSearchDomain::Facets');
-  has Hits => (is => 'ro', isa => 'Paws::CloudSearchDomain::Hits');
-  has Stats => (is => 'ro', isa => 'Paws::CloudSearchDomain::Stats');
-  has Status => (is => 'ro', isa => 'Paws::CloudSearchDomain::SearchStatus');
+  has Facets => (is => 'ro', isa => 'Paws::CloudSearchDomain::Facets', traits => ['NameInRequest'], request_name => 'facets');
+  has Hits => (is => 'ro', isa => 'Paws::CloudSearchDomain::Hits', traits => ['NameInRequest'], request_name => 'hits');
+  has Stats => (is => 'ro', isa => 'Paws::CloudSearchDomain::Stats', traits => ['NameInRequest'], request_name => 'stats');
+  has Status => (is => 'ro', isa => 'Paws::CloudSearchDomain::SearchStatus', traits => ['NameInRequest'], request_name => 'status');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

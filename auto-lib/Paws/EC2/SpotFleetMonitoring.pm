@@ -1,6 +1,6 @@
 package Paws::EC2::SpotFleetMonitoring;
   use Moose;
-  has Enabled => (is => 'ro', isa => 'Bool', xmlname => 'enabled', traits => ['Unwrapped']);
+  has Enabled => (is => 'ro', isa => 'Bool', request_name => 'enabled', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

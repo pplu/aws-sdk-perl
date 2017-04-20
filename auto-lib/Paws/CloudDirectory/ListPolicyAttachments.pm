@@ -63,7 +63,7 @@ approximate number.
 
 =head2 NextToken => Str
 
-Token used for pagination.
+The pagination token.
 
 
 

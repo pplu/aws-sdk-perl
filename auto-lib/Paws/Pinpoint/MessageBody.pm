@@ -32,19 +32,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::M
 
 =head1 DESCRIPTION
 
-This class has no description
+Simple message object.
 
 =head1 ATTRIBUTES
 
 
 =head2 Message => Str
 
-  
+  The error message returned from the API.
 
 
 =head2 RequestID => Str
 
-  
+  The unique message body ID.
 
 
 

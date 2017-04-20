@@ -5,7 +5,7 @@ package Paws::Pinpoint::CreateImportJob;
   has ImportJobRequest => (is => 'ro', isa => 'Paws::Pinpoint::ImportJobRequest', required => 1);
 
   use MooseX::ClassAttribute;
-
+  class_has _stream_param => (is => 'ro', default => 'ImportJobRequest');
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateImportJob');
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/apps/{application-id}/jobs/import');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');

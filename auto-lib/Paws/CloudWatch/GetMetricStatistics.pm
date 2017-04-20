@@ -43,11 +43,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Dimensions => ArrayRef[L<Paws::CloudWatch::Dimension>]
 
-The dimensions. CloudWatch treats each unique combination of dimensions
-as a separate metric. You can't retrieve statistics using combinations
-of dimensions that were not specially published. You must specify the
-same dimensions that were used when the metrics were created. For an
-example, see Dimension Combinations in the I<Amazon CloudWatch User
+The dimensions. If the metric contains multiple dimensions, you must
+include a value for each dimension. CloudWatch treats each unique
+combination of dimensions as a separate metric. You can't retrieve
+statistics using combinations of dimensions that were not specially
+published. You must specify the same dimensions that were used when the
+metrics were created. For an example, see Dimension Combinations in the
+I<Amazon CloudWatch User Guide>. For more information on specifying
+dimensions, see Publishing Metrics in the I<Amazon CloudWatch User
 Guide>.
 
 

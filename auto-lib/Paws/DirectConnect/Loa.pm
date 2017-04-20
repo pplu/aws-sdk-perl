@@ -1,8 +1,8 @@
 
 package Paws::DirectConnect::Loa;
   use Moose;
-  has LoaContent => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'loaContent' );
-  has LoaContentType => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'loaContentType' );
+  has LoaContent => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'loaContent' );
+  has LoaContentType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'loaContentType' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

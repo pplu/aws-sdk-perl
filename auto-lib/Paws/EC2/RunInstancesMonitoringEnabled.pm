@@ -1,6 +1,6 @@
 package Paws::EC2::RunInstancesMonitoringEnabled;
   use Moose;
-  has Enabled => (is => 'ro', isa => 'Bool', xmlname => 'enabled', traits => ['Unwrapped'], required => 1);
+  has Enabled => (is => 'ro', isa => 'Bool', request_name => 'enabled', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###

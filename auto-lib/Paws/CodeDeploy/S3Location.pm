@@ -1,10 +1,10 @@
 package Paws::CodeDeploy::S3Location;
   use Moose;
-  has Bucket => (is => 'ro', isa => 'Str', xmlname => 'bucket', request_name => 'bucket', traits => ['Unwrapped','NameInRequest']);
-  has BundleType => (is => 'ro', isa => 'Str', xmlname => 'bundleType', request_name => 'bundleType', traits => ['Unwrapped','NameInRequest']);
-  has ETag => (is => 'ro', isa => 'Str', xmlname => 'eTag', request_name => 'eTag', traits => ['Unwrapped','NameInRequest']);
-  has Key => (is => 'ro', isa => 'Str', xmlname => 'key', request_name => 'key', traits => ['Unwrapped','NameInRequest']);
-  has Version => (is => 'ro', isa => 'Str', xmlname => 'version', request_name => 'version', traits => ['Unwrapped','NameInRequest']);
+  has Bucket => (is => 'ro', isa => 'Str', request_name => 'bucket', traits => ['NameInRequest']);
+  has BundleType => (is => 'ro', isa => 'Str', request_name => 'bundleType', traits => ['NameInRequest']);
+  has ETag => (is => 'ro', isa => 'Str', request_name => 'eTag', traits => ['NameInRequest']);
+  has Key => (is => 'ro', isa => 'Str', request_name => 'key', traits => ['NameInRequest']);
+  has Version => (is => 'ro', isa => 'Str', request_name => 'version', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

@@ -43,7 +43,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EMR::JobFlo
 
 =head1 DESCRIPTION
 
-Specify the type of Amazon EC2 instances to run the job flow on.
+Specify the type of Amazon EC2 instances that the cluster (job flow)
+runs on.
 
 =head1 ATTRIBUTES
 
@@ -51,18 +52,18 @@ Specify the type of Amazon EC2 instances to run the job flow on.
 =head2 Ec2KeyName => Str
 
   The name of an Amazon EC2 key pair that can be used to ssh to the
-master node of job flow.
+master node.
 
 
 =head2 Ec2SubnetId => Str
 
-  For job flows launched within Amazon Virtual Private Cloud, this value
-specifies the identifier of the subnet where the job flow was launched.
+  For clusters launched within Amazon Virtual Private Cloud, this is the
+identifier of the subnet where the cluster was launched.
 
 
 =head2 HadoopVersion => Str
 
-  The Hadoop version for the job flow.
+  The Hadoop version for the cluster.
 
 
 =head2 B<REQUIRED> InstanceCount => Int
@@ -75,13 +76,13 @@ are slave nodes.
 
 =head2 InstanceGroups => ArrayRef[L<Paws::EMR::InstanceGroupDetail>]
 
-  Details about the job flow's instance groups.
+  Details about the instance groups in a cluster.
 
 
 =head2 KeepJobFlowAliveWhenNoSteps => Bool
 
-  Specifies whether the job flow should terminate after completing all
-steps.
+  Specifies whether the cluster should remain available after completing
+all steps.
 
 
 =head2 MasterInstanceId => Str
@@ -101,7 +102,7 @@ steps.
 
 =head2 NormalizedInstanceHours => Int
 
-  An approximation of the cost of the job flow, represented in
+  An approximation of the cost of the cluster, represented in
 m1.small/hours. This value is incremented one time for every hour that
 an m1.small runs. Larger instances are weighted more, so an Amazon EC2
 instance that is roughly four times more expensive would result in the
@@ -111,7 +112,7 @@ only an approximation and does not reflect the actual billing rate.
 
 =head2 Placement => L<Paws::EMR::PlacementType>
 
-  The Amazon EC2 Availability Zone for the job flow.
+  The Amazon EC2 Availability Zone for the cluster.
 
 
 =head2 B<REQUIRED> SlaveInstanceType => Str
@@ -123,7 +124,7 @@ only an approximation and does not reflect the actual billing rate.
 
   Specifies whether the Amazon EC2 instances in the cluster are protected
 from termination by API calls, user intervention, or in the event of a
-job flow error.
+job-flow error.
 
 
 

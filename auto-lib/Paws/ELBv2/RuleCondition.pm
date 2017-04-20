@@ -39,16 +39,43 @@ Information about a condition for a rule.
 
 =head2 Field => Str
 
-  The only possible value is C<path-pattern>.
+  The name of the field. The possible values are C<host-header> and
+C<path-pattern>.
 
 
 =head2 Values => ArrayRef[Str|Undef]
 
-  The path pattern. You can specify a single path pattern.
+  The condition value.
 
-A path pattern is case sensitive, can be up to 128 characters in
-length, and can contain any of the following characters. Note that you
-can include up to three wildcard characters in a path pattern.
+If the field name is C<host-header>, you can specify a single host name
+(for example, my.example.com). A host name is case insensitive, can be
+up to 128 characters in length, and can contain any of the following
+characters. Note that you can include up to three wildcard characters.
+
+=over
+
+=item *
+
+A-Z, a-z, 0-9
+
+=item *
+
+- .
+
+=item *
+
+* (matches 0 or more characters)
+
+=item *
+
+? (matches exactly 1 character)
+
+=back
+
+If the field name is C<path-pattern>, you can specify a single path
+pattern (for example, /img/*). A path pattern is case sensitive, can be
+up to 128 characters in length, and can contain any of the following
+characters. Note that you can include up to three wildcard characters.
 
 =over
 

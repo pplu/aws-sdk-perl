@@ -2,6 +2,7 @@
 package Paws::IAM::CreateRole;
   use Moose;
   has AssumeRolePolicyDocument => (is => 'ro', isa => 'Str', required => 1);
+  has Description => (is => 'ro', isa => 'Str');
   has Path => (is => 'ro', isa => 'Str');
   has RoleName => (is => 'ro', isa => 'Str', required => 1);
 
@@ -50,6 +51,12 @@ characters tab (\u0009), line feed (\u000A), and carriage return
 
 
 
+=head2 Description => Str
+
+A customer-provided description of the role.
+
+
+
 =head2 Path => Str
 
 The path to the role. For more information about paths, see IAM
@@ -72,7 +79,8 @@ The name of the role to create.
 
 This parameter allows (per its regex pattern) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
-spaces. You can also include any of the following characters: =,.@-.
+spaces. You can also include any of the following characters: _+=,.@-
+
 Role names are not distinguished by case. For example, you cannot
 create roles named both "PRODROLE" and "prodrole".
 

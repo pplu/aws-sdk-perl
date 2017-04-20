@@ -52,8 +52,8 @@ hybrid environment that is configured for Systems Manager.
 =head2 PluginName => Str
 
 (Optional) The name of the plugin for which you want detailed results.
-If the SSM document contains only one plugin, the name can be omitted
-and the details will be returned.
+If the document contains only one plugin, the name can be omitted and
+the details will be returned.
 
 
 

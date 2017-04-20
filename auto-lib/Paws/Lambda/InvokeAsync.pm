@@ -5,7 +5,7 @@ package Paws::Lambda::InvokeAsync;
   has InvokeArgs => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
-
+  class_has _stream_param => (is => 'ro', default => 'InvokeArgs');
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'InvokeAsync');
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2014-11-13/functions/{FunctionName}/invoke-async/');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
@@ -38,7 +38,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> FunctionName => Str
 
-The Lambda function name.
+The Lambda function name. Note that the length constraint applies only
+to the ARN. If you specify only the function name, it is limited to 64
+characters in length.
 
 
 

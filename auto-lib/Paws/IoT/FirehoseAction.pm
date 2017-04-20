@@ -1,8 +1,8 @@
 package Paws::IoT::FirehoseAction;
   use Moose;
-  has DeliveryStreamName => (is => 'ro', isa => 'Str', xmlname => 'deliveryStreamName', request_name => 'deliveryStreamName', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has RoleArn => (is => 'ro', isa => 'Str', xmlname => 'roleArn', request_name => 'roleArn', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has Separator => (is => 'ro', isa => 'Str', xmlname => 'separator', request_name => 'separator', traits => ['Unwrapped','NameInRequest']);
+  has DeliveryStreamName => (is => 'ro', isa => 'Str', request_name => 'deliveryStreamName', traits => ['NameInRequest'], required => 1);
+  has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest'], required => 1);
+  has Separator => (is => 'ro', isa => 'Str', request_name => 'separator', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

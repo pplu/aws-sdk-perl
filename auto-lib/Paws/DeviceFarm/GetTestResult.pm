@@ -1,7 +1,7 @@
 
 package Paws::DeviceFarm::GetTestResult;
   use Moose;
-  has Test => (is => 'ro', isa => 'Paws::DeviceFarm::Test', traits => ['Unwrapped'], xmlname => 'test' );
+  has Test => (is => 'ro', isa => 'Paws::DeviceFarm::Test', traits => ['NameInRequest'], request_name => 'test' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 
@@ -16,7 +16,7 @@ Paws::DeviceFarm::GetTestResult
 
 =head2 Test => L<Paws::DeviceFarm::Test>
 
-
+A test condition that is evaluated.
 
 
 =head2 _request_id => Str

@@ -1,17 +1,17 @@
 package Paws::CodeBuild::Project;
   use Moose;
-  has Arn => (is => 'ro', isa => 'Str', xmlname => 'arn', request_name => 'arn', traits => ['Unwrapped','NameInRequest']);
-  has Artifacts => (is => 'ro', isa => 'Paws::CodeBuild::ProjectArtifacts', xmlname => 'artifacts', request_name => 'artifacts', traits => ['Unwrapped','NameInRequest']);
-  has Created => (is => 'ro', isa => 'Str', xmlname => 'created', request_name => 'created', traits => ['Unwrapped','NameInRequest']);
-  has Description => (is => 'ro', isa => 'Str', xmlname => 'description', request_name => 'description', traits => ['Unwrapped','NameInRequest']);
-  has EncryptionKey => (is => 'ro', isa => 'Str', xmlname => 'encryptionKey', request_name => 'encryptionKey', traits => ['Unwrapped','NameInRequest']);
-  has Environment => (is => 'ro', isa => 'Paws::CodeBuild::ProjectEnvironment', xmlname => 'environment', request_name => 'environment', traits => ['Unwrapped','NameInRequest']);
-  has LastModified => (is => 'ro', isa => 'Str', xmlname => 'lastModified', request_name => 'lastModified', traits => ['Unwrapped','NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', xmlname => 'name', request_name => 'name', traits => ['Unwrapped','NameInRequest']);
-  has ServiceRole => (is => 'ro', isa => 'Str', xmlname => 'serviceRole', request_name => 'serviceRole', traits => ['Unwrapped','NameInRequest']);
-  has Source => (is => 'ro', isa => 'Paws::CodeBuild::ProjectSource', xmlname => 'source', request_name => 'source', traits => ['Unwrapped','NameInRequest']);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::Tag]', xmlname => 'tags', request_name => 'tags', traits => ['Unwrapped','NameInRequest']);
-  has TimeoutInMinutes => (is => 'ro', isa => 'Int', xmlname => 'timeoutInMinutes', request_name => 'timeoutInMinutes', traits => ['Unwrapped','NameInRequest']);
+  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
+  has Artifacts => (is => 'ro', isa => 'Paws::CodeBuild::ProjectArtifacts', request_name => 'artifacts', traits => ['NameInRequest']);
+  has Created => (is => 'ro', isa => 'Str', request_name => 'created', traits => ['NameInRequest']);
+  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
+  has EncryptionKey => (is => 'ro', isa => 'Str', request_name => 'encryptionKey', traits => ['NameInRequest']);
+  has Environment => (is => 'ro', isa => 'Paws::CodeBuild::ProjectEnvironment', request_name => 'environment', traits => ['NameInRequest']);
+  has LastModified => (is => 'ro', isa => 'Str', request_name => 'lastModified', traits => ['NameInRequest']);
+  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
+  has ServiceRole => (is => 'ro', isa => 'Str', request_name => 'serviceRole', traits => ['NameInRequest']);
+  has Source => (is => 'ro', isa => 'Paws::CodeBuild::ProjectSource', request_name => 'source', traits => ['NameInRequest']);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::Tag]', request_name => 'tags', traits => ['NameInRequest']);
+  has TimeoutInMinutes => (is => 'ro', isa => 'Int', request_name => 'timeoutInMinutes', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

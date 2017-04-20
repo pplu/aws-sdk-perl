@@ -1,9 +1,9 @@
 package Paws::DeviceFarm::OfferingStatus;
   use Moose;
-  has EffectiveOn => (is => 'ro', isa => 'Str', xmlname => 'effectiveOn', request_name => 'effectiveOn', traits => ['Unwrapped','NameInRequest']);
-  has Offering => (is => 'ro', isa => 'Paws::DeviceFarm::Offering', xmlname => 'offering', request_name => 'offering', traits => ['Unwrapped','NameInRequest']);
-  has Quantity => (is => 'ro', isa => 'Int', xmlname => 'quantity', request_name => 'quantity', traits => ['Unwrapped','NameInRequest']);
-  has Type => (is => 'ro', isa => 'Str', xmlname => 'type', request_name => 'type', traits => ['Unwrapped','NameInRequest']);
+  has EffectiveOn => (is => 'ro', isa => 'Str', request_name => 'effectiveOn', traits => ['NameInRequest']);
+  has Offering => (is => 'ro', isa => 'Paws::DeviceFarm::Offering', request_name => 'offering', traits => ['NameInRequest']);
+  has Quantity => (is => 'ro', isa => 'Int', request_name => 'quantity', traits => ['NameInRequest']);
+  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

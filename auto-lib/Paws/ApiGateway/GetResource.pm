@@ -1,6 +1,7 @@
 
 package Paws::ApiGateway::GetResource;
   use Moose;
+  has Embed => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['ParamInQuery'], query_name => 'embed' );
   has ResourceId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'resourceId' , required => 1);
   has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restApiId' , required => 1);
 
@@ -34,6 +35,18 @@ As an example:
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 
 =head1 ATTRIBUTES
+
+
+=head2 Embed => ArrayRef[Str|Undef]
+
+A query parameter to retrieve the specified resources embedded in the
+returned Resource representation in the response. This C<embed>
+parameter value is a list of comma-separated strings. Currently, the
+request supports only retrieval of the embedded Method resources this
+way. The query parameter value must be a single-valued list and contain
+the C<"methods"> string. For example, C<GET
+/restapis/{restapi_id}/resources/{resource_id}?embed=methods>.
+
 
 
 =head2 B<REQUIRED> ResourceId => Str

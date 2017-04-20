@@ -1,7 +1,7 @@
 
 package Paws::ECS::DeleteAttributesResponse;
   use Moose;
-  has Attributes => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Attribute]', traits => ['Unwrapped'], xmlname => 'attributes' );
+  has Attributes => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Attribute]', traits => ['NameInRequest'], request_name => 'attributes' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

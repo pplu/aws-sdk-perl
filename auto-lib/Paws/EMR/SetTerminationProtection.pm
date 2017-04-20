@@ -36,7 +36,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> JobFlowIds => ArrayRef[Str|Undef]
 
-A list of strings that uniquely identify the job flows to protect. This
+A list of strings that uniquely identify the clusters to protect. This
 identifier is returned by RunJobFlow and can also be obtained from
 DescribeJobFlows .
 
@@ -44,8 +44,8 @@ DescribeJobFlows .
 
 =head2 B<REQUIRED> TerminationProtected => Bool
 
-A Boolean that indicates whether to protect the job flow and prevent
-the Amazon EC2 instances in the cluster from shutting down due to API
+A Boolean that indicates whether to protect the cluster and prevent the
+Amazon EC2 instances in the cluster from shutting down due to API
 calls, user intervention, or job-flow error.
 
 

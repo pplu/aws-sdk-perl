@@ -1,7 +1,7 @@
 package Paws::EC2::ReservedInstanceReservationValue;
   use Moose;
-  has ReservationValue => (is => 'ro', isa => 'Paws::EC2::ReservationValue', xmlname => 'reservationValue', traits => ['Unwrapped']);
-  has ReservedInstanceId => (is => 'ro', isa => 'Str', xmlname => 'reservedInstanceId', traits => ['Unwrapped']);
+  has ReservationValue => (is => 'ro', isa => 'Paws::EC2::ReservationValue', request_name => 'reservationValue', traits => ['NameInRequest']);
+  has ReservedInstanceId => (is => 'ro', isa => 'Str', request_name => 'reservedInstanceId', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

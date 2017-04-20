@@ -1,17 +1,18 @@
 package Paws::Batch::ComputeResource;
   use Moose;
-  has BidPercentage => (is => 'ro', isa => 'Int', xmlname => 'bidPercentage', request_name => 'bidPercentage', traits => ['Unwrapped','NameInRequest']);
-  has DesiredvCpus => (is => 'ro', isa => 'Int', xmlname => 'desiredvCpus', request_name => 'desiredvCpus', traits => ['Unwrapped','NameInRequest']);
-  has Ec2KeyPair => (is => 'ro', isa => 'Str', xmlname => 'ec2KeyPair', request_name => 'ec2KeyPair', traits => ['Unwrapped','NameInRequest']);
-  has InstanceRole => (is => 'ro', isa => 'Str', xmlname => 'instanceRole', request_name => 'instanceRole', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has InstanceTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'instanceTypes', request_name => 'instanceTypes', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has MaxvCpus => (is => 'ro', isa => 'Int', xmlname => 'maxvCpus', request_name => 'maxvCpus', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has MinvCpus => (is => 'ro', isa => 'Int', xmlname => 'minvCpus', request_name => 'minvCpus', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'securityGroupIds', request_name => 'securityGroupIds', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has SpotIamFleetRole => (is => 'ro', isa => 'Str', xmlname => 'spotIamFleetRole', request_name => 'spotIamFleetRole', traits => ['Unwrapped','NameInRequest']);
-  has Subnets => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'subnets', request_name => 'subnets', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has Tags => (is => 'ro', isa => 'Paws::Batch::TagsMap', xmlname => 'tags', request_name => 'tags', traits => ['Unwrapped','NameInRequest']);
-  has Type => (is => 'ro', isa => 'Str', xmlname => 'type', request_name => 'type', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has BidPercentage => (is => 'ro', isa => 'Int', request_name => 'bidPercentage', traits => ['NameInRequest']);
+  has DesiredvCpus => (is => 'ro', isa => 'Int', request_name => 'desiredvCpus', traits => ['NameInRequest']);
+  has Ec2KeyPair => (is => 'ro', isa => 'Str', request_name => 'ec2KeyPair', traits => ['NameInRequest']);
+  has ImageId => (is => 'ro', isa => 'Str', request_name => 'imageId', traits => ['NameInRequest']);
+  has InstanceRole => (is => 'ro', isa => 'Str', request_name => 'instanceRole', traits => ['NameInRequest'], required => 1);
+  has InstanceTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'instanceTypes', traits => ['NameInRequest'], required => 1);
+  has MaxvCpus => (is => 'ro', isa => 'Int', request_name => 'maxvCpus', traits => ['NameInRequest'], required => 1);
+  has MinvCpus => (is => 'ro', isa => 'Int', request_name => 'minvCpus', traits => ['NameInRequest'], required => 1);
+  has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'securityGroupIds', traits => ['NameInRequest'], required => 1);
+  has SpotIamFleetRole => (is => 'ro', isa => 'Str', request_name => 'spotIamFleetRole', traits => ['NameInRequest']);
+  has Subnets => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'subnets', traits => ['NameInRequest'], required => 1);
+  has Tags => (is => 'ro', isa => 'Paws::Batch::TagsMap', request_name => 'tags', traits => ['NameInRequest']);
+  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -65,6 +66,12 @@ instance.
 
   The EC2 key pair that is used for instances launched in the compute
 environment.
+
+
+=head2 ImageId => Str
+
+  The Amazon Machine Image (AMI) ID used for instances launched in the
+compute environment.
 
 
 =head2 B<REQUIRED> InstanceRole => Str

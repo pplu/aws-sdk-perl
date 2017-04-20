@@ -56,7 +56,9 @@ Valid values are: C<"i386">, C<"x86_64">
 
 =head2 BillingProducts => ArrayRef[Str|Undef]
 
-The billing product codes.
+The billing product codes. Your account must be authorized to specify
+billing product codes. Otherwise, you can use the AWS Marketplace to
+bill for the use of an AMI.
 
 
 

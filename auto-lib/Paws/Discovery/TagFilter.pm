@@ -1,7 +1,7 @@
 package Paws::Discovery::TagFilter;
   use Moose;
-  has Name => (is => 'ro', isa => 'Str', xmlname => 'name', request_name => 'name', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has Values => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'item', xmlname => 'values', request_name => 'values', traits => ['NameInRequest','Unwrapped','NameInRequest'], required => 1);
+  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
+  has Values => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'item', request_name => 'values', traits => ['NameInRequest','NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Discovery::
 
 =head1 DESCRIPTION
 
-The name of a tag filter. Valid names are: C<tagKey>, C<tagValue>,
+The tag filter. Valid names are: C<tagKey>, C<tagValue>,
 C<configurationId>.
 
 =head1 ATTRIBUTES
@@ -40,12 +40,12 @@ C<configurationId>.
 
 =head2 B<REQUIRED> Name => Str
 
-  A name of a tag filter.
+  A name of the tag filter.
 
 
 =head2 B<REQUIRED> Values => ArrayRef[Str|Undef]
 
-  Values of a tag filter.
+  Values for the tag filter.
 
 
 

@@ -1,15 +1,15 @@
 
 package Paws::ApiGateway::ApiKey;
   use Moose;
-  has CreatedDate => (is => 'ro', isa => 'Str');
-  has CustomerId => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has Enabled => (is => 'ro', isa => 'Bool');
-  has Id => (is => 'ro', isa => 'Str');
-  has LastUpdatedDate => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has StageKeys => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Value => (is => 'ro', isa => 'Str');
+  has CreatedDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'createdDate');
+  has CustomerId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'customerId');
+  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
+  has Enabled => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'enabled');
+  has Id => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'id');
+  has LastUpdatedDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'lastUpdatedDate');
+  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name');
+  has StageKeys => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'stageKeys');
+  has Value => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'value');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;
@@ -25,7 +25,7 @@ Paws::ApiGateway::ApiKey
 
 =head2 CreatedDate => Str
 
-The date when the API Key was created, in ISO 8601 format.
+The timestamp when the API Key was created.
 
 
 =head2 CustomerId => Str
@@ -51,7 +51,7 @@ The identifier of the API Key.
 
 =head2 LastUpdatedDate => Str
 
-When the API Key was last updated, in ISO 8601 format.
+The timestamp when the API Key was last updated.
 
 
 =head2 Name => Str

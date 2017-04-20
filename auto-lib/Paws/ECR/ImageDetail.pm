@@ -1,11 +1,11 @@
 package Paws::ECR::ImageDetail;
   use Moose;
-  has ImageDigest => (is => 'ro', isa => 'Str', xmlname => 'imageDigest', request_name => 'imageDigest', traits => ['Unwrapped','NameInRequest']);
-  has ImagePushedAt => (is => 'ro', isa => 'Str', xmlname => 'imagePushedAt', request_name => 'imagePushedAt', traits => ['Unwrapped','NameInRequest']);
-  has ImageSizeInBytes => (is => 'ro', isa => 'Int', xmlname => 'imageSizeInBytes', request_name => 'imageSizeInBytes', traits => ['Unwrapped','NameInRequest']);
-  has ImageTags => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'imageTags', request_name => 'imageTags', traits => ['Unwrapped','NameInRequest']);
-  has RegistryId => (is => 'ro', isa => 'Str', xmlname => 'registryId', request_name => 'registryId', traits => ['Unwrapped','NameInRequest']);
-  has RepositoryName => (is => 'ro', isa => 'Str', xmlname => 'repositoryName', request_name => 'repositoryName', traits => ['Unwrapped','NameInRequest']);
+  has ImageDigest => (is => 'ro', isa => 'Str', request_name => 'imageDigest', traits => ['NameInRequest']);
+  has ImagePushedAt => (is => 'ro', isa => 'Str', request_name => 'imagePushedAt', traits => ['NameInRequest']);
+  has ImageSizeInBytes => (is => 'ro', isa => 'Int', request_name => 'imageSizeInBytes', traits => ['NameInRequest']);
+  has ImageTags => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'imageTags', traits => ['NameInRequest']);
+  has RegistryId => (is => 'ro', isa => 'Str', request_name => 'registryId', traits => ['NameInRequest']);
+  has RepositoryName => (is => 'ro', isa => 'Str', request_name => 'repositoryName', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

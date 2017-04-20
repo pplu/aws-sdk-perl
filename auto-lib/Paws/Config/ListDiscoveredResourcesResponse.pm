@@ -1,8 +1,8 @@
 
 package Paws::Config::ListDiscoveredResourcesResponse;
   use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
-  has ResourceIdentifiers => (is => 'ro', isa => 'ArrayRef[Paws::Config::ResourceIdentifier]', traits => ['Unwrapped'], xmlname => 'resourceIdentifiers' );
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  has ResourceIdentifiers => (is => 'ro', isa => 'ArrayRef[Paws::Config::ResourceIdentifier]', traits => ['NameInRequest'], request_name => 'resourceIdentifiers' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

@@ -1,9 +1,9 @@
 package Paws::ApiGateway::PatchOperation;
   use Moose;
-  has From => (is => 'ro', isa => 'Str', xmlname => 'from', request_name => 'from', traits => ['Unwrapped','NameInRequest']);
-  has Op => (is => 'ro', isa => 'Str', xmlname => 'op', request_name => 'op', traits => ['Unwrapped','NameInRequest']);
-  has Path => (is => 'ro', isa => 'Str', xmlname => 'path', request_name => 'path', traits => ['Unwrapped','NameInRequest']);
-  has Value => (is => 'ro', isa => 'Str', xmlname => 'value', request_name => 'value', traits => ['Unwrapped','NameInRequest']);
+  has From => (is => 'ro', isa => 'Str', request_name => 'from', traits => ['NameInRequest']);
+  has Op => (is => 'ro', isa => 'Str', request_name => 'op', traits => ['NameInRequest']);
+  has Path => (is => 'ro', isa => 'Str', request_name => 'path', traits => ['NameInRequest']);
+  has Value => (is => 'ro', isa => 'Str', request_name => 'value', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -71,7 +71,10 @@ associated with it.
 
 =head2 Value => Str
 
-  The new target value of the update operation.
+  The new target value of the update operation. When using AWS CLI to
+update a property of a JSON value, enclose the JSON object with a pair
+of single quotes in a Linux shell, e.g., '{"a": ...}'. In a Windows
+shell, see Using JSON for Parameters.
 
 
 

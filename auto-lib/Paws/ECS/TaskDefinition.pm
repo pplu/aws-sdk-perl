@@ -1,15 +1,15 @@
 package Paws::ECS::TaskDefinition;
   use Moose;
-  has ContainerDefinitions => (is => 'ro', isa => 'ArrayRef[Paws::ECS::ContainerDefinition]', xmlname => 'containerDefinitions', request_name => 'containerDefinitions', traits => ['Unwrapped','NameInRequest']);
-  has Family => (is => 'ro', isa => 'Str', xmlname => 'family', request_name => 'family', traits => ['Unwrapped','NameInRequest']);
-  has NetworkMode => (is => 'ro', isa => 'Str', xmlname => 'networkMode', request_name => 'networkMode', traits => ['Unwrapped','NameInRequest']);
-  has PlacementConstraints => (is => 'ro', isa => 'ArrayRef[Paws::ECS::TaskDefinitionPlacementConstraint]', xmlname => 'placementConstraints', request_name => 'placementConstraints', traits => ['Unwrapped','NameInRequest']);
-  has RequiresAttributes => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Attribute]', xmlname => 'requiresAttributes', request_name => 'requiresAttributes', traits => ['Unwrapped','NameInRequest']);
-  has Revision => (is => 'ro', isa => 'Int', xmlname => 'revision', request_name => 'revision', traits => ['Unwrapped','NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', xmlname => 'status', request_name => 'status', traits => ['Unwrapped','NameInRequest']);
-  has TaskDefinitionArn => (is => 'ro', isa => 'Str', xmlname => 'taskDefinitionArn', request_name => 'taskDefinitionArn', traits => ['Unwrapped','NameInRequest']);
-  has TaskRoleArn => (is => 'ro', isa => 'Str', xmlname => 'taskRoleArn', request_name => 'taskRoleArn', traits => ['Unwrapped','NameInRequest']);
-  has Volumes => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Volume]', xmlname => 'volumes', request_name => 'volumes', traits => ['Unwrapped','NameInRequest']);
+  has ContainerDefinitions => (is => 'ro', isa => 'ArrayRef[Paws::ECS::ContainerDefinition]', request_name => 'containerDefinitions', traits => ['NameInRequest']);
+  has Family => (is => 'ro', isa => 'Str', request_name => 'family', traits => ['NameInRequest']);
+  has NetworkMode => (is => 'ro', isa => 'Str', request_name => 'networkMode', traits => ['NameInRequest']);
+  has PlacementConstraints => (is => 'ro', isa => 'ArrayRef[Paws::ECS::TaskDefinitionPlacementConstraint]', request_name => 'placementConstraints', traits => ['NameInRequest']);
+  has RequiresAttributes => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Attribute]', request_name => 'requiresAttributes', traits => ['NameInRequest']);
+  has Revision => (is => 'ro', isa => 'Int', request_name => 'revision', traits => ['NameInRequest']);
+  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+  has TaskDefinitionArn => (is => 'ro', isa => 'Str', request_name => 'taskDefinitionArn', traits => ['NameInRequest']);
+  has TaskRoleArn => (is => 'ro', isa => 'Str', request_name => 'taskRoleArn', traits => ['NameInRequest']);
+  has Volumes => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Volume]', request_name => 'volumes', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

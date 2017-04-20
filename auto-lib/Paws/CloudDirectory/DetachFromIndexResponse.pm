@@ -17,7 +17,7 @@ Paws::CloudDirectory::DetachFromIndexResponse
 
 =head2 DetachedObjectIdentifier => Str
 
-The ObjectIdentifier of the object that was detached from the index.
+The C<ObjectIdentifier> of the object that was detached from the index.
 
 
 =head2 _request_id => Str

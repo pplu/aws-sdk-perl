@@ -1,9 +1,9 @@
 package Paws::Support::TrustedAdvisorResourcesSummary;
   use Moose;
-  has ResourcesFlagged => (is => 'ro', isa => 'Int', xmlname => 'resourcesFlagged', request_name => 'resourcesFlagged', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has ResourcesIgnored => (is => 'ro', isa => 'Int', xmlname => 'resourcesIgnored', request_name => 'resourcesIgnored', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has ResourcesProcessed => (is => 'ro', isa => 'Int', xmlname => 'resourcesProcessed', request_name => 'resourcesProcessed', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has ResourcesSuppressed => (is => 'ro', isa => 'Int', xmlname => 'resourcesSuppressed', request_name => 'resourcesSuppressed', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has ResourcesFlagged => (is => 'ro', isa => 'Int', request_name => 'resourcesFlagged', traits => ['NameInRequest'], required => 1);
+  has ResourcesIgnored => (is => 'ro', isa => 'Int', request_name => 'resourcesIgnored', traits => ['NameInRequest'], required => 1);
+  has ResourcesProcessed => (is => 'ro', isa => 'Int', request_name => 'resourcesProcessed', traits => ['NameInRequest'], required => 1);
+  has ResourcesSuppressed => (is => 'ro', isa => 'Int', request_name => 'resourcesSuppressed', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###

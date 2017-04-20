@@ -3,7 +3,7 @@ package Paws::S3::CreateMultipartUploadOutput;
   use Moose;
   has AbortDate => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-abort-date');
   has AbortRuleId => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-abort-rule-id');
-  has Bucket => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'Bucket');
+  has Bucket => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'Bucket');
   has Key => (is => 'ro', isa => 'Str');
   has RequestCharged => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-request-charged');
   has ServerSideEncryption => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-server-side-encryption');

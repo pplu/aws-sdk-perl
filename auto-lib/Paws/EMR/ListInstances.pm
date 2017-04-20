@@ -2,6 +2,8 @@
 package Paws::EMR::ListInstances;
   use Moose;
   has ClusterId => (is => 'ro', isa => 'Str', required => 1);
+  has InstanceFleetId => (is => 'ro', isa => 'Str');
+  has InstanceFleetType => (is => 'ro', isa => 'Str');
   has InstanceGroupId => (is => 'ro', isa => 'Str');
   has InstanceGroupTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has InstanceStates => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
@@ -42,6 +44,18 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 The identifier of the cluster for which to list the instances.
 
 
+
+=head2 InstanceFleetId => Str
+
+The unique identifier of the instance fleet.
+
+
+
+=head2 InstanceFleetType => Str
+
+The node type of the instance fleet. For example MASTER, CORE, or TASK.
+
+Valid values are: C<"MASTER">, C<"CORE">, C<"TASK">
 
 =head2 InstanceGroupId => Str
 

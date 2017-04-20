@@ -2,6 +2,7 @@
 package Paws::DeviceFarm::UpdateProject;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'arn' , required => 1);
+  has DefaultJobTimeoutMinutes => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'defaultJobTimeoutMinutes' );
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name' );
 
   use MooseX::ClassAttribute;
@@ -38,6 +39,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 The Amazon Resource Name (ARN) of the project whose name you wish to
 update.
+
+
+
+=head2 DefaultJobTimeoutMinutes => Int
+
+The number of minutes a test run in the project will execute before it
+times out.
 
 
 

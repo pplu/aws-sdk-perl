@@ -1,7 +1,7 @@
 package Paws::Health::EventAggregate;
   use Moose;
-  has AggregateValue => (is => 'ro', isa => 'Str', xmlname => 'aggregateValue', request_name => 'aggregateValue', traits => ['Unwrapped','NameInRequest']);
-  has Count => (is => 'ro', isa => 'Int', xmlname => 'count', request_name => 'count', traits => ['Unwrapped','NameInRequest']);
+  has AggregateValue => (is => 'ro', isa => 'Str', request_name => 'aggregateValue', traits => ['NameInRequest']);
+  has Count => (is => 'ro', isa => 'Int', request_name => 'count', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

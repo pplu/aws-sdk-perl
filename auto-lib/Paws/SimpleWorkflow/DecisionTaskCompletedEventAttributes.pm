@@ -1,8 +1,8 @@
 package Paws::SimpleWorkflow::DecisionTaskCompletedEventAttributes;
   use Moose;
-  has ExecutionContext => (is => 'ro', isa => 'Str', xmlname => 'executionContext', request_name => 'executionContext', traits => ['Unwrapped','NameInRequest']);
-  has ScheduledEventId => (is => 'ro', isa => 'Int', xmlname => 'scheduledEventId', request_name => 'scheduledEventId', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has StartedEventId => (is => 'ro', isa => 'Int', xmlname => 'startedEventId', request_name => 'startedEventId', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has ExecutionContext => (is => 'ro', isa => 'Str', request_name => 'executionContext', traits => ['NameInRequest']);
+  has ScheduledEventId => (is => 'ro', isa => 'Int', request_name => 'scheduledEventId', traits => ['NameInRequest'], required => 1);
+  has StartedEventId => (is => 'ro', isa => 'Int', request_name => 'startedEventId', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###

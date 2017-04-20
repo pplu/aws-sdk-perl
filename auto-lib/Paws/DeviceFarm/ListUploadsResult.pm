@@ -1,8 +1,8 @@
 
 package Paws::DeviceFarm::ListUploadsResult;
   use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
-  has Uploads => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::Upload]', traits => ['Unwrapped'], xmlname => 'uploads' );
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  has Uploads => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::Upload]', traits => ['NameInRequest'], request_name => 'uploads' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

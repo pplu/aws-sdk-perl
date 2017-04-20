@@ -1,13 +1,13 @@
 package Paws::CodePipeline::ThirdPartyJobData;
   use Moose;
-  has ActionConfiguration => (is => 'ro', isa => 'Paws::CodePipeline::ActionConfiguration', xmlname => 'actionConfiguration', request_name => 'actionConfiguration', traits => ['Unwrapped','NameInRequest']);
-  has ActionTypeId => (is => 'ro', isa => 'Paws::CodePipeline::ActionTypeId', xmlname => 'actionTypeId', request_name => 'actionTypeId', traits => ['Unwrapped','NameInRequest']);
-  has ArtifactCredentials => (is => 'ro', isa => 'Paws::CodePipeline::AWSSessionCredentials', xmlname => 'artifactCredentials', request_name => 'artifactCredentials', traits => ['Unwrapped','NameInRequest']);
-  has ContinuationToken => (is => 'ro', isa => 'Str', xmlname => 'continuationToken', request_name => 'continuationToken', traits => ['Unwrapped','NameInRequest']);
-  has EncryptionKey => (is => 'ro', isa => 'Paws::CodePipeline::EncryptionKey', xmlname => 'encryptionKey', request_name => 'encryptionKey', traits => ['Unwrapped','NameInRequest']);
-  has InputArtifacts => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::Artifact]', xmlname => 'inputArtifacts', request_name => 'inputArtifacts', traits => ['Unwrapped','NameInRequest']);
-  has OutputArtifacts => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::Artifact]', xmlname => 'outputArtifacts', request_name => 'outputArtifacts', traits => ['Unwrapped','NameInRequest']);
-  has PipelineContext => (is => 'ro', isa => 'Paws::CodePipeline::PipelineContext', xmlname => 'pipelineContext', request_name => 'pipelineContext', traits => ['Unwrapped','NameInRequest']);
+  has ActionConfiguration => (is => 'ro', isa => 'Paws::CodePipeline::ActionConfiguration', request_name => 'actionConfiguration', traits => ['NameInRequest']);
+  has ActionTypeId => (is => 'ro', isa => 'Paws::CodePipeline::ActionTypeId', request_name => 'actionTypeId', traits => ['NameInRequest']);
+  has ArtifactCredentials => (is => 'ro', isa => 'Paws::CodePipeline::AWSSessionCredentials', request_name => 'artifactCredentials', traits => ['NameInRequest']);
+  has ContinuationToken => (is => 'ro', isa => 'Str', request_name => 'continuationToken', traits => ['NameInRequest']);
+  has EncryptionKey => (is => 'ro', isa => 'Paws::CodePipeline::EncryptionKey', request_name => 'encryptionKey', traits => ['NameInRequest']);
+  has InputArtifacts => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::Artifact]', request_name => 'inputArtifacts', traits => ['NameInRequest']);
+  has OutputArtifacts => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::Artifact]', request_name => 'outputArtifacts', traits => ['NameInRequest']);
+  has PipelineContext => (is => 'ro', isa => 'Paws::CodePipeline::PipelineContext', request_name => 'pipelineContext', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

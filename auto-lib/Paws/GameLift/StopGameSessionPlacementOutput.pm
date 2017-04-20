@@ -16,8 +16,8 @@ Paws::GameLift::StopGameSessionPlacementOutput
 
 =head2 GameSessionPlacement => L<Paws::GameLift::GameSessionPlacement>
 
-Object that describes the cancelled game session placement, with
-cancelled status and an end time stamp.
+Object that describes the canceled game session placement, with
+Cancelled status and an end time stamp.
 
 
 =head2 _request_id => Str

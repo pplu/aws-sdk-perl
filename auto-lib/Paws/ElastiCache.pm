@@ -203,6 +203,11 @@ package Paws::ElastiCache;
     my $call_object = $self->new_with_coercions('Paws::ElastiCache::RevokeCacheSecurityGroupIngress', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub TestFailover {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ElastiCache::TestFailover', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   
   sub DescribeAllCacheClusters {
     my $self = shift;
@@ -458,7 +463,7 @@ package Paws::ElastiCache;
   }
 
 
-  sub operations { qw/AddTagsToResource AuthorizeCacheSecurityGroupIngress CopySnapshot CreateCacheCluster CreateCacheParameterGroup CreateCacheSecurityGroup CreateCacheSubnetGroup CreateReplicationGroup CreateSnapshot DeleteCacheCluster DeleteCacheParameterGroup DeleteCacheSecurityGroup DeleteCacheSubnetGroup DeleteReplicationGroup DeleteSnapshot DescribeCacheClusters DescribeCacheEngineVersions DescribeCacheParameterGroups DescribeCacheParameters DescribeCacheSecurityGroups DescribeCacheSubnetGroups DescribeEngineDefaultParameters DescribeEvents DescribeReplicationGroups DescribeReservedCacheNodes DescribeReservedCacheNodesOfferings DescribeSnapshots ListAllowedNodeTypeModifications ListTagsForResource ModifyCacheCluster ModifyCacheParameterGroup ModifyCacheSubnetGroup ModifyReplicationGroup PurchaseReservedCacheNodesOffering RebootCacheCluster RemoveTagsFromResource ResetCacheParameterGroup RevokeCacheSecurityGroupIngress / }
+  sub operations { qw/AddTagsToResource AuthorizeCacheSecurityGroupIngress CopySnapshot CreateCacheCluster CreateCacheParameterGroup CreateCacheSecurityGroup CreateCacheSubnetGroup CreateReplicationGroup CreateSnapshot DeleteCacheCluster DeleteCacheParameterGroup DeleteCacheSecurityGroup DeleteCacheSubnetGroup DeleteReplicationGroup DeleteSnapshot DescribeCacheClusters DescribeCacheEngineVersions DescribeCacheParameterGroups DescribeCacheParameters DescribeCacheSecurityGroups DescribeCacheSubnetGroups DescribeEngineDefaultParameters DescribeEvents DescribeReplicationGroups DescribeReservedCacheNodes DescribeReservedCacheNodesOfferings DescribeSnapshots ListAllowedNodeTypeModifications ListTagsForResource ModifyCacheCluster ModifyCacheParameterGroup ModifyCacheSubnetGroup ModifyReplicationGroup PurchaseReservedCacheNodesOffering RebootCacheCluster RemoveTagsFromResource ResetCacheParameterGroup RevokeCacheSecurityGroupIngress TestFailover / }
 
 1;
 
@@ -509,7 +514,7 @@ Each argument is described in detail in: L<Paws::ElastiCache::AddTagsToResource>
 
 Returns: a L<Paws::ElastiCache::TagListMessage> instance
 
-  Adds up to 10 cost allocation tags to the named resource. A cost
+  Adds up to 50 cost allocation tags to the named resource. A cost
 allocation tag is a key-value pair where the key and value are
 case-sensitive. You can use cost allocation tags to categorize and
 track your AWS costs.
@@ -654,9 +659,28 @@ Each argument is described in detail in: L<Paws::ElastiCache::CreateCacheParamet
 
 Returns: a L<Paws::ElastiCache::CreateCacheParameterGroupResult> instance
 
-  Creates a new cache parameter group. A cache parameter group is a
-collection of parameters that you apply to all of the nodes in a cache
-cluster.
+  Creates a new Amazon ElastiCache cache parameter group. An ElastiCache
+cache parameter group is a collection of parameters and their values
+that are applied to all of the nodes in any cache cluster or
+replication group using the CacheParameterGroup.
+
+A newly created CacheParameterGroup is an exact duplicate of the
+default parameter group for the CacheParameterGroupFamily. To customize
+the newly created CacheParameterGroup you can change the values of
+specific parameters. For more information, see:
+
+=over
+
+=item *
+
+ModifyCacheParameterGroup in the ElastiCache API Reference.
+
+=item *
+
+Parameters and Parameter Groups in the ElastiCache User Guide.
+
+=back
+
 
 
 =head2 CreateCacheSecurityGroup(CacheSecurityGroupName => Str, Description => Str)
@@ -710,7 +734,11 @@ enabled) replication groups partition the data across node groups
 When a Redis (cluster mode disabled) replication group has been
 successfully created, you can add one or more read replicas to it, up
 to a total of 5 read replicas. You cannot alter a Redis (cluster mode
-enabled) replication group after it has been created.
+enabled) replication group after it has been created. However, if you
+need to increase or decrease the number of node groups (console:
+shards), you can avail yourself of ElastiCache for Redis' enhanced
+backup and restore. For more information, see Restoring From a Backup
+with Cluster Resizing in the I<ElastiCache User Guide>.
 
 This operation is valid for Redis only.
 
@@ -815,7 +843,7 @@ snapshot; you cannot cancel or revert this operation.
 This operation is valid for Redis only.
 
 
-=head2 DescribeCacheClusters([CacheClusterId => Str, Marker => Str, MaxRecords => Int, ShowCacheNodeInfo => Bool])
+=head2 DescribeCacheClusters([CacheClusterId => Str, Marker => Str, MaxRecords => Int, ShowCacheClustersNotInReplicationGroups => Bool, ShowCacheNodeInfo => Bool])
 
 Each argument is described in detail in: L<Paws::ElastiCache::DescribeCacheClusters>
 
@@ -825,22 +853,23 @@ Returns: a L<Paws::ElastiCache::CacheClusterMessage> instance
 cluster identifier is specified, or about a specific cache cluster if a
 cache cluster identifier is supplied.
 
-By default, abbreviated information about the cache clusters are
-returned. You can use the optional C<ShowDetails> flag to retrieve
-detailed information about the cache nodes associated with the cache
-clusters. These details include the DNS address and port for the cache
-node endpoint.
+By default, abbreviated information about the cache clusters is
+returned. You can use the optional I<ShowCacheNodeInfo> flag to
+retrieve detailed information about the cache nodes associated with the
+cache clusters. These details include the DNS address and port for the
+cache node endpoint.
 
-If the cluster is in the CREATING state, only cluster-level information
-is displayed until all of the nodes are successfully provisioned.
+If the cluster is in the I<creating> state, only cluster-level
+information is displayed until all of the nodes are successfully
+provisioned.
 
-If the cluster is in the DELETING state, only cluster-level information
-is displayed.
+If the cluster is in the I<deleting> state, only cluster-level
+information is displayed.
 
 If cache nodes are currently being added to the cache cluster, node
 endpoint information and creation time for the additional nodes are not
 displayed until they are completely provisioned. When the cache cluster
-state is C<available>, the cluster is ready for use.
+state is I<available>, the cluster is ready for use.
 
 If cache nodes are currently being removed from the cache cluster, no
 endpoint information for the removed nodes is displayed.
@@ -996,7 +1025,7 @@ C<cost allocation tag> is a key-value pair where the key is
 case-sensitive and the value is optional. You can use cost allocation
 tags to categorize and track your AWS costs.
 
-You can have a maximum of 10 cost allocation tags on an ElastiCache
+You can have a maximum of 50 cost allocation tags on an ElastiCache
 resource. For more information, see Using Cost Allocation Tags in
 Amazon ElastiCache.
 
@@ -1032,7 +1061,7 @@ Returns: a L<Paws::ElastiCache::ModifyCacheSubnetGroupResult> instance
   Modifies an existing cache subnet group.
 
 
-=head2 ModifyReplicationGroup(ReplicationGroupId => Str, [ApplyImmediately => Bool, AutomaticFailoverEnabled => Bool, AutoMinorVersionUpgrade => Bool, CacheNodeType => Str, CacheParameterGroupName => Str, CacheSecurityGroupNames => ArrayRef[Str|Undef], EngineVersion => Str, NotificationTopicArn => Str, NotificationTopicStatus => Str, PreferredMaintenanceWindow => Str, PrimaryClusterId => Str, ReplicationGroupDescription => Str, SecurityGroupIds => ArrayRef[Str|Undef], SnapshotRetentionLimit => Int, SnapshottingClusterId => Str, SnapshotWindow => Str])
+=head2 ModifyReplicationGroup(ReplicationGroupId => Str, [ApplyImmediately => Bool, AutomaticFailoverEnabled => Bool, AutoMinorVersionUpgrade => Bool, CacheNodeType => Str, CacheParameterGroupName => Str, CacheSecurityGroupNames => ArrayRef[Str|Undef], EngineVersion => Str, NodeGroupId => Str, NotificationTopicArn => Str, NotificationTopicStatus => Str, PreferredMaintenanceWindow => Str, PrimaryClusterId => Str, ReplicationGroupDescription => Str, SecurityGroupIds => ArrayRef[Str|Undef], SnapshotRetentionLimit => Int, SnapshottingClusterId => Str, SnapshotWindow => Str])
 
 Each argument is described in detail in: L<Paws::ElastiCache::ModifyReplicationGroup>
 
@@ -1108,15 +1137,102 @@ disallow access from an Amazon EC2 security group that had been
 previously authorized.
 
 
+=head2 TestFailover(NodeGroupId => Str, ReplicationGroupId => Str)
+
+Each argument is described in detail in: L<Paws::ElastiCache::TestFailover>
+
+Returns: a L<Paws::ElastiCache::TestFailoverResult> instance
+
+  Represents the input of a C<TestFailover> operation which test
+automatic failover on a specified node group (called shard in the
+console) in a replication group (called cluster in the console).
+
+B<Note the following>
+
+=over
+
+=item *
+
+A customer can use this operation to test automatic failover on up to 5
+shards (called node groups in the ElastiCache API and AWS CLI) in any
+rolling 24-hour period.
+
+=item *
+
+If calling this operation on shards in different clusters (called
+replication groups in the API and CLI), the calls can be made
+concurrently.
+
+=item *
+
+If calling this operation multiple times on different shards in the
+same Redis (cluster mode enabled) replication group, the first node
+replacement must complete before a subsequent call can be made.
+
+=item *
+
+To determine whether the node replacement is complete you can check
+Events using the Amazon ElastiCache console, the AWS CLI, or the
+ElastiCache API. Look for the following automatic failover related
+events, listed here in order of occurrance:
+
+=over
+
+=item 1.
+
+Replication group message: C<Test Failover API called for node group
+E<lt>node-group-idE<gt>>
+
+=item 2.
+
+Cache cluster message: C<Failover from master node
+E<lt>primary-node-idE<gt> to replica node E<lt>node-idE<gt> completed>
+
+=item 3.
+
+Replication group message: C<Failover from master node
+E<lt>primary-node-idE<gt> to replica node E<lt>node-idE<gt> completed>
+
+=item 4.
+
+Cache cluster message: C<Recovering cache nodes E<lt>node-idE<gt>>
+
+=item 5.
+
+Cache cluster message: C<Finished recovery for cache nodes
+E<lt>node-idE<gt>>
+
+=back
+
+For more information see:
+
+=over
+
+=item *
+
+Viewing ElastiCache Events in the I<ElastiCache User Guide>
+
+=item *
+
+DescribeEvents in the ElastiCache API Reference
+
+=back
+
+=back
+
+Also see, Testing Multi-AZ with Automatic Failover in the I<ElastiCache
+User Guide>.
+
+
 
 
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
 
-=head2 DescribeAllCacheClusters(sub { },[CacheClusterId => Str, Marker => Str, MaxRecords => Int, ShowCacheNodeInfo => Bool])
+=head2 DescribeAllCacheClusters(sub { },[CacheClusterId => Str, Marker => Str, MaxRecords => Int, ShowCacheClustersNotInReplicationGroups => Bool, ShowCacheNodeInfo => Bool])
 
-=head2 DescribeAllCacheClusters([CacheClusterId => Str, Marker => Str, MaxRecords => Int, ShowCacheNodeInfo => Bool])
+=head2 DescribeAllCacheClusters([CacheClusterId => Str, Marker => Str, MaxRecords => Int, ShowCacheClustersNotInReplicationGroups => Bool, ShowCacheNodeInfo => Bool])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

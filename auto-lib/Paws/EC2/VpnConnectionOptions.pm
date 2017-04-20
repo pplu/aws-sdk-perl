@@ -1,6 +1,6 @@
 package Paws::EC2::VpnConnectionOptions;
   use Moose;
-  has StaticRoutesOnly => (is => 'ro', isa => 'Bool', xmlname => 'staticRoutesOnly', traits => ['Unwrapped']);
+  has StaticRoutesOnly => (is => 'ro', isa => 'Bool', request_name => 'staticRoutesOnly', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

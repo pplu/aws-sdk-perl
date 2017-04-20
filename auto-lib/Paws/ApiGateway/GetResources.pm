@@ -1,6 +1,7 @@
 
 package Paws::ApiGateway::GetResources;
   use Moose;
+  has Embed => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['ParamInQuery'], query_name => 'embed' );
   has Limit => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'limit' );
   has Position => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'position' );
   has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restApiId' , required => 1);
@@ -37,18 +38,28 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
+=head2 Embed => ArrayRef[Str|Undef]
+
+A query parameter used to retrieve the specified resources embedded in
+the returned Resources resource in the response. This C<embed>
+parameter value is a list of comma-separated strings. Currently, the
+request supports only retrieval of the embedded Method resources this
+way. The query parameter value must be a single-valued list and contain
+the C<"methods"> string. For example, C<GET
+/restapis/{restapi_id}/resources?embed=methods>.
+
+
+
 =head2 Limit => Int
 
-The maximum number of Resource resources in the collection to get
-information about. The default limit is 25. It should be an integer
-between 1 - 500.
+The maximum number of returned results per page. The value is 25 by
+default and could be between 1 - 500.
 
 
 
 =head2 Position => Str
 
-The position of the next set of results in the current Resources
-resource to get information about.
+The current pagination position in the paged result set.
 
 
 

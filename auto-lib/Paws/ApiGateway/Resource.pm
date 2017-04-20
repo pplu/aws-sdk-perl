@@ -1,11 +1,11 @@
 
 package Paws::ApiGateway::Resource;
   use Moose;
-  has Id => (is => 'ro', isa => 'Str');
-  has ParentId => (is => 'ro', isa => 'Str');
-  has Path => (is => 'ro', isa => 'Str');
-  has PathPart => (is => 'ro', isa => 'Str');
-  has ResourceMethods => (is => 'ro', isa => 'Paws::ApiGateway::MapOfMethod');
+  has Id => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'id');
+  has ParentId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'parentId');
+  has Path => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'path');
+  has PathPart => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'pathPart');
+  has ResourceMethods => (is => 'ro', isa => 'Paws::ApiGateway::MapOfMethod', traits => ['NameInRequest'], request_name => 'resourceMethods');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;
@@ -53,7 +53,7 @@ OK> response of the C<GET
 
 =head2 Request
 
- GET /restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET HTTP/1.1 Content-Type: application/json Host: apigateway.us-east-1.amazonaws.com X-Amz-Date: 20160608T031827Z Authorization: AWS4-HMAC-SHA256 Credential={access_key_ID}/20160608/us-east-1/apigateway/aws4_request, SignedHeaders=content-type;host;x-amz-date, Signature={sig4_hash}
+ GET /restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET HTTP/1.1 Content-Type: application/json Host: apigateway.us-east-1.amazonaws.com X-Amz-Date: 20170223T031827Z Authorization: AWS4-HMAC-SHA256 Credential={access_key_ID}/20170223/us-east-1/apigateway/aws4_request, SignedHeaders=content-type;host;x-amz-date, Signature={sig4_hash}
 
 =head2 Response
 

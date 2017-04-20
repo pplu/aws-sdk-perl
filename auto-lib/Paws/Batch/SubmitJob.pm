@@ -7,6 +7,7 @@ package Paws::Batch::SubmitJob;
   has JobName => (is => 'ro', isa => 'Str', required => 1);
   has JobQueue => (is => 'ro', isa => 'Str', required => 1);
   has Parameters => (is => 'ro', isa => 'Paws::Batch::ParametersMap');
+  has RetryStrategy => (is => 'ro', isa => 'Paws::Batch::RetryStrategy');
 
   use MooseX::ClassAttribute;
 
@@ -54,8 +55,8 @@ add new environment variables to it with an C<environment> override.
 
 =head2 DependsOn => ArrayRef[L<Paws::Batch::JobDependency>]
 
-A list of job names or IDs on which this job depends. A job can depend
-upon a maximum of 100 jobs.
+A list of job IDs on which this job depends. A job can depend upon a
+maximum of 100 jobs.
 
 
 
@@ -69,7 +70,9 @@ definition.
 
 =head2 B<REQUIRED> JobName => Str
 
-The name of the job.
+The name of the job. A name must be 1 to 128 characters in length.
+
+Pattern: ^[a-zA-Z0-9_]+$
 
 
 
@@ -87,6 +90,14 @@ substitution placeholders that are set in the job definition.
 Parameters are specified as a key and value pair mapping. Parameters in
 a C<SubmitJob> request override any corresponding parameter defaults
 from the job definition.
+
+
+
+=head2 RetryStrategy => L<Paws::Batch::RetryStrategy>
+
+The retry strategy to use for failed jobs from this SubmitJob
+operation. When a retry strategy is specified here, it overrides the
+retry strategy defined in the job definition.
 
 
 

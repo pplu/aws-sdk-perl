@@ -1,7 +1,7 @@
 package Paws::DataPipeline::Operator;
   use Moose;
-  has Type => (is => 'ro', isa => 'Str', xmlname => 'type', request_name => 'type', traits => ['Unwrapped','NameInRequest']);
-  has Values => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'values', request_name => 'values', traits => ['Unwrapped','NameInRequest']);
+  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
+  has Values => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'values', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

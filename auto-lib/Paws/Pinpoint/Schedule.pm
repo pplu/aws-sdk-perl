@@ -36,7 +36,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::S
 
 =head1 DESCRIPTION
 
-This class has no description
+Shcedule that defines when a campaign is run.
 
 =head1 ATTRIBUTES
 

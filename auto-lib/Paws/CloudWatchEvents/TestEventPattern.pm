@@ -36,13 +36,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Event => Str
 
-The event in the JSON format to test against the event pattern.
+The event, in JSON format, to test against the event pattern.
 
 
 
 =head2 B<REQUIRED> EventPattern => Str
 
-The event pattern you want to test.
+The event pattern.
 
 
 

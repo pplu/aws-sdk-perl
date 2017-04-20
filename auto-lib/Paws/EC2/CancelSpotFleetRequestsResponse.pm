@@ -1,8 +1,8 @@
 
 package Paws::EC2::CancelSpotFleetRequestsResponse;
   use Moose;
-  has SuccessfulFleetRequests => (is => 'ro', isa => 'ArrayRef[Paws::EC2::CancelSpotFleetRequestsSuccessItem]', xmlname => 'successfulFleetRequestSet', traits => ['Unwrapped',]);
-  has UnsuccessfulFleetRequests => (is => 'ro', isa => 'ArrayRef[Paws::EC2::CancelSpotFleetRequestsErrorItem]', xmlname => 'unsuccessfulFleetRequestSet', traits => ['Unwrapped',]);
+  has SuccessfulFleetRequests => (is => 'ro', isa => 'ArrayRef[Paws::EC2::CancelSpotFleetRequestsSuccessItem]', request_name => 'successfulFleetRequestSet', traits => ['NameInRequest',]);
+  has UnsuccessfulFleetRequests => (is => 'ro', isa => 'ArrayRef[Paws::EC2::CancelSpotFleetRequestsErrorItem]', request_name => 'unsuccessfulFleetRequestSet', traits => ['NameInRequest',]);
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

@@ -1,7 +1,7 @@
 
 package Paws::Discovery::CreateApplicationResponse;
   use Moose;
-  has ConfigurationId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'configurationId' );
+  has ConfigurationId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'configurationId' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

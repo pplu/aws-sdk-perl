@@ -53,6 +53,11 @@ package Paws::ApiGateway;
     my $call_object = $self->new_with_coercions('Paws::ApiGateway::CreateModel', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateRequestValidator {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ApiGateway::CreateRequestValidator', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateResource {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ApiGateway::CreateResource', @_);
@@ -141,6 +146,11 @@ package Paws::ApiGateway;
   sub DeleteModel {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ApiGateway::DeleteModel', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteRequestValidator {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ApiGateway::DeleteRequestValidator', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteResource {
@@ -306,6 +316,16 @@ package Paws::ApiGateway;
   sub GetModelTemplate {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ApiGateway::GetModelTemplate', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetRequestValidator {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ApiGateway::GetRequestValidator', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetRequestValidators {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ApiGateway::GetRequestValidators', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetResource {
@@ -496,6 +516,11 @@ package Paws::ApiGateway;
   sub UpdateModel {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ApiGateway::UpdateModel', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateRequestValidator {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ApiGateway::UpdateRequestValidator', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateResource {
@@ -757,7 +782,7 @@ package Paws::ApiGateway;
   }
 
 
-  sub operations { qw/CreateApiKey CreateAuthorizer CreateBasePathMapping CreateDeployment CreateDocumentationPart CreateDocumentationVersion CreateDomainName CreateModel CreateResource CreateRestApi CreateStage CreateUsagePlan CreateUsagePlanKey DeleteApiKey DeleteAuthorizer DeleteBasePathMapping DeleteClientCertificate DeleteDeployment DeleteDocumentationPart DeleteDocumentationVersion DeleteDomainName DeleteIntegration DeleteIntegrationResponse DeleteMethod DeleteMethodResponse DeleteModel DeleteResource DeleteRestApi DeleteStage DeleteUsagePlan DeleteUsagePlanKey FlushStageAuthorizersCache FlushStageCache GenerateClientCertificate GetAccount GetApiKey GetApiKeys GetAuthorizer GetAuthorizers GetBasePathMapping GetBasePathMappings GetClientCertificate GetClientCertificates GetDeployment GetDeployments GetDocumentationPart GetDocumentationParts GetDocumentationVersion GetDocumentationVersions GetDomainName GetDomainNames GetExport GetIntegration GetIntegrationResponse GetMethod GetMethodResponse GetModel GetModels GetModelTemplate GetResource GetResources GetRestApi GetRestApis GetSdk GetSdkType GetSdkTypes GetStage GetStages GetUsage GetUsagePlan GetUsagePlanKey GetUsagePlanKeys GetUsagePlans ImportApiKeys ImportDocumentationParts ImportRestApi PutIntegration PutIntegrationResponse PutMethod PutMethodResponse PutRestApi TestInvokeAuthorizer TestInvokeMethod UpdateAccount UpdateApiKey UpdateAuthorizer UpdateBasePathMapping UpdateClientCertificate UpdateDeployment UpdateDocumentationPart UpdateDocumentationVersion UpdateDomainName UpdateIntegration UpdateIntegrationResponse UpdateMethod UpdateMethodResponse UpdateModel UpdateResource UpdateRestApi UpdateStage UpdateUsage UpdateUsagePlan / }
+  sub operations { qw/CreateApiKey CreateAuthorizer CreateBasePathMapping CreateDeployment CreateDocumentationPart CreateDocumentationVersion CreateDomainName CreateModel CreateRequestValidator CreateResource CreateRestApi CreateStage CreateUsagePlan CreateUsagePlanKey DeleteApiKey DeleteAuthorizer DeleteBasePathMapping DeleteClientCertificate DeleteDeployment DeleteDocumentationPart DeleteDocumentationVersion DeleteDomainName DeleteIntegration DeleteIntegrationResponse DeleteMethod DeleteMethodResponse DeleteModel DeleteRequestValidator DeleteResource DeleteRestApi DeleteStage DeleteUsagePlan DeleteUsagePlanKey FlushStageAuthorizersCache FlushStageCache GenerateClientCertificate GetAccount GetApiKey GetApiKeys GetAuthorizer GetAuthorizers GetBasePathMapping GetBasePathMappings GetClientCertificate GetClientCertificates GetDeployment GetDeployments GetDocumentationPart GetDocumentationParts GetDocumentationVersion GetDocumentationVersions GetDomainName GetDomainNames GetExport GetIntegration GetIntegrationResponse GetMethod GetMethodResponse GetModel GetModels GetModelTemplate GetRequestValidator GetRequestValidators GetResource GetResources GetRestApi GetRestApis GetSdk GetSdkType GetSdkTypes GetStage GetStages GetUsage GetUsagePlan GetUsagePlanKey GetUsagePlanKeys GetUsagePlans ImportApiKeys ImportDocumentationParts ImportRestApi PutIntegration PutIntegrationResponse PutMethod PutMethodResponse PutRestApi TestInvokeAuthorizer TestInvokeMethod UpdateAccount UpdateApiKey UpdateAuthorizer UpdateBasePathMapping UpdateClientCertificate UpdateDeployment UpdateDocumentationPart UpdateDocumentationVersion UpdateDomainName UpdateIntegration UpdateIntegrationResponse UpdateMethod UpdateMethodResponse UpdateModel UpdateRequestValidator UpdateResource UpdateRestApi UpdateStage UpdateUsage UpdateUsagePlan / }
 
 1;
 
@@ -854,7 +879,7 @@ Returns: a L<Paws::ApiGateway::DocumentationVersion> instance
   
 
 
-=head2 CreateDomainName(CertificateBody => Str, CertificateChain => Str, CertificateName => Str, CertificatePrivateKey => Str, DomainName => Str)
+=head2 CreateDomainName(DomainName => Str, [CertificateArn => Str, CertificateBody => Str, CertificateChain => Str, CertificateName => Str, CertificatePrivateKey => Str])
 
 Each argument is described in detail in: L<Paws::ApiGateway::CreateDomainName>
 
@@ -870,6 +895,15 @@ Each argument is described in detail in: L<Paws::ApiGateway::CreateModel>
 Returns: a L<Paws::ApiGateway::Model> instance
 
   Adds a new Model resource to an existing RestApi resource.
+
+
+=head2 CreateRequestValidator(RestApiId => Str, [Name => Str, ValidateRequestBody => Bool, ValidateRequestParameters => Bool])
+
+Each argument is described in detail in: L<Paws::ApiGateway::CreateRequestValidator>
+
+Returns: a L<Paws::ApiGateway::RequestValidator> instance
+
+  Creates a ReqeustValidator of a given RestApi.
 
 
 =head2 CreateResource(ParentId => Str, PathPart => Str, RestApiId => Str)
@@ -1040,6 +1074,15 @@ Returns: nothing
   Deletes a model.
 
 
+=head2 DeleteRequestValidator(RequestValidatorId => Str, RestApiId => Str)
+
+Each argument is described in detail in: L<Paws::ApiGateway::DeleteRequestValidator>
+
+Returns: nothing
+
+  Deletes a RequestValidator of a given RestApi.
+
+
 =head2 DeleteResource(ResourceId => Str, RestApiId => Str)
 
 Each argument is described in detail in: L<Paws::ApiGateway::DeleteResource>
@@ -1198,7 +1241,7 @@ Returns: a L<Paws::ApiGateway::ClientCertificates> instance
   Gets a collection of ClientCertificate resources.
 
 
-=head2 GetDeployment(DeploymentId => Str, RestApiId => Str)
+=head2 GetDeployment(DeploymentId => Str, RestApiId => Str, [Embed => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::ApiGateway::GetDeployment>
 
@@ -1344,7 +1387,25 @@ Returns: a L<Paws::ApiGateway::Template> instance
 payload into the structure of a model.
 
 
-=head2 GetResource(ResourceId => Str, RestApiId => Str)
+=head2 GetRequestValidator(RequestValidatorId => Str, RestApiId => Str)
+
+Each argument is described in detail in: L<Paws::ApiGateway::GetRequestValidator>
+
+Returns: a L<Paws::ApiGateway::RequestValidator> instance
+
+  Gets a RequestValidator of a given RestApi.
+
+
+=head2 GetRequestValidators(RestApiId => Str, [Limit => Int, Position => Str])
+
+Each argument is described in detail in: L<Paws::ApiGateway::GetRequestValidators>
+
+Returns: a L<Paws::ApiGateway::RequestValidators> instance
+
+  Gets the RequestValidators collection of a given RestApi.
+
+
+=head2 GetResource(ResourceId => Str, RestApiId => Str, [Embed => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::ApiGateway::GetResource>
 
@@ -1353,7 +1414,7 @@ Returns: a L<Paws::ApiGateway::Resource> instance
   Lists information about a resource.
 
 
-=head2 GetResources(RestApiId => Str, [Limit => Int, Position => Str])
+=head2 GetResources(RestApiId => Str, [Embed => ArrayRef[Str|Undef], Limit => Int, Position => Str])
 
 Each argument is described in detail in: L<Paws::ApiGateway::GetResources>
 
@@ -1517,7 +1578,7 @@ Returns: a L<Paws::ApiGateway::IntegrationResponse> instance
   Represents a put integration.
 
 
-=head2 PutMethod(AuthorizationType => Str, HttpMethod => Str, ResourceId => Str, RestApiId => Str, [ApiKeyRequired => Bool, AuthorizerId => Str, OperationName => Str, RequestModels => L<Paws::ApiGateway::MapOfStringToString>, RequestParameters => L<Paws::ApiGateway::MapOfStringToBoolean>])
+=head2 PutMethod(AuthorizationType => Str, HttpMethod => Str, ResourceId => Str, RestApiId => Str, [ApiKeyRequired => Bool, AuthorizerId => Str, OperationName => Str, RequestModels => L<Paws::ApiGateway::MapOfStringToString>, RequestParameters => L<Paws::ApiGateway::MapOfStringToBoolean>, RequestValidatorId => Str])
 
 Each argument is described in detail in: L<Paws::ApiGateway::PutMethod>
 
@@ -1697,6 +1758,15 @@ Returns: a L<Paws::ApiGateway::Model> instance
   Changes information about a model.
 
 
+=head2 UpdateRequestValidator(RequestValidatorId => Str, RestApiId => Str, [PatchOperations => ArrayRef[L<Paws::ApiGateway::PatchOperation>]])
+
+Each argument is described in detail in: L<Paws::ApiGateway::UpdateRequestValidator>
+
+Returns: a L<Paws::ApiGateway::RequestValidator> instance
+
+  Updates a RequestValidator of a given RestApi.
+
+
 =head2 UpdateResource(ResourceId => Str, RestApiId => Str, [PatchOperations => ArrayRef[L<Paws::ApiGateway::PatchOperation>]])
 
 Each argument is described in detail in: L<Paws::ApiGateway::UpdateResource>
@@ -1821,9 +1891,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::ApiGateway::Models> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 GetAllResources(sub { },RestApiId => Str, [Limit => Int, Position => Str])
+=head2 GetAllResources(sub { },RestApiId => Str, [Embed => ArrayRef[Str|Undef], Limit => Int, Position => Str])
 
-=head2 GetAllResources(RestApiId => Str, [Limit => Int, Position => Str])
+=head2 GetAllResources(RestApiId => Str, [Embed => ArrayRef[Str|Undef], Limit => Int, Position => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

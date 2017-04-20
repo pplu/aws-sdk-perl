@@ -1,8 +1,8 @@
 package Paws::CodeCommit::Difference;
   use Moose;
-  has AfterBlob => (is => 'ro', isa => 'Paws::CodeCommit::BlobMetadata', xmlname => 'afterBlob', request_name => 'afterBlob', traits => ['Unwrapped','NameInRequest']);
-  has BeforeBlob => (is => 'ro', isa => 'Paws::CodeCommit::BlobMetadata', xmlname => 'beforeBlob', request_name => 'beforeBlob', traits => ['Unwrapped','NameInRequest']);
-  has ChangeType => (is => 'ro', isa => 'Str', xmlname => 'changeType', request_name => 'changeType', traits => ['Unwrapped','NameInRequest']);
+  has AfterBlob => (is => 'ro', isa => 'Paws::CodeCommit::BlobMetadata', request_name => 'afterBlob', traits => ['NameInRequest']);
+  has BeforeBlob => (is => 'ro', isa => 'Paws::CodeCommit::BlobMetadata', request_name => 'beforeBlob', traits => ['NameInRequest']);
+  has ChangeType => (is => 'ro', isa => 'Str', request_name => 'changeType', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

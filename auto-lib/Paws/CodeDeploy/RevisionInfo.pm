@@ -1,7 +1,7 @@
 package Paws::CodeDeploy::RevisionInfo;
   use Moose;
-  has GenericRevisionInfo => (is => 'ro', isa => 'Paws::CodeDeploy::GenericRevisionInfo', xmlname => 'genericRevisionInfo', request_name => 'genericRevisionInfo', traits => ['Unwrapped','NameInRequest']);
-  has RevisionLocation => (is => 'ro', isa => 'Paws::CodeDeploy::RevisionLocation', xmlname => 'revisionLocation', request_name => 'revisionLocation', traits => ['Unwrapped','NameInRequest']);
+  has GenericRevisionInfo => (is => 'ro', isa => 'Paws::CodeDeploy::GenericRevisionInfo', request_name => 'genericRevisionInfo', traits => ['NameInRequest']);
+  has RevisionLocation => (is => 'ro', isa => 'Paws::CodeDeploy::RevisionLocation', request_name => 'revisionLocation', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

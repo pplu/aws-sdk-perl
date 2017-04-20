@@ -1,9 +1,14 @@
 package Paws::CloudWatchEvents::Target;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str', required => 1);
+  has EcsParameters => (is => 'ro', isa => 'Paws::CloudWatchEvents::EcsParameters');
   has Id => (is => 'ro', isa => 'Str', required => 1);
   has Input => (is => 'ro', isa => 'Str');
   has InputPath => (is => 'ro', isa => 'Str');
+  has InputTransformer => (is => 'ro', isa => 'Paws::CloudWatchEvents::InputTransformer');
+  has KinesisParameters => (is => 'ro', isa => 'Paws::CloudWatchEvents::KinesisParameters');
+  has RoleArn => (is => 'ro', isa => 'Str');
+  has RunCommandParameters => (is => 'ro', isa => 'Paws::CloudWatchEvents::RunCommandParameters');
 1;
 
 ### main pod documentation begin ###
@@ -23,7 +28,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CloudWatchEvents::Target object:
 
-  $service_obj->Method(Att1 => { Arn => $value, ..., InputPath => $value  });
+  $service_obj->Method(Att1 => { Arn => $value, ..., RunCommandParameters => $value  });
 
 =head3 Results returned from an API call
 
@@ -34,48 +39,37 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudWatchE
 
 =head1 DESCRIPTION
 
-Targets are the resources that can be invoked when a rule is triggered.
-For example, AWS Lambda functions, Amazon Kinesis streams, and built-in
-targets.
-
-B<Input> and B<InputPath> are mutually-exclusive and optional
-parameters of a target. When a rule is triggered due to a matched
-event, if for a target:
-
-=over
-
-=item * Neither B<Input> nor B<InputPath> is specified, then the entire
-event is passed to the target in JSON form.
-
-=item * B<InputPath> is specified in the form of JSONPath (e.g.
-B<$.detail>), then only the part of the event specified in the path is
-passed to the target (e.g. only the detail part of the event is
-passed).
-
-=item * B<Input> is specified in the form of a valid JSON, then the
-matched event is overridden with this constant.
-
-=back
-
+Targets are the resources to be invoked when a rule is triggered.
+Target types include EC2 instances, AWS Lambda functions, Amazon
+Kinesis streams, Amazon ECS tasks, AWS Step Functions state machines,
+Run Command, and built-in targets.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> Arn => Str
 
-  The Amazon Resource Name (ARN) associated of the target.
+  The Amazon Resource Name (ARN) of the target.
+
+
+=head2 EcsParameters => L<Paws::CloudWatchEvents::EcsParameters>
+
+  Contains the Amazon ECS task definition and task count to be used, if
+the event target is an Amazon ECS task. For more information about
+Amazon ECS tasks, see Task Definitions in the I<Amazon EC2 Container
+Service Developer Guide>.
 
 
 =head2 B<REQUIRED> Id => Str
 
-  The unique target assignment ID.
+  The ID of the target.
 
 
 =head2 Input => Str
 
-  Valid JSON text passed to the target. For more information about JSON
-text, see The JavaScript Object Notation (JSON) Data Interchange
-Format.
+  Valid JSON text passed to the target. In this case, nothing from the
+event itself is passed to the target. For more information, see The
+JavaScript Object Notation (JSON) Data Interchange Format.
 
 
 =head2 InputPath => Str
@@ -83,6 +77,34 @@ Format.
   The value of the JSONPath that is used for extracting part of the
 matched event when passing it to the target. For more information about
 JSON paths, see JSONPath.
+
+
+=head2 InputTransformer => L<Paws::CloudWatchEvents::InputTransformer>
+
+  Settings to enable you to provide custom input to a target based on
+certain event data. You can extract one or more key-value pairs from
+the event and then use that data to send customized input to the
+target.
+
+
+=head2 KinesisParameters => L<Paws::CloudWatchEvents::KinesisParameters>
+
+  The custom parameter you can use to control shard assignment, when the
+target is an Amazon Kinesis stream. If you do not include this
+parameter, the default is to use the C<eventId> as the partition key.
+
+
+=head2 RoleArn => Str
+
+  The Amazon Resource Name (ARN) of the IAM role to be used for this
+target when the rule is triggered. If one rule triggers multiple
+targets, you can use a different IAM role for each target.
+
+
+=head2 RunCommandParameters => L<Paws::CloudWatchEvents::RunCommandParameters>
+
+  Parameters used when you are using the rule to invoke Amazon EC2 Run
+Command.
 
 
 

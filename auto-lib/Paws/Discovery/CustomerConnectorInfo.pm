@@ -1,12 +1,12 @@
 package Paws::Discovery::CustomerConnectorInfo;
   use Moose;
-  has ActiveConnectors => (is => 'ro', isa => 'Int', xmlname => 'activeConnectors', request_name => 'activeConnectors', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has BlackListedConnectors => (is => 'ro', isa => 'Int', xmlname => 'blackListedConnectors', request_name => 'blackListedConnectors', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has HealthyConnectors => (is => 'ro', isa => 'Int', xmlname => 'healthyConnectors', request_name => 'healthyConnectors', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has ShutdownConnectors => (is => 'ro', isa => 'Int', xmlname => 'shutdownConnectors', request_name => 'shutdownConnectors', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has TotalConnectors => (is => 'ro', isa => 'Int', xmlname => 'totalConnectors', request_name => 'totalConnectors', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has UnhealthyConnectors => (is => 'ro', isa => 'Int', xmlname => 'unhealthyConnectors', request_name => 'unhealthyConnectors', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has UnknownConnectors => (is => 'ro', isa => 'Int', xmlname => 'unknownConnectors', request_name => 'unknownConnectors', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has ActiveConnectors => (is => 'ro', isa => 'Int', request_name => 'activeConnectors', traits => ['NameInRequest'], required => 1);
+  has BlackListedConnectors => (is => 'ro', isa => 'Int', request_name => 'blackListedConnectors', traits => ['NameInRequest'], required => 1);
+  has HealthyConnectors => (is => 'ro', isa => 'Int', request_name => 'healthyConnectors', traits => ['NameInRequest'], required => 1);
+  has ShutdownConnectors => (is => 'ro', isa => 'Int', request_name => 'shutdownConnectors', traits => ['NameInRequest'], required => 1);
+  has TotalConnectors => (is => 'ro', isa => 'Int', request_name => 'totalConnectors', traits => ['NameInRequest'], required => 1);
+  has UnhealthyConnectors => (is => 'ro', isa => 'Int', request_name => 'unhealthyConnectors', traits => ['NameInRequest'], required => 1);
+  has UnknownConnectors => (is => 'ro', isa => 'Int', request_name => 'unknownConnectors', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###

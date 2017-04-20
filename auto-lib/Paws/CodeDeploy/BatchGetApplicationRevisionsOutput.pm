@@ -1,9 +1,9 @@
 
 package Paws::CodeDeploy::BatchGetApplicationRevisionsOutput;
   use Moose;
-  has ApplicationName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'applicationName' );
-  has ErrorMessage => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'errorMessage' );
-  has Revisions => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::RevisionInfo]', traits => ['Unwrapped'], xmlname => 'revisions' );
+  has ApplicationName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'applicationName' );
+  has ErrorMessage => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'errorMessage' );
+  has Revisions => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::RevisionInfo]', traits => ['NameInRequest'], request_name => 'revisions' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

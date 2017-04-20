@@ -44,7 +44,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EMR::JobFlo
 
 =head1 DESCRIPTION
 
-A description of a job flow.
+A description of a cluster (job flow).
 
 =head1 ATTRIBUTES
 
@@ -138,12 +138,12 @@ flow this value is empty.
 
 =head2 VisibleToAllUsers => Bool
 
-  Specifies whether the job flow is visible to all IAM users of the AWS
-account associated with the job flow. If this value is set to C<true>,
+  Specifies whether the cluster is visible to all IAM users of the AWS
+account associated with the cluster. If this value is set to C<true>,
 all IAM users of that AWS account can view and (if they have the proper
-policy permissions set) manage the job flow. If it is set to C<false>,
-only the IAM user that created the job flow can view and manage it.
-This value can be changed using the SetVisibleToAllUsers action.
+policy permissions set) manage the cluster. If it is set to C<false>,
+only the IAM user that created the cluster can view and manage it. This
+value can be changed using the SetVisibleToAllUsers action.
 
 
 

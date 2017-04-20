@@ -40,6 +40,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 The identifier of the AWS customer account authorized to restore the
 specified snapshot.
 
+To share a snapshot with AWS support, specify amazon-redshift-support.
+
 
 
 =head2 SnapshotClusterIdentifier => Str

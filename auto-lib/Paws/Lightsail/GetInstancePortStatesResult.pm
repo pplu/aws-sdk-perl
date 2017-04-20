@@ -1,7 +1,7 @@
 
 package Paws::Lightsail::GetInstancePortStatesResult;
   use Moose;
-  has PortStates => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['Unwrapped'], xmlname => 'portStates' );
+  has PortStates => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'portStates' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

@@ -1,7 +1,7 @@
 
 package Paws::EC2::CreateVpcResult;
   use Moose;
-  has Vpc => (is => 'ro', isa => 'Paws::EC2::Vpc', xmlname => 'vpc', traits => ['Unwrapped',]);
+  has Vpc => (is => 'ro', isa => 'Paws::EC2::Vpc', request_name => 'vpc', traits => ['NameInRequest',]);
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

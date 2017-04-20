@@ -1,7 +1,7 @@
 
 package Paws::CodePipeline::PutApprovalResultOutput;
   use Moose;
-  has ApprovedAt => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'approvedAt' );
+  has ApprovedAt => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'approvedAt' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

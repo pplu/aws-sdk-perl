@@ -1,13 +1,13 @@
 
 package Paws::ApiGateway::TestInvokeAuthorizerResponse;
   use Moose;
-  has Authorization => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToList');
-  has Claims => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString');
-  has ClientStatus => (is => 'ro', isa => 'Int');
-  has Latency => (is => 'ro', isa => 'Int');
-  has Log => (is => 'ro', isa => 'Str');
-  has Policy => (is => 'ro', isa => 'Str');
-  has PrincipalId => (is => 'ro', isa => 'Str');
+  has Authorization => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToList', traits => ['NameInRequest'], request_name => 'authorization');
+  has Claims => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['NameInRequest'], request_name => 'claims');
+  has ClientStatus => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'clientStatus');
+  has Latency => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'latency');
+  has Log => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'log');
+  has Policy => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'policy');
+  has PrincipalId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'principalId');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

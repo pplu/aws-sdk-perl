@@ -1,6 +1,6 @@
 package Paws::EC2::Ipv6Range;
   use Moose;
-  has CidrIpv6 => (is => 'ro', isa => 'Str', xmlname => 'cidrIpv6', traits => ['Unwrapped']);
+  has CidrIpv6 => (is => 'ro', isa => 'Str', request_name => 'cidrIpv6', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

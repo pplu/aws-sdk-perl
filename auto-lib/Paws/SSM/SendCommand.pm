@@ -73,8 +73,8 @@ Valid values are: C<"Sha256">, C<"Sha1">
 
 =head2 B<REQUIRED> DocumentName => Str
 
-Required. The name of the SSM document to execute. This can be an SSM
-public document or a custom document.
+Required. The name of the Systems Manager document to execute. This can
+be a public document or a custom document.
 
 
 
@@ -91,8 +91,8 @@ specify a maximum of 50 IDs.
 the command at the same time. You can specify a number such as
 E<ldquo>10E<rdquo> or a percentage such as E<ldquo>10%E<rdquo>. The
 default value is 50. For more information about how to use
-C<MaxConcurrency>, see Executing a Command Using Amazon EC2 Run Command
-(Linux) or Executing a Command Using Amazon EC2 Run Command (Windows).
+C<MaxConcurrency>, see Executing a Command Using Systems Manager Run
+Command.
 
 
 
@@ -103,9 +103,8 @@ the command fails one more time beyond the value of C<MaxErrors>, the
 systems stops sending the command to additional targets. You can
 specify a number like E<ldquo>10E<rdquo> or a percentage like
 E<ldquo>10%E<rdquo>. The default value is 50. For more information
-about how to use C<MaxErrors>, see Executing a Command Using Amazon EC2
-Run Command (Linux) or Executing a Command Using Amazon EC2 Run Command
-(Windows).
+about how to use C<MaxErrors>, see Executing a Command Using Systems
+Manager Run Command.
 
 
 
@@ -139,8 +138,8 @@ Command is being called.
 
 =head2 Parameters => L<Paws::SSM::Parameters>
 
-The required and optional parameters specified in the SSM document
-being executed.
+The required and optional parameters specified in the document being
+executed.
 
 
 
@@ -153,11 +152,10 @@ The IAM role that Systems Manager uses to send notifications.
 =head2 Targets => ArrayRef[L<Paws::SSM::Target>]
 
 (Optional) An array of search criteria that targets instances using a
-C<Key>;C<Value> combination that you specify. C<Targets> is required if
+C<Key>,C<Value> combination that you specify. C<Targets> is required if
 you don't provide one or more instance IDs in the call. For more
 information about how to use C<Targets>, see Executing a Command Using
-Amazon EC2 Run Command (Linux) or Executing a Command Using Amazon EC2
-Run Command (Windows).
+Systems Manager Run Command.
 
 
 

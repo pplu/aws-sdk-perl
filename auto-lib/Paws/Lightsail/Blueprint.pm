@@ -1,16 +1,16 @@
 package Paws::Lightsail::Blueprint;
   use Moose;
-  has BlueprintId => (is => 'ro', isa => 'Str', xmlname => 'blueprintId', request_name => 'blueprintId', traits => ['Unwrapped','NameInRequest']);
-  has Description => (is => 'ro', isa => 'Str', xmlname => 'description', request_name => 'description', traits => ['Unwrapped','NameInRequest']);
-  has Group => (is => 'ro', isa => 'Str', xmlname => 'group', request_name => 'group', traits => ['Unwrapped','NameInRequest']);
-  has IsActive => (is => 'ro', isa => 'Bool', xmlname => 'isActive', request_name => 'isActive', traits => ['Unwrapped','NameInRequest']);
-  has LicenseUrl => (is => 'ro', isa => 'Str', xmlname => 'licenseUrl', request_name => 'licenseUrl', traits => ['Unwrapped','NameInRequest']);
-  has MinPower => (is => 'ro', isa => 'Int', xmlname => 'minPower', request_name => 'minPower', traits => ['Unwrapped','NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', xmlname => 'name', request_name => 'name', traits => ['Unwrapped','NameInRequest']);
-  has ProductUrl => (is => 'ro', isa => 'Str', xmlname => 'productUrl', request_name => 'productUrl', traits => ['Unwrapped','NameInRequest']);
-  has Type => (is => 'ro', isa => 'Str', xmlname => 'type', request_name => 'type', traits => ['Unwrapped','NameInRequest']);
-  has Version => (is => 'ro', isa => 'Str', xmlname => 'version', request_name => 'version', traits => ['Unwrapped','NameInRequest']);
-  has VersionCode => (is => 'ro', isa => 'Str', xmlname => 'versionCode', request_name => 'versionCode', traits => ['Unwrapped','NameInRequest']);
+  has BlueprintId => (is => 'ro', isa => 'Str', request_name => 'blueprintId', traits => ['NameInRequest']);
+  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
+  has Group => (is => 'ro', isa => 'Str', request_name => 'group', traits => ['NameInRequest']);
+  has IsActive => (is => 'ro', isa => 'Bool', request_name => 'isActive', traits => ['NameInRequest']);
+  has LicenseUrl => (is => 'ro', isa => 'Str', request_name => 'licenseUrl', traits => ['NameInRequest']);
+  has MinPower => (is => 'ro', isa => 'Int', request_name => 'minPower', traits => ['NameInRequest']);
+  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
+  has ProductUrl => (is => 'ro', isa => 'Str', request_name => 'productUrl', traits => ['NameInRequest']);
+  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
+  has Version => (is => 'ro', isa => 'Str', request_name => 'version', traits => ['NameInRequest']);
+  has VersionCode => (is => 'ro', isa => 'Str', request_name => 'versionCode', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

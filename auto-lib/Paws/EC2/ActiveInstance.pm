@@ -1,9 +1,9 @@
 package Paws::EC2::ActiveInstance;
   use Moose;
-  has InstanceHealth => (is => 'ro', isa => 'Str', xmlname => 'instanceHealth', traits => ['Unwrapped']);
-  has InstanceId => (is => 'ro', isa => 'Str', xmlname => 'instanceId', traits => ['Unwrapped']);
-  has InstanceType => (is => 'ro', isa => 'Str', xmlname => 'instanceType', traits => ['Unwrapped']);
-  has SpotInstanceRequestId => (is => 'ro', isa => 'Str', xmlname => 'spotInstanceRequestId', traits => ['Unwrapped']);
+  has InstanceHealth => (is => 'ro', isa => 'Str', request_name => 'instanceHealth', traits => ['NameInRequest']);
+  has InstanceId => (is => 'ro', isa => 'Str', request_name => 'instanceId', traits => ['NameInRequest']);
+  has InstanceType => (is => 'ro', isa => 'Str', request_name => 'instanceType', traits => ['NameInRequest']);
+  has SpotInstanceRequestId => (is => 'ro', isa => 'Str', request_name => 'spotInstanceRequestId', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -41,8 +41,8 @@ This class has no description
 
 =head2 InstanceHealth => Str
 
-  The health status of the instance. If the status of both the instance
-status check and the system status check is C<impaired>, the health
+  The health status of the instance. If the status of either the instance
+status check or the system status check is C<impaired>, the health
 status of the instance is C<unhealthy>. Otherwise, the health status is
 C<healthy>.
 

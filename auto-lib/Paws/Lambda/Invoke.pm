@@ -9,7 +9,7 @@ package Paws::Lambda::Invoke;
   has Qualifier => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'Qualifier' );
 
   use MooseX::ClassAttribute;
-
+  class_has _stream_param => (is => 'ro', default => 'Payload');
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'Invoke');
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2015-03-31/functions/{FunctionName}/invocations');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
@@ -62,7 +62,7 @@ C<arn:aws:lambda:us-west-2:account-id:function:ThumbNail>). AWS Lambda
 also allows you to specify a partial ARN (for example,
 C<account-id:Thumbnail>). Note that the length constraint applies only
 to the ARN. If you specify only the function name, it is limited to 64
-character in length.
+characters in length.
 
 
 

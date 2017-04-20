@@ -1,7 +1,7 @@
 
 package Paws::EC2::DescribeVpnGatewaysResult;
   use Moose;
-  has VpnGateways => (is => 'ro', isa => 'ArrayRef[Paws::EC2::VpnGateway]', xmlname => 'vpnGatewaySet', traits => ['Unwrapped',]);
+  has VpnGateways => (is => 'ro', isa => 'ArrayRef[Paws::EC2::VpnGateway]', request_name => 'vpnGatewaySet', traits => ['NameInRequest',]);
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

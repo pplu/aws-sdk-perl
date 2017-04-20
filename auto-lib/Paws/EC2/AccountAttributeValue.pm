@@ -1,6 +1,6 @@
 package Paws::EC2::AccountAttributeValue;
   use Moose;
-  has AttributeValue => (is => 'ro', isa => 'Str', xmlname => 'attributeValue', traits => ['Unwrapped']);
+  has AttributeValue => (is => 'ro', isa => 'Str', request_name => 'attributeValue', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

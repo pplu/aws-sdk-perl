@@ -1,14 +1,14 @@
 package Paws::Batch::ComputeEnvironmentDetail;
   use Moose;
-  has ComputeEnvironmentArn => (is => 'ro', isa => 'Str', xmlname => 'computeEnvironmentArn', request_name => 'computeEnvironmentArn', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has ComputeEnvironmentName => (is => 'ro', isa => 'Str', xmlname => 'computeEnvironmentName', request_name => 'computeEnvironmentName', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has ComputeResources => (is => 'ro', isa => 'Paws::Batch::ComputeResource', xmlname => 'computeResources', request_name => 'computeResources', traits => ['Unwrapped','NameInRequest']);
-  has EcsClusterArn => (is => 'ro', isa => 'Str', xmlname => 'ecsClusterArn', request_name => 'ecsClusterArn', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has ServiceRole => (is => 'ro', isa => 'Str', xmlname => 'serviceRole', request_name => 'serviceRole', traits => ['Unwrapped','NameInRequest']);
-  has State => (is => 'ro', isa => 'Str', xmlname => 'state', request_name => 'state', traits => ['Unwrapped','NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', xmlname => 'status', request_name => 'status', traits => ['Unwrapped','NameInRequest']);
-  has StatusReason => (is => 'ro', isa => 'Str', xmlname => 'statusReason', request_name => 'statusReason', traits => ['Unwrapped','NameInRequest']);
-  has Type => (is => 'ro', isa => 'Str', xmlname => 'type', request_name => 'type', traits => ['Unwrapped','NameInRequest']);
+  has ComputeEnvironmentArn => (is => 'ro', isa => 'Str', request_name => 'computeEnvironmentArn', traits => ['NameInRequest'], required => 1);
+  has ComputeEnvironmentName => (is => 'ro', isa => 'Str', request_name => 'computeEnvironmentName', traits => ['NameInRequest'], required => 1);
+  has ComputeResources => (is => 'ro', isa => 'Paws::Batch::ComputeResource', request_name => 'computeResources', traits => ['NameInRequest']);
+  has EcsClusterArn => (is => 'ro', isa => 'Str', request_name => 'ecsClusterArn', traits => ['NameInRequest'], required => 1);
+  has ServiceRole => (is => 'ro', isa => 'Str', request_name => 'serviceRole', traits => ['NameInRequest']);
+  has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
+  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+  has StatusReason => (is => 'ro', isa => 'Str', request_name => 'statusReason', traits => ['NameInRequest']);
+  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

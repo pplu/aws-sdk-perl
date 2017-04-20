@@ -1,7 +1,7 @@
 
 package Paws::CodeDeploy::BatchGetApplicationsOutput;
   use Moose;
-  has ApplicationsInfo => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::ApplicationInfo]', traits => ['Unwrapped'], xmlname => 'applicationsInfo' );
+  has ApplicationsInfo => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::ApplicationInfo]', traits => ['NameInRequest'], request_name => 'applicationsInfo' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

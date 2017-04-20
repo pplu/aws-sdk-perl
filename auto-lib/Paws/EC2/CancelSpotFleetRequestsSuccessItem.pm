@@ -1,8 +1,8 @@
 package Paws::EC2::CancelSpotFleetRequestsSuccessItem;
   use Moose;
-  has CurrentSpotFleetRequestState => (is => 'ro', isa => 'Str', xmlname => 'currentSpotFleetRequestState', traits => ['Unwrapped'], required => 1);
-  has PreviousSpotFleetRequestState => (is => 'ro', isa => 'Str', xmlname => 'previousSpotFleetRequestState', traits => ['Unwrapped'], required => 1);
-  has SpotFleetRequestId => (is => 'ro', isa => 'Str', xmlname => 'spotFleetRequestId', traits => ['Unwrapped'], required => 1);
+  has CurrentSpotFleetRequestState => (is => 'ro', isa => 'Str', request_name => 'currentSpotFleetRequestState', traits => ['NameInRequest'], required => 1);
+  has PreviousSpotFleetRequestState => (is => 'ro', isa => 'Str', request_name => 'previousSpotFleetRequestState', traits => ['NameInRequest'], required => 1);
+  has SpotFleetRequestId => (is => 'ro', isa => 'Str', request_name => 'spotFleetRequestId', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###

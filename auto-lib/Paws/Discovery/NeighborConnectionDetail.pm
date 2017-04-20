@@ -1,10 +1,10 @@
 package Paws::Discovery::NeighborConnectionDetail;
   use Moose;
-  has ConnectionsCount => (is => 'ro', isa => 'Int', xmlname => 'connectionsCount', request_name => 'connectionsCount', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has DestinationPort => (is => 'ro', isa => 'Int', xmlname => 'destinationPort', request_name => 'destinationPort', traits => ['Unwrapped','NameInRequest']);
-  has DestinationServerId => (is => 'ro', isa => 'Str', xmlname => 'destinationServerId', request_name => 'destinationServerId', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has SourceServerId => (is => 'ro', isa => 'Str', xmlname => 'sourceServerId', request_name => 'sourceServerId', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has TransportProtocol => (is => 'ro', isa => 'Str', xmlname => 'transportProtocol', request_name => 'transportProtocol', traits => ['Unwrapped','NameInRequest']);
+  has ConnectionsCount => (is => 'ro', isa => 'Int', request_name => 'connectionsCount', traits => ['NameInRequest'], required => 1);
+  has DestinationPort => (is => 'ro', isa => 'Int', request_name => 'destinationPort', traits => ['NameInRequest']);
+  has DestinationServerId => (is => 'ro', isa => 'Str', request_name => 'destinationServerId', traits => ['NameInRequest'], required => 1);
+  has SourceServerId => (is => 'ro', isa => 'Str', request_name => 'sourceServerId', traits => ['NameInRequest'], required => 1);
+  has TransportProtocol => (is => 'ro', isa => 'Str', request_name => 'transportProtocol', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -42,27 +42,27 @@ Details about neighboring servers.
 
 =head2 B<REQUIRED> ConnectionsCount => Int
 
-  Number of open network connections with the neighboring server.
+  The number of open network connections with the neighboring server.
 
 
 =head2 DestinationPort => Int
 
-  Destination network port for the connection.
+  The destination network port for the connection.
 
 
 =head2 B<REQUIRED> DestinationServerId => Str
 
-  ID of the server that accepted the networker connection.
+  The ID of the server that accepted the network connection.
 
 
 =head2 B<REQUIRED> SourceServerId => Str
 
-  ID of server that opened the network connection.
+  The ID of the server that opened the network connection.
 
 
 =head2 TransportProtocol => Str
 
-  Network protocol used for the connection.
+  The network protocol used for the connection.
 
 
 

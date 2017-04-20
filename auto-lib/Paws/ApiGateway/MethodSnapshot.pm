@@ -1,7 +1,7 @@
 package Paws::ApiGateway::MethodSnapshot;
   use Moose;
-  has ApiKeyRequired => (is => 'ro', isa => 'Bool', xmlname => 'apiKeyRequired', request_name => 'apiKeyRequired', traits => ['Unwrapped','NameInRequest']);
-  has AuthorizationType => (is => 'ro', isa => 'Str', xmlname => 'authorizationType', request_name => 'authorizationType', traits => ['Unwrapped','NameInRequest']);
+  has ApiKeyRequired => (is => 'ro', isa => 'Bool', request_name => 'apiKeyRequired', traits => ['NameInRequest']);
+  has AuthorizationType => (is => 'ro', isa => 'Str', request_name => 'authorizationType', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -45,7 +45,10 @@ time.
 
 =head2 AuthorizationType => Str
 
-  Specifies the type of authorization used for the method.
+  The method's authorization type. Valid values are C<NONE> for open
+access, C<AWS_IAM> for using AWS IAM permissions, C<CUSTOM> for using a
+custom authorizer, or C<COGNITO_USER_POOLS> for using a Cognito user
+pool.
 
 
 

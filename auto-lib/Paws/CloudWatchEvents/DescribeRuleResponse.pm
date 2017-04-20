@@ -22,12 +22,12 @@ Paws::CloudWatchEvents::DescribeRuleResponse
 
 =head2 Arn => Str
 
-The Amazon Resource Name (ARN) associated with the rule.
+The Amazon Resource Name (ARN) of the rule.
 
 
 =head2 Description => Str
 
-The rule's description.
+The description of the rule.
 
 
 =head2 EventPattern => Str
@@ -37,7 +37,7 @@ The event pattern.
 
 =head2 Name => Str
 
-The rule's name.
+The name of the rule.
 
 
 =head2 RoleArn => Str

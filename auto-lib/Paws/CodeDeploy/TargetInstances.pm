@@ -1,7 +1,7 @@
 package Paws::CodeDeploy::TargetInstances;
   use Moose;
-  has AutoScalingGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]', xmlname => 'autoScalingGroups', request_name => 'autoScalingGroups', traits => ['Unwrapped','NameInRequest']);
-  has TagFilters => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::EC2TagFilter]', xmlname => 'tagFilters', request_name => 'tagFilters', traits => ['Unwrapped','NameInRequest']);
+  has AutoScalingGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'autoScalingGroups', traits => ['NameInRequest']);
+  has TagFilters => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::EC2TagFilter]', request_name => 'tagFilters', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

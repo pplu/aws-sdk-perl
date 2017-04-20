@@ -1,7 +1,7 @@
 package Paws::LexRuntime::Button;
   use Moose;
-  has Text => (is => 'ro', isa => 'Str', xmlname => 'text', request_name => 'text', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has Value => (is => 'ro', isa => 'Str', xmlname => 'value', request_name => 'value', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has Text => (is => 'ro', isa => 'Str', request_name => 'text', traits => ['NameInRequest'], required => 1);
+  has Value => (is => 'ro', isa => 'Str', request_name => 'value', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -40,14 +40,14 @@ Slack, etc.)
 
 =head2 B<REQUIRED> Text => Str
 
-  Text visible to the user on the button.
+  Text that is visible to the user on the button.
 
 
 =head2 B<REQUIRED> Value => Str
 
-  Value sent to Amazon Lex when user clicks the button. For example,
-consider button text "NYC". When the user clicks the button, the value
-sent can be "New York City".
+  The value sent to Amazon Lex when a user chooses the button. For
+example, consider button text "NYC." When the user chooses the button,
+the value sent can be "New York City."
 
 
 

@@ -45,16 +45,14 @@ The domain name of a BasePathMapping resource.
 
 =head2 Limit => Int
 
-The maximum number of BasePathMapping resources in the collection to
-get information about. The default limit is 25. It should be an integer
-between 1 - 500.
+The maximum number of returned results per page. The value is 25 by
+default and could be between 1 - 500.
 
 
 
 =head2 Position => Str
 
-The position of the current BasePathMapping resource in the collection
-to get information about.
+The current pagination position in the paged result set.
 
 
 

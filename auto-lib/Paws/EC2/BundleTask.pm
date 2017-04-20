@@ -1,13 +1,13 @@
 package Paws::EC2::BundleTask;
   use Moose;
-  has BundleId => (is => 'ro', isa => 'Str', xmlname => 'bundleId', traits => ['Unwrapped']);
-  has BundleTaskError => (is => 'ro', isa => 'Paws::EC2::BundleTaskError', xmlname => 'error', traits => ['Unwrapped']);
-  has InstanceId => (is => 'ro', isa => 'Str', xmlname => 'instanceId', traits => ['Unwrapped']);
-  has Progress => (is => 'ro', isa => 'Str', xmlname => 'progress', traits => ['Unwrapped']);
-  has StartTime => (is => 'ro', isa => 'Str', xmlname => 'startTime', traits => ['Unwrapped']);
-  has State => (is => 'ro', isa => 'Str', xmlname => 'state', traits => ['Unwrapped']);
-  has Storage => (is => 'ro', isa => 'Paws::EC2::Storage', xmlname => 'storage', traits => ['Unwrapped']);
-  has UpdateTime => (is => 'ro', isa => 'Str', xmlname => 'updateTime', traits => ['Unwrapped']);
+  has BundleId => (is => 'ro', isa => 'Str', request_name => 'bundleId', traits => ['NameInRequest']);
+  has BundleTaskError => (is => 'ro', isa => 'Paws::EC2::BundleTaskError', request_name => 'error', traits => ['NameInRequest']);
+  has InstanceId => (is => 'ro', isa => 'Str', request_name => 'instanceId', traits => ['NameInRequest']);
+  has Progress => (is => 'ro', isa => 'Str', request_name => 'progress', traits => ['NameInRequest']);
+  has StartTime => (is => 'ro', isa => 'Str', request_name => 'startTime', traits => ['NameInRequest']);
+  has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
+  has Storage => (is => 'ro', isa => 'Paws::EC2::Storage', request_name => 'storage', traits => ['NameInRequest']);
+  has UpdateTime => (is => 'ro', isa => 'Str', request_name => 'updateTime', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

@@ -1,8 +1,8 @@
 
 package Paws::IoT::GetTopicRuleResponse;
   use Moose;
-  has Rule => (is => 'ro', isa => 'Paws::IoT::TopicRule');
-  has RuleArn => (is => 'ro', isa => 'Str');
+  has Rule => (is => 'ro', isa => 'Paws::IoT::TopicRule', traits => ['NameInRequest'], request_name => 'rule');
+  has RuleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'ruleArn');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

@@ -1,8 +1,8 @@
 
 package Paws::IoT::ListOutgoingCertificatesResponse;
   use Moose;
-  has NextMarker => (is => 'ro', isa => 'Str');
-  has OutgoingCertificates => (is => 'ro', isa => 'ArrayRef[Paws::IoT::OutgoingCertificate]');
+  has NextMarker => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextMarker');
+  has OutgoingCertificates => (is => 'ro', isa => 'ArrayRef[Paws::IoT::OutgoingCertificate]', traits => ['NameInRequest'], request_name => 'outgoingCertificates');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

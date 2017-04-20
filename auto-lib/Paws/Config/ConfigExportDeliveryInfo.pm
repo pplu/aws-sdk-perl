@@ -1,11 +1,11 @@
 package Paws::Config::ConfigExportDeliveryInfo;
   use Moose;
-  has LastAttemptTime => (is => 'ro', isa => 'Str', xmlname => 'lastAttemptTime', request_name => 'lastAttemptTime', traits => ['Unwrapped','NameInRequest']);
-  has LastErrorCode => (is => 'ro', isa => 'Str', xmlname => 'lastErrorCode', request_name => 'lastErrorCode', traits => ['Unwrapped','NameInRequest']);
-  has LastErrorMessage => (is => 'ro', isa => 'Str', xmlname => 'lastErrorMessage', request_name => 'lastErrorMessage', traits => ['Unwrapped','NameInRequest']);
-  has LastStatus => (is => 'ro', isa => 'Str', xmlname => 'lastStatus', request_name => 'lastStatus', traits => ['Unwrapped','NameInRequest']);
-  has LastSuccessfulTime => (is => 'ro', isa => 'Str', xmlname => 'lastSuccessfulTime', request_name => 'lastSuccessfulTime', traits => ['Unwrapped','NameInRequest']);
-  has NextDeliveryTime => (is => 'ro', isa => 'Str', xmlname => 'nextDeliveryTime', request_name => 'nextDeliveryTime', traits => ['Unwrapped','NameInRequest']);
+  has LastAttemptTime => (is => 'ro', isa => 'Str', request_name => 'lastAttemptTime', traits => ['NameInRequest']);
+  has LastErrorCode => (is => 'ro', isa => 'Str', request_name => 'lastErrorCode', traits => ['NameInRequest']);
+  has LastErrorMessage => (is => 'ro', isa => 'Str', request_name => 'lastErrorMessage', traits => ['NameInRequest']);
+  has LastStatus => (is => 'ro', isa => 'Str', request_name => 'lastStatus', traits => ['NameInRequest']);
+  has LastSuccessfulTime => (is => 'ro', isa => 'Str', request_name => 'lastSuccessfulTime', traits => ['NameInRequest']);
+  has NextDeliveryTime => (is => 'ro', isa => 'Str', request_name => 'nextDeliveryTime', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

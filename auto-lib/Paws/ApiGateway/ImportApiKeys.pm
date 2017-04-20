@@ -6,7 +6,7 @@ package Paws::ApiGateway::ImportApiKeys;
   has Format => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'format' , required => 1);
 
   use MooseX::ClassAttribute;
-
+  class_has _stream_param => (is => 'ro', default => 'Body');
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ImportApiKeys');
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/apikeys?mode=import');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');

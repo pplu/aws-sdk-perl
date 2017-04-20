@@ -1,8 +1,8 @@
 package Paws::EC2::IdFormat;
   use Moose;
-  has Deadline => (is => 'ro', isa => 'Str', xmlname => 'deadline', traits => ['Unwrapped']);
-  has Resource => (is => 'ro', isa => 'Str', xmlname => 'resource', traits => ['Unwrapped']);
-  has UseLongIds => (is => 'ro', isa => 'Bool', xmlname => 'useLongIds', traits => ['Unwrapped']);
+  has Deadline => (is => 'ro', isa => 'Str', request_name => 'deadline', traits => ['NameInRequest']);
+  has Resource => (is => 'ro', isa => 'Str', request_name => 'resource', traits => ['NameInRequest']);
+  has UseLongIds => (is => 'ro', isa => 'Bool', request_name => 'useLongIds', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

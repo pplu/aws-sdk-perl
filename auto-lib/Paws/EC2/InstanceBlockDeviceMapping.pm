@@ -1,7 +1,7 @@
 package Paws::EC2::InstanceBlockDeviceMapping;
   use Moose;
-  has DeviceName => (is => 'ro', isa => 'Str', xmlname => 'deviceName', traits => ['Unwrapped']);
-  has Ebs => (is => 'ro', isa => 'Paws::EC2::EbsInstanceBlockDevice', xmlname => 'ebs', traits => ['Unwrapped']);
+  has DeviceName => (is => 'ro', isa => 'Str', request_name => 'deviceName', traits => ['NameInRequest']);
+  has Ebs => (is => 'ro', isa => 'Paws::EC2::EbsInstanceBlockDevice', request_name => 'ebs', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

@@ -6,6 +6,7 @@ package Paws::EMR::Cluster;
   has Configurations => (is => 'ro', isa => 'ArrayRef[Paws::EMR::Configuration]');
   has Ec2InstanceAttributes => (is => 'ro', isa => 'Paws::EMR::Ec2InstanceAttributes');
   has Id => (is => 'ro', isa => 'Str');
+  has InstanceCollectionType => (is => 'ro', isa => 'Str');
   has LogUri => (is => 'ro', isa => 'Str');
   has MasterPublicDnsName => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
@@ -93,6 +94,16 @@ so on.
   The unique identifier for the cluster.
 
 
+=head2 InstanceCollectionType => Str
+
+  The instance fleet configuration is available only in Amazon EMR
+versions 4.8.0 and later, excluding 5.0.x versions.
+
+The instance group configuration of the cluster. A value of
+C<INSTANCE_GROUP> indicates a uniform instance group configuration. A
+value of C<INSTANCE_FLEET> indicates an instance fleets configuration.
+
+
 =head2 LogUri => Str
 
   The path to the Amazon S3 location where logs for this cluster are
@@ -111,7 +122,7 @@ stored.
 
 =head2 NormalizedInstanceHours => Int
 
-  An approximation of the cost of the job flow, represented in
+  An approximation of the cost of the cluster, represented in
 m1.small/hours. This value is incremented one time for every hour an
 m1.small instance runs. Larger instances are weighted more, so an EC2
 instance that is roughly four times more expensive would result in the
@@ -183,9 +194,9 @@ in the event of a cluster error.
 
 =head2 VisibleToAllUsers => Bool
 
-  Indicates whether the job flow is visible to all IAM users of the AWS
-account associated with the job flow. If this value is set to C<true>,
-all IAM users of that AWS account can view and manage the job flow if
+  Indicates whether the cluster is visible to all IAM users of the AWS
+account associated with the cluster. If this value is set to C<true>,
+all IAM users of that AWS account can view and manage the cluster if
 they have the proper policy permissions set. If this value is C<false>,
 only the IAM user that created the cluster can view and manage it. This
 value can be changed using the SetVisibleToAllUsers action.

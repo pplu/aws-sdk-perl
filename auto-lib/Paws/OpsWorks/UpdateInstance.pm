@@ -46,7 +46,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AgentVersion => Str
 
-The default AWS OpsWorks agent version. You have the following options:
+The default AWS OpsWorks Stacks agent version. You have the following
+options:
 
 =over
 
@@ -59,7 +60,8 @@ C<INHERIT> - Use the stack's default agent version setting.
 I<version_number> - Use the specified agent version. This value
 overrides the stack's default setting. To update the agent version, you
 must edit the instance configuration and specify a new version. AWS
-OpsWorks then automatically installs that version on the instance.
+OpsWorks Stacks then automatically installs that version on the
+instance.
 
 =back
 
@@ -67,6 +69,8 @@ The default setting is C<INHERIT>. To specify an agent version, you
 must use the complete version number, not the abbreviated number shown
 on the console. For a list of available agent version numbers, call
 DescribeAgentVersions.
+
+AgentVersion cannot be set to Chef 12.2.
 
 
 
@@ -154,8 +158,8 @@ following. You cannot update an instance that is using a custom AMI.
 =item *
 
 A supported Linux operating system: An Amazon Linux version, such as
-C<Amazon Linux 2016.03>, C<Amazon Linux 2015.09>, or C<Amazon Linux
-2015.03>.
+C<Amazon Linux 2016.09>, C<Amazon Linux 2016.03>, C<Amazon Linux
+2015.09>, or C<Amazon Linux 2015.03>.
 
 =item *
 
@@ -164,7 +168,7 @@ C<Ubuntu 14.04 LTS>, or C<Ubuntu 12.04 LTS>.
 
 =item *
 
-C<CentOS 7>
+C<CentOS Linux 7>
 
 =item *
 
@@ -180,7 +184,7 @@ Standard>, or C<Microsoft Windows Server 2012 R2 with SQL Server Web>.
 =back
 
 For more information on the supported operating systems, see AWS
-OpsWorks Operating Systems.
+OpsWorks Stacks Operating Systems.
 
 The default option is the current Amazon Linux version. If you set this
 parameter to C<Custom>, you must use the AmiId parameter to specify the

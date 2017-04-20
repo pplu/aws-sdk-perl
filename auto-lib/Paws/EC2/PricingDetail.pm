@@ -1,7 +1,7 @@
 package Paws::EC2::PricingDetail;
   use Moose;
-  has Count => (is => 'ro', isa => 'Int', xmlname => 'count', traits => ['Unwrapped']);
-  has Price => (is => 'ro', isa => 'Num', xmlname => 'price', traits => ['Unwrapped']);
+  has Count => (is => 'ro', isa => 'Int', request_name => 'count', traits => ['NameInRequest']);
+  has Price => (is => 'ro', isa => 'Num', request_name => 'price', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

@@ -1,7 +1,7 @@
 
 package Paws::CodeCommit::GetCommitOutput;
   use Moose;
-  has Commit => (is => 'ro', isa => 'Paws::CodeCommit::Commit', traits => ['Unwrapped'], xmlname => 'commit' , required => 1);
+  has Commit => (is => 'ro', isa => 'Paws::CodeCommit::Commit', traits => ['NameInRequest'], request_name => 'commit' , required => 1);
 
   has _request_id => (is => 'ro', isa => 'Str');
 

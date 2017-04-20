@@ -19,12 +19,12 @@ Paws::CloudDirectory::ListObjectChildrenResponse
 =head2 Children => L<Paws::CloudDirectory::LinkNameToObjectIdentifierMap>
 
 Children structure, which is a map with key as the LinkName and
-ObjectIdentifier as the value.
+C<ObjectIdentifier> as the value.
 
 
 =head2 NextToken => Str
 
-Token used for pagination.
+The pagination token.
 
 
 =head2 _request_id => Str

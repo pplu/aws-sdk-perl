@@ -57,7 +57,7 @@ that is qualified with function version or alias name as suffix). AWS
 Lambda also allows you to specify only the function name with the
 account ID qualifier (for example, C<account-id:Thumbnail>). Note that
 the length constraint applies only to the ARN. If you specify only the
-function name, it is limited to 64 character in length.
+function name, it is limited to 64 characters in length.
 
 
 

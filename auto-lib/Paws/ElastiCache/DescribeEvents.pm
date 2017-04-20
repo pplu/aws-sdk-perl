@@ -41,7 +41,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Duration => Int
 
-The number of minutes' worth of events to retrieve.
+The number of minutes worth of events to retrieve.
 
 
 
@@ -49,6 +49,8 @@ The number of minutes' worth of events to retrieve.
 
 The end of the time interval for which to retrieve events, specified in
 ISO 8601 format.
+
+B<Example:> 2017-03-30T07:03:49.555Z
 
 
 
@@ -92,6 +94,8 @@ Valid values are: C<"cache-cluster">, C<"cache-parameter-group">, C<"cache-secur
 
 The beginning of the time interval to retrieve events for, specified in
 ISO 8601 format.
+
+B<Example:> 2017-03-30T07:03:49.555Z
 
 
 

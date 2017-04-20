@@ -45,7 +45,7 @@ message.
 
 =head2 Type => Str
 
-  Type of exception, such as InvalidArnException.
+  Type of exception, such as C<InvalidArnException>.
 
 
 

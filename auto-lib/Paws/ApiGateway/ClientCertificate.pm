@@ -1,11 +1,11 @@
 
 package Paws::ApiGateway::ClientCertificate;
   use Moose;
-  has ClientCertificateId => (is => 'ro', isa => 'Str');
-  has CreatedDate => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has ExpirationDate => (is => 'ro', isa => 'Str');
-  has PemEncodedCertificate => (is => 'ro', isa => 'Str');
+  has ClientCertificateId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientCertificateId');
+  has CreatedDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'createdDate');
+  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
+  has ExpirationDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'expirationDate');
+  has PemEncodedCertificate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'pemEncodedCertificate');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;
@@ -26,7 +26,7 @@ The identifier of the client certificate.
 
 =head2 CreatedDate => Str
 
-The date when the client certificate was created, in ISO 8601 format.
+The timestamp when the client certificate was created.
 
 
 =head2 Description => Str
@@ -36,7 +36,7 @@ The description of the client certificate.
 
 =head2 ExpirationDate => Str
 
-The date when the client certificate will expire, in ISO 8601 format.
+The timestamp when the client certificate will expire.
 
 
 =head2 PemEncodedCertificate => Str

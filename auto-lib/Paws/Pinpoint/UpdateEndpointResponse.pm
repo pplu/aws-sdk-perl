@@ -2,7 +2,8 @@
 package Paws::Pinpoint::UpdateEndpointResponse;
   use Moose;
   has MessageBody => (is => 'ro', isa => 'Paws::Pinpoint::MessageBody', required => 1);
-
+  use MooseX::ClassAttribute;
+  class_has _stream_param => (is => 'ro', default => 'MessageBody');
   has _request_id => (is => 'ro', isa => 'Str');
 1;
 

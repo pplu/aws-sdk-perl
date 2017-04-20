@@ -4,6 +4,7 @@ package Paws::DeviceFarm::ScheduleRun;
   has AppArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'appArn' );
   has Configuration => (is => 'ro', isa => 'Paws::DeviceFarm::ScheduleRunConfiguration', traits => ['NameInRequest'], request_name => 'configuration' );
   has DevicePoolArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'devicePoolArn' , required => 1);
+  has ExecutionConfiguration => (is => 'ro', isa => 'Paws::DeviceFarm::ExecutionConfiguration', traits => ['NameInRequest'], request_name => 'executionConfiguration' );
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name' );
   has ProjectArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'projectArn' , required => 1);
   has Test => (is => 'ro', isa => 'Paws::DeviceFarm::ScheduleRunTest', traits => ['NameInRequest'], request_name => 'test' , required => 1);
@@ -53,6 +54,13 @@ Information about the settings for the run to be scheduled.
 =head2 B<REQUIRED> DevicePoolArn => Str
 
 The ARN of the device pool for the run to be scheduled.
+
+
+
+=head2 ExecutionConfiguration => L<Paws::DeviceFarm::ExecutionConfiguration>
+
+Specifies configuration information about a test run, such as the
+execution timeout (in minutes).
 
 
 

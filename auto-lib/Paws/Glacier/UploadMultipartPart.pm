@@ -9,7 +9,7 @@ package Paws::Glacier::UploadMultipartPart;
   has VaultName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'vaultName' , required => 1);
 
   use MooseX::ClassAttribute;
-
+  class_has _stream_param => (is => 'ro', default => 'Body');
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'UploadMultipartPart');
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/{accountId}/vaults/{vaultName}/multipart-uploads/{uploadId}');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');

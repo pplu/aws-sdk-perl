@@ -1,8 +1,8 @@
 package Paws::EC2::SubnetIpv6CidrBlockAssociation;
   use Moose;
-  has AssociationId => (is => 'ro', isa => 'Str', xmlname => 'associationId', traits => ['Unwrapped']);
-  has Ipv6CidrBlock => (is => 'ro', isa => 'Str', xmlname => 'ipv6CidrBlock', traits => ['Unwrapped']);
-  has Ipv6CidrBlockState => (is => 'ro', isa => 'Paws::EC2::SubnetCidrBlockState', xmlname => 'ipv6CidrBlockState', traits => ['Unwrapped']);
+  has AssociationId => (is => 'ro', isa => 'Str', request_name => 'associationId', traits => ['NameInRequest']);
+  has Ipv6CidrBlock => (is => 'ro', isa => 'Str', request_name => 'ipv6CidrBlock', traits => ['NameInRequest']);
+  has Ipv6CidrBlockState => (is => 'ro', isa => 'Paws::EC2::SubnetCidrBlockState', request_name => 'ipv6CidrBlockState', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

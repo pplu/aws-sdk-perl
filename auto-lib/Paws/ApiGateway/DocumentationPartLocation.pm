@@ -1,10 +1,10 @@
 package Paws::ApiGateway::DocumentationPartLocation;
   use Moose;
-  has Method => (is => 'ro', isa => 'Str', xmlname => 'method', request_name => 'method', traits => ['Unwrapped','NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', xmlname => 'name', request_name => 'name', traits => ['Unwrapped','NameInRequest']);
-  has Path => (is => 'ro', isa => 'Str', xmlname => 'path', request_name => 'path', traits => ['Unwrapped','NameInRequest']);
-  has StatusCode => (is => 'ro', isa => 'Str', xmlname => 'statusCode', request_name => 'statusCode', traits => ['Unwrapped','NameInRequest']);
-  has Type => (is => 'ro', isa => 'Str', xmlname => 'type', request_name => 'type', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has Method => (is => 'ro', isa => 'Str', request_name => 'method', traits => ['NameInRequest']);
+  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
+  has Path => (is => 'ro', isa => 'Str', request_name => 'path', traits => ['NameInRequest']);
+  has StatusCode => (is => 'ro', isa => 'Str', request_name => 'statusCode', traits => ['NameInRequest']);
+  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -90,8 +90,8 @@ is a valid and required field for API entity types of C<API>,
 C<AUTHORIZER>, C<MODEL>, C<RESOURCE>, C<METHOD>, C<PATH_PARAMETER>,
 C<QUERY_PARAMETER>, C<REQUEST_HEADER>, C<REQUEST_BODY>, C<RESPONSE>,
 C<RESPONSE_HEADER>, and C<RESPONSE_BODY>. Content inheritance does not
-apply to any entity of the C<API>, C<AUTHROZER>, C<MODEL>, or
-C<RESOURCE> type.
+apply to any entity of the C<API>, C<AUTHROZER>, C<METHOD>, C<MODEL>,
+C<REQUEST_BODY>, or C<RESOURCE> type.
 
 
 

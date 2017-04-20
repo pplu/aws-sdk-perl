@@ -2,7 +2,8 @@
 package Paws::Pinpoint::GetApplicationSettingsResponse;
   use Moose;
   has ApplicationSettingsResource => (is => 'ro', isa => 'Paws::Pinpoint::ApplicationSettingsResource', required => 1);
-
+  use MooseX::ClassAttribute;
+  class_has _stream_param => (is => 'ro', default => 'ApplicationSettingsResource');
   has _request_id => (is => 'ro', isa => 'Str');
 1;
 

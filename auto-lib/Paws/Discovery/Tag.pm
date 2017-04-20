@@ -1,7 +1,7 @@
 package Paws::Discovery::Tag;
   use Moose;
-  has Key => (is => 'ro', isa => 'Str', xmlname => 'key', request_name => 'key', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has Value => (is => 'ro', isa => 'Str', xmlname => 'value', request_name => 'value', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has Key => (is => 'ro', isa => 'Str', request_name => 'key', traits => ['NameInRequest'], required => 1);
+  has Value => (is => 'ro', isa => 'Str', request_name => 'value', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -39,12 +39,12 @@ Metadata that help you categorize IT assets.
 
 =head2 B<REQUIRED> Key => Str
 
-  A type of tag to filter on.
+  The type of tag on which to filter.
 
 
 =head2 B<REQUIRED> Value => Str
 
-  A value for a tag key to filter on.
+  A value for a tag key on which to filter.
 
 
 

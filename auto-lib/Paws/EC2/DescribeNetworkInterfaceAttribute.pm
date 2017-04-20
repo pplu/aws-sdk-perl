@@ -37,7 +37,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Attribute => Str
 
-The attribute of the network interface.
+The attribute of the network interface. This parameter is required.
 
 Valid values are: C<"description">, C<"groupSet">, C<"sourceDestCheck">, C<"attachment">
 

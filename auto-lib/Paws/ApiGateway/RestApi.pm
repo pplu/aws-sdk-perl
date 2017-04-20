@@ -1,13 +1,13 @@
 
 package Paws::ApiGateway::RestApi;
   use Moose;
-  has BinaryMediaTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has CreatedDate => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has Id => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has Version => (is => 'ro', isa => 'Str');
-  has Warnings => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has BinaryMediaTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'binaryMediaTypes');
+  has CreatedDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'createdDate');
+  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
+  has Id => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'id');
+  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name');
+  has Version => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'version');
+  has Warnings => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'warnings');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;
@@ -29,7 +29,7 @@ the RestApi supports only UTF-8-encoded text payloads.
 
 =head2 CreatedDate => Str
 
-The date when the API was created, in ISO 8601 format.
+The timestamp when the API was created.
 
 
 =head2 Description => Str

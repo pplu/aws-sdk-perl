@@ -36,7 +36,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::OpsWorks::S
 
 =head1 DESCRIPTION
 
-Describes an AWS OpsWorks service error.
+Describes an AWS OpsWorks Stacks service error.
 
 =head1 ATTRIBUTES
 

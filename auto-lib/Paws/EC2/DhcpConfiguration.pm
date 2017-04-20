@@ -1,7 +1,7 @@
 package Paws::EC2::DhcpConfiguration;
   use Moose;
-  has Key => (is => 'ro', isa => 'Str', xmlname => 'key', traits => ['Unwrapped']);
-  has Values => (is => 'ro', isa => 'ArrayRef[Paws::EC2::AttributeValue]', xmlname => 'valueSet', traits => ['Unwrapped']);
+  has Key => (is => 'ro', isa => 'Str', request_name => 'key', traits => ['NameInRequest']);
+  has Values => (is => 'ro', isa => 'ArrayRef[Paws::EC2::AttributeValue]', request_name => 'valueSet', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

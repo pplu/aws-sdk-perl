@@ -18,13 +18,13 @@ Paws::CloudDirectory::LookupPolicyResponse
 
 =head2 NextToken => Str
 
-Token used for pagination.
+The pagination token.
 
 
 =head2 PolicyToPathList => ArrayRef[L<Paws::CloudDirectory::PolicyToPath>]
 
-Provides list of path to policies. Policies contain PolicyId,
-ObjectIdentifier, and PolicyType.
+Provides list of path to policies. Policies contain C<PolicyId>,
+C<ObjectIdentifier>, and C<PolicyType>.
 
 
 =head2 _request_id => Str

@@ -6,7 +6,7 @@ package Paws::Pinpoint::UpdateSegment;
   has WriteSegmentRequest => (is => 'ro', isa => 'Paws::Pinpoint::WriteSegmentRequest', required => 1);
 
   use MooseX::ClassAttribute;
-
+  class_has _stream_param => (is => 'ro', default => 'WriteSegmentRequest');
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateSegment');
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/apps/{application-id}/segments/{segment-id}');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');

@@ -38,21 +38,24 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> CollectionId => Str
 
-ID of an existing collection to which you want to add the faces that
-are detected in the input images.
+The ID of an existing collection to which you want to add the faces
+that are detected in the input images.
 
 
 
 =head2 DetectionAttributes => ArrayRef[Str|Undef]
 
-(Optional) Returns detailed attributes of indexed faces. By default,
-the operation returns a subset of the facial attributes.
+A list of facial attributes that you want to be returned. This can be
+the default list of attributes or all attributes. If you don't specify
+a value for C<Attributes> or if you specify C<["DEFAULT"]>, the API
+returns the following subset of facial attributes: C<BoundingBox>,
+C<Confidence>, C<Pose>, C<Quality> and C<Landmarks>. If you provide
+C<["ALL"]>, all facial attributes are returned but the operation will
+take longer to complete.
 
-For example, you can specify the value as, ["ALL"] or ["DEFAULT"]. If
-you provide both, ["ALL", "DEFAULT"], Amazon Rekognition uses the
-logical AND operator to determine which attributes to return (in this
-case, it is all attributes). If you specify all attributes, the service
-performs additional detection, in addition to the default.
+If you provide both, C<["ALL", "DEFAULT"]>, the service uses a logical
+AND operator to determine which attributes to return (in this case, all
+attributes).
 
 
 

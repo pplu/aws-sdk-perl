@@ -1,18 +1,18 @@
 
 package Paws::DirectConnect::Lag;
   use Moose;
-  has AllowsHostedConnections => (is => 'ro', isa => 'Bool', traits => ['Unwrapped'], xmlname => 'allowsHostedConnections' );
-  has AwsDevice => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'awsDevice' );
-  has Connections => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::Connection]', traits => ['Unwrapped'], xmlname => 'connections' );
-  has ConnectionsBandwidth => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'connectionsBandwidth' );
-  has LagId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'lagId' );
-  has LagName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'lagName' );
-  has LagState => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'lagState' );
-  has Location => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'location' );
-  has MinimumLinks => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => 'minimumLinks' );
-  has NumberOfConnections => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => 'numberOfConnections' );
-  has OwnerAccount => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'ownerAccount' );
-  has Region => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'region' );
+  has AllowsHostedConnections => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'allowsHostedConnections' );
+  has AwsDevice => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'awsDevice' );
+  has Connections => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::Connection]', traits => ['NameInRequest'], request_name => 'connections' );
+  has ConnectionsBandwidth => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'connectionsBandwidth' );
+  has LagId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'lagId' );
+  has LagName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'lagName' );
+  has LagState => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'lagState' );
+  has Location => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'location' );
+  has MinimumLinks => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'minimumLinks' );
+  has NumberOfConnections => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'numberOfConnections' );
+  has OwnerAccount => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'ownerAccount' );
+  has Region => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'region' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

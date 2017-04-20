@@ -17,10 +17,10 @@ Paws::CloudWatchEvents::PutEventsResponse
 
 =head2 Entries => ArrayRef[L<Paws::CloudWatchEvents::PutEventsResultEntry>]
 
-A list of successfully and unsuccessfully ingested events results. If
-the ingestion was successful, the entry will have the event ID in it.
-If not, then the ErrorCode and ErrorMessage can be used to identify the
-problem with the entry.
+The successfully and unsuccessfully ingested events results. If the
+ingestion was successful, the entry has the event ID in it. Otherwise,
+you can use the error code and error message to identify the problem
+with the entry.
 
 
 =head2 FailedEntryCount => Int

@@ -1,9 +1,9 @@
 package Paws::ECR::Image;
   use Moose;
-  has ImageId => (is => 'ro', isa => 'Paws::ECR::ImageIdentifier', xmlname => 'imageId', request_name => 'imageId', traits => ['Unwrapped','NameInRequest']);
-  has ImageManifest => (is => 'ro', isa => 'Str', xmlname => 'imageManifest', request_name => 'imageManifest', traits => ['Unwrapped','NameInRequest']);
-  has RegistryId => (is => 'ro', isa => 'Str', xmlname => 'registryId', request_name => 'registryId', traits => ['Unwrapped','NameInRequest']);
-  has RepositoryName => (is => 'ro', isa => 'Str', xmlname => 'repositoryName', request_name => 'repositoryName', traits => ['Unwrapped','NameInRequest']);
+  has ImageId => (is => 'ro', isa => 'Paws::ECR::ImageIdentifier', request_name => 'imageId', traits => ['NameInRequest']);
+  has ImageManifest => (is => 'ro', isa => 'Str', request_name => 'imageManifest', traits => ['NameInRequest']);
+  has RegistryId => (is => 'ro', isa => 'Str', request_name => 'registryId', traits => ['NameInRequest']);
+  has RepositoryName => (is => 'ro', isa => 'Str', request_name => 'repositoryName', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

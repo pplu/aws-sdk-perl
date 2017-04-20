@@ -1,7 +1,7 @@
 
 package Paws::CodeDeploy::GetDeploymentConfigOutput;
   use Moose;
-  has DeploymentConfigInfo => (is => 'ro', isa => 'Paws::CodeDeploy::DeploymentConfigInfo', traits => ['Unwrapped'], xmlname => 'deploymentConfigInfo' );
+  has DeploymentConfigInfo => (is => 'ro', isa => 'Paws::CodeDeploy::DeploymentConfigInfo', traits => ['NameInRequest'], request_name => 'deploymentConfigInfo' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

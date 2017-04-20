@@ -1,8 +1,8 @@
 package Paws::Discovery::AgentConfigurationStatus;
   use Moose;
-  has AgentId => (is => 'ro', isa => 'Str', xmlname => 'agentId', request_name => 'agentId', traits => ['Unwrapped','NameInRequest']);
-  has Description => (is => 'ro', isa => 'Str', xmlname => 'description', request_name => 'description', traits => ['Unwrapped','NameInRequest']);
-  has OperationSucceeded => (is => 'ro', isa => 'Bool', xmlname => 'operationSucceeded', request_name => 'operationSucceeded', traits => ['Unwrapped','NameInRequest']);
+  has AgentId => (is => 'ro', isa => 'Str', request_name => 'agentId', traits => ['NameInRequest']);
+  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
+  has OperationSucceeded => (is => 'ro', isa => 'Bool', request_name => 'operationSucceeded', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -33,9 +33,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Discovery::
 
 =head1 DESCRIPTION
 
-Information about agents or Connectors that were instructed to start
-collecting data. Information includes the agent/Connector ID, a
-description of the operation, and whether or not the agent/Connector
+Information about agents or connectors that were instructed to start
+collecting data. Information includes the agent/connector ID, a
+description of the operation, and whether the agent/connector
 configuration was updated.
 
 =head1 ATTRIBUTES
@@ -43,7 +43,7 @@ configuration was updated.
 
 =head2 AgentId => Str
 
-  The agent/Connector ID.
+  The agent/connector ID.
 
 
 =head2 Description => Str
@@ -55,7 +55,7 @@ configuration was updated.
 
   Information about the status of the C<StartDataCollection> and
 C<StopDataCollection> operations. The system has recorded the data
-collection operation. The agent/Connector receives this command the
+collection operation. The agent/connector receives this command the
 next time it polls for a new command.
 
 

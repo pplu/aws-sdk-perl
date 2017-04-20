@@ -1,7 +1,7 @@
 
 package Paws::DirectConnect::DescribeTagsResponse;
   use Moose;
-  has ResourceTags => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::ResourceTag]', traits => ['Unwrapped'], xmlname => 'resourceTags' );
+  has ResourceTags => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::ResourceTag]', traits => ['NameInRequest'], request_name => 'resourceTags' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

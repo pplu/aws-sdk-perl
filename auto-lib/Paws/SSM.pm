@@ -571,20 +571,23 @@ Paws::SSM - Perl Interface to AWS Amazon Simple Systems Manager (SSM)
 
 =head1 DESCRIPTION
 
+Amazon EC2 Systems Manager
+
 Amazon EC2 Systems Manager is a collection of capabilities that helps
 you automate management tasks such as collecting system inventory,
 applying operating system (OS) patches, automating the creation of
 Amazon Machine Images (AMIs), and configuring operating systems (OSs)
-and applications at scale. Systems Manager works with managed
-instances: Amazon EC2 instances and servers or virtual machines (VMs)
-in your on-premises environment that are configured for Systems
+and applications at scale. Systems Manager lets you remotely and
+securely manage the configuration of your managed instances. A
+I<managed instance> is any Amazon EC2 instance or on-premises machine
+in your hybrid environment that has been configured for Systems
 Manager.
 
-This references is intended to be used with the EC2 Systems Manager
-User Guide (Linux) (Windows).
+This reference is intended to be used with the Amazon EC2 Systems
+Manager User Guide.
 
-To get started, verify prerequisites and configure managed instances
-(Linux) (Windows).
+To get started, verify prerequisites and configure managed instances.
+For more information, see Systems Manager Prerequisites.
 
 =head1 METHODS
 
@@ -612,7 +615,7 @@ meaning to Amazon EC2 and are interpreted strictly as a string of
 characters.
 
 For more information about tags, see Tagging Your Amazon EC2 Resources
-in the Amazon EC2 User Guide.
+in the I<Amazon EC2 User Guide>.
 
 
 =head2 CancelCommand(CommandId => Str, [InstanceIds => ArrayRef[Str|Undef]])
@@ -636,8 +639,7 @@ Returns: a L<Paws::SSM::CreateActivationResult> instance
 that you can manage these resources using Run Command. An on-premises
 server or virtual machine that has been registered with EC2 is called a
 managed instance. For more information about activations, see Setting
-Up Managed Instances (Linux) or Setting Up Managed Instances (Windows)
-in the Amazon EC2 User Guide.
+Up Systems Manager in Hybrid Environments.
 
 
 =head2 CreateAssociation(Name => Str, [DocumentVersion => Str, InstanceId => Str, OutputLocation => L<Paws::SSM::InstanceAssociationOutputLocation>, Parameters => L<Paws::SSM::Parameters>, ScheduleExpression => Str, Targets => ArrayRef[L<Paws::SSM::Target>]])
@@ -646,12 +648,12 @@ Each argument is described in detail in: L<Paws::SSM::CreateAssociation>
 
 Returns: a L<Paws::SSM::CreateAssociationResult> instance
 
-  Associates the specified SSM document with the specified instances or
-targets.
+  Associates the specified Systems Manager document with the specified
+instances or targets.
 
-When you associate an SSM document with one or more instances using
-instance IDs or tags, the SSM agent running on the instance processes
-the document and configures the instance as specified.
+When you associate a document with one or more instances using instance
+IDs or tags, the SSM Agent running on the instance processes the
+document and configures the instance as specified.
 
 If you associate a document with an instance that already has an
 associated document, the system throws the AssociationAlreadyExists
@@ -664,12 +666,12 @@ Each argument is described in detail in: L<Paws::SSM::CreateAssociationBatch>
 
 Returns: a L<Paws::SSM::CreateAssociationBatchResult> instance
 
-  Associates the specified SSM document with the specified instances or
-targets.
+  Associates the specified Systems Manager document with the specified
+instances or targets.
 
-When you associate an SSM document with one or more instances using
-instance IDs or tags, the SSM agent running on the instance processes
-the document and configures the instance as specified.
+When you associate a document with one or more instances using instance
+IDs or tags, the SSM Agent running on the instance processes the
+document and configures the instance as specified.
 
 If you associate a document with an instance that already has an
 associated document, the system throws the AssociationAlreadyExists
@@ -682,10 +684,10 @@ Each argument is described in detail in: L<Paws::SSM::CreateDocument>
 
 Returns: a L<Paws::SSM::CreateDocumentResult> instance
 
-  Creates an SSM document.
+  Creates a Systems Manager document.
 
-After you create an SSM document, you can use CreateAssociation to
-associate it with one or more running instances.
+After you create a document, you can use CreateAssociation to associate
+it with one or more running instances.
 
 
 =head2 CreateMaintenanceWindow(AllowUnassociatedTargets => Bool, Cutoff => Int, Duration => Int, Name => Str, Schedule => Str, [ClientToken => Str])
@@ -725,12 +727,13 @@ Each argument is described in detail in: L<Paws::SSM::DeleteAssociation>
 
 Returns: a L<Paws::SSM::DeleteAssociationResult> instance
 
-  Disassociates the specified SSM document from the specified instance.
+  Disassociates the specified Systems Manager document from the specified
+instance.
 
-When you disassociate an SSM document from an instance, it does not
-change the configuration of the instance. To change the configuration
-state of an instance after you disassociate a document, you must create
-a new document with the desired configuration and associate it with the
+When you disassociate a document from an instance, it does not change
+the configuration of the instance. To change the configuration state of
+an instance after you disassociate a document, you must create a new
+document with the desired configuration and associate it with the
 instance.
 
 
@@ -740,9 +743,10 @@ Each argument is described in detail in: L<Paws::SSM::DeleteDocument>
 
 Returns: a L<Paws::SSM::DeleteDocumentResult> instance
 
-  Deletes the SSM document and all instance associations to the document.
+  Deletes the Systems Manager document and all instance associations to
+the document.
 
-Before you delete the SSM document, we recommend that you use
+Before you delete the document, we recommend that you use
 DeleteAssociation to disassociate all instances that are associated
 with the document.
 
@@ -783,7 +787,7 @@ Returns: a L<Paws::SSM::DeregisterManagedInstanceResult> instance
   Removes the server or virtual machine from the list of registered
 servers. You can reregister the instance again at any time. If you
 donE<rsquo>t plan to use Run Command on the server, we suggest
-uninstalling the SSM agent first.
+uninstalling the SSM Agent first.
 
 
 =head2 DeregisterPatchBaselineForPatchGroup(BaselineId => Str, PatchGroup => Str)
@@ -831,7 +835,8 @@ Each argument is described in detail in: L<Paws::SSM::DescribeAssociation>
 
 Returns: a L<Paws::SSM::DescribeAssociationResult> instance
 
-  Describes the associations for the specified SSM document or instance.
+  Describes the associations for the specified Systems Manager document
+or instance.
 
 
 =head2 DescribeAutomationExecutions([Filters => ArrayRef[L<Paws::SSM::AutomationExecutionFilter>], MaxResults => Int, NextToken => Str])
@@ -867,10 +872,10 @@ Each argument is described in detail in: L<Paws::SSM::DescribeDocumentPermission
 
 Returns: a L<Paws::SSM::DescribeDocumentPermissionResponse> instance
 
-  Describes the permissions for an SSM document. If you created the
-document, you are the owner. If a document is shared, it can either be
-shared privately (by specifying a userE<rsquo>s AWS account ID) or
-publicly (I<All>).
+  Describes the permissions for a Systems Manager document. If you
+created the document, you are the owner. If a document is shared, it
+can either be shared privately (by specifying a userE<rsquo>s AWS
+account ID) or publicly (I<All>).
 
 
 =head2 DescribeEffectiveInstanceAssociations(InstanceId => Str, [MaxResults => Int, NextToken => Str])
@@ -909,7 +914,7 @@ Returns: a L<Paws::SSM::DescribeInstanceInformationResult> instance
 
   Describes one or more of your instances. You can use this to get
 information about instances like the operating system platform, the SSM
-agent version (Linux), status etc. If you specify one or more instance
+Agent version (Linux), status etc. If you specify one or more instance
 IDs, it returns information for those instances. If you do not specify
 instance IDs, it returns information for all your instances. If you
 specify an instance ID that is not valid or an instance that you do not
@@ -1151,7 +1156,7 @@ Each argument is described in detail in: L<Paws::SSM::GetParameters>
 
 Returns: a L<Paws::SSM::GetParametersResult> instance
 
-  Get a list of parameters used by the AWS account.E<gt>
+  Get details of a parameter.
 
 
 =head2 GetPatchBaseline(BaselineId => Str)
@@ -1179,7 +1184,8 @@ Each argument is described in detail in: L<Paws::SSM::ListAssociations>
 
 Returns: a L<Paws::SSM::ListAssociationsResult> instance
 
-  Lists the associations for the specified SSM document or instance.
+  Lists the associations for the specified Systems Manager document or
+instance.
 
 
 =head2 ListCommandInvocations([CommandId => Str, Details => Bool, Filters => ArrayRef[L<Paws::SSM::CommandFilter>], InstanceId => Str, MaxResults => Int, NextToken => Str])
@@ -1247,10 +1253,10 @@ Each argument is described in detail in: L<Paws::SSM::ModifyDocumentPermission>
 
 Returns: a L<Paws::SSM::ModifyDocumentPermissionResponse> instance
 
-  Share a document publicly or privately. If you share a document
-privately, you must specify the AWS user account IDs for those people
-who can use the document. If you share a document publicly, you must
-specify I<All> as the account ID.
+  Shares a Systems Manager document publicly or privately. If you share a
+document privately, you must specify the AWS user account IDs for those
+people who can use the document. If you share a document publicly, you
+must specify I<All> as the account ID.
 
 
 =head2 PutInventory(InstanceId => Str, Items => ArrayRef[L<Paws::SSM::InventoryItem>])
@@ -1361,8 +1367,8 @@ Each argument is described in detail in: L<Paws::SSM::UpdateAssociationStatus>
 
 Returns: a L<Paws::SSM::UpdateAssociationStatusResult> instance
 
-  Updates the status of the SSM document associated with the specified
-instance.
+  Updates the status of the Systems Manager document associated with the
+specified instance.
 
 
 =head2 UpdateDocument(Content => Str, Name => Str, [DocumentVersion => Str])

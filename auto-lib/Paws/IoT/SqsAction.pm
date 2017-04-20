@@ -1,8 +1,8 @@
 package Paws::IoT::SqsAction;
   use Moose;
-  has QueueUrl => (is => 'ro', isa => 'Str', xmlname => 'queueUrl', request_name => 'queueUrl', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has RoleArn => (is => 'ro', isa => 'Str', xmlname => 'roleArn', request_name => 'roleArn', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has UseBase64 => (is => 'ro', isa => 'Bool', xmlname => 'useBase64', request_name => 'useBase64', traits => ['Unwrapped','NameInRequest']);
+  has QueueUrl => (is => 'ro', isa => 'Str', request_name => 'queueUrl', traits => ['NameInRequest'], required => 1);
+  has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest'], required => 1);
+  has UseBase64 => (is => 'ro', isa => 'Bool', request_name => 'useBase64', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

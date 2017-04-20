@@ -963,10 +963,10 @@ package [% inner_class %];
   [%- member = c.shape(member_shape_name) -%]
   has [% param_name %] => (is => 'ro', isa => '[% member.perl_type %]'
   [%- IF (member.type == 'list' and member.member.locationName.defined) %][% traits.push('NameInRequest') %], request_name => '[% member.member.locationName %]'[% END %]
-  [%- IF (shape.members.${param_name}.locationName); traits.push('Unwrapped','NameInRequest') %], xmlname => '[% shape.members.${param_name}.locationName %]', request_name => '[% shape.members.${param_name}.locationName %]'[% END %]
+  [%- IF (shape.members.${param_name}.locationName); traits.push('NameInRequest') %], request_name => '[% shape.members.${param_name}.locationName %]'[% END %]
   [%- IF (shape.members.$param_name.streaming == 1); traits.push('ParamInBody'); END %]
   [%- encoder = c.encoders_struct.$member_shape_name; IF (encoder); traits.push('JSONAttribute') %], decode_as => '[% encoder.encoding %]', method => '[% encoder.alias %]'[% END %]
-  [%- IF (member.members.xmlname and (member.members.xmlname != 'item')) %], traits => ['Unwrapped'], xmlname => '[% member.members.xmlname %]'[% END %]
+  [%- IF (member.members.xmlname and (member.members.xmlname != 'item')) %], traits => ['NameInRequest'], request_name => '[% member.members.xmlname %]'[% END %]
   [%- IF (traits.size) %], traits => [[% FOREACH trait=traits %]'[% trait %]'[% IF (NOT loop.last) %],[% END %][% END %]][% END -%]
   [%- IF (c.required_in_shape(shape,param_name)) %], required => 1[% END %]);
 [% END -%]
@@ -1119,7 +1119,11 @@ If not, it will return a [% out_shape = c.shapename_for_operation_output(op_name
   [%- END %]
 #);
 
-
+  sub to_payload_shape_name {
+    my ($self, $shape_name) = @_;
+    substr($shape_name,0,1) = uc(substr($shape_name,0,1));
+    return $shape_name;
+  }
 
   sub make_inner_class {
     my $self = shift;
@@ -1154,7 +1158,11 @@ If not, it will return a [% out_shape = c.shapename_for_operation_output(op_name
         if ($inner_shape->{type} eq 'structure'){
           $self->process_template($self->map_str_to_obj_template, { c => $self, iclass => $iclass, inner_class => $inner_class, keys_shape => $keys_shape, values_shape => $values_shape, map_class => "HashRef[$type]" });
         } else {
-          $self->process_template($self->map_str_to_native_template, { c => $self, iclass => $iclass, inner_class => $inner_class, keys_shape => $keys_shape, values_shape => $values_shape, map_class => "HashRef[$type]" });
+          if ($type =~ /::/) {
+            $self->process_template($self->map_str_to_obj_template, { c => $self, iclass => $iclass, inner_class => $inner_class, keys_shape => $keys_shape, values_shape => $values_shape, map_class => "HashRef[$type]" });
+          } else {
+            $self->process_template($self->map_str_to_native_template, { c => $self, iclass => $iclass, inner_class => $inner_class, keys_shape => $keys_shape, values_shape => $values_shape, map_class => "HashRef[$type]" });
+          }
         }
       } elsif ($keys_shape->{type} eq 'string' and $values_shape->{type} eq 'structure') {
         my $type = $self->get_caller_class_type($iclass->{value}->{shape});

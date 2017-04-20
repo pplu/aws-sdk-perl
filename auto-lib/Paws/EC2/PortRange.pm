@@ -1,7 +1,7 @@
 package Paws::EC2::PortRange;
   use Moose;
-  has From => (is => 'ro', isa => 'Int', xmlname => 'from', traits => ['Unwrapped']);
-  has To => (is => 'ro', isa => 'Int', xmlname => 'to', traits => ['Unwrapped']);
+  has From => (is => 'ro', isa => 'Int', request_name => 'from', traits => ['NameInRequest']);
+  has To => (is => 'ro', isa => 'Int', request_name => 'to', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

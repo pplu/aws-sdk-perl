@@ -16,7 +16,7 @@ Paws::CloudWatchEvents::PutRuleResponse
 
 =head2 RuleArn => Str
 
-The Amazon Resource Name (ARN) that identifies the rule.
+The Amazon Resource Name (ARN) of the rule.
 
 
 =head2 _request_id => Str

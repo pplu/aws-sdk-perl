@@ -53,7 +53,8 @@ Unique identifier for a fleet to retrieve all game sessions for.
 
 =head2 GameSessionId => Str
 
-Unique identifier for the game session to retrieve.
+Unique identifier for the game session to retrieve. You can use either
+a C<GameSessionId> or C<GameSessionArn> value.
 
 
 

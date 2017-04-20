@@ -1,9 +1,9 @@
 
 package Paws::ApiGateway::BasePathMapping;
   use Moose;
-  has BasePath => (is => 'ro', isa => 'Str');
-  has RestApiId => (is => 'ro', isa => 'Str');
-  has Stage => (is => 'ro', isa => 'Str');
+  has BasePath => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'basePath');
+  has RestApiId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'restApiId');
+  has Stage => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'stage');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

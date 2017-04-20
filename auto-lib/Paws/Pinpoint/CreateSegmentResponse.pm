@@ -2,7 +2,8 @@
 package Paws::Pinpoint::CreateSegmentResponse;
   use Moose;
   has SegmentResponse => (is => 'ro', isa => 'Paws::Pinpoint::SegmentResponse', required => 1);
-
+  use MooseX::ClassAttribute;
+  class_has _stream_param => (is => 'ro', default => 'SegmentResponse');
   has _request_id => (is => 'ro', isa => 'Str');
 1;
 

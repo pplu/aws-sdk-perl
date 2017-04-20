@@ -1,7 +1,7 @@
 package Paws::CodeDeploy::DeploymentReadyOption;
   use Moose;
-  has ActionOnTimeout => (is => 'ro', isa => 'Str', xmlname => 'actionOnTimeout', request_name => 'actionOnTimeout', traits => ['Unwrapped','NameInRequest']);
-  has WaitTimeInMinutes => (is => 'ro', isa => 'Int', xmlname => 'waitTimeInMinutes', request_name => 'waitTimeInMinutes', traits => ['Unwrapped','NameInRequest']);
+  has ActionOnTimeout => (is => 'ro', isa => 'Str', request_name => 'actionOnTimeout', traits => ['NameInRequest']);
+  has WaitTimeInMinutes => (is => 'ro', isa => 'Int', request_name => 'waitTimeInMinutes', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

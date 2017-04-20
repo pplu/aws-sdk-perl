@@ -1,7 +1,7 @@
 
 package Paws::Support::DescribeTrustedAdvisorCheckRefreshStatusesResponse;
   use Moose;
-  has Statuses => (is => 'ro', isa => 'ArrayRef[Paws::Support::TrustedAdvisorCheckRefreshStatus]', traits => ['Unwrapped'], xmlname => 'statuses' , required => 1);
+  has Statuses => (is => 'ro', isa => 'ArrayRef[Paws::Support::TrustedAdvisorCheckRefreshStatus]', traits => ['NameInRequest'], request_name => 'statuses' , required => 1);
 
   has _request_id => (is => 'ro', isa => 'Str');
 

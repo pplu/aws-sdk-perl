@@ -1,8 +1,8 @@
 
 package Paws::EC2::DescribeNatGatewaysResult;
   use Moose;
-  has NatGateways => (is => 'ro', isa => 'ArrayRef[Paws::EC2::NatGateway]', xmlname => 'natGatewaySet', traits => ['Unwrapped',]);
-  has NextToken => (is => 'ro', isa => 'Str', xmlname => 'nextToken', traits => ['Unwrapped',]);
+  has NatGateways => (is => 'ro', isa => 'ArrayRef[Paws::EC2::NatGateway]', request_name => 'natGatewaySet', traits => ['NameInRequest',]);
+  has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest',]);
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

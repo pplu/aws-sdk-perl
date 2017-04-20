@@ -1,6 +1,6 @@
 package Paws::Health::EventDescription;
   use Moose;
-  has LatestDescription => (is => 'ro', isa => 'Str', xmlname => 'latestDescription', request_name => 'latestDescription', traits => ['Unwrapped','NameInRequest']);
+  has LatestDescription => (is => 'ro', isa => 'Str', request_name => 'latestDescription', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

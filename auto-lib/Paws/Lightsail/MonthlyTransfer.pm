@@ -1,6 +1,6 @@
 package Paws::Lightsail::MonthlyTransfer;
   use Moose;
-  has GbPerMonthAllocated => (is => 'ro', isa => 'Int', xmlname => 'gbPerMonthAllocated', request_name => 'gbPerMonthAllocated', traits => ['Unwrapped','NameInRequest']);
+  has GbPerMonthAllocated => (is => 'ro', isa => 'Int', request_name => 'gbPerMonthAllocated', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

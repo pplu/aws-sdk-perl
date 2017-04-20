@@ -1,11 +1,11 @@
 package Paws::Support::TrustedAdvisorCheckResult;
   use Moose;
-  has CategorySpecificSummary => (is => 'ro', isa => 'Paws::Support::TrustedAdvisorCategorySpecificSummary', xmlname => 'categorySpecificSummary', request_name => 'categorySpecificSummary', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has CheckId => (is => 'ro', isa => 'Str', xmlname => 'checkId', request_name => 'checkId', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has FlaggedResources => (is => 'ro', isa => 'ArrayRef[Paws::Support::TrustedAdvisorResourceDetail]', xmlname => 'flaggedResources', request_name => 'flaggedResources', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has ResourcesSummary => (is => 'ro', isa => 'Paws::Support::TrustedAdvisorResourcesSummary', xmlname => 'resourcesSummary', request_name => 'resourcesSummary', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has Status => (is => 'ro', isa => 'Str', xmlname => 'status', request_name => 'status', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has Timestamp => (is => 'ro', isa => 'Str', xmlname => 'timestamp', request_name => 'timestamp', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has CategorySpecificSummary => (is => 'ro', isa => 'Paws::Support::TrustedAdvisorCategorySpecificSummary', request_name => 'categorySpecificSummary', traits => ['NameInRequest'], required => 1);
+  has CheckId => (is => 'ro', isa => 'Str', request_name => 'checkId', traits => ['NameInRequest'], required => 1);
+  has FlaggedResources => (is => 'ro', isa => 'ArrayRef[Paws::Support::TrustedAdvisorResourceDetail]', request_name => 'flaggedResources', traits => ['NameInRequest'], required => 1);
+  has ResourcesSummary => (is => 'ro', isa => 'Paws::Support::TrustedAdvisorResourcesSummary', request_name => 'resourcesSummary', traits => ['NameInRequest'], required => 1);
+  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest'], required => 1);
+  has Timestamp => (is => 'ro', isa => 'Str', request_name => 'timestamp', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###

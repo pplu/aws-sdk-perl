@@ -51,10 +51,6 @@ I<key>-I<value> format. For example:
 
 C<{"key": "collectionStatus", "value": "STARTED"}>
 
-For a complete list of filter options and guidance about using them
-with this action, see Managing AWS Application Discovery Service Agents
-and the AWS Application Discovery Connector .
-
 
 
 =head2 MaxResults => Int

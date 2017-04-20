@@ -3,6 +3,7 @@ package Paws::GameLift::UpdateGameSessionQueue;
   use Moose;
   has Destinations => (is => 'ro', isa => 'ArrayRef[Paws::GameLift::GameSessionQueueDestination]');
   has Name => (is => 'ro', isa => 'Str', required => 1);
+  has PlayerLatencyPolicies => (is => 'ro', isa => 'ArrayRef[Paws::GameLift::PlayerLatencyPolicy]');
   has TimeoutInSeconds => (is => 'ro', isa => 'Int');
 
   use MooseX::ClassAttribute;
@@ -40,6 +41,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 List of fleets that can be used to fulfill game session placement
 requests in the queue. Fleets are identified by either a fleet ARN or a
 fleet alias ARN. Destinations are listed in default preference order.
+When updating this list, provide a complete list of destinations.
 
 
 
@@ -47,6 +49,21 @@ fleet alias ARN. Destinations are listed in default preference order.
 
 Descriptive label that is associated with queue. Queue names must be
 unique within each region.
+
+
+
+=head2 PlayerLatencyPolicies => ArrayRef[L<Paws::GameLift::PlayerLatencyPolicy>]
+
+Collection of latency policies to apply when processing game sessions
+placement requests with player latency information. Multiple policies
+are evaluated in order of the maximum latency value, starting with the
+lowest latency values. With just one policy, it is enforced at the
+start of the game session placement for the duration period. With
+multiple policies, each policy is enforced consecutively for its
+duration period. For example, a queue might enforce a 60-second policy
+followed by a 120-second policy, and then no policy for the remainder
+of the placement. When updating policies, provide a complete collection
+of policies.
 
 
 

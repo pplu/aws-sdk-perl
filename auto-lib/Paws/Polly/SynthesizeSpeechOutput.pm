@@ -2,9 +2,10 @@
 package Paws::Polly::SynthesizeSpeechOutput;
   use Moose;
   has AudioStream => (is => 'ro', isa => 'Str');
-  has ContentType => (is => 'ro', isa => 'Str');
-  has RequestCharacters => (is => 'ro', isa => 'Int');
-
+  has ContentType => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Content-Type');
+  has RequestCharacters => (is => 'ro', isa => 'Int', traits => ['ParamInHeader'], header_name => 'x-amzn-RequestCharacters');
+  use MooseX::ClassAttribute;
+  class_has _stream_param => (is => 'ro', default => 'AudioStream');
   has _request_id => (is => 'ro', isa => 'Str');
 1;
 
@@ -44,6 +45,11 @@ returned is audio/ogg.
 If you request C<pcm> as the C<OutputFormat>, the C<ContentType>
 returned is audio/pcm in a signed 16-bit, 1 channel (mono),
 little-endian format.
+
+=item *
+
+If you request C<json> as the C<OutputFormat>, the C<ContentType>
+returned is audio/json.
 
 =back
 

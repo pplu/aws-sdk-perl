@@ -1,11 +1,11 @@
 
 package Paws::EC2::DescribeSpotFleetRequestHistoryResponse;
   use Moose;
-  has HistoryRecords => (is => 'ro', isa => 'ArrayRef[Paws::EC2::HistoryRecord]', xmlname => 'historyRecordSet', traits => ['Unwrapped',], required => 1);
-  has LastEvaluatedTime => (is => 'ro', isa => 'Str', xmlname => 'lastEvaluatedTime', traits => ['Unwrapped',], required => 1);
-  has NextToken => (is => 'ro', isa => 'Str', xmlname => 'nextToken', traits => ['Unwrapped',]);
-  has SpotFleetRequestId => (is => 'ro', isa => 'Str', xmlname => 'spotFleetRequestId', traits => ['Unwrapped',], required => 1);
-  has StartTime => (is => 'ro', isa => 'Str', xmlname => 'startTime', traits => ['Unwrapped',], required => 1);
+  has HistoryRecords => (is => 'ro', isa => 'ArrayRef[Paws::EC2::HistoryRecord]', request_name => 'historyRecordSet', traits => ['NameInRequest',], required => 1);
+  has LastEvaluatedTime => (is => 'ro', isa => 'Str', request_name => 'lastEvaluatedTime', traits => ['NameInRequest',], required => 1);
+  has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest',]);
+  has SpotFleetRequestId => (is => 'ro', isa => 'Str', request_name => 'spotFleetRequestId', traits => ['NameInRequest',], required => 1);
+  has StartTime => (is => 'ro', isa => 'Str', request_name => 'startTime', traits => ['NameInRequest',], required => 1);
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

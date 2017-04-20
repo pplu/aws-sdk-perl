@@ -140,6 +140,9 @@ The tenancy of the instances covered by the reservation. A Reserved
 Instance with a tenancy of C<dedicated> is applied to instances that
 run in a VPC on single-tenant hardware (i.e., Dedicated Instances).
 
+B<Important:> The C<host> value cannot be used with this parameter. Use
+the C<default> or C<dedicated> values only.
+
 Default: C<default>
 
 Valid values are: C<"default">, C<"dedicated">, C<"host">

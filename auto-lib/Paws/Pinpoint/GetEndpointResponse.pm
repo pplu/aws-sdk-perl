@@ -2,7 +2,8 @@
 package Paws::Pinpoint::GetEndpointResponse;
   use Moose;
   has EndpointResponse => (is => 'ro', isa => 'Paws::Pinpoint::EndpointResponse', required => 1);
-
+  use MooseX::ClassAttribute;
+  class_has _stream_param => (is => 'ro', default => 'EndpointResponse');
   has _request_id => (is => 'ro', isa => 'Str');
 1;
 

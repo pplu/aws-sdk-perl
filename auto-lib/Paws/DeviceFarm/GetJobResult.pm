@@ -1,7 +1,7 @@
 
 package Paws::DeviceFarm::GetJobResult;
   use Moose;
-  has Job => (is => 'ro', isa => 'Paws::DeviceFarm::Job', traits => ['Unwrapped'], xmlname => 'job' );
+  has Job => (is => 'ro', isa => 'Paws::DeviceFarm::Job', traits => ['NameInRequest'], request_name => 'job' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 
@@ -16,7 +16,7 @@ Paws::DeviceFarm::GetJobResult
 
 =head2 Job => L<Paws::DeviceFarm::Job>
 
-
+An object containing information about the requested job.
 
 
 =head2 _request_id => Str

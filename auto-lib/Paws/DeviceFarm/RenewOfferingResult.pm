@@ -1,7 +1,7 @@
 
 package Paws::DeviceFarm::RenewOfferingResult;
   use Moose;
-  has OfferingTransaction => (is => 'ro', isa => 'Paws::DeviceFarm::OfferingTransaction', traits => ['Unwrapped'], xmlname => 'offeringTransaction' );
+  has OfferingTransaction => (is => 'ro', isa => 'Paws::DeviceFarm::OfferingTransaction', traits => ['NameInRequest'], request_name => 'offeringTransaction' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

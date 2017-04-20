@@ -61,8 +61,8 @@ C<ReplicaCount> or C<ReplicasPerNodeGroup> if not specified.
 
 =head2 Slots => Str
 
-  A string that specifies the keyspaces as a series of comma separated
-values. Keyspaces are 0 to 16,383. The string is in the format
+  A string that specifies the keyspace for a particular node group.
+Keyspaces range from 0 to 16,383. The string is in the format
 C<startkey-endkey>.
 
 Example: C<"0-3999">

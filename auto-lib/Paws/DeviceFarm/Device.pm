@@ -1,22 +1,22 @@
 package Paws::DeviceFarm::Device;
   use Moose;
-  has Arn => (is => 'ro', isa => 'Str', xmlname => 'arn', request_name => 'arn', traits => ['Unwrapped','NameInRequest']);
-  has Carrier => (is => 'ro', isa => 'Str', xmlname => 'carrier', request_name => 'carrier', traits => ['Unwrapped','NameInRequest']);
-  has Cpu => (is => 'ro', isa => 'Paws::DeviceFarm::CPU', xmlname => 'cpu', request_name => 'cpu', traits => ['Unwrapped','NameInRequest']);
-  has FleetName => (is => 'ro', isa => 'Str', xmlname => 'fleetName', request_name => 'fleetName', traits => ['Unwrapped','NameInRequest']);
-  has FleetType => (is => 'ro', isa => 'Str', xmlname => 'fleetType', request_name => 'fleetType', traits => ['Unwrapped','NameInRequest']);
-  has FormFactor => (is => 'ro', isa => 'Str', xmlname => 'formFactor', request_name => 'formFactor', traits => ['Unwrapped','NameInRequest']);
-  has HeapSize => (is => 'ro', isa => 'Int', xmlname => 'heapSize', request_name => 'heapSize', traits => ['Unwrapped','NameInRequest']);
-  has Image => (is => 'ro', isa => 'Str', xmlname => 'image', request_name => 'image', traits => ['Unwrapped','NameInRequest']);
-  has Manufacturer => (is => 'ro', isa => 'Str', xmlname => 'manufacturer', request_name => 'manufacturer', traits => ['Unwrapped','NameInRequest']);
-  has Memory => (is => 'ro', isa => 'Int', xmlname => 'memory', request_name => 'memory', traits => ['Unwrapped','NameInRequest']);
-  has Model => (is => 'ro', isa => 'Str', xmlname => 'model', request_name => 'model', traits => ['Unwrapped','NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', xmlname => 'name', request_name => 'name', traits => ['Unwrapped','NameInRequest']);
-  has Os => (is => 'ro', isa => 'Str', xmlname => 'os', request_name => 'os', traits => ['Unwrapped','NameInRequest']);
-  has Platform => (is => 'ro', isa => 'Str', xmlname => 'platform', request_name => 'platform', traits => ['Unwrapped','NameInRequest']);
-  has Radio => (is => 'ro', isa => 'Str', xmlname => 'radio', request_name => 'radio', traits => ['Unwrapped','NameInRequest']);
-  has RemoteAccessEnabled => (is => 'ro', isa => 'Bool', xmlname => 'remoteAccessEnabled', request_name => 'remoteAccessEnabled', traits => ['Unwrapped','NameInRequest']);
-  has Resolution => (is => 'ro', isa => 'Paws::DeviceFarm::Resolution', xmlname => 'resolution', request_name => 'resolution', traits => ['Unwrapped','NameInRequest']);
+  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
+  has Carrier => (is => 'ro', isa => 'Str', request_name => 'carrier', traits => ['NameInRequest']);
+  has Cpu => (is => 'ro', isa => 'Paws::DeviceFarm::CPU', request_name => 'cpu', traits => ['NameInRequest']);
+  has FleetName => (is => 'ro', isa => 'Str', request_name => 'fleetName', traits => ['NameInRequest']);
+  has FleetType => (is => 'ro', isa => 'Str', request_name => 'fleetType', traits => ['NameInRequest']);
+  has FormFactor => (is => 'ro', isa => 'Str', request_name => 'formFactor', traits => ['NameInRequest']);
+  has HeapSize => (is => 'ro', isa => 'Int', request_name => 'heapSize', traits => ['NameInRequest']);
+  has Image => (is => 'ro', isa => 'Str', request_name => 'image', traits => ['NameInRequest']);
+  has Manufacturer => (is => 'ro', isa => 'Str', request_name => 'manufacturer', traits => ['NameInRequest']);
+  has Memory => (is => 'ro', isa => 'Int', request_name => 'memory', traits => ['NameInRequest']);
+  has Model => (is => 'ro', isa => 'Str', request_name => 'model', traits => ['NameInRequest']);
+  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
+  has Os => (is => 'ro', isa => 'Str', request_name => 'os', traits => ['NameInRequest']);
+  has Platform => (is => 'ro', isa => 'Str', request_name => 'platform', traits => ['NameInRequest']);
+  has Radio => (is => 'ro', isa => 'Str', request_name => 'radio', traits => ['NameInRequest']);
+  has RemoteAccessEnabled => (is => 'ro', isa => 'Bool', request_name => 'remoteAccessEnabled', traits => ['NameInRequest']);
+  has Resolution => (is => 'ro', isa => 'Paws::DeviceFarm::Resolution', request_name => 'resolution', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -166,7 +166,7 @@ device.
 
 =head2 Resolution => L<Paws::DeviceFarm::Resolution>
 
-  
+  The resolution of the device.
 
 
 

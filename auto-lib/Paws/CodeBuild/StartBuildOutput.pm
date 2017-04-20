@@ -1,7 +1,7 @@
 
 package Paws::CodeBuild::StartBuildOutput;
   use Moose;
-  has Build => (is => 'ro', isa => 'Paws::CodeBuild::Build', traits => ['Unwrapped'], xmlname => 'build' );
+  has Build => (is => 'ro', isa => 'Paws::CodeBuild::Build', traits => ['NameInRequest'], request_name => 'build' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

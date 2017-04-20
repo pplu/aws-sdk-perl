@@ -1,7 +1,7 @@
 package Paws::EC2::AvailableCapacity;
   use Moose;
-  has AvailableInstanceCapacity => (is => 'ro', isa => 'ArrayRef[Paws::EC2::InstanceCapacity]', xmlname => 'availableInstanceCapacity', traits => ['Unwrapped']);
-  has AvailableVCpus => (is => 'ro', isa => 'Int', xmlname => 'availableVCpus', traits => ['Unwrapped']);
+  has AvailableInstanceCapacity => (is => 'ro', isa => 'ArrayRef[Paws::EC2::InstanceCapacity]', request_name => 'availableInstanceCapacity', traits => ['NameInRequest']);
+  has AvailableVCpus => (is => 'ro', isa => 'Int', request_name => 'availableVCpus', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

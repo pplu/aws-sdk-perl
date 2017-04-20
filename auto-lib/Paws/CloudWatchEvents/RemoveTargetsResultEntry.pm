@@ -33,28 +33,24 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudWatchE
 
 =head1 DESCRIPTION
 
-The ID of the target requested to be removed from the rule by Amazon
-CloudWatch Events.
+Represents a target that failed to be removed from a rule.
 
 =head1 ATTRIBUTES
 
 
 =head2 ErrorCode => Str
 
-  The error code representing why the target removal failed on this
-entry.
+  The error code that indicates why the target removal failed.
 
 
 =head2 ErrorMessage => Str
 
-  The error message explaining why the target removal failed on this
-entry.
+  The error message that explains why the target removal failed.
 
 
 =head2 TargetId => Str
 
-  The ID of the target requested to be removed by Amazon CloudWatch
-Events.
+  The ID of the target.
 
 
 

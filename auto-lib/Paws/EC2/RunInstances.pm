@@ -25,6 +25,7 @@ package Paws::EC2::RunInstances;
   has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'SecurityGroupId' );
   has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'SecurityGroup' );
   has SubnetId => (is => 'ro', isa => 'Str');
+  has TagSpecifications => (is => 'ro', isa => 'ArrayRef[Paws::EC2::TagSpecification]', traits => ['NameInRequest'], request_name => 'TagSpecification' );
   has UserData => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
@@ -280,6 +281,14 @@ Default: Amazon EC2 uses the default security group.
 =head2 SubnetId => Str
 
 [EC2-VPC] The ID of the subnet to launch the instance into.
+
+
+
+=head2 TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]
+
+The tags to apply to the resources during launch. You can tag instances
+and volumes. The specified tags are applied to all instances or volumes
+that are created during launch.
 
 
 

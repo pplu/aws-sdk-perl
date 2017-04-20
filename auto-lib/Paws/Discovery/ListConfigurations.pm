@@ -39,7 +39,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ConfigurationType => Str
 
-A valid configuration identified by the Discovery Service.
+A valid configuration identified by Application Discovery Service.
 
 Valid values are: C<"SERVER">, C<"PROCESS">, C<"CONNECTION">, C<"APPLICATION">
 
@@ -75,7 +75,7 @@ next set of 10.
 
 Certain filter criteria return output that can be sorted in ascending
 or descending order. For a list of output characteristics for each
-filter, see Querying Discovered Configuration Items.
+filter, see Using the ListConfigurations Action.
 
 
 

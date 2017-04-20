@@ -1,9 +1,9 @@
 package Paws::Config::ConfigStreamDeliveryInfo;
   use Moose;
-  has LastErrorCode => (is => 'ro', isa => 'Str', xmlname => 'lastErrorCode', request_name => 'lastErrorCode', traits => ['Unwrapped','NameInRequest']);
-  has LastErrorMessage => (is => 'ro', isa => 'Str', xmlname => 'lastErrorMessage', request_name => 'lastErrorMessage', traits => ['Unwrapped','NameInRequest']);
-  has LastStatus => (is => 'ro', isa => 'Str', xmlname => 'lastStatus', request_name => 'lastStatus', traits => ['Unwrapped','NameInRequest']);
-  has LastStatusChangeTime => (is => 'ro', isa => 'Str', xmlname => 'lastStatusChangeTime', request_name => 'lastStatusChangeTime', traits => ['Unwrapped','NameInRequest']);
+  has LastErrorCode => (is => 'ro', isa => 'Str', request_name => 'lastErrorCode', traits => ['NameInRequest']);
+  has LastErrorMessage => (is => 'ro', isa => 'Str', request_name => 'lastErrorMessage', traits => ['NameInRequest']);
+  has LastStatus => (is => 'ro', isa => 'Str', request_name => 'lastStatus', traits => ['NameInRequest']);
+  has LastStatusChangeTime => (is => 'ro', isa => 'Str', request_name => 'lastStatusChangeTime', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

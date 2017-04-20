@@ -1,8 +1,8 @@
 package Paws::EC2::EventInformation;
   use Moose;
-  has EventDescription => (is => 'ro', isa => 'Str', xmlname => 'eventDescription', traits => ['Unwrapped']);
-  has EventSubType => (is => 'ro', isa => 'Str', xmlname => 'eventSubType', traits => ['Unwrapped']);
-  has InstanceId => (is => 'ro', isa => 'Str', xmlname => 'instanceId', traits => ['Unwrapped']);
+  has EventDescription => (is => 'ro', isa => 'Str', request_name => 'eventDescription', traits => ['NameInRequest']);
+  has EventSubType => (is => 'ro', isa => 'Str', request_name => 'eventSubType', traits => ['NameInRequest']);
+  has InstanceId => (is => 'ro', isa => 'Str', request_name => 'instanceId', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

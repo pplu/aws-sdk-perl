@@ -1,10 +1,10 @@
 
 package Paws::ApiGateway::UsagePlanKey;
   use Moose;
-  has Id => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has Type => (is => 'ro', isa => 'Str');
-  has Value => (is => 'ro', isa => 'Str');
+  has Id => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'id');
+  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name');
+  has Type => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'type');
+  has Value => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'value');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

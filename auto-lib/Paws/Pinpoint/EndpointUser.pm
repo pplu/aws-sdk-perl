@@ -32,14 +32,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::E
 
 =head1 DESCRIPTION
 
-This class has no description
+Endpoint user specific custom userAttributes
 
 =head1 ATTRIBUTES
 
 
 =head2 UserAttributes => L<Paws::Pinpoint::MapOfListOf__string>
 
-  Custom attributesd specific to the user.
+  Custom attributes specific to the user.
 
 
 =head2 UserId => Str

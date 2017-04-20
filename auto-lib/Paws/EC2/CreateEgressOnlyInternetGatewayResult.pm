@@ -1,8 +1,8 @@
 
 package Paws::EC2::CreateEgressOnlyInternetGatewayResult;
   use Moose;
-  has ClientToken => (is => 'ro', isa => 'Str', xmlname => 'clientToken', traits => ['Unwrapped',]);
-  has EgressOnlyInternetGateway => (is => 'ro', isa => 'Paws::EC2::EgressOnlyInternetGateway', xmlname => 'egressOnlyInternetGateway', traits => ['Unwrapped',]);
+  has ClientToken => (is => 'ro', isa => 'Str', request_name => 'clientToken', traits => ['NameInRequest',]);
+  has EgressOnlyInternetGateway => (is => 'ro', isa => 'Paws::EC2::EgressOnlyInternetGateway', request_name => 'egressOnlyInternetGateway', traits => ['NameInRequest',]);
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

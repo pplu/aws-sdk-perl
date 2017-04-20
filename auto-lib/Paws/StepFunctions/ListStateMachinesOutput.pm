@@ -1,8 +1,8 @@
 
 package Paws::StepFunctions::ListStateMachinesOutput;
   use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
-  has StateMachines => (is => 'ro', isa => 'ArrayRef[Paws::StepFunctions::StateMachineListItem]', traits => ['Unwrapped'], xmlname => 'stateMachines' , required => 1);
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  has StateMachines => (is => 'ro', isa => 'ArrayRef[Paws::StepFunctions::StateMachineListItem]', traits => ['NameInRequest'], request_name => 'stateMachines' , required => 1);
 
   has _request_id => (is => 'ro', isa => 'Str');
 

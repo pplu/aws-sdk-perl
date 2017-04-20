@@ -1,10 +1,10 @@
 package Paws::CodePipeline::PipelineExecution;
   use Moose;
-  has ArtifactRevisions => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::ArtifactRevision]', xmlname => 'artifactRevisions', request_name => 'artifactRevisions', traits => ['Unwrapped','NameInRequest']);
-  has PipelineExecutionId => (is => 'ro', isa => 'Str', xmlname => 'pipelineExecutionId', request_name => 'pipelineExecutionId', traits => ['Unwrapped','NameInRequest']);
-  has PipelineName => (is => 'ro', isa => 'Str', xmlname => 'pipelineName', request_name => 'pipelineName', traits => ['Unwrapped','NameInRequest']);
-  has PipelineVersion => (is => 'ro', isa => 'Int', xmlname => 'pipelineVersion', request_name => 'pipelineVersion', traits => ['Unwrapped','NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', xmlname => 'status', request_name => 'status', traits => ['Unwrapped','NameInRequest']);
+  has ArtifactRevisions => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::ArtifactRevision]', request_name => 'artifactRevisions', traits => ['NameInRequest']);
+  has PipelineExecutionId => (is => 'ro', isa => 'Str', request_name => 'pipelineExecutionId', traits => ['NameInRequest']);
+  has PipelineName => (is => 'ro', isa => 'Str', request_name => 'pipelineName', traits => ['NameInRequest']);
+  has PipelineVersion => (is => 'ro', isa => 'Int', request_name => 'pipelineVersion', traits => ['NameInRequest']);
+  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

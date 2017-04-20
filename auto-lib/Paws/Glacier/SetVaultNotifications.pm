@@ -6,7 +6,7 @@ package Paws::Glacier::SetVaultNotifications;
   has VaultNotificationConfig => (is => 'ro', isa => 'Paws::Glacier::VaultNotificationConfig');
 
   use MooseX::ClassAttribute;
-
+  class_has _stream_param => (is => 'ro', default => 'VaultNotificationConfig');
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'SetVaultNotifications');
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/{accountId}/vaults/{vaultName}/notification-configuration');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');

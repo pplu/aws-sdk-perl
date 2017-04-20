@@ -3,6 +3,7 @@ package Paws::CloudDirectory::ListObjectAttributes;
   use Moose;
   has ConsistencyLevel => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-consistency-level' );
   has DirectoryArn => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-data-partition' , required => 1);
+  has FacetFilter => (is => 'ro', isa => 'Paws::CloudDirectory::SchemaFacet');
   has MaxResults => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
   has ObjectReference => (is => 'ro', isa => 'Paws::CloudDirectory::ObjectReference', required => 1);
@@ -54,6 +55,13 @@ information, see arns.
 
 
 
+=head2 FacetFilter => L<Paws::CloudDirectory::SchemaFacet>
+
+Used to filter the list of object attributes associated with a certain
+facet.
+
+
+
 =head2 MaxResults => Int
 
 Maximum number of items to be retrieved in a single call. This is an
@@ -63,7 +71,7 @@ approximate number.
 
 =head2 NextToken => Str
 
-Token used for pagination.
+The pagination token.
 
 
 

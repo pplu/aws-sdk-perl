@@ -1,7 +1,7 @@
 
 package Paws::ElastiCache::CacheSubnetGroupMessage;
   use Moose;
-  has CacheSubnetGroups => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::CacheSubnetGroup]', xmlname => 'CacheSubnetGroup', traits => ['Unwrapped',]);
+  has CacheSubnetGroups => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::CacheSubnetGroup]', request_name => 'CacheSubnetGroup', traits => ['NameInRequest',]);
   has Marker => (is => 'ro', isa => 'Str');
 
   has _request_id => (is => 'ro', isa => 'Str');

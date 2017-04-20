@@ -1,8 +1,8 @@
 
 package Paws::EC2::DescribeVolumesModificationsResult;
   use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', xmlname => 'nextToken', traits => ['Unwrapped',]);
-  has VolumesModifications => (is => 'ro', isa => 'ArrayRef[Paws::EC2::VolumeModification]', xmlname => 'volumeModificationSet', traits => ['Unwrapped',]);
+  has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest',]);
+  has VolumesModifications => (is => 'ro', isa => 'ArrayRef[Paws::EC2::VolumeModification]', request_name => 'volumeModificationSet', traits => ['NameInRequest',]);
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

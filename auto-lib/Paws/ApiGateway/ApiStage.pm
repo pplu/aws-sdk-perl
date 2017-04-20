@@ -1,7 +1,7 @@
 package Paws::ApiGateway::ApiStage;
   use Moose;
-  has ApiId => (is => 'ro', isa => 'Str', xmlname => 'apiId', request_name => 'apiId', traits => ['Unwrapped','NameInRequest']);
-  has Stage => (is => 'ro', isa => 'Str', xmlname => 'stage', request_name => 'stage', traits => ['Unwrapped','NameInRequest']);
+  has ApiId => (is => 'ro', isa => 'Str', request_name => 'apiId', traits => ['NameInRequest']);
+  has Stage => (is => 'ro', isa => 'Str', request_name => 'stage', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

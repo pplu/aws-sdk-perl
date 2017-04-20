@@ -1,8 +1,8 @@
 package Paws::CodeBuild::LogsLocation;
   use Moose;
-  has DeepLink => (is => 'ro', isa => 'Str', xmlname => 'deepLink', request_name => 'deepLink', traits => ['Unwrapped','NameInRequest']);
-  has GroupName => (is => 'ro', isa => 'Str', xmlname => 'groupName', request_name => 'groupName', traits => ['Unwrapped','NameInRequest']);
-  has StreamName => (is => 'ro', isa => 'Str', xmlname => 'streamName', request_name => 'streamName', traits => ['Unwrapped','NameInRequest']);
+  has DeepLink => (is => 'ro', isa => 'Str', request_name => 'deepLink', traits => ['NameInRequest']);
+  has GroupName => (is => 'ro', isa => 'Str', request_name => 'groupName', traits => ['NameInRequest']);
+  has StreamName => (is => 'ro', isa => 'Str', request_name => 'streamName', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

@@ -11,6 +11,7 @@ package Paws::Lambda::UpdateFunctionConfiguration;
   has Role => (is => 'ro', isa => 'Str');
   has Runtime => (is => 'ro', isa => 'Str');
   has Timeout => (is => 'ro', isa => 'Int');
+  has TracingConfig => (is => 'ro', isa => 'Paws::Lambda::TracingConfig');
   has VpcConfig => (is => 'ro', isa => 'Paws::Lambda::VpcConfig');
 
   use MooseX::ClassAttribute;
@@ -47,7 +48,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 DeadLetterConfig => L<Paws::Lambda::DeadLetterConfig>
 
-The parent object that contains the target Amazon Resource Name (ARN)
+The parent object that contains the target ARN (Amazon Resource Name)
 of an Amazon SQS queue or Amazon SNS topic.
 
 
@@ -117,13 +118,17 @@ when it executes your function.
 
 The runtime environment for the Lambda function.
 
-To use the Node.js runtime v4.3, set the value to "nodejs4.3". To use
-earlier runtime (v0.10.42), set the value to "nodejs".
+To use the Python runtime v3.6, set the value to "python3.6". To use
+the Python runtime v2.7, set the value to "python2.7". To use the
+Node.js runtime v6.10, set the value to "nodejs6.10". To use the
+Node.js runtime v4.3, set the value to "nodejs4.3". To use the Python
+runtime v3.6, set the value to "python3.6". To use the Python runtime
+v2.7, set the value to "python2.7".
 
 You can no longer downgrade to the v0.10.42 runtime version. This
 version will no longer be supported as of early 2017.
 
-Valid values are: C<"nodejs">, C<"nodejs4.3">, C<"java8">, C<"python2.7">, C<"dotnetcore1.0">, C<"nodejs4.3-edge">
+Valid values are: C<"nodejs">, C<"nodejs4.3">, C<"nodejs6.10">, C<"java8">, C<"python2.7">, C<"python3.6">, C<"dotnetcore1.0">, C<"nodejs4.3-edge">
 
 =head2 Timeout => Int
 
@@ -131,6 +136,12 @@ The function execution time at which AWS Lambda should terminate the
 function. Because the execution time has cost implications, we
 recommend you set this value based on your expected execution time. The
 default is 3 seconds.
+
+
+
+=head2 TracingConfig => L<Paws::Lambda::TracingConfig>
+
+The parent object that contains your function's tracing settings.
 
 
 

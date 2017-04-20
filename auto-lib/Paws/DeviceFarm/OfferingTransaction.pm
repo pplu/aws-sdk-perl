@@ -1,9 +1,9 @@
 package Paws::DeviceFarm::OfferingTransaction;
   use Moose;
-  has Cost => (is => 'ro', isa => 'Paws::DeviceFarm::MonetaryAmount', xmlname => 'cost', request_name => 'cost', traits => ['Unwrapped','NameInRequest']);
-  has CreatedOn => (is => 'ro', isa => 'Str', xmlname => 'createdOn', request_name => 'createdOn', traits => ['Unwrapped','NameInRequest']);
-  has OfferingStatus => (is => 'ro', isa => 'Paws::DeviceFarm::OfferingStatus', xmlname => 'offeringStatus', request_name => 'offeringStatus', traits => ['Unwrapped','NameInRequest']);
-  has TransactionId => (is => 'ro', isa => 'Str', xmlname => 'transactionId', request_name => 'transactionId', traits => ['Unwrapped','NameInRequest']);
+  has Cost => (is => 'ro', isa => 'Paws::DeviceFarm::MonetaryAmount', request_name => 'cost', traits => ['NameInRequest']);
+  has CreatedOn => (is => 'ro', isa => 'Str', request_name => 'createdOn', traits => ['NameInRequest']);
+  has OfferingStatus => (is => 'ro', isa => 'Paws::DeviceFarm::OfferingStatus', request_name => 'offeringStatus', traits => ['NameInRequest']);
+  has TransactionId => (is => 'ro', isa => 'Str', request_name => 'transactionId', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

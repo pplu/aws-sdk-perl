@@ -1,7 +1,7 @@
 
 package Paws::EC2::DescribeCustomerGatewaysResult;
   use Moose;
-  has CustomerGateways => (is => 'ro', isa => 'ArrayRef[Paws::EC2::CustomerGateway]', xmlname => 'customerGatewaySet', traits => ['Unwrapped',]);
+  has CustomerGateways => (is => 'ro', isa => 'ArrayRef[Paws::EC2::CustomerGateway]', request_name => 'customerGatewaySet', traits => ['NameInRequest',]);
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

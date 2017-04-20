@@ -98,6 +98,10 @@ target. The default is 200.
 
 The name of the target group.
 
+This name must be unique per region per account, can have a maximum of
+32 characters, must contain only alphanumeric characters or hyphens,
+and must not begin or end with a hyphen.
+
 
 
 =head2 B<REQUIRED> Port => Int

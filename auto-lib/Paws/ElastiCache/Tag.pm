@@ -41,12 +41,12 @@ null Value is permitted.
 
 =head2 Key => Str
 
-  The key for the tag.
+  The key for the tag. May not be null.
 
 
 =head2 Value => Str
 
-  The tag's value. May not be null.
+  The tag's value. May be null.
 
 
 

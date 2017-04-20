@@ -1,7 +1,7 @@
 package Paws::Discovery::AgentNetworkInfo;
   use Moose;
-  has IpAddress => (is => 'ro', isa => 'Str', xmlname => 'ipAddress', request_name => 'ipAddress', traits => ['Unwrapped','NameInRequest']);
-  has MacAddress => (is => 'ro', isa => 'Str', xmlname => 'macAddress', request_name => 'macAddress', traits => ['Unwrapped','NameInRequest']);
+  has IpAddress => (is => 'ro', isa => 'Str', request_name => 'ipAddress', traits => ['NameInRequest']);
+  has MacAddress => (is => 'ro', isa => 'Str', request_name => 'macAddress', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -32,19 +32,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Discovery::
 
 =head1 DESCRIPTION
 
-Network details about the host where the agent/Connector resides.
+Network details about the host where the agent/connector resides.
 
 =head1 ATTRIBUTES
 
 
 =head2 IpAddress => Str
 
-  The IP address for the host where the agent/Connector resides.
+  The IP address for the host where the agent/connector resides.
 
 
 =head2 MacAddress => Str
 
-  The MAC address for the host where the agent/Connector resides.
+  The MAC address for the host where the agent/connector resides.
 
 
 

@@ -1,8 +1,8 @@
 
 package Paws::IoT::ListPrincipalThingsResponse;
   use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
-  has Things => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
+  has Things => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'things');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

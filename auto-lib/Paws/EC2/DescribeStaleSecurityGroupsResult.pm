@@ -1,8 +1,8 @@
 
 package Paws::EC2::DescribeStaleSecurityGroupsResult;
   use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', xmlname => 'nextToken', traits => ['Unwrapped',]);
-  has StaleSecurityGroupSet => (is => 'ro', isa => 'ArrayRef[Paws::EC2::StaleSecurityGroup]', xmlname => 'staleSecurityGroupSet', traits => ['Unwrapped',]);
+  has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest',]);
+  has StaleSecurityGroupSet => (is => 'ro', isa => 'ArrayRef[Paws::EC2::StaleSecurityGroup]', request_name => 'staleSecurityGroupSet', traits => ['NameInRequest',]);
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

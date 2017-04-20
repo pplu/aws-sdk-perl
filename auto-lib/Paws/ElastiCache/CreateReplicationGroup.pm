@@ -280,7 +280,8 @@ PrimaryAvailabilityZone, ReplicaAvailabilityZones, ReplicaCount.
 
 If you're creating a Redis (cluster mode disabled) or a Redis (cluster
 mode enabled) replication group, you can use this parameter to
-configure one node group (shard) or you can omit this parameter.
+individually configure each node group (shard), or you can omit this
+parameter.
 
 
 
@@ -300,8 +301,10 @@ The number of clusters this replication group initially has.
 This parameter is not used if there is more than one node group
 (shard). You should use C<ReplicasPerNodeGroup> instead.
 
-If C<Multi-AZ> is C<enabled>, the value of this parameter must be at
-least 2.
+If C<AutomaticFailoverEnabled> is C<true>, the value of this parameter
+must be at least 2. If C<AutomaticFailoverEnabled> is C<false> you can
+omit this parameter (it will default to 1), or you can explicitly set
+it to a value between 2 and 6.
 
 The maximum permitted value for C<NumCacheClusters> is 6 (primary plus
 5 replicas).
@@ -460,10 +463,12 @@ Amazon Virtual Private Cloud (Amazon VPC).
 
 A list of Amazon Resource Names (ARN) that uniquely identify the Redis
 RDB snapshot files stored in Amazon S3. The snapshot files are used to
-populate the replication group. The Amazon S3 object name in the ARN
-cannot contain any commas. The list must match the number of node
-groups (shards) in the replication group, which means you cannot
-repartition.
+populate the new replication group. The Amazon S3 object name in the
+ARN cannot contain any commas. The new replication group will have the
+number of node groups (console: shards) specified by the parameter
+I<NumNodeGroups> or the number of node groups configured by
+I<NodeGroupConfiguration> regardless of the number of ARNs specified
+here.
 
 This parameter is only valid if the C<Engine> parameter is C<redis>.
 

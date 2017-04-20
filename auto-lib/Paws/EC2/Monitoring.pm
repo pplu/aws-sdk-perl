@@ -1,6 +1,6 @@
 package Paws::EC2::Monitoring;
   use Moose;
-  has State => (is => 'ro', isa => 'Str', xmlname => 'state', traits => ['Unwrapped']);
+  has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

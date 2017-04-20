@@ -1,7 +1,7 @@
 
 package Paws::CloudWatchLogs::TestMetricFilterResponse;
   use Moose;
-  has Matches => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatchLogs::MetricFilterMatchRecord]', traits => ['Unwrapped'], xmlname => 'matches' );
+  has Matches => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatchLogs::MetricFilterMatchRecord]', traits => ['NameInRequest'], request_name => 'matches' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

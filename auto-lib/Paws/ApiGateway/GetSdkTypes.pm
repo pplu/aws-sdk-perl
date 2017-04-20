@@ -38,13 +38,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Limit => Int
 
-The maximum number of SdkType instances to be returned.
+The maximum number of returned results per page.
 
 
 
 =head2 Position => Str
 
-The position of the last fetched element in the SdkTypes collection.
+The current pagination position in the paged result set.
 
 
 

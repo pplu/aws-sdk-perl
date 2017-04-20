@@ -253,6 +253,11 @@ package Paws::RedShift;
     my $call_object = $self->new_with_coercions('Paws::RedShift::EnableSnapshotCopy', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetClusterCredentials {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RedShift::GetClusterCredentials', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ModifyCluster {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RedShift::ModifyCluster', @_);
@@ -641,7 +646,7 @@ package Paws::RedShift;
   }
 
 
-  sub operations { qw/AuthorizeClusterSecurityGroupIngress AuthorizeSnapshotAccess CopyClusterSnapshot CreateCluster CreateClusterParameterGroup CreateClusterSecurityGroup CreateClusterSnapshot CreateClusterSubnetGroup CreateEventSubscription CreateHsmClientCertificate CreateHsmConfiguration CreateSnapshotCopyGrant CreateTags DeleteCluster DeleteClusterParameterGroup DeleteClusterSecurityGroup DeleteClusterSnapshot DeleteClusterSubnetGroup DeleteEventSubscription DeleteHsmClientCertificate DeleteHsmConfiguration DeleteSnapshotCopyGrant DeleteTags DescribeClusterParameterGroups DescribeClusterParameters DescribeClusters DescribeClusterSecurityGroups DescribeClusterSnapshots DescribeClusterSubnetGroups DescribeClusterVersions DescribeDefaultClusterParameters DescribeEventCategories DescribeEvents DescribeEventSubscriptions DescribeHsmClientCertificates DescribeHsmConfigurations DescribeLoggingStatus DescribeOrderableClusterOptions DescribeReservedNodeOfferings DescribeReservedNodes DescribeResize DescribeSnapshotCopyGrants DescribeTableRestoreStatus DescribeTags DisableLogging DisableSnapshotCopy EnableLogging EnableSnapshotCopy ModifyCluster ModifyClusterIamRoles ModifyClusterParameterGroup ModifyClusterSubnetGroup ModifyEventSubscription ModifySnapshotCopyRetentionPeriod PurchaseReservedNodeOffering RebootCluster ResetClusterParameterGroup RestoreFromClusterSnapshot RestoreTableFromClusterSnapshot RevokeClusterSecurityGroupIngress RevokeSnapshotAccess RotateEncryptionKey / }
+  sub operations { qw/AuthorizeClusterSecurityGroupIngress AuthorizeSnapshotAccess CopyClusterSnapshot CreateCluster CreateClusterParameterGroup CreateClusterSecurityGroup CreateClusterSnapshot CreateClusterSubnetGroup CreateEventSubscription CreateHsmClientCertificate CreateHsmConfiguration CreateSnapshotCopyGrant CreateTags DeleteCluster DeleteClusterParameterGroup DeleteClusterSecurityGroup DeleteClusterSnapshot DeleteClusterSubnetGroup DeleteEventSubscription DeleteHsmClientCertificate DeleteHsmConfiguration DeleteSnapshotCopyGrant DeleteTags DescribeClusterParameterGroups DescribeClusterParameters DescribeClusters DescribeClusterSecurityGroups DescribeClusterSnapshots DescribeClusterSubnetGroups DescribeClusterVersions DescribeDefaultClusterParameters DescribeEventCategories DescribeEvents DescribeEventSubscriptions DescribeHsmClientCertificates DescribeHsmConfigurations DescribeLoggingStatus DescribeOrderableClusterOptions DescribeReservedNodeOfferings DescribeReservedNodes DescribeResize DescribeSnapshotCopyGrants DescribeTableRestoreStatus DescribeTags DisableLogging DisableSnapshotCopy EnableLogging EnableSnapshotCopy GetClusterCredentials ModifyCluster ModifyClusterIamRoles ModifyClusterParameterGroup ModifyClusterSubnetGroup ModifyEventSubscription ModifySnapshotCopyRetentionPeriod PurchaseReservedNodeOffering RebootCluster ResetClusterParameterGroup RestoreFromClusterSnapshot RestoreTableFromClusterSnapshot RevokeClusterSecurityGroupIngress RevokeSnapshotAccess RotateEncryptionKey / }
 
 1;
 
@@ -1498,6 +1503,39 @@ Returns: a L<Paws::RedShift::EnableSnapshotCopyResult> instance
 
   Enables the automatic copy of snapshots from one region to another
 region for a specified cluster.
+
+
+=head2 GetClusterCredentials(ClusterIdentifier => Str, DbUser => Str, [AutoCreate => Bool, DbGroups => ArrayRef[Str|Undef], DbName => Str, DurationSeconds => Int])
+
+Each argument is described in detail in: L<Paws::RedShift::GetClusterCredentials>
+
+Returns: a L<Paws::RedShift::ClusterCredentials> instance
+
+  Returns a database user name and temporary password with temporary
+authorization to log in to an Amazon Redshift database. The action
+returns the database user name prefixed with C<IAM:> if C<AutoCreate>
+is C<False> or C<IAMA:> if C<AutoCreate> is C<True>. You can optionally
+specify one or more database user groups that the user will join at log
+in. By default, the temporary credentials expire in 900 seconds. You
+can optionally specify a duration between 900 seconds (15 minutes) and
+3600 seconds (60 minutes). For more information, see Generating IAM
+Database User Credentials in the Amazon Redshift Cluster Management
+Guide.
+
+The IAM user or role that executes GetClusterCredentials must have an
+IAM policy attached that allows the C<redshift:GetClusterCredentials>
+action with access to the C<dbuser> resource on the cluster. The user
+name specified for C<dbuser> in the IAM policy and the user name
+specified for the C<DbUser> parameter must match.
+
+If the C<DbGroups> parameter is specified, the IAM policy must allow
+the C<redshift:JoinGroup> action with access to the listed C<dbgroups>.
+
+In addition, if the C<AutoCreate> parameter is set to C<True>, then the
+policy must include the C<redshift:CreateClusterUser> privilege.
+
+If the C<DbName> parameter is specified, the IAM policy must allow
+access to the resource C<dbname> for the specified database name.
 
 
 =head2 ModifyCluster(ClusterIdentifier => Str, [AllowVersionUpgrade => Bool, AutomatedSnapshotRetentionPeriod => Int, ClusterParameterGroupName => Str, ClusterSecurityGroups => ArrayRef[Str|Undef], ClusterType => Str, ClusterVersion => Str, ElasticIp => Str, EnhancedVpcRouting => Bool, HsmClientCertificateIdentifier => Str, HsmConfigurationIdentifier => Str, MasterUserPassword => Str, NewClusterIdentifier => Str, NodeType => Str, NumberOfNodes => Int, PreferredMaintenanceWindow => Str, PubliclyAccessible => Bool, VpcSecurityGroupIds => ArrayRef[Str|Undef]])

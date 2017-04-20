@@ -1,11 +1,11 @@
 package Paws::Inspector::AssessmentRunNotification;
   use Moose;
-  has Date => (is => 'ro', isa => 'Str', xmlname => 'date', request_name => 'date', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has Error => (is => 'ro', isa => 'Bool', xmlname => 'error', request_name => 'error', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has Event => (is => 'ro', isa => 'Str', xmlname => 'event', request_name => 'event', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has Message => (is => 'ro', isa => 'Str', xmlname => 'message', request_name => 'message', traits => ['Unwrapped','NameInRequest']);
-  has SnsPublishStatusCode => (is => 'ro', isa => 'Str', xmlname => 'snsPublishStatusCode', request_name => 'snsPublishStatusCode', traits => ['Unwrapped','NameInRequest']);
-  has SnsTopicArn => (is => 'ro', isa => 'Str', xmlname => 'snsTopicArn', request_name => 'snsTopicArn', traits => ['Unwrapped','NameInRequest']);
+  has Date => (is => 'ro', isa => 'Str', request_name => 'date', traits => ['NameInRequest'], required => 1);
+  has Error => (is => 'ro', isa => 'Bool', request_name => 'error', traits => ['NameInRequest'], required => 1);
+  has Event => (is => 'ro', isa => 'Str', request_name => 'event', traits => ['NameInRequest'], required => 1);
+  has Message => (is => 'ro', isa => 'Str', request_name => 'message', traits => ['NameInRequest']);
+  has SnsPublishStatusCode => (is => 'ro', isa => 'Str', request_name => 'snsPublishStatusCode', traits => ['NameInRequest']);
+  has SnsTopicArn => (is => 'ro', isa => 'Str', request_name => 'snsTopicArn', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

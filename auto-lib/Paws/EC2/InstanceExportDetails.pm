@@ -1,7 +1,7 @@
 package Paws::EC2::InstanceExportDetails;
   use Moose;
-  has InstanceId => (is => 'ro', isa => 'Str', xmlname => 'instanceId', traits => ['Unwrapped']);
-  has TargetEnvironment => (is => 'ro', isa => 'Str', xmlname => 'targetEnvironment', traits => ['Unwrapped']);
+  has InstanceId => (is => 'ro', isa => 'Str', request_name => 'instanceId', traits => ['NameInRequest']);
+  has TargetEnvironment => (is => 'ro', isa => 'Str', request_name => 'targetEnvironment', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

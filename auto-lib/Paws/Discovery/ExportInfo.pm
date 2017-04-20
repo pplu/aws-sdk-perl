@@ -1,10 +1,10 @@
 package Paws::Discovery::ExportInfo;
   use Moose;
-  has ConfigurationsDownloadUrl => (is => 'ro', isa => 'Str', xmlname => 'configurationsDownloadUrl', request_name => 'configurationsDownloadUrl', traits => ['Unwrapped','NameInRequest']);
-  has ExportId => (is => 'ro', isa => 'Str', xmlname => 'exportId', request_name => 'exportId', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has ExportRequestTime => (is => 'ro', isa => 'Str', xmlname => 'exportRequestTime', request_name => 'exportRequestTime', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has ExportStatus => (is => 'ro', isa => 'Str', xmlname => 'exportStatus', request_name => 'exportStatus', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has StatusMessage => (is => 'ro', isa => 'Str', xmlname => 'statusMessage', request_name => 'statusMessage', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has ConfigurationsDownloadUrl => (is => 'ro', isa => 'Str', request_name => 'configurationsDownloadUrl', traits => ['NameInRequest']);
+  has ExportId => (is => 'ro', isa => 'Str', request_name => 'exportId', traits => ['NameInRequest'], required => 1);
+  has ExportRequestTime => (is => 'ro', isa => 'Str', request_name => 'exportRequestTime', traits => ['NameInRequest'], required => 1);
+  has ExportStatus => (is => 'ro', isa => 'Str', request_name => 'exportStatus', traits => ['NameInRequest'], required => 1);
+  has StatusMessage => (is => 'ro', isa => 'Str', request_name => 'statusMessage', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -54,7 +54,7 @@ data. The URL is displayed only if the export succeeded.
 
 =head2 B<REQUIRED> ExportRequestTime => Str
 
-  The time the configuration data export was initiated.
+  The time that the configuration data export was initiated.
 
 
 =head2 B<REQUIRED> ExportStatus => Str

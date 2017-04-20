@@ -67,7 +67,7 @@ The name of queried API keys.
 
 =head2 Position => Str
 
-The position of the current ApiKeys resource to get information about.
+The current pagination position in the paged result set.
 
 
 

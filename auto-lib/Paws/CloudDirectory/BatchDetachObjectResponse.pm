@@ -1,6 +1,6 @@
 package Paws::CloudDirectory::BatchDetachObjectResponse;
   use Moose;
-  has DetachedObjectIdentifier => (is => 'ro', isa => 'Str', xmlname => 'detachedObjectIdentifier', request_name => 'detachedObjectIdentifier', traits => ['Unwrapped','NameInRequest']);
+  has DetachedObjectIdentifier => (is => 'ro', isa => 'Str', request_name => 'detachedObjectIdentifier', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -31,14 +31,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudDirect
 
 =head1 DESCRIPTION
 
-Represents the output of a DetachObject response operation.
+Represents the output of a C<DetachObject> response operation.
 
 =head1 ATTRIBUTES
 
 
 =head2 DetachedObjectIdentifier => Str
 
-  The ObjectIdentifier of the detached object.
+  The C<ObjectIdentifier> of the detached object.
 
 
 

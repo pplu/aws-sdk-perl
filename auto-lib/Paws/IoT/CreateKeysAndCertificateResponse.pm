@@ -1,10 +1,10 @@
 
 package Paws::IoT::CreateKeysAndCertificateResponse;
   use Moose;
-  has CertificateArn => (is => 'ro', isa => 'Str');
-  has CertificateId => (is => 'ro', isa => 'Str');
-  has CertificatePem => (is => 'ro', isa => 'Str');
-  has KeyPair => (is => 'ro', isa => 'Paws::IoT::KeyPair');
+  has CertificateArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'certificateArn');
+  has CertificateId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'certificateId');
+  has CertificatePem => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'certificatePem');
+  has KeyPair => (is => 'ro', isa => 'Paws::IoT::KeyPair', traits => ['NameInRequest'], request_name => 'keyPair');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

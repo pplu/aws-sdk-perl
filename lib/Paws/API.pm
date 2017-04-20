@@ -1,10 +1,4 @@
-package Paws::API::Attribute::Trait::Unwrapped;
-  use Moose::Role;
-  use Moose::Util;
-  Moose::Util::meta_attribute_alias('Unwrapped');
-  has xmlname => (is => 'ro', isa => 'Str');
-
-package Paws::Net::Caller::Attribute::Trait::NameInRequest;
+package Paws::API::Attribute::Trait::NameInRequest;
   use Moose::Role;
   use Moose::Util;
   Moose::Util::meta_attribute_alias('NameInRequest');
@@ -33,4 +27,9 @@ package Paws::API::Attribute::Trait::ParamInURI;
   Moose::Util::meta_attribute_alias('ParamInURI');
   has uri_name => (is => 'ro', isa => 'Str');
 
+package Paws::API::Attribute::Trait::ParamInHeaders;
+  use Moose::Role;
+  use Moose::Util;
+  Moose::Util::meta_attribute_alias('ParamInHeaders');
+  has header_prefix => (is => 'ro', isa => 'Str');
 1;

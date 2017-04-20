@@ -1,7 +1,7 @@
 
 package Paws::DirectConnect::VirtualGateways;
   use Moose;
-  has VirtualGateways => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::VirtualGateway]', traits => ['Unwrapped'], xmlname => 'virtualGateways' );
+  has VirtualGateways => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::VirtualGateway]', traits => ['NameInRequest'], request_name => 'virtualGateways' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

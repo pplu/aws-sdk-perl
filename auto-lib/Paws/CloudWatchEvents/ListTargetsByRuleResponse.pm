@@ -17,12 +17,13 @@ Paws::CloudWatchEvents::ListTargetsByRuleResponse
 
 =head2 NextToken => Str
 
-Indicates that there are additional results to retrieve.
+Indicates whether there are additional results to retrieve. If there
+are no more results, the value is null.
 
 
 =head2 Targets => ArrayRef[L<Paws::CloudWatchEvents::Target>]
 
-Lists the targets assigned to the rule.
+The targets assigned to the rule.
 
 
 =head2 _request_id => Str

@@ -1,13 +1,13 @@
 package Paws::SMS::ReplicationRun;
   use Moose;
-  has AmiId => (is => 'ro', isa => 'Str', xmlname => 'amiId', request_name => 'amiId', traits => ['Unwrapped','NameInRequest']);
-  has CompletedTime => (is => 'ro', isa => 'Str', xmlname => 'completedTime', request_name => 'completedTime', traits => ['Unwrapped','NameInRequest']);
-  has Description => (is => 'ro', isa => 'Str', xmlname => 'description', request_name => 'description', traits => ['Unwrapped','NameInRequest']);
-  has ReplicationRunId => (is => 'ro', isa => 'Str', xmlname => 'replicationRunId', request_name => 'replicationRunId', traits => ['Unwrapped','NameInRequest']);
-  has ScheduledStartTime => (is => 'ro', isa => 'Str', xmlname => 'scheduledStartTime', request_name => 'scheduledStartTime', traits => ['Unwrapped','NameInRequest']);
-  has State => (is => 'ro', isa => 'Str', xmlname => 'state', request_name => 'state', traits => ['Unwrapped','NameInRequest']);
-  has StatusMessage => (is => 'ro', isa => 'Str', xmlname => 'statusMessage', request_name => 'statusMessage', traits => ['Unwrapped','NameInRequest']);
-  has Type => (is => 'ro', isa => 'Str', xmlname => 'type', request_name => 'type', traits => ['Unwrapped','NameInRequest']);
+  has AmiId => (is => 'ro', isa => 'Str', request_name => 'amiId', traits => ['NameInRequest']);
+  has CompletedTime => (is => 'ro', isa => 'Str', request_name => 'completedTime', traits => ['NameInRequest']);
+  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
+  has ReplicationRunId => (is => 'ro', isa => 'Str', request_name => 'replicationRunId', traits => ['NameInRequest']);
+  has ScheduledStartTime => (is => 'ro', isa => 'Str', request_name => 'scheduledStartTime', traits => ['NameInRequest']);
+  has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
+  has StatusMessage => (is => 'ro', isa => 'Str', request_name => 'statusMessage', traits => ['NameInRequest']);
+  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

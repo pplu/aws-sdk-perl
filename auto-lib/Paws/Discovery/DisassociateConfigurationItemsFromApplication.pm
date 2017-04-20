@@ -36,14 +36,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ApplicationConfigurationId => Str
 
-Configuration ID of an application from which each item will be
+Configuration ID of an application from which each item is
 disassociated.
 
 
 
 =head2 B<REQUIRED> ConfigurationIds => ArrayRef[Str|Undef]
 
-Configuration ID of each item be be disassociated from an application.
+Configuration ID of each item to be disassociated from an application.
 
 
 

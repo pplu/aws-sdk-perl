@@ -1,7 +1,7 @@
 
 package Paws::Health::DescribeEntityAggregatesResponse;
   use Moose;
-  has EntityAggregates => (is => 'ro', isa => 'ArrayRef[Paws::Health::EntityAggregate]', traits => ['Unwrapped'], xmlname => 'entityAggregates' );
+  has EntityAggregates => (is => 'ro', isa => 'ArrayRef[Paws::Health::EntityAggregate]', traits => ['NameInRequest'], request_name => 'entityAggregates' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

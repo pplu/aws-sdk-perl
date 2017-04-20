@@ -1,18 +1,18 @@
 
 package Paws::ApiGateway::Stage;
   use Moose;
-  has CacheClusterEnabled => (is => 'ro', isa => 'Bool');
-  has CacheClusterSize => (is => 'ro', isa => 'Str');
-  has CacheClusterStatus => (is => 'ro', isa => 'Str');
-  has ClientCertificateId => (is => 'ro', isa => 'Str');
-  has CreatedDate => (is => 'ro', isa => 'Str');
-  has DeploymentId => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has DocumentationVersion => (is => 'ro', isa => 'Str');
-  has LastUpdatedDate => (is => 'ro', isa => 'Str');
-  has MethodSettings => (is => 'ro', isa => 'Paws::ApiGateway::MapOfMethodSettings');
-  has StageName => (is => 'ro', isa => 'Str');
-  has Variables => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString');
+  has CacheClusterEnabled => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'cacheClusterEnabled');
+  has CacheClusterSize => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cacheClusterSize');
+  has CacheClusterStatus => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cacheClusterStatus');
+  has ClientCertificateId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientCertificateId');
+  has CreatedDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'createdDate');
+  has DeploymentId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'deploymentId');
+  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
+  has DocumentationVersion => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'documentationVersion');
+  has LastUpdatedDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'lastUpdatedDate');
+  has MethodSettings => (is => 'ro', isa => 'Paws::ApiGateway::MapOfMethodSettings', traits => ['NameInRequest'], request_name => 'methodSettings');
+  has StageName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'stageName');
+  has Variables => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['NameInRequest'], request_name => 'variables');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;
@@ -48,7 +48,7 @@ The identifier of a client certificate for an API stage.
 
 =head2 CreatedDate => Str
 
-The date and time that the stage was created, in ISO 8601 format.
+The timestamp when the stage was created.
 
 
 =head2 DeploymentId => Str
@@ -68,8 +68,7 @@ The version of the associated API documentation.
 
 =head2 LastUpdatedDate => Str
 
-The date and time that information about the stage was last updated, in
-ISO 8601 format.
+The timestamp when the stage last updated.
 
 
 =head2 MethodSettings => L<Paws::ApiGateway::MapOfMethodSettings>

@@ -1,8 +1,8 @@
 
 package Paws::SimpleWorkflow::ActivityTypeDetail;
   use Moose;
-  has Configuration => (is => 'ro', isa => 'Paws::SimpleWorkflow::ActivityTypeConfiguration', traits => ['Unwrapped'], xmlname => 'configuration' , required => 1);
-  has TypeInfo => (is => 'ro', isa => 'Paws::SimpleWorkflow::ActivityTypeInfo', traits => ['Unwrapped'], xmlname => 'typeInfo' , required => 1);
+  has Configuration => (is => 'ro', isa => 'Paws::SimpleWorkflow::ActivityTypeConfiguration', traits => ['NameInRequest'], request_name => 'configuration' , required => 1);
+  has TypeInfo => (is => 'ro', isa => 'Paws::SimpleWorkflow::ActivityTypeInfo', traits => ['NameInRequest'], request_name => 'typeInfo' , required => 1);
 
   has _request_id => (is => 'ro', isa => 'Str');
 

@@ -15,6 +15,7 @@ package Paws::Lambda::FunctionConfiguration;
   has Role => (is => 'ro', isa => 'Str');
   has Runtime => (is => 'ro', isa => 'Str');
   has Timeout => (is => 'ro', isa => 'Int');
+  has TracingConfig => (is => 'ro', isa => 'Paws::Lambda::TracingConfigResponse');
   has Version => (is => 'ro', isa => 'Str');
   has VpcConfig => (is => 'ro', isa => 'Paws::Lambda::VpcConfigResponse');
 
@@ -42,7 +43,7 @@ The size, in bytes, of the function .zip file you uploaded.
 
 =head2 DeadLetterConfig => L<Paws::Lambda::DeadLetterConfig>
 
-The parent object that contains the target Amazon Resource Name (ARN)
+The parent object that contains the target ARN (Amazon Resource Name)
 of an Amazon SQS queue or Amazon SNS topic.
 
 
@@ -64,7 +65,9 @@ The Amazon Resource Name (ARN) assigned to the function.
 
 =head2 FunctionName => Str
 
-The name of the function.
+The name of the function. Note that the length constraint applies only
+to the ARN. If you specify only the function name, it is limited to 64
+characters in length.
 
 
 =head2 Handler => Str
@@ -101,16 +104,18 @@ resources.
 
 The runtime environment for the Lambda function.
 
-To use the Node.js runtime v4.3, set the value to "nodejs4.3". To use
-earlier runtime (v0.10.42), set the value to "nodejs".
-
-Valid values are: C<"nodejs">, C<"nodejs4.3">, C<"java8">, C<"python2.7">, C<"dotnetcore1.0">, C<"nodejs4.3-edge">
+Valid values are: C<"nodejs">, C<"nodejs4.3">, C<"nodejs6.10">, C<"java8">, C<"python2.7">, C<"python3.6">, C<"dotnetcore1.0">, C<"nodejs4.3-edge">
 =head2 Timeout => Int
 
 The function execution time at which Lambda should terminate the
 function. Because the execution time has cost implications, we
 recommend you set this value based on your expected execution time. The
 default is 3 seconds.
+
+
+=head2 TracingConfig => L<Paws::Lambda::TracingConfigResponse>
+
+The parent object that contains your function's tracing settings.
 
 
 =head2 Version => Str

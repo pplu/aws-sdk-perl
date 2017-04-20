@@ -1,7 +1,7 @@
 
 package Paws::DeviceFarm::GetRemoteAccessSessionResult;
   use Moose;
-  has RemoteAccessSession => (is => 'ro', isa => 'Paws::DeviceFarm::RemoteAccessSession', traits => ['Unwrapped'], xmlname => 'remoteAccessSession' );
+  has RemoteAccessSession => (is => 'ro', isa => 'Paws::DeviceFarm::RemoteAccessSession', traits => ['NameInRequest'], request_name => 'remoteAccessSession' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

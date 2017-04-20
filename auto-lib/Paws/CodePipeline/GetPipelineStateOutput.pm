@@ -1,11 +1,11 @@
 
 package Paws::CodePipeline::GetPipelineStateOutput;
   use Moose;
-  has Created => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'created' );
-  has PipelineName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'pipelineName' );
-  has PipelineVersion => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => 'pipelineVersion' );
-  has StageStates => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::StageState]', traits => ['Unwrapped'], xmlname => 'stageStates' );
-  has Updated => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'updated' );
+  has Created => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'created' );
+  has PipelineName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'pipelineName' );
+  has PipelineVersion => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'pipelineVersion' );
+  has StageStates => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::StageState]', traits => ['NameInRequest'], request_name => 'stageStates' );
+  has Updated => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'updated' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 

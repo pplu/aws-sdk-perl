@@ -1,8 +1,8 @@
 
 package Paws::Discovery::DescribeExportConfigurationsResponse;
   use Moose;
-  has ExportsInfo => (is => 'ro', isa => 'ArrayRef[Paws::Discovery::ExportInfo]', traits => ['Unwrapped'], xmlname => 'exportsInfo' );
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
+  has ExportsInfo => (is => 'ro', isa => 'ArrayRef[Paws::Discovery::ExportInfo]', traits => ['NameInRequest'], request_name => 'exportsInfo' );
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 
@@ -24,9 +24,9 @@ CSV file.
 
 =head2 NextToken => Str
 
-A token to get the next set of results. For example, if you specified
-100 IDs for C<DescribeExportConfigurationsRequest$exportIds> but set
-C<DescribeExportConfigurationsRequest$maxResults> to 10, you will get
+A token to get the next set of results. For example, if you specify 100
+IDs for C<DescribeExportConfigurationsRequest$exportIds> but set
+C<DescribeExportConfigurationsRequest$maxResults> to 10, you get
 results in a set of 10. Use the token in the query to get the next set
 of 10.
 

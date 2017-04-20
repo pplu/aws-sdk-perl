@@ -1,9 +1,9 @@
 package Paws::CloudSearchDomain::Hits;
   use Moose;
-  has Cursor => (is => 'ro', isa => 'Str', xmlname => 'cursor', request_name => 'cursor', traits => ['Unwrapped','NameInRequest']);
-  has Found => (is => 'ro', isa => 'Int', xmlname => 'found', request_name => 'found', traits => ['Unwrapped','NameInRequest']);
-  has Hit => (is => 'ro', isa => 'ArrayRef[Paws::CloudSearchDomain::Hit]', xmlname => 'hit', request_name => 'hit', traits => ['Unwrapped','NameInRequest']);
-  has Start => (is => 'ro', isa => 'Int', xmlname => 'start', request_name => 'start', traits => ['Unwrapped','NameInRequest']);
+  has Cursor => (is => 'ro', isa => 'Str', request_name => 'cursor', traits => ['NameInRequest']);
+  has Found => (is => 'ro', isa => 'Int', request_name => 'found', traits => ['NameInRequest']);
+  has Hit => (is => 'ro', isa => 'ArrayRef[Paws::CloudSearchDomain::Hit]', request_name => 'hit', traits => ['NameInRequest']);
+  has Start => (is => 'ro', isa => 'Int', request_name => 'start', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###

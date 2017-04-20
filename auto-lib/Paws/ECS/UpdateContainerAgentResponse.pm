@@ -1,7 +1,7 @@
 
 package Paws::ECS::UpdateContainerAgentResponse;
   use Moose;
-  has ContainerInstance => (is => 'ro', isa => 'Paws::ECS::ContainerInstance', traits => ['Unwrapped'], xmlname => 'containerInstance' );
+  has ContainerInstance => (is => 'ro', isa => 'Paws::ECS::ContainerInstance', traits => ['NameInRequest'], request_name => 'containerInstance' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 
