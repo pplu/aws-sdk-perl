@@ -1,7 +1,9 @@
 package Paws::API::EndpointResolver;
   use Moose::Role;
   use URI::Template;
+  use URI;
   use Paws::Exception;
+  use Moose::Util::TypeConstraints;
 
   has region => (is => 'rw', isa => 'Str|Undef');
   requires 'service';
@@ -16,7 +18,7 @@ package Paws::API::EndpointResolver;
   );
 
   has _region_for_signature => (
-    is => 'rw', 
+    is => 'rw',
     isa => 'Str', 
     lazy => 1,
     init_arg => undef, 
@@ -26,13 +28,29 @@ package Paws::API::EndpointResolver;
     }
   );
 
+  subtype 'Paws::EndpointURL',
+       as 'URI';
+
+  coerce 'Paws::EndpointURL',
+    from 'Str',
+     via { URI->new($_); };
+
+  has endpoint => (
+    is => 'ro',
+    isa => 'Paws::EndpointURL',
+    lazy => 1,
+    coerce => 1,
+    default => sub {
+      shift->_endpoint_info->{ url };
+    }
+  );
 
   has endpoint_host => (
     is => 'ro',
     isa => 'Str',
     lazy => 1,
     default => sub {
-      shift->_endpoint_info->{ url }->host;
+      shift->endpoint->host;
     }
   ); 
 
@@ -41,7 +59,7 @@ package Paws::API::EndpointResolver;
     isa => 'Str',
     lazy => 1,
     default => sub {
-      shift->_endpoint_info->{ url }->as_string;
+      shift->endpoint->as_string;
     }
   ); 
 
