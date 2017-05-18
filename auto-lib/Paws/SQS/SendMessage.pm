@@ -40,11 +40,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 DelaySeconds => Int
 
-The number of seconds to delay a specific message. Valid values: 0 to
-900. Maximum: 15 minutes. Messages with a positive C<DelaySeconds>
-value become available for processing after the delay period is
-finished. If you don't specify a value, the default value for the queue
-applies.
+The length of time, in seconds, for which to delay a specific message.
+Valid values: 0 to 900. Maximum: 15 minutes. Messages with a positive
+C<DelaySeconds> value become available for processing after the delay
+period is finished. If you don't specify a value, the default value for
+the queue applies.
 
 When you set C<FifoQueue>, you can't set C<DelaySeconds> per message.
 You can set this parameter only on a queue level.
@@ -63,39 +63,14 @@ I<Amazon SQS Developer Guide>.
 
 The message to send. The maximum string size is 256 KB.
 
-The following list shows the characters (in Unicode) that are allowed
-in your message, according to the W3C XML specification:
+A message can include only XML, JSON, and unformatted text. The
+following Unicode characters are allowed:
 
-=over
+C<#x9> | C<#xA> | C<#xD> | C<#x20> to C<#xD7FF> | C<#xE000> to
+C<#xFFFD> | C<#x10000> to C<#x10FFFF>
 
-=item *
-
-C<#x9>
-
-=item *
-
-C<#xA>
-
-=item *
-
-C<#xD>
-
-=item *
-
-C<#x20> to C<#xD7FF>
-
-=item *
-
-C<#xE000> to C<#xFFFD>
-
-=item *
-
-C<#x10000> to C<#x10FFFF>
-
-=back
-
-For more information, see RFC1321. If you send any characters that
-aren't included in this list, your request is rejected.
+Any characters not included in this list will be rejected. For more
+information, see the W3C specification for characters.
 
 
 
@@ -146,11 +121,6 @@ C<MessageDeduplicationId> overrides the generated one.
 When C<ContentBasedDeduplication> is in effect, messages with identical
 content sent within the deduplication interval are treated as
 duplicates and only one copy of the message is delivered.
-
-=item *
-
-You can also use C<ContentBasedDeduplication> for messages with
-identical content to be treated as duplicates.
 
 =item *
 
@@ -215,6 +185,9 @@ C<(!"#$%&'()*+,-./:;E<lt>=E<gt>?@[\]^_`{|}~)>.
 For best practices of using C<MessageGroupId>, see Using the
 MessageGroupId Property in the I<Amazon Simple Queue Service Developer
 Guide>.
+
+C<MessageGroupId> is required for FIFO queues. You can't use it for
+Standard queues.
 
 
 

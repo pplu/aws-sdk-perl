@@ -37,7 +37,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SQS::Messag
 
 The user-specified message attribute value. For string data types, the
 C<Value> attribute has the same restrictions on the content as the
-message body. For more information, see C< SendMessage >.
+message body. For more information, see C< SendMessage.>
 
 C<Name>, C<type>, C<value> and the message body must not be empty or
 null. All parts of the message attribute, including C<Name>, C<Type>,

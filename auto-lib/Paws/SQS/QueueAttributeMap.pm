@@ -14,6 +14,8 @@ package Paws::SQS::QueueAttributeMap;
   has CreatedTimestamp => (is => 'ro', isa => 'Str');
   has DelaySeconds => (is => 'ro', isa => 'Str');
   has FifoQueue => (is => 'ro', isa => 'Str');
+  has KmsDataKeyReusePeriodSeconds => (is => 'ro', isa => 'Str');
+  has KmsMasterKeyId => (is => 'ro', isa => 'Str');
   has LastModifiedTimestamp => (is => 'ro', isa => 'Str');
   has MaximumMessageSize => (is => 'ro', isa => 'Str');
   has MessageRetentionPeriod => (is => 'ro', isa => 'Str');
@@ -79,6 +81,12 @@ This class has no description
 
 
 =head2 FifoQueue => Str
+
+
+=head2 KmsDataKeyReusePeriodSeconds => Str
+
+
+=head2 KmsMasterKeyId => Str
 
 
 =head2 LastModifiedTimestamp => Str

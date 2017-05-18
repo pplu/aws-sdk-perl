@@ -326,7 +326,7 @@ Each argument is described in detail in: L<Paws::SQS::ChangeMessageVisibilityBat
 Returns: a L<Paws::SQS::ChangeMessageVisibilityBatchResult> instance
 
   Changes the visibility timeout of multiple messages. This is a batch
-version of C< ChangeMessageVisibility >. The result of the action on
+version of C< ChangeMessageVisibility.> The result of the action on
 each message is reported individually in the response. You can send up
 to 10 C< ChangeMessageVisibility > requests with each
 C<ChangeMessageVisibilityBatch> action.
@@ -350,9 +350,8 @@ Each argument is described in detail in: L<Paws::SQS::CreateQueue>
 
 Returns: a L<Paws::SQS::CreateQueueResult> instance
 
-  Creates a new standard or FIFO queue or returns the URL of an existing
-queue. You can pass one or more attributes in the request. Keep the
-following caveats in mind:
+  Creates a new standard or FIFO queue. You can pass one or more
+attributes in the request. Keep the following caveats in mind:
 
 =over
 
@@ -434,7 +433,7 @@ when you use the C<DeleteMessage> action, the request succeeds, but the
 message might not be deleted.
 
 For standard queues, it is possible to receive a message even after you
-deleting it. This might happen on rare occasions if one of the servers
+delete it. This might happen on rare occasions if one of the servers
 storing a copy of the message is unavailable when you send the request
 to delete the message. The copy remains on the server and might be
 returned to you on a subsequent receive request. You should ensure that
@@ -449,7 +448,7 @@ Each argument is described in detail in: L<Paws::SQS::DeleteMessageBatch>
 Returns: a L<Paws::SQS::DeleteMessageBatchResult> instance
 
   Deletes up to ten messages from the specified queue. This is a batch
-version of C< DeleteMessage >. The result of the action on each message
+version of C< DeleteMessage.> The result of the action on each message
 is reported individually in the response.
 
 Because the batch request can result in a combination of successful and
@@ -494,6 +493,9 @@ Each argument is described in detail in: L<Paws::SQS::GetQueueAttributes>
 Returns: a L<Paws::SQS::GetQueueAttributesResult> instance
 
   Gets attributes for the specified queue.
+
+To determine whether a queue is FIFO, you can check whether
+C<QueueName> ends with the C<.fifo> suffix.
 
 Some actions take lists of parameters. These lists are specified using
 the C<param.n> notation. Values of C<n> are integers starting from 1.
@@ -595,7 +597,8 @@ The message body.
 
 =item *
 
-An MD5 digest of the message body. For information on MD5, see RFC1321.
+An MD5 digest of the message body. For information about MD5, see
+RFC1321.
 
 =item *
 
@@ -654,39 +657,14 @@ Returns: a L<Paws::SQS::SendMessageResult> instance
 
   Delivers a message to the specified queue.
 
-The following list shows the characters (in Unicode) that are allowed
-in your message, according to the W3C XML specification:
+A message can include only XML, JSON, and unformatted text. The
+following Unicode characters are allowed:
 
-=over
+C<#x9> | C<#xA> | C<#xD> | C<#x20> to C<#xD7FF> | C<#xE000> to
+C<#xFFFD> | C<#x10000> to C<#x10FFFF>
 
-=item *
-
-C<#x9>
-
-=item *
-
-C<#xA>
-
-=item *
-
-C<#xD>
-
-=item *
-
-C<#x20> to C<#xD7FF>
-
-=item *
-
-C<#xE000> to C<#xFFFD>
-
-=item *
-
-C<#x10000> to C<#x10FFFF>
-
-=back
-
-For more information, see RFC1321. If you send any characters that
-aren't included in this list, your request is rejected.
+Any characters not included in this list will be rejected. For more
+information, see the W3C specification for characters.
 
 
 =head2 SendMessageBatch(Entries => ArrayRef[L<Paws::SQS::SendMessageBatchRequestEntry>], QueueUrl => Str)
@@ -696,7 +674,7 @@ Each argument is described in detail in: L<Paws::SQS::SendMessageBatch>
 Returns: a L<Paws::SQS::SendMessageBatchResult> instance
 
   Delivers up to ten messages to the specified queue. This is a batch
-version of C< SendMessage >. For a FIFO queue, multiple messages within
+version of C< SendMessage.> For a FIFO queue, multiple messages within
 a single batch are enqueued in the order they are sent.
 
 The result of sending each message is reported individually in the
@@ -708,39 +686,14 @@ The maximum allowed individual message size and the maximum total
 payload size (the sum of the individual lengths of all of the batched
 messages) are both 256 KB (262,144 bytes).
 
-The following list shows the characters (in Unicode) that are allowed
-in your message, according to the W3C XML specification:
+A message can include only XML, JSON, and unformatted text. The
+following Unicode characters are allowed:
 
-=over
+C<#x9> | C<#xA> | C<#xD> | C<#x20> to C<#xD7FF> | C<#xE000> to
+C<#xFFFD> | C<#x10000> to C<#x10FFFF>
 
-=item *
-
-C<#x9>
-
-=item *
-
-C<#xA>
-
-=item *
-
-C<#xD>
-
-=item *
-
-C<#x20> to C<#xD7FF>
-
-=item *
-
-C<#xE000> to C<#xFFFD>
-
-=item *
-
-C<#x10000> to C<#x10FFFF>
-
-=back
-
-For more information, see RFC1321. If you send any characters that
-aren't included in this list, your request is rejected.
+Any characters not included in this list will be rejected. For more
+information, see the W3C specification for characters.
 
 If you don't specify the C<DelaySeconds> parameter for an entry, Amazon
 SQS uses the default value for the queue.

@@ -89,8 +89,8 @@ can contain before Amazon SQS rejects it.
 
 =item *
 
-C<MessageRetentionPeriod> - Returns the number of seconds for which
-Amazon SQS retains a message.
+C<MessageRetentionPeriod> - Returns the length of time, in seconds, for
+which Amazon SQS retains a message.
 
 =item *
 
@@ -102,8 +102,9 @@ C<QueueArn> - Returns the Amazon resource name (ARN) of the queue.
 
 =item *
 
-C<ReceiveMessageWaitTimeSeconds> - Returns the number of seconds for
-which the C<ReceiveMessage> action waits for a message to arrive.
+C<ReceiveMessageWaitTimeSeconds> - Returns the length of time, in
+seconds, for which the C<ReceiveMessage> action waits for a message to
+arrive.
 
 =item *
 
@@ -120,6 +121,24 @@ Timeout in the I<Amazon SQS Developer Guide>.
 
 =back
 
+The following attributes apply only to server-side-encryption:
+
+=over
+
+=item *
+
+C<KmsMasterKeyId> - Returns the ID of an AWS-managed customer master
+key (CMK) for Amazon SQS or a custom CMK. For more information, see Key
+Terms.
+
+=item *
+
+C<KmsDataKeyReusePeriodSeconds> - Returns the length of time, in
+seconds, for which Amazon SQS can reuse a data key to encrypt or
+decrypt messages before calling AWS KMS again.
+
+=back
+
 The following attributes apply only to FIFO (first-in-first-out)
 queues:
 
@@ -129,6 +148,9 @@ queues:
 
 C<FifoQueue> - Returns whether the queue is FIFO. For more information,
 see FIFO Queue Logic in the I<Amazon SQS Developer Guide>.
+
+To determine whether a queue is FIFO, you can check whether
+C<QueueName> ends with the C<.fifo> suffix.
 
 =item *
 
