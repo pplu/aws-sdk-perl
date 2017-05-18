@@ -1,3 +1,6 @@
+0.33 
+
+
 0.32 20 Apr 2017
  - Speed up Credential Refreshing (Arthur Axel fREW Schmidt)
  - Bug fixed: Issue #105. Some API calls where not correctly handling parameters specified in their URI.
