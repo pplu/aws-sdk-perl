@@ -6,6 +6,7 @@ package Paws::AppStream::Image;
   has CreatedTime => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has DisplayName => (is => 'ro', isa => 'Str');
+  has ImageBuilderSupported => (is => 'ro', isa => 'Bool');
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has Platform => (is => 'ro', isa => 'Str');
   has State => (is => 'ro', isa => 'Str');
@@ -75,6 +76,11 @@ application catalog and is connected to fleets.
 =head2 DisplayName => Str
 
   The display name for the image.
+
+
+=head2 ImageBuilderSupported => Bool
+
+  Indicates whether an image builder can be launched from this image.
 
 
 =head2 B<REQUIRED> Name => Str

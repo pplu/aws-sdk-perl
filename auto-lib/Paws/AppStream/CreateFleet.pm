@@ -5,6 +5,7 @@ package Paws::AppStream::CreateFleet;
   has Description => (is => 'ro', isa => 'Str');
   has DisconnectTimeoutInSeconds => (is => 'ro', isa => 'Int');
   has DisplayName => (is => 'ro', isa => 'Str');
+  has EnableDefaultInternetAccess => (is => 'ro', isa => 'Bool');
   has ImageName => (is => 'ro', isa => 'Str', required => 1);
   has InstanceType => (is => 'ro', isa => 'Str', required => 1);
   has MaxUserDurationInSeconds => (is => 'ro', isa => 'Int');
@@ -64,6 +65,12 @@ interval, the user is connected back to his/her previous session.
 =head2 DisplayName => Str
 
 The display name of the fleet.
+
+
+
+=head2 EnableDefaultInternetAccess => Bool
+
+Enable/Disable default Internet access from fleet.
 
 
 

@@ -31,7 +31,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AppStream::
 
 =head1 DESCRIPTION
 
-The VPC in which the fleet is launched.
+VPC configuration information.
 
 =head1 ATTRIBUTES
 
