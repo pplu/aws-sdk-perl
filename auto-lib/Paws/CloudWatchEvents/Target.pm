@@ -68,15 +68,17 @@ Service Developer Guide>.
 =head2 Input => Str
 
   Valid JSON text passed to the target. In this case, nothing from the
-event itself is passed to the target. For more information, see The
-JavaScript Object Notation (JSON) Data Interchange Format.
+event itself is passed to the target. You must use JSON dot notation,
+not bracket notation. For more information, see The JavaScript Object
+Notation (JSON) Data Interchange Format.
 
 
 =head2 InputPath => Str
 
   The value of the JSONPath that is used for extracting part of the
-matched event when passing it to the target. For more information about
-JSON paths, see JSONPath.
+matched event when passing it to the target. You must use JSON dot
+notation, not bracket notation. For more information about JSON paths,
+see JSONPath.
 
 
 =head2 InputTransformer => L<Paws::CloudWatchEvents::InputTransformer>

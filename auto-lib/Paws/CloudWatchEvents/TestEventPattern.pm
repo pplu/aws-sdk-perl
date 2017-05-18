@@ -42,7 +42,8 @@ The event, in JSON format, to test against the event pattern.
 
 =head2 B<REQUIRED> EventPattern => Str
 
-The event pattern.
+The event pattern. For more information, see Events and Event Patterns
+in the I<Amazon CloudWatch Events User Guide>.
 
 
 

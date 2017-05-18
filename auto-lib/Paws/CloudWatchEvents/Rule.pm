@@ -54,7 +54,8 @@ Contains information about a rule in Amazon CloudWatch Events.
 
 =head2 EventPattern => Str
 
-  The event pattern of the rule.
+  The event pattern of the rule. For more information, see Events and
+Event Patterns in the I<Amazon CloudWatch Events User Guide>.
 
 
 =head2 Name => Str

@@ -41,7 +41,8 @@ target based on one or more pieces of data extracted from the event.
 =head2 InputPathsMap => L<Paws::CloudWatchEvents::TransformerPaths>
 
   Map of JSON paths to be extracted from the event. These are key-value
-pairs, where each value is a JSON path.
+pairs, where each value is a JSON path. You must use JSON dot notation,
+not bracket notation.
 
 
 =head2 B<REQUIRED> InputTemplate => Str

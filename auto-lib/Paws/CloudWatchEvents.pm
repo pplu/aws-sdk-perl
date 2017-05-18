@@ -320,9 +320,17 @@ that you specify as the input to the target.
 
 =back
 
+When you specify C<Input>, C<InputPath>, or C<InputTransformer>, you
+must use JSON dot notation, not bracket notation.
+
 When you add targets to a rule and the associated rule triggers soon
 after, new or updated targets might not be immediately invoked. Please
 allow a short period of time for changes to take effect.
+
+This action can partially fail if too many requests are made at the
+same time. If that happens, C<FailedEntryCount> is non-zero in the
+response and each entry in C<FailedEntries> provides the ID of the
+failed target and the error code.
 
 
 =head2 RemoveTargets(Ids => ArrayRef[Str|Undef], Rule => Str)
@@ -337,6 +345,11 @@ triggered, those targets are no longer be invoked.
 When you remove a target, when the associated rule triggers, removed
 targets might continue to be invoked. Please allow a short period of
 time for changes to take effect.
+
+This action can partially fail if too many requests are made at the
+same time. If that happens, C<FailedEntryCount> is non-zero in the
+response and each entry in C<FailedEntries> provides the ID of the
+failed target and the error code.
 
 
 =head2 TestEventPattern(Event => Str, EventPattern => Str)

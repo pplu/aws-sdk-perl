@@ -46,7 +46,8 @@ A description of the rule.
 
 =head2 EventPattern => Str
 
-The event pattern.
+The event pattern. For more information, see Events and Event Patterns
+in the I<Amazon CloudWatch Events User Guide>.
 
 
 
