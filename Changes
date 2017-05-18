@@ -1,5 +1,22 @@
 0.33 
-
+ - New API: MarketplaceEntitlement
+ - API update: AppStream
+ - API update: CloudFormation
+ - API update: CloudWatchEvents
+ - API update: CodeDeploy
+ - API update: DeviceFarm
+ - API update: ECS
+ - API update: ELB
+ - API update: ELBv2
+ - API update: GameLift
+ - API update: Inspector
+ - API update: Lambda
+ - API update: LexModels
+ - API update: Organizations
+ - API update: RDS
+ - API update: Snowball
+ - API update: SQS
+ - API update: SSM
 
 0.32 20 Apr 2017
  - Speed up Credential Refreshing (Arthur Axel fREW Schmidt)

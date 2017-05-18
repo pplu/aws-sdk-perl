@@ -368,6 +368,8 @@ L<Paws::MachineLearning>
 
 L<Paws::MarketplaceCommerceAnalytics>
 
+L<Paws::MarketplaceEntitlement>
+
 L<Paws::MarketplaceMetering>
 
 L<Paws::MTurk>

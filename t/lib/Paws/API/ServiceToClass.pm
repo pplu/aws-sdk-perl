@@ -70,6 +70,7 @@ package Paws::API::ServiceToClass;
     logs => 'CloudWatchLogs',
     machinelearning => 'MachineLearning',
     marketplacecommerceanalytics => 'MarketplaceCommerceAnalytics',
+   'marketplace-entitlement' => 'MarketplaceEntitlement',
     meteringmarketplace => 'MarketplaceMetering',
     monitoring => 'CloudWatch',
     mturk => 'MTurk',
