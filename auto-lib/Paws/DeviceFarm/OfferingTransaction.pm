@@ -2,6 +2,7 @@ package Paws::DeviceFarm::OfferingTransaction;
   use Moose;
   has Cost => (is => 'ro', isa => 'Paws::DeviceFarm::MonetaryAmount', request_name => 'cost', traits => ['NameInRequest']);
   has CreatedOn => (is => 'ro', isa => 'Str', request_name => 'createdOn', traits => ['NameInRequest']);
+  has OfferingPromotionId => (is => 'ro', isa => 'Str', request_name => 'offeringPromotionId', traits => ['NameInRequest']);
   has OfferingStatus => (is => 'ro', isa => 'Paws::DeviceFarm::OfferingStatus', request_name => 'offeringStatus', traits => ['NameInRequest']);
   has TransactionId => (is => 'ro', isa => 'Str', request_name => 'transactionId', traits => ['NameInRequest']);
 1;
@@ -47,6 +48,11 @@ Represents the metadata of an offering transaction.
 =head2 CreatedOn => Str
 
   The date on which an offering transaction was created.
+
+
+=head2 OfferingPromotionId => Str
+
+  The ID that corresponds to a device offering promotion.
 
 
 =head2 OfferingStatus => L<Paws::DeviceFarm::OfferingStatus>

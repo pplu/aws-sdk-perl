@@ -164,6 +164,11 @@ package Paws::DeviceFarm;
     my $call_object = $self->new_with_coercions('Paws::DeviceFarm::ListNetworkProfiles', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListOfferingPromotions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DeviceFarm::ListOfferingPromotions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListOfferings {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DeviceFarm::ListOfferings', @_);
@@ -553,7 +558,7 @@ package Paws::DeviceFarm;
   }
 
 
-  sub operations { qw/CreateDevicePool CreateNetworkProfile CreateProject CreateRemoteAccessSession CreateUpload DeleteDevicePool DeleteNetworkProfile DeleteProject DeleteRemoteAccessSession DeleteRun DeleteUpload GetAccountSettings GetDevice GetDevicePool GetDevicePoolCompatibility GetJob GetNetworkProfile GetOfferingStatus GetProject GetRemoteAccessSession GetRun GetSuite GetTest GetUpload InstallToRemoteAccessSession ListArtifacts ListDevicePools ListDevices ListJobs ListNetworkProfiles ListOfferings ListOfferingTransactions ListProjects ListRemoteAccessSessions ListRuns ListSamples ListSuites ListTests ListUniqueProblems ListUploads PurchaseOffering RenewOffering ScheduleRun StopRemoteAccessSession StopRun UpdateDevicePool UpdateNetworkProfile UpdateProject / }
+  sub operations { qw/CreateDevicePool CreateNetworkProfile CreateProject CreateRemoteAccessSession CreateUpload DeleteDevicePool DeleteNetworkProfile DeleteProject DeleteRemoteAccessSession DeleteRun DeleteUpload GetAccountSettings GetDevice GetDevicePool GetDevicePoolCompatibility GetJob GetNetworkProfile GetOfferingStatus GetProject GetRemoteAccessSession GetRun GetSuite GetTest GetUpload InstallToRemoteAccessSession ListArtifacts ListDevicePools ListDevices ListJobs ListNetworkProfiles ListOfferingPromotions ListOfferings ListOfferingTransactions ListProjects ListRemoteAccessSessions ListRuns ListSamples ListSuites ListTests ListUniqueProblems ListUploads PurchaseOffering RenewOffering ScheduleRun StopRemoteAccessSession StopRun UpdateDevicePool UpdateNetworkProfile UpdateProject / }
 
 1;
 
@@ -719,7 +724,7 @@ Returns: a L<Paws::DeviceFarm::GetDevicePoolResult> instance
   Gets information about a device pool.
 
 
-=head2 GetDevicePoolCompatibility(DevicePoolArn => Str, [AppArn => Str, TestType => Str])
+=head2 GetDevicePoolCompatibility(DevicePoolArn => Str, [AppArn => Str, Test => L<Paws::DeviceFarm::ScheduleRunTest>, TestType => Str])
 
 Each argument is described in detail in: L<Paws::DeviceFarm::GetDevicePoolCompatibility>
 
@@ -870,6 +875,19 @@ Returns: a L<Paws::DeviceFarm::ListNetworkProfilesResult> instance
   Returns the list of available network profiles.
 
 
+=head2 ListOfferingPromotions([NextToken => Str])
+
+Each argument is described in detail in: L<Paws::DeviceFarm::ListOfferingPromotions>
+
+Returns: a L<Paws::DeviceFarm::ListOfferingPromotionsResult> instance
+
+  Returns a list of offering promotions. Each offering promotion record
+contains the ID and description of the promotion. The API returns a
+C<NotEligible> error if the caller is not permitted to invoke the
+operation. Contact aws-devicefarm-support@amazon.com if you believe
+that you should be able to invoke this operation.
+
+
 =head2 ListOfferings([NextToken => Str])
 
 Each argument is described in detail in: L<Paws::DeviceFarm::ListOfferings>
@@ -970,7 +988,7 @@ Returns: a L<Paws::DeviceFarm::ListUploadsResult> instance
   Gets information about uploads, given an AWS Device Farm project ARN.
 
 
-=head2 PurchaseOffering([OfferingId => Str, Quantity => Int])
+=head2 PurchaseOffering([OfferingId => Str, OfferingPromotionId => Str, Quantity => Int])
 
 Each argument is described in detail in: L<Paws::DeviceFarm::PurchaseOffering>
 

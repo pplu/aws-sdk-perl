@@ -66,6 +66,14 @@ MANUFACTURER: The manufacturer.
 
 PLATFORM: The platform (for example, Android or iOS).
 
+=item *
+
+REMOTE_ACCESS_ENABLED: Whether the device is enabled for remote access.
+
+=item *
+
+APPIUM_VERSION: The Appium version for the test.
+
 =back
 
 

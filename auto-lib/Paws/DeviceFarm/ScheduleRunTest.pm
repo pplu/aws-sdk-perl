@@ -46,8 +46,173 @@ Represents additional test settings.
 
 =head2 Parameters => L<Paws::DeviceFarm::TestParameters>
 
-  The test's parameters, such as test framework parameters and fixture
-settings.
+  The test's parameters, such as the following test framework parameters
+and fixture settings:
+
+For Calabash tests:
+
+=over
+
+=item *
+
+profile: A cucumber profile, for example, "my_profile_name".
+
+=item *
+
+tags: You can limit execution to features or scenarios that have (or
+don't have) certain tags, for example, "@smoke" or "@smoke,~@wip".
+
+=back
+
+For Appium tests (all types):
+
+=over
+
+=item *
+
+appium_version: The Appium version. Currently supported values are
+"1.4.16", "1.6.3", "latest", and "default".
+
+=over
+
+=item *
+
+E<ldquo>latestE<rdquo> will run the latest Appium version supported by
+Device Farm (1.6.3).
+
+=item *
+
+For E<ldquo>defaultE<rdquo>, Device Farm will choose a compatible
+version of Appium for the device. The current behavior is to run 1.4.16
+on Android devices and iOS 9 and earlier, 1.6.3 for iOS 10 and later.
+
+=item *
+
+This behavior is subject to change.
+
+=back
+
+=back
+
+For Fuzz tests (Android only):
+
+=over
+
+=item *
+
+event_count: The number of events, between 1 and 10000, that the UI
+fuzz test should perform.
+
+=item *
+
+throttle: The time, in ms, between 0 and 1000, that the UI fuzz test
+should wait between events.
+
+=item *
+
+seed: A seed to use for randomizing the UI fuzz test. Using the same
+seed value between tests ensures identical event sequences.
+
+=back
+
+For Explorer tests:
+
+=over
+
+=item *
+
+username: A username to use if the Explorer encounters a login form. If
+not supplied, no username will be inserted.
+
+=item *
+
+password: A password to use if the Explorer encounters a login form. If
+not supplied, no password will be inserted.
+
+=back
+
+For Instrumentation:
+
+=over
+
+=item *
+
+filter: A test filter string. Examples:
+
+=over
+
+=item *
+
+Running a single test case: "com.android.abc.Test1"
+
+=item *
+
+Running a single test: "com.android.abc.Test1#smoke"
+
+=item *
+
+Running multiple tests: "com.android.abc.Test1,com.android.abc.Test2"
+
+=back
+
+=back
+
+For XCTest and XCTestUI:
+
+=over
+
+=item *
+
+filter: A test filter string. Examples:
+
+=over
+
+=item *
+
+Running a single test class: "LoginTests"
+
+=item *
+
+Running a multiple test classes: "LoginTests,SmokeTests"
+
+=item *
+
+Running a single test: "LoginTests/testValid"
+
+=item *
+
+Running multiple tests: "LoginTests/testValid,LoginTests/testInvalid"
+
+=back
+
+=back
+
+For UIAutomator:
+
+=over
+
+=item *
+
+filter: A test filter string. Examples:
+
+=over
+
+=item *
+
+Running a single test case: "com.android.abc.Test1"
+
+=item *
+
+Running a single test: "com.android.abc.Test1#smoke"
+
+=item *
+
+Running multiple tests: "com.android.abc.Test1,com.android.abc.Test2"
+
+=back
+
+=back
+
 
 
 =head2 TestPackageArn => Str
