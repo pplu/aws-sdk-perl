@@ -8,6 +8,7 @@ package Paws::RDS::CreateDBCluster;
   has DBClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has DBClusterParameterGroupName => (is => 'ro', isa => 'Str');
   has DBSubnetGroupName => (is => 'ro', isa => 'Str');
+  has EnableIAMDatabaseAuthentication => (is => 'ro', isa => 'Bool');
   has Engine => (is => 'ro', isa => 'Str', required => 1);
   has EngineVersion => (is => 'ro', isa => 'Str');
   has KmsKeyId => (is => 'ro', isa => 'Str');
@@ -158,6 +159,16 @@ Constraints: Must contain no more than 255 alphanumeric characters,
 periods, underscores, spaces, or hyphens. Must not be default.
 
 Example: C<mySubnetgroup>
+
+
+
+=head2 EnableIAMDatabaseAuthentication => Bool
+
+A Boolean value that is true to enable mapping of AWS Identity and
+Access Management (IAM) accounts to database accounts, and otherwise
+false.
+
+Default: C<false>
 
 
 

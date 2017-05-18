@@ -7,6 +7,7 @@ package Paws::RDS::CreateDBInstanceReadReplica;
   has DBInstanceClass => (is => 'ro', isa => 'Str');
   has DBInstanceIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has DBSubnetGroupName => (is => 'ro', isa => 'Str');
+  has EnableIAMDatabaseAuthentication => (is => 'ro', isa => 'Bool');
   has Iops => (is => 'ro', isa => 'Int');
   has KmsKeyId => (is => 'ro', isa => 'Str');
   has MonitoringInterval => (is => 'ro', isa => 'Int');
@@ -147,6 +148,34 @@ Constraints: Must contain no more than 255 alphanumeric characters,
 periods, underscores, spaces, or hyphens. Must not be default.
 
 Example: C<mySubnetgroup>
+
+
+
+=head2 EnableIAMDatabaseAuthentication => Bool
+
+True to enable mapping of AWS Identity and Access Management (IAM)
+accounts to database accounts; otherwise false.
+
+You can enable IAM database authentication for the following database
+engines
+
+=over
+
+=item *
+
+For MySQL 5.6, minor version 5.6.34 or higher
+
+=item *
+
+For MySQL 5.7, minor version 5.7.16 or higher
+
+=item *
+
+Aurora 5.6 or higher.
+
+=back
+
+Default: C<false>
 
 
 

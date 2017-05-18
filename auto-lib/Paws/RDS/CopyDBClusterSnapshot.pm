@@ -40,7 +40,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 CopyTags => Bool
 
-
+True to copy all tags from the source DB cluster snapshot to the target
+DB cluster snapshot; otherwise false. The default is false.
 
 
 
@@ -122,6 +123,9 @@ Authenticating Requests: Using Query Parameters (AWS Signature Version
 The identifier of the DB cluster snapshot to copy. This parameter is
 not case-sensitive.
 
+You cannot copy an encrypted, shared DB cluster snapshot from one AWS
+region to another.
+
 Constraints:
 
 =over
@@ -137,6 +141,21 @@ First character must be a letter.
 =item *
 
 Cannot end with a hyphen or contain two consecutive hyphens.
+
+=item *
+
+Must specify a valid system snapshot in the "available" state.
+
+=item *
+
+If the source snapshot is in the same region as the copy, specify a
+valid DB snapshot identifier.
+
+=item *
+
+If the source snapshot is in a different region than the copy, specify
+a valid DB cluster snapshot ARN. For more information, go to Copying a
+DB Snapshot or DB Cluster Snapshot.
 
 =back
 

@@ -8,6 +8,7 @@ package Paws::RDS::DBSnapshot;
   has Encrypted => (is => 'ro', isa => 'Bool');
   has Engine => (is => 'ro', isa => 'Str');
   has EngineVersion => (is => 'ro', isa => 'Str');
+  has IAMDatabaseAuthenticationEnabled => (is => 'ro', isa => 'Bool');
   has InstanceCreateTime => (is => 'ro', isa => 'Str');
   has Iops => (is => 'ro', isa => 'Int');
   has KmsKeyId => (is => 'ro', isa => 'Str');
@@ -116,6 +117,12 @@ snapshot was created from.
 =head2 EngineVersion => Str
 
   Specifies the version of the database engine.
+
+
+=head2 IAMDatabaseAuthenticationEnabled => Bool
+
+  True if mapping of AWS Identity and Access Management (IAM) accounts to
+database accounts is enabled; otherwise false.
 
 
 =head2 InstanceCreateTime => Str

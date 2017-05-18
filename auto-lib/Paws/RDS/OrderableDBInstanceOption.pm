@@ -9,6 +9,7 @@ package Paws::RDS::OrderableDBInstanceOption;
   has ReadReplicaCapable => (is => 'ro', isa => 'Bool');
   has StorageType => (is => 'ro', isa => 'Str');
   has SupportsEnhancedMonitoring => (is => 'ro', isa => 'Bool');
+  has SupportsIAMDatabaseAuthentication => (is => 'ro', isa => 'Bool');
   has SupportsIops => (is => 'ro', isa => 'Bool');
   has SupportsStorageEncryption => (is => 'ro', isa => 'Bool');
   has Vpc => (is => 'ro', isa => 'Bool');
@@ -94,6 +95,12 @@ DescribeOrderableDBInstanceOptions action.
 
   Indicates whether the DB instance supports enhanced monitoring at
 intervals from 1 to 60 seconds.
+
+
+=head2 SupportsIAMDatabaseAuthentication => Bool
+
+  Indicates whether this orderable DB instance supports IAM database
+authentication.
 
 
 =head2 SupportsIops => Bool
