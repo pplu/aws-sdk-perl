@@ -90,8 +90,8 @@ It is used if a configuration isn't specified for the deployment or the
 deployment group.
 
 For more information about the predefined deployment configurations in
-AWS CodeDeploy, see see Working with Deployment Groups in AWS
-CodeDeploy in the AWS CodeDeploy User Guide.
+AWS CodeDeploy, see Working with Deployment Groups in AWS CodeDeploy in
+the AWS CodeDeploy User Guide.
 
 
 
@@ -103,7 +103,7 @@ The name of a new deployment group for the specified application.
 
 =head2 DeploymentStyle => L<Paws::CodeDeploy::DeploymentStyle>
 
-Information about the type of deployment, standard or blue/green, that
+Information about the type of deployment, in-place or blue/green, that
 you want to run and whether to route deployment traffic behind a load
 balancer.
 
@@ -111,19 +111,21 @@ balancer.
 
 =head2 Ec2TagFilters => ArrayRef[L<Paws::CodeDeploy::EC2TagFilter>]
 
-The Amazon EC2 tags on which to filter.
+The Amazon EC2 tags on which to filter. The deployment group will
+include EC2 instances with any of the specified tags.
 
 
 
 =head2 LoadBalancerInfo => L<Paws::CodeDeploy::LoadBalancerInfo>
 
-Information about the load balancer used in a blue/green deployment.
+Information about the load balancer used in a deployment.
 
 
 
 =head2 OnPremisesInstanceTagFilters => ArrayRef[L<Paws::CodeDeploy::TagFilter>]
 
-The on-premises instance tags on which to filter.
+The on-premises instance tags on which to filter. The deployment group
+will include on-premises instances with any of the specified tags.
 
 
 

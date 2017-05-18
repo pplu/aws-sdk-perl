@@ -31,7 +31,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodeDeploy:
 
 =head1 DESCRIPTION
 
-Information about the load balancer used in a blue/green deployment.
+Information about the load balancer used in a deployment.
 
 =head1 ATTRIBUTES
 
@@ -39,7 +39,7 @@ Information about the load balancer used in a blue/green deployment.
 =head2 ElbInfoList => ArrayRef[L<Paws::CodeDeploy::ELBInfo>]
 
   An array containing information about the load balancer in Elastic Load
-Balancing to use in a blue/green deployment.
+Balancing to use in a deployment.
 
 
 

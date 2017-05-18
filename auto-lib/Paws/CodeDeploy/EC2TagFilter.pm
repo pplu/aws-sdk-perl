@@ -33,7 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodeDeploy:
 
 =head1 DESCRIPTION
 
-Information about a tag filter.
+Information about an EC2 tag filter.
 
 =head1 ATTRIBUTES
 

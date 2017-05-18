@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodeDeploy:
 
 =head1 DESCRIPTION
 
-Information about the type of deployment, either standard or
+Information about the type of deployment, either in-place or
 blue/green, you want to run and whether to route deployment traffic
 behind a load balancer.
 
@@ -46,7 +46,7 @@ behind a load balancer.
 
 =head2 DeploymentType => Str
 
-  Indicates whether to run a standard deployment or a blue/green
+  Indicates whether to run an in-place deployment or a blue/green
 deployment.
 
 

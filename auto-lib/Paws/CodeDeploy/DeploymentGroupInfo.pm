@@ -93,7 +93,7 @@ the deployment group.
 
 =head2 DeploymentStyle => L<Paws::CodeDeploy::DeploymentStyle>
 
-  Information about the type of deployment, either standard or
+  Information about the type of deployment, either in-place or
 blue/green, you want to run and whether to route deployment traffic
 behind a load balancer.
 
@@ -105,7 +105,7 @@ behind a load balancer.
 
 =head2 LoadBalancerInfo => L<Paws::CodeDeploy::LoadBalancerInfo>
 
-  Information about the load balancer to use in a blue/green deployment.
+  Information about the load balancer to use in a deployment.
 
 
 =head2 OnPremisesInstanceTagFilters => ArrayRef[L<Paws::CodeDeploy::TagFilter>]
