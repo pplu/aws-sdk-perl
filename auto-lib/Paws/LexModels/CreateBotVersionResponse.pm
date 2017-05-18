@@ -37,7 +37,7 @@ information, see .
 
 =head2 Checksum => Str
 
-Checksum identifying the version of the boat that was created.
+Checksum identifying the version of the bot that was created.
 
 
 =head2 ChildDirected => Bool

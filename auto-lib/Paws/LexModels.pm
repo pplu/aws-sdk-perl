@@ -43,14 +43,29 @@ package Paws::LexModels;
     my $call_object = $self->new_with_coercions('Paws::LexModels::DeleteBotChannelAssociation', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteBotVersion {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::LexModels::DeleteBotVersion', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteIntent {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::LexModels::DeleteIntent', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteIntentVersion {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::LexModels::DeleteIntentVersion', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteSlotType {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::LexModels::DeleteSlotType', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteSlotTypeVersion {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::LexModels::DeleteSlotTypeVersion', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteUtterances {
@@ -166,7 +181,7 @@ package Paws::LexModels;
   
 
 
-  sub operations { qw/CreateBotVersion CreateIntentVersion CreateSlotTypeVersion DeleteBot DeleteBotAlias DeleteBotChannelAssociation DeleteIntent DeleteSlotType DeleteUtterances GetBot GetBotAlias GetBotAliases GetBotChannelAssociation GetBotChannelAssociations GetBots GetBotVersions GetBuiltinIntent GetBuiltinIntents GetBuiltinSlotTypes GetIntent GetIntents GetIntentVersions GetSlotType GetSlotTypes GetSlotTypeVersions GetUtterancesView PutBot PutBotAlias PutIntent PutSlotType / }
+  sub operations { qw/CreateBotVersion CreateIntentVersion CreateSlotTypeVersion DeleteBot DeleteBotAlias DeleteBotChannelAssociation DeleteBotVersion DeleteIntent DeleteIntentVersion DeleteSlotType DeleteSlotTypeVersion DeleteUtterances GetBot GetBotAlias GetBotAliases GetBotChannelAssociation GetBotChannelAssociations GetBots GetBotVersions GetBuiltinIntent GetBuiltinIntents GetBuiltinSlotTypes GetIntent GetIntents GetIntentVersions GetSlotType GetSlotTypes GetSlotTypeVersions GetUtterancesView PutBot PutBotAlias PutIntent PutSlotType / }
 
 1;
 
@@ -271,16 +286,14 @@ This operation requires permissions for the
 C<lex:CreateSlotTypeVersion> action.
 
 
-=head2 DeleteBot(Name => Str, [Version => Str])
+=head2 DeleteBot(Name => Str)
 
 Each argument is described in detail in: L<Paws::LexModels::DeleteBot>
 
 Returns: nothing
 
-  Deletes a bot. If you specify a bot version in the request, the API
-deletes only the specified bot version. If you don't specify a version,
-the API deletes all versions of the bot, including the C<$LATEST>
-version.
+  Deletes all versions of the bot, including the C<$LATEST> version. To
+delete a specific version of the bot, use the operation.
 
 If a bot has an alias, you can't delete it. Instead, the C<DeleteBot>
 operation returns a C<ResourceInUseException> exception that includes a
@@ -323,16 +336,27 @@ This operation requires permission for the
 C<lex:DeleteBotChannelAssociation> action.
 
 
-=head2 DeleteIntent(Name => Str, [Version => Str])
+=head2 DeleteBotVersion(Name => Str, Version => Str)
+
+Each argument is described in detail in: L<Paws::LexModels::DeleteBotVersion>
+
+Returns: nothing
+
+  Deletes a specific version of a bot. To delete all versions of a bot,
+use the operation.
+
+This operation requires permissions for the C<lex:DeleteBotVersion>
+action.
+
+
+=head2 DeleteIntent(Name => Str)
 
 Each argument is described in detail in: L<Paws::LexModels::DeleteIntent>
 
 Returns: nothing
 
-  Deletes an intent. If you specify a version in the request, the API
-deletes only the specified version of the intent. If you don't specify
-a version in the request, the API deletes all of the versions of the
-intent, including the C<$LATEST> version.
+  Deletes all versions of the intent, including the C<$LATEST> version.
+To delete a specific version of the intent, use the operation.
 
 You can delete a version of an intent only if it is not referenced. To
 delete an intent that is referred to in one or more bots (see
@@ -348,30 +372,55 @@ C<DeleteIntent> is successful.
 This operation requires permission for the C<lex:DeleteIntent> action.
 
 
-=head2 DeleteSlotType(Name => Str, [Version => Str])
+=head2 DeleteIntentVersion(Name => Str, Version => Str)
+
+Each argument is described in detail in: L<Paws::LexModels::DeleteIntentVersion>
+
+Returns: nothing
+
+  Deletes a specific version of an intent. To delete all versions of a
+intent, use the operation.
+
+This operation requires permissions for the C<lex:DeleteIntentVersion>
+action.
+
+
+=head2 DeleteSlotType(Name => Str)
 
 Each argument is described in detail in: L<Paws::LexModels::DeleteSlotType>
 
 Returns: nothing
 
-  Deletes a slot type. If you specify a version in the request, the API
-deletes the specific version. If you don't specify a version in the
-request, the API deletes all versions of the slot type, including the
-C<$LATEST> version.
+  Deletes all versions of the slot type, including the C<$LATEST>
+version. To delete a specific version of the slot type, use the
+operation.
 
 You can delete a version of a slot type only if it is not referenced.
 To delete a slot type that is referred to in one or more intents, you
 must remove those references first.
 
-If you get the C<SlotTypeInUse> exception, the exception provides an
-example reference that shows the intent where the slot type is
-referenced. To remove the reference to the slot type, either update the
-intent or delete it. If you get the same exception when you attempt to
-delete the intent again, repeat until the intent has no references and
-the C<DeleteSlotType> call is successful.
+If you get the C<ResourceInUseException> exception, the exception
+provides an example reference that shows the intent where the slot type
+is referenced. To remove the reference to the slot type, either update
+the intent or delete it. If you get the same exception when you attempt
+to delete the slot type again, repeat until the slot type has no
+references and the C<DeleteSlotType> call is successful.
 
 This operation requires permission for the C<lex:DeleteSlotType>
 action.
+
+
+=head2 DeleteSlotTypeVersion(Name => Str, Version => Str)
+
+Each argument is described in detail in: L<Paws::LexModels::DeleteSlotTypeVersion>
+
+Returns: nothing
+
+  Deletes a specific version of a slot type. To delete all versions of a
+slot type, use the operation.
+
+This operation requires permissions for the
+C<lex:DeleteSlotTypeVersion> action.
 
 
 =head2 DeleteUtterances(BotName => Str, UserId => Str)
@@ -382,10 +431,14 @@ Returns: nothing
 
   Deletes stored utterances.
 
-When you create or update a bot using the operation, configure your bot
-to store user utterances by setting C<privacySetting> to
-C<STORE_UTTERANCES>. Use C<DeleteUtterances> to remove the stored
-utterances for a specific user .
+Amazon Lex stores the utterances that users send to your bot unless the
+C<childDirected> field in the bot is set to C<true>. Utterances are
+stored for 15 days for use with the operation, and then stored
+indefinately for use in improving the ability of your bot to respond to
+user input.
+
+Use the C<DeleteStoredUtterances> operation to manually delete stored
+utterances for a specific user.
 
 This operation requires permissions for the C<lex:DeleteUtterances>
 action.
@@ -412,6 +465,8 @@ Returns: a L<Paws::LexModels::GetBotAliasResponse> instance
   Returns information about an Amazon Lex bot alias. For more information
 about aliases, see versioning-aliases.
 
+This operation requires permissions for the C<lex:GetBotAlias> action.
+
 
 =head2 GetBotAliases(BotName => Str, [MaxResults => Int, NameContains => Str, NextToken => Str])
 
@@ -420,6 +475,9 @@ Each argument is described in detail in: L<Paws::LexModels::GetBotAliases>
 Returns: a L<Paws::LexModels::GetBotAliasesResponse> instance
 
   Returns a list of aliases for a specified Amazon Lex bot.
+
+This operation requires permissions for the C<lex:GetBotAliases>
+action.
 
 
 =head2 GetBotChannelAssociation(BotAlias => Str, BotName => Str, Name => Str)
@@ -431,6 +489,9 @@ Returns: a L<Paws::LexModels::GetBotChannelAssociationResponse> instance
   Returns information about the association between an Amazon Lex bot and
 a messaging platform.
 
+This operation requires permissions for the
+C<lex:GetBotChannelAssociation> action.
+
 
 =head2 GetBotChannelAssociations(BotAlias => Str, BotName => Str, [MaxResults => Int, NameContains => Str, NextToken => Str])
 
@@ -440,6 +501,9 @@ Returns: a L<Paws::LexModels::GetBotChannelAssociationsResponse> instance
 
   Returns a list of all of the channels associated with the specified
 bot.
+
+The C<GetBotChannelAssociations> operation requires permissions for the
+C<lex:GetBotChannelAssociations> action.
 
 
 =head2 GetBots([MaxResults => Int, NameContains => Str, NextToken => Str])
@@ -484,6 +548,9 @@ C<$LATEST> version.
 
 The C<GetBotVersions> operation always returns at least one version,
 the C<$LATEST> version.
+
+This operation requires permissions for the C<lex:GetBotVersions>
+action.
 
 
 =head2 GetBuiltinIntent(Signature => Str)
@@ -580,6 +647,9 @@ version and one for the C<$LATEST> version.
 The C<GetIntentVersions> operation always returns at least one version,
 the C<$LATEST> version.
 
+This operation requires permissions for the C<lex:GetIntentVersions>
+action.
+
 
 =head2 GetSlotType(Name => Str, Version => Str)
 
@@ -636,6 +706,9 @@ version and one for the C<$LATEST> version.
 The C<GetSlotTypeVersions> operation always returns at least one
 version, the C<$LATEST> version.
 
+This operation requires permissions for the C<lex:GetSlotTypeVersions>
+action.
+
 
 =head2 GetUtterancesView(BotName => Str, BotVersions => ArrayRef[Str|Undef], StatusType => Str)
 
@@ -658,9 +731,16 @@ After you publish a new version of a bot, you can get information about
 the old version and the new so that you can compare the performance
 across the two versions.
 
-You can request information for up to 5 versions in each request. The
-response contains information about a maximum of 100 utterances for
-each version.
+Data is available for the last 15 days. You can request information for
+up to 5 versions in each request. The response contains information
+about a maximum of 100 utterances for each version.
+
+If the bot's C<childDirected> field is set to C<true>, utterances for
+the bot are not stored and cannot be retrieved with the
+C<GetUtterancesView> operation. For more information, see .
+
+This operation requires permissions for the C<lex:GetUtterancesView>
+action.
 
 
 =head2 PutBot(ChildDirected => Bool, Locale => Str, Name => Str, [AbortStatement => L<Paws::LexModels::Statement>, Checksum => Str, ClarificationPrompt => L<Paws::LexModels::Prompt>, Description => Str, IdleSessionTTLInSeconds => Int, Intents => ArrayRef[L<Paws::LexModels::Intent>], ProcessBehavior => Str, VoiceId => Str])
@@ -670,9 +750,9 @@ Each argument is described in detail in: L<Paws::LexModels::PutBot>
 Returns: a L<Paws::LexModels::PutBotResponse> instance
 
   Creates an Amazon Lex conversational bot or replaces an existing bot.
-When you create or update an intent you only required to specify a
-name. You can use this to add intents later, or to remove intents from
-an existing bot. When you create a bot with a name only, the bot is
+When you create or update a bot you only required to specify a name.
+You can use this to add intents later, or to remove intents from an
+existing bot. When you create a bot with a name only, the bot is
 created or updated but Amazon Lex returns the C< response C<FAILED>.
 You can build the bot after you add one or more intents. For more
 information about Amazon Lex bots, see how-it-works.>
@@ -776,7 +856,6 @@ throws an exception.
 For more information, see how-it-works.
 
 This operation requires permissions for the C<lex:PutIntent> action.
-For more information, see auth-and-access-control.
 
 
 =head2 PutSlotType(Name => Str, [Checksum => Str, Description => Str, EnumerationValues => ArrayRef[L<Paws::LexModels::EnumerationValue>]])
