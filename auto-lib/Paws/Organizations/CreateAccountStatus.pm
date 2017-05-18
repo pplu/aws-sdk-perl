@@ -66,6 +66,37 @@ completed.
 
   If the request failed, a description of the reason for the failure.
 
+=over
+
+=item *
+
+ACCOUNT_LIMIT_EXCEEDED: The account could not be created because you
+have reached the limit on the number of accounts in your organization.
+
+=item *
+
+EMAIL_ALREADY_EXISTS: The account could not be created because another
+AWS account with that email address already exists.
+
+=item *
+
+INVALID_ADDRESS: The account could not be created because the address
+you provided is not valid.
+
+=item *
+
+INVALID_EMAIL: The account could not be created because the email
+address you provided is not valid.
+
+=item *
+
+INTERNAL_FAILURE: The account could not be created because of an
+internal failure. Try again later. If the problem persists, contact
+Customer Support.
+
+=back
+
+
 
 =head2 Id => Str
 

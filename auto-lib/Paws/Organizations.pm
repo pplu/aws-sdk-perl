@@ -513,13 +513,14 @@ You cannot remove accounts that are created with this operation from an
 organization. That also means that you cannot delete an organization
 that contains an account that is created with this operation.
 
-When you create a member account with this operation, the account is
-created with the B<IAM User and Role Access to Billing Information>
-switch enabled. This allows IAM users and roles that are granted
-appropriate permissions to view billing information. If this is
-disabled, then only the account root user can access billing
-information. For information about how to disable this for an account,
-see Granting Access to Your Billing Information and Tools.
+When you create a member account with this operation, you can choose
+whether to create the account with the B<IAM User and Role Access to
+Billing Information> switch enabled. If you enable it, IAM users and
+roles that have appropriate permissions can view billing information
+for the account. If you disable this, then only the account root user
+can access billing information. For information about how to disable
+this for an account, see Granting Access to Your Billing Information
+and Tools.
 
 This operation can be called only from the organization's master
 account.
