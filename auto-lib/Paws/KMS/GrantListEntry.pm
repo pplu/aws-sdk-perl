@@ -46,7 +46,8 @@ Contains information about an entry in a list of grants.
 
 =head2 Constraints => L<Paws::KMS::GrantConstraints>
 
-  The conditions under which the grant's operations are allowed.
+  A list of key-value pairs that must be present in the encryption
+context of certain subsequent operations that the grant allows.
 
 
 =head2 CreationDate => Str

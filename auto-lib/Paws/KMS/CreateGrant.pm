@@ -41,13 +41,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Constraints => L<Paws::KMS::GrantConstraints>
 
-The conditions under which the operations permitted by the grant are
-allowed.
-
-You can use this value to allow the operations permitted by the grant
-only when a specified encryption context is present. For more
-information, see Encryption Context in the I<AWS Key Management Service
-Developer Guide>.
+A structure that you can use to allow certain operations in the grant
+only when the desired encryption context is present. For more
+information about encryption context, see Encryption Context in the
+I<AWS Key Management Service Developer Guide>.
 
 
 
@@ -58,10 +55,10 @@ the grant permits.
 
 To specify the principal, use the Amazon Resource Name (ARN) of an AWS
 principal. Valid AWS principals include AWS accounts (root), IAM users,
-federated users, and assumed role users. For examples of the ARN syntax
-to use for specifying a principal, see AWS Identity and Access
-Management (IAM) in the Example ARNs section of the I<AWS General
-Reference>.
+IAM roles, federated users, and assumed role users. For examples of the
+ARN syntax to use for specifying a principal, see AWS Identity and
+Access Management (IAM) in the Example ARNs section of the I<AWS
+General Reference>.
 
 
 
