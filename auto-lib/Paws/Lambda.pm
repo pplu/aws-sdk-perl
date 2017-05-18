@@ -688,7 +688,7 @@ This operation requires permission for the
 C<lambda:UpdateEventSourceMapping> action.
 
 
-=head2 UpdateFunctionCode(FunctionName => Str, [Publish => Bool, S3Bucket => Str, S3Key => Str, S3ObjectVersion => Str, ZipFile => Str])
+=head2 UpdateFunctionCode(FunctionName => Str, [DryRun => Bool, Publish => Bool, S3Bucket => Str, S3Key => Str, S3ObjectVersion => Str, ZipFile => Str])
 
 Each argument is described in detail in: L<Paws::Lambda::UpdateFunctionCode>
 
