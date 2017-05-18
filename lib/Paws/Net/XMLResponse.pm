@@ -1,6 +1,6 @@
 package Paws::Net::XMLResponse;
   use Moose::Role;
-  use XML::Simple qw//;
+  use XML::Fast;
   use Carp qw(croak);
   use Paws::Exception;
 
@@ -65,11 +65,12 @@ package Paws::Net::XMLResponse;
 
   sub unserialize_response {
     my ($self, $data) = @_;
-    my $xml = XML::Simple::XMLin( $data,
-            ForceArray    => qr/(?:item|Errors)/i,
-            KeyAttr       => '',
-            SuppressEmpty => undef,
+    my $xml = xml2hash( $data,
+            array => [ 'item', 'Errors'],
     );
+    my ($k, @rest) = keys %$xml;
+    die "Strange response" if (@rest);
+    $xml = $xml->{ $k };
     return $xml;
   }
 
@@ -165,6 +166,7 @@ package Paws::Net::XMLResponse;
           # Make the att_type stringify for module loading
           Paws->load_class("$att_type");
           if (defined $value) {
+            next if ($value eq '');
             if (not $value_ref) {
               $args{ $att } = $value;
             } else {
