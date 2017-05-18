@@ -6,6 +6,7 @@ package Paws::Inspector::AssessmentRun;
   has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest'], required => 1);
   has DataCollected => (is => 'ro', isa => 'Bool', request_name => 'dataCollected', traits => ['NameInRequest'], required => 1);
   has DurationInSeconds => (is => 'ro', isa => 'Int', request_name => 'durationInSeconds', traits => ['NameInRequest'], required => 1);
+  has FindingCounts => (is => 'ro', isa => 'Paws::Inspector::AssessmentRunFindingCounts', request_name => 'findingCounts', traits => ['NameInRequest'], required => 1);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
   has Notifications => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::AssessmentRunNotification]', request_name => 'notifications', traits => ['NameInRequest'], required => 1);
   has RulesPackageArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'rulesPackageArns', traits => ['NameInRequest'], required => 1);
@@ -83,6 +84,11 @@ collecting data from the agents is completed.
 =head2 B<REQUIRED> DurationInSeconds => Int
 
   The duration of the assessment run.
+
+
+=head2 B<REQUIRED> FindingCounts => L<Paws::Inspector::AssessmentRunFindingCounts>
+
+  Provides a total count of generated findings per severity.
 
 
 =head2 B<REQUIRED> Name => Str

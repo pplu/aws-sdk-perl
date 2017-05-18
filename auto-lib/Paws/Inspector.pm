@@ -84,6 +84,11 @@ package Paws::Inspector;
     my $call_object = $self->new_with_coercions('Paws::Inspector::DescribeRulesPackages', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetAssessmentReport {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Inspector::GetAssessmentReport', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetTelemetryMetadata {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Inspector::GetTelemetryMetadata', @_);
@@ -177,7 +182,7 @@ package Paws::Inspector;
   
 
 
-  sub operations { qw/AddAttributesToFindings CreateAssessmentTarget CreateAssessmentTemplate CreateResourceGroup DeleteAssessmentRun DeleteAssessmentTarget DeleteAssessmentTemplate DescribeAssessmentRuns DescribeAssessmentTargets DescribeAssessmentTemplates DescribeCrossAccountAccessRole DescribeFindings DescribeResourceGroups DescribeRulesPackages GetTelemetryMetadata ListAssessmentRunAgents ListAssessmentRuns ListAssessmentTargets ListAssessmentTemplates ListEventSubscriptions ListFindings ListRulesPackages ListTagsForResource PreviewAgents RegisterCrossAccountAccessRole RemoveAttributesFromFindings SetTagsForResource StartAssessmentRun StopAssessmentRun SubscribeToEvent UnsubscribeFromEvent UpdateAssessmentTarget / }
+  sub operations { qw/AddAttributesToFindings CreateAssessmentTarget CreateAssessmentTemplate CreateResourceGroup DeleteAssessmentRun DeleteAssessmentTarget DeleteAssessmentTemplate DescribeAssessmentRuns DescribeAssessmentTargets DescribeAssessmentTemplates DescribeCrossAccountAccessRole DescribeFindings DescribeResourceGroups DescribeRulesPackages GetAssessmentReport GetTelemetryMetadata ListAssessmentRunAgents ListAssessmentRuns ListAssessmentTargets ListAssessmentTemplates ListEventSubscriptions ListFindings ListRulesPackages ListTagsForResource PreviewAgents RegisterCrossAccountAccessRole RemoveAttributesFromFindings SetTagsForResource StartAssessmentRun StopAssessmentRun SubscribeToEvent UnsubscribeFromEvent UpdateAssessmentTarget / }
 
 1;
 
@@ -356,6 +361,16 @@ Returns: a L<Paws::Inspector::DescribeRulesPackagesResponse> instance
 
   Describes the rules packages that are specified by the ARNs of the
 rules packages.
+
+
+=head2 GetAssessmentReport(AssessmentRunArn => Str, ReportFileFormat => Str, ReportType => Str)
+
+Each argument is described in detail in: L<Paws::Inspector::GetAssessmentReport>
+
+Returns: a L<Paws::Inspector::GetAssessmentReportResponse> instance
+
+  Produces an assessment report that includes detailed and comprehensive
+results of a specified assessment run.
 
 
 =head2 GetTelemetryMetadata(AssessmentRunArn => Str)
