@@ -45,7 +45,8 @@ The name of the group.
 
 =head2 MaxRecords => Int
 
-The maximum number of items to be returned with each call.
+The maximum number of items to be returned with each call. The default
+value is 50 and the maximum value is 100.
 
 
 

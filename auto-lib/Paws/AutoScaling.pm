@@ -494,7 +494,7 @@ of the group by the number of instances being attached. If the number
 of instances being attached plus the desired capacity of the group
 exceeds the maximum size of the group, the operation fails.
 
-If there is a Classic load balancer attached to your Auto Scaling
+If there is a Classic Load Balancer attached to your Auto Scaling
 group, the instances are also registered with the load balancer. If
 there are target groups attached to your Auto Scaling group, the
 instances are also registered with the target groups.
@@ -509,10 +509,10 @@ Each argument is described in detail in: L<Paws::AutoScaling::AttachLoadBalancer
 
 Returns: a L<Paws::AutoScaling::AttachLoadBalancersResultType> instance
 
-  Attaches one or more Classic load balancers to the specified Auto
+  Attaches one or more Classic Load Balancers to the specified Auto
 Scaling group.
 
-To attach an Application load balancer instead, see
+To attach an Application Load Balancer instead, see
 AttachLoadBalancerTargetGroups.
 
 To describe the load balancers for an Auto Scaling group, use
@@ -808,8 +808,8 @@ Returns: a L<Paws::AutoScaling::DescribeLoadBalancersResponse> instance
 
   Describes the load balancers for the specified Auto Scaling group.
 
-Note that this operation describes only Classic load balancers. If you
-have Application load balancers, use DescribeLoadBalancerTargetGroups
+Note that this operation describes only Classic Load Balancers. If you
+have Application Load Balancers, use DescribeLoadBalancerTargetGroups
 instead.
 
 
@@ -920,13 +920,13 @@ Returns: a L<Paws::AutoScaling::DetachInstancesAnswer> instance
 
   Removes one or more instances from the specified Auto Scaling group.
 
-After the instances are detached, you can manage them independently
-from the rest of the Auto Scaling group.
+After the instances are detached, you can manage them independent of
+the Auto Scaling group.
 
 If you do not specify the option to decrement the desired capacity,
 Auto Scaling launches instances to replace the ones that are detached.
 
-If there is a Classic load balancer attached to the Auto Scaling group,
+If there is a Classic Load Balancer attached to the Auto Scaling group,
 the instances are deregistered from the load balancer. If there are
 target groups attached to the Auto Scaling group, the instances are
 deregistered from the target groups.
@@ -941,11 +941,11 @@ Each argument is described in detail in: L<Paws::AutoScaling::DetachLoadBalancer
 
 Returns: a L<Paws::AutoScaling::DetachLoadBalancersResultType> instance
 
-  Detaches one or more Classic load balancers from the specified Auto
+  Detaches one or more Classic Load Balancers from the specified Auto
 Scaling group.
 
-Note that this operation detaches only Classic load balancers. If you
-have Application load balancers, use DetachLoadBalancerTargetGroups
+Note that this operation detaches only Classic Load Balancers. If you
+have Application Load Balancers, use DetachLoadBalancerTargetGroups
 instead.
 
 When you detach a load balancer, it enters the C<Removing> state while
@@ -990,10 +990,10 @@ Each argument is described in detail in: L<Paws::AutoScaling::EnterStandby>
 
 Returns: a L<Paws::AutoScaling::EnterStandbyAnswer> instance
 
-  Moves the specified instances into C<Standby> mode.
+  Moves the specified instances into the standby state.
 
-For more information, see Auto Scaling Lifecycle in the I<Auto Scaling
-User Guide>.
+For more information, see Temporarily Removing Instances from Your Auto
+Scaling Group in the I<Auto Scaling User Guide>.
 
 
 =head2 ExecutePolicy(PolicyName => Str, [AutoScalingGroupName => Str, BreachThreshold => Num, HonorCooldown => Bool, MetricValue => Num])
@@ -1011,10 +1011,10 @@ Each argument is described in detail in: L<Paws::AutoScaling::ExitStandby>
 
 Returns: a L<Paws::AutoScaling::ExitStandbyAnswer> instance
 
-  Moves the specified instances out of C<Standby> mode.
+  Moves the specified instances out of the standby state.
 
-For more information, see Auto Scaling Lifecycle in the I<Auto Scaling
-User Guide>.
+For more information, see Temporarily Removing Instances from Your Auto
+Scaling Group in the I<Auto Scaling User Guide>.
 
 
 =head2 PutLifecycleHook(AutoScalingGroupName => Str, LifecycleHookName => Str, [DefaultResult => Str, HeartbeatTimeout => Int, LifecycleTransition => Str, NotificationMetadata => Str, NotificationTargetARN => Str, RoleARN => Str])
@@ -1256,16 +1256,15 @@ Returns: nothing
 
   Updates the configuration for the specified Auto Scaling group.
 
+The new settings take effect on any scaling activities after this call
+returns. Scaling activities that are currently in progress aren't
+affected.
+
 To update an Auto Scaling group with a launch configuration with
-C<InstanceMonitoring> set to C<False>, you must first disable the
+C<InstanceMonitoring> set to C<false>, you must first disable the
 collection of group metrics. Otherwise, you will get an error. If you
 have previously enabled the collection of group metrics, you can
 disable it using DisableMetricsCollection.
-
-The new settings are registered upon the completion of this call. Any
-launch configuration settings take effect on any triggers after this
-call returns. Scaling activities that are currently in progress aren't
-affected.
 
 Note the following:
 

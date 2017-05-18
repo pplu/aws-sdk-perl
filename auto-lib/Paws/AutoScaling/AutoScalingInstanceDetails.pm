@@ -67,7 +67,8 @@ replace it.
 
 =head2 B<REQUIRED> LaunchConfigurationName => Str
 
-  The launch configuration associated with the instance.
+  The launch configuration used to launch the instance. This value is not
+available if you attached the instance to the Auto Scaling group.
 
 
 =head2 B<REQUIRED> LifecycleState => Str

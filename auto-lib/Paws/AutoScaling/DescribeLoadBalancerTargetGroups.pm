@@ -43,7 +43,8 @@ The name of the Auto Scaling group.
 
 =head2 MaxRecords => Int
 
-The maximum number of items to return with this call.
+The maximum number of items to return with this call. The default value
+is 50 and the maximum value is 100.
 
 
 
