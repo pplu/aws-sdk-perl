@@ -6,6 +6,7 @@ package Paws::GameLift::FleetAttributes;
   has FleetArn => (is => 'ro', isa => 'Str');
   has FleetId => (is => 'ro', isa => 'Str');
   has LogPaths => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has MetricGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Name => (is => 'ro', isa => 'Str');
   has NewGameSessionProtectionPolicy => (is => 'ro', isa => 'Str');
   has OperatingSystem => (is => 'ro', isa => 'Str');
@@ -86,6 +87,14 @@ path for a fleet is specified, Amazon GameLift will automatically
 upload logs that are stored on each instance at C<C:\game\logs> (for
 Windows) or C</local/game/logs> (for Linux). Use the Amazon GameLift
 console to access stored logs.
+
+
+=head2 MetricGroups => ArrayRef[Str|Undef]
+
+  Names of metric groups that this fleet is included in. In Amazon
+CloudWatch, you can view metrics for an individual fleet or aggregated
+metrics for a fleets that are in a fleet metric group. Currently, a
+fleet can be included in only one metric group at a time.
 
 
 =head2 Name => Str

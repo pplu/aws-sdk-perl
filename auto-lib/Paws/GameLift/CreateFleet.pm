@@ -6,6 +6,7 @@ package Paws::GameLift::CreateFleet;
   has EC2InboundPermissions => (is => 'ro', isa => 'ArrayRef[Paws::GameLift::IpPermission]');
   has EC2InstanceType => (is => 'ro', isa => 'Str', required => 1);
   has LogPaths => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has MetricGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has NewGameSessionProtectionPolicy => (is => 'ro', isa => 'Str');
   has ResourceCreationLimitPolicy => (is => 'ro', isa => 'Paws::GameLift::ResourceCreationLimitPolicy');
@@ -85,6 +86,15 @@ GameLift should store log files once a server process shuts down, use
 the Amazon GameLift server API C<ProcessReady()> and specify one or
 more directory paths in C<logParameters>. See more information in the
 Server API Reference.
+
+
+
+=head2 MetricGroups => ArrayRef[Str|Undef]
+
+Names of metric groups to add this fleet to. Use an existing metric
+group name to add this fleet to the group, or use a new name to create
+a new metric group. Currently, a fleet can only be included in one
+metric group at a time.
 
 
 
