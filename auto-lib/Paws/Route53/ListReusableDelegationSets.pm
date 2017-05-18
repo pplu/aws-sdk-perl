@@ -39,16 +39,25 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Marker => Str
 
-If you're making the second or subsequent call to
-C<ListReusableDelegationSets>, the C<Marker> element matches the value
-that you specified in the C<marker> parameter in the previous request.
+If the value of C<IsTruncated> in the previous response was C<true>,
+you have more reusable delegation sets. To get another group, submit
+another C<ListReusableDelegationSets> request.
+
+For the value of C<marker>, specify the value of C<NextMarker> from the
+previous response, which is the ID of the first reusable delegation set
+that Amazon Route 53 will return if you submit another request.
+
+If the value of C<IsTruncated> in the previous response was C<false>,
+there are no more reusable delegation sets to get.
 
 
 
 =head2 MaxItems => Str
 
-The value that you specified for the C<maxitems> parameter in the
-request that produced the current response.
+The number of reusable delegation sets that you want Amazon Route 53 to
+return in the response to this request. If you specify a value greater
+than 100, Amazon Route 53 returns only the first 100 reusable
+delegation sets.
 
 
 

@@ -43,7 +43,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 B<REQUIRED> HostedZoneId => Str
 
 The ID of the hosted zone that contains the resource record sets that
-you want to get.
+you want to list.
 
 
 
@@ -70,8 +70,8 @@ the current DNS name and type.
 
 =head2 StartRecordName => Str
 
-The first name in the lexicographic ordering of domain names that you
-want the C<ListResourceRecordSets> request to list.
+The first name in the lexicographic ordering of resource record sets
+that you want to list.
 
 
 

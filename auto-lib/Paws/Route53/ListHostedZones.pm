@@ -48,24 +48,26 @@ specify the ID of that reusable delegation set.
 
 =head2 Marker => Str
 
-(Optional) If you have more hosted zones than the value of C<maxitems>,
-C<ListHostedZones> returns only the first C<maxitems> hosted zones. To
-get the next group of C<maxitems> hosted zones, submit another request
-to C<ListHostedZones>. For the value of marker, specify the value of
-the C<NextMarker> element that was returned in the previous response.
+If the value of C<IsTruncated> in the previous response was C<true>,
+you have more hosted zones. To get more hosted zones, submit another
+C<ListHostedZones> request.
 
-Hosted zones are listed in the order in which they were created.
+For the value of C<marker>, specify the value of C<NextMarker> from the
+previous response, which is the ID of the first hosted zone that Amazon
+Route 53 will return if you submit another request.
+
+If the value of C<IsTruncated> in the previous response was C<false>,
+there are no more hosted zones to get.
 
 
 
 =head2 MaxItems => Str
 
-(Optional) The maximum number of hosted zones to be included in the
-response body for this request. If you have more than C<maxitems>
-hosted zones, the value of the C<IsTruncated> element in the response
-is C<true>, and the value of the C<NextMarker> element is the hosted
-zone ID of the first hosted zone in the next group of C<maxitems>
-hosted zones.
+(Optional) The maximum number of hosted zones that you want Amazon
+Route 53 to return. If you have more than C<maxitems> hosted zones, the
+value of C<IsTruncated> in the response is C<true>, and the value of
+C<NextMarker> is the hosted zone ID of the first hosted zone that
+Amazon Route 53 will return if you submit another request.
 
 
 

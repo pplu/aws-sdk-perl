@@ -24,7 +24,7 @@ Paws::Route53::ListTrafficPolicyInstancesByPolicyResponse
 
 If C<IsTruncated> is C<true>, C<HostedZoneIdMarker> is the ID of the
 hosted zone of the first traffic policy instance in the next group of
-C<MaxItems> traffic policy instances.
+traffic policy instances.
 
 
 
@@ -32,7 +32,7 @@ C<MaxItems> traffic policy instances.
 
 A flag that indicates whether there are more traffic policy instances
 to be listed. If the response was truncated, you can get the next group
-of C<MaxItems> traffic policy instances by calling
+of traffic policy instances by calling
 C<ListTrafficPolicyInstancesByPolicy> again and specifying the values
 of the C<HostedZoneIdMarker>, C<TrafficPolicyInstanceNameMarker>, and
 C<TrafficPolicyInstanceTypeMarker> elements in the corresponding

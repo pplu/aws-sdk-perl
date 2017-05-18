@@ -28,16 +28,16 @@ A complex type that contains general information about the hosted zone.
 =head2 B<REQUIRED> IsTruncated => Bool
 
 A flag indicating whether there are more hosted zones to be listed. If
-the response was truncated, you can get the next group of C<maxitems>
-hosted zones by calling C<ListHostedZones> again and specifying the
-value of the C<NextMarker> element in the marker parameter.
+the response was truncated, you can get more hosted zones by submitting
+another C<ListHostedZones> request and specifying the value of
+C<NextMarker> in the C<marker> parameter.
 
 
 
 =head2 Marker => Str
 
 For the second and subsequent calls to C<ListHostedZones>, C<Marker> is
-the value that you specified for the marker parameter in the request
+the value that you specified for the C<marker> parameter in the request
 that produced the current response.
 
 
@@ -52,9 +52,9 @@ to C<ListHostedZones> that produced the current response.
 =head2 NextMarker => Str
 
 If C<IsTruncated> is C<true>, the value of C<NextMarker> identifies the
-first hosted zone in the next group of C<maxitems> hosted zones. Call
-C<ListHostedZones> again and specify the value of C<NextMarker> in the
-C<marker> parameter.
+first hosted zone in the next group of hosted zones. Submit another
+C<ListHostedZones> request, and specify the value of C<NextMarker> from
+the response in the C<marker> parameter.
 
 This element is present only if C<IsTruncated> is C<true>.
 

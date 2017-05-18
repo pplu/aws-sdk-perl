@@ -147,7 +147,6 @@ Configuring Failover in a Private Hosted Zone
 
 =back
 
-Valid values: C<PRIMARY> | C<SECONDARY>
 
 
 =head2 GeoLocation => L<Paws::Route53::GeoLocation>
@@ -316,7 +315,7 @@ names, see DNS Domain Name Format in the I<Amazon Route 53 Developer
 Guide>.
 
 You can use the asterisk (*) wildcard to replace the leftmost label in
-a domain name. For example, C<*.example.com>. Note the following:
+a domain name, for example, C<*.example.com>. Note the following:
 
 =over
 
@@ -351,7 +350,7 @@ C<prod*.example.com>.
 =head2 Region => Str
 
   I<Latency-based resource record sets only:> The Amazon EC2 Region where
-the resource that is specified in this resource record set resides. The
+you created the resource that this resource record set refers to. The
 resource typically is an AWS resource, such as an EC2 instance or an
 ELB load balancer, and is referred to by an IP address or a DNS domain
 name, depending on the record type.
@@ -384,8 +383,8 @@ Region.
 
 You aren't required to create latency resource record sets for all
 Amazon EC2 Regions. Amazon Route 53 will choose the region with the
-best latency from among the regions for which you create latency
-resource record sets.
+best latency from among the regions that you create latency resource
+record sets for.
 
 =item *
 
@@ -451,9 +450,8 @@ changes in health status.
 
 =item *
 
-All of the resource record sets in a group of weighted, latency,
-geolocation, or failover resource record sets must have the same value
-for C<TTL>.
+All of the resource record sets in a group of weighted resource record
+sets must have the same value for C<TTL>.
 
 =item *
 

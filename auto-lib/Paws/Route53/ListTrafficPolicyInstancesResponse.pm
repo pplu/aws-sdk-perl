@@ -23,20 +23,21 @@ Paws::Route53::ListTrafficPolicyInstancesResponse
 =head2 HostedZoneIdMarker => Str
 
 If C<IsTruncated> is C<true>, C<HostedZoneIdMarker> is the ID of the
-hosted zone of the first traffic policy instance in the next group of
-C<MaxItems> traffic policy instances.
+hosted zone of the first traffic policy instance that Amazon Route 53
+will return if you submit another C<ListTrafficPolicyInstances>
+request.
 
 
 
 =head2 B<REQUIRED> IsTruncated => Bool
 
 A flag that indicates whether there are more traffic policy instances
-to be listed. If the response was truncated, you can get the next group
-of C<MaxItems> traffic policy instances by calling
-C<ListTrafficPolicyInstances> again and specifying the values of the
-C<HostedZoneIdMarker>, C<TrafficPolicyInstanceNameMarker>, and
-C<TrafficPolicyInstanceTypeMarker> elements in the corresponding
-request parameters.
+to be listed. If the response was truncated, you can get more traffic
+policy instances by calling C<ListTrafficPolicyInstances> again and
+specifying the values of the C<HostedZoneIdMarker>,
+C<TrafficPolicyInstanceNameMarker>, and
+C<TrafficPolicyInstanceTypeMarker> in the corresponding request
+parameters.
 
 
 
@@ -50,8 +51,8 @@ to C<ListTrafficPolicyInstances> that produced the current response.
 =head2 TrafficPolicyInstanceNameMarker => Str
 
 If C<IsTruncated> is C<true>, C<TrafficPolicyInstanceNameMarker> is the
-name of the first traffic policy instance in the next group of
-C<MaxItems> traffic policy instances.
+name of the first traffic policy instance that Amazon Route 53 will
+return if you submit another C<ListTrafficPolicyInstances> request.
 
 
 
@@ -66,8 +67,8 @@ traffic policy instance that matches the elements in the request.
 
 If C<IsTruncated> is C<true>, C<TrafficPolicyInstanceTypeMarker> is the
 DNS type of the resource record sets that are associated with the first
-traffic policy instance in the next group of C<MaxItems> traffic policy
-instances.
+traffic policy instance that Amazon Route 53 will return if you submit
+another C<ListTrafficPolicyInstances> request.
 
 Valid values are: C<"SOA">, C<"A">, C<"TXT">, C<"NS">, C<"CNAME">, C<"MX">, C<"NAPTR">, C<"PTR">, C<"SRV">, C<"SPF">, C<"AAAA">
 

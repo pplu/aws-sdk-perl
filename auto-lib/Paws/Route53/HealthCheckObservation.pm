@@ -48,7 +48,7 @@ failure reason in C<StatusReport>.
 =head2 Region => Str
 
   The region of the Amazon Route 53 health checker that provided the
-status in StatusReport.
+status in C<StatusReport>.
 
 
 =head2 StatusReport => L<Paws::Route53::StatusReport>

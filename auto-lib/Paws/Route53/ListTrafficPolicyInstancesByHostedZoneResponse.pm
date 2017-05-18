@@ -23,28 +23,27 @@ Paws::Route53::ListTrafficPolicyInstancesByHostedZoneResponse
 
 A flag that indicates whether there are more traffic policy instances
 to be listed. If the response was truncated, you can get the next group
-of C<MaxItems> traffic policy instances by calling
-C<ListTrafficPolicyInstancesByHostedZone> again and specifying the
-values of the C<HostedZoneIdMarker>,
-C<TrafficPolicyInstanceNameMarker>, and
-C<TrafficPolicyInstanceTypeMarker> elements in the corresponding
-request parameters.
+of traffic policy instances by submitting another
+C<ListTrafficPolicyInstancesByHostedZone> request and specifying the
+values of C<HostedZoneIdMarker>, C<TrafficPolicyInstanceNameMarker>,
+and C<TrafficPolicyInstanceTypeMarker> in the corresponding request
+parameters.
 
 
 
 =head2 B<REQUIRED> MaxItems => Str
 
-The value that you specified for the C<MaxItems> parameter in the call
-to C<ListTrafficPolicyInstancesByHostedZone> that produced the current
-response.
+The value that you specified for the C<MaxItems> parameter in the
+C<ListTrafficPolicyInstancesByHostedZone> request that produced the
+current response.
 
 
 
 =head2 TrafficPolicyInstanceNameMarker => Str
 
 If C<IsTruncated> is C<true>, C<TrafficPolicyInstanceNameMarker> is the
-name of the first traffic policy instance in the next group of
-C<MaxItems> traffic policy instances.
+name of the first traffic policy instance in the next group of traffic
+policy instances.
 
 
 
@@ -59,8 +58,7 @@ traffic policy instance that matches the elements in the request.
 
 If C<IsTruncated> is true, C<TrafficPolicyInstanceTypeMarker> is the
 DNS type of the resource record sets that are associated with the first
-traffic policy instance in the next group of C<MaxItems> traffic policy
-instances.
+traffic policy instance in the next group of traffic policy instances.
 
 Valid values are: C<"SOA">, C<"A">, C<"TXT">, C<"NS">, C<"CNAME">, C<"MX">, C<"NAPTR">, C<"PTR">, C<"SRV">, C<"SPF">, C<"AAAA">
 

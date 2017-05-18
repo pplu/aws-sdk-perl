@@ -51,8 +51,8 @@ you want to give the new tag.
 
 =item *
 
-B<Edit a tag>: C<Key> is the name of the tag whose C<Value> element you
-want to remove.
+B<Edit a tag>: C<Key> is the name of the tag that you want to change
+the C<Value> for.
 
 =item *
 

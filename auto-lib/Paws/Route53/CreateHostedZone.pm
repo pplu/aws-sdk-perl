@@ -45,8 +45,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 A unique string that identifies the request and that allows failed
 C<CreateHostedZone> requests to be retried without the risk of
 executing the operation twice. You must use a unique C<CallerReference>
-string every time you create a hosted zone. C<CallerReference> can be
-any unique string, for example, a date/time stamp.
+string every time you submit a C<CreateHostedZone> request.
+C<CallerReference> can be any unique string, for example, a date/time
+stamp.
 
 
 
@@ -57,30 +58,26 @@ zone, the ID that Amazon Route 53 assigned to the reusable delegation
 set when you created it. For more information about reusable delegation
 sets, see CreateReusableDelegationSet.
 
-=over
-
-=item Type
-
-String
-
-=item Default
-
-None
-
-=item Parent
-
-C<CreatedHostedZoneRequest>
-
-=back
-
-
 
 
 =head2 HostedZoneConfig => L<Paws::Route53::HostedZoneConfig>
 
-(Optional) A complex type that contains an optional comment about your
-hosted zone. If you don't want to specify a comment, omit both the
-C<HostedZoneConfig> and C<Comment> elements.
+(Optional) A complex type that contains the following optional values:
+
+=over
+
+=item *
+
+For public and private hosted zones, an optional comment
+
+=item *
+
+For private hosted zones, an optional C<PrivateZone> element
+
+=back
+
+If you don't specify a comment or the C<PrivateZone> element, omit
+C<HostedZoneConfig> and the other elements.
 
 
 
@@ -97,15 +94,18 @@ If you're creating a public hosted zone, this is the name you have
 registered with your DNS registrar. If your domain name is registered
 with a registrar other than Amazon Route 53, change the name servers
 for your domain to the set of C<NameServers> that C<CreateHostedZone>
-returns in the DelegationSet element.
+returns in C<DelegationSet>.
 
 
 
 =head2 VPC => L<Paws::Route53::VPC>
 
-The VPC that you want your hosted zone to be associated with. By
-providing this parameter, your newly created hosted can't be resolved
-anywhere other than the given VPC.
+(Private hosted zones only) A complex type that contains information
+about the Amazon VPC that you're associating with this hosted zone.
+
+You can specify only one Amazon VPC when you create a private hosted
+zone. To associate additional Amazon VPCs with the hosted zone, use
+AssociateVPCWithHostedZone after you create a hosted zone.
 
 
 

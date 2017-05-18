@@ -46,15 +46,15 @@ The new comment for the specified traffic policy and version.
 
 =head2 B<REQUIRED> Id => Str
 
-The value of C<Id> for the traffic policy for which you want to update
-the comment.
+The value of C<Id> for the traffic policy that you want to update the
+comment for.
 
 
 
 =head2 B<REQUIRED> Version => Int
 
-The value of C<Version> for the traffic policy for which you want to
-update the comment.
+The value of C<Version> for the traffic policy that you want to update
+the comment for.
 
 
 

@@ -53,7 +53,7 @@ arithmetic operation that is used for the comparison.
 =head2 Dimensions => ArrayRef[L<Paws::Route53::Dimension>]
 
   For the metric that the CloudWatch alarm is associated with, a complex
-type that contains information about the dimensions for the metric.For
+type that contains information about the dimensions for the metric. For
 information, see Amazon CloudWatch Namespaces, Dimensions, and Metrics
 Reference in the I<Amazon CloudWatch User Guide>.
 

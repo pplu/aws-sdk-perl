@@ -33,19 +33,16 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Route53::De
 
 =head1 DESCRIPTION
 
-A complex type that describes the name servers for this hosted zone.
+A complex type that lists the name servers in a delegation set, as well
+as the C<CallerReference> and the C<ID> for the delegation set.
 
 =head1 ATTRIBUTES
 
 
 =head2 CallerReference => Str
 
-  A unique string that identifies the request, and that allows you to
-retry failed C<CreateReusableDelegationSet> requests without the risk
-of executing the operation twice. You must use a unique
-C<CallerReference> string every time you submit a
-C<CreateReusableDelegationSet> request. C<CallerReference> can be any
-unique string, for example, a date/time stamp.
+  The value that you specified for C<CallerReference> when you created
+the reusable delegation set.
 
 
 =head2 Id => Str
@@ -56,7 +53,7 @@ unique string, for example, a date/time stamp.
 =head2 B<REQUIRED> NameServers => ArrayRef[Str|Undef]
 
   A complex type that contains a list of the authoritative name servers
-for the hosted zone.
+for a hosted zone or for a reusable delegation set.
 
 
 

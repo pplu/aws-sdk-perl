@@ -50,27 +50,23 @@ list all versions.
 The maximum number of traffic policy versions that you want Amazon
 Route 53 to include in the response body for this request. If the
 specified traffic policy has more than C<MaxItems> versions, the value
-of the C<IsTruncated> element in the response is C<true>, and the value
-of the C<TrafficPolicyVersionMarker> element is the ID of the first
-version in the next group of C<MaxItems> traffic policy versions.
+of C<IsTruncated> in the response is C<true>, and the value of the
+C<TrafficPolicyVersionMarker> element is the ID of the first version
+that Amazon Route 53 will return if you submit another request.
 
 
 
 =head2 TrafficPolicyVersionMarker => Str
 
-For your first request to C<ListTrafficPolicyVersions>, do not include
+For your first request to C<ListTrafficPolicyVersions>, don't include
 the C<TrafficPolicyVersionMarker> parameter.
 
 If you have more traffic policy versions than the value of C<MaxItems>,
 C<ListTrafficPolicyVersions> returns only the first group of
-C<MaxItems> versions. To get the next group of C<MaxItems> traffic
-policy versions, submit another request to
-C<ListTrafficPolicyVersions>. For the value of
-C<TrafficPolicyVersionMarker>, specify the value of the
-C<TrafficPolicyVersionMarker> element that was returned in the previous
-response.
-
-Traffic policy versions are listed in sequential order.
+C<MaxItems> versions. To get more traffic policy versions, submit
+another C<ListTrafficPolicyVersions> request. For the value of
+C<TrafficPolicyVersionMarker>, specify the value of
+C<TrafficPolicyVersionMarker> in the previous response.
 
 
 

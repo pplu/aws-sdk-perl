@@ -38,7 +38,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> HealthCheckId => Str
 
-The ID for the health check for which you want the current status. When
+The ID for the health check that you want the current status for. When
 you created the health check, C<CreateHealthCheck> returned the ID in
 the response, in the C<HealthCheckId> element.
 

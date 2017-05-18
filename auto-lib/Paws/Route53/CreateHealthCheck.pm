@@ -39,10 +39,40 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> CallerReference => Str
 
-A unique string that identifies the request and that allows failed
-C<CreateHealthCheck> requests to be retried without the risk of
-executing the operation twice. You must use a unique C<CallerReference>
-string every time you create a health check.
+A unique string that identifies the request and that allows you to
+retry a failed C<CreateHealthCheck> request without the risk of
+creating two identical health checks:
+
+=over
+
+=item *
+
+If you send a C<CreateHealthCheck> request with the same
+C<CallerReference> and settings as a previous request, and if the
+health check doesn't exist, Amazon Route 53 creates the health check.
+If the health check does exist, Amazon Route 53 returns the settings
+for the existing health check.
+
+=item *
+
+If you send a C<CreateHealthCheck> request with the same
+C<CallerReference> as a deleted health check, regardless of the
+settings, Amazon Route 53 returns a C<HealthCheckAlreadyExists> error.
+
+=item *
+
+If you send a C<CreateHealthCheck> request with the same
+C<CallerReference> as an existing health check but with different
+settings, Amazon Route 53 returns a C<HealthCheckAlreadyExists> error.
+
+=item *
+
+If you send a C<CreateHealthCheck> request with a unique
+C<CallerReference> but settings identical to an existing health check,
+Amazon Route 53 creates the health check.
+
+=back
+
 
 
 

@@ -19,20 +19,22 @@ Paws::Route53::GetHostedZoneResponse
 
 =head2 DelegationSet => L<Paws::Route53::DelegationSet>
 
-A complex type that describes the name servers for this hosted zone.
+A complex type that lists the Amazon Route 53 name servers for the
+specified hosted zone.
 
 
 
 =head2 B<REQUIRED> HostedZone => L<Paws::Route53::HostedZone>
 
-A complex type that contains general information about the hosted zone.
+A complex type that contains general information about the specified
+hosted zone.
 
 
 
 =head2 VPCs => ArrayRef[L<Paws::Route53::VPC>]
 
-A complex type that contains information about VPCs associated with the
-specified hosted zone.
+A complex type that contains information about the VPCs that are
+associated with the specified hosted zone.
 
 
 

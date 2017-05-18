@@ -40,9 +40,9 @@ checker reports and the time of the health check.
 
 =head2 CheckedTime => Str
 
-  The time at which the health checker performed the health check in ISO
-8601 format and Coordinated Universal Time (UTC). For example, the
-value C<2014-10-27T17:48:16.751Z> represents October 27, 2014 at
+  The date and time that the health checker performed the health check in
+ISO 8601 format and Coordinated Universal Time (UTC). For example, the
+value C<2017-03-27T17:48:16.751Z> represents March 27, 2017 at
 17:48:16.751 UTC.
 
 
