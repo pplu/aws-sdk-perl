@@ -2,6 +2,7 @@
 package Paws::CloudFormation::UpdateStack;
   use Moose;
   has Capabilities => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has ClientRequestToken => (is => 'ro', isa => 'Str');
   has NotificationARNs => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Parameters => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::Parameter]');
   has ResourceTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
@@ -71,6 +72,16 @@ action returns an C<InsufficientCapabilities> error.
 
 For more information, see Acknowledging IAM Resources in AWS
 CloudFormation Templates.
+
+
+
+=head2 ClientRequestToken => Str
+
+A unique identifier for this C<UpdateStack> request. Specify this token
+if you plan to retry requests so that AWS CloudFormation knows that
+you're not attempting to update a stack with the same name. You might
+retry C<UpdateStack> requests to ensure that AWS CloudFormation
+successfully received them.
 
 
 
@@ -201,8 +212,9 @@ Structure containing the template body with a minimum length of 1 byte
 and a maximum length of 51,200 bytes. (For more information, go to
 Template Anatomy in the AWS CloudFormation User Guide.)
 
-Conditional: You must specify either the C<TemplateBody> or the
-C<TemplateURL> parameter, but not both.
+Conditional: You must specify only one of the following parameters:
+C<TemplateBody>, C<TemplateURL>, or set the C<UsePreviousTemplate> to
+C<true>.
 
 
 
@@ -212,8 +224,9 @@ Location of file containing the template body. The URL must point to a
 template that is located in an Amazon S3 bucket. For more information,
 go to Template Anatomy in the AWS CloudFormation User Guide.
 
-Conditional: You must specify either the C<TemplateBody> or the
-C<TemplateURL> parameter, but not both.
+Conditional: You must specify only one of the following parameters:
+C<TemplateBody>, C<TemplateURL>, or set the C<UsePreviousTemplate> to
+C<true>.
 
 
 
@@ -221,6 +234,10 @@ C<TemplateURL> parameter, but not both.
 
 Reuse the existing template that is associated with the stack that you
 are updating.
+
+Conditional: You must specify only one of the following parameters:
+C<TemplateBody>, C<TemplateURL>, or set the C<UsePreviousTemplate> to
+C<true>.
 
 
 

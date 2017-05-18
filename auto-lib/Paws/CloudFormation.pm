@@ -319,13 +319,13 @@ dependencies between the resources for you.
 For more information about AWS CloudFormation, see the AWS
 CloudFormation Product Page.
 
-Amazon CloudFormation makes use of other AWS products. For additional
-technical information about a specific AWS product, see its technical
-documentation.
+Amazon CloudFormation makes use of other AWS products. If you need
+additional technical information about a specific AWS product, you can
+find the product's technical documentation at docs.aws.amazon.com.
 
 =head1 METHODS
 
-=head2 CancelUpdateStack(StackName => Str)
+=head2 CancelUpdateStack(StackName => Str, [ClientRequestToken => Str])
 
 Each argument is described in detail in: L<Paws::CloudFormation::CancelUpdateStack>
 
@@ -338,7 +338,7 @@ previous stack configuration.
 You can cancel only stacks that are in the UPDATE_IN_PROGRESS state.
 
 
-=head2 ContinueUpdateRollback(StackName => Str, [ResourcesToSkip => ArrayRef[Str|Undef], RoleARN => Str])
+=head2 ContinueUpdateRollback(StackName => Str, [ClientRequestToken => Str, ResourcesToSkip => ArrayRef[Str|Undef], RoleARN => Str])
 
 Each argument is described in detail in: L<Paws::CloudFormation::ContinueUpdateRollback>
 
@@ -366,23 +366,31 @@ Each argument is described in detail in: L<Paws::CloudFormation::CreateChangeSet
 
 Returns: a L<Paws::CloudFormation::CreateChangeSetOutput> instance
 
-  Creates a list of changes for a stack. AWS CloudFormation generates the
-change set by comparing the template's information with the information
-that you submit. A change set can help you understand which resources
-AWS CloudFormation will change, and how it will change them, before you
-update your stack. Change sets allow you to check before making a
-change to avoid deleting or replacing critical resources.
+  Creates a list of changes that will be applied to a stack so that you
+can review the changes before executing them. You can create a change
+set for a stack that doesn't exist or an existing stack. If you create
+a change set for a stack that doesn't exist, the change set shows all
+of the resources that AWS CloudFormation will create. If you create a
+change set for an existing stack, AWS CloudFormation compares the
+stack's information with the information that you submit in the change
+set and lists the differences. Use change sets to understand which
+resources AWS CloudFormation will create or change, and how it will
+change resources in an existing stack, before you create or update a
+stack.
 
-AWS CloudFormation doesn't make any changes to the stack when you
-create a change set. To make the specified changes, you must execute
-the change set by using the ExecuteChangeSet action.
+To create a change set for a stack that doesn't exist, for the
+C<ChangeSetType> parameter, specify C<CREATE>. To create a change set
+for an existing stack, specify C<UPDATE> for the C<ChangeSetType>
+parameter. After the C<CreateChangeSet> call successfully completes,
+AWS CloudFormation starts creating the change set. To check the status
+of the change set or to review it, use the DescribeChangeSet action.
 
-After the call successfully completes, AWS CloudFormation starts
-creating the change set. To check the status of the change set, use the
-DescribeChangeSet action.
+When you are satisfied with the changes the change set will make,
+execute the change set by using the ExecuteChangeSet action. AWS
+CloudFormation doesn't make changes until you execute the change set.
 
 
-=head2 CreateStack(StackName => Str, [Capabilities => ArrayRef[Str|Undef], DisableRollback => Bool, NotificationARNs => ArrayRef[Str|Undef], OnFailure => Str, Parameters => ArrayRef[L<Paws::CloudFormation::Parameter>], ResourceTypes => ArrayRef[Str|Undef], RoleARN => Str, StackPolicyBody => Str, StackPolicyURL => Str, Tags => ArrayRef[L<Paws::CloudFormation::Tag>], TemplateBody => Str, TemplateURL => Str, TimeoutInMinutes => Int])
+=head2 CreateStack(StackName => Str, [Capabilities => ArrayRef[Str|Undef], ClientRequestToken => Str, DisableRollback => Bool, NotificationARNs => ArrayRef[Str|Undef], OnFailure => Str, Parameters => ArrayRef[L<Paws::CloudFormation::Parameter>], ResourceTypes => ArrayRef[Str|Undef], RoleARN => Str, StackPolicyBody => Str, StackPolicyURL => Str, Tags => ArrayRef[L<Paws::CloudFormation::Tag>], TemplateBody => Str, TemplateURL => Str, TimeoutInMinutes => Int])
 
 Each argument is described in detail in: L<Paws::CloudFormation::CreateStack>
 
@@ -406,7 +414,7 @@ If the call successfully completes, AWS CloudFormation successfully
 deleted the change set.
 
 
-=head2 DeleteStack(StackName => Str, [RetainResources => ArrayRef[Str|Undef], RoleARN => Str])
+=head2 DeleteStack(StackName => Str, [ClientRequestToken => Str, RetainResources => ArrayRef[Str|Undef], RoleARN => Str])
 
 Each argument is described in detail in: L<Paws::CloudFormation::DeleteStack>
 
@@ -517,7 +525,7 @@ an AWS Simple Monthly Calculator URL with a query string that describes
 the resources required to run the template.
 
 
-=head2 ExecuteChangeSet(ChangeSetName => Str, [StackName => Str])
+=head2 ExecuteChangeSet(ChangeSetName => Str, [ClientRequestToken => Str, StackName => Str])
 
 Each argument is described in detail in: L<Paws::CloudFormation::ExecuteChangeSet>
 
@@ -672,7 +680,7 @@ API is useful in cases where you want to send signals from anywhere
 other than an Amazon EC2 instance.
 
 
-=head2 UpdateStack(StackName => Str, [Capabilities => ArrayRef[Str|Undef], NotificationARNs => ArrayRef[Str|Undef], Parameters => ArrayRef[L<Paws::CloudFormation::Parameter>], ResourceTypes => ArrayRef[Str|Undef], RoleARN => Str, StackPolicyBody => Str, StackPolicyDuringUpdateBody => Str, StackPolicyDuringUpdateURL => Str, StackPolicyURL => Str, Tags => ArrayRef[L<Paws::CloudFormation::Tag>], TemplateBody => Str, TemplateURL => Str, UsePreviousTemplate => Bool])
+=head2 UpdateStack(StackName => Str, [Capabilities => ArrayRef[Str|Undef], ClientRequestToken => Str, NotificationARNs => ArrayRef[Str|Undef], Parameters => ArrayRef[L<Paws::CloudFormation::Parameter>], ResourceTypes => ArrayRef[Str|Undef], RoleARN => Str, StackPolicyBody => Str, StackPolicyDuringUpdateBody => Str, StackPolicyDuringUpdateURL => Str, StackPolicyURL => Str, Tags => ArrayRef[L<Paws::CloudFormation::Tag>], TemplateBody => Str, TemplateURL => Str, UsePreviousTemplate => Bool])
 
 Each argument is described in detail in: L<Paws::CloudFormation::UpdateStack>
 

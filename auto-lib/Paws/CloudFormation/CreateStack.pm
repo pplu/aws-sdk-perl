@@ -2,6 +2,7 @@
 package Paws::CloudFormation::CreateStack;
   use Moose;
   has Capabilities => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has ClientRequestToken => (is => 'ro', isa => 'Str');
   has DisableRollback => (is => 'ro', isa => 'Bool');
   has NotificationARNs => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has OnFailure => (is => 'ro', isa => 'Str');
@@ -71,6 +72,16 @@ action returns an C<InsufficientCapabilities> error.
 
 For more information, see Acknowledging IAM Resources in AWS
 CloudFormation Templates.
+
+
+
+=head2 ClientRequestToken => Str
+
+A unique identifier for this C<CreateStack> request. Specify this token
+if you plan to retry requests so that AWS CloudFormation knows that
+you're not attempting to create a stack with the same name. You might
+retry C<CreateStack> requests to ensure that AWS CloudFormation
+successfully received them.
 
 
 
