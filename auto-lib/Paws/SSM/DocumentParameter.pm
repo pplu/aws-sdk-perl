@@ -60,8 +60,7 @@ value, and whether or not the parameter is optional.
 
 =head2 Type => Str
 
-  The type of parameter. The type can be either E<ldquo>StringE<rdquo> or
-E<ldquo>StringListE<rdquo>.
+  The type of parameter. The type can be either String or StringList.
 
 
 

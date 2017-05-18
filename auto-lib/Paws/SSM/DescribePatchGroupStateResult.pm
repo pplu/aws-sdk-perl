@@ -32,8 +32,8 @@ failed to install.
 
 =head2 InstancesWithInstalledOtherPatches => Int
 
-The number of instances with patches installed that arenE<rsquo>t
-defined in the patch baseline.
+The number of instances with patches installed that aren't defined in
+the patch baseline.
 
 
 =head2 InstancesWithInstalledPatches => Int
@@ -48,7 +48,7 @@ The number of instances with missing patches from the patch baseline.
 
 =head2 InstancesWithNotApplicablePatches => Int
 
-The number of instances with patches that arenE<rsquo>t applicable.
+The number of instances with patches that aren't applicable.
 
 
 =head2 _request_id => Str

@@ -39,8 +39,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 Filters => ArrayRef[L<Paws::SSM::MaintenanceWindowFilter>]
 
 Optional filters that can be used to narrow down the scope of the
-returned window targets. The supported filter keys are C<Type>,
-C<WindowTargetId> and C<OwnerInformation>.
+returned window targets. The supported filter keys are Type,
+WindowTargetId and OwnerInformation.
 
 
 

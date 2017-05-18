@@ -40,12 +40,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 Each entry in the array is a structure containing:
 
-Key (string, 1 E<le> length E<le> 128)
+Key (string, between 1 and 128 characters)
 
-Values (array of strings 1 E<le> length E<le> 256)
+Values (array of strings, each string is between 1 and 256 characters)
 
-The supported Keys are C<ExecutedBefore> and C<ExecutedAfter> with the
-value being a date/time string such as 2016-11-04T05:00:00Z.
+The supported Keys are ExecutedBefore and ExecutedAfter with the value
+being a date/time string such as 2016-11-04T05:00:00Z.
 
 
 

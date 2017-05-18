@@ -47,7 +47,7 @@ EC2 resources.
 
 =head2 Description => Str
 
-A user-defined description of the resource that you want to register
+A userdefined description of the resource that you want to register
 with Amazon EC2.
 
 

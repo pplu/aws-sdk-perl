@@ -52,8 +52,8 @@ successful, this would return the count of instances by status.
 
 =head2 Status => Str
 
-  The status of the association. Status can be: C<Pending>, C<Success>,
-or C<Failed>.
+  The status of the association. Status can be: Pending, Success, or
+Failed.
 
 
 

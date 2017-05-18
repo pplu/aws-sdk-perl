@@ -80,31 +80,31 @@ be a public document or a custom document.
 
 =head2 InstanceIds => ArrayRef[Str|Undef]
 
-Required. The instance IDs where the command should execute. You can
-specify a maximum of 50 IDs.
+The instance IDs where the command should execute. You can specify a
+maximum of 50 IDs. If you prefer not to list individual instance IDs,
+you can instead send commands to a fleet of instances using the Targets
+parameter, which accepts EC2 tags.
 
 
 
 =head2 MaxConcurrency => Str
 
 (Optional) The maximum number of instances that are allowed to execute
-the command at the same time. You can specify a number such as
-E<ldquo>10E<rdquo> or a percentage such as E<ldquo>10%E<rdquo>. The
-default value is 50. For more information about how to use
-C<MaxConcurrency>, see Executing a Command Using Systems Manager Run
-Command.
+the command at the same time. You can specify a number such as 10 or a
+percentage such as 10%. The default value is 50. For more information
+about how to use MaxConcurrency, see Executing a Command Using Systems
+Manager Run Command.
 
 
 
 =head2 MaxErrors => Str
 
 The maximum number of errors allowed without the command failing. When
-the command fails one more time beyond the value of C<MaxErrors>, the
+the command fails one more time beyond the value of MaxErrors, the
 systems stops sending the command to additional targets. You can
-specify a number like E<ldquo>10E<rdquo> or a percentage like
-E<ldquo>10%E<rdquo>. The default value is 50. For more information
-about how to use C<MaxErrors>, see Executing a Command Using Systems
-Manager Run Command.
+specify a number like 10 or a percentage like 10%. The default value is
+50. For more information about how to use MaxErrors, see Executing a
+Command Using Systems Manager Run Command.
 
 
 
@@ -152,9 +152,9 @@ The IAM role that Systems Manager uses to send notifications.
 =head2 Targets => ArrayRef[L<Paws::SSM::Target>]
 
 (Optional) An array of search criteria that targets instances using a
-C<Key>,C<Value> combination that you specify. C<Targets> is required if
-you don't provide one or more instance IDs in the call. For more
-information about how to use C<Targets>, see Executing a Command Using
+Key,Value combination that you specify. Targets is required if you
+don't provide one or more instance IDs in the call. For more
+information about how to use Targets, see Executing a Command Using
 Systems Manager Run Command.
 
 

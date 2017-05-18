@@ -85,9 +85,9 @@ that was retrieved.
 The parameters passed to the task when it was executed. The map has the
 following format:
 
-Key: string, 1 E<le> length E<le> 255
+Key: string, between 1 and 255 characters
 
-Value: an array of strings where each string 1 E<le> length E<le> 255
+Value: an array of strings, each string is between 1 and 255 characters
 
 
 =head2 Type => Str

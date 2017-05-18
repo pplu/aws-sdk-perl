@@ -77,7 +77,7 @@ Base ID).
 
 =head2 Language => Str
 
-  The language of the patch if itE<rsquo>s language-specific.
+  The language of the patch if it's language-specific.
 
 
 =head2 MsrcNumber => Str

@@ -3,9 +3,11 @@ package Paws::SSM::UpdateAssociation;
   use Moose;
   has AssociationId => (is => 'ro', isa => 'Str', required => 1);
   has DocumentVersion => (is => 'ro', isa => 'Str');
+  has Name => (is => 'ro', isa => 'Str');
   has OutputLocation => (is => 'ro', isa => 'Paws::SSM::InstanceAssociationOutputLocation');
   has Parameters => (is => 'ro', isa => 'Paws::SSM::Parameters');
   has ScheduleExpression => (is => 'ro', isa => 'Str');
+  has Targets => (is => 'ro', isa => 'ArrayRef[Paws::SSM::Target]');
 
   use MooseX::ClassAttribute;
 
@@ -49,14 +51,16 @@ The document version you want update for the association.
 
 
 
+=head2 Name => Str
+
+The name of the association document.
+
+
+
 =head2 OutputLocation => L<Paws::SSM::InstanceAssociationOutputLocation>
 
 An Amazon S3 bucket where you want to store the results of this
 request.
-
-C<"{ \"S3Location\": { \"OutputS3Region\": \"E<lt>regionE<gt>\",
-\"OutputS3BucketName\": \"bucket name\", \"OutputS3KeyPrefix\":
-\"folder name\" } }">
 
 
 
@@ -71,11 +75,13 @@ parameter using Parameter Store, you can reference the parameter using
 =head2 ScheduleExpression => Str
 
 The cron expression used to schedule the association that you want to
-update. Supported expressions are every half, 1, 2, 4, 8 or 12 hour(s);
-every specified day and time of the week. For example: cron(0 0/30 *
-1/1 * ? *) to run every thirty minutes; cron(0 0 0/4 1/1 * ? *) to run
-every four hours; and cron(0 0 10 ? * SUN *) to run every Sunday at 10
-a.m.
+update.
+
+
+
+=head2 Targets => ArrayRef[L<Paws::SSM::Target>]
+
+The targets of the association.
 
 
 

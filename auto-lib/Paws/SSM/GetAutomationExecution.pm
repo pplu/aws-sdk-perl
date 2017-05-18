@@ -36,7 +36,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 B<REQUIRED> AutomationExecutionId => Str
 
 The unique identifier for an existing automation execution to examine.
-The execution ID is returned by C<StartAutomationExecution> when the
+The execution ID is returned by StartAutomationExecution when the
 execution of an Automation document is initiated.
 
 
