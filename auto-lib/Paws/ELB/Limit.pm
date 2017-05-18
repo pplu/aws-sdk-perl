@@ -1,14 +1,14 @@
-package Paws::ELB::ListenerDescription;
+package Paws::ELB::Limit;
   use Moose;
-  has Listener => (is => 'ro', isa => 'Paws::ELB::Listener');
-  has PolicyNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has Max => (is => 'ro', isa => 'Str');
+  has Name => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::ELB::ListenerDescription
+Paws::ELB::Limit
 
 =head1 USAGE
 
@@ -19,32 +19,46 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::ELB::ListenerDescription object:
+As an example, if Att1 is expected to be a Paws::ELB::Limit object:
 
-  $service_obj->Method(Att1 => { Listener => $value, ..., PolicyNames => $value  });
+  $service_obj->Method(Att1 => { Max => $value, ..., Name => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::ELB::ListenerDescription object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::ELB::Limit object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Listener
+  $result->Att1->Max
 
 =head1 DESCRIPTION
 
-The policies enabled for a listener.
+Information about an Elastic Load Balancing resource limit for your AWS
+account.
 
 =head1 ATTRIBUTES
 
 
-=head2 Listener => L<Paws::ELB::Listener>
+=head2 Max => Str
 
-  The listener.
+  The maximum value of the limit.
 
 
-=head2 PolicyNames => ArrayRef[Str|Undef]
+=head2 Name => Str
 
-  The policies. If there are no policies enabled, the list is empty.
+  The name of the limit. The possible values are:
+
+=over
+
+=item *
+
+classic-listeners
+
+=item *
+
+classic-load-balancers
+
+=back
+
 
 
 

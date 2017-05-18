@@ -18,7 +18,7 @@ Paws::ELB::ModifyLoadBalancerAttributesOutput
 
 =head2 LoadBalancerAttributes => L<Paws::ELB::LoadBalancerAttributes>
 
-
+Information about the load balancer attributes.
 
 
 =head2 LoadBalancerName => Str

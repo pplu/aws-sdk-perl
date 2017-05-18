@@ -66,7 +66,7 @@ Information about a load balancer.
   The DNS name of the load balancer.
 
 For more information, see Configure a Custom Domain Name in the
-I<Classic Load Balancers Guide>.
+I<Classic Load Balancer Guide>.
 
 
 =head2 CanonicalHostedZoneNameID => Str
