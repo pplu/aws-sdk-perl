@@ -38,34 +38,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 The domain for which you want to delete one or more tags.
 
-The name of a domain.
-
-Type: String
-
-Default: None
-
-Constraints: The domain name can contain only the letters a through z,
-the numbers 0 through 9, and hyphen (-). Hyphens are allowed only when
-they're surrounded by letters, numbers, or other hyphens. You can't
-specify a hyphen at the beginning or end of a label. To specify an
-Internationalized Domain Name, you must convert the name to Punycode.
-
-Required: Yes
-
 
 
 =head2 B<REQUIRED> TagsToDelete => ArrayRef[Str|Undef]
 
 A list of tag keys to delete.
-
-Type: A list that contains the keys of the tags that you want to
-delete.
-
-Default: None
-
-Required: No
-
-'E<gt>
 
 
 

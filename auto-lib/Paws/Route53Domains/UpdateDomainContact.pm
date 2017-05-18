@@ -40,30 +40,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 Provides detailed contact information.
 
-Type: Complex
-
-Children: C<FirstName>, C<MiddleName>, C<LastName>, C<ContactType>,
-C<OrganizationName>, C<AddressLine1>, C<AddressLine2>, C<City>,
-C<State>, C<CountryCode>, C<ZipCode>, C<PhoneNumber>, C<Email>, C<Fax>,
-C<ExtraParams>
-
-Required: Yes
-
 
 
 =head2 B<REQUIRED> DomainName => Str
 
-The name of a domain.
-
-Type: String
-
-Default: None
-
-Constraints: The domain name can contain only the letters a through z,
-the numbers 0 through 9, and hyphen (-). Internationalized Domain Names
-are not supported.
-
-Required: Yes
+The name of the domain that you want to update contact information for.
 
 
 
@@ -71,29 +52,11 @@ Required: Yes
 
 Provides detailed contact information.
 
-Type: Complex
-
-Children: C<FirstName>, C<MiddleName>, C<LastName>, C<ContactType>,
-C<OrganizationName>, C<AddressLine1>, C<AddressLine2>, C<City>,
-C<State>, C<CountryCode>, C<ZipCode>, C<PhoneNumber>, C<Email>, C<Fax>,
-C<ExtraParams>
-
-Required: Yes
-
 
 
 =head2 TechContact => L<Paws::Route53Domains::ContactDetail>
 
 Provides detailed contact information.
-
-Type: Complex
-
-Children: C<FirstName>, C<MiddleName>, C<LastName>, C<ContactType>,
-C<OrganizationName>, C<AddressLine1>, C<AddressLine2>, C<City>,
-C<State>, C<CountryCode>, C<ZipCode>, C<PhoneNumber>, C<Email>, C<Fax>,
-C<ExtraParams>
-
-Required: Yes
 
 
 

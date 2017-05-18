@@ -41,26 +41,15 @@ domain, to report that the domain is being used to send spam, to report
 that someone is cybersquatting on a domain name, or report some other
 type of abuse.
 
-Type: String
-
 
 =head2 AbuseContactPhone => Str
 
 Phone number for reporting abuse.
 
-Type: String
-
 
 =head2 B<REQUIRED> AdminContact => L<Paws::Route53Domains::ContactDetail>
 
 Provides details about the domain administrative contact.
-
-Type: Complex
-
-Children: C<FirstName>, C<MiddleName>, C<LastName>, C<ContactType>,
-C<OrganizationName>, C<AddressLine1>, C<AddressLine2>, C<City>,
-C<State>, C<CountryCode>, C<ZipCode>, C<PhoneNumber>, C<Email>, C<Fax>,
-C<ExtraParams>
 
 
 =head2 AdminPrivacy => Bool
@@ -70,15 +59,11 @@ concealed from WHOIS queries. If the value is C<true>, WHOIS ("who is")
 queries will return contact information for our registrar partner,
 Gandi, instead of the contact information that you enter.
 
-Type: Boolean
-
 
 =head2 AutoRenew => Bool
 
 Specifies whether the domain registration is set to renew
 automatically.
-
-Type: Boolean
 
 
 =head2 CreationDate => Str
@@ -96,8 +81,6 @@ Reserved for future use.
 
 The name of a domain.
 
-Type: String
-
 
 =head2 ExpirationDate => Str
 
@@ -109,19 +92,10 @@ date format is Unix time.
 
 The name of the domain.
 
-Type: String
-
 
 =head2 B<REQUIRED> RegistrantContact => L<Paws::Route53Domains::ContactDetail>
 
 Provides details about the domain registrant.
-
-Type: Complex
-
-Children: C<FirstName>, C<MiddleName>, C<LastName>, C<ContactType>,
-C<OrganizationName>, C<AddressLine1>, C<AddressLine2>, C<City>,
-C<State>, C<CountryCode>, C<ZipCode>, C<PhoneNumber>, C<Email>, C<Fax>,
-C<ExtraParams>
 
 
 =head2 RegistrantPrivacy => Bool
@@ -131,8 +105,6 @@ concealed from WHOIS queries. If the value is C<true>, WHOIS ("who is")
 queries will return contact information for our registrar partner,
 Gandi, instead of the contact information that you enter.
 
-Type: Boolean
-
 
 =head2 RegistrarName => Str
 
@@ -140,14 +112,10 @@ Name of the registrar of the domain as identified in the registry.
 Amazon Route 53 domains are registered by registrar Gandi. The value is
 C<"GANDI SAS">.
 
-Type: String
-
 
 =head2 RegistrarUrl => Str
 
 Web address of the registrar.
-
-Type: String
 
 
 =head2 RegistryDomainId => Str
@@ -159,8 +127,6 @@ Reserved for future use.
 
 Reseller of the domain. Domains registered or transferred using Amazon
 Route 53 domains will have C<"Amazon"> as the reseller.
-
-Type: String
 
 
 =head2 StatusList => ArrayRef[Str|Undef]
@@ -180,19 +146,10 @@ what each code means, go to the ICANN website and search for C<epp
 status codes>. (Search on the ICANN website; web searches sometimes
 return an old version of the document.)
 
-Type: Array of String
-
 
 =head2 B<REQUIRED> TechContact => L<Paws::Route53Domains::ContactDetail>
 
 Provides details about the domain technical contact.
-
-Type: Complex
-
-Children: C<FirstName>, C<MiddleName>, C<LastName>, C<ContactType>,
-C<OrganizationName>, C<AddressLine1>, C<AddressLine2>, C<City>,
-C<State>, C<CountryCode>, C<ZipCode>, C<PhoneNumber>, C<Email>, C<Fax>,
-C<ExtraParams>
 
 
 =head2 TechPrivacy => Bool
@@ -201,8 +158,6 @@ Specifies whether contact information for the tech contact is concealed
 from WHOIS queries. If the value is C<true>, WHOIS ("who is") queries
 will return contact information for our registrar partner, Gandi,
 instead of the contact information that you enter.
-
-Type: Boolean
 
 
 =head2 UpdatedDate => Str
@@ -215,8 +170,6 @@ query. The date format is Unix time.
 
 The fully qualified name of the WHOIS server that can answer the WHOIS
 query for the domain.
-
-Type: String
 
 
 =head2 _request_id => Str

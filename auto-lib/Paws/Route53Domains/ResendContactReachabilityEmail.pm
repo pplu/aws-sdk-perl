@@ -38,12 +38,6 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 The name of the domain for which you want Amazon Route 53 to resend a
 confirmation email to the registrant contact.
 
-Type: String
-
-Default: None
-
-Required: Yes
-
 
 
 

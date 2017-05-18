@@ -41,12 +41,6 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 The end date and time for the time period for which you want a list of
 billing records. Specify the date in Unix time format.
 
-Type: Double
-
-Default: None
-
-Required: Yes
-
 
 
 =head2 Marker => Str
@@ -59,14 +53,8 @@ return additional billing records. Get the value of C<NextPageMarker>
 from the previous response, and submit another request that includes
 the value of C<NextPageMarker> in the C<Marker> element.
 
-Type: String
-
-Default: None
-
 Constraints: The marker must match the value of C<NextPageMarker> that
 was returned in the previous response.
-
-Required: No
 
 
 
@@ -74,13 +62,7 @@ Required: No
 
 The number of billing records to be returned.
 
-Type: Integer
-
 Default: 20
-
-Constraints: A value between 1 and 100.
-
-Required: No
 
 
 
@@ -88,12 +70,6 @@ Required: No
 
 The beginning date and time for the time period for which you want a
 list of billing records. Specify the date in Unix time format.
-
-Type: Double
-
-Default: None
-
-Required: Yes
 
 
 

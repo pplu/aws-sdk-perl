@@ -43,25 +43,13 @@ return additional operations. Get the value of C<NextPageMarker> from
 the previous response, and submit another request that includes the
 value of C<NextPageMarker> in the C<Marker> element.
 
-Type: String
-
-Default: None
-
-Required: No
-
 
 
 =head2 MaxItems => Int
 
 Number of domains to be returned.
 
-Type: Integer
-
 Default: 20
-
-Constraints: A value between 1 and 100.
-
-Required: No
 
 
 

@@ -37,19 +37,28 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DomainName => Str
 
-
+A domain name that you want to use as the basis for a list of possible
+domain names. The domain name must contain a top-level domain (TLD),
+such as .com, that Amazon Route 53 supports. For a list of TLDs, see
+Domains that You Can Register with Amazon Route 53 in the I<Amazon
+Route 53 Developer Guide>.
 
 
 
 =head2 B<REQUIRED> OnlyAvailable => Bool
 
-
+If C<OnlyAvailable> is C<true>, Amazon Route 53 returns only domain
+names that are available. If C<OnlyAvailable> is C<false>, Amazon Route
+53 returns domain names without checking whether they're available to
+be registered. To determine whether the domain is available, you can
+call C<checkDomainAvailability> for each suggestion.
 
 
 
 =head2 B<REQUIRED> SuggestionCount => Int
 
-
+The number of suggested domain names that you want Amazon Route 53 to
+return.
 
 
 

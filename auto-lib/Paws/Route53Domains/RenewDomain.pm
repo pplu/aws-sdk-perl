@@ -40,19 +40,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 The year when the registration for the domain is set to expire. This
 value must match the current expiration date for the domain.
 
-Type: Integer
-
-Default: None
-
-Valid values: Integer
-
-Required: Yes
-
 
 
 =head2 B<REQUIRED> DomainName => Str
 
-
+The name of the domain that you want to renew.
 
 
 
@@ -61,15 +53,9 @@ Required: Yes
 The number of years that you want to renew the domain for. The maximum
 number of years depends on the top-level domain. For the range of valid
 values for your domain, see Domains that You Can Register with Amazon
-Route 53 in the Amazon Route 53 documentation.
-
-Type: Integer
+Route 53 in the I<Amazon Route 53 Developer Guide>.
 
 Default: 1
-
-Valid values: Integer from 1 to 10
-
-Required: No
 
 
 
