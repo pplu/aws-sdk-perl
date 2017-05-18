@@ -40,8 +40,7 @@ outbound shipment.
 
 =head2 Status => Str
 
-  Status information for a shipment. Valid statuses include C<NEW>,
-C<IN_TRANSIT>, and C<DELIVERED>.
+  Status information for a shipment.
 
 
 =head2 TrackingNumber => Str

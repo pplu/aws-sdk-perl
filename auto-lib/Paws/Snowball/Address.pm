@@ -4,6 +4,7 @@ package Paws::Snowball::Address;
   has City => (is => 'ro', isa => 'Str');
   has Company => (is => 'ro', isa => 'Str');
   has Country => (is => 'ro', isa => 'Str');
+  has IsRestricted => (is => 'ro', isa => 'Bool');
   has Landmark => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
   has PhoneNumber => (is => 'ro', isa => 'Str');
@@ -73,10 +74,15 @@ an exception is thrown.
   The country in an address that a Snowball is to be delivered to.
 
 
+=head2 IsRestricted => Bool
+
+  If the address you are creating is a primary address, then set this
+option to true. This field is not supported in most regions.
+
+
 =head2 Landmark => Str
 
-  The landmark identifying the address that the appliance will be shipped
-to.
+  This field is no longer used and the value is ignored.
 
 
 =head2 Name => Str
@@ -97,7 +103,7 @@ delivered to.
 
 =head2 PrefectureOrDistrict => Str
 
-  The prefecture or district that the appliance will be shipped to.
+  This field is no longer used and the value is ignored.
 
 
 =head2 StateOrProvince => Str

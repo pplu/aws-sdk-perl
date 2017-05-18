@@ -5,6 +5,7 @@ package Paws::Snowball::JobMetadata;
   has CreationDate => (is => 'ro', isa => 'Str');
   has DataTransferProgress => (is => 'ro', isa => 'Paws::Snowball::DataTransfer');
   has Description => (is => 'ro', isa => 'Str');
+  has ForwardingAddressId => (is => 'ro', isa => 'Str');
   has JobId => (is => 'ro', isa => 'Str');
   has JobLogInfo => (is => 'ro', isa => 'Paws::Snowball::JobLogs');
   has JobState => (is => 'ro', isa => 'Str');
@@ -83,6 +84,13 @@ jobs.
   The description of the job, provided at job creation.
 
 
+=head2 ForwardingAddressId => Str
+
+  The ID of the address that you want a job shipped to, after it will be
+shipped to its primary address. This field is not supported in most
+regions.
+
+
 =head2 JobId => Str
 
   The automatically generated ID for a job, for example
@@ -112,7 +120,7 @@ you.
 
   The Amazon Resource Name (ARN) for the AWS Key Management Service (AWS
 KMS) key associated with this job. This ARN was created using the
-C<CreateKey> API action in AWS KMS.
+CreateKey API action in AWS KMS.
 
 
 =head2 Notification => L<Paws::Snowball::Notification>
@@ -133,7 +141,7 @@ imported into.
 =head2 RoleARN => Str
 
   The role ARN associated with this job. This ARN was created using the
-C<CreateRole> API action in AWS Identity and Access Management (IAM).
+CreateRole API action in AWS Identity and Access Management (IAM).
 
 
 =head2 ShippingDetails => L<Paws::Snowball::ShippingDetails>
