@@ -322,3 +322,5 @@ Dakkar for solving issues with parameter passing
 Arthur Axel fREW Schmidt for speeding up credential refreshing
 
 PopeFelix for solving issues around S3
+
+meis for contributing Paws::Credential::Explicit

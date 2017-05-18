@@ -57,7 +57,7 @@ __PACKAGE__->meta->make_immutable;
 
 package Paws;
 
-our $VERSION = '0.32';
+our $VERSION = '0.33';
 
 use Moose;
 use MooseX::ClassAttribute;
@@ -495,6 +495,24 @@ When instantiating a service object, you can also pass a custom credential provi
 
 In this example we instance a service object that uses the STS service to create temporary credentials that only let the service object call DescribeInstances.
 
+Paws bundles some pre-baked credential providers:
+
+L<Paws::Credential::ProviderChain> - Gets credentials from a list of providers, returning the first provider to return credentials
+
+L<Paws::Credential::Environment> - Gets credentials from environment variables
+
+L<Paws::Credential::File> - Gets credentials from AWS SDK config files
+
+L<Paws::Credential::InstanceProfile> - Gets credentials from the InstanceProfile (Role) of the running instance
+
+L<Paws::Credential::STS> - Gets temporary credentials from the Secure Token Service
+
+L<Paws::Credential::AssumeRole> - Gets temporary credentials with AssumeRole
+
+L<Paws::Credential::AssumeRoleWithSAML> - Gets temporary credentials with AssumeRoleWithSAML
+
+L<Paws::Credential::Explicit> - Gets credentials specified in the code
+
 =head1 Using Service objects (Calling APIs)
 
 Each API call is represented as a method call with the same name as the API call. The arguments to the call are passed as lists (named parameters) to the call. So, to call DescribeInstances on the EC2 service:
@@ -709,6 +727,8 @@ Dakkar for solving issues with parameter passing
 Arthur Axel fREW Schmidt for speeding up credential refreshing
 
 PopeFelix for solving issues around S3
+
+meis for contributing Paws::Credential::Explicit
 
 
 =cut
