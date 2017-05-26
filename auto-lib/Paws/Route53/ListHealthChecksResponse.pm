@@ -30,18 +30,15 @@ check that is associated with the current AWS account.
 
 A flag that indicates whether there are more health checks to be
 listed. If the response was truncated, you can get the next group of
-C<maxitems> health checks by calling C<ListHealthChecks> again and
-specifying the value of the C<NextMarker> element in the marker
-parameter.
-
-Valid Values: C<true> | C<false>
+health checks by submitting another C<ListHealthChecks> request and
+specifying the value of C<NextMarker> in the C<marker> parameter.
 
 
 
 =head2 B<REQUIRED> Marker => Str
 
 For the second and subsequent calls to C<ListHealthChecks>, C<Marker>
-is the value that you specified for the marker parameter in the
+is the value that you specified for the C<marker> parameter in the
 previous request.
 
 
@@ -56,9 +53,9 @@ to C<ListHealthChecks> that produced the current response.
 =head2 NextMarker => Str
 
 If C<IsTruncated> is C<true>, the value of C<NextMarker> identifies the
-first health check in the next group of C<maxitems> health checks. Call
-C<ListHealthChecks> again and specify the value of C<NextMarker> in the
-marker parameter.
+first health check that Amazon Route 53 returns if you submit another
+C<ListHealthChecks> request and specify the value of C<NextMarker> in
+the C<marker> parameter.
 
 
 

@@ -48,25 +48,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 Provides detailed contact information.
 
-Type: Complex
-
-Children: C<FirstName>, C<MiddleName>, C<LastName>, C<ContactType>,
-C<OrganizationName>, C<AddressLine1>, C<AddressLine2>, C<City>,
-C<State>, C<CountryCode>, C<ZipCode>, C<PhoneNumber>, C<Email>, C<Fax>,
-C<ExtraParams>
-
-Required: Yes
-
 
 
 =head2 AuthCode => Str
 
 The authorization code for the domain. You get this value from the
 current registrar.
-
-Type: String
-
-Required: Yes
 
 
 
@@ -76,45 +63,27 @@ Indicates whether the domain will be automatically renewed (true) or
 not (false). Autorenewal only takes effect after the account is
 charged.
 
-Type: Boolean
-
-Valid values: C<true> | C<false>
-
 Default: true
-
-Required: No
 
 
 
 =head2 B<REQUIRED> DomainName => Str
 
-The name of a domain.
-
-Type: String
-
-Default: None
+The name of the domain that you want to transfer to Amazon Route 53.
 
 Constraints: The domain name can contain only the letters a through z,
 the numbers 0 through 9, and hyphen (-). Internationalized Domain Names
 are not supported.
 
-Required: Yes
-
 
 
 =head2 B<REQUIRED> DurationInYears => Int
 
-The number of years the domain will be registered. Domains are
-registered for a minimum of one year. The maximum period depends on the
-top-level domain.
-
-Type: Integer
+The number of years that you want to register the domain for. Domains
+are registered for a minimum of one year. The maximum period depends on
+the top-level domain.
 
 Default: 1
-
-Valid values: Integer from 1 to 10
-
-Required: Yes
 
 
 
@@ -128,62 +97,38 @@ Reserved for future use.
 
 Contains details for the host and glue IP addresses.
 
-Type: Complex
-
-Children: C<GlueIps>, C<Name>
-
-Required: No
-
 
 
 =head2 PrivacyProtectAdminContact => Bool
 
 Whether you want to conceal contact information from WHOIS queries. If
-you specify true, WHOIS ("who is") queries will return contact
+you specify C<true>, WHOIS ("who is") queries will return contact
 information for our registrar partner, Gandi, instead of the contact
 information that you enter.
 
-Type: Boolean
-
 Default: C<true>
-
-Valid values: C<true> | C<false>
-
-Required: No
 
 
 
 =head2 PrivacyProtectRegistrantContact => Bool
 
 Whether you want to conceal contact information from WHOIS queries. If
-you specify true, WHOIS ("who is") queries will return contact
+you specify C<true>, WHOIS ("who is") queries will return contact
 information for our registrar partner, Gandi, instead of the contact
 information that you enter.
 
-Type: Boolean
-
 Default: C<true>
-
-Valid values: C<true> | C<false>
-
-Required: No
 
 
 
 =head2 PrivacyProtectTechContact => Bool
 
 Whether you want to conceal contact information from WHOIS queries. If
-you specify true, WHOIS ("who is") queries will return contact
+you specify C<true>, WHOIS ("who is") queries will return contact
 information for our registrar partner, Gandi, instead of the contact
 information that you enter.
 
-Type: Boolean
-
 Default: C<true>
-
-Valid values: C<true> | C<false>
-
-Required: No
 
 
 
@@ -191,29 +136,11 @@ Required: No
 
 Provides detailed contact information.
 
-Type: Complex
-
-Children: C<FirstName>, C<MiddleName>, C<LastName>, C<ContactType>,
-C<OrganizationName>, C<AddressLine1>, C<AddressLine2>, C<City>,
-C<State>, C<CountryCode>, C<ZipCode>, C<PhoneNumber>, C<Email>, C<Fax>,
-C<ExtraParams>
-
-Required: Yes
-
 
 
 =head2 B<REQUIRED> TechContact => L<Paws::Route53Domains::ContactDetail>
 
 Provides detailed contact information.
-
-Type: Complex
-
-Children: C<FirstName>, C<MiddleName>, C<LastName>, C<ContactType>,
-C<OrganizationName>, C<AddressLine1>, C<AddressLine2>, C<City>,
-C<State>, C<CountryCode>, C<ZipCode>, C<PhoneNumber>, C<Email>, C<Fax>,
-C<ExtraParams>
-
-Required: Yes
 
 
 

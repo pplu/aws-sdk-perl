@@ -290,7 +290,7 @@ Each argument is described in detail in: L<Paws::WorkSpaces::ModifyWorkspaceProp
 
 Returns: a L<Paws::WorkSpaces::ModifyWorkspacePropertiesResult> instance
 
-  Modifies the WorkSpace properties, including the RunningMode and
+  Modifies the WorkSpace properties, including the running mode and
 AutoStop time.
 
 
@@ -352,9 +352,8 @@ Each argument is described in detail in: L<Paws::WorkSpaces::StartWorkspaces>
 
 Returns: a L<Paws::WorkSpaces::StartWorkspacesResult> instance
 
-  Starts the specified WorkSpaces. The API only works with WorkSpaces
-that have RunningMode configured as AutoStop and the State set to
-E<ldquo>STOPPED.E<rdquo>
+  Starts the specified WorkSpaces. The WorkSpaces must have a running
+mode of AutoStop and a state of STOPPED.
 
 
 =head2 StopWorkspaces(StopWorkspaceRequests => ArrayRef[L<Paws::WorkSpaces::StopRequest>])
@@ -363,9 +362,8 @@ Each argument is described in detail in: L<Paws::WorkSpaces::StopWorkspaces>
 
 Returns: a L<Paws::WorkSpaces::StopWorkspacesResult> instance
 
-  Stops the specified WorkSpaces. The API only works with WorkSpaces that
-have RunningMode configured as AutoStop and the State set to AVAILABLE,
-IMPAIRED, UNHEALTHY, or ERROR.
+  Stops the specified WorkSpaces. The WorkSpaces must have a running mode
+of AutoStop and a state of AVAILABLE, IMPAIRED, UNHEALTHY, or ERROR.
 
 
 =head2 TerminateWorkspaces(TerminateWorkspaceRequests => ArrayRef[L<Paws::WorkSpaces::TerminateRequest>])

@@ -29,9 +29,9 @@ the verification email.
 
 =head2 IsAlreadyVerified => Bool
 
-True if the email address for the registrant contact has already been
-verified, and false otherwise. If the email address has already been
-verified, we don't send another confirmation email.
+C<True> if the email address for the registrant contact has already
+been verified, and C<false> otherwise. If the email address has already
+been verified, we don't send another confirmation email.
 
 
 =head2 _request_id => Str

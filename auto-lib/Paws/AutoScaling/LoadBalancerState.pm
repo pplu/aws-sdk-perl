@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AutoScaling
 
 =head1 DESCRIPTION
 
-Describes the state of a Classic load balancer.
+Describes the state of a Classic Load Balancer.
 
 If you specify a load balancer when creating the Auto Scaling group,
 the state of the load balancer is C<InService>.

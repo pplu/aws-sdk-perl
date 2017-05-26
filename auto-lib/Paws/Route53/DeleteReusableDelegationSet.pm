@@ -38,7 +38,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Id => Str
 
-The ID of the reusable delegation set you want to delete.
+The ID of the reusable delegation set that you want to delete.
 
 
 

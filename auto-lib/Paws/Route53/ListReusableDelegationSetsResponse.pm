@@ -29,18 +29,15 @@ reusable delegation set that was created by the current AWS account.
 =head2 B<REQUIRED> IsTruncated => Bool
 
 A flag that indicates whether there are more reusable delegation sets
-to be listed. If the response is truncated, you can get the next group
-of C<maxitems> reusable delegation sets by calling
-C<ListReusableDelegationSets> again and specifying the value of the
-C<NextMarker> element in the C<marker> parameter.
+to be listed.
 
 
 
 =head2 Marker => Str
 
 For the second and subsequent calls to C<ListReusableDelegationSets>,
-C<Marker> is the value that you specified for the marker parameter in
-the request that produced the current response.
+C<Marker> is the value that you specified for the C<marker> parameter
+in the request that produced the current response.
 
 
 
@@ -54,9 +51,9 @@ to C<ListReusableDelegationSets> that produced the current response.
 =head2 NextMarker => Str
 
 If C<IsTruncated> is C<true>, the value of C<NextMarker> identifies the
-first reusable delegation set in the next group of C<maxitems> reusable
-delegation sets. Call C<ListReusableDelegationSets> again and specify
-the value of C<NextMarker> in the C<marker> parameter.
+next reusable delegation set that Amazon Route 53 will return if you
+submit another C<ListReusableDelegationSets> request and specify the
+value of C<NextMarker> in the C<marker> parameter.
 
 
 

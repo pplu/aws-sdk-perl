@@ -19,6 +19,7 @@ package Paws::RDS::DBCluster;
   has Engine => (is => 'ro', isa => 'Str');
   has EngineVersion => (is => 'ro', isa => 'Str');
   has HostedZoneId => (is => 'ro', isa => 'Str');
+  has IAMDatabaseAuthenticationEnabled => (is => 'ro', isa => 'Bool');
   has KmsKeyId => (is => 'ro', isa => 'Str');
   has LatestRestorableTime => (is => 'ro', isa => 'Str');
   has MasterUsername => (is => 'ro', isa => 'Str');
@@ -102,7 +103,10 @@ action.
 
 =head2 AllocatedStorage => Int
 
-  Specifies the allocated storage size in gigabytes (GB).
+  For all database engines except Amazon Aurora, C<AllocatedStorage>
+specifies the allocated storage size in gigabytes (GB). For Aurora,
+C<AllocatedStorage> always returns 1, because Aurora DB cluster storage
+size is not fixed, but instead automatically adjusts as needed.
 
 
 =head2 AssociatedRoles => ArrayRef[L<Paws::RDS::DBClusterRole>]
@@ -214,6 +218,12 @@ cluster.
 zone.
 
 
+=head2 IAMDatabaseAuthenticationEnabled => Bool
+
+  True if mapping of AWS Identity and Access Management (IAM) accounts to
+database accounts is enabled; otherwise false.
+
+
 =head2 KmsKeyId => Str
 
   If C<StorageEncrypted> is true, the KMS key identifier for the
@@ -272,7 +282,7 @@ your read workload across multiple Aurora Replicas in your DB cluster.
 If a failover occurs, and the Aurora Replica that you are connected to
 is promoted to be the primary instance, your connection will be
 dropped. To continue sending your read workload to other Aurora
-Replicas in the cluster, you can then recoonect to the reader endpoint.
+Replicas in the cluster, you can then reconnect to the reader endpoint.
 
 
 =head2 ReadReplicaIdentifiers => ArrayRef[Str|Undef]

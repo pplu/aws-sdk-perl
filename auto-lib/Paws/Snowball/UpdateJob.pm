@@ -3,6 +3,7 @@ package Paws::Snowball::UpdateJob;
   use Moose;
   has AddressId => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
+  has ForwardingAddressId => (is => 'ro', isa => 'Str');
   has JobId => (is => 'ro', isa => 'Str', required => 1);
   has Notification => (is => 'ro', isa => 'Paws::Snowball::Notification');
   has Resources => (is => 'ro', isa => 'Paws::Snowball::JobResource');
@@ -52,6 +53,13 @@ The updated description of this job's JobMetadata object.
 
 
 
+=head2 ForwardingAddressId => Str
+
+The updated ID for the forwarding address for a job. This field is not
+supported in most regions.
+
+
+
 =head2 B<REQUIRED> JobId => Str
 
 The job ID of the job that you want to update, for example
@@ -76,7 +84,7 @@ ranges).
 =head2 RoleARN => Str
 
 The new role Amazon Resource Name (ARN) that you want to associate with
-this job. To create a role ARN, use the CreateRole AWS Identity and
+this job. To create a role ARN, use the CreateRoleAWS Identity and
 Access Management (IAM) API action.
 
 

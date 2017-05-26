@@ -32,34 +32,40 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::KMS::GrantC
 
 =head1 DESCRIPTION
 
-A structure for specifying the conditions under which the operations
-permitted by the grant are allowed.
-
-You can use this structure to allow the operations permitted by the
-grant only when a specified encryption context is present. For more
+A structure that you can use to allow certain operations in the grant
+only when the desired encryption context is present. For more
 information about encryption context, see Encryption Context in the
 I<AWS Key Management Service Developer Guide>.
+
+Grant constraints apply only to operations that accept encryption
+context as input. For example, the C< DescribeKey > operation does not
+accept encryption context as input. A grant that allows the
+C<DescribeKey> operation does so regardless of the grant constraints.
+In constrast, the C< Encrypt > operation accepts encryption context as
+input. A grant that allows the C<Encrypt> operation does so only when
+the encryption context of the C<Encrypt> operation satisfies the grant
+constraints.
 
 =head1 ATTRIBUTES
 
 
 =head2 EncryptionContextEquals => L<Paws::KMS::EncryptionContextType>
 
-  Contains a list of key-value pairs that must be present in the
-encryption context of a subsequent operation permitted by the grant.
-When a subsequent operation permitted by the grant includes an
-encryption context that matches this list, the grant allows the
-operation. Otherwise, the operation is not allowed.
+  A list of key-value pairs that must be present in the encryption
+context of certain subsequent operations that the grant allows. When
+certain subsequent operations allowed by the grant include encryption
+context that matches this list, the grant allows the operation.
+Otherwise, the grant does not allow the operation.
 
 
 =head2 EncryptionContextSubset => L<Paws::KMS::EncryptionContextType>
 
-  Contains a list of key-value pairs, a subset of which must be present
-in the encryption context of a subsequent operation permitted by the
-grant. When a subsequent operation permitted by the grant includes an
-encryption context that matches this list or is a subset of this list,
-the grant allows the operation. Otherwise, the operation is not
-allowed.
+  A list of key-value pairs, all of which must be present in the
+encryption context of certain subsequent operations that the grant
+allows. When certain subsequent operations allowed by the grant include
+encryption context that matches this list or is a superset of this
+list, the grant allows the operation. Otherwise, the grant does not
+allow the operation.
 
 
 

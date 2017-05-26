@@ -137,13 +137,13 @@ C<FullyQualifiedDomainName> to the endpoint in the C<Host> header.
 
 If you specify a value of C<443> for C<Port> and C<HTTPS> or
 C<HTTPS_STR_MATCH> for C<Type>, Amazon Route 53 passes the value of
-C<FullyQualifiedDomainName> to the endpoint in the Host header.
+C<FullyQualifiedDomainName> to the endpoint in the C<Host> header.
 
 =item *
 
 If you specify another value for C<Port> and any value except C<TCP>
 for C<Type>, Amazon Route 53 passes I<
-C<FullyQualifiedDomainName>:C<Port> > to the endpoint in the Host
+C<FullyQualifiedDomainName>:C<Port> > to the endpoint in the C<Host>
 header.
 
 =back
@@ -199,7 +199,7 @@ in the response, in the C<HealthCheckId> element.
 =head2 HealthCheckVersion => Int
 
 A sequential counter that Amazon Route 53 sets to C<1> when you create
-a health check and increments by C<1> each time you update settings for
+a health check and increments by 1 each time you update settings for
 the health check.
 
 We recommend that you use C<GetHealthCheck> or C<ListHealthChecks> to
@@ -212,7 +212,7 @@ overwriting an intervening update:
 
 =item *
 
-f the value in the C<UpdateHealthCheck> request matches the value of
+If the value in the C<UpdateHealthCheck> request matches the value of
 C<HealthCheckVersion> in the health check, Amazon Route 53 updates the
 health check with the new settings.
 
@@ -324,9 +324,22 @@ example, C<2001:db8:85a3::abcd:1:2345>.
 If the endpoint is an EC2 instance, we recommend that you create an
 Elastic IP address, associate it with your EC2 instance, and specify
 the Elastic IP address for C<IPAddress>. This ensures that the IP
-address of your instance never changes. For more information, see
-Elastic IP Addresses (EIP) in the I<Amazon EC2 User Guide for Linux
-Instances>.
+address of your instance never changes. For more information, see the
+applicable documentation:
+
+=over
+
+=item *
+
+Linux: Elastic IP Addresses (EIP) in the I<Amazon EC2 User Guide for
+Linux Instances>
+
+=item *
+
+Windows: Elastic IP Addresses (EIP) in the I<Amazon EC2 User Guide for
+Windows Instances>
+
+=back
 
 If a health check already has a value for C<IPAddress>, you can change
 the value. However, you can't update an existing health check to add or
@@ -368,9 +381,9 @@ health checks.
 
 =head2 Regions => ArrayRef[Str|Undef]
 
-A complex type that contains one Region element for each region from
-which you want Amazon Route 53 health checkers to check the specified
-endpoint.
+A complex type that contains one C<Region> element for each region that
+you want Amazon Route 53 health checkers to check the specified
+endpoint from.
 
 
 

@@ -1,5 +1,7 @@
 package Paws::GameLift::RuntimeConfiguration;
   use Moose;
+  has GameSessionActivationTimeoutSeconds => (is => 'ro', isa => 'Int');
+  has MaxConcurrentGameSessionActivations => (is => 'ro', isa => 'Int');
   has ServerProcesses => (is => 'ro', isa => 'ArrayRef[Paws::GameLift::ServerProcess]');
 1;
 
@@ -20,14 +22,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::GameLift::RuntimeConfiguration object:
 
-  $service_obj->Method(Att1 => { ServerProcesses => $value, ..., ServerProcesses => $value  });
+  $service_obj->Method(Att1 => { GameSessionActivationTimeoutSeconds => $value, ..., ServerProcesses => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::GameLift::RuntimeConfiguration object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->ServerProcesses
+  $result->Att1->GameSessionActivationTimeoutSeconds
 
 =head1 DESCRIPTION
 
@@ -55,10 +57,25 @@ configuration.
 =head1 ATTRIBUTES
 
 
+=head2 GameSessionActivationTimeoutSeconds => Int
+
+  Maximum amount of time (in seconds) that a game session can remain in
+status ACTIVATING. If the game session is not active before the
+timeout, activation is terminated and the game session status is
+changed to TERMINATED.
+
+
+=head2 MaxConcurrentGameSessionActivations => Int
+
+  Maximum number of game sessions with status ACTIVATING to allow on an
+instance simultaneously. This setting limits the amount of instance
+resources that can be used for new game activations at any one time.
+
+
 =head2 ServerProcesses => ArrayRef[L<Paws::GameLift::ServerProcess>]
 
-  Collection of server process configurations describing what server
-processes to run on each instance in a fleet
+  Collection of server process configurations that describe which server
+processes to run on each instance in a fleet.
 
 
 

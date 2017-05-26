@@ -4,6 +4,7 @@ package Paws::Snowball::CreateJob;
   has AddressId => (is => 'ro', isa => 'Str');
   has ClusterId => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
+  has ForwardingAddressId => (is => 'ro', isa => 'Str');
   has JobType => (is => 'ro', isa => 'Str');
   has KmsKeyARN => (is => 'ro', isa => 'Str');
   has Notification => (is => 'ro', isa => 'Paws::Snowball::Notification');
@@ -61,6 +62,13 @@ attributes are inherited from the cluster.
 
 Defines an optional description of this specific job, for example
 C<Important Photos 2016-08-11>.
+
+
+
+=head2 ForwardingAddressId => Str
+
+The forwarding address ID for a job. This field is not supported in
+most regions.
 
 
 

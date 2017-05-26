@@ -6,6 +6,7 @@ package Paws::CodeDeploy::CreateDeployment;
   has DeploymentConfigName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'deploymentConfigName' );
   has DeploymentGroupName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'deploymentGroupName' );
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description' );
+  has FileExistsBehavior => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'fileExistsBehavior' );
   has IgnoreApplicationStopFailures => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'ignoreApplicationStopFailures' );
   has Revision => (is => 'ro', isa => 'Paws::CodeDeploy::RevisionLocation', traits => ['NameInRequest'], request_name => 'revision' );
   has TargetInstances => (is => 'ro', isa => 'Paws::CodeDeploy::TargetInstances', traits => ['NameInRequest'], request_name => 'targetInstances' );
@@ -78,6 +79,36 @@ The name of the deployment group.
 A comment about the deployment.
 
 
+
+=head2 FileExistsBehavior => Str
+
+Information about how AWS CodeDeploy handles files that already exist
+in a deployment target location but weren't part of the previous
+successful deployment.
+
+The fileExistsBehavior parameter takes any of the following values:
+
+=over
+
+=item *
+
+DISALLOW: The deployment fails. This is also the default behavior if no
+option is specified.
+
+=item *
+
+OVERWRITE: The version of the file from the application revision
+currently being deployed replaces the version already on the instance.
+
+=item *
+
+RETAIN: The version of the file already on the instance is kept and
+used as part of the new deployment.
+
+=back
+
+
+Valid values are: C<"DISALLOW">, C<"OVERWRITE">, C<"RETAIN">
 
 =head2 IgnoreApplicationStopFailures => Bool
 

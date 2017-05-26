@@ -44,7 +44,7 @@ default cluster is assumed.
 
 =head2 B<REQUIRED> Tasks => ArrayRef[Str|Undef]
 
-A space-separated list of task IDs or full Amazon Resource Name (ARN)
+A list of up to 100 task IDs or full Amazon Resource Name (ARN)
 entries.
 
 

@@ -3,6 +3,7 @@ package Paws::SSM::StepExecution;
   has Action => (is => 'ro', isa => 'Str');
   has ExecutionEndTime => (is => 'ro', isa => 'Str');
   has ExecutionStartTime => (is => 'ro', isa => 'Str');
+  has FailureDetails => (is => 'ro', isa => 'Paws::SSM::FailureDetails');
   has FailureMessage => (is => 'ro', isa => 'Str');
   has Inputs => (is => 'ro', isa => 'Paws::SSM::NormalStringMap');
   has Outputs => (is => 'ro', isa => 'Paws::SSM::AutomationParameterMap');
@@ -61,7 +62,12 @@ ended. If the step has not yet concluded, this field is not populated.
 =head2 ExecutionStartTime => Str
 
   If a step has begun execution, this contains the time the step started.
-If the step is in C<Pending> status, this field is not populated.
+If the step is in Pending status, this field is not populated.
+
+
+=head2 FailureDetails => L<Paws::SSM::FailureDetails>
+
+  Information about the Automation failure.
 
 
 =head2 FailureMessage => Str
@@ -96,8 +102,8 @@ If the step is in C<Pending> status, this field is not populated.
 
 =head2 StepStatus => Str
 
-  The execution status for this step. Valid values include: C<Pending>,
-C<InProgress>, C<Success>, C<Cancelled>, C<Failed>, and C<TimedOut>.
+  The execution status for this step. Valid values include: Pending,
+InProgress, Success, Cancelled, Failed, and TimedOut.
 
 
 

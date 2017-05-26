@@ -1,6 +1,7 @@
 
 package Paws::Lambda::UpdateFunctionCode;
   use Moose;
+  has DryRun => (is => 'ro', isa => 'Bool');
   has FunctionName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'FunctionName' , required => 1);
   has Publish => (is => 'ro', isa => 'Bool');
   has S3Bucket => (is => 'ro', isa => 'Str');
@@ -38,6 +39,17 @@ As an example:
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 
 =head1 ATTRIBUTES
+
+
+=head2 DryRun => Bool
+
+This boolean parameter can be used to test your request to AWS Lambda
+to update the Lambda function and publish a version as an atomic
+operation. It will do all necessary computation and validation of your
+code but will not upload it or a publish a version. Each time this
+operation is invoked, the C<CodeSha256> hash value the provided code
+will also be computed and returned in the response.
+
 
 
 =head2 B<REQUIRED> FunctionName => Str

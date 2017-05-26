@@ -32,15 +32,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodeDeploy:
 =head1 DESCRIPTION
 
 Information about a load balancer in Elastic Load Balancing to use in a
-blue/green deployment.
+deployment.
 
 =head1 ATTRIBUTES
 
 
 =head2 Name => Str
 
-  The name of the load balancer that will be used to route traffic from
-original instances to replacement instances in a blue/green deployment.
+  For blue/green deployments, the name of the load balancer that will be
+used to route traffic from original instances to replacement instances
+in a blue/green deployment. For in-place deployments, the name of the
+load balancer that instances are deregistered from so they are not
+serving traffic during a deployment, and then re-registered with after
+the deployment completes.
 
 
 

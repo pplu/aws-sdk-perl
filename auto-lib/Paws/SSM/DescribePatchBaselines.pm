@@ -39,9 +39,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 Each element in the array is a structure containing:
 
-Key: (string, E<ldquo>NAME_PREFIXE<rdquo> or E<ldquo>OWNERE<rdquo>)
+Key: (string, "NAME_PREFIX" or "OWNER")
 
-Value: (array of strings, exactly 1 entry, 1 E<le> length E<le> 255)
+Value: (array of strings, exactly 1 entry, between 1 and 255
+characters)
 
 
 

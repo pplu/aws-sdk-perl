@@ -38,8 +38,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Id => Str
 
-The ID of the reusable delegation set for which you want to get a list
-of the name server.
+The ID of the reusable delegation set that you want to get a list of
+name servers for.
 
 
 

@@ -48,10 +48,10 @@ attribute name.
 =head2 B<REQUIRED> TypeName => Str
 
   The name of the inventory type. Default inventory item type names start
-with C<AWS>. Custom inventory type names will start with C<Custom>.
-Default inventory item types include the following:
-C<AWS:AWSComponent>, C<AWS:Application>, C<AWS:InstanceInformation>,
-C<AWS:Network>, and C<AWS:WindowsUpdate>.
+with AWS. Custom inventory type names will start with Custom. Default
+inventory item types include the following: AWS:AWSComponent,
+AWS:Application, AWS:InstanceInformation, AWS:Network, and
+AWS:WindowsUpdate.
 
 
 =head2 Version => Str

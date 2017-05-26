@@ -84,11 +84,11 @@ purposes.
 
 =head2 Status => Str
 
-The container instance status with which to filter the
-C<ListContainerInstances> results. Specifying a container instance
-status of C<DRAINING> limits the results to container instances that
-have been set to drain with the UpdateContainerInstancesState
-operation.
+Filters the container instances by status. For example, if you specify
+the C<DRAINING> status, the results include only container instances
+that have been set to C<DRAINING> using UpdateContainerInstancesState.
+If you do not specify this parameter, the default is to include
+container instances set to C<ACTIVE> and C<DRAINING>.
 
 Valid values are: C<"ACTIVE">, C<"DRAINING">
 

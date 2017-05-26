@@ -122,7 +122,7 @@ generated.
 
 =head2 ServiceAttributes => L<Paws::Inspector::InspectorServiceAttributes>
 
-  
+  This data type is used in the Finding data type.
 
 
 =head2 Severity => Str

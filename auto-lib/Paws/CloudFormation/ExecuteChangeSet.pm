@@ -2,6 +2,7 @@
 package Paws::CloudFormation::ExecuteChangeSet;
   use Moose;
   has ChangeSetName => (is => 'ro', isa => 'Str', required => 1);
+  has ClientRequestToken => (is => 'ro', isa => 'Str');
   has StackName => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
@@ -38,6 +39,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 The name or ARN of the change set that you want use to update the
 specified stack.
+
+
+
+=head2 ClientRequestToken => Str
+
+A unique identifier for this C<ExecuteChangeSet> request. Specify this
+token if you plan to retry requests so that AWS CloudFormation knows
+that you're not attempting to execute a change set to update a stack
+with the same name. You might retry C<ExecuteChangeSet> requests to
+ensure that AWS CloudFormation successfully received them.
 
 
 

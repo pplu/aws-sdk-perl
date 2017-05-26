@@ -69,9 +69,9 @@ description of what the command should do.
 =head2 CompletedCount => Int
 
   The number of targets for which the command invocation reached a
-terminal state. Terminal states include the following: C<Success>,
-C<Failed>, C<Execution Timed Out>, C<Delivery Timed Out>, C<Canceled>,
-C<Terminated>, or C<Undeliverable>.
+terminal state. Terminal states include the following: Success, Failed,
+Execution Timed Out, Delivery Timed Out, Canceled, Terminated, or
+Undeliverable.
 
 
 =head2 DocumentName => Str
@@ -81,8 +81,8 @@ C<Terminated>, or C<Undeliverable>.
 
 =head2 ErrorCount => Int
 
-  The number of targets for which the status is C<Failed> or C<Execution
-Timed Out>.
+  The number of targets for which the status is Failed or Execution Timed
+Out.
 
 
 =head2 ExpiresAfter => Str
@@ -102,7 +102,7 @@ user input provided as part of the SendCommand API.
   The maximum number of instances that are allowed to execute the command
 at the same time. You can specify a number of instances, such as 10, or
 a percentage of instances, such as 10%. The default value is 50. For
-more information about how to use C<MaxConcurrency>, see Executing a
+more information about how to use MaxConcurrency, see Executing a
 Command Using Systems Manager Run Command.
 
 
@@ -111,8 +111,8 @@ Command Using Systems Manager Run Command.
   The maximum number of errors allowed before the system stops sending
 the command to additional targets. You can specify a number of errors,
 such as 10, or a percentage or errors, such as 10%. The default value
-is 50. For more information about how to use C<MaxErrors>, see
-Executing a Command Using Systems Manager Run Command.
+is 50. For more information about how to use MaxErrors, see Executing a
+Command Using Systems Manager Run Command.
 
 
 =head2 NotificationConfig => L<Paws::SSM::NotificationConfig>
@@ -164,64 +164,59 @@ sending notifications about command status changes.
 
 =head2 StatusDetails => Str
 
-  A detailed status of the command execution. C<StatusDetails> includes
-more information than C<Status> because it includes states resulting
-from error and concurrency control parameters. C<StatusDetails> can
-show different results than C<Status>. For more information about these
-statuses, see Run Command Status. C<StatusDetails> can be one of the
-following values:
+  A detailed status of the command execution. StatusDetails includes more
+information than Status because it includes states resulting from error
+and concurrency control parameters. StatusDetails can show different
+results than Status. For more information about these statuses, see Run
+Command Status. StatusDetails can be one of the following values:
 
 =over
 
 =item *
 
-Pending E<ndash> The command has not been sent to any instances.
+Pending: The command has not been sent to any instances.
 
 =item *
 
-In Progress E<ndash> The command has been sent to at least one instance
-but has not reached a final state on all instances.
+In Progress: The command has been sent to at least one instance but has
+not reached a final state on all instances.
 
 =item *
 
-Success E<ndash> The command successfully executed on all invocations.
-This is a terminal state.
+Success: The command successfully executed on all invocations. This is
+a terminal state.
 
 =item *
 
-Delivery Timed Out E<ndash> The value of C<MaxErrors> or more command
-invocations shows a status of C<Delivery Timed Out>. This is a terminal
-state.
+Delivery Timed Out: The value of MaxErrors or more command invocations
+shows a status of Delivery Timed Out. This is a terminal state.
 
 =item *
 
-Execution Timed Out E<ndash> The value of C<MaxErrors> or more command
-invocations shows a status of C<Execution Timed Out>. This is a
+Execution Timed Out: The value of MaxErrors or more command invocations
+shows a status of Execution Timed Out. This is a terminal state.
+
+=item *
+
+Failed: The value of MaxErrors or more command invocations shows a
+status of Failed. This is a terminal state.
+
+=item *
+
+Incomplete: The command was attempted on all instances and one or more
+invocations does not have a value of Success but not enough invocations
+failed for the status to be Failed. This is a terminal state.
+
+=item *
+
+Canceled: The command was terminated before it was completed. This is a
 terminal state.
 
 =item *
 
-Failed E<ndash> The value of C<MaxErrors> or more command invocations
-shows a status of C<Failed>. This is a terminal state.
-
-=item *
-
-Incomplete E<ndash> The command was attempted on all instances and one
-or more invocations does not have a value of C<Success> but not enough
-invocations failed for the status to be C<Failed>. This is a terminal
-state.
-
-=item *
-
-Canceled E<ndash> The command was terminated before it was completed.
-This is a terminal state.
-
-=item *
-
-Rate Exceeded E<ndash> The number of instances targeted by the command
-exceeded the account limit for pending invocations. The system has
-canceled the command before executing it on any instance. This is a
-terminal state.
+Rate Exceeded: The number of instances targeted by the command exceeded
+the account limit for pending invocations. The system has canceled the
+command before executing it on any instance. This is a terminal state.
 
 =back
 
@@ -234,9 +229,9 @@ terminal state.
 
 =head2 Targets => ArrayRef[L<Paws::SSM::Target>]
 
-  An array of search criteria that targets instances using a
-C<Key>,C<Value> combination that you specify. C<Targets> is required if
-you don't provide one or more instance IDs in the call.
+  An array of search criteria that targets instances using a Key,Value
+combination that you specify. Targets is required if you don't provide
+one or more instance IDs in the call.
 
 
 

@@ -6,6 +6,7 @@ package Paws::AppStream::Fleet;
   has Description => (is => 'ro', isa => 'Str');
   has DisconnectTimeoutInSeconds => (is => 'ro', isa => 'Int');
   has DisplayName => (is => 'ro', isa => 'Str');
+  has EnableDefaultInternetAccess => (is => 'ro', isa => 'Bool');
   has FleetErrors => (is => 'ro', isa => 'ArrayRef[Paws::AppStream::FleetError]');
   has ImageName => (is => 'ro', isa => 'Str', required => 1);
   has InstanceType => (is => 'ro', isa => 'Str', required => 1);
@@ -78,6 +79,12 @@ connected to the same session and instance within this time interval.
 =head2 DisplayName => Str
 
   The name displayed to end users on the AppStream 2.0 portal.
+
+
+=head2 EnableDefaultInternetAccess => Bool
+
+  Default Internet access from the fleet. True (Enabled), False
+(Disabled).
 
 
 =head2 FleetErrors => ArrayRef[L<Paws::AppStream::FleetError>]

@@ -36,7 +36,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> LoadBalancerAttributes => L<Paws::ELB::LoadBalancerAttributes>
 
-The attributes of the load balancer.
+The attributes for the load balancer.
 
 
 

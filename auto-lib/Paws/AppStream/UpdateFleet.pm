@@ -6,6 +6,7 @@ package Paws::AppStream::UpdateFleet;
   has Description => (is => 'ro', isa => 'Str');
   has DisconnectTimeoutInSeconds => (is => 'ro', isa => 'Int');
   has DisplayName => (is => 'ro', isa => 'Str');
+  has EnableDefaultInternetAccess => (is => 'ro', isa => 'Bool');
   has ImageName => (is => 'ro', isa => 'Str');
   has InstanceType => (is => 'ro', isa => 'Str');
   has MaxUserDurationInSeconds => (is => 'ro', isa => 'Int');
@@ -71,6 +72,12 @@ connected to the same instance within this time interval.
 =head2 DisplayName => Str
 
 The name displayed to end users on the AppStream 2.0 portal.
+
+
+
+=head2 EnableDefaultInternetAccess => Bool
+
+Enable/Disable default Internet access from fleet.
 
 
 

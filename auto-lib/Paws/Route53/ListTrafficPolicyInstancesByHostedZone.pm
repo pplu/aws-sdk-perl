@@ -41,8 +41,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> HostedZoneId => Str
 
-The ID of the hosted zone for which you want to list traffic policy
-instances.
+The ID of the hosted zone that you want to list traffic policy
+instances for.
 
 
 
@@ -54,40 +54,38 @@ traffic policy instances, the value of the C<IsTruncated> element in
 the response is C<true>, and the values of C<HostedZoneIdMarker>,
 C<TrafficPolicyInstanceNameMarker>, and
 C<TrafficPolicyInstanceTypeMarker> represent the first traffic policy
-instance in the next group of C<MaxItems> traffic policy instances.
+instance that Amazon Route 53 will return if you submit another
+request.
 
 
 
 =head2 TrafficPolicyInstanceNameMarker => Str
 
-For the first request to C<ListTrafficPolicyInstancesByHostedZone>,
-omit this value.
-
-If the value of C<IsTruncated> in the previous response was C<true>,
-C<TrafficPolicyInstanceNameMarker> is the name of the first traffic
-policy instance in the next group of C<MaxItems> traffic policy
-instances.
-
-If the value of C<IsTruncated> in the previous response was C<false>,
-there are no more traffic policy instances to get for this hosted zone.
+If the value of C<IsTruncated> in the previous response is true, you
+have more traffic policy instances. To get more traffic policy
+instances, submit another C<ListTrafficPolicyInstances> request. For
+the value of C<trafficpolicyinstancename>, specify the value of
+C<TrafficPolicyInstanceNameMarker> from the previous response, which is
+the name of the first traffic policy instance in the next group of
+traffic policy instances.
 
 If the value of C<IsTruncated> in the previous response was C<false>,
-omit this value.
+there are no more traffic policy instances to get.
 
 
 
 =head2 TrafficPolicyInstanceTypeMarker => Str
 
-For the first request to C<ListTrafficPolicyInstancesByHostedZone>,
-omit this value.
-
-If the value of C<IsTruncated> in the previous response was C<true>,
-C<TrafficPolicyInstanceTypeMarker> is the DNS type of the first traffic
-policy instance in the next group of C<MaxItems> traffic policy
-instances.
+If the value of C<IsTruncated> in the previous response is true, you
+have more traffic policy instances. To get more traffic policy
+instances, submit another C<ListTrafficPolicyInstances> request. For
+the value of C<trafficpolicyinstancetype>, specify the value of
+C<TrafficPolicyInstanceTypeMarker> from the previous response, which is
+the type of the first traffic policy instance in the next group of
+traffic policy instances.
 
 If the value of C<IsTruncated> in the previous response was C<false>,
-there are no more traffic policy instances to get for this hosted zone.
+there are no more traffic policy instances to get.
 
 Valid values are: C<"SOA">, C<"A">, C<"TXT">, C<"NS">, C<"CNAME">, C<"MX">, C<"NAPTR">, C<"PTR">, C<"SRV">, C<"SPF">, C<"AAAA">
 

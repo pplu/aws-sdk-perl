@@ -18,7 +18,7 @@ Paws::Route53::DeleteHostedZoneResponse
 =head2 B<REQUIRED> ChangeInfo => L<Paws::Route53::ChangeInfo>
 
 A complex type that contains the ID, the status, and the date and time
-of your delete request.
+of a request to delete a hosted zone.
 
 
 

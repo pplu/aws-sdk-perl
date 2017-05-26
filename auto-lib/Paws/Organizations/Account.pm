@@ -1,6 +1,7 @@
 package Paws::Organizations::Account;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str');
+  has Email => (is => 'ro', isa => 'Str');
   has Id => (is => 'ro', isa => 'Str');
   has JoinedMethod => (is => 'ro', isa => 'Str');
   has JoinedTimestamp => (is => 'ro', isa => 'Str');
@@ -48,6 +49,14 @@ organization.
 
 For more information about ARNs in Organizations, see ARN Formats
 Supported by Organizations in the I<AWS Organizations User Guide>.
+
+
+=head2 Email => Str
+
+  The email address associated with the AWS account.
+
+The regex pattern for this parameter is a string of characters that
+represents a standard Internet email address.
 
 
 =head2 Id => Str

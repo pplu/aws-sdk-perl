@@ -56,7 +56,7 @@ using EnableAvailabilityZonesForLoadBalancer.
 The listeners.
 
 For more information, see Listeners for Your Classic Load Balancer in
-the I<Classic Load Balancers Guide>.
+the I<Classic Load Balancer Guide>.
 
 
 
@@ -104,7 +104,7 @@ C<AvailabilityZones>.
 A list of tags to assign to the load balancer.
 
 For more information about tagging your load balancer, see Tag Your
-Classic Load Balancer in the I<Classic Load Balancers Guide>.
+Classic Load Balancer in the I<Classic Load Balancer Guide>.
 
 
 

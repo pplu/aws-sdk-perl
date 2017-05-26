@@ -61,11 +61,7 @@ The name of the Systems Manager document.
 =head2 OutputLocation => L<Paws::SSM::InstanceAssociationOutputLocation>
 
 An Amazon S3 bucket where you want to store the output details of the
-request. For example:
-
-C<"{ \"S3Location\": { \"OutputS3Region\": \"E<lt>regionE<gt>\",
-\"OutputS3BucketName\": \"bucket name\", \"OutputS3KeyPrefix\":
-\"folder name\" } }">
+request.
 
 
 
@@ -78,21 +74,13 @@ The parameters for the documents runtime configuration.
 =head2 ScheduleExpression => Str
 
 A cron expression when the association will be applied to the
-target(s). Supported expressions are every half, 1, 2, 4, 8 or 12
-hour(s); every specified day and time of the week. For example: cron(0
-0/30 * 1/1 * ? *) to run every thirty minutes; cron(0 0 0/4 1/1 * ? *)
-to run every four hours; and cron(0 0 10 ? * SUN *) to run every Sunday
-at 10 a.m.
+target(s).
 
 
 
 =head2 Targets => ArrayRef[L<Paws::SSM::Target>]
 
-The targets (either instances or tags) for the association. Instances
-are specified using
-Key=instanceids,Values=E<lt>instanceid1E<gt>,E<lt>instanceid2E<gt>.
-Tags are specified using Key=E<lt>tag nameE<gt>,Values=E<lt>tag
-valueE<gt>.
+The targets (either instances or tags) for the association.
 
 
 

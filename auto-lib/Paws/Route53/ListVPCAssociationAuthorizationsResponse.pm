@@ -29,10 +29,7 @@ When the response includes a C<NextToken> element, there are more VPCs
 that can be associated with the specified hosted zone. To get the next
 page of VPCs, submit another C<ListVPCAssociationAuthorizations>
 request, and include the value of the C<NextToken> element from the
-response in the C<NextToken> request parameter:
-
-C</2013-04-01/hostedzone/I<hosted zone
-ID>/authorizevpcassociation?MaxItems=I<VPCs per page>&NextToken=I< >>
+response in the C<nexttoken> request parameter.
 
 
 

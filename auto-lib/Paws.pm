@@ -57,7 +57,7 @@ __PACKAGE__->meta->make_immutable;
 
 package Paws;
 
-our $VERSION = '0.32';
+our $VERSION = '0.33';
 
 use Moose;
 use MooseX::ClassAttribute;
@@ -368,6 +368,8 @@ L<Paws::MachineLearning>
 
 L<Paws::MarketplaceCommerceAnalytics>
 
+L<Paws::MarketplaceEntitlement>
+
 L<Paws::MarketplaceMetering>
 
 L<Paws::MTurk>
@@ -492,6 +494,24 @@ When instantiating a service object, you can also pass a custom credential provi
   my $ec2 = Paws->service('EC2', credentials => $cred_provider, region => 'eu-west-1');
 
 In this example we instance a service object that uses the STS service to create temporary credentials that only let the service object call DescribeInstances.
+
+Paws bundles some pre-baked credential providers:
+
+L<Paws::Credential::ProviderChain> - Gets credentials from a list of providers, returning the first provider to return credentials
+
+L<Paws::Credential::Environment> - Gets credentials from environment variables
+
+L<Paws::Credential::File> - Gets credentials from AWS SDK config files
+
+L<Paws::Credential::InstanceProfile> - Gets credentials from the InstanceProfile (Role) of the running instance
+
+L<Paws::Credential::STS> - Gets temporary credentials from the Secure Token Service
+
+L<Paws::Credential::AssumeRole> - Gets temporary credentials with AssumeRole
+
+L<Paws::Credential::AssumeRoleWithSAML> - Gets temporary credentials with AssumeRoleWithSAML
+
+L<Paws::Credential::Explicit> - Gets credentials specified in the code
 
 =head1 Using Service objects (Calling APIs)
 
@@ -729,6 +749,8 @@ Dakkar for solving issues with parameter passing
 Arthur Axel fREW Schmidt for speeding up credential refreshing
 
 PopeFelix for solving issues around S3
+
+meis for contributing Paws::Credential::Explicit
 
 
 =cut

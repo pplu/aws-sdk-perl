@@ -3,6 +3,7 @@ package Paws::DeviceFarm::GetDevicePoolCompatibility;
   use Moose;
   has AppArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'appArn' );
   has DevicePoolArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'devicePoolArn' , required => 1);
+  has Test => (is => 'ro', isa => 'Paws::DeviceFarm::ScheduleRunTest', traits => ['NameInRequest'], request_name => 'test' );
   has TestType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'testType' );
 
   use MooseX::ClassAttribute;
@@ -44,6 +45,12 @@ The ARN of the app that is associated with the specified device pool.
 =head2 B<REQUIRED> DevicePoolArn => Str
 
 The device pool's ARN.
+
+
+
+=head2 Test => L<Paws::DeviceFarm::ScheduleRunTest>
+
+Information about the uploaded test to be run against the device pool.
 
 
 

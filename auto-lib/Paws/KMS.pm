@@ -693,8 +693,8 @@ plaintext data key from memory.
 =back
 
 To return only an encrypted copy of the data key, use
-GenerateDataKeyWithoutPlaintext. To return an arbitrary unpredictable
-byte string, use GenerateRandom.
+GenerateDataKeyWithoutPlaintext. To return a random byte string that is
+cryptographically secure, use GenerateRandom.
 
 If you use the optional C<EncryptionContext> field, you must store at
 least enough information to be able to reconstruct the full encryption
@@ -736,7 +736,10 @@ Each argument is described in detail in: L<Paws::KMS::GenerateRandom>
 
 Returns: a L<Paws::KMS::GenerateRandomResponse> instance
 
-  Generates an unpredictable byte string.
+  Returns a random byte string that is cryptographically secure.
+
+For more information about entropy and random number generation, see
+the AWS Key Management Service Cryptographic Details whitepaper.
 
 
 =head2 GetKeyPolicy(KeyId => Str, PolicyName => Str)

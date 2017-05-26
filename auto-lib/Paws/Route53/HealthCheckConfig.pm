@@ -225,8 +225,8 @@ unhealthy.
 
 =item *
 
-C<LastKnownStatus>: Amazon Route 53uses the status of the health check
-from the last time CloudWatch had sufficient data to determine the
+C<LastKnownStatus>: Amazon Route 53 uses the status of the health check
+from the last time that CloudWatch had sufficient data to determine the
 alarm state. For new health checks that have no last known status, the
 default status for the health check is healthy.
 
@@ -314,8 +314,8 @@ health check.
 =head2 Port => Int
 
   The port on the endpoint on which you want Amazon Route 53 to perform
-health checks. Specify a value for Port only when you specify a value
-for C<IPAddress>.
+health checks. Specify a value for C<Port> only when you specify a
+value for C<IPAddress>.
 
 
 =head2 Regions => ArrayRef[Str|Undef]
@@ -432,8 +432,8 @@ that number with the value of C<HealthThreshold>.
 
 =back
 
-For more information about how Amazon Route 53 determines whether an
-endpoint is healthy, see the introduction to this topic.
+For more information, see How Amazon Route 53 Determines Whether an
+Endpoint Is Healthy in the I<Amazon Route 53 Developer Guide>.
 
 
 

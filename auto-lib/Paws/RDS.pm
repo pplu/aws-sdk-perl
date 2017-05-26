@@ -879,7 +879,7 @@ Amazon Relational Database Service
 
 Amazon Relational Database Service (Amazon RDS) is a web service that
 makes it easier to set up, operate, and scale a relational database in
-the cloud. It provides cost-efficient, resizeable capacity for an
+the cloud. It provides cost-efficient, resizable capacity for an
 industry-standard relational database and manages common database
 administration tasks, freeing up developers to focus on what makes
 their applications and businesses unique.
@@ -1142,7 +1142,7 @@ To copy a DB snapshot from a shared manual DB snapshot,
 C<SourceDBSnapshotIdentifier> must be the Amazon Resource Name (ARN) of
 the shared DB snapshot.
 
-You can copy an encrypted DB snapshot from another AWS Region. In that
+You can copy an encrypted DB snapshot from another AWS region. In that
 case, the region where you call the C<CopyDBSnapshot> action is the
 destination region for the encrypted DB snapshot to be copied to. To
 copy an encrypted DB snapshot from another region, you must provide the
@@ -1219,8 +1219,7 @@ C<SourceDBSnapshotIdentifier> in the presigned URL.
 =back
 
 For more information on copying encrypted snapshots from one region to
-another, see Copying an Encrypted DB Snapshot to Another Region in the
-Amazon RDS User Guide.
+another, see Copying a DB Snapshot in the Amazon RDS User Guide.
 
 
 =head2 CopyOptionGroup(SourceOptionGroupIdentifier => Str, TargetOptionGroupDescription => Str, TargetOptionGroupIdentifier => Str, [Tags => ArrayRef[L<Paws::RDS::Tag>]])
@@ -1232,7 +1231,7 @@ Returns: a L<Paws::RDS::CopyOptionGroupResult> instance
   Copies the specified option group.
 
 
-=head2 CreateDBCluster(DBClusterIdentifier => Str, Engine => Str, [AvailabilityZones => ArrayRef[Str|Undef], BackupRetentionPeriod => Int, CharacterSetName => Str, DatabaseName => Str, DBClusterParameterGroupName => Str, DBSubnetGroupName => Str, EngineVersion => Str, KmsKeyId => Str, MasterUsername => Str, MasterUserPassword => Str, OptionGroupName => Str, Port => Int, PreferredBackupWindow => Str, PreferredMaintenanceWindow => Str, PreSignedUrl => Str, ReplicationSourceIdentifier => Str, StorageEncrypted => Bool, Tags => ArrayRef[L<Paws::RDS::Tag>], VpcSecurityGroupIds => ArrayRef[Str|Undef]])
+=head2 CreateDBCluster(DBClusterIdentifier => Str, Engine => Str, [AvailabilityZones => ArrayRef[Str|Undef], BackupRetentionPeriod => Int, CharacterSetName => Str, DatabaseName => Str, DBClusterParameterGroupName => Str, DBSubnetGroupName => Str, EnableIAMDatabaseAuthentication => Bool, EngineVersion => Str, KmsKeyId => Str, MasterUsername => Str, MasterUserPassword => Str, OptionGroupName => Str, Port => Int, PreferredBackupWindow => Str, PreferredMaintenanceWindow => Str, PreSignedUrl => Str, ReplicationSourceIdentifier => Str, StorageEncrypted => Bool, Tags => ArrayRef[L<Paws::RDS::Tag>], VpcSecurityGroupIds => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::RDS::CreateDBCluster>
 
@@ -1297,7 +1296,7 @@ Returns: a L<Paws::RDS::CreateDBClusterSnapshotResult> instance
 Aurora, see Aurora on Amazon RDS in the I<Amazon RDS User Guide.>
 
 
-=head2 CreateDBInstance(DBInstanceClass => Str, DBInstanceIdentifier => Str, Engine => Str, [AllocatedStorage => Int, AutoMinorVersionUpgrade => Bool, AvailabilityZone => Str, BackupRetentionPeriod => Int, CharacterSetName => Str, CopyTagsToSnapshot => Bool, DBClusterIdentifier => Str, DBName => Str, DBParameterGroupName => Str, DBSecurityGroups => ArrayRef[Str|Undef], DBSubnetGroupName => Str, Domain => Str, DomainIAMRoleName => Str, EngineVersion => Str, Iops => Int, KmsKeyId => Str, LicenseModel => Str, MasterUsername => Str, MasterUserPassword => Str, MonitoringInterval => Int, MonitoringRoleArn => Str, MultiAZ => Bool, OptionGroupName => Str, Port => Int, PreferredBackupWindow => Str, PreferredMaintenanceWindow => Str, PromotionTier => Int, PubliclyAccessible => Bool, StorageEncrypted => Bool, StorageType => Str, Tags => ArrayRef[L<Paws::RDS::Tag>], TdeCredentialArn => Str, TdeCredentialPassword => Str, Timezone => Str, VpcSecurityGroupIds => ArrayRef[Str|Undef]])
+=head2 CreateDBInstance(DBInstanceClass => Str, DBInstanceIdentifier => Str, Engine => Str, [AllocatedStorage => Int, AutoMinorVersionUpgrade => Bool, AvailabilityZone => Str, BackupRetentionPeriod => Int, CharacterSetName => Str, CopyTagsToSnapshot => Bool, DBClusterIdentifier => Str, DBName => Str, DBParameterGroupName => Str, DBSecurityGroups => ArrayRef[Str|Undef], DBSubnetGroupName => Str, Domain => Str, DomainIAMRoleName => Str, EnableIAMDatabaseAuthentication => Bool, EngineVersion => Str, Iops => Int, KmsKeyId => Str, LicenseModel => Str, MasterUsername => Str, MasterUserPassword => Str, MonitoringInterval => Int, MonitoringRoleArn => Str, MultiAZ => Bool, OptionGroupName => Str, Port => Int, PreferredBackupWindow => Str, PreferredMaintenanceWindow => Str, PromotionTier => Int, PubliclyAccessible => Bool, StorageEncrypted => Bool, StorageType => Str, Tags => ArrayRef[L<Paws::RDS::Tag>], TdeCredentialArn => Str, TdeCredentialPassword => Str, Timezone => Str, VpcSecurityGroupIds => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::RDS::CreateDBInstance>
 
@@ -1306,7 +1305,7 @@ Returns: a L<Paws::RDS::CreateDBInstanceResult> instance
   Creates a new DB instance.
 
 
-=head2 CreateDBInstanceReadReplica(DBInstanceIdentifier => Str, SourceDBInstanceIdentifier => Str, [AutoMinorVersionUpgrade => Bool, AvailabilityZone => Str, CopyTagsToSnapshot => Bool, DBInstanceClass => Str, DBSubnetGroupName => Str, Iops => Int, KmsKeyId => Str, MonitoringInterval => Int, MonitoringRoleArn => Str, OptionGroupName => Str, Port => Int, PreSignedUrl => Str, PubliclyAccessible => Bool, StorageType => Str, Tags => ArrayRef[L<Paws::RDS::Tag>]])
+=head2 CreateDBInstanceReadReplica(DBInstanceIdentifier => Str, SourceDBInstanceIdentifier => Str, [AutoMinorVersionUpgrade => Bool, AvailabilityZone => Str, CopyTagsToSnapshot => Bool, DBInstanceClass => Str, DBSubnetGroupName => Str, EnableIAMDatabaseAuthentication => Bool, Iops => Int, KmsKeyId => Str, MonitoringInterval => Int, MonitoringRoleArn => Str, OptionGroupName => Str, Port => Int, PreSignedUrl => Str, PubliclyAccessible => Bool, StorageType => Str, Tags => ArrayRef[L<Paws::RDS::Tag>]])
 
 Each argument is described in detail in: L<Paws::RDS::CreateDBInstanceReadReplica>
 
@@ -1314,6 +1313,10 @@ Returns: a L<Paws::RDS::CreateDBInstanceReadReplicaResult> instance
 
   Creates a DB instance for a DB instance running MySQL, MariaDB, or
 PostgreSQL that acts as a Read Replica of a source DB instance.
+
+Amazon Aurora does not support this action. You must call the
+C<CreateDBInstance> action to create a DB instance for an Aurora DB
+cluster.
 
 All Read Replica DB instances are created as Single-AZ deployments with
 backups disabled. All other DB instance attributes (including DB
@@ -2035,7 +2038,7 @@ For an overview on tagging an Amazon RDS resource, see Tagging Amazon
 RDS Resources.
 
 
-=head2 ModifyDBCluster(DBClusterIdentifier => Str, [ApplyImmediately => Bool, BackupRetentionPeriod => Int, DBClusterParameterGroupName => Str, MasterUserPassword => Str, NewDBClusterIdentifier => Str, OptionGroupName => Str, Port => Int, PreferredBackupWindow => Str, PreferredMaintenanceWindow => Str, VpcSecurityGroupIds => ArrayRef[Str|Undef]])
+=head2 ModifyDBCluster(DBClusterIdentifier => Str, [ApplyImmediately => Bool, BackupRetentionPeriod => Int, DBClusterParameterGroupName => Str, EnableIAMDatabaseAuthentication => Bool, MasterUserPassword => Str, NewDBClusterIdentifier => Str, OptionGroupName => Str, Port => Int, PreferredBackupWindow => Str, PreferredMaintenanceWindow => Str, VpcSecurityGroupIds => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::RDS::ModifyDBCluster>
 
@@ -2094,16 +2097,17 @@ the manual DB cluster snapshot. Use the value C<all> to make the manual
 DB cluster snapshot public, which means that it can be copied or
 restored by all AWS accounts. Do not add the C<all> value for any
 manual DB cluster snapshots that contain private information that you
-don't want available to all AWS accounts.
+don't want available to all AWS accounts. If a manual DB cluster
+snapshot is encrypted, it can be shared, but only by specifying a list
+of authorized AWS account IDs for the C<ValuesToAdd> parameter. You
+can't use C<all> as a value for that parameter in this case.
 
 To view which AWS accounts have access to copy or restore a manual DB
 cluster snapshot, or whether a manual DB cluster snapshot public or
 private, use the DescribeDBClusterSnapshotAttributes API action.
 
-If a manual DB cluster snapshot is encrypted, it cannot be shared.
 
-
-=head2 ModifyDBInstance(DBInstanceIdentifier => Str, [AllocatedStorage => Int, AllowMajorVersionUpgrade => Bool, ApplyImmediately => Bool, AutoMinorVersionUpgrade => Bool, BackupRetentionPeriod => Int, CACertificateIdentifier => Str, CopyTagsToSnapshot => Bool, DBInstanceClass => Str, DBParameterGroupName => Str, DBPortNumber => Int, DBSecurityGroups => ArrayRef[Str|Undef], DBSubnetGroupName => Str, Domain => Str, DomainIAMRoleName => Str, EngineVersion => Str, Iops => Int, LicenseModel => Str, MasterUserPassword => Str, MonitoringInterval => Int, MonitoringRoleArn => Str, MultiAZ => Bool, NewDBInstanceIdentifier => Str, OptionGroupName => Str, PreferredBackupWindow => Str, PreferredMaintenanceWindow => Str, PromotionTier => Int, PubliclyAccessible => Bool, StorageType => Str, TdeCredentialArn => Str, TdeCredentialPassword => Str, VpcSecurityGroupIds => ArrayRef[Str|Undef]])
+=head2 ModifyDBInstance(DBInstanceIdentifier => Str, [AllocatedStorage => Int, AllowMajorVersionUpgrade => Bool, ApplyImmediately => Bool, AutoMinorVersionUpgrade => Bool, BackupRetentionPeriod => Int, CACertificateIdentifier => Str, CopyTagsToSnapshot => Bool, DBInstanceClass => Str, DBParameterGroupName => Str, DBPortNumber => Int, DBSecurityGroups => ArrayRef[Str|Undef], DBSubnetGroupName => Str, Domain => Str, DomainIAMRoleName => Str, EnableIAMDatabaseAuthentication => Bool, EngineVersion => Str, Iops => Int, LicenseModel => Str, MasterUserPassword => Str, MonitoringInterval => Int, MonitoringRoleArn => Str, MultiAZ => Bool, NewDBInstanceIdentifier => Str, OptionGroupName => Str, PreferredBackupWindow => Str, PreferredMaintenanceWindow => Str, PromotionTier => Int, PubliclyAccessible => Bool, StorageType => Str, TdeCredentialArn => Str, TdeCredentialPassword => Str, VpcSecurityGroupIds => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::RDS::ModifyDBInstance>
 
@@ -2172,13 +2176,14 @@ the manual DB snapshot. Uses the value C<all> to make the manual DB
 snapshot public, which means it can be copied or restored by all AWS
 accounts. Do not add the C<all> value for any manual DB snapshots that
 contain private information that you don't want available to all AWS
-accounts.
+accounts. If the manual DB snapshot is encrypted, it can be shared, but
+only by specifying a list of authorized AWS account IDs for the
+C<ValuesToAdd> parameter. You can't use C<all> as a value for that
+parameter in this case.
 
 To view which AWS accounts have access to copy or restore a manual DB
 snapshot, or whether a manual DB snapshot public or private, use the
 DescribeDBSnapshotAttributes API action.
-
-If the manual DB snapshot is encrypted, it cannot be shared.
 
 
 =head2 ModifyDBSubnetGroup(DBSubnetGroupName => Str, SubnetIds => ArrayRef[Str|Undef], [DBSubnetGroupDescription => Str])
@@ -2338,7 +2343,7 @@ Each argument is described in detail in: L<Paws::RDS::ResetDBParameterGroup>
 Returns: a L<Paws::RDS::DBParameterGroupNameMessage> instance
 
   Modifies the parameters of a DB parameter group to the engine/system
-default value. To reset specific parameters submit a list of the
+default value. To reset specific parameters, provide a list of the
 following: C<ParameterName> and C<ApplyMethod>. To reset the entire DB
 parameter group, specify the C<DBParameterGroup> name and
 C<ResetAllParameters> parameters. When resetting the entire group,
@@ -2347,7 +2352,7 @@ set to C<pending-reboot> to take effect on the next DB instance restart
 or C<RebootDBInstance> request.
 
 
-=head2 RestoreDBClusterFromS3(DBClusterIdentifier => Str, Engine => Str, MasterUsername => Str, MasterUserPassword => Str, S3BucketName => Str, S3IngestionRoleArn => Str, SourceEngine => Str, SourceEngineVersion => Str, [AvailabilityZones => ArrayRef[Str|Undef], BackupRetentionPeriod => Int, CharacterSetName => Str, DatabaseName => Str, DBClusterParameterGroupName => Str, DBSubnetGroupName => Str, EngineVersion => Str, KmsKeyId => Str, OptionGroupName => Str, Port => Int, PreferredBackupWindow => Str, PreferredMaintenanceWindow => Str, S3Prefix => Str, StorageEncrypted => Bool, Tags => ArrayRef[L<Paws::RDS::Tag>], VpcSecurityGroupIds => ArrayRef[Str|Undef]])
+=head2 RestoreDBClusterFromS3(DBClusterIdentifier => Str, Engine => Str, MasterUsername => Str, MasterUserPassword => Str, S3BucketName => Str, S3IngestionRoleArn => Str, SourceEngine => Str, SourceEngineVersion => Str, [AvailabilityZones => ArrayRef[Str|Undef], BackupRetentionPeriod => Int, CharacterSetName => Str, DatabaseName => Str, DBClusterParameterGroupName => Str, DBSubnetGroupName => Str, EnableIAMDatabaseAuthentication => Bool, EngineVersion => Str, KmsKeyId => Str, OptionGroupName => Str, Port => Int, PreferredBackupWindow => Str, PreferredMaintenanceWindow => Str, S3Prefix => Str, StorageEncrypted => Bool, Tags => ArrayRef[L<Paws::RDS::Tag>], VpcSecurityGroupIds => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::RDS::RestoreDBClusterFromS3>
 
@@ -2359,7 +2364,7 @@ and the data must be created using the Percona XtraBackup utility as
 described in Migrating Data from MySQL by Using an Amazon S3 Bucket.
 
 
-=head2 RestoreDBClusterFromSnapshot(DBClusterIdentifier => Str, Engine => Str, SnapshotIdentifier => Str, [AvailabilityZones => ArrayRef[Str|Undef], DatabaseName => Str, DBSubnetGroupName => Str, EngineVersion => Str, KmsKeyId => Str, OptionGroupName => Str, Port => Int, Tags => ArrayRef[L<Paws::RDS::Tag>], VpcSecurityGroupIds => ArrayRef[Str|Undef]])
+=head2 RestoreDBClusterFromSnapshot(DBClusterIdentifier => Str, Engine => Str, SnapshotIdentifier => Str, [AvailabilityZones => ArrayRef[Str|Undef], DatabaseName => Str, DBSubnetGroupName => Str, EnableIAMDatabaseAuthentication => Bool, EngineVersion => Str, KmsKeyId => Str, OptionGroupName => Str, Port => Int, Tags => ArrayRef[L<Paws::RDS::Tag>], VpcSecurityGroupIds => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::RDS::RestoreDBClusterFromSnapshot>
 
@@ -2374,7 +2379,7 @@ For more information on Amazon Aurora, see Aurora on Amazon RDS in the
 I<Amazon RDS User Guide.>
 
 
-=head2 RestoreDBClusterToPointInTime(DBClusterIdentifier => Str, SourceDBClusterIdentifier => Str, [DBSubnetGroupName => Str, KmsKeyId => Str, OptionGroupName => Str, Port => Int, RestoreToTime => Str, Tags => ArrayRef[L<Paws::RDS::Tag>], UseLatestRestorableTime => Bool, VpcSecurityGroupIds => ArrayRef[Str|Undef]])
+=head2 RestoreDBClusterToPointInTime(DBClusterIdentifier => Str, SourceDBClusterIdentifier => Str, [DBSubnetGroupName => Str, EnableIAMDatabaseAuthentication => Bool, KmsKeyId => Str, OptionGroupName => Str, Port => Int, RestoreToTime => Str, Tags => ArrayRef[L<Paws::RDS::Tag>], UseLatestRestorableTime => Bool, VpcSecurityGroupIds => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::RDS::RestoreDBClusterToPointInTime>
 
@@ -2391,7 +2396,7 @@ For more information on Amazon Aurora, see Aurora on Amazon RDS in the
 I<Amazon RDS User Guide.>
 
 
-=head2 RestoreDBInstanceFromDBSnapshot(DBInstanceIdentifier => Str, DBSnapshotIdentifier => Str, [AutoMinorVersionUpgrade => Bool, AvailabilityZone => Str, CopyTagsToSnapshot => Bool, DBInstanceClass => Str, DBName => Str, DBSubnetGroupName => Str, Domain => Str, DomainIAMRoleName => Str, Engine => Str, Iops => Int, LicenseModel => Str, MultiAZ => Bool, OptionGroupName => Str, Port => Int, PubliclyAccessible => Bool, StorageType => Str, Tags => ArrayRef[L<Paws::RDS::Tag>], TdeCredentialArn => Str, TdeCredentialPassword => Str])
+=head2 RestoreDBInstanceFromDBSnapshot(DBInstanceIdentifier => Str, DBSnapshotIdentifier => Str, [AutoMinorVersionUpgrade => Bool, AvailabilityZone => Str, CopyTagsToSnapshot => Bool, DBInstanceClass => Str, DBName => Str, DBSubnetGroupName => Str, Domain => Str, DomainIAMRoleName => Str, EnableIAMDatabaseAuthentication => Bool, Engine => Str, Iops => Int, LicenseModel => Str, MultiAZ => Bool, OptionGroupName => Str, Port => Int, PubliclyAccessible => Bool, StorageType => Str, Tags => ArrayRef[L<Paws::RDS::Tag>], TdeCredentialArn => Str, TdeCredentialPassword => Str])
 
 Each argument is described in detail in: L<Paws::RDS::RestoreDBInstanceFromDBSnapshot>
 
@@ -2420,7 +2425,7 @@ If you are restoring from a shared manual DB snapshot, the
 C<DBSnapshotIdentifier> must be the ARN of the shared DB snapshot.
 
 
-=head2 RestoreDBInstanceToPointInTime(SourceDBInstanceIdentifier => Str, TargetDBInstanceIdentifier => Str, [AutoMinorVersionUpgrade => Bool, AvailabilityZone => Str, CopyTagsToSnapshot => Bool, DBInstanceClass => Str, DBName => Str, DBSubnetGroupName => Str, Domain => Str, DomainIAMRoleName => Str, Engine => Str, Iops => Int, LicenseModel => Str, MultiAZ => Bool, OptionGroupName => Str, Port => Int, PubliclyAccessible => Bool, RestoreTime => Str, StorageType => Str, Tags => ArrayRef[L<Paws::RDS::Tag>], TdeCredentialArn => Str, TdeCredentialPassword => Str, UseLatestRestorableTime => Bool])
+=head2 RestoreDBInstanceToPointInTime(SourceDBInstanceIdentifier => Str, TargetDBInstanceIdentifier => Str, [AutoMinorVersionUpgrade => Bool, AvailabilityZone => Str, CopyTagsToSnapshot => Bool, DBInstanceClass => Str, DBName => Str, DBSubnetGroupName => Str, Domain => Str, DomainIAMRoleName => Str, EnableIAMDatabaseAuthentication => Bool, Engine => Str, Iops => Int, LicenseModel => Str, MultiAZ => Bool, OptionGroupName => Str, Port => Int, PubliclyAccessible => Bool, RestoreTime => Str, StorageType => Str, Tags => ArrayRef[L<Paws::RDS::Tag>], TdeCredentialArn => Str, TdeCredentialPassword => Str, UseLatestRestorableTime => Bool])
 
 Each argument is described in detail in: L<Paws::RDS::RestoreDBInstanceToPointInTime>
 

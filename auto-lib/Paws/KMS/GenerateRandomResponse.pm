@@ -16,7 +16,7 @@ Paws::KMS::GenerateRandomResponse
 
 =head2 Plaintext => Str
 
-The unpredictable byte string.
+The random byte string.
 
 
 =head2 _request_id => Str

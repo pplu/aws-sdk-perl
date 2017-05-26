@@ -22,18 +22,16 @@ Paws::Route53::ListTrafficPoliciesResponse
 
 A flag that indicates whether there are more traffic policies to be
 listed. If the response was truncated, you can get the next group of
-C<MaxItems> traffic policies by calling C<ListTrafficPolicies> again
-and specifying the value of the C<TrafficPolicyIdMarker> element in the
+traffic policies by submitting another C<ListTrafficPolicies> request
+and specifying the value of C<TrafficPolicyIdMarker> in the
 C<TrafficPolicyIdMarker> request parameter.
-
-Valid Values: C<true> | C<false>
 
 
 
 =head2 B<REQUIRED> MaxItems => Str
 
-The value that you specified for the C<MaxItems> parameter in the call
-to C<ListTrafficPolicies> that produced the current response.
+The value that you specified for the C<MaxItems> parameter in the
+C<ListTrafficPolicies> request that produced the current response.
 
 
 

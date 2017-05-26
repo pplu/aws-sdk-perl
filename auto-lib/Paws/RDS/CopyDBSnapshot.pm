@@ -115,7 +115,7 @@ C<SourceDBSnapshotIdentifier> - The DB snapshot identifier for the
 encrypted snapshot to be copied. This identifier must be in the Amazon
 Resource Name (ARN) format for the source region. For example, if you
 are copying an encrypted DB snapshot from the us-west-2 region, then
-your C<SourceDBSnapshotIdentifier> would look like Example:
+your C<SourceDBSnapshotIdentifier> looks like the following example:
 C<arn:aws:rds:us-west-2:123456789012:snapshot:mysql-instance1-snapshot-20161115>.
 
 =back
@@ -153,7 +153,7 @@ valid DB snapshot identifier.
 
 If the source snapshot is in a different region than the copy, specify
 a valid DB snapshot ARN. For more information, go to Copying a DB
-Snapshot.
+Snapshot or DB Cluster Snapshot.
 
 =back
 

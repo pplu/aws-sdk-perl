@@ -1,5 +1,6 @@
 package Paws::AppStream::Session;
   use Moose;
+  has AuthenticationType => (is => 'ro', isa => 'Str');
   has FleetName => (is => 'ro', isa => 'Str', required => 1);
   has Id => (is => 'ro', isa => 'Str', required => 1);
   has StackName => (is => 'ro', isa => 'Str', required => 1);
@@ -24,20 +25,27 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::AppStream::Session object:
 
-  $service_obj->Method(Att1 => { FleetName => $value, ..., UserId => $value  });
+  $service_obj->Method(Att1 => { AuthenticationType => $value, ..., UserId => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::AppStream::Session object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->FleetName
+  $result->Att1->AuthenticationType
 
 =head1 DESCRIPTION
 
 Contains the parameters for a streaming session.
 
 =head1 ATTRIBUTES
+
+
+=head2 AuthenticationType => Str
+
+  The authentication method of the user for whom the session was created.
+It can be C<API> for a user authenticated using a streaming url or
+C<SAML> for a SAML federated user.
 
 
 =head2 B<REQUIRED> FleetName => Str

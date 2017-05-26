@@ -48,7 +48,8 @@ associated with the hosted zone.
 =head2 MaxResults => Str
 
 I<Optional>: An integer that specifies the maximum number of VPCs that
-you want Amazon Route 53 to return.
+you want Amazon Route 53 to return. If you don't specify a value for
+C<MaxResults>, Amazon Route 53 returns up to 50 VPCs per page.
 
 
 
@@ -57,8 +58,8 @@ you want Amazon Route 53 to return.
 I<Optional>: If a response includes a C<NextToken> element, there are
 more VPCs that can be associated with the specified hosted zone. To get
 the next page of results, submit another request, and include the value
-of the C<NextToken> element in from the response in the C<NextToken>
-parameter in another C<ListVPCAssociationAuthorizations> request.
+of C<NextToken> from the response in the C<nexttoken> parameter in
+another C<ListVPCAssociationAuthorizations> request.
 
 
 

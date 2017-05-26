@@ -39,8 +39,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 B<REQUIRED> Id => Str
 
 The ID of the change batch request. The value that you specify here is
-the value that C<ChangeResourceRecordSets> returned in the Id element
-when you submitted the request.
+the value that C<ChangeResourceRecordSets> returned in the C<Id>
+element when you submitted the request.
 
 
 

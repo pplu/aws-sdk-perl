@@ -46,7 +46,7 @@ target ID using the short form, you must also specify the target type.
 =head2 Cluster => Str
 
 The short name or full Amazon Resource Name (ARN) of the cluster that
-contains the resource to apply attributes. If you do not specify a
+contains the resource to delete attributes. If you do not specify a
 cluster, the default cluster is assumed.
 
 

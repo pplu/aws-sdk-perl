@@ -36,8 +36,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Cluster => Str
 
-The name of the cluster that hosts the service to describe. If you do
-not specify a cluster, the default cluster is assumed.
+The short name or full Amazon Resource Name (ARN)the cluster that hosts
+the service to describe. If you do not specify a cluster, the default
+cluster is assumed.
 
 
 

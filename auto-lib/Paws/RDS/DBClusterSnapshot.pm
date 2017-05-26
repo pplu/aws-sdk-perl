@@ -8,6 +8,7 @@ package Paws::RDS::DBClusterSnapshot;
   has DBClusterSnapshotIdentifier => (is => 'ro', isa => 'Str');
   has Engine => (is => 'ro', isa => 'Str');
   has EngineVersion => (is => 'ro', isa => 'Str');
+  has IAMDatabaseAuthenticationEnabled => (is => 'ro', isa => 'Bool');
   has KmsKeyId => (is => 'ro', isa => 'Str');
   has LicenseModel => (is => 'ro', isa => 'Str');
   has MasterUsername => (is => 'ro', isa => 'Str');
@@ -15,6 +16,7 @@ package Paws::RDS::DBClusterSnapshot;
   has Port => (is => 'ro', isa => 'Int');
   has SnapshotCreateTime => (is => 'ro', isa => 'Str');
   has SnapshotType => (is => 'ro', isa => 'Str');
+  has SourceDBClusterSnapshotArn => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
   has StorageEncrypted => (is => 'ro', isa => 'Bool');
   has VpcId => (is => 'ro', isa => 'Str');
@@ -113,6 +115,12 @@ cluster snapshot was created from.
 snapshot.
 
 
+=head2 IAMDatabaseAuthenticationEnabled => Bool
+
+  True if mapping of AWS Identity and Access Management (IAM) accounts to
+database accounts is enabled; otherwise false.
+
+
 =head2 KmsKeyId => Str
 
   If C<StorageEncrypted> is true, the KMS key identifier for the
@@ -150,6 +158,13 @@ Time (UTC).
 =head2 SnapshotType => Str
 
   Provides the type of the DB cluster snapshot.
+
+
+=head2 SourceDBClusterSnapshotArn => Str
+
+  If the DB cluster snapshot was copied from a source DB cluster
+snapshot, the Amazon Resource Name (ARN) for the source DB cluster
+snapshot; otherwise, a null value.
 
 
 =head2 Status => Str

@@ -3,6 +3,7 @@ package Paws::RDS::RestoreDBClusterToPointInTime;
   use Moose;
   has DBClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has DBSubnetGroupName => (is => 'ro', isa => 'Str');
+  has EnableIAMDatabaseAuthentication => (is => 'ro', isa => 'Bool');
   has KmsKeyId => (is => 'ro', isa => 'Str');
   has OptionGroupName => (is => 'ro', isa => 'Str');
   has Port => (is => 'ro', isa => 'Int');
@@ -75,6 +76,16 @@ Constraints: Must contain no more than 255 alphanumeric characters,
 periods, underscores, spaces, or hyphens. Must not be default.
 
 Example: C<mySubnetgroup>
+
+
+
+=head2 EnableIAMDatabaseAuthentication => Bool
+
+A Boolean value that is true to enable mapping of AWS Identity and
+Access Management (IAM) accounts to database accounts, and otherwise
+false.
+
+Default: C<false>
 
 
 

@@ -16,6 +16,7 @@ package Paws::RDS::ModifyDBInstance;
   has DBSubnetGroupName => (is => 'ro', isa => 'Str');
   has Domain => (is => 'ro', isa => 'Str');
   has DomainIAMRoleName => (is => 'ro', isa => 'Str');
+  has EnableIAMDatabaseAuthentication => (is => 'ro', isa => 'Bool');
   has EngineVersion => (is => 'ro', isa => 'Str');
   has Iops => (is => 'ro', isa => 'Int');
   has LicenseModel => (is => 'ro', isa => 'Str');
@@ -419,6 +420,30 @@ can be created in a Active Directory Domain.
 
 The name of the IAM role to use when making API calls to the Directory
 Service.
+
+
+
+=head2 EnableIAMDatabaseAuthentication => Bool
+
+True to enable mapping of AWS Identity and Access Management (IAM)
+accounts to database accounts; otherwise false.
+
+You can enable IAM database authentication for the following database
+engines
+
+=over
+
+=item *
+
+For MySQL 5.6, minor version 5.6.34 or higher
+
+=item *
+
+For MySQL 5.7, minor version 5.7.16 or higher
+
+=back
+
+Default: C<false>
 
 
 

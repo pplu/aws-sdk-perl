@@ -16,7 +16,9 @@ Paws::Route53Domains::GetDomainSuggestionsResponse
 
 =head2 SuggestionsList => ArrayRef[L<Paws::Route53Domains::DomainSuggestion>]
 
-
+A list of possible domain names. If you specified C<true> for
+C<OnlyAvailable> in the request, the list contains only domains that
+are available for registration.
 
 
 =head2 _request_id => Str

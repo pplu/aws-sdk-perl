@@ -36,7 +36,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SQS::SendMe
 =head1 DESCRIPTION
 
 Encloses a C<MessageId> for a successfully-enqueued message in a C<
-SendMessageBatch >.
+SendMessageBatch.>
 
 =head1 ATTRIBUTES
 
@@ -51,7 +51,7 @@ SendMessageBatch >.
   An MD5 digest of the non-URL-encoded message attribute string. You can
 use this attribute to verify that Amazon SQS received the message
 correctly. Amazon SQS URL-decodes the message before creating the MD5
-digest. For information on MD5, see RFC1321.
+digest. For information about MD5, see RFC1321.
 
 
 =head2 B<REQUIRED> MD5OfMessageBody => Str
@@ -59,7 +59,7 @@ digest. For information on MD5, see RFC1321.
   An MD5 digest of the non-URL-encoded message attribute string. You can
 use this attribute to verify that Amazon SQS received the message
 correctly. Amazon SQS URL-decodes the message before creating the MD5
-digest. For information on MD5, see RFC1321.
+digest. For information about MD5, see RFC1321.
 
 
 =head2 B<REQUIRED> MessageId => Str
@@ -71,7 +71,7 @@ digest. For information on MD5, see RFC1321.
 
   This parameter applies only to FIFO (first-in-first-out) queues.
 
-A large, non-consecutive number that Amazon SQS assigns to each
+The large, non-consecutive number that Amazon SQS assigns to each
 message.
 
 The length of C<SequenceNumber> is 128 bits. As C<SequenceNumber>

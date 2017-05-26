@@ -59,6 +59,10 @@ billing information. For more information, see Activating Access to the
 Billing and Cost Management Console in the I<AWS Billing and Cost
 Management User Guide>.
 
+If you do not specify this parameter, the value defaults to ALLOW, and
+IAM users and roles with the required permissions can access billing
+information for the new account.
+
 Valid values are: C<"ALLOW">, C<"DENY">
 
 =head2 RoleName => Str

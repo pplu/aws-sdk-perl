@@ -38,12 +38,6 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 The name of the domain for which you want to know whether the
 registrant contact has confirmed that the email address is valid.
 
-Type: String
-
-Default: None
-
-Required: Yes
-
 
 
 

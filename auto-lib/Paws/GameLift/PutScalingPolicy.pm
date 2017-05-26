@@ -104,7 +104,7 @@ game session.
 =back
 
 
-Valid values are: C<"ActivatingGameSessions">, C<"ActiveGameSessions">, C<"ActiveInstances">, C<"AvailablePlayerSessions">, C<"CurrentPlayerSessions">, C<"IdleInstances">, C<"QueueDepth">, C<"WaitTime">
+Valid values are: C<"ActivatingGameSessions">, C<"ActiveGameSessions">, C<"ActiveInstances">, C<"AvailableGameSessions">, C<"AvailablePlayerSessions">, C<"CurrentPlayerSessions">, C<"IdleInstances">, C<"PercentAvailableGameSessions">, C<"PercentIdleInstances">, C<"QueueDepth">, C<"WaitTime">
 
 =head2 B<REQUIRED> Name => Str
 

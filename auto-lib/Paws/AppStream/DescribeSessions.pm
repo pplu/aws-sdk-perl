@@ -1,6 +1,7 @@
 
 package Paws::AppStream::DescribeSessions;
   use Moose;
+  has AuthenticationType => (is => 'ro', isa => 'Str');
   has FleetName => (is => 'ro', isa => 'Str', required => 1);
   has Limit => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
@@ -36,6 +37,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
+=head2 AuthenticationType => Str
+
+The authentication method of the user. It can be C<API> for a user
+authenticated using a streaming url or C<SAML> for a SAML federated
+user. If an authentication type is not provided, the operation defaults
+to users authenticated using a streaming url.
+
+Valid values are: C<"API">, C<"SAML">
 
 =head2 B<REQUIRED> FleetName => Str
 

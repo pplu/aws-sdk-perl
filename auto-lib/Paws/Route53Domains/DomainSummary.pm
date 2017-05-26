@@ -34,7 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Route53Doma
 
 =head1 DESCRIPTION
 
-This class has no description
+Summary information about one domain.
 
 =head1 ATTRIBUTES
 
@@ -43,33 +43,21 @@ This class has no description
 
   Indicates whether the domain is automatically renewed upon expiration.
 
-Type: Boolean
-
-Valid values: C<True> | C<False>
-
 
 =head2 B<REQUIRED> DomainName => Str
 
-  The name of a domain.
-
-Type: String
+  The name of the domain that the summary information applies to.
 
 
 =head2 Expiry => Str
 
   Expiration date of the domain in Coordinated Universal Time (UTC).
 
-Type: Long
-
 
 =head2 TransferLock => Bool
 
   Indicates whether a domain is locked from unauthorized transfer to
 another party.
-
-Type: Boolean
-
-Valid values: C<True> | C<False>
 
 
 
