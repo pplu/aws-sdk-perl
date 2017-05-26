@@ -5,6 +5,23 @@ package Paws::API::EndpointResolver;
   use Paws::Exception;
   use Moose::Util::TypeConstraints;
 
+  sub BUILD {
+    my $self = shift;
+
+    # These calls are here so that when you construct
+    # the object the endpoint information and the _region_for_signature
+    # are calculated during construction. This is to avoid the fact that 
+    # these attributes are lazy (because they depend on other attributes) 
+    # and they don't get used until the first method is called, so if
+    # they are incorrect, they don't throw until the first method is called.
+    # It's much better to have them throw when $paws->service('...') is called
+    # as this is the point where the user had specified "incorrect" information,
+    # instead of the problem happening in the first method call.
+    $self->endpoint;
+    $self->_region_for_signature;
+  }
+
+
   has region => (is => 'rw', isa => 'Str|Undef');
   requires 'service';
 
@@ -12,9 +29,7 @@ package Paws::API::EndpointResolver;
     is => 'ro',
     init_arg => undef,
     lazy => 1,
-    default => sub {
-      shift->_construct_endpoint;
-    }
+    builder => '_construct_endpoint',
   );
 
   has _region_for_signature => (
@@ -24,8 +39,25 @@ package Paws::API::EndpointResolver;
     init_arg => undef, 
     default => sub {
       my $self = shift;
-      $self->_endpoint_info->{ credentialScope }->{ region } or $self->region;
-    }
+      my $sig_region;
+   
+      # For global services:   don't specify region: we sign with the region in the credentialScope
+      #                        specify the region: we override the credentialScope (use the region specified)
+      # For regional services: use the region specified for signing
+      # If endpoint is specified: use the region specified (no _endpoint_info) 
+      if (defined $self->_endpoint_info->{ credentialScope } and not defined $self->region) {
+        $sig_region = $self->_endpoint_info->{ credentialScope }->{ region }
+      }
+      $sig_region = $self->region if (not defined $sig_region);
+
+      Paws::Exception->throw(
+        message => "Can't find a region for signing. region is required",
+        code => 'NoRegionError',
+        request_id => ''
+      ) if (not defined $sig_region);
+
+      return $sig_region;
+    },
   );
 
   subtype 'Paws::EndpointURL',
