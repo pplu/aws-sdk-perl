@@ -59,7 +59,7 @@ package Paws::Net::JsonResponse;
       if ($struct->{__type} eq 'InternalError'){
         $message = '';
       } else {
-        die "Unrecognized error message format";
+        Moose->throw_error("Unrecognized error message format");
       }
     }
 
