@@ -8,6 +8,7 @@ use Paws;
 use TestRequestCaller;
 
 Paws->default_config->caller(TestRequestCaller->new);
+Paws->default_config->credentials('Test::CustomCredentials');
 
 {
   my $svc = Paws->service('SQS', endpoint => 'http://localhost:6000', region => 'eu-west-1');
