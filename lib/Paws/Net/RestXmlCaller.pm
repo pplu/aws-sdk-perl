@@ -158,9 +158,14 @@ package Paws::Net::RestXmlCaller;
           not $attribute->does('Paws::API::Attribute::Trait::ParamInBody') and 
           not $attribute->type_constraint eq 'Paws::S3::Metadata'
          ) {
-        
-        my $location = $attribute->does('NameInRequest') ? $attribute->request_name : $attribute->name;
-        $xml .= sprintf '<%s>%s</%s>', $location, $self->_to_xml($attribute->get_value($call)), $location;
+        my $attribute_value = $attribute->get_value($call);
+        if ( ref $attribute_value ) {
+          my $location = $attribute->does('NameInRequest') ? $attribute->request_name : $attribute->name;
+          $xml .= sprintf '<%s>%s</%s>', $location, $self->_to_xml($attribute_value), $location;
+        }
+        else {
+           $xml .= $attribute_value;
+        }
       }
     }
 
