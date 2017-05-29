@@ -1,7 +1,7 @@
 
 package Paws::Lightsail::GetInstancePortStatesResult;
   use Moose;
-  has PortStates => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'portStates' );
+  has PortStates => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::InstancePortState]', traits => ['NameInRequest'], request_name => 'portStates' );
 
   has _request_id => (is => 'ro', isa => 'Str');
 
@@ -14,7 +14,7 @@ Paws::Lightsail::GetInstancePortStatesResult
 =head1 ATTRIBUTES
 
 
-=head2 PortStates => ArrayRef[Str|Undef]
+=head2 PortStates => ArrayRef[L<Paws::Lightsail::InstancePortState>]
 
 Information about the port states resulting from your request.
 

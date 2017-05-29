@@ -219,6 +219,11 @@ package Paws::Lightsail;
     my $call_object = $self->new_with_coercions('Paws::Lightsail::PeerVpc', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub PutInstancePublicPorts {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lightsail::PutInstancePublicPorts', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub RebootInstance {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Lightsail::RebootInstance', @_);
@@ -441,7 +446,7 @@ package Paws::Lightsail;
   }
 
 
-  sub operations { qw/AllocateStaticIp AttachStaticIp CloseInstancePublicPorts CreateDomain CreateDomainEntry CreateInstances CreateInstancesFromSnapshot CreateInstanceSnapshot CreateKeyPair DeleteDomain DeleteDomainEntry DeleteInstance DeleteInstanceSnapshot DeleteKeyPair DetachStaticIp DownloadDefaultKeyPair GetActiveNames GetBlueprints GetBundles GetDomain GetDomains GetInstance GetInstanceAccessDetails GetInstanceMetricData GetInstancePortStates GetInstances GetInstanceSnapshot GetInstanceSnapshots GetInstanceState GetKeyPair GetKeyPairs GetOperation GetOperations GetOperationsForResource GetRegions GetStaticIp GetStaticIps ImportKeyPair IsVpcPeered OpenInstancePublicPorts PeerVpc RebootInstance ReleaseStaticIp StartInstance StopInstance UnpeerVpc UpdateDomainEntry / }
+  sub operations { qw/AllocateStaticIp AttachStaticIp CloseInstancePublicPorts CreateDomain CreateDomainEntry CreateInstances CreateInstancesFromSnapshot CreateInstanceSnapshot CreateKeyPair DeleteDomain DeleteDomainEntry DeleteInstance DeleteInstanceSnapshot DeleteKeyPair DetachStaticIp DownloadDefaultKeyPair GetActiveNames GetBlueprints GetBundles GetDomain GetDomains GetInstance GetInstanceAccessDetails GetInstanceMetricData GetInstancePortStates GetInstances GetInstanceSnapshot GetInstanceSnapshots GetInstanceState GetKeyPair GetKeyPairs GetOperation GetOperations GetOperationsForResource GetRegions GetStaticIp GetStaticIps ImportKeyPair IsVpcPeered OpenInstancePublicPorts PeerVpc PutInstancePublicPorts RebootInstance ReleaseStaticIp StartInstance StopInstance UnpeerVpc UpdateDomainEntry / }
 
 1;
 
@@ -825,7 +830,9 @@ Each argument is described in detail in: L<Paws::Lightsail::GetRegions>
 
 Returns: a L<Paws::Lightsail::GetRegionsResult> instance
 
-  Returns a list of all valid regions for Amazon Lightsail.
+  Returns a list of all valid regions for Amazon Lightsail. Use the
+C<include availability zones> parameter to also return the availability
+zones in a region.
 
 
 =head2 GetStaticIp(StaticIpName => Str)
@@ -881,6 +888,17 @@ Each argument is described in detail in: L<Paws::Lightsail::PeerVpc>
 Returns: a L<Paws::Lightsail::PeerVpcResult> instance
 
   Tries to peer the Lightsail VPC with the user's default VPC.
+
+
+=head2 PutInstancePublicPorts(InstanceName => Str, PortInfos => ArrayRef[L<Paws::Lightsail::PortInfo>])
+
+Each argument is described in detail in: L<Paws::Lightsail::PutInstancePublicPorts>
+
+Returns: a L<Paws::Lightsail::PutInstancePublicPortsResult> instance
+
+  Sets the specified open ports for an Amazon Lightsail instance, and
+closes all ports for every protocol not included in the current
+request.
 
 
 =head2 RebootInstance(InstanceName => Str)

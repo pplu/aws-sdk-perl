@@ -1,11 +1,8 @@
-package Paws::Lightsail::InstancePortInfo;
+package Paws::Lightsail::InstancePortState;
   use Moose;
-  has AccessDirection => (is => 'ro', isa => 'Str', request_name => 'accessDirection', traits => ['NameInRequest']);
-  has AccessFrom => (is => 'ro', isa => 'Str', request_name => 'accessFrom', traits => ['NameInRequest']);
-  has AccessType => (is => 'ro', isa => 'Str', request_name => 'accessType', traits => ['NameInRequest']);
-  has CommonName => (is => 'ro', isa => 'Str', request_name => 'commonName', traits => ['NameInRequest']);
   has FromPort => (is => 'ro', isa => 'Int', request_name => 'fromPort', traits => ['NameInRequest']);
   has Protocol => (is => 'ro', isa => 'Str', request_name => 'protocol', traits => ['NameInRequest']);
+  has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
   has ToPort => (is => 'ro', isa => 'Int', request_name => 'toPort', traits => ['NameInRequest']);
 1;
 
@@ -13,7 +10,7 @@ package Paws::Lightsail::InstancePortInfo;
 
 =head1 NAME
 
-Paws::Lightsail::InstancePortInfo
+Paws::Lightsail::InstancePortState
 
 =head1 USAGE
 
@@ -24,43 +21,22 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::Lightsail::InstancePortInfo object:
+As an example, if Att1 is expected to be a Paws::Lightsail::InstancePortState object:
 
-  $service_obj->Method(Att1 => { AccessDirection => $value, ..., ToPort => $value  });
+  $service_obj->Method(Att1 => { FromPort => $value, ..., ToPort => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::Lightsail::InstancePortInfo object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::Lightsail::InstancePortState object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->AccessDirection
+  $result->Att1->FromPort
 
 =head1 DESCRIPTION
 
-Describes information about the instance ports.
+Describes the port state.
 
 =head1 ATTRIBUTES
-
-
-=head2 AccessDirection => Str
-
-  The access direction (C<inbound> or C<outbound>).
-
-
-=head2 AccessFrom => Str
-
-  The location from which access is allowed (e.g., C<Anywhere
-(0.0.0.0/0)>).
-
-
-=head2 AccessType => Str
-
-  The type of access (C<Public> or C<Private>).
-
-
-=head2 CommonName => Str
-
-  The common name.
 
 
 =head2 FromPort => Int
@@ -100,6 +76,11 @@ instead.
 
 =back
 
+
+
+=head2 State => Str
+
+  Specifies whether the instance port is C<open> or C<closed>.
 
 
 =head2 ToPort => Int
