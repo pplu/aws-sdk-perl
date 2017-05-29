@@ -70,7 +70,7 @@ Your AWS Resources to a Third Party in the I<IAM User Guide>.
 The regex used to validated this parameter is a string of characters
 consisting of upper- and lower-case alphanumeric characters with no
 spaces. You can also include underscores or any of the following
-characters: =,.@:\/-
+characters: =,.@:/-
 
 
 
