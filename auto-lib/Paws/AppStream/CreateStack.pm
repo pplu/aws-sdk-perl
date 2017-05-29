@@ -4,6 +4,7 @@ package Paws::AppStream::CreateStack;
   has Description => (is => 'ro', isa => 'Str');
   has DisplayName => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str', required => 1);
+  has StorageConnectors => (is => 'ro', isa => 'ArrayRef[Paws::AppStream::StorageConnector]');
 
   use MooseX::ClassAttribute;
 
@@ -50,6 +51,12 @@ The name displayed to end users on the AppStream 2.0 portal.
 =head2 B<REQUIRED> Name => Str
 
 The unique identifier for this stack.
+
+
+
+=head2 StorageConnectors => ArrayRef[L<Paws::AppStream::StorageConnector>]
+
+The storage connectors to be enabled for the stack.
 
 
 

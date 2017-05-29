@@ -1,13 +1,14 @@
-package Paws::AppStream::VpcConfig;
+package Paws::AppStream::StorageConnector;
   use Moose;
-  has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has ConnectorType => (is => 'ro', isa => 'Str', required => 1);
+  has ResourceIdentifier => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::AppStream::VpcConfig
+Paws::AppStream::StorageConnector
 
 =head1 USAGE
 
@@ -18,28 +19,33 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::AppStream::VpcConfig object:
+As an example, if Att1 is expected to be a Paws::AppStream::StorageConnector object:
 
-  $service_obj->Method(Att1 => { SubnetIds => $value, ..., SubnetIds => $value  });
+  $service_obj->Method(Att1 => { ConnectorType => $value, ..., ResourceIdentifier => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::AppStream::VpcConfig object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::AppStream::StorageConnector object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->SubnetIds
+  $result->Att1->ConnectorType
 
 =head1 DESCRIPTION
 
-VPC configuration information.
+Contains the parameters for a storage connector.
 
 =head1 ATTRIBUTES
 
 
-=head2 SubnetIds => ArrayRef[Str|Undef]
+=head2 B<REQUIRED> ConnectorType => Str
 
-  The list of subnets to which a network interface is established from
-the fleet instance.
+  The type of storage connector. The possible values include:
+HOMEFOLDERS.
+
+
+=head2 ResourceIdentifier => Str
+
+  The ARN associated with the storage connector.
 
 
 

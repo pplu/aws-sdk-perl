@@ -41,9 +41,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 AuthenticationType => Str
 
 The authentication method of the user. It can be C<API> for a user
-authenticated using a streaming url or C<SAML> for a SAML federated
+authenticated using a streaming URL, or C<SAML> for a SAML federated
 user. If an authentication type is not provided, the operation defaults
-to users authenticated using a streaming url.
+to users authenticated using a streaming URL.
 
 Valid values are: C<"API">, C<"SAML">
 

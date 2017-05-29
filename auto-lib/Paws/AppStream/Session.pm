@@ -44,7 +44,7 @@ Contains the parameters for a streaming session.
 =head2 AuthenticationType => Str
 
   The authentication method of the user for whom the session was created.
-It can be C<API> for a user authenticated using a streaming url or
+It can be C<API> for a user authenticated using a streaming URL or
 C<SAML> for a SAML federated user.
 
 

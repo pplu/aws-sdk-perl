@@ -1,13 +1,14 @@
-package Paws::AppStream::VpcConfig;
+package Paws::AppStream::StackError;
   use Moose;
-  has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has ErrorCode => (is => 'ro', isa => 'Str');
+  has ErrorMessage => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::AppStream::VpcConfig
+Paws::AppStream::StackError
 
 =head1 USAGE
 
@@ -18,28 +19,32 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::AppStream::VpcConfig object:
+As an example, if Att1 is expected to be a Paws::AppStream::StackError object:
 
-  $service_obj->Method(Att1 => { SubnetIds => $value, ..., SubnetIds => $value  });
+  $service_obj->Method(Att1 => { ErrorCode => $value, ..., ErrorMessage => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::AppStream::VpcConfig object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::AppStream::StackError object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->SubnetIds
+  $result->Att1->ErrorCode
 
 =head1 DESCRIPTION
 
-VPC configuration information.
+Contains the parameters for a stack error.
 
 =head1 ATTRIBUTES
 
 
-=head2 SubnetIds => ArrayRef[Str|Undef]
+=head2 ErrorCode => Str
 
-  The list of subnets to which a network interface is established from
-the fleet instance.
+  The error code of a stack error.
+
+
+=head2 ErrorMessage => Str
+
+  The error message of a stack error.
 
 
 

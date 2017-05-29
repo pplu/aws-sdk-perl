@@ -64,8 +64,9 @@ The description displayed to end users on the AppStream 2.0 portal.
 =head2 DisconnectTimeoutInSeconds => Int
 
 The time after disconnection when a session is considered to have
-ended. When the user reconnects after a disconnection, the user is
-connected to the same instance within this time interval.
+ended. If a user who got disconnected reconnects within this timeout
+interval, the user is connected back to their previous session. The
+input can be any numeric value in seconds between 60 and 57600.
 
 
 
@@ -77,7 +78,7 @@ The name displayed to end users on the AppStream 2.0 portal.
 
 =head2 EnableDefaultInternetAccess => Bool
 
-Enable/Disable default Internet access from fleet.
+Enables or disables default Internet access for the fleet.
 
 
 
@@ -96,7 +97,8 @@ are launched from this instance type.
 
 =head2 MaxUserDurationInSeconds => Int
 
-The maximum time during which a streaming session can run.
+The maximum time for which a streaming session can run. The input can
+be any numeric value in seconds between 600 and 57600.
 
 
 

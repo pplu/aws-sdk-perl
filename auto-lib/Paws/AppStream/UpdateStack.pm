@@ -1,9 +1,11 @@
 
 package Paws::AppStream::UpdateStack;
   use Moose;
+  has DeleteStorageConnectors => (is => 'ro', isa => 'Bool');
   has Description => (is => 'ro', isa => 'Str');
   has DisplayName => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str', required => 1);
+  has StorageConnectors => (is => 'ro', isa => 'ArrayRef[Paws::AppStream::StorageConnector]');
 
   use MooseX::ClassAttribute;
 
@@ -35,6 +37,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
+=head2 DeleteStorageConnectors => Bool
+
+Remove all the storage connectors currently enabled for the stack.
+
+
+
 =head2 Description => Str
 
 The description displayed to end users on the AppStream 2.0 portal.
@@ -50,6 +58,12 @@ The name displayed to end users on the AppStream 2.0 portal.
 =head2 B<REQUIRED> Name => Str
 
 The name of the stack to update.
+
+
+
+=head2 StorageConnectors => ArrayRef[L<Paws::AppStream::StorageConnector>]
+
+The storage connectors to be enabled for the stack.
 
 
 
