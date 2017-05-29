@@ -45,8 +45,9 @@ This class has no description
 
 =head2 EngineName => Str
 
-  The database engine name. Valid values include MYSQL, ORACLE, POSTGRES,
-MARIADB, AURORA, REDSHIFT, SYBASE, and SQLSERVER.
+  The database engine name. Valid values, depending on the EndPointType,
+include MYSQL, ORACLE, POSTGRES, MARIADB, AURORA, REDSHIFT, S3, SYBASE,
+DYNAMODB, MONGODB, and SQLSERVER.
 
 
 =head2 SupportsCDC => Bool

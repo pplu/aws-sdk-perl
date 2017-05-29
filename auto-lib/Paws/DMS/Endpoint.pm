@@ -2,13 +2,17 @@ package Paws::DMS::Endpoint;
   use Moose;
   has CertificateArn => (is => 'ro', isa => 'Str');
   has DatabaseName => (is => 'ro', isa => 'Str');
+  has DynamoDbSettings => (is => 'ro', isa => 'Paws::DMS::DynamoDbSettings');
   has EndpointArn => (is => 'ro', isa => 'Str');
   has EndpointIdentifier => (is => 'ro', isa => 'Str');
   has EndpointType => (is => 'ro', isa => 'Str');
   has EngineName => (is => 'ro', isa => 'Str');
+  has ExternalId => (is => 'ro', isa => 'Str');
   has ExtraConnectionAttributes => (is => 'ro', isa => 'Str');
   has KmsKeyId => (is => 'ro', isa => 'Str');
+  has MongoDbSettings => (is => 'ro', isa => 'Paws::DMS::MongoDbSettings');
   has Port => (is => 'ro', isa => 'Int');
+  has S3Settings => (is => 'ro', isa => 'Paws::DMS::S3Settings');
   has ServerName => (is => 'ro', isa => 'Str');
   has SslMode => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
@@ -58,6 +62,12 @@ This class has no description
   The name of the database at the endpoint.
 
 
+=head2 DynamoDbSettings => L<Paws::DMS::DynamoDbSettings>
+
+  The settings for the target DynamoDB database. For more information,
+see the C<DynamoDBSettings> structure.
+
+
 =head2 EndpointArn => Str
 
   The Amazon Resource Name (ARN) string that uniquely identifies the
@@ -78,8 +88,16 @@ with a hyphen or contain two consecutive hyphens.
 
 =head2 EngineName => Str
 
-  The database engine name. Valid values include MYSQL, ORACLE, POSTGRES,
-MARIADB, AURORA, REDSHIFT, SYBASE, and SQLSERVER.
+  The database engine name. Valid values, depending on the EndPointType,
+include MYSQL, ORACLE, POSTGRES, MARIADB, AURORA, REDSHIFT, S3, SYBASE,
+DYNAMODB, MONGODB, and SQLSERVER.
+
+
+=head2 ExternalId => Str
+
+  Value returned by a call to CreateEndpoint that can be used for
+cross-account validation. Use it on a subsequent call to CreateEndpoint
+to create the endpoint with a cross-account.
 
 
 =head2 ExtraConnectionAttributes => Str
@@ -96,9 +114,21 @@ default encryption key for your AWS account. Your AWS account has a
 different default encryption key for each AWS region.
 
 
+=head2 MongoDbSettings => L<Paws::DMS::MongoDbSettings>
+
+  The settings for the MongoDB source endpoint. For more information, see
+the C<MongoDbSettings> structure.
+
+
 =head2 Port => Int
 
   The port value used to access the endpoint.
+
+
+=head2 S3Settings => L<Paws::DMS::S3Settings>
+
+  The settings for the S3 target endpoint. For more information, see the
+C<S3Settings> structure.
 
 
 =head2 ServerName => Str
