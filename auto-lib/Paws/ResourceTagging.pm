@@ -40,6 +40,69 @@ package Paws::ResourceTagging;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub GetAllResources {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetResources(@_);
+
+    if (not defined $callback) {
+      while ($result->PaginationToken) {
+        $result = $self->GetResources(@_, PaginationToken => $result->PaginationToken);
+        push @{ $result->ResourceTagMappingList }, @{ $result->ResourceTagMappingList };
+      }
+      return $result;
+    } else {
+      while ($result->PaginationToken) {
+        $result = $self->GetResources(@_, PaginationToken => $result->PaginationToken);
+        $callback->($_ => 'ResourceTagMappingList') foreach (@{ $result->ResourceTagMappingList });
+      }
+    }
+
+    return undef
+  }
+  sub GetAllTagKeys {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetTagKeys(@_);
+
+    if (not defined $callback) {
+      while ($result->PaginationToken) {
+        $result = $self->GetTagKeys(@_, PaginationToken => $result->PaginationToken);
+        push @{ $result->TagKeys }, @{ $result->TagKeys };
+      }
+      return $result;
+    } else {
+      while ($result->PaginationToken) {
+        $result = $self->GetTagKeys(@_, PaginationToken => $result->PaginationToken);
+        $callback->($_ => 'TagKeys') foreach (@{ $result->TagKeys });
+      }
+    }
+
+    return undef
+  }
+  sub GetAllTagValues {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetTagValues(@_);
+
+    if (not defined $callback) {
+      while ($result->PaginationToken) {
+        $result = $self->GetTagValues(@_, PaginationToken => $result->PaginationToken);
+        push @{ $result->TagValues }, @{ $result->TagValues };
+      }
+      return $result;
+    } else {
+      while ($result->PaginationToken) {
+        $result = $self->GetTagValues(@_, PaginationToken => $result->PaginationToken);
+        $callback->($_ => 'TagValues') foreach (@{ $result->TagValues });
+      }
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/GetResources GetTagKeys GetTagValues TagResources UntagResources / }
@@ -114,8 +177,8 @@ for the AWS account
 
 =back
 
-Not all resources can have tags. For a list of resources that support
-tagging, see Supported Resources in the I<AWS Resource Groups and Tag
+Not all resources can have tags. For a lists of resources that you can
+tag, see Supported Resources in the I<AWS Resource Groups and Tag
 Editor User Guide>.
 
 To make full use of the resource groups tagging APIs, you might need
@@ -127,7 +190,7 @@ User Guide>.
 
 =head1 METHODS
 
-=head2 GetResources(TagsPerPage => Int, [PaginationToken => Str, ResourceTypeFilters => ArrayRef[Str|Undef], TagFilters => ArrayRef[L<Paws::ResourceTagging::TagFilter>]])
+=head2 GetResources([PaginationToken => Str, ResourcesPerPage => Int, ResourceTypeFilters => ArrayRef[Str|Undef], TagFilters => ArrayRef[L<Paws::ResourceTagging::TagFilter>], TagsPerPage => Int])
 
 Each argument is described in detail in: L<Paws::ResourceTagging::GetResources>
 
@@ -232,6 +295,42 @@ the AWS account.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 GetAllResources(sub { },[PaginationToken => Str, ResourcesPerPage => Int, ResourceTypeFilters => ArrayRef[Str|Undef], TagFilters => ArrayRef[L<Paws::ResourceTagging::TagFilter>], TagsPerPage => Int])
+
+=head2 GetAllResources([PaginationToken => Str, ResourcesPerPage => Int, ResourceTypeFilters => ArrayRef[Str|Undef], TagFilters => ArrayRef[L<Paws::ResourceTagging::TagFilter>], TagsPerPage => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ResourceTagMappingList, passing the object as the first parameter, and the string 'ResourceTagMappingList' as the second parameter 
+
+If not, it will return a a L<Paws::ResourceTagging::GetResourcesOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllTagKeys(sub { },[PaginationToken => Str])
+
+=head2 GetAllTagKeys([PaginationToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - TagKeys, passing the object as the first parameter, and the string 'TagKeys' as the second parameter 
+
+If not, it will return a a L<Paws::ResourceTagging::GetTagKeysOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllTagValues(sub { },Key => Str, [PaginationToken => Str])
+
+=head2 GetAllTagValues(Key => Str, [PaginationToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - TagValues, passing the object as the first parameter, and the string 'TagValues' as the second parameter 
+
+If not, it will return a a L<Paws::ResourceTagging::GetTagValuesOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 
