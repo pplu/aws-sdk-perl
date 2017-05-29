@@ -7,6 +7,7 @@ package Paws::StorageGateway::TapeArchive;
   has TapeCreatedDate => (is => 'ro', isa => 'Str');
   has TapeSizeInBytes => (is => 'ro', isa => 'Int');
   has TapeStatus => (is => 'ro', isa => 'Str');
+  has TapeUsedInBytes => (is => 'ro', isa => 'Int');
 1;
 
 ### main pod documentation begin ###
@@ -26,7 +27,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::StorageGateway::TapeArchive object:
 
-  $service_obj->Method(Att1 => { CompletionTime => $value, ..., TapeStatus => $value  });
+  $service_obj->Method(Att1 => { CompletionTime => $value, ..., TapeUsedInBytes => $value  });
 
 =head3 Results returned from an API call
 
@@ -82,6 +83,13 @@ The virtual tape is retrieved from the virtual tape shelf (VTS).
 =head2 TapeStatus => Str
 
   The current state of the archived virtual tape.
+
+
+=head2 TapeUsedInBytes => Int
+
+  The size, in bytes, of data written to the virtual tape.
+
+This value is not available for tapes created prior to May,13 2015.
 
 
 

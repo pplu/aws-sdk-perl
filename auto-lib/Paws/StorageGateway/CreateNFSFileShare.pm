@@ -89,7 +89,7 @@ only be set when KmsEncrypted is true. Optional.
 
 =head2 B<REQUIRED> LocationARN => Str
 
-The ARN of the backend storage used for storing file data.
+The ARN of the backed storage used for storing file data.
 
 
 
@@ -101,8 +101,8 @@ File share default values. Optional.
 
 =head2 ReadOnly => Bool
 
-Sets the write status of a file share. "true", if the write status is
-read-only; otherwise "false.
+Sets the write status of a file share: "true" if the write status is
+read-only, and otherwise "false".
 
 
 
@@ -115,9 +115,24 @@ file gateway assumes when it accesses the underlying storage.
 
 =head2 Squash => Str
 
-Maps a user to anonymous user. Valid options: "RootSquash" - Only root
-is mapped to anonymous user, "NoSquash" - No one is mapped to anonymous
-user or "AllSquash" - Everyone is mapped to anonymous user.
+Maps a user to anonymous user. Valid options are the following:
+
+=over
+
+=item *
+
+"RootSquash" - Only root is mapped to anonymous user.
+
+=item *
+
+"NoSquash" - No one is mapped to anonymous user.
+
+=item *
+
+"AllSquash" - Everyone is mapped to anonymous user.
+
+=back
+
 
 
 

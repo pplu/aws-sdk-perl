@@ -6,6 +6,7 @@ package Paws::StorageGateway::Tape;
   has TapeCreatedDate => (is => 'ro', isa => 'Str');
   has TapeSizeInBytes => (is => 'ro', isa => 'Int');
   has TapeStatus => (is => 'ro', isa => 'Str');
+  has TapeUsedInBytes => (is => 'ro', isa => 'Int');
   has VTLDevice => (is => 'ro', isa => 'Str');
 1;
 
@@ -62,17 +63,24 @@ Range: 0 (not started) to 100 (complete).
 
 =head2 TapeCreatedDate => Str
 
-  
+  The date the virtual tape was created.
 
 
 =head2 TapeSizeInBytes => Int
 
-  The size, in bytes, of the virtual tape.
+  The size, in bytes, of the virtual tape capacity.
 
 
 =head2 TapeStatus => Str
 
   The current state of the virtual tape.
+
+
+=head2 TapeUsedInBytes => Int
+
+  The size, in bytes, of data written to the virtual tape.
+
+This value is not available for tapes created prior to May,13 2015.
 
 
 =head2 VTLDevice => Str
