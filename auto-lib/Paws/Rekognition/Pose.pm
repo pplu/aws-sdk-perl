@@ -33,7 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Rekognition
 
 =head1 DESCRIPTION
 
-Indicates the pose of the face as determined by pitch, roll, and the
+Indicates the pose of the face as determined by its pitch, roll, and
 yaw.
 
 =head1 ATTRIBUTES

@@ -36,7 +36,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Attributes => ArrayRef[Str|Undef]
 
-A list of facial attributes you want to be returned. This can be the
+An array of facial attributes you want to be returned. This can be the
 default list of attributes or all attributes. If you don't specify a
 value for C<Attributes> or if you specify C<["DEFAULT"]>, the API
 returns the following subset of facial attributes: C<BoundingBox>,

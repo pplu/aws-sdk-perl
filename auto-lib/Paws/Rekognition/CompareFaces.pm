@@ -37,20 +37,20 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 SimilarityThreshold => Num
 
-The minimum level of confidence in the match you want included in the
-result.
+The minimum level of confidence in the face matches that a match must
+meet to be included in the C<FaceMatches> array.
 
 
 
 =head2 B<REQUIRED> SourceImage => L<Paws::Rekognition::Image>
 
-Source image either as bytes or an S3 object
+The source image, either as bytes or as an S3 object.
 
 
 
 =head2 B<REQUIRED> TargetImage => L<Paws::Rekognition::Image>
 
-Target image either as bytes or an S3 object
+The target image, either as bytes or as an S3 object.
 
 
 

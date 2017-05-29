@@ -22,12 +22,11 @@ An array of labels for the real-world objects detected.
 
 =head2 OrientationCorrection => Str
 
-Amazon Rekognition returns the orientation of the input image that was
-detected (clockwise direction). If your application displays the image,
-you can use this value to correct the orientation. If Amazon
-Rekognition detects that the input image was rotated (for example, by
-90 degrees), it first corrects the orientation before detecting the
-labels.
+The orientation of the input image (counter-clockwise direction). If
+your application displays the image, you can use this value to correct
+the orientation. If Amazon Rekognition detects that the input image was
+rotated (for example, by 90 degrees), it first corrects the orientation
+before detecting the labels.
 
 If the source image Exif metadata populates the orientation field,
 Amazon Rekognition does not perform orientation correction and the
