@@ -54,6 +54,7 @@ on 'develop' => sub {
   requires 'EV';
   requires 'LWP::UserAgent';
   requires 'Furl';
+  requires 'MooseX::DataModel';
 };
 on 'test' => sub {
   requires 'File::Slurper';
