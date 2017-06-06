@@ -1,11 +1,10 @@
 use Paws::JsonParamsService::Method1;
 
-package Paws::RestJsonParamsService;
+package Paws::RestXmlParamsService;
   use Moose;
-  sub service { 'jsonparams' }
+  sub service { 'restxmlparams' }
   sub version { '2016-09-25' }
-  sub target_prefix { 'JsonParams' }
-  sub json_version { "1.1" }
+  sub flattened_arrays { 1 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);
   has retry => (is => 'ro', isa => 'HashRef', default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
@@ -13,7 +12,7 @@ package Paws::RestJsonParamsService;
   has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
   ] });
 
-  with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller', 'Paws::Net::RestJsonResponse';
+  with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller', 'Paws::Net::RestXMLResponse';
 
   sub Method1 {
     my $self = shift;

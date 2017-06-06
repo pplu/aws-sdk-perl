@@ -27,6 +27,8 @@ package Paws::Net::JsonResponse;
       } else {
         $unserialized_struct = $self->unserialize_response( $content );
       }
+    } else {
+      $unserialized_struct = $self->unserialize_response( $content );
     }
 
     if ( $http_status >= 300 ) {

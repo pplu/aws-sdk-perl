@@ -1,6 +1,7 @@
 0.33 
  - New Credential provider: Paws::Credential::Explicit for providing in-code credentials (meis)
  - Bug fixed: ETag not defined when using MojoAsyncCaller (PopeFelix)
+ - Bug fixed: Throw exceptions on methods that don't return anything
  - New API: MarketplaceEntitlement
  - API update: AppStream
  - API update: CloudFormation

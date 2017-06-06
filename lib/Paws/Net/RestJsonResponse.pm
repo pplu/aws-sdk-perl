@@ -27,6 +27,8 @@ package Paws::Net::RestJsonResponse;
       } else {
         $unserialized_struct = $self->unserialize_response( $content );
       }
+    } else {
+      $unserialized_struct = $self->unserialize_response( $content );
     }
 
     if ( $http_status >= 300 ) {
@@ -65,8 +67,12 @@ package Paws::Net::RestJsonResponse;
 
     if (exists $headers->{'x-amzn-errortype'}){
       $code = (split /:/, $headers->{'x-amzn-errortype'})[0];
+    } elsif (exists $struct->{Code}) {
+      $code = $struct->{Code};
+    } elsif (exists $struct->{ code }) {
+      $code = $struct->{ code };
     } else {
-      $code = (exists $struct->{Code}) ? $struct->{Code} : $struct->{ code };
+      $code = 'UnrecognizedError';
     }
     $request_id = $headers->{ 'x-amzn-requestid' };
 
