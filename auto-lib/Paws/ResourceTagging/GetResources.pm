@@ -2,9 +2,10 @@
 package Paws::ResourceTagging::GetResources;
   use Moose;
   has PaginationToken => (is => 'ro', isa => 'Str');
+  has ResourcesPerPage => (is => 'ro', isa => 'Int');
   has ResourceTypeFilters => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has TagFilters => (is => 'ro', isa => 'ArrayRef[Paws::ResourceTagging::TagFilter]');
-  has TagsPerPage => (is => 'ro', isa => 'Int', required => 1);
+  has TagsPerPage => (is => 'ro', isa => 'Int');
 
   use MooseX::ClassAttribute;
 
@@ -42,6 +43,14 @@ A string that indicates that additional data is available. Leave this
 value empty for your initial request. If the response includes a
 C<PaginationToken>, use that string for this value to request an
 additional page of data.
+
+
+
+=head2 ResourcesPerPage => Int
+
+A limit that restricts the number of resources returned by GetResources
+in paginated output. You can set ResourcesPerPage to a minimum of 1
+item and the maximum of 50 items.
 
 
 
@@ -92,7 +101,7 @@ least one or possibly more of the specified filters.
 
 
 
-=head2 B<REQUIRED> TagsPerPage => Int
+=head2 TagsPerPage => Int
 
 A limit that restricts the number of tags (key and value pairs)
 returned by GetResources in paginated output. A resource with no tags

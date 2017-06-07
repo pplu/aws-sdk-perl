@@ -72,8 +72,9 @@ Contains the parameters for a fleet.
 =head2 DisconnectTimeoutInSeconds => Int
 
   The time after disconnection when a session is considered to have
-ended. When a user reconnects after a disconnection, the user is
-connected to the same session and instance within this time interval.
+ended. If a user who got disconnected reconnects within this timeout
+interval, the user is connected back to their previous session. The
+input can be any numeric value in seconds between 60 and 57600.
 
 
 =head2 DisplayName => Str
@@ -83,8 +84,7 @@ connected to the same session and instance within this time interval.
 
 =head2 EnableDefaultInternetAccess => Bool
 
-  Default Internet access from the fleet. True (Enabled), False
-(Disabled).
+  Whether default Internet access is enabled for the fleet.
 
 
 =head2 FleetErrors => ArrayRef[L<Paws::AppStream::FleetError>]
@@ -105,7 +105,8 @@ instances are launched from this instance type.
 
 =head2 MaxUserDurationInSeconds => Int
 
-  The maximum time during which a streaming session can run.
+  The maximum time for which a streaming session can run. The value can
+be any numeric value in seconds between 600 and 57600.
 
 
 =head2 B<REQUIRED> Name => Str

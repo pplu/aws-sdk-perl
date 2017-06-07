@@ -45,7 +45,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::StorageGate
 =head1 DESCRIPTION
 
 The Unix file permissions and ownership information assigned, by
-default, to native S3 objects when Storage Gateway discovers them in S3
+default, to native S3 objects when file gateway discovers them in S3
 buckets. This operation is only supported in file gateways.
 
 =head1 ATTRIBUTES

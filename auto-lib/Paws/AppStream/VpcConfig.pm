@@ -1,6 +1,6 @@
 package Paws::AppStream::VpcConfig;
   use Moose;
-  has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
+  has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +36,7 @@ VPC configuration information.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> SubnetIds => ArrayRef[Str|Undef]
+=head2 SubnetIds => ArrayRef[Str|Undef]
 
   The list of subnets to which a network interface is established from
 the fleet instance.

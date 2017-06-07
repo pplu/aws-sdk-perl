@@ -22,19 +22,19 @@ Details of each face found in the image.
 
 =head2 OrientationCorrection => Str
 
-The algorithm detects the image orientation. If it detects that the
-image was rotated, it returns the degrees of rotation. If your
-application is displaying the image, you can use this value to adjust
-the orientation.
+The orientation of the input image (counter-clockwise direction). If
+your application displays the image, you can use this value to correct
+image orientation. The bounding box coordinates returned in
+C<FaceDetails> represent face locations before the image orientation is
+corrected.
 
-For example, if the service detects that the input image was rotated by
-90 degrees, it corrects orientation, performs face detection, and then
-returns the faces. That is, the bounding box coordinates in the
-response are based on the corrected orientation.
-
-If the source image Exif metadata populates the orientation field,
-Amazon Rekognition does not perform orientation correction and the
-value of OrientationCorrection will be nil.
+If the source image is in .jpeg format, it might contain exchangeable
+image (Exif) metadata that includes the image's orientation. If so, and
+the Exif metadata for the source image populates the orientation field,
+the value of C<OrientationCorrection> is nil and the C<FaceDetails>
+bounding box coordinates represent face locations after Exif metadata
+is used to correct the image orientation. Images in .png format don't
+contain Exif metadata.
 
 Valid values are: C<"ROTATE_0">, C<"ROTATE_90">, C<"ROTATE_180">, C<"ROTATE_270">
 =head2 _request_id => Str

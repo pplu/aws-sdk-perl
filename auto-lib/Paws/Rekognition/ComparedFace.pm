@@ -2,6 +2,9 @@ package Paws::Rekognition::ComparedFace;
   use Moose;
   has BoundingBox => (is => 'ro', isa => 'Paws::Rekognition::BoundingBox');
   has Confidence => (is => 'ro', isa => 'Num');
+  has Landmarks => (is => 'ro', isa => 'ArrayRef[Paws::Rekognition::Landmark]');
+  has Pose => (is => 'ro', isa => 'Paws::Rekognition::Pose');
+  has Quality => (is => 'ro', isa => 'Paws::Rekognition::ImageQuality');
 1;
 
 ### main pod documentation begin ###
@@ -21,7 +24,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Rekognition::ComparedFace object:
 
-  $service_obj->Method(Att1 => { BoundingBox => $value, ..., Confidence => $value  });
+  $service_obj->Method(Att1 => { BoundingBox => $value, ..., Quality => $value  });
 
 =head3 Results returned from an API call
 
@@ -32,8 +35,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Rekognition
 
 =head1 DESCRIPTION
 
-Provides face metadata (bounding box and confidence that the bounding
-box actually contains a face).
+Provides face metadata for target image faces that are analysed by
+C<CompareFaces>.
 
 =head1 ATTRIBUTES
 
@@ -46,6 +49,22 @@ box actually contains a face).
 =head2 Confidence => Num
 
   Level of confidence that what the bounding box contains is a face.
+
+
+=head2 Landmarks => ArrayRef[L<Paws::Rekognition::Landmark>]
+
+  An array of facial landmarks.
+
+
+=head2 Pose => L<Paws::Rekognition::Pose>
+
+  Indicates the pose of the face as determined by its pitch, roll, and
+yaw.
+
+
+=head2 Quality => L<Paws::Rekognition::ImageQuality>
+
+  Identifies face image brightness and sharpness.
 
 
 

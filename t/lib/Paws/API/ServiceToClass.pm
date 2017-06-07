@@ -4,6 +4,7 @@ package Paws::API::ServiceToClass;
 
   our $services_to_classes = {
     acm => 'ACM',
+    athena => 'Athena',
     apigateway => 'ApiGateway',
     autoscaling => 'AutoScaling',
    'application-autoscaling' => 'ApplicationAutoScaling',

@@ -5,6 +5,8 @@ package Paws::AppStream::Stack;
   has Description => (is => 'ro', isa => 'Str');
   has DisplayName => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str', required => 1);
+  has StackErrors => (is => 'ro', isa => 'ArrayRef[Paws::AppStream::StackError]');
+  has StorageConnectors => (is => 'ro', isa => 'ArrayRef[Paws::AppStream::StorageConnector]');
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +26,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::AppStream::Stack object:
 
-  $service_obj->Method(Att1 => { Arn => $value, ..., Name => $value  });
+  $service_obj->Method(Att1 => { Arn => $value, ..., StorageConnectors => $value  });
 
 =head3 Results returned from an API call
 
@@ -63,6 +65,16 @@ Details about a stack.
 =head2 B<REQUIRED> Name => Str
 
   The unique identifier of the stack.
+
+
+=head2 StackErrors => ArrayRef[L<Paws::AppStream::StackError>]
+
+  The list of errors associated with the stack.
+
+
+=head2 StorageConnectors => ArrayRef[L<Paws::AppStream::StorageConnector>]
+
+  The storage connectors to be enabled for the stack.
 
 
 

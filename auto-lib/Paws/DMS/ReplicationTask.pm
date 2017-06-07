@@ -85,7 +85,7 @@ Constraints:
 
 =item *
 
-Must contain from 1 to 63 alphanumeric characters or hyphens.
+Must contain from 1 to 255 alphanumeric characters or hyphens.
 
 =item *
 

@@ -161,27 +161,35 @@ Returns: a L<Paws::Rekognition::CompareFacesResponse> instance
 the I<target> input image.
 
 If the source image contains multiple faces, the service detects the
-largest face and uses it to compare with each face detected in the
-target image.
+largest face and compares it with each face detected in the target
+image.
 
 In response, the operation returns an array of face matches ordered by
-similarity score with the highest similarity scores first. For each
-face match, the response provides a bounding box of the face and
-C<confidence> value (indicating the level of confidence that the
-bounding box contains a face). The response also provides a
-C<similarity> score, which indicates how closely the faces match.
+similarity score in descending order. For each face match, the response
+provides a bounding box of the face, facial landmarks, pose details
+(pitch, role, and yaw), quality (brightness and sharpness), and
+confidence value (indicating the level of confidence that the bounding
+box contains a face). The response also provides a similarity score,
+which indicates how closely the faces match.
 
-By default, only faces with the similarity score of greater than or
-equal to 80% are returned in the response. You can change this value.
+By default, only faces with a similarity score of greater than or equal
+to 80% are returned in the response. You can change this value by
+specifying the C<SimilarityThreshold> parameter.
 
-In addition to the face matches, the response returns information about
-the face in the source image, including the bounding box of the face
-and confidence value.
+C<CompareFaces> also returns an array of faces that don't match the
+source image. For each face, it returns a bounding box, confidence
+value, landmarks, pose details, and quality. The response also returns
+information about the face in the source image, including the bounding
+box of the face and confidence value.
 
-This is a stateless API operation. That is, the operation does not
-persist any data.
+If the image doesn't contain Exif metadata, C<CompareFaces> returns
+orientation information for the source and target images. Use these
+values to display the images with the correct image orientation.
 
-For an example, see get-started-exercise-compare-faces
+This is a stateless API operation. That is, data returned by this
+operation doesn't persist.
+
+For an example, see get-started-exercise-compare-faces.
 
 This operation requires permissions to perform the
 C<rekognition:CompareFaces> action.
@@ -200,6 +208,8 @@ For example, you might create collections, one for each of your
 application users. A user can then index faces using the C<IndexFaces>
 operation and persist results in a specific collection. Then, a user
 can search the collection for faces in the user-specific container.
+
+Collection names are case-sensitive.
 
 For an example, see example1.
 
@@ -322,10 +332,11 @@ Each argument is described in detail in: L<Paws::Rekognition::DetectModerationLa
 
 Returns: a L<Paws::Rekognition::DetectModerationLabelsResponse> instance
 
-  Detects explicit or suggestive adult content in a specified .jpeg or
-.png image. Use C<DetectModerationLabels> to moderate images depending
-on your requirements. For example, you might want to filter images that
-contain nudity, but not images containing suggestive content.
+  Detects explicit or suggestive adult content in a specified JPEG or PNG
+format image. Use C<DetectModerationLabels> to moderate images
+depending on your requirements. For example, you might want to filter
+images that contain nudity, but not images containing suggestive
+content.
 
 To filter images, use the labels returned by C<DetectModerationLabels>
 to determine which types of content are appropriate. For information

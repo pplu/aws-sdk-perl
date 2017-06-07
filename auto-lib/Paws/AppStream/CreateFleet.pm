@@ -58,7 +58,8 @@ The description of the fleet.
 
 The time after disconnection when a session is considered to have
 ended. If a user who got disconnected reconnects within this timeout
-interval, the user is connected back to his/her previous session.
+interval, the user is connected back to their previous session. The
+input can be any numeric value in seconds between 60 and 57600.
 
 
 
@@ -70,7 +71,7 @@ The display name of the fleet.
 
 =head2 EnableDefaultInternetAccess => Bool
 
-Enable/Disable default Internet access from fleet.
+Enables or disables default Internet access for the fleet.
 
 
 
@@ -89,7 +90,8 @@ are launched from this instance type.
 
 =head2 MaxUserDurationInSeconds => Int
 
-The maximum time up to which a streaming session can run.
+The maximum time for which a streaming session can run. The input can
+be any numeric value in seconds between 600 and 57600.
 
 
 

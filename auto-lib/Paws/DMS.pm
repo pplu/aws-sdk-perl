@@ -24,6 +24,11 @@ package Paws::DMS;
     my $call_object = $self->new_with_coercions('Paws::DMS::CreateEndpoint', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateEventSubscription {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DMS::CreateEventSubscription', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateReplicationInstance {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DMS::CreateReplicationInstance', @_);
@@ -47,6 +52,11 @@ package Paws::DMS;
   sub DeleteEndpoint {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DMS::DeleteEndpoint', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteEventSubscription {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DMS::DeleteEventSubscription', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteReplicationInstance {
@@ -87,6 +97,21 @@ package Paws::DMS;
   sub DescribeEndpointTypes {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DMS::DescribeEndpointTypes', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeEventCategories {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DMS::DescribeEventCategories', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeEvents {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DMS::DescribeEvents', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeEventSubscriptions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DMS::DescribeEventSubscriptions', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeOrderableReplicationInstances {
@@ -139,6 +164,11 @@ package Paws::DMS;
     my $call_object = $self->new_with_coercions('Paws::DMS::ModifyEndpoint', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ModifyEventSubscription {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DMS::ModifyEventSubscription', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ModifyReplicationInstance {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DMS::ModifyReplicationInstance', @_);
@@ -157,6 +187,11 @@ package Paws::DMS;
   sub RefreshSchemas {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DMS::RefreshSchemas', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ReloadTables {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DMS::ReloadTables', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub RemoveTagsFromResource {
@@ -182,7 +217,7 @@ package Paws::DMS;
   
 
 
-  sub operations { qw/AddTagsToResource CreateEndpoint CreateReplicationInstance CreateReplicationSubnetGroup CreateReplicationTask DeleteCertificate DeleteEndpoint DeleteReplicationInstance DeleteReplicationSubnetGroup DeleteReplicationTask DescribeAccountAttributes DescribeCertificates DescribeConnections DescribeEndpoints DescribeEndpointTypes DescribeOrderableReplicationInstances DescribeRefreshSchemasStatus DescribeReplicationInstances DescribeReplicationSubnetGroups DescribeReplicationTasks DescribeSchemas DescribeTableStatistics ImportCertificate ListTagsForResource ModifyEndpoint ModifyReplicationInstance ModifyReplicationSubnetGroup ModifyReplicationTask RefreshSchemas RemoveTagsFromResource StartReplicationTask StopReplicationTask TestConnection / }
+  sub operations { qw/AddTagsToResource CreateEndpoint CreateEventSubscription CreateReplicationInstance CreateReplicationSubnetGroup CreateReplicationTask DeleteCertificate DeleteEndpoint DeleteEventSubscription DeleteReplicationInstance DeleteReplicationSubnetGroup DeleteReplicationTask DescribeAccountAttributes DescribeCertificates DescribeConnections DescribeEndpoints DescribeEndpointTypes DescribeEventCategories DescribeEvents DescribeEventSubscriptions DescribeOrderableReplicationInstances DescribeRefreshSchemasStatus DescribeReplicationInstances DescribeReplicationSubnetGroups DescribeReplicationTasks DescribeSchemas DescribeTableStatistics ImportCertificate ListTagsForResource ModifyEndpoint ModifyEventSubscription ModifyReplicationInstance ModifyReplicationSubnetGroup ModifyReplicationTask RefreshSchemas ReloadTables RemoveTagsFromResource StartReplicationTask StopReplicationTask TestConnection / }
 
 1;
 
@@ -220,6 +255,9 @@ service supports homogeneous migrations such as Oracle to Oracle, as
 well as heterogeneous migrations between different database platforms,
 such as Oracle to MySQL or SQL Server to PostgreSQL.
 
+For more information about AWS DMS, see the AWS DMS user guide at What
+Is AWS Database Migration Service?
+
 =head1 METHODS
 
 =head2 AddTagsToResource(ResourceArn => Str, Tags => ArrayRef[L<Paws::DMS::Tag>])
@@ -234,13 +272,38 @@ used with cost allocation reporting to track cost associated with DMS
 resources, or used in a Condition statement in an IAM policy for DMS.
 
 
-=head2 CreateEndpoint(EndpointIdentifier => Str, EndpointType => Str, EngineName => Str, [CertificateArn => Str, DatabaseName => Str, ExtraConnectionAttributes => Str, KmsKeyId => Str, Password => Str, Port => Int, ServerName => Str, SslMode => Str, Tags => ArrayRef[L<Paws::DMS::Tag>], Username => Str])
+=head2 CreateEndpoint(EndpointIdentifier => Str, EndpointType => Str, EngineName => Str, [CertificateArn => Str, DatabaseName => Str, DynamoDbSettings => L<Paws::DMS::DynamoDbSettings>, ExtraConnectionAttributes => Str, KmsKeyId => Str, MongoDbSettings => L<Paws::DMS::MongoDbSettings>, Password => Str, Port => Int, S3Settings => L<Paws::DMS::S3Settings>, ServerName => Str, SslMode => Str, Tags => ArrayRef[L<Paws::DMS::Tag>], Username => Str])
 
 Each argument is described in detail in: L<Paws::DMS::CreateEndpoint>
 
 Returns: a L<Paws::DMS::CreateEndpointResponse> instance
 
   Creates an endpoint using the provided settings.
+
+
+=head2 CreateEventSubscription(SnsTopicArn => Str, SubscriptionName => Str, [Enabled => Bool, EventCategories => ArrayRef[Str|Undef], SourceIds => ArrayRef[Str|Undef], SourceType => Str, Tags => ArrayRef[L<Paws::DMS::Tag>]])
+
+Each argument is described in detail in: L<Paws::DMS::CreateEventSubscription>
+
+Returns: a L<Paws::DMS::CreateEventSubscriptionResponse> instance
+
+  Creates an AWS DMS event notification subscription.
+
+You can specify the type of source (C<SourceType>) you want to be
+notified of, provide a list of AWS DMS source IDs (C<SourceIds>) that
+triggers the events, and provide a list of event categories
+(C<EventCategories>) for events you want to be notified of. If you
+specify both the C<SourceType> and C<SourceIds>, such as C<SourceType =
+replication-instance> and C<SourceIdentifier = my-replinstance>, you
+will be notified of all the replication instance events for the
+specified source. If you specify a C<SourceType> but don't specify a
+C<SourceIdentifier>, you receive notice of the events for that source
+type for all your AWS DMS sources. If you don't specify either
+C<SourceType> nor C<SourceIdentifier>, you will be notified of events
+generated from all AWS DMS sources belonging to your customer account.
+
+For more information about AWS DMS events, see Working with Events and
+Notifications in the AWS Database MIgration Service User Guide.
 
 
 =head2 CreateReplicationInstance(ReplicationInstanceClass => Str, ReplicationInstanceIdentifier => Str, [AllocatedStorage => Int, AutoMinorVersionUpgrade => Bool, AvailabilityZone => Str, EngineVersion => Str, KmsKeyId => Str, MultiAZ => Bool, PreferredMaintenanceWindow => Str, PubliclyAccessible => Bool, ReplicationSubnetGroupIdentifier => Str, Tags => ArrayRef[L<Paws::DMS::Tag>], VpcSecurityGroupIds => ArrayRef[Str|Undef]])
@@ -290,6 +353,15 @@ Returns: a L<Paws::DMS::DeleteEndpointResponse> instance
 
 All tasks associated with the endpoint must be deleted before you can
 delete the endpoint.
+
+
+=head2 DeleteEventSubscription(SubscriptionName => Str)
+
+Each argument is described in detail in: L<Paws::DMS::DeleteEventSubscription>
+
+Returns: a L<Paws::DMS::DeleteEventSubscriptionResponse> instance
+
+  Deletes an AWS DMS event subscription.
 
 
 =head2 DeleteReplicationInstance(ReplicationInstanceArn => Str)
@@ -374,6 +446,44 @@ Each argument is described in detail in: L<Paws::DMS::DescribeEndpointTypes>
 Returns: a L<Paws::DMS::DescribeEndpointTypesResponse> instance
 
   Returns information about the type of endpoints available.
+
+
+=head2 DescribeEventCategories([Filters => ArrayRef[L<Paws::DMS::Filter>], SourceType => Str])
+
+Each argument is described in detail in: L<Paws::DMS::DescribeEventCategories>
+
+Returns: a L<Paws::DMS::DescribeEventCategoriesResponse> instance
+
+  Lists categories for all event source types, or, if specified, for a
+specified source type. You can see a list of the event categories and
+source types in Working with Events and Notifications in the AWS
+Database Migration Service User Guide.
+
+
+=head2 DescribeEvents([Duration => Int, EndTime => Str, EventCategories => ArrayRef[Str|Undef], Filters => ArrayRef[L<Paws::DMS::Filter>], Marker => Str, MaxRecords => Int, SourceIdentifier => Str, SourceType => Str, StartTime => Str])
+
+Each argument is described in detail in: L<Paws::DMS::DescribeEvents>
+
+Returns: a L<Paws::DMS::DescribeEventsResponse> instance
+
+  Lists events for a given source identifier and source type. You can
+also specify a start and end time. For more information on AWS DMS
+events, see Working with Events and Notifications .
+
+
+=head2 DescribeEventSubscriptions([Filters => ArrayRef[L<Paws::DMS::Filter>], Marker => Str, MaxRecords => Int, SubscriptionName => Str])
+
+Each argument is described in detail in: L<Paws::DMS::DescribeEventSubscriptions>
+
+Returns: a L<Paws::DMS::DescribeEventSubscriptionsResponse> instance
+
+  Lists all the event subscriptions for a customer account. The
+description of a subscription includes C<SubscriptionName>,
+C<SNSTopicARN>, C<CustomerID>, C<SourceType>, C<SourceID>,
+C<CreationTime>, and C<Status>.
+
+If you specify C<SubscriptionName>, this action lists the description
+for that subscription.
 
 
 =head2 DescribeOrderableReplicationInstances([Marker => Str, MaxRecords => Int])
@@ -461,13 +571,22 @@ Returns: a L<Paws::DMS::ListTagsForResourceResponse> instance
   Lists all tags for an AWS DMS resource.
 
 
-=head2 ModifyEndpoint(EndpointArn => Str, [CertificateArn => Str, DatabaseName => Str, EndpointIdentifier => Str, EndpointType => Str, EngineName => Str, ExtraConnectionAttributes => Str, Password => Str, Port => Int, ServerName => Str, SslMode => Str, Username => Str])
+=head2 ModifyEndpoint(EndpointArn => Str, [CertificateArn => Str, DatabaseName => Str, DynamoDbSettings => L<Paws::DMS::DynamoDbSettings>, EndpointIdentifier => Str, EndpointType => Str, EngineName => Str, ExtraConnectionAttributes => Str, MongoDbSettings => L<Paws::DMS::MongoDbSettings>, Password => Str, Port => Int, S3Settings => L<Paws::DMS::S3Settings>, ServerName => Str, SslMode => Str, Username => Str])
 
 Each argument is described in detail in: L<Paws::DMS::ModifyEndpoint>
 
 Returns: a L<Paws::DMS::ModifyEndpointResponse> instance
 
   Modifies the specified endpoint.
+
+
+=head2 ModifyEventSubscription(SubscriptionName => Str, [Enabled => Bool, EventCategories => ArrayRef[Str|Undef], SnsTopicArn => Str, SourceType => Str])
+
+Each argument is described in detail in: L<Paws::DMS::ModifyEventSubscription>
+
+Returns: a L<Paws::DMS::ModifyEventSubscriptionResponse> instance
+
+  Modifies an existing AWS DMS event notification subscription.
 
 
 =head2 ModifyReplicationInstance(ReplicationInstanceArn => Str, [AllocatedStorage => Int, AllowMajorVersionUpgrade => Bool, ApplyImmediately => Bool, AutoMinorVersionUpgrade => Bool, EngineVersion => Str, MultiAZ => Bool, PreferredMaintenanceWindow => Str, ReplicationInstanceClass => Str, ReplicationInstanceIdentifier => Str, VpcSecurityGroupIds => ArrayRef[Str|Undef]])
@@ -503,6 +622,9 @@ Returns: a L<Paws::DMS::ModifyReplicationTaskResponse> instance
 You can't modify the task endpoints. The task must be stopped before
 you can modify it.
 
+For more information about AWS DMS tasks, see the AWS DMS user guide at
+Working with Migration Tasks
+
 
 =head2 RefreshSchemas(EndpointArn => Str, ReplicationInstanceArn => Str)
 
@@ -514,6 +636,15 @@ Returns: a L<Paws::DMS::RefreshSchemasResponse> instance
 asynchronous operation and can take several minutes. You can check the
 status of this operation by calling the DescribeRefreshSchemasStatus
 operation.
+
+
+=head2 ReloadTables(ReplicationTaskArn => Str, TablesToReload => ArrayRef[L<Paws::DMS::TableToReload>])
+
+Each argument is described in detail in: L<Paws::DMS::ReloadTables>
+
+Returns: a L<Paws::DMS::ReloadTablesResponse> instance
+
+  Reloads the target database table with the source data.
 
 
 =head2 RemoveTagsFromResource(ResourceArn => Str, TagKeys => ArrayRef[Str|Undef])
@@ -532,6 +663,9 @@ Each argument is described in detail in: L<Paws::DMS::StartReplicationTask>
 Returns: a L<Paws::DMS::StartReplicationTaskResponse> instance
 
   Starts the replication task.
+
+For more information about AWS DMS tasks, see the AWS DMS user guide at
+Working with Migration Tasks
 
 
 =head2 StopReplicationTask(ReplicationTaskArn => Str)

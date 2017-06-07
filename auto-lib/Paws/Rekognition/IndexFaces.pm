@@ -45,7 +45,7 @@ that are detected in the input images.
 
 =head2 DetectionAttributes => ArrayRef[Str|Undef]
 
-A list of facial attributes that you want to be returned. This can be
+An array of facial attributes that you want to be returned. This can be
 the default list of attributes or all attributes. If you don't specify
 a value for C<Attributes> or if you specify C<["DEFAULT"]>, the API
 returns the following subset of facial attributes: C<BoundingBox>,

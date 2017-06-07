@@ -159,7 +159,7 @@ Returns: a L<Paws::AppStream::CreateFleetResult> instance
   Creates a new fleet.
 
 
-=head2 CreateStack(Name => Str, [Description => Str, DisplayName => Str])
+=head2 CreateStack(Name => Str, [Description => Str, DisplayName => Str, StorageConnectors => ArrayRef[L<Paws::AppStream::StorageConnector>]])
 
 Each argument is described in detail in: L<Paws::AppStream::CreateStack>
 
@@ -231,7 +231,7 @@ is provided, this operation returns streaming sessions for only that
 user. Pass this value for the C<nextToken> parameter in a subsequent
 call to this operation to retrieve the next set of items. If an
 authentication type is not provided, the operation defaults to users
-authenticated using a streaming url.
+authenticated using a streaming URL.
 
 
 =head2 DescribeStacks([Names => ArrayRef[Str|Undef], NextToken => Str])
@@ -312,7 +312,7 @@ state, only C<DisplayName> and C<ComputeCapacity> can be updated. A
 fleet cannot be updated in a status of B<STARTING> or B<STOPPING>.
 
 
-=head2 UpdateStack(Name => Str, [Description => Str, DisplayName => Str])
+=head2 UpdateStack(Name => Str, [DeleteStorageConnectors => Bool, Description => Str, DisplayName => Str, StorageConnectors => ArrayRef[L<Paws::AppStream::StorageConnector>]])
 
 Each argument is described in detail in: L<Paws::AppStream::UpdateStack>
 

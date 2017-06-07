@@ -68,7 +68,7 @@ Constraints:
 
 =item *
 
-Must contain from 1 to 63 alphanumeric characters or hyphens.
+Must contain from 1 to 255 alphanumeric characters or hyphens.
 
 =item *
 
@@ -92,8 +92,9 @@ settings.
 
 =head2 TableMappings => Str
 
-The path of the JSON file that contains the table mappings. Preceed the
-path with "file://".
+When using the AWS CLI or boto3, provide the path of the JSON file that
+contains the table mappings. Precede the path with "file://". When
+working with the DMS API, provide the JSON as the parameter value.
 
 For example, --table-mappings file://mappingfile.json
 

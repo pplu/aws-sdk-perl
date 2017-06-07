@@ -70,7 +70,7 @@ problem.
 
 =head2 Metadata => L<Paws::AppStream::Metadata>
 
-  Additional attributes that describes the application.
+  Additional attributes that describe the application.
 
 
 =head2 Name => Str
