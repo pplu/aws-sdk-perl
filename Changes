@@ -1,10 +1,12 @@
 0.33 
  - New Credential provider: Paws::Credential::Explicit for providing in-code credentials (meis)
  - Bug fixed: ETag not defined when using MojoAsyncCaller (PopeFelix)
- - New parameter for service "endpoint", used to specify
+ - New parameter for services: "endpoint" that is used to override the URL for sending requests 
+   to a service
  - Breaking change: endpoints for services are calculated immediately when you invoke ->service.
    before they were calculated when the first method call to the service was made, so you got
    "no region" exceptions on the first call. Now the exceptions are thrown immediately.
+ - Bug fixed: Throw exceptions on methods that don't return anything
  - New API: MarketplaceEntitlement
  - New API: Athena
  - API update: AppStream
