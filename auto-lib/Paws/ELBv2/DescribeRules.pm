@@ -2,6 +2,8 @@
 package Paws::ELBv2::DescribeRules;
   use Moose;
   has ListenerArn => (is => 'ro', isa => 'Str');
+  has Marker => (is => 'ro', isa => 'Str');
+  has PageSize => (is => 'ro', isa => 'Int');
   has RuleArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
   use MooseX::ClassAttribute;
@@ -37,6 +39,19 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 ListenerArn => Str
 
 The Amazon Resource Name (ARN) of the listener.
+
+
+
+=head2 Marker => Str
+
+The marker for the next set of results. (You received this marker from
+a previous call.)
+
+
+
+=head2 PageSize => Int
+
+The maximum number of results to return with this call.
 
 
 

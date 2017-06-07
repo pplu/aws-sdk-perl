@@ -552,7 +552,7 @@ To describe the attributes for a load balancer, use
 DescribeLoadBalancerAttributes.
 
 
-=head2 DescribeRules([ListenerArn => Str, RuleArns => ArrayRef[Str|Undef]])
+=head2 DescribeRules([ListenerArn => Str, Marker => Str, PageSize => Int, RuleArns => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::ELBv2::DescribeRules>
 
