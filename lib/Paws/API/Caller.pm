@@ -2,6 +2,7 @@ package Paws::API::Caller;
   use Moose::Role;
   use Carp;
   use Paws::Net::APIRequest;
+  use Paws::API::Response;
 
   has caller => (is => 'ro', required => 1);
 
@@ -93,29 +94,61 @@ package Paws::API::Caller;
   }
 
   sub response_to_object {
-    my ($self, $unserialized_struct, $call_object, $http_status, $content, $headers) = @_;
+    my ($self, $call_object, $http_status, $content, $headers) = @_;
 
     $call_object = $call_object->meta->name;
+
+    my $ret_class = $call_object->_returns;
+    Paws->load_class($ret_class);
+ 
+    my $unserialized_struct;
+
+    if ($ret_class->can('_stream_param')) {
+      $unserialized_struct = {}
+    } else {
+      if (not defined $content or $content eq '') {
+        $unserialized_struct = {}
+      } else {
+        $unserialized_struct = eval { $self->unserialize_response( $content ) };
+        if ($@){
+          return Paws::Exception->new(
+            message => $@,
+            code => 'InvalidContent',
+            request_id => '', #$request_id,
+            http_status => $http_status,
+          );
+        }
+      }
+    }
+
     my $request_id = $headers->{'x-amz-request-id'} 
                       || $headers->{'x-amzn-requestid'}
                       || $unserialized_struct->{'requestId'} 
                       || $unserialized_struct->{'RequestId'} 
                       || $unserialized_struct->{'RequestID'}
                       || $unserialized_struct->{ ResponseMetadata }->{ RequestId };
-    
+ 
+    if ($call_object->_result_key){
+      $unserialized_struct = $unserialized_struct->{ $call_object->_result_key };
+    }
 
-    if ($call_object->_returns){
-      if ($call_object->_result_key){
-        $unserialized_struct = $unserialized_struct->{ $call_object->_result_key };
+    $unserialized_struct->{ _request_id } = $request_id;
+      
+    if ($call_object->_returns ne 'Paws::API::Response'){
+      if ($ret_class->can('_stream_param')) {
+        $unserialized_struct->{ $ret_class->_stream_param } = $content
       }
 
-      $unserialized_struct->{ _request_id } = $request_id;
-      
-      Paws->load_class($call_object->_returns);
+      foreach my $key (keys %$headers){
+        $unserialized_struct->{lc $key} = $headers->{$key};
+      }
+
       my $o_result = $self->new_from_result_struct($call_object->_returns, $unserialized_struct);
       return $o_result;
     } else {
-      return 1;
+      return Paws::API::Response->new(
+        _request_id => $request_id,
+      );
     }
   }
 

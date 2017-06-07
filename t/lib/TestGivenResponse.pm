@@ -15,7 +15,7 @@ package TestGivenResponse;
       $service,
       $call_object,
       $call_object->status,
-      $call_object->response,
+      $call_object->response eq '[UNDEF]' ? undef : $call_object->response,
       {
         'x-amzn-requestid' => 'fake-uuid',
         'x-amz-request-id' => 'fake-uuid',
