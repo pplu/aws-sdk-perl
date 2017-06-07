@@ -63,7 +63,8 @@ default is 50.
 
 Substring to match in channel association names. An association will be
 returned if any part of its name matches the substring. For example,
-"xyz" matches both "xyzabc" and "abcxyz."
+"xyz" matches both "xyzabc" and "abcxyz." To return all bot channel
+associations, use a hyphen ("-") as the C<nameContains> parameter.
 
 
 

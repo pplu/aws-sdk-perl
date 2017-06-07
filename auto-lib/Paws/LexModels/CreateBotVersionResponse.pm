@@ -133,7 +133,7 @@ The version of the bot.
 
 =head2 VoiceId => Str
 
-The Amazon Parrot voice ID that Amazon Lex uses for voice interactions
+The Amazon Polly voice ID that Amazon Lex uses for voice interactions
 with the user.
 
 
