@@ -1,18 +1,18 @@
 
-package Paws::WorkDocs::GetDocumentVersion;
+package Paws::WorkDocs::DescribeComments;
   use Moose;
   has AuthenticationToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Authentication' );
   has DocumentId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'DocumentId' , required => 1);
-  has Fields => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'fields' );
-  has IncludeCustomMetadata => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'includeCustomMetadata' );
+  has Limit => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'limit' );
+  has Marker => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'marker' );
   has VersionId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'VersionId' , required => 1);
 
   use MooseX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetDocumentVersion');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/api/v1/documents/{DocumentId}/versions/{VersionId}');
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeComments');
+  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/api/v1/documents/{DocumentId}/versions/{VersionId}/comments');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::WorkDocs::GetDocumentVersionResponse');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::WorkDocs::DescribeCommentsResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
@@ -20,19 +20,19 @@ package Paws::WorkDocs::GetDocumentVersion;
 
 =head1 NAME
 
-Paws::WorkDocs::GetDocumentVersion - Arguments for method GetDocumentVersion on Paws::WorkDocs
+Paws::WorkDocs::DescribeComments - Arguments for method DescribeComments on Paws::WorkDocs
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method GetDocumentVersion on the 
+This class represents the parameters used for calling the method DescribeComments on the 
 Amazon WorkDocs service. Use the attributes of this class
-as arguments to method GetDocumentVersion.
+as arguments to method DescribeComments.
 
-You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetDocumentVersion.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeComments.
 
 As an example:
 
-  $service_obj->GetDocumentVersion(Att1 => $value1, Att2 => $value2, ...);
+  $service_obj->DescribeComments(Att1 => $value1, Att2 => $value2, ...);
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 
@@ -53,29 +53,29 @@ The ID of the document.
 
 
 
-=head2 Fields => Str
+=head2 Limit => Int
 
-A comma-separated list of values. Specify "SOURCE" to include a URL for
-the source document.
-
+The maximum number of items to return.
 
 
-=head2 IncludeCustomMetadata => Bool
 
-Set this to TRUE to include custom metadata in the response.
+=head2 Marker => Str
+
+The marker for the next set of results. This marker was received from a
+previous call.
 
 
 
 =head2 B<REQUIRED> VersionId => Str
 
-The version ID of the document.
+The ID of the document version.
 
 
 
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, documenting arguments for method GetDocumentVersion in L<Paws::WorkDocs>
+This class forms part of L<Paws>, documenting arguments for method DescribeComments in L<Paws::WorkDocs>
 
 =head1 BUGS and CONTRIBUTIONS
 

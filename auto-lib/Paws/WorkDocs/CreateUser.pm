@@ -1,6 +1,8 @@
 
 package Paws::WorkDocs::CreateUser;
   use Moose;
+  has AuthenticationToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Authentication' );
+  has EmailAddress => (is => 'ro', isa => 'Str');
   has GivenName => (is => 'ro', isa => 'Str', required => 1);
   has OrganizationId => (is => 'ro', isa => 'Str');
   has Password => (is => 'ro', isa => 'Str', required => 1);
@@ -39,6 +41,20 @@ As an example:
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 
 =head1 ATTRIBUTES
+
+
+=head2 AuthenticationToken => Str
+
+Amazon WorkDocs authentication token. This field should not be set when
+using administrative API actions, as in accessing the API using AWS
+credentials.
+
+
+
+=head2 EmailAddress => Str
+
+The email address of the user.
+
 
 
 =head2 B<REQUIRED> GivenName => Str

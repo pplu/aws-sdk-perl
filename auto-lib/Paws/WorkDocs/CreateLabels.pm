@@ -1,15 +1,16 @@
 
-package Paws::WorkDocs::RemoveAllResourcePermissions;
+package Paws::WorkDocs::CreateLabels;
   use Moose;
   has AuthenticationToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Authentication' );
+  has Labels => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
   has ResourceId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'ResourceId' , required => 1);
 
   use MooseX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RemoveAllResourcePermissions');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/api/v1/resources/{ResourceId}/permissions');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'DELETE');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateLabels');
+  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/api/v1/resources/{ResourceId}/labels');
+  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::WorkDocs::CreateLabelsResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
@@ -17,19 +18,19 @@ package Paws::WorkDocs::RemoveAllResourcePermissions;
 
 =head1 NAME
 
-Paws::WorkDocs::RemoveAllResourcePermissions - Arguments for method RemoveAllResourcePermissions on Paws::WorkDocs
+Paws::WorkDocs::CreateLabels - Arguments for method CreateLabels on Paws::WorkDocs
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method RemoveAllResourcePermissions on the 
+This class represents the parameters used for calling the method CreateLabels on the 
 Amazon WorkDocs service. Use the attributes of this class
-as arguments to method RemoveAllResourcePermissions.
+as arguments to method CreateLabels.
 
-You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to RemoveAllResourcePermissions.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateLabels.
 
 As an example:
 
-  $service_obj->RemoveAllResourcePermissions(Att1 => $value1, Att2 => $value2, ...);
+  $service_obj->CreateLabels(Att1 => $value1, Att2 => $value2, ...);
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 
@@ -44,6 +45,12 @@ credentials.
 
 
 
+=head2 B<REQUIRED> Labels => ArrayRef[Str|Undef]
+
+List of labels to add to the resource.
+
+
+
 =head2 B<REQUIRED> ResourceId => Str
 
 The ID of the resource.
@@ -53,7 +60,7 @@ The ID of the resource.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, documenting arguments for method RemoveAllResourcePermissions in L<Paws::WorkDocs>
+This class forms part of L<Paws>, documenting arguments for method CreateLabels in L<Paws::WorkDocs>
 
 =head1 BUGS and CONTRIBUTIONS
 

@@ -3,6 +3,7 @@ package Paws::WorkDocs::DocumentMetadata;
   has CreatedTimestamp => (is => 'ro', isa => 'Str');
   has CreatorId => (is => 'ro', isa => 'Str');
   has Id => (is => 'ro', isa => 'Str');
+  has Labels => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has LatestVersionMetadata => (is => 'ro', isa => 'Paws::WorkDocs::DocumentVersionMetadata');
   has ModifiedTimestamp => (is => 'ro', isa => 'Str');
   has ParentFolderId => (is => 'ro', isa => 'Str');
@@ -55,6 +56,11 @@ Describes the document.
 =head2 Id => Str
 
   The ID of the document.
+
+
+=head2 Labels => ArrayRef[Str|Undef]
+
+  List of labels on the document.
 
 
 =head2 LatestVersionMetadata => L<Paws::WorkDocs::DocumentVersionMetadata>

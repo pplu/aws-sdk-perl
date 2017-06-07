@@ -1,6 +1,7 @@
 
 package Paws::WorkDocs::DescribeFolderContents;
   use Moose;
+  has AuthenticationToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Authentication' );
   has FolderId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'FolderId' , required => 1);
   has Include => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'include' );
   has Limit => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'limit' );
@@ -41,6 +42,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
+=head2 AuthenticationToken => Str
+
+Amazon WorkDocs authentication token. This field should not be set when
+using administrative API actions, as in accessing the API using AWS
+credentials.
+
+
+
 =head2 B<REQUIRED> FolderId => Str
 
 The ID of the folder.
@@ -62,8 +71,8 @@ The maximum number of items to return with this call.
 
 =head2 Marker => Str
 
-The marker for the next set of results. (You received this marker from
-a previous call.)
+The marker for the next set of results. This marker was received from a
+previous call.
 
 
 

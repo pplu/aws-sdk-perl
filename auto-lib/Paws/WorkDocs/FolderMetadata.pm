@@ -3,11 +3,14 @@ package Paws::WorkDocs::FolderMetadata;
   has CreatedTimestamp => (is => 'ro', isa => 'Str');
   has CreatorId => (is => 'ro', isa => 'Str');
   has Id => (is => 'ro', isa => 'Str');
+  has Labels => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has LatestVersionSize => (is => 'ro', isa => 'Int');
   has ModifiedTimestamp => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
   has ParentFolderId => (is => 'ro', isa => 'Str');
   has ResourceState => (is => 'ro', isa => 'Str');
   has Signature => (is => 'ro', isa => 'Str');
+  has Size => (is => 'ro', isa => 'Int');
 1;
 
 ### main pod documentation begin ###
@@ -27,7 +30,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::WorkDocs::FolderMetadata object:
 
-  $service_obj->Method(Att1 => { CreatedTimestamp => $value, ..., Signature => $value  });
+  $service_obj->Method(Att1 => { CreatedTimestamp => $value, ..., Size => $value  });
 
 =head3 Results returned from an API call
 
@@ -58,6 +61,16 @@ Describes a folder.
   The ID of the folder.
 
 
+=head2 Labels => ArrayRef[Str|Undef]
+
+  List of labels on the folder.
+
+
+=head2 LatestVersionSize => Int
+
+  
+
+
 =head2 ModifiedTimestamp => Str
 
   The time when the folder was updated.
@@ -82,6 +95,11 @@ Describes a folder.
 
   The unique identifier created from the subfolders and documents of the
 folder.
+
+
+=head2 Size => Int
+
+  
 
 
 

@@ -1,7 +1,9 @@
 
 package Paws::WorkDocs::GetDocument;
   use Moose;
+  has AuthenticationToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Authentication' );
   has DocumentId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'DocumentId' , required => 1);
+  has IncludeCustomMetadata => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'includeCustomMetadata' );
 
   use MooseX::ClassAttribute;
 
@@ -35,9 +37,23 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
+=head2 AuthenticationToken => Str
+
+Amazon WorkDocs authentication token. This field should not be set when
+using administrative API actions, as in accessing the API using AWS
+credentials.
+
+
+
 =head2 B<REQUIRED> DocumentId => Str
 
-The ID of the document object.
+The ID of the document.
+
+
+
+=head2 IncludeCustomMetadata => Bool
+
+Set this to C<TRUE> to include custom metadata in the response.
 
 
 
