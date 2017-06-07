@@ -10,9 +10,11 @@
  - New API: MarketplaceEntitlement
  - New API: Athena
  - API update: AppStream
+ - API update: CloudDirectory
  - API update: CloudFormation
  - API update: CloudWatchEvents
  - API update: CodeDeploy
+ - API update: CongnitoIdp
  - API update: DeviceFarm
  - API update: DMS
  - API update: ECS
@@ -20,6 +22,8 @@
  - API update: ELBv2
  - API update: GameLift
  - API update: Inspector
+ - API update: IoT
+ - API update: KinesisAnalytics
  - API update: Lambda
  - API update: LexModels
  - API update: Lightsail
@@ -31,6 +35,7 @@
  - API update: SQS
  - API update: SSM
  - API update: StorageGateway
+ - API update: WorkDocs
 
 0.32 20 Apr 2017
  - Speed up Credential Refreshing (Arthur Axel fREW Schmidt)
