@@ -59,7 +59,7 @@ A boolean value that specifies if the CA certificate is set to active.
 
 =head2 Status => Str
 
-
+The status of the register certificate request.
 
 Valid values are: C<"ACTIVE">, C<"INACTIVE">, C<"REVOKED">, C<"PENDING_TRANSFER">, C<"REGISTER_INACTIVE">, C<"PENDING_ACTIVATION">
 

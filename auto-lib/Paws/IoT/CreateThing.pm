@@ -42,7 +42,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 The attribute payload, which consists of up to three name/value pairs
 in a JSON document. For example:
 
-C<{\"attributes\":{\"string1\":\"string2\"}})>
+C<{\"attributes\":{\"string1\":\"string2\"}}>
 
 
 
