@@ -61,22 +61,28 @@ package Paws::Net::RestXmlCaller;
     my ($self, $call) = @_;
     my $uri_template = $call->meta->name->_api_uri; # in auto-lib/<service>/<method>.pm
 
-    my @attribs = $uri_template =~ /{(.+?)}/g;
+    my @uri_attribs = $uri_template =~ /{(.+?)}/g;
     my $vars = {};
 
-    foreach my $attrib (@attribs)
-    {
+    my %uri_attrib_is_greedy;
+    foreach my $attrib ( @uri_attribs ) {
       my ($att_name, $greedy) = $attrib =~ /(\w+)(\+?)/;
-      my $attribute = $call->meta->get_attribute($att_name);
+      $uri_attrib_is_greedy{$att_name} = $greedy;
+    }
+
+    foreach my $attribute ($call->meta->get_all_attributes)
+    {
       if ($attribute->does('Paws::API::Attribute::Trait::ParamInURI')) {
-          if ($greedy) {
-              $vars->{ $att_name } =  uri_escape_utf8($call->$att_name, q[^A-Za-z0-9\-\._~/]);
-              $uri_template =~ s{$att_name\+}{$greedy$att_name}g;
-          } else {
-              $vars->{ $att_name } = $call->$att_name;
-          }
+        my $att_name = $attribute->name;
+        if ($uri_attrib_is_greedy{$att_name}) {
+            $vars->{ $attribute->uri_name } =  uri_escape_utf8($call->$att_name, q[^A-Za-z0-9\-\._~/]);
+            $uri_template =~ s{$att_name\+}{\+$att_name}g;
+        } else {
+            $vars->{ $attribute->uri_name } = $call->$att_name;
+        }
       }
     }
+
     my $t = URI::Template->new( $uri_template );
     my $uri = $t->process($vars);
     return $uri;

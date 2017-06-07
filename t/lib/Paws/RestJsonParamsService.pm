@@ -15,6 +15,8 @@ package Paws::RestJsonParamsService;
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller', 'Paws::Net::RestJsonResponse';
 
+  sub operations { return () };
+
   sub Method1 {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::JsonParamsService::Method1', @_);

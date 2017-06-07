@@ -562,4 +562,27 @@ $request = $r53->ListHealthChecks(
 like($request->url, qr/marker=X/, 'marker with correct name in URL');
 like($request->url, qr/maxitems=50/, 'maxitems with correct name in URL');
 
+$request = $r53->ChangeResourceRecordSets(
+  HostedZoneId => 'A999AAA999AAA',
+  ChangeBatch  => {
+    Changes => [
+      {
+        Action            => 'UPSERT',
+        ResourceRecordSet => {
+          Name => 'testname.example.com',
+          TTL  => 60,
+          Type => 'CNAME',
+          ResourceRecords => [{
+              Value => '10.0.0.1',
+          }],
+        },
+      },
+    ],
+  },
+);
+
+$ref = XMLin($request->content);
+
+like($request->url, qr|hostedzone/A999AAA999AAA/rrset|, 'URL has the HostedZoneId');
+
 done_testing;
