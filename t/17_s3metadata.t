@@ -17,7 +17,7 @@ my $paws = Paws->new(config => {
   credentials => 'Test::CustomCredentials'
 });
 
-my $s3 = $paws->service('S3');
+my $s3 = $paws->service('S3', region => 'eu-west-1');
 
 my $result = $s3->GetObject("Key" => "testmeta","Bucket" => "test-meta-paws");
 
