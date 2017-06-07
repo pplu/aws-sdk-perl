@@ -14,8 +14,6 @@ package Paws::JsonParamsService;
   has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
   ] });
 
-  sub operations { qw/Method1 Method2/ }
-
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
 
   sub Method1 {
@@ -29,5 +27,7 @@ package Paws::JsonParamsService;
     my $call_object = $self->new_with_coercions('Paws::JsonParamsService::Method3', @_);
     return $self->caller->do_call($self, $call_object);
   }
+
+  sub operations { return qw/Method1 Method3/ }
  
 1;

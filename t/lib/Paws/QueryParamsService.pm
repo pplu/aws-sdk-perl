@@ -32,6 +32,6 @@ package Paws::QueryParamsService;
     return $self->caller->do_call($self, $call_object);
   }
 
-  sub operations { return () }
+  sub operations { return qw/Method1 Method2 Method3/ }
  
 1;
