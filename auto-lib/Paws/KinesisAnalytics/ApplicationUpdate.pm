@@ -1,6 +1,7 @@
 package Paws::KinesisAnalytics::ApplicationUpdate;
   use Moose;
   has ApplicationCodeUpdate => (is => 'ro', isa => 'Str');
+  has CloudWatchLoggingOptionUpdates => (is => 'ro', isa => 'ArrayRef[Paws::KinesisAnalytics::CloudWatchLoggingOptionUpdate]');
   has InputUpdates => (is => 'ro', isa => 'ArrayRef[Paws::KinesisAnalytics::InputUpdate]');
   has OutputUpdates => (is => 'ro', isa => 'ArrayRef[Paws::KinesisAnalytics::OutputUpdate]');
   has ReferenceDataSourceUpdates => (is => 'ro', isa => 'ArrayRef[Paws::KinesisAnalytics::ReferenceDataSourceUpdate]');
@@ -34,7 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::KinesisAnal
 
 =head1 DESCRIPTION
 
-Describes updates to apply to an existing Kinesis Analytics
+Describes updates to apply to an existing Amazon Kinesis Analytics
 application.
 
 =head1 ATTRIBUTES
@@ -43,6 +44,11 @@ application.
 =head2 ApplicationCodeUpdate => Str
 
   Describes application code updates.
+
+
+=head2 CloudWatchLoggingOptionUpdates => ArrayRef[L<Paws::KinesisAnalytics::CloudWatchLoggingOptionUpdate>]
+
+  Describes application CloudWatch logging option updates.
 
 
 =head2 InputUpdates => ArrayRef[L<Paws::KinesisAnalytics::InputUpdate>]

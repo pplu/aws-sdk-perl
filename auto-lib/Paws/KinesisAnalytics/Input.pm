@@ -79,10 +79,10 @@ Kinesis Analytics to access the stream on your behalf.
 =head2 B<REQUIRED> NamePrefix => Str
 
   Name prefix to use when creating in-application stream. Suppose you
-specify a prefix "MyInApplicationStream". Kinesis Analytics will then
-create one or more (as per the C<InputParallelism> count you specified)
-in-application streams with names "MyInApplicationStream_001",
-"MyInApplicationStream_002" and so on.
+specify a prefix "MyInApplicationStream". Amazon Kinesis Analytics will
+then create one or more (as per the C<InputParallelism> count you
+specified) in-application streams with names
+"MyInApplicationStream_001", "MyInApplicationStream_002" and so on.
 
 
 

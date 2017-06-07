@@ -6,6 +6,7 @@ package Paws::KinesisAnalytics::ApplicationDetail;
   has ApplicationName => (is => 'ro', isa => 'Str', required => 1);
   has ApplicationStatus => (is => 'ro', isa => 'Str', required => 1);
   has ApplicationVersionId => (is => 'ro', isa => 'Int', required => 1);
+  has CloudWatchLoggingOptionDescriptions => (is => 'ro', isa => 'ArrayRef[Paws::KinesisAnalytics::CloudWatchLoggingOptionDescription]');
   has CreateTimestamp => (is => 'ro', isa => 'Str');
   has InputDescriptions => (is => 'ro', isa => 'ArrayRef[Paws::KinesisAnalytics::InputDescription]');
   has LastUpdateTimestamp => (is => 'ro', isa => 'Str');
@@ -77,6 +78,14 @@ on any of the in-application streams in your application.
 =head2 B<REQUIRED> ApplicationVersionId => Int
 
   Provides the current application version.
+
+
+=head2 CloudWatchLoggingOptionDescriptions => ArrayRef[L<Paws::KinesisAnalytics::CloudWatchLoggingOptionDescription>]
+
+  Describes the CloudWatch log streams configured to receive application
+messages. For more information about using CloudWatch log streams with
+Amazon Kinesis Analytics applications, see Monitoring Configuration
+Errors.
 
 
 =head2 CreateTimestamp => Str
