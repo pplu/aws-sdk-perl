@@ -18,110 +18,268 @@ my $aws = Paws->new(config => {
   region => 'fake_region',
 });
 
-{
+foreach my $status (503, 400) {
   my $s = $aws->service('JsonParamsService');
 
   throws_ok(
     sub { 
-      $s->Method3(response => q'', status => 503); 
+      $s->Method3(response => q'', status => $status); 
     },
     "Paws::Exception",
   );
-  diag($@);
-#  throws_ok(
-#    sub { 
-#      $s->Method3(response => undef, status => 503); 
-#    },
-#    "Paws::Exception",
-#  );
+  cmp_ok($@->code, 'eq', 'InvalidContent', 'Exception of type InvalidContent');
   throws_ok(
     sub { 
-      $s->Method1(response => q'', status => 503); 
+      $s->Method3(response => 'notajsonstring', status => $status); 
     },
     "Paws::Exception",
   );
-#  throws_ok(
-#    sub { 
-#      $s->Method1(response => undef, status => 503); 
-#    },
-#    "Paws::Exception",
-#  );
+  cmp_ok($@->code, 'eq', 'InvalidContent', 'Exception of type InvalidContent');
   throws_ok(
     sub { 
-      $s->Method1(response => 'notajsonstring', status => 503); 
+      $s->Method3(response => '[UNDEF]', status => $status); 
     },
     "Paws::Exception",
   );
+  cmp_ok($@->code, 'eq', 'InvalidContent', 'Exception of type InvalidContent');
+
+  throws_ok(
+    sub { 
+      $s->Method1(response => q'', status => $status); 
+    },
+    "Paws::Exception",
+  );
+  cmp_ok($@->code, 'eq', 'InvalidContent', 'Exception of type InvalidContent');
+  throws_ok(
+    sub { 
+      $s->Method1(response => 'notajsonstring', status => $status); 
+    },
+    "Paws::Exception",
+  );
+  cmp_ok($@->code, 'eq', 'InvalidContent', 'Exception of type InvalidContent');
+  throws_ok(
+    sub { 
+      $s->Method1(response => '[UNDEF]', status => $status); 
+    },
+    "Paws::Exception",
+  );
+  cmp_ok($@->code, 'eq', 'InvalidContent', 'Exception of type InvalidContent');
 }
 
-{
+foreach my $status (503, 400) {
   my $s = $aws->service('QueryParamsService');
 
   throws_ok(
     sub { 
-      $s->Method3(response => q'', status => 503) 
+      $s->Method3(response => q'', status => $status) 
     },
     "Paws::Exception",
   );
-#  throws_ok(
-#    sub { 
-#      $s->Method3(response => undef, status => 503) 
-#    },
-#    "Paws::Exception",
-#  );
+  cmp_ok($@->code, 'eq', 'InvalidContent', 'Exception of type InvalidContent');
   throws_ok(
     sub { 
-      $s->Method1(response => q'', status => 503) 
+      $s->Method3(response => '[UNDEF]', status => $status) 
     },
     "Paws::Exception",
   );
-#  throws_ok(
-#    sub { 
-#      $s->Method1(response => undef, status => 503) 
-#    },
-#    "Paws::Exception",
-#  );
+  cmp_ok($@->code, 'eq', 'InvalidContent', 'Exception of type InvalidContent');
   throws_ok(
     sub { 
-      $s->Method1(response => 'notanxmlstring', status => 503) 
+      $s->Method3(response => 'notanxmlstring', status => $status) 
     },
     "Paws::Exception",
   );
+  cmp_ok($@->code, 'eq', 'InvalidContent', 'Exception of type InvalidContent');
+  throws_ok(
+    sub { 
+      $s->Method1(response => q'', status => $status) 
+    },
+    "Paws::Exception",
+  );
+  cmp_ok($@->code, 'eq', 'InvalidContent', 'Exception of type InvalidContent');
+  throws_ok(
+    sub { 
+      $s->Method1(response => 'UNDEF', status => $status) 
+    },
+    "Paws::Exception",
+  );
+  cmp_ok($@->code, 'eq', 'InvalidContent', 'Exception of type InvalidContent');
+  throws_ok(
+    sub { 
+      $s->Method1(response => 'notanxmlstring', status => $status) 
+    },
+    "Paws::Exception",
+  );
+  cmp_ok($@->code, 'eq', 'InvalidContent', 'Exception of type InvalidContent');
 }
 
-{
+foreach my $status (503, 400) {
   my $s = $aws->service('RestJsonParamsService');
 
   throws_ok(
     sub { 
-      $s->Method3(response => q'', status => 503) 
+      $s->Method3(response => q'', status => $status) 
     },
     "Paws::Exception",
   );
-#  throws_ok(
-#    sub { 
-#      $s->Method3(response => undef, status => 503) 
-#    },
-#    "Paws::Exception",
-#  );
+  cmp_ok($@->code, 'eq', 'InvalidContent', 'Exception of type InvalidContent');
   throws_ok(
     sub { 
-      $s->Method1(response => q'', status => 503) 
+      $s->Method3(response => '[UNDEF]', status => $status) 
     },
     "Paws::Exception",
   );
-#  throws_ok(
-#    sub { 
-#      $s->Method1(response => undef, status => 503) 
-#    },
-#    "Paws::Exception",
-#  );
+  cmp_ok($@->code, 'eq', 'InvalidContent', 'Exception of type InvalidContent');
   throws_ok(
     sub { 
-      $s->Method1(response => 'notajsonstring', status => 503) 
+      $s->Method3(response => 'notajsonstring', status => $status) 
     },
     "Paws::Exception",
   );
+  cmp_ok($@->code, 'eq', 'InvalidContent', 'Exception of type InvalidContent');
+
+  throws_ok(
+    sub { 
+      $s->Method1(response => q'', status => $status) 
+    },
+    "Paws::Exception",
+  );
+  cmp_ok($@->code, 'eq', 'InvalidContent', 'Exception of type InvalidContent');
+  throws_ok(
+    sub { 
+      $s->Method1(response => '[UNDEF]', status => $status) 
+    },
+    "Paws::Exception",
+  );
+  cmp_ok($@->code, 'eq', 'InvalidContent', 'Exception of type InvalidContent');
+  throws_ok(
+    sub { 
+      $s->Method1(response => 'notajsonstring', status => $status) 
+    },
+    "Paws::Exception",
+  );
+  cmp_ok($@->code, 'eq', 'InvalidContent', 'Exception of type InvalidContent');
+}
+
+
+foreach my $status (200) {
+  my $s = $aws->service('JsonParamsService');
+
+  lives_ok(
+    sub { 
+      $s->Method3(response => q'', status => $status); 
+    },
+  );
+  throws_ok(
+    sub { 
+      $s->Method3(response => 'notajsonstring', status => $status); 
+    },
+    "Paws::Exception",
+  );
+  cmp_ok($@->code, 'eq', 'InvalidContent', 'Exception of type InvalidContent');
+  lives_ok(
+    sub { 
+      $s->Method3(response => '[UNDEF]', status => $status); 
+    },
+  );
+
+  lives_ok(
+    sub { 
+      $s->Method1(response => q'', status => $status); 
+    },
+  );
+  throws_ok(
+    sub { 
+      $s->Method1(response => 'notajsonstring', status => $status); 
+    },
+    "Paws::Exception",
+  );
+  cmp_ok($@->code, 'eq', 'InvalidContent', 'Exception of type InvalidContent');
+  lives_ok(
+    sub { 
+      $s->Method1(response => '[UNDEF]', status => $status); 
+    },
+  );
+}
+
+foreach my $status (200) {
+  my $s = $aws->service('QueryParamsService');
+
+  lives_ok(
+    sub { 
+      $s->Method3(response => q'', status => $status) 
+    },
+  );
+  lives_ok(
+    sub { 
+      $s->Method3(response => '[UNDEF]', status => $status) 
+    },
+  );
+  throws_ok(
+    sub { 
+      $s->Method3(response => 'notanxmlstring', status => $status) 
+    },
+    "Paws::Exception",
+  );
+  cmp_ok($@->code, 'eq', 'InvalidContent', 'Exception of type InvalidContent');
+
+  lives_ok(
+    sub { 
+      $s->Method1(response => q'', status => $status) 
+    },
+  );
+  lives_ok(
+    sub { 
+      $s->Method1(response => '[UNDEF]', status => $status) 
+    },
+  );
+  throws_ok(
+    sub { 
+      $s->Method1(response => 'notanxmlstring', status => $status) 
+    },
+    "Paws::Exception",
+  );
+  cmp_ok($@->code, 'eq', 'InvalidContent', 'Exception of type InvalidContent');
+}
+
+foreach my $status (200) {
+  my $s = $aws->service('RestJsonParamsService');
+
+  lives_ok(
+    sub { 
+      $s->Method3(response => q'', status => $status) 
+    },
+  );
+  lives_ok(
+    sub { 
+      $s->Method3(response => '[UNDEF]', status => $status) 
+    },
+  );
+  throws_ok(
+    sub { 
+      $s->Method3(response => 'notajsonstring', status => $status) 
+    },
+    "Paws::Exception",
+  );
+  cmp_ok($@->code, 'eq', 'InvalidContent', 'Exception of type InvalidContent');
+
+  lives_ok(
+    sub { 
+      $s->Method1(response => q'', status => $status) 
+    },
+  );
+  lives_ok(
+    sub { 
+      $s->Method1(response => '[UNDEF]', status => $status) 
+    },
+  );
+  throws_ok(
+    sub { 
+      $s->Method1(response => 'notajsonstring', status => $status) 
+    },
+    "Paws::Exception",
+  );
+  cmp_ok($@->code, 'eq', 'InvalidContent', 'Exception of type InvalidContent');
 }
 
 

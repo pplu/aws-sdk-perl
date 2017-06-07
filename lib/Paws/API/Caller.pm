@@ -97,18 +97,28 @@ package Paws::API::Caller;
     my ($self, $call_object, $http_status, $content, $headers) = @_;
 
     $call_object = $call_object->meta->name;
- 
+
     my $ret_class = $call_object->_returns;
     Paws->load_class($ret_class);
  
     my $unserialized_struct;
 
-    if (not defined $content or $content eq '') {
-      $unserialized_struct = {}
-    } elsif ($ret_class->can('_stream_param')) {
+    if ($ret_class->can('_stream_param')) {
       $unserialized_struct = {}
     } else {
-      $unserialized_struct = $self->unserialize_response( $content );
+      if (not defined $content or $content eq '') {
+        $unserialized_struct = {}
+      } else {
+        $unserialized_struct = eval { $self->unserialize_response( $content ) };
+        if ($@){
+          return Paws::Exception->new(
+            message => $@,
+            code => 'InvalidContent',
+            request_id => '', #$request_id,
+            http_status => $http_status,
+          );
+        }
+      }
     }
 
     my $request_id = $headers->{'x-amz-request-id'} 

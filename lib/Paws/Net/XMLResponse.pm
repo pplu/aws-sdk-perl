@@ -35,8 +35,8 @@ package Paws::Net::XMLResponse;
         request_id => '', #$request_id,
         http_status => $http_status,
       );
-    } 
-
+    }
+ 
     my ($code, $error, $request_id);
 
     if (exists $struct->{Errors}){
@@ -73,8 +73,6 @@ package Paws::Net::XMLResponse;
 
   sub unserialize_response {
     my ($self, $data) = @_;
-
-    return {} if (not defined $data or $data eq '');
 
     my $xml = XML::Simple->new(
       ForceArray    => qr/(?:item|Errors)/i,
