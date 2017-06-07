@@ -97,9 +97,15 @@ package Paws::API::Caller;
     my ($self, $call_object, $http_status, $content, $headers) = @_;
 
     $call_object = $call_object->meta->name;
-  
-    my $unserialized_struct; 
+ 
+    my $ret_class = $call_object->_returns;
+    Paws->load_class($ret_class);
+ 
+    my $unserialized_struct;
+
     if (not defined $content or $content eq '') {
+      $unserialized_struct = {}
+    } elsif ($ret_class->can('_stream_param')) {
       $unserialized_struct = {}
     } else {
       $unserialized_struct = $self->unserialize_response( $content );
@@ -119,19 +125,13 @@ package Paws::API::Caller;
     $unserialized_struct->{ _request_id } = $request_id;
       
     if ($call_object->_returns ne 'Paws::API::Response'){
-      my $ret_class = $call_object->_returns;
-      Paws->load_class($ret_class);
-
-      if ($call_object->_returns->can('_stream_param')) {
-        $unserialized_struct->{ $call_object->_stream_param } = $content
+      if ($ret_class->can('_stream_param')) {
+        $unserialized_struct->{ $ret_class->_stream_param } = $content
       }
 
       foreach my $key (keys %$headers){
         $unserialized_struct->{lc $key} = $headers->{$key};
       }
-
-      use Data::Dumper;
-      print Dumper($unserialized_struct);
 
       my $o_result = $self->new_from_result_struct($call_object->_returns, $unserialized_struct);
       return $o_result;
