@@ -7,8 +7,6 @@ package Paws::Net::XMLResponse;
   sub handle_response {
     my ($self, $call_object, $http_status, $content, $headers) = @_;
 
-    my $unserialized_struct = $self->unserialize_response( $content );
-
     if (defined $headers->{ 'x-amz-crc32' }) {
       require String::CRC32;
       my $crc = String::CRC32::crc32($content);
@@ -20,14 +18,24 @@ package Paws::Net::XMLResponse;
     }
 
     if ( $http_status >= 300 ) {
-        return $self->error_to_exception($unserialized_struct, $call_object, $http_status, $content, $headers);
+        return $self->error_to_exception($call_object, $http_status, $content, $headers);
     } else {
-        return $self->response_to_object($unserialized_struct, $call_object, $http_status, $content, $headers);
+        return $self->response_to_object($call_object, $http_status, $content, $headers);
     }
   }
 
   sub error_to_exception {
-    my ($self, $struct, $call_object, $http_status, $content, $headers) = @_;
+    my ($self, $call_object, $http_status, $content, $headers) = @_;
+
+    my $struct = eval { $self->unserialize_response( $content ) };
+    if ($@){
+      return Paws::Exception->new(
+        message => $@,
+        code => 'InvalidContent',
+        request_id => '', #$request_id,
+        http_status => $http_status,
+      );
+    } 
 
     my ($code, $error, $request_id);
 
@@ -65,12 +73,15 @@ package Paws::Net::XMLResponse;
 
   sub unserialize_response {
     my ($self, $data) = @_;
-    my $xml = XML::Simple::XMLin( $data,
-            ForceArray    => qr/(?:item|Errors)/i,
-            KeyAttr       => '',
-            SuppressEmpty => undef,
+
+    return {} if (not defined $data or $data eq '');
+
+    my $xml = XML::Simple->new(
+      ForceArray    => qr/(?:item|Errors)/i,
+      KeyAttr       => '',
+      SuppressEmpty => undef,
     );
-    return $xml;
+    return $xml->parse_string($data);
   }
 
   sub handle_response_strtonativemap {
