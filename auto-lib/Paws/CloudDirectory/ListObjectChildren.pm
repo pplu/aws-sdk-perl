@@ -49,15 +49,15 @@ Valid values are: C<"SERIALIZABLE">, C<"EVENTUAL">
 
 =head2 B<REQUIRED> DirectoryArn => Str
 
-ARN associated with the Directory where the object resides. For more
-information, see arns.
+The Amazon Resource Name (ARN) that is associated with the Directory
+where the object resides. For more information, see arns.
 
 
 
 =head2 MaxResults => Int
 
-Maximum number of items to be retrieved in a single call. This is an
-approximate number.
+The maximum number of items to be retrieved in a single call. This is
+an approximate number.
 
 
 
@@ -69,8 +69,8 @@ The pagination token.
 
 =head2 B<REQUIRED> ObjectReference => L<Paws::CloudDirectory::ObjectReference>
 
-Reference that identifies the object for which child objects are being
-listed.
+The reference that identifies the object for which child objects are
+being listed.
 
 
 

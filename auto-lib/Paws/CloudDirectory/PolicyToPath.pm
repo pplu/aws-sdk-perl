@@ -33,8 +33,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudDirect
 =head1 DESCRIPTION
 
 Used when a regular object exists in a Directory and you want to find
-all of the policies associated with that object and the parent to that
-object.
+all of the policies that are associated with that object and the parent
+to that object.
 
 =head1 ATTRIBUTES
 

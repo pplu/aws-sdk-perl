@@ -40,26 +40,26 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ChildReference => L<Paws::CloudDirectory::ObjectReference>
 
-Child object reference to be attached to the object.
+The child object reference to be attached to the object.
 
 
 
 =head2 B<REQUIRED> DirectoryArn => Str
 
-ARN associated with the Directory where both objects reside. For more
-information, see arns.
+Amazon Resource Name (ARN) that is associated with the Directory where
+both objects reside. For more information, see arns.
 
 
 
 =head2 B<REQUIRED> LinkName => Str
 
-Link name with which the child object is attached to the parent.
+The link name with which the child object is attached to the parent.
 
 
 
 =head2 B<REQUIRED> ParentReference => L<Paws::CloudDirectory::ObjectReference>
 
-Parent object reference.
+The parent object reference.
 
 
 

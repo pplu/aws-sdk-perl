@@ -44,7 +44,7 @@ Represents the output of a C<BatchWrite> operation.
 
 =head2 AddFacetToObject => L<Paws::CloudDirectory::BatchAddFacetToObject>
 
-  Batch operation adding a facet to an object.
+  A batch operation that adds a facet to an object.
 
 
 =head2 AttachObject => L<Paws::CloudDirectory::BatchAttachObject>
@@ -69,12 +69,12 @@ Represents the output of a C<BatchWrite> operation.
 
 =head2 RemoveFacetFromObject => L<Paws::CloudDirectory::BatchRemoveFacetFromObject>
 
-  Batch operation removing a facet from an object.
+  A batch operation that removes a facet from an object.
 
 
 =head2 UpdateObjectAttributes => L<Paws::CloudDirectory::BatchUpdateObjectAttributes>
 
-  Update a given object's attributes.
+  Updates a given object's attributes.
 
 
 

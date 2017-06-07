@@ -18,8 +18,8 @@ Paws::CloudDirectory::ListDirectoriesResponse
 
 =head2 B<REQUIRED> Directories => ArrayRef[L<Paws::CloudDirectory::Directory>]
 
-Lists all directories associated with your account in pagination
-fashion.
+Lists all directories that are associated with your account in
+pagination fashion.
 
 
 =head2 NextToken => Str

@@ -39,13 +39,13 @@ Represents the output of a C<BatchRead> success response operation.
 
 =head2 ListObjectAttributes => L<Paws::CloudDirectory::BatchListObjectAttributesResponse>
 
-  Lists all attributes associated with an object.
+  Lists all attributes that are associated with an object.
 
 
 =head2 ListObjectChildren => L<Paws::CloudDirectory::BatchListObjectChildrenResponse>
 
-  Returns a paginated list of child objects associated with a given
-object.
+  Returns a paginated list of child objects that are associated with a
+given object.
 
 
 

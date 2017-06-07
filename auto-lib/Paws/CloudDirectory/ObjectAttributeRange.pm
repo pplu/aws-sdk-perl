@@ -39,7 +39,7 @@ A range of attributes.
 
 =head2 AttributeKey => L<Paws::CloudDirectory::AttributeKey>
 
-  The key of the attribute the attribute range covers.
+  The key of the attribute that the attribute range covers.
 
 
 =head2 Range => L<Paws::CloudDirectory::TypedAttributeValueRange>

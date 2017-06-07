@@ -23,8 +23,8 @@ The pagination token.
 
 =head2 PathToObjectIdentifiersList => ArrayRef[L<Paws::CloudDirectory::PathToObjectIdentifiers>]
 
-Returns the path to the C<ObjectIdentifiers> associated with the
-directory.
+Returns the path to the C<ObjectIdentifiers> that are associated with
+the directory.
 
 
 =head2 _request_id => Str

@@ -23,7 +23,7 @@ The pagination token.
 
 =head2 ObjectIdentifiers => ArrayRef[Str|Undef]
 
-List of C<ObjectIdentifiers> to which the policy is attached.
+A list of C<ObjectIdentifiers> to which the policy is attached.
 
 
 =head2 _request_id => Str

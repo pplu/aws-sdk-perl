@@ -39,7 +39,7 @@ The action to take on the object attribute.
 
 =head2 ObjectAttributeActionType => Str
 
-  Type can be either Update or Delete.
+  A type that can be either C<Update> or C<Delete>.
 
 
 =head2 ObjectAttributeUpdateValue => L<Paws::CloudDirectory::TypedAttributeValue>

@@ -39,7 +39,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 MaxResults => Int
 
-The maximum number of results to retrieve
+The maximum number of results to retrieve.
 
 
 
@@ -51,7 +51,7 @@ The pagination token.
 
 =head2 B<REQUIRED> SchemaArn => Str
 
-The ARN to retrieve facet names from.
+The Amazon Resource Name (ARN) to retrieve facet names from.
 
 
 

@@ -17,7 +17,7 @@ Paws::CloudDirectory::BatchWriteResponse
 
 =head2 Responses => ArrayRef[L<Paws::CloudDirectory::BatchWriteOperationResponse>]
 
-List of all the responses for each batch write.
+A list of all the responses for each batch write.
 
 
 =head2 _request_id => Str

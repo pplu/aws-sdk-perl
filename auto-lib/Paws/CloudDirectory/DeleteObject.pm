@@ -38,14 +38,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DirectoryArn => Str
 
-ARN associated with the Directory where the object resides. For more
-information, see arns.
+The Amazon Resource Name (ARN) that is associated with the Directory
+where the object resides. For more information, see arns.
 
 
 
 =head2 B<REQUIRED> ObjectReference => L<Paws::CloudDirectory::ObjectReference>
 
-Reference that identifies the object.
+A reference that identifies the object.
 
 
 

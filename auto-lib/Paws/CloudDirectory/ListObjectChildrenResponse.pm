@@ -18,7 +18,7 @@ Paws::CloudDirectory::ListObjectChildrenResponse
 
 =head2 Children => L<Paws::CloudDirectory::LinkNameToObjectIdentifierMap>
 
-Children structure, which is a map with key as the LinkName and
+Children structure, which is a map with key as the C<LinkName> and
 C<ObjectIdentifier> as the value.
 
 

@@ -17,7 +17,7 @@ Paws::CloudDirectory::CreateObjectResponse
 
 =head2 ObjectIdentifier => Str
 
-Identifier associated with the object.
+The identifier that is associated with the object.
 
 
 =head2 _request_id => Str

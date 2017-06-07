@@ -17,7 +17,7 @@ Paws::CloudDirectory::GetFacetResponse
 
 =head2 Facet => L<Paws::CloudDirectory::Facet>
 
-Facet structure associated with the facet.
+The Facet structure that is associated with the facet.
 
 
 =head2 _request_id => Str

@@ -32,8 +32,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudDirect
 
 =head1 DESCRIPTION
 
-Returns the path to the C<ObjectIdentifiers> associated with the
-directory.
+Returns the path to the C<ObjectIdentifiers> that is associated with
+the directory.
 
 =head1 ATTRIBUTES
 
@@ -46,7 +46,8 @@ in the request.
 
 =head2 Path => Str
 
-  The path used to identify the object starting from directory root.
+  The path that is used to identify the object starting from directory
+root.
 
 
 

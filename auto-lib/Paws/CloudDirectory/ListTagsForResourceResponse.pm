@@ -24,7 +24,7 @@ null when there are no more results to return.
 
 =head2 Tags => ArrayRef[L<Paws::CloudDirectory::Tag>]
 
-List of tag key value pairs associated with the response.
+A list of tag key value pairs that are associated with the response.
 
 
 =head2 _request_id => Str

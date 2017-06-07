@@ -34,7 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudDirect
 
 =head1 DESCRIPTION
 
-Attribute associated with the Facet.
+An attribute that is associated with the Facet.
 
 =head1 ATTRIBUTES
 
@@ -48,8 +48,8 @@ for more information.
 
 =head2 AttributeReference => L<Paws::CloudDirectory::FacetAttributeReference>
 
-  Attribute reference associated with the attribute. See Attribute
-References for more information.
+  An attribute reference that is associated with the attribute. See
+Attribute References for more information.
 
 
 =head2 B<REQUIRED> Name => Str

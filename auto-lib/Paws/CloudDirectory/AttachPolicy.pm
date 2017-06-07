@@ -39,21 +39,21 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 DirectoryArn => Str
 
-ARN associated with the Directory where both objects reside. For more
-information, see arns.
+The Amazon Resource Name (ARN) that is associated with the Directory
+where both objects reside. For more information, see arns.
 
 
 
 =head2 B<REQUIRED> ObjectReference => L<Paws::CloudDirectory::ObjectReference>
 
-Reference that identifies the object to which the policy will be
+The reference that identifies the object to which the policy will be
 attached.
 
 
 
 =head2 B<REQUIRED> PolicyReference => L<Paws::CloudDirectory::ObjectReference>
 
-Reference associated with the policy object.
+The reference that is associated with the policy object.
 
 
 

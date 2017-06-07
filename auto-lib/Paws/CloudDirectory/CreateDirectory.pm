@@ -38,14 +38,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Name => Str
 
-Name of the Directory. Should be unique per account, per region.
+The name of the Directory. Should be unique per account, per region.
 
 
 
 =head2 B<REQUIRED> SchemaArn => Str
 
-ARN of the published schema that will be copied into the data
-Directory. For more information, see arns.
+The Amazon Resource Name (ARN) of the published schema that will be
+copied into the data Directory. For more information, see arns.
 
 
 

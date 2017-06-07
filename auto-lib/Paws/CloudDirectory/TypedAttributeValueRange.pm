@@ -41,7 +41,7 @@ A range of attribute values.
 
 =head2 B<REQUIRED> EndMode => Str
 
-  Inclusive or exclusive range end.
+  The inclusive or exclusive range end.
 
 
 =head2 EndValue => L<Paws::CloudDirectory::TypedAttributeValue>
@@ -51,7 +51,7 @@ A range of attribute values.
 
 =head2 B<REQUIRED> StartMode => Str
 
-  Inclusive or exclusive range start.
+  The inclusive or exclusive range start.
 
 
 =head2 StartValue => L<Paws::CloudDirectory::TypedAttributeValue>

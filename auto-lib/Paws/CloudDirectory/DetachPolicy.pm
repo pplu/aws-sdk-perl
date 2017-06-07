@@ -39,8 +39,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DirectoryArn => Str
 
-ARN associated with the Directory where both objects reside. For more
-information, see arns.
+The Amazon Resource Name (ARN) that is associated with the Directory
+where both objects reside. For more information, see arns.
 
 
 

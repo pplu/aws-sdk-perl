@@ -39,21 +39,21 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DevelopmentSchemaArn => Str
 
-ARN associated with the development schema. For more information, see
-arns.
+The Amazon Resource Name (ARN) that is associated with the development
+schema. For more information, see arns.
 
 
 
 =head2 Name => Str
 
-New name under which the schema will be published. If this is not
+The new name under which the schema will be published. If this is not
 provided, the development schema is considered.
 
 
 
 =head2 B<REQUIRED> Version => Str
 
-Version under which the schema will be published.
+The version under which the schema will be published.
 
 
 

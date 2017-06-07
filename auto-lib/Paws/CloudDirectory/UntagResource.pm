@@ -38,13 +38,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ResourceArn => Str
 
-ARN of the resource. Tagging is only supported for directories.
+The Amazon Resource Name (ARN) of the resource. Tagging is only
+supported for directories.
 
 
 
 =head2 B<REQUIRED> TagKeys => ArrayRef[Str|Undef]
 
-Keys of the tag that needs to be removed from the resource.
+Keys of the tag that need to be removed from the resource.
 
 
 

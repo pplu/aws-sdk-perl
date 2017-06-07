@@ -47,13 +47,14 @@ Valid values are: C<"SERIALIZABLE">, C<"EVENTUAL">
 
 =head2 B<REQUIRED> DirectoryArn => Str
 
-ARN associated with the Directory. For more information, see arns.
+The Amazon Resource Name (ARN) that is associated with the Directory.
+For more information, see arns.
 
 
 
 =head2 B<REQUIRED> Operations => ArrayRef[L<Paws::CloudDirectory::BatchReadOperation>]
 
-List of operations that are part of the batch.
+A list of operations that are part of the batch.
 
 
 

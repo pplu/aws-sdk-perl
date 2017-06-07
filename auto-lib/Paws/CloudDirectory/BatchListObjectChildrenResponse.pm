@@ -39,8 +39,8 @@ Represents the output of a C<ListObjectChildren> response operation.
 
 =head2 Children => L<Paws::CloudDirectory::LinkNameToObjectIdentifierMap>
 
-  Children structure, which is a map with key as the C<LinkName> and
-C<ObjectIdentifier> as the value.
+  The children structure, which is a map with the key as the C<LinkName>
+and C<ObjectIdentifier> as the value.
 
 
 =head2 NextToken => Str

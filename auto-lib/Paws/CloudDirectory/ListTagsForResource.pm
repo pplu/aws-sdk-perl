@@ -39,8 +39,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 MaxResults => Int
 
-The MaxResults parameter sets the maximum number of results returned in
-a single page. This is for future use and is not supported currently.
+The C<MaxResults> parameter sets the maximum number of results returned
+in a single page. This is for future use and is not supported
+currently.
 
 
 
@@ -53,7 +54,8 @@ not supported for tagging.
 
 =head2 B<REQUIRED> ResourceArn => Str
 
-ARN of the resource. Tagging is only supported for directories.
+The Amazon Resource Name (ARN) of the resource. Tagging is only
+supported for directories.
 
 
 

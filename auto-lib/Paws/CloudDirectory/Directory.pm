@@ -46,7 +46,8 @@ Directory structure that includes the directory name and directory ARN.
 
 =head2 DirectoryArn => Str
 
-  ARN associated with the directory. For more information, see arns.
+  The Amazon Resource Name (ARN) that is associated with the directory.
+For more information, see arns.
 
 
 =head2 Name => Str

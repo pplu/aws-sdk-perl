@@ -47,8 +47,8 @@ The ARN of the directory where the index should be created.
 
 =head2 B<REQUIRED> IsUnique => Bool
 
-Indicates whether objects with the same indexed attribute value can be
-added to the index.
+Indicates whether the attribute that is being indexed has unique values
+or not.
 
 
 
@@ -60,7 +60,7 @@ The name of the link between the parent object and the index object.
 
 =head2 B<REQUIRED> OrderedIndexedAttributeList => ArrayRef[L<Paws::CloudDirectory::AttributeKey>]
 
-Specifies the Attributes that should be indexed on. Currently only a
+Specifies the attributes that should be indexed on. Currently only a
 single attribute is supported.
 
 

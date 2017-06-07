@@ -41,27 +41,28 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 AttributeUpdates => ArrayRef[L<Paws::CloudDirectory::FacetAttributeUpdate>]
 
 List of attributes that need to be updated in a given schema Facet.
-Each attribute is followed by AttributeAction, which specifies the type
-of update operation to perform.
+Each attribute is followed by C<AttributeAction>, which specifies the
+type of update operation to perform.
 
 
 
 =head2 B<REQUIRED> Name => Str
 
-
+The name of the facet.
 
 
 
 =head2 ObjectType => Str
 
-Object type associated with the facet. See
+The object type that is associated with the facet. See
 CreateFacetRequest$ObjectType for more details.
 
 Valid values are: C<"NODE">, C<"LEAF_NODE">, C<"POLICY">, C<"INDEX">
 
 =head2 B<REQUIRED> SchemaArn => Str
 
-ARN associated with the Facet. For more information, see arns.
+The Amazon Resource Name (ARN) that is associated with the Facet. For
+more information, see arns.
 
 
 

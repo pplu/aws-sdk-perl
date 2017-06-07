@@ -40,14 +40,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DirectoryArn => Str
 
-ARN associated with the Directory. For more information, see arns.
+The Amazon Resource Name (ARN) that is associated with the Directory.
+For more information, see arns.
 
 
 
 =head2 MaxResults => Int
 
-Maximum number of items to be retrieved in a single call. This is an
-approximate number.
+The maximum number of items to be retrieved in a single call. This is
+an approximate number.
 
 
 
