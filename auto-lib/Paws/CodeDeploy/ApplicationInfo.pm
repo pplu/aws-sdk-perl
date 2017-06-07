@@ -3,6 +3,7 @@ package Paws::CodeDeploy::ApplicationInfo;
   has ApplicationId => (is => 'ro', isa => 'Str', request_name => 'applicationId', traits => ['NameInRequest']);
   has ApplicationName => (is => 'ro', isa => 'Str', request_name => 'applicationName', traits => ['NameInRequest']);
   has CreateTime => (is => 'ro', isa => 'Str', request_name => 'createTime', traits => ['NameInRequest']);
+  has GitHubAccountName => (is => 'ro', isa => 'Str', request_name => 'gitHubAccountName', traits => ['NameInRequest']);
   has LinkedToGitHub => (is => 'ro', isa => 'Bool', request_name => 'linkedToGitHub', traits => ['NameInRequest']);
 1;
 
@@ -52,6 +53,11 @@ Information about an application.
 =head2 CreateTime => Str
 
   The time at which the application was created.
+
+
+=head2 GitHubAccountName => Str
+
+  The name for a connection to a GitHub account.
 
 
 =head2 LinkedToGitHub => Bool
