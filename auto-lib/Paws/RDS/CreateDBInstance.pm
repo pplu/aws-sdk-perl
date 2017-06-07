@@ -299,7 +299,9 @@ Cannot be a word reserved by the specified database engine
 
 B<Oracle>
 
-The Oracle System ID (SID) of the created DB instance.
+The Oracle System ID (SID) of the created DB instance. If you specify
+C<null>, the default value C<ORCL> is used. You can't specify the
+string NULL, or any other reserved word, for C<DBName>.
 
 Default: C<ORCL>
 
@@ -606,6 +608,11 @@ B<Oracle 12c>
 
 =item *
 
+C<12.1.0.2.v8> (supported for EE in all AWS regions, and SE2 in all AWS
+regions except us-gov-west-1)
+
+=item *
+
 C<12.1.0.2.v7> (supported for EE in all AWS regions, and SE2 in all AWS
 regions except us-gov-west-1)
 
@@ -644,6 +651,10 @@ regions except us-gov-west-1)
 B<Oracle 11g>
 
 =over
+
+=item *
+
+C<11.2.0.4.v12> (supported for EE, SE1, and SE, in all AWS regions)
 
 =item *
 
@@ -693,20 +704,19 @@ B<PostgreSQL>
 
 =item *
 
-B<Version 9.6:> C< 9.6.1>
+B<Version 9.6.x:> C< 9.6.1 | 9.6.2>
 
 =item *
 
-B<Version 9.5:> C<9.5.4 | 9.5.2>
+B<Version 9.5.x:> C<9.5.6 | 9.5.4 | 9.5.2>
 
 =item *
 
-B<Version 9.4:> C< 9.4.9 | 9.4.7 | 9.4.5 | 9.4.4 | 9.4.1>
+B<Version 9.4.x:> C<9.4.11 | 9.4.9 | 9.4.7>
 
 =item *
 
-B<Version 9.3:> C< 9.3.14 | 9.3.12 | 9.3.10 | 9.3.9 | 9.3.6 | 9.3.5 |
-9.3.3 | 9.3.2 | 9.3.1>
+B<Version 9.3.x:> C<9.3.16 | 9.3.14 | 9.3.12>
 
 =back
 
