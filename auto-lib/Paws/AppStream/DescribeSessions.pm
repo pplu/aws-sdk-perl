@@ -45,7 +45,7 @@ authenticated using a streaming URL, or C<SAML> for a SAML federated
 user. If an authentication type is not provided, the operation defaults
 to users authenticated using a streaming URL.
 
-Valid values are: C<"API">, C<"SAML">
+Valid values are: C<"API">, C<"SAML">, C<"USERPOOL">
 
 =head2 B<REQUIRED> FleetName => Str
 

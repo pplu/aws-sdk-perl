@@ -1,6 +1,7 @@
 
 package Paws::AppStream::UpdateFleet;
   use Moose;
+  has AttributesToDelete => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has ComputeCapacity => (is => 'ro', isa => 'Paws::AppStream::ComputeCapacity');
   has DeleteVpcConfig => (is => 'ro', isa => 'Bool');
   has Description => (is => 'ro', isa => 'Str');
@@ -41,6 +42,12 @@ As an example:
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 
 =head1 ATTRIBUTES
+
+
+=head2 AttributesToDelete => ArrayRef[Str|Undef]
+
+Fleet attributes to be deleted.
+
 
 
 =head2 ComputeCapacity => L<Paws::AppStream::ComputeCapacity>
