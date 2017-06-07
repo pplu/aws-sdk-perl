@@ -36,7 +36,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Username => Str
 
-The user name of the user you wish to ebable.
+The user name of the user you wish to enable.
 
 
 

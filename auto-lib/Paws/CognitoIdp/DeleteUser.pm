@@ -1,7 +1,7 @@
 
 package Paws::CognitoIdp::DeleteUser;
   use Moose;
-  has AccessToken => (is => 'ro', isa => 'Str');
+  has AccessToken => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -33,7 +33,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 AccessToken => Str
+=head2 B<REQUIRED> AccessToken => Str
 
 The access token from a request to delete a user.
 

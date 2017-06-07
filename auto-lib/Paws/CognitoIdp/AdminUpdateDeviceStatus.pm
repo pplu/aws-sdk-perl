@@ -56,7 +56,7 @@ The user name.
 
 =head2 B<REQUIRED> UserPoolId => Str
 
-The user pool IDE<gt>
+The user pool ID.
 
 
 

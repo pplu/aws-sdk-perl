@@ -1,7 +1,7 @@
 
 package Paws::CognitoIdp::ChangePassword;
   use Moose;
-  has AccessToken => (is => 'ro', isa => 'Str');
+  has AccessToken => (is => 'ro', isa => 'Str', required => 1);
   has PreviousPassword => (is => 'ro', isa => 'Str', required => 1);
   has ProposedPassword => (is => 'ro', isa => 'Str', required => 1);
 
@@ -35,7 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 AccessToken => Str
+=head2 B<REQUIRED> AccessToken => Str
 
 The access token in the change password request.
 

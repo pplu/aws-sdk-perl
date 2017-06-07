@@ -46,14 +46,13 @@ The ID of the client associated with the user pool.
 =head2 B<REQUIRED> ConfirmationCode => Str
 
 The confirmation code sent by a user's request to retrieve a forgotten
-password.
+password. For more information, see ForgotPassword
 
 
 
 =head2 B<REQUIRED> Password => Str
 
-The password sent by sent by a user's request to retrieve a forgotten
-password.
+The password sent by a user's request to retrieve a forgotten password.
 
 
 

@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CognitoIdp:
 
 =head1 DESCRIPTION
 
-The SMS configuratoin type.
+The SMS configuration type.
 
 =head1 ATTRIBUTES
 

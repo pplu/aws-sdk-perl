@@ -57,7 +57,7 @@ in the Amazon Cognito Developer Guide.
 
 =head2 CompletionDate => Str
 
-  The date when the user imoprt job was completed.
+  The date when the user import job was completed.
 
 
 =head2 CompletionMessage => Str
@@ -67,7 +67,7 @@ in the Amazon Cognito Developer Guide.
 
 =head2 CreationDate => Str
 
-  The date when the user import job was created.
+  The date the user import job was created.
 
 
 =head2 FailedUsers => Int
@@ -92,7 +92,7 @@ in the Amazon Cognito Developer Guide.
 
 =head2 PreSignedUrl => Str
 
-  The pre-signed URL to be used to upload the .csv file.
+  The pre-signed URL to be used to upload the C<.csv> file.
 
 
 =head2 SkippedUsers => Int
@@ -113,38 +113,38 @@ in the Amazon Cognito Developer Guide.
 
 =item *
 
-Created - The job was created but not started.
+C<Created> - The job was created but not started.
 
 =item *
 
-Pending - A transition state. You have started the job, but it has not
-begun importing users yet.
+C<Pending> - A transition state. You have started the job, but it has
+not begun importing users yet.
 
 =item *
 
-InProgress - The job has started, and users are being imported.
+C<InProgress> - The job has started, and users are being imported.
 
 =item *
 
-Stopping - You have stopped the job, but the job has not stopped
+C<Stopping> - You have stopped the job, but the job has not stopped
 importing users yet.
 
 =item *
 
-Stopped - You have stopped the job, and the job has stopped importing
-users.
+C<Stopped> - You have stopped the job, and the job has stopped
+importing users.
 
 =item *
 
-Succeeded - The job has completed successfully.
+C<Succeeded> - The job has completed successfully.
 
 =item *
 
-Failed - The job has stopped due to an error.
+C<Failed> - The job has stopped due to an error.
 
 =item *
 
-Expired - You created a job, but did not start the job within 24-48
+C<Expired> - You created a job, but did not start the job within 24-48
 hours. All data associated with the job was deleted, and the job cannot
 be started.
 

@@ -38,25 +38,89 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> AuthFlow => Str
 
-The authentication flow.
+The authentication flow for this call to execute. The API action will
+depend on this value. For example:
+
+=over
+
+=item *
+
+C<REFRESH_TOKEN_AUTH> will take in a valid refresh token and return new
+tokens.
+
+=item *
+
+C<USER_SRP_AUTH> will take in USERNAME and SRPA and return the SRP
+variables to be used for next challenge execution.
+
+=back
+
+Valid values include:
+
+=over
+
+=item *
+
+C<USER_SRP_AUTH>: Authentication flow for the Secure Remote Password
+(SRP) protocol.
+
+=item *
+
+C<REFRESH_TOKEN_AUTH>/C<REFRESH_TOKEN>: Authentication flow for
+refreshing the access token and ID token by supplying a valid refresh
+token.
+
+=item *
+
+C<CUSTOM_AUTH>: Custom authentication flow.
+
+=back
+
+C<ADMIN_NO_SRP_AUTH> is not a valid value.
 
 Valid values are: C<"USER_SRP_AUTH">, C<"REFRESH_TOKEN_AUTH">, C<"REFRESH_TOKEN">, C<"CUSTOM_AUTH">, C<"ADMIN_NO_SRP_AUTH">
 
 =head2 AuthParameters => L<Paws::CognitoIdp::AuthParametersType>
 
-The authentication parameters.
+The authentication parameters. These are inputs corresponding to the
+C<AuthFlow> that you are invoking. The required values depend on the
+value of C<AuthFlow>:
+
+=over
+
+=item *
+
+For C<USER_SRP_AUTH>: C<USERNAME> (required), C<SRPA> (required),
+C<SECRET_HASH> (required if the app client is configured with a client
+secret), C<DEVICE_KEY>
+
+=item *
+
+For C<REFRESH_TOKEN_AUTH/REFRESH_TOKEN>: C<USERNAME> (required),
+C<SECRET_HASH> (required if the app client is configured with a client
+secret), C<REFRESH_TOKEN> (required), C<DEVICE_KEY>
+
+=item *
+
+For C<CUSTOM_AUTH>: C<USERNAME> (required), C<SECRET_HASH> (if app
+client is configured with client secret), C<DEVICE_KEY>
+
+=back
+
 
 
 
 =head2 B<REQUIRED> ClientId => Str
 
-The client ID.
+The app client ID.
 
 
 
 =head2 ClientMetadata => L<Paws::CognitoIdp::ClientMetadataType>
 
-The client app's metadata.
+This is a random key-value pair map which can contain any key and will
+be passed to your PreAuthentication Lambda trigger as-is. It can be
+used to implement additional validations around authentication.
 
 
 

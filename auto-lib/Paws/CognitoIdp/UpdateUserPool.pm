@@ -48,7 +48,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AdminCreateUserConfig => L<Paws::CognitoIdp::AdminCreateUserConfigType>
 
-The configuration for AdminCreateUser requests.
+The configuration for C<AdminCreateUser> requests.
 
 
 
@@ -79,7 +79,7 @@ The contents of the email verification message.
 
 =head2 EmailVerificationSubject => Str
 
-The subject of the email verfication message.
+The subject of the email verification message.
 
 
 

@@ -38,25 +38,55 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ChallengeName => Str
 
-The name of the challenge.
+The challenge name. For more information, see InitiateAuth.
+
+C<ADMIN_NO_SRP_AUTH> is not a valid value.
 
 Valid values are: C<"SMS_MFA">, C<"PASSWORD_VERIFIER">, C<"CUSTOM_CHALLENGE">, C<"DEVICE_SRP_AUTH">, C<"DEVICE_PASSWORD_VERIFIER">, C<"ADMIN_NO_SRP_AUTH">, C<"NEW_PASSWORD_REQUIRED">
 
 =head2 ChallengeResponses => L<Paws::CognitoIdp::ChallengeResponsesType>
 
-The responses to the authentication challenge.
+The challenge responses. These are inputs corresponding to the value of
+C<ChallengeName>, for example:
+
+=over
+
+=item *
+
+C<SMS_MFA>: C<SMS_MFA_CODE>, C<USERNAME>, C<SECRET_HASH> (if app client
+is configured with client secret).
+
+=item *
+
+C<PASSWORD_VERIFIER>: C<PASSWORD_CLAIM_SIGNATURE>,
+C<PASSWORD_CLAIM_SECRET_BLOCK>, C<TIMESTAMP>, C<USERNAME>,
+C<SECRET_HASH> (if app client is configured with client secret).
+
+=item *
+
+C<NEW_PASSWORD_REQUIRED>: C<NEW_PASSWORD>, any other required
+attributes, C<USERNAME>, C<SECRET_HASH> (if app client is configured
+with client secret).
+
+=back
+
 
 
 
 =head2 B<REQUIRED> ClientId => Str
 
-The client ID.
+The app client ID.
 
 
 
 =head2 Session => Str
 
-The session.
+The session which should be passed both ways in challenge-response
+calls to the service. If C<InitiateAuth> or C<RespondToAuthChallenge>
+API call determines that the caller needs to go through another
+challenge, they return a session with other challenge parameters. This
+session should be passed as it is to the next C<RespondToAuthChallenge>
+API call.
 
 
 

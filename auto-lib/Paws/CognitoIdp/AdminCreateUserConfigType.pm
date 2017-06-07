@@ -40,8 +40,8 @@ The type of configuration for creating a new user profile.
 
 =head2 AllowAdminCreateUserOnly => Bool
 
-  Set to True if only the administrator is allowed to create user
-profiles. Set to False if users can sign themselves up via an app.
+  Set to C<True> if only the administrator is allowed to create user
+profiles. Set to C<False> if users can sign themselves up via an app.
 
 
 =head2 InviteMessageTemplate => L<Paws::CognitoIdp::MessageTemplateType>
@@ -53,8 +53,8 @@ profiles. Set to False if users can sign themselves up via an app.
 
   The user account expiration limit, in days, after which the account is
 no longer usable. To reset the account after that time limit, you must
-call AdminCreateUser again, specifying "RESEND" for the MessageAction
-parameter. The default value for this paameter is 7.
+call C<AdminCreateUser> again, specifying C<"RESEND"> for the
+C<MessageAction> parameter. The default value for this parameter is 7.
 
 
 

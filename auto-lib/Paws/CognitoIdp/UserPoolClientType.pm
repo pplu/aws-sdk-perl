@@ -1,13 +1,20 @@
 package Paws::CognitoIdp::UserPoolClientType;
   use Moose;
+  has AllowedOAuthFlows => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has AllowedOAuthFlowsUserPoolClient => (is => 'ro', isa => 'Bool');
+  has AllowedOAuthScopes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has CallbackURLs => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has ClientId => (is => 'ro', isa => 'Str');
   has ClientName => (is => 'ro', isa => 'Str');
   has ClientSecret => (is => 'ro', isa => 'Str');
   has CreationDate => (is => 'ro', isa => 'Str');
+  has DefaultRedirectURI => (is => 'ro', isa => 'Str');
   has ExplicitAuthFlows => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has LastModifiedDate => (is => 'ro', isa => 'Str');
+  has LogoutURLs => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has ReadAttributes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has RefreshTokenValidity => (is => 'ro', isa => 'Int');
+  has SupportedIdentityProviders => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has UserPoolId => (is => 'ro', isa => 'Str');
   has WriteAttributes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 1;
@@ -29,20 +36,47 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CognitoIdp::UserPoolClientType object:
 
-  $service_obj->Method(Att1 => { ClientId => $value, ..., WriteAttributes => $value  });
+  $service_obj->Method(Att1 => { AllowedOAuthFlows => $value, ..., WriteAttributes => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::CognitoIdp::UserPoolClientType object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->ClientId
+  $result->Att1->AllowedOAuthFlows
 
 =head1 DESCRIPTION
 
 A user pool of the client type.
 
 =head1 ATTRIBUTES
+
+
+=head2 AllowedOAuthFlows => ArrayRef[Str|Undef]
+
+  Set to C<code> to initiate a code grant flow, which provides an
+authorization code as the response. This code can be exchanged for
+access tokens with the token endpoint.
+
+Set to C<token> to specify that the client should get the access token
+(and, optionally, ID token, based on scopes) directly.
+
+
+=head2 AllowedOAuthFlowsUserPoolClient => Bool
+
+  Set to TRUE if the client is allowed to follow the OAuth protocol when
+interacting with Cognito user pools.
+
+
+=head2 AllowedOAuthScopes => ArrayRef[Str|Undef]
+
+  A list of allowed C<OAuth> scopes. Currently supported values are
+C<"phone">, C<"email">, C<"openid">, and C<"Cognito">.
+
+
+=head2 CallbackURLs => ArrayRef[Str|Undef]
+
+  A list of allowed callback URLs for the identity providers.
 
 
 =head2 ClientId => Str
@@ -62,7 +96,12 @@ A user pool of the client type.
 
 =head2 CreationDate => Str
 
-  The creation date from the user pool request of the client type.
+  The date the user pool client was created.
+
+
+=head2 DefaultRedirectURI => Str
+
+  The default redirect URI. Must be in the C<CallbackURLs> list.
 
 
 =head2 ExplicitAuthFlows => ArrayRef[Str|Undef]
@@ -72,7 +111,12 @@ A user pool of the client type.
 
 =head2 LastModifiedDate => Str
 
-  The last modified date from the user pool request of the client type.
+  The date the user pool client was last modified.
+
+
+=head2 LogoutURLs => ArrayRef[Str|Undef]
+
+  A list ofallowed logout URLs for the identity providers.
 
 
 =head2 ReadAttributes => ArrayRef[Str|Undef]
@@ -82,7 +126,14 @@ A user pool of the client type.
 
 =head2 RefreshTokenValidity => Int
 
-  The validity of the refresh token, in days.
+  The time limit, in days, after which the refresh token is no longer
+valid and cannot be used.
+
+
+=head2 SupportedIdentityProviders => ArrayRef[Str|Undef]
+
+  A list of provider names for the identity providers that are supported
+on this client.
 
 
 =head2 UserPoolId => Str
