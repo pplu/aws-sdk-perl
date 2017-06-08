@@ -98,7 +98,8 @@ package Paws::API::Caller;
 
     $call_object = $call_object->meta->name;
 
-    my $ret_class = $call_object->_returns;
+    my $returns = (defined $call_object->_returns) && ($call_object->_returns ne 'Paws::API::Response');
+    my $ret_class = $returns ? $call_object->_returns : 'Paws::API::Response';
     Paws->load_class($ret_class);
  
     my $unserialized_struct;
@@ -134,7 +135,7 @@ package Paws::API::Caller;
 
     $unserialized_struct->{ _request_id } = $request_id;
       
-    if ($call_object->_returns ne 'Paws::API::Response'){
+    if ($returns){
       if ($ret_class->can('_stream_param')) {
         $unserialized_struct->{ $ret_class->_stream_param } = $content
       }
