@@ -50,7 +50,7 @@ package Paws::API::ServiceToClass;
     elasticmapreduce => 'EMR',
     emr => 'EMR',
     es => 'ES',
-    email => undef,
+    email => 'SES',
     events => 'CloudWatchEvents',
     firehose => 'Firehose',
     gamelift => 'GameLift',

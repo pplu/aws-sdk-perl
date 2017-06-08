@@ -7,6 +7,8 @@
    before they were calculated when the first method call to the service was made, so you got
    "no region" exceptions on the first call. Now the exceptions are thrown immediately.
  - Bug fixed: Throw exceptions on methods that don't return anything
+ - Bug fixed: Some global services (f.ex: Route53, CloudFront) where forcing the user to specify
+   a region. No need to pass region anymore) (Issue #113)
  - New API: MarketplaceEntitlement
  - New API: Athena
  - API update: AppStream
