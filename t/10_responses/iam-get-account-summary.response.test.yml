@@ -1,0 +1,4 @@
+---
+todo: test not completed
+call: GetAccountSummary
+service: IAM
