@@ -21,6 +21,12 @@ my $res = $svc->Login(
   SigninToken => 'SIGNINTOKEN',
 );
 
-cmp_ok($res->URL, 'eq', 'https://signin.aws.amazon.com/federation?Action=login&Destination=https%3A%2F%2Fconsole.aws.amazon.com%2F&Issuer=https%3A%3A%2F%2Fwww.example.com%2F&SigninToken=SIGNINTOKEN', 'Got correct signin URL');
+my $got_url = URI->new($res->URL);
+my $exp_url = URI->new('https://signin.aws.amazon.com/federation?Action=login&Destination=https%3A%2F%2Fconsole.aws.amazon.com%2F&Issuer=https%3A%3A%2F%2Fwww.example.com%2F&SigninToken=SIGNINTOKEN');
+
+cmp_ok($got_url->scheme, 'eq', $exp_url->scheme);
+cmp_ok($got_url->host, 'eq', $exp_url->host);
+cmp_ok($got_url->path, 'eq', $exp_url->path);
+is_deeply({ $got_url->query_form }, { $exp_url->query_form });
 
 done_testing;
