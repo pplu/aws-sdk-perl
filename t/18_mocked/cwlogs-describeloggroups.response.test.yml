@@ -1,0 +1,47 @@
+---
+tests:
+  - expected: 1497041461567
+    op: eq
+    path: LogGroups.1.CreationTime
+  - expected: 1490224390040
+    op: eq
+    path: LogGroups.0.CreationTime
+  - expected: 0
+    op: eq
+    path: LogGroups.0.MetricFilterCount
+  - expected: arn:aws:logs:eu-west-1:000000000000:log-group:test_log_group:*
+    op: eq
+    path: LogGroups.2.Arn
+  - expected: test_log_group
+    op: eq
+    path: LogGroups.2.LogGroupName
+  - expected: 0
+    op: eq
+    path: LogGroups.2.MetricFilterCount
+  - expected: 0
+    op: eq
+    path: LogGroups.2.StoredBytes
+  - expected: /aws/lambda/aws-nodejs-dev-hello
+    op: eq
+    path: LogGroups.0.LogGroupName
+  - expected: arn:aws:logs:eu-west-1:000000000000:log-group:LGNAME1:*
+    op: eq
+    path: LogGroups.1.Arn
+  - expected: 0
+    op: eq
+    path: LogGroups.1.MetricFilterCount
+  - expected: 1431545271411
+    op: eq
+    path: LogGroups.2.CreationTime
+  - expected: 734
+    op: eq
+    path: LogGroups.0.StoredBytes
+  - expected: LGNAME1
+    op: eq
+    path: LogGroups.1.LogGroupName
+  - expected: 0
+    op: eq
+    path: LogGroups.1.StoredBytes
+  - expected: arn:aws:logs:eu-west-1:000000000000:log-group:/aws/lambda/aws-nodejs-dev-hello:*
+    op: eq
+    path: LogGroups.0.Arn

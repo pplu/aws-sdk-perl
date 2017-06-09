@@ -52,15 +52,28 @@ sub test_file {
   SKIP: {
     local $TODO = "$test_def_file is TODO: " . $test->todo_reason if ($test->is_todo);
 
+    diag("Testing file $test_def_file");
+
     my $svc = $paws->service($service_name, region => 'dummy', caller => $caller);
 
     my $ret;
-    my $passed = lives_ok(sub {
+    eval {
       $ret = $svc->$method_call(%$method_params);
-    }, "Called $method_call on $service_name with params from $file");
-
-    if (not $passed) {
-      ok(0, "Can't test method access because something went horribly wrong in the call to $method_call");
+    };
+    my $passed;
+    if ($@) {
+      if ($test->exception) {
+        ok(1, 'Got an exception, and I was expecting it');
+        isa_ok($@, 'Paws::Exception');
+        $passed = 1;
+        $ret = $@;
+      } else {
+        ok(0, 'Got an unexpected exceptions');
+        $passed = 0;
+      }
+    }
+    if (not $passed and $test->exception) {
+      ok(@_->isa('Paws::Exception'), " $method_call");
       next;
     }
 

@@ -1,0 +1,5 @@
+---
+tests:
+  - expected: 49566437988839809929601761598978839836052888414064748450
+    op: eq
+    path: NextSequenceToken

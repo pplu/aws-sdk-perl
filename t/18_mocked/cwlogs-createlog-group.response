@@ -1,0 +1,1 @@
+{"response":{"content":"","headers":{"x-amzn-requestid":"000000000000000000000000000000000000","content-type":"application/x-amz-json-1.1","date":"Fri, 09 Jun 2017 20:51:01 GMT","content-length":"0"},"status":"200"},"request":{"call":"CreateLogGroup","service":"logs","params":{"LogGroupName":"LGNAME1"}}}
