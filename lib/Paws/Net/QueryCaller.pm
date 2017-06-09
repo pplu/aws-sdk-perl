@@ -8,11 +8,6 @@ package Paws::Net::QueryCaller;
     return ($self->flattened_arrays)?'%s.%d':'%s.member.%d';
   }
 
-  sub _is_internal_type {
-    my ($self, $att_type) = @_;
-    return ($att_type eq 'Str' or $att_type eq 'Str|Undef' or $att_type eq 'Int' or $att_type eq 'Bool' or $att_type eq 'Num');
-  }
-
   # converts the objects that represent the call into parameters that the API can understand
   sub _to_querycaller_params {
     my ($self, $params) = @_;

@@ -6,6 +6,7 @@ package Paws::Net::MockCaller;
   use JSON::MaybeXS;
   use Moose::Util::TypeConstraints;
   use Path::Tiny;
+  use Paws::Net::FileMockCaller;
 
   has real_caller => (
     is => 'ro', 
@@ -42,30 +43,31 @@ package Paws::Net::MockCaller;
 
   has _test_file => (is => 'rw', isa => 'Str');
 
+  has caller => (
+    is => 'ro',
+    lazy => 1,
+    default => sub {
+      my $self = shift;
+      Paws::Net::FileMockCaller->new(
+        real_caller => $self->real_caller,
+      );
+    }
+  );
+
+  has result_hook => (
+    is => 'ro',
+    isa => 'CodeRef',
+  );
+
   sub send_request {
     my ($self, $service, $call_object) = @_;
 
-    $self->_test_file(sprintf("%s/%04d.test", $self->mock_dir, $self->_request_num));
+    $self->_test_file(sprintf("%s/%04d.response", $self->mock_dir, $self->_request_num));
     $self->_next_request;
 
     if ($self->mock_mode eq 'REPLAY') {
-      #LOAD HTTP request from file
-      my $response = decode_json(read_text($self->_test_file));
-
-      my $actual_call = JSON::MaybeXS->new(canonical => 1)->encode($service->to_hash($call_object));
-      my $recorded_call = JSON::MaybeXS->new(canonical => 1)->encode($response->{request}{params});
-      if ($actual_call ne $recorded_call) {
-        warn "CALL: $actual_call";
-        warn "RECORDED: $recorded_call";
-
-        Paws::Exception->throw(
-          request_id => '',
-          code => 'ReplayInvalid',
-          message => 'The calling parameters and the parameters used to generate the call are not equal'
-        )
-      }
- 
-      return ($response->{response}{status}, $response->{response}{content}, $response->{response}{headers});
+      $self->caller->file($self->_test_file);
+      return $self->caller->send_request($service, $call_object);
     } elsif ($self->mock_mode eq 'RECORD') {
       return $self->real_caller->send_request($service, $call_object);
     } else {
@@ -103,9 +105,13 @@ package Paws::Net::MockCaller;
           status  => $status
         }
       }));
-    }
 
-    return $self->real_caller->caller_to_response($service, $call_object, $status, $content, $headers);   
+      my $result = $self->real_caller->caller_to_response($service, $call_object, $status, $content, $headers);   
+      $self->result_hook->($self, $result) if (defined $self->result_hook);
+      return $result;
+    } else {
+      return $self->real_caller->caller_to_response($service, $call_object, $status, $content, $headers);
+    }
   };
 
 1;

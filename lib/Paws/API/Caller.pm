@@ -59,6 +59,11 @@ package Paws::API::Caller;
     return $class->new(%p);
   }
 
+  sub _is_internal_type {
+    my ($self, $att_type) = @_;
+    return ($att_type eq 'Str' or $att_type eq 'Str|Undef' or $att_type eq 'Int' or $att_type eq 'Bool' or $att_type eq 'Num');
+  }
+
   sub to_hash {
     my ($self, $params) = @_;
     my $refHash = {};
