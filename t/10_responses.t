@@ -109,7 +109,7 @@ sub test_file {
       $res = $service->$call_method(%$call_object)
     } "Call " . $test->service . '->' . $test->method . " from $file";
 
-    if (not $passed) {
+    if (not $passed or $TODO) {
       ok(0, "Can't test method access because something went horribly wrong in the call to $call_method");
       next;
     }
