@@ -1,11 +1,17 @@
 #!/usr/bin/env perl
 
+use lib 't/lib';
+
 use Test::More;
 use Paws;
 use strict;
 use warnings;
 
-my $svc = Paws->service('Signin');
+my $paws = Paws->new(config => {
+  credentials => 'Test::CustomCredentials'
+});
+
+my $svc = $paws->service('Signin');
 
 # This method can't be tested with the MockCaller, as it really
 # doesn't do an HTTP call
