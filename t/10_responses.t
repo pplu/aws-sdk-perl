@@ -9,9 +9,10 @@ use v5.10;
 use Test::More;
 use Test::Exception;
 use FileCaller;
-use YAML qw/LoadFile/;
+use TestFromYaml;
 
 use Paws;
+use Paws::Crawler;
 
 my $debug = $ENV{DEBUG_TESTS} || 0;
 my $aws = Paws->new(config => { credentials => 'Test::CustomCredentials' });
@@ -85,47 +86,43 @@ sub get_stub_call_args {
 sub test_file {
   my ($file) = @_;
 
-  my $mode = 1;
   my $test_def_file = "$file.test.yml";
-
-  my $test = LoadFile($test_def_file);
+  my $test = TestFromYaml->new(file => $test_def_file);
 
   SKIP: {
-    skip "$test_def_file is lacking service or call entry",1 if (not $test->{service} or not $test->{call});
-    local $TODO = "$test_def_file is TODO: $test->{todo}" if (defined $test->{todo});
+    skip "$test_def_file is lacking service or call entry",1 if (not $test->service or not $test->method);
+    local $TODO = "$test_def_file is TODO: " . $test->todo_reason if ($test->is_todo);
 
-    my $service = $aws->service($test->{service},
+    my $service = $aws->service($test->service,
       region => 'fake_region',
       caller => FileCaller->new(
         response_file => $file,
       )
     );
 
-    my $call_method = $test->{ call };
+    my $call_method = $test->method;
     my $call_class = $service->meta->name . '::' . $call_method;
     my $call_object = get_stub_call_args($call_class);
 
     my $res;
     my $passed = lives_ok {
-      my $response = LoadFile($file);
-
       $res = $service->$call_method(%$call_object)
-    } "Call $test->{service}\-\>$test->{ call } from $file";
+    } "Call " . $test->service . '->' . $test->method . " from $file";
 
-    diag(Dumper($res)) if ($debug);
-
-    if (not $passed or $TODO) {
-      ok(0, "Can't test method access because something went horribly wrong in the call to $test->{ call }");
+    if (not $passed) {
+      ok(0, "Can't test method access because something went horribly wrong in the call to $call_method");
       next;
     }
 
-    next if (ref($test->{ tests }) ne 'ARRAY');
-    foreach my $t (@{ $test->{ tests } }){
+    next if (not $test->has_tests);
+
+    my $crawler = Paws::Crawler->new;
+    foreach my $t (@{ $test->tests }){
       my $got;
       my $path;
       if (defined $t->{path}){
         $path = $t->{path};
-        $got = eval { resolve_path($t->{path}, $res) };
+        $got = eval { $crawler->resolve_path($t->{path}, $res) };
         if ($@) {
           my $message = $@;
           chomp $message;
@@ -144,29 +141,3 @@ sub test_file {
   }
 }
 
-use Scalar::Util 'blessed';
-
-sub resolve_path {
-  my ($path, $res) = @_;
-
-  my ($call, $rest);
-  if ($path =~ m/^\{(.*?)\}(?:\.(.*))?$/) {
-    ($call, $rest) = ($1, $2);
-  } elsif ($path =~ m/^([^.]+?)(?:\.(.*))?$/) {
-    ($call, $rest) = ($1, $2);
-  }
-
-  if ($call =~ m/^\d+$/){
-    $res = $res->[$call];
-  } elsif (blessed($res)) {
-    $res = $res->$call;
-  } else {
-    $res = $res->{$call};
-  }
-
-  if (not defined $rest) {
-    return $res;
-  } else {
-    return resolve_path($rest, $res);
-  }
-}
