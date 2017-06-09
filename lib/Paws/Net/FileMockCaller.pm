@@ -8,7 +8,7 @@ package Paws::Net::FileMockCaller;
   use Moose::Util::TypeConstraints;
   use Path::Tiny;
 
-  has file => (is => 'rw', isa => 'Str', required => 1, trigger => \&_set_file);
+  has file => (is => 'rw', isa => 'Str', trigger => \&_set_file);
 
   has real_caller => (
     is => 'ro',
