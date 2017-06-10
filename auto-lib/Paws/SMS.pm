@@ -75,11 +75,12 @@ package Paws::SMS;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->GetConnectors(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->nextToken) {
+      while ($next_result->nextToken) {
         $result = $self->GetConnectors(@_, nextToken => $result->nextToken);
-        push @{ $result->connectorList }, @{ $result->connectorList };
+        push @{ $result->connectorList }, @{ $next_result->connectorList };
       }
       return $result;
     } else {
@@ -96,11 +97,12 @@ package Paws::SMS;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->GetReplicationJobs(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->nextToken) {
+      while ($next_result->nextToken) {
         $result = $self->GetReplicationJobs(@_, nextToken => $result->nextToken);
-        push @{ $result->replicationJobList }, @{ $result->replicationJobList };
+        push @{ $result->replicationJobList }, @{ $next_result->replicationJobList };
       }
       return $result;
     } else {
@@ -117,11 +119,12 @@ package Paws::SMS;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->GetReplicationRuns(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->nextToken) {
+      while ($next_result->nextToken) {
         $result = $self->GetReplicationRuns(@_, nextToken => $result->nextToken);
-        push @{ $result->replicationRunList }, @{ $result->replicationRunList };
+        push @{ $result->replicationRunList }, @{ $next_result->replicationRunList };
       }
       return $result;
     } else {
@@ -138,11 +141,12 @@ package Paws::SMS;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->GetServers(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->nextToken) {
+      while ($next_result->nextToken) {
         $result = $self->GetServers(@_, nextToken => $result->nextToken);
-        push @{ $result->serverList }, @{ $result->serverList };
+        push @{ $result->serverList }, @{ $next_result->serverList };
       }
       return $result;
     } else {

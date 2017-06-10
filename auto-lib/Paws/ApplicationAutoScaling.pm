@@ -55,11 +55,12 @@ package Paws::ApplicationAutoScaling;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeScalableTargets(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->NextToken) {
+      while ($next_result->NextToken) {
         $result = $self->DescribeScalableTargets(@_, NextToken => $result->NextToken);
-        push @{ $result->ScalableTargets }, @{ $result->ScalableTargets };
+        push @{ $result->ScalableTargets }, @{ $next_result->ScalableTargets };
       }
       return $result;
     } else {
@@ -76,11 +77,12 @@ package Paws::ApplicationAutoScaling;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeScalingActivities(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->NextToken) {
+      while ($next_result->NextToken) {
         $result = $self->DescribeScalingActivities(@_, NextToken => $result->NextToken);
-        push @{ $result->ScalingActivities }, @{ $result->ScalingActivities };
+        push @{ $result->ScalingActivities }, @{ $next_result->ScalingActivities };
       }
       return $result;
     } else {
@@ -97,11 +99,12 @@ package Paws::ApplicationAutoScaling;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeScalingPolicies(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->NextToken) {
+      while ($next_result->NextToken) {
         $result = $self->DescribeScalingPolicies(@_, NextToken => $result->NextToken);
-        push @{ $result->ScalingPolicies }, @{ $result->ScalingPolicies };
+        push @{ $result->ScalingPolicies }, @{ $next_result->ScalingPolicies };
       }
       return $result;
     } else {

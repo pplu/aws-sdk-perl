@@ -195,11 +195,12 @@ package Paws::KMS;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListAliases(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->Truncated) {
-        $result = $self->ListAliases(@_, Marker => $result->NextMarker);
-        push @{ $result->Aliases }, @{ $result->Aliases };
+      while ($next_result->Truncated) {
+        $next_result = $self->ListAliases(@_, Marker => $result->NextMarker);
+        push @{ $result->Aliases }, @{ $next_result->Aliases };
       }
       return $result;
     } else {
@@ -216,11 +217,12 @@ package Paws::KMS;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListGrants(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->Truncated) {
-        $result = $self->ListGrants(@_, Marker => $result->NextMarker);
-        push @{ $result->Grants }, @{ $result->Grants };
+      while ($next_result->Truncated) {
+        $next_result = $self->ListGrants(@_, Marker => $result->NextMarker);
+        push @{ $result->Grants }, @{ $next_result->Grants };
       }
       return $result;
     } else {
@@ -237,11 +239,12 @@ package Paws::KMS;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListKeyPolicies(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->Truncated) {
-        $result = $self->ListKeyPolicies(@_, Marker => $result->NextMarker);
-        push @{ $result->PolicyNames }, @{ $result->PolicyNames };
+      while ($next_result->Truncated) {
+        $next_result = $self->ListKeyPolicies(@_, Marker => $result->NextMarker);
+        push @{ $result->PolicyNames }, @{ $next_result->PolicyNames };
       }
       return $result;
     } else {
@@ -258,11 +261,12 @@ package Paws::KMS;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListKeys(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->Truncated) {
-        $result = $self->ListKeys(@_, Marker => $result->NextMarker);
-        push @{ $result->Keys }, @{ $result->Keys };
+      while ($next_result->Truncated) {
+        $next_result = $self->ListKeys(@_, Marker => $result->NextMarker);
+        push @{ $result->Keys }, @{ $next_result->Keys };
       }
       return $result;
     } else {

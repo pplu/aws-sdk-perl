@@ -90,11 +90,12 @@ package Paws::CloudTrail;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->LookupEvents(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->NextToken) {
+      while ($next_result->NextToken) {
         $result = $self->LookupEvents(@_, NextToken => $result->NextToken);
-        push @{ $result->Events }, @{ $result->Events };
+        push @{ $result->Events }, @{ $next_result->Events };
       }
       return $result;
     } else {

@@ -184,11 +184,12 @@ package Paws::Glacier;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListJobs(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->marker) {
+      while ($next_result->marker) {
         $result = $self->ListJobs(@_, marker => $result->Marker);
-        push @{ $result->JobList }, @{ $result->JobList };
+        push @{ $result->JobList }, @{ $next_result->JobList };
       }
       return $result;
     } else {
@@ -205,11 +206,12 @@ package Paws::Glacier;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListMultipartUploads(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->marker) {
+      while ($next_result->marker) {
         $result = $self->ListMultipartUploads(@_, marker => $result->Marker);
-        push @{ $result->UploadsList }, @{ $result->UploadsList };
+        push @{ $result->UploadsList }, @{ $next_result->UploadsList };
       }
       return $result;
     } else {
@@ -226,11 +228,12 @@ package Paws::Glacier;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListParts(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->marker) {
+      while ($next_result->marker) {
         $result = $self->ListParts(@_, marker => $result->Marker);
-        push @{ $result->Parts }, @{ $result->Parts };
+        push @{ $result->Parts }, @{ $next_result->Parts };
       }
       return $result;
     } else {
@@ -247,11 +250,12 @@ package Paws::Glacier;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListVaults(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->marker) {
+      while ($next_result->marker) {
         $result = $self->ListVaults(@_, marker => $result->Marker);
-        push @{ $result->VaultList }, @{ $result->VaultList };
+        push @{ $result->VaultList }, @{ $next_result->VaultList };
       }
       return $result;
     } else {

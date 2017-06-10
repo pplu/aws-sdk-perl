@@ -265,12 +265,13 @@ package Paws::DeviceFarm;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->GetOfferingStatus(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->nextToken) {
+      while ($next_result->nextToken) {
         $result = $self->GetOfferingStatus(@_, nextToken => $result->nextToken);
-        push @{ $result->current }, @{ $result->current };
-        push @{ $result->nextPeriod }, @{ $result->nextPeriod };
+        push @{ $result->current }, @{ $next_result->current };
+        push @{ $result->nextPeriod }, @{ $next_result->nextPeriod };
       }
       return $result;
     } else {
@@ -288,11 +289,12 @@ package Paws::DeviceFarm;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListArtifacts(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->nextToken) {
+      while ($next_result->nextToken) {
         $result = $self->ListArtifacts(@_, nextToken => $result->nextToken);
-        push @{ $result->artifacts }, @{ $result->artifacts };
+        push @{ $result->artifacts }, @{ $next_result->artifacts };
       }
       return $result;
     } else {
@@ -309,11 +311,12 @@ package Paws::DeviceFarm;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListDevicePools(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->nextToken) {
+      while ($next_result->nextToken) {
         $result = $self->ListDevicePools(@_, nextToken => $result->nextToken);
-        push @{ $result->devicePools }, @{ $result->devicePools };
+        push @{ $result->devicePools }, @{ $next_result->devicePools };
       }
       return $result;
     } else {
@@ -330,11 +333,12 @@ package Paws::DeviceFarm;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListDevices(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->nextToken) {
+      while ($next_result->nextToken) {
         $result = $self->ListDevices(@_, nextToken => $result->nextToken);
-        push @{ $result->devices }, @{ $result->devices };
+        push @{ $result->devices }, @{ $next_result->devices };
       }
       return $result;
     } else {
@@ -351,11 +355,12 @@ package Paws::DeviceFarm;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListJobs(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->nextToken) {
+      while ($next_result->nextToken) {
         $result = $self->ListJobs(@_, nextToken => $result->nextToken);
-        push @{ $result->jobs }, @{ $result->jobs };
+        push @{ $result->jobs }, @{ $next_result->jobs };
       }
       return $result;
     } else {
@@ -372,11 +377,12 @@ package Paws::DeviceFarm;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListOfferings(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->nextToken) {
+      while ($next_result->nextToken) {
         $result = $self->ListOfferings(@_, nextToken => $result->nextToken);
-        push @{ $result->offerings }, @{ $result->offerings };
+        push @{ $result->offerings }, @{ $next_result->offerings };
       }
       return $result;
     } else {
@@ -393,11 +399,12 @@ package Paws::DeviceFarm;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListOfferingTransactions(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->nextToken) {
+      while ($next_result->nextToken) {
         $result = $self->ListOfferingTransactions(@_, nextToken => $result->nextToken);
-        push @{ $result->offeringTransactions }, @{ $result->offeringTransactions };
+        push @{ $result->offeringTransactions }, @{ $next_result->offeringTransactions };
       }
       return $result;
     } else {
@@ -414,11 +421,12 @@ package Paws::DeviceFarm;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListProjects(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->nextToken) {
+      while ($next_result->nextToken) {
         $result = $self->ListProjects(@_, nextToken => $result->nextToken);
-        push @{ $result->projects }, @{ $result->projects };
+        push @{ $result->projects }, @{ $next_result->projects };
       }
       return $result;
     } else {
@@ -435,11 +443,12 @@ package Paws::DeviceFarm;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListRuns(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->nextToken) {
+      while ($next_result->nextToken) {
         $result = $self->ListRuns(@_, nextToken => $result->nextToken);
-        push @{ $result->runs }, @{ $result->runs };
+        push @{ $result->runs }, @{ $next_result->runs };
       }
       return $result;
     } else {
@@ -456,11 +465,12 @@ package Paws::DeviceFarm;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListSamples(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->nextToken) {
+      while ($next_result->nextToken) {
         $result = $self->ListSamples(@_, nextToken => $result->nextToken);
-        push @{ $result->samples }, @{ $result->samples };
+        push @{ $result->samples }, @{ $next_result->samples };
       }
       return $result;
     } else {
@@ -477,11 +487,12 @@ package Paws::DeviceFarm;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListSuites(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->nextToken) {
+      while ($next_result->nextToken) {
         $result = $self->ListSuites(@_, nextToken => $result->nextToken);
-        push @{ $result->suites }, @{ $result->suites };
+        push @{ $result->suites }, @{ $next_result->suites };
       }
       return $result;
     } else {
@@ -498,11 +509,12 @@ package Paws::DeviceFarm;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListTests(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->nextToken) {
+      while ($next_result->nextToken) {
         $result = $self->ListTests(@_, nextToken => $result->nextToken);
-        push @{ $result->tests }, @{ $result->tests };
+        push @{ $result->tests }, @{ $next_result->tests };
       }
       return $result;
     } else {
@@ -519,11 +531,12 @@ package Paws::DeviceFarm;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListUniqueProblems(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->nextToken) {
+      while ($next_result->nextToken) {
         $result = $self->ListUniqueProblems(@_, nextToken => $result->nextToken);
-        push @{ $result->uniqueProblems }, @{ $result->uniqueProblems };
+        push @{ $result->uniqueProblems }, @{ $next_result->uniqueProblems };
       }
       return $result;
     } else {
@@ -540,11 +553,12 @@ package Paws::DeviceFarm;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListUploads(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->nextToken) {
+      while ($next_result->nextToken) {
         $result = $self->ListUploads(@_, nextToken => $result->nextToken);
-        push @{ $result->uploads }, @{ $result->uploads };
+        push @{ $result->uploads }, @{ $next_result->uploads };
       }
       return $result;
     } else {

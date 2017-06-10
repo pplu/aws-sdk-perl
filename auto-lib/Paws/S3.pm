@@ -465,12 +465,13 @@ package Paws::S3;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListMultipartUploads(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->IsTruncated) {
-        $result = $self->ListMultipartUploads(@_, KeyMarker => $result->NextKeyMarker, UploadIdMarker => $result->NextUploadIdMarker);
-        push @{ $result->Uploads }, @{ $result->Uploads };
-        push @{ $result->CommonPrefixes }, @{ $result->CommonPrefixes };
+      while ($next_result->IsTruncated) {
+        $next_result = $self->ListMultipartUploads(@_, KeyMarker => $result->NextKeyMarker, UploadIdMarker => $result->NextUploadIdMarker);
+        push @{ $result->Uploads }, @{ $next_result->Uploads };
+        push @{ $result->CommonPrefixes }, @{ $next_result->CommonPrefixes };
       }
       return $result;
     } else {
@@ -488,12 +489,13 @@ package Paws::S3;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListObjects(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->IsTruncated) {
-        $result = $self->ListObjects(@_, Marker => $result->NextMarker || ( (defined $result->Contents->[-1]) ? $result->Contents->[-1]->Key : undef ));
-        push @{ $result->Contents }, @{ $result->Contents };
-        push @{ $result->CommonPrefixes }, @{ $result->CommonPrefixes };
+      while ($next_result->IsTruncated) {
+        $next_result = $self->ListObjects(@_, Marker => $result->NextMarker || ( (defined $result->Contents->[-1]) ? $result->Contents->[-1]->Key : undef ));
+        push @{ $result->Contents }, @{ $next_result->Contents };
+        push @{ $result->CommonPrefixes }, @{ $next_result->CommonPrefixes };
       }
       return $result;
     } else {
@@ -511,12 +513,13 @@ package Paws::S3;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListObjectsV2(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->IsTruncated) {
-        $result = $self->ListObjectsV2(@_, ContinuationToken => $result->NextContinuationToken);
-        push @{ $result->Contents }, @{ $result->Contents };
-        push @{ $result->CommonPrefixes }, @{ $result->CommonPrefixes };
+      while ($next_result->IsTruncated) {
+        $next_result = $self->ListObjectsV2(@_, ContinuationToken => $result->NextContinuationToken);
+        push @{ $result->Contents }, @{ $next_result->Contents };
+        push @{ $result->CommonPrefixes }, @{ $next_result->CommonPrefixes };
       }
       return $result;
     } else {
@@ -534,13 +537,14 @@ package Paws::S3;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListObjectVersions(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->IsTruncated) {
-        $result = $self->ListObjectVersions(@_, KeyMarker => $result->NextKeyMarker, VersionIdMarker => $result->NextVersionIdMarker);
-        push @{ $result->Versions }, @{ $result->Versions };
-        push @{ $result->DeleteMarkers }, @{ $result->DeleteMarkers };
-        push @{ $result->CommonPrefixes }, @{ $result->CommonPrefixes };
+      while ($next_result->IsTruncated) {
+        $next_result = $self->ListObjectVersions(@_, KeyMarker => $result->NextKeyMarker, VersionIdMarker => $result->NextVersionIdMarker);
+        push @{ $result->Versions }, @{ $next_result->Versions };
+        push @{ $result->DeleteMarkers }, @{ $next_result->DeleteMarkers };
+        push @{ $result->CommonPrefixes }, @{ $next_result->CommonPrefixes };
       }
       return $result;
     } else {
@@ -559,11 +563,12 @@ package Paws::S3;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListParts(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->IsTruncated) {
-        $result = $self->ListParts(@_, PartNumberMarker => $result->NextPartNumberMarker);
-        push @{ $result->Parts }, @{ $result->Parts };
+      while ($next_result->IsTruncated) {
+        $next_result = $self->ListParts(@_, PartNumberMarker => $result->NextPartNumberMarker);
+        push @{ $result->Parts }, @{ $next_result->Parts };
       }
       return $result;
     } else {

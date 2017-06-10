@@ -90,11 +90,12 @@ package Paws::Support;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeCases(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->nextToken) {
+      while ($next_result->nextToken) {
         $result = $self->DescribeCases(@_, nextToken => $result->nextToken);
-        push @{ $result->cases }, @{ $result->cases };
+        push @{ $result->cases }, @{ $next_result->cases };
       }
       return $result;
     } else {
@@ -111,11 +112,12 @@ package Paws::Support;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeCommunications(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->nextToken) {
+      while ($next_result->nextToken) {
         $result = $self->DescribeCommunications(@_, nextToken => $result->nextToken);
-        push @{ $result->communications }, @{ $result->communications };
+        push @{ $result->communications }, @{ $next_result->communications };
       }
       return $result;
     } else {

@@ -164,11 +164,12 @@ package Paws::ELB;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeLoadBalancers(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->Marker) {
+      while ($next_result->Marker) {
         $result = $self->DescribeLoadBalancers(@_, Marker => $result->NextMarker);
-        push @{ $result->LoadBalancerDescriptions }, @{ $result->LoadBalancerDescriptions };
+        push @{ $result->LoadBalancerDescriptions }, @{ $next_result->LoadBalancerDescriptions };
       }
       return $result;
     } else {

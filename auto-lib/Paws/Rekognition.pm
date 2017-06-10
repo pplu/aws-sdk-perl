@@ -80,11 +80,12 @@ package Paws::Rekognition;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListCollections(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->NextToken) {
+      while ($next_result->NextToken) {
         $result = $self->ListCollections(@_, NextToken => $result->NextToken);
-        push @{ $result->CollectionIds }, @{ $result->CollectionIds };
+        push @{ $result->CollectionIds }, @{ $next_result->CollectionIds };
       }
       return $result;
     } else {
@@ -101,11 +102,12 @@ package Paws::Rekognition;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListFaces(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->NextToken) {
+      while ($next_result->NextToken) {
         $result = $self->ListFaces(@_, NextToken => $result->NextToken);
-        push @{ $result->Faces }, @{ $result->Faces };
+        push @{ $result->Faces }, @{ $next_result->Faces };
       }
       return $result;
     } else {

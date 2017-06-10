@@ -105,11 +105,12 @@ package Paws::CodeCommit;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListBranches(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->nextToken) {
+      while ($next_result->nextToken) {
         $result = $self->ListBranches(@_, nextToken => $result->nextToken);
-        push @{ $result->branches }, @{ $result->branches };
+        push @{ $result->branches }, @{ $next_result->branches };
       }
       return $result;
     } else {
@@ -126,11 +127,12 @@ package Paws::CodeCommit;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListRepositories(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->nextToken) {
+      while ($next_result->nextToken) {
         $result = $self->ListRepositories(@_, nextToken => $result->nextToken);
-        push @{ $result->repositories }, @{ $result->repositories };
+        push @{ $result->repositories }, @{ $next_result->repositories };
       }
       return $result;
     } else {

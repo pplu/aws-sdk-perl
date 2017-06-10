@@ -203,11 +203,12 @@ package Paws::EMR;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListBootstrapActions(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->Marker) {
+      while ($next_result->Marker) {
         $result = $self->ListBootstrapActions(@_, Marker => $result->Marker);
-        push @{ $result->BootstrapActions }, @{ $result->BootstrapActions };
+        push @{ $result->BootstrapActions }, @{ $next_result->BootstrapActions };
       }
       return $result;
     } else {
@@ -224,11 +225,12 @@ package Paws::EMR;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListClusters(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->Marker) {
+      while ($next_result->Marker) {
         $result = $self->ListClusters(@_, Marker => $result->Marker);
-        push @{ $result->Clusters }, @{ $result->Clusters };
+        push @{ $result->Clusters }, @{ $next_result->Clusters };
       }
       return $result;
     } else {
@@ -245,11 +247,12 @@ package Paws::EMR;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListInstanceFleets(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->Marker) {
+      while ($next_result->Marker) {
         $result = $self->ListInstanceFleets(@_, Marker => $result->Marker);
-        push @{ $result->InstanceFleets }, @{ $result->InstanceFleets };
+        push @{ $result->InstanceFleets }, @{ $next_result->InstanceFleets };
       }
       return $result;
     } else {
@@ -266,11 +269,12 @@ package Paws::EMR;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListInstanceGroups(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->Marker) {
+      while ($next_result->Marker) {
         $result = $self->ListInstanceGroups(@_, Marker => $result->Marker);
-        push @{ $result->InstanceGroups }, @{ $result->InstanceGroups };
+        push @{ $result->InstanceGroups }, @{ $next_result->InstanceGroups };
       }
       return $result;
     } else {
@@ -287,11 +291,12 @@ package Paws::EMR;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListInstances(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->Marker) {
+      while ($next_result->Marker) {
         $result = $self->ListInstances(@_, Marker => $result->Marker);
-        push @{ $result->Instances }, @{ $result->Instances };
+        push @{ $result->Instances }, @{ $next_result->Instances };
       }
       return $result;
     } else {
@@ -308,11 +313,12 @@ package Paws::EMR;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListSteps(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->Marker) {
+      while ($next_result->Marker) {
         $result = $self->ListSteps(@_, Marker => $result->Marker);
-        push @{ $result->Steps }, @{ $result->Steps };
+        push @{ $result->Steps }, @{ $next_result->Steps };
       }
       return $result;
     } else {

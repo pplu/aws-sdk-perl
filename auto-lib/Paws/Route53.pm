@@ -290,11 +290,12 @@ package Paws::Route53;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListHealthChecks(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->IsTruncated) {
-        $result = $self->ListHealthChecks(@_, Marker => $result->NextMarker);
-        push @{ $result->HealthChecks }, @{ $result->HealthChecks };
+      while ($next_result->IsTruncated) {
+        $next_result = $self->ListHealthChecks(@_, Marker => $result->NextMarker);
+        push @{ $result->HealthChecks }, @{ $next_result->HealthChecks };
       }
       return $result;
     } else {
@@ -311,11 +312,12 @@ package Paws::Route53;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListHostedZones(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->IsTruncated) {
-        $result = $self->ListHostedZones(@_, Marker => $result->NextMarker);
-        push @{ $result->HostedZones }, @{ $result->HostedZones };
+      while ($next_result->IsTruncated) {
+        $next_result = $self->ListHostedZones(@_, Marker => $result->NextMarker);
+        push @{ $result->HostedZones }, @{ $next_result->HostedZones };
       }
       return $result;
     } else {
@@ -332,11 +334,12 @@ package Paws::Route53;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListResourceRecordSets(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->IsTruncated) {
-        $result = $self->ListResourceRecordSets(@_, StartRecordName => $result->NextRecordName, StartRecordType => $result->NextRecordType, StartRecordIdentifier => $result->NextRecordIdentifier);
-        push @{ $result->ResourceRecordSets }, @{ $result->ResourceRecordSets };
+      while ($next_result->IsTruncated) {
+        $next_result = $self->ListResourceRecordSets(@_, StartRecordName => $result->NextRecordName, StartRecordType => $result->NextRecordType, StartRecordIdentifier => $result->NextRecordIdentifier);
+        push @{ $result->ResourceRecordSets }, @{ $next_result->ResourceRecordSets };
       }
       return $result;
     } else {

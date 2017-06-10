@@ -160,11 +160,12 @@ package Paws::MachineLearning;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeBatchPredictions(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->NextToken) {
+      while ($next_result->NextToken) {
         $result = $self->DescribeBatchPredictions(@_, NextToken => $result->NextToken);
-        push @{ $result->Results }, @{ $result->Results };
+        push @{ $result->Results }, @{ $next_result->Results };
       }
       return $result;
     } else {
@@ -181,11 +182,12 @@ package Paws::MachineLearning;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeDataSources(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->NextToken) {
+      while ($next_result->NextToken) {
         $result = $self->DescribeDataSources(@_, NextToken => $result->NextToken);
-        push @{ $result->Results }, @{ $result->Results };
+        push @{ $result->Results }, @{ $next_result->Results };
       }
       return $result;
     } else {
@@ -202,11 +204,12 @@ package Paws::MachineLearning;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeEvaluations(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->NextToken) {
+      while ($next_result->NextToken) {
         $result = $self->DescribeEvaluations(@_, NextToken => $result->NextToken);
-        push @{ $result->Results }, @{ $result->Results };
+        push @{ $result->Results }, @{ $next_result->Results };
       }
       return $result;
     } else {
@@ -223,11 +226,12 @@ package Paws::MachineLearning;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeMLModels(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->NextToken) {
+      while ($next_result->NextToken) {
         $result = $self->DescribeMLModels(@_, NextToken => $result->NextToken);
-        push @{ $result->Results }, @{ $result->Results };
+        push @{ $result->Results }, @{ $next_result->Results };
       }
       return $result;
     } else {

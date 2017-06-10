@@ -199,11 +199,12 @@ package Paws::WorkDocs;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeDocumentVersions(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->Marker) {
+      while ($next_result->Marker) {
         $result = $self->DescribeDocumentVersions(@_, Marker => $result->Marker);
-        push @{ $result->DocumentVersions }, @{ $result->DocumentVersions };
+        push @{ $result->DocumentVersions }, @{ $next_result->DocumentVersions };
       }
       return $result;
     } else {
@@ -220,12 +221,13 @@ package Paws::WorkDocs;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeFolderContents(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->Marker) {
+      while ($next_result->Marker) {
         $result = $self->DescribeFolderContents(@_, Marker => $result->Marker);
-        push @{ $result->Folders }, @{ $result->Folders };
-        push @{ $result->Documents }, @{ $result->Documents };
+        push @{ $result->Folders }, @{ $next_result->Folders };
+        push @{ $result->Documents }, @{ $next_result->Documents };
       }
       return $result;
     } else {
@@ -243,11 +245,12 @@ package Paws::WorkDocs;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeUsers(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->Marker) {
+      while ($next_result->Marker) {
         $result = $self->DescribeUsers(@_, Marker => $result->Marker);
-        push @{ $result->Users }, @{ $result->Users };
+        push @{ $result->Users }, @{ $next_result->Users };
       }
       return $result;
     } else {

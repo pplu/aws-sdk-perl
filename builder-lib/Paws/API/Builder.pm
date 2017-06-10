@@ -975,8 +975,9 @@ package [% inner_class %];
 #);
 
   sub paginator_accessor {
-    my ($self, $accessor) = @_;
-   
+    my ($self, $accessor, $wanted_prefix) = @_;
+  
+    my $prefix = '$' . ((defined $wanted_prefix) ? $wanted_prefix : 'result');
     if (ref($accessor) eq 'ARRAY'){
       warn "Complex accessor ", join ',', @$accessor;
     }
@@ -992,7 +993,7 @@ package [% inner_class %];
     $accessor =~ s|(\w+)([.*?])|$1->$2|g;
     $accessor =~ s|(\w+)\[|$1\-\>\[|g;
 
-    $accessor = "\$result->$accessor";
+    $accessor = "${prefix}->${accessor}";
     return $accessor;
   }
   sub paginator_result_key {
@@ -1078,20 +1079,21 @@ If not, it will return a [% out_shape = c.shapename_for_operation_output(op_name
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->[% op %](@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
       [%- IF (paginator.more_results.defined) %]
-      while ([% c.paginator_accessor(paginator.more_results) %]) {
-        $result = $self->[% op %](@_, [% c.paginator_pass_params(paginator) %]);
+      while ([% c.paginator_accessor(paginator.more_results, 'next_result') %]) {
+        $next_result = $self->[% op %](@_, [% c.paginator_pass_params(paginator) %]);
         [%- FOREACH param = c.paginator_result_key(paginator) %]
-        push @{ [% c.paginator_accessor(param) %] }, @{ [% c.paginator_accessor(param) %] };
+        push @{ [% c.paginator_accessor(param) %] }, @{ [% c.paginator_accessor(param, 'next_result') %] };
         [%- END %]
       }
       [%- ELSE %]
-      while ([% c.paginator_accessor(paginator.input_token) %]) {
+      while ([% c.paginator_accessor(paginator.input_token, 'next_result') %]) {
         $result = $self->[% op %](@_, [% c.paginator_pass_params(paginator) %]);
         [%- FOREACH param = c.paginator_result_key(paginator) %]
-        push @{ [% c.paginator_accessor(param) %] }, @{ [% c.paginator_accessor(param) %] };
+        push @{ [% c.paginator_accessor(param) %] }, @{ [% c.paginator_accessor(param, 'next_result') %] };
         [%- END %]
       }
       [%- END %]

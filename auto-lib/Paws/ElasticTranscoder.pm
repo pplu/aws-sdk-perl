@@ -104,11 +104,12 @@ package Paws::ElasticTranscoder;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListJobsByPipeline(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->PageToken) {
+      while ($next_result->PageToken) {
         $result = $self->ListJobsByPipeline(@_, PageToken => $result->NextPageToken);
-        push @{ $result->Jobs }, @{ $result->Jobs };
+        push @{ $result->Jobs }, @{ $next_result->Jobs };
       }
       return $result;
     } else {
@@ -125,11 +126,12 @@ package Paws::ElasticTranscoder;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListJobsByStatus(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->PageToken) {
+      while ($next_result->PageToken) {
         $result = $self->ListJobsByStatus(@_, PageToken => $result->NextPageToken);
-        push @{ $result->Jobs }, @{ $result->Jobs };
+        push @{ $result->Jobs }, @{ $next_result->Jobs };
       }
       return $result;
     } else {
@@ -146,11 +148,12 @@ package Paws::ElasticTranscoder;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListPipelines(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->PageToken) {
+      while ($next_result->PageToken) {
         $result = $self->ListPipelines(@_, PageToken => $result->NextPageToken);
-        push @{ $result->Pipelines }, @{ $result->Pipelines };
+        push @{ $result->Pipelines }, @{ $next_result->Pipelines };
       }
       return $result;
     } else {
@@ -167,11 +170,12 @@ package Paws::ElasticTranscoder;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListPresets(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->PageToken) {
+      while ($next_result->PageToken) {
         $result = $self->ListPresets(@_, PageToken => $result->NextPageToken);
-        push @{ $result->Presets }, @{ $result->Presets };
+        push @{ $result->Presets }, @{ $next_result->Presets };
       }
       return $result;
     } else {

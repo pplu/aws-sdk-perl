@@ -105,11 +105,12 @@ package Paws::StepFunctions;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->GetExecutionHistory(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->nextToken) {
+      while ($next_result->nextToken) {
         $result = $self->GetExecutionHistory(@_, nextToken => $result->nextToken);
-        push @{ $result->events }, @{ $result->events };
+        push @{ $result->events }, @{ $next_result->events };
       }
       return $result;
     } else {
@@ -126,11 +127,12 @@ package Paws::StepFunctions;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListActivities(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->nextToken) {
+      while ($next_result->nextToken) {
         $result = $self->ListActivities(@_, nextToken => $result->nextToken);
-        push @{ $result->activities }, @{ $result->activities };
+        push @{ $result->activities }, @{ $next_result->activities };
       }
       return $result;
     } else {
@@ -147,11 +149,12 @@ package Paws::StepFunctions;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListExecutions(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->nextToken) {
+      while ($next_result->nextToken) {
         $result = $self->ListExecutions(@_, nextToken => $result->nextToken);
-        push @{ $result->executions }, @{ $result->executions };
+        push @{ $result->executions }, @{ $next_result->executions };
       }
       return $result;
     } else {
@@ -168,11 +171,12 @@ package Paws::StepFunctions;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListStateMachines(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->nextToken) {
+      while ($next_result->nextToken) {
         $result = $self->ListStateMachines(@_, nextToken => $result->nextToken);
-        push @{ $result->stateMachines }, @{ $result->stateMachines };
+        push @{ $result->stateMachines }, @{ $next_result->stateMachines };
       }
       return $result;
     } else {

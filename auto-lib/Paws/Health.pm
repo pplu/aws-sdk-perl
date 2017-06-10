@@ -50,11 +50,12 @@ package Paws::Health;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeAffectedEntities(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->nextToken) {
+      while ($next_result->nextToken) {
         $result = $self->DescribeAffectedEntities(@_, nextToken => $result->nextToken);
-        push @{ $result->entities }, @{ $result->entities };
+        push @{ $result->entities }, @{ $next_result->entities };
       }
       return $result;
     } else {
@@ -71,11 +72,12 @@ package Paws::Health;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeEventAggregates(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->nextToken) {
+      while ($next_result->nextToken) {
         $result = $self->DescribeEventAggregates(@_, nextToken => $result->nextToken);
-        push @{ $result->eventAggregates }, @{ $result->eventAggregates };
+        push @{ $result->eventAggregates }, @{ $next_result->eventAggregates };
       }
       return $result;
     } else {
@@ -92,11 +94,12 @@ package Paws::Health;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeEvents(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->nextToken) {
+      while ($next_result->nextToken) {
         $result = $self->DescribeEvents(@_, nextToken => $result->nextToken);
-        push @{ $result->events }, @{ $result->events };
+        push @{ $result->events }, @{ $next_result->events };
       }
       return $result;
     } else {
@@ -113,11 +116,12 @@ package Paws::Health;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeEventTypes(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->nextToken) {
+      while ($next_result->nextToken) {
         $result = $self->DescribeEventTypes(@_, nextToken => $result->nextToken);
-        push @{ $result->eventTypes }, @{ $result->eventTypes };
+        push @{ $result->eventTypes }, @{ $next_result->eventTypes };
       }
       return $result;
     } else {

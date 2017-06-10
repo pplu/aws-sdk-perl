@@ -70,11 +70,12 @@ package Paws::ACM;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListCertificates(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->NextToken) {
+      while ($next_result->NextToken) {
         $result = $self->ListCertificates(@_, NextToken => $result->NextToken);
-        push @{ $result->CertificateSummaryList }, @{ $result->CertificateSummaryList };
+        push @{ $result->CertificateSummaryList }, @{ $next_result->CertificateSummaryList };
       }
       return $result;
     } else {

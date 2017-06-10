@@ -149,11 +149,12 @@ package Paws::CloudFormation;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeStackEvents(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->NextToken) {
+      while ($next_result->NextToken) {
         $result = $self->DescribeStackEvents(@_, NextToken => $result->NextToken);
-        push @{ $result->StackEvents }, @{ $result->StackEvents };
+        push @{ $result->StackEvents }, @{ $next_result->StackEvents };
       }
       return $result;
     } else {
@@ -170,11 +171,12 @@ package Paws::CloudFormation;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeStacks(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->NextToken) {
+      while ($next_result->NextToken) {
         $result = $self->DescribeStacks(@_, NextToken => $result->NextToken);
-        push @{ $result->Stacks }, @{ $result->Stacks };
+        push @{ $result->Stacks }, @{ $next_result->Stacks };
       }
       return $result;
     } else {
@@ -191,11 +193,12 @@ package Paws::CloudFormation;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListExports(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->NextToken) {
+      while ($next_result->NextToken) {
         $result = $self->ListExports(@_, NextToken => $result->NextToken);
-        push @{ $result->Exports }, @{ $result->Exports };
+        push @{ $result->Exports }, @{ $next_result->Exports };
       }
       return $result;
     } else {
@@ -212,11 +215,12 @@ package Paws::CloudFormation;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListImports(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->NextToken) {
+      while ($next_result->NextToken) {
         $result = $self->ListImports(@_, NextToken => $result->NextToken);
-        push @{ $result->Imports }, @{ $result->Imports };
+        push @{ $result->Imports }, @{ $next_result->Imports };
       }
       return $result;
     } else {
@@ -233,11 +237,12 @@ package Paws::CloudFormation;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListStackResources(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->NextToken) {
+      while ($next_result->NextToken) {
         $result = $self->ListStackResources(@_, NextToken => $result->NextToken);
-        push @{ $result->StackResourceSummaries }, @{ $result->StackResourceSummaries };
+        push @{ $result->StackResourceSummaries }, @{ $next_result->StackResourceSummaries };
       }
       return $result;
     } else {
@@ -254,11 +259,12 @@ package Paws::CloudFormation;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListStacks(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->NextToken) {
+      while ($next_result->NextToken) {
         $result = $self->ListStacks(@_, NextToken => $result->NextToken);
-        push @{ $result->StackSummaries }, @{ $result->StackSummaries };
+        push @{ $result->StackSummaries }, @{ $next_result->StackSummaries };
       }
       return $result;
     } else {

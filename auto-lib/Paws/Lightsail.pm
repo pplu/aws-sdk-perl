@@ -260,11 +260,12 @@ package Paws::Lightsail;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->GetActiveNames(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->pageToken) {
+      while ($next_result->pageToken) {
         $result = $self->GetActiveNames(@_, pageToken => $result->nextPageToken);
-        push @{ $result->activeNames }, @{ $result->activeNames };
+        push @{ $result->activeNames }, @{ $next_result->activeNames };
       }
       return $result;
     } else {
@@ -281,11 +282,12 @@ package Paws::Lightsail;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->GetBlueprints(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->pageToken) {
+      while ($next_result->pageToken) {
         $result = $self->GetBlueprints(@_, pageToken => $result->nextPageToken);
-        push @{ $result->blueprints }, @{ $result->blueprints };
+        push @{ $result->blueprints }, @{ $next_result->blueprints };
       }
       return $result;
     } else {
@@ -302,11 +304,12 @@ package Paws::Lightsail;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->GetBundles(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->pageToken) {
+      while ($next_result->pageToken) {
         $result = $self->GetBundles(@_, pageToken => $result->nextPageToken);
-        push @{ $result->bundles }, @{ $result->bundles };
+        push @{ $result->bundles }, @{ $next_result->bundles };
       }
       return $result;
     } else {
@@ -323,11 +326,12 @@ package Paws::Lightsail;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->GetDomains(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->pageToken) {
+      while ($next_result->pageToken) {
         $result = $self->GetDomains(@_, pageToken => $result->nextPageToken);
-        push @{ $result->domains }, @{ $result->domains };
+        push @{ $result->domains }, @{ $next_result->domains };
       }
       return $result;
     } else {
@@ -344,11 +348,12 @@ package Paws::Lightsail;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->GetInstances(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->pageToken) {
+      while ($next_result->pageToken) {
         $result = $self->GetInstances(@_, pageToken => $result->nextPageToken);
-        push @{ $result->instances }, @{ $result->instances };
+        push @{ $result->instances }, @{ $next_result->instances };
       }
       return $result;
     } else {
@@ -365,11 +370,12 @@ package Paws::Lightsail;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->GetInstanceSnapshots(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->pageToken) {
+      while ($next_result->pageToken) {
         $result = $self->GetInstanceSnapshots(@_, pageToken => $result->nextPageToken);
-        push @{ $result->instanceSnapshots }, @{ $result->instanceSnapshots };
+        push @{ $result->instanceSnapshots }, @{ $next_result->instanceSnapshots };
       }
       return $result;
     } else {
@@ -386,11 +392,12 @@ package Paws::Lightsail;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->GetKeyPairs(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->pageToken) {
+      while ($next_result->pageToken) {
         $result = $self->GetKeyPairs(@_, pageToken => $result->nextPageToken);
-        push @{ $result->keyPairs }, @{ $result->keyPairs };
+        push @{ $result->keyPairs }, @{ $next_result->keyPairs };
       }
       return $result;
     } else {
@@ -407,11 +414,12 @@ package Paws::Lightsail;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->GetOperations(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->pageToken) {
+      while ($next_result->pageToken) {
         $result = $self->GetOperations(@_, pageToken => $result->nextPageToken);
-        push @{ $result->operations }, @{ $result->operations };
+        push @{ $result->operations }, @{ $next_result->operations };
       }
       return $result;
     } else {
@@ -428,11 +436,12 @@ package Paws::Lightsail;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->GetStaticIps(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->pageToken) {
+      while ($next_result->pageToken) {
         $result = $self->GetStaticIps(@_, pageToken => $result->nextPageToken);
-        push @{ $result->staticIps }, @{ $result->staticIps };
+        push @{ $result->staticIps }, @{ $next_result->staticIps };
       }
       return $result;
     } else {

@@ -74,11 +74,12 @@ package Paws::CloudWatch;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeAlarmHistory(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->NextToken) {
+      while ($next_result->NextToken) {
         $result = $self->DescribeAlarmHistory(@_, NextToken => $result->NextToken);
-        push @{ $result->AlarmHistoryItems }, @{ $result->AlarmHistoryItems };
+        push @{ $result->AlarmHistoryItems }, @{ $next_result->AlarmHistoryItems };
       }
       return $result;
     } else {
@@ -95,11 +96,12 @@ package Paws::CloudWatch;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeAlarms(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->NextToken) {
+      while ($next_result->NextToken) {
         $result = $self->DescribeAlarms(@_, NextToken => $result->NextToken);
-        push @{ $result->MetricAlarms }, @{ $result->MetricAlarms };
+        push @{ $result->MetricAlarms }, @{ $next_result->MetricAlarms };
       }
       return $result;
     } else {
@@ -116,11 +118,12 @@ package Paws::CloudWatch;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListMetrics(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->NextToken) {
+      while ($next_result->NextToken) {
         $result = $self->ListMetrics(@_, NextToken => $result->NextToken);
-        push @{ $result->Metrics }, @{ $result->Metrics };
+        push @{ $result->Metrics }, @{ $next_result->Metrics };
       }
       return $result;
     } else {

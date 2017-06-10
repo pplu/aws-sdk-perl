@@ -159,11 +159,12 @@ package Paws::Lambda;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListEventSourceMappings(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->Marker) {
+      while ($next_result->Marker) {
         $result = $self->ListEventSourceMappings(@_, Marker => $result->NextMarker);
-        push @{ $result->EventSourceMappings }, @{ $result->EventSourceMappings };
+        push @{ $result->EventSourceMappings }, @{ $next_result->EventSourceMappings };
       }
       return $result;
     } else {
@@ -180,11 +181,12 @@ package Paws::Lambda;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListFunctions(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->Marker) {
+      while ($next_result->Marker) {
         $result = $self->ListFunctions(@_, Marker => $result->NextMarker);
-        push @{ $result->Functions }, @{ $result->Functions };
+        push @{ $result->Functions }, @{ $next_result->Functions };
       }
       return $result;
     } else {

@@ -6,6 +6,7 @@
  - Breaking change: endpoints for services are calculated immediately when you invoke ->service.
    before they were calculated when the first method call to the service was made, so you got
    "no region" exceptions on the first call. Now the exceptions are thrown immediately.
+ - Bug fixed: Paginators not working correctly in non-callback mode
  - Bug fixed: Throw exceptions on methods that don't return anything
  - New API: MarketplaceEntitlement
  - New API: Athena

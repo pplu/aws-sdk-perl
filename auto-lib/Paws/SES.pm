@@ -264,11 +264,12 @@ package Paws::SES;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListIdentities(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->NextToken) {
+      while ($next_result->NextToken) {
         $result = $self->ListIdentities(@_, NextToken => $result->NextToken);
-        push @{ $result->Identities }, @{ $result->Identities };
+        push @{ $result->Identities }, @{ $next_result->Identities };
       }
       return $result;
     } else {

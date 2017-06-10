@@ -224,11 +224,12 @@ package Paws::ElasticBeanstalk;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeEvents(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->NextToken) {
+      while ($next_result->NextToken) {
         $result = $self->DescribeEvents(@_, NextToken => $result->NextToken);
-        push @{ $result->Events }, @{ $result->Events };
+        push @{ $result->Events }, @{ $next_result->Events };
       }
       return $result;
     } else {

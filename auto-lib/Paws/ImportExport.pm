@@ -67,11 +67,12 @@ package Paws::ImportExport;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListJobs(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->IsTruncated) {
-        $result = $self->ListJobs(@_, Marker => $result->Jobs->[-1]->JobId);
-        push @{ $result->Jobs }, @{ $result->Jobs };
+      while ($next_result->IsTruncated) {
+        $next_result = $self->ListJobs(@_, Marker => $result->Jobs->[-1]->JobId);
+        push @{ $result->Jobs }, @{ $next_result->Jobs };
       }
       return $result;
     } else {

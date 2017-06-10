@@ -655,14 +655,15 @@ package Paws::IAM;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->GetAccountAuthorizationDetails(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->IsTruncated) {
-        $result = $self->GetAccountAuthorizationDetails(@_, Marker => $result->Marker);
-        push @{ $result->UserDetailList }, @{ $result->UserDetailList };
-        push @{ $result->GroupDetailList }, @{ $result->GroupDetailList };
-        push @{ $result->RoleDetailList }, @{ $result->RoleDetailList };
-        push @{ $result->Policies }, @{ $result->Policies };
+      while ($next_result->IsTruncated) {
+        $next_result = $self->GetAccountAuthorizationDetails(@_, Marker => $result->Marker);
+        push @{ $result->UserDetailList }, @{ $next_result->UserDetailList };
+        push @{ $result->GroupDetailList }, @{ $next_result->GroupDetailList };
+        push @{ $result->RoleDetailList }, @{ $next_result->RoleDetailList };
+        push @{ $result->Policies }, @{ $next_result->Policies };
       }
       return $result;
     } else {
@@ -682,11 +683,12 @@ package Paws::IAM;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->GetGroup(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->IsTruncated) {
-        $result = $self->GetGroup(@_, Marker => $result->Marker);
-        push @{ $result->Users }, @{ $result->Users };
+      while ($next_result->IsTruncated) {
+        $next_result = $self->GetGroup(@_, Marker => $result->Marker);
+        push @{ $result->Users }, @{ $next_result->Users };
       }
       return $result;
     } else {
@@ -703,11 +705,12 @@ package Paws::IAM;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListAccessKeys(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->IsTruncated) {
-        $result = $self->ListAccessKeys(@_, Marker => $result->Marker);
-        push @{ $result->AccessKeyMetadata }, @{ $result->AccessKeyMetadata };
+      while ($next_result->IsTruncated) {
+        $next_result = $self->ListAccessKeys(@_, Marker => $result->Marker);
+        push @{ $result->AccessKeyMetadata }, @{ $next_result->AccessKeyMetadata };
       }
       return $result;
     } else {
@@ -724,11 +727,12 @@ package Paws::IAM;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListAccountAliases(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->IsTruncated) {
-        $result = $self->ListAccountAliases(@_, Marker => $result->Marker);
-        push @{ $result->AccountAliases }, @{ $result->AccountAliases };
+      while ($next_result->IsTruncated) {
+        $next_result = $self->ListAccountAliases(@_, Marker => $result->Marker);
+        push @{ $result->AccountAliases }, @{ $next_result->AccountAliases };
       }
       return $result;
     } else {
@@ -745,11 +749,12 @@ package Paws::IAM;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListAttachedGroupPolicies(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->IsTruncated) {
-        $result = $self->ListAttachedGroupPolicies(@_, Marker => $result->Marker);
-        push @{ $result->AttachedPolicies }, @{ $result->AttachedPolicies };
+      while ($next_result->IsTruncated) {
+        $next_result = $self->ListAttachedGroupPolicies(@_, Marker => $result->Marker);
+        push @{ $result->AttachedPolicies }, @{ $next_result->AttachedPolicies };
       }
       return $result;
     } else {
@@ -766,11 +771,12 @@ package Paws::IAM;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListAttachedRolePolicies(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->IsTruncated) {
-        $result = $self->ListAttachedRolePolicies(@_, Marker => $result->Marker);
-        push @{ $result->AttachedPolicies }, @{ $result->AttachedPolicies };
+      while ($next_result->IsTruncated) {
+        $next_result = $self->ListAttachedRolePolicies(@_, Marker => $result->Marker);
+        push @{ $result->AttachedPolicies }, @{ $next_result->AttachedPolicies };
       }
       return $result;
     } else {
@@ -787,11 +793,12 @@ package Paws::IAM;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListAttachedUserPolicies(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->IsTruncated) {
-        $result = $self->ListAttachedUserPolicies(@_, Marker => $result->Marker);
-        push @{ $result->AttachedPolicies }, @{ $result->AttachedPolicies };
+      while ($next_result->IsTruncated) {
+        $next_result = $self->ListAttachedUserPolicies(@_, Marker => $result->Marker);
+        push @{ $result->AttachedPolicies }, @{ $next_result->AttachedPolicies };
       }
       return $result;
     } else {
@@ -808,13 +815,14 @@ package Paws::IAM;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListEntitiesForPolicy(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->IsTruncated) {
-        $result = $self->ListEntitiesForPolicy(@_, Marker => $result->Marker);
-        push @{ $result->PolicyGroups }, @{ $result->PolicyGroups };
-        push @{ $result->PolicyUsers }, @{ $result->PolicyUsers };
-        push @{ $result->PolicyRoles }, @{ $result->PolicyRoles };
+      while ($next_result->IsTruncated) {
+        $next_result = $self->ListEntitiesForPolicy(@_, Marker => $result->Marker);
+        push @{ $result->PolicyGroups }, @{ $next_result->PolicyGroups };
+        push @{ $result->PolicyUsers }, @{ $next_result->PolicyUsers };
+        push @{ $result->PolicyRoles }, @{ $next_result->PolicyRoles };
       }
       return $result;
     } else {
@@ -833,11 +841,12 @@ package Paws::IAM;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListGroupPolicies(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->IsTruncated) {
-        $result = $self->ListGroupPolicies(@_, Marker => $result->Marker);
-        push @{ $result->PolicyNames }, @{ $result->PolicyNames };
+      while ($next_result->IsTruncated) {
+        $next_result = $self->ListGroupPolicies(@_, Marker => $result->Marker);
+        push @{ $result->PolicyNames }, @{ $next_result->PolicyNames };
       }
       return $result;
     } else {
@@ -854,11 +863,12 @@ package Paws::IAM;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListGroups(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->IsTruncated) {
-        $result = $self->ListGroups(@_, Marker => $result->Marker);
-        push @{ $result->Groups }, @{ $result->Groups };
+      while ($next_result->IsTruncated) {
+        $next_result = $self->ListGroups(@_, Marker => $result->Marker);
+        push @{ $result->Groups }, @{ $next_result->Groups };
       }
       return $result;
     } else {
@@ -875,11 +885,12 @@ package Paws::IAM;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListGroupsForUser(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->IsTruncated) {
-        $result = $self->ListGroupsForUser(@_, Marker => $result->Marker);
-        push @{ $result->Groups }, @{ $result->Groups };
+      while ($next_result->IsTruncated) {
+        $next_result = $self->ListGroupsForUser(@_, Marker => $result->Marker);
+        push @{ $result->Groups }, @{ $next_result->Groups };
       }
       return $result;
     } else {
@@ -896,11 +907,12 @@ package Paws::IAM;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListInstanceProfiles(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->IsTruncated) {
-        $result = $self->ListInstanceProfiles(@_, Marker => $result->Marker);
-        push @{ $result->InstanceProfiles }, @{ $result->InstanceProfiles };
+      while ($next_result->IsTruncated) {
+        $next_result = $self->ListInstanceProfiles(@_, Marker => $result->Marker);
+        push @{ $result->InstanceProfiles }, @{ $next_result->InstanceProfiles };
       }
       return $result;
     } else {
@@ -917,11 +929,12 @@ package Paws::IAM;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListInstanceProfilesForRole(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->IsTruncated) {
-        $result = $self->ListInstanceProfilesForRole(@_, Marker => $result->Marker);
-        push @{ $result->InstanceProfiles }, @{ $result->InstanceProfiles };
+      while ($next_result->IsTruncated) {
+        $next_result = $self->ListInstanceProfilesForRole(@_, Marker => $result->Marker);
+        push @{ $result->InstanceProfiles }, @{ $next_result->InstanceProfiles };
       }
       return $result;
     } else {
@@ -938,11 +951,12 @@ package Paws::IAM;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListMFADevices(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->IsTruncated) {
-        $result = $self->ListMFADevices(@_, Marker => $result->Marker);
-        push @{ $result->MFADevices }, @{ $result->MFADevices };
+      while ($next_result->IsTruncated) {
+        $next_result = $self->ListMFADevices(@_, Marker => $result->Marker);
+        push @{ $result->MFADevices }, @{ $next_result->MFADevices };
       }
       return $result;
     } else {
@@ -959,11 +973,12 @@ package Paws::IAM;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListPolicies(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->IsTruncated) {
-        $result = $self->ListPolicies(@_, Marker => $result->Marker);
-        push @{ $result->Policies }, @{ $result->Policies };
+      while ($next_result->IsTruncated) {
+        $next_result = $self->ListPolicies(@_, Marker => $result->Marker);
+        push @{ $result->Policies }, @{ $next_result->Policies };
       }
       return $result;
     } else {
@@ -980,11 +995,12 @@ package Paws::IAM;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListPolicyVersions(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->IsTruncated) {
-        $result = $self->ListPolicyVersions(@_, Marker => $result->Marker);
-        push @{ $result->Versions }, @{ $result->Versions };
+      while ($next_result->IsTruncated) {
+        $next_result = $self->ListPolicyVersions(@_, Marker => $result->Marker);
+        push @{ $result->Versions }, @{ $next_result->Versions };
       }
       return $result;
     } else {
@@ -1001,11 +1017,12 @@ package Paws::IAM;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListRolePolicies(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->IsTruncated) {
-        $result = $self->ListRolePolicies(@_, Marker => $result->Marker);
-        push @{ $result->PolicyNames }, @{ $result->PolicyNames };
+      while ($next_result->IsTruncated) {
+        $next_result = $self->ListRolePolicies(@_, Marker => $result->Marker);
+        push @{ $result->PolicyNames }, @{ $next_result->PolicyNames };
       }
       return $result;
     } else {
@@ -1022,11 +1039,12 @@ package Paws::IAM;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListRoles(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->IsTruncated) {
-        $result = $self->ListRoles(@_, Marker => $result->Marker);
-        push @{ $result->Roles }, @{ $result->Roles };
+      while ($next_result->IsTruncated) {
+        $next_result = $self->ListRoles(@_, Marker => $result->Marker);
+        push @{ $result->Roles }, @{ $next_result->Roles };
       }
       return $result;
     } else {
@@ -1043,11 +1061,12 @@ package Paws::IAM;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListServerCertificates(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->IsTruncated) {
-        $result = $self->ListServerCertificates(@_, Marker => $result->Marker);
-        push @{ $result->ServerCertificateMetadataList }, @{ $result->ServerCertificateMetadataList };
+      while ($next_result->IsTruncated) {
+        $next_result = $self->ListServerCertificates(@_, Marker => $result->Marker);
+        push @{ $result->ServerCertificateMetadataList }, @{ $next_result->ServerCertificateMetadataList };
       }
       return $result;
     } else {
@@ -1064,11 +1083,12 @@ package Paws::IAM;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListSigningCertificates(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->IsTruncated) {
-        $result = $self->ListSigningCertificates(@_, Marker => $result->Marker);
-        push @{ $result->Certificates }, @{ $result->Certificates };
+      while ($next_result->IsTruncated) {
+        $next_result = $self->ListSigningCertificates(@_, Marker => $result->Marker);
+        push @{ $result->Certificates }, @{ $next_result->Certificates };
       }
       return $result;
     } else {
@@ -1085,11 +1105,12 @@ package Paws::IAM;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListSSHPublicKeys(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->IsTruncated) {
-        $result = $self->ListSSHPublicKeys(@_, Marker => $result->Marker);
-        push @{ $result->SSHPublicKeys }, @{ $result->SSHPublicKeys };
+      while ($next_result->IsTruncated) {
+        $next_result = $self->ListSSHPublicKeys(@_, Marker => $result->Marker);
+        push @{ $result->SSHPublicKeys }, @{ $next_result->SSHPublicKeys };
       }
       return $result;
     } else {
@@ -1106,11 +1127,12 @@ package Paws::IAM;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListUserPolicies(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->IsTruncated) {
-        $result = $self->ListUserPolicies(@_, Marker => $result->Marker);
-        push @{ $result->PolicyNames }, @{ $result->PolicyNames };
+      while ($next_result->IsTruncated) {
+        $next_result = $self->ListUserPolicies(@_, Marker => $result->Marker);
+        push @{ $result->PolicyNames }, @{ $next_result->PolicyNames };
       }
       return $result;
     } else {
@@ -1127,11 +1149,12 @@ package Paws::IAM;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListUsers(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->IsTruncated) {
-        $result = $self->ListUsers(@_, Marker => $result->Marker);
-        push @{ $result->Users }, @{ $result->Users };
+      while ($next_result->IsTruncated) {
+        $next_result = $self->ListUsers(@_, Marker => $result->Marker);
+        push @{ $result->Users }, @{ $next_result->Users };
       }
       return $result;
     } else {
@@ -1148,11 +1171,12 @@ package Paws::IAM;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListVirtualMFADevices(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->IsTruncated) {
-        $result = $self->ListVirtualMFADevices(@_, Marker => $result->Marker);
-        push @{ $result->VirtualMFADevices }, @{ $result->VirtualMFADevices };
+      while ($next_result->IsTruncated) {
+        $next_result = $self->ListVirtualMFADevices(@_, Marker => $result->Marker);
+        push @{ $result->VirtualMFADevices }, @{ $next_result->VirtualMFADevices };
       }
       return $result;
     } else {
@@ -1169,11 +1193,12 @@ package Paws::IAM;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->SimulateCustomPolicy(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->IsTruncated) {
-        $result = $self->SimulateCustomPolicy(@_, Marker => $result->Marker);
-        push @{ $result->EvaluationResults }, @{ $result->EvaluationResults };
+      while ($next_result->IsTruncated) {
+        $next_result = $self->SimulateCustomPolicy(@_, Marker => $result->Marker);
+        push @{ $result->EvaluationResults }, @{ $next_result->EvaluationResults };
       }
       return $result;
     } else {
@@ -1190,11 +1215,12 @@ package Paws::IAM;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->SimulatePrincipalPolicy(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->IsTruncated) {
-        $result = $self->SimulatePrincipalPolicy(@_, Marker => $result->Marker);
-        push @{ $result->EvaluationResults }, @{ $result->EvaluationResults };
+      while ($next_result->IsTruncated) {
+        $next_result = $self->SimulatePrincipalPolicy(@_, Marker => $result->Marker);
+        push @{ $result->EvaluationResults }, @{ $next_result->EvaluationResults };
       }
       return $result;
     } else {

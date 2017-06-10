@@ -174,11 +174,12 @@ package Paws::ELBv2;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeListeners(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->Marker) {
+      while ($next_result->Marker) {
         $result = $self->DescribeListeners(@_, Marker => $result->NextMarker);
-        push @{ $result->Listeners }, @{ $result->Listeners };
+        push @{ $result->Listeners }, @{ $next_result->Listeners };
       }
       return $result;
     } else {
@@ -195,11 +196,12 @@ package Paws::ELBv2;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeLoadBalancers(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->Marker) {
+      while ($next_result->Marker) {
         $result = $self->DescribeLoadBalancers(@_, Marker => $result->NextMarker);
-        push @{ $result->LoadBalancers }, @{ $result->LoadBalancers };
+        push @{ $result->LoadBalancers }, @{ $next_result->LoadBalancers };
       }
       return $result;
     } else {
@@ -216,11 +218,12 @@ package Paws::ELBv2;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeTargetGroups(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->Marker) {
+      while ($next_result->Marker) {
         $result = $self->DescribeTargetGroups(@_, Marker => $result->NextMarker);
-        push @{ $result->TargetGroups }, @{ $result->TargetGroups };
+        push @{ $result->TargetGroups }, @{ $next_result->TargetGroups };
       }
       return $result;
     } else {

@@ -135,11 +135,12 @@ package Paws::Route53Domains;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListDomains(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->Marker) {
+      while ($next_result->Marker) {
         $result = $self->ListDomains(@_, Marker => $result->NextPageMarker);
-        push @{ $result->Domains }, @{ $result->Domains };
+        push @{ $result->Domains }, @{ $next_result->Domains };
       }
       return $result;
     } else {
@@ -156,11 +157,12 @@ package Paws::Route53Domains;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListOperations(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->Marker) {
+      while ($next_result->Marker) {
         $result = $self->ListOperations(@_, Marker => $result->NextPageMarker);
-        push @{ $result->Operations }, @{ $result->Operations };
+        push @{ $result->Operations }, @{ $next_result->Operations };
       }
       return $result;
     } else {

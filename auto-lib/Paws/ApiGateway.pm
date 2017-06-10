@@ -554,11 +554,12 @@ package Paws::ApiGateway;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->GetApiKeys(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->position) {
+      while ($next_result->position) {
         $result = $self->GetApiKeys(@_, position => $result->position);
-        push @{ $result->items }, @{ $result->items };
+        push @{ $result->items }, @{ $next_result->items };
       }
       return $result;
     } else {
@@ -575,11 +576,12 @@ package Paws::ApiGateway;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->GetBasePathMappings(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->position) {
+      while ($next_result->position) {
         $result = $self->GetBasePathMappings(@_, position => $result->position);
-        push @{ $result->items }, @{ $result->items };
+        push @{ $result->items }, @{ $next_result->items };
       }
       return $result;
     } else {
@@ -596,11 +598,12 @@ package Paws::ApiGateway;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->GetClientCertificates(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->position) {
+      while ($next_result->position) {
         $result = $self->GetClientCertificates(@_, position => $result->position);
-        push @{ $result->items }, @{ $result->items };
+        push @{ $result->items }, @{ $next_result->items };
       }
       return $result;
     } else {
@@ -617,11 +620,12 @@ package Paws::ApiGateway;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->GetDeployments(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->position) {
+      while ($next_result->position) {
         $result = $self->GetDeployments(@_, position => $result->position);
-        push @{ $result->items }, @{ $result->items };
+        push @{ $result->items }, @{ $next_result->items };
       }
       return $result;
     } else {
@@ -638,11 +642,12 @@ package Paws::ApiGateway;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->GetDomainNames(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->position) {
+      while ($next_result->position) {
         $result = $self->GetDomainNames(@_, position => $result->position);
-        push @{ $result->items }, @{ $result->items };
+        push @{ $result->items }, @{ $next_result->items };
       }
       return $result;
     } else {
@@ -659,11 +664,12 @@ package Paws::ApiGateway;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->GetModels(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->position) {
+      while ($next_result->position) {
         $result = $self->GetModels(@_, position => $result->position);
-        push @{ $result->items }, @{ $result->items };
+        push @{ $result->items }, @{ $next_result->items };
       }
       return $result;
     } else {
@@ -680,11 +686,12 @@ package Paws::ApiGateway;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->GetResources(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->position) {
+      while ($next_result->position) {
         $result = $self->GetResources(@_, position => $result->position);
-        push @{ $result->items }, @{ $result->items };
+        push @{ $result->items }, @{ $next_result->items };
       }
       return $result;
     } else {
@@ -701,11 +708,12 @@ package Paws::ApiGateway;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->GetRestApis(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->position) {
+      while ($next_result->position) {
         $result = $self->GetRestApis(@_, position => $result->position);
-        push @{ $result->items }, @{ $result->items };
+        push @{ $result->items }, @{ $next_result->items };
       }
       return $result;
     } else {
@@ -722,11 +730,12 @@ package Paws::ApiGateway;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->GetUsage(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->position) {
+      while ($next_result->position) {
         $result = $self->GetUsage(@_, position => $result->position);
-        push @{ $result->items }, @{ $result->items };
+        push @{ $result->items }, @{ $next_result->items };
       }
       return $result;
     } else {
@@ -743,11 +752,12 @@ package Paws::ApiGateway;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->GetUsagePlanKeys(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->position) {
+      while ($next_result->position) {
         $result = $self->GetUsagePlanKeys(@_, position => $result->position);
-        push @{ $result->items }, @{ $result->items };
+        push @{ $result->items }, @{ $next_result->items };
       }
       return $result;
     } else {
@@ -764,11 +774,12 @@ package Paws::ApiGateway;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->GetUsagePlans(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->position) {
+      while ($next_result->position) {
         $result = $self->GetUsagePlans(@_, position => $result->position);
-        push @{ $result->items }, @{ $result->items };
+        push @{ $result->items }, @{ $next_result->items };
       }
       return $result;
     } else {

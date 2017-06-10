@@ -141,11 +141,12 @@ package Paws::DynamoDB;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListTables(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->ExclusiveStartTableName) {
+      while ($next_result->ExclusiveStartTableName) {
         $result = $self->ListTables(@_, ExclusiveStartTableName => $result->LastEvaluatedTableName);
-        push @{ $result->TableNames }, @{ $result->TableNames };
+        push @{ $result->TableNames }, @{ $next_result->TableNames };
       }
       return $result;
     } else {
@@ -162,13 +163,14 @@ package Paws::DynamoDB;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->Query(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->ExclusiveStartKey) {
+      while ($next_result->ExclusiveStartKey) {
         $result = $self->Query(@_, ExclusiveStartKey => $result->LastEvaluatedKey);
-        push @{ $result->Items }, @{ $result->Items };
-        push @{ $result->Count }, @{ $result->Count };
-        push @{ $result->ScannedCount }, @{ $result->ScannedCount };
+        push @{ $result->Items }, @{ $next_result->Items };
+        push @{ $result->Count }, @{ $next_result->Count };
+        push @{ $result->ScannedCount }, @{ $next_result->ScannedCount };
       }
       return $result;
     } else {
@@ -187,13 +189,14 @@ package Paws::DynamoDB;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->Scan(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->ExclusiveStartKey) {
+      while ($next_result->ExclusiveStartKey) {
         $result = $self->Scan(@_, ExclusiveStartKey => $result->LastEvaluatedKey);
-        push @{ $result->Items }, @{ $result->Items };
-        push @{ $result->Count }, @{ $result->Count };
-        push @{ $result->ScannedCount }, @{ $result->ScannedCount };
+        push @{ $result->Items }, @{ $next_result->Items };
+        push @{ $result->Count }, @{ $next_result->Count };
+        push @{ $result->ScannedCount }, @{ $next_result->ScannedCount };
       }
       return $result;
     } else {

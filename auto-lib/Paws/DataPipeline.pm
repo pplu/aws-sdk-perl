@@ -115,11 +115,12 @@ package Paws::DataPipeline;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeObjects(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->hasMoreResults) {
-        $result = $self->DescribeObjects(@_, marker => $result->marker);
-        push @{ $result->pipelineObjects }, @{ $result->pipelineObjects };
+      while ($next_result->hasMoreResults) {
+        $next_result = $self->DescribeObjects(@_, marker => $result->marker);
+        push @{ $result->pipelineObjects }, @{ $next_result->pipelineObjects };
       }
       return $result;
     } else {
@@ -136,11 +137,12 @@ package Paws::DataPipeline;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListPipelines(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->hasMoreResults) {
-        $result = $self->ListPipelines(@_, marker => $result->marker);
-        push @{ $result->pipelineIdList }, @{ $result->pipelineIdList };
+      while ($next_result->hasMoreResults) {
+        $next_result = $self->ListPipelines(@_, marker => $result->marker);
+        push @{ $result->pipelineIdList }, @{ $next_result->pipelineIdList };
       }
       return $result;
     } else {
@@ -157,11 +159,12 @@ package Paws::DataPipeline;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->QueryObjects(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->hasMoreResults) {
-        $result = $self->QueryObjects(@_, marker => $result->marker);
-        push @{ $result->ids }, @{ $result->ids };
+      while ($next_result->hasMoreResults) {
+        $next_result = $self->QueryObjects(@_, marker => $result->marker);
+        push @{ $result->ids }, @{ $next_result->ids };
       }
       return $result;
     } else {

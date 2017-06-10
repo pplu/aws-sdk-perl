@@ -90,11 +90,12 @@ package Paws::WorkSpaces;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeWorkspaceBundles(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->NextToken) {
+      while ($next_result->NextToken) {
         $result = $self->DescribeWorkspaceBundles(@_, NextToken => $result->NextToken);
-        push @{ $result->Bundles }, @{ $result->Bundles };
+        push @{ $result->Bundles }, @{ $next_result->Bundles };
       }
       return $result;
     } else {
@@ -111,11 +112,12 @@ package Paws::WorkSpaces;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeWorkspaceDirectories(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->NextToken) {
+      while ($next_result->NextToken) {
         $result = $self->DescribeWorkspaceDirectories(@_, NextToken => $result->NextToken);
-        push @{ $result->Directories }, @{ $result->Directories };
+        push @{ $result->Directories }, @{ $next_result->Directories };
       }
       return $result;
     } else {
@@ -132,11 +134,12 @@ package Paws::WorkSpaces;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeWorkspaces(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->NextToken) {
+      while ($next_result->NextToken) {
         $result = $self->DescribeWorkspaces(@_, NextToken => $result->NextToken);
-        push @{ $result->Workspaces }, @{ $result->Workspaces };
+        push @{ $result->Workspaces }, @{ $next_result->Workspaces };
       }
       return $result;
     } else {

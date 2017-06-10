@@ -175,11 +175,12 @@ package Paws::SimpleWorkflow;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->GetWorkflowExecutionHistory(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->nextPageToken) {
+      while ($next_result->nextPageToken) {
         $result = $self->GetWorkflowExecutionHistory(@_, nextPageToken => $result->nextPageToken);
-        push @{ $result->events }, @{ $result->events };
+        push @{ $result->events }, @{ $next_result->events };
       }
       return $result;
     } else {
@@ -196,11 +197,12 @@ package Paws::SimpleWorkflow;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListActivityTypes(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->nextPageToken) {
+      while ($next_result->nextPageToken) {
         $result = $self->ListActivityTypes(@_, nextPageToken => $result->nextPageToken);
-        push @{ $result->typeInfos }, @{ $result->typeInfos };
+        push @{ $result->typeInfos }, @{ $next_result->typeInfos };
       }
       return $result;
     } else {
@@ -217,11 +219,12 @@ package Paws::SimpleWorkflow;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListClosedWorkflowExecutions(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->nextPageToken) {
+      while ($next_result->nextPageToken) {
         $result = $self->ListClosedWorkflowExecutions(@_, nextPageToken => $result->nextPageToken);
-        push @{ $result->executionInfos }, @{ $result->executionInfos };
+        push @{ $result->executionInfos }, @{ $next_result->executionInfos };
       }
       return $result;
     } else {
@@ -238,11 +241,12 @@ package Paws::SimpleWorkflow;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListDomains(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->nextPageToken) {
+      while ($next_result->nextPageToken) {
         $result = $self->ListDomains(@_, nextPageToken => $result->nextPageToken);
-        push @{ $result->domainInfos }, @{ $result->domainInfos };
+        push @{ $result->domainInfos }, @{ $next_result->domainInfos };
       }
       return $result;
     } else {
@@ -259,11 +263,12 @@ package Paws::SimpleWorkflow;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListOpenWorkflowExecutions(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->nextPageToken) {
+      while ($next_result->nextPageToken) {
         $result = $self->ListOpenWorkflowExecutions(@_, nextPageToken => $result->nextPageToken);
-        push @{ $result->executionInfos }, @{ $result->executionInfos };
+        push @{ $result->executionInfos }, @{ $next_result->executionInfos };
       }
       return $result;
     } else {
@@ -280,11 +285,12 @@ package Paws::SimpleWorkflow;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListWorkflowTypes(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->nextPageToken) {
+      while ($next_result->nextPageToken) {
         $result = $self->ListWorkflowTypes(@_, nextPageToken => $result->nextPageToken);
-        push @{ $result->typeInfos }, @{ $result->typeInfos };
+        push @{ $result->typeInfos }, @{ $next_result->typeInfos };
       }
       return $result;
     } else {
@@ -301,11 +307,12 @@ package Paws::SimpleWorkflow;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->PollForDecisionTask(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->nextPageToken) {
+      while ($next_result->nextPageToken) {
         $result = $self->PollForDecisionTask(@_, nextPageToken => $result->nextPageToken);
-        push @{ $result->events }, @{ $result->events };
+        push @{ $result->events }, @{ $next_result->events };
       }
       return $result;
     } else {
