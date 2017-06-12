@@ -11,6 +11,7 @@
  - Bug fixed: Handle plain values in RestXML services, like S3s' PutBucketPolicy (sven-schubert)
  - New API: MarketplaceEntitlement
  - New API: Athena
+ - Mew API: Greengrass
  - API update: AppStream
  - API update: CloudDirectory
  - API update: CloudFormation
