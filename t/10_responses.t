@@ -19,11 +19,9 @@ my $aws = Paws->new(config => { credentials => 'Test::CustomCredentials' });
 
 use Data::Dumper;
 
-my $dir = 't/10_responses';
-opendir(my $dh, $dir);
 my @files = @ARGV;
 if (not @files) {
-  @files = map { "$dir/$_" } grep { $_ =~ m/\.response$/ } sort readdir($dh);
+  push @files, sort <"t/10_responses/*.response">;
 } else {
   @files = grep { $_ =~ m/\.response$/ } @files;
 }
