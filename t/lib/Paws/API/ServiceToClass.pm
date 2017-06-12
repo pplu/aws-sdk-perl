@@ -55,6 +55,7 @@ package Paws::API::ServiceToClass;
     firehose => 'Firehose',
     gamelift => 'GameLift',
     glacier => 'Glacier',
+    greengrass => 'Greengrass',
     health => 'Health',
     iam => 'IAM',
     iot => 'IoT',

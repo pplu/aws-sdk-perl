@@ -340,6 +340,8 @@ L<Paws::GameLift>
 
 L<Paws::Glacier>
 
+L<Paws::Greengrass>
+
 L<Paws::Health>
 
 L<Paws::IAM>

@@ -15,6 +15,7 @@
  - API update: CloudDirectory
  - API update: CloudFormation
  - API update: CloudWatchEvents
+ - API update: CodeBuild
  - API update: CodeDeploy
  - API update: CongnitoIdp
  - API update: DeviceFarm
@@ -29,7 +30,9 @@
  - API update: Lambda
  - API update: LexModels
  - API update: Lightsail
+ - API update: Opsworks
  - API update: Organizations
+ - API update: Pinpoint
  - API update: Rekognition
  - API update: ResourceTagging
  - API update: RDS
