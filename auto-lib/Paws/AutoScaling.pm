@@ -279,18 +279,20 @@ package Paws::AutoScaling;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeAutoScalingGroups(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->NextToken) {
-        $result = $self->DescribeAutoScalingGroups(@_, NextToken => $result->NextToken);
-        push @{ $result->AutoScalingGroups }, @{ $result->AutoScalingGroups };
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeAutoScalingGroups(@_, NextToken => $next_result->NextToken);
+        push @{ $result->AutoScalingGroups }, @{ $next_result->AutoScalingGroups };
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->DescribeAutoScalingGroups(@_, NextToken => $result->NextToken);
         $callback->($_ => 'AutoScalingGroups') foreach (@{ $result->AutoScalingGroups });
+        $result = $self->DescribeAutoScalingGroups(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'AutoScalingGroups') foreach (@{ $result->AutoScalingGroups });
     }
 
     return undef
@@ -300,18 +302,20 @@ package Paws::AutoScaling;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeAutoScalingInstances(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->NextToken) {
-        $result = $self->DescribeAutoScalingInstances(@_, NextToken => $result->NextToken);
-        push @{ $result->AutoScalingInstances }, @{ $result->AutoScalingInstances };
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeAutoScalingInstances(@_, NextToken => $next_result->NextToken);
+        push @{ $result->AutoScalingInstances }, @{ $next_result->AutoScalingInstances };
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->DescribeAutoScalingInstances(@_, NextToken => $result->NextToken);
         $callback->($_ => 'AutoScalingInstances') foreach (@{ $result->AutoScalingInstances });
+        $result = $self->DescribeAutoScalingInstances(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'AutoScalingInstances') foreach (@{ $result->AutoScalingInstances });
     }
 
     return undef
@@ -321,18 +325,20 @@ package Paws::AutoScaling;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeLaunchConfigurations(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->NextToken) {
-        $result = $self->DescribeLaunchConfigurations(@_, NextToken => $result->NextToken);
-        push @{ $result->LaunchConfigurations }, @{ $result->LaunchConfigurations };
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeLaunchConfigurations(@_, NextToken => $next_result->NextToken);
+        push @{ $result->LaunchConfigurations }, @{ $next_result->LaunchConfigurations };
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->DescribeLaunchConfigurations(@_, NextToken => $result->NextToken);
         $callback->($_ => 'LaunchConfigurations') foreach (@{ $result->LaunchConfigurations });
+        $result = $self->DescribeLaunchConfigurations(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'LaunchConfigurations') foreach (@{ $result->LaunchConfigurations });
     }
 
     return undef
@@ -342,18 +348,20 @@ package Paws::AutoScaling;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeNotificationConfigurations(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->NextToken) {
-        $result = $self->DescribeNotificationConfigurations(@_, NextToken => $result->NextToken);
-        push @{ $result->NotificationConfigurations }, @{ $result->NotificationConfigurations };
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeNotificationConfigurations(@_, NextToken => $next_result->NextToken);
+        push @{ $result->NotificationConfigurations }, @{ $next_result->NotificationConfigurations };
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->DescribeNotificationConfigurations(@_, NextToken => $result->NextToken);
         $callback->($_ => 'NotificationConfigurations') foreach (@{ $result->NotificationConfigurations });
+        $result = $self->DescribeNotificationConfigurations(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'NotificationConfigurations') foreach (@{ $result->NotificationConfigurations });
     }
 
     return undef
@@ -363,18 +371,20 @@ package Paws::AutoScaling;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribePolicies(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->NextToken) {
-        $result = $self->DescribePolicies(@_, NextToken => $result->NextToken);
-        push @{ $result->ScalingPolicies }, @{ $result->ScalingPolicies };
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribePolicies(@_, NextToken => $next_result->NextToken);
+        push @{ $result->ScalingPolicies }, @{ $next_result->ScalingPolicies };
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->DescribePolicies(@_, NextToken => $result->NextToken);
         $callback->($_ => 'ScalingPolicies') foreach (@{ $result->ScalingPolicies });
+        $result = $self->DescribePolicies(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'ScalingPolicies') foreach (@{ $result->ScalingPolicies });
     }
 
     return undef
@@ -384,18 +394,20 @@ package Paws::AutoScaling;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeScalingActivities(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->NextToken) {
-        $result = $self->DescribeScalingActivities(@_, NextToken => $result->NextToken);
-        push @{ $result->Activities }, @{ $result->Activities };
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeScalingActivities(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Activities }, @{ $next_result->Activities };
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->DescribeScalingActivities(@_, NextToken => $result->NextToken);
         $callback->($_ => 'Activities') foreach (@{ $result->Activities });
+        $result = $self->DescribeScalingActivities(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'Activities') foreach (@{ $result->Activities });
     }
 
     return undef
@@ -405,18 +417,20 @@ package Paws::AutoScaling;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeScheduledActions(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->NextToken) {
-        $result = $self->DescribeScheduledActions(@_, NextToken => $result->NextToken);
-        push @{ $result->ScheduledUpdateGroupActions }, @{ $result->ScheduledUpdateGroupActions };
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeScheduledActions(@_, NextToken => $next_result->NextToken);
+        push @{ $result->ScheduledUpdateGroupActions }, @{ $next_result->ScheduledUpdateGroupActions };
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->DescribeScheduledActions(@_, NextToken => $result->NextToken);
         $callback->($_ => 'ScheduledUpdateGroupActions') foreach (@{ $result->ScheduledUpdateGroupActions });
+        $result = $self->DescribeScheduledActions(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'ScheduledUpdateGroupActions') foreach (@{ $result->ScheduledUpdateGroupActions });
     }
 
     return undef
@@ -426,18 +440,20 @@ package Paws::AutoScaling;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeTags(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->NextToken) {
-        $result = $self->DescribeTags(@_, NextToken => $result->NextToken);
-        push @{ $result->Tags }, @{ $result->Tags };
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeTags(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Tags }, @{ $next_result->Tags };
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->DescribeTags(@_, NextToken => $result->NextToken);
         $callback->($_ => 'Tags') foreach (@{ $result->Tags });
+        $result = $self->DescribeTags(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'Tags') foreach (@{ $result->Tags });
     }
 
     return undef

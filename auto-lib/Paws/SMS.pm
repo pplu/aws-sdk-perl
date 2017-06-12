@@ -75,18 +75,20 @@ package Paws::SMS;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->GetConnectors(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->nextToken) {
-        $result = $self->GetConnectors(@_, nextToken => $result->nextToken);
-        push @{ $result->connectorList }, @{ $result->connectorList };
+      while ($next_result->nextToken) {
+        $next_result = $self->GetConnectors(@_, nextToken => $next_result->nextToken);
+        push @{ $result->connectorList }, @{ $next_result->connectorList };
       }
       return $result;
     } else {
       while ($result->nextToken) {
-        $result = $self->GetConnectors(@_, nextToken => $result->nextToken);
         $callback->($_ => 'connectorList') foreach (@{ $result->connectorList });
+        $result = $self->GetConnectors(@_, nextToken => $result->nextToken);
       }
+      $callback->($_ => 'connectorList') foreach (@{ $result->connectorList });
     }
 
     return undef
@@ -96,18 +98,20 @@ package Paws::SMS;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->GetReplicationJobs(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->nextToken) {
-        $result = $self->GetReplicationJobs(@_, nextToken => $result->nextToken);
-        push @{ $result->replicationJobList }, @{ $result->replicationJobList };
+      while ($next_result->nextToken) {
+        $next_result = $self->GetReplicationJobs(@_, nextToken => $next_result->nextToken);
+        push @{ $result->replicationJobList }, @{ $next_result->replicationJobList };
       }
       return $result;
     } else {
       while ($result->nextToken) {
-        $result = $self->GetReplicationJobs(@_, nextToken => $result->nextToken);
         $callback->($_ => 'replicationJobList') foreach (@{ $result->replicationJobList });
+        $result = $self->GetReplicationJobs(@_, nextToken => $result->nextToken);
       }
+      $callback->($_ => 'replicationJobList') foreach (@{ $result->replicationJobList });
     }
 
     return undef
@@ -117,18 +121,20 @@ package Paws::SMS;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->GetReplicationRuns(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->nextToken) {
-        $result = $self->GetReplicationRuns(@_, nextToken => $result->nextToken);
-        push @{ $result->replicationRunList }, @{ $result->replicationRunList };
+      while ($next_result->nextToken) {
+        $next_result = $self->GetReplicationRuns(@_, nextToken => $next_result->nextToken);
+        push @{ $result->replicationRunList }, @{ $next_result->replicationRunList };
       }
       return $result;
     } else {
       while ($result->nextToken) {
-        $result = $self->GetReplicationRuns(@_, nextToken => $result->nextToken);
         $callback->($_ => 'replicationRunList') foreach (@{ $result->replicationRunList });
+        $result = $self->GetReplicationRuns(@_, nextToken => $result->nextToken);
       }
+      $callback->($_ => 'replicationRunList') foreach (@{ $result->replicationRunList });
     }
 
     return undef
@@ -138,18 +144,20 @@ package Paws::SMS;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->GetServers(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->nextToken) {
-        $result = $self->GetServers(@_, nextToken => $result->nextToken);
-        push @{ $result->serverList }, @{ $result->serverList };
+      while ($next_result->nextToken) {
+        $next_result = $self->GetServers(@_, nextToken => $next_result->nextToken);
+        push @{ $result->serverList }, @{ $next_result->serverList };
       }
       return $result;
     } else {
       while ($result->nextToken) {
-        $result = $self->GetServers(@_, nextToken => $result->nextToken);
         $callback->($_ => 'serverList') foreach (@{ $result->serverList });
+        $result = $self->GetServers(@_, nextToken => $result->nextToken);
       }
+      $callback->($_ => 'serverList') foreach (@{ $result->serverList });
     }
 
     return undef

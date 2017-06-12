@@ -35,18 +35,20 @@ package Paws::CUR;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeReportDefinitions(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->NextToken) {
-        $result = $self->DescribeReportDefinitions(@_, NextToken => $result->NextToken);
-        push @{ $result->ReportDefinitions }, @{ $result->ReportDefinitions };
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeReportDefinitions(@_, NextToken => $next_result->NextToken);
+        push @{ $result->ReportDefinitions }, @{ $next_result->ReportDefinitions };
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->DescribeReportDefinitions(@_, NextToken => $result->NextToken);
         $callback->($_ => 'ReportDefinitions') foreach (@{ $result->ReportDefinitions });
+        $result = $self->DescribeReportDefinitions(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'ReportDefinitions') foreach (@{ $result->ReportDefinitions });
     }
 
     return undef

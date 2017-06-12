@@ -74,18 +74,20 @@ package Paws::EFS;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeFileSystems(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->Marker) {
-        $result = $self->DescribeFileSystems(@_, Marker => $result->NextMarker);
-        push @{ $result->FileSystems }, @{ $result->FileSystems };
+      while ($next_result->NextMarker) {
+        $next_result = $self->DescribeFileSystems(@_, Marker => $next_result->NextMarker);
+        push @{ $result->FileSystems }, @{ $next_result->FileSystems };
       }
       return $result;
     } else {
-      while ($result->Marker) {
-        $result = $self->DescribeFileSystems(@_, Marker => $result->NextMarker);
+      while ($result->NextMarker) {
         $callback->($_ => 'FileSystems') foreach (@{ $result->FileSystems });
+        $result = $self->DescribeFileSystems(@_, Marker => $result->NextMarker);
       }
+      $callback->($_ => 'FileSystems') foreach (@{ $result->FileSystems });
     }
 
     return undef
@@ -95,18 +97,20 @@ package Paws::EFS;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeMountTargets(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->Marker) {
-        $result = $self->DescribeMountTargets(@_, Marker => $result->NextMarker);
-        push @{ $result->MountTargets }, @{ $result->MountTargets };
+      while ($next_result->NextMarker) {
+        $next_result = $self->DescribeMountTargets(@_, Marker => $next_result->NextMarker);
+        push @{ $result->MountTargets }, @{ $next_result->MountTargets };
       }
       return $result;
     } else {
-      while ($result->Marker) {
-        $result = $self->DescribeMountTargets(@_, Marker => $result->NextMarker);
+      while ($result->NextMarker) {
         $callback->($_ => 'MountTargets') foreach (@{ $result->MountTargets });
+        $result = $self->DescribeMountTargets(@_, Marker => $result->NextMarker);
       }
+      $callback->($_ => 'MountTargets') foreach (@{ $result->MountTargets });
     }
 
     return undef
@@ -116,18 +120,20 @@ package Paws::EFS;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeTags(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->Marker) {
-        $result = $self->DescribeTags(@_, Marker => $result->NextMarker);
-        push @{ $result->Tags }, @{ $result->Tags };
+      while ($next_result->NextMarker) {
+        $next_result = $self->DescribeTags(@_, Marker => $next_result->NextMarker);
+        push @{ $result->Tags }, @{ $next_result->Tags };
       }
       return $result;
     } else {
-      while ($result->Marker) {
-        $result = $self->DescribeTags(@_, Marker => $result->NextMarker);
+      while ($result->NextMarker) {
         $callback->($_ => 'Tags') foreach (@{ $result->Tags });
+        $result = $self->DescribeTags(@_, Marker => $result->NextMarker);
       }
+      $callback->($_ => 'Tags') foreach (@{ $result->Tags });
     }
 
     return undef

@@ -105,18 +105,20 @@ package Paws::Snowball;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeAddresses(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->NextToken) {
-        $result = $self->DescribeAddresses(@_, NextToken => $result->NextToken);
-        push @{ $result->Addresses }, @{ $result->Addresses };
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeAddresses(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Addresses }, @{ $next_result->Addresses };
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->DescribeAddresses(@_, NextToken => $result->NextToken);
         $callback->($_ => 'Addresses') foreach (@{ $result->Addresses });
+        $result = $self->DescribeAddresses(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'Addresses') foreach (@{ $result->Addresses });
     }
 
     return undef
@@ -126,18 +128,20 @@ package Paws::Snowball;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListJobs(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->NextToken) {
-        $result = $self->ListJobs(@_, NextToken => $result->NextToken);
-        push @{ $result->JobListEntries }, @{ $result->JobListEntries };
+      while ($next_result->NextToken) {
+        $next_result = $self->ListJobs(@_, NextToken => $next_result->NextToken);
+        push @{ $result->JobListEntries }, @{ $next_result->JobListEntries };
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->ListJobs(@_, NextToken => $result->NextToken);
         $callback->($_ => 'JobListEntries') foreach (@{ $result->JobListEntries });
+        $result = $self->ListJobs(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'JobListEntries') foreach (@{ $result->JobListEntries });
     }
 
     return undef

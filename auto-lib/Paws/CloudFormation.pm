@@ -149,18 +149,20 @@ package Paws::CloudFormation;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeStackEvents(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->NextToken) {
-        $result = $self->DescribeStackEvents(@_, NextToken => $result->NextToken);
-        push @{ $result->StackEvents }, @{ $result->StackEvents };
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeStackEvents(@_, NextToken => $next_result->NextToken);
+        push @{ $result->StackEvents }, @{ $next_result->StackEvents };
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->DescribeStackEvents(@_, NextToken => $result->NextToken);
         $callback->($_ => 'StackEvents') foreach (@{ $result->StackEvents });
+        $result = $self->DescribeStackEvents(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'StackEvents') foreach (@{ $result->StackEvents });
     }
 
     return undef
@@ -170,18 +172,20 @@ package Paws::CloudFormation;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeStacks(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->NextToken) {
-        $result = $self->DescribeStacks(@_, NextToken => $result->NextToken);
-        push @{ $result->Stacks }, @{ $result->Stacks };
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeStacks(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Stacks }, @{ $next_result->Stacks };
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->DescribeStacks(@_, NextToken => $result->NextToken);
         $callback->($_ => 'Stacks') foreach (@{ $result->Stacks });
+        $result = $self->DescribeStacks(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'Stacks') foreach (@{ $result->Stacks });
     }
 
     return undef
@@ -191,18 +195,20 @@ package Paws::CloudFormation;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListExports(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->NextToken) {
-        $result = $self->ListExports(@_, NextToken => $result->NextToken);
-        push @{ $result->Exports }, @{ $result->Exports };
+      while ($next_result->NextToken) {
+        $next_result = $self->ListExports(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Exports }, @{ $next_result->Exports };
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->ListExports(@_, NextToken => $result->NextToken);
         $callback->($_ => 'Exports') foreach (@{ $result->Exports });
+        $result = $self->ListExports(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'Exports') foreach (@{ $result->Exports });
     }
 
     return undef
@@ -212,18 +218,20 @@ package Paws::CloudFormation;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListImports(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->NextToken) {
-        $result = $self->ListImports(@_, NextToken => $result->NextToken);
-        push @{ $result->Imports }, @{ $result->Imports };
+      while ($next_result->NextToken) {
+        $next_result = $self->ListImports(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Imports }, @{ $next_result->Imports };
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->ListImports(@_, NextToken => $result->NextToken);
         $callback->($_ => 'Imports') foreach (@{ $result->Imports });
+        $result = $self->ListImports(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'Imports') foreach (@{ $result->Imports });
     }
 
     return undef
@@ -233,18 +241,20 @@ package Paws::CloudFormation;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListStackResources(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->NextToken) {
-        $result = $self->ListStackResources(@_, NextToken => $result->NextToken);
-        push @{ $result->StackResourceSummaries }, @{ $result->StackResourceSummaries };
+      while ($next_result->NextToken) {
+        $next_result = $self->ListStackResources(@_, NextToken => $next_result->NextToken);
+        push @{ $result->StackResourceSummaries }, @{ $next_result->StackResourceSummaries };
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->ListStackResources(@_, NextToken => $result->NextToken);
         $callback->($_ => 'StackResourceSummaries') foreach (@{ $result->StackResourceSummaries });
+        $result = $self->ListStackResources(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'StackResourceSummaries') foreach (@{ $result->StackResourceSummaries });
     }
 
     return undef
@@ -254,18 +264,20 @@ package Paws::CloudFormation;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListStacks(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->NextToken) {
-        $result = $self->ListStacks(@_, NextToken => $result->NextToken);
-        push @{ $result->StackSummaries }, @{ $result->StackSummaries };
+      while ($next_result->NextToken) {
+        $next_result = $self->ListStacks(@_, NextToken => $next_result->NextToken);
+        push @{ $result->StackSummaries }, @{ $next_result->StackSummaries };
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->ListStacks(@_, NextToken => $result->NextToken);
         $callback->($_ => 'StackSummaries') foreach (@{ $result->StackSummaries });
+        $result = $self->ListStacks(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'StackSummaries') foreach (@{ $result->StackSummaries });
     }
 
     return undef

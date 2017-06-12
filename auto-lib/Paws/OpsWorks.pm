@@ -370,18 +370,20 @@ package Paws::OpsWorks;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeEcsClusters(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->NextToken) {
-        $result = $self->DescribeEcsClusters(@_, NextToken => $result->NextToken);
-        push @{ $result->EcsClusters }, @{ $result->EcsClusters };
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeEcsClusters(@_, NextToken => $next_result->NextToken);
+        push @{ $result->EcsClusters }, @{ $next_result->EcsClusters };
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->DescribeEcsClusters(@_, NextToken => $result->NextToken);
         $callback->($_ => 'EcsClusters') foreach (@{ $result->EcsClusters });
+        $result = $self->DescribeEcsClusters(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'EcsClusters') foreach (@{ $result->EcsClusters });
     }
 
     return undef

@@ -18,11 +18,10 @@ my $paws = Paws->new(config => {
   credentials => 'Test::CustomCredentials'
 });
 
-my $dir = 't/18_mocked';
-opendir(my $dh, $dir);
 my @files = @ARGV;
 if (not @files) {
-  @files = map { "$dir/$_" } grep { $_ =~ m/\.response$/ } sort readdir($dh);
+  push @files, sort <"t/18_mocked/*.response">;
+  push @files, sort <"t/26_paginators/*/*.response">;
 } else {
   @files = grep { $_ =~ m/\.response$/ } @files;
 }

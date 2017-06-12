@@ -482,18 +482,20 @@ package Paws::RDS;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeDBClusterSnapshots(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->Marker) {
-        $result = $self->DescribeDBClusterSnapshots(@_, Marker => $result->Marker);
-        push @{ $result->DBClusterSnapshots }, @{ $result->DBClusterSnapshots };
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeDBClusterSnapshots(@_, Marker => $next_result->Marker);
+        push @{ $result->DBClusterSnapshots }, @{ $next_result->DBClusterSnapshots };
       }
       return $result;
     } else {
       while ($result->Marker) {
-        $result = $self->DescribeDBClusterSnapshots(@_, Marker => $result->Marker);
         $callback->($_ => 'DBClusterSnapshots') foreach (@{ $result->DBClusterSnapshots });
+        $result = $self->DescribeDBClusterSnapshots(@_, Marker => $result->Marker);
       }
+      $callback->($_ => 'DBClusterSnapshots') foreach (@{ $result->DBClusterSnapshots });
     }
 
     return undef
@@ -503,18 +505,20 @@ package Paws::RDS;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeDBEngineVersions(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->Marker) {
-        $result = $self->DescribeDBEngineVersions(@_, Marker => $result->Marker);
-        push @{ $result->DBEngineVersions }, @{ $result->DBEngineVersions };
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeDBEngineVersions(@_, Marker => $next_result->Marker);
+        push @{ $result->DBEngineVersions }, @{ $next_result->DBEngineVersions };
       }
       return $result;
     } else {
       while ($result->Marker) {
-        $result = $self->DescribeDBEngineVersions(@_, Marker => $result->Marker);
         $callback->($_ => 'DBEngineVersions') foreach (@{ $result->DBEngineVersions });
+        $result = $self->DescribeDBEngineVersions(@_, Marker => $result->Marker);
       }
+      $callback->($_ => 'DBEngineVersions') foreach (@{ $result->DBEngineVersions });
     }
 
     return undef
@@ -524,18 +528,20 @@ package Paws::RDS;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeDBInstances(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->Marker) {
-        $result = $self->DescribeDBInstances(@_, Marker => $result->Marker);
-        push @{ $result->DBInstances }, @{ $result->DBInstances };
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeDBInstances(@_, Marker => $next_result->Marker);
+        push @{ $result->DBInstances }, @{ $next_result->DBInstances };
       }
       return $result;
     } else {
       while ($result->Marker) {
-        $result = $self->DescribeDBInstances(@_, Marker => $result->Marker);
         $callback->($_ => 'DBInstances') foreach (@{ $result->DBInstances });
+        $result = $self->DescribeDBInstances(@_, Marker => $result->Marker);
       }
+      $callback->($_ => 'DBInstances') foreach (@{ $result->DBInstances });
     }
 
     return undef
@@ -545,18 +551,20 @@ package Paws::RDS;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeDBLogFiles(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->Marker) {
-        $result = $self->DescribeDBLogFiles(@_, Marker => $result->Marker);
-        push @{ $result->DescribeDBLogFiles }, @{ $result->DescribeDBLogFiles };
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeDBLogFiles(@_, Marker => $next_result->Marker);
+        push @{ $result->DescribeDBLogFiles }, @{ $next_result->DescribeDBLogFiles };
       }
       return $result;
     } else {
       while ($result->Marker) {
-        $result = $self->DescribeDBLogFiles(@_, Marker => $result->Marker);
         $callback->($_ => 'DescribeDBLogFiles') foreach (@{ $result->DescribeDBLogFiles });
+        $result = $self->DescribeDBLogFiles(@_, Marker => $result->Marker);
       }
+      $callback->($_ => 'DescribeDBLogFiles') foreach (@{ $result->DescribeDBLogFiles });
     }
 
     return undef
@@ -566,18 +574,20 @@ package Paws::RDS;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeDBParameterGroups(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->Marker) {
-        $result = $self->DescribeDBParameterGroups(@_, Marker => $result->Marker);
-        push @{ $result->DBParameterGroups }, @{ $result->DBParameterGroups };
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeDBParameterGroups(@_, Marker => $next_result->Marker);
+        push @{ $result->DBParameterGroups }, @{ $next_result->DBParameterGroups };
       }
       return $result;
     } else {
       while ($result->Marker) {
-        $result = $self->DescribeDBParameterGroups(@_, Marker => $result->Marker);
         $callback->($_ => 'DBParameterGroups') foreach (@{ $result->DBParameterGroups });
+        $result = $self->DescribeDBParameterGroups(@_, Marker => $result->Marker);
       }
+      $callback->($_ => 'DBParameterGroups') foreach (@{ $result->DBParameterGroups });
     }
 
     return undef
@@ -587,18 +597,20 @@ package Paws::RDS;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeDBParameters(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->Marker) {
-        $result = $self->DescribeDBParameters(@_, Marker => $result->Marker);
-        push @{ $result->Parameters }, @{ $result->Parameters };
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeDBParameters(@_, Marker => $next_result->Marker);
+        push @{ $result->Parameters }, @{ $next_result->Parameters };
       }
       return $result;
     } else {
       while ($result->Marker) {
-        $result = $self->DescribeDBParameters(@_, Marker => $result->Marker);
         $callback->($_ => 'Parameters') foreach (@{ $result->Parameters });
+        $result = $self->DescribeDBParameters(@_, Marker => $result->Marker);
       }
+      $callback->($_ => 'Parameters') foreach (@{ $result->Parameters });
     }
 
     return undef
@@ -608,18 +620,20 @@ package Paws::RDS;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeDBSecurityGroups(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->Marker) {
-        $result = $self->DescribeDBSecurityGroups(@_, Marker => $result->Marker);
-        push @{ $result->DBSecurityGroups }, @{ $result->DBSecurityGroups };
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeDBSecurityGroups(@_, Marker => $next_result->Marker);
+        push @{ $result->DBSecurityGroups }, @{ $next_result->DBSecurityGroups };
       }
       return $result;
     } else {
       while ($result->Marker) {
-        $result = $self->DescribeDBSecurityGroups(@_, Marker => $result->Marker);
         $callback->($_ => 'DBSecurityGroups') foreach (@{ $result->DBSecurityGroups });
+        $result = $self->DescribeDBSecurityGroups(@_, Marker => $result->Marker);
       }
+      $callback->($_ => 'DBSecurityGroups') foreach (@{ $result->DBSecurityGroups });
     }
 
     return undef
@@ -629,18 +643,20 @@ package Paws::RDS;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeDBSnapshots(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->Marker) {
-        $result = $self->DescribeDBSnapshots(@_, Marker => $result->Marker);
-        push @{ $result->DBSnapshots }, @{ $result->DBSnapshots };
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeDBSnapshots(@_, Marker => $next_result->Marker);
+        push @{ $result->DBSnapshots }, @{ $next_result->DBSnapshots };
       }
       return $result;
     } else {
       while ($result->Marker) {
-        $result = $self->DescribeDBSnapshots(@_, Marker => $result->Marker);
         $callback->($_ => 'DBSnapshots') foreach (@{ $result->DBSnapshots });
+        $result = $self->DescribeDBSnapshots(@_, Marker => $result->Marker);
       }
+      $callback->($_ => 'DBSnapshots') foreach (@{ $result->DBSnapshots });
     }
 
     return undef
@@ -650,18 +666,20 @@ package Paws::RDS;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeDBSubnetGroups(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->Marker) {
-        $result = $self->DescribeDBSubnetGroups(@_, Marker => $result->Marker);
-        push @{ $result->DBSubnetGroups }, @{ $result->DBSubnetGroups };
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeDBSubnetGroups(@_, Marker => $next_result->Marker);
+        push @{ $result->DBSubnetGroups }, @{ $next_result->DBSubnetGroups };
       }
       return $result;
     } else {
       while ($result->Marker) {
-        $result = $self->DescribeDBSubnetGroups(@_, Marker => $result->Marker);
         $callback->($_ => 'DBSubnetGroups') foreach (@{ $result->DBSubnetGroups });
+        $result = $self->DescribeDBSubnetGroups(@_, Marker => $result->Marker);
       }
+      $callback->($_ => 'DBSubnetGroups') foreach (@{ $result->DBSubnetGroups });
     }
 
     return undef
@@ -671,18 +689,20 @@ package Paws::RDS;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeEngineDefaultParameters(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->Marker) {
-        $result = $self->DescribeEngineDefaultParameters(@_, Marker => $result->EngineDefaults->Marker);
-        push @{ $result->EngineDefaults->Parameters }, @{ $result->EngineDefaults->Parameters };
+      while ($next_result->EngineDefaults->Marker) {
+        $next_result = $self->DescribeEngineDefaultParameters(@_, Marker => $next_result->EngineDefaults->Marker);
+        push @{ $result->EngineDefaults->Parameters }, @{ $next_result->EngineDefaults->Parameters };
       }
       return $result;
     } else {
-      while ($result->Marker) {
-        $result = $self->DescribeEngineDefaultParameters(@_, Marker => $result->EngineDefaults->Marker);
+      while ($result->EngineDefaults->Marker) {
         $callback->($_ => 'EngineDefaults.Parameters') foreach (@{ $result->EngineDefaults->Parameters });
+        $result = $self->DescribeEngineDefaultParameters(@_, Marker => $result->EngineDefaults->Marker);
       }
+      $callback->($_ => 'EngineDefaults.Parameters') foreach (@{ $result->EngineDefaults->Parameters });
     }
 
     return undef
@@ -692,18 +712,20 @@ package Paws::RDS;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeEvents(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->Marker) {
-        $result = $self->DescribeEvents(@_, Marker => $result->Marker);
-        push @{ $result->Events }, @{ $result->Events };
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeEvents(@_, Marker => $next_result->Marker);
+        push @{ $result->Events }, @{ $next_result->Events };
       }
       return $result;
     } else {
       while ($result->Marker) {
-        $result = $self->DescribeEvents(@_, Marker => $result->Marker);
         $callback->($_ => 'Events') foreach (@{ $result->Events });
+        $result = $self->DescribeEvents(@_, Marker => $result->Marker);
       }
+      $callback->($_ => 'Events') foreach (@{ $result->Events });
     }
 
     return undef
@@ -713,18 +735,20 @@ package Paws::RDS;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeEventSubscriptions(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->Marker) {
-        $result = $self->DescribeEventSubscriptions(@_, Marker => $result->Marker);
-        push @{ $result->EventSubscriptionsList }, @{ $result->EventSubscriptionsList };
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeEventSubscriptions(@_, Marker => $next_result->Marker);
+        push @{ $result->EventSubscriptionsList }, @{ $next_result->EventSubscriptionsList };
       }
       return $result;
     } else {
       while ($result->Marker) {
-        $result = $self->DescribeEventSubscriptions(@_, Marker => $result->Marker);
         $callback->($_ => 'EventSubscriptionsList') foreach (@{ $result->EventSubscriptionsList });
+        $result = $self->DescribeEventSubscriptions(@_, Marker => $result->Marker);
       }
+      $callback->($_ => 'EventSubscriptionsList') foreach (@{ $result->EventSubscriptionsList });
     }
 
     return undef
@@ -734,18 +758,20 @@ package Paws::RDS;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeOptionGroupOptions(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->Marker) {
-        $result = $self->DescribeOptionGroupOptions(@_, Marker => $result->Marker);
-        push @{ $result->OptionGroupOptions }, @{ $result->OptionGroupOptions };
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeOptionGroupOptions(@_, Marker => $next_result->Marker);
+        push @{ $result->OptionGroupOptions }, @{ $next_result->OptionGroupOptions };
       }
       return $result;
     } else {
       while ($result->Marker) {
-        $result = $self->DescribeOptionGroupOptions(@_, Marker => $result->Marker);
         $callback->($_ => 'OptionGroupOptions') foreach (@{ $result->OptionGroupOptions });
+        $result = $self->DescribeOptionGroupOptions(@_, Marker => $result->Marker);
       }
+      $callback->($_ => 'OptionGroupOptions') foreach (@{ $result->OptionGroupOptions });
     }
 
     return undef
@@ -755,18 +781,20 @@ package Paws::RDS;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeOptionGroups(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->Marker) {
-        $result = $self->DescribeOptionGroups(@_, Marker => $result->Marker);
-        push @{ $result->OptionGroupsList }, @{ $result->OptionGroupsList };
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeOptionGroups(@_, Marker => $next_result->Marker);
+        push @{ $result->OptionGroupsList }, @{ $next_result->OptionGroupsList };
       }
       return $result;
     } else {
       while ($result->Marker) {
-        $result = $self->DescribeOptionGroups(@_, Marker => $result->Marker);
         $callback->($_ => 'OptionGroupsList') foreach (@{ $result->OptionGroupsList });
+        $result = $self->DescribeOptionGroups(@_, Marker => $result->Marker);
       }
+      $callback->($_ => 'OptionGroupsList') foreach (@{ $result->OptionGroupsList });
     }
 
     return undef
@@ -776,18 +804,20 @@ package Paws::RDS;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeOrderableDBInstanceOptions(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->Marker) {
-        $result = $self->DescribeOrderableDBInstanceOptions(@_, Marker => $result->Marker);
-        push @{ $result->OrderableDBInstanceOptions }, @{ $result->OrderableDBInstanceOptions };
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeOrderableDBInstanceOptions(@_, Marker => $next_result->Marker);
+        push @{ $result->OrderableDBInstanceOptions }, @{ $next_result->OrderableDBInstanceOptions };
       }
       return $result;
     } else {
       while ($result->Marker) {
-        $result = $self->DescribeOrderableDBInstanceOptions(@_, Marker => $result->Marker);
         $callback->($_ => 'OrderableDBInstanceOptions') foreach (@{ $result->OrderableDBInstanceOptions });
+        $result = $self->DescribeOrderableDBInstanceOptions(@_, Marker => $result->Marker);
       }
+      $callback->($_ => 'OrderableDBInstanceOptions') foreach (@{ $result->OrderableDBInstanceOptions });
     }
 
     return undef
@@ -797,18 +827,20 @@ package Paws::RDS;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeReservedDBInstances(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->Marker) {
-        $result = $self->DescribeReservedDBInstances(@_, Marker => $result->Marker);
-        push @{ $result->ReservedDBInstances }, @{ $result->ReservedDBInstances };
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeReservedDBInstances(@_, Marker => $next_result->Marker);
+        push @{ $result->ReservedDBInstances }, @{ $next_result->ReservedDBInstances };
       }
       return $result;
     } else {
       while ($result->Marker) {
-        $result = $self->DescribeReservedDBInstances(@_, Marker => $result->Marker);
         $callback->($_ => 'ReservedDBInstances') foreach (@{ $result->ReservedDBInstances });
+        $result = $self->DescribeReservedDBInstances(@_, Marker => $result->Marker);
       }
+      $callback->($_ => 'ReservedDBInstances') foreach (@{ $result->ReservedDBInstances });
     }
 
     return undef
@@ -818,18 +850,20 @@ package Paws::RDS;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeReservedDBInstancesOfferings(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->Marker) {
-        $result = $self->DescribeReservedDBInstancesOfferings(@_, Marker => $result->Marker);
-        push @{ $result->ReservedDBInstancesOfferings }, @{ $result->ReservedDBInstancesOfferings };
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeReservedDBInstancesOfferings(@_, Marker => $next_result->Marker);
+        push @{ $result->ReservedDBInstancesOfferings }, @{ $next_result->ReservedDBInstancesOfferings };
       }
       return $result;
     } else {
       while ($result->Marker) {
-        $result = $self->DescribeReservedDBInstancesOfferings(@_, Marker => $result->Marker);
         $callback->($_ => 'ReservedDBInstancesOfferings') foreach (@{ $result->ReservedDBInstancesOfferings });
+        $result = $self->DescribeReservedDBInstancesOfferings(@_, Marker => $result->Marker);
       }
+      $callback->($_ => 'ReservedDBInstancesOfferings') foreach (@{ $result->ReservedDBInstancesOfferings });
     }
 
     return undef
@@ -839,18 +873,20 @@ package Paws::RDS;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DownloadDBLogFilePortion(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->AdditionalDataPending) {
-        $result = $self->DownloadDBLogFilePortion(@_, Marker => $result->Marker);
-        push @{ $result->LogFileData }, @{ $result->LogFileData };
+      while ($next_result->AdditionalDataPending) {
+        $next_result = $self->DownloadDBLogFilePortion(@_, Marker => $next_result->Marker);
+        push @{ $result->LogFileData }, @{ $next_result->LogFileData };
       }
       return $result;
     } else {
       while ($result->AdditionalDataPending) {
-        $result = $self->DownloadDBLogFilePortion(@_, Marker => $result->Marker);
         $callback->($_ => 'LogFileData') foreach (@{ $result->LogFileData });
+        $result = $self->DownloadDBLogFilePortion(@_, Marker => $result->Marker);
       }
+      $callback->($_ => 'LogFileData') foreach (@{ $result->LogFileData });
     }
 
     return undef

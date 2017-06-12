@@ -420,18 +420,20 @@ package Paws::SSM;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeActivations(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->NextToken) {
-        $result = $self->DescribeActivations(@_, NextToken => $result->NextToken);
-        push @{ $result->ActivationList }, @{ $result->ActivationList };
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeActivations(@_, NextToken => $next_result->NextToken);
+        push @{ $result->ActivationList }, @{ $next_result->ActivationList };
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->DescribeActivations(@_, NextToken => $result->NextToken);
         $callback->($_ => 'ActivationList') foreach (@{ $result->ActivationList });
+        $result = $self->DescribeActivations(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'ActivationList') foreach (@{ $result->ActivationList });
     }
 
     return undef
@@ -441,18 +443,20 @@ package Paws::SSM;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeInstanceInformation(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->NextToken) {
-        $result = $self->DescribeInstanceInformation(@_, NextToken => $result->NextToken);
-        push @{ $result->InstanceInformationList }, @{ $result->InstanceInformationList };
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeInstanceInformation(@_, NextToken => $next_result->NextToken);
+        push @{ $result->InstanceInformationList }, @{ $next_result->InstanceInformationList };
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->DescribeInstanceInformation(@_, NextToken => $result->NextToken);
         $callback->($_ => 'InstanceInformationList') foreach (@{ $result->InstanceInformationList });
+        $result = $self->DescribeInstanceInformation(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'InstanceInformationList') foreach (@{ $result->InstanceInformationList });
     }
 
     return undef
@@ -462,18 +466,20 @@ package Paws::SSM;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListAssociations(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->NextToken) {
-        $result = $self->ListAssociations(@_, NextToken => $result->NextToken);
-        push @{ $result->Associations }, @{ $result->Associations };
+      while ($next_result->NextToken) {
+        $next_result = $self->ListAssociations(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Associations }, @{ $next_result->Associations };
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->ListAssociations(@_, NextToken => $result->NextToken);
         $callback->($_ => 'Associations') foreach (@{ $result->Associations });
+        $result = $self->ListAssociations(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'Associations') foreach (@{ $result->Associations });
     }
 
     return undef
@@ -483,18 +489,20 @@ package Paws::SSM;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListCommandInvocations(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->NextToken) {
-        $result = $self->ListCommandInvocations(@_, NextToken => $result->NextToken);
-        push @{ $result->CommandInvocations }, @{ $result->CommandInvocations };
+      while ($next_result->NextToken) {
+        $next_result = $self->ListCommandInvocations(@_, NextToken => $next_result->NextToken);
+        push @{ $result->CommandInvocations }, @{ $next_result->CommandInvocations };
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->ListCommandInvocations(@_, NextToken => $result->NextToken);
         $callback->($_ => 'CommandInvocations') foreach (@{ $result->CommandInvocations });
+        $result = $self->ListCommandInvocations(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'CommandInvocations') foreach (@{ $result->CommandInvocations });
     }
 
     return undef
@@ -504,18 +512,20 @@ package Paws::SSM;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListCommands(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->NextToken) {
-        $result = $self->ListCommands(@_, NextToken => $result->NextToken);
-        push @{ $result->Commands }, @{ $result->Commands };
+      while ($next_result->NextToken) {
+        $next_result = $self->ListCommands(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Commands }, @{ $next_result->Commands };
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->ListCommands(@_, NextToken => $result->NextToken);
         $callback->($_ => 'Commands') foreach (@{ $result->Commands });
+        $result = $self->ListCommands(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'Commands') foreach (@{ $result->Commands });
     }
 
     return undef
@@ -525,18 +535,20 @@ package Paws::SSM;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListDocuments(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->NextToken) {
-        $result = $self->ListDocuments(@_, NextToken => $result->NextToken);
-        push @{ $result->DocumentIdentifiers }, @{ $result->DocumentIdentifiers };
+      while ($next_result->NextToken) {
+        $next_result = $self->ListDocuments(@_, NextToken => $next_result->NextToken);
+        push @{ $result->DocumentIdentifiers }, @{ $next_result->DocumentIdentifiers };
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->ListDocuments(@_, NextToken => $result->NextToken);
         $callback->($_ => 'DocumentIdentifiers') foreach (@{ $result->DocumentIdentifiers });
+        $result = $self->ListDocuments(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'DocumentIdentifiers') foreach (@{ $result->DocumentIdentifiers });
     }
 
     return undef

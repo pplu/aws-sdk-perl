@@ -330,18 +330,20 @@ package Paws::StorageGateway;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeTapeArchives(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->Marker) {
-        $result = $self->DescribeTapeArchives(@_, Marker => $result->Marker);
-        push @{ $result->TapeArchives }, @{ $result->TapeArchives };
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeTapeArchives(@_, Marker => $next_result->Marker);
+        push @{ $result->TapeArchives }, @{ $next_result->TapeArchives };
       }
       return $result;
     } else {
       while ($result->Marker) {
-        $result = $self->DescribeTapeArchives(@_, Marker => $result->Marker);
         $callback->($_ => 'TapeArchives') foreach (@{ $result->TapeArchives });
+        $result = $self->DescribeTapeArchives(@_, Marker => $result->Marker);
       }
+      $callback->($_ => 'TapeArchives') foreach (@{ $result->TapeArchives });
     }
 
     return undef
@@ -351,18 +353,20 @@ package Paws::StorageGateway;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeTapeRecoveryPoints(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->Marker) {
-        $result = $self->DescribeTapeRecoveryPoints(@_, Marker => $result->Marker);
-        push @{ $result->TapeRecoveryPointInfos }, @{ $result->TapeRecoveryPointInfos };
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeTapeRecoveryPoints(@_, Marker => $next_result->Marker);
+        push @{ $result->TapeRecoveryPointInfos }, @{ $next_result->TapeRecoveryPointInfos };
       }
       return $result;
     } else {
       while ($result->Marker) {
-        $result = $self->DescribeTapeRecoveryPoints(@_, Marker => $result->Marker);
         $callback->($_ => 'TapeRecoveryPointInfos') foreach (@{ $result->TapeRecoveryPointInfos });
+        $result = $self->DescribeTapeRecoveryPoints(@_, Marker => $result->Marker);
       }
+      $callback->($_ => 'TapeRecoveryPointInfos') foreach (@{ $result->TapeRecoveryPointInfos });
     }
 
     return undef
@@ -372,18 +376,20 @@ package Paws::StorageGateway;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeTapes(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->Marker) {
-        $result = $self->DescribeTapes(@_, Marker => $result->Marker);
-        push @{ $result->Tapes }, @{ $result->Tapes };
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeTapes(@_, Marker => $next_result->Marker);
+        push @{ $result->Tapes }, @{ $next_result->Tapes };
       }
       return $result;
     } else {
       while ($result->Marker) {
-        $result = $self->DescribeTapes(@_, Marker => $result->Marker);
         $callback->($_ => 'Tapes') foreach (@{ $result->Tapes });
+        $result = $self->DescribeTapes(@_, Marker => $result->Marker);
       }
+      $callback->($_ => 'Tapes') foreach (@{ $result->Tapes });
     }
 
     return undef
@@ -393,18 +399,20 @@ package Paws::StorageGateway;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeVTLDevices(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->Marker) {
-        $result = $self->DescribeVTLDevices(@_, Marker => $result->Marker);
-        push @{ $result->VTLDevices }, @{ $result->VTLDevices };
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeVTLDevices(@_, Marker => $next_result->Marker);
+        push @{ $result->VTLDevices }, @{ $next_result->VTLDevices };
       }
       return $result;
     } else {
       while ($result->Marker) {
-        $result = $self->DescribeVTLDevices(@_, Marker => $result->Marker);
         $callback->($_ => 'VTLDevices') foreach (@{ $result->VTLDevices });
+        $result = $self->DescribeVTLDevices(@_, Marker => $result->Marker);
       }
+      $callback->($_ => 'VTLDevices') foreach (@{ $result->VTLDevices });
     }
 
     return undef
@@ -414,18 +422,20 @@ package Paws::StorageGateway;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListGateways(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->Marker) {
-        $result = $self->ListGateways(@_, Marker => $result->Marker);
-        push @{ $result->Gateways }, @{ $result->Gateways };
+      while ($next_result->Marker) {
+        $next_result = $self->ListGateways(@_, Marker => $next_result->Marker);
+        push @{ $result->Gateways }, @{ $next_result->Gateways };
       }
       return $result;
     } else {
       while ($result->Marker) {
-        $result = $self->ListGateways(@_, Marker => $result->Marker);
         $callback->($_ => 'Gateways') foreach (@{ $result->Gateways });
+        $result = $self->ListGateways(@_, Marker => $result->Marker);
       }
+      $callback->($_ => 'Gateways') foreach (@{ $result->Gateways });
     }
 
     return undef
@@ -435,18 +445,20 @@ package Paws::StorageGateway;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListVolumes(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->Marker) {
-        $result = $self->ListVolumes(@_, Marker => $result->Marker);
-        push @{ $result->VolumeInfos }, @{ $result->VolumeInfos };
+      while ($next_result->Marker) {
+        $next_result = $self->ListVolumes(@_, Marker => $next_result->Marker);
+        push @{ $result->VolumeInfos }, @{ $next_result->VolumeInfos };
       }
       return $result;
     } else {
       while ($result->Marker) {
-        $result = $self->ListVolumes(@_, Marker => $result->Marker);
         $callback->($_ => 'VolumeInfos') foreach (@{ $result->VolumeInfos });
+        $result = $self->ListVolumes(@_, Marker => $result->Marker);
       }
+      $callback->($_ => 'VolumeInfos') foreach (@{ $result->VolumeInfos });
     }
 
     return undef

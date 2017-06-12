@@ -50,18 +50,20 @@ package Paws::Health;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeAffectedEntities(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->nextToken) {
-        $result = $self->DescribeAffectedEntities(@_, nextToken => $result->nextToken);
-        push @{ $result->entities }, @{ $result->entities };
+      while ($next_result->nextToken) {
+        $next_result = $self->DescribeAffectedEntities(@_, nextToken => $next_result->nextToken);
+        push @{ $result->entities }, @{ $next_result->entities };
       }
       return $result;
     } else {
       while ($result->nextToken) {
-        $result = $self->DescribeAffectedEntities(@_, nextToken => $result->nextToken);
         $callback->($_ => 'entities') foreach (@{ $result->entities });
+        $result = $self->DescribeAffectedEntities(@_, nextToken => $result->nextToken);
       }
+      $callback->($_ => 'entities') foreach (@{ $result->entities });
     }
 
     return undef
@@ -71,18 +73,20 @@ package Paws::Health;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeEventAggregates(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->nextToken) {
-        $result = $self->DescribeEventAggregates(@_, nextToken => $result->nextToken);
-        push @{ $result->eventAggregates }, @{ $result->eventAggregates };
+      while ($next_result->nextToken) {
+        $next_result = $self->DescribeEventAggregates(@_, nextToken => $next_result->nextToken);
+        push @{ $result->eventAggregates }, @{ $next_result->eventAggregates };
       }
       return $result;
     } else {
       while ($result->nextToken) {
-        $result = $self->DescribeEventAggregates(@_, nextToken => $result->nextToken);
         $callback->($_ => 'eventAggregates') foreach (@{ $result->eventAggregates });
+        $result = $self->DescribeEventAggregates(@_, nextToken => $result->nextToken);
       }
+      $callback->($_ => 'eventAggregates') foreach (@{ $result->eventAggregates });
     }
 
     return undef
@@ -92,18 +96,20 @@ package Paws::Health;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeEvents(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->nextToken) {
-        $result = $self->DescribeEvents(@_, nextToken => $result->nextToken);
-        push @{ $result->events }, @{ $result->events };
+      while ($next_result->nextToken) {
+        $next_result = $self->DescribeEvents(@_, nextToken => $next_result->nextToken);
+        push @{ $result->events }, @{ $next_result->events };
       }
       return $result;
     } else {
       while ($result->nextToken) {
-        $result = $self->DescribeEvents(@_, nextToken => $result->nextToken);
         $callback->($_ => 'events') foreach (@{ $result->events });
+        $result = $self->DescribeEvents(@_, nextToken => $result->nextToken);
       }
+      $callback->($_ => 'events') foreach (@{ $result->events });
     }
 
     return undef
@@ -113,18 +119,20 @@ package Paws::Health;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeEventTypes(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->nextToken) {
-        $result = $self->DescribeEventTypes(@_, nextToken => $result->nextToken);
-        push @{ $result->eventTypes }, @{ $result->eventTypes };
+      while ($next_result->nextToken) {
+        $next_result = $self->DescribeEventTypes(@_, nextToken => $next_result->nextToken);
+        push @{ $result->eventTypes }, @{ $next_result->eventTypes };
       }
       return $result;
     } else {
       while ($result->nextToken) {
-        $result = $self->DescribeEventTypes(@_, nextToken => $result->nextToken);
         $callback->($_ => 'eventTypes') foreach (@{ $result->eventTypes });
+        $result = $self->DescribeEventTypes(@_, nextToken => $result->nextToken);
       }
+      $callback->($_ => 'eventTypes') foreach (@{ $result->eventTypes });
     }
 
     return undef

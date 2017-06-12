@@ -184,18 +184,20 @@ package Paws::Glacier;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListJobs(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->marker) {
-        $result = $self->ListJobs(@_, marker => $result->Marker);
-        push @{ $result->JobList }, @{ $result->JobList };
+      while ($next_result->Marker) {
+        $next_result = $self->ListJobs(@_, marker => $next_result->Marker);
+        push @{ $result->JobList }, @{ $next_result->JobList };
       }
       return $result;
     } else {
-      while ($result->marker) {
-        $result = $self->ListJobs(@_, marker => $result->Marker);
+      while ($result->Marker) {
         $callback->($_ => 'JobList') foreach (@{ $result->JobList });
+        $result = $self->ListJobs(@_, marker => $result->Marker);
       }
+      $callback->($_ => 'JobList') foreach (@{ $result->JobList });
     }
 
     return undef
@@ -205,18 +207,20 @@ package Paws::Glacier;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListMultipartUploads(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->marker) {
-        $result = $self->ListMultipartUploads(@_, marker => $result->Marker);
-        push @{ $result->UploadsList }, @{ $result->UploadsList };
+      while ($next_result->Marker) {
+        $next_result = $self->ListMultipartUploads(@_, marker => $next_result->Marker);
+        push @{ $result->UploadsList }, @{ $next_result->UploadsList };
       }
       return $result;
     } else {
-      while ($result->marker) {
-        $result = $self->ListMultipartUploads(@_, marker => $result->Marker);
+      while ($result->Marker) {
         $callback->($_ => 'UploadsList') foreach (@{ $result->UploadsList });
+        $result = $self->ListMultipartUploads(@_, marker => $result->Marker);
       }
+      $callback->($_ => 'UploadsList') foreach (@{ $result->UploadsList });
     }
 
     return undef
@@ -226,18 +230,20 @@ package Paws::Glacier;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListParts(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->marker) {
-        $result = $self->ListParts(@_, marker => $result->Marker);
-        push @{ $result->Parts }, @{ $result->Parts };
+      while ($next_result->Marker) {
+        $next_result = $self->ListParts(@_, marker => $next_result->Marker);
+        push @{ $result->Parts }, @{ $next_result->Parts };
       }
       return $result;
     } else {
-      while ($result->marker) {
-        $result = $self->ListParts(@_, marker => $result->Marker);
+      while ($result->Marker) {
         $callback->($_ => 'Parts') foreach (@{ $result->Parts });
+        $result = $self->ListParts(@_, marker => $result->Marker);
       }
+      $callback->($_ => 'Parts') foreach (@{ $result->Parts });
     }
 
     return undef
@@ -247,18 +253,20 @@ package Paws::Glacier;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListVaults(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->marker) {
-        $result = $self->ListVaults(@_, marker => $result->Marker);
-        push @{ $result->VaultList }, @{ $result->VaultList };
+      while ($next_result->Marker) {
+        $next_result = $self->ListVaults(@_, marker => $next_result->Marker);
+        push @{ $result->VaultList }, @{ $next_result->VaultList };
       }
       return $result;
     } else {
-      while ($result->marker) {
-        $result = $self->ListVaults(@_, marker => $result->Marker);
+      while ($result->Marker) {
         $callback->($_ => 'VaultList') foreach (@{ $result->VaultList });
+        $result = $self->ListVaults(@_, marker => $result->Marker);
       }
+      $callback->($_ => 'VaultList') foreach (@{ $result->VaultList });
     }
 
     return undef

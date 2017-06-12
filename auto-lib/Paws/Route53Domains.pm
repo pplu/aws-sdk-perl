@@ -135,18 +135,20 @@ package Paws::Route53Domains;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListDomains(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->Marker) {
-        $result = $self->ListDomains(@_, Marker => $result->NextPageMarker);
-        push @{ $result->Domains }, @{ $result->Domains };
+      while ($next_result->NextPageMarker) {
+        $next_result = $self->ListDomains(@_, Marker => $next_result->NextPageMarker);
+        push @{ $result->Domains }, @{ $next_result->Domains };
       }
       return $result;
     } else {
-      while ($result->Marker) {
-        $result = $self->ListDomains(@_, Marker => $result->NextPageMarker);
+      while ($result->NextPageMarker) {
         $callback->($_ => 'Domains') foreach (@{ $result->Domains });
+        $result = $self->ListDomains(@_, Marker => $result->NextPageMarker);
       }
+      $callback->($_ => 'Domains') foreach (@{ $result->Domains });
     }
 
     return undef
@@ -156,18 +158,20 @@ package Paws::Route53Domains;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListOperations(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->Marker) {
-        $result = $self->ListOperations(@_, Marker => $result->NextPageMarker);
-        push @{ $result->Operations }, @{ $result->Operations };
+      while ($next_result->NextPageMarker) {
+        $next_result = $self->ListOperations(@_, Marker => $next_result->NextPageMarker);
+        push @{ $result->Operations }, @{ $next_result->Operations };
       }
       return $result;
     } else {
-      while ($result->Marker) {
-        $result = $self->ListOperations(@_, Marker => $result->NextPageMarker);
+      while ($result->NextPageMarker) {
         $callback->($_ => 'Operations') foreach (@{ $result->Operations });
+        $result = $self->ListOperations(@_, Marker => $result->NextPageMarker);
       }
+      $callback->($_ => 'Operations') foreach (@{ $result->Operations });
     }
 
     return undef
