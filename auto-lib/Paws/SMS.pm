@@ -79,8 +79,8 @@ package Paws::SMS;
 
     if (not defined $callback) {
       while ($next_result->nextToken) {
-        push @{ $result->connectorList }, @{ $next_result->connectorList };
         $next_result = $self->GetConnectors(@_, nextToken => $next_result->nextToken);
+        push @{ $result->connectorList }, @{ $next_result->connectorList };
       }
       return $result;
     } else {
@@ -102,8 +102,8 @@ package Paws::SMS;
 
     if (not defined $callback) {
       while ($next_result->nextToken) {
-        push @{ $result->replicationJobList }, @{ $next_result->replicationJobList };
         $next_result = $self->GetReplicationJobs(@_, nextToken => $next_result->nextToken);
+        push @{ $result->replicationJobList }, @{ $next_result->replicationJobList };
       }
       return $result;
     } else {
@@ -125,8 +125,8 @@ package Paws::SMS;
 
     if (not defined $callback) {
       while ($next_result->nextToken) {
-        push @{ $result->replicationRunList }, @{ $next_result->replicationRunList };
         $next_result = $self->GetReplicationRuns(@_, nextToken => $next_result->nextToken);
+        push @{ $result->replicationRunList }, @{ $next_result->replicationRunList };
       }
       return $result;
     } else {
@@ -148,8 +148,8 @@ package Paws::SMS;
 
     if (not defined $callback) {
       while ($next_result->nextToken) {
-        push @{ $result->serverList }, @{ $next_result->serverList };
         $next_result = $self->GetServers(@_, nextToken => $next_result->nextToken);
+        push @{ $result->serverList }, @{ $next_result->serverList };
       }
       return $result;
     } else {

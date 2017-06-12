@@ -424,8 +424,8 @@ package Paws::SSM;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        push @{ $result->ActivationList }, @{ $next_result->ActivationList };
         $next_result = $self->DescribeActivations(@_, NextToken => $next_result->NextToken);
+        push @{ $result->ActivationList }, @{ $next_result->ActivationList };
       }
       return $result;
     } else {
@@ -447,8 +447,8 @@ package Paws::SSM;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        push @{ $result->InstanceInformationList }, @{ $next_result->InstanceInformationList };
         $next_result = $self->DescribeInstanceInformation(@_, NextToken => $next_result->NextToken);
+        push @{ $result->InstanceInformationList }, @{ $next_result->InstanceInformationList };
       }
       return $result;
     } else {
@@ -470,8 +470,8 @@ package Paws::SSM;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        push @{ $result->Associations }, @{ $next_result->Associations };
         $next_result = $self->ListAssociations(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Associations }, @{ $next_result->Associations };
       }
       return $result;
     } else {
@@ -493,8 +493,8 @@ package Paws::SSM;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        push @{ $result->CommandInvocations }, @{ $next_result->CommandInvocations };
         $next_result = $self->ListCommandInvocations(@_, NextToken => $next_result->NextToken);
+        push @{ $result->CommandInvocations }, @{ $next_result->CommandInvocations };
       }
       return $result;
     } else {
@@ -516,8 +516,8 @@ package Paws::SSM;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        push @{ $result->Commands }, @{ $next_result->Commands };
         $next_result = $self->ListCommands(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Commands }, @{ $next_result->Commands };
       }
       return $result;
     } else {
@@ -539,8 +539,8 @@ package Paws::SSM;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        push @{ $result->DocumentIdentifiers }, @{ $next_result->DocumentIdentifiers };
         $next_result = $self->ListDocuments(@_, NextToken => $next_result->NextToken);
+        push @{ $result->DocumentIdentifiers }, @{ $next_result->DocumentIdentifiers };
       }
       return $result;
     } else {

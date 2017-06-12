@@ -269,9 +269,9 @@ package Paws::DeviceFarm;
 
     if (not defined $callback) {
       while ($next_result->nextToken) {
+        $next_result = $self->GetOfferingStatus(@_, nextToken => $next_result->nextToken);
         push @{ $result->current }, @{ $next_result->current };
         push @{ $result->nextPeriod }, @{ $next_result->nextPeriod };
-        $next_result = $self->GetOfferingStatus(@_, nextToken => $next_result->nextToken);
       }
       return $result;
     } else {
@@ -295,8 +295,8 @@ package Paws::DeviceFarm;
 
     if (not defined $callback) {
       while ($next_result->nextToken) {
-        push @{ $result->artifacts }, @{ $next_result->artifacts };
         $next_result = $self->ListArtifacts(@_, nextToken => $next_result->nextToken);
+        push @{ $result->artifacts }, @{ $next_result->artifacts };
       }
       return $result;
     } else {
@@ -318,8 +318,8 @@ package Paws::DeviceFarm;
 
     if (not defined $callback) {
       while ($next_result->nextToken) {
-        push @{ $result->devicePools }, @{ $next_result->devicePools };
         $next_result = $self->ListDevicePools(@_, nextToken => $next_result->nextToken);
+        push @{ $result->devicePools }, @{ $next_result->devicePools };
       }
       return $result;
     } else {
@@ -341,8 +341,8 @@ package Paws::DeviceFarm;
 
     if (not defined $callback) {
       while ($next_result->nextToken) {
-        push @{ $result->devices }, @{ $next_result->devices };
         $next_result = $self->ListDevices(@_, nextToken => $next_result->nextToken);
+        push @{ $result->devices }, @{ $next_result->devices };
       }
       return $result;
     } else {
@@ -364,8 +364,8 @@ package Paws::DeviceFarm;
 
     if (not defined $callback) {
       while ($next_result->nextToken) {
-        push @{ $result->jobs }, @{ $next_result->jobs };
         $next_result = $self->ListJobs(@_, nextToken => $next_result->nextToken);
+        push @{ $result->jobs }, @{ $next_result->jobs };
       }
       return $result;
     } else {
@@ -387,8 +387,8 @@ package Paws::DeviceFarm;
 
     if (not defined $callback) {
       while ($next_result->nextToken) {
-        push @{ $result->offerings }, @{ $next_result->offerings };
         $next_result = $self->ListOfferings(@_, nextToken => $next_result->nextToken);
+        push @{ $result->offerings }, @{ $next_result->offerings };
       }
       return $result;
     } else {
@@ -410,8 +410,8 @@ package Paws::DeviceFarm;
 
     if (not defined $callback) {
       while ($next_result->nextToken) {
-        push @{ $result->offeringTransactions }, @{ $next_result->offeringTransactions };
         $next_result = $self->ListOfferingTransactions(@_, nextToken => $next_result->nextToken);
+        push @{ $result->offeringTransactions }, @{ $next_result->offeringTransactions };
       }
       return $result;
     } else {
@@ -433,8 +433,8 @@ package Paws::DeviceFarm;
 
     if (not defined $callback) {
       while ($next_result->nextToken) {
-        push @{ $result->projects }, @{ $next_result->projects };
         $next_result = $self->ListProjects(@_, nextToken => $next_result->nextToken);
+        push @{ $result->projects }, @{ $next_result->projects };
       }
       return $result;
     } else {
@@ -456,8 +456,8 @@ package Paws::DeviceFarm;
 
     if (not defined $callback) {
       while ($next_result->nextToken) {
-        push @{ $result->runs }, @{ $next_result->runs };
         $next_result = $self->ListRuns(@_, nextToken => $next_result->nextToken);
+        push @{ $result->runs }, @{ $next_result->runs };
       }
       return $result;
     } else {
@@ -479,8 +479,8 @@ package Paws::DeviceFarm;
 
     if (not defined $callback) {
       while ($next_result->nextToken) {
-        push @{ $result->samples }, @{ $next_result->samples };
         $next_result = $self->ListSamples(@_, nextToken => $next_result->nextToken);
+        push @{ $result->samples }, @{ $next_result->samples };
       }
       return $result;
     } else {
@@ -502,8 +502,8 @@ package Paws::DeviceFarm;
 
     if (not defined $callback) {
       while ($next_result->nextToken) {
-        push @{ $result->suites }, @{ $next_result->suites };
         $next_result = $self->ListSuites(@_, nextToken => $next_result->nextToken);
+        push @{ $result->suites }, @{ $next_result->suites };
       }
       return $result;
     } else {
@@ -525,8 +525,8 @@ package Paws::DeviceFarm;
 
     if (not defined $callback) {
       while ($next_result->nextToken) {
-        push @{ $result->tests }, @{ $next_result->tests };
         $next_result = $self->ListTests(@_, nextToken => $next_result->nextToken);
+        push @{ $result->tests }, @{ $next_result->tests };
       }
       return $result;
     } else {
@@ -548,8 +548,8 @@ package Paws::DeviceFarm;
 
     if (not defined $callback) {
       while ($next_result->nextToken) {
-        push @{ $result->uniqueProblems }, @{ $next_result->uniqueProblems };
         $next_result = $self->ListUniqueProblems(@_, nextToken => $next_result->nextToken);
+        push @{ $result->uniqueProblems }, @{ $next_result->uniqueProblems };
       }
       return $result;
     } else {
@@ -571,8 +571,8 @@ package Paws::DeviceFarm;
 
     if (not defined $callback) {
       while ($next_result->nextToken) {
-        push @{ $result->uploads }, @{ $next_result->uploads };
         $next_result = $self->ListUploads(@_, nextToken => $next_result->nextToken);
+        push @{ $result->uploads }, @{ $next_result->uploads };
       }
       return $result;
     } else {

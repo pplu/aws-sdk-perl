@@ -109,8 +109,8 @@ package Paws::Snowball;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        push @{ $result->Addresses }, @{ $next_result->Addresses };
         $next_result = $self->DescribeAddresses(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Addresses }, @{ $next_result->Addresses };
       }
       return $result;
     } else {
@@ -132,8 +132,8 @@ package Paws::Snowball;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        push @{ $result->JobListEntries }, @{ $next_result->JobListEntries };
         $next_result = $self->ListJobs(@_, NextToken => $next_result->NextToken);
+        push @{ $result->JobListEntries }, @{ $next_result->JobListEntries };
       }
       return $result;
     } else {

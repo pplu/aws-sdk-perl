@@ -228,8 +228,8 @@ package Paws::ElasticBeanstalk;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        push @{ $result->Events }, @{ $next_result->Events };
         $next_result = $self->DescribeEvents(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Events }, @{ $next_result->Events };
       }
       return $result;
     } else {

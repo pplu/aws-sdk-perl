@@ -144,13 +144,13 @@ package Paws::DynamoDB;
     my $next_result = $result;
 
     if (not defined $callback) {
-      while ($next_result->ExclusiveStartTableName) {
-        push @{ $result->TableNames }, @{ $next_result->TableNames };
+      while ($next_result->LastEvaluatedTableName) {
         $next_result = $self->ListTables(@_, ExclusiveStartTableName => $next_result->LastEvaluatedTableName);
+        push @{ $result->TableNames }, @{ $next_result->TableNames };
       }
       return $result;
     } else {
-      while ($result->ExclusiveStartTableName) {
+      while ($result->LastEvaluatedTableName) {
         $callback->($_ => 'TableNames') foreach (@{ $result->TableNames });
         $result = $self->ListTables(@_, ExclusiveStartTableName => $result->LastEvaluatedTableName);
       }
@@ -167,15 +167,15 @@ package Paws::DynamoDB;
     my $next_result = $result;
 
     if (not defined $callback) {
-      while ($next_result->ExclusiveStartKey) {
+      while ($next_result->LastEvaluatedKey) {
+        $next_result = $self->Query(@_, ExclusiveStartKey => $next_result->LastEvaluatedKey);
         push @{ $result->Items }, @{ $next_result->Items };
         push @{ $result->Count }, @{ $next_result->Count };
         push @{ $result->ScannedCount }, @{ $next_result->ScannedCount };
-        $next_result = $self->Query(@_, ExclusiveStartKey => $next_result->LastEvaluatedKey);
       }
       return $result;
     } else {
-      while ($result->ExclusiveStartKey) {
+      while ($result->LastEvaluatedKey) {
         $callback->($_ => 'Items') foreach (@{ $result->Items });
         $callback->($_ => 'Count') foreach (@{ $result->Count });
         $callback->($_ => 'ScannedCount') foreach (@{ $result->ScannedCount });
@@ -196,15 +196,15 @@ package Paws::DynamoDB;
     my $next_result = $result;
 
     if (not defined $callback) {
-      while ($next_result->ExclusiveStartKey) {
+      while ($next_result->LastEvaluatedKey) {
+        $next_result = $self->Scan(@_, ExclusiveStartKey => $next_result->LastEvaluatedKey);
         push @{ $result->Items }, @{ $next_result->Items };
         push @{ $result->Count }, @{ $next_result->Count };
         push @{ $result->ScannedCount }, @{ $next_result->ScannedCount };
-        $next_result = $self->Scan(@_, ExclusiveStartKey => $next_result->LastEvaluatedKey);
       }
       return $result;
     } else {
-      while ($result->ExclusiveStartKey) {
+      while ($result->LastEvaluatedKey) {
         $callback->($_ => 'Items') foreach (@{ $result->Items });
         $callback->($_ => 'Count') foreach (@{ $result->Count });
         $callback->($_ => 'ScannedCount') foreach (@{ $result->ScannedCount });

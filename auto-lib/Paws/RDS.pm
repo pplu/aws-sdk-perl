@@ -486,8 +486,8 @@ package Paws::RDS;
 
     if (not defined $callback) {
       while ($next_result->Marker) {
-        push @{ $result->DBClusterSnapshots }, @{ $next_result->DBClusterSnapshots };
         $next_result = $self->DescribeDBClusterSnapshots(@_, Marker => $next_result->Marker);
+        push @{ $result->DBClusterSnapshots }, @{ $next_result->DBClusterSnapshots };
       }
       return $result;
     } else {
@@ -509,8 +509,8 @@ package Paws::RDS;
 
     if (not defined $callback) {
       while ($next_result->Marker) {
-        push @{ $result->DBEngineVersions }, @{ $next_result->DBEngineVersions };
         $next_result = $self->DescribeDBEngineVersions(@_, Marker => $next_result->Marker);
+        push @{ $result->DBEngineVersions }, @{ $next_result->DBEngineVersions };
       }
       return $result;
     } else {
@@ -532,8 +532,8 @@ package Paws::RDS;
 
     if (not defined $callback) {
       while ($next_result->Marker) {
-        push @{ $result->DBInstances }, @{ $next_result->DBInstances };
         $next_result = $self->DescribeDBInstances(@_, Marker => $next_result->Marker);
+        push @{ $result->DBInstances }, @{ $next_result->DBInstances };
       }
       return $result;
     } else {
@@ -555,8 +555,8 @@ package Paws::RDS;
 
     if (not defined $callback) {
       while ($next_result->Marker) {
-        push @{ $result->DescribeDBLogFiles }, @{ $next_result->DescribeDBLogFiles };
         $next_result = $self->DescribeDBLogFiles(@_, Marker => $next_result->Marker);
+        push @{ $result->DescribeDBLogFiles }, @{ $next_result->DescribeDBLogFiles };
       }
       return $result;
     } else {
@@ -578,8 +578,8 @@ package Paws::RDS;
 
     if (not defined $callback) {
       while ($next_result->Marker) {
-        push @{ $result->DBParameterGroups }, @{ $next_result->DBParameterGroups };
         $next_result = $self->DescribeDBParameterGroups(@_, Marker => $next_result->Marker);
+        push @{ $result->DBParameterGroups }, @{ $next_result->DBParameterGroups };
       }
       return $result;
     } else {
@@ -601,8 +601,8 @@ package Paws::RDS;
 
     if (not defined $callback) {
       while ($next_result->Marker) {
-        push @{ $result->Parameters }, @{ $next_result->Parameters };
         $next_result = $self->DescribeDBParameters(@_, Marker => $next_result->Marker);
+        push @{ $result->Parameters }, @{ $next_result->Parameters };
       }
       return $result;
     } else {
@@ -624,8 +624,8 @@ package Paws::RDS;
 
     if (not defined $callback) {
       while ($next_result->Marker) {
-        push @{ $result->DBSecurityGroups }, @{ $next_result->DBSecurityGroups };
         $next_result = $self->DescribeDBSecurityGroups(@_, Marker => $next_result->Marker);
+        push @{ $result->DBSecurityGroups }, @{ $next_result->DBSecurityGroups };
       }
       return $result;
     } else {
@@ -647,8 +647,8 @@ package Paws::RDS;
 
     if (not defined $callback) {
       while ($next_result->Marker) {
-        push @{ $result->DBSnapshots }, @{ $next_result->DBSnapshots };
         $next_result = $self->DescribeDBSnapshots(@_, Marker => $next_result->Marker);
+        push @{ $result->DBSnapshots }, @{ $next_result->DBSnapshots };
       }
       return $result;
     } else {
@@ -670,8 +670,8 @@ package Paws::RDS;
 
     if (not defined $callback) {
       while ($next_result->Marker) {
-        push @{ $result->DBSubnetGroups }, @{ $next_result->DBSubnetGroups };
         $next_result = $self->DescribeDBSubnetGroups(@_, Marker => $next_result->Marker);
+        push @{ $result->DBSubnetGroups }, @{ $next_result->DBSubnetGroups };
       }
       return $result;
     } else {
@@ -692,13 +692,13 @@ package Paws::RDS;
     my $next_result = $result;
 
     if (not defined $callback) {
-      while ($next_result->Marker) {
-        push @{ $result->EngineDefaults->Parameters }, @{ $next_result->EngineDefaults->Parameters };
+      while ($next_result->EngineDefaults->Marker) {
         $next_result = $self->DescribeEngineDefaultParameters(@_, Marker => $next_result->EngineDefaults->Marker);
+        push @{ $result->EngineDefaults->Parameters }, @{ $next_result->EngineDefaults->Parameters };
       }
       return $result;
     } else {
-      while ($result->Marker) {
+      while ($result->EngineDefaults->Marker) {
         $callback->($_ => 'EngineDefaults.Parameters') foreach (@{ $result->EngineDefaults->Parameters });
         $result = $self->DescribeEngineDefaultParameters(@_, Marker => $result->EngineDefaults->Marker);
       }
@@ -716,8 +716,8 @@ package Paws::RDS;
 
     if (not defined $callback) {
       while ($next_result->Marker) {
-        push @{ $result->Events }, @{ $next_result->Events };
         $next_result = $self->DescribeEvents(@_, Marker => $next_result->Marker);
+        push @{ $result->Events }, @{ $next_result->Events };
       }
       return $result;
     } else {
@@ -739,8 +739,8 @@ package Paws::RDS;
 
     if (not defined $callback) {
       while ($next_result->Marker) {
-        push @{ $result->EventSubscriptionsList }, @{ $next_result->EventSubscriptionsList };
         $next_result = $self->DescribeEventSubscriptions(@_, Marker => $next_result->Marker);
+        push @{ $result->EventSubscriptionsList }, @{ $next_result->EventSubscriptionsList };
       }
       return $result;
     } else {
@@ -762,8 +762,8 @@ package Paws::RDS;
 
     if (not defined $callback) {
       while ($next_result->Marker) {
-        push @{ $result->OptionGroupOptions }, @{ $next_result->OptionGroupOptions };
         $next_result = $self->DescribeOptionGroupOptions(@_, Marker => $next_result->Marker);
+        push @{ $result->OptionGroupOptions }, @{ $next_result->OptionGroupOptions };
       }
       return $result;
     } else {
@@ -785,8 +785,8 @@ package Paws::RDS;
 
     if (not defined $callback) {
       while ($next_result->Marker) {
-        push @{ $result->OptionGroupsList }, @{ $next_result->OptionGroupsList };
         $next_result = $self->DescribeOptionGroups(@_, Marker => $next_result->Marker);
+        push @{ $result->OptionGroupsList }, @{ $next_result->OptionGroupsList };
       }
       return $result;
     } else {
@@ -808,8 +808,8 @@ package Paws::RDS;
 
     if (not defined $callback) {
       while ($next_result->Marker) {
-        push @{ $result->OrderableDBInstanceOptions }, @{ $next_result->OrderableDBInstanceOptions };
         $next_result = $self->DescribeOrderableDBInstanceOptions(@_, Marker => $next_result->Marker);
+        push @{ $result->OrderableDBInstanceOptions }, @{ $next_result->OrderableDBInstanceOptions };
       }
       return $result;
     } else {
@@ -831,8 +831,8 @@ package Paws::RDS;
 
     if (not defined $callback) {
       while ($next_result->Marker) {
-        push @{ $result->ReservedDBInstances }, @{ $next_result->ReservedDBInstances };
         $next_result = $self->DescribeReservedDBInstances(@_, Marker => $next_result->Marker);
+        push @{ $result->ReservedDBInstances }, @{ $next_result->ReservedDBInstances };
       }
       return $result;
     } else {
@@ -854,8 +854,8 @@ package Paws::RDS;
 
     if (not defined $callback) {
       while ($next_result->Marker) {
-        push @{ $result->ReservedDBInstancesOfferings }, @{ $next_result->ReservedDBInstancesOfferings };
         $next_result = $self->DescribeReservedDBInstancesOfferings(@_, Marker => $next_result->Marker);
+        push @{ $result->ReservedDBInstancesOfferings }, @{ $next_result->ReservedDBInstancesOfferings };
       }
       return $result;
     } else {

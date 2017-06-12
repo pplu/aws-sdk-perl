@@ -49,8 +49,8 @@ package Paws::ResourceTagging;
 
     if (not defined $callback) {
       while ($next_result->PaginationToken) {
-        push @{ $result->ResourceTagMappingList }, @{ $next_result->ResourceTagMappingList };
         $next_result = $self->GetResources(@_, PaginationToken => $next_result->PaginationToken);
+        push @{ $result->ResourceTagMappingList }, @{ $next_result->ResourceTagMappingList };
       }
       return $result;
     } else {
@@ -72,8 +72,8 @@ package Paws::ResourceTagging;
 
     if (not defined $callback) {
       while ($next_result->PaginationToken) {
-        push @{ $result->TagKeys }, @{ $next_result->TagKeys };
         $next_result = $self->GetTagKeys(@_, PaginationToken => $next_result->PaginationToken);
+        push @{ $result->TagKeys }, @{ $next_result->TagKeys };
       }
       return $result;
     } else {
@@ -95,8 +95,8 @@ package Paws::ResourceTagging;
 
     if (not defined $callback) {
       while ($next_result->PaginationToken) {
-        push @{ $result->TagValues }, @{ $next_result->TagValues };
         $next_result = $self->GetTagValues(@_, PaginationToken => $next_result->PaginationToken);
+        push @{ $result->TagValues }, @{ $next_result->TagValues };
       }
       return $result;
     } else {

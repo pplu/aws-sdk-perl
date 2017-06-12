@@ -74,8 +74,8 @@ package Paws::ACM;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        push @{ $result->CertificateSummaryList }, @{ $next_result->CertificateSummaryList };
         $next_result = $self->ListCertificates(@_, NextToken => $next_result->NextToken);
+        push @{ $result->CertificateSummaryList }, @{ $next_result->CertificateSummaryList };
       }
       return $result;
     } else {

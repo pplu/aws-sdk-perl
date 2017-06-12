@@ -173,8 +173,8 @@ package Paws::SNS;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        push @{ $result->Endpoints }, @{ $next_result->Endpoints };
         $next_result = $self->ListEndpointsByPlatformApplication(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Endpoints }, @{ $next_result->Endpoints };
       }
       return $result;
     } else {
@@ -196,8 +196,8 @@ package Paws::SNS;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        push @{ $result->PlatformApplications }, @{ $next_result->PlatformApplications };
         $next_result = $self->ListPlatformApplications(@_, NextToken => $next_result->NextToken);
+        push @{ $result->PlatformApplications }, @{ $next_result->PlatformApplications };
       }
       return $result;
     } else {
@@ -219,8 +219,8 @@ package Paws::SNS;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        push @{ $result->Subscriptions }, @{ $next_result->Subscriptions };
         $next_result = $self->ListSubscriptions(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Subscriptions }, @{ $next_result->Subscriptions };
       }
       return $result;
     } else {
@@ -242,8 +242,8 @@ package Paws::SNS;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        push @{ $result->Subscriptions }, @{ $next_result->Subscriptions };
         $next_result = $self->ListSubscriptionsByTopic(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Subscriptions }, @{ $next_result->Subscriptions };
       }
       return $result;
     } else {
@@ -265,8 +265,8 @@ package Paws::SNS;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        push @{ $result->Topics }, @{ $next_result->Topics };
         $next_result = $self->ListTopics(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Topics }, @{ $next_result->Topics };
       }
       return $result;
     } else {

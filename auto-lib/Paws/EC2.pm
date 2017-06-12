@@ -1163,8 +1163,8 @@ package Paws::EC2;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        push @{ $result->Reservations }, @{ $next_result->Reservations };
         $next_result = $self->DescribeInstances(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Reservations }, @{ $next_result->Reservations };
       }
       return $result;
     } else {
@@ -1186,8 +1186,8 @@ package Paws::EC2;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        push @{ $result->InstanceStatuses }, @{ $next_result->InstanceStatuses };
         $next_result = $self->DescribeInstanceStatus(@_, NextToken => $next_result->NextToken);
+        push @{ $result->InstanceStatuses }, @{ $next_result->InstanceStatuses };
       }
       return $result;
     } else {
@@ -1209,8 +1209,8 @@ package Paws::EC2;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        push @{ $result->NatGateways }, @{ $next_result->NatGateways };
         $next_result = $self->DescribeNatGateways(@_, NextToken => $next_result->NextToken);
+        push @{ $result->NatGateways }, @{ $next_result->NatGateways };
       }
       return $result;
     } else {
@@ -1232,8 +1232,8 @@ package Paws::EC2;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        push @{ $result->ReservedInstancesModifications }, @{ $next_result->ReservedInstancesModifications };
         $next_result = $self->DescribeReservedInstancesModifications(@_, NextToken => $next_result->NextToken);
+        push @{ $result->ReservedInstancesModifications }, @{ $next_result->ReservedInstancesModifications };
       }
       return $result;
     } else {
@@ -1255,8 +1255,8 @@ package Paws::EC2;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        push @{ $result->ReservedInstancesOfferings }, @{ $next_result->ReservedInstancesOfferings };
         $next_result = $self->DescribeReservedInstancesOfferings(@_, NextToken => $next_result->NextToken);
+        push @{ $result->ReservedInstancesOfferings }, @{ $next_result->ReservedInstancesOfferings };
       }
       return $result;
     } else {
@@ -1278,8 +1278,8 @@ package Paws::EC2;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        push @{ $result->Snapshots }, @{ $next_result->Snapshots };
         $next_result = $self->DescribeSnapshots(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Snapshots }, @{ $next_result->Snapshots };
       }
       return $result;
     } else {
@@ -1301,8 +1301,8 @@ package Paws::EC2;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        push @{ $result->SpotFleetRequestConfigs }, @{ $next_result->SpotFleetRequestConfigs };
         $next_result = $self->DescribeSpotFleetRequests(@_, NextToken => $next_result->NextToken);
+        push @{ $result->SpotFleetRequestConfigs }, @{ $next_result->SpotFleetRequestConfigs };
       }
       return $result;
     } else {
@@ -1324,8 +1324,8 @@ package Paws::EC2;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        push @{ $result->SpotPriceHistory }, @{ $next_result->SpotPriceHistory };
         $next_result = $self->DescribeSpotPriceHistory(@_, NextToken => $next_result->NextToken);
+        push @{ $result->SpotPriceHistory }, @{ $next_result->SpotPriceHistory };
       }
       return $result;
     } else {
@@ -1347,8 +1347,8 @@ package Paws::EC2;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        push @{ $result->Tags }, @{ $next_result->Tags };
         $next_result = $self->DescribeTags(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Tags }, @{ $next_result->Tags };
       }
       return $result;
     } else {
@@ -1370,8 +1370,8 @@ package Paws::EC2;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        push @{ $result->Volumes }, @{ $next_result->Volumes };
         $next_result = $self->DescribeVolumes(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Volumes }, @{ $next_result->Volumes };
       }
       return $result;
     } else {
@@ -1393,8 +1393,8 @@ package Paws::EC2;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        push @{ $result->VolumeStatuses }, @{ $next_result->VolumeStatuses };
         $next_result = $self->DescribeVolumeStatus(@_, NextToken => $next_result->NextToken);
+        push @{ $result->VolumeStatuses }, @{ $next_result->VolumeStatuses };
       }
       return $result;
     } else {

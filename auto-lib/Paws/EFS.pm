@@ -77,13 +77,13 @@ package Paws::EFS;
     my $next_result = $result;
 
     if (not defined $callback) {
-      while ($next_result->Marker) {
-        push @{ $result->FileSystems }, @{ $next_result->FileSystems };
+      while ($next_result->NextMarker) {
         $next_result = $self->DescribeFileSystems(@_, Marker => $next_result->NextMarker);
+        push @{ $result->FileSystems }, @{ $next_result->FileSystems };
       }
       return $result;
     } else {
-      while ($result->Marker) {
+      while ($result->NextMarker) {
         $callback->($_ => 'FileSystems') foreach (@{ $result->FileSystems });
         $result = $self->DescribeFileSystems(@_, Marker => $result->NextMarker);
       }
@@ -100,13 +100,13 @@ package Paws::EFS;
     my $next_result = $result;
 
     if (not defined $callback) {
-      while ($next_result->Marker) {
-        push @{ $result->MountTargets }, @{ $next_result->MountTargets };
+      while ($next_result->NextMarker) {
         $next_result = $self->DescribeMountTargets(@_, Marker => $next_result->NextMarker);
+        push @{ $result->MountTargets }, @{ $next_result->MountTargets };
       }
       return $result;
     } else {
-      while ($result->Marker) {
+      while ($result->NextMarker) {
         $callback->($_ => 'MountTargets') foreach (@{ $result->MountTargets });
         $result = $self->DescribeMountTargets(@_, Marker => $result->NextMarker);
       }
@@ -123,13 +123,13 @@ package Paws::EFS;
     my $next_result = $result;
 
     if (not defined $callback) {
-      while ($next_result->Marker) {
-        push @{ $result->Tags }, @{ $next_result->Tags };
+      while ($next_result->NextMarker) {
         $next_result = $self->DescribeTags(@_, Marker => $next_result->NextMarker);
+        push @{ $result->Tags }, @{ $next_result->Tags };
       }
       return $result;
     } else {
-      while ($result->Marker) {
+      while ($result->NextMarker) {
         $callback->($_ => 'Tags') foreach (@{ $result->Tags });
         $result = $self->DescribeTags(@_, Marker => $result->NextMarker);
       }

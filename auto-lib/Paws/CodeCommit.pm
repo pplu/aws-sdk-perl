@@ -109,8 +109,8 @@ package Paws::CodeCommit;
 
     if (not defined $callback) {
       while ($next_result->nextToken) {
-        push @{ $result->branches }, @{ $next_result->branches };
         $next_result = $self->ListBranches(@_, nextToken => $next_result->nextToken);
+        push @{ $result->branches }, @{ $next_result->branches };
       }
       return $result;
     } else {
@@ -132,8 +132,8 @@ package Paws::CodeCommit;
 
     if (not defined $callback) {
       while ($next_result->nextToken) {
-        push @{ $result->repositories }, @{ $next_result->repositories };
         $next_result = $self->ListRepositories(@_, nextToken => $next_result->nextToken);
+        push @{ $result->repositories }, @{ $next_result->repositories };
       }
       return $result;
     } else {

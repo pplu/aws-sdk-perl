@@ -283,8 +283,8 @@ package Paws::AutoScaling;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        push @{ $result->AutoScalingGroups }, @{ $next_result->AutoScalingGroups };
         $next_result = $self->DescribeAutoScalingGroups(@_, NextToken => $next_result->NextToken);
+        push @{ $result->AutoScalingGroups }, @{ $next_result->AutoScalingGroups };
       }
       return $result;
     } else {
@@ -306,8 +306,8 @@ package Paws::AutoScaling;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        push @{ $result->AutoScalingInstances }, @{ $next_result->AutoScalingInstances };
         $next_result = $self->DescribeAutoScalingInstances(@_, NextToken => $next_result->NextToken);
+        push @{ $result->AutoScalingInstances }, @{ $next_result->AutoScalingInstances };
       }
       return $result;
     } else {
@@ -329,8 +329,8 @@ package Paws::AutoScaling;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        push @{ $result->LaunchConfigurations }, @{ $next_result->LaunchConfigurations };
         $next_result = $self->DescribeLaunchConfigurations(@_, NextToken => $next_result->NextToken);
+        push @{ $result->LaunchConfigurations }, @{ $next_result->LaunchConfigurations };
       }
       return $result;
     } else {
@@ -352,8 +352,8 @@ package Paws::AutoScaling;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        push @{ $result->NotificationConfigurations }, @{ $next_result->NotificationConfigurations };
         $next_result = $self->DescribeNotificationConfigurations(@_, NextToken => $next_result->NextToken);
+        push @{ $result->NotificationConfigurations }, @{ $next_result->NotificationConfigurations };
       }
       return $result;
     } else {
@@ -375,8 +375,8 @@ package Paws::AutoScaling;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        push @{ $result->ScalingPolicies }, @{ $next_result->ScalingPolicies };
         $next_result = $self->DescribePolicies(@_, NextToken => $next_result->NextToken);
+        push @{ $result->ScalingPolicies }, @{ $next_result->ScalingPolicies };
       }
       return $result;
     } else {
@@ -398,8 +398,8 @@ package Paws::AutoScaling;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        push @{ $result->Activities }, @{ $next_result->Activities };
         $next_result = $self->DescribeScalingActivities(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Activities }, @{ $next_result->Activities };
       }
       return $result;
     } else {
@@ -421,8 +421,8 @@ package Paws::AutoScaling;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        push @{ $result->ScheduledUpdateGroupActions }, @{ $next_result->ScheduledUpdateGroupActions };
         $next_result = $self->DescribeScheduledActions(@_, NextToken => $next_result->NextToken);
+        push @{ $result->ScheduledUpdateGroupActions }, @{ $next_result->ScheduledUpdateGroupActions };
       }
       return $result;
     } else {
@@ -444,8 +444,8 @@ package Paws::AutoScaling;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        push @{ $result->Tags }, @{ $next_result->Tags };
         $next_result = $self->DescribeTags(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Tags }, @{ $next_result->Tags };
       }
       return $result;
     } else {

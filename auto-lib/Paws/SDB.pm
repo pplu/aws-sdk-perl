@@ -91,8 +91,8 @@ package Paws::SDB;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        push @{ $result->DomainNames }, @{ $next_result->DomainNames };
         $next_result = $self->ListDomains(@_, NextToken => $next_result->NextToken);
+        push @{ $result->DomainNames }, @{ $next_result->DomainNames };
       }
       return $result;
     } else {
@@ -114,8 +114,8 @@ package Paws::SDB;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        push @{ $result->Items }, @{ $next_result->Items };
         $next_result = $self->Select(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Items }, @{ $next_result->Items };
       }
       return $result;
     } else {

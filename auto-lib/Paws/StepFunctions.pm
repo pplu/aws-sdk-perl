@@ -109,8 +109,8 @@ package Paws::StepFunctions;
 
     if (not defined $callback) {
       while ($next_result->nextToken) {
-        push @{ $result->events }, @{ $next_result->events };
         $next_result = $self->GetExecutionHistory(@_, nextToken => $next_result->nextToken);
+        push @{ $result->events }, @{ $next_result->events };
       }
       return $result;
     } else {
@@ -132,8 +132,8 @@ package Paws::StepFunctions;
 
     if (not defined $callback) {
       while ($next_result->nextToken) {
-        push @{ $result->activities }, @{ $next_result->activities };
         $next_result = $self->ListActivities(@_, nextToken => $next_result->nextToken);
+        push @{ $result->activities }, @{ $next_result->activities };
       }
       return $result;
     } else {
@@ -155,8 +155,8 @@ package Paws::StepFunctions;
 
     if (not defined $callback) {
       while ($next_result->nextToken) {
-        push @{ $result->executions }, @{ $next_result->executions };
         $next_result = $self->ListExecutions(@_, nextToken => $next_result->nextToken);
+        push @{ $result->executions }, @{ $next_result->executions };
       }
       return $result;
     } else {
@@ -178,8 +178,8 @@ package Paws::StepFunctions;
 
     if (not defined $callback) {
       while ($next_result->nextToken) {
-        push @{ $result->stateMachines }, @{ $next_result->stateMachines };
         $next_result = $self->ListStateMachines(@_, nextToken => $next_result->nextToken);
+        push @{ $result->stateMachines }, @{ $next_result->stateMachines };
       }
       return $result;
     } else {

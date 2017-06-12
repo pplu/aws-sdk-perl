@@ -94,8 +94,8 @@ package Paws::Support;
 
     if (not defined $callback) {
       while ($next_result->nextToken) {
-        push @{ $result->cases }, @{ $next_result->cases };
         $next_result = $self->DescribeCases(@_, nextToken => $next_result->nextToken);
+        push @{ $result->cases }, @{ $next_result->cases };
       }
       return $result;
     } else {
@@ -117,8 +117,8 @@ package Paws::Support;
 
     if (not defined $callback) {
       while ($next_result->nextToken) {
-        push @{ $result->communications }, @{ $next_result->communications };
         $next_result = $self->DescribeCommunications(@_, nextToken => $next_result->nextToken);
+        push @{ $result->communications }, @{ $next_result->communications };
       }
       return $result;
     } else {

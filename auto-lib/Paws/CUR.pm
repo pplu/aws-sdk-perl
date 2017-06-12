@@ -39,8 +39,8 @@ package Paws::CUR;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        push @{ $result->ReportDefinitions }, @{ $next_result->ReportDefinitions };
         $next_result = $self->DescribeReportDefinitions(@_, NextToken => $next_result->NextToken);
+        push @{ $result->ReportDefinitions }, @{ $next_result->ReportDefinitions };
       }
       return $result;
     } else {

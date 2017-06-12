@@ -54,8 +54,8 @@ package Paws::Health;
 
     if (not defined $callback) {
       while ($next_result->nextToken) {
-        push @{ $result->entities }, @{ $next_result->entities };
         $next_result = $self->DescribeAffectedEntities(@_, nextToken => $next_result->nextToken);
+        push @{ $result->entities }, @{ $next_result->entities };
       }
       return $result;
     } else {
@@ -77,8 +77,8 @@ package Paws::Health;
 
     if (not defined $callback) {
       while ($next_result->nextToken) {
-        push @{ $result->eventAggregates }, @{ $next_result->eventAggregates };
         $next_result = $self->DescribeEventAggregates(@_, nextToken => $next_result->nextToken);
+        push @{ $result->eventAggregates }, @{ $next_result->eventAggregates };
       }
       return $result;
     } else {
@@ -100,8 +100,8 @@ package Paws::Health;
 
     if (not defined $callback) {
       while ($next_result->nextToken) {
-        push @{ $result->events }, @{ $next_result->events };
         $next_result = $self->DescribeEvents(@_, nextToken => $next_result->nextToken);
+        push @{ $result->events }, @{ $next_result->events };
       }
       return $result;
     } else {
@@ -123,8 +123,8 @@ package Paws::Health;
 
     if (not defined $callback) {
       while ($next_result->nextToken) {
-        push @{ $result->eventTypes }, @{ $next_result->eventTypes };
         $next_result = $self->DescribeEventTypes(@_, nextToken => $next_result->nextToken);
+        push @{ $result->eventTypes }, @{ $next_result->eventTypes };
       }
       return $result;
     } else {

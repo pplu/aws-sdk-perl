@@ -177,13 +177,13 @@ package Paws::ELBv2;
     my $next_result = $result;
 
     if (not defined $callback) {
-      while ($next_result->Marker) {
-        push @{ $result->Listeners }, @{ $next_result->Listeners };
+      while ($next_result->NextMarker) {
         $next_result = $self->DescribeListeners(@_, Marker => $next_result->NextMarker);
+        push @{ $result->Listeners }, @{ $next_result->Listeners };
       }
       return $result;
     } else {
-      while ($result->Marker) {
+      while ($result->NextMarker) {
         $callback->($_ => 'Listeners') foreach (@{ $result->Listeners });
         $result = $self->DescribeListeners(@_, Marker => $result->NextMarker);
       }
@@ -200,13 +200,13 @@ package Paws::ELBv2;
     my $next_result = $result;
 
     if (not defined $callback) {
-      while ($next_result->Marker) {
-        push @{ $result->LoadBalancers }, @{ $next_result->LoadBalancers };
+      while ($next_result->NextMarker) {
         $next_result = $self->DescribeLoadBalancers(@_, Marker => $next_result->NextMarker);
+        push @{ $result->LoadBalancers }, @{ $next_result->LoadBalancers };
       }
       return $result;
     } else {
-      while ($result->Marker) {
+      while ($result->NextMarker) {
         $callback->($_ => 'LoadBalancers') foreach (@{ $result->LoadBalancers });
         $result = $self->DescribeLoadBalancers(@_, Marker => $result->NextMarker);
       }
@@ -223,13 +223,13 @@ package Paws::ELBv2;
     my $next_result = $result;
 
     if (not defined $callback) {
-      while ($next_result->Marker) {
-        push @{ $result->TargetGroups }, @{ $next_result->TargetGroups };
+      while ($next_result->NextMarker) {
         $next_result = $self->DescribeTargetGroups(@_, Marker => $next_result->NextMarker);
+        push @{ $result->TargetGroups }, @{ $next_result->TargetGroups };
       }
       return $result;
     } else {
-      while ($result->Marker) {
+      while ($result->NextMarker) {
         $callback->($_ => 'TargetGroups') foreach (@{ $result->TargetGroups });
         $result = $self->DescribeTargetGroups(@_, Marker => $result->NextMarker);
       }

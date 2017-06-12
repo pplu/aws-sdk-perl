@@ -334,8 +334,8 @@ package Paws::StorageGateway;
 
     if (not defined $callback) {
       while ($next_result->Marker) {
-        push @{ $result->TapeArchives }, @{ $next_result->TapeArchives };
         $next_result = $self->DescribeTapeArchives(@_, Marker => $next_result->Marker);
+        push @{ $result->TapeArchives }, @{ $next_result->TapeArchives };
       }
       return $result;
     } else {
@@ -357,8 +357,8 @@ package Paws::StorageGateway;
 
     if (not defined $callback) {
       while ($next_result->Marker) {
-        push @{ $result->TapeRecoveryPointInfos }, @{ $next_result->TapeRecoveryPointInfos };
         $next_result = $self->DescribeTapeRecoveryPoints(@_, Marker => $next_result->Marker);
+        push @{ $result->TapeRecoveryPointInfos }, @{ $next_result->TapeRecoveryPointInfos };
       }
       return $result;
     } else {
@@ -380,8 +380,8 @@ package Paws::StorageGateway;
 
     if (not defined $callback) {
       while ($next_result->Marker) {
-        push @{ $result->Tapes }, @{ $next_result->Tapes };
         $next_result = $self->DescribeTapes(@_, Marker => $next_result->Marker);
+        push @{ $result->Tapes }, @{ $next_result->Tapes };
       }
       return $result;
     } else {
@@ -403,8 +403,8 @@ package Paws::StorageGateway;
 
     if (not defined $callback) {
       while ($next_result->Marker) {
-        push @{ $result->VTLDevices }, @{ $next_result->VTLDevices };
         $next_result = $self->DescribeVTLDevices(@_, Marker => $next_result->Marker);
+        push @{ $result->VTLDevices }, @{ $next_result->VTLDevices };
       }
       return $result;
     } else {
@@ -426,8 +426,8 @@ package Paws::StorageGateway;
 
     if (not defined $callback) {
       while ($next_result->Marker) {
-        push @{ $result->Gateways }, @{ $next_result->Gateways };
         $next_result = $self->ListGateways(@_, Marker => $next_result->Marker);
+        push @{ $result->Gateways }, @{ $next_result->Gateways };
       }
       return $result;
     } else {
@@ -449,8 +449,8 @@ package Paws::StorageGateway;
 
     if (not defined $callback) {
       while ($next_result->Marker) {
-        push @{ $result->VolumeInfos }, @{ $next_result->VolumeInfos };
         $next_result = $self->ListVolumes(@_, Marker => $next_result->Marker);
+        push @{ $result->VolumeInfos }, @{ $next_result->VolumeInfos };
       }
       return $result;
     } else {

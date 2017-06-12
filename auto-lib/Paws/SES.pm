@@ -268,8 +268,8 @@ package Paws::SES;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        push @{ $result->Identities }, @{ $next_result->Identities };
         $next_result = $self->ListIdentities(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Identities }, @{ $next_result->Identities };
       }
       return $result;
     } else {

@@ -207,8 +207,8 @@ package Paws::EMR;
 
     if (not defined $callback) {
       while ($next_result->Marker) {
-        push @{ $result->BootstrapActions }, @{ $next_result->BootstrapActions };
         $next_result = $self->ListBootstrapActions(@_, Marker => $next_result->Marker);
+        push @{ $result->BootstrapActions }, @{ $next_result->BootstrapActions };
       }
       return $result;
     } else {
@@ -230,8 +230,8 @@ package Paws::EMR;
 
     if (not defined $callback) {
       while ($next_result->Marker) {
-        push @{ $result->Clusters }, @{ $next_result->Clusters };
         $next_result = $self->ListClusters(@_, Marker => $next_result->Marker);
+        push @{ $result->Clusters }, @{ $next_result->Clusters };
       }
       return $result;
     } else {
@@ -253,8 +253,8 @@ package Paws::EMR;
 
     if (not defined $callback) {
       while ($next_result->Marker) {
-        push @{ $result->InstanceFleets }, @{ $next_result->InstanceFleets };
         $next_result = $self->ListInstanceFleets(@_, Marker => $next_result->Marker);
+        push @{ $result->InstanceFleets }, @{ $next_result->InstanceFleets };
       }
       return $result;
     } else {
@@ -276,8 +276,8 @@ package Paws::EMR;
 
     if (not defined $callback) {
       while ($next_result->Marker) {
-        push @{ $result->InstanceGroups }, @{ $next_result->InstanceGroups };
         $next_result = $self->ListInstanceGroups(@_, Marker => $next_result->Marker);
+        push @{ $result->InstanceGroups }, @{ $next_result->InstanceGroups };
       }
       return $result;
     } else {
@@ -299,8 +299,8 @@ package Paws::EMR;
 
     if (not defined $callback) {
       while ($next_result->Marker) {
-        push @{ $result->Instances }, @{ $next_result->Instances };
         $next_result = $self->ListInstances(@_, Marker => $next_result->Marker);
+        push @{ $result->Instances }, @{ $next_result->Instances };
       }
       return $result;
     } else {
@@ -322,8 +322,8 @@ package Paws::EMR;
 
     if (not defined $callback) {
       while ($next_result->Marker) {
-        push @{ $result->Steps }, @{ $next_result->Steps };
         $next_result = $self->ListSteps(@_, Marker => $next_result->Marker);
+        push @{ $result->Steps }, @{ $next_result->Steps };
       }
       return $result;
     } else {

@@ -107,13 +107,13 @@ package Paws::ElasticTranscoder;
     my $next_result = $result;
 
     if (not defined $callback) {
-      while ($next_result->PageToken) {
-        push @{ $result->Jobs }, @{ $next_result->Jobs };
+      while ($next_result->NextPageToken) {
         $next_result = $self->ListJobsByPipeline(@_, PageToken => $next_result->NextPageToken);
+        push @{ $result->Jobs }, @{ $next_result->Jobs };
       }
       return $result;
     } else {
-      while ($result->PageToken) {
+      while ($result->NextPageToken) {
         $callback->($_ => 'Jobs') foreach (@{ $result->Jobs });
         $result = $self->ListJobsByPipeline(@_, PageToken => $result->NextPageToken);
       }
@@ -130,13 +130,13 @@ package Paws::ElasticTranscoder;
     my $next_result = $result;
 
     if (not defined $callback) {
-      while ($next_result->PageToken) {
-        push @{ $result->Jobs }, @{ $next_result->Jobs };
+      while ($next_result->NextPageToken) {
         $next_result = $self->ListJobsByStatus(@_, PageToken => $next_result->NextPageToken);
+        push @{ $result->Jobs }, @{ $next_result->Jobs };
       }
       return $result;
     } else {
-      while ($result->PageToken) {
+      while ($result->NextPageToken) {
         $callback->($_ => 'Jobs') foreach (@{ $result->Jobs });
         $result = $self->ListJobsByStatus(@_, PageToken => $result->NextPageToken);
       }
@@ -153,13 +153,13 @@ package Paws::ElasticTranscoder;
     my $next_result = $result;
 
     if (not defined $callback) {
-      while ($next_result->PageToken) {
-        push @{ $result->Pipelines }, @{ $next_result->Pipelines };
+      while ($next_result->NextPageToken) {
         $next_result = $self->ListPipelines(@_, PageToken => $next_result->NextPageToken);
+        push @{ $result->Pipelines }, @{ $next_result->Pipelines };
       }
       return $result;
     } else {
-      while ($result->PageToken) {
+      while ($result->NextPageToken) {
         $callback->($_ => 'Pipelines') foreach (@{ $result->Pipelines });
         $result = $self->ListPipelines(@_, PageToken => $result->NextPageToken);
       }
@@ -176,13 +176,13 @@ package Paws::ElasticTranscoder;
     my $next_result = $result;
 
     if (not defined $callback) {
-      while ($next_result->PageToken) {
-        push @{ $result->Presets }, @{ $next_result->Presets };
+      while ($next_result->NextPageToken) {
         $next_result = $self->ListPresets(@_, PageToken => $next_result->NextPageToken);
+        push @{ $result->Presets }, @{ $next_result->Presets };
       }
       return $result;
     } else {
-      while ($result->PageToken) {
+      while ($result->NextPageToken) {
         $callback->($_ => 'Presets') foreach (@{ $result->Presets });
         $result = $self->ListPresets(@_, PageToken => $result->NextPageToken);
       }

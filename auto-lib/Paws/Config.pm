@@ -154,8 +154,8 @@ package Paws::Config;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        push @{ $result->ComplianceByConfigRules }, @{ $next_result->ComplianceByConfigRules };
         $next_result = $self->DescribeComplianceByConfigRule(@_, NextToken => $next_result->NextToken);
+        push @{ $result->ComplianceByConfigRules }, @{ $next_result->ComplianceByConfigRules };
       }
       return $result;
     } else {
@@ -177,8 +177,8 @@ package Paws::Config;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        push @{ $result->ComplianceByResources }, @{ $next_result->ComplianceByResources };
         $next_result = $self->DescribeComplianceByResource(@_, NextToken => $next_result->NextToken);
+        push @{ $result->ComplianceByResources }, @{ $next_result->ComplianceByResources };
       }
       return $result;
     } else {
@@ -200,8 +200,8 @@ package Paws::Config;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        push @{ $result->ConfigRules }, @{ $next_result->ConfigRules };
         $next_result = $self->DescribeConfigRules(@_, NextToken => $next_result->NextToken);
+        push @{ $result->ConfigRules }, @{ $next_result->ConfigRules };
       }
       return $result;
     } else {
@@ -223,8 +223,8 @@ package Paws::Config;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        push @{ $result->EvaluationResults }, @{ $next_result->EvaluationResults };
         $next_result = $self->GetComplianceDetailsByConfigRule(@_, NextToken => $next_result->NextToken);
+        push @{ $result->EvaluationResults }, @{ $next_result->EvaluationResults };
       }
       return $result;
     } else {
@@ -246,8 +246,8 @@ package Paws::Config;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        push @{ $result->EvaluationResults }, @{ $next_result->EvaluationResults };
         $next_result = $self->GetComplianceDetailsByResource(@_, NextToken => $next_result->NextToken);
+        push @{ $result->EvaluationResults }, @{ $next_result->EvaluationResults };
       }
       return $result;
     } else {
@@ -269,8 +269,8 @@ package Paws::Config;
 
     if (not defined $callback) {
       while ($next_result->nextToken) {
-        push @{ $result->configurationItems }, @{ $next_result->configurationItems };
         $next_result = $self->GetResourceConfigHistory(@_, nextToken => $next_result->nextToken);
+        push @{ $result->configurationItems }, @{ $next_result->configurationItems };
       }
       return $result;
     } else {
@@ -292,8 +292,8 @@ package Paws::Config;
 
     if (not defined $callback) {
       while ($next_result->nextToken) {
-        push @{ $result->resourceIdentifiers }, @{ $next_result->resourceIdentifiers };
         $next_result = $self->ListDiscoveredResources(@_, nextToken => $next_result->nextToken);
+        push @{ $result->resourceIdentifiers }, @{ $next_result->resourceIdentifiers };
       }
       return $result;
     } else {

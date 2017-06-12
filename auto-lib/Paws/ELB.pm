@@ -167,13 +167,13 @@ package Paws::ELB;
     my $next_result = $result;
 
     if (not defined $callback) {
-      while ($next_result->Marker) {
-        push @{ $result->LoadBalancerDescriptions }, @{ $next_result->LoadBalancerDescriptions };
+      while ($next_result->NextMarker) {
         $next_result = $self->DescribeLoadBalancers(@_, Marker => $next_result->NextMarker);
+        push @{ $result->LoadBalancerDescriptions }, @{ $next_result->LoadBalancerDescriptions };
       }
       return $result;
     } else {
-      while ($result->Marker) {
+      while ($result->NextMarker) {
         $callback->($_ => 'LoadBalancerDescriptions') foreach (@{ $result->LoadBalancerDescriptions });
         $result = $self->DescribeLoadBalancers(@_, Marker => $result->NextMarker);
       }

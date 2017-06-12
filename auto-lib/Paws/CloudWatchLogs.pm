@@ -164,8 +164,8 @@ package Paws::CloudWatchLogs;
 
     if (not defined $callback) {
       while ($next_result->nextToken) {
-        push @{ $result->destinations }, @{ $next_result->destinations };
         $next_result = $self->DescribeDestinations(@_, nextToken => $next_result->nextToken);
+        push @{ $result->destinations }, @{ $next_result->destinations };
       }
       return $result;
     } else {
@@ -187,8 +187,8 @@ package Paws::CloudWatchLogs;
 
     if (not defined $callback) {
       while ($next_result->nextToken) {
-        push @{ $result->logGroups }, @{ $next_result->logGroups };
         $next_result = $self->DescribeLogGroups(@_, nextToken => $next_result->nextToken);
+        push @{ $result->logGroups }, @{ $next_result->logGroups };
       }
       return $result;
     } else {
@@ -210,8 +210,8 @@ package Paws::CloudWatchLogs;
 
     if (not defined $callback) {
       while ($next_result->nextToken) {
-        push @{ $result->logStreams }, @{ $next_result->logStreams };
         $next_result = $self->DescribeLogStreams(@_, nextToken => $next_result->nextToken);
+        push @{ $result->logStreams }, @{ $next_result->logStreams };
       }
       return $result;
     } else {
@@ -233,8 +233,8 @@ package Paws::CloudWatchLogs;
 
     if (not defined $callback) {
       while ($next_result->nextToken) {
-        push @{ $result->metricFilters }, @{ $next_result->metricFilters };
         $next_result = $self->DescribeMetricFilters(@_, nextToken => $next_result->nextToken);
+        push @{ $result->metricFilters }, @{ $next_result->metricFilters };
       }
       return $result;
     } else {
@@ -256,8 +256,8 @@ package Paws::CloudWatchLogs;
 
     if (not defined $callback) {
       while ($next_result->nextToken) {
-        push @{ $result->subscriptionFilters }, @{ $next_result->subscriptionFilters };
         $next_result = $self->DescribeSubscriptionFilters(@_, nextToken => $next_result->nextToken);
+        push @{ $result->subscriptionFilters }, @{ $next_result->subscriptionFilters };
       }
       return $result;
     } else {
@@ -279,9 +279,9 @@ package Paws::CloudWatchLogs;
 
     if (not defined $callback) {
       while ($next_result->nextToken) {
+        $next_result = $self->FilterLogEvents(@_, nextToken => $next_result->nextToken);
         push @{ $result->events }, @{ $next_result->events };
         push @{ $result->searchedLogStreams }, @{ $next_result->searchedLogStreams };
-        $next_result = $self->FilterLogEvents(@_, nextToken => $next_result->nextToken);
       }
       return $result;
     } else {

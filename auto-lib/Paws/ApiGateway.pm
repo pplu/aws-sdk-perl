@@ -558,8 +558,8 @@ package Paws::ApiGateway;
 
     if (not defined $callback) {
       while ($next_result->position) {
-        push @{ $result->items }, @{ $next_result->items };
         $next_result = $self->GetApiKeys(@_, position => $next_result->position);
+        push @{ $result->items }, @{ $next_result->items };
       }
       return $result;
     } else {
@@ -581,8 +581,8 @@ package Paws::ApiGateway;
 
     if (not defined $callback) {
       while ($next_result->position) {
-        push @{ $result->items }, @{ $next_result->items };
         $next_result = $self->GetBasePathMappings(@_, position => $next_result->position);
+        push @{ $result->items }, @{ $next_result->items };
       }
       return $result;
     } else {
@@ -604,8 +604,8 @@ package Paws::ApiGateway;
 
     if (not defined $callback) {
       while ($next_result->position) {
-        push @{ $result->items }, @{ $next_result->items };
         $next_result = $self->GetClientCertificates(@_, position => $next_result->position);
+        push @{ $result->items }, @{ $next_result->items };
       }
       return $result;
     } else {
@@ -627,8 +627,8 @@ package Paws::ApiGateway;
 
     if (not defined $callback) {
       while ($next_result->position) {
-        push @{ $result->items }, @{ $next_result->items };
         $next_result = $self->GetDeployments(@_, position => $next_result->position);
+        push @{ $result->items }, @{ $next_result->items };
       }
       return $result;
     } else {
@@ -650,8 +650,8 @@ package Paws::ApiGateway;
 
     if (not defined $callback) {
       while ($next_result->position) {
-        push @{ $result->items }, @{ $next_result->items };
         $next_result = $self->GetDomainNames(@_, position => $next_result->position);
+        push @{ $result->items }, @{ $next_result->items };
       }
       return $result;
     } else {
@@ -673,8 +673,8 @@ package Paws::ApiGateway;
 
     if (not defined $callback) {
       while ($next_result->position) {
-        push @{ $result->items }, @{ $next_result->items };
         $next_result = $self->GetModels(@_, position => $next_result->position);
+        push @{ $result->items }, @{ $next_result->items };
       }
       return $result;
     } else {
@@ -696,8 +696,8 @@ package Paws::ApiGateway;
 
     if (not defined $callback) {
       while ($next_result->position) {
-        push @{ $result->items }, @{ $next_result->items };
         $next_result = $self->GetResources(@_, position => $next_result->position);
+        push @{ $result->items }, @{ $next_result->items };
       }
       return $result;
     } else {
@@ -719,8 +719,8 @@ package Paws::ApiGateway;
 
     if (not defined $callback) {
       while ($next_result->position) {
-        push @{ $result->items }, @{ $next_result->items };
         $next_result = $self->GetRestApis(@_, position => $next_result->position);
+        push @{ $result->items }, @{ $next_result->items };
       }
       return $result;
     } else {
@@ -742,8 +742,8 @@ package Paws::ApiGateway;
 
     if (not defined $callback) {
       while ($next_result->position) {
-        push @{ $result->items }, @{ $next_result->items };
         $next_result = $self->GetUsage(@_, position => $next_result->position);
+        push @{ $result->items }, @{ $next_result->items };
       }
       return $result;
     } else {
@@ -765,8 +765,8 @@ package Paws::ApiGateway;
 
     if (not defined $callback) {
       while ($next_result->position) {
-        push @{ $result->items }, @{ $next_result->items };
         $next_result = $self->GetUsagePlanKeys(@_, position => $next_result->position);
+        push @{ $result->items }, @{ $next_result->items };
       }
       return $result;
     } else {
@@ -788,8 +788,8 @@ package Paws::ApiGateway;
 
     if (not defined $callback) {
       while ($next_result->position) {
-        push @{ $result->items }, @{ $next_result->items };
         $next_result = $self->GetUsagePlans(@_, position => $next_result->position);
+        push @{ $result->items }, @{ $next_result->items };
       }
       return $result;
     } else {

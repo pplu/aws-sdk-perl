@@ -153,8 +153,8 @@ package Paws::CloudFormation;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        push @{ $result->StackEvents }, @{ $next_result->StackEvents };
         $next_result = $self->DescribeStackEvents(@_, NextToken => $next_result->NextToken);
+        push @{ $result->StackEvents }, @{ $next_result->StackEvents };
       }
       return $result;
     } else {
@@ -176,8 +176,8 @@ package Paws::CloudFormation;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        push @{ $result->Stacks }, @{ $next_result->Stacks };
         $next_result = $self->DescribeStacks(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Stacks }, @{ $next_result->Stacks };
       }
       return $result;
     } else {
@@ -199,8 +199,8 @@ package Paws::CloudFormation;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        push @{ $result->Exports }, @{ $next_result->Exports };
         $next_result = $self->ListExports(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Exports }, @{ $next_result->Exports };
       }
       return $result;
     } else {
@@ -222,8 +222,8 @@ package Paws::CloudFormation;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        push @{ $result->Imports }, @{ $next_result->Imports };
         $next_result = $self->ListImports(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Imports }, @{ $next_result->Imports };
       }
       return $result;
     } else {
@@ -245,8 +245,8 @@ package Paws::CloudFormation;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        push @{ $result->StackResourceSummaries }, @{ $next_result->StackResourceSummaries };
         $next_result = $self->ListStackResources(@_, NextToken => $next_result->NextToken);
+        push @{ $result->StackResourceSummaries }, @{ $next_result->StackResourceSummaries };
       }
       return $result;
     } else {
@@ -268,8 +268,8 @@ package Paws::CloudFormation;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        push @{ $result->StackSummaries }, @{ $next_result->StackSummaries };
         $next_result = $self->ListStacks(@_, NextToken => $next_result->NextToken);
+        push @{ $result->StackSummaries }, @{ $next_result->StackSummaries };
       }
       return $result;
     } else {

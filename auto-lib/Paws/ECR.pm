@@ -109,8 +109,8 @@ package Paws::ECR;
 
     if (not defined $callback) {
       while ($next_result->nextToken) {
-        push @{ $result->imageDetails }, @{ $next_result->imageDetails };
         $next_result = $self->DescribeImages(@_, nextToken => $next_result->nextToken);
+        push @{ $result->imageDetails }, @{ $next_result->imageDetails };
       }
       return $result;
     } else {
@@ -132,8 +132,8 @@ package Paws::ECR;
 
     if (not defined $callback) {
       while ($next_result->nextToken) {
-        push @{ $result->repositories }, @{ $next_result->repositories };
         $next_result = $self->DescribeRepositories(@_, nextToken => $next_result->nextToken);
+        push @{ $result->repositories }, @{ $next_result->repositories };
       }
       return $result;
     } else {
@@ -155,8 +155,8 @@ package Paws::ECR;
 
     if (not defined $callback) {
       while ($next_result->nextToken) {
-        push @{ $result->imageIds }, @{ $next_result->imageIds };
         $next_result = $self->ListImages(@_, nextToken => $next_result->nextToken);
+        push @{ $result->imageIds }, @{ $next_result->imageIds };
       }
       return $result;
     } else {

@@ -203,8 +203,8 @@ package Paws::WorkDocs;
 
     if (not defined $callback) {
       while ($next_result->Marker) {
-        push @{ $result->DocumentVersions }, @{ $next_result->DocumentVersions };
         $next_result = $self->DescribeDocumentVersions(@_, Marker => $next_result->Marker);
+        push @{ $result->DocumentVersions }, @{ $next_result->DocumentVersions };
       }
       return $result;
     } else {
@@ -226,9 +226,9 @@ package Paws::WorkDocs;
 
     if (not defined $callback) {
       while ($next_result->Marker) {
+        $next_result = $self->DescribeFolderContents(@_, Marker => $next_result->Marker);
         push @{ $result->Folders }, @{ $next_result->Folders };
         push @{ $result->Documents }, @{ $next_result->Documents };
-        $next_result = $self->DescribeFolderContents(@_, Marker => $next_result->Marker);
       }
       return $result;
     } else {
@@ -252,8 +252,8 @@ package Paws::WorkDocs;
 
     if (not defined $callback) {
       while ($next_result->Marker) {
-        push @{ $result->Users }, @{ $next_result->Users };
         $next_result = $self->DescribeUsers(@_, Marker => $next_result->Marker);
+        push @{ $result->Users }, @{ $next_result->Users };
       }
       return $result;
     } else {

@@ -214,8 +214,8 @@ package Paws::CodeDeploy;
 
     if (not defined $callback) {
       while ($next_result->nextToken) {
-        push @{ $result->revisions }, @{ $next_result->revisions };
         $next_result = $self->ListApplicationRevisions(@_, nextToken => $next_result->nextToken);
+        push @{ $result->revisions }, @{ $next_result->revisions };
       }
       return $result;
     } else {
@@ -237,8 +237,8 @@ package Paws::CodeDeploy;
 
     if (not defined $callback) {
       while ($next_result->nextToken) {
-        push @{ $result->applications }, @{ $next_result->applications };
         $next_result = $self->ListApplications(@_, nextToken => $next_result->nextToken);
+        push @{ $result->applications }, @{ $next_result->applications };
       }
       return $result;
     } else {
@@ -260,8 +260,8 @@ package Paws::CodeDeploy;
 
     if (not defined $callback) {
       while ($next_result->nextToken) {
-        push @{ $result->deploymentConfigsList }, @{ $next_result->deploymentConfigsList };
         $next_result = $self->ListDeploymentConfigs(@_, nextToken => $next_result->nextToken);
+        push @{ $result->deploymentConfigsList }, @{ $next_result->deploymentConfigsList };
       }
       return $result;
     } else {
@@ -283,8 +283,8 @@ package Paws::CodeDeploy;
 
     if (not defined $callback) {
       while ($next_result->nextToken) {
-        push @{ $result->deploymentGroups }, @{ $next_result->deploymentGroups };
         $next_result = $self->ListDeploymentGroups(@_, nextToken => $next_result->nextToken);
+        push @{ $result->deploymentGroups }, @{ $next_result->deploymentGroups };
       }
       return $result;
     } else {
@@ -306,8 +306,8 @@ package Paws::CodeDeploy;
 
     if (not defined $callback) {
       while ($next_result->nextToken) {
-        push @{ $result->instancesList }, @{ $next_result->instancesList };
         $next_result = $self->ListDeploymentInstances(@_, nextToken => $next_result->nextToken);
+        push @{ $result->instancesList }, @{ $next_result->instancesList };
       }
       return $result;
     } else {
@@ -329,8 +329,8 @@ package Paws::CodeDeploy;
 
     if (not defined $callback) {
       while ($next_result->nextToken) {
-        push @{ $result->deployments }, @{ $next_result->deployments };
         $next_result = $self->ListDeployments(@_, nextToken => $next_result->nextToken);
+        push @{ $result->deployments }, @{ $next_result->deployments };
       }
       return $result;
     } else {

@@ -78,8 +78,8 @@ package Paws::CloudWatch;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        push @{ $result->AlarmHistoryItems }, @{ $next_result->AlarmHistoryItems };
         $next_result = $self->DescribeAlarmHistory(@_, NextToken => $next_result->NextToken);
+        push @{ $result->AlarmHistoryItems }, @{ $next_result->AlarmHistoryItems };
       }
       return $result;
     } else {
@@ -101,8 +101,8 @@ package Paws::CloudWatch;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        push @{ $result->MetricAlarms }, @{ $next_result->MetricAlarms };
         $next_result = $self->DescribeAlarms(@_, NextToken => $next_result->NextToken);
+        push @{ $result->MetricAlarms }, @{ $next_result->MetricAlarms };
       }
       return $result;
     } else {
@@ -124,8 +124,8 @@ package Paws::CloudWatch;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        push @{ $result->Metrics }, @{ $next_result->Metrics };
         $next_result = $self->ListMetrics(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Metrics }, @{ $next_result->Metrics };
       }
       return $result;
     } else {

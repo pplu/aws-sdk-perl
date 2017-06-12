@@ -218,8 +218,8 @@ package Paws::ElastiCache;
 
     if (not defined $callback) {
       while ($next_result->Marker) {
-        push @{ $result->CacheClusters }, @{ $next_result->CacheClusters };
         $next_result = $self->DescribeCacheClusters(@_, Marker => $next_result->Marker);
+        push @{ $result->CacheClusters }, @{ $next_result->CacheClusters };
       }
       return $result;
     } else {
@@ -241,8 +241,8 @@ package Paws::ElastiCache;
 
     if (not defined $callback) {
       while ($next_result->Marker) {
-        push @{ $result->CacheEngineVersions }, @{ $next_result->CacheEngineVersions };
         $next_result = $self->DescribeCacheEngineVersions(@_, Marker => $next_result->Marker);
+        push @{ $result->CacheEngineVersions }, @{ $next_result->CacheEngineVersions };
       }
       return $result;
     } else {
@@ -264,8 +264,8 @@ package Paws::ElastiCache;
 
     if (not defined $callback) {
       while ($next_result->Marker) {
-        push @{ $result->CacheParameterGroups }, @{ $next_result->CacheParameterGroups };
         $next_result = $self->DescribeCacheParameterGroups(@_, Marker => $next_result->Marker);
+        push @{ $result->CacheParameterGroups }, @{ $next_result->CacheParameterGroups };
       }
       return $result;
     } else {
@@ -287,8 +287,8 @@ package Paws::ElastiCache;
 
     if (not defined $callback) {
       while ($next_result->Marker) {
-        push @{ $result->Parameters }, @{ $next_result->Parameters };
         $next_result = $self->DescribeCacheParameters(@_, Marker => $next_result->Marker);
+        push @{ $result->Parameters }, @{ $next_result->Parameters };
       }
       return $result;
     } else {
@@ -310,8 +310,8 @@ package Paws::ElastiCache;
 
     if (not defined $callback) {
       while ($next_result->Marker) {
-        push @{ $result->CacheSecurityGroups }, @{ $next_result->CacheSecurityGroups };
         $next_result = $self->DescribeCacheSecurityGroups(@_, Marker => $next_result->Marker);
+        push @{ $result->CacheSecurityGroups }, @{ $next_result->CacheSecurityGroups };
       }
       return $result;
     } else {
@@ -333,8 +333,8 @@ package Paws::ElastiCache;
 
     if (not defined $callback) {
       while ($next_result->Marker) {
-        push @{ $result->CacheSubnetGroups }, @{ $next_result->CacheSubnetGroups };
         $next_result = $self->DescribeCacheSubnetGroups(@_, Marker => $next_result->Marker);
+        push @{ $result->CacheSubnetGroups }, @{ $next_result->CacheSubnetGroups };
       }
       return $result;
     } else {
@@ -355,13 +355,13 @@ package Paws::ElastiCache;
     my $next_result = $result;
 
     if (not defined $callback) {
-      while ($next_result->Marker) {
-        push @{ $result->EngineDefaults->Parameters }, @{ $next_result->EngineDefaults->Parameters };
+      while ($next_result->EngineDefaults->Marker) {
         $next_result = $self->DescribeEngineDefaultParameters(@_, Marker => $next_result->EngineDefaults->Marker);
+        push @{ $result->EngineDefaults->Parameters }, @{ $next_result->EngineDefaults->Parameters };
       }
       return $result;
     } else {
-      while ($result->Marker) {
+      while ($result->EngineDefaults->Marker) {
         $callback->($_ => 'EngineDefaults.Parameters') foreach (@{ $result->EngineDefaults->Parameters });
         $result = $self->DescribeEngineDefaultParameters(@_, Marker => $result->EngineDefaults->Marker);
       }
@@ -379,8 +379,8 @@ package Paws::ElastiCache;
 
     if (not defined $callback) {
       while ($next_result->Marker) {
-        push @{ $result->Events }, @{ $next_result->Events };
         $next_result = $self->DescribeEvents(@_, Marker => $next_result->Marker);
+        push @{ $result->Events }, @{ $next_result->Events };
       }
       return $result;
     } else {
@@ -402,8 +402,8 @@ package Paws::ElastiCache;
 
     if (not defined $callback) {
       while ($next_result->Marker) {
-        push @{ $result->ReplicationGroups }, @{ $next_result->ReplicationGroups };
         $next_result = $self->DescribeReplicationGroups(@_, Marker => $next_result->Marker);
+        push @{ $result->ReplicationGroups }, @{ $next_result->ReplicationGroups };
       }
       return $result;
     } else {
@@ -425,8 +425,8 @@ package Paws::ElastiCache;
 
     if (not defined $callback) {
       while ($next_result->Marker) {
-        push @{ $result->ReservedCacheNodes }, @{ $next_result->ReservedCacheNodes };
         $next_result = $self->DescribeReservedCacheNodes(@_, Marker => $next_result->Marker);
+        push @{ $result->ReservedCacheNodes }, @{ $next_result->ReservedCacheNodes };
       }
       return $result;
     } else {
@@ -448,8 +448,8 @@ package Paws::ElastiCache;
 
     if (not defined $callback) {
       while ($next_result->Marker) {
-        push @{ $result->ReservedCacheNodesOfferings }, @{ $next_result->ReservedCacheNodesOfferings };
         $next_result = $self->DescribeReservedCacheNodesOfferings(@_, Marker => $next_result->Marker);
+        push @{ $result->ReservedCacheNodesOfferings }, @{ $next_result->ReservedCacheNodesOfferings };
       }
       return $result;
     } else {
@@ -471,8 +471,8 @@ package Paws::ElastiCache;
 
     if (not defined $callback) {
       while ($next_result->Marker) {
-        push @{ $result->Snapshots }, @{ $next_result->Snapshots };
         $next_result = $self->DescribeSnapshots(@_, Marker => $next_result->Marker);
+        push @{ $result->Snapshots }, @{ $next_result->Snapshots };
       }
       return $result;
     } else {

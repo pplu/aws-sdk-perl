@@ -145,4 +145,28 @@ sub mock_caller_for_test {
   cmp_ok(scalar(keys %keys), '==', 100, 'listallobjectsv2 w/callback: got 100 different keys');
 }
 
+{
+  my $elb = $paws->service('ELB', region => 'eu-west-1', caller => mock_caller_for_test('elb-describeallloadbalancers'));
+  my $res = $elb->DescribeAllLoadBalancers(PageSize => '10');
+
+  cmp_ok(@{ $res->LoadBalancerDescriptions }, '==', 16, '16 load balancers');
+  my %keys;
+  foreach my $item (@{ $res->LoadBalancerDescriptions }){
+    $keys{ $item->LoadBalancerName } ++;
+  }
+  cmp_ok(scalar(keys %keys), '==', 16, '16 different load balancers');
+
+}
+
+{  
+  my %keys;
+  my $calls = 0;
+ 
+  my $elb = $paws->service('ELB', region => 'eu-west-1', caller => mock_caller_for_test('elb-describeallloadbalancers'));
+  $elb->DescribeAllLoadBalancers(sub { $calls++; $keys{ $_[0]->LoadBalancerName }++; }, PageSize => '10');
+
+  cmp_ok($calls, '==', 16, '16 calls to the callback');
+  cmp_ok(scalar(keys %keys), '==', 16, '16 different load balancers w/callback');
+}
+
 done_testing;

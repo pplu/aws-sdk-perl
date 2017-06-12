@@ -164,8 +164,8 @@ package Paws::MachineLearning;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        push @{ $result->Results }, @{ $next_result->Results };
         $next_result = $self->DescribeBatchPredictions(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Results }, @{ $next_result->Results };
       }
       return $result;
     } else {
@@ -187,8 +187,8 @@ package Paws::MachineLearning;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        push @{ $result->Results }, @{ $next_result->Results };
         $next_result = $self->DescribeDataSources(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Results }, @{ $next_result->Results };
       }
       return $result;
     } else {
@@ -210,8 +210,8 @@ package Paws::MachineLearning;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        push @{ $result->Results }, @{ $next_result->Results };
         $next_result = $self->DescribeEvaluations(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Results }, @{ $next_result->Results };
       }
       return $result;
     } else {
@@ -233,8 +233,8 @@ package Paws::MachineLearning;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        push @{ $result->Results }, @{ $next_result->Results };
         $next_result = $self->DescribeMLModels(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Results }, @{ $next_result->Results };
       }
       return $result;
     } else {

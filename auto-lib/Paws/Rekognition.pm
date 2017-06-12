@@ -84,8 +84,8 @@ package Paws::Rekognition;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        push @{ $result->CollectionIds }, @{ $next_result->CollectionIds };
         $next_result = $self->ListCollections(@_, NextToken => $next_result->NextToken);
+        push @{ $result->CollectionIds }, @{ $next_result->CollectionIds };
       }
       return $result;
     } else {
@@ -107,8 +107,8 @@ package Paws::Rekognition;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        push @{ $result->Faces }, @{ $next_result->Faces };
         $next_result = $self->ListFaces(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Faces }, @{ $next_result->Faces };
       }
       return $result;
     } else {

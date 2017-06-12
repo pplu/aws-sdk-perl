@@ -94,8 +94,8 @@ package Paws::WorkSpaces;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        push @{ $result->Bundles }, @{ $next_result->Bundles };
         $next_result = $self->DescribeWorkspaceBundles(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Bundles }, @{ $next_result->Bundles };
       }
       return $result;
     } else {
@@ -117,8 +117,8 @@ package Paws::WorkSpaces;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        push @{ $result->Directories }, @{ $next_result->Directories };
         $next_result = $self->DescribeWorkspaceDirectories(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Directories }, @{ $next_result->Directories };
       }
       return $result;
     } else {
@@ -140,8 +140,8 @@ package Paws::WorkSpaces;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        push @{ $result->Workspaces }, @{ $next_result->Workspaces };
         $next_result = $self->DescribeWorkspaces(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Workspaces }, @{ $next_result->Workspaces };
       }
       return $result;
     } else {
