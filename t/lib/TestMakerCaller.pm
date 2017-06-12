@@ -17,7 +17,7 @@ package TestMakerCaller;
 
       my $file_name = $self->_test_file . '.test.yml';
       DumpFile($file_name, $test);
-      say "Written test case to ${file_name}.test.yml";
+      say "Written test case to ${file_name}";
     }
   });
 
