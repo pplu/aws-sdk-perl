@@ -49,6 +49,11 @@ package Paws::Rekognition;
     my $call_object = $self->new_with_coercions('Paws::Rekognition::DetectModerationLabels', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetCelebrityInfo {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Rekognition::GetCelebrityInfo', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub IndexFaces {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Rekognition::IndexFaces', @_);
@@ -62,6 +67,11 @@ package Paws::Rekognition;
   sub ListFaces {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Rekognition::ListFaces', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub RecognizeCelebrities {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Rekognition::RecognizeCelebrities', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub SearchFaces {
@@ -123,7 +133,7 @@ package Paws::Rekognition;
   }
 
 
-  sub operations { qw/CompareFaces CreateCollection DeleteCollection DeleteFaces DetectFaces DetectLabels DetectModerationLabels IndexFaces ListCollections ListFaces SearchFaces SearchFacesByImage / }
+  sub operations { qw/CompareFaces CreateCollection DeleteCollection DeleteFaces DetectFaces DetectLabels DetectModerationLabels GetCelebrityInfo IndexFaces ListCollections ListFaces RecognizeCelebrities SearchFaces SearchFacesByImage / }
 
 1;
 
@@ -344,7 +354,23 @@ content.
 
 To filter images, use the labels returned by C<DetectModerationLabels>
 to determine which types of content are appropriate. For information
-about moderation labels, see howitworks-moderateimage.
+about moderation labels, see image-moderation.
+
+
+=head2 GetCelebrityInfo(Id => Str)
+
+Each argument is described in detail in: L<Paws::Rekognition::GetCelebrityInfo>
+
+Returns: a L<Paws::Rekognition::GetCelebrityInfoResponse> instance
+
+  Gets the name and additional information about a celebrity based on his
+or her Rekognition ID. The additional information is returned as an
+array of URLs. If there is no additional information about the
+celebrity, this list is empty. For more information, see
+celebrity-recognition.
+
+This operation requires permissions to perform the
+C<rekognition:GetCelebrityInfo> action.
 
 
 =head2 IndexFaces(CollectionId => Str, Image => L<Paws::Rekognition::Image>, [DetectionAttributes => ArrayRef[Str|Undef], ExternalImageId => Str])
@@ -374,7 +400,7 @@ In response, the operation returns an array of metadata for all
 detected faces. This includes, the bounding box of the detected face,
 confidence value (indicating the bounding box contains a face), a face
 ID assigned by the service for each face that is detected and stored,
-and an image ID assigned by the service for the input image If you
+and an image ID assigned by the service for the input image. If you
 request all facial attributes (using the C<detectionAttributes>
 parameter, Amazon Rekognition returns detailed facial attributes such
 as facial landmarks (for example, location of eye and mount) and other
@@ -417,6 +443,41 @@ example, see example3.
 
 This operation requires permissions to perform the
 C<rekognition:ListFaces> action.
+
+
+=head2 RecognizeCelebrities(Image => L<Paws::Rekognition::Image>)
+
+Each argument is described in detail in: L<Paws::Rekognition::RecognizeCelebrities>
+
+Returns: a L<Paws::Rekognition::RecognizeCelebritiesResponse> instance
+
+  Returns an array of celebrities recognized in the input image. The
+image is passed either as base64-encoded image bytes or as a reference
+to an image in an Amazon S3 bucket. The image must be either a PNG or
+JPEG formatted file. For more information, see celebrity-recognition.
+
+C<RecognizeCelebrities> returns the 15 largest faces in the image. It
+lists recognized celebrities in the C<CelebrityFaces> list and
+unrecognized faces in the C<UnrecognizedFaces> list. The operation
+doesn't return celebrities whose face sizes are smaller than the
+largest 15 faces in the image.
+
+For each celebrity recognized, the API returns a C<Celebrity> object.
+The C<Celebrity> object contains the celebrity name, ID, URL links to
+additional information, match confidence, and a C<ComparedFace> object
+that you can use to locate the celebrity's face on the image.
+
+Rekognition does not retain information about which images a celebrity
+has been recognized in. Your application must store this information
+and use the C<Celebrity> ID property as a unique identifier for the
+celebrity. If you don't store the celebrity name or additional
+information URLs returned by C<RecognizeCelebrities>, you will need the
+ID to identify the celebrity in a call to the operation.
+
+For an example, see recognize-celebrities-tutorial.
+
+This operation requires permissions to perform the
+C<rekognition:RecognizeCelebrities> operation.
 
 
 =head2 SearchFaces(CollectionId => Str, FaceId => Str, [FaceMatchThreshold => Num, MaxFaces => Int])

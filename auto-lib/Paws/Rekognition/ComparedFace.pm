@@ -36,14 +36,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Rekognition
 =head1 DESCRIPTION
 
 Provides face metadata for target image faces that are analysed by
-C<CompareFaces>.
+C<CompareFaces> and C<RecognizeCelebrities>.
 
 =head1 ATTRIBUTES
 
 
 =head2 BoundingBox => L<Paws::Rekognition::BoundingBox>
 
-  
+  Bounding box of the face.
 
 
 =head2 Confidence => Num

@@ -43,7 +43,7 @@ for this comparison.
 
 =head2 BoundingBox => L<Paws::Rekognition::BoundingBox>
 
-  
+  Bounding box of the face.
 
 
 =head2 Confidence => Num

@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Rekognition
 
 =head1 DESCRIPTION
 
-Provides the source image either as bytes or an S3 object.
+Provides the input image either as bytes or an S3 object.
 
 You pass image bytes to a Rekognition API operation by using the
 C<Bytes> property. For example, you would use the C<Bytes> property to

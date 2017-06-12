@@ -35,8 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Rekognition
 
 Provides information about a single type of moderated content found in
 an image. Each type of moderated content has a label within a
-hierarchical taxonomy. For more information, see
-howitworks-moderateimage.
+hierarchical taxonomy. For more information, see image-moderation.
 
 =head1 ATTRIBUTES
 

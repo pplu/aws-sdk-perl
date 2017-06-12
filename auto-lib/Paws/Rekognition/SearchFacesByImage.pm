@@ -52,7 +52,7 @@ matches is less than 70%.
 
 =head2 B<REQUIRED> Image => L<Paws::Rekognition::Image>
 
-
+The input image as bytes or an S3 object.
 
 
 

@@ -67,7 +67,7 @@ ID you want to assign to all the faces detected in the image.
 
 =head2 B<REQUIRED> Image => L<Paws::Rekognition::Image>
 
-
+The input image as bytes or an S3 object.
 
 
 
