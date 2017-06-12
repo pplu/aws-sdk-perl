@@ -244,6 +244,11 @@ package Paws::OpsWorks;
     my $call_object = $self->new_with_coercions('Paws::OpsWorks::GrantAccess', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListTags {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::OpsWorks::ListTags', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub RebootInstance {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::OpsWorks::RebootInstance', @_);
@@ -309,6 +314,11 @@ package Paws::OpsWorks;
     my $call_object = $self->new_with_coercions('Paws::OpsWorks::StopStack', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub TagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::OpsWorks::TagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UnassignInstance {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::OpsWorks::UnassignInstance', @_);
@@ -317,6 +327,11 @@ package Paws::OpsWorks;
   sub UnassignVolume {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::OpsWorks::UnassignVolume', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UntagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::OpsWorks::UntagResource', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateApp {
@@ -390,7 +405,7 @@ package Paws::OpsWorks;
   }
 
 
-  sub operations { qw/AssignInstance AssignVolume AssociateElasticIp AttachElasticLoadBalancer CloneStack CreateApp CreateDeployment CreateInstance CreateLayer CreateStack CreateUserProfile DeleteApp DeleteInstance DeleteLayer DeleteStack DeleteUserProfile DeregisterEcsCluster DeregisterElasticIp DeregisterInstance DeregisterRdsDbInstance DeregisterVolume DescribeAgentVersions DescribeApps DescribeCommands DescribeDeployments DescribeEcsClusters DescribeElasticIps DescribeElasticLoadBalancers DescribeInstances DescribeLayers DescribeLoadBasedAutoScaling DescribeMyUserProfile DescribePermissions DescribeRaidArrays DescribeRdsDbInstances DescribeServiceErrors DescribeStackProvisioningParameters DescribeStacks DescribeStackSummary DescribeTimeBasedAutoScaling DescribeUserProfiles DescribeVolumes DetachElasticLoadBalancer DisassociateElasticIp GetHostnameSuggestion GrantAccess RebootInstance RegisterEcsCluster RegisterElasticIp RegisterInstance RegisterRdsDbInstance RegisterVolume SetLoadBasedAutoScaling SetPermission SetTimeBasedAutoScaling StartInstance StartStack StopInstance StopStack UnassignInstance UnassignVolume UpdateApp UpdateElasticIp UpdateInstance UpdateLayer UpdateMyUserProfile UpdateRdsDbInstance UpdateStack UpdateUserProfile UpdateVolume / }
+  sub operations { qw/AssignInstance AssignVolume AssociateElasticIp AttachElasticLoadBalancer CloneStack CreateApp CreateDeployment CreateInstance CreateLayer CreateStack CreateUserProfile DeleteApp DeleteInstance DeleteLayer DeleteStack DeleteUserProfile DeregisterEcsCluster DeregisterElasticIp DeregisterInstance DeregisterRdsDbInstance DeregisterVolume DescribeAgentVersions DescribeApps DescribeCommands DescribeDeployments DescribeEcsClusters DescribeElasticIps DescribeElasticLoadBalancers DescribeInstances DescribeLayers DescribeLoadBasedAutoScaling DescribeMyUserProfile DescribePermissions DescribeRaidArrays DescribeRdsDbInstances DescribeServiceErrors DescribeStackProvisioningParameters DescribeStacks DescribeStackSummary DescribeTimeBasedAutoScaling DescribeUserProfiles DescribeVolumes DetachElasticLoadBalancer DisassociateElasticIp GetHostnameSuggestion GrantAccess ListTags RebootInstance RegisterEcsCluster RegisterElasticIp RegisterInstance RegisterRdsDbInstance RegisterVolume SetLoadBasedAutoScaling SetPermission SetTimeBasedAutoScaling StartInstance StartStack StopInstance StopStack TagResource UnassignInstance UnassignVolume UntagResource UpdateApp UpdateElasticIp UpdateInstance UpdateLayer UpdateMyUserProfile UpdateRdsDbInstance UpdateStack UpdateUserProfile UpdateVolume / }
 
 1;
 
@@ -617,7 +632,9 @@ Each argument is described in detail in: L<Paws::OpsWorks::AttachElasticLoadBala
 Returns: nothing
 
   Attaches an Elastic Load Balancing load balancer to a specified layer.
-For more information, see Elastic Load Balancing.
+AWS OpsWorks Stacks does not support Application Load Balancer. You can
+only use Classic Load Balancer with AWS OpsWorks Stacks. For more
+information, see Elastic Load Balancing.
 
 You must create the Elastic Load Balancing instance separately, by
 using the Elastic Load Balancing console, API, or CLI. For more
@@ -1272,6 +1289,16 @@ Returns: a L<Paws::OpsWorks::GrantAccessResult> instance
 Grants RDP access to a Windows instance for a specified time period.
 
 
+=head2 ListTags(ResourceArn => Str, [MaxResults => Int, NextToken => Str])
+
+Each argument is described in detail in: L<Paws::OpsWorks::ListTags>
+
+Returns: a L<Paws::OpsWorks::ListTagsResult> instance
+
+  Returns a list of tags that are applied to the specified stack or
+layer.
+
+
 =head2 RebootInstance(InstanceId => Str)
 
 Each argument is described in detail in: L<Paws::OpsWorks::RebootInstance>
@@ -1493,6 +1520,17 @@ explicitly grants permissions. For more information on user
 permissions, see Managing User Permissions.
 
 
+=head2 TagResource(ResourceArn => Str, Tags => L<Paws::OpsWorks::Tags>)
+
+Each argument is described in detail in: L<Paws::OpsWorks::TagResource>
+
+Returns: nothing
+
+  Apply cost-allocation tags to a specified stack or layer in AWS
+OpsWorks Stacks. For more information about how tagging works, see Tags
+in the AWS OpsWorks User Guide.
+
+
 =head2 UnassignInstance(InstanceId => Str)
 
 Each argument is described in detail in: L<Paws::OpsWorks::UnassignInstance>
@@ -1523,6 +1561,15 @@ B<Required Permissions>: To use this action, an IAM user must have a
 Manage permissions level for the stack, or an attached policy that
 explicitly grants permissions. For more information on user
 permissions, see Managing User Permissions.
+
+
+=head2 UntagResource(ResourceArn => Str, TagKeys => ArrayRef[Str|Undef])
+
+Each argument is described in detail in: L<Paws::OpsWorks::UntagResource>
+
+Returns: nothing
+
+  Removes tags from a specified stack or layer.
 
 
 =head2 UpdateApp(AppId => Str, [AppSource => L<Paws::OpsWorks::Source>, Attributes => L<Paws::OpsWorks::AppAttributes>, DataSources => ArrayRef[L<Paws::OpsWorks::DataSource>], Description => Str, Domains => ArrayRef[Str|Undef], EnableSsl => Bool, Environment => ArrayRef[L<Paws::OpsWorks::EnvironmentVariable>], Name => Str, SslConfiguration => L<Paws::OpsWorks::SslConfiguration>, Type => Str])
