@@ -1,7 +1,7 @@
 package Paws::IoT::SalesforceAction;
   use Moose;
-  has Token => (is => 'ro', isa => 'Str', request_name => 'token', traits => ['NameInRequest']);
-  has Url => (is => 'ro', isa => 'Str', request_name => 'url', traits => ['NameInRequest']);
+  has Token => (is => 'ro', isa => 'Str', request_name => 'token', traits => ['NameInRequest'], required => 1);
+  has Url => (is => 'ro', isa => 'Str', request_name => 'url', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -38,14 +38,14 @@ Stream.
 =head1 ATTRIBUTES
 
 
-=head2 Token => Str
+=head2 B<REQUIRED> Token => Str
 
   The token used to authenticate access to the Salesforce IoT Cloud Input
 Stream. The token is available from the Salesforce IoT Cloud platform
 after creation of the Input Stream.
 
 
-=head2 Url => Str
+=head2 B<REQUIRED> Url => Str
 
   The URL exposed by the Salesforce IoT Cloud Input Stream. The URL is
 available from the Salesforce IoT Cloud platform after creation of the

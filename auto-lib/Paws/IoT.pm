@@ -637,13 +637,14 @@ Returns: a L<Paws::IoT::DescribeCACertificateResponse> instance
   Describes a registered CA certificate.
 
 
-=head2 DescribeCertificate(CertificateId => Str)
+=head2 DescribeCertificate(CertificateId => Str, [CertificatePem => Str])
 
 Each argument is described in detail in: L<Paws::IoT::DescribeCertificate>
 
 Returns: a L<Paws::IoT::DescribeCertificateResponse> instance
 
-  Gets information about the specified certificate.
+  Gets information about the specified certificate. You may specify the
+certificate using either its ID or PEM.
 
 
 =head2 DescribeEndpoint()
