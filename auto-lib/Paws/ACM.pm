@@ -303,7 +303,9 @@ blocked by spam filters. Therefore, if you do not receive the original
 mail, you can request that the mail be resent within 72 hours of
 requesting the ACM Certificate. If more than 72 hours have elapsed
 since your original request or since your last attempt to resend
-validation mail, you must request a new certificate.
+validation mail, you must request a new certificate. For more
+information about setting up your contact email addresses, see
+Configure Email for your Domain.
 
 
 
