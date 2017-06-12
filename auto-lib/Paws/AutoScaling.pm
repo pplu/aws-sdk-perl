@@ -283,15 +283,16 @@ package Paws::AutoScaling;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        $result = $self->DescribeAutoScalingGroups(@_, NextToken => $result->NextToken);
         push @{ $result->AutoScalingGroups }, @{ $next_result->AutoScalingGroups };
+        $next_result = $self->DescribeAutoScalingGroups(@_, NextToken => $next_result->NextToken);
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->DescribeAutoScalingGroups(@_, NextToken => $result->NextToken);
         $callback->($_ => 'AutoScalingGroups') foreach (@{ $result->AutoScalingGroups });
+        $result = $self->DescribeAutoScalingGroups(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'AutoScalingGroups') foreach (@{ $result->AutoScalingGroups });
     }
 
     return undef
@@ -305,15 +306,16 @@ package Paws::AutoScaling;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        $result = $self->DescribeAutoScalingInstances(@_, NextToken => $result->NextToken);
         push @{ $result->AutoScalingInstances }, @{ $next_result->AutoScalingInstances };
+        $next_result = $self->DescribeAutoScalingInstances(@_, NextToken => $next_result->NextToken);
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->DescribeAutoScalingInstances(@_, NextToken => $result->NextToken);
         $callback->($_ => 'AutoScalingInstances') foreach (@{ $result->AutoScalingInstances });
+        $result = $self->DescribeAutoScalingInstances(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'AutoScalingInstances') foreach (@{ $result->AutoScalingInstances });
     }
 
     return undef
@@ -327,15 +329,16 @@ package Paws::AutoScaling;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        $result = $self->DescribeLaunchConfigurations(@_, NextToken => $result->NextToken);
         push @{ $result->LaunchConfigurations }, @{ $next_result->LaunchConfigurations };
+        $next_result = $self->DescribeLaunchConfigurations(@_, NextToken => $next_result->NextToken);
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->DescribeLaunchConfigurations(@_, NextToken => $result->NextToken);
         $callback->($_ => 'LaunchConfigurations') foreach (@{ $result->LaunchConfigurations });
+        $result = $self->DescribeLaunchConfigurations(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'LaunchConfigurations') foreach (@{ $result->LaunchConfigurations });
     }
 
     return undef
@@ -349,15 +352,16 @@ package Paws::AutoScaling;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        $result = $self->DescribeNotificationConfigurations(@_, NextToken => $result->NextToken);
         push @{ $result->NotificationConfigurations }, @{ $next_result->NotificationConfigurations };
+        $next_result = $self->DescribeNotificationConfigurations(@_, NextToken => $next_result->NextToken);
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->DescribeNotificationConfigurations(@_, NextToken => $result->NextToken);
         $callback->($_ => 'NotificationConfigurations') foreach (@{ $result->NotificationConfigurations });
+        $result = $self->DescribeNotificationConfigurations(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'NotificationConfigurations') foreach (@{ $result->NotificationConfigurations });
     }
 
     return undef
@@ -371,15 +375,16 @@ package Paws::AutoScaling;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        $result = $self->DescribePolicies(@_, NextToken => $result->NextToken);
         push @{ $result->ScalingPolicies }, @{ $next_result->ScalingPolicies };
+        $next_result = $self->DescribePolicies(@_, NextToken => $next_result->NextToken);
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->DescribePolicies(@_, NextToken => $result->NextToken);
         $callback->($_ => 'ScalingPolicies') foreach (@{ $result->ScalingPolicies });
+        $result = $self->DescribePolicies(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'ScalingPolicies') foreach (@{ $result->ScalingPolicies });
     }
 
     return undef
@@ -393,15 +398,16 @@ package Paws::AutoScaling;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        $result = $self->DescribeScalingActivities(@_, NextToken => $result->NextToken);
         push @{ $result->Activities }, @{ $next_result->Activities };
+        $next_result = $self->DescribeScalingActivities(@_, NextToken => $next_result->NextToken);
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->DescribeScalingActivities(@_, NextToken => $result->NextToken);
         $callback->($_ => 'Activities') foreach (@{ $result->Activities });
+        $result = $self->DescribeScalingActivities(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'Activities') foreach (@{ $result->Activities });
     }
 
     return undef
@@ -415,15 +421,16 @@ package Paws::AutoScaling;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        $result = $self->DescribeScheduledActions(@_, NextToken => $result->NextToken);
         push @{ $result->ScheduledUpdateGroupActions }, @{ $next_result->ScheduledUpdateGroupActions };
+        $next_result = $self->DescribeScheduledActions(@_, NextToken => $next_result->NextToken);
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->DescribeScheduledActions(@_, NextToken => $result->NextToken);
         $callback->($_ => 'ScheduledUpdateGroupActions') foreach (@{ $result->ScheduledUpdateGroupActions });
+        $result = $self->DescribeScheduledActions(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'ScheduledUpdateGroupActions') foreach (@{ $result->ScheduledUpdateGroupActions });
     }
 
     return undef
@@ -437,15 +444,16 @@ package Paws::AutoScaling;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        $result = $self->DescribeTags(@_, NextToken => $result->NextToken);
         push @{ $result->Tags }, @{ $next_result->Tags };
+        $next_result = $self->DescribeTags(@_, NextToken => $next_result->NextToken);
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->DescribeTags(@_, NextToken => $result->NextToken);
         $callback->($_ => 'Tags') foreach (@{ $result->Tags });
+        $result = $self->DescribeTags(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'Tags') foreach (@{ $result->Tags });
     }
 
     return undef

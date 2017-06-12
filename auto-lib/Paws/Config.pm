@@ -154,15 +154,16 @@ package Paws::Config;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        $result = $self->DescribeComplianceByConfigRule(@_, NextToken => $result->NextToken);
         push @{ $result->ComplianceByConfigRules }, @{ $next_result->ComplianceByConfigRules };
+        $next_result = $self->DescribeComplianceByConfigRule(@_, NextToken => $next_result->NextToken);
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->DescribeComplianceByConfigRule(@_, NextToken => $result->NextToken);
         $callback->($_ => 'ComplianceByConfigRules') foreach (@{ $result->ComplianceByConfigRules });
+        $result = $self->DescribeComplianceByConfigRule(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'ComplianceByConfigRules') foreach (@{ $result->ComplianceByConfigRules });
     }
 
     return undef
@@ -176,15 +177,16 @@ package Paws::Config;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        $result = $self->DescribeComplianceByResource(@_, NextToken => $result->NextToken);
         push @{ $result->ComplianceByResources }, @{ $next_result->ComplianceByResources };
+        $next_result = $self->DescribeComplianceByResource(@_, NextToken => $next_result->NextToken);
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->DescribeComplianceByResource(@_, NextToken => $result->NextToken);
         $callback->($_ => 'ComplianceByResources') foreach (@{ $result->ComplianceByResources });
+        $result = $self->DescribeComplianceByResource(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'ComplianceByResources') foreach (@{ $result->ComplianceByResources });
     }
 
     return undef
@@ -198,15 +200,16 @@ package Paws::Config;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        $result = $self->DescribeConfigRules(@_, NextToken => $result->NextToken);
         push @{ $result->ConfigRules }, @{ $next_result->ConfigRules };
+        $next_result = $self->DescribeConfigRules(@_, NextToken => $next_result->NextToken);
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->DescribeConfigRules(@_, NextToken => $result->NextToken);
         $callback->($_ => 'ConfigRules') foreach (@{ $result->ConfigRules });
+        $result = $self->DescribeConfigRules(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'ConfigRules') foreach (@{ $result->ConfigRules });
     }
 
     return undef
@@ -220,15 +223,16 @@ package Paws::Config;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        $result = $self->GetComplianceDetailsByConfigRule(@_, NextToken => $result->NextToken);
         push @{ $result->EvaluationResults }, @{ $next_result->EvaluationResults };
+        $next_result = $self->GetComplianceDetailsByConfigRule(@_, NextToken => $next_result->NextToken);
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->GetComplianceDetailsByConfigRule(@_, NextToken => $result->NextToken);
         $callback->($_ => 'EvaluationResults') foreach (@{ $result->EvaluationResults });
+        $result = $self->GetComplianceDetailsByConfigRule(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'EvaluationResults') foreach (@{ $result->EvaluationResults });
     }
 
     return undef
@@ -242,15 +246,16 @@ package Paws::Config;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        $result = $self->GetComplianceDetailsByResource(@_, NextToken => $result->NextToken);
         push @{ $result->EvaluationResults }, @{ $next_result->EvaluationResults };
+        $next_result = $self->GetComplianceDetailsByResource(@_, NextToken => $next_result->NextToken);
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->GetComplianceDetailsByResource(@_, NextToken => $result->NextToken);
         $callback->($_ => 'EvaluationResults') foreach (@{ $result->EvaluationResults });
+        $result = $self->GetComplianceDetailsByResource(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'EvaluationResults') foreach (@{ $result->EvaluationResults });
     }
 
     return undef
@@ -264,15 +269,16 @@ package Paws::Config;
 
     if (not defined $callback) {
       while ($next_result->nextToken) {
-        $result = $self->GetResourceConfigHistory(@_, nextToken => $result->nextToken);
         push @{ $result->configurationItems }, @{ $next_result->configurationItems };
+        $next_result = $self->GetResourceConfigHistory(@_, nextToken => $next_result->nextToken);
       }
       return $result;
     } else {
       while ($result->nextToken) {
-        $result = $self->GetResourceConfigHistory(@_, nextToken => $result->nextToken);
         $callback->($_ => 'configurationItems') foreach (@{ $result->configurationItems });
+        $result = $self->GetResourceConfigHistory(@_, nextToken => $result->nextToken);
       }
+      $callback->($_ => 'configurationItems') foreach (@{ $result->configurationItems });
     }
 
     return undef
@@ -286,15 +292,16 @@ package Paws::Config;
 
     if (not defined $callback) {
       while ($next_result->nextToken) {
-        $result = $self->ListDiscoveredResources(@_, nextToken => $result->nextToken);
         push @{ $result->resourceIdentifiers }, @{ $next_result->resourceIdentifiers };
+        $next_result = $self->ListDiscoveredResources(@_, nextToken => $next_result->nextToken);
       }
       return $result;
     } else {
       while ($result->nextToken) {
-        $result = $self->ListDiscoveredResources(@_, nextToken => $result->nextToken);
         $callback->($_ => 'resourceIdentifiers') foreach (@{ $result->resourceIdentifiers });
+        $result = $self->ListDiscoveredResources(@_, nextToken => $result->nextToken);
       }
+      $callback->($_ => 'resourceIdentifiers') foreach (@{ $result->resourceIdentifiers });
     }
 
     return undef

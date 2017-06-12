@@ -78,15 +78,16 @@ package Paws::CloudWatch;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        $result = $self->DescribeAlarmHistory(@_, NextToken => $result->NextToken);
         push @{ $result->AlarmHistoryItems }, @{ $next_result->AlarmHistoryItems };
+        $next_result = $self->DescribeAlarmHistory(@_, NextToken => $next_result->NextToken);
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->DescribeAlarmHistory(@_, NextToken => $result->NextToken);
         $callback->($_ => 'AlarmHistoryItems') foreach (@{ $result->AlarmHistoryItems });
+        $result = $self->DescribeAlarmHistory(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'AlarmHistoryItems') foreach (@{ $result->AlarmHistoryItems });
     }
 
     return undef
@@ -100,15 +101,16 @@ package Paws::CloudWatch;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        $result = $self->DescribeAlarms(@_, NextToken => $result->NextToken);
         push @{ $result->MetricAlarms }, @{ $next_result->MetricAlarms };
+        $next_result = $self->DescribeAlarms(@_, NextToken => $next_result->NextToken);
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->DescribeAlarms(@_, NextToken => $result->NextToken);
         $callback->($_ => 'MetricAlarms') foreach (@{ $result->MetricAlarms });
+        $result = $self->DescribeAlarms(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'MetricAlarms') foreach (@{ $result->MetricAlarms });
     }
 
     return undef
@@ -122,15 +124,16 @@ package Paws::CloudWatch;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        $result = $self->ListMetrics(@_, NextToken => $result->NextToken);
         push @{ $result->Metrics }, @{ $next_result->Metrics };
+        $next_result = $self->ListMetrics(@_, NextToken => $next_result->NextToken);
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->ListMetrics(@_, NextToken => $result->NextToken);
         $callback->($_ => 'Metrics') foreach (@{ $result->Metrics });
+        $result = $self->ListMetrics(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'Metrics') foreach (@{ $result->Metrics });
     }
 
     return undef

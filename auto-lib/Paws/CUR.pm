@@ -39,15 +39,16 @@ package Paws::CUR;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        $result = $self->DescribeReportDefinitions(@_, NextToken => $result->NextToken);
         push @{ $result->ReportDefinitions }, @{ $next_result->ReportDefinitions };
+        $next_result = $self->DescribeReportDefinitions(@_, NextToken => $next_result->NextToken);
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->DescribeReportDefinitions(@_, NextToken => $result->NextToken);
         $callback->($_ => 'ReportDefinitions') foreach (@{ $result->ReportDefinitions });
+        $result = $self->DescribeReportDefinitions(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'ReportDefinitions') foreach (@{ $result->ReportDefinitions });
     }
 
     return undef

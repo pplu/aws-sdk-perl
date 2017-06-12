@@ -94,15 +94,16 @@ package Paws::Support;
 
     if (not defined $callback) {
       while ($next_result->nextToken) {
-        $result = $self->DescribeCases(@_, nextToken => $result->nextToken);
         push @{ $result->cases }, @{ $next_result->cases };
+        $next_result = $self->DescribeCases(@_, nextToken => $next_result->nextToken);
       }
       return $result;
     } else {
       while ($result->nextToken) {
-        $result = $self->DescribeCases(@_, nextToken => $result->nextToken);
         $callback->($_ => 'cases') foreach (@{ $result->cases });
+        $result = $self->DescribeCases(@_, nextToken => $result->nextToken);
       }
+      $callback->($_ => 'cases') foreach (@{ $result->cases });
     }
 
     return undef
@@ -116,15 +117,16 @@ package Paws::Support;
 
     if (not defined $callback) {
       while ($next_result->nextToken) {
-        $result = $self->DescribeCommunications(@_, nextToken => $result->nextToken);
         push @{ $result->communications }, @{ $next_result->communications };
+        $next_result = $self->DescribeCommunications(@_, nextToken => $next_result->nextToken);
       }
       return $result;
     } else {
       while ($result->nextToken) {
-        $result = $self->DescribeCommunications(@_, nextToken => $result->nextToken);
         $callback->($_ => 'communications') foreach (@{ $result->communications });
+        $result = $self->DescribeCommunications(@_, nextToken => $result->nextToken);
       }
+      $callback->($_ => 'communications') foreach (@{ $result->communications });
     }
 
     return undef

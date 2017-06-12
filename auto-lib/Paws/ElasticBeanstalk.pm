@@ -228,15 +228,16 @@ package Paws::ElasticBeanstalk;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        $result = $self->DescribeEvents(@_, NextToken => $result->NextToken);
         push @{ $result->Events }, @{ $next_result->Events };
+        $next_result = $self->DescribeEvents(@_, NextToken => $next_result->NextToken);
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->DescribeEvents(@_, NextToken => $result->NextToken);
         $callback->($_ => 'Events') foreach (@{ $result->Events });
+        $result = $self->DescribeEvents(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'Events') foreach (@{ $result->Events });
     }
 
     return undef

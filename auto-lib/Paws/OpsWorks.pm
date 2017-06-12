@@ -374,15 +374,16 @@ package Paws::OpsWorks;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        $result = $self->DescribeEcsClusters(@_, NextToken => $result->NextToken);
         push @{ $result->EcsClusters }, @{ $next_result->EcsClusters };
+        $next_result = $self->DescribeEcsClusters(@_, NextToken => $next_result->NextToken);
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->DescribeEcsClusters(@_, NextToken => $result->NextToken);
         $callback->($_ => 'EcsClusters') foreach (@{ $result->EcsClusters });
+        $result = $self->DescribeEcsClusters(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'EcsClusters') foreach (@{ $result->EcsClusters });
     }
 
     return undef

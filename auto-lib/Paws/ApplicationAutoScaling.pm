@@ -59,15 +59,16 @@ package Paws::ApplicationAutoScaling;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        $result = $self->DescribeScalableTargets(@_, NextToken => $result->NextToken);
         push @{ $result->ScalableTargets }, @{ $next_result->ScalableTargets };
+        $next_result = $self->DescribeScalableTargets(@_, NextToken => $next_result->NextToken);
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->DescribeScalableTargets(@_, NextToken => $result->NextToken);
         $callback->($_ => 'ScalableTargets') foreach (@{ $result->ScalableTargets });
+        $result = $self->DescribeScalableTargets(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'ScalableTargets') foreach (@{ $result->ScalableTargets });
     }
 
     return undef
@@ -81,15 +82,16 @@ package Paws::ApplicationAutoScaling;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        $result = $self->DescribeScalingActivities(@_, NextToken => $result->NextToken);
         push @{ $result->ScalingActivities }, @{ $next_result->ScalingActivities };
+        $next_result = $self->DescribeScalingActivities(@_, NextToken => $next_result->NextToken);
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->DescribeScalingActivities(@_, NextToken => $result->NextToken);
         $callback->($_ => 'ScalingActivities') foreach (@{ $result->ScalingActivities });
+        $result = $self->DescribeScalingActivities(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'ScalingActivities') foreach (@{ $result->ScalingActivities });
     }
 
     return undef
@@ -103,15 +105,16 @@ package Paws::ApplicationAutoScaling;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        $result = $self->DescribeScalingPolicies(@_, NextToken => $result->NextToken);
         push @{ $result->ScalingPolicies }, @{ $next_result->ScalingPolicies };
+        $next_result = $self->DescribeScalingPolicies(@_, NextToken => $next_result->NextToken);
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->DescribeScalingPolicies(@_, NextToken => $result->NextToken);
         $callback->($_ => 'ScalingPolicies') foreach (@{ $result->ScalingPolicies });
+        $result = $self->DescribeScalingPolicies(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'ScalingPolicies') foreach (@{ $result->ScalingPolicies });
     }
 
     return undef

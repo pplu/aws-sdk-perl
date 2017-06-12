@@ -49,15 +49,16 @@ package Paws::ResourceTagging;
 
     if (not defined $callback) {
       while ($next_result->PaginationToken) {
-        $result = $self->GetResources(@_, PaginationToken => $result->PaginationToken);
         push @{ $result->ResourceTagMappingList }, @{ $next_result->ResourceTagMappingList };
+        $next_result = $self->GetResources(@_, PaginationToken => $next_result->PaginationToken);
       }
       return $result;
     } else {
       while ($result->PaginationToken) {
-        $result = $self->GetResources(@_, PaginationToken => $result->PaginationToken);
         $callback->($_ => 'ResourceTagMappingList') foreach (@{ $result->ResourceTagMappingList });
+        $result = $self->GetResources(@_, PaginationToken => $result->PaginationToken);
       }
+      $callback->($_ => 'ResourceTagMappingList') foreach (@{ $result->ResourceTagMappingList });
     }
 
     return undef
@@ -71,15 +72,16 @@ package Paws::ResourceTagging;
 
     if (not defined $callback) {
       while ($next_result->PaginationToken) {
-        $result = $self->GetTagKeys(@_, PaginationToken => $result->PaginationToken);
         push @{ $result->TagKeys }, @{ $next_result->TagKeys };
+        $next_result = $self->GetTagKeys(@_, PaginationToken => $next_result->PaginationToken);
       }
       return $result;
     } else {
       while ($result->PaginationToken) {
-        $result = $self->GetTagKeys(@_, PaginationToken => $result->PaginationToken);
         $callback->($_ => 'TagKeys') foreach (@{ $result->TagKeys });
+        $result = $self->GetTagKeys(@_, PaginationToken => $result->PaginationToken);
       }
+      $callback->($_ => 'TagKeys') foreach (@{ $result->TagKeys });
     }
 
     return undef
@@ -93,15 +95,16 @@ package Paws::ResourceTagging;
 
     if (not defined $callback) {
       while ($next_result->PaginationToken) {
-        $result = $self->GetTagValues(@_, PaginationToken => $result->PaginationToken);
         push @{ $result->TagValues }, @{ $next_result->TagValues };
+        $next_result = $self->GetTagValues(@_, PaginationToken => $next_result->PaginationToken);
       }
       return $result;
     } else {
       while ($result->PaginationToken) {
-        $result = $self->GetTagValues(@_, PaginationToken => $result->PaginationToken);
         $callback->($_ => 'TagValues') foreach (@{ $result->TagValues });
+        $result = $self->GetTagValues(@_, PaginationToken => $result->PaginationToken);
       }
+      $callback->($_ => 'TagValues') foreach (@{ $result->TagValues });
     }
 
     return undef

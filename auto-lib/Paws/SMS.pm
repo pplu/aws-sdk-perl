@@ -79,15 +79,16 @@ package Paws::SMS;
 
     if (not defined $callback) {
       while ($next_result->nextToken) {
-        $result = $self->GetConnectors(@_, nextToken => $result->nextToken);
         push @{ $result->connectorList }, @{ $next_result->connectorList };
+        $next_result = $self->GetConnectors(@_, nextToken => $next_result->nextToken);
       }
       return $result;
     } else {
       while ($result->nextToken) {
-        $result = $self->GetConnectors(@_, nextToken => $result->nextToken);
         $callback->($_ => 'connectorList') foreach (@{ $result->connectorList });
+        $result = $self->GetConnectors(@_, nextToken => $result->nextToken);
       }
+      $callback->($_ => 'connectorList') foreach (@{ $result->connectorList });
     }
 
     return undef
@@ -101,15 +102,16 @@ package Paws::SMS;
 
     if (not defined $callback) {
       while ($next_result->nextToken) {
-        $result = $self->GetReplicationJobs(@_, nextToken => $result->nextToken);
         push @{ $result->replicationJobList }, @{ $next_result->replicationJobList };
+        $next_result = $self->GetReplicationJobs(@_, nextToken => $next_result->nextToken);
       }
       return $result;
     } else {
       while ($result->nextToken) {
-        $result = $self->GetReplicationJobs(@_, nextToken => $result->nextToken);
         $callback->($_ => 'replicationJobList') foreach (@{ $result->replicationJobList });
+        $result = $self->GetReplicationJobs(@_, nextToken => $result->nextToken);
       }
+      $callback->($_ => 'replicationJobList') foreach (@{ $result->replicationJobList });
     }
 
     return undef
@@ -123,15 +125,16 @@ package Paws::SMS;
 
     if (not defined $callback) {
       while ($next_result->nextToken) {
-        $result = $self->GetReplicationRuns(@_, nextToken => $result->nextToken);
         push @{ $result->replicationRunList }, @{ $next_result->replicationRunList };
+        $next_result = $self->GetReplicationRuns(@_, nextToken => $next_result->nextToken);
       }
       return $result;
     } else {
       while ($result->nextToken) {
-        $result = $self->GetReplicationRuns(@_, nextToken => $result->nextToken);
         $callback->($_ => 'replicationRunList') foreach (@{ $result->replicationRunList });
+        $result = $self->GetReplicationRuns(@_, nextToken => $result->nextToken);
       }
+      $callback->($_ => 'replicationRunList') foreach (@{ $result->replicationRunList });
     }
 
     return undef
@@ -145,15 +148,16 @@ package Paws::SMS;
 
     if (not defined $callback) {
       while ($next_result->nextToken) {
-        $result = $self->GetServers(@_, nextToken => $result->nextToken);
         push @{ $result->serverList }, @{ $next_result->serverList };
+        $next_result = $self->GetServers(@_, nextToken => $next_result->nextToken);
       }
       return $result;
     } else {
       while ($result->nextToken) {
-        $result = $self->GetServers(@_, nextToken => $result->nextToken);
         $callback->($_ => 'serverList') foreach (@{ $result->serverList });
+        $result = $self->GetServers(@_, nextToken => $result->nextToken);
       }
+      $callback->($_ => 'serverList') foreach (@{ $result->serverList });
     }
 
     return undef

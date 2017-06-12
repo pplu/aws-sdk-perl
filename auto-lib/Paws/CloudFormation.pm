@@ -153,15 +153,16 @@ package Paws::CloudFormation;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        $result = $self->DescribeStackEvents(@_, NextToken => $result->NextToken);
         push @{ $result->StackEvents }, @{ $next_result->StackEvents };
+        $next_result = $self->DescribeStackEvents(@_, NextToken => $next_result->NextToken);
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->DescribeStackEvents(@_, NextToken => $result->NextToken);
         $callback->($_ => 'StackEvents') foreach (@{ $result->StackEvents });
+        $result = $self->DescribeStackEvents(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'StackEvents') foreach (@{ $result->StackEvents });
     }
 
     return undef
@@ -175,15 +176,16 @@ package Paws::CloudFormation;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        $result = $self->DescribeStacks(@_, NextToken => $result->NextToken);
         push @{ $result->Stacks }, @{ $next_result->Stacks };
+        $next_result = $self->DescribeStacks(@_, NextToken => $next_result->NextToken);
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->DescribeStacks(@_, NextToken => $result->NextToken);
         $callback->($_ => 'Stacks') foreach (@{ $result->Stacks });
+        $result = $self->DescribeStacks(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'Stacks') foreach (@{ $result->Stacks });
     }
 
     return undef
@@ -197,15 +199,16 @@ package Paws::CloudFormation;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        $result = $self->ListExports(@_, NextToken => $result->NextToken);
         push @{ $result->Exports }, @{ $next_result->Exports };
+        $next_result = $self->ListExports(@_, NextToken => $next_result->NextToken);
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->ListExports(@_, NextToken => $result->NextToken);
         $callback->($_ => 'Exports') foreach (@{ $result->Exports });
+        $result = $self->ListExports(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'Exports') foreach (@{ $result->Exports });
     }
 
     return undef
@@ -219,15 +222,16 @@ package Paws::CloudFormation;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        $result = $self->ListImports(@_, NextToken => $result->NextToken);
         push @{ $result->Imports }, @{ $next_result->Imports };
+        $next_result = $self->ListImports(@_, NextToken => $next_result->NextToken);
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->ListImports(@_, NextToken => $result->NextToken);
         $callback->($_ => 'Imports') foreach (@{ $result->Imports });
+        $result = $self->ListImports(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'Imports') foreach (@{ $result->Imports });
     }
 
     return undef
@@ -241,15 +245,16 @@ package Paws::CloudFormation;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        $result = $self->ListStackResources(@_, NextToken => $result->NextToken);
         push @{ $result->StackResourceSummaries }, @{ $next_result->StackResourceSummaries };
+        $next_result = $self->ListStackResources(@_, NextToken => $next_result->NextToken);
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->ListStackResources(@_, NextToken => $result->NextToken);
         $callback->($_ => 'StackResourceSummaries') foreach (@{ $result->StackResourceSummaries });
+        $result = $self->ListStackResources(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'StackResourceSummaries') foreach (@{ $result->StackResourceSummaries });
     }
 
     return undef
@@ -263,15 +268,16 @@ package Paws::CloudFormation;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        $result = $self->ListStacks(@_, NextToken => $result->NextToken);
         push @{ $result->StackSummaries }, @{ $next_result->StackSummaries };
+        $next_result = $self->ListStacks(@_, NextToken => $next_result->NextToken);
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->ListStacks(@_, NextToken => $result->NextToken);
         $callback->($_ => 'StackSummaries') foreach (@{ $result->StackSummaries });
+        $result = $self->ListStacks(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'StackSummaries') foreach (@{ $result->StackSummaries });
     }
 
     return undef

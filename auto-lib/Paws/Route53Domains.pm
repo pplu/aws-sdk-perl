@@ -139,15 +139,16 @@ package Paws::Route53Domains;
 
     if (not defined $callback) {
       while ($next_result->Marker) {
-        $result = $self->ListDomains(@_, Marker => $result->NextPageMarker);
         push @{ $result->Domains }, @{ $next_result->Domains };
+        $next_result = $self->ListDomains(@_, Marker => $next_result->NextPageMarker);
       }
       return $result;
     } else {
       while ($result->Marker) {
-        $result = $self->ListDomains(@_, Marker => $result->NextPageMarker);
         $callback->($_ => 'Domains') foreach (@{ $result->Domains });
+        $result = $self->ListDomains(@_, Marker => $result->NextPageMarker);
       }
+      $callback->($_ => 'Domains') foreach (@{ $result->Domains });
     }
 
     return undef
@@ -161,15 +162,16 @@ package Paws::Route53Domains;
 
     if (not defined $callback) {
       while ($next_result->Marker) {
-        $result = $self->ListOperations(@_, Marker => $result->NextPageMarker);
         push @{ $result->Operations }, @{ $next_result->Operations };
+        $next_result = $self->ListOperations(@_, Marker => $next_result->NextPageMarker);
       }
       return $result;
     } else {
       while ($result->Marker) {
-        $result = $self->ListOperations(@_, Marker => $result->NextPageMarker);
         $callback->($_ => 'Operations') foreach (@{ $result->Operations });
+        $result = $self->ListOperations(@_, Marker => $result->NextPageMarker);
       }
+      $callback->($_ => 'Operations') foreach (@{ $result->Operations });
     }
 
     return undef

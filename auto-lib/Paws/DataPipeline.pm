@@ -119,15 +119,16 @@ package Paws::DataPipeline;
 
     if (not defined $callback) {
       while ($next_result->hasMoreResults) {
-        $next_result = $self->DescribeObjects(@_, marker => $result->marker);
+        $next_result = $self->DescribeObjects(@_, marker => $next_result->marker);
         push @{ $result->pipelineObjects }, @{ $next_result->pipelineObjects };
       }
       return $result;
     } else {
       while ($result->hasMoreResults) {
-        $result = $self->DescribeObjects(@_, marker => $result->marker);
         $callback->($_ => 'pipelineObjects') foreach (@{ $result->pipelineObjects });
+        $result = $self->DescribeObjects(@_, marker => $result->marker);
       }
+      $callback->($_ => 'pipelineObjects') foreach (@{ $result->pipelineObjects });
     }
 
     return undef
@@ -141,15 +142,16 @@ package Paws::DataPipeline;
 
     if (not defined $callback) {
       while ($next_result->hasMoreResults) {
-        $next_result = $self->ListPipelines(@_, marker => $result->marker);
+        $next_result = $self->ListPipelines(@_, marker => $next_result->marker);
         push @{ $result->pipelineIdList }, @{ $next_result->pipelineIdList };
       }
       return $result;
     } else {
       while ($result->hasMoreResults) {
-        $result = $self->ListPipelines(@_, marker => $result->marker);
         $callback->($_ => 'pipelineIdList') foreach (@{ $result->pipelineIdList });
+        $result = $self->ListPipelines(@_, marker => $result->marker);
       }
+      $callback->($_ => 'pipelineIdList') foreach (@{ $result->pipelineIdList });
     }
 
     return undef
@@ -163,15 +165,16 @@ package Paws::DataPipeline;
 
     if (not defined $callback) {
       while ($next_result->hasMoreResults) {
-        $next_result = $self->QueryObjects(@_, marker => $result->marker);
+        $next_result = $self->QueryObjects(@_, marker => $next_result->marker);
         push @{ $result->ids }, @{ $next_result->ids };
       }
       return $result;
     } else {
       while ($result->hasMoreResults) {
-        $result = $self->QueryObjects(@_, marker => $result->marker);
         $callback->($_ => 'ids') foreach (@{ $result->ids });
+        $result = $self->QueryObjects(@_, marker => $result->marker);
       }
+      $callback->($_ => 'ids') foreach (@{ $result->ids });
     }
 
     return undef

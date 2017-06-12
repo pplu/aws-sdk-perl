@@ -469,17 +469,19 @@ package Paws::S3;
 
     if (not defined $callback) {
       while ($next_result->IsTruncated) {
-        $next_result = $self->ListMultipartUploads(@_, KeyMarker => $result->NextKeyMarker, UploadIdMarker => $result->NextUploadIdMarker);
+        $next_result = $self->ListMultipartUploads(@_, KeyMarker => $next_result->NextKeyMarker, UploadIdMarker => $next_result->NextUploadIdMarker);
         push @{ $result->Uploads }, @{ $next_result->Uploads };
         push @{ $result->CommonPrefixes }, @{ $next_result->CommonPrefixes };
       }
       return $result;
     } else {
       while ($result->IsTruncated) {
-        $result = $self->ListMultipartUploads(@_, KeyMarker => $result->NextKeyMarker, UploadIdMarker => $result->NextUploadIdMarker);
         $callback->($_ => 'Uploads') foreach (@{ $result->Uploads });
         $callback->($_ => 'CommonPrefixes') foreach (@{ $result->CommonPrefixes });
+        $result = $self->ListMultipartUploads(@_, KeyMarker => $result->NextKeyMarker, UploadIdMarker => $result->NextUploadIdMarker);
       }
+      $callback->($_ => 'Uploads') foreach (@{ $result->Uploads });
+      $callback->($_ => 'CommonPrefixes') foreach (@{ $result->CommonPrefixes });
     }
 
     return undef
@@ -500,10 +502,12 @@ package Paws::S3;
       return $result;
     } else {
       while ($result->IsTruncated) {
-        $result = $self->ListObjects(@_, Marker => $result->NextMarker || ( (defined $result->Contents->[-1]) ? $result->Contents->[-1]->Key : undef ));
         $callback->($_ => 'Contents') foreach (@{ $result->Contents });
         $callback->($_ => 'CommonPrefixes') foreach (@{ $result->CommonPrefixes });
+        $result = $self->ListObjects(@_, Marker => $result->NextMarker || ( (defined $result->Contents->[-1]) ? $result->Contents->[-1]->Key : undef ));
       }
+      $callback->($_ => 'Contents') foreach (@{ $result->Contents });
+      $callback->($_ => 'CommonPrefixes') foreach (@{ $result->CommonPrefixes });
     }
 
     return undef
@@ -517,17 +521,19 @@ package Paws::S3;
 
     if (not defined $callback) {
       while ($next_result->IsTruncated) {
-        $next_result = $self->ListObjectsV2(@_, ContinuationToken => $result->NextContinuationToken);
+        $next_result = $self->ListObjectsV2(@_, ContinuationToken => $next_result->NextContinuationToken);
         push @{ $result->Contents }, @{ $next_result->Contents };
         push @{ $result->CommonPrefixes }, @{ $next_result->CommonPrefixes };
       }
       return $result;
     } else {
       while ($result->IsTruncated) {
-        $result = $self->ListObjectsV2(@_, ContinuationToken => $result->NextContinuationToken);
         $callback->($_ => 'Contents') foreach (@{ $result->Contents });
         $callback->($_ => 'CommonPrefixes') foreach (@{ $result->CommonPrefixes });
+        $result = $self->ListObjectsV2(@_, ContinuationToken => $result->NextContinuationToken);
       }
+      $callback->($_ => 'Contents') foreach (@{ $result->Contents });
+      $callback->($_ => 'CommonPrefixes') foreach (@{ $result->CommonPrefixes });
     }
 
     return undef
@@ -541,7 +547,7 @@ package Paws::S3;
 
     if (not defined $callback) {
       while ($next_result->IsTruncated) {
-        $next_result = $self->ListObjectVersions(@_, KeyMarker => $result->NextKeyMarker, VersionIdMarker => $result->NextVersionIdMarker);
+        $next_result = $self->ListObjectVersions(@_, KeyMarker => $next_result->NextKeyMarker, VersionIdMarker => $next_result->NextVersionIdMarker);
         push @{ $result->Versions }, @{ $next_result->Versions };
         push @{ $result->DeleteMarkers }, @{ $next_result->DeleteMarkers };
         push @{ $result->CommonPrefixes }, @{ $next_result->CommonPrefixes };
@@ -549,11 +555,14 @@ package Paws::S3;
       return $result;
     } else {
       while ($result->IsTruncated) {
-        $result = $self->ListObjectVersions(@_, KeyMarker => $result->NextKeyMarker, VersionIdMarker => $result->NextVersionIdMarker);
         $callback->($_ => 'Versions') foreach (@{ $result->Versions });
         $callback->($_ => 'DeleteMarkers') foreach (@{ $result->DeleteMarkers });
         $callback->($_ => 'CommonPrefixes') foreach (@{ $result->CommonPrefixes });
+        $result = $self->ListObjectVersions(@_, KeyMarker => $result->NextKeyMarker, VersionIdMarker => $result->NextVersionIdMarker);
       }
+      $callback->($_ => 'Versions') foreach (@{ $result->Versions });
+      $callback->($_ => 'DeleteMarkers') foreach (@{ $result->DeleteMarkers });
+      $callback->($_ => 'CommonPrefixes') foreach (@{ $result->CommonPrefixes });
     }
 
     return undef
@@ -567,15 +576,16 @@ package Paws::S3;
 
     if (not defined $callback) {
       while ($next_result->IsTruncated) {
-        $next_result = $self->ListParts(@_, PartNumberMarker => $result->NextPartNumberMarker);
+        $next_result = $self->ListParts(@_, PartNumberMarker => $next_result->NextPartNumberMarker);
         push @{ $result->Parts }, @{ $next_result->Parts };
       }
       return $result;
     } else {
       while ($result->IsTruncated) {
-        $result = $self->ListParts(@_, PartNumberMarker => $result->NextPartNumberMarker);
         $callback->($_ => 'Parts') foreach (@{ $result->Parts });
+        $result = $self->ListParts(@_, PartNumberMarker => $result->NextPartNumberMarker);
       }
+      $callback->($_ => 'Parts') foreach (@{ $result->Parts });
     }
 
     return undef

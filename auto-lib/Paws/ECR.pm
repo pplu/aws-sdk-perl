@@ -109,15 +109,16 @@ package Paws::ECR;
 
     if (not defined $callback) {
       while ($next_result->nextToken) {
-        $result = $self->DescribeImages(@_, nextToken => $result->nextToken);
         push @{ $result->imageDetails }, @{ $next_result->imageDetails };
+        $next_result = $self->DescribeImages(@_, nextToken => $next_result->nextToken);
       }
       return $result;
     } else {
       while ($result->nextToken) {
-        $result = $self->DescribeImages(@_, nextToken => $result->nextToken);
         $callback->($_ => 'imageDetails') foreach (@{ $result->imageDetails });
+        $result = $self->DescribeImages(@_, nextToken => $result->nextToken);
       }
+      $callback->($_ => 'imageDetails') foreach (@{ $result->imageDetails });
     }
 
     return undef
@@ -131,15 +132,16 @@ package Paws::ECR;
 
     if (not defined $callback) {
       while ($next_result->nextToken) {
-        $result = $self->DescribeRepositories(@_, nextToken => $result->nextToken);
         push @{ $result->repositories }, @{ $next_result->repositories };
+        $next_result = $self->DescribeRepositories(@_, nextToken => $next_result->nextToken);
       }
       return $result;
     } else {
       while ($result->nextToken) {
-        $result = $self->DescribeRepositories(@_, nextToken => $result->nextToken);
         $callback->($_ => 'repositories') foreach (@{ $result->repositories });
+        $result = $self->DescribeRepositories(@_, nextToken => $result->nextToken);
       }
+      $callback->($_ => 'repositories') foreach (@{ $result->repositories });
     }
 
     return undef
@@ -153,15 +155,16 @@ package Paws::ECR;
 
     if (not defined $callback) {
       while ($next_result->nextToken) {
-        $result = $self->ListImages(@_, nextToken => $result->nextToken);
         push @{ $result->imageIds }, @{ $next_result->imageIds };
+        $next_result = $self->ListImages(@_, nextToken => $next_result->nextToken);
       }
       return $result;
     } else {
       while ($result->nextToken) {
-        $result = $self->ListImages(@_, nextToken => $result->nextToken);
         $callback->($_ => 'imageIds') foreach (@{ $result->imageIds });
+        $result = $self->ListImages(@_, nextToken => $result->nextToken);
       }
+      $callback->($_ => 'imageIds') foreach (@{ $result->imageIds });
     }
 
     return undef

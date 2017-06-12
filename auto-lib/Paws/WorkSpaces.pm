@@ -94,15 +94,16 @@ package Paws::WorkSpaces;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        $result = $self->DescribeWorkspaceBundles(@_, NextToken => $result->NextToken);
         push @{ $result->Bundles }, @{ $next_result->Bundles };
+        $next_result = $self->DescribeWorkspaceBundles(@_, NextToken => $next_result->NextToken);
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->DescribeWorkspaceBundles(@_, NextToken => $result->NextToken);
         $callback->($_ => 'Bundles') foreach (@{ $result->Bundles });
+        $result = $self->DescribeWorkspaceBundles(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'Bundles') foreach (@{ $result->Bundles });
     }
 
     return undef
@@ -116,15 +117,16 @@ package Paws::WorkSpaces;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        $result = $self->DescribeWorkspaceDirectories(@_, NextToken => $result->NextToken);
         push @{ $result->Directories }, @{ $next_result->Directories };
+        $next_result = $self->DescribeWorkspaceDirectories(@_, NextToken => $next_result->NextToken);
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->DescribeWorkspaceDirectories(@_, NextToken => $result->NextToken);
         $callback->($_ => 'Directories') foreach (@{ $result->Directories });
+        $result = $self->DescribeWorkspaceDirectories(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'Directories') foreach (@{ $result->Directories });
     }
 
     return undef
@@ -138,15 +140,16 @@ package Paws::WorkSpaces;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        $result = $self->DescribeWorkspaces(@_, NextToken => $result->NextToken);
         push @{ $result->Workspaces }, @{ $next_result->Workspaces };
+        $next_result = $self->DescribeWorkspaces(@_, NextToken => $next_result->NextToken);
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->DescribeWorkspaces(@_, NextToken => $result->NextToken);
         $callback->($_ => 'Workspaces') foreach (@{ $result->Workspaces });
+        $result = $self->DescribeWorkspaces(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'Workspaces') foreach (@{ $result->Workspaces });
     }
 
     return undef

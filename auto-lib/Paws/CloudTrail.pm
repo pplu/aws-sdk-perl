@@ -94,15 +94,16 @@ package Paws::CloudTrail;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        $result = $self->LookupEvents(@_, NextToken => $result->NextToken);
         push @{ $result->Events }, @{ $next_result->Events };
+        $next_result = $self->LookupEvents(@_, NextToken => $next_result->NextToken);
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->LookupEvents(@_, NextToken => $result->NextToken);
         $callback->($_ => 'Events') foreach (@{ $result->Events });
+        $result = $self->LookupEvents(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'Events') foreach (@{ $result->Events });
     }
 
     return undef

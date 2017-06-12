@@ -207,15 +207,16 @@ package Paws::EMR;
 
     if (not defined $callback) {
       while ($next_result->Marker) {
-        $result = $self->ListBootstrapActions(@_, Marker => $result->Marker);
         push @{ $result->BootstrapActions }, @{ $next_result->BootstrapActions };
+        $next_result = $self->ListBootstrapActions(@_, Marker => $next_result->Marker);
       }
       return $result;
     } else {
       while ($result->Marker) {
-        $result = $self->ListBootstrapActions(@_, Marker => $result->Marker);
         $callback->($_ => 'BootstrapActions') foreach (@{ $result->BootstrapActions });
+        $result = $self->ListBootstrapActions(@_, Marker => $result->Marker);
       }
+      $callback->($_ => 'BootstrapActions') foreach (@{ $result->BootstrapActions });
     }
 
     return undef
@@ -229,15 +230,16 @@ package Paws::EMR;
 
     if (not defined $callback) {
       while ($next_result->Marker) {
-        $result = $self->ListClusters(@_, Marker => $result->Marker);
         push @{ $result->Clusters }, @{ $next_result->Clusters };
+        $next_result = $self->ListClusters(@_, Marker => $next_result->Marker);
       }
       return $result;
     } else {
       while ($result->Marker) {
-        $result = $self->ListClusters(@_, Marker => $result->Marker);
         $callback->($_ => 'Clusters') foreach (@{ $result->Clusters });
+        $result = $self->ListClusters(@_, Marker => $result->Marker);
       }
+      $callback->($_ => 'Clusters') foreach (@{ $result->Clusters });
     }
 
     return undef
@@ -251,15 +253,16 @@ package Paws::EMR;
 
     if (not defined $callback) {
       while ($next_result->Marker) {
-        $result = $self->ListInstanceFleets(@_, Marker => $result->Marker);
         push @{ $result->InstanceFleets }, @{ $next_result->InstanceFleets };
+        $next_result = $self->ListInstanceFleets(@_, Marker => $next_result->Marker);
       }
       return $result;
     } else {
       while ($result->Marker) {
-        $result = $self->ListInstanceFleets(@_, Marker => $result->Marker);
         $callback->($_ => 'InstanceFleets') foreach (@{ $result->InstanceFleets });
+        $result = $self->ListInstanceFleets(@_, Marker => $result->Marker);
       }
+      $callback->($_ => 'InstanceFleets') foreach (@{ $result->InstanceFleets });
     }
 
     return undef
@@ -273,15 +276,16 @@ package Paws::EMR;
 
     if (not defined $callback) {
       while ($next_result->Marker) {
-        $result = $self->ListInstanceGroups(@_, Marker => $result->Marker);
         push @{ $result->InstanceGroups }, @{ $next_result->InstanceGroups };
+        $next_result = $self->ListInstanceGroups(@_, Marker => $next_result->Marker);
       }
       return $result;
     } else {
       while ($result->Marker) {
-        $result = $self->ListInstanceGroups(@_, Marker => $result->Marker);
         $callback->($_ => 'InstanceGroups') foreach (@{ $result->InstanceGroups });
+        $result = $self->ListInstanceGroups(@_, Marker => $result->Marker);
       }
+      $callback->($_ => 'InstanceGroups') foreach (@{ $result->InstanceGroups });
     }
 
     return undef
@@ -295,15 +299,16 @@ package Paws::EMR;
 
     if (not defined $callback) {
       while ($next_result->Marker) {
-        $result = $self->ListInstances(@_, Marker => $result->Marker);
         push @{ $result->Instances }, @{ $next_result->Instances };
+        $next_result = $self->ListInstances(@_, Marker => $next_result->Marker);
       }
       return $result;
     } else {
       while ($result->Marker) {
-        $result = $self->ListInstances(@_, Marker => $result->Marker);
         $callback->($_ => 'Instances') foreach (@{ $result->Instances });
+        $result = $self->ListInstances(@_, Marker => $result->Marker);
       }
+      $callback->($_ => 'Instances') foreach (@{ $result->Instances });
     }
 
     return undef
@@ -317,15 +322,16 @@ package Paws::EMR;
 
     if (not defined $callback) {
       while ($next_result->Marker) {
-        $result = $self->ListSteps(@_, Marker => $result->Marker);
         push @{ $result->Steps }, @{ $next_result->Steps };
+        $next_result = $self->ListSteps(@_, Marker => $next_result->Marker);
       }
       return $result;
     } else {
       while ($result->Marker) {
-        $result = $self->ListSteps(@_, Marker => $result->Marker);
         $callback->($_ => 'Steps') foreach (@{ $result->Steps });
+        $result = $self->ListSteps(@_, Marker => $result->Marker);
       }
+      $callback->($_ => 'Steps') foreach (@{ $result->Steps });
     }
 
     return undef

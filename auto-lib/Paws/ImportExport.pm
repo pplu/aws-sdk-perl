@@ -71,15 +71,16 @@ package Paws::ImportExport;
 
     if (not defined $callback) {
       while ($next_result->IsTruncated) {
-        $next_result = $self->ListJobs(@_, Marker => $result->Jobs->[-1]->JobId);
+        $next_result = $self->ListJobs(@_, Marker => $next_result->Jobs->[-1]->JobId);
         push @{ $result->Jobs }, @{ $next_result->Jobs };
       }
       return $result;
     } else {
       while ($result->IsTruncated) {
-        $result = $self->ListJobs(@_, Marker => $result->Jobs->[-1]->JobId);
         $callback->($_ => 'Jobs') foreach (@{ $result->Jobs });
+        $result = $self->ListJobs(@_, Marker => $result->Jobs->[-1]->JobId);
       }
+      $callback->($_ => 'Jobs') foreach (@{ $result->Jobs });
     }
 
     return undef

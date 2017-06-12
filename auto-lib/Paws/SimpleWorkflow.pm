@@ -179,15 +179,16 @@ package Paws::SimpleWorkflow;
 
     if (not defined $callback) {
       while ($next_result->nextPageToken) {
-        $result = $self->GetWorkflowExecutionHistory(@_, nextPageToken => $result->nextPageToken);
         push @{ $result->events }, @{ $next_result->events };
+        $next_result = $self->GetWorkflowExecutionHistory(@_, nextPageToken => $next_result->nextPageToken);
       }
       return $result;
     } else {
       while ($result->nextPageToken) {
-        $result = $self->GetWorkflowExecutionHistory(@_, nextPageToken => $result->nextPageToken);
         $callback->($_ => 'events') foreach (@{ $result->events });
+        $result = $self->GetWorkflowExecutionHistory(@_, nextPageToken => $result->nextPageToken);
       }
+      $callback->($_ => 'events') foreach (@{ $result->events });
     }
 
     return undef
@@ -201,15 +202,16 @@ package Paws::SimpleWorkflow;
 
     if (not defined $callback) {
       while ($next_result->nextPageToken) {
-        $result = $self->ListActivityTypes(@_, nextPageToken => $result->nextPageToken);
         push @{ $result->typeInfos }, @{ $next_result->typeInfos };
+        $next_result = $self->ListActivityTypes(@_, nextPageToken => $next_result->nextPageToken);
       }
       return $result;
     } else {
       while ($result->nextPageToken) {
-        $result = $self->ListActivityTypes(@_, nextPageToken => $result->nextPageToken);
         $callback->($_ => 'typeInfos') foreach (@{ $result->typeInfos });
+        $result = $self->ListActivityTypes(@_, nextPageToken => $result->nextPageToken);
       }
+      $callback->($_ => 'typeInfos') foreach (@{ $result->typeInfos });
     }
 
     return undef
@@ -223,15 +225,16 @@ package Paws::SimpleWorkflow;
 
     if (not defined $callback) {
       while ($next_result->nextPageToken) {
-        $result = $self->ListClosedWorkflowExecutions(@_, nextPageToken => $result->nextPageToken);
         push @{ $result->executionInfos }, @{ $next_result->executionInfos };
+        $next_result = $self->ListClosedWorkflowExecutions(@_, nextPageToken => $next_result->nextPageToken);
       }
       return $result;
     } else {
       while ($result->nextPageToken) {
-        $result = $self->ListClosedWorkflowExecutions(@_, nextPageToken => $result->nextPageToken);
         $callback->($_ => 'executionInfos') foreach (@{ $result->executionInfos });
+        $result = $self->ListClosedWorkflowExecutions(@_, nextPageToken => $result->nextPageToken);
       }
+      $callback->($_ => 'executionInfos') foreach (@{ $result->executionInfos });
     }
 
     return undef
@@ -245,15 +248,16 @@ package Paws::SimpleWorkflow;
 
     if (not defined $callback) {
       while ($next_result->nextPageToken) {
-        $result = $self->ListDomains(@_, nextPageToken => $result->nextPageToken);
         push @{ $result->domainInfos }, @{ $next_result->domainInfos };
+        $next_result = $self->ListDomains(@_, nextPageToken => $next_result->nextPageToken);
       }
       return $result;
     } else {
       while ($result->nextPageToken) {
-        $result = $self->ListDomains(@_, nextPageToken => $result->nextPageToken);
         $callback->($_ => 'domainInfos') foreach (@{ $result->domainInfos });
+        $result = $self->ListDomains(@_, nextPageToken => $result->nextPageToken);
       }
+      $callback->($_ => 'domainInfos') foreach (@{ $result->domainInfos });
     }
 
     return undef
@@ -267,15 +271,16 @@ package Paws::SimpleWorkflow;
 
     if (not defined $callback) {
       while ($next_result->nextPageToken) {
-        $result = $self->ListOpenWorkflowExecutions(@_, nextPageToken => $result->nextPageToken);
         push @{ $result->executionInfos }, @{ $next_result->executionInfos };
+        $next_result = $self->ListOpenWorkflowExecutions(@_, nextPageToken => $next_result->nextPageToken);
       }
       return $result;
     } else {
       while ($result->nextPageToken) {
-        $result = $self->ListOpenWorkflowExecutions(@_, nextPageToken => $result->nextPageToken);
         $callback->($_ => 'executionInfos') foreach (@{ $result->executionInfos });
+        $result = $self->ListOpenWorkflowExecutions(@_, nextPageToken => $result->nextPageToken);
       }
+      $callback->($_ => 'executionInfos') foreach (@{ $result->executionInfos });
     }
 
     return undef
@@ -289,15 +294,16 @@ package Paws::SimpleWorkflow;
 
     if (not defined $callback) {
       while ($next_result->nextPageToken) {
-        $result = $self->ListWorkflowTypes(@_, nextPageToken => $result->nextPageToken);
         push @{ $result->typeInfos }, @{ $next_result->typeInfos };
+        $next_result = $self->ListWorkflowTypes(@_, nextPageToken => $next_result->nextPageToken);
       }
       return $result;
     } else {
       while ($result->nextPageToken) {
-        $result = $self->ListWorkflowTypes(@_, nextPageToken => $result->nextPageToken);
         $callback->($_ => 'typeInfos') foreach (@{ $result->typeInfos });
+        $result = $self->ListWorkflowTypes(@_, nextPageToken => $result->nextPageToken);
       }
+      $callback->($_ => 'typeInfos') foreach (@{ $result->typeInfos });
     }
 
     return undef
@@ -311,15 +317,16 @@ package Paws::SimpleWorkflow;
 
     if (not defined $callback) {
       while ($next_result->nextPageToken) {
-        $result = $self->PollForDecisionTask(@_, nextPageToken => $result->nextPageToken);
         push @{ $result->events }, @{ $next_result->events };
+        $next_result = $self->PollForDecisionTask(@_, nextPageToken => $next_result->nextPageToken);
       }
       return $result;
     } else {
       while ($result->nextPageToken) {
-        $result = $self->PollForDecisionTask(@_, nextPageToken => $result->nextPageToken);
         $callback->($_ => 'events') foreach (@{ $result->events });
+        $result = $self->PollForDecisionTask(@_, nextPageToken => $result->nextPageToken);
       }
+      $callback->($_ => 'events') foreach (@{ $result->events });
     }
 
     return undef

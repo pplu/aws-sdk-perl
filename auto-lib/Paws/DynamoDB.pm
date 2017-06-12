@@ -145,15 +145,16 @@ package Paws::DynamoDB;
 
     if (not defined $callback) {
       while ($next_result->ExclusiveStartTableName) {
-        $result = $self->ListTables(@_, ExclusiveStartTableName => $result->LastEvaluatedTableName);
         push @{ $result->TableNames }, @{ $next_result->TableNames };
+        $next_result = $self->ListTables(@_, ExclusiveStartTableName => $next_result->LastEvaluatedTableName);
       }
       return $result;
     } else {
       while ($result->ExclusiveStartTableName) {
-        $result = $self->ListTables(@_, ExclusiveStartTableName => $result->LastEvaluatedTableName);
         $callback->($_ => 'TableNames') foreach (@{ $result->TableNames });
+        $result = $self->ListTables(@_, ExclusiveStartTableName => $result->LastEvaluatedTableName);
       }
+      $callback->($_ => 'TableNames') foreach (@{ $result->TableNames });
     }
 
     return undef
@@ -167,19 +168,22 @@ package Paws::DynamoDB;
 
     if (not defined $callback) {
       while ($next_result->ExclusiveStartKey) {
-        $result = $self->Query(@_, ExclusiveStartKey => $result->LastEvaluatedKey);
         push @{ $result->Items }, @{ $next_result->Items };
         push @{ $result->Count }, @{ $next_result->Count };
         push @{ $result->ScannedCount }, @{ $next_result->ScannedCount };
+        $next_result = $self->Query(@_, ExclusiveStartKey => $next_result->LastEvaluatedKey);
       }
       return $result;
     } else {
       while ($result->ExclusiveStartKey) {
-        $result = $self->Query(@_, ExclusiveStartKey => $result->LastEvaluatedKey);
         $callback->($_ => 'Items') foreach (@{ $result->Items });
         $callback->($_ => 'Count') foreach (@{ $result->Count });
         $callback->($_ => 'ScannedCount') foreach (@{ $result->ScannedCount });
+        $result = $self->Query(@_, ExclusiveStartKey => $result->LastEvaluatedKey);
       }
+      $callback->($_ => 'Items') foreach (@{ $result->Items });
+      $callback->($_ => 'Count') foreach (@{ $result->Count });
+      $callback->($_ => 'ScannedCount') foreach (@{ $result->ScannedCount });
     }
 
     return undef
@@ -193,19 +197,22 @@ package Paws::DynamoDB;
 
     if (not defined $callback) {
       while ($next_result->ExclusiveStartKey) {
-        $result = $self->Scan(@_, ExclusiveStartKey => $result->LastEvaluatedKey);
         push @{ $result->Items }, @{ $next_result->Items };
         push @{ $result->Count }, @{ $next_result->Count };
         push @{ $result->ScannedCount }, @{ $next_result->ScannedCount };
+        $next_result = $self->Scan(@_, ExclusiveStartKey => $next_result->LastEvaluatedKey);
       }
       return $result;
     } else {
       while ($result->ExclusiveStartKey) {
-        $result = $self->Scan(@_, ExclusiveStartKey => $result->LastEvaluatedKey);
         $callback->($_ => 'Items') foreach (@{ $result->Items });
         $callback->($_ => 'Count') foreach (@{ $result->Count });
         $callback->($_ => 'ScannedCount') foreach (@{ $result->ScannedCount });
+        $result = $self->Scan(@_, ExclusiveStartKey => $result->LastEvaluatedKey);
       }
+      $callback->($_ => 'Items') foreach (@{ $result->Items });
+      $callback->($_ => 'Count') foreach (@{ $result->Count });
+      $callback->($_ => 'ScannedCount') foreach (@{ $result->ScannedCount });
     }
 
     return undef

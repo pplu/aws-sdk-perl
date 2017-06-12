@@ -558,15 +558,16 @@ package Paws::ApiGateway;
 
     if (not defined $callback) {
       while ($next_result->position) {
-        $result = $self->GetApiKeys(@_, position => $result->position);
         push @{ $result->items }, @{ $next_result->items };
+        $next_result = $self->GetApiKeys(@_, position => $next_result->position);
       }
       return $result;
     } else {
       while ($result->position) {
-        $result = $self->GetApiKeys(@_, position => $result->position);
         $callback->($_ => 'items') foreach (@{ $result->items });
+        $result = $self->GetApiKeys(@_, position => $result->position);
       }
+      $callback->($_ => 'items') foreach (@{ $result->items });
     }
 
     return undef
@@ -580,15 +581,16 @@ package Paws::ApiGateway;
 
     if (not defined $callback) {
       while ($next_result->position) {
-        $result = $self->GetBasePathMappings(@_, position => $result->position);
         push @{ $result->items }, @{ $next_result->items };
+        $next_result = $self->GetBasePathMappings(@_, position => $next_result->position);
       }
       return $result;
     } else {
       while ($result->position) {
-        $result = $self->GetBasePathMappings(@_, position => $result->position);
         $callback->($_ => 'items') foreach (@{ $result->items });
+        $result = $self->GetBasePathMappings(@_, position => $result->position);
       }
+      $callback->($_ => 'items') foreach (@{ $result->items });
     }
 
     return undef
@@ -602,15 +604,16 @@ package Paws::ApiGateway;
 
     if (not defined $callback) {
       while ($next_result->position) {
-        $result = $self->GetClientCertificates(@_, position => $result->position);
         push @{ $result->items }, @{ $next_result->items };
+        $next_result = $self->GetClientCertificates(@_, position => $next_result->position);
       }
       return $result;
     } else {
       while ($result->position) {
-        $result = $self->GetClientCertificates(@_, position => $result->position);
         $callback->($_ => 'items') foreach (@{ $result->items });
+        $result = $self->GetClientCertificates(@_, position => $result->position);
       }
+      $callback->($_ => 'items') foreach (@{ $result->items });
     }
 
     return undef
@@ -624,15 +627,16 @@ package Paws::ApiGateway;
 
     if (not defined $callback) {
       while ($next_result->position) {
-        $result = $self->GetDeployments(@_, position => $result->position);
         push @{ $result->items }, @{ $next_result->items };
+        $next_result = $self->GetDeployments(@_, position => $next_result->position);
       }
       return $result;
     } else {
       while ($result->position) {
-        $result = $self->GetDeployments(@_, position => $result->position);
         $callback->($_ => 'items') foreach (@{ $result->items });
+        $result = $self->GetDeployments(@_, position => $result->position);
       }
+      $callback->($_ => 'items') foreach (@{ $result->items });
     }
 
     return undef
@@ -646,15 +650,16 @@ package Paws::ApiGateway;
 
     if (not defined $callback) {
       while ($next_result->position) {
-        $result = $self->GetDomainNames(@_, position => $result->position);
         push @{ $result->items }, @{ $next_result->items };
+        $next_result = $self->GetDomainNames(@_, position => $next_result->position);
       }
       return $result;
     } else {
       while ($result->position) {
-        $result = $self->GetDomainNames(@_, position => $result->position);
         $callback->($_ => 'items') foreach (@{ $result->items });
+        $result = $self->GetDomainNames(@_, position => $result->position);
       }
+      $callback->($_ => 'items') foreach (@{ $result->items });
     }
 
     return undef
@@ -668,15 +673,16 @@ package Paws::ApiGateway;
 
     if (not defined $callback) {
       while ($next_result->position) {
-        $result = $self->GetModels(@_, position => $result->position);
         push @{ $result->items }, @{ $next_result->items };
+        $next_result = $self->GetModels(@_, position => $next_result->position);
       }
       return $result;
     } else {
       while ($result->position) {
-        $result = $self->GetModels(@_, position => $result->position);
         $callback->($_ => 'items') foreach (@{ $result->items });
+        $result = $self->GetModels(@_, position => $result->position);
       }
+      $callback->($_ => 'items') foreach (@{ $result->items });
     }
 
     return undef
@@ -690,15 +696,16 @@ package Paws::ApiGateway;
 
     if (not defined $callback) {
       while ($next_result->position) {
-        $result = $self->GetResources(@_, position => $result->position);
         push @{ $result->items }, @{ $next_result->items };
+        $next_result = $self->GetResources(@_, position => $next_result->position);
       }
       return $result;
     } else {
       while ($result->position) {
-        $result = $self->GetResources(@_, position => $result->position);
         $callback->($_ => 'items') foreach (@{ $result->items });
+        $result = $self->GetResources(@_, position => $result->position);
       }
+      $callback->($_ => 'items') foreach (@{ $result->items });
     }
 
     return undef
@@ -712,15 +719,16 @@ package Paws::ApiGateway;
 
     if (not defined $callback) {
       while ($next_result->position) {
-        $result = $self->GetRestApis(@_, position => $result->position);
         push @{ $result->items }, @{ $next_result->items };
+        $next_result = $self->GetRestApis(@_, position => $next_result->position);
       }
       return $result;
     } else {
       while ($result->position) {
-        $result = $self->GetRestApis(@_, position => $result->position);
         $callback->($_ => 'items') foreach (@{ $result->items });
+        $result = $self->GetRestApis(@_, position => $result->position);
       }
+      $callback->($_ => 'items') foreach (@{ $result->items });
     }
 
     return undef
@@ -734,15 +742,16 @@ package Paws::ApiGateway;
 
     if (not defined $callback) {
       while ($next_result->position) {
-        $result = $self->GetUsage(@_, position => $result->position);
         push @{ $result->items }, @{ $next_result->items };
+        $next_result = $self->GetUsage(@_, position => $next_result->position);
       }
       return $result;
     } else {
       while ($result->position) {
-        $result = $self->GetUsage(@_, position => $result->position);
         $callback->($_ => 'items') foreach (@{ $result->items });
+        $result = $self->GetUsage(@_, position => $result->position);
       }
+      $callback->($_ => 'items') foreach (@{ $result->items });
     }
 
     return undef
@@ -756,15 +765,16 @@ package Paws::ApiGateway;
 
     if (not defined $callback) {
       while ($next_result->position) {
-        $result = $self->GetUsagePlanKeys(@_, position => $result->position);
         push @{ $result->items }, @{ $next_result->items };
+        $next_result = $self->GetUsagePlanKeys(@_, position => $next_result->position);
       }
       return $result;
     } else {
       while ($result->position) {
-        $result = $self->GetUsagePlanKeys(@_, position => $result->position);
         $callback->($_ => 'items') foreach (@{ $result->items });
+        $result = $self->GetUsagePlanKeys(@_, position => $result->position);
       }
+      $callback->($_ => 'items') foreach (@{ $result->items });
     }
 
     return undef
@@ -778,15 +788,16 @@ package Paws::ApiGateway;
 
     if (not defined $callback) {
       while ($next_result->position) {
-        $result = $self->GetUsagePlans(@_, position => $result->position);
         push @{ $result->items }, @{ $next_result->items };
+        $next_result = $self->GetUsagePlans(@_, position => $next_result->position);
       }
       return $result;
     } else {
       while ($result->position) {
-        $result = $self->GetUsagePlans(@_, position => $result->position);
         $callback->($_ => 'items') foreach (@{ $result->items });
+        $result = $self->GetUsagePlans(@_, position => $result->position);
       }
+      $callback->($_ => 'items') foreach (@{ $result->items });
     }
 
     return undef

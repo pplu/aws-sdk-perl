@@ -294,15 +294,16 @@ package Paws::Route53;
 
     if (not defined $callback) {
       while ($next_result->IsTruncated) {
-        $next_result = $self->ListHealthChecks(@_, Marker => $result->NextMarker);
+        $next_result = $self->ListHealthChecks(@_, Marker => $next_result->NextMarker);
         push @{ $result->HealthChecks }, @{ $next_result->HealthChecks };
       }
       return $result;
     } else {
       while ($result->IsTruncated) {
-        $result = $self->ListHealthChecks(@_, Marker => $result->NextMarker);
         $callback->($_ => 'HealthChecks') foreach (@{ $result->HealthChecks });
+        $result = $self->ListHealthChecks(@_, Marker => $result->NextMarker);
       }
+      $callback->($_ => 'HealthChecks') foreach (@{ $result->HealthChecks });
     }
 
     return undef
@@ -316,15 +317,16 @@ package Paws::Route53;
 
     if (not defined $callback) {
       while ($next_result->IsTruncated) {
-        $next_result = $self->ListHostedZones(@_, Marker => $result->NextMarker);
+        $next_result = $self->ListHostedZones(@_, Marker => $next_result->NextMarker);
         push @{ $result->HostedZones }, @{ $next_result->HostedZones };
       }
       return $result;
     } else {
       while ($result->IsTruncated) {
-        $result = $self->ListHostedZones(@_, Marker => $result->NextMarker);
         $callback->($_ => 'HostedZones') foreach (@{ $result->HostedZones });
+        $result = $self->ListHostedZones(@_, Marker => $result->NextMarker);
       }
+      $callback->($_ => 'HostedZones') foreach (@{ $result->HostedZones });
     }
 
     return undef
@@ -338,15 +340,16 @@ package Paws::Route53;
 
     if (not defined $callback) {
       while ($next_result->IsTruncated) {
-        $next_result = $self->ListResourceRecordSets(@_, StartRecordName => $result->NextRecordName, StartRecordType => $result->NextRecordType, StartRecordIdentifier => $result->NextRecordIdentifier);
+        $next_result = $self->ListResourceRecordSets(@_, StartRecordName => $next_result->NextRecordName, StartRecordType => $next_result->NextRecordType, StartRecordIdentifier => $next_result->NextRecordIdentifier);
         push @{ $result->ResourceRecordSets }, @{ $next_result->ResourceRecordSets };
       }
       return $result;
     } else {
       while ($result->IsTruncated) {
-        $result = $self->ListResourceRecordSets(@_, StartRecordName => $result->NextRecordName, StartRecordType => $result->NextRecordType, StartRecordIdentifier => $result->NextRecordIdentifier);
         $callback->($_ => 'ResourceRecordSets') foreach (@{ $result->ResourceRecordSets });
+        $result = $self->ListResourceRecordSets(@_, StartRecordName => $result->NextRecordName, StartRecordType => $result->NextRecordType, StartRecordIdentifier => $result->NextRecordIdentifier);
       }
+      $callback->($_ => 'ResourceRecordSets') foreach (@{ $result->ResourceRecordSets });
     }
 
     return undef

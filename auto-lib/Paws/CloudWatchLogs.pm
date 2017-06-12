@@ -164,15 +164,16 @@ package Paws::CloudWatchLogs;
 
     if (not defined $callback) {
       while ($next_result->nextToken) {
-        $result = $self->DescribeDestinations(@_, nextToken => $result->nextToken);
         push @{ $result->destinations }, @{ $next_result->destinations };
+        $next_result = $self->DescribeDestinations(@_, nextToken => $next_result->nextToken);
       }
       return $result;
     } else {
       while ($result->nextToken) {
-        $result = $self->DescribeDestinations(@_, nextToken => $result->nextToken);
         $callback->($_ => 'destinations') foreach (@{ $result->destinations });
+        $result = $self->DescribeDestinations(@_, nextToken => $result->nextToken);
       }
+      $callback->($_ => 'destinations') foreach (@{ $result->destinations });
     }
 
     return undef
@@ -186,15 +187,16 @@ package Paws::CloudWatchLogs;
 
     if (not defined $callback) {
       while ($next_result->nextToken) {
-        $result = $self->DescribeLogGroups(@_, nextToken => $result->nextToken);
         push @{ $result->logGroups }, @{ $next_result->logGroups };
+        $next_result = $self->DescribeLogGroups(@_, nextToken => $next_result->nextToken);
       }
       return $result;
     } else {
       while ($result->nextToken) {
-        $result = $self->DescribeLogGroups(@_, nextToken => $result->nextToken);
         $callback->($_ => 'logGroups') foreach (@{ $result->logGroups });
+        $result = $self->DescribeLogGroups(@_, nextToken => $result->nextToken);
       }
+      $callback->($_ => 'logGroups') foreach (@{ $result->logGroups });
     }
 
     return undef
@@ -208,15 +210,16 @@ package Paws::CloudWatchLogs;
 
     if (not defined $callback) {
       while ($next_result->nextToken) {
-        $result = $self->DescribeLogStreams(@_, nextToken => $result->nextToken);
         push @{ $result->logStreams }, @{ $next_result->logStreams };
+        $next_result = $self->DescribeLogStreams(@_, nextToken => $next_result->nextToken);
       }
       return $result;
     } else {
       while ($result->nextToken) {
-        $result = $self->DescribeLogStreams(@_, nextToken => $result->nextToken);
         $callback->($_ => 'logStreams') foreach (@{ $result->logStreams });
+        $result = $self->DescribeLogStreams(@_, nextToken => $result->nextToken);
       }
+      $callback->($_ => 'logStreams') foreach (@{ $result->logStreams });
     }
 
     return undef
@@ -230,15 +233,16 @@ package Paws::CloudWatchLogs;
 
     if (not defined $callback) {
       while ($next_result->nextToken) {
-        $result = $self->DescribeMetricFilters(@_, nextToken => $result->nextToken);
         push @{ $result->metricFilters }, @{ $next_result->metricFilters };
+        $next_result = $self->DescribeMetricFilters(@_, nextToken => $next_result->nextToken);
       }
       return $result;
     } else {
       while ($result->nextToken) {
-        $result = $self->DescribeMetricFilters(@_, nextToken => $result->nextToken);
         $callback->($_ => 'metricFilters') foreach (@{ $result->metricFilters });
+        $result = $self->DescribeMetricFilters(@_, nextToken => $result->nextToken);
       }
+      $callback->($_ => 'metricFilters') foreach (@{ $result->metricFilters });
     }
 
     return undef
@@ -252,15 +256,16 @@ package Paws::CloudWatchLogs;
 
     if (not defined $callback) {
       while ($next_result->nextToken) {
-        $result = $self->DescribeSubscriptionFilters(@_, nextToken => $result->nextToken);
         push @{ $result->subscriptionFilters }, @{ $next_result->subscriptionFilters };
+        $next_result = $self->DescribeSubscriptionFilters(@_, nextToken => $next_result->nextToken);
       }
       return $result;
     } else {
       while ($result->nextToken) {
-        $result = $self->DescribeSubscriptionFilters(@_, nextToken => $result->nextToken);
         $callback->($_ => 'subscriptionFilters') foreach (@{ $result->subscriptionFilters });
+        $result = $self->DescribeSubscriptionFilters(@_, nextToken => $result->nextToken);
       }
+      $callback->($_ => 'subscriptionFilters') foreach (@{ $result->subscriptionFilters });
     }
 
     return undef
@@ -274,17 +279,19 @@ package Paws::CloudWatchLogs;
 
     if (not defined $callback) {
       while ($next_result->nextToken) {
-        $result = $self->FilterLogEvents(@_, nextToken => $result->nextToken);
         push @{ $result->events }, @{ $next_result->events };
         push @{ $result->searchedLogStreams }, @{ $next_result->searchedLogStreams };
+        $next_result = $self->FilterLogEvents(@_, nextToken => $next_result->nextToken);
       }
       return $result;
     } else {
       while ($result->nextToken) {
-        $result = $self->FilterLogEvents(@_, nextToken => $result->nextToken);
         $callback->($_ => 'events') foreach (@{ $result->events });
         $callback->($_ => 'searchedLogStreams') foreach (@{ $result->searchedLogStreams });
+        $result = $self->FilterLogEvents(@_, nextToken => $result->nextToken);
       }
+      $callback->($_ => 'events') foreach (@{ $result->events });
+      $callback->($_ => 'searchedLogStreams') foreach (@{ $result->searchedLogStreams });
     }
 
     return undef

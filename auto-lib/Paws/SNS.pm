@@ -173,15 +173,16 @@ package Paws::SNS;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        $result = $self->ListEndpointsByPlatformApplication(@_, NextToken => $result->NextToken);
         push @{ $result->Endpoints }, @{ $next_result->Endpoints };
+        $next_result = $self->ListEndpointsByPlatformApplication(@_, NextToken => $next_result->NextToken);
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->ListEndpointsByPlatformApplication(@_, NextToken => $result->NextToken);
         $callback->($_ => 'Endpoints') foreach (@{ $result->Endpoints });
+        $result = $self->ListEndpointsByPlatformApplication(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'Endpoints') foreach (@{ $result->Endpoints });
     }
 
     return undef
@@ -195,15 +196,16 @@ package Paws::SNS;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        $result = $self->ListPlatformApplications(@_, NextToken => $result->NextToken);
         push @{ $result->PlatformApplications }, @{ $next_result->PlatformApplications };
+        $next_result = $self->ListPlatformApplications(@_, NextToken => $next_result->NextToken);
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->ListPlatformApplications(@_, NextToken => $result->NextToken);
         $callback->($_ => 'PlatformApplications') foreach (@{ $result->PlatformApplications });
+        $result = $self->ListPlatformApplications(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'PlatformApplications') foreach (@{ $result->PlatformApplications });
     }
 
     return undef
@@ -217,15 +219,16 @@ package Paws::SNS;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        $result = $self->ListSubscriptions(@_, NextToken => $result->NextToken);
         push @{ $result->Subscriptions }, @{ $next_result->Subscriptions };
+        $next_result = $self->ListSubscriptions(@_, NextToken => $next_result->NextToken);
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->ListSubscriptions(@_, NextToken => $result->NextToken);
         $callback->($_ => 'Subscriptions') foreach (@{ $result->Subscriptions });
+        $result = $self->ListSubscriptions(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'Subscriptions') foreach (@{ $result->Subscriptions });
     }
 
     return undef
@@ -239,15 +242,16 @@ package Paws::SNS;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        $result = $self->ListSubscriptionsByTopic(@_, NextToken => $result->NextToken);
         push @{ $result->Subscriptions }, @{ $next_result->Subscriptions };
+        $next_result = $self->ListSubscriptionsByTopic(@_, NextToken => $next_result->NextToken);
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->ListSubscriptionsByTopic(@_, NextToken => $result->NextToken);
         $callback->($_ => 'Subscriptions') foreach (@{ $result->Subscriptions });
+        $result = $self->ListSubscriptionsByTopic(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'Subscriptions') foreach (@{ $result->Subscriptions });
     }
 
     return undef
@@ -261,15 +265,16 @@ package Paws::SNS;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        $result = $self->ListTopics(@_, NextToken => $result->NextToken);
         push @{ $result->Topics }, @{ $next_result->Topics };
+        $next_result = $self->ListTopics(@_, NextToken => $next_result->NextToken);
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->ListTopics(@_, NextToken => $result->NextToken);
         $callback->($_ => 'Topics') foreach (@{ $result->Topics });
+        $result = $self->ListTopics(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'Topics') foreach (@{ $result->Topics });
     }
 
     return undef

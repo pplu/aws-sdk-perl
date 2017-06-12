@@ -237,15 +237,16 @@ package Paws::WAF;
 
     if (not defined $callback) {
       while ($next_result->NextMarker) {
-        $result = $self->ListByteMatchSets(@_, NextMarker => $result->NextMarker);
         push @{ $result->ByteMatchSets }, @{ $next_result->ByteMatchSets };
+        $next_result = $self->ListByteMatchSets(@_, NextMarker => $next_result->NextMarker);
       }
       return $result;
     } else {
       while ($result->NextMarker) {
-        $result = $self->ListByteMatchSets(@_, NextMarker => $result->NextMarker);
         $callback->($_ => 'ByteMatchSets') foreach (@{ $result->ByteMatchSets });
+        $result = $self->ListByteMatchSets(@_, NextMarker => $result->NextMarker);
       }
+      $callback->($_ => 'ByteMatchSets') foreach (@{ $result->ByteMatchSets });
     }
 
     return undef
@@ -259,15 +260,16 @@ package Paws::WAF;
 
     if (not defined $callback) {
       while ($next_result->NextMarker) {
-        $result = $self->ListIPSets(@_, NextMarker => $result->NextMarker);
         push @{ $result->IPSets }, @{ $next_result->IPSets };
+        $next_result = $self->ListIPSets(@_, NextMarker => $next_result->NextMarker);
       }
       return $result;
     } else {
       while ($result->NextMarker) {
-        $result = $self->ListIPSets(@_, NextMarker => $result->NextMarker);
         $callback->($_ => 'IPSets') foreach (@{ $result->IPSets });
+        $result = $self->ListIPSets(@_, NextMarker => $result->NextMarker);
       }
+      $callback->($_ => 'IPSets') foreach (@{ $result->IPSets });
     }
 
     return undef
@@ -281,15 +283,16 @@ package Paws::WAF;
 
     if (not defined $callback) {
       while ($next_result->NextMarker) {
-        $result = $self->ListRules(@_, NextMarker => $result->NextMarker);
         push @{ $result->Rules }, @{ $next_result->Rules };
+        $next_result = $self->ListRules(@_, NextMarker => $next_result->NextMarker);
       }
       return $result;
     } else {
       while ($result->NextMarker) {
-        $result = $self->ListRules(@_, NextMarker => $result->NextMarker);
         $callback->($_ => 'Rules') foreach (@{ $result->Rules });
+        $result = $self->ListRules(@_, NextMarker => $result->NextMarker);
       }
+      $callback->($_ => 'Rules') foreach (@{ $result->Rules });
     }
 
     return undef
@@ -303,15 +306,16 @@ package Paws::WAF;
 
     if (not defined $callback) {
       while ($next_result->NextMarker) {
-        $result = $self->ListSizeConstraintSets(@_, NextMarker => $result->NextMarker);
         push @{ $result->SizeConstraintSets }, @{ $next_result->SizeConstraintSets };
+        $next_result = $self->ListSizeConstraintSets(@_, NextMarker => $next_result->NextMarker);
       }
       return $result;
     } else {
       while ($result->NextMarker) {
-        $result = $self->ListSizeConstraintSets(@_, NextMarker => $result->NextMarker);
         $callback->($_ => 'SizeConstraintSets') foreach (@{ $result->SizeConstraintSets });
+        $result = $self->ListSizeConstraintSets(@_, NextMarker => $result->NextMarker);
       }
+      $callback->($_ => 'SizeConstraintSets') foreach (@{ $result->SizeConstraintSets });
     }
 
     return undef
@@ -325,15 +329,16 @@ package Paws::WAF;
 
     if (not defined $callback) {
       while ($next_result->NextMarker) {
-        $result = $self->ListSqlInjectionMatchSets(@_, NextMarker => $result->NextMarker);
         push @{ $result->SqlInjectionMatchSets }, @{ $next_result->SqlInjectionMatchSets };
+        $next_result = $self->ListSqlInjectionMatchSets(@_, NextMarker => $next_result->NextMarker);
       }
       return $result;
     } else {
       while ($result->NextMarker) {
-        $result = $self->ListSqlInjectionMatchSets(@_, NextMarker => $result->NextMarker);
         $callback->($_ => 'SqlInjectionMatchSets') foreach (@{ $result->SqlInjectionMatchSets });
+        $result = $self->ListSqlInjectionMatchSets(@_, NextMarker => $result->NextMarker);
       }
+      $callback->($_ => 'SqlInjectionMatchSets') foreach (@{ $result->SqlInjectionMatchSets });
     }
 
     return undef
@@ -347,15 +352,16 @@ package Paws::WAF;
 
     if (not defined $callback) {
       while ($next_result->NextMarker) {
-        $result = $self->ListWebACLs(@_, NextMarker => $result->NextMarker);
         push @{ $result->WebACLs }, @{ $next_result->WebACLs };
+        $next_result = $self->ListWebACLs(@_, NextMarker => $next_result->NextMarker);
       }
       return $result;
     } else {
       while ($result->NextMarker) {
-        $result = $self->ListWebACLs(@_, NextMarker => $result->NextMarker);
         $callback->($_ => 'WebACLs') foreach (@{ $result->WebACLs });
+        $result = $self->ListWebACLs(@_, NextMarker => $result->NextMarker);
       }
+      $callback->($_ => 'WebACLs') foreach (@{ $result->WebACLs });
     }
 
     return undef
@@ -369,15 +375,16 @@ package Paws::WAF;
 
     if (not defined $callback) {
       while ($next_result->NextMarker) {
-        $result = $self->ListXssMatchSets(@_, NextMarker => $result->NextMarker);
         push @{ $result->XssMatchSets }, @{ $next_result->XssMatchSets };
+        $next_result = $self->ListXssMatchSets(@_, NextMarker => $next_result->NextMarker);
       }
       return $result;
     } else {
       while ($result->NextMarker) {
-        $result = $self->ListXssMatchSets(@_, NextMarker => $result->NextMarker);
         $callback->($_ => 'XssMatchSets') foreach (@{ $result->XssMatchSets });
+        $result = $self->ListXssMatchSets(@_, NextMarker => $result->NextMarker);
       }
+      $callback->($_ => 'XssMatchSets') foreach (@{ $result->XssMatchSets });
     }
 
     return undef

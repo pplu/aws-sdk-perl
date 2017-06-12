@@ -109,15 +109,16 @@ package Paws::CodeCommit;
 
     if (not defined $callback) {
       while ($next_result->nextToken) {
-        $result = $self->ListBranches(@_, nextToken => $result->nextToken);
         push @{ $result->branches }, @{ $next_result->branches };
+        $next_result = $self->ListBranches(@_, nextToken => $next_result->nextToken);
       }
       return $result;
     } else {
       while ($result->nextToken) {
-        $result = $self->ListBranches(@_, nextToken => $result->nextToken);
         $callback->($_ => 'branches') foreach (@{ $result->branches });
+        $result = $self->ListBranches(@_, nextToken => $result->nextToken);
       }
+      $callback->($_ => 'branches') foreach (@{ $result->branches });
     }
 
     return undef
@@ -131,15 +132,16 @@ package Paws::CodeCommit;
 
     if (not defined $callback) {
       while ($next_result->nextToken) {
-        $result = $self->ListRepositories(@_, nextToken => $result->nextToken);
         push @{ $result->repositories }, @{ $next_result->repositories };
+        $next_result = $self->ListRepositories(@_, nextToken => $next_result->nextToken);
       }
       return $result;
     } else {
       while ($result->nextToken) {
-        $result = $self->ListRepositories(@_, nextToken => $result->nextToken);
         $callback->($_ => 'repositories') foreach (@{ $result->repositories });
+        $result = $self->ListRepositories(@_, nextToken => $result->nextToken);
       }
+      $callback->($_ => 'repositories') foreach (@{ $result->repositories });
     }
 
     return undef

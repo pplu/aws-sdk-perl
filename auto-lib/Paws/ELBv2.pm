@@ -178,15 +178,16 @@ package Paws::ELBv2;
 
     if (not defined $callback) {
       while ($next_result->Marker) {
-        $result = $self->DescribeListeners(@_, Marker => $result->NextMarker);
         push @{ $result->Listeners }, @{ $next_result->Listeners };
+        $next_result = $self->DescribeListeners(@_, Marker => $next_result->NextMarker);
       }
       return $result;
     } else {
       while ($result->Marker) {
-        $result = $self->DescribeListeners(@_, Marker => $result->NextMarker);
         $callback->($_ => 'Listeners') foreach (@{ $result->Listeners });
+        $result = $self->DescribeListeners(@_, Marker => $result->NextMarker);
       }
+      $callback->($_ => 'Listeners') foreach (@{ $result->Listeners });
     }
 
     return undef
@@ -200,15 +201,16 @@ package Paws::ELBv2;
 
     if (not defined $callback) {
       while ($next_result->Marker) {
-        $result = $self->DescribeLoadBalancers(@_, Marker => $result->NextMarker);
         push @{ $result->LoadBalancers }, @{ $next_result->LoadBalancers };
+        $next_result = $self->DescribeLoadBalancers(@_, Marker => $next_result->NextMarker);
       }
       return $result;
     } else {
       while ($result->Marker) {
-        $result = $self->DescribeLoadBalancers(@_, Marker => $result->NextMarker);
         $callback->($_ => 'LoadBalancers') foreach (@{ $result->LoadBalancers });
+        $result = $self->DescribeLoadBalancers(@_, Marker => $result->NextMarker);
       }
+      $callback->($_ => 'LoadBalancers') foreach (@{ $result->LoadBalancers });
     }
 
     return undef
@@ -222,15 +224,16 @@ package Paws::ELBv2;
 
     if (not defined $callback) {
       while ($next_result->Marker) {
-        $result = $self->DescribeTargetGroups(@_, Marker => $result->NextMarker);
         push @{ $result->TargetGroups }, @{ $next_result->TargetGroups };
+        $next_result = $self->DescribeTargetGroups(@_, Marker => $next_result->NextMarker);
       }
       return $result;
     } else {
       while ($result->Marker) {
-        $result = $self->DescribeTargetGroups(@_, Marker => $result->NextMarker);
         $callback->($_ => 'TargetGroups') foreach (@{ $result->TargetGroups });
+        $result = $self->DescribeTargetGroups(@_, Marker => $result->NextMarker);
       }
+      $callback->($_ => 'TargetGroups') foreach (@{ $result->TargetGroups });
     }
 
     return undef

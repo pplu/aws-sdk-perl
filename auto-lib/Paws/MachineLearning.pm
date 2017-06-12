@@ -164,15 +164,16 @@ package Paws::MachineLearning;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        $result = $self->DescribeBatchPredictions(@_, NextToken => $result->NextToken);
         push @{ $result->Results }, @{ $next_result->Results };
+        $next_result = $self->DescribeBatchPredictions(@_, NextToken => $next_result->NextToken);
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->DescribeBatchPredictions(@_, NextToken => $result->NextToken);
         $callback->($_ => 'Results') foreach (@{ $result->Results });
+        $result = $self->DescribeBatchPredictions(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'Results') foreach (@{ $result->Results });
     }
 
     return undef
@@ -186,15 +187,16 @@ package Paws::MachineLearning;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        $result = $self->DescribeDataSources(@_, NextToken => $result->NextToken);
         push @{ $result->Results }, @{ $next_result->Results };
+        $next_result = $self->DescribeDataSources(@_, NextToken => $next_result->NextToken);
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->DescribeDataSources(@_, NextToken => $result->NextToken);
         $callback->($_ => 'Results') foreach (@{ $result->Results });
+        $result = $self->DescribeDataSources(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'Results') foreach (@{ $result->Results });
     }
 
     return undef
@@ -208,15 +210,16 @@ package Paws::MachineLearning;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        $result = $self->DescribeEvaluations(@_, NextToken => $result->NextToken);
         push @{ $result->Results }, @{ $next_result->Results };
+        $next_result = $self->DescribeEvaluations(@_, NextToken => $next_result->NextToken);
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->DescribeEvaluations(@_, NextToken => $result->NextToken);
         $callback->($_ => 'Results') foreach (@{ $result->Results });
+        $result = $self->DescribeEvaluations(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'Results') foreach (@{ $result->Results });
     }
 
     return undef
@@ -230,15 +233,16 @@ package Paws::MachineLearning;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        $result = $self->DescribeMLModels(@_, NextToken => $result->NextToken);
         push @{ $result->Results }, @{ $next_result->Results };
+        $next_result = $self->DescribeMLModels(@_, NextToken => $next_result->NextToken);
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->DescribeMLModels(@_, NextToken => $result->NextToken);
         $callback->($_ => 'Results') foreach (@{ $result->Results });
+        $result = $self->DescribeMLModels(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'Results') foreach (@{ $result->Results });
     }
 
     return undef

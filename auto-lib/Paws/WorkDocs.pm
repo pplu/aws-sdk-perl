@@ -203,15 +203,16 @@ package Paws::WorkDocs;
 
     if (not defined $callback) {
       while ($next_result->Marker) {
-        $result = $self->DescribeDocumentVersions(@_, Marker => $result->Marker);
         push @{ $result->DocumentVersions }, @{ $next_result->DocumentVersions };
+        $next_result = $self->DescribeDocumentVersions(@_, Marker => $next_result->Marker);
       }
       return $result;
     } else {
       while ($result->Marker) {
-        $result = $self->DescribeDocumentVersions(@_, Marker => $result->Marker);
         $callback->($_ => 'DocumentVersions') foreach (@{ $result->DocumentVersions });
+        $result = $self->DescribeDocumentVersions(@_, Marker => $result->Marker);
       }
+      $callback->($_ => 'DocumentVersions') foreach (@{ $result->DocumentVersions });
     }
 
     return undef
@@ -225,17 +226,19 @@ package Paws::WorkDocs;
 
     if (not defined $callback) {
       while ($next_result->Marker) {
-        $result = $self->DescribeFolderContents(@_, Marker => $result->Marker);
         push @{ $result->Folders }, @{ $next_result->Folders };
         push @{ $result->Documents }, @{ $next_result->Documents };
+        $next_result = $self->DescribeFolderContents(@_, Marker => $next_result->Marker);
       }
       return $result;
     } else {
       while ($result->Marker) {
-        $result = $self->DescribeFolderContents(@_, Marker => $result->Marker);
         $callback->($_ => 'Folders') foreach (@{ $result->Folders });
         $callback->($_ => 'Documents') foreach (@{ $result->Documents });
+        $result = $self->DescribeFolderContents(@_, Marker => $result->Marker);
       }
+      $callback->($_ => 'Folders') foreach (@{ $result->Folders });
+      $callback->($_ => 'Documents') foreach (@{ $result->Documents });
     }
 
     return undef
@@ -249,15 +252,16 @@ package Paws::WorkDocs;
 
     if (not defined $callback) {
       while ($next_result->Marker) {
-        $result = $self->DescribeUsers(@_, Marker => $result->Marker);
         push @{ $result->Users }, @{ $next_result->Users };
+        $next_result = $self->DescribeUsers(@_, Marker => $next_result->Marker);
       }
       return $result;
     } else {
       while ($result->Marker) {
-        $result = $self->DescribeUsers(@_, Marker => $result->Marker);
         $callback->($_ => 'Users') foreach (@{ $result->Users });
+        $result = $self->DescribeUsers(@_, Marker => $result->Marker);
       }
+      $callback->($_ => 'Users') foreach (@{ $result->Users });
     }
 
     return undef

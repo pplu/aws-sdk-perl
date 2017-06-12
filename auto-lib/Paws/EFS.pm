@@ -78,15 +78,16 @@ package Paws::EFS;
 
     if (not defined $callback) {
       while ($next_result->Marker) {
-        $result = $self->DescribeFileSystems(@_, Marker => $result->NextMarker);
         push @{ $result->FileSystems }, @{ $next_result->FileSystems };
+        $next_result = $self->DescribeFileSystems(@_, Marker => $next_result->NextMarker);
       }
       return $result;
     } else {
       while ($result->Marker) {
-        $result = $self->DescribeFileSystems(@_, Marker => $result->NextMarker);
         $callback->($_ => 'FileSystems') foreach (@{ $result->FileSystems });
+        $result = $self->DescribeFileSystems(@_, Marker => $result->NextMarker);
       }
+      $callback->($_ => 'FileSystems') foreach (@{ $result->FileSystems });
     }
 
     return undef
@@ -100,15 +101,16 @@ package Paws::EFS;
 
     if (not defined $callback) {
       while ($next_result->Marker) {
-        $result = $self->DescribeMountTargets(@_, Marker => $result->NextMarker);
         push @{ $result->MountTargets }, @{ $next_result->MountTargets };
+        $next_result = $self->DescribeMountTargets(@_, Marker => $next_result->NextMarker);
       }
       return $result;
     } else {
       while ($result->Marker) {
-        $result = $self->DescribeMountTargets(@_, Marker => $result->NextMarker);
         $callback->($_ => 'MountTargets') foreach (@{ $result->MountTargets });
+        $result = $self->DescribeMountTargets(@_, Marker => $result->NextMarker);
       }
+      $callback->($_ => 'MountTargets') foreach (@{ $result->MountTargets });
     }
 
     return undef
@@ -122,15 +124,16 @@ package Paws::EFS;
 
     if (not defined $callback) {
       while ($next_result->Marker) {
-        $result = $self->DescribeTags(@_, Marker => $result->NextMarker);
         push @{ $result->Tags }, @{ $next_result->Tags };
+        $next_result = $self->DescribeTags(@_, Marker => $next_result->NextMarker);
       }
       return $result;
     } else {
       while ($result->Marker) {
-        $result = $self->DescribeTags(@_, Marker => $result->NextMarker);
         $callback->($_ => 'Tags') foreach (@{ $result->Tags });
+        $result = $self->DescribeTags(@_, Marker => $result->NextMarker);
       }
+      $callback->($_ => 'Tags') foreach (@{ $result->Tags });
     }
 
     return undef

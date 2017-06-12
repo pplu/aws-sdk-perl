@@ -84,15 +84,16 @@ package Paws::Rekognition;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        $result = $self->ListCollections(@_, NextToken => $result->NextToken);
         push @{ $result->CollectionIds }, @{ $next_result->CollectionIds };
+        $next_result = $self->ListCollections(@_, NextToken => $next_result->NextToken);
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->ListCollections(@_, NextToken => $result->NextToken);
         $callback->($_ => 'CollectionIds') foreach (@{ $result->CollectionIds });
+        $result = $self->ListCollections(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'CollectionIds') foreach (@{ $result->CollectionIds });
     }
 
     return undef
@@ -106,15 +107,16 @@ package Paws::Rekognition;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        $result = $self->ListFaces(@_, NextToken => $result->NextToken);
         push @{ $result->Faces }, @{ $next_result->Faces };
+        $next_result = $self->ListFaces(@_, NextToken => $next_result->NextToken);
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->ListFaces(@_, NextToken => $result->NextToken);
         $callback->($_ => 'Faces') foreach (@{ $result->Faces });
+        $result = $self->ListFaces(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'Faces') foreach (@{ $result->Faces });
     }
 
     return undef

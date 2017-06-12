@@ -109,15 +109,16 @@ package Paws::StepFunctions;
 
     if (not defined $callback) {
       while ($next_result->nextToken) {
-        $result = $self->GetExecutionHistory(@_, nextToken => $result->nextToken);
         push @{ $result->events }, @{ $next_result->events };
+        $next_result = $self->GetExecutionHistory(@_, nextToken => $next_result->nextToken);
       }
       return $result;
     } else {
       while ($result->nextToken) {
-        $result = $self->GetExecutionHistory(@_, nextToken => $result->nextToken);
         $callback->($_ => 'events') foreach (@{ $result->events });
+        $result = $self->GetExecutionHistory(@_, nextToken => $result->nextToken);
       }
+      $callback->($_ => 'events') foreach (@{ $result->events });
     }
 
     return undef
@@ -131,15 +132,16 @@ package Paws::StepFunctions;
 
     if (not defined $callback) {
       while ($next_result->nextToken) {
-        $result = $self->ListActivities(@_, nextToken => $result->nextToken);
         push @{ $result->activities }, @{ $next_result->activities };
+        $next_result = $self->ListActivities(@_, nextToken => $next_result->nextToken);
       }
       return $result;
     } else {
       while ($result->nextToken) {
-        $result = $self->ListActivities(@_, nextToken => $result->nextToken);
         $callback->($_ => 'activities') foreach (@{ $result->activities });
+        $result = $self->ListActivities(@_, nextToken => $result->nextToken);
       }
+      $callback->($_ => 'activities') foreach (@{ $result->activities });
     }
 
     return undef
@@ -153,15 +155,16 @@ package Paws::StepFunctions;
 
     if (not defined $callback) {
       while ($next_result->nextToken) {
-        $result = $self->ListExecutions(@_, nextToken => $result->nextToken);
         push @{ $result->executions }, @{ $next_result->executions };
+        $next_result = $self->ListExecutions(@_, nextToken => $next_result->nextToken);
       }
       return $result;
     } else {
       while ($result->nextToken) {
-        $result = $self->ListExecutions(@_, nextToken => $result->nextToken);
         $callback->($_ => 'executions') foreach (@{ $result->executions });
+        $result = $self->ListExecutions(@_, nextToken => $result->nextToken);
       }
+      $callback->($_ => 'executions') foreach (@{ $result->executions });
     }
 
     return undef
@@ -175,15 +178,16 @@ package Paws::StepFunctions;
 
     if (not defined $callback) {
       while ($next_result->nextToken) {
-        $result = $self->ListStateMachines(@_, nextToken => $result->nextToken);
         push @{ $result->stateMachines }, @{ $next_result->stateMachines };
+        $next_result = $self->ListStateMachines(@_, nextToken => $next_result->nextToken);
       }
       return $result;
     } else {
       while ($result->nextToken) {
-        $result = $self->ListStateMachines(@_, nextToken => $result->nextToken);
         $callback->($_ => 'stateMachines') foreach (@{ $result->stateMachines });
+        $result = $self->ListStateMachines(@_, nextToken => $result->nextToken);
       }
+      $callback->($_ => 'stateMachines') foreach (@{ $result->stateMachines });
     }
 
     return undef

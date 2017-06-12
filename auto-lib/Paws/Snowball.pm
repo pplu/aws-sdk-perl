@@ -109,15 +109,16 @@ package Paws::Snowball;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        $result = $self->DescribeAddresses(@_, NextToken => $result->NextToken);
         push @{ $result->Addresses }, @{ $next_result->Addresses };
+        $next_result = $self->DescribeAddresses(@_, NextToken => $next_result->NextToken);
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->DescribeAddresses(@_, NextToken => $result->NextToken);
         $callback->($_ => 'Addresses') foreach (@{ $result->Addresses });
+        $result = $self->DescribeAddresses(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'Addresses') foreach (@{ $result->Addresses });
     }
 
     return undef
@@ -131,15 +132,16 @@ package Paws::Snowball;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        $result = $self->ListJobs(@_, NextToken => $result->NextToken);
         push @{ $result->JobListEntries }, @{ $next_result->JobListEntries };
+        $next_result = $self->ListJobs(@_, NextToken => $next_result->NextToken);
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->ListJobs(@_, NextToken => $result->NextToken);
         $callback->($_ => 'JobListEntries') foreach (@{ $result->JobListEntries });
+        $result = $self->ListJobs(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'JobListEntries') foreach (@{ $result->JobListEntries });
     }
 
     return undef

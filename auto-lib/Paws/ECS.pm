@@ -179,15 +179,16 @@ package Paws::ECS;
 
     if (not defined $callback) {
       while ($next_result->nextToken) {
-        $result = $self->ListClusters(@_, nextToken => $result->nextToken);
         push @{ $result->clusterArns }, @{ $next_result->clusterArns };
+        $next_result = $self->ListClusters(@_, nextToken => $next_result->nextToken);
       }
       return $result;
     } else {
       while ($result->nextToken) {
-        $result = $self->ListClusters(@_, nextToken => $result->nextToken);
         $callback->($_ => 'clusterArns') foreach (@{ $result->clusterArns });
+        $result = $self->ListClusters(@_, nextToken => $result->nextToken);
       }
+      $callback->($_ => 'clusterArns') foreach (@{ $result->clusterArns });
     }
 
     return undef
@@ -201,15 +202,16 @@ package Paws::ECS;
 
     if (not defined $callback) {
       while ($next_result->nextToken) {
-        $result = $self->ListContainerInstances(@_, nextToken => $result->nextToken);
         push @{ $result->containerInstanceArns }, @{ $next_result->containerInstanceArns };
+        $next_result = $self->ListContainerInstances(@_, nextToken => $next_result->nextToken);
       }
       return $result;
     } else {
       while ($result->nextToken) {
-        $result = $self->ListContainerInstances(@_, nextToken => $result->nextToken);
         $callback->($_ => 'containerInstanceArns') foreach (@{ $result->containerInstanceArns });
+        $result = $self->ListContainerInstances(@_, nextToken => $result->nextToken);
       }
+      $callback->($_ => 'containerInstanceArns') foreach (@{ $result->containerInstanceArns });
     }
 
     return undef
@@ -223,15 +225,16 @@ package Paws::ECS;
 
     if (not defined $callback) {
       while ($next_result->nextToken) {
-        $result = $self->ListServices(@_, nextToken => $result->nextToken);
         push @{ $result->serviceArns }, @{ $next_result->serviceArns };
+        $next_result = $self->ListServices(@_, nextToken => $next_result->nextToken);
       }
       return $result;
     } else {
       while ($result->nextToken) {
-        $result = $self->ListServices(@_, nextToken => $result->nextToken);
         $callback->($_ => 'serviceArns') foreach (@{ $result->serviceArns });
+        $result = $self->ListServices(@_, nextToken => $result->nextToken);
       }
+      $callback->($_ => 'serviceArns') foreach (@{ $result->serviceArns });
     }
 
     return undef
@@ -245,15 +248,16 @@ package Paws::ECS;
 
     if (not defined $callback) {
       while ($next_result->nextToken) {
-        $result = $self->ListTaskDefinitionFamilies(@_, nextToken => $result->nextToken);
         push @{ $result->families }, @{ $next_result->families };
+        $next_result = $self->ListTaskDefinitionFamilies(@_, nextToken => $next_result->nextToken);
       }
       return $result;
     } else {
       while ($result->nextToken) {
-        $result = $self->ListTaskDefinitionFamilies(@_, nextToken => $result->nextToken);
         $callback->($_ => 'families') foreach (@{ $result->families });
+        $result = $self->ListTaskDefinitionFamilies(@_, nextToken => $result->nextToken);
       }
+      $callback->($_ => 'families') foreach (@{ $result->families });
     }
 
     return undef
@@ -267,15 +271,16 @@ package Paws::ECS;
 
     if (not defined $callback) {
       while ($next_result->nextToken) {
-        $result = $self->ListTaskDefinitions(@_, nextToken => $result->nextToken);
         push @{ $result->taskDefinitionArns }, @{ $next_result->taskDefinitionArns };
+        $next_result = $self->ListTaskDefinitions(@_, nextToken => $next_result->nextToken);
       }
       return $result;
     } else {
       while ($result->nextToken) {
-        $result = $self->ListTaskDefinitions(@_, nextToken => $result->nextToken);
         $callback->($_ => 'taskDefinitionArns') foreach (@{ $result->taskDefinitionArns });
+        $result = $self->ListTaskDefinitions(@_, nextToken => $result->nextToken);
       }
+      $callback->($_ => 'taskDefinitionArns') foreach (@{ $result->taskDefinitionArns });
     }
 
     return undef
@@ -289,15 +294,16 @@ package Paws::ECS;
 
     if (not defined $callback) {
       while ($next_result->nextToken) {
-        $result = $self->ListTasks(@_, nextToken => $result->nextToken);
         push @{ $result->taskArns }, @{ $next_result->taskArns };
+        $next_result = $self->ListTasks(@_, nextToken => $next_result->nextToken);
       }
       return $result;
     } else {
       while ($result->nextToken) {
-        $result = $self->ListTasks(@_, nextToken => $result->nextToken);
         $callback->($_ => 'taskArns') foreach (@{ $result->taskArns });
+        $result = $self->ListTasks(@_, nextToken => $result->nextToken);
       }
+      $callback->($_ => 'taskArns') foreach (@{ $result->taskArns });
     }
 
     return undef

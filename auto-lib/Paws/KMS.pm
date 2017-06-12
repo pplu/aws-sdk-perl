@@ -199,15 +199,16 @@ package Paws::KMS;
 
     if (not defined $callback) {
       while ($next_result->Truncated) {
-        $next_result = $self->ListAliases(@_, Marker => $result->NextMarker);
+        $next_result = $self->ListAliases(@_, Marker => $next_result->NextMarker);
         push @{ $result->Aliases }, @{ $next_result->Aliases };
       }
       return $result;
     } else {
       while ($result->Truncated) {
-        $result = $self->ListAliases(@_, Marker => $result->NextMarker);
         $callback->($_ => 'Aliases') foreach (@{ $result->Aliases });
+        $result = $self->ListAliases(@_, Marker => $result->NextMarker);
       }
+      $callback->($_ => 'Aliases') foreach (@{ $result->Aliases });
     }
 
     return undef
@@ -221,15 +222,16 @@ package Paws::KMS;
 
     if (not defined $callback) {
       while ($next_result->Truncated) {
-        $next_result = $self->ListGrants(@_, Marker => $result->NextMarker);
+        $next_result = $self->ListGrants(@_, Marker => $next_result->NextMarker);
         push @{ $result->Grants }, @{ $next_result->Grants };
       }
       return $result;
     } else {
       while ($result->Truncated) {
-        $result = $self->ListGrants(@_, Marker => $result->NextMarker);
         $callback->($_ => 'Grants') foreach (@{ $result->Grants });
+        $result = $self->ListGrants(@_, Marker => $result->NextMarker);
       }
+      $callback->($_ => 'Grants') foreach (@{ $result->Grants });
     }
 
     return undef
@@ -243,15 +245,16 @@ package Paws::KMS;
 
     if (not defined $callback) {
       while ($next_result->Truncated) {
-        $next_result = $self->ListKeyPolicies(@_, Marker => $result->NextMarker);
+        $next_result = $self->ListKeyPolicies(@_, Marker => $next_result->NextMarker);
         push @{ $result->PolicyNames }, @{ $next_result->PolicyNames };
       }
       return $result;
     } else {
       while ($result->Truncated) {
-        $result = $self->ListKeyPolicies(@_, Marker => $result->NextMarker);
         $callback->($_ => 'PolicyNames') foreach (@{ $result->PolicyNames });
+        $result = $self->ListKeyPolicies(@_, Marker => $result->NextMarker);
       }
+      $callback->($_ => 'PolicyNames') foreach (@{ $result->PolicyNames });
     }
 
     return undef
@@ -265,15 +268,16 @@ package Paws::KMS;
 
     if (not defined $callback) {
       while ($next_result->Truncated) {
-        $next_result = $self->ListKeys(@_, Marker => $result->NextMarker);
+        $next_result = $self->ListKeys(@_, Marker => $next_result->NextMarker);
         push @{ $result->Keys }, @{ $next_result->Keys };
       }
       return $result;
     } else {
       while ($result->Truncated) {
-        $result = $self->ListKeys(@_, Marker => $result->NextMarker);
         $callback->($_ => 'Keys') foreach (@{ $result->Keys });
+        $result = $self->ListKeys(@_, Marker => $result->NextMarker);
       }
+      $callback->($_ => 'Keys') foreach (@{ $result->Keys });
     }
 
     return undef

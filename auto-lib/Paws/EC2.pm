@@ -1163,15 +1163,16 @@ package Paws::EC2;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        $result = $self->DescribeInstances(@_, NextToken => $result->NextToken);
         push @{ $result->Reservations }, @{ $next_result->Reservations };
+        $next_result = $self->DescribeInstances(@_, NextToken => $next_result->NextToken);
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->DescribeInstances(@_, NextToken => $result->NextToken);
         $callback->($_ => 'Reservations') foreach (@{ $result->Reservations });
+        $result = $self->DescribeInstances(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'Reservations') foreach (@{ $result->Reservations });
     }
 
     return undef
@@ -1185,15 +1186,16 @@ package Paws::EC2;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        $result = $self->DescribeInstanceStatus(@_, NextToken => $result->NextToken);
         push @{ $result->InstanceStatuses }, @{ $next_result->InstanceStatuses };
+        $next_result = $self->DescribeInstanceStatus(@_, NextToken => $next_result->NextToken);
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->DescribeInstanceStatus(@_, NextToken => $result->NextToken);
         $callback->($_ => 'InstanceStatuses') foreach (@{ $result->InstanceStatuses });
+        $result = $self->DescribeInstanceStatus(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'InstanceStatuses') foreach (@{ $result->InstanceStatuses });
     }
 
     return undef
@@ -1207,15 +1209,16 @@ package Paws::EC2;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        $result = $self->DescribeNatGateways(@_, NextToken => $result->NextToken);
         push @{ $result->NatGateways }, @{ $next_result->NatGateways };
+        $next_result = $self->DescribeNatGateways(@_, NextToken => $next_result->NextToken);
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->DescribeNatGateways(@_, NextToken => $result->NextToken);
         $callback->($_ => 'NatGateways') foreach (@{ $result->NatGateways });
+        $result = $self->DescribeNatGateways(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'NatGateways') foreach (@{ $result->NatGateways });
     }
 
     return undef
@@ -1229,15 +1232,16 @@ package Paws::EC2;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        $result = $self->DescribeReservedInstancesModifications(@_, NextToken => $result->NextToken);
         push @{ $result->ReservedInstancesModifications }, @{ $next_result->ReservedInstancesModifications };
+        $next_result = $self->DescribeReservedInstancesModifications(@_, NextToken => $next_result->NextToken);
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->DescribeReservedInstancesModifications(@_, NextToken => $result->NextToken);
         $callback->($_ => 'ReservedInstancesModifications') foreach (@{ $result->ReservedInstancesModifications });
+        $result = $self->DescribeReservedInstancesModifications(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'ReservedInstancesModifications') foreach (@{ $result->ReservedInstancesModifications });
     }
 
     return undef
@@ -1251,15 +1255,16 @@ package Paws::EC2;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        $result = $self->DescribeReservedInstancesOfferings(@_, NextToken => $result->NextToken);
         push @{ $result->ReservedInstancesOfferings }, @{ $next_result->ReservedInstancesOfferings };
+        $next_result = $self->DescribeReservedInstancesOfferings(@_, NextToken => $next_result->NextToken);
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->DescribeReservedInstancesOfferings(@_, NextToken => $result->NextToken);
         $callback->($_ => 'ReservedInstancesOfferings') foreach (@{ $result->ReservedInstancesOfferings });
+        $result = $self->DescribeReservedInstancesOfferings(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'ReservedInstancesOfferings') foreach (@{ $result->ReservedInstancesOfferings });
     }
 
     return undef
@@ -1273,15 +1278,16 @@ package Paws::EC2;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        $result = $self->DescribeSnapshots(@_, NextToken => $result->NextToken);
         push @{ $result->Snapshots }, @{ $next_result->Snapshots };
+        $next_result = $self->DescribeSnapshots(@_, NextToken => $next_result->NextToken);
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->DescribeSnapshots(@_, NextToken => $result->NextToken);
         $callback->($_ => 'Snapshots') foreach (@{ $result->Snapshots });
+        $result = $self->DescribeSnapshots(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'Snapshots') foreach (@{ $result->Snapshots });
     }
 
     return undef
@@ -1295,15 +1301,16 @@ package Paws::EC2;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        $result = $self->DescribeSpotFleetRequests(@_, NextToken => $result->NextToken);
         push @{ $result->SpotFleetRequestConfigs }, @{ $next_result->SpotFleetRequestConfigs };
+        $next_result = $self->DescribeSpotFleetRequests(@_, NextToken => $next_result->NextToken);
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->DescribeSpotFleetRequests(@_, NextToken => $result->NextToken);
         $callback->($_ => 'SpotFleetRequestConfigs') foreach (@{ $result->SpotFleetRequestConfigs });
+        $result = $self->DescribeSpotFleetRequests(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'SpotFleetRequestConfigs') foreach (@{ $result->SpotFleetRequestConfigs });
     }
 
     return undef
@@ -1317,15 +1324,16 @@ package Paws::EC2;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        $result = $self->DescribeSpotPriceHistory(@_, NextToken => $result->NextToken);
         push @{ $result->SpotPriceHistory }, @{ $next_result->SpotPriceHistory };
+        $next_result = $self->DescribeSpotPriceHistory(@_, NextToken => $next_result->NextToken);
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->DescribeSpotPriceHistory(@_, NextToken => $result->NextToken);
         $callback->($_ => 'SpotPriceHistory') foreach (@{ $result->SpotPriceHistory });
+        $result = $self->DescribeSpotPriceHistory(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'SpotPriceHistory') foreach (@{ $result->SpotPriceHistory });
     }
 
     return undef
@@ -1339,15 +1347,16 @@ package Paws::EC2;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        $result = $self->DescribeTags(@_, NextToken => $result->NextToken);
         push @{ $result->Tags }, @{ $next_result->Tags };
+        $next_result = $self->DescribeTags(@_, NextToken => $next_result->NextToken);
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->DescribeTags(@_, NextToken => $result->NextToken);
         $callback->($_ => 'Tags') foreach (@{ $result->Tags });
+        $result = $self->DescribeTags(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'Tags') foreach (@{ $result->Tags });
     }
 
     return undef
@@ -1361,15 +1370,16 @@ package Paws::EC2;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        $result = $self->DescribeVolumes(@_, NextToken => $result->NextToken);
         push @{ $result->Volumes }, @{ $next_result->Volumes };
+        $next_result = $self->DescribeVolumes(@_, NextToken => $next_result->NextToken);
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->DescribeVolumes(@_, NextToken => $result->NextToken);
         $callback->($_ => 'Volumes') foreach (@{ $result->Volumes });
+        $result = $self->DescribeVolumes(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'Volumes') foreach (@{ $result->Volumes });
     }
 
     return undef
@@ -1383,15 +1393,16 @@ package Paws::EC2;
 
     if (not defined $callback) {
       while ($next_result->NextToken) {
-        $result = $self->DescribeVolumeStatus(@_, NextToken => $result->NextToken);
         push @{ $result->VolumeStatuses }, @{ $next_result->VolumeStatuses };
+        $next_result = $self->DescribeVolumeStatus(@_, NextToken => $next_result->NextToken);
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->DescribeVolumeStatus(@_, NextToken => $result->NextToken);
         $callback->($_ => 'VolumeStatuses') foreach (@{ $result->VolumeStatuses });
+        $result = $self->DescribeVolumeStatus(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'VolumeStatuses') foreach (@{ $result->VolumeStatuses });
     }
 
     return undef
