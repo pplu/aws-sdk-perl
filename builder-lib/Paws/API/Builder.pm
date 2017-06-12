@@ -1005,12 +1005,12 @@ package [% inner_class %];
     }
   }
   sub paginator_pass_params {
-    my ($self, $paginator) = @_;
+    my ($self, $paginator, $res_name) = @_;
     if (ref($paginator->{ input_token }) eq 'ARRAY'){
       my $i = 0;
-      return join ', ', map { "$_ => " . $self->paginator_accessor($paginator->{ output_token }->[ $i++ ]) } @{ $paginator->{ input_token } };
+      return join ', ', map { "$_ => " . $self->paginator_accessor($paginator->{ output_token }->[ $i++ ], $res_name) } @{ $paginator->{ input_token } };
     } else {
-      return "$paginator->{ input_token } => " . $self->paginator_accessor($paginator->{ output_token });
+      return "$paginator->{ input_token } => " . $self->paginator_accessor($paginator->{ output_token }, $res_name);
     }
   }
 
@@ -1091,10 +1091,10 @@ If not, it will return a [% out_shape = c.shapename_for_operation_output(op_name
       }
       [%- ELSE %]
       while ([% c.paginator_accessor(paginator.input_token, 'next_result') %]) {
-        $next_result = $self->[% op %](@_, [% c.paginator_pass_params(paginator, 'next_result') %]);
         [%- FOREACH param = c.paginator_result_key(paginator) %]
         push @{ [% c.paginator_accessor(param) %] }, @{ [% c.paginator_accessor(param, 'next_result') %] };
         [%- END %]
+        $next_result = $self->[% op %](@_, [% c.paginator_pass_params(paginator, 'next_result') %]);
       }
       [%- END %]
       return $result;
