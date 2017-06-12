@@ -47,6 +47,12 @@ build.
 
   The value of the environment variable.
 
+We strongly discourage using environment variables to store sensitive
+values, especially AWS secret key IDs and secret access keys.
+Environment variables can be displayed in plain text using tools such
+as the AWS CodeBuild console and the AWS Command Line Interface (AWS
+CLI).
+
 
 
 =head1 SEE ALSO
