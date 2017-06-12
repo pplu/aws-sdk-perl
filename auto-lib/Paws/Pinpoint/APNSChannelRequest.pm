@@ -1,6 +1,7 @@
 package Paws::Pinpoint::APNSChannelRequest;
   use Moose;
   has Certificate => (is => 'ro', isa => 'Str');
+  has Enabled => (is => 'ro', isa => 'Bool');
   has PrivateKey => (is => 'ro', isa => 'Str');
 1;
 
@@ -40,6 +41,11 @@ Apple Push Notification Service channel definition.
 =head2 Certificate => Str
 
   The distribution certificate from Apple.
+
+
+=head2 Enabled => Bool
+
+  If the channel is enabled for sending messages.
 
 
 =head2 PrivateKey => Str

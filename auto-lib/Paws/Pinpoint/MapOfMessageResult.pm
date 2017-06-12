@@ -1,14 +1,15 @@
-package Paws::Pinpoint::GCMChannelRequest;
+package Paws::Pinpoint::MapOfMessageResult;
   use Moose;
-  has ApiKey => (is => 'ro', isa => 'Str');
-  has Enabled => (is => 'ro', isa => 'Bool');
+  with 'Paws::API::StrToObjMapParser';
+
+  has Map => (is => 'ro', isa => 'HashRef[Paws::Pinpoint::MessageResult]');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::Pinpoint::GCMChannelRequest
+Paws::Pinpoint::MapOfMessageResult
 
 =head1 USAGE
 
@@ -19,34 +20,26 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::Pinpoint::GCMChannelRequest object:
+As an example, if Att1 is expected to be a Paws::Pinpoint::MapOfMessageResult object:
 
-  $service_obj->Method(Att1 => { ApiKey => $value, ..., Enabled => $value  });
+  $service_obj->Method(Att1 => { key1 => $value, ..., keyN => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::GCMChannelRequest object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::MapOfMessageResult object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->ApiKey
+  $result->Att1->Map->{ key1 }
 
 =head1 DESCRIPTION
 
-Google Cloud Messaging credentials
+This class has no description
 
 =head1 ATTRIBUTES
 
+=head2 Map => L<Paws::Pinpoint::MessageResult>
 
-=head2 ApiKey => Str
-
-  Platform credential API key from Google.
-
-
-=head2 Enabled => Bool
-
-  If the channel is enabled for sending messages.
-
-
+Use the Map method to retrieve a HashRef to the map
 
 =head1 SEE ALSO
 

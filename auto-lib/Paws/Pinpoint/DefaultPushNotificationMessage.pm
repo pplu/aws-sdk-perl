@@ -1,13 +1,10 @@
-package Paws::Pinpoint::Message;
+package Paws::Pinpoint::DefaultPushNotificationMessage;
   use Moose;
   has Action => (is => 'ro', isa => 'Str');
   has Body => (is => 'ro', isa => 'Str');
-  has ImageIconUrl => (is => 'ro', isa => 'Str');
-  has ImageSmallIconUrl => (is => 'ro', isa => 'Str');
-  has ImageUrl => (is => 'ro', isa => 'Str');
-  has JsonBody => (is => 'ro', isa => 'Str');
-  has MediaUrl => (is => 'ro', isa => 'Str');
+  has Data => (is => 'ro', isa => 'Paws::Pinpoint::MapOf__string');
   has SilentPush => (is => 'ro', isa => 'Bool');
+  has Substitutions => (is => 'ro', isa => 'Paws::Pinpoint::MapOfListOf__string');
   has Title => (is => 'ro', isa => 'Str');
   has Url => (is => 'ro', isa => 'Str');
 1;
@@ -16,7 +13,7 @@ package Paws::Pinpoint::Message;
 
 =head1 NAME
 
-Paws::Pinpoint::Message
+Paws::Pinpoint::DefaultPushNotificationMessage
 
 =head1 USAGE
 
@@ -27,20 +24,20 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::Pinpoint::Message object:
+As an example, if Att1 is expected to be a Paws::Pinpoint::DefaultPushNotificationMessage object:
 
   $service_obj->Method(Att1 => { Action => $value, ..., Url => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::Message object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::DefaultPushNotificationMessage object:
 
   $result = $service_obj->Method(...);
   $result->Att1->Action
 
 =head1 DESCRIPTION
 
-This class has no description
+Default Push Notification Message.
 
 =head1 ATTRIBUTES
 
@@ -53,46 +50,32 @@ foreground app if it has been sent to the background. This is the
 default action. DEEP_LINK - Uses deep linking features in iOS and
 Android to open your app and display a designated user interface within
 the app. URL - The default mobile browser on the user's device launches
-and opens a web page at the URL you specify.
+and opens a web page at the URL you specify. Possible values include:
+OPEN_APP | DEEP_LINK | URL
 
 
 =head2 Body => Str
 
-  The message body. Can include up to 140 characters.
+  The message body of the notification, the email body or the text
+message.
 
 
-=head2 ImageIconUrl => Str
+=head2 Data => L<Paws::Pinpoint::MapOf__string>
 
-  The URL that points to the icon image for the push notification icon,
-for example, the app icon.
-
-
-=head2 ImageSmallIconUrl => Str
-
-  The URL that points to the small icon image for the push notification
-icon, for example, the app icon.
-
-
-=head2 ImageUrl => Str
-
-  The URL that points to an image used in the push notification.
-
-
-=head2 JsonBody => Str
-
-  The JSON payload used for a silent push.
-
-
-=head2 MediaUrl => Str
-
-  The URL that points to the media resource, for example a .mp4 or .gif
-file.
+  The data payload used for a silent push. This payload is added to the
+notifications' data.pinpoint.jsonBody' object
 
 
 =head2 SilentPush => Bool
 
   Indicates if the message should display on the users device. Silent
 pushes can be used for Remote Configuration and Phone Home use cases.
+
+
+=head2 Substitutions => L<Paws::Pinpoint::MapOfListOf__string>
+
+  Default message substitutions. Can be overridden by individual address
+substitutions.
 
 
 =head2 Title => Str

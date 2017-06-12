@@ -45,10 +45,10 @@ your app. Valid values: HR_24, DAY_7, DAY_14, DAY_30
 
 =head2 RecencyType => Str
 
-  The recency dimension type: ACTIVE E<ndash> Users who have used your
-app within the specified duration are included in the segment. INACTIVE
-E<ndash> Users who have not used your app within the specified duration
-are included in the segment.
+  The recency dimension type: ACTIVE - Users who have used your app
+within the specified duration are included in the segment. INACTIVE -
+Users who have not used your app within the specified duration are
+included in the segment.
 
 
 

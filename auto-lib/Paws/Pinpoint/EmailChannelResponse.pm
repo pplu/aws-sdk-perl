@@ -1,14 +1,16 @@
-package Paws::Pinpoint::GCMChannelResponse;
+package Paws::Pinpoint::EmailChannelResponse;
   use Moose;
   has ApplicationId => (is => 'ro', isa => 'Str');
   has CreationDate => (is => 'ro', isa => 'Str');
-  has Credential => (is => 'ro', isa => 'Str');
   has Enabled => (is => 'ro', isa => 'Bool');
+  has FromAddress => (is => 'ro', isa => 'Str');
   has Id => (is => 'ro', isa => 'Str');
+  has Identity => (is => 'ro', isa => 'Str');
   has IsArchived => (is => 'ro', isa => 'Bool');
   has LastModifiedBy => (is => 'ro', isa => 'Str');
   has LastModifiedDate => (is => 'ro', isa => 'Str');
   has Platform => (is => 'ro', isa => 'Str');
+  has RoleArn => (is => 'ro', isa => 'Str');
   has Version => (is => 'ro', isa => 'Int');
 1;
 
@@ -16,7 +18,7 @@ package Paws::Pinpoint::GCMChannelResponse;
 
 =head1 NAME
 
-Paws::Pinpoint::GCMChannelResponse
+Paws::Pinpoint::EmailChannelResponse
 
 =head1 USAGE
 
@@ -27,37 +29,32 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::Pinpoint::GCMChannelResponse object:
+As an example, if Att1 is expected to be a Paws::Pinpoint::EmailChannelResponse object:
 
   $service_obj->Method(Att1 => { ApplicationId => $value, ..., Version => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::GCMChannelResponse object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::EmailChannelResponse object:
 
   $result = $service_obj->Method(...);
   $result->Att1->ApplicationId
 
 =head1 DESCRIPTION
 
-Google Cloud Messaging channel definition
+Email Channel Response.
 
 =head1 ATTRIBUTES
 
 
 =head2 ApplicationId => Str
 
-  The ID of the application to which the channel applies.
+  Application id
 
 
 =head2 CreationDate => Str
 
-  When was this segment created
-
-
-=head2 Credential => Str
-
-  The GCM API key from Google.
+  The date that the settings were last updated in ISO 8601 format.
 
 
 =head2 Enabled => Bool
@@ -65,9 +62,19 @@ Google Cloud Messaging channel definition
   If the channel is enabled for sending messages.
 
 
+=head2 FromAddress => Str
+
+  The email address used to send emails from.
+
+
 =head2 Id => Str
 
   Channel ID. Not used, only for backwards compatibility.
+
+
+=head2 Identity => Str
+
+  The ARN of an identity verified with SES.
 
 
 =head2 IsArchived => Bool
@@ -87,7 +94,13 @@ Google Cloud Messaging channel definition
 
 =head2 Platform => Str
 
-  The platform type. Will be GCM
+  Platform type. Will be "EMAIL"
+
+
+=head2 RoleArn => Str
+
+  The ARN of an IAM Role used to submit events to Mobile Analytics' event
+ingestion service
 
 
 =head2 Version => Int

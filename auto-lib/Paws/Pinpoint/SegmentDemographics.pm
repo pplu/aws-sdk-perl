@@ -1,6 +1,7 @@
 package Paws::Pinpoint::SegmentDemographics;
   use Moose;
   has AppVersion => (is => 'ro', isa => 'Paws::Pinpoint::SetDimension');
+  has Channel => (is => 'ro', isa => 'Paws::Pinpoint::SetDimension');
   has DeviceType => (is => 'ro', isa => 'Paws::Pinpoint::SetDimension');
   has Make => (is => 'ro', isa => 'Paws::Pinpoint::SetDimension');
   has Model => (is => 'ro', isa => 'Paws::Pinpoint::SetDimension');
@@ -43,6 +44,11 @@ Segment demographic dimensions
 =head2 AppVersion => L<Paws::Pinpoint::SetDimension>
 
   The app version criteria for the segment.
+
+
+=head2 Channel => L<Paws::Pinpoint::SetDimension>
+
+  The channel criteria for the segment.
 
 
 =head2 DeviceType => L<Paws::Pinpoint::SetDimension>

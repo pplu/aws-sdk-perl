@@ -1,8 +1,7 @@
-package Paws::Pinpoint::GCMChannelResponse;
+package Paws::Pinpoint::APNSSandboxChannelResponse;
   use Moose;
   has ApplicationId => (is => 'ro', isa => 'Str');
   has CreationDate => (is => 'ro', isa => 'Str');
-  has Credential => (is => 'ro', isa => 'Str');
   has Enabled => (is => 'ro', isa => 'Bool');
   has Id => (is => 'ro', isa => 'Str');
   has IsArchived => (is => 'ro', isa => 'Bool');
@@ -16,7 +15,7 @@ package Paws::Pinpoint::GCMChannelResponse;
 
 =head1 NAME
 
-Paws::Pinpoint::GCMChannelResponse
+Paws::Pinpoint::APNSSandboxChannelResponse
 
 =head1 USAGE
 
@@ -27,37 +26,32 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::Pinpoint::GCMChannelResponse object:
+As an example, if Att1 is expected to be a Paws::Pinpoint::APNSSandboxChannelResponse object:
 
   $service_obj->Method(Att1 => { ApplicationId => $value, ..., Version => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::GCMChannelResponse object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::APNSSandboxChannelResponse object:
 
   $result = $service_obj->Method(...);
   $result->Att1->ApplicationId
 
 =head1 DESCRIPTION
 
-Google Cloud Messaging channel definition
+Apple Development Push Notification Service channel definition.
 
 =head1 ATTRIBUTES
 
 
 =head2 ApplicationId => Str
 
-  The ID of the application to which the channel applies.
+  Application id
 
 
 =head2 CreationDate => Str
 
   When was this segment created
-
-
-=head2 Credential => Str
-
-  The GCM API key from Google.
 
 
 =head2 Enabled => Bool
@@ -87,7 +81,7 @@ Google Cloud Messaging channel definition
 
 =head2 Platform => Str
 
-  The platform type. Will be GCM
+  The platform type. Will be APNS.
 
 
 =head2 Version => Int

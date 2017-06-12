@@ -1,14 +1,15 @@
-package Paws::Pinpoint::GCMChannelRequest;
+package Paws::Pinpoint::APNSSandboxChannelRequest;
   use Moose;
-  has ApiKey => (is => 'ro', isa => 'Str');
+  has Certificate => (is => 'ro', isa => 'Str');
   has Enabled => (is => 'ro', isa => 'Bool');
+  has PrivateKey => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::Pinpoint::GCMChannelRequest
+Paws::Pinpoint::APNSSandboxChannelRequest
 
 =head1 USAGE
 
@@ -19,32 +20,37 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::Pinpoint::GCMChannelRequest object:
+As an example, if Att1 is expected to be a Paws::Pinpoint::APNSSandboxChannelRequest object:
 
-  $service_obj->Method(Att1 => { ApiKey => $value, ..., Enabled => $value  });
+  $service_obj->Method(Att1 => { Certificate => $value, ..., PrivateKey => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::GCMChannelRequest object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::APNSSandboxChannelRequest object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->ApiKey
+  $result->Att1->Certificate
 
 =head1 DESCRIPTION
 
-Google Cloud Messaging credentials
+Apple Development Push Notification Service channel definition.
 
 =head1 ATTRIBUTES
 
 
-=head2 ApiKey => Str
+=head2 Certificate => Str
 
-  Platform credential API key from Google.
+  The distribution certificate from Apple.
 
 
 =head2 Enabled => Bool
 
   If the channel is enabled for sending messages.
+
+
+=head2 PrivateKey => Str
+
+  The certificate private key.
 
 
 
