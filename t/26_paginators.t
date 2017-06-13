@@ -158,7 +158,8 @@ sub mock_caller_for_test {
 
 }
 
-{  
+{
+  local $TODO = 'Haven\'t got a test case for ELB paginators';  
   my %keys;
   my $calls = 0;
  
