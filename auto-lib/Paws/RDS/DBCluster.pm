@@ -5,6 +5,7 @@ package Paws::RDS::DBCluster;
   has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'AvailabilityZone', traits => ['NameInRequest']);
   has BackupRetentionPeriod => (is => 'ro', isa => 'Int');
   has CharacterSetName => (is => 'ro', isa => 'Str');
+  has CloneGroupId => (is => 'ro', isa => 'Str');
   has ClusterCreateTime => (is => 'ro', isa => 'Str');
   has DatabaseName => (is => 'ro', isa => 'Str');
   has DBClusterArn => (is => 'ro', isa => 'Str');
@@ -133,6 +134,11 @@ retained.
 
   If present, specifies the name of the character set that this cluster
 is associated with.
+
+
+=head2 CloneGroupId => Str
+
+  Identifies the clone group to which the DB cluster is associated.
 
 
 =head2 ClusterCreateTime => Str

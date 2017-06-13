@@ -404,7 +404,7 @@ True to enable mapping of AWS Identity and Access Management (IAM)
 accounts to database accounts; otherwise false.
 
 You can enable IAM database authentication for the following database
-engines
+engines:
 
 =over
 
@@ -426,11 +426,62 @@ Default: C<false>
 
 The name of the database engine to be used for this instance.
 
-Valid Values: C<mysql> | C<mariadb> | C<oracle-se1> | C<oracle-se2> |
-C<oracle-se> | C<oracle-ee> | C<sqlserver-ee> | C<sqlserver-se> |
-C<sqlserver-ex> | C<sqlserver-web> | C<postgres> | C<aurora>
-
 Not every database engine is available for every AWS region.
+
+Valid Values:
+
+=over
+
+=item *
+
+C<aurora>
+
+=item *
+
+C<mariadb>
+
+=item *
+
+C<mysql>
+
+=item *
+
+C<oracle-ee>
+
+=item *
+
+C<oracle-se2>
+
+=item *
+
+C<oracle-se1>
+
+=item *
+
+C<oracle-se>
+
+=item *
+
+C<postgres>
+
+=item *
+
+C<sqlserver-ee>
+
+=item *
+
+C<sqlserver-se>
+
+=item *
+
+C<sqlserver-ex>
+
+=item *
+
+C<sqlserver-web>
+
+=back
+
 
 
 
@@ -448,9 +499,9 @@ B<Amazon Aurora>
 
 =item *
 
-B<Version 5.6 (available in these AWS regions: ap-northeast-1,
+Version 5.6 (available in these AWS regions: ap-northeast-1,
 ap-northeast-2, ap-south-1, ap-southeast-2, eu-west-1, us-east-1,
-us-east-2, us-west-2):> C< 5.6.10a>
+us-east-2, us-west-2): C< 5.6.10a>
 
 =back
 
@@ -460,26 +511,28 @@ B<MariaDB>
 
 =item *
 
-B<Version 10.1 (available in these AWS regions: us-east-2):> C<
-10.1.16>
+C<10.1.19> (supported in all AWS regions)
 
 =item *
 
-B<Version 10.1 (available in these AWS regions: ap-northeast-1,
-ap-northeast-2, ap-south-1, ap-southeast-1, ap-southeast-2,
-eu-central-1, eu-west-1, sa-east-1, us-east-1, us-west-1, us-west-2):>
-C< 10.1.14>
+C<10.1.14> (supported in all regions except us-east-2)
+
+=back
+
+=over
 
 =item *
 
-B<Version 10.0 (available in all AWS regions):> C< 10.0.24>
+C<10.0.28> (supported in all AWS regions)
 
 =item *
 
-B<Version 10.0 (available in these AWS regions: ap-northeast-1,
-ap-northeast-2, ap-south-1, ap-southeast-1, ap-southeast-2,
-eu-central-1, eu-west-1, sa-east-1, us-east-1, us-gov-west-1,
-us-west-1, us-west-2):> C< 10.0.17>
+C<10.0.24> (supported in all AWS regions)
+
+=item *
+
+C<10.0.17> (supported in all regions except us-east-2, ca-central-1,
+eu-west-2)
 
 =back
 
@@ -489,8 +542,11 @@ B<Microsoft SQL Server 2016>
 
 =item *
 
-C<13.00.2164.0.v1> (supported for all editions, and all AWS regions
-except sa-east-1)
+C<13.00.4422.0.v1> (supported for all editions, and all AWS regions)
+
+=item *
+
+C<13.00.2164.0.v1> (supported for all editions, and all AWS regions)
 
 =back
 
@@ -500,12 +556,16 @@ B<Microsoft SQL Server 2014>
 
 =item *
 
+C<12.00.5546.0.v1> (supported for all editions, and all AWS regions)
+
+=item *
+
 C<12.00.5000.0.v1> (supported for all editions, and all AWS regions)
 
 =item *
 
 C<12.00.4422.0.v1> (supported for all editions except Enterprise
-Edition, and all AWS regions except us-east-2)
+Edition, and all AWS regions except ca-central-1 and eu-west-2)
 
 =back
 
@@ -515,17 +575,21 @@ B<Microsoft SQL Server 2012>
 
 =item *
 
+C<11.00.6594.0.v1> (supported for all editions, and all AWS regions)
+
+=item *
+
 C<11.00.6020.0.v1> (supported for all editions, and all AWS regions)
 
 =item *
 
 C<11.00.5058.0.v1> (supported for all editions, and all AWS regions
-except us-east-2)
+except us-east-2, ca-central-1, and eu-west-2)
 
 =item *
 
 C<11.00.2100.60.v1> (supported for all editions, and all AWS regions
-except us-east-2)
+except us-east-2, ca-central-1, and eu-west-2)
 
 =back
 
@@ -536,17 +600,17 @@ B<Microsoft SQL Server 2008 R2>
 =item *
 
 C<10.50.6529.0.v1> (supported for all editions, and all AWS regions
-except us-east-2)
+except us-east-2, ca-central-1, and eu-west-2)
 
 =item *
 
 C<10.50.6000.34.v1> (supported for all editions, and all AWS regions
-except us-east-2)
+except us-east-2, ca-central-1, and eu-west-2)
 
 =item *
 
 C<10.50.2789.0.v1> (supported for all editions, and all AWS regions
-except us-east-2)
+except us-east-2, ca-central-1, and eu-west-2)
 
 =back
 
@@ -556,49 +620,87 @@ B<MySQL>
 
 =item *
 
-B<Version 5.7 (available in all AWS regions):> C< 5.7.11>
+C<5.7.17> (supported in all AWS regions)
 
 =item *
 
-B<Version 5.7 (available in these AWS regions: ap-northeast-1,
-ap-northeast-2, ap-south-1, ap-southeast-1, ap-southeast-2,
-eu-central-1, eu-west-1, sa-east-1, us-east-1, us-gov-west-1,
-us-west-1, us-west-2):> C< 5.7.10>
+C<5.7.16> (supported in all AWS regions)
 
 =item *
 
-B<Version 5.6 (available in all AWS regions):> C< 5.6.29>
+C<5.7.11> (supported in all AWS regions)
 
 =item *
 
-B<Version 5.6 (available in these AWS regions: ap-northeast-1,
-ap-northeast-2, ap-south-1, ap-southeast-1, ap-southeast-2,
-eu-central-1, eu-west-1, sa-east-1, us-east-1, us-gov-west-1,
-us-west-1, us-west-2):> C< 5.6.27>
+C<5.7.10> (supported in all regions except us-east-2, ca-central-1,
+eu-west-2)
+
+=back
+
+=over
 
 =item *
 
-B<Version 5.6 (available in these AWS regions: ap-northeast-1,
-ap-northeast-2, ap-southeast-1, ap-southeast-2, eu-central-1,
-eu-west-1, sa-east-1, us-east-1, us-gov-west-1, us-west-1, us-west-2):>
-C< 5.6.23>
+C<5.6.35> (supported in all AWS regions)
 
 =item *
 
-B<Version 5.6 (available in these AWS regions: ap-northeast-1,
-ap-southeast-1, ap-southeast-2, eu-central-1, eu-west-1, sa-east-1,
-us-east-1, us-gov-west-1, us-west-1, us-west-2):> C< 5.6.19a | 5.6.19b
-| 5.6.21 | 5.6.21b | 5.6.22>
+C<5.6.34> (supported in all AWS regions)
 
 =item *
 
-B<Version 5.5 (available in all AWS regions):> C< 5.5.46>
+C<5.6.29> (supported in all AWS regions)
 
 =item *
 
-B<Version 5.1 (only available in AWS regions ap-northeast-1,
-ap-southeast-1, ap-southeast-2, eu-west-1, sa-east-1, us-east-1,
-us-gov-west-1, us-west-1, us-west-2):> C< 5.1.73a | 5.1.73b>
+C<5.6.27> (supported in all regions except us-east-2, ca-central-1,
+eu-west-2)
+
+=item *
+
+C<5.6.23> (supported in all regions except us-east-2, ap-south-1,
+ca-central-1, eu-west-2)
+
+=item *
+
+C<5.6.22> (supported in all regions except us-east-2, ap-south-1,
+ap-northeast-2, ca-central-1, eu-west-2)
+
+=item *
+
+C<5.6.21b> (supported in all regions except us-east-2, ap-south-1,
+ap-northeast-2, ca-central-1, eu-west-2)
+
+=item *
+
+C<5.6.21> (supported in all regions except us-east-2, ap-south-1,
+ap-northeast-2, ca-central-1, eu-west-2)
+
+=item *
+
+C<5.6.19b> (supported in all regions except us-east-2, ap-south-1,
+ap-northeast-2, ca-central-1, eu-west-2)
+
+=item *
+
+C<5.6.19a> (supported in all regions except us-east-2, ap-south-1,
+ap-northeast-2, ca-central-1, eu-west-2)
+
+=back
+
+=over
+
+=item *
+
+C<5.5.54> (supported in all AWS regions)
+
+=item *
+
+C<5.5.53> (supported in all AWS regions)
+
+=item *
+
+C<5.5.46> (supported in all AWS regions)
 
 =back
 

@@ -96,6 +96,14 @@ DeleteDBInstance
 
 ModifyDBInstance
 
+=item *
+
+StopDBInstance
+
+=item *
+
+StartDBInstance
+
 =back
 
 This data type is used as a response element in the DescribeDBInstances

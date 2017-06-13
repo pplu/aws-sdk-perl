@@ -1175,7 +1175,7 @@ Returns: a L<Paws::RDS::CopyDBParameterGroupResult> instance
   Copies the specified DB parameter group.
 
 
-=head2 CopyDBSnapshot(SourceDBSnapshotIdentifier => Str, TargetDBSnapshotIdentifier => Str, [CopyTags => Bool, KmsKeyId => Str, PreSignedUrl => Str, Tags => ArrayRef[L<Paws::RDS::Tag>]])
+=head2 CopyDBSnapshot(SourceDBSnapshotIdentifier => Str, TargetDBSnapshotIdentifier => Str, [CopyTags => Bool, KmsKeyId => Str, OptionGroupName => Str, PreSignedUrl => Str, Tags => ArrayRef[L<Paws::RDS::Tag>]])
 
 Each argument is described in detail in: L<Paws::RDS::CopyDBSnapshot>
 
@@ -1184,88 +1184,15 @@ Returns: a L<Paws::RDS::CopyDBSnapshotResult> instance
   Copies the specified DB snapshot. The source DB snapshot must be in the
 "available" state.
 
-To copy a DB snapshot from a shared manual DB snapshot,
-C<SourceDBSnapshotIdentifier> must be the Amazon Resource Name (ARN) of
-the shared DB snapshot.
+You can copy a snapshot from one AWS region to another. In that case,
+the region where you call the C<CopyDBSnapshot> action is the
+destination region for the DB snapshot copy.
 
-You can copy an encrypted DB snapshot from another AWS region. In that
-case, the region where you call the C<CopyDBSnapshot> action is the
-destination region for the encrypted DB snapshot to be copied to. To
-copy an encrypted DB snapshot from another region, you must provide the
-following values:
+You cannot copy an encrypted, shared DB snapshot from one AWS region to
+another.
 
-=over
-
-=item *
-
-C<KmsKeyId> - The AWS Key Management System (KMS) key identifier for
-the key to use to encrypt the copy of the DB snapshot in the
-destination region.
-
-=item *
-
-C<PreSignedUrl> - A URL that contains a Signature Version 4 signed
-request for the C<CopyDBSnapshot> action to be called in the source
-region where the DB snapshot will be copied from. The presigned URL
-must be a valid request for the C<CopyDBSnapshot> API action that can
-be executed in the source region that contains the encrypted DB
-snapshot to be copied.
-
-The presigned URL request must contain the following parameter values:
-
-=over
-
-=item *
-
-C<DestinationRegion> - The AWS Region that the encrypted DB snapshot
-will be copied to. This region is the same one where the
-C<CopyDBSnapshot> action is called that contains this presigned URL.
-
-For example, if you copy an encrypted DB snapshot from the us-west-2
-region to the us-east-1 region, then you will call the
-C<CopyDBSnapshot> action in the us-east-1 region and provide a
-presigned URL that contains a call to the C<CopyDBSnapshot> action in
-the us-west-2 region. For this example, the C<DestinationRegion> in the
-presigned URL must be set to the us-east-1 region.
-
-=item *
-
-C<KmsKeyId> - The KMS key identifier for the key to use to encrypt the
-copy of the DB snapshot in the destination region. This identifier is
-the same for both the C<CopyDBSnapshot> action that is called in the
-destination region, and the action contained in the presigned URL.
-
-=item *
-
-C<SourceDBSnapshotIdentifier> - The DB snapshot identifier for the
-encrypted snapshot to be copied. This identifier must be in the Amazon
-Resource Name (ARN) format for the source region. For example, if you
-copy an encrypted DB snapshot from the us-west-2 region, then your
-C<SourceDBSnapshotIdentifier> looks like this example:
-C<arn:aws:rds:us-west-2:123456789012:snapshot:mysql-instance1-snapshot-20161115>.
-
-=back
-
-To learn how to generate a Signature Version 4 signed request, see
-Authenticating Requests: Using Query Parameters (AWS Signature Version
-4) and Signature Version 4 Signing Process.
-
-=item *
-
-C<TargetDBSnapshotIdentifier> - The identifier for the new copy of the
-DB snapshot in the destination region.
-
-=item *
-
-C<SourceDBSnapshotIdentifier> - The DB snapshot identifier for the
-encrypted snapshot to be copied. This identifier must be in the ARN
-format for the source region and is the same value as the
-C<SourceDBSnapshotIdentifier> in the presigned URL.
-
-=back
-
-For more information on copying encrypted snapshots from one region to
-another, see Copying a DB Snapshot in the Amazon RDS User Guide.
+For more information about copying snapshots, see Copying a DB Snapshot
+in the Amazon RDS User Guide.
 
 
 =head2 CopyOptionGroup(SourceOptionGroupIdentifier => Str, TargetOptionGroupDescription => Str, TargetOptionGroupIdentifier => Str, [Tags => ArrayRef[L<Paws::RDS::Tag>]])
@@ -2425,7 +2352,7 @@ For more information on Amazon Aurora, see Aurora on Amazon RDS in the
 I<Amazon RDS User Guide.>
 
 
-=head2 RestoreDBClusterToPointInTime(DBClusterIdentifier => Str, SourceDBClusterIdentifier => Str, [DBSubnetGroupName => Str, EnableIAMDatabaseAuthentication => Bool, KmsKeyId => Str, OptionGroupName => Str, Port => Int, RestoreToTime => Str, Tags => ArrayRef[L<Paws::RDS::Tag>], UseLatestRestorableTime => Bool, VpcSecurityGroupIds => ArrayRef[Str|Undef]])
+=head2 RestoreDBClusterToPointInTime(DBClusterIdentifier => Str, SourceDBClusterIdentifier => Str, [DBSubnetGroupName => Str, EnableIAMDatabaseAuthentication => Bool, KmsKeyId => Str, OptionGroupName => Str, Port => Int, RestoreToTime => Str, RestoreType => Str, Tags => ArrayRef[L<Paws::RDS::Tag>], UseLatestRestorableTime => Bool, VpcSecurityGroupIds => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::RDS::RestoreDBClusterToPointInTime>
 
