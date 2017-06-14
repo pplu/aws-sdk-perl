@@ -318,4 +318,21 @@ for my $region ( sort keys %$known_regions ) {
   }
 }
 
+my $global_services = {
+  'IAM' => 'us-east-1',
+  'Route53', => 'us-east-1',
+  'CloudFront' => 'us-east-1',
+  'WAF' => 'us-east-1'
+};
+foreach my $service (keys %$global_services) {
+  my $svc = $paws->service($service);
+
+  cmp_ok(
+    $svc->_region_for_signature,
+    'eq',
+    $global_services->{ $service },
+    "Will sign $service with region $global_services->{ $service }"
+  );
+}
+
 done_testing;

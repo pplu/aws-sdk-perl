@@ -9,6 +9,8 @@
  - Bug fixed: Paginators not working correctly in non-callback mode (SeptamusNonovant. Issue #146)
  - Bug fixed: Throw exceptions on methods that don't return anything
  - Bug fixed: Handle plain values in RestXML services, like S3s' PutBucketPolicy (sven-schubert)
+ - Bug fixed: Some global services (f.ex: Route53, CloudFront) where forcing the user to specify
+   a region. No need to pass region anymore) (Issue #113)
  - New API: MarketplaceEntitlement
  - New API: Athena
  - Mew API: Greengrass

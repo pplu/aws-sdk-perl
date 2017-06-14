@@ -166,7 +166,7 @@ package Paws::API::EndpointResolver;
       },
       notStartsWith => sub {
         my ( $a, $v ) = @_;
-        return 0 if (not defined $a);
+        return 1 if (not defined $a);
         return $a !~ /^$v.*/i;
       },
       equals => sub {
