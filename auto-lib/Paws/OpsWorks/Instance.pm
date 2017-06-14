@@ -3,6 +3,7 @@ package Paws::OpsWorks::Instance;
   has AgentVersion => (is => 'ro', isa => 'Str');
   has AmiId => (is => 'ro', isa => 'Str');
   has Architecture => (is => 'ro', isa => 'Str');
+  has Arn => (is => 'ro', isa => 'Str');
   has AutoScalingType => (is => 'ro', isa => 'Str');
   has AvailabilityZone => (is => 'ro', isa => 'Str');
   has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[Paws::OpsWorks::BlockDeviceMapping]');
@@ -91,6 +92,11 @@ information, see Instances
 =head2 Architecture => Str
 
   The instance architecture: "i386" or "x86_64".
+
+
+=head2 Arn => Str
+
+  
 
 
 =head2 AutoScalingType => Str
@@ -203,7 +209,7 @@ DescribeServiceErrors.
 
 =head2 PrivateDns => Str
 
-  The The instance's private DNS name.
+  The instance's private DNS name.
 
 
 =head2 PrivateIp => Str

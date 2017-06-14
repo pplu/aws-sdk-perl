@@ -3,6 +3,8 @@ package Paws::DeviceFarm::AccountSettings;
   has AwsAccountNumber => (is => 'ro', isa => 'Str', request_name => 'awsAccountNumber', traits => ['NameInRequest']);
   has DefaultJobTimeoutMinutes => (is => 'ro', isa => 'Int', request_name => 'defaultJobTimeoutMinutes', traits => ['NameInRequest']);
   has MaxJobTimeoutMinutes => (is => 'ro', isa => 'Int', request_name => 'maxJobTimeoutMinutes', traits => ['NameInRequest']);
+  has MaxSlots => (is => 'ro', isa => 'Paws::DeviceFarm::MaxSlotMap', request_name => 'maxSlots', traits => ['NameInRequest']);
+  has TrialMinutes => (is => 'ro', isa => 'Paws::DeviceFarm::TrialMinutes', request_name => 'trialMinutes', traits => ['NameInRequest']);
   has UnmeteredDevices => (is => 'ro', isa => 'Paws::DeviceFarm::PurchasedDevicesMap', request_name => 'unmeteredDevices', traits => ['NameInRequest']);
   has UnmeteredRemoteAccessDevices => (is => 'ro', isa => 'Paws::DeviceFarm::PurchasedDevicesMap', request_name => 'unmeteredRemoteAccessDevices', traits => ['NameInRequest']);
 1;
@@ -55,6 +57,19 @@ execute before it times out. Default value is 60 minutes.
 
   The maximum number of minutes a test run will execute before it times
 out.
+
+
+=head2 MaxSlots => L<Paws::DeviceFarm::MaxSlotMap>
+
+  The maximum number of device slots that the AWS account can purchase.
+Each maximum is expressed as an C<offering-id:number> pair, where the
+C<offering-id> represents one of the IDs returned by the
+C<ListOfferings> command.
+
+
+=head2 TrialMinutes => L<Paws::DeviceFarm::TrialMinutes>
+
+  Information about an AWS account's usage of free trial device minutes.
 
 
 =head2 UnmeteredDevices => L<Paws::DeviceFarm::PurchasedDevicesMap>

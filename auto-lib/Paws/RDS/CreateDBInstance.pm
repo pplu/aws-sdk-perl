@@ -16,6 +16,7 @@ package Paws::RDS::CreateDBInstance;
   has DBSubnetGroupName => (is => 'ro', isa => 'Str');
   has Domain => (is => 'ro', isa => 'Str');
   has DomainIAMRoleName => (is => 'ro', isa => 'Str');
+  has EnableIAMDatabaseAuthentication => (is => 'ro', isa => 'Bool');
   has Engine => (is => 'ro', isa => 'Str', required => 1);
   has EngineVersion => (is => 'ro', isa => 'Str');
   has Iops => (is => 'ro', isa => 'Int');
@@ -76,6 +77,12 @@ The amount of storage (in gigabytes) to be initially allocated for the
 database instance.
 
 Type: Integer
+
+B<Amazon Aurora>
+
+Not applicable. Aurora cluster volumes automatically grow as the amount
+of data in your database increases, though you are only charged for the
+space that you use in an Aurora cluster volume.
 
 B<MySQL>
 
@@ -292,7 +299,9 @@ Cannot be a word reserved by the specified database engine
 
 B<Oracle>
 
-The Oracle System ID (SID) of the created DB instance.
+The Oracle System ID (SID) of the created DB instance. If you specify
+C<null>, the default value C<ORCL> is used. You can't specify the
+string NULL, or any other reserved word, for C<DBName>.
 
 Default: C<ORCL>
 
@@ -389,15 +398,90 @@ the Directory Service.
 
 
 
+=head2 EnableIAMDatabaseAuthentication => Bool
+
+True to enable mapping of AWS Identity and Access Management (IAM)
+accounts to database accounts; otherwise false.
+
+You can enable IAM database authentication for the following database
+engines:
+
+=over
+
+=item *
+
+For MySQL 5.6, minor version 5.6.34 or higher
+
+=item *
+
+For MySQL 5.7, minor version 5.7.16 or higher
+
+=back
+
+Default: C<false>
+
+
+
 =head2 B<REQUIRED> Engine => Str
 
 The name of the database engine to be used for this instance.
 
-Valid Values: C<mysql> | C<mariadb> | C<oracle-se1> | C<oracle-se2> |
-C<oracle-se> | C<oracle-ee> | C<sqlserver-ee> | C<sqlserver-se> |
-C<sqlserver-ex> | C<sqlserver-web> | C<postgres> | C<aurora>
-
 Not every database engine is available for every AWS region.
+
+Valid Values:
+
+=over
+
+=item *
+
+C<aurora>
+
+=item *
+
+C<mariadb>
+
+=item *
+
+C<mysql>
+
+=item *
+
+C<oracle-ee>
+
+=item *
+
+C<oracle-se2>
+
+=item *
+
+C<oracle-se1>
+
+=item *
+
+C<oracle-se>
+
+=item *
+
+C<postgres>
+
+=item *
+
+C<sqlserver-ee>
+
+=item *
+
+C<sqlserver-se>
+
+=item *
+
+C<sqlserver-ex>
+
+=item *
+
+C<sqlserver-web>
+
+=back
+
 
 
 
@@ -415,9 +499,9 @@ B<Amazon Aurora>
 
 =item *
 
-B<Version 5.6 (available in these AWS regions: ap-northeast-1,
+Version 5.6 (available in these AWS regions: ap-northeast-1,
 ap-northeast-2, ap-south-1, ap-southeast-2, eu-west-1, us-east-1,
-us-east-2, us-west-2):> C< 5.6.10a>
+us-east-2, us-west-2): C< 5.6.10a>
 
 =back
 
@@ -427,26 +511,28 @@ B<MariaDB>
 
 =item *
 
-B<Version 10.1 (available in these AWS regions: us-east-2):> C<
-10.1.16>
+C<10.1.19> (supported in all AWS regions)
 
 =item *
 
-B<Version 10.1 (available in these AWS regions: ap-northeast-1,
-ap-northeast-2, ap-south-1, ap-southeast-1, ap-southeast-2,
-eu-central-1, eu-west-1, sa-east-1, us-east-1, us-west-1, us-west-2):>
-C< 10.1.14>
+C<10.1.14> (supported in all regions except us-east-2)
+
+=back
+
+=over
 
 =item *
 
-B<Version 10.0 (available in all AWS regions):> C< 10.0.24>
+C<10.0.28> (supported in all AWS regions)
 
 =item *
 
-B<Version 10.0 (available in these AWS regions: ap-northeast-1,
-ap-northeast-2, ap-south-1, ap-southeast-1, ap-southeast-2,
-eu-central-1, eu-west-1, sa-east-1, us-east-1, us-gov-west-1,
-us-west-1, us-west-2):> C< 10.0.17>
+C<10.0.24> (supported in all AWS regions)
+
+=item *
+
+C<10.0.17> (supported in all regions except us-east-2, ca-central-1,
+eu-west-2)
 
 =back
 
@@ -456,8 +542,11 @@ B<Microsoft SQL Server 2016>
 
 =item *
 
-C<13.00.2164.0.v1> (supported for all editions, and all AWS regions
-except sa-east-1)
+C<13.00.4422.0.v1> (supported for all editions, and all AWS regions)
+
+=item *
+
+C<13.00.2164.0.v1> (supported for all editions, and all AWS regions)
 
 =back
 
@@ -467,12 +556,16 @@ B<Microsoft SQL Server 2014>
 
 =item *
 
+C<12.00.5546.0.v1> (supported for all editions, and all AWS regions)
+
+=item *
+
 C<12.00.5000.0.v1> (supported for all editions, and all AWS regions)
 
 =item *
 
 C<12.00.4422.0.v1> (supported for all editions except Enterprise
-Edition, and all AWS regions except us-east-2)
+Edition, and all AWS regions except ca-central-1 and eu-west-2)
 
 =back
 
@@ -482,17 +575,21 @@ B<Microsoft SQL Server 2012>
 
 =item *
 
+C<11.00.6594.0.v1> (supported for all editions, and all AWS regions)
+
+=item *
+
 C<11.00.6020.0.v1> (supported for all editions, and all AWS regions)
 
 =item *
 
 C<11.00.5058.0.v1> (supported for all editions, and all AWS regions
-except us-east-2)
+except us-east-2, ca-central-1, and eu-west-2)
 
 =item *
 
 C<11.00.2100.60.v1> (supported for all editions, and all AWS regions
-except us-east-2)
+except us-east-2, ca-central-1, and eu-west-2)
 
 =back
 
@@ -503,17 +600,17 @@ B<Microsoft SQL Server 2008 R2>
 =item *
 
 C<10.50.6529.0.v1> (supported for all editions, and all AWS regions
-except us-east-2)
+except us-east-2, ca-central-1, and eu-west-2)
 
 =item *
 
 C<10.50.6000.34.v1> (supported for all editions, and all AWS regions
-except us-east-2)
+except us-east-2, ca-central-1, and eu-west-2)
 
 =item *
 
 C<10.50.2789.0.v1> (supported for all editions, and all AWS regions
-except us-east-2)
+except us-east-2, ca-central-1, and eu-west-2)
 
 =back
 
@@ -523,236 +620,103 @@ B<MySQL>
 
 =item *
 
-B<Version 5.7 (available in all AWS regions):> C< 5.7.11>
+C<5.7.17> (supported in all AWS regions)
 
 =item *
 
-B<Version 5.7 (available in these AWS regions: ap-northeast-1,
-ap-northeast-2, ap-south-1, ap-southeast-1, ap-southeast-2,
-eu-central-1, eu-west-1, sa-east-1, us-east-1, us-gov-west-1,
-us-west-1, us-west-2):> C< 5.7.10>
+C<5.7.16> (supported in all AWS regions)
 
 =item *
 
-B<Version 5.6 (available in all AWS regions):> C< 5.6.29>
+C<5.7.11> (supported in all AWS regions)
 
 =item *
 
-B<Version 5.6 (available in these AWS regions: ap-northeast-1,
-ap-northeast-2, ap-south-1, ap-southeast-1, ap-southeast-2,
-eu-central-1, eu-west-1, sa-east-1, us-east-1, us-gov-west-1,
-us-west-1, us-west-2):> C< 5.6.27>
-
-=item *
-
-B<Version 5.6 (available in these AWS regions: ap-northeast-1,
-ap-northeast-2, ap-southeast-1, ap-southeast-2, eu-central-1,
-eu-west-1, sa-east-1, us-east-1, us-gov-west-1, us-west-1, us-west-2):>
-C< 5.6.23>
-
-=item *
-
-B<Version 5.6 (available in these AWS regions: ap-northeast-1,
-ap-southeast-1, ap-southeast-2, eu-central-1, eu-west-1, sa-east-1,
-us-east-1, us-gov-west-1, us-west-1, us-west-2):> C< 5.6.19a | 5.6.19b
-| 5.6.21 | 5.6.21b | 5.6.22>
-
-=item *
-
-B<Version 5.5 (available in all AWS regions):> C< 5.5.46>
-
-=item *
-
-B<Version 5.1 (only available in AWS regions ap-northeast-1,
-ap-southeast-1, ap-southeast-2, eu-west-1, sa-east-1, us-east-1,
-us-gov-west-1, us-west-1, us-west-2):> C< 5.1.73a | 5.1.73b>
+C<5.7.10> (supported in all regions except us-east-2, ca-central-1,
+eu-west-2)
 
 =back
-
-B<Oracle Database Enterprise Edition (oracle-ee)>
 
 =over
 
 =item *
 
-B<Version 12.1 (available in all AWS regions except ap-south-1,
-ap-northeast-2):> C< 12.1.0.1.v1 | 12.1.0.1.v2>
+C<5.6.35> (supported in all AWS regions)
 
 =item *
 
-B<Version 12.1 (only available in AWS regions ap-northeast-1,
-ap-southeast-1, ap-southeast-2, eu-central-1, eu-west-1, sa-east-1,
-us-east-1, us-west-1, us-west-2):> C< 12.1.0.1.v3 | 12.1.0.1.v4 |
-12.1.0.1.v5>
+C<5.6.34> (supported in all AWS regions)
 
 =item *
 
-B<Version 12.1 (available in all AWS regions):> C< 12.1.0.2.v1>
+C<5.6.29> (supported in all AWS regions)
 
 =item *
 
-B<Version 12.1 (available in all AWS regions except us-gov-west-1):> C<
-12.1.0.2.v2 | 12.1.0.2.v3 | 12.1.0.2.v4>
+C<5.6.27> (supported in all regions except us-east-2, ca-central-1,
+eu-west-2)
 
 =item *
 
-B<Version 11.2 (only available in AWS regions ap-northeast-1,
-ap-southeast-1, ap-southeast-2, eu-west-1, sa-east-1, us-east-1,
-us-gov-west-1, us-west-1, us-west-2):> C< 11.2.0.2.v3 | 11.2.0.2.v4 |
-11.2.0.2.v5 | 11.2.0.2.v6 | 11.2.0.2.v7>
+C<5.6.23> (supported in all regions except us-east-2, ap-south-1,
+ca-central-1, eu-west-2)
 
 =item *
 
-B<Version 11.2 (available in all AWS regions except ap-south-1,
-ap-northeast-2):> C< 11.2.0.3.v1 | 11.2.0.3.v2 | 11.2.0.3.v3>
+C<5.6.22> (supported in all regions except us-east-2, ap-south-1,
+ap-northeast-2, ca-central-1, eu-west-2)
 
 =item *
 
-B<Version 11.2 (only available in AWS regions ap-northeast-1,
-ap-southeast-1, ap-southeast-2, eu-central-1, eu-west-1, sa-east-1,
-us-east-1, us-west-1, us-west-2):> C< 11.2.0.3.v4>
+C<5.6.21b> (supported in all regions except us-east-2, ap-south-1,
+ap-northeast-2, ca-central-1, eu-west-2)
 
 =item *
 
-B<Version 11.2 (available in all AWS regions):> C< 11.2.0.4.v1 |
-11.2.0.4.v3 | 11.2.0.4.v4>
+C<5.6.21> (supported in all regions except us-east-2, ap-south-1,
+ap-northeast-2, ca-central-1, eu-west-2)
 
 =item *
 
-B<Version 11.2 (available in all AWS regions except us-gov-west-1):> C<
-11.2.0.4.v5 | 11.2.0.4.v6 | 11.2.0.4.v7 | 11.2.0.4.v8>
+C<5.6.19b> (supported in all regions except us-east-2, ap-south-1,
+ap-northeast-2, ca-central-1, eu-west-2)
+
+=item *
+
+C<5.6.19a> (supported in all regions except us-east-2, ap-south-1,
+ap-northeast-2, ca-central-1, eu-west-2)
 
 =back
-
-B<Oracle Database Standard Edition (oracle-se)>
 
 =over
 
 =item *
 
-B<Version 12.1 (available in all AWS regions except ap-south-1,
-ap-northeast-2):> C< 12.1.0.1.v1 | 12.1.0.1.v2>
+C<5.5.54> (supported in all AWS regions)
 
 =item *
 
-B<Version 12.1 (only available in AWS regions ap-northeast-1,
-ap-southeast-1, ap-southeast-2, eu-central-1, eu-west-1, sa-east-1,
-us-east-1, us-west-1, us-west-2):> C< 12.1.0.1.v3 | 12.1.0.1.v4 |
-12.1.0.1.v5>
+C<5.5.53> (supported in all AWS regions)
 
 =item *
 
-B<Version 11.2 (only available in AWS regions ap-northeast-1,
-ap-southeast-1, ap-southeast-2, eu-west-1, sa-east-1, us-east-1,
-us-gov-west-1, us-west-1, us-west-2):> C< 11.2.0.2.v3 | 11.2.0.2.v4 |
-11.2.0.2.v5 | 11.2.0.2.v6 | 11.2.0.2.v7>
-
-=item *
-
-B<Version 11.2 (available in all AWS regions except ap-south-1,
-ap-northeast-2):> C< 11.2.0.3.v1 | 11.2.0.3.v2 | 11.2.0.3.v3>
-
-=item *
-
-B<Version 11.2 (only available in AWS regions ap-northeast-1,
-ap-southeast-1, ap-southeast-2, eu-central-1, eu-west-1, sa-east-1,
-us-east-1, us-west-1, us-west-2):> C< 11.2.0.3.v4>
-
-=item *
-
-B<Version 11.2 (available in all AWS regions):> C< 11.2.0.4.v1 |
-11.2.0.4.v3 | 11.2.0.4.v4>
-
-=item *
-
-B<Version 11.2 (available in all AWS regions except us-gov-west-1):> C<
-11.2.0.4.v5 | 11.2.0.4.v6 | 11.2.0.4.v7 | 11.2.0.4.v8>
-
-=back
-
-B<Oracle Database Standard Edition One (oracle-se1)>
-
-=over
-
-=item *
-
-B<Version 12.1 (available in all AWS regions except ap-south-1,
-ap-northeast-2):> C< 12.1.0.1.v1 | 12.1.0.1.v2>
-
-=item *
-
-B<Version 12.1 (only available in AWS regions ap-northeast-1,
-ap-southeast-1, ap-southeast-2, eu-central-1, eu-west-1, sa-east-1,
-us-east-1, us-west-1, us-west-2):> C< 12.1.0.1.v3 | 12.1.0.1.v4 |
-12.1.0.1.v5>
-
-=item *
-
-B<Version 11.2 (only available in AWS regions ap-northeast-1,
-ap-southeast-1, ap-southeast-2, eu-west-1, sa-east-1, us-east-1,
-us-gov-west-1, us-west-1, us-west-2):> C< 11.2.0.2.v3 | 11.2.0.2.v4 |
-11.2.0.2.v5 | 11.2.0.2.v6 | 11.2.0.2.v7>
-
-=item *
-
-B<Version 11.2 (available in all AWS regions except ap-south-1,
-ap-northeast-2):> C< 11.2.0.3.v1 | 11.2.0.3.v2 | 11.2.0.3.v3>
-
-=item *
-
-B<Version 11.2 (only available in AWS regions ap-northeast-1,
-ap-southeast-1, ap-southeast-2, eu-central-1, eu-west-1, sa-east-1,
-us-east-1, us-west-1, us-west-2):> C< 11.2.0.3.v4>
-
-=item *
-
-B<Version 11.2 (available in all AWS regions):> C< 11.2.0.4.v1 |
-11.2.0.4.v3 | 11.2.0.4.v4>
-
-=item *
-
-B<Version 11.2 (available in all AWS regions except us-gov-west-1):> C<
-11.2.0.4.v5 | 11.2.0.4.v6 | 11.2.0.4.v7 | 11.2.0.4.v8>
-
-=back
-
-B<Oracle Database Standard Edition Two (oracle-se2)>
-
-=over
-
-=item *
-
-B<Version 12.1 (available in all AWS regions except us-gov-west-1):> C<
-12.1.0.2.v2 | 12.1.0.2.v3 | 12.1.0.2.v4>
-
-=back
-
-B<PostgreSQL>
-
-=over
-
-=item *
-
-B<Version 9.6:> C< 9.6.1>
-
-=item *
-
-B<Version 9.5:> C<9.5.4 | 9.5.2>
-
-=item *
-
-B<Version 9.4:> C< 9.4.9 | 9.4.7 | 9.4.5 | 9.4.4 | 9.4.1>
-
-=item *
-
-B<Version 9.3:> C< 9.3.14 | 9.3.12 | 9.3.10 | 9.3.9 | 9.3.6 | 9.3.5 |
-9.3.3 | 9.3.2 | 9.3.1>
+C<5.5.46> (supported in all AWS regions)
 
 =back
 
 B<Oracle 12c>
 
 =over
+
+=item *
+
+C<12.1.0.2.v8> (supported for EE in all AWS regions, and SE2 in all AWS
+regions except us-gov-west-1)
+
+=item *
+
+C<12.1.0.2.v7> (supported for EE in all AWS regions, and SE2 in all AWS
+regions except us-gov-west-1)
 
 =item *
 
@@ -786,43 +750,17 @@ regions except us-gov-west-1)
 
 =back
 
-=over
-
-=item *
-
-C<12.1.0.1.v6> (supported for EE, SE1, and SE, in all AWS regions
-except ap-south-1, ap-northeast-2)
-
-=item *
-
-C<12.1.0.1.v5> (supported for EE, SE1, and SE, in all AWS regions
-except ap-south-1, ap-northeast-2)
-
-=item *
-
-C<12.1.0.1.v4> (supported for EE, SE1, and SE, in all AWS regions
-except ap-south-1, ap-northeast-2)
-
-=item *
-
-C<12.1.0.1.v3> (supported for EE, SE1, and SE, in all AWS regions
-except ap-south-1, ap-northeast-2)
-
-=item *
-
-C<12.1.0.1.v2> (supported for EE, SE1, and SE, in all AWS regions
-except ap-south-1, ap-northeast-2)
-
-=item *
-
-C<12.1.0.1.v1> (supported for EE, SE1, and SE, in all AWS regions
-except ap-south-1, ap-northeast-2)
-
-=back
-
 B<Oracle 11g>
 
 =over
+
+=item *
+
+C<11.2.0.4.v12> (supported for EE, SE1, and SE, in all AWS regions)
+
+=item *
+
+C<11.2.0.4.v11> (supported for EE, SE1, and SE, in all AWS regions)
 
 =item *
 
@@ -868,68 +806,19 @@ B<PostgreSQL>
 
 =item *
 
-B<Version 9.5 (available in these AWS regions: ap-northeast-1,
-ap-northeast-2, ap-south-1, ap-southeast-1, ap-southeast-2,
-eu-central-1, eu-west-1, sa-east-1, us-east-1, us-west-1, us-west-2):>
-C< 9.5.4>
+B<Version 9.6.x:> C< 9.6.1 | 9.6.2>
 
 =item *
 
-B<Version 9.5 (available in these AWS regions: ap-northeast-1,
-ap-northeast-2, ap-south-1, ap-southeast-1, ap-southeast-2,
-eu-central-1, eu-west-1, sa-east-1, us-east-1, us-east-2, us-west-1,
-us-west-2):> C< 9.5.2>
+B<Version 9.5.x:> C<9.5.6 | 9.5.4 | 9.5.2>
 
 =item *
 
-B<Version 9.4 (available in these AWS regions: ap-northeast-1,
-ap-northeast-2, ap-south-1, ap-southeast-1, ap-southeast-2,
-eu-central-1, eu-west-1, sa-east-1, us-east-1, us-west-1, us-west-2):>
-C< 9.4.9>
+B<Version 9.4.x:> C<9.4.11 | 9.4.9 | 9.4.7>
 
 =item *
 
-B<Version 9.4 (available in these AWS regions: ap-northeast-1,
-ap-northeast-2, ap-south-1, ap-southeast-1, ap-southeast-2,
-eu-central-1, eu-west-1, sa-east-1, us-east-1, us-east-2, us-west-1,
-us-west-2):> C< 9.4.7>
-
-=item *
-
-B<Version 9.4 (available in all AWS regions):> C< 9.4.5>
-
-=item *
-
-B<Version 9.4 (available in these AWS regions: ap-northeast-1,
-ap-northeast-2, ap-southeast-1, ap-southeast-2, eu-central-1,
-eu-west-1, sa-east-1, us-east-1, us-gov-west-1, us-west-1, us-west-2):>
-C< 9.4.4>
-
-=item *
-
-B<Version 9.4 (available in these AWS regions: ap-northeast-1,
-ap-northeast-2, ap-southeast-1, ap-southeast-2, eu-central-1,
-eu-west-1, sa-east-1, us-east-1, us-east-2, us-gov-west-1, us-west-1,
-us-west-2):> C< 9.4.1>
-
-=item *
-
-B<Version 9.3 (available in these AWS regions: ap-northeast-1,
-ap-southeast-1, ap-southeast-2, eu-central-1, eu-west-1, sa-east-1,
-us-east-1, us-gov-west-1, us-west-1, us-west-2):> C< 9.3.10 | 9.3.3 |
-9.3.5 | 9.3.6 | 9.3.9>
-
-=item *
-
-B<Version 9.3 (available in these AWS regions: ap-northeast-1,
-ap-southeast-1, ap-southeast-2, eu-west-1, sa-east-1, us-east-1,
-us-gov-west-1, us-west-1, us-west-2):> C< 9.3.1 | 9.3.2>
-
-=item *
-
-B<Version 9.3 (available in these AWS regions: ap-northeast-1,
-ap-southeast-1, ap-southeast-2, eu-central-1, eu-west-1, sa-east-1,
-us-east-1, us-west-1, us-west-2):> C< 9.3.12 | 9.3.14>
+B<Version 9.3.x:> C<9.3.16 | 9.3.14 | 9.3.12>
 
 =back
 
@@ -977,7 +866,48 @@ C<general-public-license>
 
 =head2 MasterUsername => Str
 
-The name of master user for the client DB instance.
+The name for the master database user.
+
+B<Amazon Aurora>
+
+Not applicable. You specify the name for the master database user when
+you create your DB cluster.
+
+B<MariaDB>
+
+Constraints:
+
+=over
+
+=item *
+
+Must be 1 to 16 alphanumeric characters.
+
+=item *
+
+Cannot be a reserved word for the chosen database engine.
+
+=back
+
+B<Microsoft SQL Server>
+
+Constraints:
+
+=over
+
+=item *
+
+Must be 1 to 128 alphanumeric characters.
+
+=item *
+
+First character must be a letter.
+
+=item *
+
+Cannot be a reserved word for the chosen database engine.
+
+=back
 
 B<MySQL>
 
@@ -999,24 +929,6 @@ Cannot be a reserved word for the chosen database engine.
 
 =back
 
-B<MariaDB>
-
-Constraints:
-
-=over
-
-=item *
-
-Must be 1 to 16 alphanumeric characters.
-
-=item *
-
-Cannot be a reserved word for the chosen database engine.
-
-=back
-
-Type: String
-
 B<Oracle>
 
 Constraints:
@@ -1026,26 +938,6 @@ Constraints:
 =item *
 
 Must be 1 to 30 alphanumeric characters.
-
-=item *
-
-First character must be a letter.
-
-=item *
-
-Cannot be a reserved word for the chosen database engine.
-
-=back
-
-B<SQL Server>
-
-Constraints:
-
-=over
-
-=item *
-
-Must be 1 to 128 alphanumeric characters.
 
 =item *
 
@@ -1085,13 +977,20 @@ Cannot be a reserved word for the chosen database engine.
 The password for the master database user. Can be any printable ASCII
 character except "/", """, or "@".
 
-Type: String
+B<Amazon Aurora>
 
-B<MySQL>
+Not applicable. You specify the password for the master database user
+when you create your DB cluster.
+
+B<MariaDB>
 
 Constraints: Must contain from 8 to 41 characters.
 
-B<MariaDB>
+B<Microsoft SQL Server>
+
+Constraints: Must contain from 8 to 128 characters.
+
+B<MySQL>
 
 Constraints: Must contain from 8 to 41 characters.
 
@@ -1099,17 +998,9 @@ B<Oracle>
 
 Constraints: Must contain from 8 to 30 characters.
 
-B<SQL Server>
-
-Constraints: Must contain from 8 to 128 characters.
-
 B<PostgreSQL>
 
 Constraints: Must contain from 8 to 128 characters.
-
-B<Amazon Aurora>
-
-Constraints: Must contain from 8 to 41 characters.
 
 
 
@@ -1131,8 +1022,7 @@ Valid Values: C<0, 1, 5, 10, 15, 30, 60>
 The ARN for the IAM role that permits RDS to send enhanced monitoring
 metrics to CloudWatch Logs. For example,
 C<arn:aws:iam:123456789012:role/emaccess>. For information on creating
-a monitoring role, go to To create an IAM role for Amazon RDS Enhanced
-Monitoring.
+a monitoring role, go to Setting Up and Enabling Enhanced Monitoring.
 
 If C<MonitoringInterval> is set to a value other than 0, then you must
 supply a C<MonitoringRoleArn> value.
@@ -1217,7 +1107,7 @@ parameter. For more information, see DB Instance Backups.
 
 Default: A 30-minute window selected at random from an 8-hour block of
 time per region. To see the time blocks available, see Adjusting the
-Preferred Maintenance Window in the I<Amazon RDS User Guide.>
+Preferred DB Instance Maintenance Window.
 
 Constraints:
 

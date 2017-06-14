@@ -53,7 +53,7 @@ A list of explicitly approved patches for the baseline.
 
 =head2 ClientToken => Str
 
-Caller-provided idempotency token.
+User-provided idempotency token.
 
 
 

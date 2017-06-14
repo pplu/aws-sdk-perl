@@ -39,20 +39,20 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> AttributeUpdates => ArrayRef[L<Paws::CloudDirectory::ObjectAttributeUpdate>]
 
-Attributes update structure.
+The attributes update structure.
 
 
 
 =head2 B<REQUIRED> DirectoryArn => Str
 
-ARN associated with the Directory where the object resides. For more
-information, see arns.
+The Amazon Resource Name (ARN) that is associated with the Directory
+where the object resides. For more information, see arns.
 
 
 
 =head2 B<REQUIRED> ObjectReference => L<Paws::CloudDirectory::ObjectReference>
 
-Reference that identifies the object.
+The reference that identifies the object.
 
 
 

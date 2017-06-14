@@ -37,7 +37,7 @@ information, see .
 
 =head2 Checksum => Str
 
-Checksum identifying the version of the boat that was created.
+Checksum identifying the version of the bot that was created.
 
 
 =head2 ChildDirected => Bool
@@ -133,7 +133,7 @@ The version of the bot.
 
 =head2 VoiceId => Str
 
-The Amazon Parrot voice ID that Amazon Lex uses for voice interactions
+The Amazon Polly voice ID that Amazon Lex uses for voice interactions
 with the user.
 
 

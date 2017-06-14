@@ -49,6 +49,11 @@ package Paws::Rekognition;
     my $call_object = $self->new_with_coercions('Paws::Rekognition::DetectModerationLabels', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetCelebrityInfo {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Rekognition::GetCelebrityInfo', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub IndexFaces {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Rekognition::IndexFaces', @_);
@@ -62,6 +67,11 @@ package Paws::Rekognition;
   sub ListFaces {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Rekognition::ListFaces', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub RecognizeCelebrities {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Rekognition::RecognizeCelebrities', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub SearchFaces {
@@ -80,18 +90,20 @@ package Paws::Rekognition;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListCollections(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->NextToken) {
-        $result = $self->ListCollections(@_, NextToken => $result->NextToken);
-        push @{ $result->CollectionIds }, @{ $result->CollectionIds };
+      while ($next_result->NextToken) {
+        $next_result = $self->ListCollections(@_, NextToken => $next_result->NextToken);
+        push @{ $result->CollectionIds }, @{ $next_result->CollectionIds };
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->ListCollections(@_, NextToken => $result->NextToken);
         $callback->($_ => 'CollectionIds') foreach (@{ $result->CollectionIds });
+        $result = $self->ListCollections(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'CollectionIds') foreach (@{ $result->CollectionIds });
     }
 
     return undef
@@ -101,25 +113,27 @@ package Paws::Rekognition;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListFaces(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->NextToken) {
-        $result = $self->ListFaces(@_, NextToken => $result->NextToken);
-        push @{ $result->Faces }, @{ $result->Faces };
+      while ($next_result->NextToken) {
+        $next_result = $self->ListFaces(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Faces }, @{ $next_result->Faces };
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->ListFaces(@_, NextToken => $result->NextToken);
         $callback->($_ => 'Faces') foreach (@{ $result->Faces });
+        $result = $self->ListFaces(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'Faces') foreach (@{ $result->Faces });
     }
 
     return undef
   }
 
 
-  sub operations { qw/CompareFaces CreateCollection DeleteCollection DeleteFaces DetectFaces DetectLabels DetectModerationLabels IndexFaces ListCollections ListFaces SearchFaces SearchFacesByImage / }
+  sub operations { qw/CompareFaces CreateCollection DeleteCollection DeleteFaces DetectFaces DetectLabels DetectModerationLabels GetCelebrityInfo IndexFaces ListCollections ListFaces RecognizeCelebrities SearchFaces SearchFacesByImage / }
 
 1;
 
@@ -161,27 +175,35 @@ Returns: a L<Paws::Rekognition::CompareFacesResponse> instance
 the I<target> input image.
 
 If the source image contains multiple faces, the service detects the
-largest face and uses it to compare with each face detected in the
-target image.
+largest face and compares it with each face detected in the target
+image.
 
 In response, the operation returns an array of face matches ordered by
-similarity score with the highest similarity scores first. For each
-face match, the response provides a bounding box of the face and
-C<confidence> value (indicating the level of confidence that the
-bounding box contains a face). The response also provides a
-C<similarity> score, which indicates how closely the faces match.
+similarity score in descending order. For each face match, the response
+provides a bounding box of the face, facial landmarks, pose details
+(pitch, role, and yaw), quality (brightness and sharpness), and
+confidence value (indicating the level of confidence that the bounding
+box contains a face). The response also provides a similarity score,
+which indicates how closely the faces match.
 
-By default, only faces with the similarity score of greater than or
-equal to 80% are returned in the response. You can change this value.
+By default, only faces with a similarity score of greater than or equal
+to 80% are returned in the response. You can change this value by
+specifying the C<SimilarityThreshold> parameter.
 
-In addition to the face matches, the response returns information about
-the face in the source image, including the bounding box of the face
-and confidence value.
+C<CompareFaces> also returns an array of faces that don't match the
+source image. For each face, it returns a bounding box, confidence
+value, landmarks, pose details, and quality. The response also returns
+information about the face in the source image, including the bounding
+box of the face and confidence value.
 
-This is a stateless API operation. That is, the operation does not
-persist any data.
+If the image doesn't contain Exif metadata, C<CompareFaces> returns
+orientation information for the source and target images. Use these
+values to display the images with the correct image orientation.
 
-For an example, see get-started-exercise-compare-faces
+This is a stateless API operation. That is, data returned by this
+operation doesn't persist.
+
+For an example, see get-started-exercise-compare-faces.
 
 This operation requires permissions to perform the
 C<rekognition:CompareFaces> action.
@@ -200,6 +222,8 @@ For example, you might create collections, one for each of your
 application users. A user can then index faces using the C<IndexFaces>
 operation and persist results in a specific collection. Then, a user
 can search the collection for faces in the user-specific container.
+
+Collection names are case-sensitive.
 
 For an example, see example1.
 
@@ -322,14 +346,31 @@ Each argument is described in detail in: L<Paws::Rekognition::DetectModerationLa
 
 Returns: a L<Paws::Rekognition::DetectModerationLabelsResponse> instance
 
-  Detects explicit or suggestive adult content in a specified .jpeg or
-.png image. Use C<DetectModerationLabels> to moderate images depending
-on your requirements. For example, you might want to filter images that
-contain nudity, but not images containing suggestive content.
+  Detects explicit or suggestive adult content in a specified JPEG or PNG
+format image. Use C<DetectModerationLabels> to moderate images
+depending on your requirements. For example, you might want to filter
+images that contain nudity, but not images containing suggestive
+content.
 
 To filter images, use the labels returned by C<DetectModerationLabels>
 to determine which types of content are appropriate. For information
-about moderation labels, see howitworks-moderateimage.
+about moderation labels, see image-moderation.
+
+
+=head2 GetCelebrityInfo(Id => Str)
+
+Each argument is described in detail in: L<Paws::Rekognition::GetCelebrityInfo>
+
+Returns: a L<Paws::Rekognition::GetCelebrityInfoResponse> instance
+
+  Gets the name and additional information about a celebrity based on his
+or her Rekognition ID. The additional information is returned as an
+array of URLs. If there is no additional information about the
+celebrity, this list is empty. For more information, see
+celebrity-recognition.
+
+This operation requires permissions to perform the
+C<rekognition:GetCelebrityInfo> action.
 
 
 =head2 IndexFaces(CollectionId => Str, Image => L<Paws::Rekognition::Image>, [DetectionAttributes => ArrayRef[Str|Undef], ExternalImageId => Str])
@@ -359,7 +400,7 @@ In response, the operation returns an array of metadata for all
 detected faces. This includes, the bounding box of the detected face,
 confidence value (indicating the bounding box contains a face), a face
 ID assigned by the service for each face that is detected and stored,
-and an image ID assigned by the service for the input image If you
+and an image ID assigned by the service for the input image. If you
 request all facial attributes (using the C<detectionAttributes>
 parameter, Amazon Rekognition returns detailed facial attributes such
 as facial landmarks (for example, location of eye and mount) and other
@@ -402,6 +443,41 @@ example, see example3.
 
 This operation requires permissions to perform the
 C<rekognition:ListFaces> action.
+
+
+=head2 RecognizeCelebrities(Image => L<Paws::Rekognition::Image>)
+
+Each argument is described in detail in: L<Paws::Rekognition::RecognizeCelebrities>
+
+Returns: a L<Paws::Rekognition::RecognizeCelebritiesResponse> instance
+
+  Returns an array of celebrities recognized in the input image. The
+image is passed either as base64-encoded image bytes or as a reference
+to an image in an Amazon S3 bucket. The image must be either a PNG or
+JPEG formatted file. For more information, see celebrity-recognition.
+
+C<RecognizeCelebrities> returns the 15 largest faces in the image. It
+lists recognized celebrities in the C<CelebrityFaces> list and
+unrecognized faces in the C<UnrecognizedFaces> list. The operation
+doesn't return celebrities whose face sizes are smaller than the
+largest 15 faces in the image.
+
+For each celebrity recognized, the API returns a C<Celebrity> object.
+The C<Celebrity> object contains the celebrity name, ID, URL links to
+additional information, match confidence, and a C<ComparedFace> object
+that you can use to locate the celebrity's face on the image.
+
+Rekognition does not retain information about which images a celebrity
+has been recognized in. Your application must store this information
+and use the C<Celebrity> ID property as a unique identifier for the
+celebrity. If you don't store the celebrity name or additional
+information URLs returned by C<RecognizeCelebrities>, you will need the
+ID to identify the celebrity in a call to the operation.
+
+For an example, see recognize-celebrities-tutorial.
+
+This operation requires permissions to perform the
+C<rekognition:RecognizeCelebrities> operation.
 
 
 =head2 SearchFaces(CollectionId => Str, FaceId => Str, [FaceMatchThreshold => Num, MaxFaces => Int])

@@ -17,7 +17,8 @@ Paws::CloudDirectory::UpdateSchemaResponse
 
 =head2 SchemaArn => Str
 
-ARN associated with the updated schema. For more information, see arns.
+The ARN that is associated with the updated schema. For more
+information, see arns.
 
 
 =head2 _request_id => Str

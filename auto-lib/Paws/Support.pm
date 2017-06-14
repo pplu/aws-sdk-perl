@@ -90,18 +90,20 @@ package Paws::Support;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeCases(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->nextToken) {
-        $result = $self->DescribeCases(@_, nextToken => $result->nextToken);
-        push @{ $result->cases }, @{ $result->cases };
+      while ($next_result->nextToken) {
+        $next_result = $self->DescribeCases(@_, nextToken => $next_result->nextToken);
+        push @{ $result->cases }, @{ $next_result->cases };
       }
       return $result;
     } else {
       while ($result->nextToken) {
-        $result = $self->DescribeCases(@_, nextToken => $result->nextToken);
         $callback->($_ => 'cases') foreach (@{ $result->cases });
+        $result = $self->DescribeCases(@_, nextToken => $result->nextToken);
       }
+      $callback->($_ => 'cases') foreach (@{ $result->cases });
     }
 
     return undef
@@ -111,18 +113,20 @@ package Paws::Support;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeCommunications(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->nextToken) {
-        $result = $self->DescribeCommunications(@_, nextToken => $result->nextToken);
-        push @{ $result->communications }, @{ $result->communications };
+      while ($next_result->nextToken) {
+        $next_result = $self->DescribeCommunications(@_, nextToken => $next_result->nextToken);
+        push @{ $result->communications }, @{ $next_result->communications };
       }
       return $result;
     } else {
       while ($result->nextToken) {
-        $result = $self->DescribeCommunications(@_, nextToken => $result->nextToken);
         $callback->($_ => 'communications') foreach (@{ $result->communications });
+        $result = $self->DescribeCommunications(@_, nextToken => $result->nextToken);
       }
+      $callback->($_ => 'communications') foreach (@{ $result->communications });
     }
 
     return undef

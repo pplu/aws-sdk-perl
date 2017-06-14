@@ -105,18 +105,20 @@ package Paws::Snowball;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeAddresses(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->NextToken) {
-        $result = $self->DescribeAddresses(@_, NextToken => $result->NextToken);
-        push @{ $result->Addresses }, @{ $result->Addresses };
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeAddresses(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Addresses }, @{ $next_result->Addresses };
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->DescribeAddresses(@_, NextToken => $result->NextToken);
         $callback->($_ => 'Addresses') foreach (@{ $result->Addresses });
+        $result = $self->DescribeAddresses(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'Addresses') foreach (@{ $result->Addresses });
     }
 
     return undef
@@ -126,18 +128,20 @@ package Paws::Snowball;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListJobs(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->NextToken) {
-        $result = $self->ListJobs(@_, NextToken => $result->NextToken);
-        push @{ $result->JobListEntries }, @{ $result->JobListEntries };
+      while ($next_result->NextToken) {
+        $next_result = $self->ListJobs(@_, NextToken => $next_result->NextToken);
+        push @{ $result->JobListEntries }, @{ $next_result->JobListEntries };
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->ListJobs(@_, NextToken => $result->NextToken);
         $callback->($_ => 'JobListEntries') foreach (@{ $result->JobListEntries });
+        $result = $self->ListJobs(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'JobListEntries') foreach (@{ $result->JobListEntries });
     }
 
     return undef
@@ -213,14 +217,13 @@ Each argument is described in detail in: L<Paws::Snowball::CreateAddress>
 
 Returns: a L<Paws::Snowball::CreateAddressResult> instance
 
-  Creates an address for a Snowball to be shipped to.
-
-Addresses are validated at the time of creation. The address you
+  Creates an address for a Snowball to be shipped to. In most regions,
+addresses are validated at the time of creation. The address you
 provide must be located within the serviceable area of your region. If
 the address is invalid or unsupported, then an exception is thrown.
 
 
-=head2 CreateCluster(AddressId => Str, JobType => Str, Resources => L<Paws::Snowball::JobResource>, RoleARN => Str, ShippingOption => Str, [Description => Str, KmsKeyARN => Str, Notification => L<Paws::Snowball::Notification>, SnowballType => Str])
+=head2 CreateCluster(AddressId => Str, JobType => Str, Resources => L<Paws::Snowball::JobResource>, RoleARN => Str, ShippingOption => Str, [Description => Str, ForwardingAddressId => Str, KmsKeyARN => Str, Notification => L<Paws::Snowball::Notification>, SnowballType => Str])
 
 Each argument is described in detail in: L<Paws::Snowball::CreateCluster>
 
@@ -231,7 +234,7 @@ CreateJob action separately to create the jobs for each of these nodes.
 The cluster does not ship until these five node jobs have been created.
 
 
-=head2 CreateJob([AddressId => Str, ClusterId => Str, Description => Str, JobType => Str, KmsKeyARN => Str, Notification => L<Paws::Snowball::Notification>, Resources => L<Paws::Snowball::JobResource>, RoleARN => Str, ShippingOption => Str, SnowballCapacityPreference => Str, SnowballType => Str])
+=head2 CreateJob([AddressId => Str, ClusterId => Str, Description => Str, ForwardingAddressId => Str, JobType => Str, KmsKeyARN => Str, Notification => L<Paws::Snowball::Notification>, Resources => L<Paws::Snowball::JobResource>, RoleARN => Str, ShippingOption => Str, SnowballCapacityPreference => Str, SnowballType => Str])
 
 Each argument is described in detail in: L<Paws::Snowball::CreateJob>
 
@@ -242,7 +245,7 @@ on-premises data center. Your AWS account must have the right trust
 policies and permissions in place to create a job for Snowball. If
 you're creating a job for a node in a cluster, you only need to provide
 the C<clusterId> value; the other job attributes are inherited from the
-cluster. .
+cluster.
 
 
 =head2 DescribeAddress(AddressId => Str)
@@ -283,7 +286,7 @@ Each argument is described in detail in: L<Paws::Snowball::DescribeJob>
 Returns: a L<Paws::Snowball::DescribeJobResult> instance
 
   Returns information about a specific job including shipping
-information, job status, and other important metadata. .
+information, job status, and other important metadata.
 
 
 =head2 GetJobManifest(JobId => Str)
@@ -384,7 +387,7 @@ return jobs from the list of all jobs associated with this account in
 all US regions.
 
 
-=head2 UpdateCluster(ClusterId => Str, [AddressId => Str, Description => Str, Notification => L<Paws::Snowball::Notification>, Resources => L<Paws::Snowball::JobResource>, RoleARN => Str, ShippingOption => Str])
+=head2 UpdateCluster(ClusterId => Str, [AddressId => Str, Description => Str, ForwardingAddressId => Str, Notification => L<Paws::Snowball::Notification>, Resources => L<Paws::Snowball::JobResource>, RoleARN => Str, ShippingOption => Str])
 
 Each argument is described in detail in: L<Paws::Snowball::UpdateCluster>
 
@@ -397,7 +400,7 @@ minutes after the cluster being created, this action is no longer
 available.
 
 
-=head2 UpdateJob(JobId => Str, [AddressId => Str, Description => Str, Notification => L<Paws::Snowball::Notification>, Resources => L<Paws::Snowball::JobResource>, RoleARN => Str, ShippingOption => Str, SnowballCapacityPreference => Str])
+=head2 UpdateJob(JobId => Str, [AddressId => Str, Description => Str, ForwardingAddressId => Str, Notification => L<Paws::Snowball::Notification>, Resources => L<Paws::Snowball::JobResource>, RoleARN => Str, ShippingOption => Str, SnowballCapacityPreference => Str])
 
 Each argument is described in detail in: L<Paws::Snowball::UpdateJob>
 

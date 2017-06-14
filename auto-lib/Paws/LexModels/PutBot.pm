@@ -183,7 +183,7 @@ Valid values are: C<"SAVE">, C<"BUILD">
 
 =head2 VoiceId => Str
 
-The Amazon Parrot voice ID that you want Amazon Lex to use for voice
+The Amazon Polly voice ID that you want Amazon Lex to use for voice
 interactions with the user. The locale configured for the voice must
 match the locale of the bot. For more information, see Voice in the
 I<Amazon Polly Developer Guide>.

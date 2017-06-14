@@ -22,16 +22,17 @@ Paws::Route53::ListTrafficPolicyVersionsResponse
 
 A flag that indicates whether there are more traffic policies to be
 listed. If the response was truncated, you can get the next group of
-C<maxitems> traffic policies by calling C<ListTrafficPolicyVersions>
-again and specifying the value of the C<NextMarker> element in the
-C<marker> parameter.
+traffic policies by submitting another C<ListTrafficPolicyVersions>
+request and specifying the value of C<NextMarker> in the C<marker>
+parameter.
 
 
 
 =head2 B<REQUIRED> MaxItems => Str
 
-The value that you specified for the C<maxitems> parameter in the call
-to C<ListTrafficPolicyVersions> that produced the current response.
+The value that you specified for the C<maxitems> parameter in the
+C<ListTrafficPolicyVersions> request that produced the current
+response.
 
 
 
@@ -45,8 +46,8 @@ policy version that is associated with the specified traffic policy.
 =head2 B<REQUIRED> TrafficPolicyVersionMarker => Str
 
 If C<IsTruncated> is C<true>, the value of
-C<TrafficPolicyVersionMarker> identifies the first traffic policy in
-the next group of C<MaxItems> traffic policies. Call
+C<TrafficPolicyVersionMarker> identifies the first traffic policy that
+Amazon Route 53 will return if you submit another request. Call
 C<ListTrafficPolicyVersions> again and specify the value of
 C<TrafficPolicyVersionMarker> in the C<TrafficPolicyVersionMarker>
 request parameter.

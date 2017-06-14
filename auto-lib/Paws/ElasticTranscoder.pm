@@ -104,18 +104,20 @@ package Paws::ElasticTranscoder;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListJobsByPipeline(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->PageToken) {
-        $result = $self->ListJobsByPipeline(@_, PageToken => $result->NextPageToken);
-        push @{ $result->Jobs }, @{ $result->Jobs };
+      while ($next_result->NextPageToken) {
+        $next_result = $self->ListJobsByPipeline(@_, PageToken => $next_result->NextPageToken);
+        push @{ $result->Jobs }, @{ $next_result->Jobs };
       }
       return $result;
     } else {
-      while ($result->PageToken) {
-        $result = $self->ListJobsByPipeline(@_, PageToken => $result->NextPageToken);
+      while ($result->NextPageToken) {
         $callback->($_ => 'Jobs') foreach (@{ $result->Jobs });
+        $result = $self->ListJobsByPipeline(@_, PageToken => $result->NextPageToken);
       }
+      $callback->($_ => 'Jobs') foreach (@{ $result->Jobs });
     }
 
     return undef
@@ -125,18 +127,20 @@ package Paws::ElasticTranscoder;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListJobsByStatus(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->PageToken) {
-        $result = $self->ListJobsByStatus(@_, PageToken => $result->NextPageToken);
-        push @{ $result->Jobs }, @{ $result->Jobs };
+      while ($next_result->NextPageToken) {
+        $next_result = $self->ListJobsByStatus(@_, PageToken => $next_result->NextPageToken);
+        push @{ $result->Jobs }, @{ $next_result->Jobs };
       }
       return $result;
     } else {
-      while ($result->PageToken) {
-        $result = $self->ListJobsByStatus(@_, PageToken => $result->NextPageToken);
+      while ($result->NextPageToken) {
         $callback->($_ => 'Jobs') foreach (@{ $result->Jobs });
+        $result = $self->ListJobsByStatus(@_, PageToken => $result->NextPageToken);
       }
+      $callback->($_ => 'Jobs') foreach (@{ $result->Jobs });
     }
 
     return undef
@@ -146,18 +150,20 @@ package Paws::ElasticTranscoder;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListPipelines(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->PageToken) {
-        $result = $self->ListPipelines(@_, PageToken => $result->NextPageToken);
-        push @{ $result->Pipelines }, @{ $result->Pipelines };
+      while ($next_result->NextPageToken) {
+        $next_result = $self->ListPipelines(@_, PageToken => $next_result->NextPageToken);
+        push @{ $result->Pipelines }, @{ $next_result->Pipelines };
       }
       return $result;
     } else {
-      while ($result->PageToken) {
-        $result = $self->ListPipelines(@_, PageToken => $result->NextPageToken);
+      while ($result->NextPageToken) {
         $callback->($_ => 'Pipelines') foreach (@{ $result->Pipelines });
+        $result = $self->ListPipelines(@_, PageToken => $result->NextPageToken);
       }
+      $callback->($_ => 'Pipelines') foreach (@{ $result->Pipelines });
     }
 
     return undef
@@ -167,18 +173,20 @@ package Paws::ElasticTranscoder;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListPresets(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->PageToken) {
-        $result = $self->ListPresets(@_, PageToken => $result->NextPageToken);
-        push @{ $result->Presets }, @{ $result->Presets };
+      while ($next_result->NextPageToken) {
+        $next_result = $self->ListPresets(@_, PageToken => $next_result->NextPageToken);
+        push @{ $result->Presets }, @{ $next_result->Presets };
       }
       return $result;
     } else {
-      while ($result->PageToken) {
-        $result = $self->ListPresets(@_, PageToken => $result->NextPageToken);
+      while ($result->NextPageToken) {
         $callback->($_ => 'Presets') foreach (@{ $result->Presets });
+        $result = $self->ListPresets(@_, PageToken => $result->NextPageToken);
       }
+      $callback->($_ => 'Presets') foreach (@{ $result->Presets });
     }
 
     return undef

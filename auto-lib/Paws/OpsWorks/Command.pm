@@ -119,11 +119,31 @@ pending
 
 =item *
 
+C<configure>
+
+=item *
+
 C<deploy>
 
 =item *
 
+C<execute_recipes>
+
+=item *
+
+C<install_dependencies>
+
+=item *
+
+C<restart>
+
+=item *
+
 C<rollback>
+
+=item *
+
+C<setup>
 
 =item *
 
@@ -135,19 +155,7 @@ C<stop>
 
 =item *
 
-C<restart>
-
-=item *
-
 C<undeploy>
-
-=item *
-
-C<update_dependencies>
-
-=item *
-
-C<install_dependencies>
 
 =item *
 
@@ -155,7 +163,7 @@ C<update_custom_cookbooks>
 
 =item *
 
-C<execute_recipes>
+C<update_dependencies>
 
 =back
 

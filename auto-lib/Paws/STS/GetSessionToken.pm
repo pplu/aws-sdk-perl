@@ -57,10 +57,10 @@ C<GAHT12345678>) or an Amazon Resource Name (ARN) for a virtual device
 device for an IAM user by going to the AWS Management Console and
 viewing the user's security credentials.
 
-The regex used to validate this parameter is a string of characters
+The regex used to validated this parameter is a string of characters
 consisting of upper- and lower-case alphanumeric characters with no
 spaces. You can also include underscores or any of the following
-characters: =,.@-
+characters: =,.@:/-
 
 
 

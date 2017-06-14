@@ -49,15 +49,15 @@ Valid values are: C<"SERIALIZABLE">, C<"EVENTUAL">
 
 =head2 B<REQUIRED> DirectoryArn => Str
 
-ARN associated with the Directory where objects reside. For more
-information, see arns.
+The Amazon Resource Name (ARN) that is associated with the Directory
+where objects reside. For more information, see arns.
 
 
 
 =head2 MaxResults => Int
 
-Maximum number of items to be retrieved in a single call. This is an
-approximate number.
+The maximum number of items to be retrieved in a single call. This is
+an approximate number.
 
 
 

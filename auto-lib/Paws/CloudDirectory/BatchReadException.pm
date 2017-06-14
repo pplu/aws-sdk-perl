@@ -32,20 +32,20 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudDirect
 
 =head1 DESCRIPTION
 
-Batch Read Exception structure, which contains exception type and
-message.
+The batch read exception structure, which contains the exception type
+and message.
 
 =head1 ATTRIBUTES
 
 
 =head2 Message => Str
 
-  Exception message associated with the failure.
+  An exception message that is associated with the failure.
 
 
 =head2 Type => Str
 
-  Type of exception, such as C<InvalidArnException>.
+  A type of exception, such as C<InvalidArnException>.
 
 
 

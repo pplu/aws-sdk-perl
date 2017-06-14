@@ -159,18 +159,20 @@ package Paws::Lambda;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListEventSourceMappings(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->Marker) {
-        $result = $self->ListEventSourceMappings(@_, Marker => $result->NextMarker);
-        push @{ $result->EventSourceMappings }, @{ $result->EventSourceMappings };
+      while ($next_result->NextMarker) {
+        $next_result = $self->ListEventSourceMappings(@_, Marker => $next_result->NextMarker);
+        push @{ $result->EventSourceMappings }, @{ $next_result->EventSourceMappings };
       }
       return $result;
     } else {
-      while ($result->Marker) {
-        $result = $self->ListEventSourceMappings(@_, Marker => $result->NextMarker);
+      while ($result->NextMarker) {
         $callback->($_ => 'EventSourceMappings') foreach (@{ $result->EventSourceMappings });
+        $result = $self->ListEventSourceMappings(@_, Marker => $result->NextMarker);
       }
+      $callback->($_ => 'EventSourceMappings') foreach (@{ $result->EventSourceMappings });
     }
 
     return undef
@@ -180,18 +182,20 @@ package Paws::Lambda;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListFunctions(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->Marker) {
-        $result = $self->ListFunctions(@_, Marker => $result->NextMarker);
-        push @{ $result->Functions }, @{ $result->Functions };
+      while ($next_result->NextMarker) {
+        $next_result = $self->ListFunctions(@_, Marker => $next_result->NextMarker);
+        push @{ $result->Functions }, @{ $next_result->Functions };
       }
       return $result;
     } else {
-      while ($result->Marker) {
-        $result = $self->ListFunctions(@_, Marker => $result->NextMarker);
+      while ($result->NextMarker) {
         $callback->($_ => 'Functions') foreach (@{ $result->Functions });
+        $result = $self->ListFunctions(@_, Marker => $result->NextMarker);
       }
+      $callback->($_ => 'Functions') foreach (@{ $result->Functions });
     }
 
     return undef
@@ -688,7 +692,7 @@ This operation requires permission for the
 C<lambda:UpdateEventSourceMapping> action.
 
 
-=head2 UpdateFunctionCode(FunctionName => Str, [Publish => Bool, S3Bucket => Str, S3Key => Str, S3ObjectVersion => Str, ZipFile => Str])
+=head2 UpdateFunctionCode(FunctionName => Str, [DryRun => Bool, Publish => Bool, S3Bucket => Str, S3Key => Str, S3ObjectVersion => Str, ZipFile => Str])
 
 Each argument is described in detail in: L<Paws::Lambda::UpdateFunctionCode>
 

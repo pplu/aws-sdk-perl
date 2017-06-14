@@ -39,7 +39,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DirectoryArn => Str
 
-The ARN of the directory the index and object exist in.
+The Amazon Resource Name (ARN) of the directory the index and object
+exist in.
 
 
 

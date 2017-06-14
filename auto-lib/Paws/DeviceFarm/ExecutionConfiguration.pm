@@ -1,5 +1,7 @@
 package Paws::DeviceFarm::ExecutionConfiguration;
   use Moose;
+  has AccountsCleanup => (is => 'ro', isa => 'Bool', request_name => 'accountsCleanup', traits => ['NameInRequest']);
+  has AppPackagesCleanup => (is => 'ro', isa => 'Bool', request_name => 'appPackagesCleanup', traits => ['NameInRequest']);
   has JobTimeoutMinutes => (is => 'ro', isa => 'Int', request_name => 'jobTimeoutMinutes', traits => ['NameInRequest']);
 1;
 
@@ -20,14 +22,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::DeviceFarm::ExecutionConfiguration object:
 
-  $service_obj->Method(Att1 => { JobTimeoutMinutes => $value, ..., JobTimeoutMinutes => $value  });
+  $service_obj->Method(Att1 => { AccountsCleanup => $value, ..., JobTimeoutMinutes => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::DeviceFarm::ExecutionConfiguration object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->JobTimeoutMinutes
+  $result->Att1->AccountsCleanup
 
 =head1 DESCRIPTION
 
@@ -35,6 +37,18 @@ Represents configuration information about a test run, such as the
 execution timeout (in minutes).
 
 =head1 ATTRIBUTES
+
+
+=head2 AccountsCleanup => Bool
+
+  True if account cleanup is enabled at the beginning of the test;
+otherwise, false.
+
+
+=head2 AppPackagesCleanup => Bool
+
+  True if app package cleanup is enabled at the beginning of the test;
+otherwise, false.
 
 
 =head2 JobTimeoutMinutes => Int

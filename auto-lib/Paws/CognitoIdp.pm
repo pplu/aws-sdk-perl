@@ -144,6 +144,11 @@ package Paws::CognitoIdp;
     my $call_object = $self->new_with_coercions('Paws::CognitoIdp::CreateGroup', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateIdentityProvider {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CognitoIdp::CreateIdentityProvider', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateUserImportJob {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CognitoIdp::CreateUserImportJob', @_);
@@ -159,9 +164,19 @@ package Paws::CognitoIdp;
     my $call_object = $self->new_with_coercions('Paws::CognitoIdp::CreateUserPoolClient', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateUserPoolDomain {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CognitoIdp::CreateUserPoolDomain', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteGroup {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CognitoIdp::DeleteGroup', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteIdentityProvider {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CognitoIdp::DeleteIdentityProvider', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteUser {
@@ -184,6 +199,16 @@ package Paws::CognitoIdp;
     my $call_object = $self->new_with_coercions('Paws::CognitoIdp::DeleteUserPoolClient', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteUserPoolDomain {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CognitoIdp::DeleteUserPoolDomain', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeIdentityProvider {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CognitoIdp::DescribeIdentityProvider', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeUserImportJob {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CognitoIdp::DescribeUserImportJob', @_);
@@ -197,6 +222,11 @@ package Paws::CognitoIdp;
   sub DescribeUserPoolClient {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CognitoIdp::DescribeUserPoolClient', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeUserPoolDomain {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CognitoIdp::DescribeUserPoolDomain', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ForgetDevice {
@@ -222,6 +252,11 @@ package Paws::CognitoIdp;
   sub GetGroup {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CognitoIdp::GetGroup', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetIdentityProviderByIdentifier {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CognitoIdp::GetIdentityProviderByIdentifier', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetUser {
@@ -252,6 +287,11 @@ package Paws::CognitoIdp;
   sub ListGroups {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CognitoIdp::ListGroups', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListIdentityProviders {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CognitoIdp::ListIdentityProviders', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListUserImportJobs {
@@ -319,6 +359,11 @@ package Paws::CognitoIdp;
     my $call_object = $self->new_with_coercions('Paws::CognitoIdp::UpdateGroup', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpdateIdentityProvider {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CognitoIdp::UpdateIdentityProvider', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateUserAttributes {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CognitoIdp::UpdateUserAttributes', @_);
@@ -342,7 +387,7 @@ package Paws::CognitoIdp;
   
 
 
-  sub operations { qw/AddCustomAttributes AdminAddUserToGroup AdminConfirmSignUp AdminCreateUser AdminDeleteUser AdminDeleteUserAttributes AdminDisableUser AdminEnableUser AdminForgetDevice AdminGetDevice AdminGetUser AdminInitiateAuth AdminListDevices AdminListGroupsForUser AdminRemoveUserFromGroup AdminResetUserPassword AdminRespondToAuthChallenge AdminSetUserSettings AdminUpdateDeviceStatus AdminUpdateUserAttributes AdminUserGlobalSignOut ChangePassword ConfirmDevice ConfirmForgotPassword ConfirmSignUp CreateGroup CreateUserImportJob CreateUserPool CreateUserPoolClient DeleteGroup DeleteUser DeleteUserAttributes DeleteUserPool DeleteUserPoolClient DescribeUserImportJob DescribeUserPool DescribeUserPoolClient ForgetDevice ForgotPassword GetCSVHeader GetDevice GetGroup GetUser GetUserAttributeVerificationCode GlobalSignOut InitiateAuth ListDevices ListGroups ListUserImportJobs ListUserPoolClients ListUserPools ListUsers ListUsersInGroup ResendConfirmationCode RespondToAuthChallenge SetUserSettings SignUp StartUserImportJob StopUserImportJob UpdateDeviceStatus UpdateGroup UpdateUserAttributes UpdateUserPool UpdateUserPoolClient VerifyUserAttribute / }
+  sub operations { qw/AddCustomAttributes AdminAddUserToGroup AdminConfirmSignUp AdminCreateUser AdminDeleteUser AdminDeleteUserAttributes AdminDisableUser AdminEnableUser AdminForgetDevice AdminGetDevice AdminGetUser AdminInitiateAuth AdminListDevices AdminListGroupsForUser AdminRemoveUserFromGroup AdminResetUserPassword AdminRespondToAuthChallenge AdminSetUserSettings AdminUpdateDeviceStatus AdminUpdateUserAttributes AdminUserGlobalSignOut ChangePassword ConfirmDevice ConfirmForgotPassword ConfirmSignUp CreateGroup CreateIdentityProvider CreateUserImportJob CreateUserPool CreateUserPoolClient CreateUserPoolDomain DeleteGroup DeleteIdentityProvider DeleteUser DeleteUserAttributes DeleteUserPool DeleteUserPoolClient DeleteUserPoolDomain DescribeIdentityProvider DescribeUserImportJob DescribeUserPool DescribeUserPoolClient DescribeUserPoolDomain ForgetDevice ForgotPassword GetCSVHeader GetDevice GetGroup GetIdentityProviderByIdentifier GetUser GetUserAttributeVerificationCode GlobalSignOut InitiateAuth ListDevices ListGroups ListIdentityProviders ListUserImportJobs ListUserPoolClients ListUserPools ListUsers ListUsersInGroup ResendConfirmationCode RespondToAuthChallenge SetUserSettings SignUp StartUserImportJob StopUserImportJob UpdateDeviceStatus UpdateGroup UpdateIdentityProvider UpdateUserAttributes UpdateUserPool UpdateUserPoolClient VerifyUserAttribute / }
 
 1;
 
@@ -370,12 +415,12 @@ Paws::CognitoIdp - Perl Interface to AWS Amazon Cognito Identity Provider
 
 =head1 DESCRIPTION
 
-Using the Amazon Cognito Your User Pools API, you can create a user
-pool to manage directories and users. You can authenticate a user to
-obtain tokens related to user identity and access policies.
+Using the Amazon Cognito User Pools API, you can create a user pool to
+manage directories and users. You can authenticate a user to obtain
+tokens related to user identity and access policies.
 
 This API reference provides information about user pools in Amazon
-Cognito Your User Pools.
+Cognito User Pools.
 
 For more information, see the Amazon Cognito Documentation.
 
@@ -616,6 +661,12 @@ Returns: a L<Paws::CognitoIdp::AdminUpdateUserAttributesResponse> instance
   Updates the specified user's attributes, including developer
 attributes, as an administrator. Works on any user.
 
+For custom attributes, you must prepend the C<custom:> prefix to the
+attribute name.
+
+In addition to updating user attributes, this API can also be used to
+mark phone and email as verified.
+
 Requires developer credentials.
 
 
@@ -630,7 +681,7 @@ Returns: a L<Paws::CognitoIdp::AdminUserGlobalSignOutResponse> instance
 Requires developer credentials.
 
 
-=head2 ChangePassword(PreviousPassword => Str, ProposedPassword => Str, [AccessToken => Str])
+=head2 ChangePassword(AccessToken => Str, PreviousPassword => Str, ProposedPassword => Str)
 
 Each argument is described in detail in: L<Paws::CognitoIdp::ChangePassword>
 
@@ -645,7 +696,7 @@ Each argument is described in detail in: L<Paws::CognitoIdp::ConfirmDevice>
 
 Returns: a L<Paws::CognitoIdp::ConfirmDeviceResponse> instance
 
-  Confirms tracking of the device. This API call is the call that beings
+  Confirms tracking of the device. This API call is the call that begins
 device tracking.
 
 
@@ -655,8 +706,8 @@ Each argument is described in detail in: L<Paws::CognitoIdp::ConfirmForgotPasswo
 
 Returns: a L<Paws::CognitoIdp::ConfirmForgotPasswordResponse> instance
 
-  Allows a user to enter a code provided when they reset their password
-to update their password.
+  Allows a user to enter a confirmation code to reset a forgotten
+password.
 
 
 =head2 ConfirmSignUp(ClientId => Str, ConfirmationCode => Str, Username => Str, [ForceAliasCreation => Bool, SecretHash => Str])
@@ -680,6 +731,15 @@ Returns: a L<Paws::CognitoIdp::CreateGroupResponse> instance
 Requires developer credentials.
 
 
+=head2 CreateIdentityProvider(ProviderDetails => L<Paws::CognitoIdp::ProviderDetailsType>, ProviderName => Str, ProviderType => Str, UserPoolId => Str, [AttributeMapping => L<Paws::CognitoIdp::AttributeMappingType>, IdpIdentifiers => ArrayRef[Str|Undef]])
+
+Each argument is described in detail in: L<Paws::CognitoIdp::CreateIdentityProvider>
+
+Returns: a L<Paws::CognitoIdp::CreateIdentityProviderResponse> instance
+
+  Creates an identity provider for a user pool.
+
+
 =head2 CreateUserImportJob(CloudWatchLogsRoleArn => Str, JobName => Str, UserPoolId => Str)
 
 Each argument is described in detail in: L<Paws::CognitoIdp::CreateUserImportJob>
@@ -699,13 +759,22 @@ Returns: a L<Paws::CognitoIdp::CreateUserPoolResponse> instance
 the pool.
 
 
-=head2 CreateUserPoolClient(ClientName => Str, UserPoolId => Str, [ExplicitAuthFlows => ArrayRef[Str|Undef], GenerateSecret => Bool, ReadAttributes => ArrayRef[Str|Undef], RefreshTokenValidity => Int, WriteAttributes => ArrayRef[Str|Undef]])
+=head2 CreateUserPoolClient(ClientName => Str, UserPoolId => Str, [AllowedOAuthFlows => ArrayRef[Str|Undef], AllowedOAuthFlowsUserPoolClient => Bool, AllowedOAuthScopes => ArrayRef[Str|Undef], CallbackURLs => ArrayRef[Str|Undef], DefaultRedirectURI => Str, ExplicitAuthFlows => ArrayRef[Str|Undef], GenerateSecret => Bool, LogoutURLs => ArrayRef[Str|Undef], ReadAttributes => ArrayRef[Str|Undef], RefreshTokenValidity => Int, SupportedIdentityProviders => ArrayRef[Str|Undef], WriteAttributes => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::CognitoIdp::CreateUserPoolClient>
 
 Returns: a L<Paws::CognitoIdp::CreateUserPoolClientResponse> instance
 
   Creates the user pool client.
+
+
+=head2 CreateUserPoolDomain(Domain => Str, UserPoolId => Str)
+
+Each argument is described in detail in: L<Paws::CognitoIdp::CreateUserPoolDomain>
+
+Returns: a L<Paws::CognitoIdp::CreateUserPoolDomainResponse> instance
+
+  Creates a new domain for a user pool.
 
 
 =head2 DeleteGroup(GroupName => Str, UserPoolId => Str)
@@ -719,7 +788,16 @@ Returns: nothing
 Requires developer credentials.
 
 
-=head2 DeleteUser([AccessToken => Str])
+=head2 DeleteIdentityProvider(ProviderName => Str, UserPoolId => Str)
+
+Each argument is described in detail in: L<Paws::CognitoIdp::DeleteIdentityProvider>
+
+Returns: nothing
+
+  Deletes an identity provider for a user pool.
+
+
+=head2 DeleteUser(AccessToken => Str)
 
 Each argument is described in detail in: L<Paws::CognitoIdp::DeleteUser>
 
@@ -728,7 +806,7 @@ Returns: nothing
   Allows a user to delete one's self.
 
 
-=head2 DeleteUserAttributes(UserAttributeNames => ArrayRef[Str|Undef], [AccessToken => Str])
+=head2 DeleteUserAttributes(AccessToken => Str, UserAttributeNames => ArrayRef[Str|Undef])
 
 Each argument is described in detail in: L<Paws::CognitoIdp::DeleteUserAttributes>
 
@@ -753,6 +831,24 @@ Each argument is described in detail in: L<Paws::CognitoIdp::DeleteUserPoolClien
 Returns: nothing
 
   Allows the developer to delete the user pool client.
+
+
+=head2 DeleteUserPoolDomain(Domain => Str, UserPoolId => Str)
+
+Each argument is described in detail in: L<Paws::CognitoIdp::DeleteUserPoolDomain>
+
+Returns: a L<Paws::CognitoIdp::DeleteUserPoolDomainResponse> instance
+
+  Deletes a domain for a user pool.
+
+
+=head2 DescribeIdentityProvider(ProviderName => Str, UserPoolId => Str)
+
+Each argument is described in detail in: L<Paws::CognitoIdp::DescribeIdentityProvider>
+
+Returns: a L<Paws::CognitoIdp::DescribeIdentityProviderResponse> instance
+
+  Gets information about a specific identity provider.
 
 
 =head2 DescribeUserImportJob(JobId => Str, UserPoolId => Str)
@@ -784,6 +880,15 @@ Returns: a L<Paws::CognitoIdp::DescribeUserPoolClientResponse> instance
 of the specified user pool client.
 
 
+=head2 DescribeUserPoolDomain(Domain => Str)
+
+Each argument is described in detail in: L<Paws::CognitoIdp::DescribeUserPoolDomain>
+
+Returns: a L<Paws::CognitoIdp::DescribeUserPoolDomainResponse> instance
+
+  Gets information about a domain.
+
+
 =head2 ForgetDevice(DeviceKey => Str, [AccessToken => Str])
 
 Each argument is described in detail in: L<Paws::CognitoIdp::ForgetDevice>
@@ -799,7 +904,15 @@ Each argument is described in detail in: L<Paws::CognitoIdp::ForgotPassword>
 
 Returns: a L<Paws::CognitoIdp::ForgotPasswordResponse> instance
 
-  Retrieves the password for the specified client ID or username.
+  Calling this API causes a message to be sent to the end user with a
+confirmation code that is required to change the user's password. For
+the C<Username> parameter, you can use the username or user alias. If a
+verified phone number exists for the user, the confirmation code is
+sent to the phone number. Otherwise, if a verified email exists, the
+confirmation code is sent to the email. If neither a verified phone
+number nor a verified email exists, C<InvalidParameterException> is
+thrown. To use the confirmation code for resetting the password, call
+ConfirmForgotPassword.
 
 
 =head2 GetCSVHeader(UserPoolId => Str)
@@ -832,7 +945,16 @@ Returns: a L<Paws::CognitoIdp::GetGroupResponse> instance
 Requires developer credentials.
 
 
-=head2 GetUser([AccessToken => Str])
+=head2 GetIdentityProviderByIdentifier(IdpIdentifier => Str, UserPoolId => Str)
+
+Each argument is described in detail in: L<Paws::CognitoIdp::GetIdentityProviderByIdentifier>
+
+Returns: a L<Paws::CognitoIdp::GetIdentityProviderByIdentifierResponse> instance
+
+  Gets the specified identity provider.
+
+
+=head2 GetUser(AccessToken => Str)
 
 Each argument is described in detail in: L<Paws::CognitoIdp::GetUser>
 
@@ -841,7 +963,7 @@ Returns: a L<Paws::CognitoIdp::GetUserResponse> instance
   Gets the user attributes and metadata for a user.
 
 
-=head2 GetUserAttributeVerificationCode(AttributeName => Str, [AccessToken => Str])
+=head2 GetUserAttributeVerificationCode(AccessToken => Str, AttributeName => Str)
 
 Each argument is described in detail in: L<Paws::CognitoIdp::GetUserAttributeVerificationCode>
 
@@ -851,7 +973,7 @@ Returns: a L<Paws::CognitoIdp::GetUserAttributeVerificationCodeResponse> instanc
 name.
 
 
-=head2 GlobalSignOut([AccessToken => Str])
+=head2 GlobalSignOut(AccessToken => Str)
 
 Each argument is described in detail in: L<Paws::CognitoIdp::GlobalSignOut>
 
@@ -887,6 +1009,15 @@ Returns: a L<Paws::CognitoIdp::ListGroupsResponse> instance
   Lists the groups associated with a user pool.
 
 Requires developer credentials.
+
+
+=head2 ListIdentityProviders(UserPoolId => Str, [MaxResults => Int, NextToken => Str])
+
+Each argument is described in detail in: L<Paws::CognitoIdp::ListIdentityProviders>
+
+Returns: a L<Paws::CognitoIdp::ListIdentityProvidersResponse> instance
+
+  Lists information about all identity providers for a user pool.
 
 
 =head2 ListUserImportJobs(MaxResults => Int, UserPoolId => Str, [PaginationToken => Str])
@@ -1015,7 +1146,16 @@ Returns: a L<Paws::CognitoIdp::UpdateGroupResponse> instance
 Requires developer credentials.
 
 
-=head2 UpdateUserAttributes(UserAttributes => ArrayRef[L<Paws::CognitoIdp::AttributeType>], [AccessToken => Str])
+=head2 UpdateIdentityProvider(ProviderName => Str, UserPoolId => Str, [AttributeMapping => L<Paws::CognitoIdp::AttributeMappingType>, IdpIdentifiers => ArrayRef[Str|Undef], ProviderDetails => L<Paws::CognitoIdp::ProviderDetailsType>])
+
+Each argument is described in detail in: L<Paws::CognitoIdp::UpdateIdentityProvider>
+
+Returns: a L<Paws::CognitoIdp::UpdateIdentityProviderResponse> instance
+
+  Updates identity provider information for a user pool.
+
+
+=head2 UpdateUserAttributes(AccessToken => Str, UserAttributes => ArrayRef[L<Paws::CognitoIdp::AttributeType>])
 
 Each argument is described in detail in: L<Paws::CognitoIdp::UpdateUserAttributes>
 
@@ -1033,7 +1173,7 @@ Returns: a L<Paws::CognitoIdp::UpdateUserPoolResponse> instance
   Updates the specified user pool with the specified attributes.
 
 
-=head2 UpdateUserPoolClient(ClientId => Str, UserPoolId => Str, [ClientName => Str, ExplicitAuthFlows => ArrayRef[Str|Undef], ReadAttributes => ArrayRef[Str|Undef], RefreshTokenValidity => Int, WriteAttributes => ArrayRef[Str|Undef]])
+=head2 UpdateUserPoolClient(ClientId => Str, UserPoolId => Str, [AllowedOAuthFlows => ArrayRef[Str|Undef], AllowedOAuthFlowsUserPoolClient => Bool, AllowedOAuthScopes => ArrayRef[Str|Undef], CallbackURLs => ArrayRef[Str|Undef], ClientName => Str, DefaultRedirectURI => Str, ExplicitAuthFlows => ArrayRef[Str|Undef], LogoutURLs => ArrayRef[Str|Undef], ReadAttributes => ArrayRef[Str|Undef], RefreshTokenValidity => Int, SupportedIdentityProviders => ArrayRef[Str|Undef], WriteAttributes => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::CognitoIdp::UpdateUserPoolClient>
 
@@ -1043,7 +1183,7 @@ Returns: a L<Paws::CognitoIdp::UpdateUserPoolClientResponse> instance
 password policy.
 
 
-=head2 VerifyUserAttribute(AttributeName => Str, Code => Str, [AccessToken => Str])
+=head2 VerifyUserAttribute(AccessToken => Str, AttributeName => Str, Code => Str)
 
 Each argument is described in detail in: L<Paws::CognitoIdp::VerifyUserAttribute>
 

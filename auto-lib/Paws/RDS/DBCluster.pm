@@ -5,6 +5,7 @@ package Paws::RDS::DBCluster;
   has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'AvailabilityZone', traits => ['NameInRequest']);
   has BackupRetentionPeriod => (is => 'ro', isa => 'Int');
   has CharacterSetName => (is => 'ro', isa => 'Str');
+  has CloneGroupId => (is => 'ro', isa => 'Str');
   has ClusterCreateTime => (is => 'ro', isa => 'Str');
   has DatabaseName => (is => 'ro', isa => 'Str');
   has DBClusterArn => (is => 'ro', isa => 'Str');
@@ -19,6 +20,7 @@ package Paws::RDS::DBCluster;
   has Engine => (is => 'ro', isa => 'Str');
   has EngineVersion => (is => 'ro', isa => 'Str');
   has HostedZoneId => (is => 'ro', isa => 'Str');
+  has IAMDatabaseAuthenticationEnabled => (is => 'ro', isa => 'Bool');
   has KmsKeyId => (is => 'ro', isa => 'Str');
   has LatestRestorableTime => (is => 'ro', isa => 'Str');
   has MasterUsername => (is => 'ro', isa => 'Str');
@@ -102,7 +104,10 @@ action.
 
 =head2 AllocatedStorage => Int
 
-  Specifies the allocated storage size in gigabytes (GB).
+  For all database engines except Amazon Aurora, C<AllocatedStorage>
+specifies the allocated storage size in gigabytes (GB). For Aurora,
+C<AllocatedStorage> always returns 1, because Aurora DB cluster storage
+size is not fixed, but instead automatically adjusts as needed.
 
 
 =head2 AssociatedRoles => ArrayRef[L<Paws::RDS::DBClusterRole>]
@@ -129,6 +134,11 @@ retained.
 
   If present, specifies the name of the character set that this cluster
 is associated with.
+
+
+=head2 CloneGroupId => Str
+
+  Identifies the clone group to which the DB cluster is associated.
 
 
 =head2 ClusterCreateTime => Str
@@ -214,6 +224,12 @@ cluster.
 zone.
 
 
+=head2 IAMDatabaseAuthenticationEnabled => Bool
+
+  True if mapping of AWS Identity and Access Management (IAM) accounts to
+database accounts is enabled; otherwise false.
+
+
 =head2 KmsKeyId => Str
 
   If C<StorageEncrypted> is true, the KMS key identifier for the
@@ -272,7 +288,7 @@ your read workload across multiple Aurora Replicas in your DB cluster.
 If a failover occurs, and the Aurora Replica that you are connected to
 is promoted to be the primary instance, your connection will be
 dropped. To continue sending your read workload to other Aurora
-Replicas in the cluster, you can then recoonect to the reader endpoint.
+Replicas in the cluster, you can then reconnect to the reader endpoint.
 
 
 =head2 ReadReplicaIdentifiers => ArrayRef[Str|Undef]

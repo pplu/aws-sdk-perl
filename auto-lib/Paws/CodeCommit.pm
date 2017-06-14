@@ -105,18 +105,20 @@ package Paws::CodeCommit;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListBranches(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->nextToken) {
-        $result = $self->ListBranches(@_, nextToken => $result->nextToken);
-        push @{ $result->branches }, @{ $result->branches };
+      while ($next_result->nextToken) {
+        $next_result = $self->ListBranches(@_, nextToken => $next_result->nextToken);
+        push @{ $result->branches }, @{ $next_result->branches };
       }
       return $result;
     } else {
       while ($result->nextToken) {
-        $result = $self->ListBranches(@_, nextToken => $result->nextToken);
         $callback->($_ => 'branches') foreach (@{ $result->branches });
+        $result = $self->ListBranches(@_, nextToken => $result->nextToken);
       }
+      $callback->($_ => 'branches') foreach (@{ $result->branches });
     }
 
     return undef
@@ -126,18 +128,20 @@ package Paws::CodeCommit;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListRepositories(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->nextToken) {
-        $result = $self->ListRepositories(@_, nextToken => $result->nextToken);
-        push @{ $result->repositories }, @{ $result->repositories };
+      while ($next_result->nextToken) {
+        $next_result = $self->ListRepositories(@_, nextToken => $next_result->nextToken);
+        push @{ $result->repositories }, @{ $next_result->repositories };
       }
       return $result;
     } else {
       while ($result->nextToken) {
-        $result = $self->ListRepositories(@_, nextToken => $result->nextToken);
         $callback->($_ => 'repositories') foreach (@{ $result->repositories });
+        $result = $self->ListRepositories(@_, nextToken => $result->nextToken);
       }
+      $callback->($_ => 'repositories') foreach (@{ $result->repositories });
     }
 
     return undef

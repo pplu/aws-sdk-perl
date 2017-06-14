@@ -46,8 +46,8 @@ The ARN of the directory to which the parent path applies.
 
 =head2 MaxResults => Int
 
-Maximum number of items to be retrieved in a single call. This is an
-approximate number.
+The maximum number of items to be retrieved in a single call. This is
+an approximate number.
 
 
 
@@ -59,7 +59,7 @@ The pagination token.
 
 =head2 B<REQUIRED> ObjectReference => L<Paws::CloudDirectory::ObjectReference>
 
-Reference that identifies the object whose parent paths are listed.
+The reference that identifies the object whose parent paths are listed.
 
 
 

@@ -160,18 +160,20 @@ package Paws::CloudWatchLogs;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeDestinations(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->nextToken) {
-        $result = $self->DescribeDestinations(@_, nextToken => $result->nextToken);
-        push @{ $result->destinations }, @{ $result->destinations };
+      while ($next_result->nextToken) {
+        $next_result = $self->DescribeDestinations(@_, nextToken => $next_result->nextToken);
+        push @{ $result->destinations }, @{ $next_result->destinations };
       }
       return $result;
     } else {
       while ($result->nextToken) {
-        $result = $self->DescribeDestinations(@_, nextToken => $result->nextToken);
         $callback->($_ => 'destinations') foreach (@{ $result->destinations });
+        $result = $self->DescribeDestinations(@_, nextToken => $result->nextToken);
       }
+      $callback->($_ => 'destinations') foreach (@{ $result->destinations });
     }
 
     return undef
@@ -181,18 +183,20 @@ package Paws::CloudWatchLogs;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeLogGroups(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->nextToken) {
-        $result = $self->DescribeLogGroups(@_, nextToken => $result->nextToken);
-        push @{ $result->logGroups }, @{ $result->logGroups };
+      while ($next_result->nextToken) {
+        $next_result = $self->DescribeLogGroups(@_, nextToken => $next_result->nextToken);
+        push @{ $result->logGroups }, @{ $next_result->logGroups };
       }
       return $result;
     } else {
       while ($result->nextToken) {
-        $result = $self->DescribeLogGroups(@_, nextToken => $result->nextToken);
         $callback->($_ => 'logGroups') foreach (@{ $result->logGroups });
+        $result = $self->DescribeLogGroups(@_, nextToken => $result->nextToken);
       }
+      $callback->($_ => 'logGroups') foreach (@{ $result->logGroups });
     }
 
     return undef
@@ -202,18 +206,20 @@ package Paws::CloudWatchLogs;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeLogStreams(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->nextToken) {
-        $result = $self->DescribeLogStreams(@_, nextToken => $result->nextToken);
-        push @{ $result->logStreams }, @{ $result->logStreams };
+      while ($next_result->nextToken) {
+        $next_result = $self->DescribeLogStreams(@_, nextToken => $next_result->nextToken);
+        push @{ $result->logStreams }, @{ $next_result->logStreams };
       }
       return $result;
     } else {
       while ($result->nextToken) {
-        $result = $self->DescribeLogStreams(@_, nextToken => $result->nextToken);
         $callback->($_ => 'logStreams') foreach (@{ $result->logStreams });
+        $result = $self->DescribeLogStreams(@_, nextToken => $result->nextToken);
       }
+      $callback->($_ => 'logStreams') foreach (@{ $result->logStreams });
     }
 
     return undef
@@ -223,18 +229,20 @@ package Paws::CloudWatchLogs;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeMetricFilters(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->nextToken) {
-        $result = $self->DescribeMetricFilters(@_, nextToken => $result->nextToken);
-        push @{ $result->metricFilters }, @{ $result->metricFilters };
+      while ($next_result->nextToken) {
+        $next_result = $self->DescribeMetricFilters(@_, nextToken => $next_result->nextToken);
+        push @{ $result->metricFilters }, @{ $next_result->metricFilters };
       }
       return $result;
     } else {
       while ($result->nextToken) {
-        $result = $self->DescribeMetricFilters(@_, nextToken => $result->nextToken);
         $callback->($_ => 'metricFilters') foreach (@{ $result->metricFilters });
+        $result = $self->DescribeMetricFilters(@_, nextToken => $result->nextToken);
       }
+      $callback->($_ => 'metricFilters') foreach (@{ $result->metricFilters });
     }
 
     return undef
@@ -244,18 +252,20 @@ package Paws::CloudWatchLogs;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeSubscriptionFilters(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->nextToken) {
-        $result = $self->DescribeSubscriptionFilters(@_, nextToken => $result->nextToken);
-        push @{ $result->subscriptionFilters }, @{ $result->subscriptionFilters };
+      while ($next_result->nextToken) {
+        $next_result = $self->DescribeSubscriptionFilters(@_, nextToken => $next_result->nextToken);
+        push @{ $result->subscriptionFilters }, @{ $next_result->subscriptionFilters };
       }
       return $result;
     } else {
       while ($result->nextToken) {
-        $result = $self->DescribeSubscriptionFilters(@_, nextToken => $result->nextToken);
         $callback->($_ => 'subscriptionFilters') foreach (@{ $result->subscriptionFilters });
+        $result = $self->DescribeSubscriptionFilters(@_, nextToken => $result->nextToken);
       }
+      $callback->($_ => 'subscriptionFilters') foreach (@{ $result->subscriptionFilters });
     }
 
     return undef
@@ -265,20 +275,23 @@ package Paws::CloudWatchLogs;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->FilterLogEvents(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->nextToken) {
-        $result = $self->FilterLogEvents(@_, nextToken => $result->nextToken);
-        push @{ $result->events }, @{ $result->events };
-        push @{ $result->searchedLogStreams }, @{ $result->searchedLogStreams };
+      while ($next_result->nextToken) {
+        $next_result = $self->FilterLogEvents(@_, nextToken => $next_result->nextToken);
+        push @{ $result->events }, @{ $next_result->events };
+        push @{ $result->searchedLogStreams }, @{ $next_result->searchedLogStreams };
       }
       return $result;
     } else {
       while ($result->nextToken) {
-        $result = $self->FilterLogEvents(@_, nextToken => $result->nextToken);
         $callback->($_ => 'events') foreach (@{ $result->events });
         $callback->($_ => 'searchedLogStreams') foreach (@{ $result->searchedLogStreams });
+        $result = $self->FilterLogEvents(@_, nextToken => $result->nextToken);
       }
+      $callback->($_ => 'events') foreach (@{ $result->events });
+      $callback->($_ => 'searchedLogStreams') foreach (@{ $result->searchedLogStreams });
     }
 
     return undef
@@ -771,6 +784,9 @@ subscription filter, for same-account delivery.
 =back
 
 There can only be one subscription filter associated with a log group.
+If you are updating an existing filter, you must specify the correct
+name in C<filterName>. Otherwise, the call will fail because you cannot
+associate a second filter with a log group.
 
 
 =head2 TagLogGroup(LogGroupName => Str, Tags => L<Paws::CloudWatchLogs::Tags>)

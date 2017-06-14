@@ -3,6 +3,7 @@ package Paws::Pinpoint::Message;
   has Action => (is => 'ro', isa => 'Str');
   has Body => (is => 'ro', isa => 'Str');
   has ImageIconUrl => (is => 'ro', isa => 'Str');
+  has ImageSmallIconUrl => (is => 'ro', isa => 'Str');
   has ImageUrl => (is => 'ro', isa => 'Str');
   has JsonBody => (is => 'ro', isa => 'Str');
   has MediaUrl => (is => 'ro', isa => 'Str');
@@ -47,12 +48,12 @@ This class has no description
 =head2 Action => Str
 
   The action that occurs if the user taps a push notification delivered
-by the campaign: OPEN_APP E<ndash> Your app launches, or it becomes the
+by the campaign: OPEN_APP - Your app launches, or it becomes the
 foreground app if it has been sent to the background. This is the
-default action. DEEP_LINK E<ndash> Uses deep linking features in iOS
-and Android to open your app and display a designated user interface
-within the app. URL E<ndash> The default mobile browser on the user's
-device launches and opens a web page at the URL you specify.
+default action. DEEP_LINK - Uses deep linking features in iOS and
+Android to open your app and display a designated user interface within
+the app. URL - The default mobile browser on the user's device launches
+and opens a web page at the URL you specify.
 
 
 =head2 Body => Str
@@ -64,6 +65,12 @@ device launches and opens a web page at the URL you specify.
 
   The URL that points to the icon image for the push notification icon,
 for example, the app icon.
+
+
+=head2 ImageSmallIconUrl => Str
+
+  The URL that points to the small icon image for the push notification
+icon, for example, the app icon.
 
 
 =head2 ImageUrl => Str

@@ -1,0 +1,1 @@
+{"request":{"call":"CreateLogStream","service":"logs","params":{"LogStreamName":"LS1","LogGroupName":"LGNAME1"}},"response":{"headers":{"date":"Fri, 09 Jun 2017 20:54:22 GMT","x-amzn-requestid":"000000000000000000000000000000000000","content-type":"application/x-amz-json-1.1","content-length":"0"},"status":"200","content":""}}

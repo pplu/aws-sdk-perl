@@ -3,13 +3,16 @@ package Paws::DMS::CreateEndpoint;
   use Moose;
   has CertificateArn => (is => 'ro', isa => 'Str');
   has DatabaseName => (is => 'ro', isa => 'Str');
+  has DynamoDbSettings => (is => 'ro', isa => 'Paws::DMS::DynamoDbSettings');
   has EndpointIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has EndpointType => (is => 'ro', isa => 'Str', required => 1);
   has EngineName => (is => 'ro', isa => 'Str', required => 1);
   has ExtraConnectionAttributes => (is => 'ro', isa => 'Str');
   has KmsKeyId => (is => 'ro', isa => 'Str');
+  has MongoDbSettings => (is => 'ro', isa => 'Paws::DMS::MongoDbSettings');
   has Password => (is => 'ro', isa => 'Str');
   has Port => (is => 'ro', isa => 'Int');
+  has S3Settings => (is => 'ro', isa => 'Paws::DMS::S3Settings');
   has ServerName => (is => 'ro', isa => 'Str');
   has SslMode => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::DMS::Tag]');
@@ -57,6 +60,15 @@ The name of the endpoint database.
 
 
 
+=head2 DynamoDbSettings => L<Paws::DMS::DynamoDbSettings>
+
+Settings in JSON format for the target Amazon DynamoDB endpoint. For
+more information about the available settings, see the B<Using Object
+Mapping to Migrate Data to DynamoDB> section at Using an Amazon
+DynamoDB Database as a Target for AWS Database Migration Service.
+
+
+
 =head2 B<REQUIRED> EndpointIdentifier => Str
 
 The database endpoint identifier. Identifiers must begin with a letter;
@@ -73,8 +85,9 @@ Valid values are: C<"source">, C<"target">
 
 =head2 B<REQUIRED> EngineName => Str
 
-The type of engine for the endpoint. Valid values include MYSQL,
-ORACLE, POSTGRES, MARIADB, AURORA, REDSHIFT, SYBASE, and SQLSERVER.
+The type of engine for the endpoint. Valid values, depending on the
+EndPointType, include MYSQL, ORACLE, POSTGRES, MARIADB, AURORA,
+REDSHIFT, S3, SYBASE, DYNAMODB, MONGODB, and SQLSERVER.
 
 
 
@@ -94,6 +107,16 @@ different default encryption key for each AWS region.
 
 
 
+=head2 MongoDbSettings => L<Paws::DMS::MongoDbSettings>
+
+Settings in JSON format for the source MongoDB endpoint. For more
+information about the available settings, see the B<Configuration
+Properties When Using MongoDB as a Source for AWS Database Migration
+Service> section at Using Amazon S3 as a Target for AWS Database
+Migration Service.
+
+
+
 =head2 Password => Str
 
 The password to be used to login to the endpoint database.
@@ -103,6 +126,15 @@ The password to be used to login to the endpoint database.
 =head2 Port => Int
 
 The port used by the endpoint database.
+
+
+
+=head2 S3Settings => L<Paws::DMS::S3Settings>
+
+Settings in JSON format for the target S3 endpoint. For more
+information about the available settings, see the B<Extra Connection
+Attributes> section at Using Amazon S3 as a Target for AWS Database
+Migration Service.
 
 
 

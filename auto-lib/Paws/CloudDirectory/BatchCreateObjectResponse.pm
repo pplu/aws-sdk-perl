@@ -38,7 +38,7 @@ Represents the output of a C<CreateObject> response operation.
 
 =head2 ObjectIdentifier => Str
 
-  ID associated with the object.
+  The ID that is associated with the object.
 
 
 

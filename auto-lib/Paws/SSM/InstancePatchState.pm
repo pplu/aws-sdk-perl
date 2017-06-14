@@ -83,14 +83,13 @@ information was collected for.
 =head2 MissingCount => Int
 
   The number of patches from the patch baseline that are applicable for
-the instance but arenE<rsquo>t currently installed.
+the instance but aren't currently installed.
 
 
 =head2 NotApplicableCount => Int
 
-  The number of patches from the patch baseline that arenE<rsquo>t
-applicable for the instance and hence arenE<rsquo>t installed on the
-instance.
+  The number of patches from the patch baseline that aren't applicable
+for the instance and hence aren't installed on the instance.
 
 
 =head2 B<REQUIRED> Operation => Str

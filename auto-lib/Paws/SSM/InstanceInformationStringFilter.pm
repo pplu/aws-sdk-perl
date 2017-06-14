@@ -42,8 +42,8 @@ instances.
 
   The filter key name to describe your instances. For example:
 
-"InstanceIds"|"AgentVersion"|"PingStatus"|"PlatformTypes"|"ActivationIds"|"IamRole"|"ResourceType"|E<rdquo>AssociationStatusE<rdquo>|E<rdquo>Tag
-KeyE<rdquo>
+"InstanceIds"|"AgentVersion"|"PingStatus"|"PlatformTypes"|"ActivationIds"|"IamRole"|"ResourceType"|"AssociationStatus"|"Tag
+Key"
 
 
 =head2 B<REQUIRED> Values => ArrayRef[Str|Undef]

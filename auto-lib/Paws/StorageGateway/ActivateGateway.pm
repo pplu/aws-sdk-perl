@@ -60,24 +60,26 @@ The name you configured for your gateway.
 
 =head2 B<REQUIRED> GatewayRegion => Str
 
-A value that indicates the region where you want to store the snapshot
-backups. The gateway region specified must be the same region as the
-region in your C<Host> header in the request. For more information
-about available regions and endpoints for AWS Storage Gateway, see
-Regions and Endpoints in the I<Amazon Web Services Glossary>.
+A value that indicates the region where you want to store your data.
+The gateway region specified must be the same region as the region in
+your C<Host> header in the request. For more information about
+available regions and endpoints for AWS Storage Gateway, see Regions
+and Endpoints in the I<Amazon Web Services Glossary>.
 
 Valid Values: "us-east-1", "us-east-2", "us-west-1", "us-west-2",
 "ca-central-1", "eu-west-1", "eu-central-1", "eu-west-2",
 "ap-northeast-1", "ap-northeast-2", "ap-southeast-1", "ap-southeast-2",
-"sa-east-1"
+"ap-south-1", "sa-east-1"
 
 
 
 =head2 B<REQUIRED> GatewayTimezone => Str
 
 A value that indicates the time zone you want to set for the gateway.
-The time zone is used, for example, for scheduling snapshots and your
-gateway's maintenance schedule.
+The time zone is of the format "GMT-hr:mm" or "GMT+hr:mm". For example,
+GMT-4:00 indicates the time is 4 hours behind GMT. GMT+2:00 indicates
+the time is 2 hours ahead of GMT. The time zone is used, for example,
+for scheduling snapshots and your gateway's maintenance schedule.
 
 
 

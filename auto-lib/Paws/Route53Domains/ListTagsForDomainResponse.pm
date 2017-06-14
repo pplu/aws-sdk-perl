@@ -18,31 +18,6 @@ Paws::Route53Domains::ListTagsForDomainResponse
 
 A list of the tags that are associated with the specified domain.
 
-Type: A complex type containing a list of tags
-
-Each tag includes the following elements.
-
-=over
-
-=item *
-
-Key
-
-The key (name) of a tag.
-
-Type: String
-
-=item *
-
-Value
-
-The value of a tag.
-
-Type: String
-
-=back
-
-
 
 =head2 _request_id => Str
 

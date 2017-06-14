@@ -99,7 +99,7 @@ confidence level in the determination.
 
 =head2 Landmarks => ArrayRef[L<Paws::Rekognition::Landmark>]
 
-  Indicates the location of the landmark on the face.
+  Indicates the location of landmarks on the face.
 
 
 =head2 MouthOpen => L<Paws::Rekognition::MouthOpen>
@@ -116,7 +116,7 @@ level in the determination.
 
 =head2 Pose => L<Paws::Rekognition::Pose>
 
-  Indicates the pose of the face as determined by pitch, roll, and the
+  Indicates the pose of the face as determined by its pitch, roll, and
 yaw.
 
 

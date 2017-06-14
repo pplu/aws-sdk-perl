@@ -63,6 +63,11 @@ package Paws::ELBv2;
     my $call_object = $self->new_with_coercions('Paws::ELBv2::DeregisterTargets', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeAccountLimits {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ELBv2::DescribeAccountLimits', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeListeners {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ELBv2::DescribeListeners', @_);
@@ -169,18 +174,20 @@ package Paws::ELBv2;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeListeners(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->Marker) {
-        $result = $self->DescribeListeners(@_, Marker => $result->NextMarker);
-        push @{ $result->Listeners }, @{ $result->Listeners };
+      while ($next_result->NextMarker) {
+        $next_result = $self->DescribeListeners(@_, Marker => $next_result->NextMarker);
+        push @{ $result->Listeners }, @{ $next_result->Listeners };
       }
       return $result;
     } else {
-      while ($result->Marker) {
-        $result = $self->DescribeListeners(@_, Marker => $result->NextMarker);
+      while ($result->NextMarker) {
         $callback->($_ => 'Listeners') foreach (@{ $result->Listeners });
+        $result = $self->DescribeListeners(@_, Marker => $result->NextMarker);
       }
+      $callback->($_ => 'Listeners') foreach (@{ $result->Listeners });
     }
 
     return undef
@@ -190,18 +197,20 @@ package Paws::ELBv2;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeLoadBalancers(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->Marker) {
-        $result = $self->DescribeLoadBalancers(@_, Marker => $result->NextMarker);
-        push @{ $result->LoadBalancers }, @{ $result->LoadBalancers };
+      while ($next_result->NextMarker) {
+        $next_result = $self->DescribeLoadBalancers(@_, Marker => $next_result->NextMarker);
+        push @{ $result->LoadBalancers }, @{ $next_result->LoadBalancers };
       }
       return $result;
     } else {
-      while ($result->Marker) {
-        $result = $self->DescribeLoadBalancers(@_, Marker => $result->NextMarker);
+      while ($result->NextMarker) {
         $callback->($_ => 'LoadBalancers') foreach (@{ $result->LoadBalancers });
+        $result = $self->DescribeLoadBalancers(@_, Marker => $result->NextMarker);
       }
+      $callback->($_ => 'LoadBalancers') foreach (@{ $result->LoadBalancers });
     }
 
     return undef
@@ -211,25 +220,27 @@ package Paws::ELBv2;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeTargetGroups(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->Marker) {
-        $result = $self->DescribeTargetGroups(@_, Marker => $result->NextMarker);
-        push @{ $result->TargetGroups }, @{ $result->TargetGroups };
+      while ($next_result->NextMarker) {
+        $next_result = $self->DescribeTargetGroups(@_, Marker => $next_result->NextMarker);
+        push @{ $result->TargetGroups }, @{ $next_result->TargetGroups };
       }
       return $result;
     } else {
-      while ($result->Marker) {
-        $result = $self->DescribeTargetGroups(@_, Marker => $result->NextMarker);
+      while ($result->NextMarker) {
         $callback->($_ => 'TargetGroups') foreach (@{ $result->TargetGroups });
+        $result = $self->DescribeTargetGroups(@_, Marker => $result->NextMarker);
       }
+      $callback->($_ => 'TargetGroups') foreach (@{ $result->TargetGroups });
     }
 
     return undef
   }
 
 
-  sub operations { qw/AddTags CreateListener CreateLoadBalancer CreateRule CreateTargetGroup DeleteListener DeleteLoadBalancer DeleteRule DeleteTargetGroup DeregisterTargets DescribeListeners DescribeLoadBalancerAttributes DescribeLoadBalancers DescribeRules DescribeSSLPolicies DescribeTags DescribeTargetGroupAttributes DescribeTargetGroups DescribeTargetHealth ModifyListener ModifyLoadBalancerAttributes ModifyRule ModifyTargetGroup ModifyTargetGroupAttributes RegisterTargets RemoveTags SetIpAddressType SetRulePriorities SetSecurityGroups SetSubnets / }
+  sub operations { qw/AddTags CreateListener CreateLoadBalancer CreateRule CreateTargetGroup DeleteListener DeleteLoadBalancer DeleteRule DeleteTargetGroup DeregisterTargets DescribeAccountLimits DescribeListeners DescribeLoadBalancerAttributes DescribeLoadBalancers DescribeRules DescribeSSLPolicies DescribeTags DescribeTargetGroupAttributes DescribeTargetGroups DescribeTargetHealth ModifyListener ModifyLoadBalancerAttributes ModifyRule ModifyTargetGroup ModifyTargetGroupAttributes RegisterTargets RemoveTags SetIpAddressType SetRulePriorities SetSecurityGroups SetSubnets / }
 
 1;
 
@@ -500,6 +511,19 @@ After the targets are deregistered, they no longer receive traffic from
 the load balancer.
 
 
+=head2 DescribeAccountLimits([Marker => Str, PageSize => Int])
+
+Each argument is described in detail in: L<Paws::ELBv2::DescribeAccountLimits>
+
+Returns: a L<Paws::ELBv2::DescribeAccountLimitsOutput> instance
+
+  Describes the current Elastic Load Balancing resource limits for your
+AWS account.
+
+For more information, see Limits for Your Application Load Balancer in
+the I<Application Load Balancer Guide>.
+
+
 =head2 DescribeListeners([ListenerArns => ArrayRef[Str|Undef], LoadBalancerArn => Str, Marker => Str, PageSize => Int])
 
 Each argument is described in detail in: L<Paws::ELBv2::DescribeListeners>
@@ -534,7 +558,7 @@ To describe the attributes for a load balancer, use
 DescribeLoadBalancerAttributes.
 
 
-=head2 DescribeRules([ListenerArn => Str, RuleArns => ArrayRef[Str|Undef]])
+=head2 DescribeRules([ListenerArn => Str, Marker => Str, PageSize => Int, RuleArns => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::ELBv2::DescribeRules>
 

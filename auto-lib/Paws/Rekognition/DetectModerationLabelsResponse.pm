@@ -16,8 +16,8 @@ Paws::Rekognition::DetectModerationLabelsResponse
 
 =head2 ModerationLabels => ArrayRef[L<Paws::Rekognition::ModerationLabel>]
 
-A list of labels for explicit or suggestive adult content found in the
-image. The list includes the top-level label and each child label
+An array of labels for explicit or suggestive adult content found in
+the image. The list includes the top-level label and each child label
 detected in the image. This is useful for filtering specific categories
 of content.
 

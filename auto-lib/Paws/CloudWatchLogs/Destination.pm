@@ -55,7 +55,8 @@ subscription filters against this destination.
 
 =head2 CreationTime => Int
 
-  The creation time of the destination.
+  The creation time of the destination, expressed as the number of
+milliseconds since Jan 1, 1970 00:00:00 UTC.
 
 
 =head2 DestinationName => Str

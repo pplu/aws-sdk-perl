@@ -45,8 +45,8 @@ source.
 
 =item *
 
-C<LATEST> - Start reading just after the most recent record in the
-stream.
+C<NOW> - Start reading just after the most recent record in the stream,
+start at the request timestamp that the customer issued.
 
 =item *
 

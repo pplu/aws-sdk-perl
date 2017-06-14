@@ -32,7 +32,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ECS::Volume
 
 =head1 DESCRIPTION
 
-Details on a data volume from another container.
+Details on a data volume from another container in the same task
+definition.
 
 =head1 ATTRIBUTES
 
@@ -46,7 +47,8 @@ volume. The default value is C<false>.
 
 =head2 SourceContainer => Str
 
-  The name of the container to mount volumes from.
+  The name of another container within the same task definition to mount
+volumes from.
 
 
 

@@ -41,17 +41,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 HostedZoneIdMarker => Str
 
-For the first request to C<ListTrafficPolicyInstances>, omit this
-value.
-
 If the value of C<IsTruncated> in the previous response was C<true>,
-you have more traffic policy instances. To get the next group of
-C<MaxItems> traffic policy instances, submit another
-C<ListTrafficPolicyInstances> request. For the value of
-C<HostedZoneIdMarker>, specify the value of C<HostedZoneIdMarker> from
-the previous response, which is the hosted zone ID of the first traffic
-policy instance in the next group of C<MaxItems> traffic policy
-instances.
+you have more traffic policy instances. To get more traffic policy
+instances, submit another C<ListTrafficPolicyInstances> request. For
+the value of C<HostedZoneId>, specify the value of
+C<HostedZoneIdMarker> from the previous response, which is the hosted
+zone ID of the first traffic policy instance in the next group of
+traffic policy instances.
 
 If the value of C<IsTruncated> in the previous response was C<false>,
 there are no more traffic policy instances to get.
@@ -60,10 +56,11 @@ there are no more traffic policy instances to get.
 
 =head2 MaxItems => Str
 
-The maximum number of traffic policy instances to be included in the
-response body for this request. If you have more than C<MaxItems>
-traffic policy instances, the value of the C<IsTruncated> element in
-the response is C<true>, and the values of C<HostedZoneIdMarker>,
+The maximum number of traffic policy instances that you want Amazon
+Route 53 to return in response to a C<ListTrafficPolicyInstances>
+request. If you have more than C<MaxItems> traffic policy instances,
+the value of the C<IsTruncated> element in the response is C<true>, and
+the values of C<HostedZoneIdMarker>,
 C<TrafficPolicyInstanceNameMarker>, and
 C<TrafficPolicyInstanceTypeMarker> represent the first traffic policy
 instance in the next group of C<MaxItems> traffic policy instances.
@@ -72,13 +69,13 @@ instance in the next group of C<MaxItems> traffic policy instances.
 
 =head2 TrafficPolicyInstanceNameMarker => Str
 
-For the first request to C<ListTrafficPolicyInstances>, omit this
-value.
-
 If the value of C<IsTruncated> in the previous response was C<true>,
-C<TrafficPolicyInstanceNameMarker> is the name of the first traffic
-policy instance in the next group of C<MaxItems> traffic policy
-instances.
+you have more traffic policy instances. To get more traffic policy
+instances, submit another C<ListTrafficPolicyInstances> request. For
+the value of C<trafficpolicyinstancename>, specify the value of
+C<TrafficPolicyInstanceNameMarker> from the previous response, which is
+the name of the first traffic policy instance in the next group of
+traffic policy instances.
 
 If the value of C<IsTruncated> in the previous response was C<false>,
 there are no more traffic policy instances to get.
@@ -87,13 +84,13 @@ there are no more traffic policy instances to get.
 
 =head2 TrafficPolicyInstanceTypeMarker => Str
 
-For the first request to C<ListTrafficPolicyInstances>, omit this
-value.
-
 If the value of C<IsTruncated> in the previous response was C<true>,
-C<TrafficPolicyInstanceTypeMarker> is the DNS type of the first traffic
-policy instance in the next group of C<MaxItems> traffic policy
-instances.
+you have more traffic policy instances. To get more traffic policy
+instances, submit another C<ListTrafficPolicyInstances> request. For
+the value of C<trafficpolicyinstancetype>, specify the value of
+C<TrafficPolicyInstanceTypeMarker> from the previous response, which is
+the type of the first traffic policy instance in the next group of
+traffic policy instances.
 
 If the value of C<IsTruncated> in the previous response was C<false>,
 there are no more traffic policy instances to get.

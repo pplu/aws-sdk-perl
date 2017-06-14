@@ -20,19 +20,20 @@ Paws::CloudDirectory::CreateDirectoryResponse
 
 =head2 B<REQUIRED> AppliedSchemaArn => Str
 
-ARN of the published schema in the Directory. Once a published schema
-is copied into the directory, it has its own ARN which is referred to
-applied schema ARN. For more information, see arns.
+The ARN of the published schema in the Directory. Once a published
+schema is copied into the directory, it has its own ARN, which is
+referred to applied schema ARN. For more information, see arns.
 
 
 =head2 B<REQUIRED> DirectoryArn => Str
 
-ARN associated with the Directory. For more information, see arns.
+The ARN that is associated with the Directory. For more information,
+see arns.
 
 
 =head2 B<REQUIRED> Name => Str
 
-Name of the Directory.
+The name of the Directory.
 
 
 =head2 B<REQUIRED> ObjectIdentifier => Str

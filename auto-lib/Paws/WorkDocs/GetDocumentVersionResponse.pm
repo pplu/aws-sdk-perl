@@ -1,6 +1,7 @@
 
 package Paws::WorkDocs::GetDocumentVersionResponse;
   use Moose;
+  has CustomMetadata => (is => 'ro', isa => 'Paws::WorkDocs::CustomMetadataMap');
   has Metadata => (is => 'ro', isa => 'Paws::WorkDocs::DocumentVersionMetadata');
 
   has _request_id => (is => 'ro', isa => 'Str');
@@ -13,6 +14,11 @@ package Paws::WorkDocs::GetDocumentVersionResponse;
 Paws::WorkDocs::GetDocumentVersionResponse
 
 =head1 ATTRIBUTES
+
+
+=head2 CustomMetadata => L<Paws::WorkDocs::CustomMetadataMap>
+
+The custom metadata on the document version.
 
 
 =head2 Metadata => L<Paws::WorkDocs::DocumentVersionMetadata>

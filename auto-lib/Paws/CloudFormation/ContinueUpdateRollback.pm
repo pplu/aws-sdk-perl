@@ -1,6 +1,7 @@
 
 package Paws::CloudFormation::ContinueUpdateRollback;
   use Moose;
+  has ClientRequestToken => (is => 'ro', isa => 'Str');
   has ResourcesToSkip => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has RoleARN => (is => 'ro', isa => 'Str');
   has StackName => (is => 'ro', isa => 'Str', required => 1);
@@ -35,6 +36,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
+=head2 ClientRequestToken => Str
+
+A unique identifier for this C<ContinueUpdateRollback> request. Specify
+this token if you plan to retry requests so that AWS CloudFormation
+knows that you're not attempting to continue the rollback to a stack
+with the same name. You might retry C<ContinueUpdateRollback> requests
+to ensure that AWS CloudFormation successfully received them.
+
+
+
 =head2 ResourcesToSkip => ArrayRef[Str|Undef]
 
 A list of the logical IDs of the resources that AWS CloudFormation
@@ -62,10 +73,10 @@ dependent resources to fail. In this case, it might not be necessary to
 skip the dependent resources.
 
 To specify resources in a nested stack, use the following format:
-C<NestedStackName.ResourceLogicalID>. You can specify a nested stack
-resource (the logical ID of an C<AWS::CloudFormation::Stack> resource)
-only if it's in one of the following states: C<DELETE_IN_PROGRESS>,
-C<DELETE_COMPLETE>, or C<DELETE_FAILED>.
+C<NestedStackName.ResourceLogicalID>. If the C<ResourceLogicalID> is a
+stack resource (C<Type: AWS::CloudFormation::Stack>), it must be in one
+of the following states: C<DELETE_IN_PROGRESS>, C<DELETE_COMPLETE>, or
+C<DELETE_FAILED>.
 
 
 

@@ -30,7 +30,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudDirect
 
 =head1 DESCRIPTION
 
-Empty result representing success.
+An empty result that represents success.
 
 =head1 ATTRIBUTES
 

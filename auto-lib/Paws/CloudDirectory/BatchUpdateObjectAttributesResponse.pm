@@ -38,7 +38,7 @@ Represents the output of a C<BatchUpdate> response operation.
 
 =head2 ObjectIdentifier => Str
 
-  ID associated with the object.
+  ID that is associated with the object.
 
 
 

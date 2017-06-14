@@ -40,14 +40,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DirectoryArn => Str
 
-ARN associated with the Directory where the object resides. For more
-information, see arns.
+The Amazon Resource Name (ARN) that is associated with the Directory
+where the object resides. For more information, see arns.
 
 
 
 =head2 ObjectAttributeList => ArrayRef[L<Paws::CloudDirectory::AttributeKeyAndValue>]
 
-Attributes on the facet you are adding to the object.
+Attributes on the facet that you are adding to the object.
 
 
 

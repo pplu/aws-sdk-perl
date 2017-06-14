@@ -38,7 +38,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 Filters => ArrayRef[L<Paws::SSM::MaintenanceWindowFilter>]
 
 Optional filters used to narrow down the scope of the returned
-Maintenance Windows. Supported filter keys are C<Name> and C<Enabled>.
+Maintenance Windows. Supported filter keys are Name and Enabled.
 
 
 

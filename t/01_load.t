@@ -22,6 +22,7 @@ sub unload {
   foreach my $class (grep { $_ =~ m/^$class_prefix/ } keys %INC) {
     $class =~ s/\//::/g;
     $class =~ s/\.pm$//;
+    Class::MOP::remove_metaclass_by_name($class);
     Class::Unload->unload($class);
   }
 }

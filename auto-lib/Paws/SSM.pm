@@ -420,18 +420,20 @@ package Paws::SSM;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeActivations(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->NextToken) {
-        $result = $self->DescribeActivations(@_, NextToken => $result->NextToken);
-        push @{ $result->ActivationList }, @{ $result->ActivationList };
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeActivations(@_, NextToken => $next_result->NextToken);
+        push @{ $result->ActivationList }, @{ $next_result->ActivationList };
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->DescribeActivations(@_, NextToken => $result->NextToken);
         $callback->($_ => 'ActivationList') foreach (@{ $result->ActivationList });
+        $result = $self->DescribeActivations(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'ActivationList') foreach (@{ $result->ActivationList });
     }
 
     return undef
@@ -441,18 +443,20 @@ package Paws::SSM;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeInstanceInformation(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->NextToken) {
-        $result = $self->DescribeInstanceInformation(@_, NextToken => $result->NextToken);
-        push @{ $result->InstanceInformationList }, @{ $result->InstanceInformationList };
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeInstanceInformation(@_, NextToken => $next_result->NextToken);
+        push @{ $result->InstanceInformationList }, @{ $next_result->InstanceInformationList };
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->DescribeInstanceInformation(@_, NextToken => $result->NextToken);
         $callback->($_ => 'InstanceInformationList') foreach (@{ $result->InstanceInformationList });
+        $result = $self->DescribeInstanceInformation(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'InstanceInformationList') foreach (@{ $result->InstanceInformationList });
     }
 
     return undef
@@ -462,18 +466,20 @@ package Paws::SSM;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListAssociations(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->NextToken) {
-        $result = $self->ListAssociations(@_, NextToken => $result->NextToken);
-        push @{ $result->Associations }, @{ $result->Associations };
+      while ($next_result->NextToken) {
+        $next_result = $self->ListAssociations(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Associations }, @{ $next_result->Associations };
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->ListAssociations(@_, NextToken => $result->NextToken);
         $callback->($_ => 'Associations') foreach (@{ $result->Associations });
+        $result = $self->ListAssociations(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'Associations') foreach (@{ $result->Associations });
     }
 
     return undef
@@ -483,18 +489,20 @@ package Paws::SSM;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListCommandInvocations(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->NextToken) {
-        $result = $self->ListCommandInvocations(@_, NextToken => $result->NextToken);
-        push @{ $result->CommandInvocations }, @{ $result->CommandInvocations };
+      while ($next_result->NextToken) {
+        $next_result = $self->ListCommandInvocations(@_, NextToken => $next_result->NextToken);
+        push @{ $result->CommandInvocations }, @{ $next_result->CommandInvocations };
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->ListCommandInvocations(@_, NextToken => $result->NextToken);
         $callback->($_ => 'CommandInvocations') foreach (@{ $result->CommandInvocations });
+        $result = $self->ListCommandInvocations(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'CommandInvocations') foreach (@{ $result->CommandInvocations });
     }
 
     return undef
@@ -504,18 +512,20 @@ package Paws::SSM;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListCommands(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->NextToken) {
-        $result = $self->ListCommands(@_, NextToken => $result->NextToken);
-        push @{ $result->Commands }, @{ $result->Commands };
+      while ($next_result->NextToken) {
+        $next_result = $self->ListCommands(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Commands }, @{ $next_result->Commands };
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->ListCommands(@_, NextToken => $result->NextToken);
         $callback->($_ => 'Commands') foreach (@{ $result->Commands });
+        $result = $self->ListCommands(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'Commands') foreach (@{ $result->Commands });
     }
 
     return undef
@@ -525,18 +535,20 @@ package Paws::SSM;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListDocuments(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->NextToken) {
-        $result = $self->ListDocuments(@_, NextToken => $result->NextToken);
-        push @{ $result->DocumentIdentifiers }, @{ $result->DocumentIdentifiers };
+      while ($next_result->NextToken) {
+        $next_result = $self->ListDocuments(@_, NextToken => $next_result->NextToken);
+        push @{ $result->DocumentIdentifiers }, @{ $next_result->DocumentIdentifiers };
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->ListDocuments(@_, NextToken => $result->NextToken);
         $callback->($_ => 'DocumentIdentifiers') foreach (@{ $result->DocumentIdentifiers });
+        $result = $self->ListDocuments(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'DocumentIdentifiers') foreach (@{ $result->DocumentIdentifiers });
     }
 
     return undef
@@ -598,14 +610,16 @@ Each argument is described in detail in: L<Paws::SSM::AddTagsToResource>
 Returns: a L<Paws::SSM::AddTagsToResourceResult> instance
 
   Adds or overwrites one or more tags for the specified resource. Tags
-are metadata that you assign to your managed instances. Tags enable you
-to categorize your managed instances in different ways, for example, by
-purpose, owner, or environment. Each tag consists of a key and an
-optional value, both of which you define. For example, you could define
-a set of tags for your account's managed instances that helps you track
-each instance's owner and stack level. For example: Key=Owner and
-Value=DbAdmin, SysAdmin, or Dev. Or Key=Stack and Value=Production,
-Pre-Production, or Test. Each resource can have a maximum of 10 tags.
+are metadata that you assign to your managed instances, Maintenance
+Windows, or Parameter Store parameters. Tags enable you to categorize
+your resources in different ways, for example, by purpose, owner, or
+environment. Each tag consists of a key and an optional value, both of
+which you define. For example, you could define a set of tags for your
+account's managed instances that helps you track each instance's owner
+and stack level. For example: Key=Owner and Value=DbAdmin, SysAdmin, or
+Dev. Or Key=Stack and Value=Production, Pre-Production, or Test.
+
+Each resource can have a maximum of 10 tags.
 
 We recommend that you devise a set of tag keys that meets your needs
 for each resource type. Using a consistent set of tag keys makes it
@@ -786,8 +800,8 @@ Returns: a L<Paws::SSM::DeregisterManagedInstanceResult> instance
 
   Removes the server or virtual machine from the list of registered
 servers. You can reregister the instance again at any time. If you
-donE<rsquo>t plan to use Run Command on the server, we suggest
-uninstalling the SSM Agent first.
+don't plan to use Run Command on the server, we suggest uninstalling
+the SSM Agent first.
 
 
 =head2 DeregisterPatchBaselineForPatchGroup(BaselineId => Str, PatchGroup => Str)
@@ -874,8 +888,8 @@ Returns: a L<Paws::SSM::DescribeDocumentPermissionResponse> instance
 
   Describes the permissions for a Systems Manager document. If you
 created the document, you are the owner. If a document is shared, it
-can either be shared privately (by specifying a userE<rsquo>s AWS
-account ID) or publicly (I<All>).
+can either be shared privately (by specifying a user's AWS account ID)
+or publicly (I<All>).
 
 
 =head2 DescribeEffectiveInstanceAssociations(InstanceId => Str, [MaxResults => Int, NextToken => Str])
@@ -1351,7 +1365,7 @@ Returns: a L<Paws::SSM::StopAutomationExecutionResult> instance
   Stop an Automation that is currently executing.
 
 
-=head2 UpdateAssociation(AssociationId => Str, [DocumentVersion => Str, OutputLocation => L<Paws::SSM::InstanceAssociationOutputLocation>, Parameters => L<Paws::SSM::Parameters>, ScheduleExpression => Str])
+=head2 UpdateAssociation(AssociationId => Str, [DocumentVersion => Str, Name => Str, OutputLocation => L<Paws::SSM::InstanceAssociationOutputLocation>, Parameters => L<Paws::SSM::Parameters>, ScheduleExpression => Str, Targets => ArrayRef[L<Paws::SSM::Target>]])
 
 Each argument is described in detail in: L<Paws::SSM::UpdateAssociation>
 

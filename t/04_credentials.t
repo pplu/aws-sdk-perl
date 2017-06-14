@@ -2,6 +2,7 @@
 
 use lib 't/lib';
 use Paws;
+use Paws::Credential::Explicit;
 use Paws::Credential::Environment;
 use Paws::Credential::InstanceProfile;
 use Paws::Credential::ProviderChain;
@@ -19,6 +20,20 @@ delete @ENV{qw(
   AWS_SECRET_KEY
   AWS_DEFAULT_PROFILE
 )};
+
+## File provider testing
+
+{
+  my $creds = Paws::Credential::Explicit->new(
+    access_key => 'AK',
+    secret_key => 'SK',
+  );
+  ok($creds->are_set, 'Creds are set');
+  dies_ok { Paws::Credential::Explicit->new(secret_key => 'SK') } 'Access Key is required';
+  dies_ok { Paws::Credential::Explicit->new(access_key => 'AK') } 'Secret Key is required';
+}
+
+## Environment provider testing
 
 {
   my $creds = Paws::Credential::Environment->new;
@@ -50,7 +65,7 @@ delete @ENV{qw(
   cmp_ok($creds->access_key, 'eq', 'AK1', 'Access Key 1');
   cmp_ok($creds->secret_key, 'eq', 'SK1', 'Secret Key 1');
   cmp_ok($creds->session_token, 'eq', 'TK1', 'Token 1');
-  
+
   sleep 2;
 
   cmp_ok($creds->access_key, 'eq', 'AK2', 'Access Key 2');
@@ -74,7 +89,6 @@ delete @ENV{qw(
   ok($creds->are_set, 'Creds are set');
   cmp_ok($creds->access_key, 'eq', 'CustomAK', 'Access Key short style');
   cmp_ok($creds->secret_key, 'eq', 'CustomSK', 'Secret Key short style');
- 
 }
 
 ## File provider testing

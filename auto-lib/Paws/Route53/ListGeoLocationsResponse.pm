@@ -48,8 +48,7 @@ The value that you specified for C<MaxItems> in the request.
 
 If C<IsTruncated> is C<true>, you can make a follow-up request to
 display more locations. Enter the value of C<NextContinentCode> in the
-C<StartContinentCode> parameter in another C<GET> C<ListGeoLocations>
-request.
+C<StartContinentCode> parameter in another C<ListGeoLocations> request.
 
 
 
@@ -57,8 +56,7 @@ request.
 
 If C<IsTruncated> is C<true>, you can make a follow-up request to
 display more locations. Enter the value of C<NextCountryCode> in the
-C<StartCountryCode> parameter in another C<GET> C<ListGeoLocations>
-request.
+C<StartCountryCode> parameter in another C<ListGeoLocations> request.
 
 
 
@@ -66,8 +64,8 @@ request.
 
 If C<IsTruncated> is C<true>, you can make a follow-up request to
 display more locations. Enter the value of C<NextSubdivisionCode> in
-the C<StartSubdivisionCode> parameter in another C<GET>
-C<ListGeoLocations> request.
+the C<StartSubdivisionCode> parameter in another C<ListGeoLocations>
+request.
 
 
 

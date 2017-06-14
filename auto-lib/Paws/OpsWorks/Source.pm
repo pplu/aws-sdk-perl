@@ -92,7 +92,8 @@ of the actual value.
 
 =head2 Url => Str
 
-  The source URL.
+  The source URL. The following is an example of an Amazon S3 source URL:
+C<https://s3.amazonaws.com/opsworks-demo-bucket/opsworks_cookbook_demo.tar.gz>.
 
 
 =head2 Username => Str

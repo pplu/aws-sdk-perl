@@ -139,7 +139,7 @@ C<$LATEST>.
 
 =head2 VoiceId => Str
 
-The Amazon Parrot voice ID that Amazon Lex uses for voice interaction
+The Amazon Polly voice ID that Amazon Lex uses for voice interaction
 with the user. For more information, see .
 
 

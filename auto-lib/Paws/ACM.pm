@@ -70,18 +70,20 @@ package Paws::ACM;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListCertificates(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->NextToken) {
-        $result = $self->ListCertificates(@_, NextToken => $result->NextToken);
-        push @{ $result->CertificateSummaryList }, @{ $result->CertificateSummaryList };
+      while ($next_result->NextToken) {
+        $next_result = $self->ListCertificates(@_, NextToken => $next_result->NextToken);
+        push @{ $result->CertificateSummaryList }, @{ $next_result->CertificateSummaryList };
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->ListCertificates(@_, NextToken => $result->NextToken);
         $callback->($_ => 'CertificateSummaryList') foreach (@{ $result->CertificateSummaryList });
+        $result = $self->ListCertificates(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'CertificateSummaryList') foreach (@{ $result->CertificateSummaryList });
     }
 
     return undef
@@ -301,7 +303,9 @@ blocked by spam filters. Therefore, if you do not receive the original
 mail, you can request that the mail be resent within 72 hours of
 requesting the ACM Certificate. If more than 72 hours have elapsed
 since your original request or since your last attempt to resend
-validation mail, you must request a new certificate.
+validation mail, you must request a new certificate. For more
+information about setting up your contact email addresses, see
+Configure Email for your Domain.
 
 
 

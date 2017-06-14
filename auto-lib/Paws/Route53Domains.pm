@@ -135,18 +135,20 @@ package Paws::Route53Domains;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListDomains(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->Marker) {
-        $result = $self->ListDomains(@_, Marker => $result->NextPageMarker);
-        push @{ $result->Domains }, @{ $result->Domains };
+      while ($next_result->NextPageMarker) {
+        $next_result = $self->ListDomains(@_, Marker => $next_result->NextPageMarker);
+        push @{ $result->Domains }, @{ $next_result->Domains };
       }
       return $result;
     } else {
-      while ($result->Marker) {
-        $result = $self->ListDomains(@_, Marker => $result->NextPageMarker);
+      while ($result->NextPageMarker) {
         $callback->($_ => 'Domains') foreach (@{ $result->Domains });
+        $result = $self->ListDomains(@_, Marker => $result->NextPageMarker);
       }
+      $callback->($_ => 'Domains') foreach (@{ $result->Domains });
     }
 
     return undef
@@ -156,18 +158,20 @@ package Paws::Route53Domains;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListOperations(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->Marker) {
-        $result = $self->ListOperations(@_, Marker => $result->NextPageMarker);
-        push @{ $result->Operations }, @{ $result->Operations };
+      while ($next_result->NextPageMarker) {
+        $next_result = $self->ListOperations(@_, Marker => $next_result->NextPageMarker);
+        push @{ $result->Operations }, @{ $next_result->Operations };
       }
       return $result;
     } else {
-      while ($result->Marker) {
-        $result = $self->ListOperations(@_, Marker => $result->NextPageMarker);
+      while ($result->NextPageMarker) {
         $callback->($_ => 'Operations') foreach (@{ $result->Operations });
+        $result = $self->ListOperations(@_, Marker => $result->NextPageMarker);
       }
+      $callback->($_ => 'Operations') foreach (@{ $result->Operations });
     }
 
     return undef
@@ -202,10 +206,8 @@ Paws::Route53Domains - Perl Interface to AWS Amazon Route 53 Domains
 
 =head1 DESCRIPTION
 
-Amazon Route 53 Domains
-
-Amazon Route 53 permits Interned Domain Name registration, trasnfer and
-management
+Amazon Route 53 API actions let you register domain names and perform
+related operations.
 
 =head1 METHODS
 
@@ -310,8 +312,9 @@ Each argument is described in detail in: L<Paws::Route53Domains::GetDomainDetail
 
 Returns: a L<Paws::Route53Domains::GetDomainDetailResponse> instance
 
-  This operation returns detailed information about the domain. The
-domain's contact information is also returned as part of the output.
+  This operation returns detailed information about a specified domain
+that is associated with the current AWS account. Contact information
+for the domain is also returned as part of the output.
 
 
 =head2 GetDomainSuggestions(DomainName => Str, OnlyAvailable => Bool, SuggestionCount => Int)
@@ -323,26 +326,6 @@ Returns: a L<Paws::Route53Domains::GetDomainSuggestionsResponse> instance
   The GetDomainSuggestions operation returns a list of suggested domain
 names given a string, which can either be a domain name or simply a
 word or phrase (without spaces).
-
-Parameters:
-
-=over
-
-=item * DomainName (string): The basis for your domain suggestion
-search, a string with (or without) top-level domain specified.
-
-=item * SuggestionCount (int): The number of domain suggestions to be
-returned, maximum 50, minimum 1.
-
-=item * OnlyAvailable (bool): If true, availability check will be
-performed on suggestion results, and only available domains will be
-returned. If false, suggestions will be returned without checking
-whether the domain is actually available, and caller will have to call
-checkDomainAvailability for each suggestion to determine availability
-for registration.
-
-=back
-
 
 
 =head2 GetOperationDetail(OperationId => Str)
@@ -402,26 +385,35 @@ When you register a domain, Amazon Route 53 does the following:
 
 =over
 
-=item * Creates a Amazon Route 53 hosted zone that has the same name as
-the domain. Amazon Route 53 assigns four name servers to your hosted
-zone and automatically updates your domain registration with the names
-of these name servers.
+=item *
 
-=item * Enables autorenew, so your domain registration will renew
-automatically each year. We'll notify you in advance of the renewal
-date so you can choose whether to renew the registration.
+Creates a Amazon Route 53 hosted zone that has the same name as the
+domain. Amazon Route 53 assigns four name servers to your hosted zone
+and automatically updates your domain registration with the names of
+these name servers.
 
-=item * Optionally enables privacy protection, so WHOIS queries return
-contact information for our registrar partner, Gandi, instead of the
+=item *
+
+Enables autorenew, so your domain registration will renew automatically
+each year. We'll notify you in advance of the renewal date so you can
+choose whether to renew the registration.
+
+=item *
+
+Optionally enables privacy protection, so WHOIS queries return contact
+information for our registrar partner, Gandi, instead of the
 information you entered for registrant, admin, and tech contacts.
 
-=item * If registration is successful, returns an operation ID that you
-can use to track the progress and completion of the action. If the
-request is not completed successfully, the domain registrant is
-notified by email.
+=item *
 
-=item * Charges your AWS account an amount based on the top-level
-domain. For more information, see Amazon Route 53 Pricing.
+If registration is successful, returns an operation ID that you can use
+to track the progress and completion of the action. If the request is
+not completed successfully, the domain registrant is notified by email.
+
+=item *
+
+Charges your AWS account an amount based on the top-level domain. For
+more information, see Amazon Route 53 Pricing.
 
 =back
 
@@ -440,7 +432,7 @@ We recommend that you renew your domain several weeks before the
 expiration date. Some TLD registries delete domains before the
 expiration date if you haven't renewed far enough in advance. For more
 information about renewing domain registration, see Renewing
-Registration for a Domain in the Amazon Route 53 documentation.
+Registration for a Domain in the Amazon Route 53 Developer Guide.
 
 
 =head2 ResendContactReachabilityEmail([DomainName => Str])
@@ -478,7 +470,8 @@ the AWS registrar partner, Gandi.
 
 For transfer requirements, a detailed procedure, and information about
 viewing the status of a domain transfer, see Transferring Registration
-for a Domain to Amazon Route 53 in the Amazon Route 53 Developer Guide.
+for a Domain to Amazon Route 53 in the I<Amazon Route 53 Developer
+Guide>.
 
 If the registrar for your domain is also the DNS service provider for
 the domain, we highly recommend that you consider transferring your DNS
@@ -488,10 +481,10 @@ service when you purchase a domain registration. When you transfer the
 registration, the previous registrar will not renew your domain
 registration and could end your DNS service at any time.
 
-Caution! If the registrar for your domain is also the DNS service
-provider for the domain and you don't transfer DNS service to another
-provider, your website, email, and the web applications associated with
-the domain might become unavailable.
+If the registrar for your domain is also the DNS service provider for
+the domain and you don't transfer DNS service to another provider, your
+website, email, and the web applications associated with the domain
+might become unavailable.
 
 If the transfer is successful, this method returns an operation ID that
 you can use to track the progress and completion of the action. If the
@@ -569,8 +562,8 @@ Each argument is described in detail in: L<Paws::Route53Domains::ViewBilling>
 
 Returns: a L<Paws::Route53Domains::ViewBillingResponse> instance
 
-  This operation returns all the domain-related billing records for the
-current AWS account for a specified period
+  Returns all the domain-related billing records for the current AWS
+account for a specified period
 
 
 

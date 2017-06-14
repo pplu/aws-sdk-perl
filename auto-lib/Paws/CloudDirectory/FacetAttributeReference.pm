@@ -32,22 +32,22 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudDirect
 
 =head1 DESCRIPTION
 
-Facet attribute reference that specifies the attribute definition which
-contains attribute facet name and attribute name.
+The facet attribute reference that specifies the attribute definition
+that contains the attribute facet name and attribute name.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> TargetAttributeName => Str
 
-  Target attribute name associated with the facet reference. See
-Attribute References for more information.
+  The target attribute name that is associated with the facet reference.
+See Attribute References for more information.
 
 
 =head2 B<REQUIRED> TargetFacetName => Str
 
-  Target facet name associated with the facet reference. See Attribute
-References for more information.
+  The target facet name that is associated with the facet reference. See
+Attribute References for more information.
 
 
 

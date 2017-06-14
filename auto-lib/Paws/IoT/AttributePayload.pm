@@ -42,7 +42,7 @@ The attribute payload.
   A JSON string containing up to three key-value pair in JSON format. For
 example:
 
-C<{\"attributes\":{\"string1\":\"string2\"}})>
+C<{\"attributes\":{\"string1\":\"string2\"}}>
 
 
 =head2 Merge => Bool

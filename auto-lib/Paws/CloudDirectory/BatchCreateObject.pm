@@ -35,7 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudDirect
 
 =head1 DESCRIPTION
 
-Represents the output of a CreateObject operation.
+Represents the output of a C<CreateObject> operation.
 
 =head1 ATTRIBUTES
 
@@ -52,8 +52,8 @@ Represents the output of a CreateObject operation.
 
 =head2 B<REQUIRED> ObjectAttributeList => ArrayRef[L<Paws::CloudDirectory::AttributeKeyAndValue>]
 
-  Attribute map, which contains an attribute ARN as the key and attribute
-value as the map value.
+  An attribute map, which contains an attribute ARN as the key and
+attribute value as the map value.
 
 
 =head2 B<REQUIRED> ParentReference => L<Paws::CloudDirectory::ObjectReference>
@@ -64,8 +64,8 @@ attached.
 
 =head2 B<REQUIRED> SchemaFacet => ArrayRef[L<Paws::CloudDirectory::SchemaFacet>]
 
-  List of FacetArns that will be associated with the object. For more
-information, see arns.
+  A list of C<FacetArns> that will be associated with the object. For
+more information, see arns.
 
 
 

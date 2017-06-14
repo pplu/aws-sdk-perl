@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::KinesisAnal
 =head1 DESCRIPTION
 
 Describes the number of in-application streams to create for a given
-streaming source. For information about parallellism, see Configuring
+streaming source. For information about parallelism, see Configuring
 Application Input.
 
 =head1 ATTRIBUTES

@@ -84,17 +84,31 @@ The default values for the file share. Optional.
 
 =head2 ReadOnly => Bool
 
-Sets the write status of a file share. "true", if the write status is
-read-only; otherwise "false.
+Sets the write status of a file share: "true" if the write status is
+read-only, and otherwise "false".
 
 
 
 =head2 Squash => Str
 
-Indicates the user mapped to anonymous user. Valid options:
-"RootSquash" - Only root is mapped to anonymous user, "NoSquash" - No
-one is mapped to anonymous user or "AllSquash" - Everyone is mapped to
-anonymous user.
+The user mapped to anonymous user. Valid options are the following:
+
+=over
+
+=item *
+
+"RootSquash" - Only root is mapped to anonymous user.
+
+=item *
+
+"NoSquash" - No one is mapped to anonymous user
+
+=item *
+
+"AllSquash" - Everyone is mapped to anonymous user.
+
+=back
+
 
 
 

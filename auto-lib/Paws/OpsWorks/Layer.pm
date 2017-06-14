@@ -1,5 +1,6 @@
 package Paws::OpsWorks::Layer;
   use Moose;
+  has Arn => (is => 'ro', isa => 'Str');
   has Attributes => (is => 'ro', isa => 'Paws::OpsWorks::LayerAttributes');
   has AutoAssignElasticIps => (is => 'ro', isa => 'Bool');
   has AutoAssignPublicIps => (is => 'ro', isa => 'Bool');
@@ -41,20 +42,25 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::OpsWorks::Layer object:
 
-  $service_obj->Method(Att1 => { Attributes => $value, ..., VolumeConfigurations => $value  });
+  $service_obj->Method(Att1 => { Arn => $value, ..., VolumeConfigurations => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::OpsWorks::Layer object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Attributes
+  $result->Att1->Arn
 
 =head1 DESCRIPTION
 
 Describes a layer.
 
 =head1 ATTRIBUTES
+
+
+=head2 Arn => Str
+
+  
 
 
 =head2 Attributes => L<Paws::OpsWorks::LayerAttributes>

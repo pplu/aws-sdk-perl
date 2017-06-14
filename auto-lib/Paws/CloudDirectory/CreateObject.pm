@@ -41,8 +41,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DirectoryArn => Str
 
-ARN associated with the Directory in which the object will be created.
-For more information, see arns.
+The Amazon Resource Name (ARN) that is associated with the Directory in
+which the object will be created. For more information, see arns.
 
 
 
@@ -54,8 +54,8 @@ The name of link that is used to attach this object to a parent.
 
 =head2 ObjectAttributeList => ArrayRef[L<Paws::CloudDirectory::AttributeKeyAndValue>]
 
-Attribute map whose attribute ARN contains the key and attribute value
-as the map value.
+The attribute map whose attribute ARN contains the key and attribute
+value as the map value.
 
 
 
@@ -68,8 +68,8 @@ attached.
 
 =head2 B<REQUIRED> SchemaFacets => ArrayRef[L<Paws::CloudDirectory::SchemaFacet>]
 
-List of facet ARNs to be associated with the object. For more
-information, see arns.
+A list of schema facets to be associated with the object that contains
+C<SchemaArn> and facet name. For more information, see arns.
 
 
 

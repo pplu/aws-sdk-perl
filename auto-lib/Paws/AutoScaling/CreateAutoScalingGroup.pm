@@ -77,7 +77,9 @@ User Guide>.
 
 The number of EC2 instances that should be running in the group. This
 number must be greater than or equal to the minimum size of the group
-and less than or equal to the maximum size of the group.
+and less than or equal to the maximum size of the group. If you do not
+specify a desired capacity, the default is the minimum size of the
+group.
 
 
 
@@ -131,8 +133,8 @@ instance instead of a launch configuration.
 
 =head2 LoadBalancerNames => ArrayRef[Str|Undef]
 
-One or more Classic load balancers. To specify an Application load
-balancer, use C<TargetGroupARNs> instead.
+One or more Classic Load Balancers. To specify an Application Load
+Balancer, use C<TargetGroupARNs> instead.
 
 For more information, see Using a Load Balancer With an Auto Scaling
 Group in the I<Auto Scaling User Guide>.

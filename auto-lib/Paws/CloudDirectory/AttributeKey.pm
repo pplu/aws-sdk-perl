@@ -40,7 +40,7 @@ A unique identifier for an attribute.
 
 =head2 B<REQUIRED> FacetName => Str
 
-  The name of the facet the attribute exists within.
+  The name of the facet that the attribute exists within.
 
 
 =head2 B<REQUIRED> Name => Str
@@ -50,7 +50,8 @@ A unique identifier for an attribute.
 
 =head2 B<REQUIRED> SchemaArn => Str
 
-  The ARN of the schema that contains the facet and attribute.
+  The Amazon Resource Name (ARN) of the schema that contains the facet
+and attribute.
 
 
 

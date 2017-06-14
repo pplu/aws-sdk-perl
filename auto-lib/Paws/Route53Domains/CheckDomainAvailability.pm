@@ -36,17 +36,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DomainName => Str
 
-The name of a domain.
-
-Type: String
-
-Default: None
+The name of the domain that you want to get availability for.
 
 Constraints: The domain name can contain only the letters a through z,
 the numbers 0 through 9, and hyphen (-). Internationalized Domain Names
 are not supported.
-
-Required: Yes
 
 
 

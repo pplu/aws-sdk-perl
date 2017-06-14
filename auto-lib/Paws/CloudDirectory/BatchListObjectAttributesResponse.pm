@@ -39,8 +39,8 @@ Represents the output of a C<ListObjectAttributes> response operation.
 
 =head2 Attributes => ArrayRef[L<Paws::CloudDirectory::AttributeKeyAndValue>]
 
-  Attributes map associated with the object. C<AttributeArn> is the key;
-attribute value is the value.
+  The attributes map that is associated with the object. C<AttributeArn>
+is the key; attribute value is the value.
 
 
 =head2 NextToken => Str

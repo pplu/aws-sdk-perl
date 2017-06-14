@@ -1,5 +1,5 @@
 test:
-	prove -I lib -I auto-lib -I t/lib t/
+	carton exec -- prove -v -I lib -I auto-lib t/
 
 cover:
 	cover -delete
@@ -14,6 +14,9 @@ pull-other-sdks:
 
 pull-boto-develop:
 	cd botocore && git pull boto develop
+
+gen-paws:
+	ONLY_PAWS=1 carton exec ./gen_classes.pl
 
 gen-classes:
 	mkdir auto-lib/Paws/DeleteMe

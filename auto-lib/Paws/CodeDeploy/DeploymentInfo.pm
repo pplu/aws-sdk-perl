@@ -14,9 +14,11 @@ package Paws::CodeDeploy::DeploymentInfo;
   has DeploymentStyle => (is => 'ro', isa => 'Paws::CodeDeploy::DeploymentStyle', request_name => 'deploymentStyle', traits => ['NameInRequest']);
   has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
   has ErrorInformation => (is => 'ro', isa => 'Paws::CodeDeploy::ErrorInformation', request_name => 'errorInformation', traits => ['NameInRequest']);
+  has FileExistsBehavior => (is => 'ro', isa => 'Str', request_name => 'fileExistsBehavior', traits => ['NameInRequest']);
   has IgnoreApplicationStopFailures => (is => 'ro', isa => 'Bool', request_name => 'ignoreApplicationStopFailures', traits => ['NameInRequest']);
   has InstanceTerminationWaitTimeStarted => (is => 'ro', isa => 'Bool', request_name => 'instanceTerminationWaitTimeStarted', traits => ['NameInRequest']);
   has LoadBalancerInfo => (is => 'ro', isa => 'Paws::CodeDeploy::LoadBalancerInfo', request_name => 'loadBalancerInfo', traits => ['NameInRequest']);
+  has PreviousRevision => (is => 'ro', isa => 'Paws::CodeDeploy::RevisionLocation', request_name => 'previousRevision', traits => ['NameInRequest']);
   has Revision => (is => 'ro', isa => 'Paws::CodeDeploy::RevisionLocation', request_name => 'revision', traits => ['NameInRequest']);
   has RollbackInfo => (is => 'ro', isa => 'Paws::CodeDeploy::RollbackInfo', request_name => 'rollbackInfo', traits => ['NameInRequest']);
   has StartTime => (is => 'ro', isa => 'Str', request_name => 'startTime', traits => ['NameInRequest']);
@@ -135,7 +137,7 @@ codeDeployRollback: A rollback process created the deployment.
 
 =head2 DeploymentStyle => L<Paws::CodeDeploy::DeploymentStyle>
 
-  Information about the type of deployment, either standard or
+  Information about the type of deployment, either in-place or
 blue/green, you want to run and whether to route deployment traffic
 behind a load balancer.
 
@@ -148,6 +150,33 @@ behind a load balancer.
 =head2 ErrorInformation => L<Paws::CodeDeploy::ErrorInformation>
 
   Information about any error associated with this deployment.
+
+
+=head2 FileExistsBehavior => Str
+
+  Information about how AWS CodeDeploy handles files that already exist
+in a deployment target location but weren't part of the previous
+successful deployment.
+
+=over
+
+=item *
+
+DISALLOW: The deployment fails. This is also the default behavior if no
+option is specified.
+
+=item *
+
+OVERWRITE: The version of the file from the application revision
+currently being deployed replaces the version already on the instance.
+
+=item *
+
+RETAIN: The version of the file already on the instance is kept and
+used as part of the new deployment.
+
+=back
+
 
 
 =head2 IgnoreApplicationStopFailures => Bool
@@ -173,7 +202,13 @@ termination wait period starts.
 
 =head2 LoadBalancerInfo => L<Paws::CodeDeploy::LoadBalancerInfo>
 
-  Information about the load balancer used in this blue/green deployment.
+  Information about the load balancer used in the deployment.
+
+
+=head2 PreviousRevision => L<Paws::CodeDeploy::RevisionLocation>
+
+  Information about the application revision that was deployed to the
+deployment group before the most recent successful deployment.
 
 
 =head2 Revision => L<Paws::CodeDeploy::RevisionLocation>

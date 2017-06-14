@@ -44,7 +44,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 A list of thing attributes, a JSON string containing name-value pairs.
 For example:
 
-C<{\"attributes\":{\"name1\":\"value2\"}})>
+C<{\"attributes\":{\"name1\":\"value2\"}}>
 
 This data is used to add new attributes or update existing attributes.
 

@@ -39,9 +39,9 @@ Dimension specification of a segment.
 
 =head2 DimensionType => Str
 
-  The type of dimension: INCLUSIVE E<ndash> Endpoints that match the
-criteria are included in the segment. EXCLUSIVE E<ndash> Endpoints that
-match the criteria are excluded from the segment.
+  The type of dimension: INCLUSIVE - Endpoints that match the criteria
+are included in the segment. EXCLUSIVE - Endpoints that match the
+criteria are excluded from the segment.
 
 
 =head2 Values => ArrayRef[Str|Undef]

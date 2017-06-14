@@ -38,15 +38,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DirectoryArn => Str
 
-ARN associated with the Directory into which the schema is copied. For
-more information, see arns.
+The Amazon Resource Name (ARN) that is associated with the Directory
+into which the schema is copied. For more information, see arns.
 
 
 
 =head2 B<REQUIRED> PublishedSchemaArn => Str
 
-Published schema ARN that needs to be copied. For more information, see
-arns.
+Published schema Amazon Resource Name (ARN) that needs to be copied.
+For more information, see arns.
 
 
 

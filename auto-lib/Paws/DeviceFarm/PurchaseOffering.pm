@@ -2,6 +2,7 @@
 package Paws::DeviceFarm::PurchaseOffering;
   use Moose;
   has OfferingId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'offeringId' );
+  has OfferingPromotionId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'offeringPromotionId' );
   has Quantity => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'quantity' );
 
   use MooseX::ClassAttribute;
@@ -37,6 +38,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 OfferingId => Str
 
 The ID of the offering.
+
+
+
+=head2 OfferingPromotionId => Str
+
+The ID of the offering promotion to be applied to the purchase.
 
 
 

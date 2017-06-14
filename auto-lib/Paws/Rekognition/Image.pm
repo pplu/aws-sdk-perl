@@ -32,14 +32,21 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Rekognition
 
 =head1 DESCRIPTION
 
-Provides the source image either as bytes or an S3 object.
+Provides the input image either as bytes or an S3 object.
+
+You pass image bytes to a Rekognition API operation by using the
+C<Bytes> property. For example, you would use the C<Bytes> property to
+pass an image loaded from a local file system. Image bytes passed by
+using the C<Bytes> property must be base64-encoded. Your code may not
+need to encode image bytes if you are using an AWS SDK to call
+Rekognition API operations. For more information, see example4.
+
+You pass images stored in an S3 bucket to a Rekognition API operation
+by using the C<S3Object> property. Images stored in an S3 bucket do not
+need to be base64-encoded.
 
 The region for the S3 bucket containing the S3 object must match the
 region you use for Amazon Rekognition operations.
-
-You may need to Base64-encode the image bytes depending on the language
-you are using and whether or not you are using the AWS SDK. For more
-information, see example4.
 
 If you use the Amazon CLI to call Amazon Rekognition operations,
 passing image bytes using the Bytes property is not supported. You must

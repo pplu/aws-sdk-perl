@@ -91,12 +91,16 @@ example, C< I<bucket-name>/I<path>/I<to>/I<object-name>.zip>)
 For source code in a GitHub repository, the HTTPS clone URL to the
 repository that contains the source and the build spec. Also, you must
 connect your AWS account to your GitHub account. To do this, use the
-AWS CodeBuild console to begin creating a build project, and follow the
-on-screen instructions to complete the connection. (After you have
-connected to your GitHub account, you do not need to finish creating
-the build project, and you may then leave the AWS CodeBuild console.)
-To instruct AWS CodeBuild to then use this connection, in the C<source>
-object, set the C<auth> object's C<type> value to C<OAUTH>.
+AWS CodeBuild console to begin creating a build project. When you use
+the console to connect (or reconnect) with GitHub, on the GitHub
+B<Authorize application> page that displays, for B<Organization
+access>, choose B<Request access> next to each repository you want to
+allow AWS CodeBuild to have access to. Then choose B<Authorize
+application>. (After you have connected to your GitHub account, you do
+not need to finish creating the build project, and you may then leave
+the AWS CodeBuild console.) To instruct AWS CodeBuild to then use this
+connection, in the C<source> object, set the C<auth> object's C<type>
+value to C<OAUTH>.
 
 =back
 

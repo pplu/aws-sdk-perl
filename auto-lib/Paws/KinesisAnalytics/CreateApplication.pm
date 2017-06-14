@@ -4,6 +4,7 @@ package Paws::KinesisAnalytics::CreateApplication;
   has ApplicationCode => (is => 'ro', isa => 'Str');
   has ApplicationDescription => (is => 'ro', isa => 'Str');
   has ApplicationName => (is => 'ro', isa => 'Str', required => 1);
+  has CloudWatchLoggingOptions => (is => 'ro', isa => 'ArrayRef[Paws::KinesisAnalytics::CloudWatchLoggingOption]');
   has Inputs => (is => 'ro', isa => 'ArrayRef[Paws::KinesisAnalytics::Input]');
   has Outputs => (is => 'ro', isa => 'ArrayRef[Paws::KinesisAnalytics::Output]');
 
@@ -41,11 +42,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 One or more SQL statements that read input data, transform it, and
 generate output. For example, you can write a SQL statement that reads
-input data and generates a running average of the number of
-advertisement clicks by vendor.
+data from one in-application stream, generates a running average of the
+number of advertisement clicks by vendor, and insert resulting rows in
+another in-application stream using pumps. For more inforamtion about
+the typical pattern, see Application Code.
 
-You can also provide a series of SQL statements, where output of one
-statement can be used as the input for the next statement.
+You can provide such series of SQL statements, where output of one
+statement can be used as the input for the next statement. You store
+intermediate results by creating in-application streams and pumps.
 
 Note that the application code must create the streams with names
 specified in the C<Outputs>. For example, if your C<Outputs> defines
@@ -65,6 +69,14 @@ Summary description of the application.
 
 Name of your Amazon Kinesis Analytics application (for example,
 C<sample-app>).
+
+
+
+=head2 CloudWatchLoggingOptions => ArrayRef[L<Paws::KinesisAnalytics::CloudWatchLoggingOption>]
+
+Use this parameter to configure a CloudWatch log stream to monitor
+application configuration errors. For more information, see Monitoring
+Configuration Errors.
 
 
 

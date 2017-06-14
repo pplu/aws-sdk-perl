@@ -39,29 +39,26 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 MaxItems => Str
 
-(Optional) The maximum number of traffic policies to be included in the
-response body for this request. If you have more than C<MaxItems>
-traffic policies, the value of the C<IsTruncated> element in the
-response is C<true>, and the value of the C<TrafficPolicyIdMarker>
-element is the ID of the first traffic policy in the next group of
-C<MaxItems> traffic policies.
+(Optional) The maximum number of traffic policies that you want Amazon
+Route 53 to return in response to this request. If you have more than
+C<MaxItems> traffic policies, the value of C<IsTruncated> in the
+response is C<true>, and the value of C<TrafficPolicyIdMarker> is the
+ID of the first traffic policy that Amazon Route 53 will return if you
+submit another request.
 
 
 
 =head2 TrafficPolicyIdMarker => Str
 
-(Conditional) For your first request to C<ListTrafficPolicies>, do not
+(Conditional) For your first request to C<ListTrafficPolicies>, don't
 include the C<TrafficPolicyIdMarker> parameter.
 
 If you have more traffic policies than the value of C<MaxItems>,
 C<ListTrafficPolicies> returns only the first C<MaxItems> traffic
-policies. To get the next group of C<MaxItems> policies, submit another
-request to C<ListTrafficPolicies>. For the value of
-C<TrafficPolicyIdMarker>, specify the value of the
-C<TrafficPolicyIdMarker> element that was returned in the previous
-response.
-
-Policies are listed in the order in which they were created.
+policies. To get the next group of policies, submit another request to
+C<ListTrafficPolicies>. For the value of C<TrafficPolicyIdMarker>,
+specify the value of C<TrafficPolicyIdMarker> that was returned in the
+previous response.
 
 
 

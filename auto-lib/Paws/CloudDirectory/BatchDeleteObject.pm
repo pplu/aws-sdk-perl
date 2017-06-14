@@ -38,7 +38,7 @@ Represents the output of a C<DeleteObject> operation.
 
 =head2 B<REQUIRED> ObjectReference => L<Paws::CloudDirectory::ObjectReference>
 
-  Reference that identifies the object.
+  The reference that identifies the object.
 
 
 

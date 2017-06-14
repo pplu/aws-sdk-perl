@@ -178,18 +178,20 @@ package Paws::CloudFront;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListCloudFrontOriginAccessIdentities(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->CloudFrontOriginAccessIdentityList->IsTruncated) {
-        $result = $self->ListCloudFrontOriginAccessIdentities(@_, Marker => $result->CloudFrontOriginAccessIdentityList->NextMarker);
-        push @{ $result->CloudFrontOriginAccessIdentityList->Items }, @{ $result->CloudFrontOriginAccessIdentityList->Items };
+      while ($next_result->CloudFrontOriginAccessIdentityList->IsTruncated) {
+        $next_result = $self->ListCloudFrontOriginAccessIdentities(@_, Marker => $next_result->CloudFrontOriginAccessIdentityList->NextMarker);
+        push @{ $result->CloudFrontOriginAccessIdentityList->Items }, @{ $next_result->CloudFrontOriginAccessIdentityList->Items };
       }
       return $result;
     } else {
       while ($result->CloudFrontOriginAccessIdentityList->IsTruncated) {
-        $result = $self->ListCloudFrontOriginAccessIdentities(@_, Marker => $result->CloudFrontOriginAccessIdentityList->NextMarker);
         $callback->($_ => 'CloudFrontOriginAccessIdentityList.Items') foreach (@{ $result->CloudFrontOriginAccessIdentityList->Items });
+        $result = $self->ListCloudFrontOriginAccessIdentities(@_, Marker => $result->CloudFrontOriginAccessIdentityList->NextMarker);
       }
+      $callback->($_ => 'CloudFrontOriginAccessIdentityList.Items') foreach (@{ $result->CloudFrontOriginAccessIdentityList->Items });
     }
 
     return undef
@@ -199,18 +201,20 @@ package Paws::CloudFront;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListDistributions(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->DistributionList->IsTruncated) {
-        $result = $self->ListDistributions(@_, Marker => $result->DistributionList->NextMarker);
-        push @{ $result->DistributionList->Items }, @{ $result->DistributionList->Items };
+      while ($next_result->DistributionList->IsTruncated) {
+        $next_result = $self->ListDistributions(@_, Marker => $next_result->DistributionList->NextMarker);
+        push @{ $result->DistributionList->Items }, @{ $next_result->DistributionList->Items };
       }
       return $result;
     } else {
       while ($result->DistributionList->IsTruncated) {
-        $result = $self->ListDistributions(@_, Marker => $result->DistributionList->NextMarker);
         $callback->($_ => 'DistributionList.Items') foreach (@{ $result->DistributionList->Items });
+        $result = $self->ListDistributions(@_, Marker => $result->DistributionList->NextMarker);
       }
+      $callback->($_ => 'DistributionList.Items') foreach (@{ $result->DistributionList->Items });
     }
 
     return undef
@@ -220,18 +224,20 @@ package Paws::CloudFront;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListInvalidations(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->InvalidationList->IsTruncated) {
-        $result = $self->ListInvalidations(@_, Marker => $result->InvalidationList->NextMarker);
-        push @{ $result->InvalidationList->Items }, @{ $result->InvalidationList->Items };
+      while ($next_result->InvalidationList->IsTruncated) {
+        $next_result = $self->ListInvalidations(@_, Marker => $next_result->InvalidationList->NextMarker);
+        push @{ $result->InvalidationList->Items }, @{ $next_result->InvalidationList->Items };
       }
       return $result;
     } else {
       while ($result->InvalidationList->IsTruncated) {
-        $result = $self->ListInvalidations(@_, Marker => $result->InvalidationList->NextMarker);
         $callback->($_ => 'InvalidationList.Items') foreach (@{ $result->InvalidationList->Items });
+        $result = $self->ListInvalidations(@_, Marker => $result->InvalidationList->NextMarker);
       }
+      $callback->($_ => 'InvalidationList.Items') foreach (@{ $result->InvalidationList->Items });
     }
 
     return undef
@@ -241,18 +247,20 @@ package Paws::CloudFront;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListStreamingDistributions(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->StreamingDistributionList->IsTruncated) {
-        $result = $self->ListStreamingDistributions(@_, Marker => $result->StreamingDistributionList->NextMarker);
-        push @{ $result->StreamingDistributionList->Items }, @{ $result->StreamingDistributionList->Items };
+      while ($next_result->StreamingDistributionList->IsTruncated) {
+        $next_result = $self->ListStreamingDistributions(@_, Marker => $next_result->StreamingDistributionList->NextMarker);
+        push @{ $result->StreamingDistributionList->Items }, @{ $next_result->StreamingDistributionList->Items };
       }
       return $result;
     } else {
       while ($result->StreamingDistributionList->IsTruncated) {
-        $result = $self->ListStreamingDistributions(@_, Marker => $result->StreamingDistributionList->NextMarker);
         $callback->($_ => 'StreamingDistributionList.Items') foreach (@{ $result->StreamingDistributionList->Items });
+        $result = $self->ListStreamingDistributions(@_, Marker => $result->StreamingDistributionList->NextMarker);
       }
+      $callback->($_ => 'StreamingDistributionList.Items') foreach (@{ $result->StreamingDistributionList->Items });
     }
 
     return undef
@@ -623,7 +631,85 @@ Each argument is described in detail in: L<Paws::CloudFront::UpdateDistribution>
 
 Returns: a L<Paws::CloudFront::UpdateDistributionResult> instance
 
-  Update a distribution.
+  Updates the configuration for a web distribution. Perform the following
+steps.
+
+For information about updating a distribution using the CloudFront
+console, see Creating or Updating a Web Distribution Using the
+CloudFront Console in the I<Amazon CloudFront Developer Guide>.
+
+B<To update a web distribution using the CloudFront API>
+
+=over
+
+=item 1.
+
+Submit a GetDistributionConfig request to get the current configuration
+and an C<Etag> header for the distribution.
+
+If you update the distribution again, you need to get a new C<Etag>
+header.
+
+=item 2.
+
+Update the XML document that was returned in the response to your
+C<GetDistributionConfig> request to include the desired changes. You
+can't change the value of C<CallerReference>. If you try to change this
+value, CloudFront returns an C<IllegalUpdate> error.
+
+The new configuration replaces the existing configuration; the values
+that you specify in an C<UpdateDistribution> request are not merged
+into the existing configuration. When you add, delete, or replace
+values in an element that allows multiple values (for example,
+C<CNAME>), you must specify all of the values that you want to appear
+in the updated distribution. In addition, you must update the
+corresponding C<Quantity> element.
+
+=item 3.
+
+Submit an C<UpdateDistribution> request to update the configuration for
+your distribution:
+
+=over
+
+=item *
+
+In the request body, include the XML document that you updated in Step
+2. The request body must include an XML document with a
+C<DistributionConfig> element.
+
+=item *
+
+Set the value of the HTTP C<If-Match> header to the value of the
+C<ETag> header that CloudFront returned when you submitted the
+C<GetDistributionConfig> request in Step 1.
+
+=back
+
+=item 4.
+
+Review the response to the C<UpdateDistribution> request to confirm
+that the configuration was successfully updated.
+
+=item 5.
+
+Optional: Submit a GetDistribution request to confirm that your changes
+have propagated. When propagation is complete, the value of C<Status>
+is C<Deployed>.
+
+Beginning with the 2012-05-05 version of the CloudFront API, we made
+substantial changes to the format of the XML document that you include
+in the request body when you create or update a distribution. With
+previous versions of the API, we discovered that it was too easy to
+accidentally delete one or more values for an element that accepts
+multiple values, for example, CNAMEs and trusted signers. Our changes
+for the 2012-05-05 release are intended to prevent these accidental
+deletions and to notify you when there's a mismatch between the number
+of values you say you're specifying in the C<Quantity> element and the
+number of values you're actually specifying.
+
+=back
+
 
 
 =head2 UpdateStreamingDistribution(Id => Str, StreamingDistributionConfig => L<Paws::CloudFront::StreamingDistributionConfig>, [IfMatch => Str])

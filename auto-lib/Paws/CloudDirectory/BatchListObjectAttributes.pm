@@ -41,14 +41,14 @@ Represents the output of a C<ListObjectAttributes> operation.
 
 =head2 FacetFilter => L<Paws::CloudDirectory::SchemaFacet>
 
-  Used to filter the list of object attributes associated with a certain
-facet.
+  Used to filter the list of object attributes that are associated with a
+certain facet.
 
 
 =head2 MaxResults => Int
 
-  Maximum number of items to be retrieved in a single call. This is an
-approximate number.
+  The maximum number of items to be retrieved in a single call. This is
+an approximate number.
 
 
 =head2 NextToken => Str

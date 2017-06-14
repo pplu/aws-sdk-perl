@@ -160,18 +160,20 @@ package Paws::MachineLearning;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeBatchPredictions(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->NextToken) {
-        $result = $self->DescribeBatchPredictions(@_, NextToken => $result->NextToken);
-        push @{ $result->Results }, @{ $result->Results };
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeBatchPredictions(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Results }, @{ $next_result->Results };
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->DescribeBatchPredictions(@_, NextToken => $result->NextToken);
         $callback->($_ => 'Results') foreach (@{ $result->Results });
+        $result = $self->DescribeBatchPredictions(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'Results') foreach (@{ $result->Results });
     }
 
     return undef
@@ -181,18 +183,20 @@ package Paws::MachineLearning;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeDataSources(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->NextToken) {
-        $result = $self->DescribeDataSources(@_, NextToken => $result->NextToken);
-        push @{ $result->Results }, @{ $result->Results };
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeDataSources(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Results }, @{ $next_result->Results };
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->DescribeDataSources(@_, NextToken => $result->NextToken);
         $callback->($_ => 'Results') foreach (@{ $result->Results });
+        $result = $self->DescribeDataSources(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'Results') foreach (@{ $result->Results });
     }
 
     return undef
@@ -202,18 +206,20 @@ package Paws::MachineLearning;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeEvaluations(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->NextToken) {
-        $result = $self->DescribeEvaluations(@_, NextToken => $result->NextToken);
-        push @{ $result->Results }, @{ $result->Results };
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeEvaluations(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Results }, @{ $next_result->Results };
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->DescribeEvaluations(@_, NextToken => $result->NextToken);
         $callback->($_ => 'Results') foreach (@{ $result->Results });
+        $result = $self->DescribeEvaluations(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'Results') foreach (@{ $result->Results });
     }
 
     return undef
@@ -223,18 +229,20 @@ package Paws::MachineLearning;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeMLModels(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->NextToken) {
-        $result = $self->DescribeMLModels(@_, NextToken => $result->NextToken);
-        push @{ $result->Results }, @{ $result->Results };
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeMLModels(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Results }, @{ $next_result->Results };
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->DescribeMLModels(@_, NextToken => $result->NextToken);
         $callback->($_ => 'Results') foreach (@{ $result->Results });
+        $result = $self->DescribeMLModels(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'Results') foreach (@{ $result->Results });
     }
 
     return undef

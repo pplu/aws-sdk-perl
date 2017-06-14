@@ -44,14 +44,8 @@ C<NextPageMarker> from the previous response, and submit another
 request that includes the value of C<NextPageMarker> in the C<Marker>
 element.
 
-Type: String
-
-Default: None
-
 Constraints: The marker must match the value specified in the previous
 request.
-
-Required: No
 
 
 
@@ -59,13 +53,7 @@ Required: No
 
 Number of domains to be returned.
 
-Type: Integer
-
 Default: 20
-
-Constraints: A numeral between 1 and 100.
-
-Required: No
 
 
 

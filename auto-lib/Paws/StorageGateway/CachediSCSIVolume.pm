@@ -46,7 +46,8 @@ Describes an iSCSI cached volume.
 
 =head2 CreatedDate => Str
 
-  
+  The date the volume was created. Volumes created prior to March 28,
+2017 donE<rsquo>t have this time stamp.
 
 
 =head2 SourceSnapshotId => Str

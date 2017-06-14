@@ -2,7 +2,9 @@ package Paws::Pinpoint::MessageConfiguration;
   use Moose;
   has APNSMessage => (is => 'ro', isa => 'Paws::Pinpoint::Message');
   has DefaultMessage => (is => 'ro', isa => 'Paws::Pinpoint::Message');
+  has EmailMessage => (is => 'ro', isa => 'Paws::Pinpoint::CampaignEmailMessage');
   has GCMMessage => (is => 'ro', isa => 'Paws::Pinpoint::Message');
+  has SMSMessage => (is => 'ro', isa => 'Paws::Pinpoint::CampaignSmsMessage');
 1;
 
 ### main pod documentation begin ###
@@ -22,7 +24,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Pinpoint::MessageConfiguration object:
 
-  $service_obj->Method(Att1 => { APNSMessage => $value, ..., GCMMessage => $value  });
+  $service_obj->Method(Att1 => { APNSMessage => $value, ..., SMSMessage => $value  });
 
 =head3 Results returned from an API call
 
@@ -49,10 +51,20 @@ default message.
   The default message for all channels.
 
 
+=head2 EmailMessage => L<Paws::Pinpoint::CampaignEmailMessage>
+
+  The email message configuration.
+
+
 =head2 GCMMessage => L<Paws::Pinpoint::Message>
 
   The message that the campaign delivers to GCM channels. Overrides the
 default message.
+
+
+=head2 SMSMessage => L<Paws::Pinpoint::CampaignSmsMessage>
+
+  The SMS message configuration.
 
 
 

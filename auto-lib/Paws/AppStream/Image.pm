@@ -6,8 +6,10 @@ package Paws::AppStream::Image;
   has CreatedTime => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has DisplayName => (is => 'ro', isa => 'Str');
+  has ImageBuilderSupported => (is => 'ro', isa => 'Bool');
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has Platform => (is => 'ro', isa => 'Str');
+  has PublicBaseImageReleasedDate => (is => 'ro', isa => 'Str');
   has State => (is => 'ro', isa => 'Str');
   has StateChangeReason => (is => 'ro', isa => 'Paws::AppStream::ImageStateChangeReason');
   has Visibility => (is => 'ro', isa => 'Str');
@@ -77,6 +79,11 @@ application catalog and is connected to fleets.
   The display name for the image.
 
 
+=head2 ImageBuilderSupported => Bool
+
+  Whether an image builder can be launched from this image.
+
+
 =head2 B<REQUIRED> Name => Str
 
   The unique identifier for the image.
@@ -85,6 +92,13 @@ application catalog and is connected to fleets.
 =head2 Platform => Str
 
   The operating system platform of the image.
+
+
+=head2 PublicBaseImageReleasedDate => Str
+
+  The AWS release date of the public base image. For private images, this
+date is the release date of the base image from which the image was
+created.
 
 
 =head2 State => Str

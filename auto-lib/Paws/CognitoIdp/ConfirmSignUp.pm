@@ -52,11 +52,12 @@ The confirmation code sent by a user's request to confirm registration.
 =head2 ForceAliasCreation => Bool
 
 Boolean to be specified to force user confirmation irrespective of
-existing alias. By default set to False. If this parameter is set to
-True and the phone number/email used for sign up confirmation already
-exists as an alias with a different user, the API call will migrate the
-alias from the previous user to the newly created user being confirmed.
-If set to False, the API will throw an B<AliasExistsException> error.
+existing alias. By default set to C<False>. If this parameter is set to
+C<True> and the phone number/email used for sign up confirmation
+already exists as an alias with a different user, the API call will
+migrate the alias from the previous user to the newly created user
+being confirmed. If set to C<False>, the API will throw an
+B<AliasExistsException> error.
 
 
 

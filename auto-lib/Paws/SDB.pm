@@ -87,18 +87,20 @@ package Paws::SDB;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListDomains(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->NextToken) {
-        $result = $self->ListDomains(@_, NextToken => $result->NextToken);
-        push @{ $result->DomainNames }, @{ $result->DomainNames };
+      while ($next_result->NextToken) {
+        $next_result = $self->ListDomains(@_, NextToken => $next_result->NextToken);
+        push @{ $result->DomainNames }, @{ $next_result->DomainNames };
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->ListDomains(@_, NextToken => $result->NextToken);
         $callback->($_ => 'DomainNames') foreach (@{ $result->DomainNames });
+        $result = $self->ListDomains(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'DomainNames') foreach (@{ $result->DomainNames });
     }
 
     return undef
@@ -108,18 +110,20 @@ package Paws::SDB;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->Select(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->NextToken) {
-        $result = $self->Select(@_, NextToken => $result->NextToken);
-        push @{ $result->Items }, @{ $result->Items };
+      while ($next_result->NextToken) {
+        $next_result = $self->Select(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Items }, @{ $next_result->Items };
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->Select(@_, NextToken => $result->NextToken);
         $callback->($_ => 'Items') foreach (@{ $result->Items });
+        $result = $self->Select(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'Items') foreach (@{ $result->Items });
     }
 
     return undef

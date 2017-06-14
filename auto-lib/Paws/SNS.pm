@@ -169,18 +169,20 @@ package Paws::SNS;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListEndpointsByPlatformApplication(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->NextToken) {
-        $result = $self->ListEndpointsByPlatformApplication(@_, NextToken => $result->NextToken);
-        push @{ $result->Endpoints }, @{ $result->Endpoints };
+      while ($next_result->NextToken) {
+        $next_result = $self->ListEndpointsByPlatformApplication(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Endpoints }, @{ $next_result->Endpoints };
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->ListEndpointsByPlatformApplication(@_, NextToken => $result->NextToken);
         $callback->($_ => 'Endpoints') foreach (@{ $result->Endpoints });
+        $result = $self->ListEndpointsByPlatformApplication(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'Endpoints') foreach (@{ $result->Endpoints });
     }
 
     return undef
@@ -190,18 +192,20 @@ package Paws::SNS;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListPlatformApplications(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->NextToken) {
-        $result = $self->ListPlatformApplications(@_, NextToken => $result->NextToken);
-        push @{ $result->PlatformApplications }, @{ $result->PlatformApplications };
+      while ($next_result->NextToken) {
+        $next_result = $self->ListPlatformApplications(@_, NextToken => $next_result->NextToken);
+        push @{ $result->PlatformApplications }, @{ $next_result->PlatformApplications };
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->ListPlatformApplications(@_, NextToken => $result->NextToken);
         $callback->($_ => 'PlatformApplications') foreach (@{ $result->PlatformApplications });
+        $result = $self->ListPlatformApplications(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'PlatformApplications') foreach (@{ $result->PlatformApplications });
     }
 
     return undef
@@ -211,18 +215,20 @@ package Paws::SNS;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListSubscriptions(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->NextToken) {
-        $result = $self->ListSubscriptions(@_, NextToken => $result->NextToken);
-        push @{ $result->Subscriptions }, @{ $result->Subscriptions };
+      while ($next_result->NextToken) {
+        $next_result = $self->ListSubscriptions(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Subscriptions }, @{ $next_result->Subscriptions };
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->ListSubscriptions(@_, NextToken => $result->NextToken);
         $callback->($_ => 'Subscriptions') foreach (@{ $result->Subscriptions });
+        $result = $self->ListSubscriptions(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'Subscriptions') foreach (@{ $result->Subscriptions });
     }
 
     return undef
@@ -232,18 +238,20 @@ package Paws::SNS;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListSubscriptionsByTopic(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->NextToken) {
-        $result = $self->ListSubscriptionsByTopic(@_, NextToken => $result->NextToken);
-        push @{ $result->Subscriptions }, @{ $result->Subscriptions };
+      while ($next_result->NextToken) {
+        $next_result = $self->ListSubscriptionsByTopic(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Subscriptions }, @{ $next_result->Subscriptions };
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->ListSubscriptionsByTopic(@_, NextToken => $result->NextToken);
         $callback->($_ => 'Subscriptions') foreach (@{ $result->Subscriptions });
+        $result = $self->ListSubscriptionsByTopic(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'Subscriptions') foreach (@{ $result->Subscriptions });
     }
 
     return undef
@@ -253,18 +261,20 @@ package Paws::SNS;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListTopics(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->NextToken) {
-        $result = $self->ListTopics(@_, NextToken => $result->NextToken);
-        push @{ $result->Topics }, @{ $result->Topics };
+      while ($next_result->NextToken) {
+        $next_result = $self->ListTopics(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Topics }, @{ $next_result->Topics };
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->ListTopics(@_, NextToken => $result->NextToken);
         $callback->($_ => 'Topics') foreach (@{ $result->Topics });
+        $result = $self->ListTopics(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'Topics') foreach (@{ $result->Topics });
     }
 
     return undef

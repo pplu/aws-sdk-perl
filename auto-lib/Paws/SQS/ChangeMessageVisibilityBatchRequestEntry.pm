@@ -34,7 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SQS::Change
 =head1 DESCRIPTION
 
 Encloses a receipt handle and an entry id for each message in C<
-ChangeMessageVisibilityBatch >.
+ChangeMessageVisibilityBatch.>
 
 All of the following list parameters must be prefixed with
 C<ChangeMessageVisibilityBatchRequestEntry.n>, where C<n> is an integer

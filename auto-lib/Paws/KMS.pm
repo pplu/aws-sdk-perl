@@ -195,18 +195,20 @@ package Paws::KMS;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListAliases(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->Truncated) {
-        $result = $self->ListAliases(@_, Marker => $result->NextMarker);
-        push @{ $result->Aliases }, @{ $result->Aliases };
+      while ($next_result->Truncated) {
+        $next_result = $self->ListAliases(@_, Marker => $next_result->NextMarker);
+        push @{ $result->Aliases }, @{ $next_result->Aliases };
       }
       return $result;
     } else {
       while ($result->Truncated) {
-        $result = $self->ListAliases(@_, Marker => $result->NextMarker);
         $callback->($_ => 'Aliases') foreach (@{ $result->Aliases });
+        $result = $self->ListAliases(@_, Marker => $result->NextMarker);
       }
+      $callback->($_ => 'Aliases') foreach (@{ $result->Aliases });
     }
 
     return undef
@@ -216,18 +218,20 @@ package Paws::KMS;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListGrants(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->Truncated) {
-        $result = $self->ListGrants(@_, Marker => $result->NextMarker);
-        push @{ $result->Grants }, @{ $result->Grants };
+      while ($next_result->Truncated) {
+        $next_result = $self->ListGrants(@_, Marker => $next_result->NextMarker);
+        push @{ $result->Grants }, @{ $next_result->Grants };
       }
       return $result;
     } else {
       while ($result->Truncated) {
-        $result = $self->ListGrants(@_, Marker => $result->NextMarker);
         $callback->($_ => 'Grants') foreach (@{ $result->Grants });
+        $result = $self->ListGrants(@_, Marker => $result->NextMarker);
       }
+      $callback->($_ => 'Grants') foreach (@{ $result->Grants });
     }
 
     return undef
@@ -237,18 +241,20 @@ package Paws::KMS;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListKeyPolicies(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->Truncated) {
-        $result = $self->ListKeyPolicies(@_, Marker => $result->NextMarker);
-        push @{ $result->PolicyNames }, @{ $result->PolicyNames };
+      while ($next_result->Truncated) {
+        $next_result = $self->ListKeyPolicies(@_, Marker => $next_result->NextMarker);
+        push @{ $result->PolicyNames }, @{ $next_result->PolicyNames };
       }
       return $result;
     } else {
       while ($result->Truncated) {
-        $result = $self->ListKeyPolicies(@_, Marker => $result->NextMarker);
         $callback->($_ => 'PolicyNames') foreach (@{ $result->PolicyNames });
+        $result = $self->ListKeyPolicies(@_, Marker => $result->NextMarker);
       }
+      $callback->($_ => 'PolicyNames') foreach (@{ $result->PolicyNames });
     }
 
     return undef
@@ -258,18 +264,20 @@ package Paws::KMS;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListKeys(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->Truncated) {
-        $result = $self->ListKeys(@_, Marker => $result->NextMarker);
-        push @{ $result->Keys }, @{ $result->Keys };
+      while ($next_result->Truncated) {
+        $next_result = $self->ListKeys(@_, Marker => $next_result->NextMarker);
+        push @{ $result->Keys }, @{ $next_result->Keys };
       }
       return $result;
     } else {
       while ($result->Truncated) {
-        $result = $self->ListKeys(@_, Marker => $result->NextMarker);
         $callback->($_ => 'Keys') foreach (@{ $result->Keys });
+        $result = $self->ListKeys(@_, Marker => $result->NextMarker);
       }
+      $callback->($_ => 'Keys') foreach (@{ $result->Keys });
     }
 
     return undef
@@ -693,8 +701,8 @@ plaintext data key from memory.
 =back
 
 To return only an encrypted copy of the data key, use
-GenerateDataKeyWithoutPlaintext. To return an arbitrary unpredictable
-byte string, use GenerateRandom.
+GenerateDataKeyWithoutPlaintext. To return a random byte string that is
+cryptographically secure, use GenerateRandom.
 
 If you use the optional C<EncryptionContext> field, you must store at
 least enough information to be able to reconstruct the full encryption
@@ -736,7 +744,10 @@ Each argument is described in detail in: L<Paws::KMS::GenerateRandom>
 
 Returns: a L<Paws::KMS::GenerateRandomResponse> instance
 
-  Generates an unpredictable byte string.
+  Returns a random byte string that is cryptographically secure.
+
+For more information about entropy and random number generation, see
+the AWS Key Management Service Cryptographic Details whitepaper.
 
 
 =head2 GetKeyPolicy(KeyId => Str, PolicyName => Str)

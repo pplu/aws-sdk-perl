@@ -39,7 +39,7 @@ Represents the output of a C<BatchRead> operation.
 
 =head2 ListObjectAttributes => L<Paws::CloudDirectory::BatchListObjectAttributes>
 
-  Lists all attributes associated with an object.
+  Lists all attributes that are associated with an object.
 
 
 =head2 ListObjectChildren => L<Paws::CloudDirectory::BatchListObjectChildren>

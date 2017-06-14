@@ -1,11 +1,13 @@
 
 package Paws::AppStream::UpdateFleet;
   use Moose;
+  has AttributesToDelete => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has ComputeCapacity => (is => 'ro', isa => 'Paws::AppStream::ComputeCapacity');
   has DeleteVpcConfig => (is => 'ro', isa => 'Bool');
   has Description => (is => 'ro', isa => 'Str');
   has DisconnectTimeoutInSeconds => (is => 'ro', isa => 'Int');
   has DisplayName => (is => 'ro', isa => 'Str');
+  has EnableDefaultInternetAccess => (is => 'ro', isa => 'Bool');
   has ImageName => (is => 'ro', isa => 'Str');
   has InstanceType => (is => 'ro', isa => 'Str');
   has MaxUserDurationInSeconds => (is => 'ro', isa => 'Int');
@@ -42,6 +44,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
+=head2 AttributesToDelete => ArrayRef[Str|Undef]
+
+Fleet attributes to be deleted.
+
+
+
 =head2 ComputeCapacity => L<Paws::AppStream::ComputeCapacity>
 
 The parameters for the capacity allocated to the fleet.
@@ -63,14 +71,21 @@ The description displayed to end users on the AppStream 2.0 portal.
 =head2 DisconnectTimeoutInSeconds => Int
 
 The time after disconnection when a session is considered to have
-ended. When the user reconnects after a disconnection, the user is
-connected to the same instance within this time interval.
+ended. If a user who got disconnected reconnects within this timeout
+interval, the user is connected back to their previous session. The
+input can be any numeric value in seconds between 60 and 57600.
 
 
 
 =head2 DisplayName => Str
 
 The name displayed to end users on the AppStream 2.0 portal.
+
+
+
+=head2 EnableDefaultInternetAccess => Bool
+
+Enables or disables default Internet access for the fleet.
 
 
 
@@ -89,7 +104,8 @@ are launched from this instance type.
 
 =head2 MaxUserDurationInSeconds => Int
 
-The maximum time during which a streaming session can run.
+The maximum time for which a streaming session can run. The input can
+be any numeric value in seconds between 600 and 57600.
 
 
 

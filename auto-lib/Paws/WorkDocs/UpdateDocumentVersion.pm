@@ -1,6 +1,7 @@
 
 package Paws::WorkDocs::UpdateDocumentVersion;
   use Moose;
+  has AuthenticationToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Authentication' );
   has DocumentId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'DocumentId' , required => 1);
   has VersionId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'VersionId' , required => 1);
   has VersionStatus => (is => 'ro', isa => 'Str');
@@ -35,6 +36,14 @@ As an example:
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 
 =head1 ATTRIBUTES
+
+
+=head2 AuthenticationToken => Str
+
+Amazon WorkDocs authentication token. This field should not be set when
+using administrative API actions, as in accessing the API using AWS
+credentials.
+
 
 
 =head2 B<REQUIRED> DocumentId => Str

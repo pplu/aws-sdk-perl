@@ -2,6 +2,7 @@ package Paws::Pinpoint::APNSChannelResponse;
   use Moose;
   has ApplicationId => (is => 'ro', isa => 'Str');
   has CreationDate => (is => 'ro', isa => 'Str');
+  has Enabled => (is => 'ro', isa => 'Bool');
   has Id => (is => 'ro', isa => 'Str');
   has IsArchived => (is => 'ro', isa => 'Bool');
   has LastModifiedBy => (is => 'ro', isa => 'Str');
@@ -53,9 +54,14 @@ Apple Distribution Push Notification Service channel definition.
   When was this segment created
 
 
+=head2 Enabled => Bool
+
+  If the channel is enabled for sending messages.
+
+
 =head2 Id => Str
 
-  The unique channel ID.
+  Channel ID. Not used, only for backwards compatibility.
 
 
 =head2 IsArchived => Bool

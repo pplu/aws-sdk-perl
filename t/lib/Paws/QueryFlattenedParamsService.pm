@@ -20,4 +20,7 @@ package Paws::QueryFlattenedParamsService;
     my $call_object = $self->new_with_coercions('Paws::JsonParamsService::Method2', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
+  sub operations { return qw/Method2/ }
+
 1;

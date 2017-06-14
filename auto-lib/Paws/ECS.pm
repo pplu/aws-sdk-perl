@@ -175,18 +175,20 @@ package Paws::ECS;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListClusters(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->nextToken) {
-        $result = $self->ListClusters(@_, nextToken => $result->nextToken);
-        push @{ $result->clusterArns }, @{ $result->clusterArns };
+      while ($next_result->nextToken) {
+        $next_result = $self->ListClusters(@_, nextToken => $next_result->nextToken);
+        push @{ $result->clusterArns }, @{ $next_result->clusterArns };
       }
       return $result;
     } else {
       while ($result->nextToken) {
-        $result = $self->ListClusters(@_, nextToken => $result->nextToken);
         $callback->($_ => 'clusterArns') foreach (@{ $result->clusterArns });
+        $result = $self->ListClusters(@_, nextToken => $result->nextToken);
       }
+      $callback->($_ => 'clusterArns') foreach (@{ $result->clusterArns });
     }
 
     return undef
@@ -196,18 +198,20 @@ package Paws::ECS;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListContainerInstances(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->nextToken) {
-        $result = $self->ListContainerInstances(@_, nextToken => $result->nextToken);
-        push @{ $result->containerInstanceArns }, @{ $result->containerInstanceArns };
+      while ($next_result->nextToken) {
+        $next_result = $self->ListContainerInstances(@_, nextToken => $next_result->nextToken);
+        push @{ $result->containerInstanceArns }, @{ $next_result->containerInstanceArns };
       }
       return $result;
     } else {
       while ($result->nextToken) {
-        $result = $self->ListContainerInstances(@_, nextToken => $result->nextToken);
         $callback->($_ => 'containerInstanceArns') foreach (@{ $result->containerInstanceArns });
+        $result = $self->ListContainerInstances(@_, nextToken => $result->nextToken);
       }
+      $callback->($_ => 'containerInstanceArns') foreach (@{ $result->containerInstanceArns });
     }
 
     return undef
@@ -217,18 +221,20 @@ package Paws::ECS;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListServices(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->nextToken) {
-        $result = $self->ListServices(@_, nextToken => $result->nextToken);
-        push @{ $result->serviceArns }, @{ $result->serviceArns };
+      while ($next_result->nextToken) {
+        $next_result = $self->ListServices(@_, nextToken => $next_result->nextToken);
+        push @{ $result->serviceArns }, @{ $next_result->serviceArns };
       }
       return $result;
     } else {
       while ($result->nextToken) {
-        $result = $self->ListServices(@_, nextToken => $result->nextToken);
         $callback->($_ => 'serviceArns') foreach (@{ $result->serviceArns });
+        $result = $self->ListServices(@_, nextToken => $result->nextToken);
       }
+      $callback->($_ => 'serviceArns') foreach (@{ $result->serviceArns });
     }
 
     return undef
@@ -238,18 +244,20 @@ package Paws::ECS;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListTaskDefinitionFamilies(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->nextToken) {
-        $result = $self->ListTaskDefinitionFamilies(@_, nextToken => $result->nextToken);
-        push @{ $result->families }, @{ $result->families };
+      while ($next_result->nextToken) {
+        $next_result = $self->ListTaskDefinitionFamilies(@_, nextToken => $next_result->nextToken);
+        push @{ $result->families }, @{ $next_result->families };
       }
       return $result;
     } else {
       while ($result->nextToken) {
-        $result = $self->ListTaskDefinitionFamilies(@_, nextToken => $result->nextToken);
         $callback->($_ => 'families') foreach (@{ $result->families });
+        $result = $self->ListTaskDefinitionFamilies(@_, nextToken => $result->nextToken);
       }
+      $callback->($_ => 'families') foreach (@{ $result->families });
     }
 
     return undef
@@ -259,18 +267,20 @@ package Paws::ECS;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListTaskDefinitions(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->nextToken) {
-        $result = $self->ListTaskDefinitions(@_, nextToken => $result->nextToken);
-        push @{ $result->taskDefinitionArns }, @{ $result->taskDefinitionArns };
+      while ($next_result->nextToken) {
+        $next_result = $self->ListTaskDefinitions(@_, nextToken => $next_result->nextToken);
+        push @{ $result->taskDefinitionArns }, @{ $next_result->taskDefinitionArns };
       }
       return $result;
     } else {
       while ($result->nextToken) {
-        $result = $self->ListTaskDefinitions(@_, nextToken => $result->nextToken);
         $callback->($_ => 'taskDefinitionArns') foreach (@{ $result->taskDefinitionArns });
+        $result = $self->ListTaskDefinitions(@_, nextToken => $result->nextToken);
       }
+      $callback->($_ => 'taskDefinitionArns') foreach (@{ $result->taskDefinitionArns });
     }
 
     return undef
@@ -280,18 +290,20 @@ package Paws::ECS;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListTasks(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->nextToken) {
-        $result = $self->ListTasks(@_, nextToken => $result->nextToken);
-        push @{ $result->taskArns }, @{ $result->taskArns };
+      while ($next_result->nextToken) {
+        $next_result = $self->ListTasks(@_, nextToken => $next_result->nextToken);
+        push @{ $result->taskArns }, @{ $next_result->taskArns };
       }
       return $result;
     } else {
       while ($result->nextToken) {
-        $result = $self->ListTasks(@_, nextToken => $result->nextToken);
         $callback->($_ => 'taskArns') foreach (@{ $result->taskArns });
+        $result = $self->ListTasks(@_, nextToken => $result->nextToken);
       }
+      $callback->($_ => 'taskArns') foreach (@{ $result->taskArns });
     }
 
     return undef
@@ -382,25 +394,27 @@ The C<minimumHealthyPercent> represents a lower limit on the number of
 your service's tasks that must remain in the C<RUNNING> state during a
 deployment, as a percentage of the C<desiredCount> (rounded up to the
 nearest integer). This parameter enables you to deploy without using
-additional cluster capacity. For example, if C<desiredCount> is four
-tasks and the minimum is 50%, the scheduler can stop two existing tasks
-to free up cluster capacity before starting two new tasks. Tasks for
-services that do not use a load balancer are considered healthy if they
-are in the C<RUNNING> state. Tasks for services that use a load
-balancer are considered healthy if they are in the C<RUNNING> state and
-the container instance they are hosted on is reported as healthy by the
-load balancer. The default value is 50% in the console and 100% for the
-AWS CLI, the AWS SDKs, and the APIs.
+additional cluster capacity. For example, if your service has a
+C<desiredCount> of four tasks and a C<minimumHealthyPercent> of 50%,
+the scheduler can stop two existing tasks to free up cluster capacity
+before starting two new tasks. Tasks for services that I<do not> use a
+load balancer are considered healthy if they are in the C<RUNNING>
+state. Tasks for services that I<do> use a load balancer are considered
+healthy if they are in the C<RUNNING> state and the container instance
+they are hosted on is reported as healthy by the load balancer. The
+default value for C<minimumHealthyPercent> is 50% in the console and
+100% for the AWS CLI, the AWS SDKs, and the APIs.
 
 The C<maximumPercent> parameter represents an upper limit on the number
 of your service's tasks that are allowed in the C<RUNNING> or
 C<PENDING> state during a deployment, as a percentage of the
 C<desiredCount> (rounded down to the nearest integer). This parameter
-enables you to define the deployment batch size. For example, if
-C<desiredCount> is four tasks and the maximum is 200%, the scheduler
-can start four new tasks before stopping the four older tasks (provided
-that the cluster resources required to do this are available). The
-default value is 200%.
+enables you to define the deployment batch size. For example, if your
+service has a C<desiredCount> of four tasks and a C<maximumPercent>
+value of 200%, the scheduler can start four new tasks before stopping
+the four older tasks (provided that the cluster resources required to
+do this are available). The default value for C<maximumPercent> is
+200%.
 
 When the service scheduler launches new tasks, it determines task
 placement in your cluster using the following logic:
@@ -417,7 +431,7 @@ CPU, memory, ports, and container instance attributes).
 
 By default, the service scheduler attempts to balance tasks across
 Availability Zones in this manner (although you can choose a different
-placement strategy):
+placement strategy) with the C<placementStrategy> parameter):
 
 =over
 
@@ -530,6 +544,11 @@ reference an C<INACTIVE> task definition (although there may be up to a
 10 minute window following deregistration where these restrictions have
 not yet taken effect).
 
+At this time, C<INACTIVE> task definitions remain discoverable in your
+account indefinitely; however, this behavior is subject to change in
+the future, so you should not rely on C<INACTIVE> task definitions
+persisting beyond the life cycle of any associated tasks and services.
+
 
 =head2 DescribeClusters([Clusters => ArrayRef[Str|Undef]])
 
@@ -605,7 +624,7 @@ Returns: a L<Paws::ECS::ListAttributesResponse> instance
 
   Lists the attributes for Amazon ECS resources within a specified target
 type and cluster. When you specify a target type and cluster,
-C<LisAttributes> returns a list of attribute objects, one for each
+C<ListAttributes> returns a list of attribute objects, one for each
 attribute on each resource. You can filter the list of results to a
 single attribute name to only return results that have that name. You
 can also filter the results by attribute name and value, for example,
@@ -778,10 +797,15 @@ Returns: a L<Paws::ECS::StopTaskResponse> instance
 
 When StopTask is called on a task, the equivalent of C<docker stop> is
 issued to the containers running in the task. This results in a
-C<SIGTERM> and a 30-second timeout, after which C<SIGKILL> is sent and
-the containers are forcibly stopped. If the container handles the
-C<SIGTERM> gracefully and exits within 30 seconds from receiving it, no
-C<SIGKILL> is sent.
+C<SIGTERM> and a default 30-second timeout, after which C<SIGKILL> is
+sent and the containers are forcibly stopped. If the container handles
+the C<SIGTERM> gracefully and exits within 30 seconds from receiving
+it, no C<SIGKILL> is sent.
+
+The default 30-second timeout can be configured on the Amazon ECS
+container agent with the C<ECS_CONTAINER_STOP_TIMEOUT> variable. For
+more information, see Amazon ECS Container Agent Configuration in the
+I<Amazon EC2 Container Service Developer Guide>.
 
 
 =head2 SubmitContainerStateChange([Cluster => Str, ContainerName => Str, ExitCode => Int, NetworkBindings => ArrayRef[L<Paws::ECS::NetworkBinding>], Reason => Str, Status => Str, Task => Str])

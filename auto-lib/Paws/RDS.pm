@@ -466,24 +466,36 @@ package Paws::RDS;
     my $call_object = $self->new_with_coercions('Paws::RDS::RevokeDBSecurityGroupIngress', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub StartDBInstance {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::StartDBInstance', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub StopDBInstance {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::StopDBInstance', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   
   sub DescribeAllDBClusterSnapshots {
     my $self = shift;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeDBClusterSnapshots(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->Marker) {
-        $result = $self->DescribeDBClusterSnapshots(@_, Marker => $result->Marker);
-        push @{ $result->DBClusterSnapshots }, @{ $result->DBClusterSnapshots };
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeDBClusterSnapshots(@_, Marker => $next_result->Marker);
+        push @{ $result->DBClusterSnapshots }, @{ $next_result->DBClusterSnapshots };
       }
       return $result;
     } else {
       while ($result->Marker) {
-        $result = $self->DescribeDBClusterSnapshots(@_, Marker => $result->Marker);
         $callback->($_ => 'DBClusterSnapshots') foreach (@{ $result->DBClusterSnapshots });
+        $result = $self->DescribeDBClusterSnapshots(@_, Marker => $result->Marker);
       }
+      $callback->($_ => 'DBClusterSnapshots') foreach (@{ $result->DBClusterSnapshots });
     }
 
     return undef
@@ -493,18 +505,20 @@ package Paws::RDS;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeDBEngineVersions(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->Marker) {
-        $result = $self->DescribeDBEngineVersions(@_, Marker => $result->Marker);
-        push @{ $result->DBEngineVersions }, @{ $result->DBEngineVersions };
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeDBEngineVersions(@_, Marker => $next_result->Marker);
+        push @{ $result->DBEngineVersions }, @{ $next_result->DBEngineVersions };
       }
       return $result;
     } else {
       while ($result->Marker) {
-        $result = $self->DescribeDBEngineVersions(@_, Marker => $result->Marker);
         $callback->($_ => 'DBEngineVersions') foreach (@{ $result->DBEngineVersions });
+        $result = $self->DescribeDBEngineVersions(@_, Marker => $result->Marker);
       }
+      $callback->($_ => 'DBEngineVersions') foreach (@{ $result->DBEngineVersions });
     }
 
     return undef
@@ -514,18 +528,20 @@ package Paws::RDS;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeDBInstances(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->Marker) {
-        $result = $self->DescribeDBInstances(@_, Marker => $result->Marker);
-        push @{ $result->DBInstances }, @{ $result->DBInstances };
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeDBInstances(@_, Marker => $next_result->Marker);
+        push @{ $result->DBInstances }, @{ $next_result->DBInstances };
       }
       return $result;
     } else {
       while ($result->Marker) {
-        $result = $self->DescribeDBInstances(@_, Marker => $result->Marker);
         $callback->($_ => 'DBInstances') foreach (@{ $result->DBInstances });
+        $result = $self->DescribeDBInstances(@_, Marker => $result->Marker);
       }
+      $callback->($_ => 'DBInstances') foreach (@{ $result->DBInstances });
     }
 
     return undef
@@ -535,18 +551,20 @@ package Paws::RDS;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeDBLogFiles(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->Marker) {
-        $result = $self->DescribeDBLogFiles(@_, Marker => $result->Marker);
-        push @{ $result->DescribeDBLogFiles }, @{ $result->DescribeDBLogFiles };
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeDBLogFiles(@_, Marker => $next_result->Marker);
+        push @{ $result->DescribeDBLogFiles }, @{ $next_result->DescribeDBLogFiles };
       }
       return $result;
     } else {
       while ($result->Marker) {
-        $result = $self->DescribeDBLogFiles(@_, Marker => $result->Marker);
         $callback->($_ => 'DescribeDBLogFiles') foreach (@{ $result->DescribeDBLogFiles });
+        $result = $self->DescribeDBLogFiles(@_, Marker => $result->Marker);
       }
+      $callback->($_ => 'DescribeDBLogFiles') foreach (@{ $result->DescribeDBLogFiles });
     }
 
     return undef
@@ -556,18 +574,20 @@ package Paws::RDS;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeDBParameterGroups(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->Marker) {
-        $result = $self->DescribeDBParameterGroups(@_, Marker => $result->Marker);
-        push @{ $result->DBParameterGroups }, @{ $result->DBParameterGroups };
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeDBParameterGroups(@_, Marker => $next_result->Marker);
+        push @{ $result->DBParameterGroups }, @{ $next_result->DBParameterGroups };
       }
       return $result;
     } else {
       while ($result->Marker) {
-        $result = $self->DescribeDBParameterGroups(@_, Marker => $result->Marker);
         $callback->($_ => 'DBParameterGroups') foreach (@{ $result->DBParameterGroups });
+        $result = $self->DescribeDBParameterGroups(@_, Marker => $result->Marker);
       }
+      $callback->($_ => 'DBParameterGroups') foreach (@{ $result->DBParameterGroups });
     }
 
     return undef
@@ -577,18 +597,20 @@ package Paws::RDS;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeDBParameters(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->Marker) {
-        $result = $self->DescribeDBParameters(@_, Marker => $result->Marker);
-        push @{ $result->Parameters }, @{ $result->Parameters };
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeDBParameters(@_, Marker => $next_result->Marker);
+        push @{ $result->Parameters }, @{ $next_result->Parameters };
       }
       return $result;
     } else {
       while ($result->Marker) {
-        $result = $self->DescribeDBParameters(@_, Marker => $result->Marker);
         $callback->($_ => 'Parameters') foreach (@{ $result->Parameters });
+        $result = $self->DescribeDBParameters(@_, Marker => $result->Marker);
       }
+      $callback->($_ => 'Parameters') foreach (@{ $result->Parameters });
     }
 
     return undef
@@ -598,18 +620,20 @@ package Paws::RDS;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeDBSecurityGroups(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->Marker) {
-        $result = $self->DescribeDBSecurityGroups(@_, Marker => $result->Marker);
-        push @{ $result->DBSecurityGroups }, @{ $result->DBSecurityGroups };
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeDBSecurityGroups(@_, Marker => $next_result->Marker);
+        push @{ $result->DBSecurityGroups }, @{ $next_result->DBSecurityGroups };
       }
       return $result;
     } else {
       while ($result->Marker) {
-        $result = $self->DescribeDBSecurityGroups(@_, Marker => $result->Marker);
         $callback->($_ => 'DBSecurityGroups') foreach (@{ $result->DBSecurityGroups });
+        $result = $self->DescribeDBSecurityGroups(@_, Marker => $result->Marker);
       }
+      $callback->($_ => 'DBSecurityGroups') foreach (@{ $result->DBSecurityGroups });
     }
 
     return undef
@@ -619,18 +643,20 @@ package Paws::RDS;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeDBSnapshots(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->Marker) {
-        $result = $self->DescribeDBSnapshots(@_, Marker => $result->Marker);
-        push @{ $result->DBSnapshots }, @{ $result->DBSnapshots };
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeDBSnapshots(@_, Marker => $next_result->Marker);
+        push @{ $result->DBSnapshots }, @{ $next_result->DBSnapshots };
       }
       return $result;
     } else {
       while ($result->Marker) {
-        $result = $self->DescribeDBSnapshots(@_, Marker => $result->Marker);
         $callback->($_ => 'DBSnapshots') foreach (@{ $result->DBSnapshots });
+        $result = $self->DescribeDBSnapshots(@_, Marker => $result->Marker);
       }
+      $callback->($_ => 'DBSnapshots') foreach (@{ $result->DBSnapshots });
     }
 
     return undef
@@ -640,18 +666,20 @@ package Paws::RDS;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeDBSubnetGroups(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->Marker) {
-        $result = $self->DescribeDBSubnetGroups(@_, Marker => $result->Marker);
-        push @{ $result->DBSubnetGroups }, @{ $result->DBSubnetGroups };
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeDBSubnetGroups(@_, Marker => $next_result->Marker);
+        push @{ $result->DBSubnetGroups }, @{ $next_result->DBSubnetGroups };
       }
       return $result;
     } else {
       while ($result->Marker) {
-        $result = $self->DescribeDBSubnetGroups(@_, Marker => $result->Marker);
         $callback->($_ => 'DBSubnetGroups') foreach (@{ $result->DBSubnetGroups });
+        $result = $self->DescribeDBSubnetGroups(@_, Marker => $result->Marker);
       }
+      $callback->($_ => 'DBSubnetGroups') foreach (@{ $result->DBSubnetGroups });
     }
 
     return undef
@@ -661,18 +689,20 @@ package Paws::RDS;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeEngineDefaultParameters(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->Marker) {
-        $result = $self->DescribeEngineDefaultParameters(@_, Marker => $result->EngineDefaults->Marker);
-        push @{ $result->EngineDefaults->Parameters }, @{ $result->EngineDefaults->Parameters };
+      while ($next_result->EngineDefaults->Marker) {
+        $next_result = $self->DescribeEngineDefaultParameters(@_, Marker => $next_result->EngineDefaults->Marker);
+        push @{ $result->EngineDefaults->Parameters }, @{ $next_result->EngineDefaults->Parameters };
       }
       return $result;
     } else {
-      while ($result->Marker) {
-        $result = $self->DescribeEngineDefaultParameters(@_, Marker => $result->EngineDefaults->Marker);
+      while ($result->EngineDefaults->Marker) {
         $callback->($_ => 'EngineDefaults.Parameters') foreach (@{ $result->EngineDefaults->Parameters });
+        $result = $self->DescribeEngineDefaultParameters(@_, Marker => $result->EngineDefaults->Marker);
       }
+      $callback->($_ => 'EngineDefaults.Parameters') foreach (@{ $result->EngineDefaults->Parameters });
     }
 
     return undef
@@ -682,18 +712,20 @@ package Paws::RDS;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeEvents(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->Marker) {
-        $result = $self->DescribeEvents(@_, Marker => $result->Marker);
-        push @{ $result->Events }, @{ $result->Events };
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeEvents(@_, Marker => $next_result->Marker);
+        push @{ $result->Events }, @{ $next_result->Events };
       }
       return $result;
     } else {
       while ($result->Marker) {
-        $result = $self->DescribeEvents(@_, Marker => $result->Marker);
         $callback->($_ => 'Events') foreach (@{ $result->Events });
+        $result = $self->DescribeEvents(@_, Marker => $result->Marker);
       }
+      $callback->($_ => 'Events') foreach (@{ $result->Events });
     }
 
     return undef
@@ -703,18 +735,20 @@ package Paws::RDS;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeEventSubscriptions(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->Marker) {
-        $result = $self->DescribeEventSubscriptions(@_, Marker => $result->Marker);
-        push @{ $result->EventSubscriptionsList }, @{ $result->EventSubscriptionsList };
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeEventSubscriptions(@_, Marker => $next_result->Marker);
+        push @{ $result->EventSubscriptionsList }, @{ $next_result->EventSubscriptionsList };
       }
       return $result;
     } else {
       while ($result->Marker) {
-        $result = $self->DescribeEventSubscriptions(@_, Marker => $result->Marker);
         $callback->($_ => 'EventSubscriptionsList') foreach (@{ $result->EventSubscriptionsList });
+        $result = $self->DescribeEventSubscriptions(@_, Marker => $result->Marker);
       }
+      $callback->($_ => 'EventSubscriptionsList') foreach (@{ $result->EventSubscriptionsList });
     }
 
     return undef
@@ -724,18 +758,20 @@ package Paws::RDS;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeOptionGroupOptions(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->Marker) {
-        $result = $self->DescribeOptionGroupOptions(@_, Marker => $result->Marker);
-        push @{ $result->OptionGroupOptions }, @{ $result->OptionGroupOptions };
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeOptionGroupOptions(@_, Marker => $next_result->Marker);
+        push @{ $result->OptionGroupOptions }, @{ $next_result->OptionGroupOptions };
       }
       return $result;
     } else {
       while ($result->Marker) {
-        $result = $self->DescribeOptionGroupOptions(@_, Marker => $result->Marker);
         $callback->($_ => 'OptionGroupOptions') foreach (@{ $result->OptionGroupOptions });
+        $result = $self->DescribeOptionGroupOptions(@_, Marker => $result->Marker);
       }
+      $callback->($_ => 'OptionGroupOptions') foreach (@{ $result->OptionGroupOptions });
     }
 
     return undef
@@ -745,18 +781,20 @@ package Paws::RDS;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeOptionGroups(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->Marker) {
-        $result = $self->DescribeOptionGroups(@_, Marker => $result->Marker);
-        push @{ $result->OptionGroupsList }, @{ $result->OptionGroupsList };
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeOptionGroups(@_, Marker => $next_result->Marker);
+        push @{ $result->OptionGroupsList }, @{ $next_result->OptionGroupsList };
       }
       return $result;
     } else {
       while ($result->Marker) {
-        $result = $self->DescribeOptionGroups(@_, Marker => $result->Marker);
         $callback->($_ => 'OptionGroupsList') foreach (@{ $result->OptionGroupsList });
+        $result = $self->DescribeOptionGroups(@_, Marker => $result->Marker);
       }
+      $callback->($_ => 'OptionGroupsList') foreach (@{ $result->OptionGroupsList });
     }
 
     return undef
@@ -766,18 +804,20 @@ package Paws::RDS;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeOrderableDBInstanceOptions(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->Marker) {
-        $result = $self->DescribeOrderableDBInstanceOptions(@_, Marker => $result->Marker);
-        push @{ $result->OrderableDBInstanceOptions }, @{ $result->OrderableDBInstanceOptions };
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeOrderableDBInstanceOptions(@_, Marker => $next_result->Marker);
+        push @{ $result->OrderableDBInstanceOptions }, @{ $next_result->OrderableDBInstanceOptions };
       }
       return $result;
     } else {
       while ($result->Marker) {
-        $result = $self->DescribeOrderableDBInstanceOptions(@_, Marker => $result->Marker);
         $callback->($_ => 'OrderableDBInstanceOptions') foreach (@{ $result->OrderableDBInstanceOptions });
+        $result = $self->DescribeOrderableDBInstanceOptions(@_, Marker => $result->Marker);
       }
+      $callback->($_ => 'OrderableDBInstanceOptions') foreach (@{ $result->OrderableDBInstanceOptions });
     }
 
     return undef
@@ -787,18 +827,20 @@ package Paws::RDS;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeReservedDBInstances(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->Marker) {
-        $result = $self->DescribeReservedDBInstances(@_, Marker => $result->Marker);
-        push @{ $result->ReservedDBInstances }, @{ $result->ReservedDBInstances };
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeReservedDBInstances(@_, Marker => $next_result->Marker);
+        push @{ $result->ReservedDBInstances }, @{ $next_result->ReservedDBInstances };
       }
       return $result;
     } else {
       while ($result->Marker) {
-        $result = $self->DescribeReservedDBInstances(@_, Marker => $result->Marker);
         $callback->($_ => 'ReservedDBInstances') foreach (@{ $result->ReservedDBInstances });
+        $result = $self->DescribeReservedDBInstances(@_, Marker => $result->Marker);
       }
+      $callback->($_ => 'ReservedDBInstances') foreach (@{ $result->ReservedDBInstances });
     }
 
     return undef
@@ -808,18 +850,20 @@ package Paws::RDS;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeReservedDBInstancesOfferings(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->Marker) {
-        $result = $self->DescribeReservedDBInstancesOfferings(@_, Marker => $result->Marker);
-        push @{ $result->ReservedDBInstancesOfferings }, @{ $result->ReservedDBInstancesOfferings };
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeReservedDBInstancesOfferings(@_, Marker => $next_result->Marker);
+        push @{ $result->ReservedDBInstancesOfferings }, @{ $next_result->ReservedDBInstancesOfferings };
       }
       return $result;
     } else {
       while ($result->Marker) {
-        $result = $self->DescribeReservedDBInstancesOfferings(@_, Marker => $result->Marker);
         $callback->($_ => 'ReservedDBInstancesOfferings') foreach (@{ $result->ReservedDBInstancesOfferings });
+        $result = $self->DescribeReservedDBInstancesOfferings(@_, Marker => $result->Marker);
       }
+      $callback->($_ => 'ReservedDBInstancesOfferings') foreach (@{ $result->ReservedDBInstancesOfferings });
     }
 
     return undef
@@ -829,25 +873,27 @@ package Paws::RDS;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DownloadDBLogFilePortion(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->AdditionalDataPending) {
-        $result = $self->DownloadDBLogFilePortion(@_, Marker => $result->Marker);
-        push @{ $result->LogFileData }, @{ $result->LogFileData };
+      while ($next_result->AdditionalDataPending) {
+        $next_result = $self->DownloadDBLogFilePortion(@_, Marker => $next_result->Marker);
+        push @{ $result->LogFileData }, @{ $next_result->LogFileData };
       }
       return $result;
     } else {
       while ($result->AdditionalDataPending) {
-        $result = $self->DownloadDBLogFilePortion(@_, Marker => $result->Marker);
         $callback->($_ => 'LogFileData') foreach (@{ $result->LogFileData });
+        $result = $self->DownloadDBLogFilePortion(@_, Marker => $result->Marker);
       }
+      $callback->($_ => 'LogFileData') foreach (@{ $result->LogFileData });
     }
 
     return undef
   }
 
 
-  sub operations { qw/AddRoleToDBCluster AddSourceIdentifierToSubscription AddTagsToResource ApplyPendingMaintenanceAction AuthorizeDBSecurityGroupIngress CopyDBClusterParameterGroup CopyDBClusterSnapshot CopyDBParameterGroup CopyDBSnapshot CopyOptionGroup CreateDBCluster CreateDBClusterParameterGroup CreateDBClusterSnapshot CreateDBInstance CreateDBInstanceReadReplica CreateDBParameterGroup CreateDBSecurityGroup CreateDBSnapshot CreateDBSubnetGroup CreateEventSubscription CreateOptionGroup DeleteDBCluster DeleteDBClusterParameterGroup DeleteDBClusterSnapshot DeleteDBInstance DeleteDBParameterGroup DeleteDBSecurityGroup DeleteDBSnapshot DeleteDBSubnetGroup DeleteEventSubscription DeleteOptionGroup DescribeAccountAttributes DescribeCertificates DescribeDBClusterParameterGroups DescribeDBClusterParameters DescribeDBClusters DescribeDBClusterSnapshotAttributes DescribeDBClusterSnapshots DescribeDBEngineVersions DescribeDBInstances DescribeDBLogFiles DescribeDBParameterGroups DescribeDBParameters DescribeDBSecurityGroups DescribeDBSnapshotAttributes DescribeDBSnapshots DescribeDBSubnetGroups DescribeEngineDefaultClusterParameters DescribeEngineDefaultParameters DescribeEventCategories DescribeEvents DescribeEventSubscriptions DescribeOptionGroupOptions DescribeOptionGroups DescribeOrderableDBInstanceOptions DescribePendingMaintenanceActions DescribeReservedDBInstances DescribeReservedDBInstancesOfferings DescribeSourceRegions DownloadDBLogFilePortion FailoverDBCluster ListTagsForResource ModifyDBCluster ModifyDBClusterParameterGroup ModifyDBClusterSnapshotAttribute ModifyDBInstance ModifyDBParameterGroup ModifyDBSnapshot ModifyDBSnapshotAttribute ModifyDBSubnetGroup ModifyEventSubscription ModifyOptionGroup PromoteReadReplica PromoteReadReplicaDBCluster PurchaseReservedDBInstancesOffering RebootDBInstance RemoveRoleFromDBCluster RemoveSourceIdentifierFromSubscription RemoveTagsFromResource ResetDBClusterParameterGroup ResetDBParameterGroup RestoreDBClusterFromS3 RestoreDBClusterFromSnapshot RestoreDBClusterToPointInTime RestoreDBInstanceFromDBSnapshot RestoreDBInstanceToPointInTime RevokeDBSecurityGroupIngress / }
+  sub operations { qw/AddRoleToDBCluster AddSourceIdentifierToSubscription AddTagsToResource ApplyPendingMaintenanceAction AuthorizeDBSecurityGroupIngress CopyDBClusterParameterGroup CopyDBClusterSnapshot CopyDBParameterGroup CopyDBSnapshot CopyOptionGroup CreateDBCluster CreateDBClusterParameterGroup CreateDBClusterSnapshot CreateDBInstance CreateDBInstanceReadReplica CreateDBParameterGroup CreateDBSecurityGroup CreateDBSnapshot CreateDBSubnetGroup CreateEventSubscription CreateOptionGroup DeleteDBCluster DeleteDBClusterParameterGroup DeleteDBClusterSnapshot DeleteDBInstance DeleteDBParameterGroup DeleteDBSecurityGroup DeleteDBSnapshot DeleteDBSubnetGroup DeleteEventSubscription DeleteOptionGroup DescribeAccountAttributes DescribeCertificates DescribeDBClusterParameterGroups DescribeDBClusterParameters DescribeDBClusters DescribeDBClusterSnapshotAttributes DescribeDBClusterSnapshots DescribeDBEngineVersions DescribeDBInstances DescribeDBLogFiles DescribeDBParameterGroups DescribeDBParameters DescribeDBSecurityGroups DescribeDBSnapshotAttributes DescribeDBSnapshots DescribeDBSubnetGroups DescribeEngineDefaultClusterParameters DescribeEngineDefaultParameters DescribeEventCategories DescribeEvents DescribeEventSubscriptions DescribeOptionGroupOptions DescribeOptionGroups DescribeOrderableDBInstanceOptions DescribePendingMaintenanceActions DescribeReservedDBInstances DescribeReservedDBInstancesOfferings DescribeSourceRegions DownloadDBLogFilePortion FailoverDBCluster ListTagsForResource ModifyDBCluster ModifyDBClusterParameterGroup ModifyDBClusterSnapshotAttribute ModifyDBInstance ModifyDBParameterGroup ModifyDBSnapshot ModifyDBSnapshotAttribute ModifyDBSubnetGroup ModifyEventSubscription ModifyOptionGroup PromoteReadReplica PromoteReadReplicaDBCluster PurchaseReservedDBInstancesOffering RebootDBInstance RemoveRoleFromDBCluster RemoveSourceIdentifierFromSubscription RemoveTagsFromResource ResetDBClusterParameterGroup ResetDBParameterGroup RestoreDBClusterFromS3 RestoreDBClusterFromSnapshot RestoreDBClusterToPointInTime RestoreDBInstanceFromDBSnapshot RestoreDBInstanceToPointInTime RevokeDBSecurityGroupIngress StartDBInstance StopDBInstance / }
 
 1;
 
@@ -879,7 +925,7 @@ Amazon Relational Database Service
 
 Amazon Relational Database Service (Amazon RDS) is a web service that
 makes it easier to set up, operate, and scale a relational database in
-the cloud. It provides cost-efficient, resizeable capacity for an
+the cloud. It provides cost-efficient, resizable capacity for an
 industry-standard relational database and manages common database
 administration tasks, freeing up developers to focus on what makes
 their applications and businesses unique.
@@ -1129,7 +1175,7 @@ Returns: a L<Paws::RDS::CopyDBParameterGroupResult> instance
   Copies the specified DB parameter group.
 
 
-=head2 CopyDBSnapshot(SourceDBSnapshotIdentifier => Str, TargetDBSnapshotIdentifier => Str, [CopyTags => Bool, KmsKeyId => Str, PreSignedUrl => Str, Tags => ArrayRef[L<Paws::RDS::Tag>]])
+=head2 CopyDBSnapshot(SourceDBSnapshotIdentifier => Str, TargetDBSnapshotIdentifier => Str, [CopyTags => Bool, KmsKeyId => Str, OptionGroupName => Str, PreSignedUrl => Str, Tags => ArrayRef[L<Paws::RDS::Tag>]])
 
 Each argument is described in detail in: L<Paws::RDS::CopyDBSnapshot>
 
@@ -1138,89 +1184,15 @@ Returns: a L<Paws::RDS::CopyDBSnapshotResult> instance
   Copies the specified DB snapshot. The source DB snapshot must be in the
 "available" state.
 
-To copy a DB snapshot from a shared manual DB snapshot,
-C<SourceDBSnapshotIdentifier> must be the Amazon Resource Name (ARN) of
-the shared DB snapshot.
+You can copy a snapshot from one AWS region to another. In that case,
+the region where you call the C<CopyDBSnapshot> action is the
+destination region for the DB snapshot copy.
 
-You can copy an encrypted DB snapshot from another AWS Region. In that
-case, the region where you call the C<CopyDBSnapshot> action is the
-destination region for the encrypted DB snapshot to be copied to. To
-copy an encrypted DB snapshot from another region, you must provide the
-following values:
+You cannot copy an encrypted, shared DB snapshot from one AWS region to
+another.
 
-=over
-
-=item *
-
-C<KmsKeyId> - The AWS Key Management System (KMS) key identifier for
-the key to use to encrypt the copy of the DB snapshot in the
-destination region.
-
-=item *
-
-C<PreSignedUrl> - A URL that contains a Signature Version 4 signed
-request for the C<CopyDBSnapshot> action to be called in the source
-region where the DB snapshot will be copied from. The presigned URL
-must be a valid request for the C<CopyDBSnapshot> API action that can
-be executed in the source region that contains the encrypted DB
-snapshot to be copied.
-
-The presigned URL request must contain the following parameter values:
-
-=over
-
-=item *
-
-C<DestinationRegion> - The AWS Region that the encrypted DB snapshot
-will be copied to. This region is the same one where the
-C<CopyDBSnapshot> action is called that contains this presigned URL.
-
-For example, if you copy an encrypted DB snapshot from the us-west-2
-region to the us-east-1 region, then you will call the
-C<CopyDBSnapshot> action in the us-east-1 region and provide a
-presigned URL that contains a call to the C<CopyDBSnapshot> action in
-the us-west-2 region. For this example, the C<DestinationRegion> in the
-presigned URL must be set to the us-east-1 region.
-
-=item *
-
-C<KmsKeyId> - The KMS key identifier for the key to use to encrypt the
-copy of the DB snapshot in the destination region. This identifier is
-the same for both the C<CopyDBSnapshot> action that is called in the
-destination region, and the action contained in the presigned URL.
-
-=item *
-
-C<SourceDBSnapshotIdentifier> - The DB snapshot identifier for the
-encrypted snapshot to be copied. This identifier must be in the Amazon
-Resource Name (ARN) format for the source region. For example, if you
-copy an encrypted DB snapshot from the us-west-2 region, then your
-C<SourceDBSnapshotIdentifier> looks like this example:
-C<arn:aws:rds:us-west-2:123456789012:snapshot:mysql-instance1-snapshot-20161115>.
-
-=back
-
-To learn how to generate a Signature Version 4 signed request, see
-Authenticating Requests: Using Query Parameters (AWS Signature Version
-4) and Signature Version 4 Signing Process.
-
-=item *
-
-C<TargetDBSnapshotIdentifier> - The identifier for the new copy of the
-DB snapshot in the destination region.
-
-=item *
-
-C<SourceDBSnapshotIdentifier> - The DB snapshot identifier for the
-encrypted snapshot to be copied. This identifier must be in the ARN
-format for the source region and is the same value as the
-C<SourceDBSnapshotIdentifier> in the presigned URL.
-
-=back
-
-For more information on copying encrypted snapshots from one region to
-another, see Copying an Encrypted DB Snapshot to Another Region in the
-Amazon RDS User Guide.
+For more information about copying snapshots, see Copying a DB Snapshot
+in the Amazon RDS User Guide.
 
 
 =head2 CopyOptionGroup(SourceOptionGroupIdentifier => Str, TargetOptionGroupDescription => Str, TargetOptionGroupIdentifier => Str, [Tags => ArrayRef[L<Paws::RDS::Tag>]])
@@ -1232,7 +1204,7 @@ Returns: a L<Paws::RDS::CopyOptionGroupResult> instance
   Copies the specified option group.
 
 
-=head2 CreateDBCluster(DBClusterIdentifier => Str, Engine => Str, [AvailabilityZones => ArrayRef[Str|Undef], BackupRetentionPeriod => Int, CharacterSetName => Str, DatabaseName => Str, DBClusterParameterGroupName => Str, DBSubnetGroupName => Str, EngineVersion => Str, KmsKeyId => Str, MasterUsername => Str, MasterUserPassword => Str, OptionGroupName => Str, Port => Int, PreferredBackupWindow => Str, PreferredMaintenanceWindow => Str, PreSignedUrl => Str, ReplicationSourceIdentifier => Str, StorageEncrypted => Bool, Tags => ArrayRef[L<Paws::RDS::Tag>], VpcSecurityGroupIds => ArrayRef[Str|Undef]])
+=head2 CreateDBCluster(DBClusterIdentifier => Str, Engine => Str, [AvailabilityZones => ArrayRef[Str|Undef], BackupRetentionPeriod => Int, CharacterSetName => Str, DatabaseName => Str, DBClusterParameterGroupName => Str, DBSubnetGroupName => Str, EnableIAMDatabaseAuthentication => Bool, EngineVersion => Str, KmsKeyId => Str, MasterUsername => Str, MasterUserPassword => Str, OptionGroupName => Str, Port => Int, PreferredBackupWindow => Str, PreferredMaintenanceWindow => Str, PreSignedUrl => Str, ReplicationSourceIdentifier => Str, StorageEncrypted => Bool, Tags => ArrayRef[L<Paws::RDS::Tag>], VpcSecurityGroupIds => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::RDS::CreateDBCluster>
 
@@ -1297,7 +1269,7 @@ Returns: a L<Paws::RDS::CreateDBClusterSnapshotResult> instance
 Aurora, see Aurora on Amazon RDS in the I<Amazon RDS User Guide.>
 
 
-=head2 CreateDBInstance(DBInstanceClass => Str, DBInstanceIdentifier => Str, Engine => Str, [AllocatedStorage => Int, AutoMinorVersionUpgrade => Bool, AvailabilityZone => Str, BackupRetentionPeriod => Int, CharacterSetName => Str, CopyTagsToSnapshot => Bool, DBClusterIdentifier => Str, DBName => Str, DBParameterGroupName => Str, DBSecurityGroups => ArrayRef[Str|Undef], DBSubnetGroupName => Str, Domain => Str, DomainIAMRoleName => Str, EngineVersion => Str, Iops => Int, KmsKeyId => Str, LicenseModel => Str, MasterUsername => Str, MasterUserPassword => Str, MonitoringInterval => Int, MonitoringRoleArn => Str, MultiAZ => Bool, OptionGroupName => Str, Port => Int, PreferredBackupWindow => Str, PreferredMaintenanceWindow => Str, PromotionTier => Int, PubliclyAccessible => Bool, StorageEncrypted => Bool, StorageType => Str, Tags => ArrayRef[L<Paws::RDS::Tag>], TdeCredentialArn => Str, TdeCredentialPassword => Str, Timezone => Str, VpcSecurityGroupIds => ArrayRef[Str|Undef]])
+=head2 CreateDBInstance(DBInstanceClass => Str, DBInstanceIdentifier => Str, Engine => Str, [AllocatedStorage => Int, AutoMinorVersionUpgrade => Bool, AvailabilityZone => Str, BackupRetentionPeriod => Int, CharacterSetName => Str, CopyTagsToSnapshot => Bool, DBClusterIdentifier => Str, DBName => Str, DBParameterGroupName => Str, DBSecurityGroups => ArrayRef[Str|Undef], DBSubnetGroupName => Str, Domain => Str, DomainIAMRoleName => Str, EnableIAMDatabaseAuthentication => Bool, EngineVersion => Str, Iops => Int, KmsKeyId => Str, LicenseModel => Str, MasterUsername => Str, MasterUserPassword => Str, MonitoringInterval => Int, MonitoringRoleArn => Str, MultiAZ => Bool, OptionGroupName => Str, Port => Int, PreferredBackupWindow => Str, PreferredMaintenanceWindow => Str, PromotionTier => Int, PubliclyAccessible => Bool, StorageEncrypted => Bool, StorageType => Str, Tags => ArrayRef[L<Paws::RDS::Tag>], TdeCredentialArn => Str, TdeCredentialPassword => Str, Timezone => Str, VpcSecurityGroupIds => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::RDS::CreateDBInstance>
 
@@ -1306,7 +1278,7 @@ Returns: a L<Paws::RDS::CreateDBInstanceResult> instance
   Creates a new DB instance.
 
 
-=head2 CreateDBInstanceReadReplica(DBInstanceIdentifier => Str, SourceDBInstanceIdentifier => Str, [AutoMinorVersionUpgrade => Bool, AvailabilityZone => Str, CopyTagsToSnapshot => Bool, DBInstanceClass => Str, DBSubnetGroupName => Str, Iops => Int, KmsKeyId => Str, MonitoringInterval => Int, MonitoringRoleArn => Str, OptionGroupName => Str, Port => Int, PreSignedUrl => Str, PubliclyAccessible => Bool, StorageType => Str, Tags => ArrayRef[L<Paws::RDS::Tag>]])
+=head2 CreateDBInstanceReadReplica(DBInstanceIdentifier => Str, SourceDBInstanceIdentifier => Str, [AutoMinorVersionUpgrade => Bool, AvailabilityZone => Str, CopyTagsToSnapshot => Bool, DBInstanceClass => Str, DBSubnetGroupName => Str, EnableIAMDatabaseAuthentication => Bool, Iops => Int, KmsKeyId => Str, MonitoringInterval => Int, MonitoringRoleArn => Str, OptionGroupName => Str, Port => Int, PreSignedUrl => Str, PubliclyAccessible => Bool, StorageType => Str, Tags => ArrayRef[L<Paws::RDS::Tag>]])
 
 Each argument is described in detail in: L<Paws::RDS::CreateDBInstanceReadReplica>
 
@@ -1314,6 +1286,10 @@ Returns: a L<Paws::RDS::CreateDBInstanceReadReplicaResult> instance
 
   Creates a DB instance for a DB instance running MySQL, MariaDB, or
 PostgreSQL that acts as a Read Replica of a source DB instance.
+
+Amazon Aurora does not support this action. You must call the
+C<CreateDBInstance> action to create a DB instance for an Aurora DB
+cluster.
 
 All Read Replica DB instances are created as Single-AZ deployments with
 backups disabled. All other DB instance attributes (including DB
@@ -2035,7 +2011,7 @@ For an overview on tagging an Amazon RDS resource, see Tagging Amazon
 RDS Resources.
 
 
-=head2 ModifyDBCluster(DBClusterIdentifier => Str, [ApplyImmediately => Bool, BackupRetentionPeriod => Int, DBClusterParameterGroupName => Str, MasterUserPassword => Str, NewDBClusterIdentifier => Str, OptionGroupName => Str, Port => Int, PreferredBackupWindow => Str, PreferredMaintenanceWindow => Str, VpcSecurityGroupIds => ArrayRef[Str|Undef]])
+=head2 ModifyDBCluster(DBClusterIdentifier => Str, [ApplyImmediately => Bool, BackupRetentionPeriod => Int, DBClusterParameterGroupName => Str, EnableIAMDatabaseAuthentication => Bool, MasterUserPassword => Str, NewDBClusterIdentifier => Str, OptionGroupName => Str, Port => Int, PreferredBackupWindow => Str, PreferredMaintenanceWindow => Str, VpcSecurityGroupIds => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::RDS::ModifyDBCluster>
 
@@ -2094,16 +2070,17 @@ the manual DB cluster snapshot. Use the value C<all> to make the manual
 DB cluster snapshot public, which means that it can be copied or
 restored by all AWS accounts. Do not add the C<all> value for any
 manual DB cluster snapshots that contain private information that you
-don't want available to all AWS accounts.
+don't want available to all AWS accounts. If a manual DB cluster
+snapshot is encrypted, it can be shared, but only by specifying a list
+of authorized AWS account IDs for the C<ValuesToAdd> parameter. You
+can't use C<all> as a value for that parameter in this case.
 
 To view which AWS accounts have access to copy or restore a manual DB
 cluster snapshot, or whether a manual DB cluster snapshot public or
 private, use the DescribeDBClusterSnapshotAttributes API action.
 
-If a manual DB cluster snapshot is encrypted, it cannot be shared.
 
-
-=head2 ModifyDBInstance(DBInstanceIdentifier => Str, [AllocatedStorage => Int, AllowMajorVersionUpgrade => Bool, ApplyImmediately => Bool, AutoMinorVersionUpgrade => Bool, BackupRetentionPeriod => Int, CACertificateIdentifier => Str, CopyTagsToSnapshot => Bool, DBInstanceClass => Str, DBParameterGroupName => Str, DBPortNumber => Int, DBSecurityGroups => ArrayRef[Str|Undef], DBSubnetGroupName => Str, Domain => Str, DomainIAMRoleName => Str, EngineVersion => Str, Iops => Int, LicenseModel => Str, MasterUserPassword => Str, MonitoringInterval => Int, MonitoringRoleArn => Str, MultiAZ => Bool, NewDBInstanceIdentifier => Str, OptionGroupName => Str, PreferredBackupWindow => Str, PreferredMaintenanceWindow => Str, PromotionTier => Int, PubliclyAccessible => Bool, StorageType => Str, TdeCredentialArn => Str, TdeCredentialPassword => Str, VpcSecurityGroupIds => ArrayRef[Str|Undef]])
+=head2 ModifyDBInstance(DBInstanceIdentifier => Str, [AllocatedStorage => Int, AllowMajorVersionUpgrade => Bool, ApplyImmediately => Bool, AutoMinorVersionUpgrade => Bool, BackupRetentionPeriod => Int, CACertificateIdentifier => Str, CopyTagsToSnapshot => Bool, DBInstanceClass => Str, DBParameterGroupName => Str, DBPortNumber => Int, DBSecurityGroups => ArrayRef[Str|Undef], DBSubnetGroupName => Str, Domain => Str, DomainIAMRoleName => Str, EnableIAMDatabaseAuthentication => Bool, EngineVersion => Str, Iops => Int, LicenseModel => Str, MasterUserPassword => Str, MonitoringInterval => Int, MonitoringRoleArn => Str, MultiAZ => Bool, NewDBInstanceIdentifier => Str, OptionGroupName => Str, PreferredBackupWindow => Str, PreferredMaintenanceWindow => Str, PromotionTier => Int, PubliclyAccessible => Bool, StorageType => Str, TdeCredentialArn => Str, TdeCredentialPassword => Str, VpcSecurityGroupIds => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::RDS::ModifyDBInstance>
 
@@ -2172,13 +2149,14 @@ the manual DB snapshot. Uses the value C<all> to make the manual DB
 snapshot public, which means it can be copied or restored by all AWS
 accounts. Do not add the C<all> value for any manual DB snapshots that
 contain private information that you don't want available to all AWS
-accounts.
+accounts. If the manual DB snapshot is encrypted, it can be shared, but
+only by specifying a list of authorized AWS account IDs for the
+C<ValuesToAdd> parameter. You can't use C<all> as a value for that
+parameter in this case.
 
 To view which AWS accounts have access to copy or restore a manual DB
 snapshot, or whether a manual DB snapshot public or private, use the
 DescribeDBSnapshotAttributes API action.
-
-If the manual DB snapshot is encrypted, it cannot be shared.
 
 
 =head2 ModifyDBSubnetGroup(DBSubnetGroupName => Str, SubnetIds => ArrayRef[Str|Undef], [DBSubnetGroupDescription => Str])
@@ -2338,7 +2316,7 @@ Each argument is described in detail in: L<Paws::RDS::ResetDBParameterGroup>
 Returns: a L<Paws::RDS::DBParameterGroupNameMessage> instance
 
   Modifies the parameters of a DB parameter group to the engine/system
-default value. To reset specific parameters submit a list of the
+default value. To reset specific parameters, provide a list of the
 following: C<ParameterName> and C<ApplyMethod>. To reset the entire DB
 parameter group, specify the C<DBParameterGroup> name and
 C<ResetAllParameters> parameters. When resetting the entire group,
@@ -2347,7 +2325,7 @@ set to C<pending-reboot> to take effect on the next DB instance restart
 or C<RebootDBInstance> request.
 
 
-=head2 RestoreDBClusterFromS3(DBClusterIdentifier => Str, Engine => Str, MasterUsername => Str, MasterUserPassword => Str, S3BucketName => Str, S3IngestionRoleArn => Str, SourceEngine => Str, SourceEngineVersion => Str, [AvailabilityZones => ArrayRef[Str|Undef], BackupRetentionPeriod => Int, CharacterSetName => Str, DatabaseName => Str, DBClusterParameterGroupName => Str, DBSubnetGroupName => Str, EngineVersion => Str, KmsKeyId => Str, OptionGroupName => Str, Port => Int, PreferredBackupWindow => Str, PreferredMaintenanceWindow => Str, S3Prefix => Str, StorageEncrypted => Bool, Tags => ArrayRef[L<Paws::RDS::Tag>], VpcSecurityGroupIds => ArrayRef[Str|Undef]])
+=head2 RestoreDBClusterFromS3(DBClusterIdentifier => Str, Engine => Str, MasterUsername => Str, MasterUserPassword => Str, S3BucketName => Str, S3IngestionRoleArn => Str, SourceEngine => Str, SourceEngineVersion => Str, [AvailabilityZones => ArrayRef[Str|Undef], BackupRetentionPeriod => Int, CharacterSetName => Str, DatabaseName => Str, DBClusterParameterGroupName => Str, DBSubnetGroupName => Str, EnableIAMDatabaseAuthentication => Bool, EngineVersion => Str, KmsKeyId => Str, OptionGroupName => Str, Port => Int, PreferredBackupWindow => Str, PreferredMaintenanceWindow => Str, S3Prefix => Str, StorageEncrypted => Bool, Tags => ArrayRef[L<Paws::RDS::Tag>], VpcSecurityGroupIds => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::RDS::RestoreDBClusterFromS3>
 
@@ -2359,7 +2337,7 @@ and the data must be created using the Percona XtraBackup utility as
 described in Migrating Data from MySQL by Using an Amazon S3 Bucket.
 
 
-=head2 RestoreDBClusterFromSnapshot(DBClusterIdentifier => Str, Engine => Str, SnapshotIdentifier => Str, [AvailabilityZones => ArrayRef[Str|Undef], DatabaseName => Str, DBSubnetGroupName => Str, EngineVersion => Str, KmsKeyId => Str, OptionGroupName => Str, Port => Int, Tags => ArrayRef[L<Paws::RDS::Tag>], VpcSecurityGroupIds => ArrayRef[Str|Undef]])
+=head2 RestoreDBClusterFromSnapshot(DBClusterIdentifier => Str, Engine => Str, SnapshotIdentifier => Str, [AvailabilityZones => ArrayRef[Str|Undef], DatabaseName => Str, DBSubnetGroupName => Str, EnableIAMDatabaseAuthentication => Bool, EngineVersion => Str, KmsKeyId => Str, OptionGroupName => Str, Port => Int, Tags => ArrayRef[L<Paws::RDS::Tag>], VpcSecurityGroupIds => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::RDS::RestoreDBClusterFromSnapshot>
 
@@ -2374,7 +2352,7 @@ For more information on Amazon Aurora, see Aurora on Amazon RDS in the
 I<Amazon RDS User Guide.>
 
 
-=head2 RestoreDBClusterToPointInTime(DBClusterIdentifier => Str, SourceDBClusterIdentifier => Str, [DBSubnetGroupName => Str, KmsKeyId => Str, OptionGroupName => Str, Port => Int, RestoreToTime => Str, Tags => ArrayRef[L<Paws::RDS::Tag>], UseLatestRestorableTime => Bool, VpcSecurityGroupIds => ArrayRef[Str|Undef]])
+=head2 RestoreDBClusterToPointInTime(DBClusterIdentifier => Str, SourceDBClusterIdentifier => Str, [DBSubnetGroupName => Str, EnableIAMDatabaseAuthentication => Bool, KmsKeyId => Str, OptionGroupName => Str, Port => Int, RestoreToTime => Str, RestoreType => Str, Tags => ArrayRef[L<Paws::RDS::Tag>], UseLatestRestorableTime => Bool, VpcSecurityGroupIds => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::RDS::RestoreDBClusterToPointInTime>
 
@@ -2391,7 +2369,7 @@ For more information on Amazon Aurora, see Aurora on Amazon RDS in the
 I<Amazon RDS User Guide.>
 
 
-=head2 RestoreDBInstanceFromDBSnapshot(DBInstanceIdentifier => Str, DBSnapshotIdentifier => Str, [AutoMinorVersionUpgrade => Bool, AvailabilityZone => Str, CopyTagsToSnapshot => Bool, DBInstanceClass => Str, DBName => Str, DBSubnetGroupName => Str, Domain => Str, DomainIAMRoleName => Str, Engine => Str, Iops => Int, LicenseModel => Str, MultiAZ => Bool, OptionGroupName => Str, Port => Int, PubliclyAccessible => Bool, StorageType => Str, Tags => ArrayRef[L<Paws::RDS::Tag>], TdeCredentialArn => Str, TdeCredentialPassword => Str])
+=head2 RestoreDBInstanceFromDBSnapshot(DBInstanceIdentifier => Str, DBSnapshotIdentifier => Str, [AutoMinorVersionUpgrade => Bool, AvailabilityZone => Str, CopyTagsToSnapshot => Bool, DBInstanceClass => Str, DBName => Str, DBSubnetGroupName => Str, Domain => Str, DomainIAMRoleName => Str, EnableIAMDatabaseAuthentication => Bool, Engine => Str, Iops => Int, LicenseModel => Str, MultiAZ => Bool, OptionGroupName => Str, Port => Int, PubliclyAccessible => Bool, StorageType => Str, Tags => ArrayRef[L<Paws::RDS::Tag>], TdeCredentialArn => Str, TdeCredentialPassword => Str])
 
 Each argument is described in detail in: L<Paws::RDS::RestoreDBInstanceFromDBSnapshot>
 
@@ -2420,7 +2398,7 @@ If you are restoring from a shared manual DB snapshot, the
 C<DBSnapshotIdentifier> must be the ARN of the shared DB snapshot.
 
 
-=head2 RestoreDBInstanceToPointInTime(SourceDBInstanceIdentifier => Str, TargetDBInstanceIdentifier => Str, [AutoMinorVersionUpgrade => Bool, AvailabilityZone => Str, CopyTagsToSnapshot => Bool, DBInstanceClass => Str, DBName => Str, DBSubnetGroupName => Str, Domain => Str, DomainIAMRoleName => Str, Engine => Str, Iops => Int, LicenseModel => Str, MultiAZ => Bool, OptionGroupName => Str, Port => Int, PubliclyAccessible => Bool, RestoreTime => Str, StorageType => Str, Tags => ArrayRef[L<Paws::RDS::Tag>], TdeCredentialArn => Str, TdeCredentialPassword => Str, UseLatestRestorableTime => Bool])
+=head2 RestoreDBInstanceToPointInTime(SourceDBInstanceIdentifier => Str, TargetDBInstanceIdentifier => Str, [AutoMinorVersionUpgrade => Bool, AvailabilityZone => Str, CopyTagsToSnapshot => Bool, DBInstanceClass => Str, DBName => Str, DBSubnetGroupName => Str, Domain => Str, DomainIAMRoleName => Str, EnableIAMDatabaseAuthentication => Bool, Engine => Str, Iops => Int, LicenseModel => Str, MultiAZ => Bool, OptionGroupName => Str, Port => Int, PubliclyAccessible => Bool, RestoreTime => Str, StorageType => Str, Tags => ArrayRef[L<Paws::RDS::Tag>], TdeCredentialArn => Str, TdeCredentialPassword => Str, UseLatestRestorableTime => Bool])
 
 Each argument is described in detail in: L<Paws::RDS::RestoreDBInstanceToPointInTime>
 
@@ -2451,6 +2429,32 @@ ranges or EC2 or VPC Security Groups. Required parameters for this API
 are one of CIDRIP, EC2SecurityGroupId for VPC, or
 (EC2SecurityGroupOwnerId and either EC2SecurityGroupName or
 EC2SecurityGroupId).
+
+
+=head2 StartDBInstance(DBInstanceIdentifier => Str)
+
+Each argument is described in detail in: L<Paws::RDS::StartDBInstance>
+
+Returns: a L<Paws::RDS::StartDBInstanceResult> instance
+
+  Starts a DB instance that was stopped using the AWS console, the
+stop-db-instance AWS CLI command, or the StopDBInstance action. For
+more information, see Stopping and Starting a DB instance in the AWS
+RDS user guide.
+
+
+=head2 StopDBInstance(DBInstanceIdentifier => Str, [DBSnapshotIdentifier => Str])
+
+Each argument is described in detail in: L<Paws::RDS::StopDBInstance>
+
+Returns: a L<Paws::RDS::StopDBInstanceResult> instance
+
+  Stops a DB instance. When you stop a DB instance, Amazon RDS retains
+the DB instance's metadata, including its endpoint, DB parameter group,
+and option group membership. Amazon RDS also retains the transaction
+logs so you can do a point-in-time restore if necessary. For more
+information, see Stopping and Starting a DB instance in the AWS RDS
+user guide.
 
 
 

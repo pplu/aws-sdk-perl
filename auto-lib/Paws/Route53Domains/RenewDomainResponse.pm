@@ -16,7 +16,8 @@ Paws::Route53Domains::RenewDomainResponse
 
 =head2 B<REQUIRED> OperationId => Str
 
-
+The identifier for tracking the progress of the request. To use this ID
+to query the operation status, use GetOperationDetail.
 
 
 =head2 _request_id => Str

@@ -32,9 +32,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SSM::Target
 
 =head1 DESCRIPTION
 
-An array of search criteria that targets instances using a
-C<Key>,C<Value> combination that you specify. C<Targets> is required if
-you don't provide one or more instance IDs in the call.
+An array of search criteria that targets instances using a Key,Value
+combination that you specify. Targets is required if you don't provide
+one or more instance IDs in the call.
 
 =head1 ATTRIBUTES
 
@@ -42,20 +42,20 @@ you don't provide one or more instance IDs in the call.
 =head2 Key => Str
 
   User-defined criteria for sending commands that target instances that
-meet the criteria. C<Key> can be C<tag:E<lt>Amazon EC2 tagE<gt>> or
-C<InstanceIds>. For more information about how to send commands that
-target instances using C<Key>,C<Value> parameters, see Executing a
-Command Using Systems Manager Run Command.
+meet the criteria. Key can be tag:E<lt>Amazon EC2 tagE<gt> or
+InstanceIds. For more information about how to send commands that
+target instances using Key,Value parameters, see Executing a Command
+Using Systems Manager Run Command.
 
 
 =head2 Values => ArrayRef[Str|Undef]
 
-  User-defined criteria that maps to C<Key>. For example, if you
-specified C<tag:ServerRole>, you could specify C<value:WebServer> to
-execute a command on instances that include Amazon EC2 tags of
-ServerRole,WebServer. For more information about how to send commands
-that target instances using C<Key>,C<Value> parameters, see Executing a
-Command Using Systems Manager Run Command.
+  User-defined criteria that maps to Key. For example, if you specified
+tag:ServerRole, you could specify value:WebServer to execute a command
+on instances that include Amazon EC2 tags of ServerRole,WebServer. For
+more information about how to send commands that target instances using
+Key,Value parameters, see Executing a Command Using Systems Manager Run
+Command.
 
 
 

@@ -83,8 +83,8 @@ description of what the command should do.
 =head2 InstanceName => Str
 
   The name of the invocation target. For Amazon EC2 instances this is the
-value for the C<aws:Name> tag. For on-premises instances, this is the
-name of the instance.
+value for the aws:Name tag. For on-premises instances, this is the name
+of the instance.
 
 
 =head2 NotificationConfig => L<Paws::SSM::NotificationConfig>
@@ -107,18 +107,18 @@ basis.
 
 =head2 StandardErrorUrl => Str
 
-  The URL to the pluginE<rsquo>s StdErr file in Amazon S3, if the Amazon
-S3 bucket was defined for the parent command. For an invocation,
-C<StandardErrorUrl> is populated if there is just one plugin defined
-for the command, and the Amazon S3 bucket was defined for the command.
+  The URL to the plugin's StdErr file in Amazon S3, if the Amazon S3
+bucket was defined for the parent command. For an invocation,
+StandardErrorUrl is populated if there is just one plugin defined for
+the command, and the Amazon S3 bucket was defined for the command.
 
 
 =head2 StandardOutputUrl => Str
 
-  The URL to the pluginE<rsquo>s StdOut file in Amazon S3, if the Amazon
-S3 bucket was defined for the parent command. For an invocation,
-C<StandardOutputUrl> is populated if there is just one plugin defined
-for the command, and the Amazon S3 bucket was defined for the command.
+  The URL to the plugin's StdOut file in Amazon S3, if the Amazon S3
+bucket was defined for the parent command. For an invocation,
+StandardOutputUrl is populated if there is just one plugin defined for
+the command, and the Amazon S3 bucket was defined for the command.
 
 
 =head2 Status => Str
@@ -129,70 +129,69 @@ for the command, and the Amazon S3 bucket was defined for the command.
 =head2 StatusDetails => Str
 
   A detailed status of the command execution for each invocation (each
-instance targeted by the command). C<StatusDetails> includes more
-information than C<Status> because it includes states resulting from
-error and concurrency control parameters. C<StatusDetails> can show
-different results than C<Status>. For more information about these
-statuses, see Run Command Status. C<StatusDetails> can be one of the
-following values:
+instance targeted by the command). StatusDetails includes more
+information than Status because it includes states resulting from error
+and concurrency control parameters. StatusDetails can show different
+results than Status. For more information about these statuses, see Run
+Command Status. StatusDetails can be one of the following values:
 
 =over
 
 =item *
 
-Pending E<ndash> The command has not been sent to the instance.
+Pending: The command has not been sent to the instance.
 
 =item *
 
-In Progress E<ndash> The command has been sent to the instance but has
-not reached a terminal state.
+In Progress: The command has been sent to the instance but has not
+reached a terminal state.
 
 =item *
 
-Success E<ndash> The execution of the command or plugin was
-successfully completed. This is a terminal state.
+Success: The execution of the command or plugin was successfully
+completed. This is a terminal state.
 
 =item *
 
-Delivery Timed Out E<ndash> The command was not delivered to the
-instance before the delivery timeout expired. Delivery timeouts do not
-count against the parent commandE<rsquo>s C<MaxErrors> limit, but they
-do contribute to whether the parent command status is C<Success> or
-C<Incomplete>. This is a terminal state.
+Delivery Timed Out: The command was not delivered to the instance
+before the delivery timeout expired. Delivery timeouts do not count
+against the parent command's MaxErrors limit, but they do contribute to
+whether the parent command status is Success or Incomplete. This is a
+terminal state.
 
 =item *
 
-Execution Timed Out E<ndash> Command execution started on the instance,
-but the execution was not complete before the execution timeout
-expired. Execution timeouts count against the C<MaxErrors> limit of the
-parent command. This is a terminal state.
+Execution Timed Out: Command execution started on the instance, but the
+execution was not complete before the execution timeout expired.
+Execution timeouts count against the MaxErrors limit of the parent
+command. This is a terminal state.
 
 =item *
 
-Failed E<ndash> The command was not successful on the instance. For a
-plugin, this indicates that the result code was not zero. For a command
+Failed: The command was not successful on the instance. For a plugin,
+this indicates that the result code was not zero. For a command
 invocation, this indicates that the result code for one or more plugins
-was not zero. Invocation failures count against the C<MaxErrors> limit
-of the parent command. This is a terminal state.
+was not zero. Invocation failures count against the MaxErrors limit of
+the parent command. This is a terminal state.
 
 =item *
 
-Canceled E<ndash> The command was terminated before it was completed.
-This is a terminal state.
+Canceled: The command was terminated before it was completed. This is a
+terminal state.
 
 =item *
 
-Undeliverable E<ndash> The command can't be delivered to the instance.
-The instance might not exist or might not be responding. Undeliverable
-invocations don't count against the parent commandE<rsquo>s
-C<MaxErrors> limit and don't contribute to whether the parent command
-status is C<Success> or C<Incomplete>. This is a terminal state.
+Undeliverable: The command can't be delivered to the instance. The
+instance might not exist or might not be responding. Undeliverable
+invocations don't count against the parent command's MaxErrors limit
+and don't contribute to whether the parent command status is Success or
+Incomplete. This is a terminal state.
 
 =item *
 
-Terminated E<ndash> The parent command exceeded its C<MaxErrors> limit
-and subsequent command invocations were canceled by the system. This is
-a terminal state.
+Terminated: The parent command exceeded its MaxErrors limit and
+subsequent command invocations were canceled by the system. This is a
+terminal state.
 
 =back
 

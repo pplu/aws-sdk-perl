@@ -150,18 +150,20 @@ package Paws::Config;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeComplianceByConfigRule(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->NextToken) {
-        $result = $self->DescribeComplianceByConfigRule(@_, NextToken => $result->NextToken);
-        push @{ $result->ComplianceByConfigRules }, @{ $result->ComplianceByConfigRules };
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeComplianceByConfigRule(@_, NextToken => $next_result->NextToken);
+        push @{ $result->ComplianceByConfigRules }, @{ $next_result->ComplianceByConfigRules };
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->DescribeComplianceByConfigRule(@_, NextToken => $result->NextToken);
         $callback->($_ => 'ComplianceByConfigRules') foreach (@{ $result->ComplianceByConfigRules });
+        $result = $self->DescribeComplianceByConfigRule(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'ComplianceByConfigRules') foreach (@{ $result->ComplianceByConfigRules });
     }
 
     return undef
@@ -171,18 +173,20 @@ package Paws::Config;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeComplianceByResource(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->NextToken) {
-        $result = $self->DescribeComplianceByResource(@_, NextToken => $result->NextToken);
-        push @{ $result->ComplianceByResources }, @{ $result->ComplianceByResources };
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeComplianceByResource(@_, NextToken => $next_result->NextToken);
+        push @{ $result->ComplianceByResources }, @{ $next_result->ComplianceByResources };
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->DescribeComplianceByResource(@_, NextToken => $result->NextToken);
         $callback->($_ => 'ComplianceByResources') foreach (@{ $result->ComplianceByResources });
+        $result = $self->DescribeComplianceByResource(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'ComplianceByResources') foreach (@{ $result->ComplianceByResources });
     }
 
     return undef
@@ -192,18 +196,20 @@ package Paws::Config;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeConfigRules(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->NextToken) {
-        $result = $self->DescribeConfigRules(@_, NextToken => $result->NextToken);
-        push @{ $result->ConfigRules }, @{ $result->ConfigRules };
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeConfigRules(@_, NextToken => $next_result->NextToken);
+        push @{ $result->ConfigRules }, @{ $next_result->ConfigRules };
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->DescribeConfigRules(@_, NextToken => $result->NextToken);
         $callback->($_ => 'ConfigRules') foreach (@{ $result->ConfigRules });
+        $result = $self->DescribeConfigRules(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'ConfigRules') foreach (@{ $result->ConfigRules });
     }
 
     return undef
@@ -213,18 +219,20 @@ package Paws::Config;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->GetComplianceDetailsByConfigRule(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->NextToken) {
-        $result = $self->GetComplianceDetailsByConfigRule(@_, NextToken => $result->NextToken);
-        push @{ $result->EvaluationResults }, @{ $result->EvaluationResults };
+      while ($next_result->NextToken) {
+        $next_result = $self->GetComplianceDetailsByConfigRule(@_, NextToken => $next_result->NextToken);
+        push @{ $result->EvaluationResults }, @{ $next_result->EvaluationResults };
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->GetComplianceDetailsByConfigRule(@_, NextToken => $result->NextToken);
         $callback->($_ => 'EvaluationResults') foreach (@{ $result->EvaluationResults });
+        $result = $self->GetComplianceDetailsByConfigRule(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'EvaluationResults') foreach (@{ $result->EvaluationResults });
     }
 
     return undef
@@ -234,18 +242,20 @@ package Paws::Config;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->GetComplianceDetailsByResource(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->NextToken) {
-        $result = $self->GetComplianceDetailsByResource(@_, NextToken => $result->NextToken);
-        push @{ $result->EvaluationResults }, @{ $result->EvaluationResults };
+      while ($next_result->NextToken) {
+        $next_result = $self->GetComplianceDetailsByResource(@_, NextToken => $next_result->NextToken);
+        push @{ $result->EvaluationResults }, @{ $next_result->EvaluationResults };
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $result = $self->GetComplianceDetailsByResource(@_, NextToken => $result->NextToken);
         $callback->($_ => 'EvaluationResults') foreach (@{ $result->EvaluationResults });
+        $result = $self->GetComplianceDetailsByResource(@_, NextToken => $result->NextToken);
       }
+      $callback->($_ => 'EvaluationResults') foreach (@{ $result->EvaluationResults });
     }
 
     return undef
@@ -255,18 +265,20 @@ package Paws::Config;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->GetResourceConfigHistory(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->nextToken) {
-        $result = $self->GetResourceConfigHistory(@_, nextToken => $result->nextToken);
-        push @{ $result->configurationItems }, @{ $result->configurationItems };
+      while ($next_result->nextToken) {
+        $next_result = $self->GetResourceConfigHistory(@_, nextToken => $next_result->nextToken);
+        push @{ $result->configurationItems }, @{ $next_result->configurationItems };
       }
       return $result;
     } else {
       while ($result->nextToken) {
-        $result = $self->GetResourceConfigHistory(@_, nextToken => $result->nextToken);
         $callback->($_ => 'configurationItems') foreach (@{ $result->configurationItems });
+        $result = $self->GetResourceConfigHistory(@_, nextToken => $result->nextToken);
       }
+      $callback->($_ => 'configurationItems') foreach (@{ $result->configurationItems });
     }
 
     return undef
@@ -276,18 +288,20 @@ package Paws::Config;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListDiscoveredResources(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->nextToken) {
-        $result = $self->ListDiscoveredResources(@_, nextToken => $result->nextToken);
-        push @{ $result->resourceIdentifiers }, @{ $result->resourceIdentifiers };
+      while ($next_result->nextToken) {
+        $next_result = $self->ListDiscoveredResources(@_, nextToken => $next_result->nextToken);
+        push @{ $result->resourceIdentifiers }, @{ $next_result->resourceIdentifiers };
       }
       return $result;
     } else {
       while ($result->nextToken) {
-        $result = $self->ListDiscoveredResources(@_, nextToken => $result->nextToken);
         $callback->($_ => 'resourceIdentifiers') foreach (@{ $result->resourceIdentifiers });
+        $result = $self->ListDiscoveredResources(@_, nextToken => $result->nextToken);
       }
+      $callback->($_ => 'resourceIdentifiers') foreach (@{ $result->resourceIdentifiers });
     }
 
     return undef

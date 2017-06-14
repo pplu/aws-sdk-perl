@@ -38,7 +38,7 @@ The type of policy in a user pool.
 
 =head2 PasswordPolicy => L<Paws::CognitoIdp::PasswordPolicyType>
 
-  A container with information about the user pool password policy.
+  A container for information about the user pool password policy.
 
 
 

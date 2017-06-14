@@ -40,12 +40,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 Each entry in the array is a structure containing:
 
-Key (string 1 E<le> length E<le> 200)
+Key (string between 1 and 200 characters)
 
 Values (array containing a single string)
 
-Type (string E<ldquo>EqualE<rdquo>, E<ldquo>NotEqualE<rdquo>,
-E<ldquo>LessThanE<rdquo>, E<ldquo>GreaterThanE<rdquo>)
+Type (string "Equal", "NotEqual", "LessThan", "GreaterThan")
 
 
 

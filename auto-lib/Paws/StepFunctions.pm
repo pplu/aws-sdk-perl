@@ -105,18 +105,20 @@ package Paws::StepFunctions;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->GetExecutionHistory(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->nextToken) {
-        $result = $self->GetExecutionHistory(@_, nextToken => $result->nextToken);
-        push @{ $result->events }, @{ $result->events };
+      while ($next_result->nextToken) {
+        $next_result = $self->GetExecutionHistory(@_, nextToken => $next_result->nextToken);
+        push @{ $result->events }, @{ $next_result->events };
       }
       return $result;
     } else {
       while ($result->nextToken) {
-        $result = $self->GetExecutionHistory(@_, nextToken => $result->nextToken);
         $callback->($_ => 'events') foreach (@{ $result->events });
+        $result = $self->GetExecutionHistory(@_, nextToken => $result->nextToken);
       }
+      $callback->($_ => 'events') foreach (@{ $result->events });
     }
 
     return undef
@@ -126,18 +128,20 @@ package Paws::StepFunctions;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListActivities(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->nextToken) {
-        $result = $self->ListActivities(@_, nextToken => $result->nextToken);
-        push @{ $result->activities }, @{ $result->activities };
+      while ($next_result->nextToken) {
+        $next_result = $self->ListActivities(@_, nextToken => $next_result->nextToken);
+        push @{ $result->activities }, @{ $next_result->activities };
       }
       return $result;
     } else {
       while ($result->nextToken) {
-        $result = $self->ListActivities(@_, nextToken => $result->nextToken);
         $callback->($_ => 'activities') foreach (@{ $result->activities });
+        $result = $self->ListActivities(@_, nextToken => $result->nextToken);
       }
+      $callback->($_ => 'activities') foreach (@{ $result->activities });
     }
 
     return undef
@@ -147,18 +151,20 @@ package Paws::StepFunctions;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListExecutions(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->nextToken) {
-        $result = $self->ListExecutions(@_, nextToken => $result->nextToken);
-        push @{ $result->executions }, @{ $result->executions };
+      while ($next_result->nextToken) {
+        $next_result = $self->ListExecutions(@_, nextToken => $next_result->nextToken);
+        push @{ $result->executions }, @{ $next_result->executions };
       }
       return $result;
     } else {
       while ($result->nextToken) {
-        $result = $self->ListExecutions(@_, nextToken => $result->nextToken);
         $callback->($_ => 'executions') foreach (@{ $result->executions });
+        $result = $self->ListExecutions(@_, nextToken => $result->nextToken);
       }
+      $callback->($_ => 'executions') foreach (@{ $result->executions });
     }
 
     return undef
@@ -168,18 +174,20 @@ package Paws::StepFunctions;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListStateMachines(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->nextToken) {
-        $result = $self->ListStateMachines(@_, nextToken => $result->nextToken);
-        push @{ $result->stateMachines }, @{ $result->stateMachines };
+      while ($next_result->nextToken) {
+        $next_result = $self->ListStateMachines(@_, nextToken => $next_result->nextToken);
+        push @{ $result->stateMachines }, @{ $next_result->stateMachines };
       }
       return $result;
     } else {
       while ($result->nextToken) {
-        $result = $self->ListStateMachines(@_, nextToken => $result->nextToken);
         $callback->($_ => 'stateMachines') foreach (@{ $result->stateMachines });
+        $result = $self->ListStateMachines(@_, nextToken => $result->nextToken);
       }
+      $callback->($_ => 'stateMachines') foreach (@{ $result->stateMachines });
     }
 
     return undef

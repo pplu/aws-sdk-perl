@@ -37,7 +37,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ApplicationName => Str
 
-Name of the Kinesis Analytics application to update.
+Name of the Amazon Kinesis Analytics application to update.
 
 
 

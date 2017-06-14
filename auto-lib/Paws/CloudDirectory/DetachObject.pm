@@ -39,21 +39,21 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DirectoryArn => Str
 
-ARN associated with the Directory where objects reside. For more
-information, see arns.
+The Amazon Resource Name (ARN) that is associated with the Directory
+where objects reside. For more information, see arns.
 
 
 
 =head2 B<REQUIRED> LinkName => Str
 
-Link name associated with the object that needs to be detached.
+The link name associated with the object that needs to be detached.
 
 
 
 =head2 B<REQUIRED> ParentReference => L<Paws::CloudDirectory::ObjectReference>
 
-Parent reference from which the object with the specified link name is
-detached.
+The parent reference from which the object with the specified link name
+is detached.
 
 
 

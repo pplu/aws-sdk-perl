@@ -9,44 +9,37 @@ package Paws::Net::RestXMLResponse;
     my ($self, $data) = @_;
 
     return {} if (not defined $data or $data eq '');
-
-    my $xml = XML::Simple::XMLin( $data,
-            ForceArray    => [ qr/(?:^item$|Errors)/i, ],
-            KeyAttr       => '',
-            SuppressEmpty => undef,
+    
+    my $xml = XML::Simple->new(
+      ForceArray    => qr/^(?:item|Errors)/i,
+      KeyAttr       => '',
+      SuppressEmpty => undef,
     );
-    return $xml;
+    return $xml->parse_string($data);
   }
 
   sub handle_response {
     my ($self, $call_object, $http_status, $content, $headers) = @_;
 
-    my $unserialized_struct = {};
- 
-    my $ret_class = $call_object->meta->name->_returns;
-    if (defined $ret_class){
-      Paws->load_class($ret_class);
-      if ($ret_class->can('_stream_param')) {
-        $unserialized_struct->{ $ret_class->_stream_param } = $content;
-      } else {
-        $unserialized_struct = $self->unserialize_response( $content );
-      }
-    }
-
-    # Set respones headers attributes
-    foreach my $key (keys %$headers){
-      $unserialized_struct->{$key} = $headers->{$key};
-    }
- 
     if ( $http_status >= 300 ) {
-      return $self->error_to_exception($unserialized_struct, $call_object, $http_status, $content, $headers);
+      return $self->error_to_exception($call_object, $http_status, $content, $headers);
     } else {
-      return $self->response_to_object($unserialized_struct, $call_object, $http_status, $content, $headers);
+      return $self->response_to_object($call_object, $http_status, $content, $headers);
     }
   }
 
   sub error_to_exception {
-    my ($self, $struct, $call_object, $http_status, $content, $headers) = @_;
+    my ($self, $call_object, $http_status, $content, $headers) = @_;
+
+    my $struct = eval { $self->unserialize_response( $content ) };
+    if ($@){
+      return Paws::Exception->new(
+        message => $@,
+        code => 'InvalidContent',
+        request_id => '', #$request_id,
+        http_status => $http_status,
+      );
+    }
 
     my ($message, $code, $request_id, $host_id);
 

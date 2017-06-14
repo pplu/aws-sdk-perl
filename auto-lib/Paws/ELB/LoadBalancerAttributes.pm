@@ -47,7 +47,7 @@ requests and delivers the information to the Amazon S3 bucket that you
 specify.
 
 For more information, see Enable Access Logs in the I<Classic Load
-Balancers Guide>.
+Balancer Guide>.
 
 
 =head2 AdditionalAttributes => ArrayRef[L<Paws::ELB::AdditionalAttribute>]
@@ -62,7 +62,7 @@ before the load balancer shifts traffic away from a deregistered or
 unhealthy instance.
 
 For more information, see Configure Connection Draining in the
-I<Classic Load Balancers Guide>.
+I<Classic Load Balancer Guide>.
 
 
 =head2 ConnectionSettings => L<Paws::ELB::ConnectionSettings>
@@ -73,7 +73,7 @@ data is sent over the connection) for the specified duration.
 By default, Elastic Load Balancing maintains a 60-second idle
 connection timeout for both front-end and back-end connections of your
 load balancer. For more information, see Configure Idle Connection
-Timeout in the I<Classic Load Balancers Guide>.
+Timeout in the I<Classic Load Balancer Guide>.
 
 
 =head2 CrossZoneLoadBalancing => L<Paws::ELB::CrossZoneLoadBalancing>
@@ -82,7 +82,7 @@ Timeout in the I<Classic Load Balancers Guide>.
 all instances regardless of the Availability Zones.
 
 For more information, see Configure Cross-Zone Load Balancing in the
-I<Classic Load Balancers Guide>.
+I<Classic Load Balancer Guide>.
 
 
 

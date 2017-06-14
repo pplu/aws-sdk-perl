@@ -54,9 +54,9 @@ policy document
 =head2 ContentHash => Str
 
   MD5 hash of the inventory item type contents. The content hash is used
-to determine whether to update inventory information. The
-C<PutInventory> API does not update the inventory item type contents if
-the MD5 hash has not changed since last update.
+to determine whether to update inventory information. The PutInventory
+API does not update the inventory item type contents if the MD5 hash
+has not changed since last update.
 
 
 =head2 B<REQUIRED> SchemaVersion => Str
@@ -67,10 +67,10 @@ the MD5 hash has not changed since last update.
 =head2 B<REQUIRED> TypeName => Str
 
   The name of the inventory type. Default inventory item type names start
-with C<AWS>. Custom inventory type names will start with C<Custom>.
-Default inventory item types include the following:
-C<AWS:AWSComponent>, C<AWS:Application>, C<AWS:InstanceInformation>,
-C<AWS:Network>, and C<AWS:WindowsUpdate>.
+with AWS. Custom inventory type names will start with Custom. Default
+inventory item types include the following: AWS:AWSComponent,
+AWS:Application, AWS:InstanceInformation, AWS:Network, and
+AWS:WindowsUpdate.
 
 
 

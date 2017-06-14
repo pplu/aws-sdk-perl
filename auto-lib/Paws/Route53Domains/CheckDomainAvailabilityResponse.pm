@@ -20,35 +20,50 @@ Whether the domain name is available for registering.
 
 You can only register domains designated as C<AVAILABLE>.
 
-Type: String
-
 Valid values:
 
 =over
 
-=item * C<AVAILABLE> E<ndash> The domain name is available.
+=item AVAILABLE
 
-=item * C<AVAILABLE_RESERVED> E<ndash> The domain name is reserved
-under specific conditions.
+The domain name is available.
 
-=item * C<AVAILABLE_PREORDER> E<ndash> The domain name is available and
-can be preordered.
+=item AVAILABLE_RESERVED
 
-=item * C<UNAVAILABLE> E<ndash> The domain name is not available.
+The domain name is reserved under specific conditions.
 
-=item * C<UNAVAILABLE_PREMIUM> E<ndash> The domain name is not
-available.
+=item AVAILABLE_PREORDER
 
-=item * C<UNAVAILABLE_RESTRICTED> E<ndash> The domain name is
-forbidden.
+The domain name is available and can be preordered.
 
-=item * C<RESERVED> E<ndash> The domain name has been reserved for
-another person or organization.
+=item DONT_KNOW
 
-=item * C<DONT_KNOW> E<ndash> The TLD registry didn't reply with a
-definitive answer about whether the domain name is available. Amazon
-Route 53 can return this response for a variety of reasons, for
-example, the registry is performing maintenance. Try again later.
+The TLD registry didn't reply with a definitive answer about whether
+the domain name is available. Amazon Route 53 can return this response
+for a variety of reasons, for example, the registry is performing
+maintenance. Try again later.
+
+=item PENDING
+
+The TLD registry didn't return a response in the expected amount of
+time. When the response is delayed, it usually takes just a few extra
+seconds. You can resubmit the request immediately.
+
+=item RESERVED
+
+The domain name has been reserved for another person or organization.
+
+=item UNAVAILABLE
+
+The domain name is not available.
+
+=item UNAVAILABLE_PREMIUM
+
+The domain name is not available.
+
+=item UNAVAILABLE_RESTRICTED
+
+The domain name is forbidden.
 
 =back
 

@@ -14,6 +14,11 @@ package Paws::KinesisAnalytics;
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
 
   
+  sub AddApplicationCloudWatchLoggingOption {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::KinesisAnalytics::AddApplicationCloudWatchLoggingOption', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub AddApplicationInput {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::KinesisAnalytics::AddApplicationInput', @_);
@@ -37,6 +42,11 @@ package Paws::KinesisAnalytics;
   sub DeleteApplication {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::KinesisAnalytics::DeleteApplication', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteApplicationCloudWatchLoggingOption {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::KinesisAnalytics::DeleteApplicationCloudWatchLoggingOption', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteApplicationOutput {
@@ -82,7 +92,7 @@ package Paws::KinesisAnalytics;
   
 
 
-  sub operations { qw/AddApplicationInput AddApplicationOutput AddApplicationReferenceDataSource CreateApplication DeleteApplication DeleteApplicationOutput DeleteApplicationReferenceDataSource DescribeApplication DiscoverInputSchema ListApplications StartApplication StopApplication UpdateApplication / }
+  sub operations { qw/AddApplicationCloudWatchLoggingOption AddApplicationInput AddApplicationOutput AddApplicationReferenceDataSource CreateApplication DeleteApplication DeleteApplicationCloudWatchLoggingOption DeleteApplicationOutput DeleteApplicationReferenceDataSource DescribeApplication DiscoverInputSchema ListApplications StartApplication StopApplication UpdateApplication / }
 
 1;
 
@@ -113,6 +123,18 @@ Paws::KinesisAnalytics - Perl Interface to AWS Amazon Kinesis Analytics
 
 
 =head1 METHODS
+
+=head2 AddApplicationCloudWatchLoggingOption(ApplicationName => Str, CloudWatchLoggingOption => L<Paws::KinesisAnalytics::CloudWatchLoggingOption>, CurrentApplicationVersionId => Int)
+
+Each argument is described in detail in: L<Paws::KinesisAnalytics::AddApplicationCloudWatchLoggingOption>
+
+Returns: a L<Paws::KinesisAnalytics::AddApplicationCloudWatchLoggingOptionResponse> instance
+
+  Adds a CloudWatch log stream to monitor application configuration
+errors. For more information about using CloudWatch log streams with
+Amazon Kinesis Analytics applications, see Monitoring Configuration
+Errors.
+
 
 =head2 AddApplicationInput(ApplicationName => Str, CurrentApplicationVersionId => Int, Input => L<Paws::KinesisAnalytics::Input>)
 
@@ -192,7 +214,7 @@ This operation requires permissions to perform the
 C<kinesisanalytics:AddApplicationOutput> action.
 
 
-=head2 CreateApplication(ApplicationName => Str, [ApplicationCode => Str, ApplicationDescription => Str, Inputs => ArrayRef[L<Paws::KinesisAnalytics::Input>], Outputs => ArrayRef[L<Paws::KinesisAnalytics::Output>]])
+=head2 CreateApplication(ApplicationName => Str, [ApplicationCode => Str, ApplicationDescription => Str, CloudWatchLoggingOptions => ArrayRef[L<Paws::KinesisAnalytics::CloudWatchLoggingOption>], Inputs => ArrayRef[L<Paws::KinesisAnalytics::Input>], Outputs => ArrayRef[L<Paws::KinesisAnalytics::Output>]])
 
 Each argument is described in detail in: L<Paws::KinesisAnalytics::CreateApplication>
 
@@ -208,8 +230,7 @@ In the input configuration, you map the streaming source to an
 in-application stream, which you can think of as a constantly updating
 table. In the mapping, you must provide a schema for the in-application
 stream and map each data column in the in-application stream to a data
-element in the streaming source, with the option of renaming, casting
-and dropping columns as desired.
+element in the streaming source.
 
 Your application code is one or more SQL statements that read input
 data, transform it, and generate output. Your application code can
@@ -242,6 +263,17 @@ and application code).
 
 This operation requires permissions to perform the
 C<kinesisanalytics:DeleteApplication> action.
+
+
+=head2 DeleteApplicationCloudWatchLoggingOption(ApplicationName => Str, CloudWatchLoggingOptionId => Str, CurrentApplicationVersionId => Int)
+
+Each argument is described in detail in: L<Paws::KinesisAnalytics::DeleteApplicationCloudWatchLoggingOption>
+
+Returns: a L<Paws::KinesisAnalytics::DeleteApplicationCloudWatchLoggingOptionResponse> instance
+
+  Deletes a CloudWatch log stream from an application. For more
+information about using CloudWatch log streams with Amazon Kinesis
+Analytics applications, see Monitoring Configuration Errors.
 
 
 =head2 DeleteApplicationOutput(ApplicationName => Str, CurrentApplicationVersionId => Int, OutputId => Str)
@@ -383,14 +415,14 @@ Each argument is described in detail in: L<Paws::KinesisAnalytics::UpdateApplica
 
 Returns: a L<Paws::KinesisAnalytics::UpdateApplicationResponse> instance
 
-  Updates an existing Kinesis Analytics application. Using this API, you
-can update application code, input configuration, and output
+  Updates an existing Amazon Kinesis Analytics application. Using this
+API, you can update application code, input configuration, and output
 configuration.
 
-Note that Kinesis Analytics updates the C<CurrentApplicationVersionId>
-each time you update your application.
+Note that Amazon Kinesis Analytics updates the
+C<CurrentApplicationVersionId> each time you update your application.
 
-This opeation requires permission for the
+This operation requires permission for the
 C<kinesisanalytics:UpdateApplication> action.
 
 

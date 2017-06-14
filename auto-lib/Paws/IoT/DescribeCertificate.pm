@@ -2,6 +2,7 @@
 package Paws::IoT::DescribeCertificate;
   use Moose;
   has CertificateId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'certificateId' , required => 1);
+  has CertificatePem => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'certificatePem' );
 
   use MooseX::ClassAttribute;
 
@@ -38,6 +39,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 B<REQUIRED> CertificateId => Str
 
 The ID of the certificate.
+
+
+
+=head2 CertificatePem => Str
+
+The PEM of the certificate.
 
 
 

@@ -45,22 +45,14 @@ example, if your domain is example.com and the name server for the
 domain is ns.example.com, you need to specify the IP address for
 ns.example.com.
 
-Type: List of IP addresses.
-
 Constraints: The list can contain only one IPv4 and one IPv6 address.
-
-Parent: C<Nameservers>
 
 
 =head2 B<REQUIRED> Name => Str
 
   The fully qualified host name of the name server.
 
-Type: String
-
-Constraint: Maximum 255 characterss
-
-Parent: C<Nameservers>
+Constraint: Maximum 255 characters
 
 
 

@@ -40,7 +40,9 @@ Represents a target that failed to be removed from a rule.
 
 =head2 ErrorCode => Str
 
-  The error code that indicates why the target removal failed.
+  The error code that indicates why the target removal failed. If the
+value is C<ConcurrentModificationException>, too many requests were
+made at the same time.
 
 
 =head2 ErrorMessage => Str

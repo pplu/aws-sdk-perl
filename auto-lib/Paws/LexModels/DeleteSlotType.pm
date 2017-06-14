@@ -2,7 +2,6 @@
 package Paws::LexModels::DeleteSlotType;
   use Moose;
   has Name => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'name' , required => 1);
-  has Version => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -39,12 +38,6 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 B<REQUIRED> Name => Str
 
 The name of the slot type. The name is case sensitive.
-
-
-
-=head2 Version => Str
-
-The version of the slot type.
 
 
 

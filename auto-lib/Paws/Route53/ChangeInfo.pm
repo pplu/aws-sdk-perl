@@ -62,9 +62,10 @@ request has not yet been applied to all Amazon Route 53 DNS servers.
 
 =head2 B<REQUIRED> SubmittedAt => Str
 
-  The date and time the change request was submitted, in Coordinated
-Universal Time (UTC) format: C<YYYY-MM-DDThh:mm:ssZ>. For more
-information, see the Wikipedia entry ISO 8601.
+  The date and time that the change request was submitted in ISO 8601
+format and Coordinated Universal Time (UTC). For example, the value
+C<2017-03-27T17:48:16.751Z> represents March 27, 2017 at 17:48:16.751
+UTC.
 
 
 

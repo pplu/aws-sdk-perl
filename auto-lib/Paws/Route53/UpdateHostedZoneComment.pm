@@ -47,7 +47,7 @@ C<Comment> element, if any.
 
 =head2 B<REQUIRED> Id => Str
 
-The ID for the hosted zone for which you want to update the comment.
+The ID for the hosted zone that you want to update the comment for.
 
 
 

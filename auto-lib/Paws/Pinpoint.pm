@@ -33,9 +33,19 @@ package Paws::Pinpoint;
     my $call_object = $self->new_with_coercions('Paws::Pinpoint::DeleteApnsChannel', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteApnsSandboxChannel {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Pinpoint::DeleteApnsSandboxChannel', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteCampaign {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Pinpoint::DeleteCampaign', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteEmailChannel {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Pinpoint::DeleteEmailChannel', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteEventStream {
@@ -53,9 +63,19 @@ package Paws::Pinpoint;
     my $call_object = $self->new_with_coercions('Paws::Pinpoint::DeleteSegment', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteSmsChannel {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Pinpoint::DeleteSmsChannel', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetApnsChannel {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Pinpoint::GetApnsChannel', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetApnsSandboxChannel {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Pinpoint::GetApnsSandboxChannel', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetApplicationSettings {
@@ -86,6 +106,11 @@ package Paws::Pinpoint;
   sub GetCampaignVersions {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Pinpoint::GetCampaignVersions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetEmailChannel {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Pinpoint::GetEmailChannel', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetEndpoint {
@@ -138,14 +163,29 @@ package Paws::Pinpoint;
     my $call_object = $self->new_with_coercions('Paws::Pinpoint::GetSegmentVersions', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetSmsChannel {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Pinpoint::GetSmsChannel', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub PutEventStream {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Pinpoint::PutEventStream', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub SendMessages {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Pinpoint::SendMessages', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateApnsChannel {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Pinpoint::UpdateApnsChannel', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateApnsSandboxChannel {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Pinpoint::UpdateApnsSandboxChannel', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateApplicationSettings {
@@ -156,6 +196,11 @@ package Paws::Pinpoint;
   sub UpdateCampaign {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Pinpoint::UpdateCampaign', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateEmailChannel {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Pinpoint::UpdateEmailChannel', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateEndpoint {
@@ -178,10 +223,15 @@ package Paws::Pinpoint;
     my $call_object = $self->new_with_coercions('Paws::Pinpoint::UpdateSegment', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpdateSmsChannel {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Pinpoint::UpdateSmsChannel', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   
 
 
-  sub operations { qw/CreateCampaign CreateImportJob CreateSegment DeleteApnsChannel DeleteCampaign DeleteEventStream DeleteGcmChannel DeleteSegment GetApnsChannel GetApplicationSettings GetCampaign GetCampaignActivities GetCampaigns GetCampaignVersion GetCampaignVersions GetEndpoint GetEventStream GetGcmChannel GetImportJob GetImportJobs GetSegment GetSegmentImportJobs GetSegments GetSegmentVersion GetSegmentVersions PutEventStream UpdateApnsChannel UpdateApplicationSettings UpdateCampaign UpdateEndpoint UpdateEndpointsBatch UpdateGcmChannel UpdateSegment / }
+  sub operations { qw/CreateCampaign CreateImportJob CreateSegment DeleteApnsChannel DeleteApnsSandboxChannel DeleteCampaign DeleteEmailChannel DeleteEventStream DeleteGcmChannel DeleteSegment DeleteSmsChannel GetApnsChannel GetApnsSandboxChannel GetApplicationSettings GetCampaign GetCampaignActivities GetCampaigns GetCampaignVersion GetCampaignVersions GetEmailChannel GetEndpoint GetEventStream GetGcmChannel GetImportJob GetImportJobs GetSegment GetSegmentImportJobs GetSegments GetSegmentVersion GetSegmentVersions GetSmsChannel PutEventStream SendMessages UpdateApnsChannel UpdateApnsSandboxChannel UpdateApplicationSettings UpdateCampaign UpdateEmailChannel UpdateEndpoint UpdateEndpointsBatch UpdateGcmChannel UpdateSegment UpdateSmsChannel / }
 
 1;
 
@@ -249,6 +299,15 @@ Returns: a L<Paws::Pinpoint::DeleteApnsChannelResponse> instance
   Deletes the APNs channel for an app.
 
 
+=head2 DeleteApnsSandboxChannel(ApplicationId => Str)
+
+Each argument is described in detail in: L<Paws::Pinpoint::DeleteApnsSandboxChannel>
+
+Returns: a L<Paws::Pinpoint::DeleteApnsSandboxChannelResponse> instance
+
+  Delete an APNS sandbox channel
+
+
 =head2 DeleteCampaign(ApplicationId => Str, CampaignId => Str)
 
 Each argument is described in detail in: L<Paws::Pinpoint::DeleteCampaign>
@@ -256,6 +315,15 @@ Each argument is described in detail in: L<Paws::Pinpoint::DeleteCampaign>
 Returns: a L<Paws::Pinpoint::DeleteCampaignResponse> instance
 
   Deletes a campaign.
+
+
+=head2 DeleteEmailChannel(ApplicationId => Str)
+
+Each argument is described in detail in: L<Paws::Pinpoint::DeleteEmailChannel>
+
+Returns: a L<Paws::Pinpoint::DeleteEmailChannelResponse> instance
+
+  Delete an email channel
 
 
 =head2 DeleteEventStream(ApplicationId => Str)
@@ -285,6 +353,15 @@ Returns: a L<Paws::Pinpoint::DeleteSegmentResponse> instance
   Deletes a segment.
 
 
+=head2 DeleteSmsChannel(ApplicationId => Str)
+
+Each argument is described in detail in: L<Paws::Pinpoint::DeleteSmsChannel>
+
+Returns: a L<Paws::Pinpoint::DeleteSmsChannelResponse> instance
+
+  Delete an SMS channel
+
+
 =head2 GetApnsChannel(ApplicationId => Str)
 
 Each argument is described in detail in: L<Paws::Pinpoint::GetApnsChannel>
@@ -292,6 +369,15 @@ Each argument is described in detail in: L<Paws::Pinpoint::GetApnsChannel>
 Returns: a L<Paws::Pinpoint::GetApnsChannelResponse> instance
 
   Returns information about the APNs channel for an app.
+
+
+=head2 GetApnsSandboxChannel(ApplicationId => Str)
+
+Each argument is described in detail in: L<Paws::Pinpoint::GetApnsSandboxChannel>
+
+Returns: a L<Paws::Pinpoint::GetApnsSandboxChannelResponse> instance
+
+  Get an APNS sandbox channel
 
 
 =head2 GetApplicationSettings(ApplicationId => Str)
@@ -346,6 +432,15 @@ Each argument is described in detail in: L<Paws::Pinpoint::GetCampaignVersions>
 Returns: a L<Paws::Pinpoint::GetCampaignVersionsResponse> instance
 
   Returns information about your campaign versions.
+
+
+=head2 GetEmailChannel(ApplicationId => Str)
+
+Each argument is described in detail in: L<Paws::Pinpoint::GetEmailChannel>
+
+Returns: a L<Paws::Pinpoint::GetEmailChannelResponse> instance
+
+  Get an email channel
 
 
 =head2 GetEndpoint(ApplicationId => Str, EndpointId => Str)
@@ -438,6 +533,15 @@ Returns: a L<Paws::Pinpoint::GetSegmentVersionsResponse> instance
   Returns information about your segment versions.
 
 
+=head2 GetSmsChannel(ApplicationId => Str)
+
+Each argument is described in detail in: L<Paws::Pinpoint::GetSmsChannel>
+
+Returns: a L<Paws::Pinpoint::GetSmsChannelResponse> instance
+
+  Get an SMS channel
+
+
 =head2 PutEventStream(ApplicationId => Str, WriteEventStream => L<Paws::Pinpoint::WriteEventStream>)
 
 Each argument is described in detail in: L<Paws::Pinpoint::PutEventStream>
@@ -447,6 +551,15 @@ Returns: a L<Paws::Pinpoint::PutEventStreamResponse> instance
   Use to create or update the event stream for an app.
 
 
+=head2 SendMessages(ApplicationId => Str, MessageRequest => L<Paws::Pinpoint::MessageRequest>)
+
+Each argument is described in detail in: L<Paws::Pinpoint::SendMessages>
+
+Returns: a L<Paws::Pinpoint::SendMessagesResponse> instance
+
+  Send a batch of messages
+
+
 =head2 UpdateApnsChannel(APNSChannelRequest => L<Paws::Pinpoint::APNSChannelRequest>, ApplicationId => Str)
 
 Each argument is described in detail in: L<Paws::Pinpoint::UpdateApnsChannel>
@@ -454,6 +567,15 @@ Each argument is described in detail in: L<Paws::Pinpoint::UpdateApnsChannel>
 Returns: a L<Paws::Pinpoint::UpdateApnsChannelResponse> instance
 
   Use to update the APNs channel for an app.
+
+
+=head2 UpdateApnsSandboxChannel(APNSSandboxChannelRequest => L<Paws::Pinpoint::APNSSandboxChannelRequest>, ApplicationId => Str)
+
+Each argument is described in detail in: L<Paws::Pinpoint::UpdateApnsSandboxChannel>
+
+Returns: a L<Paws::Pinpoint::UpdateApnsSandboxChannelResponse> instance
+
+  Update an APNS sandbox channel
 
 
 =head2 UpdateApplicationSettings(ApplicationId => Str, WriteApplicationSettingsRequest => L<Paws::Pinpoint::WriteApplicationSettingsRequest>)
@@ -472,6 +594,15 @@ Each argument is described in detail in: L<Paws::Pinpoint::UpdateCampaign>
 Returns: a L<Paws::Pinpoint::UpdateCampaignResponse> instance
 
   Use to update a campaign.
+
+
+=head2 UpdateEmailChannel(ApplicationId => Str, EmailChannelRequest => L<Paws::Pinpoint::EmailChannelRequest>)
+
+Each argument is described in detail in: L<Paws::Pinpoint::UpdateEmailChannel>
+
+Returns: a L<Paws::Pinpoint::UpdateEmailChannelResponse> instance
+
+  Update an email channel
 
 
 =head2 UpdateEndpoint(ApplicationId => Str, EndpointId => Str, EndpointRequest => L<Paws::Pinpoint::EndpointRequest>)
@@ -508,6 +639,15 @@ Each argument is described in detail in: L<Paws::Pinpoint::UpdateSegment>
 Returns: a L<Paws::Pinpoint::UpdateSegmentResponse> instance
 
   Use to update a segment.
+
+
+=head2 UpdateSmsChannel(ApplicationId => Str, SMSChannelRequest => L<Paws::Pinpoint::SMSChannelRequest>)
+
+Each argument is described in detail in: L<Paws::Pinpoint::UpdateSmsChannel>
+
+Returns: a L<Paws::Pinpoint::UpdateSmsChannelResponse> instance
+
+  Update an SMS channel
 
 
 

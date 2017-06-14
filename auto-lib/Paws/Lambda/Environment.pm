@@ -40,7 +40,7 @@ settings.
 =head2 Variables => L<Paws::Lambda::EnvironmentVariables>
 
   The key-value pairs that represent your environment's configuration
-settings. The value you specify cannot contain a ",".
+settings.
 
 
 

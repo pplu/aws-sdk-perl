@@ -71,8 +71,8 @@ A unique user ID for whom the URL is generated.
 
 =head2 Validity => Int
 
-The validity duration of the URL in seconds. After this duration, the
-URL returned by this operation becomes invalid.
+The duration up to which the URL returned by this action is valid. The
+input can be any numeric value in seconds between 1 and 604800 seconds.
 
 
 

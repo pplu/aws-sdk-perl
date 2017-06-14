@@ -134,11 +134,6 @@ Projects and their resources, by calling the following:
 
 =item *
 
-CreateProject, which creates an empty project in AWS CodeStar with no
-resources.
-
-=item *
-
 DeleteProject, which deletes a project in AWS CodeStar.
 
 =item *
@@ -228,8 +223,8 @@ Each argument is described in detail in: L<Paws::CodeStar::CreateProject>
 
 Returns: a L<Paws::CodeStar::CreateProjectResult> instance
 
-  Creates a project in AWS CodeStar with minimal structure and no
-resources.
+  Reserved for future use. To create a project, use the AWS CodeStar
+console.
 
 
 =head2 CreateUserProfile(DisplayName => Str, EmailAddress => Str, UserArn => Str, [SshPublicKey => Str])

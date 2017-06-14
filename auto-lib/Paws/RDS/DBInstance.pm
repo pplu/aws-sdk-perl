@@ -23,6 +23,7 @@ package Paws::RDS::DBInstance;
   has Engine => (is => 'ro', isa => 'Str');
   has EngineVersion => (is => 'ro', isa => 'Str');
   has EnhancedMonitoringResourceArn => (is => 'ro', isa => 'Str');
+  has IAMDatabaseAuthenticationEnabled => (is => 'ro', isa => 'Bool');
   has InstanceCreateTime => (is => 'ro', isa => 'Str');
   has Iops => (is => 'ro', isa => 'Int');
   has KmsKeyId => (is => 'ro', isa => 'Str');
@@ -94,6 +95,14 @@ DeleteDBInstance
 =item *
 
 ModifyDBInstance
+
+=item *
+
+StopDBInstance
+
+=item *
+
+StartDBInstance
 
 =back
 
@@ -191,7 +200,7 @@ you use. For example, this value returns MySQL, MariaDB, or PostgreSQL
 information when returning values from CreateDBInstanceReadReplica
 since Read Replicas are only supported for these engines.
 
-B<MySQL, MariaDB, SQL Server, PostgreSQL, Amazon Aurora>
+B<MySQL, MariaDB, SQL Server, PostgreSQL>
 
 Contains the name of the initial database of this instance that was
 provided at create time, if one was specified when the DB instance was
@@ -250,6 +259,33 @@ instance.
 
   The Amazon Resource Name (ARN) of the Amazon CloudWatch Logs log stream
 that receives the Enhanced Monitoring metrics data for the DB instance.
+
+
+=head2 IAMDatabaseAuthenticationEnabled => Bool
+
+  True if mapping of AWS Identity and Access Management (IAM) accounts to
+database accounts is enabled; otherwise false.
+
+IAM database authentication can be enabled for the following database
+engines
+
+=over
+
+=item *
+
+For MySQL 5.6, minor version 5.6.34 or higher
+
+=item *
+
+For MySQL 5.7, minor version 5.7.16 or higher
+
+=item *
+
+Aurora 5.6 or higher. To enable IAM database authentication for Aurora,
+see DBCluster Type.
+
+=back
+
 
 
 =head2 InstanceCreateTime => Str

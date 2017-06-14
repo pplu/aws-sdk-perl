@@ -31,3 +31,34 @@ package Paws::Credential::ProviderChain;
 
   with 'Paws::Credential';
 1;
+### main pod documentation begin ###
+
+=encoding UTF-8
+
+=head1 NAME
+
+Paws::Credential::ProviderChain
+
+=head1 SYNOPSIS
+
+  use Paws::Credential::ProviderChain;
+
+  my $paws = Paws->new(config => {
+    credentials => Paws::Credential::ProviderChain->new(
+      providers => [ 'Paws::Credential::Environment', 'Paws::Credential::InstanceProfile' ],
+    )
+  });
+
+=head1 DESCRIPTION
+
+The ProviderChain is used to call different credential providers, one by one, in order, until one of them returns credentials.
+
+If none return credentials: an exception is raised.
+
+It is the default provider for Paws
+
+=head2 providers: ArrayRef[Str]
+
+Defaults to C<[ 'Paws::Credential::Environment', 'Paws::Credential::File', 'Paws::Credential::InstanceProfile' ]>
+
+=cut

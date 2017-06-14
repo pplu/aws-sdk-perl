@@ -40,9 +40,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 Each entry in the array is a structure containing:
 
-Key (string, 1 E<le> length E<le> 128)
+Key (string, between 1 and 128 characters)
 
-Values (array of strings 1 E<le> length E<le> 256)
+Values (array of strings, each string between 1 and 256 characters)
 
 
 

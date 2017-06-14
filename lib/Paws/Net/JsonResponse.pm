@@ -17,36 +17,31 @@ package Paws::Net::JsonResponse;
       ) if ($crc != $headers->{ 'x-amz-crc32' });
     }
 
-    my $unserialized_struct;
-
-    my $ret_class = $call_object->meta->name->_returns;
-    if (defined $ret_class){
-      Paws->load_class($ret_class);
-      if ($ret_class->can('_stream_param')) {
-        $unserialized_struct->{ $ret_class->_stream_param } = $content;
-      } else {
-        $unserialized_struct = $self->unserialize_response( $content );
-      }
-    }
-
     if ( $http_status >= 300 ) {
-        return $self->error_to_exception($unserialized_struct, $call_object, $http_status, $content, $headers);
+        return $self->error_to_exception($call_object, $http_status, $content, $headers);
     } else {
-        return $self->response_to_object($unserialized_struct, $call_object, $http_status, $content, $headers);
+        return $self->response_to_object($call_object, $http_status, $content, $headers);
     }
   }
  
   sub unserialize_response {
     my ($self, $data) = @_;
 
-    return {} if ($data eq '');
-
-    my $json = decode_json( $data );
-    return $json;
+    return decode_json( $data );
   }
 
   sub error_to_exception {
-    my ($self, $struct, $call_object, $http_status, $content, $headers) = @_;
+    my ($self, $call_object, $http_status, $content, $headers) = @_;
+    
+    my $struct = eval { $self->unserialize_response( $content ) };
+    if ($@) {
+      return Paws::Exception->new(
+        message => $@,
+        code => 'InvalidContent',
+        request_id => '', #$request_id,
+        http_status => $http_status,
+      );
+    }
 
     my ($message, $request_id);
 
@@ -59,7 +54,7 @@ package Paws::Net::JsonResponse;
       if ($struct->{__type} eq 'InternalError'){
         $message = '';
       } else {
-        die "Unrecognized error message format";
+        Moose->throw_error("Unrecognized error message format");
       }
     }
 

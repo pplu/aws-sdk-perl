@@ -159,6 +159,11 @@ package Paws::CodeDeploy;
     my $call_object = $self->new_with_coercions('Paws::CodeDeploy::ListDeployments', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListGitHubAccountTokenNames {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeDeploy::ListGitHubAccountTokenNames', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListOnPremisesInstances {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CodeDeploy::ListOnPremisesInstances', @_);
@@ -205,18 +210,20 @@ package Paws::CodeDeploy;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListApplicationRevisions(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->nextToken) {
-        $result = $self->ListApplicationRevisions(@_, nextToken => $result->nextToken);
-        push @{ $result->revisions }, @{ $result->revisions };
+      while ($next_result->nextToken) {
+        $next_result = $self->ListApplicationRevisions(@_, nextToken => $next_result->nextToken);
+        push @{ $result->revisions }, @{ $next_result->revisions };
       }
       return $result;
     } else {
       while ($result->nextToken) {
-        $result = $self->ListApplicationRevisions(@_, nextToken => $result->nextToken);
         $callback->($_ => 'revisions') foreach (@{ $result->revisions });
+        $result = $self->ListApplicationRevisions(@_, nextToken => $result->nextToken);
       }
+      $callback->($_ => 'revisions') foreach (@{ $result->revisions });
     }
 
     return undef
@@ -226,18 +233,20 @@ package Paws::CodeDeploy;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListApplications(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->nextToken) {
-        $result = $self->ListApplications(@_, nextToken => $result->nextToken);
-        push @{ $result->applications }, @{ $result->applications };
+      while ($next_result->nextToken) {
+        $next_result = $self->ListApplications(@_, nextToken => $next_result->nextToken);
+        push @{ $result->applications }, @{ $next_result->applications };
       }
       return $result;
     } else {
       while ($result->nextToken) {
-        $result = $self->ListApplications(@_, nextToken => $result->nextToken);
         $callback->($_ => 'applications') foreach (@{ $result->applications });
+        $result = $self->ListApplications(@_, nextToken => $result->nextToken);
       }
+      $callback->($_ => 'applications') foreach (@{ $result->applications });
     }
 
     return undef
@@ -247,18 +256,20 @@ package Paws::CodeDeploy;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListDeploymentConfigs(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->nextToken) {
-        $result = $self->ListDeploymentConfigs(@_, nextToken => $result->nextToken);
-        push @{ $result->deploymentConfigsList }, @{ $result->deploymentConfigsList };
+      while ($next_result->nextToken) {
+        $next_result = $self->ListDeploymentConfigs(@_, nextToken => $next_result->nextToken);
+        push @{ $result->deploymentConfigsList }, @{ $next_result->deploymentConfigsList };
       }
       return $result;
     } else {
       while ($result->nextToken) {
-        $result = $self->ListDeploymentConfigs(@_, nextToken => $result->nextToken);
         $callback->($_ => 'deploymentConfigsList') foreach (@{ $result->deploymentConfigsList });
+        $result = $self->ListDeploymentConfigs(@_, nextToken => $result->nextToken);
       }
+      $callback->($_ => 'deploymentConfigsList') foreach (@{ $result->deploymentConfigsList });
     }
 
     return undef
@@ -268,18 +279,20 @@ package Paws::CodeDeploy;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListDeploymentGroups(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->nextToken) {
-        $result = $self->ListDeploymentGroups(@_, nextToken => $result->nextToken);
-        push @{ $result->deploymentGroups }, @{ $result->deploymentGroups };
+      while ($next_result->nextToken) {
+        $next_result = $self->ListDeploymentGroups(@_, nextToken => $next_result->nextToken);
+        push @{ $result->deploymentGroups }, @{ $next_result->deploymentGroups };
       }
       return $result;
     } else {
       while ($result->nextToken) {
-        $result = $self->ListDeploymentGroups(@_, nextToken => $result->nextToken);
         $callback->($_ => 'deploymentGroups') foreach (@{ $result->deploymentGroups });
+        $result = $self->ListDeploymentGroups(@_, nextToken => $result->nextToken);
       }
+      $callback->($_ => 'deploymentGroups') foreach (@{ $result->deploymentGroups });
     }
 
     return undef
@@ -289,18 +302,20 @@ package Paws::CodeDeploy;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListDeploymentInstances(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->nextToken) {
-        $result = $self->ListDeploymentInstances(@_, nextToken => $result->nextToken);
-        push @{ $result->instancesList }, @{ $result->instancesList };
+      while ($next_result->nextToken) {
+        $next_result = $self->ListDeploymentInstances(@_, nextToken => $next_result->nextToken);
+        push @{ $result->instancesList }, @{ $next_result->instancesList };
       }
       return $result;
     } else {
       while ($result->nextToken) {
-        $result = $self->ListDeploymentInstances(@_, nextToken => $result->nextToken);
         $callback->($_ => 'instancesList') foreach (@{ $result->instancesList });
+        $result = $self->ListDeploymentInstances(@_, nextToken => $result->nextToken);
       }
+      $callback->($_ => 'instancesList') foreach (@{ $result->instancesList });
     }
 
     return undef
@@ -310,25 +325,27 @@ package Paws::CodeDeploy;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListDeployments(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->nextToken) {
-        $result = $self->ListDeployments(@_, nextToken => $result->nextToken);
-        push @{ $result->deployments }, @{ $result->deployments };
+      while ($next_result->nextToken) {
+        $next_result = $self->ListDeployments(@_, nextToken => $next_result->nextToken);
+        push @{ $result->deployments }, @{ $next_result->deployments };
       }
       return $result;
     } else {
       while ($result->nextToken) {
-        $result = $self->ListDeployments(@_, nextToken => $result->nextToken);
         $callback->($_ => 'deployments') foreach (@{ $result->deployments });
+        $result = $self->ListDeployments(@_, nextToken => $result->nextToken);
       }
+      $callback->($_ => 'deployments') foreach (@{ $result->deployments });
     }
 
     return undef
   }
 
 
-  sub operations { qw/AddTagsToOnPremisesInstances BatchGetApplicationRevisions BatchGetApplications BatchGetDeploymentGroups BatchGetDeploymentInstances BatchGetDeployments BatchGetOnPremisesInstances ContinueDeployment CreateApplication CreateDeployment CreateDeploymentConfig CreateDeploymentGroup DeleteApplication DeleteDeploymentConfig DeleteDeploymentGroup DeregisterOnPremisesInstance GetApplication GetApplicationRevision GetDeployment GetDeploymentConfig GetDeploymentGroup GetDeploymentInstance GetOnPremisesInstance ListApplicationRevisions ListApplications ListDeploymentConfigs ListDeploymentGroups ListDeploymentInstances ListDeployments ListOnPremisesInstances RegisterApplicationRevision RegisterOnPremisesInstance RemoveTagsFromOnPremisesInstances SkipWaitTimeForInstanceTermination StopDeployment UpdateApplication UpdateDeploymentGroup / }
+  sub operations { qw/AddTagsToOnPremisesInstances BatchGetApplicationRevisions BatchGetApplications BatchGetDeploymentGroups BatchGetDeploymentInstances BatchGetDeployments BatchGetOnPremisesInstances ContinueDeployment CreateApplication CreateDeployment CreateDeploymentConfig CreateDeploymentGroup DeleteApplication DeleteDeploymentConfig DeleteDeploymentGroup DeregisterOnPremisesInstance GetApplication GetApplicationRevision GetDeployment GetDeploymentConfig GetDeploymentGroup GetDeploymentInstance GetOnPremisesInstance ListApplicationRevisions ListApplications ListDeploymentConfigs ListDeploymentGroups ListDeploymentInstances ListDeployments ListGitHubAccountTokenNames ListOnPremisesInstances RegisterApplicationRevision RegisterOnPremisesInstance RemoveTagsFromOnPremisesInstances SkipWaitTimeForInstanceTermination StopDeployment UpdateApplication UpdateDeploymentGroup / }
 
 1;
 
@@ -358,74 +375,88 @@ Paws::CodeDeploy - Perl Interface to AWS AWS CodeDeploy
 
 AWS CodeDeploy
 
-B<Overview>
+AWS CodeDeploy is a deployment service that automates application
+deployments to Amazon EC2 instances or on-premises instances running in
+your own facility.
 
-This reference guide provides descriptions of the AWS CodeDeploy APIs.
-For more information about AWS CodeDeploy, see the AWS CodeDeploy User
-Guide.
+You can deploy a nearly unlimited variety of application content, such
+as code, web and configuration files, executables, packages, scripts,
+multimedia files, and so on. AWS CodeDeploy can deploy application
+content stored in Amazon S3 buckets, GitHub repositories, or Bitbucket
+repositories. You do not need to make changes to your existing code
+before you can use AWS CodeDeploy.
 
-B<Using the APIs>
+AWS CodeDeploy makes it easier for you to rapidly release new features,
+helps you avoid downtime during application deployment, and handles the
+complexity of updating your applications, without many of the risks
+associated with error-prone manual deployments.
 
-You can use the AWS CodeDeploy APIs to work with the following:
+B<AWS CodeDeploy Components>
+
+Use the information in this guide to help you work with the following
+AWS CodeDeploy components:
 
 =over
 
 =item *
 
-Applications are unique identifiers used by AWS CodeDeploy to ensure
-the correct combinations of revisions, deployment configurations, and
-deployment groups are being referenced during deployments.
-
-You can use the AWS CodeDeploy APIs to create, delete, get, list, and
-update applications.
+B<Application>: A name that uniquely identifies the application you
+want to deploy. AWS CodeDeploy uses this name, which functions as a
+container, to ensure the correct combination of revision, deployment
+configuration, and deployment group are referenced during a deployment.
 
 =item *
 
-Deployment configurations are sets of deployment rules and success and
-failure conditions used by AWS CodeDeploy during deployments.
-
-You can use the AWS CodeDeploy APIs to create, delete, get, and list
-deployment configurations.
+B<Deployment group>: A set of individual instances. A deployment group
+contains individually tagged instances, Amazon EC2 instances in Auto
+Scaling groups, or both.
 
 =item *
 
-Deployment groups are groups of instances to which application
-revisions can be deployed.
-
-You can use the AWS CodeDeploy APIs to create, delete, get, list, and
-update deployment groups.
+B<Deployment configuration>: A set of deployment rules and deployment
+success and failure conditions used by AWS CodeDeploy during a
+deployment.
 
 =item *
 
-Instances represent Amazon EC2 instances to which application revisions
-are deployed. Instances are identified by their Amazon EC2 tags or Auto
-Scaling group names. Instances belong to deployment groups.
-
-You can use the AWS CodeDeploy APIs to get and list instance.
+B<Deployment>: The process, and the components involved in the process,
+of installing content on one or more instances.
 
 =item *
 
-Deployments represent the process of deploying revisions to instances.
+B<Application revisions>: An archive file containing source
+contentE<mdash>source code, web pages, executable files, and deployment
+scriptsE<mdash>along with an application specification file (AppSpec
+file). Revisions are stored in Amazon S3 buckets or GitHub
+repositories. For Amazon S3, a revision is uniquely identified by its
+Amazon S3 object key and its ETag, version, or both. For GitHub, a
+revision is uniquely identified by its commit ID.
 
-You can use the AWS CodeDeploy APIs to create, get, list, and stop
-deployments.
+=back
+
+This guide also contains information to help you get details about the
+instances in your deployments and to make on-premises instances
+available for AWS CodeDeploy deployments.
+
+B<AWS CodeDeploy Information Resources>
+
+=over
 
 =item *
 
-Application revisions are archive files stored in Amazon S3 buckets or
-GitHub repositories. These revisions contain source content (such as
-source code, web pages, executable files, and deployment scripts) along
-with an application specification (AppSpec) file. (The AppSpec file is
-unique to AWS CodeDeploy; it defines the deployment actions you want
-AWS CodeDeploy to execute.) For application revisions stored in Amazon
-S3 buckets, an application revision is uniquely identified by its
-Amazon S3 object key and its ETag, version, or both. For application
-revisions stored in GitHub repositories, an application revision is
-uniquely identified by its repository name and commit ID. Application
-revisions are deployed through deployment groups.
+AWS CodeDeploy User Guide
 
-You can use the AWS CodeDeploy APIs to get, list, and register
-application revisions.
+=item *
+
+AWS CodeDeploy API Reference Guide
+
+=item *
+
+AWS CLI Reference for AWS CodeDeploy
+
+=item *
+
+AWS CodeDeploy Developer Forum
 
 =back
 
@@ -502,12 +533,12 @@ Each argument is described in detail in: L<Paws::CodeDeploy::ContinueDeployment>
 
 Returns: nothing
 
-  Starts the process of rerouting traffic from instances in the original
-environment to instances in thereplacement environment without waiting
-for a specified wait time to elapse. (Traffic rerouting, which is
-achieved by registering instances in the replacement environment with
-the load balancer, can start as soon as all instances have a status of
-Ready.)
+  For a blue/green deployment, starts the process of rerouting traffic
+from instances in the original environment to instances in the
+replacement environment without waiting for a specified wait time to
+elapse. (Traffic rerouting, which is achieved by registering instances
+in the replacement environment with the load balancer, can start as
+soon as all instances have a status of Ready.)
 
 
 =head2 CreateApplication(ApplicationName => Str)
@@ -519,7 +550,7 @@ Returns: a L<Paws::CodeDeploy::CreateApplicationOutput> instance
   Creates an application.
 
 
-=head2 CreateDeployment(ApplicationName => Str, [AutoRollbackConfiguration => L<Paws::CodeDeploy::AutoRollbackConfiguration>, DeploymentConfigName => Str, DeploymentGroupName => Str, Description => Str, IgnoreApplicationStopFailures => Bool, Revision => L<Paws::CodeDeploy::RevisionLocation>, TargetInstances => L<Paws::CodeDeploy::TargetInstances>, UpdateOutdatedInstancesOnly => Bool])
+=head2 CreateDeployment(ApplicationName => Str, [AutoRollbackConfiguration => L<Paws::CodeDeploy::AutoRollbackConfiguration>, DeploymentConfigName => Str, DeploymentGroupName => Str, Description => Str, FileExistsBehavior => Str, IgnoreApplicationStopFailures => Bool, Revision => L<Paws::CodeDeploy::RevisionLocation>, TargetInstances => L<Paws::CodeDeploy::TargetInstances>, UpdateOutdatedInstancesOnly => Bool])
 
 Each argument is described in detail in: L<Paws::CodeDeploy::CreateDeployment>
 
@@ -706,6 +737,15 @@ Returns: a L<Paws::CodeDeploy::ListDeploymentsOutput> instance
 
   Lists the deployments in a deployment group for an application
 registered with the applicable IAM user or AWS account.
+
+
+=head2 ListGitHubAccountTokenNames([NextToken => Str])
+
+Each argument is described in detail in: L<Paws::CodeDeploy::ListGitHubAccountTokenNames>
+
+Returns: a L<Paws::CodeDeploy::ListGitHubAccountTokenNamesOutput> instance
+
+  Lists the names of stored connections to GitHub accounts.
 
 
 =head2 ListOnPremisesInstances([NextToken => Str, RegistrationStatus => Str, TagFilters => ArrayRef[L<Paws::CodeDeploy::TagFilter>]])

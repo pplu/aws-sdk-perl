@@ -44,11 +44,11 @@ C<Id>.
 
 =head2 DelaySeconds => Int
 
-  The number of seconds for which a specific message is delayed. Valid
-values: 0 to 900. Maximum: 15 minutes. Messages with a positive
-C<DelaySeconds> value become available for processing after the delay
-period is finished. If you don't specify a value, the default value for
-the queue is applied.
+  The length of time, in seconds, for which a specific message is
+delayed. Valid values: 0 to 900. Maximum: 15 minutes. Messages with a
+positive C<DelaySeconds> value become available for processing after
+the delay period is finished. If you don't specify a value, the default
+value for the queue is applied.
 
 When you set C<FifoQueue>, you can't set C<DelaySeconds> per message.
 You can set this parameter only on a queue level.
@@ -124,11 +124,6 @@ duplicates and only one copy of the message is delivered.
 
 =item *
 
-You can also use C<ContentBasedDeduplication> for messages with
-identical content to be treated as duplicates.
-
-=item *
-
 If you send one message with C<ContentBasedDeduplication> enabled and
 then another message with a C<MessageDeduplicationId> that is the same
 as the one generated for the first C<MessageDeduplicationId>, the two
@@ -189,6 +184,9 @@ C<(!"#$%&'()*+,-./:;E<lt>=E<gt>?@[\]^_`{|}~)>.
 For best practices of using C<MessageGroupId>, see Using the
 MessageGroupId Property in the I<Amazon Simple Queue Service Developer
 Guide>.
+
+C<MessageGroupId> is required for FIFO queues. You can't use it for
+Standard queues.
 
 
 

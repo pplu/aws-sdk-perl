@@ -45,7 +45,7 @@ an origin access identity to configure the origin so that viewers can
 I<only> access objects in an Amazon S3 bucket through CloudFront. The
 format of the value is:
 
-origin-access-identity/CloudFront/I<ID-of-origin-access-identity>
+origin-access-identity/cloudfront/I<ID-of-origin-access-identity>
 
 where C< I<ID-of-origin-access-identity> > is the value that CloudFront
 returned in the C<ID> element when you created the origin access

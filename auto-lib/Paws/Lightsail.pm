@@ -219,6 +219,11 @@ package Paws::Lightsail;
     my $call_object = $self->new_with_coercions('Paws::Lightsail::PeerVpc', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub PutInstancePublicPorts {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lightsail::PutInstancePublicPorts', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub RebootInstance {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Lightsail::RebootInstance', @_);
@@ -255,18 +260,20 @@ package Paws::Lightsail;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->GetActiveNames(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->pageToken) {
-        $result = $self->GetActiveNames(@_, pageToken => $result->nextPageToken);
-        push @{ $result->activeNames }, @{ $result->activeNames };
+      while ($next_result->nextPageToken) {
+        $next_result = $self->GetActiveNames(@_, pageToken => $next_result->nextPageToken);
+        push @{ $result->activeNames }, @{ $next_result->activeNames };
       }
       return $result;
     } else {
-      while ($result->pageToken) {
-        $result = $self->GetActiveNames(@_, pageToken => $result->nextPageToken);
+      while ($result->nextPageToken) {
         $callback->($_ => 'activeNames') foreach (@{ $result->activeNames });
+        $result = $self->GetActiveNames(@_, pageToken => $result->nextPageToken);
       }
+      $callback->($_ => 'activeNames') foreach (@{ $result->activeNames });
     }
 
     return undef
@@ -276,18 +283,20 @@ package Paws::Lightsail;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->GetBlueprints(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->pageToken) {
-        $result = $self->GetBlueprints(@_, pageToken => $result->nextPageToken);
-        push @{ $result->blueprints }, @{ $result->blueprints };
+      while ($next_result->nextPageToken) {
+        $next_result = $self->GetBlueprints(@_, pageToken => $next_result->nextPageToken);
+        push @{ $result->blueprints }, @{ $next_result->blueprints };
       }
       return $result;
     } else {
-      while ($result->pageToken) {
-        $result = $self->GetBlueprints(@_, pageToken => $result->nextPageToken);
+      while ($result->nextPageToken) {
         $callback->($_ => 'blueprints') foreach (@{ $result->blueprints });
+        $result = $self->GetBlueprints(@_, pageToken => $result->nextPageToken);
       }
+      $callback->($_ => 'blueprints') foreach (@{ $result->blueprints });
     }
 
     return undef
@@ -297,18 +306,20 @@ package Paws::Lightsail;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->GetBundles(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->pageToken) {
-        $result = $self->GetBundles(@_, pageToken => $result->nextPageToken);
-        push @{ $result->bundles }, @{ $result->bundles };
+      while ($next_result->nextPageToken) {
+        $next_result = $self->GetBundles(@_, pageToken => $next_result->nextPageToken);
+        push @{ $result->bundles }, @{ $next_result->bundles };
       }
       return $result;
     } else {
-      while ($result->pageToken) {
-        $result = $self->GetBundles(@_, pageToken => $result->nextPageToken);
+      while ($result->nextPageToken) {
         $callback->($_ => 'bundles') foreach (@{ $result->bundles });
+        $result = $self->GetBundles(@_, pageToken => $result->nextPageToken);
       }
+      $callback->($_ => 'bundles') foreach (@{ $result->bundles });
     }
 
     return undef
@@ -318,18 +329,20 @@ package Paws::Lightsail;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->GetDomains(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->pageToken) {
-        $result = $self->GetDomains(@_, pageToken => $result->nextPageToken);
-        push @{ $result->domains }, @{ $result->domains };
+      while ($next_result->nextPageToken) {
+        $next_result = $self->GetDomains(@_, pageToken => $next_result->nextPageToken);
+        push @{ $result->domains }, @{ $next_result->domains };
       }
       return $result;
     } else {
-      while ($result->pageToken) {
-        $result = $self->GetDomains(@_, pageToken => $result->nextPageToken);
+      while ($result->nextPageToken) {
         $callback->($_ => 'domains') foreach (@{ $result->domains });
+        $result = $self->GetDomains(@_, pageToken => $result->nextPageToken);
       }
+      $callback->($_ => 'domains') foreach (@{ $result->domains });
     }
 
     return undef
@@ -339,18 +352,20 @@ package Paws::Lightsail;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->GetInstances(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->pageToken) {
-        $result = $self->GetInstances(@_, pageToken => $result->nextPageToken);
-        push @{ $result->instances }, @{ $result->instances };
+      while ($next_result->nextPageToken) {
+        $next_result = $self->GetInstances(@_, pageToken => $next_result->nextPageToken);
+        push @{ $result->instances }, @{ $next_result->instances };
       }
       return $result;
     } else {
-      while ($result->pageToken) {
-        $result = $self->GetInstances(@_, pageToken => $result->nextPageToken);
+      while ($result->nextPageToken) {
         $callback->($_ => 'instances') foreach (@{ $result->instances });
+        $result = $self->GetInstances(@_, pageToken => $result->nextPageToken);
       }
+      $callback->($_ => 'instances') foreach (@{ $result->instances });
     }
 
     return undef
@@ -360,18 +375,20 @@ package Paws::Lightsail;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->GetInstanceSnapshots(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->pageToken) {
-        $result = $self->GetInstanceSnapshots(@_, pageToken => $result->nextPageToken);
-        push @{ $result->instanceSnapshots }, @{ $result->instanceSnapshots };
+      while ($next_result->nextPageToken) {
+        $next_result = $self->GetInstanceSnapshots(@_, pageToken => $next_result->nextPageToken);
+        push @{ $result->instanceSnapshots }, @{ $next_result->instanceSnapshots };
       }
       return $result;
     } else {
-      while ($result->pageToken) {
-        $result = $self->GetInstanceSnapshots(@_, pageToken => $result->nextPageToken);
+      while ($result->nextPageToken) {
         $callback->($_ => 'instanceSnapshots') foreach (@{ $result->instanceSnapshots });
+        $result = $self->GetInstanceSnapshots(@_, pageToken => $result->nextPageToken);
       }
+      $callback->($_ => 'instanceSnapshots') foreach (@{ $result->instanceSnapshots });
     }
 
     return undef
@@ -381,18 +398,20 @@ package Paws::Lightsail;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->GetKeyPairs(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->pageToken) {
-        $result = $self->GetKeyPairs(@_, pageToken => $result->nextPageToken);
-        push @{ $result->keyPairs }, @{ $result->keyPairs };
+      while ($next_result->nextPageToken) {
+        $next_result = $self->GetKeyPairs(@_, pageToken => $next_result->nextPageToken);
+        push @{ $result->keyPairs }, @{ $next_result->keyPairs };
       }
       return $result;
     } else {
-      while ($result->pageToken) {
-        $result = $self->GetKeyPairs(@_, pageToken => $result->nextPageToken);
+      while ($result->nextPageToken) {
         $callback->($_ => 'keyPairs') foreach (@{ $result->keyPairs });
+        $result = $self->GetKeyPairs(@_, pageToken => $result->nextPageToken);
       }
+      $callback->($_ => 'keyPairs') foreach (@{ $result->keyPairs });
     }
 
     return undef
@@ -402,18 +421,20 @@ package Paws::Lightsail;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->GetOperations(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->pageToken) {
-        $result = $self->GetOperations(@_, pageToken => $result->nextPageToken);
-        push @{ $result->operations }, @{ $result->operations };
+      while ($next_result->nextPageToken) {
+        $next_result = $self->GetOperations(@_, pageToken => $next_result->nextPageToken);
+        push @{ $result->operations }, @{ $next_result->operations };
       }
       return $result;
     } else {
-      while ($result->pageToken) {
-        $result = $self->GetOperations(@_, pageToken => $result->nextPageToken);
+      while ($result->nextPageToken) {
         $callback->($_ => 'operations') foreach (@{ $result->operations });
+        $result = $self->GetOperations(@_, pageToken => $result->nextPageToken);
       }
+      $callback->($_ => 'operations') foreach (@{ $result->operations });
     }
 
     return undef
@@ -423,25 +444,27 @@ package Paws::Lightsail;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->GetStaticIps(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->pageToken) {
-        $result = $self->GetStaticIps(@_, pageToken => $result->nextPageToken);
-        push @{ $result->staticIps }, @{ $result->staticIps };
+      while ($next_result->nextPageToken) {
+        $next_result = $self->GetStaticIps(@_, pageToken => $next_result->nextPageToken);
+        push @{ $result->staticIps }, @{ $next_result->staticIps };
       }
       return $result;
     } else {
-      while ($result->pageToken) {
-        $result = $self->GetStaticIps(@_, pageToken => $result->nextPageToken);
+      while ($result->nextPageToken) {
         $callback->($_ => 'staticIps') foreach (@{ $result->staticIps });
+        $result = $self->GetStaticIps(@_, pageToken => $result->nextPageToken);
       }
+      $callback->($_ => 'staticIps') foreach (@{ $result->staticIps });
     }
 
     return undef
   }
 
 
-  sub operations { qw/AllocateStaticIp AttachStaticIp CloseInstancePublicPorts CreateDomain CreateDomainEntry CreateInstances CreateInstancesFromSnapshot CreateInstanceSnapshot CreateKeyPair DeleteDomain DeleteDomainEntry DeleteInstance DeleteInstanceSnapshot DeleteKeyPair DetachStaticIp DownloadDefaultKeyPair GetActiveNames GetBlueprints GetBundles GetDomain GetDomains GetInstance GetInstanceAccessDetails GetInstanceMetricData GetInstancePortStates GetInstances GetInstanceSnapshot GetInstanceSnapshots GetInstanceState GetKeyPair GetKeyPairs GetOperation GetOperations GetOperationsForResource GetRegions GetStaticIp GetStaticIps ImportKeyPair IsVpcPeered OpenInstancePublicPorts PeerVpc RebootInstance ReleaseStaticIp StartInstance StopInstance UnpeerVpc UpdateDomainEntry / }
+  sub operations { qw/AllocateStaticIp AttachStaticIp CloseInstancePublicPorts CreateDomain CreateDomainEntry CreateInstances CreateInstancesFromSnapshot CreateInstanceSnapshot CreateKeyPair DeleteDomain DeleteDomainEntry DeleteInstance DeleteInstanceSnapshot DeleteKeyPair DetachStaticIp DownloadDefaultKeyPair GetActiveNames GetBlueprints GetBundles GetDomain GetDomains GetInstance GetInstanceAccessDetails GetInstanceMetricData GetInstancePortStates GetInstances GetInstanceSnapshot GetInstanceSnapshots GetInstanceState GetKeyPair GetKeyPairs GetOperation GetOperations GetOperationsForResource GetRegions GetStaticIp GetStaticIps ImportKeyPair IsVpcPeered OpenInstancePublicPorts PeerVpc PutInstancePublicPorts RebootInstance ReleaseStaticIp StartInstance StopInstance UnpeerVpc UpdateDomainEntry / }
 
 1;
 
@@ -825,7 +848,9 @@ Each argument is described in detail in: L<Paws::Lightsail::GetRegions>
 
 Returns: a L<Paws::Lightsail::GetRegionsResult> instance
 
-  Returns a list of all valid regions for Amazon Lightsail.
+  Returns a list of all valid regions for Amazon Lightsail. Use the
+C<include availability zones> parameter to also return the availability
+zones in a region.
 
 
 =head2 GetStaticIp(StaticIpName => Str)
@@ -881,6 +906,17 @@ Each argument is described in detail in: L<Paws::Lightsail::PeerVpc>
 Returns: a L<Paws::Lightsail::PeerVpcResult> instance
 
   Tries to peer the Lightsail VPC with the user's default VPC.
+
+
+=head2 PutInstancePublicPorts(InstanceName => Str, PortInfos => ArrayRef[L<Paws::Lightsail::PortInfo>])
+
+Each argument is described in detail in: L<Paws::Lightsail::PutInstancePublicPorts>
+
+Returns: a L<Paws::Lightsail::PutInstancePublicPortsResult> instance
+
+  Sets the specified open ports for an Amazon Lightsail instance, and
+closes all ports for every protocol not included in the current
+request.
 
 
 =head2 RebootInstance(InstanceName => Str)

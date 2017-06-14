@@ -19,21 +19,12 @@ Paws::Route53Domains::ViewBillingResponse
 
 A summary of billing records.
 
-Type: Complex type containing a list of billing record summaries.
-
-Children: C<DomainName>, C<Operation>, C<InvoiceId>, C<BillDate> and
-C<Price>
-
 
 =head2 NextPageMarker => Str
 
 If there are more billing records than you specified for C<MaxItems> in
 the request, submit another request and include the value of
 C<NextPageMarker> in the value of C<Marker>.
-
-Type: String
-
-Parent: C<BillingRecords>
 
 
 =head2 _request_id => Str

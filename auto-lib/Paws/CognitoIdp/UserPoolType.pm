@@ -53,14 +53,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CognitoIdp:
 
 =head1 DESCRIPTION
 
-A container with information about the user pool type.
+A container for information about the user pool type.
 
 =head1 ATTRIBUTES
 
 
 =head2 AdminCreateUserConfig => L<Paws::CognitoIdp::AdminCreateUserConfigType>
 
-  The configuration for AdminCreateUser requests.
+  The configuration for C<AdminCreateUser> requests.
 
 
 =head2 AliasAttributes => ArrayRef[Str|Undef]
@@ -75,7 +75,7 @@ A container with information about the user pool type.
 
 =head2 CreationDate => Str
 
-  The creation date of a user pool.
+  The date the user pool was created.
 
 
 =head2 DeviceConfiguration => L<Paws::CognitoIdp::DeviceConfigurationType>
@@ -116,13 +116,12 @@ users.
 
 =head2 LambdaConfig => L<Paws::CognitoIdp::LambdaConfigType>
 
-  A container describing the AWS Lambda triggers associated with a user
-pool.
+  A container for the AWS Lambda triggers associated with a user pool.
 
 
 =head2 LastModifiedDate => Str
 
-  The last modified date of a user pool.
+  The date the user pool was last modified.
 
 
 =head2 MfaConfiguration => Str
@@ -157,7 +156,7 @@ token.
 
 =head2 Policies => L<Paws::CognitoIdp::UserPoolPolicyType>
 
-  A container describing the policies associated with a user pool.
+  A container for the policies associated with a user pool.
 
 
 =head2 SchemaAttributes => ArrayRef[L<Paws::CognitoIdp::SchemaAttributeType>]
@@ -177,7 +176,7 @@ token.
 
 =head2 SmsConfigurationFailure => Str
 
-  The reason why the SMS configuration cannot send the message(s) to your
+  The reason why the SMS configuration cannot send the messages to your
 users.
 
 

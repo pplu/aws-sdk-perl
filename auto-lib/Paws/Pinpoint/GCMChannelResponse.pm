@@ -3,6 +3,7 @@ package Paws::Pinpoint::GCMChannelResponse;
   has ApplicationId => (is => 'ro', isa => 'Str');
   has CreationDate => (is => 'ro', isa => 'Str');
   has Credential => (is => 'ro', isa => 'Str');
+  has Enabled => (is => 'ro', isa => 'Bool');
   has Id => (is => 'ro', isa => 'Str');
   has IsArchived => (is => 'ro', isa => 'Bool');
   has LastModifiedBy => (is => 'ro', isa => 'Str');
@@ -59,9 +60,14 @@ Google Cloud Messaging channel definition
   The GCM API key from Google.
 
 
+=head2 Enabled => Bool
+
+  If the channel is enabled for sending messages.
+
+
 =head2 Id => Str
 
-  The unique channel ID.
+  Channel ID. Not used, only for backwards compatibility.
 
 
 =head2 IsArchived => Bool

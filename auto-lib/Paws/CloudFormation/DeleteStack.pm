@@ -1,6 +1,7 @@
 
 package Paws::CloudFormation::DeleteStack;
   use Moose;
+  has ClientRequestToken => (is => 'ro', isa => 'Str');
   has RetainResources => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has RoleARN => (is => 'ro', isa => 'Str');
   has StackName => (is => 'ro', isa => 'Str', required => 1);
@@ -33,6 +34,16 @@ As an example:
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 
 =head1 ATTRIBUTES
+
+
+=head2 ClientRequestToken => Str
+
+A unique identifier for this C<DeleteStack> request. Specify this token
+if you plan to retry requests so that AWS CloudFormation knows that
+you're not attempting to delete a stack with the same name. You might
+retry C<DeleteStack> requests to ensure that AWS CloudFormation
+successfully received them.
+
 
 
 =head2 RetainResources => ArrayRef[Str|Undef]

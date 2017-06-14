@@ -3,10 +3,12 @@ package Paws::RDS::RestoreDBClusterToPointInTime;
   use Moose;
   has DBClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has DBSubnetGroupName => (is => 'ro', isa => 'Str');
+  has EnableIAMDatabaseAuthentication => (is => 'ro', isa => 'Bool');
   has KmsKeyId => (is => 'ro', isa => 'Str');
   has OptionGroupName => (is => 'ro', isa => 'Str');
   has Port => (is => 'ro', isa => 'Int');
   has RestoreToTime => (is => 'ro', isa => 'Str');
+  has RestoreType => (is => 'ro', isa => 'Str');
   has SourceDBClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Tag]');
   has UseLatestRestorableTime => (is => 'ro', isa => 'Bool');
@@ -78,6 +80,16 @@ Example: C<mySubnetgroup>
 
 
 
+=head2 EnableIAMDatabaseAuthentication => Bool
+
+A Boolean value that is true to enable mapping of AWS Identity and
+Access Management (IAM) accounts to database accounts, and otherwise
+false.
+
+Default: C<false>
+
+
+
 =head2 KmsKeyId => Str
 
 The KMS key identifier to use when restoring an encrypted DB cluster
@@ -112,8 +124,8 @@ encrypted.
 
 =back
 
-If C<DBClusterIdentifier> refers to a DB cluster that is note
-encrypted, then the restore request is rejected.
+If C<DBClusterIdentifier> refers to a DB cluster that is not encrypted,
+then the restore request is rejected.
 
 
 
@@ -150,11 +162,47 @@ Must be before the latest restorable time for the DB instance
 
 =item *
 
+Must be specified if C<UseLatestRestorableTime> parameter is not
+provided
+
+=item *
+
 Cannot be specified if C<UseLatestRestorableTime> parameter is true
+
+=item *
+
+Cannot be specified if C<RestoreType> parameter is C<copy-on-write>
 
 =back
 
 Example: C<2015-03-07T23:45:00Z>
+
+
+
+=head2 RestoreType => Str
+
+The type of restore to be performed. You can specify one of the
+following values:
+
+=over
+
+=item *
+
+C<full-copy> - The new DB cluster is restored as a full copy of the
+source DB cluster.
+
+=item *
+
+C<copy-on-write> - The new DB cluster is restored as a clone of the
+source DB cluster.
+
+=back
+
+Constraints: You cannot specify C<copy-on-write> if the engine version
+of the source DB cluster is earlier than 1.11.
+
+If you don't specify a C<RestoreType> value, then the new DB cluster is
+restored as a full copy of the source DB cluster.
 
 
 
@@ -207,7 +255,7 @@ provided.
 
 =head2 VpcSecurityGroupIds => ArrayRef[Str|Undef]
 
-A lst of VPC security groups that the new DB cluster belongs to.
+A list of VPC security groups that the new DB cluster belongs to.
 
 
 

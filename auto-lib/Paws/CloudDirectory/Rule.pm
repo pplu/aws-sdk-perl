@@ -32,14 +32,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudDirect
 
 =head1 DESCRIPTION
 
-Contains an ARN and parameters associated with the rule.
+Contains an Amazon Resource Name (ARN) and parameters that are
+associated with the rule.
 
 =head1 ATTRIBUTES
 
 
 =head2 Parameters => L<Paws::CloudDirectory::RuleParameterMap>
 
-  Min and max parameters associated with the rule.
+  The minimum and maximum parameters that are associated with the rule.
 
 
 =head2 Type => Str

@@ -53,7 +53,7 @@ The C<update_dependencies> command takes two arguments:
 
 C<upgrade_os_to> - Specifies the desired Amazon Linux version for
 instances whose OS you want to upgrade, such as C<Amazon Linux
-2014.09>. You must also set the C<allow_reboot> argument to true.
+2016.09>. You must also set the C<allow_reboot> argument to true.
 
 =item *
 
@@ -64,10 +64,10 @@ C<false>.
 
 =back
 
-For example, to upgrade an instance to Amazon Linux 2014.09, set
+For example, to upgrade an instance to Amazon Linux 2016.09, set
 C<Args> to the following.
 
-C<{ "upgrade_os_to":["Amazon Linux 2014.09"], "allow_reboot":["true"]
+C<{ "upgrade_os_to":["Amazon Linux 2016.09"], "allow_reboot":["true"]
 }>
 
 

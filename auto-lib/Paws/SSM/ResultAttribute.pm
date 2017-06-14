@@ -38,9 +38,8 @@ The inventory item result attribute.
 
 =head2 B<REQUIRED> TypeName => Str
 
-  Name of the inventory item type. Valid value:
-E<ldquo>AWS:InstanceInformationE<rdquo>. Default Value:
-E<ldquo>AWS:InstanceInformationE<rdquo>.
+  Name of the inventory item type. Valid value: AWS:InstanceInformation.
+Default Value: AWS:InstanceInformation.
 
 
 

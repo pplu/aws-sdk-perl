@@ -50,7 +50,7 @@ C<InputId> of an application).
 =head2 InputParallelismUpdate => L<Paws::KinesisAnalytics::InputParallelismUpdate>
 
   Describes the parallelism updates (the number in-application streams
-Kinesis Analytics creates for the specific streaming source).
+Amazon Kinesis Analytics creates for the specific streaming source).
 
 
 =head2 InputSchemaUpdate => L<Paws::KinesisAnalytics::InputSchemaUpdate>
@@ -75,8 +75,8 @@ provides an updated stream ARN and IAM role ARN.
 
 =head2 NamePrefixUpdate => Str
 
-  Name prefix for in-application stream(s) that Kinesis Analytics creates
-for the specific streaming source.
+  Name prefix for in-application streams that Amazon Kinesis Analytics
+creates for the specific streaming source.
 
 
 

@@ -63,3 +63,51 @@ package Paws::Credential::AssumeRole;
 
   no Moose;
 1;
+### main pod documentation begin ###
+
+=encoding UTF-8
+
+=head1 NAME
+
+Paws::Credential::AssumeRole
+
+=head1 SYNOPSIS
+
+  use Paws::Credential::AssumeRole;
+
+  my $paws = Paws->new(config => {
+    credentials => Paws::Credential::AssumeRole->new(
+      DurationSeconds => 60,
+      RoleArn => 'arn:....',
+      RoleSessionName => 'MySession',
+    )
+  });
+
+=head1 DESCRIPTION
+
+The AssumeRole provider is used to obtain temporary credentials with the AssumeRole STS call. These credentials
+can further be limited by a Policy document.
+
+Credentials are refreshed with a re-call to STS when they have expired
+
+=head2 DurationSeconds: Int (optional)
+
+The number of seconds for which the credentials will be valid
+
+=head2 Policy: Str (optional)
+
+A string with an IAM policy that gets merged with the roles capabilities
+
+=head2 ExternalId: Str (optional)
+
+A string with the external id of the role
+
+=head2 RoleArn: Str
+
+The arn of the role to be assumed
+
+=head2 RoleSessionName: Str
+
+The name of the session (will appear in CloudTrail logs, for example)
+
+=cut

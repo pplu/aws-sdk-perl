@@ -1,8 +1,10 @@
 
 package Paws::WorkDocs::GetDocumentVersion;
   use Moose;
+  has AuthenticationToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Authentication' );
   has DocumentId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'DocumentId' , required => 1);
   has Fields => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'fields' );
+  has IncludeCustomMetadata => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'includeCustomMetadata' );
   has VersionId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'VersionId' , required => 1);
 
   use MooseX::ClassAttribute;
@@ -37,6 +39,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
+=head2 AuthenticationToken => Str
+
+Amazon WorkDocs authentication token. This field should not be set when
+using administrative API actions, as in accessing the API using AWS
+credentials.
+
+
+
 =head2 B<REQUIRED> DocumentId => Str
 
 The ID of the document.
@@ -47,6 +57,12 @@ The ID of the document.
 
 A comma-separated list of values. Specify "SOURCE" to include a URL for
 the source document.
+
+
+
+=head2 IncludeCustomMetadata => Bool
+
+Set this to TRUE to include custom metadata in the response.
 
 
 

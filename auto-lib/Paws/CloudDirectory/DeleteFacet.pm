@@ -44,7 +44,8 @@ The name of the facet to delete.
 
 =head2 B<REQUIRED> SchemaArn => Str
 
-ARN associated with the Facet. For more information, see arns.
+The Amazon Resource Name (ARN) that is associated with the Facet. For
+more information, see arns.
 
 
 

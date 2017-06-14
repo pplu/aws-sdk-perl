@@ -9,7 +9,7 @@ package Paws::API::Builder::Paws {
   use Moose;
 
   sub version {
-    '0.32';
+    '0.33';
   }
 
   sub services {
@@ -359,6 +359,24 @@ When instantiating a service object, you can also pass a custom credential provi
 
 In this example we instance a service object that uses the STS service to create temporary credentials that only let the service object call DescribeInstances.
 
+Paws bundles some pre-baked credential providers:
+
+L<Paws::Credential::ProviderChain> - Gets credentials from a list of providers, returning the first provider to return credentials
+
+L<Paws::Credential::Environment> - Gets credentials from environment variables
+
+L<Paws::Credential::File> - Gets credentials from AWS SDK config files
+
+L<Paws::Credential::InstanceProfile> - Gets credentials from the InstanceProfile (Role) of the running instance
+
+L<Paws::Credential::STS> - Gets temporary credentials from the Secure Token Service
+
+L<Paws::Credential::AssumeRole> - Gets temporary credentials with AssumeRole
+
+L<Paws::Credential::AssumeRoleWithSAML> - Gets temporary credentials with AssumeRoleWithSAML
+
+L<Paws::Credential::Explicit> - Gets credentials specified in the code
+
 =head1 Using Service objects (Calling APIs)
 
 Each API call is represented as a method call with the same name as the API call. The arguments to the call are passed as lists (named parameters) to the call. So, to call DescribeInstances on the EC2 service:
@@ -416,8 +434,30 @@ constructor called (without parameters). Also, the resulting instance or the alr
 
 =head3 region
 
-A string representing the region that service objects will be instantiated with. Default value is undefined, meaning that you will have to specify
-the desired region every time you call the B<service> method.
+A string representing the region that service objects will be instantiated with. Most services need a region specified, meaning that you will have to specify the desired region every time you call the B<service> method.
+
+  my $cfn = Paws->service('CloudFormation', region => 'eu-west-1');
+
+Some services (like IAM) are global, so they don't need their region specified:
+
+  my $iam = Paws->service('IAM');
+
+A special service is STS, which by default has a global endpoint, but you can also specify regional endpoints
+
+  my $global_sts = Paws->service('STS');
+  my $regional_sts = Paws->service('STS', region => 'eu-west-1');
+
+=head3 endpoint
+
+Paws needs to send HTTP requests to different URLS (endpoints) depending on the service and the region. URLs are normally automatically derived by specifying the region, but for special cases, like pointing to "fake-sqs" or "fake-s3" services, you can:
+
+  Paws->service('SQS', endpoint => 'http://localhost:3000', region => 'eu-west-1');
+
+Some services, like the MachineLearning predictor API want you to specify a custom endpoint:
+
+  my $model = $ml->GetMLModel(MLModelId => $model_id);
+  my $predictor = Paws->service('ML', endpoint => $model->EndpointInfo->EndpointUrl, region => 'eu-west-1');
+  $predictor->...
 
 =head1 Pluggability
 

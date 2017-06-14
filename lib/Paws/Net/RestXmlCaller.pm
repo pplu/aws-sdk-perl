@@ -11,11 +11,6 @@ package Paws::Net::RestXmlCaller;
     return ($self->flattened_arrays)?'%s.%d':'%s.member.%d';
   }
 
-  sub _is_internal_type {
-    my ($self, $att_type) = @_;
-    return ($att_type eq 'Str' or $att_type eq 'Str|Undef' or $att_type eq 'Int' or $att_type eq 'Bool' or $att_type eq 'Num');
-  }
-
   # converts the objects that represent the call into parameters that the API can understand
   sub _to_querycaller_params {
     my ($self, $params) = @_;
@@ -61,22 +56,28 @@ package Paws::Net::RestXmlCaller;
     my ($self, $call) = @_;
     my $uri_template = $call->meta->name->_api_uri; # in auto-lib/<service>/<method>.pm
 
-    my @attribs = $uri_template =~ /{(.+?)}/g;
+    my @uri_attribs = $uri_template =~ /{(.+?)}/g;
     my $vars = {};
 
-    foreach my $attrib (@attribs)
-    {
+    my %uri_attrib_is_greedy;
+    foreach my $attrib ( @uri_attribs ) {
       my ($att_name, $greedy) = $attrib =~ /(\w+)(\+?)/;
-      my $attribute = $call->meta->get_attribute($att_name);
+      $uri_attrib_is_greedy{$att_name} = $greedy;
+    }
+
+    foreach my $attribute ($call->meta->get_all_attributes)
+    {
       if ($attribute->does('Paws::API::Attribute::Trait::ParamInURI')) {
-          if ($greedy) {
-              $vars->{ $att_name } =  uri_escape_utf8($call->$att_name, q[^A-Za-z0-9\-\._~/]);
-              $uri_template =~ s{$att_name\+}{$greedy$att_name}g;
-          } else {
-              $vars->{ $att_name } = $call->$att_name;
-          }
+        my $att_name = $attribute->name;
+        if ($uri_attrib_is_greedy{$att_name}) {
+            $vars->{ $attribute->uri_name } =  uri_escape_utf8($call->$att_name, q[^A-Za-z0-9\-\._~/]);
+            $uri_template =~ s{$att_name\+}{\+$att_name}g;
+        } else {
+            $vars->{ $attribute->uri_name } = $call->$att_name;
+        }
       }
     }
+
     my $t = URI::Template->new( $uri_template );
     my $uri = $t->process($vars);
     return $uri;
@@ -158,9 +159,14 @@ package Paws::Net::RestXmlCaller;
           not $attribute->does('Paws::API::Attribute::Trait::ParamInBody') and 
           not $attribute->type_constraint eq 'Paws::S3::Metadata'
          ) {
-        
-        my $location = $attribute->does('NameInRequest') ? $attribute->request_name : $attribute->name;
-        $xml .= sprintf '<%s>%s</%s>', $location, $self->_to_xml($attribute->get_value($call)), $location;
+        my $attribute_value = $attribute->get_value($call);
+        if ( ref $attribute_value ) {
+          my $location = $attribute->does('NameInRequest') ? $attribute->request_name : $attribute->name;
+          $xml .= sprintf '<%s>%s</%s>', $location, $self->_to_xml($attribute_value), $location;
+        }
+        else {
+           $xml .= $attribute_value;
+        }
       }
     }
 

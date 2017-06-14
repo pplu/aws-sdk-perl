@@ -31,7 +31,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SQS::Change
 
 =head1 DESCRIPTION
 
-Encloses the C<Id> of an entry in C< ChangeMessageVisibilityBatch >.
+Encloses the C<Id> of an entry in C< ChangeMessageVisibilityBatch.>
 
 =head1 ATTRIBUTES
 

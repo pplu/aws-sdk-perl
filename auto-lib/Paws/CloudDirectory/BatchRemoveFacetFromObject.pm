@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudDirect
 
 =head1 DESCRIPTION
 
-Batch operation to remove a facet from an object.
+A batch operation to remove a facet from an object.
 
 =head1 ATTRIBUTES
 

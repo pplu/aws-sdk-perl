@@ -3,6 +3,7 @@ package Paws::GameLift::UpdateFleetAttributes;
   use Moose;
   has Description => (is => 'ro', isa => 'Str');
   has FleetId => (is => 'ro', isa => 'Str', required => 1);
+  has MetricGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Name => (is => 'ro', isa => 'Str');
   has NewGameSessionProtectionPolicy => (is => 'ro', isa => 'Str');
   has ResourceCreationLimitPolicy => (is => 'ro', isa => 'Paws::GameLift::ResourceCreationLimitPolicy');
@@ -46,6 +47,16 @@ Human-readable description of a fleet.
 =head2 B<REQUIRED> FleetId => Str
 
 Unique identifier for a fleet to update attribute metadata for.
+
+
+
+=head2 MetricGroups => ArrayRef[Str|Undef]
+
+Names of metric groups to include this fleet with. A fleet metric group
+is used in Amazon CloudWatch to aggregate metrics from multiple fleets.
+Use an existing metric group name to add this fleet to the group, or
+use a new name to create a new metric group. Currently, a fleet can
+only be included in one metric group at a time.
 
 
 

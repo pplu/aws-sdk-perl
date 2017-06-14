@@ -1,7 +1,7 @@
 
 package Paws::CognitoIdp::DeleteUserAttributes;
   use Moose;
-  has AccessToken => (is => 'ro', isa => 'Str');
+  has AccessToken => (is => 'ro', isa => 'Str', required => 1);
   has UserAttributeNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
 
   use MooseX::ClassAttribute;
@@ -34,7 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 AccessToken => Str
+=head2 B<REQUIRED> AccessToken => Str
 
 The access token used in the request to delete user attributes.
 
@@ -44,6 +44,9 @@ The access token used in the request to delete user attributes.
 
 An array of strings representing the user attribute names you wish to
 delete.
+
+For custom attributes, you must prepend the C<custom:> prefix to the
+attribute name.
 
 
 

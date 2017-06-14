@@ -45,7 +45,7 @@ C<ObjectTypes>.
 
 =head2 ObjectType => Str
 
-  Object type associated with the facet. See
+  The object type that is associated with the facet. See
 CreateFacetRequest$ObjectType for more details.
 
 

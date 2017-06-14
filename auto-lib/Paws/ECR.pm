@@ -105,18 +105,20 @@ package Paws::ECR;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeImages(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->nextToken) {
-        $result = $self->DescribeImages(@_, nextToken => $result->nextToken);
-        push @{ $result->imageDetails }, @{ $result->imageDetails };
+      while ($next_result->nextToken) {
+        $next_result = $self->DescribeImages(@_, nextToken => $next_result->nextToken);
+        push @{ $result->imageDetails }, @{ $next_result->imageDetails };
       }
       return $result;
     } else {
       while ($result->nextToken) {
-        $result = $self->DescribeImages(@_, nextToken => $result->nextToken);
         $callback->($_ => 'imageDetails') foreach (@{ $result->imageDetails });
+        $result = $self->DescribeImages(@_, nextToken => $result->nextToken);
       }
+      $callback->($_ => 'imageDetails') foreach (@{ $result->imageDetails });
     }
 
     return undef
@@ -126,18 +128,20 @@ package Paws::ECR;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeRepositories(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->nextToken) {
-        $result = $self->DescribeRepositories(@_, nextToken => $result->nextToken);
-        push @{ $result->repositories }, @{ $result->repositories };
+      while ($next_result->nextToken) {
+        $next_result = $self->DescribeRepositories(@_, nextToken => $next_result->nextToken);
+        push @{ $result->repositories }, @{ $next_result->repositories };
       }
       return $result;
     } else {
       while ($result->nextToken) {
-        $result = $self->DescribeRepositories(@_, nextToken => $result->nextToken);
         $callback->($_ => 'repositories') foreach (@{ $result->repositories });
+        $result = $self->DescribeRepositories(@_, nextToken => $result->nextToken);
       }
+      $callback->($_ => 'repositories') foreach (@{ $result->repositories });
     }
 
     return undef
@@ -147,18 +151,20 @@ package Paws::ECR;
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->ListImages(@_);
+    my $next_result = $result;
 
     if (not defined $callback) {
-      while ($result->nextToken) {
-        $result = $self->ListImages(@_, nextToken => $result->nextToken);
-        push @{ $result->imageIds }, @{ $result->imageIds };
+      while ($next_result->nextToken) {
+        $next_result = $self->ListImages(@_, nextToken => $next_result->nextToken);
+        push @{ $result->imageIds }, @{ $next_result->imageIds };
       }
       return $result;
     } else {
       while ($result->nextToken) {
-        $result = $self->ListImages(@_, nextToken => $result->nextToken);
         $callback->($_ => 'imageIds') foreach (@{ $result->imageIds });
+        $result = $self->ListImages(@_, nextToken => $result->nextToken);
       }
+      $callback->($_ => 'imageIds') foreach (@{ $result->imageIds });
     }
 
     return undef

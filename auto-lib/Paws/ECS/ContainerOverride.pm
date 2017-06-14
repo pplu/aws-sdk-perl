@@ -41,7 +41,8 @@ The overrides that should be sent to a container.
 =head2 Command => ArrayRef[Str|Undef]
 
   The command to send to the container that overrides the default command
-from the Docker image or the task definition.
+from the Docker image or the task definition. You must also specify a
+container name.
 
 
 =head2 Environment => ArrayRef[L<Paws::ECS::KeyValuePair>]
@@ -49,12 +50,13 @@ from the Docker image or the task definition.
   The environment variables to send to the container. You can add new
 environment variables, which are added to the container at launch, or
 you can override the existing environment variables from the Docker
-image or the task definition.
+image or the task definition. You must also specify a container name.
 
 
 =head2 Name => Str
 
-  The name of the container that receives the override.
+  The name of the container that receives the override. This parameter is
+required if a command or environment variable is specified.
 
 
 

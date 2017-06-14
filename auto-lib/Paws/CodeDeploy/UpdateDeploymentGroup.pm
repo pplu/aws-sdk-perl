@@ -96,7 +96,7 @@ change it.
 
 =head2 DeploymentStyle => L<Paws::CodeDeploy::DeploymentStyle>
 
-Information about the type of deployment, either standard or
+Information about the type of deployment, either in-place or
 blue/green, you want to run and whether to route deployment traffic
 behind a load balancer.
 
@@ -112,7 +112,7 @@ tags, do not enter any tag names.
 
 =head2 LoadBalancerInfo => L<Paws::CodeDeploy::LoadBalancerInfo>
 
-Information about the load balancer used in a blue/green deployment.
+Information about the load balancer used in a deployment.
 
 
 

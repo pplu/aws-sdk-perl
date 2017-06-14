@@ -17,8 +17,8 @@ Paws::CloudDirectory::PublishSchemaResponse
 
 =head2 PublishedSchemaArn => Str
 
-ARN associated with the published schema. For more information, see
-arns.
+The ARN that is associated with the published schema. For more
+information, see arns.
 
 
 =head2 _request_id => Str

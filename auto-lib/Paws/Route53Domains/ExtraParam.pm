@@ -41,37 +41,11 @@ ExtraParam includes the following elements.
 
   Name of the additional parameter required by the top-level domain.
 
-Type: String
-
-Default: None
-
-Valid values: C<DUNS_NUMBER> | C<BRAND_NUMBER> | C<BIRTH_DEPARTMENT> |
-C<BIRTH_DATE_IN_YYYY_MM_DD> | C<BIRTH_COUNTRY> | C<BIRTH_CITY> |
-C<DOCUMENT_NUMBER> | C<AU_ID_NUMBER> | C<AU_ID_TYPE> | C<CA_LEGAL_TYPE>
-| C<CA_BUSINESS_ENTITY_TYPE> |C<ES_IDENTIFICATION> |
-C<ES_IDENTIFICATION_TYPE> | C<ES_LEGAL_FORM> | C<FI_BUSINESS_NUMBER> |
-C<FI_ID_NUMBER> | C<IT_PIN> | C<RU_PASSPORT_DATA> | C<SE_ID_NUMBER> |
-C<SG_ID_NUMBER> | C<VAT_NUMBER>
-
-Parent: C<ExtraParams>
-
-Required: Yes
-
 
 =head2 B<REQUIRED> Value => Str
 
   Values corresponding to the additional parameter names required by some
 top-level domains.
-
-Type: String
-
-Default: None
-
-Constraints: Maximum 2048 characters.
-
-Parent: C<ExtraParams>
-
-Required: Yes
 
 
 

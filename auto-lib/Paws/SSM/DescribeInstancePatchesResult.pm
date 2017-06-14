@@ -33,9 +33,8 @@ Classification (string)
 
 Severity (string)
 
-State (string E<ndash> E<ldquo>INSTALLEDE<rdquo>,
-E<ldquo>INSTALLED_OTHERE<rdquo>, E<ldquo>MISSINGE<rdquo>,
-E<ldquo>NOT_APPLICABLEE<rdquo>, E<ldquo>FAILEDE<rdquo>)
+State (string: "INSTALLED", "INSTALLED OTHER", "MISSING", "NOT
+APPLICABLE", "FAILED")
 
 InstalledTime (DateTime)
 

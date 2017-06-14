@@ -21,7 +21,8 @@ Paws::Route53::CreateHostedZoneResponse
 
 =head2 B<REQUIRED> ChangeInfo => L<Paws::Route53::ChangeInfo>
 
-A complex type that describes the changes made to your hosted zone.
+A complex type that contains information about the C<CreateHostedZone>
+request.
 
 
 

@@ -62,6 +62,9 @@ message.
 
 An array of name-value pairs representing user attributes.
 
+For custom attributes, you must prepend the C<custom:> prefix to the
+attribute name.
+
 
 
 =head2 B<REQUIRED> Username => Str

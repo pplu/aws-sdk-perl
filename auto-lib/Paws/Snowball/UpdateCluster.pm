@@ -4,6 +4,7 @@ package Paws::Snowball::UpdateCluster;
   has AddressId => (is => 'ro', isa => 'Str');
   has ClusterId => (is => 'ro', isa => 'Str', required => 1);
   has Description => (is => 'ro', isa => 'Str');
+  has ForwardingAddressId => (is => 'ro', isa => 'Str');
   has Notification => (is => 'ro', isa => 'Paws::Snowball::Notification');
   has Resources => (is => 'ro', isa => 'Paws::Snowball::JobResource');
   has RoleARN => (is => 'ro', isa => 'Str');
@@ -55,6 +56,13 @@ C<CID123e4567-e89b-12d3-a456-426655440000>.
 =head2 Description => Str
 
 The updated description of this cluster.
+
+
+
+=head2 ForwardingAddressId => Str
+
+The updated ID for the forwarding address for a cluster. This field is
+not supported in most regions.
 
 
 

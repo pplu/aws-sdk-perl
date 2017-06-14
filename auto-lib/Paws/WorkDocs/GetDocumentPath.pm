@@ -1,6 +1,7 @@
 
 package Paws::WorkDocs::GetDocumentPath;
   use Moose;
+  has AuthenticationToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Authentication' );
   has DocumentId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'DocumentId' , required => 1);
   has Fields => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'fields' );
   has Limit => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'limit' );
@@ -38,6 +39,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
+=head2 AuthenticationToken => Str
+
+Amazon WorkDocs authentication token. This field should not be set when
+using administrative API actions, as in accessing the API using AWS
+credentials.
+
+
+
 =head2 B<REQUIRED> DocumentId => Str
 
 The ID of the document.
@@ -46,7 +55,7 @@ The ID of the document.
 
 =head2 Fields => Str
 
-A comma-separated list of values. Specify "NAME" to include the names
+A comma-separated list of values. Specify C<NAME> to include the names
 of the parent folders.
 
 

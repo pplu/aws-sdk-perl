@@ -64,8 +64,8 @@ If not specified, the first page of results is retrieved.
 
 Specifies one or more unique Amazon Resource Names (ARNs) that
 represent the virtual tapes you want to describe. If this parameter is
-not specified, AWS Storage Gateway returns a description of all virtual
-tapes associated with the specified gateway.
+not specified, Tape gateway returns a description of all virtual tapes
+associated with the specified gateway.
 
 
 

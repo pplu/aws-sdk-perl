@@ -39,67 +39,33 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 AdminPrivacy => Bool
 
 Whether you want to conceal contact information from WHOIS queries. If
-you specify true, WHOIS ("who is") queries will return contact
+you specify C<true>, WHOIS ("who is") queries will return contact
 information for our registrar partner, Gandi, instead of the contact
 information that you enter.
-
-Type: Boolean
-
-Default: None
-
-Valid values: C<true> | C<false>
-
-Required: No
 
 
 
 =head2 B<REQUIRED> DomainName => Str
 
-The name of a domain.
-
-Type: String
-
-Default: None
-
-Constraints: The domain name can contain only the letters a through z,
-the numbers 0 through 9, and hyphen (-). Internationalized Domain Names
-are not supported.
-
-Required: Yes
+The name of the domain that you want to update the privacy setting for.
 
 
 
 =head2 RegistrantPrivacy => Bool
 
 Whether you want to conceal contact information from WHOIS queries. If
-you specify true, WHOIS ("who is") queries will return contact
+you specify C<true>, WHOIS ("who is") queries will return contact
 information for our registrar partner, Gandi, instead of the contact
 information that you enter.
-
-Type: Boolean
-
-Default: None
-
-Valid values: C<true> | C<false>
-
-Required: No
 
 
 
 =head2 TechPrivacy => Bool
 
 Whether you want to conceal contact information from WHOIS queries. If
-you specify true, WHOIS ("who is") queries will return contact
+you specify C<true>, WHOIS ("who is") queries will return contact
 information for our registrar partner, Gandi, instead of the contact
 information that you enter.
-
-Type: Boolean
-
-Default: None
-
-Valid values: C<true> | C<false>
-
-Required: No
 
 
 

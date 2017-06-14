@@ -40,20 +40,20 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Attributes => ArrayRef[L<Paws::CloudDirectory::FacetAttribute>]
 
-Attributes associated with the Facet.e
+The attributes that are associated with the Facet.
 
 
 
 =head2 B<REQUIRED> Name => Str
 
-Name of the Facet, which is unique for a given schema.
+The name of the Facet, which is unique for a given schema.
 
 
 
 =head2 B<REQUIRED> ObjectType => Str
 
 Specifies whether a given object created from this facet is of type
-Node, Leaf Node, Policy or Index.
+node, leaf node, policy or index.
 
 =over
 
@@ -67,7 +67,7 @@ Node: Can have multiple children but one parent.
 
 =item *
 
-Leaf Node: Cannot have children but can have multiple parents.
+Leaf node: Cannot have children but can have multiple parents.
 
 =back
 
@@ -93,7 +93,7 @@ Valid values are: C<"NODE">, C<"LEAF_NODE">, C<"POLICY">, C<"INDEX">
 
 =head2 B<REQUIRED> SchemaArn => Str
 
-Schema ARN in which the new Facet will be created. For more
+The schema ARN in which the new Facet will be created. For more
 information, see arns.
 
 

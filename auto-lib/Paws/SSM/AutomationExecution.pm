@@ -90,7 +90,7 @@ to Failed.
 =head2 Parameters => L<Paws::SSM::AutomationParameterMap>
 
   The key-value map of execution parameters, which were supplied when
-calling C<StartAutomationExecution>.
+calling StartAutomationExecution.
 
 
 =head2 StepExecutions => ArrayRef[L<Paws::SSM::StepExecution>]

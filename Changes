@@ -1,3 +1,50 @@
+0.33 
+ - New Credential provider: Paws::Credential::Explicit for providing in-code credentials (meis)
+ - Bug fixed: ETag not defined when using MojoAsyncCaller (PopeFelix)
+ - New parameter for services: "endpoint" that is used to override the URL for sending requests 
+   to a service
+ - Breaking change: endpoints for services are calculated immediately when you invoke ->service.
+   before they were calculated when the first method call to the service was made, so you got
+   "no region" exceptions on the first call. Now the exceptions are thrown immediately.
+ - Bug fixed: Paginators not working correctly in non-callback mode (SeptamusNonovant. Issue #146)
+ - Bug fixed: Throw exceptions on methods that don't return anything
+ - Bug fixed: Handle plain values in RestXML services, like S3s' PutBucketPolicy (sven-schubert)
+ - Bug fixed: Some global services (f.ex: Route53, CloudFront) where forcing the user to specify
+   a region. No need to pass region anymore) (Issue #113)
+ - New API: MarketplaceEntitlement
+ - New API: Athena
+ - Mew API: Greengrass
+ - API update: AppStream
+ - API update: CloudDirectory
+ - API update: CloudFormation
+ - API update: CloudWatchEvents
+ - API update: CodeBuild
+ - API update: CodeDeploy
+ - API update: CongnitoIdp
+ - API update: DeviceFarm
+ - API update: DMS
+ - API update: ECS
+ - API update: ELB
+ - API update: ELBv2
+ - API update: GameLift
+ - API update: Inspector
+ - API update: IoT
+ - API update: KinesisAnalytics
+ - API update: Lambda
+ - API update: LexModels
+ - API update: Lightsail
+ - API update: Opsworks
+ - API update: Organizations
+ - API update: Pinpoint
+ - API update: Rekognition
+ - API update: ResourceTagging
+ - API update: RDS
+ - API update: Snowball
+ - API update: SQS
+ - API update: SSM
+ - API update: StorageGateway
+ - API update: WorkDocs
+
 0.32 20 Apr 2017
  - Speed up Credential Refreshing (Arthur Axel fREW Schmidt)
  - Bug fixed: Issue #105. Some API calls where not correctly handling parameters specified in their URI.
@@ -392,7 +439,7 @@
  - KMS API update: New operations: CancelKeyDeletion ListRetirableGrants ScheduleKeyDeletion and docu update
 
 0.16 09 Oct 2015
- - docu fixes by Gimpson
+ - docu fixes by BeerBikesBBQ
  - Timeout for all user agents set to 60 seconds. Will be configurable soon
  - S3 Update: Support for S3 Standard - Infrequent Access 
  - CloudWatchLogs Update: Export tasks

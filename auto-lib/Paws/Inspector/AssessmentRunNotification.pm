@@ -59,7 +59,7 @@ error.
 
 =head2 Message => Str
 
-  
+  The message included in the notification.
 
 
 =head2 SnsPublishStatusCode => Str

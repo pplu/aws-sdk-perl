@@ -19,7 +19,7 @@ Paws::SSM::DescribePatchGroupsResult
 
 Each entry in the array contains:
 
-PatchGroup: string (1 E<le> length E<le> 256, Regex:
+PatchGroup: string (between 1 and 256 characters, Regex:
 ^([\p{L}\p{Z}\p{N}_.:/=+\-@]*)$)
 
 PatchBaselineIdentity: A PatchBaselineIdentity element.

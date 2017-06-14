@@ -1,6 +1,7 @@
 package Paws::Pinpoint::GCMChannelRequest;
   use Moose;
   has ApiKey => (is => 'ro', isa => 'Str');
+  has Enabled => (is => 'ro', isa => 'Bool');
 1;
 
 ### main pod documentation begin ###
@@ -20,7 +21,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Pinpoint::GCMChannelRequest object:
 
-  $service_obj->Method(Att1 => { ApiKey => $value, ..., ApiKey => $value  });
+  $service_obj->Method(Att1 => { ApiKey => $value, ..., Enabled => $value  });
 
 =head3 Results returned from an API call
 
@@ -39,6 +40,11 @@ Google Cloud Messaging credentials
 =head2 ApiKey => Str
 
   Platform credential API key from Google.
+
+
+=head2 Enabled => Bool
+
+  If the channel is enabled for sending messages.
 
 
 

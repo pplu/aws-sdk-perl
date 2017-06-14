@@ -5,6 +5,7 @@ package Paws::RDS::ModifyDBCluster;
   has BackupRetentionPeriod => (is => 'ro', isa => 'Int');
   has DBClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has DBClusterParameterGroupName => (is => 'ro', isa => 'Str');
+  has EnableIAMDatabaseAuthentication => (is => 'ro', isa => 'Bool');
   has MasterUserPassword => (is => 'ro', isa => 'Str');
   has NewDBClusterIdentifier => (is => 'ro', isa => 'Str');
   has OptionGroupName => (is => 'ro', isa => 'Str');
@@ -116,6 +117,16 @@ Cannot end with a hyphen or contain two consecutive hyphens.
 =head2 DBClusterParameterGroupName => Str
 
 The name of the DB cluster parameter group to use for the DB cluster.
+
+
+
+=head2 EnableIAMDatabaseAuthentication => Bool
+
+A Boolean value that is true to enable mapping of AWS Identity and
+Access Management (IAM) accounts to database accounts, and otherwise
+false.
+
+Default: C<false>
 
 
 
@@ -237,7 +248,7 @@ Constraints: Minimum 30-minute window.
 
 =head2 VpcSecurityGroupIds => ArrayRef[Str|Undef]
 
-A lst of VPC security groups that the DB cluster will belong to.
+A list of VPC security groups that the DB cluster will belong to.
 
 
 

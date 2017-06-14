@@ -50,22 +50,22 @@ Valid values are: C<"SERIALIZABLE">, C<"EVENTUAL">
 
 =head2 B<REQUIRED> DirectoryArn => Str
 
-ARN associated with the Directory where the object resides. For more
-information, see arns.
+The Amazon Resource Name (ARN) that is associated with the Directory
+where the object resides. For more information, see arns.
 
 
 
 =head2 FacetFilter => L<Paws::CloudDirectory::SchemaFacet>
 
-Used to filter the list of object attributes associated with a certain
-facet.
+Used to filter the list of object attributes that are associated with a
+certain facet.
 
 
 
 =head2 MaxResults => Int
 
-Maximum number of items to be retrieved in a single call. This is an
-approximate number.
+The maximum number of items to be retrieved in a single call. This is
+an approximate number.
 
 
 
@@ -77,7 +77,8 @@ The pagination token.
 
 =head2 B<REQUIRED> ObjectReference => L<Paws::CloudDirectory::ObjectReference>
 
-Reference that identifies the object whose attributes will be listed.
+The reference that identifies the object whose attributes will be
+listed.
 
 
 

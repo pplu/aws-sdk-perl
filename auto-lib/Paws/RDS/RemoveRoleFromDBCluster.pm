@@ -36,7 +36,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DBClusterIdentifier => Str
 
-The name of the DB cluster to disassociate the IAM role rom.
+The name of the DB cluster to disassociate the IAM role from.
 
 
 

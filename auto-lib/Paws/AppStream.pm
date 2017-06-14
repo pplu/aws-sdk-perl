@@ -150,7 +150,7 @@ Returns: a L<Paws::AppStream::AssociateFleetResult> instance
   Associate a fleet to a stack.
 
 
-=head2 CreateFleet(ComputeCapacity => L<Paws::AppStream::ComputeCapacity>, ImageName => Str, InstanceType => Str, Name => Str, [Description => Str, DisconnectTimeoutInSeconds => Int, DisplayName => Str, MaxUserDurationInSeconds => Int, VpcConfig => L<Paws::AppStream::VpcConfig>])
+=head2 CreateFleet(ComputeCapacity => L<Paws::AppStream::ComputeCapacity>, ImageName => Str, InstanceType => Str, Name => Str, [Description => Str, DisconnectTimeoutInSeconds => Int, DisplayName => Str, EnableDefaultInternetAccess => Bool, MaxUserDurationInSeconds => Int, VpcConfig => L<Paws::AppStream::VpcConfig>])
 
 Each argument is described in detail in: L<Paws::AppStream::CreateFleet>
 
@@ -159,7 +159,7 @@ Returns: a L<Paws::AppStream::CreateFleetResult> instance
   Creates a new fleet.
 
 
-=head2 CreateStack(Name => Str, [Description => Str, DisplayName => Str])
+=head2 CreateStack(Name => Str, [Description => Str, DisplayName => Str, StorageConnectors => ArrayRef[L<Paws::AppStream::StorageConnector>]])
 
 Each argument is described in detail in: L<Paws::AppStream::CreateStack>
 
@@ -220,7 +220,7 @@ your account are returned. This operation does not return a paginated
 result.
 
 
-=head2 DescribeSessions(FleetName => Str, StackName => Str, [Limit => Int, NextToken => Str, UserId => Str])
+=head2 DescribeSessions(FleetName => Str, StackName => Str, [AuthenticationType => Str, Limit => Int, NextToken => Str, UserId => Str])
 
 Each argument is described in detail in: L<Paws::AppStream::DescribeSessions>
 
@@ -229,7 +229,9 @@ Returns: a L<Paws::AppStream::DescribeSessionsResult> instance
   Describes the streaming sessions for a stack and a fleet. If a user ID
 is provided, this operation returns streaming sessions for only that
 user. Pass this value for the C<nextToken> parameter in a subsequent
-call to this operation to retrieve the next set of items.
+call to this operation to retrieve the next set of items. If an
+authentication type is not provided, the operation defaults to users
+authenticated using a streaming URL.
 
 
 =head2 DescribeStacks([Names => ArrayRef[Str|Undef], NextToken => Str])
@@ -298,18 +300,19 @@ Returns: a L<Paws::AppStream::StopFleetResult> instance
   Stops a fleet.
 
 
-=head2 UpdateFleet(Name => Str, [ComputeCapacity => L<Paws::AppStream::ComputeCapacity>, DeleteVpcConfig => Bool, Description => Str, DisconnectTimeoutInSeconds => Int, DisplayName => Str, ImageName => Str, InstanceType => Str, MaxUserDurationInSeconds => Int, VpcConfig => L<Paws::AppStream::VpcConfig>])
+=head2 UpdateFleet(Name => Str, [AttributesToDelete => ArrayRef[Str|Undef], ComputeCapacity => L<Paws::AppStream::ComputeCapacity>, DeleteVpcConfig => Bool, Description => Str, DisconnectTimeoutInSeconds => Int, DisplayName => Str, EnableDefaultInternetAccess => Bool, ImageName => Str, InstanceType => Str, MaxUserDurationInSeconds => Int, VpcConfig => L<Paws::AppStream::VpcConfig>])
 
 Each argument is described in detail in: L<Paws::AppStream::UpdateFleet>
 
 Returns: a L<Paws::AppStream::UpdateFleetResult> instance
 
   Updates an existing fleet. All the attributes except the fleet name can
-be updated in the B<STOPPED> state. Only B<ComputeCapacity> and
-B<ImageName> can be updated in any other state.
+be updated in the B<STOPPED> state. When a fleet is in the B<RUNNING>
+state, only C<DisplayName> and C<ComputeCapacity> can be updated. A
+fleet cannot be updated in a status of B<STARTING> or B<STOPPING>.
 
 
-=head2 UpdateStack(Name => Str, [Description => Str, DisplayName => Str])
+=head2 UpdateStack(Name => Str, [DeleteStorageConnectors => Bool, Description => Str, DisplayName => Str, StorageConnectors => ArrayRef[L<Paws::AppStream::StorageConnector>]])
 
 Each argument is described in detail in: L<Paws::AppStream::UpdateStack>
 

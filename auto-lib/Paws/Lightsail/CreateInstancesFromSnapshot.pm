@@ -41,7 +41,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 B<REQUIRED> AvailabilityZone => Str
 
 The Availability Zone where you want to create your instances. Use the
-following formatting: C<us-east-1a> (case sensitive).
+following formatting: C<us-east-1a> (case sensitive). You can get a
+list of availability zones by using the get regions operation. Be sure
+to add the C<include availability zones> parameter to your request.
 
 
 

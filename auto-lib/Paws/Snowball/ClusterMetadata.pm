@@ -5,6 +5,7 @@ package Paws::Snowball::ClusterMetadata;
   has ClusterState => (is => 'ro', isa => 'Str');
   has CreationDate => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
+  has ForwardingAddressId => (is => 'ro', isa => 'Str');
   has JobType => (is => 'ro', isa => 'Str');
   has KmsKeyARN => (is => 'ro', isa => 'Str');
   has Notification => (is => 'ro', isa => 'Paws::Snowball::Notification');
@@ -70,6 +71,13 @@ Contains metadata about a specific cluster.
 =head2 Description => Str
 
   The optional description of the cluster.
+
+
+=head2 ForwardingAddressId => Str
+
+  The ID of the address that you want a cluster shipped to, after it will
+be shipped to its primary address. This field is not supported in most
+regions.
 
 
 =head2 JobType => Str

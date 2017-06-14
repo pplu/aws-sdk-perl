@@ -1,6 +1,7 @@
 package Paws::AppStream::VpcConfig;
   use Moose;
-  has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
+  has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 1;
 
 ### main pod documentation begin ###
@@ -20,23 +21,28 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::AppStream::VpcConfig object:
 
-  $service_obj->Method(Att1 => { SubnetIds => $value, ..., SubnetIds => $value  });
+  $service_obj->Method(Att1 => { SecurityGroupIds => $value, ..., SubnetIds => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::AppStream::VpcConfig object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->SubnetIds
+  $result->Att1->SecurityGroupIds
 
 =head1 DESCRIPTION
 
-The VPC in which the fleet is launched.
+VPC configuration information.
 
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> SubnetIds => ArrayRef[Str|Undef]
+=head2 SecurityGroupIds => ArrayRef[Str|Undef]
+
+  Security groups associated with the fleet.
+
+
+=head2 SubnetIds => ArrayRef[Str|Undef]
 
   The list of subnets to which a network interface is established from
 the fleet instance.

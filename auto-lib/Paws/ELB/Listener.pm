@@ -39,7 +39,7 @@ Information about a listener.
 
 For information about the protocols and the ports supported by Elastic
 Load Balancing, see Listeners for Your Classic Load Balancer in the
-I<Classic Load Balancers Guide>.
+I<Classic Load Balancer Guide>.
 
 =head1 ATTRIBUTES
 

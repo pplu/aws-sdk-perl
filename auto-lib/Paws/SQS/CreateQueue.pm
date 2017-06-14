@@ -45,9 +45,9 @@ request parameters that the C<CreateQueue> action uses:
 
 =item *
 
-C<DelaySeconds> - The number of seconds for which the delivery of all
-messages in the queue is delayed. Valid values: An integer from 0 to
-900 seconds (15 minutes). The default is 0 (zero).
+C<DelaySeconds> - The length of time, in seconds, for which the
+delivery of all messages in the queue is delayed. Valid values: An
+integer from 0 to 900 seconds (15 minutes). The default is 0 (zero).
 
 =item *
 
@@ -58,9 +58,10 @@ contain before Amazon SQS rejects it. Valid values: An integer from
 
 =item *
 
-C<MessageRetentionPeriod> - The number of seconds for which Amazon SQS
-retains a message. Valid values: An integer from 60 seconds (1 minute)
-to 1,209,600 seconds (14 days). The default is 345,600 (4 days).
+C<MessageRetentionPeriod> - The length of time, in seconds, for which
+Amazon SQS retains a message. Valid values: An integer from 60 seconds
+(1 minute) to 1,209,600 seconds (14 days). The default is 345,600 (4
+days).
 
 =item *
 
@@ -70,9 +71,9 @@ the I<Amazon IAM User Guide>.
 
 =item *
 
-C<ReceiveMessageWaitTimeSeconds> - The number of seconds for which a C<
-ReceiveMessage > action waits for a message to arrive. Valid values: An
-integer from 0 to 20 (seconds). The default is 0 (zero).
+C<ReceiveMessageWaitTimeSeconds> - The length of time, in seconds, for
+which a C< ReceiveMessage > action waits for a message to arrive. Valid
+values: An integer from 0 to 20 (seconds). The default is 0 (zero).
 
 =item *
 
@@ -94,6 +95,31 @@ in the I<Amazon SQS Developer Guide>.
 
 =back
 
+The following attributes apply only to server-side-encryption:
+
+=over
+
+=item *
+
+C<KmsMasterKeyId> - The ID of an AWS-managed customer master key (CMK)
+for Amazon SQS or a custom CMK. For more information, see Key Terms.
+While the alias of the AWS-managed CMK for Amazon SQS is always
+C<alias/aws/sqs>, the alias of a custom CMK can, for example, be
+C<alias/aws/sqs>. For more examples, see KeyId in the I<AWS Key
+Management Service API Reference>.
+
+=item *
+
+C<KmsDataKeyReusePeriodSeconds> - The length of time, in seconds, for
+which Amazon SQS can reuse a data key to encrypt or decrypt messages
+before calling AWS KMS again. An integer representing seconds, between
+60 seconds (1 minute) and 86,400 seconds (24 hours). The default is 300
+(5 minutes). A shorter time period provides better security but results
+in more calls to KMS which incur charges after Free Tier. For more
+information, see How Does the Data Key Reuse Period Work?.
+
+=back
+
 The following attributes apply only to FIFO (first-in-first-out)
 queues:
 
@@ -101,19 +127,20 @@ queues:
 
 =item *
 
-C<FifoQueue> - Designates a queue as FIFO. You can provide this
-attribute only during queue creation. You can't change it for an
-existing queue. When you set this attribute, you must provide a
-C<MessageGroupId> explicitly.
+C<FifoQueue> - Designates a queue as FIFO. Valid values: C<true>,
+C<false>. You can provide this attribute only during queue creation.
+You can't change it for an existing queue. When you set this attribute,
+you must also provide the C<MessageGroupId> for your messages
+explicitly.
 
 For more information, see FIFO Queue Logic in the I<Amazon SQS
 Developer Guide>.
 
 =item *
 
-C<ContentBasedDeduplication> - Enables content-based deduplication. For
-more information, see Exactly-Once Processing in the I<Amazon SQS
-Developer Guide>.
+C<ContentBasedDeduplication> - Enables content-based deduplication.
+Valid values: C<true>, C<false>. For more information, see Exactly-Once
+Processing in the I<Amazon SQS Developer Guide>.
 
 =over
 
@@ -151,11 +178,6 @@ C<MessageDeduplicationId> overrides the generated one.
 When C<ContentBasedDeduplication> is in effect, messages with identical
 content sent within the deduplication interval are treated as
 duplicates and only one copy of the message is delivered.
-
-=item *
-
-You can also use C<ContentBasedDeduplication> for messages with
-identical content to be treated as duplicates.
 
 =item *
 

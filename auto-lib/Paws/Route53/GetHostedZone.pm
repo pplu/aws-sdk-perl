@@ -38,8 +38,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Id => Str
 
-The ID of the hosted zone for which you want to get a list of the name
-servers in the delegation set.
+The ID of the hosted zone that you want to get information about.
 
 
 

@@ -131,9 +131,9 @@ make gen-classes
 Perl versions
 ============
 
-The SDK is targeted at modern Perl versions. Since a new perl gets released every year, distributions perl tend to lag behind, so 
+The SDK is targeted at modern Perl versions. Since a new perl gets released every year, distributions perl tend to lag behind, so
 support for perl versions on any modern, widespread distribution is our target.
-Vert old versions may work, but no intention to support them is made. You can always install a modern version of perl with perlbrew or
+Very old versions may work, but no intention to support them is made. You can always install a modern version of perl with perlbrew or
 plenv in a breeze. We're running the test cases on Travis for all "supported" perl versions. If you want to support a lower version,
 you can contribute back. Acceptance of patches for older versions of Perl won't mean that the compatibility will be maintained
 long-term, although it will be tried :).
@@ -289,7 +289,7 @@ CloudFront and Route53, help with number stringification
 
 stevecaldwell77 for contributing support for temporary credentials in S3
 
-Gimpson for contributing documentation fixes
+Ryan Olson (BeerBikesBBQ) for contributing documentation fixes
 
 Roger Pettett for testing and contributing fixes for tests on MacOSX
 
@@ -321,4 +321,10 @@ Dakkar for solving issues with parameter passing
 
 Arthur Axel fREW Schmidt for speeding up credential refreshing
 
-PopeFelix for solving issues around S3
+PopeFelix for solving issues around S3 and MojoAsyncCaller
+
+meis for contributing Paws::Credential::Explicit
+
+sven-schubert for contributing fixes to RestXML services
+
+SeptamusNonovant for fixing paginators in non-callback mode

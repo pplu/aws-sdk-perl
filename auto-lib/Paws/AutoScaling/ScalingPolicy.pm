@@ -68,7 +68,7 @@ and C<PercentChangeInCapacity>.
 =head2 Cooldown => Int
 
   The amount of time, in seconds, after a scaling activity completes
-before any further trigger-related scaling activities can start.
+before any further dynamic scaling activities can start.
 
 
 =head2 EstimatedInstanceWarmup => Int

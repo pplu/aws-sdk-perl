@@ -39,8 +39,8 @@ in-application stream and a destination where you want the
 in-application stream data to be written. The destination can be an
 Amazon Kinesis stream or an Amazon Kinesis Firehose delivery stream.
 
-You can configure your application to write output to up to five
-destinations.
+For limits on how many destinations an application can write and other
+limitations, see Limits.
 
 =head1 ATTRIBUTES
 

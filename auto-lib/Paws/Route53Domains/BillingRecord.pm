@@ -35,7 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Route53Doma
 
 =head1 DESCRIPTION
 
-This class has no description
+Information for one billing record.
 
 =head1 ATTRIBUTES
 
@@ -44,50 +44,29 @@ This class has no description
 
   The date that the operation was billed, in Unix format.
 
-Type: Double
-
 
 =head2 DomainName => Str
 
-  The name of a domain.
-
-Type: String
+  The name of the domain that the billing record applies to. If the
+domain name contains characters other than a-z, 0-9, and - (hyphen),
+such as an internationalized domain name, then this value is in
+Punycode. For more information, see DNS Domain Name Format in the
+I<Amazon Route 53 Developer Guidezzz>.
 
 
 =head2 InvoiceId => Str
 
   The ID of the invoice that is associated with the billing record.
 
-Type: String
-
 
 =head2 Operation => Str
 
   The operation that you were charged for.
 
-Type: String
-
-Valid values:
-
-=over
-
-=item * C<REGISTER_DOMAIN>
-
-=item * C<TRANSFER_IN_DOMAIN>
-
-=item * C<RENEW_DOMAIN>
-
-=item * C<CHANGE_DOMAIN_OWNER>
-
-=back
-
-
 
 =head2 Price => Num
 
   The price that you were charged for the operation, in US dollars.
-
-Type: Double
 
 Example value: 12.0
 

@@ -10,6 +10,7 @@ package Paws::IoT::Action;
   has Lambda => (is => 'ro', isa => 'Paws::IoT::LambdaAction', request_name => 'lambda', traits => ['NameInRequest']);
   has Republish => (is => 'ro', isa => 'Paws::IoT::RepublishAction', request_name => 'republish', traits => ['NameInRequest']);
   has S3 => (is => 'ro', isa => 'Paws::IoT::S3Action', request_name => 's3', traits => ['NameInRequest']);
+  has Salesforce => (is => 'ro', isa => 'Paws::IoT::SalesforceAction', request_name => 'salesforce', traits => ['NameInRequest']);
   has Sns => (is => 'ro', isa => 'Paws::IoT::SnsAction', request_name => 'sns', traits => ['NameInRequest']);
   has Sqs => (is => 'ro', isa => 'Paws::IoT::SqsAction', request_name => 'sqs', traits => ['NameInRequest']);
 1;
@@ -97,6 +98,11 @@ payload into a separate DynamoDB column.
 =head2 S3 => L<Paws::IoT::S3Action>
 
   Write to an Amazon S3 bucket.
+
+
+=head2 Salesforce => L<Paws::IoT::SalesforceAction>
+
+  Send a message to a Salesforce IoT Cloud Input Stream.
 
 
 =head2 Sns => L<Paws::IoT::SnsAction>

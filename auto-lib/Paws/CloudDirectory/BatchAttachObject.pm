@@ -33,14 +33,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudDirect
 
 =head1 DESCRIPTION
 
-Represents the output of an AttachObject operation.
+Represents the output of an C<AttachObject> operation.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> ChildReference => L<Paws::CloudDirectory::ObjectReference>
 
-  Child object reference to be attached to the object.
+  The child object reference that is to be attached to the object.
 
 
 =head2 B<REQUIRED> LinkName => Str
@@ -50,7 +50,7 @@ Represents the output of an AttachObject operation.
 
 =head2 B<REQUIRED> ParentReference => L<Paws::CloudDirectory::ObjectReference>
 
-  Parent object reference.
+  The parent object reference.
 
 
 

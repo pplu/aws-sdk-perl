@@ -3,6 +3,7 @@ package Paws::Snowball::CreateCluster;
   use Moose;
   has AddressId => (is => 'ro', isa => 'Str', required => 1);
   has Description => (is => 'ro', isa => 'Str');
+  has ForwardingAddressId => (is => 'ro', isa => 'Str');
   has JobType => (is => 'ro', isa => 'Str', required => 1);
   has KmsKeyARN => (is => 'ro', isa => 'Str');
   has Notification => (is => 'ro', isa => 'Paws::Snowball::Notification');
@@ -51,6 +52,13 @@ The ID for the address that you want the cluster shipped to.E<gt>
 
 An optional description of this specific cluster, for example
 C<Environmental Data Cluster-01>.
+
+
+
+=head2 ForwardingAddressId => Str
+
+The forwarding address ID for a cluster. This field is not supported in
+most regions.
 
 
 

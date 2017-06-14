@@ -43,7 +43,7 @@ A user pool description.
 
 =head2 CreationDate => Str
 
-  The creation date in a user pool description.
+  The date the user pool description was created.
 
 
 =head2 Id => Str
@@ -58,7 +58,7 @@ A user pool description.
 
 =head2 LastModifiedDate => Str
 
-  The last modified date in a user pool description.
+  The date the user pool description was last modified.
 
 
 =head2 Name => Str

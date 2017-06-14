@@ -81,7 +81,11 @@ Valid values are: C<"Random">, C<"ByLogStream">
 
 =head2 B<REQUIRED> FilterName => Str
 
-A name for the subscription filter.
+A name for the subscription filter. If you are updating an existing
+filter, you must specify the correct name in C<filterName>. Otherwise,
+the call will fail because you cannot associate a second filter with a
+log group. To find the name of the filter currently associated with a
+log group, use DescribeSubscriptionFilters.
 
 
 

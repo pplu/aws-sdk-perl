@@ -6,6 +6,7 @@ package Paws::ECS::ContainerInstance;
   has ContainerInstanceArn => (is => 'ro', isa => 'Str', request_name => 'containerInstanceArn', traits => ['NameInRequest']);
   has Ec2InstanceId => (is => 'ro', isa => 'Str', request_name => 'ec2InstanceId', traits => ['NameInRequest']);
   has PendingTasksCount => (is => 'ro', isa => 'Int', request_name => 'pendingTasksCount', traits => ['NameInRequest']);
+  has RegisteredAt => (is => 'ro', isa => 'Str', request_name => 'registeredAt', traits => ['NameInRequest']);
   has RegisteredResources => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Resource]', request_name => 'registeredResources', traits => ['NameInRequest']);
   has RemainingResources => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Resource]', request_name => 'remainingResources', traits => ['NameInRequest']);
   has RunningTasksCount => (is => 'ro', isa => 'Int', request_name => 'runningTasksCount', traits => ['NameInRequest']);
@@ -91,6 +92,11 @@ C<arn:aws:ecs:I<region>:I<aws_account_id>:container-instance/I<container_instanc
 C<PENDING> status.
 
 
+=head2 RegisteredAt => Str
+
+  The Unix timestamp for when the container instance was registered.
+
+
 =head2 RegisteredResources => ArrayRef[L<Paws::ECS::Resource>]
 
   For most resource types, this parameter describes the registered
@@ -118,9 +124,13 @@ C<RUNNING> status.
 
 =head2 Status => Str
 
-  The status of the container instance. The valid values are C<ACTIVE> or
-C<INACTIVE>. C<ACTIVE> indicates that the container instance can accept
-tasks.
+  The status of the container instance. The valid values are C<ACTIVE>,
+C<INACTIVE>, or C<DRAINING>. C<ACTIVE> indicates that the container
+instance can accept tasks. C<DRAINING> indicates that new tasks are not
+placed on the container instance and any service tasks running on the
+container instance are removed if possible. For more information, see
+Container Instance Draining in the I<Amazon EC2 Container Service
+Developer Guide>.
 
 
 =head2 Version => Int
