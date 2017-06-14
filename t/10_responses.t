@@ -21,7 +21,7 @@ use Data::Dumper;
 
 my @files = @ARGV;
 if (not @files) {
-  push @files, sort <"t/10_responses/*.response">;
+  push @files, sort glob("t/10_responses/*.response");
 } else {
   @files = grep { $_ =~ m/\.response$/ } @files;
 }

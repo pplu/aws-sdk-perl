@@ -20,8 +20,8 @@ my $paws = Paws->new(config => {
 
 my @files = @ARGV;
 if (not @files) {
-  push @files, sort <"t/18_mocked/*.response">;
-  push @files, sort <"t/26_paginators/*/*.response">;
+  push @files, sort glob("t/18_mocked/*.response");
+  push @files, sort glob("t/26_paginators/*/*.response");
 } else {
   @files = grep { $_ =~ m/\.response$/ } @files;
 }
