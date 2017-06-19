@@ -7,6 +7,7 @@ package Paws::XRay::Service;
   has Name => (is => 'ro', isa => 'Str');
   has Names => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has ReferenceId => (is => 'ro', isa => 'Int');
+  has ResponseTimeHistogram => (is => 'ro', isa => 'ArrayRef[Paws::XRay::HistogramEntry]');
   has Root => (is => 'ro', isa => 'Bool');
   has StartTime => (is => 'ro', isa => 'Str');
   has State => (is => 'ro', isa => 'Str');
@@ -56,7 +57,7 @@ an application used.
 
 =head2 DurationHistogram => ArrayRef[L<Paws::XRay::HistogramEntry>]
 
-  Histogram mapping the spread of trace durations
+  A histogram that maps the spread of service durations.
 
 
 =head2 Edges => ArrayRef[L<Paws::XRay::Edge>]
@@ -82,6 +83,11 @@ an application used.
 =head2 ReferenceId => Int
 
   Identifier for the service. Unique within the service map.
+
+
+=head2 ResponseTimeHistogram => ArrayRef[L<Paws::XRay::HistogramEntry>]
+
+  A histogram that maps the spread of service response times.
 
 
 =head2 Root => Bool

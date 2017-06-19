@@ -58,7 +58,7 @@ Information about a connection between two services.
 
 =head2 ResponseTimeHistogram => ArrayRef[L<Paws::XRay::HistogramEntry>]
 
-  Histogram describing the prominence of response times on the edge.
+  A histogram that maps the spread of client response times on an edge.
 
 
 =head2 StartTime => Str
