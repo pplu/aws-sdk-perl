@@ -41,7 +41,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Attributes => ArrayRef[L<Paws::CloudDirectory::AttributeNameAndValue>]
 
-An ordered set of attributes that are associated with the typed link.
+A set of attributes that are associated with the typed link.
 
 
 

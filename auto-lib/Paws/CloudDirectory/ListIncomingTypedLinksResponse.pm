@@ -18,7 +18,7 @@ Paws::CloudDirectory::ListIncomingTypedLinksResponse
 
 =head2 LinkSpecifiers => ArrayRef[L<Paws::CloudDirectory::TypedLinkSpecifier>]
 
-Returns a typed link specifier as output.
+Returns one or more typed link specifiers as output.
 
 
 =head2 NextToken => Str
