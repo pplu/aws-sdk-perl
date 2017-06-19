@@ -1,4 +1,10 @@
 0.34
+ - API update: XRay
+ - API update: ServiceCatalog
+ - API update: EC2
+ - API update: CloudDirectory
+ - API update: ECS
+ - API update: IoT
 
 0.33 04 Jun 2017
  - New Credential provider: Paws::Credential::Explicit for providing in-code credentials (meis)
