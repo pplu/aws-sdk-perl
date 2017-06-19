@@ -1,4 +1,6 @@
-0.33 
+0.34
+
+0.33 04 Jun 2017
  - New Credential provider: Paws::Credential::Explicit for providing in-code credentials (meis)
  - Bug fixed: ETag not defined when using MojoAsyncCaller (PopeFelix)
  - New parameter for services: "endpoint" that is used to override the URL for sending requests 

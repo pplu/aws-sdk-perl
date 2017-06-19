@@ -57,7 +57,7 @@ __PACKAGE__->meta->make_immutable;
 
 package Paws;
 
-our $VERSION = '0.33';
+our $VERSION = '0.34';
 
 use Moose;
 use MooseX::ClassAttribute;
@@ -405,6 +405,8 @@ L<Paws::S3>
 L<Paws::SDB>
 
 L<Paws::ServiceCatalog>
+
+L<Paws::SES>
 
 L<Paws::SES>
 
