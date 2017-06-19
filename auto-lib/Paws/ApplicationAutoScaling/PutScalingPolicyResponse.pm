@@ -1,6 +1,7 @@
 
 package Paws::ApplicationAutoScaling::PutScalingPolicyResponse;
   use Moose;
+  has Alarms => (is => 'ro', isa => 'ArrayRef[Paws::ApplicationAutoScaling::Alarm]');
   has PolicyARN => (is => 'ro', isa => 'Str', required => 1);
 
   has _request_id => (is => 'ro', isa => 'Str');
@@ -12,6 +13,11 @@ package Paws::ApplicationAutoScaling::PutScalingPolicyResponse;
 Paws::ApplicationAutoScaling::PutScalingPolicyResponse
 
 =head1 ATTRIBUTES
+
+
+=head2 Alarms => ArrayRef[L<Paws::ApplicationAutoScaling::Alarm>]
+
+The CloudWatch alarms created for the target tracking policy.
 
 
 =head2 B<REQUIRED> PolicyARN => Str

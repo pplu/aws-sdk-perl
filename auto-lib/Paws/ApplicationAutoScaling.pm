@@ -190,8 +190,14 @@ in Amazon EMR in the I<Amazon EMR Management Guide>.
 
 =item *
 
-AppStream 2.0 fleets. For more information, see Autoscaling Amazon
-AppStream 2.0 Resources in the I<Amazon AppStream 2.0 Developer Guide>.
+AppStream 2.0 fleets. For more information, see Fleet Auto Scaling for
+Amazon AppStream 2.0 in the I<Amazon AppStream 2.0 Developer Guide>.
+
+=item *
+
+Provisioned read and write capacity for Amazon DynamoDB tables and
+global secondary indexes. For more information, see Auto Scaling for
+DynamoDB in the I<Amazon DynamoDB Developer Guide>.
 
 =back
 
@@ -283,7 +289,7 @@ PutScalingPolicy. If you are no longer using a scaling policy, you can
 delete it using DeleteScalingPolicy.
 
 
-=head2 PutScalingPolicy(PolicyName => Str, ResourceId => Str, ScalableDimension => Str, ServiceNamespace => Str, [PolicyType => Str, StepScalingPolicyConfiguration => L<Paws::ApplicationAutoScaling::StepScalingPolicyConfiguration>])
+=head2 PutScalingPolicy(PolicyName => Str, ResourceId => Str, ScalableDimension => Str, ServiceNamespace => Str, [PolicyType => Str, StepScalingPolicyConfiguration => L<Paws::ApplicationAutoScaling::StepScalingPolicyConfiguration>, TargetTrackingScalingPolicyConfiguration => L<Paws::ApplicationAutoScaling::TargetTrackingScalingPolicyConfiguration>])
 
 Each argument is described in detail in: L<Paws::ApplicationAutoScaling::PutScalingPolicy>
 

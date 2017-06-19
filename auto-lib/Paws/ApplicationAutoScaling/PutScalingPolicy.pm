@@ -7,6 +7,7 @@ package Paws::ApplicationAutoScaling::PutScalingPolicy;
   has ScalableDimension => (is => 'ro', isa => 'Str', required => 1);
   has ServiceNamespace => (is => 'ro', isa => 'Str', required => 1);
   has StepScalingPolicyConfiguration => (is => 'ro', isa => 'Paws::ApplicationAutoScaling::StepScalingPolicyConfiguration');
+  has TargetTrackingScalingPolicyConfiguration => (is => 'ro', isa => 'Paws::ApplicationAutoScaling::TargetTrackingScalingPolicyConfiguration');
 
   use MooseX::ClassAttribute;
 
@@ -49,7 +50,10 @@ The name of the scaling policy.
 The policy type. If you are creating a new policy, this parameter is
 required. If you are updating a policy, this parameter is not required.
 
-Valid values are: C<"StepScaling">
+For DynamoDB, only C<TargetTrackingScaling> is supported. For any other
+service, only C<StepScaling> is supported.
+
+Valid values are: C<"StepScaling">, C<"TargetTrackingScaling">
 
 =head2 B<REQUIRED> ResourceId => Str
 
@@ -80,6 +84,17 @@ C<instancegroup/j-2EEZNYKUA1NTV/ig-1791Y4E1L8YI0>.
 
 AppStream 2.0 fleet - The resource type is C<fleet> and the unique
 identifier is the fleet name. Example: C<fleet/sample-fleet>.
+
+=item *
+
+DynamoDB table - The resource type is C<table> and the unique
+identifier is the resource ID. Example: C<table/my-table>.
+
+=item *
+
+DynamoDB global secondary index - The resource type is C<index> and the
+unique identifier is the resource ID. Example:
+C<table/my-table/index/my-table-index>.
 
 =back
 
@@ -112,24 +127,53 @@ an EMR Instance Group.
 C<appstream:fleet:DesiredCapacity> - The desired capacity of an
 AppStream 2.0 fleet.
 
+=item *
+
+C<dynamodb:table:ReadCapacityUnits> - The provisioned read capacity for
+a DynamoDB table.
+
+=item *
+
+C<dynamodb:table:WriteCapacityUnits> - The provisioned write capacity
+for a DynamoDB table.
+
+=item *
+
+C<dynamodb:index:ReadCapacityUnits> - The provisioned read capacity for
+a DynamoDB global secondary index.
+
+=item *
+
+C<dynamodb:index:WriteCapacityUnits> - The provisioned write capacity
+for a DynamoDB global secondary index.
+
 =back
 
 
-Valid values are: C<"ecs:service:DesiredCount">, C<"ec2:spot-fleet-request:TargetCapacity">, C<"elasticmapreduce:instancegroup:InstanceCount">, C<"appstream:fleet:DesiredCapacity">
+Valid values are: C<"ecs:service:DesiredCount">, C<"ec2:spot-fleet-request:TargetCapacity">, C<"elasticmapreduce:instancegroup:InstanceCount">, C<"appstream:fleet:DesiredCapacity">, C<"dynamodb:table:ReadCapacityUnits">, C<"dynamodb:table:WriteCapacityUnits">, C<"dynamodb:index:ReadCapacityUnits">, C<"dynamodb:index:WriteCapacityUnits">
 
 =head2 B<REQUIRED> ServiceNamespace => Str
 
 The namespace of the AWS service. For more information, see AWS Service
 Namespaces in the I<Amazon Web Services General Reference>.
 
-Valid values are: C<"ecs">, C<"elasticmapreduce">, C<"ec2">, C<"appstream">
+Valid values are: C<"ecs">, C<"elasticmapreduce">, C<"ec2">, C<"appstream">, C<"dynamodb">
 
 =head2 StepScalingPolicyConfiguration => L<Paws::ApplicationAutoScaling::StepScalingPolicyConfiguration>
 
-The configuration for the step scaling policy. If you are creating a
-new policy, this parameter is required. If you are updating a policy,
-this parameter is not required. For more information, see
-StepScalingPolicyConfiguration and StepAdjustment.
+A step scaling policy.
+
+This parameter is required if you are creating a policy and the policy
+type is C<StepScaling>.
+
+
+
+=head2 TargetTrackingScalingPolicyConfiguration => L<Paws::ApplicationAutoScaling::TargetTrackingScalingPolicyConfiguration>
+
+A target tracking policy.
+
+This parameter is required if you are creating a new policy and the
+policy type is C<TargetTrackingScaling>.
 
 
 
