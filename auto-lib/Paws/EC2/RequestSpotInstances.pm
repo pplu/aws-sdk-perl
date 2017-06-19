@@ -121,7 +121,7 @@ Default: Instances are launched and terminated individually
 
 =head2 LaunchSpecification => L<Paws::EC2::RequestSpotLaunchSpecification>
 
-
+The launch specification.
 
 
 

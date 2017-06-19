@@ -102,7 +102,10 @@ Default: C<false>
 
 =head2 Monitoring => L<Paws::EC2::RunInstancesMonitoringEnabled>
 
-  
+  Indicates whether basic or detailed monitoring is enabled for the
+instance.
+
+Default: Disabled
 
 
 =head2 NetworkInterfaces => ArrayRef[L<Paws::EC2::InstanceNetworkInterfaceSpecification>]
@@ -124,12 +127,15 @@ interface.
 
 =head2 SecurityGroupIds => ArrayRef[Str|Undef]
 
-  
+  One or more security group IDs.
 
 
 =head2 SecurityGroups => ArrayRef[Str|Undef]
 
-  
+  One or more security groups. When requesting instances in a VPC, you
+must specify the IDs of the security groups. When requesting instances
+in EC2-Classic, you can specify the names or the IDs of the security
+groups.
 
 
 =head2 SubnetId => Str

@@ -4,6 +4,7 @@ package Paws::EC2::Placement;
   has AvailabilityZone => (is => 'ro', isa => 'Str', request_name => 'availabilityZone', traits => ['NameInRequest']);
   has GroupName => (is => 'ro', isa => 'Str', request_name => 'groupName', traits => ['NameInRequest']);
   has HostId => (is => 'ro', isa => 'Str', request_name => 'hostId', traits => ['NameInRequest']);
+  has SpreadDomain => (is => 'ro', isa => 'Str', request_name => 'spreadDomain', traits => ['NameInRequest']);
   has Tenancy => (is => 'ro', isa => 'Str', request_name => 'tenancy', traits => ['NameInRequest']);
 1;
 
@@ -61,6 +62,11 @@ instances).
 
   The ID of the Dedicated Host on which the instance resides. This
 parameter is not supported for the ImportInstance command.
+
+
+=head2 SpreadDomain => Str
+
+  Reserved for future use.
 
 
 =head2 Tenancy => Str

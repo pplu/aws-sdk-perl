@@ -43,10 +43,8 @@ This class has no description
 
 =head2 AccepterVpcInfo => L<Paws::EC2::VpcPeeringConnectionVpcInfo>
 
-  Information about the accepter VPC. CIDR block information is not
-returned when creating a VPC peering connection, or when describing a
-VPC peering connection that's in the C<initiating-request> or
-C<pending-acceptance> state.
+  Information about the accepter VPC. CIDR block information is only
+returned when describing an active VPC peering connection.
 
 
 =head2 ExpirationTime => Str
@@ -56,7 +54,8 @@ C<pending-acceptance> state.
 
 =head2 RequesterVpcInfo => L<Paws::EC2::VpcPeeringConnectionVpcInfo>
 
-  Information about the requester VPC.
+  Information about the requester VPC. CIDR block information is only
+returned when describing an active VPC peering connection.
 
 
 =head2 Status => L<Paws::EC2::VpcPeeringConnectionStateReason>
