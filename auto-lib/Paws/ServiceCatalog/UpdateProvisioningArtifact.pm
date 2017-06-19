@@ -73,6 +73,7 @@ The product identifier.
 =head2 B<REQUIRED> ProvisioningArtifactId => Str
 
 The identifier of the provisioning artifact for the update request.
+This is sometimes referred to as the product version.
 
 
 

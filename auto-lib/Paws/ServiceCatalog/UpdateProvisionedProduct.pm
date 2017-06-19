@@ -71,23 +71,23 @@ The identifier of the ProvisionedProduct object.
 
 =head2 ProvisionedProductId => Str
 
-The identifier of the ProvisionedProduct object to update. You must
-specify either C<ProvisionedProductName> or C<ProvisionedProductId>,
-but not both.
-
-
-
-=head2 ProvisionedProductName => Str
-
-The updated name of the ProvisionedProduct object . You must specify
+The identifier of the ProvisionedProduct object to update. Specify
 either C<ProvisionedProductName> or C<ProvisionedProductId>, but not
 both.
 
 
 
+=head2 ProvisionedProductName => Str
+
+The updated name of the ProvisionedProduct object. Specify either
+C<ProvisionedProductName> or C<ProvisionedProductId>, but not both.
+
+
+
 =head2 ProvisioningArtifactId => Str
 
-The provisioning artifact identifier for this product.
+The provisioning artifact identifier for this product. This is
+sometimes referred to as the product version.
 
 
 

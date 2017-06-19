@@ -9,6 +9,7 @@ package Paws::ServiceCatalog::ProductViewFilters;
   has FullTextSearch => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Owner => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has ProductType => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has SourceProductId => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 1;
 
 ### main pod documentation begin ###
@@ -28,7 +29,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::ServiceCatalog::ProductViewFilters object:
 
-  $service_obj->Method(Att1 => { FullTextSearch => $value, ..., ProductType => $value  });
+  $service_obj->Method(Att1 => { FullTextSearch => $value, ..., SourceProductId => $value  });
 
 =head3 Results returned from an API call
 
@@ -51,6 +52,9 @@ This class has no description
 
 
 =head2 ProductType => ArrayRef[Str|Undef]
+
+
+=head2 SourceProductId => ArrayRef[Str|Undef]
 
 
 

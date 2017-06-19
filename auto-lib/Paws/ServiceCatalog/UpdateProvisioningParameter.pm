@@ -33,7 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ServiceCata
 
 =head1 DESCRIPTION
 
-The parameter key/value pair used to update a ProvisionedProduct
+The parameter key-value pair used to update a ProvisionedProduct
 object. If C<UsePreviousValue> is set to true, C<Value> is ignored and
 the value for C<Key> is kept as previously set (current value).
 

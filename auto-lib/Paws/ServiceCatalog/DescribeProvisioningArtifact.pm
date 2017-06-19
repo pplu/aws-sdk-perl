@@ -4,6 +4,7 @@ package Paws::ServiceCatalog::DescribeProvisioningArtifact;
   has AcceptLanguage => (is => 'ro', isa => 'Str');
   has ProductId => (is => 'ro', isa => 'Str', required => 1);
   has ProvisioningArtifactId => (is => 'ro', isa => 'Str', required => 1);
+  has Verbose => (is => 'ro', isa => 'Bool');
 
   use MooseX::ClassAttribute;
 
@@ -58,7 +59,15 @@ The product identifier.
 
 =head2 B<REQUIRED> ProvisioningArtifactId => Str
 
-The identifier of the provisioning artifact.
+The identifier of the provisioning artifact. This is sometimes referred
+to as the product version.
+
+
+
+=head2 Verbose => Bool
+
+Selects verbose results. If set to true, the CloudFormation template is
+returned.
 
 
 

@@ -95,7 +95,7 @@ The owner of the product.
 
 The type of the product to create.
 
-Valid values are: C<"CLOUD_FORMATION_TEMPLATE">
+Valid values are: C<"CLOUD_FORMATION_TEMPLATE">, C<"MARKETPLACE">
 
 =head2 B<REQUIRED> ProvisioningArtifactParameters => L<Paws::ServiceCatalog::ProvisioningArtifactProperties>
 

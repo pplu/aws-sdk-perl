@@ -106,7 +106,8 @@ significance of this value.
 =head2 Type => Str
 
   The product type. Contact the product administrator for the
-significance of this value.
+significance of this value. If this value is C<MARKETPLACE>, the
+product was created by AWS Marketplace.
 
 
 

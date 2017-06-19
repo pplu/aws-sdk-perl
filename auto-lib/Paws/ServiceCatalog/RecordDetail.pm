@@ -80,7 +80,8 @@ The full details of a specific ProvisionedProduct object.
 
 =head2 ProvisioningArtifactId => Str
 
-  The provisioning artifact identifier for this product.
+  The provisioning artifact identifier for this product. This is
+sometimes referred to as the product version.
 
 
 =head2 RecordErrors => ArrayRef[L<Paws::ServiceCatalog::RecordError>]
@@ -106,6 +107,19 @@ The full details of a specific ProvisionedProduct object.
 =head2 Status => Str
 
   The status of the ProvisionedProduct object.
+
+C<CREATED> - Request created but the operation has not yet started.
+
+C<IN_PROGRESS> - The requested operation is in-progress.
+
+C<IN_PROGRESS_IN_ERROR> - The provisioned product is under change but
+the requested operation failed and some remediation is occurring. For
+example, a roll-back.
+
+C<SUCCEEDED> - The requested operation has successfully completed.
+
+C<FAILED> - The requested operation has completed but has failed.
+Investigate using the error messages returned.
 
 
 =head2 UpdatedTime => Str

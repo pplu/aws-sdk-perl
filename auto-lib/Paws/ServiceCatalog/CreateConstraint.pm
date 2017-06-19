@@ -70,7 +70,14 @@ also specify a different idempotency token for each request.
 
 =head2 B<REQUIRED> Parameters => Str
 
-The constraint parameters.
+The constraint parameters. Expected values vary depending on which
+B<Type> is specified. For examples, see the bottom of this topic.
+
+For Type C<LAUNCH>, the C<RoleArn> property is required.
+
+For Type C<NOTIFICATION>, the C<NotificationArns> property is required.
+
+For Type C<TEMPLATE>, the C<Rules> property is required.
 
 
 
@@ -88,7 +95,8 @@ The product identifier.
 
 =head2 B<REQUIRED> Type => Str
 
-The type of the constraint.
+The type of the constraint. Case-sensitive valid values are: C<LAUNCH>,
+C<NOTIFICATION>, or C<TEMPLATE>.
 
 
 

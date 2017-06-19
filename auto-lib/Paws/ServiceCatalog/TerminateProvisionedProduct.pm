@@ -62,17 +62,16 @@ resources.
 
 =head2 ProvisionedProductId => Str
 
-The identifier of the ProvisionedProduct object to terminate. You must
-specify either C<ProvisionedProductName> or C<ProvisionedProductId>,
-but not both.
+The identifier of the ProvisionedProduct object to terminate. Specify
+either C<ProvisionedProductName> or C<ProvisionedProductId>, but not
+both.
 
 
 
 =head2 ProvisionedProductName => Str
 
-The name of the ProvisionedProduct object to terminate. You must
-specify either C<ProvisionedProductName> or C<ProvisionedProductId>,
-but not both.
+The name of the ProvisionedProduct object to terminate. Specify either
+C<ProvisionedProductName> or C<ProvisionedProductId>, but not both.
 
 
 

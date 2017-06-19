@@ -47,7 +47,7 @@ DescribeProvisioningParameters.
 
 =head2 B<REQUIRED> Value => Str
 
-  The esired value for this key.
+  The desired value for this key.
 
 
 

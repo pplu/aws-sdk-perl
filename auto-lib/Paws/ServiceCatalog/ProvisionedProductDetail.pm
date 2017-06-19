@@ -81,6 +81,23 @@ ProvisionedProduct object.
 
   The current status of the ProvisionedProduct.
 
+C<AVAILABLE> - Stable state, ready to perform any operation. The most
+recent action request succeeded and completed.
+
+C<UNDER_CHANGE> - Transitive state, operations performed may or may not
+have valid results. Wait for an C<AVAILABLE> status before performing
+operations.
+
+C<TAINTED> - Stable state, ready to perform any operation. The stack
+has completed the requested operation but is not exactly what was
+requested. For example, a request to update to a new version failed and
+the stack rolled back to the current version.
+
+C<ERROR> - Something unexpected happened such that the provisioned
+product exists but the stack is not running. For example,
+CloudFormation received an invalid parameter value and could not launch
+the stack.
+
 
 =head2 StatusMessage => Str
 

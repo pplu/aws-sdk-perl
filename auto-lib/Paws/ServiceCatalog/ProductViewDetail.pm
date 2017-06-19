@@ -58,6 +58,12 @@ Detailed product view information.
 
   Current status of the product.
 
+C<AVAILABLE> - Product is available for use.
+
+C<CREATING> - Creation of product started, not ready for use.
+
+C<FAILED> - Action on product failed.
+
 
 
 =head1 SEE ALSO

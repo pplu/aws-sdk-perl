@@ -87,7 +87,8 @@ the product is provisioned.
 
 =head2 B<REQUIRED> ProvisioningArtifactId => Str
 
-The provisioning artifact identifier for this product.
+The provisioning artifact identifier for this product. This is
+sometimes referred to as the product version.
 
 
 

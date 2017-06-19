@@ -104,6 +104,11 @@ package Paws::ServiceCatalog;
     my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::DescribeProductView', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeProvisionedProduct {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::DescribeProvisionedProduct', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeProvisioningArtifact {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::DescribeProvisioningArtifact', @_);
@@ -232,7 +237,7 @@ package Paws::ServiceCatalog;
   
 
 
-  sub operations { qw/AcceptPortfolioShare AssociatePrincipalWithPortfolio AssociateProductWithPortfolio CreateConstraint CreatePortfolio CreatePortfolioShare CreateProduct CreateProvisioningArtifact DeleteConstraint DeletePortfolio DeletePortfolioShare DeleteProduct DeleteProvisioningArtifact DescribeConstraint DescribePortfolio DescribeProduct DescribeProductAsAdmin DescribeProductView DescribeProvisioningArtifact DescribeProvisioningParameters DescribeRecord DisassociatePrincipalFromPortfolio DisassociateProductFromPortfolio ListAcceptedPortfolioShares ListConstraintsForPortfolio ListLaunchPaths ListPortfolioAccess ListPortfolios ListPortfoliosForProduct ListPrincipalsForPortfolio ListProvisioningArtifacts ListRecordHistory ProvisionProduct RejectPortfolioShare ScanProvisionedProducts SearchProducts SearchProductsAsAdmin TerminateProvisionedProduct UpdateConstraint UpdatePortfolio UpdateProduct UpdateProvisionedProduct UpdateProvisioningArtifact / }
+  sub operations { qw/AcceptPortfolioShare AssociatePrincipalWithPortfolio AssociateProductWithPortfolio CreateConstraint CreatePortfolio CreatePortfolioShare CreateProduct CreateProvisioningArtifact DeleteConstraint DeletePortfolio DeletePortfolioShare DeleteProduct DeleteProvisioningArtifact DescribeConstraint DescribePortfolio DescribeProduct DescribeProductAsAdmin DescribeProductView DescribeProvisionedProduct DescribeProvisioningArtifact DescribeProvisioningParameters DescribeRecord DisassociatePrincipalFromPortfolio DisassociateProductFromPortfolio ListAcceptedPortfolioShares ListConstraintsForPortfolio ListLaunchPaths ListPortfolioAccess ListPortfolios ListPortfoliosForProduct ListPrincipalsForPortfolio ListProvisioningArtifacts ListRecordHistory ProvisionProduct RejectPortfolioShare ScanProvisionedProducts SearchProducts SearchProductsAsAdmin TerminateProvisionedProduct UpdateConstraint UpdatePortfolio UpdateProduct UpdateProvisionedProduct UpdateProvisioningArtifact / }
 
 1;
 
@@ -267,8 +272,8 @@ B<Overview>
 AWS Service Catalog allows organizations to create and manage catalogs
 of IT services that are approved for use on AWS. This documentation
 provides reference material for the AWS Service Catalog end user API.
-To get the most out of this documentation, you need to be familiar with
-the terminology discussed in AWS Service Catalog Concepts.
+To get the most out of this documentation, be familiar with the
+terminology discussed in AWS Service Catalog Concepts.
 
 I<Additional Resources>
 
@@ -320,7 +325,7 @@ Each argument is described in detail in: L<Paws::ServiceCatalog::CreateConstrain
 
 Returns: a L<Paws::ServiceCatalog::CreateConstraintOutput> instance
 
-  Creates a new constraint.
+  Creates a new constraint. For more information, see Using Constraints.
 
 
 =head2 CreatePortfolio(DisplayName => Str, IdempotencyToken => Str, ProviderName => Str, [AcceptLanguage => Str, Description => Str, Tags => ArrayRef[L<Paws::ServiceCatalog::Tag>]])
@@ -357,7 +362,9 @@ Each argument is described in detail in: L<Paws::ServiceCatalog::CreateProvision
 Returns: a L<Paws::ServiceCatalog::CreateProvisioningArtifactOutput> instance
 
   Create a new provisioning artifact for the specified product. This
-operation will not work with a product that has been shared with you.
+operation does not work with a product that has been shared with you.
+
+See the bottom of this topic for an example JSON request.
 
 
 =head2 DeleteConstraint(Id => Str, [AcceptLanguage => Str])
@@ -375,7 +382,7 @@ Each argument is described in detail in: L<Paws::ServiceCatalog::DeletePortfolio
 
 Returns: a L<Paws::ServiceCatalog::DeletePortfolioOutput> instance
 
-  Deletes the specified portfolio. This operation will not work with a
+  Deletes the specified portfolio. This operation does not work with a
 portfolio that has been shared with you or if it has products, users,
 constraints, or shared accounts associated with it.
 
@@ -395,7 +402,7 @@ Each argument is described in detail in: L<Paws::ServiceCatalog::DeleteProduct>
 
 Returns: a L<Paws::ServiceCatalog::DeleteProductOutput> instance
 
-  Deletes the specified product. This operation will not work with a
+  Deletes the specified product. This operation does not work with a
 product that has been shared with you or is associated with a
 portfolio.
 
@@ -406,7 +413,7 @@ Each argument is described in detail in: L<Paws::ServiceCatalog::DeleteProvision
 
 Returns: a L<Paws::ServiceCatalog::DeleteProvisioningArtifactOutput> instance
 
-  Deletes the specified provisioning artifact. This operation will not
+  Deletes the specified provisioning artifact. This operation does not
 work on a provisioning artifact associated with a product that has been
 shared with you, or on the last provisioning artifact associated with a
 product (a product must have at least one provisioning artifact).
@@ -465,7 +472,16 @@ This operation is functionally identical to DescribeProduct except that
 it takes as input C<ProductViewId> instead of C<ProductId>.
 
 
-=head2 DescribeProvisioningArtifact(ProductId => Str, ProvisioningArtifactId => Str, [AcceptLanguage => Str])
+=head2 DescribeProvisionedProduct(Id => Str, [AcceptLanguage => Str])
+
+Each argument is described in detail in: L<Paws::ServiceCatalog::DescribeProvisionedProduct>
+
+Returns: a L<Paws::ServiceCatalog::DescribeProvisionedProductOutput> instance
+
+  Retrieve detailed information about the provisioned product.
+
+
+=head2 DescribeProvisioningArtifact(ProductId => Str, ProvisioningArtifactId => Str, [AcceptLanguage => Str, Verbose => Bool])
 
 Each argument is described in detail in: L<Paws::ServiceCatalog::DescribeProvisioningArtifact>
 
@@ -611,11 +627,11 @@ Each argument is described in detail in: L<Paws::ServiceCatalog::ProvisionProduc
 
 Returns: a L<Paws::ServiceCatalog::ProvisionProductOutput> instance
 
-  Requests a I<Provision> of a specified product. A I<ProvisionedProduct>
-is a resourced instance for a product. For example, provisioning a
-CloudFormation-template-backed product results in launching a
-CloudFormation stack and all the underlying resources that come with
-it.
+  Requests a I<provision> of a specified product. A I<provisioned
+product> is a resourced instance for a product. For example,
+provisioning a CloudFormation-template-backed product results in
+launching a CloudFormation stack and all the underlying resources that
+come with it.
 
 You can check the status of this request using the DescribeRecord
 operation.
@@ -697,7 +713,7 @@ Each argument is described in detail in: L<Paws::ServiceCatalog::UpdatePortfolio
 
 Returns: a L<Paws::ServiceCatalog::UpdatePortfolioOutput> instance
 
-  Updates the specified portfolio's details. This operation will not work
+  Updates the specified portfolio's details. This operation does not work
 with a product that has been shared with you.
 
 
@@ -733,7 +749,7 @@ Each argument is described in detail in: L<Paws::ServiceCatalog::UpdateProvision
 Returns: a L<Paws::ServiceCatalog::UpdateProvisioningArtifactOutput> instance
 
   Updates an existing provisioning artifact's information. This operation
-will not work on a provisioning artifact associated with a product that
+does not work on a provisioning artifact associated with a product that
 has been shared with you.
 
 
