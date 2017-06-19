@@ -234,9 +234,6 @@ slashes, and number signs are allowed. This parameter maps to C<Image>
 in the Create a container section of the Docker Remote API and the
 C<IMAGE> parameter of docker run.
 
-Amazon ECS task definitions currently only support tags as image
-identifiers within a specified repository (and not C<sha256> digests).
-
 =over
 
 =item *

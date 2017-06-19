@@ -1,7 +1,10 @@
 package Paws::ECS::ContainerOverride;
   use Moose;
   has Command => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'command', traits => ['NameInRequest']);
+  has Cpu => (is => 'ro', isa => 'Int', request_name => 'cpu', traits => ['NameInRequest']);
   has Environment => (is => 'ro', isa => 'ArrayRef[Paws::ECS::KeyValuePair]', request_name => 'environment', traits => ['NameInRequest']);
+  has Memory => (is => 'ro', isa => 'Int', request_name => 'memory', traits => ['NameInRequest']);
+  has MemoryReservation => (is => 'ro', isa => 'Int', request_name => 'memoryReservation', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
 1;
 
@@ -45,6 +48,13 @@ from the Docker image or the task definition. You must also specify a
 container name.
 
 
+=head2 Cpu => Int
+
+  The number of C<cpu> units reserved for the container, instead of the
+default value from the task definition. You must also specify a
+container name.
+
+
 =head2 Environment => ArrayRef[L<Paws::ECS::KeyValuePair>]
 
   The environment variables to send to the container. You can add new
@@ -53,10 +63,25 @@ you can override the existing environment variables from the Docker
 image or the task definition. You must also specify a container name.
 
 
+=head2 Memory => Int
+
+  The hard limit (in MiB) of memory to present to the container, instead
+of the default value from the task definition. If your container
+attempts to exceed the memory specified here, the container is killed.
+You must also specify a container name.
+
+
+=head2 MemoryReservation => Int
+
+  The soft limit (in MiB) of memory to reserve for the container, instead
+of the default value from the task definition. You must also specify a
+container name.
+
+
 =head2 Name => Str
 
   The name of the container that receives the override. This parameter is
-required if a command or environment variable is specified.
+required if any override is specified.
 
 
 
