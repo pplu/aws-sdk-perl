@@ -5,7 +5,10 @@ package Paws::Credential::ProviderChain;
     is => 'ro', 
     isa => 'ArrayRef[Str]', 
     default => sub {
-      [ 'Paws::Credential::Environment', 'Paws::Credential::File', 'Paws::Credential::InstanceProfile' ]
+      [ 'Paws::Credential::Environment', 
+        'Paws::Credential::File', 
+        'Paws::Credential::ECSContainerProfile',
+        'Paws::Credential::InstanceProfile' ]
     },
   );
 
