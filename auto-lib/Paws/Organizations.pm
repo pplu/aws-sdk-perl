@@ -402,6 +402,8 @@ Organizations User Guide>.
 
 =back
 
+After you accept a handshake, it continues to appear in the results of
+relevant APIs for only 30 days. After that it is deleted.
 
 
 =head2 AttachPolicy(PolicyId => Str, TargetId => Str)
@@ -484,6 +486,9 @@ This operation can be called only from the account that originated the
 handshake. The recipient of the handshake can't cancel it, but can use
 DeclineHandshake instead. After a handshake is canceled, the recipient
 can no longer respond to that handshake.
+
+After you cancel a handshake, it continues to appear in the results of
+relevant APIs for only 30 days. After that it is deleted.
 
 
 =head2 CreateAccount(AccountName => Str, Email => Str, [IamUserAccessToBilling => Str, RoleName => Str])
@@ -598,6 +603,9 @@ handshake. The originator of the handshake can use CancelHandshake
 instead. The originator can't reactivate a declined request, but can
 re-initiate the process with a new handshake request.
 
+After you decline a handshake, it continues to appear in the results of
+relevant APIs for only 30 days. After that it is deleted.
+
 
 =head2 DeleteOrganization( => )
 
@@ -677,6 +685,10 @@ Returns: a L<Paws::Organizations::DescribeHandshakeResponse> instance
   Retrieves information about a previously requested handshake. The
 handshake ID comes from the response to the original
 InviteAccountToOrganization operation that generated the handshake.
+
+You can access handshakes that are ACCEPTED, DECLINED, or CANCELED for
+only 30 days after they change to that state. They are then deleted and
+no longer accessible.
 
 This operation can be called from any account in the organization.
 
@@ -825,6 +837,13 @@ address that is associated with the other account's owner. The
 invitation is implemented as a Handshake whose details are in the
 response.
 
+You can invite AWS accounts only from the same reseller as the master
+account. For example, if your organization's master account was created
+by Amazon Internet Services Pvt. Ltd (AISPL), an AWS reseller in India,
+then you can only invite other AISPL accounts to your organization. You
+can't combine accounts from AISPL and AWS. For more information, see
+Consolidated Billing in India.
+
 This operation can be called only from the organization's master
 account.
 
@@ -843,10 +862,30 @@ RemoveAccountFromOrganization instead.
 This operation can be called only from a member account in the
 organization.
 
+=over
+
+=item *
+
 The master account in an organization with all features enabled can set
 service control policies (SCPs) that can restrict what administrators
 of member accounts can do, including preventing them from successfully
 calling C<LeaveOrganization> and leaving the organization.
+
+=item *
+
+If you created the account using the AWS Organizations console, the
+Organizations API, or the Organizations CLI commands, then you cannot
+remove the account.
+
+=item *
+
+You can leave an organization only after you enable IAM user access to
+billing in your account. For more information, see Activating Access to
+the Billing and Cost Management Console in the I<AWS Billing and Cost
+Management User Guide>.
+
+=back
+
 
 
 =head2 ListAccounts([MaxResults => Int, NextToken => Str])
@@ -910,6 +949,10 @@ Returns: a L<Paws::Organizations::ListHandshakesForAccountResponse> instance
   Lists the current handshakes that are associated with the account of
 the requesting user.
 
+Handshakes that are ACCEPTED, DECLINED, or CANCELED appear in the
+results of this API for only 30 days after changing to that state.
+After that they are deleted and no longer accessible.
+
 This operation can be called from any account in the organization.
 
 
@@ -923,6 +966,10 @@ Returns: a L<Paws::Organizations::ListHandshakesForOrganizationResponse> instanc
 requesting user is part of. The C<ListHandshakesForOrganization>
 operation returns a list of handshake structures. Each structure
 contains details and status about a handshake.
+
+Handshakes that are ACCEPTED, DECLINED, or CANCELED appear in the
+results of this API for only 30 days after changing to that state.
+After that they are deleted and no longer accessible.
 
 This operation can be called only from the organization's master
 account.
@@ -1041,9 +1088,24 @@ This operation can be called only from the organization's master
 account. Member accounts can remove themselves with LeaveOrganization
 instead.
 
-You can remove only existing accounts that were invited to join the
-organization. You cannot remove accounts that were created by AWS
-Organizations.
+=over
+
+=item *
+
+You can remove only accounts that were created outside your
+organization and invited to join. If you created the account using the
+AWS Organizations console, the Organizations API, or the Organizations
+CLI commands, then you cannot remove the account.
+
+=item *
+
+You can remove a member account only after you enable IAM user access
+to billing in the member account. For more information, see Activating
+Access to the Billing and Cost Management Console in the I<AWS Billing
+and Cost Management User Guide>.
+
+=back
+
 
 
 =head2 UpdateOrganizationalUnit(OrganizationalUnitId => Str, [Name => Str])

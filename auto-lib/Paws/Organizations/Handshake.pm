@@ -45,6 +45,10 @@ invites another account (the recipient) to join its organization, the
 two accounts exchange information as a series of handshake requests and
 responses.
 
+B<Note:> Handshakes that are CANCELED, ACCEPTED, or DECLINED show up in
+lists for only 30 days after entering that state After that they are
+deleted.
+
 =head1 ATTRIBUTES
 
 
