@@ -4,19 +4,23 @@ package Paws::Credential::ECSContainerProfile;
   use DateTime::Format::ISO8601;
   with 'Paws::Credential';
 
-  my $defaultMetadataUrl = undef;
-
-  my $containerLocalUrl=$ENV{'AWS_CONTAINER_CREDENTIALS_RELATIVE_URI'};
-
-  if ($containerLocalUrl)
-  {
-    $defaultMetadataUrl = "http://169.254.170.2$containerLocalUrl";
-  }
+  has container_local_uri => (
+    is => 'ro',
+    isa => 'Str|Undef',
+    default => sub {
+      $ENV{ AWS_CONTAINER_CREDENTIALS_RELATIVE_URI }
+    }
+  );
 
   has metadata_url => (
     is => 'ro',
-    isa => 'Str',
-    default => $defaultMetadataUrl
+    isa => 'Str|Undef',
+    lazy => 1,
+    default => sub {
+      my $self = shift;
+      return undef if (not defined $self->container_local_uri);
+      "http://169.254.170.2" . $self->container_local_uri;
+    }
   );
 
   has timeout => (is => 'ro', isa => 'Int', default => 1);
@@ -41,6 +45,12 @@ package Paws::Credential::ECSContainerProfile;
   );
 
   has actual_creds => (is => 'rw', default => sub { {} });
+
+  around are_set => sub {
+    my ($orig, $self) = @_;
+    return 0 if (not defined $self->container_local_uri);
+    return $self->$orig;
+  };
 
   sub access_key {
     my $self = shift;
