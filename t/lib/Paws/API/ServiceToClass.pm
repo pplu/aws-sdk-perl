@@ -30,6 +30,7 @@ package Paws::API::ServiceToClass;
     config => 'Config',
     cur => 'CUR',
     datapipeline => 'DataPipeline',
+    dax => 'DAX',
     devicefarm => 'DeviceFarm',
     discovery => 'Discovery',
     directconnect => 'DirectConnect',

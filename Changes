@@ -1,10 +1,19 @@
 0.34
+ - New API: DAX (DynamoDB Accelerator)
  - API update: XRay
  - API update: ServiceCatalog
  - API update: EC2
  - API update: CloudDirectory
  - API update: ECS
+ - API update: Lightsail
  - API update: IoT
+ - API update: SSM
+ - API update: WAF
+ - API update: WAFRegional
+ - API update: Workdocs
+ - API update: CodePipeline
+ - API update: DMS
+ - API update: Route53
 
 0.33 04 Jun 2017
  - New Credential provider: Paws::Credential::Explicit for providing in-code credentials (meis)
