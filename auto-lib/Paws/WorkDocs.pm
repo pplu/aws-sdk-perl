@@ -103,6 +103,11 @@ package Paws::WorkDocs;
     my $call_object = $self->new_with_coercions('Paws::WorkDocs::DeleteUser', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeActivities {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WorkDocs::DescribeActivities', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeComments {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::WorkDocs::DescribeComments', @_);
@@ -128,9 +133,19 @@ package Paws::WorkDocs;
     my $call_object = $self->new_with_coercions('Paws::WorkDocs::DescribeResourcePermissions', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeRootFolders {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WorkDocs::DescribeRootFolders', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeUsers {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::WorkDocs::DescribeUsers', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetCurrentUser {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WorkDocs::GetCurrentUser', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetDocument {
@@ -268,7 +283,7 @@ package Paws::WorkDocs;
   }
 
 
-  sub operations { qw/AbortDocumentVersionUpload ActivateUser AddResourcePermissions CreateComment CreateCustomMetadata CreateFolder CreateLabels CreateNotificationSubscription CreateUser DeactivateUser DeleteComment DeleteCustomMetadata DeleteDocument DeleteFolder DeleteFolderContents DeleteLabels DeleteNotificationSubscription DeleteUser DescribeComments DescribeDocumentVersions DescribeFolderContents DescribeNotificationSubscriptions DescribeResourcePermissions DescribeUsers GetDocument GetDocumentPath GetDocumentVersion GetFolder GetFolderPath InitiateDocumentVersionUpload RemoveAllResourcePermissions RemoveResourcePermission UpdateDocument UpdateDocumentVersion UpdateFolder UpdateUser / }
+  sub operations { qw/AbortDocumentVersionUpload ActivateUser AddResourcePermissions CreateComment CreateCustomMetadata CreateFolder CreateLabels CreateNotificationSubscription CreateUser DeactivateUser DeleteComment DeleteCustomMetadata DeleteDocument DeleteFolder DeleteFolderContents DeleteLabels DeleteNotificationSubscription DeleteUser DescribeActivities DescribeComments DescribeDocumentVersions DescribeFolderContents DescribeNotificationSubscriptions DescribeResourcePermissions DescribeRootFolders DescribeUsers GetCurrentUser GetDocument GetDocumentPath GetDocumentVersion GetFolder GetFolderPath InitiateDocumentVersionUpload RemoveAllResourcePermissions RemoveResourcePermission UpdateDocument UpdateDocumentVersion UpdateFolder UpdateUser / }
 
 1;
 
@@ -518,6 +533,15 @@ Returns: nothing
   Deletes the specified user from a Simple AD or Microsoft AD directory.
 
 
+=head2 DescribeActivities([AuthenticationToken => Str, EndTime => Str, Limit => Int, Marker => Str, OrganizationId => Str, StartTime => Str, UserId => Str])
+
+Each argument is described in detail in: L<Paws::WorkDocs::DescribeActivities>
+
+Returns: a L<Paws::WorkDocs::DescribeActivitiesResponse> instance
+
+  Describes the user activities in a specified time period.
+
+
 =head2 DescribeComments(DocumentId => Str, VersionId => Str, [AuthenticationToken => Str, Limit => Int, Marker => Str])
 
 Each argument is described in detail in: L<Paws::WorkDocs::DescribeComments>
@@ -571,6 +595,18 @@ Returns: a L<Paws::WorkDocs::DescribeResourcePermissionsResponse> instance
   Describes the permissions of a specified resource.
 
 
+=head2 DescribeRootFolders(AuthenticationToken => Str, [Limit => Int, Marker => Str])
+
+Each argument is described in detail in: L<Paws::WorkDocs::DescribeRootFolders>
+
+Returns: a L<Paws::WorkDocs::DescribeRootFoldersResponse> instance
+
+  Describes the current user's special folders; the C<RootFolder> and the
+C<RecyleBin>. C<RootFolder> is the root of user's files and folders and
+C<RecyleBin> is the root of recycled items. This is not a valid action
+for SigV4 (administrative API) clients.
+
+
 =head2 DescribeUsers([AuthenticationToken => Str, Fields => Str, Include => Str, Limit => Int, Marker => Str, Order => Str, OrganizationId => Str, Query => Str, Sort => Str, UserIds => Str])
 
 Each argument is described in detail in: L<Paws::WorkDocs::DescribeUsers>
@@ -583,6 +619,17 @@ results (for example, by status or organization).
 By default, Amazon WorkDocs returns the first 24 active or pending
 users. If there are more results, the response includes a marker that
 you can use to request the next set of results.
+
+
+=head2 GetCurrentUser(AuthenticationToken => Str)
+
+Each argument is described in detail in: L<Paws::WorkDocs::GetCurrentUser>
+
+Returns: a L<Paws::WorkDocs::GetCurrentUserResponse> instance
+
+  Retrieves details of the current user for whom the authentication token
+was generated. This is not a valid action for SigV4 (administrative
+API) clients.
 
 
 =head2 GetDocument(DocumentId => Str, [AuthenticationToken => Str, IncludeCustomMetadata => Bool])

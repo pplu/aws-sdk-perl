@@ -68,7 +68,7 @@ Describes a folder.
 
 =head2 LatestVersionSize => Int
 
-  
+  The size of the latest version of the folder metadata.
 
 
 =head2 ModifiedTimestamp => Str
@@ -99,7 +99,7 @@ folder.
 
 =head2 Size => Int
 
-  
+  The size of the folder metadata.
 
 
 
