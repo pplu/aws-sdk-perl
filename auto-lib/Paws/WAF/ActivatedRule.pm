@@ -3,6 +3,7 @@ package Paws::WAF::ActivatedRule;
   has Action => (is => 'ro', isa => 'Paws::WAF::WafAction', required => 1);
   has Priority => (is => 'ro', isa => 'Int', required => 1);
   has RuleId => (is => 'ro', isa => 'Str', required => 1);
+  has Type => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -22,7 +23,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::WAF::ActivatedRule object:
 
-  $service_obj->Method(Att1 => { Action => $value, ..., RuleId => $value  });
+  $service_obj->Method(Att1 => { Action => $value, ..., Type => $value  });
 
 =head3 Results returned from an API call
 
@@ -87,6 +88,16 @@ insert a C<Rule> into a C<WebACL> or delete a one from a C<WebACL> (see
 UpdateWebACL), or delete a C<Rule> from AWS WAF (see DeleteRule).
 
 C<RuleId> is returned by CreateRule and by ListRules.
+
+
+=head2 Type => Str
+
+  The rule type, either C<REGULAR>, as defined by Rule, or C<RATE_BASED>,
+as defined by RateBasedRule. The default is REGULAR. Although this
+field is optional, be aware that if you try to add a RATE_BASED rule to
+a web ACL without setting the type, the UpdateWebACL request will fail
+because the request tries to add a REGULAR rule with the specified ID,
+which does not exist.
 
 
 

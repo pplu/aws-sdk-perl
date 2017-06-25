@@ -52,23 +52,9 @@ Routing.
 
   The IP address type (C<IPV4> or C<IPV6>) and the IP address range (in
 CIDR notation) that web requests originate from. If the C<WebACL> is
-associated with a CloudFront distribution, this is the value of one of
-the following fields in CloudFront access logs:
-
-=over
-
-=item *
-
-C<c-ip>, if the viewer did not use an HTTP proxy or a load balancer to
-send the request
-
-=item *
-
-C<x-forwarded-for>, if the viewer did use an HTTP proxy or a load
-balancer to send the request
-
-=back
-
+associated with a CloudFront distribution and the viewer did not use an
+HTTP proxy or a load balancer to send the request, this is the value of
+the c-ip field in the CloudFront access logs.
 
 
 =head2 B<REQUIRED> IPSetId => Str

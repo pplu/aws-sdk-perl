@@ -47,6 +47,11 @@ package Paws::WAF;
     my $call_object = $self->new_with_coercions('Paws::WAF::CreateIPSet', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateRateBasedRule {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WAF::CreateRateBasedRule', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateRule {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::WAF::CreateRule', @_);
@@ -80,6 +85,11 @@ package Paws::WAF;
   sub DeleteIPSet {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::WAF::DeleteIPSet', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteRateBasedRule {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WAF::DeleteRateBasedRule', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteRule {
@@ -127,6 +137,16 @@ package Paws::WAF;
     my $call_object = $self->new_with_coercions('Paws::WAF::GetIPSet', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetRateBasedRule {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WAF::GetRateBasedRule', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetRateBasedRuleManagedKeys {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WAF::GetRateBasedRuleManagedKeys', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetRule {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::WAF::GetRule', @_);
@@ -167,6 +187,11 @@ package Paws::WAF;
     my $call_object = $self->new_with_coercions('Paws::WAF::ListIPSets', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListRateBasedRules {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WAF::ListRateBasedRules', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListRules {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::WAF::ListRules', @_);
@@ -200,6 +225,11 @@ package Paws::WAF;
   sub UpdateIPSet {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::WAF::UpdateIPSet', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateRateBasedRule {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WAF::UpdateRateBasedRule', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateRule {
@@ -391,7 +421,7 @@ package Paws::WAF;
   }
 
 
-  sub operations { qw/CreateByteMatchSet CreateIPSet CreateRule CreateSizeConstraintSet CreateSqlInjectionMatchSet CreateWebACL CreateXssMatchSet DeleteByteMatchSet DeleteIPSet DeleteRule DeleteSizeConstraintSet DeleteSqlInjectionMatchSet DeleteWebACL DeleteXssMatchSet GetByteMatchSet GetChangeToken GetChangeTokenStatus GetIPSet GetRule GetSampledRequests GetSizeConstraintSet GetSqlInjectionMatchSet GetWebACL GetXssMatchSet ListByteMatchSets ListIPSets ListRules ListSizeConstraintSets ListSqlInjectionMatchSets ListWebACLs ListXssMatchSets UpdateByteMatchSet UpdateIPSet UpdateRule UpdateSizeConstraintSet UpdateSqlInjectionMatchSet UpdateWebACL UpdateXssMatchSet / }
+  sub operations { qw/CreateByteMatchSet CreateIPSet CreateRateBasedRule CreateRule CreateSizeConstraintSet CreateSqlInjectionMatchSet CreateWebACL CreateXssMatchSet DeleteByteMatchSet DeleteIPSet DeleteRateBasedRule DeleteRule DeleteSizeConstraintSet DeleteSqlInjectionMatchSet DeleteWebACL DeleteXssMatchSet GetByteMatchSet GetChangeToken GetChangeTokenStatus GetIPSet GetRateBasedRule GetRateBasedRuleManagedKeys GetRule GetSampledRequests GetSizeConstraintSet GetSqlInjectionMatchSet GetWebACL GetXssMatchSet ListByteMatchSets ListIPSets ListRateBasedRules ListRules ListSizeConstraintSets ListSqlInjectionMatchSets ListWebACLs ListXssMatchSets UpdateByteMatchSet UpdateIPSet UpdateRateBasedRule UpdateRule UpdateSizeConstraintSet UpdateSqlInjectionMatchSet UpdateWebACL UpdateXssMatchSet / }
 
 1;
 
@@ -509,6 +539,114 @@ C<ChangeToken> parameter of an UpdateIPSet request.
 
 Submit an C<UpdateIPSet> request to specify the IP addresses that you
 want AWS WAF to watch for.
+
+=back
+
+For more information about how to use the AWS WAF API to allow or block
+HTTP requests, see the AWS WAF Developer Guide.
+
+
+=head2 CreateRateBasedRule(ChangeToken => Str, MetricName => Str, Name => Str, RateKey => Str, RateLimit => Int)
+
+Each argument is described in detail in: L<Paws::WAF::CreateRateBasedRule>
+
+Returns: a L<Paws::WAF::CreateRateBasedRuleResponse> instance
+
+  Creates a RateBasedRule. The C<RateBasedRule> contains a C<RateLimit>,
+which specifies the maximum number of requests that AWS WAF allows from
+a specified IP address in a five-minute period. The C<RateBasedRule>
+also contains the C<IPSet> objects, C<ByteMatchSet> objects, and other
+predicates that identify the requests that you want to count or block
+if these requests exceed the C<RateLimit>.
+
+If you add more than one predicate to a C<RateBasedRule>, a request not
+only must exceed the C<RateLimit>, but it also must match all the
+specifications to be counted or blocked. For example, suppose you add
+the following to a C<RateBasedRule>:
+
+=over
+
+=item *
+
+An C<IPSet> that matches the IP address C<192.0.2.44/32>
+
+=item *
+
+A C<ByteMatchSet> that matches C<BadBot> in the C<User-Agent> header
+
+=back
+
+Further, you specify a C<RateLimit> of 15,000.
+
+You then add the C<RateBasedRule> to a C<WebACL> and specify that you
+want to block requests that meet the conditions in the rule. For a
+request to be blocked, it must come from the IP address 192.0.2.44
+I<and> the C<User-Agent> header in the request must contain the value
+C<BadBot>. Further, requests that match these two conditions must be
+received at a rate of more than 15,000 requests every five minutes. If
+both conditions are met and the rate is exceeded, AWS WAF blocks the
+requests. If the rate drops below 15,000 for a five-minute period, AWS
+WAF no longer blocks the requests.
+
+As a second example, suppose you want to limit requests to a particular
+page on your site. To do this, you could add the following to a
+C<RateBasedRule>:
+
+=over
+
+=item *
+
+A C<ByteMatchSet> with C<FieldToMatch> of C<URI>
+
+=item *
+
+A C<PositionalConstraint> of C<STARTS_WITH>
+
+=item *
+
+A C<TargetString> of C<login>
+
+=back
+
+Further, you specify a C<RateLimit> of 15,000.
+
+By adding this C<RateBasedRule> to a C<WebACL>, you could limit
+requests to your login page without affecting the rest of your site.
+
+To create and configure a C<RateBasedRule>, perform the following
+steps:
+
+=over
+
+=item 1.
+
+Create and update the predicates that you want to include in the rule.
+For more information, see CreateByteMatchSet, CreateIPSet, and
+CreateSqlInjectionMatchSet.
+
+=item 2.
+
+Use GetChangeToken to get the change token that you provide in the
+C<ChangeToken> parameter of a C<CreateRule> request.
+
+=item 3.
+
+Submit a C<CreateRateBasedRule> request.
+
+=item 4.
+
+Use C<GetChangeToken> to get the change token that you provide in the
+C<ChangeToken> parameter of an UpdateRule request.
+
+=item 5.
+
+Submit an C<UpdateRateBasedRule> request to specify the predicates that
+you want to include in the rule.
+
+=item 6.
+
+Create and update a C<WebACL> that contains the C<RateBasedRule>. For
+more information, see CreateWebACL.
 
 =back
 
@@ -838,6 +976,41 @@ Submit a C<DeleteIPSet> request.
 
 
 
+=head2 DeleteRateBasedRule(ChangeToken => Str, RuleId => Str)
+
+Each argument is described in detail in: L<Paws::WAF::DeleteRateBasedRule>
+
+Returns: a L<Paws::WAF::DeleteRateBasedRuleResponse> instance
+
+  Permanently deletes a RateBasedRule. You can't delete a rule if it's
+still used in any C<WebACL> objects or if it still includes any
+predicates, such as C<ByteMatchSet> objects.
+
+If you just want to remove a rule from a C<WebACL>, use UpdateWebACL.
+
+To permanently delete a C<RateBasedRule> from AWS WAF, perform the
+following steps:
+
+=over
+
+=item 1.
+
+Update the C<RateBasedRule> to remove predicates, if any. For more
+information, see UpdateRateBasedRule.
+
+=item 2.
+
+Use GetChangeToken to get the change token that you provide in the
+C<ChangeToken> parameter of a C<DeleteRateBasedRule> request.
+
+=item 3.
+
+Submit a C<DeleteRateBasedRule> request.
+
+=back
+
+
+
 =head2 DeleteRule(ChangeToken => Str, RuleId => Str)
 
 Each argument is described in detail in: L<Paws::WAF::DeleteRule>
@@ -1084,6 +1257,29 @@ Returns: a L<Paws::WAF::GetIPSetResponse> instance
   Returns the IPSet that is specified by C<IPSetId>.
 
 
+=head2 GetRateBasedRule(RuleId => Str)
+
+Each argument is described in detail in: L<Paws::WAF::GetRateBasedRule>
+
+Returns: a L<Paws::WAF::GetRateBasedRuleResponse> instance
+
+  Returns the RateBasedRule that is specified by the C<RuleId> that you
+included in the C<GetRateBasedRule> request.
+
+
+=head2 GetRateBasedRuleManagedKeys(RuleId => Str, [NextMarker => Str])
+
+Each argument is described in detail in: L<Paws::WAF::GetRateBasedRuleManagedKeys>
+
+Returns: a L<Paws::WAF::GetRateBasedRuleManagedKeysResponse> instance
+
+  Returns an array of IP addresses currently being blocked by the
+RateBasedRule that is specified by the C<RuleId>. The maximum number of
+managed keys that will be blocked is 10,000. If more than 10,000
+addresses exceed the rate limit, the 10,000 addresses with the highest
+rates will be blocked.
+
+
 =head2 GetRule(RuleId => Str)
 
 Each argument is described in detail in: L<Paws::WAF::GetRule>
@@ -1167,6 +1363,15 @@ Each argument is described in detail in: L<Paws::WAF::ListIPSets>
 Returns: a L<Paws::WAF::ListIPSetsResponse> instance
 
   Returns an array of IPSetSummary objects in the response.
+
+
+=head2 ListRateBasedRules([Limit => Int, NextMarker => Str])
+
+Each argument is described in detail in: L<Paws::WAF::ListRateBasedRules>
+
+Returns: a L<Paws::WAF::ListRateBasedRulesResponse> instance
+
+  Returns an array of RuleSummary objects.
 
 
 =head2 ListRules([Limit => Int, NextMarker => Str])
@@ -1372,6 +1577,73 @@ new one.
 
 For more information about how to use the AWS WAF API to allow or block
 HTTP requests, see the AWS WAF Developer Guide.
+
+
+=head2 UpdateRateBasedRule(ChangeToken => Str, RateLimit => Int, RuleId => Str, Updates => ArrayRef[L<Paws::WAF::RuleUpdate>])
+
+Each argument is described in detail in: L<Paws::WAF::UpdateRateBasedRule>
+
+Returns: a L<Paws::WAF::UpdateRateBasedRuleResponse> instance
+
+  Inserts or deletes Predicate objects in a rule and updates the
+C<RateLimit> in the rule.
+
+Each C<Predicate> object identifies a predicate, such as a ByteMatchSet
+or an IPSet, that specifies the web requests that you want to block or
+count. The C<RateLimit> specifies the number of requests every five
+minutes that triggers the rule.
+
+If you add more than one predicate to a C<RateBasedRule>, a request
+must match all the predicates and exceed the C<RateLimit> to be counted
+or blocked. For example, suppose you add the following to a
+C<RateBasedRule>:
+
+=over
+
+=item *
+
+An C<IPSet> that matches the IP address C<192.0.2.44/32>
+
+=item *
+
+A C<ByteMatchSet> that matches C<BadBot> in the C<User-Agent> header
+
+=back
+
+Further, you specify a C<RateLimit> of 15,000.
+
+You then add the C<RateBasedRule> to a C<WebACL> and specify that you
+want to block requests that satisfy the rule. For a request to be
+blocked, it must come from the IP address 192.0.2.44 I<and> the
+C<User-Agent> header in the request must contain the value C<BadBot>.
+Further, requests that match these two conditions much be received at a
+rate of more than 15,000 every five minutes. If the rate drops below
+this limit, AWS WAF no longer blocks the requests.
+
+As a second example, suppose you want to limit requests to a particular
+page on your site. To do this, you could add the following to a
+C<RateBasedRule>:
+
+=over
+
+=item *
+
+A C<ByteMatchSet> with C<FieldToMatch> of C<URI>
+
+=item *
+
+A C<PositionalConstraint> of C<STARTS_WITH>
+
+=item *
+
+A C<TargetString> of C<login>
+
+=back
+
+Further, you specify a C<RateLimit> of 15,000.
+
+By adding this C<RateBasedRule> to a C<WebACL>, you could limit
+requests to your login page without affecting the rest of your site.
 
 
 =head2 UpdateRule(ChangeToken => Str, RuleId => Str, Updates => ArrayRef[L<Paws::WAF::RuleUpdate>])
@@ -1658,6 +1930,11 @@ to include in the C<WebACL>, to specify the default action, and to
 associate the C<WebACL> with a CloudFront distribution.
 
 =back
+
+Be aware that if you try to add a RATE_BASED rule to a web ACL without
+setting the rule type when first creating the rule, the UpdateWebACL
+request will fail because the request tries to add a REGULAR rule (the
+default rule type) with the specified ID, which does not exist.
 
 For more information about how to use the AWS WAF API to allow or block
 HTTP requests, see the AWS WAF Developer Guide.
