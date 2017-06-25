@@ -294,6 +294,8 @@ L<Paws::CUR>
 
 L<Paws::DataPipeline>
 
+L<Paws::DAX>
+
 L<Paws::DeviceFarm>
 
 L<Paws::DirectConnect>
