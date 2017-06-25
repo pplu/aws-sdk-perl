@@ -1,5 +1,6 @@
 package Paws::SSM::ParameterHistory;
   use Moose;
+  has AllowedPattern => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has KeyId => (is => 'ro', isa => 'Str');
   has LastModifiedDate => (is => 'ro', isa => 'Str');
@@ -26,20 +27,27 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SSM::ParameterHistory object:
 
-  $service_obj->Method(Att1 => { Description => $value, ..., Value => $value  });
+  $service_obj->Method(Att1 => { AllowedPattern => $value, ..., Value => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::SSM::ParameterHistory object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Description
+  $result->Att1->AllowedPattern
 
 =head1 DESCRIPTION
 
 Information about parameter usage.
 
 =head1 ATTRIBUTES
+
+
+=head2 AllowedPattern => Str
+
+  Parameter names can include the following letters and symbols.
+
+a-zA-Z0-9_.-
 
 
 =head2 Description => Str

@@ -52,17 +52,27 @@ Duration since ExecutionStartDateTime.
 =head2 ExecutionEndDateTime => Str
 
 The date and time the plugin was finished executing. Date and time are
-written in ISO 8601 format. For example, August 28, 2016 is represented
-as 2016-08-28. If the plugin has not started to execute, the string is
-empty.
+written in ISO 8601 format. For example, June 7, 2017 is represented as
+2017-06-7. The following sample AWS CLI command uses the
+C<InvokedAfter> filter.
+
+C<aws ssm list-commands --filters
+key=InvokedAfter,value=2017-06-07T00:00:00Z>
+
+If the plugin has not started to execute, the string is empty.
 
 
 =head2 ExecutionStartDateTime => Str
 
 The date and time the plugin started executing. Date and time are
-written in ISO 8601 format. For example, August 28, 2016 is represented
-as 2016-08-28. If the plugin has not started to execute, the string is
-empty.
+written in ISO 8601 format. For example, June 7, 2017 is represented as
+2017-06-7. The following sample AWS CLI command uses the
+C<InvokedBefore> filter.
+
+C<aws ssm list-commands --filters
+key=InvokedBefore,value=2017-06-07T00:00:00Z>
+
+If the plugin has not started to execute, the string is empty.
 
 
 =head2 InstanceId => Str

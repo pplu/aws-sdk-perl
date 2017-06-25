@@ -79,6 +79,11 @@ package Paws::SSM;
     my $call_object = $self->new_with_coercions('Paws::SSM::DeleteParameter', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteParameters {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SSM::DeleteParameters', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeletePatchBaseline {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SSM::DeletePatchBaseline', @_);
@@ -269,6 +274,11 @@ package Paws::SSM;
     my $call_object = $self->new_with_coercions('Paws::SSM::GetMaintenanceWindowExecutionTask', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetParameter {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SSM::GetParameter', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetParameterHistory {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SSM::GetParameterHistory', @_);
@@ -277,6 +287,11 @@ package Paws::SSM;
   sub GetParameters {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SSM::GetParameters', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetParametersByPath {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SSM::GetParametersByPath', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetPatchBaseline {
@@ -555,7 +570,7 @@ package Paws::SSM;
   }
 
 
-  sub operations { qw/AddTagsToResource CancelCommand CreateActivation CreateAssociation CreateAssociationBatch CreateDocument CreateMaintenanceWindow CreatePatchBaseline DeleteActivation DeleteAssociation DeleteDocument DeleteMaintenanceWindow DeleteParameter DeletePatchBaseline DeregisterManagedInstance DeregisterPatchBaselineForPatchGroup DeregisterTargetFromMaintenanceWindow DeregisterTaskFromMaintenanceWindow DescribeActivations DescribeAssociation DescribeAutomationExecutions DescribeAvailablePatches DescribeDocument DescribeDocumentPermission DescribeEffectiveInstanceAssociations DescribeEffectivePatchesForPatchBaseline DescribeInstanceAssociationsStatus DescribeInstanceInformation DescribeInstancePatches DescribeInstancePatchStates DescribeInstancePatchStatesForPatchGroup DescribeMaintenanceWindowExecutions DescribeMaintenanceWindowExecutionTaskInvocations DescribeMaintenanceWindowExecutionTasks DescribeMaintenanceWindows DescribeMaintenanceWindowTargets DescribeMaintenanceWindowTasks DescribeParameters DescribePatchBaselines DescribePatchGroups DescribePatchGroupState GetAutomationExecution GetCommandInvocation GetDefaultPatchBaseline GetDeployablePatchSnapshotForInstance GetDocument GetInventory GetInventorySchema GetMaintenanceWindow GetMaintenanceWindowExecution GetMaintenanceWindowExecutionTask GetParameterHistory GetParameters GetPatchBaseline GetPatchBaselineForPatchGroup ListAssociations ListCommandInvocations ListCommands ListDocuments ListDocumentVersions ListInventoryEntries ListTagsForResource ModifyDocumentPermission PutInventory PutParameter RegisterDefaultPatchBaseline RegisterPatchBaselineForPatchGroup RegisterTargetWithMaintenanceWindow RegisterTaskWithMaintenanceWindow RemoveTagsFromResource SendCommand StartAutomationExecution StopAutomationExecution UpdateAssociation UpdateAssociationStatus UpdateDocument UpdateDocumentDefaultVersion UpdateMaintenanceWindow UpdateManagedInstanceRole UpdatePatchBaseline / }
+  sub operations { qw/AddTagsToResource CancelCommand CreateActivation CreateAssociation CreateAssociationBatch CreateDocument CreateMaintenanceWindow CreatePatchBaseline DeleteActivation DeleteAssociation DeleteDocument DeleteMaintenanceWindow DeleteParameter DeleteParameters DeletePatchBaseline DeregisterManagedInstance DeregisterPatchBaselineForPatchGroup DeregisterTargetFromMaintenanceWindow DeregisterTaskFromMaintenanceWindow DescribeActivations DescribeAssociation DescribeAutomationExecutions DescribeAvailablePatches DescribeDocument DescribeDocumentPermission DescribeEffectiveInstanceAssociations DescribeEffectivePatchesForPatchBaseline DescribeInstanceAssociationsStatus DescribeInstanceInformation DescribeInstancePatches DescribeInstancePatchStates DescribeInstancePatchStatesForPatchGroup DescribeMaintenanceWindowExecutions DescribeMaintenanceWindowExecutionTaskInvocations DescribeMaintenanceWindowExecutionTasks DescribeMaintenanceWindows DescribeMaintenanceWindowTargets DescribeMaintenanceWindowTasks DescribeParameters DescribePatchBaselines DescribePatchGroups DescribePatchGroupState GetAutomationExecution GetCommandInvocation GetDefaultPatchBaseline GetDeployablePatchSnapshotForInstance GetDocument GetInventory GetInventorySchema GetMaintenanceWindow GetMaintenanceWindowExecution GetMaintenanceWindowExecutionTask GetParameter GetParameterHistory GetParameters GetParametersByPath GetPatchBaseline GetPatchBaselineForPatchGroup ListAssociations ListCommandInvocations ListCommands ListDocuments ListDocumentVersions ListInventoryEntries ListTagsForResource ModifyDocumentPermission PutInventory PutParameter RegisterDefaultPatchBaseline RegisterPatchBaselineForPatchGroup RegisterTargetWithMaintenanceWindow RegisterTaskWithMaintenanceWindow RemoveTagsFromResource SendCommand StartAutomationExecution StopAutomationExecution UpdateAssociation UpdateAssociationStatus UpdateDocument UpdateDocumentDefaultVersion UpdateMaintenanceWindow UpdateManagedInstanceRole UpdatePatchBaseline / }
 
 1;
 
@@ -781,6 +796,15 @@ Each argument is described in detail in: L<Paws::SSM::DeleteParameter>
 Returns: a L<Paws::SSM::DeleteParameterResult> instance
 
   Delete a parameter from the system.
+
+
+=head2 DeleteParameters(Names => ArrayRef[Str|Undef])
+
+Each argument is described in detail in: L<Paws::SSM::DeleteParameters>
+
+Returns: a L<Paws::SSM::DeleteParametersResult> instance
+
+  Delete a list of parameters.
 
 
 =head2 DeletePatchBaseline(BaselineId => Str)
@@ -1023,7 +1047,7 @@ Returns: a L<Paws::SSM::DescribeMaintenanceWindowTasksResult> instance
   Lists the tasks in a Maintenance Window.
 
 
-=head2 DescribeParameters([Filters => ArrayRef[L<Paws::SSM::ParametersFilter>], MaxResults => Int, NextToken => Str])
+=head2 DescribeParameters([Filters => ArrayRef[L<Paws::SSM::ParametersFilter>], MaxResults => Int, NextToken => Str, ParameterFilters => ArrayRef[L<Paws::SSM::ParameterStringFilter>]])
 
 Each argument is described in detail in: L<Paws::SSM::DescribeParameters>
 
@@ -1155,6 +1179,15 @@ Returns: a L<Paws::SSM::GetMaintenanceWindowExecutionTaskResult> instance
 Maintenance Window execution.
 
 
+=head2 GetParameter(Name => Str, [WithDecryption => Bool])
+
+Each argument is described in detail in: L<Paws::SSM::GetParameter>
+
+Returns: a L<Paws::SSM::GetParameterResult> instance
+
+  Get information about a parameter by using the parameter name.
+
+
 =head2 GetParameterHistory(Name => Str, [MaxResults => Int, NextToken => Str, WithDecryption => Bool])
 
 Each argument is described in detail in: L<Paws::SSM::GetParameterHistory>
@@ -1171,6 +1204,16 @@ Each argument is described in detail in: L<Paws::SSM::GetParameters>
 Returns: a L<Paws::SSM::GetParametersResult> instance
 
   Get details of a parameter.
+
+
+=head2 GetParametersByPath(Path => Str, [MaxResults => Int, NextToken => Str, ParameterFilters => ArrayRef[L<Paws::SSM::ParameterStringFilter>], Recursive => Bool, WithDecryption => Bool])
+
+Each argument is described in detail in: L<Paws::SSM::GetParametersByPath>
+
+Returns: a L<Paws::SSM::GetParametersByPathResult> instance
+
+  Retrieve parameters in a specific hierarchy. For more information, see
+Using Parameter Hierarchies.
 
 
 =head2 GetPatchBaseline(BaselineId => Str)
@@ -1284,13 +1327,13 @@ adds an inventory item, if it doesn't already exist, or updates an
 inventory item, if it does exist.
 
 
-=head2 PutParameter(Name => Str, Type => Str, Value => Str, [Description => Str, KeyId => Str, Overwrite => Bool])
+=head2 PutParameter(Name => Str, Type => Str, Value => Str, [AllowedPattern => Str, Description => Str, KeyId => Str, Overwrite => Bool])
 
 Each argument is described in detail in: L<Paws::SSM::PutParameter>
 
 Returns: a L<Paws::SSM::PutParameterResult> instance
 
-  Add one or more paramaters to the system.
+  Add one or more parameters to the system.
 
 
 =head2 RegisterDefaultPatchBaseline(BaselineId => Str)
@@ -1344,7 +1387,7 @@ Each argument is described in detail in: L<Paws::SSM::SendCommand>
 
 Returns: a L<Paws::SSM::SendCommandResult> instance
 
-  Executes commands on one or more remote instances.
+  Executes commands on one or more managed instances.
 
 
 =head2 StartAutomationExecution(DocumentName => Str, [DocumentVersion => Str, Parameters => L<Paws::SSM::AutomationParameterMap>])

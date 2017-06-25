@@ -1,6 +1,6 @@
 package Paws::SSM::ParametersFilter;
   use Moose;
-  has Key => (is => 'ro', isa => 'Str');
+  has Key => (is => 'ro', isa => 'Str', required => 1);
   has Values => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
 1;
 
@@ -38,7 +38,7 @@ results.
 =head1 ATTRIBUTES
 
 
-=head2 Key => Str
+=head2 B<REQUIRED> Key => Str
 
   The name of the filter.
 

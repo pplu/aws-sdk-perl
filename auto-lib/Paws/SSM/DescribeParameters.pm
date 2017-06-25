@@ -4,6 +4,7 @@ package Paws::SSM::DescribeParameters;
   has Filters => (is => 'ro', isa => 'ArrayRef[Paws::SSM::ParametersFilter]');
   has MaxResults => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
+  has ParameterFilters => (is => 'ro', isa => 'ArrayRef[Paws::SSM::ParameterStringFilter]');
 
   use MooseX::ClassAttribute;
 
@@ -54,6 +55,12 @@ next set of results.
 
 The token for the next set of items to return. (You received this token
 from a previous call.)
+
+
+
+=head2 ParameterFilters => ArrayRef[L<Paws::SSM::ParameterStringFilter>]
+
+Filters to limit the request results.
 
 
 

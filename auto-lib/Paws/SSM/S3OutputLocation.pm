@@ -51,7 +51,9 @@ request.
 
 =head2 OutputS3Region => Str
 
-  The Amazon S3 region where the association information is stored.
+  (Deprecated) You can no longer specify this parameter. The system
+ignores it. Instead, Systems Manager automatically determines the
+Amazon S3 bucket region.
 
 
 

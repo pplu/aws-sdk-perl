@@ -1,5 +1,6 @@
 package Paws::SSM::ParameterMetadata;
   use Moose;
+  has AllowedPattern => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has KeyId => (is => 'ro', isa => 'Str');
   has LastModifiedDate => (is => 'ro', isa => 'Str');
@@ -25,14 +26,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SSM::ParameterMetadata object:
 
-  $service_obj->Method(Att1 => { Description => $value, ..., Type => $value  });
+  $service_obj->Method(Att1 => { AllowedPattern => $value, ..., Type => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::SSM::ParameterMetadata object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Description
+  $result->Att1->AllowedPattern
 
 =head1 DESCRIPTION
 
@@ -40,6 +41,13 @@ Metada includes information like the ARN of the last user and the
 date/time the parameter was last used.
 
 =head1 ATTRIBUTES
+
+
+=head2 AllowedPattern => Str
+
+  A parameter name can include only the following letters and symbols.
+
+a-zA-Z0-9_.-
 
 
 =head2 Description => Str

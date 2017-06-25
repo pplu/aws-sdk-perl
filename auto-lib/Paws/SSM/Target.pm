@@ -33,8 +33,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SSM::Target
 =head1 DESCRIPTION
 
 An array of search criteria that targets instances using a Key,Value
-combination that you specify. Targets is required if you don't provide
-one or more instance IDs in the call.
+combination that you specify. C<Targets> is required if you don't
+provide one or more instance IDs in the call.
 
 =head1 ATTRIBUTES
 

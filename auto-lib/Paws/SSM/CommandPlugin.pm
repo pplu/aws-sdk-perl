@@ -96,7 +96,9 @@ awsrunShellScript is the name of the plugin.
 
 =head2 OutputS3Region => Str
 
-  The name of the region where the output is stored in Amazon S3.
+  (Deprecated) You can no longer specify this parameter. The system
+ignores it. Instead, Systems Manager automatically determines the
+Amazon S3 bucket region.
 
 
 =head2 ResponseCode => Int
