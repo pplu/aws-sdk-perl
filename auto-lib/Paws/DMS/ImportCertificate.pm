@@ -4,6 +4,7 @@ package Paws::DMS::ImportCertificate;
   has CertificateIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has CertificatePem => (is => 'ro', isa => 'Str');
   has CertificateWallet => (is => 'ro', isa => 'Str');
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::DMS::Tag]');
 
   use MooseX::ClassAttribute;
 
@@ -52,6 +53,12 @@ The contents of the .pem X.509 certificate file for the certificate.
 
 The location of the imported Oracle Wallet certificate for use with
 SSL.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::DMS::Tag>]
+
+The tags associated with the certificate.
 
 
 

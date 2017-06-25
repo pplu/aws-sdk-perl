@@ -553,7 +553,7 @@ Returns: a L<Paws::DMS::DescribeTableStatisticsResponse> instance
 table name, rows inserted, rows updated, and rows deleted.
 
 
-=head2 ImportCertificate(CertificateIdentifier => Str, [CertificatePem => Str, CertificateWallet => Str])
+=head2 ImportCertificate(CertificateIdentifier => Str, [CertificatePem => Str, CertificateWallet => Str, Tags => ArrayRef[L<Paws::DMS::Tag>]])
 
 Each argument is described in detail in: L<Paws::DMS::ImportCertificate>
 

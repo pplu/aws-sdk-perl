@@ -2,6 +2,8 @@ package Paws::DMS::TableStatistics;
   use Moose;
   has Ddls => (is => 'ro', isa => 'Int');
   has Deletes => (is => 'ro', isa => 'Int');
+  has FullLoadCondtnlChkFailedRows => (is => 'ro', isa => 'Int');
+  has FullLoadErrorRows => (is => 'ro', isa => 'Int');
   has FullLoadRows => (is => 'ro', isa => 'Int');
   has Inserts => (is => 'ro', isa => 'Int');
   has LastUpdateTime => (is => 'ro', isa => 'Str');
@@ -53,6 +55,18 @@ structure of your tables.
 =head2 Deletes => Int
 
   The number of delete actions performed on a table.
+
+
+=head2 FullLoadCondtnlChkFailedRows => Int
+
+  The number of rows that failed conditional checks during the Full Load
+operation (valid only for DynamoDB as a target migrations).
+
+
+=head2 FullLoadErrorRows => Int
+
+  The number of rows that failed to load during the Full Load operation
+(valid only for DynamoDB as a target migrations).
 
 
 =head2 FullLoadRows => Int
