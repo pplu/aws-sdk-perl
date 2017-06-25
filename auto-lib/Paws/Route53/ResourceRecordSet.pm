@@ -4,6 +4,7 @@ package Paws::Route53::ResourceRecordSet;
   has Failover => (is => 'ro', isa => 'Str');
   has GeoLocation => (is => 'ro', isa => 'Paws::Route53::GeoLocation');
   has HealthCheckId => (is => 'ro', isa => 'Str');
+  has MultiValueAnswer => (is => 'ro', isa => 'Bool');
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has Region => (is => 'ro', isa => 'Str');
   has ResourceRecords => (is => 'ro', isa => 'ArrayRef[Paws::Route53::ResourceRecord]', request_name => 'ResourceRecord', traits => ['NameInRequest']);
@@ -298,6 +299,54 @@ Configuring Failover in a Private Hosted Zone
 
 
 
+=head2 MultiValueAnswer => Bool
+
+  I<Multivalue answer resource record sets only>: To route traffic
+approximately randomly to multiple resources, such as web servers,
+create one multivalue answer record for each resource and specify
+C<true> for C<MultiValueAnswer>. Note the following:
+
+=over
+
+=item *
+
+If you associate a health check with a multivalue answer resource
+record set, Amazon Route 53 responds to DNS queries with the
+corresponding IP address only when the health check is healthy.
+
+=item *
+
+If you don't associate a health check with a multivalue answer record,
+Amazon Route 53 always considers the record to be healthy.
+
+=item *
+
+Amazon Route 53 responds to DNS queries with up to eight healthy
+records; if you have eight or fewer healthy records, Amazon Route 53
+responds to all DNS queries with all the healthy records.
+
+=item *
+
+If you have more than eight healthy records, Amazon Route 53 responds
+to different DNS resolvers with different combinations of healthy
+records.
+
+=item *
+
+When all records are unhealthy, Amazon Route 53 responds to DNS queries
+with up to eight unhealthy records.
+
+=item *
+
+If a resource becomes unavailable after a resolver caches a response,
+client software typically tries another of the IP addresses in the
+response.
+
+=back
+
+You can't create multivalue answer alias records.
+
+
 =head2 B<REQUIRED> Name => Str
 
   The name of the domain you want to perform the action on.
@@ -438,8 +487,8 @@ following:
 
 =item *
 
-If you're creating an alias resource record set, omit C<TTL>. Amazon
-Route 53 uses the value of C<TTL> for the alias target.
+If you're creating or updating an alias resource record set, omit
+C<TTL>. Amazon Route 53 uses the value of C<TTL> for the alias target.
 
 =item *
 
@@ -482,6 +531,9 @@ C<SRV> | C<TXT>. When creating a group of weighted, latency,
 geolocation, or failover resource record sets, specify the same value
 for all of the resource record sets in the group.
 
+Valid values for multivalue answer resource record sets: C<A> | C<AAAA>
+| C<MX> | C<NAPTR> | C<PTR> | C<SPF> | C<SRV> | C<TXT>
+
 SPF records were formerly used to verify the identity of the sender of
 email messages. However, we no longer recommend that you create
 resource record sets for which the value of C<Type> is C<SPF>. RFC
@@ -520,8 +572,8 @@ B<Amazon S3 buckets:> C<A>
 =item *
 
 B<Another resource record set in this hosted zone:> Specify the type of
-the resource record set for which you're creating the alias. Specify
-any value except C<NS> or C<SOA>.
+the resource record set that you're creating the alias for. All values
+are supported except C<NS> and C<SOA>.
 
 =back
 

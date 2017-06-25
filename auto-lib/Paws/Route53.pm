@@ -514,9 +514,8 @@ propagates your changes to all of the Amazon Route 53 authoritative DNS
 servers. While your changes are propagating, C<GetChange> returns a
 status of C<PENDING>. When propagation is complete, C<GetChange>
 returns a status of C<INSYNC>. Changes generally propagate to all
-Amazon Route 53 name servers in a few minutes. In rare circumstances,
-propagation can take up to 30 minutes. For more information, see
-GetChange.
+Amazon Route 53 name servers within 60 seconds. For more information,
+see GetChange.
 
 B<Limits on ChangeResourceRecordSets Requests>
 
