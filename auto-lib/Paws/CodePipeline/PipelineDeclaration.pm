@@ -43,7 +43,8 @@ pipeline.
 
 =head2 B<REQUIRED> ArtifactStore => L<Paws::CodePipeline::ArtifactStore>
 
-  
+  Represents the context of an action within the stage of a pipeline to a
+job worker.
 
 
 =head2 B<REQUIRED> Name => Str

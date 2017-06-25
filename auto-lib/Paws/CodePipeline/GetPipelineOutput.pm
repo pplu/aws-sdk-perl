@@ -16,7 +16,8 @@ Paws::CodePipeline::GetPipelineOutput
 
 =head2 Pipeline => L<Paws::CodePipeline::PipelineDeclaration>
 
-
+Represents the structure of actions and stages to be performed in the
+pipeline.
 
 
 =head2 _request_id => Str

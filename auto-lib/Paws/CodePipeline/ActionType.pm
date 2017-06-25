@@ -47,7 +47,7 @@ Returns information about the details of an action type.
 
 =head2 B<REQUIRED> Id => L<Paws::CodePipeline::ActionTypeId>
 
-  
+  Represents information about an action type.
 
 
 =head2 B<REQUIRED> InputArtifactDetails => L<Paws::CodePipeline::ArtifactDetails>

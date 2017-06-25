@@ -63,13 +63,15 @@ Pipeline.
 
 =head2 B<REQUIRED> InputArtifactDetails => L<Paws::CodePipeline::ArtifactDetails>
 
-
+The details of the input artifact for the action, such as its commit
+ID.
 
 
 
 =head2 B<REQUIRED> OutputArtifactDetails => L<Paws::CodePipeline::ArtifactDetails>
 
-
+The details of the output artifact of the action, such as its commit
+ID.
 
 
 
@@ -82,7 +84,7 @@ CodeDeploy.
 
 =head2 Settings => L<Paws::CodePipeline::ActionTypeSettings>
 
-
+Returns information about the settings for an action type.
 
 
 

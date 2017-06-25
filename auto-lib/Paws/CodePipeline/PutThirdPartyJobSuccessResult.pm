@@ -58,13 +58,14 @@ is complete, no continuation token should be supplied.
 
 =head2 CurrentRevision => L<Paws::CodePipeline::CurrentRevision>
 
-
+Represents information about a current revision.
 
 
 
 =head2 ExecutionDetails => L<Paws::CodePipeline::ExecutionDetails>
 
-
+The details of the actions taken and results produced on an artifact as
+it passes through stages in the pipeline.
 
 
 

@@ -44,7 +44,7 @@ The name of the action that will process the revision.
 
 =head2 B<REQUIRED> ActionRevision => L<Paws::CodePipeline::ActionRevision>
 
-
+Represents information about the version (or revision) of an action.
 
 
 

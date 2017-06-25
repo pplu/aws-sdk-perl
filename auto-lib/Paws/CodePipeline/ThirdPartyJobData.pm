@@ -45,17 +45,21 @@ Represents information about the job data for a partner action.
 
 =head2 ActionConfiguration => L<Paws::CodePipeline::ActionConfiguration>
 
-  
+  Represents information about an action configuration.
 
 
 =head2 ActionTypeId => L<Paws::CodePipeline::ActionTypeId>
 
-  
+  Represents information about an action type.
 
 
 =head2 ArtifactCredentials => L<Paws::CodePipeline::AWSSessionCredentials>
 
-  
+  Represents an AWS session credentials object. These credentials are
+temporary credentials that are issued by AWS Secure Token Service
+(STS). They can be used to access input and output artifacts in the
+Amazon S3 bucket used to store artifact for the pipeline in AWS
+CodePipeline.
 
 
 =head2 ContinuationToken => Str
@@ -89,7 +93,7 @@ defined by the user when the action is created.
 
 =head2 PipelineContext => L<Paws::CodePipeline::PipelineContext>
 
-  
+  Represents information about a pipeline to a job worker.
 
 
 

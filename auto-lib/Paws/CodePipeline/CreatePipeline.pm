@@ -35,7 +35,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Pipeline => L<Paws::CodePipeline::PipelineDeclaration>
 
-
+Represents the structure of actions and stages to be performed in the
+pipeline.
 
 
 

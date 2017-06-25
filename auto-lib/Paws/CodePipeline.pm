@@ -84,6 +84,11 @@ package Paws::CodePipeline;
     my $call_object = $self->new_with_coercions('Paws::CodePipeline::ListActionTypes', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListPipelineExecutions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodePipeline::ListPipelineExecutions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListPipelines {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CodePipeline::ListPipelines', @_);
@@ -147,7 +152,7 @@ package Paws::CodePipeline;
   
 
 
-  sub operations { qw/AcknowledgeJob AcknowledgeThirdPartyJob CreateCustomActionType CreatePipeline DeleteCustomActionType DeletePipeline DisableStageTransition EnableStageTransition GetJobDetails GetPipeline GetPipelineExecution GetPipelineState GetThirdPartyJobDetails ListActionTypes ListPipelines PollForJobs PollForThirdPartyJobs PutActionRevision PutApprovalResult PutJobFailureResult PutJobSuccessResult PutThirdPartyJobFailureResult PutThirdPartyJobSuccessResult RetryStageExecution StartPipelineExecution UpdatePipeline / }
+  sub operations { qw/AcknowledgeJob AcknowledgeThirdPartyJob CreateCustomActionType CreatePipeline DeleteCustomActionType DeletePipeline DisableStageTransition EnableStageTransition GetJobDetails GetPipeline GetPipelineExecution GetPipelineState GetThirdPartyJobDetails ListActionTypes ListPipelineExecutions ListPipelines PollForJobs PollForThirdPartyJobs PutActionRevision PutApprovalResult PutJobFailureResult PutJobSuccessResult PutThirdPartyJobFailureResult PutThirdPartyJobSuccessResult RetryStageExecution StartPipelineExecution UpdatePipeline / }
 
 1;
 
@@ -501,6 +506,15 @@ Returns: a L<Paws::CodePipeline::ListActionTypesOutput> instance
 
   Gets a summary of all AWS CodePipeline action types associated with
 your account.
+
+
+=head2 ListPipelineExecutions(PipelineName => Str, [MaxResults => Int, NextToken => Str])
+
+Each argument is described in detail in: L<Paws::CodePipeline::ListPipelineExecutions>
+
+Returns: a L<Paws::CodePipeline::ListPipelineExecutionsOutput> instance
+
+  Gets a summary of the most recent executions for a pipeline.
 
 
 =head2 ListPipelines([NextToken => Str])

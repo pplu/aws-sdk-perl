@@ -1,9 +1,8 @@
-package Paws::CodePipeline::PipelineExecution;
+package Paws::CodePipeline::PipelineExecutionSummary;
   use Moose;
-  has ArtifactRevisions => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::ArtifactRevision]', request_name => 'artifactRevisions', traits => ['NameInRequest']);
+  has LastUpdateTime => (is => 'ro', isa => 'Str', request_name => 'lastUpdateTime', traits => ['NameInRequest']);
   has PipelineExecutionId => (is => 'ro', isa => 'Str', request_name => 'pipelineExecutionId', traits => ['NameInRequest']);
-  has PipelineName => (is => 'ro', isa => 'Str', request_name => 'pipelineName', traits => ['NameInRequest']);
-  has PipelineVersion => (is => 'ro', isa => 'Int', request_name => 'pipelineVersion', traits => ['NameInRequest']);
+  has StartTime => (is => 'ro', isa => 'Str', request_name => 'startTime', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
 1;
 
@@ -11,7 +10,7 @@ package Paws::CodePipeline::PipelineExecution;
 
 =head1 NAME
 
-Paws::CodePipeline::PipelineExecution
+Paws::CodePipeline::PipelineExecutionSummary
 
 =head1 USAGE
 
@@ -22,27 +21,28 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::CodePipeline::PipelineExecution object:
+As an example, if Att1 is expected to be a Paws::CodePipeline::PipelineExecutionSummary object:
 
-  $service_obj->Method(Att1 => { ArtifactRevisions => $value, ..., Status => $value  });
+  $service_obj->Method(Att1 => { LastUpdateTime => $value, ..., Status => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::CodePipeline::PipelineExecution object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::CodePipeline::PipelineExecutionSummary object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->ArtifactRevisions
+  $result->Att1->LastUpdateTime
 
 =head1 DESCRIPTION
 
-Represents information about an execution of a pipeline.
+Summary information about a pipeline execution.
 
 =head1 ATTRIBUTES
 
 
-=head2 ArtifactRevisions => ArrayRef[L<Paws::CodePipeline::ArtifactRevision>]
+=head2 LastUpdateTime => Str
 
-  A list of ArtifactRevision objects included in a pipeline execution.
+  The date and time of the last change to the pipeline execution, in
+timestamp format.
 
 
 =head2 PipelineExecutionId => Str
@@ -50,14 +50,10 @@ Represents information about an execution of a pipeline.
   The ID of the pipeline execution.
 
 
-=head2 PipelineName => Str
+=head2 StartTime => Str
 
-  The name of the pipeline that was executed.
-
-
-=head2 PipelineVersion => Int
-
-  The version number of the pipeline that was executed.
+  The date and time when the pipeline execution began, in timestamp
+format.
 
 
 =head2 Status => Str

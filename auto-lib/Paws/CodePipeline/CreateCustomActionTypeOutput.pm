@@ -16,7 +16,7 @@ Paws::CodePipeline::CreateCustomActionTypeOutput
 
 =head2 B<REQUIRED> ActionType => L<Paws::CodePipeline::ActionType>
 
-
+Returns information about the details of an action type.
 
 
 =head2 _request_id => Str

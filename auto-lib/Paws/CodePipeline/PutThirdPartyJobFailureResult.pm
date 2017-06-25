@@ -45,7 +45,7 @@ details.
 
 =head2 B<REQUIRED> FailureDetails => L<Paws::CodePipeline::FailureDetails>
 
-
+Represents information about failure details.
 
 
 
