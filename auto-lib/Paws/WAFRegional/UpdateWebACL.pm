@@ -66,7 +66,7 @@ WebACLUpdate: Contains C<Action> and C<ActivatedRule>
 
 =item *
 
-ActivatedRule: Contains C<Action>, C<Priority>, and C<RuleId>
+ActivatedRule: Contains C<Action>, C<Priority>, C<RuleId>, and C<Type>
 
 =item *
 
