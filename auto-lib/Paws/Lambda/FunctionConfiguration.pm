@@ -84,7 +84,10 @@ AWS Lambda default service key.
 
 =head2 LastModified => Str
 
-The time stamp of the last time you updated the function.
+The time stamp of the last time you updated the function. The time
+stamp is conveyed as a string complying with ISO-8601 in this way
+YYYY-MM-DDThh:mm:ssTZD (e.g., 1997-07-16T19:20:30+01:00). For more
+information, see Date and Time Formats.
 
 
 =head2 MemorySize => Int
