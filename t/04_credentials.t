@@ -93,6 +93,8 @@ delete @ENV{qw(
 
 {
   my $creds = Paws::Credential::ECSContainerProfile->new(container_local_uri => '/metadata', ua => Test04::StubUAForECSMetadata->new);
+  cmp_ok($creds->metadata_url, 'eq', "http://169.254.170.2/metadata");  
+
   cmp_ok($creds->access_key, 'eq', 'AK1', 'ECS Access Key 1');
   cmp_ok($creds->secret_key, 'eq', 'SK1', 'EC2 Secret Key 1');
   cmp_ok($creds->session_token, 'eq', 'TK1', 'EC2 Token 1');

@@ -2,6 +2,7 @@ package Paws::Credential::ECSContainerProfile;
   use JSON::MaybeXS;
   use Moose;
   use DateTime::Format::ISO8601;
+  use URI;
   with 'Paws::Credential';
 
   has container_local_uri => (
@@ -19,7 +20,9 @@ package Paws::Credential::ECSContainerProfile;
     default => sub {
       my $self = shift;
       return undef if (not defined $self->container_local_uri);
-      "http://169.254.170.2" . $self->container_local_uri;
+      my $url = URI->new("http://169.254.170.2");
+      $url->path($self->container_local_uri);
+      return $url->as_string;
     }
   );
 
