@@ -118,13 +118,16 @@ every 30 days by 5:00 PM Pacific Time since 2015-01-26.
 30 days by 5:00 PM Pacific Time since 2015-01-26.
 
 =item * I<customer_profile_by_industry> - Available daily by 5:00 PM
-Pacific Time since 2015-10-01.
+Pacific Time from 2015-10-01 to 2017-06-29. After 2017-06-29 this data
+set will no longer be published.
 
 =item * I<customer_profile_by_revenue> - Available daily by 5:00 PM
-Pacific Time since 2015-10-01.
+Pacific Time from 2015-10-01 to 2017-06-29. After 2017-06-29 this data
+set will no longer be published.
 
 =item * I<customer_profile_by_geography> - Available daily by 5:00 PM
-Pacific Time since 2015-10-01.
+Pacific Time from 2015-10-01 to 2017-06-29. After 2017-06-29 this data
+set will no longer be published.
 
 =item * I<sales_compensation_billed_revenue> - Available monthly on the
 4th day of the month by 5:00 PM Pacific Time since 2016-12.
