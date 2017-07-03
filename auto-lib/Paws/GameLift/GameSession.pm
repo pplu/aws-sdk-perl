@@ -45,6 +45,57 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GameLift::G
 
 Properties describing a game session.
 
+Game-session-related operations include:
+
+=over
+
+=item *
+
+CreateGameSession
+
+=item *
+
+DescribeGameSessions
+
+=item *
+
+DescribeGameSessionDetails
+
+=item *
+
+SearchGameSessions
+
+=item *
+
+UpdateGameSession
+
+=item *
+
+GetGameSessionLogUrl
+
+=item *
+
+Game session placements
+
+=over
+
+=item *
+
+StartGameSessionPlacement
+
+=item *
+
+DescribeGameSessionPlacement
+
+=item *
+
+StopGameSessionPlacement
+
+=back
+
+=back
+
+
 =head1 ATTRIBUTES
 
 

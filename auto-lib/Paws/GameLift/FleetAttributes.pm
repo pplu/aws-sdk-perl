@@ -47,6 +47,109 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GameLift::F
 
 General properties describing a fleet.
 
+Fleet-related operations include:
+
+=over
+
+=item *
+
+CreateFleet
+
+=item *
+
+ListFleets
+
+=item *
+
+Describe fleets:
+
+=over
+
+=item *
+
+DescribeFleetAttributes
+
+=item *
+
+DescribeFleetPortSettings
+
+=item *
+
+DescribeFleetUtilization
+
+=item *
+
+DescribeRuntimeConfiguration
+
+=item *
+
+DescribeFleetEvents
+
+=back
+
+=item *
+
+Update fleets:
+
+=over
+
+=item *
+
+UpdateFleetAttributes
+
+=item *
+
+UpdateFleetCapacity
+
+=item *
+
+UpdateFleetPortSettings
+
+=item *
+
+UpdateRuntimeConfiguration
+
+=back
+
+=item *
+
+Manage fleet capacity:
+
+=over
+
+=item *
+
+DescribeFleetCapacity
+
+=item *
+
+UpdateFleetCapacity
+
+=item *
+
+PutScalingPolicy (automatic scaling)
+
+=item *
+
+DescribeScalingPolicies (automatic scaling)
+
+=item *
+
+DeleteScalingPolicy (automatic scaling)
+
+=item *
+
+DescribeEC2InstanceLimits
+
+=back
+
+=item *
+
+DeleteFleet
+
+=back
+
+
 =head1 ATTRIBUTES
 
 
@@ -83,18 +186,18 @@ number expressed in Unix time as milliseconds (for example
 Amazon GameLift captures and stores any log files in this location.
 These logs are in addition to game session logs; see more on game
 session logs in the Amazon GameLift Developer Guide. If no default log
-path for a fleet is specified, Amazon GameLift will automatically
-upload logs that are stored on each instance at C<C:\game\logs> (for
-Windows) or C</local/game/logs> (for Linux). Use the Amazon GameLift
-console to access stored logs.
+path for a fleet is specified, Amazon GameLift automatically uploads
+logs that are stored on each instance at C<C:\game\logs> (for Windows)
+or C</local/game/logs> (for Linux). Use the Amazon GameLift console to
+access stored logs.
 
 
 =head2 MetricGroups => ArrayRef[Str|Undef]
 
   Names of metric groups that this fleet is included in. In Amazon
 CloudWatch, you can view metrics for an individual fleet or aggregated
-metrics for a fleets that are in a fleet metric group. Currently, a
-fleet can be included in only one metric group at a time.
+metrics for fleets that are in a fleet metric group. A fleet can be
+included in only one metric group at a time.
 
 
 =head2 Name => Str
@@ -139,7 +242,7 @@ can create over a span of time.
 
 =head2 ServerLaunchParameters => Str
 
-  Game server launch parameters specified for fleets created prior to
+  Game server launch parameters specified for fleets created before
 2016-08-04 (or AWS SDK v. 0.12.16). Server launch parameters for fleets
 created after this date are specified in the fleet's
 RuntimeConfiguration.
@@ -148,9 +251,9 @@ RuntimeConfiguration.
 =head2 ServerLaunchPath => Str
 
   Path to a game server executable in the fleet's build, specified for
-fleets created prior to 2016-08-04 (or AWS SDK v. 0.12.16). Server
-launch paths for fleets created after this date are specified in the
-fleet's RuntimeConfiguration.
+fleets created before 2016-08-04 (or AWS SDK v. 0.12.16). Server launch
+paths for fleets created after this date are specified in the fleet's
+RuntimeConfiguration.
 
 
 =head2 Status => Str

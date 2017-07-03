@@ -42,6 +42,109 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GameLift::S
 Rule that controls how a fleet is scaled. Scaling policies are uniquely
 identified by the combination of name and fleet ID.
 
+Fleet-related operations include:
+
+=over
+
+=item *
+
+CreateFleet
+
+=item *
+
+ListFleets
+
+=item *
+
+Describe fleets:
+
+=over
+
+=item *
+
+DescribeFleetAttributes
+
+=item *
+
+DescribeFleetPortSettings
+
+=item *
+
+DescribeFleetUtilization
+
+=item *
+
+DescribeRuntimeConfiguration
+
+=item *
+
+DescribeFleetEvents
+
+=back
+
+=item *
+
+Update fleets:
+
+=over
+
+=item *
+
+UpdateFleetAttributes
+
+=item *
+
+UpdateFleetCapacity
+
+=item *
+
+UpdateFleetPortSettings
+
+=item *
+
+UpdateRuntimeConfiguration
+
+=back
+
+=item *
+
+Manage fleet capacity:
+
+=over
+
+=item *
+
+DescribeFleetCapacity
+
+=item *
+
+UpdateFleetCapacity
+
+=item *
+
+PutScalingPolicy (automatic scaling)
+
+=item *
+
+DescribeScalingPolicies (automatic scaling)
+
+=item *
+
+DeleteScalingPolicy (automatic scaling)
+
+=item *
+
+DescribeEC2InstanceLimits
+
+=back
+
+=item *
+
+DeleteFleet
+
+=back
+
+
 =head1 ATTRIBUTES
 
 

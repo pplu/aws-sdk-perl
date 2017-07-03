@@ -43,6 +43,109 @@ Pending and terminating counts are non-zero only if fleet capacity is
 adjusting to an UpdateFleetCapacity request, or if access to resources
 is temporarily affected.
 
+Fleet-related operations include:
+
+=over
+
+=item *
+
+CreateFleet
+
+=item *
+
+ListFleets
+
+=item *
+
+Describe fleets:
+
+=over
+
+=item *
+
+DescribeFleetAttributes
+
+=item *
+
+DescribeFleetPortSettings
+
+=item *
+
+DescribeFleetUtilization
+
+=item *
+
+DescribeRuntimeConfiguration
+
+=item *
+
+DescribeFleetEvents
+
+=back
+
+=item *
+
+Update fleets:
+
+=over
+
+=item *
+
+UpdateFleetAttributes
+
+=item *
+
+UpdateFleetCapacity
+
+=item *
+
+UpdateFleetPortSettings
+
+=item *
+
+UpdateRuntimeConfiguration
+
+=back
+
+=item *
+
+Manage fleet capacity:
+
+=over
+
+=item *
+
+DescribeFleetCapacity
+
+=item *
+
+UpdateFleetCapacity
+
+=item *
+
+PutScalingPolicy (automatic scaling)
+
+=item *
+
+DescribeScalingPolicies (automatic scaling)
+
+=item *
+
+DeleteScalingPolicy (automatic scaling)
+
+=item *
+
+DescribeEC2InstanceLimits
+
+=back
+
+=item *
+
+DeleteFleet
+
+=back
+
+
 =head1 ATTRIBUTES
 
 

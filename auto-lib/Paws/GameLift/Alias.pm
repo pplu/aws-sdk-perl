@@ -63,6 +63,10 @@ UpdateAlias
 
 DeleteAlias
 
+=item *
+
+ResolveAlias
+
 =back
 
 

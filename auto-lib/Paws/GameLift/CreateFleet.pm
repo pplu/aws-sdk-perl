@@ -92,9 +92,9 @@ Server API Reference.
 =head2 MetricGroups => ArrayRef[Str|Undef]
 
 Names of metric groups to add this fleet to. Use an existing metric
-group name to add this fleet to the group, or use a new name to create
-a new metric group. Currently, a fleet can only be included in one
-metric group at a time.
+group name to add this fleet to the group. Or use a new name to create
+a new metric group. A fleet can only be included in one metric group at
+a time.
 
 
 
@@ -141,17 +141,17 @@ create over a span of time for this fleet.
 =head2 RuntimeConfiguration => L<Paws::GameLift::RuntimeConfiguration>
 
 Instructions for launching server processes on each instance in the
-fleet. The runtime configuration for a fleet has a collection of server
-process configurations, one for each type of server process to run on
-an instance. A server process configuration specifies the location of
-the server executable, launch parameters, and the number of concurrent
-processes with that configuration to maintain on each instance. A
-CreateFleet request must include a runtime configuration with at least
-one server process configuration; otherwise the request will fail with
-an invalid request exception. (This parameter replaces the parameters
-C<ServerLaunchPath> and C<ServerLaunchParameters>; requests that
-contain values for these parameters instead of a runtime configuration
-will continue to work.)
+fleet. The run-time configuration for a fleet has a collection of
+server process configurations, one for each type of server process to
+run on an instance. A server process configuration specifies the
+location of the server executable, launch parameters, and the number of
+concurrent processes with that configuration to maintain on each
+instance. A CreateFleet request must include a run-time configuration
+with at least one server process configuration; otherwise the request
+fails with an invalid request exception. (This parameter replaces the
+parameters C<ServerLaunchPath> and C<ServerLaunchParameters>; requests
+that contain values for these parameters instead of a run-time
+configuration will continue to work.)
 
 
 
@@ -159,8 +159,8 @@ will continue to work.)
 
 This parameter is no longer used. Instead, specify server launch
 parameters in the C<RuntimeConfiguration> parameter. (Requests that
-specify a server launch path and launch parameters instead of a runtime
-configuration will continue to work.)
+specify a server launch path and launch parameters instead of a
+run-time configuration will continue to work.)
 
 
 
@@ -168,7 +168,7 @@ configuration will continue to work.)
 
 This parameter is no longer used. Instead, specify a server launch path
 using the C<RuntimeConfiguration> parameter. (Requests that specify a
-server launch path and launch parameters instead of a runtime
+server launch path and launch parameters instead of a run-time
 configuration will continue to work.)
 
 

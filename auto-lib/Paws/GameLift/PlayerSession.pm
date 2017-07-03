@@ -46,7 +46,7 @@ activity in a game session. A player session object (including player
 data) is automatically passed to a game session when the player
 connects to the game session and is validated.
 
-Player session-related operations include:
+Player-session-related operations include:
 
 =over
 
@@ -61,6 +61,26 @@ CreatePlayerSessions
 =item *
 
 DescribePlayerSessions
+
+=item *
+
+Game session placements
+
+=over
+
+=item *
+
+StartGameSessionPlacement
+
+=item *
+
+DescribeGameSessionPlacement
+
+=item *
+
+StopGameSessionPlacement
+
+=back
 
 =back
 

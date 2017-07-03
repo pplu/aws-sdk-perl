@@ -81,7 +81,7 @@ following:
 =item *
 
 B<PENDING> E<ndash> The instance is in the process of being created and
-launching server processes as defined in the fleet's runtime
+launching server processes as defined in the fleet's run-time
 configuration.
 
 =item *

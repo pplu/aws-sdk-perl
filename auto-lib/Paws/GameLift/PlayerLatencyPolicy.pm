@@ -39,7 +39,7 @@ region where a player is reporting latency higher than the cap. Latency
 policies are only enforced when the placement request contains player
 latency information.
 
-Latency policy-related operations include:
+Queue-related operations include:
 
 =over
 
@@ -49,11 +49,15 @@ CreateGameSessionQueue
 
 =item *
 
+DescribeGameSessionQueues
+
+=item *
+
 UpdateGameSessionQueue
 
 =item *
 
-StartGameSessionPlacement
+DeleteGameSessionQueue
 
 =back
 

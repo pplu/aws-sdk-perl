@@ -35,6 +35,29 @@ Fleet designated in a game session queue. Requests for new game
 sessions in the queue are fulfilled by starting a new game session on
 any destination configured for a queue.
 
+Queue-related operations include:
+
+=over
+
+=item *
+
+CreateGameSessionQueue
+
+=item *
+
+DescribeGameSessionQueues
+
+=item *
+
+UpdateGameSessionQueue
+
+=item *
+
+DeleteGameSessionQueue
+
+=back
+
+
 =head1 ATTRIBUTES
 
 

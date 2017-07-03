@@ -52,11 +52,11 @@ Unique identifier for a fleet to update attribute metadata for.
 
 =head2 MetricGroups => ArrayRef[Str|Undef]
 
-Names of metric groups to include this fleet with. A fleet metric group
-is used in Amazon CloudWatch to aggregate metrics from multiple fleets.
-Use an existing metric group name to add this fleet to the group, or
-use a new name to create a new metric group. Currently, a fleet can
-only be included in one metric group at a time.
+Names of metric groups to include this fleet in. Amazon CloudWatch uses
+a fleet metric group is to aggregate metrics from multiple fleets. Use
+an existing metric group name to add this fleet to the group. Or use a
+new name to create a new metric group. A fleet can only be included in
+one metric group at a time.
 
 
 

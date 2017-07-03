@@ -38,6 +38,28 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GameLift::G
 Configuration of a queue that is used to process game session placement
 requests. The queue configuration identifies several game features:
 
+Queue-related operations include:
+
+=over
+
+=item *
+
+CreateGameSessionQueue
+
+=item *
+
+DescribeGameSessionQueues
+
+=item *
+
+UpdateGameSessionQueue
+
+=item *
+
+DeleteGameSessionQueue
+
+=back
+
 =over
 
 =item *
