@@ -29,6 +29,11 @@ package Paws::ServiceCatalog;
     my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::AssociateProductWithPortfolio', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub AssociateTagOptionWithResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::AssociateTagOptionWithResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateConstraint {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::CreateConstraint', @_);
@@ -52,6 +57,11 @@ package Paws::ServiceCatalog;
   sub CreateProvisioningArtifact {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::CreateProvisioningArtifact', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateTagOption {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::CreateTagOption', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteConstraint {
@@ -124,6 +134,11 @@ package Paws::ServiceCatalog;
     my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::DescribeRecord', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeTagOption {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::DescribeTagOption', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DisassociatePrincipalFromPortfolio {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::DisassociatePrincipalFromPortfolio', @_);
@@ -132,6 +147,11 @@ package Paws::ServiceCatalog;
   sub DisassociateProductFromPortfolio {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::DisassociateProductFromPortfolio', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DisassociateTagOptionFromResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::DisassociateTagOptionFromResource', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListAcceptedPortfolioShares {
@@ -177,6 +197,16 @@ package Paws::ServiceCatalog;
   sub ListRecordHistory {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::ListRecordHistory', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListResourcesForTagOption {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::ListResourcesForTagOption', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListTagOptions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::ListTagOptions', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ProvisionProduct {
@@ -234,10 +264,15 @@ package Paws::ServiceCatalog;
     my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::UpdateProvisioningArtifact', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpdateTagOption {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::UpdateTagOption', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   
 
 
-  sub operations { qw/AcceptPortfolioShare AssociatePrincipalWithPortfolio AssociateProductWithPortfolio CreateConstraint CreatePortfolio CreatePortfolioShare CreateProduct CreateProvisioningArtifact DeleteConstraint DeletePortfolio DeletePortfolioShare DeleteProduct DeleteProvisioningArtifact DescribeConstraint DescribePortfolio DescribeProduct DescribeProductAsAdmin DescribeProductView DescribeProvisionedProduct DescribeProvisioningArtifact DescribeProvisioningParameters DescribeRecord DisassociatePrincipalFromPortfolio DisassociateProductFromPortfolio ListAcceptedPortfolioShares ListConstraintsForPortfolio ListLaunchPaths ListPortfolioAccess ListPortfolios ListPortfoliosForProduct ListPrincipalsForPortfolio ListProvisioningArtifacts ListRecordHistory ProvisionProduct RejectPortfolioShare ScanProvisionedProducts SearchProducts SearchProductsAsAdmin TerminateProvisionedProduct UpdateConstraint UpdatePortfolio UpdateProduct UpdateProvisionedProduct UpdateProvisioningArtifact / }
+  sub operations { qw/AcceptPortfolioShare AssociatePrincipalWithPortfolio AssociateProductWithPortfolio AssociateTagOptionWithResource CreateConstraint CreatePortfolio CreatePortfolioShare CreateProduct CreateProvisioningArtifact CreateTagOption DeleteConstraint DeletePortfolio DeletePortfolioShare DeleteProduct DeleteProvisioningArtifact DescribeConstraint DescribePortfolio DescribeProduct DescribeProductAsAdmin DescribeProductView DescribeProvisionedProduct DescribeProvisioningArtifact DescribeProvisioningParameters DescribeRecord DescribeTagOption DisassociatePrincipalFromPortfolio DisassociateProductFromPortfolio DisassociateTagOptionFromResource ListAcceptedPortfolioShares ListConstraintsForPortfolio ListLaunchPaths ListPortfolioAccess ListPortfolios ListPortfoliosForProduct ListPrincipalsForPortfolio ListProvisioningArtifacts ListRecordHistory ListResourcesForTagOption ListTagOptions ProvisionProduct RejectPortfolioShare ScanProvisionedProducts SearchProducts SearchProductsAsAdmin TerminateProvisionedProduct UpdateConstraint UpdatePortfolio UpdateProduct UpdateProvisionedProduct UpdateProvisioningArtifact UpdateTagOption / }
 
 1;
 
@@ -319,6 +354,15 @@ Returns: a L<Paws::ServiceCatalog::AssociateProductWithPortfolioOutput> instance
   Associates a product with a portfolio.
 
 
+=head2 AssociateTagOptionWithResource(ResourceId => Str, TagOptionId => Str)
+
+Each argument is described in detail in: L<Paws::ServiceCatalog::AssociateTagOptionWithResource>
+
+Returns: a L<Paws::ServiceCatalog::AssociateTagOptionWithResourceOutput> instance
+
+  Associate a TagOption identifier with a resource identifier.
+
+
 =head2 CreateConstraint(IdempotencyToken => Str, Parameters => Str, PortfolioId => Str, ProductId => Str, Type => Str, [AcceptLanguage => Str, Description => Str])
 
 Each argument is described in detail in: L<Paws::ServiceCatalog::CreateConstraint>
@@ -365,6 +409,15 @@ Returns: a L<Paws::ServiceCatalog::CreateProvisioningArtifactOutput> instance
 operation does not work with a product that has been shared with you.
 
 See the bottom of this topic for an example JSON request.
+
+
+=head2 CreateTagOption(Key => Str, Value => Str)
+
+Each argument is described in detail in: L<Paws::ServiceCatalog::CreateTagOption>
+
+Returns: a L<Paws::ServiceCatalog::CreateTagOptionOutput> instance
+
+  Create a new TagOption.
 
 
 =head2 DeleteConstraint(Id => Str, [AcceptLanguage => Str])
@@ -502,6 +555,17 @@ product in a specified manner. Use this operation to obtain the list of
 C<ProvisioningArtifactParameters> parameters available to call the
 ProvisionProduct operation for the specified product.
 
+If the output contains a TagOption key with an empty list of values,
+there is a TagOption conflict for that key. The end user cannot take
+action to fix the conflict, and launch is not blocked. In subsequent
+calls to the C<ProvisionProduct> operation, do not include conflicted
+TagOption keys as tags. Calls to C<ProvisionProduct> with empty
+TagOption values cause the error "Parameter validation failed: Missing
+required parameter in Tags[I<N>]:I<Value> ". Calls to
+C<ProvisionProduct> with conflicted TagOption keys automatically tag
+the provisioned product with the conflicted keys with the value
+"C<sc-tagoption-conflict-portfolioId-productId>".
+
 
 =head2 DescribeRecord(Id => Str, [AcceptLanguage => Str, PageSize => Int, PageToken => Str])
 
@@ -512,6 +576,15 @@ Returns: a L<Paws::ServiceCatalog::DescribeRecordOutput> instance
   Retrieves a paginated list of the full details of a specific request.
 Use this operation after calling a request operation (ProvisionProduct,
 TerminateProvisionedProduct, or UpdateProvisionedProduct).
+
+
+=head2 DescribeTagOption(Id => Str)
+
+Each argument is described in detail in: L<Paws::ServiceCatalog::DescribeTagOption>
+
+Returns: a L<Paws::ServiceCatalog::DescribeTagOptionOutput> instance
+
+  Describes a TagOption.
 
 
 =head2 DisassociatePrincipalFromPortfolio(PortfolioId => Str, PrincipalARN => Str, [AcceptLanguage => Str])
@@ -531,6 +604,15 @@ Each argument is described in detail in: L<Paws::ServiceCatalog::DisassociatePro
 Returns: a L<Paws::ServiceCatalog::DisassociateProductFromPortfolioOutput> instance
 
   Disassociates the specified product from the specified portfolio.
+
+
+=head2 DisassociateTagOptionFromResource(ResourceId => Str, TagOptionId => Str)
+
+Each argument is described in detail in: L<Paws::ServiceCatalog::DisassociateTagOptionFromResource>
+
+Returns: a L<Paws::ServiceCatalog::DisassociateTagOptionFromResourceOutput> instance
+
+  Disassociates a TagOption from a resource.
 
 
 =head2 ListAcceptedPortfolioShares([AcceptLanguage => Str, PageSize => Int, PageToken => Str])
@@ -621,6 +703,24 @@ Returns: a L<Paws::ServiceCatalog::ListRecordHistoryOutput> instance
 RecordDetails objects that are filtered as specified.
 
 
+=head2 ListResourcesForTagOption(TagOptionId => Str, [PageSize => Int, PageToken => Str, ResourceType => Str])
+
+Each argument is described in detail in: L<Paws::ServiceCatalog::ListResourcesForTagOption>
+
+Returns: a L<Paws::ServiceCatalog::ListResourcesForTagOptionOutput> instance
+
+  Lists resources associated with a TagOption.
+
+
+=head2 ListTagOptions([Filters => L<Paws::ServiceCatalog::ListTagOptionsFilters>, PageSize => Int, PageToken => Str])
+
+Each argument is described in detail in: L<Paws::ServiceCatalog::ListTagOptions>
+
+Returns: a L<Paws::ServiceCatalog::ListTagOptionsOutput> instance
+
+  Lists detailed TagOptions information.
+
+
 =head2 ProvisionProduct(ProductId => Str, ProvisionedProductName => Str, ProvisioningArtifactId => Str, ProvisionToken => Str, [AcceptLanguage => Str, NotificationArns => ArrayRef[Str|Undef], PathId => Str, ProvisioningParameters => ArrayRef[L<Paws::ServiceCatalog::ProvisioningParameter>], Tags => ArrayRef[L<Paws::ServiceCatalog::Tag>]])
 
 Each argument is described in detail in: L<Paws::ServiceCatalog::ProvisionProduct>
@@ -634,7 +734,13 @@ launching a CloudFormation stack and all the underlying resources that
 come with it.
 
 You can check the status of this request using the DescribeRecord
-operation.
+operation. The error "Parameter validation failed: Missing required
+parameter in Tags[I<N>]:I<Value>" indicates that your request contains
+a tag which has a tag key but no corresponding tag value (value is
+empty or null). Your call may have included values returned from a
+C<DescribeProvisioningParameters> call that resulted in a TagOption key
+with an empty list. This happens when TagOption keys are in conflict.
+For more information, see DescribeProvisioningParameters.
 
 
 =head2 RejectPortfolioShare(PortfolioId => Str, [AcceptLanguage => Str])
@@ -751,6 +857,15 @@ Returns: a L<Paws::ServiceCatalog::UpdateProvisioningArtifactOutput> instance
   Updates an existing provisioning artifact's information. This operation
 does not work on a provisioning artifact associated with a product that
 has been shared with you.
+
+
+=head2 UpdateTagOption(Id => Str, [Active => Bool, Value => Str])
+
+Each argument is described in detail in: L<Paws::ServiceCatalog::UpdateTagOption>
+
+Returns: a L<Paws::ServiceCatalog::UpdateTagOptionOutput> instance
+
+  Updates an existing TagOption.
 
 
 

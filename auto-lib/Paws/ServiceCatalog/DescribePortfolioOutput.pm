@@ -2,6 +2,7 @@
 package Paws::ServiceCatalog::DescribePortfolioOutput;
   use Moose;
   has PortfolioDetail => (is => 'ro', isa => 'Paws::ServiceCatalog::PortfolioDetail');
+  has TagOptions => (is => 'ro', isa => 'ArrayRef[Paws::ServiceCatalog::TagOptionDetail]');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ServiceCatalog::Tag]');
 
   has _request_id => (is => 'ro', isa => 'Str');
@@ -18,6 +19,11 @@ Paws::ServiceCatalog::DescribePortfolioOutput
 =head2 PortfolioDetail => L<Paws::ServiceCatalog::PortfolioDetail>
 
 Detailed portfolio information.
+
+
+=head2 TagOptions => ArrayRef[L<Paws::ServiceCatalog::TagOptionDetail>]
+
+TagOptions associated with the portfolio.
 
 
 =head2 Tags => ArrayRef[L<Paws::ServiceCatalog::Tag>]

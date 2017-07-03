@@ -1,14 +1,14 @@
-package Paws::ServiceCatalog::Tag;
+package Paws::ServiceCatalog::TagOptionSummary;
   use Moose;
-  has Key => (is => 'ro', isa => 'Str', required => 1);
-  has Value => (is => 'ro', isa => 'Str', required => 1);
+  has Key => (is => 'ro', isa => 'Str');
+  has Values => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::ServiceCatalog::Tag
+Paws::ServiceCatalog::TagOptionSummary
 
 =head1 USAGE
 
@@ -19,35 +19,32 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::ServiceCatalog::Tag object:
+As an example, if Att1 is expected to be a Paws::ServiceCatalog::TagOptionSummary object:
 
-  $service_obj->Method(Att1 => { Key => $value, ..., Value => $value  });
+  $service_obj->Method(Att1 => { Key => $value, ..., Values => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::ServiceCatalog::Tag object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::ServiceCatalog::TagOptionSummary object:
 
   $result = $service_obj->Method(...);
   $result->Att1->Key
 
 =head1 DESCRIPTION
 
-Key-value pairs to associate with this provisioning. These tags are
-entirely discretionary and are propagated to the resources created in
-the provisioning.
+The TagOption summary key-value pair.
 
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Key => Str
+=head2 Key => Str
 
-  The C<ProvisioningArtifactParameter.TagKey> parameter from
-DescribeProvisioningParameters.
+  The TagOptionSummary key.
 
 
-=head2 B<REQUIRED> Value => Str
+=head2 Values => ArrayRef[Str|Undef]
 
-  The desired value for this key.
+  The TagOptionSummary value.
 
 
 

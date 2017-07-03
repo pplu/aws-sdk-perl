@@ -66,8 +66,7 @@ to as the product version.
 
 =head2 Verbose => Bool
 
-Selects verbose results. If set to true, the CloudFormation template is
-returned.
+Enable a verbose level of details for the provisioning artifact.
 
 
 

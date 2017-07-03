@@ -114,7 +114,7 @@ C<IN_PROGRESS> - The requested operation is in-progress.
 
 C<IN_PROGRESS_IN_ERROR> - The provisioned product is under change but
 the requested operation failed and some remediation is occurring. For
-example, a roll-back.
+example, a rollback.
 
 C<SUCCEEDED> - The requested operation has successfully completed.
 

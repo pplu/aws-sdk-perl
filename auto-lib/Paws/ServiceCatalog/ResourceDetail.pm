@@ -1,17 +1,17 @@
-package Paws::ServiceCatalog::ProvisioningArtifactSummary;
+package Paws::ServiceCatalog::ResourceDetail;
   use Moose;
+  has ARN => (is => 'ro', isa => 'Str');
   has CreatedTime => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has Id => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
-  has ProvisioningArtifactMetadata => (is => 'ro', isa => 'Paws::ServiceCatalog::ProvisioningArtifactInfo');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::ServiceCatalog::ProvisioningArtifactSummary
+Paws::ServiceCatalog::ResourceDetail
 
 =head1 USAGE
 
@@ -22,48 +22,47 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::ServiceCatalog::ProvisioningArtifactSummary object:
+As an example, if Att1 is expected to be a Paws::ServiceCatalog::ResourceDetail object:
 
-  $service_obj->Method(Att1 => { CreatedTime => $value, ..., ProvisioningArtifactMetadata => $value  });
+  $service_obj->Method(Att1 => { ARN => $value, ..., Name => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::ServiceCatalog::ProvisioningArtifactSummary object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::ServiceCatalog::ResourceDetail object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->CreatedTime
+  $result->Att1->ARN
 
 =head1 DESCRIPTION
 
-Stores summary information about a provisioning artifact.
+Detailed resource information.
 
 =head1 ATTRIBUTES
 
 
+=head2 ARN => Str
+
+  ARN of the resource.
+
+
 =head2 CreatedTime => Str
 
-  The UTC timestamp of the creation time.
+  Creation time of the resource.
 
 
 =head2 Description => Str
 
-  The description of the provisioning artifact.
+  Description of the resource.
 
 
 =head2 Id => Str
 
-  The identifier of the provisioning artifact.
+  Identifier of the resource.
 
 
 =head2 Name => Str
 
-  The name of the provisioning artifact.
-
-
-=head2 ProvisioningArtifactMetadata => L<Paws::ServiceCatalog::ProvisioningArtifactInfo>
-
-  The provisioning artifact metadata. This data is used with products
-created by AWS Marketplace.
+  Name of the resource.
 
 
 
