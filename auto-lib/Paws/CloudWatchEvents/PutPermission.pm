@@ -1,0 +1,80 @@
+
+package Paws::CloudWatchEvents::PutPermission;
+  use Moose;
+  has Action => (is => 'ro', isa => 'Str', required => 1);
+  has Principal => (is => 'ro', isa => 'Str', required => 1);
+  has StatementId => (is => 'ro', isa => 'Str', required => 1);
+
+  use MooseX::ClassAttribute;
+
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutPermission');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
+  class_has _result_key => (isa => 'Str', is => 'ro');
+1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::CloudWatchEvents::PutPermission - Arguments for method PutPermission on Paws::CloudWatchEvents
+
+=head1 DESCRIPTION
+
+This class represents the parameters used for calling the method PutPermission on the 
+Amazon CloudWatch Events service. Use the attributes of this class
+as arguments to method PutPermission.
+
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PutPermission.
+
+As an example:
+
+  $service_obj->PutPermission(Att1 => $value1, Att2 => $value2, ...);
+
+Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
+
+=head1 ATTRIBUTES
+
+
+=head2 B<REQUIRED> Action => Str
+
+The action that you are enabling the other account to perform.
+Currently, this must be C<events:PutEvents>.
+
+
+
+=head2 B<REQUIRED> Principal => Str
+
+The 12-digit AWS account ID that you are permitting to put events to
+your default event bus. Specify "*" to permit any account to put events
+to your default event bus.
+
+If you specify "*", avoid creating rules that may match undesirable
+events. To create more secure rules, make sure that the event pattern
+for each rule contains an C<account> field with a specific account ID
+from which to receive events. Rules with an account field do not match
+any events sent from other accounts.
+
+
+
+=head2 B<REQUIRED> StatementId => Str
+
+An identifier string for the external account that you are granting
+permissions to. If you later want to revoke the permission for this
+external account, specify this C<StatementId> when you run
+RemovePermission.
+
+
+
+
+=head1 SEE ALSO
+
+This class forms part of L<Paws>, documenting arguments for method PutPermission in L<Paws::CloudWatchEvents>
+
+=head1 BUGS and CONTRIBUTIONS
+
+The source code is located here: https://github.com/pplu/aws-sdk-perl
+
+Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+
+=cut
+

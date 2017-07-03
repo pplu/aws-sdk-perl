@@ -19,6 +19,11 @@ package Paws::CloudWatchEvents;
     my $call_object = $self->new_with_coercions('Paws::CloudWatchEvents::DeleteRule', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeEventBus {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudWatchEvents::DescribeEventBus', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeRule {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudWatchEvents::DescribeRule', @_);
@@ -54,6 +59,11 @@ package Paws::CloudWatchEvents;
     my $call_object = $self->new_with_coercions('Paws::CloudWatchEvents::PutEvents', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub PutPermission {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudWatchEvents::PutPermission', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub PutRule {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudWatchEvents::PutRule', @_);
@@ -62,6 +72,11 @@ package Paws::CloudWatchEvents;
   sub PutTargets {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudWatchEvents::PutTargets', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub RemovePermission {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudWatchEvents::RemovePermission', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub RemoveTargets {
@@ -77,7 +92,7 @@ package Paws::CloudWatchEvents;
   
 
 
-  sub operations { qw/DeleteRule DescribeRule DisableRule EnableRule ListRuleNamesByTarget ListRules ListTargetsByRule PutEvents PutRule PutTargets RemoveTargets TestEventPattern / }
+  sub operations { qw/DeleteRule DescribeEventBus DescribeRule DisableRule EnableRule ListRuleNamesByTarget ListRules ListTargetsByRule PutEvents PutPermission PutRule PutTargets RemovePermission RemoveTargets TestEventPattern / }
 
 1;
 
@@ -151,6 +166,18 @@ can delete the rule.
 When you delete a rule, incoming events might continue to match to the
 deleted rule. Please allow a short period of time for changes to take
 effect.
+
+
+=head2 DescribeEventBus()
+
+Each argument is described in detail in: L<Paws::CloudWatchEvents::DescribeEventBus>
+
+Returns: a L<Paws::CloudWatchEvents::DescribeEventBusResponse> instance
+
+  Displays the external AWS accounts that are permitted to write events
+to your account using your account's event bus, and the associated
+policy. To enable your account to receive events from other accounts,
+use PutPermission.
 
 
 =head2 DescribeRule(Name => Str)
@@ -230,6 +257,25 @@ Returns: a L<Paws::CloudWatchEvents::PutEventsResponse> instance
 matched to rules.
 
 
+=head2 PutPermission(Action => Str, Principal => Str, StatementId => Str)
+
+Each argument is described in detail in: L<Paws::CloudWatchEvents::PutPermission>
+
+Returns: nothing
+
+  Running C<PutPermission> permits the specified AWS account to put
+events to your account's default I<event bus>. CloudWatch Events rules
+in your account are triggered by these events arriving to your default
+event bus.
+
+For another account to send events to your account, that external
+account must have a CloudWatch Events rule with your account's default
+event bus as a target.
+
+To enable multiple AWS accounts to put events to your default event
+bus, run C<PutPermission> once for each of these accounts.
+
+
 =head2 PutRule(Name => Str, [Description => Str, EventPattern => Str, RoleArn => Str, ScheduleExpression => Str, State => Str])
 
 Each argument is described in detail in: L<Paws::CloudWatchEvents::PutRule>
@@ -267,10 +313,47 @@ Returns: a L<Paws::CloudWatchEvents::PutTargetsResponse> instance
 targets if they are already associated with the rule.
 
 Targets are the resources that are invoked when a rule is triggered.
-Example targets include EC2 instances, AWS Lambda functions, Amazon
-Kinesis streams, Amazon ECS tasks, AWS Step Functions state machines,
-and built-in targets. Note that creating rules with built-in targets is
-supported only in the AWS Management Console.
+
+You can configure the following as targets for CloudWatch Events:
+
+=over
+
+=item *
+
+EC2 instances
+
+=item *
+
+AWS Lambda functions
+
+=item *
+
+Streams in Amazon Kinesis Streams
+
+=item *
+
+Delivery streams in Amazon Kinesis Firehose
+
+=item *
+
+Amazon ECS tasks
+
+=item *
+
+AWS Step Functions state machines
+
+=item *
+
+Amazon SNS topics
+
+=item *
+
+Amazon SQS queues
+
+=back
+
+Note that creating rules with built-in targets is supported only in the
+AWS Management Console.
 
 For some target types, C<PutTargets> provides target-specific
 parameters. If the target is an Amazon Kinesis stream, you can
@@ -283,9 +366,16 @@ CloudWatch Events needs the appropriate permissions. For AWS Lambda and
 Amazon SNS resources, CloudWatch Events relies on resource-based
 policies. For EC2 instances, Amazon Kinesis streams, and AWS Step
 Functions state machines, CloudWatch Events relies on IAM roles that
-you specify in the C<RoleARN> argument in C<PutTarget>. For more
+you specify in the C<RoleARN> argument in C<PutTargets>. For more
 information, see Authentication and Access Control in the I<Amazon
 CloudWatch Events User Guide>.
+
+If another AWS account is in the same region and has granted you
+permission (using C<PutPermission>), you can set that account's event
+bus as a target of the rules in your account. To send the matched
+events to the other account, specify that account's event bus as the
+C<Arn> when you run C<PutTargets>. For more information about enabling
+cross-account events, see PutPermission.
 
 B<Input>, B<InputPath> and B<InputTransformer> are mutually exclusive
 and optional parameters of a target. When a rule is triggered due to a
@@ -331,6 +421,19 @@ This action can partially fail if too many requests are made at the
 same time. If that happens, C<FailedEntryCount> is non-zero in the
 response and each entry in C<FailedEntries> provides the ID of the
 failed target and the error code.
+
+
+=head2 RemovePermission(StatementId => Str)
+
+Each argument is described in detail in: L<Paws::CloudWatchEvents::RemovePermission>
+
+Returns: nothing
+
+  Revokes the permission of another AWS account to be able to put events
+to your default event bus. Specify the account to revoke by the
+C<StatementId> value that you associated with the account when you
+granted it permission with C<PutPermission>. You can find the
+C<StatementId> by using DescribeEventBus.
 
 
 =head2 RemoveTargets(Ids => ArrayRef[Str|Undef], Rule => Str)

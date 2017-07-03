@@ -66,7 +66,7 @@ rule.
 
 =head2 ScheduleExpression => Str
 
-The scheduling expression. For example, "cron(0 20 * * ? *)", "rate(5
+The scheduling expression. For example, "cron(0 20 * * ? *)" or "rate(5
 minutes)".
 
 
