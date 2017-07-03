@@ -54,6 +54,11 @@ package Paws::SSM;
     my $call_object = $self->new_with_coercions('Paws::SSM::CreatePatchBaseline', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateResourceDataSync {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SSM::CreateResourceDataSync', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteActivation {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SSM::DeleteActivation', @_);
@@ -87,6 +92,11 @@ package Paws::SSM;
   sub DeletePatchBaseline {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SSM::DeletePatchBaseline', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteResourceDataSync {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SSM::DeleteResourceDataSync', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeregisterManagedInstance {
@@ -334,6 +344,11 @@ package Paws::SSM;
     my $call_object = $self->new_with_coercions('Paws::SSM::ListInventoryEntries', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListResourceDataSync {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SSM::ListResourceDataSync', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListTagsForResource {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SSM::ListTagsForResource', @_);
@@ -570,7 +585,7 @@ package Paws::SSM;
   }
 
 
-  sub operations { qw/AddTagsToResource CancelCommand CreateActivation CreateAssociation CreateAssociationBatch CreateDocument CreateMaintenanceWindow CreatePatchBaseline DeleteActivation DeleteAssociation DeleteDocument DeleteMaintenanceWindow DeleteParameter DeleteParameters DeletePatchBaseline DeregisterManagedInstance DeregisterPatchBaselineForPatchGroup DeregisterTargetFromMaintenanceWindow DeregisterTaskFromMaintenanceWindow DescribeActivations DescribeAssociation DescribeAutomationExecutions DescribeAvailablePatches DescribeDocument DescribeDocumentPermission DescribeEffectiveInstanceAssociations DescribeEffectivePatchesForPatchBaseline DescribeInstanceAssociationsStatus DescribeInstanceInformation DescribeInstancePatches DescribeInstancePatchStates DescribeInstancePatchStatesForPatchGroup DescribeMaintenanceWindowExecutions DescribeMaintenanceWindowExecutionTaskInvocations DescribeMaintenanceWindowExecutionTasks DescribeMaintenanceWindows DescribeMaintenanceWindowTargets DescribeMaintenanceWindowTasks DescribeParameters DescribePatchBaselines DescribePatchGroups DescribePatchGroupState GetAutomationExecution GetCommandInvocation GetDefaultPatchBaseline GetDeployablePatchSnapshotForInstance GetDocument GetInventory GetInventorySchema GetMaintenanceWindow GetMaintenanceWindowExecution GetMaintenanceWindowExecutionTask GetParameter GetParameterHistory GetParameters GetParametersByPath GetPatchBaseline GetPatchBaselineForPatchGroup ListAssociations ListCommandInvocations ListCommands ListDocuments ListDocumentVersions ListInventoryEntries ListTagsForResource ModifyDocumentPermission PutInventory PutParameter RegisterDefaultPatchBaseline RegisterPatchBaselineForPatchGroup RegisterTargetWithMaintenanceWindow RegisterTaskWithMaintenanceWindow RemoveTagsFromResource SendCommand StartAutomationExecution StopAutomationExecution UpdateAssociation UpdateAssociationStatus UpdateDocument UpdateDocumentDefaultVersion UpdateMaintenanceWindow UpdateManagedInstanceRole UpdatePatchBaseline / }
+  sub operations { qw/AddTagsToResource CancelCommand CreateActivation CreateAssociation CreateAssociationBatch CreateDocument CreateMaintenanceWindow CreatePatchBaseline CreateResourceDataSync DeleteActivation DeleteAssociation DeleteDocument DeleteMaintenanceWindow DeleteParameter DeleteParameters DeletePatchBaseline DeleteResourceDataSync DeregisterManagedInstance DeregisterPatchBaselineForPatchGroup DeregisterTargetFromMaintenanceWindow DeregisterTaskFromMaintenanceWindow DescribeActivations DescribeAssociation DescribeAutomationExecutions DescribeAvailablePatches DescribeDocument DescribeDocumentPermission DescribeEffectiveInstanceAssociations DescribeEffectivePatchesForPatchBaseline DescribeInstanceAssociationsStatus DescribeInstanceInformation DescribeInstancePatches DescribeInstancePatchStates DescribeInstancePatchStatesForPatchGroup DescribeMaintenanceWindowExecutions DescribeMaintenanceWindowExecutionTaskInvocations DescribeMaintenanceWindowExecutionTasks DescribeMaintenanceWindows DescribeMaintenanceWindowTargets DescribeMaintenanceWindowTasks DescribeParameters DescribePatchBaselines DescribePatchGroups DescribePatchGroupState GetAutomationExecution GetCommandInvocation GetDefaultPatchBaseline GetDeployablePatchSnapshotForInstance GetDocument GetInventory GetInventorySchema GetMaintenanceWindow GetMaintenanceWindowExecution GetMaintenanceWindowExecutionTask GetParameter GetParameterHistory GetParameters GetParametersByPath GetPatchBaseline GetPatchBaselineForPatchGroup ListAssociations ListCommandInvocations ListCommands ListDocuments ListDocumentVersions ListInventoryEntries ListResourceDataSync ListTagsForResource ModifyDocumentPermission PutInventory PutParameter RegisterDefaultPatchBaseline RegisterPatchBaselineForPatchGroup RegisterTargetWithMaintenanceWindow RegisterTaskWithMaintenanceWindow RemoveTagsFromResource SendCommand StartAutomationExecution StopAutomationExecution UpdateAssociation UpdateAssociationStatus UpdateDocument UpdateDocumentDefaultVersion UpdateMaintenanceWindow UpdateManagedInstanceRole UpdatePatchBaseline / }
 
 1;
 
@@ -737,6 +752,26 @@ Returns: a L<Paws::SSM::CreatePatchBaselineResult> instance
   Creates a patch baseline.
 
 
+=head2 CreateResourceDataSync(S3Destination => L<Paws::SSM::ResourceDataSyncS3Destination>, SyncName => Str)
+
+Each argument is described in detail in: L<Paws::SSM::CreateResourceDataSync>
+
+Returns: a L<Paws::SSM::CreateResourceDataSyncResult> instance
+
+  Creates a resource data sync configuration to a single bucket in Amazon
+S3. This is an asynchronous operation that returns immediately. After a
+successful initial sync is completed, the system continuously syncs
+data to the Amazon S3 bucket. To check the status of the sync, use the
+ListResourceDataSync operation.
+
+By default, data is not encrypted in Amazon S3. We strongly recommend
+that you enable encryption in Amazon S3 to ensure secure data storage.
+We also recommend that you secure access to the Amazon S3 bucket by
+creating a restrictive bucket policy. To view an example of a
+restrictive Amazon S3 bucket policy for Resource Data Sync, see
+Creating a Resource Data Sync.
+
+
 =head2 DeleteActivation(ActivationId => Str)
 
 Each argument is described in detail in: L<Paws::SSM::DeleteActivation>
@@ -814,6 +849,18 @@ Each argument is described in detail in: L<Paws::SSM::DeletePatchBaseline>
 Returns: a L<Paws::SSM::DeletePatchBaselineResult> instance
 
   Deletes a patch baseline.
+
+
+=head2 DeleteResourceDataSync(SyncName => Str)
+
+Each argument is described in detail in: L<Paws::SSM::DeleteResourceDataSync>
+
+Returns: a L<Paws::SSM::DeleteResourceDataSyncResult> instance
+
+  Deletes a Resource Data Sync configuration. After the configuration is
+deleted, changes to inventory data on managed instances are no longer
+synced with the target Amazon S3 bucket. Deleting a sync configuration
+does not delete data in the target Amazon S3 bucket.
 
 
 =head2 DeregisterManagedInstance(InstanceId => Str)
@@ -1213,7 +1260,7 @@ Each argument is described in detail in: L<Paws::SSM::GetParametersByPath>
 Returns: a L<Paws::SSM::GetParametersByPathResult> instance
 
   Retrieve parameters in a specific hierarchy. For more information, see
-Using Parameter Hierarchies.
+Working with Systems Manager Parameters.
 
 
 =head2 GetPatchBaseline(BaselineId => Str)
@@ -1293,6 +1340,26 @@ Each argument is described in detail in: L<Paws::SSM::ListInventoryEntries>
 Returns: a L<Paws::SSM::ListInventoryEntriesResult> instance
 
   A list of inventory items returned by the request.
+
+
+=head2 ListResourceDataSync([MaxResults => Int, NextToken => Str])
+
+Each argument is described in detail in: L<Paws::SSM::ListResourceDataSync>
+
+Returns: a L<Paws::SSM::ListResourceDataSyncResult> instance
+
+  Lists your resource data sync configurations. Includes information
+about the last time a sync attempted to start, the last sync status,
+and the last time a sync successfully completed.
+
+The number of sync configurations might be too large to return using a
+single call to C<ListResourceDataSync>. You can limit the number of
+sync configurations returned by using the C<MaxResults> parameter. To
+determine whether there are more sync configurations to list, check the
+value of C<NextToken> in the output. If there are more sync
+configurations to list, you can request them by specifying the
+C<NextToken> returned in the call to the parameter of a subsequent
+call.
 
 
 =head2 ListTagsForResource(ResourceId => Str, ResourceType => Str)
