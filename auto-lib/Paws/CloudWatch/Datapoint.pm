@@ -38,8 +38,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudWatch:
 
 =head1 DESCRIPTION
 
-Encapsulates the statistical data that Amazon CloudWatch computes from
-metric data.
+Encapsulates the statistical data that CloudWatch computes from metric
+data.
 
 =head1 ATTRIBUTES
 

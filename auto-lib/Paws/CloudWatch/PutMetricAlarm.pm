@@ -106,9 +106,9 @@ The dimensions for the metric associated with the alarm.
 =head2 EvaluateLowSampleCountPercentile => Str
 
 Used only for alarms based on percentiles. If you specify C<ignore>,
-the alarm state will not change during periods with too few data points
+the alarm state does not change during periods with too few data points
 to be statistically significant. If you specify C<evaluate> or omit
-this parameter, the alarm will always be evaluated and possibly change
+this parameter, the alarm is always evaluated and possibly changes
 state no matter how many data points are available. For more
 information, see Percentile-Based CloudWatch Alarms and Low Data
 Samples.
@@ -120,7 +120,9 @@ Valid Values: C<evaluate | ignore>
 =head2 B<REQUIRED> EvaluationPeriods => Int
 
 The number of periods over which data is compared to the specified
-threshold.
+threshold. An alarm's total current evaluation period can be no longer
+than one day, so this number multiplied by C<Period> must be 86,400 or
+less.
 
 
 
@@ -184,6 +186,9 @@ arn:aws:swf:us-east-1:{I<customer-account>}:action/actions/AWS_EC2.InstanceId.Re
 =head2 B<REQUIRED> Period => Int
 
 The period, in seconds, over which the specified statistic is applied.
+An alarm's total current evaluation period can be no longer than one
+day, so this number multiplied by C<EvaluationPeriods> must be 86,400
+or less.
 
 
 
@@ -221,7 +226,7 @@ provide conceptual meaning to your data. Metric data points that
 specify a unit of measure, such as Percent, are aggregated separately.
 
 If you specify a unit, you must use a unit that is appropriate for the
-metric. Otherwise, the Amazon CloudWatch alarm can get stuck in the
+metric. Otherwise, the CloudWatch alarm can get stuck in the
 C<INSUFFICIENT DATA> state.
 
 Valid values are: C<"Seconds">, C<"Microseconds">, C<"Milliseconds">, C<"Bytes">, C<"Kilobytes">, C<"Megabytes">, C<"Gigabytes">, C<"Terabytes">, C<"Bits">, C<"Kilobits">, C<"Megabits">, C<"Gigabits">, C<"Terabits">, C<"Percent">, C<"Count">, C<"Bytes/Second">, C<"Kilobytes/Second">, C<"Megabytes/Second">, C<"Gigabytes/Second">, C<"Terabytes/Second">, C<"Bits/Second">, C<"Kilobits/Second">, C<"Megabits/Second">, C<"Gigabits/Second">, C<"Terabits/Second">, C<"Count/Second">, C<"None">

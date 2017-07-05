@@ -46,8 +46,8 @@ The action name prefix.
 
 =head2 AlarmNamePrefix => Str
 
-The alarm name prefix. You cannot specify C<AlarmNames> if this
-parameter is specified.
+The alarm name prefix. If this parameter is specified, you cannot
+specify C<AlarmNames>.
 
 
 

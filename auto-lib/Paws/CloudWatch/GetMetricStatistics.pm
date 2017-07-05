@@ -45,13 +45,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 The dimensions. If the metric contains multiple dimensions, you must
 include a value for each dimension. CloudWatch treats each unique
-combination of dimensions as a separate metric. You can't retrieve
-statistics using combinations of dimensions that were not specially
-published. You must specify the same dimensions that were used when the
-metrics were created. For an example, see Dimension Combinations in the
-I<Amazon CloudWatch User Guide>. For more information on specifying
-dimensions, see Publishing Metrics in the I<Amazon CloudWatch User
-Guide>.
+combination of dimensions as a separate metric. If a specific
+combination of dimensions was not published, you can't retrieve
+statistics for it. You must specify the same dimensions that were used
+when the metrics were created. For an example, see Dimension
+Combinations in the I<Amazon CloudWatch User Guide>. For more
+information about specifying dimensions, see Publishing Metrics in the
+I<Amazon CloudWatch User Guide>.
 
 
 
@@ -59,15 +59,17 @@ Guide>.
 
 The time stamp that determines the last data point to return.
 
-The value specified is exclusive; results will include data points up
-to the specified time stamp. The time stamp must be in ISO 8601 UTC
-format (for example, 2016-10-10T23:00:00Z).
+The value specified is exclusive; results include data points up to the
+specified time stamp. The time stamp must be in ISO 8601 UTC format
+(for example, 2016-10-10T23:00:00Z).
 
 
 
 =head2 ExtendedStatistics => ArrayRef[Str|Undef]
 
-The percentile statistics. Specify values between p0.0 and p100.
+The percentile statistics. Specify values between p0.0 and p100. When
+calling C<GetMetricStatistics>, you must specify either C<Statistics>
+or C<ExtendedStatistics>, but not both.
 
 
 
@@ -87,7 +89,6 @@ The namespace of the metric, with or without spaces.
 
 The granularity, in seconds, of the returned data points. A period can
 be as short as one minute (60 seconds) and must be a multiple of 60.
-The default value is 60.
 
 If the C<StartTime> parameter specifies a time stamp that is greater
 than 15 days ago, you must specify the period as follows or no data
@@ -112,9 +113,9 @@ hour).
 
 =head2 B<REQUIRED> StartTime => Str
 
-The time stamp that determines the first data point to return. Note
-that start times are evaluated relative to the time that CloudWatch
-receives the request.
+The time stamp that determines the first data point to return. Start
+times are evaluated relative to the time that CloudWatch receives the
+request.
 
 The value specified is inclusive; results include data points with the
 specified time stamp. The time stamp must be in ISO 8601 UTC format
@@ -148,7 +149,9 @@ clock interval. For example, 12:32:34 is rounded down to 12:00:00.
 =head2 Statistics => ArrayRef[Str|Undef]
 
 The metric statistics, other than percentile. For percentile
-statistics, use C<ExtendedStatistic>.
+statistics, use C<ExtendedStatistics>. When calling
+C<GetMetricStatistics>, you must specify either C<Statistics> or
+C<ExtendedStatistics>, but not both.
 
 
 
