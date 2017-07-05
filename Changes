@@ -17,6 +17,7 @@
  - API update: CloudWatchEvents
  - API update: GameLift
  - API update: S3
+ - API update: CloudWatch
 
 0.33 04 Jun 2017
  - New Credential provider: Paws::Credential::Explicit for providing in-code credentials (meis)
