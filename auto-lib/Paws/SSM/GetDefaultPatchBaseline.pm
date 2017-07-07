@@ -1,6 +1,7 @@
 
 package Paws::SSM::GetDefaultPatchBaseline;
   use Moose;
+  has OperatingSystem => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -31,6 +32,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
+=head2 OperatingSystem => Str
+
+Returns the default patch baseline for the specified operating system.
+
+Valid values are: C<"WINDOWS">, C<"AMAZON_LINUX">, C<"UBUNTU">, C<"REDHAT_ENTERPRISE_LINUX">
 
 
 =head1 SEE ALSO

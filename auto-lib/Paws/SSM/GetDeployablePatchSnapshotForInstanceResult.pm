@@ -2,6 +2,7 @@
 package Paws::SSM::GetDeployablePatchSnapshotForInstanceResult;
   use Moose;
   has InstanceId => (is => 'ro', isa => 'Str');
+  has Product => (is => 'ro', isa => 'Str');
   has SnapshotDownloadUrl => (is => 'ro', isa => 'Str');
   has SnapshotId => (is => 'ro', isa => 'Str');
 
@@ -19,6 +20,13 @@ Paws::SSM::GetDeployablePatchSnapshotForInstanceResult
 =head2 InstanceId => Str
 
 The ID of the instance.
+
+
+=head2 Product => Str
+
+Returns the specific operating system (for example Windows Server 2012
+or Amazon Linux 2015.09) on the instance for the specified patch
+snapshot.
 
 
 =head2 SnapshotDownloadUrl => Str

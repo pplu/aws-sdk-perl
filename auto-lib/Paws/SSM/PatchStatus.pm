@@ -1,6 +1,7 @@
 package Paws::SSM::PatchStatus;
   use Moose;
   has ApprovalDate => (is => 'ro', isa => 'Str');
+  has ComplianceLevel => (is => 'ro', isa => 'Str');
   has DeploymentStatus => (is => 'ro', isa => 'Str');
 1;
 
@@ -41,6 +42,11 @@ Information about the approval status of a patch.
 
   The date the patch was approved (or will be approved if the status is
 PENDING_APPROVAL).
+
+
+=head2 ComplianceLevel => Str
+
+  The compliance severity level for a patch.
 
 
 =head2 DeploymentStatus => Str

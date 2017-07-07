@@ -1,6 +1,7 @@
 
 package Paws::SSM::DescribePatchGroups;
   use Moose;
+  has Filters => (is => 'ro', isa => 'ArrayRef[Paws::SSM::PatchOrchestratorFilter]');
   has MaxResults => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
 
@@ -32,6 +33,13 @@ As an example:
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 
 =head1 ATTRIBUTES
+
+
+=head2 Filters => ArrayRef[L<Paws::SSM::PatchOrchestratorFilter>]
+
+One or more filters. Use a filter to return a more specific list of
+results.
+
 
 
 =head2 MaxResults => Int

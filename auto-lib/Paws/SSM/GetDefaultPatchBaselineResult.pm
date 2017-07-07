@@ -2,6 +2,7 @@
 package Paws::SSM::GetDefaultPatchBaselineResult;
   use Moose;
   has BaselineId => (is => 'ro', isa => 'Str');
+  has OperatingSystem => (is => 'ro', isa => 'Str');
 
   has _request_id => (is => 'ro', isa => 'Str');
 
@@ -19,6 +20,11 @@ Paws::SSM::GetDefaultPatchBaselineResult
 The ID of the default patch baseline.
 
 
+=head2 OperatingSystem => Str
+
+The operating system for the returned patch baseline.
+
+Valid values are: C<"WINDOWS">, C<"AMAZON_LINUX">, C<"UBUNTU">, C<"REDHAT_ENTERPRISE_LINUX">
 =head2 _request_id => Str
 
 

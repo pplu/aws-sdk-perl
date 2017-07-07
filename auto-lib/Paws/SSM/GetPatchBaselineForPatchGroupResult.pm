@@ -2,6 +2,7 @@
 package Paws::SSM::GetPatchBaselineForPatchGroupResult;
   use Moose;
   has BaselineId => (is => 'ro', isa => 'Str');
+  has OperatingSystem => (is => 'ro', isa => 'Str');
   has PatchGroup => (is => 'ro', isa => 'Str');
 
   has _request_id => (is => 'ro', isa => 'Str');
@@ -20,6 +21,12 @@ Paws::SSM::GetPatchBaselineForPatchGroupResult
 The ID of the patch baseline that should be used for the patch group.
 
 
+=head2 OperatingSystem => Str
+
+The operating system rule specified for patch groups using the patch
+baseline.
+
+Valid values are: C<"WINDOWS">, C<"AMAZON_LINUX">, C<"UBUNTU">, C<"REDHAT_ENTERPRISE_LINUX">
 =head2 PatchGroup => Str
 
 The name of the patch group.

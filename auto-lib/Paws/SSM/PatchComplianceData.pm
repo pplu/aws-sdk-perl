@@ -50,12 +50,13 @@ CriticalUpdates).
 
 =head2 B<REQUIRED> InstalledTime => Str
 
-  The date/time the patch was installed on the instance.
+  The date/time the patch was installed on the instance. Note that not
+all operating systems provide this level of information.
 
 
 =head2 B<REQUIRED> KBId => Str
 
-  The Microsoft Knowledge Base ID of the patch.
+  The operating system-specific ID of the patch.
 
 
 =head2 B<REQUIRED> Severity => Str

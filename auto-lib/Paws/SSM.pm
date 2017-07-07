@@ -743,7 +743,7 @@ Returns: a L<Paws::SSM::CreateMaintenanceWindowResult> instance
   Creates a new Maintenance Window.
 
 
-=head2 CreatePatchBaseline(Name => Str, [ApprovalRules => L<Paws::SSM::PatchRuleGroup>, ApprovedPatches => ArrayRef[Str|Undef], ClientToken => Str, Description => Str, GlobalFilters => L<Paws::SSM::PatchFilterGroup>, RejectedPatches => ArrayRef[Str|Undef]])
+=head2 CreatePatchBaseline(Name => Str, [ApprovalRules => L<Paws::SSM::PatchRuleGroup>, ApprovedPatches => ArrayRef[Str|Undef], ApprovedPatchesComplianceLevel => Str, ClientToken => Str, Description => Str, GlobalFilters => L<Paws::SSM::PatchFilterGroup>, OperatingSystem => Str, RejectedPatches => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::SSM::CreatePatchBaseline>
 
@@ -769,7 +769,7 @@ that you enable encryption in Amazon S3 to ensure secure data storage.
 We also recommend that you secure access to the Amazon S3 bucket by
 creating a restrictive bucket policy. To view an example of a
 restrictive Amazon S3 bucket policy for Resource Data Sync, see
-Creating a Resource Data Sync.
+Configuring Resource Data Sync for Inventory.
 
 
 =head2 DeleteActivation(ActivationId => Str)
@@ -979,7 +979,8 @@ Each argument is described in detail in: L<Paws::SSM::DescribeEffectivePatchesFo
 Returns: a L<Paws::SSM::DescribeEffectivePatchesForPatchBaselineResult> instance
 
   Retrieves the current effective patches (the patch and the approval
-state) for the specified patch baseline.
+state) for the specified patch baseline. Note that this API applies
+only to Windows patch baselines.
 
 
 =head2 DescribeInstanceAssociationsStatus(InstanceId => Str, [MaxResults => Int, NextToken => Str])
@@ -1112,7 +1113,7 @@ Returns: a L<Paws::SSM::DescribePatchBaselinesResult> instance
   Lists the patch baselines in your AWS account.
 
 
-=head2 DescribePatchGroups([MaxResults => Int, NextToken => Str])
+=head2 DescribePatchGroups([Filters => ArrayRef[L<Paws::SSM::PatchOrchestratorFilter>], MaxResults => Int, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::SSM::DescribePatchGroups>
 
@@ -1149,13 +1150,15 @@ Returns: a L<Paws::SSM::GetCommandInvocationResult> instance
 or plugin.
 
 
-=head2 GetDefaultPatchBaseline()
+=head2 GetDefaultPatchBaseline([OperatingSystem => Str])
 
 Each argument is described in detail in: L<Paws::SSM::GetDefaultPatchBaseline>
 
 Returns: a L<Paws::SSM::GetDefaultPatchBaselineResult> instance
 
-  Retrieves the default patch baseline.
+  Retrieves the default patch baseline. Note that Systems Manager
+supports creating multiple default patch baselines. For example, you
+can create a default patch baseline for each operating system.
 
 
 =head2 GetDeployablePatchSnapshotForInstance(InstanceId => Str, SnapshotId => Str)
@@ -1165,7 +1168,7 @@ Each argument is described in detail in: L<Paws::SSM::GetDeployablePatchSnapshot
 Returns: a L<Paws::SSM::GetDeployablePatchSnapshotForInstanceResult> instance
 
   Retrieves the current snapshot for the patch baseline the instance
-uses. This API is primarily used by the AWS-ApplyPatchBaseline Systems
+uses. This API is primarily used by the AWS-RunPatchBaseline Systems
 Manager document.
 
 
@@ -1272,7 +1275,7 @@ Returns: a L<Paws::SSM::GetPatchBaselineResult> instance
   Retrieves information about a patch baseline.
 
 
-=head2 GetPatchBaselineForPatchGroup(PatchGroup => Str)
+=head2 GetPatchBaselineForPatchGroup(PatchGroup => Str, [OperatingSystem => Str])
 
 Each argument is described in detail in: L<Paws::SSM::GetPatchBaselineForPatchGroup>
 
@@ -1533,7 +1536,7 @@ Returns: a L<Paws::SSM::UpdateManagedInstanceRoleResult> instance
 to the managed instance.
 
 
-=head2 UpdatePatchBaseline(BaselineId => Str, [ApprovalRules => L<Paws::SSM::PatchRuleGroup>, ApprovedPatches => ArrayRef[Str|Undef], Description => Str, GlobalFilters => L<Paws::SSM::PatchFilterGroup>, Name => Str, RejectedPatches => ArrayRef[Str|Undef]])
+=head2 UpdatePatchBaseline(BaselineId => Str, [ApprovalRules => L<Paws::SSM::PatchRuleGroup>, ApprovedPatches => ArrayRef[Str|Undef], ApprovedPatchesComplianceLevel => Str, Description => Str, GlobalFilters => L<Paws::SSM::PatchFilterGroup>, Name => Str, RejectedPatches => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::SSM::UpdatePatchBaseline>
 

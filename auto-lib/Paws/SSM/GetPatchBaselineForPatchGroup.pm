@@ -1,6 +1,7 @@
 
 package Paws::SSM::GetPatchBaselineForPatchGroup;
   use Moose;
+  has OperatingSystem => (is => 'ro', isa => 'Str');
   has PatchGroup => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -32,6 +33,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
+=head2 OperatingSystem => Str
+
+Returns he operating system rule specified for patch groups using the
+patch baseline.
+
+Valid values are: C<"WINDOWS">, C<"AMAZON_LINUX">, C<"UBUNTU">, C<"REDHAT_ENTERPRISE_LINUX">
 
 =head2 B<REQUIRED> PatchGroup => Str
 
