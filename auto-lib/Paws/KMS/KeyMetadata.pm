@@ -8,6 +8,7 @@ package Paws::KMS::KeyMetadata;
   has Enabled => (is => 'ro', isa => 'Bool');
   has ExpirationModel => (is => 'ro', isa => 'Str');
   has KeyId => (is => 'ro', isa => 'Str', required => 1);
+  has KeyManager => (is => 'ro', isa => 'Str');
   has KeyState => (is => 'ro', isa => 'Str');
   has KeyUsage => (is => 'ro', isa => 'Str');
   has Origin => (is => 'ro', isa => 'Str');
@@ -94,6 +95,13 @@ only when C<Origin> is C<EXTERNAL>, otherwise this value is omitted.
 =head2 B<REQUIRED> KeyId => Str
 
   The globally unique identifier for the CMK.
+
+
+=head2 KeyManager => Str
+
+  The CMK's manager. CMKs are either customer-managed or AWS-managed. For
+more information about the difference, see Customer Master Keys in the
+I<AWS Key Management Service Developer Guide>.
 
 
 =head2 KeyState => Str
