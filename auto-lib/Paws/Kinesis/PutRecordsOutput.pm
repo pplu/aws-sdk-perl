@@ -1,6 +1,7 @@
 
 package Paws::Kinesis::PutRecordsOutput;
   use Moose;
+  has EncryptionType => (is => 'ro', isa => 'Str');
   has FailedRecordCount => (is => 'ro', isa => 'Int');
   has Records => (is => 'ro', isa => 'ArrayRef[Paws::Kinesis::PutRecordsResultEntry]', required => 1);
 
@@ -15,6 +16,26 @@ Paws::Kinesis::PutRecordsOutput
 =head1 ATTRIBUTES
 
 
+=head2 EncryptionType => Str
+
+The encryption type used on the records. This parameter can be one of
+the following values:
+
+=over
+
+=item *
+
+C<NONE>: Do not encrypt the records.
+
+=item *
+
+C<KMS>: Use server-side encryption on the records using a
+customer-managed KMS key.
+
+=back
+
+
+Valid values are: C<"NONE">, C<"KMS">
 =head2 FailedRecordCount => Int
 
 The number of unsuccessfully processed records in a C<PutRecords>

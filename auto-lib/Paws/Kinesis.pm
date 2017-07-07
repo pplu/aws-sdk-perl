@@ -104,6 +104,16 @@ package Paws::Kinesis;
     my $call_object = $self->new_with_coercions('Paws::Kinesis::SplitShard', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub StartStreamEncryption {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Kinesis::StartStreamEncryption', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub StopStreamEncryption {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Kinesis::StopStreamEncryption', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateShardCount {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Kinesis::UpdateShardCount', @_);
@@ -158,7 +168,7 @@ package Paws::Kinesis;
   }
 
 
-  sub operations { qw/AddTagsToStream CreateStream DecreaseStreamRetentionPeriod DeleteStream DescribeLimits DescribeStream DisableEnhancedMonitoring EnableEnhancedMonitoring GetRecords GetShardIterator IncreaseStreamRetentionPeriod ListStreams ListTagsForStream MergeShards PutRecord PutRecords RemoveTagsFromStream SplitShard UpdateShardCount / }
+  sub operations { qw/AddTagsToStream CreateStream DecreaseStreamRetentionPeriod DeleteStream DescribeLimits DescribeStream DisableEnhancedMonitoring EnableEnhancedMonitoring GetRecords GetShardIterator IncreaseStreamRetentionPeriod ListStreams ListTagsForStream MergeShards PutRecord PutRecords RemoveTagsFromStream SplitShard StartStreamEncryption StopStreamEncryption UpdateShardCount / }
 
 1;
 
@@ -633,8 +643,9 @@ If a C<PutRecord> request cannot be processed because of insufficient
 provisioned throughput on the shard involved in the request,
 C<PutRecord> throws C<ProvisionedThroughputExceededException>.
 
-Data records are accessible for only 24 hours from the time that they
-are added to a stream.
+By default, data records are accessible for 24 hours from the time that
+they are added to a stream. You can use IncreaseStreamRetentionPeriod
+or DecreaseStreamRetentionPeriod to modify this retention period.
 
 
 =head2 PutRecords(Records => ArrayRef[L<Paws::Kinesis::PutRecordsRequestEntry>], StreamName => Str)
@@ -707,10 +718,9 @@ For more information about partially successful responses, see Adding
 Multiple Records with PutRecords in the I<Amazon Kinesis Streams
 Developer Guide>.
 
-By default, data records are accessible for only 24 hours from the time
-that they are added to an Amazon Kinesis stream. This retention period
-can be modified using the DecreaseStreamRetentionPeriod and
-IncreaseStreamRetentionPeriod operations.
+By default, data records are accessible for 24 hours from the time that
+they are added to a stream. You can use IncreaseStreamRetentionPeriod
+or DecreaseStreamRetentionPeriod to modify this retention period.
 
 
 =head2 RemoveTagsFromStream(StreamName => Str, TagKeys => ArrayRef[Str|Undef])
@@ -785,6 +795,61 @@ a C<LimitExceededException>.
 C<SplitShard> has limit of 5 transactions per second per account.
 
 
+=head2 StartStreamEncryption(EncryptionType => Str, KeyId => Str, StreamName => Str)
+
+Each argument is described in detail in: L<Paws::Kinesis::StartStreamEncryption>
+
+Returns: nothing
+
+  Enables or updates server-side encryption using an AWS KMS key for a
+specified stream.
+
+Starting encryption is an asynchronous operation. Upon receiving the
+request, Amazon Kinesis returns immediately and sets the status of the
+stream to C<UPDATING>. After the update is complete, Amazon Kinesis
+sets the status of the stream back to C<ACTIVE>. Updating or applying
+encryption normally takes a few seconds to complete but it can take
+minutes. You can continue to read and write data to your stream while
+its status is C<UPDATING>. Once the status of the stream is C<ACTIVE>,
+records written to the stream will begin to be encrypted.
+
+API Limits: You can successfully apply a new AWS KMS key for
+server-side encryption 25 times in a rolling 24 hour period.
+
+Note: It can take up to 5 seconds after the stream is in an C<ACTIVE>
+status before all records written to the stream are encrypted. After
+youE<rsquo>ve enabled encryption, you can verify encryption was applied
+by inspecting the API response from C<PutRecord> or C<PutRecords>.
+
+
+=head2 StopStreamEncryption(EncryptionType => Str, KeyId => Str, StreamName => Str)
+
+Each argument is described in detail in: L<Paws::Kinesis::StopStreamEncryption>
+
+Returns: nothing
+
+  Disables server-side encryption for a specified stream.
+
+Stopping encryption is an asynchronous operation. Upon receiving the
+request, Amazon Kinesis returns immediately and sets the status of the
+stream to C<UPDATING>. After the update is complete, Amazon Kinesis
+sets the status of the stream back to C<ACTIVE>. Stopping encryption
+normally takes a few seconds to complete but it can take minutes. You
+can continue to read and write data to your stream while its status is
+C<UPDATING>. Once the status of the stream is C<ACTIVE> records written
+to the stream will no longer be encrypted by the Amazon Kinesis Streams
+service.
+
+API Limits: You can successfully disable server-side encryption 25
+times in a rolling 24 hour period.
+
+Note: It can take up to 5 seconds after the stream is in an C<ACTIVE>
+status before all records written to the stream are no longer subject
+to encryption. After youE<rsquo>ve disabled encryption, you can verify
+encryption was not applied by inspecting the API response from
+C<PutRecord> or C<PutRecords>.
+
+
 =head2 UpdateShardCount(ScalingType => Str, StreamName => Str, TargetShardCount => Int)
 
 Each argument is described in detail in: L<Paws::Kinesis::UpdateShardCount>
@@ -802,16 +867,44 @@ of the stream, the scaling action could take a few minutes to complete.
 You can continue to read and write data to your stream while its status
 is C<UPDATING>.
 
-To update the shard count, Amazon Kinesis performs splits and merges
-and individual shards. This can cause short-lived shards to be created,
-in addition to the final shards. We recommend that you double or halve
-the shard count, as this results in the fewest number of splits or
-merges.
+To update the shard count, Amazon Kinesis performs splits or merges on
+individual shards. This can cause short-lived shards to be created, in
+addition to the final shards. We recommend that you double or halve the
+shard count, as this results in the fewest number of splits or merges.
 
-This operation has a rate limit of twice per rolling 24 hour period.
-You cannot scale above double your current shard count, scale below
-half your current shard count, or exceed the shard limits for your
-account.
+This operation has the following limits, which are per region per
+account unless otherwise noted:
+
+=over
+
+=item *
+
+scale more than twice per rolling 24 hour period
+
+=item *
+
+scale up above double your current shard count
+
+=item *
+
+scale down below half your current shard count
+
+=item *
+
+scale up above 200 shards in a stream
+
+=item *
+
+scale a stream with more than 200 shards down unless the result is less
+than 200 shards
+
+=item *
+
+scale up above the shard limits for your account
+
+=item *
+
+=back
 
 For the default limits for an AWS account, see Streams Limits in the
 I<Amazon Kinesis Streams Developer Guide>. If you need to increase a
