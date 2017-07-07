@@ -4,6 +4,7 @@ package Paws::DS::DirectoryDescription;
   has Alias => (is => 'ro', isa => 'Str');
   has ConnectSettings => (is => 'ro', isa => 'Paws::DS::DirectoryConnectSettingsDescription');
   has Description => (is => 'ro', isa => 'Str');
+  has DesiredNumberOfDomainControllers => (is => 'ro', isa => 'Int');
   has DirectoryId => (is => 'ro', isa => 'Str');
   has DnsIpAddrs => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has LaunchTime => (is => 'ro', isa => 'Str');
@@ -78,6 +79,12 @@ present if the directory is an AD Connector directory.
 =head2 Description => Str
 
   The textual description for the directory.
+
+
+=head2 DesiredNumberOfDomainControllers => Int
+
+  The desired number of domain controllers in the directory if the
+directory is Microsoft AD.
 
 
 =head2 DirectoryId => Str

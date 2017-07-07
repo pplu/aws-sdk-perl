@@ -69,7 +69,8 @@ directory DNS C<corp.example.com>.
 
 =head2 B<REQUIRED> VpcSettings => L<Paws::DS::DirectoryVpcSettings>
 
-
+Contains VPC information for the CreateDirectory or CreateMicrosoftAD
+operation.
 
 
 

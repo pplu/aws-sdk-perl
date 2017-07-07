@@ -104,6 +104,11 @@ package Paws::DS;
     my $call_object = $self->new_with_coercions('Paws::DS::DescribeDirectories', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeDomainControllers {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DS::DescribeDomainControllers', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeEventTopics {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DS::DescribeEventTopics', @_);
@@ -194,6 +199,11 @@ package Paws::DS;
     my $call_object = $self->new_with_coercions('Paws::DS::UpdateConditionalForwarder', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpdateNumberOfDomainControllers {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DS::UpdateNumberOfDomainControllers', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateRadius {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DS::UpdateRadius', @_);
@@ -207,7 +217,7 @@ package Paws::DS;
   
 
 
-  sub operations { qw/AddIpRoutes AddTagsToResource CancelSchemaExtension ConnectDirectory CreateAlias CreateComputer CreateConditionalForwarder CreateDirectory CreateMicrosoftAD CreateSnapshot CreateTrust DeleteConditionalForwarder DeleteDirectory DeleteSnapshot DeleteTrust DeregisterEventTopic DescribeConditionalForwarders DescribeDirectories DescribeEventTopics DescribeSnapshots DescribeTrusts DisableRadius DisableSso EnableRadius EnableSso GetDirectoryLimits GetSnapshotLimits ListIpRoutes ListSchemaExtensions ListTagsForResource RegisterEventTopic RemoveIpRoutes RemoveTagsFromResource RestoreFromSnapshot StartSchemaExtension UpdateConditionalForwarder UpdateRadius VerifyTrust / }
+  sub operations { qw/AddIpRoutes AddTagsToResource CancelSchemaExtension ConnectDirectory CreateAlias CreateComputer CreateConditionalForwarder CreateDirectory CreateMicrosoftAD CreateSnapshot CreateTrust DeleteConditionalForwarder DeleteDirectory DeleteSnapshot DeleteTrust DeregisterEventTopic DescribeConditionalForwarders DescribeDirectories DescribeDomainControllers DescribeEventTopics DescribeSnapshots DescribeTrusts DisableRadius DisableSso EnableRadius EnableSso GetDirectoryLimits GetSnapshotLimits ListIpRoutes ListSchemaExtensions ListTagsForResource RegisterEventTopic RemoveIpRoutes RemoveTagsFromResource RestoreFromSnapshot StartSchemaExtension UpdateConditionalForwarder UpdateNumberOfDomainControllers UpdateRadius VerifyTrust / }
 
 1;
 
@@ -497,6 +507,15 @@ You can also specify a maximum number of return results with the
 I<Limit> parameter.
 
 
+=head2 DescribeDomainControllers(DirectoryId => Str, [DomainControllerIds => ArrayRef[Str|Undef], Limit => Int, NextToken => Str])
+
+Each argument is described in detail in: L<Paws::DS::DescribeDomainControllers>
+
+Returns: a L<Paws::DS::DescribeDomainControllersResult> instance
+
+  Provides information about any domain controllers in your directory.
+
+
 =head2 DescribeEventTopics([DirectoryId => Str, TopicNames => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::DS::DescribeEventTopics>
@@ -693,6 +712,20 @@ Returns: a L<Paws::DS::UpdateConditionalForwarderResult> instance
 
   Updates a conditional forwarder that has been set up for your AWS
 directory.
+
+
+=head2 UpdateNumberOfDomainControllers(DesiredNumber => Int, DirectoryId => Str)
+
+Each argument is described in detail in: L<Paws::DS::UpdateNumberOfDomainControllers>
+
+Returns: a L<Paws::DS::UpdateNumberOfDomainControllersResult> instance
+
+  Adds or removes domain controllers to or from the directory. Based on
+the difference between current value and new value (provided through
+this API call), domain controllers will be added or removed. It may
+take up to 45 minutes for any new domain controllers to become fully
+active once the requested number of domain controllers is updated.
+During this time, you cannot make another update request.
 
 
 =head2 UpdateRadius(DirectoryId => Str, RadiusSettings => L<Paws::DS::RadiusSettings>)
