@@ -18,6 +18,10 @@
  - API update: GameLift
  - API update: S3
  - API update: CloudWatch
+ - API update: Kinesis
+ - API update: SSM
+ - API update: DS
+ - API update: KMS
 
 0.33 04 Jun 2017
  - New Credential provider: Paws::Credential::Explicit for providing in-code credentials (meis)
