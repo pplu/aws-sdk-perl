@@ -5,6 +5,7 @@ use Paws;
 use Paws::Credential::Explicit;
 use Paws::Credential::Environment;
 use Paws::Credential::InstanceProfile;
+use Paws::Credential::ECSContainerProfile;
 use Paws::Credential::ProviderChain;
 use Paws::Credential::File;
 use Test::More;
@@ -12,6 +13,7 @@ use Test::Exception;
 use Test::Warnings;
 use Test04::StubUAForMetadata;
 use Test04::StubUANoMetadata;
+use Test04::StubUAForECSMetadata;
 
 delete @ENV{qw(
   AWS_ACCESS_KEY_ID
@@ -19,6 +21,7 @@ delete @ENV{qw(
   AWS_ACCESS_KEY
   AWS_SECRET_KEY
   AWS_DEFAULT_PROFILE
+  CONTAINER_CREDENTIALS_RELATIVE_URI
 )};
 
 ## File provider testing
@@ -83,6 +86,29 @@ delete @ENV{qw(
   ok(not($creds->are_set), 'No Creds for no Role');
 }
 
+{
+  my $creds = Paws::Credential::ECSContainerProfile->new(container_local_uri => undef);
+  ok(not($creds->are_set), 'Credentials are not set with no ENV var');
+}
+
+{
+  my $creds = Paws::Credential::ECSContainerProfile->new(container_local_uri => '/metadata', ua => Test04::StubUAForECSMetadata->new);
+  cmp_ok($creds->metadata_url, 'eq', "http://169.254.170.2/metadata");  
+
+  cmp_ok($creds->access_key, 'eq', 'AK1', 'ECS Access Key 1');
+  cmp_ok($creds->secret_key, 'eq', 'SK1', 'EC2 Secret Key 1');
+  cmp_ok($creds->session_token, 'eq', 'TK1', 'EC2 Token 1');
+
+  sleep 2;
+
+  cmp_ok($creds->access_key, 'eq', 'AK2', 'ECS Access Key 2');
+  cmp_ok($creds->secret_key, 'eq', 'SK2', 'ECS Secret Key 2');
+  cmp_ok($creds->session_token, 'eq', 'TK2', 'ECS Token 2');
+
+  sleep 2;
+
+  dies_ok { $creds->access_key } 'Exception thrown when garbage arrives to ECS Provider';
+}
 
 {
   my $creds = Paws::Credential::ProviderChain->new(providers => [ 'Test::CustomCredentials', 'Paws::Credentail::Environment' ]);

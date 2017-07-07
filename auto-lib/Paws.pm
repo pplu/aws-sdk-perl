@@ -764,5 +764,7 @@ sven-schubert for contributing fixes to RestXML services
 
 SeptamusNonovant for fixing paginators in non-callback mode
 
+gadgetjunkie for contributing the ECS credential provider
+
 
 =cut

@@ -1,4 +1,7 @@
 0.34
+ - New Credential provider: Paws::Credential::ECSContainerProfile (gadgetjunkie)
+ - Added ECSContainerProfile to the default credential provider chain so it
+   will be automatically used if you're running inside an ECS container (gadgetjunkie)
  - New API: DAX (DynamoDB Accelerator)
  - API update: XRay
  - API update: ServiceCatalog
