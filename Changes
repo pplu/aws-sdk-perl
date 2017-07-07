@@ -1,4 +1,4 @@
-0.34
+0.34 07 Jul 2017
  - New Credential provider: Paws::Credential::ECSContainerProfile (gadgetjunkie)
  - Added ECSContainerProfile to the default credential provider chain so it
    will be automatically used if you're running inside an ECS container (gadgetjunkie)
