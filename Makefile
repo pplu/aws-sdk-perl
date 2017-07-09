@@ -15,6 +15,8 @@ pull-other-sdks:
 pull-boto-develop:
 	cd botocore && git pull boto develop
 
+build-all: build-submodules build-paws
+
 build-submodules:
 	build-bin/build-submodules.pl
 
