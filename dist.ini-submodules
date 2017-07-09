@@ -1,0 +1,35 @@
+name = Paws-[% api_name %]
+author = Jose Luis Martinez <jlmartinez@capside.com>
+license = Apache_2_0
+copyright_holder = CAPSiDE
+copyright_year = 2017
+main_module = lib/Paws/[% api_name %].pm
+version = [% submodule_version %]
+
+[GatherDir]
+root = auto-lib/Paws/[% api_name %]
+prefix = lib/Paws/[% api_name %]
+
+[GatherFile]
+filename = [% api_name %].pm
+root = auto-lib/Paws/
+prefix = lib/Paws/
+
+[MakeMaker]
+
+[Prereqs]
+Paws=[% paws_prereq %]
+
+[MetaYAML]
+[MetaJSON]
+
+[MetaResources]
+repository.web = https://github.com/pplu/aws-sdk-perl
+repository.url = https://github.com/pplu/aws-sdk-perl.git
+repository.type = git
+bugtracker.web = https://github.com/pplu/aws-sdk-perl/issues
+
+[License]
+
+[Manifest]
+

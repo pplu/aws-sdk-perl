@@ -15,6 +15,9 @@ pull-other-sdks:
 pull-boto-develop:
 	cd botocore && git pull boto develop
 
+build-submodules:
+	build-bin/build-submodules.pl
+
 build-paws:
 	cp dist.ini-paws dist.ini
 	dzil build
