@@ -17,10 +17,12 @@ exclude_match=Makefile
 ; the source repo so github can detect it 
 exclude_match=LICENSE
 
+[GatherFile]
+filename = Paws.pm
+root = auto-lib/
+prefix = lib/
+
 [ExecDir]
-[GatherDir]
-root = auto-lib
-prefix = lib
 
 [MakeMaker]
 
