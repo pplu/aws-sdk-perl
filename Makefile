@@ -15,6 +15,10 @@ pull-other-sdks:
 pull-boto-develop:
 	cd botocore && git pull boto develop
 
+build-paws:
+	cp dist.ini-paws dist.ini
+	dzil build
+
 gen-paws:
 	ONLY_PAWS=1 carton exec ./build-bin/gen_classes.pl
 
