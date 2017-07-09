@@ -32,7 +32,7 @@ if (not @files) {
 my $p = Paws::API::Builder::Paws->new;
 $p->process;
 
-exit 0 if ($ENV{ONLY_PAWS} == 1);
+exit 0 if (defined $ENV{ONLY_PAWS} and $ENV{ONLY_PAWS} == 1);
 
 my @failures;
 foreach my $file (@files) {
