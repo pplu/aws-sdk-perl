@@ -19,34 +19,34 @@ package Paws::Net::RestXMLResponse;
   }
 
   sub handle_response {
-    my ($self, $call_object, $http_status, $content, $headers) = @_;
+    my ($self, $call_object, $response) = @_;
 
-    if ( $http_status >= 300 ) {
-      return $self->error_to_exception($call_object, $http_status, $content, $headers);
+    if ( $response->status >= 300 ) {
+        return $self->error_to_exception($call_object, $response);
     } else {
-      return $self->response_to_object($call_object, $http_status, $content, $headers);
+        return $self->response_to_object($call_object, $response);
     }
   }
 
   sub error_to_exception {
-    my ($self, $call_object, $http_status, $content, $headers) = @_;
+    my ($self, $call_object, $response) = @_;
 
-    my $struct = eval { $self->unserialize_response( $content ) };
+    my $struct = eval { $self->unserialize_response( $response->content ) };
     if ($@){
       return Paws::Exception->new(
         message => $@,
         code => 'InvalidContent',
         request_id => '', #$request_id,
-        http_status => $http_status,
+        http_status => $response->status,
       );
     }
 
     my ($message, $code, $request_id, $host_id);
 
-    $message = status_message($http_status);
-    $code = $http_status;
-    $request_id = $headers->{ 'x-amz-request-id' };
-    $host_id = $headers->{ 'x-amz-id-2' };
+    $message = status_message($response->status);
+    $code = $response->status;
+    $request_id = $response->header('x-amz-request-id');
+    $host_id = $response->header('x-amz-id-2');
 
     # Find in the body if it's not in headers
     $request_id = $struct->{ RequestId } if (not defined $request_id);
@@ -56,7 +56,7 @@ package Paws::Net::RestXMLResponse;
       code => $code,
       request_id => $request_id,
       host_id => $host_id,
-      http_status => $http_status,
+      http_status => $response->status,
     );
   }
 

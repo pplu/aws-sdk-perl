@@ -29,6 +29,7 @@ package FileCaller;
   use YAML qw/LoadFile/;
 
   with 'Paws::Net::CallerRole';
+  use Paws::Net::APIResponse;
 
   has response_file => ( is => 'rw', default => sub { $ENV{'PAWS_RESPONSE_FILE'} } );
   has debug => ( is => 'rw', default => 0 );
@@ -40,13 +41,19 @@ package FileCaller;
 
     if (ref($response->{headers}) eq 'ARRAY') { $response->{headers} = {} }
 
-    return $self->caller_to_response($service, $call_object, $response->{status}, $response->{content}, $response->{headers});
+    my $res = Paws::Net::APIResponse->new(
+      status  => $response->{status},
+      content => $response->{content},
+      headers => $response->{headers}
+    );
+
+    return $self->caller_to_response($service, $call_object, $res);
   }
 
   sub caller_to_response {
-    my ($self, $service, $call_object, $status, $content, $headers) = @_;
+    my ($self, $service, $call_object, $response) = @_;
 
-    my $res = $service->handle_response($call_object, $status, $content, $headers);
+    my $res = $service->handle_response($call_object, $response);
 
     return $res;
   }

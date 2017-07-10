@@ -3,6 +3,7 @@ package Paws::Net::FurlCaller;
   use Moose;
   with 'Paws::Net::RetryCallerRole', 'Paws::Net::CallerRole';
   use Furl;
+  use Paws::Net::APIResponse;
 
   has debug              => ( is => 'rw', required => 0, default => sub { 0 } );
   has ua => (is => 'rw', required => 1, lazy => 1,
@@ -31,16 +32,20 @@ package Paws::Net::FurlCaller;
       (defined $requestObj->content)?(content => $requestObj->content):(),
     );
 
-    return ($response->code, $response->content, { $response->headers->flatten });
+    return Paws::Net::APIResponse->new(
+      status  => $response->code,
+      content => $response->content,
+      headers => { $response->headers->flatten },
+    );
   }
 
   sub caller_to_response {
-    my ($self, $service, $call_object, $status, $content, $headers) = @_;
+    my ($self, $service, $call_object, $response) = @_;
  
-    if ($status == 500 and defined $headers->{'x-internal-response'}) {
-      return Paws::Exception->new(message => $content, code => 'ConnectionError', request_id => '');
+    if ($response->status == 500 and $response->has_header('x-internal-response')) {
+      return Paws::Exception->new(message => $response->content, code => 'ConnectionError', request_id => '');
     } else {
-      return $service->handle_response($call_object, $status, $content, $headers);
+      return $service->handle_response($call_object, $response);
     }
   }
 1;

@@ -99,7 +99,8 @@ package Paws::API::Caller;
   }
 
   sub response_to_object {
-    my ($self, $call_object, $http_status, $content, $headers) = @_;
+    my ($self, $call_object, $response) = @_;
+    my ($http_status, $content, $headers) = ($response->status, $response->content, $response->headers);;
 
     $call_object = $call_object->meta->name;
 

@@ -5,22 +5,22 @@ package Paws::Net::JsonResponse;
   use Paws::Exception;
  
   sub handle_response {
-    my ($self, $call_object, $http_status, $content, $headers) = @_;
+    my ($self, $call_object, $response) = @_;
 
-    if (defined $headers->{ 'x-amz-crc32' }) {
+    if ($response->has_header('x-amz-crc32')) {
       require String::CRC32;
-      my $crc = String::CRC32::crc32($content);
+      my $crc = String::CRC32::crc32($response->content);
       return Paws::Exception->new(
         code => 'Crc32Error',
         message => 'Content CRC32 mismatch',
-        request_id => $headers->{ 'x-amzn-requestid' }
-      ) if ($crc != $headers->{ 'x-amz-crc32' });
+        request_id => $response->header('x-amzn-requestid'),
+      ) if ($crc != $response->header('x-amz-crc32'));
     }
 
-    if ( $http_status >= 300 ) {
-        return $self->error_to_exception($call_object, $http_status, $content, $headers);
+    if ( $response->status >= 300 ) {
+        return $self->error_to_exception($call_object, $response);
     } else {
-        return $self->response_to_object($call_object, $http_status, $content, $headers);
+        return $self->response_to_object($call_object, $response);
     }
   }
  
@@ -31,15 +31,15 @@ package Paws::Net::JsonResponse;
   }
 
   sub error_to_exception {
-    my ($self, $call_object, $http_status, $content, $headers) = @_;
+    my ($self, $call_object, $response) = @_;
     
-    my $struct = eval { $self->unserialize_response( $content ) };
+    my $struct = eval { $self->unserialize_response( $response->content ) };
     if ($@) {
       return Paws::Exception->new(
         message => $@,
         code => 'InvalidContent',
         request_id => '', #$request_id,
-        http_status => $http_status,
+        http_status => $response->status,
       );
     }
 
@@ -62,13 +62,13 @@ package Paws::Net::JsonResponse;
     if ($code =~ m/#/) {
       $code = (split /#/, $code)[1];
     }
-    $request_id = $headers->{ 'x-amzn-requestid' };
+    $request_id = $response->header('x-amzn-requestid');
 
     Paws::Exception->new(
       message => $message,
       code => $code,
       request_id => $request_id,
-      http_status => $http_status,
+      http_status => $response->status,
     );
   }
 

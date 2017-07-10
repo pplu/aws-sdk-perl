@@ -1,6 +1,7 @@
 package Paws::Net::MockCaller;
   use Moose;
   with 'Paws::Net::RetryCallerRole', 'Paws::Net::CallerRole';
+  use Paws::Net::APIResponse;
 
   use File::Slurper qw(read_text write_text);
   use JSON::MaybeXS;
@@ -76,7 +77,9 @@ package Paws::Net::MockCaller;
   };
 
   sub caller_to_response {
-    my ($self, $service, $call_object, $status, $content, $headers) = @_;
+    my ($self, $service, $call_object, $response) = @_;
+    my $content = $response->content;
+    my $headers = $response->headers;
  
     $content =~ s/<(RequestId)>.*<\/(RequestId)>/<$1>000000000000000000000000000000000000<\/$2>/ if (defined $content);
     $content =~ s/<(RequestID)>.*<\/(RequestID)>/<$1>000000000000000000000000000000000000<\/$2>/ if (defined $content);
@@ -100,17 +103,17 @@ package Paws::Net::MockCaller;
           call => $call_object->_api_call,
         },
         response => { 
-          content => $content, 
-          headers => $headers,
-          status  => $status
+          content => $response->content, 
+          headers => $response->headers,
+          status  => $response->status,
         }
       }));
 
-      my $result = $self->real_caller->caller_to_response($service, $call_object, $status, $content, $headers);   
+      my $result = $self->real_caller->caller_to_response($service, $call_object, $response);   
       $self->result_hook->($self, $result) if (defined $self->result_hook);
       return $result;
     } else {
-      return $self->real_caller->caller_to_response($service, $call_object, $status, $content, $headers);
+      return $self->real_caller->caller_to_response($service, $call_object, $response);
     }
   };
 
