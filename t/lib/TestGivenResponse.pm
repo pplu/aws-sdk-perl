@@ -26,7 +26,7 @@ package TestGivenResponse;
   }
 
   sub caller_to_response {
-    my ($self, $service, $response) = @_;
+    my ($self, $service, $call_object, $response) = @_;
 
     my $res = $service->handle_response($call_object, $response);
 

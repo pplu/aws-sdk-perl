@@ -4,7 +4,7 @@ package Paws::Net::APIResponse;
 
   has status   => (is => 'rw', isa => 'Int', required => 1);
   has headers  => (is => 'rw', isa => 'HashRef', required => 1);
-  has content  => (is => 'rw', isa => 'Str');
+  has content  => (is => 'rw', isa => 'Str|Undef');
 
   sub header {
     my ($self, $header) = @_;
