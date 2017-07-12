@@ -93,7 +93,7 @@ package Paws::Net::FileMockCaller;
   sub caller_to_response {
     my ($self, $service, $call_object, $response) = @_;
  
-    return $self->real_caller->caller_to_response($service, $response);   
+    return $self->real_caller->caller_to_response($service, $call_object, $response);   
   };
 
 1;
