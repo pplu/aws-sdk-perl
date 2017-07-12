@@ -16,7 +16,6 @@ package Paws::Net::RetryCallerRole;
       $tracker->one_more_try;
 
       my $response = $self->send_request($service, $call_object);
-      my ($status, $content, $headers) = ($response->status, $response->content, $response->headers);
       my $result = $self->caller_to_response($service, $call_object, $response);
       $tracker->operation_result($result);
 
