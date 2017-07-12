@@ -2,6 +2,7 @@ package Paws::Signin;
   use Moose;
   use JSON::MaybeXS;
   use URI;
+  use Paws::Net::APIResponse;
   sub service { 'signin' }
   sub version { '2010-05-08' }
   sub flattened_arrays { 0 }
@@ -51,7 +52,12 @@ package Paws::Signin;
     $url->path('/federation');
     $url->query_form($params);
 
-    return $self->response_to_object($call_object, 200, encode_json({ URL => $url->as_string }), {});
+    my $response = Paws::Net::APIResponse->new(
+      status => 200,
+      content => encode_json({ URL => $url->as_string }),
+      headers => {},
+    );
+    return $self->response_to_object($call_object, $response);
   }
 
 1;
