@@ -28,7 +28,7 @@ package TestGivenResponse;
   sub caller_to_response {
     my ($self, $service, $call_object, $response) = @_;
 
-    my $res = $service->handle_response($call_object, $response);
+    my $res = $service->response_to_object->process($call_object, $response);
 
     if ($res->isa('Paws::Exception')){
       $res->throw

@@ -14,7 +14,7 @@ package Paws::Signin;
   ] });
 
 
-  with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::NoSignature', 'Paws::Net::SigninCaller', 'Paws::Net::JsonResponse';
+  with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::NoSignature', 'Paws::Net::SigninCaller';
  
   has '+region_rules' => (default => sub {
     my $regioninfo;
@@ -57,7 +57,7 @@ package Paws::Signin;
       content => encode_json({ URL => $url->as_string }),
       headers => {},
     );
-    return $self->response_to_object($call_object, $response);
+    return $self->response_to_object->process($call_object, $response);
   }
 
 1;

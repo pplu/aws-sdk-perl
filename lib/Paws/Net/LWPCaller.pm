@@ -48,7 +48,7 @@ package Paws::Net::LWPCaller;
     if ($response->status == 500 and $response->header('client-warning') eq 'Internal response') {
       return Paws::Exception->new(message => $response->content, code => 'ConnectionError', request_id => '');
     } else {
-      return $service->handle_response($call_object, $response);
+      return $service->response_to_object->process($call_object, $response);
     }
   }
 1;

@@ -66,7 +66,7 @@ package Paws::Net::MojoAsyncCaller;
             headers => $response->res->headers->to_hash,
           );
 
-          my $res = $service->handle_response($call_object, $rObj);
+          my $res = $service->response_to_object->process($call_object, $rObj);
 
           if (not ref($res)){
             $future->done($res);

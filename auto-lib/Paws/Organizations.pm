@@ -11,7 +11,7 @@ package Paws::Organizations;
   has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
   ] });
 
-  with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
+  with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
 
   
   sub AcceptHandshake {
@@ -210,6 +210,282 @@ package Paws::Organizations;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub ListAllAccounts {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListAccounts(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListAccounts(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Accounts }, @{ $next_result->Accounts };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Accounts') foreach (@{ $result->Accounts });
+        $result = $self->ListAccounts(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Accounts') foreach (@{ $result->Accounts });
+    }
+
+    return undef
+  }
+  sub ListAllAccountsForParent {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListAccountsForParent(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListAccountsForParent(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Accounts }, @{ $next_result->Accounts };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Accounts') foreach (@{ $result->Accounts });
+        $result = $self->ListAccountsForParent(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Accounts') foreach (@{ $result->Accounts });
+    }
+
+    return undef
+  }
+  sub ListAllChildren {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListChildren(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListChildren(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Children }, @{ $next_result->Children };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Children') foreach (@{ $result->Children });
+        $result = $self->ListChildren(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Children') foreach (@{ $result->Children });
+    }
+
+    return undef
+  }
+  sub ListAllCreateAccountStatus {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListCreateAccountStatus(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListCreateAccountStatus(@_, NextToken => $next_result->NextToken);
+        push @{ $result->CreateAccountStatuses }, @{ $next_result->CreateAccountStatuses };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'CreateAccountStatuses') foreach (@{ $result->CreateAccountStatuses });
+        $result = $self->ListCreateAccountStatus(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'CreateAccountStatuses') foreach (@{ $result->CreateAccountStatuses });
+    }
+
+    return undef
+  }
+  sub ListAllHandshakesForAccount {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListHandshakesForAccount(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListHandshakesForAccount(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Handshakes }, @{ $next_result->Handshakes };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Handshakes') foreach (@{ $result->Handshakes });
+        $result = $self->ListHandshakesForAccount(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Handshakes') foreach (@{ $result->Handshakes });
+    }
+
+    return undef
+  }
+  sub ListAllHandshakesForOrganization {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListHandshakesForOrganization(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListHandshakesForOrganization(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Handshakes }, @{ $next_result->Handshakes };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Handshakes') foreach (@{ $result->Handshakes });
+        $result = $self->ListHandshakesForOrganization(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Handshakes') foreach (@{ $result->Handshakes });
+    }
+
+    return undef
+  }
+  sub ListAllOrganizationalUnitsForParent {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListOrganizationalUnitsForParent(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListOrganizationalUnitsForParent(@_, NextToken => $next_result->NextToken);
+        push @{ $result->OrganizationalUnits }, @{ $next_result->OrganizationalUnits };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'OrganizationalUnits') foreach (@{ $result->OrganizationalUnits });
+        $result = $self->ListOrganizationalUnitsForParent(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'OrganizationalUnits') foreach (@{ $result->OrganizationalUnits });
+    }
+
+    return undef
+  }
+  sub ListAllParents {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListParents(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListParents(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Parents }, @{ $next_result->Parents };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Parents') foreach (@{ $result->Parents });
+        $result = $self->ListParents(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Parents') foreach (@{ $result->Parents });
+    }
+
+    return undef
+  }
+  sub ListAllPolicies {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListPolicies(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListPolicies(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Policies }, @{ $next_result->Policies };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Policies') foreach (@{ $result->Policies });
+        $result = $self->ListPolicies(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Policies') foreach (@{ $result->Policies });
+    }
+
+    return undef
+  }
+  sub ListAllPoliciesForTarget {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListPoliciesForTarget(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListPoliciesForTarget(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Policies }, @{ $next_result->Policies };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Policies') foreach (@{ $result->Policies });
+        $result = $self->ListPoliciesForTarget(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Policies') foreach (@{ $result->Policies });
+    }
+
+    return undef
+  }
+  sub ListAllRoots {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListRoots(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListRoots(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Roots }, @{ $next_result->Roots };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Roots') foreach (@{ $result->Roots });
+        $result = $self->ListRoots(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Roots') foreach (@{ $result->Roots });
+    }
+
+    return undef
+  }
+  sub ListAllTargetsForPolicy {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListTargetsForPolicy(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListTargetsForPolicy(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Targets }, @{ $next_result->Targets };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Targets') foreach (@{ $result->Targets });
+        $result = $self->ListTargetsForPolicy(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Targets') foreach (@{ $result->Targets });
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/AcceptHandshake AttachPolicy CancelHandshake CreateAccount CreateOrganization CreateOrganizationalUnit CreatePolicy DeclineHandshake DeleteOrganization DeleteOrganizationalUnit DeletePolicy DescribeAccount DescribeCreateAccountStatus DescribeHandshake DescribeOrganization DescribeOrganizationalUnit DescribePolicy DetachPolicy DisablePolicyType EnableAllFeatures EnablePolicyType InviteAccountToOrganization LeaveOrganization ListAccounts ListAccountsForParent ListChildren ListCreateAccountStatus ListHandshakesForAccount ListHandshakesForOrganization ListOrganizationalUnitsForParent ListParents ListPolicies ListPoliciesForTarget ListRoots ListTargetsForPolicy MoveAccount RemoveAccountFromOrganization UpdateOrganizationalUnit UpdatePolicy / }
@@ -1141,6 +1417,150 @@ account.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllAccounts(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 ListAllAccounts([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Accounts, passing the object as the first parameter, and the string 'Accounts' as the second parameter 
+
+If not, it will return a a L<Paws::Organizations::ListAccountsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllAccountsForParent(sub { },ParentId => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllAccountsForParent(ParentId => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Accounts, passing the object as the first parameter, and the string 'Accounts' as the second parameter 
+
+If not, it will return a a L<Paws::Organizations::ListAccountsForParentResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllChildren(sub { },ChildType => Str, ParentId => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllChildren(ChildType => Str, ParentId => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Children, passing the object as the first parameter, and the string 'Children' as the second parameter 
+
+If not, it will return a a L<Paws::Organizations::ListChildrenResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllCreateAccountStatus(sub { },[MaxResults => Int, NextToken => Str, States => ArrayRef[Str|Undef]])
+
+=head2 ListAllCreateAccountStatus([MaxResults => Int, NextToken => Str, States => ArrayRef[Str|Undef]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - CreateAccountStatuses, passing the object as the first parameter, and the string 'CreateAccountStatuses' as the second parameter 
+
+If not, it will return a a L<Paws::Organizations::ListCreateAccountStatusResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllHandshakesForAccount(sub { },[Filter => L<Paws::Organizations::HandshakeFilter>, MaxResults => Int, NextToken => Str])
+
+=head2 ListAllHandshakesForAccount([Filter => L<Paws::Organizations::HandshakeFilter>, MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Handshakes, passing the object as the first parameter, and the string 'Handshakes' as the second parameter 
+
+If not, it will return a a L<Paws::Organizations::ListHandshakesForAccountResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllHandshakesForOrganization(sub { },[Filter => L<Paws::Organizations::HandshakeFilter>, MaxResults => Int, NextToken => Str])
+
+=head2 ListAllHandshakesForOrganization([Filter => L<Paws::Organizations::HandshakeFilter>, MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Handshakes, passing the object as the first parameter, and the string 'Handshakes' as the second parameter 
+
+If not, it will return a a L<Paws::Organizations::ListHandshakesForOrganizationResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllOrganizationalUnitsForParent(sub { },ParentId => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllOrganizationalUnitsForParent(ParentId => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - OrganizationalUnits, passing the object as the first parameter, and the string 'OrganizationalUnits' as the second parameter 
+
+If not, it will return a a L<Paws::Organizations::ListOrganizationalUnitsForParentResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllParents(sub { },ChildId => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllParents(ChildId => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Parents, passing the object as the first parameter, and the string 'Parents' as the second parameter 
+
+If not, it will return a a L<Paws::Organizations::ListParentsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllPolicies(sub { },Filter => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllPolicies(Filter => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Policies, passing the object as the first parameter, and the string 'Policies' as the second parameter 
+
+If not, it will return a a L<Paws::Organizations::ListPoliciesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllPoliciesForTarget(sub { },Filter => Str, TargetId => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllPoliciesForTarget(Filter => Str, TargetId => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Policies, passing the object as the first parameter, and the string 'Policies' as the second parameter 
+
+If not, it will return a a L<Paws::Organizations::ListPoliciesForTargetResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllRoots(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 ListAllRoots([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Roots, passing the object as the first parameter, and the string 'Roots' as the second parameter 
+
+If not, it will return a a L<Paws::Organizations::ListRootsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllTargetsForPolicy(sub { },PolicyId => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllTargetsForPolicy(PolicyId => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Targets, passing the object as the first parameter, and the string 'Targets' as the second parameter 
+
+If not, it will return a a L<Paws::Organizations::ListTargetsForPolicyResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 

@@ -10,7 +10,7 @@ package Paws::IoT;
   has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
   ] });
 
-  with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller', 'Paws::Net::RestJsonResponse';
+  with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller';
 
   
   sub AcceptCertificateTransfer {
@@ -299,6 +299,259 @@ package Paws::IoT;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub ListAllCACertificates {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListCACertificates(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextMarker) {
+        $next_result = $self->ListCACertificates(@_, marker => $next_result->nextMarker);
+        push @{ $result->certificates }, @{ $next_result->certificates };
+      }
+      return $result;
+    } else {
+      while ($result->nextMarker) {
+        $callback->($_ => 'certificates') foreach (@{ $result->certificates });
+        $result = $self->ListCACertificates(@_, marker => $result->nextMarker);
+      }
+      $callback->($_ => 'certificates') foreach (@{ $result->certificates });
+    }
+
+    return undef
+  }
+  sub ListAllCertificates {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListCertificates(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextMarker) {
+        $next_result = $self->ListCertificates(@_, marker => $next_result->nextMarker);
+        push @{ $result->certificates }, @{ $next_result->certificates };
+      }
+      return $result;
+    } else {
+      while ($result->nextMarker) {
+        $callback->($_ => 'certificates') foreach (@{ $result->certificates });
+        $result = $self->ListCertificates(@_, marker => $result->nextMarker);
+      }
+      $callback->($_ => 'certificates') foreach (@{ $result->certificates });
+    }
+
+    return undef
+  }
+  sub ListAllCertificatesByCA {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListCertificatesByCA(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextMarker) {
+        $next_result = $self->ListCertificatesByCA(@_, marker => $next_result->nextMarker);
+        push @{ $result->certificates }, @{ $next_result->certificates };
+      }
+      return $result;
+    } else {
+      while ($result->nextMarker) {
+        $callback->($_ => 'certificates') foreach (@{ $result->certificates });
+        $result = $self->ListCertificatesByCA(@_, marker => $result->nextMarker);
+      }
+      $callback->($_ => 'certificates') foreach (@{ $result->certificates });
+    }
+
+    return undef
+  }
+  sub ListAllOutgoingCertificates {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListOutgoingCertificates(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextMarker) {
+        $next_result = $self->ListOutgoingCertificates(@_, marker => $next_result->nextMarker);
+        push @{ $result->outgoingCertificates }, @{ $next_result->outgoingCertificates };
+      }
+      return $result;
+    } else {
+      while ($result->nextMarker) {
+        $callback->($_ => 'outgoingCertificates') foreach (@{ $result->outgoingCertificates });
+        $result = $self->ListOutgoingCertificates(@_, marker => $result->nextMarker);
+      }
+      $callback->($_ => 'outgoingCertificates') foreach (@{ $result->outgoingCertificates });
+    }
+
+    return undef
+  }
+  sub ListAllPolicies {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListPolicies(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextMarker) {
+        $next_result = $self->ListPolicies(@_, marker => $next_result->nextMarker);
+        push @{ $result->policies }, @{ $next_result->policies };
+      }
+      return $result;
+    } else {
+      while ($result->nextMarker) {
+        $callback->($_ => 'policies') foreach (@{ $result->policies });
+        $result = $self->ListPolicies(@_, marker => $result->nextMarker);
+      }
+      $callback->($_ => 'policies') foreach (@{ $result->policies });
+    }
+
+    return undef
+  }
+  sub ListAllPolicyPrincipals {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListPolicyPrincipals(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextMarker) {
+        $next_result = $self->ListPolicyPrincipals(@_, marker => $next_result->nextMarker);
+        push @{ $result->principals }, @{ $next_result->principals };
+      }
+      return $result;
+    } else {
+      while ($result->nextMarker) {
+        $callback->($_ => 'principals') foreach (@{ $result->principals });
+        $result = $self->ListPolicyPrincipals(@_, marker => $result->nextMarker);
+      }
+      $callback->($_ => 'principals') foreach (@{ $result->principals });
+    }
+
+    return undef
+  }
+  sub ListAllPrincipalPolicies {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListPrincipalPolicies(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextMarker) {
+        $next_result = $self->ListPrincipalPolicies(@_, marker => $next_result->nextMarker);
+        push @{ $result->policies }, @{ $next_result->policies };
+      }
+      return $result;
+    } else {
+      while ($result->nextMarker) {
+        $callback->($_ => 'policies') foreach (@{ $result->policies });
+        $result = $self->ListPrincipalPolicies(@_, marker => $result->nextMarker);
+      }
+      $callback->($_ => 'policies') foreach (@{ $result->policies });
+    }
+
+    return undef
+  }
+  sub ListAllPrincipalThings {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListPrincipalThings(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListPrincipalThings(@_, nextToken => $next_result->nextToken);
+        push @{ $result->things }, @{ $next_result->things };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'things') foreach (@{ $result->things });
+        $result = $self->ListPrincipalThings(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'things') foreach (@{ $result->things });
+    }
+
+    return undef
+  }
+  sub ListAllThings {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListThings(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListThings(@_, nextToken => $next_result->nextToken);
+        push @{ $result->things }, @{ $next_result->things };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'things') foreach (@{ $result->things });
+        $result = $self->ListThings(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'things') foreach (@{ $result->things });
+    }
+
+    return undef
+  }
+  sub ListAllThingTypes {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListThingTypes(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListThingTypes(@_, nextToken => $next_result->nextToken);
+        push @{ $result->thingTypes }, @{ $next_result->thingTypes };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'thingTypes') foreach (@{ $result->thingTypes });
+        $result = $self->ListThingTypes(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'thingTypes') foreach (@{ $result->thingTypes });
+    }
+
+    return undef
+  }
+  sub ListAllTopicRules {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListTopicRules(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListTopicRules(@_, nextToken => $next_result->nextToken);
+        push @{ $result->rules }, @{ $next_result->rules };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'rules') foreach (@{ $result->rules });
+        $result = $self->ListTopicRules(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'rules') foreach (@{ $result->rules });
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/AcceptCertificateTransfer AttachPrincipalPolicy AttachThingPrincipal CancelCertificateTransfer CreateCertificateFromCsr CreateKeysAndCertificate CreatePolicy CreatePolicyVersion CreateThing CreateThingType CreateTopicRule DeleteCACertificate DeleteCertificate DeletePolicy DeletePolicyVersion DeleteRegistrationCode DeleteThing DeleteThingType DeleteTopicRule DeprecateThingType DescribeCACertificate DescribeCertificate DescribeEndpoint DescribeThing DescribeThingType DetachPrincipalPolicy DetachThingPrincipal DisableTopicRule EnableTopicRule GetLoggingOptions GetPolicy GetPolicyVersion GetRegistrationCode GetTopicRule ListCACertificates ListCertificates ListCertificatesByCA ListOutgoingCertificates ListPolicies ListPolicyPrincipals ListPolicyVersions ListPrincipalPolicies ListPrincipalThings ListThingPrincipals ListThings ListThingTypes ListTopicRules RegisterCACertificate RegisterCertificate RejectCertificateTransfer ReplaceTopicRule SetDefaultPolicyVersion SetLoggingOptions TransferCertificate UpdateCACertificate UpdateCertificate UpdateThing / }
@@ -1023,6 +1276,138 @@ Returns: a L<Paws::IoT::UpdateThingResponse> instance
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllCACertificates(sub { },[AscendingOrder => Bool, Marker => Str, PageSize => Int])
+
+=head2 ListAllCACertificates([AscendingOrder => Bool, Marker => Str, PageSize => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - certificates, passing the object as the first parameter, and the string 'certificates' as the second parameter 
+
+If not, it will return a a L<Paws::IoT::ListCACertificatesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllCertificates(sub { },[AscendingOrder => Bool, Marker => Str, PageSize => Int])
+
+=head2 ListAllCertificates([AscendingOrder => Bool, Marker => Str, PageSize => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - certificates, passing the object as the first parameter, and the string 'certificates' as the second parameter 
+
+If not, it will return a a L<Paws::IoT::ListCertificatesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllCertificatesByCA(sub { },CaCertificateId => Str, [AscendingOrder => Bool, Marker => Str, PageSize => Int])
+
+=head2 ListAllCertificatesByCA(CaCertificateId => Str, [AscendingOrder => Bool, Marker => Str, PageSize => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - certificates, passing the object as the first parameter, and the string 'certificates' as the second parameter 
+
+If not, it will return a a L<Paws::IoT::ListCertificatesByCAResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllOutgoingCertificates(sub { },[AscendingOrder => Bool, Marker => Str, PageSize => Int])
+
+=head2 ListAllOutgoingCertificates([AscendingOrder => Bool, Marker => Str, PageSize => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - outgoingCertificates, passing the object as the first parameter, and the string 'outgoingCertificates' as the second parameter 
+
+If not, it will return a a L<Paws::IoT::ListOutgoingCertificatesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllPolicies(sub { },[AscendingOrder => Bool, Marker => Str, PageSize => Int])
+
+=head2 ListAllPolicies([AscendingOrder => Bool, Marker => Str, PageSize => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - policies, passing the object as the first parameter, and the string 'policies' as the second parameter 
+
+If not, it will return a a L<Paws::IoT::ListPoliciesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllPolicyPrincipals(sub { },PolicyName => Str, [AscendingOrder => Bool, Marker => Str, PageSize => Int])
+
+=head2 ListAllPolicyPrincipals(PolicyName => Str, [AscendingOrder => Bool, Marker => Str, PageSize => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - principals, passing the object as the first parameter, and the string 'principals' as the second parameter 
+
+If not, it will return a a L<Paws::IoT::ListPolicyPrincipalsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllPrincipalPolicies(sub { },Principal => Str, [AscendingOrder => Bool, Marker => Str, PageSize => Int])
+
+=head2 ListAllPrincipalPolicies(Principal => Str, [AscendingOrder => Bool, Marker => Str, PageSize => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - policies, passing the object as the first parameter, and the string 'policies' as the second parameter 
+
+If not, it will return a a L<Paws::IoT::ListPrincipalPoliciesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllPrincipalThings(sub { },Principal => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllPrincipalThings(Principal => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - things, passing the object as the first parameter, and the string 'things' as the second parameter 
+
+If not, it will return a a L<Paws::IoT::ListPrincipalThingsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllThings(sub { },[AttributeName => Str, AttributeValue => Str, MaxResults => Int, NextToken => Str, ThingTypeName => Str])
+
+=head2 ListAllThings([AttributeName => Str, AttributeValue => Str, MaxResults => Int, NextToken => Str, ThingTypeName => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - things, passing the object as the first parameter, and the string 'things' as the second parameter 
+
+If not, it will return a a L<Paws::IoT::ListThingsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllThingTypes(sub { },[MaxResults => Int, NextToken => Str, ThingTypeName => Str])
+
+=head2 ListAllThingTypes([MaxResults => Int, NextToken => Str, ThingTypeName => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - thingTypes, passing the object as the first parameter, and the string 'thingTypes' as the second parameter 
+
+If not, it will return a a L<Paws::IoT::ListThingTypesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllTopicRules(sub { },[MaxResults => Int, NextToken => Str, RuleDisabled => Bool, Topic => Str])
+
+=head2 ListAllTopicRules([MaxResults => Int, NextToken => Str, RuleDisabled => Bool, Topic => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - rules, passing the object as the first parameter, and the string 'rules' as the second parameter 
+
+If not, it will return a a L<Paws::IoT::ListTopicRulesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 

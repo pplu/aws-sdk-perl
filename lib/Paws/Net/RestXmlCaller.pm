@@ -6,6 +6,16 @@ package Paws::Net::RestXmlCaller;
   use URI::Escape;
   use Moose::Util;
 
+  use Paws::Net::RestXMLResponse;
+
+  has response_to_object => (
+    is => 'ro',
+    default => sub {
+      Paws::Net::RestXMLResponse->new;
+    }
+  );
+
+
   sub array_flatten_string {
     my $self = shift;
     return ($self->flattened_arrays)?'%s.%d':'%s.member.%d';

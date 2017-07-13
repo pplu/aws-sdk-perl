@@ -47,15 +47,7 @@ package FileCaller;
       headers => $response->{headers}
     );
 
-    return $self->caller_to_response($service, $call_object, $res);
-  }
-
-  sub caller_to_response {
-    my ($self, $service, $call_object, $response) = @_;
-
-    my $res = $service->handle_response($call_object, $response);
-
-    return $res;
+    return $service->response_to_object->process($call_object, $res);
   }
 
   # Return a fake HTTP-like response cooked in a YAML file
