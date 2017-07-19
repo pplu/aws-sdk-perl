@@ -18,7 +18,7 @@ Paws::ApiGateway::Authorizers
 
 =head2 Items => ArrayRef[L<Paws::ApiGateway::Authorizer>]
 
-Gets the current list of Authorizer resources in the collection.
+The current page of elements from this collection.
 
 
 =head2 Position => Str

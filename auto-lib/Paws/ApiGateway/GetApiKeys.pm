@@ -55,7 +55,7 @@ result contains key values.
 
 =head2 Limit => Int
 
-The maximum number of ApiKeys to get information about.
+The maximum number of returned results per page.
 
 
 

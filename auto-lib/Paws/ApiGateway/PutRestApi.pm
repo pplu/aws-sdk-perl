@@ -42,7 +42,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 B<REQUIRED> Body => Str
 
 The PUT request body containing external API definitions. Currently,
-only Swagger definition JSON files are supported.
+only Swagger definition JSON files are supported. The maximum size of
+the API definition file is 2MB.
 
 
 
@@ -63,13 +64,17 @@ Valid values are: C<"merge">, C<"overwrite">
 
 =head2 Parameters => L<Paws::ApiGateway::MapOfStringToString>
 
-Custom headers supplied as part of the request.
+Custom header parameters as part of the request. For example, to
+exclude DocumentationParts from an imported API, set
+C<ignore=documentation> as a C<parameters> value, as in the AWS CLI
+command of C<aws apigateway import-rest-api --parameters
+ignore=documentation --body 'file:///path/to/imported-api-body.json>.
 
 
 
 =head2 B<REQUIRED> RestApiId => Str
 
-The identifier of the RestApi to be updated.
+The string identifier of the associated RestApi.
 
 
 

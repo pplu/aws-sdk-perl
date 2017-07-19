@@ -44,8 +44,7 @@ The identifier of the Deployment resource to delete.
 
 =head2 B<REQUIRED> RestApiId => Str
 
-The identifier of the RestApi resource for the Deployment resource to
-delete.
+The string identifier of the associated RestApi.
 
 
 

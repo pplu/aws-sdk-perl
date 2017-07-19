@@ -1,5 +1,5 @@
 
-package Paws::ApiGateway::GetModels;
+package Paws::ApiGateway::GetGatewayResponses;
   use Moose;
   has Limit => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'limit' );
   has Position => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'position' );
@@ -7,10 +7,10 @@ package Paws::ApiGateway::GetModels;
 
   use MooseX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetModels');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/restapis/{restapi_id}/models');
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetGatewayResponses');
+  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/restapis/{restapi_id}/gatewayresponses');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGateway::Models');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGateway::GatewayResponses');
   class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
@@ -18,19 +18,19 @@ package Paws::ApiGateway::GetModels;
 
 =head1 NAME
 
-Paws::ApiGateway::GetModels - Arguments for method GetModels on Paws::ApiGateway
+Paws::ApiGateway::GetGatewayResponses - Arguments for method GetGatewayResponses on Paws::ApiGateway
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method GetModels on the 
+This class represents the parameters used for calling the method GetGatewayResponses on the 
 Amazon API Gateway service. Use the attributes of this class
-as arguments to method GetModels.
+as arguments to method GetGatewayResponses.
 
-You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetModels.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetGatewayResponses.
 
 As an example:
 
-  $service_obj->GetModels(Att1 => $value1, Att2 => $value2, ...);
+  $service_obj->GetGatewayResponses(Att1 => $value1, Att2 => $value2, ...);
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 
@@ -39,14 +39,17 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Limit => Int
 
-The maximum number of returned results per page. The value is 25 by
-default and could be between 1 - 500.
+The maximum number of returned results per page. The GatewayResponses
+collection does not support pagination and the limit does not apply
+here.
 
 
 
 =head2 Position => Str
 
-The current pagination position in the paged result set.
+The current pagination position in the paged result set. The
+GatewayResponse collection does not support pagination and the position
+does not apply here.
 
 
 
@@ -59,7 +62,7 @@ The string identifier of the associated RestApi.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, documenting arguments for method GetModels in L<Paws::ApiGateway>
+This class forms part of L<Paws>, documenting arguments for method GetGatewayResponses in L<Paws::ApiGateway>
 
 =head1 BUGS and CONTRIBUTIONS
 

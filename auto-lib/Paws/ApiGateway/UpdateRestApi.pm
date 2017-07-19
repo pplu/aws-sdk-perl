@@ -45,7 +45,7 @@ in the order specified in this list.
 
 =head2 B<REQUIRED> RestApiId => Str
 
-The ID of the RestApi you want to update.
+The string identifier of the associated RestApi.
 
 
 

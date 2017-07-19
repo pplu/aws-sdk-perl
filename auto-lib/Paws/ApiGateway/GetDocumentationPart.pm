@@ -38,14 +38,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DocumentationPartId => Str
 
-[Required] The identifier of the to-be-retrieved documentation part.
+[Required] The string identifier of the associated RestApi.
 
 
 
 =head2 B<REQUIRED> RestApiId => Str
 
-[Required] The identifier of an API of the to-be-retrieved
-documentation part.
+[Required] The string identifier of the associated RestApi.
 
 
 

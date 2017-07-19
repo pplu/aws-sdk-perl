@@ -51,7 +51,7 @@ Specifies a get integration request's resource identifier
 
 =head2 B<REQUIRED> RestApiId => Str
 
-Specifies a get integration request's API identifier.
+The string identifier of the associated RestApi.
 
 
 

@@ -19,8 +19,7 @@ Paws::ApiGateway::ApiKeys
 
 =head2 Items => ArrayRef[L<Paws::ApiGateway::ApiKey>]
 
-The current page of any ApiKey resources in the collection of ApiKey
-resources.
+The current page of elements from this collection.
 
 
 =head2 Position => Str

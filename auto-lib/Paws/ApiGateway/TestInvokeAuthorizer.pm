@@ -78,7 +78,7 @@ string parameters.
 
 =head2 B<REQUIRED> RestApiId => Str
 
-Specifies a test invoke authorizer request's RestApi identifier.
+The string identifier of the associated RestApi.
 
 
 

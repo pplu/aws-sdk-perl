@@ -51,8 +51,7 @@ The current pagination position in the paged result set.
 
 =head2 B<REQUIRED> RestApiId => Str
 
-[Required] The identifier of a RestApi to which the RequestValidators
-collection belongs.
+The string identifier of the associated RestApi.
 
 
 

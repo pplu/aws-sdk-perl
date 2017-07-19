@@ -17,7 +17,7 @@ Paws::ApiGateway::Stages
 
 =head2 Item => ArrayRef[L<Paws::ApiGateway::Stage>]
 
-An individual Stage resource.
+The current page of elements from this collection.
 
 
 =head2 _request_id => Str

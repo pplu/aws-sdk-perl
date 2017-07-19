@@ -25,12 +25,12 @@ URL after the domain name.
 
 =head2 RestApiId => Str
 
-The name of the API.
+The string identifier of the associated RestApi.
 
 
 =head2 Stage => Str
 
-The name of the API's stage.
+The name of the associated stage.
 
 
 =head2 _request_id => Str

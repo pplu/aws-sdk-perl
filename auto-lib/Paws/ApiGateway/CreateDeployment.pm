@@ -62,7 +62,7 @@ The description for the Deployment resource to create.
 
 =head2 B<REQUIRED> RestApiId => Str
 
-The RestApi resource identifier for the Deployment resource to create.
+The string identifier of the associated RestApi.
 
 
 

@@ -63,8 +63,7 @@ Valid values are: C<"merge">, C<"overwrite">
 
 =head2 B<REQUIRED> RestApiId => Str
 
-[Required] The identifier of an API of the to-be-imported documentation
-parts.
+[Required] The string identifier of the associated RestApi.
 
 
 

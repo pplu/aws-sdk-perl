@@ -51,8 +51,7 @@ The current pagination position in the paged result set.
 
 =head2 B<REQUIRED> RestApiId => Str
 
-[Required] The identifier of an API of the to-be-retrieved
-documentation versions.
+[Required] The string identifier of the associated RestApi.
 
 
 

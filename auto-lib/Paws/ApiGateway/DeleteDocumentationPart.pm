@@ -44,8 +44,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> RestApiId => Str
 
-[Required] Specifies the identifier of an API of the to-be-deleted
-documentation part.
+[Required] The string identifier of the associated RestApi.
 
 
 

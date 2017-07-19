@@ -45,8 +45,7 @@ snapshot.
 
 =head2 B<REQUIRED> RestApiId => Str
 
-[Required] The identifier of an API of a to-be-deleted documentation
-snapshot.
+[Required] The string identifier of the associated RestApi.
 
 
 

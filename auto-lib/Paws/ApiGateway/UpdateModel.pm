@@ -52,7 +52,7 @@ in the order specified in this list.
 
 =head2 B<REQUIRED> RestApiId => Str
 
-The RestApi identifier under which the model exists.
+The string identifier of the associated RestApi.
 
 
 
