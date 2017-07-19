@@ -16,6 +16,7 @@ package Paws::CognitoIdp::CreateUserPool;
   has SmsAuthenticationMessage => (is => 'ro', isa => 'Str');
   has SmsConfiguration => (is => 'ro', isa => 'Paws::CognitoIdp::SmsConfigurationType');
   has SmsVerificationMessage => (is => 'ro', isa => 'Str');
+  has UsernameAttributes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has UserPoolTags => (is => 'ro', isa => 'Paws::CognitoIdp::UserPoolTagsType');
 
   use MooseX::ClassAttribute;
@@ -138,6 +139,13 @@ The SMS configuration.
 =head2 SmsVerificationMessage => Str
 
 A string representing the SMS verification message.
+
+
+
+=head2 UsernameAttributes => ArrayRef[Str|Undef]
+
+Specifies whether email addresses or phone numbers can be specified as
+usernames when a user signs up.
 
 
 

@@ -22,6 +22,7 @@ package Paws::CognitoIdp::UserPoolType;
   has SmsConfigurationFailure => (is => 'ro', isa => 'Str');
   has SmsVerificationMessage => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
+  has UsernameAttributes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has UserPoolTags => (is => 'ro', isa => 'Paws::CognitoIdp::UserPoolTagsType');
 1;
 
@@ -188,6 +189,12 @@ users.
 =head2 Status => Str
 
   The status of a user pool.
+
+
+=head2 UsernameAttributes => ArrayRef[Str|Undef]
+
+  Specifies whether email addresses or phone numbers can be specified as
+usernames when a user signs up.
 
 
 =head2 UserPoolTags => L<Paws::CognitoIdp::UserPoolTagsType>
