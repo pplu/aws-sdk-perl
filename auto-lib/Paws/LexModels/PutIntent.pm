@@ -114,21 +114,39 @@ and set the corresponding session attribute.
 
 =head2 FollowUpPrompt => L<Paws::LexModels::FollowUpPrompt>
 
-A user prompt for additional activity after an intent is fulfilled. For
-example, after the C<OrderPizza> intent is fulfilled (your Lambda
-function placed an order with a pizzeria), you might prompt the user to
-find if they want to order a drink (assuming that you have defined an
-C<OrderDrink> intent in your bot).
+Amazon Lex uses this prompt to solicit additional activity after
+fulfilling an intent. For example, after the C<OrderPizza> intent is
+fulfilled, you might prompt the user to order a drink.
 
-The C<followUpPrompt> and C<conclusionStatement> are mutually
-exclusive. You can specify only one. For example, your bot may not
-solicit both the following:
+The action that Amazon Lex takes depends on the user's response, as
+follows:
 
-Follow up prompt - "C<$session.FirstName>, your pizza order has been
-placed. Would you like to order a drink or a dessert?"
+=over
 
-Conclusion statement - "C<$session.FirstName>, your pizza order has
-been placed."
+=item *
+
+If the user says "Yes" it responds with the clarification prompt that
+is configured for the bot.
+
+=item *
+
+if the user says "Yes" and continues with an utterance that triggers an
+intent it starts a conversation for the intent.
+
+=item *
+
+If the user says "No" it responds with the rejection statement
+configured for the the follow-up prompt.
+
+=item *
+
+If it doesn't recognize the utterance it repeats the follow-up prompt
+again.
+
+=back
+
+The C<followUpPrompt> field and the C<conclusionStatement> field are
+mutually exclusive. You can specify only one.
 
 
 

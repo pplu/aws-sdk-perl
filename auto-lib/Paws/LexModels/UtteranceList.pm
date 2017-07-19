@@ -45,8 +45,9 @@ of your bot. The list contains a maximum of 100 utterances.
 
 =head2 Utterances => ArrayRef[L<Paws::LexModels::UtteranceData>]
 
-  One or more objects that contain information about the utterances that
-have been made to a bot. The maximum number of object is 100.
+  One or more UtteranceData objects that contain information about the
+utterances that have been made to a bot. The maximum number of object
+is 100.
 
 
 

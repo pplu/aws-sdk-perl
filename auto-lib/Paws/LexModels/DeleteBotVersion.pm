@@ -45,7 +45,7 @@ The name of the bot.
 =head2 B<REQUIRED> Version => Str
 
 The version of the bot to delete. You cannot delete the C<$LATEST>
-version of the bot. To delete the C<$LATEST> version, use the
+version of the bot. To delete the C<$LATEST> version, use the DeleteBot
 operation.
 
 

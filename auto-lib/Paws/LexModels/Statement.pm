@@ -45,9 +45,10 @@ runtime, Amazon Lex selects the message to convey.
 
 =head2 ResponseCard => Str
 
-  At runtime, if the client is using the API, Amazon Lex includes the
-response card in the response. It substitutes all of the session
-attributes and slot values for placeholders in the response card.
+  At runtime, if the client is using the PostText API, Amazon Lex
+includes the response card in the response. It substitutes all of the
+session attributes and slot values for placeholders in the response
+card.
 
 
 
