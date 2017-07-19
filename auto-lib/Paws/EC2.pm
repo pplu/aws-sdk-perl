@@ -229,6 +229,11 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::CreateNetworkInterface', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateNetworkInterfacePermission {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::CreateNetworkInterfacePermission', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreatePlacementGroup {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::CreatePlacementGroup', @_);
@@ -357,6 +362,11 @@ package Paws::EC2;
   sub DeleteNetworkInterface {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::DeleteNetworkInterface', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteNetworkInterfacePermission {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DeleteNetworkInterfacePermission', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeletePlacementGroup {
@@ -592,6 +602,11 @@ package Paws::EC2;
   sub DescribeNetworkInterfaceAttribute {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::DescribeNetworkInterfaceAttribute', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeNetworkInterfacePermissions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeNetworkInterfacePermissions', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeNetworkInterfaces {
@@ -1414,7 +1429,7 @@ package Paws::EC2;
   }
 
 
-  sub operations { qw/AcceptReservedInstancesExchangeQuote AcceptVpcPeeringConnection AllocateAddress AllocateHosts AssignIpv6Addresses AssignPrivateIpAddresses AssociateAddress AssociateDhcpOptions AssociateIamInstanceProfile AssociateRouteTable AssociateSubnetCidrBlock AssociateVpcCidrBlock AttachClassicLinkVpc AttachInternetGateway AttachNetworkInterface AttachVolume AttachVpnGateway AuthorizeSecurityGroupEgress AuthorizeSecurityGroupIngress BundleInstance CancelBundleTask CancelConversionTask CancelExportTask CancelImportTask CancelReservedInstancesListing CancelSpotFleetRequests CancelSpotInstanceRequests ConfirmProductInstance CopyImage CopySnapshot CreateCustomerGateway CreateDhcpOptions CreateEgressOnlyInternetGateway CreateFlowLogs CreateFpgaImage CreateImage CreateInstanceExportTask CreateInternetGateway CreateKeyPair CreateNatGateway CreateNetworkAcl CreateNetworkAclEntry CreateNetworkInterface CreatePlacementGroup CreateReservedInstancesListing CreateRoute CreateRouteTable CreateSecurityGroup CreateSnapshot CreateSpotDatafeedSubscription CreateSubnet CreateTags CreateVolume CreateVpc CreateVpcEndpoint CreateVpcPeeringConnection CreateVpnConnection CreateVpnConnectionRoute CreateVpnGateway DeleteCustomerGateway DeleteDhcpOptions DeleteEgressOnlyInternetGateway DeleteFlowLogs DeleteInternetGateway DeleteKeyPair DeleteNatGateway DeleteNetworkAcl DeleteNetworkAclEntry DeleteNetworkInterface DeletePlacementGroup DeleteRoute DeleteRouteTable DeleteSecurityGroup DeleteSnapshot DeleteSpotDatafeedSubscription DeleteSubnet DeleteTags DeleteVolume DeleteVpc DeleteVpcEndpoints DeleteVpcPeeringConnection DeleteVpnConnection DeleteVpnConnectionRoute DeleteVpnGateway DeregisterImage DescribeAccountAttributes DescribeAddresses DescribeAvailabilityZones DescribeBundleTasks DescribeClassicLinkInstances DescribeConversionTasks DescribeCustomerGateways DescribeDhcpOptions DescribeEgressOnlyInternetGateways DescribeExportTasks DescribeFlowLogs DescribeFpgaImages DescribeHostReservationOfferings DescribeHostReservations DescribeHosts DescribeIamInstanceProfileAssociations DescribeIdentityIdFormat DescribeIdFormat DescribeImageAttribute DescribeImages DescribeImportImageTasks DescribeImportSnapshotTasks DescribeInstanceAttribute DescribeInstances DescribeInstanceStatus DescribeInternetGateways DescribeKeyPairs DescribeMovingAddresses DescribeNatGateways DescribeNetworkAcls DescribeNetworkInterfaceAttribute DescribeNetworkInterfaces DescribePlacementGroups DescribePrefixLists DescribeRegions DescribeReservedInstances DescribeReservedInstancesListings DescribeReservedInstancesModifications DescribeReservedInstancesOfferings DescribeRouteTables DescribeScheduledInstanceAvailability DescribeScheduledInstances DescribeSecurityGroupReferences DescribeSecurityGroups DescribeSnapshotAttribute DescribeSnapshots DescribeSpotDatafeedSubscription DescribeSpotFleetInstances DescribeSpotFleetRequestHistory DescribeSpotFleetRequests DescribeSpotInstanceRequests DescribeSpotPriceHistory DescribeStaleSecurityGroups DescribeSubnets DescribeTags DescribeVolumeAttribute DescribeVolumes DescribeVolumesModifications DescribeVolumeStatus DescribeVpcAttribute DescribeVpcClassicLink DescribeVpcClassicLinkDnsSupport DescribeVpcEndpoints DescribeVpcEndpointServices DescribeVpcPeeringConnections DescribeVpcs DescribeVpnConnections DescribeVpnGateways DetachClassicLinkVpc DetachInternetGateway DetachNetworkInterface DetachVolume DetachVpnGateway DisableVgwRoutePropagation DisableVpcClassicLink DisableVpcClassicLinkDnsSupport DisassociateAddress DisassociateIamInstanceProfile DisassociateRouteTable DisassociateSubnetCidrBlock DisassociateVpcCidrBlock EnableVgwRoutePropagation EnableVolumeIO EnableVpcClassicLink EnableVpcClassicLinkDnsSupport GetConsoleOutput GetConsoleScreenshot GetHostReservationPurchasePreview GetPasswordData GetReservedInstancesExchangeQuote ImportImage ImportInstance ImportKeyPair ImportSnapshot ImportVolume ModifyHosts ModifyIdentityIdFormat ModifyIdFormat ModifyImageAttribute ModifyInstanceAttribute ModifyInstancePlacement ModifyNetworkInterfaceAttribute ModifyReservedInstances ModifySnapshotAttribute ModifySpotFleetRequest ModifySubnetAttribute ModifyVolume ModifyVolumeAttribute ModifyVpcAttribute ModifyVpcEndpoint ModifyVpcPeeringConnectionOptions MonitorInstances MoveAddressToVpc PurchaseHostReservation PurchaseReservedInstancesOffering PurchaseScheduledInstances RebootInstances RegisterImage RejectVpcPeeringConnection ReleaseAddress ReleaseHosts ReplaceIamInstanceProfileAssociation ReplaceNetworkAclAssociation ReplaceNetworkAclEntry ReplaceRoute ReplaceRouteTableAssociation ReportInstanceStatus RequestSpotFleet RequestSpotInstances ResetImageAttribute ResetInstanceAttribute ResetNetworkInterfaceAttribute ResetSnapshotAttribute RestoreAddressToClassic RevokeSecurityGroupEgress RevokeSecurityGroupIngress RunInstances RunScheduledInstances StartInstances StopInstances TerminateInstances UnassignIpv6Addresses UnassignPrivateIpAddresses UnmonitorInstances / }
+  sub operations { qw/AcceptReservedInstancesExchangeQuote AcceptVpcPeeringConnection AllocateAddress AllocateHosts AssignIpv6Addresses AssignPrivateIpAddresses AssociateAddress AssociateDhcpOptions AssociateIamInstanceProfile AssociateRouteTable AssociateSubnetCidrBlock AssociateVpcCidrBlock AttachClassicLinkVpc AttachInternetGateway AttachNetworkInterface AttachVolume AttachVpnGateway AuthorizeSecurityGroupEgress AuthorizeSecurityGroupIngress BundleInstance CancelBundleTask CancelConversionTask CancelExportTask CancelImportTask CancelReservedInstancesListing CancelSpotFleetRequests CancelSpotInstanceRequests ConfirmProductInstance CopyImage CopySnapshot CreateCustomerGateway CreateDhcpOptions CreateEgressOnlyInternetGateway CreateFlowLogs CreateFpgaImage CreateImage CreateInstanceExportTask CreateInternetGateway CreateKeyPair CreateNatGateway CreateNetworkAcl CreateNetworkAclEntry CreateNetworkInterface CreateNetworkInterfacePermission CreatePlacementGroup CreateReservedInstancesListing CreateRoute CreateRouteTable CreateSecurityGroup CreateSnapshot CreateSpotDatafeedSubscription CreateSubnet CreateTags CreateVolume CreateVpc CreateVpcEndpoint CreateVpcPeeringConnection CreateVpnConnection CreateVpnConnectionRoute CreateVpnGateway DeleteCustomerGateway DeleteDhcpOptions DeleteEgressOnlyInternetGateway DeleteFlowLogs DeleteInternetGateway DeleteKeyPair DeleteNatGateway DeleteNetworkAcl DeleteNetworkAclEntry DeleteNetworkInterface DeleteNetworkInterfacePermission DeletePlacementGroup DeleteRoute DeleteRouteTable DeleteSecurityGroup DeleteSnapshot DeleteSpotDatafeedSubscription DeleteSubnet DeleteTags DeleteVolume DeleteVpc DeleteVpcEndpoints DeleteVpcPeeringConnection DeleteVpnConnection DeleteVpnConnectionRoute DeleteVpnGateway DeregisterImage DescribeAccountAttributes DescribeAddresses DescribeAvailabilityZones DescribeBundleTasks DescribeClassicLinkInstances DescribeConversionTasks DescribeCustomerGateways DescribeDhcpOptions DescribeEgressOnlyInternetGateways DescribeExportTasks DescribeFlowLogs DescribeFpgaImages DescribeHostReservationOfferings DescribeHostReservations DescribeHosts DescribeIamInstanceProfileAssociations DescribeIdentityIdFormat DescribeIdFormat DescribeImageAttribute DescribeImages DescribeImportImageTasks DescribeImportSnapshotTasks DescribeInstanceAttribute DescribeInstances DescribeInstanceStatus DescribeInternetGateways DescribeKeyPairs DescribeMovingAddresses DescribeNatGateways DescribeNetworkAcls DescribeNetworkInterfaceAttribute DescribeNetworkInterfacePermissions DescribeNetworkInterfaces DescribePlacementGroups DescribePrefixLists DescribeRegions DescribeReservedInstances DescribeReservedInstancesListings DescribeReservedInstancesModifications DescribeReservedInstancesOfferings DescribeRouteTables DescribeScheduledInstanceAvailability DescribeScheduledInstances DescribeSecurityGroupReferences DescribeSecurityGroups DescribeSnapshotAttribute DescribeSnapshots DescribeSpotDatafeedSubscription DescribeSpotFleetInstances DescribeSpotFleetRequestHistory DescribeSpotFleetRequests DescribeSpotInstanceRequests DescribeSpotPriceHistory DescribeStaleSecurityGroups DescribeSubnets DescribeTags DescribeVolumeAttribute DescribeVolumes DescribeVolumesModifications DescribeVolumeStatus DescribeVpcAttribute DescribeVpcClassicLink DescribeVpcClassicLinkDnsSupport DescribeVpcEndpoints DescribeVpcEndpointServices DescribeVpcPeeringConnections DescribeVpcs DescribeVpnConnections DescribeVpnGateways DetachClassicLinkVpc DetachInternetGateway DetachNetworkInterface DetachVolume DetachVpnGateway DisableVgwRoutePropagation DisableVpcClassicLink DisableVpcClassicLinkDnsSupport DisassociateAddress DisassociateIamInstanceProfile DisassociateRouteTable DisassociateSubnetCidrBlock DisassociateVpcCidrBlock EnableVgwRoutePropagation EnableVolumeIO EnableVpcClassicLink EnableVpcClassicLinkDnsSupport GetConsoleOutput GetConsoleScreenshot GetHostReservationPurchasePreview GetPasswordData GetReservedInstancesExchangeQuote ImportImage ImportInstance ImportKeyPair ImportSnapshot ImportVolume ModifyHosts ModifyIdentityIdFormat ModifyIdFormat ModifyImageAttribute ModifyInstanceAttribute ModifyInstancePlacement ModifyNetworkInterfaceAttribute ModifyReservedInstances ModifySnapshotAttribute ModifySpotFleetRequest ModifySubnetAttribute ModifyVolume ModifyVolumeAttribute ModifyVpcAttribute ModifyVpcEndpoint ModifyVpcPeeringConnectionOptions MonitorInstances MoveAddressToVpc PurchaseHostReservation PurchaseReservedInstancesOffering PurchaseScheduledInstances RebootInstances RegisterImage RejectVpcPeeringConnection ReleaseAddress ReleaseHosts ReplaceIamInstanceProfileAssociation ReplaceNetworkAclAssociation ReplaceNetworkAclEntry ReplaceRoute ReplaceRouteTableAssociation ReportInstanceStatus RequestSpotFleet RequestSpotInstances ResetImageAttribute ResetInstanceAttribute ResetNetworkInterfaceAttribute ResetSnapshotAttribute RestoreAddressToClassic RevokeSecurityGroupEgress RevokeSecurityGroupIngress RunInstances RunScheduledInstances StartInstances StopInstances TerminateInstances UnassignIpv6Addresses UnassignPrivateIpAddresses UnmonitorInstances / }
 
 1;
 
@@ -2242,6 +2257,19 @@ For more information about network interfaces, see Elastic Network
 Interfaces in the I<Amazon Virtual Private Cloud User Guide>.
 
 
+=head2 CreateNetworkInterfacePermission(NetworkInterfaceId => Str, Permission => Str, [AwsAccountId => Str, AwsService => Str, DryRun => Bool])
+
+Each argument is described in detail in: L<Paws::EC2::CreateNetworkInterfacePermission>
+
+Returns: a L<Paws::EC2::CreateNetworkInterfacePermissionResult> instance
+
+  Grants an AWS authorized partner account permission to attach the
+specified network interface to an instance in their account.
+
+You can grant permission to a single AWS account only, and only one
+account at a time.
+
+
 =head2 CreatePlacementGroup(GroupName => Str, Strategy => Str, [DryRun => Bool])
 
 Each argument is described in detail in: L<Paws::EC2::CreatePlacementGroup>
@@ -2735,6 +2763,18 @@ Returns: nothing
 
   Deletes the specified network interface. You must detach the network
 interface before you can delete it.
+
+
+=head2 DeleteNetworkInterfacePermission(NetworkInterfacePermissionId => Str, [DryRun => Bool, Force => Bool])
+
+Each argument is described in detail in: L<Paws::EC2::DeleteNetworkInterfacePermission>
+
+Returns: a L<Paws::EC2::DeleteNetworkInterfacePermissionResult> instance
+
+  Deletes a permission for a network interface. By default, you cannot
+delete the permission if the account for which you're removing the
+permission has attached the network interface to an instance. However,
+you can force delete the permission, regardless of any attachment.
 
 
 =head2 DeletePlacementGroup(GroupName => Str, [DryRun => Bool])
@@ -3310,7 +3350,8 @@ Each argument is described in detail in: L<Paws::EC2::DescribeInstanceStatus>
 Returns: a L<Paws::EC2::DescribeInstanceStatusResult> instance
 
   Describes the status of one or more instances. By default, only running
-instances are described, unless specified otherwise.
+instances are described, unless you specifically indicate to return the
+status of all instances.
 
 Instance status includes the following components:
 
@@ -3404,6 +3445,15 @@ Returns: a L<Paws::EC2::DescribeNetworkInterfaceAttributeResult> instance
 
   Describes a network interface attribute. You can specify only one
 attribute at a time.
+
+
+=head2 DescribeNetworkInterfacePermissions([Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NetworkInterfacePermissionIds => ArrayRef[Str|Undef], NextToken => Str])
+
+Each argument is described in detail in: L<Paws::EC2::DescribeNetworkInterfacePermissions>
+
+Returns: a L<Paws::EC2::DescribeNetworkInterfacePermissionsResult> instance
+
+  Describes the permissions for your network interfaces.
 
 
 =head2 DescribeNetworkInterfaces([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], NetworkInterfaceIds => ArrayRef[Str|Undef]])
