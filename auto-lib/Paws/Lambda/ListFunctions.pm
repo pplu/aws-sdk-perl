@@ -1,7 +1,9 @@
 
 package Paws::Lambda::ListFunctions;
   use Moose;
+  has FunctionVersion => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'FunctionVersion' );
   has Marker => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'Marker' );
+  has MasterRegion => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'MasterRegion' );
   has MaxItems => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'MaxItems' );
 
   use MooseX::ClassAttribute;
@@ -36,11 +38,39 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
+=head2 FunctionVersion => Str
+
+Optional string. If not specified, only the unqualified functions ARNs
+(Amazon Resource Names) will be returned.
+
+Valid value:
+
+C<ALL> _ Will return all versions, including C<$LATEST> which will have
+fully qualified ARNs (Amazon Resource Names).
+
+Valid values are: C<"ALL">
+
 =head2 Marker => Str
 
 Optional string. An opaque pagination token returned from a previous
 C<ListFunctions> operation. If present, indicates where to continue the
 listing.
+
+
+
+=head2 MasterRegion => Str
+
+Optional string. If not specified, will return only regular function
+versions (i.e., non-replicated versions).
+
+Valid values are:
+
+The region from which the functions are replicated. For example, if you
+specify C<us-east-1>, only functions replicated from that region will
+be returned.
+
+C<ALL> _ Will return all functions from any region. If specified, you
+also must specify a valid FunctionVersion parameter.
 
 
 

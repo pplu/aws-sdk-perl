@@ -557,7 +557,7 @@ This operation requires permission for the
 C<lambda:ListEventSourceMappings> action.
 
 
-=head2 ListFunctions([Marker => Str, MaxItems => Int])
+=head2 ListFunctions([FunctionVersion => Str, Marker => Str, MasterRegion => Str, MaxItems => Int])
 
 Each argument is described in detail in: L<Paws::Lambda::ListFunctions>
 
@@ -570,8 +570,8 @@ GetFunction to retrieve the code for your function.
 This operation requires permission for the C<lambda:ListFunctions>
 action.
 
-If you are using versioning feature, the response returns list of
-$LATEST versions of your functions. For information about the
+If you are using the versioning feature, you can list all of your
+functions or only C<$LATEST> versions. For information about the
 versioning feature, see AWS Lambda Function Versioning and Aliases.
 
 
@@ -750,9 +750,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::Lambda::ListEventSourceMappingsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllFunctions(sub { },[Marker => Str, MaxItems => Int])
+=head2 ListAllFunctions(sub { },[FunctionVersion => Str, Marker => Str, MasterRegion => Str, MaxItems => Int])
 
-=head2 ListAllFunctions([Marker => Str, MaxItems => Int])
+=head2 ListAllFunctions([FunctionVersion => Str, Marker => Str, MasterRegion => Str, MaxItems => Int])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
