@@ -33,7 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkf
 
 =head1 DESCRIPTION
 
-Provides details of the C<WorkflowExecutionFailed> event.
+Provides the details of the C<WorkflowExecutionFailed> event.
 
 =head1 ATTRIBUTES
 
@@ -48,12 +48,12 @@ problems by tracing back the chain of events leading up to this event.
 
 =head2 Details => Str
 
-  The details of the failure (if any).
+  The details of the failure.
 
 
 =head2 Reason => Str
 
-  The descriptive reason provided for the failure (if any).
+  The descriptive reason provided for the failure.
 
 
 

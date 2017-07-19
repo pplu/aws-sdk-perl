@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkf
 
 =head1 DESCRIPTION
 
-Provides details of the C<TimerFired> event.
+Provides the details of the C<TimerFired> event.
 
 =head1 ATTRIBUTES
 

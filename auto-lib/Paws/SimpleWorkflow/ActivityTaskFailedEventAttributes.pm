@@ -34,19 +34,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkf
 
 =head1 DESCRIPTION
 
-Provides details of the C<ActivityTaskFailed> event.
+Provides the details of the C<ActivityTaskFailed> event.
 
 =head1 ATTRIBUTES
 
 
 =head2 Details => Str
 
-  The details of the failure (if any).
+  The details of the failure.
 
 
 =head2 Reason => Str
 
-  The reason provided for the failure (if any).
+  The reason provided for the failure.
 
 
 =head2 B<REQUIRED> ScheduledEventId => Int

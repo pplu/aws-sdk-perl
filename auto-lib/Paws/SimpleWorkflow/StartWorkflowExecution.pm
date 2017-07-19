@@ -55,22 +55,28 @@ The supported child policies are:
 
 =over
 
-=item * B<TERMINATE:> the child executions will be terminated.
+=item *
 
-=item * B<REQUEST_CANCEL:> a request to cancel will be attempted for
-each child execution by recording a C<WorkflowExecutionCancelRequested>
+C<TERMINATE> E<ndash> The child executions are terminated.
+
+=item *
+
+C<REQUEST_CANCEL> E<ndash> A request to cancel is attempted for each
+child execution by recording a C<WorkflowExecutionCancelRequested>
 event in its history. It is up to the decider to take appropriate
 actions when it receives an execution history with this event.
 
-=item * B<ABANDON:> no action will be taken. The child executions will
-continue to run.
+=item *
+
+C<ABANDON> E<ndash> No action is taken. The child executions continue
+to run.
 
 =back
 
 A child policy for this workflow execution must be specified either as
 a default for the workflow type or through this parameter. If neither
 this parameter is set nor a default child policy was specified at
-registration time then a fault will be returned.
+registration time then a fault is returned.
 
 Valid values are: C<"TERMINATE">, C<"REQUEST_CANCEL">, C<"ABANDON">
 
@@ -87,7 +93,7 @@ defaultExecutionStartToCloseTimeout specified when registering the
 workflow type.
 
 The duration is specified in seconds; an integer greater than or equal
-to 0. Exceeding this limit will cause the workflow execution to time
+to C<0>. Exceeding this limit causes the workflow execution to time
 out. Unlike some of the other timeout parameters in Amazon SWF, you
 cannot specify a value of "NONE" for this timeout; there is a one-year
 max limit on the time that a workflow execution can run.
@@ -110,12 +116,14 @@ C<WorkflowExecutionStarted> history event.
 
 =head2 LambdaRole => Str
 
-The ARN of an IAM role that authorizes Amazon SWF to invoke AWS Lambda
-functions.
+The IAM role to attach to this workflow execution.
 
-In order for this workflow execution to invoke AWS Lambda functions, an
-appropriate IAM role must be specified either as a default for the
-workflow type or through this field.
+Executions of this workflow type need IAM roles to invoke Lambda
+functions. If you don't attach an IAM role, any attempt to schedule a
+Lambda task fails. This results in a C<ScheduleLambdaFunctionFailed>
+history event. For more information, see
+http://docs.aws.amazon.com/amazonswf/latest/developerguide/lambda-task.html
+in the I<Amazon SWF Developer Guide>.
 
 
 
@@ -137,26 +145,26 @@ registering the workflow type.
 A task list for this workflow execution must be specified either as a
 default for the workflow type or through this parameter. If neither
 this parameter is set nor a default task list was specified at
-registration time then a fault will be returned.
+registration time then a fault is returned.
 
 The specified string must not start or end with whitespace. It must not
 contain a C<:> (colon), C</> (slash), C<|> (vertical bar), or any
-control characters (\u0000-\u001f | \u007f - \u009f). Also, it must not
-contain the literal string quotarnquot.
+control characters (C<\u0000-\u001f> | C<\u007f-\u009f>). Also, it must
+not contain the literal string C<arn>.
 
 
 
 =head2 TaskPriority => Str
 
-The task priority to use for this workflow execution. This will
-override any default priority that was assigned when the workflow type
-was registered. If not set, then the default task priority for the
-workflow type will be used. Valid values are integers that range from
-Java's C<Integer.MIN_VALUE> (-2147483648) to C<Integer.MAX_VALUE>
+The task priority to use for this workflow execution. This overrides
+any default priority that was assigned when the workflow type was
+registered. If not set, then the default task priority for the workflow
+type is used. Valid values are integers that range from Java's
+C<Integer.MIN_VALUE> (-2147483648) to C<Integer.MAX_VALUE>
 (2147483647). Higher numbers indicate higher priority.
 
 For more information about setting task priority, see Setting Task
-Priority in the I<Amazon Simple Workflow Developer Guide>.
+Priority in the I<Amazon SWF Developer Guide>.
 
 
 
@@ -167,14 +175,14 @@ execution. This parameter overrides the
 C<defaultTaskStartToCloseTimout> specified when registering the
 workflow type using RegisterWorkflowType.
 
-The duration is specified in seconds; an integer greater than or equal
-to 0. The value "NONE" can be used to specify unlimited duration.
+The duration is specified in seconds, an integer greater than or equal
+to C<0>. You can use C<NONE> to specify unlimited duration.
 
 A task start-to-close timeout for this workflow execution must be
 specified either as a default for the workflow type or through this
 parameter. If neither this parameter is set nor a default task
 start-to-close timeout was specified at registration time then a fault
-will be returned.
+is returned.
 
 
 
@@ -188,8 +196,8 @@ open workflow executions with the same C<workflowId> at the same time.
 
 The specified string must not start or end with whitespace. It must not
 contain a C<:> (colon), C</> (slash), C<|> (vertical bar), or any
-control characters (\u0000-\u001f | \u007f - \u009f). Also, it must not
-contain the literal string quotarnquot.
+control characters (C<\u0000-\u001f> | C<\u007f-\u009f>). Also, it must
+not contain the literal string C<arn>.
 
 
 

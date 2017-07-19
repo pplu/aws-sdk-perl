@@ -49,57 +49,79 @@ these types:
 
 =over
 
-=item * B<CancelTimer>: cancels a previously started timer and records
+=item *
+
+C<CancelTimer> E<ndash> Cancels a previously started timer and records
 a C<TimerCanceled> event in the history.
 
-=item * B<CancelWorkflowExecution>: closes the workflow execution and
+=item *
+
+C<CancelWorkflowExecution> E<ndash> Closes the workflow execution and
 records a C<WorkflowExecutionCanceled> event in the history.
 
-=item * B<CompleteWorkflowExecution>: closes the workflow execution and
+=item *
+
+C<CompleteWorkflowExecution> E<ndash> Closes the workflow execution and
 records a C<WorkflowExecutionCompleted> event in the history .
 
-=item * B<ContinueAsNewWorkflowExecution>: closes the workflow
+=item *
+
+C<ContinueAsNewWorkflowExecution> E<ndash> Closes the workflow
 execution and starts a new workflow execution of the same type using
-the same workflow ID and a unique run ID. A
+the same workflow ID and a unique run Id. A
 C<WorkflowExecutionContinuedAsNew> event is recorded in the history.
 
-=item * B<FailWorkflowExecution>: closes the workflow execution and
+=item *
+
+C<FailWorkflowExecution> E<ndash> Closes the workflow execution and
 records a C<WorkflowExecutionFailed> event in the history.
 
-=item * B<RecordMarker>: records a C<MarkerRecorded> event in the
+=item *
+
+C<RecordMarker> E<ndash> Records a C<MarkerRecorded> event in the
 history. Markers can be used for adding custom information in the
-history for instance to let deciders know that they do not need to look
+history for instance to let deciders know that they don't need to look
 at the history beyond the marker event.
 
-=item * B<RequestCancelActivityTask>: attempts to cancel a previously
+=item *
+
+C<RequestCancelActivityTask> E<ndash> Attempts to cancel a previously
 scheduled activity task. If the activity task was scheduled but has not
-been assigned to a worker, then it will be canceled. If the activity
-task was already assigned to a worker, then the worker will be informed
-that cancellation has been requested in the response to
+been assigned to a worker, then it is canceled. If the activity task
+was already assigned to a worker, then the worker is informed that
+cancellation has been requested in the response to
 RecordActivityTaskHeartbeat.
 
-=item * B<RequestCancelExternalWorkflowExecution>: requests that a
+=item *
+
+C<RequestCancelExternalWorkflowExecution> E<ndash> Requests that a
 request be made to cancel the specified external workflow execution and
 records a C<RequestCancelExternalWorkflowExecutionInitiated> event in
 the history.
 
-=item * B<ScheduleActivityTask>: schedules an activity task.
+=item *
 
-=item * B<ScheduleLambdaFunction>: schedules a AWS Lambda function.
+C<ScheduleActivityTask> E<ndash> Schedules an activity task.
 
-=item * B<SignalExternalWorkflowExecution>: requests a signal to be
+=item *
+
+C<SignalExternalWorkflowExecution> E<ndash> Requests a signal to be
 delivered to the specified external workflow execution and records a
 C<SignalExternalWorkflowExecutionInitiated> event in the history.
 
-=item * B<StartChildWorkflowExecution>: requests that a child workflow
+=item *
+
+C<StartChildWorkflowExecution> E<ndash> Requests that a child workflow
 execution be started and records a
 C<StartChildWorkflowExecutionInitiated> event in the history. The child
 workflow execution is a separate workflow execution with its own
 history.
 
-=item * B<StartTimer>: starts a timer for this workflow execution and
-records a C<TimerStarted> event in the history. This timer will fire
-after the specified delay and record a C<TimerFired> event.
+=item *
+
+C<StartTimer> E<ndash> Starts a timer for this workflow execution and
+records a C<TimerStarted> event in the history. This timer fires after
+the specified delay and record a C<TimerFired> event.
 
 =back
 
@@ -110,7 +132,8 @@ use IAM policies to express permissions for the list of decisions
 returned by this action as if they were members of the API. Treating
 decisions as a pseudo API maintains a uniform conceptual model and
 helps keep policies readable. For details and example IAM policies, see
-Using IAM to Manage Access to Amazon SWF Workflows.
+Using IAM to Manage Access to Amazon SWF Workflows in the I<Amazon SWF
+Developer Guide>.
 
 B<Decision Failure>
 
@@ -118,72 +141,96 @@ Decisions can fail for several reasons
 
 =over
 
-=item * The ordering of decisions should follow a logical flow. Some
-decisions might not make sense in the current context of the workflow
-execution and will therefore fail.
+=item *
 
-=item * A limit on your account was reached.
+The ordering of decisions should follow a logical flow. Some decisions
+might not make sense in the current context of the workflow execution
+and therefore fails.
 
-=item * The decision lacks sufficient permissions.
+=item *
+
+A limit on your account was reached.
+
+=item *
+
+The decision lacks sufficient permissions.
 
 =back
 
 One of the following events might be added to the history to indicate
-an error. The event attribute's B<cause> parameter indicates the cause.
-If B<cause> is set to OPERATION_NOT_PERMITTED, the decision failed
+an error. The event attribute's C<cause> parameter indicates the cause.
+If C<cause> is set to C<OPERATION_NOT_PERMITTED>, the decision failed
 because it lacked sufficient permissions. For details and example IAM
-policies, see Using IAM to Manage Access to Amazon SWF Workflows.
+policies, see Using IAM to Manage Access to Amazon SWF Workflows in the
+I<Amazon SWF Developer Guide>.
 
 =over
 
-=item * B<ScheduleActivityTaskFailed>: a ScheduleActivityTask decision
-failed. This could happen if the activity type specified in the
-decision is not registered, is in a deprecated state, or the decision
-is not properly configured.
+=item *
 
-=item * B<ScheduleLambdaFunctionFailed>: a ScheduleLambdaFunctionFailed
-decision failed. This could happen if the AWS Lambda function specified
-in the decision does not exist, or the AWS Lambda service's limits are
-exceeded.
+C<ScheduleActivityTaskFailed> E<ndash> A C<ScheduleActivityTask>
+decision failed. This could happen if the activity type specified in
+the decision isn't registered, is in a deprecated state, or the
+decision isn't properly configured.
 
-=item * B<RequestCancelActivityTaskFailed>: a RequestCancelActivityTask
-decision failed. This could happen if there is no open activity task
-with the specified activityId.
+=item *
 
-=item * B<StartTimerFailed>: a StartTimer decision failed. This could
-happen if there is another open timer with the same timerId.
+C<RequestCancelActivityTaskFailed> E<ndash> A
+C<RequestCancelActivityTask> decision failed. This could happen if
+there is no open activity task with the specified activityId.
 
-=item * B<CancelTimerFailed>: a CancelTimer decision failed. This could
-happen if there is no open timer with the specified timerId.
+=item *
 
-=item * B<StartChildWorkflowExecutionFailed>: a
-StartChildWorkflowExecution decision failed. This could happen if the
-workflow type specified is not registered, is deprecated, or the
-decision is not properly configured.
+C<StartTimerFailed> E<ndash> A C<StartTimer> decision failed. This
+could happen if there is another open timer with the same timerId.
 
-=item * B<SignalExternalWorkflowExecutionFailed>: a
-SignalExternalWorkflowExecution decision failed. This could happen if
-the C<workflowID> specified in the decision was incorrect.
+=item *
 
-=item * B<RequestCancelExternalWorkflowExecutionFailed>: a
-RequestCancelExternalWorkflowExecution decision failed. This could
+C<CancelTimerFailed> E<ndash> A C<CancelTimer> decision failed. This
+could happen if there is no open timer with the specified timerId.
+
+=item *
+
+C<StartChildWorkflowExecutionFailed> E<ndash> A
+C<StartChildWorkflowExecution> decision failed. This could happen if
+the workflow type specified isn't registered, is deprecated, or the
+decision isn't properly configured.
+
+=item *
+
+C<SignalExternalWorkflowExecutionFailed> E<ndash> A
+C<SignalExternalWorkflowExecution> decision failed. This could happen
+if the C<workflowID> specified in the decision was incorrect.
+
+=item *
+
+C<RequestCancelExternalWorkflowExecutionFailed> E<ndash> A
+C<RequestCancelExternalWorkflowExecution> decision failed. This could
 happen if the C<workflowID> specified in the decision was incorrect.
 
-=item * B<CancelWorkflowExecutionFailed>: a CancelWorkflowExecution
+=item *
+
+C<CancelWorkflowExecutionFailed> E<ndash> A C<CancelWorkflowExecution>
 decision failed. This could happen if there is an unhandled decision
 task pending in the workflow execution.
 
-=item * B<CompleteWorkflowExecutionFailed>: a CompleteWorkflowExecution
-decision failed. This could happen if there is an unhandled decision
-task pending in the workflow execution.
+=item *
 
-=item * B<ContinueAsNewWorkflowExecutionFailed>: a
-ContinueAsNewWorkflowExecution decision failed. This could happen if
+C<CompleteWorkflowExecutionFailed> E<ndash> A
+C<CompleteWorkflowExecution> decision failed. This could happen if
+there is an unhandled decision task pending in the workflow execution.
+
+=item *
+
+C<ContinueAsNewWorkflowExecutionFailed> E<ndash> A
+C<ContinueAsNewWorkflowExecution> decision failed. This could happen if
 there is an unhandled decision task pending in the workflow execution
 or the ContinueAsNewWorkflowExecution decision was not configured
 correctly.
 
-=item * B<FailWorkflowExecutionFailed>: a FailWorkflowExecution
+=item *
+
+C<FailWorkflowExecutionFailed> E<ndash> A C<FailWorkflowExecution>
 decision failed. This could happen if there is an unhandled decision
 task pending in the workflow execution.
 
@@ -198,7 +245,7 @@ A workflow execution may be closed by the decider by returning one of
 the following decisions when completing a decision task:
 C<CompleteWorkflowExecution>, C<FailWorkflowExecution>,
 C<CancelWorkflowExecution> and C<ContinueAsNewWorkflowExecution>. An
-UnhandledDecision fault will be returned if a workflow closing decision
+C<UnhandledDecision> fault is returned if a workflow closing decision
 is specified and a signal or activity event had been added to the
 history while the decision task was being performed by the decider.
 Unlike the above situations which are logic issues, this fault is
@@ -208,7 +255,7 @@ decisions. This would result in another decision task with these new
 events included in the history. The decider should handle the new
 events and may decide to close the workflow execution.
 
-B<How to code a decision>
+B<How to Code a Decision>
 
 You code a decision by first setting the decision type field to one of
 the above decision values, and then set the corresponding attributes
@@ -216,31 +263,53 @@ field shown below:
 
 =over
 
-=item * ScheduleActivityTaskDecisionAttributes
+=item *
 
-=item * ScheduleLambdaFunctionDecisionAttributes
+C<ScheduleActivityTaskDecisionAttributes>
 
-=item * RequestCancelActivityTaskDecisionAttributes
+=item *
 
-=item * CompleteWorkflowExecutionDecisionAttributes
+C<RequestCancelActivityTaskDecisionAttributes>
 
-=item * FailWorkflowExecutionDecisionAttributes
+=item *
 
-=item * CancelWorkflowExecutionDecisionAttributes
+C<CompleteWorkflowExecutionDecisionAttributes>
 
-=item * ContinueAsNewWorkflowExecutionDecisionAttributes
+=item *
 
-=item * RecordMarkerDecisionAttributes
+C<FailWorkflowExecutionDecisionAttributes>
 
-=item * StartTimerDecisionAttributes
+=item *
 
-=item * CancelTimerDecisionAttributes
+C<CancelWorkflowExecutionDecisionAttributes>
 
-=item * SignalExternalWorkflowExecutionDecisionAttributes
+=item *
 
-=item * RequestCancelExternalWorkflowExecutionDecisionAttributes
+C<ContinueAsNewWorkflowExecutionDecisionAttributes>
 
-=item * StartChildWorkflowExecutionDecisionAttributes
+=item *
+
+C<RecordMarkerDecisionAttributes>
+
+=item *
+
+C<StartTimerDecisionAttributes>
+
+=item *
+
+C<CancelTimerDecisionAttributes>
+
+=item *
+
+C<SignalExternalWorkflowExecutionDecisionAttributes>
+
+=item *
+
+C<RequestCancelExternalWorkflowExecutionDecisionAttributes>
+
+=item *
+
+C<StartChildWorkflowExecutionDecisionAttributes>
 
 =back
 
@@ -250,26 +319,26 @@ field shown below:
 
 =head2 CancelTimerDecisionAttributes => L<Paws::SimpleWorkflow::CancelTimerDecisionAttributes>
 
-  Provides details of the C<CancelTimer> decision. It is not set for
+  Provides the details of the C<CancelTimer> decision. It isn't set for
 other decision types.
 
 
 =head2 CancelWorkflowExecutionDecisionAttributes => L<Paws::SimpleWorkflow::CancelWorkflowExecutionDecisionAttributes>
 
-  Provides details of the C<CancelWorkflowExecution> decision. It is not
-set for other decision types.
+  Provides the details of the C<CancelWorkflowExecution> decision. It
+isn't set for other decision types.
 
 
 =head2 CompleteWorkflowExecutionDecisionAttributes => L<Paws::SimpleWorkflow::CompleteWorkflowExecutionDecisionAttributes>
 
-  Provides details of the C<CompleteWorkflowExecution> decision. It is
-not set for other decision types.
+  Provides the details of the C<CompleteWorkflowExecution> decision. It
+isn't set for other decision types.
 
 
 =head2 ContinueAsNewWorkflowExecutionDecisionAttributes => L<Paws::SimpleWorkflow::ContinueAsNewWorkflowExecutionDecisionAttributes>
 
-  Provides details of the C<ContinueAsNewWorkflowExecution> decision. It
-is not set for other decision types.
+  Provides the details of the C<ContinueAsNewWorkflowExecution> decision.
+It isn't set for other decision types.
 
 
 =head2 B<REQUIRED> DecisionType => Str
@@ -279,55 +348,56 @@ is not set for other decision types.
 
 =head2 FailWorkflowExecutionDecisionAttributes => L<Paws::SimpleWorkflow::FailWorkflowExecutionDecisionAttributes>
 
-  Provides details of the C<FailWorkflowExecution> decision. It is not
+  Provides the details of the C<FailWorkflowExecution> decision. It isn't
 set for other decision types.
 
 
 =head2 RecordMarkerDecisionAttributes => L<Paws::SimpleWorkflow::RecordMarkerDecisionAttributes>
 
-  Provides details of the C<RecordMarker> decision. It is not set for
+  Provides the details of the C<RecordMarker> decision. It isn't set for
 other decision types.
 
 
 =head2 RequestCancelActivityTaskDecisionAttributes => L<Paws::SimpleWorkflow::RequestCancelActivityTaskDecisionAttributes>
 
-  Provides details of the C<RequestCancelActivityTask> decision. It is
-not set for other decision types.
+  Provides the details of the C<RequestCancelActivityTask> decision. It
+isn't set for other decision types.
 
 
 =head2 RequestCancelExternalWorkflowExecutionDecisionAttributes => L<Paws::SimpleWorkflow::RequestCancelExternalWorkflowExecutionDecisionAttributes>
 
-  Provides details of the C<RequestCancelExternalWorkflowExecution>
-decision. It is not set for other decision types.
+  Provides the details of the C<RequestCancelExternalWorkflowExecution>
+decision. It isn't set for other decision types.
 
 
 =head2 ScheduleActivityTaskDecisionAttributes => L<Paws::SimpleWorkflow::ScheduleActivityTaskDecisionAttributes>
 
-  Provides details of the C<ScheduleActivityTask> decision. It is not set
-for other decision types.
+  Provides the details of the C<ScheduleActivityTask> decision. It isn't
+set for other decision types.
 
 
 =head2 ScheduleLambdaFunctionDecisionAttributes => L<Paws::SimpleWorkflow::ScheduleLambdaFunctionDecisionAttributes>
 
-  
+  Provides the details of the C<ScheduleLambdaFunction> decision. It
+isn't set for other decision types.
 
 
 =head2 SignalExternalWorkflowExecutionDecisionAttributes => L<Paws::SimpleWorkflow::SignalExternalWorkflowExecutionDecisionAttributes>
 
-  Provides details of the C<SignalExternalWorkflowExecution> decision. It
-is not set for other decision types.
+  Provides the details of the C<SignalExternalWorkflowExecution>
+decision. It isn't set for other decision types.
 
 
 =head2 StartChildWorkflowExecutionDecisionAttributes => L<Paws::SimpleWorkflow::StartChildWorkflowExecutionDecisionAttributes>
 
-  Provides details of the C<StartChildWorkflowExecution> decision. It is
-not set for other decision types.
+  Provides the details of the C<StartChildWorkflowExecution> decision. It
+isn't set for other decision types.
 
 
 =head2 StartTimerDecisionAttributes => L<Paws::SimpleWorkflow::StartTimerDecisionAttributes>
 
-  Provides details of the C<StartTimer> decision. It is not set for other
-decision types.
+  Provides the details of the C<StartTimer> decision. It isn't set for
+other decision types.
 
 
 

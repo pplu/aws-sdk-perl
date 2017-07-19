@@ -55,7 +55,7 @@ user defined.
 
 =head2 MaximumPageSize => Int
 
-The maximum number of results that will be returned per call.
+The maximum number of results that are returned per call.
 C<nextPageToken> can be used to obtain futher pages of results. The
 default is 1000, which is the maximum allowed page size. You can,
 however, specify a page size I<smaller> than the maximum.
@@ -79,7 +79,7 @@ The C<nextPageToken> returned by this action cannot be used with
 GetWorkflowExecutionHistory to get the next page. You must call
 PollForDecisionTask again (with the C<nextPageToken>) to retrieve the
 next page of history records. Calling PollForDecisionTask with a
-C<nextPageToken> will not return a new decision task..
+C<nextPageToken> doesn't return a new decision task.
 
 
 
@@ -97,8 +97,8 @@ Specifies the task list to poll for decision tasks.
 
 The specified string must not start or end with whitespace. It must not
 contain a C<:> (colon), C</> (slash), C<|> (vertical bar), or any
-control characters (\u0000-\u001f | \u007f - \u009f). Also, it must not
-contain the literal string quotarnquot.
+control characters (C<\u0000-\u001f> | C<\u007f-\u009f>). Also, it must
+not contain the literal string C<arn>.
 
 
 

@@ -34,7 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkf
 
 =head1 DESCRIPTION
 
-Provides details of the
+Provides the details of the
 C<RequestCancelExternalWorkflowExecutionInitiated> event.
 
 =head1 ATTRIBUTES
@@ -42,8 +42,8 @@ C<RequestCancelExternalWorkflowExecutionInitiated> event.
 
 =head2 Control => Str
 
-  I<Optional.> Data attached to the event that can be used by the decider
-in subsequent workflow tasks.
+  Data attached to the event that can be used by the decider in
+subsequent workflow tasks.
 
 
 =head2 B<REQUIRED> DecisionTaskCompletedEventId => Int
