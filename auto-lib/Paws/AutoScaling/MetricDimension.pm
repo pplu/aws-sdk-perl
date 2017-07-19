@@ -1,13 +1,14 @@
-package Paws::AutoScaling::InstanceMonitoring;
+package Paws::AutoScaling::MetricDimension;
   use Moose;
-  has Enabled => (is => 'ro', isa => 'Bool');
+  has Name => (is => 'ro', isa => 'Str', required => 1);
+  has Value => (is => 'ro', isa => 'Str', required => 1);
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::AutoScaling::InstanceMonitoring
+Paws::AutoScaling::MetricDimension
 
 =head1 USAGE
 
@@ -18,27 +19,32 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::AutoScaling::InstanceMonitoring object:
+As an example, if Att1 is expected to be a Paws::AutoScaling::MetricDimension object:
 
-  $service_obj->Method(Att1 => { Enabled => $value, ..., Enabled => $value  });
+  $service_obj->Method(Att1 => { Name => $value, ..., Value => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::AutoScaling::InstanceMonitoring object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::AutoScaling::MetricDimension object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Enabled
+  $result->Att1->Name
 
 =head1 DESCRIPTION
 
-Describes whether instance monitoring is enabled.
+Describes the dimension of a metric.
 
 =head1 ATTRIBUTES
 
 
-=head2 Enabled => Bool
+=head2 B<REQUIRED> Name => Str
 
-  If C<True>, instance monitoring is enabled.
+  The name of the dimension.
+
+
+=head2 B<REQUIRED> Value => Str
+
+  The value of the dimension.
 
 
 
