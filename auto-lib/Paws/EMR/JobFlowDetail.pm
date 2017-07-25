@@ -51,9 +51,10 @@ A description of a cluster (job flow).
 
 =head2 AmiVersion => Str
 
-  The version of the AMI used to initialize Amazon EC2 instances in the
-job flow. For a list of AMI versions currently supported by Amazon EMR,
-see AMI Versions Supported in EMR in the I<Amazon EMR Developer Guide.>
+  Used only for version 2.x and 3.x of Amazon EMR. The version of the AMI
+used to initialize Amazon EC2 instances in the job flow. For a list of
+AMI versions supported by Amazon EMR, see AMI Versions Supported in EMR
+in the I<Amazon EMR Developer Guide.>
 
 
 =head2 AutoScalingRole => Str

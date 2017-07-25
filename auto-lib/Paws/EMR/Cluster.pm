@@ -4,6 +4,8 @@ package Paws::EMR::Cluster;
   has AutoScalingRole => (is => 'ro', isa => 'Str');
   has AutoTerminate => (is => 'ro', isa => 'Bool');
   has Configurations => (is => 'ro', isa => 'ArrayRef[Paws::EMR::Configuration]');
+  has CustomAmiId => (is => 'ro', isa => 'Str');
+  has EbsRootVolumeSize => (is => 'ro', isa => 'Int');
   has Ec2InstanceAttributes => (is => 'ro', isa => 'Paws::EMR::Ec2InstanceAttributes');
   has Id => (is => 'ro', isa => 'Str');
   has InstanceCollectionType => (is => 'ro', isa => 'Str');
@@ -12,6 +14,7 @@ package Paws::EMR::Cluster;
   has Name => (is => 'ro', isa => 'Str');
   has NormalizedInstanceHours => (is => 'ro', isa => 'Int');
   has ReleaseLabel => (is => 'ro', isa => 'Str');
+  has RepoUpgradeOnBoot => (is => 'ro', isa => 'Str');
   has RequestedAmiVersion => (is => 'ro', isa => 'Str');
   has RunningAmiVersion => (is => 'ro', isa => 'Str');
   has ScaleDownBehavior => (is => 'ro', isa => 'Str');
@@ -77,9 +80,21 @@ steps.
 
 =head2 Configurations => ArrayRef[L<Paws::EMR::Configuration>]
 
-  Amazon EMR releases 4.x or later.
+  Applies only to Amazon EMR releases 4.x and later. The list of
+Configurations supplied to the EMR cluster.
 
-The list of Configurations supplied to the EMR cluster.
+
+=head2 CustomAmiId => Str
+
+  Available only in Amazon EMR version 5.7.0 and later. The ID of a
+custom Amazon EBS-backed Linux AMI if the cluster uses a custom AMI.
+
+
+=head2 EbsRootVolumeSize => Int
+
+  The size, in GiB, of the EBS root device volume of the Linux AMI that
+is used for each EC2 instance. Available in Amazon EMR version 4.x and
+later.
 
 
 =head2 Ec2InstanceAttributes => L<Paws::EMR::Ec2InstanceAttributes>
@@ -132,8 +147,14 @@ only an approximation and does not reflect the actual billing rate.
 
 =head2 ReleaseLabel => Str
 
-  The release label for the Amazon EMR release. For Amazon EMR 3.x and
-2.x AMIs, use amiVersion instead instead of ReleaseLabel.
+  The release label for the Amazon EMR release.
+
+
+=head2 RepoUpgradeOnBoot => Str
+
+  Applies only when C<CustomAmiID> is used. Specifies the type of updates
+that are applied from the Amazon Linux AMI package repositories when an
+instance boots using the AMI.
 
 
 =head2 RequestedAmiVersion => Str

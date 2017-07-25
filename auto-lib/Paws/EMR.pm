@@ -589,11 +589,10 @@ Each argument is described in detail in: L<Paws::EMR::ListInstances>
 
 Returns: a L<Paws::EMR::ListInstancesOutput> instance
 
-  Provides information about the cluster instances that Amazon EMR
-provisions on behalf of a user when it creates the cluster. For
-example, this operation indicates when the EC2 instances reach the
-Ready state, when instances become available to Amazon EMR to use for
-jobs, and the IP addresses for cluster instances, etc.
+  Provides information for all active EC2 instances and EC2 instances
+terminated in the last 30 days, up to a maximum of 2,000. EC2 instances
+in any of the following states are considered active:
+AWAITING_FULFILLMENT, PROVISIONING, BOOTSTRAPPING, RUNNING.
 
 
 =head2 ListSecurityConfigurations([Marker => Str])
@@ -684,7 +683,7 @@ The following example removes the stack tag with value Prod from a
 cluster:
 
 
-=head2 RunJobFlow(Instances => L<Paws::EMR::JobFlowInstancesConfig>, Name => Str, [AdditionalInfo => Str, AmiVersion => Str, Applications => ArrayRef[L<Paws::EMR::Application>], AutoScalingRole => Str, BootstrapActions => ArrayRef[L<Paws::EMR::BootstrapActionConfig>], Configurations => ArrayRef[L<Paws::EMR::Configuration>], JobFlowRole => Str, LogUri => Str, NewSupportedProducts => ArrayRef[L<Paws::EMR::SupportedProductConfig>], ReleaseLabel => Str, ScaleDownBehavior => Str, SecurityConfiguration => Str, ServiceRole => Str, Steps => ArrayRef[L<Paws::EMR::StepConfig>], SupportedProducts => ArrayRef[Str|Undef], Tags => ArrayRef[L<Paws::EMR::Tag>], VisibleToAllUsers => Bool])
+=head2 RunJobFlow(Instances => L<Paws::EMR::JobFlowInstancesConfig>, Name => Str, [AdditionalInfo => Str, AmiVersion => Str, Applications => ArrayRef[L<Paws::EMR::Application>], AutoScalingRole => Str, BootstrapActions => ArrayRef[L<Paws::EMR::BootstrapActionConfig>], Configurations => ArrayRef[L<Paws::EMR::Configuration>], CustomAmiId => Str, EbsRootVolumeSize => Int, JobFlowRole => Str, LogUri => Str, NewSupportedProducts => ArrayRef[L<Paws::EMR::SupportedProductConfig>], ReleaseLabel => Str, RepoUpgradeOnBoot => Str, ScaleDownBehavior => Str, SecurityConfiguration => Str, ServiceRole => Str, Steps => ArrayRef[L<Paws::EMR::StepConfig>], SupportedProducts => ArrayRef[Str|Undef], Tags => ArrayRef[L<Paws::EMR::Tag>], VisibleToAllUsers => Bool])
 
 Each argument is described in detail in: L<Paws::EMR::RunJobFlow>
 
