@@ -5,6 +5,8 @@
  - API update: ApiGateway
  - API update: Autoscaling
  - API update: CognitoIdp
+ - API update: AppStream
+ - API update: EMR
 
 0.34 07 Jul 2017
  - New Credential provider: Paws::Credential::ECSContainerProfile (gadgetjunkie)
