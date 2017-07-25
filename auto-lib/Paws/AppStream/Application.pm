@@ -49,8 +49,8 @@ An entry for a single application in the application catalog.
 
 =head2 Enabled => Bool
 
-  An application can be disabled after image creation if there is a
-problem.
+  If there is a problem, an application can be disabled after image
+creation.
 
 
 =head2 IconURL => Str

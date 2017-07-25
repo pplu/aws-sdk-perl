@@ -6,6 +6,7 @@ package Paws::AppStream::Fleet;
   has Description => (is => 'ro', isa => 'Str');
   has DisconnectTimeoutInSeconds => (is => 'ro', isa => 'Int');
   has DisplayName => (is => 'ro', isa => 'Str');
+  has DomainJoinInfo => (is => 'ro', isa => 'Paws::AppStream::DomainJoinInfo');
   has EnableDefaultInternetAccess => (is => 'ro', isa => 'Bool');
   has FleetErrors => (is => 'ro', isa => 'ArrayRef[Paws::AppStream::FleetError]');
   has ImageName => (is => 'ro', isa => 'Str', required => 1);
@@ -82,9 +83,16 @@ input can be any numeric value in seconds between 60 and 57600.
   The name displayed to end users on the AppStream 2.0 portal.
 
 
+=head2 DomainJoinInfo => L<Paws::AppStream::DomainJoinInfo>
+
+  The I<DirectoryName> and I<OrganizationalUnitDistinguishedName> values,
+which are used to join domains for the AppStream 2.0 streaming
+instances.
+
+
 =head2 EnableDefaultInternetAccess => Bool
 
-  Whether default Internet access is enabled for the fleet.
+  Whether default internet access is enabled for the fleet.
 
 
 =head2 FleetErrors => ArrayRef[L<Paws::AppStream::FleetError>]

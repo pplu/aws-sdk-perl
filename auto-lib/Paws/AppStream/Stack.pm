@@ -49,7 +49,7 @@ Details about a stack.
 
 =head2 CreatedTime => Str
 
-  The timestamp when the stack was created.
+  The time stamp when the stack was created.
 
 
 =head2 Description => Str

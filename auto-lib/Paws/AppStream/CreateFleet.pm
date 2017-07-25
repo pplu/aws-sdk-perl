@@ -5,6 +5,7 @@ package Paws::AppStream::CreateFleet;
   has Description => (is => 'ro', isa => 'Str');
   has DisconnectTimeoutInSeconds => (is => 'ro', isa => 'Int');
   has DisplayName => (is => 'ro', isa => 'Str');
+  has DomainJoinInfo => (is => 'ro', isa => 'Paws::AppStream::DomainJoinInfo');
   has EnableDefaultInternetAccess => (is => 'ro', isa => 'Bool');
   has ImageName => (is => 'ro', isa => 'Str', required => 1);
   has InstanceType => (is => 'ro', isa => 'Str', required => 1);
@@ -69,9 +70,17 @@ The display name of the fleet.
 
 
 
+=head2 DomainJoinInfo => L<Paws::AppStream::DomainJoinInfo>
+
+The I<DirectoryName> and I<OrganizationalUnitDistinguishedName> values,
+which are used to join domains for the AppStream 2.0 streaming
+instances.
+
+
+
 =head2 EnableDefaultInternetAccess => Bool
 
-Enables or disables default Internet access for the fleet.
+Enables or disables default internet access for the fleet.
 
 
 
@@ -84,7 +93,60 @@ Unique name of the image used by the fleet.
 =head2 B<REQUIRED> InstanceType => Str
 
 The instance type of compute resources for the fleet. Fleet instances
-are launched from this instance type.
+are launched from this instance type. Available instance types are:
+
+=over
+
+=item *
+
+stream.standard.medium
+
+=item *
+
+stream.standard.large
+
+=item *
+
+stream.compute.large
+
+=item *
+
+stream.compute.xlarge
+
+=item *
+
+stream.compute.2xlarge
+
+=item *
+
+stream.compute.4xlarge
+
+=item *
+
+stream.compute.8xlarge
+
+=item *
+
+stream.memory.large
+
+=item *
+
+stream.memory.xlarge
+
+=item *
+
+stream.memory.2xlarge
+
+=item *
+
+stream.memory.4xlarge
+
+=item *
+
+stream.memory.8xlarge
+
+=back
+
 
 
 
