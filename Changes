@@ -7,6 +7,8 @@
  - API update: CognitoIdp
  - API update: AppStream
  - API update: EMR
+ - API update: CloudFormation
+ - API update: CloudDirectory 
 
 0.34 07 Jul 2017
  - New Credential provider: Paws::Credential::ECSContainerProfile (gadgetjunkie)
