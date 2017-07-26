@@ -84,5 +84,103 @@ use Paws::Exception;
   ok(not($retry->should_retry), 'After changing to new exception, we should not retry');
 }
 
+use Paws;
+use Paws::Credential::Explicit;
+
+package Test16Caller {
+  use Moose;
+  with 'Paws::Net::RetryCallerRole', 'Paws::Net::CallerRole';
+  use Paws::Net::APIResponse;
+
+  has calls => (
+    is => 'ro',
+    isa => 'Int',
+    default => 0,
+    traits => [ 'Counter' ],
+    handles => {
+      register_call => 'inc',
+    }
+  );
+
+  has content_for_ok => (
+    is => 'ro',
+    isa => 'Str',
+    default => '',
+  );
+
+  has calls_to_ok => (
+    is => 'ro',
+    isa => 'Int',
+    default => 10,
+  );
+
+  sub send_request {
+    my ($self, $service, $call_object) = @_;
+
+    $self->register_call;
+
+    if ($self->calls == $self->calls_to_ok) {
+      return Paws::Net::APIResponse->new(
+        status => 200,
+        content => $self->content_for_ok,
+        headers => {},
+      );
+    }
+
+    return Paws::Net::APIResponse->new(
+      status  => 503,
+      content => '',
+      headers => {}
+    );
+  }
+
+  sub caller_to_response {
+    my ($self, $service, $call_object, $response) = @_;
+
+    if ($response->status == 599){
+      return Paws::Exception->new(message => $response->content, code => 'ConnectionError', request_id => '');
+    } else {
+      return $service->response_to_object->process($call_object, $response);
+    }
+  }
+}
+
+{
+  my $paws = Paws->new(config => {
+    caller => Test16Caller->new,
+    credentials => Paws::Credential::Explicit->new(
+      access_key => 'x',
+      secret_key => 'y',
+    )
+  });
+  my $sqs = $paws->service('SQS', region => 'eu-west-1');
+  
+  eval { $sqs->CreateQueue(QueueName => 'x'); };
+  
+  cmp_ok($@->code, 'eq', 'InvalidContent', 'Got an invalid content exception');
+  cmp_ok($sqs->caller->calls, '==', 5, 'Did 5 failing calls');
+} 
+
+{
+  my $paws = Paws->new(config => {
+    caller => Test16Caller->new(
+      calls_to_ok => 3,
+      content_for_ok => '<CreateQueueResponse><CreateQueueResult><QueueUrl>http://sqs.us-east-1.amazonaws.com/123456789012/testQueue</QueueUrl></CreateQueueResult><ResponseMetadata><RequestId>7a62c49f-347e-4fc4-9331-6e8e7a96aa73</RequestId></ResponseMetadata></CreateQueueResponse>',
+    ),
+    credentials => Paws::Credential::Explicit->new(
+      access_key => 'x',
+      secret_key => 'y',
+    )
+  });
+  my $sqs = $paws->service('SQS', region => 'eu-west-1');
+  
+  my $res = $sqs->CreateQueue(QueueName => 'x');
+
+  cmp_ok($res->QueueUrl, 'eq', 'http://sqs.us-east-1.amazonaws.com/123456789012/testQueue', 'Got an valid result');
+  cmp_ok($sqs->caller->calls, '==', 3, 'Did 3 calls until there was a success');
+} 
+
+
+
 
 done_testing;
