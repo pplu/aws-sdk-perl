@@ -33,7 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudDirect
 
 =head1 DESCRIPTION
 
-Represents the output of an C<AttachObject> operation.
+Represents the output of an AttachObject operation.
 
 =head1 ATTRIBUTES
 

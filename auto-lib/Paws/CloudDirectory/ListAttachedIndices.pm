@@ -65,7 +65,7 @@ The pagination token.
 
 =head2 B<REQUIRED> TargetReference => L<Paws::CloudDirectory::ObjectReference>
 
-A reference to the object to that has indices attached.
+A reference to the object that has indices attached.
 
 
 

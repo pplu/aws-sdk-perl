@@ -1,13 +1,14 @@
-package Paws::CloudDirectory::BatchCreateObjectResponse;
+package Paws::CloudDirectory::BatchGetObjectInformationResponse;
   use Moose;
   has ObjectIdentifier => (is => 'ro', isa => 'Str');
+  has SchemaFacets => (is => 'ro', isa => 'ArrayRef[Paws::CloudDirectory::SchemaFacet]');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::CloudDirectory::BatchCreateObjectResponse
+Paws::CloudDirectory::BatchGetObjectInformationResponse
 
 =head1 USAGE
 
@@ -18,27 +19,32 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::CloudDirectory::BatchCreateObjectResponse object:
+As an example, if Att1 is expected to be a Paws::CloudDirectory::BatchGetObjectInformationResponse object:
 
-  $service_obj->Method(Att1 => { ObjectIdentifier => $value, ..., ObjectIdentifier => $value  });
+  $service_obj->Method(Att1 => { ObjectIdentifier => $value, ..., SchemaFacets => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::CloudDirectory::BatchCreateObjectResponse object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::CloudDirectory::BatchGetObjectInformationResponse object:
 
   $result = $service_obj->Method(...);
   $result->Att1->ObjectIdentifier
 
 =head1 DESCRIPTION
 
-Represents the output of a CreateObject response operation.
+Represents the output of a GetObjectInformation response operation.
 
 =head1 ATTRIBUTES
 
 
 =head2 ObjectIdentifier => Str
 
-  The ID that is associated with the object.
+  The C<ObjectIdentifier> of the specified object.
+
+
+=head2 SchemaFacets => ArrayRef[L<Paws::CloudDirectory::SchemaFacet>]
+
+  The facets attached to the specified object.
 
 
 
