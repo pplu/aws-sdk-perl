@@ -180,7 +180,7 @@ a modified template or different parameter input values.
 
 Key-value pairs to associate with this stack. AWS CloudFormation also
 propagates these tags to resources in the stack. You can specify a
-maximum of 10 tags.
+maximum of 50 tags.
 
 
 

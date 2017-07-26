@@ -1,16 +1,16 @@
-package Paws::CloudFormation::Output;
+package Paws::CloudFormation::StackSetSummary;
   use Moose;
   has Description => (is => 'ro', isa => 'Str');
-  has ExportName => (is => 'ro', isa => 'Str');
-  has OutputKey => (is => 'ro', isa => 'Str');
-  has OutputValue => (is => 'ro', isa => 'Str');
+  has StackSetId => (is => 'ro', isa => 'Str');
+  has StackSetName => (is => 'ro', isa => 'Str');
+  has Status => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::CloudFormation::Output
+Paws::CloudFormation::StackSetSummary
 
 =head1 USAGE
 
@@ -21,42 +21,44 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::CloudFormation::Output object:
+As an example, if Att1 is expected to be a Paws::CloudFormation::StackSetSummary object:
 
-  $service_obj->Method(Att1 => { Description => $value, ..., OutputValue => $value  });
+  $service_obj->Method(Att1 => { Description => $value, ..., Status => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFormation::Output object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFormation::StackSetSummary object:
 
   $result = $service_obj->Method(...);
   $result->Att1->Description
 
 =head1 DESCRIPTION
 
-The Output data type.
+The structures that contain summary information about the specified
+stack set.
 
 =head1 ATTRIBUTES
 
 
 =head2 Description => Str
 
-  User defined description associated with the output.
+  A description of the stack set that you specify when the stack set is
+created or updated.
 
 
-=head2 ExportName => Str
+=head2 StackSetId => Str
 
-  The name of the export associated with the output.
-
-
-=head2 OutputKey => Str
-
-  The key associated with the output.
+  The ID of the stack set.
 
 
-=head2 OutputValue => Str
+=head2 StackSetName => Str
 
-  The value associated with the output.
+  The name of the stack set.
+
+
+=head2 Status => Str
+
+  The status of the stack set.
 
 
 
