@@ -114,7 +114,7 @@ package Test16Caller {
     default => 10,
   );
 
-  sub send_request {
+  sub do_call {
     my ($self, $service, $call_object) = @_;
 
     $self->register_call;

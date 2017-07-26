@@ -65,7 +65,7 @@ package Paws::Net::FileMockCaller;
 
   has _encoder => (is => 'ro', default => sub { JSON::MaybeXS->new(canonical => 1) });
 
-  sub send_request {
+  sub do_call {
     my ($self, $service, $call_object) = @_;
 
     my $actual_call = $self->_encoder->encode($service->to_hash($call_object));

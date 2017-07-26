@@ -23,7 +23,7 @@ package Paws::Net::MojoAsyncCaller;
     ) if (not defined $tracker);
 
     $tracker->one_more_try;
-    my $f = $self->send_request($service, $call_object);
+    my $f = $self->get_future_for_request($service, $call_object);
     $f->on_fail(sub {
       my $fail = shift;
       $tracker->operation_result($fail);
@@ -41,7 +41,7 @@ package Paws::Net::MojoAsyncCaller;
     return $f;
   }
 
-  sub send_request {
+  sub get_future_for_request {
     my ($self, $service, $call_object) = @_;
 
     my $requestObj = $service->prepare_request_for_call($call_object); 

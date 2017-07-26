@@ -60,7 +60,7 @@ package Paws::Net::MockCaller;
     isa => 'CodeRef',
   );
 
-  sub send_request {
+  sub do_call {
     my ($self, $service, $call_object) = @_;
 
     $self->_test_file(sprintf("%s/%04d.response", $self->mock_dir, $self->_request_num));
@@ -68,9 +68,9 @@ package Paws::Net::MockCaller;
 
     if ($self->mock_mode eq 'REPLAY') {
       $self->caller->file($self->_test_file);
-      return $self->caller->send_request($service, $call_object);
+      return $self->caller->do_call($service, $call_object);
     } elsif ($self->mock_mode eq 'RECORD') {
-      return $self->real_caller->send_request($service, $call_object);
+      return $self->real_caller->do_call($service, $call_object);
     } else {
       die "Unsupported record mode " . $self->mock_mode;
     }
