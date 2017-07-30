@@ -49,7 +49,7 @@ CloudWatch-Dashboard-Body-Structure.
 The name of the dashboard. If a dashboard with this name already
 exists, this call modifies that dashboard, replacing its current
 contents. Otherwise, a new dashboard is created. The maximum length is
-255, and valid characters are A-Z, a-z, 0-9, ".", "-", and "_".
+255, and valid characters are A-Z, a-z, 0-9, "-", and "_".
 
 
 

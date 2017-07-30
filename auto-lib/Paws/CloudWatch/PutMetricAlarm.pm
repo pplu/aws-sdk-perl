@@ -121,8 +121,8 @@ Valid Values: C<evaluate | ignore>
 
 The number of periods over which data is compared to the specified
 threshold. An alarm's total current evaluation period can be no longer
-than one day, so this number multiplied by C<Period> must be 86,400 or
-less.
+than one day, so this number multiplied by C<Period> cannot be more
+than 86,400 seconds.
 
 
 
@@ -186,9 +186,22 @@ arn:aws:swf:us-east-1:{I<customer-account>}:action/actions/AWS_EC2.InstanceId.Re
 =head2 B<REQUIRED> Period => Int
 
 The period, in seconds, over which the specified statistic is applied.
+Valid values are 10, 30, and any multiple of 60.
+
+Be sure to specify 10 or 30 only for metrics that are stored by a
+C<PutMetricData> call with a C<StorageResolution> of 1. If you specify
+a Period of 10 or 30 for a metric that does not have sub-minute
+resolution, the alarm still attempts to gather data at the period rate
+that you specify. In this case, it does not receive data for the
+attempts that do not correspond to a one-minute data resolution, and
+the alarm may often lapse into INSUFFICENT_DATA status. Specifying 10
+or 30 also sets this alarm as a high-resolution alarm, which has a
+higher charge than other alarms. For more information about pricing,
+see Amazon CloudWatch Pricing.
+
 An alarm's total current evaluation period can be no longer than one
-day, so this number multiplied by C<EvaluationPeriods> must be 86,400
-or less.
+day, so C<Period> multiplied by C<EvaluationPeriods> cannot be more
+than 86,400 seconds.
 
 
 

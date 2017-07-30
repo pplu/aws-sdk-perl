@@ -60,7 +60,16 @@ values to be aggregated into an existing metric.
 
 =head2 StorageResolution => Int
 
-  
+  Valid values are 1 and 60. Setting this to 1 specifies this metric as a
+high-resolution metric, so that CloudWatch stores the metric with
+sub-minute resolution down to one second. Setting this to 60 specifies
+this metric as a regular-resolution metric, which CloudWatch stores at
+1-minute resolution. Currently, high resolution is available only for
+custom metrics. For more information about high-resolution metrics, see
+High-Resolution Metrics in the I<Amazon CloudWatch User Guide>.
+
+This field is optional, if you do not specify it the default of 60 is
+used.
 
 
 =head2 Timestamp => Str
