@@ -37,7 +37,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ApplicationName => Str
 
-The Amazon Kinesis Analytics application name.
+The Kinesis Analytics application name.
 
 
 
@@ -51,7 +51,7 @@ C<CloudWatchLoggingOptionId>.
 
 =head2 B<REQUIRED> CurrentApplicationVersionId => Int
 
-The version ID of the Amazon Kinesis Analytics application.
+The version ID of the Kinesis Analytics application.
 
 
 

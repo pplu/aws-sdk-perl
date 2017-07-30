@@ -75,8 +75,8 @@ C<sample-app>).
 =head2 CloudWatchLoggingOptions => ArrayRef[L<Paws::KinesisAnalytics::CloudWatchLoggingOption>]
 
 Use this parameter to configure a CloudWatch log stream to monitor
-application configuration errors. For more information, see Monitoring
-Configuration Errors.
+application configuration errors. For more information, see Working
+with Amazon CloudWatch Logs.
 
 
 
