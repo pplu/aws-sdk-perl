@@ -18,9 +18,12 @@ Paws::DynamoDB::UpdateItemOutput
 
 =head2 Attributes => L<Paws::DynamoDB::AttributeMap>
 
-A map of attribute values as they appeared before the C<UpdateItem>
-operation. This map only appears if C<ReturnValues> was specified as
-something other than C<NONE> in the request. Each element represents
+A map of attribute values as they appear before or after the
+C<UpdateItem> operation, as determined by the C<ReturnValues>
+parameter.
+
+The C<Attributes> map is only present if C<ReturnValues> was specified
+as something other than C<NONE> in the request. Each element represents
 one attribute.
 
 

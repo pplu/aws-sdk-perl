@@ -94,7 +94,7 @@ Conditions in the I<Amazon DynamoDB Developer Guide>.
 
 =head2 Expected => L<Paws::DynamoDB::ExpectedAttributeMap>
 
-This is a legacy parameter. Use C<ConditionExpresssion> instead. For
+This is a legacy parameter. Use C<ConditionExpression> instead. For
 more information, see Expected in the I<Amazon DynamoDB Developer
 Guide>.
 
@@ -223,8 +223,8 @@ Valid values are: C<"SIZE">, C<"NONE">
 =head2 ReturnValues => Str
 
 Use C<ReturnValues> if you want to get the item attributes as they
-appeared either before or after they were updated. For C<UpdateItem>,
-the valid values are:
+appear before or after they are updated. For C<UpdateItem>, the valid
+values are:
 
 =over
 
@@ -258,9 +258,9 @@ after the UpdateItem operation.
 
 There is no additional cost associated with requesting a return value
 aside from the small network and processing overhead of receiving a
-larger response. No Read Capacity Units are consumed.
+larger response. No read capacity units are consumed.
 
-Values returned are strongly consistent
+The values returned are strongly consistent.
 
 Valid values are: C<"NONE">, C<"ALL_OLD">, C<"UPDATED_OLD">, C<"ALL_NEW">, C<"UPDATED_NEW">
 
