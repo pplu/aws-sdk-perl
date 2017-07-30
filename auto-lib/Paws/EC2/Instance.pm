@@ -5,6 +5,7 @@ package Paws::EC2::Instance;
   has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[Paws::EC2::InstanceBlockDeviceMapping]', request_name => 'blockDeviceMapping', traits => ['NameInRequest']);
   has ClientToken => (is => 'ro', isa => 'Str', request_name => 'clientToken', traits => ['NameInRequest']);
   has EbsOptimized => (is => 'ro', isa => 'Bool', request_name => 'ebsOptimized', traits => ['NameInRequest']);
+  has ElasticGpuAssociations => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ElasticGpuAssociation]', request_name => 'elasticGpuAssociationSet', traits => ['NameInRequest']);
   has EnaSupport => (is => 'ro', isa => 'Bool', request_name => 'enaSupport', traits => ['NameInRequest']);
   has Hypervisor => (is => 'ro', isa => 'Str', request_name => 'hypervisor', traits => ['NameInRequest']);
   has IamInstanceProfile => (is => 'ro', isa => 'Paws::EC2::IamInstanceProfile', request_name => 'iamInstanceProfile', traits => ['NameInRequest']);
@@ -102,6 +103,11 @@ optimization provides dedicated throughput to Amazon EBS and an
 optimized configuration stack to provide optimal I/O performance. This
 optimization isn't available with all instance types. Additional usage
 charges apply when using an EBS Optimized instance.
+
+
+=head2 ElasticGpuAssociations => ArrayRef[L<Paws::EC2::ElasticGpuAssociation>]
+
+  The Elastic GPU associated with the instance.
 
 
 =head2 EnaSupport => Bool
