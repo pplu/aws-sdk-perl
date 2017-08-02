@@ -394,6 +394,11 @@ package Paws::SSM;
     my $call_object = $self->new_with_coercions('Paws::SSM::RemoveTagsFromResource', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub SendAutomationSignal {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SSM::SendAutomationSignal', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub SendCommand {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SSM::SendCommand', @_);
@@ -608,7 +613,7 @@ package Paws::SSM;
   }
 
 
-  sub operations { qw/AddTagsToResource CancelCommand CreateActivation CreateAssociation CreateAssociationBatch CreateDocument CreateMaintenanceWindow CreatePatchBaseline CreateResourceDataSync DeleteActivation DeleteAssociation DeleteDocument DeleteMaintenanceWindow DeleteParameter DeleteParameters DeletePatchBaseline DeleteResourceDataSync DeregisterManagedInstance DeregisterPatchBaselineForPatchGroup DeregisterTargetFromMaintenanceWindow DeregisterTaskFromMaintenanceWindow DescribeActivations DescribeAssociation DescribeAutomationExecutions DescribeAvailablePatches DescribeDocument DescribeDocumentPermission DescribeEffectiveInstanceAssociations DescribeEffectivePatchesForPatchBaseline DescribeInstanceAssociationsStatus DescribeInstanceInformation DescribeInstancePatches DescribeInstancePatchStates DescribeInstancePatchStatesForPatchGroup DescribeMaintenanceWindowExecutions DescribeMaintenanceWindowExecutionTaskInvocations DescribeMaintenanceWindowExecutionTasks DescribeMaintenanceWindows DescribeMaintenanceWindowTargets DescribeMaintenanceWindowTasks DescribeParameters DescribePatchBaselines DescribePatchGroups DescribePatchGroupState GetAutomationExecution GetCommandInvocation GetDefaultPatchBaseline GetDeployablePatchSnapshotForInstance GetDocument GetInventory GetInventorySchema GetMaintenanceWindow GetMaintenanceWindowExecution GetMaintenanceWindowExecutionTask GetParameter GetParameterHistory GetParameters GetParametersByPath GetPatchBaseline GetPatchBaselineForPatchGroup ListAssociations ListCommandInvocations ListCommands ListDocuments ListDocumentVersions ListInventoryEntries ListResourceDataSync ListTagsForResource ModifyDocumentPermission PutInventory PutParameter RegisterDefaultPatchBaseline RegisterPatchBaselineForPatchGroup RegisterTargetWithMaintenanceWindow RegisterTaskWithMaintenanceWindow RemoveTagsFromResource SendCommand StartAutomationExecution StopAutomationExecution UpdateAssociation UpdateAssociationStatus UpdateDocument UpdateDocumentDefaultVersion UpdateMaintenanceWindow UpdateManagedInstanceRole UpdatePatchBaseline / }
+  sub operations { qw/AddTagsToResource CancelCommand CreateActivation CreateAssociation CreateAssociationBatch CreateDocument CreateMaintenanceWindow CreatePatchBaseline CreateResourceDataSync DeleteActivation DeleteAssociation DeleteDocument DeleteMaintenanceWindow DeleteParameter DeleteParameters DeletePatchBaseline DeleteResourceDataSync DeregisterManagedInstance DeregisterPatchBaselineForPatchGroup DeregisterTargetFromMaintenanceWindow DeregisterTaskFromMaintenanceWindow DescribeActivations DescribeAssociation DescribeAutomationExecutions DescribeAvailablePatches DescribeDocument DescribeDocumentPermission DescribeEffectiveInstanceAssociations DescribeEffectivePatchesForPatchBaseline DescribeInstanceAssociationsStatus DescribeInstanceInformation DescribeInstancePatches DescribeInstancePatchStates DescribeInstancePatchStatesForPatchGroup DescribeMaintenanceWindowExecutions DescribeMaintenanceWindowExecutionTaskInvocations DescribeMaintenanceWindowExecutionTasks DescribeMaintenanceWindows DescribeMaintenanceWindowTargets DescribeMaintenanceWindowTasks DescribeParameters DescribePatchBaselines DescribePatchGroups DescribePatchGroupState GetAutomationExecution GetCommandInvocation GetDefaultPatchBaseline GetDeployablePatchSnapshotForInstance GetDocument GetInventory GetInventorySchema GetMaintenanceWindow GetMaintenanceWindowExecution GetMaintenanceWindowExecutionTask GetParameter GetParameterHistory GetParameters GetParametersByPath GetPatchBaseline GetPatchBaselineForPatchGroup ListAssociations ListCommandInvocations ListCommands ListDocuments ListDocumentVersions ListInventoryEntries ListResourceDataSync ListTagsForResource ModifyDocumentPermission PutInventory PutParameter RegisterDefaultPatchBaseline RegisterPatchBaselineForPatchGroup RegisterTargetWithMaintenanceWindow RegisterTaskWithMaintenanceWindow RemoveTagsFromResource SendAutomationSignal SendCommand StartAutomationExecution StopAutomationExecution UpdateAssociation UpdateAssociationStatus UpdateDocument UpdateDocumentDefaultVersion UpdateMaintenanceWindow UpdateManagedInstanceRole UpdatePatchBaseline / }
 
 1;
 
@@ -862,7 +867,8 @@ Each argument is described in detail in: L<Paws::SSM::DeleteParameters>
 
 Returns: a L<Paws::SSM::DeleteParametersResult> instance
 
-  Delete a list of parameters.
+  Delete a list of parameters. This API is used to delete parameters by
+using the Amazon EC2 console.
 
 
 =head2 DeletePatchBaseline(BaselineId => Str)
@@ -1126,6 +1132,15 @@ Returns: a L<Paws::SSM::DescribeParametersResult> instance
 
   Get information about a parameter.
 
+Request results are returned on a best-effort basis. If you specify
+C<MaxResults> in the request, the response includes information up to
+the limit specified. The number of items returned, however, can be
+between zero and the value of C<MaxResults>. If the service reaches an
+internal limit while processing the results, it stops the operation and
+returns the matching values up to that point and a C<NextToken>. You
+can specify the C<NextToken> in a subsequent call to get the next set
+of results.
+
 
 =head2 DescribePatchBaselines([Filters => ArrayRef[L<Paws::SSM::PatchOrchestratorFilter>], MaxResults => Int, NextToken => Str])
 
@@ -1287,6 +1302,15 @@ Returns: a L<Paws::SSM::GetParametersByPathResult> instance
 
   Retrieve parameters in a specific hierarchy. For more information, see
 Working with Systems Manager Parameters.
+
+Request results are returned on a best-effort basis. If you specify
+C<MaxResults> in the request, the response includes information up to
+the limit specified. The number of items returned, however, can be
+between zero and the value of C<MaxResults>. If the service reaches an
+internal limit while processing the results, it stops the operation and
+returns the matching values up to that point and a C<NextToken>. You
+can specify the C<NextToken> in a subsequent call to get the next set
+of results.
 
 
 =head2 GetPatchBaseline(BaselineId => Str)
@@ -1472,6 +1496,16 @@ Each argument is described in detail in: L<Paws::SSM::RemoveTagsFromResource>
 Returns: a L<Paws::SSM::RemoveTagsFromResourceResult> instance
 
   Removes all tags from the specified resource.
+
+
+=head2 SendAutomationSignal(AutomationExecutionId => Str, SignalType => Str, [Payload => L<Paws::SSM::AutomationParameterMap>])
+
+Each argument is described in detail in: L<Paws::SSM::SendAutomationSignal>
+
+Returns: a L<Paws::SSM::SendAutomationSignalResult> instance
+
+  Sends a signal to an Automation execution to change the current
+behavior or status of the execution.
 
 
 =head2 SendCommand(DocumentName => Str, [Comment => Str, DocumentHash => Str, DocumentHashType => Str, InstanceIds => ArrayRef[Str|Undef], MaxConcurrency => Str, MaxErrors => Str, NotificationConfig => L<Paws::SSM::NotificationConfig>, OutputS3BucketName => Str, OutputS3KeyPrefix => Str, OutputS3Region => Str, Parameters => L<Paws::SSM::Parameters>, ServiceRoleArn => Str, Targets => ArrayRef[L<Paws::SSM::Target>], TimeoutSeconds => Int])
