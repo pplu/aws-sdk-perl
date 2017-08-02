@@ -240,7 +240,7 @@ package Paws::Net::RestJsonResponse;
         );
       }
       
-      #$unserialized_struct->{ _request_id } = $request_id;
+      $unserialized_struct->{ _request_id } = $request_id;
 
       return $self->new_from_result_struct($class, $unserialized_struct);
     } else {
