@@ -48,7 +48,7 @@ SMS Channel Response.
 
 =head2 ApplicationId => Str
 
-  Application id
+  The unique ID of the application to which the SMS channel belongs.
 
 
 =head2 CreationDate => Str

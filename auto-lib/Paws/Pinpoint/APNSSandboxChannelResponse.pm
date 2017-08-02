@@ -81,7 +81,7 @@ Apple Development Push Notification Service channel definition.
 
 =head2 Platform => Str
 
-  The platform type. Will be APNS.
+  The platform type. Will be APNS_SANDBOX.
 
 
 =head2 Version => Int

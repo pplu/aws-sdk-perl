@@ -1,6 +1,7 @@
 package Paws::Pinpoint::CampaignEmailMessage;
   use Moose;
   has Body => (is => 'ro', isa => 'Str');
+  has FromAddress => (is => 'ro', isa => 'Str');
   has HtmlBody => (is => 'ro', isa => 'Str');
   has Title => (is => 'ro', isa => 'Str');
 1;
@@ -41,6 +42,12 @@ The email message configuration.
 =head2 Body => Str
 
   The email text body.
+
+
+=head2 FromAddress => Str
+
+  The email address used to send the email from. Defaults to use
+FromAddress specified in the Email Channel.
 
 
 =head2 HtmlBody => Str
