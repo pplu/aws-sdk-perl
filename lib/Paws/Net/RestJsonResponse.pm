@@ -206,7 +206,6 @@ package Paws::Net::RestJsonResponse;
 
   sub response_to_object {
     my ($self, $call_object, $response) = @_;
-    my ($http_status, $content, $headers) = ($response->status, $response->content, $response->headers);;
 
     $call_object = $call_object->meta->name;
 
@@ -214,54 +213,50 @@ package Paws::Net::RestJsonResponse;
     my $ret_class = $returns ? $call_object->_returns : 'Paws::API::Response';
     Paws->load_class($ret_class);
  
-    my $unserialized_struct;
-
-    if ($ret_class->can('_stream_param')) {
-      $unserialized_struct = {}
-    } else {
-      if (not defined $content or $content eq '') {
-        $unserialized_struct = {}
-      } else {
-        $unserialized_struct = eval { $self->unserialize_response( $content ) };
-        if ($@){
-          return Paws::Exception->new(
-            message => $@,
-            code => 'InvalidContent',
-            request_id => '', #$request_id,
-            http_status => $http_status,
-          );
-        }
-      }
-    }
-
-    my $request_id = $headers->{'x-amz-request-id'} 
-                      || $headers->{'x-amzn-requestid'}
-                      || $unserialized_struct->{'requestId'} 
-                      || $unserialized_struct->{'RequestId'} 
-                      || $unserialized_struct->{'RequestID'}
-                      || $unserialized_struct->{ ResponseMetadata }->{ RequestId };
- 
-    if ($call_object->_result_key){
-      $unserialized_struct = $unserialized_struct->{ $call_object->_result_key };
-    }
-
-    $unserialized_struct->{ _request_id } = $request_id;
+    my $request_id = $response->header('x-amz-request-id')
+                     || $response->header('x-amzn-requestid');
       
     if ($returns){
-      if ($ret_class->can('_stream_param')) {
-        $unserialized_struct->{ $ret_class->_stream_param } = $content
-      }
-
-      foreach my $key (keys %$headers){
-        $unserialized_struct->{lc $key} = $headers->{$key};
-      }
-
-      my $o_result = $self->new_from_result_struct($call_object->_returns, $unserialized_struct);
-      return $o_result;
+      return $self->new_from_response($call_object->_returns, $response, $request_id);
     } else {
       return Paws::API::Response->new(
         _request_id => $request_id,
       );
+    }
+  }
+
+  sub new_from_response {
+    my ($self, $class, $response, $request_id) = @_;
+
+    if (not $class->can('_stream_param')) {
+      # Object is serialized in the body of the response
+      my $unserialized_struct = eval { $self->unserialize_response( $response->content ) };
+      if ($@){
+        return Paws::Exception->new(
+          message => $@,
+          code => 'InvalidContent',
+          request_id => $request_id,
+          http_status => $response->status,
+        );
+      }
+      
+      #$unserialized_struct->{ _request_id } = $request_id;
+
+      return $self->new_from_result_struct($class, $unserialized_struct);
+    } else {
+      my %args;
+      foreach my $att ($class->meta->get_attribute_list) {
+        next if (not my $meta = $class->meta->get_attribute($att));
+
+        if ($meta->does('ParamInHeader')) {
+          my $value = $response->headers->{ lc($meta->header_name) };
+          $args{ $att } = $value if (defined $value);
+        }
+      }
+
+      $args{ $class->_stream_param } = $response->content;
+
+      return $class->new(%args);
     }
   }
 
