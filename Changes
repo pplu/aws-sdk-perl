@@ -9,6 +9,12 @@
  - API update: EMR
  - API update: CloudFormation
  - API update: CloudDirectory 
+ - API update: Pinpoint
+ - API update: CodeDeploy
+ - API update: Config
+ - API update: Inspector
+ - API update: SES
+ - API update: SSM
 
 0.34 07 Jul 2017
  - New Credential provider: Paws::Credential::ECSContainerProfile (gadgetjunkie)
