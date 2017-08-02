@@ -46,9 +46,9 @@ package Paws::Net::JsonResponse;
     my ($message, $request_id);
 
     if (exists $struct->{message}){
-      $message = $struct->{message};
+      $message = $struct->{message} // '';
     } elsif (exists $struct->{Message}){
-      $message = $struct->{Message};
+      $message = $struct->{Message} // '';
     } else {
       # Rationale for this condition is in Issue #82 
       if ($struct->{__type} eq 'InternalError'){
