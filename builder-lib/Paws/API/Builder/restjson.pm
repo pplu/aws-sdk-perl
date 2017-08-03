@@ -74,7 +74,6 @@ package [% c.api %]::[% operation.name %];
     [%- IF (operation.output.keys.size) -%]
       [%- c.api %]::[% c.shapename_for_operation_output(op_name) -%]
     [%- ELSE -%]Paws::API::Response[% END -%]');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 [% c.callclass_documentation_template | eval %]
 #);
