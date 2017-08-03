@@ -66,7 +66,7 @@ application catalog and is connected to fleets.
 
 =head2 CreatedTime => Str
 
-  The timestamp when the image was created.
+  The time stamp when the image was created.
 
 
 =head2 Description => Str
@@ -103,9 +103,9 @@ created.
 
 =head2 State => Str
 
-  The image starts in the B<PENDING> state, and then moves to
-B<AVAILABLE> if image creation succeeds and B<FAILED> if image creation
-has failed.
+  The image starts in the B<PENDING> state. If image creation succeeds,
+it moves to B<AVAILABLE>. If image creation fails, it moves to
+B<FAILED>.
 
 
 =head2 StateChangeReason => L<Paws::AppStream::ImageStateChangeReason>

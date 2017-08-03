@@ -516,7 +516,7 @@ template. For this API to function properly, you must not exceed the
 limit of running up to 500 concurrent agents per AWS account.
 
 
-=head2 StopAssessmentRun(AssessmentRunArn => Str)
+=head2 StopAssessmentRun(AssessmentRunArn => Str, [StopAction => Str])
 
 Each argument is described in detail in: L<Paws::Inspector::StopAssessmentRun>
 

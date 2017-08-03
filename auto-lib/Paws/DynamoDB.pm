@@ -689,11 +689,53 @@ that has the same primary key as the new item already exists in the
 specified table, the new item completely replaces the existing item.
 You can perform a conditional put operation (add a new item if one with
 the specified primary key doesn't exist), or replace an existing item
-if it has certain attribute values.
+if it has certain attribute values. You can return the item's attribute
+values in the same operation, using the C<ReturnValues> parameter.
 
-In addition to putting an item, you can also return the item's
-attribute values in the same operation, using the C<ReturnValues>
-parameter.
+This topic provides general information about the C<PutItem> API.
+
+For information on how to call the C<PutItem> API using the AWS SDK in
+specific languages, see the following:
+
+=over
+
+=item *
+
+PutItem in the AWS Command Line Interface
+
+=item *
+
+PutItem in the AWS SDK for .NET
+
+=item *
+
+PutItem in the AWS SDK for C++
+
+=item *
+
+PutItem in the AWS SDK for Go
+
+=item *
+
+PutItem in the AWS SDK for Java
+
+=item *
+
+PutItem in the AWS SDK for JavaScript
+
+=item *
+
+PutItem in the AWS SDK for PHP V3
+
+=item *
+
+PutItem in the AWS SDK for Python
+
+=item *
+
+PutItem in the AWS SDK for Ruby V2
+
+=back
 
 When you add an item, the primary key attribute(s) are the only
 required attributes. Attribute values cannot be null. String and Binary
@@ -718,28 +760,53 @@ Each argument is described in detail in: L<Paws::DynamoDB::Query>
 
 Returns: a L<Paws::DynamoDB::QueryOutput> instance
 
-  A C<Query> operation uses the primary key of a table or a secondary
-index to directly access items from that table or index.
+  The C<Query> operation finds items based on primary key values. You can
+query any table or secondary index that has a composite primary key (a
+partition key and a sort key).
 
 Use the C<KeyConditionExpression> parameter to provide a specific value
 for the partition key. The C<Query> operation will return all of the
 items from the table or index with that partition key value. You can
 optionally narrow the scope of the C<Query> operation by specifying a
 sort key value and a comparison operator in C<KeyConditionExpression>.
-You can use the C<ScanIndexForward> parameter to get results in forward
-or reverse order, by sort key.
+To further refine the C<Query> results, you can optionally provide a
+C<FilterExpression>. A C<FilterExpression> determines which items
+within the results should be returned to you. All of the other results
+are discarded.
 
-Queries that do not return results consume the minimum number of read
-capacity units for that type of read operation.
+A C<Query> operation always returns a result set. If no matching items
+are found, the result set will be empty. Queries that do not return
+results consume the minimum number of read capacity units for that type
+of read operation.
 
-If the total number of items meeting the query criteria exceeds the
-result set size limit of 1 MB, the query stops and results are returned
-to the user with the C<LastEvaluatedKey> element to continue the query
-in a subsequent operation. Unlike a C<Scan> operation, a C<Query>
-operation never returns both an empty result set and a
-C<LastEvaluatedKey> value. C<LastEvaluatedKey> is only provided if you
-have used the C<Limit> parameter, or if the result set exceeds 1 MB
-(prior to applying a filter).
+DynamoDB calculates the number of read capacity units consumed based on
+item size, not on the amount of data that is returned to an
+application. The number of capacity units consumed will be the same
+whether you request all of the attributes (the default behavior) or
+just some of them (using a projection expression). The number will also
+be the same whether or not you use a C<FilterExpression>.
+
+C<Query> results are always sorted by the sort key value. If the data
+type of the sort key is Number, the results are returned in numeric
+order; otherwise, the results are returned in order of UTF-8 bytes. By
+default, the sort order is ascending. To reverse the order, set the
+C<ScanIndexForward> parameter to false.
+
+A single C<Query> operation will read up to the maximum number of items
+set (if using the C<Limit> parameter) or a maximum of 1 MB of data and
+then apply any filtering to the results using C<FilterExpression>. If
+C<LastEvaluatedKey> is present in the response, you will need to
+paginate the result set. For more information, see Paginating the
+Results in the I<Amazon DynamoDB Developer Guide>.
+
+C<FilterExpression> is applied after a C<Query> finishes, but before
+the results are returned. A C<FilterExpression> cannot contain
+partition key or sort key attributes. You need to specify those
+attributes in the C<KeyConditionExpression>.
+
+A C<Query> operation can return an empty result set and a
+C<LastEvaluatedKey> if all the items read for the page of results are
+filtered out.
 
 You can query a table, a local secondary index, or a global secondary
 index. For a query on a table or on a local secondary index, you can
@@ -765,17 +832,24 @@ C<LastEvaluatedKey> value to continue the scan in a subsequent
 operation. The results also include the number of items exceeding the
 limit. A scan can result in no table data meeting the filter criteria.
 
-By default, C<Scan> operations proceed sequentially; however, for
-faster performance on a large table or secondary index, applications
-can request a parallel C<Scan> operation by providing the C<Segment>
-and C<TotalSegments> parameters. For more information, see Parallel
-Scan in the I<Amazon DynamoDB Developer Guide>.
+A single C<Scan> operation will read up to the maximum number of items
+set (if using the C<Limit> parameter) or a maximum of 1 MB of data and
+then apply any filtering to the results using C<FilterExpression>. If
+C<LastEvaluatedKey> is present in the response, you will need to
+paginate the result set. For more information, see Paginating the
+Results in the I<Amazon DynamoDB Developer Guide>.
 
-By default, C<Scan> uses eventually consistent reads when accessing the
-data in a table; therefore, the result set might not include the
-changes to data in the table immediately before the operation began. If
-you need a consistent copy of the data, as of the time that the Scan
-begins, you can set the C<ConsistentRead> parameter to C<true>.
+C<Scan> operations proceed sequentially; however, for faster
+performance on a large table or secondary index, applications can
+request a parallel C<Scan> operation by providing the C<Segment> and
+C<TotalSegments> parameters. For more information, see Parallel Scan in
+the I<Amazon DynamoDB Developer Guide>.
+
+C<Scan> uses eventually consistent reads when accessing the data in a
+table; therefore, the result set might not include the changes to data
+in the table immediately before the operation began. If you need a
+consistent copy of the data, as of the time that the C<Scan> begins,
+you can set the C<ConsistentRead> parameter to C<true>.
 
 
 =head2 TagResource(ResourceArn => Str, Tags => ArrayRef[L<Paws::DynamoDB::Tag>])
@@ -868,12 +942,12 @@ Each argument is described in detail in: L<Paws::DynamoDB::UpdateTimeToLive>
 
 Returns: a L<Paws::DynamoDB::UpdateTimeToLiveOutput> instance
 
-  Specify the lifetime of individual table items. The database
-automatically removes the item at the expiration of the item. The
-UpdateTimeToLive method will enable or disable TTL for the specified
-table. A successful C<UpdateTimeToLive> call returns the current
-C<TimeToLiveSpecification>; it may take up to one hour for the change
-to fully process.
+  The UpdateTimeToLive method will enable or disable TTL for the
+specified table. A successful C<UpdateTimeToLive> call returns the
+current C<TimeToLiveSpecification>; it may take up to one hour for the
+change to fully process. Any additional C<UpdateTimeToLive> calls for
+the same table during this one hour duration result in a
+C<ValidationException>.
 
 TTL compares the current time in epoch time format to the time stored
 in the TTL attribute of an item. If the epoch time value stored in the

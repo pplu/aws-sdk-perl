@@ -82,10 +82,10 @@ on any of the in-application streams in your application.
 
 =head2 CloudWatchLoggingOptionDescriptions => ArrayRef[L<Paws::KinesisAnalytics::CloudWatchLoggingOptionDescription>]
 
-  Describes the CloudWatch log streams configured to receive application
-messages. For more information about using CloudWatch log streams with
-Amazon Kinesis Analytics applications, see Monitoring Configuration
-Errors.
+  Describes the CloudWatch log streams that are configured to receive
+application messages. For more information about using CloudWatch log
+streams with Amazon Kinesis Analytics applications, see Working with
+Amazon CloudWatch Logs.
 
 
 =head2 CreateTimestamp => Str

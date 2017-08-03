@@ -51,13 +51,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 PageSize => Str
 
-
+The number of entries you want on each page in the response.
 
 
 
 =head2 Token => Str
 
-
+The NextToken string returned on a previous page that you use to get
+the next page of results in a paginated response.
 
 
 

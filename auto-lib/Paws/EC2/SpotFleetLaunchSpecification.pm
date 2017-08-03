@@ -15,6 +15,7 @@ package Paws::EC2::SpotFleetLaunchSpecification;
   has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Paws::EC2::GroupIdentifier]', request_name => 'groupSet', traits => ['NameInRequest']);
   has SpotPrice => (is => 'ro', isa => 'Str', request_name => 'spotPrice', traits => ['NameInRequest']);
   has SubnetId => (is => 'ro', isa => 'Str', request_name => 'subnetId', traits => ['NameInRequest']);
+  has TagSpecifications => (is => 'ro', isa => 'ArrayRef[Paws::EC2::SpotFleetTagSpecification]', request_name => 'tagSpecificationSet', traits => ['NameInRequest']);
   has UserData => (is => 'ro', isa => 'Str', request_name => 'userData', traits => ['NameInRequest']);
   has WeightedCapacity => (is => 'ro', isa => 'Num', request_name => 'weightedCapacity', traits => ['NameInRequest']);
 1;
@@ -142,6 +143,11 @@ bid price by the value of C<WeightedCapacity>.
   The ID of the subnet in which to launch the instances. To specify
 multiple subnets, separate them using commas; for example,
 "subnet-a61dafcf, subnet-65ea5f08".
+
+
+=head2 TagSpecifications => ArrayRef[L<Paws::EC2::SpotFleetTagSpecification>]
+
+  The tags to apply during creation.
 
 
 =head2 UserData => Str

@@ -53,7 +53,7 @@ type between the same objects.
   The set of attributes that distinguish links made from this facet from
 each other, in the order of significance. Listing typed links can
 filter on the values of these attributes. See ListOutgoingTypedLinks
-and ListIncomingTypeLinks for details.
+and ListIncomingTypedLinks for details.
 
 
 =head2 B<REQUIRED> Name => Str

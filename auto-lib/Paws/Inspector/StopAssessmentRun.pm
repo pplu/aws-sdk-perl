@@ -2,6 +2,7 @@
 package Paws::Inspector::StopAssessmentRun;
   use Moose;
   has AssessmentRunArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'assessmentRunArn' , required => 1);
+  has StopAction => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'stopAction' );
 
   use MooseX::ClassAttribute;
 
@@ -38,6 +39,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 The ARN of the assessment run that you want to stop.
 
 
+
+=head2 StopAction => Str
+
+An input option that can be set to either START_EVALUATION or
+SKIP_EVALUATION. START_EVALUATION (the default value), stops the AWS
+agent from collecting data and begins the results evaluation and the
+findings generation process. SKIP_EVALUATION cancels the assessment run
+immediately, after which no findings are generated.
+
+Valid values are: C<"START_EVALUATION">, C<"SKIP_EVALUATION">
 
 
 =head1 SEE ALSO

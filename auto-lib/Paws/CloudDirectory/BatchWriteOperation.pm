@@ -2,9 +2,15 @@ package Paws::CloudDirectory::BatchWriteOperation;
   use Moose;
   has AddFacetToObject => (is => 'ro', isa => 'Paws::CloudDirectory::BatchAddFacetToObject');
   has AttachObject => (is => 'ro', isa => 'Paws::CloudDirectory::BatchAttachObject');
+  has AttachPolicy => (is => 'ro', isa => 'Paws::CloudDirectory::BatchAttachPolicy');
+  has AttachToIndex => (is => 'ro', isa => 'Paws::CloudDirectory::BatchAttachToIndex');
+  has AttachTypedLink => (is => 'ro', isa => 'Paws::CloudDirectory::BatchAttachTypedLink');
+  has CreateIndex => (is => 'ro', isa => 'Paws::CloudDirectory::BatchCreateIndex');
   has CreateObject => (is => 'ro', isa => 'Paws::CloudDirectory::BatchCreateObject');
   has DeleteObject => (is => 'ro', isa => 'Paws::CloudDirectory::BatchDeleteObject');
+  has DetachFromIndex => (is => 'ro', isa => 'Paws::CloudDirectory::BatchDetachFromIndex');
   has DetachObject => (is => 'ro', isa => 'Paws::CloudDirectory::BatchDetachObject');
+  has DetachTypedLink => (is => 'ro', isa => 'Paws::CloudDirectory::BatchDetachTypedLink');
   has RemoveFacetFromObject => (is => 'ro', isa => 'Paws::CloudDirectory::BatchRemoveFacetFromObject');
   has UpdateObjectAttributes => (is => 'ro', isa => 'Paws::CloudDirectory::BatchUpdateObjectAttributes');
 1;
@@ -52,6 +58,28 @@ Represents the output of a C<BatchWrite> operation.
   Attaches an object to a Directory.
 
 
+=head2 AttachPolicy => L<Paws::CloudDirectory::BatchAttachPolicy>
+
+  Attaches a policy object to a regular object. An object can have a
+limited number of attached policies.
+
+
+=head2 AttachToIndex => L<Paws::CloudDirectory::BatchAttachToIndex>
+
+  Attaches the specified object to the specified index.
+
+
+=head2 AttachTypedLink => L<Paws::CloudDirectory::BatchAttachTypedLink>
+
+  Attaches a typed link to a specified source and target object. For more
+information, see Typed link.
+
+
+=head2 CreateIndex => L<Paws::CloudDirectory::BatchCreateIndex>
+
+  Creates an index object. See Indexing for more information.
+
+
 =head2 CreateObject => L<Paws::CloudDirectory::BatchCreateObject>
 
   Creates an object.
@@ -62,9 +90,20 @@ Represents the output of a C<BatchWrite> operation.
   Deletes an object in a Directory.
 
 
+=head2 DetachFromIndex => L<Paws::CloudDirectory::BatchDetachFromIndex>
+
+  Detaches the specified object from the specified index.
+
+
 =head2 DetachObject => L<Paws::CloudDirectory::BatchDetachObject>
 
   Detaches an object from a Directory.
+
+
+=head2 DetachTypedLink => L<Paws::CloudDirectory::BatchDetachTypedLink>
+
+  Detaches a typed link from a specified source and target object. For
+more information, see Typed link.
 
 
 =head2 RemoveFacetFromObject => L<Paws::CloudDirectory::BatchRemoveFacetFromObject>

@@ -132,8 +132,8 @@ Returns: a L<Paws::KinesisAnalytics::AddApplicationCloudWatchLoggingOptionRespon
 
   Adds a CloudWatch log stream to monitor application configuration
 errors. For more information about using CloudWatch log streams with
-Amazon Kinesis Analytics applications, see Monitoring Configuration
-Errors.
+Amazon Kinesis Analytics applications, see Working with Amazon
+CloudWatch Logs.
 
 
 =head2 AddApplicationInput(ApplicationName => Str, CurrentApplicationVersionId => Int, Input => L<Paws::KinesisAnalytics::Input>)
@@ -273,7 +273,7 @@ Returns: a L<Paws::KinesisAnalytics::DeleteApplicationCloudWatchLoggingOptionRes
 
   Deletes a CloudWatch log stream from an application. For more
 information about using CloudWatch log streams with Amazon Kinesis
-Analytics applications, see Monitoring Configuration Errors.
+Analytics applications, see Working with Amazon CloudWatch Logs.
 
 
 =head2 DeleteApplicationOutput(ApplicationName => Str, CurrentApplicationVersionId => Int, OutputId => Str)

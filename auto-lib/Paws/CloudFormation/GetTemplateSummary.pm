@@ -2,6 +2,7 @@
 package Paws::CloudFormation::GetTemplateSummary;
   use Moose;
   has StackName => (is => 'ro', isa => 'Str');
+  has StackSetName => (is => 'ro', isa => 'Str');
   has TemplateBody => (is => 'ro', isa => 'Str');
   has TemplateURL => (is => 'ro', isa => 'Str');
 
@@ -44,6 +45,13 @@ specify the unique stack ID.
 
 Conditional: You must specify only one of the following parameters:
 C<StackName>, C<TemplateBody>, or C<TemplateURL>.
+
+
+
+=head2 StackSetName => Str
+
+The name or unique ID of the stack set from which the stack was
+created.
 
 
 

@@ -100,6 +100,11 @@ more information, go to the Amazon SES Developer Guide.
 
 Must be base64-encoded.
 
+=item *
+
+Per RFC 5321, the maximum length of each line of text, including the
+E<lt>CRLFE<gt>, must not exceed 1,000 characters.
+
 =back
 
 

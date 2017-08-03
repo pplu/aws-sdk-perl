@@ -49,7 +49,7 @@ Email Channel Response.
 
 =head2 ApplicationId => Str
 
-  Application id
+  The unique ID of the application to which the email channel belongs.
 
 
 =head2 CreationDate => Str

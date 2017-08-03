@@ -41,11 +41,6 @@ on the streaming source.
 
   Path to the top-level parent that contains the records.
 
-For example, consider the following JSON record:
-
-In the C<RecordRowPath>, C<"$"> refers to the root and path
-C<"$.vehicle.Model"> refers to the specific C<"Model"> key in the JSON.
-
 
 
 =head1 SEE ALSO

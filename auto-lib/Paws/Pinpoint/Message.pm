@@ -7,6 +7,7 @@ package Paws::Pinpoint::Message;
   has ImageUrl => (is => 'ro', isa => 'Str');
   has JsonBody => (is => 'ro', isa => 'Str');
   has MediaUrl => (is => 'ro', isa => 'Str');
+  has RawContent => (is => 'ro', isa => 'Str');
   has SilentPush => (is => 'ro', isa => 'Bool');
   has Title => (is => 'ro', isa => 'Str');
   has Url => (is => 'ro', isa => 'Str');
@@ -87,6 +88,12 @@ icon, for example, the app icon.
 
   The URL that points to the media resource, for example a .mp4 or .gif
 file.
+
+
+=head2 RawContent => Str
+
+  The Raw JSON formatted string to be used as the payload. This value
+overrides the message.
 
 
 =head2 SilentPush => Bool

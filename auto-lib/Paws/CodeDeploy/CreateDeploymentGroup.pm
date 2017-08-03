@@ -10,8 +10,10 @@ package Paws::CodeDeploy::CreateDeploymentGroup;
   has DeploymentGroupName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'deploymentGroupName' , required => 1);
   has DeploymentStyle => (is => 'ro', isa => 'Paws::CodeDeploy::DeploymentStyle', traits => ['NameInRequest'], request_name => 'deploymentStyle' );
   has Ec2TagFilters => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::EC2TagFilter]', traits => ['NameInRequest'], request_name => 'ec2TagFilters' );
+  has Ec2TagSet => (is => 'ro', isa => 'Paws::CodeDeploy::EC2TagSet', traits => ['NameInRequest'], request_name => 'ec2TagSet' );
   has LoadBalancerInfo => (is => 'ro', isa => 'Paws::CodeDeploy::LoadBalancerInfo', traits => ['NameInRequest'], request_name => 'loadBalancerInfo' );
   has OnPremisesInstanceTagFilters => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::TagFilter]', traits => ['NameInRequest'], request_name => 'onPremisesInstanceTagFilters' );
+  has OnPremisesTagSet => (is => 'ro', isa => 'Paws::CodeDeploy::OnPremisesTagSet', traits => ['NameInRequest'], request_name => 'onPremisesTagSet' );
   has ServiceRoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'serviceRoleArn' , required => 1);
   has TriggerConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::TriggerConfig]', traits => ['NameInRequest'], request_name => 'triggerConfigurations' );
 
@@ -112,7 +114,16 @@ balancer.
 =head2 Ec2TagFilters => ArrayRef[L<Paws::CodeDeploy::EC2TagFilter>]
 
 The Amazon EC2 tags on which to filter. The deployment group will
-include EC2 instances with any of the specified tags.
+include EC2 instances with any of the specified tags. Cannot be used in
+the same call as ec2TagSet.
+
+
+
+=head2 Ec2TagSet => L<Paws::CodeDeploy::EC2TagSet>
+
+Information about groups of tags applied to EC2 instances. The
+deployment group will include only EC2 instances identified by all the
+tag groups. Cannot be used in the same call as ec2TagFilters.
 
 
 
@@ -126,6 +137,16 @@ Information about the load balancer used in a deployment.
 
 The on-premises instance tags on which to filter. The deployment group
 will include on-premises instances with any of the specified tags.
+Cannot be used in the same call as OnPremisesTagSet.
+
+
+
+=head2 OnPremisesTagSet => L<Paws::CodeDeploy::OnPremisesTagSet>
+
+Information about groups of tags applied to on-premises instances. The
+deployment group will include only on-premises instances identified by
+all the tag groups. Cannot be used in the same call as
+onPremisesInstanceTagFilters.
 
 
 

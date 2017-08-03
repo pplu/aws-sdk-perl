@@ -68,12 +68,18 @@ Also used to describe the format of the reference data source.
 identifies the Firehose delivery stream's ARN and an IAM role that
 enables Amazon Kinesis Analytics to access the stream on your behalf.
 
+Note: Either C<KinesisStreamsInput> or C<KinesisFirehoseInput> is
+required.
+
 
 =head2 KinesisStreamsInput => L<Paws::KinesisAnalytics::KinesisStreamsInput>
 
   If the streaming source is an Amazon Kinesis stream, identifies the
 stream's Amazon Resource Name (ARN) and an IAM role that enables Amazon
 Kinesis Analytics to access the stream on your behalf.
+
+Note: Either C<KinesisStreamsInput> or C<KinesisFirehoseInput> is
+required.
 
 
 =head2 B<REQUIRED> NamePrefix => Str

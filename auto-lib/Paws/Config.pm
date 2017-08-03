@@ -99,6 +99,11 @@ package Paws::Config;
     my $call_object = $self->new_with_coercions('Paws::Config::GetComplianceSummaryByResourceType', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetDiscoveredResourceCounts {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Config::GetDiscoveredResourceCounts', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetResourceConfigHistory {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Config::GetResourceConfigHistory', @_);
@@ -308,7 +313,7 @@ package Paws::Config;
   }
 
 
-  sub operations { qw/DeleteConfigRule DeleteConfigurationRecorder DeleteDeliveryChannel DeleteEvaluationResults DeliverConfigSnapshot DescribeComplianceByConfigRule DescribeComplianceByResource DescribeConfigRuleEvaluationStatus DescribeConfigRules DescribeConfigurationRecorders DescribeConfigurationRecorderStatus DescribeDeliveryChannels DescribeDeliveryChannelStatus GetComplianceDetailsByConfigRule GetComplianceDetailsByResource GetComplianceSummaryByConfigRule GetComplianceSummaryByResourceType GetResourceConfigHistory ListDiscoveredResources PutConfigRule PutConfigurationRecorder PutDeliveryChannel PutEvaluations StartConfigRulesEvaluation StartConfigurationRecorder StopConfigurationRecorder / }
+  sub operations { qw/DeleteConfigRule DeleteConfigurationRecorder DeleteDeliveryChannel DeleteEvaluationResults DeliverConfigSnapshot DescribeComplianceByConfigRule DescribeComplianceByResource DescribeConfigRuleEvaluationStatus DescribeConfigRules DescribeConfigurationRecorders DescribeConfigurationRecorderStatus DescribeDeliveryChannels DescribeDeliveryChannelStatus GetComplianceDetailsByConfigRule GetComplianceDetailsByResource GetComplianceSummaryByConfigRule GetComplianceSummaryByResourceType GetDiscoveredResourceCounts GetResourceConfigHistory ListDiscoveredResources PutConfigRule PutConfigurationRecorder PutDeliveryChannel PutEvaluations StartConfigRulesEvaluation StartConfigurationRecorder StopConfigurationRecorder / }
 
 1;
 
@@ -667,6 +672,79 @@ these numbers for each resource type. The maximum number returned is
 100.
 
 
+=head2 GetDiscoveredResourceCounts([Limit => Int, NextToken => Str, ResourceTypes => ArrayRef[Str|Undef]])
+
+Each argument is described in detail in: L<Paws::Config::GetDiscoveredResourceCounts>
+
+Returns: a L<Paws::Config::GetDiscoveredResourceCountsResponse> instance
+
+  Returns the resource types, the number of each resource type, and the
+total number of resources that AWS Config is recording in this region
+for your AWS account.
+
+B<Example>
+
+=over
+
+=item 1.
+
+AWS Config is recording three resource types in the US East (Ohio)
+Region for your account: 25 EC2 instances, 20 IAM users, and 15 S3
+buckets.
+
+=item 2.
+
+You make a call to the C<GetDiscoveredResourceCounts> action and
+specify that you want all resource types.
+
+=item 3.
+
+AWS Config returns the following:
+
+=over
+
+=item *
+
+The resource types (EC2 instances, IAM users, and S3 buckets)
+
+=item *
+
+The number of each resource type (25, 20, and 15)
+
+=item *
+
+The total number of all resources (60)
+
+=back
+
+=back
+
+The response is paginated. By default, AWS Config lists 100
+ResourceCount objects on each page. You can customize this number with
+the C<limit> parameter. The response includes a C<nextToken> string. To
+get the next page of results, run the request again and specify the
+string for the C<nextToken> parameter.
+
+If you make a call to the GetDiscoveredResourceCounts action, you may
+not immediately receive resource counts in the following situations:
+
+=over
+
+=item *
+
+You are a new AWS Config customer
+
+=item *
+
+You just enabled resource recording
+
+=back
+
+It may take a few minutes for AWS Config to record and count your
+resources. Wait a few minutes and then retry the
+GetDiscoveredResourceCounts action.
+
+
 =head2 GetResourceConfigHistory(ResourceId => Str, ResourceType => Str, [ChronologicalOrder => Str, EarlierTime => Str, LaterTime => Str, Limit => Int, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::Config::GetResourceConfigHistory>
@@ -677,11 +755,11 @@ Returns: a L<Paws::Config::GetResourceConfigHistoryResponse> instance
 list contains details about each state of the resource during the
 specified time interval.
 
-The response is paginated, and by default, AWS Config returns a limit
-of 10 configuration items per page. You can customize this number with
-the C<limit> parameter. The response includes a C<nextToken> string,
-and to get the next page of results, run the request again and enter
-this string for the C<nextToken> parameter.
+The response is paginated. By default, AWS Config returns a limit of 10
+configuration items per page. You can customize this number with the
+C<limit> parameter. The response includes a C<nextToken> string. To get
+the next page of results, run the request again and specify the string
+for the C<nextToken> parameter.
 
 Each call to the API is limited to span a duration of seven days. It is
 likely that the number of records returned is smaller than the
@@ -706,11 +784,11 @@ name.
 You can specify either resource IDs or a resource name but not both in
 the same request.
 
-The response is paginated, and by default AWS Config lists 100 resource
+The response is paginated. By default, AWS Config lists 100 resource
 identifiers on each page. You can customize this number with the
-C<limit> parameter. The response includes a C<nextToken> string, and to
-get the next page of results, run the request again and enter this
-string for the C<nextToken> parameter.
+C<limit> parameter. The response includes a C<nextToken> string. To get
+the next page of results, run the request again and specify the string
+for the C<nextToken> parameter.
 
 
 =head2 PutConfigRule(ConfigRule => L<Paws::Config::ConfigRule>)

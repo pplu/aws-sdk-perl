@@ -48,7 +48,7 @@ Address configuration.
 
 =head2 ChannelType => Str
 
-  Type of channel of this address
+  The channel type. Valid values: GCM | APNS | SMS | EMAIL
 
 
 =head2 Context => L<Paws::Pinpoint::MapOf__string>
