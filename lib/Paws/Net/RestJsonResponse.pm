@@ -46,18 +46,9 @@ package Paws::Net::RestJsonResponse;
 
     my ($message, $request_id, $code);
 
-    if (exists $struct->{message}){
-      $message = $struct->{message} // '';
-    } elsif (exists $struct->{Message}){
-      $message = $struct->{Message} // '';
-    } else {
-      # Rationale for this condition is in Issue #82 
-      if ($struct->{__type} eq 'InternalError'){
-        $message = '';
-      } else {
-        die "Unrecognized error message format";
-      }
-    }
+    $message = $struct->{message} if (exists $struct->{message});
+    $message = $struct->{Message} if (exists $struct->{Message});
+    $message = '' if (not defined $message);    
 
     if ($response->has_header('x-amzn-errortype')){
       $code = (split /:/, $response->header('x-amzn-errortype'))[0];
