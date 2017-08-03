@@ -261,12 +261,14 @@ foreach my $status (200) {
     },
     'Paws::Exception'
   );
+  cmp_ok($@->code, 'eq', 'InvalidContent', 'Exception of type InvalidContent');
   dies_ok(
     sub { 
       $s->Method1(response => '[UNDEF]', status => $status) 
     },
     'Paws::Exception'
   );
+  cmp_ok($@->code, 'eq', 'InvalidContent', 'Exception of type InvalidContent');
   throws_ok(
     sub { 
       $s->Method1(response => 'notajsonstring', status => $status) 
