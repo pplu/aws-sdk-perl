@@ -25,23 +25,24 @@ package Paws::Net::RestJsonResponse;
   }
  
   sub unserialize_response {
-    my ($self, $data) = @_;
+    my ($self, $response) = @_;
 
-    return decode_json( $data );
+    my $struct = eval { decode_json( $response->content ) };
+    if ($@) {
+      return Paws::Exception->throw(
+        message => $@,
+        code => 'InvalidContent',
+        request_id => '',
+        http_status => $response->status,
+      );
+    }
+    return $struct;
   }
 
   sub error_to_exception {
     my ($self, $call_object, $response) = @_;
     
-    my $struct = eval { $self->unserialize_response( $response->content ) };
-    if ($@) {
-      return Paws::Exception->new(
-        message => $@,
-        code => 'InvalidContent',
-        request_id => '', #$request_id,
-        http_status => $response->status,
-      );
-    }
+    my $struct = $self->unserialize_response( $response );
 
     my ($message, $request_id, $code);
 
@@ -230,15 +231,7 @@ package Paws::Net::RestJsonResponse;
 
     if (not $class->can('_stream_param')) {
       # Object is serialized in the body of the response
-      my $unserialized_struct = eval { $self->unserialize_response( $response->content ) };
-      if ($@){
-        return Paws::Exception->new(
-          message => $@,
-          code => 'InvalidContent',
-          request_id => $request_id,
-          http_status => $response->status,
-        );
-      }
+      my $unserialized_struct = $self->unserialize_response( $response );
       
       $unserialized_struct->{ _request_id } = $request_id;
 
