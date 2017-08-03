@@ -46,7 +46,7 @@ The name of the intent.
 
 The version of the intent to delete. You cannot delete the C<$LATEST>
 version of the intent. To delete the C<$LATEST> version, use the
-operation.
+DeleteIntent operation.
 
 
 

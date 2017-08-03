@@ -53,8 +53,7 @@ in the order specified in this list.
 
 =head2 B<REQUIRED> RestApiId => Str
 
-The replacement identifier of the RestApi resource for the Deployment
-resource to change information about.
+The string identifier of the associated RestApi.
 
 
 

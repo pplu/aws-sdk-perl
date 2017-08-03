@@ -55,7 +55,7 @@ The domain name of the BasePathMapping resource to create.
 
 =head2 B<REQUIRED> RestApiId => Str
 
-The name of the API that you want to apply this mapping to.
+The string identifier of the associated RestApi.
 
 
 

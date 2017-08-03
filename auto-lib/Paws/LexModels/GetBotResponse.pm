@@ -32,7 +32,7 @@ Paws::LexModels::GetBotResponse
 =head2 AbortStatement => L<Paws::LexModels::Statement>
 
 The message that Amazon Lex returns when the user elects to end the
-conversation without completing it. For more information, see .
+conversation without completing it. For more information, see PutBot.
 
 
 =head2 Checksum => Str
@@ -73,7 +73,7 @@ Lex FAQ.
 =head2 ClarificationPrompt => L<Paws::LexModels::Prompt>
 
 The message Amazon Lex uses when it doesn't understand the user's
-request. For more information, see .
+request. For more information, see PutBot.
 
 
 =head2 CreatedDate => Str
@@ -95,12 +95,12 @@ the bot.
 =head2 IdleSessionTTLInSeconds => Int
 
 The maximum time in seconds that Amazon Lex retains the data gathered
-in a conversation. For more information, see .
+in a conversation. For more information, see PutBot.
 
 
 =head2 Intents => ArrayRef[L<Paws::LexModels::Intent>]
 
-An array of C<intent> objects. For more information, see .
+An array of C<intent> objects. For more information, see PutBot.
 
 
 =head2 LastUpdatedDate => Str
@@ -136,7 +136,7 @@ C<$LATEST>.
 =head2 VoiceId => Str
 
 The Amazon Polly voice ID that Amazon Lex uses for voice interaction
-with the user. For more information, see .
+with the user. For more information, see PutBot.
 
 
 =head2 _request_id => Str

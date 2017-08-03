@@ -1,3 +1,11 @@
+0.35
+ - API update: Lambda
+ - API update: Discovery
+ - API update: EC2
+ - API update: ApiGateway
+ - API update: Autoscaling
+ - API update: CognitoIdp
+
 0.34 07 Jul 2017
  - New Credential provider: Paws::Credential::ECSContainerProfile (gadgetjunkie)
  - Added ECSContainerProfile to the default credential provider chain so it

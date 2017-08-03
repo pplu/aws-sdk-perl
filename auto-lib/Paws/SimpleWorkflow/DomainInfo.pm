@@ -54,11 +54,15 @@ Contains general information about a domain.
 
 =over
 
-=item * B<REGISTERED>: The domain is properly registered and available.
+=item *
+
+C<REGISTERED> E<ndash> The domain is properly registered and available.
 You can use this domain for registering types and creating new workflow
 executions.
 
-=item * B<DEPRECATED>: The domain was deprecated using DeprecateDomain,
+=item *
+
+C<DEPRECATED> E<ndash> The domain was deprecated using DeprecateDomain,
 but is still in use. You should not create new workflow executions in
 this domain.
 

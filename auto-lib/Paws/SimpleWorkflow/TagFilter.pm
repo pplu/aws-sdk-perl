@@ -39,8 +39,8 @@ tag.
 
 =head2 B<REQUIRED> Tag => Str
 
-  B<Required.> Specifies the tag that must be associated with the
-execution for it to meet the filter criteria.
+  Specifies the tag that must be associated with the execution for it to
+meet the filter criteria.
 
 
 

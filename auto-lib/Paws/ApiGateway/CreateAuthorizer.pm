@@ -96,7 +96,7 @@ A list of the Cognito Your User Pool authorizer's provider ARNs.
 
 =head2 B<REQUIRED> RestApiId => Str
 
-The RestApi identifier under which the Authorizer will be created.
+The string identifier of the associated RestApi.
 
 
 

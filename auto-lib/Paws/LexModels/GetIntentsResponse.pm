@@ -18,7 +18,7 @@ Paws::LexModels::GetIntentsResponse
 
 =head2 Intents => ArrayRef[L<Paws::LexModels::IntentMetadata>]
 
-An array of C<Intent> objects. For more information, see .
+An array of C<Intent> objects. For more information, see PutBot.
 
 
 =head2 NextToken => Str

@@ -17,12 +17,14 @@ Paws::SimpleWorkflow::DomainDetail
 
 =head2 B<REQUIRED> Configuration => L<Paws::SimpleWorkflow::DomainConfiguration>
 
-
+The domain configuration. Currently, this includes only the domain's
+retention period.
 
 
 =head2 B<REQUIRED> DomainInfo => L<Paws::SimpleWorkflow::DomainInfo>
 
-
+The basic information about a domain, such as its name, status, and
+description.
 
 
 =head2 _request_id => Str

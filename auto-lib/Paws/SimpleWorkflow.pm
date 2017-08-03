@@ -376,7 +376,8 @@ coordinating them without worrying about underlying complexities such
 as tracking their progress and maintaining their state.
 
 This documentation serves as reference only. For a broader overview of
-the Amazon SWF programming model, see the Amazon SWF Developer Guide.
+the Amazon SWF programming model, see the I< Amazon SWF Developer Guide
+>.
 
 =head1 METHODS
 
@@ -399,35 +400,47 @@ resources as follows:
 
 =over
 
-=item * Use a C<Resource> element with the domain name to limit the
-action to only specified domains.
+=item *
 
-=item * Use an C<Action> element to allow or deny permission to call
-this action.
+Use a C<Resource> element with the domain name to limit the action to
+only specified domains.
 
-=item * Constrain the following parameters by using a C<Condition>
-element with the appropriate keys.
+=item *
+
+Use an C<Action> element to allow or deny permission to call this
+action.
+
+=item *
+
+Constrain the following parameters by using a C<Condition> element with
+the appropriate keys.
 
 =over
 
-=item * C<tagFilter.tag>: String constraint. The key is
-C<swf:tagFilter.tag>.
+=item *
 
-=item * C<typeFilter.name>: String constraint. The key is
+C<tagFilter.tag>: String constraint. The key is C<swf:tagFilter.tag>.
+
+=item *
+
+C<typeFilter.name>: String constraint. The key is
 C<swf:typeFilter.name>.
 
-=item * C<typeFilter.version>: String constraint. The key is
+=item *
+
+C<typeFilter.version>: String constraint. The key is
 C<swf:typeFilter.version>.
 
 =back
 
 =back
 
-If the caller does not have sufficient permissions to invoke the
-action, or the parameter values fall outside the specified constraints,
-the action fails. The associated event attribute's B<cause> parameter
-will be set to OPERATION_NOT_PERMITTED. For details and example IAM
-policies, see Using IAM to Manage Access to Amazon SWF Workflows.
+If the caller doesn't have sufficient permissions to invoke the action,
+or the parameter values fall outside the specified constraints, the
+action fails. The associated event attribute's C<cause> parameter is
+set to C<OPERATION_NOT_PERMITTED>. For details and example IAM
+policies, see Using IAM to Manage Access to Amazon SWF Workflows in the
+I<Amazon SWF Developer Guide>.
 
 
 =head2 CountOpenWorkflowExecutions(Domain => Str, StartTimeFilter => L<Paws::SimpleWorkflow::ExecutionTimeFilter>, [ExecutionFilter => L<Paws::SimpleWorkflow::WorkflowExecutionFilter>, TagFilter => L<Paws::SimpleWorkflow::TagFilter>, TypeFilter => L<Paws::SimpleWorkflow::WorkflowTypeFilter>])
@@ -449,35 +462,47 @@ resources as follows:
 
 =over
 
-=item * Use a C<Resource> element with the domain name to limit the
-action to only specified domains.
+=item *
 
-=item * Use an C<Action> element to allow or deny permission to call
-this action.
+Use a C<Resource> element with the domain name to limit the action to
+only specified domains.
 
-=item * Constrain the following parameters by using a C<Condition>
-element with the appropriate keys.
+=item *
+
+Use an C<Action> element to allow or deny permission to call this
+action.
+
+=item *
+
+Constrain the following parameters by using a C<Condition> element with
+the appropriate keys.
 
 =over
 
-=item * C<tagFilter.tag>: String constraint. The key is
-C<swf:tagFilter.tag>.
+=item *
 
-=item * C<typeFilter.name>: String constraint. The key is
+C<tagFilter.tag>: String constraint. The key is C<swf:tagFilter.tag>.
+
+=item *
+
+C<typeFilter.name>: String constraint. The key is
 C<swf:typeFilter.name>.
 
-=item * C<typeFilter.version>: String constraint. The key is
+=item *
+
+C<typeFilter.version>: String constraint. The key is
 C<swf:typeFilter.version>.
 
 =back
 
 =back
 
-If the caller does not have sufficient permissions to invoke the
-action, or the parameter values fall outside the specified constraints,
-the action fails. The associated event attribute's B<cause> parameter
-will be set to OPERATION_NOT_PERMITTED. For details and example IAM
-policies, see Using IAM to Manage Access to Amazon SWF Workflows.
+If the caller doesn't have sufficient permissions to invoke the action,
+or the parameter values fall outside the specified constraints, the
+action fails. The associated event attribute's C<cause> parameter is
+set to C<OPERATION_NOT_PERMITTED>. For details and example IAM
+policies, see Using IAM to Manage Access to Amazon SWF Workflows in the
+I<Amazon SWF Developer Guide>.
 
 
 =head2 CountPendingActivityTasks(Domain => Str, TaskList => L<Paws::SimpleWorkflow::TaskList>)
@@ -487,9 +512,9 @@ Each argument is described in detail in: L<Paws::SimpleWorkflow::CountPendingAct
 Returns: a L<Paws::SimpleWorkflow::PendingTaskCount> instance
 
   Returns the estimated number of activity tasks in the specified task
-list. The count returned is an approximation and is not guaranteed to
-be exact. If you specify a task list that no activity task was ever
-scheduled in then 0 will be returned.
+list. The count returned is an approximation and isn't guaranteed to be
+exact. If you specify a task list that no activity task was ever
+scheduled in then C<0> is returned.
 
 B<Access Control>
 
@@ -498,23 +523,30 @@ resources as follows:
 
 =over
 
-=item * Use a C<Resource> element with the domain name to limit the
-action to only specified domains.
+=item *
 
-=item * Use an C<Action> element to allow or deny permission to call
-this action.
+Use a C<Resource> element with the domain name to limit the action to
+only specified domains.
 
-=item * Constrain the C<taskList.name> parameter by using a
-B<Condition> element with the C<swf:taskList.name> key to allow the
-action to access only certain task lists.
+=item *
+
+Use an C<Action> element to allow or deny permission to call this
+action.
+
+=item *
+
+Constrain the C<taskList.name> parameter by using a C<Condition>
+element with the C<swf:taskList.name> key to allow the action to access
+only certain task lists.
 
 =back
 
-If the caller does not have sufficient permissions to invoke the
-action, or the parameter values fall outside the specified constraints,
-the action fails. The associated event attribute's B<cause> parameter
-will be set to OPERATION_NOT_PERMITTED. For details and example IAM
-policies, see Using IAM to Manage Access to Amazon SWF Workflows.
+If the caller doesn't have sufficient permissions to invoke the action,
+or the parameter values fall outside the specified constraints, the
+action fails. The associated event attribute's C<cause> parameter is
+set to C<OPERATION_NOT_PERMITTED>. For details and example IAM
+policies, see Using IAM to Manage Access to Amazon SWF Workflows in the
+I<Amazon SWF Developer Guide>.
 
 
 =head2 CountPendingDecisionTasks(Domain => Str, TaskList => L<Paws::SimpleWorkflow::TaskList>)
@@ -524,9 +556,9 @@ Each argument is described in detail in: L<Paws::SimpleWorkflow::CountPendingDec
 Returns: a L<Paws::SimpleWorkflow::PendingTaskCount> instance
 
   Returns the estimated number of decision tasks in the specified task
-list. The count returned is an approximation and is not guaranteed to
-be exact. If you specify a task list that no decision task was ever
-scheduled in then 0 will be returned.
+list. The count returned is an approximation and isn't guaranteed to be
+exact. If you specify a task list that no decision task was ever
+scheduled in then C<0> is returned.
 
 B<Access Control>
 
@@ -535,23 +567,30 @@ resources as follows:
 
 =over
 
-=item * Use a C<Resource> element with the domain name to limit the
-action to only specified domains.
+=item *
 
-=item * Use an C<Action> element to allow or deny permission to call
-this action.
+Use a C<Resource> element with the domain name to limit the action to
+only specified domains.
 
-=item * Constrain the C<taskList.name> parameter by using a
-B<Condition> element with the C<swf:taskList.name> key to allow the
-action to access only certain task lists.
+=item *
+
+Use an C<Action> element to allow or deny permission to call this
+action.
+
+=item *
+
+Constrain the C<taskList.name> parameter by using a C<Condition>
+element with the C<swf:taskList.name> key to allow the action to access
+only certain task lists.
 
 =back
 
-If the caller does not have sufficient permissions to invoke the
-action, or the parameter values fall outside the specified constraints,
-the action fails. The associated event attribute's B<cause> parameter
-will be set to OPERATION_NOT_PERMITTED. For details and example IAM
-policies, see Using IAM to Manage Access to Amazon SWF Workflows.
+If the caller doesn't have sufficient permissions to invoke the action,
+or the parameter values fall outside the specified constraints, the
+action fails. The associated event attribute's C<cause> parameter is
+set to C<OPERATION_NOT_PERMITTED>. For details and example IAM
+policies, see Using IAM to Manage Access to Amazon SWF Workflows in the
+I<Amazon SWF Developer Guide>.
 
 
 =head2 DeprecateActivityType(ActivityType => L<Paws::SimpleWorkflow::ActivityType>, Domain => Str)
@@ -563,7 +602,7 @@ Returns: nothing
   Deprecates the specified I<activity type>. After an activity type has
 been deprecated, you cannot create new tasks of that activity type.
 Tasks of this type that were scheduled before the type was deprecated
-will continue to run.
+continue to run.
 
 This operation is eventually consistent. The results are best effort
 and may not exactly reflect recent updates and changes.
@@ -575,32 +614,43 @@ resources as follows:
 
 =over
 
-=item * Use a C<Resource> element with the domain name to limit the
-action to only specified domains.
+=item *
 
-=item * Use an C<Action> element to allow or deny permission to call
-this action.
+Use a C<Resource> element with the domain name to limit the action to
+only specified domains.
 
-=item * Constrain the following parameters by using a C<Condition>
-element with the appropriate keys.
+=item *
+
+Use an C<Action> element to allow or deny permission to call this
+action.
+
+=item *
+
+Constrain the following parameters by using a C<Condition> element with
+the appropriate keys.
 
 =over
 
-=item * C<activityType.name>: String constraint. The key is
+=item *
+
+C<activityType.name>: String constraint. The key is
 C<swf:activityType.name>.
 
-=item * C<activityType.version>: String constraint. The key is
+=item *
+
+C<activityType.version>: String constraint. The key is
 C<swf:activityType.version>.
 
 =back
 
 =back
 
-If the caller does not have sufficient permissions to invoke the
-action, or the parameter values fall outside the specified constraints,
-the action fails. The associated event attribute's B<cause> parameter
-will be set to OPERATION_NOT_PERMITTED. For details and example IAM
-policies, see Using IAM to Manage Access to Amazon SWF Workflows.
+If the caller doesn't have sufficient permissions to invoke the action,
+or the parameter values fall outside the specified constraints, the
+action fails. The associated event attribute's C<cause> parameter is
+set to C<OPERATION_NOT_PERMITTED>. For details and example IAM
+policies, see Using IAM to Manage Access to Amazon SWF Workflows in the
+I<Amazon SWF Developer Guide>.
 
 
 =head2 DeprecateDomain(Name => Str)
@@ -614,7 +664,7 @@ cannot be used to create new workflow executions or register new types.
 However, you can still use visibility actions on this domain.
 Deprecating a domain also deprecates all activity and workflow types
 registered in the domain. Executions that were started before the
-domain was deprecated will continue to run.
+domain was deprecated continues to run.
 
 This operation is eventually consistent. The results are best effort
 and may not exactly reflect recent updates and changes.
@@ -626,22 +676,28 @@ resources as follows:
 
 =over
 
-=item * Use a C<Resource> element with the domain name to limit the
-action to only specified domains.
+=item *
 
-=item * Use an C<Action> element to allow or deny permission to call
-this action.
+Use a C<Resource> element with the domain name to limit the action to
+only specified domains.
 
-=item * You cannot use an IAM policy to constrain this action's
-parameters.
+=item *
+
+Use an C<Action> element to allow or deny permission to call this
+action.
+
+=item *
+
+You cannot use an IAM policy to constrain this action's parameters.
 
 =back
 
-If the caller does not have sufficient permissions to invoke the
-action, or the parameter values fall outside the specified constraints,
-the action fails. The associated event attribute's B<cause> parameter
-will be set to OPERATION_NOT_PERMITTED. For details and example IAM
-policies, see Using IAM to Manage Access to Amazon SWF Workflows.
+If the caller doesn't have sufficient permissions to invoke the action,
+or the parameter values fall outside the specified constraints, the
+action fails. The associated event attribute's C<cause> parameter is
+set to C<OPERATION_NOT_PERMITTED>. For details and example IAM
+policies, see Using IAM to Manage Access to Amazon SWF Workflows in the
+I<Amazon SWF Developer Guide>.
 
 
 =head2 DeprecateWorkflowType(Domain => Str, WorkflowType => L<Paws::SimpleWorkflow::WorkflowType>)
@@ -652,9 +708,9 @@ Returns: nothing
 
   Deprecates the specified I<workflow type>. After a workflow type has
 been deprecated, you cannot create new executions of that type.
-Executions that were started before the type was deprecated will
-continue to run. A deprecated workflow type may still be used when
-calling visibility actions.
+Executions that were started before the type was deprecated continues
+to run. A deprecated workflow type may still be used when calling
+visibility actions.
 
 This operation is eventually consistent. The results are best effort
 and may not exactly reflect recent updates and changes.
@@ -666,32 +722,43 @@ resources as follows:
 
 =over
 
-=item * Use a C<Resource> element with the domain name to limit the
-action to only specified domains.
+=item *
 
-=item * Use an C<Action> element to allow or deny permission to call
-this action.
+Use a C<Resource> element with the domain name to limit the action to
+only specified domains.
 
-=item * Constrain the following parameters by using a C<Condition>
-element with the appropriate keys.
+=item *
+
+Use an C<Action> element to allow or deny permission to call this
+action.
+
+=item *
+
+Constrain the following parameters by using a C<Condition> element with
+the appropriate keys.
 
 =over
 
-=item * C<workflowType.name>: String constraint. The key is
+=item *
+
+C<workflowType.name>: String constraint. The key is
 C<swf:workflowType.name>.
 
-=item * C<workflowType.version>: String constraint. The key is
+=item *
+
+C<workflowType.version>: String constraint. The key is
 C<swf:workflowType.version>.
 
 =back
 
 =back
 
-If the caller does not have sufficient permissions to invoke the
-action, or the parameter values fall outside the specified constraints,
-the action fails. The associated event attribute's B<cause> parameter
-will be set to OPERATION_NOT_PERMITTED. For details and example IAM
-policies, see Using IAM to Manage Access to Amazon SWF Workflows.
+If the caller doesn't have sufficient permissions to invoke the action,
+or the parameter values fall outside the specified constraints, the
+action fails. The associated event attribute's C<cause> parameter is
+set to C<OPERATION_NOT_PERMITTED>. For details and example IAM
+policies, see Using IAM to Manage Access to Amazon SWF Workflows in the
+I<Amazon SWF Developer Guide>.
 
 
 =head2 DescribeActivityType(ActivityType => L<Paws::SimpleWorkflow::ActivityType>, Domain => Str)
@@ -711,32 +778,43 @@ resources as follows:
 
 =over
 
-=item * Use a C<Resource> element with the domain name to limit the
-action to only specified domains.
+=item *
 
-=item * Use an C<Action> element to allow or deny permission to call
-this action.
+Use a C<Resource> element with the domain name to limit the action to
+only specified domains.
 
-=item * Constrain the following parameters by using a C<Condition>
-element with the appropriate keys.
+=item *
+
+Use an C<Action> element to allow or deny permission to call this
+action.
+
+=item *
+
+Constrain the following parameters by using a C<Condition> element with
+the appropriate keys.
 
 =over
 
-=item * C<activityType.name>: String constraint. The key is
+=item *
+
+C<activityType.name>: String constraint. The key is
 C<swf:activityType.name>.
 
-=item * C<activityType.version>: String constraint. The key is
+=item *
+
+C<activityType.version>: String constraint. The key is
 C<swf:activityType.version>.
 
 =back
 
 =back
 
-If the caller does not have sufficient permissions to invoke the
-action, or the parameter values fall outside the specified constraints,
-the action fails. The associated event attribute's B<cause> parameter
-will be set to OPERATION_NOT_PERMITTED. For details and example IAM
-policies, see Using IAM to Manage Access to Amazon SWF Workflows.
+If the caller doesn't have sufficient permissions to invoke the action,
+or the parameter values fall outside the specified constraints, the
+action fails. The associated event attribute's C<cause> parameter is
+set to C<OPERATION_NOT_PERMITTED>. For details and example IAM
+policies, see Using IAM to Manage Access to Amazon SWF Workflows in the
+I<Amazon SWF Developer Guide>.
 
 
 =head2 DescribeDomain(Name => Str)
@@ -755,22 +833,28 @@ resources as follows:
 
 =over
 
-=item * Use a C<Resource> element with the domain name to limit the
-action to only specified domains.
+=item *
 
-=item * Use an C<Action> element to allow or deny permission to call
-this action.
+Use a C<Resource> element with the domain name to limit the action to
+only specified domains.
 
-=item * You cannot use an IAM policy to constrain this action's
-parameters.
+=item *
+
+Use an C<Action> element to allow or deny permission to call this
+action.
+
+=item *
+
+You cannot use an IAM policy to constrain this action's parameters.
 
 =back
 
-If the caller does not have sufficient permissions to invoke the
-action, or the parameter values fall outside the specified constraints,
-the action fails. The associated event attribute's B<cause> parameter
-will be set to OPERATION_NOT_PERMITTED. For details and example IAM
-policies, see Using IAM to Manage Access to Amazon SWF Workflows.
+If the caller doesn't have sufficient permissions to invoke the action,
+or the parameter values fall outside the specified constraints, the
+action fails. The associated event attribute's C<cause> parameter is
+set to C<OPERATION_NOT_PERMITTED>. For details and example IAM
+policies, see Using IAM to Manage Access to Amazon SWF Workflows in the
+I<Amazon SWF Developer Guide>.
 
 
 =head2 DescribeWorkflowExecution(Domain => Str, Execution => L<Paws::SimpleWorkflow::WorkflowExecution>)
@@ -792,22 +876,28 @@ resources as follows:
 
 =over
 
-=item * Use a C<Resource> element with the domain name to limit the
-action to only specified domains.
+=item *
 
-=item * Use an C<Action> element to allow or deny permission to call
-this action.
+Use a C<Resource> element with the domain name to limit the action to
+only specified domains.
 
-=item * You cannot use an IAM policy to constrain this action's
-parameters.
+=item *
+
+Use an C<Action> element to allow or deny permission to call this
+action.
+
+=item *
+
+You cannot use an IAM policy to constrain this action's parameters.
 
 =back
 
-If the caller does not have sufficient permissions to invoke the
-action, or the parameter values fall outside the specified constraints,
-the action fails. The associated event attribute's B<cause> parameter
-will be set to OPERATION_NOT_PERMITTED. For details and example IAM
-policies, see Using IAM to Manage Access to Amazon SWF Workflows.
+If the caller doesn't have sufficient permissions to invoke the action,
+or the parameter values fall outside the specified constraints, the
+action fails. The associated event attribute's C<cause> parameter is
+set to C<OPERATION_NOT_PERMITTED>. For details and example IAM
+policies, see Using IAM to Manage Access to Amazon SWF Workflows in the
+I<Amazon SWF Developer Guide>.
 
 
 =head2 DescribeWorkflowType(Domain => Str, WorkflowType => L<Paws::SimpleWorkflow::WorkflowType>)
@@ -818,7 +908,7 @@ Returns: a L<Paws::SimpleWorkflow::WorkflowTypeDetail> instance
 
   Returns information about the specified I<workflow type>. This includes
 configuration settings specified when the type was registered and other
-information such as creation date, current status, and so on.
+information such as creation date, current status, etc.
 
 B<Access Control>
 
@@ -827,32 +917,43 @@ resources as follows:
 
 =over
 
-=item * Use a C<Resource> element with the domain name to limit the
-action to only specified domains.
+=item *
 
-=item * Use an C<Action> element to allow or deny permission to call
-this action.
+Use a C<Resource> element with the domain name to limit the action to
+only specified domains.
 
-=item * Constrain the following parameters by using a C<Condition>
-element with the appropriate keys.
+=item *
+
+Use an C<Action> element to allow or deny permission to call this
+action.
+
+=item *
+
+Constrain the following parameters by using a C<Condition> element with
+the appropriate keys.
 
 =over
 
-=item * C<workflowType.name>: String constraint. The key is
+=item *
+
+C<workflowType.name>: String constraint. The key is
 C<swf:workflowType.name>.
 
-=item * C<workflowType.version>: String constraint. The key is
+=item *
+
+C<workflowType.version>: String constraint. The key is
 C<swf:workflowType.version>.
 
 =back
 
 =back
 
-If the caller does not have sufficient permissions to invoke the
-action, or the parameter values fall outside the specified constraints,
-the action fails. The associated event attribute's B<cause> parameter
-will be set to OPERATION_NOT_PERMITTED. For details and example IAM
-policies, see Using IAM to Manage Access to Amazon SWF Workflows.
+If the caller doesn't have sufficient permissions to invoke the action,
+or the parameter values fall outside the specified constraints, the
+action fails. The associated event attribute's C<cause> parameter is
+set to C<OPERATION_NOT_PERMITTED>. For details and example IAM
+policies, see Using IAM to Manage Access to Amazon SWF Workflows in the
+I<Amazon SWF Developer Guide>.
 
 
 =head2 GetWorkflowExecutionHistory(Domain => Str, Execution => L<Paws::SimpleWorkflow::WorkflowExecution>, [MaximumPageSize => Int, NextPageToken => Str, ReverseOrder => Bool])
@@ -875,22 +976,28 @@ resources as follows:
 
 =over
 
-=item * Use a C<Resource> element with the domain name to limit the
-action to only specified domains.
+=item *
 
-=item * Use an C<Action> element to allow or deny permission to call
-this action.
+Use a C<Resource> element with the domain name to limit the action to
+only specified domains.
 
-=item * You cannot use an IAM policy to constrain this action's
-parameters.
+=item *
+
+Use an C<Action> element to allow or deny permission to call this
+action.
+
+=item *
+
+You cannot use an IAM policy to constrain this action's parameters.
 
 =back
 
-If the caller does not have sufficient permissions to invoke the
-action, or the parameter values fall outside the specified constraints,
-the action fails. The associated event attribute's B<cause> parameter
-will be set to OPERATION_NOT_PERMITTED. For details and example IAM
-policies, see Using IAM to Manage Access to Amazon SWF Workflows.
+If the caller doesn't have sufficient permissions to invoke the action,
+or the parameter values fall outside the specified constraints, the
+action fails. The associated event attribute's C<cause> parameter is
+set to C<OPERATION_NOT_PERMITTED>. For details and example IAM
+policies, see Using IAM to Manage Access to Amazon SWF Workflows in the
+I<Amazon SWF Developer Guide>.
 
 
 =head2 ListActivityTypes(Domain => Str, RegistrationStatus => Str, [MaximumPageSize => Int, Name => Str, NextPageToken => Str, ReverseOrder => Bool])
@@ -913,22 +1020,28 @@ resources as follows:
 
 =over
 
-=item * Use a C<Resource> element with the domain name to limit the
-action to only specified domains.
+=item *
 
-=item * Use an C<Action> element to allow or deny permission to call
-this action.
+Use a C<Resource> element with the domain name to limit the action to
+only specified domains.
 
-=item * You cannot use an IAM policy to constrain this action's
-parameters.
+=item *
+
+Use an C<Action> element to allow or deny permission to call this
+action.
+
+=item *
+
+You cannot use an IAM policy to constrain this action's parameters.
 
 =back
 
-If the caller does not have sufficient permissions to invoke the
-action, or the parameter values fall outside the specified constraints,
-the action fails. The associated event attribute's B<cause> parameter
-will be set to OPERATION_NOT_PERMITTED. For details and example IAM
-policies, see Using IAM to Manage Access to Amazon SWF Workflows.
+If the caller doesn't have sufficient permissions to invoke the action,
+or the parameter values fall outside the specified constraints, the
+action fails. The associated event attribute's C<cause> parameter is
+set to C<OPERATION_NOT_PERMITTED>. For details and example IAM
+policies, see Using IAM to Manage Access to Amazon SWF Workflows in the
+I<Amazon SWF Developer Guide>.
 
 
 =head2 ListClosedWorkflowExecutions(Domain => Str, [CloseStatusFilter => L<Paws::SimpleWorkflow::CloseStatusFilter>, CloseTimeFilter => L<Paws::SimpleWorkflow::ExecutionTimeFilter>, ExecutionFilter => L<Paws::SimpleWorkflow::WorkflowExecutionFilter>, MaximumPageSize => Int, NextPageToken => Str, ReverseOrder => Bool, StartTimeFilter => L<Paws::SimpleWorkflow::ExecutionTimeFilter>, TagFilter => L<Paws::SimpleWorkflow::TagFilter>, TypeFilter => L<Paws::SimpleWorkflow::WorkflowTypeFilter>])
@@ -952,35 +1065,47 @@ resources as follows:
 
 =over
 
-=item * Use a C<Resource> element with the domain name to limit the
-action to only specified domains.
+=item *
 
-=item * Use an C<Action> element to allow or deny permission to call
-this action.
+Use a C<Resource> element with the domain name to limit the action to
+only specified domains.
 
-=item * Constrain the following parameters by using a C<Condition>
-element with the appropriate keys.
+=item *
+
+Use an C<Action> element to allow or deny permission to call this
+action.
+
+=item *
+
+Constrain the following parameters by using a C<Condition> element with
+the appropriate keys.
 
 =over
 
-=item * C<tagFilter.tag>: String constraint. The key is
-C<swf:tagFilter.tag>.
+=item *
 
-=item * C<typeFilter.name>: String constraint. The key is
+C<tagFilter.tag>: String constraint. The key is C<swf:tagFilter.tag>.
+
+=item *
+
+C<typeFilter.name>: String constraint. The key is
 C<swf:typeFilter.name>.
 
-=item * C<typeFilter.version>: String constraint. The key is
+=item *
+
+C<typeFilter.version>: String constraint. The key is
 C<swf:typeFilter.version>.
 
 =back
 
 =back
 
-If the caller does not have sufficient permissions to invoke the
-action, or the parameter values fall outside the specified constraints,
-the action fails. The associated event attribute's B<cause> parameter
-will be set to OPERATION_NOT_PERMITTED. For details and example IAM
-policies, see Using IAM to Manage Access to Amazon SWF Workflows.
+If the caller doesn't have sufficient permissions to invoke the action,
+or the parameter values fall outside the specified constraints, the
+action fails. The associated event attribute's C<cause> parameter is
+set to C<OPERATION_NOT_PERMITTED>. For details and example IAM
+policies, see Using IAM to Manage Access to Amazon SWF Workflows in the
+I<Amazon SWF Developer Guide>.
 
 
 =head2 ListDomains(RegistrationStatus => Str, [MaximumPageSize => Int, NextPageToken => Str, ReverseOrder => Bool])
@@ -1003,24 +1128,30 @@ resources as follows:
 
 =over
 
-=item * Use a C<Resource> element with the domain name to limit the
-action to only specified domains. The element must be set to
+=item *
+
+Use a C<Resource> element with the domain name to limit the action to
+only specified domains. The element must be set to
 C<arn:aws:swf::AccountID:domain/*>, where I<AccountID> is the account
 ID, with no dashes.
 
-=item * Use an C<Action> element to allow or deny permission to call
-this action.
+=item *
 
-=item * You cannot use an IAM policy to constrain this action's
-parameters.
+Use an C<Action> element to allow or deny permission to call this
+action.
+
+=item *
+
+You cannot use an IAM policy to constrain this action's parameters.
 
 =back
 
-If the caller does not have sufficient permissions to invoke the
-action, or the parameter values fall outside the specified constraints,
-the action fails. The associated event attribute's B<cause> parameter
-will be set to OPERATION_NOT_PERMITTED. For details and example IAM
-policies, see Using IAM to Manage Access to Amazon SWF Workflows.
+If the caller doesn't have sufficient permissions to invoke the action,
+or the parameter values fall outside the specified constraints, the
+action fails. The associated event attribute's C<cause> parameter is
+set to C<OPERATION_NOT_PERMITTED>. For details and example IAM
+policies, see Using IAM to Manage Access to Amazon SWF Workflows in the
+I<Amazon SWF Developer Guide>.
 
 
 =head2 ListOpenWorkflowExecutions(Domain => Str, StartTimeFilter => L<Paws::SimpleWorkflow::ExecutionTimeFilter>, [ExecutionFilter => L<Paws::SimpleWorkflow::WorkflowExecutionFilter>, MaximumPageSize => Int, NextPageToken => Str, ReverseOrder => Bool, TagFilter => L<Paws::SimpleWorkflow::TagFilter>, TypeFilter => L<Paws::SimpleWorkflow::WorkflowTypeFilter>])
@@ -1044,35 +1175,47 @@ resources as follows:
 
 =over
 
-=item * Use a C<Resource> element with the domain name to limit the
-action to only specified domains.
+=item *
 
-=item * Use an C<Action> element to allow or deny permission to call
-this action.
+Use a C<Resource> element with the domain name to limit the action to
+only specified domains.
 
-=item * Constrain the following parameters by using a C<Condition>
-element with the appropriate keys.
+=item *
+
+Use an C<Action> element to allow or deny permission to call this
+action.
+
+=item *
+
+Constrain the following parameters by using a C<Condition> element with
+the appropriate keys.
 
 =over
 
-=item * C<tagFilter.tag>: String constraint. The key is
-C<swf:tagFilter.tag>.
+=item *
 
-=item * C<typeFilter.name>: String constraint. The key is
+C<tagFilter.tag>: String constraint. The key is C<swf:tagFilter.tag>.
+
+=item *
+
+C<typeFilter.name>: String constraint. The key is
 C<swf:typeFilter.name>.
 
-=item * C<typeFilter.version>: String constraint. The key is
+=item *
+
+C<typeFilter.version>: String constraint. The key is
 C<swf:typeFilter.version>.
 
 =back
 
 =back
 
-If the caller does not have sufficient permissions to invoke the
-action, or the parameter values fall outside the specified constraints,
-the action fails. The associated event attribute's B<cause> parameter
-will be set to OPERATION_NOT_PERMITTED. For details and example IAM
-policies, see Using IAM to Manage Access to Amazon SWF Workflows.
+If the caller doesn't have sufficient permissions to invoke the action,
+or the parameter values fall outside the specified constraints, the
+action fails. The associated event attribute's C<cause> parameter is
+set to C<OPERATION_NOT_PERMITTED>. For details and example IAM
+policies, see Using IAM to Manage Access to Amazon SWF Workflows in the
+I<Amazon SWF Developer Guide>.
 
 
 =head2 ListWorkflowTypes(Domain => Str, RegistrationStatus => Str, [MaximumPageSize => Int, Name => Str, NextPageToken => Str, ReverseOrder => Bool])
@@ -1092,22 +1235,28 @@ resources as follows:
 
 =over
 
-=item * Use a C<Resource> element with the domain name to limit the
-action to only specified domains.
+=item *
 
-=item * Use an C<Action> element to allow or deny permission to call
-this action.
+Use a C<Resource> element with the domain name to limit the action to
+only specified domains.
 
-=item * You cannot use an IAM policy to constrain this action's
-parameters.
+=item *
+
+Use an C<Action> element to allow or deny permission to call this
+action.
+
+=item *
+
+You cannot use an IAM policy to constrain this action's parameters.
 
 =back
 
-If the caller does not have sufficient permissions to invoke the
-action, or the parameter values fall outside the specified constraints,
-the action fails. The associated event attribute's B<cause> parameter
-will be set to OPERATION_NOT_PERMITTED. For details and example IAM
-policies, see Using IAM to Manage Access to Amazon SWF Workflows.
+If the caller doesn't have sufficient permissions to invoke the action,
+or the parameter values fall outside the specified constraints, the
+action fails. The associated event attribute's C<cause> parameter is
+set to C<OPERATION_NOT_PERMITTED>. For details and example IAM
+policies, see Using IAM to Manage Access to Amazon SWF Workflows in the
+I<Amazon SWF Developer Guide>.
 
 
 =head2 PollForActivityTask(Domain => Str, TaskList => L<Paws::SimpleWorkflow::TaskList>, [Identity => Str])
@@ -1120,10 +1269,10 @@ Returns: a L<Paws::SimpleWorkflow::ActivityTask> instance
 C<taskList>. This initiates a long poll, where the service holds the
 HTTP connection open and responds as soon as a task becomes available.
 The maximum time the service holds on to the request before responding
-is 60 seconds. If no task is available within 60 seconds, the poll will
-return an empty result. An empty result, in this context, means that an
-ActivityTask is returned, but that the value of taskToken is an empty
-string. If a task is returned, the worker should use its type to
+is 60 seconds. If no task is available within 60 seconds, the poll
+returns an empty result. An empty result, in this context, means that
+an ActivityTask is returned, but that the value of taskToken is an
+empty string. If a task is returned, the worker should use its type to
 identify and process it correctly.
 
 Workers should set their client side socket timeout to at least 70
@@ -1137,23 +1286,30 @@ resources as follows:
 
 =over
 
-=item * Use a C<Resource> element with the domain name to limit the
-action to only specified domains.
+=item *
 
-=item * Use an C<Action> element to allow or deny permission to call
-this action.
+Use a C<Resource> element with the domain name to limit the action to
+only specified domains.
 
-=item * Constrain the C<taskList.name> parameter by using a
-B<Condition> element with the C<swf:taskList.name> key to allow the
-action to access only certain task lists.
+=item *
+
+Use an C<Action> element to allow or deny permission to call this
+action.
+
+=item *
+
+Constrain the C<taskList.name> parameter by using a C<Condition>
+element with the C<swf:taskList.name> key to allow the action to access
+only certain task lists.
 
 =back
 
-If the caller does not have sufficient permissions to invoke the
-action, or the parameter values fall outside the specified constraints,
-the action fails. The associated event attribute's B<cause> parameter
-will be set to OPERATION_NOT_PERMITTED. For details and example IAM
-policies, see Using IAM to Manage Access to Amazon SWF Workflows.
+If the caller doesn't have sufficient permissions to invoke the action,
+or the parameter values fall outside the specified constraints, the
+action fails. The associated event attribute's C<cause> parameter is
+set to C<OPERATION_NOT_PERMITTED>. For details and example IAM
+policies, see Using IAM to Manage Access to Amazon SWF Workflows in the
+I<Amazon SWF Developer Guide>.
 
 
 =head2 PollForDecisionTask(Domain => Str, TaskList => L<Paws::SimpleWorkflow::TaskList>, [Identity => Str, MaximumPageSize => Int, NextPageToken => Str, ReverseOrder => Bool])
@@ -1174,15 +1330,16 @@ connection open and responds as soon a task becomes available. If no
 decision task is available in the specified task list before the
 timeout of 60 seconds expires, an empty result is returned. An empty
 result, in this context, means that a DecisionTask is returned, but
-that the value of C<taskToken> is an empty string.
+that the value of taskToken is an empty string.
 
-Deciders should set their client-side socket timeout to at least 70
-seconds (10 seconds higher than the timeout). Because the number of
-workflow history events for a single workflow execution might be very
-large, the result returned might be split up across a number of pages.
-To retrieve subsequent pages, make additional calls to
-C<PollForDecisionTask> using the C<nextPageToken> returned by the
-initial call. Note that you do B<not> call
+Deciders should set their client side socket timeout to at least 70
+seconds (10 seconds higher than the timeout).
+
+Because the number of workflow history events for a single workflow
+execution might be very large, the result returned might be split up
+across a number of pages. To retrieve subsequent pages, make additional
+calls to C<PollForDecisionTask> using the C<nextPageToken> returned by
+the initial call. Note that you do I<not> call
 C<GetWorkflowExecutionHistory> with this C<nextPageToken>. Instead,
 call C<PollForDecisionTask> again.
 
@@ -1193,23 +1350,30 @@ resources as follows:
 
 =over
 
-=item * Use a C<Resource> element with the domain name to limit the
-action to only specified domains.
+=item *
 
-=item * Use an C<Action> element to allow or deny permission to call
-this action.
+Use a C<Resource> element with the domain name to limit the action to
+only specified domains.
 
-=item * Constrain the C<taskList.name> parameter by using a
-B<Condition> element with the C<swf:taskList.name> key to allow the
-action to access only certain task lists.
+=item *
+
+Use an C<Action> element to allow or deny permission to call this
+action.
+
+=item *
+
+Constrain the C<taskList.name> parameter by using a C<Condition>
+element with the C<swf:taskList.name> key to allow the action to access
+only certain task lists.
 
 =back
 
-If the caller does not have sufficient permissions to invoke the
-action, or the parameter values fall outside the specified constraints,
-the action fails. The associated event attribute's B<cause> parameter
-will be set to OPERATION_NOT_PERMITTED. For details and example IAM
-policies, see Using IAM to Manage Access to Amazon SWF Workflows.
+If the caller doesn't have sufficient permissions to invoke the action,
+or the parameter values fall outside the specified constraints, the
+action fails. The associated event attribute's C<cause> parameter is
+set to C<OPERATION_NOT_PERMITTED>. For details and example IAM
+policies, see Using IAM to Manage Access to Amazon SWF Workflows in the
+I<Amazon SWF Developer Guide>.
 
 
 =head2 RecordActivityTaskHeartbeat(TaskToken => Str, [Details => Str])
@@ -1220,32 +1384,34 @@ Returns: a L<Paws::SimpleWorkflow::ActivityTaskStatus> instance
 
   Used by activity workers to report to the service that the ActivityTask
 represented by the specified C<taskToken> is still making progress. The
-worker can also (optionally) specify details of the progress, for
-example percent complete, using the C<details> parameter. This action
-can also be used by the worker as a mechanism to check if cancellation
-is being requested for the activity task. If a cancellation is being
-attempted for the specified task, then the boolean C<cancelRequested>
-flag returned by the service is set to C<true>.
+worker can also specify details of the progress, for example percent
+complete, using the C<details> parameter. This action can also be used
+by the worker as a mechanism to check if cancellation is being
+requested for the activity task. If a cancellation is being attempted
+for the specified task, then the boolean C<cancelRequested> flag
+returned by the service is set to C<true>.
 
 This action resets the C<taskHeartbeatTimeout> clock. The
 C<taskHeartbeatTimeout> is specified in RegisterActivityType.
 
-This action does not in itself create an event in the workflow
-execution history. However, if the task times out, the workflow
-execution history will contain a C<ActivityTaskTimedOut> event that
-contains the information from the last heartbeat generated by the
-activity worker.
+This action doesn't in itself create an event in the workflow execution
+history. However, if the task times out, the workflow execution history
+contains a C<ActivityTaskTimedOut> event that contains the information
+from the last heartbeat generated by the activity worker.
 
 The C<taskStartToCloseTimeout> of an activity type is the maximum
 duration of an activity task, regardless of the number of
 RecordActivityTaskHeartbeat requests received. The
 C<taskStartToCloseTimeout> is also specified in RegisterActivityType.
+
 This operation is only useful for long-lived activities to report
 liveliness of the task and to determine if a cancellation is being
-attempted. If the C<cancelRequested> flag returns C<true>, a
-cancellation is being attempted. If the worker can cancel the activity,
-it should respond with RespondActivityTaskCanceled. Otherwise, it
-should ignore the cancellation request.
+attempted.
+
+If the C<cancelRequested> flag returns C<true>, a cancellation is being
+attempted. If the worker can cancel the activity, it should respond
+with RespondActivityTaskCanceled. Otherwise, it should ignore the
+cancellation request.
 
 B<Access Control>
 
@@ -1254,22 +1420,28 @@ resources as follows:
 
 =over
 
-=item * Use a C<Resource> element with the domain name to limit the
-action to only specified domains.
+=item *
 
-=item * Use an C<Action> element to allow or deny permission to call
-this action.
+Use a C<Resource> element with the domain name to limit the action to
+only specified domains.
 
-=item * You cannot use an IAM policy to constrain this action's
-parameters.
+=item *
+
+Use an C<Action> element to allow or deny permission to call this
+action.
+
+=item *
+
+You cannot use an IAM policy to constrain this action's parameters.
 
 =back
 
-If the caller does not have sufficient permissions to invoke the
-action, or the parameter values fall outside the specified constraints,
-the action fails. The associated event attribute's B<cause> parameter
-will be set to OPERATION_NOT_PERMITTED. For details and example IAM
-policies, see Using IAM to Manage Access to Amazon SWF Workflows.
+If the caller doesn't have sufficient permissions to invoke the action,
+or the parameter values fall outside the specified constraints, the
+action fails. The associated event attribute's C<cause> parameter is
+set to C<OPERATION_NOT_PERMITTED>. For details and example IAM
+policies, see Using IAM to Manage Access to Amazon SWF Workflows in the
+I<Amazon SWF Developer Guide>.
 
 
 =head2 RegisterActivityType(Domain => Str, Name => Str, Version => Str, [DefaultTaskHeartbeatTimeout => Str, DefaultTaskList => L<Paws::SimpleWorkflow::TaskList>, DefaultTaskPriority => Str, DefaultTaskScheduleToCloseTimeout => Str, DefaultTaskScheduleToStartTimeout => Str, DefaultTaskStartToCloseTimeout => Str, Description => Str])
@@ -1292,33 +1464,46 @@ resources as follows:
 
 =over
 
-=item * Use a C<Resource> element with the domain name to limit the
-action to only specified domains.
+=item *
 
-=item * Use an C<Action> element to allow or deny permission to call
-this action.
+Use a C<Resource> element with the domain name to limit the action to
+only specified domains.
 
-=item * Constrain the following parameters by using a C<Condition>
-element with the appropriate keys.
+=item *
+
+Use an C<Action> element to allow or deny permission to call this
+action.
+
+=item *
+
+Constrain the following parameters by using a C<Condition> element with
+the appropriate keys.
 
 =over
 
-=item * C<defaultTaskList.name>: String constraint. The key is
+=item *
+
+C<defaultTaskList.name>: String constraint. The key is
 C<swf:defaultTaskList.name>.
 
-=item * C<name>: String constraint. The key is C<swf:name>.
+=item *
 
-=item * C<version>: String constraint. The key is C<swf:version>.
+C<name>: String constraint. The key is C<swf:name>.
+
+=item *
+
+C<version>: String constraint. The key is C<swf:version>.
 
 =back
 
 =back
 
-If the caller does not have sufficient permissions to invoke the
-action, or the parameter values fall outside the specified constraints,
-the action fails. The associated event attribute's B<cause> parameter
-will be set to OPERATION_NOT_PERMITTED. For details and example IAM
-policies, see Using IAM to Manage Access to Amazon SWF Workflows.
+If the caller doesn't have sufficient permissions to invoke the action,
+or the parameter values fall outside the specified constraints, the
+action fails. The associated event attribute's C<cause> parameter is
+set to C<OPERATION_NOT_PERMITTED>. For details and example IAM
+policies, see Using IAM to Manage Access to Amazon SWF Workflows in the
+I<Amazon SWF Developer Guide>.
 
 
 =head2 RegisterDomain(Name => Str, WorkflowExecutionRetentionPeriodInDays => Str, [Description => Str])
@@ -1336,23 +1521,29 @@ resources as follows:
 
 =over
 
-=item * You cannot use an IAM policy to control domain access for this
-action. The name of the domain being registered is available as the
-resource of this action.
+=item *
 
-=item * Use an C<Action> element to allow or deny permission to call
+You cannot use an IAM policy to control domain access for this action.
+The name of the domain being registered is available as the resource of
 this action.
 
-=item * You cannot use an IAM policy to constrain this action's
-parameters.
+=item *
+
+Use an C<Action> element to allow or deny permission to call this
+action.
+
+=item *
+
+You cannot use an IAM policy to constrain this action's parameters.
 
 =back
 
-If the caller does not have sufficient permissions to invoke the
-action, or the parameter values fall outside the specified constraints,
-the action fails. The associated event attribute's B<cause> parameter
-will be set to OPERATION_NOT_PERMITTED. For details and example IAM
-policies, see Using IAM to Manage Access to Amazon SWF Workflows.
+If the caller doesn't have sufficient permissions to invoke the action,
+or the parameter values fall outside the specified constraints, the
+action fails. The associated event attribute's C<cause> parameter is
+set to C<OPERATION_NOT_PERMITTED>. For details and example IAM
+policies, see Using IAM to Manage Access to Amazon SWF Workflows in the
+I<Amazon SWF Developer Guide>.
 
 
 =head2 RegisterWorkflowType(Domain => Str, Name => Str, Version => Str, [DefaultChildPolicy => Str, DefaultExecutionStartToCloseTimeout => Str, DefaultLambdaRole => Str, DefaultTaskList => L<Paws::SimpleWorkflow::TaskList>, DefaultTaskPriority => Str, DefaultTaskStartToCloseTimeout => Str, Description => Str])
@@ -1378,33 +1569,46 @@ resources as follows:
 
 =over
 
-=item * Use a C<Resource> element with the domain name to limit the
-action to only specified domains.
+=item *
 
-=item * Use an C<Action> element to allow or deny permission to call
-this action.
+Use a C<Resource> element with the domain name to limit the action to
+only specified domains.
 
-=item * Constrain the following parameters by using a C<Condition>
-element with the appropriate keys.
+=item *
+
+Use an C<Action> element to allow or deny permission to call this
+action.
+
+=item *
+
+Constrain the following parameters by using a C<Condition> element with
+the appropriate keys.
 
 =over
 
-=item * C<defaultTaskList.name>: String constraint. The key is
+=item *
+
+C<defaultTaskList.name>: String constraint. The key is
 C<swf:defaultTaskList.name>.
 
-=item * C<name>: String constraint. The key is C<swf:name>.
+=item *
 
-=item * C<version>: String constraint. The key is C<swf:version>.
+C<name>: String constraint. The key is C<swf:name>.
+
+=item *
+
+C<version>: String constraint. The key is C<swf:version>.
 
 =back
 
 =back
 
-If the caller does not have sufficient permissions to invoke the
-action, or the parameter values fall outside the specified constraints,
-the action fails. The associated event attribute's B<cause> parameter
-will be set to OPERATION_NOT_PERMITTED. For details and example IAM
-policies, see Using IAM to Manage Access to Amazon SWF Workflows.
+If the caller doesn't have sufficient permissions to invoke the action,
+or the parameter values fall outside the specified constraints, the
+action fails. The associated event attribute's C<cause> parameter is
+set to C<OPERATION_NOT_PERMITTED>. For details and example IAM
+policies, see Using IAM to Manage Access to Amazon SWF Workflows in the
+I<Amazon SWF Developer Guide>.
 
 
 =head2 RequestCancelWorkflowExecution(Domain => Str, WorkflowId => Str, [RunId => Str])
@@ -1419,11 +1623,13 @@ and runId. This logically requests the cancellation of the workflow
 execution as a whole. It is up to the decider to take appropriate
 actions when it receives an execution history with this event.
 
-If the runId is not specified, the C<WorkflowExecutionCancelRequested>
+If the runId isn't specified, the C<WorkflowExecutionCancelRequested>
 event is recorded in the history of the current open workflow execution
-with the specified workflowId in the domain. Because this action allows
-the workflow to properly clean up and gracefully close, it should be
-used instead of TerminateWorkflowExecution when possible.
+with the specified workflowId in the domain.
+
+Because this action allows the workflow to properly clean up and
+gracefully close, it should be used instead of
+TerminateWorkflowExecution when possible.
 
 B<Access Control>
 
@@ -1432,22 +1638,28 @@ resources as follows:
 
 =over
 
-=item * Use a C<Resource> element with the domain name to limit the
-action to only specified domains.
+=item *
 
-=item * Use an C<Action> element to allow or deny permission to call
-this action.
+Use a C<Resource> element with the domain name to limit the action to
+only specified domains.
 
-=item * You cannot use an IAM policy to constrain this action's
-parameters.
+=item *
+
+Use an C<Action> element to allow or deny permission to call this
+action.
+
+=item *
+
+You cannot use an IAM policy to constrain this action's parameters.
 
 =back
 
-If the caller does not have sufficient permissions to invoke the
-action, or the parameter values fall outside the specified constraints,
-the action fails. The associated event attribute's B<cause> parameter
-will be set to OPERATION_NOT_PERMITTED. For details and example IAM
-policies, see Using IAM to Manage Access to Amazon SWF Workflows.
+If the caller doesn't have sufficient permissions to invoke the action,
+or the parameter values fall outside the specified constraints, the
+action fails. The associated event attribute's C<cause> parameter is
+set to C<OPERATION_NOT_PERMITTED>. For details and example IAM
+policies, see Using IAM to Manage Access to Amazon SWF Workflows in the
+I<Amazon SWF Developer Guide>.
 
 
 =head2 RespondActivityTaskCanceled(TaskToken => Str, [Details => Str])
@@ -1458,7 +1670,7 @@ Returns: nothing
 
   Used by workers to tell the service that the ActivityTask identified by
 the C<taskToken> was successfully canceled. Additional C<details> can
-be optionally provided using the C<details> argument.
+be provided using the C<details> argument.
 
 These C<details> (if provided) appear in the C<ActivityTaskCanceled>
 event added to the workflow history.
@@ -1480,22 +1692,28 @@ resources as follows:
 
 =over
 
-=item * Use a C<Resource> element with the domain name to limit the
-action to only specified domains.
+=item *
 
-=item * Use an C<Action> element to allow or deny permission to call
-this action.
+Use a C<Resource> element with the domain name to limit the action to
+only specified domains.
 
-=item * You cannot use an IAM policy to constrain this action's
-parameters.
+=item *
+
+Use an C<Action> element to allow or deny permission to call this
+action.
+
+=item *
+
+You cannot use an IAM policy to constrain this action's parameters.
 
 =back
 
-If the caller does not have sufficient permissions to invoke the
-action, or the parameter values fall outside the specified constraints,
-the action fails. The associated event attribute's B<cause> parameter
-will be set to OPERATION_NOT_PERMITTED. For details and example IAM
-policies, see Using IAM to Manage Access to Amazon SWF Workflows.
+If the caller doesn't have sufficient permissions to invoke the action,
+or the parameter values fall outside the specified constraints, the
+action fails. The associated event attribute's C<cause> parameter is
+set to C<OPERATION_NOT_PERMITTED>. For details and example IAM
+policies, see Using IAM to Manage Access to Amazon SWF Workflows in the
+I<Amazon SWF Developer Guide>.
 
 
 =head2 RespondActivityTaskCompleted(TaskToken => Str, [Result => Str])
@@ -1509,7 +1727,7 @@ the C<taskToken> completed successfully with a C<result> (if provided).
 The C<result> appears in the C<ActivityTaskCompleted> event in the
 workflow history.
 
-If the requested task does not complete successfully, use
+If the requested task doesn't complete successfully, use
 RespondActivityTaskFailed instead. If the worker finds that the task is
 canceled through the C<canceled> flag returned by
 RecordActivityTaskHeartbeat, it should cancel the task, clean up and
@@ -1528,22 +1746,28 @@ resources as follows:
 
 =over
 
-=item * Use a C<Resource> element with the domain name to limit the
-action to only specified domains.
+=item *
 
-=item * Use an C<Action> element to allow or deny permission to call
-this action.
+Use a C<Resource> element with the domain name to limit the action to
+only specified domains.
 
-=item * You cannot use an IAM policy to constrain this action's
-parameters.
+=item *
+
+Use an C<Action> element to allow or deny permission to call this
+action.
+
+=item *
+
+You cannot use an IAM policy to constrain this action's parameters.
 
 =back
 
-If the caller does not have sufficient permissions to invoke the
-action, or the parameter values fall outside the specified constraints,
-the action fails. The associated event attribute's B<cause> parameter
-will be set to OPERATION_NOT_PERMITTED. For details and example IAM
-policies, see Using IAM to Manage Access to Amazon SWF Workflows.
+If the caller doesn't have sufficient permissions to invoke the action,
+or the parameter values fall outside the specified constraints, the
+action fails. The associated event attribute's C<cause> parameter is
+set to C<OPERATION_NOT_PERMITTED>. For details and example IAM
+policies, see Using IAM to Manage Access to Amazon SWF Workflows in the
+I<Amazon SWF Developer Guide>.
 
 
 =head2 RespondActivityTaskFailed(TaskToken => Str, [Details => Str, Reason => Str])
@@ -1570,22 +1794,28 @@ resources as follows:
 
 =over
 
-=item * Use a C<Resource> element with the domain name to limit the
-action to only specified domains.
+=item *
 
-=item * Use an C<Action> element to allow or deny permission to call
-this action.
+Use a C<Resource> element with the domain name to limit the action to
+only specified domains.
 
-=item * You cannot use an IAM policy to constrain this action's
-parameters.
+=item *
+
+Use an C<Action> element to allow or deny permission to call this
+action.
+
+=item *
+
+You cannot use an IAM policy to constrain this action's parameters.
 
 =back
 
-If the caller does not have sufficient permissions to invoke the
-action, or the parameter values fall outside the specified constraints,
-the action fails. The associated event attribute's B<cause> parameter
-will be set to OPERATION_NOT_PERMITTED. For details and example IAM
-policies, see Using IAM to Manage Access to Amazon SWF Workflows.
+If the caller doesn't have sufficient permissions to invoke the action,
+or the parameter values fall outside the specified constraints, the
+action fails. The associated event attribute's C<cause> parameter is
+set to C<OPERATION_NOT_PERMITTED>. For details and example IAM
+policies, see Using IAM to Manage Access to Amazon SWF Workflows in the
+I<Amazon SWF Developer Guide>.
 
 
 =head2 RespondDecisionTaskCompleted(TaskToken => Str, [Decisions => ArrayRef[L<Paws::SimpleWorkflow::Decision>], ExecutionContext => Str])
@@ -1612,7 +1842,8 @@ has one or more parameters, much like a regular API call. To allow for
 policies to be as readable as possible, you can express permissions on
 decisions as if they were actual API calls, including applying
 conditions to some parameters. For more information, see Using IAM to
-Manage Access to Amazon SWF Workflows.
+Manage Access to Amazon SWF Workflows in the I<Amazon SWF Developer
+Guide>.
 
 
 =head2 SignalWorkflowExecution(Domain => Str, SignalName => Str, WorkflowId => Str, [Input => Str, RunId => Str])
@@ -1627,10 +1858,12 @@ identified by the given domain, workflowId and runId. The event is
 recorded with the specified user defined signalName and input (if
 provided).
 
-If a runId is not specified, then the C<WorkflowExecutionSignaled>
-event is recorded in the history of the current open workflow with the
-matching workflowId in the domain. If the specified workflow execution
-is not open, this method fails with C<UnknownResource>.
+If a runId isn't specified, then the C<WorkflowExecutionSignaled> event
+is recorded in the history of the current open workflow with the
+matching workflowId in the domain.
+
+If the specified workflow execution isn't open, this method fails with
+C<UnknownResource>.
 
 B<Access Control>
 
@@ -1639,22 +1872,28 @@ resources as follows:
 
 =over
 
-=item * Use a C<Resource> element with the domain name to limit the
-action to only specified domains.
+=item *
 
-=item * Use an C<Action> element to allow or deny permission to call
-this action.
+Use a C<Resource> element with the domain name to limit the action to
+only specified domains.
 
-=item * You cannot use an IAM policy to constrain this action's
-parameters.
+=item *
+
+Use an C<Action> element to allow or deny permission to call this
+action.
+
+=item *
+
+You cannot use an IAM policy to constrain this action's parameters.
 
 =back
 
-If the caller does not have sufficient permissions to invoke the
-action, or the parameter values fall outside the specified constraints,
-the action fails. The associated event attribute's B<cause> parameter
-will be set to OPERATION_NOT_PERMITTED. For details and example IAM
-policies, see Using IAM to Manage Access to Amazon SWF Workflows.
+If the caller doesn't have sufficient permissions to invoke the action,
+or the parameter values fall outside the specified constraints, the
+action fails. The associated event attribute's C<cause> parameter is
+set to C<OPERATION_NOT_PERMITTED>. For details and example IAM
+policies, see Using IAM to Manage Access to Amazon SWF Workflows in the
+I<Amazon SWF Developer Guide>.
 
 
 =head2 StartWorkflowExecution(Domain => Str, WorkflowId => Str, WorkflowType => L<Paws::SimpleWorkflow::WorkflowType>, [ChildPolicy => Str, ExecutionStartToCloseTimeout => Str, Input => Str, LambdaRole => Str, TagList => ArrayRef[Str|Undef], TaskList => L<Paws::SimpleWorkflow::TaskList>, TaskPriority => Str, TaskStartToCloseTimeout => Str])
@@ -1675,45 +1914,67 @@ resources as follows:
 
 =over
 
-=item * Use a C<Resource> element with the domain name to limit the
-action to only specified domains.
+=item *
 
-=item * Use an C<Action> element to allow or deny permission to call
-this action.
+Use a C<Resource> element with the domain name to limit the action to
+only specified domains.
 
-=item * Constrain the following parameters by using a C<Condition>
-element with the appropriate keys.
+=item *
+
+Use an C<Action> element to allow or deny permission to call this
+action.
+
+=item *
+
+Constrain the following parameters by using a C<Condition> element with
+the appropriate keys.
 
 =over
 
-=item * C<tagList.member.0>: The key is C<swf:tagList.member.0>.
+=item *
 
-=item * C<tagList.member.1>: The key is C<swf:tagList.member.1>.
+C<tagList.member.0>: The key is C<swf:tagList.member.0>.
 
-=item * C<tagList.member.2>: The key is C<swf:tagList.member.2>.
+=item *
 
-=item * C<tagList.member.3>: The key is C<swf:tagList.member.3>.
+C<tagList.member.1>: The key is C<swf:tagList.member.1>.
 
-=item * C<tagList.member.4>: The key is C<swf:tagList.member.4>.
+=item *
 
-=item * C<taskList>: String constraint. The key is
-C<swf:taskList.name>.
+C<tagList.member.2>: The key is C<swf:tagList.member.2>.
 
-=item * C<workflowType.name>: String constraint. The key is
+=item *
+
+C<tagList.member.3>: The key is C<swf:tagList.member.3>.
+
+=item *
+
+C<tagList.member.4>: The key is C<swf:tagList.member.4>.
+
+=item *
+
+C<taskList>: String constraint. The key is C<swf:taskList.name>.
+
+=item *
+
+C<workflowType.name>: String constraint. The key is
 C<swf:workflowType.name>.
 
-=item * C<workflowType.version>: String constraint. The key is
+=item *
+
+C<workflowType.version>: String constraint. The key is
 C<swf:workflowType.version>.
 
 =back
 
 =back
 
-If the caller does not have sufficient permissions to invoke the
-action, or the parameter values fall outside the specified constraints,
-the action fails. The associated event attribute's B<cause> parameter
-will be set to OPERATION_NOT_PERMITTED. For details and example IAM
-policies, see Using IAM to Manage Access to Amazon SWF Workflows.
+If the caller doesn't have sufficient permissions to invoke the action,
+or the parameter values fall outside the specified constraints, the
+action fails. The associated event attribute's C<cause> parameter is
+set to C<OPERATION_NOT_PERMITTED>. For details and example IAM
+policies, see Using IAM to Manage Access to Amazon SWF Workflows in the
+I<Amazon SWF Developer Guide>.
 
 
 =head2 TerminateWorkflowExecution(Domain => Str, WorkflowId => Str, [ChildPolicy => Str, Details => Str, Reason => Str, RunId => Str])
@@ -1729,12 +1990,15 @@ specified when starting this execution, is applied to any open child
 workflow executions of this workflow execution.
 
 If the identified workflow execution was in progress, it is terminated
-immediately. If a runId is not specified, then the
-C<WorkflowExecutionTerminated> event is recorded in the history of the
-current open workflow with the matching workflowId in the domain. You
-should consider using RequestCancelWorkflowExecution action instead
+immediately.
+
+If a runId isn't specified, then the C<WorkflowExecutionTerminated>
+event is recorded in the history of the current open workflow with the
+matching workflowId in the domain.
+
+You should consider using RequestCancelWorkflowExecution action instead
 because it allows the workflow to gracefully close while
-TerminateWorkflowExecution does not.
+TerminateWorkflowExecution doesn't.
 
 B<Access Control>
 
@@ -1743,22 +2007,28 @@ resources as follows:
 
 =over
 
-=item * Use a C<Resource> element with the domain name to limit the
-action to only specified domains.
+=item *
 
-=item * Use an C<Action> element to allow or deny permission to call
-this action.
+Use a C<Resource> element with the domain name to limit the action to
+only specified domains.
 
-=item * You cannot use an IAM policy to constrain this action's
-parameters.
+=item *
+
+Use an C<Action> element to allow or deny permission to call this
+action.
+
+=item *
+
+You cannot use an IAM policy to constrain this action's parameters.
 
 =back
 
-If the caller does not have sufficient permissions to invoke the
-action, or the parameter values fall outside the specified constraints,
-the action fails. The associated event attribute's B<cause> parameter
-will be set to OPERATION_NOT_PERMITTED. For details and example IAM
-policies, see Using IAM to Manage Access to Amazon SWF Workflows.
+If the caller doesn't have sufficient permissions to invoke the action,
+or the parameter values fall outside the specified constraints, the
+action fails. The associated event attribute's C<cause> parameter is
+set to C<OPERATION_NOT_PERMITTED>. For details and example IAM
+policies, see Using IAM to Manage Access to Amazon SWF Workflows in the
+I<Amazon SWF Developer Guide>.
 
 
 

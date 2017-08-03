@@ -1,6 +1,7 @@
 
 package Paws::AutoScaling::PolicyARNType;
   use Moose;
+  has Alarms => (is => 'ro', isa => 'ArrayRef[Paws::AutoScaling::Alarm]');
   has PolicyARN => (is => 'ro', isa => 'Str');
 
   has _request_id => (is => 'ro', isa => 'Str');
@@ -13,6 +14,13 @@ package Paws::AutoScaling::PolicyARNType;
 Paws::AutoScaling::PolicyARNType
 
 =head1 ATTRIBUTES
+
+
+=head2 Alarms => ArrayRef[L<Paws::AutoScaling::Alarm>]
+
+The CloudWatch alarms created for the target tracking policy. This
+parameter will be empty if the policy type is anything other than
+C<TargetTrackingScaling>.
 
 
 =head2 PolicyARN => Str

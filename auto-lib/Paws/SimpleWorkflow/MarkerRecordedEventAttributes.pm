@@ -33,7 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkf
 
 =head1 DESCRIPTION
 
-Provides details of the C<MarkerRecorded> event.
+Provides the details of the C<MarkerRecorded> event.
 
 =head1 ATTRIBUTES
 
@@ -48,7 +48,7 @@ problems by tracing back the chain of events leading up to this event.
 
 =head2 Details => Str
 
-  Details of the marker (if any).
+  The details of the marker.
 
 
 =head2 B<REQUIRED> MarkerName => Str

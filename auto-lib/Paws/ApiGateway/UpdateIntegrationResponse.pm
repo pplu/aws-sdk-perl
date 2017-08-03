@@ -60,7 +60,7 @@ Specifies an update integration response request's resource identifier.
 
 =head2 B<REQUIRED> RestApiId => Str
 
-Specifies an update integration response request's API identifier.
+The string identifier of the associated RestApi.
 
 
 

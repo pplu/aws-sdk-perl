@@ -18,8 +18,7 @@ Paws::ApiGateway::BasePathMappings
 
 =head2 Items => ArrayRef[L<Paws::ApiGateway::BasePathMapping>]
 
-The current page of any BasePathMapping resources in the collection of
-base path mapping resources.
+The current page of elements from this collection.
 
 
 =head2 Position => Str

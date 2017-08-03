@@ -52,8 +52,7 @@ in the order specified in this list.
 
 =head2 B<REQUIRED> RestApiId => Str
 
-[Required] The identifier of an API of the to-be-updated documentation
-part.
+[Required] The string identifier of the associated RestApi.
 
 
 

@@ -34,14 +34,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkf
 
 =head1 DESCRIPTION
 
-Provides details of the C<ActivityTaskCanceled> event.
+Provides the details of the C<ActivityTaskCanceled> event.
 
 =head1 ATTRIBUTES
 
 
 =head2 Details => Str
 
-  Details of the cancellation (if any).
+  Details of the cancellation.
 
 
 =head2 LatestCancelRequestedEventId => Int

@@ -18,7 +18,7 @@ Paws::ApiGateway::Models
 
 =head2 Items => ArrayRef[L<Paws::ApiGateway::Model>]
 
-Gets the current Model resource in the collection.
+The current page of elements from this collection.
 
 
 =head2 Position => Str

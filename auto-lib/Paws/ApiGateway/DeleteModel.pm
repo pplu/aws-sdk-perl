@@ -44,7 +44,7 @@ The name of the model to delete.
 
 =head2 B<REQUIRED> RestApiId => Str
 
-The RestApi under which the model will be deleted.
+The string identifier of the associated RestApi.
 
 
 

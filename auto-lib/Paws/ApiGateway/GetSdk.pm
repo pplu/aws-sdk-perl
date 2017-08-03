@@ -50,7 +50,7 @@ C<artifactVersion>, and C<invokerPackage> are required.
 
 =head2 B<REQUIRED> RestApiId => Str
 
-The identifier of the RestApi that the SDK will use.
+The string identifier of the associated RestApi.
 
 
 

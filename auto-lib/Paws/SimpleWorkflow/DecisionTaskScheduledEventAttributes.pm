@@ -41,10 +41,10 @@ Provides details about the C<DecisionTaskScheduled> event.
 =head2 StartToCloseTimeout => Str
 
   The maximum duration for this decision task. The task is considered
-timed out if it does not completed within this duration.
+timed out if it doesn't completed within this duration.
 
-The duration is specified in seconds; an integer greater than or equal
-to 0. The value "NONE" can be used to specify unlimited duration.
+The duration is specified in seconds, an integer greater than or equal
+to C<0>. You can use C<NONE> to specify unlimited duration.
 
 
 =head2 B<REQUIRED> TaskList => L<Paws::SimpleWorkflow::TaskList>
@@ -54,13 +54,13 @@ to 0. The value "NONE" can be used to specify unlimited duration.
 
 =head2 TaskPriority => Str
 
-  I<Optional.> A task priority that, if set, specifies the priority for
-this decision task. Valid values are integers that range from Java's
+  A task priority that, if set, specifies the priority for this decision
+task. Valid values are integers that range from Java's
 C<Integer.MIN_VALUE> (-2147483648) to C<Integer.MAX_VALUE>
 (2147483647). Higher numbers indicate higher priority.
 
 For more information about setting task priority, see Setting Task
-Priority in the I<Amazon Simple Workflow Developer Guide>.
+Priority in the I<Amazon SWF Developer Guide>.
 
 
 

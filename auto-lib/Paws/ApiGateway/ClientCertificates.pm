@@ -18,8 +18,7 @@ Paws::ApiGateway::ClientCertificates
 
 =head2 Items => ArrayRef[L<Paws::ApiGateway::ClientCertificate>]
 
-The current page of any ClientCertificate resources in the collection
-of ClientCertificate resources.
+The current page of elements from this collection.
 
 
 =head2 Position => Str

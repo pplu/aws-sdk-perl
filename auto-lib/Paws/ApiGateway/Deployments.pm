@@ -18,8 +18,7 @@ Paws::ApiGateway::Deployments
 
 =head2 Items => ArrayRef[L<Paws::ApiGateway::Deployment>]
 
-The current page of any Deployment resources in the collection of
-deployment resources.
+The current page of elements from this collection.
 
 
 =head2 Position => Str

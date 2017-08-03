@@ -72,7 +72,7 @@ I<Amazon Elastic Compute Cloud User Guide>.
 
 If the value is C<true>, you can't terminate the instance using the
 Amazon EC2 console, CLI, or API; otherwise, you can. You cannot use
-this paramater for Spot Instances.
+this parameter for Spot Instances.
 
 
 

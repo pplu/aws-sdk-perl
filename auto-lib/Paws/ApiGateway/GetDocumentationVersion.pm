@@ -45,8 +45,7 @@ snapshot.
 
 =head2 B<REQUIRED> RestApiId => Str
 
-[Required] The identifier of the API of the to-be-retrieved
-documentation snapshot.
+[Required] The string identifier of the associated RestApi.
 
 
 

@@ -52,8 +52,7 @@ A description about the new documentation snapshot.
 
 =head2 B<REQUIRED> RestApiId => Str
 
-[Required] Specifies the API identifier of the to-be-created
-documentation version.
+[Required] The string identifier of the associated RestApi.
 
 
 

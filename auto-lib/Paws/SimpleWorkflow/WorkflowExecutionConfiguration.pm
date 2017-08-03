@@ -54,15 +54,21 @@ The supported child policies are:
 
 =over
 
-=item * B<TERMINATE:> the child executions will be terminated.
+=item *
 
-=item * B<REQUEST_CANCEL:> a request to cancel will be attempted for
-each child execution by recording a C<WorkflowExecutionCancelRequested>
+C<TERMINATE> E<ndash> The child executions are terminated.
+
+=item *
+
+C<REQUEST_CANCEL> E<ndash> A request to cancel is attempted for each
+child execution by recording a C<WorkflowExecutionCancelRequested>
 event in its history. It is up to the decider to take appropriate
 actions when it receives an execution history with this event.
 
-=item * B<ABANDON:> no action will be taken. The child executions will
-continue to run.
+=item *
+
+C<ABANDON> E<ndash> No action is taken. The child executions continue
+to run.
 
 =back
 
@@ -72,14 +78,13 @@ continue to run.
 
   The total duration for this workflow execution.
 
-The duration is specified in seconds; an integer greater than or equal
-to 0. The value "NONE" can be used to specify unlimited duration.
+The duration is specified in seconds, an integer greater than or equal
+to C<0>. You can use C<NONE> to specify unlimited duration.
 
 
 =head2 LambdaRole => Str
 
-  The IAM role used by this workflow execution when invoking AWS Lambda
-functions.
+  The IAM role attached to the child workflow execution.
 
 
 =head2 B<REQUIRED> TaskList => L<Paws::SimpleWorkflow::TaskList>
@@ -96,7 +101,7 @@ Valid values are integers that range from Java's C<Integer.MIN_VALUE>
 indicate higher priority.
 
 For more information about setting task priority, see Setting Task
-Priority in the I<Amazon Simple Workflow Developer Guide>.
+Priority in the I<Amazon SWF Developer Guide>.
 
 
 =head2 B<REQUIRED> TaskStartToCloseTimeout => Str
@@ -104,8 +109,8 @@ Priority in the I<Amazon Simple Workflow Developer Guide>.
   The maximum duration allowed for decision tasks for this workflow
 execution.
 
-The duration is specified in seconds; an integer greater than or equal
-to 0. The value "NONE" can be used to specify unlimited duration.
+The duration is specified in seconds, an integer greater than or equal
+to C<0>. You can use C<NONE> to specify unlimited duration.
 
 
 

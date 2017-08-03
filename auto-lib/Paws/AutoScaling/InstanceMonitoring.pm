@@ -31,16 +31,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AutoScaling
 
 =head1 DESCRIPTION
 
-Describes whether detailed monitoring is enabled for the Auto Scaling
-instances.
+Describes whether instance monitoring is enabled.
 
 =head1 ATTRIBUTES
 
 
 =head2 Enabled => Bool
 
-  If C<true>, detailed monitoring is enabled. Otherwise, basic monitoring
-is enabled.
+  If C<True>, instance monitoring is enabled.
 
 
 

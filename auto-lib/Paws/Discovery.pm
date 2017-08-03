@@ -305,7 +305,7 @@ Retrieves the status of a given export process. You can retrieve status
 from a maximum of 100 processes.
 
 
-=head2 DescribeExportTasks([ExportIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+=head2 DescribeExportTasks([ExportIds => ArrayRef[Str|Undef], Filters => ArrayRef[L<Paws::Discovery::ExportFilter>], MaxResults => Int, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::Discovery::DescribeExportTasks>
 
@@ -390,14 +390,25 @@ Returns: a L<Paws::Discovery::StartDataCollectionByAgentIdsResponse> instance
   Instructs the specified agents or connectors to start collecting data.
 
 
-=head2 StartExportTask([ExportDataFormat => ArrayRef[Str|Undef]])
+=head2 StartExportTask([EndTime => Str, ExportDataFormat => ArrayRef[Str|Undef], Filters => ArrayRef[L<Paws::Discovery::ExportFilter>], StartTime => Str])
 
 Each argument is described in detail in: L<Paws::Discovery::StartExportTask>
 
 Returns: a L<Paws::Discovery::StartExportTaskResponse> instance
 
-  Export the configuration data about discovered configuration items and
-relationships to an S3 bucket in a specified format.
+  Begins the export of discovered data to an S3 bucket.
+
+If you specify C<agentId> in a filter, the task exports up to 72 hours
+of detailed data collected by the identified Application Discovery
+Agent, including network, process, and performance details. A time
+range for exported agent data may be set by using C<startTime> and
+C<endTime>. Export of detailed agent data is limited to five
+concurrently running exports.
+
+If you do not include an C<agentId> filter, summary data is exported
+that includes both AWS Agentless Discovery Connector data and summary
+data from AWS Discovery Agents. Export of summary data is limited to
+two exports per day.
 
 
 =head2 StopDataCollectionByAgentIds(AgentIds => ArrayRef[Str|Undef])

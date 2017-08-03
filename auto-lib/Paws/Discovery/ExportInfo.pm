@@ -4,6 +4,9 @@ package Paws::Discovery::ExportInfo;
   has ExportId => (is => 'ro', isa => 'Str', request_name => 'exportId', traits => ['NameInRequest'], required => 1);
   has ExportRequestTime => (is => 'ro', isa => 'Str', request_name => 'exportRequestTime', traits => ['NameInRequest'], required => 1);
   has ExportStatus => (is => 'ro', isa => 'Str', request_name => 'exportStatus', traits => ['NameInRequest'], required => 1);
+  has IsTruncated => (is => 'ro', isa => 'Bool', request_name => 'isTruncated', traits => ['NameInRequest']);
+  has RequestedEndTime => (is => 'ro', isa => 'Str', request_name => 'requestedEndTime', traits => ['NameInRequest']);
+  has RequestedStartTime => (is => 'ro', isa => 'Str', request_name => 'requestedStartTime', traits => ['NameInRequest']);
   has StatusMessage => (is => 'ro', isa => 'Str', request_name => 'statusMessage', traits => ['NameInRequest'], required => 1);
 1;
 
@@ -35,38 +38,57 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Discovery::
 
 =head1 DESCRIPTION
 
-Information regarding the export status of the discovered data. The
-value is an array of objects.
+Information regarding the export status of discovered data. The value
+is an array of objects.
 
 =head1 ATTRIBUTES
 
 
 =head2 ConfigurationsDownloadUrl => Str
 
-  A URL for an Amazon S3 bucket where you can review the configuration
-data. The URL is displayed only if the export succeeded.
+  A URL for an Amazon S3 bucket where you can review the exported data.
+The URL is displayed only if the export succeeded.
 
 
 =head2 B<REQUIRED> ExportId => Str
 
-  A unique identifier that you can use to query the export.
+  A unique identifier used to query an export.
 
 
 =head2 B<REQUIRED> ExportRequestTime => Str
 
-  The time that the configuration data export was initiated.
+  The time that the data export was initiated.
 
 
 =head2 B<REQUIRED> ExportStatus => Str
 
-  The status of the configuration data export. The status can succeed,
-fail, or be in-progress.
+  The status of the data export job.
+
+
+=head2 IsTruncated => Bool
+
+  If true, the export of agent information exceeded the size limit for a
+single export and the exported data is incomplete for the requested
+time range. To address this, select a smaller time range for the export
+by using C<startDate> and C<endDate>.
+
+
+=head2 RequestedEndTime => Str
+
+  The C<endTime> used in the C<StartExportTask> request. If no C<endTime>
+was requested, this result does not appear in C<ExportInfo>.
+
+
+=head2 RequestedStartTime => Str
+
+  The value of C<startTime> parameter in the C<StartExportTask> request.
+If no C<startTime> was requested, this result does not appear in
+C<ExportInfo>.
 
 
 =head2 B<REQUIRED> StatusMessage => Str
 
-  Helpful status messages for API callers. For example: Too many exports
-in the last 6 hours. Export in progress. Export was successful.
+  A status message provided for API callers.
 
 
 

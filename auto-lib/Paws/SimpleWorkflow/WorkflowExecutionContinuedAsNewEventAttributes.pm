@@ -41,7 +41,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkf
 
 =head1 DESCRIPTION
 
-Provides details of the C<WorkflowExecutionContinuedAsNew> event.
+Provides the details of the C<WorkflowExecutionContinuedAsNew> event.
 
 =head1 ATTRIBUTES
 
@@ -56,15 +56,21 @@ The supported child policies are:
 
 =over
 
-=item * B<TERMINATE:> the child executions will be terminated.
+=item *
 
-=item * B<REQUEST_CANCEL:> a request to cancel will be attempted for
-each child execution by recording a C<WorkflowExecutionCancelRequested>
+C<TERMINATE> E<ndash> The child executions are terminated.
+
+=item *
+
+C<REQUEST_CANCEL> E<ndash> A request to cancel is attempted for each
+child execution by recording a C<WorkflowExecutionCancelRequested>
 event in its history. It is up to the decider to take appropriate
 actions when it receives an execution history with this event.
 
-=item * B<ABANDON:> no action will be taken. The child executions will
-continue to run.
+=item *
+
+C<ABANDON> E<ndash> No action is taken. The child executions continue
+to run.
 
 =back
 
@@ -83,8 +89,8 @@ to this event.
 
   The total duration allowed for the new workflow execution.
 
-The duration is specified in seconds; an integer greater than or equal
-to 0. The value "NONE" can be used to specify unlimited duration.
+The duration is specified in seconds, an integer greater than or equal
+to C<0>. You can use C<NONE> to specify unlimited duration.
 
 
 =head2 Input => Str
@@ -94,8 +100,7 @@ to 0. The value "NONE" can be used to specify unlimited duration.
 
 =head2 LambdaRole => Str
 
-  The IAM role attached to this workflow execution to use when invoking
-AWS Lambda functions.
+  The IAM role to attach to the new (continued) workflow execution.
 
 
 =head2 B<REQUIRED> NewExecutionRunId => Str
@@ -110,25 +115,27 @@ AWS Lambda functions.
 
 =head2 B<REQUIRED> TaskList => L<Paws::SimpleWorkflow::TaskList>
 
-  
+  The task list to use for the decisions of the new (continued) workflow
+execution.
 
 
 =head2 TaskPriority => Str
 
-  
+  The priority of the task to use for the decisions of the new
+(continued) workflow execution.
 
 
 =head2 TaskStartToCloseTimeout => Str
 
   The maximum duration of decision tasks for the new workflow execution.
 
-The duration is specified in seconds; an integer greater than or equal
-to 0. The value "NONE" can be used to specify unlimited duration.
+The duration is specified in seconds, an integer greater than or equal
+to C<0>. You can use C<NONE> to specify unlimited duration.
 
 
 =head2 B<REQUIRED> WorkflowType => L<Paws::SimpleWorkflow::WorkflowType>
 
-  
+  The workflow type of this execution.
 
 
 

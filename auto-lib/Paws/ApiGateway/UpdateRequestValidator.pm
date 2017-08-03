@@ -52,8 +52,7 @@ in the order specified in this list.
 
 =head2 B<REQUIRED> RestApiId => Str
 
-[Required] The identifier of the RestApi for which the given
-RequestValidator is updated.
+The string identifier of the associated RestApi.
 
 
 

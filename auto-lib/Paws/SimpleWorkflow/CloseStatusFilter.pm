@@ -39,8 +39,8 @@ their close status.
 
 =head2 B<REQUIRED> Status => Str
 
-  B<Required.> The close status that must match the close status of an
-execution for it to meet the criteria of this filter.
+  The close status that must match the close status of an execution for
+it to meet the criteria of this filter.
 
 
 

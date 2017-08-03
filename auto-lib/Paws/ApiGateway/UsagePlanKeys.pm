@@ -18,7 +18,7 @@ Paws::ApiGateway::UsagePlanKeys
 
 =head2 Items => ArrayRef[L<Paws::ApiGateway::UsagePlanKey>]
 
-Gets the current item of the usage plan keys collection.
+The current page of elements from this collection.
 
 
 =head2 Position => Str

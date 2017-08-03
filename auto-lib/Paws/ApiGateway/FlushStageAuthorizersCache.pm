@@ -38,7 +38,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> RestApiId => Str
 
-The API identifier of the stage to flush.
+The string identifier of the associated RestApi.
 
 
 

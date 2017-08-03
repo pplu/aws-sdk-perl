@@ -123,23 +123,17 @@ Guide>.
 =head2 ImageId => Str
 
 The ID of the Amazon Machine Image (AMI) to use to launch your EC2
-instances.
-
-If you do not specify C<InstanceId>, you must specify C<ImageId>.
-
-For more information, see Finding an AMI in the I<Amazon Elastic
-Compute Cloud User Guide>.
+instances. For more information, see Finding an AMI in the I<Amazon
+Elastic Compute Cloud User Guide>.
 
 
 
 =head2 InstanceId => Str
 
-The ID of the instance to use to create the launch configuration. The
-new launch configuration derives attributes from the instance, with the
-exception of the block device mapping.
+The ID of the instance to use to create the launch configuration.
 
-If you do not specify C<InstanceId>, you must specify both C<ImageId>
-and C<InstanceType>.
+The new launch configuration derives attributes from the instance, with
+the exception of the block device mapping.
 
 To create a launch configuration with a block device mapping or
 override any other instance attributes, specify them as part of the
@@ -153,18 +147,15 @@ Instance in the I<Auto Scaling User Guide>.
 =head2 InstanceMonitoring => L<Paws::AutoScaling::InstanceMonitoring>
 
 Enables detailed monitoring (C<true>) or basic monitoring (C<false>)
-for the Auto Scaling instances. The default is C<true>.
+for the Auto Scaling instances.
 
 
 
 =head2 InstanceType => Str
 
-The instance type of the EC2 instance.
-
-If you do not specify C<InstanceId>, you must specify C<InstanceType>.
-
-For information about available instance types, see Available Instance
-Types in the I<Amazon Elastic Compute Cloud User Guide.>
+The instance type of the EC2 instance. For information about available
+instance types, see Available Instance Types in the I<Amazon Elastic
+Compute Cloud User Guide.>
 
 
 

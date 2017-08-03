@@ -46,7 +46,7 @@ The name of the slot type.
 
 The version of the slot type to delete. You cannot delete the
 C<$LATEST> version of the slot type. To delete the C<$LATEST> version,
-use the operation.
+use the DeleteSlotType operation.
 
 
 

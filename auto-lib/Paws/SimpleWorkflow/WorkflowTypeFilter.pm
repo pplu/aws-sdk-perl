@@ -41,7 +41,7 @@ returned result.
 
 =head2 B<REQUIRED> Name => Str
 
-  B<Required.> Name of the workflow type.
+  Name of the workflow type.
 
 
 =head2 Version => Str

@@ -117,7 +117,7 @@ The Resource identifier for the new Method resource.
 
 =head2 B<REQUIRED> RestApiId => Str
 
-The RestApi identifier for the new Method resource.
+The string identifier of the associated RestApi.
 
 
 

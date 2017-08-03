@@ -112,11 +112,16 @@ Lex FAQ.
 
 =head2 ClarificationPrompt => L<Paws::LexModels::Prompt>
 
-When Amazon Lex doesn't understand the user's intent, it uses one of
-these messages to get clarification. For example, "Sorry, I didn't
-understand. Please repeat." Amazon Lex repeats the clarification prompt
-the number of times specified in C<maxAttempts>. If Amazon Lex still
-can't understand, it sends the message specified in C<abortStatement>.
+When Amazon Lex doesn't understand the user's intent, it uses this
+message to get clarification. To specify how many times Amazon Lex
+should repeate the clarification prompt, use the C<maxAttempts> field.
+If Amazon Lex still doesn't understand, it sends the message in the
+C<abortStatement> field.
+
+When you create a clarification prompt, make sure that it suggests the
+correct response from the user. for example, for a bot that orders
+pizza and drinks, you might create this clarification prompt: "What
+would you like to do? You can say 'Order a pizza' or 'Order a drink.'"
 
 
 
@@ -185,8 +190,8 @@ Valid values are: C<"SAVE">, C<"BUILD">
 
 The Amazon Polly voice ID that you want Amazon Lex to use for voice
 interactions with the user. The locale configured for the voice must
-match the locale of the bot. For more information, see Voice in the
-I<Amazon Polly Developer Guide>.
+match the locale of the bot. For more information, see Available Voices
+in the I<Amazon Polly Developer Guide>.
 
 
 

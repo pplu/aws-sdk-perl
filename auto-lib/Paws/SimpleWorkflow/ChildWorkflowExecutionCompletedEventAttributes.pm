@@ -35,7 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkf
 
 =head1 DESCRIPTION
 
-Provides details of the C<ChildWorkflowExecutionCompleted> event.
+Provides the details of the C<ChildWorkflowExecutionCompleted> event.
 
 =head1 ATTRIBUTES
 
@@ -43,7 +43,7 @@ Provides details of the C<ChildWorkflowExecutionCompleted> event.
 =head2 B<REQUIRED> InitiatedEventId => Int
 
   The ID of the C<StartChildWorkflowExecutionInitiated> event
-corresponding to the C<StartChildWorkflowExecution> decision to start
+corresponding to the C<StartChildWorkflowExecution> Decision to start
 this child workflow execution. This information can be useful for
 diagnosing problems by tracing back the chain of events leading up to
 this event.
@@ -51,7 +51,7 @@ this event.
 
 =head2 Result => Str
 
-  The result of the child workflow execution (if any).
+  The result of the child workflow execution.
 
 
 =head2 B<REQUIRED> StartedEventId => Int

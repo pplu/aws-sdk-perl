@@ -18,8 +18,7 @@ Paws::ApiGateway::SdkTypes
 
 =head2 Items => ArrayRef[L<Paws::ApiGateway::SdkType>]
 
-The set of SdkType items that comprise this view of the SdkTypes
-collection.
+The current page of elements from this collection.
 
 
 =head2 Position => Str
