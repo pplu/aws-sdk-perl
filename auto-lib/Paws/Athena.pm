@@ -80,15 +80,15 @@ package Paws::Athena;
     if (not defined $callback) {
       while ($next_result->NextToken) {
         $next_result = $self->GetQueryResults(@_, NextToken => $next_result->NextToken);
-        push @{ $result->ResultSet }, @{ $next_result->ResultSet };
+        push @{ $result->ResultSet->Rows }, @{ $next_result->ResultSet->Rows };
       }
       return $result;
     } else {
       while ($result->NextToken) {
-        $callback->($_ => 'ResultSet') foreach (@{ $result->ResultSet });
+        $callback->($_ => 'ResultSet.Rows') foreach (@{ $result->ResultSet->Rows });
         $result = $self->GetQueryResults(@_, NextToken => $result->NextToken);
       }
-      $callback->($_ => 'ResultSet') foreach (@{ $result->ResultSet });
+      $callback->($_ => 'ResultSet.Rows') foreach (@{ $result->ResultSet->Rows });
     }
 
     return undef
@@ -330,7 +330,7 @@ Paginator methods are helpers that repetively call methods that return partial r
 
 If passed a sub as first parameter, it will call the sub for each element found in :
 
- - ResultSet, passing the object as the first parameter, and the string 'ResultSet' as the second parameter 
+ - ResultSet.Rows, passing the object as the first parameter, and the string 'ResultSet.Rows' as the second parameter 
 
 If not, it will return a a L<Paws::Athena::GetQueryResultsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
