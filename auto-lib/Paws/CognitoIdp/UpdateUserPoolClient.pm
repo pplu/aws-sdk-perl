@@ -103,7 +103,7 @@ Explicit authentication flows.
 
 =head2 LogoutURLs => ArrayRef[Str|Undef]
 
-A list ofallowed logout URLs for the identity providers.
+A list of allowed logout URLs for the identity providers.
 
 
 

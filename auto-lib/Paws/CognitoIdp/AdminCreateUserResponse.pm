@@ -16,7 +16,7 @@ Paws::CognitoIdp::AdminCreateUserResponse
 
 =head2 User => L<Paws::CognitoIdp::UserType>
 
-The user returned in the request to create a new user.
+The newly created user.
 
 
 =head2 _request_id => Str

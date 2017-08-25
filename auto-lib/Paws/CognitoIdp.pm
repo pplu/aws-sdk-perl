@@ -44,6 +44,11 @@ package Paws::CognitoIdp;
     my $call_object = $self->new_with_coercions('Paws::CognitoIdp::AdminDeleteUserAttributes', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub AdminDisableProviderForUser {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CognitoIdp::AdminDisableProviderForUser', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub AdminDisableUser {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CognitoIdp::AdminDisableUser', @_);
@@ -72,6 +77,11 @@ package Paws::CognitoIdp;
   sub AdminInitiateAuth {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CognitoIdp::AdminInitiateAuth', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub AdminLinkProviderForUser {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CognitoIdp::AdminLinkProviderForUser', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub AdminListDevices {
@@ -149,6 +159,11 @@ package Paws::CognitoIdp;
     my $call_object = $self->new_with_coercions('Paws::CognitoIdp::CreateIdentityProvider', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateResourceServer {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CognitoIdp::CreateResourceServer', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateUserImportJob {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CognitoIdp::CreateUserImportJob', @_);
@@ -179,6 +194,11 @@ package Paws::CognitoIdp;
     my $call_object = $self->new_with_coercions('Paws::CognitoIdp::DeleteIdentityProvider', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteResourceServer {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CognitoIdp::DeleteResourceServer', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteUser {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CognitoIdp::DeleteUser', @_);
@@ -207,6 +227,11 @@ package Paws::CognitoIdp;
   sub DescribeIdentityProvider {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CognitoIdp::DescribeIdentityProvider', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeResourceServer {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CognitoIdp::DescribeResourceServer', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeUserImportJob {
@@ -259,6 +284,11 @@ package Paws::CognitoIdp;
     my $call_object = $self->new_with_coercions('Paws::CognitoIdp::GetIdentityProviderByIdentifier', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetUICustomization {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CognitoIdp::GetUICustomization', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetUser {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CognitoIdp::GetUser', @_);
@@ -292,6 +322,11 @@ package Paws::CognitoIdp;
   sub ListIdentityProviders {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CognitoIdp::ListIdentityProviders', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListResourceServers {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CognitoIdp::ListResourceServers', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListUserImportJobs {
@@ -329,6 +364,11 @@ package Paws::CognitoIdp;
     my $call_object = $self->new_with_coercions('Paws::CognitoIdp::RespondToAuthChallenge', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub SetUICustomization {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CognitoIdp::SetUICustomization', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub SetUserSettings {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CognitoIdp::SetUserSettings', @_);
@@ -364,6 +404,11 @@ package Paws::CognitoIdp;
     my $call_object = $self->new_with_coercions('Paws::CognitoIdp::UpdateIdentityProvider', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpdateResourceServer {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CognitoIdp::UpdateResourceServer', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateUserAttributes {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CognitoIdp::UpdateUserAttributes', @_);
@@ -387,7 +432,7 @@ package Paws::CognitoIdp;
   
 
 
-  sub operations { qw/AddCustomAttributes AdminAddUserToGroup AdminConfirmSignUp AdminCreateUser AdminDeleteUser AdminDeleteUserAttributes AdminDisableUser AdminEnableUser AdminForgetDevice AdminGetDevice AdminGetUser AdminInitiateAuth AdminListDevices AdminListGroupsForUser AdminRemoveUserFromGroup AdminResetUserPassword AdminRespondToAuthChallenge AdminSetUserSettings AdminUpdateDeviceStatus AdminUpdateUserAttributes AdminUserGlobalSignOut ChangePassword ConfirmDevice ConfirmForgotPassword ConfirmSignUp CreateGroup CreateIdentityProvider CreateUserImportJob CreateUserPool CreateUserPoolClient CreateUserPoolDomain DeleteGroup DeleteIdentityProvider DeleteUser DeleteUserAttributes DeleteUserPool DeleteUserPoolClient DeleteUserPoolDomain DescribeIdentityProvider DescribeUserImportJob DescribeUserPool DescribeUserPoolClient DescribeUserPoolDomain ForgetDevice ForgotPassword GetCSVHeader GetDevice GetGroup GetIdentityProviderByIdentifier GetUser GetUserAttributeVerificationCode GlobalSignOut InitiateAuth ListDevices ListGroups ListIdentityProviders ListUserImportJobs ListUserPoolClients ListUserPools ListUsers ListUsersInGroup ResendConfirmationCode RespondToAuthChallenge SetUserSettings SignUp StartUserImportJob StopUserImportJob UpdateDeviceStatus UpdateGroup UpdateIdentityProvider UpdateUserAttributes UpdateUserPool UpdateUserPoolClient VerifyUserAttribute / }
+  sub operations { qw/AddCustomAttributes AdminAddUserToGroup AdminConfirmSignUp AdminCreateUser AdminDeleteUser AdminDeleteUserAttributes AdminDisableProviderForUser AdminDisableUser AdminEnableUser AdminForgetDevice AdminGetDevice AdminGetUser AdminInitiateAuth AdminLinkProviderForUser AdminListDevices AdminListGroupsForUser AdminRemoveUserFromGroup AdminResetUserPassword AdminRespondToAuthChallenge AdminSetUserSettings AdminUpdateDeviceStatus AdminUpdateUserAttributes AdminUserGlobalSignOut ChangePassword ConfirmDevice ConfirmForgotPassword ConfirmSignUp CreateGroup CreateIdentityProvider CreateResourceServer CreateUserImportJob CreateUserPool CreateUserPoolClient CreateUserPoolDomain DeleteGroup DeleteIdentityProvider DeleteResourceServer DeleteUser DeleteUserAttributes DeleteUserPool DeleteUserPoolClient DeleteUserPoolDomain DescribeIdentityProvider DescribeResourceServer DescribeUserImportJob DescribeUserPool DescribeUserPoolClient DescribeUserPoolDomain ForgetDevice ForgotPassword GetCSVHeader GetDevice GetGroup GetIdentityProviderByIdentifier GetUICustomization GetUser GetUserAttributeVerificationCode GlobalSignOut InitiateAuth ListDevices ListGroups ListIdentityProviders ListResourceServers ListUserImportJobs ListUserPoolClients ListUserPools ListUsers ListUsersInGroup ResendConfirmationCode RespondToAuthChallenge SetUICustomization SetUserSettings SignUp StartUserImportJob StopUserImportJob UpdateDeviceStatus UpdateGroup UpdateIdentityProvider UpdateResourceServer UpdateUserAttributes UpdateUserPool UpdateUserPoolClient VerifyUserAttribute / }
 
 1;
 
@@ -496,6 +541,48 @@ on any user.
 Requires developer credentials.
 
 
+=head2 AdminDisableProviderForUser(User => L<Paws::CognitoIdp::ProviderUserIdentifierType>, UserPoolId => Str)
+
+Each argument is described in detail in: L<Paws::CognitoIdp::AdminDisableProviderForUser>
+
+Returns: a L<Paws::CognitoIdp::AdminDisableProviderForUserResponse> instance
+
+  Disables the user from signing in with the specified external (SAML or
+social) identity provider. If the user to disable is a Cognito User
+Pools native username + password user, they are not permitted to use
+their password to sign-in. If the user to disable is a linked external
+IdP user, any link between that user and an existing user is removed.
+The next time the external user (no longer attached to the previously
+linked C<DestinationUser>) signs in, they must create a new user
+account. See AdminLinkProviderForUser.
+
+This action is enabled only for admin access and requires developer
+credentials.
+
+The C<ProviderName> must match the value specified when creating an IdP
+for the pool.
+
+To disable a native username + password user, the C<ProviderName> value
+must be C<Cognito> and the C<ProviderAttributeName> must be
+C<Cognito_Subject>, with the C<ProviderAttributeValue> being the name
+that is used in the user pool for the user.
+
+The C<ProviderAttributeName> must always be C<Cognito_Subject> for
+social identity providers. The C<ProviderAttributeValue> must always be
+the exact subject that was used when the user was originally linked as
+a source user.
+
+For de-linking a SAML identity, there are two scenarios. If the linked
+identity has not yet been used to sign-in, the C<ProviderAttributeName>
+and C<ProviderAttributeValue> must be the same values that were used
+for the C<SourceUser> when the identities were originally linked in the
+AdminLinkProviderForUser call. (If the linking was done with
+C<ProviderAttributeName> set to C<Cognito_Subject>, the same applies
+here). However, if the user has already signed in, the
+C<ProviderAttributeName> must be C<Cognito_Subject> and
+C<ProviderAttributeValue> must be the subject of the SAML assertion.
+
+
 =head2 AdminDisableUser(Username => Str, UserPoolId => Str)
 
 Each argument is described in detail in: L<Paws::CognitoIdp::AdminDisableUser>
@@ -561,6 +648,36 @@ Returns: a L<Paws::CognitoIdp::AdminInitiateAuthResponse> instance
   Initiates the authentication flow, as an administrator.
 
 Requires developer credentials.
+
+
+=head2 AdminLinkProviderForUser(DestinationUser => L<Paws::CognitoIdp::ProviderUserIdentifierType>, SourceUser => L<Paws::CognitoIdp::ProviderUserIdentifierType>, UserPoolId => Str)
+
+Each argument is described in detail in: L<Paws::CognitoIdp::AdminLinkProviderForUser>
+
+Returns: a L<Paws::CognitoIdp::AdminLinkProviderForUserResponse> instance
+
+  Links an existing user account in a user pool (C<DestinationUser>) to
+an identity from an external identity provider (C<SourceUser>) based on
+a specified attribute name and value from the external identity
+provider. This allows you to create a link from the existing user
+account to an external federated user identity that has not yet been
+used to sign in, so that the federated user identity can be used to
+sign in as the existing user account.
+
+For example, if there is an existing user with a username and password,
+this API links that user to a federated user identity, so that when the
+federated user identity is used, the user signs in as the existing user
+account.
+
+Because this API allows a user with an external federated identity to
+sign in as an existing user in the user pool, it is critical that it
+only be used with external identity providers and provider attributes
+that have been trusted by the application owner.
+
+See also AdminDisableProviderForUser.
+
+This action is enabled only for admin access and requires developer
+credentials.
 
 
 =head2 AdminListDevices(Username => Str, UserPoolId => Str, [Limit => Int, PaginationToken => Str])
@@ -740,6 +857,15 @@ Returns: a L<Paws::CognitoIdp::CreateIdentityProviderResponse> instance
   Creates an identity provider for a user pool.
 
 
+=head2 CreateResourceServer(Identifier => Str, Name => Str, UserPoolId => Str, [Scopes => ArrayRef[L<Paws::CognitoIdp::ResourceServerScopeType>]])
+
+Each argument is described in detail in: L<Paws::CognitoIdp::CreateResourceServer>
+
+Returns: a L<Paws::CognitoIdp::CreateResourceServerResponse> instance
+
+  Creates a new OAuth2.0 resource server and defines custom scopes in it.
+
+
 =head2 CreateUserImportJob(CloudWatchLogsRoleArn => Str, JobName => Str, UserPoolId => Str)
 
 Each argument is described in detail in: L<Paws::CognitoIdp::CreateUserImportJob>
@@ -749,7 +875,7 @@ Returns: a L<Paws::CognitoIdp::CreateUserImportJobResponse> instance
   Creates the user import job.
 
 
-=head2 CreateUserPool(PoolName => Str, [AdminCreateUserConfig => L<Paws::CognitoIdp::AdminCreateUserConfigType>, AliasAttributes => ArrayRef[Str|Undef], AutoVerifiedAttributes => ArrayRef[Str|Undef], DeviceConfiguration => L<Paws::CognitoIdp::DeviceConfigurationType>, EmailConfiguration => L<Paws::CognitoIdp::EmailConfigurationType>, EmailVerificationMessage => Str, EmailVerificationSubject => Str, LambdaConfig => L<Paws::CognitoIdp::LambdaConfigType>, MfaConfiguration => Str, Policies => L<Paws::CognitoIdp::UserPoolPolicyType>, Schema => ArrayRef[L<Paws::CognitoIdp::SchemaAttributeType>], SmsAuthenticationMessage => Str, SmsConfiguration => L<Paws::CognitoIdp::SmsConfigurationType>, SmsVerificationMessage => Str, UsernameAttributes => ArrayRef[Str|Undef], UserPoolTags => L<Paws::CognitoIdp::UserPoolTagsType>])
+=head2 CreateUserPool(PoolName => Str, [AdminCreateUserConfig => L<Paws::CognitoIdp::AdminCreateUserConfigType>, AliasAttributes => ArrayRef[Str|Undef], AutoVerifiedAttributes => ArrayRef[Str|Undef], DeviceConfiguration => L<Paws::CognitoIdp::DeviceConfigurationType>, EmailConfiguration => L<Paws::CognitoIdp::EmailConfigurationType>, EmailVerificationMessage => Str, EmailVerificationSubject => Str, LambdaConfig => L<Paws::CognitoIdp::LambdaConfigType>, MfaConfiguration => Str, Policies => L<Paws::CognitoIdp::UserPoolPolicyType>, Schema => ArrayRef[L<Paws::CognitoIdp::SchemaAttributeType>], SmsAuthenticationMessage => Str, SmsConfiguration => L<Paws::CognitoIdp::SmsConfigurationType>, SmsVerificationMessage => Str, UsernameAttributes => ArrayRef[Str|Undef], UserPoolTags => L<Paws::CognitoIdp::UserPoolTagsType>, VerificationMessageTemplate => L<Paws::CognitoIdp::VerificationMessageTemplateType>])
 
 Each argument is described in detail in: L<Paws::CognitoIdp::CreateUserPool>
 
@@ -797,13 +923,22 @@ Returns: nothing
   Deletes an identity provider for a user pool.
 
 
+=head2 DeleteResourceServer(Identifier => Str, UserPoolId => Str)
+
+Each argument is described in detail in: L<Paws::CognitoIdp::DeleteResourceServer>
+
+Returns: nothing
+
+  Deletes a resource server.
+
+
 =head2 DeleteUser(AccessToken => Str)
 
 Each argument is described in detail in: L<Paws::CognitoIdp::DeleteUser>
 
 Returns: nothing
 
-  Allows a user to delete one's self.
+  Allows a user to delete himself or herself.
 
 
 =head2 DeleteUserAttributes(AccessToken => Str, UserAttributeNames => ArrayRef[Str|Undef])
@@ -849,6 +984,15 @@ Each argument is described in detail in: L<Paws::CognitoIdp::DescribeIdentityPro
 Returns: a L<Paws::CognitoIdp::DescribeIdentityProviderResponse> instance
 
   Gets information about a specific identity provider.
+
+
+=head2 DescribeResourceServer(Identifier => Str, UserPoolId => Str)
+
+Each argument is described in detail in: L<Paws::CognitoIdp::DescribeResourceServer>
+
+Returns: a L<Paws::CognitoIdp::DescribeResourceServerResponse> instance
+
+  Describes a resource server.
 
 
 =head2 DescribeUserImportJob(JobId => Str, UserPoolId => Str)
@@ -954,6 +1098,19 @@ Returns: a L<Paws::CognitoIdp::GetIdentityProviderByIdentifierResponse> instance
   Gets the specified identity provider.
 
 
+=head2 GetUICustomization(UserPoolId => Str, [ClientId => Str])
+
+Each argument is described in detail in: L<Paws::CognitoIdp::GetUICustomization>
+
+Returns: a L<Paws::CognitoIdp::GetUICustomizationResponse> instance
+
+  Gets the UI Customization information for a particular app client's app
+UI, if there is something set. If nothing is set for the particular
+client, but there is an existing pool level customization (app
+C<clientId> will be C<ALL>), then that is returned. If nothing is
+present, then an empty shape is returned.
+
+
 =head2 GetUser(AccessToken => Str)
 
 Each argument is described in detail in: L<Paws::CognitoIdp::GetUser>
@@ -1020,6 +1177,15 @@ Returns: a L<Paws::CognitoIdp::ListIdentityProvidersResponse> instance
   Lists information about all identity providers for a user pool.
 
 
+=head2 ListResourceServers(UserPoolId => Str, [MaxResults => Int, NextToken => Str])
+
+Each argument is described in detail in: L<Paws::CognitoIdp::ListResourceServers>
+
+Returns: a L<Paws::CognitoIdp::ListResourceServersResponse> instance
+
+  Lists the resource servers for a user pool.
+
+
 =head2 ListUserImportJobs(MaxResults => Int, UserPoolId => Str, [PaginationToken => Str])
 
 Each argument is described in detail in: L<Paws::CognitoIdp::ListUserImportJobs>
@@ -1084,6 +1250,27 @@ Each argument is described in detail in: L<Paws::CognitoIdp::RespondToAuthChalle
 Returns: a L<Paws::CognitoIdp::RespondToAuthChallengeResponse> instance
 
   Responds to the authentication challenge.
+
+
+=head2 SetUICustomization(UserPoolId => Str, [ClientId => Str, CSS => Str, ImageFile => Str])
+
+Each argument is described in detail in: L<Paws::CognitoIdp::SetUICustomization>
+
+Returns: a L<Paws::CognitoIdp::SetUICustomizationResponse> instance
+
+  Sets the UI customization information for a user pool's built-in app
+UI.
+
+You can specify app UI customization settings for a single client (with
+a specific C<clientId>) or for all clients (by setting the C<clientId>
+to C<ALL>). If you specify C<ALL>, the default configuration will be
+used for every client that has no UI customization set previously. If
+you specify UI customization settings for a particular client, it will
+no longer fall back to the C<ALL> configuration.
+
+To use this API, your user pool must have a domain associated with it.
+Otherwise, there is no place to host the app's pages, and the service
+will throw an error.
 
 
 =head2 SetUserSettings(AccessToken => Str, MFAOptions => ArrayRef[L<Paws::CognitoIdp::MFAOptionType>])
@@ -1155,6 +1342,16 @@ Returns: a L<Paws::CognitoIdp::UpdateIdentityProviderResponse> instance
   Updates identity provider information for a user pool.
 
 
+=head2 UpdateResourceServer(Identifier => Str, Name => Str, UserPoolId => Str, [Scopes => ArrayRef[L<Paws::CognitoIdp::ResourceServerScopeType>]])
+
+Each argument is described in detail in: L<Paws::CognitoIdp::UpdateResourceServer>
+
+Returns: a L<Paws::CognitoIdp::UpdateResourceServerResponse> instance
+
+  Updates the name and scopes of resource server. All other fields are
+read-only.
+
+
 =head2 UpdateUserAttributes(AccessToken => Str, UserAttributes => ArrayRef[L<Paws::CognitoIdp::AttributeType>])
 
 Each argument is described in detail in: L<Paws::CognitoIdp::UpdateUserAttributes>
@@ -1164,7 +1361,7 @@ Returns: a L<Paws::CognitoIdp::UpdateUserAttributesResponse> instance
   Allows a user to update a specific attribute (one at a time).
 
 
-=head2 UpdateUserPool(UserPoolId => Str, [AdminCreateUserConfig => L<Paws::CognitoIdp::AdminCreateUserConfigType>, AutoVerifiedAttributes => ArrayRef[Str|Undef], DeviceConfiguration => L<Paws::CognitoIdp::DeviceConfigurationType>, EmailConfiguration => L<Paws::CognitoIdp::EmailConfigurationType>, EmailVerificationMessage => Str, EmailVerificationSubject => Str, LambdaConfig => L<Paws::CognitoIdp::LambdaConfigType>, MfaConfiguration => Str, Policies => L<Paws::CognitoIdp::UserPoolPolicyType>, SmsAuthenticationMessage => Str, SmsConfiguration => L<Paws::CognitoIdp::SmsConfigurationType>, SmsVerificationMessage => Str, UserPoolTags => L<Paws::CognitoIdp::UserPoolTagsType>])
+=head2 UpdateUserPool(UserPoolId => Str, [AdminCreateUserConfig => L<Paws::CognitoIdp::AdminCreateUserConfigType>, AutoVerifiedAttributes => ArrayRef[Str|Undef], DeviceConfiguration => L<Paws::CognitoIdp::DeviceConfigurationType>, EmailConfiguration => L<Paws::CognitoIdp::EmailConfigurationType>, EmailVerificationMessage => Str, EmailVerificationSubject => Str, LambdaConfig => L<Paws::CognitoIdp::LambdaConfigType>, MfaConfiguration => Str, Policies => L<Paws::CognitoIdp::UserPoolPolicyType>, SmsAuthenticationMessage => Str, SmsConfiguration => L<Paws::CognitoIdp::SmsConfigurationType>, SmsVerificationMessage => Str, UserPoolTags => L<Paws::CognitoIdp::UserPoolTagsType>, VerificationMessageTemplate => L<Paws::CognitoIdp::VerificationMessageTemplateType>])
 
 Each argument is described in detail in: L<Paws::CognitoIdp::UpdateUserPool>
 

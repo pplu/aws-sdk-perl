@@ -18,6 +18,7 @@ package Paws::CognitoIdp::CreateUserPool;
   has SmsVerificationMessage => (is => 'ro', isa => 'Str');
   has UsernameAttributes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has UserPoolTags => (is => 'ro', isa => 'Paws::CognitoIdp::UserPoolTagsType');
+  has VerificationMessageTemplate => (is => 'ro', isa => 'Paws::CognitoIdp::VerificationMessageTemplateType');
 
   use MooseX::ClassAttribute;
 
@@ -153,6 +154,13 @@ usernames when a user signs up.
 
 The cost allocation tags for the user pool. For more information, see
 Adding Cost Allocation Tags to Your User Pool
+
+
+
+=head2 VerificationMessageTemplate => L<Paws::CognitoIdp::VerificationMessageTemplateType>
+
+The template for the verification message that the user sees when the
+app requests permission to access the user's information.
 
 
 

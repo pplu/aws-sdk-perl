@@ -24,6 +24,7 @@ package Paws::CognitoIdp::UserPoolType;
   has Status => (is => 'ro', isa => 'Str');
   has UsernameAttributes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has UserPoolTags => (is => 'ro', isa => 'Paws::CognitoIdp::UserPoolTagsType');
+  has VerificationMessageTemplate => (is => 'ro', isa => 'Paws::CognitoIdp::VerificationMessageTemplateType');
 1;
 
 ### main pod documentation begin ###
@@ -43,7 +44,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CognitoIdp::UserPoolType object:
 
-  $service_obj->Method(Att1 => { AdminCreateUserConfig => $value, ..., UserPoolTags => $value  });
+  $service_obj->Method(Att1 => { AdminCreateUserConfig => $value, ..., VerificationMessageTemplate => $value  });
 
 =head3 Results returned from an API call
 
@@ -201,6 +202,11 @@ usernames when a user signs up.
 
   The cost allocation tags for the user pool. For more information, see
 Adding Cost Allocation Tags to Your User Pool
+
+
+=head2 VerificationMessageTemplate => L<Paws::CognitoIdp::VerificationMessageTemplateType>
+
+  The template for verification messages.
 
 
 
