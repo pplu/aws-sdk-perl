@@ -6,6 +6,7 @@ package Paws::Batch::ContainerDetail;
   has ExitCode => (is => 'ro', isa => 'Int', request_name => 'exitCode', traits => ['NameInRequest']);
   has Image => (is => 'ro', isa => 'Str', request_name => 'image', traits => ['NameInRequest']);
   has JobRoleArn => (is => 'ro', isa => 'Str', request_name => 'jobRoleArn', traits => ['NameInRequest']);
+  has LogStreamName => (is => 'ro', isa => 'Str', request_name => 'logStreamName', traits => ['NameInRequest']);
   has Memory => (is => 'ro', isa => 'Int', request_name => 'memory', traits => ['NameInRequest']);
   has MountPoints => (is => 'ro', isa => 'ArrayRef[Paws::Batch::MountPoint]', request_name => 'mountPoints', traits => ['NameInRequest']);
   has Privileged => (is => 'ro', isa => 'Bool', request_name => 'privileged', traits => ['NameInRequest']);
@@ -81,6 +82,11 @@ container is running.
 =head2 JobRoleArn => Str
 
   The Amazon Resource Name (ARN) associated with the job upon execution.
+
+
+=head2 LogStreamName => Str
+
+  
 
 
 =head2 Memory => Int
