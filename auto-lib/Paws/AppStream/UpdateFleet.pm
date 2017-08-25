@@ -159,6 +159,22 @@ stream.memory.4xlarge
 
 stream.memory.8xlarge
 
+=item *
+
+stream.graphics-pro.4xlarge
+
+=item *
+
+stream.graphics-pro.8xlarge
+
+=item *
+
+stream.graphics-pro.16xlarge
+
+=item *
+
+stream.graphics-desktop.2xlarge
+
 =back
 
 
