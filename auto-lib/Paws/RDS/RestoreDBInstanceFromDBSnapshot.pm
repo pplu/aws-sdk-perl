@@ -106,8 +106,7 @@ Constraints:
 
 =item *
 
-Must contain from 1 to 63 alphanumeric characters or hyphens (1 to 15
-for SQL Server)
+Must contain from 1 to 63 alphanumeric characters or hyphens
 
 =item *
 

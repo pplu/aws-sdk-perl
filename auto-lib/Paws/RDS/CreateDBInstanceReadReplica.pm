@@ -65,7 +65,7 @@ The Amazon EC2 Availability Zone that the Read Replica will be created
 in.
 
 Default: A random, system-chosen Availability Zone in the endpoint's
-region.
+AWS Region.
 
 Example: C<us-east-1d>
 
@@ -116,17 +116,17 @@ Constraints:
 =item *
 
 Can only be specified if the source DB instance identifier specifies a
-DB instance in another region.
+DB instance in another AWS Region.
 
 =item *
 
-The specified DB subnet group must be in the same region in which the
-operation is running.
+The specified DB subnet group must be in the same AWS Region in which
+the operation is running.
 
 =item *
 
-All Read Replicas in one region that are created from the same source
-DB instance must either:E<gt>
+All Read Replicas in one AWS Region that are created from the same
+source DB instance must either:E<gt>
 
 =over
 
@@ -192,20 +192,19 @@ The AWS KMS key ID for an encrypted Read Replica. The KMS key ID is the
 Amazon Resource Name (ARN), KMS key identifier, or the KMS key alias
 for the KMS encryption key.
 
-If you create an unencrypted Read Replica and specify a value for the
-C<KmsKeyId> parameter, Amazon RDS encrypts the target Read Replica
-using the specified KMS encryption key.
+If you specify this parameter when you create a Read Replica from an
+unencrypted DB instance, the Read Replica is encrypted.
 
-If you create an encrypted Read Replica from your AWS account, you can
-specify a value for C<KmsKeyId> to encrypt the Read Replica with a new
-KMS encryption key. If you don't specify a value for C<KmsKeyId>, then
-the Read Replica is encrypted with the same KMS key as the source DB
-instance.
+If you create an encrypted Read Replica in the same AWS Region as the
+source DB instance, then you do not have to specify a value for this
+parameter. The Read Replica is encrypted with the same KMS key as the
+source DB instance.
 
-If you create an encrypted Read Replica in a different AWS region, then
-you must specify a KMS key for the destination AWS region. KMS
-encryption keys are specific to the region that they are created in,
-and you cannot use encryption keys from one region in another region.
+If you create an encrypted Read Replica in a different AWS Region, then
+you must specify a KMS key for the destination AWS Region. KMS
+encryption keys are specific to the AWS Region that they are created
+in, and you cannot use encryption keys from one AWS Region in another
+AWS Region.
 
 
 
@@ -254,27 +253,32 @@ Valid Values: C<1150-65535>
 
 =head2 PreSignedUrl => Str
 
-The URL that contains a Signature Version 4 signed request for the C<
-CreateDBInstanceReadReplica> API action in the AWS region that contains
-the source DB instance. The C<PreSignedUrl> parameter must be used when
-encrypting a Read Replica from another AWS region.
+The URL that contains a Signature Version 4 signed request for the
+C<CreateDBInstanceReadReplica> API action in the source AWS Region that
+contains the source DB instance.
+
+You must specify this parameter when you create an encrypted Read
+Replica from another AWS Region by using the Amazon RDS API. You can
+specify the source region option instead of this parameter when you
+create an encrypted Read Replica from another AWS Region by using the
+AWS CLI.
 
 The presigned URL must be a valid request for the
 C<CreateDBInstanceReadReplica> API action that can be executed in the
-source region that contains the encrypted DB instance. The presigned
-URL request must contain the following parameter values:
+source AWS Region that contains the encrypted source DB instance. The
+presigned URL request must contain the following parameter values:
 
 =over
 
 =item *
 
-C<DestinationRegion> - The AWS Region that the Read Replica is created
-in. This region is the same one where the
+C<DestinationRegion> - The AWS Region that the encrypted Read Replica
+will be created in. This AWS Region is the same one where the
 C<CreateDBInstanceReadReplica> action is called that contains this
 presigned URL.
 
-For example, if you create an encrypted Read Replica in the us-east-1
-region, and the source DB instance is in the west-2 region, then you
+For example, if you create an encrypted DB instance in the us-west-1
+region, from a source DB instance in the us-east-2 region, then you
 call the C<CreateDBInstanceReadReplica> action in the us-east-1 region
 and provide a presigned URL that contains a call to the
 C<CreateDBInstanceReadReplica> action in the us-west-2 region. For this
@@ -284,19 +288,20 @@ the us-east-1 region.
 =item *
 
 C<KmsKeyId> - The KMS key identifier for the key to use to encrypt the
-Read Replica in the destination region. This is the same identifier for
-both the C<CreateDBInstanceReadReplica> action that is called in the
-destination region, and the action contained in the presigned URL.
+Read Replica in the destination AWS Region. This is the same identifier
+for both the C<CreateDBInstanceReadReplica> action that is called in
+the destination AWS Region, and the action contained in the presigned
+URL.
 
 =item *
 
 C<SourceDBInstanceIdentifier> - The DB instance identifier for the
-encrypted Read Replica to be created. This identifier must be in the
-Amazon Resource Name (ARN) format for the source region. For example,
-if you create an encrypted Read Replica from a DB instance in the
-us-west-2 region, then your C<SourceDBInstanceIdentifier> would look
-like this example: C<
-arn:aws:rds:us-west-2:123456789012:instance:mysql-instance1-instance-20161115>.
+encrypted DB instance to be replicated. This identifier must be in the
+Amazon Resource Name (ARN) format for the source AWS Region. For
+example, if you are creating an encrypted Read Replica from a DB
+instance in the us-west-2 region, then your
+C<SourceDBInstanceIdentifier> looks like the following example:
+C<arn:aws:rds:us-west-2:123456789012:instance:mysql-instance1-20161115>.
 
 =back
 
@@ -369,12 +374,12 @@ backup retention period must be greater than 0.
 
 =item *
 
-If the source DB instance is in the same region as the Read Replica,
-specify a valid DB instance identifier.
+If the source DB instance is in the same AWS Region as the Read
+Replica, specify a valid DB instance identifier.
 
 =item *
 
-If the source DB instance is in a different region than the Read
+If the source DB instance is in a different AWS Region than the Read
 Replica, specify a valid DB instance ARN. For more information, go to
 Constructing a Amazon RDS Amazon Resource Name (ARN).
 

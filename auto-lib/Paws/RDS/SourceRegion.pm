@@ -41,17 +41,17 @@ DescribeSourceRegions action.
 
 =head2 Endpoint => Str
 
-  The source region endpoint.
+  The endpoint for the source AWS Region endpoint.
 
 
 =head2 RegionName => Str
 
-  The source region name.
+  The name of the source AWS Region.
 
 
 =head2 Status => Str
 
-  The status of the source region.
+  The status of the source AWS Region.
 
 
 

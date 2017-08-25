@@ -204,7 +204,7 @@ If the C<StorageEncrypted> parameter is true, and you do not specify a
 value for the C<KmsKeyId> parameter, then Amazon RDS will use your
 default encryption key. AWS KMS creates the default encryption key for
 your AWS account. Your AWS account has a different default encryption
-key for each AWS region.
+key for each AWS Region.
 
 
 
@@ -269,8 +269,8 @@ automated backups are enabled using the C<BackupRetentionPeriod>
 parameter.
 
 Default: A 30-minute window selected at random from an 8-hour block of
-time per region. To see the time blocks available, see Adjusting the
-Preferred Maintenance Window in the I<Amazon RDS User Guide.>
+time per AWS Region. To see the time blocks available, see Adjusting
+the Preferred Maintenance Window in the I<Amazon RDS User Guide.>
 
 Constraints:
 
@@ -305,9 +305,9 @@ Universal Coordinated Time (UTC).
 Format: C<ddd:hh24:mi-ddd:hh24:mi>
 
 Default: A 30-minute window selected at random from an 8-hour block of
-time per region, occurring on a random day of the week. To see the time
-blocks available, see Adjusting the Preferred Maintenance Window in the
-I<Amazon RDS User Guide.>
+time per AWS Region, occurring on a random day of the week. To see the
+time blocks available, see Adjusting the Preferred Maintenance Window
+in the I<Amazon RDS User Guide.>
 
 Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun
 

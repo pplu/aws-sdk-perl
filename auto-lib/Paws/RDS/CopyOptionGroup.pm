@@ -52,13 +52,13 @@ Must specify a valid option group.
 
 =item *
 
-If the source option group is in the same region as the copy, specify a
-valid option group identifier, for example C<my-option-group>, or a
-valid ARN.
+If the source option group is in the same AWS Region as the copy,
+specify a valid option group identifier, for example
+C<my-option-group>, or a valid ARN.
 
 =item *
 
-If the source option group is in a different region than the copy,
+If the source option group is in a different AWS Region than the copy,
 specify a valid option group ARN, for example
 C<arn:aws:rds:us-west-2:123456789012:og:special-options>.
 
