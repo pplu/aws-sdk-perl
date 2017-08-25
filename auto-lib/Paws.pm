@@ -258,6 +258,8 @@ L<Paws::CloudFront>
 
 L<Paws::CloudHSM>
 
+L<Paws::CloudHSMv2>
+
 L<Paws::CloudSearch>
 
 L<Paws::CloudSearchDomain>
@@ -342,6 +344,8 @@ L<Paws::GameLift>
 
 L<Paws::Glacier>
 
+L<Paws::Glue>
+
 L<Paws::Greengrass>
 
 L<Paws::Health>
@@ -377,6 +381,8 @@ L<Paws::MarketplaceCommerceAnalytics>
 L<Paws::MarketplaceEntitlement>
 
 L<Paws::MarketplaceMetering>
+
+L<Paws::MigrationHub>
 
 L<Paws::MTurk>
 

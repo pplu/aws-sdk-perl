@@ -1,4 +1,7 @@
 0.35
+ - New API: MigrationHub
+ - New API: Glue
+ - New API: CloudHSMv2
  - API update: Lambda
  - API update: Discovery
  - API update: EC2
@@ -17,6 +20,11 @@
  - API update: SSM
  - API update: ElasticBeanstalk
  - API update: CloudDirectory
+ - API update: GameLift
+ - API update: Firehose
+ - API update: StorageGateway
+ - API update: Batch
+ - API update: EFS
 
 0.34 07 Jul 2017
  - New Credential provider: Paws::Credential::ECSContainerProfile (gadgetjunkie)
