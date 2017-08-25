@@ -10,6 +10,7 @@ package Paws::CloudDirectory::BatchWriteOperationResponse;
   has DeleteObject => (is => 'ro', isa => 'Paws::CloudDirectory::BatchDeleteObjectResponse');
   has DetachFromIndex => (is => 'ro', isa => 'Paws::CloudDirectory::BatchDetachFromIndexResponse');
   has DetachObject => (is => 'ro', isa => 'Paws::CloudDirectory::BatchDetachObjectResponse');
+  has DetachPolicy => (is => 'ro', isa => 'Paws::CloudDirectory::BatchDetachPolicyResponse');
   has DetachTypedLink => (is => 'ro', isa => 'Paws::CloudDirectory::BatchDetachTypedLinkResponse');
   has RemoveFacetFromObject => (is => 'ro', isa => 'Paws::CloudDirectory::BatchRemoveFacetFromObjectResponse');
   has UpdateObjectAttributes => (is => 'ro', isa => 'Paws::CloudDirectory::BatchUpdateObjectAttributesResponse');
@@ -98,6 +99,11 @@ information, see Typed link.
 =head2 DetachObject => L<Paws::CloudDirectory::BatchDetachObjectResponse>
 
   Detaches an object from a Directory.
+
+
+=head2 DetachPolicy => L<Paws::CloudDirectory::BatchDetachPolicyResponse>
+
+  Detaches a policy from a Directory.
 
 
 =head2 DetachTypedLink => L<Paws::CloudDirectory::BatchDetachTypedLinkResponse>
