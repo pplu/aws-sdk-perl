@@ -1,6 +1,7 @@
 
 package Paws::Firehose::ListDeliveryStreams;
   use Moose;
+  has DeliveryStreamType => (is => 'ro', isa => 'Str');
   has ExclusiveStartDeliveryStreamName => (is => 'ro', isa => 'Str');
   has Limit => (is => 'ro', isa => 'Int');
 
@@ -33,6 +34,29 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
+=head2 DeliveryStreamType => Str
+
+The delivery stream type. This can be one of the following values:
+
+=over
+
+=item *
+
+C<DirectPut>: Provider applications access the delivery stream
+directly.
+
+=item *
+
+C<KinesisStreamAsSource>: The delivery stream uses a Kinesis stream as
+a source.
+
+=back
+
+This parameter is optional. If this parameter is omitted, delivery
+streams of all types are returned.
+
+Valid values are: C<"DirectPut">, C<"KinesisStreamAsSource">
 
 =head2 ExclusiveStartDeliveryStreamName => Str
 

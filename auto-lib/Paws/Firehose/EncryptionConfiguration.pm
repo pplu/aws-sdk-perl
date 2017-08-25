@@ -44,7 +44,7 @@ Describes the encryption for a destination in Amazon S3.
 
 =head2 NoEncryptionConfig => Str
 
-  Specifically override existing encryption information to ensure no
+  Specifically override existing encryption information to ensure that no
 encryption is used.
 
 

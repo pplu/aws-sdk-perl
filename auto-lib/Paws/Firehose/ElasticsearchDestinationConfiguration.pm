@@ -72,8 +72,8 @@ in B<RoleARN>.
 
 =head2 IndexRotationPeriod => Str
 
-  The Elasticsearch index rotation period. Index rotation appends a
-timestamp to the IndexName to facilitate expiration of old data. For
+  The Elasticsearch index rotation period. Index rotation appends a time
+stamp to the IndexName to facilitate the expiration of old data. For
 more information, see Index Rotation for Amazon Elasticsearch Service
 Destination. The default value is C<OneDay>.
 
@@ -85,34 +85,33 @@ Destination. The default value is C<OneDay>.
 
 =head2 RetryOptions => L<Paws::Firehose::ElasticsearchRetryOptions>
 
-  The retry behavior in the event that Firehose is unable to deliver
+  The retry behavior in case Kinesis Firehose is unable to deliver
 documents to Amazon ES. The default value is 300 (5 minutes).
 
 
 =head2 B<REQUIRED> RoleARN => Str
 
-  The ARN of the IAM role to be assumed by Firehose for calling the
-Amazon ES Configuration API and for indexing documents. For more
+  The ARN of the IAM role to be assumed by Kinesis Firehose for calling
+the Amazon ES Configuration API and for indexing documents. For more
 information, see Amazon S3 Bucket Access.
 
 
 =head2 S3BackupMode => Str
 
   Defines how documents should be delivered to Amazon S3. When set to
-FailedDocumentsOnly, Firehose writes any documents that could not be
-indexed to the configured Amazon S3 destination, with
+FailedDocumentsOnly, Kinesis Firehose writes any documents that could
+not be indexed to the configured Amazon S3 destination, with
 elasticsearch-failed/ appended to the key prefix. When set to
-AllDocuments, Firehose delivers all incoming records to Amazon S3, and
-also writes failed documents with elasticsearch-failed/ appended to the
-prefix. For more information, see Amazon S3 Backup for Amazon
-Elasticsearch Service Destination. Default value is
+AllDocuments, Kinesis Firehose delivers all incoming records to Amazon
+S3, and also writes failed documents with elasticsearch-failed/
+appended to the prefix. For more information, see Amazon S3 Backup for
+Amazon Elasticsearch Service Destination. Default value is
 FailedDocumentsOnly.
 
 
 =head2 B<REQUIRED> S3Configuration => L<Paws::Firehose::S3DestinationConfiguration>
 
-  The configuration for the intermediate Amazon S3 location from which
-Amazon ES obtains data.
+  The configuration for the backup Amazon S3 location.
 
 
 =head2 B<REQUIRED> TypeName => Str

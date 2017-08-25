@@ -43,12 +43,12 @@ Describes a C<COPY> command for Amazon Redshift.
   Optional parameters to use with the Amazon Redshift C<COPY> command.
 For more information, see the "Optional Parameters" section of Amazon
 Redshift COPY command. Some possible examples that would apply to
-Firehose are as follows:
+Kinesis Firehose are as follows:
 
 C<delimiter '\t' lzop;> - fields are delimited with "\t" (TAB
 character) and compressed using lzop.
 
-C<delimiter '|> - fields are delimited with "|" (this is the default
+C<delimiter '|'> - fields are delimited with "|" (this is the default
 delimiter).
 
 C<delimiter '|' escape> - the delimiter should be escaped.

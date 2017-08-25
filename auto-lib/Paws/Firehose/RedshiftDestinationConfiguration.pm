@@ -73,7 +73,7 @@ Describes the configuration of a destination in Amazon Redshift.
 
 =head2 RetryOptions => L<Paws::Firehose::RedshiftRetryOptions>
 
-  The retry behavior in the event that Firehose is unable to deliver
+  The retry behavior in case Kinesis Firehose is unable to deliver
 documents to Amazon Redshift. Default value is 3600 (60 minutes).
 
 

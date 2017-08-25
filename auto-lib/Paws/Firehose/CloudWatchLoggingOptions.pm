@@ -33,7 +33,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Firehose::C
 
 =head1 DESCRIPTION
 
-Describes the CloudWatch logging options for your delivery stream.
+Describes the Amazon CloudWatch logging options for your delivery
+stream.
 
 =head1 ATTRIBUTES
 
