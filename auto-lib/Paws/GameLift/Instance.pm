@@ -38,7 +38,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GameLift::I
 =head1 DESCRIPTION
 
 Properties that describe an instance of a virtual computing resource
-that hosts one or more game servers. A fleet contains zero or more
+that hosts one or more game servers. A fleet may contain zero or more
 instances.
 
 =head1 ATTRIBUTES

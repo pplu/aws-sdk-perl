@@ -35,8 +35,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Name => Str
 
-Descriptive label that is associated with queue. Queue names must be
-unique within each region.
+Descriptive label that is associated with game session queue. Queue
+names must be unique within each region.
 
 
 

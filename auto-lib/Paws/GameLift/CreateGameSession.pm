@@ -5,6 +5,7 @@ package Paws::GameLift::CreateGameSession;
   has CreatorId => (is => 'ro', isa => 'Str');
   has FleetId => (is => 'ro', isa => 'Str');
   has GameProperties => (is => 'ro', isa => 'ArrayRef[Paws::GameLift::GameProperty]');
+  has GameSessionData => (is => 'ro', isa => 'Str');
   has GameSessionId => (is => 'ro', isa => 'Str');
   has IdempotencyToken => (is => 'ro', isa => 'Str');
   has MaximumPlayerSessionCount => (is => 'ro', isa => 'Int', required => 1);
@@ -66,8 +67,19 @@ must reference either a fleet ID or alias ID, but not both.
 
 =head2 GameProperties => ArrayRef[L<Paws::GameLift::GameProperty>]
 
-Set of developer-defined properties for a game session. These
-properties are passed to the server process hosting the game session.
+Set of developer-defined properties for a game session, formatted as a
+set of type:value pairs. These properties are included in the
+GameSession object, which is passed to the game server with a request
+to start a new game session (see Start a Game Session).
+
+
+
+=head2 GameSessionData => Str
+
+Set of developer-defined game session properties, formatted as a single
+string value. This data is included in the GameSession object, which is
+passed to the game server with a request to start a new game session
+(see Start a Game Session).
 
 
 
@@ -90,7 +102,9 @@ session. Maximum token length is 48 characters. If provided, this
 string is included in the new game session's ID. (A game session ID has
 the following format:
 C<arn:aws:gamelift:E<lt>regionE<gt>::gamesession/E<lt>fleet
-IDE<gt>/E<lt>custom ID string or idempotency tokenE<gt>>.)
+IDE<gt>/E<lt>custom ID string or idempotency tokenE<gt>>.) Idempotency
+tokens remain in use for 30 days after a game session has ended; game
+session objects are retained for this time period and then deleted.
 
 
 

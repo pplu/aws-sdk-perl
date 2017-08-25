@@ -5,6 +5,7 @@ package Paws::GameLift::GameSession;
   has CurrentPlayerSessionCount => (is => 'ro', isa => 'Int');
   has FleetId => (is => 'ro', isa => 'Str');
   has GameProperties => (is => 'ro', isa => 'ArrayRef[Paws::GameLift::GameProperty]');
+  has GameSessionData => (is => 'ro', isa => 'Str');
   has GameSessionId => (is => 'ro', isa => 'Str');
   has IpAddress => (is => 'ro', isa => 'Str');
   has MaximumPlayerSessionCount => (is => 'ro', isa => 'Int');
@@ -44,6 +45,13 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GameLift::G
 =head1 DESCRIPTION
 
 Properties describing a game session.
+
+A game session in ACTIVE status can host players. When a game session
+ends, its status is set to C<TERMINATED>.
+
+Once the session ends, the game session object is retained for 30 days.
+This means you can reuse idempotency token values after this time. Game
+session logs are retained for 14 days.
 
 Game-session-related operations include:
 
@@ -125,8 +133,18 @@ sessions a player can create.
 
 =head2 GameProperties => ArrayRef[L<Paws::GameLift::GameProperty>]
 
-  Set of developer-defined properties for a game session. These
-properties are passed to the server process hosting the game session.
+  Set of developer-defined properties for a game session, formatted as a
+set of type:value pairs. These properties are included in the
+GameSession object, which is passed to the game server with a request
+to start a new game session (see Start a Game Session).
+
+
+=head2 GameSessionData => Str
+
+  Set of developer-defined game session properties, formatted as a single
+string value. This data is included in the GameSession object, which is
+passed to the game server with a request to start a new game session
+(see Start a Game Session).
 
 
 =head2 GameSessionId => Str

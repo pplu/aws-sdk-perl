@@ -71,12 +71,12 @@ Fleet creation events:
 =item *
 
 B<FLEET_CREATED> E<ndash> A fleet record was successfully created with
-a status of NEW. Event messaging includes the fleet ID.
+a status of C<NEW>. Event messaging includes the fleet ID.
 
 =item *
 
-B<FLEET_STATE_DOWNLOADING> E<ndash> Fleet status changed from NEW to
-DOWNLOADING. The compressed build has started downloading to a fleet
+B<FLEET_STATE_DOWNLOADING> E<ndash> Fleet status changed from C<NEW> to
+C<DOWNLOADING>. The compressed build has started downloading to a fleet
 instance for installation.
 
 =item *
@@ -89,61 +89,59 @@ to the fleet instance.
 B<FLEET_CREATION_EXTRACTING_BUILD> E<ndash> The game server build was
 successfully downloaded to an instance, and the build files are now
 being extracted from the uploaded build and saved to an instance.
-Failure at this stage prevents a fleet from moving to ACTIVE status.
+Failure at this stage prevents a fleet from moving to C<ACTIVE> status.
 Logs for this stage display a list of the files that are extracted and
 saved on the instance. Access the logs by using the URL in
-I<PreSignedLogUrl>).
+I<PreSignedLogUrl>.
 
 =item *
 
 B<FLEET_CREATION_RUNNING_INSTALLER> E<ndash> The game server build
 files were successfully extracted, and the Amazon GameLift is now
 running the build's install script (if one is included). Failure in
-this stage prevents a fleet from moving to ACTIVE status. Logs for this
-stage list the installation steps and whether or not the install
-completed sucessfully. Access the logs by using the URL in
-I<PreSignedLogUrl>).
+this stage prevents a fleet from moving to C<ACTIVE> status. Logs for
+this stage list the installation steps and whether or not the install
+completed successfully. Access the logs by using the URL in
+I<PreSignedLogUrl>.
 
 =item *
 
 B<FLEET_CREATION_VALIDATING_RUNTIME_CONFIG> E<ndash> The build process
 was successful, and the Amazon GameLift is now verifying that the game
-server launch path(s), which are specified in the fleet's run-time
+server launch paths, which are specified in the fleet's run-time
 configuration, exist. If any listed launch path exists, Amazon GameLift
 tries to launch a game server process and waits for the process to
 report ready. Failures in this stage prevent a fleet from moving to
-ACTIVE status. Logs for this stage list the launch paths in the
+C<ACTIVE> status. Logs for this stage list the launch paths in the
 run-time configuration and indicate whether each is found. Access the
-logs by using the URL in I<PreSignedLogUrl>). Once the game server is
-launched, failures and crashes are logged; these logs can be downloaded
-from the Amazon GameLift console.
+logs by using the URL in I<PreSignedLogUrl>.
 
 =item *
 
 B<FLEET_STATE_VALIDATING> E<ndash> Fleet status changed from
-DOWNLOADING to VALIDATING.
+C<DOWNLOADING> to C<VALIDATING>.
 
 =item *
 
 B<FLEET_VALIDATION_LAUNCH_PATH_NOT_FOUND> E<ndash> Validation of the
-run-time validation failed because the executable specified in a launch
-path does not exist on the instance.
+run-time configuration failed because the executable specified in a
+launch path does not exist on the instance.
 
 =item *
 
-B<FLEET_STATE_BUILDING> E<ndash> Fleet status changed from VALIDATING
-to BUILDING.
+B<FLEET_STATE_BUILDING> E<ndash> Fleet status changed from
+C<VALIDATING> to C<BUILDING>.
 
 =item *
 
 B<FLEET_VALIDATION_EXECUTABLE_RUNTIME_FAILURE> E<ndash> Validation of
-the runtime validation failed because the executable specified in a
+the run-time configuration failed because the executable specified in a
 launch path failed to run on the fleet instance.
 
 =item *
 
-B<FLEET_STATE_ACTIVATING> E<ndash> Fleet status changed from BUILDING
-to ACTIVATING.
+B<FLEET_STATE_ACTIVATING> E<ndash> Fleet status changed from
+C<BUILDING> to C<ACTIVATING>.
 
 =item *
 
@@ -157,7 +155,8 @@ reporting "process ready" to the Amazon GameLift service.
 =item *
 
 B<FLEET_STATE_ACTIVE> E<ndash> The fleet's status changed from
-ACTIVATING to ACTIVE. The fleet is now ready to host game sessions.
+C<ACTIVATING> to C<ACTIVE>. The fleet is now ready to host game
+sessions.
 
 =back
 
@@ -207,9 +206,10 @@ expressed in Unix time as milliseconds (for example "1469498468.057").
 
 =head2 PreSignedLogUrl => Str
 
-  Location of stored logs with additional detail related to the event,
-useful for debugging issues. The URL is valid for 15 minutes. Fleet
-creation logs can also be accessed through the Amazon GameLift console.
+  Location of stored logs with additional detail that is related to the
+event. This is useful for debugging issues. The URL is valid for 15
+minutes. You can also access fleet creation logs through the Amazon
+GameLift console.
 
 
 =head2 ResourceId => Str
