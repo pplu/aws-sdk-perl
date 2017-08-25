@@ -8,6 +8,7 @@ package Paws::ElasticBeanstalk::EnvironmentDescription;
   has DateUpdated => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has EndpointURL => (is => 'ro', isa => 'Str');
+  has EnvironmentArn => (is => 'ro', isa => 'Str');
   has EnvironmentId => (is => 'ro', isa => 'Str');
   has EnvironmentLinks => (is => 'ro', isa => 'ArrayRef[Paws::ElasticBeanstalk::EnvironmentLink]');
   has EnvironmentName => (is => 'ro', isa => 'Str');
@@ -75,6 +76,12 @@ LoadBalancer. For single-instance environments, the IP address of the
 instance.
 
 
+=head2 EnvironmentArn => Str
+
+The environment's Amazon Resource Name (ARN), which can be used in
+other API reuqests that require an ARN.
+
+
 =head2 EnvironmentId => Str
 
 The ID of this environment.
@@ -131,7 +138,7 @@ environment. For more information, see Health Colors and Statuses.
 Valid values are: C<"NoData">, C<"Unknown">, C<"Pending">, C<"Ok">, C<"Info">, C<"Warning">, C<"Degraded">, C<"Severe">
 =head2 PlatformArn => Str
 
-The ARN of the custom platform.
+The ARN of the platform.
 
 
 =head2 Resources => L<Paws::ElasticBeanstalk::EnvironmentResourcesDescription>

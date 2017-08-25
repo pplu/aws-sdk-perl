@@ -599,7 +599,7 @@ Returns: a L<Paws::ElasticBeanstalk::EnvironmentResourceDescriptionsMessage> ins
   Returns AWS resources for this environment.
 
 
-=head2 DescribeEnvironments([ApplicationName => Str, EnvironmentIds => ArrayRef[Str|Undef], EnvironmentNames => ArrayRef[Str|Undef], IncludedDeletedBackTo => Str, IncludeDeleted => Bool, VersionLabel => Str])
+=head2 DescribeEnvironments([ApplicationName => Str, EnvironmentIds => ArrayRef[Str|Undef], EnvironmentNames => ArrayRef[Str|Undef], IncludedDeletedBackTo => Str, IncludeDeleted => Bool, MaxRecords => Int, NextToken => Str, VersionLabel => Str])
 
 Each argument is described in detail in: L<Paws::ElasticBeanstalk::DescribeEnvironments>
 

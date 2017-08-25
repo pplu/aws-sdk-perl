@@ -45,14 +45,21 @@ application.
 
 =head2 MaxRecords => Int
 
-Specify a maximum number of application versions to paginate in the
-request.
+For a paginated request. Specify a maximum number of application
+versions to include in each response.
+
+If no C<MaxRecords> is specified, all available application versions
+are retrieved in a single response.
 
 
 
 =head2 NextToken => Str
 
-Specify a next token to retrieve the next page in a paginated request.
+For a paginated request. Specify a token from a previous response page
+to retrieve the next response page. All other parameter values must be
+identical to the ones specified in the initial request.
+
+If no C<NextToken> is specified, the first page is retrieved.
 
 
 
