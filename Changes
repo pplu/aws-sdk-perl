@@ -15,6 +15,8 @@
  - API update: Inspector
  - API update: SES
  - API update: SSM
+ - API update: ElasticBeanstalk
+ - API update: CloudDirectory
 
 0.34 07 Jul 2017
  - New Credential provider: Paws::Credential::ECSContainerProfile (gadgetjunkie)
