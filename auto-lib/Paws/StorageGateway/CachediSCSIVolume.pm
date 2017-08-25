@@ -83,7 +83,7 @@ restoring or bootstrapping.
 
 =head2 VolumeSizeInBytes => Int
 
-  The size of the volume in bytes.
+  The size, in bytes, of the volume capacity.
 
 
 =head2 VolumeStatus => Str

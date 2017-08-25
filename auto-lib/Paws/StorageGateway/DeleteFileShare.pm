@@ -2,6 +2,7 @@
 package Paws::StorageGateway::DeleteFileShare;
   use Moose;
   has FileShareARN => (is => 'ro', isa => 'Str', required => 1);
+  has ForceDelete => (is => 'ro', isa => 'Bool');
 
   use MooseX::ClassAttribute;
 
@@ -36,6 +37,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 B<REQUIRED> FileShareARN => Str
 
 The Amazon Resource Name (ARN) of the file share to be deleted.
+
+
+
+=head2 ForceDelete => Bool
+
+If set to true, deletes a file share immediately and aborts all data
+uploads to AWS. Otherwise the file share is not deleted until all data
+is uploaded to AWS. This process aborts the data upload process and the
+file share enters the FORCE_DELETING status.
 
 
 
