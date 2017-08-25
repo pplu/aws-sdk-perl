@@ -2,7 +2,7 @@
 package Paws::CodeDeploy::CreateDeploymentConfig;
   use Moose;
   has DeploymentConfigName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'deploymentConfigName' , required => 1);
-  has MinimumHealthyHosts => (is => 'ro', isa => 'Paws::CodeDeploy::MinimumHealthyHosts', traits => ['NameInRequest'], request_name => 'minimumHealthyHosts' );
+  has MinimumHealthyHosts => (is => 'ro', isa => 'Paws::CodeDeploy::MinimumHealthyHosts', traits => ['NameInRequest'], request_name => 'minimumHealthyHosts' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -40,7 +40,7 @@ The name of the deployment configuration to create.
 
 
 
-=head2 MinimumHealthyHosts => L<Paws::CodeDeploy::MinimumHealthyHosts>
+=head2 B<REQUIRED> MinimumHealthyHosts => L<Paws::CodeDeploy::MinimumHealthyHosts>
 
 The minimum number of healthy instances that should be available at any
 time during the deployment. There are two parameters expected in the

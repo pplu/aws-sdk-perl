@@ -559,7 +559,7 @@ Returns: a L<Paws::CodeDeploy::CreateDeploymentOutput> instance
   Deploys an application revision through the specified deployment group.
 
 
-=head2 CreateDeploymentConfig(DeploymentConfigName => Str, [MinimumHealthyHosts => L<Paws::CodeDeploy::MinimumHealthyHosts>])
+=head2 CreateDeploymentConfig(DeploymentConfigName => Str, MinimumHealthyHosts => L<Paws::CodeDeploy::MinimumHealthyHosts>)
 
 Each argument is described in detail in: L<Paws::CodeDeploy::CreateDeploymentConfig>
 
