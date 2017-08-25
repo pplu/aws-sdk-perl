@@ -1,6 +1,7 @@
 
 package Paws::SSM::CreateAssociation;
   use Moose;
+  has AssociationName => (is => 'ro', isa => 'Str');
   has DocumentVersion => (is => 'ro', isa => 'Str');
   has InstanceId => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str', required => 1);
@@ -37,6 +38,12 @@ As an example:
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 
 =head1 ATTRIBUTES
+
+
+=head2 AssociationName => Str
+
+Specify a descriptive name for the association.
+
 
 
 =head2 DocumentVersion => Str

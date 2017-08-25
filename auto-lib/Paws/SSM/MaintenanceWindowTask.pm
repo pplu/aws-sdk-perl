@@ -1,8 +1,10 @@
 package Paws::SSM::MaintenanceWindowTask;
   use Moose;
+  has Description => (is => 'ro', isa => 'Str');
   has LoggingInfo => (is => 'ro', isa => 'Paws::SSM::LoggingInfo');
   has MaxConcurrency => (is => 'ro', isa => 'Str');
   has MaxErrors => (is => 'ro', isa => 'Str');
+  has Name => (is => 'ro', isa => 'Str');
   has Priority => (is => 'ro', isa => 'Int');
   has ServiceRoleArn => (is => 'ro', isa => 'Str');
   has Targets => (is => 'ro', isa => 'ArrayRef[Paws::SSM::Target]');
@@ -30,20 +32,25 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SSM::MaintenanceWindowTask object:
 
-  $service_obj->Method(Att1 => { LoggingInfo => $value, ..., WindowTaskId => $value  });
+  $service_obj->Method(Att1 => { Description => $value, ..., WindowTaskId => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::SSM::MaintenanceWindowTask object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->LoggingInfo
+  $result->Att1->Description
 
 =head1 DESCRIPTION
 
 Information about a task defined for a Maintenance Window.
 
 =head1 ATTRIBUTES
+
+
+=head2 Description => Str
+
+  A description of the task.
 
 
 =head2 LoggingInfo => L<Paws::SSM::LoggingInfo>
@@ -62,11 +69,15 @@ Information about a task defined for a Maintenance Window.
 scheduled.
 
 
+=head2 Name => Str
+
+  The task name.
+
+
 =head2 Priority => Int
 
-  The priority of the task in the Maintenance Window, the lower the
-number the higher the priority. Tasks in a Maintenance Window are
-scheduled in priority order with tasks that have the same priority
+  The priority of the task in the Maintenance Window. The lower the
+number, the higher the priority. Tasks that have the same priority are
 scheduled in parallel.
 
 
@@ -85,7 +96,10 @@ valueE<gt>.
 
 =head2 TaskArn => Str
 
-  The ARN of the task to execute.
+  The resource that the task uses during execution. For RUN_COMMAND and
+AUTOMATION task types, C<TaskArn> is the SSM document name or ARN. For
+LAMBDA tasks, it's the function name or ARN. For STEP_FUNCTION tasks,
+it's the state machine ARN.
 
 
 =head2 TaskParameters => L<Paws::SSM::MaintenanceWindowTaskParameters>
@@ -95,7 +109,8 @@ valueE<gt>.
 
 =head2 Type => Str
 
-  The type of task.
+  The type of task. The type can be one of the following: RUN_COMMAND,
+AUTOMATION, LAMBDA, or STEP_FUNCTION.
 
 
 =head2 WindowId => Str

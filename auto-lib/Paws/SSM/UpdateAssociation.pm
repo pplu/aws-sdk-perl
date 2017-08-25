@@ -2,6 +2,8 @@
 package Paws::SSM::UpdateAssociation;
   use Moose;
   has AssociationId => (is => 'ro', isa => 'Str', required => 1);
+  has AssociationName => (is => 'ro', isa => 'Str');
+  has AssociationVersion => (is => 'ro', isa => 'Str');
   has DocumentVersion => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
   has OutputLocation => (is => 'ro', isa => 'Paws::SSM::InstanceAssociationOutputLocation');
@@ -42,6 +44,21 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 B<REQUIRED> AssociationId => Str
 
 The ID of the association you want to update.
+
+
+
+=head2 AssociationName => Str
+
+The name of the association that you want to update.
+
+
+
+=head2 AssociationVersion => Str
+
+This parameter is provided for concurrency control purposes. You must
+specify the latest association version in the service. If you want to
+ensure that this request succeeds, either specify C<$LATEST>, or omit
+this parameter.
 
 
 

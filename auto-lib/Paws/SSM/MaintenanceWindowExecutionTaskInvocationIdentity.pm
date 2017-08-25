@@ -9,6 +9,7 @@ package Paws::SSM::MaintenanceWindowExecutionTaskInvocationIdentity;
   has Status => (is => 'ro', isa => 'Str');
   has StatusDetails => (is => 'ro', isa => 'Str');
   has TaskExecutionId => (is => 'ro', isa => 'Str');
+  has TaskType => (is => 'ro', isa => 'Str');
   has WindowExecutionId => (is => 'ro', isa => 'Str');
   has WindowTargetId => (is => 'ro', isa => 'Str');
 1;
@@ -98,6 +99,11 @@ available for certain Status values.
 
   The ID of the specific task execution in the Maintenance Window
 execution.
+
+
+=head2 TaskType => Str
+
+  The task type.
 
 
 =head2 WindowExecutionId => Str

@@ -4,6 +4,7 @@ package Paws::SSM::GetMaintenanceWindowResult;
   has AllowUnassociatedTargets => (is => 'ro', isa => 'Bool');
   has CreatedDate => (is => 'ro', isa => 'Str');
   has Cutoff => (is => 'ro', isa => 'Int');
+  has Description => (is => 'ro', isa => 'Str');
   has Duration => (is => 'ro', isa => 'Int');
   has Enabled => (is => 'ro', isa => 'Bool');
   has ModifiedDate => (is => 'ro', isa => 'Str');
@@ -37,6 +38,11 @@ The date the Maintenance Window was created.
 
 The number of hours before the end of the Maintenance Window that
 Systems Manager stops scheduling new tasks for execution.
+
+
+=head2 Description => Str
+
+The description of the Maintenance Window.
 
 
 =head2 Duration => Int

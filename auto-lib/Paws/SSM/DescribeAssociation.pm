@@ -2,6 +2,7 @@
 package Paws::SSM::DescribeAssociation;
   use Moose;
   has AssociationId => (is => 'ro', isa => 'Str');
+  has AssociationVersion => (is => 'ro', isa => 'Str');
   has InstanceId => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
 
@@ -38,6 +39,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 AssociationId => Str
 
 The association ID for which you want information.
+
+
+
+=head2 AssociationVersion => Str
+
+Specify the association version to retrieve. To view the latest
+version, either specify C<$LATEST> for this parameter, or omit this
+parameter. To view a list of all associations for an instance, use
+ListInstanceAssociations. To get a list of versions for a specific
+association, use ListAssociationVersions.
 
 
 

@@ -284,6 +284,16 @@ package Paws::SSM;
     my $call_object = $self->new_with_coercions('Paws::SSM::GetMaintenanceWindowExecutionTask', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetMaintenanceWindowExecutionTaskInvocation {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SSM::GetMaintenanceWindowExecutionTaskInvocation', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetMaintenanceWindowTask {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SSM::GetMaintenanceWindowTask', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetParameter {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SSM::GetParameter', @_);
@@ -319,6 +329,11 @@ package Paws::SSM;
     my $call_object = $self->new_with_coercions('Paws::SSM::ListAssociations', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListAssociationVersions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SSM::ListAssociationVersions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListCommandInvocations {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SSM::ListCommandInvocations', @_);
@@ -327,6 +342,16 @@ package Paws::SSM;
   sub ListCommands {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SSM::ListCommands', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListComplianceItems {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SSM::ListComplianceItems', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListComplianceSummaries {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SSM::ListComplianceSummaries', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListDocuments {
@@ -344,6 +369,11 @@ package Paws::SSM;
     my $call_object = $self->new_with_coercions('Paws::SSM::ListInventoryEntries', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListResourceComplianceSummaries {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SSM::ListResourceComplianceSummaries', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListResourceDataSync {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SSM::ListResourceDataSync', @_);
@@ -357,6 +387,11 @@ package Paws::SSM;
   sub ModifyDocumentPermission {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SSM::ModifyDocumentPermission', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub PutComplianceItems {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SSM::PutComplianceItems', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub PutInventory {
@@ -437,6 +472,16 @@ package Paws::SSM;
   sub UpdateMaintenanceWindow {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SSM::UpdateMaintenanceWindow', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateMaintenanceWindowTarget {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SSM::UpdateMaintenanceWindowTarget', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateMaintenanceWindowTask {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SSM::UpdateMaintenanceWindowTask', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateManagedInstanceRole {
@@ -613,7 +658,7 @@ package Paws::SSM;
   }
 
 
-  sub operations { qw/AddTagsToResource CancelCommand CreateActivation CreateAssociation CreateAssociationBatch CreateDocument CreateMaintenanceWindow CreatePatchBaseline CreateResourceDataSync DeleteActivation DeleteAssociation DeleteDocument DeleteMaintenanceWindow DeleteParameter DeleteParameters DeletePatchBaseline DeleteResourceDataSync DeregisterManagedInstance DeregisterPatchBaselineForPatchGroup DeregisterTargetFromMaintenanceWindow DeregisterTaskFromMaintenanceWindow DescribeActivations DescribeAssociation DescribeAutomationExecutions DescribeAvailablePatches DescribeDocument DescribeDocumentPermission DescribeEffectiveInstanceAssociations DescribeEffectivePatchesForPatchBaseline DescribeInstanceAssociationsStatus DescribeInstanceInformation DescribeInstancePatches DescribeInstancePatchStates DescribeInstancePatchStatesForPatchGroup DescribeMaintenanceWindowExecutions DescribeMaintenanceWindowExecutionTaskInvocations DescribeMaintenanceWindowExecutionTasks DescribeMaintenanceWindows DescribeMaintenanceWindowTargets DescribeMaintenanceWindowTasks DescribeParameters DescribePatchBaselines DescribePatchGroups DescribePatchGroupState GetAutomationExecution GetCommandInvocation GetDefaultPatchBaseline GetDeployablePatchSnapshotForInstance GetDocument GetInventory GetInventorySchema GetMaintenanceWindow GetMaintenanceWindowExecution GetMaintenanceWindowExecutionTask GetParameter GetParameterHistory GetParameters GetParametersByPath GetPatchBaseline GetPatchBaselineForPatchGroup ListAssociations ListCommandInvocations ListCommands ListDocuments ListDocumentVersions ListInventoryEntries ListResourceDataSync ListTagsForResource ModifyDocumentPermission PutInventory PutParameter RegisterDefaultPatchBaseline RegisterPatchBaselineForPatchGroup RegisterTargetWithMaintenanceWindow RegisterTaskWithMaintenanceWindow RemoveTagsFromResource SendAutomationSignal SendCommand StartAutomationExecution StopAutomationExecution UpdateAssociation UpdateAssociationStatus UpdateDocument UpdateDocumentDefaultVersion UpdateMaintenanceWindow UpdateManagedInstanceRole UpdatePatchBaseline / }
+  sub operations { qw/AddTagsToResource CancelCommand CreateActivation CreateAssociation CreateAssociationBatch CreateDocument CreateMaintenanceWindow CreatePatchBaseline CreateResourceDataSync DeleteActivation DeleteAssociation DeleteDocument DeleteMaintenanceWindow DeleteParameter DeleteParameters DeletePatchBaseline DeleteResourceDataSync DeregisterManagedInstance DeregisterPatchBaselineForPatchGroup DeregisterTargetFromMaintenanceWindow DeregisterTaskFromMaintenanceWindow DescribeActivations DescribeAssociation DescribeAutomationExecutions DescribeAvailablePatches DescribeDocument DescribeDocumentPermission DescribeEffectiveInstanceAssociations DescribeEffectivePatchesForPatchBaseline DescribeInstanceAssociationsStatus DescribeInstanceInformation DescribeInstancePatches DescribeInstancePatchStates DescribeInstancePatchStatesForPatchGroup DescribeMaintenanceWindowExecutions DescribeMaintenanceWindowExecutionTaskInvocations DescribeMaintenanceWindowExecutionTasks DescribeMaintenanceWindows DescribeMaintenanceWindowTargets DescribeMaintenanceWindowTasks DescribeParameters DescribePatchBaselines DescribePatchGroups DescribePatchGroupState GetAutomationExecution GetCommandInvocation GetDefaultPatchBaseline GetDeployablePatchSnapshotForInstance GetDocument GetInventory GetInventorySchema GetMaintenanceWindow GetMaintenanceWindowExecution GetMaintenanceWindowExecutionTask GetMaintenanceWindowExecutionTaskInvocation GetMaintenanceWindowTask GetParameter GetParameterHistory GetParameters GetParametersByPath GetPatchBaseline GetPatchBaselineForPatchGroup ListAssociations ListAssociationVersions ListCommandInvocations ListCommands ListComplianceItems ListComplianceSummaries ListDocuments ListDocumentVersions ListInventoryEntries ListResourceComplianceSummaries ListResourceDataSync ListTagsForResource ModifyDocumentPermission PutComplianceItems PutInventory PutParameter RegisterDefaultPatchBaseline RegisterPatchBaselineForPatchGroup RegisterTargetWithMaintenanceWindow RegisterTaskWithMaintenanceWindow RemoveTagsFromResource SendAutomationSignal SendCommand StartAutomationExecution StopAutomationExecution UpdateAssociation UpdateAssociationStatus UpdateDocument UpdateDocumentDefaultVersion UpdateMaintenanceWindow UpdateMaintenanceWindowTarget UpdateMaintenanceWindowTask UpdateManagedInstanceRole UpdatePatchBaseline / }
 
 1;
 
@@ -714,7 +759,7 @@ managed instance. For more information about activations, see Setting
 Up Systems Manager in Hybrid Environments.
 
 
-=head2 CreateAssociation(Name => Str, [DocumentVersion => Str, InstanceId => Str, OutputLocation => L<Paws::SSM::InstanceAssociationOutputLocation>, Parameters => L<Paws::SSM::Parameters>, ScheduleExpression => Str, Targets => ArrayRef[L<Paws::SSM::Target>]])
+=head2 CreateAssociation(Name => Str, [AssociationName => Str, DocumentVersion => Str, InstanceId => Str, OutputLocation => L<Paws::SSM::InstanceAssociationOutputLocation>, Parameters => L<Paws::SSM::Parameters>, ScheduleExpression => Str, Targets => ArrayRef[L<Paws::SSM::Target>]])
 
 Each argument is described in detail in: L<Paws::SSM::CreateAssociation>
 
@@ -762,7 +807,7 @@ After you create a document, you can use CreateAssociation to associate
 it with one or more running instances.
 
 
-=head2 CreateMaintenanceWindow(AllowUnassociatedTargets => Bool, Cutoff => Int, Duration => Int, Name => Str, Schedule => Str, [ClientToken => Str])
+=head2 CreateMaintenanceWindow(AllowUnassociatedTargets => Bool, Cutoff => Int, Duration => Int, Name => Str, Schedule => Str, [ClientToken => Str, Description => Str])
 
 Each argument is described in detail in: L<Paws::SSM::CreateMaintenanceWindow>
 
@@ -913,7 +958,7 @@ Returns: a L<Paws::SSM::DeregisterPatchBaselineForPatchGroupResult> instance
   Removes a patch group from a patch baseline.
 
 
-=head2 DeregisterTargetFromMaintenanceWindow(WindowId => Str, WindowTargetId => Str)
+=head2 DeregisterTargetFromMaintenanceWindow(WindowId => Str, WindowTargetId => Str, [Safe => Bool])
 
 Each argument is described in detail in: L<Paws::SSM::DeregisterTargetFromMaintenanceWindow>
 
@@ -943,7 +988,7 @@ the instances in the activation, and the number of instances activated
 by this registration.
 
 
-=head2 DescribeAssociation([AssociationId => Str, InstanceId => Str, Name => Str])
+=head2 DescribeAssociation([AssociationId => Str, AssociationVersion => Str, InstanceId => Str, Name => Str])
 
 Each argument is described in detail in: L<Paws::SSM::DescribeAssociation>
 
@@ -1071,10 +1116,9 @@ Each argument is described in detail in: L<Paws::SSM::DescribeMaintenanceWindowE
 
 Returns: a L<Paws::SSM::DescribeMaintenanceWindowExecutionsResult> instance
 
-  Lists the executions of a Maintenance Window (meaning, information
-about when the Maintenance Window was scheduled to be active and
-information about tasks registered and run with the Maintenance
-Window).
+  Lists the executions of a Maintenance Window. This includes information
+about when the Maintenance Window was scheduled to be active, and
+information about tasks registered and run with the Maintenance Window.
 
 
 =head2 DescribeMaintenanceWindowExecutionTaskInvocations(TaskId => Str, WindowExecutionId => Str, [Filters => ArrayRef[L<Paws::SSM::MaintenanceWindowFilter>], MaxResults => Int, NextToken => Str])
@@ -1228,7 +1272,7 @@ Returns: a L<Paws::SSM::GetInventoryResult> instance
   Query inventory information.
 
 
-=head2 GetInventorySchema([MaxResults => Int, NextToken => Str, TypeName => Str])
+=head2 GetInventorySchema([MaxResults => Int, NextToken => Str, SubType => Bool, TypeName => Str])
 
 Each argument is described in detail in: L<Paws::SSM::GetInventorySchema>
 
@@ -1265,6 +1309,26 @@ Returns: a L<Paws::SSM::GetMaintenanceWindowExecutionTaskResult> instance
 
   Retrieves the details about a specific task executed as part of a
 Maintenance Window execution.
+
+
+=head2 GetMaintenanceWindowExecutionTaskInvocation(InvocationId => Str, TaskId => Str, WindowExecutionId => Str)
+
+Each argument is described in detail in: L<Paws::SSM::GetMaintenanceWindowExecutionTaskInvocation>
+
+Returns: a L<Paws::SSM::GetMaintenanceWindowExecutionTaskInvocationResult> instance
+
+  Retrieves a task invocation. A task invocation is a specific task
+executing on a specific target. Maintenance Windows report status for
+all invocations.
+
+
+=head2 GetMaintenanceWindowTask(WindowId => Str, WindowTaskId => Str)
+
+Each argument is described in detail in: L<Paws::SSM::GetMaintenanceWindowTask>
+
+Returns: a L<Paws::SSM::GetMaintenanceWindowTaskResult> instance
+
+  Lists the tasks in a Maintenance Window.
 
 
 =head2 GetParameter(Name => Str, [WithDecryption => Bool])
@@ -1342,6 +1406,15 @@ Returns: a L<Paws::SSM::ListAssociationsResult> instance
 instance.
 
 
+=head2 ListAssociationVersions(AssociationId => Str, [MaxResults => Int, NextToken => Str])
+
+Each argument is described in detail in: L<Paws::SSM::ListAssociationVersions>
+
+Returns: a L<Paws::SSM::ListAssociationVersionsResult> instance
+
+  Retrieves all versions of an association for a specific association ID.
+
+
 =head2 ListCommandInvocations([CommandId => Str, Details => Bool, Filters => ArrayRef[L<Paws::SSM::CommandFilter>], InstanceId => Str, MaxResults => Int, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::SSM::ListCommandInvocations>
@@ -1363,6 +1436,30 @@ Each argument is described in detail in: L<Paws::SSM::ListCommands>
 Returns: a L<Paws::SSM::ListCommandsResult> instance
 
   Lists the commands requested by users of the AWS account.
+
+
+=head2 ListComplianceItems([Filters => ArrayRef[L<Paws::SSM::ComplianceStringFilter>], MaxResults => Int, NextToken => Str, ResourceIds => ArrayRef[Str|Undef], ResourceTypes => ArrayRef[Str|Undef]])
+
+Each argument is described in detail in: L<Paws::SSM::ListComplianceItems>
+
+Returns: a L<Paws::SSM::ListComplianceItemsResult> instance
+
+  For a specified resource ID, this API action returns a list of
+compliance statuses for different resource types. Currently, you can
+only specify one resource ID per call. List results depend on the
+criteria specified in the filter.
+
+
+=head2 ListComplianceSummaries([Filters => ArrayRef[L<Paws::SSM::ComplianceStringFilter>], MaxResults => Int, NextToken => Str])
+
+Each argument is described in detail in: L<Paws::SSM::ListComplianceSummaries>
+
+Returns: a L<Paws::SSM::ListComplianceSummariesResult> instance
+
+  Returns a summary count of compliant and non-compliant resources for a
+compliance type. For example, this call can return State Manager
+associations, patches, or custom compliance types according to the
+filter criteria that you specify.
 
 
 =head2 ListDocuments([DocumentFilterList => ArrayRef[L<Paws::SSM::DocumentFilter>], MaxResults => Int, NextToken => Str])
@@ -1390,6 +1487,18 @@ Each argument is described in detail in: L<Paws::SSM::ListInventoryEntries>
 Returns: a L<Paws::SSM::ListInventoryEntriesResult> instance
 
   A list of inventory items returned by the request.
+
+
+=head2 ListResourceComplianceSummaries([Filters => ArrayRef[L<Paws::SSM::ComplianceStringFilter>], MaxResults => Int, NextToken => Str])
+
+Each argument is described in detail in: L<Paws::SSM::ListResourceComplianceSummaries>
+
+Returns: a L<Paws::SSM::ListResourceComplianceSummariesResult> instance
+
+  Returns a resource-level summary count. The summary includes
+information about compliant and non-compliant statuses and detailed
+compliance-item severity counts, according to the filter criteria you
+specify.
 
 
 =head2 ListResourceDataSync([MaxResults => Int, NextToken => Str])
@@ -1433,6 +1542,19 @@ people who can use the document. If you share a document publicly, you
 must specify I<All> as the account ID.
 
 
+=head2 PutComplianceItems(ComplianceType => Str, ExecutionSummary => L<Paws::SSM::ComplianceExecutionSummary>, Items => ArrayRef[L<Paws::SSM::ComplianceItemEntry>], ResourceId => Str, ResourceType => Str, [ItemContentHash => Str])
+
+Each argument is described in detail in: L<Paws::SSM::PutComplianceItems>
+
+Returns: a L<Paws::SSM::PutComplianceItemsResult> instance
+
+  Registers a compliance type and other compliance details on a
+designated resource. This action lets you register custom compliance
+details with a resource. This call overwrites existing compliance
+information on the resource, so you must provide a full list of
+compliance items each time that you send the request.
+
+
 =head2 PutInventory(InstanceId => Str, Items => ArrayRef[L<Paws::SSM::InventoryItem>])
 
 Each argument is described in detail in: L<Paws::SSM::PutInventory>
@@ -1471,7 +1593,7 @@ Returns: a L<Paws::SSM::RegisterPatchBaselineForPatchGroupResult> instance
   Registers a patch baseline for a patch group.
 
 
-=head2 RegisterTargetWithMaintenanceWindow(ResourceType => Str, Targets => ArrayRef[L<Paws::SSM::Target>], WindowId => Str, [ClientToken => Str, OwnerInformation => Str])
+=head2 RegisterTargetWithMaintenanceWindow(ResourceType => Str, Targets => ArrayRef[L<Paws::SSM::Target>], WindowId => Str, [ClientToken => Str, Description => Str, Name => Str, OwnerInformation => Str])
 
 Each argument is described in detail in: L<Paws::SSM::RegisterTargetWithMaintenanceWindow>
 
@@ -1480,7 +1602,7 @@ Returns: a L<Paws::SSM::RegisterTargetWithMaintenanceWindowResult> instance
   Registers a target with a Maintenance Window.
 
 
-=head2 RegisterTaskWithMaintenanceWindow(MaxConcurrency => Str, MaxErrors => Str, ServiceRoleArn => Str, Targets => ArrayRef[L<Paws::SSM::Target>], TaskArn => Str, TaskType => Str, WindowId => Str, [ClientToken => Str, LoggingInfo => L<Paws::SSM::LoggingInfo>, Priority => Int, TaskParameters => L<Paws::SSM::MaintenanceWindowTaskParameters>])
+=head2 RegisterTaskWithMaintenanceWindow(MaxConcurrency => Str, MaxErrors => Str, ServiceRoleArn => Str, Targets => ArrayRef[L<Paws::SSM::Target>], TaskArn => Str, TaskType => Str, WindowId => Str, [ClientToken => Str, Description => Str, LoggingInfo => L<Paws::SSM::LoggingInfo>, Name => Str, Priority => Int, TaskInvocationParameters => L<Paws::SSM::MaintenanceWindowTaskInvocationParameters>, TaskParameters => L<Paws::SSM::MaintenanceWindowTaskParameters>])
 
 Each argument is described in detail in: L<Paws::SSM::RegisterTaskWithMaintenanceWindow>
 
@@ -1535,14 +1657,15 @@ Returns: a L<Paws::SSM::StopAutomationExecutionResult> instance
   Stop an Automation that is currently executing.
 
 
-=head2 UpdateAssociation(AssociationId => Str, [DocumentVersion => Str, Name => Str, OutputLocation => L<Paws::SSM::InstanceAssociationOutputLocation>, Parameters => L<Paws::SSM::Parameters>, ScheduleExpression => Str, Targets => ArrayRef[L<Paws::SSM::Target>]])
+=head2 UpdateAssociation(AssociationId => Str, [AssociationName => Str, AssociationVersion => Str, DocumentVersion => Str, Name => Str, OutputLocation => L<Paws::SSM::InstanceAssociationOutputLocation>, Parameters => L<Paws::SSM::Parameters>, ScheduleExpression => Str, Targets => ArrayRef[L<Paws::SSM::Target>]])
 
 Each argument is described in detail in: L<Paws::SSM::UpdateAssociation>
 
 Returns: a L<Paws::SSM::UpdateAssociationResult> instance
 
-  Updates an association. You can only update the document version,
-schedule, parameters, and Amazon S3 output of an association.
+  Updates an association. You can update the association name and
+version, the document version, schedule, parameters, and Amazon S3
+output.
 
 
 =head2 UpdateAssociationStatus(AssociationStatus => L<Paws::SSM::AssociationStatus>, InstanceId => Str, Name => Str)
@@ -1573,7 +1696,7 @@ Returns: a L<Paws::SSM::UpdateDocumentDefaultVersionResult> instance
   Set the default version of a document.
 
 
-=head2 UpdateMaintenanceWindow(WindowId => Str, [AllowUnassociatedTargets => Bool, Cutoff => Int, Duration => Int, Enabled => Bool, Name => Str, Schedule => Str])
+=head2 UpdateMaintenanceWindow(WindowId => Str, [AllowUnassociatedTargets => Bool, Cutoff => Int, Description => Str, Duration => Int, Enabled => Bool, Name => Str, Replace => Bool, Schedule => Str])
 
 Each argument is described in detail in: L<Paws::SSM::UpdateMaintenanceWindow>
 
@@ -1581,6 +1704,59 @@ Returns: a L<Paws::SSM::UpdateMaintenanceWindowResult> instance
 
   Updates an existing Maintenance Window. Only specified parameters are
 modified.
+
+
+=head2 UpdateMaintenanceWindowTarget(WindowId => Str, WindowTargetId => Str, [Description => Str, Name => Str, OwnerInformation => Str, Replace => Bool, Targets => ArrayRef[L<Paws::SSM::Target>]])
+
+Each argument is described in detail in: L<Paws::SSM::UpdateMaintenanceWindowTarget>
+
+Returns: a L<Paws::SSM::UpdateMaintenanceWindowTargetResult> instance
+
+  Modifies the target of an existing Maintenance Window. You can't change
+the target type, but you can change the following:
+
+The target from being an ID target to a Tag target, or a Tag target to
+an ID target.
+
+IDs for an ID target.
+
+Tags for a Tag target.
+
+Owner.
+
+Name.
+
+Description.
+
+If a parameter is null, then the corresponding field is not modified.
+
+
+=head2 UpdateMaintenanceWindowTask(WindowId => Str, WindowTaskId => Str, [Description => Str, LoggingInfo => L<Paws::SSM::LoggingInfo>, MaxConcurrency => Str, MaxErrors => Str, Name => Str, Priority => Int, Replace => Bool, ServiceRoleArn => Str, Targets => ArrayRef[L<Paws::SSM::Target>], TaskArn => Str, TaskInvocationParameters => L<Paws::SSM::MaintenanceWindowTaskInvocationParameters>, TaskParameters => L<Paws::SSM::MaintenanceWindowTaskParameters>])
+
+Each argument is described in detail in: L<Paws::SSM::UpdateMaintenanceWindowTask>
+
+Returns: a L<Paws::SSM::UpdateMaintenanceWindowTaskResult> instance
+
+  Modifies a task assigned to a Maintenance Window. You can't change the
+task type, but you can change the following values:
+
+Task ARN. For example, you can change a RUN_COMMAND task from
+AWS-RunPowerShellScript to AWS-RunShellScript.
+
+Service role ARN.
+
+Task parameters.
+
+Task priority.
+
+Task MaxConcurrency and MaxErrors.
+
+Log location.
+
+If a parameter is null, then the corresponding field is not modified.
+Also, if you set Replace to true, then all fields required by the
+RegisterTaskWithMaintenanceWindow action are required for this request.
+Optional fields that aren't specified are set to null.
 
 
 =head2 UpdateManagedInstanceRole(IamRole => Str, InstanceId => Str)

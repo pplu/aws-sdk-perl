@@ -1,6 +1,7 @@
 package Paws::SSM::InstanceAssociation;
   use Moose;
   has AssociationId => (is => 'ro', isa => 'Str');
+  has AssociationVersion => (is => 'ro', isa => 'Str');
   has Content => (is => 'ro', isa => 'Str');
   has InstanceId => (is => 'ro', isa => 'Str');
 1;
@@ -41,6 +42,11 @@ One or more association documents on the instance.
 =head2 AssociationId => Str
 
   The association ID.
+
+
+=head2 AssociationVersion => Str
+
+  Version information for the association on the instance.
 
 
 =head2 Content => Str

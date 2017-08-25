@@ -3,6 +3,7 @@ package Paws::SSM::GetInventorySchema;
   use Moose;
   has MaxResults => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
+  has SubType => (is => 'ro', isa => 'Bool');
   has TypeName => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
@@ -47,6 +48,12 @@ next set of results.
 
 The token for the next set of items to return. (You received this token
 from a previous call.)
+
+
+
+=head2 SubType => Bool
+
+Returns the sub-type schema for a specified inventory type.
 
 
 
