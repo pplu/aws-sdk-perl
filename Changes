@@ -25,6 +25,7 @@
  - API update: StorageGateway
  - API update: Batch
  - API update: EFS
+ - API update: RDS
 
 0.34 07 Jul 2017
  - New Credential provider: Paws::Credential::ECSContainerProfile (gadgetjunkie)
