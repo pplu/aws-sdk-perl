@@ -86,25 +86,146 @@ space that you use in an Aurora cluster volume.
 
 B<MySQL>
 
-Constraints: Must be an integer from 5 to 6144.
+Constraints to the amount of storage for each storage type are the
+following:
+
+=over
+
+=item *
+
+General Purpose (SSD) storage (gp2): Must be an integer from 5 to 6144.
+
+=item *
+
+Provisioned IOPS storage (io1): Must be an integer from 100 to 6144.
+
+=item *
+
+Magnetic storage (standard): Must be an integer from 5 to 3072.
+
+=back
 
 B<MariaDB>
 
-Constraints: Must be an integer from 5 to 6144.
+Constraints to the amount of storage for each storage type are the
+following:
+
+=over
+
+=item *
+
+General Purpose (SSD) storage (gp2): Must be an integer from 5 to 6144.
+
+=item *
+
+Provisioned IOPS storage (io1): Must be an integer from 100 to 6144.
+
+=item *
+
+Magnetic storage (standard): Must be an integer from 5 to 3072.
+
+=back
 
 B<PostgreSQL>
 
-Constraints: Must be an integer from 5 to 6144.
+Constraints to the amount of storage for each storage type are the
+following:
+
+=over
+
+=item *
+
+General Purpose (SSD) storage (gp2): Must be an integer from 5 to 6144.
+
+=item *
+
+Provisioned IOPS storage (io1): Must be an integer from 100 to 6144.
+
+=item *
+
+Magnetic storage (standard): Must be an integer from 5 to 3072.
+
+=back
 
 B<Oracle>
 
-Constraints: Must be an integer from 10 to 6144.
+Constraints to the amount of storage for each storage type are the
+following:
+
+=over
+
+=item *
+
+General Purpose (SSD) storage (gp2): Must be an integer from 10 to
+6144.
+
+=item *
+
+Provisioned IOPS storage (io1): Must be an integer from 100 to 6144.
+
+=item *
+
+Magnetic storage (standard): Must be an integer from 10 to 3072.
+
+=back
 
 B<SQL Server>
 
-Constraints: Must be an integer from 200 to 4096 (Standard Edition and
-Enterprise Edition) or from 20 to 4096 (Express Edition and Web
-Edition)
+Constraints to the amount of storage for each storage type are the
+following:
+
+=over
+
+=item *
+
+General Purpose (SSD) storage (gp2):
+
+=over
+
+=item *
+
+Enterprise and Standard editions: Must be an integer from 200 to 16384.
+
+=item *
+
+Web and Express editions: Must be an integer from 20 to 16384.
+
+=back
+
+=item *
+
+Provisioned IOPS storage (io1):
+
+=over
+
+=item *
+
+Enterprise and Standard editions: Must be an integer from 200 to 16384.
+
+=item *
+
+Web and Express editions: Must be an integer from 100 to 16384.
+
+=back
+
+=item *
+
+Magnetic storage (standard):
+
+=over
+
+=item *
+
+Enterprise and Standard editions: Must be an integer from 200 to 1024.
+
+=item *
+
+Web and Express editions: Must be an integer from 20 to 1024.
+
+=back
+
+=back
+
 
 
 
@@ -521,6 +642,10 @@ B<MariaDB>
 
 =item *
 
+C<10.1.23> (supported in all AWS regions)
+
+=item *
+
 C<10.1.19> (supported in all AWS regions)
 
 =item *
@@ -530,6 +655,10 @@ C<10.1.14> (supported in all regions except us-east-2)
 =back
 
 =over
+
+=item *
+
+C<10.0.31> (supported in all AWS regions)
 
 =item *
 

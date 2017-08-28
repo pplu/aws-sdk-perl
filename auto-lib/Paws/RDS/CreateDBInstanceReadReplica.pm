@@ -365,7 +365,8 @@ source is running MySQL 5.6.
 =item *
 
 Can specify a DB instance that is a PostgreSQL DB instance only if the
-source is running PostgreSQL 9.3.5 or later.
+source is running PostgreSQL 9.3.5 or later (9.4.7 and higher for cross
+region replication).
 
 =item *
 
