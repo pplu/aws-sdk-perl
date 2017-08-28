@@ -10,6 +10,7 @@ package Paws::CloudFormation::CreateChangeSet;
   has Parameters => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::Parameter]');
   has ResourceTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has RoleARN => (is => 'ro', isa => 'Str');
+  has RollbackConfiguration => (is => 'ro', isa => 'Paws::CloudFormation::RollbackConfiguration');
   has StackName => (is => 'ro', isa => 'Str', required => 1);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::Tag]');
   has TemplateBody => (is => 'ro', isa => 'Str');
@@ -164,6 +165,14 @@ If you don't specify a value, AWS CloudFormation uses the role that was
 previously associated with the stack. If no role is available, AWS
 CloudFormation uses a temporary session that is generated from your
 user credentials.
+
+
+
+=head2 RollbackConfiguration => L<Paws::CloudFormation::RollbackConfiguration>
+
+The rollback triggers for AWS CloudFormation to monitor during stack
+creation and updating operations, and for the specified monitoring
+period afterwards.
 
 
 

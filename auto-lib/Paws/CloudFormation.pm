@@ -400,326 +400,6 @@ Amazon CloudFormation makes use of other AWS products. If you need
 additional technical information about a specific AWS product, you can
 find the product's technical documentation at docs.aws.amazon.com.
 
-I<APIs for stacks>
-
-When you use AWS CloudFormation, you manage related resources as a
-single unit called a stack. You create, update, and delete a collection
-of resources by creating, updating, and deleting stacks. All the
-resources in a stack are defined by the stack's AWS CloudFormation
-template.
-
-Actions
-
-=over
-
-=item *
-
-CancelUpdateStack
-
-=item *
-
-ContinueUpdateRollback
-
-=item *
-
-CreateStack
-
-=item *
-
-DeleteStack
-
-=item *
-
-DescribeStackEvents
-
-=item *
-
-DescribeStackResource
-
-=item *
-
-DescribeStackResources
-
-=item *
-
-DescribeStacks
-
-=item *
-
-EstimateTemplateCost
-
-=item *
-
-GetStackPolicy
-
-=item *
-
-GetTemplate
-
-=item *
-
-GetTemplateSummary
-
-=item *
-
-ListExports
-
-=item *
-
-ListImports
-
-=item *
-
-ListStackResources
-
-=item *
-
-ListStacks
-
-=item *
-
-SetStackPolicy
-
-=item *
-
-UpdateStack
-
-=item *
-
-ValidateTemplate
-
-=back
-
-Data Types
-
-=over
-
-=item *
-
-Export
-
-=item *
-
-Parameter
-
-=item *
-
-ParameterConstraints
-
-=item *
-
-ParameterDeclaration
-
-=item *
-
-Stack
-
-=item *
-
-StackEvent
-
-=item *
-
-StackResource
-
-=item *
-
-StackResourceDetail
-
-=item *
-
-StackResourceSummary
-
-=item *
-
-StackSummary
-
-=item *
-
-Tag
-
-=item *
-
-TemplateParameter
-
-=back
-
-I<APIs for change sets>
-
-If you need to make changes to the running resources in a stack, you
-update the stack. Before making changes to your resources, you can
-generate a change set, which is summary of your proposed changes.
-Change sets allow you to see how your changes might impact your running
-resources, especially for critical resources, before implementing them.
-
-Actions
-
-=over
-
-=item *
-
-CreateChangeSet
-
-=item *
-
-DeleteChangeSet
-
-=item *
-
-DescribeChangeSet
-
-=item *
-
-ExecuteChangeSet
-
-=item *
-
-ListChangeSets
-
-=back
-
-Data Types
-
-=over
-
-=item *
-
-Change
-
-=item *
-
-ChangeSetSummary
-
-=item *
-
-ResourceChange
-
-=item *
-
-ResourceChangeDetail
-
-=item *
-
-ResourceTargetDefinition
-
-=back
-
-I<APIs for stack sets>
-
-AWS CloudFormation StackSets lets you create a collection, or stack
-set, of stacks that can automatically and safely provision a common set
-of AWS resources across multiple AWS accounts and multiple AWS regions
-from a single AWS CloudFormation template. When you create a stack set,
-AWS CloudFormation provisions a stack in each of the specified accounts
-and regions by using the supplied AWS CloudFormation template and
-parameters. Stack sets let you manage a common set of AWS resources in
-a selection of accounts and regions in a single operation.
-
-Actions
-
-=over
-
-=item *
-
-CreateStackInstances
-
-=item *
-
-CreateStackSet
-
-=item *
-
-DeleteStackInstances
-
-=item *
-
-DeleteStackSet
-
-=item *
-
-DescribeStackInstance
-
-=item *
-
-DescribeStackSet
-
-=item *
-
-DescribeStackSetOperation
-
-=item *
-
-ListStackInstances
-
-=item *
-
-ListStackSetOperationResults
-
-=item *
-
-ListStackSetOperations
-
-=item *
-
-ListStackSets
-
-=item *
-
-StopStackSetOperation
-
-=item *
-
-UpdateStackSet
-
-=back
-
-Data Types
-
-=over
-
-=item *
-
-Parameter
-
-=item *
-
-StackInstance
-
-=item *
-
-StackInstanceSummary
-
-=item *
-
-StackSet
-
-=item *
-
-StackSetOperation
-
-=item *
-
-StackSetOperationPreferences
-
-=item *
-
-StackSetOperationResultSummary
-
-=item *
-
-StackSetOperationSummary
-
-=item *
-
-StackSetSummary
-
-=item *
-
-Tag
-
-=back
-
-
 =head1 METHODS
 
 =head2 CancelUpdateStack(StackName => Str, [ClientRequestToken => Str])
@@ -757,7 +437,7 @@ assumes that the database instance still exists and attempts to roll
 back to it, causing the update rollback to fail.
 
 
-=head2 CreateChangeSet(ChangeSetName => Str, StackName => Str, [Capabilities => ArrayRef[Str|Undef], ChangeSetType => Str, ClientToken => Str, Description => Str, NotificationARNs => ArrayRef[Str|Undef], Parameters => ArrayRef[L<Paws::CloudFormation::Parameter>], ResourceTypes => ArrayRef[Str|Undef], RoleARN => Str, Tags => ArrayRef[L<Paws::CloudFormation::Tag>], TemplateBody => Str, TemplateURL => Str, UsePreviousTemplate => Bool])
+=head2 CreateChangeSet(ChangeSetName => Str, StackName => Str, [Capabilities => ArrayRef[Str|Undef], ChangeSetType => Str, ClientToken => Str, Description => Str, NotificationARNs => ArrayRef[Str|Undef], Parameters => ArrayRef[L<Paws::CloudFormation::Parameter>], ResourceTypes => ArrayRef[Str|Undef], RoleARN => Str, RollbackConfiguration => L<Paws::CloudFormation::RollbackConfiguration>, Tags => ArrayRef[L<Paws::CloudFormation::Tag>], TemplateBody => Str, TemplateURL => Str, UsePreviousTemplate => Bool])
 
 Each argument is described in detail in: L<Paws::CloudFormation::CreateChangeSet>
 
@@ -787,7 +467,7 @@ execute the change set by using the ExecuteChangeSet action. AWS
 CloudFormation doesn't make changes until you execute the change set.
 
 
-=head2 CreateStack(StackName => Str, [Capabilities => ArrayRef[Str|Undef], ClientRequestToken => Str, DisableRollback => Bool, NotificationARNs => ArrayRef[Str|Undef], OnFailure => Str, Parameters => ArrayRef[L<Paws::CloudFormation::Parameter>], ResourceTypes => ArrayRef[Str|Undef], RoleARN => Str, StackPolicyBody => Str, StackPolicyURL => Str, Tags => ArrayRef[L<Paws::CloudFormation::Tag>], TemplateBody => Str, TemplateURL => Str, TimeoutInMinutes => Int])
+=head2 CreateStack(StackName => Str, [Capabilities => ArrayRef[Str|Undef], ClientRequestToken => Str, DisableRollback => Bool, NotificationARNs => ArrayRef[Str|Undef], OnFailure => Str, Parameters => ArrayRef[L<Paws::CloudFormation::Parameter>], ResourceTypes => ArrayRef[Str|Undef], RoleARN => Str, RollbackConfiguration => L<Paws::CloudFormation::RollbackConfiguration>, StackPolicyBody => Str, StackPolicyURL => Str, Tags => ArrayRef[L<Paws::CloudFormation::Tag>], TemplateBody => Str, TemplateURL => Str, TimeoutInMinutes => Int])
 
 Each argument is described in detail in: L<Paws::CloudFormation::CreateStack>
 
@@ -1049,11 +729,11 @@ Returns: a L<Paws::CloudFormation::GetTemplateSummaryOutput> instance
   Returns information about a new or existing template. The
 C<GetTemplateSummary> action is useful for viewing parameter
 information, such as default parameter values and parameter types,
-before you create or update a stack.
+before you create or update a stack or stack set.
 
 You can use the C<GetTemplateSummary> action when you submit a
-template, or you can get template information for a running or deleted
-stack.
+template, or you can get template information for a stack set, or a
+running or deleted stack.
 
 For deleted stacks, C<GetTemplateSummary> returns the template
 information for up to 90 days after the stack has been deleted. If the
@@ -1199,7 +879,7 @@ Returns: a L<Paws::CloudFormation::StopStackSetOperationOutput> instance
 instances.
 
 
-=head2 UpdateStack(StackName => Str, [Capabilities => ArrayRef[Str|Undef], ClientRequestToken => Str, NotificationARNs => ArrayRef[Str|Undef], Parameters => ArrayRef[L<Paws::CloudFormation::Parameter>], ResourceTypes => ArrayRef[Str|Undef], RoleARN => Str, StackPolicyBody => Str, StackPolicyDuringUpdateBody => Str, StackPolicyDuringUpdateURL => Str, StackPolicyURL => Str, Tags => ArrayRef[L<Paws::CloudFormation::Tag>], TemplateBody => Str, TemplateURL => Str, UsePreviousTemplate => Bool])
+=head2 UpdateStack(StackName => Str, [Capabilities => ArrayRef[Str|Undef], ClientRequestToken => Str, NotificationARNs => ArrayRef[Str|Undef], Parameters => ArrayRef[L<Paws::CloudFormation::Parameter>], ResourceTypes => ArrayRef[Str|Undef], RoleARN => Str, RollbackConfiguration => L<Paws::CloudFormation::RollbackConfiguration>, StackPolicyBody => Str, StackPolicyDuringUpdateBody => Str, StackPolicyDuringUpdateURL => Str, StackPolicyURL => Str, Tags => ArrayRef[L<Paws::CloudFormation::Tag>], TemplateBody => Str, TemplateURL => Str, UsePreviousTemplate => Bool])
 
 Each argument is described in detail in: L<Paws::CloudFormation::UpdateStack>
 

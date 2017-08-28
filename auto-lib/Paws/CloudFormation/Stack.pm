@@ -10,6 +10,7 @@ package Paws::CloudFormation::Stack;
   has Outputs => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::Output]');
   has Parameters => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::Parameter]');
   has RoleARN => (is => 'ro', isa => 'Str');
+  has RollbackConfiguration => (is => 'ro', isa => 'Paws::CloudFormation::RollbackConfiguration');
   has StackId => (is => 'ro', isa => 'Str');
   has StackName => (is => 'ro', isa => 'Str', required => 1);
   has StackStatus => (is => 'ro', isa => 'Str', required => 1);
@@ -116,6 +117,13 @@ if the stack has been updated at least once.
 (IAM) role that is associated with the stack. During a stack operation,
 AWS CloudFormation uses this role's credentials to make calls on your
 behalf.
+
+
+=head2 RollbackConfiguration => L<Paws::CloudFormation::RollbackConfiguration>
+
+  The rollback triggers for AWS CloudFormation to monitor during stack
+creation and updating operations, and for the specified monitoring
+period afterwards.
 
 
 =head2 StackId => Str

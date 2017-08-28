@@ -81,6 +81,8 @@ Removes the stack instances from the specified stack set, but doesn't
 delete the stacks. You can't reassociate a retained stack or add an
 existing, saved stack to a new stack set.
 
+For more information, see Stack set operation options.
+
 
 
 =head2 B<REQUIRED> StackSetName => Str

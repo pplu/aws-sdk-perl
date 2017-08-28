@@ -38,6 +38,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFormat
 The user-specified preferences for how AWS CloudFormation performs a
 stack set operation.
 
+For more information on maximum concurrent accounts and failure
+tolerance, see Stack set operation options.
+
 =head1 ATTRIBUTES
 
 

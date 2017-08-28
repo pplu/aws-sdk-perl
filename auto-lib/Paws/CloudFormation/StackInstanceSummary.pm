@@ -73,8 +73,9 @@ its associated stack set.
 
 C<INOPERABLE>: A C<DeleteStackInstances> operation has failed and left
 the stack in an unstable state. Stacks in this state are excluded from
-further C<UpdateStackSet> and C<DeleteStackInstances> operations. You
-might need to clean up the stack manually.
+further C<UpdateStackSet> operations. You might need to perform a
+C<DeleteStackInstances> operation, with C<RetainStacks> set to C<true>,
+to delete the stack instance, and then delete the stack manually.
 
 =item *
 
