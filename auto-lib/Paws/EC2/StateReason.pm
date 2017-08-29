@@ -80,6 +80,11 @@ the C<shutdown -h> command from the instance.
 
 =item *
 
+C<Client.InstanceTerminated>: The instance was terminated or rebooted
+during AMI creation.
+
+=item *
+
 C<Client.UserInitiatedShutdown>: The instance was shut down using the
 Amazon EC2 API.
 

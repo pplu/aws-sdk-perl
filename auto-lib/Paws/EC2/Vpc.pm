@@ -1,6 +1,7 @@
 package Paws::EC2::Vpc;
   use Moose;
   has CidrBlock => (is => 'ro', isa => 'Str', request_name => 'cidrBlock', traits => ['NameInRequest']);
+  has CidrBlockAssociationSet => (is => 'ro', isa => 'ArrayRef[Paws::EC2::VpcCidrBlockAssociation]', request_name => 'cidrBlockAssociationSet', traits => ['NameInRequest']);
   has DhcpOptionsId => (is => 'ro', isa => 'Str', request_name => 'dhcpOptionsId', traits => ['NameInRequest']);
   has InstanceTenancy => (is => 'ro', isa => 'Str', request_name => 'instanceTenancy', traits => ['NameInRequest']);
   has Ipv6CidrBlockAssociationSet => (is => 'ro', isa => 'ArrayRef[Paws::EC2::VpcIpv6CidrBlockAssociation]', request_name => 'ipv6CidrBlockAssociationSet', traits => ['NameInRequest']);
@@ -45,7 +46,12 @@ This class has no description
 
 =head2 CidrBlock => Str
 
-  The IPv4 CIDR block for the VPC.
+  The primary IPv4 CIDR block for the VPC.
+
+
+=head2 CidrBlockAssociationSet => ArrayRef[L<Paws::EC2::VpcCidrBlockAssociation>]
+
+  Information about the IPv4 CIDR blocks associated with the VPC.
 
 
 =head2 DhcpOptionsId => Str

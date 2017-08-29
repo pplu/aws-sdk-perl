@@ -1660,15 +1660,19 @@ single IPv6 CIDR block with your subnet. An IPv6 CIDR block must have a
 prefix length of /64.
 
 
-=head2 AssociateVpcCidrBlock(VpcId => Str, [AmazonProvidedIpv6CidrBlock => Bool])
+=head2 AssociateVpcCidrBlock(VpcId => Str, [AmazonProvidedIpv6CidrBlock => Bool, CidrBlock => Str])
 
 Each argument is described in detail in: L<Paws::EC2::AssociateVpcCidrBlock>
 
 Returns: a L<Paws::EC2::AssociateVpcCidrBlockResult> instance
 
-  Associates a CIDR block with your VPC. You can only associate a single
-Amazon-provided IPv6 CIDR block with your VPC. The IPv6 CIDR block size
-is fixed at /56.
+  Associates a CIDR block with your VPC. You can associate a secondary
+IPv4 CIDR block, or you can associate an Amazon-provided IPv6 CIDR
+block. The IPv6 CIDR block size is fixed at /56.
+
+For more information about associating CIDR blocks with your VPC and
+applicable restrictions, see VPC and Subnet Sizing in the I<Amazon
+Virtual Private Cloud User Guide>.
 
 
 =head2 AttachClassicLinkVpc(Groups => ArrayRef[Str|Undef], InstanceId => Str, VpcId => Str, [DryRun => Bool])
@@ -2505,15 +2509,14 @@ Returns: a L<Paws::EC2::CreateSubnetResult> instance
 
   Creates a subnet in an existing VPC.
 
-When you create each subnet, you provide the VPC ID and the CIDR block
-you want for the subnet. After you create a subnet, you can't change
-its CIDR block. The subnet's IPv4 CIDR block can be the same as the
-VPC's IPv4 CIDR block (assuming you want only a single subnet in the
-VPC), or a subset of the VPC's IPv4 CIDR block. If you create more than
-one subnet in a VPC, the subnets' CIDR blocks must not overlap. The
-smallest IPv4 subnet (and VPC) you can create uses a /28 netmask (16
-IPv4 addresses), and the largest uses a /16 netmask (65,536 IPv4
-addresses).
+When you create each subnet, you provide the VPC ID and the IPv4 CIDR
+block you want for the subnet. After you create a subnet, you can't
+change its CIDR block. The size of the subnet's IPv4 CIDR block can be
+the same as a VPC's IPv4 CIDR block, or a subset of a VPC's IPv4 CIDR
+block. If you create more than one subnet in a VPC, the subnets' CIDR
+blocks must not overlap. The smallest IPv4 subnet (and VPC) you can
+create uses a /28 netmask (16 IPv4 addresses), and the largest uses a
+/16 netmask (65,536 IPv4 addresses).
 
 If you've associated an IPv6 CIDR block with your VPC, you can create a
 subnet with an IPv6 CIDR block that uses a /64 prefix length.
@@ -2915,10 +2918,10 @@ Each argument is described in detail in: L<Paws::EC2::DeleteTags>
 Returns: nothing
 
   Deletes the specified set of tags from the specified set of resources.
-This call is designed to follow a C<DescribeTags> request.
 
-For more information about tags, see Tagging Your Resources in the
-I<Amazon Elastic Compute Cloud User Guide>.
+To list the current tags, use DescribeTags. For more information about
+tags, see Tagging Your Resources in the I<Amazon Elastic Compute Cloud
+User Guide>.
 
 
 =head2 DeleteVolume(VolumeId => Str, [DryRun => Bool])
@@ -4277,10 +4280,14 @@ Each argument is described in detail in: L<Paws::EC2::DisassociateVpcCidrBlock>
 
 Returns: a L<Paws::EC2::DisassociateVpcCidrBlockResult> instance
 
-  Disassociates a CIDR block from a VPC. Currently, you can disassociate
-an IPv6 CIDR block only. You must detach or delete all gateways and
+  Disassociates a CIDR block from a VPC. To disassociate the CIDR block,
+you must specify its association ID. You can get the association ID by
+using DescribeVpcs. You must detach or delete all gateways and
 resources that are associated with the CIDR block before you can
 disassociate it.
+
+You cannot disassociate the CIDR block with which you originally
+created the VPC (the primary CIDR block).
 
 
 =head2 EnableVgwRoutePropagation(GatewayId => Str, RouteTableId => Str)
