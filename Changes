@@ -26,6 +26,10 @@
  - API update: Batch
  - API update: EFS
  - API update: RDS
+ - API update: ELBv2
+ - API update: LexModels
+ - API update: CodeBuild
+ - API update: ApplicationAutoScaling
 
 0.34 07 Jul 2017
  - New Credential provider: Paws::Credential::ECSContainerProfile (gadgetjunkie)
