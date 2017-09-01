@@ -426,7 +426,7 @@ ModifyRule. To set the priorities of your rules, use SetRulePriorities.
 To delete a rule, use DeleteRule.
 
 
-=head2 CreateTargetGroup(Name => Str, Port => Int, Protocol => Str, VpcId => Str, [HealthCheckIntervalSeconds => Int, HealthCheckPath => Str, HealthCheckPort => Str, HealthCheckProtocol => Str, HealthCheckTimeoutSeconds => Int, HealthyThresholdCount => Int, Matcher => L<Paws::ELBv2::Matcher>, UnhealthyThresholdCount => Int])
+=head2 CreateTargetGroup(Name => Str, Port => Int, Protocol => Str, VpcId => Str, [HealthCheckIntervalSeconds => Int, HealthCheckPath => Str, HealthCheckPort => Str, HealthCheckProtocol => Str, HealthCheckTimeoutSeconds => Int, HealthyThresholdCount => Int, Matcher => L<Paws::ELBv2::Matcher>, TargetType => Str, UnhealthyThresholdCount => Int])
 
 Each argument is described in detail in: L<Paws::ELBv2::CreateTargetGroup>
 
