@@ -790,9 +790,15 @@ master account.
 For more information about creating accounts, see Creating an AWS
 Account in Your Organization in the I<AWS Organizations User Guide>.
 
-You cannot remove accounts that are created with this operation from an
-organization. That also means that you cannot delete an organization
-that contains an account that is created with this operation.
+When you create an account in an organization using the AWS
+Organizations console, API, or CLI commands, the information required
+for the account to operate as a standalone account, such as a payment
+method and signing the End User Licence Agreement (EULA) is I<not>
+automatically collected. If you must remove an account from your
+organization later, you can do so only after you provide the missing
+information. Follow the steps at To leave an organization when all
+required account information has not yet been provided in the I<AWS
+Organizations User Guide>.
 
 When you create a member account with this operation, you can choose
 whether to create the account with the B<IAM User and Role Access to
@@ -805,6 +811,11 @@ and Tools.
 
 This operation can be called only from the organization's master
 account.
+
+If you get an exception that indicates that you exceeded your account
+limits for the organization or that you can"t add an account because
+your organization is still initializing, please contact AWS Customer
+Support.
 
 
 =head2 CreateOrganization([FeatureSet => Str])
@@ -892,10 +903,6 @@ Returns: nothing
   Deletes the organization. You can delete an organization only by using
 credentials from the master account. The organization must be empty of
 member accounts, OUs, and policies.
-
-If you create any accounts using Organizations operations or the
-Organizations console, you can't remove those accounts from the
-organization, which means that you can't delete the organization.
 
 
 =head2 DeleteOrganizationalUnit(OrganizationalUnitId => Str)
@@ -1113,15 +1120,20 @@ address that is associated with the other account's owner. The
 invitation is implemented as a Handshake whose details are in the
 response.
 
-You can invite AWS accounts only from the same reseller as the master
+You can invite AWS accounts only from the same seller as the master
 account. For example, if your organization's master account was created
-by Amazon Internet Services Pvt. Ltd (AISPL), an AWS reseller in India,
+by Amazon Internet Services Pvt. Ltd (AISPL), an AWS seller in India,
 then you can only invite other AISPL accounts to your organization. You
-can't combine accounts from AISPL and AWS. For more information, see
-Consolidated Billing in India.
+can't combine accounts from AISPL and AWS, or any other AWS seller. For
+more information, see Consolidated Billing in India.
 
 This operation can be called only from the organization's master
 account.
+
+If you get an exception that indicates that you exceeded your account
+limits for the organization or that you can"t add an account because
+your organization is still initializing, please contact AWS Customer
+Support.
 
 
 =head2 LeaveOrganization( => )
@@ -1149,9 +1161,19 @@ calling C<LeaveOrganization> and leaving the organization.
 
 =item *
 
-If you created the account using the AWS Organizations console, the
-Organizations API, or the Organizations CLI commands, then you cannot
-remove the account.
+You can leave an organization as a member account only if the account
+is configured with the information required to operate as a standalone
+account. When you create an account in an organization using the AWS
+Organizations console, API, or CLI commands, the information required
+of standalone accounts is I<not> automatically collected. For each
+account that you want to make standalone, you must accept the End User
+License Agreement (EULA), choose a support plan, provide and verify the
+required contact information, and provide a current payment method. AWS
+uses the payment method to charge for any billable (not free tier) AWS
+activity that occurs while the account is not attached to an
+organization. Follow the steps at To leave an organization when all
+required account information has not yet been provided in the I<AWS
+Organizations User Guide>.
 
 =item *
 
@@ -1368,10 +1390,20 @@ instead.
 
 =item *
 
-You can remove only accounts that were created outside your
-organization and invited to join. If you created the account using the
-AWS Organizations console, the Organizations API, or the Organizations
-CLI commands, then you cannot remove the account.
+You can remove an account from your organization only if the account is
+configured with the information required to operate as a standalone
+account. When you create an account in an organization using the AWS
+Organizations console, API, or CLI commands, the information required
+of standalone accounts is I<not> automatically collected. For an
+account that you want to make standalone, you must accept the End User
+License Agreement (EULA), choose a support plan, provide and verify the
+required contact information, and provide a current payment method. AWS
+uses the payment method to charge for any billable (not free tier) AWS
+activity that occurs while the account is not attached to an
+organization. To remove an account that does not yet have this
+information, you must sign in as the member account and follow the
+steps at To leave an organization when all required account information
+has not yet been provided in the I<AWS Organizations User Guide>.
 
 =item *
 
