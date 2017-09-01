@@ -1,6 +1,7 @@
 package Paws::EC2::IpRange;
   use Moose;
   has CidrIp => (is => 'ro', isa => 'Str', request_name => 'cidrIp', traits => ['NameInRequest']);
+  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -20,7 +21,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::EC2::IpRange object:
 
-  $service_obj->Method(Att1 => { CidrIp => $value, ..., CidrIp => $value  });
+  $service_obj->Method(Att1 => { CidrIp => $value, ..., Description => $value  });
 
 =head3 Results returned from an API call
 
@@ -41,6 +42,15 @@ This class has no description
   The IPv4 CIDR range. You can either specify a CIDR range or a source
 security group, not both. To specify a single IPv4 address, use the /32
 prefix.
+
+
+=head2 Description => Str
+
+  A description for the security group rule that references this IPv4
+address range.
+
+Constraints: Up to 255 characters in length. Allowed characters are
+a-z, A-Z, 0-9, spaces, and ._-:/()#,@[]+=;{}!$*
 
 
 

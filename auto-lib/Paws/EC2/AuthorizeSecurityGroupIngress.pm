@@ -62,19 +62,24 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 The start of port range for the TCP and UDP protocols, or an
 ICMP/ICMPv6 type number. For the ICMP/ICMPv6 type number, use C<-1> to
-specify all types.
+specify all types. If you specify all ICMP/ICMPv6 types, you must
+specify all codes.
 
 
 
 =head2 GroupId => Str
 
-The ID of the security group. Required for a nondefault VPC.
+The ID of the security group. You must specify either the security
+group ID or the security group name in the request. For security groups
+in a nondefault VPC, you must specify the security group ID.
 
 
 
 =head2 GroupName => Str
 
-[EC2-Classic, default VPC] The name of the security group.
+[EC2-Classic, default VPC] The name of the security group. You must
+specify either the security group ID or the security group name in the
+request.
 
 
 
@@ -125,6 +130,7 @@ use a set of IP permissions instead.
 
 The end of port range for the TCP and UDP protocols, or an ICMP/ICMPv6
 code number. For the ICMP/ICMPv6 code number, use C<-1> to specify all
+codes. If you specify all ICMP/ICMPv6 types, you must specify all
 codes.
 
 
