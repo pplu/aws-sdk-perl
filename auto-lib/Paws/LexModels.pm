@@ -455,7 +455,7 @@ Returns: a L<Paws::LexModels::GetBotResponse> instance
   Returns metadata information for a specific bot. You must provide the
 bot name and the bot version or alias.
 
-The GetBot operation requires permissions for the C<lex:GetBot> action.
+This operation requires permissions for the C<lex:GetBot> action.
 
 
 =head2 GetBotAlias(BotName => Str, Name => Str)
@@ -860,7 +860,7 @@ For more information, see how-it-works.
 This operation requires permissions for the C<lex:PutIntent> action.
 
 
-=head2 PutSlotType(Name => Str, [Checksum => Str, Description => Str, EnumerationValues => ArrayRef[L<Paws::LexModels::EnumerationValue>]])
+=head2 PutSlotType(Name => Str, [Checksum => Str, Description => Str, EnumerationValues => ArrayRef[L<Paws::LexModels::EnumerationValue>], ValueSelectionStrategy => Str])
 
 Each argument is described in detail in: L<Paws::LexModels::PutSlotType>
 

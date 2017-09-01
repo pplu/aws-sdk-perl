@@ -152,8 +152,8 @@ mutually exclusive. You can specify only one.
 
 =head2 FulfillmentActivity => L<Paws::LexModels::FulfillmentActivity>
 
-Describes how the intent is fulfilled. For example, after a user
-provides all of the information for a pizza order,
+Required. Describes how the intent is fulfilled. For example, after a
+user provides all of the information for a pizza order,
 C<fulfillmentActivity> defines how the bot places an order with a local
 pizza store.
 
@@ -211,7 +211,7 @@ In each utterance, a slot name is enclosed in curly braces.
 
 An array of intent slots. At runtime, Amazon Lex elicits required slot
 values from the user using prompts defined in the slots. For more
-information, see E<lt>xref linkend="how-it-works"/E<gt>.
+information, see how-it-works.
 
 
 
