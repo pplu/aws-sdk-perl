@@ -14,6 +14,11 @@ package Paws::CodeBuild;
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
 
   
+  sub BatchDeleteBuilds {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeBuild::BatchDeleteBuilds', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub BatchGetBuilds {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CodeBuild::BatchGetBuilds', @_);
@@ -72,7 +77,7 @@ package Paws::CodeBuild;
   
 
 
-  sub operations { qw/BatchGetBuilds BatchGetProjects CreateProject DeleteProject ListBuilds ListBuildsForProject ListCuratedEnvironmentImages ListProjects StartBuild StopBuild UpdateProject / }
+  sub operations { qw/BatchDeleteBuilds BatchGetBuilds BatchGetProjects CreateProject DeleteProject ListBuilds ListBuildsForProject ListCuratedEnvironmentImages ListProjects StartBuild StopBuild UpdateProject / }
 
 1;
 
@@ -117,6 +122,10 @@ Guide>.
 AWS CodeBuild supports these operations:
 
 =over
+
+=item *
+
+C<BatchDeleteBuilds>: Deletes one or more builds.
 
 =item *
 
@@ -177,6 +186,15 @@ that are managed by AWS CodeBuild.
 
 
 =head1 METHODS
+
+=head2 BatchDeleteBuilds(Ids => ArrayRef[Str|Undef])
+
+Each argument is described in detail in: L<Paws::CodeBuild::BatchDeleteBuilds>
+
+Returns: a L<Paws::CodeBuild::BatchDeleteBuildsOutput> instance
+
+  Deletes one or more builds.
+
 
 =head2 BatchGetBuilds(Ids => ArrayRef[Str|Undef])
 

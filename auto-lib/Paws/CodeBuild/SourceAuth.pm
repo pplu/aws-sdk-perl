@@ -37,7 +37,7 @@ access the source code to be built.
 
 This information is for the AWS CodeBuild console's use only. Your code
 should not get or set this information directly (unless the build
-project's source C<type> value is C<GITHUB>).
+project's source C<type> value is C<BITBUCKET> or C<GITHUB>).
 
 =head1 ATTRIBUTES
 

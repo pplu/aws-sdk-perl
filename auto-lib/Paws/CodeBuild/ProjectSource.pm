@@ -46,7 +46,7 @@ access the source code to be built.
 
 This information is for the AWS CodeBuild console's use only. Your code
 should not get or set this information directly (unless the build
-project's source C<type> value is C<GITHUB>).
+project's source C<type> value is C<BITBUCKET> or C<GITHUB>).
 
 
 =head2 Buildspec => Str
@@ -102,6 +102,20 @@ the AWS CodeBuild console.) To instruct AWS CodeBuild to then use this
 connection, in the C<source> object, set the C<auth> object's C<type>
 value to C<OAUTH>.
 
+=item *
+
+For source code in a Bitbucket repository, the HTTPS clone URL to the
+repository that contains the source and the build spec. Also, you must
+connect your AWS account to your Bitbucket account. To do this, use the
+AWS CodeBuild console to begin creating a build project. When you use
+the console to connect (or reconnect) with Bitbucket, on the Bitbucket
+B<Confirm access to your account> page that displays, choose B<Grant
+access>. (After you have connected to your Bitbucket account, you do
+not need to finish creating the build project, and you may then leave
+the AWS CodeBuild console.) To instruct AWS CodeBuild to then use this
+connection, in the C<source> object, set the C<auth> object's C<type>
+value to C<OAUTH>.
+
 =back
 
 
@@ -112,6 +126,10 @@ value to C<OAUTH>.
 values include:
 
 =over
+
+=item *
+
+C<BITBUCKET>: The source code is in a Bitbucket repository.
 
 =item *
 
