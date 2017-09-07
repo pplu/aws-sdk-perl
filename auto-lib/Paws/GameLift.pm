@@ -64,6 +64,16 @@ package Paws::GameLift;
     my $call_object = $self->new_with_coercions('Paws::GameLift::CreatePlayerSessions', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateVpcPeeringAuthorization {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::GameLift::CreateVpcPeeringAuthorization', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateVpcPeeringConnection {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::GameLift::CreateVpcPeeringConnection', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteAlias {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::GameLift::DeleteAlias', @_);
@@ -92,6 +102,16 @@ package Paws::GameLift;
   sub DeleteScalingPolicy {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::GameLift::DeleteScalingPolicy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteVpcPeeringAuthorization {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::GameLift::DeleteVpcPeeringAuthorization', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteVpcPeeringConnection {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::GameLift::DeleteVpcPeeringConnection', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeAlias {
@@ -187,6 +207,16 @@ package Paws::GameLift;
   sub DescribeScalingPolicies {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::GameLift::DescribeScalingPolicies', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeVpcPeeringAuthorizations {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::GameLift::DescribeVpcPeeringAuthorizations', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeVpcPeeringConnections {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::GameLift::DescribeVpcPeeringConnections', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetGameSessionLogUrl {
@@ -307,7 +337,7 @@ package Paws::GameLift;
   
 
 
-  sub operations { qw/AcceptMatch CreateAlias CreateBuild CreateFleet CreateGameSession CreateGameSessionQueue CreateMatchmakingConfiguration CreateMatchmakingRuleSet CreatePlayerSession CreatePlayerSessions DeleteAlias DeleteBuild DeleteFleet DeleteGameSessionQueue DeleteMatchmakingConfiguration DeleteScalingPolicy DescribeAlias DescribeBuild DescribeEC2InstanceLimits DescribeFleetAttributes DescribeFleetCapacity DescribeFleetEvents DescribeFleetPortSettings DescribeFleetUtilization DescribeGameSessionDetails DescribeGameSessionPlacement DescribeGameSessionQueues DescribeGameSessions DescribeInstances DescribeMatchmaking DescribeMatchmakingConfigurations DescribeMatchmakingRuleSets DescribePlayerSessions DescribeRuntimeConfiguration DescribeScalingPolicies GetGameSessionLogUrl GetInstanceAccess ListAliases ListBuilds ListFleets PutScalingPolicy RequestUploadCredentials ResolveAlias SearchGameSessions StartGameSessionPlacement StartMatchmaking StopGameSessionPlacement StopMatchmaking UpdateAlias UpdateBuild UpdateFleetAttributes UpdateFleetCapacity UpdateFleetPortSettings UpdateGameSession UpdateGameSessionQueue UpdateMatchmakingConfiguration UpdateRuntimeConfiguration ValidateMatchmakingRuleSet / }
+  sub operations { qw/AcceptMatch CreateAlias CreateBuild CreateFleet CreateGameSession CreateGameSessionQueue CreateMatchmakingConfiguration CreateMatchmakingRuleSet CreatePlayerSession CreatePlayerSessions CreateVpcPeeringAuthorization CreateVpcPeeringConnection DeleteAlias DeleteBuild DeleteFleet DeleteGameSessionQueue DeleteMatchmakingConfiguration DeleteScalingPolicy DeleteVpcPeeringAuthorization DeleteVpcPeeringConnection DescribeAlias DescribeBuild DescribeEC2InstanceLimits DescribeFleetAttributes DescribeFleetCapacity DescribeFleetEvents DescribeFleetPortSettings DescribeFleetUtilization DescribeGameSessionDetails DescribeGameSessionPlacement DescribeGameSessionQueues DescribeGameSessions DescribeInstances DescribeMatchmaking DescribeMatchmakingConfigurations DescribeMatchmakingRuleSets DescribePlayerSessions DescribeRuntimeConfiguration DescribeScalingPolicies DescribeVpcPeeringAuthorizations DescribeVpcPeeringConnections GetGameSessionLogUrl GetInstanceAccess ListAliases ListBuilds ListFleets PutScalingPolicy RequestUploadCredentials ResolveAlias SearchGameSessions StartGameSessionPlacement StartMatchmaking StopGameSessionPlacement StopMatchmaking UpdateAlias UpdateBuild UpdateFleetAttributes UpdateFleetCapacity UpdateFleetPortSettings UpdateGameSession UpdateGameSessionQueue UpdateMatchmakingConfiguration UpdateRuntimeConfiguration ValidateMatchmakingRuleSet / }
 
 1;
 
@@ -350,15 +380,15 @@ The Amazon GameLift service API includes two important function sets:
 
 =item *
 
-B<Manage game sessions and player access> E<ndash> Retrieve information
-on available game sessions; create new game sessions; send player
-requests to join a game session.
+B<Manage game sessions and player access> -- Retrieve information on
+available game sessions; create new game sessions; send player requests
+to join a game session.
 
 =item *
 
-B<Configure and manage game server resources> E<ndash> Manage builds,
-fleets, queues, and aliases; set autoscaling policies; retrieve logs
-and metrics.
+B<Configure and manage game server resources> -- Manage builds, fleets,
+queues, and aliases; set autoscaling policies; retrieve logs and
+metrics.
 
 =back
 
@@ -403,27 +433,26 @@ B<MORE RESOURCES>
 
 =item *
 
-Amazon GameLift Developer Guide E<ndash> Learn more about Amazon
-GameLift features and how to use them.
+Amazon GameLift Developer Guide -- Learn more about Amazon GameLift
+features and how to use them.
 
 =item *
 
-Lumberyard and Amazon GameLift Tutorials E<ndash> Get started fast with
+Lumberyard and Amazon GameLift Tutorials -- Get started fast with
 walkthroughs and sample projects.
 
 =item *
 
-GameDev Blog E<ndash> Stay up to date with new features and techniques.
+GameDev Blog -- Stay up to date with new features and techniques.
 
 =item *
 
-GameDev Forums E<ndash> Connect with the GameDev community.
+GameDev Forums -- Connect with the GameDev community.
 
 =item *
 
-Amazon GameLift Document History E<ndash> See changes to the Amazon
-GameLift service, SDKs, and documentation, as well as links to release
-notes.
+Amazon GameLift Document History -- See changes to the Amazon GameLift
+service, SDKs, and documentation, as well as links to release notes.
 
 =back
 
@@ -448,8 +477,8 @@ B<Discover existing game sessions>
 
 =item *
 
-SearchGameSessions E<ndash> Retrieve all available game sessions or
-search for game sessions that match a set of criteria.
+SearchGameSessions -- Retrieve all available game sessions or search
+for game sessions that match a set of criteria.
 
 =back
 
@@ -469,24 +498,24 @@ game session activity for efficiency and cost effectiveness.
 
 =item *
 
-StartGameSessionPlacement E<ndash> Request a new game session placement
-and add one or more players to it.
+StartGameSessionPlacement -- Request a new game session placement and
+add one or more players to it.
 
 =item *
 
-DescribeGameSessionPlacement E<ndash> Get details on a placement
-request, including status.
+DescribeGameSessionPlacement -- Get details on a placement request,
+including status.
 
 =item *
 
-StopGameSessionPlacement E<ndash> Cancel a placement request.
+StopGameSessionPlacement -- Cancel a placement request.
 
 =back
 
 =item *
 
-CreateGameSession E<ndash> Start a new game session on a specific
-fleet. I<Available in Amazon GameLift Local.>
+CreateGameSession -- Start a new game session on a specific fleet.
+I<Available in Amazon GameLift Local.>
 
 =back
 
@@ -498,22 +527,22 @@ B<Start new game sessions with FlexMatch matchmaking>
 
 =item *
 
-StartMatchmaking E<ndash> Request matchmaking for one players or a
-group who want to play together.
+StartMatchmaking -- Request matchmaking for one players or a group who
+want to play together.
 
 =item *
 
-DescribeMatchmaking E<ndash> Get details on a matchmaking request,
-including status.
+DescribeMatchmaking -- Get details on a matchmaking request, including
+status.
 
 =item *
 
-AcceptMatch E<ndash> Register that a player accepts a proposed match,
-for matches that require player acceptance.
+AcceptMatch -- Register that a player accepts a proposed match, for
+matches that require player acceptance.
 
 =item *
 
-StopMatchmaking E<ndash> Cancel a matchmaking request.
+StopMatchmaking -- Cancel a matchmaking request.
 
 =back
 
@@ -525,23 +554,23 @@ B<Manage game session data>
 
 =item *
 
-DescribeGameSessions E<ndash> Retrieve metadata for one or more game
+DescribeGameSessions -- Retrieve metadata for one or more game
 sessions, including length of time active and current player count.
 I<Available in Amazon GameLift Local.>
 
 =item *
 
-DescribeGameSessionDetails E<ndash> Retrieve metadata and the game
-session protection setting for one or more game sessions.
+DescribeGameSessionDetails -- Retrieve metadata and the game session
+protection setting for one or more game sessions.
 
 =item *
 
-UpdateGameSession E<ndash> Change game session settings, such as
-maximum player count and join policy.
+UpdateGameSession -- Change game session settings, such as maximum
+player count and join policy.
 
 =item *
 
-GetGameSessionLogUrl E<ndash> Get the location of saved logs for a game
+GetGameSessionLogUrl -- Get the location of saved logs for a game
 session.
 
 =back
@@ -554,19 +583,19 @@ B<Manage player sessions>
 
 =item *
 
-CreatePlayerSession E<ndash> Send a request for a player to join a game
+CreatePlayerSession -- Send a request for a player to join a game
 session. I<Available in Amazon GameLift Local.>
 
 =item *
 
-CreatePlayerSessions E<ndash> Send a request for multiple players to
-join a game session. I<Available in Amazon GameLift Local.>
+CreatePlayerSessions -- Send a request for multiple players to join a
+game session. I<Available in Amazon GameLift Local.>
 
 =item *
 
-DescribePlayerSessions E<ndash> Get details on player activity,
-including status, playing time, and player data. I<Available in Amazon
-GameLift Local.>
+DescribePlayerSessions -- Get details on player activity, including
+status, playing time, and player data. I<Available in Amazon GameLift
+Local.>
 
 =back
 
@@ -590,28 +619,27 @@ B<Manage game builds>
 
 =item *
 
-CreateBuild E<ndash> Create a new build using files stored in an Amazon
-S3 bucket. (Update uploading permissions with
-RequestUploadCredentials.) To create a build and upload files from a
-local path, use the AWS CLI command C<upload-build>.
+CreateBuild -- Create a new build using files stored in an Amazon S3
+bucket. (Update uploading permissions with RequestUploadCredentials.)
+To create a build and upload files from a local path, use the AWS CLI
+command C<upload-build>.
 
 =item *
 
-ListBuilds E<ndash> Get a list of all builds uploaded to a Amazon
-GameLift region.
+ListBuilds -- Get a list of all builds uploaded to a Amazon GameLift
+region.
 
 =item *
 
-DescribeBuild E<ndash> Retrieve information associated with a build.
+DescribeBuild -- Retrieve information associated with a build.
 
 =item *
 
-UpdateBuild E<ndash> Change build metadata, including build name and
-version.
+UpdateBuild -- Change build metadata, including build name and version.
 
 =item *
 
-DeleteBuild E<ndash> Remove a build from Amazon GameLift.
+DeleteBuild -- Remove a build from Amazon GameLift.
 
 =back
 
@@ -623,18 +651,18 @@ B<Manage fleets>
 
 =item *
 
-CreateFleet E<ndash> Configure and activate a new fleet to run a
-build's game servers.
+CreateFleet -- Configure and activate a new fleet to run a build's game
+servers.
 
 =item *
 
-ListFleets E<ndash> Get a list of all fleet IDs in a Amazon GameLift
-region (all statuses).
+ListFleets -- Get a list of all fleet IDs in a Amazon GameLift region
+(all statuses).
 
 =item *
 
-DeleteFleet E<ndash> Terminate a fleet that is no longer running game
-servers or hosting players.
+DeleteFleet -- Terminate a fleet that is no longer running game servers
+or hosting players.
 
 =item *
 
@@ -644,21 +672,21 @@ View / update fleet configurations.
 
 =item *
 
-DescribeFleetAttributes / UpdateFleetAttributes E<ndash> View or change
-a fleet's metadata and settings for game session protection and
-resource creation limits.
+DescribeFleetAttributes / UpdateFleetAttributes -- View or change a
+fleet's metadata and settings for game session protection and resource
+creation limits.
 
 =item *
 
-DescribeFleetPortSettings / UpdateFleetPortSettings E<ndash> View or
-change the inbound permissions (IP address and port setting ranges)
-allowed for a fleet.
+DescribeFleetPortSettings / UpdateFleetPortSettings -- View or change
+the inbound permissions (IP address and port setting ranges) allowed
+for a fleet.
 
 =item *
 
-DescribeRuntimeConfiguration / UpdateRuntimeConfiguration E<ndash> View
-or change what server processes (and how many) to run on each instance
-in a fleet.
+DescribeRuntimeConfiguration / UpdateRuntimeConfiguration -- View or
+change what server processes (and how many) to run on each instance in
+a fleet.
 
 =back
 
@@ -672,37 +700,74 @@ B<Control fleet capacity>
 
 =item *
 
-DescribeEC2InstanceLimits E<ndash> Retrieve maximum number of instances
+DescribeEC2InstanceLimits -- Retrieve maximum number of instances
 allowed for the current AWS account and the current usage level.
 
 =item *
 
-DescribeFleetCapacity / UpdateFleetCapacity E<ndash> Retrieve the
-capacity settings and the current number of instances in a fleet;
-adjust fleet capacity settings to scale up or down.
+DescribeFleetCapacity / UpdateFleetCapacity -- Retrieve the capacity
+settings and the current number of instances in a fleet; adjust fleet
+capacity settings to scale up or down.
 
 =item *
 
-Autoscale E<ndash> Manage autoscaling rules and apply them to a fleet.
+Autoscale -- Manage autoscaling rules and apply them to a fleet.
 
 =over
 
 =item *
 
-PutScalingPolicy E<ndash> Create a new autoscaling policy, or update an
+PutScalingPolicy -- Create a new autoscaling policy, or update an
 existing one.
 
 =item *
 
-DescribeScalingPolicies E<ndash> Retrieve an existing autoscaling
-policy.
+DescribeScalingPolicies -- Retrieve an existing autoscaling policy.
 
 =item *
 
-DeleteScalingPolicy E<ndash> Delete an autoscaling policy and stop it
-from affecting a fleet's capacity.
+DeleteScalingPolicy -- Delete an autoscaling policy and stop it from
+affecting a fleet's capacity.
 
 =back
+
+=back
+
+=item *
+
+B<Manage VPC peering connections for fleets>
+
+=over
+
+=item *
+
+CreateVpcPeeringAuthorization -- Authorize a peering connection to one
+of your VPCs.
+
+=item *
+
+DescribeVpcPeeringAuthorizations -- Retrieve valid peering connection
+authorizations.
+
+=item *
+
+DeleteVpcPeeringAuthorization -- Delete a peering connection
+authorization.
+
+=item *
+
+CreateVpcPeeringConnection -- Establish a peering connection between
+the VPC for a Amazon GameLift fleet and one of your VPCs.
+
+=item *
+
+DescribeVpcPeeringConnections -- Retrieve information on active or
+pending VPC peering connections with a Amazon GameLift fleet.
+
+=item *
+
+DeleteVpcPeeringConnection -- Delete a VPC peering connection with a
+Amazon GameLift fleet.
 
 =back
 
@@ -714,19 +779,18 @@ B<Access fleet activity statistics>
 
 =item *
 
-DescribeFleetUtilization E<ndash> Get current data on the number of
-server processes, game sessions, and players currently active on a
-fleet.
+DescribeFleetUtilization -- Get current data on the number of server
+processes, game sessions, and players currently active on a fleet.
 
 =item *
 
-DescribeFleetEvents E<ndash> Get a fleet's logged events for a
-specified time span.
+DescribeFleetEvents -- Get a fleet's logged events for a specified time
+span.
 
 =item *
 
-DescribeGameSessions E<ndash> Retrieve metadata associated with one or
-more game sessions, including length of time active and current player
+DescribeGameSessions -- Retrieve metadata associated with one or more
+game sessions, including length of time active and current player
 count.
 
 =back
@@ -739,13 +803,13 @@ B<Remotely access an instance>
 
 =item *
 
-DescribeInstances E<ndash> Get information on each instance in a fleet,
+DescribeInstances -- Get information on each instance in a fleet,
 including instance ID, IP address, and status.
 
 =item *
 
-GetInstanceAccess E<ndash> Request access credentials needed to
-remotely connect to a specified instance in a fleet.
+GetInstanceAccess -- Request access credentials needed to remotely
+connect to a specified instance in a fleet.
 
 =back
 
@@ -757,31 +821,29 @@ B<Manage fleet aliases>
 
 =item *
 
-CreateAlias E<ndash> Define a new alias and optionally assign it to a
-fleet.
+CreateAlias -- Define a new alias and optionally assign it to a fleet.
 
 =item *
 
-ListAliases E<ndash> Get all fleet aliases defined in a Amazon GameLift
+ListAliases -- Get all fleet aliases defined in a Amazon GameLift
 region.
 
 =item *
 
-DescribeAlias E<ndash> Retrieve information on an existing alias.
+DescribeAlias -- Retrieve information on an existing alias.
 
 =item *
 
-UpdateAlias E<ndash> Change settings for a alias, such as redirecting
-it from one fleet to another.
+UpdateAlias -- Change settings for a alias, such as redirecting it from
+one fleet to another.
 
 =item *
 
-DeleteAlias E<ndash> Remove an alias from the region.
+DeleteAlias -- Remove an alias from the region.
 
 =item *
 
-ResolveAlias E<ndash> Get the fleet ID that a specified alias points
-to.
+ResolveAlias -- Get the fleet ID that a specified alias points to.
 
 =back
 
@@ -793,23 +855,22 @@ B<Manage game session queues>
 
 =item *
 
-CreateGameSessionQueue E<ndash> Create a queue for processing requests
-for new game sessions.
+CreateGameSessionQueue -- Create a queue for processing requests for
+new game sessions.
 
 =item *
 
-DescribeGameSessionQueues E<ndash> Retrieve game session queues defined
-in a Amazon GameLift region.
+DescribeGameSessionQueues -- Retrieve game session queues defined in a
+Amazon GameLift region.
 
 =item *
 
-UpdateGameSessionQueue E<ndash> Change the configuration of a game
-session queue.
+UpdateGameSessionQueue -- Change the configuration of a game session
+queue.
 
 =item *
 
-DeleteGameSessionQueue E<ndash> Remove a game session queue from the
-region.
+DeleteGameSessionQueue -- Remove a game session queue from the region.
 
 =back
 
@@ -821,39 +882,39 @@ B<Manage FlexMatch resources>
 
 =item *
 
-CreateMatchmakingConfiguration E<ndash> Create a matchmaking
-configuration with instructions for building a player group and placing
-in a new game session.
+CreateMatchmakingConfiguration -- Create a matchmaking configuration
+with instructions for building a player group and placing in a new game
+session.
 
 =item *
 
-DescribeMatchmakingConfigurations E<ndash> Retrieve matchmaking
+DescribeMatchmakingConfigurations -- Retrieve matchmaking
 configurations defined a Amazon GameLift region.
 
 =item *
 
-UpdateMatchmakingConfiguration E<ndash> Change settings for matchmaking
+UpdateMatchmakingConfiguration -- Change settings for matchmaking
 configuration. queue.
 
 =item *
 
-DeleteMatchmakingConfiguration E<ndash> Remove a matchmaking
-configuration from the region.
+DeleteMatchmakingConfiguration -- Remove a matchmaking configuration
+from the region.
 
 =item *
 
-CreateMatchmakingRuleSet E<ndash> Create a set of rules to use when
-searching for player matches.
+CreateMatchmakingRuleSet -- Create a set of rules to use when searching
+for player matches.
 
 =item *
 
-DescribeMatchmakingRuleSets E<ndash> Retrieve matchmaking rule sets
-defined in a Amazon GameLift region.
+DescribeMatchmakingRuleSets -- Retrieve matchmaking rule sets defined
+in a Amazon GameLift region.
 
 =item *
 
-ValidateMatchmakingRuleSet E<ndash> Verify syntax for a set of
-matchmaking rules.
+ValidateMatchmakingRuleSet -- Verify syntax for a set of matchmaking
+rules.
 
 =back
 
@@ -1031,7 +1092,7 @@ DeleteBuild
 
 
 
-=head2 CreateFleet(BuildId => Str, EC2InstanceType => Str, Name => Str, [Description => Str, EC2InboundPermissions => ArrayRef[L<Paws::GameLift::IpPermission>], LogPaths => ArrayRef[Str|Undef], MetricGroups => ArrayRef[Str|Undef], NewGameSessionProtectionPolicy => Str, ResourceCreationLimitPolicy => L<Paws::GameLift::ResourceCreationLimitPolicy>, RuntimeConfiguration => L<Paws::GameLift::RuntimeConfiguration>, ServerLaunchParameters => Str, ServerLaunchPath => Str])
+=head2 CreateFleet(BuildId => Str, EC2InstanceType => Str, Name => Str, [Description => Str, EC2InboundPermissions => ArrayRef[L<Paws::GameLift::IpPermission>], LogPaths => ArrayRef[Str|Undef], MetricGroups => ArrayRef[Str|Undef], NewGameSessionProtectionPolicy => Str, PeerVpcAwsAccountId => Str, PeerVpcId => Str, ResourceCreationLimitPolicy => L<Paws::GameLift::ResourceCreationLimitPolicy>, RuntimeConfiguration => L<Paws::GameLift::RuntimeConfiguration>, ServerLaunchParameters => Str, ServerLaunchPath => Str])
 
 Each argument is described in detail in: L<Paws::GameLift::CreateFleet>
 
@@ -1079,6 +1140,10 @@ If you use Amazon CloudWatch for metrics, you can add the new fleet to
 a metric group. This allows you to view aggregated metrics for a set of
 fleets. Once you specify a metric group, the new fleet's metrics are
 included in the metric group's data.
+
+You have the option of creating a VPC peering connection with the new
+fleet. For more information, see VPC Peering with Amazon GameLift
+Fleets.
 
 If the CreateFleet call is successful, Amazon GameLift performs the
 following tasks:
@@ -1629,6 +1694,140 @@ StopGameSessionPlacement
 
 
 
+=head2 CreateVpcPeeringAuthorization(GameLiftAwsAccountId => Str, PeerVpcId => Str)
+
+Each argument is described in detail in: L<Paws::GameLift::CreateVpcPeeringAuthorization>
+
+Returns: a L<Paws::GameLift::CreateVpcPeeringAuthorizationOutput> instance
+
+  Requests authorization to create or delete a peer connection between
+the VPC for your Amazon GameLift fleet and a virtual private cloud
+(VPC) in your AWS account. VPC peering enables the game servers on your
+fleet to communicate directly with other AWS resources. Once you've
+received authorization, call CreateVpcPeeringConnection to establish
+the peering connection. For more information, see VPC Peering with
+Amazon GameLift Fleets.
+
+You can peer with VPCs that are owned by any AWS account you have
+access to, including the account that you use to manage your Amazon
+GameLift fleets. You cannot peer with VPCs that are in different
+regions.
+
+To request authorization to create a connection, call this operation
+from the AWS account with the VPC that you want to peer to your Amazon
+GameLift fleet. For example, to enable your game servers to retrieve
+data from a DynamoDB table, use the account that manages that DynamoDB
+resource. Identify the following values: (1) The ID of the VPC that you
+want to peer with, and (2) the ID of the AWS account that you use to
+manage Amazon GameLift. If successful, VPC peering is authorized for
+the specified VPC.
+
+To request authorization to delete a connection, call this operation
+from the AWS account with the VPC that is peered with your Amazon
+GameLift fleet. Identify the following values: (1) VPC ID that you want
+to delete the peering connection for, and (2) ID of the AWS account
+that you use to manage Amazon GameLift.
+
+The authorization remains valid for 24 hours unless it is canceled by a
+call to DeleteVpcPeeringAuthorization. You must create or delete the
+peering connection while the authorization is valid.
+
+VPC peering connection operations include:
+
+=over
+
+=item *
+
+CreateVpcPeeringAuthorization
+
+=item *
+
+DescribeVpcPeeringAuthorizations
+
+=item *
+
+DeleteVpcPeeringAuthorization
+
+=item *
+
+CreateVpcPeeringConnection
+
+=item *
+
+DescribeVpcPeeringConnections
+
+=item *
+
+DeleteVpcPeeringConnection
+
+=back
+
+
+
+=head2 CreateVpcPeeringConnection(FleetId => Str, PeerVpcAwsAccountId => Str, PeerVpcId => Str)
+
+Each argument is described in detail in: L<Paws::GameLift::CreateVpcPeeringConnection>
+
+Returns: a L<Paws::GameLift::CreateVpcPeeringConnectionOutput> instance
+
+  Establishes a VPC peering connection between a virtual private cloud
+(VPC) in an AWS account with the VPC for your Amazon GameLift fleet.
+VPC peering enables the game servers on your fleet to communicate
+directly with other AWS resources. You can peer with VPCs in any AWS
+account that you have access to, including the account that you use to
+manage your Amazon GameLift fleets. You cannot peer with VPCs that are
+in different regions. For more information, see VPC Peering with Amazon
+GameLift Fleets.
+
+Before calling this operation to establish the peering connection, you
+first need to call CreateVpcPeeringAuthorization and identify the VPC
+you want to peer with. Once the authorization for the specified VPC is
+issued, you have 24 hours to establish the connection. These two
+operations handle all tasks necessary to peer the two VPCs, including
+acceptance, updating routing tables, etc.
+
+To establish the connection, call this operation from the AWS account
+that is used to manage the Amazon GameLift fleets. Identify the
+following values: (1) The ID of the fleet you want to be enable a VPC
+peering connection for; (2) The AWS account with the VPC that you want
+to peer with; and (3) The ID of the VPC you want to peer with. This
+operation is asynchronous. If successful, a VpcPeeringConnection
+request is created. You can use continuous polling to track the
+request's status using DescribeVpcPeeringConnections, or by monitoring
+fleet events for success or failure using DescribeFleetEvents.
+
+VPC peering connection operations include:
+
+=over
+
+=item *
+
+CreateVpcPeeringAuthorization
+
+=item *
+
+DescribeVpcPeeringAuthorizations
+
+=item *
+
+DeleteVpcPeeringAuthorization
+
+=item *
+
+CreateVpcPeeringConnection
+
+=item *
+
+DescribeVpcPeeringConnections
+
+=item *
+
+DeleteVpcPeeringConnection
+
+=back
+
+
+
 =head2 DeleteAlias(AliasId => Str)
 
 Each argument is described in detail in: L<Paws::GameLift::DeleteAlias>
@@ -2019,6 +2218,97 @@ DescribeEC2InstanceLimits
 =item *
 
 DeleteFleet
+
+=back
+
+
+
+=head2 DeleteVpcPeeringAuthorization(GameLiftAwsAccountId => Str, PeerVpcId => Str)
+
+Each argument is described in detail in: L<Paws::GameLift::DeleteVpcPeeringAuthorization>
+
+Returns: a L<Paws::GameLift::DeleteVpcPeeringAuthorizationOutput> instance
+
+  Cancels a pending VPC peering authorization for the specified VPC. If
+the authorization has already been used to create a peering connection,
+call DeleteVpcPeeringConnection to remove the connection.
+
+VPC peering connection operations include:
+
+=over
+
+=item *
+
+CreateVpcPeeringAuthorization
+
+=item *
+
+DescribeVpcPeeringAuthorizations
+
+=item *
+
+DeleteVpcPeeringAuthorization
+
+=item *
+
+CreateVpcPeeringConnection
+
+=item *
+
+DescribeVpcPeeringConnections
+
+=item *
+
+DeleteVpcPeeringConnection
+
+=back
+
+
+
+=head2 DeleteVpcPeeringConnection(FleetId => Str, VpcPeeringConnectionId => Str)
+
+Each argument is described in detail in: L<Paws::GameLift::DeleteVpcPeeringConnection>
+
+Returns: a L<Paws::GameLift::DeleteVpcPeeringConnectionOutput> instance
+
+  Removes a VPC peering connection. To delete the connection, you must
+have a valid authorization for the VPC peering connection that you want
+to delete. You can check for an authorization by calling
+DescribeVpcPeeringAuthorizations or request a new one using
+CreateVpcPeeringAuthorization.
+
+Once a valid authorization exists, call this operation from the AWS
+account that is used to manage the Amazon GameLift fleets. Identify the
+connection to delete by the connection ID and fleet ID. If successful,
+the connection is removed.
+
+VPC peering connection operations include:
+
+=over
+
+=item *
+
+CreateVpcPeeringAuthorization
+
+=item *
+
+DescribeVpcPeeringAuthorizations
+
+=item *
+
+DeleteVpcPeeringAuthorization
+
+=item *
+
+CreateVpcPeeringConnection
+
+=item *
+
+DescribeVpcPeeringConnections
+
+=item *
+
+DeleteVpcPeeringConnection
 
 =back
 
@@ -3534,6 +3824,97 @@ DeleteFleet
 
 
 
+=head2 DescribeVpcPeeringAuthorizations()
+
+Each argument is described in detail in: L<Paws::GameLift::DescribeVpcPeeringAuthorizations>
+
+Returns: a L<Paws::GameLift::DescribeVpcPeeringAuthorizationsOutput> instance
+
+  Retrieves valid VPC peering authorizations that are pending for the AWS
+account. This operation returns all VPC peering authorizations and
+requests for peering. This includes those initiated and received by
+this account.
+
+VPC peering connection operations include:
+
+=over
+
+=item *
+
+CreateVpcPeeringAuthorization
+
+=item *
+
+DescribeVpcPeeringAuthorizations
+
+=item *
+
+DeleteVpcPeeringAuthorization
+
+=item *
+
+CreateVpcPeeringConnection
+
+=item *
+
+DescribeVpcPeeringConnections
+
+=item *
+
+DeleteVpcPeeringConnection
+
+=back
+
+
+
+=head2 DescribeVpcPeeringConnections([FleetId => Str])
+
+Each argument is described in detail in: L<Paws::GameLift::DescribeVpcPeeringConnections>
+
+Returns: a L<Paws::GameLift::DescribeVpcPeeringConnectionsOutput> instance
+
+  Retrieves information on VPC peering connections. Use this operation to
+get peering information for all fleets or for one specific fleet ID.
+
+To retrieve connection information, call this operation from the AWS
+account that is used to manage the Amazon GameLift fleets. Specify a
+fleet ID or leave the parameter empty to retrieve all connection
+records. If successful, the retrieved information includes both active
+and pending connections. Active connections identify the IpV4 CIDR
+block that the VPC uses to connect.
+
+VPC peering connection operations include:
+
+=over
+
+=item *
+
+CreateVpcPeeringAuthorization
+
+=item *
+
+DescribeVpcPeeringAuthorizations
+
+=item *
+
+DeleteVpcPeeringAuthorization
+
+=item *
+
+CreateVpcPeeringConnection
+
+=item *
+
+DescribeVpcPeeringConnections
+
+=item *
+
+DeleteVpcPeeringConnection
+
+=back
+
+
+
 =head2 GetGameSessionLogUrl(GameSessionId => Str)
 
 Each argument is described in detail in: L<Paws::GameLift::GetGameSessionLogUrl>
@@ -4275,7 +4656,7 @@ configuration, and include the players to be matched. You must also
 include a set of player attributes relevant for the matchmaking
 configuration. If successful, a matchmaking ticket is returned with
 status set to C<QUEUED>. Track the status of the ticket to respond as
-needed and acquire game session connection information for sucessfully
+needed and acquire game session connection information for successfully
 completed matches.
 
 B<Tracking ticket status> -- A couple of options are available for

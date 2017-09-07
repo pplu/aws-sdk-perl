@@ -32,9 +32,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GameLift::M
 
 =head1 DESCRIPTION
 
-New player session created as a result of a successful FlexMatch match.
-A successful match automatically creates new player sessions for every
-player ID in the original matchmaking request.
+Represents a new player session that is created as a result of a
+successful FlexMatch match. A successful match automatically creates
+new player sessions for every player ID in the original matchmaking
+request.
 
 When players connect to the match's game session, they must include
 both player ID and player session ID in order to claim their assigned

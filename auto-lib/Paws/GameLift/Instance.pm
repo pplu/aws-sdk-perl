@@ -80,22 +80,22 @@ following:
 
 =item *
 
-B<PENDING> E<ndash> The instance is in the process of being created and
+B<PENDING> -- The instance is in the process of being created and
 launching server processes as defined in the fleet's run-time
 configuration.
 
 =item *
 
-B<ACTIVE> E<ndash> The instance has been successfully created and at
-least one server process has successfully launched and reported back to
+B<ACTIVE> -- The instance has been successfully created and at least
+one server process has successfully launched and reported back to
 Amazon GameLift that it is ready to host a game session. The instance
 is now considered ready to host game sessions.
 
 =item *
 
-B<TERMINATING> E<ndash> The instance is in the process of shutting
-down. This may happen to reduce capacity during a scaling down event or
-to recycle resources in the event of a problem.
+B<TERMINATING> -- The instance is in the process of shutting down. This
+may happen to reduce capacity during a scaling down event or to recycle
+resources in the event of a problem.
 
 =back
 

@@ -1,6 +1,8 @@
 package Paws::GameLift::MatchmakingTicket;
   use Moose;
   has ConfigurationName => (is => 'ro', isa => 'Str');
+  has EndTime => (is => 'ro', isa => 'Str');
+  has EstimatedWaitTime => (is => 'ro', isa => 'Int');
   has GameSessionConnectionInfo => (is => 'ro', isa => 'Paws::GameLift::GameSessionConnectionInfo');
   has Players => (is => 'ro', isa => 'ArrayRef[Paws::GameLift::Player]');
   has StartTime => (is => 'ro', isa => 'Str');
@@ -54,6 +56,21 @@ Matchmaking configurations determine how players are grouped into a
 match and how a new game session is created for the match.
 
 
+=head2 EndTime => Str
+
+  Time stamp indicating when the matchmaking request stopped being
+processed due to successful completion, timeout, or cancellation.
+Format is a number expressed in Unix time as milliseconds (for example
+"1469498468.057").
+
+
+=head2 EstimatedWaitTime => Int
+
+  Average amount of time (in seconds) that players are currently waiting
+for a match. If there is not enough recent data, this property may be
+empty.
+
+
 =head2 GameSessionConnectionInfo => L<Paws::GameLift::GameSessionConnectionInfo>
 
   Identifier and connection information of the game session created for
@@ -85,48 +102,46 @@ Format is a number expressed in Unix time as milliseconds (for example
 
 =item *
 
-B<QUEUED> E<ndash> The matchmaking request has been received and is
-currently waiting to be processed.
+B<QUEUED> -- The matchmaking request has been received and is currently
+waiting to be processed.
 
 =item *
 
-B<SEARCHING> E<ndash> The matchmaking request is currently being
-processed.
+B<SEARCHING> -- The matchmaking request is currently being processed.
 
 =item *
 
-B<REQUIRES_ACCEPTANCE> E<ndash> A match has been proposed and the
-players must accept the match (see AcceptMatch). This status is used
-only with requests that use a matchmaking configuration with a player
-acceptance requirement.
+B<REQUIRES_ACCEPTANCE> -- A match has been proposed and the players
+must accept the match (see AcceptMatch). This status is used only with
+requests that use a matchmaking configuration with a player acceptance
+requirement.
 
 =item *
 
-B<PLACING> E<ndash> The FlexMatch engine has matched players and is in
-the process of placing a new game session for the match.
+B<PLACING> -- The FlexMatch engine has matched players and is in the
+process of placing a new game session for the match.
 
 =item *
 
-B<COMPLETED> E<ndash> Players have been matched and a game session is
-ready to host the players. A ticket in this state contains the
-necessary connection information for players.
+B<COMPLETED> -- Players have been matched and a game session is ready
+to host the players. A ticket in this state contains the necessary
+connection information for players.
 
 =item *
 
-B<FAILED> E<ndash> The matchmaking request was not completed. Tickets
-with players who fail to accept a proposed match are placed in
-C<FAILED> status; new matchmaking requests can be submitted for these
-players.
+B<FAILED> -- The matchmaking request was not completed. Tickets with
+players who fail to accept a proposed match are placed in C<FAILED>
+status; new matchmaking requests can be submitted for these players.
 
 =item *
 
-B<CANCELLED> E<ndash> The matchmaking request was canceled with a call
-to StopMatchmaking.
+B<CANCELLED> -- The matchmaking request was canceled with a call to
+StopMatchmaking.
 
 =item *
 
-B<TIMED_OUT> E<ndash> The matchmaking request was not completed within
-the duration specified in the matchmaking configuration. Matchmaking
+B<TIMED_OUT> -- The matchmaking request was not completed within the
+duration specified in the matchmaking configuration. Matchmaking
 requests that time out can be resubmitted.
 
 =back

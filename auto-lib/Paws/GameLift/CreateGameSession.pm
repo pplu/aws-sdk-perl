@@ -88,8 +88,8 @@ passed to the game server with a request to start a new game session
 I<This parameter is no longer preferred. Please use C<IdempotencyToken>
 instead.> Custom string that uniquely identifies a request for a new
 game session. Maximum token length is 48 characters. If provided, this
-string is included in the new game session's ID. (A game session ID has
-the following format:
+string is included in the new game session's ID. (A game session ARN
+has the following format:
 C<arn:aws:gamelift:E<lt>regionE<gt>::gamesession/E<lt>fleet
 IDE<gt>/E<lt>custom ID string or idempotency tokenE<gt>>.)
 
@@ -99,8 +99,8 @@ IDE<gt>/E<lt>custom ID string or idempotency tokenE<gt>>.)
 
 Custom string that uniquely identifies a request for a new game
 session. Maximum token length is 48 characters. If provided, this
-string is included in the new game session's ID. (A game session ID has
-the following format:
+string is included in the new game session's ID. (A game session ARN
+has the following format:
 C<arn:aws:gamelift:E<lt>regionE<gt>::gamesession/E<lt>fleet
 IDE<gt>/E<lt>custom ID string or idempotency tokenE<gt>>.) Idempotency
 tokens remain in use for 30 days after a game session has ended; game

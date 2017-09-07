@@ -66,34 +66,34 @@ force when in an C<ACTIVE> status.
 
 =item *
 
-B<ACTIVE> E<ndash> The scaling policy is currently in force.
+B<ACTIVE> -- The scaling policy is currently in force.
 
 =item *
 
-B<UPDATEREQUESTED> E<ndash> A request to update the scaling policy has
-been received.
+B<UPDATEREQUESTED> -- A request to update the scaling policy has been
+received.
 
 =item *
 
-B<UPDATING> E<ndash> A change is being made to the scaling policy.
+B<UPDATING> -- A change is being made to the scaling policy.
 
 =item *
 
-B<DELETEREQUESTED> E<ndash> A request to delete the scaling policy has
-been received.
+B<DELETEREQUESTED> -- A request to delete the scaling policy has been
+received.
 
 =item *
 
-B<DELETING> E<ndash> The scaling policy is being deleted.
+B<DELETING> -- The scaling policy is being deleted.
 
 =item *
 
-B<DELETED> E<ndash> The scaling policy has been deleted.
+B<DELETED> -- The scaling policy has been deleted.
 
 =item *
 
-B<ERROR> E<ndash> An error occurred in creating the policy. It should
-be removed and recreated.
+B<ERROR> -- An error occurred in creating the policy. It should be
+removed and recreated.
 
 =back
 

@@ -186,25 +186,25 @@ is a number expressed in Unix time as milliseconds (for example
 
 =item *
 
-B<PENDING> E<ndash> The placement request is currently in the queue
-waiting to be processed.
+B<PENDING> -- The placement request is currently in the queue waiting
+to be processed.
 
 =item *
 
-B<FULFILLED> E<ndash> A new game session and player sessions (if
-requested) have been successfully created. Values for I<GameSessionArn>
-and I<GameSessionRegion> are available.
+B<FULFILLED> -- A new game session and player sessions (if requested)
+have been successfully created. Values for I<GameSessionArn> and
+I<GameSessionRegion> are available.
 
 =item *
 
-B<CANCELLED> E<ndash> The placement request was canceled with a call to
+B<CANCELLED> -- The placement request was canceled with a call to
 StopGameSessionPlacement.
 
 =item *
 
-B<TIMED_OUT> E<ndash> A new game session was not successfully created
-before the time limit expired. You can resubmit the placement request
-as needed.
+B<TIMED_OUT> -- A new game session was not successfully created before
+the time limit expired. You can resubmit the placement request as
+needed.
 
 =back
 

@@ -128,7 +128,7 @@ sessions a player can create.
 
 =head2 FleetId => Str
 
-  Unique identifier for a fleet the game session is running on.
+  Unique identifier for a fleet that the game session is running on.
 
 
 =head2 GameProperties => ArrayRef[L<Paws::GameLift::GameProperty>]
@@ -149,7 +149,7 @@ passed to the game server with a request to start a new game session
 
 =head2 GameSessionId => Str
 
-  Unique identifier for the game session. A game session ID has the
+  Unique identifier for the game session. A game session ARN has the
 following format:
 C<arn:aws:gamelift:E<lt>regionE<gt>::gamesession/E<lt>fleet
 IDE<gt>/E<lt>custom ID string or idempotency tokenE<gt>>.
