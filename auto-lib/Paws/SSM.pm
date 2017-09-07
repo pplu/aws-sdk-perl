@@ -1639,7 +1639,7 @@ Returns: a L<Paws::SSM::SendCommandResult> instance
   Executes commands on one or more managed instances.
 
 
-=head2 StartAutomationExecution(DocumentName => Str, [DocumentVersion => Str, Parameters => L<Paws::SSM::AutomationParameterMap>])
+=head2 StartAutomationExecution(DocumentName => Str, [ClientToken => Str, DocumentVersion => Str, Parameters => L<Paws::SSM::AutomationParameterMap>])
 
 Each argument is described in detail in: L<Paws::SSM::StartAutomationExecution>
 
