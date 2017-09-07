@@ -69,7 +69,7 @@ instances.
 =head2 B<REQUIRED> UserArn => Str
 
 The Amazon Resource Name (ARN) for the IAM user you want to add to the
-DevHub project.
+AWS CodeStar project.
 
 
 
