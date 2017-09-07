@@ -384,6 +384,8 @@ L<Paws::MarketplaceMetering>
 
 L<Paws::MigrationHub>
 
+L<Paws::MobileHub>
+
 L<Paws::MTurk>
 
 L<Paws::OpsWorks>

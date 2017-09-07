@@ -78,6 +78,7 @@ package Paws::API::ServiceToClass;
    'marketplace-entitlement' => 'MarketplaceEntitlement',
     meteringmarketplace => 'MarketplaceMetering',
     mgh => 'MigrationHub',
+    mobile => 'MobileHub',
     monitoring => 'CloudWatch',
     mturk => 'MTurk',
     opsworks => 'OpsWorks',

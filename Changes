@@ -1,4 +1,5 @@
 0.35
+ - New API: MobileHub
  - New API: MigrationHub
  - New API: Glue
  - New API: CloudHSMv2
@@ -14,6 +15,7 @@
  - API update: CloudDirectory 
  - API update: Pinpoint
  - API update: CodeDeploy
+ - API update: CodeStar
  - API update: Config
  - API update: Inspector
  - API update: SES
@@ -30,6 +32,7 @@
  - API update: LexModels
  - API update: CodeBuild
  - API update: ApplicationAutoScaling
+ - API update: Budget
 
 0.34 07 Jul 2017
  - New Credential provider: Paws::Credential::ECSContainerProfile (gadgetjunkie)
