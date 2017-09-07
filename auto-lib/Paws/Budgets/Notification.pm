@@ -3,6 +3,7 @@ package Paws::Budgets::Notification;
   has ComparisonOperator => (is => 'ro', isa => 'Str', required => 1);
   has NotificationType => (is => 'ro', isa => 'Str', required => 1);
   has Threshold => (is => 'ro', isa => 'Num', required => 1);
+  has ThresholdType => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -22,7 +23,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Budgets::Notification object:
 
-  $service_obj->Method(Att1 => { ComparisonOperator => $value, ..., Threshold => $value  });
+  $service_obj->Method(Att1 => { ComparisonOperator => $value, ..., ThresholdType => $value  });
 
 =head3 Results returned from an API call
 
@@ -50,6 +51,11 @@ different settings.
 
 
 =head2 B<REQUIRED> Threshold => Num
+
+  
+
+
+=head2 ThresholdType => Str
 
   
 

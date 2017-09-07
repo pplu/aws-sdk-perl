@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Budgets::Ti
 
 =head1 DESCRIPTION
 
-A time period indicated the start date and end date of a budget.
+A time period indicating the start date and end date of a budget.
 
 =head1 ATTRIBUTES
 
