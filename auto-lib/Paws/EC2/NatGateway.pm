@@ -9,6 +9,7 @@ package Paws::EC2::NatGateway;
   has ProvisionedBandwidth => (is => 'ro', isa => 'Paws::EC2::ProvisionedBandwidth', request_name => 'provisionedBandwidth', traits => ['NameInRequest']);
   has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
   has SubnetId => (is => 'ro', isa => 'Str', request_name => 'subnetId', traits => ['NameInRequest']);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest']);
   has VpcId => (is => 'ro', isa => 'Str', request_name => 'vpcId', traits => ['NameInRequest']);
 1;
 
@@ -162,6 +163,11 @@ processing traffic.
 =head2 SubnetId => Str
 
   The ID of the subnet in which the NAT gateway is located.
+
+
+=head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
+
+  The tags for the NAT gateway.
 
 
 =head2 VpcId => Str
