@@ -33,6 +33,7 @@
  - API update: CodeBuild
  - API update: ApplicationAutoScaling
  - API update: Budget
+ - API update: Route53
 
 0.34 07 Jul 2017
  - New Credential provider: Paws::Credential::ECSContainerProfile (gadgetjunkie)
