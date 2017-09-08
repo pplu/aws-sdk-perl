@@ -48,50 +48,59 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 HealthCheckIntervalSeconds => Int
 
 The approximate amount of time, in seconds, between health checks of an
-individual target. The default is 30 seconds.
+individual target. For Application Load Balancers, the range is 5 to
+300 seconds. For Network Load Balancers, the supported values are 10 or
+30 seconds. The default is 30 seconds.
 
 
 
 =head2 HealthCheckPath => Str
 
-The ping path that is the destination on the targets for health checks.
-The default is /.
+[HTTP/HTTPS health checks] The ping path that is the destination on the
+targets for health checks. The default is /.
 
 
 
 =head2 HealthCheckPort => Str
 
 The port the load balancer uses when performing health checks on
-targets. The default is C<traffic-port>, which indicates the port on
-which each target receives traffic from the load balancer.
+targets. The default is C<traffic-port>, which is the port on which
+each target receives traffic from the load balancer.
 
 
 
 =head2 HealthCheckProtocol => Str
 
 The protocol the load balancer uses when performing health checks on
-targets. The default is the HTTP protocol.
+targets. The TCP protocol is supported only if the protocol of the
+target group is TCP. For Application Load Balancers, the default is
+HTTP. For Network Load Balancers, the default is TCP.
 
-Valid values are: C<"HTTP">, C<"HTTPS">
+Valid values are: C<"HTTP">, C<"HTTPS">, C<"TCP">
 
 =head2 HealthCheckTimeoutSeconds => Int
 
 The amount of time, in seconds, during which no response from a target
-means a failed health check. The default is 5 seconds.
+means a failed health check. For Application Load Balancers, the range
+is 2 to 60 seconds and the default is 5 seconds. For Network Load
+Balancers, this is 10 seconds for TCP and HTTPS health checks and 6
+seconds for HTTP health checks.
 
 
 
 =head2 HealthyThresholdCount => Int
 
 The number of consecutive health checks successes required before
-considering an unhealthy target healthy. The default is 5.
+considering an unhealthy target healthy. For Application Load
+Balancers, the default is 5. For Network Load Balancers, the default is
+3.
 
 
 
 =head2 Matcher => L<Paws::ELBv2::Matcher>
 
-The HTTP codes to use when checking for a successful response from a
-target. The default is 200.
+[HTTP/HTTPS health checks] The HTTP codes to use when checking for a
+successful response from a target.
 
 
 
@@ -114,9 +123,11 @@ you specify a port override when registering the target.
 
 =head2 B<REQUIRED> Protocol => Str
 
-The protocol to use for routing traffic to the targets.
+The protocol to use for routing traffic to the targets. For Application
+Load Balancers, the supported protocols are HTTP and HTTPS. For Network
+Load Balancers, the supported protocol is TCP.
 
-Valid values are: C<"HTTP">, C<"HTTPS">
+Valid values are: C<"HTTP">, C<"HTTPS">, C<"TCP">
 
 =head2 TargetType => Str
 
@@ -137,7 +148,9 @@ Valid values are: C<"instance">, C<"ip">
 =head2 UnhealthyThresholdCount => Int
 
 The number of consecutive health check failures required before
-considering a target unhealthy. The default is 2.
+considering a target unhealthy. For Application Load Balancers, the
+default is 2. For Network Load Balancers, this value must be the same
+as the healthy threshold count.
 
 
 

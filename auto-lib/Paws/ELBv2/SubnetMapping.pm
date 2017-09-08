@@ -1,15 +1,14 @@
-package Paws::ELBv2::AvailabilityZone;
+package Paws::ELBv2::SubnetMapping;
   use Moose;
-  has LoadBalancerAddresses => (is => 'ro', isa => 'ArrayRef[Paws::ELBv2::LoadBalancerAddress]');
+  has AllocationId => (is => 'ro', isa => 'Str');
   has SubnetId => (is => 'ro', isa => 'Str');
-  has ZoneName => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::ELBv2::AvailabilityZone
+Paws::ELBv2::SubnetMapping
 
 =head1 USAGE
 
@@ -20,37 +19,32 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::ELBv2::AvailabilityZone object:
+As an example, if Att1 is expected to be a Paws::ELBv2::SubnetMapping object:
 
-  $service_obj->Method(Att1 => { LoadBalancerAddresses => $value, ..., ZoneName => $value  });
+  $service_obj->Method(Att1 => { AllocationId => $value, ..., SubnetId => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::ELBv2::AvailabilityZone object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::ELBv2::SubnetMapping object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->LoadBalancerAddresses
+  $result->Att1->AllocationId
 
 =head1 DESCRIPTION
 
-Information about an Availability Zone.
+Information about a subnet mapping.
 
 =head1 ATTRIBUTES
 
 
-=head2 LoadBalancerAddresses => ArrayRef[L<Paws::ELBv2::LoadBalancerAddress>]
+=head2 AllocationId => Str
 
-  [Network Load Balancers] The static IP address.
+  [Network Load Balancers] The allocation ID of the Elastic IP address.
 
 
 =head2 SubnetId => Str
 
   The ID of the subnet.
-
-
-=head2 ZoneName => Str
-
-  The name of the Availability Zone.
 
 
 

@@ -1,13 +1,14 @@
-package Paws::ELBv2::Matcher;
+package Paws::ELBv2::LoadBalancerAddress;
   use Moose;
-  has HttpCode => (is => 'ro', isa => 'Str', required => 1);
+  has AllocationId => (is => 'ro', isa => 'Str');
+  has IpAddress => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::ELBv2::Matcher
+Paws::ELBv2::LoadBalancerAddress
 
 =head1 USAGE
 
@@ -18,34 +19,32 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::ELBv2::Matcher object:
+As an example, if Att1 is expected to be a Paws::ELBv2::LoadBalancerAddress object:
 
-  $service_obj->Method(Att1 => { HttpCode => $value, ..., HttpCode => $value  });
+  $service_obj->Method(Att1 => { AllocationId => $value, ..., IpAddress => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::ELBv2::Matcher object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::ELBv2::LoadBalancerAddress object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->HttpCode
+  $result->Att1->AllocationId
 
 =head1 DESCRIPTION
 
-Information to use when checking for a successful response from a
-target.
+Information about a static IP address for a load balancer.
 
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> HttpCode => Str
+=head2 AllocationId => Str
 
-  The HTTP codes.
+  [Network Load Balancers] The allocation ID of the Elastic IP address.
 
-For Application Load Balancers, you can specify values between 200 and
-499, and the default value is 200. You can specify multiple values (for
-example, "200,202") or a range of values (for example, "200-299").
 
-For Network Load Balancers, this is 200 to 399.
+=head2 IpAddress => Str
+
+  The static IP address.
 
 
 

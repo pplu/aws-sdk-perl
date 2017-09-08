@@ -52,21 +52,21 @@ default value is 300 seconds.
 
 =item *
 
-C<stickiness.enabled> - Indicates whether sticky sessions are enabled.
-The value is C<true> or C<false>.
+C<stickiness.enabled> - [Application Load Balancers] Indicates whether
+sticky sessions are enabled. The value is C<true> or C<false>.
 
 =item *
 
-C<stickiness.type> - The type of sticky sessions. The possible value is
-C<lb_cookie>.
+C<stickiness.type> - [Application Load Balancers] The type of sticky
+sessions. The possible value is C<lb_cookie>.
 
 =item *
 
-C<stickiness.lb_cookie.duration_seconds> - The time period, in seconds,
-during which requests from a client should be routed to the same
-target. After this time period expires, the load balancer-generated
-cookie is considered stale. The range is 1 second to 1 week (604800
-seconds). The default value is 1 day (86400 seconds).
+C<stickiness.lb_cookie.duration_seconds> - [Application Load Balancers]
+The time period, in seconds, during which requests from a client should
+be routed to the same target. After this time period expires, the load
+balancer-generated cookie is considered stale. The range is 1 second to
+1 week (604800 seconds). The default value is 1 day (86400 seconds).
 
 =back
 

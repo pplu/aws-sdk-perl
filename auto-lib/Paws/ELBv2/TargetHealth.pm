@@ -112,6 +112,11 @@ load balancer.
 
 =item *
 
+C<Target.IpUnusable> - The target IP address is reserved for use by a
+load balancer.
+
+=item *
+
 C<Target.InvalidState> - The target is in the stopped or terminated
 state.
 

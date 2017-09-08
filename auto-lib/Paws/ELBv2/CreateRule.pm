@@ -45,7 +45,8 @@ group.
 
 =head2 B<REQUIRED> Conditions => ArrayRef[L<Paws::ELBv2::RuleCondition>]
 
-A condition. Each condition specifies a field name and a single value.
+The conditions. Each condition specifies a field name and a single
+value.
 
 If the field name is C<host-header>, you can specify a single host name
 (for example, my.example.com). A host name is case insensitive, can be

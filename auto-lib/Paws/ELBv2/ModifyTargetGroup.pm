@@ -44,32 +44,38 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 HealthCheckIntervalSeconds => Int
 
 The approximate amount of time, in seconds, between health checks of an
-individual target.
+individual target. For Application Load Balancers, the range is 5 to
+300 seconds. For Network Load Balancers, the supported values are 10 or
+30 seconds.
 
 
 
 =head2 HealthCheckPath => Str
 
-The ping path that is the destination for the health check request.
+[HTTP/HTTPS health checks] The ping path that is the destination for
+the health check request.
 
 
 
 =head2 HealthCheckPort => Str
 
-The port to use to connect with the target.
+The port the load balancer uses when performing health checks on
+targets.
 
 
 
 =head2 HealthCheckProtocol => Str
 
-The protocol to use to connect with the target.
+The protocol the load balancer uses when performing health checks on
+targets. The TCP protocol is supported only if the protocol of the
+target group is TCP.
 
-Valid values are: C<"HTTP">, C<"HTTPS">
+Valid values are: C<"HTTP">, C<"HTTPS">, C<"TCP">
 
 =head2 HealthCheckTimeoutSeconds => Int
 
-The amount of time, in seconds, during which no response means a failed
-health check.
+[HTTP/HTTPS health checks] The amount of time, in seconds, during which
+no response means a failed health check.
 
 
 
@@ -82,8 +88,8 @@ considering an unhealthy target healthy.
 
 =head2 Matcher => L<Paws::ELBv2::Matcher>
 
-The HTTP codes to use when checking for a successful response from a
-target.
+[HTTP/HTTPS health checks] The HTTP codes to use when checking for a
+successful response from a target.
 
 
 
@@ -96,7 +102,8 @@ The Amazon Resource Name (ARN) of the target group.
 =head2 UnhealthyThresholdCount => Int
 
 The number of consecutive health check failures required before
-considering the target unhealthy.
+considering the target unhealthy. For Network Load Balancers, this
+value must be the same as the healthy threshold count.
 
 
 
