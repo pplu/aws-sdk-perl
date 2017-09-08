@@ -64,6 +64,11 @@ package Paws::Route53;
     my $call_object = $self->new_with_coercions('Paws::Route53::CreateHostedZone', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateQueryLoggingConfig {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Route53::CreateQueryLoggingConfig', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateReusableDelegationSet {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Route53::CreateReusableDelegationSet', @_);
@@ -97,6 +102,11 @@ package Paws::Route53;
   sub DeleteHostedZone {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Route53::DeleteHostedZone', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteQueryLoggingConfig {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Route53::DeleteQueryLoggingConfig', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteReusableDelegationSet {
@@ -169,6 +179,11 @@ package Paws::Route53;
     my $call_object = $self->new_with_coercions('Paws::Route53::GetHostedZoneCount', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetQueryLoggingConfig {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Route53::GetQueryLoggingConfig', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetReusableDelegationSet {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Route53::GetReusableDelegationSet', @_);
@@ -207,6 +222,11 @@ package Paws::Route53;
   sub ListHostedZonesByName {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Route53::ListHostedZonesByName', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListQueryLoggingConfigs {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Route53::ListQueryLoggingConfigs', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListResourceRecordSets {
@@ -356,7 +376,7 @@ package Paws::Route53;
   }
 
 
-  sub operations { qw/AssociateVPCWithHostedZone ChangeResourceRecordSets ChangeTagsForResource CreateHealthCheck CreateHostedZone CreateReusableDelegationSet CreateTrafficPolicy CreateTrafficPolicyInstance CreateTrafficPolicyVersion CreateVPCAssociationAuthorization DeleteHealthCheck DeleteHostedZone DeleteReusableDelegationSet DeleteTrafficPolicy DeleteTrafficPolicyInstance DeleteVPCAssociationAuthorization DisassociateVPCFromHostedZone GetChange GetCheckerIpRanges GetGeoLocation GetHealthCheck GetHealthCheckCount GetHealthCheckLastFailureReason GetHealthCheckStatus GetHostedZone GetHostedZoneCount GetReusableDelegationSet GetTrafficPolicy GetTrafficPolicyInstance GetTrafficPolicyInstanceCount ListGeoLocations ListHealthChecks ListHostedZones ListHostedZonesByName ListResourceRecordSets ListReusableDelegationSets ListTagsForResource ListTagsForResources ListTrafficPolicies ListTrafficPolicyInstances ListTrafficPolicyInstancesByHostedZone ListTrafficPolicyInstancesByPolicy ListTrafficPolicyVersions ListVPCAssociationAuthorizations TestDNSAnswer UpdateHealthCheck UpdateHostedZoneComment UpdateTrafficPolicyComment UpdateTrafficPolicyInstance / }
+  sub operations { qw/AssociateVPCWithHostedZone ChangeResourceRecordSets ChangeTagsForResource CreateHealthCheck CreateHostedZone CreateQueryLoggingConfig CreateReusableDelegationSet CreateTrafficPolicy CreateTrafficPolicyInstance CreateTrafficPolicyVersion CreateVPCAssociationAuthorization DeleteHealthCheck DeleteHostedZone DeleteQueryLoggingConfig DeleteReusableDelegationSet DeleteTrafficPolicy DeleteTrafficPolicyInstance DeleteVPCAssociationAuthorization DisassociateVPCFromHostedZone GetChange GetCheckerIpRanges GetGeoLocation GetHealthCheck GetHealthCheckCount GetHealthCheckLastFailureReason GetHealthCheckStatus GetHostedZone GetHostedZoneCount GetQueryLoggingConfig GetReusableDelegationSet GetTrafficPolicy GetTrafficPolicyInstance GetTrafficPolicyInstanceCount ListGeoLocations ListHealthChecks ListHostedZones ListHostedZonesByName ListQueryLoggingConfigs ListResourceRecordSets ListReusableDelegationSets ListTagsForResource ListTagsForResources ListTrafficPolicies ListTrafficPolicyInstances ListTrafficPolicyInstancesByHostedZone ListTrafficPolicyInstancesByPolicy ListTrafficPolicyVersions ListVPCAssociationAuthorizations TestDNSAnswer UpdateHealthCheck UpdateHostedZoneComment UpdateTrafficPolicyComment UpdateTrafficPolicyInstance / }
 
 1;
 
@@ -639,6 +659,169 @@ and SOA records are available, the status of the zone changes to
 C<INSYNC>.
 
 
+=head2 CreateQueryLoggingConfig(CloudWatchLogsLogGroupArn => Str, HostedZoneId => Str)
+
+Each argument is described in detail in: L<Paws::Route53::CreateQueryLoggingConfig>
+
+Returns: a L<Paws::Route53::CreateQueryLoggingConfigResponse> instance
+
+  Creates a configuration for DNS query logging. After you create a query
+logging configuration, Amazon Route 53 begins to publish log data to an
+Amazon CloudWatch Logs log group.
+
+DNS query logs contain information about the queries that Amazon Route
+53 receives for a specified public hosted zone, such as the following:
+
+=over
+
+=item *
+
+Amazon Route 53 edge location that responded to the DNS query
+
+=item *
+
+Domain or subdomain that was requested
+
+=item *
+
+DNS record type, such as A or AAAA
+
+=item *
+
+DNS response code, such as C<NoError> or C<ServFail>
+
+=back
+
+=over
+
+=item Log Group and Resource Policy
+
+Before you create a query logging configuration, perform the following
+operations.
+
+If you create a query logging configuration using the Amazon Route 53
+console, Amazon Route 53 performs these operations automatically.
+
+=over
+
+=item 1.
+
+Create a CloudWatch Logs log group, and make note of the ARN, which you
+specify when you create a query logging configuration. Note the
+following:
+
+=over
+
+=item *
+
+You must create the log group in the us-east-1 region.
+
+=item *
+
+You must use the same AWS account to create the log group and the
+hosted zone that you want to configure query logging for.
+
+=item *
+
+When you create log groups for query logging, we recommend that you use
+a consistent prefix, for example:
+
+C</aws/route53/I<hosted zone name>>
+
+In the next step, you'll create a resource policy, which controls
+access to one or more log groups and the associated AWS resources, such
+as Amazon Route 53 hosted zones. There's a limit on the number of
+resource policies that you can create, so we recommend that you use a
+consistent prefix so you can use the same resource policy for all the
+log groups that you create for query logging.
+
+=back
+
+=item 2.
+
+Create a CloudWatch Logs resource policy, and give it the permissions
+that Amazon Route 53 needs to create log streams and to to send query
+logs to log streams. For the value of C<Resource>, specify the ARN for
+the log group that you created in the previous step. To use the same
+resource policy for all the CloudWatch Logs log groups that you created
+for query logging configurations, replace the hosted zone name with
+C<*>, for example:
+
+C<arn:aws:logs:us-east-1:123412341234:log-group:/aws/route53/*>
+
+You can't use the CloudWatch console to create or edit a resource
+policy. You must use the CloudWatch API, one of the AWS SDKs, or the
+AWS CLI.
+
+=back
+
+=item Log Streams and Edge Locations
+
+When Amazon Route 53 finishes creating the configuration for DNS query
+logging, it does the following:
+
+=over
+
+=item *
+
+Creates a log stream for an edge location the first time that the edge
+location responds to DNS queries for the specified hosted zone. That
+log stream is used to log all queries that Amazon Route 53 responds to
+for that edge location.
+
+=item *
+
+Begins to send query logs to the applicable log stream.
+
+=back
+
+The name of each log stream is in the following format:
+
+C<I<hosted zone ID>/I<edge location code>>
+
+The edge location code is a three-letter code and an arbitrarily
+assigned number, for example, DFW3. The three-letter code typically
+corresponds with the International Air Transport Association airport
+code for an airport near the edge location. (These abbreviations might
+change in the future.) For a list of edge locations, see "The Amazon
+Route 53 Global Network" on the Amazon Route 53 Product Details page.
+
+=item Queries That Are Logged
+
+Query logs contain only the queries that DNS resolvers forward to
+Amazon Route 53. If a DNS resolver has already cached the response to a
+query (such as the IP address for a load balancer for example.com), the
+resolver will continue to return the cached response. It doesn't
+forward another query to Amazon Route 53 until the TTL for the
+corresponding resource record set expires. Depending on how many DNS
+queries are submitted for a resource record set, and depending on the
+TTL for that resource record set, query logs might contain information
+about only one query out of every several thousand queries that are
+submitted to DNS. For more information about how DNS works, see Routing
+Internet Traffic to Your Website or Web Application in the I<Amazon
+Route 53 Developer Guide>.
+
+=item Log File Format
+
+For a list of the values in each query log and the format of each
+value, see Logging DNS Queries in the I<Amazon Route 53 Developer
+Guide>.
+
+=item Pricing
+
+For information about charges for query logs, see Amazon CloudWatch
+Pricing.
+
+=item How to Stop Logging
+
+If you want Amazon Route 53 to stop sending query logs to CloudWatch
+Logs, delete the query logging configuration. For more information, see
+DeleteQueryLoggingConfig.
+
+=back
+
+
+
 =head2 CreateReusableDelegationSet(CallerReference => Str, [HostedZoneId => Str])
 
 Each argument is described in detail in: L<Paws::Route53::CreateReusableDelegationSet>
@@ -784,6 +967,21 @@ associated with the current AWS account.
 
 =back
 
+
+
+=head2 DeleteQueryLoggingConfig(Id => Str)
+
+Each argument is described in detail in: L<Paws::Route53::DeleteQueryLoggingConfig>
+
+Returns: a L<Paws::Route53::DeleteQueryLoggingConfigResponse> instance
+
+  Deletes a configuration for DNS query logging. If you delete a
+configuration, Amazon Route 53 stops sending query logs to CloudWatch
+Logs. Amazon Route 53 doesn't delete any logs that are already in
+CloudWatch Logs.
+
+For more information about DNS query logs, see
+CreateQueryLoggingConfig.
 
 
 =head2 DeleteReusableDelegationSet(Id => Str)
@@ -982,6 +1180,18 @@ Returns: a L<Paws::Route53::GetHostedZoneCountResponse> instance
 current AWS account.
 
 
+=head2 GetQueryLoggingConfig(Id => Str)
+
+Each argument is described in detail in: L<Paws::Route53::GetQueryLoggingConfig>
+
+Returns: a L<Paws::Route53::GetQueryLoggingConfigResponse> instance
+
+  Gets information about a specified configuration for DNS query logging.
+
+For more information about DNS query logs, see CreateQueryLoggingConfig
+and Logging DNS Queries.
+
+
 =head2 GetReusableDelegationSet(Id => Str)
 
 Each argument is described in detail in: L<Paws::Route53::GetReusableDelegationSet>
@@ -1140,6 +1350,22 @@ C<dnsname> and C<hostedzoneid> parameters, respectively.
 
 =back
 
+
+
+=head2 ListQueryLoggingConfigs([HostedZoneId => Str, MaxResults => Str, NextToken => Str])
+
+Each argument is described in detail in: L<Paws::Route53::ListQueryLoggingConfigs>
+
+Returns: a L<Paws::Route53::ListQueryLoggingConfigsResponse> instance
+
+  Lists the configurations for DNS query logging that are associated with
+the current AWS account or the configuration that is associated with a
+specified hosted zone.
+
+For more information about DNS query logs, see
+CreateQueryLoggingConfig. Additional information, including the format
+of DNS query logs, appears in Logging DNS Queries in the I<Amazon Route
+53 Developer Guide>.
 
 
 =head2 ListResourceRecordSets(HostedZoneId => Str, [MaxItems => Str, StartRecordIdentifier => Str, StartRecordName => Str, StartRecordType => Str])
