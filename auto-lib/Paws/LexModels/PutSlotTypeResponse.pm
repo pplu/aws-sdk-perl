@@ -56,8 +56,8 @@ The name of the slot type.
 
 =head2 ValueSelectionStrategy => Str
 
-The strategy that Amazon Lex uses to determine the value of the slot.
-For more information, see PutSlotType.
+The slot resolution strategy that Amazon Lex uses to determine the
+value of the slot. For more information, see PutSlotType.
 
 Valid values are: C<"ORIGINAL_VALUE">, C<"TOP_RESOLUTION">
 =head2 Version => Str

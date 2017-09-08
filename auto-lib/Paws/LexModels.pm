@@ -123,6 +123,11 @@ package Paws::LexModels;
     my $call_object = $self->new_with_coercions('Paws::LexModels::GetBuiltinSlotTypes', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetExport {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::LexModels::GetExport', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetIntent {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::LexModels::GetIntent', @_);
@@ -181,7 +186,7 @@ package Paws::LexModels;
   
 
 
-  sub operations { qw/CreateBotVersion CreateIntentVersion CreateSlotTypeVersion DeleteBot DeleteBotAlias DeleteBotChannelAssociation DeleteBotVersion DeleteIntent DeleteIntentVersion DeleteSlotType DeleteSlotTypeVersion DeleteUtterances GetBot GetBotAlias GetBotAliases GetBotChannelAssociation GetBotChannelAssociations GetBots GetBotVersions GetBuiltinIntent GetBuiltinIntents GetBuiltinSlotTypes GetIntent GetIntents GetIntentVersions GetSlotType GetSlotTypes GetSlotTypeVersions GetUtterancesView PutBot PutBotAlias PutIntent PutSlotType / }
+  sub operations { qw/CreateBotVersion CreateIntentVersion CreateSlotTypeVersion DeleteBot DeleteBotAlias DeleteBotChannelAssociation DeleteBotVersion DeleteIntent DeleteIntentVersion DeleteSlotType DeleteSlotTypeVersion DeleteUtterances GetBot GetBotAlias GetBotAliases GetBotChannelAssociation GetBotChannelAssociations GetBots GetBotVersions GetBuiltinIntent GetBuiltinIntents GetBuiltinSlotTypes GetExport GetIntent GetIntents GetIntentVersions GetSlotType GetSlotTypes GetSlotTypeVersions GetUtterancesView PutBot PutBotAlias PutIntent PutSlotType / }
 
 1;
 
@@ -592,6 +597,15 @@ I<Alexa Skills Kit>.
 
 This operation requires permission for the C<lex:GetBuiltInSlotTypes>
 action.
+
+
+=head2 GetExport(ExportType => Str, Name => Str, ResourceType => Str, Version => Str)
+
+Each argument is described in detail in: L<Paws::LexModels::GetExport>
+
+Returns: a L<Paws::LexModels::GetExportResponse> instance
+
+  Exports the contents of a Amazon Lex resource in a specified format.
 
 
 =head2 GetIntent(Name => Str, Version => Str)

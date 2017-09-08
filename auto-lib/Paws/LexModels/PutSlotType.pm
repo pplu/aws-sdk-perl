@@ -93,14 +93,15 @@ I<Alexa Skills Kit>.
 
 =head2 ValueSelectionStrategy => Str
 
-Determines the strategy that Amazon Lex uses to return slot type
-values. The field can be set to one of the following values:
+Determines the slot resolution strategy that Amazon Lex uses to return
+slot type values. The field can be set to one of the following values:
 
 =over
 
 =item *
 
-C<ORIGINAL_VALUE> - Returns the value entered by the user.
+C<ORIGINAL_VALUE> - Returns the value entered by the user, if the user
+value is similar to the slot value.
 
 =item *
 
@@ -110,8 +111,8 @@ is no resolution list, null is returned.
 
 =back
 
-If you don't specify the C<valueSelectionStrategy> is not provided, the
-default is C<ORIGINAL_VALUE>.
+If you don't specify the C<valueSelectionStrategy>, the default is
+C<ORIGINAL_VALUE>.
 
 Valid values are: C<"ORIGINAL_VALUE">, C<"TOP_RESOLUTION">
 
