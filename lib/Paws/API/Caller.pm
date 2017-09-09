@@ -102,6 +102,12 @@ package Paws::API::Caller;
     my ($self, $call_object, $http_status, $content, $headers) = @_;
 
     $call_object = $call_object->meta->name;
+    if ( $call_object->can('_returns_plain') ) {
+        my $class = $call_object->_returns_plain;
+        Paws->load_class($class);
+        my $o_result = $class->new( Value => $content );
+        return $o_result;
+    }
 
     my $returns = (defined $call_object->_returns) && ($call_object->_returns ne 'Paws::API::Response');
     my $ret_class = $returns ? $call_object->_returns : 'Paws::API::Response';
