@@ -171,10 +171,11 @@ C<UNMANAGED> compute environments.
 In a managed compute environment, AWS Batch manages the compute
 resources within the environment, based on the compute resources that
 you specify. Instances launched into a managed compute environment use
-the latest Amazon ECS-optimized AMI. You can choose to use Amazon EC2
-On-Demand instances in your managed compute environment, or you can use
-Amazon EC2 Spot instances that only launch when the Spot bid price is
-below a specified percentage of the On-Demand price.
+a recent, approved version of the Amazon ECS-optimized AMI. You can
+choose to use Amazon EC2 On-Demand instances in your managed compute
+environment, or you can use Amazon EC2 Spot instances that only launch
+when the Spot bid price is below a specified percentage of the
+On-Demand price.
 
 In an unmanaged compute environment, you can manage your own compute
 resources. This provides more compute resource configuration options,
@@ -227,8 +228,8 @@ Each argument is described in detail in: L<Paws::Batch::DeleteJobQueue>
 Returns: a L<Paws::Batch::DeleteJobQueueResponse> instance
 
   Deletes the specified job queue. You must first disable submissions for
-a queue with the UpdateJobQueue operation and terminate any jobs that
-have not completed with the TerminateJob.
+a queue with the UpdateJobQueue operation. All jobs in the queue are
+terminated when you delete a job queue.
 
 It is not necessary to disassociate compute environments from a queue
 before submitting a C<DeleteJobQueue> request.
@@ -292,7 +293,8 @@ Each argument is described in detail in: L<Paws::Batch::ListJobs>
 Returns: a L<Paws::Batch::ListJobsResponse> instance
 
   Returns a list of task jobs for a specified job queue. You can filter
-the results by job status with the C<jobStatus> parameter.
+the results by job status with the C<jobStatus> parameter. If you do
+not specify a status, only C<RUNNING> jobs are returned.
 
 
 =head2 RegisterJobDefinition(JobDefinitionName => Str, Type => Str, [ContainerProperties => L<Paws::Batch::ContainerProperties>, Parameters => L<Paws::Batch::ParametersMap>, RetryStrategy => L<Paws::Batch::RetryStrategy>])

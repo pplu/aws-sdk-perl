@@ -86,7 +86,10 @@ container is running.
 
 =head2 LogStreamName => Str
 
-  
+  The name of the CloudWatch Logs log stream associated with the
+container. The log group for AWS Batch jobs is C</aws/batch/job>. Each
+container attempt receives a log stream name when they reach the
+C<RUNNING> status.
 
 
 =head2 Memory => Int
