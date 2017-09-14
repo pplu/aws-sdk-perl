@@ -9,6 +9,7 @@ package Paws::AutoScaling::CreateAutoScalingGroup;
   has HealthCheckType => (is => 'ro', isa => 'Str');
   has InstanceId => (is => 'ro', isa => 'Str');
   has LaunchConfigurationName => (is => 'ro', isa => 'Str');
+  has LifecycleHookSpecificationList => (is => 'ro', isa => 'ArrayRef[Paws::AutoScaling::LifecycleHookSpecification]');
   has LoadBalancerNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has MaxSize => (is => 'ro', isa => 'Int', required => 1);
   has MinSize => (is => 'ro', isa => 'Int', required => 1);
@@ -77,7 +78,9 @@ User Guide>.
 
 The number of EC2 instances that should be running in the group. This
 number must be greater than or equal to the minimum size of the group
-and less than or equal to the maximum size of the group.
+and less than or equal to the maximum size of the group. If you do not
+specify a desired capacity, the default is the minimum size of the
+group.
 
 
 
@@ -126,6 +129,12 @@ Instance in the I<Auto Scaling User Guide>.
 
 The name of the launch configuration. Alternatively, specify an EC2
 instance instead of a launch configuration.
+
+
+
+=head2 LifecycleHookSpecificationList => ArrayRef[L<Paws::AutoScaling::LifecycleHookSpecification>]
+
+One or more lifecycle hooks.
 
 
 

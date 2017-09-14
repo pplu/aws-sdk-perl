@@ -1,10 +1,8 @@
-package Paws::AutoScaling::LifecycleHook;
+package Paws::AutoScaling::LifecycleHookSpecification;
   use Moose;
-  has AutoScalingGroupName => (is => 'ro', isa => 'Str');
   has DefaultResult => (is => 'ro', isa => 'Str');
-  has GlobalTimeout => (is => 'ro', isa => 'Int');
   has HeartbeatTimeout => (is => 'ro', isa => 'Int');
-  has LifecycleHookName => (is => 'ro', isa => 'Str');
+  has LifecycleHookName => (is => 'ro', isa => 'Str', required => 1);
   has LifecycleTransition => (is => 'ro', isa => 'Str');
   has NotificationMetadata => (is => 'ro', isa => 'Str');
   has NotificationTargetARN => (is => 'ro', isa => 'Str');
@@ -15,7 +13,7 @@ package Paws::AutoScaling::LifecycleHook;
 
 =head1 NAME
 
-Paws::AutoScaling::LifecycleHook
+Paws::AutoScaling::LifecycleHookSpecification
 
 =head1 USAGE
 
@@ -26,16 +24,16 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::AutoScaling::LifecycleHook object:
+As an example, if Att1 is expected to be a Paws::AutoScaling::LifecycleHookSpecification object:
 
-  $service_obj->Method(Att1 => { AutoScalingGroupName => $value, ..., RoleARN => $value  });
+  $service_obj->Method(Att1 => { DefaultResult => $value, ..., RoleARN => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::AutoScaling::LifecycleHook object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::AutoScaling::LifecycleHookSpecification object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->AutoScalingGroupName
+  $result->Att1->DefaultResult
 
 =head1 DESCRIPTION
 
@@ -49,25 +47,12 @@ Scaling User Guide>.
 =head1 ATTRIBUTES
 
 
-=head2 AutoScalingGroupName => Str
-
-  The name of the Auto Scaling group for the lifecycle hook.
-
-
 =head2 DefaultResult => Str
 
   Defines the action the Auto Scaling group should take when the
 lifecycle hook timeout elapses or if an unexpected failure occurs. The
 valid values are C<CONTINUE> and C<ABANDON>. The default value is
 C<CONTINUE>.
-
-
-=head2 GlobalTimeout => Int
-
-  The maximum time, in seconds, that an instance can remain in a
-C<Pending:Wait> or C<Terminating:Wait> state. The maximum is 172800
-seconds (48 hours) or 100 times C<HeartbeatTimeout>, whichever is
-smaller.
 
 
 =head2 HeartbeatTimeout => Int
@@ -78,7 +63,7 @@ default action. You can prevent the lifecycle hook from timing out by
 calling RecordLifecycleActionHeartbeat.
 
 
-=head2 LifecycleHookName => Str
+=head2 B<REQUIRED> LifecycleHookName => Str
 
   The name of the lifecycle hook.
 

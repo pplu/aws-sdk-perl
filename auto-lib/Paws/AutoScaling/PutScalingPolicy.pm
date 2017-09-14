@@ -153,7 +153,7 @@ supported otherwise.
 
 =head2 TargetTrackingConfiguration => L<Paws::AutoScaling::TargetTrackingConfiguration>
 
-The configuration of a target tracking policy.
+A target tracking policy.
 
 This parameter is required if the policy type is
 C<TargetTrackingScaling> and not supported otherwise.

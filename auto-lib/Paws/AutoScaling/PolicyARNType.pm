@@ -18,9 +18,7 @@ Paws::AutoScaling::PolicyARNType
 
 =head2 Alarms => ArrayRef[L<Paws::AutoScaling::Alarm>]
 
-The CloudWatch alarms created for the target tracking policy. This
-parameter will be empty if the policy type is anything other than
-C<TargetTrackingScaling>.
+The CloudWatch alarms created for the target tracking policy.
 
 
 =head2 PolicyARN => Str

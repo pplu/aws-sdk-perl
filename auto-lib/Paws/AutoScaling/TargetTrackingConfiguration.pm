@@ -46,9 +46,11 @@ Represents a target tracking policy configuration.
 
 =head2 DisableScaleIn => Bool
 
-  If the parameter is true, then scale-in will be disabled for the target
-tracking policy, i.e. the target tracking policy will not scale in the
-Auto Scaling group. The default value is false.
+  Indicates whether scale in by the target tracking policy is disabled.
+If the value is C<true>, scale in is disabled and the target tracking
+policy won't remove instances from the Auto Scaling group. Otherwise,
+scale in is enabled and the target tracking policy can remove instances
+from the Auto Scaling group. The default value is C<false>.
 
 
 =head2 PredefinedMetricSpecification => L<Paws::AutoScaling::PredefinedMetricSpecification>

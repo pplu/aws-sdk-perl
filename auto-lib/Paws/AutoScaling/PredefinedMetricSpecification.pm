@@ -32,8 +32,20 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AutoScaling
 
 =head1 DESCRIPTION
 
-Configures a predefined metric for a target tracking policy. The
-following predefined metrics are available:
+Configures a predefined metric for a target tracking policy.
+
+=head1 ATTRIBUTES
+
+
+=head2 B<REQUIRED> PredefinedMetricType => Str
+
+  The metric type.
+
+
+=head2 ResourceLabel => Str
+
+  Identifies the resource associated with the metric type. The following
+predefined metrics are available:
 
 =over
 
@@ -59,23 +71,12 @@ in an Application Load Balancer target group
 
 =back
 
-
-=head1 ATTRIBUTES
-
-
-=head2 B<REQUIRED> PredefinedMetricType => Str
-
-  The metric type.
-
-
-=head2 ResourceLabel => Str
-
-  Identifies the resource associated with the metric type. For predefined
-metric types C<ASGAverageCPUUtilization>, C<ASGAverageNetworkIn> and
-C<ASGAverageNetworkOut>, the parameter must not be specified as the
-resource associated with the metric type is the Auto Scaling group. For
-predefined metric type C<ALBRequestCountPerTarget>, the parameter must
-be specified in the format
+For predefined metric types C<ASGAverageCPUUtilization>,
+C<ASGAverageNetworkIn> and C<ASGAverageNetworkOut>, the parameter must
+not be specified as the resource associated with the metric type is the
+Auto Scaling group. For predefined metric type
+C<ALBRequestCountPerTarget>, the parameter must be specified in the
+format:
 C<app/I<load-balancer-name>/I<load-balancer-id>/targetgroup/I<target-group-name>/I<target-group-id>
 >, where C<app/I<load-balancer-name>/I<load-balancer-id> > is the final
 portion of the load balancer ARN, and
