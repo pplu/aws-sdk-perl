@@ -5,12 +5,15 @@ package Paws::DeviceFarm::Run;
   has CompletedJobs => (is => 'ro', isa => 'Int', request_name => 'completedJobs', traits => ['NameInRequest']);
   has Counters => (is => 'ro', isa => 'Paws::DeviceFarm::Counters', request_name => 'counters', traits => ['NameInRequest']);
   has Created => (is => 'ro', isa => 'Str', request_name => 'created', traits => ['NameInRequest']);
+  has CustomerArtifactPaths => (is => 'ro', isa => 'Paws::DeviceFarm::CustomerArtifactPaths', request_name => 'customerArtifactPaths', traits => ['NameInRequest']);
   has DeviceMinutes => (is => 'ro', isa => 'Paws::DeviceFarm::DeviceMinutes', request_name => 'deviceMinutes', traits => ['NameInRequest']);
   has Message => (is => 'ro', isa => 'Str', request_name => 'message', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
   has NetworkProfile => (is => 'ro', isa => 'Paws::DeviceFarm::NetworkProfile', request_name => 'networkProfile', traits => ['NameInRequest']);
+  has ParsingResultUrl => (is => 'ro', isa => 'Str', request_name => 'parsingResultUrl', traits => ['NameInRequest']);
   has Platform => (is => 'ro', isa => 'Str', request_name => 'platform', traits => ['NameInRequest']);
   has Result => (is => 'ro', isa => 'Str', request_name => 'result', traits => ['NameInRequest']);
+  has ResultCode => (is => 'ro', isa => 'Str', request_name => 'resultCode', traits => ['NameInRequest']);
   has Started => (is => 'ro', isa => 'Str', request_name => 'started', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
   has Stopped => (is => 'ro', isa => 'Str', request_name => 'stopped', traits => ['NameInRequest']);
@@ -46,8 +49,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DeviceFarm:
 
 =head1 DESCRIPTION
 
-Represents an app on a set of devices with a specific test and
-configuration.
+Represents a test run on a set of devices with a given app package,
+test parameters, etc.
 
 =head1 ATTRIBUTES
 
@@ -79,6 +82,11 @@ C<metered>.
   When the run was created.
 
 
+=head2 CustomerArtifactPaths => L<Paws::DeviceFarm::CustomerArtifactPaths>
+
+  Output C<CustomerArtifactPaths> object for the test run.
+
+
 =head2 DeviceMinutes => L<Paws::DeviceFarm::DeviceMinutes>
 
   Represents the total (metered or unmetered) minutes used by the test
@@ -98,6 +106,14 @@ run.
 =head2 NetworkProfile => L<Paws::DeviceFarm::NetworkProfile>
 
   The network profile being used for a test run.
+
+
+=head2 ParsingResultUrl => Str
+
+  Read-only URL for an object in S3 bucket where you can get the parsing
+results of the test package. If the test package doesn't parse, the
+reason why it doesn't parse appears in the file that this URL points
+to.
 
 
 =head2 Platform => Str
@@ -158,6 +174,13 @@ STOPPED: A stopped condition.
 
 =back
 
+
+
+=head2 ResultCode => Str
+
+  Supporting field for the result field. Set only if C<result> is
+C<SKIPPED>. C<PARSING_FAILED> if the result is skipped because of test
+package parsing failure.
 
 
 =head2 Started => Str

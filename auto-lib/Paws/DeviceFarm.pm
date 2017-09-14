@@ -648,7 +648,7 @@ Returns: a L<Paws::DeviceFarm::CreateProjectResult> instance
   Creates a new project.
 
 
-=head2 CreateRemoteAccessSession(DeviceArn => Str, ProjectArn => Str, [Configuration => L<Paws::DeviceFarm::CreateRemoteAccessSessionConfiguration>, Name => Str])
+=head2 CreateRemoteAccessSession(DeviceArn => Str, ProjectArn => Str, [ClientId => Str, Configuration => L<Paws::DeviceFarm::CreateRemoteAccessSessionConfiguration>, Name => Str, RemoteDebugEnabled => Bool, SshPublicKey => Str])
 
 Each argument is described in detail in: L<Paws::DeviceFarm::CreateRemoteAccessSession>
 

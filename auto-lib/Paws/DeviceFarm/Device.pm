@@ -16,6 +16,7 @@ package Paws::DeviceFarm::Device;
   has Platform => (is => 'ro', isa => 'Str', request_name => 'platform', traits => ['NameInRequest']);
   has Radio => (is => 'ro', isa => 'Str', request_name => 'radio', traits => ['NameInRequest']);
   has RemoteAccessEnabled => (is => 'ro', isa => 'Bool', request_name => 'remoteAccessEnabled', traits => ['NameInRequest']);
+  has RemoteDebugEnabled => (is => 'ro', isa => 'Bool', request_name => 'remoteDebugEnabled', traits => ['NameInRequest']);
   has Resolution => (is => 'ro', isa => 'Paws::DeviceFarm::Resolution', request_name => 'resolution', traits => ['NameInRequest']);
 1;
 
@@ -161,6 +162,12 @@ IOS: The iOS platform.
 =head2 RemoteAccessEnabled => Bool
 
   Specifies whether remote access has been enabled for the specified
+device.
+
+
+=head2 RemoteDebugEnabled => Bool
+
+  This flag is set to C<true> if remote debugging is enabled for the
 device.
 
 
