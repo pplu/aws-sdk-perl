@@ -46,7 +46,7 @@ by the application or resource being monitored.
 =head2 B<REQUIRED> Timestamp => Int
 
   The time the event occurred, expressed as the number of milliseconds
-since Jan 1, 1970 00:00:00 UTC.
+fter Jan 1, 1970 00:00:00 UTC.
 
 
 

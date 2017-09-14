@@ -49,7 +49,7 @@ Represents a log group.
 =head2 CreationTime => Int
 
   The creation time of the log group, expressed as the number of
-milliseconds since Jan 1, 1970 00:00:00 UTC.
+milliseconds after Jan 1, 1970 00:00:00 UTC.
 
 
 =head2 LogGroupName => Str

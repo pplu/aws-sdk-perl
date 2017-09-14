@@ -57,8 +57,8 @@ account, for cross-account delivery.
 
 =item *
 
-An Amazon Kinesis Firehose stream belonging to the same account as the
-subscription filter, for same-account delivery.
+An Amazon Kinesis Firehose delivery stream belonging to the same
+account as the subscription filter, for same-account delivery.
 
 =item *
 
@@ -83,9 +83,9 @@ Valid values are: C<"Random">, C<"ByLogStream">
 
 A name for the subscription filter. If you are updating an existing
 filter, you must specify the correct name in C<filterName>. Otherwise,
-the call will fail because you cannot associate a second filter with a
-log group. To find the name of the filter currently associated with a
-log group, use DescribeSubscriptionFilters.
+the call fails because you cannot associate a second filter with a log
+group. To find the name of the filter currently associated with a log
+group, use DescribeSubscriptionFilters.
 
 
 

@@ -63,7 +63,7 @@ The name of the log group.
 
 The prefix to match.
 
-You cannot specify this parameter if C<orderBy> is C<LastEventTime>.
+iIf C<orderBy> is C<LastEventTime>,you cannot specify this parameter.
 
 
 
@@ -85,7 +85,7 @@ C<logStreamNamePrefix> parameter.
 
 lastEventTimestamp represents the time of the most recent log event in
 the log stream in CloudWatch Logs. This number is expressed as the
-number of milliseconds since Jan 1, 1970 00:00:00 UTC.
+number of milliseconds after Jan 1, 1970 00:00:00 UTC.
 lastEventTimeStamp updates on an eventual consistency basis. It
 typically updates in less than an hour from ingestion, but may take
 longer in some rare situations.
