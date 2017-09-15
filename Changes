@@ -36,6 +36,7 @@
  - API update: Route53
  - API update: DeviceFarm
  - API update: CloudWatchLogs
+ - API update: ServiceCatalog
 
 0.34 07 Jul 2017
  - New Credential provider: Paws::Credential::ECSContainerProfile (gadgetjunkie)
