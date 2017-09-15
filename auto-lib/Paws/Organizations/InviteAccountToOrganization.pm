@@ -52,13 +52,13 @@ C<{ "Type": "ACCOUNT", "Id": "E<lt>I< B<account id number> >E<gt>" }>
 If you use the AWS CLI, you can submit this as a single string, similar
 to the following example:
 
-C<--target id=123456789012,type=ACCOUNT>
+C<--target Id=123456789012,Type=ACCOUNT>
 
 If you specify C<"Type": "ACCOUNT">, then you must provide the AWS
 account ID number as the C<Id>. If you specify C<"Type": "EMAIL">, then
 you must specify the email address that is associated with the account.
 
-C<--target id=bill@example.com,type=EMAIL>
+C<--target Id=bill@example.com,Type=EMAIL>
 
 
 

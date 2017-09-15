@@ -46,7 +46,9 @@ The friendly name of the member account.
 
 The email address of the owner to assign to the new member account.
 This email address must not already be associated with another AWS
-account.
+account. You must use a valid email address to complete account
+creation. You cannot access the root user of the account or remove an
+account that was created with an invalid email address.
 
 
 
