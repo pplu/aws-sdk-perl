@@ -36,7 +36,7 @@ The identifier for the model resource.
 
 =head2 Name => Str
 
-The name of the model.
+The name of the model. Must be an alphanumeric string.
 
 
 =head2 Schema => Str

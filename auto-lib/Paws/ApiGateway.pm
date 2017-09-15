@@ -878,7 +878,7 @@ Returns: a L<Paws::ApiGateway::ApiKey> instance
 AWS CLI
 
 
-=head2 CreateAuthorizer(IdentitySource => Str, Name => Str, RestApiId => Str, Type => Str, [AuthorizerCredentials => Str, AuthorizerResultTtlInSeconds => Int, AuthorizerUri => Str, AuthType => Str, IdentityValidationExpression => Str, ProviderARNs => ArrayRef[Str|Undef]])
+=head2 CreateAuthorizer(Name => Str, RestApiId => Str, Type => Str, [AuthorizerCredentials => Str, AuthorizerResultTtlInSeconds => Int, AuthorizerUri => Str, AuthType => Str, IdentitySource => Str, IdentityValidationExpression => Str, ProviderARNs => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::ApiGateway::CreateAuthorizer>
 

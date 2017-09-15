@@ -40,11 +40,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Parameters => L<Paws::ApiGateway::MapOfStringToString>
 
-A key-value map of query string parameters that specify properties of
-the SDK, depending on the requested C<sdkType>. For C<sdkType> of
-C<objectivec>, a parameter named C<classPrefix> is required. For
-C<sdkType> of C<android>, parameters named C<groupId>, C<artifactId>,
-C<artifactVersion>, and C<invokerPackage> are required.
+A string-to-string key-value map of query parameters
+C<sdkType>-dependent properties of the SDK. For C<sdkType> of
+C<objectivec> or C<swift>, a parameter named C<classPrefix> is
+required. For C<sdkType> of C<android>, parameters named C<groupId>,
+C<artifactId>, C<artifactVersion>, and C<invokerPackage> are required.
+For C<sdkType> of C<java>, parameters named C<serviceName> and
+C<javaPackageName> are required.
 
 
 
@@ -56,8 +58,8 @@ The string identifier of the associated RestApi.
 
 =head2 B<REQUIRED> SdkType => Str
 
-The language for the generated SDK. Currently C<javascript>,
-C<android>, and C<objectivec> (for iOS) are supported.
+The language for the generated SDK. Currently C<java>, C<javascript>,
+C<android>, C<objectivec> and C<swift> (for iOS) are supported.
 
 
 
