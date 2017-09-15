@@ -61,9 +61,9 @@ Detailed information about a ProvisionedProduct object.
 
 =head2 IdempotencyToken => Str
 
-  A token to disambiguate duplicate requests. You can create multiple
-resources using the same input in multiple requests, provided that you
-also specify a different idempotency token for each request.
+  A token to disambiguate duplicate requests. You can use the same input
+in multiple requests, provided that you also specify a different
+idempotency token for each request.
 
 
 =head2 LastRecordId => Str

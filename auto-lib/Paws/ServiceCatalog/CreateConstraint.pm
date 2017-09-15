@@ -41,16 +41,24 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AcceptLanguage => Str
 
-The language code to use for this operation. Supported language codes
-are as follows:
+The language code.
 
-"en" (English)
+=over
 
-"jp" (Japanese)
+=item *
 
-"zh" (Chinese)
+C<en> - English (default)
 
-If no code is specified, "en" is used as the default.
+=item *
+
+C<jp> - Japanese
+
+=item *
+
+C<zh> - Chinese
+
+=back
+
 
 
 
@@ -62,16 +70,16 @@ The text description of the constraint.
 
 =head2 B<REQUIRED> IdempotencyToken => Str
 
-A token to disambiguate duplicate requests. You can create multiple
-resources using the same input in multiple requests, provided that you
-also specify a different idempotency token for each request.
+A token to disambiguate duplicate requests. You can use the same input
+in multiple requests, provided that you also specify a different
+idempotency token for each request.
 
 
 
 =head2 B<REQUIRED> Parameters => Str
 
 The constraint parameters. Expected values vary depending on which
-B<Type> is specified. For examples, see the bottom of this topic.
+B<Type> is specified. For more information, see the Examples section.
 
 For Type C<LAUNCH>, the C<RoleArn> property is required.
 
