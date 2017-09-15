@@ -1,6 +1,7 @@
 package Paws::CodeBuild::EnvironmentVariable;
   use Moose;
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
+  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
   has Value => (is => 'ro', isa => 'Str', request_name => 'value', traits => ['NameInRequest'], required => 1);
 1;
 
@@ -41,6 +42,25 @@ build.
 =head2 B<REQUIRED> Name => Str
 
   The name or key of the environment variable.
+
+
+=head2 Type => Str
+
+  The type of environment variable. Valid values include:
+
+=over
+
+=item *
+
+C<PARAMETER_STORE>: An environment variable stored in Amazon EC2
+Systems Manager Parameter Store.
+
+=item *
+
+C<PLAINTEXT>: An environment variable in plaintext format.
+
+=back
+
 
 
 =head2 B<REQUIRED> Value => Str
