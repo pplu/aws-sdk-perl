@@ -38,7 +38,9 @@ package [% c.api %]::[% op_name %];
   [%- member = c.shape(shape.members.$param_name.shape) -%]
   [%- traits = [] -%]
   has [% param_name %] => (is => 'ro', isa => '[% member.perl_type %]'
-  [%-    IF (shape.members.$param_name.location == 'header');      traits.push('ParamInHeader') %], header_name => '[% shape.members.$param_name.locationName %]'
+  [%- IF (shape.members.$param_name.location == 'header'); traits.push('ParamInHeader') %], header_name => '[% shape.members.$param_name.locationName %]'
+    [%- IF (param_name == 'ContentMD5') %], auto => 'MD5'
+  [%- END %]
   [%- ELSIF (shape.members.$param_name.location == 'headers');     traits.push('ParamInHeaders') %], header_prefix => '[% shape.members.$param_name.locationName %]'
   [%- ELSIF (shape.members.$param_name.location == 'querystring'); traits.push('ParamInQuery') %], query_name => '[% shape.members.$param_name.locationName %]'
   [%- ELSIF (shape.members.$param_name.location == 'uri');         traits.push('ParamInURI') %], uri_name => '[% shape.members.$param_name.locationName %]'
@@ -78,7 +80,9 @@ package [% c.api %]::[% op_name %];
   [%- member = c.shape(shape.members.$param_name.shape) -%]
   has [% param_name %] => (is => 'ro', isa => '[% member.perl_type %]'
   [%- IF (shape.members.$param_name.locationName) %]
-    [%- IF (shape.members.$param_name.location == 'header') %], traits => ['ParamInHeader'], header_name => '[% shape.members.$param_name.locationName -%]'
+    [%- IF (shape.members.$param_name.location == 'header') %], traits => ['ParamInHeader'], header_name => '[% shape.members.$param_name.locationName %]'
+      [%- IF (param_name == 'ContentMD5') %], auto => 'MD5'
+    [%- END %]
     [%- ELSIF (shape.members.$param_name.location == 'headers') %], traits => ['ParamInHeaders'], header_prefix => '[% shape.members.$param_name.locationName %]'
     [%- ELSIF (shape.members.$param_name.location == 'querystring') %], traits => ['ParamInQuery'], query_name => '[% shape.members.$param_name.locationName -%]' 
     [%- ELSIF (shape.members.$param_name.location == 'uri') %], traits => ['ParamInURI'], uri_name => '[% shape.members.$param_name.locationName -%]' 

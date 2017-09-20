@@ -88,7 +88,14 @@ package Paws::Net::RestXmlCaller;
     foreach my $attribute ($call->meta->get_all_attributes) {
       next unless $attribute->has_value($call);
       if ($attribute->does('Paws::API::Attribute::Trait::ParamInHeader')) {
-        $request->headers->header( $attribute->header_name => $attribute->get_value($call) );
+        my $value = $attribute->get_value($call);
+        if (not $value and $call->can('auto') and $call->auto eq 'MD5') {
+          require MIME::Base64;
+          require Digest::MD5;
+          $value = MIME::Base64::encode_base64( Digest::MD5::md5( $request->content ) );
+          chomp $value;
+        }
+        $request->headers->header( $attribute->header_name => $value );
       }
       elsif ($attribute->does('Paws::API::Attribute::Trait::ParamInHeaders')) { 
         my $map = $attribute->get_value($call)->Map;
