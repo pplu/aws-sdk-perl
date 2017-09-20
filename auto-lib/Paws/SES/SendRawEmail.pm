@@ -149,7 +149,7 @@ information, see RFC 2047.
 
 If you specify the C<Source> parameter and have feedback forwarding
 enabled, then bounces and complaints will be sent to this email
-address. This takes precedence over any I<Return-Path> header that you
+address. This takes precedence over any Return-Path header that you
 might include in the raw text of the message.
 
 

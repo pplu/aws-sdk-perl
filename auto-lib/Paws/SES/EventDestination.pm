@@ -36,8 +36,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SES::EventD
 
 =head1 DESCRIPTION
 
-Contains information about the event destination to which the specified
-email sending events are published.
+Contains information about the event destination that the specified
+email sending events will be published to.
 
 When you create or update an event destination, you must provide one,
 and only one, destination. The destination can be Amazon CloudWatch,

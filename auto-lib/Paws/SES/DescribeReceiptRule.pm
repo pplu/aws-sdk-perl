@@ -42,7 +42,7 @@ The name of the receipt rule.
 
 =head2 B<REQUIRED> RuleSetName => Str
 
-The name of the receipt rule set to which the receipt rule belongs.
+The name of the receipt rule set that the receipt rule belongs to.
 
 
 

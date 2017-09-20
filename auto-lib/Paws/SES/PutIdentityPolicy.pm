@@ -37,9 +37,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Identity => Str
 
-The identity to which the policy will apply. You can specify an
-identity by using its name or by using its Amazon Resource Name (ARN).
-Examples: C<user@example.com>, C<example.com>,
+The identity that the policy will apply to. You can specify an identity
+by using its name or by using its Amazon Resource Name (ARN). Examples:
+C<user@example.com>, C<example.com>,
 C<arn:aws:ses:us-east-1:123456789012:identity/example.com>.
 
 To successfully call this API, you must own the identity.

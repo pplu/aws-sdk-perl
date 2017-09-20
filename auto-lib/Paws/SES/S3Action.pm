@@ -56,7 +56,7 @@ see the Amazon SES Developer Guide.
 
 =head2 B<REQUIRED> BucketName => Str
 
-  The name of the Amazon S3 bucket to which to save the received email.
+  The name of the Amazon S3 bucket that incoming email will be saved to.
 
 
 =head2 KmsKeyArn => Str

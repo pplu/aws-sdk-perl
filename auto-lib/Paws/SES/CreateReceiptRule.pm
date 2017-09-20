@@ -52,7 +52,7 @@ recipients, domains, enabled status, scan status, and TLS policy.
 
 =head2 B<REQUIRED> RuleSetName => Str
 
-The name of the rule set to which to add the rule.
+The name of the rule set that the receipt rule will be added to.
 
 
 

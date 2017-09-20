@@ -69,9 +69,9 @@ replies to the message, each reply-to address will receive the reply.
 
 =head2 ReturnPath => Str
 
-The email address to which bounces and complaints are to be forwarded
-when feedback forwarding is enabled. If the message cannot be delivered
-to the recipient, then an error message will be returned from the
+The email address that bounces and complaints will be forwarded to when
+feedback forwarding is enabled. If the message cannot be delivered to
+the recipient, then an error message will be returned from the
 recipient's ISP; this message will then be forwarded to the email
 address specified by the C<ReturnPath> parameter. The C<ReturnPath>
 parameter is never overwritten. This email address must be either

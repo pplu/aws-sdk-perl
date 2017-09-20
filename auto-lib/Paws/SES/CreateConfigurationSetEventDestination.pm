@@ -36,16 +36,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ConfigurationSetName => Str
 
-The name of the configuration set to which to apply the event
-destination.
+The name of the configuration set that the event destination should be
+associated with.
 
 
 
 =head2 B<REQUIRED> EventDestination => L<Paws::SES::EventDestination>
 
-An object that describes the AWS service to which Amazon SES will
-publish the email sending events associated with the specified
-configuration set.
+An object that describes the AWS service that email sending event
+information will be published to.
 
 
 
