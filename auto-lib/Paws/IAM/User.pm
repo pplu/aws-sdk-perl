@@ -80,24 +80,26 @@ password was last used to sign in to an AWS website. For a list of AWS
 websites that capture a user's last sign-in time, see the Credential
 Reports topic in the I<Using IAM> guide. If a password is used more
 than once in a five-minute span, only the first use is returned in this
-field. This field is null (not present) when:
+field. If the field is null (no value) then it indicates that they
+never signed in with a password. This can be because:
 
 =over
 
 =item *
 
-The user does not have a password
+The user never had a password.
 
 =item *
 
-The password exists but has never been used (at least not since IAM
-started tracking this information on October 20th, 2014
-
-=item *
-
-there is no sign-in data associated with the user
+A password exists but has not been used since IAM started tracking this
+information on October 20th, 2014.
 
 =back
+
+A null does not mean that the user I<never> had a password. Also, if
+the user does not currently have a password, but had one in the past,
+then this field contains the date and time the most recent password was
+used.
 
 This value is returned only in the GetUser and ListUsers actions.
 
