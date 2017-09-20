@@ -6,6 +6,7 @@ package Paws::EC2::RequestSpotInstances;
   has ClientToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientToken' );
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has InstanceCount => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'instanceCount' );
+  has InstanceInterruptionBehavior => (is => 'ro', isa => 'Str');
   has LaunchGroup => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'launchGroup' );
   has LaunchSpecification => (is => 'ro', isa => 'Paws::EC2::RequestSpotLaunchSpecification');
   has SpotPrice => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'spotPrice' , required => 1);
@@ -109,6 +110,13 @@ The maximum number of Spot instances to launch.
 Default: 1
 
 
+
+=head2 InstanceInterruptionBehavior => Str
+
+Indicates whether a Spot instance stops or terminates when it is
+interrupted.
+
+Valid values are: C<"stop">, C<"terminate">
 
 =head2 LaunchGroup => Str
 
