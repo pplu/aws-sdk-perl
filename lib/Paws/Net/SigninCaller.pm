@@ -3,6 +3,15 @@ package Paws::Net::SigninCaller;
   use JSON::MaybeXS;
   use URI::Template;
 
+  use Paws::Net::JsonResponse;
+
+  has response_to_object => (
+    is => 'ro',
+    default => sub {
+      Paws::Net::JsonResponse->new;
+    }
+  );
+
   sub _call_uri {
     my ($self, $call, $qparams) = @_;
     my $uri_template = $call->meta->name->_api_uri;

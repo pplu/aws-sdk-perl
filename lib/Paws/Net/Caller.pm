@@ -1,6 +1,7 @@
 package Paws::Net::Caller;
   use Moose;
   with 'Paws::Net::RetryCallerRole', 'Paws::Net::CallerRole';
+  use Paws::Net::APIResponse;
 
   has debug              => ( is => 'rw', required => 0, default => sub { 0 } );
   has ua => (is => 'rw', required => 1, lazy => 1,
@@ -29,15 +30,20 @@ package Paws::Net::Caller;
         (defined $requestObj->content)?(content => $requestObj->content):(),
       }
     );
-    return ($response->{status}, $response->{content}, $response->{headers});
+    return Paws::Net::APIResponse->new(
+      status  => $response->{status},
+      content => $response->{content},
+      headers => $response->{headers}
+    );
   }
 
   sub caller_to_response {
-    my ($self, $service, $call_object, $status, $content, $headers) = @_;
-    if ($status == 599){
-      return Paws::Exception->new(message => $content, code => 'ConnectionError', request_id => '');
+    my ($self, $service, $call_object, $response) = @_;
+
+    if ($response->status == 599){
+      return Paws::Exception->new(message => $response->content, code => 'ConnectionError', request_id => '');
     } else {
-      return $service->handle_response($call_object, $status, $content, $headers);
+      return $service->response_to_object->process($call_object, $response);
     }
   }
 1;

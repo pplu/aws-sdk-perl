@@ -1,26 +1,26 @@
 package Paws::Net::RestJsonResponse;
-  use Moose::Role;
+  use Moose;
   use JSON::MaybeXS;
   use Carp qw(croak);
   use Paws::Exception;
 
-  sub handle_response {
-    my ($self, $call_object, $http_status, $content, $headers) = @_;
+  sub process {
+    my ($self, $call_object, $response) = @_;
 
-    if (defined $headers->{ 'x-amz-crc32' }) {
+    if ($response->has_header('x-amz-crc32')) {
       require String::CRC32;
-      my $crc = String::CRC32::crc32($content);
+      my $crc = String::CRC32::crc32($response->content);
       return Paws::Exception->new(
         code => 'Crc32Error',
         message => 'Content CRC32 mismatch',
-        request_id => $headers->{ 'x-amzn-requestid' }
-      ) if ($crc != $headers->{ 'x-amz-crc32' });
+        request_id => $response->header('x-amzn-requestid'),
+      ) if ($crc != $response->header('x-amz-crc32'));
     }
 
-    if ( $http_status >= 300 ) {
-        return $self->error_to_exception($call_object, $http_status, $content, $headers);
+    if ( $response->status >= 300 ) {
+        return $self->error_to_exception($call_object, $response);
     } else {
-        return $self->response_to_object($call_object, $http_status, $content, $headers);
+        return $self->response_to_object($call_object, $response);
     }
   }
  
@@ -31,15 +31,15 @@ package Paws::Net::RestJsonResponse;
   }
 
   sub error_to_exception {
-    my ($self, $call_object, $http_status, $content, $headers) = @_;
+    my ($self, $call_object, $response) = @_;
     
-    my $struct = eval { $self->unserialize_response( $content ) };
+    my $struct = eval { $self->unserialize_response( $response->content ) };
     if ($@) {
       return Paws::Exception->new(
         message => $@,
         code => 'InvalidContent',
         request_id => '', #$request_id,
-        http_status => $http_status,
+        http_status => $response->status,
       );
     }
 
@@ -58,8 +58,8 @@ package Paws::Net::RestJsonResponse;
       }
     }
 
-    if (exists $headers->{'x-amzn-errortype'}){
-      $code = (split /:/, $headers->{'x-amzn-errortype'})[0];
+    if ($response->has_header('x-amzn-errortype')){
+      $code = (split /:/, $response->header('x-amzn-errortype'))[0];
     } elsif (exists $struct->{Code}) {
       $code = $struct->{Code};
     } elsif (exists $struct->{ code }) {
@@ -67,13 +67,13 @@ package Paws::Net::RestJsonResponse;
     } else {
       $code = 'UnrecognizedError';
     }
-    $request_id = $headers->{ 'x-amzn-requestid' };
+    $request_id = $response->header('x-amzn-requestid');
 
     Paws::Exception->new(
       message => $message,
       code => $code,
       request_id => $request_id,
-      http_status => $http_status,
+      http_status => $response->status,
     );
   }
 
@@ -203,4 +203,66 @@ package Paws::Net::RestJsonResponse;
     $class->new(%args);
     }
   }
+
+  sub response_to_object {
+    my ($self, $call_object, $response) = @_;
+    my ($http_status, $content, $headers) = ($response->status, $response->content, $response->headers);;
+
+    $call_object = $call_object->meta->name;
+
+    my $returns = (defined $call_object->_returns) && ($call_object->_returns ne 'Paws::API::Response');
+    my $ret_class = $returns ? $call_object->_returns : 'Paws::API::Response';
+    Paws->load_class($ret_class);
+ 
+    my $unserialized_struct;
+
+    if ($ret_class->can('_stream_param')) {
+      $unserialized_struct = {}
+    } else {
+      if (not defined $content or $content eq '') {
+        $unserialized_struct = {}
+      } else {
+        $unserialized_struct = eval { $self->unserialize_response( $content ) };
+        if ($@){
+          return Paws::Exception->new(
+            message => $@,
+            code => 'InvalidContent',
+            request_id => '', #$request_id,
+            http_status => $http_status,
+          );
+        }
+      }
+    }
+
+    my $request_id = $headers->{'x-amz-request-id'} 
+                      || $headers->{'x-amzn-requestid'}
+                      || $unserialized_struct->{'requestId'} 
+                      || $unserialized_struct->{'RequestId'} 
+                      || $unserialized_struct->{'RequestID'}
+                      || $unserialized_struct->{ ResponseMetadata }->{ RequestId };
+ 
+    if ($call_object->_result_key){
+      $unserialized_struct = $unserialized_struct->{ $call_object->_result_key };
+    }
+
+    $unserialized_struct->{ _request_id } = $request_id;
+      
+    if ($returns){
+      if ($ret_class->can('_stream_param')) {
+        $unserialized_struct->{ $ret_class->_stream_param } = $content
+      }
+
+      foreach my $key (keys %$headers){
+        $unserialized_struct->{lc $key} = $headers->{$key};
+      }
+
+      my $o_result = $self->new_from_result_struct($call_object->_returns, $unserialized_struct);
+      return $o_result;
+    } else {
+      return Paws::API::Response->new(
+        _request_id => $request_id,
+      );
+    }
+  }
+
 1;
