@@ -51,7 +51,7 @@ optionally use this information to customize the user interface.
 
 =item *
 
-C<ElicitIntent> E<ndash> Amazon Lex wants to elicit the user's intent.
+C<ElicitIntent> - Amazon Lex wants to elicit the user's intent.
 Consider the following examples:
 
 For example, a user might utter an intent ("I want to order a pizza").
@@ -60,8 +60,7 @@ return this dialog state.
 
 =item *
 
-C<ConfirmIntent> E<ndash> Amazon Lex is expecting a "yes" or "no"
-response.
+C<ConfirmIntent> - Amazon Lex is expecting a "yes" or "no" response.
 
 For example, Amazon Lex wants user confirmation before fulfilling an
 intent. Instead of a simple "yes" or "no" response, a user might
@@ -72,8 +71,8 @@ crust type slot or change the intent from OrderPizza to OrderDrink).
 
 =item *
 
-C<ElicitSlot> E<ndash> Amazon Lex is expecting the value of a slot for
-the current intent.
+C<ElicitSlot> - Amazon Lex is expecting the value of a slot for the
+current intent.
 
 For example, suppose that in the response Amazon Lex sends this
 message: "What size pizza would you like?". A user might reply with the
@@ -83,17 +82,17 @@ Lex can process such additional information appropriately.
 
 =item *
 
-C<Fulfilled> E<ndash> Conveys that the Lambda function has successfully
+C<Fulfilled> - Conveys that the Lambda function has successfully
 fulfilled the intent.
 
 =item *
 
-C<ReadyForFulfillment> E<ndash> Conveys that the client has to fullfill
-the request.
+C<ReadyForFulfillment> - Conveys that the client has to fulfill the
+request.
 
 =item *
 
-C<Failed> E<ndash> Conveys that the conversation with the user failed.
+C<Failed> - Conveys that the conversation with the user failed.
 
 This can happen for various reasons, including that the user does not
 provide an appropriate response to prompts from the service (you can
@@ -106,7 +105,13 @@ information), or if the Lambda function fails to fulfill the intent.
 Valid values are: C<"ElicitIntent">, C<"ConfirmIntent">, C<"ElicitSlot">, C<"Fulfilled">, C<"ReadyForFulfillment">, C<"Failed">
 =head2 InputTranscript => Str
 
-Transcript of the voice input to the operation.
+The text used to process the request.
+
+If the input was an audio stream, the C<inputTranscript> field contains
+the text extracted from the audio stream. This is the text that is
+actually processed to recognize intents and slot values. You can use
+this information to determine if Amazon Lex is correctly processing the
+audio that you send.
 
 
 =head2 IntentName => Str
@@ -141,6 +146,16 @@ information.
 
 Map of zero or more intent slots (name/value pairs) Amazon Lex detected
 from the user input during the conversation.
+
+Amazon Lex creates a resolution list containing likely values for a
+slot. The value that it returns is determined by the
+C<valueSelectionStrategy> selected when the slot type was created or
+updated. If C<valueSelectionStrategy> is set to C<ORIGINAL_VALUE>, the
+value provided by the user is returned, if the user value is similar to
+the slot values. If C<valueSelectionStrategy> is set to
+C<TOP_RESOLUTION> Amazon Lex returns the first value in the resolution
+list or, if there is no resolution list, null. If you don't specify a
+C<valueSelectionStrategy>, the default is C<ORIGINAL_VALUE>.
 
 
 =head2 SlotToElicit => Str
