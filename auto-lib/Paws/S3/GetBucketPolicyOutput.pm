@@ -1,7 +1,7 @@
 
 package Paws::S3::GetBucketPolicyOutput;
   use Moose;
-  has Policy => (is => 'ro', isa => 'Str');
+  has Value => (is => 'ro', isa => 'Str');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;
@@ -15,7 +15,7 @@ Paws::S3::GetBucketPolicyOutput
 =head1 ATTRIBUTES
 
 
-=head2 Policy => Str
+=head2 Value => Str
 
 The bucket policy as a JSON document.
 
