@@ -106,8 +106,8 @@ The image name from which a fleet is created.
 
 =head2 InstanceType => Str
 
-The instance type of compute resources for the fleet. Fleet instances
-are launched from this instance type. Available instance types are:
+The instance type to use when launching fleet instances. The following
+instance types are available:
 
 =over
 
@@ -161,6 +161,26 @@ stream.memory.8xlarge
 
 =item *
 
+stream.graphics-design.large
+
+=item *
+
+stream.graphics-design.xlarge
+
+=item *
+
+stream.graphics-design.2xlarge
+
+=item *
+
+stream.graphics-design.4xlarge
+
+=item *
+
+stream.graphics-desktop.2xlarge
+
+=item *
+
 stream.graphics-pro.4xlarge
 
 =item *
@@ -170,10 +190,6 @@ stream.graphics-pro.8xlarge
 =item *
 
 stream.graphics-pro.16xlarge
-
-=item *
-
-stream.graphics-desktop.2xlarge
 
 =back
 

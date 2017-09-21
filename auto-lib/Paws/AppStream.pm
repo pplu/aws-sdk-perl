@@ -179,7 +179,7 @@ Returns: a L<Paws::AppStream::CreateDirectoryConfigResult> instance
   Creates a directory configuration with the given parameters.
 
 
-=head2 CreateFleet(ComputeCapacity => L<Paws::AppStream::ComputeCapacity>, ImageName => Str, InstanceType => Str, Name => Str, [Description => Str, DisconnectTimeoutInSeconds => Int, DisplayName => Str, DomainJoinInfo => L<Paws::AppStream::DomainJoinInfo>, EnableDefaultInternetAccess => Bool, MaxUserDurationInSeconds => Int, VpcConfig => L<Paws::AppStream::VpcConfig>])
+=head2 CreateFleet(ComputeCapacity => L<Paws::AppStream::ComputeCapacity>, ImageName => Str, InstanceType => Str, Name => Str, [Description => Str, DisconnectTimeoutInSeconds => Int, DisplayName => Str, DomainJoinInfo => L<Paws::AppStream::DomainJoinInfo>, EnableDefaultInternetAccess => Bool, FleetType => Str, MaxUserDurationInSeconds => Int, VpcConfig => L<Paws::AppStream::VpcConfig>])
 
 Each argument is described in detail in: L<Paws::AppStream::CreateFleet>
 

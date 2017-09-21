@@ -7,6 +7,7 @@ package Paws::AppStream::CreateFleet;
   has DisplayName => (is => 'ro', isa => 'Str');
   has DomainJoinInfo => (is => 'ro', isa => 'Paws::AppStream::DomainJoinInfo');
   has EnableDefaultInternetAccess => (is => 'ro', isa => 'Bool');
+  has FleetType => (is => 'ro', isa => 'Str');
   has ImageName => (is => 'ro', isa => 'Str', required => 1);
   has InstanceType => (is => 'ro', isa => 'Str', required => 1);
   has MaxUserDurationInSeconds => (is => 'ro', isa => 'Int');
@@ -84,6 +85,12 @@ Enables or disables default internet access for the fleet.
 
 
 
+=head2 FleetType => Str
+
+
+
+Valid values are: C<"ALWAYS_ON">, C<"ON_DEMAND">
+
 =head2 B<REQUIRED> ImageName => Str
 
 Unique name of the image used by the fleet.
@@ -92,8 +99,8 @@ Unique name of the image used by the fleet.
 
 =head2 B<REQUIRED> InstanceType => Str
 
-The instance type of compute resources for the fleet. Fleet instances
-are launched from this instance type. Available instance types are:
+The instance type to use when launching fleet instances. The following
+instance types are available:
 
 =over
 
@@ -147,6 +154,26 @@ stream.memory.8xlarge
 
 =item *
 
+stream.graphics-design.large
+
+=item *
+
+stream.graphics-design.xlarge
+
+=item *
+
+stream.graphics-design.2xlarge
+
+=item *
+
+stream.graphics-design.4xlarge
+
+=item *
+
+stream.graphics-desktop.2xlarge
+
+=item *
+
 stream.graphics-pro.4xlarge
 
 =item *
@@ -156,10 +183,6 @@ stream.graphics-pro.8xlarge
 =item *
 
 stream.graphics-pro.16xlarge
-
-=item *
-
-stream.graphics-desktop.2xlarge
 
 =back
 

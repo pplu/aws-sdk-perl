@@ -9,6 +9,7 @@ package Paws::AppStream::Fleet;
   has DomainJoinInfo => (is => 'ro', isa => 'Paws::AppStream::DomainJoinInfo');
   has EnableDefaultInternetAccess => (is => 'ro', isa => 'Bool');
   has FleetErrors => (is => 'ro', isa => 'ArrayRef[Paws::AppStream::FleetError]');
+  has FleetType => (is => 'ro', isa => 'Str');
   has ImageName => (is => 'ro', isa => 'Str', required => 1);
   has InstanceType => (is => 'ro', isa => 'Str', required => 1);
   has MaxUserDurationInSeconds => (is => 'ro', isa => 'Int');
@@ -100,6 +101,11 @@ instances.
   The list of fleet errors is appended to this list.
 
 
+=head2 FleetType => Str
+
+  
+
+
 =head2 B<REQUIRED> ImageName => Str
 
   The image used by the fleet.
@@ -107,8 +113,7 @@ instances.
 
 =head2 B<REQUIRED> InstanceType => Str
 
-  The instance type of compute resources for the fleet. The fleet
-instances are launched from this instance type.
+  The instance type to use when launching fleet instances.
 
 
 =head2 MaxUserDurationInSeconds => Int
