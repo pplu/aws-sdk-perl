@@ -2,6 +2,8 @@
 package Paws::Greengrass::GetDeploymentStatusResponse;
   use Moose;
   has DeploymentStatus => (is => 'ro', isa => 'Str');
+  has DeploymentType => (is => 'ro', isa => 'Str');
+  has ErrorDetails => (is => 'ro', isa => 'ArrayRef[Paws::Greengrass::ErrorDetail]');
   has ErrorMessage => (is => 'ro', isa => 'Str');
   has UpdatedAt => (is => 'ro', isa => 'Str');
 
@@ -20,6 +22,16 @@ Paws::Greengrass::GetDeploymentStatusResponse
 =head2 DeploymentStatus => Str
 
 Status of the deployment.
+
+
+=head2 DeploymentType => Str
+
+The type of the deployment.
+
+Valid values are: C<"NewDeployment">, C<"Redeployment">, C<"ResetDeployment">, C<"ForceResetDeployment">
+=head2 ErrorDetails => ArrayRef[L<Paws::Greengrass::ErrorDetail>]
+
+The error Details
 
 
 =head2 ErrorMessage => Str

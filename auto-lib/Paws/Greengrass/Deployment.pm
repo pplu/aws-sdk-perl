@@ -3,6 +3,7 @@ package Paws::Greengrass::Deployment;
   has CreatedAt => (is => 'ro', isa => 'Str');
   has DeploymentArn => (is => 'ro', isa => 'Str');
   has DeploymentId => (is => 'ro', isa => 'Str');
+  has DeploymentType => (is => 'ro', isa => 'Str');
   has GroupArn => (is => 'ro', isa => 'Str');
 1;
 
@@ -52,6 +53,11 @@ Information on the deployment
 =head2 DeploymentId => Str
 
   Id of the deployment.
+
+
+=head2 DeploymentType => Str
+
+  The type of deployment.
 
 
 =head2 GroupArn => Str

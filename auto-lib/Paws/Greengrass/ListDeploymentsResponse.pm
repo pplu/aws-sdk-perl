@@ -18,7 +18,7 @@ Paws::Greengrass::ListDeploymentsResponse
 
 =head2 Deployments => ArrayRef[L<Paws::Greengrass::Deployment>]
 
-Information on deployments
+List of deployments for the requested groups
 
 
 =head2 NextToken => Str

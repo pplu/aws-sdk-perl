@@ -44,7 +44,7 @@ General Error
 
 =head2 Message => Str
 
-  Message
+  Message containing information about the error
 
 
 

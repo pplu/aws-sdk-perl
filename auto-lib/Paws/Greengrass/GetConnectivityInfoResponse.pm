@@ -18,7 +18,7 @@ Paws::Greengrass::GetConnectivityInfoResponse
 
 =head2 ConnectivityInfo => ArrayRef[L<Paws::Greengrass::ConnectivityInfo>]
 
-Connectivity info array
+Connectivity info list
 
 
 =head2 Message => Str

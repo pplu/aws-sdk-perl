@@ -37,7 +37,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Greengrass:
 
 =head1 DESCRIPTION
 
-Information of a group
+Information on the group
 
 =head1 ATTRIBUTES
 

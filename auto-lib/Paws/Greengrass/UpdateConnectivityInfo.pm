@@ -38,7 +38,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 ConnectivityInfo => ArrayRef[L<Paws::Greengrass::ConnectivityInfo>]
 
-Connectivity info array
+Connectivity info list
 
 
 
