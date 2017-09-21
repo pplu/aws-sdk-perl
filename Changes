@@ -39,6 +39,10 @@
  - API update: ServiceCatalog
  - API update: SES
  - API update: IAM
+ - API update: Greengrass
+ - API update: AppStream
+ - API update: CodePipeline
+ - API update: LexRuntime
 
 0.34 07 Jul 2017
  - New Credential provider: Paws::Credential::ECSContainerProfile (gadgetjunkie)
