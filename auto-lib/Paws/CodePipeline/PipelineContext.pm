@@ -40,7 +40,8 @@ Represents information about a pipeline to a job worker.
 
 =head2 Action => L<Paws::CodePipeline::ActionContext>
 
-  
+  The context of an action to a job worker within the stage of a
+pipeline.
 
 
 =head2 PipelineName => Str

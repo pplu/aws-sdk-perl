@@ -60,7 +60,7 @@ displayed to users.
 
 =head2 Queryable => Bool
 
-  Indicates that the proprety will be used in conjunction with
+  Indicates that the property will be used in conjunction with
 PollForJobs. When creating a custom action, an action can have up to
 one queryable property. If it has one, that property must be both
 required and not secret.
