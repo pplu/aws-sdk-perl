@@ -8,11 +8,13 @@ package Paws::RDS::CreateDBInstanceReadReplica;
   has DBInstanceIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has DBSubnetGroupName => (is => 'ro', isa => 'Str');
   has EnableIAMDatabaseAuthentication => (is => 'ro', isa => 'Bool');
+  has EnablePerformanceInsights => (is => 'ro', isa => 'Bool');
   has Iops => (is => 'ro', isa => 'Int');
   has KmsKeyId => (is => 'ro', isa => 'Str');
   has MonitoringInterval => (is => 'ro', isa => 'Int');
   has MonitoringRoleArn => (is => 'ro', isa => 'Str');
   has OptionGroupName => (is => 'ro', isa => 'Str');
+  has PerformanceInsightsKMSKeyId => (is => 'ro', isa => 'Str');
   has Port => (is => 'ro', isa => 'Int');
   has PreSignedUrl => (is => 'ro', isa => 'Str');
   has PubliclyAccessible => (is => 'ro', isa => 'Bool');
@@ -179,6 +181,12 @@ Default: C<false>
 
 
 
+=head2 EnablePerformanceInsights => Bool
+
+
+
+
+
 =head2 Iops => Int
 
 The amount of Provisioned IOPS (input/output operations per second) to
@@ -238,6 +246,12 @@ supply a C<MonitoringRoleArn> value.
 
 The option group the DB instance will be associated with. If omitted,
 the default option group for the engine specified will be used.
+
+
+
+=head2 PerformanceInsightsKMSKeyId => Str
+
+
 
 
 

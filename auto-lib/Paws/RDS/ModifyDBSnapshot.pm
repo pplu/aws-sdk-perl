@@ -3,6 +3,7 @@ package Paws::RDS::ModifyDBSnapshot;
   use Moose;
   has DBSnapshotIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has EngineVersion => (is => 'ro', isa => 'Str');
+  has OptionGroupName => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -43,6 +44,12 @@ The identifier of the DB snapshot to modify.
 =head2 EngineVersion => Str
 
 The engine version to update the DB snapshot to.
+
+
+
+=head2 OptionGroupName => Str
+
+
 
 
 

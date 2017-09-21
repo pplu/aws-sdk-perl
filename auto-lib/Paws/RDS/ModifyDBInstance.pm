@@ -17,6 +17,7 @@ package Paws::RDS::ModifyDBInstance;
   has Domain => (is => 'ro', isa => 'Str');
   has DomainIAMRoleName => (is => 'ro', isa => 'Str');
   has EnableIAMDatabaseAuthentication => (is => 'ro', isa => 'Bool');
+  has EnablePerformanceInsights => (is => 'ro', isa => 'Bool');
   has EngineVersion => (is => 'ro', isa => 'Str');
   has Iops => (is => 'ro', isa => 'Int');
   has LicenseModel => (is => 'ro', isa => 'Str');
@@ -26,6 +27,7 @@ package Paws::RDS::ModifyDBInstance;
   has MultiAZ => (is => 'ro', isa => 'Bool');
   has NewDBInstanceIdentifier => (is => 'ro', isa => 'Str');
   has OptionGroupName => (is => 'ro', isa => 'Str');
+  has PerformanceInsightsKMSKeyId => (is => 'ro', isa => 'Str');
   has PreferredBackupWindow => (is => 'ro', isa => 'Str');
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
   has PromotionTier => (is => 'ro', isa => 'Int');
@@ -459,6 +461,12 @@ Default: C<false>
 
 
 
+=head2 EnablePerformanceInsights => Bool
+
+
+
+
+
 =head2 EngineVersion => Str
 
 The version number of the database engine to upgrade to. Changing this
@@ -634,6 +642,12 @@ Permanent options, such as the TDE option for Oracle Advanced Security
 TDE, cannot be removed from an option group, and that option group
 cannot be removed from a DB instance once it is associated with a DB
 instance
+
+
+
+=head2 PerformanceInsightsKMSKeyId => Str
+
+
 
 
 

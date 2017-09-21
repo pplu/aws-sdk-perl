@@ -17,6 +17,7 @@ package Paws::RDS::CreateDBInstance;
   has Domain => (is => 'ro', isa => 'Str');
   has DomainIAMRoleName => (is => 'ro', isa => 'Str');
   has EnableIAMDatabaseAuthentication => (is => 'ro', isa => 'Bool');
+  has EnablePerformanceInsights => (is => 'ro', isa => 'Bool');
   has Engine => (is => 'ro', isa => 'Str', required => 1);
   has EngineVersion => (is => 'ro', isa => 'Str');
   has Iops => (is => 'ro', isa => 'Int');
@@ -28,6 +29,7 @@ package Paws::RDS::CreateDBInstance;
   has MonitoringRoleArn => (is => 'ro', isa => 'Str');
   has MultiAZ => (is => 'ro', isa => 'Bool');
   has OptionGroupName => (is => 'ro', isa => 'Str');
+  has PerformanceInsightsKMSKeyId => (is => 'ro', isa => 'Str');
   has Port => (is => 'ro', isa => 'Int');
   has PreferredBackupWindow => (is => 'ro', isa => 'Str');
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
@@ -559,6 +561,12 @@ Default: C<false>
 
 
 
+=head2 EnablePerformanceInsights => Bool
+
+
+
+
+
 =head2 B<REQUIRED> Engine => Str
 
 The name of the database engine to be used for this instance.
@@ -910,7 +918,7 @@ B<PostgreSQL>
 
 =item *
 
-B<Version 9.6.x:> C< 9.6.1 | 9.6.2>
+B<Version 9.6.x:> C< 9.6.1 | 9.6.2 | 9.6.3>
 
 =item *
 
@@ -1154,6 +1162,12 @@ Permanent options, such as the TDE option for Oracle Advanced Security
 TDE, cannot be removed from an option group, and that option group
 cannot be removed from a DB instance once it is associated with a DB
 instance
+
+
+
+=head2 PerformanceInsightsKMSKeyId => Str
+
+
 
 
 
