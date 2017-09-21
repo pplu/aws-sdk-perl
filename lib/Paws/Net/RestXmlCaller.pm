@@ -99,6 +99,13 @@ package Paws::Net::RestXmlCaller;
         }
       }
     }
+    if ($call->can('_api_md5_header')) {
+       require MIME::Base64;
+       require Digest::MD5;
+       my $content_md5 = MIME::Base64::encode_base64( Digest::MD5::md5( $request->content ) );
+       chomp $content_md5;
+       $request->headers->header( "Content-MD5" => $content_md5 );
+    }
   }
 
   # URI escaping adapted from URI::Escape
