@@ -1,7 +1,7 @@
 
 package Paws::MTurk::UpdateExpirationForHIT;
   use Moose;
-  has ExpireAt => (is => 'ro', isa => 'Str');
+  has ExpireAt => (is => 'ro', isa => 'Str', required => 1);
   has HITId => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -34,7 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 ExpireAt => Str
+=head2 B<REQUIRED> ExpireAt => Str
 
 The date and time at which you want the HIT to expire
 

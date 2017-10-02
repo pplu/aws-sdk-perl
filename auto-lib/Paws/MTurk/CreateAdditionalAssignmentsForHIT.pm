@@ -2,7 +2,7 @@
 package Paws::MTurk::CreateAdditionalAssignmentsForHIT;
   use Moose;
   has HITId => (is => 'ro', isa => 'Str', required => 1);
-  has NumberOfAdditionalAssignments => (is => 'ro', isa => 'Int');
+  has NumberOfAdditionalAssignments => (is => 'ro', isa => 'Int', required => 1);
   has UniqueRequestToken => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
@@ -41,7 +41,7 @@ The ID of the HIT to extend.
 
 
 
-=head2 NumberOfAdditionalAssignments => Int
+=head2 B<REQUIRED> NumberOfAdditionalAssignments => Int
 
 The number of additional assignments to request for this HIT.
 
