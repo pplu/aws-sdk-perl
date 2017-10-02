@@ -203,6 +203,11 @@ package Paws::CloudFormation;
     my $call_object = $self->new_with_coercions('Paws::CloudFormation::UpdateStackSet', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpdateTerminationProtection {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudFormation::UpdateTerminationProtection', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ValidateTemplate {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudFormation::ValidateTemplate', @_);
@@ -349,7 +354,7 @@ package Paws::CloudFormation;
   }
 
 
-  sub operations { qw/CancelUpdateStack ContinueUpdateRollback CreateChangeSet CreateStack CreateStackInstances CreateStackSet DeleteChangeSet DeleteStack DeleteStackInstances DeleteStackSet DescribeAccountLimits DescribeChangeSet DescribeStackEvents DescribeStackInstance DescribeStackResource DescribeStackResources DescribeStacks DescribeStackSet DescribeStackSetOperation EstimateTemplateCost ExecuteChangeSet GetStackPolicy GetTemplate GetTemplateSummary ListChangeSets ListExports ListImports ListStackInstances ListStackResources ListStacks ListStackSetOperationResults ListStackSetOperations ListStackSets SetStackPolicy SignalResource StopStackSetOperation UpdateStack UpdateStackSet ValidateTemplate / }
+  sub operations { qw/CancelUpdateStack ContinueUpdateRollback CreateChangeSet CreateStack CreateStackInstances CreateStackSet DeleteChangeSet DeleteStack DeleteStackInstances DeleteStackSet DescribeAccountLimits DescribeChangeSet DescribeStackEvents DescribeStackInstance DescribeStackResource DescribeStackResources DescribeStacks DescribeStackSet DescribeStackSetOperation EstimateTemplateCost ExecuteChangeSet GetStackPolicy GetTemplate GetTemplateSummary ListChangeSets ListExports ListImports ListStackInstances ListStackResources ListStacks ListStackSetOperationResults ListStackSetOperations ListStackSets SetStackPolicy SignalResource StopStackSetOperation UpdateStack UpdateStackSet UpdateTerminationProtection ValidateTemplate / }
 
 1;
 
@@ -467,7 +472,7 @@ execute the change set by using the ExecuteChangeSet action. AWS
 CloudFormation doesn't make changes until you execute the change set.
 
 
-=head2 CreateStack(StackName => Str, [Capabilities => ArrayRef[Str|Undef], ClientRequestToken => Str, DisableRollback => Bool, NotificationARNs => ArrayRef[Str|Undef], OnFailure => Str, Parameters => ArrayRef[L<Paws::CloudFormation::Parameter>], ResourceTypes => ArrayRef[Str|Undef], RoleARN => Str, RollbackConfiguration => L<Paws::CloudFormation::RollbackConfiguration>, StackPolicyBody => Str, StackPolicyURL => Str, Tags => ArrayRef[L<Paws::CloudFormation::Tag>], TemplateBody => Str, TemplateURL => Str, TimeoutInMinutes => Int])
+=head2 CreateStack(StackName => Str, [Capabilities => ArrayRef[Str|Undef], ClientRequestToken => Str, DisableRollback => Bool, EnableTerminationProtection => Bool, NotificationARNs => ArrayRef[Str|Undef], OnFailure => Str, Parameters => ArrayRef[L<Paws::CloudFormation::Parameter>], ResourceTypes => ArrayRef[Str|Undef], RoleARN => Str, RollbackConfiguration => L<Paws::CloudFormation::RollbackConfiguration>, StackPolicyBody => Str, StackPolicyURL => Str, Tags => ArrayRef[L<Paws::CloudFormation::Tag>], TemplateBody => Str, TemplateURL => Str, TimeoutInMinutes => Int])
 
 Each argument is described in detail in: L<Paws::CloudFormation::CreateStack>
 
@@ -909,6 +914,22 @@ Even if the stack set operation created by updating the stack set fails
 tolerance), the stack set is updated with your changes. Subsequent
 CreateStackInstances calls on the specified stack set use the updated
 stack set.
+
+
+=head2 UpdateTerminationProtection(EnableTerminationProtection => Bool, StackName => Str)
+
+Each argument is described in detail in: L<Paws::CloudFormation::UpdateTerminationProtection>
+
+Returns: a L<Paws::CloudFormation::UpdateTerminationProtectionOutput> instance
+
+  Updates termination protection for the specified stack. If a user
+attempts to delete a stack with termination protection enabled, the
+operation fails and the stack remains unchanged. For more information,
+see Protecting a Stack From Being Deleted in the I<AWS CloudFormation
+User Guide>.
+
+For nested stacks, termination protection is set on the root stack and
+cannot be changed directly on the nested stack.
 
 
 =head2 ValidateTemplate([TemplateBody => Str, TemplateURL => Str])

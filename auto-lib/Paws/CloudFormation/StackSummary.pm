@@ -3,6 +3,8 @@ package Paws::CloudFormation::StackSummary;
   has CreationTime => (is => 'ro', isa => 'Str', required => 1);
   has DeletionTime => (is => 'ro', isa => 'Str');
   has LastUpdatedTime => (is => 'ro', isa => 'Str');
+  has ParentId => (is => 'ro', isa => 'Str');
+  has RootId => (is => 'ro', isa => 'Str');
   has StackId => (is => 'ro', isa => 'Str');
   has StackName => (is => 'ro', isa => 'Str', required => 1);
   has StackStatus => (is => 'ro', isa => 'Str', required => 1);
@@ -57,6 +59,26 @@ The StackSummary Data Type
 
   The time the stack was last updated. This field will only be returned
 if the stack has been updated at least once.
+
+
+=head2 ParentId => Str
+
+  For nested stacks--stacks created as resources for another stack--the
+stack ID of the direct parent of this stack. For the first level of
+nested stacks, the root stack is also the parent stack.
+
+For more information, see Working with Nested Stacks in the I<AWS
+CloudFormation User Guide>.
+
+
+=head2 RootId => Str
+
+  For nested stacks--stacks created as resources for another stack--the
+stack ID of the the top-level stack to which the nested stack
+ultimately belongs.
+
+For more information, see Working with Nested Stacks in the I<AWS
+CloudFormation User Guide>.
 
 
 =head2 StackId => Str
