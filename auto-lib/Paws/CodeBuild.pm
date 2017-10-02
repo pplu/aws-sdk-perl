@@ -34,9 +34,19 @@ package Paws::CodeBuild;
     my $call_object = $self->new_with_coercions('Paws::CodeBuild::CreateProject', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateWebhook {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeBuild::CreateWebhook', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteProject {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CodeBuild::DeleteProject', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteWebhook {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeBuild::DeleteWebhook', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListBuilds {
@@ -77,7 +87,7 @@ package Paws::CodeBuild;
   
 
 
-  sub operations { qw/BatchDeleteBuilds BatchGetBuilds BatchGetProjects CreateProject DeleteProject ListBuilds ListBuildsForProject ListCuratedEnvironmentImages ListProjects StartBuild StopBuild UpdateProject / }
+  sub operations { qw/BatchDeleteBuilds BatchGetBuilds BatchGetProjects CreateProject CreateWebhook DeleteProject DeleteWebhook ListBuilds ListBuildsForProject ListCuratedEnvironmentImages ListProjects StartBuild StopBuild UpdateProject / }
 
 1;
 
@@ -112,7 +122,7 @@ CodeBuild compiles your source code, runs unit tests, and produces
 artifacts that are ready to deploy. AWS CodeBuild eliminates the need
 to provision, manage, and scale your own build servers. It provides
 prepackaged build environments for the most popular programming
-languages and build tools, such as Apach Maven, Gradle, and more. You
+languages and build tools, such as Apache Maven, Gradle, and more. You
 can also fully customize build environments in AWS CodeBuild to use
 your own build tools. AWS CodeBuild scales automatically to meet peak
 build requests, and you pay only for the build time you consume. For
@@ -144,7 +154,21 @@ C<CreateProject>: Creates a build project.
 
 =item *
 
+C<CreateWebhook>: For an existing AWS CodeBuild build project that has
+its source code stored in a GitHub repository, enables AWS CodeBuild to
+begin automatically rebuilding the source code every time a code change
+is pushed to the repository.
+
+=item *
+
 C<DeleteProject>: Deletes a build project.
+
+=item *
+
+C<DeleteWebhook>: For an existing AWS CodeBuild build project that has
+its source code stored in a GitHub repository, stops AWS CodeBuild from
+automatically rebuilding the source code every time a code change is
+pushed to the repository.
 
 =item *
 
@@ -223,6 +247,28 @@ Returns: a L<Paws::CodeBuild::CreateProjectOutput> instance
   Creates a build project.
 
 
+=head2 CreateWebhook(ProjectName => Str)
+
+Each argument is described in detail in: L<Paws::CodeBuild::CreateWebhook>
+
+Returns: a L<Paws::CodeBuild::CreateWebhookOutput> instance
+
+  For an existing AWS CodeBuild build project that has its source code
+stored in a GitHub repository, enables AWS CodeBuild to begin
+automatically rebuilding the source code every time a code change is
+pushed to the repository.
+
+If you enable webhooks for an AWS CodeBuild project, and the project is
+used as a build step in AWS CodePipeline, then two identical builds
+will be created for each commit. One build is triggered through
+webhooks, and one through AWS CodePipeline. Because billing is on a
+per-build basis, you will be billed for both builds. Therefore, if you
+are using AWS CodePipeline, we recommend that you disable webhooks in
+CodeBuild. In the AWS CodeBuild console, clear the Webhook box. For
+more information, see step 9 in Change a Build ProjectE<rsquo>s
+Settings.
+
+
 =head2 DeleteProject(Name => Str)
 
 Each argument is described in detail in: L<Paws::CodeBuild::DeleteProject>
@@ -230,6 +276,18 @@ Each argument is described in detail in: L<Paws::CodeBuild::DeleteProject>
 Returns: a L<Paws::CodeBuild::DeleteProjectOutput> instance
 
   Deletes a build project.
+
+
+=head2 DeleteWebhook(ProjectName => Str)
+
+Each argument is described in detail in: L<Paws::CodeBuild::DeleteWebhook>
+
+Returns: a L<Paws::CodeBuild::DeleteWebhookOutput> instance
+
+  For an existing AWS CodeBuild build project that has its source code
+stored in a GitHub repository, stops AWS CodeBuild from automatically
+rebuilding the source code every time a code change is pushed to the
+repository.
 
 
 =head2 ListBuilds([NextToken => Str, SortOrder => Str])
