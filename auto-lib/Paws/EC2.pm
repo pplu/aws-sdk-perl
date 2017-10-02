@@ -154,6 +154,11 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::ConfirmProductInstance', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CopyFpgaImage {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::CopyFpgaImage', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CopyImage {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::CopyImage', @_);
@@ -339,6 +344,11 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::DeleteFlowLogs', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteFpgaImage {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DeleteFpgaImage', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteInternetGateway {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::DeleteInternetGateway', @_);
@@ -512,6 +522,11 @@ package Paws::EC2;
   sub DescribeFlowLogs {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::DescribeFlowLogs', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeFpgaImageAttribute {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeFpgaImageAttribute', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeFpgaImages {
@@ -939,6 +954,11 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::ImportVolume', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ModifyFpgaImageAttribute {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::ModifyFpgaImageAttribute', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ModifyHosts {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::ModifyHosts', @_);
@@ -1107,6 +1127,11 @@ package Paws::EC2;
   sub RequestSpotInstances {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::RequestSpotInstances', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ResetFpgaImageAttribute {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::ResetFpgaImageAttribute', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ResetImageAttribute {
@@ -1449,7 +1474,7 @@ package Paws::EC2;
   }
 
 
-  sub operations { qw/AcceptReservedInstancesExchangeQuote AcceptVpcPeeringConnection AllocateAddress AllocateHosts AssignIpv6Addresses AssignPrivateIpAddresses AssociateAddress AssociateDhcpOptions AssociateIamInstanceProfile AssociateRouteTable AssociateSubnetCidrBlock AssociateVpcCidrBlock AttachClassicLinkVpc AttachInternetGateway AttachNetworkInterface AttachVolume AttachVpnGateway AuthorizeSecurityGroupEgress AuthorizeSecurityGroupIngress BundleInstance CancelBundleTask CancelConversionTask CancelExportTask CancelImportTask CancelReservedInstancesListing CancelSpotFleetRequests CancelSpotInstanceRequests ConfirmProductInstance CopyImage CopySnapshot CreateCustomerGateway CreateDefaultVpc CreateDhcpOptions CreateEgressOnlyInternetGateway CreateFlowLogs CreateFpgaImage CreateImage CreateInstanceExportTask CreateInternetGateway CreateKeyPair CreateNatGateway CreateNetworkAcl CreateNetworkAclEntry CreateNetworkInterface CreateNetworkInterfacePermission CreatePlacementGroup CreateReservedInstancesListing CreateRoute CreateRouteTable CreateSecurityGroup CreateSnapshot CreateSpotDatafeedSubscription CreateSubnet CreateTags CreateVolume CreateVpc CreateVpcEndpoint CreateVpcPeeringConnection CreateVpnConnection CreateVpnConnectionRoute CreateVpnGateway DeleteCustomerGateway DeleteDhcpOptions DeleteEgressOnlyInternetGateway DeleteFlowLogs DeleteInternetGateway DeleteKeyPair DeleteNatGateway DeleteNetworkAcl DeleteNetworkAclEntry DeleteNetworkInterface DeleteNetworkInterfacePermission DeletePlacementGroup DeleteRoute DeleteRouteTable DeleteSecurityGroup DeleteSnapshot DeleteSpotDatafeedSubscription DeleteSubnet DeleteTags DeleteVolume DeleteVpc DeleteVpcEndpoints DeleteVpcPeeringConnection DeleteVpnConnection DeleteVpnConnectionRoute DeleteVpnGateway DeregisterImage DescribeAccountAttributes DescribeAddresses DescribeAvailabilityZones DescribeBundleTasks DescribeClassicLinkInstances DescribeConversionTasks DescribeCustomerGateways DescribeDhcpOptions DescribeEgressOnlyInternetGateways DescribeElasticGpus DescribeExportTasks DescribeFlowLogs DescribeFpgaImages DescribeHostReservationOfferings DescribeHostReservations DescribeHosts DescribeIamInstanceProfileAssociations DescribeIdentityIdFormat DescribeIdFormat DescribeImageAttribute DescribeImages DescribeImportImageTasks DescribeImportSnapshotTasks DescribeInstanceAttribute DescribeInstances DescribeInstanceStatus DescribeInternetGateways DescribeKeyPairs DescribeMovingAddresses DescribeNatGateways DescribeNetworkAcls DescribeNetworkInterfaceAttribute DescribeNetworkInterfacePermissions DescribeNetworkInterfaces DescribePlacementGroups DescribePrefixLists DescribeRegions DescribeReservedInstances DescribeReservedInstancesListings DescribeReservedInstancesModifications DescribeReservedInstancesOfferings DescribeRouteTables DescribeScheduledInstanceAvailability DescribeScheduledInstances DescribeSecurityGroupReferences DescribeSecurityGroups DescribeSnapshotAttribute DescribeSnapshots DescribeSpotDatafeedSubscription DescribeSpotFleetInstances DescribeSpotFleetRequestHistory DescribeSpotFleetRequests DescribeSpotInstanceRequests DescribeSpotPriceHistory DescribeStaleSecurityGroups DescribeSubnets DescribeTags DescribeVolumeAttribute DescribeVolumes DescribeVolumesModifications DescribeVolumeStatus DescribeVpcAttribute DescribeVpcClassicLink DescribeVpcClassicLinkDnsSupport DescribeVpcEndpoints DescribeVpcEndpointServices DescribeVpcPeeringConnections DescribeVpcs DescribeVpnConnections DescribeVpnGateways DetachClassicLinkVpc DetachInternetGateway DetachNetworkInterface DetachVolume DetachVpnGateway DisableVgwRoutePropagation DisableVpcClassicLink DisableVpcClassicLinkDnsSupport DisassociateAddress DisassociateIamInstanceProfile DisassociateRouteTable DisassociateSubnetCidrBlock DisassociateVpcCidrBlock EnableVgwRoutePropagation EnableVolumeIO EnableVpcClassicLink EnableVpcClassicLinkDnsSupport GetConsoleOutput GetConsoleScreenshot GetHostReservationPurchasePreview GetPasswordData GetReservedInstancesExchangeQuote ImportImage ImportInstance ImportKeyPair ImportSnapshot ImportVolume ModifyHosts ModifyIdentityIdFormat ModifyIdFormat ModifyImageAttribute ModifyInstanceAttribute ModifyInstancePlacement ModifyNetworkInterfaceAttribute ModifyReservedInstances ModifySnapshotAttribute ModifySpotFleetRequest ModifySubnetAttribute ModifyVolume ModifyVolumeAttribute ModifyVpcAttribute ModifyVpcEndpoint ModifyVpcPeeringConnectionOptions MonitorInstances MoveAddressToVpc PurchaseHostReservation PurchaseReservedInstancesOffering PurchaseScheduledInstances RebootInstances RegisterImage RejectVpcPeeringConnection ReleaseAddress ReleaseHosts ReplaceIamInstanceProfileAssociation ReplaceNetworkAclAssociation ReplaceNetworkAclEntry ReplaceRoute ReplaceRouteTableAssociation ReportInstanceStatus RequestSpotFleet RequestSpotInstances ResetImageAttribute ResetInstanceAttribute ResetNetworkInterfaceAttribute ResetSnapshotAttribute RestoreAddressToClassic RevokeSecurityGroupEgress RevokeSecurityGroupIngress RunInstances RunScheduledInstances StartInstances StopInstances TerminateInstances UnassignIpv6Addresses UnassignPrivateIpAddresses UnmonitorInstances UpdateSecurityGroupRuleDescriptionsEgress UpdateSecurityGroupRuleDescriptionsIngress / }
+  sub operations { qw/AcceptReservedInstancesExchangeQuote AcceptVpcPeeringConnection AllocateAddress AllocateHosts AssignIpv6Addresses AssignPrivateIpAddresses AssociateAddress AssociateDhcpOptions AssociateIamInstanceProfile AssociateRouteTable AssociateSubnetCidrBlock AssociateVpcCidrBlock AttachClassicLinkVpc AttachInternetGateway AttachNetworkInterface AttachVolume AttachVpnGateway AuthorizeSecurityGroupEgress AuthorizeSecurityGroupIngress BundleInstance CancelBundleTask CancelConversionTask CancelExportTask CancelImportTask CancelReservedInstancesListing CancelSpotFleetRequests CancelSpotInstanceRequests ConfirmProductInstance CopyFpgaImage CopyImage CopySnapshot CreateCustomerGateway CreateDefaultVpc CreateDhcpOptions CreateEgressOnlyInternetGateway CreateFlowLogs CreateFpgaImage CreateImage CreateInstanceExportTask CreateInternetGateway CreateKeyPair CreateNatGateway CreateNetworkAcl CreateNetworkAclEntry CreateNetworkInterface CreateNetworkInterfacePermission CreatePlacementGroup CreateReservedInstancesListing CreateRoute CreateRouteTable CreateSecurityGroup CreateSnapshot CreateSpotDatafeedSubscription CreateSubnet CreateTags CreateVolume CreateVpc CreateVpcEndpoint CreateVpcPeeringConnection CreateVpnConnection CreateVpnConnectionRoute CreateVpnGateway DeleteCustomerGateway DeleteDhcpOptions DeleteEgressOnlyInternetGateway DeleteFlowLogs DeleteFpgaImage DeleteInternetGateway DeleteKeyPair DeleteNatGateway DeleteNetworkAcl DeleteNetworkAclEntry DeleteNetworkInterface DeleteNetworkInterfacePermission DeletePlacementGroup DeleteRoute DeleteRouteTable DeleteSecurityGroup DeleteSnapshot DeleteSpotDatafeedSubscription DeleteSubnet DeleteTags DeleteVolume DeleteVpc DeleteVpcEndpoints DeleteVpcPeeringConnection DeleteVpnConnection DeleteVpnConnectionRoute DeleteVpnGateway DeregisterImage DescribeAccountAttributes DescribeAddresses DescribeAvailabilityZones DescribeBundleTasks DescribeClassicLinkInstances DescribeConversionTasks DescribeCustomerGateways DescribeDhcpOptions DescribeEgressOnlyInternetGateways DescribeElasticGpus DescribeExportTasks DescribeFlowLogs DescribeFpgaImageAttribute DescribeFpgaImages DescribeHostReservationOfferings DescribeHostReservations DescribeHosts DescribeIamInstanceProfileAssociations DescribeIdentityIdFormat DescribeIdFormat DescribeImageAttribute DescribeImages DescribeImportImageTasks DescribeImportSnapshotTasks DescribeInstanceAttribute DescribeInstances DescribeInstanceStatus DescribeInternetGateways DescribeKeyPairs DescribeMovingAddresses DescribeNatGateways DescribeNetworkAcls DescribeNetworkInterfaceAttribute DescribeNetworkInterfacePermissions DescribeNetworkInterfaces DescribePlacementGroups DescribePrefixLists DescribeRegions DescribeReservedInstances DescribeReservedInstancesListings DescribeReservedInstancesModifications DescribeReservedInstancesOfferings DescribeRouteTables DescribeScheduledInstanceAvailability DescribeScheduledInstances DescribeSecurityGroupReferences DescribeSecurityGroups DescribeSnapshotAttribute DescribeSnapshots DescribeSpotDatafeedSubscription DescribeSpotFleetInstances DescribeSpotFleetRequestHistory DescribeSpotFleetRequests DescribeSpotInstanceRequests DescribeSpotPriceHistory DescribeStaleSecurityGroups DescribeSubnets DescribeTags DescribeVolumeAttribute DescribeVolumes DescribeVolumesModifications DescribeVolumeStatus DescribeVpcAttribute DescribeVpcClassicLink DescribeVpcClassicLinkDnsSupport DescribeVpcEndpoints DescribeVpcEndpointServices DescribeVpcPeeringConnections DescribeVpcs DescribeVpnConnections DescribeVpnGateways DetachClassicLinkVpc DetachInternetGateway DetachNetworkInterface DetachVolume DetachVpnGateway DisableVgwRoutePropagation DisableVpcClassicLink DisableVpcClassicLinkDnsSupport DisassociateAddress DisassociateIamInstanceProfile DisassociateRouteTable DisassociateSubnetCidrBlock DisassociateVpcCidrBlock EnableVgwRoutePropagation EnableVolumeIO EnableVpcClassicLink EnableVpcClassicLinkDnsSupport GetConsoleOutput GetConsoleScreenshot GetHostReservationPurchasePreview GetPasswordData GetReservedInstancesExchangeQuote ImportImage ImportInstance ImportKeyPair ImportSnapshot ImportVolume ModifyFpgaImageAttribute ModifyHosts ModifyIdentityIdFormat ModifyIdFormat ModifyImageAttribute ModifyInstanceAttribute ModifyInstancePlacement ModifyNetworkInterfaceAttribute ModifyReservedInstances ModifySnapshotAttribute ModifySpotFleetRequest ModifySubnetAttribute ModifyVolume ModifyVolumeAttribute ModifyVpcAttribute ModifyVpcEndpoint ModifyVpcPeeringConnectionOptions MonitorInstances MoveAddressToVpc PurchaseHostReservation PurchaseReservedInstancesOffering PurchaseScheduledInstances RebootInstances RegisterImage RejectVpcPeeringConnection ReleaseAddress ReleaseHosts ReplaceIamInstanceProfileAssociation ReplaceNetworkAclAssociation ReplaceNetworkAclEntry ReplaceRoute ReplaceRouteTableAssociation ReportInstanceStatus RequestSpotFleet RequestSpotInstances ResetFpgaImageAttribute ResetImageAttribute ResetInstanceAttribute ResetNetworkInterfaceAttribute ResetSnapshotAttribute RestoreAddressToClassic RevokeSecurityGroupEgress RevokeSecurityGroupIngress RunInstances RunScheduledInstances StartInstances StopInstances TerminateInstances UnassignIpv6Addresses UnassignPrivateIpAddresses UnmonitorInstances UpdateSecurityGroupRuleDescriptionsEgress UpdateSecurityGroupRuleDescriptionsIngress / }
 
 1;
 
@@ -1964,6 +1989,15 @@ Returns: a L<Paws::EC2::ConfirmProductInstanceResult> instance
 action can only be used by the owner of the product code. It is useful
 when a product code owner needs to verify whether another user's
 instance is eligible for support.
+
+
+=head2 CopyFpgaImage(SourceFpgaImageId => Str, SourceRegion => Str, [ClientToken => Str, Description => Str, DryRun => Bool, Name => Str])
+
+Each argument is described in detail in: L<Paws::EC2::CopyFpgaImage>
+
+Returns: a L<Paws::EC2::CopyFpgaImageResult> instance
+
+  Copies the specified Amazon FPGA Image (AFI) to the current region.
 
 
 =head2 CopyImage(Name => Str, SourceImageId => Str, SourceRegion => Str, [ClientToken => Str, Description => Str, DryRun => Bool, Encrypted => Bool, KmsKeyId => Str])
@@ -2761,6 +2795,15 @@ Returns: a L<Paws::EC2::DeleteFlowLogsResult> instance
   Deletes one or more flow logs.
 
 
+=head2 DeleteFpgaImage(FpgaImageId => Str, [DryRun => Bool])
+
+Each argument is described in detail in: L<Paws::EC2::DeleteFpgaImage>
+
+Returns: a L<Paws::EC2::DeleteFpgaImageResult> instance
+
+  Deletes the specified Amazon FPGA Image (AFI).
+
+
 =head2 DeleteInternetGateway(InternetGatewayId => Str, [DryRun => Bool])
 
 Each argument is described in detail in: L<Paws::EC2::DeleteInternetGateway>
@@ -3225,6 +3268,16 @@ Returns: a L<Paws::EC2::DescribeFlowLogsResult> instance
   Describes one or more flow logs. To view the information in your flow
 logs (the log streams for the network interfaces), you must use the
 CloudWatch Logs console or the CloudWatch Logs API.
+
+
+=head2 DescribeFpgaImageAttribute(Attribute => Str, FpgaImageId => Str, [DryRun => Bool])
+
+Each argument is described in detail in: L<Paws::EC2::DescribeFpgaImageAttribute>
+
+Returns: a L<Paws::EC2::DescribeFpgaImageAttributeResult> instance
+
+  Describes the specified attribute of the specified Amazon FPGA Image
+(AFI).
 
 
 =head2 DescribeFpgaImages([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], FpgaImageIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str, Owners => ArrayRef[Str|Undef]])
@@ -4414,22 +4467,27 @@ Each argument is described in detail in: L<Paws::EC2::GetPasswordData>
 
 Returns: a L<Paws::EC2::GetPasswordDataResult> instance
 
-  Retrieves the encrypted administrator password for an instance running
-Windows.
+  Retrieves the encrypted administrator password for a running Windows
+instance.
 
-The Windows password is generated at boot if the C<EC2Config> service
-plugin, C<Ec2SetPassword>, is enabled. This usually only happens the
-first time an AMI is launched, and then C<Ec2SetPassword> is
-automatically disabled. The password is not generated for rebundled
-AMIs unless C<Ec2SetPassword> is enabled before bundling.
+The Windows password is generated at boot by the C<EC2Config> service
+or C<EC2Launch> scripts (Windows Server 2016 and later). This usually
+only happens the first time an instance is launched. For more
+information, see EC2Config and EC2Launch in the Amazon Elastic Compute
+Cloud User Guide.
+
+For the C<EC2Config> service, the password is not generated for
+rebundled AMIs unless C<Ec2SetPassword> is enabled before bundling.
 
 The password is encrypted using the key pair that you specified when
 you launched the instance. You must provide the corresponding key pair
 file.
 
-Password generation and encryption takes a few moments. We recommend
-that you wait up to 15 minutes after launching an instance before
-trying to retrieve the generated password.
+When you launch an instance, password generation and encryption may
+take a few minutes. If you try to retrieve the password before it's
+available, the output returns an empty string. We recommend that you
+wait up to 15 minutes after launching an instance before trying to
+retrieve the generated password.
 
 
 =head2 GetReservedInstancesExchangeQuote(ReservedInstanceIds => ArrayRef[Str|Undef], [DryRun => Bool, TargetConfigurations => ArrayRef[L<Paws::EC2::TargetConfigurationRequest>]])
@@ -4506,6 +4564,16 @@ image.For more information, see Importing Disks to Amazon EBS.
 
 For information about the import manifest referenced by this API
 action, see VM Import Manifest.
+
+
+=head2 ModifyFpgaImageAttribute(FpgaImageId => Str, [Attribute => Str, Description => Str, DryRun => Bool, LoadPermission => L<Paws::EC2::LoadPermissionModifications>, Name => Str, OperationType => Str, ProductCodes => ArrayRef[Str|Undef], UserGroups => ArrayRef[Str|Undef], UserIds => ArrayRef[Str|Undef]])
+
+Each argument is described in detail in: L<Paws::EC2::ModifyFpgaImageAttribute>
+
+Returns: a L<Paws::EC2::ModifyFpgaImageAttributeResult> instance
+
+  Modifies the specified attribute of the specified Amazon FPGA Image
+(AFI).
 
 
 =head2 ModifyHosts(AutoPlacement => Str, HostIds => ArrayRef[Str|Undef])
@@ -5164,6 +5232,16 @@ current Spot price. Amazon EC2 periodically sets the Spot price based
 on available Spot Instance capacity and current Spot instance requests.
 For more information, see Spot Instance Requests in the I<Amazon
 Elastic Compute Cloud User Guide>.
+
+
+=head2 ResetFpgaImageAttribute(FpgaImageId => Str, [Attribute => Str, DryRun => Bool])
+
+Each argument is described in detail in: L<Paws::EC2::ResetFpgaImageAttribute>
+
+Returns: a L<Paws::EC2::ResetFpgaImageAttributeResult> instance
+
+  Resets the specified attribute of the specified Amazon FPGA Image (AFI)
+to its default value. You can only reset the load permission attribute.
 
 
 =head2 ResetImageAttribute(Attribute => Str, ImageId => Str, [DryRun => Bool])
