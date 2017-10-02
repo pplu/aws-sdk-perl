@@ -43,6 +43,9 @@
  - API update: AppStream
  - API update: CodePipeline
  - API update: LexRuntime
+ - API update: Pinpoint
+ - API update: MTurk
+ - API update: Organizations
 
 0.34 07 Jul 2017
  - New Credential provider: Paws::Credential::ECSContainerProfile (gadgetjunkie)
