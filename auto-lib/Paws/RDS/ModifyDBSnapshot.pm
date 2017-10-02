@@ -43,13 +43,50 @@ The identifier of the DB snapshot to modify.
 
 =head2 EngineVersion => Str
 
-The engine version to update the DB snapshot to.
+The engine version to upgrade the DB snapshot to.
+
+The following are the database engines and engine versions that are
+available when you upgrade a DB snapshot.
+
+B<MySQL>
+
+=over
+
+=item *
+
+C<5.5.46> (supported for 5.1 DB snapshots)
+
+=back
+
+B<Oracle>
+
+=over
+
+=item *
+
+C<12.1.0.2.v8> (supported for 12.1.0.1 DB snapshots)
+
+=item *
+
+C<11.2.0.4.v12> (supported for 11.2.0.2 DB snapshots)
+
+=item *
+
+C<11.2.0.4.v11> (supported for 11.2.0.3 DB snapshots)
+
+=back
+
 
 
 
 =head2 OptionGroupName => Str
 
+The option group to identify with the upgraded DB snapshot.
 
+You can specify this parameter when you upgrade an Oracle DB snapshot.
+The same option group considerations apply when upgrading a DB snapshot
+as when upgrading a DB instance. For more information, see Option Group
+Considerations.
 
 
 

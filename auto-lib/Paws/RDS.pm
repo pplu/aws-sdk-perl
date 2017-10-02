@@ -2050,11 +2050,9 @@ Each argument is described in detail in: L<Paws::RDS::ModifyDBSnapshot>
 Returns: a L<Paws::RDS::ModifyDBSnapshotResult> instance
 
   Updates a manual DB snapshot, which can be encrypted or not encrypted,
-with a new engine version. You can update the engine version to either
-a new major or minor engine version.
+with a new engine version.
 
-Amazon RDS supports upgrading a MySQL DB snapshot from MySQL 5.1 to
-MySQL 5.5.
+Amazon RDS supports upgrading DB snapshots for MySQL and Oracle.
 
 
 =head2 ModifyDBSnapshotAttribute(AttributeName => Str, DBSnapshotIdentifier => Str, [ValuesToAdd => ArrayRef[Str|Undef], ValuesToRemove => ArrayRef[Str|Undef]])
