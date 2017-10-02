@@ -43,7 +43,7 @@ Valid values are: C<"SERVICE_CONTROL_POLICY">
 =head2 B<REQUIRED> RootId => Str
 
 The unique identifier (ID) of the root in which you want to disable a
-policy type. You can get the ID from the ListPolicies operation.
+policy type. You can get the ID from the ListRoots operation.
 
 The regex pattern for a root ID string requires "r-" followed by from 4
 to 32 lower-case letters or digits.
