@@ -55,8 +55,7 @@ of milliseconds after Jan 1, 1970 00:00:00 UTC.
 
 =head2 Distribution => Str
 
-  The method used to distribute log data to the destination, when the
-destination is an Amazon Kinesis stream.
+  
 
 
 =head2 FilterName => Str

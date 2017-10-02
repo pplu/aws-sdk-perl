@@ -1,13 +1,12 @@
 
-package Paws::CloudWatchLogs::CreateLogGroup;
+package Paws::CloudWatchLogs::AssociateKmsKey;
   use Moose;
-  has KmsKeyId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'kmsKeyId' );
+  has KmsKeyId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'kmsKeyId' , required => 1);
   has LogGroupName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'logGroupName' , required => 1);
-  has Tags => (is => 'ro', isa => 'Paws::CloudWatchLogs::Tags', traits => ['NameInRequest'], request_name => 'tags' );
 
   use MooseX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateLogGroup');
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AssociateKmsKey');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
   class_has _result_key => (isa => 'Str', is => 'ro');
 1;
@@ -16,26 +15,26 @@ package Paws::CloudWatchLogs::CreateLogGroup;
 
 =head1 NAME
 
-Paws::CloudWatchLogs::CreateLogGroup - Arguments for method CreateLogGroup on Paws::CloudWatchLogs
+Paws::CloudWatchLogs::AssociateKmsKey - Arguments for method AssociateKmsKey on Paws::CloudWatchLogs
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method CreateLogGroup on the 
+This class represents the parameters used for calling the method AssociateKmsKey on the 
 Amazon CloudWatch Logs service. Use the attributes of this class
-as arguments to method CreateLogGroup.
+as arguments to method AssociateKmsKey.
 
-You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateLogGroup.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to AssociateKmsKey.
 
 As an example:
 
-  $service_obj->CreateLogGroup(Att1 => $value1, Att2 => $value2, ...);
+  $service_obj->AssociateKmsKey(Att1 => $value1, Att2 => $value2, ...);
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 
 =head1 ATTRIBUTES
 
 
-=head2 KmsKeyId => Str
+=head2 B<REQUIRED> KmsKeyId => Str
 
 The Amazon Resource Name (ARN) of the CMK to use when encrypting log
 data. For more information, see Amazon Resource Names - AWS Key
@@ -49,16 +48,10 @@ The name of the log group.
 
 
 
-=head2 Tags => L<Paws::CloudWatchLogs::Tags>
-
-The key-value pairs to use for the tags.
-
-
-
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, documenting arguments for method CreateLogGroup in L<Paws::CloudWatchLogs>
+This class forms part of L<Paws>, documenting arguments for method AssociateKmsKey in L<Paws::CloudWatchLogs>
 
 =head1 BUGS and CONTRIBUTIONS
 
