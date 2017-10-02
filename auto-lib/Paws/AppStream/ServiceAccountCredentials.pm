@@ -32,24 +32,23 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AppStream::
 
 =head1 DESCRIPTION
 
-The I<AccountName> and I<AccountPassword> of the service account, to be
-used by the streaming instance to connect to the directory.
+Describes the credentials for the service account used by the streaming
+instance to connect to the directory.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> AccountName => Str
 
-  The user name of an account in the directory that is used by AppStream
-2.0 streaming instances to connect to the directory. This account must
-have the following privileges: create computer objects, join computers
-to the domain, change/reset the password on descendant computer objects
-for the organizational units specified.
+  The user name of the account. This account must have the following
+privileges: create computer objects, join computers to the domain, and
+change/reset the password on descendant computer objects for the
+organizational units specified.
 
 
 =head2 B<REQUIRED> AccountPassword => Str
 
-  The password for the user account for directory actions.
+  The password for the account.
 
 
 

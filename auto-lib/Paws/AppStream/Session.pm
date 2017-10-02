@@ -36,31 +36,30 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AppStream::
 
 =head1 DESCRIPTION
 
-Contains the parameters for a streaming session.
+Describes a streaming session.
 
 =head1 ATTRIBUTES
 
 
 =head2 AuthenticationType => Str
 
-  The authentication method of the user for whom the session was created.
-It can be C<API> for a user authenticated using a streaming URL or
-C<SAML> for a SAML federated user.
+  The authentication method. The user is authenticated using a streaming
+URL (C<API>) or SAML federation (C<SAML>).
 
 
 =head2 B<REQUIRED> FleetName => Str
 
-  The name of the fleet for which the streaming session was created.
+  The name of the fleet for the streaming session.
 
 
 =head2 B<REQUIRED> Id => Str
 
-  The unique ID for a streaming session.
+  The ID of the streaming session.
 
 
 =head2 B<REQUIRED> StackName => Str
 
-  The name of the stack for which the streaming session was created.
+  The name of the stack for the streaming session.
 
 
 =head2 B<REQUIRED> State => Str

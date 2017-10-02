@@ -32,20 +32,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AppStream::
 
 =head1 DESCRIPTION
 
-Contains the parameters for a storage connector.
+Describes a storage connector.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> ConnectorType => Str
 
-  The type of storage connector. The possible values include:
-HOMEFOLDERS.
+  The type of storage connector.
 
 
 =head2 ResourceIdentifier => Str
 
-  The ARN associated with the storage connector.
+  The ARN of the storage connector.
 
 
 

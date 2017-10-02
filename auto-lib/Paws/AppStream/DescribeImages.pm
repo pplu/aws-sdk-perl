@@ -35,7 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Names => ArrayRef[Str|Undef]
 
-A specific list of images to describe.
+The names of the images to describe.
 
 
 

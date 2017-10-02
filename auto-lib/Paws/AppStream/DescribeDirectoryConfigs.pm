@@ -37,20 +37,20 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 DirectoryNames => ArrayRef[Str|Undef]
 
-A specific list of directory names.
+The directory names.
 
 
 
 =head2 MaxResults => Int
 
-The size of each page of results.
+The maximum size of each page of results.
 
 
 
 =head2 NextToken => Str
 
-The DescribeDirectoryConfigsResult.NextToken from a previous call to
-DescribeDirectoryConfigs. If this is the first call, pass null.
+The pagination token to use to retrieve the next page of results for
+this operation. If this value is null, it retrieves the first page.
 
 
 

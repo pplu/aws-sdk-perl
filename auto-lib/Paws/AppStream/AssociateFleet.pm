@@ -36,13 +36,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> FleetName => Str
 
-The name of the fleet to associate.
+The name of the fleet.
 
 
 
 =head2 B<REQUIRED> StackName => Str
 
-The name of the stack to which the fleet is associated.
+The name of the stack.
 
 
 

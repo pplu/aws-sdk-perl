@@ -1,14 +1,15 @@
-package Paws::AppStream::ImageStateChangeReason;
+package Paws::AppStream::ResourceError;
   use Moose;
-  has Code => (is => 'ro', isa => 'Str');
-  has Message => (is => 'ro', isa => 'Str');
+  has ErrorCode => (is => 'ro', isa => 'Str');
+  has ErrorMessage => (is => 'ro', isa => 'Str');
+  has ErrorTimestamp => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::AppStream::ImageStateChangeReason
+Paws::AppStream::ResourceError
 
 =head1 USAGE
 
@@ -19,32 +20,37 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::AppStream::ImageStateChangeReason object:
+As an example, if Att1 is expected to be a Paws::AppStream::ResourceError object:
 
-  $service_obj->Method(Att1 => { Code => $value, ..., Message => $value  });
+  $service_obj->Method(Att1 => { ErrorCode => $value, ..., ErrorTimestamp => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::AppStream::ImageStateChangeReason object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::AppStream::ResourceError object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Code
+  $result->Att1->ErrorCode
 
 =head1 DESCRIPTION
 
-Describes the reason why the last state change occurred.
+This class has no description
 
 =head1 ATTRIBUTES
 
 
-=head2 Code => Str
+=head2 ErrorCode => Str
 
-  The state change reason code.
+  
 
 
-=head2 Message => Str
+=head2 ErrorMessage => Str
 
-  The state change reason message.
+  
+
+
+=head2 ErrorTimestamp => Str
+
+  
 
 
 

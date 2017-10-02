@@ -47,48 +47,46 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AttributesToDelete => ArrayRef[Str|Undef]
 
-Fleet attributes to be deleted.
+The fleet attributes to delete.
 
 
 
 =head2 ComputeCapacity => L<Paws::AppStream::ComputeCapacity>
 
-The parameters for the capacity allocated to the fleet.
+The desired capacity for the fleet.
 
 
 
 =head2 DeleteVpcConfig => Bool
 
-Delete the VPC association for the specified fleet.
+Deletes the VPC association for the specified fleet.
 
 
 
 =head2 Description => Str
 
-The description displayed to end users on the AppStream 2.0 portal.
+The description displayed to end users.
 
 
 
 =head2 DisconnectTimeoutInSeconds => Int
 
 The time after disconnection when a session is considered to have
-ended. If a user who got disconnected reconnects within this timeout
-interval, the user is connected back to their previous session. The
-input can be any numeric value in seconds between 60 and 57600.
+ended, in seconds. If a user who was disconnected reconnects within
+this time interval, the user is connected to their previous session.
+Specify a value between 60 and 57600.
 
 
 
 =head2 DisplayName => Str
 
-The name displayed to end users on the AppStream 2.0 portal.
+The fleet name displayed to end users.
 
 
 
 =head2 DomainJoinInfo => L<Paws::AppStream::DomainJoinInfo>
 
-The I<DirectoryName> and I<OrganizationalUnitDistinguishedName> values,
-which are used to join domains for the AppStream 2.0 streaming
-instances.
+The information needed for streaming instances to join a domain.
 
 
 
@@ -100,7 +98,7 @@ Enables or disables default internet access for the fleet.
 
 =head2 ImageName => Str
 
-The image name from which a fleet is created.
+The name of the image used by the fleet.
 
 
 
@@ -198,14 +196,14 @@ stream.graphics-pro.16xlarge
 
 =head2 MaxUserDurationInSeconds => Int
 
-The maximum time for which a streaming session can run. The input can
-be any numeric value in seconds between 600 and 57600.
+The maximum time that a streaming session can run, in seconds. Specify
+a value between 600 and 57600.
 
 
 
 =head2 B<REQUIRED> Name => Str
 
-The name of the fleet.
+A unique name for the fleet.
 
 
 

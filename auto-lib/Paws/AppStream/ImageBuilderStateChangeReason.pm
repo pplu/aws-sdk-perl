@@ -1,4 +1,4 @@
-package Paws::AppStream::ImageStateChangeReason;
+package Paws::AppStream::ImageBuilderStateChangeReason;
   use Moose;
   has Code => (is => 'ro', isa => 'Str');
   has Message => (is => 'ro', isa => 'Str');
@@ -8,7 +8,7 @@ package Paws::AppStream::ImageStateChangeReason;
 
 =head1 NAME
 
-Paws::AppStream::ImageStateChangeReason
+Paws::AppStream::ImageBuilderStateChangeReason
 
 =head1 USAGE
 
@@ -19,32 +19,32 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::AppStream::ImageStateChangeReason object:
+As an example, if Att1 is expected to be a Paws::AppStream::ImageBuilderStateChangeReason object:
 
   $service_obj->Method(Att1 => { Code => $value, ..., Message => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::AppStream::ImageStateChangeReason object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::AppStream::ImageBuilderStateChangeReason object:
 
   $result = $service_obj->Method(...);
   $result->Att1->Code
 
 =head1 DESCRIPTION
 
-Describes the reason why the last state change occurred.
+This class has no description
 
 =head1 ATTRIBUTES
 
 
 =head2 Code => Str
 
-  The state change reason code.
+  
 
 
 =head2 Message => Str
 
-  The state change reason message.
+  
 
 
 
