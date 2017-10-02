@@ -1,15 +1,15 @@
-package Paws::Pinpoint::SMSChannelRequest;
+package Paws::Pinpoint::BaiduChannelRequest;
   use Moose;
+  has ApiKey => (is => 'ro', isa => 'Str');
   has Enabled => (is => 'ro', isa => 'Bool');
-  has SenderId => (is => 'ro', isa => 'Str');
-  has ShortCode => (is => 'ro', isa => 'Str');
+  has SecretKey => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::Pinpoint::SMSChannelRequest
+Paws::Pinpoint::BaiduChannelRequest
 
 =head1 USAGE
 
@@ -20,22 +20,27 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::Pinpoint::SMSChannelRequest object:
+As an example, if Att1 is expected to be a Paws::Pinpoint::BaiduChannelRequest object:
 
-  $service_obj->Method(Att1 => { Enabled => $value, ..., ShortCode => $value  });
+  $service_obj->Method(Att1 => { ApiKey => $value, ..., SecretKey => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::SMSChannelRequest object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::BaiduChannelRequest object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Enabled
+  $result->Att1->ApiKey
 
 =head1 DESCRIPTION
 
-SMS Channel Request
+Baidu Cloud Push credentials
 
 =head1 ATTRIBUTES
+
+
+=head2 ApiKey => Str
+
+  Platform credential API key from Baidu.
 
 
 =head2 Enabled => Bool
@@ -43,14 +48,9 @@ SMS Channel Request
   If the channel is enabled for sending messages.
 
 
-=head2 SenderId => Str
+=head2 SecretKey => Str
 
-  Sender identifier of your messages.
-
-
-=head2 ShortCode => Str
-
-  ShortCode registered with phone provider.
+  Platform credential Secret key from Baidu.
 
 
 

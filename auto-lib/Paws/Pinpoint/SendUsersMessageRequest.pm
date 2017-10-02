@@ -1,18 +1,16 @@
-package Paws::Pinpoint::MessageRequest;
+package Paws::Pinpoint::SendUsersMessageRequest;
   use Moose;
-  has Addresses => (is => 'ro', isa => 'Paws::Pinpoint::MapOfAddressConfiguration');
-  has Campaign => (is => 'ro', isa => 'Paws::Pinpoint::MapOf__string');
   has Context => (is => 'ro', isa => 'Paws::Pinpoint::MapOf__string');
-  has Endpoints => (is => 'ro', isa => 'Paws::Pinpoint::MapOfEndpointSendConfiguration');
   has MessageConfiguration => (is => 'ro', isa => 'Paws::Pinpoint::DirectMessageConfiguration');
   has RequestId => (is => 'ro', isa => 'Str');
+  has Users => (is => 'ro', isa => 'Paws::Pinpoint::MapOfEndpointSendConfiguration');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::Pinpoint::MessageRequest
+Paws::Pinpoint::SendUsersMessageRequest
 
 =head1 USAGE
 
@@ -23,16 +21,16 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::Pinpoint::MessageRequest object:
+As an example, if Att1 is expected to be a Paws::Pinpoint::SendUsersMessageRequest object:
 
-  $service_obj->Method(Att1 => { Addresses => $value, ..., RequestId => $value  });
+  $service_obj->Method(Att1 => { Context => $value, ..., Users => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::MessageRequest object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::SendUsersMessageRequest object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Addresses
+  $result->Att1->Context
 
 =head1 DESCRIPTION
 
@@ -41,33 +39,11 @@ Send message request.
 =head1 ATTRIBUTES
 
 
-=head2 Addresses => L<Paws::Pinpoint::MapOfAddressConfiguration>
-
-  A map of destination addresses, with the address as the key(Email
-address, phone number or push token) and the Address Configuration as
-the value.
-
-
-=head2 Campaign => L<Paws::Pinpoint::MapOf__string>
-
-  The JSON payload used for campaign attributes. This payload is added to
-the notifications' data-E<gt>pinpoint-E<gt>campaign' object in iOS and
-flattened to pinpoint.campaign.{AttributeName} keys in Android. Email
-will use the attribute campaign_id to save the templates.
-
-
 =head2 Context => L<Paws::Pinpoint::MapOf__string>
 
   A map of custom attributes to attributes to be attached to the message.
 This payload is added to the push notification's 'data.pinpoint' object
 or added to the email/sms delivery receipt event attributes.
-
-
-=head2 Endpoints => L<Paws::Pinpoint::MapOfEndpointSendConfiguration>
-
-  A map of destination addresses, with the address as the key(Email
-address, phone number or push token) and the Address Configuration as
-the value.
 
 
 =head2 MessageConfiguration => L<Paws::Pinpoint::DirectMessageConfiguration>
@@ -78,6 +54,12 @@ the value.
 =head2 RequestId => Str
 
   Original request Id for which this message is delivered.
+
+
+=head2 Users => L<Paws::Pinpoint::MapOfEndpointSendConfiguration>
+
+  A map of destination endpoints, with the EndpointId as the key Endpoint
+Message Configuration as the value.
 
 
 

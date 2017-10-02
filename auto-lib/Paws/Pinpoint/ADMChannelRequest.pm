@@ -1,15 +1,15 @@
-package Paws::Pinpoint::SMSChannelRequest;
+package Paws::Pinpoint::ADMChannelRequest;
   use Moose;
+  has ClientId => (is => 'ro', isa => 'Str');
+  has ClientSecret => (is => 'ro', isa => 'Str');
   has Enabled => (is => 'ro', isa => 'Bool');
-  has SenderId => (is => 'ro', isa => 'Str');
-  has ShortCode => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::Pinpoint::SMSChannelRequest
+Paws::Pinpoint::ADMChannelRequest
 
 =head1 USAGE
 
@@ -20,37 +20,37 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::Pinpoint::SMSChannelRequest object:
+As an example, if Att1 is expected to be a Paws::Pinpoint::ADMChannelRequest object:
 
-  $service_obj->Method(Att1 => { Enabled => $value, ..., ShortCode => $value  });
+  $service_obj->Method(Att1 => { ClientId => $value, ..., Enabled => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::SMSChannelRequest object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::ADMChannelRequest object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Enabled
+  $result->Att1->ClientId
 
 =head1 DESCRIPTION
 
-SMS Channel Request
+Amazon Device Messaging channel definition.
 
 =head1 ATTRIBUTES
+
+
+=head2 ClientId => Str
+
+  Client ID as gotten from Amazon
+
+
+=head2 ClientSecret => Str
+
+  Client secret as gotten from Amazon
 
 
 =head2 Enabled => Bool
 
   If the channel is enabled for sending messages.
-
-
-=head2 SenderId => Str
-
-  Sender identifier of your messages.
-
-
-=head2 ShortCode => Str
-
-  ShortCode registered with phone provider.
 
 
 

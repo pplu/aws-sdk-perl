@@ -135,7 +135,7 @@ of the following values: ALL - User has opted out of all messages. NONE
 
 =head2 ShardId => Str
 
-  The ShardId of endpoint
+  The ShardId of endpoint.
 
 
 =head2 User => L<Paws::Pinpoint::EndpointUser>

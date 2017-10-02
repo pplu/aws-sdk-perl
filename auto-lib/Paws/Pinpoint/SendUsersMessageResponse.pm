@@ -1,16 +1,15 @@
-package Paws::Pinpoint::MessageResponse;
+package Paws::Pinpoint::SendUsersMessageResponse;
   use Moose;
   has ApplicationId => (is => 'ro', isa => 'Str');
-  has EndpointResult => (is => 'ro', isa => 'Paws::Pinpoint::MapOfEndpointMessageResult');
   has RequestId => (is => 'ro', isa => 'Str');
-  has Result => (is => 'ro', isa => 'Paws::Pinpoint::MapOfMessageResult');
+  has Result => (is => 'ro', isa => 'Paws::Pinpoint::MapOfMapOfEndpointMessageResult');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::Pinpoint::MessageResponse
+Paws::Pinpoint::SendUsersMessageResponse
 
 =head1 USAGE
 
@@ -21,20 +20,20 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::Pinpoint::MessageResponse object:
+As an example, if Att1 is expected to be a Paws::Pinpoint::SendUsersMessageResponse object:
 
   $service_obj->Method(Att1 => { ApplicationId => $value, ..., Result => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::MessageResponse object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::SendUsersMessageResponse object:
 
   $result = $service_obj->Method(...);
   $result->Att1->ApplicationId
 
 =head1 DESCRIPTION
 
-Send message response.
+User send message response.
 
 =head1 ATTRIBUTES
 
@@ -44,22 +43,15 @@ Send message response.
   Application id of the message.
 
 
-=head2 EndpointResult => L<Paws::Pinpoint::MapOfEndpointMessageResult>
-
-  A map containing a multi part response for each address, with the
-endpointId as the key and the result as the value.
-
-
 =head2 RequestId => Str
 
   Original request Id for which this message was delivered.
 
 
-=head2 Result => L<Paws::Pinpoint::MapOfMessageResult>
+=head2 Result => L<Paws::Pinpoint::MapOfMapOfEndpointMessageResult>
 
-  A map containing a multi part response for each address, with the
-address as the key(Email address, phone number or push token) and the
-result as the value.
+  A map containing of UserId to Map of EndpointId to Endpoint Message
+Result.
 
 
 

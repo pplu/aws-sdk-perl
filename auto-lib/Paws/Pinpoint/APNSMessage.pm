@@ -5,7 +5,9 @@ package Paws::Pinpoint::APNSMessage;
   has Body => (is => 'ro', isa => 'Str');
   has Category => (is => 'ro', isa => 'Str');
   has Data => (is => 'ro', isa => 'Paws::Pinpoint::MapOf__string');
+  has JsonData => (is => 'ro', isa => 'Str');
   has MediaUrl => (is => 'ro', isa => 'Str');
+  has PreferredAuthenticationMethod => (is => 'ro', isa => 'Str');
   has RawContent => (is => 'ro', isa => 'Str');
   has SilentPush => (is => 'ro', isa => 'Bool');
   has Sound => (is => 'ro', isa => 'Str');
@@ -86,9 +88,20 @@ one of your app's registered categories.
 notifications' data.pinpoint.jsonBody' object
 
 
+=head2 JsonData => Str
+
+  The data payload used for a silent push. This payload is added to the
+notifications' data.pinpoint.jsonBody' object
+
+
 =head2 MediaUrl => Str
 
   The URL that points to a video used in the push notification.
+
+
+=head2 PreferredAuthenticationMethod => Str
+
+  The preferred authentication method, either "CERTIFICATE" or "TOKEN"
 
 
 =head2 RawContent => Str

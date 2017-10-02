@@ -1,8 +1,11 @@
 package Paws::Pinpoint::DirectMessageConfiguration;
   use Moose;
+  has ADMMessage => (is => 'ro', isa => 'Paws::Pinpoint::ADMMessage');
   has APNSMessage => (is => 'ro', isa => 'Paws::Pinpoint::APNSMessage');
+  has BaiduMessage => (is => 'ro', isa => 'Paws::Pinpoint::BaiduMessage');
   has DefaultMessage => (is => 'ro', isa => 'Paws::Pinpoint::DefaultMessage');
   has DefaultPushNotificationMessage => (is => 'ro', isa => 'Paws::Pinpoint::DefaultPushNotificationMessage');
+  has EmailMessage => (is => 'ro', isa => 'Paws::Pinpoint::EmailMessage');
   has GCMMessage => (is => 'ro', isa => 'Paws::Pinpoint::GCMMessage');
   has SMSMessage => (is => 'ro', isa => 'Paws::Pinpoint::SMSMessage');
 1;
@@ -24,14 +27,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Pinpoint::DirectMessageConfiguration object:
 
-  $service_obj->Method(Att1 => { APNSMessage => $value, ..., SMSMessage => $value  });
+  $service_obj->Method(Att1 => { ADMMessage => $value, ..., SMSMessage => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::DirectMessageConfiguration object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->APNSMessage
+  $result->Att1->ADMMessage
 
 =head1 DESCRIPTION
 
@@ -40,10 +43,22 @@ The message configuration.
 =head1 ATTRIBUTES
 
 
+=head2 ADMMessage => L<Paws::Pinpoint::ADMMessage>
+
+  The message to ADM channels. Overrides the default push notification
+message.
+
+
 =head2 APNSMessage => L<Paws::Pinpoint::APNSMessage>
 
   The message to APNS channels. Overrides the default push notification
 message.
+
+
+=head2 BaiduMessage => L<Paws::Pinpoint::BaiduMessage>
+
+  The message to Baidu GCM channels. Overrides the default push
+notification message.
 
 
 =head2 DefaultMessage => L<Paws::Pinpoint::DefaultMessage>
@@ -54,6 +69,11 @@ message.
 =head2 DefaultPushNotificationMessage => L<Paws::Pinpoint::DefaultPushNotificationMessage>
 
   The default push notification message for all push channels.
+
+
+=head2 EmailMessage => L<Paws::Pinpoint::EmailMessage>
+
+  The message to Email channels. Overrides the default message.
 
 
 =head2 GCMMessage => L<Paws::Pinpoint::GCMMessage>

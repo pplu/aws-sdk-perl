@@ -33,6 +33,11 @@ package Paws::Pinpoint;
     my $call_object = $self->new_with_coercions('Paws::Pinpoint::CreateSegment', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteAdmChannel {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Pinpoint::DeleteAdmChannel', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteApnsChannel {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Pinpoint::DeleteApnsChannel', @_);
@@ -46,6 +51,11 @@ package Paws::Pinpoint;
   sub DeleteApp {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Pinpoint::DeleteApp', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteBaiduChannel {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Pinpoint::DeleteBaiduChannel', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteCampaign {
@@ -78,6 +88,11 @@ package Paws::Pinpoint;
     my $call_object = $self->new_with_coercions('Paws::Pinpoint::DeleteSmsChannel', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetAdmChannel {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Pinpoint::GetAdmChannel', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetApnsChannel {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Pinpoint::GetApnsChannel', @_);
@@ -101,6 +116,11 @@ package Paws::Pinpoint;
   sub GetApps {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Pinpoint::GetApps', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetBaiduChannel {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Pinpoint::GetBaiduChannel', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetCampaign {
@@ -198,6 +218,16 @@ package Paws::Pinpoint;
     my $call_object = $self->new_with_coercions('Paws::Pinpoint::SendMessages', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub SendUsersMessages {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Pinpoint::SendUsersMessages', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateAdmChannel {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Pinpoint::UpdateAdmChannel', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateApnsChannel {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Pinpoint::UpdateApnsChannel', @_);
@@ -211,6 +241,11 @@ package Paws::Pinpoint;
   sub UpdateApplicationSettings {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Pinpoint::UpdateApplicationSettings', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateBaiduChannel {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Pinpoint::UpdateBaiduChannel', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateCampaign {
@@ -251,7 +286,7 @@ package Paws::Pinpoint;
   
 
 
-  sub operations { qw/CreateApp CreateCampaign CreateImportJob CreateSegment DeleteApnsChannel DeleteApnsSandboxChannel DeleteApp DeleteCampaign DeleteEmailChannel DeleteEventStream DeleteGcmChannel DeleteSegment DeleteSmsChannel GetApnsChannel GetApnsSandboxChannel GetApp GetApplicationSettings GetApps GetCampaign GetCampaignActivities GetCampaigns GetCampaignVersion GetCampaignVersions GetEmailChannel GetEndpoint GetEventStream GetGcmChannel GetImportJob GetImportJobs GetSegment GetSegmentImportJobs GetSegments GetSegmentVersion GetSegmentVersions GetSmsChannel PutEventStream SendMessages UpdateApnsChannel UpdateApnsSandboxChannel UpdateApplicationSettings UpdateCampaign UpdateEmailChannel UpdateEndpoint UpdateEndpointsBatch UpdateGcmChannel UpdateSegment UpdateSmsChannel / }
+  sub operations { qw/CreateApp CreateCampaign CreateImportJob CreateSegment DeleteAdmChannel DeleteApnsChannel DeleteApnsSandboxChannel DeleteApp DeleteBaiduChannel DeleteCampaign DeleteEmailChannel DeleteEventStream DeleteGcmChannel DeleteSegment DeleteSmsChannel GetAdmChannel GetApnsChannel GetApnsSandboxChannel GetApp GetApplicationSettings GetApps GetBaiduChannel GetCampaign GetCampaignActivities GetCampaigns GetCampaignVersion GetCampaignVersions GetEmailChannel GetEndpoint GetEventStream GetGcmChannel GetImportJob GetImportJobs GetSegment GetSegmentImportJobs GetSegments GetSegmentVersion GetSegmentVersions GetSmsChannel PutEventStream SendMessages SendUsersMessages UpdateAdmChannel UpdateApnsChannel UpdateApnsSandboxChannel UpdateApplicationSettings UpdateBaiduChannel UpdateCampaign UpdateEmailChannel UpdateEndpoint UpdateEndpointsBatch UpdateGcmChannel UpdateSegment UpdateSmsChannel / }
 
 1;
 
@@ -289,7 +324,7 @@ Each argument is described in detail in: L<Paws::Pinpoint::CreateApp>
 
 Returns: a L<Paws::Pinpoint::CreateAppResponse> instance
 
-  Used to create an app.
+  Creates or updates an app.
 
 
 =head2 CreateCampaign(ApplicationId => Str, WriteCampaignRequest => L<Paws::Pinpoint::WriteCampaignRequest>)
@@ -319,6 +354,15 @@ Returns: a L<Paws::Pinpoint::CreateSegmentResponse> instance
   Used to create or update a segment.
 
 
+=head2 DeleteAdmChannel(ApplicationId => Str)
+
+Each argument is described in detail in: L<Paws::Pinpoint::DeleteAdmChannel>
+
+Returns: a L<Paws::Pinpoint::DeleteAdmChannelResponse> instance
+
+  Delete an ADM channel
+
+
 =head2 DeleteApnsChannel(ApplicationId => Str)
 
 Each argument is described in detail in: L<Paws::Pinpoint::DeleteApnsChannel>
@@ -344,6 +388,15 @@ Each argument is described in detail in: L<Paws::Pinpoint::DeleteApp>
 Returns: a L<Paws::Pinpoint::DeleteAppResponse> instance
 
   Deletes an app.
+
+
+=head2 DeleteBaiduChannel(ApplicationId => Str)
+
+Each argument is described in detail in: L<Paws::Pinpoint::DeleteBaiduChannel>
+
+Returns: a L<Paws::Pinpoint::DeleteBaiduChannelResponse> instance
+
+  Delete a BAIDU GCM channel
 
 
 =head2 DeleteCampaign(ApplicationId => Str, CampaignId => Str)
@@ -400,6 +453,15 @@ Returns: a L<Paws::Pinpoint::DeleteSmsChannelResponse> instance
   Delete an SMS channel
 
 
+=head2 GetAdmChannel(ApplicationId => Str)
+
+Each argument is described in detail in: L<Paws::Pinpoint::GetAdmChannel>
+
+Returns: a L<Paws::Pinpoint::GetAdmChannelResponse> instance
+
+  Get an ADM channel
+
+
 =head2 GetApnsChannel(ApplicationId => Str)
 
 Each argument is described in detail in: L<Paws::Pinpoint::GetApnsChannel>
@@ -443,6 +505,15 @@ Each argument is described in detail in: L<Paws::Pinpoint::GetApps>
 Returns: a L<Paws::Pinpoint::GetAppsResponse> instance
 
   Returns information about your apps.
+
+
+=head2 GetBaiduChannel(ApplicationId => Str)
+
+Each argument is described in detail in: L<Paws::Pinpoint::GetBaiduChannel>
+
+Returns: a L<Paws::Pinpoint::GetBaiduChannelResponse> instance
+
+  Get a BAIDU GCM channel
 
 
 =head2 GetCampaign(ApplicationId => Str, CampaignId => Str)
@@ -616,6 +687,24 @@ Returns: a L<Paws::Pinpoint::SendMessagesResponse> instance
   Send a batch of messages
 
 
+=head2 SendUsersMessages(ApplicationId => Str, SendUsersMessageRequest => L<Paws::Pinpoint::SendUsersMessageRequest>)
+
+Each argument is described in detail in: L<Paws::Pinpoint::SendUsersMessages>
+
+Returns: a L<Paws::Pinpoint::SendUsersMessagesResponse> instance
+
+  Send a batch of messages to users
+
+
+=head2 UpdateAdmChannel(ADMChannelRequest => L<Paws::Pinpoint::ADMChannelRequest>, ApplicationId => Str)
+
+Each argument is described in detail in: L<Paws::Pinpoint::UpdateAdmChannel>
+
+Returns: a L<Paws::Pinpoint::UpdateAdmChannelResponse> instance
+
+  Update an ADM channel
+
+
 =head2 UpdateApnsChannel(APNSChannelRequest => L<Paws::Pinpoint::APNSChannelRequest>, ApplicationId => Str)
 
 Each argument is described in detail in: L<Paws::Pinpoint::UpdateApnsChannel>
@@ -641,6 +730,15 @@ Each argument is described in detail in: L<Paws::Pinpoint::UpdateApplicationSett
 Returns: a L<Paws::Pinpoint::UpdateApplicationSettingsResponse> instance
 
   Used to update the settings for an app.
+
+
+=head2 UpdateBaiduChannel(ApplicationId => Str, BaiduChannelRequest => L<Paws::Pinpoint::BaiduChannelRequest>)
+
+Each argument is described in detail in: L<Paws::Pinpoint::UpdateBaiduChannel>
+
+Returns: a L<Paws::Pinpoint::UpdateBaiduChannelResponse> instance
+
+  Update a BAIDU GCM channel
 
 
 =head2 UpdateCampaign(ApplicationId => Str, CampaignId => Str, WriteCampaignRequest => L<Paws::Pinpoint::WriteCampaignRequest>)
