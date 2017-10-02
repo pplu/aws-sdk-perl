@@ -55,7 +55,7 @@ C<hostPort> of the port mapping.
 
 =head2 LoadBalancerName => Str
 
-  The name of a Classic load balancer.
+  The name of a load balancer.
 
 
 =head2 TargetGroupArn => Str
