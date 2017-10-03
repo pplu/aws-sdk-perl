@@ -115,7 +115,12 @@ package Paws::API::Caller;
       if (not defined $content or $content eq '') {
         $unserialized_struct = {}
       } else {
-        $unserialized_struct = eval { $self->unserialize_response( $content ) };
+        if ($ret_class->can('_payload')) {
+          $unserialized_struct = {$ret_class->_payload => $content};
+        }
+        else {
+          $unserialized_struct = eval { $self->unserialize_response( $content ) };
+        }
         if ($@){
           return Paws::Exception->new(
             message => $@,

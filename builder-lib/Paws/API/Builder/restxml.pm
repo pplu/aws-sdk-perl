@@ -86,9 +86,12 @@ package [% c.api %]::[% op_name %];
   [%- IF (shape.members.$param_name.streaming == 1) %], traits => ['ParamInBody'][% stream_param = param_name %][% END %]
   [%- IF (c.required_in_shape(shape,param_name)) %], required => 1[% END %]);
 [% END %]
-  [%- IF (stream_param) -%]
+  [%- IF (stream_param or shape.payload == param_name) %]
   use MooseX::ClassAttribute;
-  class_has _stream_param => (is => 'ro', default => '[% c.to_payload_shape_name(stream_param) %]');
+  [%- IF (stream_param) %]
+  class_has _stream_param => (is => 'ro', default => '[% c.to_payload_shape_name(stream_param) %]');[% END %]
+  [%- IF (shape.payload == param_name) %]
+  class_has _payload => (is => 'ro', default => '[% param_name %]');[% END %]
   [%- END %]
   has _request_id => (is => 'ro', isa => 'Str');
 [%- END %]
