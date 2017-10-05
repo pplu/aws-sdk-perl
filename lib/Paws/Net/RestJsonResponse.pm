@@ -67,7 +67,7 @@ package Paws::Net::RestJsonResponse;
     } else {
       $code = 'UnrecognizedError';
     }
-    $request_id = $headers->{ 'x-amzn-requestid' };
+    $request_id = $headers->{ 'x-amzn-requestid' } // '';
 
     Paws::Exception->new(
       message => $message,
