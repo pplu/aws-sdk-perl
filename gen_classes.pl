@@ -47,7 +47,7 @@ foreach my $file (@files) {
   }
 }
 
-print "Summary of fails\n";
+print "Summary of fails:\n" if @failures;
 print @failures;
 
 sub process_api {
