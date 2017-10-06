@@ -1,6 +1,7 @@
 0.35
  - Fix Bug: Correctly throw Paws::Exceptions even if there is no information
             in the body / headers (#190 svn-schubert) (#198 ilmari)
+ - Documentation update: Now POD contains links from the botocore documentation
  - New API: MobileHub
  - New API: MigrationHub
  - New API: Glue
