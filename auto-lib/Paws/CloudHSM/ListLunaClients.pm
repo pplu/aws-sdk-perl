@@ -35,7 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 NextToken => Str
 
-The I<NextToken> value from a previous call to ListLunaClients. Pass
+The C<NextToken> value from a previous call to C<ListLunaClients>. Pass
 null if this is the first call.
 
 

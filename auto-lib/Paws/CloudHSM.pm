@@ -147,6 +147,12 @@ Paws::CloudHSM - Perl Interface to AWS Amazon CloudHSM
 
 AWS CloudHSM Service
 
+This is the reference for AWS CloudHSM Classic. For more information,
+see AWS CloudHSM Classic FAQs and the AWS CloudHSM Classic User Guide.
+
+For more information about AWS CloudHSM, see AWS CloudHSM and the AWS
+CloudHSM User Guide.
+
 =head1 METHODS
 
 =head2 AddTagsToResource(ResourceArn => Str, TagList => ArrayRef[L<Paws::CloudHSM::Tag>])
@@ -182,8 +188,8 @@ Returns: a L<Paws::CloudHSM::CreateHsmResponse> instance
   Creates an uninitialized HSM instance.
 
 There is an upfront fee charged for each HSM instance that you create
-with the CreateHsm operation. If you accidentally provision an HSM and
-want to request a refund, delete the instance using the DeleteHsm
+with the C<CreateHsm> operation. If you accidentally provision an HSM
+and want to request a refund, delete the instance using the DeleteHsm
 operation, go to the AWS Support Center, create a new case, and select
 B<Account and Billing Support>.
 
@@ -284,10 +290,10 @@ Returns: a L<Paws::CloudHSM::ListHapgsResponse> instance
 
   Lists the high-availability partition groups for the account.
 
-This operation supports pagination with the use of the I<NextToken>
-member. If more results are available, the I<NextToken> member of the
-response contains a token that you pass in the next call to ListHapgs
-to retrieve the next set of items.
+This operation supports pagination with the use of the C<NextToken>
+member. If more results are available, the C<NextToken> member of the
+response contains a token that you pass in the next call to
+C<ListHapgs> to retrieve the next set of items.
 
 
 =head2 ListHsms([NextToken => Str])
@@ -299,10 +305,10 @@ Returns: a L<Paws::CloudHSM::ListHsmsResponse> instance
   Retrieves the identifiers of all of the HSMs provisioned for the
 current customer.
 
-This operation supports pagination with the use of the I<NextToken>
-member. If more results are available, the I<NextToken> member of the
-response contains a token that you pass in the next call to ListHsms to
-retrieve the next set of items.
+This operation supports pagination with the use of the C<NextToken>
+member. If more results are available, the C<NextToken> member of the
+response contains a token that you pass in the next call to C<ListHsms>
+to retrieve the next set of items.
 
 
 =head2 ListLunaClients([NextToken => Str])
@@ -313,10 +319,10 @@ Returns: a L<Paws::CloudHSM::ListLunaClientsResponse> instance
 
   Lists all of the clients.
 
-This operation supports pagination with the use of the I<NextToken>
-member. If more results are available, the I<NextToken> member of the
+This operation supports pagination with the use of the C<NextToken>
+member. If more results are available, the C<NextToken> member of the
 response contains a token that you pass in the next call to
-ListLunaClients to retrieve the next set of items.
+C<ListLunaClients> to retrieve the next set of items.
 
 
 =head2 ListTagsForResource(ResourceArn => Str)
