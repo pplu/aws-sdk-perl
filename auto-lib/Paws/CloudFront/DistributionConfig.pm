@@ -115,7 +115,9 @@ How long CloudFront caches HTTP status codes in the 4xx and 5xx range.
 =back
 
 For more information about custom error pages, see Customizing Error
-Responses in the I<Amazon CloudFront Developer Guide>.
+Responses
+(http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/custom-error-pages.html)
+in the I<Amazon CloudFront Developer Guide>.
 
 
 =head2 B<REQUIRED> DefaultCacheBehavior => L<Paws::CloudFront::DefaultCacheBehavior>
@@ -149,7 +151,9 @@ To replace the default root object, update the distribution
 configuration and specify the new object.
 
 For more information about the default root object, see Creating a
-Default Root Object in the I<Amazon CloudFront Developer Guide>.
+Default Root Object
+(http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/DefaultRootObject.html)
+in the I<Amazon CloudFront Developer Guide>.
 
 
 =head2 B<REQUIRED> Enabled => Bool
@@ -192,8 +196,9 @@ restrict the IP addresses that can access your content, do not enable
 IPv6. If you want to restrict access to some content by IP address and
 not restrict access to other content (or restrict access but not by IP
 address), you can create two distributions. For more information, see
-Creating a Signed URL Using a Custom Policy in the I<Amazon CloudFront
-Developer Guide>.
+Creating a Signed URL Using a Custom Policy
+(http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-creating-signed-url-custom-policy.html)
+in the I<Amazon CloudFront Developer Guide>.
 
 If you're using an Amazon Route 53 alias resource record set to route
 traffic to your CloudFront distribution, you need to create a second
@@ -212,8 +217,9 @@ You're using alternate domain names in the URLs for your objects
 =back
 
 For more information, see Routing Traffic to an Amazon CloudFront Web
-Distribution by Using Your Domain Name in the I<Amazon Route 53
-Developer Guide>.
+Distribution by Using Your Domain Name
+(http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-to-cloudfront-distribution.html)
+in the I<Amazon Route 53 Developer Guide>.
 
 If you created a CNAME resource record set, either with Amazon Route 53
 or with another DNS service, you don't need to make any changes. A
@@ -226,8 +232,9 @@ IP address format of the viewer request.
   A complex type that controls whether access logs are written for the
 distribution.
 
-For more information about logging, see Access Logs in the I<Amazon
-CloudFront Developer Guide>.
+For more information about logging, see Access Logs
+(http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/AccessLogs.html)
+in the I<Amazon CloudFront Developer Guide>.
 
 
 =head2 B<REQUIRED> Origins => L<Paws::CloudFront::Origins>
@@ -250,9 +257,12 @@ who are in or near regions that are excluded from your specified price
 class may encounter slower performance.
 
 For more information about price classes, see Choosing the Price Class
-for a CloudFront Distribution in the I<Amazon CloudFront Developer
-Guide>. For information about CloudFront pricing, including how price
-classes map to CloudFront regions, see Amazon CloudFront Pricing.
+for a CloudFront Distribution
+(http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PriceClass.html)
+in the I<Amazon CloudFront Developer Guide>. For information about
+CloudFront pricing, including how price classes map to CloudFront
+regions, see Amazon CloudFront Pricing
+(https://aws.amazon.com/cloudfront/pricing/).
 
 
 =head2 Restrictions => L<Paws::CloudFront::Restrictions>
@@ -278,7 +288,8 @@ query strings, CloudFront responds to requests either with the
 requested content or with an HTTP 403 status code (Forbidden). You can
 also configure CloudFront to return a custom error page when a request
 is blocked. For more information about AWS WAF, see the AWS WAF
-Developer Guide.
+Developer Guide
+(http://docs.aws.amazon.com/waf/latest/developerguide/what-is-aws-waf.html).
 
 
 

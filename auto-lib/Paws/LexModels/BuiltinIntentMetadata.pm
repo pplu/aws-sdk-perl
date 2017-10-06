@@ -40,7 +40,9 @@ Provides metadata for a built-in intent.
 =head2 Signature => Str
 
   A unique identifier for the built-in intent. To find the signature for
-an intent, see Standard Built-in Intents in the I<Alexa Skills Kit>.
+an intent, see Standard Built-in Intents
+(https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/built-in-intent-ref/standard-intents)
+in the I<Alexa Skills Kit>.
 
 
 =head2 SupportedLocales => ArrayRef[Str|Undef]

@@ -67,8 +67,9 @@ if the stack has been updated at least once.
 stack ID of the direct parent of this stack. For the first level of
 nested stacks, the root stack is also the parent stack.
 
-For more information, see Working with Nested Stacks in the I<AWS
-CloudFormation User Guide>.
+For more information, see Working with Nested Stacks
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-nested-stacks.html)
+in the I<AWS CloudFormation User Guide>.
 
 
 =head2 RootId => Str
@@ -77,8 +78,9 @@ CloudFormation User Guide>.
 stack ID of the the top-level stack to which the nested stack
 ultimately belongs.
 
-For more information, see Working with Nested Stacks in the I<AWS
-CloudFormation User Guide>.
+For more information, see Working with Nested Stacks
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-nested-stacks.html)
+in the I<AWS CloudFormation User Guide>.
 
 
 =head2 StackId => Str

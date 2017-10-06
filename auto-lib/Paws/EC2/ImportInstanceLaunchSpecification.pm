@@ -76,7 +76,9 @@ system shutdown).
 =head2 InstanceType => Str
 
   The instance type. For more information about the instance types that
-you can import, see Instance Types in the VM Import/Export User Guide.
+you can import, see Instance Types
+(http://docs.aws.amazon.com/vm-import/latest/userguide/vmimport-image-import.html#vmimport-instance-types)
+in the VM Import/Export User Guide.
 
 
 =head2 Monitoring => Bool

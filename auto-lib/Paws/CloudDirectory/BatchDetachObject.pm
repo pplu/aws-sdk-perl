@@ -40,7 +40,9 @@ Represents the output of a DetachObject operation.
 
 =head2 B<REQUIRED> BatchReferenceName => Str
 
-  The batch reference name. See Batches for more information.
+  The batch reference name. See Batches
+(http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_advanced.html#batches)
+for more information.
 
 
 =head2 B<REQUIRED> LinkName => Str

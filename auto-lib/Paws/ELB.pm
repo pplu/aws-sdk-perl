@@ -232,7 +232,8 @@ makes routing and load balancing decisions at the application layer
 (HTTP/HTTPS), supports path-based routing, and can route requests to
 one or more ports on each EC2 instance or container instance in your
 virtual private cloud (VPC). For more information, see the Elastic Load
-Balancing User Guide.
+Balancing User Guide
+(http://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/what-is-load-balancing.html).
 
 This reference covers the 2012-06-01 API, which supports Classic Load
 Balancers. The 2015-12-01 API supports Application Load Balancers.
@@ -260,8 +261,9 @@ Each tag consists of a key and an optional value. If a tag with the
 same key is already associated with the load balancer, C<AddTags>
 updates its value.
 
-For more information, see Tag Your Classic Load Balancer in the
-I<Classic Load Balancer Guide>.
+For more information, see Tag Your Classic Load Balancer
+(http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/add-remove-tags.html)
+in the I<Classic Load Balancer Guide>.
 
 
 =head2 ApplySecurityGroupsToLoadBalancer(LoadBalancerName => Str, SecurityGroups => ArrayRef[Str|Undef])
@@ -275,6 +277,7 @@ virtual private cloud (VPC). The specified security groups override the
 previously associated security groups.
 
 For more information, see Security Groups for Load Balancers in a VPC
+(http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-security-groups.html#elb-vpc-security-groups)
 in the I<Classic Load Balancer Guide>.
 
 
@@ -289,7 +292,9 @@ specified load balancer.
 
 The load balancer evenly distributes requests across all registered
 subnets. For more information, see Add or Remove Subnets for Your Load
-Balancer in a VPC in the I<Classic Load Balancer Guide>.
+Balancer in a VPC
+(http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-manage-subnets.html)
+in the I<Classic Load Balancer Guide>.
 
 
 =head2 ConfigureHealthCheck(HealthCheck => L<Paws::ELB::HealthCheck>, LoadBalancerName => Str)
@@ -302,7 +307,9 @@ Returns: a L<Paws::ELB::ConfigureHealthCheckOutput> instance
 state of your EC2 instances.
 
 For more information, see Configure Health Checks for Your Load
-Balancer in the I<Classic Load Balancer Guide>.
+Balancer
+(http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-healthchecks.html)
+in the I<Classic Load Balancer Guide>.
 
 
 =head2 CreateAppCookieStickinessPolicy(CookieName => Str, LoadBalancerName => Str, PolicyName => Str)
@@ -325,8 +332,9 @@ response includes a new application cookie.
 If the application cookie is explicitly removed or expires, the session
 stops being sticky until a new application cookie is issued.
 
-For more information, see Application-Controlled Session Stickiness in
-the I<Classic Load Balancer Guide>.
+For more information, see Application-Controlled Session Stickiness
+(http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-sticky-sessions.html#enable-sticky-sessions-application)
+in the I<Classic Load Balancer Guide>.
 
 
 =head2 CreateLBCookieStickinessPolicy(LoadBalancerName => Str, PolicyName => Str, [CookieExpirationPeriod => Int])
@@ -352,8 +360,9 @@ from the same user to that server. The validity of the cookie is based
 on the cookie expiration time, which is specified in the policy
 configuration.
 
-For more information, see Duration-Based Session Stickiness in the
-I<Classic Load Balancer Guide>.
+For more information, see Duration-Based Session Stickiness
+(http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-sticky-sessions.html#enable-sticky-sessions-duration)
+in the I<Classic Load Balancer Guide>.
 
 
 =head2 CreateLoadBalancer(Listeners => ArrayRef[L<Paws::ELB::Listener>], LoadBalancerName => Str, [AvailabilityZones => ArrayRef[Str|Undef], Scheme => Str, SecurityGroups => ArrayRef[Str|Undef], Subnets => ArrayRef[Str|Undef], Tags => ArrayRef[L<Paws::ELB::Tag>]])
@@ -375,8 +384,9 @@ DeleteLoadBalancer.
 
 You can create up to 20 load balancers per region per account. You can
 request an increase for the number of load balancers for your account.
-For more information, see Limits for Your Classic Load Balancer in the
-I<Classic Load Balancer Guide>.
+For more information, see Limits for Your Classic Load Balancer
+(http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-limits.html)
+in the I<Classic Load Balancer Guide>.
 
 
 =head2 CreateLoadBalancerListeners(Listeners => ArrayRef[L<Paws::ELB::Listener>], LoadBalancerName => Str)
@@ -390,8 +400,9 @@ listener with the specified port does not already exist, it is created;
 otherwise, the properties of the new listener must match the properties
 of the existing listener.
 
-For more information, see Listeners for Your Classic Load Balancer in
-the I<Classic Load Balancer Guide>.
+For more information, see Listeners for Your Classic Load Balancer
+(http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-listener-config.html)
+in the I<Classic Load Balancer Guide>.
 
 
 =head2 CreateLoadBalancerPolicy(LoadBalancerName => Str, PolicyName => Str, PolicyTypeName => Str, [PolicyAttributes => ArrayRef[L<Paws::ELB::PolicyAttribute>]])
@@ -458,8 +469,9 @@ the load balancer.
 You can use DescribeLoadBalancers to verify that the instance is
 deregistered from the load balancer.
 
-For more information, see Register or De-Register EC2 Instances in the
-I<Classic Load Balancer Guide>.
+For more information, see Register or De-Register EC2 Instances
+(http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-deregister-register-instances.html)
+in the I<Classic Load Balancer Guide>.
 
 
 =head2 DescribeAccountLimits([Marker => Str, PageSize => Int])
@@ -471,8 +483,9 @@ Returns: a L<Paws::ELB::DescribeAccountLimitsOutput> instance
   Describes the current Elastic Load Balancing resource limits for your
 AWS account.
 
-For more information, see Limits for Your Classic Load Balancer in the
-I<Classic Load Balancer Guide>.
+For more information, see Limits for Your Classic Load Balancer
+(http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-limits.html)
+in the I<Classic Load Balancer Guide>.
 
 
 =head2 DescribeInstanceHealth(LoadBalancerName => Str, [Instances => ArrayRef[L<Paws::ELB::Instance>]])
@@ -585,8 +598,9 @@ Availability Zone go into the C<OutOfService> state. Then, the load
 balancer attempts to equally balance the traffic among its remaining
 Availability Zones.
 
-For more information, see Add or Remove Availability Zones in the
-I<Classic Load Balancer Guide>.
+For more information, see Add or Remove Availability Zones
+(http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/enable-disable-az.html)
+in the I<Classic Load Balancer Guide>.
 
 
 =head2 EnableAvailabilityZonesForLoadBalancer(AvailabilityZones => ArrayRef[Str|Undef], LoadBalancerName => Str)
@@ -601,8 +615,9 @@ for the specified load balancer.
 The load balancer evenly distributes requests across all its registered
 Availability Zones that contain instances.
 
-For more information, see Add or Remove Availability Zones in the
-I<Classic Load Balancer Guide>.
+For more information, see Add or Remove Availability Zones
+(http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/enable-disable-az.html)
+in the I<Classic Load Balancer Guide>.
 
 
 =head2 ModifyLoadBalancerAttributes(LoadBalancerAttributes => L<Paws::ELB::LoadBalancerAttributes>, LoadBalancerName => Str)
@@ -627,18 +642,22 @@ Guide>:
 =item *
 
 Cross-Zone Load Balancing
+(http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/enable-disable-crosszone-lb.html)
 
 =item *
 
 Connection Draining
+(http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/config-conn-drain.html)
 
 =item *
 
 Access Logs
+(http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/access-log-collection.html)
 
 =item *
 
 Idle Connection Timeout
+(http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/config-idle-timeout.html)
 
 =back
 
@@ -673,8 +692,9 @@ the C<InService> state.
 To deregister instances from a load balancer, use
 DeregisterInstancesFromLoadBalancer.
 
-For more information, see Register or De-Register EC2 Instances in the
-I<Classic Load Balancer Guide>.
+For more information, see Register or De-Register EC2 Instances
+(http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-deregister-register-instances.html)
+in the I<Classic Load Balancer Guide>.
 
 
 =head2 RemoveTags(LoadBalancerNames => ArrayRef[Str|Undef], Tags => ArrayRef[L<Paws::ELB::TagKeyOnly>])
@@ -697,8 +717,9 @@ connections. The specified certificate replaces any prior certificate
 that was used on the same load balancer and port.
 
 For more information about updating your SSL certificate, see Replace
-the SSL Certificate for Your Load Balancer in the I<Classic Load
-Balancer Guide>.
+the SSL Certificate for Your Load Balancer
+(http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-update-ssl-cert.html)
+in the I<Classic Load Balancer Guide>.
 
 
 =head2 SetLoadBalancerPoliciesForBackendServer(InstancePort => Int, LoadBalancerName => Str, PolicyNames => ArrayRef[Str|Undef])
@@ -721,9 +742,12 @@ You can use DescribeLoadBalancers or DescribeLoadBalancerPolicies to
 verify that the policy is associated with the EC2 instance.
 
 For more information about enabling back-end instance authentication,
-see Configure Back-end Instance Authentication in the I<Classic Load
-Balancer Guide>. For more information about Proxy Protocol, see
-Configure Proxy Protocol Support in the I<Classic Load Balancer Guide>.
+see Configure Back-end Instance Authentication
+(http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-create-https-ssl-load-balancer.html#configure_backendauth_clt)
+in the I<Classic Load Balancer Guide>. For more information about Proxy
+Protocol, see Configure Proxy Protocol Support
+(http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/enable-proxy-protocol.html)
+in the I<Classic Load Balancer Guide>.
 
 
 =head2 SetLoadBalancerPoliciesOfListener(LoadBalancerName => Str, LoadBalancerPort => Int, PolicyNames => ArrayRef[Str|Undef])
@@ -739,9 +763,13 @@ To enable back-end server authentication, use
 SetLoadBalancerPoliciesForBackendServer.
 
 For more information about setting policies, see Update the SSL
-Negotiation Configuration, Duration-Based Session Stickiness, and
-Application-Controlled Session Stickiness in the I<Classic Load
-Balancer Guide>.
+Negotiation Configuration
+(http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/ssl-config-update.html),
+Duration-Based Session Stickiness
+(http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-sticky-sessions.html#enable-sticky-sessions-duration),
+and Application-Controlled Session Stickiness
+(http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-sticky-sessions.html#enable-sticky-sessions-application)
+in the I<Classic Load Balancer Guide>.
 
 
 

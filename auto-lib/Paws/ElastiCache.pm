@@ -548,8 +548,9 @@ allocation report as a comma-separated value (CSV) file with your usage
 and costs aggregated by your tags. You can apply tags that represent
 business categories (such as cost centers, application names, or
 owners) to organize your costs across multiple services. For more
-information, see Using Cost Allocation Tags in Amazon ElastiCache in
-the I<ElastiCache User Guide>.
+information, see Using Cost Allocation Tags in Amazon ElastiCache
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/Tagging.html)
+in the I<ElastiCache User Guide>.
 
 
 =head2 AuthorizeCacheSecurityGroupIngress(CacheSecurityGroupName => Str, EC2SecurityGroupName => Str, EC2SecurityGroupOwnerId => Str)
@@ -581,8 +582,10 @@ operation can create their own Amazon S3 buckets and copy snapshots to
 it. To control access to your snapshots, use an IAM policy to control
 who has the ability to use the C<CopySnapshot> operation. For more
 information about using IAM to control the use of ElastiCache
-operations, see Exporting Snapshots and Authentication & Access
-Control.
+operations, see Exporting Snapshots
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/Snapshots.Exporting.html)
+and Authentication & Access Control
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/IAM.html).
 
 You could receive the following error messages.
 
@@ -596,6 +599,7 @@ B<Error Message:> The S3 bucket %s is outside of the region.
 
 B<Solution:> Create an Amazon S3 bucket in the same region as your
 snapshot. For more information, see Step 1: Create an Amazon S3 Bucket
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/Snapshots.Exporting.html#Snapshots.Exporting.CreateBucket)
 in the ElastiCache User Guide.
 
 =item *
@@ -604,6 +608,7 @@ B<Error Message:> The S3 bucket %s does not exist.
 
 B<Solution:> Create an Amazon S3 bucket in the same region as your
 snapshot. For more information, see Step 1: Create an Amazon S3 Bucket
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/Snapshots.Exporting.html#Snapshots.Exporting.CreateBucket)
 in the ElastiCache User Guide.
 
 =item *
@@ -613,6 +618,7 @@ user.
 
 B<Solution:> Create an Amazon S3 bucket in the same region as your
 snapshot. For more information, see Step 1: Create an Amazon S3 Bucket
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/Snapshots.Exporting.html#Snapshots.Exporting.CreateBucket)
 in the ElastiCache User Guide.
 
 =item *
@@ -639,7 +645,9 @@ on the S3 Bucket.
 
 B<Solution:> Add List and Read permissions on the bucket. For more
 information, see Step 2: Grant ElastiCache Access to Your Amazon S3
-Bucket in the ElastiCache User Guide.
+Bucket
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/Snapshots.Exporting.html#Snapshots.Exporting.GrantAccess)
+in the ElastiCache User Guide.
 
 =item *
 
@@ -648,7 +656,9 @@ B<Error Message: > ElastiCache has not been granted WRITE permissions
 
 B<Solution:> Add Upload/Delete permissions on the bucket. For more
 information, see Step 2: Grant ElastiCache Access to Your Amazon S3
-Bucket in the ElastiCache User Guide.
+Bucket
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/Snapshots.Exporting.html#Snapshots.Exporting.GrantAccess)
+in the ElastiCache User Guide.
 
 =item *
 
@@ -656,8 +666,9 @@ B<Error Message: > ElastiCache has not been granted READ_ACP
 permissions %s on the S3 Bucket.
 
 B<Solution:> Add View Permissions on the bucket. For more information,
-see Step 2: Grant ElastiCache Access to Your Amazon S3 Bucket in the
-ElastiCache User Guide.
+see Step 2: Grant ElastiCache Access to Your Amazon S3 Bucket
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/Snapshots.Exporting.html#Snapshots.Exporting.GrantAccess)
+in the ElastiCache User Guide.
 
 =back
 
@@ -697,11 +708,15 @@ specific parameters. For more information, see:
 
 =item *
 
-ModifyCacheParameterGroup in the ElastiCache API Reference.
+ModifyCacheParameterGroup
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/APIReference/API_ModifyCacheParameterGroup.html)
+in the ElastiCache API Reference.
 
 =item *
 
-Parameters and Parameter Groups in the ElastiCache User Guide.
+Parameters and Parameter Groups
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/ParameterGroups.html)
+in the ElastiCache User Guide.
 
 =back
 
@@ -719,7 +734,8 @@ control access to one or more cache clusters.
 Cache security groups are only used when you are creating a cache
 cluster outside of an Amazon Virtual Private Cloud (Amazon VPC). If you
 are creating a cache cluster inside of a VPC, use a cache subnet group
-instead. For more information, see CreateCacheSubnetGroup.
+instead. For more information, see CreateCacheSubnetGroup
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/APIReference/API_CreateCacheSubnetGroup.html).
 
 
 =head2 CreateCacheSubnetGroup(CacheSubnetGroupDescription => Str, CacheSubnetGroupName => Str, SubnetIds => ArrayRef[Str|Undef])
@@ -762,7 +778,9 @@ enabled) replication group after it has been created. However, if you
 need to increase or decrease the number of node groups (console:
 shards), you can avail yourself of ElastiCache for Redis' enhanced
 backup and restore. For more information, see Restoring From a Backup
-with Cluster Resizing in the I<ElastiCache User Guide>.
+with Cluster Resizing
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/backups-restoring.html)
+in the I<ElastiCache User Guide>.
 
 This operation is valid for Redis only.
 
@@ -1051,7 +1069,8 @@ tags to categorize and track your AWS costs.
 
 You can have a maximum of 50 cost allocation tags on an ElastiCache
 resource. For more information, see Using Cost Allocation Tags in
-Amazon ElastiCache.
+Amazon ElastiCache
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/BestPractices.html).
 
 
 =head2 ModifyCacheCluster(CacheClusterId => Str, [ApplyImmediately => Bool, AutoMinorVersionUpgrade => Bool, AZMode => Str, CacheNodeIdsToRemove => ArrayRef[Str|Undef], CacheNodeType => Str, CacheParameterGroupName => Str, CacheSecurityGroupNames => ArrayRef[Str|Undef], EngineVersion => Str, NewAvailabilityZones => ArrayRef[Str|Undef], NotificationTopicArn => Str, NotificationTopicStatus => Str, NumCacheNodes => Int, PreferredMaintenanceWindow => Str, SecurityGroupIds => ArrayRef[Str|Undef], SnapshotRetentionLimit => Int, SnapshotWindow => Str])
@@ -1234,18 +1253,23 @@ For more information see:
 
 =item *
 
-Viewing ElastiCache Events in the I<ElastiCache User Guide>
+Viewing ElastiCache Events
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/ECEvents.Viewing.html)
+in the I<ElastiCache User Guide>
 
 =item *
 
-DescribeEvents in the ElastiCache API Reference
+DescribeEvents
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/APIReference/API_DescribeEvents.html)
+in the ElastiCache API Reference
 
 =back
 
 =back
 
-Also see, Testing Multi-AZ with Automatic Failover in the I<ElastiCache
-User Guide>.
+Also see, Testing Multi-AZ with Automatic Failover
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/AutoFailover.html#auto-failover-test)
+in the I<ElastiCache User Guide>.
 
 
 

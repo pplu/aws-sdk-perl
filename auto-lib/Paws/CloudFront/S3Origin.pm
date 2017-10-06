@@ -63,8 +63,9 @@ To replace the origin access identity, update the distribution
 configuration and specify the new origin access identity.
 
 For more information, see Using an Origin Access Identity to Restrict
-Access to Your Amazon S3 Content in the I<Amazon Amazon CloudFront
-Developer Guide>.
+Access to Your Amazon S3 Content
+(http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-restricting-access-to-s3.html)
+in the I<Amazon Amazon CloudFront Developer Guide>.
 
 
 

@@ -73,7 +73,7 @@ C<AttributeType> - The data type for the attribute.
 =head2 CreationDateTime => Str
 
   The date and time when the table was created, in UNIX epoch time
-format.
+(http://www.epochconverter.com/) format.
 
 
 =head2 GlobalSecondaryIndexes => ArrayRef[L<Paws::DynamoDB::GlobalSecondaryIndexDescription>]
@@ -239,8 +239,9 @@ the sort key value.
 
 =back
 
-For more information about primary keys, see Primary Key in the
-I<Amazon DynamoDB Developer Guide>.
+For more information about primary keys, see Primary Key
+(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataModel.html#DataModelPrimaryKey)
+in the I<Amazon DynamoDB Developer Guide>.
 
 
 =head2 LatestStreamArn => Str

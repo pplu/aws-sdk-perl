@@ -54,7 +54,8 @@ specified at the end. Any attributes that do not have a range specified
 are presumed to match the entire range. Filters are interpreted in the
 order of the attributes on the typed link facet, not the order in which
 they are supplied to any API calls. For more information about identity
-attributes, see Typed link.
+attributes, see Typed link
+(http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink).
 
 
 

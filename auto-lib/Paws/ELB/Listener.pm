@@ -38,8 +38,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ELB::Listen
 Information about a listener.
 
 For information about the protocols and the ports supported by Elastic
-Load Balancing, see Listeners for Your Classic Load Balancer in the
-I<Classic Load Balancer Guide>.
+Load Balancing, see Listeners for Your Classic Load Balancer
+(http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-listener-config.html)
+in the I<Classic Load Balancer Guide>.
 
 =head1 ATTRIBUTES
 

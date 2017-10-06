@@ -187,7 +187,8 @@ B<Overview>
 This is the AWS CodePipeline API Reference. This guide provides
 descriptions of the actions and data types for AWS CodePipeline. Some
 functionality for your pipeline is only configurable through the API.
-For additional information, see the AWS CodePipeline User Guide.
+For additional information, see the AWS CodePipeline User Guide
+(http://docs.aws.amazon.com/codepipeline/latest/userguide/welcome.html).
 
 You can use the AWS CodePipeline API to work with pipelines, stages,
 actions, gates, and transitions, as described below.
@@ -255,7 +256,8 @@ which displays the status of a pipeline, including the status of stages
 in the pipeline, or GetPipeline, which returns the entire structure of
 the pipeline, including the stages of that pipeline. For more
 information about the structure of stages and actions, also refer to
-the AWS CodePipeline Pipeline Structure Reference.
+the AWS CodePipeline Pipeline Structure Reference
+(http://docs.aws.amazon.com/codepipeline/latest/userguide/pipeline-structure.html).
 
 Pipeline stages include I<actions>, which are categorized into
 categories such as source or build actions performed within a stage of

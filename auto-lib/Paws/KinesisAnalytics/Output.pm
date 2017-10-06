@@ -40,7 +40,8 @@ in-application stream data to be written. The destination can be an
 Amazon Kinesis stream or an Amazon Kinesis Firehose delivery stream.
 
 For limits on how many destinations an application can write and other
-limitations, see Limits.
+limitations, see Limits
+(http://docs.aws.amazon.com/kinesisanalytics/latest/dev/limits.html).
 
 =head1 ATTRIBUTES
 

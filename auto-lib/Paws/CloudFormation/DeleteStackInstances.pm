@@ -81,7 +81,8 @@ Removes the stack instances from the specified stack set, but doesn't
 delete the stacks. You can't reassociate a retained stack or add an
 existing, saved stack to a new stack set.
 
-For more information, see Stack set operation options.
+For more information, see Stack set operation options
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-concepts.html#stackset-ops-options).
 
 
 

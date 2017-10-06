@@ -43,7 +43,8 @@ Describes a user's SSH information.
 =head2 AllowSelfManagement => Bool
 
   Whether users can specify their own SSH public key through the My
-Settings page. For more information, see Managing User Permissions.
+Settings page. For more information, see Managing User Permissions
+(http://docs.aws.amazon.com/opsworks/latest/userguide/security-settingsshkey.html).
 
 
 =head2 IamUserArn => Str

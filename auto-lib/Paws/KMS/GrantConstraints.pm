@@ -34,8 +34,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::KMS::GrantC
 
 A structure that you can use to allow certain operations in the grant
 only when the desired encryption context is present. For more
-information about encryption context, see Encryption Context in the
-I<AWS Key Management Service Developer Guide>.
+information about encryption context, see Encryption Context
+(http://docs.aws.amazon.com/kms/latest/developerguide/encryption-context.html)
+in the I<AWS Key Management Service Developer Guide>.
 
 Grant constraints apply only to operations that accept encryption
 context as input. For example, the C< DescribeKey > operation does not

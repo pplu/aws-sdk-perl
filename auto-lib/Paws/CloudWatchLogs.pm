@@ -760,9 +760,10 @@ Each argument is described in detail in: L<Paws::CloudWatchLogs::PutDestinationP
 Returns: nothing
 
   Creates or updates an access policy associated with an existing
-destination. An access policy is an IAM policy document that is used to
-authorize claims to register a subscription filter against a given
-destination.
+destination. An access policy is an IAM policy document
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/policies_overview.html)
+that is used to authorize claims to register a subscription filter
+against a given destination.
 
 
 =head2 PutLogEvents(LogEvents => ArrayRef[L<Paws::CloudWatchLogs::InputLogEvent>], LogGroupName => Str, LogStreamName => Str, [SequenceToken => Str])
@@ -909,7 +910,9 @@ To list the tags for a log group, use ListTagsLogGroup. To remove tags,
 use UntagLogGroup.
 
 For more information about tags, see Tag Log Groups in Amazon
-CloudWatch Logs in the I<Amazon CloudWatch Logs User Guide>.
+CloudWatch Logs
+(http://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/log-group-tagging.html)
+in the I<Amazon CloudWatch Logs User Guide>.
 
 
 =head2 TestMetricFilter(FilterPattern => Str, LogEventMessages => ArrayRef[Str|Undef])

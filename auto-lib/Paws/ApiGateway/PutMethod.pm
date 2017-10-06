@@ -76,7 +76,8 @@ Specifies the method request's HTTP method type.
 
 A human-friendly operation identifier for the method. For example, you
 can assign the C<operationName> of C<ListPets> for the C<GET /pets>
-method in PetStore example.
+method in PetStore
+(http://petstore-demo-endpoint.execute-api.com/petstore/pets) example.
 
 
 

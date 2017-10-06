@@ -122,8 +122,9 @@ If your specified role has a path other than C</>, then you must either
 specify the full role ARN (this is recommended) or prefix the role name
 with the path. For example, if a role with the name C<bar> has a path
 of C</foo/> then you would specify C</foo/bar> as the role name. For
-more information, see Friendly Names and Paths in the I<IAM User
-Guide>.
+more information, see Friendly Names and Paths
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-friendly-names)
+in the I<IAM User Guide>.
 
 
 

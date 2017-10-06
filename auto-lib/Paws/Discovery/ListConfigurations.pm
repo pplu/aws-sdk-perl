@@ -51,7 +51,8 @@ I<key>-I<value> format. For example:
 C<{"key": "serverType", "value": "webServer"}>
 
 For a complete list of filter options and guidance about using them
-with this action, see Querying Discovered Configuration Items.
+with this action, see Querying Discovered Configuration Items
+(http://docs.aws.amazon.com/application-discovery/latest/APIReference/discovery-api-queries.html#ListConfigurations).
 
 
 
@@ -75,7 +76,8 @@ next set of 10.
 
 Certain filter criteria return output that can be sorted in ascending
 or descending order. For a list of output characteristics for each
-filter, see Using the ListConfigurations Action.
+filter, see Using the ListConfigurations Action
+(http://docs.aws.amazon.com/application-discovery/latest/APIReference/discovery-api-queries.html#ListConfigurations).
 
 
 

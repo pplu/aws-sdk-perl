@@ -52,7 +52,8 @@ this AWS account.
 fleet instance type determines the computing resources of each instance
 in the fleet, including CPU, memory, storage, and networking capacity.
 Amazon GameLift supports the following EC2 instance types. See Amazon
-EC2 Instance Types for detailed descriptions.
+EC2 Instance Types (http://aws.amazon.com/ec2/instance-types/) for
+detailed descriptions.
 
 
 =head2 InstanceLimit => Int

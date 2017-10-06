@@ -83,6 +83,7 @@ environment, but the AWS resources continue to operate.
 =back
 
 For more information, see the AWS Elastic Beanstalk User Guide.
+(http://docs.aws.amazon.com/elasticbeanstalk/latest/ug/)
 
 Default: C<true>
 

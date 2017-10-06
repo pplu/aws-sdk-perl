@@ -82,7 +82,8 @@ Cannot contain any of the following characters: '/', '"', or "@".
 
 =back
 
-For more information, see AUTH password at Redis.
+For more information, see AUTH password (http://redis.io/commands/AUTH)
+at Redis.
 
 
 
@@ -200,9 +201,12 @@ T2 instances.
 =back
 
 For a complete listing of node types and specifications, see Amazon
-ElastiCache Product Features and Details and either Cache Node
-Type-Specific Parameters for Memcached or Cache Node Type-Specific
-Parameters for Redis.
+ElastiCache Product Features and Details
+(http://aws.amazon.com/elasticache/details) and either Cache Node
+Type-Specific Parameters for Memcached
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Memcached.html#ParameterGroups.Memcached.NodeSpecific)
+or Cache Node Type-Specific Parameters for Redis
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Redis.html#ParameterGroups.Redis.NodeSpecific).
 
 
 
@@ -247,7 +251,8 @@ group.
 
 If you're going to launch your cluster in an Amazon VPC, you need to
 create a subnet group before you start creating a cluster. For more
-information, see Subnets and Subnet Groups.
+information, see Subnets and Subnet Groups
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/SubnetGroups.html).
 
 
 
@@ -265,10 +270,12 @@ clusters in this replication group. To view the supported cache engine
 versions, use the C<DescribeCacheEngineVersions> operation.
 
 B<Important:> You can upgrade to a newer engine version (see Selecting
-a Cache Engine and Version) in the I<ElastiCache User Guide>, but you
-cannot downgrade to an earlier engine version. If you want to use an
-earlier engine version, you must delete the existing cache cluster or
-replication group and create it anew with the earlier engine version.
+a Cache Engine and Version
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/SelectEngine.html#VersionManagement))
+in the I<ElastiCache User Guide>, but you cannot downgrade to an
+earlier engine version. If you want to use an earlier engine version,
+you must delete the existing cache cluster or replication group and
+create it anew with the earlier engine version.
 
 
 

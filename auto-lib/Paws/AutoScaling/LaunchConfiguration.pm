@@ -70,8 +70,9 @@ instance.
 
   The ID of a ClassicLink-enabled VPC to link your EC2-Classic instances
 to. This parameter can only be used if you are launching EC2-Classic
-instances. For more information, see ClassicLink in the I<Amazon
-Elastic Compute Cloud User Guide>.
+instances. For more information, see ClassicLink
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 =head2 ClassicLinkVPCSecurityGroups => ArrayRef[Str|Undef]
@@ -79,8 +80,9 @@ Elastic Compute Cloud User Guide>.
   The IDs of one or more security groups for the VPC specified in
 C<ClassicLinkVPCId>. This parameter is required if you specify a
 ClassicLink-enabled VPC, and cannot be used otherwise. For more
-information, see ClassicLink in the I<Amazon Elastic Compute Cloud User
-Guide>.
+information, see ClassicLink
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 =head2 B<REQUIRED> CreatedTime => Str

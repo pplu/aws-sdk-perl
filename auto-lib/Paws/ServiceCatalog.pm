@@ -314,11 +314,13 @@ AWS Service Catalog
 
 B<Overview>
 
-AWS Service Catalog allows organizations to create and manage catalogs
-of IT services that are approved for use on AWS. This documentation
-provides reference material for the AWS Service Catalog end user API.
-To get the most out of this documentation, be familiar with the
-terminology discussed in AWS Service Catalog Concepts.
+AWS Service Catalog (https://aws.amazon.com/servicecatalog/) allows
+organizations to create and manage catalogs of IT services that are
+approved for use on AWS. This documentation provides reference material
+for the AWS Service Catalog end user API. To get the most out of this
+documentation, be familiar with the terminology discussed in AWS
+Service Catalog Concepts
+(http://docs.aws.amazon.com/servicecatalog/latest/adminguide/what-is_concepts.html).
 
 I<Additional Resources>
 
@@ -327,10 +329,12 @@ I<Additional Resources>
 =item *
 
 AWS Service Catalog Administrator Guide
+(http://docs.aws.amazon.com/servicecatalog/latest/adminguide/introduction.html)
 
 =item *
 
 AWS Service Catalog User Guide
+(http://docs.aws.amazon.com/servicecatalog/latest/userguide/introduction.html)
 
 =back
 
@@ -395,7 +399,8 @@ Each argument is described in detail in: L<Paws::ServiceCatalog::CreateConstrain
 
 Returns: a L<Paws::ServiceCatalog::CreateConstraintOutput> instance
 
-  Creates a new constraint. For more information, see Using Constraints.
+  Creates a new constraint. For more information, see Using Constraints
+(http://docs.aws.amazon.com/servicecatalog/latest/adminguide/constraints.html).
 
 
 =head2 CreatePortfolio(DisplayName => Str, IdempotencyToken => Str, ProviderName => Str, [AcceptLanguage => Str, Description => Str, Tags => ArrayRef[L<Paws::ServiceCatalog::Tag>]])

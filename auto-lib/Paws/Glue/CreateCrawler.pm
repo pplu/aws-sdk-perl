@@ -79,8 +79,10 @@ customer resources.
 =head2 Schedule => Str
 
 A cron expression that can be used as a Cloudwatch event (see
-CloudWatch Schedule Expression Syntax. For example, to run every day at
-12:15 UTC, specify: C<cron(15 12 * * ? *)>.
+CloudWatch Schedule Expression Syntax
+(http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ScheduledEvents.html).
+For example, to run every day at 12:15 UTC, specify: C<cron(15 12 * * ?
+*)>.
 
 
 

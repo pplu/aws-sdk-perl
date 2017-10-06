@@ -76,8 +76,9 @@ encrypt a copy of an unencrypted snapshot using this flag, but you
 cannot use it to create an unencrypted copy from an encrypted snapshot.
 Your default CMK for EBS is used unless a non-default AWS Key
 Management Service (AWS KMS) CMK is specified with C<KmsKeyId>. For
-more information, see Amazon EBS Encryption in the I<Amazon Elastic
-Compute Cloud User Guide>.
+more information, see Amazon EBS Encryption
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 
@@ -107,8 +108,9 @@ C<SourceSnapshotId>, and C<DestinationRegion> parameters. The
 C<PresignedUrl> must be signed using AWS Signature Version 4. Because
 EBS snapshots are stored in Amazon S3, the signing algorithm for this
 parameter uses the same logic that is described in Authenticating
-Requests by Using Query Parameters (AWS Signature Version 4) in the
-I<Amazon Simple Storage Service API Reference>. An invalid or
+Requests by Using Query Parameters (AWS Signature Version 4)
+(http://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html)
+in the I<Amazon Simple Storage Service API Reference>. An invalid or
 improperly signed C<PresignedUrl> will cause the copy operation to fail
 asynchronously, and the snapshot will move to an C<error> state.
 

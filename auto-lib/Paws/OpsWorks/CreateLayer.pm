@@ -62,8 +62,10 @@ cluster's ARN.
 
 =head2 AutoAssignElasticIps => Bool
 
-Whether to automatically assign an Elastic IP address to the layer's
-instances. For more information, see How to Edit a Layer.
+Whether to automatically assign an Elastic IP address
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html)
+to the layer's instances. For more information, see How to Edit a Layer
+(http://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-edit.html).
 
 
 
@@ -71,7 +73,8 @@ instances. For more information, see How to Edit a Layer.
 
 For stacks that are running in a VPC, whether to automatically assign a
 public IP address to the layer's instances. For more information, see
-How to Edit a Layer.
+How to Edit a Layer
+(http://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-edit.html).
 
 
 
@@ -85,7 +88,8 @@ information, see CloudWatchLogsLogStream.
 =head2 CustomInstanceProfileArn => Str
 
 The ARN of an IAM profile to be used for the layer's EC2 instances. For
-more information about IAM ARNs, see Using Identifiers.
+more information about IAM ARNs, see Using Identifiers
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html).
 
 
 
@@ -93,8 +97,9 @@ more information about IAM ARNs, see Using Identifiers.
 
 A JSON-formatted string containing custom stack configuration and
 deployment attributes to be installed on the layer's instances. For
-more information, see Using Custom JSON. This feature is supported as
-of version 1.7.42 of the AWS CLI.
+more information, see Using Custom JSON
+(http://docs.aws.amazon.com/opsworks/latest/userguide/workingcookbook-json-override.html).
+This feature is supported as of version 1.7.42 of the AWS CLI.
 
 
 
@@ -160,7 +165,8 @@ characters, which are limited to the alphanumeric characters, '-', '_',
 and '.'.
 
 The built-in layers' short names are defined by AWS OpsWorks Stacks.
-For more information, see the Layer Reference.
+For more information, see the Layer Reference
+(http://docs.aws.amazon.com/opsworks/latest/userguide/layers.html).
 
 
 

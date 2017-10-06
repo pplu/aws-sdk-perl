@@ -69,8 +69,9 @@ Amazon DynamoDB
 
 Amazon DynamoDB Streams provides API actions for accessing streams and
 processing stream records. To learn more about application development
-with Streams, see Capturing Table Activity with DynamoDB Streams in the
-Amazon DynamoDB Developer Guide.
+with Streams, see Capturing Table Activity with DynamoDB Streams
+(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Streams.html)
+in the Amazon DynamoDB Developer Guide.
 
 =head1 METHODS
 

@@ -377,7 +377,7 @@ as tracking their progress and maintaining their state.
 
 This documentation serves as reference only. For a broader overview of
 the Amazon SWF programming model, see the I< Amazon SWF Developer Guide
->.
+(http://docs.aws.amazon.com/amazonswf/latest/developerguide/) >.
 
 =head1 METHODS
 
@@ -439,8 +439,9 @@ If the caller doesn't have sufficient permissions to invoke the action,
 or the parameter values fall outside the specified constraints, the
 action fails. The associated event attribute's C<cause> parameter is
 set to C<OPERATION_NOT_PERMITTED>. For details and example IAM
-policies, see Using IAM to Manage Access to Amazon SWF Workflows in the
-I<Amazon SWF Developer Guide>.
+policies, see Using IAM to Manage Access to Amazon SWF Workflows
+(http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+in the I<Amazon SWF Developer Guide>.
 
 
 =head2 CountOpenWorkflowExecutions(Domain => Str, StartTimeFilter => L<Paws::SimpleWorkflow::ExecutionTimeFilter>, [ExecutionFilter => L<Paws::SimpleWorkflow::WorkflowExecutionFilter>, TagFilter => L<Paws::SimpleWorkflow::TagFilter>, TypeFilter => L<Paws::SimpleWorkflow::WorkflowTypeFilter>])
@@ -501,8 +502,9 @@ If the caller doesn't have sufficient permissions to invoke the action,
 or the parameter values fall outside the specified constraints, the
 action fails. The associated event attribute's C<cause> parameter is
 set to C<OPERATION_NOT_PERMITTED>. For details and example IAM
-policies, see Using IAM to Manage Access to Amazon SWF Workflows in the
-I<Amazon SWF Developer Guide>.
+policies, see Using IAM to Manage Access to Amazon SWF Workflows
+(http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+in the I<Amazon SWF Developer Guide>.
 
 
 =head2 CountPendingActivityTasks(Domain => Str, TaskList => L<Paws::SimpleWorkflow::TaskList>)
@@ -545,8 +547,9 @@ If the caller doesn't have sufficient permissions to invoke the action,
 or the parameter values fall outside the specified constraints, the
 action fails. The associated event attribute's C<cause> parameter is
 set to C<OPERATION_NOT_PERMITTED>. For details and example IAM
-policies, see Using IAM to Manage Access to Amazon SWF Workflows in the
-I<Amazon SWF Developer Guide>.
+policies, see Using IAM to Manage Access to Amazon SWF Workflows
+(http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+in the I<Amazon SWF Developer Guide>.
 
 
 =head2 CountPendingDecisionTasks(Domain => Str, TaskList => L<Paws::SimpleWorkflow::TaskList>)
@@ -589,8 +592,9 @@ If the caller doesn't have sufficient permissions to invoke the action,
 or the parameter values fall outside the specified constraints, the
 action fails. The associated event attribute's C<cause> parameter is
 set to C<OPERATION_NOT_PERMITTED>. For details and example IAM
-policies, see Using IAM to Manage Access to Amazon SWF Workflows in the
-I<Amazon SWF Developer Guide>.
+policies, see Using IAM to Manage Access to Amazon SWF Workflows
+(http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+in the I<Amazon SWF Developer Guide>.
 
 
 =head2 DeprecateActivityType(ActivityType => L<Paws::SimpleWorkflow::ActivityType>, Domain => Str)
@@ -649,8 +653,9 @@ If the caller doesn't have sufficient permissions to invoke the action,
 or the parameter values fall outside the specified constraints, the
 action fails. The associated event attribute's C<cause> parameter is
 set to C<OPERATION_NOT_PERMITTED>. For details and example IAM
-policies, see Using IAM to Manage Access to Amazon SWF Workflows in the
-I<Amazon SWF Developer Guide>.
+policies, see Using IAM to Manage Access to Amazon SWF Workflows
+(http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+in the I<Amazon SWF Developer Guide>.
 
 
 =head2 DeprecateDomain(Name => Str)
@@ -696,8 +701,9 @@ If the caller doesn't have sufficient permissions to invoke the action,
 or the parameter values fall outside the specified constraints, the
 action fails. The associated event attribute's C<cause> parameter is
 set to C<OPERATION_NOT_PERMITTED>. For details and example IAM
-policies, see Using IAM to Manage Access to Amazon SWF Workflows in the
-I<Amazon SWF Developer Guide>.
+policies, see Using IAM to Manage Access to Amazon SWF Workflows
+(http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+in the I<Amazon SWF Developer Guide>.
 
 
 =head2 DeprecateWorkflowType(Domain => Str, WorkflowType => L<Paws::SimpleWorkflow::WorkflowType>)
@@ -757,8 +763,9 @@ If the caller doesn't have sufficient permissions to invoke the action,
 or the parameter values fall outside the specified constraints, the
 action fails. The associated event attribute's C<cause> parameter is
 set to C<OPERATION_NOT_PERMITTED>. For details and example IAM
-policies, see Using IAM to Manage Access to Amazon SWF Workflows in the
-I<Amazon SWF Developer Guide>.
+policies, see Using IAM to Manage Access to Amazon SWF Workflows
+(http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+in the I<Amazon SWF Developer Guide>.
 
 
 =head2 DescribeActivityType(ActivityType => L<Paws::SimpleWorkflow::ActivityType>, Domain => Str)
@@ -813,8 +820,9 @@ If the caller doesn't have sufficient permissions to invoke the action,
 or the parameter values fall outside the specified constraints, the
 action fails. The associated event attribute's C<cause> parameter is
 set to C<OPERATION_NOT_PERMITTED>. For details and example IAM
-policies, see Using IAM to Manage Access to Amazon SWF Workflows in the
-I<Amazon SWF Developer Guide>.
+policies, see Using IAM to Manage Access to Amazon SWF Workflows
+(http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+in the I<Amazon SWF Developer Guide>.
 
 
 =head2 DescribeDomain(Name => Str)
@@ -853,8 +861,9 @@ If the caller doesn't have sufficient permissions to invoke the action,
 or the parameter values fall outside the specified constraints, the
 action fails. The associated event attribute's C<cause> parameter is
 set to C<OPERATION_NOT_PERMITTED>. For details and example IAM
-policies, see Using IAM to Manage Access to Amazon SWF Workflows in the
-I<Amazon SWF Developer Guide>.
+policies, see Using IAM to Manage Access to Amazon SWF Workflows
+(http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+in the I<Amazon SWF Developer Guide>.
 
 
 =head2 DescribeWorkflowExecution(Domain => Str, Execution => L<Paws::SimpleWorkflow::WorkflowExecution>)
@@ -896,8 +905,9 @@ If the caller doesn't have sufficient permissions to invoke the action,
 or the parameter values fall outside the specified constraints, the
 action fails. The associated event attribute's C<cause> parameter is
 set to C<OPERATION_NOT_PERMITTED>. For details and example IAM
-policies, see Using IAM to Manage Access to Amazon SWF Workflows in the
-I<Amazon SWF Developer Guide>.
+policies, see Using IAM to Manage Access to Amazon SWF Workflows
+(http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+in the I<Amazon SWF Developer Guide>.
 
 
 =head2 DescribeWorkflowType(Domain => Str, WorkflowType => L<Paws::SimpleWorkflow::WorkflowType>)
@@ -952,8 +962,9 @@ If the caller doesn't have sufficient permissions to invoke the action,
 or the parameter values fall outside the specified constraints, the
 action fails. The associated event attribute's C<cause> parameter is
 set to C<OPERATION_NOT_PERMITTED>. For details and example IAM
-policies, see Using IAM to Manage Access to Amazon SWF Workflows in the
-I<Amazon SWF Developer Guide>.
+policies, see Using IAM to Manage Access to Amazon SWF Workflows
+(http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+in the I<Amazon SWF Developer Guide>.
 
 
 =head2 GetWorkflowExecutionHistory(Domain => Str, Execution => L<Paws::SimpleWorkflow::WorkflowExecution>, [MaximumPageSize => Int, NextPageToken => Str, ReverseOrder => Bool])
@@ -996,8 +1007,9 @@ If the caller doesn't have sufficient permissions to invoke the action,
 or the parameter values fall outside the specified constraints, the
 action fails. The associated event attribute's C<cause> parameter is
 set to C<OPERATION_NOT_PERMITTED>. For details and example IAM
-policies, see Using IAM to Manage Access to Amazon SWF Workflows in the
-I<Amazon SWF Developer Guide>.
+policies, see Using IAM to Manage Access to Amazon SWF Workflows
+(http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+in the I<Amazon SWF Developer Guide>.
 
 
 =head2 ListActivityTypes(Domain => Str, RegistrationStatus => Str, [MaximumPageSize => Int, Name => Str, NextPageToken => Str, ReverseOrder => Bool])
@@ -1040,8 +1052,9 @@ If the caller doesn't have sufficient permissions to invoke the action,
 or the parameter values fall outside the specified constraints, the
 action fails. The associated event attribute's C<cause> parameter is
 set to C<OPERATION_NOT_PERMITTED>. For details and example IAM
-policies, see Using IAM to Manage Access to Amazon SWF Workflows in the
-I<Amazon SWF Developer Guide>.
+policies, see Using IAM to Manage Access to Amazon SWF Workflows
+(http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+in the I<Amazon SWF Developer Guide>.
 
 
 =head2 ListClosedWorkflowExecutions(Domain => Str, [CloseStatusFilter => L<Paws::SimpleWorkflow::CloseStatusFilter>, CloseTimeFilter => L<Paws::SimpleWorkflow::ExecutionTimeFilter>, ExecutionFilter => L<Paws::SimpleWorkflow::WorkflowExecutionFilter>, MaximumPageSize => Int, NextPageToken => Str, ReverseOrder => Bool, StartTimeFilter => L<Paws::SimpleWorkflow::ExecutionTimeFilter>, TagFilter => L<Paws::SimpleWorkflow::TagFilter>, TypeFilter => L<Paws::SimpleWorkflow::WorkflowTypeFilter>])
@@ -1104,8 +1117,9 @@ If the caller doesn't have sufficient permissions to invoke the action,
 or the parameter values fall outside the specified constraints, the
 action fails. The associated event attribute's C<cause> parameter is
 set to C<OPERATION_NOT_PERMITTED>. For details and example IAM
-policies, see Using IAM to Manage Access to Amazon SWF Workflows in the
-I<Amazon SWF Developer Guide>.
+policies, see Using IAM to Manage Access to Amazon SWF Workflows
+(http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+in the I<Amazon SWF Developer Guide>.
 
 
 =head2 ListDomains(RegistrationStatus => Str, [MaximumPageSize => Int, NextPageToken => Str, ReverseOrder => Bool])
@@ -1150,8 +1164,9 @@ If the caller doesn't have sufficient permissions to invoke the action,
 or the parameter values fall outside the specified constraints, the
 action fails. The associated event attribute's C<cause> parameter is
 set to C<OPERATION_NOT_PERMITTED>. For details and example IAM
-policies, see Using IAM to Manage Access to Amazon SWF Workflows in the
-I<Amazon SWF Developer Guide>.
+policies, see Using IAM to Manage Access to Amazon SWF Workflows
+(http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+in the I<Amazon SWF Developer Guide>.
 
 
 =head2 ListOpenWorkflowExecutions(Domain => Str, StartTimeFilter => L<Paws::SimpleWorkflow::ExecutionTimeFilter>, [ExecutionFilter => L<Paws::SimpleWorkflow::WorkflowExecutionFilter>, MaximumPageSize => Int, NextPageToken => Str, ReverseOrder => Bool, TagFilter => L<Paws::SimpleWorkflow::TagFilter>, TypeFilter => L<Paws::SimpleWorkflow::WorkflowTypeFilter>])
@@ -1214,8 +1229,9 @@ If the caller doesn't have sufficient permissions to invoke the action,
 or the parameter values fall outside the specified constraints, the
 action fails. The associated event attribute's C<cause> parameter is
 set to C<OPERATION_NOT_PERMITTED>. For details and example IAM
-policies, see Using IAM to Manage Access to Amazon SWF Workflows in the
-I<Amazon SWF Developer Guide>.
+policies, see Using IAM to Manage Access to Amazon SWF Workflows
+(http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+in the I<Amazon SWF Developer Guide>.
 
 
 =head2 ListWorkflowTypes(Domain => Str, RegistrationStatus => Str, [MaximumPageSize => Int, Name => Str, NextPageToken => Str, ReverseOrder => Bool])
@@ -1255,8 +1271,9 @@ If the caller doesn't have sufficient permissions to invoke the action,
 or the parameter values fall outside the specified constraints, the
 action fails. The associated event attribute's C<cause> parameter is
 set to C<OPERATION_NOT_PERMITTED>. For details and example IAM
-policies, see Using IAM to Manage Access to Amazon SWF Workflows in the
-I<Amazon SWF Developer Guide>.
+policies, see Using IAM to Manage Access to Amazon SWF Workflows
+(http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+in the I<Amazon SWF Developer Guide>.
 
 
 =head2 PollForActivityTask(Domain => Str, TaskList => L<Paws::SimpleWorkflow::TaskList>, [Identity => Str])
@@ -1308,8 +1325,9 @@ If the caller doesn't have sufficient permissions to invoke the action,
 or the parameter values fall outside the specified constraints, the
 action fails. The associated event attribute's C<cause> parameter is
 set to C<OPERATION_NOT_PERMITTED>. For details and example IAM
-policies, see Using IAM to Manage Access to Amazon SWF Workflows in the
-I<Amazon SWF Developer Guide>.
+policies, see Using IAM to Manage Access to Amazon SWF Workflows
+(http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+in the I<Amazon SWF Developer Guide>.
 
 
 =head2 PollForDecisionTask(Domain => Str, TaskList => L<Paws::SimpleWorkflow::TaskList>, [Identity => Str, MaximumPageSize => Int, NextPageToken => Str, ReverseOrder => Bool])
@@ -1372,8 +1390,9 @@ If the caller doesn't have sufficient permissions to invoke the action,
 or the parameter values fall outside the specified constraints, the
 action fails. The associated event attribute's C<cause> parameter is
 set to C<OPERATION_NOT_PERMITTED>. For details and example IAM
-policies, see Using IAM to Manage Access to Amazon SWF Workflows in the
-I<Amazon SWF Developer Guide>.
+policies, see Using IAM to Manage Access to Amazon SWF Workflows
+(http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+in the I<Amazon SWF Developer Guide>.
 
 
 =head2 RecordActivityTaskHeartbeat(TaskToken => Str, [Details => Str])
@@ -1440,8 +1459,9 @@ If the caller doesn't have sufficient permissions to invoke the action,
 or the parameter values fall outside the specified constraints, the
 action fails. The associated event attribute's C<cause> parameter is
 set to C<OPERATION_NOT_PERMITTED>. For details and example IAM
-policies, see Using IAM to Manage Access to Amazon SWF Workflows in the
-I<Amazon SWF Developer Guide>.
+policies, see Using IAM to Manage Access to Amazon SWF Workflows
+(http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+in the I<Amazon SWF Developer Guide>.
 
 
 =head2 RegisterActivityType(Domain => Str, Name => Str, Version => Str, [DefaultTaskHeartbeatTimeout => Str, DefaultTaskList => L<Paws::SimpleWorkflow::TaskList>, DefaultTaskPriority => Str, DefaultTaskScheduleToCloseTimeout => Str, DefaultTaskScheduleToStartTimeout => Str, DefaultTaskStartToCloseTimeout => Str, Description => Str])
@@ -1502,8 +1522,9 @@ If the caller doesn't have sufficient permissions to invoke the action,
 or the parameter values fall outside the specified constraints, the
 action fails. The associated event attribute's C<cause> parameter is
 set to C<OPERATION_NOT_PERMITTED>. For details and example IAM
-policies, see Using IAM to Manage Access to Amazon SWF Workflows in the
-I<Amazon SWF Developer Guide>.
+policies, see Using IAM to Manage Access to Amazon SWF Workflows
+(http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+in the I<Amazon SWF Developer Guide>.
 
 
 =head2 RegisterDomain(Name => Str, WorkflowExecutionRetentionPeriodInDays => Str, [Description => Str])
@@ -1542,8 +1563,9 @@ If the caller doesn't have sufficient permissions to invoke the action,
 or the parameter values fall outside the specified constraints, the
 action fails. The associated event attribute's C<cause> parameter is
 set to C<OPERATION_NOT_PERMITTED>. For details and example IAM
-policies, see Using IAM to Manage Access to Amazon SWF Workflows in the
-I<Amazon SWF Developer Guide>.
+policies, see Using IAM to Manage Access to Amazon SWF Workflows
+(http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+in the I<Amazon SWF Developer Guide>.
 
 
 =head2 RegisterWorkflowType(Domain => Str, Name => Str, Version => Str, [DefaultChildPolicy => Str, DefaultExecutionStartToCloseTimeout => Str, DefaultLambdaRole => Str, DefaultTaskList => L<Paws::SimpleWorkflow::TaskList>, DefaultTaskPriority => Str, DefaultTaskStartToCloseTimeout => Str, Description => Str])
@@ -1607,8 +1629,9 @@ If the caller doesn't have sufficient permissions to invoke the action,
 or the parameter values fall outside the specified constraints, the
 action fails. The associated event attribute's C<cause> parameter is
 set to C<OPERATION_NOT_PERMITTED>. For details and example IAM
-policies, see Using IAM to Manage Access to Amazon SWF Workflows in the
-I<Amazon SWF Developer Guide>.
+policies, see Using IAM to Manage Access to Amazon SWF Workflows
+(http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+in the I<Amazon SWF Developer Guide>.
 
 
 =head2 RequestCancelWorkflowExecution(Domain => Str, WorkflowId => Str, [RunId => Str])
@@ -1658,8 +1681,9 @@ If the caller doesn't have sufficient permissions to invoke the action,
 or the parameter values fall outside the specified constraints, the
 action fails. The associated event attribute's C<cause> parameter is
 set to C<OPERATION_NOT_PERMITTED>. For details and example IAM
-policies, see Using IAM to Manage Access to Amazon SWF Workflows in the
-I<Amazon SWF Developer Guide>.
+policies, see Using IAM to Manage Access to Amazon SWF Workflows
+(http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+in the I<Amazon SWF Developer Guide>.
 
 
 =head2 RespondActivityTaskCanceled(TaskToken => Str, [Details => Str])
@@ -1683,7 +1707,8 @@ A task is considered open from the time that it is scheduled until it
 is closed. Therefore a task is reported as open while a worker is
 processing it. A task is closed after it has been specified in a call
 to RespondActivityTaskCompleted, RespondActivityTaskCanceled,
-RespondActivityTaskFailed, or the task has timed out.
+RespondActivityTaskFailed, or the task has timed out
+(http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dg-basic.html#swf-dev-timeout-types).
 
 B<Access Control>
 
@@ -1712,8 +1737,9 @@ If the caller doesn't have sufficient permissions to invoke the action,
 or the parameter values fall outside the specified constraints, the
 action fails. The associated event attribute's C<cause> parameter is
 set to C<OPERATION_NOT_PERMITTED>. For details and example IAM
-policies, see Using IAM to Manage Access to Amazon SWF Workflows in the
-I<Amazon SWF Developer Guide>.
+policies, see Using IAM to Manage Access to Amazon SWF Workflows
+(http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+in the I<Amazon SWF Developer Guide>.
 
 
 =head2 RespondActivityTaskCompleted(TaskToken => Str, [Result => Str])
@@ -1737,7 +1763,8 @@ A task is considered open from the time that it is scheduled until it
 is closed. Therefore a task is reported as open while a worker is
 processing it. A task is closed after it has been specified in a call
 to RespondActivityTaskCompleted, RespondActivityTaskCanceled,
-RespondActivityTaskFailed, or the task has timed out.
+RespondActivityTaskFailed, or the task has timed out
+(http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dg-basic.html#swf-dev-timeout-types).
 
 B<Access Control>
 
@@ -1766,8 +1793,9 @@ If the caller doesn't have sufficient permissions to invoke the action,
 or the parameter values fall outside the specified constraints, the
 action fails. The associated event attribute's C<cause> parameter is
 set to C<OPERATION_NOT_PERMITTED>. For details and example IAM
-policies, see Using IAM to Manage Access to Amazon SWF Workflows in the
-I<Amazon SWF Developer Guide>.
+policies, see Using IAM to Manage Access to Amazon SWF Workflows
+(http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+in the I<Amazon SWF Developer Guide>.
 
 
 =head2 RespondActivityTaskFailed(TaskToken => Str, [Details => Str, Reason => Str])
@@ -1785,7 +1813,8 @@ A task is considered open from the time that it is scheduled until it
 is closed. Therefore a task is reported as open while a worker is
 processing it. A task is closed after it has been specified in a call
 to RespondActivityTaskCompleted, RespondActivityTaskCanceled,
-RespondActivityTaskFailed, or the task has timed out.
+RespondActivityTaskFailed, or the task has timed out
+(http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dg-basic.html#swf-dev-timeout-types).
 
 B<Access Control>
 
@@ -1814,8 +1843,9 @@ If the caller doesn't have sufficient permissions to invoke the action,
 or the parameter values fall outside the specified constraints, the
 action fails. The associated event attribute's C<cause> parameter is
 set to C<OPERATION_NOT_PERMITTED>. For details and example IAM
-policies, see Using IAM to Manage Access to Amazon SWF Workflows in the
-I<Amazon SWF Developer Guide>.
+policies, see Using IAM to Manage Access to Amazon SWF Workflows
+(http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+in the I<Amazon SWF Developer Guide>.
 
 
 =head2 RespondDecisionTaskCompleted(TaskToken => Str, [Decisions => ArrayRef[L<Paws::SimpleWorkflow::Decision>], ExecutionContext => Str])
@@ -1842,8 +1872,9 @@ has one or more parameters, much like a regular API call. To allow for
 policies to be as readable as possible, you can express permissions on
 decisions as if they were actual API calls, including applying
 conditions to some parameters. For more information, see Using IAM to
-Manage Access to Amazon SWF Workflows in the I<Amazon SWF Developer
-Guide>.
+Manage Access to Amazon SWF Workflows
+(http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+in the I<Amazon SWF Developer Guide>.
 
 
 =head2 SignalWorkflowExecution(Domain => Str, SignalName => Str, WorkflowId => Str, [Input => Str, RunId => Str])
@@ -1892,8 +1923,9 @@ If the caller doesn't have sufficient permissions to invoke the action,
 or the parameter values fall outside the specified constraints, the
 action fails. The associated event attribute's C<cause> parameter is
 set to C<OPERATION_NOT_PERMITTED>. For details and example IAM
-policies, see Using IAM to Manage Access to Amazon SWF Workflows in the
-I<Amazon SWF Developer Guide>.
+policies, see Using IAM to Manage Access to Amazon SWF Workflows
+(http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+in the I<Amazon SWF Developer Guide>.
 
 
 =head2 StartWorkflowExecution(Domain => Str, WorkflowId => Str, WorkflowType => L<Paws::SimpleWorkflow::WorkflowType>, [ChildPolicy => Str, ExecutionStartToCloseTimeout => Str, Input => Str, LambdaRole => Str, TagList => ArrayRef[Str|Undef], TaskList => L<Paws::SimpleWorkflow::TaskList>, TaskPriority => Str, TaskStartToCloseTimeout => Str])
@@ -1973,8 +2005,9 @@ If the caller doesn't have sufficient permissions to invoke the action,
 or the parameter values fall outside the specified constraints, the
 action fails. The associated event attribute's C<cause> parameter is
 set to C<OPERATION_NOT_PERMITTED>. For details and example IAM
-policies, see Using IAM to Manage Access to Amazon SWF Workflows in the
-I<Amazon SWF Developer Guide>.
+policies, see Using IAM to Manage Access to Amazon SWF Workflows
+(http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+in the I<Amazon SWF Developer Guide>.
 
 
 =head2 TerminateWorkflowExecution(Domain => Str, WorkflowId => Str, [ChildPolicy => Str, Details => Str, Reason => Str, RunId => Str])
@@ -2027,8 +2060,9 @@ If the caller doesn't have sufficient permissions to invoke the action,
 or the parameter values fall outside the specified constraints, the
 action fails. The associated event attribute's C<cause> parameter is
 set to C<OPERATION_NOT_PERMITTED>. For details and example IAM
-policies, see Using IAM to Manage Access to Amazon SWF Workflows in the
-I<Amazon SWF Developer Guide>.
+policies, see Using IAM to Manage Access to Amazon SWF Workflows
+(http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+in the I<Amazon SWF Developer Guide>.
 
 
 

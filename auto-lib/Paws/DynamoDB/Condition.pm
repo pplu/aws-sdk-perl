@@ -70,7 +70,8 @@ For type Number, value comparisons are numeric.
 String value comparisons for greater than, equals, or less than are
 based on ASCII character code values. For example, C<a> is greater than
 C<A>, and C<a> is greater than C<B>. For a list of code values, see
-http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters.
+http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters
+(http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters).
 
 For Binary, DynamoDB treats each byte of the binary data as unsigned
 when it compares binary values.
@@ -252,8 +253,9 @@ C<{"N":"6"}> does not compare to C<{"NS":["6", "2", "1"]}>
 =back
 
 For usage examples of C<AttributeValueList> and C<ComparisonOperator>,
-see Legacy Conditional Parameters in the I<Amazon DynamoDB Developer
-Guide>.
+see Legacy Conditional Parameters
+(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.html)
+in the I<Amazon DynamoDB Developer Guide>.
 
 
 

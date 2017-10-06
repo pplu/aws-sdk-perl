@@ -291,7 +291,8 @@ trigger by sending data to the trigger target
 =back
 
 For information about how to use AWS CodeCommit, see the AWS CodeCommit
-User Guide.
+User Guide
+(http://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html).
 
 =head1 METHODS
 
@@ -491,8 +492,9 @@ Returns: nothing
 calling AWS account. In addition, repository names are limited to 100
 alphanumeric, dash, and underscore characters, and cannot include
 certain characters. The suffix ".git" is prohibited. For a full
-description of the limits on repository names, see Limits in the AWS
-CodeCommit User Guide.
+description of the limits on repository names, see Limits
+(http://docs.aws.amazon.com/codecommit/latest/userguide/limits.html) in
+the AWS CodeCommit User Guide.
 
 
 

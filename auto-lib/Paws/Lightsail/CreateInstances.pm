@@ -43,8 +43,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 The Availability Zone in which to create your instance. Use the
 following format: C<us-east-1a> (case sensitive). You can get a list of
-availability zones by using the get regions operation. Be sure to add
-the C<include availability zones> parameter to your request.
+availability zones by using the get regions
+(http://docs.aws.amazon.com/lightsail/2016-11-28/api-reference/API_GetRegions.html)
+operation. Be sure to add the C<include availability zones> parameter
+to your request.
 
 
 
@@ -95,7 +97,8 @@ update>.
 Depending on the machine image you choose, the command to get software
 on your instance varies. Amazon Linux and CentOS use C<yum>, Debian and
 Ubuntu use C<apt-get>, and FreeBSD uses C<pkg>. For a complete list,
-see the Dev Guide.
+see the Dev Guide
+(http://lightsail.aws.amazon.com/ls/docs/getting-started/articles/pre-installed-apps).
 
 
 

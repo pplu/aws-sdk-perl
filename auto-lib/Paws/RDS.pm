@@ -957,19 +957,23 @@ B<Amazon RDS API Reference>
 
 =item *
 
-For the alphabetical list of API actions, see API Actions.
+For the alphabetical list of API actions, see API Actions
+(http://docs.aws.amazon.com/AmazonRDS/latest/APIReference/API_Operations.html).
 
 =item *
 
-For the alphabetical list of data types, see Data Types.
+For the alphabetical list of data types, see Data Types
+(http://docs.aws.amazon.com/AmazonRDS/latest/APIReference/API_Types.html).
 
 =item *
 
-For a list of common query parameters, see Common Parameters.
+For a list of common query parameters, see Common Parameters
+(http://docs.aws.amazon.com/AmazonRDS/latest/APIReference/CommonParameters.html).
 
 =item *
 
-For descriptions of the error codes, see Common Errors.
+For descriptions of the error codes, see Common Errors
+(http://docs.aws.amazon.com/AmazonRDS/latest/APIReference/CommonErrors.html).
 
 =back
 
@@ -980,12 +984,14 @@ B<Amazon RDS User Guide>
 =item *
 
 For a summary of the Amazon RDS interfaces, see Available RDS
-Interfaces.
+Interfaces
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Welcome.html#Welcome.Interfaces).
 
 =item *
 
 For more information about how to use the Query API, see Using the
-Query API.
+Query API
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Using_the_Query_API.html).
 
 =back
 
@@ -1000,7 +1006,8 @@ Returns: nothing
 
   Associates an Identity and Access Management (IAM) role from an Aurora
 DB cluster. For more information, see Authorizing Amazon Aurora to
-Access Other AWS Services On Your Behalf.
+Access Other AWS Services On Your Behalf
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Aurora.Authorizing.AWSServices.html).
 
 
 =head2 AddSourceIdentifierToSubscription(SourceIdentifier => Str, SubscriptionName => Str)
@@ -1025,7 +1032,8 @@ Amazon RDS resources, or used in a Condition statement in an IAM policy
 for Amazon RDS.
 
 For an overview on tagging Amazon RDS resources, see Tagging Amazon RDS
-Resources.
+Resources
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.Tagging.html).
 
 
 =head2 ApplyPendingMaintenanceAction(ApplyAction => Str, OptInType => Str, ResourceIdentifier => Str)
@@ -1058,7 +1066,8 @@ Region to an Amazon RDS DB instance in another. You cannot authorize
 ingress from a VPC security group in one VPC to an Amazon RDS DB
 instance in another.
 
-For an overview of CIDR ranges, go to the Wikipedia Tutorial.
+For an overview of CIDR ranges, go to the Wikipedia Tutorial
+(http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing).
 
 
 =head2 CopyDBClusterParameterGroup(SourceDBClusterParameterGroupIdentifier => Str, TargetDBClusterParameterGroupDescription => Str, TargetDBClusterParameterGroupIdentifier => Str, [Tags => ArrayRef[L<Paws::RDS::Tag>]])
@@ -1138,7 +1147,10 @@ C<arn:aws:rds:us-west-2:123456789012:cluster-snapshot:aurora-cluster1-snapshot-2
 
 To learn how to generate a Signature Version 4 signed request, see
 Authenticating Requests: Using Query Parameters (AWS Signature Version
-4) and Signature Version 4 Signing Process.
+4)
+(http://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html)
+and Signature Version 4 Signing Process
+(http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
 
 =item *
 
@@ -1161,11 +1173,13 @@ while that DB cluster snapshot is in "copying" status.
 
 For more information on copying encrypted DB cluster snapshots from one
 AWS Region to another, see Copying a DB Cluster Snapshot in the Same
-Account, Either in the Same Region or Across Regions in the Amazon RDS
-User Guide.
+Account, Either in the Same Region or Across Regions
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_CopySnapshot.html#USER_CopyDBClusterSnapshot.CrossRegion)
+in the Amazon RDS User Guide.
 
-For more information on Amazon Aurora, see Aurora on Amazon RDS in the
-I<Amazon RDS User Guide.>
+For more information on Amazon Aurora, see Aurora on Amazon RDS
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Aurora.html)
+in the I<Amazon RDS User Guide.>
 
 
 =head2 CopyDBParameterGroup(SourceDBParameterGroupIdentifier => Str, TargetDBParameterGroupDescription => Str, TargetDBParameterGroupIdentifier => Str, [Tags => ArrayRef[L<Paws::RDS::Tag>]])
@@ -1194,6 +1208,7 @@ You cannot copy an encrypted, shared DB snapshot from one AWS Region to
 another.
 
 For more information about copying snapshots, see Copying a DB Snapshot
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_CopyDBSnapshot.html)
 in the Amazon RDS User Guide.
 
 
@@ -1220,8 +1235,9 @@ DB instance. For cross-region replication where the DB cluster
 identified by C<ReplicationSourceIdentifier> is encrypted, you must
 also specify the C<PreSignedUrl> parameter.
 
-For more information on Amazon Aurora, see Aurora on Amazon RDS in the
-I<Amazon RDS User Guide.>
+For more information on Amazon Aurora, see Aurora on Amazon RDS
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Aurora.html)
+in the I<Amazon RDS User Guide.>
 
 
 =head2 CreateDBClusterParameterGroup(DBClusterParameterGroupName => Str, DBParameterGroupFamily => Str, Description => Str, [Tags => ArrayRef[L<Paws::RDS::Tag>]])
@@ -1253,12 +1269,14 @@ parameter group is used as the default for a new DB cluster. This is
 especially important for parameters that are critical when creating the
 default database for a DB cluster, such as the character set for the
 default database defined by the C<character_set_database> parameter.
-You can use the I<Parameter Groups> option of the Amazon RDS console or
-the DescribeDBClusterParameters command to verify that your DB cluster
+You can use the I<Parameter Groups> option of the Amazon RDS console
+(https://console.aws.amazon.com/rds/) or the
+DescribeDBClusterParameters command to verify that your DB cluster
 parameter group has been created or modified.
 
-For more information on Amazon Aurora, see Aurora on Amazon RDS in the
-I<Amazon RDS User Guide.>
+For more information on Amazon Aurora, see Aurora on Amazon RDS
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Aurora.html)
+in the I<Amazon RDS User Guide.>
 
 
 =head2 CreateDBClusterSnapshot(DBClusterIdentifier => Str, DBClusterSnapshotIdentifier => Str, [Tags => ArrayRef[L<Paws::RDS::Tag>]])
@@ -1268,7 +1286,9 @@ Each argument is described in detail in: L<Paws::RDS::CreateDBClusterSnapshot>
 Returns: a L<Paws::RDS::CreateDBClusterSnapshotResult> instance
 
   Creates a snapshot of a DB cluster. For more information on Amazon
-Aurora, see Aurora on Amazon RDS in the I<Amazon RDS User Guide.>
+Aurora, see Aurora on Amazon RDS
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Aurora.html)
+in the I<Amazon RDS User Guide.>
 
 
 =head2 CreateDBInstance(DBInstanceClass => Str, DBInstanceIdentifier => Str, Engine => Str, [AllocatedStorage => Int, AutoMinorVersionUpgrade => Bool, AvailabilityZone => Str, BackupRetentionPeriod => Int, CharacterSetName => Str, CopyTagsToSnapshot => Bool, DBClusterIdentifier => Str, DBName => Str, DBParameterGroupName => Str, DBSecurityGroups => ArrayRef[Str|Undef], DBSubnetGroupName => Str, Domain => Str, DomainIAMRoleName => Str, EnableIAMDatabaseAuthentication => Bool, EnablePerformanceInsights => Bool, EngineVersion => Str, Iops => Int, KmsKeyId => Str, LicenseModel => Str, MasterUsername => Str, MasterUserPassword => Str, MonitoringInterval => Int, MonitoringRoleArn => Str, MultiAZ => Bool, OptionGroupName => Str, PerformanceInsightsKMSKeyId => Str, Port => Int, PreferredBackupWindow => Str, PreferredMaintenanceWindow => Str, PromotionTier => Int, PubliclyAccessible => Bool, StorageEncrypted => Bool, StorageType => Str, Tags => ArrayRef[L<Paws::RDS::Tag>], TdeCredentialArn => Str, TdeCredentialPassword => Str, Timezone => Str, VpcSecurityGroupIds => ArrayRef[Str|Undef]])
@@ -1302,7 +1322,8 @@ DB instance, except as specified below.
 The source DB instance must have backup retention enabled.
 
 For more information, see Working with PostgreSQL, MySQL, and MariaDB
-Read Replicas.
+Read Replicas
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReadRepl.html).
 
 
 =head2 CreateDBParameterGroup(DBParameterGroupFamily => Str, DBParameterGroupName => Str, Description => Str, [Tags => ArrayRef[L<Paws::RDS::Tag>]])
@@ -1331,7 +1352,8 @@ as the default for a new DB instance. This is especially important for
 parameters that are critical when creating the default database for a
 DB instance, such as the character set for the default database defined
 by the C<character_set_database> parameter. You can use the I<Parameter
-Groups> option of the Amazon RDS console or the I<DescribeDBParameters>
+Groups> option of the Amazon RDS console
+(https://console.aws.amazon.com/rds/) or the I<DescribeDBParameters>
 command to verify that your DB parameter group has been created or
 modified.
 
@@ -1415,8 +1437,9 @@ When you delete a DB cluster, all automated backups for that DB cluster
 are deleted and cannot be recovered. Manual DB cluster snapshots of the
 specified DB cluster are not deleted.
 
-For more information on Amazon Aurora, see Aurora on Amazon RDS in the
-I<Amazon RDS User Guide.>
+For more information on Amazon Aurora, see Aurora on Amazon RDS
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Aurora.html)
+in the I<Amazon RDS User Guide.>
 
 
 =head2 DeleteDBClusterParameterGroup(DBClusterParameterGroupName => Str)
@@ -1429,8 +1452,9 @@ Returns: nothing
 parameter group to be deleted cannot be associated with any DB
 clusters.
 
-For more information on Amazon Aurora, see Aurora on Amazon RDS in the
-I<Amazon RDS User Guide.>
+For more information on Amazon Aurora, see Aurora on Amazon RDS
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Aurora.html)
+in the I<Amazon RDS User Guide.>
 
 
 =head2 DeleteDBClusterSnapshot(DBClusterSnapshotIdentifier => Str)
@@ -1445,8 +1469,9 @@ copy operation is terminated.
 The DB cluster snapshot must be in the C<available> state to be
 deleted.
 
-For more information on Amazon Aurora, see Aurora on Amazon RDS in the
-I<Amazon RDS User Guide.>
+For more information on Amazon Aurora, see Aurora on Amazon RDS
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Aurora.html)
+in the I<Amazon RDS User Guide.>
 
 
 =head2 DeleteDBInstance(DBInstanceIdentifier => Str, [FinalDBSnapshotIdentifier => Str, SkipFinalSnapshot => Bool])
@@ -1592,8 +1617,9 @@ C<DBClusterParameterGroupName> parameter is specified, the list will
 contain only the description of the specified DB cluster parameter
 group.
 
-For more information on Amazon Aurora, see Aurora on Amazon RDS in the
-I<Amazon RDS User Guide.>
+For more information on Amazon Aurora, see Aurora on Amazon RDS
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Aurora.html)
+in the I<Amazon RDS User Guide.>
 
 
 =head2 DescribeDBClusterParameters(DBClusterParameterGroupName => Str, [Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int, Source => Str])
@@ -1605,8 +1631,9 @@ Returns: a L<Paws::RDS::DBClusterParameterGroupDetails> instance
   Returns the detailed parameter list for a particular DB cluster
 parameter group.
 
-For more information on Amazon Aurora, see Aurora on Amazon RDS in the
-I<Amazon RDS User Guide.>
+For more information on Amazon Aurora, see Aurora on Amazon RDS
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Aurora.html)
+in the I<Amazon RDS User Guide.>
 
 
 =head2 DescribeDBClusters([DBClusterIdentifier => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
@@ -1618,8 +1645,9 @@ Returns: a L<Paws::RDS::DBClusterMessage> instance
   Returns information about provisioned Aurora DB clusters. This API
 supports pagination.
 
-For more information on Amazon Aurora, see Aurora on Amazon RDS in the
-I<Amazon RDS User Guide.>
+For more information on Amazon Aurora, see Aurora on Amazon RDS
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Aurora.html)
+in the I<Amazon RDS User Guide.>
 
 
 =head2 DescribeDBClusterSnapshotAttributes(DBClusterSnapshotIdentifier => Str)
@@ -1652,8 +1680,9 @@ Returns: a L<Paws::RDS::DBClusterSnapshotMessage> instance
   Returns information about DB cluster snapshots. This API action
 supports pagination.
 
-For more information on Amazon Aurora, see Aurora on Amazon RDS in the
-I<Amazon RDS User Guide.>
+For more information on Amazon Aurora, see Aurora on Amazon RDS
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Aurora.html)
+in the I<Amazon RDS User Guide.>
 
 
 =head2 DescribeDBEngineVersions([DBParameterGroupFamily => Str, DefaultOnly => Bool, Engine => Str, EngineVersion => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], ListSupportedCharacterSets => Bool, ListSupportedTimezones => Bool, Marker => Str, MaxRecords => Int])
@@ -1757,7 +1786,8 @@ Returns: a L<Paws::RDS::DBSubnetGroupMessage> instance
 specified, the list will contain only the descriptions of the specified
 DBSubnetGroup.
 
-For an overview of CIDR ranges, go to the Wikipedia Tutorial.
+For an overview of CIDR ranges, go to the Wikipedia Tutorial
+(http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing).
 
 
 =head2 DescribeEngineDefaultClusterParameters(DBParameterGroupFamily => Str, [Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
@@ -1769,8 +1799,9 @@ Returns: a L<Paws::RDS::DescribeEngineDefaultClusterParametersResult> instance
   Returns the default engine and system parameter information for the
 cluster database engine.
 
-For more information on Amazon Aurora, see Aurora on Amazon RDS in the
-I<Amazon RDS User Guide.>
+For more information on Amazon Aurora, see Aurora on Amazon RDS
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Aurora.html)
+in the I<Amazon RDS User Guide.>
 
 
 =head2 DescribeEngineDefaultParameters(DBParameterGroupFamily => Str, [Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
@@ -1791,8 +1822,9 @@ Returns: a L<Paws::RDS::EventCategoriesMessage> instance
 
   Displays a list of categories for all event source types, or, if
 specified, for a specified source type. You can see a list of the event
-categories and source types in the Events topic in the I<Amazon RDS
-User Guide.>
+categories and source types in the Events
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Events.html)
+topic in the I<Amazon RDS User Guide.>
 
 
 =head2 DescribeEvents([Duration => Int, EndTime => Str, EventCategories => ArrayRef[Str|Undef], Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int, SourceIdentifier => Str, SourceType => Str, StartTime => Str])
@@ -1919,8 +1951,9 @@ Because each instance in a DB cluster has its own endpoint address, you
 will need to clean up and re-establish any existing connections that
 use those endpoint addresses when the failover is complete.
 
-For more information on Amazon Aurora, see Aurora on Amazon RDS in the
-I<Amazon RDS User Guide.>
+For more information on Amazon Aurora, see Aurora on Amazon RDS
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Aurora.html)
+in the I<Amazon RDS User Guide.>
 
 
 =head2 ListTagsForResource(ResourceName => Str, [Filters => ArrayRef[L<Paws::RDS::Filter>]])
@@ -1932,7 +1965,8 @@ Returns: a L<Paws::RDS::TagListMessage> instance
   Lists all tags on an Amazon RDS resource.
 
 For an overview on tagging an Amazon RDS resource, see Tagging Amazon
-RDS Resources.
+RDS Resources
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.Tagging.html).
 
 
 =head2 ModifyDBCluster(DBClusterIdentifier => Str, [ApplyImmediately => Bool, BackupRetentionPeriod => Int, DBClusterParameterGroupName => Str, EnableIAMDatabaseAuthentication => Bool, MasterUserPassword => Str, NewDBClusterIdentifier => Str, OptionGroupName => Str, Port => Int, PreferredBackupWindow => Str, PreferredMaintenanceWindow => Str, VpcSecurityGroupIds => ArrayRef[Str|Undef]])
@@ -1944,7 +1978,9 @@ Returns: a L<Paws::RDS::ModifyDBClusterResult> instance
   Modify a setting for an Amazon Aurora DB cluster. You can change one or
 more database configuration parameters by specifying these parameters
 and the new values in the request. For more information on Amazon
-Aurora, see Aurora on Amazon RDS in the I<Amazon RDS User Guide.>
+Aurora, see Aurora on Amazon RDS
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Aurora.html)
+in the I<Amazon RDS User Guide.>
 
 
 =head2 ModifyDBClusterParameterGroup(DBClusterParameterGroupName => Str, Parameters => ArrayRef[L<Paws::RDS::Parameter>])
@@ -1958,8 +1994,9 @@ than one parameter, submit a list of the following: C<ParameterName>,
 C<ParameterValue>, and C<ApplyMethod>. A maximum of 20 parameters can
 be modified in a single request.
 
-For more information on Amazon Aurora, see Aurora on Amazon RDS in the
-I<Amazon RDS User Guide.>
+For more information on Amazon Aurora, see Aurora on Amazon RDS
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Aurora.html)
+in the I<Amazon RDS User Guide.>
 
 Changes to dynamic parameters are applied immediately. Changes to
 static parameters require a reboot without failover to the DB cluster
@@ -1973,7 +2010,8 @@ group is used as the default for a new DB cluster. This is especially
 important for parameters that are critical when creating the default
 database for a DB cluster, such as the character set for the default
 database defined by the C<character_set_database> parameter. You can
-use the I<Parameter Groups> option of the Amazon RDS console or the
+use the I<Parameter Groups> option of the Amazon RDS console
+(https://console.aws.amazon.com/rds/) or the
 DescribeDBClusterParameters command to verify that your DB cluster
 parameter group has been created or modified.
 
@@ -2038,7 +2076,8 @@ as the default for a new DB instance. This is especially important for
 parameters that are critical when creating the default database for a
 DB instance, such as the character set for the default database defined
 by the C<character_set_database> parameter. You can use the I<Parameter
-Groups> option of the Amazon RDS console or the I<DescribeDBParameters>
+Groups> option of the Amazon RDS console
+(https://console.aws.amazon.com/rds/) or the I<DescribeDBParameters>
 command to verify that your DB parameter group has been created or
 modified.
 
@@ -2104,7 +2143,9 @@ AddSourceIdentifierToSubscription and
 RemoveSourceIdentifierFromSubscription calls.
 
 You can see a list of the event categories for a given SourceType in
-the Events topic in the Amazon RDS User Guide or by using the
+the Events
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Events.html)
+topic in the Amazon RDS User Guide or by using the
 B<DescribeEventCategories> action.
 
 
@@ -2184,7 +2225,8 @@ Returns: nothing
 
   Disassociates an Identity and Access Management (IAM) role from an
 Aurora DB cluster. For more information, see Authorizing Amazon Aurora
-to Access Other AWS Services On Your Behalf.
+to Access Other AWS Services On Your Behalf
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Aurora.Authorizing.AWSServices.html).
 
 
 =head2 RemoveSourceIdentifierFromSubscription(SourceIdentifier => Str, SubscriptionName => Str)
@@ -2206,7 +2248,8 @@ Returns: nothing
   Removes metadata tags from an Amazon RDS resource.
 
 For an overview on tagging an Amazon RDS resource, see Tagging Amazon
-RDS Resources.
+RDS Resources
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.Tagging.html).
 
 
 =head2 ResetDBClusterParameterGroup(DBClusterParameterGroupName => Str, [Parameters => ArrayRef[L<Paws::RDS::Parameter>], ResetAllParameters => Bool])
@@ -2227,8 +2270,9 @@ effect on the next DB instance restart or RebootDBInstance request. You
 must call RebootDBInstance for every DB instance in your DB cluster
 that you want the updated static parameter to apply to.
 
-For more information on Amazon Aurora, see Aurora on Amazon RDS in the
-I<Amazon RDS User Guide.>
+For more information on Amazon Aurora, see Aurora on Amazon RDS
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Aurora.html)
+in the I<Amazon RDS User Guide.>
 
 
 =head2 ResetDBParameterGroup(DBParameterGroupName => Str, [Parameters => ArrayRef[L<Paws::RDS::Parameter>], ResetAllParameters => Bool])
@@ -2256,7 +2300,8 @@ Returns: a L<Paws::RDS::RestoreDBClusterFromS3Result> instance
   Creates an Amazon Aurora DB cluster from data stored in an Amazon S3
 bucket. Amazon RDS must be authorized to access the Amazon S3 bucket
 and the data must be created using the Percona XtraBackup utility as
-described in Migrating Data from MySQL by Using an Amazon S3 Bucket.
+described in Migrating Data from MySQL by Using an Amazon S3 Bucket
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Aurora.Migrate.MySQL.html#Aurora.Migrate.MySQL.S3).
 
 
 =head2 RestoreDBClusterFromSnapshot(DBClusterIdentifier => Str, Engine => Str, SnapshotIdentifier => Str, [AvailabilityZones => ArrayRef[Str|Undef], DatabaseName => Str, DBSubnetGroupName => Str, EnableIAMDatabaseAuthentication => Bool, EngineVersion => Str, KmsKeyId => Str, OptionGroupName => Str, Port => Int, Tags => ArrayRef[L<Paws::RDS::Tag>], VpcSecurityGroupIds => ArrayRef[Str|Undef]])
@@ -2276,8 +2321,9 @@ from the source DB cluster restore point with the same configuration as
 the original source DB cluster, except that the new DB cluster is
 created with the default security group.
 
-For more information on Amazon Aurora, see Aurora on Amazon RDS in the
-I<Amazon RDS User Guide.>
+For more information on Amazon Aurora, see Aurora on Amazon RDS
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Aurora.html)
+in the I<Amazon RDS User Guide.>
 
 
 =head2 RestoreDBClusterToPointInTime(DBClusterIdentifier => Str, SourceDBClusterIdentifier => Str, [DBSubnetGroupName => Str, EnableIAMDatabaseAuthentication => Bool, KmsKeyId => Str, OptionGroupName => Str, Port => Int, RestoreToTime => Str, RestoreType => Str, Tags => ArrayRef[L<Paws::RDS::Tag>], UseLatestRestorableTime => Bool, VpcSecurityGroupIds => ArrayRef[Str|Undef]])
@@ -2300,8 +2346,9 @@ restored DB cluster in C<DBClusterIdentifier>. You can create DB
 instances only after the C<RestoreDBClusterToPointInTime> action has
 completed and the DB cluster is available.
 
-For more information on Amazon Aurora, see Aurora on Amazon RDS in the
-I<Amazon RDS User Guide.>
+For more information on Amazon Aurora, see Aurora on Amazon RDS
+(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Aurora.html)
+in the I<Amazon RDS User Guide.>
 
 
 =head2 RestoreDBInstanceFromDBSnapshot(DBInstanceIdentifier => Str, DBSnapshotIdentifier => Str, [AutoMinorVersionUpgrade => Bool, AvailabilityZone => Str, CopyTagsToSnapshot => Bool, DBInstanceClass => Str, DBName => Str, DBSubnetGroupName => Str, Domain => Str, DomainIAMRoleName => Str, EnableIAMDatabaseAuthentication => Bool, Engine => Str, Iops => Int, LicenseModel => Str, MultiAZ => Bool, OptionGroupName => Str, Port => Int, PubliclyAccessible => Bool, StorageType => Str, Tags => ArrayRef[L<Paws::RDS::Tag>], TdeCredentialArn => Str, TdeCredentialPassword => Str])

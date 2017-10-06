@@ -35,7 +35,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 A complex type that specifies whether you want CloudFront to forward
 cookies to the origin and, if so, which ones. For more information
 about forwarding cookies to the origin, see How CloudFront Forwards,
-Caches, and Logs Cookies in the I<Amazon CloudFront Developer Guide>.
+Caches, and Logs Cookies
+(http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Cookies.html)
+in the I<Amazon CloudFront Developer Guide>.
 
 =head1 ATTRIBUTES
 

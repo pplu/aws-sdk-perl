@@ -63,8 +63,9 @@ To replace the origin access identity, update the distribution
 configuration and specify the new origin access identity.
 
 For more information about the origin access identity, see Serving
-Private Content through CloudFront in the I<Amazon CloudFront Developer
-Guide>.
+Private Content through CloudFront
+(http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html)
+in the I<Amazon CloudFront Developer Guide>.
 
 
 

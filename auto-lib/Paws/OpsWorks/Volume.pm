@@ -51,7 +51,7 @@ Describes an instance's Amazon EBS volume.
 =head2 AvailabilityZone => Str
 
   The volume Availability Zone. For more information, see Regions and
-Endpoints.
+Endpoints (http://docs.aws.amazon.com/general/latest/gr/rande.html).
 
 
 =head2 Device => Str
@@ -92,7 +92,7 @@ Endpoints.
 =head2 Region => Str
 
   The AWS region. For more information about AWS regions, see Regions and
-Endpoints.
+Endpoints (http://docs.aws.amazon.com/general/latest/gr/rande.html).
 
 
 =head2 Size => Int
@@ -102,7 +102,8 @@ Endpoints.
 
 =head2 Status => Str
 
-  The value returned by DescribeVolumes.
+  The value returned by DescribeVolumes
+(http://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-DescribeVolumes.html).
 
 
 =head2 VolumeId => Str

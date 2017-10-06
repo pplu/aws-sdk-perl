@@ -56,7 +56,8 @@ documentation for C<SendRawEmail>.
 Do not include these X-headers in the DKIM signature, because they are
 removed by Amazon SES before sending the email.
 
-For more information, go to the Amazon SES Developer Guide.
+For more information, go to the Amazon SES Developer Guide
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-raw.html).
 
 
 

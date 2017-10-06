@@ -98,7 +98,9 @@ importing.
 
 B<Note:> You may only use BYOL if you have existing licenses with
 rights to use these licenses in a third party cloud like AWS. For more
-information, see Prerequisites in the VM Import/Export User Guide.
+information, see Prerequisites
+(http://docs.aws.amazon.com/vm-import/latest/userguide/vmimport-image-import.html#prerequisites-image)
+in the VM Import/Export User Guide.
 
 Valid values: C<AWS> | C<BYOL>
 

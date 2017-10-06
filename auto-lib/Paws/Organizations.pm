@@ -524,7 +524,8 @@ accounts and their resources.
 
 This guide provides descriptions of the Organizations API. For more
 information about using this service, see the AWS Organizations User
-Guide.
+Guide
+(http://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html).
 
 B<API Version>
 
@@ -539,15 +540,16 @@ access to AWS Organizations. For example, the SDKs take care of
 cryptographically signing requests, managing errors, and retrying
 requests automatically. For more information about the AWS SDKs,
 including how to download and install them, see Tools for Amazon Web
-Services.
+Services (http://aws.amazon.com/tools/).
 
 We recommend that you use the AWS SDKs to make programmatic API calls
 to Organizations. However, you also can use the Organizations Query API
 to make direct calls to the Organizations web service. To learn more
-about the Organizations Query API, see Making Query Requests in the
-I<AWS Organizations User Guide>. Organizations supports GET and POST
-requests for all actions. That is, the API does not require you to use
-GET for some actions and POST for others. However, GET requests are
+about the Organizations Query API, see Making Query Requests
+(http://docs.aws.amazon.com/organizations/latest/userguide/orgs_query-requests.html)
+in the I<AWS Organizations User Guide>. Organizations supports GET and
+POST requests for all actions. That is, the API does not require you to
+use GET for some actions and POST for others. However, GET requests are
 subject to the limitation size of a URL. Therefore, for operations that
 require larger sizes, use a POST request.
 
@@ -564,11 +566,12 @@ privileges. As another option, use AWS Security Token Service to
 generate temporary security credentials, and use those credentials to
 sign requests.
 
-To sign requests, we recommend that you use Signature Version 4. If you
-have an existing application that uses Signature Version 2, you do not
-have to update it to use Signature Version 4. However, some operations
-now require Signature Version 4. The documentation for operations that
-require version 4 indicate this requirement.
+To sign requests, we recommend that you use Signature Version 4
+(http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
+If you have an existing application that uses Signature Version 2, you
+do not have to update it to use Signature Version 4. However, some
+operations now require Signature Version 4. The documentation for
+operations that require version 4 indicate this requirement.
 
 When you use the AWS Command Line Interface (AWS CLI) or one of the AWS
 SDKs to make requests to AWS, these tools automatically sign the
@@ -581,11 +584,14 @@ release, a single organization will support multiple roots.
 B<Support and Feedback for AWS Organizations>
 
 We welcome your feedback. Send your comments to
-feedback-awsorganizations@amazon.com or post your feedback and
-questions in our private AWS Organizations support forum. If you don't
+feedback-awsorganizations@amazon.com
+(mailto:feedback-awsorganizations@amazon.com) or post your feedback and
+questions in our private AWS Organizations support forum
+(http://forums.aws.amazon.com/forum.jspa?forumID=219). If you don't
 have access to the forum, send a request for access to the email
 address, along with your forum user ID. For more information about the
-AWS support forums, see Forums Help.
+AWS support forums, see Forums Help
+(http://forums.aws.amazon.com/help.jspa).
 
 B<Endpoint to Call When Using the CLI or the AWS API>
 
@@ -619,8 +625,9 @@ C<--region us-east-1>
 
 For the various SDKs used to call the APIs, see the documentation for
 the SDK of interest to learn how to direct the requests to a specific
-endpoint. For more information, see Regions and Endpoints in the I<AWS
-General Reference>.
+endpoint. For more information, see Regions and Endpoints
+(http://docs.aws.amazon.com/general/latest/gr/rande.html#sts_region) in
+the I<AWS General Reference>.
 
 B<How examples are presented>
 
@@ -640,9 +647,12 @@ bucket. By using information collected by AWS CloudTrail, you can
 determine which requests were successfully made to Organizations, who
 made the request, when it was made, and so on. For more about AWS
 Organizations and its support for AWS CloudTrail, see Logging AWS
-Organizations Events with AWS CloudTrail in the I<AWS Organizations
-User Guide>. To learn more about CloudTrail, including how to turn it
-on and find your log files, see the AWS CloudTrail User Guide.
+Organizations Events with AWS CloudTrail
+(http://docs.aws.amazon.com/organizations/latest/userguide/orgs_cloudtrail-integration.html)
+in the I<AWS Organizations User Guide>. To learn more about CloudTrail,
+including how to turn it on and find your log files, see the AWS
+CloudTrail User Guide
+(http://docs.aws.amazon.com/awscloudtrail/latest/userguide/what_is_cloud_trail_top_level.html).
 
 =head1 METHODS
 
@@ -671,10 +681,13 @@ B<Enable all features final confirmation> handshake: only a principal
 from the master account.
 
 For more information about invitations, see Inviting an AWS Account to
-Join Your Organization in the I<AWS Organizations User Guide>. For more
-information about requests to enable all features in the organization,
-see Enabling All Features in Your Organization in the I<AWS
-Organizations User Guide>.
+Join Your Organization
+(http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_invites.html)
+in the I<AWS Organizations User Guide>. For more information about
+requests to enable all features in the organization, see Enabling All
+Features in Your Organization
+(http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html)
+in the I<AWS Organizations User Guide>.
 
 =back
 
@@ -740,8 +753,9 @@ you must replace it with a policy that specifies the permissions that
 you want to allow in that OU or account.
 
 For more information about how Organizations policies permissions work,
-see Using Service Control Policies in the I<AWS Organizations User
-Guide>.
+see Using Service Control Policies
+(http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scp.html)
+in the I<AWS Organizations User Guide>.
 
 =back
 
@@ -788,7 +802,9 @@ and address information for the new account from the organization's
 master account.
 
 For more information about creating accounts, see Creating an AWS
-Account in Your Organization in the I<AWS Organizations User Guide>.
+Account in Your Organization
+(http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_create.html)
+in the I<AWS Organizations User Guide>.
 
 When you create an account in an organization using the AWS
 Organizations console, API, or CLI commands, the information required
@@ -797,8 +813,9 @@ method and signing the End User Licence Agreement (EULA) is I<not>
 automatically collected. If you must remove an account from your
 organization later, you can do so only after you provide the missing
 information. Follow the steps at To leave an organization when all
-required account information has not yet been provided in the I<AWS
-Organizations User Guide>.
+required account information has not yet been provided
+(http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html#leave-without-all-info)
+in the I<AWS Organizations User Guide>.
 
 When you create a member account with this operation, you can choose
 whether to create the account with the B<IAM User and Role Access to
@@ -807,7 +824,8 @@ roles that have appropriate permissions can view billing information
 for the account. If you disable this, then only the account root user
 can access billing information. For information about how to disable
 this for an account, see Granting Access to Your Billing Information
-and Tools.
+and Tools
+(http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/grantaccess.html).
 
 This operation can be called only from the organization's master
 account.
@@ -815,7 +833,7 @@ account.
 If you get an exception that indicates that you exceeded your account
 limits for the organization or that you can"t add an account because
 your organization is still initializing, please contact AWS Customer
-Support.
+Support (https://console.aws.amazon.com/support/home#/).
 
 
 =head2 CreateOrganization([FeatureSet => Str])
@@ -826,6 +844,7 @@ Returns: a L<Paws::Organizations::CreateOrganizationResponse> instance
 
   Creates an AWS organization. The account whose user is calling the
 CreateOrganization operation automatically becomes the master account
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/orgs_getting-started_concepts.html#account)
 of the new organization.
 
 This operation must be called using credentials from the account that
@@ -853,8 +872,9 @@ to apply policies according to your business requirements. The number
 of levels deep that you can nest OUs is dependent upon the policy types
 enabled for that root. For service control policies, the limit is five.
 
-For more information about OUs, see Managing Organizational Units in
-the I<AWS Organizations User Guide>.
+For more information about OUs, see Managing Organizational Units
+(http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_ous.html)
+in the I<AWS Organizations User Guide>.
 
 This operation can be called only from the organization's master
 account.
@@ -870,7 +890,8 @@ Returns: a L<Paws::Organizations::CreatePolicyResponse> instance
 organizational unit (OU), or an individual AWS account.
 
 For more information about policies and their use, see Managing
-Organization Policies.
+Organization Policies
+(http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies.html).
 
 This operation can be called only from the organization's master
 account.
@@ -1027,12 +1048,14 @@ B<Note:> Every root, OU, and account must have at least one SCP
 attached. If you want to replace the default C<FullAWSAccess> policy
 with one that limits the permissions that can be delegated, then you
 must attach the replacement policy before you can remove the default
-one. This is the authorization strategy of whitelisting. If you instead
-attach a second SCP and leave the C<FullAWSAccess> SCP still attached,
-and specify C<"Effect": "Deny"> in the second SCP to override the
-C<"Effect": "Allow"> in the C<FullAWSAccess> policy (or any other
-attached SCP), then you are using the authorization strategy of
-blacklisting.
+one. This is the authorization strategy of whitelisting
+(http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_about-scps.html#orgs_policies_whitelist).
+If you instead attach a second SCP and leave the C<FullAWSAccess> SCP
+still attached, and specify C<"Effect": "Deny"> in the second SCP to
+override the C<"Effect": "Allow"> in the C<FullAWSAccess> policy (or
+any other attached SCP), then you are using the authorization strategy
+of blacklisting
+(http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_about-scps.html#orgs_policies_blacklist).
 
 This operation can be called only from the organization's master
 account.
@@ -1067,7 +1090,9 @@ can be called in each account. Until you enable all features, you have
 access only to consolidated billing, and you can't use any of the
 advanced account administration features that AWS Organizations
 supports. For more information, see Enabling All Features in Your
-Organization in the I<AWS Organizations User Guide>.
+Organization
+(http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html)
+in the I<AWS Organizations User Guide>.
 
 This operation is required only for organizations that were created
 explicitly with only the consolidated billing features enabled, or that
@@ -1125,7 +1150,8 @@ account. For example, if your organization's master account was created
 by Amazon Internet Services Pvt. Ltd (AISPL), an AWS seller in India,
 then you can only invite other AISPL accounts to your organization. You
 can't combine accounts from AISPL and AWS, or any other AWS seller. For
-more information, see Consolidated Billing in India.
+more information, see Consolidated Billing in India
+(http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/useconsolidatedbilliing-India.html).
 
 This operation can be called only from the organization's master
 account.
@@ -1133,7 +1159,7 @@ account.
 If you get an exception that indicates that you exceeded your account
 limits for the organization or that you can"t add an account because
 your organization is still initializing, please contact AWS Customer
-Support.
+Support (https://console.aws.amazon.com/support/home#/).
 
 
 =head2 LeaveOrganization( => )
@@ -1172,15 +1198,17 @@ required contact information, and provide a current payment method. AWS
 uses the payment method to charge for any billable (not free tier) AWS
 activity that occurs while the account is not attached to an
 organization. Follow the steps at To leave an organization when all
-required account information has not yet been provided in the I<AWS
-Organizations User Guide>.
+required account information has not yet been provided
+(http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html#leave-without-all-info)
+in the I<AWS Organizations User Guide>.
 
 =item *
 
 You can leave an organization only after you enable IAM user access to
 billing in your account. For more information, see Activating Access to
-the Billing and Cost Management Console in the I<AWS Billing and Cost
-Management User Guide>.
+the Billing and Cost Management Console
+(http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/grantaccess.html#ControllingAccessWebsite-Activate)
+in the I<AWS Billing and Cost Management User Guide>.
 
 =back
 
@@ -1403,14 +1431,17 @@ activity that occurs while the account is not attached to an
 organization. To remove an account that does not yet have this
 information, you must sign in as the member account and follow the
 steps at To leave an organization when all required account information
-has not yet been provided in the I<AWS Organizations User Guide>.
+has not yet been provided
+(http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html#leave-without-all-info)
+in the I<AWS Organizations User Guide>.
 
 =item *
 
 You can remove a member account only after you enable IAM user access
 to billing in the member account. For more information, see Activating
-Access to the Billing and Cost Management Console in the I<AWS Billing
-and Cost Management User Guide>.
+Access to the Billing and Cost Management Console
+(http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/grantaccess.html#ControllingAccessWebsite-Activate)
+in the I<AWS Billing and Cost Management User Guide>.
 
 =back
 

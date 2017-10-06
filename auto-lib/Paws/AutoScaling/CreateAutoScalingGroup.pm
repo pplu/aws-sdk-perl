@@ -69,8 +69,9 @@ optional if you specify one or more subnets.
 The amount of time, in seconds, after a scaling activity completes
 before another scaling activity can start. The default is 300.
 
-For more information, see Auto Scaling Cooldowns in the I<Auto Scaling
-User Guide>.
+For more information, see Auto Scaling Cooldowns
+(http://docs.aws.amazon.com/autoscaling/latest/userguide/Cooldown.html)
+in the I<Auto Scaling User Guide>.
 
 
 
@@ -93,8 +94,9 @@ default is 0.
 
 This parameter is required if you are adding an C<ELB> health check.
 
-For more information, see Health Checks in the I<Auto Scaling User
-Guide>.
+For more information, see Health Checks
+(http://docs.aws.amazon.com/autoscaling/latest/userguide/healthcheck.html)
+in the I<Auto Scaling User Guide>.
 
 
 
@@ -105,7 +107,9 @@ and C<ELB>.
 
 By default, health checks use Amazon EC2 instance status checks to
 determine the health of an instance. For more information, see Health
-Checks in the I<Auto Scaling User Guide>.
+Checks
+(http://docs.aws.amazon.com/autoscaling/latest/userguide/healthcheck.html)
+in the I<Auto Scaling User Guide>.
 
 
 
@@ -121,7 +125,9 @@ configuration derives its attributes from the specified instance, with
 the exception of the block device mapping.
 
 For more information, see Create an Auto Scaling Group Using an EC2
-Instance in the I<Auto Scaling User Guide>.
+Instance
+(http://docs.aws.amazon.com/autoscaling/latest/userguide/create-asg-from-instance.html)
+in the I<Auto Scaling User Guide>.
 
 
 
@@ -144,7 +150,9 @@ One or more Classic Load Balancers. To specify an Application Load
 Balancer, use C<TargetGroupARNs> instead.
 
 For more information, see Using a Load Balancer With an Auto Scaling
-Group in the I<Auto Scaling User Guide>.
+Group
+(http://docs.aws.amazon.com/autoscaling/latest/userguide/create-asg-from-instance.html)
+in the I<Auto Scaling User Guide>.
 
 
 
@@ -170,8 +178,9 @@ termination by Auto Scaling when scaling in.
 =head2 PlacementGroup => Str
 
 The name of the placement group into which you'll launch your
-instances, if any. For more information, see Placement Groups in the
-I<Amazon Elastic Compute Cloud User Guide>.
+instances, if any. For more information, see Placement Groups
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 
@@ -179,8 +188,9 @@ I<Amazon Elastic Compute Cloud User Guide>.
 
 One or more tags.
 
-For more information, see Tagging Auto Scaling Groups and Instances in
-the I<Auto Scaling User Guide>.
+For more information, see Tagging Auto Scaling Groups and Instances
+(http://docs.aws.amazon.com/autoscaling/latest/userguide/autoscaling-tagging.html)
+in the I<Auto Scaling User Guide>.
 
 
 
@@ -197,7 +207,9 @@ terminate. These policies are executed in the order that they are
 listed.
 
 For more information, see Controlling Which Instances Auto Scaling
-Terminates During Scale In in the I<Auto Scaling User Guide>.
+Terminates During Scale In
+(http://docs.aws.amazon.com/autoscaling/latest/userguide/as-instance-termination.html)
+in the I<Auto Scaling User Guide>.
 
 
 
@@ -210,8 +222,9 @@ If you specify subnets and Availability Zones with this call, ensure
 that the subnets' Availability Zones match the Availability Zones
 specified.
 
-For more information, see Launching Auto Scaling Instances in a VPC in
-the I<Auto Scaling User Guide>.
+For more information, see Launching Auto Scaling Instances in a VPC
+(http://docs.aws.amazon.com/autoscaling/latest/userguide/asg-in-vpc.html)
+in the I<Auto Scaling User Guide>.
 
 
 

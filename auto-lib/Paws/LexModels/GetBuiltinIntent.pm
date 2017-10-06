@@ -38,7 +38,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 B<REQUIRED> Signature => Str
 
 The unique identifier for a built-in intent. To find the signature for
-an intent, see Standard Built-in Intents in the I<Alexa Skills Kit>.
+an intent, see Standard Built-in Intents
+(https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/built-in-intent-ref/standard-intents)
+in the I<Alexa Skills Kit>.
 
 
 

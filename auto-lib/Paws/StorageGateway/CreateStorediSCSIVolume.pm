@@ -41,7 +41,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 B<REQUIRED> DiskId => Str
 
 The unique identifier for the gateway local disk that is configured as
-a stored volume. Use ListLocalDisks to list disk IDs for a gateway.
+a stored volume. Use ListLocalDisks
+(http://docs.aws.amazon.com/storagegateway/latest/userguide/API_ListLocalDisks.html)
+to list disk IDs for a gateway.
 
 
 
@@ -77,8 +79,9 @@ Valid Values: true, false
 The snapshot ID (e.g. "snap-1122aabb") of the snapshot to restore as
 the new stored volume. Specify this field if you want to create the
 iSCSI storage volume from a snapshot otherwise do not include this
-field. To list snapshots for your account use DescribeSnapshots in the
-I<Amazon Elastic Compute Cloud API Reference>.
+field. To list snapshots for your account use DescribeSnapshots
+(http://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-DescribeSnapshots.html)
+in the I<Amazon Elastic Compute Cloud API Reference>.
 
 
 

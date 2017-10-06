@@ -40,7 +40,8 @@ matches. Rule sets are used in MatchmakingConfiguration objects.
 
 A rule set may define the following elements for a match. For detailed
 information and examples showing how to construct a rule set, see
-Create Matchmaking Rules for Your Game.
+Create Matchmaking Rules for Your Game
+(http://docs.aws.amazon.com/gamelift/latest/developerguide/match-rules.html).
 
 =over
 

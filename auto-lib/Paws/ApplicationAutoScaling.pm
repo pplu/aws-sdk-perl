@@ -150,8 +150,9 @@ Paws::ApplicationAutoScaling - Perl Interface to AWS Application Auto Scaling
 =head1 DESCRIPTION
 
 With Application Auto Scaling, you can automatically scale your AWS
-resources. The experience similar to that of Auto Scaling. You can use
-Application Auto Scaling to accomplish the following tasks:
+resources. The experience similar to that of Auto Scaling
+(https://aws.amazon.com/autoscaling/). You can use Application Auto
+Scaling to accomplish the following tasks:
 
 =over
 
@@ -175,35 +176,45 @@ Application Auto Scaling can scale the following AWS resources:
 
 =item *
 
-Amazon ECS services. For more information, see Service Auto Scaling in
-the I<Amazon EC2 Container Service Developer Guide>.
+Amazon ECS services. For more information, see Service Auto Scaling
+(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-auto-scaling.html)
+in the I<Amazon EC2 Container Service Developer Guide>.
 
 =item *
 
 Amazon EC2 Spot fleets. For more information, see Automatic Scaling for
-Spot Fleet in the I<Amazon EC2 User Guide>.
+Spot Fleet
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/fleet-auto-scaling.html)
+in the I<Amazon EC2 User Guide>.
 
 =item *
 
 Amazon EMR clusters. For more information, see Using Automatic Scaling
-in Amazon EMR in the I<Amazon EMR Management Guide>.
+in Amazon EMR
+(http://docs.aws.amazon.com/ElasticMapReduce/latest/ManagementGuide/emr-automatic-scaling.html)
+in the I<Amazon EMR Management Guide>.
 
 =item *
 
 AppStream 2.0 fleets. For more information, see Fleet Auto Scaling for
-Amazon AppStream 2.0 in the I<Amazon AppStream 2.0 Developer Guide>.
+Amazon AppStream 2.0
+(http://docs.aws.amazon.com/appstream2/latest/developerguide/autoscaling.html)
+in the I<Amazon AppStream 2.0 Developer Guide>.
 
 =item *
 
 Provisioned read and write capacity for Amazon DynamoDB tables and
 global secondary indexes. For more information, see Managing Throughput
-Capacity Automatically with DynamoDB Auto Scaling in the I<Amazon
-DynamoDB Developer Guide>.
+Capacity Automatically with DynamoDB Auto Scaling
+(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/AutoScaling.html)
+in the I<Amazon DynamoDB Developer Guide>.
 
 =back
 
 For a list of supported regions, see AWS Regions and Endpoints:
-Application Auto Scaling in the I<AWS General Reference>.
+Application Auto Scaling
+(http://docs.aws.amazon.com/general/latest/gr/rande.html#as-app_region)
+in the I<AWS General Reference>.
 
 =head1 METHODS
 

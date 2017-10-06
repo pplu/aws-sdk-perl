@@ -65,8 +65,9 @@ in the next request.
 Substring to match in built-in intent signatures. An intent will be
 returned if any part of its signature matches the substring. For
 example, "xyz" matches both "xyzabc" and "abcxyz." To find the
-signature for an intent, see Standard Built-in Intents in the I<Alexa
-Skills Kit>.
+signature for an intent, see Standard Built-in Intents
+(https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/built-in-intent-ref/standard-intents)
+in the I<Alexa Skills Kit>.
 
 
 

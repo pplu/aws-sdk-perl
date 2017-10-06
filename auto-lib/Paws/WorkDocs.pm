@@ -437,8 +437,9 @@ Returns: a L<Paws::WorkDocs::CreateNotificationSubscriptionResponse> instance
   Configure WorkDocs to use Amazon SNS notifications.
 
 The endpoint receives a confirmation message, and must confirm the
-subscription. For more information, see Confirm the Subscription in the
-I<Amazon Simple Notification Service Developer Guide>.
+subscription. For more information, see Confirm the Subscription
+(http://docs.aws.amazon.com/sns/latest/dg/SendMessageToHttp.html#SendMessageToHttp.confirm)
+in the I<Amazon Simple Notification Service Developer Guide>.
 
 
 =head2 CreateUser(GivenName => Str, Password => Str, Surname => Str, Username => Str, [AuthenticationToken => Str, EmailAddress => Str, OrganizationId => Str, StorageRule => L<Paws::WorkDocs::StorageRuleType>, TimeZoneId => Str])

@@ -41,7 +41,9 @@ The Amazon Resource Name (ARN) of the IAM policy to which you want to
 add a new version.
 
 For more information about ARNs, see Amazon Resource Names (ARNs) and
-AWS Service Namespaces in the I<AWS General Reference>.
+AWS Service Namespaces
+(http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+in the I<AWS General Reference>.
 
 
 
@@ -50,13 +52,13 @@ AWS Service Namespaces in the I<AWS General Reference>.
 The JSON policy document that you want to use as the content for this
 new version of the policy.
 
-The regex pattern used to validate this parameter is a string of
-characters consisting of any printable ASCII character ranging from the
-space character (\u0020) through end of the ASCII character range as
-well as the printable characters in the Basic Latin and Latin-1
-Supplement character set (through \u00FF). It also includes the special
-characters tab (\u0009), line feed (\u000A), and carriage return
-(\u000D).
+The regex pattern (http://wikipedia.org/wiki/regex) used to validate
+this parameter is a string of characters consisting of any printable
+ASCII character ranging from the space character (\u0020) through end
+of the ASCII character range as well as the printable characters in the
+Basic Latin and Latin-1 Supplement character set (through \u00FF). It
+also includes the special characters tab (\u0009), line feed (\u000A),
+and carriage return (\u000D).
 
 
 
@@ -69,7 +71,9 @@ operative version; that is, the version that is in effect for the IAM
 users, groups, and roles that the policy is attached to.
 
 For more information about managed policy versions, see Versioning for
-Managed Policies in the I<IAM User Guide>.
+Managed Policies
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-versions.html)
+in the I<IAM User Guide>.
 
 
 

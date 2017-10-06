@@ -48,7 +48,8 @@ account in an organization.
   If the account was created successfully, the unique identifier (ID) of
 the new account.
 
-The regex pattern for an account ID string requires exactly 12 digits.
+The regex pattern (http://wikipedia.org/wiki/regex) for an account ID
+string requires exactly 12 digits.
 
 
 =head2 AccountName => Str
@@ -104,8 +105,9 @@ Customer Support.
 value from the response of the initial CreateAccount request to create
 the account.
 
-The regex pattern for an create account request ID string requires
-"car-" followed by from 8 to 32 lower-case letters or digits.
+The regex pattern (http://wikipedia.org/wiki/regex) for an create
+account request ID string requires "car-" followed by from 8 to 32
+lower-case letters or digits.
 
 
 =head2 RequestedTimestamp => Str

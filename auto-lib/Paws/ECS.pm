@@ -381,8 +381,9 @@ specified cluster. To update an existing service, see UpdateService.
 In addition to maintaining the desired count of tasks in your service,
 you can optionally run your service behind a load balancer. The load
 balancer distributes traffic across the tasks that are associated with
-the service. For more information, see Service Load Balancing in the
-I<Amazon EC2 Container Service Developer Guide>.
+the service. For more information, see Service Load Balancing
+(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-load-balancing.html)
+in the I<Amazon EC2 Container Service Developer Guide>.
 
 You can optionally specify a deployment configuration for your service.
 During a deployment (which is triggered by changing the task definition
@@ -650,8 +651,9 @@ Returns: a L<Paws::ECS::ListContainerInstancesResponse> instance
   Returns a list of container instances in a specified cluster. You can
 filter the results of a C<ListContainerInstances> operation with
 cluster query language statements inside the C<filter> parameter. For
-more information, see Cluster Query Language in the I<Amazon EC2
-Container Service Developer Guide>.
+more information, see Cluster Query Language
+(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html)
+in the I<Amazon EC2 Container Service Developer Guide>.
 
 
 =head2 ListServices([Cluster => Str, MaxResults => Int, NextToken => Str])
@@ -714,8 +716,9 @@ Returns: a L<Paws::ECS::PutAttributesResponse> instance
   Create or update an attribute on an Amazon ECS resource. If the
 attribute does not exist, it is created. If the attribute exists, its
 value is replaced with the specified value. To delete an attribute, use
-DeleteAttributes. For more information, see Attributes in the I<Amazon
-EC2 Container Service Developer Guide>.
+DeleteAttributes. For more information, see Attributes
+(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-placement-constraints.html#attributes)
+in the I<Amazon EC2 Container Service Developer Guide>.
 
 
 =head2 RegisterContainerInstance([Attributes => ArrayRef[L<Paws::ECS::Attribute>], Cluster => Str, ContainerInstanceArn => Str, InstanceIdentityDocument => Str, InstanceIdentityDocumentSignature => Str, TotalResources => ArrayRef[L<Paws::ECS::Resource>], VersionInfo => L<Paws::ECS::VersionInfo>])
@@ -741,19 +744,23 @@ Returns: a L<Paws::ECS::RegisterTaskDefinitionResponse> instance
 C<containerDefinitions>. Optionally, you can add data volumes to your
 containers with the C<volumes> parameter. For more information about
 task definition parameters and defaults, see Amazon ECS Task
-Definitions in the I<Amazon EC2 Container Service Developer Guide>.
+Definitions
+(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_defintions.html)
+in the I<Amazon EC2 Container Service Developer Guide>.
 
 You can specify an IAM role for your task with the C<taskRoleArn>
 parameter. When you specify an IAM role for a task, its containers can
 then use the latest versions of the AWS CLI or SDKs to make API
 requests to the AWS services that are specified in the IAM policy
 associated with the role. For more information, see IAM Roles for Tasks
+(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-iam-roles.html)
 in the I<Amazon EC2 Container Service Developer Guide>.
 
 You can specify a Docker networking mode for the containers in your
 task definition with the C<networkMode> parameter. The available
-network modes correspond to those described in Network settings in the
-Docker run reference.
+network modes correspond to those described in Network settings
+(https://docs.docker.com/engine/reference/run/#/network-settings) in
+the Docker run reference.
 
 
 =head2 RunTask(TaskDefinition => Str, [Cluster => Str, Count => Int, Group => Str, Overrides => L<Paws::ECS::TaskOverride>, PlacementConstraints => ArrayRef[L<Paws::ECS::PlacementConstraint>], PlacementStrategy => ArrayRef[L<Paws::ECS::PlacementStrategy>], StartedBy => Str])
@@ -766,8 +773,9 @@ Returns: a L<Paws::ECS::RunTaskResponse> instance
 
 You can allow Amazon ECS to place tasks for you, or you can customize
 how Amazon ECS places tasks using placement constraints and placement
-strategies. For more information, see Scheduling Tasks in the I<Amazon
-EC2 Container Service Developer Guide>.
+strategies. For more information, see Scheduling Tasks
+(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/scheduling_tasks.html)
+in the I<Amazon EC2 Container Service Developer Guide>.
 
 Alternatively, you can use StartTask to use your own scheduler or place
 tasks manually on specific container instances.
@@ -783,8 +791,9 @@ Returns: a L<Paws::ECS::StartTaskResponse> instance
 container instance or instances.
 
 Alternatively, you can use RunTask to place tasks for you. For more
-information, see Scheduling Tasks in the I<Amazon EC2 Container Service
-Developer Guide>.
+information, see Scheduling Tasks
+(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/scheduling_tasks.html)
+in the I<Amazon EC2 Container Service Developer Guide>.
 
 
 =head2 StopTask(Task => Str, [Cluster => Str, Reason => Str])
@@ -804,8 +813,9 @@ it, no C<SIGKILL> is sent.
 
 The default 30-second timeout can be configured on the Amazon ECS
 container agent with the C<ECS_CONTAINER_STOP_TIMEOUT> variable. For
-more information, see Amazon ECS Container Agent Configuration in the
-I<Amazon EC2 Container Service Developer Guide>.
+more information, see Amazon ECS Container Agent Configuration
+(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html)
+in the I<Amazon EC2 Container Service Developer Guide>.
 
 
 =head2 SubmitContainerStateChange([Cluster => Str, ContainerName => Str, ExitCode => Int, NetworkBindings => ArrayRef[L<Paws::ECS::NetworkBinding>], Reason => Str, Status => Str, Task => Str])
@@ -848,8 +858,9 @@ system.
 C<UpdateContainerAgent> requires the Amazon ECS-optimized AMI or Amazon
 Linux with the C<ecs-init> service installed and running. For help
 updating the Amazon ECS container agent on other operating systems, see
-Manually Updating the Amazon ECS Container Agent in the I<Amazon EC2
-Container Service Developer Guide>.
+Manually Updating the Amazon ECS Container Agent
+(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-update.html#manually_update_agent)
+in the I<Amazon EC2 Container Service Developer Guide>.
 
 
 =head2 UpdateContainerInstancesState(ContainerInstances => ArrayRef[Str|Undef], Status => Str, [Cluster => Str])

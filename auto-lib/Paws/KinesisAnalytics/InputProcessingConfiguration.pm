@@ -33,7 +33,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::KinesisAnal
 
 Provides a description of a processor that is used to preprocess the
 records in the stream prior to being processed by your application
-code. Currently, the only input processor available is AWS Lambda.
+code. Currently, the only input processor available is AWS Lambda
+(https://aws.amazon.com/documentation/lambda/).
 
 =head1 ATTRIBUTES
 

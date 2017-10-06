@@ -44,9 +44,10 @@ The name or unique stack ID that you want to associate a policy with.
 =head2 StackPolicyBody => Str
 
 Structure containing the stack policy body. For more information, go to
-Prevent Updates to Stack Resources in the AWS CloudFormation User
-Guide. You can specify either the C<StackPolicyBody> or the
-C<StackPolicyURL> parameter, but not both.
+Prevent Updates to Stack Resources
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/protect-stack-resources.html)
+in the AWS CloudFormation User Guide. You can specify either the
+C<StackPolicyBody> or the C<StackPolicyURL> parameter, but not both.
 
 
 

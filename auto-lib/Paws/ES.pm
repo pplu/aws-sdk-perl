@@ -117,7 +117,8 @@ and manage Elasticsearch domains.
 The endpoint for configuration service requests is region-specific:
 es.I<region>.amazonaws.com. For example, es.us-east-1.amazonaws.com.
 For a current list of supported regions and endpoints, see Regions and
-Endpoints.
+Endpoints
+(http://docs.aws.amazon.com/general/latest/gr/rande.html#elasticsearch-service-regions).
 
 =head1 METHODS
 
@@ -131,6 +132,7 @@ Returns: nothing
 case-sensitive key value pairs. An Elasticsearch domain may have up to
 10 tags. See Tagging Amazon Elasticsearch Service Domains for more
 information.
+(http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-managedomains.html#es-managedomains-awsresorcetagging)
 
 
 =head2 CreateElasticsearchDomain(DomainName => Str, [AccessPolicies => Str, AdvancedOptions => L<Paws::ES::AdvancedOptions>, EBSOptions => L<Paws::ES::EBSOptions>, ElasticsearchClusterConfig => L<Paws::ES::ElasticsearchClusterConfig>, ElasticsearchVersion => Str, SnapshotOptions => L<Paws::ES::SnapshotOptions>])
@@ -140,8 +142,9 @@ Each argument is described in detail in: L<Paws::ES::CreateElasticsearchDomain>
 Returns: a L<Paws::ES::CreateElasticsearchDomainResponse> instance
 
   Creates a new Elasticsearch domain. For more information, see Creating
-Elasticsearch Domains in the I<Amazon Elasticsearch Service Developer
-Guide>.
+Elasticsearch Domains
+(http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomains)
+in the I<Amazon Elasticsearch Service Developer Guide>.
 
 
 =head2 DeleteElasticsearchDomain(DomainName => Str)

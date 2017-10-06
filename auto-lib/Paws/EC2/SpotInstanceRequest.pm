@@ -132,7 +132,9 @@ fulfill the request.
 
   The state of the Spot instance request. Spot bid status information can
 help you track your Spot instance requests. For more information, see
-Spot Bid Status in the I<Amazon Elastic Compute Cloud User Guide>.
+Spot Bid Status
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-bid-status.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 =head2 Status => L<Paws::EC2::SpotInstanceStatus>

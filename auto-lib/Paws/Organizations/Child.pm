@@ -41,7 +41,8 @@ Contains a list of child entities, either OUs or accounts.
 
   The unique identifier (ID) of this child entity.
 
-The regex pattern for a child ID string requires one of the following:
+The regex pattern (http://wikipedia.org/wiki/regex) for a child ID
+string requires one of the following:
 
 =over
 

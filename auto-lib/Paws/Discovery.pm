@@ -151,7 +151,8 @@ migration. The data collected by Application Discovery Service is
 securely retained in an Amazon-hosted and managed database in the
 cloud. You can export the data as a CSV or XML file into your preferred
 visualization tool or cloud-migration solution to plan your migration.
-For more information, see the Application Discovery Service FAQ.
+For more information, see the Application Discovery Service FAQ
+(http://aws.amazon.com/application-discovery/faqs/).
 
 Application Discovery Service offers two modes of operation.
 
@@ -195,25 +196,29 @@ You can then import the data into either a visualization tool or
 cloud-migration solution.
 
 Application Discovery Service doesn't gather sensitive information. All
-data is handled according to the AWS Privacy Policy. You can operate
-Application Discovery Service using offline mode to inspect collected
-data before it is shared with the service.
+data is handled according to the AWS Privacy Policy
+(http://aws.amazon.com/privacy/). You can operate Application Discovery
+Service using offline mode to inspect collected data before it is
+shared with the service.
 
 Your AWS account must be granted access to Application Discovery
 Service, a process called I<whitelisting>. This is true for AWS
 partners and customers alike. To request access, sign up for AWS
-Application Discovery Service here. We send you information about how
-to get started.
+Application Discovery Service here
+(http://aws.amazon.com/application-discovery/preview/). We send you
+information about how to get started.
 
 This API reference provides descriptions, syntax, and usage examples
 for each of the actions and data types for Application Discovery
 Service. The topic for each action shows the API request parameters and
 the response. Alternatively, you can use one of the AWS SDKs to access
 an API that is tailored to the programming language or platform that
-you're using. For more information, see AWS SDKs.
+you're using. For more information, see AWS SDKs
+(http://aws.amazon.com/tools/#SDKs).
 
 This guide is intended for use with the I<AWS Application Discovery
-Service User Guide> .
+Service User Guide>
+(http://docs.aws.amazon.com/application-discovery/latest/userguide/).
 
 =head1 METHODS
 
@@ -290,7 +295,8 @@ includes a list of attributes about the server, such as host name,
 operating system, and number of network cards.
 
 For a complete list of outputs for each asset type, see Using the
-DescribeConfigurations Action.
+DescribeConfigurations Action
+(http://docs.aws.amazon.com/application-discovery/latest/APIReference/discovery-api-queries.html#DescribeConfigurations).
 
 
 =head2 DescribeExportConfigurations([ExportIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])

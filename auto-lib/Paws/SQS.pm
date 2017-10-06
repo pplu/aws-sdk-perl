@@ -175,12 +175,15 @@ hosted queue for storing messages as they travel between applications
 or microservices. Amazon SQS moves data between distributed application
 components and helps you decouple these components.
 
-Standard queues are available in all regions. FIFO queues are available
-in US West (Oregon) and US East (Ohio).
+Standard queues
+(http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/standard-queues.html)
+are available in all regions. FIFO queues
+(http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html)
+are available in US West (Oregon) and US East (Ohio).
 
-You can use AWS SDKs to access Amazon SQS using your favorite
-programming language. The SDKs perform tasks such as the following
-automatically:
+You can use AWS SDKs (http://aws.amazon.com/tools/#sdk) to access
+Amazon SQS using your favorite programming language. The SDKs perform
+tasks such as the following automatically:
 
 =over
 
@@ -204,7 +207,7 @@ B<Additional Information>
 
 =item *
 
-Amazon SQS Product Page
+Amazon SQS Product Page (http://aws.amazon.com/sqs/)
 
 =item *
 
@@ -215,14 +218,17 @@ I<Amazon SQS Developer Guide>
 =item *
 
 Making API Requests
+(http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/MakingRequestsArticle.html)
 
 =item *
 
 Using Amazon SQS Message Attributes
+(http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-attributes.html)
 
 =item *
 
 Using Amazon SQS Dead Letter Queues
+(http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html)
 
 =back
 
@@ -235,6 +241,7 @@ I<Amazon Web Services General Reference>
 =item *
 
 Regions and Endpoints
+(http://docs.aws.amazon.com/general/latest/gr/rande.html#sqs_region)
 
 =back
 
@@ -249,18 +256,23 @@ Each argument is described in detail in: L<Paws::SQS::AddPermission>
 
 Returns: nothing
 
-  Adds a permission to a queue for a specific principal. This allows
-sharing access to the queue.
+  Adds a permission to a queue for a specific principal
+(http://docs.aws.amazon.com/general/latest/gr/glos-chap.html#P). This
+allows sharing access to the queue.
 
 When you create a queue, you have full control access rights for the
 queue. Only you, the owner of the queue, can grant or deny permissions
 to the queue. For more information about these permissions, see Shared
-Queues in the I<Amazon SQS Developer Guide>.
+Queues
+(http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/acp-overview.html)
+in the I<Amazon SQS Developer Guide>.
 
 C<AddPermission> writes an Amazon-SQS-generated policy. If you want to
 write your own policy, use C< SetQueueAttributes > to upload your
 policy. For more information about writing your own policy, see Using
-The Access Policy Language in the I<Amazon SQS Developer Guide>.
+The Access Policy Language
+(http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/AccessPolicyLanguage.html)
+in the I<Amazon SQS Developer Guide>.
 
 Some actions take lists of parameters. These lists are specified using
 the C<param.n> notation. Values of C<n> are integers starting from 1.
@@ -281,7 +293,9 @@ Returns: nothing
 new value. The maximum allowed timeout value is 12 hours. Thus, you
 can't extend the timeout of a message in an existing queue to more than
 a total visibility timeout of 12 hours. For more information, see
-Visibility Timeout in the I<Amazon SQS Developer Guide>.
+Visibility Timeout
+(http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html)
+in the I<Amazon SQS Developer Guide>.
 
 For example, you have a message and with the default visibility timeout
 of 5 minutes. After 3 minutes, you call C<ChangeMessageVisiblity> with
@@ -364,8 +378,9 @@ You can't change the queue type after you create it and you can't
 convert an existing standard queue into a FIFO queue. You must either
 create a new FIFO queue for your application or delete your existing
 standard queue and recreate it as a FIFO queue. For more information,
-see Moving From a Standard Queue to a FIFO Queue in the I<Amazon SQS
-Developer Guide>.
+see Moving From a Standard Queue to a FIFO Queue
+(http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-moving)
+in the I<Amazon SQS Developer Guide>.
 
 =item *
 
@@ -380,8 +395,9 @@ creating a queue with the same name.
 =back
 
 To successfully create a new queue, you must provide a queue name that
-adheres to the limits related to queues and is unique within the scope
-of your queues.
+adheres to the limits related to queues
+(http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/limits-queues.html)
+and is unique within the scope of your queues.
 
 To get the queue URL, use the C< GetQueueUrl > action. C< GetQueueUrl >
 requires only the C<QueueName> parameter. be aware of existing queue
@@ -494,8 +510,9 @@ Returns: a L<Paws::SQS::GetQueueAttributesResult> instance
 
   Gets attributes for the specified queue.
 
-To determine whether a queue is FIFO, you can check whether
-C<QueueName> ends with the C<.fifo> suffix.
+To determine whether a queue is FIFO
+(http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html),
+you can check whether C<QueueName> ends with the C<.fifo> suffix.
 
 Some actions take lists of parameters. These lists are specified using
 the C<param.n> notation. Values of C<n> are integers starting from 1.
@@ -519,8 +536,9 @@ To access a queue that belongs to another AWS account, use the
 C<QueueOwnerAWSAccountId> parameter to specify the account ID of the
 queue's owner. The queue's owner must grant you permission to access
 the queue. For more information about shared queue access, see C<
-AddPermission > or see Shared Queues in the I<Amazon SQS Developer
-Guide>.
+AddPermission > or see Shared Queues
+(http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/acp-overview.html)
+in the I<Amazon SQS Developer Guide>.
 
 
 =head2 ListDeadLetterSourceQueues(QueueUrl => Str)
@@ -533,7 +551,9 @@ Returns: a L<Paws::SQS::ListDeadLetterSourceQueuesResult> instance
 attribute configured with a dead letter queue.
 
 For more information about using dead letter queues, see Using Amazon
-SQS Dead Letter Queues in the I<Amazon SQS Developer Guide>.
+SQS Dead Letter Queues
+(http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html)
+in the I<Amazon SQS Developer Guide>.
 
 
 =head2 ListQueues([QueueNamePrefix => Str])
@@ -575,8 +595,9 @@ Returns: a L<Paws::SQS::ReceiveMessageResult> instance
 
   Retrieves one or more messages (up to 10), from the specified queue.
 Using the C<WaitTimeSeconds> parameter enables long-poll support. For
-more information, see Amazon SQS Long Polling in the I<Amazon SQS
-Developer Guide>.
+more information, see Amazon SQS Long Polling
+(http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-long-polling.html)
+in the I<Amazon SQS Developer Guide>.
 
 Short poll is the default behavior where a weighted random set of
 machines is sampled on a C<ReceiveMessage> call. Thus, only the
@@ -598,7 +619,7 @@ The message body.
 =item *
 
 An MD5 digest of the message body. For information about MD5, see
-RFC1321.
+RFC1321 (https://www.ietf.org/rfc/rfc1321.txt).
 
 =item *
 
@@ -619,15 +640,17 @@ An MD5 digest of the message attributes.
 =back
 
 The receipt handle is the identifier you must provide when deleting the
-message. For more information, see Queue and Message Identifiers in the
-I<Amazon SQS Developer Guide>.
+message. For more information, see Queue and Message Identifiers
+(http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-queue-message-identifiers.html)
+in the I<Amazon SQS Developer Guide>.
 
 You can provide the C<VisibilityTimeout> parameter in your request. The
 parameter is applied to the messages that Amazon SQS returns in the
 response. If you don't include the parameter, the overall visibility
 timeout for the queue is used for the returned messages. For more
-information, see Visibility Timeout in the I<Amazon SQS Developer
-Guide>.
+information, see Visibility Timeout
+(http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html)
+in the I<Amazon SQS Developer Guide>.
 
 A message that isn't deleted or a message whose visibility isn't
 extended before the visibility timeout expires counts as a failed
@@ -664,7 +687,8 @@ C<#x9> | C<#xA> | C<#xD> | C<#x20> to C<#xD7FF> | C<#xE000> to
 C<#xFFFD> | C<#x10000> to C<#x10FFFF>
 
 Any characters not included in this list will be rejected. For more
-information, see the W3C specification for characters.
+information, see the W3C specification for characters
+(http://www.w3.org/TR/REC-xml/#charsets).
 
 
 =head2 SendMessageBatch(Entries => ArrayRef[L<Paws::SQS::SendMessageBatchRequestEntry>], QueueUrl => Str)
@@ -693,7 +717,8 @@ C<#x9> | C<#xA> | C<#xD> | C<#x20> to C<#xD7FF> | C<#xE000> to
 C<#xFFFD> | C<#x10000> to C<#x10FFFF>
 
 Any characters not included in this list will be rejected. For more
-information, see the W3C specification for characters.
+information, see the W3C specification for characters
+(http://www.w3.org/TR/REC-xml/#charsets).
 
 If you don't specify the C<DelaySeconds> parameter for an entry, Amazon
 SQS uses the default value for the queue.

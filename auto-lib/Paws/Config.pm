@@ -350,7 +350,8 @@ resource and also to get information about the relationship between the
 resources. An AWS resource can be an Amazon Compute Cloud (Amazon EC2)
 instance, an Elastic Block Store (EBS) volume, an Elastic network
 Interface (ENI), or a security group. For a complete list of resources
-currently supported by AWS Config, see Supported AWS Resources.
+currently supported by AWS Config, see Supported AWS Resources
+(http://docs.aws.amazon.com/config/latest/developerguide/resource-config-reference.html#supported-resources).
 
 You can access and manage AWS Config through the AWS Management
 Console, the AWS Command Line Interface (AWS CLI), the AWS Config API,
@@ -361,11 +362,14 @@ the AWS CLI commands that you can use to manage AWS Config.
 
 The AWS Config API uses the Signature Version 4 protocol for signing
 requests. For more information about how to sign a request with this
-protocol, see Signature Version 4 Signing Process.
+protocol, see Signature Version 4 Signing Process
+(http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
 
 For detailed information about AWS Config features and their associated
 actions or commands, as well as how to work with AWS Management
-Console, see What Is AWS Config? in the I<AWS Config Developer Guide>.
+Console, see What Is AWS Config?
+(http://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html)
+in the I<AWS Config Developer Guide>.
 
 =head1 METHODS
 
@@ -815,7 +819,8 @@ object.
 
 If you are adding an AWS managed Config rule, specify the rule's
 identifier for the C<SourceIdentifier> key. To reference AWS managed
-Config rule identifiers, see About AWS Managed Config Rules.
+Config rule identifiers, see About AWS Managed Config Rules
+(http://docs.aws.amazon.com/config/latest/developerguide/evaluate-config_use-managed-rules.html).
 
 For any new rule that you add, specify the C<ConfigRuleName> in the
 C<ConfigRule> object. Do not specify the C<ConfigRuleArn> or the
@@ -829,11 +834,14 @@ the C<ConfigRule> data type that you use in this request.
 The maximum number of rules that AWS Config supports is 50.
 
 For more information about requesting a rule limit increase, see AWS
-Config Limits in the I<AWS General Reference Guide>.
+Config Limits
+(http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_config)
+in the I<AWS General Reference Guide>.
 
 For more information about developing and using AWS Config rules, see
-Evaluating AWS Resource Configurations with AWS Config in the I<AWS
-Config Developer Guide>.
+Evaluating AWS Resource Configurations with AWS Config
+(http://docs.aws.amazon.com/config/latest/developerguide/evaluate-config.html)
+in the I<AWS Config Developer Guide>.
 
 
 =head2 PutConfigurationRecorder(ConfigurationRecorder => L<Paws::Config::ConfigurationRecorder>)

@@ -62,7 +62,8 @@ Describes an Elastic IP address.
 
 =head2 Region => Str
 
-  The AWS region. For more information, see Regions and Endpoints.
+  The AWS region. For more information, see Regions and Endpoints
+(http://docs.aws.amazon.com/general/latest/gr/rande.html).
 
 
 

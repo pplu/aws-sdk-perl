@@ -95,6 +95,7 @@ returns an C<InsufficientCapabilities> error.
 
 For more information, see Acknowledging IAM Resources in AWS
 CloudFormation Templates.
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html#capabilities)
 
 
 
@@ -153,7 +154,9 @@ with an C<access denied> error, and the stack set is not created.
 
 The structure that contains the template body, with a minimum length of
 1 byte and a maximum length of 51,200 bytes. For more information, see
-Template Anatomy in the AWS CloudFormation User Guide.
+Template Anatomy
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
+in the AWS CloudFormation User Guide.
 
 Conditional: You must specify either the TemplateBody or the
 TemplateURL parameter, but not both.
@@ -164,8 +167,9 @@ TemplateURL parameter, but not both.
 
 The location of the file that contains the template body. The URL must
 point to a template (maximum size: 460,800 bytes) that's located in an
-Amazon S3 bucket. For more information, see Template Anatomy in the AWS
-CloudFormation User Guide.
+Amazon S3 bucket. For more information, see Template Anatomy
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
+in the AWS CloudFormation User Guide.
 
 Conditional: You must specify either the TemplateBody or the
 TemplateURL parameter, but not both.

@@ -49,7 +49,9 @@ This data type is used as a response element in the
 GetAccountAuthorizationDetails action.
 
 For more information about managed policies, see Managed Policies and
-Inline Policies in the I<Using IAM> guide.
+Inline Policies
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html)
+in the I<Using IAM> guide.
 
 =head1 ATTRIBUTES
 
@@ -67,8 +69,8 @@ policy is attached to.
 
 =head2 CreateDate => Str
 
-  The date and time, in ISO 8601 date-time format, when the policy was
-created.
+  The date and time, in ISO 8601 date-time format
+(http://www.iso.org/iso/iso8601), when the policy was created.
 
 
 =head2 DefaultVersionId => Str
@@ -77,7 +79,9 @@ created.
 (operative) version.
 
 For more information about policy versions, see Versioning for Managed
-Policies in the I<Using IAM> guide.
+Policies
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-versions.html)
+in the I<Using IAM> guide.
 
 
 =head2 Description => Str
@@ -95,16 +99,18 @@ role.
 
   The path to the policy.
 
-For more information about paths, see IAM Identifiers in the I<Using
-IAM> guide.
+For more information about paths, see IAM Identifiers
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
+in the I<Using IAM> guide.
 
 
 =head2 PolicyId => Str
 
   The stable and unique string identifying the policy.
 
-For more information about IDs, see IAM Identifiers in the I<Using IAM>
-guide.
+For more information about IDs, see IAM Identifiers
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
+in the I<Using IAM> guide.
 
 
 =head2 PolicyName => Str
@@ -119,8 +125,8 @@ guide.
 
 =head2 UpdateDate => Str
 
-  The date and time, in ISO 8601 date-time format, when the policy was
-last updated.
+  The date and time, in ISO 8601 date-time format
+(http://www.iso.org/iso/iso8601), when the policy was last updated.
 
 When a policy has only one version, this field contains the date and
 time when the policy was created. When a policy has more than one

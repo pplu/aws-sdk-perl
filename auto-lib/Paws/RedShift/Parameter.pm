@@ -55,8 +55,9 @@ Describes a parameter in a cluster parameter group.
 can be applied dynamically, while other properties require that any
 associated clusters be rebooted for the configuration changes to be
 applied. For more information about parameters and parameter groups, go
-to Amazon Redshift Parameter Groups in the I<Amazon Redshift Cluster
-Management Guide>.
+to Amazon Redshift Parameter Groups
+(http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html)
+in the I<Amazon Redshift Cluster Management Guide>.
 
 
 =head2 DataType => Str

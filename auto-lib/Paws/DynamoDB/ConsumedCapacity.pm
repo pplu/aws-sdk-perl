@@ -39,8 +39,9 @@ The capacity units consumed by an operation. The data returned includes
 the total provisioned throughput consumed, along with statistics for
 the table and any indexes involved in the operation.
 C<ConsumedCapacity> is only returned if the request asked for it. For
-more information, see Provisioned Throughput in the I<Amazon DynamoDB
-Developer Guide>.
+more information, see Provisioned Throughput
+(http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html)
+in the I<Amazon DynamoDB Developer Guide>.
 
 =head1 ATTRIBUTES
 

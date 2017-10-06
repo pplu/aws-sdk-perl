@@ -32,8 +32,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::Notific
 =head1 DESCRIPTION
 
 Container for object key name filtering rules. For information about
-key name filtering, go to Configuring Event Notifications in the Amazon
-Simple Storage Service Developer Guide.
+key name filtering, go to Configuring Event Notifications
+(http://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html)
+in the Amazon Simple Storage Service Developer Guide.
 
 =head1 ATTRIBUTES
 

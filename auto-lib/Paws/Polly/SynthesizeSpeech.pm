@@ -46,7 +46,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 List of one or more pronunciation lexicon names you want the service to
 apply during synthesis. Lexicons are applied only if the language of
 the lexicon is the same as the language of the voice. For information
-about storing lexicons, see PutLexicon.
+about storing lexicons, see PutLexicon
+(http://docs.aws.amazon.com/polly/latest/dg/API_PutLexicon.html).
 
 
 
@@ -86,14 +87,17 @@ follow the SSML format for the input text.
 =head2 TextType => Str
 
 Specifies whether the input text is plain text or SSML. The default
-value is plain text. For more information, see Using SSML.
+value is plain text. For more information, see Using SSML
+(http://docs.aws.amazon.com/polly/latest/dg/ssml.html).
 
 Valid values are: C<"ssml">, C<"text">
 
 =head2 B<REQUIRED> VoiceId => Str
 
 Voice ID to use for the synthesis. You can get a list of available
-voice IDs by calling the DescribeVoices operation.
+voice IDs by calling the DescribeVoices
+(http://docs.aws.amazon.com/polly/latest/dg/API_DescribeVoices.html)
+operation.
 
 Valid values are: C<"Geraint">, C<"Gwyneth">, C<"Mads">, C<"Naja">, C<"Hans">, C<"Marlene">, C<"Nicole">, C<"Russell">, C<"Amy">, C<"Brian">, C<"Emma">, C<"Raveena">, C<"Ivy">, C<"Joanna">, C<"Joey">, C<"Justin">, C<"Kendra">, C<"Kimberly">, C<"Salli">, C<"Conchita">, C<"Enrique">, C<"Miguel">, C<"Penelope">, C<"Chantal">, C<"Celine">, C<"Mathieu">, C<"Dora">, C<"Karl">, C<"Carla">, C<"Giorgio">, C<"Mizuki">, C<"Liv">, C<"Lotte">, C<"Ruben">, C<"Ewa">, C<"Jacek">, C<"Jan">, C<"Maja">, C<"Ricardo">, C<"Vitoria">, C<"Cristiano">, C<"Ines">, C<"Carmen">, C<"Maxim">, C<"Tatyana">, C<"Astrid">, C<"Filiz">, C<"Vicki">
 

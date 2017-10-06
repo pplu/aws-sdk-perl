@@ -66,7 +66,8 @@ The RestApi identifier under which the Model will be created.
 =head2 Schema => Str
 
 The schema for the model. For C<application/json> models, this should
-be JSON-schema draft v4 model.
+be JSON-schema draft v4 (http://json-schema.org/documentation.html)
+model.
 
 
 

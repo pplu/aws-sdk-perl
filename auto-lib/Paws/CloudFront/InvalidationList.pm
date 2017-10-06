@@ -38,8 +38,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 
 The C<InvalidationList> complex type describes the list of invalidation
 objects. For more information about invalidation, see Invalidating
-Objects (Web Distributions Only) in the I<Amazon CloudFront Developer
-Guide>.
+Objects (Web Distributions Only)
+(http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Invalidation.html)
+in the I<Amazon CloudFront Developer Guide>.
 
 =head1 ATTRIBUTES
 

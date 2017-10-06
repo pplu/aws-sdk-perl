@@ -59,12 +59,23 @@ specifying this parameter.
 
 The only valid values are C<CAPABILITY_IAM> and
 C<CAPABILITY_NAMED_IAM>. The following resources require you to specify
-this parameter: AWS::IAM::AccessKey, AWS::IAM::Group,
-AWS::IAM::InstanceProfile, AWS::IAM::Policy, AWS::IAM::Role,
-AWS::IAM::User, and AWS::IAM::UserToGroupAddition. If your stack
-template contains these resources, we recommend that you review all
-permissions associated with them and edit their permissions if
-necessary.
+this parameter: AWS::IAM::AccessKey
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-accesskey.html),
+AWS::IAM::Group
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-group.html),
+AWS::IAM::InstanceProfile
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html),
+AWS::IAM::Policy
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-policy.html),
+AWS::IAM::Role
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html),
+AWS::IAM::User
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-user.html),
+and AWS::IAM::UserToGroupAddition
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-addusertogroup.html).
+If your stack template contains these resources, we recommend that you
+review all permissions associated with them and edit their permissions
+if necessary.
 
 If you have IAM resources, you can specify either capability. If you
 have IAM resources with custom names, you must specify
@@ -72,7 +83,8 @@ C<CAPABILITY_NAMED_IAM>. If you don't specify this parameter, this
 action returns an C<InsufficientCapabilities> error.
 
 For more information, see Acknowledging IAM Resources in AWS
-CloudFormation Templates.
+CloudFormation Templates
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html#capabilities).
 
 
 
@@ -111,7 +123,9 @@ list to remove all notification topics.
 =head2 Parameters => ArrayRef[L<Paws::CloudFormation::Parameter>]
 
 A list of C<Parameter> structures that specify input parameters for the
-stack. For more information, see the Parameter data type.
+stack. For more information, see the Parameter
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_Parameter.html)
+data type.
 
 
 
@@ -126,7 +140,8 @@ updating, the stack update fails. By default, AWS CloudFormation grants
 permissions to all resource types. AWS Identity and Access Management
 (IAM) uses this parameter for AWS CloudFormation-specific condition
 keys in IAM policies. For more information, see Controlling Access with
-AWS Identity and Access Management.
+AWS Identity and Access Management
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html).
 
 
 
@@ -233,7 +248,9 @@ removes all associated tags.
 
 Structure containing the template body with a minimum length of 1 byte
 and a maximum length of 51,200 bytes. (For more information, go to
-Template Anatomy in the AWS CloudFormation User Guide.)
+Template Anatomy
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
+in the AWS CloudFormation User Guide.)
 
 Conditional: You must specify only one of the following parameters:
 C<TemplateBody>, C<TemplateURL>, or set the C<UsePreviousTemplate> to
@@ -245,7 +262,9 @@ C<true>.
 
 Location of file containing the template body. The URL must point to a
 template that is located in an Amazon S3 bucket. For more information,
-go to Template Anatomy in the AWS CloudFormation User Guide.
+go to Template Anatomy
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
+in the AWS CloudFormation User Guide.
 
 Conditional: You must specify only one of the following parameters:
 C<TemplateBody>, C<TemplateURL>, or set the C<UsePreviousTemplate> to

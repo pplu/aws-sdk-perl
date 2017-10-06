@@ -59,7 +59,8 @@ bucket must be owned by the same AWS account that you're using to
 manage Amazon GameLift. It also must in the same region that you want
 to create a new build in. Before calling C<CreateBuild> with this
 location, you must allow Amazon GameLift to access your Amazon S3
-bucket (see Create a Build with Files in Amazon S3).
+bucket (see Create a Build with Files in Amazon S3
+(http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-build-cli-uploading.html#gamelift-build-cli-uploading-create-build)).
 
 
 

@@ -165,7 +165,8 @@ C<arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail>
 =head2 S3BucketName => Str
 
 Specifies the name of the Amazon S3 bucket designated for publishing
-log files. See Amazon S3 Bucket Naming Requirements.
+log files. See Amazon S3 Bucket Naming Requirements
+(http://docs.aws.amazon.com/awscloudtrail/latest/userguide/create_trail_naming_policy.html).
 
 
 
@@ -173,8 +174,9 @@ log files. See Amazon S3 Bucket Naming Requirements.
 
 Specifies the Amazon S3 key prefix that comes after the name of the
 bucket you have designated for log file delivery. For more information,
-see Finding Your CloudTrail Log Files. The maximum length is 200
-characters.
+see Finding Your CloudTrail Log Files
+(http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-find-log-files.html).
+The maximum length is 200 characters.
 
 
 

@@ -148,10 +148,14 @@ Paws::CloudHSM - Perl Interface to AWS Amazon CloudHSM
 AWS CloudHSM Service
 
 This is the reference for AWS CloudHSM Classic. For more information,
-see AWS CloudHSM Classic FAQs and the AWS CloudHSM Classic User Guide.
+see AWS CloudHSM Classic FAQs
+(http://aws.amazon.com/cloudhsm/faqs-classic/) and the AWS CloudHSM
+Classic User Guide
+(http://docs.aws.amazon.com/cloudhsm/classic/userguide/).
 
-For more information about AWS CloudHSM, see AWS CloudHSM and the AWS
-CloudHSM User Guide.
+For more information about AWS CloudHSM, see AWS CloudHSM
+(http://aws.amazon.com/cloudhsm/) and the AWS CloudHSM User Guide
+(http://docs.aws.amazon.com/cloudhsm/latest/userguide/).
 
 =head1 METHODS
 
@@ -190,8 +194,9 @@ Returns: a L<Paws::CloudHSM::CreateHsmResponse> instance
 There is an upfront fee charged for each HSM instance that you create
 with the C<CreateHsm> operation. If you accidentally provision an HSM
 and want to request a refund, delete the instance using the DeleteHsm
-operation, go to the AWS Support Center, create a new case, and select
-B<Account and Billing Support>.
+operation, go to the AWS Support Center
+(https://console.aws.amazon.com/support/home), create a new case, and
+select B<Account and Billing Support>.
 
 It can take up to 20 minutes to create and provision an HSM. You can
 monitor the status of the HSM with the DescribeHsm operation. The HSM

@@ -51,7 +51,7 @@ Describes an instance's RAID array.
 =head2 AvailabilityZone => Str
 
   The array's Availability Zone. For more information, see Regions and
-Endpoints.
+Endpoints (http://docs.aws.amazon.com/general/latest/gr/rande.html).
 
 
 =head2 CreatedAt => Str
@@ -96,7 +96,7 @@ Endpoints.
 
 =head2 RaidLevel => Int
 
-  The RAID level.
+  The RAID level (http://en.wikipedia.org/wiki/Standard_RAID_levels).
 
 
 =head2 Size => Int

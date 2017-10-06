@@ -93,12 +93,14 @@ single command.
 =head2 IpProtocol => Str
 
 The IP protocol name (C<tcp>, C<udp>, C<icmp>) or number (see Protocol
-Numbers). (VPC only) Use C<-1> to specify all protocols. If you specify
-C<-1>, or a protocol number other than C<tcp>, C<udp>, C<icmp>, or
-C<58> (ICMPv6), traffic on all ports is allowed, regardless of any
-ports you specify. For C<tcp>, C<udp>, and C<icmp>, you must specify a
-port range. For protocol C<58> (ICMPv6), you can optionally specify a
-port range; if you don't, traffic for all types and codes is allowed.
+Numbers
+(http://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml)).
+(VPC only) Use C<-1> to specify all protocols. If you specify C<-1>, or
+a protocol number other than C<tcp>, C<udp>, C<icmp>, or C<58>
+(ICMPv6), traffic on all ports is allowed, regardless of any ports you
+specify. For C<tcp>, C<udp>, and C<icmp>, you must specify a port
+range. For protocol C<58> (ICMPv6), you can optionally specify a port
+range; if you don't, traffic for all types and codes is allowed.
 
 
 

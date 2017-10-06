@@ -62,8 +62,9 @@ One or more Availability Zones for the group.
 The amount of time, in seconds, after a scaling activity completes
 before another scaling activity can start. The default is 300.
 
-For more information, see Auto Scaling Cooldowns in the I<Auto Scaling
-User Guide>.
+For more information, see Auto Scaling Cooldowns
+(http://docs.aws.amazon.com/autoscaling/latest/userguide/Cooldown.html)
+in the I<Auto Scaling User Guide>.
 
 
 
@@ -81,8 +82,9 @@ The amount of time, in seconds, that Auto Scaling waits before checking
 the health status of an EC2 instance that has come into service. The
 default is 0.
 
-For more information, see Health Checks in the I<Auto Scaling User
-Guide>.
+For more information, see Health Checks
+(http://docs.aws.amazon.com/autoscaling/latest/userguide/healthcheck.html)
+in the I<Auto Scaling User Guide>.
 
 
 
@@ -121,8 +123,9 @@ termination by Auto Scaling when scaling in.
 =head2 PlacementGroup => Str
 
 The name of the placement group into which you'll launch your
-instances, if any. For more information, see Placement Groups in the
-I<Amazon Elastic Compute Cloud User Guide>.
+instances, if any. For more information, see Placement Groups
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 
@@ -133,7 +136,9 @@ to select the instance to terminate. The policies are executed in the
 order that they are listed.
 
 For more information, see Controlling Which Instances Auto Scaling
-Terminates During Scale In in the I<Auto Scaling User Guide>.
+Terminates During Scale In
+(http://docs.aws.amazon.com/autoscaling/latest/userguide/as-instance-termination.html)
+in the I<Auto Scaling User Guide>.
 
 
 
@@ -146,8 +151,9 @@ When you specify C<VPCZoneIdentifier> with C<AvailabilityZones>, ensure
 that the subnets' Availability Zones match the values you specify for
 C<AvailabilityZones>.
 
-For more information, see Launching Auto Scaling Instances in a VPC in
-the I<Auto Scaling User Guide>.
+For more information, see Launching Auto Scaling Instances in a VPC
+(http://docs.aws.amazon.com/autoscaling/latest/userguide/asg-in-vpc.html)
+in the I<Auto Scaling User Guide>.
 
 
 

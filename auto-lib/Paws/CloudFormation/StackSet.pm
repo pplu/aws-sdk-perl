@@ -54,6 +54,7 @@ templates might include resources that can affect permissions in your
 AWS accountE<mdash>for example, by creating new AWS Identity and Access
 Management (IAM) users. For more information, see Acknowledging IAM
 Resources in AWS CloudFormation Templates.
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html#capabilities)
 
 
 =head2 Description => Str

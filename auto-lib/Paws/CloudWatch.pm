@@ -375,8 +375,9 @@ CloudWatch started retaining 5-minute and 1-hour metric data as of July
 9, 2016.
 
 For information about metrics and dimensions supported by AWS services,
-see the Amazon CloudWatch Metrics and Dimensions Reference in the
-I<Amazon CloudWatch User Guide>.
+see the Amazon CloudWatch Metrics and Dimensions Reference
+(http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CW_Support_For_AWS.html)
+in the I<Amazon CloudWatch User Guide>.
 
 
 =head2 ListDashboards([DashboardNamePrefix => Str, NextToken => Str])
@@ -524,7 +525,9 @@ NaN, +Infinity, -Infinity) are not supported.
 
 You can use up to 10 dimensions per metric to further clarify what data
 the metric collects. For more information about specifying dimensions,
-see Publishing Metrics in the I<Amazon CloudWatch User Guide>.
+see Publishing Metrics
+(http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/publishingMetrics.html)
+in the I<Amazon CloudWatch User Guide>.
 
 Data points with time stamps from 24 hours ago or longer can take at
 least 48 hours to become available for GetMetricStatistics from the

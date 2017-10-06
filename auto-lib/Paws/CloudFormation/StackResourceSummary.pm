@@ -70,7 +70,9 @@ ID of the resource.
 =head2 B<REQUIRED> ResourceType => Str
 
   Type of resource. (For more information, go to AWS Resource Types
-Reference in the AWS CloudFormation User Guide.)
+Reference
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html)
+in the AWS CloudFormation User Guide.)
 
 
 

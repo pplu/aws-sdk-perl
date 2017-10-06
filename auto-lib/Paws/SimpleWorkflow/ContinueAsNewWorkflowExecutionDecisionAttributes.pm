@@ -87,8 +87,9 @@ If the caller doesn't have sufficient permissions to invoke the action,
 or the parameter values fall outside the specified constraints, the
 action fails. The associated event attribute's C<cause> parameter is
 set to C<OPERATION_NOT_PERMITTED>. For details and example IAM
-policies, see Using IAM to Manage Access to Amazon SWF Workflows in the
-I<Amazon SWF Developer Guide>.
+policies, see Using IAM to Manage Access to Amazon SWF Workflows
+(http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html)
+in the I<Amazon SWF Developer Guide>.
 
 =head1 ATTRIBUTES
 
@@ -179,7 +180,9 @@ values are integers that range from Java's C<Integer.MIN_VALUE>
 indicate higher priority.
 
 For more information about setting task priority, see Setting Task
-Priority in the I<Amazon SWF Developer Guide>.
+Priority
+(http://docs.aws.amazon.com/amazonswf/latest/developerguide/programming-priority.html)
+in the I<Amazon SWF Developer Guide>.
 
 
 =head2 TaskStartToCloseTimeout => Str

@@ -718,7 +718,8 @@ parameter descriptions indicate whether a change is applied
 immediately, on the next instance reboot, or during the next
 maintenance window. For a summary of the Amazon Redshift cluster
 management interfaces, go to Using the Amazon Redshift Management
-Interfaces.
+Interfaces
+(http://docs.aws.amazon.com/redshift/latest/mgmt/using-aws-sdk.html).
 
 Amazon Redshift manages all the work of setting up, operating, and
 scaling a data warehouse: provisioning capacity, monitoring and backing
@@ -727,11 +728,13 @@ Redshift engine. You can focus on using your data to acquire new
 insights for your business and customers.
 
 If you are a first-time user of Amazon Redshift, we recommend that you
-begin by reading the Amazon Redshift Getting Started Guide.
+begin by reading the Amazon Redshift Getting Started Guide
+(http://docs.aws.amazon.com/redshift/latest/gsg/getting-started.html).
 
 If you are a database developer, the Amazon Redshift Database Developer
-Guide explains how to design, build, query, and maintain the databases
-that make up your data warehouse.
+Guide (http://docs.aws.amazon.com/redshift/latest/dg/welcome.html)
+explains how to design, build, query, and maintain the databases that
+make up your data warehouse.
 
 =head1 METHODS
 
@@ -755,13 +758,15 @@ region.
 
 If you authorize access to a CIDR/IP address range, specify I<CIDRIP>.
 For an overview of CIDR blocks, see the Wikipedia article on Classless
-Inter-Domain Routing.
+Inter-Domain Routing
+(http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing).
 
 You must also associate the security group with a cluster so that
 clients running on these IP addresses or the EC2 instance are
 authorized to connect to the cluster. For information about managing
-security groups, go to Working with Security Groups in the I<Amazon
-Redshift Cluster Management Guide>.
+security groups, go to Working with Security Groups
+(http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-security-groups.html)
+in the I<Amazon Redshift Cluster Management Guide>.
 
 
 =head2 AuthorizeSnapshotAccess(AccountWithRestoreAccess => Str, SnapshotIdentifier => Str, [SnapshotClusterIdentifier => Str])
@@ -774,7 +779,9 @@ Returns: a L<Paws::RedShift::AuthorizeSnapshotAccessResult> instance
 snapshot.
 
 For more information about working with snapshots, go to Amazon
-Redshift Snapshots in the I<Amazon Redshift Cluster Management Guide>.
+Redshift Snapshots
+(http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-snapshots.html)
+in the I<Amazon Redshift Cluster Management Guide>.
 
 
 =head2 CopyClusterSnapshot(SourceSnapshotIdentifier => Str, TargetSnapshotIdentifier => Str, [SourceSnapshotClusterIdentifier => Str])
@@ -795,7 +802,9 @@ manual copy of the snapshot. Manual snapshots are retained until you
 delete them.
 
 For more information about working with snapshots, go to Amazon
-Redshift Snapshots in the I<Amazon Redshift Cluster Management Guide>.
+Redshift Snapshots
+(http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-snapshots.html)
+in the I<Amazon Redshift Cluster Management Guide>.
 
 
 =head2 CreateCluster(ClusterIdentifier => Str, MasterUsername => Str, MasterUserPassword => Str, NodeType => Str, [AdditionalInfo => Str, AllowVersionUpgrade => Bool, AutomatedSnapshotRetentionPeriod => Int, AvailabilityZone => Str, ClusterParameterGroupName => Str, ClusterSecurityGroups => ArrayRef[Str|Undef], ClusterSubnetGroupName => Str, ClusterType => Str, ClusterVersion => Str, DBName => Str, ElasticIp => Str, Encrypted => Bool, EnhancedVpcRouting => Bool, HsmClientCertificateIdentifier => Str, HsmConfigurationIdentifier => Str, IamRoles => ArrayRef[Str|Undef], KmsKeyId => Str, NumberOfNodes => Int, Port => Int, PreferredMaintenanceWindow => Str, PubliclyAccessible => Bool, Tags => ArrayRef[L<Paws::RedShift::Tag>], VpcSecurityGroupIds => ArrayRef[Str|Undef]])
@@ -810,7 +819,9 @@ To create the cluster in Virtual Private Cloud (VPC), you must provide
 a cluster subnet group name. The cluster subnet group identifies the
 subnets of your VPC that Amazon Redshift uses when creating the
 cluster. For more information about managing clusters, go to Amazon
-Redshift Clusters in the I<Amazon Redshift Cluster Management Guide>.
+Redshift Clusters
+(http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html)
+in the I<Amazon Redshift Cluster Management Guide>.
 
 
 =head2 CreateClusterParameterGroup(Description => Str, ParameterGroupFamily => Str, ParameterGroupName => Str, [Tags => ArrayRef[L<Paws::RedShift::Tag>]])
@@ -829,6 +840,7 @@ the cluster is created by using ModifyCluster.
 Parameters in the parameter group define specific behavior that applies
 to the databases you create on the cluster. For more information about
 parameters and parameter groups, go to Amazon Redshift Parameter Groups
+(http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html)
 in the I<Amazon Redshift Cluster Management Guide>.
 
 
@@ -842,8 +854,9 @@ Returns: a L<Paws::RedShift::CreateClusterSecurityGroupResult> instance
 to control access to non-VPC clusters.
 
 For information about managing security groups, go to Amazon Redshift
-Cluster Security Groups in the I<Amazon Redshift Cluster Management
-Guide>.
+Cluster Security Groups
+(http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-security-groups.html)
+in the I<Amazon Redshift Cluster Management Guide>.
 
 
 =head2 CreateClusterSnapshot(ClusterIdentifier => Str, SnapshotIdentifier => Str, [Tags => ArrayRef[L<Paws::RedShift::Tag>]])
@@ -856,7 +869,9 @@ Returns: a L<Paws::RedShift::CreateClusterSnapshotResult> instance
 in the C<available> state.
 
 For more information about working with snapshots, go to Amazon
-Redshift Snapshots in the I<Amazon Redshift Cluster Management Guide>.
+Redshift Snapshots
+(http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-snapshots.html)
+in the I<Amazon Redshift Cluster Management Guide>.
 
 
 =head2 CreateClusterSubnetGroup(ClusterSubnetGroupName => Str, Description => Str, SubnetIds => ArrayRef[Str|Undef], [Tags => ArrayRef[L<Paws::RedShift::Tag>]])
@@ -870,7 +885,9 @@ one or more subnets in your existing Amazon Virtual Private Cloud
 (Amazon VPC) when creating Amazon Redshift subnet group.
 
 For information about subnet groups, go to Amazon Redshift Cluster
-Subnet Groups in the I<Amazon Redshift Cluster Management Guide>.
+Subnet Groups
+(http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-cluster-subnet-groups.html)
+in the I<Amazon Redshift Cluster Management Guide>.
 
 
 =head2 CreateEventSubscription(SnsTopicArn => Str, SubscriptionName => Str, [Enabled => Bool, EventCategories => ArrayRef[Str|Undef], Severity => Str, SourceIds => ArrayRef[Str|Undef], SourceType => Str, Tags => ArrayRef[L<Paws::RedShift::Tag>]])
@@ -919,8 +936,9 @@ The command returns a public key, which you must store in the HSM. In
 addition to creating the HSM certificate, you must create an Amazon
 Redshift HSM configuration that provides a cluster the information
 needed to store and use encryption keys in the HSM. For more
-information, go to Hardware Security Modules in the Amazon Redshift
-Cluster Management Guide.
+information, go to Hardware Security Modules
+(http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-HSM.html)
+in the Amazon Redshift Cluster Management Guide.
 
 
 =head2 CreateHsmConfiguration(Description => Str, HsmConfigurationIdentifier => Str, HsmIpAddress => Str, HsmPartitionName => Str, HsmPartitionPassword => Str, HsmServerPublicCertificate => Str, [Tags => ArrayRef[L<Paws::RedShift::Tag>]])
@@ -937,7 +955,9 @@ will then store its encryption keys in the HSM.
 
 In addition to creating an HSM configuration, you must also create an
 HSM client certificate. For more information, go to Hardware Security
-Modules in the Amazon Redshift Cluster Management Guide.
+Modules
+(http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-HSM.html)
+in the Amazon Redshift Cluster Management Guide.
 
 
 =head2 CreateSnapshotCopyGrant(SnapshotCopyGrantName => Str, [KmsKeyId => Str, Tags => ArrayRef[L<Paws::RedShift::Tag>]])
@@ -951,8 +971,9 @@ customer master key (CMK) from AWS Key Management Service (AWS KMS) to
 encrypt copied snapshots in a destination region.
 
 For more information about managing snapshot copy grants, go to Amazon
-Redshift Database Encryption in the I<Amazon Redshift Cluster
-Management Guide>.
+Redshift Database Encryption
+(http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-db-encryption.html)
+in the I<Amazon Redshift Cluster Management Guide>.
 
 
 =head2 CreateTags(ResourceName => Str, Tags => ArrayRef[L<Paws::RedShift::Tag>])
@@ -981,8 +1002,9 @@ Returns: a L<Paws::RedShift::DeleteClusterResult> instance
 the web service indicates that the request was received correctly. Use
 DescribeClusters to monitor the status of the deletion. The delete
 operation cannot be canceled or reverted once submitted. For more
-information about managing clusters, go to Amazon Redshift Clusters in
-the I<Amazon Redshift Cluster Management Guide>.
+information about managing clusters, go to Amazon Redshift Clusters
+(http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html)
+in the I<Amazon Redshift Cluster Management Guide>.
 
 If you want to shut down the cluster and retain it for future use, set
 I<SkipFinalClusterSnapshot> to C<false> and specify a name for
@@ -993,7 +1015,9 @@ is being taken, then it's "deleting" once Amazon Redshift begins
 deleting the cluster.
 
 For more information about managing clusters, go to Amazon Redshift
-Clusters in the I<Amazon Redshift Cluster Management Guide>.
+Clusters
+(http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html)
+in the I<Amazon Redshift Cluster Management Guide>.
 
 
 =head2 DeleteClusterParameterGroup(ParameterGroupName => Str)
@@ -1019,8 +1043,9 @@ You cannot delete a security group that is associated with any
 clusters. You cannot delete the default security group.
 
 For information about managing security groups, go to Amazon Redshift
-Cluster Security Groups in the I<Amazon Redshift Cluster Management
-Guide>.
+Cluster Security Groups
+(http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-security-groups.html)
+in the I<Amazon Redshift Cluster Management Guide>.
 
 
 =head2 DeleteClusterSnapshot(SnapshotIdentifier => Str, [SnapshotClusterIdentifier => Str])
@@ -1109,8 +1134,9 @@ parameter group family name. You can optionally specify a name to
 retrieve the description of a specific parameter group.
 
 For more information about parameters and parameter groups, go to
-Amazon Redshift Parameter Groups in the I<Amazon Redshift Cluster
-Management Guide>.
+Amazon Redshift Parameter Groups
+(http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html)
+in the I<Amazon Redshift Cluster Management Guide>.
 
 If you specify both tag keys and tag values in the same request, Amazon
 Redshift returns all parameter groups that match any combination of the
@@ -1141,8 +1167,9 @@ by a user action such as from ModifyClusterParameterGroup, you can
 specify I<source> equal to I<user>.
 
 For more information about parameters and parameter groups, go to
-Amazon Redshift Parameter Groups in the I<Amazon Redshift Cluster
-Management Guide>.
+Amazon Redshift Parameter Groups
+(http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html)
+in the I<Amazon Redshift Cluster Management Guide>.
 
 
 =head2 DescribeClusters([ClusterIdentifier => Str, Marker => Str, MaxRecords => Int, TagKeys => ArrayRef[Str|Undef], TagValues => ArrayRef[Str|Undef]])
@@ -1155,7 +1182,9 @@ Returns: a L<Paws::RedShift::ClustersMessage> instance
 properties, cluster database properties, maintenance and backup
 properties, and security and access properties. This operation supports
 pagination. For more information about managing clusters, go to Amazon
-Redshift Clusters in the I<Amazon Redshift Cluster Management Guide>.
+Redshift Clusters
+(http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html)
+in the I<Amazon Redshift Cluster Management Guide>.
 
 If you specify both tag keys and tag values in the same request, Amazon
 Redshift returns all clusters that match any combination of the
@@ -1179,8 +1208,9 @@ of a security group is specified, the response will contain only
 information about only that security group.
 
 For information about managing security groups, go to Amazon Redshift
-Cluster Security Groups in the I<Amazon Redshift Cluster Management
-Guide>.
+Cluster Security Groups
+(http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-security-groups.html)
+in the I<Amazon Redshift Cluster Management Guide>.
 
 If you specify both tag keys and tag values in the same request, Amazon
 Redshift returns all security groups that match any combination of the
@@ -1252,8 +1282,9 @@ Returns: a L<Paws::RedShift::ClusterVersionsMessage> instance
   Returns descriptions of the available Amazon Redshift cluster versions.
 You can call this operation even before creating any clusters to learn
 more about the Amazon Redshift versions. For more information about
-managing clusters, go to Amazon Redshift Clusters in the I<Amazon
-Redshift Cluster Management Guide>.
+managing clusters, go to Amazon Redshift Clusters
+(http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html)
+in the I<Amazon Redshift Cluster Management Guide>.
 
 
 =head2 DescribeDefaultClusterParameters(ParameterGroupFamily => Str, [Marker => Str, MaxRecords => Int])
@@ -1266,8 +1297,9 @@ Returns: a L<Paws::RedShift::DescribeDefaultClusterParametersResult> instance
 family.
 
 For more information about parameters and parameter groups, go to
-Amazon Redshift Parameter Groups in the I<Amazon Redshift Cluster
-Management Guide>.
+Amazon Redshift Parameter Groups
+(http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html)
+in the I<Amazon Redshift Cluster Management Guide>.
 
 
 =head2 DescribeEventCategories([SourceType => Str])
@@ -1278,7 +1310,8 @@ Returns: a L<Paws::RedShift::EventCategoriesMessage> instance
 
   Displays a list of event categories for all event source types, or for
 a specified source type. For a list of the event categories and source
-types, go to Amazon Redshift Event Notifications.
+types, go to Amazon Redshift Event Notifications
+(http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-event-notifications.html).
 
 
 =head2 DescribeEvents([Duration => Int, EndTime => Str, Marker => Str, MaxRecords => Int, SourceIdentifier => Str, SourceType => Str, StartTime => Str])
@@ -1383,8 +1416,9 @@ you can specify, and the node types you can request. The node types
 differ by available storage, memory, CPU and price. With the cost
 involved you might want to obtain a list of cluster options in the
 specific region and specify values when creating a cluster. For more
-information about managing clusters, go to Amazon Redshift Clusters in
-the I<Amazon Redshift Cluster Management Guide>.
+information about managing clusters, go to Amazon Redshift Clusters
+(http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html)
+in the I<Amazon Redshift Cluster Management Guide>.
 
 
 =head2 DescribeReservedNodeOfferings([Marker => Str, MaxRecords => Int, ReservedNodeOfferingId => Str])
@@ -1402,7 +1436,9 @@ in you call to PurchaseReservedNodeOffering to reserve one or more
 nodes for your Amazon Redshift cluster.
 
 For more information about reserved node offerings, go to Purchasing
-Reserved Nodes in the I<Amazon Redshift Cluster Management Guide>.
+Reserved Nodes
+(http://docs.aws.amazon.com/redshift/latest/mgmt/purchase-reserved-node-instance.html)
+in the I<Amazon Redshift Cluster Management Guide>.
 
 
 =head2 DescribeReservedNodes([Marker => Str, MaxRecords => Int, ReservedNodeId => Str])
@@ -1440,8 +1476,9 @@ Returns: a L<Paws::RedShift::SnapshotCopyGrantMessage> instance
 destination region.
 
 For more information about managing snapshot copy grants, go to Amazon
-Redshift Database Encryption in the I<Amazon Redshift Cluster
-Management Guide>.
+Redshift Database Encryption
+(http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-db-encryption.html)
+in the I<Amazon Redshift Cluster Management Guide>.
 
 
 =head2 DescribeTableRestoreStatus([ClusterIdentifier => Str, Marker => Str, MaxRecords => Int, TableRestoreRequestId => Str])
@@ -1560,14 +1597,16 @@ specify one or more database user groups that the user will join at log
 on. By default, the temporary credentials expire in 900 seconds. You
 can optionally specify a duration between 900 seconds (15 minutes) and
 3600 seconds (60 minutes). For more information, see Using IAM
-Authentication to Generate Database User Credentials in the Amazon
-Redshift Cluster Management Guide.
+Authentication to Generate Database User Credentials
+(http://docs.aws.amazon.com/redshift/latest/mgmt/generating-user-credentials.html)
+in the Amazon Redshift Cluster Management Guide.
 
 The AWS Identity and Access Management (IAM)user or role that executes
 GetClusterCredentials must have an IAM policy attached that allows
 access to all necessary actions and resources. For more information
-about permissions, see Resource Policies for GetClusterCredentials in
-the Amazon Redshift Cluster Management Guide.
+about permissions, see Resource Policies for GetClusterCredentials
+(http://docs.aws.amazon.com/redshift/latest/mgmt/redshift-iam-access-control-identity-based.html#redshift-policy-resources.getclustercredentials-resources)
+in the Amazon Redshift Cluster Management Guide.
 
 If the C<DbGroups> parameter is specified, the IAM policy must allow
 the C<redshift:JoinGroup> action with access to the listed C<dbgroups>.
@@ -1591,8 +1630,9 @@ or change the master user password. Resetting a cluster password or
 modifying the security groups associated with a cluster do not need a
 reboot. However, modifying a parameter group requires a reboot for
 parameters to take effect. For more information about managing
-clusters, go to Amazon Redshift Clusters in the I<Amazon Redshift
-Cluster Management Guide>.
+clusters, go to Amazon Redshift Clusters
+(http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html)
+in the I<Amazon Redshift Cluster Management Guide>.
 
 You can also change node type and the number of nodes to scale up or
 down the cluster. When resizing a cluster, you must specify both the
@@ -1621,8 +1661,9 @@ Returns: a L<Paws::RedShift::ClusterParameterGroupNameMessage> instance
   Modifies the parameters of a parameter group.
 
 For more information about parameters and parameter groups, go to
-Amazon Redshift Parameter Groups in the I<Amazon Redshift Cluster
-Management Guide>.
+Amazon Redshift Parameter Groups
+(http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html)
+in the I<Amazon Redshift Cluster Management Guide>.
 
 
 =head2 ModifyClusterSubnetGroup(ClusterSubnetGroupName => Str, SubnetIds => ArrayRef[Str|Undef], [Description => Str])
@@ -1669,7 +1710,9 @@ providing a specific reserved node offering and the number of nodes you
 want to reserve.
 
 For more information about reserved node offerings, go to Purchasing
-Reserved Nodes in the I<Amazon Redshift Cluster Management Guide>.
+Reserved Nodes
+(http://docs.aws.amazon.com/redshift/latest/mgmt/purchase-reserved-node-instance.html)
+in the I<Amazon Redshift Cluster Management Guide>.
 
 
 =head2 RebootCluster(ClusterIdentifier => Str)
@@ -1683,8 +1726,9 @@ in a momentary outage to the cluster, during which the cluster status
 is set to C<rebooting>. A cluster event is created when the reboot is
 completed. Any pending cluster modifications (see ModifyCluster) are
 applied at this reboot. For more information about managing clusters,
-go to Amazon Redshift Clusters in the I<Amazon Redshift Cluster
-Management Guide>.
+go to Amazon Redshift Clusters
+(http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html)
+in the I<Amazon Redshift Cluster Management Guide>.
 
 
 =head2 ResetClusterParameterGroup(ParameterGroupName => Str, [Parameters => ArrayRef[L<Paws::RedShift::Parameter>], ResetAllParameters => Bool])
@@ -1720,7 +1764,9 @@ If you restore a cluster into a VPC, you must provide a cluster subnet
 group where you want the cluster restored.
 
 For more information about working with snapshots, go to Amazon
-Redshift Snapshots in the I<Amazon Redshift Cluster Management Guide>.
+Redshift Snapshots
+(http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-snapshots.html)
+in the I<Amazon Redshift Cluster Management Guide>.
 
 
 =head2 RestoreTableFromClusterSnapshot(ClusterIdentifier => Str, NewTableName => Str, SnapshotIdentifier => Str, SourceDatabaseName => Str, SourceTableName => Str, [SourceSchemaName => Str, TargetDatabaseName => Str, TargetSchemaName => Str])
@@ -1755,7 +1801,9 @@ Returns: a L<Paws::RedShift::RevokeClusterSecurityGroupIngressResult> instance
 previously authorized IP range or Amazon EC2 security group. To add an
 ingress rule, see AuthorizeClusterSecurityGroupIngress. For information
 about managing security groups, go to Amazon Redshift Cluster Security
-Groups in the I<Amazon Redshift Cluster Management Guide>.
+Groups
+(http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-security-groups.html)
+in the I<Amazon Redshift Cluster Management Guide>.
 
 
 =head2 RevokeSnapshotAccess(AccountWithRestoreAccess => Str, SnapshotIdentifier => Str, [SnapshotClusterIdentifier => Str])
@@ -1769,7 +1817,9 @@ the specified snapshot. If the account is currently restoring the
 snapshot, the restore will run to completion.
 
 For more information about working with snapshots, go to Amazon
-Redshift Snapshots in the I<Amazon Redshift Cluster Management Guide>.
+Redshift Snapshots
+(http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-snapshots.html)
+in the I<Amazon Redshift Cluster Management Guide>.
 
 
 =head2 RotateEncryptionKey(ClusterIdentifier => Str)

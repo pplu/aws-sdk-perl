@@ -45,7 +45,9 @@ cookies.
   A complex type that specifies whether you want CloudFront to forward
 cookies to the origin and, if so, which ones. For more information
 about forwarding cookies to the origin, see How CloudFront Forwards,
-Caches, and Logs Cookies in the I<Amazon CloudFront Developer Guide>.
+Caches, and Logs Cookies
+(http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Cookies.html)
+in the I<Amazon CloudFront Developer Guide>.
 
 
 =head2 Headers => L<Paws::CloudFront::Headers>
@@ -79,7 +81,9 @@ query string parameters to the origin, and doesn't cache based on query
 string parameters.
 
 For more information, see Configuring CloudFront to Cache Based on
-Query String Parameters in the I<Amazon CloudFront Developer Guide>.
+Query String Parameters
+(http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/QueryStringParameters.html)
+in the I<Amazon CloudFront Developer Guide>.
 
 
 =head2 QueryStringCacheKeys => L<Paws::CloudFront::QueryStringCacheKeys>

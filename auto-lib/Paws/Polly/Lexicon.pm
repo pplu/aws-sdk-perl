@@ -33,7 +33,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Polly::Lexi
 =head1 DESCRIPTION
 
 Provides lexicon name and lexicon content in string format. For more
-information, see Pronunciation Lexicon Specification (PLS) Version 1.0.
+information, see Pronunciation Lexicon Specification (PLS) Version 1.0
+(https://www.w3.org/TR/pronunciation-lexicon/).
 
 =head1 ATTRIBUTES
 

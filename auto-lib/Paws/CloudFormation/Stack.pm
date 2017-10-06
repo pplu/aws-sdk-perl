@@ -103,10 +103,13 @@ C<false>: enable rollback
 
   Whether termination protection is enabled for the stack.
 
-For nested stacks, termination protection is set on the root stack and
-cannot be changed directly on the nested stack. For more information,
-see Protecting a Stack From Being Deleted in the I<AWS CloudFormation
-User Guide>.
+For nested stacks
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-nested-stacks.html),
+termination protection is set on the root stack and cannot be changed
+directly on the nested stack. For more information, see Protecting a
+Stack From Being Deleted
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-protect-stacks.html)
+in the I<AWS CloudFormation User Guide>.
 
 
 =head2 LastUpdatedTime => Str
@@ -136,8 +139,9 @@ if the stack has been updated at least once.
 stack ID of the direct parent of this stack. For the first level of
 nested stacks, the root stack is also the parent stack.
 
-For more information, see Working with Nested Stacks in the I<AWS
-CloudFormation User Guide>.
+For more information, see Working with Nested Stacks
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-nested-stacks.html)
+in the I<AWS CloudFormation User Guide>.
 
 
 =head2 RoleARN => Str
@@ -161,8 +165,9 @@ period afterwards.
 stack ID of the the top-level stack to which the nested stack
 ultimately belongs.
 
-For more information, see Working with Nested Stacks in the I<AWS
-CloudFormation User Guide>.
+For more information, see Working with Nested Stacks
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-nested-stacks.html)
+in the I<AWS CloudFormation User Guide>.
 
 
 =head2 StackId => Str

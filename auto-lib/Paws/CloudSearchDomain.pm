@@ -69,7 +69,8 @@ C<DescribeDomains> action. The domain endpoints are also displayed on
 the domain dashboard in the Amazon CloudSearch console. You submit
 suggest requests to the search endpoint.
 
-For more information, see the Amazon CloudSearch Developer Guide.
+For more information, see the Amazon CloudSearch Developer Guide
+(http://docs.aws.amazon.com/cloudsearch/latest/developerguide).
 
 =head1 METHODS
 
@@ -101,8 +102,9 @@ parser.
 
 =back
 
-For more information, see Searching Your Data in the I<Amazon
-CloudSearch Developer Guide>.
+For more information, see Searching Your Data
+(http://docs.aws.amazon.com/cloudsearch/latest/developerguide/searching.html)
+in the I<Amazon CloudSearch Developer Guide>.
 
 The endpoint for submitting C<Search> requests is domain-specific. You
 submit search requests to a domain's search endpoint. To get the search
@@ -126,8 +128,9 @@ suggester field start with the specified query string. The beginning of
 the field must match the query string to be considered a match.
 
 For more information about configuring suggesters and retrieving
-suggestions, see Getting Suggestions in the I<Amazon CloudSearch
-Developer Guide>.
+suggestions, see Getting Suggestions
+(http://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-suggestions.html)
+in the I<Amazon CloudSearch Developer Guide>.
 
 The endpoint for submitting C<Suggest> requests is domain-specific. You
 submit suggest requests to a domain's search endpoint. To get the
@@ -163,9 +166,12 @@ domain's endpoints are also displayed on the domain dashboard in the
 Amazon CloudSearch console.
 
 For more information about formatting your data for Amazon CloudSearch,
-see Preparing Your Data in the I<Amazon CloudSearch Developer Guide>.
-For more information about uploading data for indexing, see Uploading
-Data in the I<Amazon CloudSearch Developer Guide>.
+see Preparing Your Data
+(http://docs.aws.amazon.com/cloudsearch/latest/developerguide/preparing-data.html)
+in the I<Amazon CloudSearch Developer Guide>. For more information
+about uploading data for indexing, see Uploading Data
+(http://docs.aws.amazon.com/cloudsearch/latest/developerguide/uploading-data.html)
+in the I<Amazon CloudSearch Developer Guide>.
 
 
 

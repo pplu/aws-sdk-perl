@@ -39,7 +39,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 The Amazon Resource Name (ARN) of the CMK to use when encrypting log
 data. For more information, see Amazon Resource Names - AWS Key
-Management Service (AWS KMS).
+Management Service (AWS KMS)
+(http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kms).
 
 
 

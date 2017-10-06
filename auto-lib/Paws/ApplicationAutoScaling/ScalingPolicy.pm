@@ -168,7 +168,9 @@ for a DynamoDB global secondary index.
 =head2 B<REQUIRED> ServiceNamespace => Str
 
   The namespace of the AWS service. For more information, see AWS Service
-Namespaces in the I<Amazon Web Services General Reference>.
+Namespaces
+(http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces)
+in the I<Amazon Web Services General Reference>.
 
 
 =head2 StepScalingPolicyConfiguration => L<Paws::ApplicationAutoScaling::StepScalingPolicyConfiguration>

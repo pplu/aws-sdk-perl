@@ -40,8 +40,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 A domain name that you want to use as the basis for a list of possible
 domain names. The domain name must contain a top-level domain (TLD),
 such as .com, that Amazon Route 53 supports. For a list of TLDs, see
-Domains that You Can Register with Amazon Route 53 in the I<Amazon
-Route 53 Developer Guide>.
+Domains that You Can Register with Amazon Route 53
+(http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html)
+in the I<Amazon Route 53 Developer Guide>.
 
 
 

@@ -87,9 +87,10 @@ Meaningful description of the matchmaking configuration.
 Set of developer-defined properties for a game session, formatted as a
 set of type:value pairs. These properties are included in the
 GameSession object, which is passed to the game server with a request
-to start a new game session (see Start a Game Session). This
-information is added to the new GameSession object that is created for
-a successful match.
+to start a new game session (see Start a Game Session
+(http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)).
+This information is added to the new GameSession object that is created
+for a successful match.
 
 
 
@@ -98,15 +99,19 @@ a successful match.
 Set of developer-defined game session properties, formatted as a single
 string value. This data is included in the GameSession object, which is
 passed to the game server with a request to start a new game session
-(see Start a Game Session). This information is added to the new
-GameSession object that is created for a successful match.
+(see Start a Game Session
+(http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)).
+This information is added to the new GameSession object that is created
+for a successful match.
 
 
 
 =head2 B<REQUIRED> GameSessionQueueArns => ArrayRef[Str|Undef]
 
-Amazon Resource Name (ARN) that is assigned to a game session queue and
-uniquely identifies it. Format is
+Amazon Resource Name (ARN
+(http://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html))
+that is assigned to a game session queue and uniquely identifies it.
+Format is
 C<arn:aws:gamelift:E<lt>regionE<gt>::fleet/fleet-a1234567-b8c9-0d1e-2fa3-b45c6d7e8912>.
 These queues are used when placing game sessions for matches that are
 created with this matchmaking configuration. Queues can be located in

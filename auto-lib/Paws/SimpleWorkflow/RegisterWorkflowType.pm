@@ -101,6 +101,7 @@ functions. If you don't specify an IAM role when you start this
 workflow type, the default Lambda role is attached to the execution.
 For more information, see
 http://docs.aws.amazon.com/amazonswf/latest/developerguide/lambda-task.html
+(http://docs.aws.amazon.com/amazonswf/latest/developerguide/lambda-task.html)
 in the I<Amazon SWF Developer Guide>.
 
 
@@ -123,7 +124,9 @@ Java's C<Integer.MIN_VALUE> (-2147483648) to C<Integer.MAX_VALUE>
 (2147483647). Higher numbers indicate higher priority.
 
 For more information about setting task priority, see Setting Task
-Priority in the I<Amazon SWF Developer Guide>.
+Priority
+(http://docs.aws.amazon.com/amazonswf/latest/developerguide/programming-priority.html)
+in the I<Amazon SWF Developer Guide>.
 
 
 

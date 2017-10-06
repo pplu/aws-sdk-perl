@@ -54,6 +54,7 @@ A description of a cluster (job flow).
   Used only for version 2.x and 3.x of Amazon EMR. The version of the AMI
 used to initialize Amazon EC2 instances in the job flow. For a list of
 AMI versions supported by Amazon EMR, see AMI Versions Supported in EMR
+(http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/EnvironmentConfig_AMIVersion.html#ami-versions-supported)
 in the I<Amazon EMR Developer Guide.>
 
 

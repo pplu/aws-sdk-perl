@@ -75,8 +75,9 @@ Valid values are: C<"HTTP">, C<"HTTPS">, C<"TCP">
 =head2 SslPolicy => Str
 
 The security policy that defines which protocols and ciphers are
-supported. For more information, see Security Policies in the
-I<Application Load Balancers Guide>.
+supported. For more information, see Security Policies
+(http://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies)
+in the I<Application Load Balancers Guide>.
 
 
 

@@ -61,8 +61,9 @@ complete.
 
 This parameter is not supported if the policy type is C<StepScaling>.
 
-For more information, see Auto Scaling Cooldowns in the I<Auto Scaling
-User Guide>.
+For more information, see Auto Scaling Cooldowns
+(http://docs.aws.amazon.com/autoscaling/latest/userguide/Cooldown.html)
+in the I<Auto Scaling User Guide>.
 
 
 

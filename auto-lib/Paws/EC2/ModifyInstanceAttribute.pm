@@ -63,8 +63,9 @@ volume is deleted when the instance is terminated.
 
 To add instance store volumes to an Amazon EBS-backed instance, you
 must add them when you launch the instance. For more information, see
-Updating the Block Device Mapping when Launching an Instance in the
-I<Amazon Elastic Compute Cloud User Guide>.
+Updating the Block Device Mapping when Launching an Instance
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/block-device-mapping-concepts.html#Using_OverridingAMIBDM)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 
@@ -130,8 +131,10 @@ system shutdown).
 =head2 InstanceType => L<Paws::EC2::AttributeValue>
 
 Changes the instance type to the specified value. For more information,
-see Instance Types. If the instance type is not valid, the error
-returned is C<InvalidInstanceAttributeValue>.
+see Instance Types
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html).
+If the instance type is not valid, the error returned is
+C<InvalidInstanceAttributeValue>.
 
 
 
@@ -139,7 +142,8 @@ returned is C<InvalidInstanceAttributeValue>.
 
 Changes the instance's kernel to the specified value. We recommend that
 you use PV-GRUB instead of kernels and RAM disks. For more information,
-see PV-GRUB.
+see PV-GRUB
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/UserProvidedKernels.html).
 
 
 
@@ -147,7 +151,8 @@ see PV-GRUB.
 
 Changes the instance's RAM disk to the specified value. We recommend
 that you use PV-GRUB instead of kernels and RAM disks. For more
-information, see PV-GRUB.
+information, see PV-GRUB
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/UserProvidedKernels.html).
 
 
 

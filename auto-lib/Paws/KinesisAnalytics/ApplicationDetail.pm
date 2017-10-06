@@ -85,7 +85,8 @@ on any of the in-application streams in your application.
   Describes the CloudWatch log streams that are configured to receive
 application messages. For more information about using CloudWatch log
 streams with Amazon Kinesis Analytics applications, see Working with
-Amazon CloudWatch Logs.
+Amazon CloudWatch Logs
+(http://docs.aws.amazon.com/kinesisanalytics/latest/dev/cloudwatch-logs.html).
 
 
 =head2 CreateTimestamp => Str
@@ -96,7 +97,8 @@ Amazon CloudWatch Logs.
 =head2 InputDescriptions => ArrayRef[L<Paws::KinesisAnalytics::InputDescription>]
 
   Describes the application input configuration. For more information,
-see Configuring Application Input.
+see Configuring Application Input
+(http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-input.html).
 
 
 =head2 LastUpdateTimestamp => Str
@@ -107,13 +109,15 @@ see Configuring Application Input.
 =head2 OutputDescriptions => ArrayRef[L<Paws::KinesisAnalytics::OutputDescription>]
 
   Describes the application output configuration. For more information,
-see Configuring Application Output.
+see Configuring Application Output
+(http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-output.html).
 
 
 =head2 ReferenceDataSourceDescriptions => ArrayRef[L<Paws::KinesisAnalytics::ReferenceDataSourceDescription>]
 
   Describes reference data sources configured for the application. For
-more information, see Configuring Application Input.
+more information, see Configuring Application Input
+(http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-input.html).
 
 
 

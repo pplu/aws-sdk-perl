@@ -124,7 +124,8 @@ Welcome to the AWS Certificate Manager (ACM) API documentation.
 
 You can use ACM to manage SSL/TLS certificates for your AWS-based
 websites and applications. For general information about using ACM, see
-the I<AWS Certificate Manager User Guide> .
+the I<AWS Certificate Manager User Guide>
+(http://docs.aws.amazon.com/acm/latest/userguide/).
 
 =head1 METHODS
 
@@ -148,7 +149,8 @@ same tag to multiple resources if you want to specify a relationship
 among those resources. For example, you can add the same tag to an ACM
 Certificate and an Elastic Load Balancing load balancer to indicate
 that they are both used by the same website. For more information, see
-Tagging ACM Certificates.
+Tagging ACM Certificates
+(http://docs.aws.amazon.com/acm/latest/userguide/tags.html).
 
 To remove one or more tags, use the RemoveTagsFromCertificate action.
 To view all of the tags that have been applied to the certificate, use
@@ -205,14 +207,18 @@ Each argument is described in detail in: L<Paws::ACM::ImportCertificate>
 Returns: a L<Paws::ACM::ImportCertificateResponse> instance
 
   Imports an SSL/TLS certificate into AWS Certificate Manager (ACM) to
-use with ACM's integrated AWS services.
+use with ACM's integrated AWS services
+(http://docs.aws.amazon.com/acm/latest/userguide/acm-services.html).
 
-ACM does not provide managed renewal for certificates that you import.
+ACM does not provide managed renewal
+(http://docs.aws.amazon.com/acm/latest/userguide/acm-renewal.html) for
+certificates that you import.
 
 For more information about importing certificates into ACM, including
 the differences between certificates that you import and those that ACM
-provides, see Importing Certificates in the I<AWS Certificate Manager
-User Guide>.
+provides, see Importing Certificates
+(http://docs.aws.amazon.com/acm/latest/userguide/import-certificate.html)
+in the I<AWS Certificate Manager User Guide>.
 
 To import a certificate, you must provide the certificate and the
 matching private key. When the certificate is not self-signed, you must
@@ -221,15 +227,17 @@ when importing a self-signed certificate.
 
 The certificate, private key, and certificate chain must be
 PEM-encoded. For more information about converting these items to PEM
-format, see Importing Certificates Troubleshooting in the I<AWS
-Certificate Manager User Guide>.
+format, see Importing Certificates Troubleshooting
+(http://docs.aws.amazon.com/acm/latest/userguide/import-certificate.html#import-certificate-troubleshooting)
+in the I<AWS Certificate Manager User Guide>.
 
 To import a new certificate, omit the C<CertificateArn> field. Include
 this field only when you want to replace a previously imported
 certificate.
 
-This operation returns the Amazon Resource Name (ARN) of the imported
-certificate.
+This operation returns the Amazon Resource Name (ARN)
+(http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+of the imported certificate.
 
 
 =head2 ListCertificates([CertificateStatuses => ArrayRef[Str|Undef], MaxItems => Int, NextToken => Str])
@@ -285,7 +293,8 @@ can reach your site by using other names. For each domain name you
 specify, email is sent to the domain owner to request approval to issue
 the certificate. After receiving approval from the domain owner, the
 ACM Certificate is issued. For more information, see the AWS
-Certificate Manager User Guide.
+Certificate Manager User Guide
+(http://docs.aws.amazon.com/acm/latest/userguide/).
 
 
 =head2 ResendValidationEmail(CertificateArn => Str, Domain => Str, ValidationDomain => Str)
@@ -305,7 +314,8 @@ requesting the ACM Certificate. If more than 72 hours have elapsed
 since your original request or since your last attempt to resend
 validation mail, you must request a new certificate. For more
 information about setting up your contact email addresses, see
-Configure Email for your Domain.
+Configure Email for your Domain
+(http://docs.aws.amazon.com/acm/latest/userguide/setup-email.html).
 
 
 

@@ -53,7 +53,8 @@ codes.
 =head2 IpProtocol => Str
 
   The IP protocol name (C<tcp>, C<udp>, C<icmp>) or number (see Protocol
-Numbers).
+Numbers
+(http://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml)).
 
 [EC2-VPC only] Use C<-1> to specify all protocols. When authorizing
 security group rules, specifying C<-1> or a protocol number other than

@@ -144,12 +144,15 @@ and you can have up to 20 datasets per user identity.
 With Amazon Cognito Sync, the data stored for each identity is
 accessible only to credentials assigned to that identity. In order to
 use the Cognito Sync service, you need to make API calls using
-credentials retrieved with Amazon Cognito Identity service.
+credentials retrieved with Amazon Cognito Identity service
+(http://docs.aws.amazon.com/cognitoidentity/latest/APIReference/Welcome.html).
 
 If you want to use Cognito Sync in an Android or iOS application, you
 will probably want to make API calls via the AWS Mobile SDK. To learn
-more, see the Developer Guide for Android and the Developer Guide for
-iOS.
+more, see the Developer Guide for Android
+(http://docs.aws.amazon.com/mobile/sdkforandroid/developerguide/cognito-sync.html)
+and the Developer Guide for iOS
+(http://docs.aws.amazon.com/mobile/sdkforios/developerguide/cognito-sync.html).
 
 =head1 METHODS
 

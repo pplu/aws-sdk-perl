@@ -45,7 +45,8 @@ The friendly name to assign to the new OU.
 The unique identifier (ID) of the parent root or OU in which you want
 to create the new OU.
 
-The regex pattern for a parent ID string requires one of the following:
+The regex pattern (http://wikipedia.org/wiki/regex) for a parent ID
+string requires one of the following:
 
 =over
 

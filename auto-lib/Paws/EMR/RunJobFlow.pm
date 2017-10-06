@@ -118,15 +118,18 @@ supplied for the EMR cluster you are creating.
 Available only in Amazon EMR version 5.7.0 and later. The ID of a
 custom Amazon EBS-backed Linux AMI. If specified, Amazon EMR uses this
 AMI when it launches cluster EC2 instances. For more information about
-custom AMIs in Amazon EMR, see Using a Custom AMI in the I<Amazon EMR
-Management Guide>. If omitted, the cluster uses the base Linux AMI for
-the C<ReleaseLabel> specified. For Amazon EMR versions 2.x and 3.x, use
-C<AmiVersion> instead.
+custom AMIs in Amazon EMR, see Using a Custom AMI
+(http://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-custom-ami.html)
+in the I<Amazon EMR Management Guide>. If omitted, the cluster uses the
+base Linux AMI for the C<ReleaseLabel> specified. For Amazon EMR
+versions 2.x and 3.x, use C<AmiVersion> instead.
 
 For information about creating a custom AMI, see Creating an Amazon
-EBS-Backed Linux AMI in the I<Amazon Elastic Compute Cloud User Guide
-for Linux Instances>. For information about finding an AMI ID, see
-Finding a Linux AMI.
+EBS-Backed Linux AMI
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami-ebs.html)
+in the I<Amazon Elastic Compute Cloud User Guide for Linux Instances>.
+For information about finding an AMI ID, see Finding a Linux AMI
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/finding-an-ami.html).
 
 
 
@@ -175,7 +178,8 @@ A list of strings that indicates third-party software to use with the
 job flow that accepts a user argument list. EMR accepts and forwards
 the argument list to the corresponding installation script as bootstrap
 action arguments. For more information, see "Launch a Job Flow on the
-MapR Distribution for Hadoop" in the Amazon EMR Developer Guide.
+MapR Distribution for Hadoop" in the Amazon EMR Developer Guide
+(http://docs.aws.amazon.com/http:/docs.aws.amazon.com/emr/latest/DeveloperGuide/emr-dg.pdf).
 Supported values are:
 
 =over
@@ -282,7 +286,8 @@ For Amazon EMR releases 3.x and 2.x. For Amazon EMR releases 4.x and
 later, use Applications.
 
 A list of strings that indicates third-party software to use. For more
-information, see Use Third Party Applications with Amazon EMR.
+information, see Use Third Party Applications with Amazon EMR
+(http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/emr-supported-products.html).
 Currently supported values are:
 
 =over

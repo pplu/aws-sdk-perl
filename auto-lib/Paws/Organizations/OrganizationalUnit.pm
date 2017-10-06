@@ -46,25 +46,29 @@ and in any child OUs.
   The Amazon Resource Name (ARN) of this OU.
 
 For more information about ARNs in Organizations, see ARN Formats
-Supported by Organizations in the I<AWS Organizations User Guide>.
+Supported by Organizations
+(http://docs.aws.amazon.com/organizations/latest/userguide/orgs_permissions.html#orgs-permissions-arns)
+in the I<AWS Organizations User Guide>.
 
 
 =head2 Id => Str
 
   The unique identifier (ID) associated with this OU.
 
-The regex pattern for an organizational unit ID string requires "ou-"
-followed by from 4 to 32 lower-case letters or digits (the ID of the
-root that contains the OU) followed by a second "-" dash and from 8 to
-32 additional lower-case letters or digits.
+The regex pattern (http://wikipedia.org/wiki/regex) for an
+organizational unit ID string requires "ou-" followed by from 4 to 32
+lower-case letters or digits (the ID of the root that contains the OU)
+followed by a second "-" dash and from 8 to 32 additional lower-case
+letters or digits.
 
 
 =head2 Name => Str
 
   The friendly name of this OU.
 
-The regex pattern that is used to validate this parameter is a string
-of any of the characters in the ASCII character range.
+The regex pattern (http://wikipedia.org/wiki/regex) that is used to
+validate this parameter is a string of any of the characters in the
+ASCII character range.
 
 
 

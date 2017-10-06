@@ -38,7 +38,8 @@ The timestamp when the certificate was uploaded.
 =head2 DistributionDomainName => Str
 
 The domain name of the Amazon CloudFront distribution. For more
-information, see the Amazon CloudFront documentation.
+information, see the Amazon CloudFront documentation
+(http://aws.amazon.com/documentation/cloudfront/).
 
 
 =head2 DomainName => Str

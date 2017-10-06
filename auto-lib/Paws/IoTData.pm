@@ -84,8 +84,9 @@ Returns: a L<Paws::IoTData::DeleteThingShadowResponse> instance
 
   Deletes the thing shadow for the specified thing.
 
-For more information, see DeleteThingShadow in the I<AWS IoT Developer
-Guide>.
+For more information, see DeleteThingShadow
+(http://docs.aws.amazon.com/iot/latest/developerguide/API_DeleteThingShadow.html)
+in the I<AWS IoT Developer Guide>.
 
 
 =head2 GetThingShadow(ThingName => Str)
@@ -96,8 +97,9 @@ Returns: a L<Paws::IoTData::GetThingShadowResponse> instance
 
   Gets the thing shadow for the specified thing.
 
-For more information, see GetThingShadow in the I<AWS IoT Developer
-Guide>.
+For more information, see GetThingShadow
+(http://docs.aws.amazon.com/iot/latest/developerguide/API_GetThingShadow.html)
+in the I<AWS IoT Developer Guide>.
 
 
 =head2 Publish(Topic => Str, [Payload => Str, Qos => Int])
@@ -108,8 +110,9 @@ Returns: nothing
 
   Publishes state information.
 
-For more information, see HTTP Protocol in the I<AWS IoT Developer
-Guide>.
+For more information, see HTTP Protocol
+(http://docs.aws.amazon.com/iot/latest/developerguide/protocols.html#http)
+in the I<AWS IoT Developer Guide>.
 
 
 =head2 UpdateThingShadow(Payload => Str, ThingName => Str)
@@ -120,8 +123,9 @@ Returns: a L<Paws::IoTData::UpdateThingShadowResponse> instance
 
   Updates the thing shadow for the specified thing.
 
-For more information, see UpdateThingShadow in the I<AWS IoT Developer
-Guide>.
+For more information, see UpdateThingShadow
+(http://docs.aws.amazon.com/iot/latest/developerguide/API_UpdateThingShadow.html)
+in the I<AWS IoT Developer Guide>.
 
 
 

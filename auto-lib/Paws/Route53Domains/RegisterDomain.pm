@@ -73,8 +73,9 @@ are not supported.
 The number of years that you want to register the domain for. Domains
 are registered for a minimum of one year. The maximum period depends on
 the top-level domain. For the range of valid values for your domain,
-see Domains that You Can Register with Amazon Route 53 in the I<Amazon
-Route 53 Developer Guide>.
+see Domains that You Can Register with Amazon Route 53
+(http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html)
+in the I<Amazon Route 53 Developer Guide>.
 
 Default: 1
 

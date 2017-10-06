@@ -40,7 +40,9 @@ The Amazon Resource Name (ARN) of the IAM policy from which you want to
 delete a version.
 
 For more information about ARNs, see Amazon Resource Names (ARNs) and
-AWS Service Namespaces in the I<AWS General Reference>.
+AWS Service Namespaces
+(http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+in the I<AWS General Reference>.
 
 
 
@@ -48,13 +50,15 @@ AWS Service Namespaces in the I<AWS General Reference>.
 
 The policy version to delete.
 
-This parameter allows (per its regex pattern) a string of characters
-that consists of the lowercase letter 'v' followed by one or two
-digits, and optionally followed by a period '.' and a string of letters
-and digits.
+This parameter allows (per its regex pattern
+(http://wikipedia.org/wiki/regex)) a string of characters that consists
+of the lowercase letter 'v' followed by one or two digits, and
+optionally followed by a period '.' and a string of letters and digits.
 
 For more information about managed policy versions, see Versioning for
-Managed Policies in the I<IAM User Guide>.
+Managed Policies
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-versions.html)
+in the I<IAM User Guide>.
 
 
 

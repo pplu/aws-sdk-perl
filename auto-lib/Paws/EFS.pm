@@ -174,7 +174,8 @@ Amazon Elastic File System (Amazon EFS) provides simple, scalable file
 storage for use with Amazon EC2 instances in the AWS Cloud. With Amazon
 EFS, storage capacity is elastic, growing and shrinking automatically
 as you add and remove files, so your applications have the storage they
-need, when they need it. For more information, see the User Guide.
+need, when they need it. For more information, see the User Guide
+(http://docs.aws.amazon.com/efs/latest/ug/api-reference.html).
 
 =head1 METHODS
 
@@ -231,14 +232,16 @@ performance mode can scale to higher levels of aggregate throughput and
 operations per second with a tradeoff of slightly higher latencies for
 most file operations. The performance mode can't be changed after the
 file system has been created. For more information, see Amazon EFS:
-Performance Modes.
+Performance Modes
+(http://docs.aws.amazon.com/efs/latest/ug/performance.html#performancemodes.html).
 
 After the file system is fully created, Amazon EFS sets its lifecycle
 state to C<available>, at which point you can create one or more mount
 targets for the file system in your VPC. For more information, see
 CreateMountTarget. You mount your Amazon EFS file system on an EC2
 instances in your VPC via the mount target. For more information, see
-Amazon EFS: How it Works.
+Amazon EFS: How it Works
+(http://docs.aws.amazon.com/efs/latest/ug/how-it-works.html).
 
 This operation requires permissions for the
 C<elasticfilesystem:CreateFileSystem> action.
@@ -259,7 +262,8 @@ single mount target for a given file system. If you have multiple
 subnets in an Availability Zone, you create a mount target in one of
 the subnets. EC2 instances do not need to be in the same subnet as the
 mount target in order to access their file system. For more
-information, see Amazon EFS: How it Works.
+information, see Amazon EFS: How it Works
+(http://docs.aws.amazon.com/efs/latest/ug/how-it-works.html).
 
 In the request, you also specify a file system ID for which you are
 creating the mount target and the file system's lifecycle state must be
@@ -291,7 +295,8 @@ address when mounting the file system in an EC2 instance. You can also
 use the mount target's DNS name when mounting the file system. The EC2
 instance on which you mount the file system via the mount target can
 resolve the mount target's DNS name to its IP address. For more
-information, see How it Works: Implementation Overview.
+information, see How it Works: Implementation Overview
+(http://docs.aws.amazon.com/efs/latest/ug/how-it-works.html#how-it-works-implementation).
 
 Note that you can create mount targets for a file system in only one
 VPC, and there can be only one mount target per Availability Zone. That
@@ -373,11 +378,12 @@ mount target state.
 We recommend you create a mount target in each of the Availability
 Zones. There are cost considerations for using a file system in an
 Availability Zone through a mount target created in another
-Availability Zone. For more information, see Amazon EFS. In addition,
-by always using a mount target local to the instance's Availability
-Zone, you eliminate a partial failure scenario. If the Availability
-Zone in which your mount target is created goes down, then you won't be
-able to access your file system through that mount target.
+Availability Zone. For more information, see Amazon EFS
+(http://aws.amazon.com/efs/). In addition, by always using a mount
+target local to the instance's Availability Zone, you eliminate a
+partial failure scenario. If the Availability Zone in which your mount
+target is created goes down, then you won't be able to access your file
+system through that mount target.
 
 This operation requires permissions for the following action on the
 file system:
@@ -509,8 +515,9 @@ Returns: nothing
   Deletes the specified tags from a file system. If the C<DeleteTags>
 request includes a tag key that does not exist, Amazon EFS ignores it
 and doesn't cause an error. For more information about tags and related
-restrictions, see Tag Restrictions in the I<AWS Billing and Cost
-Management User Guide>.
+restrictions, see Tag Restrictions
+(http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html)
+in the I<AWS Billing and Cost Management User Guide>.
 
 This operation requires permissions for the
 C<elasticfilesystem:DeleteTags> action.

@@ -383,7 +383,7 @@ associated C<HitLayoutParameters>.
 
 If a HIT is created with 10 or more maximum assignments, there is an
 additional fee. For more information, see Amazon Mechanical Turk
-Pricing.
+Pricing (https://requester.mturk.com/pricing).
 
 
 =head2 CreateHITType(AssignmentDurationInSeconds => Int, Description => Str, Reward => Str, Title => Str, [AutoApprovalDelayInSeconds => Int, Keywords => Str, QualificationRequirements => ArrayRef[L<Paws::MTurk::QualificationRequirement>]])
@@ -420,7 +420,7 @@ associated C<HitLayoutParameters>.
 
 If a HIT is created with 10 or more maximum assignments, there is an
 additional fee. For more information, see Amazon Mechanical Turk
-Pricing.
+Pricing (https://requester.mturk.com/pricing).
 
 
 =head2 CreateQualificationType(Description => Str, Name => Str, QualificationTypeStatus => Str, [AnswerKey => Str, AutoGranted => Bool, AutoGrantedValue => Int, Keywords => Str, RetryDelayInSeconds => Int, Test => Str, TestDurationInSeconds => Int])

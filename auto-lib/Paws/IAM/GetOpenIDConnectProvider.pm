@@ -40,7 +40,9 @@ IAM to get information for. You can get a list of OIDC provider
 resource ARNs by using the ListOpenIDConnectProviders action.
 
 For more information about ARNs, see Amazon Resource Names (ARNs) and
-AWS Service Namespaces in the I<AWS General Reference>.
+AWS Service Namespaces
+(http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+in the I<AWS General Reference>.
 
 
 

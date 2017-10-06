@@ -81,8 +81,9 @@ compute environment. You can specify the short name or full Amazon
 Resource Name (ARN) of an instance profile. For example,
 C<ecsInstanceRole> or
 C<arn:aws:iam::E<lt>aws_account_idE<gt>:instance-profile/ecsInstanceRole>.
-For more information, see Amazon ECS Instance Role in the I<AWS Batch
-User Guide>.
+For more information, see Amazon ECS Instance Role
+(http://docs.aws.amazon.com/batch/latest/userguide/instance_IAM_role.html)
+in the I<AWS Batch User Guide>.
 
 
 =head2 B<REQUIRED> InstanceTypes => ArrayRef[Str|Undef]

@@ -51,7 +51,8 @@ To successfully call this API, you must own the identity.
 The text of the policy in JSON format. The policy cannot exceed 4 KB.
 
 For information about the syntax of sending authorization policies, see
-the Amazon SES Developer Guide.
+the Amazon SES Developer Guide
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization-policies.html).
 
 
 

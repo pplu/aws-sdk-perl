@@ -40,8 +40,9 @@ preprocess the records in the stream.
 
 =head2 ResourceARNUpdate => Str
 
-  The ARN of the new AWS Lambda function that is used to preprocess the
-records in the stream.
+  The ARN of the new AWS Lambda
+(https://aws.amazon.com/documentation/lambda/) function that is used to
+preprocess the records in the stream.
 
 
 =head2 RoleARNUpdate => Str

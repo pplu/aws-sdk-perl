@@ -152,10 +152,15 @@ for the other.
 
 Tagging can help you organize your resources and enables you to
 simplify resource management, access management and cost allocation.
-For more information about tagging, see Working with Tag Editor and
-Working with Resource Groups. For more information about permissions
-you need to use the resource groups tagging APIs, see Obtaining
-Permissions for Resource Groups and Obtaining Permissions for Tagging .
+For more information about tagging, see Working with Tag Editor
+(http://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/tag-editor.html)
+and Working with Resource Groups
+(http://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/resource-groups.html).
+For more information about permissions you need to use the resource
+groups tagging APIs, see Obtaining Permissions for Resource Groups
+(http://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/obtaining-permissions-for-resource-groups.html)
+and Obtaining Permissions for Tagging
+(http://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/obtaining-permissions-for-tagging.html).
 
 You can use the resource groups tagging APIs to complete the following
 tasks:
@@ -184,15 +189,17 @@ for the AWS account
 =back
 
 Not all resources can have tags. For a lists of resources that you can
-tag, see Supported Resources in the I<AWS Resource Groups and Tag
-Editor User Guide>.
+tag, see Supported Resources
+(http://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/supported-resources.html)
+in the I<AWS Resource Groups and Tag Editor User Guide>.
 
 To make full use of the resource groups tagging APIs, you might need
 additional IAM permissions, including permission to access the
 resources of individual services as well as permission to view and
 apply tags to those resources. For more information, see Obtaining
-Permissions for Tagging in the I<AWS Resource Groups and Tag Editor
-User Guide>.
+Permissions for Tagging
+(http://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/obtaining-permissions-for-tagging.html)
+in the I<AWS Resource Groups and Tag Editor User Guide>.
 
 =head1 METHODS
 
@@ -243,13 +250,16 @@ following:
 =item *
 
 Not all resources can have tags. For a list of resources that support
-tagging, see Supported Resources in the I<AWS Resource Groups and Tag
-Editor User Guide>.
+tagging, see Supported Resources
+(http://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/supported-resources.html)
+in the I<AWS Resource Groups and Tag Editor User Guide>.
 
 =item *
 
 Each resource can have up to 50 tags. For other limits, see Tag
-Restrictions in the I<Amazon EC2 User Guide for Linux Instances>.
+Restrictions
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html#tag-restrictions)
+in the I<Amazon EC2 User Guide for Linux Instances>.
 
 =item *
 
@@ -260,8 +270,9 @@ the AWS account.
 
 To add tags to a resource, you need the necessary permissions for the
 service that the resource belongs to as well as permissions for adding
-tags. For more information, see Obtaining Permissions for Tagging in
-the I<AWS Resource Groups and Tag Editor User Guide>.
+tags. For more information, see Obtaining Permissions for Tagging
+(http://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/obtaining-permissions-for-tagging.html)
+in the I<AWS Resource Groups and Tag Editor User Guide>.
 
 =back
 
@@ -285,7 +296,9 @@ resource that were already removed. Note the following:
 To remove tags from a resource, you need the necessary permissions for
 the service that the resource belongs to as well as permissions for
 removing tags. For more information, see Obtaining Permissions for
-Tagging in the I<AWS Resource Groups and Tag Editor User Guide>.
+Tagging
+(http://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/obtaining-permissions-for-tagging.html)
+in the I<AWS Resource Groups and Tag Editor User Guide>.
 
 =item *
 

@@ -133,7 +133,8 @@ Valid values are: C<"Green">, C<"Yellow">, C<"Red">, C<"Grey">
 =head2 HealthStatus => Str
 
 Returns the health status of the application running in your
-environment. For more information, see Health Colors and Statuses.
+environment. For more information, see Health Colors and Statuses
+(http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced-status.html).
 
 Valid values are: C<"NoData">, C<"Unknown">, C<"Pending">, C<"Ok">, C<"Info">, C<"Warning">, C<"Degraded">, C<"Severe">
 =head2 PlatformArn => Str

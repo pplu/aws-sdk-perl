@@ -59,7 +59,9 @@ communicating with viewers
 =back
 
 For more information, see Using an HTTPS Connection to Access Your
-Objects in the I<Amazon Amazon CloudFront Developer Guide>.
+Objects
+(http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/SecureConnections.html)
+in the I<Amazon Amazon CloudFront Developer Guide>.
 
 =head1 ATTRIBUTES
 
@@ -203,8 +205,9 @@ C<E<lt>OriginProtocolPolicyE<gt>match-viewerE<lt>OriginProtocolPolicyE<gt>>
 
 =back
 
-For more information, see Using Alternate Domain Names and HTTPS in the
-I<Amazon CloudFront Developer Guide>.
+For more information, see Using Alternate Domain Names and HTTPS
+(http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/SecureConnections.html#CNAMEsAndHTTPS)
+in the I<Amazon CloudFront Developer Guide>.
 
 =back
 
@@ -308,8 +311,9 @@ Use HTTP instead of HTTPS.
 Do not specify a value for C<SSLSupportMethod> if you specified
 C<E<lt>CloudFrontDefaultCertificateE<gt>trueE<lt>CloudFrontDefaultCertificateE<gt>>.
 
-For more information, see Using Alternate Domain Names and HTTPS in the
-I<Amazon CloudFront Developer Guide>.
+For more information, see Using Alternate Domain Names and HTTPS
+(http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/SecureConnections.html#CNAMEsAndHTTPS.html)
+in the I<Amazon CloudFront Developer Guide>.
 
 
 

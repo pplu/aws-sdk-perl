@@ -43,13 +43,16 @@ An attribute that is associated with the Facet.
 
   A facet attribute consists of either a definition or a reference. This
 structure contains the attribute definition. See Attribute References
+(http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_advanced.html#attributereferences)
 for more information.
 
 
 =head2 AttributeReference => L<Paws::CloudDirectory::FacetAttributeReference>
 
   An attribute reference that is associated with the attribute. See
-Attribute References for more information.
+Attribute References
+(http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_advanced.html#attributereferences)
+for more information.
 
 
 =head2 B<REQUIRED> Name => Str

@@ -42,8 +42,9 @@ The reference that identifies an object.
 parent/child links leading to it from the directory root. Use the link
 names from each parent/child link to construct the path. Path selectors
 start with a slash (/) and link names are separated by slashes. For
-more information about paths, see Accessing Objects. You can identify
-an object in one of the following ways:
+more information about paths, see Accessing Objects
+(http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#accessingobjects).
+You can identify an object in one of the following ways:
 
 =over
 

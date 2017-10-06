@@ -92,7 +92,8 @@ The function within your code that Lambda calls to begin execution. For
 Node.js, it is the I<module-name>.I<export> value in your function. For
 Java, it can be C<package.class-name::handler> or
 C<package.class-name>. For more information, see Lambda Function
-Handler (Java).
+Handler (Java)
+(http://docs.aws.amazon.com/lambda/latest/dg/java-programming-model-handler-types.html).
 
 
 
@@ -126,7 +127,8 @@ Lambda function and publish a version as an atomic operation.
 
 The Amazon Resource Name (ARN) of the IAM role that Lambda assumes when
 it executes your function to access any other Amazon Web Services (AWS)
-resources. For more information, see AWS Lambda: How it Works.
+resources. For more information, see AWS Lambda: How it Works
+(http://docs.aws.amazon.com/lambda/latest/dg/lambda-introduction.html).
 
 
 

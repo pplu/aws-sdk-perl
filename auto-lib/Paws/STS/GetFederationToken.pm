@@ -93,7 +93,8 @@ percentage how close to the upper size limit the policy is, with 100%
 equaling the maximum allowed size.
 
 For more information about how permissions work, see Permissions for
-GetFederationToken.
+GetFederationToken
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_control-access_getfederationtoken.html).
 
 
 

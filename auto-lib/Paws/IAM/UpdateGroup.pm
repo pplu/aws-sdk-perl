@@ -40,9 +40,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 Name of the IAM group to update. If you're changing the name of the
 group, this is the original name.
 
-This parameter allows (per its regex pattern) a string of characters
-consisting of upper and lowercase alphanumeric characters with no
-spaces. You can also include any of the following characters: =,.@-
+This parameter allows (per its regex pattern
+(http://wikipedia.org/wiki/regex)) a string of characters consisting of
+upper and lowercase alphanumeric characters with no spaces. You can
+also include any of the following characters: =,.@-
 
 
 
@@ -51,9 +52,10 @@ spaces. You can also include any of the following characters: =,.@-
 New name for the IAM group. Only include this if changing the group's
 name.
 
-This parameter allows (per its regex pattern) a string of characters
-consisting of upper and lowercase alphanumeric characters with no
-spaces. You can also include any of the following characters: =,.@-
+This parameter allows (per its regex pattern
+(http://wikipedia.org/wiki/regex)) a string of characters consisting of
+upper and lowercase alphanumeric characters with no spaces. You can
+also include any of the following characters: =,.@-
 
 
 
@@ -62,11 +64,12 @@ spaces. You can also include any of the following characters: =,.@-
 New path for the IAM group. Only include this if changing the group's
 path.
 
-This paramater allows (per its regex pattern) a string of characters
-consisting of either a forward slash (/) by itself or a string that
-must begin and end with forward slashes, containing any ASCII character
-from the ! (\u0021) thru the DEL character (\u007F), including most
-punctuation characters, digits, and upper and lowercased letters.
+This paramater allows (per its regex pattern
+(http://wikipedia.org/wiki/regex)) a string of characters consisting of
+either a forward slash (/) by itself or a string that must begin and
+end with forward slashes, containing any ASCII character from the !
+(\u0021) thru the DEL character (\u007F), including most punctuation
+characters, digits, and upper and lowercased letters.
 
 
 

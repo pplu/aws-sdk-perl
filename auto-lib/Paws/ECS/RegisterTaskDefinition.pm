@@ -70,8 +70,9 @@ corresponding host port, so you cannot take advantage of dynamic host
 port mappings or run multiple instantiations of the same task on a
 single container instance if port mappings are used.
 
-For more information, see Network settings in the I<Docker run
-reference>.
+For more information, see Network settings
+(https://docs.docker.com/engine/reference/run/#network-settings) in the
+I<Docker run reference>.
 
 Valid values are: C<"bridge">, C<"host">, C<"none">
 
@@ -88,8 +89,9 @@ constraints in the task definition and those specified at run time).
 The short name or full Amazon Resource Name (ARN) of the IAM role that
 containers in this task can assume. All containers in this task are
 granted the permissions that are specified in this role. For more
-information, see IAM Roles for Tasks in the I<Amazon EC2 Container
-Service Developer Guide>.
+information, see IAM Roles for Tasks
+(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-iam-roles.html)
+in the I<Amazon EC2 Container Service Developer Guide>.
 
 
 

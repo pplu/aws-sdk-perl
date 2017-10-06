@@ -49,23 +49,27 @@ that root.
   The Amazon Resource Name (ARN) of the root.
 
 For more information about ARNs in Organizations, see ARN Formats
-Supported by Organizations in the I<AWS Organizations User Guide>.
+Supported by Organizations
+(http://docs.aws.amazon.com/organizations/latest/userguide/orgs_permissions.html#orgs-permissions-arns)
+in the I<AWS Organizations User Guide>.
 
 
 =head2 Id => Str
 
   The unique identifier (ID) for the root.
 
-The regex pattern for a root ID string requires "r-" followed by from 4
-to 32 lower-case letters or digits.
+The regex pattern (http://wikipedia.org/wiki/regex) for a root ID
+string requires "r-" followed by from 4 to 32 lower-case letters or
+digits.
 
 
 =head2 Name => Str
 
   The friendly name of the root.
 
-The regex pattern that is used to validate this parameter is a string
-of any of the characters in the ASCII character range.
+The regex pattern (http://wikipedia.org/wiki/regex) that is used to
+validate this parameter is a string of any of the characters in the
+ASCII character range.
 
 
 =head2 PolicyTypes => ArrayRef[L<Paws::Organizations::PolicyTypeSummary>]

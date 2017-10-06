@@ -64,6 +64,7 @@ explains how each set of policies contributes to the final evaluation
 decision. When simulating cross-account access to a resource, both the
 resource-based policy and the caller's IAM policy must grant access.
 See How IAM Roles Differ from Resource-based Policies
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_compare-resource-policies.html)
 
 
 =head2 EvalResourceName => Str

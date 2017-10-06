@@ -39,7 +39,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 A unique, case-sensitive token you provide to ensure idempotency of
 your modification request. For more information, see Ensuring
-Idempotency.
+Idempotency
+(http://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
 
 
 

@@ -84,8 +84,9 @@ Alias Name Example - alias/MyAliasName
 
 A list of grant tokens.
 
-For more information, see Grant Tokens in the I<AWS Key Management
-Service Developer Guide>.
+For more information, see Grant Tokens
+(http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token)
+in the I<AWS Key Management Service Developer Guide>.
 
 
 

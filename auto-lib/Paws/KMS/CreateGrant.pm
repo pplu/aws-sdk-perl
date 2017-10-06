@@ -43,8 +43,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 A structure that you can use to allow certain operations in the grant
 only when the desired encryption context is present. For more
-information about encryption context, see Encryption Context in the
-I<AWS Key Management Service Developer Guide>.
+information about encryption context, see Encryption Context
+(http://docs.aws.amazon.com/kms/latest/developerguide/encryption-context.html)
+in the I<AWS Key Management Service Developer Guide>.
 
 
 
@@ -53,12 +54,14 @@ I<AWS Key Management Service Developer Guide>.
 The principal that is given permission to perform the operations that
 the grant permits.
 
-To specify the principal, use the Amazon Resource Name (ARN) of an AWS
-principal. Valid AWS principals include AWS accounts (root), IAM users,
-IAM roles, federated users, and assumed role users. For examples of the
-ARN syntax to use for specifying a principal, see AWS Identity and
-Access Management (IAM) in the Example ARNs section of the I<AWS
-General Reference>.
+To specify the principal, use the Amazon Resource Name (ARN)
+(http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+of an AWS principal. Valid AWS principals include AWS accounts (root),
+IAM users, IAM roles, federated users, and assumed role users. For
+examples of the ARN syntax to use for specifying a principal, see AWS
+Identity and Access Management (IAM)
+(http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-iam)
+in the Example ARNs section of the I<AWS General Reference>.
 
 
 
@@ -66,8 +69,9 @@ General Reference>.
 
 A list of grant tokens.
 
-For more information, see Grant Tokens in the I<AWS Key Management
-Service Developer Guide>.
+For more information, see Grant Tokens
+(http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token)
+in the I<AWS Key Management Service Developer Guide>.
 
 
 
@@ -125,12 +129,14 @@ A list of operations that the grant permits.
 The principal that is given permission to retire the grant by using
 RetireGrant operation.
 
-To specify the principal, use the Amazon Resource Name (ARN) of an AWS
-principal. Valid AWS principals include AWS accounts (root), IAM users,
-federated users, and assumed role users. For examples of the ARN syntax
-to use for specifying a principal, see AWS Identity and Access
-Management (IAM) in the Example ARNs section of the I<AWS General
-Reference>.
+To specify the principal, use the Amazon Resource Name (ARN)
+(http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+of an AWS principal. Valid AWS principals include AWS accounts (root),
+IAM users, federated users, and assumed role users. For examples of the
+ARN syntax to use for specifying a principal, see AWS Identity and
+Access Management (IAM)
+(http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-iam)
+in the Example ARNs section of the I<AWS General Reference>.
 
 
 

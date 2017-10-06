@@ -64,7 +64,8 @@ where the output should continue from.
 The unique identifier (ID) of the root or OU whose child OUs you want
 to list.
 
-The regex pattern for a parent ID string requires one of the following:
+The regex pattern (http://wikipedia.org/wiki/regex) for a parent ID
+string requires one of the following:
 
 =over
 

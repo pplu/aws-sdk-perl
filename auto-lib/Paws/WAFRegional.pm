@@ -290,10 +290,13 @@ Elastic Load Balancing (ELB) Application Load Balancers. The AWS WAF
 actions and data types listed in the reference are available for
 protecting Application Load Balancers. You can use these actions and
 data types by means of the endpoints listed in AWS Regions and
-Endpoints. This guide is for developers who need detailed information
-about the AWS WAF API actions, data types, and errors. For detailed
-information about AWS WAF features and an overview of how to use the
-AWS WAF API, see the AWS WAF Developer Guide.
+Endpoints
+(http://docs.aws.amazon.com/general/latest/gr/rande.html#waf_region).
+This guide is for developers who need detailed information about the
+AWS WAF API actions, data types, and errors. For detailed information
+about AWS WAF features and an overview of how to use the AWS WAF API,
+see the AWS WAF Developer Guide
+(http://docs.aws.amazon.com/waf/latest/developerguide/).
 
 =head1 METHODS
 
@@ -346,7 +349,8 @@ and the value that you want AWS WAF to watch for.
 =back
 
 For more information about how to use the AWS WAF API to allow or block
-HTTP requests, see the AWS WAF Developer Guide.
+HTTP requests, see the AWS WAF Developer Guide
+(http://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
 =head2 CreateIPSet(ChangeToken => Str, Name => Str)
@@ -389,7 +393,8 @@ want AWS WAF to watch for.
 =back
 
 For more information about how to use the AWS WAF API to allow or block
-HTTP requests, see the AWS WAF Developer Guide.
+HTTP requests, see the AWS WAF Developer Guide
+(http://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
 =head2 CreateRateBasedRule(ChangeToken => Str, MetricName => Str, Name => Str, RateKey => Str, RateLimit => Int)
@@ -497,7 +502,8 @@ more information, see CreateWebACL.
 =back
 
 For more information about how to use the AWS WAF API to allow or block
-HTTP requests, see the AWS WAF Developer Guide.
+HTTP requests, see the AWS WAF Developer Guide
+(http://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
 =head2 CreateRule(ChangeToken => Str, MetricName => Str, Name => Str)
@@ -566,7 +572,8 @@ information, see CreateWebACL.
 =back
 
 For more information about how to use the AWS WAF API to allow or block
-HTTP requests, see the AWS WAF Developer Guide.
+HTTP requests, see the AWS WAF Developer Guide
+(http://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
 =head2 CreateSizeConstraintSet(ChangeToken => Str, Name => Str)
@@ -610,7 +617,8 @@ the URI) and the value that you want AWS WAF to watch for.
 =back
 
 For more information about how to use the AWS WAF API to allow or block
-HTTP requests, see the AWS WAF Developer Guide.
+HTTP requests, see the AWS WAF Developer Guide
+(http://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
 =head2 CreateSqlInjectionMatchSet(ChangeToken => Str, Name => Str)
@@ -652,7 +660,8 @@ code.
 =back
 
 For more information about how to use the AWS WAF API to allow or block
-HTTP requests, see the AWS WAF Developer Guide.
+HTTP requests, see the AWS WAF Developer Guide
+(http://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
 =head2 CreateWebACL(ChangeToken => Str, DefaultAction => L<Paws::WAFRegional::WafAction>, MetricName => Str, Name => Str)
@@ -709,7 +718,8 @@ associate the C<WebACL> with a CloudFront distribution.
 =back
 
 For more information about how to use the AWS WAF API, see the AWS WAF
-Developer Guide.
+Developer Guide
+(http://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
 =head2 CreateXssMatchSet(ChangeToken => Str, Name => Str)
@@ -750,7 +760,8 @@ scripting attacks.
 =back
 
 For more information about how to use the AWS WAF API to allow or block
-HTTP requests, see the AWS WAF Developer Guide.
+HTTP requests, see the AWS WAF Developer Guide
+(http://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
 =head2 DeleteByteMatchSet(ByteMatchSetId => Str, ChangeToken => Str)
@@ -1358,7 +1369,8 @@ the URI) and the value that you want AWS WAF to watch for.
 =back
 
 For more information about how to use the AWS WAF API to allow or block
-HTTP requests, see the AWS WAF Developer Guide.
+HTTP requests, see the AWS WAF Developer Guide
+(http://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
 =head2 UpdateIPSet(ChangeToken => Str, IPSetId => Str, Updates => ArrayRef[L<Paws::WAFRegional::IPSetUpdate>])
@@ -1392,7 +1404,8 @@ C<192.0.2.44/32> (for the individual IP address C<192.0.2.44>).
 
 AWS WAF supports /8, /16, /24, and /32 IP address ranges for IPv4, and
 /24, /32, /48, /56, /64 and /128 for IPv6. For more information about
-CIDR notation, see the Wikipedia entry Classless Inter-Domain Routing.
+CIDR notation, see the Wikipedia entry Classless Inter-Domain Routing
+(https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing).
 
 IPv6 addresses can be represented using any of the following formats:
 
@@ -1449,7 +1462,8 @@ change an IP address, you delete the existing IP address and add the
 new one.
 
 For more information about how to use the AWS WAF API to allow or block
-HTTP requests, see the AWS WAF Developer Guide.
+HTTP requests, see the AWS WAF Developer Guide
+(http://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
 =head2 UpdateRateBasedRule(ChangeToken => Str, RateLimit => Int, RuleId => Str, Updates => ArrayRef[L<Paws::WAFRegional::RuleUpdate>])
@@ -1584,7 +1598,8 @@ If you want to replace one C<ByteMatchSet> or C<IPSet> with another,
 you delete the existing one and add the new one.
 
 For more information about how to use the AWS WAF API to allow or block
-HTTP requests, see the AWS WAF Developer Guide.
+HTTP requests, see the AWS WAF Developer Guide
+(http://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
 =head2 UpdateSizeConstraintSet(ChangeToken => Str, SizeConstraintSetId => Str, Updates => ArrayRef[L<Paws::WAFRegional::SizeConstraintSetUpdate>])
@@ -1661,7 +1676,8 @@ the URI) and the value that you want AWS WAF to watch for.
 =back
 
 For more information about how to use the AWS WAF API to allow or block
-HTTP requests, see the AWS WAF Developer Guide.
+HTTP requests, see the AWS WAF Developer Guide
+(http://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
 =head2 UpdateSqlInjectionMatchSet(ChangeToken => Str, SqlInjectionMatchSetId => Str, Updates => ArrayRef[L<Paws::WAFRegional::SqlInjectionMatchSetUpdate>])
@@ -1725,7 +1741,8 @@ web requests that you want AWS WAF to inspect for snippets of SQL code.
 =back
 
 For more information about how to use the AWS WAF API to allow or block
-HTTP requests, see the AWS WAF Developer Guide.
+HTTP requests, see the AWS WAF Developer Guide
+(http://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
 =head2 UpdateWebACL(ChangeToken => Str, WebACLId => Str, [DefaultAction => L<Paws::WAFRegional::WafAction>, Updates => ArrayRef[L<Paws::WAFRegional::WebACLUpdate>]])
@@ -1810,7 +1827,8 @@ request will fail because the request tries to add a REGULAR rule (the
 default rule type) with the specified ID, which does not exist.
 
 For more information about how to use the AWS WAF API to allow or block
-HTTP requests, see the AWS WAF Developer Guide.
+HTTP requests, see the AWS WAF Developer Guide
+(http://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
 =head2 UpdateXssMatchSet(ChangeToken => Str, Updates => ArrayRef[L<Paws::WAFRegional::XssMatchSetUpdate>], XssMatchSetId => Str)
@@ -1873,7 +1891,8 @@ attacks.
 =back
 
 For more information about how to use the AWS WAF API to allow or block
-HTTP requests, see the AWS WAF Developer Guide.
+HTTP requests, see the AWS WAF Developer Guide
+(http://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
 

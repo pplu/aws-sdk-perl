@@ -54,7 +54,8 @@ Describes stack or user permissions.
 
   The Amazon Resource Name (ARN) for an AWS Identity and Access
 Management (IAM) role. For more information about IAM ARNs, see Using
-Identifiers.
+Identifiers
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html).
 
 
 =head2 Level => Str
@@ -87,6 +88,7 @@ C<iam_only>
 
 For more information on the permissions associated with these levels,
 see Managing User Permissions
+(http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html)
 
 
 =head2 StackId => Str

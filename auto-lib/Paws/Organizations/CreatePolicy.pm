@@ -39,11 +39,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 B<REQUIRED> Content => Str
 
 The policy content to add to the new policy. For example, if you create
-a service control policy (SCP), this string must be JSON text that
-specifies the permissions that admins in attached accounts can delegate
-to their users, groups, and roles. For more information about the SCP
-syntax, see Service Control Policy Syntax in the I<AWS Organizations
-User Guide>.
+a service control policy
+(http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scp.html)
+(SCP), this string must be JSON text that specifies the permissions
+that admins in attached accounts can delegate to their users, groups,
+and roles. For more information about the SCP syntax, see Service
+Control Policy Syntax
+(http://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_scp-syntax.html)
+in the I<AWS Organizations User Guide>.
 
 
 
@@ -57,8 +60,9 @@ An optional description to assign to the policy.
 
 The friendly name to assign to the policy.
 
-The regex pattern that is used to validate this parameter is a string
-of any of the characters in the ASCII character range.
+The regex pattern (http://wikipedia.org/wiki/regex) that is used to
+validate this parameter is a string of any of the characters in the
+ASCII character range.
 
 
 

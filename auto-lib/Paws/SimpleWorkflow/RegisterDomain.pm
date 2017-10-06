@@ -66,7 +66,9 @@ completes, the execution record and its history are deleted.
 
 The maximum workflow execution retention period is 90 days. For more
 information about Amazon SWF service limits, see: Amazon SWF Service
-Limits in the I<Amazon SWF Developer Guide>.
+Limits
+(http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dg-limits.html)
+in the I<Amazon SWF Developer Guide>.
 
 
 

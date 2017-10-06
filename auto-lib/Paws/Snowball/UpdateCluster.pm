@@ -82,8 +82,9 @@ S3Resource objects or LambdaResource objects.
 =head2 RoleARN => Str
 
 The new role Amazon Resource Name (ARN) that you want to associate with
-this cluster. To create a role ARN, use the CreateRole API action in
-AWS Identity and Access Management (IAM).
+this cluster. To create a role ARN, use the CreateRole
+(http://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html)
+API action in AWS Identity and Access Management (IAM).
 
 
 

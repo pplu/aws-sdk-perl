@@ -56,7 +56,8 @@ domain. (This only applies to domain identities, not email address
 identities.)
 
 For more information about creating DNS records using DKIM tokens, go
-to the Amazon SES Developer Guide.
+to the Amazon SES Developer Guide
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim-dns-records.html).
 
 
 =head2 B<REQUIRED> DkimVerificationStatus => Str

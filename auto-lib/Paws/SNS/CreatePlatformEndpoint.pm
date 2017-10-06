@@ -38,7 +38,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Attributes => L<Paws::SNS::MapStringToString>
 
-For a list of attributes, see SetEndpointAttributes.
+For a list of attributes, see SetEndpointAttributes
+(http://docs.aws.amazon.com/sns/latest/api/API_SetEndpointAttributes.html).
 
 
 

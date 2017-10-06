@@ -116,9 +116,12 @@ T2 instances.
 =back
 
 For a complete listing of node types and specifications, see Amazon
-ElastiCache Product Features and Details and either Cache Node
-Type-Specific Parameters for Memcached or Cache Node Type-Specific
-Parameters for Redis.
+ElastiCache Product Features and Details
+(http://aws.amazon.com/elasticache/details) and either Cache Node
+Type-Specific Parameters for Memcached
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Memcached.html#ParameterGroups.Memcached.NodeSpecific)
+or Cache Node Type-Specific Parameters for Redis
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Redis.html#ParameterGroups.Redis.NodeSpecific).
 
 
 

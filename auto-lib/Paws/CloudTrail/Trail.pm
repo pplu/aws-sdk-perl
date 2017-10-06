@@ -106,15 +106,17 @@ characters.
 =head2 S3BucketName => Str
 
   Name of the Amazon S3 bucket into which CloudTrail delivers your trail
-files. See Amazon S3 Bucket Naming Requirements.
+files. See Amazon S3 Bucket Naming Requirements
+(http://docs.aws.amazon.com/awscloudtrail/latest/userguide/create_trail_naming_policy.html).
 
 
 =head2 S3KeyPrefix => Str
 
   Specifies the Amazon S3 key prefix that comes after the name of the
 bucket you have designated for log file delivery. For more information,
-see Finding Your CloudTrail Log Files.The maximum length is 200
-characters.
+see Finding Your CloudTrail Log Files
+(http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-find-log-files.html).The
+maximum length is 200 characters.
 
 
 =head2 SnsTopicARN => Str

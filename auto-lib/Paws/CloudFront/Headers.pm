@@ -43,8 +43,9 @@ C<Apex>, and you configure CloudFront to cache your content based on
 values in the C<Product> header. CloudFront forwards the C<Product>
 header to the origin and caches the response from the origin once for
 each header value. For more information about caching based on header
-values, see How CloudFront Forwards and Caches Headers in the I<Amazon
-CloudFront Developer Guide>.
+values, see How CloudFront Forwards and Caches Headers
+(http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/header-caching.html)
+in the I<Amazon CloudFront Developer Guide>.
 
 =head1 ATTRIBUTES
 

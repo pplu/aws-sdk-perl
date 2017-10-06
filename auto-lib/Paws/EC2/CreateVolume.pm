@@ -66,8 +66,9 @@ encryption. Volumes that are created from encrypted snapshots are
 automatically encrypted. There is no way to create an encrypted volume
 from an unencrypted snapshot or vice versa. If your AMI uses encrypted
 volumes, you can only launch it on supported instance types. For more
-information, see Amazon EBS Encryption in the I<Amazon Elastic Compute
-Cloud User Guide>.
+information, see Amazon EBS Encryption
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 

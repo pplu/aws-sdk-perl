@@ -38,7 +38,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 ClientToken => Str
 
 Unique, case-sensitive identifier that ensures the idempotency of the
-request. For more information, see Ensuring Idempotency.
+request. For more information, see Ensuring Idempotency
+(http://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
 
 
 

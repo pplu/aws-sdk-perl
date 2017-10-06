@@ -36,7 +36,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Discovery::
 A filter that can use conditional operators.
 
 For more information about filters, see Querying Discovered
-Configuration Items.
+Configuration Items
+(http://docs.aws.amazon.com/application-discovery/latest/APIReference/discovery-api-queries.html).
 
 =head1 ATTRIBUTES
 

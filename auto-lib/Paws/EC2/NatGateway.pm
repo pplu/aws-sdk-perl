@@ -121,7 +121,10 @@ with the NAT gateway.
 =head2 ProvisionedBandwidth => L<Paws::EC2::ProvisionedBandwidth>
 
   Reserved. If you need to sustain traffic greater than the documented
-limits, contact us through the Support Center.
+limits
+(http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpc-nat-gateway.html),
+contact us through the Support Center
+(https://console.aws.amazon.com/support/home?).
 
 
 =head2 State => Str

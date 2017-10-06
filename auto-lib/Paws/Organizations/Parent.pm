@@ -42,7 +42,8 @@ that can contain OUs or accounts in an organization.
 
   The unique identifier (ID) of the parent entity.
 
-The regex pattern for a parent ID string requires one of the following:
+The regex pattern (http://wikipedia.org/wiki/regex) for a parent ID
+string requires one of the following:
 
 =over
 

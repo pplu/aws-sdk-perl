@@ -50,8 +50,9 @@ This class has no description
 
   The category of the VPN connection. A value of C<VPN> indicates an AWS
 VPN connection. A value of C<VPN-Classic> indicates an AWS Classic VPN
-connection. For more information, see AWS Managed VPN Categories in the
-I<Amazon Virtual Private Cloud User Guide>.
+connection. For more information, see AWS Managed VPN Categories
+(http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_VPN.html#vpn-categories)
+in the I<Amazon Virtual Private Cloud User Guide>.
 
 
 =head2 CustomerGatewayConfiguration => Str

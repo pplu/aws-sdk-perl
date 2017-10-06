@@ -285,10 +285,11 @@ renewing your domain registration is billed to your AWS account.
 
 The period during which you can renew a domain name varies by TLD. For
 a list of TLDs and their renewal policies, see "Renewal, restoration,
-and deletion times" on the website for our registrar partner, Gandi.
-Route 53 requires that you renew before the end of the renewal period
-that is listed on the Gandi website so we can complete processing
-before the deadline.
+and deletion times"
+(http://wiki.gandi.net/en/domains/renew#renewal_restoration_and_deletion_times)
+on the website for our registrar partner, Gandi. Route 53 requires that
+you renew before the end of the renewal period that is listed on the
+Gandi website so we can complete processing before the deadline.
 
 
 =head2 EnableDomainTransferLock(DomainName => Str)
@@ -427,7 +428,8 @@ not completed successfully, the domain registrant is notified by email.
 =item *
 
 Charges your AWS account an amount based on the top-level domain. For
-more information, see Amazon Route 53 Pricing.
+more information, see Amazon Route 53 Pricing
+(http://aws.amazon.com/route53/pricing/).
 
 =back
 
@@ -446,7 +448,9 @@ We recommend that you renew your domain several weeks before the
 expiration date. Some TLD registries delete domains before the
 expiration date if you haven't renewed far enough in advance. For more
 information about renewing domain registration, see Renewing
-Registration for a Domain in the Amazon Route 53 Developer Guide.
+Registration for a Domain
+(http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/domain-renew.html)
+in the Amazon Route 53 Developer Guide.
 
 
 =head2 ResendContactReachabilityEmail([DomainName => Str])
@@ -484,8 +488,9 @@ the AWS registrar partner, Gandi.
 
 For transfer requirements, a detailed procedure, and information about
 viewing the status of a domain transfer, see Transferring Registration
-for a Domain to Amazon Route 53 in the I<Amazon Route 53 Developer
-Guide>.
+for a Domain to Amazon Route 53
+(http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/domain-transfer-to-route-53.html)
+in the I<Amazon Route 53 Developer Guide>.
 
 If the registrar for your domain is also the DNS service provider for
 the domain, we highly recommend that you consider transferring your DNS
@@ -532,7 +537,8 @@ Returns: a L<Paws::Route53Domains::UpdateDomainContactPrivacyResponse> instance
 When the privacy option is enabled, personal information such as postal
 or email address is hidden from the results of a public WHOIS query.
 The privacy services are provided by the AWS registrar, Gandi. For more
-information, see the Gandi privacy features.
+information, see the Gandi privacy features
+(http://www.gandi.net/domain/whois/?currency=USD&amp;lang=en).
 
 This operation only affects the privacy of the specified contact type
 (registrant, administrator, or tech). Successful acceptance returns an

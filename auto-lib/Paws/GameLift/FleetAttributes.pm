@@ -185,11 +185,12 @@ number expressed in Unix time as milliseconds (for example
   Location of default log files. When a server process is shut down,
 Amazon GameLift captures and stores any log files in this location.
 These logs are in addition to game session logs; see more on game
-session logs in the Amazon GameLift Developer Guide. If no default log
-path for a fleet is specified, Amazon GameLift automatically uploads
-logs that are stored on each instance at C<C:\game\logs> (for Windows)
-or C</local/game/logs> (for Linux). Use the Amazon GameLift console to
-access stored logs.
+session logs in the Amazon GameLift Developer Guide
+(http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-api-server-code).
+If no default log path for a fleet is specified, Amazon GameLift
+automatically uploads logs that are stored on each instance at
+C<C:\game\logs> (for Windows) or C</local/game/logs> (for Linux). Use
+the Amazon GameLift console to access stored logs.
 
 
 =head2 MetricGroups => ArrayRef[Str|Undef]

@@ -49,7 +49,9 @@ The configuration of an Elasticsearch domain.
 =head2 AdvancedOptions => L<Paws::ES::AdvancedOptionsStatus>
 
   Specifies the C<AdvancedOptions> for the domain. See Configuring
-Advanced Options for more information.
+Advanced Options
+(http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-advanced-options)
+for more information.
 
 
 =head2 EBSOptions => L<Paws::ES::EBSOptionsStatus>

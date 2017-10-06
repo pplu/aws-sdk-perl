@@ -74,7 +74,9 @@ available if you attached the instance to the Auto Scaling group.
 =head2 B<REQUIRED> LifecycleState => Str
 
   The lifecycle state for the instance. For more information, see Auto
-Scaling Lifecycle in the I<Auto Scaling User Guide>.
+Scaling Lifecycle
+(http://docs.aws.amazon.com/autoscaling/latest/userguide/AutoScalingGroupLifecycle.html)
+in the I<Auto Scaling User Guide>.
 
 
 =head2 B<REQUIRED> ProtectedFromScaleIn => Bool

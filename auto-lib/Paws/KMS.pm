@@ -317,7 +317,8 @@ AWS Key Management Service
 AWS Key Management Service (AWS KMS) is an encryption and key
 management web service. This guide describes the AWS KMS operations
 that you can call programmatically. For general information about AWS
-KMS, see the AWS Key Management Service Developer Guide.
+KMS, see the AWS Key Management Service Developer Guide
+(http://docs.aws.amazon.com/kms/latest/developerguide/).
 
 AWS provides SDKs that consist of libraries and sample code for various
 programming languages and platforms (Java, Ruby, .Net, iOS, Android,
@@ -326,7 +327,7 @@ to AWS KMS and other AWS services. For example, the SDKs take care of
 tasks such as signing requests (see below), managing errors, and
 retrying requests automatically. For more information about the AWS
 SDKs, including how to download and install them, see Tools for Amazon
-Web Services.
+Web Services (http://aws.amazon.com/tools/).
 
 We recommend that you use the AWS SDKs to make programmatic API calls
 to AWS KMS.
@@ -346,7 +347,8 @@ Instead, use the access key ID and secret access key for an IAM user,
 or you can use the AWS Security Token Service to generate temporary
 security credentials that you can use to sign requests.
 
-All AWS KMS operations require Signature Version 4.
+All AWS KMS operations require Signature Version 4
+(http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
 
 B<Logging API Requests>
 
@@ -356,7 +358,8 @@ bucket that you specify. By using the information collected by
 CloudTrail, you can determine what requests were made to AWS KMS, who
 made the request, when it was made, and so on. To learn more about
 CloudTrail, including how to turn it on and find your log files, see
-the AWS CloudTrail User Guide.
+the AWS CloudTrail User Guide
+(http://docs.aws.amazon.com/awscloudtrail/latest/userguide/).
 
 B<Additional Resources>
 
@@ -367,19 +370,24 @@ following:
 
 =item *
 
-AWS Security Credentials - This topic provides general information
-about the types of credentials used for accessing AWS.
+AWS Security Credentials
+(http://docs.aws.amazon.com/general/latest/gr/aws-security-credentials.html)
+- This topic provides general information about the types of
+credentials used for accessing AWS.
 
 =item *
 
-Temporary Security Credentials - This section of the I<IAM User Guide>
-describes how to create and use temporary security credentials.
+Temporary Security Credentials
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html)
+- This section of the I<IAM User Guide> describes how to create and use
+temporary security credentials.
 
 =item *
 
-Signature Version 4 Signing Process - This set of topics walks you
-through the process of signing a request using an access key ID and a
-secret access key.
+Signature Version 4 Signing Process
+(http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html)
+- This set of topics walks you through the process of signing a request
+using an access key ID and a secret access key.
 
 =back
 
@@ -424,8 +432,9 @@ operation is successful, the CMK is set to the C<Disabled> state. To
 enable a CMK, use EnableKey.
 
 For more information about scheduling and canceling deletion of a CMK,
-see Deleting Customer Master Keys in the I<AWS Key Management Service
-Developer Guide>.
+see Deleting Customer Master Keys
+(http://docs.aws.amazon.com/kms/latest/developerguide/deleting-keys.html)
+in the I<AWS Key Management Service Developer Guide>.
 
 
 =head2 CreateAlias(AliasName => Str, TargetKeyId => Str)
@@ -457,8 +466,9 @@ Returns: a L<Paws::KMS::CreateGrantResponse> instance
   Adds a grant to a key to specify who can use the key and under what
 conditions. Grants are alternate permission mechanisms to key policies.
 
-For more information about grants, see Grants in the I<AWS Key
-Management Service Developer Guide>.
+For more information about grants, see Grants
+(http://docs.aws.amazon.com/kms/latest/developerguide/grants.html) in
+the I<AWS Key Management Service Developer Guide>.
 
 
 =head2 CreateKey([BypassPolicyLockoutSafetyCheck => Bool, Description => Str, KeyUsage => Str, Origin => Str, Policy => Str, Tags => ArrayRef[L<Paws::KMS::Tag>]])
@@ -482,8 +492,9 @@ The GenerateDataKey operation
 
 =item *
 
-AWS Key Management Service Concepts in the I<AWS Key Management Service
-Developer Guide>
+AWS Key Management Service Concepts
+(http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html) in
+the I<AWS Key Management Service Developer Guide>
 
 =back
 
@@ -544,6 +555,7 @@ Returns: nothing
   Deletes key material that you previously imported and makes the
 specified customer master key (CMK) unusable. For more information
 about importing key material into AWS KMS, see Importing Key Material
+(http://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html)
 in the I<AWS Key Management Service Developer Guide>.
 
 When the specified CMK is in the C<PendingDeletion> state, this
@@ -572,8 +584,9 @@ Returns: nothing
   Sets the state of a customer master key (CMK) to disabled, thereby
 preventing its use for cryptographic operations. For more information
 about how key state affects the use of a CMK, see How Key State Affects
-the Use of a Customer Master Key in the I<AWS Key Management Service
-Developer Guide>.
+the Use of a Customer Master Key
+(http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html)
+in the I<AWS Key Management Service Developer Guide>.
 
 
 =head2 DisableKeyRotation(KeyId => Str)
@@ -709,8 +722,9 @@ least enough information to be able to reconstruct the full encryption
 context when you later send the ciphertext to the Decrypt operation. It
 is a good practice to choose an encryption context that you can
 reconstruct on the fly to better secure the ciphertext. For more
-information, see Encryption Context in the I<AWS Key Management Service
-Developer Guide>.
+information, see Encryption Context
+(http://docs.aws.amazon.com/kms/latest/developerguide/encryption-context.html)
+in the I<AWS Key Management Service Developer Guide>.
 
 
 =head2 GenerateDataKeyWithoutPlaintext(KeyId => Str, [EncryptionContext => L<Paws::KMS::EncryptionContextType>, GrantTokens => ArrayRef[Str|Undef], KeySpec => Str, NumberOfBytes => Int])
@@ -747,7 +761,9 @@ Returns: a L<Paws::KMS::GenerateRandomResponse> instance
   Returns a random byte string that is cryptographically secure.
 
 For more information about entropy and random number generation, see
-the AWS Key Management Service Cryptographic Details whitepaper.
+the AWS Key Management Service Cryptographic Details
+(https://d0.awsstatic.com/whitepapers/KMS-Cryptographic-Details.pdf)
+whitepaper.
 
 
 =head2 GetKeyPolicy(KeyId => Str, PolicyName => Str)
@@ -778,6 +794,7 @@ Returns: a L<Paws::KMS::GetParametersForImportResponse> instance
   Returns the items you need in order to import key material into AWS KMS
 from your existing key management infrastructure. For more information
 about importing key material into AWS KMS, see Importing Key Material
+(http://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html)
 in the I<AWS Key Management Service Developer Guide>.
 
 You must specify the key ID of the customer master key (CMK) into which
@@ -802,8 +819,9 @@ Returns: a L<Paws::KMS::ImportKeyMaterialResponse> instance
 
   Imports key material into an AWS KMS customer master key (CMK) from
 your existing key management infrastructure. For more information about
-importing key material into AWS KMS, see Importing Key Material in the
-I<AWS Key Management Service Developer Guide>.
+importing key material into AWS KMS, see Importing Key Material
+(http://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html)
+in the I<AWS Key Management Service Developer Guide>.
 
 You must specify the key ID of the CMK to import the key material into.
 This CMK's C<Origin> must be C<EXTERNAL>. You must also send an import
@@ -890,8 +908,9 @@ Returns: nothing
 
   Attaches a key policy to the specified customer master key (CMK).
 
-For more information about key policies, see Key Policies in the I<AWS
-Key Management Service Developer Guide>.
+For more information about key policies, see Key Policies
+(http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html)
+in the I<AWS Key Management Service Developer Guide>.
 
 
 =head2 ReEncrypt(CiphertextBlob => Str, DestinationKeyId => Str, [DestinationEncryptionContext => L<Paws::KMS::EncryptionContextType>, GrantTokens => ArrayRef[Str|Undef], SourceEncryptionContext => L<Paws::KMS::EncryptionContextType>])
@@ -908,11 +927,13 @@ operation to change the encryption context of a ciphertext.
 Unlike other operations, C<ReEncrypt> is authorized twice, once as
 C<ReEncryptFrom> on the source CMK and once as C<ReEncryptTo> on the
 destination CMK. We recommend that you include the C<"kms:ReEncrypt*">
-permission in your key policies to permit reencryption from or to the
-CMK. This permission is automatically included in the key policy when
-you create a CMK through the console, but you must include it manually
-when you create a CMK programmatically or when you set a key policy
-with the PutKeyPolicy operation.
+permission in your key policies
+(http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html)
+to permit reencryption from or to the CMK. This permission is
+automatically included in the key policy when you create a CMK through
+the console, but you must include it manually when you create a CMK
+programmatically or when you set a key policy with the PutKeyPolicy
+operation.
 
 
 =head2 RetireGrant([GrantId => Str, GrantToken => Str, KeyId => Str])
@@ -981,8 +1002,9 @@ rendered unrecoverable. To restrict the use of a CMK without deleting
 it, use DisableKey.
 
 For more information about scheduling a CMK for deletion, see Deleting
-Customer Master Keys in the I<AWS Key Management Service Developer
-Guide>.
+Customer Master Keys
+(http://docs.aws.amazon.com/kms/latest/developerguide/deleting-keys.html)
+in the I<AWS Key Management Service Developer Guide>.
 
 
 =head2 TagResource(KeyId => Str, Tags => ArrayRef[L<Paws::KMS::Tag>])

@@ -38,7 +38,9 @@ This data type is used as a response element in the
 ListEntitiesForPolicy action.
 
 For more information about managed policies, refer to Managed Policies
-and Inline Policies in the I<Using IAM> guide.
+and Inline Policies
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html)
+in the I<Using IAM> guide.
 
 =head1 ATTRIBUTES
 
@@ -46,7 +48,9 @@ and Inline Policies in the I<Using IAM> guide.
 =head2 UserId => Str
 
   The stable and unique string identifying the user. For more information
-about IDs, see IAM Identifiers in the I<IAM User Guide>.
+about IDs, see IAM Identifiers
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html)
+in the I<IAM User Guide>.
 
 
 =head2 UserName => Str

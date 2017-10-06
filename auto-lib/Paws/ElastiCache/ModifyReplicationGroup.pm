@@ -136,10 +136,11 @@ The upgraded version of the cache engine to be run on the cache
 clusters in the replication group.
 
 B<Important:> You can upgrade to a newer engine version (see Selecting
-a Cache Engine and Version), but you cannot downgrade to an earlier
-engine version. If you want to use an earlier engine version, you must
-delete the existing replication group and create it anew with the
-earlier engine version.
+a Cache Engine and Version
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/SelectEngine.html#VersionManagement)),
+but you cannot downgrade to an earlier engine version. If you want to
+use an earlier engine version, you must delete the existing replication
+group and create it anew with the earlier engine version.
 
 
 

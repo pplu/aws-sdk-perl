@@ -324,9 +324,9 @@ Each argument is described in detail in: L<Paws::MachineLearning::CreateDataSour
 Returns: a L<Paws::MachineLearning::CreateDataSourceFromRDSOutput> instance
 
   Creates a C<DataSource> object from an Amazon Relational Database
-Service (Amazon RDS). A C<DataSource> references data that can be used
-to perform C<CreateMLModel>, C<CreateEvaluation>, or
-C<CreateBatchPrediction> operations.
+Service (http://aws.amazon.com/rds/) (Amazon RDS). A C<DataSource>
+references data that can be used to perform C<CreateMLModel>,
+C<CreateEvaluation>, or C<CreateBatchPrediction> operations.
 
 C<CreateDataSourceFromRDS> is an asynchronous operation. In response to
 C<CreateDataSourceFromRDS>, Amazon Machine Learning (Amazon ML)

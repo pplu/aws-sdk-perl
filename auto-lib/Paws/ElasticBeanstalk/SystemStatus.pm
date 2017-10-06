@@ -45,7 +45,8 @@ CPU utilization and load average metrics for an Amazon EC2 instance.
 =head2 LoadAverage => ArrayRef[Num]
 
   Load average in the last 1-minute, 5-minute, and 15-minute periods. For
-more information, see Operating System Metrics.
+more information, see Operating System Metrics
+(http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced-metrics.html#health-enhanced-metrics-os).
 
 
 

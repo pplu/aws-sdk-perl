@@ -50,7 +50,9 @@ endpoint for a console sign-in token takes a C<SessionDuration>
 parameter that specifies the maximum length of the console session,
 separately from the C<DurationSeconds> parameter on this API. For more
 information, see Creating a URL that Enables Federated Users to Access
-the AWS Management Console in the I<IAM User Guide>.
+the AWS Management Console
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_enable-console-custom-url.html)
+in the I<IAM User Guide>.
 
 
 
@@ -66,7 +68,9 @@ a way to further restrict the permissions for the resulting temporary
 security credentials. You cannot use the passed policy to grant
 permissions that are in excess of those allowed by the access policy of
 the role that is being assumed. For more information, see Permissions
-for AssumeRoleWithWebIdentity in the I<IAM User Guide>.
+for AssumeRoleWithWebIdentity
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_control-access_assumerole.html)
+in the I<IAM User Guide>.
 
 The format for this parameter, as described by its regex pattern, is a
 string of characters up to 2048 characters in length. The characters

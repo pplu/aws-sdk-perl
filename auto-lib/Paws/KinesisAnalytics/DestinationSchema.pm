@@ -32,7 +32,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::KinesisAnal
 =head1 DESCRIPTION
 
 Describes the data format when records are written to the destination.
-For more information, see Configuring Application Output.
+For more information, see Configuring Application Output
+(http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-output.html).
 
 =head1 ATTRIBUTES
 

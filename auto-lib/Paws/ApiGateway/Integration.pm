@@ -94,6 +94,7 @@ follows:
  { "_links": { "curies": { "href": "http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-integration-response-{rel}.html", "name": "integrationresponse", "templated": true }, "self": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200", "title": "200" }, "integrationresponse:delete": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200" }, "integrationresponse:update": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200" } }, "responseParameters": { "method.response.header.Content-Type": "'application/xml'" }, "responseTemplates": { "application/json": "$util.urlDecode(\"%3CkinesisStreams%3E#foreach($stream in $input.path('$.StreamNames'))%3Cstream%3E%3Cname%3E$stream%3C/name%3E%3C/stream%3E#end%3C/kinesisStreams%3E\")\n" }, "statusCode": "200" }
 
 Creating an API
+(http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html)
 
 
 =head2 PassthroughBehavior => Str
@@ -163,8 +164,9 @@ Valid values are: C<"HTTP">, C<"AWS">, C<"MOCK">, C<"HTTP_PROXY">, C<"AWS_PROXY"
 
 Specifies the integration's Uniform Resource Identifier (URI). For HTTP
 integrations, the URI must be a fully formed, encoded HTTP(S) URL
-according to the RFC-3986 specification. For AWS integrations, the URI
-should be of the form
+according to the RFC-3986 specification
+(https://en.wikipedia.org/wiki/Uniform_Resource_Identifier). For AWS
+integrations, the URI should be of the form
 C<arn:aws:apigateway:{region}:{subdomain.service|service}:{path|action}/{service_api}>.
 C<Region>, C<subdomain> and C<service> are used to determine the right
 endpoint. For AWS services that use the C<Action=> query string

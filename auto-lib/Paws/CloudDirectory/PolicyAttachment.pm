@@ -34,7 +34,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudDirect
 =head1 DESCRIPTION
 
 Contains the C<PolicyType>, C<PolicyId>, and the C<ObjectIdentifier> to
-which it is attached. For more information, see Policies.
+which it is attached. For more information, see Policies
+(http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_key_concepts.html#policies).
 
 =head1 ATTRIBUTES
 

@@ -148,7 +148,8 @@ EBS volume.
 =back
 
 For more information about the features of Amazon CloudWatch Events,
-see the Amazon CloudWatch Events User Guide.
+see the Amazon CloudWatch Events User Guide
+(http://docs.aws.amazon.com/AmazonCloudWatch/latest/events).
 
 =head1 METHODS
 
@@ -382,8 +383,9 @@ Amazon SNS resources, CloudWatch Events relies on resource-based
 policies. For EC2 instances, Amazon Kinesis streams, and AWS Step
 Functions state machines, CloudWatch Events relies on IAM roles that
 you specify in the C<RoleARN> argument in C<PutTargets>. For more
-information, see Authentication and Access Control in the I<Amazon
-CloudWatch Events User Guide>.
+information, see Authentication and Access Control
+(http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/auth-and-access-control-cwe.html)
+in the I<Amazon CloudWatch Events User Guide>.
 
 If another AWS account is in the same region and has granted you
 permission (using C<PutPermission>), you can send events to that
@@ -393,7 +395,8 @@ that account's event bus as the C<Arn> when you run C<PutTargets>. If
 your account sends events to another account, your account is charged
 for each sent event. Each event sent to antoher account is charged as a
 custom event. The account receiving the event is not charged. For more
-information on pricing, see Amazon CloudWatch Pricing.
+information on pricing, see Amazon CloudWatch Pricing
+(https://aws.amazon.com/cloudwatch/pricing/).
 
 For more information about enabling cross-account events, see
 PutPermission.

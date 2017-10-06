@@ -35,7 +35,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::OpsWorks::B
 =head1 DESCRIPTION
 
 Describes a block device mapping. This data type maps directly to the
-Amazon EC2 BlockDeviceMapping data type.
+Amazon EC2 BlockDeviceMapping
+(http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_BlockDeviceMapping.html)
+data type.
 
 =head1 ATTRIBUTES
 
@@ -62,7 +64,8 @@ mapping.
 
 =head2 VirtualName => Str
 
-  The virtual device name. For more information, see BlockDeviceMapping.
+  The virtual device name. For more information, see BlockDeviceMapping
+(http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_BlockDeviceMapping.html).
 
 
 

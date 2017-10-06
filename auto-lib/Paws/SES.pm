@@ -329,12 +329,17 @@ Paws::SES - Perl Interface to AWS Amazon Simple Email Service
 
 Amazon Simple Email Service
 
-This is the API Reference for Amazon Simple Email Service (Amazon SES).
-This documentation is intended to be used in conjunction with the I<
-Amazon SES Developer Guide.>
+This is the API Reference for Amazon Simple Email Service
+(https://aws.amazon.com/ses/) (Amazon SES). This documentation is
+intended to be used in conjunction with the I< Amazon SES Developer
+Guide
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/Welcome.html).>
 
 For a list of Amazon SES endpoints to use in service requests, see
-Regions and Amazon SES in the I< Amazon SES Developer Guide.>
+Regions and Amazon SES
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/regions.html) in
+the I< Amazon SES Developer Guide
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/Welcome.html).>
 
 =head1 METHODS
 
@@ -349,7 +354,8 @@ rules and configurations are copied to the new receipt rule set and are
 completely independent of the source rule set.
 
 For information about setting up rule sets, see the I< Amazon SES
-Developer Guide.>
+Developer Guide
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-receipt-rule-set.html).>
 
 You can execute this operation no more than once per second.
 
@@ -364,7 +370,8 @@ Returns: a L<Paws::SES::CreateConfigurationSetResponse> instance
 
 Configuration sets enable you to publish email sending events. For
 information about using configuration sets, see the I< Amazon SES
-Developer Guide.>
+Developer Guide
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html).>
 
 You can execute this operation no more than once per second.
 
@@ -385,7 +392,8 @@ SNS).
 An event destination is the AWS service to which Amazon SES publishes
 the email sending events associated with a configuration set. For
 information about using configuration sets, see the I< Amazon SES
-Developer Guide.>
+Developer Guide
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html).>
 
 You can execute this operation no more than once per second.
 
@@ -404,7 +412,9 @@ are hosted on domains operated by Amazon SES. You can configure a
 subdomain of your own to handle these events by redirecting them to the
 Amazon SES-operated domain. For information about using configuration
 sets, see Configuring Custom Domains to Handle Open and Click Tracking
-in the I< Amazon SES Developer Guide.>
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/configure-custom-open-click-domains.html)
+in the I< Amazon SES Developer Guide
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/Welcome.html).>
 
 
 =head2 CreateReceiptFilter(Filter => L<Paws::SES::ReceiptFilter>)
@@ -416,7 +426,8 @@ Returns: a L<Paws::SES::CreateReceiptFilterResponse> instance
   Creates a new IP address filter.
 
 For information about setting up IP address filters, see the I< Amazon
-SES Developer Guide.>
+SES Developer Guide
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-ip-filters.html).>
 
 You can execute this operation no more than once per second.
 
@@ -430,7 +441,8 @@ Returns: a L<Paws::SES::CreateReceiptRuleResponse> instance
   Creates a receipt rule.
 
 For information about setting up receipt rules, see the I< Amazon SES
-Developer Guide.>
+Developer Guide
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-receipt-rules.html).>
 
 You can execute this operation no more than once per second.
 
@@ -444,7 +456,8 @@ Returns: a L<Paws::SES::CreateReceiptRuleSetResponse> instance
   Creates an empty receipt rule set.
 
 For information about setting up receipt rule sets, see the I< Amazon
-SES Developer Guide.>
+SES Developer Guide
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-receipt-rule-set.html).>
 
 You can execute this operation no more than once per second.
 
@@ -457,7 +470,8 @@ Returns: a L<Paws::SES::DeleteConfigurationSetResponse> instance
 
   Deletes a configuration set. Configuration sets enable you to publish
 email sending events. For information about using configuration sets,
-see the I< Amazon SES Developer Guide.>
+see the I< Amazon SES Developer Guide
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html).>
 
 You can execute this operation no more than once per second.
 
@@ -471,7 +485,8 @@ Returns: a L<Paws::SES::DeleteConfigurationSetEventDestinationResponse> instance
   Deletes a configuration set event destination. Configuration set event
 destinations are associated with configuration sets, which enable you
 to publish email sending events. For information about using
-configuration sets, see the I< Amazon SES Developer Guide.>
+configuration sets, see the I< Amazon SES Developer Guide
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html).>
 
 You can execute this operation no more than once per second.
 
@@ -490,7 +505,9 @@ are hosted on domains operated by Amazon SES. You can configure a
 subdomain of your own to handle these events by redirecting them to the
 Amazon SES-operated domain. For information about using configuration
 sets, see Configuring Custom Domains to Handle Open and Click Tracking
-in the I< Amazon SES Developer Guide.>
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/configure-custom-open-click-domains.html)
+in the I< Amazon SES Developer Guide
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/Welcome.html).>
 
 Deleting this kind of association will result in emails sent using the
 specified configuration set to capture open and click events using the
@@ -524,7 +541,8 @@ identity, this API will return an error.
 
 Sending authorization is a feature that enables an identity owner to
 authorize other senders to use its identities. For information about
-using sending authorization, see the I< Amazon SES Developer Guide.>
+using sending authorization, see the I< Amazon SES Developer Guide
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).>
 
 You can execute this operation no more than once per second.
 
@@ -538,7 +556,8 @@ Returns: a L<Paws::SES::DeleteReceiptFilterResponse> instance
   Deletes the specified IP address filter.
 
 For information about managing IP address filters, see the I< Amazon
-SES Developer Guide.>
+SES Developer Guide
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-managing-ip-filters.html).>
 
 You can execute this operation no more than once per second.
 
@@ -552,7 +571,8 @@ Returns: a L<Paws::SES::DeleteReceiptRuleResponse> instance
   Deletes the specified receipt rule.
 
 For information about managing receipt rules, see the I< Amazon SES
-Developer Guide.>
+Developer Guide
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-managing-receipt-rules.html).>
 
 You can execute this operation no more than once per second.
 
@@ -569,7 +589,8 @@ contains.
 The currently active rule set cannot be deleted.
 
 For information about managing receipt rule sets, see the I< Amazon SES
-Developer Guide.>
+Developer Guide
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-managing-receipt-rule-sets.html).>
 
 You can execute this operation no more than once per second.
 
@@ -594,7 +615,8 @@ Returns: a L<Paws::SES::DescribeActiveReceiptRuleSetResponse> instance
 currently active.
 
 For information about setting up receipt rule sets, see the I< Amazon
-SES Developer Guide.>
+SES Developer Guide
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-receipt-rule-set.html).>
 
 You can execute this operation no more than once per second.
 
@@ -606,7 +628,8 @@ Each argument is described in detail in: L<Paws::SES::DescribeConfigurationSet>
 Returns: a L<Paws::SES::DescribeConfigurationSetResponse> instance
 
   Returns the details of the specified configuration set. For information
-about using configuration sets, see the I< Amazon SES Developer Guide.>
+about using configuration sets, see the I< Amazon SES Developer Guide
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html).>
 
 You can execute this operation no more than once per second.
 
@@ -620,7 +643,8 @@ Returns: a L<Paws::SES::DescribeReceiptRuleResponse> instance
   Returns the details of the specified receipt rule.
 
 For information about setting up receipt rules, see the I< Amazon SES
-Developer Guide.>
+Developer Guide
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-receipt-rules.html).>
 
 You can execute this operation no more than once per second.
 
@@ -634,7 +658,8 @@ Returns: a L<Paws::SES::DescribeReceiptRuleSetResponse> instance
   Returns the details of the specified receipt rule set.
 
 For information about managing receipt rule sets, see the I< Amazon SES
-Developer Guide.>
+Developer Guide
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-managing-receipt-rule-sets.html).>
 
 You can execute this operation no more than once per second.
 
@@ -676,7 +701,8 @@ This operation is throttled at one request per second and can only get
 DKIM attributes for up to 100 identities at a time.
 
 For more information about creating DNS records using DKIM tokens, go
-to the I< Amazon SES Developer Guide.>
+to the I< Amazon SES Developer Guide
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim-dns-records.html).>
 
 
 =head2 GetIdentityMailFromDomainAttributes(Identities => ArrayRef[Str|Undef])
@@ -705,7 +731,8 @@ This operation is throttled at one request per second and can only get
 notification attributes for up to 100 identities at a time.
 
 For more information about using notifications with Amazon SES, see the
-I< Amazon SES Developer Guide.>
+I< Amazon SES Developer Guide
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/notifications.html).>
 
 
 =head2 GetIdentityPolicies(Identity => Str, PolicyNames => ArrayRef[Str|Undef])
@@ -724,7 +751,8 @@ identity, this API will return an error.
 
 Sending authorization is a feature that enables an identity owner to
 authorize other senders to use its identities. For information about
-using sending authorization, see the I< Amazon SES Developer Guide.>
+using sending authorization, see the I< Amazon SES Developer Guide
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).>
 
 You can execute this operation no more than once per second.
 
@@ -793,8 +821,9 @@ Returns: a L<Paws::SES::ListConfigurationSetsResponse> instance
 
   Provides a list of the configuration sets associated with your Amazon
 SES account. For information about using configuration sets, see
-Monitoring Your Amazon SES Sending Activity in the I<Amazon SES
-Developer Guide>.
+Monitoring Your Amazon SES Sending Activity
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html)
+in the I<Amazon SES Developer Guide>.
 
 You can execute this operation no more than once per second. This
 operation will return up to 50 configuration sets each time it is run.
@@ -833,7 +862,8 @@ identity, this API will return an error.
 
 Sending authorization is a feature that enables an identity owner to
 authorize other senders to use its identities. For information about
-using sending authorization, see the I< Amazon SES Developer Guide.>
+using sending authorization, see the I< Amazon SES Developer Guide
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).>
 
 You can execute this operation no more than once per second.
 
@@ -847,7 +877,8 @@ Returns: a L<Paws::SES::ListReceiptFiltersResponse> instance
   Lists the IP address filters associated with your AWS account.
 
 For information about managing IP address filters, see the I< Amazon
-SES Developer Guide.>
+SES Developer Guide
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-managing-ip-filters.html).>
 
 You can execute this operation no more than once per second.
 
@@ -864,7 +895,8 @@ C<NextToken> that you can provide to the next call to
 C<ListReceiptRuleSets> to retrieve the additional entries.
 
 For information about managing receipt rule sets, see the I< Amazon SES
-Developer Guide.>
+Developer Guide
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-managing-receipt-rule-sets.html).>
 
 You can execute this operation no more than once per second.
 
@@ -893,7 +925,8 @@ identity, this API will return an error.
 
 Sending authorization is a feature that enables an identity owner to
 authorize other senders to use its identities. For information about
-using sending authorization, see the I< Amazon SES Developer Guide.>
+using sending authorization, see the I< Amazon SES Developer Guide
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).>
 
 You can execute this operation no more than once per second.
 
@@ -911,7 +944,8 @@ That is, this API will return an error if the reorder request doesn't
 explicitly position all of the rules.
 
 For information about managing receipt rule sets, see the I< Amazon SES
-Developer Guide.>
+Developer Guide
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-managing-receipt-rule-sets.html).>
 
 You can execute this operation no more than once per second.
 
@@ -930,7 +964,8 @@ You cannot use this API to send generic bounces for mail that was not
 received by Amazon SES.
 
 For information about receiving email through Amazon SES, see the I<
-Amazon SES Developer Guide.>
+Amazon SES Developer Guide
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email.html).>
 
 You can execute this operation no more than once per second.
 
@@ -958,7 +993,9 @@ operation will result in an "Email address not verified" error.
 If your account is still in the Amazon SES sandbox, you may only send
 to verified addresses or domains, or to email addresses associated with
 the Amazon SES Mailbox Simulator. For more information, see Verifying
-Email Addresses and Domains in the I<Amazon SES Developer Guide>.
+Email Addresses and Domains
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-addresses-and-domains.html)
+in the I<Amazon SES Developer Guide>.
 
 =item *
 
@@ -988,8 +1025,9 @@ For every message that you send, the total number of recipients
 (including each recipient in the To:, CC: and BCC: fields) is counted
 against the maximum number of emails you can send in a 24-hour period
 (your I<sending quota>). For more information about sending quotas in
-Amazon SES, see Managing Your Amazon SES Sending Limits in the I<Amazon
-SES Developer Guide>.
+Amazon SES, see Managing Your Amazon SES Sending Limits
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/manage-sending-limits.html)
+in the I<Amazon SES Developer Guide>.
 
 
 =head2 SendRawEmail(RawMessage => L<Paws::SES::RawMessage>, [ConfigurationSetName => Str, Destinations => ArrayRef[Str|Undef], FromArn => Str, ReturnPathArn => Str, Source => Str, SourceArn => Str, Tags => ArrayRef[L<Paws::SES::MessageTag>]])
@@ -1020,7 +1058,9 @@ operation will result in an "Email address not verified" error.
 If your account is still in the Amazon SES sandbox, you may only send
 to verified addresses or domains, or to email addresses associated with
 the Amazon SES Mailbox Simulator. For more information, see Verifying
-Email Addresses and Domains in the I<Amazon SES Developer Guide>.
+Email Addresses and Domains
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-addresses-and-domains.html)
+in the I<Amazon SES Developer Guide>.
 
 =item *
 
@@ -1050,8 +1090,9 @@ For every message that you send, the total number of recipients
 (including each recipient in the To:, CC: and BCC: fields) is counted
 against the maximum number of emails you can send in a 24-hour period
 (your I<sending quota>). For more information about sending quotas in
-Amazon SES, see Managing Your Amazon SES Sending Limits in the I<Amazon
-SES Developer Guide>.
+Amazon SES, see Managing Your Amazon SES Sending Limits
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/manage-sending-limits.html)
+in the I<Amazon SES Developer Guide>.
 
 Additionally, keep the following considerations in mind when using the
 C<SendRawEmail> operation:
@@ -1100,8 +1141,9 @@ C<FromIdentityArn> or C<ReturnPathIdentityArn> parameters. If you only
 specify the C<SourceIdentityArn> parameter, Amazon SES will set the
 From and Return Path addresses to the identity specified in
 C<SourceIdentityArn>. For more information about sending authorization,
-see the Using Sending Authorization with Amazon SES in the I<Amazon SES
-Developer Guide>.
+see the Using Sending Authorization with Amazon SES
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html)
+in the I<Amazon SES Developer Guide>.
 
 =back
 
@@ -1119,7 +1161,8 @@ To disable your email-receiving through Amazon SES completely, you can
 call this API with RuleSetName set to null.
 
 For information about managing receipt rule sets, see the I< Amazon SES
-Developer Guide.>
+Developer Guide
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-managing-receipt-rule-sets.html).>
 
 You can execute this operation no more than once per second.
 
@@ -1155,7 +1198,8 @@ the C<VerifyDomainDkim> operation.
 You can execute this operation no more than once per second.
 
 For more information about Easy DKIM signing, go to the I< Amazon SES
-Developer Guide.>
+Developer Guide
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim.html).>
 
 
 =head2 SetIdentityFeedbackForwardingEnabled(ForwardingEnabled => Bool, Identity => Str)
@@ -1176,7 +1220,8 @@ notifications are only available through Amazon SNS.
 You can execute this operation no more than once per second.
 
 For more information about using notifications with Amazon SES, see the
-I< Amazon SES Developer Guide.>
+I< Amazon SES Developer Guide
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/notifications.html).>
 
 
 =head2 SetIdentityHeadersInNotificationsEnabled(Enabled => Bool, Identity => Str, NotificationType => Str)
@@ -1192,7 +1237,8 @@ Notification Service (Amazon SNS) notifications of a specified type.
 You can execute this operation no more than once per second.
 
 For more information about using notifications with Amazon SES, see the
-I< Amazon SES Developer Guide.>
+I< Amazon SES Developer Guide
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/notifications.html).>
 
 
 =head2 SetIdentityMailFromDomain(Identity => Str, [BehaviorOnMXFailure => Str, MailFromDomain => Str])
@@ -1208,7 +1254,8 @@ To send emails using the specified MAIL FROM domain, you must add an MX
 record to your MAIL FROM domain's DNS settings. If you want your emails
 to pass Sender Policy Framework (SPF) checks, you must also add or
 update an SPF record. For more information, see the I< Amazon SES
-Developer Guide.>
+Developer Guide
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/mail-from-set.html).>
 
 You can execute this operation no more than once per second.
 
@@ -1231,7 +1278,8 @@ see C<SetIdentityFeedbackForwardingEnabled>.
 You can execute this operation no more than once per second.
 
 For more information about feedback notification, see the I< Amazon SES
-Developer Guide.>
+Developer Guide
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/notifications.html).>
 
 
 =head2 SetReceiptRulePosition(RuleName => Str, RuleSetName => Str, [After => Str])
@@ -1244,7 +1292,8 @@ Returns: a L<Paws::SES::SetReceiptRulePositionResponse> instance
 set.
 
 For information about managing receipt rules, see the I< Amazon SES
-Developer Guide.>
+Developer Guide
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-managing-receipt-rules.html).>
 
 You can execute this operation no more than once per second.
 
@@ -1260,7 +1309,9 @@ destinations are associated with configuration sets, which enable you
 to publish email sending events to Amazon CloudWatch, Amazon Kinesis
 Firehose, or Amazon Simple Notification Service (Amazon SNS). For
 information about using configuration sets, see Monitoring Your Amazon
-SES Sending Activity in the I<Amazon SES Developer Guide>.
+SES Sending Activity
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html)
+in the I<Amazon SES Developer Guide>.
 
 When you create or update an event destination, you must provide one,
 and only one, destination. The destination can be Amazon CloudWatch,
@@ -1284,7 +1335,9 @@ are hosted on domains operated by Amazon SES. You can configure a
 subdomain of your own to handle these events by redirecting them to the
 Amazon SES-operated domain. For information about using configuration
 sets, see Configuring Custom Domains to Handle Open and Click Tracking
-in the I< Amazon SES Developer Guide.>
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/configure-custom-open-click-domains.html)
+in the I< Amazon SES Developer Guide
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/Welcome.html).>
 
 
 =head2 UpdateReceiptRule(Rule => L<Paws::SES::ReceiptRule>, RuleSetName => Str)
@@ -1296,7 +1349,8 @@ Returns: a L<Paws::SES::UpdateReceiptRuleResponse> instance
   Updates a receipt rule.
 
 For information about managing receipt rules, see the I< Amazon SES
-Developer Guide.>
+Developer Guide
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-managing-receipt-rules.html).>
 
 You can execute this operation no more than once per second.
 
@@ -1321,7 +1375,8 @@ To enable or disable Easy DKIM signing for a domain, use the
 C<SetIdentityDkimEnabled> operation.
 
 For more information about creating DNS records using DKIM tokens, go
-to the I< Amazon SES Developer Guide.>
+to the I< Amazon SES Developer Guide
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim-dns-records.html).>
 
 
 =head2 VerifyDomainIdentity(Domain => Str)
@@ -1332,8 +1387,9 @@ Returns: a L<Paws::SES::VerifyDomainIdentityResponse> instance
 
   Adds a domain to the list of identities for your Amazon SES account and
 attempts to verify it. For more information about verifying domains,
-see Verifying Email Addresses and Domains in the I<Amazon SES Developer
-Guide>.
+see Verifying Email Addresses and Domains
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-addresses-and-domains.html)
+in the I<Amazon SES Developer Guide>.
 
 You can execute this operation no more than once per second.
 

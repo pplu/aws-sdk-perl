@@ -34,7 +34,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Discovery::
 =head1 DESCRIPTION
 
 Used to select which agent's data is to be exported. A single agent ID
-may be selected for export using the StartExportTask action.
+may be selected for export using the StartExportTask
+(http://docs.aws.amazon.com/application-discovery/latest/APIReference/API_StartExportTask.html)
+action.
 
 =head1 ATTRIBUTES
 
@@ -52,8 +54,10 @@ may be selected for export using the StartExportTask action.
 =head2 B<REQUIRED> Values => ArrayRef[Str|Undef]
 
   A single C<agentId> for a Discovery Agent. An C<agentId> can be found
-using the DescribeAgents action. Typically an ADS C<agentId> is in the
-form C<o-0123456789abcdef0>.
+using the DescribeAgents
+(http://docs.aws.amazon.com/application-discovery/latest/APIReference/API_DescribeExportTasks.html)
+action. Typically an ADS C<agentId> is in the form
+C<o-0123456789abcdef0>.
 
 
 

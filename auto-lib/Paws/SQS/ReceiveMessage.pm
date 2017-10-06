@@ -53,7 +53,8 @@ C<All> - Returns all values.
 =item *
 
 C<ApproximateFirstReceiveTimestamp> - Returns the time the message was
-first received from the queue (epoch time in milliseconds).
+first received from the queue (epoch time
+(http://en.wikipedia.org/wiki/Unix_time) in milliseconds).
 
 =item *
 
@@ -81,7 +82,7 @@ C<ABCDE1F2GH3I4JK5LMNOP:i-a123b456>.
 =item *
 
 C<SentTimestamp> - Returns the time the message was sent to the queue
-(epoch time in milliseconds).
+(epoch time (http://en.wikipedia.org/wiki/Unix_time) in milliseconds).
 
 =item *
 
@@ -265,8 +266,9 @@ C<ReceiveRequestAttemptId> if none of the messages have been modified
 During a visibility timeout, subsequent calls with the same
 C<ReceiveRequestAttemptId> return the same messages and receipt
 handles. If a retry occurs within the deduplication interval, it resets
-the visibility timeout. For more information, see Visibility Timeout in
-the I<Amazon Simple Queue Service Developer Guide>.
+the visibility timeout. For more information, see Visibility Timeout
+(http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html)
+in the I<Amazon Simple Queue Service Developer Guide>.
 
 If a caller of the C<ReceiveMessage> action is still processing
 messages when the visibility timeout expires and messages become
@@ -301,8 +303,9 @@ C<A-Z>, C<0-9>) and punctuation
 (C<!"#$%&'()*+,-./:;E<lt>=E<gt>?@[\]^_`{|}~>).
 
 For best practices of using C<ReceiveRequestAttemptId>, see Using the
-ReceiveRequestAttemptId Request Parameter in the I<Amazon Simple Queue
-Service Developer Guide>.
+ReceiveRequestAttemptId Request Parameter
+(http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queue-recommendations.html#using-receiverequestattemptid-request-parameter)
+in the I<Amazon Simple Queue Service Developer Guide>.
 
 
 

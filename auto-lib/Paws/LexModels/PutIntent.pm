@@ -173,16 +173,18 @@ with "AMAZON." removed. For example, because there is a built-in intent
 called C<AMAZON.HelpIntent>, you can't create a custom intent called
 C<HelpIntent>.
 
-For a list of built-in intents, see Standard Built-in Intents in the
-I<Alexa Skills Kit>.
+For a list of built-in intents, see Standard Built-in Intents
+(https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/built-in-intent-ref/standard-intents)
+in the I<Alexa Skills Kit>.
 
 
 
 =head2 ParentIntentSignature => Str
 
 A unique identifier for the built-in intent to base this intent on. To
-find the signature for an intent, see Standard Built-in Intents in the
-I<Alexa Skills Kit>.
+find the signature for an intent, see Standard Built-in Intents
+(https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/built-in-intent-ref/standard-intents)
+in the I<Alexa Skills Kit>.
 
 
 

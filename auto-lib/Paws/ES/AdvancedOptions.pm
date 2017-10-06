@@ -42,6 +42,7 @@ available:
 =item * Option to allow references to indices in an HTTP request body.
 Must be C<false> when configuring access to individual sub-resources.
 By default, the value is C<true>. See Configuration Advanced Options
+(http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-advanced-options)
 for more information.
 
 =item * Option to specify the percentage of heap space that is
@@ -49,7 +50,8 @@ allocated to field data. By default, this setting is unbounded.
 
 =back
 
-For more information, see Configuring Advanced Options.
+For more information, see Configuring Advanced Options
+(http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-advanced-options).
 
 =head1 ATTRIBUTES
 

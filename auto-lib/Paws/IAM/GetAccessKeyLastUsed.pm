@@ -37,8 +37,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 The identifier of an access key.
 
-This parameter allows (per its regex pattern) a string of characters
-that can consist of any upper or lowercased letter or digit.
+This parameter allows (per its regex pattern
+(http://wikipedia.org/wiki/regex)) a string of characters that can
+consist of any upper or lowercased letter or digit.
 
 
 

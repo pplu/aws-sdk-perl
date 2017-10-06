@@ -27,7 +27,8 @@ C<Handled> or C<Unhandled>. C<Handled> errors are errors that are
 reported by the function while the C<Unhandled> errors are those
 detected and reported by AWS Lambda. Unhandled errors include out of
 memory errors and function timeouts. For information about how to
-report an C<Handled> error, see Programming Model.
+report an C<Handled> error, see Programming Model
+(http://docs.aws.amazon.com/lambda/latest/dg/programming-model.html).
 
 
 =head2 LogResult => Str

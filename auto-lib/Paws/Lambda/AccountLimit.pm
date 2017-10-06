@@ -58,7 +58,9 @@ for uploading larger files. Default limit is 50 MB.
 
   Number of simultaneous executions of your function per region. For more
 information or to request a limit increase for concurrent executions,
-see Lambda Function Concurrent Executions. The default limit is 100.
+see Lambda Function Concurrent Executions
+(http://docs.aws.amazon.com/lambda/latest/dg/concurrent-executions.html).
+The default limit is 100.
 
 
 =head2 TotalCodeSize => Int

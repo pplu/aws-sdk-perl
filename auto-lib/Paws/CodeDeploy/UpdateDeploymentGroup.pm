@@ -158,7 +158,9 @@ A replacement ARN for the service role, if you want to change it.
 
 Information about triggers to change when the deployment group is
 updated. For examples, see Modify Triggers in an AWS CodeDeploy
-Deployment Group in the AWS CodeDeploy User Guide.
+Deployment Group
+(http://docs.aws.amazon.com/codedeploy/latest/userguide/how-to-notify-edit.html)
+in the AWS CodeDeploy User Guide.
 
 
 

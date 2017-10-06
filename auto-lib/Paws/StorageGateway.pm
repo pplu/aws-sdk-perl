@@ -509,30 +509,38 @@ Service API Reference>:
 
 =item *
 
-AWS Storage Gateway Required Request Headers: Describes the required
-headers that you must send with every POST request to AWS Storage
-Gateway.
+AWS Storage Gateway Required Request Headers
+(http://docs.aws.amazon.com/storagegateway/latest/userguide/AWSStorageGatewayAPI.html#AWSStorageGatewayHTTPRequestsHeaders):
+Describes the required headers that you must send with every POST
+request to AWS Storage Gateway.
 
 =item *
 
-Signing Requests: AWS Storage Gateway requires that you authenticate
-every request you send; this topic describes how sign such a request.
+Signing Requests
+(http://docs.aws.amazon.com/storagegateway/latest/userguide/AWSStorageGatewayAPI.html#AWSStorageGatewaySigningRequests):
+AWS Storage Gateway requires that you authenticate every request you
+send; this topic describes how sign such a request.
 
 =item *
 
-Error Responses: Provides reference information about AWS Storage
-Gateway errors.
+Error Responses
+(http://docs.aws.amazon.com/storagegateway/latest/userguide/AWSStorageGatewayAPI.html#APIErrorResponses):
+Provides reference information about AWS Storage Gateway errors.
 
 =item *
 
-Operations in AWS Storage Gateway: Contains detailed descriptions of
-all AWS Storage Gateway operations, their request parameters, response
-elements, possible errors, and examples of requests and responses.
+Operations in AWS Storage Gateway
+(http://docs.aws.amazon.com/storagegateway/latest/APIReference/API_Operations.html):
+Contains detailed descriptions of all AWS Storage Gateway operations,
+their request parameters, response elements, possible errors, and
+examples of requests and responses.
 
 =item *
 
-AWS Storage Gateway Regions and Endpoints: Provides a list of each
-region and endpoints available for use with AWS Storage Gateway.
+AWS Storage Gateway Regions and Endpoints:
+(http://docs.aws.amazon.com/general/latest/gr/rande.html#sg_region)
+Provides a list of each region and endpoints available for use with AWS
+Storage Gateway.
 
 =back
 
@@ -549,7 +557,8 @@ gateway volumes are changing to a longer format. Starting in December
 2016, all new volumes and snapshots will be created with a 17-character
 string. Starting in April 2016, you will be able to use these longer
 IDs so you can test your systems with the new format. For more
-information, see Longer EC2 and EBS Resource IDs.
+information, see Longer EC2 and EBS Resource IDs
+(https://aws.amazon.com/ec2/faqs/#longer-ids).
 
 For example, a volume Amazon Resource Name (ARN) with the longer volume
 ID format looks like the following:
@@ -560,7 +569,8 @@ A snapshot ID with the longer ID format looks like the following:
 C<snap-78e226633445566ee>.
 
 For more information, see Announcement: Heads-up E<ndash> Longer AWS
-Storage Gateway volume and snapshot IDs coming in 2016.
+Storage Gateway volume and snapshot IDs coming in 2016
+(https://forums.aws.amazon.com/ann.jspa?annID=3557).
 
 =head1 METHODS
 
@@ -571,12 +581,14 @@ Each argument is described in detail in: L<Paws::StorageGateway::ActivateGateway
 Returns: a L<Paws::StorageGateway::ActivateGatewayOutput> instance
 
   Activates the gateway you previously deployed on your host. For more
-information, see Activate the AWS Storage Gateway. In the activation
-process, you specify information such as the region you want to use for
-storing snapshots or tapes, the time zone for scheduled snapshots the
-gateway snapshot schedule window, an activation key, and a name for
-your gateway. The activation process also associates your gateway with
-your account; for more information, see UpdateGatewayInformation.
+information, see Activate the AWS Storage Gateway
+(http://docs.aws.amazon.com/storagegateway/latest/userguide/GettingStartedActivateGateway-common.html).
+In the activation process, you specify information such as the region
+you want to use for storing snapshots or tapes, the time zone for
+scheduled snapshots the gateway snapshot schedule window, an activation
+key, and a name for your gateway. The activation process also
+associates your gateway with your account; for more information, see
+UpdateGatewayInformation.
 
 You must turn on the gateway VM before you can activate your gateway.
 
@@ -589,7 +601,8 @@ Returns: a L<Paws::StorageGateway::AddCacheOutput> instance
 
   Configures one or more gateway local disks as cache for a gateway. This
 operation is only supported in the cached volume, tape and file gateway
-architectures (see Storage Gateway Concepts).
+architectures (see Storage Gateway Concepts
+(http://docs.aws.amazon.com/storagegateway/latest/userguide/StorageGatewayConcepts.html)).
 
 In the request, you specify the gateway Amazon Resource Name (ARN) to
 which you want to add cache, and one or more disk IDs that you want to
@@ -759,7 +772,8 @@ off-site recovery, as well as import the data to an Amazon Elastic
 Block Store (EBS) volume in Amazon Elastic Compute Cloud (EC2). You can
 take snapshots of your gateway volume on a scheduled or ad-hoc basis.
 This API enables you to take ad-hoc snapshot. For more information, see
-Editing a Snapshot Schedule.
+Editing a Snapshot Schedule
+(http://docs.aws.amazon.com/storagegateway/latest/userguide/managing-volumes.html#SchedulingSnapshot).
 
 In the CreateSnapshot request you identify the volume by providing its
 Amazon Resource Name (ARN). You must also provide description for the
@@ -772,10 +786,13 @@ is only supported in stored and cached volume gateway architecture.
 
 To list or delete a snapshot, you must use the Amazon EC2 API. For more
 information, see DescribeSnapshots or DeleteSnapshot in the EC2 API
-reference.
+reference
+(http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_Operations.html).
 
 Volume and snapshot IDs are changing to a longer length ID format. For
-more information, see the important note on the Welcome page.
+more information, see the important note on the Welcome
+(http://docs.aws.amazon.com/storagegateway/latest/APIReference/Welcome.html)
+page.
 
 
 =head2 CreateSnapshotFromVolumeRecoveryPoint(SnapshotDescription => Str, VolumeARN => Str)
@@ -913,7 +930,8 @@ continue to be billed for these snapshots. You can choose to remove all
 remaining Amazon EBS snapshots by canceling your Amazon EC2
 subscription. If you prefer not to cancel your Amazon EC2 subscription,
 you can delete your snapshots using the Amazon EC2 console. For more
-information, see the AWS Storage Gateway Detail Page.
+information, see the AWS Storage Gateway Detail Page
+(http://aws.amazon.com/storagegateway).
 
 
 =head2 DeleteSnapshotSchedule(VolumeARN => Str)
@@ -926,9 +944,10 @@ Returns: a L<Paws::StorageGateway::DeleteSnapshotScheduleOutput> instance
 
 You can take snapshots of your gateway volumes on a scheduled or ad hoc
 basis. This API action enables you to delete a snapshot schedule for a
-volume. For more information, see Working with Snapshots. In the
-C<DeleteSnapshotSchedule> request, you identify the volume by providing
-its Amazon Resource Name (ARN).
+volume. For more information, see Working with Snapshots
+(http://docs.aws.amazon.com/storagegateway/latest/userguide/WorkingWithSnapshots.html).
+In the C<DeleteSnapshotSchedule> request, you identify the volume by
+providing its Amazon Resource Name (ARN).
 
 To list or delete a snapshot, you must use the Amazon EC2 API. in
 I<Amazon Elastic Compute Cloud API Reference>.
@@ -972,7 +991,9 @@ the volume you are deleting. You should also make sure there is no
 snapshot in progress. You can use the Amazon Elastic Compute Cloud
 (Amazon EC2) API to query snapshots on the volume you are deleting and
 check the snapshot status. For more information, go to
-DescribeSnapshots in the I<Amazon Elastic Compute Cloud API Reference>.
+DescribeSnapshots
+(http://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-DescribeSnapshots.html)
+in the I<Amazon Elastic Compute Cloud API Reference>.
 
 In the request, you must provide the Amazon Resource Name (ARN) of the
 storage volume you want to delete.
@@ -1544,8 +1565,11 @@ A software update forces a system restart of your gateway. You can
 minimize the chance of any disruption to your applications by
 increasing your iSCSI Initiators' timeouts. For more information about
 increasing iSCSI Initiator timeouts for Windows and Linux, see
-Customizing Your Windows iSCSI Settings and Customizing Your Linux
-iSCSI Settings, respectively.
+Customizing Your Windows iSCSI Settings
+(http://docs.aws.amazon.com/storagegateway/latest/userguide/ConfiguringiSCSIClientInitiatorWindowsClient.html#CustomizeWindowsiSCSISettings)
+and Customizing Your Linux iSCSI Settings
+(http://docs.aws.amazon.com/storagegateway/latest/userguide/ConfiguringiSCSIClientInitiatorRedHatClient.html#CustomizeLinuxiSCSISettings),
+respectively.
 
 
 =head2 UpdateMaintenanceStartTime(DayOfWeek => Int, GatewayARN => Str, HourOfDay => Int, MinuteOfHour => Int)

@@ -49,10 +49,13 @@ is used only when exporting a snapshot for external access.
 When using this parameter to export a snapshot, be sure Amazon
 ElastiCache has the needed permissions to this S3 bucket. For more
 information, see Step 2: Grant ElastiCache Access to Your Amazon S3
-Bucket in the I<Amazon ElastiCache User Guide>.
+Bucket
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/Snapshots.Exporting.html#Snapshots.Exporting.GrantAccess)
+in the I<Amazon ElastiCache User Guide>.
 
-For more information, see Exporting a Snapshot in the I<Amazon
-ElastiCache User Guide>.
+For more information, see Exporting a Snapshot
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/Snapshots.Exporting.html)
+in the I<Amazon ElastiCache User Guide>.
 
 
 

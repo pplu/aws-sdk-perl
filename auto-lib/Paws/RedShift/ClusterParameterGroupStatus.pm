@@ -43,8 +43,9 @@ Describes the status of a parameter group.
   The list of parameter statuses.
 
 For more information about parameters and parameter groups, go to
-Amazon Redshift Parameter Groups in the I<Amazon Redshift Cluster
-Management Guide>.
+Amazon Redshift Parameter Groups
+(http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html)
+in the I<Amazon Redshift Cluster Management Guide>.
 
 
 =head2 ParameterApplyStatus => Str

@@ -51,7 +51,9 @@ cluster.
 =head2 DedicatedMasterEnabled => Bool
 
   A boolean value to indicate whether a dedicated master node is enabled.
-See About Dedicated Master Nodes for more information.
+See About Dedicated Master Nodes
+(http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-managedomains.html#es-managedomains-dedicatedmasternodes)
+for more information.
 
 
 =head2 DedicatedMasterType => Str
@@ -72,7 +74,9 @@ See About Dedicated Master Nodes for more information.
 =head2 ZoneAwarenessEnabled => Bool
 
   A boolean value to indicate whether zone awareness is enabled. See
-About Zone Awareness for more information.
+About Zone Awareness
+(http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-managedomains.html#es-managedomains-zoneawareness)
+for more information.
 
 
 

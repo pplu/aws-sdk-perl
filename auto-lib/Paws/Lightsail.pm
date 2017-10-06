@@ -501,11 +501,12 @@ the Lightsail console or by using the API or command-line interface
 (CLI).
 
 For more information about Lightsail concepts and tasks, see the
-Lightsail Dev Guide.
+Lightsail Dev Guide (https://lightsail.aws.amazon.com/ls/docs/all).
 
 To use the Lightsail API or the CLI, you will need to use AWS Identity
 and Access Management (IAM) to generate access keys. For details about
-how to set this up, see the Lightsail Dev Guide.
+how to set this up, see the Lightsail Dev Guide
+(http://lightsail.aws.amazon.com/ls/docs/how-to/article/lightsail-how-to-set-up-access-keys-to-use-sdk-api-cli).
 
 =head1 METHODS
 

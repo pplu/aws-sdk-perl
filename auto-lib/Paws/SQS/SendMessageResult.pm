@@ -23,7 +23,8 @@ Paws::SQS::SendMessageResult
 An MD5 digest of the non-URL-encoded message attribute string. You can
 use this attribute to verify that Amazon SQS received the message
 correctly. Amazon SQS URL-decodes the message before creating the MD5
-digest. For information about MD5, see RFC1321.
+digest. For information about MD5, see RFC1321
+(https://www.ietf.org/rfc/rfc1321.txt).
 
 
 =head2 MD5OfMessageBody => Str
@@ -31,14 +32,16 @@ digest. For information about MD5, see RFC1321.
 An MD5 digest of the non-URL-encoded message attribute string. You can
 use this attribute to verify that Amazon SQS received the message
 correctly. Amazon SQS URL-decodes the message before creating the MD5
-digest. For information about MD5, see RFC1321.
+digest. For information about MD5, see RFC1321
+(https://www.ietf.org/rfc/rfc1321.txt).
 
 
 =head2 MessageId => Str
 
 An attribute containing the C<MessageId> of the message sent to the
-queue. For more information, see Queue and Message Identifiers in the
-I<Amazon SQS Developer Guide>.
+queue. For more information, see Queue and Message Identifiers
+(http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-queue-message-identifiers.html)
+in the I<Amazon SQS Developer Guide>.
 
 
 =head2 SequenceNumber => Str

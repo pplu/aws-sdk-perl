@@ -46,7 +46,9 @@ The ID of the project.
 
 The role assigned to the user in the project. Project roles have
 different levels of access. For more information, see Working with
-Teams in the I<AWS CodeStar User Guide>.
+Teams
+(http://docs.aws.amazon.com/codestar/latest/userguide/working-with-teams.html)
+in the I<AWS CodeStar User Guide>.
 
 
 

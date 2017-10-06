@@ -65,8 +65,9 @@ event primarily concerns. Any number, including zero, may be present.
 
 =head2 Time => Str
 
-  The timestamp of the event, per RFC3339. If no timestamp is provided,
-the timestamp of the PutEvents call is used.
+  The timestamp of the event, per RFC3339
+(https://www.rfc-editor.org/rfc/rfc3339.txt). If no timestamp is
+provided, the timestamp of the PutEvents call is used.
 
 
 

@@ -56,7 +56,8 @@ technique to measure performance.
 =back
 
 For more information about performance metrics, please see the Amazon
-Machine Learning Developer Guide.
+Machine Learning Developer Guide
+(http://docs.aws.amazon.com/machine-learning/latest/dg).
 
 =head1 ATTRIBUTES
 

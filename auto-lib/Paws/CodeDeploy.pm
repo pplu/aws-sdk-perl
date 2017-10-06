@@ -445,18 +445,22 @@ B<AWS CodeDeploy Information Resources>
 =item *
 
 AWS CodeDeploy User Guide
+(http://docs.aws.amazon.com/codedeploy/latest/userguide)
 
 =item *
 
 AWS CodeDeploy API Reference Guide
+(http://docs.aws.amazon.com/codedeploy/latest/APIReference/)
 
 =item *
 
 AWS CLI Reference for AWS CodeDeploy
+(http://docs.aws.amazon.com/cli/latest/reference/deploy/index.html)
 
 =item *
 
 AWS CodeDeploy Developer Forum
+(https://forums.aws.amazon.com/forum.jspa?forumID=179)
 
 =back
 

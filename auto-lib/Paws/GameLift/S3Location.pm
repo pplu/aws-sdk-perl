@@ -36,7 +36,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GameLift::S
 Location in Amazon Simple Storage Service (Amazon S3) where build files
 can be stored for access by Amazon GameLift. This location is specified
 in a CreateBuild request. For more details, see the Create a Build with
-Files in Amazon S3.
+Files in Amazon S3
+(http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-build-cli-uploading.html#gamelift-build-cli-uploading-create-build).
 
 =head1 ATTRIBUTES
 
@@ -53,8 +54,10 @@ Files in Amazon S3.
 
 =head2 RoleArn => Str
 
-  Amazon Resource Name (ARN) for the access role that allows Amazon
-GameLift to access your S3 bucket.
+  Amazon Resource Name (ARN
+(http://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html))
+for the access role that allows Amazon GameLift to access your S3
+bucket.
 
 
 

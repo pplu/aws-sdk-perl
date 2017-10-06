@@ -40,7 +40,7 @@ By default, the string must be 7-bit ASCII. If the text must contain
 any other characters, then you must use MIME encoded-word syntax (RFC
 2047) instead of a literal string. MIME encoded-word syntax uses the
 following form: C<=?charset?encoding?encoded-text?=>. For more
-information, see RFC 2047.
+information, see RFC 2047 (https://tools.ietf.org/html/rfc2047).
 
 =head1 ATTRIBUTES
 

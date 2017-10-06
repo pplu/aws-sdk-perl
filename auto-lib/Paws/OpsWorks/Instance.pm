@@ -87,6 +87,7 @@ agent version.
 
   A custom AMI ID to be used to create the instance. For more
 information, see Instances
+(http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html)
 
 
 =head2 Architecture => Str
@@ -107,7 +108,7 @@ information, see Instances
 =head2 AvailabilityZone => Str
 
   The instance Availability Zone. For more information, see Regions and
-Endpoints.
+Endpoints (http://docs.aws.amazon.com/general/latest/gr/rande.html).
 
 
 =head2 BlockDeviceMappings => ArrayRef[L<Paws::OpsWorks::BlockDeviceMapping>]
@@ -143,7 +144,8 @@ block device mappings.
 
 =head2 ElasticIp => Str
 
-  The instance Elastic IP address .
+  The instance Elastic IP address
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html).
 
 
 =head2 Hostname => Str
@@ -178,7 +180,8 @@ that your instances have the latest security updates.
 =head2 InstanceProfileArn => Str
 
   The ARN of the instance's IAM profile. For more information about IAM
-ARNs, see Using Identifiers.
+ARNs, see Using Identifiers
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html).
 
 
 =head2 InstanceType => Str
@@ -245,7 +248,8 @@ DescribeServiceErrors.
 =head2 RootDeviceType => Str
 
   The instance's root device type. For more information, see Storage for
-the Root Device.
+the Root Device
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device).
 
 
 =head2 RootDeviceVolumeId => Str

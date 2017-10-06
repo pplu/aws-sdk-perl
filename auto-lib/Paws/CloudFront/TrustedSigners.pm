@@ -40,8 +40,9 @@ If you want to require signed URLs in requests for objects in the
 target origin that match the C<PathPattern> for this cache behavior,
 specify C<true> for C<Enabled>, and specify the applicable values for
 C<Quantity> and C<Items>. For more information, see Serving Private
-Content through CloudFront in the I<Amazon Amazon CloudFront Developer
-Guide>.
+Content through CloudFront
+(http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html)
+in the I<Amazon Amazon CloudFront Developer Guide>.
 
 If you don't want to require signed URLs in requests for objects that
 match C<PathPattern>, specify C<false> for C<Enabled> and C<0> for

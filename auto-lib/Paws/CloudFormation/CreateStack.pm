@@ -60,12 +60,23 @@ specifying this parameter.
 
 The only valid values are C<CAPABILITY_IAM> and
 C<CAPABILITY_NAMED_IAM>. The following resources require you to specify
-this parameter: AWS::IAM::AccessKey, AWS::IAM::Group,
-AWS::IAM::InstanceProfile, AWS::IAM::Policy, AWS::IAM::Role,
-AWS::IAM::User, and AWS::IAM::UserToGroupAddition. If your stack
-template contains these resources, we recommend that you review all
-permissions associated with them and edit their permissions if
-necessary.
+this parameter: AWS::IAM::AccessKey
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-accesskey.html),
+AWS::IAM::Group
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-group.html),
+AWS::IAM::InstanceProfile
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html),
+AWS::IAM::Policy
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-policy.html),
+AWS::IAM::Role
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html),
+AWS::IAM::User
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-user.html),
+and AWS::IAM::UserToGroupAddition
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-addusertogroup.html).
+If your stack template contains these resources, we recommend that you
+review all permissions associated with them and edit their permissions
+if necessary.
 
 If you have IAM resources, you can specify either capability. If you
 have IAM resources with custom names, you must specify
@@ -73,7 +84,8 @@ C<CAPABILITY_NAMED_IAM>. If you don't specify this parameter, this
 action returns an C<InsufficientCapabilities> error.
 
 For more information, see Acknowledging IAM Resources in AWS
-CloudFormation Templates.
+CloudFormation Templates
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html#capabilities).
 
 
 
@@ -116,12 +128,15 @@ Default: C<false>
 Whether to enable termination protection on the specified stack. If a
 user attempts to delete a stack with termination protection enabled,
 the operation fails and the stack remains unchanged. For more
-information, see Protecting a Stack From Being Deleted in the I<AWS
-CloudFormation User Guide>. Termination protection is disabled on
-stacks by default.
+information, see Protecting a Stack From Being Deleted
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-protect-stacks.html)
+in the I<AWS CloudFormation User Guide>. Termination protection is
+disabled on stacks by default.
 
-For nested stacks, termination protection is set on the root stack and
-cannot be changed directly on the nested stack.
+For nested stacks
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-nested-stacks.html),
+termination protection is set on the root stack and cannot be changed
+directly on the nested stack.
 
 
 
@@ -146,7 +161,9 @@ Valid values are: C<"DO_NOTHING">, C<"ROLLBACK">, C<"DELETE">
 =head2 Parameters => ArrayRef[L<Paws::CloudFormation::Parameter>]
 
 A list of C<Parameter> structures that specify input parameters for the
-stack. For more information, see the Parameter data type.
+stack. For more information, see the Parameter
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_Parameter.html)
+data type.
 
 
 
@@ -167,7 +184,8 @@ creating, the stack creation fails. By default, AWS CloudFormation
 grants permissions to all resource types. AWS Identity and Access
 Management (IAM) uses this parameter for AWS CloudFormation-specific
 condition keys in IAM policies. For more information, see Controlling
-Access with AWS Identity and Access Management.
+Access with AWS Identity and Access Management
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html).
 
 
 
@@ -211,9 +229,10 @@ longer than 128 characters.
 =head2 StackPolicyBody => Str
 
 Structure containing the stack policy body. For more information, go to
-Prevent Updates to Stack Resources in the I<AWS CloudFormation User
-Guide>. You can specify either the C<StackPolicyBody> or the
-C<StackPolicyURL> parameter, but not both.
+Prevent Updates to Stack Resources
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/protect-stack-resources.html)
+in the I<AWS CloudFormation User Guide>. You can specify either the
+C<StackPolicyBody> or the C<StackPolicyURL> parameter, but not both.
 
 
 
@@ -238,7 +257,9 @@ number of 50 tags can be specified.
 
 Structure containing the template body with a minimum length of 1 byte
 and a maximum length of 51,200 bytes. For more information, go to
-Template Anatomy in the AWS CloudFormation User Guide.
+Template Anatomy
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
+in the AWS CloudFormation User Guide.
 
 Conditional: You must specify either the C<TemplateBody> or the
 C<TemplateURL> parameter, but not both.
@@ -249,8 +270,9 @@ C<TemplateURL> parameter, but not both.
 
 Location of file containing the template body. The URL must point to a
 template (max size: 460,800 bytes) that is located in an Amazon S3
-bucket. For more information, go to the Template Anatomy in the AWS
-CloudFormation User Guide.
+bucket. For more information, go to the Template Anatomy
+(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
+in the AWS CloudFormation User Guide.
 
 Conditional: You must specify either the C<TemplateBody> or the
 C<TemplateURL> parameter, but not both.

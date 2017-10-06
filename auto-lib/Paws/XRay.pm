@@ -136,8 +136,9 @@ C<account> with the value C<12345>:
 C<annotation.account = "12345">
 
 For a full list of indexed fields and keywords that you can use in
-filter expressions, see Using Filter Expressions in the I<AWS X-Ray
-Developer Guide>.
+filter expressions, see Using Filter Expressions
+(http://docs.aws.amazon.com/xray/latest/devguide/xray-console-filters.html)
+in the I<AWS X-Ray Developer Guide>.
 
 
 =head2 PutTelemetryRecords(TelemetryRecords => ArrayRef[L<Paws::XRay::TelemetryRecord>], [EC2InstanceId => Str, Hostname => Str, ResourceARN => Str])
@@ -161,8 +162,9 @@ batches. A segment document can be a completed segment, an in-progress
 segment, or an array of subsegments.
 
 Segments must include the following fields. For the full segment
-document schema, see AWS X-Ray Segment Documents in the I<AWS X-Ray
-Developer Guide>.
+document schema, see AWS X-Ray Segment Documents
+(http://docs.aws.amazon.com/xray/latest/devguide/xray-api-segmentdocuments.html)
+in the I<AWS X-Ray Developer Guide>.
 
 B<Required Segment Document Fields>
 

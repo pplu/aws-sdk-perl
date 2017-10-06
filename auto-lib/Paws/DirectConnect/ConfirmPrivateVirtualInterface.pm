@@ -40,7 +40,9 @@ ID of the virtual private gateway that will be attached to the virtual
 interface.
 
 A virtual private gateway can be managed via the Amazon Virtual Private
-Cloud (VPC) console or the EC2 CreateVpnGateway action.
+Cloud (VPC) console or the EC2 CreateVpnGateway
+(http://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-CreateVpnGateway.html)
+action.
 
 Default: None
 

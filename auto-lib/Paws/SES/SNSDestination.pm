@@ -37,7 +37,8 @@ Service (Amazon SNS) event destination.
 Event destinations, such as Amazon SNS, are associated with
 configuration sets, which enable you to publish email sending events.
 For information about using configuration sets, see the I< Amazon SES
-Developer Guide.>
+Developer Guide
+(http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html).>
 
 =head1 ATTRIBUTES
 
@@ -47,7 +48,8 @@ Developer Guide.>
   The ARN of the Amazon SNS topic that email sending events will be
 published to. An example of an Amazon SNS topic ARN is
 C<arn:aws:sns:us-west-2:123456789012:MyTopic>. For more information
-about Amazon SNS topics, see the I< Amazon SNS Developer Guide.>
+about Amazon SNS topics, see the I< Amazon SNS Developer Guide
+(http://docs.aws.amazon.com/sns/latest/dg/CreateTopic.html).>
 
 
 

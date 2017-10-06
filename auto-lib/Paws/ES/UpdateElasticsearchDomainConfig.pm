@@ -51,7 +51,9 @@ IAM access policy as a JSON-formatted string.
 Modifies the advanced option to allow references to indices in an HTTP
 request body. Must be C<false> when configuring access to individual
 sub-resources. By default, the value is C<true>. See Configuration
-Advanced Options for more information.
+Advanced Options
+(http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-advanced-options)
+for more information.
 
 
 

@@ -58,7 +58,8 @@ Describes an Amazon EBS volume configuration.
 
 =head2 RaidLevel => Int
 
-  The volume RAID level.
+  The volume RAID level
+(http://en.wikipedia.org/wiki/Standard_RAID_levels).
 
 
 =head2 B<REQUIRED> Size => Int

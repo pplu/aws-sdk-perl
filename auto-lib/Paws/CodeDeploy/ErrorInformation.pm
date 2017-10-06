@@ -40,7 +40,10 @@ Information about a deployment error.
 =head2 Code => Str
 
   For information about additional error codes, see Error Codes for AWS
-CodeDeploy in the AWS CodeDeploy User Guide.
+CodeDeploy
+(http://docs.aws.amazon.com/codedeploy/latest/userguide/error-codes.html)
+in the AWS CodeDeploy User Guide
+(http://docs.aws.amazon.com/codedeploy/latest/userguide).
 
 The error code:
 

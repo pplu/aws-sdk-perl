@@ -165,12 +165,14 @@ GetOpenIdToken, which returns the OpenID token necessary to call STS
 and retrieve AWS credentials. This call expects the same C<Logins> map
 as the C<GetId> call, as well as the C<IdentityID> originally returned
 by C<GetId>. The token returned by C<GetOpenIdToken> can be passed to
-the STS operation AssumeRoleWithWebIdentity to retrieve AWS
-credentials.
+the STS operation AssumeRoleWithWebIdentity
+(http://docs.aws.amazon.com/STS/latest/APIReference/API_AssumeRoleWithWebIdentity.html)
+to retrieve AWS credentials.
 
 If you want to use Amazon Cognito in an Android, iOS, or Unity
 application, you will probably want to make API calls via the AWS
-Mobile SDK. To learn more, see the AWS Mobile SDK Developer Guide.
+Mobile SDK. To learn more, see the AWS Mobile SDK Developer Guide
+(http://docs.aws.amazon.com/mobile/index.html).
 
 =head1 METHODS
 

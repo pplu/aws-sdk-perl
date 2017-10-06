@@ -41,8 +41,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 A set of key-value pairs that represents additional authenticated data.
 
-For more information, see Encryption Context in the I<AWS Key
-Management Service Developer Guide>.
+For more information, see Encryption Context
+(http://docs.aws.amazon.com/kms/latest/developerguide/encryption-context.html)
+in the I<AWS Key Management Service Developer Guide>.
 
 
 
@@ -50,8 +51,9 @@ Management Service Developer Guide>.
 
 A list of grant tokens.
 
-For more information, see Grant Tokens in the I<AWS Key Management
-Service Developer Guide>.
+For more information, see Grant Tokens
+(http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token)
+in the I<AWS Key Management Service Developer Guide>.
 
 
 

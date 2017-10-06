@@ -60,7 +60,8 @@ Represents information about the remote access session.
 
   The billing method of the remote access session. Possible values
 include C<METERED> or C<UNMETERED>. For more information about metered
-devices, see AWS Device Farm terminology."
+devices, see AWS Device Farm terminology
+(http://docs.aws.amazon.com/devicefarm/latest/developerguide/welcome.html#welcome-terminology)."
 
 
 =head2 ClientId => Str

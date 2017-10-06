@@ -35,7 +35,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticBean
 A link to another environment, defined in the environment's manifest.
 Links provide connection information in system properties that can be
 used to connect to another environment in the same group. See
-Environment Manifest (env.yaml) for details.
+Environment Manifest (env.yaml)
+(http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/environment-cfg-manifest.html)
+for details.
 
 =head1 ATTRIBUTES
 

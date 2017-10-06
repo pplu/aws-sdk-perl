@@ -79,6 +79,7 @@ If you are using versioning, you can also provide a qualified function
 ARN (ARN that is qualified with function version or alias name as
 suffix). For more information about versioning, see AWS Lambda Function
 Versioning and Aliases
+(http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html)
 
 AWS Lambda also allows you to specify only the function name with the
 account ID qualifier (for example, C<account-id:Thumbnail>).
@@ -92,6 +93,7 @@ only the function name, it is limited to 64 characters in length.
 
 The position in the stream where AWS Lambda should start reading. Valid
 only for Kinesis streams. For more information, see ShardIteratorType
+(http://docs.aws.amazon.com/kinesis/latest/APIReference/API_GetShardIterator.html#Kinesis-GetShardIterator-request-ShardIteratorType)
 in the I<Amazon Kinesis API Reference>.
 
 Valid values are: C<"TRIM_HORIZON">, C<"LATEST">, C<"AT_TIMESTAMP">
@@ -99,11 +101,13 @@ Valid values are: C<"TRIM_HORIZON">, C<"LATEST">, C<"AT_TIMESTAMP">
 =head2 StartingPositionTimestamp => Str
 
 The timestamp of the data record from which to start reading. Used with
-shard iterator type AT_TIMESTAMP. If a record with this exact timestamp
-does not exist, the iterator returned is for the next (later) record.
-If the timestamp is older than the current trim horizon, the iterator
-returned is for the oldest untrimmed data record (TRIM_HORIZON). Valid
-only for Kinesis streams.
+shard iterator type
+(http://docs.aws.amazon.com/kinesis/latest/APIReference/API_GetShardIterator.html#Kinesis-GetShardIterator-request-ShardIteratorType)
+AT_TIMESTAMP. If a record with this exact timestamp does not exist, the
+iterator returned is for the next (later) record. If the timestamp is
+older than the current trim horizon, the iterator returned is for the
+oldest untrimmed data record (TRIM_HORIZON). Valid only for Kinesis
+streams.
 
 
 

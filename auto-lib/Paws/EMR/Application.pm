@@ -39,8 +39,9 @@ to the cluster. This structure contains a list of strings that
 indicates the software to use with the cluster and accepts a user
 argument list. Amazon EMR accepts and forwards the argument list to the
 corresponding installation script as bootstrap action argument. For
-more information, see Using the MapR Distribution for Hadoop. Currently
-supported values are:
+more information, see Using the MapR Distribution for Hadoop
+(http://docs.aws.amazon.com/ElasticMapReduce/latest/ManagementGuide/emr-mapr.html).
+Currently supported values are:
 
 =over
 

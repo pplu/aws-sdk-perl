@@ -84,8 +84,9 @@ ranges).
 =head2 RoleARN => Str
 
 The new role Amazon Resource Name (ARN) that you want to associate with
-this job. To create a role ARN, use the CreateRoleAWS Identity and
-Access Management (IAM) API action.
+this job. To create a role ARN, use the CreateRole
+(http://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html)AWS
+Identity and Access Management (IAM) API action.
 
 
 

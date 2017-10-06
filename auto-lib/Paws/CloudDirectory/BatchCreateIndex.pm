@@ -43,7 +43,9 @@ information, see CreateIndex and BatchReadRequest$Operations.
 
 =head2 BatchReferenceName => Str
 
-  The batch reference name. See Batches for more information.
+  The batch reference name. See Batches
+(http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_advanced.html#batches)
+for more information.
 
 
 =head2 B<REQUIRED> IsUnique => Bool

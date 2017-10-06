@@ -45,8 +45,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 Using the C<ClientContext> you can pass client-specific information to
 the Lambda function you are invoking. You can then process the client
 information in your Lambda function as you choose through the context
-variable. For an example of a C<ClientContext> JSON, see PutEvents in
-the I<Amazon Mobile Analytics API Reference and User Guide>.
+variable. For an example of a C<ClientContext> JSON, see PutEvents
+(http://docs.aws.amazon.com/mobileanalytics/latest/ug/PutEvents.html)
+in the I<Amazon Mobile Analytics API Reference and User Guide>.
 
 The ClientContext JSON must be base64-encoded.
 
