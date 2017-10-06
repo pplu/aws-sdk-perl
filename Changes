@@ -1,6 +1,9 @@
 0.35
  - Fix Bug: Correctly throw Paws::Exceptions even if there is no information
             in the body / headers (#190 svn-schubert) (#198 ilmari)
+ - Work on S3 (sven-schubert)
+   - No need to specify ContentMD5 parameter anymore (it gets autocalculated)
+   - Added support for responses with properties returned in their payload
  - New API: MobileHub
  - New API: MigrationHub
  - New API: Glue
