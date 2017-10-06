@@ -117,8 +117,9 @@ Snapshot copy grant
 =back
 
 For more information about Amazon Redshift resource types and
-constructing ARNs, go to Constructing an Amazon Redshift Amazon
-Resource Name (ARN) in the Amazon Redshift Cluster Management Guide.
+constructing ARNs, go to Specifying Policy Elements: Actions, Effects,
+Resources, and Principals in the Amazon Redshift Cluster Management
+Guide.
 
 
 

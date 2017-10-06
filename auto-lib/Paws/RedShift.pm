@@ -1294,15 +1294,26 @@ providing the name as a parameter. By default, the past hour of events
 are returned.
 
 
-=head2 DescribeEventSubscriptions([Marker => Str, MaxRecords => Int, SubscriptionName => Str])
+=head2 DescribeEventSubscriptions([Marker => Str, MaxRecords => Int, SubscriptionName => Str, TagKeys => ArrayRef[Str|Undef], TagValues => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::RedShift::DescribeEventSubscriptions>
 
 Returns: a L<Paws::RedShift::EventSubscriptionsMessage> instance
 
-  Lists descriptions of all the Amazon Redshift event notifications
-subscription for a customer account. If you specify a subscription
+  Lists descriptions of all the Amazon Redshift event notification
+subscriptions for a customer account. If you specify a subscription
 name, lists the description for that subscription.
+
+If you specify both tag keys and tag values in the same request, Amazon
+Redshift returns all event notification subscriptions that match any
+combination of the specified keys and values. For example, if you have
+C<owner> and C<environment> for tag keys, and C<admin> and C<test> for
+tag values, all subscriptions that have any combination of those values
+are returned.
+
+If both tag keys and values are omitted from the request, subscriptions
+are returned regardless of whether they have tag keys or values
+associated with them.
 
 
 =head2 DescribeHsmClientCertificates([HsmClientCertificateIdentifier => Str, Marker => Str, MaxRecords => Int, TagKeys => ArrayRef[Str|Undef], TagValues => ArrayRef[Str|Undef]])
@@ -1542,21 +1553,21 @@ Each argument is described in detail in: L<Paws::RedShift::GetClusterCredentials
 Returns: a L<Paws::RedShift::ClusterCredentials> instance
 
   Returns a database user name and temporary password with temporary
-authorization to log in to an Amazon Redshift database. The action
+authorization to log on to an Amazon Redshift database. The action
 returns the database user name prefixed with C<IAM:> if C<AutoCreate>
 is C<False> or C<IAMA:> if C<AutoCreate> is C<True>. You can optionally
 specify one or more database user groups that the user will join at log
-in. By default, the temporary credentials expire in 900 seconds. You
+on. By default, the temporary credentials expire in 900 seconds. You
 can optionally specify a duration between 900 seconds (15 minutes) and
-3600 seconds (60 minutes). For more information, see Generating IAM
-Database User Credentials in the Amazon Redshift Cluster Management
-Guide.
+3600 seconds (60 minutes). For more information, see Using IAM
+Authentication to Generate Database User Credentials in the Amazon
+Redshift Cluster Management Guide.
 
-The IAM user or role that executes GetClusterCredentials must have an
-IAM policy attached that allows the C<redshift:GetClusterCredentials>
-action with access to the C<dbuser> resource on the cluster. The user
-name specified for C<dbuser> in the IAM policy and the user name
-specified for the C<DbUser> parameter must match.
+The AWS Identity and Access Management (IAM)user or role that executes
+GetClusterCredentials must have an IAM policy attached that allows
+access to all necessary actions and resources. For more information
+about permissions, see Resource Policies for GetClusterCredentials in
+the Amazon Redshift Cluster Management Guide.
 
 If the C<DbGroups> parameter is specified, the IAM policy must allow
 the C<redshift:JoinGroup> action with access to the listed C<dbgroups>.
@@ -1884,9 +1895,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::RedShift::EventsMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllEventSubscriptions(sub { },[Marker => Str, MaxRecords => Int, SubscriptionName => Str])
+=head2 DescribeAllEventSubscriptions(sub { },[Marker => Str, MaxRecords => Int, SubscriptionName => Str, TagKeys => ArrayRef[Str|Undef], TagValues => ArrayRef[Str|Undef]])
 
-=head2 DescribeAllEventSubscriptions([Marker => Str, MaxRecords => Int, SubscriptionName => Str])
+=head2 DescribeAllEventSubscriptions([Marker => Str, MaxRecords => Int, SubscriptionName => Str, TagKeys => ArrayRef[Str|Undef], TagValues => ArrayRef[Str|Undef]])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
