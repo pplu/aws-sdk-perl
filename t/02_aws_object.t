@@ -22,7 +22,7 @@ use Test::More;
 use Test::Exception;
 
 {
-  # Get an Paws object, with defaults and then a service
+  # Get a Paws object, with defaults, and then get a service
   my $aws = Paws->new(config => { credentials => 'Test::CustomCredentials' });
   ok($aws->config->caller->isa('Paws::Net::Caller'), 'Got default caller');
   my $svc = $aws->service('SQS', region => 'eu-west-1');
