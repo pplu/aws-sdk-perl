@@ -58,11 +58,11 @@ package Paws::Net::JsonResponse;
       }
     }
 
-    my $code = $struct->{__type};
+    my $code = $struct->{__type} // 'UnrecognizedError';
     if ($code =~ m/#/) {
       $code = (split /#/, $code)[1];
     }
-    $request_id = $headers->{ 'x-amzn-requestid' };
+    $request_id = $headers->{ 'x-amzn-requestid' } // '';
 
     Paws::Exception->new(
       message => $message,
