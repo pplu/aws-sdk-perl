@@ -45,7 +45,7 @@ The resource ID you want to tag.
 
 Specifies the type of resource you are tagging.
 
-Valid values are: C<"ManagedInstance">, C<"MaintenanceWindow">, C<"Parameter">
+Valid values are: C<"Document">, C<"ManagedInstance">, C<"MaintenanceWindow">, C<"Parameter">, C<"PatchBaseline">
 
 =head2 B<REQUIRED> Tags => ArrayRef[L<Paws::SSM::Tag>]
 

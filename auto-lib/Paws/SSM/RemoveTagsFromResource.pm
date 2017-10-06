@@ -45,7 +45,7 @@ The resource ID for which you want to remove tags.
 
 The type of resource of which you want to remove a tag.
 
-Valid values are: C<"ManagedInstance">, C<"MaintenanceWindow">, C<"Parameter">
+Valid values are: C<"Document">, C<"ManagedInstance">, C<"MaintenanceWindow">, C<"Parameter">, C<"PatchBaseline">
 
 =head2 B<REQUIRED> TagKeys => ArrayRef[Str|Undef]
 

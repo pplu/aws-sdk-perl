@@ -704,6 +704,10 @@ Manager User Guide.
 To get started, verify prerequisites and configure managed instances.
 For more information, see Systems Manager Prerequisites.
 
+For information about other API actions you can perform on Amazon EC2
+instances, see the Amazon EC2 API Reference. For information about how
+to use a Query API, see Making API Requests.
+
 =head1 METHODS
 
 =head2 AddTagsToResource(ResourceId => Str, ResourceType => Str, Tags => ArrayRef[L<Paws::SSM::Tag>])
@@ -713,14 +717,15 @@ Each argument is described in detail in: L<Paws::SSM::AddTagsToResource>
 Returns: a L<Paws::SSM::AddTagsToResourceResult> instance
 
   Adds or overwrites one or more tags for the specified resource. Tags
-are metadata that you assign to your managed instances, Maintenance
-Windows, or Parameter Store parameters. Tags enable you to categorize
-your resources in different ways, for example, by purpose, owner, or
-environment. Each tag consists of a key and an optional value, both of
-which you define. For example, you could define a set of tags for your
-account's managed instances that helps you track each instance's owner
-and stack level. For example: Key=Owner and Value=DbAdmin, SysAdmin, or
-Dev. Or Key=Stack and Value=Production, Pre-Production, or Test.
+are metadata that you can assign to your documents, managed instances,
+Maintenance Windows, Parameter Store parameters, and patch baselines.
+Tags enable you to categorize your resources in different ways, for
+example, by purpose, owner, or environment. Each tag consists of a key
+and an optional value, both of which you define. For example, you could
+define a set of tags for your account's managed instances that helps
+you track each instance's owner and stack level. For example: Key=Owner
+and Value=DbAdmin, SysAdmin, or Dev. Or Key=Stack and Value=Production,
+Pre-Production, or Test.
 
 Each resource can have a maximum of 10 tags.
 
@@ -1022,7 +1027,7 @@ Each argument is described in detail in: L<Paws::SSM::DescribeDocument>
 
 Returns: a L<Paws::SSM::DescribeDocumentResult> instance
 
-  Describes the specified SSM document.
+  Describes the specified Systems Manager document.
 
 
 =head2 DescribeDocumentPermission(Name => Str, PermissionType => Str)
@@ -1260,7 +1265,7 @@ Each argument is described in detail in: L<Paws::SSM::GetDocument>
 
 Returns: a L<Paws::SSM::GetDocumentResult> instance
 
-  Gets the contents of the specified SSM document.
+  Gets the contents of the specified Systems Manager document.
 
 
 =head2 GetInventory([Filters => ArrayRef[L<Paws::SSM::InventoryFilter>], MaxResults => Int, NextToken => Str, ResultAttributes => ArrayRef[L<Paws::SSM::ResultAttribute>]])
@@ -1462,13 +1467,13 @@ associations, patches, or custom compliance types according to the
 filter criteria that you specify.
 
 
-=head2 ListDocuments([DocumentFilterList => ArrayRef[L<Paws::SSM::DocumentFilter>], MaxResults => Int, NextToken => Str])
+=head2 ListDocuments([DocumentFilterList => ArrayRef[L<Paws::SSM::DocumentFilter>], Filters => ArrayRef[L<Paws::SSM::DocumentKeyValuesFilter>], MaxResults => Int, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::SSM::ListDocuments>
 
 Returns: a L<Paws::SSM::ListDocumentsResult> instance
 
-  Describes one or more of your SSM documents.
+  Describes one or more of your Systems Manager documents.
 
 
 =head2 ListDocumentVersions(Name => Str, [MaxResults => Int, NextToken => Str])
@@ -1857,9 +1862,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::SSM::ListCommandsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllDocuments(sub { },[DocumentFilterList => ArrayRef[L<Paws::SSM::DocumentFilter>], MaxResults => Int, NextToken => Str])
+=head2 ListAllDocuments(sub { },[DocumentFilterList => ArrayRef[L<Paws::SSM::DocumentFilter>], Filters => ArrayRef[L<Paws::SSM::DocumentKeyValuesFilter>], MaxResults => Int, NextToken => Str])
 
-=head2 ListAllDocuments([DocumentFilterList => ArrayRef[L<Paws::SSM::DocumentFilter>], MaxResults => Int, NextToken => Str])
+=head2 ListAllDocuments([DocumentFilterList => ArrayRef[L<Paws::SSM::DocumentFilter>], Filters => ArrayRef[L<Paws::SSM::DocumentKeyValuesFilter>], MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

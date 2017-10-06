@@ -17,7 +17,7 @@ Paws::SSM::ListDocumentsResult
 
 =head2 DocumentIdentifiers => ArrayRef[L<Paws::SSM::DocumentIdentifier>]
 
-The names of the SSM documents.
+The names of the Systems Manager documents.
 
 
 =head2 NextToken => Str

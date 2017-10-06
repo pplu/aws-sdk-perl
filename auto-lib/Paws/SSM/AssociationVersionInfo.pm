@@ -68,8 +68,8 @@ version was created.
 
 =head2 DocumentVersion => Str
 
-  The version of an SSM document used when the association version was
-created.
+  The version of a Systems Manager document used when the association
+version was created.
 
 
 =head2 Name => Str

@@ -79,7 +79,7 @@ schedule.
 
 =head2 Name => Str
 
-  The name of the SSM document.
+  The name of the Systems Manager document.
 
 
 =head2 Overview => L<Paws::SSM::AssociationOverview>

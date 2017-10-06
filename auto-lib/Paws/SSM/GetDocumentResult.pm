@@ -19,7 +19,7 @@ Paws::SSM::GetDocumentResult
 
 =head2 Content => Str
 
-The contents of the SSM document.
+The contents of the Systems Manager document.
 
 
 =head2 DocumentType => Str
@@ -34,7 +34,7 @@ The document version.
 
 =head2 Name => Str
 
-The name of the SSM document.
+The name of the Systems Manager document.
 
 
 =head2 _request_id => Str

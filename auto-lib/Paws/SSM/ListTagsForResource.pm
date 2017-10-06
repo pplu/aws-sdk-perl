@@ -44,7 +44,7 @@ The resource ID for which you want to see a list of tags.
 
 Returns a list of tags for a specific resource type.
 
-Valid values are: C<"ManagedInstance">, C<"MaintenanceWindow">, C<"Parameter">
+Valid values are: C<"Document">, C<"ManagedInstance">, C<"MaintenanceWindow">, C<"Parameter">, C<"PatchBaseline">
 
 
 =head1 SEE ALSO
