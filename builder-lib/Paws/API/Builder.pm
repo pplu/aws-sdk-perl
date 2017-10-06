@@ -786,7 +786,7 @@ Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
     my $pod = Pod::HTML2Pod::convert(
       content => $html,
       a_name => 0,
-      a_href => 0,
+      a_href => 1,
       debug => 0,
     );
     $pod =~ s/=pod//;
