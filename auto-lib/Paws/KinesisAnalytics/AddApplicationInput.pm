@@ -52,7 +52,7 @@ version.
 
 =head2 B<REQUIRED> Input => L<Paws::KinesisAnalytics::Input>
 
-
+The Input to add.
 
 
 

@@ -3,6 +3,7 @@ package Paws::KinesisAnalytics::InputDescription;
   has InAppStreamNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has InputId => (is => 'ro', isa => 'Str');
   has InputParallelism => (is => 'ro', isa => 'Paws::KinesisAnalytics::InputParallelism');
+  has InputProcessingConfigurationDescription => (is => 'ro', isa => 'Paws::KinesisAnalytics::InputProcessingConfigurationDescription');
   has InputSchema => (is => 'ro', isa => 'Paws::KinesisAnalytics::SourceSchema');
   has InputStartingPositionConfiguration => (is => 'ro', isa => 'Paws::KinesisAnalytics::InputStartingPositionConfiguration');
   has KinesisFirehoseInputDescription => (is => 'ro', isa => 'Paws::KinesisAnalytics::KinesisFirehoseInputDescription');
@@ -63,9 +64,17 @@ your application.
 mapped to the streaming source).
 
 
+=head2 InputProcessingConfigurationDescription => L<Paws::KinesisAnalytics::InputProcessingConfigurationDescription>
+
+  The description of the preprocessor that executes on records in this
+input before the application's code is run.
+
+
 =head2 InputSchema => L<Paws::KinesisAnalytics::SourceSchema>
 
-  
+  Describes the format of the data in the streaming source, and how each
+data element maps to corresponding columns in the in-application stream
+that is being created.
 
 
 =head2 InputStartingPositionConfiguration => L<Paws::KinesisAnalytics::InputStartingPositionConfiguration>

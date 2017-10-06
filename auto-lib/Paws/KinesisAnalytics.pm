@@ -24,6 +24,11 @@ package Paws::KinesisAnalytics;
     my $call_object = $self->new_with_coercions('Paws::KinesisAnalytics::AddApplicationInput', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub AddApplicationInputProcessingConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::KinesisAnalytics::AddApplicationInputProcessingConfiguration', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub AddApplicationOutput {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::KinesisAnalytics::AddApplicationOutput', @_);
@@ -47,6 +52,11 @@ package Paws::KinesisAnalytics;
   sub DeleteApplicationCloudWatchLoggingOption {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::KinesisAnalytics::DeleteApplicationCloudWatchLoggingOption', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteApplicationInputProcessingConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::KinesisAnalytics::DeleteApplicationInputProcessingConfiguration', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteApplicationOutput {
@@ -92,7 +102,7 @@ package Paws::KinesisAnalytics;
   
 
 
-  sub operations { qw/AddApplicationCloudWatchLoggingOption AddApplicationInput AddApplicationOutput AddApplicationReferenceDataSource CreateApplication DeleteApplication DeleteApplicationCloudWatchLoggingOption DeleteApplicationOutput DeleteApplicationReferenceDataSource DescribeApplication DiscoverInputSchema ListApplications StartApplication StopApplication UpdateApplication / }
+  sub operations { qw/AddApplicationCloudWatchLoggingOption AddApplicationInput AddApplicationInputProcessingConfiguration AddApplicationOutput AddApplicationReferenceDataSource CreateApplication DeleteApplication DeleteApplicationCloudWatchLoggingOption DeleteApplicationInputProcessingConfiguration DeleteApplicationOutput DeleteApplicationReferenceDataSource DescribeApplication DiscoverInputSchema ListApplications StartApplication StopApplication UpdateApplication / }
 
 1;
 
@@ -156,6 +166,18 @@ version.
 
 This operation requires permissions to perform the
 C<kinesisanalytics:AddApplicationInput> action.
+
+
+=head2 AddApplicationInputProcessingConfiguration(ApplicationName => Str, CurrentApplicationVersionId => Int, InputId => Str, InputProcessingConfiguration => L<Paws::KinesisAnalytics::InputProcessingConfiguration>)
+
+Each argument is described in detail in: L<Paws::KinesisAnalytics::AddApplicationInputProcessingConfiguration>
+
+Returns: a L<Paws::KinesisAnalytics::AddApplicationInputProcessingConfigurationResponse> instance
+
+  Adds an InputProcessingConfiguration to an application. An input
+processor preprocesses records on the input stream before the
+application's SQL code executes. Currently, the only input processor
+available is AWS Lambda.
 
 
 =head2 AddApplicationOutput(ApplicationName => Str, CurrentApplicationVersionId => Int, Output => L<Paws::KinesisAnalytics::Output>)
@@ -276,6 +298,15 @@ information about using CloudWatch log streams with Amazon Kinesis
 Analytics applications, see Working with Amazon CloudWatch Logs.
 
 
+=head2 DeleteApplicationInputProcessingConfiguration(ApplicationName => Str, CurrentApplicationVersionId => Int, InputId => Str)
+
+Each argument is described in detail in: L<Paws::KinesisAnalytics::DeleteApplicationInputProcessingConfiguration>
+
+Returns: a L<Paws::KinesisAnalytics::DeleteApplicationInputProcessingConfigurationResponse> instance
+
+  Deletes an InputProcessingConfiguration from an input.
+
+
 =head2 DeleteApplicationOutput(ApplicationName => Str, CurrentApplicationVersionId => Int, OutputId => Str)
 
 Each argument is described in detail in: L<Paws::KinesisAnalytics::DeleteApplicationOutput>
@@ -326,7 +357,7 @@ C<DescribeApplication> to get the current application versionId, which
 you need to call other operations such as C<Update>.
 
 
-=head2 DiscoverInputSchema(InputStartingPositionConfiguration => L<Paws::KinesisAnalytics::InputStartingPositionConfiguration>, ResourceARN => Str, RoleARN => Str)
+=head2 DiscoverInputSchema([InputProcessingConfiguration => L<Paws::KinesisAnalytics::InputProcessingConfiguration>, InputStartingPositionConfiguration => L<Paws::KinesisAnalytics::InputStartingPositionConfiguration>, ResourceARN => Str, RoleARN => Str, S3Configuration => L<Paws::KinesisAnalytics::S3Configuration>])
 
 Each argument is described in detail in: L<Paws::KinesisAnalytics::DiscoverInputSchema>
 

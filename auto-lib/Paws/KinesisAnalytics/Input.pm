@@ -1,6 +1,7 @@
 package Paws::KinesisAnalytics::Input;
   use Moose;
   has InputParallelism => (is => 'ro', isa => 'Paws::KinesisAnalytics::InputParallelism');
+  has InputProcessingConfiguration => (is => 'ro', isa => 'Paws::KinesisAnalytics::InputProcessingConfiguration');
   has InputSchema => (is => 'ro', isa => 'Paws::KinesisAnalytics::SourceSchema', required => 1);
   has KinesisFirehoseInput => (is => 'ro', isa => 'Paws::KinesisAnalytics::KinesisFirehoseInput');
   has KinesisStreamsInput => (is => 'ro', isa => 'Paws::KinesisAnalytics::KinesisStreamsInput');
@@ -51,6 +52,14 @@ Data from your source will be routed to these in-application input
 streams.
 
 (see Configuring Application Input.
+
+
+=head2 InputProcessingConfiguration => L<Paws::KinesisAnalytics::InputProcessingConfiguration>
+
+  The InputProcessingConfiguration for the Input. An input processor
+transforms records as they are received from the stream, before the
+application's SQL code executes. Currently, the only input processing
+configuration available is InputLambdaProcessor.
 
 
 =head2 B<REQUIRED> InputSchema => L<Paws::KinesisAnalytics::SourceSchema>
