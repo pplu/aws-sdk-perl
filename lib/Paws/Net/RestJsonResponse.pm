@@ -70,7 +70,7 @@ package Paws::Net::RestJsonResponse;
     $request_id = $headers->{ 'x-amzn-requestid' } // '';
 
     Paws::Exception->new(
-      message => $message,
+      message => $message // '',
       code => $code,
       request_id => $request_id,
       http_status => $http_status,
