@@ -46,6 +46,9 @@
  - API update: Pinpoint
  - API update: MTurk
  - API update: Organizations
+ - API update: Route53Domains
+ - API update: KinesisAnalytics
+ - API update: RedShift
 
 0.34 07 Jul 2017
  - New Credential provider: Paws::Credential::ECSContainerProfile (gadgetjunkie)
