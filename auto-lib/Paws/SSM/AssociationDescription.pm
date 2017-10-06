@@ -98,7 +98,7 @@ Describes the parameters for a document.
 
 =head2 Name => Str
 
-  The name of the SSM document.
+  The name of the Systems Manager document.
 
 
 =head2 OutputLocation => L<Paws::SSM::InstanceAssociationOutputLocation>

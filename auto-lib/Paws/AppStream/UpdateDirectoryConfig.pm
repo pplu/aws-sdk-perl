@@ -37,22 +37,21 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DirectoryName => Str
 
-The name of the existing directory configuration to be updated.
+The name of the directory configuration.
 
 
 
 =head2 OrganizationalUnitDistinguishedNames => ArrayRef[Str|Undef]
 
-The list of the distinguished names of organizational units to place
-computer accounts in.
+The distinguished names of the organizational units for computer
+accounts.
 
 
 
 =head2 ServiceAccountCredentials => L<Paws::AppStream::ServiceAccountCredentials>
 
-The I<AccountName> and I<AccountPassword> values for the service
-account, which are used by the streaming instance to connect to the
-directory
+The credentials for the service account used by the streaming instance
+to connect to the directory.
 
 
 

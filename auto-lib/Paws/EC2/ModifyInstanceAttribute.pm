@@ -87,7 +87,7 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 =head2 EbsOptimized => L<Paws::EC2::AttributeBooleanValue>
 
-Specifies whether the instance is optimized for EBS I/O. This
+Specifies whether the instance is optimized for Amazon EBS I/O. This
 optimization provides dedicated throughput to Amazon EBS and an
 optimized configuration stack to provide optimal EBS I/O performance.
 This optimization isn't available with all instance types. Additional
@@ -154,9 +154,9 @@ information, see PV-GRUB.
 =head2 SourceDestCheck => L<Paws::EC2::AttributeBooleanValue>
 
 Specifies whether source/destination checking is enabled. A value of
-C<true> means that checking is enabled, and C<false> means checking is
-disabled. This value must be C<false> for a NAT instance to perform
-NAT.
+C<true> means that checking is enabled, and C<false> means that
+checking is disabled. This value must be C<false> for a NAT instance to
+perform NAT.
 
 
 
@@ -176,9 +176,9 @@ with a PV instance can make it unreachable.
 =head2 UserData => L<Paws::EC2::BlobAttributeValue>
 
 Changes the instance's user data to the specified value. If you are
-using an AWS SDK or command line tool, Base64-encoding is performed for
+using an AWS SDK or command line tool, base64-encoding is performed for
 you, and you can load the text from a file. Otherwise, you must provide
-Base64-encoded text.
+base64-encoded text.
 
 
 

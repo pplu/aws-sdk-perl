@@ -2,10 +2,10 @@ package Paws::S3::Rule;
   use Moose;
   has AbortIncompleteMultipartUpload => (is => 'ro', isa => 'Paws::S3::AbortIncompleteMultipartUpload');
   has Expiration => (is => 'ro', isa => 'Paws::S3::LifecycleExpiration');
+  has Filter => (is => 'ro', isa => 'Paws::S3::Filter', required => 1);
   has ID => (is => 'ro', isa => 'Str');
   has NoncurrentVersionExpiration => (is => 'ro', isa => 'Paws::S3::NoncurrentVersionExpiration');
   has NoncurrentVersionTransition => (is => 'ro', isa => 'Paws::S3::NoncurrentVersionTransition');
-  has Prefix => (is => 'ro', isa => 'Str', required => 1);
   has Status => (is => 'ro', isa => 'Str', required => 1);
   has Transition => (is => 'ro', isa => 'Paws::S3::Transition');
 1;
@@ -53,6 +53,11 @@ This class has no description
   
 
 
+=head2 B<REQUIRED> Filter => L<Paws::S3::Filter>
+
+  Prefix identifying one or more objects to which the rule applies.
+
+
 =head2 ID => Str
 
   Unique identifier for the rule. The value cannot be longer than 255
@@ -67,11 +72,6 @@ characters.
 =head2 NoncurrentVersionTransition => L<Paws::S3::NoncurrentVersionTransition>
 
   
-
-
-=head2 B<REQUIRED> Prefix => Str
-
-  Prefix identifying one or more objects to which the rule applies.
 
 
 =head2 B<REQUIRED> Status => Str

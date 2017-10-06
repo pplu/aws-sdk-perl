@@ -60,8 +60,8 @@ The database name for the restored DB cluster.
 
 =head2 B<REQUIRED> DBClusterIdentifier => Str
 
-The name of the DB cluster to create from the DB cluster snapshot. This
-parameter isn't case-sensitive.
+The name of the DB cluster to create from the DB snapshot or DB cluster
+snapshot. This parameter isn't case-sensitive.
 
 Constraints:
 
@@ -125,7 +125,7 @@ The version of the database engine to use for the new DB cluster.
 =head2 KmsKeyId => Str
 
 The KMS key identifier to use when restoring an encrypted DB cluster
-from a DB cluster snapshot.
+from a DB snapshot or DB cluster snapshot.
 
 The KMS key identifier is the Amazon Resource Name (ARN) for the KMS
 encryption key. If you are restoring a DB cluster with the same AWS
@@ -140,14 +140,14 @@ following will occur:
 
 =item *
 
-If the DB cluster snapshot is encrypted, then the restored DB cluster
-is encrypted using the KMS key that was used to encrypt the DB cluster
-snapshot.
+If the DB snapshot or DB cluster snapshot in C<SnapshotIdentifier> is
+encrypted, then the restored DB cluster is encrypted using the KMS key
+that was used to encrypt the DB snapshot or DB cluster snapshot.
 
 =item *
 
-If the DB cluster snapshot is not encrypted, then the restored DB
-cluster is encrypted using the specified encryption key.
+If the DB snapshot or DB cluster snapshot in C<SnapshotIdentifier> is
+not encrypted, then the restored DB cluster is not encrypted.
 
 =back
 
@@ -172,7 +172,12 @@ Default: The same port as the original DB cluster.
 
 =head2 B<REQUIRED> SnapshotIdentifier => Str
 
-The identifier for the DB cluster snapshot to restore from.
+The identifier for the DB snapshot or DB cluster snapshot to restore
+from.
+
+You can use either the name or the Amazon Resource Name (ARN) to
+specify a DB cluster snapshot. However, you can use only the ARN to
+specify a DB snapshot.
 
 Constraints:
 

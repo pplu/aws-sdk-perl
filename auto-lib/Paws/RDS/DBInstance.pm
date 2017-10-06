@@ -35,6 +35,8 @@ package Paws::RDS::DBInstance;
   has MultiAZ => (is => 'ro', isa => 'Bool');
   has OptionGroupMemberships => (is => 'ro', isa => 'ArrayRef[Paws::RDS::OptionGroupMembership]', request_name => 'OptionGroupMembership', traits => ['NameInRequest']);
   has PendingModifiedValues => (is => 'ro', isa => 'Paws::RDS::PendingModifiedValues');
+  has PerformanceInsightsEnabled => (is => 'ro', isa => 'Bool');
+  has PerformanceInsightsKMSKeyId => (is => 'ro', isa => 'Str');
   has PreferredBackupWindow => (is => 'ro', isa => 'Str');
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
   has PromotionTier => (is => 'ro', isa => 'Int');
@@ -347,6 +349,16 @@ metrics to CloudWatch Logs.
   Specifies that changes to the DB instance are pending. This element is
 only included when changes are pending. Specific changes are identified
 by subelements.
+
+
+=head2 PerformanceInsightsEnabled => Bool
+
+  
+
+
+=head2 PerformanceInsightsKMSKeyId => Str
+
+  
 
 
 =head2 PreferredBackupWindow => Str

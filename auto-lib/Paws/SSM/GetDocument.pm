@@ -42,7 +42,7 @@ The document version for which you want information.
 
 =head2 B<REQUIRED> Name => Str
 
-The name of the SSM document.
+The name of the Systems Manager document.
 
 
 

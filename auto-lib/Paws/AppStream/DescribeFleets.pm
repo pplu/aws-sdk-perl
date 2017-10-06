@@ -36,8 +36,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Names => ArrayRef[Str|Undef]
 
-The fleet names to describe. Use null to describe all the fleets for
-the AWS account.
+The names of the fleets to describe.
 
 
 

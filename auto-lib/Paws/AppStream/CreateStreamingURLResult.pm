@@ -17,7 +17,8 @@ Paws::AppStream::CreateStreamingURLResult
 
 =head2 Expires => Str
 
-Elapsed seconds after the Unix epoch, when this URL expires.
+The elapsed time, in seconds after the Unix epoch, when this URL
+expires.
 
 
 =head2 StreamingURL => Str

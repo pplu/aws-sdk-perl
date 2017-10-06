@@ -4,6 +4,8 @@ package Paws::RedShift::DescribeEventSubscriptions;
   has Marker => (is => 'ro', isa => 'Str');
   has MaxRecords => (is => 'ro', isa => 'Int');
   has SubscriptionName => (is => 'ro', isa => 'Str');
+  has TagKeys => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has TagValues => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
   use MooseX::ClassAttribute;
 
@@ -64,6 +66,30 @@ Constraints: minimum 20, maximum 100.
 
 The name of the Amazon Redshift event notification subscription to be
 described.
+
+
+
+=head2 TagKeys => ArrayRef[Str|Undef]
+
+A tag key or keys for which you want to return all matching event
+notification subscriptions that are associated with the specified key
+or keys. For example, suppose that you have subscriptions that are
+tagged with keys called C<owner> and C<environment>. If you specify
+both of these tag keys in the request, Amazon Redshift returns a
+response with the subscriptions that have either or both of these tag
+keys associated with them.
+
+
+
+=head2 TagValues => ArrayRef[Str|Undef]
+
+A tag value or values for which you want to return all matching event
+notification subscriptions that are associated with the specified tag
+value or values. For example, suppose that you have subscriptions that
+are tagged with values called C<admin> and C<test>. If you specify both
+of these tag values in the request, Amazon Redshift returns a response
+with the subscriptions that have either or both of these tag values
+associated with them.
 
 
 

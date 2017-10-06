@@ -1,5 +1,6 @@
 package Paws::EC2::VpnConnection;
   use Moose;
+  has Category => (is => 'ro', isa => 'Str', request_name => 'category', traits => ['NameInRequest']);
   has CustomerGatewayConfiguration => (is => 'ro', isa => 'Str', request_name => 'customerGatewayConfiguration', traits => ['NameInRequest']);
   has CustomerGatewayId => (is => 'ro', isa => 'Str', request_name => 'customerGatewayId', traits => ['NameInRequest']);
   has Options => (is => 'ro', isa => 'Paws::EC2::VpnConnectionOptions', request_name => 'options', traits => ['NameInRequest']);
@@ -29,20 +30,28 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::EC2::VpnConnection object:
 
-  $service_obj->Method(Att1 => { CustomerGatewayConfiguration => $value, ..., VpnGatewayId => $value  });
+  $service_obj->Method(Att1 => { Category => $value, ..., VpnGatewayId => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::VpnConnection object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->CustomerGatewayConfiguration
+  $result->Att1->Category
 
 =head1 DESCRIPTION
 
 This class has no description
 
 =head1 ATTRIBUTES
+
+
+=head2 Category => Str
+
+  The category of the VPN connection. A value of C<VPN> indicates an AWS
+VPN connection. A value of C<VPN-Classic> indicates an AWS Classic VPN
+connection. For more information, see AWS Managed VPN Categories in the
+I<Amazon Virtual Private Cloud User Guide>.
 
 
 =head2 CustomerGatewayConfiguration => Str

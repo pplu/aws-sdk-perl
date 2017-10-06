@@ -293,6 +293,11 @@ package Paws::Greengrass;
     my $call_object = $self->new_with_coercions('Paws::Greengrass::ListSubscriptionDefinitionVersions', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ResetDeployments {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Greengrass::ResetDeployments', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateConnectivityInfo {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Greengrass::UpdateConnectivityInfo', @_);
@@ -336,7 +341,7 @@ package Paws::Greengrass;
   
 
 
-  sub operations { qw/AssociateRoleToGroup AssociateServiceRoleToAccount CreateCoreDefinition CreateCoreDefinitionVersion CreateDeployment CreateDeviceDefinition CreateDeviceDefinitionVersion CreateFunctionDefinition CreateFunctionDefinitionVersion CreateGroup CreateGroupCertificateAuthority CreateGroupVersion CreateLoggerDefinition CreateLoggerDefinitionVersion CreateSubscriptionDefinition CreateSubscriptionDefinitionVersion DeleteCoreDefinition DeleteDeviceDefinition DeleteFunctionDefinition DeleteGroup DeleteLoggerDefinition DeleteSubscriptionDefinition DisassociateRoleFromGroup DisassociateServiceRoleFromAccount GetAssociatedRole GetConnectivityInfo GetCoreDefinition GetCoreDefinitionVersion GetDeploymentStatus GetDeviceDefinition GetDeviceDefinitionVersion GetFunctionDefinition GetFunctionDefinitionVersion GetGroup GetGroupCertificateAuthority GetGroupCertificateConfiguration GetGroupVersion GetLoggerDefinition GetLoggerDefinitionVersion GetServiceRoleForAccount GetSubscriptionDefinition GetSubscriptionDefinitionVersion ListCoreDefinitions ListCoreDefinitionVersions ListDeployments ListDeviceDefinitions ListDeviceDefinitionVersions ListFunctionDefinitions ListFunctionDefinitionVersions ListGroupCertificateAuthorities ListGroups ListGroupVersions ListLoggerDefinitions ListLoggerDefinitionVersions ListSubscriptionDefinitions ListSubscriptionDefinitionVersions UpdateConnectivityInfo UpdateCoreDefinition UpdateDeviceDefinition UpdateFunctionDefinition UpdateGroup UpdateGroupCertificateConfiguration UpdateLoggerDefinition UpdateSubscriptionDefinition / }
+  sub operations { qw/AssociateRoleToGroup AssociateServiceRoleToAccount CreateCoreDefinition CreateCoreDefinitionVersion CreateDeployment CreateDeviceDefinition CreateDeviceDefinitionVersion CreateFunctionDefinition CreateFunctionDefinitionVersion CreateGroup CreateGroupCertificateAuthority CreateGroupVersion CreateLoggerDefinition CreateLoggerDefinitionVersion CreateSubscriptionDefinition CreateSubscriptionDefinitionVersion DeleteCoreDefinition DeleteDeviceDefinition DeleteFunctionDefinition DeleteGroup DeleteLoggerDefinition DeleteSubscriptionDefinition DisassociateRoleFromGroup DisassociateServiceRoleFromAccount GetAssociatedRole GetConnectivityInfo GetCoreDefinition GetCoreDefinitionVersion GetDeploymentStatus GetDeviceDefinition GetDeviceDefinitionVersion GetFunctionDefinition GetFunctionDefinitionVersion GetGroup GetGroupCertificateAuthority GetGroupCertificateConfiguration GetGroupVersion GetLoggerDefinition GetLoggerDefinitionVersion GetServiceRoleForAccount GetSubscriptionDefinition GetSubscriptionDefinitionVersion ListCoreDefinitions ListCoreDefinitionVersions ListDeployments ListDeviceDefinitions ListDeviceDefinitionVersions ListFunctionDefinitions ListFunctionDefinitionVersions ListGroupCertificateAuthorities ListGroups ListGroupVersions ListLoggerDefinitions ListLoggerDefinitionVersions ListSubscriptionDefinitions ListSubscriptionDefinitionVersions ResetDeployments UpdateConnectivityInfo UpdateCoreDefinition UpdateDeviceDefinition UpdateFunctionDefinition UpdateGroup UpdateGroupCertificateConfiguration UpdateLoggerDefinition UpdateSubscriptionDefinition / }
 
 1;
 
@@ -910,6 +915,15 @@ Each argument is described in detail in: L<Paws::Greengrass::ListSubscriptionDef
 Returns: a L<Paws::Greengrass::ListSubscriptionDefinitionVersionsResponse> instance
 
   Lists the versions of a subscription definition.
+
+
+=head2 ResetDeployments(GroupId => Str, [AmznClientToken => Str, Force => Bool])
+
+Each argument is described in detail in: L<Paws::Greengrass::ResetDeployments>
+
+Returns: a L<Paws::Greengrass::ResetDeploymentsResponse> instance
+
+  Resets a group's deployments.
 
 
 =head2 UpdateConnectivityInfo(ThingName => Str, [ConnectivityInfo => ArrayRef[L<Paws::Greengrass::ConnectivityInfo>]])

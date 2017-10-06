@@ -62,7 +62,7 @@ specify a resource ID for C<ComplianceResourceId>.
 =head2 TagKey => Str
 
   The tag key that is applied to only those AWS resources that you want
-you want to trigger an evaluation for the rule.
+to trigger an evaluation for the rule.
 
 
 =head2 TagValue => Str

@@ -9,6 +9,7 @@ package Paws::AppStream::Fleet;
   has DomainJoinInfo => (is => 'ro', isa => 'Paws::AppStream::DomainJoinInfo');
   has EnableDefaultInternetAccess => (is => 'ro', isa => 'Bool');
   has FleetErrors => (is => 'ro', isa => 'ArrayRef[Paws::AppStream::FleetError]');
+  has FleetType => (is => 'ro', isa => 'Str');
   has ImageName => (is => 'ro', isa => 'Str', required => 1);
   has InstanceType => (is => 'ro', isa => 'Str', required => 1);
   has MaxUserDurationInSeconds => (is => 'ro', isa => 'Int');
@@ -57,47 +58,50 @@ Contains the parameters for a fleet.
 
 =head2 B<REQUIRED> ComputeCapacityStatus => L<Paws::AppStream::ComputeCapacityStatus>
 
-  The capacity information for the fleet.
+  The capacity status for the fleet.
 
 
 =head2 CreatedTime => Str
 
-  The time at which the fleet was created.
+  The time the fleet was created.
 
 
 =head2 Description => Str
 
-  The description displayed to end users on the AppStream 2.0 portal.
+  The description displayed to end users.
 
 
 =head2 DisconnectTimeoutInSeconds => Int
 
   The time after disconnection when a session is considered to have
-ended. If a user who got disconnected reconnects within this timeout
-interval, the user is connected back to their previous session. The
-input can be any numeric value in seconds between 60 and 57600.
+ended, in seconds. If a user who was disconnected reconnects within
+this time interval, the user is connected to their previous session.
+Specify a value between 60 and 57600.
 
 
 =head2 DisplayName => Str
 
-  The name displayed to end users on the AppStream 2.0 portal.
+  The fleet name displayed to end users.
 
 
 =head2 DomainJoinInfo => L<Paws::AppStream::DomainJoinInfo>
 
-  The I<DirectoryName> and I<OrganizationalUnitDistinguishedName> values,
-which are used to join domains for the AppStream 2.0 streaming
-instances.
+  The information needed for streaming instances to join a domain.
 
 
 =head2 EnableDefaultInternetAccess => Bool
 
-  Whether default internet access is enabled for the fleet.
+  Indicates whether default internet access is enabled for the fleet.
 
 
 =head2 FleetErrors => ArrayRef[L<Paws::AppStream::FleetError>]
 
-  The list of fleet errors is appended to this list.
+  The fleet errors.
+
+
+=head2 FleetType => Str
+
+  
 
 
 =head2 B<REQUIRED> ImageName => Str
@@ -107,14 +111,13 @@ instances.
 
 =head2 B<REQUIRED> InstanceType => Str
 
-  The instance type of compute resources for the fleet. The fleet
-instances are launched from this instance type.
+  The instance type to use when launching fleet instances.
 
 
 =head2 MaxUserDurationInSeconds => Int
 
-  The maximum time for which a streaming session can run. The value can
-be any numeric value in seconds between 600 and 57600.
+  The maximum time that a streaming session can run, in seconds. Specify
+a value between 600 and 57600.
 
 
 =head2 B<REQUIRED> Name => Str

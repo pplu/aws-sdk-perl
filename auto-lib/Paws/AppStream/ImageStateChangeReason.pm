@@ -32,19 +32,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AppStream::
 
 =head1 DESCRIPTION
 
-The reason why the last state change occurred.
+Describes the reason why the last state change occurred.
 
 =head1 ATTRIBUTES
 
 
 =head2 Code => Str
 
-  The state change reason code of the image.
+  The state change reason code.
 
 
 =head2 Message => Str
 
-  The state change reason message to the end user.
+  The state change reason message.
 
 
 

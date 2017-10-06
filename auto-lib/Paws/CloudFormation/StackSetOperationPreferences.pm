@@ -76,6 +76,11 @@ one time. This is dependent on the value of
 C<FailureToleranceCount>E<mdash>C<MaxConcurrentCount> is at most one
 more than the C<FailureToleranceCount> .
 
+Note that this setting lets you specify the I<maximum> for operations.
+For large deployments, under certain circumstances the actual number of
+accounts acted upon concurrently may be lower due to service
+throttling.
+
 Conditional: You must specify either C<MaxConcurrentCount> or
 C<MaxConcurrentPercentage>, but not both.
 
@@ -89,6 +94,11 @@ When calculating the number of accounts based on the specified
 percentage, AWS CloudFormation rounds down to the next whole number.
 This is true except in cases where rounding down would result is zero.
 In this case, CloudFormation sets the number as one instead.
+
+Note that this setting lets you specify the I<maximum> for operations.
+For large deployments, under certain circumstances the actual number of
+accounts acted upon concurrently may be lower due to service
+throttling.
 
 Conditional: You must specify either C<MaxConcurrentCount> or
 C<MaxConcurrentPercentage>, but not both.

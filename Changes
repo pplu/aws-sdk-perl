@@ -1,4 +1,9 @@
 0.35
+ - Fix Bug: Correctly throw Paws::Exceptions even if there is no information
+            in the body / headers (#190 svn-schubert) (#198 ilmari)
+ - Work on S3 (sven-schubert)
+   - No need to specify ContentMD5 parameter anymore (it gets autocalculated)
+   - Added support for responses with properties returned in their payload
  - New API: MobileHub
  - New API: MigrationHub
  - New API: Glue
@@ -39,6 +44,16 @@
  - API update: ServiceCatalog
  - API update: SES
  - API update: IAM
+ - API update: Greengrass
+ - API update: AppStream
+ - API update: CodePipeline
+ - API update: LexRuntime
+ - API update: Pinpoint
+ - API update: MTurk
+ - API update: Organizations
+ - API update: Route53Domains
+ - API update: KinesisAnalytics
+ - API update: RedShift
 
 0.34 07 Jul 2017
  - New Credential provider: Paws::Credential::ECSContainerProfile (gadgetjunkie)

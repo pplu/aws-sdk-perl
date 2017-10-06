@@ -97,9 +97,9 @@ valueE<gt>.
 =head2 TaskArn => Str
 
   The resource that the task uses during execution. For RUN_COMMAND and
-AUTOMATION task types, C<TaskArn> is the SSM document name or ARN. For
-LAMBDA tasks, it's the function name or ARN. For STEP_FUNCTION tasks,
-it's the state machine ARN.
+AUTOMATION task types, C<TaskArn> is the Systems Manager document name
+or ARN. For LAMBDA tasks, it's the function name or ARN. For
+STEP_FUNCTION tasks, it's the state machine ARN.
 
 
 =head2 TaskParameters => L<Paws::SSM::MaintenanceWindowTaskParameters>

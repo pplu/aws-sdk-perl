@@ -69,15 +69,20 @@ operations, see the build-time API, .
 
 =head1 METHODS
 
-=head2 PostContent(BotAlias => Str, BotName => Str, ContentType => Str, InputStream => Str, UserId => Str, [Accept => Str, SessionAttributes => Str])
+=head2 PostContent(BotAlias => Str, BotName => Str, ContentType => Str, InputStream => Str, UserId => Str, [Accept => Str, RequestAttributes => Str, SessionAttributes => Str])
 
 Each argument is described in detail in: L<Paws::LexRuntime::PostContent>
 
 Returns: a L<Paws::LexRuntime::PostContentResponse> instance
 
   Sends user input (text or speech) to Amazon Lex. Clients use this API
-to send requests to Amazon Lex at runtime. Amazon Lex interprets the
-user input using the machine learning model that it built for the bot.
+to send text and audio requests to Amazon Lex at runtime. Amazon Lex
+interprets the user input using the machine learning model that it
+built for the bot.
+
+The C<PostContent> operation supports audio input at 8kHz and 16kHz.
+You can use 8kHz audio to achieve higher speech recognition accuracy in
+telephone audio applications.
 
 In response, Amazon Lex returns the next message to convey to the user.
 Consider the following example messages:
@@ -162,7 +167,7 @@ C<sessionAttributes>. For more information, see Managing Conversation
 Context.
 
 
-=head2 PostText(BotAlias => Str, BotName => Str, InputText => Str, UserId => Str, [SessionAttributes => L<Paws::LexRuntime::StringMap>])
+=head2 PostText(BotAlias => Str, BotName => Str, InputText => Str, UserId => Str, [RequestAttributes => L<Paws::LexRuntime::StringMap>, SessionAttributes => L<Paws::LexRuntime::StringMap>])
 
 Each argument is described in detail in: L<Paws::LexRuntime::PostText>
 

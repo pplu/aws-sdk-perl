@@ -32,19 +32,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AppStream::
 
 =head1 DESCRIPTION
 
-Contains the parameters for a stack error.
+Describes a stack error.
 
 =head1 ATTRIBUTES
 
 
 =head2 ErrorCode => Str
 
-  The error code of a stack error.
+  The error code.
 
 
 =head2 ErrorMessage => Str
 
-  The error message of a stack error.
+  The error message.
 
 
 

@@ -31,7 +31,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AppStream::
 
 =head1 DESCRIPTION
 
-The capacity configuration for the fleet.
+Describes the capacity for a fleet.
 
 =head1 ATTRIBUTES
 

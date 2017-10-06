@@ -768,7 +768,8 @@ PopeFelix for solving issues around S3 and MojoAsyncCaller
 
 meis for contributing Paws::Credential::Explicit
 
-sven-schubert for contributing fixes to RestXML services
+sven-schubert for contributing fixes to RestXML services,
+working on fixing S3 to work correctly. 
 
 SeptamusNonovant for fixing paginators in non-callback mode
 

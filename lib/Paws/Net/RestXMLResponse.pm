@@ -45,11 +45,8 @@ package Paws::Net::RestXMLResponse;
 
     $message = status_message($response->status);
     $code = $response->status;
-    $request_id = $response->header('x-amz-request-id');
+    $request_id = $response->header('x-amz-request-id') // $response->header('RequestId') // '';
     $host_id = $response->header('x-amz-id-2');
-
-    # Find in the body if it's not in headers
-    $request_id = $struct->{ RequestId } if (not defined $request_id);
 
     Paws::Exception->new(
       message => $message,

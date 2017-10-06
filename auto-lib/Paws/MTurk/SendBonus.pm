@@ -3,7 +3,7 @@ package Paws::MTurk::SendBonus;
   use Moose;
   has AssignmentId => (is => 'ro', isa => 'Str', required => 1);
   has BonusAmount => (is => 'ro', isa => 'Str', required => 1);
-  has Reason => (is => 'ro', isa => 'Str');
+  has Reason => (is => 'ro', isa => 'Str', required => 1);
   has UniqueRequestToken => (is => 'ro', isa => 'Str');
   has WorkerId => (is => 'ro', isa => 'Str', required => 1);
 
@@ -51,7 +51,7 @@ Do not include currency symbols or currency codes.
 
 
 
-=head2 Reason => Str
+=head2 B<REQUIRED> Reason => Str
 
 A message that explains the reason for the bonus payment. The Worker
 receiving the bonus can see this message.

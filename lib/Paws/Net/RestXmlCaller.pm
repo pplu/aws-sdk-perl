@@ -96,11 +96,28 @@ package Paws::Net::RestXmlCaller;
   sub _to_header_params {
     my ($self, $request, $call) = @_;
     foreach my $attribute ($call->meta->get_all_attributes) {
+      if ($attribute->does('Paws::API::Attribute::Trait::AutoInHeader')) {
+        if ( $attribute->auto eq 'MD5' ) {
+          require MIME::Base64;
+          require Digest::MD5;
+          my $value;
+          if ( $attribute->has_value($call) ) {
+             $value = $attribute->get_value($call);
+          }
+          else {
+            $value = MIME::Base64::encode_base64( Digest::MD5::md5( $request->content ) );
+            chomp $value;
+          }
+          $request->headers->header( $attribute->header_name => $value );
+        }
+        next;
+      }
       next unless $attribute->has_value($call);
       if ($attribute->does('Paws::API::Attribute::Trait::ParamInHeader')) {
-        $request->headers->header( $attribute->header_name => $attribute->get_value($call) );
+        my $value = $attribute->get_value($call);
+        $request->headers->header( $attribute->header_name => $value );
       }
-      elsif ($attribute->does('Paws::API::Attribute::Trait::ParamInHeaders')) { 
+      elsif ($attribute->does('Paws::API::Attribute::Trait::ParamInHeaders')) {
         my $map = $attribute->get_value($call)->Map;
         my $prefix = $attribute->header_prefix;
         for my $header (keys %{$map}) { 

@@ -111,11 +111,11 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 =head2 EbsOptimized => Bool
 
-Indicates whether the instance is optimized for EBS I/O. This
+Indicates whether the instance is optimized for Amazon EBS I/O. This
 optimization provides dedicated throughput to Amazon EBS and an
-optimized configuration stack to provide optimal EBS I/O performance.
-This optimization isn't available with all instance types. Additional
-usage charges apply when using an EBS-optimized instance.
+optimized configuration stack to provide optimal Amazon EBS I/O
+performance. This optimization isn't available with all instance types.
+Additional usage charges apply when using an EBS-optimized instance.
 
 Default: C<false>
 
@@ -304,8 +304,8 @@ that are created during launch.
 The user data to make available to the instance. For more information,
 see Running Commands on Your Linux Instance at Launch (Linux) and
 Adding User Data (Windows). If you are using an AWS SDK or command line
-tool, Base64-encoding is performed for you, and you can load the text
-from a file. Otherwise, you must provide Base64-encoded text.
+tool, base64-encoding is performed for you, and you can load the text
+from a file. Otherwise, you must provide base64-encoded text.
 
 
 

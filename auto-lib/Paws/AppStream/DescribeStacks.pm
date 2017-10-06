@@ -36,8 +36,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Names => ArrayRef[Str|Undef]
 
-The stack names to describe. Use null to describe all the stacks for
-the AWS account.
+The names of the stacks to describe.
 
 
 

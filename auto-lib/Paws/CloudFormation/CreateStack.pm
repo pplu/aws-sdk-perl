@@ -4,6 +4,7 @@ package Paws::CloudFormation::CreateStack;
   has Capabilities => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has ClientRequestToken => (is => 'ro', isa => 'Str');
   has DisableRollback => (is => 'ro', isa => 'Bool');
+  has EnableTerminationProtection => (is => 'ro', isa => 'Bool');
   has NotificationARNs => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has OnFailure => (is => 'ro', isa => 'Str');
   has Parameters => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::Parameter]');
@@ -107,6 +108,20 @@ failed. You can specify either C<DisableRollback> or C<OnFailure>, but
 not both.
 
 Default: C<false>
+
+
+
+=head2 EnableTerminationProtection => Bool
+
+Whether to enable termination protection on the specified stack. If a
+user attempts to delete a stack with termination protection enabled,
+the operation fails and the stack remains unchanged. For more
+information, see Protecting a Stack From Being Deleted in the I<AWS
+CloudFormation User Guide>. Termination protection is disabled on
+stacks by default.
+
+For nested stacks, termination protection is set on the root stack and
+cannot be changed directly on the nested stack.
 
 
 

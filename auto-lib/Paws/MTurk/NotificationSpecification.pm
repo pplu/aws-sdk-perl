@@ -1,9 +1,9 @@
 package Paws::MTurk::NotificationSpecification;
   use Moose;
   has Destination => (is => 'ro', isa => 'Str', required => 1);
-  has EventTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has EventTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
   has Transport => (is => 'ro', isa => 'Str', required => 1);
-  has Version => (is => 'ro', isa => 'Str');
+  has Version => (is => 'ro', isa => 'Str', required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -42,13 +42,28 @@ notification for a HIT type.
 
 =head2 B<REQUIRED> Destination => Str
 
-  The destination for notification messages. or email notifications (if
-Transport is Email), this is an email address. For Amazon Simple Queue
-Service (Amazon SQS) notifications (if Transport is SQS), this is the
-URL for your Amazon SQS queue.
+  The target for notification messages. The DestinationE<rsquo>s format
+is determined by the specified Transport:
+
+=over
+
+=item *
+
+When Transport is Email, the Destination is your email address.
+
+=item *
+
+When Transport is SQS, the Destination is your queue URL.
+
+=item *
+
+When Transport is SNS, the Destination is the ARN of your topic.
+
+=back
 
 
-=head2 EventTypes => ArrayRef[Str|Undef]
+
+=head2 B<REQUIRED> EventTypes => ArrayRef[Str|Undef]
 
   The list of events that should cause notifications to be sent. Valid
 Values: AssignmentAccepted | AssignmentAbandoned | AssignmentReturned |
@@ -61,10 +76,10 @@ operation.
 =head2 B<REQUIRED> Transport => Str
 
   The method Amazon Mechanical Turk uses to send the notification. Valid
-Values: Email | SQS.
+Values: Email | SQS | SNS.
 
 
-=head2 Version => Str
+=head2 B<REQUIRED> Version => Str
 
   The version of the Notification API to use. Valid value is 2006-05-05.
 

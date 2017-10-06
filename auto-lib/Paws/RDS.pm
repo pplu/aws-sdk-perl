@@ -1271,7 +1271,7 @@ Returns: a L<Paws::RDS::CreateDBClusterSnapshotResult> instance
 Aurora, see Aurora on Amazon RDS in the I<Amazon RDS User Guide.>
 
 
-=head2 CreateDBInstance(DBInstanceClass => Str, DBInstanceIdentifier => Str, Engine => Str, [AllocatedStorage => Int, AutoMinorVersionUpgrade => Bool, AvailabilityZone => Str, BackupRetentionPeriod => Int, CharacterSetName => Str, CopyTagsToSnapshot => Bool, DBClusterIdentifier => Str, DBName => Str, DBParameterGroupName => Str, DBSecurityGroups => ArrayRef[Str|Undef], DBSubnetGroupName => Str, Domain => Str, DomainIAMRoleName => Str, EnableIAMDatabaseAuthentication => Bool, EngineVersion => Str, Iops => Int, KmsKeyId => Str, LicenseModel => Str, MasterUsername => Str, MasterUserPassword => Str, MonitoringInterval => Int, MonitoringRoleArn => Str, MultiAZ => Bool, OptionGroupName => Str, Port => Int, PreferredBackupWindow => Str, PreferredMaintenanceWindow => Str, PromotionTier => Int, PubliclyAccessible => Bool, StorageEncrypted => Bool, StorageType => Str, Tags => ArrayRef[L<Paws::RDS::Tag>], TdeCredentialArn => Str, TdeCredentialPassword => Str, Timezone => Str, VpcSecurityGroupIds => ArrayRef[Str|Undef]])
+=head2 CreateDBInstance(DBInstanceClass => Str, DBInstanceIdentifier => Str, Engine => Str, [AllocatedStorage => Int, AutoMinorVersionUpgrade => Bool, AvailabilityZone => Str, BackupRetentionPeriod => Int, CharacterSetName => Str, CopyTagsToSnapshot => Bool, DBClusterIdentifier => Str, DBName => Str, DBParameterGroupName => Str, DBSecurityGroups => ArrayRef[Str|Undef], DBSubnetGroupName => Str, Domain => Str, DomainIAMRoleName => Str, EnableIAMDatabaseAuthentication => Bool, EnablePerformanceInsights => Bool, EngineVersion => Str, Iops => Int, KmsKeyId => Str, LicenseModel => Str, MasterUsername => Str, MasterUserPassword => Str, MonitoringInterval => Int, MonitoringRoleArn => Str, MultiAZ => Bool, OptionGroupName => Str, PerformanceInsightsKMSKeyId => Str, Port => Int, PreferredBackupWindow => Str, PreferredMaintenanceWindow => Str, PromotionTier => Int, PubliclyAccessible => Bool, StorageEncrypted => Bool, StorageType => Str, Tags => ArrayRef[L<Paws::RDS::Tag>], TdeCredentialArn => Str, TdeCredentialPassword => Str, Timezone => Str, VpcSecurityGroupIds => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::RDS::CreateDBInstance>
 
@@ -1280,7 +1280,7 @@ Returns: a L<Paws::RDS::CreateDBInstanceResult> instance
   Creates a new DB instance.
 
 
-=head2 CreateDBInstanceReadReplica(DBInstanceIdentifier => Str, SourceDBInstanceIdentifier => Str, [AutoMinorVersionUpgrade => Bool, AvailabilityZone => Str, CopyTagsToSnapshot => Bool, DBInstanceClass => Str, DBSubnetGroupName => Str, EnableIAMDatabaseAuthentication => Bool, Iops => Int, KmsKeyId => Str, MonitoringInterval => Int, MonitoringRoleArn => Str, OptionGroupName => Str, Port => Int, PreSignedUrl => Str, PubliclyAccessible => Bool, StorageType => Str, Tags => ArrayRef[L<Paws::RDS::Tag>]])
+=head2 CreateDBInstanceReadReplica(DBInstanceIdentifier => Str, SourceDBInstanceIdentifier => Str, [AutoMinorVersionUpgrade => Bool, AvailabilityZone => Str, CopyTagsToSnapshot => Bool, DBInstanceClass => Str, DBSubnetGroupName => Str, EnableIAMDatabaseAuthentication => Bool, EnablePerformanceInsights => Bool, Iops => Int, KmsKeyId => Str, MonitoringInterval => Int, MonitoringRoleArn => Str, OptionGroupName => Str, PerformanceInsightsKMSKeyId => Str, Port => Int, PreSignedUrl => Str, PubliclyAccessible => Bool, StorageType => Str, Tags => ArrayRef[L<Paws::RDS::Tag>]])
 
 Each argument is described in detail in: L<Paws::RDS::CreateDBInstanceReadReplica>
 
@@ -1471,7 +1471,8 @@ only delete it when the C<SkipFinalSnapshot> parameter is set to
 C<true>.
 
 If the specified DB instance is part of an Amazon Aurora DB cluster,
-you cannot delete the DB instance if the following are true:
+you cannot delete the DB instance if both of the following conditions
+are true:
 
 =over
 
@@ -2003,7 +2004,7 @@ cluster snapshot, or whether a manual DB cluster snapshot public or
 private, use the DescribeDBClusterSnapshotAttributes API action.
 
 
-=head2 ModifyDBInstance(DBInstanceIdentifier => Str, [AllocatedStorage => Int, AllowMajorVersionUpgrade => Bool, ApplyImmediately => Bool, AutoMinorVersionUpgrade => Bool, BackupRetentionPeriod => Int, CACertificateIdentifier => Str, CopyTagsToSnapshot => Bool, DBInstanceClass => Str, DBParameterGroupName => Str, DBPortNumber => Int, DBSecurityGroups => ArrayRef[Str|Undef], DBSubnetGroupName => Str, Domain => Str, DomainIAMRoleName => Str, EnableIAMDatabaseAuthentication => Bool, EngineVersion => Str, Iops => Int, LicenseModel => Str, MasterUserPassword => Str, MonitoringInterval => Int, MonitoringRoleArn => Str, MultiAZ => Bool, NewDBInstanceIdentifier => Str, OptionGroupName => Str, PreferredBackupWindow => Str, PreferredMaintenanceWindow => Str, PromotionTier => Int, PubliclyAccessible => Bool, StorageType => Str, TdeCredentialArn => Str, TdeCredentialPassword => Str, VpcSecurityGroupIds => ArrayRef[Str|Undef]])
+=head2 ModifyDBInstance(DBInstanceIdentifier => Str, [AllocatedStorage => Int, AllowMajorVersionUpgrade => Bool, ApplyImmediately => Bool, AutoMinorVersionUpgrade => Bool, BackupRetentionPeriod => Int, CACertificateIdentifier => Str, CopyTagsToSnapshot => Bool, DBInstanceClass => Str, DBParameterGroupName => Str, DBPortNumber => Int, DBSecurityGroups => ArrayRef[Str|Undef], DBSubnetGroupName => Str, Domain => Str, DomainIAMRoleName => Str, EnableIAMDatabaseAuthentication => Bool, EnablePerformanceInsights => Bool, EngineVersion => Str, Iops => Int, LicenseModel => Str, MasterUserPassword => Str, MonitoringInterval => Int, MonitoringRoleArn => Str, MultiAZ => Bool, NewDBInstanceIdentifier => Str, OptionGroupName => Str, PerformanceInsightsKMSKeyId => Str, PreferredBackupWindow => Str, PreferredMaintenanceWindow => Str, PromotionTier => Int, PubliclyAccessible => Bool, StorageType => Str, TdeCredentialArn => Str, TdeCredentialPassword => Str, VpcSecurityGroupIds => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::RDS::ModifyDBInstance>
 
@@ -2042,18 +2043,16 @@ command to verify that your DB parameter group has been created or
 modified.
 
 
-=head2 ModifyDBSnapshot(DBSnapshotIdentifier => Str, [EngineVersion => Str])
+=head2 ModifyDBSnapshot(DBSnapshotIdentifier => Str, [EngineVersion => Str, OptionGroupName => Str])
 
 Each argument is described in detail in: L<Paws::RDS::ModifyDBSnapshot>
 
 Returns: a L<Paws::RDS::ModifyDBSnapshotResult> instance
 
   Updates a manual DB snapshot, which can be encrypted or not encrypted,
-with a new engine version. You can update the engine version to either
-a new major or minor engine version.
+with a new engine version.
 
-Amazon RDS supports upgrading a MySQL DB snapshot from MySQL 5.1 to
-MySQL 5.5.
+Amazon RDS supports upgrading DB snapshots for MySQL and Oracle.
 
 
 =head2 ModifyDBSnapshotAttribute(AttributeName => Str, DBSnapshotIdentifier => Str, [ValuesToAdd => ArrayRef[Str|Undef], ValuesToRemove => ArrayRef[Str|Undef]])
@@ -2266,10 +2265,16 @@ Each argument is described in detail in: L<Paws::RDS::RestoreDBClusterFromSnapsh
 
 Returns: a L<Paws::RDS::RestoreDBClusterFromSnapshotResult> instance
 
-  Creates a new DB cluster from a DB cluster snapshot. The target DB
-cluster is created from the source DB cluster restore point with the
-same configuration as the original source DB cluster, except that the
-new DB cluster is created with the default security group.
+  Creates a new DB cluster from a DB snapshot or DB cluster snapshot.
+
+If a DB snapshot is specified, the target DB cluster is created from
+the source DB snapshot with a default configuration and default
+security group.
+
+If a DB cluster snapshot is specified, the target DB cluster is created
+from the source DB cluster restore point with the same configuration as
+the original source DB cluster, except that the new DB cluster is
+created with the default security group.
 
 For more information on Amazon Aurora, see Aurora on Amazon RDS in the
 I<Amazon RDS User Guide.>

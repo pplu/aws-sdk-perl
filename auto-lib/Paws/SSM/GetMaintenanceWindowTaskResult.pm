@@ -73,9 +73,9 @@ The targets where the task should execute.
 =head2 TaskArn => Str
 
 The resource that the task used during execution. For RUN_COMMAND and
-AUTOMATION task types, the TaskArn is the SSM Document name/ARN. For
-LAMBDA tasks, the value is the function name/ARN. For STEP_FUNCTION
-tasks, the value is the state machine ARN.
+AUTOMATION task types, the TaskArn is the Systems Manager Document
+name/ARN. For LAMBDA tasks, the value is the function name/ARN. For
+STEP_FUNCTION tasks, the value is the state machine ARN.
 
 
 =head2 TaskInvocationParameters => L<Paws::SSM::MaintenanceWindowTaskInvocationParameters>

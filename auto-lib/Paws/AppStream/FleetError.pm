@@ -32,19 +32,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AppStream::
 
 =head1 DESCRIPTION
 
-The details of the fleet error.
+Describes a fleet error.
 
 =head1 ATTRIBUTES
 
 
 =head2 ErrorCode => Str
 
-  The error code for the fleet error.
+  The error code.
 
 
 =head2 ErrorMessage => Str
 
-  The error message generated when the fleet has errors.
+  The error message.
 
 
 

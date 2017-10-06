@@ -17,7 +17,7 @@ Paws::AppStream::ListAssociatedStacksResult
 
 =head2 Names => ArrayRef[Str|Undef]
 
-The names of associated stacks.
+The names of the stacks.
 
 
 =head2 NextToken => Str

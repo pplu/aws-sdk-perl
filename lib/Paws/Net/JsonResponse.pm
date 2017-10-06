@@ -50,19 +50,14 @@ package Paws::Net::JsonResponse;
     } elsif (exists $struct->{Message}){
       $message = $struct->{Message};
     } else {
-      # Rationale for this condition is in Issue #82 
-      if ($struct->{__type} eq 'InternalError'){
-        $message = '';
-      } else {
-        Moose->throw_error("Unrecognized error message format");
-      }
+      $message = 'Unrecognized error format';
     }
 
-    my $code = $struct->{__type};
+    my $code = $struct->{__type} // 'InvalidContent';
     if ($code =~ m/#/) {
       $code = (split /#/, $code)[1];
     }
-    $request_id = $response->header('x-amzn-requestid');
+    $request_id = $response->header('x-amzn-requestid') // '';
 
     Paws::Exception->new(
       message => $message,

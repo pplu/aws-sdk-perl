@@ -14,6 +14,7 @@ package Paws::Route53::UpdateHealthCheck;
   has IPAddress => (is => 'ro', isa => 'Str');
   has Port => (is => 'ro', isa => 'Int');
   has Regions => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has ResetElements => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has ResourcePath => (is => 'ro', isa => 'Str');
   has SearchString => (is => 'ro', isa => 'Str');
 
@@ -384,6 +385,39 @@ health checks.
 A complex type that contains one C<Region> element for each region that
 you want Amazon Route 53 health checkers to check the specified
 endpoint from.
+
+
+
+=head2 ResetElements => ArrayRef[Str|Undef]
+
+A complex type that contains one C<ResetElement> element for each
+element that you want to reset to the default value. Valid values for
+C<ResetElement> include the following:
+
+=over
+
+=item *
+
+C<ChildHealthChecks>: Amazon Route 53 resets
+HealthCheckConfig$ChildHealthChecks to null.
+
+=item *
+
+C<FullyQualifiedDomainName>: Amazon Route 53 resets
+HealthCheckConfig$FullyQualifiedDomainName to null.
+
+=item *
+
+C<Regions>: Amazon Route 53 resets the HealthCheckConfig$Regions list
+to the default set of regions.
+
+=item *
+
+C<ResourcePath>: Amazon Route 53 resets HealthCheckConfig$ResourcePath
+to null.
+
+=back
+
 
 
 

@@ -32,22 +32,22 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AppStream::
 
 =head1 DESCRIPTION
 
-The I<DirectoryName> and I<OrganizationalUnitDistinguishedName> values,
-which are used to join domains for the AppStream 2.0 streaming
-instances.
+Contains the information needed for streaming instances to join a
+domain.
 
 =head1 ATTRIBUTES
 
 
 =head2 DirectoryName => Str
 
-  The fully qualified name of the directory, such as corp.example.com
+  The fully qualified name of the directory (for example,
+corp.example.com).
 
 
 =head2 OrganizationalUnitDistinguishedName => Str
 
-  The distinguished name of the organizational unit to place the computer
-account in.
+  The distinguished name of the organizational unit for computer
+accounts.
 
 
 

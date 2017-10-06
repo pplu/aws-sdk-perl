@@ -17,7 +17,7 @@ Paws::AppStream::ListAssociatedFleetsResult
 
 =head2 Names => ArrayRef[Str|Undef]
 
-The names of associated fleets.
+The names of the fleets.
 
 
 =head2 NextToken => Str

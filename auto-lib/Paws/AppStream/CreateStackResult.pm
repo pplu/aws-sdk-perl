@@ -16,7 +16,7 @@ Paws::AppStream::CreateStackResult
 
 =head2 Stack => L<Paws::AppStream::Stack>
 
-The details for the created stack.
+Information about the stack.
 
 
 =head2 _request_id => Str

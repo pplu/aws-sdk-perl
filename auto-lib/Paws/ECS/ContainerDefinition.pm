@@ -14,6 +14,7 @@ package Paws::ECS::ContainerDefinition;
   has Hostname => (is => 'ro', isa => 'Str', request_name => 'hostname', traits => ['NameInRequest']);
   has Image => (is => 'ro', isa => 'Str', request_name => 'image', traits => ['NameInRequest']);
   has Links => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'links', traits => ['NameInRequest']);
+  has LinuxParameters => (is => 'ro', isa => 'Paws::ECS::LinuxParameters', request_name => 'linuxParameters', traits => ['NameInRequest']);
   has LogConfiguration => (is => 'ro', isa => 'Paws::ECS::LogConfiguration', request_name => 'logConfiguration', traits => ['NameInRequest']);
   has Memory => (is => 'ro', isa => 'Int', request_name => 'memory', traits => ['NameInRequest']);
   has MemoryReservation => (is => 'ro', isa => 'Int', request_name => 'memoryReservation', traits => ['NameInRequest']);
@@ -227,9 +228,10 @@ and the C<--hostname> option to docker run.
 
   The image used to start a container. This string is passed directly to
 the Docker daemon. Images in the Docker Hub registry are available by
-default. Other repositories are specified with C<
-I<repository-url>/I<image>:I<tag> >. Up to 255 letters (uppercase and
-lowercase), numbers, hyphens, underscores, colons, periods, forward
+default. Other repositories are specified with either C<
+I<repository-url>/I<image>:I<tag> > or C<
+I<repository-url>/I<image>@I<digest> >. Up to 255 letters (uppercase
+and lowercase), numbers, hyphens, underscores, colons, periods, forward
 slashes, and number signs are allowed. This parameter maps to C<Image>
 in the Create a container section of the Docker Remote API and the
 C<IMAGE> parameter of docker run.
@@ -238,9 +240,12 @@ C<IMAGE> parameter of docker run.
 
 =item *
 
-Images in Amazon ECR repositories use the full registry and repository
-URI (for example,
-C<012345678910.dkr.ecr.E<lt>region-nameE<gt>.amazonaws.com/E<lt>repository-nameE<gt>>).
+Images in Amazon ECR repositories can be specified by either using the
+full C<registry/repository:tag> or C<registry/repository@digest>. For
+example,
+C<012345678910.dkr.ecr.E<lt>region-nameE<gt>.amazonaws.com/E<lt>repository-nameE<gt>:latest>
+or
+C<012345678910.dkr.ecr.E<lt>region-nameE<gt>.amazonaws.com/E<lt>repository-nameE<gt>@sha256:94afd1f2e64d908bc90dbca0035a5b567EXAMPLE>.
 
 =item *
 
@@ -278,6 +283,12 @@ Containers that are collocated on a single container instance may be
 able to communicate with each other without requiring links or host
 port mappings. Network isolation is achieved on the container instance
 using security groups and VPC settings.
+
+
+=head2 LinuxParameters => L<Paws::ECS::LinuxParameters>
+
+  Linux-specific modifications that are applied to the container, such as
+Linux KernelCapabilities.
 
 
 =head2 LogConfiguration => L<Paws::ECS::LogConfiguration>

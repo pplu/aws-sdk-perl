@@ -2,7 +2,7 @@
 package Paws::MTurk::RejectAssignment;
   use Moose;
   has AssignmentId => (is => 'ro', isa => 'Str', required => 1);
-  has RequesterFeedback => (is => 'ro', isa => 'Str');
+  has RequesterFeedback => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -41,7 +41,7 @@ created by the Requester.
 
 
 
-=head2 RequesterFeedback => Str
+=head2 B<REQUIRED> RequesterFeedback => Str
 
 A message for the Worker, which the Worker can see in the Status
 section of the web site.

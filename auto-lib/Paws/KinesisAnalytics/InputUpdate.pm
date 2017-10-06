@@ -2,6 +2,7 @@ package Paws::KinesisAnalytics::InputUpdate;
   use Moose;
   has InputId => (is => 'ro', isa => 'Str', required => 1);
   has InputParallelismUpdate => (is => 'ro', isa => 'Paws::KinesisAnalytics::InputParallelismUpdate');
+  has InputProcessingConfigurationUpdate => (is => 'ro', isa => 'Paws::KinesisAnalytics::InputProcessingConfigurationUpdate');
   has InputSchemaUpdate => (is => 'ro', isa => 'Paws::KinesisAnalytics::InputSchemaUpdate');
   has KinesisFirehoseInputUpdate => (is => 'ro', isa => 'Paws::KinesisAnalytics::KinesisFirehoseInputUpdate');
   has KinesisStreamsInputUpdate => (is => 'ro', isa => 'Paws::KinesisAnalytics::KinesisStreamsInputUpdate');
@@ -51,6 +52,11 @@ C<InputId> of an application).
 
   Describes the parallelism updates (the number in-application streams
 Amazon Kinesis Analytics creates for the specific streaming source).
+
+
+=head2 InputProcessingConfigurationUpdate => L<Paws::KinesisAnalytics::InputProcessingConfigurationUpdate>
+
+  Describes updates for an input processing configuration.
 
 
 =head2 InputSchemaUpdate => L<Paws::KinesisAnalytics::InputSchemaUpdate>

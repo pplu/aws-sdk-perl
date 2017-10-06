@@ -59,7 +59,7 @@ The name of the log group.
 
 =head2 MetricName => Str
 
-The name of the CloudWatch metric.
+
 
 
 
