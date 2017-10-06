@@ -124,7 +124,7 @@ case-I<12345678910-2013-c4c1d2bf33c5cf47>
 
 =head2 CategoryCode => Str
 
-  The category of problem for the AWS Support case.
+  The category of the problem for the AWS Support case.
 
 
 =head2 CcEmailAddresses => ArrayRef[Str|Undef]
