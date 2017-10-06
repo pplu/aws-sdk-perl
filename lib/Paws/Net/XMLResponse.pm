@@ -1,6 +1,6 @@
 package Paws::Net::XMLResponse;
   use Moose::Role;
-  use XML::Simple qw//;
+  use XML::LibXML::Simple qw//;
   use Carp qw(croak);
   use Paws::Exception;
 
@@ -74,12 +74,11 @@ package Paws::Net::XMLResponse;
   sub unserialize_response {
     my ($self, $data) = @_;
 
-    my $xml = XML::Simple->new(
+    my $xml = XML::LibXML::Simple->new(
       ForceArray    => qr/(?:item|Errors)/i,
-      KeyAttr       => '',
-      SuppressEmpty => undef,
+      #KeyAttr       => '',
     );
-    return $xml->parse_string($data);
+    return $xml->XMLin($data);
   }
 
   sub handle_response_strtonativemap {
