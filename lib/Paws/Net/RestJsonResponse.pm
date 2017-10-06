@@ -50,12 +50,7 @@ package Paws::Net::RestJsonResponse;
     } elsif (exists $struct->{Message}){
       $message = $struct->{Message};
     } else {
-      # Rationale for this condition is in Issue #82 
-      if ($struct->{__type} eq 'InternalError'){
-        $message = '';
-      } else {
-        die "Unrecognized error message format";
-      }
+      $message = "Unrecognized error message format";
     }
 
     if (exists $headers->{'x-amzn-errortype'}){
@@ -65,7 +60,7 @@ package Paws::Net::RestJsonResponse;
     } elsif (exists $struct->{ code }) {
       $code = $struct->{ code };
     } else {
-      $code = 'UnrecognizedError';
+      $code = 'InvalidContent';
     }
     $request_id = $headers->{ 'x-amzn-requestid' } // '';
 
