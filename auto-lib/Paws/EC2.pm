@@ -1987,8 +1987,8 @@ Returns: a L<Paws::EC2::ConfirmProductInstanceResult> instance
 
   Determines whether a product code is associated with an instance. This
 action can only be used by the owner of the product code. It is useful
-when a product code owner needs to verify whether another user's
-instance is eligible for support.
+when a product code owner must verify whether another user's instance
+is eligible for support.
 
 
 =head2 CopyFpgaImage(SourceFpgaImageId => Str, SourceRegion => Str, [ClientToken => Str, Description => Str, DryRun => Bool, Name => Str])
@@ -2369,9 +2369,8 @@ Each argument is described in detail in: L<Paws::EC2::CreatePlacementGroup>
 
 Returns: nothing
 
-  Creates a placement group that you launch cluster instances into. You
-must give the group a name that's unique within the scope of your
-account.
+  Creates a placement group that you launch cluster instances into. Give
+the group a name that's unique within the scope of your account.
 
 For more information about placement groups and cluster instances, see
 Cluster Instances in the I<Amazon Elastic Compute Cloud User Guide>.
@@ -2719,9 +2718,8 @@ with the new information returned from this call.
 This is an idempotent operation. If you perform the operation more than
 once, Amazon EC2 doesn't return an error.
 
-For more information about VPN connections, see Adding a Hardware
-Virtual Private Gateway to Your VPC in the I<Amazon Virtual Private
-Cloud User Guide>.
+For more information, see AWS Managed VPN Connections in the I<Amazon
+Virtual Private Cloud User Guide>.
 
 
 =head2 CreateVpnConnectionRoute(DestinationCidrBlock => Str, VpnConnectionId => Str)
@@ -4422,7 +4420,7 @@ provide them through the Amazon EC2 API and command line interface.
 
 Instance console output is buffered and posted shortly after instance
 boot, reboot, and termination. Amazon EC2 preserves the most recent 64
-KB output which is available for at least one hour after the most
+KB output, which is available for at least one hour after the most
 recent post.
 
 For Linux instances, the instance console output displays the exact
@@ -5410,8 +5408,8 @@ not subscribed, the request fails.
 =back
 
 To ensure faster instance launches, break up large requests into
-smaller batches. For example, create 5 separate launch requests for 100
-instances each instead of 1 launch request for 500 instances.
+smaller batches. For example, create five separate launch requests for
+100 instances each instead of one launch request for 500 instances.
 
 An instance is ready for you to use when it's in the C<running> state.
 You can check the state of your instance using DescribeInstances. You
@@ -5455,17 +5453,21 @@ Each argument is described in detail in: L<Paws::EC2::StartInstances>
 
 Returns: a L<Paws::EC2::StartInstancesResult> instance
 
-  Starts an Amazon EBS-backed AMI that you've previously stopped.
+  Starts an Amazon EBS-backed instance that you've previously stopped.
 
 Instances that use Amazon EBS volumes as their root devices can be
 quickly stopped and started. When an instance is stopped, the compute
-resources are released and you are not billed for hourly instance
-usage. However, your root partition Amazon EBS volume remains,
-continues to persist your data, and you are charged for Amazon EBS
-volume usage. You can restart your instance at any time. Each time you
-transition an instance from stopped to started, Amazon EC2 charges a
-full instance hour, even if transitions happen multiple times within a
-single hour.
+resources are released and you are not billed for instance usage.
+However, your root partition Amazon EBS volume remains and continues to
+persist your data, and you are charged for Amazon EBS volume usage. You
+can restart your instance at any time. Every time you start your
+Windows instance, Amazon EC2 charges you for a full instance hour. If
+you stop and restart your Windows instance, a new instance hour begins
+and Amazon EC2 charges you for another full instance hour even if you
+are still within the same 60-minute period when it was stopped. Every
+time you start your Linux instance, Amazon EC2 charges a one-minute
+minimum for instance usage, and thereafter charges per second for
+instance usage.
 
 Before stopping an instance, make sure it is in a state from which it
 can be restarted. Stopping an instance does not preserve data stored in
@@ -5486,14 +5488,18 @@ Returns: a L<Paws::EC2::StopInstancesResult> instance
 
   Stops an Amazon EBS-backed instance.
 
-We don't charge hourly usage for a stopped instance, or data transfer
-fees; however, your root partition Amazon EBS volume remains, continues
-to persist your data, and you are charged for Amazon EBS volume usage.
-Each time you transition an instance from stopped to started, Amazon
-EC2 charges a full instance hour, even if transitions happen multiple
-times within a single hour.
+We don't charge usage for a stopped instance, or data transfer fees;
+however, your root partition Amazon EBS volume remains and continues to
+persist your data, and you are charged for Amazon EBS volume usage.
+Every time you start your Windows instance, Amazon EC2 charges you for
+a full instance hour. If you stop and restart your Windows instance, a
+new instance hour begins and Amazon EC2 charges you for another full
+instance hour even if you are still within the same 60-minute period
+when it was stopped. Every time you start your Linux instance, Amazon
+EC2 charges a one-minute minimum for instance usage, and thereafter
+charges per second for instance usage.
 
-You can't start or stop Spot instances, and you can't stop instance
+You can't start or stop Spot Instances, and you can't stop instance
 store-backed instances.
 
 When you stop an instance, we shut it down. You can restart your
