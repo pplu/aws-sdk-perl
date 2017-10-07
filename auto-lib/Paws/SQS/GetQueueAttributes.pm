@@ -108,10 +108,25 @@ arrive.
 
 =item *
 
-C<RedrivePolicy> - Returns the parameters for dead letter queue
-functionality of the source queue. For more information about the
-redrive policy and dead letter queues, see Using Amazon SQS Dead Letter
-Queues in the I<Amazon SQS Developer Guide>.
+C<RedrivePolicy> - Returns the string that includes the parameters for
+dead-letter queue functionality of the source queue. For more
+information about the redrive policy and dead-letter queues, see Using
+Amazon SQS Dead-Letter Queues in the I<Amazon SQS Developer Guide>.
+
+=over
+
+=item *
+
+C<deadLetterTargetArn> - The Amazon Resource Name (ARN) of the
+dead-letter queue to which Amazon SQS moves messages after the value of
+C<maxReceiveCount> is exceeded.
+
+=item *
+
+C<maxReceiveCount> - The number of times a message is delivered to the
+source queue before being moved to the dead-letter queue.
+
+=back
 
 =item *
 
@@ -135,7 +150,8 @@ Terms.
 
 C<KmsDataKeyReusePeriodSeconds> - Returns the length of time, in
 seconds, for which Amazon SQS can reuse a data key to encrypt or
-decrypt messages before calling AWS KMS again.
+decrypt messages before calling AWS KMS again. For more information,
+see How Does the Data Key Reuse Period Work?.
 
 =back
 

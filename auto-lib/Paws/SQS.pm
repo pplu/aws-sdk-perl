@@ -176,7 +176,8 @@ or microservices. Amazon SQS moves data between distributed application
 components and helps you decouple these components.
 
 Standard queues are available in all regions. FIFO queues are available
-in US West (Oregon) and US East (Ohio).
+in the US East (N. Virginia), US East (Ohio), US West (Oregon), and EU
+(Ireland) regions.
 
 You can use AWS SDKs to access Amazon SQS using your favorite
 programming language. The SDKs perform tasks such as the following
@@ -222,7 +223,7 @@ Using Amazon SQS Message Attributes
 
 =item *
 
-Using Amazon SQS Dead Letter Queues
+Using Amazon SQS Dead-Letter Queues
 
 =back
 
@@ -283,15 +284,14 @@ can't extend the timeout of a message in an existing queue to more than
 a total visibility timeout of 12 hours. For more information, see
 Visibility Timeout in the I<Amazon SQS Developer Guide>.
 
-For example, you have a message and with the default visibility timeout
-of 5 minutes. After 3 minutes, you call C<ChangeMessageVisiblity> with
-a timeout of 10 minutes. At that time, the timeout for the message is
-extended by 10 minutes beyond the time of the
-C<ChangeMessageVisibility> action. This results in a total visibility
-timeout of 13 minutes. You can continue to call the
-C<ChangeMessageVisibility> to extend the visibility timeout to a
-maximum of 12 hours. If you try to extend the visibility timeout beyond
-12 hours, your request is rejected.
+For example, you have a message with a visibility timeout of 5 minutes.
+After 3 minutes, you call C<ChangeMessageVisiblity> with a timeout of
+10 minutes. At that time, the timeout for the message is extended by 10
+minutes beyond the time of the C<ChangeMessageVisibility> action. This
+results in a total visibility timeout of 13 minutes. You can continue
+to call the C<ChangeMessageVisibility> to extend the visibility timeout
+to a maximum of 12 hours. If you try to extend the visibility timeout
+beyond 12 hours, your request is rejected.
 
 A message is considered to be I<in flight> after it's received from a
 queue by a consumer, but not yet deleted from the queue.
@@ -470,9 +470,9 @@ Each argument is described in detail in: L<Paws::SQS::DeleteQueue>
 
 Returns: nothing
 
-  Deletes the queue specified by the C<QueueUrl>, even if the queue is
-empty. If the specified queue doesn't exist, Amazon SQS returns a
-successful response.
+  Deletes the queue specified by the C<QueueUrl>, regardless of the
+queue's contents. If the specified queue doesn't exist, Amazon SQS
+returns a successful response.
 
 Be careful with the C<DeleteQueue> action: When you delete a queue, any
 messages in the queue are no longer available.
@@ -530,10 +530,10 @@ Each argument is described in detail in: L<Paws::SQS::ListDeadLetterSourceQueues
 Returns: a L<Paws::SQS::ListDeadLetterSourceQueuesResult> instance
 
   Returns a list of your queues that have the C<RedrivePolicy> queue
-attribute configured with a dead letter queue.
+attribute configured with a dead-letter queue.
 
-For more information about using dead letter queues, see Using Amazon
-SQS Dead Letter Queues in the I<Amazon SQS Developer Guide>.
+For more information about using dead-letter queues, see Using Amazon
+SQS Dead-Letter Queues in the I<Amazon SQS Developer Guide>.
 
 
 =head2 ListQueues([QueueNamePrefix => Str])
@@ -632,7 +632,7 @@ Guide>.
 A message that isn't deleted or a message whose visibility isn't
 extended before the visibility timeout expires counts as a failed
 receive. Depending on the configuration of the queue, the message might
-be sent to the dead letter queue.
+be sent to the dead-letter queue.
 
 In the future, new attributes might be added. If you write code that
 calls this action, we recommend that you structure your code so that it
