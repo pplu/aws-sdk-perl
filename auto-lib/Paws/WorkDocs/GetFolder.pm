@@ -11,7 +11,6 @@ package Paws::WorkDocs::GetFolder;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/api/v1/folders/{FolderId}');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::WorkDocs::GetFolderResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
