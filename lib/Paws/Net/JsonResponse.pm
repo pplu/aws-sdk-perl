@@ -27,9 +27,11 @@ package Paws::Net::JsonResponse;
   sub unserialize_response {
     my ($self, $response) = @_;
 
-    my $struct = decode_json( $response->content );
+    return {} if (not defined $response->content or $response->content eq '');
+
+    my $struct = eval { decode_json( $response->content ) };
     if ($@) {
-      return Paws::Exception->new(
+      return Paws::Exception->throw(
         message => $@,
         code => 'InvalidContent',
         request_id => '',

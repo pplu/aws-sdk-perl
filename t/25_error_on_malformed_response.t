@@ -199,19 +199,17 @@ foreach my $status (200) {
       $s->Method3(response => q'', status => $status); 
     },
   );
-  throws_ok(
+  lives_ok(
     sub { 
       $s->Method3(response => 'notajsonstring', status => $status); 
     },
-    "Paws::Exception",
+    "A method that doesn't parse the body accepts a response with garbage in it",
   );
-  cmp_ok($@->code, 'eq', 'InvalidContent', 'Exception of type InvalidContent');
   lives_ok(
     sub { 
       $s->Method3(response => '[UNDEF]', status => $status); 
     },
   );
-
   lives_ok(
     sub { 
       $s->Method1(response => q'', status => $status); 
