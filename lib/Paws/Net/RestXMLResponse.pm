@@ -45,7 +45,16 @@ package Paws::Net::RestXMLResponse;
 
     $message = status_message($response->status);
     $code = $response->status;
-    $request_id = $response->header('x-amz-request-id') // $response->header('RequestId') // '';
+
+    if (exists $struct->{RequestId}) {
+      $request_id = $struct->{RequestId};
+    } elsif (exists $struct->{RequestID}){
+      $request_id = $struct->{RequestID};
+    } elsif ($response->has_header('x-amzn-requestid')) {
+      $request_id = $response->header('x-amzn-requestid');
+    } else {
+      $request_id = '';
+    }
     $host_id = $response->header('x-amz-id-2');
 
     Paws::Exception->new(
