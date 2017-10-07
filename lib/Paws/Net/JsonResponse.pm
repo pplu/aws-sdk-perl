@@ -48,9 +48,9 @@ package Paws::Net::JsonResponse;
     my ($message, $request_id);
 
     if (exists $struct->{message}){
-      $message = $struct->{message};
+      $message = $struct->{message} // '';
     } elsif (exists $struct->{Message}){
-      $message = $struct->{Message};
+      $message = $struct->{Message} // '';
     } else {
       $message = 'Unrecognized error format';
     }

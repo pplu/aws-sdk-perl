@@ -1,0 +1,4 @@
+---
+call: ListLexicons
+service: Polly
+tests: []

@@ -1,0 +1,4 @@
+---
+call: PutLexicon
+service: Polly
+tests: []

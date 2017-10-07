@@ -282,24 +282,20 @@ foreach my $status (200) {
       $s->Method3(response => '[UNDEF]', status => $status) 
     },
   );
-  throws_ok(
-    sub { 
-      $s->Method3(response => 'notajsonstring', status => $status) 
-    },
-    "Paws::Exception",
-  );
-  cmp_ok($@->code, 'eq', 'InvalidContent', 'Exception of type InvalidContent');
-
-  lives_ok(
+  dies_ok(
     sub { 
       $s->Method1(response => q'', status => $status) 
     },
+    'Paws::Exception'
   );
-  lives_ok(
+  cmp_ok($@->code, 'eq', 'InvalidContent', 'Exception of type InvalidContent');
+  dies_ok(
     sub { 
       $s->Method1(response => '[UNDEF]', status => $status) 
     },
+    'Paws::Exception'
   );
+  cmp_ok($@->code, 'eq', 'InvalidContent', 'Exception of type InvalidContent');
   throws_ok(
     sub { 
       $s->Method1(response => 'notajsonstring', status => $status) 

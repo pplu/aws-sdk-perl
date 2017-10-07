@@ -1,0 +1,26 @@
+---
+tests:
+  - expected: 0
+    op: eq
+    path: NumberOfMountTargets
+  - expected: 0
+    op: eq
+    path: SizeInBytes.Value
+  - expected: creating
+    op: eq
+    path: LifeCycleState
+  - expected: 1501713112
+    op: eq
+    path: CreationTime
+  - expected: generalPurpose
+    op: eq
+    path: PerformanceMode
+  - expected: 358194553427
+    op: eq
+    path: OwnerId
+  - expected: fs-bd72a074
+    op: eq
+    path: FileSystemId
+  - expected: 4
+    op: eq
+    path: CreationToken
