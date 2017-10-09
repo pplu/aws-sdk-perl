@@ -1,4 +1,4 @@
-0.35
+0.35 09 Oct 2017
  - Fix Bug: Correctly throw Paws::Exceptions even if there is no information
             in the body / headers (#190 svn-schubert) (#198 ilmari)
  - Work on S3 (sven-schubert)
