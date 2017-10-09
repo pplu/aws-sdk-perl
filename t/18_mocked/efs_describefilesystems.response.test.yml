@@ -1,0 +1,26 @@
+---
+tests:
+  - expected: 0
+    op: eq
+    path: FileSystems.0.NumberOfMountTargets
+  - expected: generalPurpose
+    op: eq
+    path: FileSystems.0.PerformanceMode
+  - expected: 4
+    op: eq
+    path: FileSystems.0.CreationToken
+  - expected: 1501713112
+    op: eq
+    path: FileSystems.0.CreationTime
+  - expected: 358194553427
+    op: eq
+    path: FileSystems.0.OwnerId
+  - expected: fs-bd72a074
+    op: eq
+    path: FileSystems.0.FileSystemId
+  - expected: 0
+    op: eq
+    path: FileSystems.0.SizeInBytes.Value
+  - expected: creating
+    op: eq
+    path: FileSystems.0.LifeCycleState

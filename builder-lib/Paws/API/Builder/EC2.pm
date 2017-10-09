@@ -9,8 +9,6 @@ package Paws::API::Builder::EC2 {
 
   extends 'Paws::API::Builder';
 
-  has response_role  => (is => 'ro', lazy => 1, default => sub { 'Paws::Net::XMLResponse' });
-
   has '+parameter_role' => (
     default => sub {
       return "Paws::Net::EC2Caller"
@@ -96,7 +94,7 @@ package [% c.api %];
   [%- END %]
   ] });
 
-  with 'Paws::API::Caller', '[% c.endpoint_role %]', '[% c.signature_role %]', '[% c.parameter_role %]', '[% c.response_role %]';
+  with 'Paws::API::Caller', '[% c.endpoint_role %]', '[% c.signature_role %]', '[% c.parameter_role %]';
 
   [%- c.service_endpoint_rules %]
   [% FOR op IN c.api_struct.operations.keys.sort %]

@@ -3,6 +3,15 @@ package Paws::Net::QueryCaller;
   use HTTP::Request::Common;
   use POSIX qw(strftime); 
 
+  use Paws::Net::XMLResponse;
+
+  has response_to_object => (
+    is => 'ro',
+    default => sub {
+      Paws::Net::XMLResponse->new;
+    }
+  );
+
   sub array_flatten_string {
     my $self = shift;
     return ($self->flattened_arrays)?'%s.%d':'%s.member.%d';

@@ -41,7 +41,10 @@ package Paws::API::ServiceToClass;
     dynamodbstreams => 'DynamoDBStreams',
     ec2 => 'EC2',
     ecr => 'ECR',
+    # The API definitions use "efs"
     efs => 'EFS',
+    # The service code is "elasticfilesystem"
+    elasticfilesystem => 'EFS',
     elasticache => 'ElastiCache',
     elasticbeanstalk => 'ElasticBeanstalk',
     elastictranscoder => 'ElasticTranscoder',

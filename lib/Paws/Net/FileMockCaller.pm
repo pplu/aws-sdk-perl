@@ -3,6 +3,7 @@ package Paws::Net::FileMockCaller;
 
   with 'Paws::Net::RetryCallerRole', 'Paws::Net::CallerRole';
 
+  use Paws::Net::APIResponse;
   use File::Slurper qw(read_text write_text);
   use JSON::MaybeXS;
   use Moose::Util::TypeConstraints;
@@ -82,13 +83,17 @@ package Paws::Net::FileMockCaller;
     }
  
     my $response = $self->file_contents;
-    return ($response->{response}{status}, $response->{response}{content}, $response->{response}{headers});
+    return Paws::Net::APIResponse->new(
+      status  => $response->{response}{status},
+      content => $response->{response}{content},
+      headers => $response->{response}{headers}
+    );
   };
 
   sub caller_to_response {
-    my ($self, $service, $call_object, $status, $content, $headers) = @_;
+    my ($self, $service, $call_object, $response) = @_;
  
-    return $self->real_caller->caller_to_response($service, $call_object, $status, $content, $headers);   
+    return $self->real_caller->caller_to_response($service, $call_object, $response);   
   };
 
 1;

@@ -1,54 +1,56 @@
 package Paws::Net::JsonResponse;
-  use Moose::Role;
+  use Moose;
   use JSON::MaybeXS;
   use Carp qw(croak);
   use Paws::Exception;
- 
-  sub handle_response {
-    my ($self, $call_object, $http_status, $content, $headers) = @_;
 
-    if (defined $headers->{ 'x-amz-crc32' }) {
+  sub process {
+    my ($self, $call_object, $response) = @_;
+
+    if ($response->has_header('x-amz-crc32')) {
       require String::CRC32;
-      my $crc = String::CRC32::crc32($content);
+      my $crc = String::CRC32::crc32($response->content);
       return Paws::Exception->new(
         code => 'Crc32Error',
         message => 'Content CRC32 mismatch',
-        request_id => $headers->{ 'x-amzn-requestid' }
-      ) if ($crc != $headers->{ 'x-amz-crc32' });
+        request_id => $response->header('x-amzn-requestid'),
+      ) if ($crc != $response->header('x-amz-crc32'));
     }
 
-    if ( $http_status >= 300 ) {
-        return $self->error_to_exception($call_object, $http_status, $content, $headers);
+    if ( $response->status >= 300 ) {
+        return $self->error_to_exception($call_object, $response);
     } else {
-        return $self->response_to_object($call_object, $http_status, $content, $headers);
+        return $self->response_to_object($call_object, $response);
     }
   }
  
   sub unserialize_response {
-    my ($self, $data) = @_;
+    my ($self, $response) = @_;
 
-    return decode_json( $data );
+    return {} if (not defined $response->content or $response->content eq '');
+
+    my $struct = eval { decode_json( $response->content ) };
+    if ($@) {
+      return Paws::Exception->throw(
+        message => $@,
+        code => 'InvalidContent',
+        request_id => '',
+        http_status => $response->status,
+      );
+    }
+    return $struct;
   }
 
   sub error_to_exception {
-    my ($self, $call_object, $http_status, $content, $headers) = @_;
+    my ($self, $call_object, $response) = @_;
     
-    my $struct = eval { $self->unserialize_response( $content ) };
-    if ($@) {
-      return Paws::Exception->new(
-        message => $@,
-        code => 'InvalidContent',
-        request_id => '', #$request_id,
-        http_status => $http_status,
-      );
-    }
-
+    my $struct = $self->unserialize_response( $response );
     my ($message, $request_id);
 
     if (exists $struct->{message}){
-      $message = $struct->{message};
+      $message = $struct->{message} // '';
     } elsif (exists $struct->{Message}){
-      $message = $struct->{Message};
+      $message = $struct->{Message} // '';
     } else {
       $message = 'Unrecognized error format';
     }
@@ -57,13 +59,13 @@ package Paws::Net::JsonResponse;
     if ($code =~ m/#/) {
       $code = (split /#/, $code)[1];
     }
-    $request_id = $headers->{ 'x-amzn-requestid' } // '';
+    $request_id = $response->header('x-amzn-requestid') // '';
 
     Paws::Exception->new(
       message => $message,
       code => $code,
       request_id => $request_id,
-      http_status => $http_status,
+      http_status => $response->status,
     );
   }
 
@@ -209,4 +211,25 @@ package Paws::Net::JsonResponse;
     $class->new(%args);
     }
   }
+
+  sub response_to_object {
+    my ($self, $call_object, $response) = @_;
+
+    $call_object = $call_object->meta->name;
+
+    my $returns = (defined $call_object->_returns) && ($call_object->_returns ne 'Paws::API::Response');
+    my $ret_class = $returns ? $call_object->_returns : 'Paws::API::Response';
+    Paws->load_class($ret_class);
+
+    my $headers = $response->headers;
+    my $request_id = $headers->{'x-amz-request-id'} || $headers->{'x-amzn-requestid'};
+ 
+    return Paws::API::Response->new(_request_id => $request_id) if (not $returns);
+
+    my $unserialized_struct = $self->unserialize_response( $response );
+    $unserialized_struct->{ _request_id } = $request_id;
+    my $o_result = $self->new_from_result_struct($call_object->_returns, $unserialized_struct);
+    return $o_result;
+  }
+
 1;

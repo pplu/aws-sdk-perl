@@ -11,7 +11,7 @@ package Paws::CloudSearch;
        sub { defined $_[0]->http_status and $_[0]->http_status == 509 and $_[0]->code eq 'BandwidthLimitExceeded' },
   ] });
 
-  with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::QueryCaller', 'Paws::Net::XMLResponse';
+  with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::QueryCaller';
 
   
   sub BuildSuggesters {

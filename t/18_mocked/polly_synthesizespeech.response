@@ -1,0 +1,1 @@
+{"response":{"status":"200","headers":{"content-type":"audio/mpeg","x-amzn-requestid":"000000000000000000000000000000000000","date":"Thu, 20 Jul 2017 20:57:57 GMT","x-amzn-requestcharacters":"6","transfer-encoding":"chunked"},"content":"ID3..."},"request":{"call":"SynthesizeSpeech","params":{"OutputFormat":"mp3","VoiceId":"Ines","Text":"Hello!"},"service":"polly"}}
