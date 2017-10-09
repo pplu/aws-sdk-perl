@@ -47,7 +47,7 @@ you deploy source code or change instance configuration settings.
 
 =head2 DeploymentTime => Str
 
-  For in-progress deployments, the time that the deloyment started.
+  For in-progress deployments, the time that the deployment started.
 
 For completed deployments, the time that the deployment ended.
 

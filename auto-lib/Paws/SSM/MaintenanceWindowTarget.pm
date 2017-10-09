@@ -1,5 +1,7 @@
 package Paws::SSM::MaintenanceWindowTarget;
   use Moose;
+  has Description => (is => 'ro', isa => 'Str');
+  has Name => (is => 'ro', isa => 'Str');
   has OwnerInformation => (is => 'ro', isa => 'Str');
   has ResourceType => (is => 'ro', isa => 'Str');
   has Targets => (is => 'ro', isa => 'ArrayRef[Paws::SSM::Target]');
@@ -24,20 +26,30 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SSM::MaintenanceWindowTarget object:
 
-  $service_obj->Method(Att1 => { OwnerInformation => $value, ..., WindowTargetId => $value  });
+  $service_obj->Method(Att1 => { Description => $value, ..., WindowTargetId => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::SSM::MaintenanceWindowTarget object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->OwnerInformation
+  $result->Att1->Description
 
 =head1 DESCRIPTION
 
 The target registered with the Maintenance Window.
 
 =head1 ATTRIBUTES
+
+
+=head2 Description => Str
+
+  A description of the target.
+
+
+=head2 Name => Str
+
+  The target name.
 
 
 =head2 OwnerInformation => Str

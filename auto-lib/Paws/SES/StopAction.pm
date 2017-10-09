@@ -37,15 +37,14 @@ of the receipt rule set and, optionally, publishes a notification to
 Amazon Simple Notification Service (Amazon SNS).
 
 For information about setting a stop action in a receipt rule, see the
-Amazon SES Developer Guide.
+I< Amazon SES Developer Guide.>
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> Scope => Str
 
-  The scope to which the Stop action applies. That is, what is being
-stopped.
+  The name of the RuleSet that is being stopped.
 
 
 =head2 TopicArn => Str

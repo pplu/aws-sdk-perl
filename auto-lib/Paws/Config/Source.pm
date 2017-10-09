@@ -60,7 +60,7 @@ managed rule, see Using AWS Managed Config Rules.
 
 For custom rules, the identifier is the Amazon Resource Name (ARN) of
 the rule's AWS Lambda function, such as
-C<arn:aws:lambda:us-east-1:123456789012:function:custom_rule_name>.
+C<arn:aws:lambda:us-east-2:123456789012:function:custom_rule_name>.
 
 
 

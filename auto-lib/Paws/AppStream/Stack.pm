@@ -37,7 +37,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AppStream::
 
 =head1 DESCRIPTION
 
-Details about a stack.
+Describes a stack.
 
 =head1 ATTRIBUTES
 
@@ -49,32 +49,32 @@ Details about a stack.
 
 =head2 CreatedTime => Str
 
-  The timestamp when the stack was created.
+  The time the stack was created.
 
 
 =head2 Description => Str
 
-  A meaningful description for the stack.
+  The description displayed to end users.
 
 
 =head2 DisplayName => Str
 
-  A display name for the stack.
+  The stack name displayed to end users.
 
 
 =head2 B<REQUIRED> Name => Str
 
-  The unique identifier of the stack.
+  The name of the stack.
 
 
 =head2 StackErrors => ArrayRef[L<Paws::AppStream::StackError>]
 
-  The list of errors associated with the stack.
+  The errors for the stack.
 
 
 =head2 StorageConnectors => ArrayRef[L<Paws::AppStream::StorageConnector>]
 
-  The storage connectors to be enabled for the stack.
+  The storage connectors to enable.
 
 
 

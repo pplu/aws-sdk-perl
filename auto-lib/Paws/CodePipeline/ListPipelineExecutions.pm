@@ -47,7 +47,7 @@ value is 100.
 
 =head2 NextToken => Str
 
-The token that was returned from the previous list pipeline executions
+The token that was returned from the previous ListPipelineExecutions
 call, which can be used to return the next set of pipeline executions
 in the list.
 

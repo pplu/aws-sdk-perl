@@ -1,6 +1,7 @@
 package Paws::SSM::MaintenanceWindowIdentity;
   use Moose;
   has Cutoff => (is => 'ro', isa => 'Int');
+  has Description => (is => 'ro', isa => 'Str');
   has Duration => (is => 'ro', isa => 'Int');
   has Enabled => (is => 'ro', isa => 'Bool');
   has Name => (is => 'ro', isa => 'Str');
@@ -44,6 +45,11 @@ Information about the Maintenance Window.
 
   The number of hours before the end of the Maintenance Window that
 Systems Manager stops scheduling new tasks for execution.
+
+
+=head2 Description => Str
+
+  A description of the Maintenance Window.
 
 
 =head2 Duration => Int

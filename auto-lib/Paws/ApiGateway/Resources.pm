@@ -18,7 +18,7 @@ Paws::ApiGateway::Resources
 
 =head2 Items => ArrayRef[L<Paws::ApiGateway::Resource>]
 
-Gets the current Resource resource in the collection.
+The current page of elements from this collection.
 
 
 =head2 Position => Str

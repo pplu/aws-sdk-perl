@@ -321,7 +321,7 @@ affecting the Qualification the Worker already has, reject the request
 with the C<RejectQualificationRequest> operation.
 
 
-=head2 CreateAdditionalAssignmentsForHIT(HITId => Str, [NumberOfAdditionalAssignments => Int, UniqueRequestToken => Str])
+=head2 CreateAdditionalAssignmentsForHIT(HITId => Str, NumberOfAdditionalAssignments => Int, [UniqueRequestToken => Str])
 
 Each argument is described in detail in: L<Paws::MTurk::CreateAdditionalAssignmentsForHIT>
 
@@ -752,7 +752,7 @@ to a Worker only if you have previously approved or rejected work from
 the Worker.
 
 
-=head2 RejectAssignment(AssignmentId => Str, [RequesterFeedback => Str])
+=head2 RejectAssignment(AssignmentId => Str, RequesterFeedback => Str)
 
 Each argument is described in detail in: L<Paws::MTurk::RejectAssignment>
 
@@ -784,7 +784,7 @@ You can provide a text message explaining why the request was rejected.
 The Worker who made the request can see this message.
 
 
-=head2 SendBonus(AssignmentId => Str, BonusAmount => Str, WorkerId => Str, [Reason => Str, UniqueRequestToken => Str])
+=head2 SendBonus(AssignmentId => Str, BonusAmount => Str, Reason => Str, WorkerId => Str, [UniqueRequestToken => Str])
 
 Each argument is described in detail in: L<Paws::MTurk::SendBonus>
 
@@ -817,7 +817,7 @@ operation, the service attempts to send the test notification
 immediately.
 
 
-=head2 UpdateExpirationForHIT(HITId => Str, [ExpireAt => Str])
+=head2 UpdateExpirationForHIT(ExpireAt => Str, HITId => Str)
 
 Each argument is described in detail in: L<Paws::MTurk::UpdateExpirationForHIT>
 

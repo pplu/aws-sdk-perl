@@ -2,6 +2,7 @@
 package Paws::SSM::ListDocuments;
   use Moose;
   has DocumentFilterList => (is => 'ro', isa => 'ArrayRef[Paws::SSM::DocumentFilter]');
+  has Filters => (is => 'ro', isa => 'ArrayRef[Paws::SSM::DocumentKeyValuesFilter]');
   has MaxResults => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
 
@@ -36,6 +37,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 
 =head2 DocumentFilterList => ArrayRef[L<Paws::SSM::DocumentFilter>]
+
+One or more filters. Use a filter to return a more specific list of
+results.
+
+
+
+=head2 Filters => ArrayRef[L<Paws::SSM::DocumentKeyValuesFilter>]
 
 One or more filters. Use a filter to return a more specific list of
 results.

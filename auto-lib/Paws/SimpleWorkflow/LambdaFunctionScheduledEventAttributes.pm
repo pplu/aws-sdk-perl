@@ -1,5 +1,6 @@
 package Paws::SimpleWorkflow::LambdaFunctionScheduledEventAttributes;
   use Moose;
+  has Control => (is => 'ro', isa => 'Str', request_name => 'control', traits => ['NameInRequest']);
   has DecisionTaskCompletedEventId => (is => 'ro', isa => 'Int', request_name => 'decisionTaskCompletedEventId', traits => ['NameInRequest'], required => 1);
   has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest'], required => 1);
   has Input => (is => 'ro', isa => 'Str', request_name => 'input', traits => ['NameInRequest']);
@@ -24,49 +25,56 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SimpleWorkflow::LambdaFunctionScheduledEventAttributes object:
 
-  $service_obj->Method(Att1 => { DecisionTaskCompletedEventId => $value, ..., StartToCloseTimeout => $value  });
+  $service_obj->Method(Att1 => { Control => $value, ..., StartToCloseTimeout => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkflow::LambdaFunctionScheduledEventAttributes object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->DecisionTaskCompletedEventId
+  $result->Att1->Control
 
 =head1 DESCRIPTION
 
-Provides details for the C<LambdaFunctionScheduled> event.
+Provides the details of the C<LambdaFunctionScheduled> event. It isn't
+set for other event types.
 
 =head1 ATTRIBUTES
 
 
+=head2 Control => Str
+
+  Data attached to the event that the decider can use in subsequent
+workflow tasks. This data isn't sent to the Lambda task.
+
+
 =head2 B<REQUIRED> DecisionTaskCompletedEventId => Int
 
-  The ID of the C<DecisionTaskCompleted> event for the decision that
-resulted in the scheduling of this AWS Lambda function. This
-information can be useful for diagnosing problems by tracing back the
-chain of events leading up to this event.
+  The ID of the C<LambdaFunctionCompleted> event corresponding to the
+decision that resulted in scheduling this activity task. To help
+diagnose issues, use this information to trace back the chain of events
+leading up to this event.
 
 
 =head2 B<REQUIRED> Id => Str
 
-  The unique Amazon SWF ID for the AWS Lambda task.
+  The unique ID of the Lambda task.
 
 
 =head2 Input => Str
 
-  Input provided to the AWS Lambda function.
+  The input provided to the Lambda task.
 
 
 =head2 B<REQUIRED> Name => Str
 
-  The name of the scheduled AWS Lambda function.
+  The name of the Lambda function.
 
 
 =head2 StartToCloseTimeout => Str
 
-  The maximum time, in seconds, that the AWS Lambda function can take to
-execute from start to close before it is marked as failed.
+  The maximum amount of time a worker can take to process the Lambda
+task.
 
 
 

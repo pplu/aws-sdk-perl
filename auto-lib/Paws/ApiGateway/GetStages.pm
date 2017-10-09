@@ -44,7 +44,7 @@ The stages' deployment identifiers.
 
 =head2 B<REQUIRED> RestApiId => Str
 
-The stages' API identifiers.
+The string identifier of the associated RestApi.
 
 
 

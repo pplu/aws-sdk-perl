@@ -56,8 +56,7 @@ The name of the log group.
 
 =head2 B<REQUIRED> MetricTransformations => ArrayRef[L<Paws::CloudWatchLogs::MetricTransformation>]
 
-A collection of information needed to define how metric data gets
-emitted.
+A collection of information that defines how metric data gets emitted.
 
 
 

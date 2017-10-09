@@ -53,7 +53,7 @@ The description of the model.
 
 =head2 B<REQUIRED> Name => Str
 
-The name of the model.
+The name of the model. Must be alphanumeric.
 
 
 

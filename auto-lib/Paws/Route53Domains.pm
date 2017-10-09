@@ -19,6 +19,11 @@ package Paws::Route53Domains;
     my $call_object = $self->new_with_coercions('Paws::Route53Domains::CheckDomainAvailability', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CheckDomainTransferability {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Route53Domains::CheckDomainTransferability', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteTagsForDomain {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Route53Domains::DeleteTagsForDomain', @_);
@@ -178,7 +183,7 @@ package Paws::Route53Domains;
   }
 
 
-  sub operations { qw/CheckDomainAvailability DeleteTagsForDomain DisableDomainAutoRenew DisableDomainTransferLock EnableDomainAutoRenew EnableDomainTransferLock GetContactReachabilityStatus GetDomainDetail GetDomainSuggestions GetOperationDetail ListDomains ListOperations ListTagsForDomain RegisterDomain RenewDomain ResendContactReachabilityEmail RetrieveDomainAuthCode TransferDomain UpdateDomainContact UpdateDomainContactPrivacy UpdateDomainNameservers UpdateTagsForDomain ViewBilling / }
+  sub operations { qw/CheckDomainAvailability CheckDomainTransferability DeleteTagsForDomain DisableDomainAutoRenew DisableDomainTransferLock EnableDomainAutoRenew EnableDomainTransferLock GetContactReachabilityStatus GetDomainDetail GetDomainSuggestions GetOperationDetail ListDomains ListOperations ListTagsForDomain RegisterDomain RenewDomain ResendContactReachabilityEmail RetrieveDomainAuthCode TransferDomain UpdateDomainContact UpdateDomainContactPrivacy UpdateDomainNameservers UpdateTagsForDomain ViewBilling / }
 
 1;
 
@@ -222,6 +227,15 @@ the availability status of a domain is pending, you must submit another
 request to determine the availability of the domain name.
 
 
+=head2 CheckDomainTransferability(DomainName => Str, [AuthCode => Str])
+
+Each argument is described in detail in: L<Paws::Route53Domains::CheckDomainTransferability>
+
+Returns: a L<Paws::Route53Domains::CheckDomainTransferabilityResponse> instance
+
+  Checks whether a domain name can be transferred to Amazon Route 53.
+
+
 =head2 DeleteTagsForDomain(DomainName => Str, TagsToDelete => ArrayRef[Str|Undef])
 
 Each argument is described in detail in: L<Paws::Route53Domains::DeleteTagsForDomain>
@@ -230,8 +244,8 @@ Returns: a L<Paws::Route53Domains::DeleteTagsForDomainResponse> instance
 
   This operation deletes the specified tags for a domain.
 
-All tag operations are eventually consistent; subsequent operations may
-not immediately represent all issued operations.
+All tag operations are eventually consistent; subsequent operations
+might not immediately represent all issued operations.
 
 
 =head2 DisableDomainAutoRenew(DomainName => Str)
@@ -367,8 +381,8 @@ Returns: a L<Paws::Route53Domains::ListTagsForDomainResponse> instance
   This operation returns all of the tags that are associated with the
 specified domain.
 
-All tag operations are eventually consistent; subsequent operations may
-not immediately represent all issued operations.
+All tag operations are eventually consistent; subsequent operations
+might not immediately represent all issued operations.
 
 
 =head2 RegisterDomain(AdminContact => L<Paws::Route53Domains::ContactDetail>, DomainName => Str, DurationInYears => Int, RegistrantContact => L<Paws::Route53Domains::ContactDetail>, TechContact => L<Paws::Route53Domains::ContactDetail>, [AutoRenew => Bool, IdnLangCode => Str, PrivacyProtectAdminContact => Bool, PrivacyProtectRegistrantContact => Bool, PrivacyProtectTechContact => Bool])
@@ -552,8 +566,8 @@ Returns: a L<Paws::Route53Domains::UpdateTagsForDomainResponse> instance
 
   This operation adds or updates tags for a specified domain.
 
-All tag operations are eventually consistent; subsequent operations may
-not immediately represent all issued operations.
+All tag operations are eventually consistent; subsequent operations
+might not immediately represent all issued operations.
 
 
 =head2 ViewBilling([End => Str, Marker => Str, MaxItems => Int, Start => Str])

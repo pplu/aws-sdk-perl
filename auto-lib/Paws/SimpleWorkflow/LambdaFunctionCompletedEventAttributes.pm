@@ -33,27 +33,29 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkf
 
 =head1 DESCRIPTION
 
-Provides details for the C<LambdaFunctionCompleted> event.
+Provides the details of the C<LambdaFunctionCompleted> event. It isn't
+set for other event types.
 
 =head1 ATTRIBUTES
 
 
 =head2 Result => Str
 
-  The result of the function execution (if any).
+  The results of the Lambda task.
 
 
 =head2 B<REQUIRED> ScheduledEventId => Int
 
   The ID of the C<LambdaFunctionScheduled> event that was recorded when
-this AWS Lambda function was scheduled. This information can be useful
-for diagnosing problems by tracing back the chain of events leading up
-to this event.
+this Lambda task was scheduled. To help diagnose issues, use this
+information to trace back the chain of events leading up to this event.
 
 
 =head2 B<REQUIRED> StartedEventId => Int
 
-  The ID of the C<LambdaFunctionStarted> event recorded in the history.
+  The ID of the C<LambdaFunctionStarted> event recorded when this
+activity task started. To help diagnose issues, use this information to
+trace back the chain of events leading up to this event.
 
 
 

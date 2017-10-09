@@ -24,7 +24,7 @@ A list of ConfigurationOptionDescription.
 
 =head2 PlatformArn => Str
 
-The ARN of the custom platform.
+The ARN of the platform.
 
 
 =head2 SolutionStackName => Str

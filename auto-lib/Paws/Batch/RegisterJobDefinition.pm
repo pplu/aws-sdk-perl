@@ -48,7 +48,9 @@ This parameter is required if the C<type> parameter is C<container>.
 
 =head2 B<REQUIRED> JobDefinitionName => Str
 
-The name of the job definition to register.
+The name of the job definition to register. Up to 128 letters
+(uppercase and lowercase), numbers, hyphens, and underscores are
+allowed.
 
 
 

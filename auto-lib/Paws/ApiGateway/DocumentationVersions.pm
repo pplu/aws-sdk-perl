@@ -18,8 +18,7 @@ Paws::ApiGateway::DocumentationVersions
 
 =head2 Items => ArrayRef[L<Paws::ApiGateway::DocumentationVersion>]
 
-The current page of DocumentationVersion items from the
-DocumentationVersions collection of an API.
+The current page of elements from this collection.
 
 
 =head2 Position => Str

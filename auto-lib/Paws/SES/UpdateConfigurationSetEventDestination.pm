@@ -36,7 +36,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ConfigurationSetName => Str
 
-The name of the configuration set that you want to update.
+The name of the configuration set that contains the event destination
+that you want to update.
 
 
 

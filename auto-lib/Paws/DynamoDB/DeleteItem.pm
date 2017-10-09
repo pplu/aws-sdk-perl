@@ -84,7 +84,7 @@ Conditions in the I<Amazon DynamoDB Developer Guide>.
 
 =head2 Expected => L<Paws::DynamoDB::ExpectedAttributeMap>
 
-This is a legacy parameter. Use C<ConditionExpresssion> instead. For
+This is a legacy parameter. Use C<ConditionExpression> instead. For
 more information, see Expected in the I<Amazon DynamoDB Developer
 Guide>.
 

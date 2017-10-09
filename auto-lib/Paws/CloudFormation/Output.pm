@@ -1,6 +1,7 @@
 package Paws::CloudFormation::Output;
   use Moose;
   has Description => (is => 'ro', isa => 'Str');
+  has ExportName => (is => 'ro', isa => 'Str');
   has OutputKey => (is => 'ro', isa => 'Str');
   has OutputValue => (is => 'ro', isa => 'Str');
 1;
@@ -41,6 +42,11 @@ The Output data type.
 =head2 Description => Str
 
   User defined description associated with the output.
+
+
+=head2 ExportName => Str
+
+  The name of the export associated with the output.
 
 
 =head2 OutputKey => Str

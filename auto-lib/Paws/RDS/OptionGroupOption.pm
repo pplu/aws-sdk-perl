@@ -13,6 +13,9 @@ package Paws::RDS::OptionGroupOption;
   has Permanent => (is => 'ro', isa => 'Bool');
   has Persistent => (is => 'ro', isa => 'Bool');
   has PortRequired => (is => 'ro', isa => 'Bool');
+  has RequiresAutoMinorEngineVersionUpgrade => (is => 'ro', isa => 'Bool');
+  has SupportsOptionVersionDowngrade => (is => 'ro', isa => 'Bool');
+  has VpcOnly => (is => 'ro', isa => 'Bool');
 1;
 
 ### main pod documentation begin ###
@@ -32,7 +35,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::RDS::OptionGroupOption object:
 
-  $service_obj->Method(Att1 => { DefaultPort => $value, ..., PortRequired => $value  });
+  $service_obj->Method(Att1 => { DefaultPort => $value, ..., VpcOnly => $value  });
 
 =head3 Results returned from an API call
 
@@ -118,6 +121,26 @@ option from the option group.
 =head2 PortRequired => Bool
 
   Specifies whether the option requires a port.
+
+
+=head2 RequiresAutoMinorEngineVersionUpgrade => Bool
+
+  If true, you must enable the Auto Minor Version Upgrade setting for
+your DB instance before you can use this option. You can enable Auto
+Minor Version Upgrade when you first create your DB instance, or by
+modifying your DB instance later.
+
+
+=head2 SupportsOptionVersionDowngrade => Bool
+
+  If true, you can change the option to an earlier version of the option.
+This only applies to options that have different versions available.
+
+
+=head2 VpcOnly => Bool
+
+  If true, you can only use this option with a DB instance that is in a
+VPC.
 
 
 

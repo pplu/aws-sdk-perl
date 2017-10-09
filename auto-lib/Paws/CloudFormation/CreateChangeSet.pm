@@ -10,6 +10,7 @@ package Paws::CloudFormation::CreateChangeSet;
   has Parameters => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::Parameter]');
   has ResourceTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has RoleARN => (is => 'ro', isa => 'Str');
+  has RollbackConfiguration => (is => 'ro', isa => 'Paws::CloudFormation::RollbackConfiguration');
   has StackName => (is => 'ro', isa => 'Str', required => 1);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::Tag]');
   has TemplateBody => (is => 'ro', isa => 'Str');
@@ -167,6 +168,14 @@ user credentials.
 
 
 
+=head2 RollbackConfiguration => L<Paws::CloudFormation::RollbackConfiguration>
+
+The rollback triggers for AWS CloudFormation to monitor during stack
+creation and updating operations, and for the specified monitoring
+period afterwards.
+
+
+
 =head2 B<REQUIRED> StackName => Str
 
 The name or the unique ID of the stack for which you are creating a
@@ -180,7 +189,7 @@ a modified template or different parameter input values.
 
 Key-value pairs to associate with this stack. AWS CloudFormation also
 propagates these tags to resources in the stack. You can specify a
-maximum of 10 tags.
+maximum of 50 tags.
 
 
 

@@ -37,30 +37,30 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AppStream::
 
 =head1 DESCRIPTION
 
-An entry for a single application in the application catalog.
+Describes an application in the application catalog.
 
 =head1 ATTRIBUTES
 
 
 =head2 DisplayName => Str
 
-  The name of the application shown to the end users.
+  The application name displayed to end users.
 
 
 =head2 Enabled => Bool
 
-  An application can be disabled after image creation if there is a
-problem.
+  If there is a problem, the application can be disabled after image
+creation.
 
 
 =head2 IconURL => Str
 
-  The URL for the application icon. This URL may be time-limited.
+  The URL for the application icon. This URL might be time-limited.
 
 
 =head2 LaunchParameters => Str
 
-  A list of arguments that are passed to the application at launch.
+  The arguments that are passed to the application at launch.
 
 
 =head2 LaunchPath => Str
@@ -75,7 +75,7 @@ problem.
 
 =head2 Name => Str
 
-  The unique identifier for the application.
+  The name of the application.
 
 
 

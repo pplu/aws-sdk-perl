@@ -54,7 +54,7 @@ need to be unique.
 
 Token that indicates the start of the next sequential page of results.
 Use the token that is returned with a previous call to this action. To
-specify the start of the result set, do not specify a value.
+start at the beginning of the result set, do not specify a value.
 
 
 
@@ -70,13 +70,13 @@ Possible routing types include the following:
 
 =item *
 
-B<SIMPLE> E<ndash> The alias resolves to one specific fleet. Use this
-type when routing to active fleets.
+B<SIMPLE> -- The alias resolves to one specific fleet. Use this type
+when routing to active fleets.
 
 =item *
 
-B<TERMINAL> E<ndash> The alias does not resolve to a fleet but instead
-can be used to display a message to the user. A terminal alias throws a
+B<TERMINAL> -- The alias does not resolve to a fleet but instead can be
+used to display a message to the user. A terminal alias throws a
 TerminalRoutingStrategyException with the RoutingStrategy message
 embedded.
 

@@ -47,7 +47,8 @@ to list jobs.
 
 =head2 JobStatus => Str
 
-The job status with which to filter jobs in the specified queue.
+The job status with which to filter jobs in the specified queue. If you
+do not specify a status, only C<RUNNING> jobs are returned.
 
 Valid values are: C<"SUBMITTED">, C<"PENDING">, C<"RUNNABLE">, C<"STARTING">, C<"RUNNING">, C<"SUCCEEDED">, C<"FAILED">
 

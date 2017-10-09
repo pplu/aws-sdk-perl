@@ -38,25 +38,25 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Description => Str
 
-The description displayed to end users on the AppStream 2.0 portal.
+The description displayed to end users.
 
 
 
 =head2 DisplayName => Str
 
-The name displayed to end users on the AppStream 2.0 portal.
+The stack name displayed to end users.
 
 
 
 =head2 B<REQUIRED> Name => Str
 
-The unique identifier for this stack.
+The name of the stack.
 
 
 
 =head2 StorageConnectors => ArrayRef[L<Paws::AppStream::StorageConnector>]
 
-The storage connectors to be enabled for the stack.
+The storage connectors to enable.
 
 
 

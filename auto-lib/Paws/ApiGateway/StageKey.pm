@@ -40,12 +40,12 @@ C<{restApiId}/{stage}>.
 
 =head2 RestApiId => Str
 
-  A list of Stage resources that are associated with the ApiKey resource.
+  The string identifier of the associated RestApi.
 
 
 =head2 StageName => Str
 
-  The stage name in the RestApi that the stage key references.
+  The stage name associated with the stage key.
 
 
 

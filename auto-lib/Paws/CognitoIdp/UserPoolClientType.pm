@@ -47,7 +47,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CognitoIdp:
 
 =head1 DESCRIPTION
 
-A user pool of the client type.
+Contains information about a user pool client.
 
 =head1 ATTRIBUTES
 
@@ -116,7 +116,7 @@ C<"phone">, C<"email">, C<"openid">, and C<"Cognito">.
 
 =head2 LogoutURLs => ArrayRef[Str|Undef]
 
-  A list ofallowed logout URLs for the identity providers.
+  A list of allowed logout URLs for the identity providers.
 
 
 =head2 ReadAttributes => ArrayRef[Str|Undef]

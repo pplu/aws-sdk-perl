@@ -42,7 +42,7 @@ Information about a team member in a project.
 
   The role assigned to the user in the project. Project roles have
 different levels of access. For more information, see Working with
-Teams in the AWS CodeStar User Guide.
+Teams in the I<AWS CodeStar User Guide>.
 
 
 =head2 RemoteAccessAllowed => Bool

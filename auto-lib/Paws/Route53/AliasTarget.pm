@@ -137,18 +137,30 @@ value of C<DNSName>. For more information, see the applicable guide:
 
 =item *
 
-Classic Load Balancer: DescribeLoadBalancers
+Classic Load Balancers: DescribeLoadBalancers
 
 =item *
 
-Application Load Balancer: DescribeLoadBalancers
+Application and Network Load Balancers: DescribeLoadBalancers
 
 =back
 
 =item *
 
-B<AWS CLI>: Use C< describe-load-balancers > to get the value of
-C<DNSName>.
+B<AWS CLI>: Use C<describe-load-balancers> to get the value of
+C<DNSName>. For more information, see the applicable guide:
+
+=over
+
+=item *
+
+Classic Load Balancers: describe-load-balancers
+
+=item *
+
+Application and Network Load Balancers: describe-load-balancers
+
+=back
 
 =back
 
@@ -273,13 +285,14 @@ following methods to get the hosted zone ID:
 =item *
 
 Elastic Load Balancing table in the "AWS Regions and Endpoints" chapter
-of the I<Amazon Web Services General Reference>: Use the value in the
-"Amazon Route 53 Hosted Zone ID" column that corresponds with the
-region that you created your load balancer in.
+of the I<Amazon Web Services General Reference>: Use the value that
+corresponds with the region that you created your load balancer in.
+Note that there are separate columns for Application and Classic Load
+Balancers and for Network Load Balancers.
 
 =item *
 
-B<AWS Management Console>: Go to the Amazon EC2 page, click B<Load
+B<AWS Management Console>: Go to the Amazon EC2 page, choose B<Load
 Balancers> in the navigation pane, select the load balancer, and get
 the value of the B<Hosted zone> field on the B<Description> tab.
 
@@ -293,18 +306,32 @@ applicable guide:
 
 =item *
 
-Classic Load Balancer: DescribeLoadBalancers
+Classic Load Balancers: DescribeLoadBalancers
 
 =item *
 
-Application Load Balancer: DescribeLoadBalancers
+Application and Network Load Balancers: DescribeLoadBalancers
 
 =back
 
 =item *
 
-B<AWS CLI>: Use C< describe-load-balancers > to get the value of
-C<CanonicalHostedZoneNameID>.
+B<AWS CLI>: Use C<describe-load-balancers> to get the value of
+C<CanonicalHostedZoneNameID> (for Classic Load Balancers) or
+C<CanonicalHostedZoneNameID> (for Application and Network Load
+Balancers). For more information, see the applicable guide:
+
+=over
+
+=item *
+
+Classic Load Balancers: describe-load-balancers
+
+=item *
+
+Application and Network Load Balancers: describe-load-balancers
+
+=back
 
 =back
 

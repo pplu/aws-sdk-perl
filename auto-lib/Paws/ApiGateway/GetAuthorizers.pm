@@ -51,7 +51,7 @@ The current pagination position in the paged result set.
 
 =head2 B<REQUIRED> RestApiId => Str
 
-The RestApi identifier for the Authorizers resource.
+The string identifier of the associated RestApi.
 
 
 

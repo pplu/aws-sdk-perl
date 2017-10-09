@@ -39,7 +39,7 @@ Represents a workflow type.
 
 =head2 B<REQUIRED> Name => Str
 
-  B<Required.> The name of the workflow type.
+  The name of the workflow type.
 
 The combination of workflow type name and version must be unique with
 in a domain.
@@ -47,7 +47,7 @@ in a domain.
 
 =head2 B<REQUIRED> Version => Str
 
-  B<Required.> The version of the workflow type.
+  The version of the workflow type.
 
 The combination of workflow type name and version must be unique with
 in a domain.

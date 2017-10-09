@@ -37,21 +37,22 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ApplicationName => Str
 
-The Amazon Kinesis Analytics application name.
+The Kinesis Analytics application name.
 
 
 
 =head2 B<REQUIRED> CloudWatchLoggingOption => L<Paws::KinesisAnalytics::CloudWatchLoggingOption>
 
-Provide the CloudWatch log stream ARN and the IAM role ARN. Note: To
-write application messages to CloudWatch, the IAM role used must have
-the C<PutLogEvents> policy action enabled.
+Provides the CloudWatch log stream Amazon Resource Name (ARN) and the
+IAM role ARN. Note: To write application messages to CloudWatch, the
+IAM role that is used must have the C<PutLogEvents> policy action
+enabled.
 
 
 
 =head2 B<REQUIRED> CurrentApplicationVersionId => Int
 
-The version ID of the Amazon Kinesis Analytics application.
+The version ID of the Kinesis Analytics application.
 
 
 

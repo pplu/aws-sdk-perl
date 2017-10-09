@@ -33,7 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GameLift::A
 
 =head1 DESCRIPTION
 
-AWS access credentials sometimes used for uploading game build files to
+Temporary access credentials used for uploading game build files to
 Amazon GameLift. They are valid for a limited time. If they expire
 before you upload your game build, get a new set by calling
 RequestUploadCredentials.
@@ -43,17 +43,18 @@ RequestUploadCredentials.
 
 =head2 AccessKeyId => Str
 
-  Access key for an AWS account.
+  Temporary key allowing access to the Amazon GameLift S3 account.
 
 
 =head2 SecretAccessKey => Str
 
-  Secret key for an AWS account.
+  Temporary secret key allowing access to the Amazon GameLift S3 account.
 
 
 =head2 SessionToken => Str
 
-  Token specific to a build ID.
+  Token used to associate a specific build ID with the files uploaded
+using these credentials.
 
 
 

@@ -39,7 +39,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ClientId => Str
 
-The ID of the client associated with the user pool.
+The ID of the app client associated with the user pool.
 
 
 

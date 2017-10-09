@@ -80,7 +80,7 @@ Range: 0 (not started) to 100 (complete).
 
   The size, in bytes, of data written to the virtual tape.
 
-This value is not available for tapes created prior to May,13 2015.
+This value is not available for tapes created prior to May 13, 2015.
 
 
 =head2 VTLDevice => Str

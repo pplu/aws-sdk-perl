@@ -58,7 +58,7 @@ chosen from the CIDR range of the subnet.
 
 =head2 ExternalId => Str
 
-The external ID from B<IamRoleArn>, if present.
+The external ID from C<IamRoleArn>, if present.
 
 
 

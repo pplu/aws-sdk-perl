@@ -45,7 +45,7 @@ data in a CloudWatch metric.
 =head2 CreationTime => Int
 
   The creation time of the metric filter, expressed as the number of
-milliseconds since Jan 1, 1970 00:00:00 UTC.
+milliseconds after Jan 1, 1970 00:00:00 UTC.
 
 
 =head2 FilterName => Str

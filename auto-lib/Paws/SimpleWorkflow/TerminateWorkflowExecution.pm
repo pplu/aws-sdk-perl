@@ -49,28 +49,34 @@ The supported child policies are:
 
 =over
 
-=item * B<TERMINATE:> the child executions will be terminated.
+=item *
 
-=item * B<REQUEST_CANCEL:> a request to cancel will be attempted for
-each child execution by recording a C<WorkflowExecutionCancelRequested>
+C<TERMINATE> E<ndash> The child executions are terminated.
+
+=item *
+
+C<REQUEST_CANCEL> E<ndash> A request to cancel is attempted for each
+child execution by recording a C<WorkflowExecutionCancelRequested>
 event in its history. It is up to the decider to take appropriate
 actions when it receives an execution history with this event.
 
-=item * B<ABANDON:> no action will be taken. The child executions will
-continue to run.
+=item *
+
+C<ABANDON> E<ndash> No action is taken. The child executions continue
+to run.
 
 =back
 
 A child policy for this workflow execution must be specified either as
 a default for the workflow type or through this parameter. If neither
 this parameter is set nor a default child policy was specified at
-registration time then a fault will be returned.
+registration time then a fault is returned.
 
 Valid values are: C<"TERMINATE">, C<"REQUEST_CANCEL">, C<"ABANDON">
 
 =head2 Details => Str
 
-I<Optional.> Details for terminating the workflow execution.
+Details for terminating the workflow execution.
 
 
 
@@ -82,8 +88,7 @@ The domain of the workflow execution to terminate.
 
 =head2 Reason => Str
 
-I<Optional.> A descriptive reason for terminating the workflow
-execution.
+A descriptive reason for terminating the workflow execution.
 
 
 

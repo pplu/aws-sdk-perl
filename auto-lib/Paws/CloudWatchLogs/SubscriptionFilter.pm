@@ -45,7 +45,7 @@ Represents a subscription filter.
 =head2 CreationTime => Int
 
   The creation time of the subscription filter, expressed as the number
-of milliseconds since Jan 1, 1970 00:00:00 UTC.
+of milliseconds after Jan 1, 1970 00:00:00 UTC.
 
 
 =head2 DestinationArn => Str
@@ -55,8 +55,7 @@ of milliseconds since Jan 1, 1970 00:00:00 UTC.
 
 =head2 Distribution => Str
 
-  The method used to distribute log data to the destination, when the
-destination is an Amazon Kinesis stream.
+  
 
 
 =head2 FilterName => Str

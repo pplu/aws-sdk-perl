@@ -61,7 +61,7 @@ hyphens (-).
   The Amazon Resource Name (ARN) for the storage volume. For example, the
 following is a valid ARN:
 
-C<arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/volume/vol-1122AABB>
+C<arn:aws:storagegateway:us-east-2:111122223333:gateway/sgw-12A3456B/volume/vol-1122AABB>
 
 Valid Values: 50 to 500 lowercase letters, numbers, periods (.), and
 hyphens (-).

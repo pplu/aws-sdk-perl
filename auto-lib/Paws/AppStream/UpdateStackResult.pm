@@ -16,7 +16,7 @@ Paws::AppStream::UpdateStackResult
 
 =head2 Stack => L<Paws::AppStream::Stack>
 
-A list of stack details.
+Information about the stack.
 
 
 =head2 _request_id => Str

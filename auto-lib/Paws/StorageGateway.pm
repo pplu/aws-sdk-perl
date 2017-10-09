@@ -848,8 +848,10 @@ Each argument is described in detail in: L<Paws::StorageGateway::CreateTapeWithB
 Returns: a L<Paws::StorageGateway::CreateTapeWithBarcodeOutput> instance
 
   Creates a virtual tape by using your own barcode. You write data to the
-virtual tape and then archive the tape. This operation is only
-supported in the tape gateway architecture.
+virtual tape and then archive the tape. A barcode is unique and can not
+be reused if it has already been used on a tape . This applies to
+barcodes used on deleted tapes. This operation is only supported in the
+tape gateway. architecture.
 
 Cache storage must be allocated to the gateway before you can create a
 virtual tape. Use the AddCache operation to add cache storage to a
@@ -879,7 +881,7 @@ Returns: a L<Paws::StorageGateway::DeleteChapCredentialsOutput> instance
 for a specified iSCSI target and initiator pair.
 
 
-=head2 DeleteFileShare(FileShareARN => Str)
+=head2 DeleteFileShare(FileShareARN => Str, [ForceDelete => Bool])
 
 Each argument is described in detail in: L<Paws::StorageGateway::DeleteFileShare>
 
@@ -1335,8 +1337,9 @@ Each argument is described in detail in: L<Paws::StorageGateway::RefreshCache>
 Returns: a L<Paws::StorageGateway::RefreshCacheOutput> instance
 
   Refreshes the cache for the specified file share. This operation finds
-objects in the Amazon S3 bucket that were added or removed since the
-gateway last listed the bucket's contents and cached the results.
+objects in the Amazon S3 bucket that were added, removed or replaced
+since the gateway last listed the bucket's contents and cached the
+results.
 
 
 =head2 RemoveTagsFromResource(ResourceARN => Str, TagKeys => ArrayRef[Str|Undef])

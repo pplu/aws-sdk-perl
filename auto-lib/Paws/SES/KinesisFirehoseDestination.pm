@@ -37,16 +37,16 @@ an Amazon Kinesis Firehose event destination.
 
 Event destinations, such as Amazon Kinesis Firehose, are associated
 with configuration sets, which enable you to publish email sending
-events. For information about using configuration sets, see the Amazon
-SES Developer Guide.
+events. For information about using configuration sets, see the I<
+Amazon SES Developer Guide.>
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> DeliveryStreamARN => Str
 
-  The ARN of the Amazon Kinesis Firehose stream to which to publish email
-sending events.
+  The ARN of the Amazon Kinesis Firehose stream that email sending events
+should be published to.
 
 
 =head2 B<REQUIRED> IAMRoleARN => Str

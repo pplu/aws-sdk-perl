@@ -229,6 +229,11 @@ package Paws::IAM;
     my $call_object = $self->new_with_coercions('Paws::IAM::DeleteServerCertificate', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteServiceLinkedRole {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IAM::DeleteServiceLinkedRole', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteServiceSpecificCredential {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IAM::DeleteServiceSpecificCredential', @_);
@@ -372,6 +377,11 @@ package Paws::IAM;
   sub GetServerCertificate {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IAM::GetServerCertificate', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetServiceLinkedRoleDeletionStatus {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IAM::GetServiceLinkedRoleDeletionStatus', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetSSHPublicKey {
@@ -1265,7 +1275,7 @@ package Paws::IAM;
   }
 
 
-  sub operations { qw/AddClientIDToOpenIDConnectProvider AddRoleToInstanceProfile AddUserToGroup AttachGroupPolicy AttachRolePolicy AttachUserPolicy ChangePassword CreateAccessKey CreateAccountAlias CreateGroup CreateInstanceProfile CreateLoginProfile CreateOpenIDConnectProvider CreatePolicy CreatePolicyVersion CreateRole CreateSAMLProvider CreateServiceLinkedRole CreateServiceSpecificCredential CreateUser CreateVirtualMFADevice DeactivateMFADevice DeleteAccessKey DeleteAccountAlias DeleteAccountPasswordPolicy DeleteGroup DeleteGroupPolicy DeleteInstanceProfile DeleteLoginProfile DeleteOpenIDConnectProvider DeletePolicy DeletePolicyVersion DeleteRole DeleteRolePolicy DeleteSAMLProvider DeleteServerCertificate DeleteServiceSpecificCredential DeleteSigningCertificate DeleteSSHPublicKey DeleteUser DeleteUserPolicy DeleteVirtualMFADevice DetachGroupPolicy DetachRolePolicy DetachUserPolicy EnableMFADevice GenerateCredentialReport GetAccessKeyLastUsed GetAccountAuthorizationDetails GetAccountPasswordPolicy GetAccountSummary GetContextKeysForCustomPolicy GetContextKeysForPrincipalPolicy GetCredentialReport GetGroup GetGroupPolicy GetInstanceProfile GetLoginProfile GetOpenIDConnectProvider GetPolicy GetPolicyVersion GetRole GetRolePolicy GetSAMLProvider GetServerCertificate GetSSHPublicKey GetUser GetUserPolicy ListAccessKeys ListAccountAliases ListAttachedGroupPolicies ListAttachedRolePolicies ListAttachedUserPolicies ListEntitiesForPolicy ListGroupPolicies ListGroups ListGroupsForUser ListInstanceProfiles ListInstanceProfilesForRole ListMFADevices ListOpenIDConnectProviders ListPolicies ListPolicyVersions ListRolePolicies ListRoles ListSAMLProviders ListServerCertificates ListServiceSpecificCredentials ListSigningCertificates ListSSHPublicKeys ListUserPolicies ListUsers ListVirtualMFADevices PutGroupPolicy PutRolePolicy PutUserPolicy RemoveClientIDFromOpenIDConnectProvider RemoveRoleFromInstanceProfile RemoveUserFromGroup ResetServiceSpecificCredential ResyncMFADevice SetDefaultPolicyVersion SimulateCustomPolicy SimulatePrincipalPolicy UpdateAccessKey UpdateAccountPasswordPolicy UpdateAssumeRolePolicy UpdateGroup UpdateLoginProfile UpdateOpenIDConnectProviderThumbprint UpdateRoleDescription UpdateSAMLProvider UpdateServerCertificate UpdateServiceSpecificCredential UpdateSigningCertificate UpdateSSHPublicKey UpdateUser UploadServerCertificate UploadSigningCertificate UploadSSHPublicKey / }
+  sub operations { qw/AddClientIDToOpenIDConnectProvider AddRoleToInstanceProfile AddUserToGroup AttachGroupPolicy AttachRolePolicy AttachUserPolicy ChangePassword CreateAccessKey CreateAccountAlias CreateGroup CreateInstanceProfile CreateLoginProfile CreateOpenIDConnectProvider CreatePolicy CreatePolicyVersion CreateRole CreateSAMLProvider CreateServiceLinkedRole CreateServiceSpecificCredential CreateUser CreateVirtualMFADevice DeactivateMFADevice DeleteAccessKey DeleteAccountAlias DeleteAccountPasswordPolicy DeleteGroup DeleteGroupPolicy DeleteInstanceProfile DeleteLoginProfile DeleteOpenIDConnectProvider DeletePolicy DeletePolicyVersion DeleteRole DeleteRolePolicy DeleteSAMLProvider DeleteServerCertificate DeleteServiceLinkedRole DeleteServiceSpecificCredential DeleteSigningCertificate DeleteSSHPublicKey DeleteUser DeleteUserPolicy DeleteVirtualMFADevice DetachGroupPolicy DetachRolePolicy DetachUserPolicy EnableMFADevice GenerateCredentialReport GetAccessKeyLastUsed GetAccountAuthorizationDetails GetAccountPasswordPolicy GetAccountSummary GetContextKeysForCustomPolicy GetContextKeysForPrincipalPolicy GetCredentialReport GetGroup GetGroupPolicy GetInstanceProfile GetLoginProfile GetOpenIDConnectProvider GetPolicy GetPolicyVersion GetRole GetRolePolicy GetSAMLProvider GetServerCertificate GetServiceLinkedRoleDeletionStatus GetSSHPublicKey GetUser GetUserPolicy ListAccessKeys ListAccountAliases ListAttachedGroupPolicies ListAttachedRolePolicies ListAttachedUserPolicies ListEntitiesForPolicy ListGroupPolicies ListGroups ListGroupsForUser ListInstanceProfiles ListInstanceProfilesForRole ListMFADevices ListOpenIDConnectProviders ListPolicies ListPolicyVersions ListRolePolicies ListRoles ListSAMLProviders ListServerCertificates ListServiceSpecificCredentials ListSigningCertificates ListSSHPublicKeys ListUserPolicies ListUsers ListVirtualMFADevices PutGroupPolicy PutRolePolicy PutUserPolicy RemoveClientIDFromOpenIDConnectProvider RemoveRoleFromInstanceProfile RemoveUserFromGroup ResetServiceSpecificCredential ResyncMFADevice SetDefaultPolicyVersion SimulateCustomPolicy SimulatePrincipalPolicy UpdateAccessKey UpdateAccountPasswordPolicy UpdateAssumeRolePolicy UpdateGroup UpdateLoginProfile UpdateOpenIDConnectProviderThumbprint UpdateRoleDescription UpdateSAMLProvider UpdateServerCertificate UpdateServiceSpecificCredential UpdateSigningCertificate UpdateSSHPublicKey UpdateUser UploadServerCertificate UploadSigningCertificate UploadSSHPublicKey / }
 
 1;
 
@@ -1977,6 +1987,34 @@ information, go to DeleteLoadBalancerListeners in the I<Elastic Load
 Balancing API Reference>.
 
 
+=head2 DeleteServiceLinkedRole(RoleName => Str)
+
+Each argument is described in detail in: L<Paws::IAM::DeleteServiceLinkedRole>
+
+Returns: a L<Paws::IAM::DeleteServiceLinkedRoleResponse> instance
+
+  Submits a service-linked role deletion request and returns a
+C<DeletionTaskId>, which you can use to check the status of the
+deletion. Before you call this operation, confirm that the role has no
+active sessions and that any resources used by the role in the linked
+service are deleted. If you call this operation more than once for the
+same service-linked role and an earlier deletion task is not complete,
+then the C<DeletionTaskId> of the earlier request is returned.
+
+If you submit a deletion request for a service-linked role whose linked
+service is still accessing a resource, then the deletion task fails. If
+it fails, the GetServiceLinkedRoleDeletionStatus API operation returns
+the reason for the failure, including the resources that must be
+deleted. To delete the service-linked role, you must first remove those
+resources from the linked service and then submit the deletion request
+again. Resources are specific to the service that is linked to the
+role. For more information about removing resources from a service, see
+the AWS documentation for your service.
+
+For more information about service-linked roles, see Roles Terms and
+Concepts: AWS Service-Linked Role in the I<IAM User Guide>.
+
+
 =head2 DeleteServiceSpecificCredential(ServiceSpecificCredentialId => Str, [UserName => Str])
 
 Each argument is described in detail in: L<Paws::IAM::DeleteServiceSpecificCredential>
@@ -2417,6 +2455,20 @@ For more information about working with server certificates, including
 a list of AWS services that can use the server certificates that you
 manage with IAM, go to Working with Server Certificates in the I<IAM
 User Guide>.
+
+
+=head2 GetServiceLinkedRoleDeletionStatus(DeletionTaskId => Str)
+
+Each argument is described in detail in: L<Paws::IAM::GetServiceLinkedRoleDeletionStatus>
+
+Returns: a L<Paws::IAM::GetServiceLinkedRoleDeletionStatusResponse> instance
+
+  Retrieves the status of your service-linked role deletion. After you
+use the DeleteServiceLinkedRole API operation to submit a
+service-linked role for deletion, you can use the C<DeletionTaskId>
+parameter in C<GetServiceLinkedRoleDeletionStatus> to check the status
+of the deletion. If the deletion fails, this operation returns the
+reason that it failed.
 
 
 =head2 GetSSHPublicKey(Encoding => Str, SSHPublicKeyId => Str, UserName => Str)

@@ -52,8 +52,7 @@ The current pagination position in the paged result set.
 
 =head2 B<REQUIRED> RestApiId => Str
 
-The identifier of the RestApi resource for the collection of Deployment
-resources to get information about.
+The string identifier of the associated RestApi.
 
 
 

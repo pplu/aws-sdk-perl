@@ -3,6 +3,7 @@ package Paws::SES::DescribeConfigurationSetResponse;
   use Moose;
   has ConfigurationSet => (is => 'ro', isa => 'Paws::SES::ConfigurationSet');
   has EventDestinations => (is => 'ro', isa => 'ArrayRef[Paws::SES::EventDestination]');
+  has TrackingOptions => (is => 'ro', isa => 'Paws::SES::TrackingOptions');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;
@@ -25,6 +26,12 @@ configuration set.
 =head2 EventDestinations => ArrayRef[L<Paws::SES::EventDestination>]
 
 A list of event destinations associated with the configuration set.
+
+
+=head2 TrackingOptions => L<Paws::SES::TrackingOptions>
+
+The name of the custom open and click tracking domain associated with
+the configuration set.
 
 
 =head2 _request_id => Str

@@ -12,6 +12,7 @@ package Paws::CodeBuild::Project;
   has Source => (is => 'ro', isa => 'Paws::CodeBuild::ProjectSource', request_name => 'source', traits => ['NameInRequest']);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::Tag]', request_name => 'tags', traits => ['NameInRequest']);
   has TimeoutInMinutes => (is => 'ro', isa => 'Int', request_name => 'timeoutInMinutes', traits => ['NameInRequest']);
+  has Webhook => (is => 'ro', isa => 'Paws::CodeBuild::Webhook', request_name => 'webhook', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -31,7 +32,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CodeBuild::Project object:
 
-  $service_obj->Method(Att1 => { Arn => $value, ..., TimeoutInMinutes => $value  });
+  $service_obj->Method(Att1 => { Arn => $value, ..., Webhook => $value  });
 
 =head3 Results returned from an API call
 
@@ -117,6 +118,12 @@ CodeBuild build project tags.
   How long, in minutes, from 5 to 480 (8 hours), for AWS CodeBuild to
 wait before timing out any related build that did not get marked as
 completed. The default is 60 minutes.
+
+
+=head2 Webhook => L<Paws::CodeBuild::Webhook>
+
+  Information about a webhook in GitHub that connects repository events
+to a build project in AWS CodeBuild.
 
 
 

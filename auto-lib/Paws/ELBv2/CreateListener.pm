@@ -40,14 +40,17 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Certificates => ArrayRef[L<Paws::ELBv2::Certificate>]
 
-The SSL server certificate. You must provide exactly one certificate if
-the protocol is HTTPS.
+[HTTPS listeners] The SSL server certificate. You must provide exactly
+one certificate.
 
 
 
 =head2 B<REQUIRED> DefaultActions => ArrayRef[L<Paws::ELBv2::Action>]
 
-The default action for the listener.
+The default action for the listener. For Application Load Balancers,
+the protocol of the specified target group must be HTTP or HTTPS. For
+Network Load Balancers, the protocol of the specified target group must
+be TCP.
 
 
 
@@ -65,14 +68,17 @@ The port on which the load balancer is listening.
 
 =head2 B<REQUIRED> Protocol => Str
 
-The protocol for connections from clients to the load balancer.
+The protocol for connections from clients to the load balancer. For
+Application Load Balancers, the supported protocols are HTTP and HTTPS.
+For Network Load Balancers, the supported protocol is TCP.
 
-Valid values are: C<"HTTP">, C<"HTTPS">
+Valid values are: C<"HTTP">, C<"HTTPS">, C<"TCP">
 
 =head2 SslPolicy => Str
 
-The security policy that defines which ciphers and protocols are
-supported. The default is the current predefined security policy.
+[HTTPS listeners] The security policy that defines which ciphers and
+protocols are supported. The default is the current predefined security
+policy.
 
 
 

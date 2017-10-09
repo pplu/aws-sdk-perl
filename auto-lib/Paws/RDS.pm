@@ -1053,10 +1053,10 @@ for this API are one of CIDR range, EC2SecurityGroupId for VPC, or
 (EC2SecurityGroupOwnerId and either EC2SecurityGroupName or
 EC2SecurityGroupId for non-VPC).
 
-You cannot authorize ingress from an EC2 security group in one region
-to an Amazon RDS DB instance in another. You cannot authorize ingress
-from a VPC security group in one VPC to an Amazon RDS DB instance in
-another.
+You cannot authorize ingress from an EC2 security group in one AWS
+Region to an Amazon RDS DB instance in another. You cannot authorize
+ingress from a VPC security group in one VPC to an Amazon RDS DB
+instance in another.
 
 For an overview of CIDR ranges, go to the Wikipedia Tutorial.
 
@@ -1082,11 +1082,12 @@ To copy a DB cluster snapshot from a shared manual DB cluster snapshot,
 C<SourceDBClusterSnapshotIdentifier> must be the Amazon Resource Name
 (ARN) of the shared DB cluster snapshot.
 
-You can copy an encrypted DB cluster snapshot from another AWS region.
-In that case, the region where you call the C<CopyDBClusterSnapshot>
-action is the destination region for the encrypted DB cluster snapshot
-to be copied to. To copy an encrypted DB cluster snapshot from another
-region, you must provide the following values:
+You can copy an encrypted DB cluster snapshot from another AWS Region.
+In that case, the AWS Region where you call the
+C<CopyDBClusterSnapshot> action is the destination AWS Region for the
+encrypted DB cluster snapshot to be copied to. To copy an encrypted DB
+cluster snapshot from another AWS Region, you must provide the
+following values:
 
 =over
 
@@ -1094,16 +1095,17 @@ region, you must provide the following values:
 
 C<KmsKeyId> - The AWS Key Management System (KMS) key identifier for
 the key to use to encrypt the copy of the DB cluster snapshot in the
-destination region.
+destination AWS Region.
 
 =item *
 
 C<PreSignedUrl> - A URL that contains a Signature Version 4 signed
 request for the C<CopyDBClusterSnapshot> action to be called in the
-source region where the DB cluster snapshot will be copied from. The
-pre-signed URL must be a valid request for the C<CopyDBClusterSnapshot>
-API action that can be executed in the source region that contains the
-encrypted DB cluster snapshot to be copied.
+source AWS Region where the DB cluster snapshot will be copied from.
+The pre-signed URL must be a valid request for the
+C<CopyDBClusterSnapshot> API action that can be executed in the source
+AWS Region that contains the encrypted DB cluster snapshot to be
+copied.
 
 The pre-signed URL request must contain the following parameter values:
 
@@ -1112,14 +1114,14 @@ The pre-signed URL request must contain the following parameter values:
 =item *
 
 C<KmsKeyId> - The KMS key identifier for the key to use to encrypt the
-copy of the DB cluster snapshot in the destination region. This is the
-same identifier for both the C<CopyDBClusterSnapshot> action that is
-called in the destination region, and the action contained in the
-pre-signed URL.
+copy of the DB cluster snapshot in the destination AWS Region. This is
+the same identifier for both the C<CopyDBClusterSnapshot> action that
+is called in the destination AWS Region, and the action contained in
+the pre-signed URL.
 
 =item *
 
-C<DestinationRegion> - The name of the region that the DB cluster
+C<DestinationRegion> - The name of the AWS Region that the DB cluster
 snapshot will be created in.
 
 =item *
@@ -1127,8 +1129,8 @@ snapshot will be created in.
 C<SourceDBClusterSnapshotIdentifier> - The DB cluster snapshot
 identifier for the encrypted DB cluster snapshot to be copied. This
 identifier must be in the Amazon Resource Name (ARN) format for the
-source region. For example, if you are copying an encrypted DB cluster
-snapshot from the us-west-2 region, then your
+source AWS Region. For example, if you are copying an encrypted DB
+cluster snapshot from the us-west-2 region, then your
 C<SourceDBClusterSnapshotIdentifier> looks like the following example:
 C<arn:aws:rds:us-west-2:123456789012:cluster-snapshot:aurora-cluster1-snapshot-20161115>.
 
@@ -1141,14 +1143,14 @@ Authenticating Requests: Using Query Parameters (AWS Signature Version
 =item *
 
 C<TargetDBClusterSnapshotIdentifier> - The identifier for the new copy
-of the DB cluster snapshot in the destination region.
+of the DB cluster snapshot in the destination AWS Region.
 
 =item *
 
 C<SourceDBClusterSnapshotIdentifier> - The DB cluster snapshot
 identifier for the encrypted DB cluster snapshot to be copied. This
-identifier must be in the ARN format for the source region and is the
-same value as the C<SourceDBClusterSnapshotIdentifier> in the
+identifier must be in the ARN format for the source AWS Region and is
+the same value as the C<SourceDBClusterSnapshotIdentifier> in the
 pre-signed URL.
 
 =back
@@ -1158,7 +1160,7 @@ DB cluster snapshot identified by C<TargetDBClusterSnapshotIdentifier>
 while that DB cluster snapshot is in "copying" status.
 
 For more information on copying encrypted DB cluster snapshots from one
-region to another, see Copying a DB Cluster Snapshot in the Same
+AWS Region to another, see Copying a DB Cluster Snapshot in the Same
 Account, Either in the Same Region or Across Regions in the Amazon RDS
 User Guide.
 
@@ -1184,11 +1186,11 @@ Returns: a L<Paws::RDS::CopyDBSnapshotResult> instance
   Copies the specified DB snapshot. The source DB snapshot must be in the
 "available" state.
 
-You can copy a snapshot from one AWS region to another. In that case,
-the region where you call the C<CopyDBSnapshot> action is the
-destination region for the DB snapshot copy.
+You can copy a snapshot from one AWS Region to another. In that case,
+the AWS Region where you call the C<CopyDBSnapshot> action is the
+destination AWS Region for the DB snapshot copy.
 
-You cannot copy an encrypted, shared DB snapshot from one AWS region to
+You cannot copy an encrypted, shared DB snapshot from one AWS Region to
 another.
 
 For more information about copying snapshots, see Copying a DB Snapshot
@@ -1269,7 +1271,7 @@ Returns: a L<Paws::RDS::CreateDBClusterSnapshotResult> instance
 Aurora, see Aurora on Amazon RDS in the I<Amazon RDS User Guide.>
 
 
-=head2 CreateDBInstance(DBInstanceClass => Str, DBInstanceIdentifier => Str, Engine => Str, [AllocatedStorage => Int, AutoMinorVersionUpgrade => Bool, AvailabilityZone => Str, BackupRetentionPeriod => Int, CharacterSetName => Str, CopyTagsToSnapshot => Bool, DBClusterIdentifier => Str, DBName => Str, DBParameterGroupName => Str, DBSecurityGroups => ArrayRef[Str|Undef], DBSubnetGroupName => Str, Domain => Str, DomainIAMRoleName => Str, EnableIAMDatabaseAuthentication => Bool, EngineVersion => Str, Iops => Int, KmsKeyId => Str, LicenseModel => Str, MasterUsername => Str, MasterUserPassword => Str, MonitoringInterval => Int, MonitoringRoleArn => Str, MultiAZ => Bool, OptionGroupName => Str, Port => Int, PreferredBackupWindow => Str, PreferredMaintenanceWindow => Str, PromotionTier => Int, PubliclyAccessible => Bool, StorageEncrypted => Bool, StorageType => Str, Tags => ArrayRef[L<Paws::RDS::Tag>], TdeCredentialArn => Str, TdeCredentialPassword => Str, Timezone => Str, VpcSecurityGroupIds => ArrayRef[Str|Undef]])
+=head2 CreateDBInstance(DBInstanceClass => Str, DBInstanceIdentifier => Str, Engine => Str, [AllocatedStorage => Int, AutoMinorVersionUpgrade => Bool, AvailabilityZone => Str, BackupRetentionPeriod => Int, CharacterSetName => Str, CopyTagsToSnapshot => Bool, DBClusterIdentifier => Str, DBName => Str, DBParameterGroupName => Str, DBSecurityGroups => ArrayRef[Str|Undef], DBSubnetGroupName => Str, Domain => Str, DomainIAMRoleName => Str, EnableIAMDatabaseAuthentication => Bool, EnablePerformanceInsights => Bool, EngineVersion => Str, Iops => Int, KmsKeyId => Str, LicenseModel => Str, MasterUsername => Str, MasterUserPassword => Str, MonitoringInterval => Int, MonitoringRoleArn => Str, MultiAZ => Bool, OptionGroupName => Str, PerformanceInsightsKMSKeyId => Str, Port => Int, PreferredBackupWindow => Str, PreferredMaintenanceWindow => Str, PromotionTier => Int, PubliclyAccessible => Bool, StorageEncrypted => Bool, StorageType => Str, Tags => ArrayRef[L<Paws::RDS::Tag>], TdeCredentialArn => Str, TdeCredentialPassword => Str, Timezone => Str, VpcSecurityGroupIds => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::RDS::CreateDBInstance>
 
@@ -1278,14 +1280,15 @@ Returns: a L<Paws::RDS::CreateDBInstanceResult> instance
   Creates a new DB instance.
 
 
-=head2 CreateDBInstanceReadReplica(DBInstanceIdentifier => Str, SourceDBInstanceIdentifier => Str, [AutoMinorVersionUpgrade => Bool, AvailabilityZone => Str, CopyTagsToSnapshot => Bool, DBInstanceClass => Str, DBSubnetGroupName => Str, EnableIAMDatabaseAuthentication => Bool, Iops => Int, KmsKeyId => Str, MonitoringInterval => Int, MonitoringRoleArn => Str, OptionGroupName => Str, Port => Int, PreSignedUrl => Str, PubliclyAccessible => Bool, StorageType => Str, Tags => ArrayRef[L<Paws::RDS::Tag>]])
+=head2 CreateDBInstanceReadReplica(DBInstanceIdentifier => Str, SourceDBInstanceIdentifier => Str, [AutoMinorVersionUpgrade => Bool, AvailabilityZone => Str, CopyTagsToSnapshot => Bool, DBInstanceClass => Str, DBSubnetGroupName => Str, EnableIAMDatabaseAuthentication => Bool, EnablePerformanceInsights => Bool, Iops => Int, KmsKeyId => Str, MonitoringInterval => Int, MonitoringRoleArn => Str, OptionGroupName => Str, PerformanceInsightsKMSKeyId => Str, Port => Int, PreSignedUrl => Str, PubliclyAccessible => Bool, StorageType => Str, Tags => ArrayRef[L<Paws::RDS::Tag>]])
 
 Each argument is described in detail in: L<Paws::RDS::CreateDBInstanceReadReplica>
 
 Returns: a L<Paws::RDS::CreateDBInstanceReadReplicaResult> instance
 
-  Creates a DB instance for a DB instance running MySQL, MariaDB, or
-PostgreSQL that acts as a Read Replica of a source DB instance.
+  Creates a new DB instance that acts as a Read Replica for an existing
+source DB instance. You can create a Read Replica for a DB instance
+running MySQL, MariaDB, or PostgreSQL.
 
 Amazon Aurora does not support this action. You must call the
 C<CreateDBInstance> action to create a DB instance for an Aurora DB
@@ -1298,88 +1301,8 @@ DB instance, except as specified below.
 
 The source DB instance must have backup retention enabled.
 
-You can create an encrypted Read Replica in a different AWS Region than
-the source DB instance. In that case, the region where you call the
-C<CreateDBInstanceReadReplica> action is the destination region of the
-encrypted Read Replica. The source DB instance must be encrypted.
-
-To create an encrypted Read Replica in another AWS Region, you must
-provide the following values:
-
-=over
-
-=item *
-
-C<KmsKeyId> - The AWS Key Management System (KMS) key identifier for
-the key to use to encrypt the Read Replica in the destination region.
-
-=item *
-
-C<PreSignedUrl> - A URL that contains a Signature Version 4 signed
-request for the C< CreateDBInstanceReadReplica> API action in the AWS
-region that contains the source DB instance. The C<PreSignedUrl>
-parameter must be used when encrypting a Read Replica from another AWS
-region.
-
-The presigned URL must be a valid request for the
-C<CreateDBInstanceReadReplica> API action that can be executed in the
-source region that contains the encrypted DB instance. The presigned
-URL request must contain the following parameter values:
-
-=over
-
-=item *
-
-C<DestinationRegion> - The AWS Region that the Read Replica is created
-in. This region is the same one where the
-C<CreateDBInstanceReadReplica> action is called that contains this
-presigned URL.
-
-For example, if you create an encrypted Read Replica in the us-east-1
-region, and the source DB instance is in the west-2 region, then you
-call the C<CreateDBInstanceReadReplica> action in the us-east-1 region
-and provide a presigned URL that contains a call to the
-C<CreateDBInstanceReadReplica> action in the us-west-2 region. For this
-example, the C<DestinationRegion> in the presigned URL must be set to
-the us-east-1 region.
-
-=item *
-
-C<KmsKeyId> - The KMS key identifier for the key to use to encrypt the
-Read Replica in the destination region. This is the same identifier for
-both the C<CreateDBInstanceReadReplica> action that is called in the
-destination region, and the action contained in the presigned URL.
-
-=item *
-
-C<SourceDBInstanceIdentifier> - The DB instance identifier for the
-encrypted Read Replica to be created. This identifier must be in the
-Amazon Resource Name (ARN) format for the source region. For example,
-if you create an encrypted Read Replica from a DB instance in the
-us-west-2 region, then your C<SourceDBInstanceIdentifier> would look
-like this example: C<
-arn:aws:rds:us-west-2:123456789012:instance:mysql-instance1-instance-20161115>.
-
-=back
-
-To learn how to generate a Signature Version 4 signed request, see
-Authenticating Requests: Using Query Parameters (AWS Signature Version
-4) and Signature Version 4 Signing Process.
-
-=item *
-
-C<DBInstanceIdentifier> - The identifier for the encrypted Read Replica
-in the destination region.
-
-=item *
-
-C<SourceDBInstanceIdentifier> - The DB instance identifier for the
-encrypted Read Replica. This identifier must be in the ARN format for
-the source region and is the same value as the
-C<SourceDBInstanceIdentifier> in the presigned URL.
-
-=back
-
+For more information, see Working with PostgreSQL, MySQL, and MariaDB
+Read Replicas.
 
 
 =head2 CreateDBParameterGroup(DBParameterGroupFamily => Str, DBParameterGroupName => Str, Description => Str, [Tags => ArrayRef[L<Paws::RDS::Tag>]])
@@ -1440,7 +1363,7 @@ Each argument is described in detail in: L<Paws::RDS::CreateDBSubnetGroup>
 Returns: a L<Paws::RDS::CreateDBSubnetGroupResult> instance
 
   Creates a new DB subnet group. DB subnet groups must contain at least
-one subnet in at least two AZs in the region.
+one subnet in at least two AZs in the AWS Region.
 
 
 =head2 CreateEventSubscription(SnsTopicArn => Str, SubscriptionName => Str, [Enabled => Bool, EventCategories => ArrayRef[Str|Undef], SourceIds => ArrayRef[Str|Undef], SourceType => Str, Tags => ArrayRef[L<Paws::RDS::Tag>]])
@@ -1548,7 +1471,8 @@ only delete it when the C<SkipFinalSnapshot> parameter is set to
 C<true>.
 
 If the specified DB instance is part of an Amazon Aurora DB cluster,
-you cannot delete the DB instance if the following are true:
+you cannot delete the DB instance if both of the following conditions
+are true:
 
 =over
 
@@ -1961,7 +1885,7 @@ Each argument is described in detail in: L<Paws::RDS::DescribeSourceRegions>
 
 Returns: a L<Paws::RDS::SourceRegionMessage> instance
 
-  Returns a list of the source AWS regions where the current AWS region
+  Returns a list of the source AWS regions where the current AWS Region
 can create a Read Replica or copy a DB snapshot from. This API action
 supports pagination.
 
@@ -2080,7 +2004,7 @@ cluster snapshot, or whether a manual DB cluster snapshot public or
 private, use the DescribeDBClusterSnapshotAttributes API action.
 
 
-=head2 ModifyDBInstance(DBInstanceIdentifier => Str, [AllocatedStorage => Int, AllowMajorVersionUpgrade => Bool, ApplyImmediately => Bool, AutoMinorVersionUpgrade => Bool, BackupRetentionPeriod => Int, CACertificateIdentifier => Str, CopyTagsToSnapshot => Bool, DBInstanceClass => Str, DBParameterGroupName => Str, DBPortNumber => Int, DBSecurityGroups => ArrayRef[Str|Undef], DBSubnetGroupName => Str, Domain => Str, DomainIAMRoleName => Str, EnableIAMDatabaseAuthentication => Bool, EngineVersion => Str, Iops => Int, LicenseModel => Str, MasterUserPassword => Str, MonitoringInterval => Int, MonitoringRoleArn => Str, MultiAZ => Bool, NewDBInstanceIdentifier => Str, OptionGroupName => Str, PreferredBackupWindow => Str, PreferredMaintenanceWindow => Str, PromotionTier => Int, PubliclyAccessible => Bool, StorageType => Str, TdeCredentialArn => Str, TdeCredentialPassword => Str, VpcSecurityGroupIds => ArrayRef[Str|Undef]])
+=head2 ModifyDBInstance(DBInstanceIdentifier => Str, [AllocatedStorage => Int, AllowMajorVersionUpgrade => Bool, ApplyImmediately => Bool, AutoMinorVersionUpgrade => Bool, BackupRetentionPeriod => Int, CACertificateIdentifier => Str, CopyTagsToSnapshot => Bool, DBInstanceClass => Str, DBParameterGroupName => Str, DBPortNumber => Int, DBSecurityGroups => ArrayRef[Str|Undef], DBSubnetGroupName => Str, Domain => Str, DomainIAMRoleName => Str, EnableIAMDatabaseAuthentication => Bool, EnablePerformanceInsights => Bool, EngineVersion => Str, Iops => Int, LicenseModel => Str, MasterUserPassword => Str, MonitoringInterval => Int, MonitoringRoleArn => Str, MultiAZ => Bool, NewDBInstanceIdentifier => Str, OptionGroupName => Str, PerformanceInsightsKMSKeyId => Str, PreferredBackupWindow => Str, PreferredMaintenanceWindow => Str, PromotionTier => Int, PubliclyAccessible => Bool, StorageType => Str, TdeCredentialArn => Str, TdeCredentialPassword => Str, VpcSecurityGroupIds => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::RDS::ModifyDBInstance>
 
@@ -2119,18 +2043,16 @@ command to verify that your DB parameter group has been created or
 modified.
 
 
-=head2 ModifyDBSnapshot(DBSnapshotIdentifier => Str, [EngineVersion => Str])
+=head2 ModifyDBSnapshot(DBSnapshotIdentifier => Str, [EngineVersion => Str, OptionGroupName => Str])
 
 Each argument is described in detail in: L<Paws::RDS::ModifyDBSnapshot>
 
 Returns: a L<Paws::RDS::ModifyDBSnapshotResult> instance
 
   Updates a manual DB snapshot, which can be encrypted or not encrypted,
-with a new engine version. You can update the engine version to either
-a new major or minor engine version.
+with a new engine version.
 
-Amazon RDS supports upgrading a MySQL DB snapshot from MySQL 5.1 to
-MySQL 5.5.
+Amazon RDS supports upgrading DB snapshots for MySQL and Oracle.
 
 
 =head2 ModifyDBSnapshotAttribute(AttributeName => Str, DBSnapshotIdentifier => Str, [ValuesToAdd => ArrayRef[Str|Undef], ValuesToRemove => ArrayRef[Str|Undef]])
@@ -2166,7 +2088,7 @@ Each argument is described in detail in: L<Paws::RDS::ModifyDBSubnetGroup>
 Returns: a L<Paws::RDS::ModifyDBSubnetGroupResult> instance
 
   Modifies an existing DB subnet group. DB subnet groups must contain at
-least one subnet in at least two AZs in the region.
+least one subnet in at least two AZs in the AWS Region.
 
 
 =head2 ModifyEventSubscription(SubscriptionName => Str, [Enabled => Bool, EventCategories => ArrayRef[Str|Undef], SnsTopicArn => Str, SourceType => Str])
@@ -2343,10 +2265,16 @@ Each argument is described in detail in: L<Paws::RDS::RestoreDBClusterFromSnapsh
 
 Returns: a L<Paws::RDS::RestoreDBClusterFromSnapshotResult> instance
 
-  Creates a new DB cluster from a DB cluster snapshot. The target DB
-cluster is created from the source DB cluster restore point with the
-same configuration as the original source DB cluster, except that the
-new DB cluster is created with the default security group.
+  Creates a new DB cluster from a DB snapshot or DB cluster snapshot.
+
+If a DB snapshot is specified, the target DB cluster is created from
+the source DB snapshot with a default configuration and default
+security group.
+
+If a DB cluster snapshot is specified, the target DB cluster is created
+from the source DB cluster restore point with the same configuration as
+the original source DB cluster, except that the new DB cluster is
+created with the default security group.
 
 For more information on Amazon Aurora, see Aurora on Amazon RDS in the
 I<Amazon RDS User Guide.>
@@ -2364,6 +2292,13 @@ C<BackupRetentionPeriod> days. The target DB cluster is created from
 the source DB cluster with the same configuration as the original DB
 cluster, except that the new DB cluster is created with the default DB
 security group.
+
+This action only restores the DB cluster, not the DB instances for that
+DB cluster. You must invoke the CreateDBInstance action to create DB
+instances for the restored DB cluster, specifying the identifier of the
+restored DB cluster in C<DBClusterIdentifier>. You can create DB
+instances only after the C<RestoreDBClusterToPointInTime> action has
+completed and the DB cluster is available.
 
 For more information on Amazon Aurora, see Aurora on Amazon RDS in the
 I<Amazon RDS User Guide.>

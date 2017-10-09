@@ -9,6 +9,7 @@ package Paws::EC2::FpgaImage;
   has OwnerId => (is => 'ro', isa => 'Str', request_name => 'ownerId', traits => ['NameInRequest']);
   has PciId => (is => 'ro', isa => 'Paws::EC2::PciId', request_name => 'pciId', traits => ['NameInRequest']);
   has ProductCodes => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ProductCode]', request_name => 'productCodes', traits => ['NameInRequest']);
+  has Public => (is => 'ro', isa => 'Bool', request_name => 'public', traits => ['NameInRequest']);
   has ShellVersion => (is => 'ro', isa => 'Str', request_name => 'shellVersion', traits => ['NameInRequest']);
   has State => (is => 'ro', isa => 'Paws::EC2::FpgaImageState', request_name => 'state', traits => ['NameInRequest']);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tags', traits => ['NameInRequest']);
@@ -92,6 +93,11 @@ and C<aws-marketplace>.
 =head2 ProductCodes => ArrayRef[L<Paws::EC2::ProductCode>]
 
   The product codes for the AFI.
+
+
+=head2 Public => Bool
+
+  Indicates whether the AFI is public.
 
 
 =head2 ShellVersion => Str

@@ -92,166 +92,255 @@ types:
 
 =over
 
-=item * B<WorkflowExecutionStarted>: The workflow execution was
-started.
+=item *
 
-=item * B<WorkflowExecutionCompleted>: The workflow execution was
-closed due to successful completion.
-
-=item * B<WorkflowExecutionFailed>: The workflow execution closed due
-to a failure.
-
-=item * B<WorkflowExecutionTimedOut>: The workflow execution was closed
-because a time out was exceeded.
-
-=item * B<WorkflowExecutionCanceled>: The workflow execution was
-successfully canceled and closed.
-
-=item * B<WorkflowExecutionTerminated>: The workflow execution was
-terminated.
-
-=item * B<WorkflowExecutionContinuedAsNew>: The workflow execution was
-closed and a new execution of the same type was created with the same
-workflowId.
-
-=item * B<WorkflowExecutionCancelRequested>: A request to cancel this
-workflow execution was made.
-
-=item * B<DecisionTaskScheduled>: A decision task was scheduled for the
-workflow execution.
-
-=item * B<DecisionTaskStarted>: The decision task was dispatched to a
-decider.
-
-=item * B<DecisionTaskCompleted>: The decider successfully completed a
-decision task by calling RespondDecisionTaskCompleted.
-
-=item * B<DecisionTaskTimedOut>: The decision task timed out.
-
-=item * B<ActivityTaskScheduled>: An activity task was scheduled for
-execution.
-
-=item * B<ScheduleActivityTaskFailed>: Failed to process
-ScheduleActivityTask decision. This happens when the decision is not
-configured properly, for example the activity type specified is not
-registered.
-
-=item * B<ActivityTaskStarted>: The scheduled activity task was
-dispatched to a worker.
-
-=item * B<ActivityTaskCompleted>: An activity worker successfully
-completed an activity task by calling RespondActivityTaskCompleted.
-
-=item * B<ActivityTaskFailed>: An activity worker failed an activity
-task by calling RespondActivityTaskFailed.
-
-=item * B<ActivityTaskTimedOut>: The activity task timed out.
-
-=item * B<ActivityTaskCanceled>: The activity task was successfully
-canceled.
-
-=item * B<ActivityTaskCancelRequested>: A C<RequestCancelActivityTask>
+C<ActivityTaskCancelRequested> E<ndash> A C<RequestCancelActivityTask>
 decision was received by the system.
 
-=item * B<RequestCancelActivityTaskFailed>: Failed to process
-RequestCancelActivityTask decision. This happens when the decision is
-not configured properly.
+=item *
 
-=item * B<WorkflowExecutionSignaled>: An external signal was received
-for the workflow execution.
+C<ActivityTaskCanceled> E<ndash> The activity task was successfully
+canceled.
 
-=item * B<MarkerRecorded>: A marker was recorded in the workflow
-history as the result of a C<RecordMarker> decision.
+=item *
 
-=item * B<TimerStarted>: A timer was started for the workflow execution
-due to a C<StartTimer> decision.
+C<ActivityTaskCompleted> E<ndash> An activity worker successfully
+completed an activity task by calling RespondActivityTaskCompleted.
 
-=item * B<StartTimerFailed>: Failed to process StartTimer decision.
-This happens when the decision is not configured properly, for example
-a timer already exists with the specified timer ID.
+=item *
 
-=item * B<TimerFired>: A timer, previously started for this workflow
-execution, fired.
+C<ActivityTaskFailed> E<ndash> An activity worker failed an activity
+task by calling RespondActivityTaskFailed.
 
-=item * B<TimerCanceled>: A timer, previously started for this workflow
-execution, was successfully canceled.
+=item *
 
-=item * B<CancelTimerFailed>: Failed to process CancelTimer decision.
-This happens when the decision is not configured properly, for example
-no timer exists with the specified timer ID.
+C<ActivityTaskScheduled> E<ndash> An activity task was scheduled for
+execution.
 
-=item * B<StartChildWorkflowExecutionInitiated>: A request was made to
-start a child workflow execution.
+=item *
 
-=item * B<StartChildWorkflowExecutionFailed>: Failed to process
-StartChildWorkflowExecution decision. This happens when the decision is
-not configured properly, for example the workflow type specified is not
-registered.
+C<ActivityTaskStarted> E<ndash> The scheduled activity task was
+dispatched to a worker.
 
-=item * B<ChildWorkflowExecutionStarted>: A child workflow execution
-was successfully started.
+=item *
 
-=item * B<ChildWorkflowExecutionCompleted>: A child workflow execution,
+C<ActivityTaskTimedOut> E<ndash> The activity task timed out.
+
+=item *
+
+C<CancelTimerFailed> E<ndash> Failed to process CancelTimer decision.
+This happens when the decision isn't configured properly, for example
+no timer exists with the specified timer Id.
+
+=item *
+
+C<CancelWorkflowExecutionFailed> E<ndash> A request to cancel a
+workflow execution failed.
+
+=item *
+
+C<ChildWorkflowExecutionCanceled> E<ndash> A child workflow execution,
+started by this workflow execution, was canceled and closed.
+
+=item *
+
+C<ChildWorkflowExecutionCompleted> E<ndash> A child workflow execution,
 started by this workflow execution, completed successfully and was
 closed.
 
-=item * B<ChildWorkflowExecutionFailed>: A child workflow execution,
+=item *
+
+C<ChildWorkflowExecutionFailed> E<ndash> A child workflow execution,
 started by this workflow execution, failed to complete successfully and
 was closed.
 
-=item * B<ChildWorkflowExecutionTimedOut>: A child workflow execution,
-started by this workflow execution, timed out and was closed.
+=item *
 
-=item * B<ChildWorkflowExecutionCanceled>: A child workflow execution,
-started by this workflow execution, was canceled and closed.
+C<ChildWorkflowExecutionStarted> E<ndash> A child workflow execution
+was successfully started.
 
-=item * B<ChildWorkflowExecutionTerminated>: A child workflow
+=item *
+
+C<ChildWorkflowExecutionTerminated> E<ndash> A child workflow
 execution, started by this workflow execution, was terminated.
 
-=item * B<SignalExternalWorkflowExecutionInitiated>: A request to
-signal an external workflow was made.
+=item *
 
-=item * B<ExternalWorkflowExecutionSignaled>: A signal, requested by
-this workflow execution, was successfully delivered to the target
-external workflow execution.
+C<ChildWorkflowExecutionTimedOut> E<ndash> A child workflow execution,
+started by this workflow execution, timed out and was closed.
 
-=item * B<SignalExternalWorkflowExecutionFailed>: The request to signal
-an external workflow execution failed.
+=item *
 
-=item * B<RequestCancelExternalWorkflowExecutionInitiated>: A request
-was made to request the cancellation of an external workflow execution.
+C<CompleteWorkflowExecutionFailed> E<ndash> The workflow execution
+failed to complete.
 
-=item * B<ExternalWorkflowExecutionCancelRequested>: Request to cancel
+=item *
+
+C<ContinueAsNewWorkflowExecutionFailed> E<ndash> The workflow execution
+failed to complete after being continued as a new workflow execution.
+
+=item *
+
+C<DecisionTaskCompleted> E<ndash> The decider successfully completed a
+decision task by calling RespondDecisionTaskCompleted.
+
+=item *
+
+C<DecisionTaskScheduled> E<ndash> A decision task was scheduled for the
+workflow execution.
+
+=item *
+
+C<DecisionTaskStarted> E<ndash> The decision task was dispatched to a
+decider.
+
+=item *
+
+C<DecisionTaskTimedOut> E<ndash> The decision task timed out.
+
+=item *
+
+C<ExternalWorkflowExecutionCancelRequested> E<ndash> Request to cancel
 an external workflow execution was successfully delivered to the target
 execution.
 
-=item * B<RequestCancelExternalWorkflowExecutionFailed>: Request to
+=item *
+
+C<ExternalWorkflowExecutionSignaled> E<ndash> A signal, requested by
+this workflow execution, was successfully delivered to the target
+external workflow execution.
+
+=item *
+
+C<FailWorkflowExecutionFailed> E<ndash> A request to mark a workflow
+execution as failed, itself failed.
+
+=item *
+
+C<MarkerRecorded> E<ndash> A marker was recorded in the workflow
+history as the result of a C<RecordMarker> decision.
+
+=item *
+
+C<RecordMarkerFailed> E<ndash> A C<RecordMarker> decision was returned
+as failed.
+
+=item *
+
+C<RequestCancelActivityTaskFailed> E<ndash> Failed to process
+RequestCancelActivityTask decision. This happens when the decision
+isn't configured properly.
+
+=item *
+
+C<RequestCancelExternalWorkflowExecutionFailed> E<ndash> Request to
 cancel an external workflow execution failed.
 
-=item * B<LambdaFunctionScheduled>: An AWS Lambda function was
-scheduled for execution.
+=item *
 
-=item * B<LambdaFunctionStarted>: The scheduled function was invoked in
-the AWS Lambda service.
+C<RequestCancelExternalWorkflowExecutionInitiated> E<ndash> A request
+was made to request the cancellation of an external workflow execution.
 
-=item * B<LambdaFunctionCompleted>: The AWS Lambda function
-successfully completed.
+=item *
 
-=item * B<LambdaFunctionFailed>: The AWS Lambda function execution
-failed.
+C<ScheduleActivityTaskFailed> E<ndash> Failed to process
+ScheduleActivityTask decision. This happens when the decision isn't
+configured properly, for example the activity type specified isn't
+registered.
 
-=item * B<LambdaFunctionTimedOut>: The AWS Lambda function execution
-timed out.
+=item *
 
-=item * B<ScheduleLambdaFunctionFailed>: Failed to process
-ScheduleLambdaFunction decision. This happens when the workflow
-execution does not have the proper IAM role attached to invoke AWS
-Lambda functions.
+C<SignalExternalWorkflowExecutionFailed> E<ndash> The request to signal
+an external workflow execution failed.
 
-=item * B<StartLambdaFunctionFailed>: Failed to invoke the scheduled
-function in the AWS Lambda service. This happens when the AWS Lambda
-service is not available in the current region, or received too many
-requests.
+=item *
+
+C<SignalExternalWorkflowExecutionInitiated> E<ndash> A request to
+signal an external workflow was made.
+
+=item *
+
+C<StartActivityTaskFailed> E<ndash> A scheduled activity task failed to
+start.
+
+=item *
+
+C<StartChildWorkflowExecutionFailed> E<ndash> Failed to process
+StartChildWorkflowExecution decision. This happens when the decision
+isn't configured properly, for example the workflow type specified
+isn't registered.
+
+=item *
+
+C<StartChildWorkflowExecutionInitiated> E<ndash> A request was made to
+start a child workflow execution.
+
+=item *
+
+C<StartTimerFailed> E<ndash> Failed to process StartTimer decision.
+This happens when the decision isn't configured properly, for example a
+timer already exists with the specified timer Id.
+
+=item *
+
+C<TimerCanceled> E<ndash> A timer, previously started for this workflow
+execution, was successfully canceled.
+
+=item *
+
+C<TimerFired> E<ndash> A timer, previously started for this workflow
+execution, fired.
+
+=item *
+
+C<TimerStarted> E<ndash> A timer was started for the workflow execution
+due to a C<StartTimer> decision.
+
+=item *
+
+C<WorkflowExecutionCancelRequested> E<ndash> A request to cancel this
+workflow execution was made.
+
+=item *
+
+C<WorkflowExecutionCanceled> E<ndash> The workflow execution was
+successfully canceled and closed.
+
+=item *
+
+C<WorkflowExecutionCompleted> E<ndash> The workflow execution was
+closed due to successful completion.
+
+=item *
+
+C<WorkflowExecutionContinuedAsNew> E<ndash> The workflow execution was
+closed and a new execution of the same type was created with the same
+workflowId.
+
+=item *
+
+C<WorkflowExecutionFailed> E<ndash> The workflow execution closed due
+to a failure.
+
+=item *
+
+C<WorkflowExecutionSignaled> E<ndash> An external signal was received
+for the workflow execution.
+
+=item *
+
+C<WorkflowExecutionStarted> E<ndash> The workflow execution was
+started.
+
+=item *
+
+C<WorkflowExecutionTerminated> E<ndash> The workflow execution was
+terminated.
+
+=item *
+
+C<WorkflowExecutionTimedOut> E<ndash> The workflow execution was closed
+because a time out was exceeded.
 
 =back
 
@@ -262,147 +351,147 @@ requests.
 =head2 ActivityTaskCanceledEventAttributes => L<Paws::SimpleWorkflow::ActivityTaskCanceledEventAttributes>
 
   If the event is of type C<ActivityTaskCanceled> then this member is set
-and provides detailed information about the event. It is not set for
+and provides detailed information about the event. It isn't set for
 other event types.
 
 
 =head2 ActivityTaskCancelRequestedEventAttributes => L<Paws::SimpleWorkflow::ActivityTaskCancelRequestedEventAttributes>
 
   If the event is of type C<ActivityTaskcancelRequested> then this member
-is set and provides detailed information about the event. It is not set
+is set and provides detailed information about the event. It isn't set
 for other event types.
 
 
 =head2 ActivityTaskCompletedEventAttributes => L<Paws::SimpleWorkflow::ActivityTaskCompletedEventAttributes>
 
   If the event is of type C<ActivityTaskCompleted> then this member is
-set and provides detailed information about the event. It is not set
-for other event types.
+set and provides detailed information about the event. It isn't set for
+other event types.
 
 
 =head2 ActivityTaskFailedEventAttributes => L<Paws::SimpleWorkflow::ActivityTaskFailedEventAttributes>
 
   If the event is of type C<ActivityTaskFailed> then this member is set
-and provides detailed information about the event. It is not set for
+and provides detailed information about the event. It isn't set for
 other event types.
 
 
 =head2 ActivityTaskScheduledEventAttributes => L<Paws::SimpleWorkflow::ActivityTaskScheduledEventAttributes>
 
   If the event is of type C<ActivityTaskScheduled> then this member is
-set and provides detailed information about the event. It is not set
-for other event types.
+set and provides detailed information about the event. It isn't set for
+other event types.
 
 
 =head2 ActivityTaskStartedEventAttributes => L<Paws::SimpleWorkflow::ActivityTaskStartedEventAttributes>
 
   If the event is of type C<ActivityTaskStarted> then this member is set
-and provides detailed information about the event. It is not set for
+and provides detailed information about the event. It isn't set for
 other event types.
 
 
 =head2 ActivityTaskTimedOutEventAttributes => L<Paws::SimpleWorkflow::ActivityTaskTimedOutEventAttributes>
 
   If the event is of type C<ActivityTaskTimedOut> then this member is set
-and provides detailed information about the event. It is not set for
+and provides detailed information about the event. It isn't set for
 other event types.
 
 
 =head2 CancelTimerFailedEventAttributes => L<Paws::SimpleWorkflow::CancelTimerFailedEventAttributes>
 
   If the event is of type C<CancelTimerFailed> then this member is set
-and provides detailed information about the event. It is not set for
+and provides detailed information about the event. It isn't set for
 other event types.
 
 
 =head2 CancelWorkflowExecutionFailedEventAttributes => L<Paws::SimpleWorkflow::CancelWorkflowExecutionFailedEventAttributes>
 
   If the event is of type C<CancelWorkflowExecutionFailed> then this
-member is set and provides detailed information about the event. It is
-not set for other event types.
+member is set and provides detailed information about the event. It
+isn't set for other event types.
 
 
 =head2 ChildWorkflowExecutionCanceledEventAttributes => L<Paws::SimpleWorkflow::ChildWorkflowExecutionCanceledEventAttributes>
 
   If the event is of type C<ChildWorkflowExecutionCanceled> then this
-member is set and provides detailed information about the event. It is
-not set for other event types.
+member is set and provides detailed information about the event. It
+isn't set for other event types.
 
 
 =head2 ChildWorkflowExecutionCompletedEventAttributes => L<Paws::SimpleWorkflow::ChildWorkflowExecutionCompletedEventAttributes>
 
   If the event is of type C<ChildWorkflowExecutionCompleted> then this
-member is set and provides detailed information about the event. It is
-not set for other event types.
+member is set and provides detailed information about the event. It
+isn't set for other event types.
 
 
 =head2 ChildWorkflowExecutionFailedEventAttributes => L<Paws::SimpleWorkflow::ChildWorkflowExecutionFailedEventAttributes>
 
   If the event is of type C<ChildWorkflowExecutionFailed> then this
-member is set and provides detailed information about the event. It is
-not set for other event types.
+member is set and provides detailed information about the event. It
+isn't set for other event types.
 
 
 =head2 ChildWorkflowExecutionStartedEventAttributes => L<Paws::SimpleWorkflow::ChildWorkflowExecutionStartedEventAttributes>
 
   If the event is of type C<ChildWorkflowExecutionStarted> then this
-member is set and provides detailed information about the event. It is
-not set for other event types.
+member is set and provides detailed information about the event. It
+isn't set for other event types.
 
 
 =head2 ChildWorkflowExecutionTerminatedEventAttributes => L<Paws::SimpleWorkflow::ChildWorkflowExecutionTerminatedEventAttributes>
 
   If the event is of type C<ChildWorkflowExecutionTerminated> then this
-member is set and provides detailed information about the event. It is
-not set for other event types.
+member is set and provides detailed information about the event. It
+isn't set for other event types.
 
 
 =head2 ChildWorkflowExecutionTimedOutEventAttributes => L<Paws::SimpleWorkflow::ChildWorkflowExecutionTimedOutEventAttributes>
 
   If the event is of type C<ChildWorkflowExecutionTimedOut> then this
-member is set and provides detailed information about the event. It is
-not set for other event types.
+member is set and provides detailed information about the event. It
+isn't set for other event types.
 
 
 =head2 CompleteWorkflowExecutionFailedEventAttributes => L<Paws::SimpleWorkflow::CompleteWorkflowExecutionFailedEventAttributes>
 
   If the event is of type C<CompleteWorkflowExecutionFailed> then this
-member is set and provides detailed information about the event. It is
-not set for other event types.
+member is set and provides detailed information about the event. It
+isn't set for other event types.
 
 
 =head2 ContinueAsNewWorkflowExecutionFailedEventAttributes => L<Paws::SimpleWorkflow::ContinueAsNewWorkflowExecutionFailedEventAttributes>
 
   If the event is of type C<ContinueAsNewWorkflowExecutionFailed> then
 this member is set and provides detailed information about the event.
-It is not set for other event types.
+It isn't set for other event types.
 
 
 =head2 DecisionTaskCompletedEventAttributes => L<Paws::SimpleWorkflow::DecisionTaskCompletedEventAttributes>
 
   If the event is of type C<DecisionTaskCompleted> then this member is
-set and provides detailed information about the event. It is not set
-for other event types.
+set and provides detailed information about the event. It isn't set for
+other event types.
 
 
 =head2 DecisionTaskScheduledEventAttributes => L<Paws::SimpleWorkflow::DecisionTaskScheduledEventAttributes>
 
   If the event is of type C<DecisionTaskScheduled> then this member is
-set and provides detailed information about the event. It is not set
-for other event types.
+set and provides detailed information about the event. It isn't set for
+other event types.
 
 
 =head2 DecisionTaskStartedEventAttributes => L<Paws::SimpleWorkflow::DecisionTaskStartedEventAttributes>
 
   If the event is of type C<DecisionTaskStarted> then this member is set
-and provides detailed information about the event. It is not set for
+and provides detailed information about the event. It isn't set for
 other event types.
 
 
 =head2 DecisionTaskTimedOutEventAttributes => L<Paws::SimpleWorkflow::DecisionTaskTimedOutEventAttributes>
 
   If the event is of type C<DecisionTaskTimedOut> then this member is set
-and provides detailed information about the event. It is not set for
+and provides detailed information about the event. It isn't set for
 other event types.
 
 
@@ -426,217 +515,224 @@ event with in the workflow execution history.
 
   If the event is of type C<ExternalWorkflowExecutionCancelRequested>
 then this member is set and provides detailed information about the
-event. It is not set for other event types.
+event. It isn't set for other event types.
 
 
 =head2 ExternalWorkflowExecutionSignaledEventAttributes => L<Paws::SimpleWorkflow::ExternalWorkflowExecutionSignaledEventAttributes>
 
   If the event is of type C<ExternalWorkflowExecutionSignaled> then this
-member is set and provides detailed information about the event. It is
-not set for other event types.
+member is set and provides detailed information about the event. It
+isn't set for other event types.
 
 
 =head2 FailWorkflowExecutionFailedEventAttributes => L<Paws::SimpleWorkflow::FailWorkflowExecutionFailedEventAttributes>
 
   If the event is of type C<FailWorkflowExecutionFailed> then this member
-is set and provides detailed information about the event. It is not set
+is set and provides detailed information about the event. It isn't set
 for other event types.
 
 
 =head2 LambdaFunctionCompletedEventAttributes => L<Paws::SimpleWorkflow::LambdaFunctionCompletedEventAttributes>
 
-  
+  Provides the details of the C<LambdaFunctionCompleted> event. It isn't
+set for other event types.
 
 
 =head2 LambdaFunctionFailedEventAttributes => L<Paws::SimpleWorkflow::LambdaFunctionFailedEventAttributes>
 
-  
+  Provides the details of the C<LambdaFunctionFailed> event. It isn't set
+for other event types.
 
 
 =head2 LambdaFunctionScheduledEventAttributes => L<Paws::SimpleWorkflow::LambdaFunctionScheduledEventAttributes>
 
-  
+  Provides the details of the C<LambdaFunctionScheduled> event. It isn't
+set for other event types.
 
 
 =head2 LambdaFunctionStartedEventAttributes => L<Paws::SimpleWorkflow::LambdaFunctionStartedEventAttributes>
 
-  
+  Provides the details of the C<LambdaFunctionStarted> event. It isn't
+set for other event types.
 
 
 =head2 LambdaFunctionTimedOutEventAttributes => L<Paws::SimpleWorkflow::LambdaFunctionTimedOutEventAttributes>
 
-  
+  Provides the details of the C<LambdaFunctionTimedOut> event. It isn't
+set for other event types.
 
 
 =head2 MarkerRecordedEventAttributes => L<Paws::SimpleWorkflow::MarkerRecordedEventAttributes>
 
   If the event is of type C<MarkerRecorded> then this member is set and
-provides detailed information about the event. It is not set for other
+provides detailed information about the event. It isn't set for other
 event types.
 
 
 =head2 RecordMarkerFailedEventAttributes => L<Paws::SimpleWorkflow::RecordMarkerFailedEventAttributes>
 
   If the event is of type C<DecisionTaskFailed> then this member is set
-and provides detailed information about the event. It is not set for
+and provides detailed information about the event. It isn't set for
 other event types.
 
 
 =head2 RequestCancelActivityTaskFailedEventAttributes => L<Paws::SimpleWorkflow::RequestCancelActivityTaskFailedEventAttributes>
 
   If the event is of type C<RequestCancelActivityTaskFailed> then this
-member is set and provides detailed information about the event. It is
-not set for other event types.
+member is set and provides detailed information about the event. It
+isn't set for other event types.
 
 
 =head2 RequestCancelExternalWorkflowExecutionFailedEventAttributes => L<Paws::SimpleWorkflow::RequestCancelExternalWorkflowExecutionFailedEventAttributes>
 
   If the event is of type C<RequestCancelExternalWorkflowExecutionFailed>
 then this member is set and provides detailed information about the
-event. It is not set for other event types.
+event. It isn't set for other event types.
 
 
 =head2 RequestCancelExternalWorkflowExecutionInitiatedEventAttributes => L<Paws::SimpleWorkflow::RequestCancelExternalWorkflowExecutionInitiatedEventAttributes>
 
   If the event is of type
 C<RequestCancelExternalWorkflowExecutionInitiated> then this member is
-set and provides detailed information about the event. It is not set
-for other event types.
+set and provides detailed information about the event. It isn't set for
+other event types.
 
 
 =head2 ScheduleActivityTaskFailedEventAttributes => L<Paws::SimpleWorkflow::ScheduleActivityTaskFailedEventAttributes>
 
   If the event is of type C<ScheduleActivityTaskFailed> then this member
-is set and provides detailed information about the event. It is not set
+is set and provides detailed information about the event. It isn't set
 for other event types.
 
 
 =head2 ScheduleLambdaFunctionFailedEventAttributes => L<Paws::SimpleWorkflow::ScheduleLambdaFunctionFailedEventAttributes>
 
-  
+  Provides the details of the C<ScheduleLambdaFunctionFailed> event. It
+isn't set for other event types.
 
 
 =head2 SignalExternalWorkflowExecutionFailedEventAttributes => L<Paws::SimpleWorkflow::SignalExternalWorkflowExecutionFailedEventAttributes>
 
   If the event is of type C<SignalExternalWorkflowExecutionFailed> then
 this member is set and provides detailed information about the event.
-It is not set for other event types.
+It isn't set for other event types.
 
 
 =head2 SignalExternalWorkflowExecutionInitiatedEventAttributes => L<Paws::SimpleWorkflow::SignalExternalWorkflowExecutionInitiatedEventAttributes>
 
   If the event is of type C<SignalExternalWorkflowExecutionInitiated>
 then this member is set and provides detailed information about the
-event. It is not set for other event types.
+event. It isn't set for other event types.
 
 
 =head2 StartChildWorkflowExecutionFailedEventAttributes => L<Paws::SimpleWorkflow::StartChildWorkflowExecutionFailedEventAttributes>
 
   If the event is of type C<StartChildWorkflowExecutionFailed> then this
-member is set and provides detailed information about the event. It is
-not set for other event types.
+member is set and provides detailed information about the event. It
+isn't set for other event types.
 
 
 =head2 StartChildWorkflowExecutionInitiatedEventAttributes => L<Paws::SimpleWorkflow::StartChildWorkflowExecutionInitiatedEventAttributes>
 
   If the event is of type C<StartChildWorkflowExecutionInitiated> then
 this member is set and provides detailed information about the event.
-It is not set for other event types.
+It isn't set for other event types.
 
 
 =head2 StartLambdaFunctionFailedEventAttributes => L<Paws::SimpleWorkflow::StartLambdaFunctionFailedEventAttributes>
 
-  
+  Provides the details of the C<StartLambdaFunctionFailed> event. It
+isn't set for other event types.
 
 
 =head2 StartTimerFailedEventAttributes => L<Paws::SimpleWorkflow::StartTimerFailedEventAttributes>
 
   If the event is of type C<StartTimerFailed> then this member is set and
-provides detailed information about the event. It is not set for other
+provides detailed information about the event. It isn't set for other
 event types.
 
 
 =head2 TimerCanceledEventAttributes => L<Paws::SimpleWorkflow::TimerCanceledEventAttributes>
 
   If the event is of type C<TimerCanceled> then this member is set and
-provides detailed information about the event. It is not set for other
+provides detailed information about the event. It isn't set for other
 event types.
 
 
 =head2 TimerFiredEventAttributes => L<Paws::SimpleWorkflow::TimerFiredEventAttributes>
 
   If the event is of type C<TimerFired> then this member is set and
-provides detailed information about the event. It is not set for other
+provides detailed information about the event. It isn't set for other
 event types.
 
 
 =head2 TimerStartedEventAttributes => L<Paws::SimpleWorkflow::TimerStartedEventAttributes>
 
   If the event is of type C<TimerStarted> then this member is set and
-provides detailed information about the event. It is not set for other
+provides detailed information about the event. It isn't set for other
 event types.
 
 
 =head2 WorkflowExecutionCanceledEventAttributes => L<Paws::SimpleWorkflow::WorkflowExecutionCanceledEventAttributes>
 
   If the event is of type C<WorkflowExecutionCanceled> then this member
-is set and provides detailed information about the event. It is not set
+is set and provides detailed information about the event. It isn't set
 for other event types.
 
 
 =head2 WorkflowExecutionCancelRequestedEventAttributes => L<Paws::SimpleWorkflow::WorkflowExecutionCancelRequestedEventAttributes>
 
   If the event is of type C<WorkflowExecutionCancelRequested> then this
-member is set and provides detailed information about the event. It is
-not set for other event types.
+member is set and provides detailed information about the event. It
+isn't set for other event types.
 
 
 =head2 WorkflowExecutionCompletedEventAttributes => L<Paws::SimpleWorkflow::WorkflowExecutionCompletedEventAttributes>
 
   If the event is of type C<WorkflowExecutionCompleted> then this member
-is set and provides detailed information about the event. It is not set
+is set and provides detailed information about the event. It isn't set
 for other event types.
 
 
 =head2 WorkflowExecutionContinuedAsNewEventAttributes => L<Paws::SimpleWorkflow::WorkflowExecutionContinuedAsNewEventAttributes>
 
   If the event is of type C<WorkflowExecutionContinuedAsNew> then this
-member is set and provides detailed information about the event. It is
-not set for other event types.
+member is set and provides detailed information about the event. It
+isn't set for other event types.
 
 
 =head2 WorkflowExecutionFailedEventAttributes => L<Paws::SimpleWorkflow::WorkflowExecutionFailedEventAttributes>
 
   If the event is of type C<WorkflowExecutionFailed> then this member is
-set and provides detailed information about the event. It is not set
-for other event types.
+set and provides detailed information about the event. It isn't set for
+other event types.
 
 
 =head2 WorkflowExecutionSignaledEventAttributes => L<Paws::SimpleWorkflow::WorkflowExecutionSignaledEventAttributes>
 
   If the event is of type C<WorkflowExecutionSignaled> then this member
-is set and provides detailed information about the event. It is not set
+is set and provides detailed information about the event. It isn't set
 for other event types.
 
 
 =head2 WorkflowExecutionStartedEventAttributes => L<Paws::SimpleWorkflow::WorkflowExecutionStartedEventAttributes>
 
   If the event is of type C<WorkflowExecutionStarted> then this member is
-set and provides detailed information about the event. It is not set
-for other event types.
+set and provides detailed information about the event. It isn't set for
+other event types.
 
 
 =head2 WorkflowExecutionTerminatedEventAttributes => L<Paws::SimpleWorkflow::WorkflowExecutionTerminatedEventAttributes>
 
   If the event is of type C<WorkflowExecutionTerminated> then this member
-is set and provides detailed information about the event. It is not set
+is set and provides detailed information about the event. It isn't set
 for other event types.
 
 
 =head2 WorkflowExecutionTimedOutEventAttributes => L<Paws::SimpleWorkflow::WorkflowExecutionTimedOutEventAttributes>
 
   If the event is of type C<WorkflowExecutionTimedOut> then this member
-is set and provides detailed information about the event. It is not set
+is set and provides detailed information about the event. It isn't set
 for other event types.
 
 

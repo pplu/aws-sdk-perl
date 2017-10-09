@@ -2,13 +2,16 @@
 package Paws::SSM::RegisterTaskWithMaintenanceWindow;
   use Moose;
   has ClientToken => (is => 'ro', isa => 'Str');
+  has Description => (is => 'ro', isa => 'Str');
   has LoggingInfo => (is => 'ro', isa => 'Paws::SSM::LoggingInfo');
   has MaxConcurrency => (is => 'ro', isa => 'Str', required => 1);
   has MaxErrors => (is => 'ro', isa => 'Str', required => 1);
+  has Name => (is => 'ro', isa => 'Str');
   has Priority => (is => 'ro', isa => 'Int');
   has ServiceRoleArn => (is => 'ro', isa => 'Str', required => 1);
   has Targets => (is => 'ro', isa => 'ArrayRef[Paws::SSM::Target]', required => 1);
   has TaskArn => (is => 'ro', isa => 'Str', required => 1);
+  has TaskInvocationParameters => (is => 'ro', isa => 'Paws::SSM::MaintenanceWindowTaskInvocationParameters');
   has TaskParameters => (is => 'ro', isa => 'Paws::SSM::MaintenanceWindowTaskParameters');
   has TaskType => (is => 'ro', isa => 'Str', required => 1);
   has WindowId => (is => 'ro', isa => 'Str', required => 1);
@@ -49,6 +52,12 @@ User-provided idempotency token.
 
 
 
+=head2 Description => Str
+
+An optional description for the task.
+
+
+
 =head2 LoggingInfo => L<Paws::SSM::LoggingInfo>
 
 A structure containing information about an Amazon S3 bucket to write
@@ -66,6 +75,12 @@ The maximum number of targets this task can be run for in parallel.
 
 The maximum number of errors allowed before this task stops being
 scheduled.
+
+
+
+=head2 Name => Str
+
+An optional name for the task.
 
 
 
@@ -99,6 +114,13 @@ The ARN of the task to execute
 
 
 
+=head2 TaskInvocationParameters => L<Paws::SSM::MaintenanceWindowTaskInvocationParameters>
+
+The parameters that the task should use during execution. Populate only
+the fields that match the task type. All other fields should be empty.
+
+
+
 =head2 TaskParameters => L<Paws::SSM::MaintenanceWindowTaskParameters>
 
 The parameters that should be passed to the task when it is executed.
@@ -109,7 +131,7 @@ The parameters that should be passed to the task when it is executed.
 
 The type of task being registered.
 
-Valid values are: C<"RUN_COMMAND">
+Valid values are: C<"RUN_COMMAND">, C<"AUTOMATION">, C<"STEP_FUNCTIONS">, C<"LAMBDA">
 
 =head2 B<REQUIRED> WindowId => Str
 

@@ -63,7 +63,7 @@ C<description> - A description of the snapshot.
 C<owner-alias> - Value from an Amazon-maintained list (C<amazon> |
 C<aws-marketplace> | C<microsoft>) of snapshot owners. Not to be
 confused with the user-configured AWS account alias, which is set from
-the IAM consolew.
+the IAM console.
 
 =item *
 

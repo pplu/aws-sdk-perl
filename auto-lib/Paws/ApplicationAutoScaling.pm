@@ -196,8 +196,9 @@ Amazon AppStream 2.0 in the I<Amazon AppStream 2.0 Developer Guide>.
 =item *
 
 Provisioned read and write capacity for Amazon DynamoDB tables and
-global secondary indexes. For more information, see Auto Scaling for
-DynamoDB in the I<Amazon DynamoDB Developer Guide>.
+global secondary indexes. For more information, see Managing Throughput
+Capacity Automatically with DynamoDB Auto Scaling in the I<Amazon
+DynamoDB Developer Guide>.
 
 =back
 

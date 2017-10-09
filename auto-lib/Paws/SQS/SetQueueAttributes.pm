@@ -77,13 +77,28 @@ values: an integer from 0 to 20 (seconds). The default is 0.
 
 =item *
 
-C<RedrivePolicy> - The parameters for the dead letter queue
-functionality of the source queue. For more information about the
-redrive policy and dead letter queues, see Using Amazon SQS Dead Letter
-Queues in the I<Amazon SQS Developer Guide>.
+C<RedrivePolicy> - The string that includes the parameters for the
+dead-letter queue functionality of the source queue. For more
+information about the redrive policy and dead-letter queues, see Using
+Amazon SQS Dead-Letter Queues in the I<Amazon SQS Developer Guide>.
 
-The dead letter queue of a FIFO queue must also be a FIFO queue.
-Similarly, the dead letter queue of a standard queue must also be a
+=over
+
+=item *
+
+C<deadLetterTargetArn> - The Amazon Resource Name (ARN) of the
+dead-letter queue to which Amazon SQS moves messages after the value of
+C<maxReceiveCount> is exceeded.
+
+=item *
+
+C<maxReceiveCount> - The number of times a message is delivered to the
+source queue before being moved to the dead-letter queue.
+
+=back
+
+The dead-letter queue of a FIFO queue must also be a FIFO queue.
+Similarly, the dead-letter queue of a standard queue must also be a
 standard queue.
 
 =item *
@@ -105,7 +120,7 @@ C<KmsMasterKeyId> - The ID of an AWS-managed customer master key (CMK)
 for Amazon SQS or a custom CMK. For more information, see Key Terms.
 While the alias of the AWS-managed CMK for Amazon SQS is always
 C<alias/aws/sqs>, the alias of a custom CMK can, for example, be
-C<alias/aws/sqs>. For more examples, see KeyId in the I<AWS Key
+C<alias/I<MyAlias> >. For more examples, see KeyId in the I<AWS Key
 Management Service API Reference>.
 
 =item *
@@ -115,8 +130,8 @@ which Amazon SQS can reuse a data key to encrypt or decrypt messages
 before calling AWS KMS again. An integer representing seconds, between
 60 seconds (1 minute) and 86,400 seconds (24 hours). The default is 300
 (5 minutes). A shorter time period provides better security but results
-in more calls to KMS which incur charges after Free Tier. For more
-information, see How Does the Data Key Reuse Period Work?.
+in more calls to KMS which might incur charges after Free Tier. For
+more information, see How Does the Data Key Reuse Period Work?.
 
 =back
 

@@ -5,6 +5,7 @@ package Paws::LexModels::PutSlotType;
   has Description => (is => 'ro', isa => 'Str');
   has EnumerationValues => (is => 'ro', isa => 'ArrayRef[Paws::LexModels::EnumerationValue]');
   has Name => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'name' , required => 1);
+  has ValueSelectionStrategy => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -62,7 +63,17 @@ A description of the slot type.
 =head2 EnumerationValues => ArrayRef[L<Paws::LexModels::EnumerationValue>]
 
 A list of C<EnumerationValue> objects that defines the values that the
-slot type can take.
+slot type can take. Each value can have a list of C<synonyms>, which
+are additional values that help train the machine learning model about
+the values that it resolves for a slot.
+
+When Amazon Lex resolves a slot value, it generates a resolution list
+that contains up to five possible values for the slot. If you are using
+a Lambda function, this resolution list is passed to the function. If
+you are not using a Lambda function you can choose to return the value
+that the user entered or the first value in the resolution list as the
+slot value. The C<valueSelectionStrategy> field indicates the option to
+use.
 
 
 
@@ -79,6 +90,31 @@ For a list of built-in slot types, see Slot Type Reference in the
 I<Alexa Skills Kit>.
 
 
+
+=head2 ValueSelectionStrategy => Str
+
+Determines the slot resolution strategy that Amazon Lex uses to return
+slot type values. The field can be set to one of the following values:
+
+=over
+
+=item *
+
+C<ORIGINAL_VALUE> - Returns the value entered by the user, if the user
+value is similar to the slot value.
+
+=item *
+
+C<TOP_RESOLUTION> - If there is a resolution list for the slot, return
+the first value in the resolution list as the slot type value. If there
+is no resolution list, null is returned.
+
+=back
+
+If you don't specify the C<valueSelectionStrategy>, the default is
+C<ORIGINAL_VALUE>.
+
+Valid values are: C<"ORIGINAL_VALUE">, C<"TOP_RESOLUTION">
 
 
 =head1 SEE ALSO

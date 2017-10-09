@@ -41,7 +41,7 @@ Represents a log event.
 =head2 IngestionTime => Int
 
   The time the event was ingested, expressed as the number of
-milliseconds since Jan 1, 1970 00:00:00 UTC.
+milliseconds after Jan 1, 1970 00:00:00 UTC.
 
 
 =head2 Message => Str
@@ -52,7 +52,7 @@ milliseconds since Jan 1, 1970 00:00:00 UTC.
 =head2 Timestamp => Int
 
   The time the event occurred, expressed as the number of milliseconds
-since Jan 1, 1970 00:00:00 UTC.
+after Jan 1, 1970 00:00:00 UTC.
 
 
 

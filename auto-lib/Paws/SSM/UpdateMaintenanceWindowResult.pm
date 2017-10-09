@@ -3,6 +3,7 @@ package Paws::SSM::UpdateMaintenanceWindowResult;
   use Moose;
   has AllowUnassociatedTargets => (is => 'ro', isa => 'Bool');
   has Cutoff => (is => 'ro', isa => 'Int');
+  has Description => (is => 'ro', isa => 'Str');
   has Duration => (is => 'ro', isa => 'Int');
   has Enabled => (is => 'ro', isa => 'Bool');
   has Name => (is => 'ro', isa => 'Str');
@@ -30,6 +31,11 @@ tasks can be defined for those targets.
 
 The number of hours before the end of the Maintenance Window that
 Systems Manager stops scheduling new tasks for execution.
+
+
+=head2 Description => Str
+
+An optional description of the update.
 
 
 =head2 Duration => Int

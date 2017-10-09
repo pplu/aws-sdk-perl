@@ -51,7 +51,7 @@ The last path segment for this resource.
 
 =head2 B<REQUIRED> RestApiId => Str
 
-The identifier of the RestApi for the resource.
+The string identifier of the associated RestApi.
 
 
 

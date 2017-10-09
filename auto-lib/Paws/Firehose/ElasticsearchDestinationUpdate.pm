@@ -71,9 +71,9 @@ specified in B<RoleARN>.
 
 =head2 IndexRotationPeriod => Str
 
-  The Elasticsearch index rotation period. Index rotation appends a
-timestamp to IndexName to facilitate the expiration of old data. For
-more information, see Index Rotation for Amazon Elasticsearch Service
+  The Elasticsearch index rotation period. Index rotation appends a time
+stamp to IndexName to facilitate the expiration of old data. For more
+information, see Index Rotation for Amazon Elasticsearch Service
 Destination. Default value is C<OneDay>.
 
 
@@ -84,14 +84,14 @@ Destination. Default value is C<OneDay>.
 
 =head2 RetryOptions => L<Paws::Firehose::ElasticsearchRetryOptions>
 
-  The retry behavior in the event that Firehose is unable to deliver
-documents to Amazon ES. Default value is 300 (5 minutes).
+  The retry behavior in case Kinesis Firehose is unable to deliver
+documents to Amazon ES. The default value is 300 (5 minutes).
 
 
 =head2 RoleARN => Str
 
-  The ARN of the IAM role to be assumed by Firehose for calling the
-Amazon ES Configuration API and for indexing documents. For more
+  The ARN of the IAM role to be assumed by Kinesis Firehose for calling
+the Amazon ES Configuration API and for indexing documents. For more
 information, see Amazon S3 Bucket Access.
 
 

@@ -46,17 +46,18 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 =head2 B<REQUIRED> Resources => ArrayRef[Str|Undef]
 
-The ID of the resource. For example, ami-1a2b3c4d. You can specify more
-than one resource ID.
+The IDs of one or more resources.
 
 
 
 =head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
 
-One or more tags to delete. If you omit the C<value> parameter, we
-delete the tag regardless of its value. If you specify this parameter
-with an empty string as the value, we delete the key only if its value
-is an empty string.
+One or more tags to delete. If you omit this parameter, we delete all
+tags for the specified resources. Specify a tag key and an optional tag
+value to delete specific tags. If you specify a tag key without a tag
+value, we delete any tag with this key regardless of its value. If you
+specify a tag key with an empty string as the tag value, we delete the
+tag only if its value is an empty string.
 
 
 

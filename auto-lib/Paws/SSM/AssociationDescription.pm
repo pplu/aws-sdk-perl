@@ -1,6 +1,8 @@
 package Paws::SSM::AssociationDescription;
   use Moose;
   has AssociationId => (is => 'ro', isa => 'Str');
+  has AssociationName => (is => 'ro', isa => 'Str');
+  has AssociationVersion => (is => 'ro', isa => 'Str');
   has Date => (is => 'ro', isa => 'Str');
   has DocumentVersion => (is => 'ro', isa => 'Str');
   has InstanceId => (is => 'ro', isa => 'Str');
@@ -54,6 +56,16 @@ Describes the parameters for a document.
   The association ID.
 
 
+=head2 AssociationName => Str
+
+  The association name.
+
+
+=head2 AssociationVersion => Str
+
+  The association version.
+
+
 =head2 Date => Str
 
   The date when the association was made.
@@ -86,7 +98,7 @@ Describes the parameters for a document.
 
 =head2 Name => Str
 
-  The name of the SSM document.
+  The name of the Systems Manager document.
 
 
 =head2 OutputLocation => L<Paws::SSM::InstanceAssociationOutputLocation>

@@ -3,6 +3,7 @@ package Paws::GameLift::StartGameSessionPlacement;
   use Moose;
   has DesiredPlayerSessions => (is => 'ro', isa => 'ArrayRef[Paws::GameLift::DesiredPlayerSession]');
   has GameProperties => (is => 'ro', isa => 'ArrayRef[Paws::GameLift::GameProperty]');
+  has GameSessionData => (is => 'ro', isa => 'Str');
   has GameSessionName => (is => 'ro', isa => 'Str');
   has GameSessionQueueName => (is => 'ro', isa => 'Str', required => 1);
   has MaximumPlayerSessionCount => (is => 'ro', isa => 'Int', required => 1);
@@ -47,8 +48,19 @@ Set of information on each player to create a player session for.
 
 =head2 GameProperties => ArrayRef[L<Paws::GameLift::GameProperty>]
 
-Set of developer-defined properties for a game session. These
-properties are passed to the server process hosting the game session.
+Set of developer-defined properties for a game session, formatted as a
+set of type:value pairs. These properties are included in the
+GameSession object, which is passed to the game server with a request
+to start a new game session (see Start a Game Session).
+
+
+
+=head2 GameSessionData => Str
+
+Set of developer-defined game session properties, formatted as a single
+string value. This data is included in the GameSession object, which is
+passed to the game server with a request to start a new game session
+(see Start a Game Session).
 
 
 
@@ -84,9 +96,9 @@ timed-out placement request.
 =head2 PlayerLatencies => ArrayRef[L<Paws::GameLift::PlayerLatency>]
 
 Set of values, expressed in milliseconds, indicating the amount of
-latency that players are experiencing when connected to AWS regions.
-This information is used to try to place the new game session where it
-can offer the best possible gameplay experience for the players.
+latency that a player experiences when connected to AWS regions. This
+information is used to try to place the new game session where it can
+offer the best possible gameplay experience for the players.
 
 
 

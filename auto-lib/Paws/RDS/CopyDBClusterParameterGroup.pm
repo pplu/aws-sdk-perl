@@ -52,13 +52,13 @@ Must specify a valid DB cluster parameter group.
 
 =item *
 
-If the source DB cluster parameter group is in the same region as the
-copy, specify a valid DB parameter group identifier, for example
+If the source DB cluster parameter group is in the same AWS Region as
+the copy, specify a valid DB parameter group identifier, for example
 C<my-db-cluster-param-group>, or a valid ARN.
 
 =item *
 
-If the source DB parameter group is in a different region than the
+If the source DB parameter group is in a different AWS Region than the
 copy, specify a valid DB cluster parameter group ARN, for example
 C<arn:aws:rds:us-east-1:123456789012:cluster-pg:custom-cluster-group1>.
 

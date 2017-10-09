@@ -37,7 +37,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 MaxResults => Int
 
-he maximum amount of data that can be contained in a single set of
+The maximum amount of data that can be contained in a single set of
 results.
 
 

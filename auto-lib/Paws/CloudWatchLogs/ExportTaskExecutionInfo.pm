@@ -40,13 +40,13 @@ Represents the status of an export task.
 =head2 CompletionTime => Int
 
   The completion time of the export task, expressed as the number of
-milliseconds since Jan 1, 1970 00:00:00 UTC.
+milliseconds after Jan 1, 1970 00:00:00 UTC.
 
 
 =head2 CreationTime => Int
 
   The creation time of the export task, expressed as the number of
-milliseconds since Jan 1, 1970 00:00:00 UTC.
+milliseconds after Jan 1, 1970 00:00:00 UTC.
 
 
 

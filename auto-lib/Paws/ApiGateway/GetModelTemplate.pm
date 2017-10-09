@@ -44,7 +44,7 @@ The name of the model for which to generate a template.
 
 =head2 B<REQUIRED> RestApiId => Str
 
-The ID of the RestApi under which the model exists.
+The string identifier of the associated RestApi.
 
 
 

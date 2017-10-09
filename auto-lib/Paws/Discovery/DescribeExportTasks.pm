@@ -2,6 +2,7 @@
 package Paws::Discovery::DescribeExportTasks;
   use Moose;
   has ExportIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'exportIds' );
+  has Filters => (is => 'ro', isa => 'ArrayRef[Paws::Discovery::ExportFilter]', traits => ['NameInRequest'], request_name => 'filters' );
   has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults' );
   has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
 
@@ -39,6 +40,21 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 One or more unique identifiers used to query the status of an export
 request.
+
+
+
+=head2 Filters => ArrayRef[L<Paws::Discovery::ExportFilter>]
+
+One or more filters.
+
+=over
+
+=item *
+
+C<AgentId> - ID of the agent whose collected data will be exported
+
+=back
+
 
 
 

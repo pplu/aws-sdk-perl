@@ -104,7 +104,7 @@ Specifies a put integration response's templates.
 
 =head2 B<REQUIRED> RestApiId => Str
 
-Specifies a put integration response request's API identifier.
+The string identifier of the associated RestApi.
 
 
 

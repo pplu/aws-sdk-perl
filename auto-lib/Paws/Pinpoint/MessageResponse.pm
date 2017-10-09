@@ -1,6 +1,7 @@
 package Paws::Pinpoint::MessageResponse;
   use Moose;
   has ApplicationId => (is => 'ro', isa => 'Str');
+  has EndpointResult => (is => 'ro', isa => 'Paws::Pinpoint::MapOfEndpointMessageResult');
   has RequestId => (is => 'ro', isa => 'Str');
   has Result => (is => 'ro', isa => 'Paws::Pinpoint::MapOfMessageResult');
 1;
@@ -41,6 +42,12 @@ Send message response.
 =head2 ApplicationId => Str
 
   Application id of the message.
+
+
+=head2 EndpointResult => L<Paws::Pinpoint::MapOfEndpointMessageResult>
+
+  A map containing a multi part response for each address, with the
+endpointId as the key and the result as the value.
 
 
 =head2 RequestId => Str

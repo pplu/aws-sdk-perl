@@ -43,7 +43,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 Obtain this value from the B<VersionId> result of
 DeliveryStreamDescription. This value is required, and helps the
-service to perform conditional operations. For example, if there is a
+service to perform conditional operations. For example, if there is an
 interleaving update and this value is null, then the update destination
 fails. After the update is successful, the B<VersionId> value is
 updated. The service then performs a merge of the old configuration

@@ -57,7 +57,7 @@ __PACKAGE__->meta->make_immutable;
 
 package Paws;
 
-our $VERSION = '0.34';
+our $VERSION = '0.35';
 
 use Moose;
 use MooseX::ClassAttribute;
@@ -258,6 +258,8 @@ L<Paws::CloudFront>
 
 L<Paws::CloudHSM>
 
+L<Paws::CloudHSMv2>
+
 L<Paws::CloudSearch>
 
 L<Paws::CloudSearchDomain>
@@ -342,6 +344,8 @@ L<Paws::GameLift>
 
 L<Paws::Glacier>
 
+L<Paws::Glue>
+
 L<Paws::Greengrass>
 
 L<Paws::Health>
@@ -377,6 +381,10 @@ L<Paws::MarketplaceCommerceAnalytics>
 L<Paws::MarketplaceEntitlement>
 
 L<Paws::MarketplaceMetering>
+
+L<Paws::MigrationHub>
+
+L<Paws::MobileHub>
 
 L<Paws::MTurk>
 
@@ -760,7 +768,8 @@ PopeFelix for solving issues around S3 and MojoAsyncCaller
 
 meis for contributing Paws::Credential::Explicit
 
-sven-schubert for contributing fixes to RestXML services
+sven-schubert for contributing fixes to RestXML services,
+working on fixing S3 to work correctly. 
 
 SeptamusNonovant for fixing paginators in non-callback mode
 

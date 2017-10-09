@@ -209,7 +209,8 @@ DeletePipeline, which deletes the specified pipeline.
 
 =item *
 
-GetPipeline, which returns information about a pipeline structure.
+GetPipeline, which returns information about the pipeline structure and
+pipeline metadata, including the pipeline Amazon Resource Name (ARN).
 
 =item *
 
@@ -225,6 +226,11 @@ the stages and actions of a pipeline.
 
 ListPipelines, which gets a summary of all of the pipelines associated
 with your account.
+
+=item *
+
+ListPipelineExecutions, which gets a summary of the most recent
+executions for a pipeline.
 
 =item *
 

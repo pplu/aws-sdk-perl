@@ -10,9 +10,11 @@ package Paws::CodeDeploy::UpdateDeploymentGroup;
   has DeploymentConfigName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'deploymentConfigName' );
   has DeploymentStyle => (is => 'ro', isa => 'Paws::CodeDeploy::DeploymentStyle', traits => ['NameInRequest'], request_name => 'deploymentStyle' );
   has Ec2TagFilters => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::EC2TagFilter]', traits => ['NameInRequest'], request_name => 'ec2TagFilters' );
+  has Ec2TagSet => (is => 'ro', isa => 'Paws::CodeDeploy::EC2TagSet', traits => ['NameInRequest'], request_name => 'ec2TagSet' );
   has LoadBalancerInfo => (is => 'ro', isa => 'Paws::CodeDeploy::LoadBalancerInfo', traits => ['NameInRequest'], request_name => 'loadBalancerInfo' );
   has NewDeploymentGroupName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'newDeploymentGroupName' );
   has OnPremisesInstanceTagFilters => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::TagFilter]', traits => ['NameInRequest'], request_name => 'onPremisesInstanceTagFilters' );
+  has OnPremisesTagSet => (is => 'ro', isa => 'Paws::CodeDeploy::OnPremisesTagSet', traits => ['NameInRequest'], request_name => 'onPremisesTagSet' );
   has ServiceRoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'serviceRoleArn' );
   has TriggerConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::TriggerConfig]', traits => ['NameInRequest'], request_name => 'triggerConfigurations' );
 
@@ -110,6 +112,14 @@ tags, do not enter any tag names.
 
 
 
+=head2 Ec2TagSet => L<Paws::CodeDeploy::EC2TagSet>
+
+Information about groups of tags applied to on-premises instances. The
+deployment group will include only EC2 instances identified by all the
+tag groups.
+
+
+
 =head2 LoadBalancerInfo => L<Paws::CodeDeploy::LoadBalancerInfo>
 
 Information about the load balancer used in a deployment.
@@ -127,6 +137,14 @@ The new name of the deployment group, if you want to change it.
 The replacement set of on-premises instance tags on which to filter, if
 you want to change them. To keep the existing tags, enter their names.
 To remove tags, do not enter any tag names.
+
+
+
+=head2 OnPremisesTagSet => L<Paws::CodeDeploy::OnPremisesTagSet>
+
+Information about an on-premises instance tag set. The deployment group
+will include only on-premises instances identified by all the tag
+groups.
 
 
 

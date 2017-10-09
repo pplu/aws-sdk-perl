@@ -52,10 +52,25 @@ One or more filters.
 
 =item *
 
-C<cidr> - The IPv4 CIDR block of the VPC. The CIDR block you specify
-must exactly match the VPC's CIDR block for information to be returned
-for the VPC. Must contain the slash followed by one or two digits (for
-example, C</28>).
+C<cidr> - The primary IPv4 CIDR block of the VPC. The CIDR block you
+specify must exactly match the VPC's CIDR block for information to be
+returned for the VPC. Must contain the slash followed by one or two
+digits (for example, C</28>).
+
+=item *
+
+C<cidr-block-association.cidr-block> - An IPv4 CIDR block associated
+with the VPC.
+
+=item *
+
+C<cidr-block-association.association-id> - The association ID for an
+IPv4 CIDR block associated with the VPC.
+
+=item *
+
+C<cidr-block-association.state> - The state of an IPv4 CIDR block
+associated with the VPC.
 
 =item *
 

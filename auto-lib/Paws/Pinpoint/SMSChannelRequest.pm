@@ -2,6 +2,7 @@ package Paws::Pinpoint::SMSChannelRequest;
   use Moose;
   has Enabled => (is => 'ro', isa => 'Bool');
   has SenderId => (is => 'ro', isa => 'Str');
+  has ShortCode => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -21,7 +22,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Pinpoint::SMSChannelRequest object:
 
-  $service_obj->Method(Att1 => { Enabled => $value, ..., SenderId => $value  });
+  $service_obj->Method(Att1 => { Enabled => $value, ..., ShortCode => $value  });
 
 =head3 Results returned from an API call
 
@@ -45,6 +46,11 @@ SMS Channel Request
 =head2 SenderId => Str
 
   Sender identifier of your messages.
+
+
+=head2 ShortCode => Str
+
+  ShortCode registered with phone provider.
 
 
 

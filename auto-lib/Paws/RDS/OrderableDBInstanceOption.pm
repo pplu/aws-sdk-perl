@@ -11,6 +11,7 @@ package Paws::RDS::OrderableDBInstanceOption;
   has SupportsEnhancedMonitoring => (is => 'ro', isa => 'Bool');
   has SupportsIAMDatabaseAuthentication => (is => 'ro', isa => 'Bool');
   has SupportsIops => (is => 'ro', isa => 'Bool');
+  has SupportsPerformanceInsights => (is => 'ro', isa => 'Bool');
   has SupportsStorageEncryption => (is => 'ro', isa => 'Bool');
   has Vpc => (is => 'ro', isa => 'Bool');
 1;
@@ -106,6 +107,11 @@ authentication.
 =head2 SupportsIops => Bool
 
   Indicates whether this orderable DB instance supports provisioned IOPS.
+
+
+=head2 SupportsPerformanceInsights => Bool
+
+  
 
 
 =head2 SupportsStorageEncryption => Bool

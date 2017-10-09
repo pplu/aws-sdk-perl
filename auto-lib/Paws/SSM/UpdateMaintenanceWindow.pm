@@ -3,9 +3,11 @@ package Paws::SSM::UpdateMaintenanceWindow;
   use Moose;
   has AllowUnassociatedTargets => (is => 'ro', isa => 'Bool');
   has Cutoff => (is => 'ro', isa => 'Int');
+  has Description => (is => 'ro', isa => 'Str');
   has Duration => (is => 'ro', isa => 'Int');
   has Enabled => (is => 'ro', isa => 'Bool');
   has Name => (is => 'ro', isa => 'Str');
+  has Replace => (is => 'ro', isa => 'Bool');
   has Schedule => (is => 'ro', isa => 'Str');
   has WindowId => (is => 'ro', isa => 'Str', required => 1);
 
@@ -53,6 +55,12 @@ Systems Manager stops scheduling new tasks for execution.
 
 
 
+=head2 Description => Str
+
+An optional description for the update request.
+
+
+
 =head2 Duration => Int
 
 The duration of the Maintenance Window in hours.
@@ -68,6 +76,14 @@ Whether the Maintenance Window is enabled.
 =head2 Name => Str
 
 The name of the Maintenance Window.
+
+
+
+=head2 Replace => Bool
+
+If True, then all fields that are required by the
+CreateMaintenanceWindow action are also required for this API request.
+Optional fields that are not specified are set to null.
 
 
 

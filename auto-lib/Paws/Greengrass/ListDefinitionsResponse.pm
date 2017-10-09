@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Greengrass:
 
 =head1 DESCRIPTION
 
-List of definition response
+List of definition responses
 
 =head1 ATTRIBUTES
 

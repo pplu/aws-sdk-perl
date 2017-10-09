@@ -79,12 +79,13 @@ that you want to list.
 
 The type of resource record set to begin the record listing from.
 
-Valid values for basic resource record sets: C<A> | C<AAAA> | C<CNAME>
-| C<MX> | C<NAPTR> | C<NS> | C<PTR> | C<SOA> | C<SPF> | C<SRV> | C<TXT>
+Valid values for basic resource record sets: C<A> | C<AAAA> | C<CAA> |
+C<CNAME> | C<MX> | C<NAPTR> | C<NS> | C<PTR> | C<SOA> | C<SPF> | C<SRV>
+| C<TXT>
 
 Values for weighted, latency, geo, and failover resource record sets:
-C<A> | C<AAAA> | C<CNAME> | C<MX> | C<NAPTR> | C<PTR> | C<SPF> | C<SRV>
-| C<TXT>
+C<A> | C<AAAA> | C<CAA> | C<CNAME> | C<MX> | C<NAPTR> | C<PTR> | C<SPF>
+| C<SRV> | C<TXT>
 
 Values for alias resource record sets:
 
@@ -106,12 +107,17 @@ B<ELB load balancer>: A | AAAA
 
 B<Amazon S3 bucket>: A
 
+=item *
+
+B<Another resource record set in this hosted zone:> The type of the
+resource record set that the alias references.
+
 =back
 
 Constraint: Specifying C<type> without specifying C<name> returns an
 C<InvalidInput> error.
 
-Valid values are: C<"SOA">, C<"A">, C<"TXT">, C<"NS">, C<"CNAME">, C<"MX">, C<"NAPTR">, C<"PTR">, C<"SRV">, C<"SPF">, C<"AAAA">
+Valid values are: C<"SOA">, C<"A">, C<"TXT">, C<"NS">, C<"CNAME">, C<"MX">, C<"NAPTR">, C<"PTR">, C<"SRV">, C<"SPF">, C<"AAAA">, C<"CAA">
 
 
 =head1 SEE ALSO

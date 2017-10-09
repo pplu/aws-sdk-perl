@@ -94,7 +94,7 @@ Value: an array of strings, each string is between 1 and 255 characters
 
 The type of task executed.
 
-Valid values are: C<"RUN_COMMAND">
+Valid values are: C<"RUN_COMMAND">, C<"AUTOMATION">, C<"STEP_FUNCTIONS">, C<"LAMBDA">
 =head2 WindowExecutionId => Str
 
 The ID of the Maintenance Window execution that includes the task.

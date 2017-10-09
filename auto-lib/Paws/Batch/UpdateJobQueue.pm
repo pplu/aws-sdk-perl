@@ -56,11 +56,11 @@ The name or the Amazon Resource Name (ARN) of the job queue.
 =head2 Priority => Int
 
 The priority of the job queue. Job queues with a higher priority (or a
-lower integer value for the C<priority> parameter) are evaluated first
+higher integer value for the C<priority> parameter) are evaluated first
 when associated with same compute environment. Priority is determined
-in ascending order, for example, a job queue with a priority value of
-C<1> is given scheduling preference over a job queue with a priority
-value of C<10>.
+in descending order, for example, a job queue with a priority value of
+C<10> is given scheduling preference over a job queue with a priority
+value of C<1>.
 
 
 

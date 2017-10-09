@@ -67,7 +67,7 @@ response. See RFC 3463 for the correct formatting of this parameter.
 
 =head2 FinalRecipient => Str
 
-  The email address to which the message was ultimately delivered. This
+  The email address that the message was ultimately delivered to. This
 corresponds to the C<Final-Recipient> in the DSN. If not specified,
 C<FinalRecipient> will be set to the C<Recipient> specified in the
 C<BouncedRecipientInfo> structure. Either C<FinalRecipient> or the

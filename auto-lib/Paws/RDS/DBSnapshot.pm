@@ -182,13 +182,14 @@ Time (UTC).
 
 =head2 SourceDBSnapshotIdentifier => Str
 
-  The DB snapshot Arn that the DB snapshot was copied from. It only has
-value in case of cross customer or cross region copy.
+  The DB snapshot Amazon Resource Name (ARN) that the DB snapshot was
+copied from. It only has value in case of cross-customer or
+cross-region copy.
 
 
 =head2 SourceRegion => Str
 
-  The region that the DB snapshot was created in or copied from.
+  The AWS Region that the DB snapshot was created in or copied from.
 
 
 =head2 Status => Str

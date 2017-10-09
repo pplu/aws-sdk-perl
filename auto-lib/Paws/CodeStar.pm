@@ -64,6 +64,11 @@ package Paws::CodeStar;
     my $call_object = $self->new_with_coercions('Paws::CodeStar::ListResources', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListTagsForProject {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeStar::ListTagsForProject', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListTeamMembers {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CodeStar::ListTeamMembers', @_);
@@ -72,6 +77,16 @@ package Paws::CodeStar;
   sub ListUserProfiles {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CodeStar::ListUserProfiles', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub TagProject {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeStar::TagProject', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UntagProject {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeStar::UntagProject', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateProject {
@@ -92,7 +107,7 @@ package Paws::CodeStar;
   
 
 
-  sub operations { qw/AssociateTeamMember CreateProject CreateUserProfile DeleteProject DeleteUserProfile DescribeProject DescribeUserProfile DisassociateTeamMember ListProjects ListResources ListTeamMembers ListUserProfiles UpdateProject UpdateTeamMember UpdateUserProfile / }
+  sub operations { qw/AssociateTeamMember CreateProject CreateUserProfile DeleteProject DeleteUserProfile DescribeProject DescribeUserProfile DisassociateTeamMember ListProjects ListResources ListTagsForProject ListTeamMembers ListUserProfiles TagProject UntagProject UpdateProject UpdateTeamMember UpdateUserProfile / }
 
 1;
 
@@ -134,25 +149,36 @@ Projects and their resources, by calling the following:
 
 =item *
 
-DeleteProject, which deletes a project in AWS CodeStar.
+C<DeleteProject>, which deletes a project.
 
 =item *
 
-DescribeProject, which lists the attributes of a project.
+C<DescribeProject>, which lists the attributes of a project.
 
 =item *
 
-ListProjects, which lists all AWS CodeStar projects associated with
-your AWS account.
+C<ListProjects>, which lists all projects associated with your AWS
+account.
 
 =item *
 
-ListResources, which lists the resources associated with an AWS
-CodeStar project.
+C<ListResources>, which lists the resources associated with a project.
 
 =item *
 
-UpdateProject, which updates the attributes of an AWS CodeStar project.
+C<ListTagsForProject>, which lists the tags associated with a project.
+
+=item *
+
+C<TagProject>, which adds tags to a project.
+
+=item *
+
+C<UntagProject>, which removes tags from a project.
+
+=item *
+
+C<UpdateProject>, which updates the attributes of a project.
 
 =back
 
@@ -162,18 +188,23 @@ Teams and team members, by calling the following:
 
 =item *
 
-AssociateTeamMember, which adds an IAM user to the team for an AWS
-CodeStar project.
+C<AssociateTeamMember>, which adds an IAM user to the team for a
+project.
 
 =item *
 
-DisassociateTeamMember, which removes an IAM user from the team for an
-AWS CodeStar project.
+C<DisassociateTeamMember>, which removes an IAM user from the team for
+a project.
 
 =item *
 
-ListTeamMembers, which lists all the IAM users in the team for an AWS
-CodeStar project, including their roles and attributes.
+C<ListTeamMembers>, which lists all the IAM users in the team for a
+project, including their roles and attributes.
+
+=item *
+
+C<UpdateTeamMember>, which updates a team member's attributes in a
+project.
 
 =back
 
@@ -183,25 +214,25 @@ Users, by calling the following:
 
 =item *
 
-CreateUserProfile, which creates a user profile that contains data
-associated with the user across all AWS CodeStar projects.
+C<CreateUserProfile>, which creates a user profile that contains data
+associated with the user across all projects.
 
 =item *
 
-DeleteUserProfile, which deletes all user profile information across
-all AWS CodeStar projects.
+C<DeleteUserProfile>, which deletes all user profile information across
+all projects.
 
 =item *
 
-DescribeUserProfile, which describes the profile of a user.
+C<DescribeUserProfile>, which describes the profile of a user.
 
 =item *
 
-ListUserProfiles, which lists all AWS CodeStar user profiles.
+C<ListUserProfiles>, which lists all user profiles.
 
 =item *
 
-UpdateUserProfile, which updates the profile for an AWS CodeStar user.
+C<UpdateUserProfile>, which updates the profile for a user.
 
 =back
 
@@ -313,6 +344,15 @@ Returns: a L<Paws::CodeStar::ListResourcesResult> instance
   Lists resources associated with a project in AWS CodeStar.
 
 
+=head2 ListTagsForProject(Id => Str, [MaxResults => Int, NextToken => Str])
+
+Each argument is described in detail in: L<Paws::CodeStar::ListTagsForProject>
+
+Returns: a L<Paws::CodeStar::ListTagsForProjectResult> instance
+
+  Gets the tags for a project.
+
+
 =head2 ListTeamMembers(ProjectId => Str, [MaxResults => Int, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::CodeStar::ListTeamMembers>
@@ -330,6 +370,24 @@ Returns: a L<Paws::CodeStar::ListUserProfilesResult> instance
 
   Lists all the user profiles configured for your AWS account in AWS
 CodeStar.
+
+
+=head2 TagProject(Id => Str, Tags => L<Paws::CodeStar::Tags>)
+
+Each argument is described in detail in: L<Paws::CodeStar::TagProject>
+
+Returns: a L<Paws::CodeStar::TagProjectResult> instance
+
+  Adds tags to a project.
+
+
+=head2 UntagProject(Id => Str, Tags => ArrayRef[Str|Undef])
+
+Each argument is described in detail in: L<Paws::CodeStar::UntagProject>
+
+Returns: a L<Paws::CodeStar::UntagProjectResult> instance
+
+  Removes tags from a project.
 
 
 =head2 UpdateProject(Id => Str, [Description => Str, Name => Str])

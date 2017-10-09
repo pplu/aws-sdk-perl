@@ -210,6 +210,282 @@ package Paws::Organizations;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub ListAllAccounts {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListAccounts(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListAccounts(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Accounts }, @{ $next_result->Accounts };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Accounts') foreach (@{ $result->Accounts });
+        $result = $self->ListAccounts(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Accounts') foreach (@{ $result->Accounts });
+    }
+
+    return undef
+  }
+  sub ListAllAccountsForParent {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListAccountsForParent(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListAccountsForParent(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Accounts }, @{ $next_result->Accounts };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Accounts') foreach (@{ $result->Accounts });
+        $result = $self->ListAccountsForParent(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Accounts') foreach (@{ $result->Accounts });
+    }
+
+    return undef
+  }
+  sub ListAllChildren {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListChildren(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListChildren(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Children }, @{ $next_result->Children };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Children') foreach (@{ $result->Children });
+        $result = $self->ListChildren(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Children') foreach (@{ $result->Children });
+    }
+
+    return undef
+  }
+  sub ListAllCreateAccountStatus {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListCreateAccountStatus(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListCreateAccountStatus(@_, NextToken => $next_result->NextToken);
+        push @{ $result->CreateAccountStatuses }, @{ $next_result->CreateAccountStatuses };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'CreateAccountStatuses') foreach (@{ $result->CreateAccountStatuses });
+        $result = $self->ListCreateAccountStatus(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'CreateAccountStatuses') foreach (@{ $result->CreateAccountStatuses });
+    }
+
+    return undef
+  }
+  sub ListAllHandshakesForAccount {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListHandshakesForAccount(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListHandshakesForAccount(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Handshakes }, @{ $next_result->Handshakes };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Handshakes') foreach (@{ $result->Handshakes });
+        $result = $self->ListHandshakesForAccount(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Handshakes') foreach (@{ $result->Handshakes });
+    }
+
+    return undef
+  }
+  sub ListAllHandshakesForOrganization {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListHandshakesForOrganization(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListHandshakesForOrganization(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Handshakes }, @{ $next_result->Handshakes };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Handshakes') foreach (@{ $result->Handshakes });
+        $result = $self->ListHandshakesForOrganization(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Handshakes') foreach (@{ $result->Handshakes });
+    }
+
+    return undef
+  }
+  sub ListAllOrganizationalUnitsForParent {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListOrganizationalUnitsForParent(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListOrganizationalUnitsForParent(@_, NextToken => $next_result->NextToken);
+        push @{ $result->OrganizationalUnits }, @{ $next_result->OrganizationalUnits };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'OrganizationalUnits') foreach (@{ $result->OrganizationalUnits });
+        $result = $self->ListOrganizationalUnitsForParent(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'OrganizationalUnits') foreach (@{ $result->OrganizationalUnits });
+    }
+
+    return undef
+  }
+  sub ListAllParents {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListParents(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListParents(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Parents }, @{ $next_result->Parents };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Parents') foreach (@{ $result->Parents });
+        $result = $self->ListParents(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Parents') foreach (@{ $result->Parents });
+    }
+
+    return undef
+  }
+  sub ListAllPolicies {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListPolicies(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListPolicies(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Policies }, @{ $next_result->Policies };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Policies') foreach (@{ $result->Policies });
+        $result = $self->ListPolicies(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Policies') foreach (@{ $result->Policies });
+    }
+
+    return undef
+  }
+  sub ListAllPoliciesForTarget {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListPoliciesForTarget(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListPoliciesForTarget(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Policies }, @{ $next_result->Policies };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Policies') foreach (@{ $result->Policies });
+        $result = $self->ListPoliciesForTarget(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Policies') foreach (@{ $result->Policies });
+    }
+
+    return undef
+  }
+  sub ListAllRoots {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListRoots(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListRoots(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Roots }, @{ $next_result->Roots };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Roots') foreach (@{ $result->Roots });
+        $result = $self->ListRoots(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Roots') foreach (@{ $result->Roots });
+    }
+
+    return undef
+  }
+  sub ListAllTargetsForPolicy {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListTargetsForPolicy(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListTargetsForPolicy(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Targets }, @{ $next_result->Targets };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Targets') foreach (@{ $result->Targets });
+        $result = $self->ListTargetsForPolicy(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Targets') foreach (@{ $result->Targets });
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/AcceptHandshake AttachPolicy CancelHandshake CreateAccount CreateOrganization CreateOrganizationalUnit CreatePolicy DeclineHandshake DeleteOrganization DeleteOrganizationalUnit DeletePolicy DescribeAccount DescribeCreateAccountStatus DescribeHandshake DescribeOrganization DescribeOrganizationalUnit DescribePolicy DetachPolicy DisablePolicyType EnableAllFeatures EnablePolicyType InviteAccountToOrganization LeaveOrganization ListAccounts ListAccountsForParent ListChildren ListCreateAccountStatus ListHandshakesForAccount ListHandshakesForOrganization ListOrganizationalUnitsForParent ListParents ListPolicies ListPoliciesForTarget ListRoots ListTargetsForPolicy MoveAccount RemoveAccountFromOrganization UpdateOrganizationalUnit UpdatePolicy / }
@@ -514,9 +790,15 @@ master account.
 For more information about creating accounts, see Creating an AWS
 Account in Your Organization in the I<AWS Organizations User Guide>.
 
-You cannot remove accounts that are created with this operation from an
-organization. That also means that you cannot delete an organization
-that contains an account that is created with this operation.
+When you create an account in an organization using the AWS
+Organizations console, API, or CLI commands, the information required
+for the account to operate as a standalone account, such as a payment
+method and signing the End User Licence Agreement (EULA) is I<not>
+automatically collected. If you must remove an account from your
+organization later, you can do so only after you provide the missing
+information. Follow the steps at To leave an organization when all
+required account information has not yet been provided in the I<AWS
+Organizations User Guide>.
 
 When you create a member account with this operation, you can choose
 whether to create the account with the B<IAM User and Role Access to
@@ -529,6 +811,11 @@ and Tools.
 
 This operation can be called only from the organization's master
 account.
+
+If you get an exception that indicates that you exceeded your account
+limits for the organization or that you can"t add an account because
+your organization is still initializing, please contact AWS Customer
+Support.
 
 
 =head2 CreateOrganization([FeatureSet => Str])
@@ -616,10 +903,6 @@ Returns: nothing
   Deletes the organization. You can delete an organization only by using
 credentials from the master account. The organization must be empty of
 member accounts, OUs, and policies.
-
-If you create any accounts using Organizations operations or the
-Organizations console, you can't remove those accounts from the
-organization, which means that you can't delete the organization.
 
 
 =head2 DeleteOrganizationalUnit(OrganizationalUnitId => Str)
@@ -761,7 +1044,7 @@ Each argument is described in detail in: L<Paws::Organizations::DisablePolicyTyp
 
 Returns: a L<Paws::Organizations::DisablePolicyTypeResponse> instance
 
-  Disables an organizational control policy type in a root. A poicy of a
+  Disables an organizational control policy type in a root. A policy of a
 certain type can be attached to entities in a root only if that type is
 enabled in the root. After you perform this operation, you no longer
 can attach policies of the specified type to that root or to any OU or
@@ -837,15 +1120,20 @@ address that is associated with the other account's owner. The
 invitation is implemented as a Handshake whose details are in the
 response.
 
-You can invite AWS accounts only from the same reseller as the master
+You can invite AWS accounts only from the same seller as the master
 account. For example, if your organization's master account was created
-by Amazon Internet Services Pvt. Ltd (AISPL), an AWS reseller in India,
+by Amazon Internet Services Pvt. Ltd (AISPL), an AWS seller in India,
 then you can only invite other AISPL accounts to your organization. You
-can't combine accounts from AISPL and AWS. For more information, see
-Consolidated Billing in India.
+can't combine accounts from AISPL and AWS, or any other AWS seller. For
+more information, see Consolidated Billing in India.
 
 This operation can be called only from the organization's master
 account.
+
+If you get an exception that indicates that you exceeded your account
+limits for the organization or that you can"t add an account because
+your organization is still initializing, please contact AWS Customer
+Support.
 
 
 =head2 LeaveOrganization( => )
@@ -873,9 +1161,19 @@ calling C<LeaveOrganization> and leaving the organization.
 
 =item *
 
-If you created the account using the AWS Organizations console, the
-Organizations API, or the Organizations CLI commands, then you cannot
-remove the account.
+You can leave an organization as a member account only if the account
+is configured with the information required to operate as a standalone
+account. When you create an account in an organization using the AWS
+Organizations console, API, or CLI commands, the information required
+of standalone accounts is I<not> automatically collected. For each
+account that you want to make standalone, you must accept the End User
+License Agreement (EULA), choose a support plan, provide and verify the
+required contact information, and provide a current payment method. AWS
+uses the payment method to charge for any billable (not free tier) AWS
+activity that occurs while the account is not attached to an
+organization. Follow the steps at To leave an organization when all
+required account information has not yet been provided in the I<AWS
+Organizations User Guide>.
 
 =item *
 
@@ -1092,10 +1390,20 @@ instead.
 
 =item *
 
-You can remove only accounts that were created outside your
-organization and invited to join. If you created the account using the
-AWS Organizations console, the Organizations API, or the Organizations
-CLI commands, then you cannot remove the account.
+You can remove an account from your organization only if the account is
+configured with the information required to operate as a standalone
+account. When you create an account in an organization using the AWS
+Organizations console, API, or CLI commands, the information required
+of standalone accounts is I<not> automatically collected. For an
+account that you want to make standalone, you must accept the End User
+License Agreement (EULA), choose a support plan, provide and verify the
+required contact information, and provide a current payment method. AWS
+uses the payment method to charge for any billable (not free tier) AWS
+activity that occurs while the account is not attached to an
+organization. To remove an account that does not yet have this
+information, you must sign in as the member account and follow the
+steps at To leave an organization when all required account information
+has not yet been provided in the I<AWS Organizations User Guide>.
 
 =item *
 
@@ -1141,6 +1449,150 @@ account.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllAccounts(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 ListAllAccounts([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Accounts, passing the object as the first parameter, and the string 'Accounts' as the second parameter 
+
+If not, it will return a a L<Paws::Organizations::ListAccountsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllAccountsForParent(sub { },ParentId => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllAccountsForParent(ParentId => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Accounts, passing the object as the first parameter, and the string 'Accounts' as the second parameter 
+
+If not, it will return a a L<Paws::Organizations::ListAccountsForParentResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllChildren(sub { },ChildType => Str, ParentId => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllChildren(ChildType => Str, ParentId => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Children, passing the object as the first parameter, and the string 'Children' as the second parameter 
+
+If not, it will return a a L<Paws::Organizations::ListChildrenResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllCreateAccountStatus(sub { },[MaxResults => Int, NextToken => Str, States => ArrayRef[Str|Undef]])
+
+=head2 ListAllCreateAccountStatus([MaxResults => Int, NextToken => Str, States => ArrayRef[Str|Undef]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - CreateAccountStatuses, passing the object as the first parameter, and the string 'CreateAccountStatuses' as the second parameter 
+
+If not, it will return a a L<Paws::Organizations::ListCreateAccountStatusResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllHandshakesForAccount(sub { },[Filter => L<Paws::Organizations::HandshakeFilter>, MaxResults => Int, NextToken => Str])
+
+=head2 ListAllHandshakesForAccount([Filter => L<Paws::Organizations::HandshakeFilter>, MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Handshakes, passing the object as the first parameter, and the string 'Handshakes' as the second parameter 
+
+If not, it will return a a L<Paws::Organizations::ListHandshakesForAccountResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllHandshakesForOrganization(sub { },[Filter => L<Paws::Organizations::HandshakeFilter>, MaxResults => Int, NextToken => Str])
+
+=head2 ListAllHandshakesForOrganization([Filter => L<Paws::Organizations::HandshakeFilter>, MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Handshakes, passing the object as the first parameter, and the string 'Handshakes' as the second parameter 
+
+If not, it will return a a L<Paws::Organizations::ListHandshakesForOrganizationResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllOrganizationalUnitsForParent(sub { },ParentId => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllOrganizationalUnitsForParent(ParentId => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - OrganizationalUnits, passing the object as the first parameter, and the string 'OrganizationalUnits' as the second parameter 
+
+If not, it will return a a L<Paws::Organizations::ListOrganizationalUnitsForParentResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllParents(sub { },ChildId => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllParents(ChildId => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Parents, passing the object as the first parameter, and the string 'Parents' as the second parameter 
+
+If not, it will return a a L<Paws::Organizations::ListParentsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllPolicies(sub { },Filter => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllPolicies(Filter => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Policies, passing the object as the first parameter, and the string 'Policies' as the second parameter 
+
+If not, it will return a a L<Paws::Organizations::ListPoliciesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllPoliciesForTarget(sub { },Filter => Str, TargetId => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllPoliciesForTarget(Filter => Str, TargetId => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Policies, passing the object as the first parameter, and the string 'Policies' as the second parameter 
+
+If not, it will return a a L<Paws::Organizations::ListPoliciesForTargetResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllRoots(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 ListAllRoots([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Roots, passing the object as the first parameter, and the string 'Roots' as the second parameter 
+
+If not, it will return a a L<Paws::Organizations::ListRootsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllTargetsForPolicy(sub { },PolicyId => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllTargetsForPolicy(PolicyId => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Targets, passing the object as the first parameter, and the string 'Targets' as the second parameter 
+
+If not, it will return a a L<Paws::Organizations::ListTargetsForPolicyResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 

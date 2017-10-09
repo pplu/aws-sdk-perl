@@ -47,6 +47,9 @@ return a list of gateways for your account and region.
 
 The barcode that you want to assign to the tape.
 
+Barcodes cannot be reused. This includes barcodes used for tapes that
+have been deleted.
+
 
 
 =head2 B<REQUIRED> TapeSizeInBytes => Int

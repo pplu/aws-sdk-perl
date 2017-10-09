@@ -1,6 +1,8 @@
 package Paws::SSM::Association;
   use Moose;
   has AssociationId => (is => 'ro', isa => 'Str');
+  has AssociationName => (is => 'ro', isa => 'Str');
+  has AssociationVersion => (is => 'ro', isa => 'Str');
   has DocumentVersion => (is => 'ro', isa => 'Str');
   has InstanceId => (is => 'ro', isa => 'Str');
   has LastExecutionDate => (is => 'ro', isa => 'Str');
@@ -50,6 +52,16 @@ association is a binding between a document and a set of targets with a
 schedule.
 
 
+=head2 AssociationName => Str
+
+  The association name.
+
+
+=head2 AssociationVersion => Str
+
+  The association version.
+
+
 =head2 DocumentVersion => Str
 
   The version of the document used in the association.
@@ -67,7 +79,7 @@ schedule.
 
 =head2 Name => Str
 
-  The name of the SSM document.
+  The name of the Systems Manager document.
 
 
 =head2 Overview => L<Paws::SSM::AssociationOverview>

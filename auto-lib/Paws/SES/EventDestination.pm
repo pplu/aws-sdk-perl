@@ -5,6 +5,7 @@ package Paws::SES::EventDestination;
   has KinesisFirehoseDestination => (is => 'ro', isa => 'Paws::SES::KinesisFirehoseDestination');
   has MatchingEventTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
   has Name => (is => 'ro', isa => 'Str', required => 1);
+  has SNSDestination => (is => 'ro', isa => 'Paws::SES::SNSDestination');
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +25,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SES::EventDestination object:
 
-  $service_obj->Method(Att1 => { CloudWatchDestination => $value, ..., Name => $value  });
+  $service_obj->Method(Att1 => { CloudWatchDestination => $value, ..., SNSDestination => $value  });
 
 =head3 Results returned from an API call
 
@@ -35,17 +36,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SES::EventD
 
 =head1 DESCRIPTION
 
-Contains information about the event destination to which the specified
-email sending events are published.
+Contains information about the event destination that the specified
+email sending events will be published to.
 
 When you create or update an event destination, you must provide one,
-and only one, destination. The destination can be either Amazon
-CloudWatch or Amazon Kinesis Firehose.
+and only one, destination. The destination can be Amazon CloudWatch,
+Amazon Kinesis Firehose or Amazon Simple Notification Service (Amazon
+SNS).
 
 Event destinations are associated with configuration sets, which enable
-you to publish email sending events to Amazon CloudWatch or Amazon
-Kinesis Firehose. For information about using configuration sets, see
-the Amazon SES Developer Guide.
+you to publish email sending events to Amazon CloudWatch, Amazon
+Kinesis Firehose, or Amazon Simple Notification Service (Amazon SNS).
+For information about using configuration sets, see the Amazon SES
+Developer Guide.
 
 =head1 ATTRIBUTES
 
@@ -92,6 +95,12 @@ Contain less than 64 characters.
 
 =back
 
+
+
+=head2 SNSDestination => L<Paws::SES::SNSDestination>
+
+  An object that contains the topic ARN associated with an Amazon Simple
+Notification Service (Amazon SNS) event destination.
 
 
 

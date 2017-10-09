@@ -34,7 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AppStream::
 
 =head1 DESCRIPTION
 
-The capacity information for the fleet.
+Describes the capacity status for a fleet.
 
 =head1 ATTRIBUTES
 
@@ -52,7 +52,7 @@ sessions.
 
 =head2 InUse => Int
 
-  The number of instances that are being used for streaming.
+  The number of instances in use for streaming.
 
 
 =head2 Running => Int

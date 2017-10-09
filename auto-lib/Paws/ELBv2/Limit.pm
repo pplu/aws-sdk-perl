@@ -59,6 +59,14 @@ listeners-per-application-load-balancer
 
 =item *
 
+listeners-per-network-load-balancer
+
+=item *
+
+network-load-balancers
+
+=item *
+
 rules-per-application-load-balancer
 
 =item *

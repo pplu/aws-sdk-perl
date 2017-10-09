@@ -75,9 +75,9 @@ URL.
 
 Constraint: Must be from 4 to 40 characters in length. The name can
 contain only letters, numbers, and hyphens. It cannot start or end with
-a hyphen. This name must be unique in your account. If the specified
-name already exists, AWS Elastic Beanstalk returns an
-C<InvalidParameterValue> error.
+a hyphen. This name must be unique within a region in your account. If
+the specified name already exists in the region, AWS Elastic Beanstalk
+returns an C<InvalidParameterValue> error.
 
 Default: If the CNAME parameter is not specified, the environment name
 becomes part of the CNAME, and therefore part of the visible URL for
@@ -112,7 +112,7 @@ configuration set for this new environment.
 
 =head2 PlatformArn => Str
 
-The ARN of the custom platform.
+The ARN of the platform.
 
 
 

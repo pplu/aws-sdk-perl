@@ -1,6 +1,7 @@
 
 package Paws::EC2::AssociateVpcCidrBlockResult;
   use Moose;
+  has CidrBlockAssociation => (is => 'ro', isa => 'Paws::EC2::VpcCidrBlockAssociation', request_name => 'cidrBlockAssociation', traits => ['NameInRequest',]);
   has Ipv6CidrBlockAssociation => (is => 'ro', isa => 'Paws::EC2::VpcIpv6CidrBlockAssociation', request_name => 'ipv6CidrBlockAssociation', traits => ['NameInRequest',]);
   has VpcId => (is => 'ro', isa => 'Str', request_name => 'vpcId', traits => ['NameInRequest',]);
 
@@ -14,6 +15,11 @@ package Paws::EC2::AssociateVpcCidrBlockResult;
 Paws::EC2::AssociateVpcCidrBlockResult
 
 =head1 ATTRIBUTES
+
+
+=head2 CidrBlockAssociation => L<Paws::EC2::VpcCidrBlockAssociation>
+
+Information about the IPv4 CIDR block association.
 
 
 =head2 Ipv6CidrBlockAssociation => L<Paws::EC2::VpcIpv6CidrBlockAssociation>

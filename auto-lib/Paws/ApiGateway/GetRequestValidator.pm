@@ -44,8 +44,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> RestApiId => Str
 
-[Required] The identifier of the RestApi to which the specified
-RequestValidator belongs.
+The string identifier of the associated RestApi.
 
 
 

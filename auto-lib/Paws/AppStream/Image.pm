@@ -43,50 +43,49 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AppStream::
 
 =head1 DESCRIPTION
 
-New streaming instances are booted from images. The image stores the
-application catalog and is connected to fleets.
+Describes an image.
 
 =head1 ATTRIBUTES
 
 
 =head2 Applications => ArrayRef[L<Paws::AppStream::Application>]
 
-  The applications associated with an image.
+  The applications associated with the image.
 
 
 =head2 Arn => Str
 
-  The ARN for the image.
+  The ARN of the image.
 
 
 =head2 BaseImageArn => Str
 
-  The source image ARN from which this image was created.
+  The ARN of the image from which this image was created.
 
 
 =head2 CreatedTime => Str
 
-  The timestamp when the image was created.
+  The time the image was created.
 
 
 =head2 Description => Str
 
-  A meaningful description for the image.
+  The description displayed to end users.
 
 
 =head2 DisplayName => Str
 
-  The display name for the image.
+  The image name displayed to end users.
 
 
 =head2 ImageBuilderSupported => Bool
 
-  Whether an image builder can be launched from this image.
+  Indicates whether an image builder can be launched from this image.
 
 
 =head2 B<REQUIRED> Name => Str
 
-  The unique identifier for the image.
+  The name of the image.
 
 
 =head2 Platform => Str
@@ -96,16 +95,16 @@ application catalog and is connected to fleets.
 
 =head2 PublicBaseImageReleasedDate => Str
 
-  The AWS release date of the public base image. For private images, this
+  The release date of the public base image. For private images, this
 date is the release date of the base image from which the image was
 created.
 
 
 =head2 State => Str
 
-  The image starts in the B<PENDING> state, and then moves to
-B<AVAILABLE> if image creation succeeds and B<FAILED> if image creation
-has failed.
+  The image starts in the C<PENDING> state. If image creation succeeds,
+the state is C<AVAILABLE>. If image creation fails, the state is
+C<FAILED>.
 
 
 =head2 StateChangeReason => L<Paws::AppStream::ImageStateChangeReason>
@@ -115,8 +114,7 @@ has failed.
 
 =head2 Visibility => Str
 
-  The visibility of an image to the user; images can be public or
-private.
+  Indicates whether the image is public or private.
 
 
 

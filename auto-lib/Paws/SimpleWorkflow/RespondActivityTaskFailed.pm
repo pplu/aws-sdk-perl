@@ -37,7 +37,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Details => Str
 
-I<Optional.> Detailed information about the failure.
+Detailed information about the failure.
 
 
 

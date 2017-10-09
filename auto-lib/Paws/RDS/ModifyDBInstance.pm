@@ -17,6 +17,7 @@ package Paws::RDS::ModifyDBInstance;
   has Domain => (is => 'ro', isa => 'Str');
   has DomainIAMRoleName => (is => 'ro', isa => 'Str');
   has EnableIAMDatabaseAuthentication => (is => 'ro', isa => 'Bool');
+  has EnablePerformanceInsights => (is => 'ro', isa => 'Bool');
   has EngineVersion => (is => 'ro', isa => 'Str');
   has Iops => (is => 'ro', isa => 'Int');
   has LicenseModel => (is => 'ro', isa => 'Str');
@@ -26,6 +27,7 @@ package Paws::RDS::ModifyDBInstance;
   has MultiAZ => (is => 'ro', isa => 'Bool');
   has NewDBInstanceIdentifier => (is => 'ro', isa => 'Str');
   has OptionGroupName => (is => 'ro', isa => 'Str');
+  has PerformanceInsightsKMSKeyId => (is => 'ro', isa => 'Str');
   has PreferredBackupWindow => (is => 'ro', isa => 'Str');
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
   has PromotionTier => (is => 'ro', isa => 'Int');
@@ -199,6 +201,11 @@ applied during the next maintenance window unless the
 C<ApplyImmediately> parameter is set to C<true> for this request. If
 you change the parameter from one non-zero value to another non-zero
 value, the change is asynchronously applied as soon as possible.
+
+B<Amazon Aurora>
+
+Not applicable. The retention period for automated backups is managed
+by the DB cluster. For more information, see ModifyDBCluster.
 
 Default: Uses existing setting
 
@@ -431,6 +438,13 @@ accounts to database accounts; otherwise false.
 You can enable IAM database authentication for the following database
 engines
 
+B<Amazon Aurora>
+
+Not applicable. Mapping AWS IAM accounts to database accounts is
+managed by the DB cluster. For more information, see ModifyDBCluster.
+
+B<MySQL>
+
 =over
 
 =item *
@@ -447,6 +461,12 @@ Default: C<false>
 
 
 
+=head2 EnablePerformanceInsights => Bool
+
+
+
+
+
 =head2 EngineVersion => Str
 
 The version number of the database engine to upgrade to. Changing this
@@ -454,7 +474,7 @@ parameter results in an outage and the change is applied during the
 next maintenance window unless the C<ApplyImmediately> parameter is set
 to C<true> for this request.
 
-For major version upgrades, if a non-default DB parameter group is
+For major version upgrades, if a nondefault DB parameter group is
 currently in use, a new DB parameter group in the DB parameter group
 family for the new engine version must be specified. The new DB
 parameter group can be the default for that DB parameter group family.
@@ -514,14 +534,19 @@ C<general-public-license>
 
 =head2 MasterUserPassword => Str
 
-The new password for the DB instance master user. Can be any printable
-ASCII character except "/", """, or "@".
+The new password for the master user. Can be any printable ASCII
+character except "/", """, or "@".
 
 Changing this parameter does not result in an outage and the change is
 asynchronously applied as soon as possible. Between the time of the
 request and the completion of the request, the C<MasterUserPassword>
 element exists in the C<PendingModifiedValues> element of the operation
 response.
+
+B<Amazon Aurora>
+
+Not applicable. The password for the master user is managed by the DB
+cluster. For more information, see ModifyDBCluster.
 
 Default: Uses existing setting
 
@@ -620,6 +645,12 @@ instance
 
 
 
+=head2 PerformanceInsightsKMSKeyId => Str
+
+
+
+
+
 =head2 PreferredBackupWindow => Str
 
 The daily time range during which automated backups are created if
@@ -627,6 +658,11 @@ automated backups are enabled, as determined by the
 C<BackupRetentionPeriod> parameter. Changing this parameter does not
 result in an outage and the change is asynchronously applied as soon as
 possible.
+
+B<Amazon Aurora>
+
+Not applicable. The daily time range for creating automated backups is
+managed by the DB cluster. For more information, see ModifyDBCluster.
 
 Constraints:
 
@@ -739,6 +775,11 @@ the device.
 
 A list of EC2 VPC security groups to authorize on this DB instance.
 This change is asynchronously applied as soon as possible.
+
+B<Amazon Aurora>
+
+Not applicable. The associated list of EC2 VPC security groups is
+managed by the DB cluster. For more information, see ModifyDBCluster.
 
 Constraints:
 

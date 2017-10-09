@@ -56,7 +56,7 @@ IDs.
 
 Token that indicates the start of the next sequential page of results.
 Use the token that is returned with a previous call to this action. To
-specify the start of the result set, do not specify a value. This
+start at the beginning of the result set, do not specify a value. This
 parameter is ignored when the request specifies one or a list of fleet
 IDs.
 

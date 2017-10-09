@@ -60,7 +60,7 @@ The Resource identifier for the MethodResponse resource.
 
 =head2 B<REQUIRED> RestApiId => Str
 
-The RestApi identifier for the MethodResponse resource.
+The string identifier of the associated RestApi.
 
 
 

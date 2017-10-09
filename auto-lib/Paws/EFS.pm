@@ -178,7 +178,7 @@ need, when they need it. For more information, see the User Guide.
 
 =head1 METHODS
 
-=head2 CreateFileSystem(CreationToken => Str, [PerformanceMode => Str])
+=head2 CreateFileSystem(CreationToken => Str, [Encrypted => Bool, KmsKeyId => Str, PerformanceMode => Str])
 
 Each argument is described in detail in: L<Paws::EFS::CreateFileSystem>
 

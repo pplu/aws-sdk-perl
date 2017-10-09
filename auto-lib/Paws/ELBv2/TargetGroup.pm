@@ -12,6 +12,7 @@ package Paws::ELBv2::TargetGroup;
   has Protocol => (is => 'ro', isa => 'Str');
   has TargetGroupArn => (is => 'ro', isa => 'Str');
   has TargetGroupName => (is => 'ro', isa => 'Str');
+  has TargetType => (is => 'ro', isa => 'Str');
   has UnhealthyThresholdCount => (is => 'ro', isa => 'Int');
   has VpcId => (is => 'ro', isa => 'Str');
 1;
@@ -112,6 +113,14 @@ target.
 =head2 TargetGroupName => Str
 
   The name of the target group.
+
+
+=head2 TargetType => Str
+
+  The type of target that you must specify when registering targets with
+this target group. The possible values are C<instance> (targets are
+specified by instance ID) or C<ip> (targets are specified by IP
+address).
 
 
 =head2 UnhealthyThresholdCount => Int

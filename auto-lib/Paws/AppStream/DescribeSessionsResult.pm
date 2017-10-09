@@ -23,7 +23,7 @@ this operation. If there are no more pages, this value is null.
 
 =head2 Sessions => ArrayRef[L<Paws::AppStream::Session>]
 
-The list of streaming sessions.
+Information about the streaming sessions.
 
 
 =head2 _request_id => Str

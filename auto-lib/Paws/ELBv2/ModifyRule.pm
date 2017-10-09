@@ -37,7 +37,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Actions => ArrayRef[L<Paws::ELBv2::Action>]
 
-The actions.
+The actions. The target group must use the HTTP or HTTPS protocol.
 
 
 

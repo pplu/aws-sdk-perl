@@ -2,6 +2,8 @@
 package Paws::SSM::RegisterTargetWithMaintenanceWindow;
   use Moose;
   has ClientToken => (is => 'ro', isa => 'Str');
+  has Description => (is => 'ro', isa => 'Str');
+  has Name => (is => 'ro', isa => 'Str');
   has OwnerInformation => (is => 'ro', isa => 'Str');
   has ResourceType => (is => 'ro', isa => 'Str', required => 1);
   has Targets => (is => 'ro', isa => 'ArrayRef[Paws::SSM::Target]', required => 1);
@@ -40,6 +42,18 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 ClientToken => Str
 
 User-provided idempotency token.
+
+
+
+=head2 Description => Str
+
+An optional description for the target.
+
+
+
+=head2 Name => Str
+
+An optional name for the target.
 
 
 

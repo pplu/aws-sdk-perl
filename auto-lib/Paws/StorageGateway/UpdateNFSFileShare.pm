@@ -85,7 +85,7 @@ The default values for the file share. Optional.
 =head2 ReadOnly => Bool
 
 Sets the write status of a file share: "true" if the write status is
-read-only, and otherwise "false".
+read-only, otherwise "false".
 
 
 

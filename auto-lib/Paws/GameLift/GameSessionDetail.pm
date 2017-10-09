@@ -51,13 +51,13 @@ force.
 
 =item *
 
-B<NoProtection> E<ndash> The game session can be terminated during a
+B<NoProtection> -- The game session can be terminated during a
 scale-down event.
 
 =item *
 
-B<FullProtection> E<ndash> If the game session is in an C<ACTIVE>
-status, it cannot be terminated during a scale-down event.
+B<FullProtection> -- If the game session is in an C<ACTIVE> status, it
+cannot be terminated during a scale-down event.
 
 =back
 

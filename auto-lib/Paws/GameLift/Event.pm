@@ -48,142 +48,157 @@ debugging problems.
 
   Type of event being logged. The following events are currently in use:
 
-=over
-
-=item *
-
-General events:
+B<General events:>
 
 =over
 
 =item *
 
-B<GENERIC_EVENT> E<ndash> An unspecified event has occurred.
+GENERIC_EVENT -- An unspecified event has occurred.
 
 =back
 
-=item *
-
-Fleet creation events:
+B<Fleet creation events:>
 
 =over
 
 =item *
 
-B<FLEET_CREATED> E<ndash> A fleet record was successfully created with
-a status of NEW. Event messaging includes the fleet ID.
+FLEET_CREATED -- A fleet record was successfully created with a status
+of C<NEW>. Event messaging includes the fleet ID.
 
 =item *
 
-B<FLEET_STATE_DOWNLOADING> E<ndash> Fleet status changed from NEW to
-DOWNLOADING. The compressed build has started downloading to a fleet
+FLEET_STATE_DOWNLOADING -- Fleet status changed from C<NEW> to
+C<DOWNLOADING>. The compressed build has started downloading to a fleet
 instance for installation.
 
 =item *
 
-B<FLEET_BINARY_DOWNLOAD_FAILED> E<ndash> The build failed to download
-to the fleet instance.
+FLEET_BINARY_DOWNLOAD_FAILED -- The build failed to download to the
+fleet instance.
 
 =item *
 
-B<FLEET_CREATION_EXTRACTING_BUILD> E<ndash> The game server build was
+FLEET_CREATION_EXTRACTING_BUILD E<ndash> The game server build was
 successfully downloaded to an instance, and the build files are now
 being extracted from the uploaded build and saved to an instance.
-Failure at this stage prevents a fleet from moving to ACTIVE status.
+Failure at this stage prevents a fleet from moving to C<ACTIVE> status.
 Logs for this stage display a list of the files that are extracted and
 saved on the instance. Access the logs by using the URL in
-I<PreSignedLogUrl>).
+I<PreSignedLogUrl>.
 
 =item *
 
-B<FLEET_CREATION_RUNNING_INSTALLER> E<ndash> The game server build
-files were successfully extracted, and the Amazon GameLift is now
-running the build's install script (if one is included). Failure in
-this stage prevents a fleet from moving to ACTIVE status. Logs for this
-stage list the installation steps and whether or not the install
-completed sucessfully. Access the logs by using the URL in
-I<PreSignedLogUrl>).
+FLEET_CREATION_RUNNING_INSTALLER E<ndash> The game server build files
+were successfully extracted, and the Amazon GameLift is now running the
+build's install script (if one is included). Failure in this stage
+prevents a fleet from moving to C<ACTIVE> status. Logs for this stage
+list the installation steps and whether or not the install completed
+successfully. Access the logs by using the URL in I<PreSignedLogUrl>.
 
 =item *
 
-B<FLEET_CREATION_VALIDATING_RUNTIME_CONFIG> E<ndash> The build process
-was successful, and the Amazon GameLift is now verifying that the game
-server launch path(s), which are specified in the fleet's run-time
+FLEET_CREATION_VALIDATING_RUNTIME_CONFIG -- The build process was
+successful, and the Amazon GameLift is now verifying that the game
+server launch paths, which are specified in the fleet's run-time
 configuration, exist. If any listed launch path exists, Amazon GameLift
 tries to launch a game server process and waits for the process to
 report ready. Failures in this stage prevent a fleet from moving to
-ACTIVE status. Logs for this stage list the launch paths in the
+C<ACTIVE> status. Logs for this stage list the launch paths in the
 run-time configuration and indicate whether each is found. Access the
-logs by using the URL in I<PreSignedLogUrl>). Once the game server is
-launched, failures and crashes are logged; these logs can be downloaded
-from the Amazon GameLift console.
+logs by using the URL in I<PreSignedLogUrl>.
 
 =item *
 
-B<FLEET_STATE_VALIDATING> E<ndash> Fleet status changed from
-DOWNLOADING to VALIDATING.
+FLEET_STATE_VALIDATING -- Fleet status changed from C<DOWNLOADING> to
+C<VALIDATING>.
 
 =item *
 
-B<FLEET_VALIDATION_LAUNCH_PATH_NOT_FOUND> E<ndash> Validation of the
-run-time validation failed because the executable specified in a launch
-path does not exist on the instance.
+FLEET_VALIDATION_LAUNCH_PATH_NOT_FOUND -- Validation of the run-time
+configuration failed because the executable specified in a launch path
+does not exist on the instance.
 
 =item *
 
-B<FLEET_STATE_BUILDING> E<ndash> Fleet status changed from VALIDATING
-to BUILDING.
+FLEET_STATE_BUILDING -- Fleet status changed from C<VALIDATING> to
+C<BUILDING>.
 
 =item *
 
-B<FLEET_VALIDATION_EXECUTABLE_RUNTIME_FAILURE> E<ndash> Validation of
-the runtime validation failed because the executable specified in a
+FLEET_VALIDATION_EXECUTABLE_RUNTIME_FAILURE -- Validation of the
+run-time configuration failed because the executable specified in a
 launch path failed to run on the fleet instance.
 
 =item *
 
-B<FLEET_STATE_ACTIVATING> E<ndash> Fleet status changed from BUILDING
-to ACTIVATING.
+FLEET_STATE_ACTIVATING -- Fleet status changed from C<BUILDING> to
+C<ACTIVATING>.
 
 =item *
 
-B<FLEET_ACTIVATION_FAILED> - The fleet failed to successfully complete
-one of the steps in the fleet activation process. This event code
-indicates that the game build was successfully downloaded to a fleet
-instance, built, and validated, but was not able to start a server
-process. A possible reason for failure is that the game server is not
-reporting "process ready" to the Amazon GameLift service.
+FLEET_ACTIVATION_FAILED - The fleet failed to successfully complete one
+of the steps in the fleet activation process. This event code indicates
+that the game build was successfully downloaded to a fleet instance,
+built, and validated, but was not able to start a server process. A
+possible reason for failure is that the game server is not reporting
+"process ready" to the Amazon GameLift service.
 
 =item *
 
-B<FLEET_STATE_ACTIVE> E<ndash> The fleet's status changed from
-ACTIVATING to ACTIVE. The fleet is now ready to host game sessions.
+FLEET_STATE_ACTIVE -- The fleet's status changed from C<ACTIVATING> to
+C<ACTIVE>. The fleet is now ready to host game sessions.
 
 =back
 
-=item *
-
-Other fleet events:
+B<VPC peering events:>
 
 =over
 
 =item *
 
-B<FLEET_SCALING_EVENT> E<ndash> A change was made to the fleet's
-capacity settings (desired instances, minimum/maximum scaling limits).
-Event messaging includes the new capacity settings.
+FLEET_VPC_PEERING_SUCCEEDED -- A VPC peering connection has been
+established between the VPC for an Amazon GameLift fleet and a VPC in
+your AWS account.
 
 =item *
 
-B<FLEET_NEW_GAME_SESSION_PROTECTION_POLICY_UPDATED> E<ndash> A change
-was made to the fleet's game session protection policy setting. Event
-messaging includes both the old and new policy setting.
+FLEET_VPC_PEERING_FAILED -- A requested VPC peering connection has
+failed. Event details and status information (see
+DescribeVpcPeeringConnections) provide additional detail. A common
+reason for peering failure is that the two VPCs have overlapping CIDR
+blocks of IPv4 addresses. To resolve this, change the CIDR block for
+the VPC in your AWS account. For more information on VPC peering
+failures, see
+http://docs.aws.amazon.com/AmazonVPC/latest/PeeringGuide/invalid-peering-configurations.html
 
 =item *
 
-B<FLEET_DELETED> E<ndash> A request to delete a fleet was initiated.
+FLEET_VPC_PEERING_DELETED -- A VPC peering connection has been
+successfully deleted.
 
 =back
+
+B<Other fleet events:>
+
+=over
+
+=item *
+
+FLEET_SCALING_EVENT -- A change was made to the fleet's capacity
+settings (desired instances, minimum/maximum scaling limits). Event
+messaging includes the new capacity settings.
+
+=item *
+
+FLEET_NEW_GAME_SESSION_PROTECTION_POLICY_UPDATED -- A change was made
+to the fleet's game session protection policy setting. Event messaging
+includes both the old and new policy setting.
+
+=item *
+
+FLEET_DELETED -- A request to delete a fleet was initiated.
 
 =back
 
@@ -207,9 +222,10 @@ expressed in Unix time as milliseconds (for example "1469498468.057").
 
 =head2 PreSignedLogUrl => Str
 
-  Location of stored logs with additional detail related to the event,
-useful for debugging issues. The URL is valid for 15 minutes. Fleet
-creation logs can also be accessed through the Amazon GameLift console.
+  Location of stored logs with additional detail that is related to the
+event. This is useful for debugging issues. The URL is valid for 15
+minutes. You can also access fleet creation logs through the Amazon
+GameLift console.
 
 
 =head2 ResourceId => Str

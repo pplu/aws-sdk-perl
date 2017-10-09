@@ -5,6 +5,7 @@ package Paws::EC2::SpotFleetRequestConfigData;
   has ExcessCapacityTerminationPolicy => (is => 'ro', isa => 'Str', request_name => 'excessCapacityTerminationPolicy', traits => ['NameInRequest']);
   has FulfilledCapacity => (is => 'ro', isa => 'Num', request_name => 'fulfilledCapacity', traits => ['NameInRequest']);
   has IamFleetRole => (is => 'ro', isa => 'Str', request_name => 'iamFleetRole', traits => ['NameInRequest'], required => 1);
+  has InstanceInterruptionBehavior => (is => 'ro', isa => 'Str', request_name => 'instanceInterruptionBehavior', traits => ['NameInRequest']);
   has LaunchSpecifications => (is => 'ro', isa => 'ArrayRef[Paws::EC2::SpotFleetLaunchSpecification]', request_name => 'launchSpecifications', traits => ['NameInRequest'], required => 1);
   has ReplaceUnhealthyInstances => (is => 'ro', isa => 'Bool', request_name => 'replaceUnhealthyInstances', traits => ['NameInRequest']);
   has SpotPrice => (is => 'ro', isa => 'Str', request_name => 'spotPrice', traits => ['NameInRequest'], required => 1);
@@ -80,6 +81,12 @@ target capacity.
 behalf when you cancel its Spot fleet request using
 CancelSpotFleetRequests or when the Spot fleet request expires, if you
 set C<terminateInstancesWithExpiration>.
+
+
+=head2 InstanceInterruptionBehavior => Str
+
+  Indicates whether a Spot instance stops or terminates when it is
+interrupted.
 
 
 =head2 B<REQUIRED> LaunchSpecifications => ArrayRef[L<Paws::EC2::SpotFleetLaunchSpecification>]

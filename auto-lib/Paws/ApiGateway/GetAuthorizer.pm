@@ -44,7 +44,7 @@ The identifier of the Authorizer resource.
 
 =head2 B<REQUIRED> RestApiId => Str
 
-The RestApi identifier for the Authorizer resource.
+The string identifier of the associated RestApi.
 
 
 

@@ -44,7 +44,7 @@ The identifier of the Resource resource.
 
 =head2 B<REQUIRED> RestApiId => Str
 
-The RestApi identifier for the Resource resource.
+The string identifier of the associated RestApi.
 
 
 

@@ -2,12 +2,16 @@ package Paws::DeviceFarm::RemoteAccessSession;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
   has BillingMethod => (is => 'ro', isa => 'Str', request_name => 'billingMethod', traits => ['NameInRequest']);
+  has ClientId => (is => 'ro', isa => 'Str', request_name => 'clientId', traits => ['NameInRequest']);
   has Created => (is => 'ro', isa => 'Str', request_name => 'created', traits => ['NameInRequest']);
   has Device => (is => 'ro', isa => 'Paws::DeviceFarm::Device', request_name => 'device', traits => ['NameInRequest']);
   has DeviceMinutes => (is => 'ro', isa => 'Paws::DeviceFarm::DeviceMinutes', request_name => 'deviceMinutes', traits => ['NameInRequest']);
+  has DeviceUdid => (is => 'ro', isa => 'Str', request_name => 'deviceUdid', traits => ['NameInRequest']);
   has Endpoint => (is => 'ro', isa => 'Str', request_name => 'endpoint', traits => ['NameInRequest']);
+  has HostAddress => (is => 'ro', isa => 'Str', request_name => 'hostAddress', traits => ['NameInRequest']);
   has Message => (is => 'ro', isa => 'Str', request_name => 'message', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
+  has RemoteDebugEnabled => (is => 'ro', isa => 'Bool', request_name => 'remoteDebugEnabled', traits => ['NameInRequest']);
   has Result => (is => 'ro', isa => 'Str', request_name => 'result', traits => ['NameInRequest']);
   has Started => (is => 'ro', isa => 'Str', request_name => 'started', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
@@ -59,6 +63,12 @@ include C<METERED> or C<UNMETERED>. For more information about metered
 devices, see AWS Device Farm terminology."
 
 
+=head2 ClientId => Str
+
+  Unique identifier of your client for the remote access session. Only
+returned if remote debugging is enabled for the remote access session.
+
+
 =head2 Created => Str
 
   The date and time the remote access session was created.
@@ -75,9 +85,22 @@ devices, see AWS Device Farm terminology."
 (including setup and teardown minutes).
 
 
+=head2 DeviceUdid => Str
+
+  Unique device identifier for the remote device. Only returned if remote
+debugging is enabled for the remote access session.
+
+
 =head2 Endpoint => Str
 
   The endpoint for the remote access sesssion.
+
+
+=head2 HostAddress => Str
+
+  IP address of the EC2 host where you need to connect to remotely debug
+devices. Only returned if remote debugging is enabled for the remote
+access session.
 
 
 =head2 Message => Str
@@ -88,6 +111,12 @@ devices, see AWS Device Farm terminology."
 =head2 Name => Str
 
   The name of the remote access session.
+
+
+=head2 RemoteDebugEnabled => Bool
+
+  This flag is set to C<true> if remote debugging is enabled for the
+remote access session.
 
 
 =head2 Result => Str

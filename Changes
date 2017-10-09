@@ -1,3 +1,60 @@
+0.35 09 Oct 2017
+ - Fix Bug: Correctly throw Paws::Exceptions even if there is no information
+            in the body / headers (#190 svn-schubert) (#198 ilmari)
+ - Work on S3 (sven-schubert)
+   - No need to specify ContentMD5 parameter anymore (it gets autocalculated)
+   - Added support for responses with properties returned in their payload
+ - New API: MobileHub
+ - New API: MigrationHub
+ - New API: Glue
+ - New API: CloudHSMv2
+ - API update: Lambda
+ - API update: Discovery
+ - API update: EC2
+ - API update: ApiGateway
+ - API update: Autoscaling
+ - API update: CognitoIdp
+ - API update: AppStream
+ - API update: EMR
+ - API update: CloudFormation
+ - API update: CloudDirectory 
+ - API update: Pinpoint
+ - API update: CodeDeploy
+ - API update: CodeStar
+ - API update: Config
+ - API update: Inspector
+ - API update: SES
+ - API update: SSM
+ - API update: ElasticBeanstalk
+ - API update: CloudDirectory
+ - API update: GameLift
+ - API update: Firehose
+ - API update: StorageGateway
+ - API update: Batch
+ - API update: EFS
+ - API update: RDS
+ - API update: ELBv2
+ - API update: LexModels
+ - API update: CodeBuild
+ - API update: ApplicationAutoScaling
+ - API update: Budget
+ - API update: Route53
+ - API update: DeviceFarm
+ - API update: CloudWatchLogs
+ - API update: ServiceCatalog
+ - API update: SES
+ - API update: IAM
+ - API update: Greengrass
+ - API update: AppStream
+ - API update: CodePipeline
+ - API update: LexRuntime
+ - API update: Pinpoint
+ - API update: MTurk
+ - API update: Organizations
+ - API update: Route53Domains
+ - API update: KinesisAnalytics
+ - API update: RedShift
+
 0.34 07 Jul 2017
  - New Credential provider: Paws::Credential::ECSContainerProfile (gadgetjunkie)
  - Added ECSContainerProfile to the default credential provider chain so it

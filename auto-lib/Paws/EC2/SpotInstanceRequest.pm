@@ -6,6 +6,7 @@ package Paws::EC2::SpotInstanceRequest;
   has CreateTime => (is => 'ro', isa => 'Str', request_name => 'createTime', traits => ['NameInRequest']);
   has Fault => (is => 'ro', isa => 'Paws::EC2::SpotInstanceStateFault', request_name => 'fault', traits => ['NameInRequest']);
   has InstanceId => (is => 'ro', isa => 'Str', request_name => 'instanceId', traits => ['NameInRequest']);
+  has InstanceInterruptionBehavior => (is => 'ro', isa => 'Str', request_name => 'instanceInterruptionBehavior', traits => ['NameInRequest']);
   has LaunchedAvailabilityZone => (is => 'ro', isa => 'Str', request_name => 'launchedAvailabilityZone', traits => ['NameInRequest']);
   has LaunchGroup => (is => 'ro', isa => 'Str', request_name => 'launchGroup', traits => ['NameInRequest']);
   has LaunchSpecification => (is => 'ro', isa => 'Paws::EC2::LaunchSpecification', request_name => 'launchSpecification', traits => ['NameInRequest']);
@@ -87,6 +88,12 @@ format (for example, I<YYYY>-I<MM>-I<DD>TI<HH>:I<MM>:I<SS>Z).
 
   The instance ID, if an instance has been launched to fulfill the Spot
 instance request.
+
+
+=head2 InstanceInterruptionBehavior => Str
+
+  Indicates whether a Spot instance stops or terminates when it is
+interrupted.
 
 
 =head2 LaunchedAvailabilityZone => Str

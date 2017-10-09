@@ -7,6 +7,7 @@ package Paws::LexModels::GetSlotTypeResponse;
   has EnumerationValues => (is => 'ro', isa => 'ArrayRef[Paws::LexModels::EnumerationValue]', traits => ['NameInRequest'], request_name => 'enumerationValues');
   has LastUpdatedDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'lastUpdatedDate');
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name');
+  has ValueSelectionStrategy => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'valueSelectionStrategy');
   has Version => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'version');
 
   has _request_id => (is => 'ro', isa => 'Str');
@@ -53,6 +54,12 @@ the creation date and last update date are the same.
 The name of the slot type.
 
 
+=head2 ValueSelectionStrategy => Str
+
+The strategy that Amazon Lex uses to determine the value of the slot.
+For more information, see PutSlotType.
+
+Valid values are: C<"ORIGINAL_VALUE">, C<"TOP_RESOLUTION">
 =head2 Version => Str
 
 The version of the slot type.

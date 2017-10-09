@@ -116,7 +116,7 @@ assume for AWS permissions.
 container attempts to exceed the memory specified here, the container
 is killed. This parameter maps to C<Memory> in the Create a container
 section of the Docker Remote API and the C<--memory> option to docker
-run.
+run. You must specify at least 4 MiB of memory for a job.
 
 
 =head2 MountPoints => ArrayRef[L<Paws::Batch::MountPoint>]
@@ -161,7 +161,7 @@ the C<--user> option to docker run.
   The number of vCPUs reserved for the container. This parameter maps to
 C<CpuShares> in the Create a container section of the Docker Remote API
 and the C<--cpu-shares> option to docker run. Each vCPU is equivalent
-to 1,024 CPU shares.
+to 1,024 CPU shares. You must specify at least 1 vCPU.
 
 
 =head2 Volumes => ArrayRef[L<Paws::Batch::Volume>]

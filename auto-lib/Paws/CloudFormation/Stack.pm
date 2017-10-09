@@ -3,13 +3,18 @@ package Paws::CloudFormation::Stack;
   has Capabilities => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has ChangeSetId => (is => 'ro', isa => 'Str');
   has CreationTime => (is => 'ro', isa => 'Str', required => 1);
+  has DeletionTime => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has DisableRollback => (is => 'ro', isa => 'Bool');
+  has EnableTerminationProtection => (is => 'ro', isa => 'Bool');
   has LastUpdatedTime => (is => 'ro', isa => 'Str');
   has NotificationARNs => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Outputs => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::Output]');
   has Parameters => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::Parameter]');
+  has ParentId => (is => 'ro', isa => 'Str');
   has RoleARN => (is => 'ro', isa => 'Str');
+  has RollbackConfiguration => (is => 'ro', isa => 'Paws::CloudFormation::RollbackConfiguration');
+  has RootId => (is => 'ro', isa => 'Str');
   has StackId => (is => 'ro', isa => 'Str');
   has StackName => (is => 'ro', isa => 'Str', required => 1);
   has StackStatus => (is => 'ro', isa => 'Str', required => 1);
@@ -66,6 +71,11 @@ The Stack data type.
   The time at which the stack was created.
 
 
+=head2 DeletionTime => Str
+
+  The time the stack was deleted.
+
+
 =head2 Description => Str
 
   A user-defined description associated with the stack.
@@ -89,6 +99,16 @@ C<false>: enable rollback
 
 
 
+=head2 EnableTerminationProtection => Bool
+
+  Whether termination protection is enabled for the stack.
+
+For nested stacks, termination protection is set on the root stack and
+cannot be changed directly on the nested stack. For more information,
+see Protecting a Stack From Being Deleted in the I<AWS CloudFormation
+User Guide>.
+
+
 =head2 LastUpdatedTime => Str
 
   The time the stack was last updated. This field will only be returned
@@ -110,12 +130,39 @@ if the stack has been updated at least once.
   A list of C<Parameter> structures.
 
 
+=head2 ParentId => Str
+
+  For nested stacks--stacks created as resources for another stack--the
+stack ID of the direct parent of this stack. For the first level of
+nested stacks, the root stack is also the parent stack.
+
+For more information, see Working with Nested Stacks in the I<AWS
+CloudFormation User Guide>.
+
+
 =head2 RoleARN => Str
 
   The Amazon Resource Name (ARN) of an AWS Identity and Access Management
 (IAM) role that is associated with the stack. During a stack operation,
 AWS CloudFormation uses this role's credentials to make calls on your
 behalf.
+
+
+=head2 RollbackConfiguration => L<Paws::CloudFormation::RollbackConfiguration>
+
+  The rollback triggers for AWS CloudFormation to monitor during stack
+creation and updating operations, and for the specified monitoring
+period afterwards.
+
+
+=head2 RootId => Str
+
+  For nested stacks--stacks created as resources for another stack--the
+stack ID of the the top-level stack to which the nested stack
+ultimately belongs.
+
+For more information, see Working with Nested Stacks in the I<AWS
+CloudFormation User Guide>.
 
 
 =head2 StackId => Str

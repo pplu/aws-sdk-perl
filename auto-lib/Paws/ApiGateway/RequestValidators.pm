@@ -18,8 +18,7 @@ Paws::ApiGateway::RequestValidators
 
 =head2 Items => ArrayRef[L<Paws::ApiGateway::RequestValidator>]
 
-The current page of RequestValidator resources in the RequestValidators
-collection.
+The current page of elements from this collection.
 
 
 =head2 Position => Str

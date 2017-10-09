@@ -50,8 +50,8 @@ tokens.
 
 =item *
 
-C<USER_SRP_AUTH> will take in USERNAME and SRPA and return the SRP
-variables to be used for next challenge execution.
+C<USER_SRP_AUTH> will take in C<USERNAME> and C<SRP_A> and return the
+SRP variables to be used for next challenge execution.
 
 =back
 
@@ -90,7 +90,7 @@ value of C<AuthFlow>:
 
 =item *
 
-For C<USER_SRP_AUTH>: C<USERNAME> (required), C<SRPA> (required),
+For C<USER_SRP_AUTH>: C<USERNAME> (required), C<SRP_A> (required),
 C<SECRET_HASH> (required if the app client is configured with a client
 secret), C<DEVICE_KEY>
 

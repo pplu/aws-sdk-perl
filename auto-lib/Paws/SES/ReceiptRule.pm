@@ -40,8 +40,8 @@ Receipt rules enable you to specify which actions Amazon SES should
 take when it receives mail on behalf of one or more email addresses or
 domains that you own.
 
-Each receipt rule defines a set of email addresses or domains to which
-it applies. If the email addresses or domains match at least one
+Each receipt rule defines a set of email addresses or domains that it
+applies to. If the email addresses or domains match at least one
 recipient address of the message, Amazon SES executes all of the
 receipt rule's actions on the message.
 
@@ -88,15 +88,15 @@ Contain less than 64 characters.
 
 =head2 Recipients => ArrayRef[Str|Undef]
 
-  The recipient domains and email addresses to which the receipt rule
-applies. If this field is not specified, this rule will match all
-recipients under all verified domains.
+  The recipient domains and email addresses that the receipt rule applies
+to. If this field is not specified, this rule will match all recipients
+under all verified domains.
 
 
 =head2 ScanEnabled => Bool
 
-  If C<true>, then messages to which this receipt rule applies are
-scanned for spam and viruses. The default value is C<false>.
+  If C<true>, then messages that this receipt rule applies to are scanned
+for spam and viruses. The default value is C<false>.
 
 
 =head2 TlsPolicy => Str

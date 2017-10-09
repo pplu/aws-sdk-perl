@@ -123,6 +123,11 @@ package Paws::ApiGateway;
     my $call_object = $self->new_with_coercions('Paws::ApiGateway::DeleteDomainName', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteGatewayResponse {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ApiGateway::DeleteGatewayResponse', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteIntegration {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ApiGateway::DeleteIntegration', @_);
@@ -283,6 +288,16 @@ package Paws::ApiGateway;
     my $call_object = $self->new_with_coercions('Paws::ApiGateway::GetExport', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetGatewayResponse {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ApiGateway::GetGatewayResponse', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetGatewayResponses {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ApiGateway::GetGatewayResponses', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetIntegration {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ApiGateway::GetIntegration', @_);
@@ -413,6 +428,11 @@ package Paws::ApiGateway;
     my $call_object = $self->new_with_coercions('Paws::ApiGateway::ImportRestApi', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub PutGatewayResponse {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ApiGateway::PutGatewayResponse', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub PutIntegration {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ApiGateway::PutIntegration', @_);
@@ -491,6 +511,11 @@ package Paws::ApiGateway;
   sub UpdateDomainName {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ApiGateway::UpdateDomainName', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateGatewayResponse {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ApiGateway::UpdateGatewayResponse', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateIntegration {
@@ -804,7 +829,7 @@ package Paws::ApiGateway;
   }
 
 
-  sub operations { qw/CreateApiKey CreateAuthorizer CreateBasePathMapping CreateDeployment CreateDocumentationPart CreateDocumentationVersion CreateDomainName CreateModel CreateRequestValidator CreateResource CreateRestApi CreateStage CreateUsagePlan CreateUsagePlanKey DeleteApiKey DeleteAuthorizer DeleteBasePathMapping DeleteClientCertificate DeleteDeployment DeleteDocumentationPart DeleteDocumentationVersion DeleteDomainName DeleteIntegration DeleteIntegrationResponse DeleteMethod DeleteMethodResponse DeleteModel DeleteRequestValidator DeleteResource DeleteRestApi DeleteStage DeleteUsagePlan DeleteUsagePlanKey FlushStageAuthorizersCache FlushStageCache GenerateClientCertificate GetAccount GetApiKey GetApiKeys GetAuthorizer GetAuthorizers GetBasePathMapping GetBasePathMappings GetClientCertificate GetClientCertificates GetDeployment GetDeployments GetDocumentationPart GetDocumentationParts GetDocumentationVersion GetDocumentationVersions GetDomainName GetDomainNames GetExport GetIntegration GetIntegrationResponse GetMethod GetMethodResponse GetModel GetModels GetModelTemplate GetRequestValidator GetRequestValidators GetResource GetResources GetRestApi GetRestApis GetSdk GetSdkType GetSdkTypes GetStage GetStages GetUsage GetUsagePlan GetUsagePlanKey GetUsagePlanKeys GetUsagePlans ImportApiKeys ImportDocumentationParts ImportRestApi PutIntegration PutIntegrationResponse PutMethod PutMethodResponse PutRestApi TestInvokeAuthorizer TestInvokeMethod UpdateAccount UpdateApiKey UpdateAuthorizer UpdateBasePathMapping UpdateClientCertificate UpdateDeployment UpdateDocumentationPart UpdateDocumentationVersion UpdateDomainName UpdateIntegration UpdateIntegrationResponse UpdateMethod UpdateMethodResponse UpdateModel UpdateRequestValidator UpdateResource UpdateRestApi UpdateStage UpdateUsage UpdateUsagePlan / }
+  sub operations { qw/CreateApiKey CreateAuthorizer CreateBasePathMapping CreateDeployment CreateDocumentationPart CreateDocumentationVersion CreateDomainName CreateModel CreateRequestValidator CreateResource CreateRestApi CreateStage CreateUsagePlan CreateUsagePlanKey DeleteApiKey DeleteAuthorizer DeleteBasePathMapping DeleteClientCertificate DeleteDeployment DeleteDocumentationPart DeleteDocumentationVersion DeleteDomainName DeleteGatewayResponse DeleteIntegration DeleteIntegrationResponse DeleteMethod DeleteMethodResponse DeleteModel DeleteRequestValidator DeleteResource DeleteRestApi DeleteStage DeleteUsagePlan DeleteUsagePlanKey FlushStageAuthorizersCache FlushStageCache GenerateClientCertificate GetAccount GetApiKey GetApiKeys GetAuthorizer GetAuthorizers GetBasePathMapping GetBasePathMappings GetClientCertificate GetClientCertificates GetDeployment GetDeployments GetDocumentationPart GetDocumentationParts GetDocumentationVersion GetDocumentationVersions GetDomainName GetDomainNames GetExport GetGatewayResponse GetGatewayResponses GetIntegration GetIntegrationResponse GetMethod GetMethodResponse GetModel GetModels GetModelTemplate GetRequestValidator GetRequestValidators GetResource GetResources GetRestApi GetRestApis GetSdk GetSdkType GetSdkTypes GetStage GetStages GetUsage GetUsagePlan GetUsagePlanKey GetUsagePlanKeys GetUsagePlans ImportApiKeys ImportDocumentationParts ImportRestApi PutGatewayResponse PutIntegration PutIntegrationResponse PutMethod PutMethodResponse PutRestApi TestInvokeAuthorizer TestInvokeMethod UpdateAccount UpdateApiKey UpdateAuthorizer UpdateBasePathMapping UpdateClientCertificate UpdateDeployment UpdateDocumentationPart UpdateDocumentationVersion UpdateDomainName UpdateGatewayResponse UpdateIntegration UpdateIntegrationResponse UpdateMethod UpdateMethodResponse UpdateModel UpdateRequestValidator UpdateResource UpdateRestApi UpdateStage UpdateUsage UpdateUsagePlan / }
 
 1;
 
@@ -853,7 +878,7 @@ Returns: a L<Paws::ApiGateway::ApiKey> instance
 AWS CLI
 
 
-=head2 CreateAuthorizer(IdentitySource => Str, Name => Str, RestApiId => Str, Type => Str, [AuthorizerCredentials => Str, AuthorizerResultTtlInSeconds => Int, AuthorizerUri => Str, AuthType => Str, IdentityValidationExpression => Str, ProviderARNs => ArrayRef[Str|Undef]])
+=head2 CreateAuthorizer(Name => Str, RestApiId => Str, Type => Str, [AuthorizerCredentials => Str, AuthorizerResultTtlInSeconds => Int, AuthorizerUri => Str, AuthType => Str, IdentitySource => Str, IdentityValidationExpression => Str, ProviderARNs => ArrayRef[Str|Undef]])
 
 Each argument is described in detail in: L<Paws::ApiGateway::CreateAuthorizer>
 
@@ -1049,6 +1074,16 @@ Each argument is described in detail in: L<Paws::ApiGateway::DeleteDomainName>
 Returns: nothing
 
   Deletes the DomainName resource.
+
+
+=head2 DeleteGatewayResponse(ResponseType => Str, RestApiId => Str)
+
+Each argument is described in detail in: L<Paws::ApiGateway::DeleteGatewayResponse>
+
+Returns: nothing
+
+  Clears any customization of a GatewayResponse of a specified response
+type on the given RestApi and resets it with the default settings.
 
 
 =head2 DeleteIntegration(HttpMethod => Str, ResourceId => Str, RestApiId => Str)
@@ -1345,6 +1380,28 @@ Returns: a L<Paws::ApiGateway::ExportResponse> instance
   Exports a deployed version of a RestApi in a specified format.
 
 
+=head2 GetGatewayResponse(ResponseType => Str, RestApiId => Str)
+
+Each argument is described in detail in: L<Paws::ApiGateway::GetGatewayResponse>
+
+Returns: a L<Paws::ApiGateway::GatewayResponse> instance
+
+  Gets a GatewayResponse of a specified response type on the given
+RestApi.
+
+
+=head2 GetGatewayResponses(RestApiId => Str, [Limit => Int, Position => Str])
+
+Each argument is described in detail in: L<Paws::ApiGateway::GetGatewayResponses>
+
+Returns: a L<Paws::ApiGateway::GatewayResponses> instance
+
+  Gets the GatewayResponses collection on the given RestApi. If an API
+developer has not added any definitions for gateway responses, the
+result will be the Amazon API Gateway-generated default
+GatewayResponses collection for the supported response types.
+
+
 =head2 GetIntegration(HttpMethod => Str, ResourceId => Str, RestApiId => Str)
 
 Each argument is described in detail in: L<Paws::ApiGateway::GetIntegration>
@@ -1582,13 +1639,23 @@ Returns: a L<Paws::ApiGateway::RestApi> instance
 API from an external API definition file.
 
 
+=head2 PutGatewayResponse(ResponseType => Str, RestApiId => Str, [ResponseParameters => L<Paws::ApiGateway::MapOfStringToString>, ResponseTemplates => L<Paws::ApiGateway::MapOfStringToString>, StatusCode => Str])
+
+Each argument is described in detail in: L<Paws::ApiGateway::PutGatewayResponse>
+
+Returns: a L<Paws::ApiGateway::GatewayResponse> instance
+
+  Creates a customization of a GatewayResponse of a specified response
+type and status code on the given RestApi.
+
+
 =head2 PutIntegration(HttpMethod => Str, ResourceId => Str, RestApiId => Str, Type => Str, [CacheKeyParameters => ArrayRef[Str|Undef], CacheNamespace => Str, ContentHandling => Str, Credentials => Str, IntegrationHttpMethod => Str, PassthroughBehavior => Str, RequestParameters => L<Paws::ApiGateway::MapOfStringToString>, RequestTemplates => L<Paws::ApiGateway::MapOfStringToString>, Uri => Str])
 
 Each argument is described in detail in: L<Paws::ApiGateway::PutIntegration>
 
 Returns: a L<Paws::ApiGateway::Integration> instance
 
-  Represents a put integration.
+  Sets up a method's integration.
 
 
 =head2 PutIntegrationResponse(HttpMethod => Str, ResourceId => Str, RestApiId => Str, StatusCode => Str, [ContentHandling => Str, ResponseParameters => L<Paws::ApiGateway::MapOfStringToString>, ResponseTemplates => L<Paws::ApiGateway::MapOfStringToString>, SelectionPattern => Str])
@@ -1735,6 +1802,16 @@ Returns: a L<Paws::ApiGateway::DomainName> instance
   Changes information about the DomainName resource.
 
 
+=head2 UpdateGatewayResponse(ResponseType => Str, RestApiId => Str, [PatchOperations => ArrayRef[L<Paws::ApiGateway::PatchOperation>]])
+
+Each argument is described in detail in: L<Paws::ApiGateway::UpdateGatewayResponse>
+
+Returns: a L<Paws::ApiGateway::GatewayResponse> instance
+
+  Updates a GatewayResponse of a specified response type on the given
+RestApi.
+
+
 =head2 UpdateIntegration(HttpMethod => Str, ResourceId => Str, RestApiId => Str, [PatchOperations => ArrayRef[L<Paws::ApiGateway::PatchOperation>]])
 
 Each argument is described in detail in: L<Paws::ApiGateway::UpdateIntegration>
@@ -1822,7 +1899,7 @@ Each argument is described in detail in: L<Paws::ApiGateway::UpdateUsage>
 
 Returns: a L<Paws::ApiGateway::Usage> instance
 
-  Grants a temporary extension to the reamining quota of a usage plan
+  Grants a temporary extension to the remaining quota of a usage plan
 associated with a specified API key.
 
 

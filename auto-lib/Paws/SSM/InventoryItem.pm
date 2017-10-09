@@ -3,6 +3,7 @@ package Paws::SSM::InventoryItem;
   has CaptureTime => (is => 'ro', isa => 'Str', required => 1);
   has Content => (is => 'ro', isa => 'ArrayRef[Paws::SSM::InventoryItemEntry]');
   has ContentHash => (is => 'ro', isa => 'Str');
+  has Context => (is => 'ro', isa => 'Paws::SSM::InventoryItemContentContext');
   has SchemaVersion => (is => 'ro', isa => 'Str', required => 1);
   has TypeName => (is => 'ro', isa => 'Str', required => 1);
 1;
@@ -57,6 +58,14 @@ policy document
 to determine whether to update inventory information. The PutInventory
 API does not update the inventory item type contents if the MD5 hash
 has not changed since last update.
+
+
+=head2 Context => L<Paws::SSM::InventoryItemContentContext>
+
+  A map of associated properties for a specified inventory type. For
+example, with this attribute, you can specify the C<ExecutionId>,
+C<ExecutionType>, C<ComplianceType> properties of the
+C<AWS:ComplianceItem> type.
 
 
 =head2 B<REQUIRED> SchemaVersion => Str

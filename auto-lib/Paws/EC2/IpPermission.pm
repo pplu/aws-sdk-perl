@@ -46,7 +46,8 @@ This class has no description
 
   The start of port range for the TCP and UDP protocols, or an
 ICMP/ICMPv6 type number. A value of C<-1> indicates all ICMP/ICMPv6
-types.
+types. If you specify all ICMP/ICMPv6 types, you must specify all
+codes.
 
 
 =head2 IpProtocol => Str
@@ -86,7 +87,8 @@ associated with the security group.
 
   The end of port range for the TCP and UDP protocols, or an ICMP/ICMPv6
 code. A value of C<-1> indicates all ICMP/ICMPv6 codes for the
-specified ICMP type.
+specified ICMP type. If you specify all ICMP/ICMPv6 types, you must
+specify all codes.
 
 
 =head2 UserIdGroupPairs => ArrayRef[L<Paws::EC2::UserIdGroupPair>]

@@ -46,7 +46,9 @@ The SSL server certificate.
 
 =head2 DefaultActions => ArrayRef[L<Paws::ELBv2::Action>]
 
-The default actions.
+The default action. For Application Load Balancers, the protocol of the
+specified target group must be HTTP or HTTPS. For Network Load
+Balancers, the protocol of the specified target group must be TCP.
 
 
 
@@ -65,8 +67,10 @@ The port for connections from clients to the load balancer.
 =head2 Protocol => Str
 
 The protocol for connections from clients to the load balancer.
+Application Load Balancers support HTTP and HTTPS and Network Load
+Balancers support TCP.
 
-Valid values are: C<"HTTP">, C<"HTTPS">
+Valid values are: C<"HTTP">, C<"HTTPS">, C<"TCP">
 
 =head2 SslPolicy => Str
 

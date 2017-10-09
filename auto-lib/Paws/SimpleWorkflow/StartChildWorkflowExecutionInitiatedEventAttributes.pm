@@ -42,7 +42,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkf
 
 =head1 DESCRIPTION
 
-Provides details of the C<StartChildWorkflowExecutionInitiated> event.
+Provides the details of the C<StartChildWorkflowExecutionInitiated>
+event.
 
 =head1 ATTRIBUTES
 
@@ -57,15 +58,21 @@ The supported child policies are:
 
 =over
 
-=item * B<TERMINATE:> the child executions will be terminated.
+=item *
 
-=item * B<REQUEST_CANCEL:> a request to cancel will be attempted for
-each child execution by recording a C<WorkflowExecutionCancelRequested>
+C<TERMINATE> E<ndash> The child executions are terminated.
+
+=item *
+
+C<REQUEST_CANCEL> E<ndash> A request to cancel is attempted for each
+child execution by recording a C<WorkflowExecutionCancelRequested>
 event in its history. It is up to the decider to take appropriate
 actions when it receives an execution history with this event.
 
-=item * B<ABANDON:> no action will be taken. The child executions will
-continue to run.
+=item *
+
+C<ABANDON> E<ndash> No action is taken. The child executions continue
+to run.
 
 =back
 
@@ -73,37 +80,36 @@ continue to run.
 
 =head2 Control => Str
 
-  I<Optional.> Data attached to the event that can be used by the decider
-in subsequent decision tasks. This data is not sent to the activity.
+  Data attached to the event that can be used by the decider in
+subsequent decision tasks. This data isn't sent to the activity.
 
 
 =head2 B<REQUIRED> DecisionTaskCompletedEventId => Int
 
   The ID of the C<DecisionTaskCompleted> event corresponding to the
 decision task that resulted in the C<StartChildWorkflowExecution>
-decision to request this child workflow execution. This information can
+Decision to request this child workflow execution. This information can
 be useful for diagnosing problems by tracing back the cause of events.
 
 
 =head2 ExecutionStartToCloseTimeout => Str
 
   The maximum duration for the child workflow execution. If the workflow
-execution is not closed within this duration, it will be timed out and
-force terminated.
+execution isn't closed within this duration, it is timed out and
+force-terminated.
 
-The duration is specified in seconds; an integer greater than or equal
-to 0. The value "NONE" can be used to specify unlimited duration.
+The duration is specified in seconds, an integer greater than or equal
+to C<0>. You can use C<NONE> to specify unlimited duration.
 
 
 =head2 Input => Str
 
-  The inputs provided to the child workflow execution (if any).
+  The inputs provided to the child workflow execution.
 
 
 =head2 LambdaRole => Str
 
-  The IAM role attached to this workflow execution to use when invoking
-AWS Lambda functions.
+  The IAM role to attach to the child workflow execution.
 
 
 =head2 TagList => ArrayRef[Str|Undef]
@@ -119,13 +125,13 @@ workflow execution.
 
 =head2 TaskPriority => Str
 
-  I<Optional.> The priority assigned for the decision tasks for this
-workflow execution. Valid values are integers that range from Java's
+  The priority assigned for the decision tasks for this workflow
+execution. Valid values are integers that range from Java's
 C<Integer.MIN_VALUE> (-2147483648) to C<Integer.MAX_VALUE>
 (2147483647). Higher numbers indicate higher priority.
 
 For more information about setting task priority, see Setting Task
-Priority in the I<Amazon Simple Workflow Developer Guide>.
+Priority in the I<Amazon SWF Developer Guide>.
 
 
 =head2 TaskStartToCloseTimeout => Str
@@ -133,8 +139,8 @@ Priority in the I<Amazon Simple Workflow Developer Guide>.
   The maximum duration allowed for the decision tasks for this workflow
 execution.
 
-The duration is specified in seconds; an integer greater than or equal
-to 0. The value "NONE" can be used to specify unlimited duration.
+The duration is specified in seconds, an integer greater than or equal
+to C<0>. You can use C<NONE> to specify unlimited duration.
 
 
 =head2 B<REQUIRED> WorkflowId => Str

@@ -167,7 +167,7 @@ Specifies a put integration request's resource ID.
 
 =head2 B<REQUIRED> RestApiId => Str
 
-Specifies a put integration request's API identifier.
+The string identifier of the associated RestApi.
 
 
 
@@ -179,11 +179,17 @@ Valid values are: C<"HTTP">, C<"AWS">, C<"MOCK">, C<"HTTP_PROXY">, C<"AWS_PROXY"
 
 =head2 Uri => Str
 
-Specifies a put integration input's Uniform Resource Identifier (URI).
-When the integration type is HTTP or AWS, this field is required. For
-integration with Lambda as an AWS service proxy, this value is of the
-'arn:aws:apigateway:E<lt>regionE<gt>:lambda:path/2015-03-31/functions/E<lt>functionArnE<gt>/invocations'
-format.
+Specifies the integration's Uniform Resource Identifier (URI). For HTTP
+integrations, the URI must be a fully formed, encoded HTTP(S) URL
+according to the RFC-3986 specification. For AWS integrations, the URI
+should be of the form
+C<arn:aws:apigateway:{region}:{subdomain.service|service}:{path|action}/{service_api}>.
+C<Region>, C<subdomain> and C<service> are used to determine the right
+endpoint. For AWS services that use the C<Action=> query string
+parameter, C<service_api> should be a valid action for the desired
+service. For RESTful AWS service APIs, C<path> is used to indicate that
+the remaining substring in the URI should be treated as the path to the
+resource, including the initial C</>.
 
 
 

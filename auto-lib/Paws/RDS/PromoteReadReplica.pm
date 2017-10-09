@@ -93,8 +93,8 @@ automated backups are enabled, using the C<BackupRetentionPeriod>
 parameter.
 
 Default: A 30-minute window selected at random from an 8-hour block of
-time per region. To see the time blocks available, see Adjusting the
-Preferred Maintenance Window in the I<Amazon RDS User Guide.>
+time per AWS Region. To see the time blocks available, see Adjusting
+the Preferred Maintenance Window in the I<Amazon RDS User Guide.>
 
 Constraints:
 

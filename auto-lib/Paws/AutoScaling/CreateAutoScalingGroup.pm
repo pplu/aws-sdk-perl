@@ -9,6 +9,7 @@ package Paws::AutoScaling::CreateAutoScalingGroup;
   has HealthCheckType => (is => 'ro', isa => 'Str');
   has InstanceId => (is => 'ro', isa => 'Str');
   has LaunchConfigurationName => (is => 'ro', isa => 'Str');
+  has LifecycleHookSpecificationList => (is => 'ro', isa => 'ArrayRef[Paws::AutoScaling::LifecycleHookSpecification]');
   has LoadBalancerNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has MaxSize => (is => 'ro', isa => 'Int', required => 1);
   has MinSize => (is => 'ro', isa => 'Int', required => 1);
@@ -128,6 +129,12 @@ Instance in the I<Auto Scaling User Guide>.
 
 The name of the launch configuration. Alternatively, specify an EC2
 instance instead of a launch configuration.
+
+
+
+=head2 LifecycleHookSpecificationList => ArrayRef[L<Paws::AutoScaling::LifecycleHookSpecification>]
+
+One or more lifecycle hooks.
 
 
 

@@ -1,6 +1,7 @@
 package Paws::ApplicationAutoScaling::TargetTrackingScalingPolicyConfiguration;
   use Moose;
   has CustomizedMetricSpecification => (is => 'ro', isa => 'Paws::ApplicationAutoScaling::CustomizedMetricSpecification');
+  has DisableScaleIn => (is => 'ro', isa => 'Bool');
   has PredefinedMetricSpecification => (is => 'ro', isa => 'Paws::ApplicationAutoScaling::PredefinedMetricSpecification');
   has ScaleInCooldown => (is => 'ro', isa => 'Int');
   has ScaleOutCooldown => (is => 'ro', isa => 'Int');
@@ -43,6 +44,15 @@ Represents a target tracking scaling policy configuration.
 =head2 CustomizedMetricSpecification => L<Paws::ApplicationAutoScaling::CustomizedMetricSpecification>
 
   Reserved for future use.
+
+
+=head2 DisableScaleIn => Bool
+
+  Indicates whether scale in by the target tracking policy is disabled.
+If the value is C<true>, scale in is disabled and the target tracking
+policy won't remove capacity from the scalable resource. Otherwise,
+scale in is enabled and the target tracking policy can remove capacity
+from the scalable resource. The default value is C<false>.
 
 
 =head2 PredefinedMetricSpecification => L<Paws::ApplicationAutoScaling::PredefinedMetricSpecification>

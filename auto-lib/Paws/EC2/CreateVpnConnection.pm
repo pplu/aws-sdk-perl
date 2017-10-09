@@ -54,11 +54,7 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 =head2 Options => L<Paws::EC2::VpnConnectionOptionsSpecification>
 
-Indicates whether the VPN connection requires static routes. If you are
-creating a VPN connection for a device that does not support BGP, you
-must specify C<true>.
-
-Default: C<false>
+The options for the VPN connection.
 
 
 

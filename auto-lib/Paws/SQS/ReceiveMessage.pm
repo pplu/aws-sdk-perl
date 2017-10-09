@@ -318,7 +318,9 @@ C<ReceiveMessage> request.
 
 The duration (in seconds) for which the call waits for a message to
 arrive in the queue before returning. If a message is available, the
-call returns sooner than C<WaitTimeSeconds>.
+call returns sooner than C<WaitTimeSeconds>. If no messages are
+available and the wait time expires, the call returns successfully with
+an empty list of messages.
 
 
 

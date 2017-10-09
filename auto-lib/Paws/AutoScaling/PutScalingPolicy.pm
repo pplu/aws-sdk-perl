@@ -1,7 +1,7 @@
 
 package Paws::AutoScaling::PutScalingPolicy;
   use Moose;
-  has AdjustmentType => (is => 'ro', isa => 'Str', required => 1);
+  has AdjustmentType => (is => 'ro', isa => 'Str');
   has AutoScalingGroupName => (is => 'ro', isa => 'Str', required => 1);
   has Cooldown => (is => 'ro', isa => 'Int');
   has EstimatedInstanceWarmup => (is => 'ro', isa => 'Int');
@@ -12,6 +12,7 @@ package Paws::AutoScaling::PutScalingPolicy;
   has PolicyType => (is => 'ro', isa => 'Str');
   has ScalingAdjustment => (is => 'ro', isa => 'Int');
   has StepAdjustments => (is => 'ro', isa => 'ArrayRef[Paws::AutoScaling::StepAdjustment]');
+  has TargetTrackingConfiguration => (is => 'ro', isa => 'Paws::AutoScaling::TargetTrackingConfiguration');
 
   use MooseX::ClassAttribute;
 
@@ -43,10 +44,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> AdjustmentType => Str
+=head2 AdjustmentType => Str
 
-The adjustment type. Valid values are C<ChangeInCapacity>,
+The adjustment type. The valid values are C<ChangeInCapacity>,
 C<ExactCapacity>, and C<PercentChangeInCapacity>.
+
+This parameter is supported if the policy type is C<SimpleScaling> or
+C<StepScaling>.
 
 For more information, see Dynamic Scaling in the I<Auto Scaling User
 Guide>.
@@ -65,8 +69,7 @@ The amount of time, in seconds, after a scaling activity completes and
 before the next scaling activity can start. If this parameter is not
 specified, the default cooldown period for the group applies.
 
-This parameter is not supported unless the policy type is
-C<SimpleScaling>.
+This parameter is supported if the policy type is C<SimpleScaling>.
 
 For more information, see Auto Scaling Cooldowns in the I<Auto Scaling
 User Guide>.
@@ -79,17 +82,18 @@ The estimated time, in seconds, until a newly launched instance can
 contribute to the CloudWatch metrics. The default is to use the value
 specified for the default cooldown period for the group.
 
-This parameter is not supported if the policy type is C<SimpleScaling>.
+This parameter is supported if the policy type is C<StepScaling> or
+C<TargetTrackingScaling>.
 
 
 
 =head2 MetricAggregationType => Str
 
-The aggregation type for the CloudWatch metrics. Valid values are
+The aggregation type for the CloudWatch metrics. The valid values are
 C<Minimum>, C<Maximum>, and C<Average>. If the aggregation type is
 null, the value is treated as C<Average>.
 
-This parameter is not supported if the policy type is C<SimpleScaling>.
+This parameter is supported if the policy type is C<StepScaling>.
 
 
 
@@ -99,6 +103,9 @@ The minimum number of instances to scale. If the value of
 C<AdjustmentType> is C<PercentChangeInCapacity>, the scaling policy
 changes the C<DesiredCapacity> of the Auto Scaling group by at least
 this many instances. Otherwise, the error is C<ValidationError>.
+
+This parameter is supported if the policy type is C<SimpleScaling> or
+C<StepScaling>.
 
 
 
@@ -117,8 +124,9 @@ The name of the policy.
 
 =head2 PolicyType => Str
 
-The policy type. Valid values are C<SimpleScaling> and C<StepScaling>.
-If the policy type is null, the value is treated as C<SimpleScaling>.
+The policy type. The valid values are C<SimpleScaling>, C<StepScaling>,
+and C<TargetTrackingScaling>. If the policy type is null, the value is
+treated as C<SimpleScaling>.
 
 
 
@@ -140,6 +148,15 @@ alarm breach.
 
 This parameter is required if the policy type is C<StepScaling> and not
 supported otherwise.
+
+
+
+=head2 TargetTrackingConfiguration => L<Paws::AutoScaling::TargetTrackingConfiguration>
+
+A target tracking policy.
+
+This parameter is required if the policy type is
+C<TargetTrackingScaling> and not supported otherwise.
 
 
 

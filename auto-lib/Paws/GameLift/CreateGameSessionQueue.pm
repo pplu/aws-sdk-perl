@@ -46,8 +46,8 @@ fleet alias ARN. Destinations are listed in default preference order.
 
 =head2 B<REQUIRED> Name => Str
 
-Descriptive label that is associated with queue. Queue names must be
-unique within each region.
+Descriptive label that is associated with game session queue. Queue
+names must be unique within each region.
 
 
 
@@ -71,7 +71,7 @@ requests will fail.
 
 Maximum time, in seconds, that a new game session placement request
 remains in the queue. When a request exceeds this time, the game
-session placement changes to a TIMED_OUT status.
+session placement changes to a C<TIMED_OUT> status.
 
 
 

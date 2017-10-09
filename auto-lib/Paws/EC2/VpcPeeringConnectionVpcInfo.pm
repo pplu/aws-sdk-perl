@@ -1,6 +1,7 @@
 package Paws::EC2::VpcPeeringConnectionVpcInfo;
   use Moose;
   has CidrBlock => (is => 'ro', isa => 'Str', request_name => 'cidrBlock', traits => ['NameInRequest']);
+  has CidrBlockSet => (is => 'ro', isa => 'ArrayRef[Paws::EC2::CidrBlock]', request_name => 'cidrBlockSet', traits => ['NameInRequest']);
   has Ipv6CidrBlockSet => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Ipv6CidrBlock]', request_name => 'ipv6CidrBlockSet', traits => ['NameInRequest']);
   has OwnerId => (is => 'ro', isa => 'Str', request_name => 'ownerId', traits => ['NameInRequest']);
   has PeeringOptions => (is => 'ro', isa => 'Paws::EC2::VpcPeeringConnectionOptionsDescription', request_name => 'peeringOptions', traits => ['NameInRequest']);
@@ -43,6 +44,11 @@ This class has no description
 =head2 CidrBlock => Str
 
   The IPv4 CIDR block for the VPC.
+
+
+=head2 CidrBlockSet => ArrayRef[L<Paws::EC2::CidrBlock>]
+
+  Information about the IPv4 CIDR blocks for the VPC.
 
 
 =head2 Ipv6CidrBlockSet => ArrayRef[L<Paws::EC2::Ipv6CidrBlock>]

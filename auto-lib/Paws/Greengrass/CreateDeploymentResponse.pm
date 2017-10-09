@@ -18,12 +18,12 @@ Paws::Greengrass::CreateDeploymentResponse
 
 =head2 DeploymentArn => Str
 
-Arn of the deployment.
+The arn of the deployment.
 
 
 =head2 DeploymentId => Str
 
-Id of the deployment.
+The id of the deployment.
 
 
 =head2 _request_id => Str

@@ -602,7 +602,7 @@ For more information, see Auto Scaling Lifecycle in the I<Auto Scaling
 User Guide>.
 
 
-=head2 CreateAutoScalingGroup(AutoScalingGroupName => Str, MaxSize => Int, MinSize => Int, [AvailabilityZones => ArrayRef[Str|Undef], DefaultCooldown => Int, DesiredCapacity => Int, HealthCheckGracePeriod => Int, HealthCheckType => Str, InstanceId => Str, LaunchConfigurationName => Str, LoadBalancerNames => ArrayRef[Str|Undef], NewInstancesProtectedFromScaleIn => Bool, PlacementGroup => Str, Tags => ArrayRef[L<Paws::AutoScaling::Tag>], TargetGroupARNs => ArrayRef[Str|Undef], TerminationPolicies => ArrayRef[Str|Undef], VPCZoneIdentifier => Str])
+=head2 CreateAutoScalingGroup(AutoScalingGroupName => Str, MaxSize => Int, MinSize => Int, [AvailabilityZones => ArrayRef[Str|Undef], DefaultCooldown => Int, DesiredCapacity => Int, HealthCheckGracePeriod => Int, HealthCheckType => Str, InstanceId => Str, LaunchConfigurationName => Str, LifecycleHookSpecificationList => ArrayRef[L<Paws::AutoScaling::LifecycleHookSpecification>], LoadBalancerNames => ArrayRef[Str|Undef], NewInstancesProtectedFromScaleIn => Bool, PlacementGroup => Str, Tags => ArrayRef[L<Paws::AutoScaling::Tag>], TargetGroupARNs => ArrayRef[Str|Undef], TerminationPolicies => ArrayRef[Str|Undef], VPCZoneIdentifier => Str])
 
 Each argument is described in detail in: L<Paws::AutoScaling::CreateAutoScalingGroup>
 
@@ -1105,7 +1105,7 @@ For more information see Getting SNS Notifications When Your Auto
 Scaling Group Scales in the I<Auto Scaling User Guide>.
 
 
-=head2 PutScalingPolicy(AdjustmentType => Str, AutoScalingGroupName => Str, PolicyName => Str, [Cooldown => Int, EstimatedInstanceWarmup => Int, MetricAggregationType => Str, MinAdjustmentMagnitude => Int, MinAdjustmentStep => Int, PolicyType => Str, ScalingAdjustment => Int, StepAdjustments => ArrayRef[L<Paws::AutoScaling::StepAdjustment>]])
+=head2 PutScalingPolicy(AutoScalingGroupName => Str, PolicyName => Str, [AdjustmentType => Str, Cooldown => Int, EstimatedInstanceWarmup => Int, MetricAggregationType => Str, MinAdjustmentMagnitude => Int, MinAdjustmentStep => Int, PolicyType => Str, ScalingAdjustment => Int, StepAdjustments => ArrayRef[L<Paws::AutoScaling::StepAdjustment>], TargetTrackingConfiguration => L<Paws::AutoScaling::TargetTrackingConfiguration>])
 
 Each argument is described in detail in: L<Paws::AutoScaling::PutScalingPolicy>
 

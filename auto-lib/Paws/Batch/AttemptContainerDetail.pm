@@ -2,6 +2,7 @@ package Paws::Batch::AttemptContainerDetail;
   use Moose;
   has ContainerInstanceArn => (is => 'ro', isa => 'Str', request_name => 'containerInstanceArn', traits => ['NameInRequest']);
   has ExitCode => (is => 'ro', isa => 'Int', request_name => 'exitCode', traits => ['NameInRequest']);
+  has LogStreamName => (is => 'ro', isa => 'Str', request_name => 'logStreamName', traits => ['NameInRequest']);
   has Reason => (is => 'ro', isa => 'Str', request_name => 'reason', traits => ['NameInRequest']);
   has TaskArn => (is => 'ro', isa => 'Str', request_name => 'taskArn', traits => ['NameInRequest']);
 1;
@@ -50,6 +51,14 @@ that hosts the job attempt.
 
   The exit code for the job attempt. A non-zero exit code is considered a
 failure.
+
+
+=head2 LogStreamName => Str
+
+  The name of the CloudWatch Logs log stream associated with the
+container. The log group for AWS Batch jobs is C</aws/batch/job>. Each
+container attempt receives a log stream name when they reach the
+C<RUNNING> status.
 
 
 =head2 Reason => Str

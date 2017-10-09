@@ -2,6 +2,7 @@
 package Paws::CloudFormation::GetTemplateSummary;
   use Moose;
   has StackName => (is => 'ro', isa => 'Str');
+  has StackSetName => (is => 'ro', isa => 'Str');
   has TemplateBody => (is => 'ro', isa => 'Str');
   has TemplateURL => (is => 'ro', isa => 'Str');
 
@@ -43,7 +44,17 @@ the stack's name or its unique stack ID. For deleted stack, you must
 specify the unique stack ID.
 
 Conditional: You must specify only one of the following parameters:
-C<StackName>, C<TemplateBody>, or C<TemplateURL>.
+C<StackName>, C<StackSetName>, C<TemplateBody>, or C<TemplateURL>.
+
+
+
+=head2 StackSetName => Str
+
+The name or unique ID of the stack set from which the stack was
+created.
+
+Conditional: You must specify only one of the following parameters:
+C<StackName>, C<StackSetName>, C<TemplateBody>, or C<TemplateURL>.
 
 
 
@@ -54,7 +65,7 @@ and a maximum length of 51,200 bytes. For more information about
 templates, see Template Anatomy in the AWS CloudFormation User Guide.
 
 Conditional: You must specify only one of the following parameters:
-C<StackName>, C<TemplateBody>, or C<TemplateURL>.
+C<StackName>, C<StackSetName>, C<TemplateBody>, or C<TemplateURL>.
 
 
 
@@ -66,7 +77,7 @@ bucket. For more information about templates, see Template Anatomy in
 the AWS CloudFormation User Guide.
 
 Conditional: You must specify only one of the following parameters:
-C<StackName>, C<TemplateBody>, or C<TemplateURL>.
+C<StackName>, C<StackSetName>, C<TemplateBody>, or C<TemplateURL>.
 
 
 

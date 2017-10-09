@@ -2,6 +2,7 @@ package Paws::DeviceFarm::ScheduleRunConfiguration;
   use Moose;
   has AuxiliaryApps => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'auxiliaryApps', traits => ['NameInRequest']);
   has BillingMethod => (is => 'ro', isa => 'Str', request_name => 'billingMethod', traits => ['NameInRequest']);
+  has CustomerArtifactPaths => (is => 'ro', isa => 'Paws::DeviceFarm::CustomerArtifactPaths', request_name => 'customerArtifactPaths', traits => ['NameInRequest']);
   has ExtraDataPackageArn => (is => 'ro', isa => 'Str', request_name => 'extraDataPackageArn', traits => ['NameInRequest']);
   has Locale => (is => 'ro', isa => 'Str', request_name => 'locale', traits => ['NameInRequest']);
   has Location => (is => 'ro', isa => 'Paws::DeviceFarm::Location', request_name => 'location', traits => ['NameInRequest']);
@@ -53,6 +54,12 @@ states, auxiliary apps, and network profiles.
   Specifies the billing method for a test run: C<metered> or
 C<unmetered>. If the parameter is not specified, the default value is
 C<metered>.
+
+
+=head2 CustomerArtifactPaths => L<Paws::DeviceFarm::CustomerArtifactPaths>
+
+  Input C<CustomerArtifactPaths> object for the scheduled run
+configuration.
 
 
 =head2 ExtraDataPackageArn => Str

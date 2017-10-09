@@ -40,23 +40,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AutoScaling
 =head1 DESCRIPTION
 
 Describes a lifecycle hook, which tells Auto Scaling that you want to
-perform an action when an instance launches or terminates. When you
-have a lifecycle hook in place, the Auto Scaling group will either:
+perform an action whenever it launches instances or whenever it
+terminates instances.
 
-=over
-
-=item *
-
-Pause the instance after it launches, but before it is put into service
-
-=item *
-
-Pause the instance as it terminates, but before it is fully terminated
-
-=back
-
-For more information, see Auto Scaling Lifecycle in the I<Auto Scaling
-User Guide>.
+For more information, see Auto Scaling Lifecycle Hooks in the I<Auto
+Scaling User Guide>.
 
 =head1 ATTRIBUTES
 
@@ -85,10 +73,9 @@ smaller.
 =head2 HeartbeatTimeout => Int
 
   The maximum time, in seconds, that can elapse before the lifecycle hook
-times out. The default is 3600 seconds (1 hour). When the lifecycle
-hook times out, Auto Scaling performs the default action. You can
-prevent the lifecycle hook from timing out by calling
-RecordLifecycleActionHeartbeat.
+times out. If the lifecycle hook times out, Auto Scaling performs the
+default action. You can prevent the lifecycle hook from timing out by
+calling RecordLifecycleActionHeartbeat.
 
 
 =head2 LifecycleHookName => Str
@@ -111,43 +98,9 @@ sends a message to the notification target.
 
 =head2 NotificationTargetARN => Str
 
-  The ARN of the notification target that Auto Scaling uses to notify you
-when an instance is in the transition state for the lifecycle hook.
-This ARN target can be either an SQS queue or an SNS topic. The
-notification message sent to the target includes the following:
-
-=over
-
-=item *
-
-Lifecycle action token
-
-=item *
-
-User account ID
-
-=item *
-
-Name of the Auto Scaling group
-
-=item *
-
-Lifecycle hook name
-
-=item *
-
-EC2 instance ID
-
-=item *
-
-Lifecycle transition
-
-=item *
-
-Notification metadata
-
-=back
-
+  The ARN of the target that Auto Scaling sends notifications to when an
+instance is in the transition state for the lifecycle hook. The
+notification target can be either an SQS queue or an SNS topic.
 
 
 =head2 RoleARN => Str

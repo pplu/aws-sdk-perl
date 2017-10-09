@@ -84,7 +84,7 @@ Specifies a test invoke method request's resource ID.
 
 =head2 B<REQUIRED> RestApiId => Str
 
-Specifies a test invoke method request's API identifier.
+The string identifier of the associated RestApi.
 
 
 

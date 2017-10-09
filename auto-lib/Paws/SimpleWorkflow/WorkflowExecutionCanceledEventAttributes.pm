@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkf
 
 =head1 DESCRIPTION
 
-Provides details of the C<WorkflowExecutionCanceled> event.
+Provides the details of the C<WorkflowExecutionCanceled> event.
 
 =head1 ATTRIBUTES
 
@@ -48,7 +48,7 @@ this event.
 
 =head2 Details => Str
 
-  Details for the cancellation (if any).
+  The details of the cancellation.
 
 
 

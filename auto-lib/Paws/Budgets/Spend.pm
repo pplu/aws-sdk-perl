@@ -32,8 +32,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Budgets::Sp
 
 =head1 DESCRIPTION
 
-A structure represent either a cost spend or usage spend. Contains an
-amount and a unit.
+A structure that represents either a cost spend or usage spend.
+Contains an amount and a unit.
 
 =head1 ATTRIBUTES
 

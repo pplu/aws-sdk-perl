@@ -64,19 +64,19 @@ account, then you must specify a value for this parameter.
 If you specify this parameter when you copy an unencrypted snapshot,
 the copy is encrypted.
 
-If you copy an encrypted snapshot to a different AWS region, then you
-must specify a KMS key for the destination AWS region. KMS encryption
-keys are specific to the region that they are created in, and you
-cannot use encryption keys from one region in another region.
+If you copy an encrypted snapshot to a different AWS Region, then you
+must specify a KMS key for the destination AWS Region. KMS encryption
+keys are specific to the AWS Region that they are created in, and you
+cannot use encryption keys from one AWS Region in another AWS Region.
 
 
 
 =head2 OptionGroupName => Str
 
-The name of an option group to associate with the copy.
+The name of an option group to associate with the copy of the snapshot.
 
-Specify this option if you are copying a snapshot from one AWS region
-to another, and your DB instance uses a non-default option group. If
+Specify this option if you are copying a snapshot from one AWS Region
+to another, and your DB instance uses a nondefault option group. If
 your source DB instance uses Transparent Data Encryption for Oracle or
 Microsoft SQL Server, you must specify this option when copying across
 regions. For more information, see Option Group Considerations.
@@ -86,16 +86,16 @@ regions. For more information, see Option Group Considerations.
 =head2 PreSignedUrl => Str
 
 The URL that contains a Signature Version 4 signed request for the
-C<CopyDBSnapshot> API action in the source AWS region that contains the
+C<CopyDBSnapshot> API action in the source AWS Region that contains the
 source DB snapshot to copy.
 
 You must specify this parameter when you copy an encrypted DB snapshot
-from another AWS region by using the Amazon RDS API. You can specify
+from another AWS Region by using the Amazon RDS API. You can specify
 the source region option instead of this parameter when you copy an
-encrypted DB snapshot from another AWS region by using the AWS CLI.
+encrypted DB snapshot from another AWS Region by using the AWS CLI.
 
 The presigned URL must be a valid request for the C<CopyDBSnapshot> API
-action that can be executed in the source region that contains the
+action that can be executed in the source AWS Region that contains the
 encrypted DB snapshot to be copied. The presigned URL request must
 contain the following parameter values:
 
@@ -104,30 +104,31 @@ contain the following parameter values:
 =item *
 
 C<DestinationRegion> - The AWS Region that the encrypted DB snapshot
-will be copied to. This region is the same one where the
+will be copied to. This AWS Region is the same one where the
 C<CopyDBSnapshot> action is called that contains this presigned URL.
 
 For example, if you copy an encrypted DB snapshot from the us-west-2
-region to the us-east-1 region, then you will call the
-C<CopyDBSnapshot> action in the us-east-1 region and provide a
-presigned URL that contains a call to the C<CopyDBSnapshot> action in
-the us-west-2 region. For this example, the C<DestinationRegion> in the
-presigned URL must be set to the us-east-1 region.
+region to the us-east-1 region, then you call the C<CopyDBSnapshot>
+action in the us-east-1 region and provide a presigned URL that
+contains a call to the C<CopyDBSnapshot> action in the us-west-2
+region. For this example, the C<DestinationRegion> in the presigned URL
+must be set to the us-east-1 region.
 
 =item *
 
 C<KmsKeyId> - The KMS key identifier for the key to use to encrypt the
-copy of the DB snapshot in the destination region. This is the same
+copy of the DB snapshot in the destination AWS Region. This is the same
 identifier for both the C<CopyDBSnapshot> action that is called in the
-destination region, and the action contained in the presigned URL.
+destination AWS Region, and the action contained in the presigned URL.
 
 =item *
 
 C<SourceDBSnapshotIdentifier> - The DB snapshot identifier for the
 encrypted snapshot to be copied. This identifier must be in the Amazon
-Resource Name (ARN) format for the source region. For example, if you
-are copying an encrypted DB snapshot from the us-west-2 region, then
-your C<SourceDBSnapshotIdentifier> looks like the following example:
+Resource Name (ARN) format for the source AWS Region. For example, if
+you are copying an encrypted DB snapshot from the us-west-2 region,
+then your C<SourceDBSnapshotIdentifier> looks like the following
+example:
 C<arn:aws:rds:us-west-2:123456789012:snapshot:mysql-instance1-snapshot-20161115>.
 
 =back
@@ -142,19 +143,19 @@ Authenticating Requests: Using Query Parameters (AWS Signature Version
 
 The identifier for the source DB snapshot.
 
-If the source snapshot is in the same region as the copy, specify a
-valid DB snapshot identifier. For example,
+If the source snapshot is in the same AWS Region as the copy, specify a
+valid DB snapshot identifier. For example, you might specify
 C<rds:mysql-instance1-snapshot-20130805>.
 
-If the source snapshot is in a different region than the copy, specify
-a valid DB snapshot ARN. For example,
+If the source snapshot is in a different AWS Region than the copy,
+specify a valid DB snapshot ARN. For example, you might specify
 C<arn:aws:rds:us-west-2:123456789012:snapshot:mysql-instance1-snapshot-20130805>.
 
 If you are copying from a shared manual DB snapshot, this parameter
 must be the Amazon Resource Name (ARN) of the shared DB snapshot.
 
 If you are copying an encrypted snapshot this parameter must be in the
-ARN format for the source region, and must match the
+ARN format for the source AWS Region, and must match the
 C<SourceDBSnapshotIdentifier> in the C<PreSignedUrl> parameter.
 
 Constraints:

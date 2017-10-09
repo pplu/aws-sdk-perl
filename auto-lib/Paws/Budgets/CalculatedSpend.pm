@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Budgets::Ca
 
 =head1 DESCRIPTION
 
-A structure holds the actual and forecasted spend for a budget.
+A structure that holds the actual and forecasted spend for a budget.
 
 =head1 ATTRIBUTES
 

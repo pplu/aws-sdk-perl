@@ -40,11 +40,18 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GameLift::P
 
 =head1 DESCRIPTION
 
-Properties describing a player session. A player session represents
-either a player reservation for a game session or actual player
-activity in a game session. A player session object (including player
-data) is automatically passed to a game session when the player
-connects to the game session and is validated.
+Properties describing a player session. Player session objects are
+created either by creating a player session for a specific game
+session, or as part of a game session placement. A player session
+represents either a player reservation for a game session (status
+C<RESERVED>) or actual player activity in a game session (status
+C<ACTIVE>). A player session object (including player data) is
+automatically passed to a game session when the player connects to the
+game session and is validated.
+
+When a player disconnects, the player session status changes to
+C<COMPLETED>. Once the session ends, the player session object is
+retained for 30 days and then removed.
 
 Player-session-related operations include:
 
@@ -147,24 +154,24 @@ Possible player session statuses include the following:
 
 =item *
 
-B<RESERVED> E<ndash> The player session request has been received, but
-the player has not yet connected to the server process and/or been
+B<RESERVED> -- The player session request has been received, but the
+player has not yet connected to the server process and/or been
 validated.
 
 =item *
 
-B<ACTIVE> E<ndash> The player has been validated by the server process
-and is currently connected.
+B<ACTIVE> -- The player has been validated by the server process and is
+currently connected.
 
 =item *
 
-B<COMPLETED> E<ndash> The player connection has been dropped.
+B<COMPLETED> -- The player connection has been dropped.
 
 =item *
 
-B<TIMEDOUT> E<ndash> A player session request was received, but the
-player did not connect and/or was not validated within the time-out
-limit (60 seconds).
+B<TIMEDOUT> -- A player session request was received, but the player
+did not connect and/or was not validated within the timeout limit (60
+seconds).
 
 =back
 

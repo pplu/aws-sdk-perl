@@ -1,6 +1,7 @@
 
 package Paws::CloudWatchLogs::CreateLogGroup;
   use Moose;
+  has KmsKeyId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'kmsKeyId' );
   has LogGroupName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'logGroupName' , required => 1);
   has Tags => (is => 'ro', isa => 'Paws::CloudWatchLogs::Tags', traits => ['NameInRequest'], request_name => 'tags' );
 
@@ -32,6 +33,14 @@ As an example:
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 
 =head1 ATTRIBUTES
+
+
+=head2 KmsKeyId => Str
+
+The Amazon Resource Name (ARN) of the CMK to use when encrypting log
+data. For more information, see Amazon Resource Names - AWS Key
+Management Service (AWS KMS).
+
 
 
 =head2 B<REQUIRED> LogGroupName => Str

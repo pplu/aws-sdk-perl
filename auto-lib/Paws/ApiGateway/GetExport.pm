@@ -69,7 +69,7 @@ Postman tool
 
 =head2 B<REQUIRED> RestApiId => Str
 
-The identifier of the RestApi to be exported.
+The string identifier of the associated RestApi.
 
 
 

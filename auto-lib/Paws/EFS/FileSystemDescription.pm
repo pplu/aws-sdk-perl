@@ -3,7 +3,9 @@ package Paws::EFS::FileSystemDescription;
   use Moose;
   has CreationTime => (is => 'ro', isa => 'Str', required => 1);
   has CreationToken => (is => 'ro', isa => 'Str', required => 1);
+  has Encrypted => (is => 'ro', isa => 'Bool');
   has FileSystemId => (is => 'ro', isa => 'Str', required => 1);
+  has KmsKeyId => (is => 'ro', isa => 'Str');
   has LifeCycleState => (is => 'ro', isa => 'Str', required => 1);
   has Name => (is => 'ro', isa => 'Str');
   has NumberOfMountTargets => (is => 'ro', isa => 'Int', required => 1);
@@ -34,9 +36,21 @@ Time that the file system was created, in seconds (since
 Opaque string specified in the request.
 
 
+=head2 Encrypted => Bool
+
+A boolean value that, if true, indicates that the file system is
+encrypted.
+
+
 =head2 B<REQUIRED> FileSystemId => Str
 
 ID of the file system, assigned by Amazon EFS.
+
+
+=head2 KmsKeyId => Str
+
+The id of an AWS Key Management Service (AWS KMS) customer master key
+(CMK) that was used to protect the encrypted file system.
 
 
 =head2 B<REQUIRED> LifeCycleState => Str

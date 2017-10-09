@@ -52,7 +52,7 @@ in the order specified in this list.
 
 =head2 B<REQUIRED> RestApiId => Str
 
-The RestApi identifier for the Authorizer resource.
+The string identifier of the associated RestApi.
 
 
 

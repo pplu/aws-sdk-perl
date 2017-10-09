@@ -61,7 +61,7 @@ Apple Distribution Push Notification Service channel definition.
 
 =head2 Id => Str
 
-  Channel ID. Not used, only for backwards compatibility.
+  Channel ID. Not used. Present only for backwards compatibility.
 
 
 =head2 IsArchived => Bool

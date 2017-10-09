@@ -17,6 +17,7 @@ package Paws::RDS::CreateDBInstance;
   has Domain => (is => 'ro', isa => 'Str');
   has DomainIAMRoleName => (is => 'ro', isa => 'Str');
   has EnableIAMDatabaseAuthentication => (is => 'ro', isa => 'Bool');
+  has EnablePerformanceInsights => (is => 'ro', isa => 'Bool');
   has Engine => (is => 'ro', isa => 'Str', required => 1);
   has EngineVersion => (is => 'ro', isa => 'Str');
   has Iops => (is => 'ro', isa => 'Int');
@@ -28,6 +29,7 @@ package Paws::RDS::CreateDBInstance;
   has MonitoringRoleArn => (is => 'ro', isa => 'Str');
   has MultiAZ => (is => 'ro', isa => 'Bool');
   has OptionGroupName => (is => 'ro', isa => 'Str');
+  has PerformanceInsightsKMSKeyId => (is => 'ro', isa => 'Str');
   has Port => (is => 'ro', isa => 'Int');
   has PreferredBackupWindow => (is => 'ro', isa => 'Str');
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
@@ -86,25 +88,146 @@ space that you use in an Aurora cluster volume.
 
 B<MySQL>
 
-Constraints: Must be an integer from 5 to 6144.
+Constraints to the amount of storage for each storage type are the
+following:
+
+=over
+
+=item *
+
+General Purpose (SSD) storage (gp2): Must be an integer from 5 to 6144.
+
+=item *
+
+Provisioned IOPS storage (io1): Must be an integer from 100 to 6144.
+
+=item *
+
+Magnetic storage (standard): Must be an integer from 5 to 3072.
+
+=back
 
 B<MariaDB>
 
-Constraints: Must be an integer from 5 to 6144.
+Constraints to the amount of storage for each storage type are the
+following:
+
+=over
+
+=item *
+
+General Purpose (SSD) storage (gp2): Must be an integer from 5 to 6144.
+
+=item *
+
+Provisioned IOPS storage (io1): Must be an integer from 100 to 6144.
+
+=item *
+
+Magnetic storage (standard): Must be an integer from 5 to 3072.
+
+=back
 
 B<PostgreSQL>
 
-Constraints: Must be an integer from 5 to 6144.
+Constraints to the amount of storage for each storage type are the
+following:
+
+=over
+
+=item *
+
+General Purpose (SSD) storage (gp2): Must be an integer from 5 to 6144.
+
+=item *
+
+Provisioned IOPS storage (io1): Must be an integer from 100 to 6144.
+
+=item *
+
+Magnetic storage (standard): Must be an integer from 5 to 3072.
+
+=back
 
 B<Oracle>
 
-Constraints: Must be an integer from 10 to 6144.
+Constraints to the amount of storage for each storage type are the
+following:
+
+=over
+
+=item *
+
+General Purpose (SSD) storage (gp2): Must be an integer from 10 to
+6144.
+
+=item *
+
+Provisioned IOPS storage (io1): Must be an integer from 100 to 6144.
+
+=item *
+
+Magnetic storage (standard): Must be an integer from 10 to 3072.
+
+=back
 
 B<SQL Server>
 
-Constraints: Must be an integer from 200 to 4096 (Standard Edition and
-Enterprise Edition) or from 20 to 4096 (Express Edition and Web
-Edition)
+Constraints to the amount of storage for each storage type are the
+following:
+
+=over
+
+=item *
+
+General Purpose (SSD) storage (gp2):
+
+=over
+
+=item *
+
+Enterprise and Standard editions: Must be an integer from 200 to 16384.
+
+=item *
+
+Web and Express editions: Must be an integer from 20 to 16384.
+
+=back
+
+=item *
+
+Provisioned IOPS storage (io1):
+
+=over
+
+=item *
+
+Enterprise and Standard editions: Must be an integer from 200 to 16384.
+
+=item *
+
+Web and Express editions: Must be an integer from 100 to 16384.
+
+=back
+
+=item *
+
+Magnetic storage (standard):
+
+=over
+
+=item *
+
+Enterprise and Standard editions: Must be an integer from 200 to 1024.
+
+=item *
+
+Web and Express editions: Must be an integer from 20 to 1024.
+
+=back
+
+=back
+
 
 
 
@@ -124,13 +247,13 @@ in. For information on regions and Availability Zones, see Regions and
 Availability Zones.
 
 Default: A random, system-chosen Availability Zone in the endpoint's
-region.
+AWS Region.
 
 Example: C<us-east-1d>
 
 Constraint: The AvailabilityZone parameter cannot be specified if the
 MultiAZ parameter is set to C<true>. The specified Availability Zone
-must be in the same region as the current endpoint.
+must be in the same AWS Region as the current endpoint.
 
 
 
@@ -139,6 +262,11 @@ must be in the same region as the current endpoint.
 The number of days for which automated backups are retained. Setting
 this parameter to a positive number enables backups. Setting this
 parameter to 0 disables automated backups.
+
+B<Amazon Aurora>
+
+Not applicable. The retention period for automated backups is managed
+by the DB cluster. For more information, see CreateDBCluster.
 
 Default: 1
 
@@ -163,6 +291,11 @@ Cannot be set to 0 if the DB instance is a source to Read Replicas
 
 For supported engines, indicates that the DB instance should be
 associated with the specified CharacterSet.
+
+B<Amazon Aurora>
+
+Not applicable. The character set is managed by the DB cluster. For
+more information, see CreateDBCluster.
 
 
 
@@ -208,8 +341,7 @@ Constraints:
 
 =item *
 
-Must contain from 1 to 63 alphanumeric characters or hyphens (1 to 15
-for SQL Server).
+Must contain from 1 to 63 alphanumeric characters or hyphens.
 
 =item *
 
@@ -406,6 +538,13 @@ accounts to database accounts; otherwise false.
 You can enable IAM database authentication for the following database
 engines:
 
+B<Amazon Aurora>
+
+Not applicable. Mapping AWS IAM accounts to database accounts is
+managed by the DB cluster. For more information, see CreateDBCluster.
+
+B<MySQL>
+
 =over
 
 =item *
@@ -422,11 +561,17 @@ Default: C<false>
 
 
 
+=head2 EnablePerformanceInsights => Bool
+
+
+
+
+
 =head2 B<REQUIRED> Engine => Str
 
 The name of the database engine to be used for this instance.
 
-Not every database engine is available for every AWS region.
+Not every database engine is available for every AWS Region.
 
 Valid Values:
 
@@ -491,23 +636,21 @@ The version number of the database engine to use.
 
 The following are the database engines and major and minor versions
 that are available with Amazon RDS. Not every database engine is
-available for every AWS region.
+available for every AWS Region.
 
 B<Amazon Aurora>
+
+Not applicable. The version number of the database engine to be used by
+the DB instance is managed by the DB cluster. For more information, see
+CreateDBCluster.
+
+B<MariaDB>
 
 =over
 
 =item *
 
-Version 5.6 (available in these AWS regions: ap-northeast-1,
-ap-northeast-2, ap-south-1, ap-southeast-2, eu-west-1, us-east-1,
-us-east-2, us-west-2): C< 5.6.10a>
-
-=back
-
-B<MariaDB>
-
-=over
+C<10.1.23> (supported in all AWS regions)
 
 =item *
 
@@ -520,6 +663,10 @@ C<10.1.14> (supported in all regions except us-east-2)
 =back
 
 =over
+
+=item *
+
+C<10.0.31> (supported in all AWS regions)
 
 =item *
 
@@ -630,11 +777,6 @@ C<5.7.16> (supported in all AWS regions)
 
 C<5.7.11> (supported in all AWS regions)
 
-=item *
-
-C<5.7.10> (supported in all regions except us-east-2, ca-central-1,
-eu-west-2)
-
 =back
 
 =over
@@ -655,36 +797,6 @@ C<5.6.29> (supported in all AWS regions)
 
 C<5.6.27> (supported in all regions except us-east-2, ca-central-1,
 eu-west-2)
-
-=item *
-
-C<5.6.23> (supported in all regions except us-east-2, ap-south-1,
-ca-central-1, eu-west-2)
-
-=item *
-
-C<5.6.22> (supported in all regions except us-east-2, ap-south-1,
-ap-northeast-2, ca-central-1, eu-west-2)
-
-=item *
-
-C<5.6.21b> (supported in all regions except us-east-2, ap-south-1,
-ap-northeast-2, ca-central-1, eu-west-2)
-
-=item *
-
-C<5.6.21> (supported in all regions except us-east-2, ap-south-1,
-ap-northeast-2, ca-central-1, eu-west-2)
-
-=item *
-
-C<5.6.19b> (supported in all regions except us-east-2, ap-south-1,
-ap-northeast-2, ca-central-1, eu-west-2)
-
-=item *
-
-C<5.6.19a> (supported in all regions except us-east-2, ap-south-1,
-ap-northeast-2, ca-central-1, eu-west-2)
 
 =back
 
@@ -806,7 +918,7 @@ B<PostgreSQL>
 
 =item *
 
-B<Version 9.6.x:> C< 9.6.1 | 9.6.2>
+B<Version 9.6.x:> C< 9.6.1 | 9.6.2 | 9.6.3>
 
 =item *
 
@@ -847,11 +959,16 @@ account that owns the KMS encryption key used to encrypt the new DB
 instance, then you can use the KMS key alias instead of the ARN for the
 KM encryption key.
 
+B<Amazon Aurora>
+
+Not applicable. The KMS key identifier is managed by the DB cluster.
+For more information, see CreateDBCluster.
+
 If the C<StorageEncrypted> parameter is true, and you do not specify a
 value for the C<KmsKeyId> parameter, then Amazon RDS will use your
 default encryption key. AWS KMS creates the default encryption key for
 your AWS account. Your AWS account has a different default encryption
-key for each AWS region.
+key for each AWS Region.
 
 
 
@@ -866,12 +983,12 @@ C<general-public-license>
 
 =head2 MasterUsername => Str
 
-The name for the master database user.
+The name for the master user.
 
 B<Amazon Aurora>
 
-Not applicable. You specify the name for the master database user when
-you create your DB cluster.
+Not applicable. The name for the master user is managed by the DB
+cluster. For more information, see CreateDBCluster.
 
 B<MariaDB>
 
@@ -974,13 +1091,13 @@ Cannot be a reserved word for the chosen database engine.
 
 =head2 MasterUserPassword => Str
 
-The password for the master database user. Can be any printable ASCII
-character except "/", """, or "@".
+The password for the master user. Can be any printable ASCII character
+except "/", """, or "@".
 
 B<Amazon Aurora>
 
-Not applicable. You specify the password for the master database user
-when you create your DB cluster.
+Not applicable. The password for the master user is managed by the DB
+cluster. For more information, see CreateDBCluster.
 
 B<MariaDB>
 
@@ -1048,6 +1165,12 @@ instance
 
 
 
+=head2 PerformanceInsightsKMSKeyId => Str
+
+
+
+
+
 =head2 Port => Int
 
 The port number on which the database accepts connections.
@@ -1105,9 +1228,14 @@ The daily time range during which automated backups are created if
 automated backups are enabled, using the C<BackupRetentionPeriod>
 parameter. For more information, see DB Instance Backups.
 
+B<Amazon Aurora>
+
+Not applicable. The daily time range for creating automated backups is
+managed by the DB cluster. For more information, see CreateDBCluster.
+
 Default: A 30-minute window selected at random from an 8-hour block of
-time per region. To see the time blocks available, see Adjusting the
-Preferred DB Instance Maintenance Window.
+time per AWS Region. To see the time blocks available, see Adjusting
+the Preferred DB Instance Maintenance Window.
 
 Constraints:
 
@@ -1143,9 +1271,9 @@ Maintenance.
 Format: C<ddd:hh24:mi-ddd:hh24:mi>
 
 Default: A 30-minute window selected at random from an 8-hour block of
-time per region, occurring on a random day of the week. To see the time
-blocks available, see Adjusting the Preferred Maintenance Window in the
-I<Amazon RDS User Guide.>
+time per AWS Region, occurring on a random day of the week. To see the
+time blocks available, see Adjusting the Preferred Maintenance Window
+in the I<Amazon RDS User Guide.>
 
 Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun
 
@@ -1202,6 +1330,11 @@ set, the DB instance will be private.
 
 Specifies whether the DB instance is encrypted.
 
+B<Amazon Aurora>
+
+Not applicable. The encryption for DB instances is managed by the DB
+cluster. For more information, see CreateDBCluster.
+
 Default: false
 
 
@@ -1250,6 +1383,11 @@ supported only by Microsoft SQL Server.
 =head2 VpcSecurityGroupIds => ArrayRef[Str|Undef]
 
 A list of EC2 VPC security groups to associate with this DB instance.
+
+B<Amazon Aurora>
+
+Not applicable. The associated list of EC2 VPC security groups is
+managed by the DB cluster. For more information, see CreateDBCluster.
 
 Default: The default EC2 VPC security group for the DB subnet group's
 VPC.

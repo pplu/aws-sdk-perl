@@ -304,37 +304,12 @@ Returns: a L<Paws::CloudWatch::GetMetricStatisticsOutput> instance
 
   Gets statistics for the specified metric.
 
-Amazon CloudWatch retains metric data as follows:
-
-=over
-
-=item *
-
-Data points with a period of 60 seconds (1-minute) are available for 15
-days
-
-=item *
-
-Data points with a period of 300 seconds (5-minute) are available for
-63 days
-
-=item *
-
-Data points with a period of 3600 seconds (1 hour) are available for
-455 days (15 months)
-
-=back
-
-CloudWatch started retaining 5-minute and 1-hour metric data as of July
-9, 2016.
-
 The maximum number of data points returned from a single call is 1,440.
 If you request more than 1,440 data points, CloudWatch returns an
 error. To reduce the number of data points, you can narrow the
 specified time range and make multiple requests across adjacent time
-ranges, or you can increase the specified period. A period can be as
-short as one minute (60 seconds). Data points are not returned in
-chronological order.
+ranges, or you can increase the specified period. Data points are not
+returned in chronological order.
 
 CloudWatch aggregates data points based on the length of the period
 that you specify. For example, if you request statistics with a
@@ -360,9 +335,48 @@ The Min and the Max values of the statistic set are equal.
 
 =back
 
-For a list of metrics and dimensions supported by AWS services, see the
-Amazon CloudWatch Metrics and Dimensions Reference in the I<Amazon
-CloudWatch User Guide>.
+Amazon CloudWatch retains metric data as follows:
+
+=over
+
+=item *
+
+Data points with a period of less than 60 seconds are available for 3
+hours. These data points are high-resolution metrics and are available
+only for custom metrics that have been defined with a
+C<StorageResolution> of 1.
+
+=item *
+
+Data points with a period of 60 seconds (1-minute) are available for 15
+days.
+
+=item *
+
+Data points with a period of 300 seconds (5-minute) are available for
+63 days.
+
+=item *
+
+Data points with a period of 3600 seconds (1 hour) are available for
+455 days (15 months).
+
+=back
+
+Data points that are initially published with a shorter period are
+aggregated together for long-term storage. For example, if you collect
+data using a period of 1 minute, the data remains available for 15 days
+with 1-minute resolution. After 15 days, this data is still available,
+but is aggregated and retrievable only with a resolution of 5 minutes.
+After 63 days, the data is further aggregated and is available with a
+resolution of 1 hour.
+
+CloudWatch started retaining 5-minute and 1-hour metric data as of July
+9, 2016.
+
+For information about metrics and dimensions supported by AWS services,
+see the Amazon CloudWatch Metrics and Dimensions Reference in the
+I<Amazon CloudWatch User Guide>.
 
 
 =head2 ListDashboards([DashboardNamePrefix => Str, NextToken => Str])
@@ -407,9 +421,20 @@ replaced with what you specify here.
 You can have up to 500 dashboards per account. All dashboards in your
 account are global, not region-specific.
 
-To copy an existing dashboard, use C<GetDashboard>, and then use the
+A simple way to create a dashboard using C<PutDashboard> is to copy an
+existing dashboard. To copy an existing dashboard using the console,
+you can load the dashboard and then use the View/edit source command in
+the Actions menu to display the JSON block for that dashboard. Another
+way to copy a dashboard is to use C<GetDashboard>, and then use the
 data returned within C<DashboardBody> as the template for the new
-dashboard when you call C<PutDashboard> to create the copy.
+dashboard when you call C<PutDashboard>.
+
+When you create a dashboard with C<PutDashboard>, a good practice is to
+add a text widget at the top of the dashboard with a message that the
+dashboard was created by script and should not be changed in the
+console. This message could also point console users to the location of
+the C<DashboardBody> script or the CloudFormation template used to
+create the dashboard.
 
 
 =head2 PutMetricAlarm(AlarmName => Str, ComparisonOperator => Str, EvaluationPeriods => Int, MetricName => Str, Namespace => Str, Period => Int, Threshold => Num, [ActionsEnabled => Bool, AlarmActions => ArrayRef[Str|Undef], AlarmDescription => Str, Dimensions => ArrayRef[L<Paws::CloudWatch::Dimension>], EvaluateLowSampleCountPercentile => Str, ExtendedStatistic => Str, InsufficientDataActions => ArrayRef[Str|Undef], OKActions => ArrayRef[Str|Undef], Statistic => Str, TreatMissingData => Str, Unit => Str])

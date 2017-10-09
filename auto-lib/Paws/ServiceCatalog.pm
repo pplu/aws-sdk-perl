@@ -34,6 +34,11 @@ package Paws::ServiceCatalog;
     my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::AssociateTagOptionWithResource', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CopyProduct {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::CopyProduct', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateConstraint {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::CreateConstraint', @_);
@@ -92,6 +97,11 @@ package Paws::ServiceCatalog;
   sub DescribeConstraint {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::DescribeConstraint', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeCopyProductStatus {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::DescribeCopyProductStatus', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribePortfolio {
@@ -272,7 +282,7 @@ package Paws::ServiceCatalog;
   
 
 
-  sub operations { qw/AcceptPortfolioShare AssociatePrincipalWithPortfolio AssociateProductWithPortfolio AssociateTagOptionWithResource CreateConstraint CreatePortfolio CreatePortfolioShare CreateProduct CreateProvisioningArtifact CreateTagOption DeleteConstraint DeletePortfolio DeletePortfolioShare DeleteProduct DeleteProvisioningArtifact DescribeConstraint DescribePortfolio DescribeProduct DescribeProductAsAdmin DescribeProductView DescribeProvisionedProduct DescribeProvisioningArtifact DescribeProvisioningParameters DescribeRecord DescribeTagOption DisassociatePrincipalFromPortfolio DisassociateProductFromPortfolio DisassociateTagOptionFromResource ListAcceptedPortfolioShares ListConstraintsForPortfolio ListLaunchPaths ListPortfolioAccess ListPortfolios ListPortfoliosForProduct ListPrincipalsForPortfolio ListProvisioningArtifacts ListRecordHistory ListResourcesForTagOption ListTagOptions ProvisionProduct RejectPortfolioShare ScanProvisionedProducts SearchProducts SearchProductsAsAdmin TerminateProvisionedProduct UpdateConstraint UpdatePortfolio UpdateProduct UpdateProvisionedProduct UpdateProvisioningArtifact UpdateTagOption / }
+  sub operations { qw/AcceptPortfolioShare AssociatePrincipalWithPortfolio AssociateProductWithPortfolio AssociateTagOptionWithResource CopyProduct CreateConstraint CreatePortfolio CreatePortfolioShare CreateProduct CreateProvisioningArtifact CreateTagOption DeleteConstraint DeletePortfolio DeletePortfolioShare DeleteProduct DeleteProvisioningArtifact DescribeConstraint DescribeCopyProductStatus DescribePortfolio DescribeProduct DescribeProductAsAdmin DescribeProductView DescribeProvisionedProduct DescribeProvisioningArtifact DescribeProvisioningParameters DescribeRecord DescribeTagOption DisassociatePrincipalFromPortfolio DisassociateProductFromPortfolio DisassociateTagOptionFromResource ListAcceptedPortfolioShares ListConstraintsForPortfolio ListLaunchPaths ListPortfolioAccess ListPortfolios ListPortfoliosForProduct ListPrincipalsForPortfolio ListProvisioningArtifacts ListRecordHistory ListResourcesForTagOption ListTagOptions ProvisionProduct RejectPortfolioShare ScanProvisionedProducts SearchProducts SearchProductsAsAdmin TerminateProvisionedProduct UpdateConstraint UpdatePortfolio UpdateProduct UpdateProvisionedProduct UpdateProvisioningArtifact UpdateTagOption / }
 
 1;
 
@@ -363,6 +373,22 @@ Returns: a L<Paws::ServiceCatalog::AssociateTagOptionWithResourceOutput> instanc
   Associate a TagOption identifier with a resource identifier.
 
 
+=head2 CopyProduct(IdempotencyToken => Str, SourceProductArn => Str, [AcceptLanguage => Str, CopyOptions => ArrayRef[Str|Undef], SourceProvisioningArtifactIdentifiers => ArrayRef[L<Paws::ServiceCatalog::SourceProvisioningArtifactPropertiesMap>], TargetProductId => Str, TargetProductName => Str])
+
+Each argument is described in detail in: L<Paws::ServiceCatalog::CopyProduct>
+
+Returns: a L<Paws::ServiceCatalog::CopyProductOutput> instance
+
+  Copies the specified source product to the specified target product or
+a new product.
+
+You can copy the product to the same account or another account. You
+can copy the product to the same region or another region.
+
+This operation is performed asynchronously. To track the progress of
+the operation, use DescribeCopyProductStatus.
+
+
 =head2 CreateConstraint(IdempotencyToken => Str, Parameters => Str, PortfolioId => Str, ProductId => Str, Type => Str, [AcceptLanguage => Str, Description => Str])
 
 Each argument is described in detail in: L<Paws::ServiceCatalog::CreateConstraint>
@@ -407,8 +433,6 @@ Returns: a L<Paws::ServiceCatalog::CreateProvisioningArtifactOutput> instance
 
   Create a new provisioning artifact for the specified product. This
 operation does not work with a product that has been shared with you.
-
-See the bottom of this topic for an example JSON request.
 
 
 =head2 CreateTagOption(Key => Str, Value => Str)
@@ -479,6 +503,15 @@ Each argument is described in detail in: L<Paws::ServiceCatalog::DescribeConstra
 Returns: a L<Paws::ServiceCatalog::DescribeConstraintOutput> instance
 
   Retrieves detailed information for a specified constraint.
+
+
+=head2 DescribeCopyProductStatus(CopyProductToken => Str, [AcceptLanguage => Str])
+
+Each argument is described in detail in: L<Paws::ServiceCatalog::DescribeCopyProductStatus>
+
+Returns: a L<Paws::ServiceCatalog::DescribeCopyProductStatusOutput> instance
+
+  Describes the status of the specified copy product operation.
 
 
 =head2 DescribePortfolio(Id => Str, [AcceptLanguage => Str])

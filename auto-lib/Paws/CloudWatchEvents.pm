@@ -275,6 +275,9 @@ event bus as a target.
 To enable multiple AWS accounts to put events to your default event
 bus, run C<PutPermission> once for each of these accounts.
 
+The permission policy on the default event bus cannot exceed 10KB in
+size.
+
 
 =head2 PutRule(Name => Str, [Description => Str, EventPattern => Str, RoleArn => Str, ScheduleExpression => Str, State => Str])
 
@@ -344,11 +347,23 @@ AWS Step Functions state machines
 
 =item *
 
+Pipelines in Amazon Code Pipeline
+
+=item *
+
+Amazon Inspector assessment templates
+
+=item *
+
 Amazon SNS topics
 
 =item *
 
 Amazon SQS queues
+
+=item *
+
+The default event bus of another AWS account
 
 =back
 
@@ -371,11 +386,17 @@ information, see Authentication and Access Control in the I<Amazon
 CloudWatch Events User Guide>.
 
 If another AWS account is in the same region and has granted you
-permission (using C<PutPermission>), you can set that account's event
-bus as a target of the rules in your account. To send the matched
-events to the other account, specify that account's event bus as the
-C<Arn> when you run C<PutTargets>. For more information about enabling
-cross-account events, see PutPermission.
+permission (using C<PutPermission>), you can send events to that
+account by setting that account's event bus as a target of the rules in
+your account. To send the matched events to the other account, specify
+that account's event bus as the C<Arn> when you run C<PutTargets>. If
+your account sends events to another account, your account is charged
+for each sent event. Each event sent to antoher account is charged as a
+custom event. The account receiving the event is not charged. For more
+information on pricing, see Amazon CloudWatch Pricing.
+
+For more information about enabling cross-account events, see
+PutPermission.
 
 B<Input>, B<InputPath> and B<InputTransformer> are mutually exclusive
 and optional parameters of a target. When a rule is triggered due to a

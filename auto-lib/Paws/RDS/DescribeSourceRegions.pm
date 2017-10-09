@@ -66,7 +66,7 @@ Constraints: Minimum 20, maximum 100.
 
 =head2 RegionName => Str
 
-The source region name. For example, C<us-east-1>.
+The source AWS Region name. For example, C<us-east-1>.
 
 Constraints:
 

@@ -215,13 +215,13 @@ the fleet.
 
 =item *
 
-B<NoProtection> E<ndash> The game session can be terminated during a
+B<NoProtection> -- The game session can be terminated during a
 scale-down event.
 
 =item *
 
-B<FullProtection> E<ndash> If the game session is in an C<ACTIVE>
-status, it cannot be terminated during a scale-down event.
+B<FullProtection> -- If the game session is in an C<ACTIVE> status, it
+cannot be terminated during a scale-down event.
 
 =back
 
@@ -266,31 +266,31 @@ Possible fleet statuses include the following:
 
 =item *
 
-B<NEW> E<ndash> A new fleet has been defined and desired instances is
-set to 1.
+B<NEW> -- A new fleet has been defined and desired instances is set to
+1.
 
 =item *
 
-B<DOWNLOADING/VALIDATING/BUILDING/ACTIVATING> E<ndash> Amazon GameLift
-is setting up the new fleet, creating new instances with the game build
+B<DOWNLOADING/VALIDATING/BUILDING/ACTIVATING> -- Amazon GameLift is
+setting up the new fleet, creating new instances with the game build
 and starting server processes.
 
 =item *
 
-B<ACTIVE> E<ndash> Hosts can now accept game sessions.
+B<ACTIVE> -- Hosts can now accept game sessions.
 
 =item *
 
-B<ERROR> E<ndash> An error occurred when downloading, validating,
-building, or activating the fleet.
+B<ERROR> -- An error occurred when downloading, validating, building,
+or activating the fleet.
 
 =item *
 
-B<DELETING> E<ndash> Hosts are responding to a delete fleet request.
+B<DELETING> -- Hosts are responding to a delete fleet request.
 
 =item *
 
-B<TERMINATED> E<ndash> The fleet no longer exists.
+B<TERMINATED> -- The fleet no longer exists.
 
 =back
 

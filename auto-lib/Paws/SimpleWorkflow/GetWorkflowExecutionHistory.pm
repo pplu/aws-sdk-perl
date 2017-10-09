@@ -51,7 +51,7 @@ Specifies the workflow execution for which to return the history.
 
 =head2 MaximumPageSize => Int
 
-The maximum number of results that will be returned per call.
+The maximum number of results that are returned per call.
 C<nextPageToken> can be used to obtain futher pages of results. The
 default is 1000, which is the maximum allowed page size. You can,
 however, specify a page size I<smaller> than the maximum.

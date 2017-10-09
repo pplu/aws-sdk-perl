@@ -38,7 +38,10 @@ package [% c.api %]::[% op_name %];
   [%- member = c.shape(shape.members.$param_name.shape) -%]
   [%- traits = [] -%]
   has [% param_name %] => (is => 'ro', isa => '[% member.perl_type %]'
-  [%-    IF (shape.members.$param_name.location == 'header');      traits.push('ParamInHeader') %], header_name => '[% shape.members.$param_name.locationName %]'
+  [%- IF (shape.members.$param_name.location == 'header') %], header_name => '[% shape.members.$param_name.locationName %]'
+    [%- IF (param_name == 'ContentMD5'); traits.push('AutoInHeader') %], auto => 'MD5'
+    [%- ELSE; traits.push('ParamInHeader') %]
+  [%- END %]
   [%- ELSIF (shape.members.$param_name.location == 'headers');     traits.push('ParamInHeaders') %], header_prefix => '[% shape.members.$param_name.locationName %]'
   [%- ELSIF (shape.members.$param_name.location == 'querystring'); traits.push('ParamInQuery') %], query_name => '[% shape.members.$param_name.locationName %]'
   [%- ELSIF (shape.members.$param_name.location == 'uri');         traits.push('ParamInURI') %], uri_name => '[% shape.members.$param_name.locationName %]'
@@ -78,7 +81,7 @@ package [% c.api %]::[% op_name %];
   [%- member = c.shape(shape.members.$param_name.shape) -%]
   has [% param_name %] => (is => 'ro', isa => '[% member.perl_type %]'
   [%- IF (shape.members.$param_name.locationName) %]
-    [%- IF (shape.members.$param_name.location == 'header') %], traits => ['ParamInHeader'], header_name => '[% shape.members.$param_name.locationName -%]'
+    [%- IF (shape.members.$param_name.location == 'header') %], traits => ['ParamInHeader'], header_name => '[% shape.members.$param_name.locationName %]'
     [%- ELSIF (shape.members.$param_name.location == 'headers') %], traits => ['ParamInHeaders'], header_prefix => '[% shape.members.$param_name.locationName %]'
     [%- ELSIF (shape.members.$param_name.location == 'querystring') %], traits => ['ParamInQuery'], query_name => '[% shape.members.$param_name.locationName -%]' 
     [%- ELSIF (shape.members.$param_name.location == 'uri') %], traits => ['ParamInURI'], uri_name => '[% shape.members.$param_name.locationName -%]' 
@@ -86,9 +89,12 @@ package [% c.api %]::[% op_name %];
   [%- IF (shape.members.$param_name.streaming == 1) %], traits => ['ParamInBody'][% stream_param = param_name %][% END %]
   [%- IF (c.required_in_shape(shape,param_name)) %], required => 1[% END %]);
 [% END %]
-  [%- IF (stream_param) -%]
+  [%- IF (stream_param or shape.payload == param_name) %]
   use MooseX::ClassAttribute;
-  class_has _stream_param => (is => 'ro', default => '[% c.to_payload_shape_name(stream_param) %]');
+  [%- IF (stream_param) %]
+  class_has _stream_param => (is => 'ro', default => '[% c.to_payload_shape_name(stream_param) %]');[% END %]
+  [%- IF (shape.payload == param_name) %]
+  class_has _payload => (is => 'ro', default => '[% param_name %]');[% END %]
   [%- END %]
   has _request_id => (is => 'ro', isa => 'Str');
 [%- END %]

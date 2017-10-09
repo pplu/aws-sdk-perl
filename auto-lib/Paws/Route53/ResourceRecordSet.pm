@@ -522,12 +522,13 @@ C<Weight>.
 how data is encoded for them, see Supported DNS Resource Record Types
 in the I<Amazon Route 53 Developer Guide>.
 
-Valid values for basic resource record sets: C<A> | C<AAAA> | C<CNAME>
-| C<MX> | C<NAPTR> | C<NS> | C<PTR> | C<SOA> | C<SPF> | C<SRV> | C<TXT>
+Valid values for basic resource record sets: C<A> | C<AAAA> | C<CAA> |
+C<CNAME> | C<MX> | C<NAPTR> | C<NS> | C<PTR> | C<SOA> | C<SPF> | C<SRV>
+| C<TXT>
 
 Values for weighted, latency, geolocation, and failover resource record
-sets: C<A> | C<AAAA> | C<CNAME> | C<MX> | C<NAPTR> | C<PTR> | C<SPF> |
-C<SRV> | C<TXT>. When creating a group of weighted, latency,
+sets: C<A> | C<AAAA> | C<CAA> | C<CNAME> | C<MX> | C<NAPTR> | C<PTR> |
+C<SPF> | C<SRV> | C<TXT>. When creating a group of weighted, latency,
 geolocation, or failover resource record sets, specify the same value
 for all of the resource record sets in the group.
 

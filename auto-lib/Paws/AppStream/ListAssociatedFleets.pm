@@ -43,7 +43,7 @@ this operation. If this value is null, it retrieves the first page.
 
 =head2 B<REQUIRED> StackName => Str
 
-The name of the stack whose associated fleets are listed.
+The name of the stack.
 
 
 

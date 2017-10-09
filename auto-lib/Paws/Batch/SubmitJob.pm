@@ -56,7 +56,7 @@ add new environment variables to it with an C<environment> override.
 =head2 DependsOn => ArrayRef[L<Paws::Batch::JobDependency>]
 
 A list of job IDs on which this job depends. A job can depend upon a
-maximum of 100 jobs.
+maximum of 20 jobs.
 
 
 
@@ -70,9 +70,9 @@ definition.
 
 =head2 B<REQUIRED> JobName => Str
 
-The name of the job. A name must be 1 to 128 characters in length.
-
-Pattern: ^[a-zA-Z0-9_]+$
+The name of the job. The first character must be alphanumeric, and up
+to 128 letters (uppercase and lowercase), numbers, hyphens, and
+underscores are allowed.
 
 
 

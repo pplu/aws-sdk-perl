@@ -42,7 +42,7 @@ Amazon EC2 console, CLI, or API; otherwise, you can.
 
 =head2 EbsOptimized => L<Paws::EC2::AttributeBooleanValue>
 
-Indicates whether the instance is optimized for EBS I/O.
+Indicates whether the instance is optimized for Amazon EBS I/O.
 
 
 =head2 EnaSupport => L<Paws::EC2::AttributeBooleanValue>
@@ -96,9 +96,9 @@ C</dev/xvda>).
 =head2 SourceDestCheck => L<Paws::EC2::AttributeBooleanValue>
 
 Indicates whether source/destination checking is enabled. A value of
-C<true> means checking is enabled, and C<false> means checking is
-disabled. This value must be C<false> for a NAT instance to perform
-NAT.
+C<true> means that checking is enabled, and C<false> means that
+checking is disabled. This value must be C<false> for a NAT instance to
+perform NAT.
 
 
 =head2 SriovNetSupport => L<Paws::EC2::AttributeValue>

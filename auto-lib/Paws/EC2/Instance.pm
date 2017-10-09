@@ -5,6 +5,7 @@ package Paws::EC2::Instance;
   has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[Paws::EC2::InstanceBlockDeviceMapping]', request_name => 'blockDeviceMapping', traits => ['NameInRequest']);
   has ClientToken => (is => 'ro', isa => 'Str', request_name => 'clientToken', traits => ['NameInRequest']);
   has EbsOptimized => (is => 'ro', isa => 'Bool', request_name => 'ebsOptimized', traits => ['NameInRequest']);
+  has ElasticGpuAssociations => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ElasticGpuAssociation]', request_name => 'elasticGpuAssociationSet', traits => ['NameInRequest']);
   has EnaSupport => (is => 'ro', isa => 'Bool', request_name => 'enaSupport', traits => ['NameInRequest']);
   has Hypervisor => (is => 'ro', isa => 'Str', request_name => 'hypervisor', traits => ['NameInRequest']);
   has IamInstanceProfile => (is => 'ro', isa => 'Paws::EC2::IamInstanceProfile', request_name => 'iamInstanceProfile', traits => ['NameInRequest']);
@@ -97,11 +98,16 @@ applicable.
 
 =head2 EbsOptimized => Bool
 
-  Indicates whether the instance is optimized for EBS I/O. This
+  Indicates whether the instance is optimized for Amazon EBS I/O. This
 optimization provides dedicated throughput to Amazon EBS and an
 optimized configuration stack to provide optimal I/O performance. This
 optimization isn't available with all instance types. Additional usage
 charges apply when using an EBS Optimized instance.
+
+
+=head2 ElasticGpuAssociations => ArrayRef[L<Paws::EC2::ElasticGpuAssociation>]
+
+  The Elastic GPU associated with the instance.
 
 
 =head2 EnaSupport => Bool
@@ -131,7 +137,7 @@ charges apply when using an EBS Optimized instance.
 
 =head2 InstanceLifecycle => Str
 
-  Indicates whether this is a Spot instance or a Scheduled Instance.
+  Indicates whether this is a Spot Instance or a Scheduled Instance.
 
 
 =head2 InstanceType => Str
@@ -181,7 +187,7 @@ associated key pair.
 This DNS hostname can only be used inside the Amazon EC2 network. This
 name is not available until the instance enters the C<running> state.
 
-[EC2-VPC] The Amazon-provided DNS server will resolve Amazon-provided
+[EC2-VPC] The Amazon-provided DNS server resolves Amazon-provided
 private DNS hostnames if you've enabled DNS resolution and DNS
 hostnames in your VPC. If you are not using the Amazon-provided DNS
 server in your VPC, your custom domain name servers must resolve the
@@ -236,15 +242,15 @@ an instance store volume.
 
   Specifies whether to enable an instance launched in a VPC to perform
 NAT. This controls whether source/destination checking is enabled on
-the instance. A value of C<true> means checking is enabled, and
-C<false> means checking is disabled. The value must be C<false> for the
-instance to perform NAT. For more information, see NAT Instances in the
-I<Amazon Virtual Private Cloud User Guide>.
+the instance. A value of C<true> means that checking is enabled, and
+C<false> means that checking is disabled. The value must be C<false>
+for the instance to perform NAT. For more information, see NAT
+Instances in the I<Amazon Virtual Private Cloud User Guide>.
 
 
 =head2 SpotInstanceRequestId => Str
 
-  If the request is a Spot instance request, the ID of the request.
+  If the request is a Spot Instance request, the ID of the request.
 
 
 =head2 SriovNetSupport => Str

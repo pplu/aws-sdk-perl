@@ -43,8 +43,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 EndTime => Int
 
 The end of the time range, expressed as the number of milliseconds
-since Jan 1, 1970 00:00:00 UTC. Events with a timestamp later than this
-time are not returned.
+after Jan 1, 1970 00:00:00 UTC. Events with a time stamp later than
+this time are not returned.
 
 
 
@@ -58,7 +58,7 @@ The filter pattern to use. If not provided, all the events are matched.
 
 If the value is true, the operation makes a best effort to provide
 responses that contain events from multiple log streams within the log
-group interleaved in a single response. If the value is false all the
+group, interleaved in a single response. If the value is false, all the
 matched log events in the first log stream are searched first, then
 those in the next log stream, and so on. The default is false.
 
@@ -92,7 +92,7 @@ token from a previous call.)
 =head2 StartTime => Int
 
 The start of the time range, expressed as the number of milliseconds
-since Jan 1, 1970 00:00:00 UTC. Events with a timestamp prior to this
+after Jan 1, 1970 00:00:00 UTC. Events with a time stamp before this
 time are not returned.
 
 

@@ -38,28 +38,6 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GameLift::G
 Configuration of a queue that is used to process game session placement
 requests. The queue configuration identifies several game features:
 
-Queue-related operations include:
-
-=over
-
-=item *
-
-CreateGameSessionQueue
-
-=item *
-
-DescribeGameSessionQueues
-
-=item *
-
-UpdateGameSessionQueue
-
-=item *
-
-DeleteGameSessionQueue
-
-=back
-
 =over
 
 =item *
@@ -84,7 +62,7 @@ individual player is reporting latency higher than a policy's maximum.
 
 =back
 
-Queue-related operations include the following:
+Queue-related operations include:
 
 =over
 
@@ -126,8 +104,8 @@ C<arn:aws:gamelift:E<lt>regionE<gt>::fleet/fleet-a1234567-b8c9-0d1e-2fa3-b45c6d7
 
 =head2 Name => Str
 
-  Descriptive label that is associated with queue. Queue names must be
-unique within each region.
+  Descriptive label that is associated with game session queue. Queue
+names must be unique within each region.
 
 
 =head2 PlayerLatencyPolicies => ArrayRef[L<Paws::GameLift::PlayerLatencyPolicy>]
@@ -147,7 +125,7 @@ of the placement.
 
   Maximum time, in seconds, that a new game session placement request
 remains in the queue. When a request exceeds this time, the game
-session placement changes to a TIMED_OUT status.
+session placement changes to a C<TIMED_OUT> status.
 
 
 

@@ -33,7 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkf
 
 =head1 DESCRIPTION
 
-Provides details of the C<StartTimer> decision.
+Provides the details of the C<StartTimer> decision.
 
 B<Access Control>
 
@@ -42,48 +42,54 @@ SWF resources as follows:
 
 =over
 
-=item * Use a C<Resource> element with the domain name to limit the
-action to only specified domains.
+=item *
 
-=item * Use an C<Action> element to allow or deny permission to call
-this action.
+Use a C<Resource> element with the domain name to limit the action to
+only specified domains.
 
-=item * You cannot use an IAM policy to constrain this action's
-parameters.
+=item *
+
+Use an C<Action> element to allow or deny permission to call this
+action.
+
+=item *
+
+You cannot use an IAM policy to constrain this action's parameters.
 
 =back
 
-If the caller does not have sufficient permissions to invoke the
-action, or the parameter values fall outside the specified constraints,
-the action fails. The associated event attribute's B<cause> parameter
-will be set to OPERATION_NOT_PERMITTED. For details and example IAM
-policies, see Using IAM to Manage Access to Amazon SWF Workflows.
+If the caller doesn't have sufficient permissions to invoke the action,
+or the parameter values fall outside the specified constraints, the
+action fails. The associated event attribute's C<cause> parameter is
+set to C<OPERATION_NOT_PERMITTED>. For details and example IAM
+policies, see Using IAM to Manage Access to Amazon SWF Workflows in the
+I<Amazon SWF Developer Guide>.
 
 =head1 ATTRIBUTES
 
 
 =head2 Control => Str
 
-  I<Optional.> Data attached to the event that can be used by the decider
-in subsequent workflow tasks.
+  The data attached to the event that can be used by the decider in
+subsequent workflow tasks.
 
 
 =head2 B<REQUIRED> StartToFireTimeout => Str
 
-  B<Required.> The duration to wait before firing the timer.
+  The duration to wait before firing the timer.
 
-The duration is specified in seconds; an integer greater than or equal
-to 0.
+The duration is specified in seconds, an integer greater than or equal
+to C<0>.
 
 
 =head2 B<REQUIRED> TimerId => Str
 
-  B<Required.> The unique ID of the timer.
+  The unique ID of the timer.
 
 The specified string must not start or end with whitespace. It must not
 contain a C<:> (colon), C</> (slash), C<|> (vertical bar), or any
-control characters (\u0000-\u001f | \u007f - \u009f). Also, it must not
-contain the literal string quotarnquot.
+control characters (C<\u0000-\u001f> | C<\u007f-\u009f>). Also, it must
+not contain the literal string C<arn>.
 
 
 

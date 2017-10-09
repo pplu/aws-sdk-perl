@@ -70,6 +70,75 @@ package Paws::Athena;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub GetAllQueryResults {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetQueryResults(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->GetQueryResults(@_, NextToken => $next_result->NextToken);
+        push @{ $result->ResultSet->Rows }, @{ $next_result->ResultSet->Rows };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'ResultSet.Rows') foreach (@{ $result->ResultSet->Rows });
+        $result = $self->GetQueryResults(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'ResultSet.Rows') foreach (@{ $result->ResultSet->Rows });
+    }
+
+    return undef
+  }
+  sub ListAllNamedQueries {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListNamedQueries(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListNamedQueries(@_, NextToken => $next_result->NextToken);
+        push @{ $result->NamedQueryIds }, @{ $next_result->NamedQueryIds };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'NamedQueryIds') foreach (@{ $result->NamedQueryIds });
+        $result = $self->ListNamedQueries(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'NamedQueryIds') foreach (@{ $result->NamedQueryIds });
+    }
+
+    return undef
+  }
+  sub ListAllQueryExecutions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListQueryExecutions(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListQueryExecutions(@_, NextToken => $next_result->NextToken);
+        push @{ $result->QueryExecutionIds }, @{ $next_result->QueryExecutionIds };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'QueryExecutionIds') foreach (@{ $result->QueryExecutionIds });
+        $result = $self->ListQueryExecutions(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'QueryExecutionIds') foreach (@{ $result->QueryExecutionIds });
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/BatchGetNamedQuery BatchGetQueryExecution CreateNamedQuery DeleteNamedQuery GetNamedQuery GetQueryExecution GetQueryResults ListNamedQueries ListQueryExecutions StartQueryExecution StopQueryExecution / }
@@ -253,6 +322,42 @@ Samples in the I<Amazon Athena User Guide>.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 GetAllQueryResults(sub { },QueryExecutionId => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 GetAllQueryResults(QueryExecutionId => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ResultSet.Rows, passing the object as the first parameter, and the string 'ResultSet.Rows' as the second parameter 
+
+If not, it will return a a L<Paws::Athena::GetQueryResultsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllNamedQueries(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 ListAllNamedQueries([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - NamedQueryIds, passing the object as the first parameter, and the string 'NamedQueryIds' as the second parameter 
+
+If not, it will return a a L<Paws::Athena::ListNamedQueriesOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllQueryExecutions(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 ListAllQueryExecutions([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - QueryExecutionIds, passing the object as the first parameter, and the string 'QueryExecutionIds' as the second parameter 
+
+If not, it will return a a L<Paws::Athena::ListQueryExecutionsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 

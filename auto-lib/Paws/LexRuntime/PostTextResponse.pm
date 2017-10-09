@@ -31,7 +31,7 @@ optionally use this information to customize the user interface.
 
 =item *
 
-C<ElicitIntent> E<ndash> Amazon Lex wants to elicit user intent.
+C<ElicitIntent> - Amazon Lex wants to elicit user intent.
 
 For example, a user might utter an intent ("I want to order a pizza").
 If Amazon Lex cannot infer the user intent from this utterance, it will
@@ -39,8 +39,7 @@ return this dialogState.
 
 =item *
 
-C<ConfirmIntent> E<ndash> Amazon Lex is expecting a "yes" or "no"
-response.
+C<ConfirmIntent> - Amazon Lex is expecting a "yes" or "no" response.
 
 For example, Amazon Lex wants user confirmation before fulfilling an
 intent.
@@ -53,8 +52,8 @@ change intent from OrderPizza to OrderDrink).
 
 =item *
 
-C<ElicitSlot> E<ndash> Amazon Lex is expecting a slot value for the
-current intent.
+C<ElicitSlot> - Amazon Lex is expecting a slot value for the current
+intent.
 
 For example, suppose that in the response Amazon Lex sends this
 message: "What size pizza would you like?". A user might reply with the
@@ -64,17 +63,17 @@ Lex can process such additional information appropriately.
 
 =item *
 
-C<Fulfilled> E<ndash> Conveys that the Lambda function configured for
-the intent has successfully fulfilled the intent.
+C<Fulfilled> - Conveys that the Lambda function configured for the
+intent has successfully fulfilled the intent.
 
 =item *
 
-C<ReadyForFulfillment> E<ndash> Conveys that the client has to fulfill
-the intent.
+C<ReadyForFulfillment> - Conveys that the client has to fulfill the
+intent.
 
 =item *
 
-C<Failed> E<ndash> Conveys that the conversation with the user failed.
+C<Failed> - Conveys that the conversation with the user failed.
 
 This can happen for various reasons including that the user did not
 provide an appropriate response to prompts from the service (you can
@@ -123,8 +122,18 @@ information.
 
 =head2 Slots => L<Paws::LexRuntime::StringMap>
 
-The intent slots (name/value pairs) that Amazon Lex detected so far
-from the user input in the conversation.
+The intent slots that Amazon Lex detected from the user input in the
+conversation.
+
+Amazon Lex creates a resolution list containing likely values for a
+slot. The value that it returns is determined by the
+C<valueSelectionStrategy> selected when the slot type was created or
+updated. If C<valueSelectionStrategy> is set to C<ORIGINAL_VALUE>, the
+value provided by the user is returned, if the user value is similar to
+the slot values. If C<valueSelectionStrategy> is set to
+C<TOP_RESOLUTION> Amazon Lex returns the first value in the resolution
+list or, if there is no resolution list, null. If you don't specify a
+C<valueSelectionStrategy>, the default is C<ORIGINAL_VALUE>.
 
 
 =head2 SlotToElicit => Str

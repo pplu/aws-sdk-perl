@@ -65,7 +65,7 @@ retirement.
 
 =item *
 
-C<Server.SpotInstanceTermination>: A Spot instance was terminated due
+C<Server.SpotInstanceTermination>: A Spot Instance was terminated due
 to an increase in the market price.
 
 =item *
@@ -77,6 +77,11 @@ terminate on launch.
 
 C<Client.InstanceInitiatedShutdown>: The instance was shut down using
 the C<shutdown -h> command from the instance.
+
+=item *
+
+C<Client.InstanceTerminated>: The instance was terminated or rebooted
+during AMI creation.
 
 =item *
 

@@ -53,7 +53,7 @@ skips during the continue update rollback operation. You can specify
 only resources that are in the C<UPDATE_FAILED> state because a
 rollback failed. You can't specify resources that are in the
 C<UPDATE_FAILED> state for other reasons, for example, because an
-update was canceled. To check why a resource update failed, use the
+update was cancelled. To check why a resource update failed, use the
 DescribeStackResources action, and view the resource status reason.
 
 Specify this property to skip rolling back resources that AWS
@@ -72,11 +72,17 @@ back your stack. For example, a failed resource update might cause
 dependent resources to fail. In this case, it might not be necessary to
 skip the dependent resources.
 
-To specify resources in a nested stack, use the following format:
-C<NestedStackName.ResourceLogicalID>. If the C<ResourceLogicalID> is a
-stack resource (C<Type: AWS::CloudFormation::Stack>), it must be in one
-of the following states: C<DELETE_IN_PROGRESS>, C<DELETE_COMPLETE>, or
-C<DELETE_FAILED>.
+To skip resources that are part of nested stacks, use the following
+format: C<NestedStackName.ResourceLogicalID>. If you want to specify
+the logical ID of a stack resource (C<Type:
+AWS::CloudFormation::Stack>) in the C<ResourcesToSkip> list, then its
+corresponding embedded stack must be in one of the following states:
+C<DELETE_IN_PROGRESS>, C<DELETE_COMPLETE>, or C<DELETE_FAILED>.
+
+Don't confuse a child stack's name with its corresponding logical ID
+defined in the parent stack. For an example of a continue update
+rollback operation with nested stacks, see Using ResourcesToSkip to
+recover a nested stacks hierarchy.
 
 
 
