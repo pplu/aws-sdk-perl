@@ -1,5 +1,8 @@
 0.36
-
+ - Big refactor of all result handling for all services
+ - API update: EC2
+ - API update: ELBv2
+ - API update: OpsWorksCM
 
 0.35 09 Oct 2017
  - Fix Bug: Correctly throw Paws::Exceptions even if there is no information
