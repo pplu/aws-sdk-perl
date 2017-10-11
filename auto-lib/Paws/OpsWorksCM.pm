@@ -432,7 +432,7 @@ not exist. A C<ValidationException> is raised when parameters of the
 request are not valid.
 
 
-=head2 StartMaintenance(ServerName => Str)
+=head2 StartMaintenance(ServerName => Str, [EngineAttributes => ArrayRef[L<Paws::OpsWorksCM::EngineAttribute>]])
 
 Each argument is described in detail in: L<Paws::OpsWorksCM::StartMaintenance>
 

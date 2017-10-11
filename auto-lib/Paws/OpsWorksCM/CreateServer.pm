@@ -227,7 +227,7 @@ backend uses to work with your account. Although the AWS OpsWorks
 management console typically creates the service role for you, if you
 are using the AWS CLI or API commands, run the
 service-role-creation.yaml AWS CloudFormation template, located at
-https://s3.amazonaws.com/opsworks-stuff/latest/service-role-creation.yaml.
+https://s3.amazonaws.com/opsworks-cm-us-east-1-prod-default-assets/misc/opsworks-cm-roles.yaml.
 This template creates a CloudFormation stack that includes the service
 role that you need.
 

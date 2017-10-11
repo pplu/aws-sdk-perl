@@ -1,6 +1,7 @@
 
 package Paws::OpsWorksCM::DescribeNodeAssociationStatusResponse;
   use Moose;
+  has EngineAttributes => (is => 'ro', isa => 'ArrayRef[Paws::OpsWorksCM::EngineAttribute]');
   has NodeAssociationStatus => (is => 'ro', isa => 'Str');
 
   has _request_id => (is => 'ro', isa => 'Str');
@@ -12,6 +13,11 @@ package Paws::OpsWorksCM::DescribeNodeAssociationStatusResponse;
 Paws::OpsWorksCM::DescribeNodeAssociationStatusResponse
 
 =head1 ATTRIBUTES
+
+
+=head2 EngineAttributes => ArrayRef[L<Paws::OpsWorksCM::EngineAttribute>]
+
+Attributes specific to the node association.
 
 
 =head2 NodeAssociationStatus => Str
