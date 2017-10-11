@@ -67,21 +67,24 @@ number. For the ICMP type number, use C<-1> to specify all ICMP types.
 
 =head2 GroupId => Str
 
-The ID of the security group. Required for a security group in a
-nondefault VPC.
+The ID of the security group. You must specify either the security
+group ID or the security group name in the request. For security groups
+in a nondefault VPC, you must specify the security group ID.
 
 
 
 =head2 GroupName => Str
 
-[EC2-Classic, default VPC] The name of the security group.
+[EC2-Classic, default VPC] The name of the security group. You must
+specify either the security group ID or the security group name in the
+request.
 
 
 
 =head2 IpPermissions => ArrayRef[L<Paws::EC2::IpPermission>]
 
-A set of IP permissions. You can't specify a source security group and
-a CIDR IP address range.
+One or more sets of IP permissions. You can't specify a source security
+group and a CIDR IP address range in the same set of permissions.
 
 
 

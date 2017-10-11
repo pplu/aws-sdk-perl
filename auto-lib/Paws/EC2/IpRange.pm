@@ -41,7 +41,7 @@ This class has no description
 
   The IPv4 CIDR range. You can either specify a CIDR range or a source
 security group, not both. To specify a single IPv4 address, use the /32
-prefix.
+prefix length.
 
 
 =head2 Description => Str

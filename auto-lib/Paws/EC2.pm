@@ -1810,8 +1810,8 @@ Returns: a L<Paws::EC2::AttachVpnGatewayResult> instance
   Attaches a virtual private gateway to a VPC. You can attach one virtual
 private gateway to one VPC at a time.
 
-For more information, see Adding a Hardware Virtual Private Gateway to
-Your VPC in the I<Amazon Virtual Private Cloud User Guide>.
+For more information, see AWS Managed VPN Connections in the I<Amazon
+Virtual Private Cloud User Guide>.
 
 
 =head2 AuthorizeSecurityGroupEgress(GroupId => Str, [CidrIp => Str, DryRun => Bool, FromPort => Int, IpPermissions => ArrayRef[L<Paws::EC2::IpPermission>], IpProtocol => Str, SourceSecurityGroupName => Str, SourceSecurityGroupOwnerId => Str, ToPort => Int])
@@ -2068,9 +2068,8 @@ Amazon EC2 supports all 2-byte ASN numbers in the range of 1 - 65534,
 with the exception of 7224, which is reserved in the C<us-east-1>
 region, and 9059, which is reserved in the C<eu-west-1> region.
 
-For more information about VPN customer gateways, see Adding a Hardware
-Virtual Private Gateway to Your VPC in the I<Amazon Virtual Private
-Cloud User Guide>.
+For more information about VPN customer gateways, see AWS Managed VPN
+Connections in the I<Amazon Virtual Private Cloud User Guide>.
 
 You cannot create more than one customer gateway with the same VPN
 type, IP address, and BGP ASN parameter values. If you run an identical
@@ -2733,12 +2732,11 @@ existing virtual private gateway and a VPN customer gateway. The static
 route allows traffic to be routed from the virtual private gateway to
 the VPN customer gateway.
 
-For more information about VPN connections, see Adding a Hardware
-Virtual Private Gateway to Your VPC in the I<Amazon Virtual Private
-Cloud User Guide>.
+For more information about VPN connections, see AWS Managed VPN
+Connections in the I<Amazon Virtual Private Cloud User Guide>.
 
 
-=head2 CreateVpnGateway(Type => Str, [AvailabilityZone => Str, DryRun => Bool])
+=head2 CreateVpnGateway(Type => Str, [AmazonSideAsn => Int, AvailabilityZone => Str, DryRun => Bool])
 
 Each argument is described in detail in: L<Paws::EC2::CreateVpnGateway>
 
@@ -2748,9 +2746,8 @@ Returns: a L<Paws::EC2::CreateVpnGatewayResult> instance
 endpoint on the VPC side of your VPN connection. You can create a
 virtual private gateway before creating the VPC itself.
 
-For more information about virtual private gateways, see Adding a
-Hardware Virtual Private Gateway to Your VPC in the I<Amazon Virtual
-Private Cloud User Guide>.
+For more information about virtual private gateways, see AWS Managed
+VPN Connections in the I<Amazon Virtual Private Cloud User Guide>.
 
 
 =head2 DeleteCustomerGateway(CustomerGatewayId => Str, [DryRun => Bool])
@@ -3212,9 +3209,8 @@ Returns: a L<Paws::EC2::DescribeCustomerGatewaysResult> instance
 
   Describes one or more of your VPN customer gateways.
 
-For more information about VPN customer gateways, see Adding a Hardware
-Virtual Private Gateway to Your VPC in the I<Amazon Virtual Private
-Cloud User Guide>.
+For more information about VPN customer gateways, see AWS Managed VPN
+Connections in the I<Amazon Virtual Private Cloud User Guide>.
 
 
 =head2 DescribeDhcpOptions([DhcpOptionsIds => ArrayRef[Str|Undef], DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>]])
@@ -4161,9 +4157,8 @@ Returns: a L<Paws::EC2::DescribeVpnConnectionsResult> instance
 
   Describes one or more of your VPN connections.
 
-For more information about VPN connections, see Adding a Hardware
-Virtual Private Gateway to Your VPC in the I<Amazon Virtual Private
-Cloud User Guide>.
+For more information about VPN connections, see AWS Managed VPN
+Connections in the I<Amazon Virtual Private Cloud User Guide>.
 
 
 =head2 DescribeVpnGateways([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], VpnGatewayIds => ArrayRef[Str|Undef]])
@@ -4174,9 +4169,8 @@ Returns: a L<Paws::EC2::DescribeVpnGatewaysResult> instance
 
   Describes one or more of your virtual private gateways.
 
-For more information about virtual private gateways, see Adding an
-IPsec Hardware VPN to Your VPC in the I<Amazon Virtual Private Cloud
-User Guide>.
+For more information about virtual private gateways, see AWS Managed
+VPN Connections in the I<Amazon Virtual Private Cloud User Guide>.
 
 
 =head2 DetachClassicLinkVpc(InstanceId => Str, VpcId => Str, [DryRun => Bool])
@@ -4647,15 +4641,16 @@ Each argument is described in detail in: L<Paws::EC2::ModifyImageAttribute>
 Returns: nothing
 
   Modifies the specified attribute of the specified AMI. You can specify
-only one attribute at a time.
+only one attribute at a time. You can use the C<Attribute> parameter to
+specify the attribute or one of the following parameters:
+C<Description>, C<LaunchPermission>, or C<ProductCode>.
 
 AWS Marketplace product codes cannot be modified. Images with an AWS
 Marketplace product code cannot be made public.
 
-The SriovNetSupport enhanced networking attribute cannot be changed
-using this command. Instead, enable SriovNetSupport on an instance and
-create an AMI from the instance. This will result in an image with
-SriovNetSupport enabled.
+To enable the SriovNetSupport enhanced networking attribute of an
+image, enable SriovNetSupport on an instance and create an AMI from the
+instance.
 
 
 =head2 ModifyInstanceAttribute(InstanceId => Str, [Attribute => Str, BlockDeviceMappings => ArrayRef[L<Paws::EC2::InstanceBlockDeviceMappingSpecification>], DisableApiTermination => L<Paws::EC2::AttributeBooleanValue>, DryRun => Bool, EbsOptimized => L<Paws::EC2::AttributeBooleanValue>, EnaSupport => L<Paws::EC2::AttributeBooleanValue>, Groups => ArrayRef[Str|Undef], InstanceInitiatedShutdownBehavior => L<Paws::EC2::AttributeValue>, InstanceType => L<Paws::EC2::AttributeValue>, Kernel => L<Paws::EC2::AttributeValue>, Ramdisk => L<Paws::EC2::AttributeValue>, SourceDestCheck => L<Paws::EC2::AttributeBooleanValue>, SriovNetSupport => L<Paws::EC2::AttributeValue>, UserData => L<Paws::EC2::BlobAttributeValue>, Value => Str])
