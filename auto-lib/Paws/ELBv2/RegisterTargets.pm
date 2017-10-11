@@ -42,9 +42,7 @@ The Amazon Resource Name (ARN) of the target group.
 
 =head2 B<REQUIRED> Targets => ArrayRef[L<Paws::ELBv2::TargetDescription>]
 
-The targets. The default port for a target is the port for the target
-group. You can specify a port override. If a target is already
-registered, you can register it again using a different port.
+The targets.
 
 
 

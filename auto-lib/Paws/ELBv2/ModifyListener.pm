@@ -40,7 +40,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Certificates => ArrayRef[L<Paws::ELBv2::Certificate>]
 
-The SSL server certificate.
+The default SSL server certificate.
 
 
 

@@ -13,6 +13,11 @@ package Paws::ELBv2;
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::QueryCaller';
 
   
+  sub AddListenerCertificates {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ELBv2::AddListenerCertificates', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub AddTags {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ELBv2::AddTags', @_);
@@ -66,6 +71,11 @@ package Paws::ELBv2;
   sub DescribeAccountLimits {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ELBv2::DescribeAccountLimits', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeListenerCertificates {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ELBv2::DescribeListenerCertificates', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeListeners {
@@ -141,6 +151,11 @@ package Paws::ELBv2;
   sub RegisterTargets {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ELBv2::RegisterTargets', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub RemoveListenerCertificates {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ELBv2::RemoveListenerCertificates', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub RemoveTags {
@@ -240,7 +255,7 @@ package Paws::ELBv2;
   }
 
 
-  sub operations { qw/AddTags CreateListener CreateLoadBalancer CreateRule CreateTargetGroup DeleteListener DeleteLoadBalancer DeleteRule DeleteTargetGroup DeregisterTargets DescribeAccountLimits DescribeListeners DescribeLoadBalancerAttributes DescribeLoadBalancers DescribeRules DescribeSSLPolicies DescribeTags DescribeTargetGroupAttributes DescribeTargetGroups DescribeTargetHealth ModifyListener ModifyLoadBalancerAttributes ModifyRule ModifyTargetGroup ModifyTargetGroupAttributes RegisterTargets RemoveTags SetIpAddressType SetRulePriorities SetSecurityGroups SetSubnets / }
+  sub operations { qw/AddListenerCertificates AddTags CreateListener CreateLoadBalancer CreateRule CreateTargetGroup DeleteListener DeleteLoadBalancer DeleteRule DeleteTargetGroup DeregisterTargets DescribeAccountLimits DescribeListenerCertificates DescribeListeners DescribeLoadBalancerAttributes DescribeLoadBalancers DescribeRules DescribeSSLPolicies DescribeTags DescribeTargetGroupAttributes DescribeTargetGroups DescribeTargetHealth ModifyListener ModifyLoadBalancerAttributes ModifyRule ModifyTargetGroup ModifyTargetGroupAttributes RegisterTargets RemoveListenerCertificates RemoveTags SetIpAddressType SetRulePriorities SetSecurityGroups SetSubnets / }
 
 1;
 
@@ -345,6 +360,22 @@ they complete at most one time. If you repeat an operation, it
 succeeds.
 
 =head1 METHODS
+
+=head2 AddListenerCertificates(Certificates => ArrayRef[L<Paws::ELBv2::Certificate>], ListenerArn => Str)
+
+Each argument is described in detail in: L<Paws::ELBv2::AddListenerCertificates>
+
+Returns: a L<Paws::ELBv2::AddListenerCertificatesOutput> instance
+
+  Adds the specified certificate to the specified secure listener.
+
+If the certificate was already added, the call is successful but the
+certificate is not added again.
+
+To list the certificates for your listener, use
+DescribeListenerCertificates. To remove certificates from your
+listener, use RemoveListenerCertificates.
+
 
 =head2 AddTags(ResourceArns => ArrayRef[Str|Undef], Tags => ArrayRef[L<Paws::ELBv2::Tag>])
 
@@ -532,6 +563,15 @@ the I<Application Load Balancer Guide> or Limits for Your Network Load
 Balancers in the I<Network Load Balancers Guide>.
 
 
+=head2 DescribeListenerCertificates(ListenerArn => Str, [Marker => Str, PageSize => Int])
+
+Each argument is described in detail in: L<Paws::ELBv2::DescribeListenerCertificates>
+
+Returns: a L<Paws::ELBv2::DescribeListenerCertificatesOutput> instance
+
+  Describes the certificates for the specified secure listener.
+
+
 =head2 DescribeListeners([ListenerArns => ArrayRef[Str|Undef], LoadBalancerArn => Str, Marker => Str, PageSize => Int])
 
 Each argument is described in detail in: L<Paws::ELBv2::DescribeListeners>
@@ -706,19 +746,37 @@ Returns: a L<Paws::ELBv2::RegisterTargetsOutput> instance
 
   Registers the specified targets with the specified target group.
 
+You can register targets by instance ID or by IP address. If the target
+is an EC2 instance, it must be in the C<running> state when you
+register it.
+
 By default, the load balancer routes requests to registered targets
-using the protocol and port number for the target group. Alternatively,
-you can override the port for a target when you register it.
+using the protocol and port for the target group. Alternatively, you
+can override the port for a target when you register it. You can
+register each EC2 instance or IP address with the same target group
+multiple times using different ports.
 
-The target must be in the virtual private cloud (VPC) that you
-specified for the target group. If the target is an EC2 instance, it
-must be in the C<running> state when you register it.
-
-Network Load Balancers do not support the following instance types as
-targets: C1, CC1, CC2, CG1, CG2, CR1, CS1, G1, G2, HI1, HS1, M1, M2,
-M3, and T1.
+With a Network Load Balancer, you cannot register instances by instance
+ID if they have the following instance types: C1, CC1, CC2, CG1, CG2,
+CR1, CS1, G1, G2, HI1, HS1, M1, M2, M3, and T1. You can register
+instances of these types by IP address.
 
 To remove a target from a target group, use DeregisterTargets.
+
+
+=head2 RemoveListenerCertificates(Certificates => ArrayRef[L<Paws::ELBv2::Certificate>], ListenerArn => Str)
+
+Each argument is described in detail in: L<Paws::ELBv2::RemoveListenerCertificates>
+
+Returns: a L<Paws::ELBv2::RemoveListenerCertificatesOutput> instance
+
+  Removes the specified certificate from the specified secure listener.
+
+You can't remove the default certificate for a listener. To replace the
+default certificate, call ModifyListener.
+
+To list the certificates for your listener, use
+DescribeListenerCertificates.
 
 
 =head2 RemoveTags(ResourceArns => ArrayRef[Str|Undef], TagKeys => ArrayRef[Str|Undef])

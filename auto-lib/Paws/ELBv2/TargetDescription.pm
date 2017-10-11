@@ -40,16 +40,19 @@ Information about a target.
 
 =head2 AvailabilityZone => Str
 
-  The Availability Zone where the IP address is to be registered. Specify
-C<all> to register an IP address outside the target group VPC with all
-Availability Zones that are enabled for the load balancer.
-
-If the IP address is in a subnet of the VPC for the target group, the
-Availability Zone is automatically detected and this parameter is
-optional.
+  An Availability Zone or C<all>. This determines whether the target
+receives traffic from the load balancer nodes in the specified
+Availability Zone or from all enabled Availability Zones for the load
+balancer.
 
 This parameter is not supported if the target type of the target group
-is C<instance>.
+is C<instance>. If the IP address is in a subnet of the VPC for the
+target group, the Availability Zone is automatically detected and this
+parameter is optional. If the IP address is outside the VPC, this
+parameter is required.
+
+With an Application Load Balancer, if the IP address is outside the VPC
+for the target group, the only supported value is C<all>.
 
 
 =head2 B<REQUIRED> Id => Str
