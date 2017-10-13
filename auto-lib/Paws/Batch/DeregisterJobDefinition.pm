@@ -1,7 +1,7 @@
 
 package Paws::Batch::DeregisterJobDefinition;
   use Moose;
-  has JobDefinition => (is => 'ro', isa => 'Str', required => 1);
+  has JobDefinition => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'jobDefinition', required => 1);
 
   use MooseX::ClassAttribute;
 

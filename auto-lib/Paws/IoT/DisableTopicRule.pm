@@ -1,7 +1,7 @@
 
 package Paws::IoT::DisableTopicRule;
   use Moose;
-  has RuleName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'ruleName' , required => 1);
+  has RuleName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'ruleName', required => 1);
 
   use MooseX::ClassAttribute;
 

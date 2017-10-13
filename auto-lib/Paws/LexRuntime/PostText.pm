@@ -1,12 +1,12 @@
 
 package Paws::LexRuntime::PostText;
   use Moose;
-  has BotAlias => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'botAlias' , required => 1);
-  has BotName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'botName' , required => 1);
-  has InputText => (is => 'ro', isa => 'Str', required => 1);
-  has RequestAttributes => (is => 'ro', isa => 'Paws::LexRuntime::StringMap');
-  has SessionAttributes => (is => 'ro', isa => 'Paws::LexRuntime::StringMap');
-  has UserId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'userId' , required => 1);
+  has BotAlias => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'botAlias', required => 1);
+  has BotName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'botName', required => 1);
+  has InputText => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'inputText', required => 1);
+  has RequestAttributes => (is => 'ro', isa => 'Paws::LexRuntime::StringMap', traits => ['NameInRequest'], request_name => 'requestAttributes');
+  has SessionAttributes => (is => 'ro', isa => 'Paws::LexRuntime::StringMap', traits => ['NameInRequest'], request_name => 'sessionAttributes');
+  has UserId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'userId', required => 1);
 
   use MooseX::ClassAttribute;
 

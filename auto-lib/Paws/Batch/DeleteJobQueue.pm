@@ -1,7 +1,7 @@
 
 package Paws::Batch::DeleteJobQueue;
   use Moose;
-  has JobQueue => (is => 'ro', isa => 'Str', required => 1);
+  has JobQueue => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'jobQueue', required => 1);
 
   use MooseX::ClassAttribute;
 

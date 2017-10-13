@@ -2,7 +2,7 @@
 package Paws::Greengrass::UpdateConnectivityInfo;
   use Moose;
   has ConnectivityInfo => (is => 'ro', isa => 'ArrayRef[Paws::Greengrass::ConnectivityInfo]');
-  has ThingName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'ThingName' , required => 1);
+  has ThingName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'ThingName', required => 1);
 
   use MooseX::ClassAttribute;
 

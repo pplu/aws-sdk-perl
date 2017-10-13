@@ -1,7 +1,7 @@
 
 package Paws::Batch::DeleteComputeEnvironment;
   use Moose;
-  has ComputeEnvironment => (is => 'ro', isa => 'Str', required => 1);
+  has ComputeEnvironment => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'computeEnvironment', required => 1);
 
   use MooseX::ClassAttribute;
 

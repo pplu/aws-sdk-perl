@@ -1,10 +1,10 @@
 
 package Paws::WorkDocs::DeleteLabels;
   use Moose;
-  has AuthenticationToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Authentication' );
-  has DeleteAll => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'deleteAll' );
-  has Labels => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['ParamInQuery'], query_name => 'labels' );
-  has ResourceId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'ResourceId' , required => 1);
+  has AuthenticationToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Authentication');
+  has DeleteAll => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'deleteAll');
+  has Labels => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['ParamInQuery'], query_name => 'labels');
+  has ResourceId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'ResourceId', required => 1);
 
   use MooseX::ClassAttribute;
 

@@ -1,8 +1,8 @@
 
 package Paws::Greengrass::GetDeploymentStatus;
   use Moose;
-  has DeploymentId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'DeploymentId' , required => 1);
-  has GroupId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'GroupId' , required => 1);
+  has DeploymentId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'DeploymentId', required => 1);
+  has GroupId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'GroupId', required => 1);
 
   use MooseX::ClassAttribute;
 

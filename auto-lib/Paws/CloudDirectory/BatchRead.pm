@@ -1,8 +1,8 @@
 
 package Paws::CloudDirectory::BatchRead;
   use Moose;
-  has ConsistencyLevel => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-consistency-level' );
-  has DirectoryArn => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-data-partition' , required => 1);
+  has ConsistencyLevel => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-consistency-level');
+  has DirectoryArn => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-data-partition', required => 1);
   has Operations => (is => 'ro', isa => 'ArrayRef[Paws::CloudDirectory::BatchReadOperation]', required => 1);
 
   use MooseX::ClassAttribute;

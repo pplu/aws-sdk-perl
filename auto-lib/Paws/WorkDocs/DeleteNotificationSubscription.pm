@@ -1,8 +1,8 @@
 
 package Paws::WorkDocs::DeleteNotificationSubscription;
   use Moose;
-  has OrganizationId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'OrganizationId' , required => 1);
-  has SubscriptionId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'SubscriptionId' , required => 1);
+  has OrganizationId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'OrganizationId', required => 1);
+  has SubscriptionId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'SubscriptionId', required => 1);
 
   use MooseX::ClassAttribute;
 

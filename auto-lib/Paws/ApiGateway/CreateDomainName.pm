@@ -1,12 +1,12 @@
 
 package Paws::ApiGateway::CreateDomainName;
   use Moose;
-  has CertificateArn => (is => 'ro', isa => 'Str');
-  has CertificateBody => (is => 'ro', isa => 'Str');
-  has CertificateChain => (is => 'ro', isa => 'Str');
-  has CertificateName => (is => 'ro', isa => 'Str');
-  has CertificatePrivateKey => (is => 'ro', isa => 'Str');
-  has DomainName => (is => 'ro', isa => 'Str', required => 1);
+  has CertificateArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'certificateArn');
+  has CertificateBody => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'certificateBody');
+  has CertificateChain => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'certificateChain');
+  has CertificateName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'certificateName');
+  has CertificatePrivateKey => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'certificatePrivateKey');
+  has DomainName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'domainName', required => 1);
 
   use MooseX::ClassAttribute;
 

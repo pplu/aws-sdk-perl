@@ -1,8 +1,8 @@
 
 package Paws::LexModels::CreateIntentVersion;
   use Moose;
-  has Checksum => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'name' , required => 1);
+  has Checksum => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'checksum');
+  has Name => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'name', required => 1);
 
   use MooseX::ClassAttribute;
 

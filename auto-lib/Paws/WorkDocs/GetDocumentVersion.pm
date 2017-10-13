@@ -1,11 +1,11 @@
 
 package Paws::WorkDocs::GetDocumentVersion;
   use Moose;
-  has AuthenticationToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Authentication' );
-  has DocumentId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'DocumentId' , required => 1);
-  has Fields => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'fields' );
-  has IncludeCustomMetadata => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'includeCustomMetadata' );
-  has VersionId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'VersionId' , required => 1);
+  has AuthenticationToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Authentication');
+  has DocumentId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'DocumentId', required => 1);
+  has Fields => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'fields');
+  has IncludeCustomMetadata => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'includeCustomMetadata');
+  has VersionId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'VersionId', required => 1);
 
   use MooseX::ClassAttribute;
 

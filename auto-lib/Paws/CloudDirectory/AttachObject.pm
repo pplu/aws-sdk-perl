@@ -2,7 +2,7 @@
 package Paws::CloudDirectory::AttachObject;
   use Moose;
   has ChildReference => (is => 'ro', isa => 'Paws::CloudDirectory::ObjectReference', required => 1);
-  has DirectoryArn => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-data-partition' , required => 1);
+  has DirectoryArn => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-data-partition', required => 1);
   has LinkName => (is => 'ro', isa => 'Str', required => 1);
   has ParentReference => (is => 'ro', isa => 'Paws::CloudDirectory::ObjectReference', required => 1);
 

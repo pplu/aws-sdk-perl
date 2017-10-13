@@ -1,7 +1,7 @@
 
 package Paws::ElasticTranscoder::UpdatePipelineNotifications;
   use Moose;
-  has Id => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'Id' , required => 1);
+  has Id => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'Id', required => 1);
   has Notifications => (is => 'ro', isa => 'Paws::ElasticTranscoder::Notifications', required => 1);
 
   use MooseX::ClassAttribute;

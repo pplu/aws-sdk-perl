@@ -3,7 +3,7 @@ package Paws::Lambda::PublishVersion;
   use Moose;
   has CodeSha256 => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
-  has FunctionName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'FunctionName' , required => 1);
+  has FunctionName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'FunctionName', required => 1);
 
   use MooseX::ClassAttribute;
 

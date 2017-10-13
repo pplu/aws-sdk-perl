@@ -4,7 +4,7 @@ package Paws::Lambda::UpdateEventSourceMapping;
   has BatchSize => (is => 'ro', isa => 'Int');
   has Enabled => (is => 'ro', isa => 'Bool');
   has FunctionName => (is => 'ro', isa => 'Str');
-  has UUID => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'UUID' , required => 1);
+  has UUID => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'UUID', required => 1);
 
   use MooseX::ClassAttribute;
 

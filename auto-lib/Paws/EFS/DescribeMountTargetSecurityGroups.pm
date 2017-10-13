@@ -1,7 +1,7 @@
 
 package Paws::EFS::DescribeMountTargetSecurityGroups;
   use Moose;
-  has MountTargetId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'MountTargetId' , required => 1);
+  has MountTargetId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'MountTargetId', required => 1);
 
   use MooseX::ClassAttribute;
 

@@ -1,9 +1,9 @@
 
 package Paws::Glacier::InitiateVaultLock;
   use Moose;
-  has AccountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'accountId' , required => 1);
-  has Policy => (is => 'ro', isa => 'Paws::Glacier::VaultLockPolicy');
-  has VaultName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'vaultName' , required => 1);
+  has AccountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'accountId', required => 1);
+  has Policy => (is => 'ro', isa => 'Paws::Glacier::VaultLockPolicy', traits => ['NameInRequest'], request_name => 'policy');
+  has VaultName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'vaultName', required => 1);
 
   use MooseX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => 'Policy');

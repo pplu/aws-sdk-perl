@@ -1,10 +1,10 @@
 
 package Paws::Greengrass::CreateDeployment;
   use Moose;
-  has AmznClientToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'X-Amzn-Client-Token' );
+  has AmznClientToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'X-Amzn-Client-Token');
   has DeploymentId => (is => 'ro', isa => 'Str');
   has DeploymentType => (is => 'ro', isa => 'Str');
-  has GroupId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'GroupId' , required => 1);
+  has GroupId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'GroupId', required => 1);
   has GroupVersionId => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;

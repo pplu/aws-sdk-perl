@@ -1,7 +1,7 @@
 
 package Paws::WorkDocs::CreateUser;
   use Moose;
-  has AuthenticationToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Authentication' );
+  has AuthenticationToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Authentication');
   has EmailAddress => (is => 'ro', isa => 'Str');
   has GivenName => (is => 'ro', isa => 'Str', required => 1);
   has OrganizationId => (is => 'ro', isa => 'Str');

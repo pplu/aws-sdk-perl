@@ -1,9 +1,9 @@
 
 package Paws::ES::DescribeElasticsearchInstanceTypeLimits;
   use Moose;
-  has DomainName => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'domainName' );
-  has ElasticsearchVersion => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'ElasticsearchVersion' , required => 1);
-  has InstanceType => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'InstanceType' , required => 1);
+  has DomainName => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'domainName');
+  has ElasticsearchVersion => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'ElasticsearchVersion', required => 1);
+  has InstanceType => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'InstanceType', required => 1);
 
   use MooseX::ClassAttribute;
 

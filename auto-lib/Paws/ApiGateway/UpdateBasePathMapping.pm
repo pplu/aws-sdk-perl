@@ -1,9 +1,9 @@
 
 package Paws::ApiGateway::UpdateBasePathMapping;
   use Moose;
-  has BasePath => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'basePath' , required => 1);
-  has DomainName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'domainName' , required => 1);
-  has PatchOperations => (is => 'ro', isa => 'ArrayRef[Paws::ApiGateway::PatchOperation]');
+  has BasePath => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'basePath', required => 1);
+  has DomainName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'domainName', required => 1);
+  has PatchOperations => (is => 'ro', isa => 'ArrayRef[Paws::ApiGateway::PatchOperation]', traits => ['NameInRequest'], request_name => 'patchOperations');
 
   use MooseX::ClassAttribute;
 

@@ -1,7 +1,7 @@
 
 package Paws::IoT::DescribeThingType;
   use Moose;
-  has ThingTypeName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'thingTypeName' , required => 1);
+  has ThingTypeName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'thingTypeName', required => 1);
 
   use MooseX::ClassAttribute;
 

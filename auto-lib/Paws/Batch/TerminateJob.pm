@@ -1,8 +1,8 @@
 
 package Paws::Batch::TerminateJob;
   use Moose;
-  has JobId => (is => 'ro', isa => 'Str', required => 1);
-  has Reason => (is => 'ro', isa => 'Str', required => 1);
+  has JobId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'jobId', required => 1);
+  has Reason => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'reason', required => 1);
 
   use MooseX::ClassAttribute;
 

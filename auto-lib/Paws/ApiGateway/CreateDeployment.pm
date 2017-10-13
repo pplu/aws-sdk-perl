@@ -1,13 +1,13 @@
 
 package Paws::ApiGateway::CreateDeployment;
   use Moose;
-  has CacheClusterEnabled => (is => 'ro', isa => 'Bool');
-  has CacheClusterSize => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restApiId' , required => 1);
-  has StageDescription => (is => 'ro', isa => 'Str');
-  has StageName => (is => 'ro', isa => 'Str');
-  has Variables => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString');
+  has CacheClusterEnabled => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'cacheClusterEnabled');
+  has CacheClusterSize => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cacheClusterSize');
+  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
+  has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restApiId', required => 1);
+  has StageDescription => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'stageDescription');
+  has StageName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'stageName');
+  has Variables => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['NameInRequest'], request_name => 'variables');
 
   use MooseX::ClassAttribute;
 

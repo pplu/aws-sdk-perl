@@ -1,7 +1,7 @@
 
 package Paws::EFS::CreateTags;
   use Moose;
-  has FileSystemId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'FileSystemId' , required => 1);
+  has FileSystemId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'FileSystemId', required => 1);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EFS::Tag]', required => 1);
 
   use MooseX::ClassAttribute;

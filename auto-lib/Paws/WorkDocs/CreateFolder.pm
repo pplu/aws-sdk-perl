@@ -1,7 +1,7 @@
 
 package Paws::WorkDocs::CreateFolder;
   use Moose;
-  has AuthenticationToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Authentication' );
+  has AuthenticationToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Authentication');
   has Name => (is => 'ro', isa => 'Str');
   has ParentFolderId => (is => 'ro', isa => 'Str', required => 1);
 

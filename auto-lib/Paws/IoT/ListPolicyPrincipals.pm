@@ -1,10 +1,10 @@
 
 package Paws::IoT::ListPolicyPrincipals;
   use Moose;
-  has AscendingOrder => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'ascendingOrder' );
-  has Marker => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'marker' );
-  has PageSize => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'pageSize' );
-  has PolicyName => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'policyName' , required => 1);
+  has AscendingOrder => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'ascendingOrder');
+  has Marker => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'marker');
+  has PageSize => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'pageSize');
+  has PolicyName => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'policyName', required => 1);
 
   use MooseX::ClassAttribute;
 

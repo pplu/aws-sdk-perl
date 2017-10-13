@@ -1,8 +1,8 @@
 
 package Paws::Greengrass::GetGroupVersion;
   use Moose;
-  has GroupId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'GroupId' , required => 1);
-  has GroupVersionId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'GroupVersionId' , required => 1);
+  has GroupId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'GroupId', required => 1);
+  has GroupVersionId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'GroupVersionId', required => 1);
 
   use MooseX::ClassAttribute;
 

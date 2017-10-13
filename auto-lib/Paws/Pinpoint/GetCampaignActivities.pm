@@ -1,10 +1,10 @@
 
 package Paws::Pinpoint::GetCampaignActivities;
   use Moose;
-  has ApplicationId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'application-id' , required => 1);
-  has CampaignId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'campaign-id' , required => 1);
-  has PageSize => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'page-size' );
-  has Token => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'token' );
+  has ApplicationId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'application-id', required => 1);
+  has CampaignId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'campaign-id', required => 1);
+  has PageSize => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'page-size');
+  has Token => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'token');
 
   use MooseX::ClassAttribute;
 

@@ -1,8 +1,8 @@
 
 package Paws::WorkDocs::UpdateFolder;
   use Moose;
-  has AuthenticationToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Authentication' );
-  has FolderId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'FolderId' , required => 1);
+  has AuthenticationToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Authentication');
+  has FolderId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'FolderId', required => 1);
   has Name => (is => 'ro', isa => 'Str');
   has ParentFolderId => (is => 'ro', isa => 'Str');
   has ResourceState => (is => 'ro', isa => 'Str');

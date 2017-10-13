@@ -1,10 +1,10 @@
 
 package Paws::Glacier::InitiateMultipartUpload;
   use Moose;
-  has AccountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'accountId' , required => 1);
-  has ArchiveDescription => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'archiveDescription' );
-  has PartSize => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'partSize' );
-  has VaultName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'vaultName' , required => 1);
+  has AccountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'accountId', required => 1);
+  has ArchiveDescription => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'archiveDescription');
+  has PartSize => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'partSize');
+  has VaultName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'vaultName', required => 1);
 
   use MooseX::ClassAttribute;
 

@@ -1,7 +1,7 @@
 
 package Paws::CloudDirectory::ApplySchema;
   use Moose;
-  has DirectoryArn => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-data-partition' , required => 1);
+  has DirectoryArn => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-data-partition', required => 1);
   has PublishedSchemaArn => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;

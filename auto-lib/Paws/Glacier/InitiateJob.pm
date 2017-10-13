@@ -1,9 +1,9 @@
 
 package Paws::Glacier::InitiateJob;
   use Moose;
-  has AccountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'accountId' , required => 1);
-  has JobParameters => (is => 'ro', isa => 'Paws::Glacier::JobParameters');
-  has VaultName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'vaultName' , required => 1);
+  has AccountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'accountId', required => 1);
+  has JobParameters => (is => 'ro', isa => 'Paws::Glacier::JobParameters', traits => ['NameInRequest'], request_name => 'jobParameters');
+  has VaultName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'vaultName', required => 1);
 
   use MooseX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => 'JobParameters');

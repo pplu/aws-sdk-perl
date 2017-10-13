@@ -1,11 +1,11 @@
 
 package Paws::Batch::RegisterJobDefinition;
   use Moose;
-  has ContainerProperties => (is => 'ro', isa => 'Paws::Batch::ContainerProperties');
-  has JobDefinitionName => (is => 'ro', isa => 'Str', required => 1);
-  has Parameters => (is => 'ro', isa => 'Paws::Batch::ParametersMap');
-  has RetryStrategy => (is => 'ro', isa => 'Paws::Batch::RetryStrategy');
-  has Type => (is => 'ro', isa => 'Str', required => 1);
+  has ContainerProperties => (is => 'ro', isa => 'Paws::Batch::ContainerProperties', traits => ['NameInRequest'], request_name => 'containerProperties');
+  has JobDefinitionName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'jobDefinitionName', required => 1);
+  has Parameters => (is => 'ro', isa => 'Paws::Batch::ParametersMap', traits => ['NameInRequest'], request_name => 'parameters');
+  has RetryStrategy => (is => 'ro', isa => 'Paws::Batch::RetryStrategy', traits => ['NameInRequest'], request_name => 'retryStrategy');
+  has Type => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'type', required => 1);
 
   use MooseX::ClassAttribute;
 

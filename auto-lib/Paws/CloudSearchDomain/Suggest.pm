@@ -1,9 +1,9 @@
 
 package Paws::CloudSearchDomain::Suggest;
   use Moose;
-  has Query => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'query' , required => 1);
-  has Size => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'size' );
-  has Suggester => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'suggester' , required => 1);
+  has Query => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'query', required => 1);
+  has Size => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'size');
+  has Suggester => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'suggester', required => 1);
 
   use MooseX::ClassAttribute;
 

@@ -2,7 +2,7 @@
 package Paws::CloudDirectory::UpdateObjectAttributes;
   use Moose;
   has AttributeUpdates => (is => 'ro', isa => 'ArrayRef[Paws::CloudDirectory::ObjectAttributeUpdate]', required => 1);
-  has DirectoryArn => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-data-partition' , required => 1);
+  has DirectoryArn => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-data-partition', required => 1);
   has ObjectReference => (is => 'ro', isa => 'Paws::CloudDirectory::ObjectReference', required => 1);
 
   use MooseX::ClassAttribute;

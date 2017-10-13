@@ -1,9 +1,9 @@
 
 package Paws::MobileHub::ExportBundle;
   use Moose;
-  has BundleId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'bundleId' , required => 1);
-  has Platform => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'platform' );
-  has ProjectId => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'projectId' );
+  has BundleId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'bundleId', required => 1);
+  has Platform => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'platform');
+  has ProjectId => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'projectId');
 
   use MooseX::ClassAttribute;
 

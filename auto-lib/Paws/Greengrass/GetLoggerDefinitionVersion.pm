@@ -1,8 +1,8 @@
 
 package Paws::Greengrass::GetLoggerDefinitionVersion;
   use Moose;
-  has LoggerDefinitionId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'LoggerDefinitionId' , required => 1);
-  has LoggerDefinitionVersionId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'LoggerDefinitionVersionId' , required => 1);
+  has LoggerDefinitionId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'LoggerDefinitionId', required => 1);
+  has LoggerDefinitionVersionId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'LoggerDefinitionVersionId', required => 1);
 
   use MooseX::ClassAttribute;
 

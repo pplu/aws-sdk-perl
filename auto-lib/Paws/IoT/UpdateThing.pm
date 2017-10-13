@@ -1,11 +1,11 @@
 
 package Paws::IoT::UpdateThing;
   use Moose;
-  has AttributePayload => (is => 'ro', isa => 'Paws::IoT::AttributePayload');
-  has ExpectedVersion => (is => 'ro', isa => 'Int');
-  has RemoveThingType => (is => 'ro', isa => 'Bool');
-  has ThingName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'thingName' , required => 1);
-  has ThingTypeName => (is => 'ro', isa => 'Str');
+  has AttributePayload => (is => 'ro', isa => 'Paws::IoT::AttributePayload', traits => ['NameInRequest'], request_name => 'attributePayload');
+  has ExpectedVersion => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'expectedVersion');
+  has RemoveThingType => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'removeThingType');
+  has ThingName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'thingName', required => 1);
+  has ThingTypeName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'thingTypeName');
 
   use MooseX::ClassAttribute;
 

@@ -1,8 +1,8 @@
 
 package Paws::IoT::CreateCertificateFromCsr;
   use Moose;
-  has CertificateSigningRequest => (is => 'ro', isa => 'Str', required => 1);
-  has SetAsActive => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'setAsActive' );
+  has CertificateSigningRequest => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'certificateSigningRequest', required => 1);
+  has SetAsActive => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'setAsActive');
 
   use MooseX::ClassAttribute;
 

@@ -1,7 +1,7 @@
 
 package Paws::Greengrass::UpdateCoreDefinition;
   use Moose;
-  has CoreDefinitionId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'CoreDefinitionId' , required => 1);
+  has CoreDefinitionId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'CoreDefinitionId', required => 1);
   has Name => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;

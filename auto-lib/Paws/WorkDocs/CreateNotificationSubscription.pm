@@ -2,7 +2,7 @@
 package Paws::WorkDocs::CreateNotificationSubscription;
   use Moose;
   has Endpoint => (is => 'ro', isa => 'Str', required => 1);
-  has OrganizationId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'OrganizationId' , required => 1);
+  has OrganizationId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'OrganizationId', required => 1);
   has Protocol => (is => 'ro', isa => 'Str', required => 1);
   has SubscriptionType => (is => 'ro', isa => 'Str', required => 1);
 

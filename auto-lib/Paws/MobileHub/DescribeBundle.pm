@@ -1,7 +1,7 @@
 
 package Paws::MobileHub::DescribeBundle;
   use Moose;
-  has BundleId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'bundleId' , required => 1);
+  has BundleId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'bundleId', required => 1);
 
   use MooseX::ClassAttribute;
 

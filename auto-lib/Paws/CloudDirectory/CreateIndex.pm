@@ -1,7 +1,7 @@
 
 package Paws::CloudDirectory::CreateIndex;
   use Moose;
-  has DirectoryArn => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-data-partition' , required => 1);
+  has DirectoryArn => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-data-partition', required => 1);
   has IsUnique => (is => 'ro', isa => 'Bool', required => 1);
   has LinkName => (is => 'ro', isa => 'Str');
   has OrderedIndexedAttributeList => (is => 'ro', isa => 'ArrayRef[Paws::CloudDirectory::AttributeKey]', required => 1);

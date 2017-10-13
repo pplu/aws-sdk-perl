@@ -1,9 +1,9 @@
 
 package Paws::Batch::DescribeComputeEnvironments;
   use Moose;
-  has ComputeEnvironments => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has MaxResults => (is => 'ro', isa => 'Int');
-  has NextToken => (is => 'ro', isa => 'Str');
+  has ComputeEnvironments => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'computeEnvironments');
+  has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults');
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
 
   use MooseX::ClassAttribute;
 

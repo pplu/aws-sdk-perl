@@ -2,7 +2,7 @@
 package Paws::Greengrass::UpdateGroupCertificateConfiguration;
   use Moose;
   has CertificateExpiryInMilliseconds => (is => 'ro', isa => 'Str');
-  has GroupId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'GroupId' , required => 1);
+  has GroupId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'GroupId', required => 1);
 
   use MooseX::ClassAttribute;
 

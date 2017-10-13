@@ -1,7 +1,7 @@
 
 package Paws::IoT::CreateKeysAndCertificate;
   use Moose;
-  has SetAsActive => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'setAsActive' );
+  has SetAsActive => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'setAsActive');
 
   use MooseX::ClassAttribute;
 

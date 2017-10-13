@@ -1,8 +1,8 @@
 
 package Paws::LexModels::DeleteBotVersion;
   use Moose;
-  has Name => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'name' , required => 1);
-  has Version => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'version' , required => 1);
+  has Name => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'name', required => 1);
+  has Version => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'version', required => 1);
 
   use MooseX::ClassAttribute;
 

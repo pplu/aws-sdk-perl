@@ -1,9 +1,9 @@
 
 package Paws::IoT::CreatePolicyVersion;
   use Moose;
-  has PolicyDocument => (is => 'ro', isa => 'Str', required => 1);
-  has PolicyName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'policyName' , required => 1);
-  has SetAsDefault => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'setAsDefault' );
+  has PolicyDocument => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'policyDocument', required => 1);
+  has PolicyName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'policyName', required => 1);
+  has SetAsDefault => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'setAsDefault');
 
   use MooseX::ClassAttribute;
 

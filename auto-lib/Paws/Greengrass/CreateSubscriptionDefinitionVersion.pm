@@ -1,8 +1,8 @@
 
 package Paws::Greengrass::CreateSubscriptionDefinitionVersion;
   use Moose;
-  has AmznClientToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'X-Amzn-Client-Token' );
-  has SubscriptionDefinitionId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'SubscriptionDefinitionId' , required => 1);
+  has AmznClientToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'X-Amzn-Client-Token');
+  has SubscriptionDefinitionId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'SubscriptionDefinitionId', required => 1);
   has Subscriptions => (is => 'ro', isa => 'ArrayRef[Paws::Greengrass::Subscription]');
 
   use MooseX::ClassAttribute;

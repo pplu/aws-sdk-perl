@@ -1,10 +1,10 @@
 
 package Paws::IoT::ListTopicRules;
   use Moose;
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'maxResults' );
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nextToken' );
-  has RuleDisabled => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'ruleDisabled' );
-  has Topic => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'topic' );
+  has MaxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'maxResults');
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nextToken');
+  has RuleDisabled => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'ruleDisabled');
+  has Topic => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'topic');
 
   use MooseX::ClassAttribute;
 

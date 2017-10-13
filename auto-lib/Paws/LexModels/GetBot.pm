@@ -1,8 +1,8 @@
 
 package Paws::LexModels::GetBot;
   use Moose;
-  has Name => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'name' , required => 1);
-  has VersionOrAlias => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'versionOrAlias' , required => 1);
+  has Name => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'name', required => 1);
+  has VersionOrAlias => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'versionOrAlias', required => 1);
 
   use MooseX::ClassAttribute;
 

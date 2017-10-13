@@ -1,9 +1,9 @@
 
 package Paws::ApiGateway::CreateDocumentationPart;
   use Moose;
-  has Location => (is => 'ro', isa => 'Paws::ApiGateway::DocumentationPartLocation', required => 1);
-  has Properties => (is => 'ro', isa => 'Str', required => 1);
-  has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restApiId' , required => 1);
+  has Location => (is => 'ro', isa => 'Paws::ApiGateway::DocumentationPartLocation', traits => ['NameInRequest'], request_name => 'location', required => 1);
+  has Properties => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'properties', required => 1);
+  has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restApiId', required => 1);
 
   use MooseX::ClassAttribute;
 

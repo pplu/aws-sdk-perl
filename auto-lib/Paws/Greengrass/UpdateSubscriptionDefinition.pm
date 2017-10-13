@@ -2,7 +2,7 @@
 package Paws::Greengrass::UpdateSubscriptionDefinition;
   use Moose;
   has Name => (is => 'ro', isa => 'Str');
-  has SubscriptionDefinitionId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'SubscriptionDefinitionId' , required => 1);
+  has SubscriptionDefinitionId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'SubscriptionDefinitionId', required => 1);
 
   use MooseX::ClassAttribute;
 

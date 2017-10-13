@@ -4,7 +4,7 @@ package Paws::CloudDirectory::UpdateFacet;
   has AttributeUpdates => (is => 'ro', isa => 'ArrayRef[Paws::CloudDirectory::FacetAttributeUpdate]');
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has ObjectType => (is => 'ro', isa => 'Str');
-  has SchemaArn => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-data-partition' , required => 1);
+  has SchemaArn => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-data-partition', required => 1);
 
   use MooseX::ClassAttribute;
 

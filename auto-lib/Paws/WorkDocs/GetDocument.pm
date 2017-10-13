@@ -1,9 +1,9 @@
 
 package Paws::WorkDocs::GetDocument;
   use Moose;
-  has AuthenticationToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Authentication' );
-  has DocumentId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'DocumentId' , required => 1);
-  has IncludeCustomMetadata => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'includeCustomMetadata' );
+  has AuthenticationToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Authentication');
+  has DocumentId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'DocumentId', required => 1);
+  has IncludeCustomMetadata => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'includeCustomMetadata');
 
   use MooseX::ClassAttribute;
 

@@ -1,8 +1,8 @@
 
 package Paws::ApiGateway::GetDomainNames;
   use Moose;
-  has Limit => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'limit' );
-  has Position => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'position' );
+  has Limit => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'limit');
+  has Position => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'position');
 
   use MooseX::ClassAttribute;
 

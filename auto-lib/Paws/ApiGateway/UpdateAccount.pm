@@ -1,7 +1,7 @@
 
 package Paws::ApiGateway::UpdateAccount;
   use Moose;
-  has PatchOperations => (is => 'ro', isa => 'ArrayRef[Paws::ApiGateway::PatchOperation]');
+  has PatchOperations => (is => 'ro', isa => 'ArrayRef[Paws::ApiGateway::PatchOperation]', traits => ['NameInRequest'], request_name => 'patchOperations');
 
   use MooseX::ClassAttribute;
 

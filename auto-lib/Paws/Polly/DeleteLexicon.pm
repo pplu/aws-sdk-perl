@@ -1,7 +1,7 @@
 
 package Paws::Polly::DeleteLexicon;
   use Moose;
-  has Name => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'LexiconName' , required => 1);
+  has Name => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'LexiconName', required => 1);
 
   use MooseX::ClassAttribute;
 

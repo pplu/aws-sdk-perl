@@ -1,8 +1,8 @@
 
 package Paws::Greengrass::GetCoreDefinitionVersion;
   use Moose;
-  has CoreDefinitionId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'CoreDefinitionId' , required => 1);
-  has CoreDefinitionVersionId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'CoreDefinitionVersionId' , required => 1);
+  has CoreDefinitionId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'CoreDefinitionId', required => 1);
+  has CoreDefinitionVersionId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'CoreDefinitionVersionId', required => 1);
 
   use MooseX::ClassAttribute;
 

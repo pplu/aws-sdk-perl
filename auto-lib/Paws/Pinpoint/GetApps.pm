@@ -1,8 +1,8 @@
 
 package Paws::Pinpoint::GetApps;
   use Moose;
-  has PageSize => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'page-size' );
-  has Token => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'token' );
+  has PageSize => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'page-size');
+  has Token => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'token');
 
   use MooseX::ClassAttribute;
 

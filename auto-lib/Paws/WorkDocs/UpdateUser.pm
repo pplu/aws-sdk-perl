@@ -1,14 +1,14 @@
 
 package Paws::WorkDocs::UpdateUser;
   use Moose;
-  has AuthenticationToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Authentication' );
+  has AuthenticationToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Authentication');
   has GivenName => (is => 'ro', isa => 'Str');
   has Locale => (is => 'ro', isa => 'Str');
   has StorageRule => (is => 'ro', isa => 'Paws::WorkDocs::StorageRuleType');
   has Surname => (is => 'ro', isa => 'Str');
   has TimeZoneId => (is => 'ro', isa => 'Str');
   has Type => (is => 'ro', isa => 'Str');
-  has UserId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'UserId' , required => 1);
+  has UserId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'UserId', required => 1);
 
   use MooseX::ClassAttribute;
 

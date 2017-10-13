@@ -1,10 +1,10 @@
 
 package Paws::WorkDocs::RemoveResourcePermission;
   use Moose;
-  has AuthenticationToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Authentication' );
-  has PrincipalId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'PrincipalId' , required => 1);
-  has PrincipalType => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'type' );
-  has ResourceId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'ResourceId' , required => 1);
+  has AuthenticationToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Authentication');
+  has PrincipalId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'PrincipalId', required => 1);
+  has PrincipalType => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'type');
+  has ResourceId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'ResourceId', required => 1);
 
   use MooseX::ClassAttribute;
 

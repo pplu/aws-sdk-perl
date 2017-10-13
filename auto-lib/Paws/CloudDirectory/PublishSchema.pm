@@ -1,7 +1,7 @@
 
 package Paws::CloudDirectory::PublishSchema;
   use Moose;
-  has DevelopmentSchemaArn => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-data-partition' , required => 1);
+  has DevelopmentSchemaArn => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-data-partition', required => 1);
   has Name => (is => 'ro', isa => 'Str');
   has Version => (is => 'ro', isa => 'Str', required => 1);
 

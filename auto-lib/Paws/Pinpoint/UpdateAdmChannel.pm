@@ -2,7 +2,7 @@
 package Paws::Pinpoint::UpdateAdmChannel;
   use Moose;
   has ADMChannelRequest => (is => 'ro', isa => 'Paws::Pinpoint::ADMChannelRequest', required => 1);
-  has ApplicationId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'application-id' , required => 1);
+  has ApplicationId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'application-id', required => 1);
 
   use MooseX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => 'ADMChannelRequest');

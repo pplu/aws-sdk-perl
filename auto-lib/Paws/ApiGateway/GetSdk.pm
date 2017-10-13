@@ -1,10 +1,10 @@
 
 package Paws::ApiGateway::GetSdk;
   use Moose;
-  has Parameters => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['ParamInQuery'], query_name => 'parameters' );
-  has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restApiId' , required => 1);
-  has SdkType => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'sdkType' , required => 1);
-  has StageName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'stageName' , required => 1);
+  has Parameters => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['ParamInQuery'], query_name => 'parameters');
+  has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restApiId', required => 1);
+  has SdkType => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'sdkType', required => 1);
+  has StageName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'stageName', required => 1);
 
   use MooseX::ClassAttribute;
 

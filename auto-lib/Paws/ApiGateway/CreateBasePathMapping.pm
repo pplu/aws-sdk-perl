@@ -1,10 +1,10 @@
 
 package Paws::ApiGateway::CreateBasePathMapping;
   use Moose;
-  has BasePath => (is => 'ro', isa => 'Str');
-  has DomainName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'domainName' , required => 1);
-  has RestApiId => (is => 'ro', isa => 'Str', required => 1);
-  has Stage => (is => 'ro', isa => 'Str');
+  has BasePath => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'basePath');
+  has DomainName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'domainName', required => 1);
+  has RestApiId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'restApiId', required => 1);
+  has Stage => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'stage');
 
   use MooseX::ClassAttribute;
 

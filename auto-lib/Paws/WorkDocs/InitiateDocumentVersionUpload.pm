@@ -1,7 +1,7 @@
 
 package Paws::WorkDocs::InitiateDocumentVersionUpload;
   use Moose;
-  has AuthenticationToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Authentication' );
+  has AuthenticationToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Authentication');
   has ContentCreatedTimestamp => (is => 'ro', isa => 'Str');
   has ContentModifiedTimestamp => (is => 'ro', isa => 'Str');
   has ContentType => (is => 'ro', isa => 'Str');

@@ -2,7 +2,7 @@
 package Paws::Lambda::UpdateFunctionCode;
   use Moose;
   has DryRun => (is => 'ro', isa => 'Bool');
-  has FunctionName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'FunctionName' , required => 1);
+  has FunctionName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'FunctionName', required => 1);
   has Publish => (is => 'ro', isa => 'Bool');
   has S3Bucket => (is => 'ro', isa => 'Str');
   has S3Key => (is => 'ro', isa => 'Str');

@@ -1,7 +1,7 @@
 
 package Paws::Pinpoint::PutEventStream;
   use Moose;
-  has ApplicationId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'application-id' , required => 1);
+  has ApplicationId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'application-id', required => 1);
   has WriteEventStream => (is => 'ro', isa => 'Paws::Pinpoint::WriteEventStream', required => 1);
 
   use MooseX::ClassAttribute;

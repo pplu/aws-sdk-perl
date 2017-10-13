@@ -1,8 +1,8 @@
 
 package Paws::IoT::RejectCertificateTransfer;
   use Moose;
-  has CertificateId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'certificateId' , required => 1);
-  has RejectReason => (is => 'ro', isa => 'Str');
+  has CertificateId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'certificateId', required => 1);
+  has RejectReason => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'rejectReason');
 
   use MooseX::ClassAttribute;
 

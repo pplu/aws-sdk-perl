@@ -2,7 +2,7 @@
 package Paws::Polly::PutLexicon;
   use Moose;
   has Content => (is => 'ro', isa => 'Str', required => 1);
-  has Name => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'LexiconName' , required => 1);
+  has Name => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'LexiconName', required => 1);
 
   use MooseX::ClassAttribute;
 

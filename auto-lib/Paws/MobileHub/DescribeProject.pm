@@ -1,8 +1,8 @@
 
 package Paws::MobileHub::DescribeProject;
   use Moose;
-  has ProjectId => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'projectId' , required => 1);
-  has SyncFromResources => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'syncFromResources' );
+  has ProjectId => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'projectId', required => 1);
+  has SyncFromResources => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'syncFromResources');
 
   use MooseX::ClassAttribute;
 

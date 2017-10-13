@@ -1,20 +1,20 @@
 
 package Paws::CloudSearchDomain::Search;
   use Moose;
-  has Cursor => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'cursor' );
-  has Expr => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'expr' );
-  has Facet => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'facet' );
-  has FilterQuery => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'filterQuery' );
-  has Highlight => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'highlight' );
-  has Partial => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'partial' );
-  has Query => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'query' , required => 1);
-  has QueryOptions => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'queryOptions' );
-  has QueryParser => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'queryParser' );
-  has Return => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'return' );
-  has Size => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'size' );
-  has Sort => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'sort' );
-  has Start => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'start' );
-  has Stats => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'stats' );
+  has Cursor => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'cursor');
+  has Expr => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'expr');
+  has Facet => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'facet');
+  has FilterQuery => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'filterQuery');
+  has Highlight => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'highlight');
+  has Partial => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'partial');
+  has Query => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'query', required => 1);
+  has QueryOptions => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'queryOptions');
+  has QueryParser => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'queryParser');
+  has Return => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'return');
+  has Size => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'size');
+  has Sort => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'sort');
+  has Start => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'start');
+  has Stats => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'stats');
 
   use MooseX::ClassAttribute;
 

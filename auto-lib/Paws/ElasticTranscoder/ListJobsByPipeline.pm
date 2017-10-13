@@ -1,9 +1,9 @@
 
 package Paws::ElasticTranscoder::ListJobsByPipeline;
   use Moose;
-  has Ascending => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'Ascending' );
-  has PageToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'PageToken' );
-  has PipelineId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'PipelineId' , required => 1);
+  has Ascending => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'Ascending');
+  has PageToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'PageToken');
+  has PipelineId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'PipelineId', required => 1);
 
   use MooseX::ClassAttribute;
 

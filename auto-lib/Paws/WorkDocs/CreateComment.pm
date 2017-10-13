@@ -1,13 +1,13 @@
 
 package Paws::WorkDocs::CreateComment;
   use Moose;
-  has AuthenticationToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Authentication' );
-  has DocumentId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'DocumentId' , required => 1);
+  has AuthenticationToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Authentication');
+  has DocumentId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'DocumentId', required => 1);
   has NotifyCollaborators => (is => 'ro', isa => 'Bool');
   has ParentId => (is => 'ro', isa => 'Str');
   has Text => (is => 'ro', isa => 'Str', required => 1);
   has ThreadId => (is => 'ro', isa => 'Str');
-  has VersionId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'VersionId' , required => 1);
+  has VersionId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'VersionId', required => 1);
   has Visibility => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
