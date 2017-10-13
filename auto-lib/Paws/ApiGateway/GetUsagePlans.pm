@@ -1,9 +1,9 @@
 
 package Paws::ApiGateway::GetUsagePlans;
   use Moose;
-  has KeyId => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'keyId' );
-  has Limit => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'limit' );
-  has Position => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'position' );
+  has KeyId => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'keyId');
+  has Limit => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'limit');
+  has Position => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'position');
 
   use MooseX::ClassAttribute;
 

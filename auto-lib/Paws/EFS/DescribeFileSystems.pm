@@ -1,10 +1,10 @@
 
 package Paws::EFS::DescribeFileSystems;
   use Moose;
-  has CreationToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'CreationToken' );
-  has FileSystemId => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'FileSystemId' );
-  has Marker => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'Marker' );
-  has MaxItems => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'MaxItems' );
+  has CreationToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'CreationToken');
+  has FileSystemId => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'FileSystemId');
+  has Marker => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'Marker');
+  has MaxItems => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'MaxItems');
 
   use MooseX::ClassAttribute;
 

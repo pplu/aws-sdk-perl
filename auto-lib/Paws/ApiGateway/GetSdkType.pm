@@ -1,7 +1,7 @@
 
 package Paws::ApiGateway::GetSdkType;
   use Moose;
-  has Id => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'id' , required => 1);
+  has Id => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'id', required => 1);
 
   use MooseX::ClassAttribute;
 

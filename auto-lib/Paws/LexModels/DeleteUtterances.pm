@@ -1,8 +1,8 @@
 
 package Paws::LexModels::DeleteUtterances;
   use Moose;
-  has BotName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'botName' , required => 1);
-  has UserId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'userId' , required => 1);
+  has BotName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'botName', required => 1);
+  has UserId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'userId', required => 1);
 
   use MooseX::ClassAttribute;
 

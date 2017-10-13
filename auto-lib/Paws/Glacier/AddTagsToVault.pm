@@ -1,9 +1,9 @@
 
 package Paws::Glacier::AddTagsToVault;
   use Moose;
-  has AccountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'accountId' , required => 1);
+  has AccountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'accountId', required => 1);
   has Tags => (is => 'ro', isa => 'Paws::Glacier::TagMap');
-  has VaultName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'vaultName' , required => 1);
+  has VaultName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'vaultName', required => 1);
 
   use MooseX::ClassAttribute;
 

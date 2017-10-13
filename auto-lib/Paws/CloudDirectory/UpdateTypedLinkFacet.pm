@@ -4,7 +4,7 @@ package Paws::CloudDirectory::UpdateTypedLinkFacet;
   has AttributeUpdates => (is => 'ro', isa => 'ArrayRef[Paws::CloudDirectory::TypedLinkFacetAttributeUpdate]', required => 1);
   has IdentityAttributeOrder => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
   has Name => (is => 'ro', isa => 'Str', required => 1);
-  has SchemaArn => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-data-partition' , required => 1);
+  has SchemaArn => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-data-partition', required => 1);
 
   use MooseX::ClassAttribute;
 

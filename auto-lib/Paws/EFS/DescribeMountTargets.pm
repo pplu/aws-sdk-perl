@@ -1,10 +1,10 @@
 
 package Paws::EFS::DescribeMountTargets;
   use Moose;
-  has FileSystemId => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'FileSystemId' );
-  has Marker => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'Marker' );
-  has MaxItems => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'MaxItems' );
-  has MountTargetId => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'MountTargetId' );
+  has FileSystemId => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'FileSystemId');
+  has Marker => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'Marker');
+  has MaxItems => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'MaxItems');
+  has MountTargetId => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'MountTargetId');
 
   use MooseX::ClassAttribute;
 

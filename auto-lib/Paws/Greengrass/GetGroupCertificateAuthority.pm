@@ -1,8 +1,8 @@
 
 package Paws::Greengrass::GetGroupCertificateAuthority;
   use Moose;
-  has CertificateAuthorityId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'CertificateAuthorityId' , required => 1);
-  has GroupId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'GroupId' , required => 1);
+  has CertificateAuthorityId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'CertificateAuthorityId', required => 1);
+  has GroupId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'GroupId', required => 1);
 
   use MooseX::ClassAttribute;
 

@@ -1,14 +1,14 @@
 
 package Paws::LexRuntime::PostContent;
   use Moose;
-  has Accept => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'accept' );
-  has BotAlias => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'botAlias' , required => 1);
-  has BotName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'botName' , required => 1);
-  has ContentType => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'contentType' , required => 1);
-  has InputStream => (is => 'ro', isa => 'Str', required => 1);
-  has RequestAttributes => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'requestAttributes' );
-  has SessionAttributes => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'sessionAttributes' );
-  has UserId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'userId' , required => 1);
+  has Accept => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'accept');
+  has BotAlias => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'botAlias', required => 1);
+  has BotName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'botName', required => 1);
+  has ContentType => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'contentType', required => 1);
+  has InputStream => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'inputStream', required => 1);
+  has RequestAttributes => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'requestAttributes');
+  has SessionAttributes => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'sessionAttributes');
+  has UserId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'userId', required => 1);
 
   use MooseX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => 'InputStream');

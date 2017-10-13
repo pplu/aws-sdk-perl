@@ -1,10 +1,10 @@
 
 package Paws::Batch::ListJobs;
   use Moose;
-  has JobQueue => (is => 'ro', isa => 'Str', required => 1);
-  has JobStatus => (is => 'ro', isa => 'Str');
-  has MaxResults => (is => 'ro', isa => 'Int');
-  has NextToken => (is => 'ro', isa => 'Str');
+  has JobQueue => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'jobQueue', required => 1);
+  has JobStatus => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'jobStatus');
+  has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults');
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
 
   use MooseX::ClassAttribute;
 

@@ -1,8 +1,8 @@
 
 package Paws::Pinpoint::GetImportJob;
   use Moose;
-  has ApplicationId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'application-id' , required => 1);
-  has JobId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'job-id' , required => 1);
+  has ApplicationId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'application-id', required => 1);
+  has JobId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'job-id', required => 1);
 
   use MooseX::ClassAttribute;
 

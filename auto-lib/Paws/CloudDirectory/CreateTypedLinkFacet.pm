@@ -2,7 +2,7 @@
 package Paws::CloudDirectory::CreateTypedLinkFacet;
   use Moose;
   has Facet => (is => 'ro', isa => 'Paws::CloudDirectory::TypedLinkFacet', required => 1);
-  has SchemaArn => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-data-partition' , required => 1);
+  has SchemaArn => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-data-partition', required => 1);
 
   use MooseX::ClassAttribute;
 

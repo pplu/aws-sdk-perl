@@ -1,8 +1,8 @@
 
 package Paws::Greengrass::GetSubscriptionDefinitionVersion;
   use Moose;
-  has SubscriptionDefinitionId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'SubscriptionDefinitionId' , required => 1);
-  has SubscriptionDefinitionVersionId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'SubscriptionDefinitionVersionId' , required => 1);
+  has SubscriptionDefinitionId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'SubscriptionDefinitionId', required => 1);
+  has SubscriptionDefinitionVersionId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'SubscriptionDefinitionVersionId', required => 1);
 
   use MooseX::ClassAttribute;
 

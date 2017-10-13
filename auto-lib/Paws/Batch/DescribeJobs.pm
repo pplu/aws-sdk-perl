@@ -1,7 +1,7 @@
 
 package Paws::Batch::DescribeJobs;
   use Moose;
-  has Jobs => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
+  has Jobs => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'jobs', required => 1);
 
   use MooseX::ClassAttribute;
 

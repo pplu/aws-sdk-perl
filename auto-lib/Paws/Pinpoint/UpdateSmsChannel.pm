@@ -1,7 +1,7 @@
 
 package Paws::Pinpoint::UpdateSmsChannel;
   use Moose;
-  has ApplicationId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'application-id' , required => 1);
+  has ApplicationId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'application-id', required => 1);
   has SMSChannelRequest => (is => 'ro', isa => 'Paws::Pinpoint::SMSChannelRequest', required => 1);
 
   use MooseX::ClassAttribute;

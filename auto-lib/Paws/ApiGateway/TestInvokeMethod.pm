@@ -1,14 +1,14 @@
 
 package Paws::ApiGateway::TestInvokeMethod;
   use Moose;
-  has Body => (is => 'ro', isa => 'Str');
-  has ClientCertificateId => (is => 'ro', isa => 'Str');
-  has Headers => (is => 'ro', isa => 'Paws::ApiGateway::MapOfHeaderValues');
-  has HttpMethod => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'httpMethod' , required => 1);
-  has PathWithQueryString => (is => 'ro', isa => 'Str');
-  has ResourceId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'resourceId' , required => 1);
-  has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restApiId' , required => 1);
-  has StageVariables => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString');
+  has Body => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'body');
+  has ClientCertificateId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientCertificateId');
+  has Headers => (is => 'ro', isa => 'Paws::ApiGateway::MapOfHeaderValues', traits => ['NameInRequest'], request_name => 'headers');
+  has HttpMethod => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'httpMethod', required => 1);
+  has PathWithQueryString => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'pathWithQueryString');
+  has ResourceId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'resourceId', required => 1);
+  has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restApiId', required => 1);
+  has StageVariables => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['NameInRequest'], request_name => 'stageVariables');
 
   use MooseX::ClassAttribute;
 

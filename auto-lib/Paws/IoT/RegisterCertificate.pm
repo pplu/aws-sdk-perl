@@ -1,10 +1,10 @@
 
 package Paws::IoT::RegisterCertificate;
   use Moose;
-  has CaCertificatePem => (is => 'ro', isa => 'Str');
-  has CertificatePem => (is => 'ro', isa => 'Str', required => 1);
-  has SetAsActive => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'setAsActive' );
-  has Status => (is => 'ro', isa => 'Str');
+  has CaCertificatePem => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'caCertificatePem');
+  has CertificatePem => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'certificatePem', required => 1);
+  has SetAsActive => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'setAsActive');
+  has Status => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'status');
 
   use MooseX::ClassAttribute;
 

@@ -1,7 +1,7 @@
 
 package Paws::Pinpoint::UpdateBaiduChannel;
   use Moose;
-  has ApplicationId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'application-id' , required => 1);
+  has ApplicationId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'application-id', required => 1);
   has BaiduChannelRequest => (is => 'ro', isa => 'Paws::Pinpoint::BaiduChannelRequest', required => 1);
 
   use MooseX::ClassAttribute;

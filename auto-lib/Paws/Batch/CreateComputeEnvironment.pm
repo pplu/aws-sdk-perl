@@ -1,11 +1,11 @@
 
 package Paws::Batch::CreateComputeEnvironment;
   use Moose;
-  has ComputeEnvironmentName => (is => 'ro', isa => 'Str', required => 1);
-  has ComputeResources => (is => 'ro', isa => 'Paws::Batch::ComputeResource');
-  has ServiceRole => (is => 'ro', isa => 'Str', required => 1);
-  has State => (is => 'ro', isa => 'Str');
-  has Type => (is => 'ro', isa => 'Str', required => 1);
+  has ComputeEnvironmentName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'computeEnvironmentName', required => 1);
+  has ComputeResources => (is => 'ro', isa => 'Paws::Batch::ComputeResource', traits => ['NameInRequest'], request_name => 'computeResources');
+  has ServiceRole => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'serviceRole', required => 1);
+  has State => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'state');
+  has Type => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'type', required => 1);
 
   use MooseX::ClassAttribute;
 

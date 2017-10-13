@@ -1,7 +1,7 @@
 
 package Paws::Greengrass::UpdateDeviceDefinition;
   use Moose;
-  has DeviceDefinitionId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'DeviceDefinitionId' , required => 1);
+  has DeviceDefinitionId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'DeviceDefinitionId', required => 1);
   has Name => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;

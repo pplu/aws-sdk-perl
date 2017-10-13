@@ -1,7 +1,7 @@
 
 package Paws::LexModels::GetBuiltinIntent;
   use Moose;
-  has Signature => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'signature' , required => 1);
+  has Signature => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'signature', required => 1);
 
   use MooseX::ClassAttribute;
 

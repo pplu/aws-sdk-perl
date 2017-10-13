@@ -2,7 +2,7 @@
 package Paws::CloudDirectory::AttachTypedLink;
   use Moose;
   has Attributes => (is => 'ro', isa => 'ArrayRef[Paws::CloudDirectory::AttributeNameAndValue]', required => 1);
-  has DirectoryArn => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-data-partition' , required => 1);
+  has DirectoryArn => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-data-partition', required => 1);
   has SourceObjectReference => (is => 'ro', isa => 'Paws::CloudDirectory::ObjectReference', required => 1);
   has TargetObjectReference => (is => 'ro', isa => 'Paws::CloudDirectory::ObjectReference', required => 1);
   has TypedLinkFacet => (is => 'ro', isa => 'Paws::CloudDirectory::TypedLinkSchemaAndFacetName', required => 1);

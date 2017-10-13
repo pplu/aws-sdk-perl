@@ -2,7 +2,7 @@
 package Paws::CognitoSync::SetIdentityPoolConfiguration;
   use Moose;
   has CognitoStreams => (is => 'ro', isa => 'Paws::CognitoSync::CognitoStreams');
-  has IdentityPoolId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'IdentityPoolId' , required => 1);
+  has IdentityPoolId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'IdentityPoolId', required => 1);
   has PushSync => (is => 'ro', isa => 'Paws::CognitoSync::PushSync');
 
   use MooseX::ClassAttribute;

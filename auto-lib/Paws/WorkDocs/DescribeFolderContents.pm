@@ -1,14 +1,14 @@
 
 package Paws::WorkDocs::DescribeFolderContents;
   use Moose;
-  has AuthenticationToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Authentication' );
-  has FolderId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'FolderId' , required => 1);
-  has Include => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'include' );
-  has Limit => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'limit' );
-  has Marker => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'marker' );
-  has Order => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'order' );
-  has Sort => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'sort' );
-  has Type => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'type' );
+  has AuthenticationToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Authentication');
+  has FolderId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'FolderId', required => 1);
+  has Include => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'include');
+  has Limit => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'limit');
+  has Marker => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'marker');
+  has Order => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'order');
+  has Sort => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'sort');
+  has Type => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'type');
 
   use MooseX::ClassAttribute;
 

@@ -1,8 +1,8 @@
 
 package Paws::Polly::DescribeVoices;
   use Moose;
-  has LanguageCode => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'LanguageCode' );
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'NextToken' );
+  has LanguageCode => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'LanguageCode');
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'NextToken');
 
   use MooseX::ClassAttribute;
 

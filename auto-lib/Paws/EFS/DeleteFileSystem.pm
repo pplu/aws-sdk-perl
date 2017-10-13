@@ -1,7 +1,7 @@
 
 package Paws::EFS::DeleteFileSystem;
   use Moose;
-  has FileSystemId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'FileSystemId' , required => 1);
+  has FileSystemId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'FileSystemId', required => 1);
 
   use MooseX::ClassAttribute;
 

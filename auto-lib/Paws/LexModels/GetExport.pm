@@ -1,10 +1,10 @@
 
 package Paws::LexModels::GetExport;
   use Moose;
-  has ExportType => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'exportType' , required => 1);
-  has Name => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'name' , required => 1);
-  has ResourceType => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'resourceType' , required => 1);
-  has Version => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'version' , required => 1);
+  has ExportType => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'exportType', required => 1);
+  has Name => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'name', required => 1);
+  has ResourceType => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'resourceType', required => 1);
+  has Version => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'version', required => 1);
 
   use MooseX::ClassAttribute;
 

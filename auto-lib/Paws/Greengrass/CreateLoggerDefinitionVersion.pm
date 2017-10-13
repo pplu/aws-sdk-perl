@@ -1,8 +1,8 @@
 
 package Paws::Greengrass::CreateLoggerDefinitionVersion;
   use Moose;
-  has AmznClientToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'X-Amzn-Client-Token' );
-  has LoggerDefinitionId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'LoggerDefinitionId' , required => 1);
+  has AmznClientToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'X-Amzn-Client-Token');
+  has LoggerDefinitionId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'LoggerDefinitionId', required => 1);
   has Loggers => (is => 'ro', isa => 'ArrayRef[Paws::Greengrass::Logger]');
 
   use MooseX::ClassAttribute;

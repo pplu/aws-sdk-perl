@@ -1,7 +1,7 @@
 
 package Paws::Lambda::DeleteEventSourceMapping;
   use Moose;
-  has UUID => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'UUID' , required => 1);
+  has UUID => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'UUID', required => 1);
 
   use MooseX::ClassAttribute;
 

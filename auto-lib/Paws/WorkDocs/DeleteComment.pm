@@ -1,10 +1,10 @@
 
 package Paws::WorkDocs::DeleteComment;
   use Moose;
-  has AuthenticationToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Authentication' );
-  has CommentId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'CommentId' , required => 1);
-  has DocumentId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'DocumentId' , required => 1);
-  has VersionId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'VersionId' , required => 1);
+  has AuthenticationToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Authentication');
+  has CommentId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'CommentId', required => 1);
+  has DocumentId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'DocumentId', required => 1);
+  has VersionId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'VersionId', required => 1);
 
   use MooseX::ClassAttribute;
 

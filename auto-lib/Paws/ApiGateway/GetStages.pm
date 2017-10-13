@@ -1,8 +1,8 @@
 
 package Paws::ApiGateway::GetStages;
   use Moose;
-  has DeploymentId => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'deploymentId' );
-  has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restApiId' , required => 1);
+  has DeploymentId => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'deploymentId');
+  has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restApiId', required => 1);
 
   use MooseX::ClassAttribute;
 

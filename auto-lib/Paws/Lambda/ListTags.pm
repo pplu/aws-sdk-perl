@@ -1,7 +1,7 @@
 
 package Paws::Lambda::ListTags;
   use Moose;
-  has Resource => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'ARN' , required => 1);
+  has Resource => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'ARN', required => 1);
 
   use MooseX::ClassAttribute;
 

@@ -1,8 +1,8 @@
 
 package Paws::IoT::DeprecateThingType;
   use Moose;
-  has ThingTypeName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'thingTypeName' , required => 1);
-  has UndoDeprecate => (is => 'ro', isa => 'Bool');
+  has ThingTypeName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'thingTypeName', required => 1);
+  has UndoDeprecate => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'undoDeprecate');
 
   use MooseX::ClassAttribute;
 

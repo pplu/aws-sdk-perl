@@ -2,7 +2,7 @@
 package Paws::CloudDirectory::ListIncomingTypedLinks;
   use Moose;
   has ConsistencyLevel => (is => 'ro', isa => 'Str');
-  has DirectoryArn => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-data-partition' , required => 1);
+  has DirectoryArn => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-data-partition', required => 1);
   has FilterAttributeRanges => (is => 'ro', isa => 'ArrayRef[Paws::CloudDirectory::TypedLinkAttributeRange]');
   has FilterTypedLink => (is => 'ro', isa => 'Paws::CloudDirectory::TypedLinkSchemaAndFacetName');
   has MaxResults => (is => 'ro', isa => 'Int');

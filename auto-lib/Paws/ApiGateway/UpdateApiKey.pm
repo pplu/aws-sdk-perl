@@ -1,8 +1,8 @@
 
 package Paws::ApiGateway::UpdateApiKey;
   use Moose;
-  has ApiKey => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'apiKey' , required => 1);
-  has PatchOperations => (is => 'ro', isa => 'ArrayRef[Paws::ApiGateway::PatchOperation]');
+  has ApiKey => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'apiKey', required => 1);
+  has PatchOperations => (is => 'ro', isa => 'ArrayRef[Paws::ApiGateway::PatchOperation]', traits => ['NameInRequest'], request_name => 'patchOperations');
 
   use MooseX::ClassAttribute;
 

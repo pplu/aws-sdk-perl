@@ -1,8 +1,8 @@
 
 package Paws::IoT::CreatePolicy;
   use Moose;
-  has PolicyDocument => (is => 'ro', isa => 'Str', required => 1);
-  has PolicyName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'policyName' , required => 1);
+  has PolicyDocument => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'policyDocument', required => 1);
+  has PolicyName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'policyName', required => 1);
 
   use MooseX::ClassAttribute;
 

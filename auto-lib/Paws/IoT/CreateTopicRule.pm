@@ -1,8 +1,8 @@
 
 package Paws::IoT::CreateTopicRule;
   use Moose;
-  has RuleName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'ruleName' , required => 1);
-  has TopicRulePayload => (is => 'ro', isa => 'Paws::IoT::TopicRulePayload', required => 1);
+  has RuleName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'ruleName', required => 1);
+  has TopicRulePayload => (is => 'ro', isa => 'Paws::IoT::TopicRulePayload', traits => ['NameInRequest'], request_name => 'topicRulePayload', required => 1);
 
   use MooseX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => 'TopicRulePayload');

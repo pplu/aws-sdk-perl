@@ -1,7 +1,7 @@
 
 package Paws::Greengrass::DeleteSubscriptionDefinition;
   use Moose;
-  has SubscriptionDefinitionId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'SubscriptionDefinitionId' , required => 1);
+  has SubscriptionDefinitionId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'SubscriptionDefinitionId', required => 1);
 
   use MooseX::ClassAttribute;
 

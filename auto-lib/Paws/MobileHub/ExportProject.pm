@@ -1,7 +1,7 @@
 
 package Paws::MobileHub::ExportProject;
   use Moose;
-  has ProjectId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'projectId' , required => 1);
+  has ProjectId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'projectId', required => 1);
 
   use MooseX::ClassAttribute;
 

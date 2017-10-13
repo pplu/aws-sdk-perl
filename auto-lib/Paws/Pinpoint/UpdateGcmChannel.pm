@@ -1,7 +1,7 @@
 
 package Paws::Pinpoint::UpdateGcmChannel;
   use Moose;
-  has ApplicationId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'application-id' , required => 1);
+  has ApplicationId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'application-id', required => 1);
   has GCMChannelRequest => (is => 'ro', isa => 'Paws::Pinpoint::GCMChannelRequest', required => 1);
 
   use MooseX::ClassAttribute;

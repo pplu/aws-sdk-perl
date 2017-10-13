@@ -1,9 +1,9 @@
 
 package Paws::IoT::CreateThing;
   use Moose;
-  has AttributePayload => (is => 'ro', isa => 'Paws::IoT::AttributePayload');
-  has ThingName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'thingName' , required => 1);
-  has ThingTypeName => (is => 'ro', isa => 'Str');
+  has AttributePayload => (is => 'ro', isa => 'Paws::IoT::AttributePayload', traits => ['NameInRequest'], request_name => 'attributePayload');
+  has ThingName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'thingName', required => 1);
+  has ThingTypeName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'thingTypeName');
 
   use MooseX::ClassAttribute;
 

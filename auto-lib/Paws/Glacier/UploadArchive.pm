@@ -1,11 +1,11 @@
 
 package Paws::Glacier::UploadArchive;
   use Moose;
-  has AccountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'accountId' , required => 1);
-  has ArchiveDescription => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'archiveDescription' );
-  has Body => (is => 'ro', isa => 'Str');
-  has Checksum => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'checksum' );
-  has VaultName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'vaultName' , required => 1);
+  has AccountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'accountId', required => 1);
+  has ArchiveDescription => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'archiveDescription');
+  has Body => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'body');
+  has Checksum => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'checksum');
+  has VaultName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'vaultName', required => 1);
 
   use MooseX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => 'Body');

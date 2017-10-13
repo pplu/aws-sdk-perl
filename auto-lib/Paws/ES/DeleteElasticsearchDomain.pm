@@ -1,7 +1,7 @@
 
 package Paws::ES::DeleteElasticsearchDomain;
   use Moose;
-  has DomainName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'DomainName' , required => 1);
+  has DomainName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'DomainName', required => 1);
 
   use MooseX::ClassAttribute;
 

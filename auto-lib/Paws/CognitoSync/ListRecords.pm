@@ -1,13 +1,13 @@
 
 package Paws::CognitoSync::ListRecords;
   use Moose;
-  has DatasetName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'DatasetName' , required => 1);
-  has IdentityId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'IdentityId' , required => 1);
-  has IdentityPoolId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'IdentityPoolId' , required => 1);
-  has LastSyncCount => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'lastSyncCount' );
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'maxResults' );
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nextToken' );
-  has SyncSessionToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'syncSessionToken' );
+  has DatasetName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'DatasetName', required => 1);
+  has IdentityId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'IdentityId', required => 1);
+  has IdentityPoolId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'IdentityPoolId', required => 1);
+  has LastSyncCount => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'lastSyncCount');
+  has MaxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'maxResults');
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nextToken');
+  has SyncSessionToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'syncSessionToken');
 
   use MooseX::ClassAttribute;
 

@@ -1,7 +1,7 @@
 
 package Paws::ApiGateway::GenerateClientCertificate;
   use Moose;
-  has Description => (is => 'ro', isa => 'Str');
+  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
 
   use MooseX::ClassAttribute;
 

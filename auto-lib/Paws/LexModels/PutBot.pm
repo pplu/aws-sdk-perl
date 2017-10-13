@@ -1,17 +1,17 @@
 
 package Paws::LexModels::PutBot;
   use Moose;
-  has AbortStatement => (is => 'ro', isa => 'Paws::LexModels::Statement');
-  has Checksum => (is => 'ro', isa => 'Str');
-  has ChildDirected => (is => 'ro', isa => 'Bool', required => 1);
-  has ClarificationPrompt => (is => 'ro', isa => 'Paws::LexModels::Prompt');
-  has Description => (is => 'ro', isa => 'Str');
-  has IdleSessionTTLInSeconds => (is => 'ro', isa => 'Int');
-  has Intents => (is => 'ro', isa => 'ArrayRef[Paws::LexModels::Intent]');
-  has Locale => (is => 'ro', isa => 'Str', required => 1);
-  has Name => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'name' , required => 1);
-  has ProcessBehavior => (is => 'ro', isa => 'Str');
-  has VoiceId => (is => 'ro', isa => 'Str');
+  has AbortStatement => (is => 'ro', isa => 'Paws::LexModels::Statement', traits => ['NameInRequest'], request_name => 'abortStatement');
+  has Checksum => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'checksum');
+  has ChildDirected => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'childDirected', required => 1);
+  has ClarificationPrompt => (is => 'ro', isa => 'Paws::LexModels::Prompt', traits => ['NameInRequest'], request_name => 'clarificationPrompt');
+  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
+  has IdleSessionTTLInSeconds => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'idleSessionTTLInSeconds');
+  has Intents => (is => 'ro', isa => 'ArrayRef[Paws::LexModels::Intent]', traits => ['NameInRequest'], request_name => 'intents');
+  has Locale => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'locale', required => 1);
+  has Name => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'name', required => 1);
+  has ProcessBehavior => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'processBehavior');
+  has VoiceId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'voiceId');
 
   use MooseX::ClassAttribute;
 

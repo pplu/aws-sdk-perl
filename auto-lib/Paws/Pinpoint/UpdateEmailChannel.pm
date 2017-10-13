@@ -1,7 +1,7 @@
 
 package Paws::Pinpoint::UpdateEmailChannel;
   use Moose;
-  has ApplicationId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'application-id' , required => 1);
+  has ApplicationId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'application-id', required => 1);
   has EmailChannelRequest => (is => 'ro', isa => 'Paws::Pinpoint::EmailChannelRequest', required => 1);
 
   use MooseX::ClassAttribute;

@@ -1,7 +1,7 @@
 
 package Paws::ES::ListTags;
   use Moose;
-  has ARN => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'arn' , required => 1);
+  has ARN => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'arn', required => 1);
 
   use MooseX::ClassAttribute;
 

@@ -1,10 +1,10 @@
 
 package Paws::ApiGateway::CreateDocumentationVersion;
   use Moose;
-  has Description => (is => 'ro', isa => 'Str');
-  has DocumentationVersion => (is => 'ro', isa => 'Str', required => 1);
-  has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restApiId' , required => 1);
-  has StageName => (is => 'ro', isa => 'Str');
+  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
+  has DocumentationVersion => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'documentationVersion', required => 1);
+  has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restApiId', required => 1);
+  has StageName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'stageName');
 
   use MooseX::ClassAttribute;
 

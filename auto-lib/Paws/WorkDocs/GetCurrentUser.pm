@@ -1,7 +1,7 @@
 
 package Paws::WorkDocs::GetCurrentUser;
   use Moose;
-  has AuthenticationToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Authentication' , required => 1);
+  has AuthenticationToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Authentication', required => 1);
 
   use MooseX::ClassAttribute;
 

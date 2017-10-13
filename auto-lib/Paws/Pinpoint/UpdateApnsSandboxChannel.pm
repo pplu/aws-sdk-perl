@@ -2,7 +2,7 @@
 package Paws::Pinpoint::UpdateApnsSandboxChannel;
   use Moose;
   has APNSSandboxChannelRequest => (is => 'ro', isa => 'Paws::Pinpoint::APNSSandboxChannelRequest', required => 1);
-  has ApplicationId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'application-id' , required => 1);
+  has ApplicationId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'application-id', required => 1);
 
   use MooseX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => 'APNSSandboxChannelRequest');

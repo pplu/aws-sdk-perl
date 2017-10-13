@@ -1,7 +1,7 @@
 
 package Paws::IoT::SetLoggingOptions;
   use Moose;
-  has LoggingOptionsPayload => (is => 'ro', isa => 'Paws::IoT::LoggingOptionsPayload', required => 1);
+  has LoggingOptionsPayload => (is => 'ro', isa => 'Paws::IoT::LoggingOptionsPayload', traits => ['NameInRequest'], request_name => 'loggingOptionsPayload', required => 1);
 
   use MooseX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => 'LoggingOptionsPayload');

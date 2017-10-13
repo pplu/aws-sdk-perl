@@ -1,10 +1,10 @@
 
 package Paws::Batch::UpdateJobQueue;
   use Moose;
-  has ComputeEnvironmentOrder => (is => 'ro', isa => 'ArrayRef[Paws::Batch::ComputeEnvironmentOrder]');
-  has JobQueue => (is => 'ro', isa => 'Str', required => 1);
-  has Priority => (is => 'ro', isa => 'Int');
-  has State => (is => 'ro', isa => 'Str');
+  has ComputeEnvironmentOrder => (is => 'ro', isa => 'ArrayRef[Paws::Batch::ComputeEnvironmentOrder]', traits => ['NameInRequest'], request_name => 'computeEnvironmentOrder');
+  has JobQueue => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'jobQueue', required => 1);
+  has Priority => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'priority');
+  has State => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'state');
 
   use MooseX::ClassAttribute;
 

@@ -1,11 +1,11 @@
 
 package Paws::Greengrass::CreateGroupVersion;
   use Moose;
-  has AmznClientToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'X-Amzn-Client-Token' );
+  has AmznClientToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'X-Amzn-Client-Token');
   has CoreDefinitionVersionArn => (is => 'ro', isa => 'Str');
   has DeviceDefinitionVersionArn => (is => 'ro', isa => 'Str');
   has FunctionDefinitionVersionArn => (is => 'ro', isa => 'Str');
-  has GroupId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'GroupId' , required => 1);
+  has GroupId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'GroupId', required => 1);
   has LoggerDefinitionVersionArn => (is => 'ro', isa => 'Str');
   has SubscriptionDefinitionVersionArn => (is => 'ro', isa => 'Str');
 

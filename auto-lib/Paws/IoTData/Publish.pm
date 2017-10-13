@@ -1,9 +1,9 @@
 
 package Paws::IoTData::Publish;
   use Moose;
-  has Payload => (is => 'ro', isa => 'Str');
-  has Qos => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'qos' );
-  has Topic => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'topic' , required => 1);
+  has Payload => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'payload');
+  has Qos => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'qos');
+  has Topic => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'topic', required => 1);
 
   use MooseX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => 'Payload');

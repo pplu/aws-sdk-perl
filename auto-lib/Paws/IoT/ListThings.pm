@@ -1,11 +1,11 @@
 
 package Paws::IoT::ListThings;
   use Moose;
-  has AttributeName => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'attributeName' );
-  has AttributeValue => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'attributeValue' );
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'maxResults' );
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nextToken' );
-  has ThingTypeName => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'thingTypeName' );
+  has AttributeName => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'attributeName');
+  has AttributeValue => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'attributeValue');
+  has MaxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'maxResults');
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nextToken');
+  has ThingTypeName => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'thingTypeName');
 
   use MooseX::ClassAttribute;
 

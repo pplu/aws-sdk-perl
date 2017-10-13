@@ -1,11 +1,11 @@
 
 package Paws::ApiGateway::GetExport;
   use Moose;
-  has Accepts => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'accepts' );
-  has ExportType => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'exportType' , required => 1);
-  has Parameters => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['ParamInQuery'], query_name => 'parameters' );
-  has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restApiId' , required => 1);
-  has StageName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'stageName' , required => 1);
+  has Accepts => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'accepts');
+  has ExportType => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'exportType', required => 1);
+  has Parameters => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['ParamInQuery'], query_name => 'parameters');
+  has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restApiId', required => 1);
+  has StageName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'stageName', required => 1);
 
   use MooseX::ClassAttribute;
 

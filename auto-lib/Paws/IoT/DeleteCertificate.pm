@@ -1,7 +1,7 @@
 
 package Paws::IoT::DeleteCertificate;
   use Moose;
-  has CertificateId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'certificateId' , required => 1);
+  has CertificateId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'certificateId', required => 1);
 
   use MooseX::ClassAttribute;
 

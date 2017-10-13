@@ -1,7 +1,7 @@
 
 package Paws::Glacier::SetDataRetrievalPolicy;
   use Moose;
-  has AccountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'accountId' , required => 1);
+  has AccountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'accountId', required => 1);
   has Policy => (is => 'ro', isa => 'Paws::Glacier::DataRetrievalPolicy');
 
   use MooseX::ClassAttribute;

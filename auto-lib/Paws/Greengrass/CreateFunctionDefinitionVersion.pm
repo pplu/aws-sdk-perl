@@ -1,8 +1,8 @@
 
 package Paws::Greengrass::CreateFunctionDefinitionVersion;
   use Moose;
-  has AmznClientToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'X-Amzn-Client-Token' );
-  has FunctionDefinitionId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'FunctionDefinitionId' , required => 1);
+  has AmznClientToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'X-Amzn-Client-Token');
+  has FunctionDefinitionId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'FunctionDefinitionId', required => 1);
   has Functions => (is => 'ro', isa => 'ArrayRef[Paws::Greengrass::Function]');
 
   use MooseX::ClassAttribute;

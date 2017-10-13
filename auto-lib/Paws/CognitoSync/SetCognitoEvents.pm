@@ -2,7 +2,7 @@
 package Paws::CognitoSync::SetCognitoEvents;
   use Moose;
   has Events => (is => 'ro', isa => 'Paws::CognitoSync::Events', required => 1);
-  has IdentityPoolId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'IdentityPoolId' , required => 1);
+  has IdentityPoolId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'IdentityPoolId', required => 1);
 
   use MooseX::ClassAttribute;
 

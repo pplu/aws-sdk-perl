@@ -1,10 +1,10 @@
 
 package Paws::Lambda::ListFunctions;
   use Moose;
-  has FunctionVersion => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'FunctionVersion' );
-  has Marker => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'Marker' );
-  has MasterRegion => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'MasterRegion' );
-  has MaxItems => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'MaxItems' );
+  has FunctionVersion => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'FunctionVersion');
+  has Marker => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'Marker');
+  has MasterRegion => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'MasterRegion');
+  has MaxItems => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'MaxItems');
 
   use MooseX::ClassAttribute;
 

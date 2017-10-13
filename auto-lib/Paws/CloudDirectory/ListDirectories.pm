@@ -3,7 +3,7 @@ package Paws::CloudDirectory::ListDirectories;
   use Moose;
   has MaxResults => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
-  has State => (is => 'ro', isa => 'Str');
+  has State => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'state');
 
   use MooseX::ClassAttribute;
 

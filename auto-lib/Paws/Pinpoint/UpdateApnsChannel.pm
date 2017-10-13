@@ -2,7 +2,7 @@
 package Paws::Pinpoint::UpdateApnsChannel;
   use Moose;
   has APNSChannelRequest => (is => 'ro', isa => 'Paws::Pinpoint::APNSChannelRequest', required => 1);
-  has ApplicationId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'application-id' , required => 1);
+  has ApplicationId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'application-id', required => 1);
 
   use MooseX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => 'APNSChannelRequest');

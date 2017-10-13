@@ -1,7 +1,7 @@
 
 package Paws::Greengrass::GetFunctionDefinition;
   use Moose;
-  has FunctionDefinitionId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'FunctionDefinitionId' , required => 1);
+  has FunctionDefinitionId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'FunctionDefinitionId', required => 1);
 
   use MooseX::ClassAttribute;
 

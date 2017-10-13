@@ -1,10 +1,10 @@
 
 package Paws::ApiGateway::CreateRequestValidator;
   use Moose;
-  has Name => (is => 'ro', isa => 'Str');
-  has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restApiId' , required => 1);
-  has ValidateRequestBody => (is => 'ro', isa => 'Bool');
-  has ValidateRequestParameters => (is => 'ro', isa => 'Bool');
+  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name');
+  has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restApiId', required => 1);
+  has ValidateRequestBody => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'validateRequestBody');
+  has ValidateRequestParameters => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'validateRequestParameters');
 
   use MooseX::ClassAttribute;
 

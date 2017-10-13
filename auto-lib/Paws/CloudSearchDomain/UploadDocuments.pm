@@ -1,8 +1,8 @@
 
 package Paws::CloudSearchDomain::UploadDocuments;
   use Moose;
-  has ContentType => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'contentType' , required => 1);
-  has Documents => (is => 'ro', isa => 'Str', required => 1);
+  has ContentType => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'contentType', required => 1);
+  has Documents => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'documents', required => 1);
 
   use MooseX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => 'Documents');

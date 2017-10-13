@@ -1,9 +1,9 @@
 
 package Paws::IoT::UpdateCACertificate;
   use Moose;
-  has CertificateId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'certificateId' , required => 1);
-  has NewAutoRegistrationStatus => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'newAutoRegistrationStatus' );
-  has NewStatus => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'newStatus' );
+  has CertificateId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'certificateId', required => 1);
+  has NewAutoRegistrationStatus => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'newAutoRegistrationStatus');
+  has NewStatus => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'newStatus');
 
   use MooseX::ClassAttribute;
 

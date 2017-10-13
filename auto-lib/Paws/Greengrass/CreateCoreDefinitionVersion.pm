@@ -1,8 +1,8 @@
 
 package Paws::Greengrass::CreateCoreDefinitionVersion;
   use Moose;
-  has AmznClientToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'X-Amzn-Client-Token' );
-  has CoreDefinitionId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'CoreDefinitionId' , required => 1);
+  has AmznClientToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'X-Amzn-Client-Token');
+  has CoreDefinitionId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'CoreDefinitionId', required => 1);
   has Cores => (is => 'ro', isa => 'ArrayRef[Paws::Greengrass::Core]');
 
   use MooseX::ClassAttribute;

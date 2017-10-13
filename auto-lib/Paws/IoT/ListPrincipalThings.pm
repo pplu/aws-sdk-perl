@@ -1,9 +1,9 @@
 
 package Paws::IoT::ListPrincipalThings;
   use Moose;
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'maxResults' );
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nextToken' );
-  has Principal => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'principal' , required => 1);
+  has MaxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'maxResults');
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nextToken');
+  has Principal => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'principal', required => 1);
 
   use MooseX::ClassAttribute;
 

@@ -1,16 +1,16 @@
 
 package Paws::WorkDocs::DescribeUsers;
   use Moose;
-  has AuthenticationToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Authentication' );
-  has Fields => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'fields' );
-  has Include => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'include' );
-  has Limit => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'limit' );
-  has Marker => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'marker' );
-  has Order => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'order' );
-  has OrganizationId => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'organizationId' );
-  has Query => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'query' );
-  has Sort => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'sort' );
-  has UserIds => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'userIds' );
+  has AuthenticationToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Authentication');
+  has Fields => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'fields');
+  has Include => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'include');
+  has Limit => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'limit');
+  has Marker => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'marker');
+  has Order => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'order');
+  has OrganizationId => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'organizationId');
+  has Query => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'query');
+  has Sort => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'sort');
+  has UserIds => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'userIds');
 
   use MooseX::ClassAttribute;
 

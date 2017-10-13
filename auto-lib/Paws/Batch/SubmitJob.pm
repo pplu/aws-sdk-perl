@@ -1,13 +1,13 @@
 
 package Paws::Batch::SubmitJob;
   use Moose;
-  has ContainerOverrides => (is => 'ro', isa => 'Paws::Batch::ContainerOverrides');
-  has DependsOn => (is => 'ro', isa => 'ArrayRef[Paws::Batch::JobDependency]');
-  has JobDefinition => (is => 'ro', isa => 'Str', required => 1);
-  has JobName => (is => 'ro', isa => 'Str', required => 1);
-  has JobQueue => (is => 'ro', isa => 'Str', required => 1);
-  has Parameters => (is => 'ro', isa => 'Paws::Batch::ParametersMap');
-  has RetryStrategy => (is => 'ro', isa => 'Paws::Batch::RetryStrategy');
+  has ContainerOverrides => (is => 'ro', isa => 'Paws::Batch::ContainerOverrides', traits => ['NameInRequest'], request_name => 'containerOverrides');
+  has DependsOn => (is => 'ro', isa => 'ArrayRef[Paws::Batch::JobDependency]', traits => ['NameInRequest'], request_name => 'dependsOn');
+  has JobDefinition => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'jobDefinition', required => 1);
+  has JobName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'jobName', required => 1);
+  has JobQueue => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'jobQueue', required => 1);
+  has Parameters => (is => 'ro', isa => 'Paws::Batch::ParametersMap', traits => ['NameInRequest'], request_name => 'parameters');
+  has RetryStrategy => (is => 'ro', isa => 'Paws::Batch::RetryStrategy', traits => ['NameInRequest'], request_name => 'retryStrategy');
 
   use MooseX::ClassAttribute;
 

@@ -1,7 +1,7 @@
 
 package Paws::Greengrass::UpdateLoggerDefinition;
   use Moose;
-  has LoggerDefinitionId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'LoggerDefinitionId' , required => 1);
+  has LoggerDefinitionId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'LoggerDefinitionId', required => 1);
   has Name => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;

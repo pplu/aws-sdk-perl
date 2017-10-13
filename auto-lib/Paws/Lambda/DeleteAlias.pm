@@ -1,8 +1,8 @@
 
 package Paws::Lambda::DeleteAlias;
   use Moose;
-  has FunctionName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'FunctionName' , required => 1);
-  has Name => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'Name' , required => 1);
+  has FunctionName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'FunctionName', required => 1);
+  has Name => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'Name', required => 1);
 
   use MooseX::ClassAttribute;
 

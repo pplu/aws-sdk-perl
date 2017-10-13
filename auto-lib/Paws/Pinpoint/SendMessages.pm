@@ -1,7 +1,7 @@
 
 package Paws::Pinpoint::SendMessages;
   use Moose;
-  has ApplicationId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'application-id' , required => 1);
+  has ApplicationId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'application-id', required => 1);
   has MessageRequest => (is => 'ro', isa => 'Paws::Pinpoint::MessageRequest', required => 1);
 
   use MooseX::ClassAttribute;

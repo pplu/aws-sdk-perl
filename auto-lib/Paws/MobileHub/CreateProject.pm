@@ -1,10 +1,10 @@
 
 package Paws::MobileHub::CreateProject;
   use Moose;
-  has Contents => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'name' );
-  has Region => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'region' );
-  has SnapshotId => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'snapshotId' );
+  has Contents => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'contents');
+  has Name => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'name');
+  has Region => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'region');
+  has SnapshotId => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'snapshotId');
 
   use MooseX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => 'Contents');
