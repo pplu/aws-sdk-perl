@@ -552,6 +552,29 @@ $test_params = {
 
 request_contentjson($test_params, $request);
 
+my $batch = $aws->service('Batch');
+
+$request = $batch->SubmitJob(
+  JobDefinition => 'X',
+  JobName => 'jname',
+  JobQueue => 'jqueue',
+  DependsOn => [ { JobId => 'job1' } ],
+  Parameters => { P1 => 1, P2 => 2 }
+);
+
+use Data::Dumper;
+print Dumper($request);
+
+$test_params = {
+  jobDefinition => 'X',
+  jobName => 'jname',
+  jobQueue => 'jqueue',
+  dependsOn => [ { jobId => 'job1' } ],
+  parameters => { P1 => 1, P2 => 2 }
+};
+
+request_contentjson($test_params, $request);
+
 my $r53 = $aws->service('Route53');
 
 $request = $r53->ListHealthChecks(
