@@ -65,8 +65,8 @@ C<Number>, and C<Binary>. For the C<Number> data type, you must use
 C<StringValue>.
 
 You can also append custom labels. For more information, see Message
-Attribute Data Types and Validation in the I<Amazon SQS Developer
-Guide>.
+Attribute Data Types and Validation in the I<Amazon Simple Queue
+Service Developer Guide>.
 
 
 =head2 StringListValues => ArrayRef[Str|Undef]

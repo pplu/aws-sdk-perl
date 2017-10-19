@@ -107,6 +107,11 @@ package Paws::SQS;
     my $call_object = $self->new_with_coercions('Paws::SQS::ListQueues', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListQueueTags {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SQS::ListQueueTags', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub PurgeQueue {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SQS::PurgeQueue', @_);
@@ -137,10 +142,20 @@ package Paws::SQS;
     my $call_object = $self->new_with_coercions('Paws::SQS::SetQueueAttributes', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub TagQueue {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SQS::TagQueue', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UntagQueue {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SQS::UntagQueue', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   
 
 
-  sub operations { qw/AddPermission ChangeMessageVisibility ChangeMessageVisibilityBatch CreateQueue DeleteMessage DeleteMessageBatch DeleteQueue GetQueueAttributes GetQueueUrl ListDeadLetterSourceQueues ListQueues PurgeQueue ReceiveMessage RemovePermission SendMessage SendMessageBatch SetQueueAttributes / }
+  sub operations { qw/AddPermission ChangeMessageVisibility ChangeMessageVisibilityBatch CreateQueue DeleteMessage DeleteMessageBatch DeleteQueue GetQueueAttributes GetQueueUrl ListDeadLetterSourceQueues ListQueues ListQueueTags PurgeQueue ReceiveMessage RemovePermission SendMessage SendMessageBatch SetQueueAttributes TagQueue UntagQueue / }
 
 1;
 
@@ -209,7 +224,7 @@ Amazon SQS Product Page
 
 =item *
 
-I<Amazon SQS Developer Guide>
+I<Amazon Simple Queue Service Developer Guide>
 
 =over
 
@@ -256,12 +271,13 @@ sharing access to the queue.
 When you create a queue, you have full control access rights for the
 queue. Only you, the owner of the queue, can grant or deny permissions
 to the queue. For more information about these permissions, see Shared
-Queues in the I<Amazon SQS Developer Guide>.
+Queues in the I<Amazon Simple Queue Service Developer Guide>.
 
 C<AddPermission> writes an Amazon-SQS-generated policy. If you want to
 write your own policy, use C< SetQueueAttributes > to upload your
 policy. For more information about writing your own policy, see Using
-The Access Policy Language in the I<Amazon SQS Developer Guide>.
+The Access Policy Language in the I<Amazon Simple Queue Service
+Developer Guide>.
 
 Some actions take lists of parameters. These lists are specified using
 the C<param.n> notation. Values of C<n> are integers starting from 1.
@@ -282,7 +298,8 @@ Returns: nothing
 new value. The maximum allowed timeout value is 12 hours. Thus, you
 can't extend the timeout of a message in an existing queue to more than
 a total visibility timeout of 12 hours. For more information, see
-Visibility Timeout in the I<Amazon SQS Developer Guide>.
+Visibility Timeout in the I<Amazon Simple Queue Service Developer
+Guide>.
 
 For example, you have a message with a visibility timeout of 5 minutes.
 After 3 minutes, you call C<ChangeMessageVisiblity> with a timeout of
@@ -364,8 +381,8 @@ You can't change the queue type after you create it and you can't
 convert an existing standard queue into a FIFO queue. You must either
 create a new FIFO queue for your application or delete your existing
 standard queue and recreate it as a FIFO queue. For more information,
-see Moving From a Standard Queue to a FIFO Queue in the I<Amazon SQS
-Developer Guide>.
+see Moving From a Standard Queue to a FIFO Queue in the I<Amazon Simple
+Queue Service Developer Guide>.
 
 =item *
 
@@ -519,8 +536,8 @@ To access a queue that belongs to another AWS account, use the
 C<QueueOwnerAWSAccountId> parameter to specify the account ID of the
 queue's owner. The queue's owner must grant you permission to access
 the queue. For more information about shared queue access, see C<
-AddPermission > or see Shared Queues in the I<Amazon SQS Developer
-Guide>.
+AddPermission > or see Shared Queues in the I<Amazon Simple Queue
+Service Developer Guide>.
 
 
 =head2 ListDeadLetterSourceQueues(QueueUrl => Str)
@@ -533,7 +550,8 @@ Returns: a L<Paws::SQS::ListDeadLetterSourceQueuesResult> instance
 attribute configured with a dead-letter queue.
 
 For more information about using dead-letter queues, see Using Amazon
-SQS Dead-Letter Queues in the I<Amazon SQS Developer Guide>.
+SQS Dead-Letter Queues in the I<Amazon Simple Queue Service Developer
+Guide>.
 
 
 =head2 ListQueues([QueueNamePrefix => Str])
@@ -546,6 +564,50 @@ Returns: a L<Paws::SQS::ListQueuesResult> instance
 returned is 1,000. If you specify a value for the optional
 C<QueueNamePrefix> parameter, only queues with a name that begins with
 the specified value are returned.
+
+
+=head2 ListQueueTags(QueueUrl => Str)
+
+Each argument is described in detail in: L<Paws::SQS::ListQueueTags>
+
+Returns: a L<Paws::SQS::ListQueueTagsResult> instance
+
+  List all cost allocation tags added to the specified Amazon SQS queue.
+For an overview, see Tagging Amazon SQS Queues in the I<Amazon Simple
+Queue Service Developer Guide>.
+
+When you use queue tags, keep the following guidelines in mind:
+
+=over
+
+=item *
+
+Adding more than 50 tags to a queue isn't recommended.
+
+=item *
+
+Tags don't have any semantic meaning. Amazon SQS interprets tags as
+character strings.
+
+=item *
+
+Tags are case-sensitive.
+
+=item *
+
+A new tag with a key identical to that of an existing tag overwrites
+the existing tag.
+
+=item *
+
+Tagging API actions are limited to 5 TPS per AWS account. If your
+application requires a higher throughput, file a technical support
+request.
+
+=back
+
+For a full list of tag restrictions, see Limits Related to Queues in
+the I<Amazon Simple Queue Service Developer Guide>.
 
 
 =head2 PurgeQueue(QueueUrl => Str)
@@ -575,8 +637,8 @@ Returns: a L<Paws::SQS::ReceiveMessageResult> instance
 
   Retrieves one or more messages (up to 10), from the specified queue.
 Using the C<WaitTimeSeconds> parameter enables long-poll support. For
-more information, see Amazon SQS Long Polling in the I<Amazon SQS
-Developer Guide>.
+more information, see Amazon SQS Long Polling in the I<Amazon Simple
+Queue Service Developer Guide>.
 
 Short poll is the default behavior where a weighted random set of
 machines is sampled on a C<ReceiveMessage> call. Thus, only the
@@ -620,14 +682,14 @@ An MD5 digest of the message attributes.
 
 The receipt handle is the identifier you must provide when deleting the
 message. For more information, see Queue and Message Identifiers in the
-I<Amazon SQS Developer Guide>.
+I<Amazon Simple Queue Service Developer Guide>.
 
 You can provide the C<VisibilityTimeout> parameter in your request. The
 parameter is applied to the messages that Amazon SQS returns in the
 response. If you don't include the parameter, the overall visibility
 timeout for the queue is used for the returned messages. For more
-information, see Visibility Timeout in the I<Amazon SQS Developer
-Guide>.
+information, see Visibility Timeout in the I<Amazon Simple Queue
+Service Developer Guide>.
 
 A message that isn't deleted or a message whose visibility isn't
 extended before the visibility timeout expires counts as a failed
@@ -722,6 +784,94 @@ minutes.
 In the future, new attributes might be added. If you write code that
 calls this action, we recommend that you structure your code so that it
 can handle new attributes gracefully.
+
+
+=head2 TagQueue(QueueUrl => Str, Tags => L<Paws::SQS::TagMap>)
+
+Each argument is described in detail in: L<Paws::SQS::TagQueue>
+
+Returns: nothing
+
+  Add cost allocation tags to the specified Amazon SQS queue. For an
+overview, see Tagging Amazon SQS Queues in the I<Amazon Simple Queue
+Service Developer Guide>.
+
+When you use queue tags, keep the following guidelines in mind:
+
+=over
+
+=item *
+
+Adding more than 50 tags to a queue isn't recommended.
+
+=item *
+
+Tags don't have any semantic meaning. Amazon SQS interprets tags as
+character strings.
+
+=item *
+
+Tags are case-sensitive.
+
+=item *
+
+A new tag with a key identical to that of an existing tag overwrites
+the existing tag.
+
+=item *
+
+Tagging API actions are limited to 5 TPS per AWS account. If your
+application requires a higher throughput, file a technical support
+request.
+
+=back
+
+For a full list of tag restrictions, see Limits Related to Queues in
+the I<Amazon Simple Queue Service Developer Guide>.
+
+
+=head2 UntagQueue(QueueUrl => Str, TagKeys => ArrayRef[Str|Undef])
+
+Each argument is described in detail in: L<Paws::SQS::UntagQueue>
+
+Returns: nothing
+
+  Remove cost allocation tags from the specified Amazon SQS queue. For an
+overview, see Tagging Amazon SQS Queues in the I<Amazon Simple Queue
+Service Developer Guide>.
+
+When you use queue tags, keep the following guidelines in mind:
+
+=over
+
+=item *
+
+Adding more than 50 tags to a queue isn't recommended.
+
+=item *
+
+Tags don't have any semantic meaning. Amazon SQS interprets tags as
+character strings.
+
+=item *
+
+Tags are case-sensitive.
+
+=item *
+
+A new tag with a key identical to that of an existing tag overwrites
+the existing tag.
+
+=item *
+
+Tagging API actions are limited to 5 TPS per AWS account. If your
+application requires a higher throughput, file a technical support
+request.
+
+=back
+
+For a full list of tag restrictions, see Limits Related to Queues in
+the I<Amazon Simple Queue Service Developer Guide>.
 
 
 

@@ -80,7 +80,8 @@ values: an integer from 0 to 20 (seconds). The default is 0.
 C<RedrivePolicy> - The string that includes the parameters for the
 dead-letter queue functionality of the source queue. For more
 information about the redrive policy and dead-letter queues, see Using
-Amazon SQS Dead-Letter Queues in the I<Amazon SQS Developer Guide>.
+Amazon SQS Dead-Letter Queues in the I<Amazon Simple Queue Service
+Developer Guide>.
 
 =over
 
@@ -106,7 +107,7 @@ standard queue.
 C<VisibilityTimeout> - The visibility timeout for the queue. Valid
 values: an integer from 0 to 43,200 (12 hours). The default is 30. For
 more information about the visibility timeout, see Visibility Timeout
-in the I<Amazon SQS Developer Guide>.
+in the I<Amazon Simple Queue Service Developer Guide>.
 
 =back
 
@@ -143,8 +144,8 @@ queues:
 =item *
 
 C<ContentBasedDeduplication> - Enables content-based deduplication. For
-more information, see Exactly-Once Processing in the I<Amazon SQS
-Developer Guide>.
+more information, see Exactly-Once Processing in the I<Amazon Simple
+Queue Service Developer Guide>.
 
 =over
 

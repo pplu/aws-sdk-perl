@@ -38,7 +38,7 @@ digest. For information about MD5, see RFC1321.
 
 An attribute containing the C<MessageId> of the message sent to the
 queue. For more information, see Queue and Message Identifiers in the
-I<Amazon SQS Developer Guide>.
+I<Amazon Simple Queue Service Developer Guide>.
 
 
 =head2 SequenceNumber => Str

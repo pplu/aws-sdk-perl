@@ -66,7 +66,7 @@ The C<Id>s of a batch request need to be unique within a request
 
   Each message attribute consists of a C<Name>, C<Type>, and C<Value>.
 For more information, see Message Attribute Items and Validation in the
-I<Amazon SQS Developer Guide>.
+I<Amazon Simple Queue Service Developer Guide>.
 
 
 =head2 B<REQUIRED> MessageBody => Str
@@ -83,7 +83,7 @@ deduplication interval. If a message with a particular
 C<MessageDeduplicationId> is sent successfully, subsequent messages
 with the same C<MessageDeduplicationId> are accepted successfully but
 aren't delivered. For more information, see Exactly-Once Processing in
-the I<Amazon SQS Developer Guide>.
+the I<Amazon Simple Queue Service Developer Guide>.
 
 =over
 

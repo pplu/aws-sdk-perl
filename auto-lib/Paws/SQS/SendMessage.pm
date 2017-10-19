@@ -55,7 +55,7 @@ You can set this parameter only on a queue level.
 
 Each message attribute consists of a C<Name>, C<Type>, and C<Value>.
 For more information, see Message Attribute Items and Validation in the
-I<Amazon SQS Developer Guide>.
+I<Amazon Simple Queue Service Developer Guide>.
 
 
 
@@ -82,8 +82,8 @@ The token used for deduplication of sent messages. If a message with a
 particular C<MessageDeduplicationId> is sent successfully, any messages
 sent with the same C<MessageDeduplicationId> are accepted successfully
 but aren't delivered during the 5-minute deduplication interval. For
-more information, see Exactly-Once Processing in the I<Amazon SQS
-Developer Guide>.
+more information, see Exactly-Once Processing in the I<Amazon Simple
+Queue Service Developer Guide>.
 
 =over
 
