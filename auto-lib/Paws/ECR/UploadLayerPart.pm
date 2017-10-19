@@ -58,15 +58,15 @@ The integer value of the last byte of the layer part.
 
 =head2 RegistryId => Str
 
-The AWS account ID associated with the registry that you are uploading
-layer parts to. If you do not specify a registry, the default registry
-is assumed.
+The AWS account ID associated with the registry to which you are
+uploading layer parts. If you do not specify a registry, the default
+registry is assumed.
 
 
 
 =head2 B<REQUIRED> RepositoryName => Str
 
-The name of the repository that you are uploading layer parts to.
+The name of the repository to which you are uploading layer parts.
 
 
 

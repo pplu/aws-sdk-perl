@@ -1,13 +1,14 @@
 
-package Paws::ECR::GetRepositoryPolicy;
+package Paws::ECR::PutLifecyclePolicy;
   use Moose;
+  has LifecyclePolicyText => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'lifecyclePolicyText' , required => 1);
   has RegistryId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'registryId' );
   has RepositoryName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'repositoryName' , required => 1);
 
   use MooseX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetRepositoryPolicy');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ECR::GetRepositoryPolicyResponse');
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutLifecyclePolicy');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ECR::PutLifecyclePolicyResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
@@ -15,23 +16,29 @@ package Paws::ECR::GetRepositoryPolicy;
 
 =head1 NAME
 
-Paws::ECR::GetRepositoryPolicy - Arguments for method GetRepositoryPolicy on Paws::ECR
+Paws::ECR::PutLifecyclePolicy - Arguments for method PutLifecyclePolicy on Paws::ECR
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method GetRepositoryPolicy on the 
+This class represents the parameters used for calling the method PutLifecyclePolicy on the 
 Amazon EC2 Container Registry service. Use the attributes of this class
-as arguments to method GetRepositoryPolicy.
+as arguments to method PutLifecyclePolicy.
 
-You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetRepositoryPolicy.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PutLifecyclePolicy.
 
 As an example:
 
-  $service_obj->GetRepositoryPolicy(Att1 => $value1, Att2 => $value2, ...);
+  $service_obj->PutLifecyclePolicy(Att1 => $value1, Att2 => $value2, ...);
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 
 =head1 ATTRIBUTES
+
+
+=head2 B<REQUIRED> LifecyclePolicyText => Str
+
+The JSON repository policy text to apply to the repository.
+
 
 
 =head2 RegistryId => Str
@@ -44,14 +51,14 @@ assumed.
 
 =head2 B<REQUIRED> RepositoryName => Str
 
-The name of the repository with the policy to retrieve.
+The name of the repository to receive the policy.
 
 
 
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, documenting arguments for method GetRepositoryPolicy in L<Paws::ECR>
+This class forms part of L<Paws>, documenting arguments for method PutLifecyclePolicy in L<Paws::ECR>
 
 =head1 BUGS and CONTRIBUTIONS
 
