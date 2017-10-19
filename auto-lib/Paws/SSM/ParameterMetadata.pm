@@ -7,6 +7,7 @@ package Paws::SSM::ParameterMetadata;
   has LastModifiedUser => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
   has Type => (is => 'ro', isa => 'Str');
+  has Version => (is => 'ro', isa => 'Int');
 1;
 
 ### main pod documentation begin ###
@@ -26,7 +27,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SSM::ParameterMetadata object:
 
-  $service_obj->Method(Att1 => { AllowedPattern => $value, ..., Type => $value  });
+  $service_obj->Method(Att1 => { AllowedPattern => $value, ..., Version => $value  });
 
 =head3 Results returned from an API call
 
@@ -80,6 +81,11 @@ parameter.
 
   The type of parameter. Valid parameter types include the following:
 String, String list, Secure string.
+
+
+=head2 Version => Int
+
+  The parameter version.
 
 
 

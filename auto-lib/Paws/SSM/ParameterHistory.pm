@@ -8,6 +8,7 @@ package Paws::SSM::ParameterHistory;
   has Name => (is => 'ro', isa => 'Str');
   has Type => (is => 'ro', isa => 'Str');
   has Value => (is => 'ro', isa => 'Str');
+  has Version => (is => 'ro', isa => 'Int');
 1;
 
 ### main pod documentation begin ###
@@ -27,7 +28,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SSM::ParameterHistory object:
 
-  $service_obj->Method(Att1 => { AllowedPattern => $value, ..., Value => $value  });
+  $service_obj->Method(Att1 => { AllowedPattern => $value, ..., Version => $value  });
 
 =head3 Results returned from an API call
 
@@ -84,6 +85,11 @@ parameter.
 =head2 Value => Str
 
   The parameter value.
+
+
+=head2 Version => Int
+
+  The parameter version.
 
 
 
