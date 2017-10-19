@@ -85,6 +85,75 @@ package Paws::CodeBuild;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub ListAllBuilds {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListBuilds(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListBuilds(@_, nextToken => $next_result->nextToken);
+        push @{ $result->ids }, @{ $next_result->ids };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'ids') foreach (@{ $result->ids });
+        $result = $self->ListBuilds(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'ids') foreach (@{ $result->ids });
+    }
+
+    return undef
+  }
+  sub ListAllBuildsForProject {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListBuildsForProject(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListBuildsForProject(@_, nextToken => $next_result->nextToken);
+        push @{ $result->ids }, @{ $next_result->ids };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'ids') foreach (@{ $result->ids });
+        $result = $self->ListBuildsForProject(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'ids') foreach (@{ $result->ids });
+    }
+
+    return undef
+  }
+  sub ListAllProjects {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListProjects(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListProjects(@_, nextToken => $next_result->nextToken);
+        push @{ $result->projects }, @{ $next_result->projects };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'projects') foreach (@{ $result->projects });
+        $result = $self->ListProjects(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'projects') foreach (@{ $result->projects });
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/BatchDeleteBuilds BatchGetBuilds BatchGetProjects CreateProject CreateWebhook DeleteProject DeleteWebhook ListBuilds ListBuildsForProject ListCuratedEnvironmentImages ListProjects StartBuild StopBuild UpdateProject / }
@@ -361,6 +430,42 @@ Returns: a L<Paws::CodeBuild::UpdateProjectOutput> instance
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllBuilds(sub { },[NextToken => Str, SortOrder => Str])
+
+=head2 ListAllBuilds([NextToken => Str, SortOrder => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ids, passing the object as the first parameter, and the string 'ids' as the second parameter 
+
+If not, it will return a a L<Paws::CodeBuild::ListBuildsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllBuildsForProject(sub { },ProjectName => Str, [NextToken => Str, SortOrder => Str])
+
+=head2 ListAllBuildsForProject(ProjectName => Str, [NextToken => Str, SortOrder => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ids, passing the object as the first parameter, and the string 'ids' as the second parameter 
+
+If not, it will return a a L<Paws::CodeBuild::ListBuildsForProjectOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllProjects(sub { },[NextToken => Str, SortBy => Str, SortOrder => Str])
+
+=head2 ListAllProjects([NextToken => Str, SortBy => Str, SortOrder => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - projects, passing the object as the first parameter, and the string 'projects' as the second parameter 
+
+If not, it will return a a L<Paws::CodeBuild::ListProjectsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 
