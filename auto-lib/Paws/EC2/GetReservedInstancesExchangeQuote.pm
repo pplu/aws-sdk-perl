@@ -52,7 +52,7 @@ The IDs of the Convertible Reserved Instances to exchange.
 
 =head2 TargetConfigurations => ArrayRef[L<Paws::EC2::TargetConfigurationRequest>]
 
-The configuration requirements of the Convertible Reserved Instances to
+The configuration of the target Convertible Reserved Instance to
 exchange for your current Convertible Reserved Instances.
 
 
