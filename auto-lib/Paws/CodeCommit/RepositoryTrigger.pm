@@ -42,8 +42,11 @@ Information about a trigger for a repository.
 
 =head2 Branches => ArrayRef[Str|Undef]
 
-  The branches that will be included in the trigger configuration. If no
-branches are specified, the trigger will apply to all branches.
+  The branches that will be included in the trigger configuration. If you
+specify an empty array, the trigger will apply to all branches.
+
+While no content is required in the array, you must include the array
+itself.
 
 
 =head2 CustomData => Str

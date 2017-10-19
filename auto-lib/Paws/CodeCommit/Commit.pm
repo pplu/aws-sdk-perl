@@ -2,6 +2,7 @@ package Paws::CodeCommit::Commit;
   use Moose;
   has AdditionalData => (is => 'ro', isa => 'Str', request_name => 'additionalData', traits => ['NameInRequest']);
   has Author => (is => 'ro', isa => 'Paws::CodeCommit::UserInfo', request_name => 'author', traits => ['NameInRequest']);
+  has CommitId => (is => 'ro', isa => 'Str', request_name => 'commitId', traits => ['NameInRequest']);
   has Committer => (is => 'ro', isa => 'Paws::CodeCommit::UserInfo', request_name => 'committer', traits => ['NameInRequest']);
   has Message => (is => 'ro', isa => 'Str', request_name => 'message', traits => ['NameInRequest']);
   has Parents => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'parents', traits => ['NameInRequest']);
@@ -51,6 +52,11 @@ Returns information about a specific commit.
   Information about the author of the specified commit. Information
 includes the date in timestamp format with GMT offset, the name of the
 author, and the email address for the author, as configured in Git.
+
+
+=head2 CommitId => Str
+
+  The full SHA of the specified commit.
 
 
 =head2 Committer => L<Paws::CodeCommit::UserInfo>

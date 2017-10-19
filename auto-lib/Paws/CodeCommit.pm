@@ -29,6 +29,11 @@ package Paws::CodeCommit;
     my $call_object = $self->new_with_coercions('Paws::CodeCommit::CreateRepository', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteBranch {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeCommit::DeleteBranch', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteRepository {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CodeCommit::DeleteRepository', @_);
@@ -148,7 +153,7 @@ package Paws::CodeCommit;
   }
 
 
-  sub operations { qw/BatchGetRepositories CreateBranch CreateRepository DeleteRepository GetBlob GetBranch GetCommit GetDifferences GetRepository GetRepositoryTriggers ListBranches ListRepositories PutRepositoryTriggers TestRepositoryTriggers UpdateDefaultBranch UpdateRepositoryDescription UpdateRepositoryName / }
+  sub operations { qw/BatchGetRepositories CreateBranch CreateRepository DeleteBranch DeleteRepository GetBlob GetBranch GetCommit GetDifferences GetRepository GetRepositoryTriggers ListBranches ListRepositories PutRepositoryTriggers TestRepositoryTriggers UpdateDefaultBranch UpdateRepositoryDescription UpdateRepositoryName / }
 
 1;
 
@@ -231,6 +236,11 @@ Branches, by calling the following:
 =item *
 
 CreateBranch, which creates a new branch in a specified repository
+
+=item *
+
+DeleteBranch, which deletes the specified branch in a repository unless
+it is the default branch
 
 =item *
 
@@ -330,6 +340,16 @@ Each argument is described in detail in: L<Paws::CodeCommit::CreateRepository>
 Returns: a L<Paws::CodeCommit::CreateRepositoryOutput> instance
 
   Creates a new, empty repository.
+
+
+=head2 DeleteBranch(BranchName => Str, RepositoryName => Str)
+
+Each argument is described in detail in: L<Paws::CodeCommit::DeleteBranch>
+
+Returns: a L<Paws::CodeCommit::DeleteBranchOutput> instance
+
+  Deletes a branch from a repository, unless that branch is the default
+branch for the repository.
 
 
 =head2 DeleteRepository(RepositoryName => Str)
