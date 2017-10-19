@@ -100,7 +100,8 @@ REDSHIFT, S3, DYNAMODB, MONGODB, SYBASE, and SQLSERVER.
 
 =head2 ExtraConnectionAttributes => Str
 
-Additional attributes associated with the connection.
+Additional attributes associated with the connection. To reset this
+parameter, pass the empty string ("") as an argument.
 
 
 

@@ -96,7 +96,11 @@ operation (valid only for DynamoDB as a target migrations).
 
 =head2 TableState => Str
 
-  The state of the table.
+  The state of the tables described.
+
+Valid states: Table does not exist | Before load | Full load | Table
+completed | Table cancelled | Table error | Table all | Table updates |
+Table is being reloaded
 
 
 =head2 Updates => Int
