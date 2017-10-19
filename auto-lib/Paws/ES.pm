@@ -28,6 +28,11 @@ package Paws::ES;
     my $call_object = $self->new_with_coercions('Paws::ES::DeleteElasticsearchDomain', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteElasticsearchServiceRole {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ES::DeleteElasticsearchServiceRole', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeElasticsearchDomain {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ES::DescribeElasticsearchDomain', @_);
@@ -81,7 +86,7 @@ package Paws::ES;
   
 
 
-  sub operations { qw/AddTags CreateElasticsearchDomain DeleteElasticsearchDomain DescribeElasticsearchDomain DescribeElasticsearchDomainConfig DescribeElasticsearchDomains DescribeElasticsearchInstanceTypeLimits ListDomainNames ListElasticsearchInstanceTypes ListElasticsearchVersions ListTags RemoveTags UpdateElasticsearchDomainConfig / }
+  sub operations { qw/AddTags CreateElasticsearchDomain DeleteElasticsearchDomain DeleteElasticsearchServiceRole DescribeElasticsearchDomain DescribeElasticsearchDomainConfig DescribeElasticsearchDomains DescribeElasticsearchInstanceTypeLimits ListDomainNames ListElasticsearchInstanceTypes ListElasticsearchVersions ListTags RemoveTags UpdateElasticsearchDomainConfig / }
 
 1;
 
@@ -133,7 +138,7 @@ case-sensitive key value pairs. An Elasticsearch domain may have up to
 information.
 
 
-=head2 CreateElasticsearchDomain(DomainName => Str, [AccessPolicies => Str, AdvancedOptions => L<Paws::ES::AdvancedOptions>, EBSOptions => L<Paws::ES::EBSOptions>, ElasticsearchClusterConfig => L<Paws::ES::ElasticsearchClusterConfig>, ElasticsearchVersion => Str, SnapshotOptions => L<Paws::ES::SnapshotOptions>])
+=head2 CreateElasticsearchDomain(DomainName => Str, [AccessPolicies => Str, AdvancedOptions => L<Paws::ES::AdvancedOptions>, EBSOptions => L<Paws::ES::EBSOptions>, ElasticsearchClusterConfig => L<Paws::ES::ElasticsearchClusterConfig>, ElasticsearchVersion => Str, LogPublishingOptions => L<Paws::ES::LogPublishingOptions>, SnapshotOptions => L<Paws::ES::SnapshotOptions>, VPCOptions => L<Paws::ES::VPCOptions>])
 
 Each argument is described in detail in: L<Paws::ES::CreateElasticsearchDomain>
 
@@ -152,6 +157,20 @@ Returns: a L<Paws::ES::DeleteElasticsearchDomainResponse> instance
 
   Permanently deletes the specified Elasticsearch domain and all of its
 data. Once a domain is deleted, it cannot be recovered.
+
+
+=head2 DeleteElasticsearchServiceRole( => )
+
+Each argument is described in detail in: L<Paws::ES::DeleteElasticsearchServiceRole>
+
+Returns: nothing
+
+  Deletes the service-linked role that Elasticsearch Service uses to
+manage and maintain VPC domains. Role deletion will fail if any
+existing VPC domains use the role. You must delete any such
+Elasticsearch domains before deleting the role. See Deleting
+Elasticsearch Service Role in I<VPC Endpoints for Amazon Elasticsearch
+Service Domains>.
 
 
 =head2 DescribeElasticsearchDomain(DomainName => Str)
@@ -246,7 +265,7 @@ Returns: nothing
 domain.
 
 
-=head2 UpdateElasticsearchDomainConfig(DomainName => Str, [AccessPolicies => Str, AdvancedOptions => L<Paws::ES::AdvancedOptions>, EBSOptions => L<Paws::ES::EBSOptions>, ElasticsearchClusterConfig => L<Paws::ES::ElasticsearchClusterConfig>, SnapshotOptions => L<Paws::ES::SnapshotOptions>])
+=head2 UpdateElasticsearchDomainConfig(DomainName => Str, [AccessPolicies => Str, AdvancedOptions => L<Paws::ES::AdvancedOptions>, EBSOptions => L<Paws::ES::EBSOptions>, ElasticsearchClusterConfig => L<Paws::ES::ElasticsearchClusterConfig>, LogPublishingOptions => L<Paws::ES::LogPublishingOptions>, SnapshotOptions => L<Paws::ES::SnapshotOptions>, VPCOptions => L<Paws::ES::VPCOptions>])
 
 Each argument is described in detail in: L<Paws::ES::UpdateElasticsearchDomainConfig>
 

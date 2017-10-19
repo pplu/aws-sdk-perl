@@ -7,7 +7,9 @@ package Paws::ES::CreateElasticsearchDomain;
   has EBSOptions => (is => 'ro', isa => 'Paws::ES::EBSOptions');
   has ElasticsearchClusterConfig => (is => 'ro', isa => 'Paws::ES::ElasticsearchClusterConfig');
   has ElasticsearchVersion => (is => 'ro', isa => 'Str');
+  has LogPublishingOptions => (is => 'ro', isa => 'Paws::ES::LogPublishingOptions');
   has SnapshotOptions => (is => 'ro', isa => 'Paws::ES::SnapshotOptions');
+  has VPCOptions => (is => 'ro', isa => 'Paws::ES::VPCOptions');
 
   use MooseX::ClassAttribute;
 
@@ -86,10 +88,25 @@ Domains in the I<Amazon Elasticsearch Service Developer Guide>.
 
 
 
+=head2 LogPublishingOptions => L<Paws::ES::LogPublishingOptions>
+
+Map of C<LogType> and C<LogPublishingOption>, each containing options
+to publish a given type of Elasticsearch log.
+
+
+
 =head2 SnapshotOptions => L<Paws::ES::SnapshotOptions>
 
 Option to set time, in UTC format, of the daily automated snapshot.
 Default value is 0 hours.
+
+
+
+=head2 VPCOptions => L<Paws::ES::VPCOptions>
+
+Options to specify the subnets and security groups for VPC endpoint.
+For more information, see Creating a VPC in I<VPC Endpoints for Amazon
+Elasticsearch Service Domains>
 
 
 

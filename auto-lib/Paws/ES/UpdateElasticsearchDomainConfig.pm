@@ -6,7 +6,9 @@ package Paws::ES::UpdateElasticsearchDomainConfig;
   has DomainName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'DomainName' , required => 1);
   has EBSOptions => (is => 'ro', isa => 'Paws::ES::EBSOptions');
   has ElasticsearchClusterConfig => (is => 'ro', isa => 'Paws::ES::ElasticsearchClusterConfig');
+  has LogPublishingOptions => (is => 'ro', isa => 'Paws::ES::LogPublishingOptions');
   has SnapshotOptions => (is => 'ro', isa => 'Paws::ES::SnapshotOptions');
+  has VPCOptions => (is => 'ro', isa => 'Paws::ES::VPCOptions');
 
   use MooseX::ClassAttribute;
 
@@ -72,10 +74,25 @@ The type and number of instances to instantiate for the domain cluster.
 
 
 
+=head2 LogPublishingOptions => L<Paws::ES::LogPublishingOptions>
+
+Map of C<LogType> and C<LogPublishingOption>, each containing options
+to publish a given type of Elasticsearch log.
+
+
+
 =head2 SnapshotOptions => L<Paws::ES::SnapshotOptions>
 
 Option to set the time, in UTC format, for the daily automated
 snapshot. Default value is C<0> hours.
+
+
+
+=head2 VPCOptions => L<Paws::ES::VPCOptions>
+
+Options to specify the subnets and security groups for VPC endpoint.
+For more information, see Creating a VPC in I<VPC Endpoints for Amazon
+Elasticsearch Service Domains>
 
 
 
