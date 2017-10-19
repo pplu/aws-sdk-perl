@@ -7,6 +7,7 @@ package Paws::Lightsail::Blueprint;
   has LicenseUrl => (is => 'ro', isa => 'Str', request_name => 'licenseUrl', traits => ['NameInRequest']);
   has MinPower => (is => 'ro', isa => 'Int', request_name => 'minPower', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
+  has Platform => (is => 'ro', isa => 'Str', request_name => 'platform', traits => ['NameInRequest']);
   has ProductUrl => (is => 'ro', isa => 'Str', request_name => 'productUrl', traits => ['NameInRequest']);
   has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
   has Version => (is => 'ro', isa => 'Str', request_name => 'version', traits => ['NameInRequest']);
@@ -76,13 +77,21 @@ most recent versions active.
 
 =head2 MinPower => Int
 
-  The minimum machine size required to run this blueprint. C<0> indicates
-that the blueprint runs on all instances.
+  The minimum bundle power required to run this blueprint. For example,
+you need a bundle with a power value of 500 or more to create an
+instance that uses a blueprint with a minimum power value of 500. C<0>
+indicates that the blueprint runs on all instance sizes.
 
 
 =head2 Name => Str
 
   The friendly name of the blueprint (e.g., C<Amazon Linux>).
+
+
+=head2 Platform => Str
+
+  The operating system platform (either Linux/Unix-based or Windows
+Server-based) of the blueprint.
 
 
 =head2 ProductUrl => Str

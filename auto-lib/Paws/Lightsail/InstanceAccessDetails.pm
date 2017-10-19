@@ -5,6 +5,7 @@ package Paws::Lightsail::InstanceAccessDetails;
   has InstanceName => (is => 'ro', isa => 'Str', request_name => 'instanceName', traits => ['NameInRequest']);
   has IpAddress => (is => 'ro', isa => 'Str', request_name => 'ipAddress', traits => ['NameInRequest']);
   has Password => (is => 'ro', isa => 'Str', request_name => 'password', traits => ['NameInRequest']);
+  has PasswordData => (is => 'ro', isa => 'Paws::Lightsail::PasswordData', request_name => 'passwordData', traits => ['NameInRequest']);
   has PrivateKey => (is => 'ro', isa => 'Str', request_name => 'privateKey', traits => ['NameInRequest']);
   has Protocol => (is => 'ro', isa => 'Str', request_name => 'protocol', traits => ['NameInRequest']);
   has Username => (is => 'ro', isa => 'Str', request_name => 'username', traits => ['NameInRequest']);
@@ -68,7 +69,28 @@ C<tempkey-cert.pub>.
 
 =head2 Password => Str
 
-  For RDP access, the temporary password of the Amazon EC2 instance.
+  For RDP access, the password for your Amazon Lightsail instance.
+Password will be an empty string if the password for your new instance
+is not ready yet. When you create an instance, it can take up to 15
+minutes for the instance to be ready.
+
+If you create an instance using any key pair other than the default
+(C<LightsailDefaultKeyPair>), C<password> will always be an empty
+string.
+
+If you change the Administrator password on the instance, Lightsail
+will continue to return the original password value. When accessing the
+instance using RDP, you need to manually enter the Administrator
+password after changing it from the default.
+
+
+=head2 PasswordData => L<Paws::Lightsail::PasswordData>
+
+  For a Windows Server-based instance, an object with the data you can
+use to retrieve your password. This is only needed if C<password> is
+empty and the instance is not new (and therefore the password is not
+ready yet). When you create an instance, it can take up to 15 minutes
+for the instance to be ready.
 
 
 =head2 PrivateKey => Str
