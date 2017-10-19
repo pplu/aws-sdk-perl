@@ -66,19 +66,7 @@ Constraints:
 
 =item *
 
-Must be the identifier for an existing Read Replica DB instance
-
-=item *
-
-Must contain from 1 to 63 alphanumeric characters or hyphens
-
-=item *
-
-First character must be a letter
-
-=item *
-
-Cannot end with a hyphen or contain two consecutive hyphens
+Must match the identifier of an existing Read Replica DB instance.
 
 =back
 

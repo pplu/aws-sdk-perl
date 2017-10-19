@@ -25,7 +25,7 @@ Constraints:
 
 =item *
 
-Must be 1 to 255 alphanumeric characters
+Must be 1 to 255 letters or numbers.
 
 =item *
 

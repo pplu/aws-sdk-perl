@@ -341,7 +341,7 @@ Constraints:
 
 =item *
 
-Must contain from 1 to 63 alphanumeric characters or hyphens.
+Must contain from 1 to 63 letters, numbers, or hyphens.
 
 =item *
 
@@ -376,7 +376,7 @@ Constraints:
 
 =item *
 
-Must contain 1 to 64 alphanumeric characters
+Must contain 1 to 64 letters or numbers.
 
 =item *
 
@@ -396,7 +396,7 @@ Constraints:
 
 =item *
 
-Must contain 1 to 64 alphanumeric characters
+Must contain 1 to 64 letters or numbers.
 
 =item *
 
@@ -416,7 +416,7 @@ Constraints:
 
 =item *
 
-Must contain 1 to 63 alphanumeric characters
+Must contain 1 to 63 letters, numbers, or underscores.
 
 =item *
 
@@ -463,7 +463,7 @@ Constraints:
 
 =item *
 
-Must contain 1 to 64 alphanumeric characters
+Must contain 1 to 64 letters or numbers.
 
 =item *
 
@@ -486,7 +486,7 @@ Constraints:
 
 =item *
 
-Must be 1 to 255 alphanumeric characters
+Must be 1 to 255 letters, numbers, or hyphens.
 
 =item *
 
@@ -998,7 +998,11 @@ Constraints:
 
 =item *
 
-Must be 1 to 16 alphanumeric characters.
+Required for MariaDB.
+
+=item *
+
+Must be 1 to 16 letters or numbers.
 
 =item *
 
@@ -1014,11 +1018,15 @@ Constraints:
 
 =item *
 
-Must be 1 to 128 alphanumeric characters.
+Required for SQL Server.
 
 =item *
 
-First character must be a letter.
+Must be 1 to 128 letters or numbers.
+
+=item *
+
+The first character must be a letter.
 
 =item *
 
@@ -1034,7 +1042,11 @@ Constraints:
 
 =item *
 
-Must be 1 to 16 alphanumeric characters.
+Required for MySQL.
+
+=item *
+
+Must be 1 to 16 letters or numbers.
 
 =item *
 
@@ -1054,7 +1066,11 @@ Constraints:
 
 =item *
 
-Must be 1 to 30 alphanumeric characters.
+Required for Oracle.
+
+=item *
+
+Must be 1 to 30 letters or numbers.
 
 =item *
 
@@ -1074,7 +1090,11 @@ Constraints:
 
 =item *
 
-Must be 1 to 63 alphanumeric characters.
+Required for PostgreSQL.
+
+=item *
+
+Must be 1 to 63 letters or numbers.
 
 =item *
 

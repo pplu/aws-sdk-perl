@@ -122,6 +122,10 @@ DB instance in another AWS Region.
 
 =item *
 
+If supplied, must match the name of an existing DBSubnetGroup.
+
+=item *
+
 The specified DB subnet group must be in the same AWS Region in which
 the operation is running.
 
@@ -145,9 +149,6 @@ outside of any VPC.
 =back
 
 =back
-
-Constraints: Must contain no more than 255 alphanumeric characters,
-periods, underscores, spaces, or hyphens. Must not be default.
 
 Example: C<mySubnetgroup>
 

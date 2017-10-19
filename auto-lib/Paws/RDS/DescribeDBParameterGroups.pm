@@ -46,15 +46,8 @@ Constraints:
 
 =item *
 
-Must be 1 to 255 alphanumeric characters
-
-=item *
-
-First character must be a letter
-
-=item *
-
-Cannot end with a hyphen or contain two consecutive hyphens
+If supplied, must match the name of an existing
+DBClusterParameterGroup.
 
 =back
 

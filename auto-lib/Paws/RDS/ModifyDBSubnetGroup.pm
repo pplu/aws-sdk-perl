@@ -44,10 +44,10 @@ The description for the DB subnet group.
 =head2 B<REQUIRED> DBSubnetGroupName => Str
 
 The name for the DB subnet group. This value is stored as a lowercase
-string.
+string. You can't modify the default subnet group.
 
-Constraints: Must contain no more than 255 alphanumeric characters,
-periods, underscores, spaces, or hyphens. Must not be default.
+Constraints: Must match the name of an existing DBSubnetGroup. Must not
+be default.
 
 Example: C<mySubnetgroup>
 

@@ -134,18 +134,6 @@ Constraints:
 
 =item *
 
-Must contain from 1 to 63 alphanumeric characters or hyphens.
-
-=item *
-
-First character must be a letter.
-
-=item *
-
-Cannot end with a hyphen or contain two consecutive hyphens.
-
-=item *
-
 Must specify a valid system snapshot in the "available" state.
 
 =item *
@@ -182,7 +170,7 @@ Constraints:
 
 =item *
 
-Must contain from 1 to 63 alphanumeric characters or hyphens.
+Must contain from 1 to 63 letters, numbers, or hyphens.
 
 =item *
 

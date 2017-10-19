@@ -69,7 +69,7 @@ Constraints:
 
 =item *
 
-Must contain from 1 to 255 alphanumeric characters or hyphens
+Must contain from 1 to 255 letters, numbers, or hyphens
 
 =item *
 
@@ -89,8 +89,8 @@ Example: C<my-snapshot-id>
 
 The name of the DB subnet group to use for the new DB cluster.
 
-Constraints: Must contain no more than 255 alphanumeric characters,
-periods, underscores, spaces, or hyphens. Must not be default.
+Constraints: If supplied, must match the name of an existing
+DBSubnetGroup.
 
 Example: C<mySubnetgroup>
 
@@ -185,15 +185,7 @@ Constraints:
 
 =item *
 
-Must contain from 1 to 63 alphanumeric characters or hyphens
-
-=item *
-
-First character must be a letter
-
-=item *
-
-Cannot end with a hyphen or contain two consecutive hyphens
+Must match the identifier of an existing Snapshot.
 
 =back
 

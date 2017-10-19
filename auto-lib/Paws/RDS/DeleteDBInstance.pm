@@ -46,15 +46,7 @@ Constraints:
 
 =item *
 
-Must contain from 1 to 63 alphanumeric characters or hyphens
-
-=item *
-
-First character must be a letter
-
-=item *
-
-Cannot end with a hyphen or contain two consecutive hyphens
+Must match the name of an existing DB instance.
 
 =back
 
@@ -75,7 +67,7 @@ Constraints:
 
 =item *
 
-Must be 1 to 255 alphanumeric characters
+Must be 1 to 255 letters or numbers.
 
 =item *
 
