@@ -37,7 +37,7 @@ of the receipt rule set and, optionally, publishes a notification to
 Amazon Simple Notification Service (Amazon SNS).
 
 For information about setting a stop action in a receipt rule, see the
-I< Amazon SES Developer Guide.>
+Amazon SES Developer Guide.
 
 =head1 ATTRIBUTES
 

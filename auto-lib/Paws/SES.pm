@@ -48,6 +48,11 @@ package Paws::SES;
     my $call_object = $self->new_with_coercions('Paws::SES::CreateReceiptRuleSet', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateTemplate {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SES::CreateTemplate', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteConfigurationSet {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SES::DeleteConfigurationSet', @_);
@@ -86,6 +91,11 @@ package Paws::SES;
   sub DeleteReceiptRuleSet {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SES::DeleteReceiptRuleSet', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteTemplate {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SES::DeleteTemplate', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteVerifiedEmailAddress {
@@ -148,6 +158,11 @@ package Paws::SES;
     my $call_object = $self->new_with_coercions('Paws::SES::GetSendStatistics', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetTemplate {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SES::GetTemplate', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListConfigurationSets {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SES::ListConfigurationSets', @_);
@@ -173,6 +188,11 @@ package Paws::SES;
     my $call_object = $self->new_with_coercions('Paws::SES::ListReceiptRuleSets', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListTemplates {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SES::ListTemplates', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListVerifiedEmailAddresses {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SES::ListVerifiedEmailAddresses', @_);
@@ -193,6 +213,11 @@ package Paws::SES;
     my $call_object = $self->new_with_coercions('Paws::SES::SendBounce', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub SendBulkTemplatedEmail {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SES::SendBulkTemplatedEmail', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub SendEmail {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SES::SendEmail', @_);
@@ -201,6 +226,11 @@ package Paws::SES;
   sub SendRawEmail {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SES::SendRawEmail', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub SendTemplatedEmail {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SES::SendTemplatedEmail', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub SetActiveReceiptRuleSet {
@@ -238,6 +268,11 @@ package Paws::SES;
     my $call_object = $self->new_with_coercions('Paws::SES::SetReceiptRulePosition', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub TestRenderTemplate {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SES::TestRenderTemplate', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateConfigurationSetEventDestination {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SES::UpdateConfigurationSetEventDestination', @_);
@@ -251,6 +286,11 @@ package Paws::SES;
   sub UpdateReceiptRule {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SES::UpdateReceiptRule', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateTemplate {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SES::UpdateTemplate', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub VerifyDomainDkim {
@@ -299,7 +339,7 @@ package Paws::SES;
   }
 
 
-  sub operations { qw/CloneReceiptRuleSet CreateConfigurationSet CreateConfigurationSetEventDestination CreateConfigurationSetTrackingOptions CreateReceiptFilter CreateReceiptRule CreateReceiptRuleSet DeleteConfigurationSet DeleteConfigurationSetEventDestination DeleteConfigurationSetTrackingOptions DeleteIdentity DeleteIdentityPolicy DeleteReceiptFilter DeleteReceiptRule DeleteReceiptRuleSet DeleteVerifiedEmailAddress DescribeActiveReceiptRuleSet DescribeConfigurationSet DescribeReceiptRule DescribeReceiptRuleSet GetIdentityDkimAttributes GetIdentityMailFromDomainAttributes GetIdentityNotificationAttributes GetIdentityPolicies GetIdentityVerificationAttributes GetSendQuota GetSendStatistics ListConfigurationSets ListIdentities ListIdentityPolicies ListReceiptFilters ListReceiptRuleSets ListVerifiedEmailAddresses PutIdentityPolicy ReorderReceiptRuleSet SendBounce SendEmail SendRawEmail SetActiveReceiptRuleSet SetIdentityDkimEnabled SetIdentityFeedbackForwardingEnabled SetIdentityHeadersInNotificationsEnabled SetIdentityMailFromDomain SetIdentityNotificationTopic SetReceiptRulePosition UpdateConfigurationSetEventDestination UpdateConfigurationSetTrackingOptions UpdateReceiptRule VerifyDomainDkim VerifyDomainIdentity VerifyEmailAddress VerifyEmailIdentity / }
+  sub operations { qw/CloneReceiptRuleSet CreateConfigurationSet CreateConfigurationSetEventDestination CreateConfigurationSetTrackingOptions CreateReceiptFilter CreateReceiptRule CreateReceiptRuleSet CreateTemplate DeleteConfigurationSet DeleteConfigurationSetEventDestination DeleteConfigurationSetTrackingOptions DeleteIdentity DeleteIdentityPolicy DeleteReceiptFilter DeleteReceiptRule DeleteReceiptRuleSet DeleteTemplate DeleteVerifiedEmailAddress DescribeActiveReceiptRuleSet DescribeConfigurationSet DescribeReceiptRule DescribeReceiptRuleSet GetIdentityDkimAttributes GetIdentityMailFromDomainAttributes GetIdentityNotificationAttributes GetIdentityPolicies GetIdentityVerificationAttributes GetSendQuota GetSendStatistics GetTemplate ListConfigurationSets ListIdentities ListIdentityPolicies ListReceiptFilters ListReceiptRuleSets ListTemplates ListVerifiedEmailAddresses PutIdentityPolicy ReorderReceiptRuleSet SendBounce SendBulkTemplatedEmail SendEmail SendRawEmail SendTemplatedEmail SetActiveReceiptRuleSet SetIdentityDkimEnabled SetIdentityFeedbackForwardingEnabled SetIdentityHeadersInNotificationsEnabled SetIdentityMailFromDomain SetIdentityNotificationTopic SetReceiptRulePosition TestRenderTemplate UpdateConfigurationSetEventDestination UpdateConfigurationSetTrackingOptions UpdateReceiptRule UpdateTemplate VerifyDomainDkim VerifyDomainIdentity VerifyEmailAddress VerifyEmailIdentity / }
 
 1;
 
@@ -330,11 +370,11 @@ Paws::SES - Perl Interface to AWS Amazon Simple Email Service
 Amazon Simple Email Service
 
 This is the API Reference for Amazon Simple Email Service (Amazon SES).
-This documentation is intended to be used in conjunction with the I<
-Amazon SES Developer Guide.>
+This documentation is intended to be used in conjunction with the
+Amazon SES Developer Guide.
 
 For a list of Amazon SES endpoints to use in service requests, see
-Regions and Amazon SES in the I< Amazon SES Developer Guide.>
+Regions and Amazon SES in the Amazon SES Developer Guide.
 
 =head1 METHODS
 
@@ -348,8 +388,8 @@ Returns: a L<Paws::SES::CloneReceiptRuleSetResponse> instance
 rules and configurations are copied to the new receipt rule set and are
 completely independent of the source rule set.
 
-For information about setting up rule sets, see the I< Amazon SES
-Developer Guide.>
+For information about setting up rule sets, see the Amazon SES
+Developer Guide.
 
 You can execute this operation no more than once per second.
 
@@ -363,8 +403,8 @@ Returns: a L<Paws::SES::CreateConfigurationSetResponse> instance
   Creates a configuration set.
 
 Configuration sets enable you to publish email sending events. For
-information about using configuration sets, see the I< Amazon SES
-Developer Guide.>
+information about using configuration sets, see the Amazon SES
+Developer Guide.
 
 You can execute this operation no more than once per second.
 
@@ -384,8 +424,8 @@ SNS).
 
 An event destination is the AWS service to which Amazon SES publishes
 the email sending events associated with a configuration set. For
-information about using configuration sets, see the I< Amazon SES
-Developer Guide.>
+information about using configuration sets, see the Amazon SES
+Developer Guide.
 
 You can execute this operation no more than once per second.
 
@@ -401,10 +441,9 @@ for open and click event tracking.
 
 By default, images and links used for tracking open and click events
 are hosted on domains operated by Amazon SES. You can configure a
-subdomain of your own to handle these events by redirecting them to the
-Amazon SES-operated domain. For information about using configuration
-sets, see Configuring Custom Domains to Handle Open and Click Tracking
-in the I< Amazon SES Developer Guide.>
+subdomain of your own to handle these events. For information about
+using configuration sets, see Configuring Custom Domains to Handle Open
+and Click Tracking in the Amazon SES Developer Guide.
 
 
 =head2 CreateReceiptFilter(Filter => L<Paws::SES::ReceiptFilter>)
@@ -415,8 +454,8 @@ Returns: a L<Paws::SES::CreateReceiptFilterResponse> instance
 
   Creates a new IP address filter.
 
-For information about setting up IP address filters, see the I< Amazon
-SES Developer Guide.>
+For information about setting up IP address filters, see the Amazon SES
+Developer Guide.
 
 You can execute this operation no more than once per second.
 
@@ -429,8 +468,8 @@ Returns: a L<Paws::SES::CreateReceiptRuleResponse> instance
 
   Creates a receipt rule.
 
-For information about setting up receipt rules, see the I< Amazon SES
-Developer Guide.>
+For information about setting up receipt rules, see the Amazon SES
+Developer Guide.
 
 You can execute this operation no more than once per second.
 
@@ -443,8 +482,21 @@ Returns: a L<Paws::SES::CreateReceiptRuleSetResponse> instance
 
   Creates an empty receipt rule set.
 
-For information about setting up receipt rule sets, see the I< Amazon
-SES Developer Guide.>
+For information about setting up receipt rule sets, see the Amazon SES
+Developer Guide.
+
+You can execute this operation no more than once per second.
+
+
+=head2 CreateTemplate(Template => L<Paws::SES::Template>)
+
+Each argument is described in detail in: L<Paws::SES::CreateTemplate>
+
+Returns: a L<Paws::SES::CreateTemplateResponse> instance
+
+  Creates an email template. Email templates enable you to send
+personalized email to one or more destinations in a single API
+operation. For more information, see the Amazon SES Developer Guide.
 
 You can execute this operation no more than once per second.
 
@@ -457,7 +509,7 @@ Returns: a L<Paws::SES::DeleteConfigurationSetResponse> instance
 
   Deletes a configuration set. Configuration sets enable you to publish
 email sending events. For information about using configuration sets,
-see the I< Amazon SES Developer Guide.>
+see the Amazon SES Developer Guide.
 
 You can execute this operation no more than once per second.
 
@@ -471,7 +523,7 @@ Returns: a L<Paws::SES::DeleteConfigurationSetEventDestinationResponse> instance
   Deletes a configuration set event destination. Configuration set event
 destinations are associated with configuration sets, which enable you
 to publish email sending events. For information about using
-configuration sets, see the I< Amazon SES Developer Guide.>
+configuration sets, see the Amazon SES Developer Guide.
 
 You can execute this operation no more than once per second.
 
@@ -487,10 +539,9 @@ for open and click event tracking.
 
 By default, images and links used for tracking open and click events
 are hosted on domains operated by Amazon SES. You can configure a
-subdomain of your own to handle these events by redirecting them to the
-Amazon SES-operated domain. For information about using configuration
-sets, see Configuring Custom Domains to Handle Open and Click Tracking
-in the I< Amazon SES Developer Guide.>
+subdomain of your own to handle these events. For information about
+using configuration sets, see Configuring Custom Domains to Handle Open
+and Click Tracking in the Amazon SES Developer Guide.
 
 Deleting this kind of association will result in emails sent using the
 specified configuration set to capture open and click events using the
@@ -524,7 +575,7 @@ identity, this API will return an error.
 
 Sending authorization is a feature that enables an identity owner to
 authorize other senders to use its identities. For information about
-using sending authorization, see the I< Amazon SES Developer Guide.>
+using sending authorization, see the Amazon SES Developer Guide.
 
 You can execute this operation no more than once per second.
 
@@ -537,8 +588,8 @@ Returns: a L<Paws::SES::DeleteReceiptFilterResponse> instance
 
   Deletes the specified IP address filter.
 
-For information about managing IP address filters, see the I< Amazon
-SES Developer Guide.>
+For information about managing IP address filters, see the Amazon SES
+Developer Guide.
 
 You can execute this operation no more than once per second.
 
@@ -551,8 +602,8 @@ Returns: a L<Paws::SES::DeleteReceiptRuleResponse> instance
 
   Deletes the specified receipt rule.
 
-For information about managing receipt rules, see the I< Amazon SES
-Developer Guide.>
+For information about managing receipt rules, see the Amazon SES
+Developer Guide.
 
 You can execute this operation no more than once per second.
 
@@ -568,8 +619,19 @@ contains.
 
 The currently active rule set cannot be deleted.
 
-For information about managing receipt rule sets, see the I< Amazon SES
-Developer Guide.>
+For information about managing receipt rule sets, see the Amazon SES
+Developer Guide.
+
+You can execute this operation no more than once per second.
+
+
+=head2 DeleteTemplate(TemplateName => Str)
+
+Each argument is described in detail in: L<Paws::SES::DeleteTemplate>
+
+Returns: a L<Paws::SES::DeleteTemplateResponse> instance
+
+  Deletes an email template.
 
 You can execute this operation no more than once per second.
 
@@ -593,8 +655,8 @@ Returns: a L<Paws::SES::DescribeActiveReceiptRuleSetResponse> instance
   Returns the metadata and receipt rules for the receipt rule set that is
 currently active.
 
-For information about setting up receipt rule sets, see the I< Amazon
-SES Developer Guide.>
+For information about setting up receipt rule sets, see the Amazon SES
+Developer Guide.
 
 You can execute this operation no more than once per second.
 
@@ -606,7 +668,7 @@ Each argument is described in detail in: L<Paws::SES::DescribeConfigurationSet>
 Returns: a L<Paws::SES::DescribeConfigurationSetResponse> instance
 
   Returns the details of the specified configuration set. For information
-about using configuration sets, see the I< Amazon SES Developer Guide.>
+about using configuration sets, see the Amazon SES Developer Guide.
 
 You can execute this operation no more than once per second.
 
@@ -619,8 +681,8 @@ Returns: a L<Paws::SES::DescribeReceiptRuleResponse> instance
 
   Returns the details of the specified receipt rule.
 
-For information about setting up receipt rules, see the I< Amazon SES
-Developer Guide.>
+For information about setting up receipt rules, see the Amazon SES
+Developer Guide.
 
 You can execute this operation no more than once per second.
 
@@ -633,8 +695,8 @@ Returns: a L<Paws::SES::DescribeReceiptRuleSetResponse> instance
 
   Returns the details of the specified receipt rule set.
 
-For information about managing receipt rule sets, see the I< Amazon SES
-Developer Guide.>
+For information about managing receipt rule sets, see the Amazon SES
+Developer Guide.
 
 You can execute this operation no more than once per second.
 
@@ -676,7 +738,7 @@ This operation is throttled at one request per second and can only get
 DKIM attributes for up to 100 identities at a time.
 
 For more information about creating DNS records using DKIM tokens, go
-to the I< Amazon SES Developer Guide.>
+to the Amazon SES Developer Guide.
 
 
 =head2 GetIdentityMailFromDomainAttributes(Identities => ArrayRef[Str|Undef])
@@ -705,7 +767,7 @@ This operation is throttled at one request per second and can only get
 notification attributes for up to 100 identities at a time.
 
 For more information about using notifications with Amazon SES, see the
-I< Amazon SES Developer Guide.>
+Amazon SES Developer Guide.
 
 
 =head2 GetIdentityPolicies(Identity => Str, PolicyNames => ArrayRef[Str|Undef])
@@ -724,7 +786,7 @@ identity, this API will return an error.
 
 Sending authorization is a feature that enables an identity owner to
 authorize other senders to use its identities. For information about
-using sending authorization, see the I< Amazon SES Developer Guide.>
+using sending authorization, see the Amazon SES Developer Guide.
 
 You can execute this operation no more than once per second.
 
@@ -785,6 +847,18 @@ activity. Each data point in the list contains statistics for a
 You can execute this operation no more than once per second.
 
 
+=head2 GetTemplate(TemplateName => Str)
+
+Each argument is described in detail in: L<Paws::SES::GetTemplate>
+
+Returns: a L<Paws::SES::GetTemplateResponse> instance
+
+  Displays the template object (which includes the Subject line, HTML
+part and text part) for the template you specify.
+
+You can execute this operation no more than once per second.
+
+
 =head2 ListConfigurationSets([MaxItems => Int, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::SES::ListConfigurationSets>
@@ -794,15 +868,15 @@ Returns: a L<Paws::SES::ListConfigurationSetsResponse> instance
   Provides a list of the configuration sets associated with your Amazon
 SES account. For information about using configuration sets, see
 Monitoring Your Amazon SES Sending Activity in the I<Amazon SES
-Developer Guide>.
+Developer Guide.>
 
 You can execute this operation no more than once per second. This
-operation will return up to 50 configuration sets each time it is run.
-If your Amazon SES account has more than 50 configuration sets, this
-operation will also return a NextToken element. You can then execute
-the C<ListConfigurationSets> operation again, passing the C<NextToken>
-parameter and the value of the NextToken element to retrieve additional
-results.
+operation will return up to 1,000 configuration sets each time it is
+run. If your Amazon SES account has more than 1,000 configuration sets,
+this operation will also return a NextToken element. You can then
+execute the C<ListConfigurationSets> operation again, passing the
+C<NextToken> parameter and the value of the NextToken element to
+retrieve additional results.
 
 
 =head2 ListIdentities([IdentityType => Str, MaxItems => Int, NextToken => Str])
@@ -833,7 +907,7 @@ identity, this API will return an error.
 
 Sending authorization is a feature that enables an identity owner to
 authorize other senders to use its identities. For information about
-using sending authorization, see the I< Amazon SES Developer Guide.>
+using sending authorization, see the Amazon SES Developer Guide.
 
 You can execute this operation no more than once per second.
 
@@ -846,8 +920,8 @@ Returns: a L<Paws::SES::ListReceiptFiltersResponse> instance
 
   Lists the IP address filters associated with your AWS account.
 
-For information about managing IP address filters, see the I< Amazon
-SES Developer Guide.>
+For information about managing IP address filters, see the Amazon SES
+Developer Guide.
 
 You can execute this operation no more than once per second.
 
@@ -863,8 +937,19 @@ are additional receipt rule sets to be retrieved, you will receive a
 C<NextToken> that you can provide to the next call to
 C<ListReceiptRuleSets> to retrieve the additional entries.
 
-For information about managing receipt rule sets, see the I< Amazon SES
-Developer Guide.>
+For information about managing receipt rule sets, see the Amazon SES
+Developer Guide.
+
+You can execute this operation no more than once per second.
+
+
+=head2 ListTemplates([MaxItems => Int, NextToken => Str])
+
+Each argument is described in detail in: L<Paws::SES::ListTemplates>
+
+Returns: a L<Paws::SES::ListTemplatesResponse> instance
+
+  Lists the email templates present in your Amazon SES account.
 
 You can execute this operation no more than once per second.
 
@@ -893,7 +978,7 @@ identity, this API will return an error.
 
 Sending authorization is a feature that enables an identity owner to
 authorize other senders to use its identities. For information about
-using sending authorization, see the I< Amazon SES Developer Guide.>
+using sending authorization, see the Amazon SES Developer Guide.
 
 You can execute this operation no more than once per second.
 
@@ -910,8 +995,8 @@ All of the rules in the rule set must be represented in this request.
 That is, this API will return an error if the reorder request doesn't
 explicitly position all of the rules.
 
-For information about managing receipt rule sets, see the I< Amazon SES
-Developer Guide.>
+For information about managing receipt rule sets, see the Amazon SES
+Developer Guide.
 
 You can execute this operation no more than once per second.
 
@@ -929,10 +1014,58 @@ to 24 hours after you receive it.
 You cannot use this API to send generic bounces for mail that was not
 received by Amazon SES.
 
-For information about receiving email through Amazon SES, see the I<
-Amazon SES Developer Guide.>
+For information about receiving email through Amazon SES, see the
+Amazon SES Developer Guide.
 
 You can execute this operation no more than once per second.
+
+
+=head2 SendBulkTemplatedEmail(Destinations => ArrayRef[L<Paws::SES::BulkEmailDestination>], Source => Str, Template => Str, [ConfigurationSetName => Str, DefaultTags => ArrayRef[L<Paws::SES::MessageTag>], DefaultTemplateData => Str, ReplyToAddresses => ArrayRef[Str|Undef], ReturnPath => Str, ReturnPathArn => Str, SourceArn => Str, TemplateArn => Str])
+
+Each argument is described in detail in: L<Paws::SES::SendBulkTemplatedEmail>
+
+Returns: a L<Paws::SES::SendBulkTemplatedEmailResponse> instance
+
+  Composes an email message to multiple destinations. The message body is
+created using an email template.
+
+In order to send email using the C<SendBulkTemplatedEmail> operation,
+your call to the API must meet the following requirements:
+
+=over
+
+=item *
+
+The call must refer to an existing email template. You can create email
+templates using the CreateTemplate operation.
+
+=item *
+
+The message must be sent from a verified email address or domain.
+
+=item *
+
+If your account is still in the Amazon SES sandbox, you may only send
+to verified addresses or domains, or to email addresses associated with
+the Amazon SES Mailbox Simulator. For more information, see Verifying
+Email Addresses and Domains in the I<Amazon SES Developer Guide.>
+
+=item *
+
+The total size of the message, including attachments, must be less than
+10 MB.
+
+=item *
+
+Each C<Destination> parameter must include at least one recipient email
+address. The recipient address can be a To: address, a CC: address, or
+a BCC: address. If a recipient email address is invalid (that is, it is
+not in the format I<UserName@[SubDomain.]Domain.TopLevelDomain>), the
+entire message will be rejected, even if the message contains other
+recipients that are valid.
+
+=back
+
 
 
 =head2 SendEmail(Destination => L<Paws::SES::Destination>, Message => L<Paws::SES::Message>, Source => Str, [ConfigurationSetName => Str, ReplyToAddresses => ArrayRef[Str|Undef], ReturnPath => Str, ReturnPathArn => Str, SourceArn => Str, Tags => ArrayRef[L<Paws::SES::MessageTag>]])
@@ -958,7 +1091,7 @@ operation will result in an "Email address not verified" error.
 If your account is still in the Amazon SES sandbox, you may only send
 to verified addresses or domains, or to email addresses associated with
 the Amazon SES Mailbox Simulator. For more information, see Verifying
-Email Addresses and Domains in the I<Amazon SES Developer Guide>.
+Email Addresses and Domains in the I<Amazon SES Developer Guide.>
 
 =item *
 
@@ -989,7 +1122,7 @@ For every message that you send, the total number of recipients
 against the maximum number of emails you can send in a 24-hour period
 (your I<sending quota>). For more information about sending quotas in
 Amazon SES, see Managing Your Amazon SES Sending Limits in the I<Amazon
-SES Developer Guide>.
+SES Developer Guide.>
 
 
 =head2 SendRawEmail(RawMessage => L<Paws::SES::RawMessage>, [ConfigurationSetName => Str, Destinations => ArrayRef[Str|Undef], FromArn => Str, ReturnPathArn => Str, Source => Str, SourceArn => Str, Tags => ArrayRef[L<Paws::SES::MessageTag>]])
@@ -1020,7 +1153,7 @@ operation will result in an "Email address not verified" error.
 If your account is still in the Amazon SES sandbox, you may only send
 to verified addresses or domains, or to email addresses associated with
 the Amazon SES Mailbox Simulator. For more information, see Verifying
-Email Addresses and Domains in the I<Amazon SES Developer Guide>.
+Email Addresses and Domains in the I<Amazon SES Developer Guide.>
 
 =item *
 
@@ -1051,7 +1184,7 @@ For every message that you send, the total number of recipients
 against the maximum number of emails you can send in a 24-hour period
 (your I<sending quota>). For more information about sending quotas in
 Amazon SES, see Managing Your Amazon SES Sending Limits in the I<Amazon
-SES Developer Guide>.
+SES Developer Guide.>
 
 Additionally, keep the following considerations in mind when using the
 C<SendRawEmail> operation:
@@ -1101,7 +1234,62 @@ specify the C<SourceIdentityArn> parameter, Amazon SES will set the
 From and Return Path addresses to the identity specified in
 C<SourceIdentityArn>. For more information about sending authorization,
 see the Using Sending Authorization with Amazon SES in the I<Amazon SES
-Developer Guide>.
+Developer Guide.>
+
+=back
+
+
+
+=head2 SendTemplatedEmail(Destination => L<Paws::SES::Destination>, Source => Str, Template => Str, TemplateData => Str, [ConfigurationSetName => Str, ReplyToAddresses => ArrayRef[Str|Undef], ReturnPath => Str, ReturnPathArn => Str, SourceArn => Str, Tags => ArrayRef[L<Paws::SES::MessageTag>], TemplateArn => Str])
+
+Each argument is described in detail in: L<Paws::SES::SendTemplatedEmail>
+
+Returns: a L<Paws::SES::SendTemplatedEmailResponse> instance
+
+  Composes an email message using an email template and immediately
+queues it for sending.
+
+In order to send email using the C<SendTemplatedEmail> operation, your
+call to the API must meet the following requirements:
+
+=over
+
+=item *
+
+The call must refer to an existing email template. You can create email
+templates using the CreateTemplate operation.
+
+=item *
+
+The message must be sent from a verified email address or domain.
+
+=item *
+
+If your account is still in the Amazon SES sandbox, you may only send
+to verified addresses or domains, or to email addresses associated with
+the Amazon SES Mailbox Simulator. For more information, see Verifying
+Email Addresses and Domains in the I<Amazon SES Developer Guide.>
+
+=item *
+
+The total size of the message, including attachments, must be less than
+10 MB.
+
+=item *
+
+Calls to the C<SendTemplatedEmail> operation may only include one
+C<Destination> parameter. A destination is a set of recipients who will
+receive the same version of the email. The C<Destination> parameter can
+include up to 50 recipients, across the To:, CC: and BCC: fields.
+
+=item *
+
+The C<Destination> parameter must include at least one recipient email
+address. The recipient address can be a To: address, a CC: address, or
+a BCC: address. If a recipient email address is invalid (that is, it is
+not in the format I<UserName@[SubDomain.]Domain.TopLevelDomain>), the
+entire message will be rejected, even if the message contains other
+recipients that are valid.
 
 =back
 
@@ -1118,8 +1306,8 @@ Returns: a L<Paws::SES::SetActiveReceiptRuleSetResponse> instance
 To disable your email-receiving through Amazon SES completely, you can
 call this API with RuleSetName set to null.
 
-For information about managing receipt rule sets, see the I< Amazon SES
-Developer Guide.>
+For information about managing receipt rule sets, see the Amazon SES
+Developer Guide.
 
 You can execute this operation no more than once per second.
 
@@ -1154,8 +1342,8 @@ the C<VerifyDomainDkim> operation.
 
 You can execute this operation no more than once per second.
 
-For more information about Easy DKIM signing, go to the I< Amazon SES
-Developer Guide.>
+For more information about Easy DKIM signing, go to the Amazon SES
+Developer Guide.
 
 
 =head2 SetIdentityFeedbackForwardingEnabled(ForwardingEnabled => Bool, Identity => Str)
@@ -1176,7 +1364,7 @@ notifications are only available through Amazon SNS.
 You can execute this operation no more than once per second.
 
 For more information about using notifications with Amazon SES, see the
-I< Amazon SES Developer Guide.>
+Amazon SES Developer Guide.
 
 
 =head2 SetIdentityHeadersInNotificationsEnabled(Enabled => Bool, Identity => Str, NotificationType => Str)
@@ -1192,7 +1380,7 @@ Notification Service (Amazon SNS) notifications of a specified type.
 You can execute this operation no more than once per second.
 
 For more information about using notifications with Amazon SES, see the
-I< Amazon SES Developer Guide.>
+Amazon SES Developer Guide.
 
 
 =head2 SetIdentityMailFromDomain(Identity => Str, [BehaviorOnMXFailure => Str, MailFromDomain => Str])
@@ -1207,8 +1395,8 @@ identity (an email address or a domain).
 To send emails using the specified MAIL FROM domain, you must add an MX
 record to your MAIL FROM domain's DNS settings. If you want your emails
 to pass Sender Policy Framework (SPF) checks, you must also add or
-update an SPF record. For more information, see the I< Amazon SES
-Developer Guide.>
+update an SPF record. For more information, see the Amazon SES
+Developer Guide.
 
 You can execute this operation no more than once per second.
 
@@ -1230,8 +1418,8 @@ see C<SetIdentityFeedbackForwardingEnabled>.
 
 You can execute this operation no more than once per second.
 
-For more information about feedback notification, see the I< Amazon SES
-Developer Guide.>
+For more information about feedback notification, see the Amazon SES
+Developer Guide.
 
 
 =head2 SetReceiptRulePosition(RuleName => Str, RuleSetName => Str, [After => Str])
@@ -1243,8 +1431,20 @@ Returns: a L<Paws::SES::SetReceiptRulePositionResponse> instance
   Sets the position of the specified receipt rule in the receipt rule
 set.
 
-For information about managing receipt rules, see the I< Amazon SES
-Developer Guide.>
+For information about managing receipt rules, see the Amazon SES
+Developer Guide.
+
+You can execute this operation no more than once per second.
+
+
+=head2 TestRenderTemplate(TemplateData => Str, TemplateName => Str)
+
+Each argument is described in detail in: L<Paws::SES::TestRenderTemplate>
+
+Returns: a L<Paws::SES::TestRenderTemplateResponse> instance
+
+  Creates a preview of the MIME content of an email when provided with a
+template and a set of replacement data.
 
 You can execute this operation no more than once per second.
 
@@ -1260,7 +1460,7 @@ destinations are associated with configuration sets, which enable you
 to publish email sending events to Amazon CloudWatch, Amazon Kinesis
 Firehose, or Amazon Simple Notification Service (Amazon SNS). For
 information about using configuration sets, see Monitoring Your Amazon
-SES Sending Activity in the I<Amazon SES Developer Guide>.
+SES Sending Activity in the I<Amazon SES Developer Guide.>
 
 When you create or update an event destination, you must provide one,
 and only one, destination. The destination can be Amazon CloudWatch,
@@ -1281,10 +1481,9 @@ for open and click event tracking.
 
 By default, images and links used for tracking open and click events
 are hosted on domains operated by Amazon SES. You can configure a
-subdomain of your own to handle these events by redirecting them to the
-Amazon SES-operated domain. For information about using configuration
-sets, see Configuring Custom Domains to Handle Open and Click Tracking
-in the I< Amazon SES Developer Guide.>
+subdomain of your own to handle these events. For information about
+using configuration sets, see Configuring Custom Domains to Handle Open
+and Click Tracking in the Amazon SES Developer Guide.
 
 
 =head2 UpdateReceiptRule(Rule => L<Paws::SES::ReceiptRule>, RuleSetName => Str)
@@ -1295,8 +1494,21 @@ Returns: a L<Paws::SES::UpdateReceiptRuleResponse> instance
 
   Updates a receipt rule.
 
-For information about managing receipt rules, see the I< Amazon SES
-Developer Guide.>
+For information about managing receipt rules, see the Amazon SES
+Developer Guide.
+
+You can execute this operation no more than once per second.
+
+
+=head2 UpdateTemplate(Template => L<Paws::SES::Template>)
+
+Each argument is described in detail in: L<Paws::SES::UpdateTemplate>
+
+Returns: a L<Paws::SES::UpdateTemplateResponse> instance
+
+  Updates an email template. Email templates enable you to send
+personalized email to one or more destinations in a single API
+operation. For more information, see the Amazon SES Developer Guide.
 
 You can execute this operation no more than once per second.
 
@@ -1321,7 +1533,7 @@ To enable or disable Easy DKIM signing for a domain, use the
 C<SetIdentityDkimEnabled> operation.
 
 For more information about creating DNS records using DKIM tokens, go
-to the I< Amazon SES Developer Guide.>
+to the Amazon SES Developer Guide.
 
 
 =head2 VerifyDomainIdentity(Domain => Str)
@@ -1333,7 +1545,7 @@ Returns: a L<Paws::SES::VerifyDomainIdentityResponse> instance
   Adds a domain to the list of identities for your Amazon SES account and
 attempts to verify it. For more information about verifying domains,
 see Verifying Email Addresses and Domains in the I<Amazon SES Developer
-Guide>.
+Guide.>
 
 You can execute this operation no more than once per second.
 
