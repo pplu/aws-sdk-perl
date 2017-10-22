@@ -59,9 +59,6 @@ This class has no description
 
   One or more block device mapping entries.
 
-Although you can specify encrypted EBS volumes in this block device
-mapping for your Spot Instances, these volumes are not encrypted.
-
 
 =head2 EbsOptimized => Bool
 

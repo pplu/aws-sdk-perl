@@ -3761,7 +3761,7 @@ connection that are referencing the security groups you've specified in
 this request.
 
 
-=head2 DescribeSecurityGroups([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], GroupIds => ArrayRef[Str|Undef], GroupNames => ArrayRef[Str|Undef]])
+=head2 DescribeSecurityGroups([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], GroupIds => ArrayRef[Str|Undef], GroupNames => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::EC2::DescribeSecurityGroups>
 
