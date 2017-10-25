@@ -1,0 +1,5 @@
+---
+tests:
+  - expected: ""
+    op: eq
+    path: Activites.0.Cause
