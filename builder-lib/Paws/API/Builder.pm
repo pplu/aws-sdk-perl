@@ -334,7 +334,7 @@ package Paws::API::Builder {
 
 =head1 NAME
 
-[% c.api %]::[% op_name %] - Arguments for method [% op_name %] on [% c.api %]
+[% c.api %]::[% op_name %] - Arguments for method [% op_name %] on L<[% c.api %]>
 
 =head1 DESCRIPTION
 
