@@ -227,14 +227,14 @@ package Paws::Net::RestXmlCaller;
       $request->content($xml_body);
     }
 
-    $self->_to_header_params($request, $call);
-
     if ($call->can('_stream_param')) {
       my $param_name = $call->_stream_param;
       $request->content($call->$param_name);
       $request->headers->header( 'content-length' => $request->content_length );
       #$request->headers->header( 'content-type'   => $self->content_type );
     }
+
+    $self->_to_header_params($request, $call);
 
     $self->sign($request);
 
