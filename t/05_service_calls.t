@@ -292,6 +292,24 @@ $test_params = {
 
 request_has_params($test_params, $request);
 
+$request = $s3->PutObject(
+  Bucket => 'test_bucket',
+  Key => 'A/key',
+  Body => 'My Value',
+);
+
+my $md5_r1 = $request->headers->header('Content-MD5');
+
+$request = $s3->PutObject(
+  Bucket => 'test_bucket',
+  Key => 'A/key',
+  Body => 'My Other Value',
+);
+
+my $md5_r2 = $request->headers->header('Content-MD5');
+
+cmp_ok($md5_r1, 'ne', $md5_r2, 'Content-MD5 of different values is different');
+
 $request = $s3->ListObjectsV2(
   Bucket => 'test_bucket',
   Prefix => 'A/Prefix',
