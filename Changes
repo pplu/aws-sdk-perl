@@ -1,3 +1,7 @@
+0.36 03 Nov 2017
+ - Fix Bug: S3 PutObject was not working: the Content-MD5 header was not 
+            calculated correctly (glenveegee)
+
 0.35 09 Oct 2017
  - Fix Bug: Correctly throw Paws::Exceptions even if there is no information
             in the body / headers (#190 svn-schubert) (#198 ilmari)
