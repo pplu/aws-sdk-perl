@@ -1,6 +1,8 @@
 0.36 03 Nov 2017
- - Fix Bug: S3 PutObject was not working: the Content-MD5 header was not 
+ - Fix Bug: #210: S3 PutObject was not working: the Content-MD5 header was not 
             calculated correctly (glenveegee)
+ - Fix Bug: #201: RestJson services were not passing fields in their correct
+            locations
 
 0.35 09 Oct 2017
  - Fix Bug: Correctly throw Paws::Exceptions even if there is no information
